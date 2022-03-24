@@ -8,7 +8,7 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Potentially the best command line gister."
+DESCRIPTION="Potentially the best command line gister"
 HOMEPAGE="https://github.com/defunkt/gist"
 
 LICENSE="MIT"

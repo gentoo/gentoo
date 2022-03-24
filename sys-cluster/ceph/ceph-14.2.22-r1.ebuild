@@ -1,9 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 PYTHON_COMPAT=( python3_{7,8} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
 CMAKE_MAKEFILE_GENERATOR=emake
 
 DISTUTILS_OPTIONAL=1
@@ -87,21 +86,21 @@ DEPEND="
 	system-boost? ( dev-libs/boost:=[threads(+),context,python,${PYTHON_USEDEP}] )
 	xfs? ( sys-fs/xfsprogs:= )
 	zfs? ( sys-fs/zfs:= )
-	${PYTHON_DEPS}
 "
 BDEPEND="
+	${PYTHON_DEPS}
 	amd64? ( dev-lang/yasm )
 	x86? ( dev-lang/yasm )
 	app-arch/cpio
 	>=dev-util/cmake-3.5.0
 	dev-python/cython[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/sphinx
 	dev-util/cunit
 	dev-util/gperf
 	dev-util/ragel
 	dev-util/valgrind
 	sys-apps/coreutils
-	sys-apps/findutils
 	sys-apps/grep
 	sys-apps/sed
 	sys-apps/which
@@ -117,6 +116,7 @@ BDEPEND="
 	)
 "
 RDEPEND="${DEPEND}
+	${PYTHON_DEPS}
 	app-admin/sudo
 	net-misc/socat
 	sys-apps/gptfdisk
@@ -134,6 +134,7 @@ RDEPEND="${DEPEND}
 	dev-python/prettytable[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/werkzeug[${PYTHON_USEDEP}]
 	mgr? (
 		dev-python/more-itertools[${PYTHON_USEDEP}]

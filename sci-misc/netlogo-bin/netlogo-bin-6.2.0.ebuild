@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,11 +19,12 @@ S="${WORKDIR}/${MY_PN} ${PV}"
 
 LICENSE="netlogo GPL-2 LGPL-2.1 LGPL-3 BSD Apache-2.0"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 
 RDEPEND="
 	>=virtual/jre-1.8:*
 	media-libs/mesa
+	sys-libs/glibc
 	x11-libs/libdrm
 	x11-libs/libX11
 	x11-libs/libXrender

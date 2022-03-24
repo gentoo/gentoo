@@ -18,9 +18,6 @@
     <flag name="oauth">
       Enable OAuth authentication for OSM
     </flag>
-    <flag name="sqlite">
-      Enable MBTiles support based on <pkg>dev-db/sqlite</pkg>
-    </flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">viking</remote-id>

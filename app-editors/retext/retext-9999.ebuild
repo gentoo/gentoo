@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 # Please don't add pypy support before testing if it's actually supported. The
 # old compat matrix is no longer accessible as of 2021-02-13 but stated back
 # in 2020-07-05 that PyQt5 was explicitly not supported.
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 
 inherit distutils-r1 optfeature virtualx xdg-utils
 
@@ -16,14 +16,14 @@ MY_P="${MY_PN}-${PV/_/~}"
 DESCRIPTION="Simple editor for Markdown and reStructuredText"
 HOMEPAGE="https://github.com/retext-project/retext https://github.com/retext-project/retext/wiki"
 
-if [[ ${PV} == *9999 ]]
-	then
-		inherit git-r3
-		EGIT_REPO_URI="https://github.com/retext-project/retext.git"
-	else
-		SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
-		KEYWORDS="~amd64 ~x86"
-		S="${WORKDIR}/${MY_P}"
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/retext-project/retext.git"
+else
+	SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+	S="${WORKDIR}/${MY_P}"
+
+	KEYWORDS="~amd64 ~riscv ~x86"
 fi
 
 LICENSE="GPL-2+"

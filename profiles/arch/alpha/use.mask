@@ -1,8 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -alpha
+
+# Matt Turner <mattst88@gentoo.org> (2022-02-21)
+# app-crypt/tpm2-tss is not keyworded here
+tpm
 
 # James Le Cuirot <chewi@gentoo.org> (2021-08-10)
 # media-video/pipewire is not keyworded. Bug #807616.
@@ -96,7 +100,6 @@ dmi
 # Stuff that doesn't work on alpha, or not tested
 clang
 djbfft
-emboss
 hardened
 mecab
 netbeans
@@ -176,10 +179,6 @@ llvm
 # Matt Turner <mattst88@gentoo.org (2012-05-27)
 # net-misc/connman is not keyworded
 connman
-
-# Anthony G. Basile <blueness@gentoo.org> (2012-04-15)
-# Pulls in net-libs/axtls which is not keyworded for arch
-curl_ssl_axtls
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
 # media-libs/xine-lib is not keyworded

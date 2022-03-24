@@ -1,10 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors.
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Select the correct ELIBC
 -elibc_musl
-elibc_uclibc
 elibc_glibc
+
+# Marco Genasci <fedeliallalinea@gmail.com> (2022-01-06)
+# Pulls dev-db/oracle-instantclient which doesn't work on musl
+oracle
 
 # Musl doesn't have support for utmp/wtmp by design
 utmp

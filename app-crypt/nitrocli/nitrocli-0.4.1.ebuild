@@ -70,7 +70,7 @@ winapi-x86_64-pc-windows-gnu-0.4.0
 
 inherit bash-completion-r1 cargo
 
-DESCRIPTION="A command line tool for interacting with Nitrokey devices."
+DESCRIPTION="A command line tool for interacting with Nitrokey devices"
 HOMEPAGE="https://github.com/d-e-s-o/nitrocli"
 SRC_URI="$(cargo_crate_uris)"
 

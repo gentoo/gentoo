@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -94,10 +94,6 @@
 -sane_backends_hpsj5s
 -sane_backends_mustek_pp
 -sane_backends_qcam
-
-# Alex Legler <a3li@gentoo.org> (2010-05-03)
-# Add support for Ruby Enterprise Edition targets where rubyee is available
-# -ruby_targets_ree18
 
 # Unmask x86 instruction sets
 -lilo

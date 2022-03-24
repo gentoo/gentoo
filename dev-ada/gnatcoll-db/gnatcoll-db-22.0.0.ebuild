@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 ADA_COMPAT=( gnat_202{0,1} )
 
 inherit ada multiprocessing python-single-r1
@@ -34,6 +34,8 @@ REQUIRED_USE="gnatinspect? ( xref )
 	sqlite? ( sql )
 	db2ada? ( sql )
 	postgres? ( sql )
+	|| ( shared static-libs static-pic )
+	|| ( sql sqlite xref postgres gnatinspect db2ada )
 	${ADA_REQUIRED_USE}
 	${PYTHON_REQUIRED_USE}"
 

@@ -1,0 +1,8 @@
+# Copyright 2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# sys-libs/libseccomp has not been ported to rv32 yet
+sys-libs/libseccomp
+
+# does not support rv32
+sys-libs/musl

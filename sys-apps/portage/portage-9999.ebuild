@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( pypy3 python3_{8..10} )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
 TMPFILES_OPTIONAL=1
 
-inherit distutils-r1 git-r3 linux-info tmpfiles prefix
+inherit distutils-r1 git-r3 linux-info toolchain-funcs tmpfiles prefix
 
 DESCRIPTION="The package management and distribution system for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
@@ -48,13 +48,12 @@ RDEPEND="
 		>=app-admin/eselect-1.2
 		rsync-verify? (
 			>=app-portage/gemato-14.5[${PYTHON_USEDEP}]
-			>=app-crypt/openpgp-keys-gentoo-release-20180706
+			>=sec-keys/openpgp-keys-gentoo-release-20180706
 			>=app-crypt/gnupg-2.2.4-r2[ssl(-)]
 		)
 	)
 	elibc_glibc? ( >=sys-apps/sandbox-2.2 )
 	elibc_musl? ( >=sys-apps/sandbox-2.2 )
-	elibc_uclibc? ( >=sys-apps/sandbox-2.2 )
 	kernel_linux? ( sys-apps/util-linux )
 	>=app-misc/pax-utils-0.1.17
 	selinux? ( >=sys-libs/libselinux-2.0.94[python,${PYTHON_USEDEP}] )
@@ -68,13 +67,18 @@ RDEPEND="
 PDEPEND="
 	!build? (
 		>=net-misc/rsync-2.6.4
-		userland_GNU? ( >=sys-apps/coreutils-6.4 )
+		>=sys-apps/file-5.41
+		>=sys-apps/coreutils-6.4
 	)"
 # coreutils-6.4 rdep is for date format in emerge-webrsync #164532
 # NOTE: FEATURES=installsources requires debugedit and rsync
 
 pkg_pretend() {
 	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS ~UTS_NS"
+
+	if use native-extensions && tc-is-cross-compiler; then
+		einfo "Disabling USE=native-extensions for cross-compilation (bug #612158)"
+	fi
 
 	check_extra_config
 }
@@ -93,7 +97,7 @@ python_prepare_all() {
 			>> cnf/make.globals || die
 	fi
 
-	if use native-extensions; then
+	if use native-extensions && ! tc-is-cross-compiler; then
 		printf "[build_ext]\nportage_ext_modules=true\n" >> \
 			setup.cfg || die
 	fi
@@ -222,24 +226,26 @@ python_install_all() {
 }
 
 pkg_preinst() {
-	python_setup
-	local sitedir=$(python_get_sitedir)
-	[[ -d ${D}${sitedir} ]] || die "${D}${sitedir}: No such directory"
-	env -u DISTDIR \
-		-u PORTAGE_OVERRIDE_EPREFIX \
-		-u PORTAGE_REPOSITORIES \
-		-u PORTDIR \
-		-u PORTDIR_OVERLAY \
-		PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
-		"${PYTHON}" -m portage._compat_upgrade.default_locations || die
+	if ! use build; then
+		python_setup
+		local sitedir=$(python_get_sitedir)
+		[[ -d ${D}${sitedir} ]] || die "${D}${sitedir}: No such directory"
+		env -u DISTDIR \
+			-u PORTAGE_OVERRIDE_EPREFIX \
+			-u PORTAGE_REPOSITORIES \
+			-u PORTDIR \
+			-u PORTDIR_OVERLAY \
+			PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
+			"${PYTHON}" -m portage._compat_upgrade.default_locations || die
 
-	env -u BINPKG_COMPRESS -u PORTAGE_REPOSITORIES \
-		PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
-		"${PYTHON}" -m portage._compat_upgrade.binpkg_compression || die
+		env -u BINPKG_COMPRESS -u PORTAGE_REPOSITORIES \
+			PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
+			"${PYTHON}" -m portage._compat_upgrade.binpkg_compression || die
 
-	env -u FEATURES -u PORTAGE_REPOSITORIES \
-		PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
-		"${PYTHON}" -m portage._compat_upgrade.binpkg_multi_instance || die
+		env -u FEATURES -u PORTAGE_REPOSITORIES \
+			PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
+			"${PYTHON}" -m portage._compat_upgrade.binpkg_multi_instance || die
+	fi
 
 	# elog dir must exist to avoid logrotate error for bug #415911.
 	# This code runs in preinst in order to bypass the mapping of

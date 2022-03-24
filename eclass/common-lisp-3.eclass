@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: common-lisp-3.eclass
@@ -20,25 +20,25 @@ inherit eutils
 if [[ -z ${_COMMON_LISP_3_ECLASS} ]]; then
 _COMMON_LISP_3_ECLASS=1
 
-# @ECLASS-VARIABLE: CLIMPLEMENTATIONS
+# @ECLASS_VARIABLE: CLIMPLEMENTATIONS
 # @DESCRIPTION:
 # Common Lisp implementations
 CLIMPLEMENTATIONS="sbcl clisp clozurecl cmucl ecls gcl abcl"
 
-# @ECLASS-VARIABLE: CLSOURCEROOT
+# @ECLASS_VARIABLE: CLSOURCEROOT
 # @DESCRIPTION:
 # Default path of Common Lisp libraries sources. Sources will
 # be installed into ${CLSOURCEROOT}/${CLPACKAGE}.
 CLSOURCEROOT="${ROOT%/}"/usr/share/common-lisp/source
 
-# @ECLASS-VARIABLE: CLSYSTEMROOT
+# @ECLASS_VARIABLE: CLSYSTEMROOT
 # @DESCRIPTION:
 # Default path to find any asdf file. Any asdf files will be
 # symlinked in ${CLSYSTEMROOT}/${CLSYSTEM} as they may be in
 # an arbitrarily deeply nested directory under ${CLSOURCEROOT}/${CLPACKAGE}.
 CLSYSTEMROOT="${ROOT%/}"/usr/share/common-lisp/systems
 
-# @ECLASS-VARIABLE: CLPACKAGE
+# @ECLASS_VARIABLE: CLPACKAGE
 # @DESCRIPTION:
 # Default package name. To override, set these after inheriting this eclass.
 CLPACKAGE="${PN}"
@@ -167,13 +167,11 @@ common-lisp-install-asdf() {
 
 # @FUNCTION: common-lisp-3_src_install
 # @DESCRIPTION:
-# Recursively install Lisp sources, asdf files and most common doc files.
+# Recursively install Lisp sources, asdf files and doc files.
 common-lisp-3_src_install() {
 	common-lisp-install-sources .
 	common-lisp-install-asdf
-	for i in AUTHORS README* HEADER TODO* CHANGELOG Change[lL]og CHANGES BUGS CONTRIBUTORS *NEWS* ; do
-		[[ -f ${i} ]] && dodoc ${i}
-	done
+	einstalldocs
 }
 
 # @FUNCTION: common-lisp-find-lisp-impl

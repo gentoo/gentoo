@@ -1,0 +1,13 @@
+diff --git a/Programs/Makefile.in b/Programs/Makefile.in
+index f1dc9aeb5..811a73a11 100644
+--- a/Programs/Makefile.in
++++ b/Programs/Makefile.in
+@@ -687,7 +687,7 @@ $(API_DLL): $(API_CLIENT_OBJECTS)
+ 	[ ! -f lib.def ] || mv lib.def $(API_DEF)
+ 
+ $(API_ARC): $(API_CLIENT_OBJECTS)
+-	ar rc $@ $(API_CLIENT_OBJECTS)
++	$(AR) rc $@ $(API_CLIENT_OBJECTS)
+ 	$(RANLIB) $@
+ 
+ brlapi_client.$O:

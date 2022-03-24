@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,18 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# needs stabilizing
+media-video/ffmpeg vmaf
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
+# needs stabilizing
+media-video/ffmpeg amf
+
+# Sam James <sam@gentoo.org> (2022-02-01)
+# sys-cluster/ucx is not marked stable on amd64
+sys-cluster/slurm ucx
 
 # Joonas Niilola <juippis@gentoo.org> (2021-08-13)
 # dev-libs/efl is stabilized on amd64.
@@ -40,11 +52,6 @@ app-office/libreoffice base
 # sys-cluster/slurm has no stable keywords
 # dev-util/nvidia-cuda-toolkit has no stable keywords
 app-metrics/collectd collectd_plugins_slurm collectd_plugins_gpu_nvidia
-
-# Joonas Niilola <juippis@gentoo.org> (2020-06-21)
-# sys-apps/apparmor doesn't have stable keywords.
-app-emulation/lxc apparmor
-app-emulation/lxd apparmor
 
 # Thomas Deutschmann <whissi@gentoo.org> (2019-10-28)
 # net-libs/quiche is an early HTTP/3 implementation
@@ -82,7 +89,7 @@ virtual/wine staging
 
 # Christoph Junghans <junghans@gentoo.org> (2017-02-26)
 # Stable mask some fabrics (bug #525534)
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
 
 # Brian Evans <grknight@gentoo.org> (2017-01-17)
 # Stable mask groonga on mariadb as I don't know how stable

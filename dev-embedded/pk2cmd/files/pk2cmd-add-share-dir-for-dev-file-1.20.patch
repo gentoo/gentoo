@@ -1,5 +1,5 @@
---- cmd_app.cpp.old	2009-01-31 21:23:30.000000000 +0100
-+++ cmd_app.cpp	2009-01-31 21:25:48.000000000 +0100
+--- a/cmd_app.cpp
++++ b/cmd_app.cpp
 @@ -88,7 +88,12 @@
  		_tsearchenv_s("PK2DeviceFile.dat", "PATH", tempString);
  		if (_tcslen(tempString) < 17)

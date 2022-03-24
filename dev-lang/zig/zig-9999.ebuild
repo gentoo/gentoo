@@ -3,22 +3,23 @@
 
 EAPI=7
 
+LLVM_MAX_SLOT=13
 inherit cmake llvm
 
 DESCRIPTION="A robust, optimal, and maintainable programming language"
 HOMEPAGE="https://ziglang.org/"
-LICENSE="MIT"
-SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
-
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/ziglang/zig.git"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/ziglang/zig/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
+
+LICENSE="MIT"
+SLOT="0"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 BUILD_DIR="${S}/build"
 
@@ -31,12 +32,10 @@ ALL_LLVM_TARGETS=(
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS="${ALL_LLVM_TARGETS[@]}"
 
-LLVM_MAX_SLOT=13
-
 RDEPEND="
 	sys-devel/clang:${LLVM_MAX_SLOT}
-	>=sys-devel/lld-12.0.0
-	<sys-devel/lld-14.0.0
+	>=sys-devel/lld-${LLVM_MAX_SLOT}
+	<sys-devel/lld-$((${LLVM_MAX_SLOT} + 1))
 	sys-devel/llvm:${LLVM_MAX_SLOT}[${LLVM_TARGET_USEDEPS// /,}]
 "
 DEPEND="${RDEPEND}"
@@ -50,6 +49,7 @@ src_configure() {
 		-DZIG_USE_CCACHE=OFF
 		-DZIG_PREFER_CLANG_CPP_DYLIB=ON
 	)
+
 	cmake_src_configure
 }
 

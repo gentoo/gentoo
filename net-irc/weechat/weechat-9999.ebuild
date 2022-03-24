@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} )
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit cmake lua-single python-single-r1 xdg-utils
 
@@ -12,8 +12,12 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/weechat/weechat.git"
 else
-	SRC_URI="https://weechat.org/files/src/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~x64-macos"
+	inherit verify-sig
+	SRC_URI="https://weechat.org/files/src/${P}.tar.xz
+		verify-sig? ( https://weechat.org/files/src/${P}.tar.xz.asc )"
+	VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/weechat.org.asc
+	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-weechat )"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~x64-macos"
 fi
 
 DESCRIPTION="Portable and multi-interface IRC client"
@@ -48,7 +52,13 @@ RDEPEND="
 	perl? ( dev-lang/perl:= )
 	php? ( >=dev-lang/php-7.0:*[embed] )
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( || ( dev-lang/ruby:2.7 dev-lang/ruby:2.6 ) )
+	ruby? (
+		|| (
+			dev-lang/ruby:3.0
+			dev-lang/ruby:2.7
+			dev-lang/ruby:2.6
+		)
+	)
 	selinux? ( sec-policy/selinux-irc )
 	spell? ( app-text/aspell )
 	tcl? ( >=dev-lang/tcl-8.4.15:0= )
@@ -58,7 +68,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-util/cpputest )
 "
 
-BDEPEND="
+BDEPEND+="
 	virtual/pkgconfig
 	doc? ( >=dev-ruby/asciidoctor-1.5.4 )
 	man? ( >=dev-ruby/asciidoctor-1.5.4 )

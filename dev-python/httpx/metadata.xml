@@ -11,4 +11,7 @@
 		<remote-id type="github">encode/httpx</remote-id>
 		<bugs-to>https://github.com/encode/httpx/issues</bugs-to>
 	</upstream>
+	<use>
+		<flag name="cli">Install the CLI "httpx" client.</flag>
+	</use>
 </pkgmetadata>

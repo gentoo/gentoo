@@ -1,0 +1,24 @@
+From aca8443079ff926be873a77e3077b249a12487dd Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <sultan@gentoo.org>
+Date: Sun, 23 Jan 2022 18:51:56 +0100
+Subject: [PATCH] IWYU: add missing ostream in DkMath
+
+---
+ src/DkCore/DkMath.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/DkCore/DkMath.h b/src/DkCore/DkMath.h
+index c37ef23..2c3a5be 100644
+--- a/src/DkCore/DkMath.h
++++ b/src/DkCore/DkMath.h
+@@ -30,6 +30,7 @@
+ #pragma warning(push, 0)	// no warnings from includes - begin
+ #include <cmath>
+ #include <float.h>
++#include <ostream>
+ #include <QDebug>
+ #include <QPointF>
+ #include <QPolygonF>
+-- 
+2.34.1
+

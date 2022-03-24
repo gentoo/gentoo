@@ -5,7 +5,7 @@ EAPI=7
 
 inherit java-pkg-2
 
-DESCRIPTION="Apache Rat is a release audit tool, focused on licenses."
+DESCRIPTION="Apache Rat is a release audit tool, focused on licenses"
 HOMEPAGE="https://creadur.apache.org/rat/"
 
 LICENSE="Apache-2.0"

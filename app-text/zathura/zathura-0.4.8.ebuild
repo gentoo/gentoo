@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -39,6 +39,10 @@ BDEPEND="doc? ( dev-python/sphinx )
 	test? ( dev-libs/appstream-glib
 		dev-libs/check )
 	virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-meson-0.61-build.patch
+)
 
 src_configure() {
 	local emesonargs=(

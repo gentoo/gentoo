@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,17 +13,15 @@ SRC_URI="https://github.com/MightyCreak/diffuse/archive/v${PV}.tar.gz -> ${P}.ta
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="${PYTHON_DEPS}"
-RDEPEND="${DEPEND}
+BDEPEND="${PYTHON_DEPS}"
+# file collision, bug #279018
+RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/pygobject:3[${PYTHON_USEDEP},cairo]
 	')
-	x11-libs/gtk+:3[introspection]"
-# file collision, bug #279018
-DEPEND="${DEPEND}
+	x11-libs/gtk+:3[introspection]
 	!sci-chemistry/tinker"
 
 src_prepare() {

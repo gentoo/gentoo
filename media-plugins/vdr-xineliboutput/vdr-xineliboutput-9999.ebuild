@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,8 +12,8 @@ HOMEPAGE="https://sourceforge.net/projects/xineliboutput/"
 
 EGIT_REPO_URI="https://git.code.sf.net/p/xineliboutput/git"
 
-SLOT="0"
 LICENSE="GPL-2+"
+SLOT="0"
 KEYWORDS=""
 IUSE="bluray caps cec dbus fbcon jpeg libextractor nls opengl +vdr vdpau +X +xine xinerama"
 
@@ -93,8 +93,8 @@ src_configure() {
 
 	# No autotools based configure script
 	./configure \
-		--cc=$(tc-getCC) \
-		--cxx=$(tc-getCXX) \
+		--cc="$(tc-getCC)" \
+		--cxx="$(tc-getCXX)" \
 		$(use_enable X x11) \
 		$(use_enable X xshm) \
 		$(use_enable X xdpms) \

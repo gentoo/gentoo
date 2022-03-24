@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,11 +25,8 @@ SLOT="0"
 PLUGINS="monkeyd_plugins_auth monkeyd_plugins_cheetah monkeyd_plugins_dirlisting +monkeyd_plugins_liana monkeyd_plugins_logger monkeyd_plugins_mandril monkeyd_plugins_tls"
 IUSE="cgi debug fastcgi php static-plugins ${PLUGINS}"
 
-# uclibc is often compiled without backtrace info so we should
-# force this off.  If someone complains, consider relaxing it.
 REQUIRED_USE="
 	monkeyd_plugins_tls? ( !static-plugins )
-	elibc_uclibc? ( !debug )
 	cgi? ( php )"
 
 #DEPEND="jemalloc? ( >=dev-libs/jemalloc-3.3.1 )"
@@ -68,7 +65,6 @@ src_configure() {
 	append-cflags -fcommon
 	local myconf=""
 
-	use elibc_uclibc && myconf+=" --uclib-mode"
 	use elibc_musl && myconf+=" --musl-mode"
 
 	#use jemalloc || myconf+=" --malloc-libc"
@@ -97,13 +93,6 @@ src_configure() {
 	if use static-plugins; then
 		myconf+=" --static-plugins=${enable_plugins%,}"
 	fi
-
-	# For O_CLOEXEC which is guarded by _GNU_SOURCE in uClibc,
-	# but shouldn't because it is POSIX.  This needs to be fixed
-	# in uClibc.  Also, we really should us append-cppflags but
-	# monkey's build system doesn't respect CPPFLAGS.  This needs
-	# to be fixed in monkey.
-	use elibc_uclibc && append-cflags -D_GNU_SOURCE
 
 	# Non-autotools configure
 	./configure \

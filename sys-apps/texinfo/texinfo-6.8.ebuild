@@ -22,12 +22,7 @@ RDEPEND="
 	!=app-text/tetex-2*
 	>=sys-libs/ncurses-5.2-r2:0=
 	standalone? ( dev-lang/perl )
-	!standalone?  (
-		dev-lang/perl:=
-		dev-perl/libintl-perl
-		dev-perl/Unicode-EastAsianWidth
-		dev-perl/Text-Unidecode
-	)
+	!standalone?  ( dev-lang/perl:= )
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}"
 BDEPEND="nls? ( >=sys-devel/gettext-0.19.6 )"
@@ -54,16 +49,10 @@ src_configure() {
 
 	if use standalone ; then
 		myeconfargs+=(
-			--without-external-libintl-perl
-			--without-external-Unicode-EastAsianWidth
-			--without-external-Text-Unidecode
 			--disable-perl-xs
 		)
 	else
 		myeconfargs+=(
-			--with-external-libintl-perl
-			--with-external-Unicode-EastAsianWidth
-			--with-external-Text-Unidecode
 			--enable-perl-xs
 		)
 	fi

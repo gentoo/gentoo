@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_8 python3_9 )
 inherit distutils-r1
 
 DESCRIPTION="Ansible module for hashicorp vault"
-HOMEPAGE="https://ansible.com/"
+HOMEPAGE="https://www.ansible.com/"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3

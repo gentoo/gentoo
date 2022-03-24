@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -39,10 +39,6 @@ src_prepare() {
 	sed -i \
 		-e 's|@${CC}|$(CC)|g' \
 		Makefile || die
-
-	if use elibc_FreeBSD; then
-		sed -i -e 's/-DHAVE_SHADOW_H//' config.mk || die
-	fi
 
 	restore_config config.h
 

@@ -7,7 +7,7 @@ SWORD_MINIMUM_VERSION="1.7.2"
 
 inherit sword-module
 
-DESCRIPTION="Traduction de la LXX par P. GIGUET et autres traducteurs, 1872."
+DESCRIPTION="Traduction de la LXX par P. GIGUET et autres traducteurs, 1872"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=FreLXX"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~riscv ~x86"

@@ -12,12 +12,13 @@
 	<use>
 		<flag name="afterimage">Use Afterstep image library (media-libs/libafterimage)</flag>
 		<flag name="boost">Use boost (dev-libs/boost)</flag>
-		<flag name="hypre">Use HYPRE (sci-mathematics/hypre) and for preconditioning</flag>
 		<flag name="complex-scalars">Make scalars complex</flag>
+		<flag name="hypre">Use HYPRE (sci-mathematics/hypre) and for preconditioning</flag>
+		<flag name="int64">Use 64 bit indexes</flag>
 		<flag name="metis">Add support for metis (<pkg>sci-libs/parmetis</pkg>)</flag>
-		<flag name="sparse">Use suitesparse (sci-libs/suitesparse) including cholmod (sci-libs/cholmod) for sparse factorization</flag>
-		<flag name="superlu">Use superlu (sci-libs/superlu) for preconditioning</flag>
 		<flag name="mumps">Add support for mumps (<pkg>sci-libs/mumps</pkg>)</flag>
 		<flag name="scotch">Add support for scotch (<pkg>sci-libs/scotch</pkg>)</flag>
+		<flag name="sparse">Use suitesparse (sci-libs/suitesparse) including cholmod (sci-libs/cholmod) for sparse factorization</flag>
+		<flag name="superlu">Use superlu (sci-libs/superlu) for preconditioning</flag>
 	</use>
 </pkgmetadata>

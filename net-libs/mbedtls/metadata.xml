@@ -10,6 +10,9 @@
 		cryptographic library written in C and targeted at embedded systems.
 	</longdescription>
 	<use>
+		<flag name="cmac">Enable block cipher-based message authentication
+			code algorithm
+		</flag>
 		<flag name="havege">Enable the HAVEGE random generator.
 			Warning: the HAVEGE random generator is not suitable for
 			virtualized environments

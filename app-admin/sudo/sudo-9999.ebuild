@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -37,10 +37,10 @@ DEPEND="
 	virtual/libcrypt:=
 	gcrypt? ( dev-libs/libgcrypt:= )
 	ldap? (
-		>=net-nds/openldap-2.1.30-r1
+		>=net-nds/openldap-2.1.30-r1:=
 		sasl? (
 			dev-libs/cyrus-sasl
-			net-nds/openldap[sasl]
+			net-nds/openldap:=[sasl]
 		)
 	)
 	pam? ( sys-libs/pam )
@@ -163,10 +163,10 @@ src_install() {
 	default
 
 	if use ldap ; then
-		dodoc README.LDAP
+		dodoc README.LDAP.md
 
 		cat <<-EOF > "${T}"/ldap.conf.sudo
-		# See ldap.conf(5) and README.LDAP for details
+		# See ldap.conf(5) and README.LDAP.md for details
 		# This file should only be readable by root
 
 		# supported directives: host, port, ssl, ldap_version

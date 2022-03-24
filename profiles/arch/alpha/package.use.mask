@@ -1,5 +1,27 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# Untested useflag on other arches, needs keywording
+media-video/ffmpeg vmaf
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
+# Mask AMF keyword on non-amd64 arches
+# It is unusable, for now, in other arches
+media-video/ffmpeg amf
+
+# Sam James <sam@gentoo.org> (2022-01-29)
+# app-text/ronn-ng not keyworded here, bug #801103
+app-accessibility/espeak-ng man
+
+# James Beddek <telans@posteo.de> (2022-01-15)
+# media-libs/svt-av1 is not keyworded here
+media-video/ffmpeg svt-av1
+
+# Michał Górny <mgorny@gentoo.org> (2021-12-30)
+# Don't apply stable masks to python-exec since we're forcing every
+# impl there anyway. Please keep this in sync with use.mask.
+dev-lang/python-exec -python_targets_python3_10
 
 # Sam James <sam@gentoo.org> (2021-11-05)
 # Avoid keywording unnecessary depenencies for now, bug #804115
@@ -27,7 +49,7 @@ sys-libs/libcap tools
 sys-apps/rng-tools rtlsdr
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-11)
-# dev-ruby/{thor,tty-editor} not keyworded here yet (Bug #807685)
+# dev-ruby/thor not keyworded here
 app-text/htmltidy test
 
 # Matt Turner <mattst88@gentoo.org> (2021-07-23)
@@ -135,10 +157,6 @@ xfce-extra/tumbler epub
 # Requires dev-python/networkx.
 app-portage/nattka depgraph-order
 
-# Matt Turner <mattst88@gentoo.org> (2020-06-09)
-# Requires unsupported dev-python/eventlet and fails tests with gevent
-dev-python/socketpool eventlet gevent
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # clisp is keyworded on alpha
 app-text/texlive-core -xindy
@@ -161,10 +179,6 @@ net-libs/gnome-online-accounts gnome
 # James Le Cuirot <chewi@gentoo.org> (2020-04-23)
 # Requires media-libs/mesa[llvm], which is masked.
 dev-python/pyopengl test
-
-# Lars Wendler <polynomial-c@gentoo.org> (2020-04-20)
-# Not keyworded on alpha
-net-misc/whois xcrypt
 
 # Matt Turner <mattst88@gentoo.org> (2020-03-17)
 # Requires an insane (and always growing) number of ruby deps
@@ -273,12 +287,6 @@ net-libs/gnutls test-full
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=bluetooth that is masked in this profile.
 media-sound/pulseaudio native-headset
-
-# Robin H. Johnson <robbat2@gentoo.org> (2017-08-05)
-# Upstream Git is switching to PCRE2 w/ JIT.
-# This is not available on some arches, where a fallback to PCRE1 without JIT is used.
-# Since >=dev-vcs/git-2.31.0 pcre1 support has been dropped from git.
-<dev-vcs/git-2.31.0 pcre-jit
 
 # Tobias Klausmann <klausman@gentoo.org> (2017-05-18)
 # Stack protector code is not ported to alpha (and may not ever be)
@@ -458,7 +466,7 @@ x11-misc/xscreensaver new-login
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2011-12-17)
 # mask use numa for openmpi
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
 
 # Raúl Porcel <armin76@gentoo.org> (2011-10-08)
 # Needs media-sound/lilypond
@@ -471,8 +479,6 @@ media-video/x264-encoder ffmpegsource
 # Alexey Shvetsov <alexxy@gentoo.org> (2011-08-31)
 # Mask numa use flag per bug #381313
 sys-apps/hwloc numa
-# This mask also implies masking the numa flag on openmpi
-sys-cluster/openmpi numa
 
 # Pacho Ramos <pacho@gentoo.org> (2011-06-30)
 # Needed plugins are not keyworded on this arch

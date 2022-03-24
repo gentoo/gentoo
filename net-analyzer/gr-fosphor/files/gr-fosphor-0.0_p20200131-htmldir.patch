@@ -1,0 +1,8 @@
+--- a/docs/doxygen/CMakeLists.txt
++++ b/docs/doxygen/CMakeLists.txt
+@@ -50,4 +50,4 @@
+ 
+ add_custom_target(doxygen_target ALL DEPENDS ${BUILT_DIRS})
+ 
+-install(DIRECTORY ${BUILT_DIRS} DESTINATION ${GR_PKG_DOC_DIR})
++install(DIRECTORY ${BUILT_DIRS} DESTINATION ${CMAKE_INSTALL_DOCDIR})

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MY_PV=${PV/_rc/-rc}
 	SRC_URI="https://github.com/swaywm/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
@@ -27,7 +27,7 @@ DEPEND="
 	>=dev-libs/libinput-1.6.0:0=
 	sys-auth/seatd:=
 	dev-libs/libpcre
-	dev-libs/wayland
+	>=dev-libs/wayland-1.20.0
 	x11-libs/cairo
 	x11-libs/libxkbcommon
 	x11-libs/pango
@@ -44,8 +44,8 @@ if [[ ${PV} == 9999 ]]; then
 	DEPEND+="~gui-libs/wlroots-9999:=[X=]"
 else
 	DEPEND+="
-		>=gui-libs/wlroots-0.15:=[X=]
-		<gui-libs/wlroots-0.16:=[X=]
+		>=gui-libs/wlroots-0.16:=[X=]
+		<gui-libs/wlroots-0.17:=[X=]
 	"
 fi
 RDEPEND="
@@ -53,8 +53,8 @@ RDEPEND="
 	${DEPEND}
 "
 BDEPEND="
-	>=dev-libs/wayland-protocols-1.14
-	>=dev-util/meson-0.59.0
+	>=dev-libs/wayland-protocols-1.24
+	>=dev-util/meson-0.60.0
 	virtual/pkgconfig
 "
 if [[ ${PV} == 9999 ]]; then

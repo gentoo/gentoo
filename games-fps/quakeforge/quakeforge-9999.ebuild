@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,9 +9,9 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/quakeforge/quakeforge.git"
 else
-	MY_COMMIT=""
-	SRC_URI="https://github.com/quakeforge/quakeforge/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-${MY_COMMIT}"
+	QUAKEFORGE_COMMIT=""
+	SRC_URI="https://github.com/quakeforge/quakeforge/archive/${QUAKEFORGE_COMMIT}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${QUAKEFORGE_COMMIT}"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -29,6 +29,8 @@ RDEPEND="
 		virtual/opengl
 		x11-libs/libX11
 		x11-libs/libXext
+		x11-libs/libXfixes
+		x11-libs/libXi
 		x11-libs/libXxf86vm
 		alsa? ( media-libs/alsa-lib )
 		flac? ( media-libs/flac )
@@ -69,7 +71,7 @@ src_prepare() {
 
 src_configure() {
 	qf_client() {
-		echo $(usex client $(use_enable ${1}) --disable-${1})
+		usex client $(use_enable ${1}) --disable-${1}
 	}
 
 	local econfargs=(
@@ -116,9 +118,9 @@ src_install() {
 
 	find "${ED}" -name '*.la' -delete || die
 
-	local DISABLE_AUTOFORMATTING="yes"
-	local DOC_CONTENTS=\
-"Before you can play (using nq-x11 or qw-client-x11), you must ensure
+	local DISABLE_AUTOFORMATTING=yes
+	local DOC_CONTENTS="\
+Before you can play (using nq-x11 or qw-client-x11), you must ensure
 that ${PN} can find your Quake pak0.pak (and optionally pak1.pak)
 at one of these locations with lowercase filenames:
 	- '~/.local/share/${PN}/id1/pak0.pak'
@@ -148,17 +150,4 @@ Audio/Video notes:
 
 pkg_postinst() {
 	readme.gentoo_print_elog
-
-	if [[ ${REPLACING_VERSIONS} ]] && ver_test ${REPLACING_VERSIONS} -le 0.7.2-r1; then
-		elog "Migration may be needed for ${PN}'s home paths, now using:"
-		elog "    ~/.${PN}rc -> ~/.config/${PN}/${PN}.conf"
-		elog "    ~/.${PN}/  -> ~/.local/share/${PN}/"
-		elog "Also, nq-sdl / qw-client-sdl are no longer available (use -x11 instead)."
-	fi
-
-	if use vulkan; then
-		ewarn "You've enabled the new vulkan support that is still experimental and yet"
-		ewarn "used by default. If have issues, can use '+setrom vid_render gl' command"
-		ewarn "line option to revert to GL."
-	fi
 }

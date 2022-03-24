@@ -7,7 +7,7 @@ inherit vcs-snapshot
 
 MY_PV="${PV:0:4}.${PV:4:2}.${PV:6:2}"
 
-DESCRIPTION="A collection of plugins for the Limnoria IRC bot."
+DESCRIPTION="A collection of plugins for the Limnoria IRC bot"
 HOMEPAGE="https://github.com/jlu5/SupyPlugins"
 SRC_URI="https://github.com/jlu5/SupyPlugins/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz"
 

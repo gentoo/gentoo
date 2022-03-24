@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -38,4 +38,8 @@ src_prepare() {
 	export BINDIR="${EPREFIX}"/usr/bin
 	export MANDIR="${EPREFIX}"/usr/share/man
 	default_src_prepare
+
+	if use elibc_musl ; then
+	    sed -i -e '/<error.h>/c\#define error(R,E,S,...) fprintf(stderr, S "\\n", ##__VA_ARGS__); exit(R)' pxz.c
+	fi
 }

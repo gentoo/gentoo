@@ -6,7 +6,7 @@ GST_ORG_MODULE=gst-plugins-bad
 
 inherit gstreamer
 
-DESCRIPTION="H.264 encoder/decoder plugin for GStreamer."
+DESCRIPTION="H.264 encoder/decoder plugin for GStreamer"
 KEYWORDS="amd64 x86"
 IUSE=""
 

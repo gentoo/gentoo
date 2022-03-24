@@ -1,0 +1,19 @@
+index 85819882..f69d5f6d 100644
+--- a/generic/proof-site.el
++++ b/generic/proof-site.el
+@@ -118,13 +118,13 @@ Falls back to consulting the environment variable `PROOFGENERAL_HOME' if
+ proof-site.el couldn't know where it was executed from.")
+ 
+ (defcustom proof-images-directory
+-  (expand-file-name "images/" proof-home-directory)
++  (expand-file-name "@SITEETC@/images/")
+     "Where Proof General image files are installed.  Ends with slash."
+   :type 'directory
+   :group 'proof-general-internals)
+ 
+ (defcustom proof-info-directory
+-  (expand-file-name "doc/" proof-home-directory)
++  (expand-file-name "@EPREFIX@/usr/share/info/")
+   "Where Proof General Info files are installed.  Ends with slash."
+   :type 'directory
+   :group 'proof-general-internals)

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GnomeOnlineAccounts"
 
 LICENSE="LGPL-2+"
 SLOT="0/1"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv ~sparc x86"
 
 IUSE="debug gnome +introspection kerberos +vala"
 REQUIRED_USE="vala? ( introspection )"
@@ -59,7 +59,10 @@ src_prepare() {
 
 src_configure() {
 	# TODO: Give users a way to set the G/FB/Windows Live secrets
-	gnome2_src_configure \
+
+	# CONFIG_SHELL for bashisms in bug #829494, patch submitted upstream.
+	# Can be removed in future.
+	CONFIG_SHELL="${BROOT}/bin/bash" gnome2_src_configure \
 		--disable-static \
 		--enable-backend \
 		--enable-documentation \

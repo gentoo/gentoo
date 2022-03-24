@@ -162,7 +162,7 @@ RESTRICT="mirror"
 # use cargo-license for a more accurate license picture
 LICENSE="Apache-2.0 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86"
 
 RDEPEND="dev-libs/libgit2:=
 	dev-libs/openssl:0=
@@ -171,8 +171,9 @@ RDEPEND="dev-libs/libgit2:=
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}"
-
 BDEPEND=">=virtual/rust-1.56.0"
+
+QA_FLAGS_IGNORED="usr/bin/cargo-capi usr/bin/cargo-cbuild usr/bin/cargo-ctest usr/bin/cargo-cinstall"
 
 src_unpack() {
 	cargo_src_unpack

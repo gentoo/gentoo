@@ -1,0 +1,33 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,18 +1,13 @@
+ MKDIR  = mkdir -p
+ prefix = /usr
+ bindir = $(prefix)/bin
+-TOOLS = assistant \
+-	designer \
++TOOLS = designer \
+ 	lconvert \
+-	linguist \
+ 	lrelease \
+ 	lupdate \
+ 	moc \
+-	pixeltool \
+ 	qcollectiongenerator \
+-	qdbus \
+ 	qdbuscpp2xml \
+-	qdbusviewer \
+ 	qdbusxml2cpp \
+ 	qdoc \
+ 	qdoc3 \
+@@ -44,9 +39,7 @@
+ 	rcc \
+ 	repc \
+ 	uic \
+-	uic3 \
+-	xmlpatterns \
+-	xmlpatternsvalidator \
++	uic3
+ 
+ # keep the above line empty
+ 

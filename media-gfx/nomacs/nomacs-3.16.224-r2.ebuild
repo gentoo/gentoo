@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -48,7 +48,10 @@ S="${WORKDIR}/${P}/ImageLounge"
 
 DOCS=( src/changelog.txt )
 
-PATCHES=( "${FILESDIR}"/${P}-quazip1.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-quazip1.patch
+	"${FILESDIR}"/${P}-DkMath-ostream.patch
+)
 
 src_prepare() {
 	if use plugins ; then

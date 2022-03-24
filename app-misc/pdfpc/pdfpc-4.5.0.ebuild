@@ -6,27 +6,26 @@ EAPI=7
 VALA_MIN_API_VERSION="0.44"
 VALA_MAX_API_VERSION="0.50" # append versions in sed line if increased
 
-COMMIT_ID=""
+#COMMIT_ID=""
 
 inherit cmake vala
 
 DESCRIPTION="Presenter console with multi-monitor support for PDF files"
 HOMEPAGE="https://pdfpc.github.io https://github.com/pdfpc/pdfpc"
+
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="+gstreamer"
 KEYWORDS="amd64 x86"
+IUSE="+gstreamer"
 
 if [[ ${PV} == *9999 ]]; then
-	EGIT_REPO_URI="https://github.com/${PN}/${PN}/.git"
+	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 	inherit git-r3
+elif [[ ${PV} == *_p* ]]; then
+	SRC_URI="https://github.com/${PN}/${PN}/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${COMMIT_ID}"
 else
-	if [[ ${PV} == *_p* ]]; then
-		SRC_URI="https://github.com/${PN}/${PN}/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
-		S="${WORKDIR}/${PN}-${COMMIT_ID}"
-	else
-		SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	fi
+	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 RDEPEND="

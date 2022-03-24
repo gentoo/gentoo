@@ -5,6 +5,6 @@ EAPI=7
 
 inherit acct-group
 
-DESCRIPTION="A group for app-emulation/reg"
+DESCRIPTION="A group for app-containers/reg"
 
 ACCT_GROUP_ID="503"

@@ -1,5 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# James Le Cuirot <chewi@gentoo.org> (2022-02-24)
+# These GRUB platforms are only for MIPS.
+sys-boot/grub grub_platforms_loongson grub_platforms_qemu-mips
 
 # Sam James <sam@gentoo.org> (2021-11-15)
 # Only available on PPC*.
@@ -38,10 +42,6 @@ x11-wm/mutter video_cards_nvidia
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2021-06-11)
 # Has unpackaged depdencies, bug #795459
 >=media-libs/opencolorio-2.0.0 doc
-
-# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
-# TPM only exists on some archs.
-sys-apps/systemd tpm
 
 # Michael Orlitzky <mjo@gentoo.org> (2021-03-27)
 # The clozurecl and clozurecl64 flags are now arch-specific in maxima,
@@ -298,10 +298,6 @@ dev-db/mariadb tokudb
 # Lars Wendler <polynomial-c@gentoo.org> (2014-04-23)
 # Not working on 64bit systems
 media-sound/lmms vst
-
-# Alexey Shvetsov <alexxy@gentoo.org> (2014-04-16)
-# libehca only works on ppc*
-sys-fabric/ofed ofed_drivers_ehca
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (2014-01-04)
 # Mask until dependencies are keyworded (bug 497068)

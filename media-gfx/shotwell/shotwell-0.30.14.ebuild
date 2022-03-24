@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Shotwell"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv ~sparc x86"
 IUSE="opencv udev"
 
 DEPEND="
@@ -49,6 +49,11 @@ BDEPEND="
 	media-libs/gexiv2[vala]
 	app-crypt/gcr[vala]
 "
+
+PATCHES=(
+	# Fix build against vala-0.52.8. Isn't needed once we use 0.54+ or drop vala:0.52 slots
+	"${FILESDIR}"/${PV}-vala-0.52.8-compat.patch
+)
 
 src_prepare() {
 	xdg_src_prepare

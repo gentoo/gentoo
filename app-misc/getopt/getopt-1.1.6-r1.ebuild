@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -53,7 +53,7 @@ src_install() {
 	# at least on interix, the system getopt is ... broken...
 	# util-linux, which would provide the getopt binary, does not build &
 	# install on interix/prefix, so, this has to provide it.
-	[[ ${CHOST} == *-interix* || ${CHOST} == *-mint* ]] && \
+	[[ ${CHOST} == *-interix* ]] && \
 		dosym getopt-long /usr/bin/getopt
 
 	newman getopt.1 getopt-long.1

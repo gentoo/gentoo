@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -120,5 +120,5 @@ video_cards_radeonsi
 # virtual/opencl is not keyworded
 opencl
 
-# Unmask once sys-libs/libunwind gets ported & keyworded.
+# sys-libs/libunwind is masked on s390, but enabled on s390x
 unwind

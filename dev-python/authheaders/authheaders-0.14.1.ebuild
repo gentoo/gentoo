@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
-DESCRIPTION="A library wrapping email authentication header verification and generation."
+DESCRIPTION="A library wrapping email authentication header verification and generation"
 HOMEPAGE="https://github.com/ValiMail/authentication-headers"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

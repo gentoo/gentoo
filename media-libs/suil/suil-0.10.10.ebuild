@@ -3,10 +3,10 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE='threads(+)'
 
-inherit flag-o-matic python-any-r1 waf-utils
+inherit python-any-r1 waf-utils
 
 DESCRIPTION="Lightweight C library for loading and wrapping LV2 plugin UIs"
 HOMEPAGE="http://drobilla.net/software/suil/"

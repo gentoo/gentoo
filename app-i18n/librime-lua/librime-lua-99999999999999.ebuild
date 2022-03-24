@@ -1,8 +1,8 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-LUA_COMPAT=(lua{5-3,5-4})
+LUA_COMPAT=( lua5-{3..4} )
 
 inherit cmake lua-single
 

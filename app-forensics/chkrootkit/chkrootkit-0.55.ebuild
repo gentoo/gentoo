@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,6 +21,8 @@ RDEPEND="cron? ( virtual/cron )"
 
 PATCHES=(
 	"${WORKDIR}/${GENTOO_PATCH}"
+	"${FILESDIR}/${P}-fcntl_h.patch"
+	"${FILESDIR}/${P}-limits_h.patch"
 )
 
 src_prepare() {

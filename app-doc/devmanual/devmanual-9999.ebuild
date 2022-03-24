@@ -1,9 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_REQ_USE="xml"
 inherit python-any-r1 readme.gentoo-r1
 
 DESCRIPTION="The Gentoo Development Guide"
@@ -16,7 +17,7 @@ else
 	# "make dist" in devmanual repo
 	SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 	S="${WORKDIR}/${PN}"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-macos"
 fi
 
 LICENSE="CC-BY-SA-4.0"
@@ -24,7 +25,7 @@ SLOT="0"
 IUSE="+offline test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="dev-libs/libxml2
+BDEPEND=">=dev-libs/libxml2-2.9.12
 	dev-libs/libxslt
 	gnome-base/librsvg
 	media-fonts/open-sans

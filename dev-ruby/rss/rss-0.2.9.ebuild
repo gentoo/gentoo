@@ -8,7 +8,7 @@ RUBY_FAKEGEM_EXTRADOC="NEWS.md README.md"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Family of libraries that support various formats of XML feeds."
+DESCRIPTION="Family of libraries that support various formats of XML feeds"
 HOMEPAGE="https://github.com/ruby/rss"
 
 LICENSE="BSD-2"

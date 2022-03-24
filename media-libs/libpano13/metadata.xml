@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="sourceforge">panotools</remote-id>
 	</upstream>
+	<use>
+		<flag name="suitesparse">Use Sparse Levenberg Marquardt algorithm instead of dense Levenberg Marquardt algorithm</flag>
+	</use>
 </pkgmetadata>

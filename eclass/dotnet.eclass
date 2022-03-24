@@ -27,7 +27,7 @@ esac
 
 inherit mono-env
 
-# @ECLASS-VARIABLE: USE_DOTNET
+# @ECLASS_VARIABLE: USE_DOTNET
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Use flags added to IUSE

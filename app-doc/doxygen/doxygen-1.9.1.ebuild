@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ HOMEPAGE="http://www.doxygen.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="clang debug doc dot doxysearch qt5 sqlite userland_GNU"
+IUSE="clang debug doc dot doxysearch qt5 sqlite"
 # We need TeX for tests, bug #765472
 RESTRICT="!doc? ( test )"
 
@@ -72,14 +72,6 @@ pkg_setup() {
 
 src_prepare() {
 	cmake_src_prepare
-
-	# Ensure we link to -liconv
-	if use elibc_FreeBSD && has_version dev-libs/libiconv || use elibc_uclibc; then
-		local pro
-		for pro in */*.pro.in */*/*.pro.in; do
-			echo "unix:LIBS += -liconv" >> "${pro}" || die
-		done
-	fi
 
 	# Call dot with -Teps instead of -Tps for EPS generation - bug #282150
 	sed -i -e '/addJob("ps"/ s/"ps"/"eps"/g' src/dot.cpp || die

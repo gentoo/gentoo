@@ -7,7 +7,7 @@ SWORD_MINIMUM_VERSION="1.7.9"
 
 inherit sword-module
 
-DESCRIPTION="Abbreviated Greek-French Dictionary by A. Bailly."
+DESCRIPTION="Abbreviated Greek-French Dictionary by A. Bailly"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=FreBailly"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~riscv ~x86"

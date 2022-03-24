@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,22 +15,23 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~x86-solaris"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ppc64 sparc x86 ~x86-solaris"
 fi
 
 LICENSE="MIT PSF-2"
 SLOT="0"
 IUSE="examples sasl ssl"
 
+# < dep on openldap for bug #835637, ldap_r is gone
 RDEPEND="
 	>=dev-python/pyasn1-0.3.7[${PYTHON_USEDEP}]
 	>=dev-python/pyasn1-modules-0.1.5[${PYTHON_USEDEP}]
-	>net-nds/openldap-2.4.11:=[sasl?,ssl?]
+	<net-nds/openldap-2.6:=[sasl?,ssl?]
 "
 # We do not link against cyrus-sasl but we use some
 # of its headers during the build.
-BDEPEND="
-	>net-nds/openldap-2.4.11:=[sasl?,ssl?]
+DEPEND="
+	<net-nds/openldap-2.6:=[sasl?,ssl?]
 	sasl? ( >=dev-libs/cyrus-sasl-2.1 )
 "
 

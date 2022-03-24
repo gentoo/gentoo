@@ -4,14 +4,14 @@
 # @ECLASS: webapp.eclass
 # @MAINTAINER:
 # web-apps@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: functions for installing applications to run under a web server
 # @DESCRIPTION:
 # The webapp eclass contains functions to handle web applications with
 # webapp-config. Part of the implementation of GLEP #11
 
 case ${EAPI:-0} in
-	[567]) ;;
+	[5678]) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -20,20 +20,20 @@ EXPORT_FUNCTIONS pkg_postinst pkg_setup src_install pkg_prerm
 if [[ -z ${_WEBAPP_ECLASS} ]]; then
 _WEBAPP_ECLASS=1
 
-# @ECLASS-VARIABLE: WEBAPP_DEPEND
+# @ECLASS_VARIABLE: WEBAPP_DEPEND
 # @DESCRIPTION:
 # An ebuild should use WEBAPP_DEPEND if a custom DEPEND needs to be built, most
 # notably in combination with WEBAPP_OPTIONAL.
-WEBAPP_DEPEND=">=app-admin/webapp-config-1.50.15"
+WEBAPP_DEPEND="app-admin/webapp-config"
 
-# @ECLASS-VARIABLE: WEBAPP_NO_AUTO_INSTALL
+# @ECLASS_VARIABLE: WEBAPP_NO_AUTO_INSTALL
 # @PRE_INHERIT
 # @DESCRIPTION:
 # An ebuild sets this to `yes' if an automatic installation and/or upgrade is
 # not possible. The ebuild should overwrite pkg_postinst() and explain the
 # reason for this BEFORE calling webapp_pkg_postinst().
 
-# @ECLASS-VARIABLE: WEBAPP_OPTIONAL
+# @ECLASS_VARIABLE: WEBAPP_OPTIONAL
 # @PRE_INHERIT
 # @DESCRIPTION:
 # An ebuild sets this to `yes' to make webapp support optional, in which case

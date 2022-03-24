@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools db-use flag-o-matic multilib-minimal preserve-libs ssl-cert toolchain-funcs systemd tmpfiles
+inherit autotools db-use flag-o-matic multilib multilib-minimal preserve-libs ssl-cert toolchain-funcs systemd tmpfiles
 
 BIS_PN=rfc2307bis.schema
 BIS_PV=20140524
@@ -42,7 +42,7 @@ REQUIRED_USE="cxx? ( sasl )
 # Do not add any AGPL-3 BDB here!
 # See bug 525110, comment 15.
 # Advanced usage: OPENLDAP_BDB_SLOTS in the environment can be used to force a slot during build.
-BDB_SLOTS="${OPENLDAP_BDB_SLOTS:=5.3 5.1 4.8 4.7 4.6 4.5 4.4}"
+BDB_SLOTS="${OPENLDAP_BDB_SLOTS:=5.3 4.8}"
 BDB_PKGS=''
 for _slot in $BDB_SLOTS; do BDB_PKGS="${BDB_PKGS} sys-libs/db:${_slot}" ; done
 
@@ -401,9 +401,6 @@ build_contrib_module() {
 }
 
 src_configure() {
-	# Bug 408001
-	use elibc_FreeBSD && append-cppflags -DMDB_DSYNC=O_SYNC -DMDB_FDATASYNC=fsync
-
 	# connectionless ldap per bug #342439
 	append-cppflags -DLDAP_CONNECTIONLESS
 

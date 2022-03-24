@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -25,7 +25,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${PV}/${P}.tar.gz
 		https://dev.gentoo.org/~perfinion/distfiles/policycoreutils-extra-${EXTRAS_VER}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
+	KEYWORDS="amd64 arm arm64 ~mips x86"
 	S1="${WORKDIR}/${P}"
 	S2="${WORKDIR}/policycoreutils-extra"
 	S="${S1}"
@@ -156,7 +156,7 @@ pkg_postinst() {
 	for POLICY_TYPE in ${POLICY_TYPES} ; do
 		# There have been some changes to the policy store, rebuilding now.
 		# https://marc.info/?l=selinux&m=143757277819717&w=2
-		einfo "Rebuilding store ${POLICY_TYPE} (without re-loading)."
-		semodule -s "${POLICY_TYPE}" -n -B || die "Failed to rebuild policy store ${POLICY_TYPE}"
+		einfo "Rebuilding store ${POLICY_TYPE} in '${ROOT:-/}' (without re-loading)."
+		semodule -p "${ROOT:-/}" -s "${POLICY_TYPE}" -n -B || die "Failed to rebuild policy store ${POLICY_TYPE}"
 	done
 }

@@ -1,10 +1,26 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# Untested useflag on other arches, needs keywording
+media-video/ffmpeg vmaf
+
+# Sam James <sam@gentoo.org> (2022-03-06)
+# Unkeyworded dependencies
+net-mail/cyrus-imapd http
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-01-11)
+# Mask AMF keyword on non-amd64 arches
+# It is unusable, for now, in other arches
+media-video/ffmpeg amf
+
+# Sam James <sam@gentoo.org> (2022-01-29)
+# app-text/ronn-ng not keyworded here, bug #801103
+app-accessibility/espeak-ng man
 
 # Michał Górny <mgorny@gentoo.org> (2021-11-26)
 # These package flags require dev-python/cryptography which -- due
 # to the dependency on Rust -- is no longer portable to ia64.
-dev-python/passlib totp
 dev-python/twisted conch crypt
 dev-python/urllib3 test
 net-fs/samba addc addns ads
@@ -121,17 +137,9 @@ media-gfx/inkscape cdr visio
 # Requires media-libs/mesa[llvm], which is masked.
 dev-python/pyopengl test
 
-# Lars Wendler <polynomial-c@gentoo.org> (2020-04-20)
-# Not keyworded on ia64
-net-misc/whois xcrypt
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-04-20)
 # dev-lang/ruby is not keyworded (a dep)
 app-text/texlive context l10n_ja
-
-# Michał Górny <mgorny@gentoo.org> (2020-04-13)
-# Requires unsupported dev-python/gevent.
-dev-python/socketpool eventlet gevent
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-12)
 # ruby-2.7 dropped ia64 support, mask dependencies requiring ruby.
@@ -260,12 +268,6 @@ media-video/ffmpeg libv4l
 # Requires USE=bluetooth that is masked in this profile.
 media-sound/pulseaudio native-headset
 
-# Robin H. Johnson <robbat2@gentoo.org> (2017-08-05)
-# Upstream Git is switching to PCRE2 w/ JIT.
-# This is not available on some arches, where a fallback to PCRE1 without JIT is used.
-# Since >=dev-vcs/git-2.31.0 pcre1 support has been dropped from git.
-<dev-vcs/git-2.31.0 pcre-jit
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-07-20)
 # pulls in unkeyworded java
 sci-libs/gdal mdb
@@ -273,11 +275,6 @@ sci-libs/gdal mdb
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-07-20)
 # pulls in unkeyworded lapack
 sci-libs/gdal armadillo
-
-# Michał Górny <mgorny@gentoo.org> (2017-06-28)
-# app-misc/dtach is not keyworded, and tests are restricted anyway, so
-# no point in pursuing it right now.
-app-shells/bash-completion test
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-06-17)
 # Pulls in dev-db/redis which is not keyworded on ia64.
@@ -464,7 +461,7 @@ x11-misc/xscreensaver new-login
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2011-12-17)
 # Mask use numa for openmpi
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_fabrics_sctp openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
 
 # Raúl Porcel <armin76@gentoo.org> (2011-11-05)
 # jit not supported on ia64

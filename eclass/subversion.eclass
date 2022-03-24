@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: subversion.eclass
@@ -6,17 +6,16 @@
 # Akinori Hattori <hattya@gentoo.org>
 # @AUTHOR:
 # Original Author: Akinori Hattori <hattya@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Fetch software sources from subversion repositories
 # @DESCRIPTION:
-# The subversion eclass provides functions to fetch, patch and bootstrap
-# software sources from subversion repositories.
+# The subversion eclass provides functions to fetch software sources
+# from subversion repositories.
 
 ESVN="${ECLASS}"
 
 case ${EAPI} in
-	4|5) inherit eutils ;;
-	6|7) inherit estack ;;
+	6|7|8) inherit estack ;;
 	*) die "${ESVN}: EAPI ${EAPI:-0} is not supported" ;;
 esac
 
@@ -27,38 +26,38 @@ DEPEND="
 	net-misc/rsync"
 
 case ${EAPI} in
-	4|5|6) ;;
+	6) ;;
 	*) BDEPEND="${DEPEND}"; DEPEND="" ;;
 esac
 
-# @ECLASS-VARIABLE: ESVN_STORE_DIR
+# @ECLASS_VARIABLE: ESVN_STORE_DIR
 # @USER_VARIABLE
 # @DESCRIPTION:
 # subversion sources store directory. Users may override this in /etc/portage/make.conf
 [[ -z ${ESVN_STORE_DIR} ]] && ESVN_STORE_DIR="${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}/svn-src"
 
-# @ECLASS-VARIABLE: ESVN_FETCH_CMD
+# @ECLASS_VARIABLE: ESVN_FETCH_CMD
 # @DESCRIPTION:
 # subversion checkout command
 ESVN_FETCH_CMD="svn checkout"
 
-# @ECLASS-VARIABLE: ESVN_UPDATE_CMD
+# @ECLASS_VARIABLE: ESVN_UPDATE_CMD
 # @DESCRIPTION:
 # subversion update command
 ESVN_UPDATE_CMD="svn update"
 
-# @ECLASS-VARIABLE: ESVN_SWITCH_CMD
+# @ECLASS_VARIABLE: ESVN_SWITCH_CMD
 # @DESCRIPTION:
 # subversion switch command
 ESVN_SWITCH_CMD="svn switch"
 
-# @ECLASS-VARIABLE: ESVN_OPTIONS
+# @ECLASS_VARIABLE: ESVN_OPTIONS
 # @DESCRIPTION:
 # the options passed to checkout or update. If you want a specific revision see
 # ESVN_REPO_URI instead of using -rREV.
 ESVN_OPTIONS="${ESVN_OPTIONS:-}"
 
-# @ECLASS-VARIABLE: ESVN_REPO_URI
+# @ECLASS_VARIABLE: ESVN_REPO_URI
 # @DESCRIPTION:
 # repository uri
 #
@@ -74,7 +73,7 @@ ESVN_OPTIONS="${ESVN_OPTIONS:-}"
 # to peg to a specific revision, append @REV to the repo's uri
 ESVN_REPO_URI="${ESVN_REPO_URI:-}"
 
-# @ECLASS-VARIABLE: ESVN_REVISION
+# @ECLASS_VARIABLE: ESVN_REVISION
 # @DESCRIPTION:
 # User configurable revision checkout or update to from the repository
 #
@@ -84,17 +83,17 @@ ESVN_REPO_URI="${ESVN_REPO_URI:-}"
 # Note: This should never be set in an ebuild!
 ESVN_REVISION="${ESVN_REVISION:-}"
 
-# @ECLASS-VARIABLE: ESVN_USER
+# @ECLASS_VARIABLE: ESVN_USER
 # @DESCRIPTION:
 # User name
 ESVN_USER="${ESVN_USER:-}"
 
-# @ECLASS-VARIABLE: ESVN_PASSWORD
+# @ECLASS_VARIABLE: ESVN_PASSWORD
 # @DESCRIPTION:
 # Password
 ESVN_PASSWORD="${ESVN_PASSWORD:-}"
 
-# @ECLASS-VARIABLE: ESVN_PROJECT
+# @ECLASS_VARIABLE: ESVN_PROJECT
 # @DESCRIPTION:
 # project name of your ebuild (= name space)
 #
@@ -117,25 +116,7 @@ ESVN_PASSWORD="${ESVN_PASSWORD:-}"
 # default: ${PN/-svn}.
 ESVN_PROJECT="${ESVN_PROJECT:-${PN/-svn}}"
 
-# @ECLASS-VARIABLE: ESVN_BOOTSTRAP
-# @DESCRIPTION:
-# Bootstrap script or command like autogen.sh or etc..
-# Removed in EAPI 6 and later.
-ESVN_BOOTSTRAP="${ESVN_BOOTSTRAP:-}"
-
-# @ECLASS-VARIABLE: ESVN_PATCHES
-# @DESCRIPTION:
-# subversion eclass can apply patches in subversion_bootstrap().
-# you can use regexp in this variable like *.diff or *.patch or etc.
-# NOTE: patches will be applied before ESVN_BOOTSTRAP is processed.
-#
-# Patches are searched both in ${PWD} and ${FILESDIR}, if not found in either
-# location, the installation dies.
-#
-# Removed in EAPI 6 and later, use PATCHES instead.
-ESVN_PATCHES="${ESVN_PATCHES:-}"
-
-# @ECLASS-VARIABLE: ESVN_RESTRICT
+# @ECLASS_VARIABLE: ESVN_RESTRICT
 # @DESCRIPTION:
 # this should be a space delimited list of subversion eclass features to
 # restrict.
@@ -143,7 +124,7 @@ ESVN_PATCHES="${ESVN_PATCHES:-}"
 #     don't export the working copy to S.
 ESVN_RESTRICT="${ESVN_RESTRICT:-}"
 
-# @ECLASS-VARIABLE: ESVN_OFFLINE
+# @ECLASS_VARIABLE: ESVN_OFFLINE
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -152,7 +133,7 @@ ESVN_RESTRICT="${ESVN_RESTRICT:-}"
 # tree by users.
 ESVN_OFFLINE="${ESVN_OFFLINE:-${EVCS_OFFLINE}}"
 
-# @ECLASS-VARIABLE: ESVN_UMASK
+# @ECLASS_VARIABLE: ESVN_UMASK
 # @USER_VARIABLE
 # @DESCRIPTION:
 # Set this variable to a custom umask. This is intended to be set by users.
@@ -163,7 +144,7 @@ ESVN_OFFLINE="${ESVN_OFFLINE:-${EVCS_OFFLINE}}"
 # already can screw the system over in more creative ways.
 ESVN_UMASK="${ESVN_UMASK:-${EVCS_UMASK}}"
 
-# @ECLASS-VARIABLE: ESVN_UP_FREQ
+# @ECLASS_VARIABLE: ESVN_UP_FREQ
 # @USER_VARIABLE
 # @DESCRIPTION:
 # Set the minimum number of hours between svn up'ing in any given svn module. This is particularly
@@ -171,7 +152,7 @@ ESVN_UMASK="${ESVN_UMASK:-${EVCS_UMASK}}"
 # revision. It should also be kept user overrideable.
 ESVN_UP_FREQ="${ESVN_UP_FREQ:=}"
 
-# @ECLASS-VARIABLE: ESCM_LOGDIR
+# @ECLASS_VARIABLE: ESCM_LOGDIR
 # @USER_VARIABLE
 # @DESCRIPTION:
 # User configuration variable. If set to a path such as e.g. /var/log/scm any
@@ -363,50 +344,6 @@ subversion_fetch() {
 	echo
 }
 
-# @FUNCTION: subversion_bootstrap
-# @DESCRIPTION:
-# Apply patches in ${ESVN_PATCHES} and run ${ESVN_BOOTSTRAP} if specified.
-# Removed in EAPI 6 and later.
-subversion_bootstrap() {
-	[[ ${EAPI} == [012345] ]] || die "${FUNCNAME} is removed from subversion.eclass in EAPI 6 and later"
-
-	if has "export" ${ESVN_RESTRICT}; then
-		return
-	fi
-
-	cd "${S}"
-
-	if [[ -n ${ESVN_PATCHES} ]]; then
-		local patch fpatch
-		einfo "apply patches -->"
-		for patch in ${ESVN_PATCHES}; do
-			if [[ -f ${patch} ]]; then
-				epatch "${patch}"
-			else
-				for fpatch in ${FILESDIR}/${patch}; do
-					if [[ -f ${fpatch} ]]; then
-						epatch "${fpatch}"
-					else
-						die "${ESVN}: ${patch} not found"
-					fi
-				done
-			fi
-		done
-		echo
-	fi
-
-	if [[ -n ${ESVN_BOOTSTRAP} ]]; then
-		einfo "begin bootstrap -->"
-		if [[ -f ${ESVN_BOOTSTRAP} && -x ${ESVN_BOOTSTRAP} ]]; then
-			einfo "   bootstrap with a file: ${ESVN_BOOTSTRAP}"
-			eval "./${ESVN_BOOTSTRAP}" || die "${ESVN}: can't execute ESVN_BOOTSTRAP."
-		else
-			einfo "   bootstrap with command: ${ESVN_BOOTSTRAP}"
-			eval "${ESVN_BOOTSTRAP}" || die "${ESVN}: can't eval ESVN_BOOTSTRAP."
-		fi
-	fi
-}
-
 # @FUNCTION: subversion_wc_info
 # @USAGE: [repo_uri]
 # @RETURN: ESVN_WC_URL, ESVN_WC_ROOT, ESVN_WC_UUID, ESVN_WC_REVISION and ESVN_WC_PATH
@@ -438,15 +375,6 @@ subversion_wc_info() {
 # Default src_unpack. Fetch.
 subversion_src_unpack() {
 	subversion_fetch || die "${ESVN}: unknown problem occurred in subversion_fetch."
-}
-
-# @FUNCTION: subversion_src_prepare
-# @DESCRIPTION:
-# Default src_prepare. Bootstrap.
-# Removed in EAPI 6 and later.
-subversion_src_prepare() {
-	[[ ${EAPI} == [012345] ]] || die "${FUNCNAME} is removed from subversion.eclass in EAPI 6 and later"
-	subversion_bootstrap || die "${ESVN}: unknown problem occurred in subversion_bootstrap."
 }
 
 # @FUNCTION: subversion_pkg_preinst
@@ -537,6 +465,3 @@ subversion__get_peg_revision() {
 }
 
 EXPORT_FUNCTIONS src_unpack pkg_preinst
-if [[ ${EAPI} == [45] ]]; then
-	EXPORT_FUNCTIONS src_prepare
-fi

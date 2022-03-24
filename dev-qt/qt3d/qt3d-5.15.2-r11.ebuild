@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ inherit qt5-build
 DESCRIPTION="3D rendering module for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 arm64 x86"
+	KEYWORDS="amd64 ~arm arm64 x86"
 fi
 
 # TODO: tools
@@ -28,14 +28,6 @@ DEPEND="${RDEPEND}
 	vulkan? ( dev-util/vulkan-headers )
 "
 
-src_configure() {
-	local myqmakeargs=(
-		--
-		-system-assimp
-	)
-	qt5-build_src_configure
-}
-
 src_prepare() {
 	rm -r src/3rdparty/assimp/{code,contrib,include} || die
 
@@ -43,4 +35,12 @@ src_prepare() {
 	qt_use_disable_mod qml quick src/src.pro
 
 	qt5-build_src_prepare
+}
+
+src_configure() {
+	local myqmakeargs=(
+		--
+		-system-assimp
+	)
+	qt5-build_src_configure
 }

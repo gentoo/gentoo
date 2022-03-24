@@ -24,6 +24,7 @@
 		<flag name="media">Enable sound and video support</flag>
 		<flag name="stars">Install extra star catalogs</flag>
 		<flag name="telescope">Enable telescope control via <pkg>sci-libs/indilib</pkg></flag>
+		<flag name="webengine">Show online results about the selected star in an embedded window using <pkg>dev-qt/qtwebengine</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">Stellarium/stellarium</remote-id>

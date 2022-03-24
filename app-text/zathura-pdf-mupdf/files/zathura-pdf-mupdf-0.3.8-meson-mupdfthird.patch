@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/835592
+--- a/meson.build
++++ b/meson.build
+@@ -20,7 +20,6 @@ girara = dependency('girara-gtk3')
+ glib = dependency('glib-2.0')
+ cairo = dependency('cairo')
+ mupdf = dependency('mupdf', required: false)
+-mupdfthird = cc.find_library('mupdf-third')
+ 
+ build_dependencies = [
+   zathura,
+@@ -32,10 +31,10 @@ build_dependencies = [
+ if not mupdf.found()
+   # normal build of mupdf
+   mupdf = cc.find_library('mupdf')
+-  build_dependencies += [mupdf, mupdfthird]
++  build_dependencies += [mupdf]
+ else
+   # build from Debian's libmupdf-dev
+-  build_dependencies += [mupdf, mupdfthird]
++  build_dependencies += [mupdf]
+ 
+   libjpeg = dependency('libjpeg')
+   libjbig2dec = cc.find_library('jbig2dec')

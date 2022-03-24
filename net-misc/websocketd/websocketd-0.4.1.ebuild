@@ -7,7 +7,7 @@ inherit go-module
 EGIT_COMMIT="v${PV}"
 ARCHIVE_URI="https://github.com/joewalnes/websocketd/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
-DESCRIPTION="Like inetd, but for WebSockets."
+DESCRIPTION="Like inetd, but for WebSockets"
 HOMEPAGE="https://github.com/joewalnes/websocketd"
 SLOT="0"
 LICENSE="BSD-2"

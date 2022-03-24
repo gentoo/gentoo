@@ -17,7 +17,7 @@ esac
 if [[ ! ${_VIRTUALX_ECLASS} ]]; then
 _VIRTUALX_ECLASS=1
 
-# @ECLASS-VARIABLE: VIRTUALX_REQUIRED
+# @ECLASS_VARIABLE: VIRTUALX_REQUIRED
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Variable specifying the dependency on xorg-server and xhost.
@@ -28,7 +28,7 @@ _VIRTUALX_ECLASS=1
 # into "kde? ( )" and add kde into IUSE.
 : ${VIRTUALX_REQUIRED:=test}
 
-# @ECLASS-VARIABLE: VIRTUALX_DEPEND
+# @ECLASS_VARIABLE: VIRTUALX_DEPEND
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Standard dependencies string that is automatically added to BDEPEND

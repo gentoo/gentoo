@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,12 +12,14 @@ SRC_URI="https://github.com/ocaml/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 IUSE="+ocamlopt"
 
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]"
 BDEPEND="${RDEPEND}"
 DEPEND="dev-ml/findlib:=[ocamlopt?]"
+
+PATCHES=( "${FILESDIR}"/${P}-ocamlopt.patch )
 
 src_compile() {
 	emake CFLAGS="${CFLAGS}" NATDYNLINK="$(usex ocamlopt true false)"
@@ -29,7 +31,7 @@ src_test() {
 }
 
 src_install() {
-	findlib_src_install
+	findlib_src_install NATDYNLINK="$(usex ocamlopt true false)"
 
 	if has_version ">=dev-ml/findlib-1.9" ; then
 		# See bug #803275

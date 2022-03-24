@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>3dprint@gentoo.org</email>
-		<name>Gentoo 3D Printer Project</name>
+	<maintainer type="person">
+		<email>matthew@gentoo.org</email>
+		<name>Matthew Smith</name>
 	</maintainer>
 	<longdescription>
 		Miniz is a lossless, high performance data compression library in a single source file that implements the zlib

@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 inherit systemd toolchain-funcs udev
 
 DESCRIPTION="Split of readahead systemd implementation"
@@ -16,7 +16,8 @@ IUSE=""
 S="${WORKDIR}/systemd-${PV}"
 
 RDEPEND=">=sys-apps/systemd-217:="
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	app-arch/xz-utils:0
 	dev-util/gperf
 	>=dev-util/intltool-0.50

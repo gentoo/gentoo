@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cargo.eclass
@@ -6,7 +6,7 @@
 # rust@gentoo.org
 # @AUTHOR:
 # Doug Goldstein <cardoe@gentoo.org>
-# Georgy Yakovlev <gyakovlev@genotoo.org>
+# Georgy Yakovlev <gyakovlev@gentoo.org>
 # @SUPPORTED_EAPIS: 7 8
 # @BLURB: common functions and variables for cargo builds
 
@@ -57,7 +57,7 @@ IUSE="${IUSE} debug"
 ECARGO_HOME="${WORKDIR}/cargo_home"
 ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 
-# @ECLASS-VARIABLE: CRATES
+# @ECLASS_VARIABLE: CRATES
 # @DEFAULT_UNSET
 # @PRE_INHERIT
 # @DESCRIPTION:
@@ -75,7 +75,7 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # SRC_URI="$(cargo_crate_uris)"
 # @CODE
 
-# @ECLASS-VARIABLE: CARGO_OPTIONAL
+# @ECLASS_VARIABLE: CARGO_OPTIONAL
 # @DEFAULT_UNSET
 # @PRE_INHERIT
 # @DESCRIPTION:
@@ -105,7 +105,7 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # }
 # @CODE
 
-# @ECLASS-VARIABLE: ECARGO_REGISTRY_DIR
+# @ECLASS_VARIABLE: ECARGO_REGISTRY_DIR
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -116,7 +116,7 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 #
 # Defaults to "${DISTDIR}/cargo-registry" it not set.
 
-# @ECLASS-VARIABLE: ECARGO_OFFLINE
+# @ECLASS_VARIABLE: ECARGO_OFFLINE
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -124,7 +124,7 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # cargo_live_src_unpack.
 # Inherits value of EVCS_OFFLINE if not set explicitly.
 
-# @ECLASS-VARIABLE: EVCS_UMASK
+# @ECLASS_VARIABLE: EVCS_UMASK
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:

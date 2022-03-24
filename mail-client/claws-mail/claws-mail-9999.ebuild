@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -60,7 +60,7 @@ COMMONDEPEND="
 	)
 	gtk2? ( >=x11-libs/gtk+-2.24:2 )
 	imap? ( >=net-libs/libetpan-0.57 )
-	ldap? ( >=net-nds/openldap-2.0.7 )
+	ldap? ( >=net-nds/openldap-2.0.7:= )
 	litehtml? (
 		>=dev-libs/glib-2.36:2
 		>=dev-libs/gumbo-0.10
@@ -79,12 +79,12 @@ COMMONDEPEND="
 		libnotify? ( x11-libs/libnotify )
 	)
 	pdf? ( app-text/poppler[cairo] )
-	pgp? ( >=app-crypt/gpgme-1.0.0 )
+	pgp? ( >=app-crypt/gpgme-1.0.0:= )
 	session? (
 		x11-libs/libICE
 		x11-libs/libSM
 	)
-	smime? ( >=app-crypt/gpgme-1.0.0 )
+	smime? ( >=app-crypt/gpgme-1.0.0:= )
 	spam-report? ( >=net-misc/curl-7.9.7 )
 	spell? ( >=app-text/enchant-2.0.0:2= )
 	startup-notification? ( x11-libs/startup-notification )

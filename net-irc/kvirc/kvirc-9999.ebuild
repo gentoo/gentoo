@@ -1,9 +1,9 @@
-# Copyright 2009-2021 Gentoo Authors
+# Copyright 2009-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 CMAKE_MAKEFILE_GENERATOR="emake"
-PYTHON_COMPAT=(python{3_8,3_9})
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit cmake flag-o-matic python-single-r1 xdg-utils
 
@@ -34,7 +34,6 @@ IUSE="audiofile +dbus dcc-video debug doc gsm kde +nls oss +perl +phonon profile
 REQUIRED_USE="audiofile? ( oss ) python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="dev-lang/perl:0
-	>=dev-util/cmake-3.16
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	kde? ( kde-frameworks/extra-cmake-modules:5 )
@@ -71,8 +70,7 @@ DEPEND="dev-qt/qtcore:5
 		media-libs/libogg
 		media-libs/libtheora
 		media-libs/libvorbis
-	)
-"
+	)"
 RDEPEND="${DEPEND}
 	gsm? ( media-sound/gsm )"
 

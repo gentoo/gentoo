@@ -13,7 +13,7 @@
     keep up to date with changes in commonmark.js.
   </longdescription>
   <upstream>
-    <remote-id type="pypi">CommonMark</remote-id>
+    <remote-id type="pypi">commonmark</remote-id>
     <remote-id type="github">readthedocs/commonmark.py</remote-id>
   </upstream>
 </pkgmetadata>

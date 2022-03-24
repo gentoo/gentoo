@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # QA check: ensure that Python modules are compiled after installing
@@ -75,7 +75,7 @@ if [[ ${EAPI} == [6-7] ]]; then
 			eqawarn "Please either fix the upstream build system to byte-compile Python modules"
 			eqawarn "correctly, or call python_optimize after installing them.  For more"
 			eqawarn "information, see:"
-			eqawarn "https://wiki.gentoo.org/wiki/Project:Python/Byte_compiling"
+			eqawarn "https://projects.gentoo.org/python/guide/helper.html#byte-compiling-python-modules"
 			eqawarn
 		fi
 	}

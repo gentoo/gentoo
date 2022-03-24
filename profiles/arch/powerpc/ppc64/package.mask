@@ -1,5 +1,21 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2022-01-18)
+# No bootstrap binary available on big endian PPC64 right now
+dev-lisp/sbcl
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2020-02-27)
+# >=dev-java/ant-eclipse-ecj-4.10 depends on masked >=virtual/{jdk,jre}-11
+# www-servers/tomcat >= 9 depends on masked dev-java/eclipse-ecj
+>=dev-java/ant-eclipse-ecj-4.10
+>=dev-java/eclipse-ecj-4.10
+>=www-servers/tomcat-9
+
+# Sam James <sam@gentoo.org> (2022-01-09)
+# No provider (e.g. OpenJDK) available on big endian PPC64 right now
+virtual/jdk:11
+virtual/jre:11
 
 # Sam James <sam@gentoo.org> (2021-10-16)
 # Mask for media-libs/openexr and its reverse dependencies.
@@ -32,7 +48,7 @@ sci-mathematics/geogebra-bin
 # Fails to build with buildmode=pie assumptions, which
 # does not work on big-endian ppc64
 # next releases remove that assumption and mask will be lifted
-app-emulation/docker
+app-containers/docker
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-18)
 # openjfx:11 does not work on ppc64be

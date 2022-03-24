@@ -96,6 +96,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.2_ignore-gentoo-no-compile.patch
 	"${FILESDIR}"/${PN}-3.0.2-ldconfig.patch
 	"${FILESDIR}"/${PN}-4.2-suid-warning.patch
+	"${FILESDIR}"/${PN}-4.2-no-service.patch
 )
 
 python_prepare_all() {

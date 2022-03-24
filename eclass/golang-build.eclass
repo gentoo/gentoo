@@ -7,6 +7,7 @@
 # @SUPPORTED_EAPIS: 5 6 7
 # @PROVIDES: golang-base
 # @BLURB: Eclass for compiling go packages.
+# @DEPRECATED: go-module.eclass
 # @DESCRIPTION:
 # This eclass provides default  src_compile, src_test and src_install
 # functions for software written in the Go programming language.
@@ -27,7 +28,7 @@ if [[ -z ${_GOLANG_BUILD} ]]; then
 
 _GOLANG_BUILD=1
 
-# @ECLASS-VARIABLE: EGO_BUILD_FLAGS
+# @ECLASS_VARIABLE: EGO_BUILD_FLAGS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # This allows you to pass build flags to the Go compiler. These flags
@@ -40,7 +41,7 @@ _GOLANG_BUILD=1
 # EGO_BUILD_FLAGS="-ldflags \"-X main.version ${PV}\""
 # @CODE
 
-# @ECLASS-VARIABLE: EGO_PN
+# @ECLASS_VARIABLE: EGO_PN
 # @REQUIRED
 # @DESCRIPTION:
 # This is the import path for the go package(s) to build. Please emerge

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/linux-rdma/rdma-core"
 else
 	SRC_URI="https://github.com/linux-rdma/rdma-core/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 LICENSE="|| ( GPL-2 ( CC0-1.0 MIT BSD BSD-with-attribution ) )"
@@ -33,7 +33,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	python? (
 		$(python_gen_cond_dep '
-			dev-python/cython[${PYTHON_MULTI_USEDEP}]
+			dev-python/cython[${PYTHON_USEDEP}]
 		')
 	)"
 
@@ -55,6 +55,8 @@ RDEPEND="${COMMON_DEPEND}
 	!sys-fabric/libnes"
 
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${P}-musl.patch )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup

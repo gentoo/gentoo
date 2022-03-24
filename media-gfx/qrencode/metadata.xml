@@ -9,4 +9,7 @@
     <email>mgorny@gentoo.org</email>
     <name>Michał Górny</name>
   </maintainer>
+  <use>
+    <flag name="png">Enable PNG output support in qrencode tool</flag>
+  </use>
 </pkgmetadata>

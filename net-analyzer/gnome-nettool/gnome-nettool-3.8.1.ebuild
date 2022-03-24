@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -29,8 +29,8 @@ RDEPEND="${COMMON_DEPEND}
 		net-analyzer/traceroute )
 	net-analyzer/nmap
 	net-dns/bind-tools
-	userland_GNU? ( net-misc/netkit-fingerd net-misc/whois )
-	userland_BSD? ( net-misc/bsdwhois )
+	net-misc/netkit-fingerd
+	net-misc/whois
 "
 DEPEND="${COMMON_DEPEND}
 	app-text/yelp-tools

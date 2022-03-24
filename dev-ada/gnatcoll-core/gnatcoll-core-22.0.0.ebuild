@@ -14,6 +14,8 @@ LICENSE="GPL-3"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+shared static-libs static-pic"
+REQUIRED_USE="|| ( shared static-libs static-pic )
+	${ADA_REQUIRED_USE}"
 
 RDEPEND="
 	|| (
@@ -24,8 +26,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
-
-REQUIRED_USE="${ADA_REQUIRED_USE}"
 
 PATCHES=( "${FILESDIR}"/${PN}-2018-gentoo.patch )
 
@@ -51,11 +51,11 @@ src_compile() {
 	if use shared; then
 		build relocatable
 	fi
-	if use static-pic; then
-		build static-pic
-	fi
 	if use static-libs; then
 		build static
+	fi
+	if use static-pic; then
+		build static-pic
 	fi
 }
 

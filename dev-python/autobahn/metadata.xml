@@ -10,7 +10,6 @@
 		<name>Python</name>
 	</maintainer>
 	<use>
-		<flag name="scram">Add support for WAMP-SCRAM authentication</flag>
 		<flag name="xbr">Add support for XBR decentralized data markets and etherium blockchain</flag>
 	</use>
 	<upstream>

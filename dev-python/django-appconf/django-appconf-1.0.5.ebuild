@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
-DESCRIPTION="A helper class for handling configuration defaults of packaged apps gracefully."
+DESCRIPTION="A helper class for handling configuration defaults of packaged apps gracefully"
 HOMEPAGE="https://django-appconf.readthedocs.io/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

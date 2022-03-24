@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
 		<email>89q1r14hd@relay.firefox.com</email>
@@ -14,4 +14,7 @@
 		<changelog>https://gitlab.freedesktop.org/pipewire/wireplumber/-/releases</changelog>
 		<!--doc>https://gitlab.freedesktop.org/pipewire/wireplumber/-/wikis/home</doc-->
 	</upstream>
+	<use>
+		<flag name="system-service">Install systemd unit files for running as a system service. Not recommended.</flag>
+	</use>
 </pkgmetadata>

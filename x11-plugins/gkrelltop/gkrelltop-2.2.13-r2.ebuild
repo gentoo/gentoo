@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ HOMEPAGE="https://sourceforge.net/projects/gkrelltop"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="X"
 
 RDEPEND="
@@ -23,11 +23,13 @@ DEPEND="${RDEPEND}"
 S=${WORKDIR}/${P}.orig
 PATCHES=( "${FILESDIR}"/${PN}-2.2.13-fix-build-system.patch )
 
-PLUGIN_SERVER_SO=( gkrelltopd$(get_modname) )
-PLUGIN_SO=( gkrelltop$(get_modname) )
-
 src_configure() {
 	tc-export CC
+
+	PLUGIN_SERVER_SO=( gkrelltopd$(get_modname) )
+	PLUGIN_SO=( gkrelltop$(get_modname) )
+
+	default
 }
 
 src_compile() {

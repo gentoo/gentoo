@@ -1,5 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# Untested useflag on other arches, needs keywording
+media-video/ffmpeg vmaf
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2021-12-11)
+# Mask AMF keyword on non-amd64 arches
+# It is unusable, for now, in other arches
+media-video/ffmpeg amf
 
 # Sam James <sam@gentoo.org> (2021-11-15)
 # librtas is available on (only) ppc*
@@ -45,7 +54,7 @@ net-libs/webkit-gtk avif
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-05)
 # criu is masked on big-endian ppc*
-app-emulation/crun criu
+app-containers/crun criu
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-08-07)
 # dev-vcs/darcs is not keyworded on ppc/ppc64
@@ -70,10 +79,6 @@ dev-python/pbr test
 # Benda Xu <heroxbd@gentoo.org> (2020-04-27)
 # tests optionally depend on dev-python/hypothesis
 dev-python/numpy test
-
-# Lars Wendler <polynomial-c@gentoo.org> (2020-04-20)
-# Not keyworded on ppc
-net-misc/whois xcrypt
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-19)
 # Unsupported on ppc/ppc64
@@ -101,7 +106,7 @@ sys-firmware/seabios -debug
 
 # Conrad Kostecki <conikost@gentoo.org> (2019-08-17)
 # app-misc/graphlcd-base won't work on PowerPC/PowerPC64
-app-misc/lcdproc freetype lcd_devices_glcd png
+app-misc/lcdproc lcd_devices_glcd png
 
 # Patrick McLean <chutzpah@gentoo.org> (2019-04-15)
 # deps not available on platform
@@ -247,10 +252,6 @@ dev-haskell/dlist test
 dev-haskell/haskell-src-exts test
 dev-util/bnfc test
 
-# Anthony G. Basile <blueness@gentoo.org> (2014-08-17)
-# This pulls in qemu[smartcard] which is masked
-net-misc/spice-gtk smartcard
-
 # Anthony G. Basile <blueness@gentoo.org> (2014-08-16)
 # Ultimately pulls in nodejs which is broken.
 dev-ruby/sprockets test
@@ -340,15 +341,11 @@ net-misc/connman ofono
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2012-01-20)
 # Mask some use flags for openmpi due to unkeyworded deps
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
 
 # Patrick McLean <chutzpah@gentoo.org> (2011-09-07)
 # missing keywords on dependencies
 media-video/x264-encoder ffmpegsource
-
-# Kacper Kowalik <xarthisius@gentoo.org> (2011-08-10)
-# mask cuda dep for opencv bug 365451
-media-libs/opencv cuda
 
 # Doug Goldstein <cardoe@gentoo.org> (2011-05-27)
 # app-emulation/spice, app-emulation/xen, and sys-cluster/ceph

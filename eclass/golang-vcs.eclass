@@ -7,6 +7,7 @@
 # @SUPPORTED_EAPIS: 5 6 7
 # @PROVIDES: golang-base
 # @BLURB: Eclass for fetching and unpacking go repositories.
+# @DEPRECATED: go-module.eclass
 # @DESCRIPTION:
 # This eclass is written to ease the maintenance of live ebuilds
 # of software written in the Go programming language.
@@ -29,7 +30,7 @@ _GOLANG_VCS=1
 
 PROPERTIES+=" live"
 
-# @ECLASS-VARIABLE: EGO_PN
+# @ECLASS_VARIABLE: EGO_PN
 # @REQUIRED
 # @DESCRIPTION:
 # This is the import path for the go package(s). Please emerge dev-lang/go
@@ -41,7 +42,7 @@ PROPERTIES+=" live"
 # EGO_PN="github.com/user1/package1 github.com/user2/package2"
 # @CODE
 
-# @ECLASS-VARIABLE: EGO_STORE_DIR
+# @ECLASS_VARIABLE: EGO_STORE_DIR
 # @USER_VARIABLE
 # @DESCRIPTION:
 # Storage directory for Go sources.
@@ -51,12 +52,12 @@ PROPERTIES+=" live"
 #
 # EGO_STORE_DIR=${DISTDIR}/go-src
 
-# @ECLASS-VARIABLE: EVCS_OFFLINE
+# @ECLASS_VARIABLE: EVCS_OFFLINE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If non-empty, this variable prevents any online operations.
 
-# @ECLASS-VARIABLE: EVCS_UMASK
+# @ECLASS_VARIABLE: EVCS_UMASK
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set this variable to a custom umask. This is intended to be set by

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 VALA_MIN_API_VERSION="0.14"
 VALA_USE_DEPEND="vapigen"
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit desktop meson python-any-r1 readme.gentoo-r1 vala xdg-utils
 
@@ -16,7 +16,7 @@ HOMEPAGE="https://www.spice-space.org https://cgit.freedesktop.org/spice/spice-g
 LICENSE="LGPL-2.1"
 SLOT="0"
 SRC_URI="https://www.spice-space.org/download/gtk/${P}.tar.xz"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="+gtk3 +introspection lz4 mjpeg policykit sasl smartcard usbredir vala wayland webdav"
 
 # TODO:

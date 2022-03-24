@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/716876
+https://cgit.freedesktop.org/evtest/commit/?id=049396aab18849eef257af1116951a83416339e6
+
+From: Mateusz Piotrowski <0mp@FreeBSD.org>
+Date: Fri, 13 Nov 2020 13:41:41 +0100
+Subject: Remove PATH_MAX
+
+This makes evtest more portable.  We could try to use ifdefs to include
+sys/syslimits.h on FreeBSD to get PATH_MAX but it feels to be an
+overkill for evtest.  Let's keep it simple as just replace PATH_MAX with
+4096.
+
+NB: it's fine to leave linux/input.h there, because this header is
+actually available on FreeBSD via the devel/evdev-proto port.
+--- a/evtest.c
++++ b/evtest.c
+@@ -888,7 +888,7 @@ static char* scan_devices(void)
+ 
+ 	for (i = 0; i < ndev; i++)
+ 	{
+-		char fname[PATH_MAX];
++		char fname[4096];
+ 		int fd = -1;
+ 		char name[256] = "???";
+ 
+cgit v1.2.1

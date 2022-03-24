@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -18,7 +18,7 @@ SRC_URI="${SRC_URI}
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="debug kernel_linux static-libs"
+IUSE="debug static-libs"
 
 RESTRICT="test" # needs gam-server
 
@@ -58,6 +58,9 @@ src_prepare() {
 
 	# Fix possible server deadlock in ih_sub_cancel, upstream bug #667230
 	epatch "${FILESDIR}/${PN}-0.1.10-deadlock.patch"
+
+	# Fix musl build, upstream bug #588337
+	epatch "${FILESDIR}/${PN}-0.1.10-musl-pthread.patch"
 
 	# Drop DEPRECATED flags
 	sed -i -e 's:-DG_DISABLE_DEPRECATED:$(NULL):g' server/Makefile.am || die

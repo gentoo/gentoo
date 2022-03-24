@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ SIMUPAK_192_COMIC="pak192.comic.0.5.zip"
 DESCRIPTION="A free Transport Tycoon clone"
 HOMEPAGE="https://www.simutrans.com/"
 SRC_URI="mirror://sourceforge/simutrans/simutrans-src-${MY_PV}.zip
-	https://simutrans-germany.com/translator/data/tab/language_pack-Base+texts.zip -> simutrans_language_pack-Base+texts-${PV}.zip
+	https://tastytea.de/files/simutrans_language_pack-Base+texts-${PV}.zip
 	mirror://sourceforge/simutrans/${SIMUPAK_64} -> simutrans_${SIMUPAK_64}
 	pak128? ( https://download.sourceforge.net/simutrans/pak128/pak128%20for%20ST%20120.4.1%20%28${SIMUPAK_128_V}%2C%20priority%20signals%20%2B%20bugfix%29/pak128.zip -> simutrans_pak128-${SIMUPAK_128_V}.zip )
 	pak128-britain? ( mirror://sourceforge/simutrans/${SIMUPAK_128_BRITAIN} -> simutrans_${SIMUPAK_128_BRITAIN} )

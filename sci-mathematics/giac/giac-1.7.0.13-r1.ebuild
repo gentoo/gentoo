@@ -88,7 +88,7 @@ src_configure() {
 		--enable-gmpxx \
 		--disable-samplerate \
 		--disable-micropy \
-		--docdir=/usr/share/giac/doc \
+		--docdir="${EPREFIX}"/usr/share/giac/doc \
 		$(use_enable static-libs static) \
 		$(use_enable gui)  \
 		$(use_enable gui png)  \

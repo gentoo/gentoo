@@ -1,0 +1,18 @@
+https://github.com/telmich/gpm/commit/80cac2a2bd7eed7e80626559f792f37319030729
+
+From: "Desmond O. Chang" <dochang@gmail.com>
+Date: Wed, 13 Apr 2016 21:17:48 +0800
+Subject: [PATCH] Add gcc include path
+
+Close #13
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -96,7 +96,7 @@ $(DEPFILE) dep: prog/gpm-root.c
+ 
+ 	# create dependencies
+ 	for DEPS in `echo *.c */*.c`; do \
+-	$(CC) -I. -I $(srcdir) -M @CPPFLAGS@ $(CPPFLAGS) $$DEPS | \
++	$(CC) -I. -I $(srcdir) -I $(srcdir)/headers -M @CPPFLAGS@ $(CPPFLAGS) $$DEPS | \
+ 	$(SED) 's/^\(.*\)\.o\([ :]+\)/\1.o \1.lo\2/g' >> $(DEPFILE) ; done
+ 
+ ### INSTALL

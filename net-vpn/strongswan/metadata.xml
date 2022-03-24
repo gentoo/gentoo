@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>kernlpanic@dennis-eisele.de</email>
+		<name>Dennis Eisele</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>rndxelement@protonmail.com</email>
+		<name>Philipp Rösner</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription lang="en">
 		StrongSwan is direct descendant of the discontinued FreeS/WAN project.
 		As an IPsec based VPN solution which is focused on security and ease of
@@ -41,6 +52,7 @@
 		<flag name="strongswan_plugins_save-keys">Enable plugin that saves IKE and/or ESP keys to files compatible with Wireshark (for debugging)</flag>
 		<flag name="strongswan_plugins_unbound">Enable support for the unbound plugin</flag>
 		<flag name="strongswan_plugins_whitelist">Enable support for the whitelist plugin</flag>
+		<flag name="strongswan_plugins_xauth-noauth">Enable support for the xauth-noauth plugin</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:strongswan:strongswan</remote-id>

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,8 +26,8 @@ src_configure() {
 	sed -i -e "s:lib64:$(get_libdir):g" port/master.mk.in \
 		fontdb/Makefile.in || die
 
-	CFLAGS=${CFLAGS} LD_X11='-L/usr/$(get_libdir) -lX11' \
-		FC=$(tc-getFC) CC=$(tc-getCC) OS=linux \
+	CFLAGS="${CFLAGS}" LD_X11='-L/usr/$(get_libdir) -lX11' \
+		FC="$(tc-getFC)" CC="$(tc-getCC)" OS=linux \
 		./configure --prefix=/usr --exec_prefix=/usr/bin \
 		|| die
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -53,11 +53,6 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-60.5.2-ia64-fix-virtual-address-length.patch"
 
 	eapply_user
-
-	if [[ ${CHOST} == *-freebsd* ]]; then
-		# Don't try to be smart, this does not work in cross-compile anyway
-		ln -sfn "${BUILDDIR}/config/Linux_All.mk" "${S}/config/$(uname -s)$(uname -r).mk" || die
-	fi
 
 	cd "${S}/js/src" || die
 	eautoconf old-configure.in

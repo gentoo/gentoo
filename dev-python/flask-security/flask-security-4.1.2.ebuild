@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,11 +47,7 @@ BDEPEND="
 		>=dev-python/pymysql-0.9.3[${PYTHON_USEDEP}]
 		>=dev-python/pyqrcode-1.2[${PYTHON_USEDEP}]
 		>=dev-python/zxcvbn-4.4.28[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			>=dev-python/pony-0.7.11[${PYTHON_USEDEP}]
-		' python3_8 python3_9)
-		amd64? ( >=dev-python/flask-mongoengine-0.9.5[${PYTHON_USEDEP}] )
-		arm64? ( >=dev-python/flask-mongoengine-0.9.5[${PYTHON_USEDEP}] )
+		>=dev-python/pony-0.7.11[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests pytest

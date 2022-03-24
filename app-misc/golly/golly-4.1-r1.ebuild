@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ S="${WORKDIR}/${P}-src"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
@@ -39,11 +39,11 @@ src_compile() {
 		GOLLYDIR="${EPREFIX}/usr/share/${PN}"
 		PYTHON=${EPYTHON}
 		WX_CONFIG=${WX_CONFIG}
-		AR=$(tc-getAR)
-		CC=$(tc-getCC)
-		CXX=$(tc-getCXX)
-		CXXC=$(tc-getCXX)
-		RANLIB=$(tc-getRANLIB)
+		AR="$(tc-getAR)"
+		CC="$(tc-getCC)"
+		CXX="$(tc-getCXX)"
+		CXXC="$(tc-getCXX)"
+		RANLIB="$(tc-getRANLIB)"
 	)
 	emake -C gui-wx -f makefile-gtk "${mymakeopts[@]}"
 }

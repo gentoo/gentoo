@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -190,7 +190,6 @@ src_compile() {
 
 python_compile() {
 	filter-flags -ftracer -ftree-vectorize
-	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
 	if use rust; then
 		local -x HGWITHRUSTEXT="cpython"
 	fi
@@ -290,7 +289,7 @@ python_test() {
 	rm -rf "${TMPDIR}"/test
 	distutils_install_for_testing
 	cd tests || die
-	"${PYTHON}" run-tests.py --verbose \
+	PYTHONWARNINGS=ignore "${PYTHON}" run-tests.py --verbose \
 		--tmpdir="${TMPDIR}"/test \
 		--with-hg="${TEST_DIR}"/scripts/hg \
 		|| die "Tests fail with ${EPYTHON}"

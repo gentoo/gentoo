@@ -5,6 +5,10 @@
 		<email>zerochaos@gentoo.org</email>
 		<name>Rick Farina</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>tomjbe@gentoo.org</email>
+		<name>Thomas Beierlein</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>radio@gentoo.org</email>
 		<name>Radio</name>

@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 PIDFILE=/var/run/pacemaker.pid
@@ -21,7 +21,7 @@ start() {
 		nc=$(expr $nc + 1)
 		if [ $nc -gt 30 ]; then
 			echo
-			eend 1 "Failed to detect Corosync startup, is it really running ?"
+			eend 1 "Failed to detect Corosync startup, is it really running?"
 			exit 1
 		fi
 		sleep 1

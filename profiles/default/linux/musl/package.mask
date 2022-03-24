@@ -1,10 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-sys-libs/uclibc-ng
 sys-libs/glibc
 
-# We use eudev which is tested on both uclibc and musl
+# We use eudev which is tested on musl
 sys-apps/systemd
 sys-fs/udev
 

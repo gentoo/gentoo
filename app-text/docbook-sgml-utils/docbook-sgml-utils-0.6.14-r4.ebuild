@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,8 +29,8 @@ DEPEND=">=dev-lang/perl-5
 	~app-text/docbook-sgml-dtd-4.1
 	~app-text/docbook-sgml-dtd-4.2
 	~app-text/docbook-sgml-dtd-4.4
+	sys-apps/which
 	jadetex? ( dev-texlive/texlive-formatsextra )
-	userland_GNU? ( sys-apps/which )
 	|| (
 		www-client/lynx
 		www-client/links

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ COMMON_DEPEND="
 	>=media-libs/babl-0.1.88
 	>=media-libs/fontconfig-2.12.4
 	>=media-libs/freetype-2.1.7
-	>=media-libs/gegl-0.4.32:0.4[cairo]
+	>=media-libs/gegl-0.4.34:0.4[cairo]
 	>=media-libs/gexiv2-0.10.6
 	>=media-libs/harfbuzz-0.9.19:=
 	>=media-libs/lcms-2.8:2
@@ -73,7 +73,6 @@ DEPEND="
 	dev-libs/appstream-glib
 	dev-util/gtk-update-icon-cache
 	>=dev-util/intltool-0.40.1
-	sys-apps/findutils
 	>=sys-devel/gettext-0.19
 	>=sys-devel/libtool-2.2
 	virtual/pkgconfig

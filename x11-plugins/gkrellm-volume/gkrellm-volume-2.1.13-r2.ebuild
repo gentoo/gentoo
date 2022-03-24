@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,10 @@ PATCHES=(
 	"${FILESDIR}/${P}-makefile.patch"
 )
 
-PLUGIN_SO=( volume$(get_modname) )
+src_configure() {
+	PLUGIN_SO=( volume$(get_modname) )
+	default
+}
 
 src_compile() {
 	use alsa && local myconf="enable_alsa=1"

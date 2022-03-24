@@ -1,5 +1,28 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# Untested useflag on other arches, needs keywording
+media-video/ffmpeg vmaf
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-01-11)
+# Mask AMF keyword on non-amd64 arches
+# It is unusable, for now, in other arches
+media-video/ffmpeg amf
+
+# James Le Cuirot <chewi@gentoo.org> (2022-01-09)
+# Most usage of KMS requires GBM, which is provided by Mesa, which currently
+# doesn't work on m68k.
+media-libs/cogl kms
+media-libs/libsdl2 kms
+
+# James Le Cuirot <chewi@gentoo.org> (2022-01-09)
+# Requires dev-lang/go, which is not ported to m68k.
+sys-libs/libcap tools
+
+# James Le Cuirot <chewi@gentoo.org> (2022-01-01)
+# Some optional emacs dependencies are not keyworded.
+app-editors/emacs gui mailutils
 
 # James Le Cuirot <chewi@gentoo.org> (2021-09-28)
 # Needs a lot of Perl packages to be keyworded.
@@ -17,10 +40,13 @@ media-gfx/graphviz lefty pdf
 # Requires Rust, which is currently unavailable on m68k.
 app-editors/emacs svg
 media-gfx/graphviz svg
+media-gfx/imagemagick svg
 
 # James Le Cuirot <chewi@gentoo.org> (2021-09-19)
 # Requires Ruby, which is broken on m68k.
 app-text/htmltidy test
+net-misc/chrony html
+sys-block/thin-provisioning-tools test
 
 # James Le Cuirot <chewi@gentoo.org> (2021-09-19)
 # Requires texlive and friends to be keyworded.
@@ -34,10 +60,11 @@ dev-python/argcomplete test
 dev-python/distlib test
 dev-python/fonttools test
 dev-python/isort test
+dev-python/jsonschema test
 dev-python/nose test
+dev-python/numpydoc test
 dev-python/pytest-regressions test
 dev-python/requests test
-dev-python/setuptools test
 dev-python/sphinx test
 dev-python/urllib3 test
 
@@ -69,10 +96,6 @@ sys-libs/glibc gd
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=seccomp that is masked in this profile.
 net-libs/gnutls test-full
-
-# Matt Turner <mattst88@gentoo.org> (2017-02-25)
-# Needs libepoxy keywording, bug #510940
-x11-base/xorg-server wayland
 
 # Raúl Porcel <armin76@gentoo.org> (2013-01-23)
 # Architecture is unsupported

@@ -15,7 +15,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 IUSE="systemd xinerama"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
@@ -40,7 +40,7 @@ RDEPEND="
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		dev-python/setproctitle[${PYTHON_USEDEP}]
-		>=dev-python/xapp-2.2.0[${PYTHON_USEDEP}]
+		>=dev-python/python3-xapp-2.2.0[${PYTHON_USEDEP}]
 	')
 
 	systemd? ( >=sys-apps/systemd-31 )

@@ -1,4 +1,4 @@
-# Copyright 2000-2021 Gentoo Authors
+# Copyright 2000-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,10 +10,9 @@ MY_PV="${MY_PV/-beta/-test}"
 MY_P="${PN}-${MY_PV}"
 if [[ ${PV} = *9999 ]] ; then
 	if [[ ${PV%.9999} != ${PV} ]] ; then
-		EGIT_REPO_URI="https://git.videolan.org/git/vlc/vlc-${PV%.9999}.git"
-	else
-		EGIT_REPO_URI="https://git.videolan.org/git/vlc.git"
+		EGIT_BRANCH="3.0.x"
 	fi
+	EGIT_REPO_URI="https://code.videolan.org/videolan/vlc.git"
 	inherit git-r3
 else
 	if [[ ${MY_P} = ${P} ]] ; then
@@ -279,7 +278,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local -x BUILDCC=$(tc-getBUILD_CC)
+	local -x BUILDCC="$(tc-getBUILD_CC)"
 
 	local myeconfargs=(
 		--disable-aa
@@ -452,7 +451,12 @@ src_configure() {
 	fi
 
 	# FIXME: Needs libresid-builder from libsidplay:2 which is in another directory...
-	append-ldflags "-L/usr/$(get_libdir)/sidplay/builders/"
+	append-ldflags "-L${ESYSROOT}/usr/$(get_libdir)/sidplay/builders/"
+
+	if use riscv; then
+		# bug #803473
+		append-libs -latomic
+	fi
 
 	if use truetype || use bidi; then
 		myeconfargs+=( --enable-freetype )
@@ -489,11 +493,11 @@ src_install() {
 
 pkg_postinst() {
 	if [[ -z "${ROOT}" ]] && [[ -x "${EROOT}/usr/$(get_libdir)/vlc/vlc-cache-gen" ]] ; then
-		einfo "Running ${EROOT}/usr/$(get_libdir)/vlc/vlc-cache-gen on ${EROOT}/usr/$(get_libdir)/vlc/plugins/"
-		"${EROOT}/usr/$(get_libdir)/vlc/vlc-cache-gen" "${EROOT}/usr/$(get_libdir)/vlc/plugins/"
+		einfo "Running ${EPREFIX}/usr/$(get_libdir)/vlc/vlc-cache-gen on ${EROOT}/usr/$(get_libdir)/vlc/plugins/"
+		"${EPREFIX}/usr/$(get_libdir)/vlc/vlc-cache-gen" "${EROOT}/usr/$(get_libdir)/vlc/plugins/"
 	else
 		ewarn "We cannot run vlc-cache-gen (most likely ROOT != /)"
-		ewarn "Please run /usr/$(get_libdir)/vlc/vlc-cache-gen manually"
+		ewarn "Please run ${EPREFIX}/usr/$(get_libdir)/vlc/vlc-cache-gen manually"
 		ewarn "If you do not do it, vlc will take a long time to load."
 	fi
 

@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>styx.mp@gmail.com</email>
-		<name>Mikhail</name>
+		<email>contact@hacktivis.me</email>
+		<name>Haelwenn (lanodan) Monnier</name>
 	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
@@ -19,8 +19,6 @@
 		<doc lang="en">
 			http://elixir-lang.org/docs.html
 		</doc>
-		<remote-id type="github">
-			elixir-lang/elixir
-		</remote-id>
+		<remote-id type="github">elixir-lang/elixir</remote-id>
 	</upstream>
 </pkgmetadata>

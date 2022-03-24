@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ S="${WORKDIR}/${CSV}"
 # Nanopass (MIT), stex (MIT), and zlib (ZLIB).
 LICENSE="Apache-2.0 BSD-2 MIT ZLIB"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="X examples ncurses threads"
 
 BDEPEND="virtual/pkgconfig"
@@ -29,12 +29,15 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	tc-export AR CC CXX LD RANLIB
 
+	default
+
 	if use ncurses ; then
 		local nclibs="\"$($(tc-getPKG_CONFIG) --libs ncurses)\""
 		sed -i "s|ncursesLib=-lncurses|ncursesLib=${nclibs}|g" configure || die
 	fi
 
-	default
+	# Remove -Werror
+	sed -i "/^C = /s|-Werror||g" c/Mf-* || die
 }
 
 src_configure() {

@@ -1,0 +1,30 @@
+From 197a0874ea4010061b98b4b55eff65b33b1cd741 Mon Sep 17 00:00:00 2001
+From: Robbie Harwood <rharwood@redhat.com>
+Date: Mon, 17 Jan 2022 12:34:55 -0500
+Subject: [PATCH] Add -T workaround for GNU ld 2.36
+
+Signed-off-by: Robbie Harwood <rharwood@redhat.com>
+Resolves: #195
+---
+ src/include/workarounds.mk | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/include/workarounds.mk b/src/include/workarounds.mk
+index 31188342..143e7902 100644
+--- a/src/include/workarounds.mk
++++ b/src/include/workarounds.mk
+@@ -4,12 +4,12 @@
+ 
+ LD_FLAVOR := $(shell $(LD) --version | grep -E '^(LLD|GNU ld)'|sed 's/ .*//g')
+ LD_VERSION := $(shell $(LD) --version | grep -E '^(LLD|GNU ld)'|sed 's/.* //')
+-# I haven't tested 2.36 here; 2.35 is definitely broken and 2.37 seems to work
++# 2.35 is definitely broken and 2.36 seems to work
+ LD_DASH_T := $(shell \
+ 	if [ "x${LD_FLAVOR}" = xLLD ] ; then \
+ 		echo '-T' ; \
+ 	elif [ "x${LD_FLAVOR}" = xGNU ] ; then \
+-		if echo "${LD_VERSION}" | grep -q -E '^2\.3[789]|^2\.[456789]|^[3456789]|^[[:digit:]][[:digit:]]' ; then \
++		if echo "${LD_VERSION}" | grep -q -E '^2\.3[6789]|^2\.[456789]|^[3456789]|^[[:digit:]][[:digit:]]' ; then \
+ 			echo '-T' ; \
+ 		else \
+ 			echo "" ; \

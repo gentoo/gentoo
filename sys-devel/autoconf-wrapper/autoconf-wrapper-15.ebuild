@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="wrapper for autoconf to manage multiple autoconf versions"
-HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+HOMEPAGE="https://gitweb.gentoo.org/proj/autotools-wrappers.git"
 
 LICENSE="GPL-2"
 SLOT="0"

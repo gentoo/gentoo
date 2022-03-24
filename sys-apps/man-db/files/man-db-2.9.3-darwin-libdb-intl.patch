@@ -1,3 +1,5 @@
+https://gitlab.com/cjwatson/man-db/-/merge_requests/3
+
 libdb: link against libintl
 
 necessary since gettext is used for translations

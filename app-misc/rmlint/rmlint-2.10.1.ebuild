@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,8 +29,8 @@ RDEPEND="
 		${PYTHON_DEPS}
 		x11-libs/gtksourceview:3.0
 		$(python_gen_cond_dep '
-			dev-python/colorlog[${PYTHON_MULTI_USEDEP}]
-			dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+			dev-python/colorlog[${PYTHON_USEDEP}]
+			dev-python/pygobject:3[${PYTHON_USEDEP}]
 		')
 	)
 "
@@ -39,8 +39,8 @@ BDEPEND="
 	doc? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
-			dev-python/sphinx-bootstrap-theme[${PYTHON_MULTI_USEDEP}]
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx-bootstrap-theme[${PYTHON_USEDEP}]
 		')
 	)
 	nls? ( sys-devel/gettext )
@@ -48,10 +48,10 @@ BDEPEND="
 		${PYTHON_DEPS}
 		app-shells/dash
 		$(python_gen_cond_dep '
-			dev-python/nose[${PYTHON_MULTI_USEDEP}]
-			dev-python/parameterized[${PYTHON_MULTI_USEDEP}]
-			dev-python/psutil[${PYTHON_MULTI_USEDEP}]
-			dev-python/pyxattr[${PYTHON_MULTI_USEDEP}]
+			dev-python/nose[${PYTHON_USEDEP}]
+			dev-python/parameterized[${PYTHON_USEDEP}]
+			dev-python/psutil[${PYTHON_USEDEP}]
+			dev-python/pyxattr[${PYTHON_USEDEP}]
 		')
 	)
 "

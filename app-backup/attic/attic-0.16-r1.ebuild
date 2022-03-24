@@ -15,7 +15,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-DESCRIPTION="Attic is a deduplicating backup program written in Python."
+DESCRIPTION="Attic is a deduplicating backup program written in Python"
 HOMEPAGE="https://attic-backup.org/"
 
 LICENSE="BSD"

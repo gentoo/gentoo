@@ -1,0 +1,7 @@
+# Copyright 2022 Gentoo Authors.
+# Distributed under the terms of the GNU General Public License v2
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-01-21)
+# Bootstrapping is possible using our build snapshot, so don't force
+# system bootstrap
+dev-java/openjdk:17 -system-bootstrap

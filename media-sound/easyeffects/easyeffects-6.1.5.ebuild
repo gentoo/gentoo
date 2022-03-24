@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/wwmm/easyeffects"
 else
 	SRC_URI="https://github.com/wwmm/easyeffects/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-3"
@@ -61,7 +61,7 @@ BDEPEND="dev-libs/appstream-glib
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != "binary" ]] ; then
 		if ! test-flag-CXX -std=c++20 ; then
-			die "You need at least GCC 8 or Clang 10 for C++20-specific compiler flags"
+			die "${PN} requires degree of C++20 support only available since GCC 10 or Clang 10"
 		fi
 	fi
 }

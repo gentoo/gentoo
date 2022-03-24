@@ -1,0 +1,563 @@
+# Copyright 2021-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+CRATES="
+	Inflector-0.11.4
+	addr2line-0.17.0
+	adler-1.0.2
+	ahash-0.7.6
+	aho-corasick-0.7.18
+	alloc-no-stdlib-2.0.3
+	alloc-stdlib-0.2.1
+	ansi-cut-0.2.0
+	ansi-parser-0.8.0
+	ansi_term-0.12.1
+	anyhow-1.0.56
+	arrayvec-0.4.12
+	arrayvec-0.5.2
+	array-init-cursor-0.2.0
+	arrow2-0.10.1
+	arrow-format-0.4.0
+	assert_cmd-2.0.4
+	async-stream-0.3.2
+	async-stream-impl-0.3.2
+	async-trait-0.1.52
+	as-slice-0.1.5
+	atty-0.2.14
+	autocfg-1.1.0
+	backtrace-0.3.64
+	base64-0.13.0
+	bigdecimal-0.3.0
+	bitflags-1.3.2
+	bitmaps-2.1.0
+	bitpacking-0.8.4
+	block-buffer-0.9.0
+	block-buffer-0.10.2
+	brotli-3.3.3
+	brotli-decompressor-2.3.2
+	bstr-0.2.17
+	bumpalo-3.9.1
+	bytemuck-1.8.0
+	bytemuck_derive-1.0.1
+	byteorder-1.4.3
+	bytesize-1.1.0
+	bytes-1.1.0
+	byte-unit-4.0.14
+	bzip2-0.4.3
+	bzip2-sys-0.1.11+1.0.8
+	calamine-0.18.0
+	capnp-0.14.5
+	cc-1.0.73
+	cfg-if-1.0.0
+	chrono-0.4.19
+	chrono-humanize-0.2.1
+	chrono-tz-0.5.3
+	chrono-tz-0.6.1
+	chrono-tz-build-0.0.2
+	codepage-0.1.1
+	comfy-table-5.0.1
+	console-0.15.0
+	const-sha1-0.2.0
+	convert_case-0.4.0
+	core-foundation-0.9.3
+	core-foundation-sys-0.8.3
+	cpufeatures-0.2.1
+	crc32fast-1.3.2
+	crossbeam-channel-0.5.2
+	crossbeam-deque-0.8.1
+	crossbeam-epoch-0.9.7
+	crossbeam-utils-0.8.7
+	crossterm-0.23.0
+	crossterm_winapi-0.9.0
+	crunchy-0.2.2
+	crypto-common-0.1.3
+	cssparser-0.27.2
+	cssparser-macros-0.6.0
+	cstr_core-0.2.5
+	csv-1.1.6
+	csv-core-0.1.10
+	ctor-0.1.21
+	ctrlc-3.2.1
+	cty-0.2.2
+	derive_more-0.99.17
+	dialoguer-0.9.0
+	difflib-0.4.0
+	diff-0.1.12
+	digest-0.9.0
+	digest-0.10.3
+	dirs-4.0.0
+	dirs-next-2.0.0
+	dirs-sys-0.3.6
+	dirs-sys-next-0.1.2
+	doc-comment-0.3.3
+	dtoa-0.4.8
+	dtoa-short-0.3.3
+	dtparse-1.2.0
+	dunce-1.0.2
+	ego-tree-0.6.2
+	either-1.6.1
+	embed-resource-1.7.1
+	eml-parser-0.1.2
+	encode_unicode-0.3.6
+	encoding_rs-0.8.30
+	env_logger-0.7.1
+	env_logger-0.8.4
+	erased-serde-0.3.18
+	errno-0.2.8
+	errno-dragonfly-0.1.2
+	fallible-streaming-iterator-0.1.9
+	fastrand-1.7.0
+	fd-lock-3.0.4
+	filesize-0.2.0
+	flate2-1.0.22
+	fnv-1.0.7
+	foreign-types-0.3.2
+	foreign-types-shared-0.1.1
+	form_urlencoded-1.0.1
+	fs_extra-1.2.0
+	fuchsia-cprng-0.1.1
+	futf-0.1.5
+	futures-0.3.21
+	futures-channel-0.3.21
+	futures-core-0.3.21
+	futures-executor-0.3.21
+	futures-io-0.3.21
+	futures-macro-0.3.21
+	futures-sink-0.3.21
+	futures-task-0.3.21
+	futures-util-0.3.21
+	fxhash-0.2.1
+	generic-array-0.12.4
+	generic-array-0.13.3
+	generic-array-0.14.5
+	getopts-0.2.21
+	getrandom-0.1.16
+	getrandom-0.2.5
+	getset-0.1.2
+	ghost-0.1.2
+	gimli-0.26.1
+	git2-0.13.25
+	gjson-0.8.0
+	glob-0.3.0
+	h2-0.3.12
+	hamcrest2-0.3.0
+	hash32-0.1.1
+	hash32-0.2.1
+	hashbrown-0.11.2
+	hashbrown-0.12.0
+	hash_hasher-2.0.3
+	heapless-0.5.6
+	heapless-0.7.10
+	heck-0.3.3
+	heck-0.4.0
+	hermit-abi-0.1.19
+	hex-0.4.3
+	html5ever-0.25.1
+	htmlescape-0.3.1
+	httparse-1.6.0
+	httpdate-1.0.2
+	http-0.2.6
+	http-body-0.4.4
+	humantime-1.3.0
+	hyper-0.14.17
+	hyper-tls-0.5.0
+	ical-0.7.0
+	idna-0.2.3
+	im-15.0.0
+	indexmap-1.8.0
+	instant-0.1.12
+	integer-encoding-3.0.3
+	inventory-0.2.2
+	io-lifetimes-0.5.3
+	ipnet-2.4.0
+	is_ci-1.1.1
+	is_debug-1.0.1
+	is_executable-1.0.1
+	itertools-0.10.3
+	itoa-0.4.8
+	itoa-1.0.1
+	jobserver-0.1.24
+	js-sys-0.3.56
+	lazy_static-1.4.0
+	lexical-6.1.0
+	lexical-core-0.8.3
+	lexical-parse-float-0.8.3
+	lexical-parse-integer-0.8.3
+	lexical-util-0.8.3
+	lexical-write-float-0.8.3
+	lexical-write-integer-0.8.3
+	libc-0.2.119
+	libgit2-sys-0.12.26+1.3.0
+	libm-0.2.2
+	libproc-0.10.0
+	libssh2-sys-0.2.23
+	libz-sys-1.1.5
+	linked-hash-map-0.5.4
+	linux-raw-sys-0.0.42
+	lock_api-0.4.6
+	log-0.4.14
+	lscolors-0.9.0
+	lz4-1.23.3
+	lz4-sys-1.9.3
+	mac-0.1.1
+	malloc_buf-0.0.6
+	markup5ever-0.10.1
+	matches-0.1.9
+	md-5-0.10.1
+	memchr-2.4.1
+	memmap2-0.5.3
+	memoffset-0.6.5
+	meval-0.2.0
+	miette-4.2.1
+	miette-derive-4.2.1
+	mime-0.3.16
+	miniz_oxide-0.4.4
+	miow-0.3.7
+	mio-0.7.14
+	mio-0.8.0
+	multiversion-0.6.1
+	multiversion-macros-0.6.1
+	native-tls-0.2.8
+	new_debug_unreachable-1.0.4
+	nix-0.23.1
+	nodrop-0.1.14
+	nom-1.2.4
+	nom-4.2.3
+	ntapi-0.3.7
+	num-0.2.1
+	num-0.4.0
+	num-bigint-0.2.6
+	num-bigint-0.4.3
+	num-complex-0.2.4
+	num-complex-0.4.0
+	num-format-0.4.0
+	num-integer-0.1.44
+	num-iter-0.1.42
+	num-rational-0.2.4
+	num-rational-0.4.0
+	num-traits-0.2.14
+	num_cpus-1.13.1
+	nu-ansi-term-0.45.0
+	objc-0.2.7
+	object-0.27.1
+	once_cell-1.10.0
+	opaque-debug-0.3.0
+	openssl-0.10.38
+	openssl-probe-0.1.5
+	openssl-sys-0.9.72
+	ordered-float-1.1.1
+	output_vt100-0.1.3
+	overload-0.1.1
+	owo-colors-3.2.0
+	parking_lot-0.11.2
+	parking_lot-0.12.0
+	parking_lot_core-0.8.5
+	parking_lot_core-0.9.1
+	parquet2-0.10.3
+	parquet-format-async-temp-0.2.0
+	parse-zoneinfo-0.3.0
+	pathdiff-0.2.1
+	percent-encoding-2.1.0
+	peresil-0.3.0
+	pest-2.1.3
+	phf-0.8.0
+	phf-0.10.1
+	phf_codegen-0.8.0
+	phf_codegen-0.10.0
+	phf_generator-0.8.0
+	phf_generator-0.10.0
+	phf_macros-0.8.0
+	phf_shared-0.8.0
+	phf_shared-0.10.0
+	pin-project-lite-0.2.8
+	pin-utils-0.1.0
+	pkg-config-0.3.24
+	planus-0.2.0
+	polars-0.20.0
+	polars-arrow-0.20.0
+	polars-core-0.20.0
+	polars-io-0.20.0
+	polars-lazy-0.20.0
+	polars-time-0.20.0
+	polars-utils-0.20.0
+	ppv-lite86-0.2.16
+	precomputed-hash-0.1.1
+	predicates-2.1.1
+	predicates-core-1.0.3
+	predicates-tree-1.0.5
+	pretty_assertions-1.1.0
+	pretty_env_logger-0.4.0
+	procfs-0.12.0
+	proc-macro2-1.0.36
+	proc-macro-error-1.0.4
+	proc-macro-error-attr-1.0.4
+	proc-macro-hack-0.5.19
+	quickcheck-1.0.3
+	quickcheck_macros-1.0.0
+	quick-error-1.2.3
+	quick-xml-0.19.0
+	quick-xml-0.22.0
+	quote-1.0.15
+	rand-0.4.6
+	rand-0.7.3
+	rand-0.8.5
+	rand_chacha-0.2.2
+	rand_chacha-0.3.1
+	rand_core-0.3.1
+	rand_core-0.4.2
+	rand_core-0.5.1
+	rand_core-0.6.3
+	rand_distr-0.4.3
+	rand_hc-0.2.0
+	rand_pcg-0.2.1
+	rand_xoshiro-0.4.0
+	rayon-1.5.1
+	rayon-core-1.9.1
+	rdrand-0.4.0
+	redox_syscall-0.2.11
+	redox_users-0.4.0
+	reedline-0.3.0
+	regex-1.5.5
+	regex-automata-0.1.10
+	regex-syntax-0.6.25
+	remove_dir_all-0.5.3
+	reqwest-0.11.9
+	result-1.0.0
+	roxmltree-0.14.1
+	rstest-0.12.0
+	rustc-demangle-0.1.21
+	rustc_version-0.4.0
+	rustix-0.33.4
+	rustversion-1.0.6
+	rust-embed-6.3.0
+	rust-embed-impl-6.2.0
+	rust-embed-utils-7.1.0
+	rust_decimal-0.10.2
+	ryu-1.0.9
+	same-file-1.0.6
+	schannel-0.1.19
+	scopeguard-1.1.0
+	scraper-0.12.0
+	security-framework-2.6.1
+	security-framework-sys-2.6.1
+	selectors-0.22.0
+	semver-0.11.0
+	semver-1.0.6
+	semver-parser-0.10.2
+	serde-1.0.136
+	serde_derive-1.0.136
+	serde_ini-0.2.0
+	serde_json-1.0.79
+	serde_test-1.0.136
+	serde_urlencoded-0.7.1
+	serde_yaml-0.8.23
+	serial_test-0.5.1
+	serial_test_derive-0.5.1
+	servo_arc-0.1.1
+	sha2-0.9.9
+	sha2-0.10.2
+	shadow-rs-0.8.1
+	signal-hook-0.3.13
+	signal-hook-mio-0.2.1
+	signal-hook-registry-1.4.0
+	simdutf8-0.1.3
+	siphasher-0.3.10
+	sized-chunks-0.6.5
+	slab-0.4.5
+	smallvec-1.8.0
+	smawk-0.3.1
+	snap-1.0.5
+	socket2-0.4.4
+	spin-0.9.2
+	stable_deref_trait-1.2.0
+	static_assertions-1.1.0
+	streaming-decompression-0.1.0
+	streaming-iterator-0.1.5
+	strength_reduce-0.2.3
+	string_cache-0.8.3
+	string_cache_codegen-0.5.1
+	strip-ansi-escapes-0.1.1
+	strum-0.23.0
+	strum-0.24.0
+	strum_macros-0.23.1
+	strum_macros-0.24.0
+	supports-color-1.3.0
+	supports-hyperlinks-1.2.0
+	supports-unicode-1.0.2
+	sxd-document-0.3.2
+	sxd-xpath-0.4.2
+	syn-1.0.86
+	sysinfo-0.23.5
+	sys-locale-0.1.0
+	tempdir-0.3.7
+	tempfile-3.3.0
+	tendril-0.4.2
+	termcolor-1.1.3
+	terminal_size-0.1.17
+	termtree-0.2.4
+	textwrap-0.14.2
+	thin-slice-0.1.1
+	thiserror-1.0.30
+	thiserror-impl-1.0.30
+	time-0.1.44
+	tinyvec-1.5.1
+	tinyvec_macros-0.1.0
+	titlecase-1.1.0
+	tokio-1.17.0
+	tokio-native-tls-0.3.0
+	tokio-util-0.6.9
+	toml-0.5.8
+	tower-service-0.3.1
+	tracing-0.1.32
+	tracing-core-0.1.23
+	trash-2.0.4
+	try-lock-0.2.3
+	typed-arena-1.7.0
+	typenum-1.15.0
+	typetag-0.1.8
+	typetag-impl-0.1.8
+	ucd-trie-0.1.3
+	umask-1.0.1
+	uncased-0.9.6
+	unicode-bidi-0.3.7
+	unicode-linebreak-0.1.2
+	unicode-normalization-0.1.19
+	unicode-segmentation-1.9.0
+	unicode-width-0.1.9
+	unicode-xid-0.2.2
+	url-2.2.2
+	users-0.11.0
+	utf8parse-0.2.0
+	utf8-width-0.1.5
+	utf-8-0.7.6
+	uuid-0.8.2
+	vcpkg-0.2.15
+	version_check-0.1.5
+	version_check-0.9.4
+	void-1.0.2
+	vswhom-0.1.0
+	vswhom-sys-0.1.1
+	vte-0.10.1
+	vte_generate_state_changes-0.1.1
+	wait-timeout-0.2.0
+	walkdir-2.3.2
+	want-0.3.0
+	wasi-0.9.0+wasi-snapshot-preview1
+	wasi-0.10.0+wasi-snapshot-preview1
+	wasm-bindgen-0.2.79
+	wasm-bindgen-backend-0.2.79
+	wasm-bindgen-futures-0.4.29
+	wasm-bindgen-macro-0.2.79
+	wasm-bindgen-macro-support-0.2.79
+	wasm-bindgen-shared-0.2.79
+	web-sys-0.3.56
+	which-4.2.4
+	winapi-0.3.9
+	winapi-i686-pc-windows-gnu-0.4.0
+	winapi-util-0.1.5
+	winapi-x86_64-pc-windows-gnu-0.4.0
+	windows-0.9.1
+	windows-sys-0.30.0
+	windows-sys-0.32.0
+	windows_aarch64_msvc-0.30.0
+	windows_aarch64_msvc-0.32.0
+	windows_gen-0.9.1
+	windows_i686_gnu-0.30.0
+	windows_i686_gnu-0.32.0
+	windows_i686_msvc-0.30.0
+	windows_i686_msvc-0.32.0
+	windows_macros-0.9.1
+	windows_x86_64_gnu-0.30.0
+	windows_x86_64_gnu-0.32.0
+	windows_x86_64_msvc-0.30.0
+	windows_x86_64_msvc-0.32.0
+	winreg-0.7.0
+	winreg-0.10.1
+	xmlparser-0.13.3
+	yaml-rust-0.4.5
+	zeroize-1.5.3
+	zip-0.5.13
+	zstd-0.10.0+zstd.1.5.2
+	zstd-safe-4.1.4+zstd.1.5.2
+	zstd-sys-1.6.3+zstd.1.5.2
+"
+
+inherit cargo
+
+DESCRIPTION="A new type of shell, written in Rust"
+HOMEPAGE="https://www.nushell.sh"
+SRC_URI="https://github.com/nushell/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	$(cargo_crate_uris)"
+
+LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD Boost-1.0 CC0-1.0 ISC MIT MPL-2.0 Unlicense ZLIB"
+SLOT="0"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+IUSE="+extra"
+
+DEPEND="
+	>=dev-libs/libgit2-0.99:=
+	dev-libs/oniguruma:=
+	dev-libs/openssl:0=
+	net-libs/libssh2:=
+	net-libs/nghttp2:=
+	net-misc/curl
+	extra? (
+		dev-db/sqlite:3=
+		x11-libs/libX11
+		x11-libs/libxcb
+	)
+"
+
+RDEPEND="${DEPEND}"
+
+BDEPEND="
+	>=virtual/rust-1.51
+	virtual/pkgconfig
+"
+
+QA_FLAGS_IGNORED="usr/bin/nu.*"
+
+src_prepare() {
+	default
+
+	if has_version -b '<virtual/rust-1.59.0'; then
+		# This can be dropped once Rust 1.59.0 is stable, but when we drop this we should update the
+		# BDEPEND to require 1.59.0 as well.
+		sed -i '/^strip = .*/d' Cargo.toml || die
+	fi
+}
+
+src_configure() {
+	# high magic to allow system-libs
+	export OPENSSL_NO_VENDOR=true
+	export RUSTONIG_SYSTEM_LIBONIG=1
+	export LIBGIT2_SYS_USE_PKG_CONFIG=1
+	export LIBSSH2_SYS_USE_PKG_CONFIG=1
+	export PKG_CONFIG_ALLOW_CROSS=1
+
+	local myfeatures=(
+		stable
+		$(usev extra)
+	)
+
+	cargo_src_configure
+}
+
+src_compile() {
+	cargo_src_compile --workspace
+}
+
+src_test() {
+	# https://github.com/nushell/nushell/issues/4900
+	export -n PORTAGE_COLORMAP
+
+	cargo_src_test
+}
+
+src_install() {
+	cargo_src_install
+	local DOCS=( README.md docs/. )
+	einstalldocs
+}

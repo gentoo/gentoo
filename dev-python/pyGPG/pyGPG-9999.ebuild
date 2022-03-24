@@ -1,11 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8,9} )
-
-DISTUTILS_USE_SETUPTOOLS=no
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 
 inherit distutils-r1
 
@@ -31,15 +30,15 @@ RDEPEND="${DEPEND}
 	"
 
 pkg_postinst() {
-	einfo
-	einfo "This is experimental software."
-	einfo "The API's it installs should be considered unstable"
-	einfo "and are subject to change."
-	einfo
-	einfo "Please file any enhancement requests, or bugs"
-	einfo "at https://github.com/dol-sen/pyGPG/issues"
-	einfo "I am also on IRC @ #gentoo-ci of the Libera.Chat network"
-	einfo
+	elog
+	elog "This is experimental software."
+	elog "The API's it installs should be considered unstable"
+	elog "and are subject to change."
+	elog
+	elog "Please file any enhancement requests, or bugs"
+	elog "at https://github.com/dol-sen/pyGPG/issues"
+	elog "I am also on IRC @ #gentoo-ci of the Libera.Chat network"
+	elog
 	ewarn "There may be some python 3 compatibility issues still."
 	ewarn "Please help debug/fix/report them in github or bugzilla."
 }

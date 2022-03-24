@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ RDEPEND="
 		media-libs/fontconfig
 		media-libs/freetype
 		x11-libs/libXft
-		elibc_uclibc? ( dev-libs/libiconv )
+		virtual/libiconv
 	)
 	utempter? ( sys-libs/libutempter )
 	xpm? ( x11-libs/libXpm )"
@@ -43,11 +43,6 @@ PATCHES=(
 src_prepare() {
 	default
 	eautoreconf
-
-	if use elibc_uclibc && use truetype; then
-		# It is stated in the README "Multichar support under XFT requires GNU iconv"
-		sed -i -e 's/LIBS = @LIBS@/LIBS = @LIBS@ -liconv/' src/Makefile.in || die
-	fi
 }
 
 src_configure() {

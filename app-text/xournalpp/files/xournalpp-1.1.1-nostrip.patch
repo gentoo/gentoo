@@ -1,0 +1,31 @@
+From 9686113b760cf5838a63ba6bee438ec3b7ab99e8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20K=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>
+Date: Sat, 26 Feb 2022 19:01:17 +0100
+Subject: [PATCH 1/2] Do not explicitly strip the thumbnailer (why?)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Andreas K. Hüttel <dilfridge@gentoo.org>
+---
+ src/xoj-preview-extractor/CMakeLists.txt | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/src/xoj-preview-extractor/CMakeLists.txt b/src/xoj-preview-extractor/CMakeLists.txt
+index 50d1b410..b653d983 100644
+--- a/src/xoj-preview-extractor/CMakeLists.txt
++++ b/src/xoj-preview-extractor/CMakeLists.txt
+@@ -41,10 +41,6 @@ target_include_directories (xournalpp-thumbnailer PRIVATE ${librsvg_INCLUDE_DIRS
+ 
+ set (THUMBNAILER_BIN "xournalpp-thumbnailer")
+ 
+-add_custom_command (TARGET xournalpp-thumbnailer POST_BUILD
+-  COMMAND ${CMAKE_STRIP} ${THUMBNAILER_BIN}
+-)
+-
+ ## Install ##
+ 
+ install (TARGETS xournalpp-thumbnailer
+-- 
+2.34.1
+

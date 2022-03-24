@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8,9,10} )
 PYTHON_REQ_USE="sqlite"
@@ -21,13 +21,19 @@ HOMEPAGE="https://www.qgis.org/"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-IUSE="3d examples georeferencer grass hdf5 mapserver netcdf opencl oracle polar postgres python qml serial"
+IUSE="3d examples georeferencer grass hdf5 mapserver netcdf opencl oracle pdal polar postgres python qml serial"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE} mapserver? ( python )"
 
 # Disabling test suite because upstream disallow running from install path
 RESTRICT="test"
 
+# 3.22.5+ *does* support GRASS 8 but we can't enable it yet because of
+# https://github.com/OSGeo/grass/pull/2269 (=> unresolved SONAME dependencies)
+# Keep an eye on that bug / a fixed GRASS release and readd support
+# by unrestricting the dep in ${COMMON_DEPEND} once it's fixed!
+# (No need to change the supported GRASS versions in src_configure b/c
+# it won't find GRASS 8 with this dependency set.)
 COMMON_DEPEND="
 	app-crypt/qca:2[qt5(+),ssl]
 	>=dev-db/spatialite-4.2.0
@@ -66,6 +72,7 @@ COMMON_DEPEND="
 		dev-db/oracle-instantclient:=
 		sci-libs/gdal:=[oracle]
 	)
+	pdal? ( sci-libs/pdal:= )
 	polar? ( >=x11-libs/qwtpolar-1.1.1-r1[qt5(+)] )
 	postgres? ( dev-db/postgresql:= )
 	python? (
@@ -133,13 +140,13 @@ src_configure() {
 		-DENABLE_TESTS=OFF
 		-DWITH_3D=$(usex 3d)
 		-DWITH_GSL=$(usex georeferencer)
-		-DWITH_GRASS7=$(usex grass)
 		$(cmake_use_find_package hdf5 HDF5)
 		-DWITH_SERVER=$(usex mapserver)
 		$(cmake_use_find_package netcdf NetCDF)
 		-DUSE_OPENCL=$(usex opencl)
 		-DWITH_ORACLE=$(usex oracle)
 		-DWITH_QWTPOLAR=$(usex polar)
+		-DWITH_PDAL=$(usex pdal)
 		-DWITH_POSTGRESQL=$(usex postgres)
 		-DWITH_BINDINGS=$(usex python)
 		-DWITH_CUSTOM_WIDGETS=$(usex python)
@@ -148,13 +155,51 @@ src_configure() {
 		-DWITH_QTWEBKIT=OFF
 	)
 
+	# We list all supported versions *by upstream for this version*
+	# here, even if we're not allowing it (e.g. bugs for now), so
+	# we enable/disable all the right versions. This is so qgis doesn't
+	# try to automatically use a version the build system knows about.
+	local supported_grass_versions=( 7 8 )
 	if use grass; then
+		# We can do this because we have a := dep on grass &
+		# it changes subslot (ABI) when major versions change, so
+		# the logic here doesn't end up becoming stale.
 		readarray -d'-' -t f <<<"$(best_version sci-geosciences/grass)"
 		readarray -d'.' -t v <<<"${f[2]}"
 		grassdir="grass${v[0]}${v[1]}"
 
 		GRASSDIR=/usr/$(get_libdir)/${grassdir}
-		mycmakeargs+=( -DGRASS_PREFIX7=${GRASSDIR} )
+
+		einfo "Supported versions: ${supported_grass_versions[@]}"
+		einfo "Found GRASS version: ${v[0]}*"
+
+		local known_grass_version
+		# GRASS isn't slotted (in Gentoo, anyway) so we pick
+		# the best version we can to build against, and disable the others.
+		for known_grass_version in "${supported_grass_versions[@]}" ; do
+			case "${known_grass_version}" in
+				"${v[0]}")
+					einfo "GRASS version ${known_grass_version} is supported. Enabling."
+					mycmakeargs+=(
+						"-DGRASS_PREFIX${known_grass_version}=${GRASSDIR}"
+						"-DWITH_GRASS${known_grass_version}=ON"
+					)
+					;;
+				*)
+					einfo "GRASS version ${known_grass_version} is not supported or not latest found. Disabling."
+					mycmakeargs+=(
+						"-DWITH_GRASS${known_grass_version}=OFF"
+					)
+					;;
+			esac
+		done
+	else
+		local known_grass_version
+		for known_grass_version in "${supported_grass_versions[@]}" ; do
+			mycmakeargs+=(
+				"-DWITH_GRASS${known_grass_version}=OFF"
+			)
+		done
 	fi
 
 	use python && mycmakeargs+=( -DBINDINGS_GLOBAL_INSTALL=ON ) ||

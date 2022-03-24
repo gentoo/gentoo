@@ -22,7 +22,7 @@ IUSE="cpu_flags_x86_sse4_1 donate hwloc opencl +ssl"
 
 DEPEND="
 	dev-libs/libuv:=
-	hwloc? ( sys-apps/hwloc:= )
+	hwloc? ( >=sys-apps/hwloc-2.5.0:= )
 	opencl? ( virtual/opencl )
 	ssl? ( dev-libs/openssl:= )
 "

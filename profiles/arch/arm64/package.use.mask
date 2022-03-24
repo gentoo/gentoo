@@ -1,8 +1,33 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# Untested useflag on other arches, needs keywording
+media-video/ffmpeg vmaf
+
+# Sam James <sam@gentoo.org> (2022-02-26)
+# Supports 64-bit NEON
+>=media-libs/libjpeg-turbo-2.1.3 -cpu_flags_arm_neon
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-01-11)
+# Mask AMF keyword on non-amd64 arches
+# It is unusable, for now, in other arches
+media-video/ffmpeg amf
+
+# Sam James <sam@gentoo.org> (2022-02-02)
+# sys-cluster/knem is not keyworded on arm64
+sys-cluster/openmpi openmpi_fabrics_knem
+
+# Sam James <sam@gentoo.org> (2022-02-01)
+# sys-cluster/ucx is not keyworded on arm64
+sys-cluster/slurm ucx
+
+# Sam James <sam@gentoo.org> (2022-01-22)
+# Supports 64-bit NEON
+dev-libs/libgcrypt -cpu_flags_arm_neon
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-16)
-# requires sys-apps/dbus-broker, which keyworded here.
+# requires sys-apps/dbus-broker, which is keyworded here.
 sys-apps/systemd -hostnamed-fallback
 
 # Sam James <sam@gentoo.org> (2021-10-31)
@@ -39,18 +64,13 @@ sys-boot/grub grub_platforms_qemu grub_platforms_uboot
 dev-util/diffoscope pascal
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-18)
-# media-libs/rnnoise, media-plugins/gst-plugins-webrtc
-# and media-plugins/zam-plugins not keyworded here
-media-sound/easyeffects rnnoise webrtc zamaudio
+# media-plugins/zam-plugins not keyworded here
+media-sound/easyeffects zamaudio
 
 # Sam James <sam@gentoo.org> (2021-04-14)
 # Supports 64-bit NEON
 # Note: libpng-compat 1.5.30 does NOT seem to.
 media-libs/libpng -cpu_flags_arm_neon
-
-# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
-# Unmask TPM on supported archs.
-sys-apps/systemd -tpm
 
 # Sam James <sam@gentoo.org> (2021-03-20)
 # Supports both 'neon32' and 'neon64'
@@ -107,10 +127,6 @@ net-proxy/haproxy device-atlas
 # Roy Bamford <neddyseagoon@gentoo.org< (2020-12-07)
 # media-libs/liblastfm fails to build with tests Bug #758896
 media-sound/clementine lastfm
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-08)
-# dev-util/kdevelop-php is not keyworded, bug #751337
->=kde-apps/umbrello-20.08.3 php
 
 # Sam James <sam@gentoo.org> (2020-10-03)
 # Builds & tests pass on arm64.
@@ -172,10 +188,6 @@ lxqt-base/lxqt-meta archiver
 # static-pie works on arm64, #719444
 sys-libs/glibc -static-pie
 
-# Lars Wendler <polynomial-c@gentoo.org> (2020-04-20)
-# Not keyworded on arm64
-net-misc/whois xcrypt
-
 # Patrick McLean <chutzpah@gentoo.org> (2019-03-26)
 # Some test deps aren't keyworded on arm64
 dev-python/kazoo test
@@ -229,10 +241,6 @@ sys-apps/flashrom jlink-spi
 # Aaron Bauman <bman@gentoo.org> (2019-08-05)
 # dep not keyworded here
 media-gfx/gnome-photos upnp-av
-
-# Aaron Bauman <bman@gentoo.org> (2019-04-08)
-# app-text/dblatex not keyword yet
-net-firewall/nftables doc
 
 # Roy Bamford <neddyseagoon@gentoo.org> (2019-03-11)
 # net-misc/dropbox is binary amd64/x86 only
@@ -299,7 +307,6 @@ dev-cpp/eigen test
 mate-base/mate help
 mate-base/mate-applets-meta appindicator sensors
 mate-extra/caja-extensions gajim
-net-fs/samba dmapi
 sci-libs/gdal armadillo netcdf
 sys-fs/btrfs-progs reiserfs
 www-client/chromium widevine
@@ -316,11 +323,8 @@ dev-ruby/haml test
 net-libs/gnutls test-full
 
 # Mart Raudsepp <leio@gentoo.org> (2018-02-13)
-# USE=dmraid requires sys-fs/dmraid that is not keyworded yet.
-sys-libs/libblockdev dmraid
-
-# Mart Raudsepp <leio@gentoo.org> (2018-02-13)
 # USE=upnp-av requires net-misc/dleyna-server that is not keyworded yet.
+media-sound/rhythmbox upnp-av
 >=media-plugins/grilo-plugins-0.3.5 upnp-av
 
 # Mart Raudsepp <leio@gentoo.org> (2018-02-13)
@@ -356,11 +360,6 @@ media-sound/mumble g15
 # media-libs/libemf fails with #error unknown CPU.
 media-gfx/pstoedit emf
 
-# Alexis Ballier <aballier@gentoo.org> (2017-07-14)
-# zfs does not build on arm64 (yet?)
-app-emulation/libvirt zfs
-sys-cluster/ceph zfs
-
 # Alexis Ballier <aballier@gentoo.org> (2017-07-10)
 # openvz-sources are likely too old for any proper arm64 usage
 app-emulation/libvirt openvz
@@ -394,7 +393,6 @@ net-libs/libpcap bluetooth
 # Not yet tested features/dependencies
 app-text/evince dvi nautilus postscript t1lib xps
 net-wireless/blueman appindicator
-x11-libs/gtk+ cloudprint
 
 # Markus Meier <maekke@gentoo.org> (2013-12-26)
 # Unkeyworded deps, bug #488724
@@ -404,13 +402,9 @@ app-office/gnumeric libgda
 # Missing keywords, bug #492820
 net-im/telepathy-connection-managers sipe
 
-# Pacho Ramos <pacho@gentoo.org> (2013-10-31)
-# Missing keywords, bug #478254
-gnome-base/gnome classic
-
 # Sergey Popov <pinkbyte@gentoo.org> (2013-09-06)
 # sci-libs/hdf does not build properly on arm
-dev-perl/PDL	hdf
+dev-perl/PDL hdf
 
 # Markus Meier <maekke@gentoo.org> (2013-08-04)
 # Unkeyworded deps, bug #474026

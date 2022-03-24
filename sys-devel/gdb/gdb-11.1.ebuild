@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -47,7 +47,7 @@ LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 
 if [[ ${PV} != 9999* ]] ; then
-	KEYWORDS="~alpha amd64 ~arm arm64 hppa ~ia64 ~m68k ~mips ppc ~ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 IUSE="cet guile lzma multitarget nls +python +server source-highlight test vanilla xml xxhash"
@@ -99,7 +99,7 @@ src_prepare() {
 	default
 
 	strip-linguas -u bfd/po opcodes/po
-	export CC_FOR_BUILD=$(tc-getBUILD_CC)
+	export CC_FOR_BUILD="$(tc-getBUILD_CC)"
 
 	# avoid using ancient termcap from host on Prefix systems
 	sed -i -e 's/termcap tinfow/tinfow/g' \
@@ -193,6 +193,9 @@ src_configure() {
 	# source-highlight is detected with pkg-config: bug #716558
 	export ac_cv_path_pkg_config_prog_path="$(tc-getPKG_CONFIG)"
 
+	# ensure proper compiler is detected for Clang builds: bug #831202
+	export GCC_FOR_TARGET="${CC_FOR_TARGET:-$(tc-getCC)}"
+
 	econf "${myconf[@]}"
 }
 
@@ -244,11 +247,6 @@ src_install() {
 
 	# Remove shared info pages
 	rm -f "${ED}"/usr/share/info/{annotate,bfd,configure,standards}.info*
-
-	# gcore is part of ubin on freebsd
-	if [[ ${CHOST} == *-freebsd* ]]; then
-		rm "${ED}"/usr/bin/gcore || die
-	fi
 
 	if use python; then
 		python_optimize "${ED}"/usr/share/gdb/python/gdb

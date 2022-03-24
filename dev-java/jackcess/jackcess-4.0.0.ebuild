@@ -12,7 +12,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="A pure Java library for reading from and writing to MS Access databases."
+DESCRIPTION="A pure Java library for reading from and writing to MS Access databases"
 HOMEPAGE="https://jackcess.sourceforge.io"
 SRC_URI="https://github.com/jahlborn/${PN}/archive/refs/tags/${P}.tar.gz -> ${P}-sources.tar.gz"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: texlive-common.eclass
@@ -19,7 +19,7 @@ _TEXLIVE_COMMON_ECLASS=1
 
 case ${EAPI:-0} in
 	[0-6]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
-	7)     ;;
+	7)     inherit eapi8-dosym ;;
 	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
 esac
 
@@ -46,7 +46,7 @@ texlive-common_handle_config_files() {
 		dodir /etc/texmf/$(dirname ${f}).d
 		einfo "Moving (and symlinking) ${EPREFIX}${TEXMF_PATH}/${f} to ${EPREFIX}/etc/texmf/$(dirname ${f}).d"
 		mv "${ED}/${TEXMF_PATH}/${f}" "${ED}/etc/texmf/$(dirname ${f}).d" || die "mv ${f} failed."
-		dosym /etc/texmf/$(dirname ${f}).d/$(basename ${f}) ${TEXMF_PATH}/${f}
+		dosym8 -r /etc/texmf/$(dirname ${f}).d/$(basename ${f}) ${TEXMF_PATH}/${f}
 	done < <(find  -name '*.cnf' -type f -o -name '*.cfg' -type f | sed -e "s:\./::g")
 }
 

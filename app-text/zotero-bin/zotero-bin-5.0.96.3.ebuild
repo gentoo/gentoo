@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,6 +22,7 @@ RDEPEND="
 	media-libs/fontconfig
 	media-libs/freetype
 	sys-apps/dbus
+	sys-libs/glibc
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:2
@@ -41,7 +42,7 @@ RDEPEND="
 
 S="${WORKDIR}/Zotero_linux-x86_64"
 
-QA_PREBUILT="/opt/zotero/*"
+QA_PREBUILT="opt/zotero/*"
 
 src_prepare() {
 	# disable auto-update

@@ -19,7 +19,7 @@ else
 	SRC_URI+=" verify-sig? ( https://download.tuxfamily.org/chrony/${P/_/-}-tar-gz-asc.txt -> ${P/_/-}.tar.gz.asc )"
 
 	if [[ ${PV} != *_pre* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	fi
 fi
 
@@ -70,12 +70,12 @@ if [[ ${PV} == "9999" ]] ; then
 	REQUIRED_USE+=" html"
 	BDEPEND+=" virtual/w3m"
 else
-	BDEPEND+=" verify-sig? ( >=app-crypt/openpgp-keys-mlichvar-20210513 )"
+	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-mlichvar-20210513 )"
 fi
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-pool-vendor-gentoo.patch
-	"${FILESDIR}"/${PN}-4.1-systemd-gentoo.patch
+	"${FILESDIR}"/${PN}-4.2-systemd-gentoo.patch
 )
 
 src_prepare() {

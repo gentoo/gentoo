@@ -16,7 +16,7 @@ SRC_URI="${ADAMIRROR}/${ID}?filename=${MYP}.tar.gz -> ${MYP}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+shared static-libs"
 
 RDEPEND="${ADA_DEPS}
@@ -31,13 +31,15 @@ RDEPEND="${ADA_DEPS}
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 
-REQUIRED_USE="${ADA_REQUIRED_USE}"
+REQUIRED_USE="${ADA_REQUIRED_USE}
+	|| ( shared static-libs )"
 
 S="${WORKDIR}"/${MYP}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2017-r1-gentoo.patch
 	"${FILESDIR}"/${PN}-2019-gentoo.patch
+	"${FILESDIR}"/${P}-uninstall.patch
 )
 
 src_prepare() {
@@ -58,6 +60,8 @@ src_compile() {
 }
 
 src_install() {
-	emake -j1 DESTDIR="${D}"
+	emake -j1 DESTDIR="${D}" install
 	einstalldocs
+	mv "${D}"/usr/share/doc/${PN}/${PN}_* "${D}"/usr/share/doc/${PF} || die
+	rmdir "${D}"/usr/share/doc/${PN} || die
 }

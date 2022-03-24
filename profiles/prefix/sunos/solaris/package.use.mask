@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 
@@ -25,7 +25,3 @@ app-text/poppler introspection
 # Fabian Groffen <grobian@gentoo.org> (2011-04-24)
 # kms seems linux only, bug #319285
 x11-libs/libdrm libkms
-
-# Jeremy Olexa <darkside@gentoo.org> (2008-12-03)
-# Fails to compile on Solaris, bug #245659
-media-gfx/inkscape lcms

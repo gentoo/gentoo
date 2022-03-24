@@ -1,7 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+# Please bump with dev-lang/tk!
 
 inherit autotools flag-o-matic multilib-minimal multilib toolchain-funcs
 
@@ -13,7 +15,7 @@ SRC_URI="mirror://sourceforge/tcl/${PN}-core${PV}-src.tar.gz"
 
 LICENSE="tcltk"
 SLOT="0/8.6"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug +threads"
 
 RDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]"
@@ -96,7 +98,7 @@ multilib_src_install() {
 		-e "/^TCL_BUILD_STUB_LIB_PATH=/s:$(pwd):${EPREFIX}/usr/${mylibdir}:g" \
 		-e "/^TCL_LIBW_FILE=/s:'libtcl${v1}..TCL_DBGX..so':\"libtcl${v1}\$\{TCL_DBGX\}.so\":g" \
 		-i "${ED}"/usr/${mylibdir}/tclConfig.sh || die
-	if use prefix && [[ ${CHOST} != *-darwin* && ${CHOST} != *-mint* ]] ; then
+	if use prefix && [[ ${CHOST} != *-darwin* ]] ; then
 		sed \
 			-e "/^TCL_CC_SEARCH_FLAGS=/s|'$|:${EPREFIX}/usr/${mylibdir}'|g" \
 			-e "/^TCL_LD_SEARCH_FLAGS=/s|'$|:${EPREFIX}/usr/${mylibdir}'|" \
@@ -118,19 +120,4 @@ multilib_src_install() {
 		dosym tclsh${v1} /usr/bin/tclsh
 		dodoc "${SPARENT}"/{ChangeLog*,README.md,changes}
 	fi
-}
-
-pkg_postinst() {
-	for version in ${REPLACING_VERSIONS}; do
-		if ver_test 8.6 -lt ${version}; then
-			echo
-			ewarn "You're upgrading from <${P}, you must recompile the other"
-			ewarn "packages on your system that link with tcl after the upgrade"
-			ewarn "completes. To perform this action, please run revdep-rebuild"
-			ewarn "in package app-portage/gentoolkit."
-			ewarn "If you have dev-lang/tk and dev-tcltk/tclx installed you should"
-			ewarn "upgrade them before this recompilation, too,"
-			echo
-		fi
-	done
 }

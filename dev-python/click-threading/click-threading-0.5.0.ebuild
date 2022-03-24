@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{7..10} )
 
 inherit distutils-r1
 
-DESCRIPTION="Multithreaded Click apps made easy."
+DESCRIPTION="Multithreaded Click apps made easy"
 HOMEPAGE="
 	https://github.com/click-contrib/click-threading/
 	https://pypi.org/project/click-threading/"
@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 
 RDEPEND=">=dev-python/click-5.0[${PYTHON_USEDEP}]"
 

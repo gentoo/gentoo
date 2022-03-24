@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ARCH="hppa"
@@ -9,8 +9,6 @@ CFLAGS="-O2 -pipe"
 CXXFLAGS="${CFLAGS}"
 
 FEATURES="sandbox sfperms strict"
-
-USE="cups foomaticdb fortran gdbm gpm imlib libwww spell firefox"
 
 # Michał Górny <mgorny@gentoo.org> (2014-07-01)
 # Set ABI & DEFAULT_ABI consistently with ${ARCH}, to make ebuild

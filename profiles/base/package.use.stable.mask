@@ -1,8 +1,23 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
+
+# Sam James <sam@gentoo.org> (2022-02-11)
+# Needs glibc-2.35(?) (or <2.34) which is not yet even keyworded but
+# won't be stable for a while. Can be unmasked then.
+# bug #806079
+sys-apps/nvme-cli hugepages
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-12-24)
+# test deps are not stable
+>=sys-fs/zfs-2.0.7 test-suite
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-12-19)
+# test deps are not stable and tests do not work
+# due to network access issues #829430
+net-libs/grpc test
 
 # Ben Kohler <bkohler@gentoo.org> (2021-11-27)
 # net-misc/pyhoca-cli and several of its deps will need stable first
@@ -78,10 +93,6 @@ app-emulation/xen-tools doc
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
 # dev-util/shellcheck (dev-lang/ghc) has no stable keywords.
 app-emulation/winetricks test
-
-# Adam Feldman <NP-Hardass@gentoo.org> (2020-04-12)
-# Dependency (net-wireless/blueman) has no stable keywords
-mate-base/mate bluetooth
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-21)
 # For bleeding edge features and testing, not generally suitable

@@ -1,0 +1,11 @@
+diff --git a/lowdown.in.pc b/lowdown.in.pc
+index 078d0c0..a31aaac 100644
+--- a/lowdown.in.pc
++++ b/lowdown.in.pc
+@@ -9,5 +9,5 @@ URL: https://kristaps.bsd.lv/lowdown
+ Version: @VERSION@
+ Requires:
+ Libs.private: 
+-Libs: -L${libdir} -llowdown -lm
++Libs: -L${libdir} -llowdown -lm -lmd
+ Cflags: -I${includedir}

@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,12 +16,11 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ~ppc ~ppc64 ~riscv sparc x86"
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]
 	test? (
 		dev-python/astroid[${PYTHON_USEDEP}]
 	)"

@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
-DESCRIPTION="A Python data validation library."
+DESCRIPTION="A Python data validation library"
 HOMEPAGE="https://github.com/alecthomas/voluptuous"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

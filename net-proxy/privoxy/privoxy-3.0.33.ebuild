@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ graceful-termination +image-blocking ipv6 +jit lfs +mbedtls openssl
 png-images sanitize selinux ssl +stats +threads toggle tools whitelists
 +zlib"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ppc ppc64 ~riscv sparc x86"
 LICENSE="GPL-2+"
 
 DEPEND="
@@ -96,6 +96,7 @@ src_configure() {
 	#	since docs are already pregenerated in the source tarball
 	econf \
 		--sysconfdir=/etc/privoxy \
+		--disable-accept-filter \
 		--enable-dynamic-pcre \
 		--without-assertions \
 		--with-user=privoxy \
@@ -113,7 +114,6 @@ src_configure() {
 		$(use_enable image-blocking) \
 		$(use_enable jit pcre-jit-compilation) \
 		$(use_enable ipv6 ipv6-support) \
-		$(use_enable kernel_FreeBSD accept-filter) \
 		$(use_enable lfs large-file-support) \
 		$(use_enable png-images no-gifs) \
 		$(use_enable stats) \

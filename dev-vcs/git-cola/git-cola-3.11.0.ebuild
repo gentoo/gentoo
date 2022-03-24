@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,7 +34,6 @@ BDEPEND="sys-devel/gettext
 		test? (
 			${VIRTUALX_DEPEND}
 			dev-python/pytest[\${PYTHON_USEDEP}]
-			dev-python/pytest-flake8[\${PYTHON_USEDEP}]
 			dev-python/mock[\${PYTHON_USEDEP}]
 			dev-python/PyQt5[\${PYTHON_USEDEP},gui,widgets]
 		)
@@ -57,6 +56,9 @@ python_prepare_all() {
 
 	# fix ssh-askpass directory reference
 	sed -i -e 's/resources\.share/resources\.prefix/' cola/app.py || die
+
+	# disable flake8 testing, it's not useful for ebuilds
+	sed -i -e 's:--flake8::' pytest.ini || die
 
 	distutils-r1_python_prepare_all
 }

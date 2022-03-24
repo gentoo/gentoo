@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -127,7 +127,7 @@ zstd-safe-2.0.5+zstd.1.4.5
 zstd-sys-1.4.17+zstd.1.4.5
 "
 
-inherit bash-completion-r1 cargo elisp-common distutils-r1 flag-o-matic multiprocessing
+inherit bash-completion-r1 cargo elisp-common distutils-r1 flag-o-matic multiprocessing toolchain-funcs
 
 DESCRIPTION="Scalable distributed SCM"
 HOMEPAGE="https://www.mercurial-scm.org/"
@@ -188,7 +188,6 @@ src_compile() {
 
 python_compile() {
 	filter-flags -ftracer -ftree-vectorize
-	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
 	if use rust; then
 		local -x HGWITHRUSTEXT="cpython"
 	fi
@@ -269,6 +268,13 @@ src_test() {
 	rm -f test-convert-tla*		# GNU Arch tla
 	rm -f test-largefiles*		# tends to time out
 	rm -f test-https*			# requires to support tls1.0
+	if [[ $(tc-endian) == "big" ]]; then
+		# tests no working on big-endian
+		# https://bz.mercurial-scm.org/show_bug.cgi?id=6607
+		rm -f test-clone-uncompressed.t
+		rm -f test-generaldelta.t
+		rm -f test-persistent-nodemap.t
+	fi
 	if [[ ${EUID} -eq 0 ]]; then
 		einfo "Removing tests which require user privileges to succeed"
 		rm -f test-convert*
@@ -284,11 +290,13 @@ src_test() {
 }
 
 python_test() {
-	local TEST_DIR
-
+	if [[ ${EPYTHON} == python3.10 ]]; then
+		einfo "Skipping tests for unsupported Python 3.10"
+		return
+	fi
 	distutils_install_for_testing
 	cd tests || die
-	"${PYTHON}" run-tests.py \
+	PYTHONWARNINGS=ignore "${PYTHON}" run-tests.py \
 		--jobs $(makeopts_jobs) \
 		--timeout 0 \
 		|| die "Tests fail with ${EPYTHON}"

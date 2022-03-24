@@ -1,0 +1,143 @@
+https://github.com/telmich/gpm/commit/d88fb1de5803c366ab62f7de9ee5d83207fb2afe
+https://github.com/telmich/gpm/commit/4a938233fbe6de7af05aabc74891b68d4bae40f8
+https://bugs.gentoo.org/829581
+
+From: Dima Krasner <dima@dimakrasner.com>
+Date: Wed, 12 Nov 2014 23:06:46 +0200
+Subject: [PATCH] Added musl support to libgpm and the daemon.
+
+--- a/src/daemon/open_console.c
++++ b/src/daemon/open_console.c
+@@ -21,6 +21,7 @@
+ 
+ #include <fcntl.h>                  /* open and co.      */
+ #include <sys/stat.h>               /* stat()            */
++#include <sys/types.h>              /* major()           */
+ #include <sys/ioctl.h>              /* ioctl             */
+ 
+ /* Linux specific (to be outsourced in gpm2 */
+--- a/src/prog/display-buttons.c
++++ b/src/prog/display-buttons.c
+@@ -36,6 +36,7 @@
+ #include <stdio.h>            /* printf()             */
+ #include <time.h>             /* time()               */
+ #include <errno.h>            /* errno                */
++#include <sys/select.h>       /* fd_set and FD_*      */
+ #include <gpm.h>              /* gpm information      */
+ 
+ /* display resulting data */
+--- a/src/prog/display-coords.c
++++ b/src/prog/display-coords.c
+@@ -38,6 +38,7 @@
+ #include <stdio.h>            /* printf()             */
+ #include <time.h>             /* time()               */
+ #include <errno.h>            /* errno                */
++#include <sys/select.h>       /* fd_set and FD_*      */
+ #include <gpm.h>              /* gpm information      */
+ 
+ /* display resulting data */
+--- a/src/prog/gpm-root.y
++++ b/src/prog/gpm-root.y
+@@ -1199,9 +1199,9 @@ int main(int argc, char **argv)
+ #if defined(__GLIBC__)
+    __sigemptyset(&childaction.sa_mask);
+ #else /* __GLIBC__ */
+-   childaction.sa_mask=0;
++   sigemptyset(&childaction.sa_mask);
+ #endif /* __GLIBC__ */
+-   childaction.sa_flags=SA_INTERRUPT; /* need to break the select() call */
++   childaction.sa_flags=0;
+    sigaction(SIGCHLD,&childaction,NULL);
+ 
+    /*....................................... Connect and get your buffer */
+
+From: Kurt Nalty <46026992+kurtnalty@users.noreply.github.com>
+Date: Sat, 29 Dec 2018 23:44:24 -0600
+Subject: [PATCH 1/4] Update gpm.c
+
+--- a/src/daemon/gpm.c
++++ b/src/daemon/gpm.c
+@@ -29,7 +29,7 @@
+ #include <signal.h>        /* SIGPIPE */
+ #include <time.h>          /* time() */
+ #include <sys/param.h>
+-#include <sys/fcntl.h>     /* O_RDONLY */
++#include <fcntl.h>         /* O_RDONLY */
+ #include <sys/wait.h>      /* wait()   */
+ #include <sys/stat.h>      /* mkdir()  */
+ #include <sys/time.h>      /* timeval */
+
+From: Kurt Nalty <46026992+kurtnalty@users.noreply.github.com>
+Date: Sat, 29 Dec 2018 23:47:17 -0600
+Subject: [PATCH 2/4] Add include <string.h>
+
+Added
+ line 28, #include <string.h>                 /* strcpy, bzero     */
+for musl compilation
+--- a/src/daemon/old_main.c
++++ b/src/daemon/old_main.c
+@@ -25,6 +25,7 @@
+ #include <signal.h>                 /* guess again       */
+ #include <errno.h>                  /* guess again       */
+ #include <unistd.h>                 /* unlink            */
++#include <string.h>                 /* strcpy, bzero     */
+ #include <sys/stat.h>               /* chmod             */
+ 
+ #include <linux/kd.h>               /* linux hd*         */
+
+From: Kurt Nalty <46026992+kurtnalty@users.noreply.github.com>
+Date: Sat, 29 Dec 2018 23:52:58 -0600
+Subject: [PATCH 3/4] Update liblow.c for musl compatible
+
+Changed #include <sys/fcntl.h>   to    #include <fcntl.h>
+Changed SA_NOMASK to SA_NODEFER on lines 176, 367
+--- a/src/lib/liblow.c
++++ b/src/lib/liblow.c
+@@ -33,7 +33,7 @@
+ #include <sys/types.h>     /* socket() */
+ #include <sys/socket.h>    /* socket() */
+ #include <sys/un.h>        /* struct sockaddr_un */
+-#include <sys/fcntl.h>     /* O_RDONLY */
++#include <fcntl.h>     /* O_RDONLY */
+ #include <sys/stat.h>      /* stat() */
+ 
+ #ifdef  SIGTSTP         /* true if BSD system */
+@@ -173,7 +173,7 @@ static void gpm_suspend_hook (int signum)
+   /* Reincarnation. Prepare for another death early. */
+   sigemptyset(&sa.sa_mask);
+   sa.sa_handler = gpm_suspend_hook;
+-  sa.sa_flags = SA_NOMASK;
++  sa.sa_flags = SA_NODEFER;
+   sigaction (SIGTSTP, &sa, 0);
+ 
+   /* Pop the gpm stack by closing the useless connection */
+@@ -364,7 +364,7 @@ int Gpm_Open(Gpm_Connect *conn, int flag)
+ 
+          /* if signal was originally ignored, job control is not supported */
+          if (gpm_saved_suspend_hook.sa_handler != SIG_IGN) {
+-            sa.sa_flags = SA_NOMASK;
++            sa.sa_flags = SA_NODEFER;
+             sa.sa_handler = gpm_suspend_hook;
+             sigaction(SIGTSTP, &sa, 0);
+          }
+
+From: Kurt Nalty <46026992+kurtnalty@users.noreply.github.com>
+Date: Mon, 31 Dec 2018 18:41:19 -0600
+Subject: [PATCH 4/4] Aligned comments
+
+--- a/src/lib/liblow.c
++++ b/src/lib/liblow.c
+@@ -29,11 +29,12 @@
+ #include <string.h>        /* strncmp */
+ #include <unistd.h>        /* select(); */
+ #include <errno.h>
++#include <fcntl.h>         /* O_RDONLY */
++
+ #include <sys/time.h>      /* timeval */
+ #include <sys/types.h>     /* socket() */
+ #include <sys/socket.h>    /* socket() */
+ #include <sys/un.h>        /* struct sockaddr_un */
+-#include <fcntl.h>     /* O_RDONLY */
+ #include <sys/stat.h>      /* stat() */
+ 
+ #ifdef  SIGTSTP         /* true if BSD system */

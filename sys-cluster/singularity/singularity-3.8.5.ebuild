@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,8 @@ EAPI=8
 inherit linux-info toolchain-funcs
 
 DESCRIPTION="Application containers for Linux"
-HOMEPAGE="https://sylabs.io"
-SRC_URI="https://github.com/hpcng/${PN}/releases/download/v${PV}/${P}.tar.gz"
+HOMEPAGE="https://github.com/apptainer/singularity"
+SRC_URI="https://github.com/apptainer/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"
@@ -36,10 +36,10 @@ src_configure() {
 		-x "$(tc-getBUILD_CXX)" \
 		-C "$(tc-getCC)" \
 		-X "$(tc-getCXX)" \
-		--prefix=/usr \
-		--sysconfdir=/etc \
-		--runstatedir=/run \
-		--localstatedir=/var \
+		--prefix="${EPREFIX}"/usr \
+		--sysconfdir="${EPREFIX}"/etc \
+		--runstatedir="${EPREFIX}"/run \
+		--localstatedir="${EPREFIX}"/var \
 		$(usex network "" "--without-network") \
 		$(usex suid "" "--without-suid")
 	)
@@ -51,7 +51,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${ED}" -C builddir install
+	emake DESTDIR="${D}" -C builddir install
 	keepdir /var/singularity/mnt/session
 
 	# As of version 3.5.3 this seems to be very much broken, affecting

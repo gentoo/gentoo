@@ -18,6 +18,14 @@
 			Build the Cloud workbench, to access cloud providers (mostly
 			Amazon S3).
 		</flag>
+		<flag name="drawing">
+			Build the Drawing workbench, a predecessor to the TechDraw workbench.
+			Users are encouraged to learn how to use the TechDraw workbench and
+			switch to it instead.
+
+			This is a compatibility option and will be removed in a later (0.20+)
+			version of the package.
+		</flag>
 		<flag name="fem">
 			Build the FEM module and workbench which provides Finite Element 
 			Analysis (FEA) workflows

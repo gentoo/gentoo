@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ecm.eclass
@@ -29,7 +29,7 @@ esac
 if [[ -z ${_ECM_ECLASS} ]]; then
 _ECM_ECLASS=1
 
-# @ECLASS-VARIABLE: VIRTUALX_REQUIRED
+# @ECLASS_VARIABLE: VIRTUALX_REQUIRED
 # @DESCRIPTION:
 # For proper description see virtualx.eclass manpage.
 # Here we redefine default value to be manual, if your package needs virtualx
@@ -38,7 +38,7 @@ _ECM_ECLASS=1
 
 inherit cmake flag-o-matic toolchain-funcs virtualx
 
-# @ECLASS-VARIABLE: ECM_NONGUI
+# @ECLASS_VARIABLE: ECM_NONGUI
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # By default, for all CATEGORIES except kde-frameworks, assume we are building
@@ -54,31 +54,31 @@ if [[ ${ECM_NONGUI} = false ]] ; then
 	inherit xdg
 fi
 
-# @ECLASS-VARIABLE: ECM_KDEINSTALLDIRS
+# @ECLASS_VARIABLE: ECM_KDEINSTALLDIRS
 # @DESCRIPTION:
 # Assume the package is using KDEInstallDirs macro and switch
 # KDE_INSTALL_USE_QT_SYS_PATHS to ON. If set to "false", do nothing.
 : ${ECM_KDEINSTALLDIRS:=true}
 
-# @ECLASS-VARIABLE: ECM_DEBUG
+# @ECLASS_VARIABLE: ECM_DEBUG
 # @DESCRIPTION:
 # Add "debug" to IUSE. If !debug, add -DQT_NO_DEBUG to CPPFLAGS. If set to
 # "false", do nothing.
 : ${ECM_DEBUG:=true}
 
-# @ECLASS-VARIABLE: ECM_DESIGNERPLUGIN
+# @ECLASS_VARIABLE: ECM_DESIGNERPLUGIN
 # @DESCRIPTION:
 # If set to "true", add "designer" to IUSE to toggle build of designer plugins
 # and add the necessary BDEPEND. If set to "false", do nothing.
 : ${ECM_DESIGNERPLUGIN:=false}
 
-# @ECLASS-VARIABLE: ECM_EXAMPLES
+# @ECLASS_VARIABLE: ECM_EXAMPLES
 # @DESCRIPTION:
 # By default unconditionally ignore a top-level examples subdirectory.
 # If set to "true", add "examples" to IUSE to toggle adding that subdirectory.
 : ${ECM_EXAMPLES:=false}
 
-# @ECLASS-VARIABLE: ECM_HANDBOOK
+# @ECLASS_VARIABLE: ECM_HANDBOOK
 # @DESCRIPTION:
 # Will accept "true", "false", "optional", "forceoptional". If set to "false",
 # do nothing.
@@ -92,20 +92,20 @@ fi
 # CMakeLists.txt in addition to the above.
 : ${ECM_HANDBOOK:=false}
 
-# @ECLASS-VARIABLE: ECM_HANDBOOK_DIR
+# @ECLASS_VARIABLE: ECM_HANDBOOK_DIR
 # @DESCRIPTION:
 # Specifies the directory containing the docbook file(s) relative to ${S} to
 # be processed by KF5DocTools (kdoctools_install).
 : ${ECM_HANDBOOK_DIR:=doc}
 
-# @ECLASS-VARIABLE: ECM_PO_DIRS
+# @ECLASS_VARIABLE: ECM_PO_DIRS
 # @DESCRIPTION:
 # Specifies directories of l10n files relative to ${S} to be processed by
 # KF5I18n (ki18n_install). If IUSE nls exists and is disabled then disable
 # build of these directories in CMakeLists.txt.
 : ${ECM_PO_DIRS:="po poqm"}
 
-# @ECLASS-VARIABLE: ECM_QTHELP
+# @ECLASS_VARIABLE: ECM_QTHELP
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Default value for all CATEGORIES except kde-frameworks is "false".
@@ -117,7 +117,7 @@ if [[ ${CATEGORY} = kde-frameworks ]]; then
 fi
 : ${ECM_QTHELP:=false}
 
-# @ECLASS-VARIABLE: ECM_TEST
+# @ECLASS_VARIABLE: ECM_TEST
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Will accept "true", "false", "optional", "forceoptional",
@@ -139,7 +139,7 @@ if [[ ${CATEGORY} = kde-frameworks ]]; then
 fi
 : ${ECM_TEST:=false}
 
-# @ECLASS-VARIABLE: KFMIN
+# @ECLASS_VARIABLE: KFMIN
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Minimum version of Frameworks to require. Default value for kde-frameworks
@@ -151,7 +151,7 @@ if [[ ${CATEGORY} = kde-frameworks ]]; then
 fi
 : ${KFMIN:=5.82.0}
 
-# @ECLASS-VARIABLE: KFSLOT
+# @ECLASS_VARIABLE: KFSLOT
 # @INTERNAL
 # @DESCRIPTION:
 # KDE Frameworks and Qt slot dependency, implied by KFMIN version.
@@ -255,7 +255,7 @@ DEPEND+=" ${COMMONDEPEND}"
 RDEPEND+=" ${COMMONDEPEND}"
 unset COMMONDEPEND
 
-# @ECLASS-VARIABLE: KDE_GCC_MINIMAL
+# @ECLASS_VARIABLE: KDE_GCC_MINIMAL
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Minimum version of active GCC to require. This is checked in
@@ -310,6 +310,55 @@ _ecm_strip_handbook_translations() {
 			popd > /dev/null || die
 		fi
 	done
+}
+
+# @FUNCTION: _ecm_punt_kfqt_module
+# @INTERNAL
+# @USAGE: <prefix> <dependency>
+# @DESCRIPTION:
+# Removes a specified dependency from a find_package call with multiple
+# components.
+_ecm_punt_kfqt_module() {
+	local prefix=${1}
+	local dep=${2}
+
+	[[ ! -e "CMakeLists.txt" ]] && return
+
+	# FIXME: dep=WebKit will result in 'Widgets' over 'WebKitWidgets' (no regression)
+	pcregrep -Mni "(?s)find_package\s*\(\s*${prefix}(\d+|\\$\{\w*\})[^)]*?${dep}.*?\)" \
+		CMakeLists.txt > "${T}/bogus${dep}"
+
+	# pcregrep returns non-zero on no matches/error
+	[[ $? -ne 0 ]] && return
+
+	local length=$(wc -l "${T}/bogus${dep}" | cut -d " " -f 1)
+	local first=$(head -n 1 "${T}/bogus${dep}" | cut -d ":" -f 1)
+	local last=$(( length + first - 1))
+
+	sed -e "${first},${last}s/${dep}//" -i CMakeLists.txt || die
+
+	if [[ ${length} -eq 1 ]] ; then
+		sed -e "/find_package\s*(\s*${prefix}\([0-9]\|\${[A-Z0-9_]*}\)\(\s\+\(REQUIRED\|CONFIG\|COMPONENTS\|\${[A-Z0-9_]*}\)\)\+\s*)/Is/^/# '${dep}' removed by ecm.eclass - /" \
+			-i CMakeLists.txt || die
+	fi
+}
+
+# @FUNCTION: ecm_punt_kf_module
+# @USAGE: <modulename>
+# @DESCRIPTION:
+# Removes a Frameworks (KF - matching any single-digit version)
+# module from a find_package call with multiple components.
+ecm_punt_kf_module() {
+	_ecm_punt_kfqt_module kf ${1}
+}
+
+# @FUNCTION: ecm_punt_qt_module
+# @USAGE: <modulename>
+# @DESCRIPTION:
+# Removes a Qt (matching any single-digit version) module from a
+# find_package call with multiple components.
+ecm_punt_qt_module() {
+	_ecm_punt_kfqt_module qt ${1}
 }
 
 # @FUNCTION: ecm_punt_bogus_dep
@@ -379,8 +428,8 @@ ecm_src_prepare() {
 		cmake_comment_add_subdirectory ${ECM_HANDBOOK_DIR}
 
 		if [[ ${ECM_HANDBOOK} = forceoptional ]] ; then
-			ecm_punt_bogus_dep KF5 DocTools
-			sed -i -e "/kdoctools_install/ s/^/#DONT/" CMakeLists.txt || die
+			ecm_punt_kf_module DocTools
+			sed -i -e "/kdoctools_install/I s/^/#DONT/" CMakeLists.txt || die
 		fi
 	fi
 
@@ -404,20 +453,20 @@ ecm_src_prepare() {
 	# only build unit tests when required
 	if ! { in_iuse test && use test; } ; then
 		if [[ ${ECM_TEST} = forceoptional ]] ; then
-			ecm_punt_bogus_dep Qt5 Test
+			ecm_punt_qt_module Test
 			# if forceoptional, also cover non-kde categories
 			cmake_comment_add_subdirectory autotests test tests
 		elif [[ ${ECM_TEST} = forceoptional-recursive ]] ; then
-			ecm_punt_bogus_dep Qt5 Test
+			ecm_punt_qt_module Test
 			local f pf="${T}/${P}"-tests-optional.patch
 			touch ${pf} || die "Failed to touch patch file"
 			for f in $(find . -type f -name "CMakeLists.txt" -exec \
-				grep -l "^\s*add_subdirectory\s*\(\s*.*\(auto|unit\)\?tests\?\s*)\s*\)" {} \;); do
+				grep -li "^\s*add_subdirectory\s*\(\s*.*\(auto|unit\)\?tests\?\s*)\s*\)" {} \;); do
 				cp ${f} ${f}.old || die "Failed to prepare patch origfile"
 				pushd ${f%/*} > /dev/null || die
-					ecm_punt_bogus_dep Qt5 Test
+					ecm_punt_qt_module Test
 					sed -i CMakeLists.txt -e \
-						"/^#/! s/add_subdirectory\s*\(\s*.*\(auto|unit\)\?tests\?\s*)\s*\)/if(BUILD_TESTING)\n&\nendif()/" \
+						"/^#/! s/add_subdirectory\s*\(\s*.*\(auto|unit\)\?tests\?\s*)\s*\)/if(BUILD_TESTING)\n&\nendif()/I" \
 						|| die
 				popd > /dev/null || die
 				diff -Naur ${f}.old ${f} 1>>${pf}

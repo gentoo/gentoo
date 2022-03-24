@@ -26,8 +26,7 @@ RDEPEND=">=dev-libs/rocr-runtime-${PV}
 	>=dev-libs/rocm-device-libs-${PV}
 	>=virtual/opencl-3
 	media-libs/mesa"
-DEPEND="${RDEPEND}
-	dev-ml/findlib"
+DEPEND="${RDEPEND}"
 BDEPEND=">=dev-util/rocm-cmake-${PV}"
 
 PATCHES=(

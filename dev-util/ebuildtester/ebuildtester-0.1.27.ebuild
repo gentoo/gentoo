@@ -18,7 +18,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	app-emulation/docker
+	app-containers/docker
 	sys-fs/fuse
 "
 

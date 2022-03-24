@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,13 +7,12 @@ inherit flag-o-matic systemd toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="Standard EXT2/EXT3/EXT4 filesystem utilities"
 HOMEPAGE="http://e2fsprogs.sourceforge.net/"
-SRC_URI="https://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v${PV}/${P}.tar.xz
-	elibc_mintlib? ( mirror://gentoo/${PN}-1.42.9-mint-r1.patch.xz )"
+SRC_URI="https://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="cron fuse lto nls static-libs +threads elibc_FreeBSD"
+IUSE="cron fuse lto nls static-libs +threads"
 
 RDEPEND="~sys-libs/${PN}-libs-${PV}
 	>=sys-apps/util-linux-2.16
@@ -35,10 +34,6 @@ PATCHES=(
 )
 
 src_prepare() {
-	if [[ ${CHOST} == *-mint* ]] ; then
-		PATCHES+=( "${WORKDIR}"/${PN}-1.42.9-mint-r1.patch )
-	fi
-
 	default
 
 	cp doc/RelNotes/v${PV}.txt ChangeLog || die "Failed to copy Release Notes"
@@ -88,7 +83,7 @@ src_configure() {
 	)
 	ac_cv_path_LDCONFIG=: econf "${myeconfargs[@]}"
 
-	if [[ ${CHOST} != *-uclibc ]] && grep -qs 'USE_INCLUDED_LIBINTL.*yes' config.{log,status} ; then
+	if grep -qs 'USE_INCLUDED_LIBINTL.*yes' config.{log,status} ; then
 		eerror "INTL sanity check failed, aborting build."
 		eerror "Please post your ${S}/config.log file as an"
 		eerror "attachment to https://bugs.gentoo.org/show_bug.cgi?id=81096"
@@ -98,12 +93,6 @@ src_configure() {
 
 src_compile() {
 	emake V=1 COMPILE_ET=compile_et MK_CMDS=mk_cmds
-
-	# Build the FreeBSD helper
-	if use elibc_FreeBSD ; then
-		cp "${FILESDIR}"/fsck_ext2fs.c .
-		emake V=1 fsck_ext2fs
-	fi
 }
 
 src_install() {
@@ -127,17 +116,5 @@ src_install() {
 	# configure doesn't have an option to disable static libs :/
 	if ! use static-libs ; then
 		find "${ED}" -name '*.a' -delete || die
-	fi
-
-	if use elibc_FreeBSD ; then
-		# Install helpers for us
-		into /
-		dosbin "${S}"/fsck_ext2fs
-		doman "${FILESDIR}"/fsck_ext2fs.8
-
-		# filefrag is linux only
-		rm \
-			"${ED}"/usr/sbin/filefrag \
-			"${ED}"/usr/share/man/man8/filefrag.8 || die
 	fi
 }

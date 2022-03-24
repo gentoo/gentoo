@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -28,6 +28,7 @@ BDEPEND="
 	sys-devel/m4"
 
 MODS="application authlogin bootloader clock consoletype cron dmesg fstools getty hostname init iptables libraries locallogin logging lvm miscfiles modutils mount mta netutils nscd portage raid rsync selinuxutil setrans ssh staff storage su sysadm sysnetwork systemd tmpfiles udev userdomain usermanage unprivuser xdg"
+DEL_MODS="hotplug"
 LICENSE="GPL-2"
 SLOT="0"
 S="${WORKDIR}/"
@@ -60,6 +61,10 @@ src_prepare() {
 		modfiles="$(find ${S}/refpolicy/policy/modules -iname $i.fc) $modfiles"
 	done
 
+	for i in ${DEL_MODS}; do
+		[[ "${MODS}" != *${i}* ]] || die "Duplicate module in MODS and DEL_MODS: ${i}"
+	done
+
 	for i in ${POLICY_TYPES}; do
 		mkdir "${S}"/${i} || die "Failed to create directory ${S}/${i}"
 		cp "${S}"/refpolicy/doc/Makefile.example "${S}"/${i}/Makefile \
@@ -72,7 +77,7 @@ src_prepare() {
 
 src_compile() {
 	for i in ${POLICY_TYPES}; do
-		emake NAME=$i SHAREDIR="${ROOT}"/usr/share/selinux -C "${S}"/${i}
+		emake NAME=$i SHAREDIR="${SYSROOT%/}/usr/share/selinux" -C "${S}"/${i}
 	done
 }
 
@@ -111,6 +116,13 @@ pkg_postinst() {
 		cd "${ROOT}/usr/share/selinux/${i}"
 
 		semodule ${root_opts} -s ${i} ${COMMAND}
+
+		for mod in ${DEL_MODS}; do
+			if semodule ${root_opts} -s ${i} -l | grep -q "\b${mod}\b"; then
+				einfo "Removing obsolete ${i} ${mod} policy package"
+				semodule ${root_opts} -s ${i} -r ${mod}
+			fi
+		done
 	done
 
 	# Don't relabel when cross compiling

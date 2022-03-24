@@ -11,8 +11,4 @@
   or quick editing sessions, especially on remote machines or as a different
   user, e.g. root.
 </longdescription>
-<use>
-  <flag name="valgrind">Enable usage of <pkg>dev-util/valgrind</pkg>
-    in tests</flag>
-</use>
 </pkgmetadata>

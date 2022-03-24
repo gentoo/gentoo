@@ -1,0 +1,12 @@
+https://git.alpinelinux.org/aports/tree/main/cutter/musl-fix.patch
+https://bugs.gentoo.org/715994
+--- a/cutter.c
++++ b/cutter.c
+@@ -47,7 +47,6 @@
+ #include <linux/socket.h>
+ #include <linux/ip.h>
+ #include <linux/tcp.h>
+-#include <linux/if_ether.h>
+ #include <fcntl.h>
+ #include <netpacket/packet.h>
+ #include <net/ethernet.h>     /* the L2 protocols */

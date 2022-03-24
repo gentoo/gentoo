@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,14 +33,14 @@ else
 	fi
 	SLOT="${PV%%.*}"
 	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm xwidgets zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm xwidgets zlib"
 RESTRICT="test"
 
 RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
@@ -102,16 +102,24 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 			)
 		)
 		!gtk? (
-			Xaw3d? (
-				x11-libs/libXaw3d
+			motif? (
+				>=x11-libs/motif-2.3:0
+				x11-libs/libXpm
 				x11-libs/libXmu
 				x11-libs/libXt
 			)
-			!Xaw3d? ( athena? (
-				x11-libs/libXaw
-				x11-libs/libXmu
-				x11-libs/libXt
-			) )
+			!motif? (
+				Xaw3d? (
+					x11-libs/libXaw3d
+					x11-libs/libXmu
+					x11-libs/libXt
+				)
+				!Xaw3d? ( athena? (
+					x11-libs/libXaw
+					x11-libs/libXmu
+					x11-libs/libXt
+				) )
+			)
 		)
 	) )"
 
@@ -227,13 +235,20 @@ src_configure() {
 				See <https://gitlab.gnome.org/GNOME/gtk/-/issues/221> and
 				<https://gitlab.gnome.org/GNOME/gtk/-/issues/2315>.
 				If you intend to use more than one display, then it is strongly
-				recommended that you compile Emacs with the Athena/Lucid
-				toolkit instead.
+				recommended that you compile Emacs with the Athena/Lucid or the
+				Motif toolkit instead.
 			EOF
 			myconf+=" --with-x-toolkit=gtk3 $(use_with xwidgets)"
-			for f in Xaw3d athena; do
+			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \
 					"USE flag \"${f}\" has no effect if \"gtk\" is set."
+			done
+		elif use motif; then
+			einfo "Configuring to build with Motif toolkit"
+			myconf+=" --with-x-toolkit=motif"
+			for f in Xaw3d athena; do
+				use ${f} && ewarn \
+					"USE flag \"${f}\" has no effect if \"motif\" is set."
 			done
 		elif use athena || use Xaw3d; then
 			einfo "Configuring to build with Athena/Lucid toolkit"
@@ -253,6 +268,9 @@ src_configure() {
 		popd >/dev/null || die
 		# Don't try to execute the binary for dumping during the build
 		myconf+=" --with-dumping=none"
+	elif use m68k; then
+		# Workaround for https://debbugs.gnu.org/44531
+		myconf+=" --with-dumping=unexec"
 	else
 		myconf+=" --with-dumping=pdumper"
 	fi

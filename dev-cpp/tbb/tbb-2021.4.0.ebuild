@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake-multilib flag-o-matic toolchain-funcs
+inherit cmake-multilib
 
 DESCRIPTION="High level abstract threading library"
 HOMEPAGE="https://www.threadingbuildingblocks.org"
@@ -24,6 +24,8 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-lto.patch
+	# bug 827883
+	"${FILESDIR}"/${P}-missing-TBB_machine_fetchadd4.patch
 )
 
 src_configure() {

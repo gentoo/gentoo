@@ -9,7 +9,7 @@ if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 VIRTUALX_REQUIRED=manual
 
 inherit ${GIT_ECLASS} meson-multilib python-any-r1 virtualx
@@ -51,7 +51,7 @@ multilib_src_configure() {
 		$(meson_feature X x11)
 		$(meson_feature X glx)
 	)
-	use elibc_musl && emesonargs+=( -Dtls=disabled )
+	use elibc_musl && emesonargs+=( -Dtls=false )
 
 	meson_src_configure
 }

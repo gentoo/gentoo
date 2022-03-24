@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ if [[ ${PV} != *9999* ]]; then
 		SRC_URI="https://github.com/quassel/quassel/archive/refs/tags/${PV/_/-}.tar.gz -> ${P}.tar.gz"
 	else
 		SRC_URI="https://quassel-irc.org/pub/${MY_P}.tar.bz2"
-		KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~sparc-solaris"
+		KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~sparc-solaris"
 	fi
 	S="${WORKDIR}/${MY_P}"
 else
@@ -25,14 +25,13 @@ HOMEPAGE="https://quassel-irc.org/"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="bundled-icons crypt +dbus debug kde ldap monolithic oxygen postgres +server snorenotify spell syslog test urlpreview X"
-# Can't seem to find itself (libraries)
-RESTRICT="!test? ( test ) test"
+RESTRICT="!test? ( test )"
 
 SERVER_DEPEND="acct-group/quassel
 	acct-user/quassel
 	dev-qt/qtscript:5
 	crypt? ( app-crypt/qca:2[ssl] )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	postgres? ( dev-qt/qtsql:5[postgres] )
 	!postgres? ( dev-qt/qtsql:5[sqlite] dev-db/sqlite:3[threadsafe(+),-secure-delete] )
 	syslog? ( virtual/logger )"
@@ -74,6 +73,8 @@ DEPEND=">=dev-libs/boost-1.54:=
 RDEPEND="${DEPEND}"
 BDEPEND="dev-qt/linguist-tools:5
 	kde-frameworks/extra-cmake-modules:5"
+
+DEPEND+=" test? ( dev-cpp/gtest dev-qt/qttest )"
 
 DOCS=( AUTHORS ChangeLog README.md )
 
@@ -130,6 +131,10 @@ src_install() {
 		insinto /etc/logrotate.d
 		newins "${FILESDIR}"/quassel.logrotate quassel
 	fi
+}
+
+src_test() {
+	LD_LIBRARY_PATH="${BUILD_DIR}/lib:${LD_LIBRARY_PATH}" cmake_src_test
 }
 
 pkg_postinst() {

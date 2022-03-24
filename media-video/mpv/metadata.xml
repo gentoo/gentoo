@@ -10,7 +10,6 @@
 		<flag name="bluray">Enable playback of Blu-ray filesystems</flag>
 		<flag name="cli">Build mpv CLI player</flag>
 		<flag name="cplugins">Enable C plugins support</flag>
-		<flag name="cuda">Enable hardware video decoding via Nvidia CUDA</flag>
 		<flag name="drm">Enable Kernel Mode Setting / Direct Rendering Manager based video output</flag>
 		<flag name="egl">Enable support for various EGL-based video outputs / backends</flag>
 		<flag name="gamepad">Enable gamepad input support</flag>

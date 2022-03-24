@@ -1,2 +1,0 @@
-# arguments for docker-volume-netshare plugin
-command_args="nfs -o nolock"

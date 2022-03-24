@@ -1,8 +1,16 @@
-# Copyright 2008-2021 Gentoo Authors
+# Copyright 2008-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -ppc
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# dev-db/mysql doesn't work well on PPC, especially 8.x, but should be fine on PPC64
+-mysql
+
+# Matt Turner <mattst88@gentoo.org> (2022-02-21)
+# app-crypt/tpm2-tss is not keyworded here
+tpm
 
 # Sam James <sam@gentoo.org> (2021-12-07)
 # net-libs/gnome-online-accounts is not marked keyworded on ppc
@@ -14,21 +22,13 @@ gnome-online-accounts
 openexr
 osg
 
-# Sam James <sam@gentoo.org> (2021-10-11)
-# sys-libs/llvm-libunwind isn't keyworded here
-llvm-libunwind
-
-# Matt Turner <mattst88@gentoo.org> (07-25-2021)
+# Matt Turner <mattst88@gentoo.org> (2021-07-25)
 # gnome-shell requires rustified librsvg.
 gnome-shell
 
 # James Le Cuirot <chewi@gentoo.org> (2015-01-12)
 # Java is no longer supported on ppc.
 java
-
-# Michał Górny <mgorny@gentoo.org> (2014-06-27)
-# Unmask multilib flag for the ABI.
--abi_ppc_32
 
 # Andrey Grozin <grozin@gentoo.org> (2014-06-25)
 # keyworded on ppc

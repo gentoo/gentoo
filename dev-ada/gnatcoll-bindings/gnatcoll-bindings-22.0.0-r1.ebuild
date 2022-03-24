@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 ADA_COMPAT=( gnat_202{0..1} )
 inherit ada multiprocessing python-single-r1
 
@@ -16,8 +16,12 @@ LICENSE="GPL-3"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="gmp iconv lzma openmp python readline +shared static-libs static-pic syslog"
+REQUIRED_USE="|| ( shared static-libs static-pic )
+	|| ( gmp iconv lzma openmp python readline syslog )
+	${PYTHON_REQUIRED_USE}
+	${ADA_REQUIRED_USE}"
 
-RDEPEND="python? ( ${PYTHON_DEPS} )
+RDEPEND="${PYTHON_DEPS}
 	${ADA_DEPS}
 	dev-ada/gnatcoll-core:=[${ADA_USEDEP},shared?,static-libs?,static-pic?]
 	gmp? ( dev-libs/gmp:* )
@@ -27,8 +31,7 @@ RDEPEND="python? ( ${PYTHON_DEPS} )
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
-	${ADA_REQUIRED_USE}"
+QA_EXECSTACK=usr/lib/gnatcoll_readline.*/libgnatcoll_readline.*
 
 pkg_setup() {
 	python-single-r1_pkg_setup
@@ -88,6 +91,6 @@ src_install() {
 			fi
 		fi
 	done
-	rm -r "${D}"/usr/share/gpr/manifests || die
+	rm -rf "${D}"/usr/share/gpr/manifests
 	einstalldocs
 }

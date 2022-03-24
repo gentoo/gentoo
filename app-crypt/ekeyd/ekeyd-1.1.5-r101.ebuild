@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI="mirror://ubuntu/pool/universe/e/ekeyd/ekeyd_${PV}.orig.tar.gz"
 LICENSE="MIT GPL-2" # GPL-2 (only) for init script
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="kernel_linux munin minimal usb"
+IUSE="munin minimal usb"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}
 	minimal? ( !munin )"

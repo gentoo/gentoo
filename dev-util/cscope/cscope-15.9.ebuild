@@ -25,6 +25,7 @@ SITEFILE="50${PN}-gentoo.el"
 
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-15.7a-ocs-sysdir.patch" #269305
+	eapply "${FILESDIR}/${PN}-15.9-pkgconfig.patch"
 	eapply_user
 	mv configure.{in,ac} || die
 	eautoreconf		  # prevent maintainer mode later on

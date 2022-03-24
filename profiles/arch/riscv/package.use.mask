@@ -1,5 +1,43 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Jakov Smolić <jsmolic@gentoo.org> (2022-03-24)
+# Depends on net-misc/memcached which has concerning test
+# failures on riscv (bug #811477)
+dev-python/pytest-services test
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# Untested useflag on other arches, needs keywording
+media-video/ffmpeg vmaf
+
+# Alex Fan <alex.fan.q@gmail.com> (2022-02-28)
+# dev-libs/vc is a dummy implementation on this arch
+# krita fails to build with it
+media-gfx/krita vc
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
+# Mask AMF keyword on non-amd64 arches
+# It is unusable, for now, in other arches
+media-video/ffmpeg amf
+
+# Yongxinag Liang <tanekliang@gmail.com> (2022-01-09)
+# app-emulation/xen-tools doesn't support riscv yet
+app-emulation/qemu xen
+# untested useflag: rbd glusterfs
+app-emulation/qemu rbd glusterfs
+sys-fs/multipath-tools rbd
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-16)
+# requires sys-apps/dbus-broker, which is keyworded here.
+sys-apps/systemd -hostnamed-fallback
+
+# Yongxinag Liang <tanekliang@gmail.com> (2021-12-30)
+# untested.
+net-misc/vinagre spice
+
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2012-12-25)
+# Requires dev-qt/qtwebengine
+sci-astronomy/stellarium webengine
 
 # Alex Fan <alex.fan.q@gmail.com> (2021-12-12)
 # dev-python/uvloop fails test #806412
@@ -9,10 +47,6 @@ dev-python/anyio test
 # Alex Fan <alex.fan.q@gmail.com> (2021-11-19)
 # depends on dev-lang/ocaml
 app-accessibility/brltty ocaml ocamlopt
-
-# Alex Fan <alex.fan.q@gmail.com> (2021-11-19)
-# opengl -> dev-python/pygame is not keyworded yet
-dev-python/sympy opengl
 
 # Sam James <sam@gentoo.org> (2021-10-26)
 # sys-libs/libhugetlbfs is not keyworded on ~riscv right now
@@ -68,11 +102,6 @@ dev-python/nbconvert test
 #  sys-apps/flashrom no risc-v support, bug 810880
 #  sys-apps/flashrom USE=introspection fail to build, bug 811321
 sys-apps/fwupd flashrom introspection spi uefi
-
-# Marek Szuba <marecki@gentoo.org> (2021-08-25)
-# sys-fabric/infinipath-psm does not support riscv
-sys-cluster/openmpi openmpi_fabrics_psm
-sys-fabric/ofed ofed_drivers_psm
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-23)
 # sys-cluster/ceph not keyworded here yet due to several dependencies
@@ -163,10 +192,9 @@ mail-mta/courier fax
 # Dependencies not keyworded here yet:
 #  - dev-cpp/glog, sci-libs/vtk
 media-libs/opencv contribsfm glog vtk
+sci-libs/opencascade vtk
 #  - dev-util/aruba
 sys-block/thin-provisioning-tools test
-#  - sys-fabric/ofed
-sys-cluster/slurm ofed
 
 # This doesn't work for (any) riscv yet.
 dev-libs/libpcre2 jit

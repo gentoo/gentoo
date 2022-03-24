@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit cmake python-any-r1 readme.gentoo-r1
 
@@ -70,7 +70,11 @@ src_configure() {
 		-DWITH_GETTEXT="$(usex nls)"
 	)
 	# release tarballs ship pre-built docs // -DHAVE_PREBUILT_DOCS=TRUE
-	[[ ${PV} == 9999 ]] && mycmakeargs+=( -DBUILD_DOCS="$(usex doc)" )
+	if [[ ${PV} == 9999 ]]; then
+		mycmakeargs+=( -DBUILD_DOCS="$(usex doc)" )
+	else
+		mycmakeargs+=( -DBUILD_DOCS=OFF )
+	fi
 	cmake_src_configure
 }
 
@@ -81,7 +85,16 @@ src_install() {
 }
 
 src_test() {
-	cmake_build -j1 test
+	# some tests are fragile, sanitize environment
+	local -x COLUMNS=80
+	local -x LINES=24
+
+	# very fragile, depends on terminal, size, tmux, screen and timing
+	if [[ ${PV} != 9999 ]]; then
+		rm -v tests/pexpects/terminal.py || die
+	fi
+
+	cmake_build test
 }
 
 pkg_postinst() {

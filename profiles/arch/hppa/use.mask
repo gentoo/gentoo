@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -6,6 +6,10 @@
 
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
+
+# Matt Turner <mattst88gentoo.org> (2022-02-21)
+# app-crypt/tpm2-tss is not keyworded here
+tpm
 
 # Sam James <sam@gentoo.org> (2021-10-16)
 # media-libs/openexr is not keyworded.
@@ -15,12 +19,6 @@ openexr
 # media-video/pipewire is not keyworded. Bug #807616.
 bluetooth
 pipewire
-
-# Michał Górny <mgorny@gentoo.org> (2021-05-20)
-# Unresolved keywordreqs are getting in the way.
-# https://bugs.gentoo.org/789606
-python_targets_python3_10
-python_single_target_python3_10
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
 # sys-libs/llvm-libunwind not supported on HPPA.
@@ -149,10 +147,6 @@ prelude
 # Lots of untested dependencies (bug #365451)
 facedetect
 
-# Jeroen Roovers <jer@gentoo.org> (2011-05-02)
-# No support for CUDA on HPPA
-cuda
-
 # Samuli Suominen <ssuominen@gentoo.org> (2010-12-25)
 # This will need stable gnome-base/gvfs.
 thunar
@@ -261,10 +255,6 @@ ieee1394
 # Guy Martin <gmsoft@gentoo.org> (2005-06-25)
 # mono is not yet supported on hppa
 mono
-
-# Guy Martin <gmsoft@gentoo.org> (2005-02-18)
-# No emboss support on hppa for now
-emboss
 
 # Guy Martin <gmsoft@gentoo.org> (2004-08-08)
 # Wifi stuff not test yet because of lack of hardware

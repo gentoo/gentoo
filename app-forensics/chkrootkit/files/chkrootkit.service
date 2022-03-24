@@ -1,0 +1,7 @@
+[Unit]
+Description=local check for signs of a rootkit
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/chkrootkit -q
+SyslogIdentifier=chkrootkit

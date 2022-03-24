@@ -1,0 +1,87 @@
+From bf4335b1ea9b179076cbd7a1c2e8cfa9538b1dc1 Mon Sep 17 00:00:00 2001
+From: David Edmundson <davidedmundson@kde.org>
+Date: Thu, 3 Feb 2022 14:27:08 +0000
+Subject: [PATCH] Fix up mutexes for frame callbacks
+
+Everything related to frame callback timings is used by potentially 3
+threads. Access needs guarding.
+
+Change-Id: I9f22390c175d9f2f63d31b1ebf0cdc0b830be937
+---
+ src/client/qwaylandwindow.cpp | 14 +++++++++-----
+ src/client/qwaylandwindow_p.h | 10 +++++++---
+ 2 files changed, 16 insertions(+), 8 deletions(-)
+
+diff --git a/src/client/qwaylandwindow.cpp b/src/client/qwaylandwindow.cpp
+index 7aee362a..72e0e601 100644
+--- a/src/client/qwaylandwindow.cpp
++++ b/src/client/qwaylandwindow.cpp
+@@ -256,8 +256,12 @@ void QWaylandWindow::reset()
+         mFrameCallback = nullptr;
+     }
+ 
+-    mFrameCallbackElapsedTimer.invalidate();
+-    mWaitingForFrameCallback = false;
++    {
++        QMutexLocker locker(&mFrameSyncMutex);
++        mFrameCallbackElapsedTimer.invalidate();
++        mWaitingForFrameCallback = false;
++    }
++
+     mFrameCallbackTimedOut = false;
+ 
+     mMask = QRegion();
+@@ -1142,6 +1146,7 @@ QVariant QWaylandWindow::property(const QString &name, const QVariant &defaultVa
+ 
+ void QWaylandWindow::timerEvent(QTimerEvent *event)
+ {
++    QMutexLocker locker(&mFrameSyncMutex);
+     if (event->timerId() != mFrameCallbackCheckIntervalTimerId)
+         return;
+ 
+@@ -1200,15 +1205,14 @@ void QWaylandWindow::handleUpdate()
+ {
+     qCDebug(lcWaylandBackingstore) << "handleUpdate" << QThread::currentThread();
+ 
+-    if (mWaitingForFrameCallback)
+-        return;
+-
+     // TODO: Should sync subsurfaces avoid requesting frame callbacks?
+     QReadLocker lock(&mSurfaceLock);
+     if (!mSurface)
+         return;
+ 
+     QMutexLocker locker(&mFrameSyncMutex);
++    if (mWaitingForFrameCallback)
++        return;
+ 
+     struct ::wl_surface *wrappedSurface = reinterpret_cast<struct ::wl_surface *>(wl_proxy_create_wrapper(mSurface->object()));
+     wl_proxy_set_queue(reinterpret_cast<wl_proxy *>(wrappedSurface), mDisplay->frameEventQueue());
+diff --git a/src/client/qwaylandwindow_p.h b/src/client/qwaylandwindow_p.h
+index 3ff68ccb..025d7917 100644
+--- a/src/client/qwaylandwindow_p.h
++++ b/src/client/qwaylandwindow_p.h
+@@ -226,13 +226,17 @@ protected:
+     Qt::MouseButtons mMousePressedInContentArea = Qt::NoButton;
+ 
+     WId mWindowId;
++
++    // The following are used by the main thread the render thread and the event frame thread
++    // Access should be guarded by mFrameSyncMutex
++    QMutex mFrameSyncMutex;
++    QWaitCondition mFrameSyncWait;
+     bool mWaitingForFrameCallback = false;
+-    bool mFrameCallbackTimedOut = false; // Whether the frame callback has timed out
+     int mFrameCallbackCheckIntervalTimerId = -1;
+     QElapsedTimer mFrameCallbackElapsedTimer;
++
++    bool mFrameCallbackTimedOut = false; // Whether the frame callback has timed out
+     struct ::wl_callback *mFrameCallback = nullptr;
+-    QMutex mFrameSyncMutex;
+-    QWaitCondition mFrameSyncWait;
+ 
+     // True when we have called deliverRequestUpdate, but the client has not yet attached a new buffer
+     bool mWaitingForUpdate = false;
+-- 
+GitLab
+

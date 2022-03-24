@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: llvm.org.eclass
@@ -40,14 +40,14 @@ esac
 
 # == internal control bits ==
 
-# @ECLASS-VARIABLE: _LLVM_MASTER_MAJOR
+# @ECLASS_VARIABLE: _LLVM_MASTER_MAJOR
 # @INTERNAL
 # @DESCRIPTION:
 # The major version of current LLVM trunk.  Used to determine
 # the correct branch to use.
-_LLVM_MASTER_MAJOR=14
+_LLVM_MASTER_MAJOR=15
 
-# @ECLASS-VARIABLE: _LLVM_SOURCE_TYPE
+# @ECLASS_VARIABLE: _LLVM_SOURCE_TYPE
 # @INTERNAL
 # @DESCRIPTION:
 # Source type to use: 'git' or 'tar'.
@@ -69,7 +69,7 @@ inherit multiprocessing
 
 # == control variables ==
 
-# @ECLASS-VARIABLE: LLVM_COMPONENTS
+# @ECLASS_VARIABLE: LLVM_COMPONENTS
 # @REQUIRED
 # @DESCRIPTION:
 # List of components needed unconditionally.  Specified as bash array
@@ -78,24 +78,24 @@ inherit multiprocessing
 #
 # The first path specified is used to construct default S.
 
-# @ECLASS-VARIABLE: LLVM_TEST_COMPONENTS
+# @ECLASS_VARIABLE: LLVM_TEST_COMPONENTS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # List of additional components needed for tests.
 
-# @ECLASS-VARIABLE: LLVM_MANPAGES
+# @ECLASS_VARIABLE: LLVM_MANPAGES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set to 'build', include the dependency on dev-python/sphinx to build
 # the manpages.  If set to 'pregenerated', fetch and install
 # pregenerated manpages from the archive.
 
-# @ECLASS-VARIABLE: LLVM_PATCHSET
+# @ECLASS_VARIABLE: LLVM_PATCHSET
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # LLVM patchset version.  No patchset is used if unset.
 
-# @ECLASS-VARIABLE: LLVM_USE_TARGETS
+# @ECLASS_VARIABLE: LLVM_USE_TARGETS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Add LLVM_TARGETS flags.  The following values are supported:
@@ -113,19 +113,19 @@ inherit multiprocessing
 
 # == global data ==
 
-# @ECLASS-VARIABLE: ALL_LLVM_EXPERIMENTAL_TARGETS
+# @ECLASS_VARIABLE: ALL_LLVM_EXPERIMENTAL_TARGETS
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The complete list of LLVM experimental targets available in this LLVM
 # version.  The value depends on ${PV}.
 
-# @ECLASS-VARIABLE: ALL_LLVM_PRODUCTION_TARGETS
+# @ECLASS_VARIABLE: ALL_LLVM_PRODUCTION_TARGETS
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The complete list of LLVM production-ready targets available in this
 # LLVM version.  The value depends on ${PV}.
 
-# @ECLASS-VARIABLE: ALL_LLVM_TARGET_FLAGS
+# @ECLASS_VARIABLE: ALL_LLVM_TARGET_FLAGS
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The list of USE flags corresponding to all LLVM targets in this LLVM
@@ -142,8 +142,15 @@ case ${PV} in
 			PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
 		)
 		;;
-	*)
+	14*)
 		ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY M68k )
+		ALL_LLVM_PRODUCTION_TARGETS=(
+			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430 NVPTX
+			PowerPC RISCV Sparc SystemZ VE WebAssembly X86 XCore
+		)
+		;;
+	*)
+		ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY LoongArch M68k )
 		ALL_LLVM_PRODUCTION_TARGETS=(
 			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430 NVPTX
 			PowerPC RISCV Sparc SystemZ VE WebAssembly X86 XCore
@@ -294,6 +301,14 @@ llvm.org_src_unpack() {
 			"${WORKDIR}/llvm-gentoo-patchset-${LLVM_PATCHSET}" |
 			xargs rm
 		assert
+
+		if ver_test -ge 13.0.1_rc3; then
+			# fail if no patches remain
+			if [[ ! -s ${WORKDIR}/llvm-gentoo-patchset-${LLVM_PATCHSET} ]]
+			then
+				die "No patches in the patchset apply to the package"
+			fi
+		fi
 	fi
 }
 
@@ -327,7 +342,7 @@ llvm.org_src_prepare() {
 
 # == helper functions ==
 
-# @ECLASS-VARIABLE: LIT_JOBS
+# @ECLASS_VARIABLE: LIT_JOBS
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:

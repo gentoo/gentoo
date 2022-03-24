@@ -1,3 +1,5 @@
+Fixes upstream in master but not 0.17.x.
+
 commit 3d9746bccbb50809e4c3de90ab5145a17af39aeb
 Author: Ilya Tumaykin <itumaykin@gmail.com>
 Date:   Thu May 25 14:38:02 2017 +0300

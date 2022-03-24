@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_REQ_USE="xml"
 inherit python-any-r1 readme.gentoo-r1
 
 DESCRIPTION="The Gentoo Development Guide"
@@ -16,7 +17,7 @@ else
 	# "make dist" in devmanual repo
 	SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 	S="${WORKDIR}/${PN}"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
 fi
 
 LICENSE="CC-BY-SA-4.0"

@@ -1,17 +1,17 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-vm-2.eclass
 # @MAINTAINER:
 # java@gentoo.org
-# @SUPPORTED_EAPIS: 6 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Java Virtual Machine eclass
 # @DESCRIPTION:
 # This eclass provides functionality which assists with installing
 # virtual machines, and ensures that they are recognized by java-config.
 
 case ${EAPI:-0} in
-	[68]) ;;
+	[678]) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
@@ -28,25 +28,25 @@ DEPEND="${RDEPEND}"
 export WANT_JAVA_CONFIG=2
 
 
-# @ECLASS-VARIABLE: JAVA_VM_CONFIG_DIR
+# @ECLASS_VARIABLE: JAVA_VM_CONFIG_DIR
 # @INTERNAL
 # @DESCRIPTION:
 # Where to place the vm env file.
 JAVA_VM_CONFIG_DIR="/usr/share/java-config-2/vm"
 
-# @ECLASS-VARIABLE: JAVA_VM_DIR
+# @ECLASS_VARIABLE: JAVA_VM_DIR
 # @INTERNAL
 # @DESCRIPTION:
 # Base directory for vm links.
 JAVA_VM_DIR="/usr/lib/jvm"
 
-# @ECLASS-VARIABLE: JAVA_VM_SYSTEM
+# @ECLASS_VARIABLE: JAVA_VM_SYSTEM
 # @INTERNAL
 # @DESCRIPTION:
 # Link for system-vm
 JAVA_VM_SYSTEM="/etc/java-config-2/current-system-vm"
 
-# @ECLASS-VARIABLE: JAVA_VM_BUILD_ONLY
+# @ECLASS_VARIABLE: JAVA_VM_BUILD_ONLY
 # @DESCRIPTION:
 # Set to YES to mark a vm as build-only.
 JAVA_VM_BUILD_ONLY="${JAVA_VM_BUILD_ONLY:-FALSE}"

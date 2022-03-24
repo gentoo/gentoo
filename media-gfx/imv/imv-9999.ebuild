@@ -19,13 +19,12 @@ HOMEPAGE="https://sr.ht/~exec64/imv/"
 
 LICENSE="MIT-with-advertising"
 SLOT="0"
-IUSE="+X +freeimage gif heif jpeg png svg test tiff wayland"
+IUSE="+X +freeimage gif heif icu jpeg png svg test tiff wayland"
 REQUIRED_USE="|| ( X wayland )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/glib:2
-	dev-libs/icu:=
 	dev-libs/inih
 	media-libs/libglvnd[X?]
 	x11-libs/cairo
@@ -38,6 +37,8 @@ RDEPEND="
 	freeimage? ( media-libs/freeimage )
 	gif? ( media-libs/libnsgif )
 	heif? ( media-libs/libheif:= )
+	icu? ( dev-libs/icu:= )
+	!icu? ( dev-libs/libgrapheme )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? ( media-libs/libpng:= )
 	svg? ( >=gnome-base/librsvg-2.44:2 )
@@ -74,6 +75,7 @@ src_configure() {
 		$(meson_feature svg librsvg)
 		$(meson_feature test)
 		$(meson_feature tiff libtiff)
+		-Dunicode=$(usex icu{,} grapheme)
 		-Dwindows=$(usex X $(usex wayland all x11) wayland)
 	)
 

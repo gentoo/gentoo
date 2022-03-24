@@ -9,7 +9,7 @@ SRC_URI="https://github.com/cowsay-org/cowsay/archive/refs/tags/v${PV}.tar.gz ->
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~mips ~ppc64 ~x86 ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm64 ~hppa ~mips ppc64 x86 ~x64-macos ~x64-solaris"
 
 RDEPEND="dev-lang/perl"
 BDEPEND="${RDEPEND}"

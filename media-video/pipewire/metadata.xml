@@ -6,6 +6,10 @@
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
 	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<maintainer type="person">
 		<email>asturm@gentoo.org</email>
 		<name>Andreas Sturmlechner</name>
 	</maintainer>
@@ -23,6 +27,10 @@
 		<flag name="extra">Build pw-cat/pw-play/pw-record</flag>
 		<flag name="jack-client">Install a plugin for running PipeWire as a JACK client</flag>
 		<flag name="jack-sdk">Use PipeWire as JACK replacement</flag>
+		<flag name="lv2">Allow loading LV2 plugins via <pkg>media-libs/lv2</pkg></flag>
 		<flag name="pipewire-alsa">Replace PulseAudio's ALSA plugin with PipeWire's plugin</flag>
+		<flag name="ssl">Enable raop-sink support (needs <pkg>dev-libs/openssl</pkg>)</flag>
+		<flag name="system-service">Install systemd unit files for running as a system service. Not recommended.</flag>
+		<flag name="X">Enable audible bell for X11</flag>
 	</use>
 </pkgmetadata>

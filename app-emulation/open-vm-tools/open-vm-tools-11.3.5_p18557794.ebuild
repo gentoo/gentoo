@@ -1,4 +1,4 @@
-# Copyright 2007-2021 Gentoo Authors
+# Copyright 2007-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -89,6 +89,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-glibc-check
 		--without-root-privileges
 		$(use_enable multimon)
 		$(use_with X x)

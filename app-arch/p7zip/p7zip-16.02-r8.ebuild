@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -79,9 +79,6 @@ src_prepare() {
 		sed -i -e '/^PROG=/s/\.so/.bundle/' \
 			CPP/7zip/Bundles/Format7zFree/makefile.list \
 			$(use rar && echo CPP/7zip/Compress/Rar/makefile.list) || die
-	elif use x86-fbsd; then
-		# FreeBSD needs this special makefile, because it hasn't -ldl
-		sed -e 's/-lc_r/-pthread/' makefile.freebsd > makefile.machine || die
 	fi
 
 	if use static; then
@@ -91,14 +88,14 @@ src_prepare() {
 	if use kde || use wxwidgets; then
 		setup-wxwidgets unicode
 		einfo "Preparing dependency list"
-		emake CC=$(tc-getCC) CXX=$(tc-getCXX) depend
+		emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" depend
 	fi
 }
 
 src_compile() {
-	emake CC=$(tc-getCC) CXX=$(tc-getCXX) all3
+	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" all3
 	if use kde || use wxwidgets; then
-		emake CC=$(tc-getCC) CXX=$(tc-getCXX) -- 7zG
+		emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" -- 7zG
 	fi
 }
 

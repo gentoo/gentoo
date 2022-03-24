@@ -1,10 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-DISTUTILS_USE_SETUPTOOLS=manual
 PYTHON_COMPAT=( python3_{8,9,10} )
 
 inherit autotools bash-completion-r1 dist-kernel-utils distutils-r1 flag-o-matic linux-info pam systemd udev usr-ldscript
@@ -62,7 +61,7 @@ BDEPEND="virtual/awk
 "
 
 if [[ ${PV} != "9999" ]] ; then
-	BDEPEND+=" verify-sig? ( app-crypt/openpgp-keys-openzfs )"
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-openzfs )"
 fi
 
 # awk is used for some scripts, completions, and the Dracut module
@@ -265,7 +264,7 @@ pkg_postinst() {
 		if ! has_version sys-kernel/genkernel && ! has_version sys-kernel/dracut; then
 			elog "Root on zfs requires an initramfs to boot"
 			elog "The following packages provide one and are tested on a regular basis:"
-			elog "  sys-kernel/dracut"
+			elog "  sys-kernel/dracut ( preferred, module maintained by zfs developers )"
 			elog "  sys-kernel/genkernel"
 		fi
 	fi
@@ -282,6 +281,8 @@ pkg_postinst() {
 	else
 		[[ -e "${EROOT}/etc/runlevels/boot/zfs-import" ]] || \
 			einfo "You should add zfs-import to the boot runlevel."
+		[[ -e "${EROOT}/etc/runlevels/boot/zfs-load-key" ]] || \
+			einfo "You should add zfs-load-key to the boot runlevel."
 		[[ -e "${EROOT}/etc/runlevels/boot/zfs-mount" ]]|| \
 			einfo "You should add zfs-mount to the boot runlevel."
 		[[ -e "${EROOT}/etc/runlevels/default/zfs-share" ]] || \

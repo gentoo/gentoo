@@ -1,0 +1,51 @@
+https://gitlab.freedesktop.org/pipewire/wireplumber/-/commit/211f1e6b6cd4898121e4c2b821fae4dea6cc3317
+https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues/163
+
+From 211f1e6b6cd4898121e4c2b821fae4dea6cc3317 Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Fri, 14 Jan 2022 16:28:48 +0100
+Subject: [PATCH] default-nodes: handle nodes without Routes
+
+When a node has not part of any EnumRoute, we must assume it is
+available.
+
+Fixes selection of Pro Audio nodes as default nodes.
+---
+ modules/module-default-nodes.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/modules/module-default-nodes.c b/modules/module-default-nodes.c
+index 32b2725b..15aadeaa 100644
+--- a/modules/module-default-nodes.c
++++ b/modules/module-default-nodes.c
+@@ -108,6 +108,7 @@ node_has_available_routes (WpDefaultNodes * self, WpNode *node)
+   gint dev_id = dev_id_str ? atoi (dev_id_str) : -1;
+   gint cpd = cpd_str ? atoi (cpd_str) : -1;
+   g_autoptr (WpDevice) device = NULL;
++  gint found = 0;
+ 
+   if (dev_id == -1 || cpd == -1)
+     return TRUE;
+@@ -168,6 +169,7 @@ node_has_available_routes (WpDefaultNodes * self, WpNode *node)
+         for (; wp_iterator_next (it, &v); g_value_unset (&v)) {
+           gint32 *d = (gint32 *)g_value_get_pointer (&v);
+           if (d && *d == cpd) {
++            found++;
+             if (route_avail != SPA_PARAM_AVAILABILITY_no)
+               return TRUE;
+           }
+@@ -175,6 +177,10 @@ node_has_available_routes (WpDefaultNodes * self, WpNode *node)
+       }
+     }
+   }
++  /* The node is part of a profile without routes so we assume it
++   * is available. This can happen for Pro Audio profiles */
++  if (found == 0)
++    return TRUE;
+ 
+   return FALSE;
+ }
+-- 
+GitLab
+
+https://gitlab.freedesktop.org/pipewire/wireplumber/-/commit/211f1e6b6cd4898121e4c2b821fae4dea6cc3317

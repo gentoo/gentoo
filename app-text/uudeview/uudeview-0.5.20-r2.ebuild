@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ PATCHES=(
 DOCS=( HISTORY INSTALL README )
 
 src_prepare() {
-	sed -i "s/^\tar r/\t$(tc-getAR) r/" uulib/Makefile.in || die
+	sed -i "s:^\tar r:\t$(tc-getAR) r:" uulib/Makefile.in || die
 
 	default
 	mv configure.{in,ac} || die

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -39,7 +39,6 @@ src_configure() {
 
 	local myeconfargs=(
 		$(use_enable xattr)
-		--program-prefix="$(use userland_BSD && echo g)"
 	)
 	# Do not let $ED mess up the search for `ed` 470210.
 	ac_cv_path_ED=$(type -P ed) \

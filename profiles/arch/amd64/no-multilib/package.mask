@@ -31,6 +31,7 @@ app-emulation/crossover-bin
 app-emulation/protontricks
 app-emulation/q4wine
 app-emulation/winetricks
+<=app-shells/scsh-0.6.9
 dev-embedded/libftd2xx
 dev-embedded/openocd
 dev-util/android-ndk
@@ -77,6 +78,8 @@ games-fps/ut2003-demo
 games-fps/ut2004-demo
 games-misc/little-inferno
 games-misc/papers-please
+games-puzzle/braid-hb
+games-puzzle/braid-gog
 games-puzzle/triptych
 games-roguelike/adom
 games-rpg/baldurs-gate-ee

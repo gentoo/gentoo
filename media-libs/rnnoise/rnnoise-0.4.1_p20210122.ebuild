@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="doc"
 # NOTE: Documentation currently empty (version 0.4.1_p20210122)
 
@@ -32,7 +32,6 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--disable-static
 		--disable-examples
 		$(use_enable doc)
 	)

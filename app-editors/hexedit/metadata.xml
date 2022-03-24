@@ -5,4 +5,8 @@
 		<email>tomjbe@gentoo.org</email>
 		<name>Thomas Beierlein</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
+	</maintainer>
 </pkgmetadata>

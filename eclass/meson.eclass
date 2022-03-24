@@ -47,7 +47,7 @@ inherit multiprocessing ninja-utils python-utils-r1 toolchain-funcs
 
 EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 
-_MESON_DEPEND=">=dev-util/meson-0.58.2-r1
+_MESON_DEPEND=">=dev-util/meson-0.59.4
 	>=dev-util/ninja-1.8.2
 	dev-util/meson-format-array
 "
@@ -58,18 +58,18 @@ else
 	BDEPEND=${_MESON_DEPEND}
 fi
 
-# @ECLASS-VARIABLE: BUILD_DIR
+# @ECLASS_VARIABLE: BUILD_DIR
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Build directory, location where all generated files should be placed.
 # If this isn't set, it defaults to ${WORKDIR}/${P}-build.
 
-# @ECLASS-VARIABLE: EMESON_BUILDTYPE
+# @ECLASS_VARIABLE: EMESON_BUILDTYPE
 # @DESCRIPTION:
 # The buildtype value to pass to meson setup.
 : ${EMESON_BUILDTYPE=plain}
 
-# @ECLASS-VARIABLE: EMESON_SOURCE
+# @ECLASS_VARIABLE: EMESON_SOURCE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The location of the source files for the project; this is the source

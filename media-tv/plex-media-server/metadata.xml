@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>om@organizedmagnetism.com</email>
-		<name>Scott Martin</name>
+		<email>luigi.mantellini+gentoo@gmail.com</email>
+		<name>Luigi Mantellini</name>
 	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>

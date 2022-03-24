@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: dune.eclass
@@ -14,17 +14,19 @@
 # Provides dependencies on dDne and OCaml and default src_compile, src_test and
 # src_install for Dune-based packages.
 
-# @ECLASS-VARIABLE: DUNE_PKG_NAME
+# @ECLASS_VARIABLE: DUNE_PKG_NAME
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Sets the actual Dune package name, if different from Gentoo package name.
 # Set before inheriting the eclass.
-: ${DUNE_PKG_NAME:-${PN}}
+: ${DUNE_PKG_NAME:=${PN}}
 
 case ${EAPI:-0} in
 	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
 esac
+
+inherit multiprocessing
 
 # Do not complain about CFLAGS etc since ml projects do not use them.
 QA_FLAGS_IGNORED='.*'
@@ -44,13 +46,13 @@ esac
 
 dune_src_compile() {
 	ebegin "Building"
-	dune build @install --profile release
+	dune build @install -j $(makeopts_jobs) --profile release
 	eend $? || die
 }
 
 dune_src_test() {
 	ebegin "Testing"
-	dune runtest
+	dune runtest -j $(makeopts_jobs) --profile release
 	eend $? || die
 }
 
@@ -66,6 +68,7 @@ dune_src_test() {
 # @CODE
 dune-install() {
 	local -a pkgs=( "${@}" )
+
 	[[ ${#pkgs[@]} -eq 0 ]] && pkgs=( "${DUNE_PKG_NAME}" )
 
 	local -a myduneopts=(
@@ -73,6 +76,7 @@ dune-install() {
 		--libdir="${D%/}$(ocamlc -where)"
 		--mandir="${ED%/}/usr/share/man"
 	)
+
 	local pkg
 	for pkg in "${pkgs[@]}" ; do
 		ebegin "Installing ${pkg}"

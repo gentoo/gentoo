@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit autotools
 
-KEYWORDS="amd64 ppc ~sparc x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 
 DESCRIPTION="NSS MySQL Library"
 HOMEPAGE="http://libnss-mysql.sourceforge.net/"

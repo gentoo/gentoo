@@ -1,10 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10}  )
-DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit bash-completion-r1 distutils-r1
 
@@ -19,7 +18,7 @@ SRC_URI="https://github.com/ctmarinas/stgit/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
 RDEPEND=">=dev-vcs/git-1.6.3.3"

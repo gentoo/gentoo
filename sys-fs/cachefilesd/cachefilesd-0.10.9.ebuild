@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,8 +32,8 @@ src_install() {
 	default
 
 	if use selinux; then
-		insinto /usr/share/doc/${P}
-		doins -r selinux
+		dodoc -r selinux
+		docompress -x /usr/share/doc/${PF}/selinux
 	fi
 
 	dodoc howto.txt

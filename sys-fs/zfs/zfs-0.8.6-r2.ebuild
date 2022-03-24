@@ -1,10 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-DISTUTILS_USE_SETUPTOOLS=manual
 PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit autotools bash-completion-r1 dist-kernel-utils distutils-r1 flag-o-matic linux-info systemd udev usr-ldscript
@@ -213,7 +212,7 @@ pkg_postinst() {
 		if ! has_version sys-kernel/genkernel && ! has_version sys-kernel/dracut; then
 			elog "root on zfs requires initramfs to boot"
 			elog "the following packages known to provide one and tested on regular basis:"
-			elog "  sys-kernel/dracut"
+			elog "  sys-kernel/dracut ( preferred, module maintained by zfs developers )"
 			elog "  sys-kernel/genkernel"
 		fi
 	fi

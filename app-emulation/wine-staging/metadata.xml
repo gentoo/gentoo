@@ -20,8 +20,6 @@ This variant of the Wine packaging includes the Wine-Staging patchset.
 		<flag name="capi">Enable ISDN support via CAPI</flag>
 		<flag name="custom-cflags">Bypass strip-flags; use at your own peril</flag>
 		<flag name="dos">Pull in <pkg>games-emulation/dosbox</pkg> to run DOS applications</flag>
-		<flag name="faudio">Pull in <pkg>app-emulation/faudio</pkg> to provide XAudio2 functionality</flag>
-		<flag name="gcrypt">Add support for the Diffie-Hellman key exchanges using dev-libs/libgcrypt</flag>
 		<flag name="gecko">Add support for the Gecko engine when using iexplore</flag>
 		<flag name="gssapi">Use GSSAPI (Kerberos SSP support)</flag>
 		<flag name="gstreamer">Use <pkg>media-libs/gstreamer</pkg> to provide DirectShow functionality;</flag>
@@ -33,8 +31,6 @@ This variant of the Wine packaging includes the Wine-Staging patchset.
 		<flag name="pcap">Support packet capture software (e.g. wireshark)</flag>
 		<flag name="perl">Install helpers written in perl (winedump/winemaker)</flag>
 		<flag name="pipelight">Apply Wine-Staging patches for Pipelight/Silverlight support</flag>
-		<flag name="prelink">Run prelink on DLLs during build;
-			For Gentoo hardened, do not disable if you do not know what this means as it can break things at runtime</flag>
 		<flag name="realtime">Pull in <pkg>sys-auth/rtkit</pkg> for low-latency pulseaudio support</flag>
 		<flag name="run-exes">Use Wine to open and run .EXE and .MSI files</flag>
 		<flag name="samba">Add support for NTLM auth. See:
@@ -43,7 +39,6 @@ This variant of the Wine packaging includes the Wine-Staging patchset.
 						(these pages are not currently in the updated WineHQ Wiki).</flag>
 		<flag name="sdl">Add support for gamepad detection using SDL</flag>
 		<flag name="staging">Apply Wine-Staging patches for advanced feature support that haven't made it into upstream Wine yet</flag>
-		<flag name="themes">Support GTK+:3 window theming through Wine-Staging</flag>		
 		<flag name="udev">Use <pkg>virtual/libudev</pkg> to provide plug and play support</flag>
 		<flag name="unwind">Use <pkg>sys-libs/libunwind</pkg> to unwind the stack</flag>
 		<flag name="usb">Use <pkg>virtual/libusb</pkg> to provide USB support</flag>

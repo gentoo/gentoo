@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,7 +34,7 @@ RESTRICT="!test? ( test )"
 #RESTRICT="test"
 
 RDEPEND="
-	net-libs/libpcap
+	>=net-libs/libpcap-1.10.1
 	drop-root? (
 		acct-group/pcap
 		acct-user/pcap
@@ -52,14 +52,13 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	test? (
-		>=net-libs/libpcap-1.9.1
 		dev-lang/perl
 	)
 "
 BDEPEND="drop-root? ( virtual/pkgconfig )"
 
 if [[ ${PV} != *9999* ]] ; then
-	BDEPEND+=" verify-sig? ( app-crypt/openpgp-keys-tcpdump )"
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-tcpdump )"
 fi
 
 PATCHES=(

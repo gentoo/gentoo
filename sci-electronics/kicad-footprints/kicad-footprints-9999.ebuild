@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
@@ -28,9 +28,9 @@ SLOT="0"
 IUSE=""
 
 DEPEND=""
-RDEPEND=">=sci-electronics/kicad-5.99"
+RDEPEND=">=sci-electronics/kicad-6.0.0"
 
 if [[ ${PV} == 9999 ]] ; then
-	# x11-misc-util/macros only required on live ebuilds
+#	 x11-misc-util/macros only required on live ebuilds
 	BDEPEND+=" >=x11-misc/util-macros-1.18"
 fi

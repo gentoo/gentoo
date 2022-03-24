@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # This file requires eapi 5 or later. New entries go on top.
@@ -25,12 +25,6 @@ colord
 # Matt Turner <mattst88@gentoo.org> (2021-09-22)
 # media-libs/libsamplerate is not stable on hppa
 libsamplerate
-
-# Michał Górny <mgorny@gentoo.org> (2021-05-04)
-# Python 3.10 is not yet stable (and will not be until it's out of beta,
-# around September.
-python_single_target_python3_10
-python_targets_python3_10
 
 # Matt Turner <mattst88@gentoo.org> (2020-12-23)
 # dev-db/postgresql is not stable on hppa
@@ -127,10 +121,6 @@ pulseaudio
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-12-08)
 # sys-auth/elogind is not stable here.
 elogind
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2019-03-03)
-# No stable sys-apps/systemd on hppa.
-systemd
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-05-20)
 openal

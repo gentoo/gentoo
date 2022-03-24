@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools xdg-utils
+inherit xdg-utils
 
 DESCRIPTION="A GTK+ archive manager that can be used with Thunar"
 HOMEPAGE="https://github.com/ib/xarchiver"

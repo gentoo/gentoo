@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit python-single-r1 toolchain-funcs
 
@@ -25,13 +25,13 @@ RDEPEND="${DEPEND}"
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_compile() {
-	emake PKG_NAME=tclpython3 CC=$(tc-getCC) \
+	emake PKG_NAME=tclpython3 CC="$(tc-getCC)" \
 		MYCFLAGS="${CFLAGS}" \
 		MYLDFLAGS="${LDFLAGS} $(python_get_library_path)"
 }
 
 src_test() {
-	emake PKG_NAME=tclpython3 CC=$(tc-getCC) test
+	emake PKG_NAME=tclpython3 CC="$(tc-getCC)" test
 }
 
 src_install() {

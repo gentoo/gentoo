@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit findlib
+inherit findlib toolchain-funcs
 
 MY_P=${P/_beta/test}
 DESCRIPTION="Modules for OCaml application-level Internet protocols"
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="ZLIB GPL-2+"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="kerberos tk httpd +ocamlopt +pcre ssl zip"
 RESTRICT="installsources strip"
 
@@ -61,6 +61,7 @@ src_configure() {
 		$(ocamlnet_use_enable tk tcl) \
 		$(ocamlnet_use_enable zip zip) \
 		$(ocamlnet_use_with httpd nethttpd) \
+		-cpp "$(tc-getPROG CPP cpp)" \
 		|| die "Error: econf failed!"
 }
 

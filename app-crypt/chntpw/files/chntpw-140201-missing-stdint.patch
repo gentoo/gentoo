@@ -1,0 +1,26 @@
+From c72bedece14b5797b1826e779c7fcb3e3024f820 Mon Sep 17 00:00:00 2001
+From: Jory Pratt <anarchy@gentoo.org>
+Date: Thu, 11 Jul 2019 14:19:30 -0500
+Subject: [PATCH] include missing stdint header
+
+Signed-off-by: Jory Pratt <anarchy@gentoo.org>
+Upstream-Status: Submitted
+---
+ ntreg.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/ntreg.h b/ntreg.h
+index 4b46106..d6fc7cf 100644
+--- a/ntreg.h
++++ b/ntreg.h
+@@ -24,6 +24,7 @@
+ 
+ #ifndef _INCLUDE_NTREG_H
+ #define _INCLUDE_NTREG_H 1
++#include <stdint.h>
+ 
+ #define SZ_MAX     4096       /* Max unicode strlen before we truncate */
+ 
+-- 
+2.22.0
+

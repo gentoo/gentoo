@@ -1,14 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8,9,10} )
 
-inherit autotools python-any-r1
+inherit python-any-r1
 
-DESCRIPTION="tool for generating C-based recognizers from regular expressions"
-HOMEPAGE="http://re2c.org/"
+DESCRIPTION="Tool for generating C-based recognizers from regular expressions"
+HOMEPAGE="https://re2c.org/"
 SRC_URI="https://github.com/skvadrik/re2c/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="public-domain"

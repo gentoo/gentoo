@@ -9,8 +9,8 @@
  
  CKITSRC = datafiles.c next.c seqentry.c strings.c gcg.c pir.c \
  seqspec.c ttyinterface.c nextseqentry.c \
---- a/configure.ac
-+++ b/configure.ac
+--- a/configure.in
++++ b/configure.in
 @@ -635,33 +635,6 @@
  
  

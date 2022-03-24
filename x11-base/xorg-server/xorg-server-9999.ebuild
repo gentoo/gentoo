@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -54,8 +54,11 @@ CDEPEND="
 		>=media-libs/libepoxy-1.5.4[X,egl(+)]
 	)
 	udev? ( virtual/libudev:= )
-	unwind? ( sys-libs/libunwind )
-	selinux? ( sys-libs/libselinux )
+	unwind? ( sys-libs/libunwind:= )
+	selinux? (
+		sys-process/audit
+		sys-libs/libselinux:=
+	)
 	systemd? (
 		sys-apps/dbus
 		sys-apps/systemd
@@ -70,6 +73,7 @@ CDEPEND="
 DEPEND="${CDEPEND}
 	>=x11-base/xorg-proto-2021.4.99.2
 	>=x11-libs/xtrans-1.3.5
+	media-fonts/font-util
 "
 RDEPEND="${CDEPEND}
 	!systemd? ( gui-libs/display-manager-init )
@@ -117,6 +121,7 @@ src_configure() {
 		$(meson_use udev udev_kms)
 		$(meson_use unwind libunwind)
 		$(meson_use xcsecurity)
+		$(meson_use selinux xselinux)
 		$(meson_use xephyr)
 		$(meson_use xnest)
 		$(meson_use xorg)
@@ -157,7 +162,7 @@ src_install() {
 	meson_src_install
 
 	# The meson build system does not support install-setuid
-	if ! use systemd || ! use elogind; then
+	if ! use systemd && ! use elogind; then
 		if use suid; then
 			chmod u+s "${ED}"/usr/bin/Xorg
 		fi

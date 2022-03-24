@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ HOMEPAGE="http://www.eclipse.org/"
 SRC_URI="http://download.eclipse.org/eclipse/downloads/drops4/${DMF}/ecjsrc-${PV}.jar"
 
 LICENSE="EPL-1.0"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
 SLOT="4.15"
 IUSE=""
 
@@ -46,5 +46,5 @@ src_install() {
 	java-pkg-simple_src_install
 	insinto /usr/share/java-config-2/compiler
 	doins "${FILESDIR}/ecj-${SLOT}"
-	eprefixify "${D}"/usr/share/java-config-2/compiler/ecj-${SLOT}
+	eprefixify "${ED}"/usr/share/java-config-2/compiler/ecj-${SLOT}
 }

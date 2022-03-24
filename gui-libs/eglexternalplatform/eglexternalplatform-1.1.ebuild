@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="EGL External Platform interface"
 HOMEPAGE="https://github.com/NVIDIA/eglexternalplatform"
@@ -9,11 +9,12 @@ SRC_URI="https://github.com/NVIDIA/eglexternalplatform/archive/${PV}.tar.gz -> $
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~arm64"
 
 src_prepare() {
 	default
-	sed -i "/^inc/s@=@=${EPREFIX}@" eglexternalplatform.pc || die
+
+	use !prefix || sed -i "/^inc/s|=|=${EPREFIX}|" eglexternalplatform.pc || die
 }
 
 src_install() {

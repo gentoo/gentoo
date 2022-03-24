@@ -1,0 +1,30 @@
+https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/814d409501aca3e044ad53063eb3f433b8aff6f9.patch
+
+From 814d409501aca3e044ad53063eb3f433b8aff6f9 Mon Sep 17 00:00:00 2001
+From: Timo Gurr <timo.gurr@gmail.com>
+Date: Thu, 6 Jan 2022 12:17:10 +0000
+Subject: [PATCH] systemd: Add systemd-system-unit-dir override
+
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -179,6 +179,9 @@ option('udev',
+ option('udevrulesdir',
+        type : 'string',
+        description : 'Directory for udev rules (defaults to /lib/udev/rules.d)')
++option('systemd-system-unit-dir',
++       type : 'string',
++       description : 'Directory for system systemd units (defaults to /usr/lib/systemd/system)')
+ option('systemd-user-unit-dir',
+        type : 'string',
+        description : 'Directory for user systemd units (defaults to /usr/lib/systemd/user)')
+--- a/src/daemon/systemd/system/meson.build
++++ b/src/daemon/systemd/system/meson.build
+@@ -1,4 +1,7 @@
+ systemd_system_services_dir = systemd.get_variable(pkgconfig: 'systemdsystemunitdir', pkgconfig_define : [ 'rootprefix', prefix])
++if get_option('systemd-system-unit-dir') != ''
++  systemd_system_services_dir = get_option('systemd-system-unit-dir')
++endif
+ 
+ install_data(sources : 'pipewire.socket',
+              install_dir : systemd_system_services_dir)
+GitLab

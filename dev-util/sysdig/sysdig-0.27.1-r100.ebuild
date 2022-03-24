@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -39,6 +39,11 @@ DEPEND="${RDEPEND}
 PDEPEND="
 	modules? ( >=dev-util/sysdig-kmod-${PV} )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.27.1-grpc-absl-sync.patch
+	"${FILESDIR}"/${PN}-0.27.1-luajit-2.1.patch
+)
+
 src_prepare() {
 	sed -i -e 's:-ggdb::' CMakeLists.txt || die
 
@@ -56,6 +61,9 @@ src_configure() {
 
 		# unbundle the deps
 		-DUSE_BUNDLED_DEPS=OFF
+
+		# explicitly set version
+		-DSYSDIG_VERSION=${PV}
 	)
 
 	cmake_src_configure

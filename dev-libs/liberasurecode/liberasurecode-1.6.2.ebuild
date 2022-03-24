@@ -5,7 +5,7 @@ EAPI=6
 
 inherit autotools
 
-DESCRIPTION="Erasure Code API library written in C with pluggable Erasure Code backends."
+DESCRIPTION="Erasure Code API library written in C with pluggable Erasure Code backends"
 HOMEPAGE="https://bitbucket.org/tsg-/liberasurecode/overview"
 SRC_URI="https://github.com/openstack/liberasurecode/archive/${PV}.tar.gz -> ${P}.tar.gz"
 

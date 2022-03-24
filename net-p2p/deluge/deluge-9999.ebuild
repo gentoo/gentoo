@@ -28,7 +28,7 @@ REQUIRED_USE="
 "
 
 DEPEND="
-	<net-libs/libtorrent-rasterbar-2.0.0:=[python,${PYTHON_SINGLE_USEDEP}]
+	net-libs/libtorrent-rasterbar:=[python,${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/wheel[${PYTHON_USEDEP}]
 	')
@@ -36,7 +36,7 @@ DEPEND="
 	acct-group/deluge
 	acct-user/deluge"
 RDEPEND="
-	<net-libs/libtorrent-rasterbar-2.0.0:=[python,${PYTHON_SINGLE_USEDEP}]
+	net-libs/libtorrent-rasterbar:=[python,${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/chardet[${PYTHON_USEDEP}]
 		dev-python/distro[${PYTHON_USEDEP}]

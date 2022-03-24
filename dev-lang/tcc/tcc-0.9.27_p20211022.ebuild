@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ fi
 LICENSE="LGPL-2.1"
 SLOT="0"
 if [[ ${PV} != *9999* ]] ; then
-	KEYWORDS="~amd64 ~x86 ~amd64-linux"
+	KEYWORDS="~amd64 ~arm64 ~riscv ~x86 ~amd64-linux"
 fi
 
 BDEPEND="dev-lang/perl" # doc generation
@@ -57,7 +57,6 @@ src_configure() {
 					# better fixes welcome, it feels wrong to hack the env like this
 
 	use elibc_musl && libc=musl
-	use elibc_uclibc && libc=uClibc
 
 	# not autotools, so call configure directly
 	./configure --cc="$(tc-getCC)" \

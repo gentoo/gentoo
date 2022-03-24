@@ -8,7 +8,7 @@ DIST_VERSION=4.4004
 DIST_EXAMPLES=("eg/*")
 inherit perl-module
 
-DESCRIPTION="A client for the Bugzilla web services API."
+DESCRIPTION="A client for the Bugzilla web services API"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

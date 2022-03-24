@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,13 +13,13 @@ RUBY_FAKEGEM_GEMSPEC="diva.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Implementation of expression for handling things."
+DESCRIPTION="Implementation of expression for handling things"
 HOMEPAGE="https://github.com/toshia/diva https://rubygems.org/gems/diva"
 SRC_URI="https://github.com/toshia/diva/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE=""
 
 ruby_add_rdepend "<dev-ruby/addressable-2.9"

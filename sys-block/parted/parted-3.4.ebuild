@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic verify-sig
+inherit verify-sig
 
 DESCRIPTION="Create, destroy, resize, check, copy partitions and file systems"
 HOMEPAGE="https://www.gnu.org/software/parted/"
@@ -24,12 +24,11 @@ RDEPEND="
 		>=sys-libs/ncurses-5.7-r7:0=
 		>=sys-libs/readline-5.2:0=
 	)
-	elibc_uclibc? ( dev-libs/libiconv )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	nls? ( >=sys-devel/gettext-0.12.1-r2 )
-	verify-sig? ( app-crypt/openpgp-keys-bcl )
+	verify-sig? ( sec-keys/openpgp-keys-bcl )
 	virtual/pkgconfig
 "
 
@@ -38,6 +37,8 @@ VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/bcl.asc
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2-po4a-mandir.patch
 	"${FILESDIR}"/${PN}-3.3-atari.patch
+	# https://lists.gnu.org/archive/html/bug-parted/2022-02/msg00000.html
+	"${FILESDIR}"/${P}-posix-printf.patch
 )
 
 src_prepare() {
@@ -46,7 +47,6 @@ src_prepare() {
 }
 
 src_configure() {
-	use elibc_uclibc && append-libs -liconv
 	local myconf=(
 		$(use_enable debug)
 		$(use_enable device-mapper)

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,6 +10,7 @@ inherit autotools kernel-2
 DESCRIPTION="Userspace utilities for a general USB device sharing system over IP networks"
 HOMEPAGE="https://www.kernel.org/"
 SRC_URI="${KERNEL_URI}"
+S="${WORKDIR}/linux-${PV}/tools/usb/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -22,10 +23,8 @@ RDEPEND="
 	>=sys-kernel/linux-headers-3.17
 	virtual/libudev
 	tcpd? ( sys-apps/tcp-wrappers )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
-
-S="${WORKDIR}/linux-${PV}/tools/usb/${PN}"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_unpack() {
 	tar xJf "${DISTDIR}"/${A} linux-${PV}/tools/usb/${PN} || die
@@ -41,8 +40,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--disable-static \
-		$(use tcpd || echo --without-tcp-wrappers) \
+		$(usev !tcpd --without-tcp-wrappers) \
 		--with-usbids-dir="${EPREFIX}"/usr/share/hwdata
 }
 

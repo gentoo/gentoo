@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,8 @@ S="${WORKDIR}/opam-${PV/_/-}"
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE="+ocamlopt"
+IUSE="+ocamlopt test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-ml/cmdliner:=
@@ -25,6 +26,7 @@ RDEPEND="
 	dev-ml/re:=
 "
 DEPEND="${RDEPEND}"
+BDEPEND="test? ( sys-apps/bubblewrap )"
 
 PATCHES=( "${WORKDIR}"/opam-2.1.0-dose3-6.patch )
 

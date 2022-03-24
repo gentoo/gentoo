@@ -11,7 +11,9 @@
   as well as input/output file format support.
 </longdescription>
 <use>
- <flag name="ftdi">Enable drivers that need libftdi</flag>
+ <flag name="ftdi">Enable drivers that need <pkg>dev-embedded/libftdi</pkg></flag>
+ <flag name="hidapi">Enable drivers that need <pkg>dev-libs/hidapi</pkg></flag>
+ <flag name="nettle">Enable drivers that need <pkg>dev-libs/nettle</pkg></flag>
  <flag name="parport">Enable drivers that are parallel (IEEE1284) based</flag>
  <flag name="serial">Enable drivers that are serial (RS232) based</flag>
 </use>

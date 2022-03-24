@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ HOMEPAGE="https://openjdk.java.net/projects/code-tools/jmh"
 SRC_URI="https://hg.openjdk.java.net/code-tools/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 # jopt *must* be 4.6, see https://mail.openjdk.java.net/pipermail/jmh-dev/2016-October/002395.html
 CP_DEPEND="

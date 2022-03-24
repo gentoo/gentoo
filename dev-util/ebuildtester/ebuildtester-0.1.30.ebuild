@@ -18,7 +18,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	app-emulation/docker
+	app-containers/docker
 	sys-fs/fuse
 "
 
@@ -27,6 +27,8 @@ DEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
 "
+
+distutils_enable_tests unittest
 
 src_install() {
 	distutils-r1_src_install

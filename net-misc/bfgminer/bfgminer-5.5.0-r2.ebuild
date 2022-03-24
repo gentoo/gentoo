@@ -97,12 +97,7 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}
-	opencl? (
-		|| (
-			virtual/opencl
-			dev-util/nvidia-cuda-sdk[opencl]
-		)
-	)
+	opencl? ( virtual/opencl )
 "
 DEPEND="${DEPEND}
 	virtual/pkgconfig

@@ -1,14 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit flag-o-matic systemd savedconfig toolchain-funcs
 
-DESCRIPTION="IEEE 802.11 wireless LAN Host AP daemon"
-HOMEPAGE="https://w1.fi/ https://w1.fi/cgit/hostap/"
 EXTRAS_VER="2.7-r2"
 EXTRAS_NAME="${CATEGORY}_${PN}_${EXTRAS_VER}_extras"
+DESCRIPTION="IEEE 802.11 wireless LAN Host AP daemon"
+HOMEPAGE="https://w1.fi/ https://w1.fi/cgit/hostap/"
 SRC_URI="https://dev.gentoo.org/~andrey_utkin/distfiles/${EXTRAS_NAME}.tar.xz"
 S="${S}/${PN}"
 
@@ -34,7 +34,7 @@ DEPEND="
 	internal-tls? ( dev-libs/libtommath )
 	!internal-tls? ( dev-libs/openssl:0=[-bindist(-)] )
 	kernel_linux? (
-		dev-libs/libnl:3
+		>=dev-libs/libnl-3.2:3
 		crda? ( net-wireless/crda )
 	)
 	netlink? ( net-libs/libnfnetlink )
@@ -60,9 +60,9 @@ src_unpack() {
 src_prepare() {
 	# Allow users to apply patches to src/drivers for example,
 	# i.e. anything outside ${S}/${PN}
-	pushd ../ &>/dev/null || die
+	pushd ../ >/dev/null || die
 	default
-	popd &>/dev/null || die
+	popd >/dev/null || die
 
 	sed -i -e "s:/etc/hostapd:/etc/hostapd/hostapd:g" \
 		"${S}/hostapd.conf" || die
@@ -180,10 +180,7 @@ src_configure() {
 		echo "CONFIG_SQLITE=y" >> ${CONFIG} || die
 	fi
 
-	# If we are using libnl 2.0 and above, enable support for it
-	# Removed for now, since the 3.2 version is broken, and we don't
-	# support it.
-	if has_version ">=dev-libs/libnl-3.2"; then
+	if use kernel_linux; then
 		echo "CONFIG_LIBNL32=y" >> ${CONFIG} || die
 		append-cflags $($(tc-getPKG_CONFIG) --cflags libnl-3.0)
 	fi

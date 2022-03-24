@@ -1,0 +1,16 @@
+Drop guard for CPU detection, configure won't get this wrong, and this
+check fails on some PPC platforms where these guards aren't set (due to
+different kernel/libc).
+
+--- a/src/hwf-ppc.c
++++ b/src/hwf-ppc.c
+@@ -33,9 +33,6 @@
+ #include "g10lib.h"
+ #include "hwf-common.h"
+ 
+-#if !defined (__powerpc__) && !defined (__powerpc64__)
+-# error Module build for wrong CPU.
+-#endif
+ 
+ 
+ #if defined(HAVE_SYS_AUXV_H) && defined(HAVE_ELF_AUX_INFO) && \

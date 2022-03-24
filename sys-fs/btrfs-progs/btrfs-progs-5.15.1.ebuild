@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit bash-completion-r1 python-single-r1
 
@@ -12,7 +12,7 @@ libbtrfs_soname=0
 if [[ ${PV} != 9999 ]]; then
 	MY_PV="v${PV/_/-}"
 	[[ "${PV}" = *_rc* ]] || \
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~riscv ~sparc x86"
 	SRC_URI="https://www.kernel.org/pub/linux/kernel/people/kdave/${PN}/${PN}-${MY_PV}.tar.xz"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 else
@@ -29,7 +29,7 @@ LICENSE="GPL-2"
 SLOT="0/${libbtrfs_soname}"
 IUSE="+convert doc python reiserfs static static-libs +zstd"
 
-RESTRICT=test # tries to mount repared filesystems
+RESTRICT="test" # tries to mount repaired filesystems
 
 RDEPEND="
 	dev-libs/lzo:2=
@@ -74,7 +74,7 @@ BDEPEND="
 "
 
 if [[ ${PV} == 9999 ]]; then
-	DEPEND+=" sys-devel/gnuconfig"
+	BDEPEND+=" sys-devel/gnuconfig"
 fi
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

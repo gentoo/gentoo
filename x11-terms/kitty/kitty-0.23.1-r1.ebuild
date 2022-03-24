@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -109,10 +109,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_icon_cache_update
+	xdg_pkg_postinst
 
-	optfeature "displaying images in the terminal" \
-		media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick]
-
+	optfeature "in-terminal image display with kitty icat" media-gfx/imagemagick
 	optfeature "audio-based terminal bell support" media-libs/libcanberra
 }

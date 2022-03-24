@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -11,12 +11,12 @@ MAVEN_ID="org.apache.commons:commons-csv:1.9.0"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="Simple interface for reading and writing CSV files of various types."
+DESCRIPTION="Simple interface for reading and writing CSV files of various types"
 HOMEPAGE="https://commons.apache.org/proper/commons-csv/"
 SRC_URI="mirror://apache/commons/csv/source/${P}-src.tar.gz -> ${P}-sources.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 # missing test deps
 RESTRICT="test"

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -18,7 +18,7 @@
 #--- END OF EXAMPLES ---
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-01)
-# requires sys-apps/dbus-broker, which keyworded here.
+# requires sys-apps/dbus-broker, which is keyworded here.
 sys-apps/systemd -hostnamed-fallback
 
 # James Le Cuirot <chewi@gentoo.org> (2021-10-22)
@@ -46,10 +46,6 @@ dev-util/diffoscope -haskell
 # gui-libs/egl-wayland with nvidia-drivers is supported on this arch.
 x11-base/xwayland -video_cards_nvidia
 x11-wm/mutter -video_cards_nvidia
-
-# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
-# Unmask TPM on supported archs.
-sys-apps/systemd -tpm
 
 # Michael Orlitzky <mjo@gentoo.org> (2021-03-27)
 # Unmask the use of 64-bit dev-lisp/clozurecl on 64-bit arches.
@@ -92,10 +88,6 @@ app-metrics/collectd -collectd_plugins_gpu_nvidia
 # Thomas Deutschmann <whissi@gentoo.org> (2020-08-17)
 # Columnstore engine is supported on amd64
 dev-db/mariadb -columnstore
-
-# Thomas Deutschmann <whissi@gentoo.org> (2020-07-27)
-# media-video/pipewire:0/0.3 is available for amd64
-www-client/firefox -screencast
 
 # Sam James <sam@gentoo.org> (2020-07-03)
 # Rust is available here
@@ -319,7 +311,7 @@ dev-vcs/git -mediawiki -mediawiki-experimental
 
 # Sergey Popov <pinkbyte@gentoo.org> (2013-12-27)
 # Boost.Context can be built on amd64
-dev-libs/boost	-context
+dev-libs/boost -context
 
 # Michał Górny <mgorny@gentoo.org> (2013-12-15)
 # mupen64plus' 2.0 new dynamic recompiler is supported on x86 and arm

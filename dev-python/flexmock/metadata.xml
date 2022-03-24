@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">bkabrda/flexmock</remote-id>
+		<remote-id type="github">flexmock/flexmock</remote-id>
 		<remote-id type="pypi">flexmock</remote-id>
 	</upstream>
 </pkgmetadata>

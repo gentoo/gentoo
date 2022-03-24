@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,8 @@ RDEPEND="
 	net-libs/libnsl:=
 	>=sys-apps/util-linux-2.20
 	dmalloc? ( dev-libs/dmalloc[threads] )
-	ldap? ( >=net-nds/openldap-2.0
+	ldap? (
+		>=net-nds/openldap-2.0:=
 		sasl? (
 			dev-libs/cyrus-sasl
 			dev-libs/libxml2
@@ -27,7 +28,7 @@ RDEPEND="
 		)
 	)
 	systemd? ( sys-apps/systemd )
-	libtirpc? ( net-libs/libtirpc )
+	libtirpc? ( net-libs/libtirpc:= )
 	!libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) )
 "
 DEPEND="${RDEPEND}

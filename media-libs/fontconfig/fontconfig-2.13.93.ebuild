@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -110,6 +110,8 @@ multilib_src_configure() {
 }
 
 multilib_src_install() {
+	MULTILIB_CHOST_TOOLS=( /usr/bin/fc-cache$(get_exeext) )
+
 	default
 
 	# avoid calling this multiple times, bug #459210

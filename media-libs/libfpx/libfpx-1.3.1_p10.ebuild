@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -40,6 +40,7 @@ src_install() {
 
 	dodoc AUTHORS ChangeLog doc/*.txt
 
-	insinto /usr/share/doc/${PF}/pdf
-	doins doc/*.pdf
+	docinto pdf
+	dodoc doc/*.pdf
+	docompress -x /usr/share/doc/${PF}/pdf
 }

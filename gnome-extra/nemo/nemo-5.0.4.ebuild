@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,8 +13,8 @@ SRC_URI="https://github.com/linuxmint/nemo/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2+ FDL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
-IUSE="doc exif +nls selinux test tracker xmp"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
+IUSE="exif gtk-doc +nls selinux test tracker xmp"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # https://github.com/linuxmint/nemo/issues/2501
@@ -32,7 +32,7 @@ COMMON_DEPEND="
 	>=x11-libs/libnotify-0.7:=
 	x11-libs/libX11
 	>=x11-libs/pango-1.40.0
-	>=x11-libs/xapps-2.2.0
+	>=x11-libs/xapp-2.2.0
 
 	exif? ( >=media-libs/libexif-0.6.20:= )
 	selinux? ( sys-libs/libselinux )
@@ -61,7 +61,7 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 
-	doc? ( dev-util/gtk-doc )
+	gtk-doc? ( dev-util/gtk-doc )
 "
 
 PATCHES=(
@@ -97,7 +97,7 @@ src_configure() {
 		$(meson_use tracker)
 		$(meson_use xmp)
 		$(meson_use selinux)
-		$(meson_use doc gtk_doc)
+		$(meson_use gtk-doc gtk_doc)
 	)
 	meson_src_configure
 }

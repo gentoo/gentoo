@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -161,17 +161,20 @@ src_install() {
 	if use doc; then
 		dodoc cpg/cpgplot.doc applications/curvefit/curvefit.doc pgplot.html
 		dodoc pgplot-routines.pdf pgplot-routines.tex
-		insinto /usr/share/doc/${PF}/examples
-		doins  examples/* cpg/cpgdemo.c
-		insinto /usr/share/doc/${PF}/applications
-		doins -r applications/*
+		docinto examples
+		dodoc -r examples/. cpg/cpgdemo.c
+		docompress -x /usr/share/doc/${PF}/examples
+		dodoc -r applications
+		docompress -x /usr/share/doc/${PF}/applications
 		if use motif; then
-			insinto /usr/share/doc/${PF}/pgm
-			doins pgmf/* drivers/xmotif/pgmdemo.c
+			docinto pgm
+			dodoc -r pgmf/. drivers/xmotif/pgmdemo.c
+			docompress -x /usr/share/doc/${PF}/pgm
 		fi
 		if use tk; then
-			insinto /usr/share/doc/${PF}/pgtk
-			doins drivers/xtk/pgtkdemo.*
+			docinto pgtk
+			dodoc drivers/xtk/pgtkdemo.*
+			docompress -x /usr/share/doc/${PF}/pgtk
 		fi
 	fi
 }

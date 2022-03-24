@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,23 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Sam James <sam@gentoo.org> (2022-02-02)
+# net-analyzer/net-snmp is not marked stable on HPPA
+net-analyzer/ifstat snmp
+sys-libs/openipmi snmp
+
+# Sam James <sam@gentoo.org> (2022-02-01)
+# Unstable Tcl/Tk dependencies
+dev-libs/libisoburn launch-frontend launch-frontend-setuid frontend-optional
+
+# Sam James <sam@gentoo.org> (2022-01-26)
+# Various unstable dependencies
+sys-apps/systemd fido2 http nat policykit qrcode xkb
+
+# Sam James <sam@gentoo.org> (2022-01-20)
+# net-misc/pps-tools is not marked stable on HPPA
+net-misc/chrony pps
 
 # Sam James <sam@gentoo.org> (2021-12-15)
 # Unstable dependencies (dev-libs/libnl, sys-cluster/rdma-core)
@@ -80,11 +97,6 @@ sys-apps/iproute2 atm bpf iptables
 # Thomas Deutschmann <whissi@gentoo.org> (2021-06-20)
 # dev-libs/libzip does not have stable keywords on hppa
 >=media-gfx/imagemagick-7 zip
-
-# Matt Turner <mattst88@gentoo.org> (2021-06-02)
-# dev-util/gi-docgen does not have stable keywords on hppa
-x11-libs/gdk-pixbuf gtk-doc
-x11-libs/pango gtk-doc
 
 # Sam James <sam@gentoo.org> (2021-06-01)
 # sys-apps/systemd is not stable on hppa
@@ -218,7 +230,6 @@ dev-lang/php enchant
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-06-05)
 # sys-auth/polkit stable timeout, bug #661470
 sys-apps/pcsc-lite policykit
-x11-misc/colord policykit
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-03-17)
 # net-analyzer/nagios (or icinga) has no stable keywords, bug #676222

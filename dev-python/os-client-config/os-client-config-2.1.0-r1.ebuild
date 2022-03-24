@@ -23,7 +23,6 @@ BDEPEND="
 	test? (
 		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
 		>=dev-python/jsonschema-3.2.0[${PYTHON_USEDEP}]
-		dev-python/hacking[${PYTHON_USEDEP}]
 		>=dev-python/prometheus_client-0.4.2[${PYTHON_USEDEP}]
 		dev-python/python-glanceclient[${PYTHON_USEDEP}]
 		>=dev-python/oslo-config-6.1.0[${PYTHON_USEDEP}]

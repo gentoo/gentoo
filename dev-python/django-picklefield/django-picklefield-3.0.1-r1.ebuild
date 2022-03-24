@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
-DESCRIPTION="Pickled object field for Django."
+DESCRIPTION="Pickled object field for Django"
 HOMEPAGE="https://github.com/gintas/django-picklefield"
 SRC_URI="
 	https://github.com/gintas/django-picklefield/archive/v${PV}.tar.gz

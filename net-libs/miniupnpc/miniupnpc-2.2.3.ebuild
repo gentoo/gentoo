@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,12 +13,12 @@ SRC_URI="http://miniupnp.free.fr/files/${P}.tar.gz
 LICENSE="BSD"
 SLOT="0/17"
 KEYWORDS="amd64 arm arm64 hppa ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="ipv6 kernel_linux"
+IUSE="ipv6"
 
 RDEPEND=""
 BDEPEND="
 	kernel_linux? ( sys-apps/lsb-release sys-apps/which )
-	verify-sig? ( app-crypt/openpgp-keys-miniupnp )"
+	verify-sig? ( sec-keys/openpgp-keys-miniupnp )"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/miniupnp.asc
 

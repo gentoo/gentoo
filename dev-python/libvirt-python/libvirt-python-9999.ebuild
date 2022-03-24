@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 DISTUTILS_USE_SETUPTOOLS=no
 
@@ -13,7 +13,7 @@ inherit distutils-r1 verify-sig
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://libvirt.org/git/libvirt-python.git"
+	EGIT_REPO_URI="https://gitlab.com/libvirt/libvirt-python.git"
 	RDEPEND="app-emulation/libvirt:=[-python(-)]"
 else
 	SRC_URI="https://libvirt.org/sources/python/${MY_P}.tar.gz
@@ -37,7 +37,7 @@ BDEPEND="
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)
-	verify-sig? ( app-crypt/openpgp-keys-libvirt )
+	verify-sig? ( sec-keys/openpgp-keys-libvirt )
 "
 
 distutils_enable_tests setup.py

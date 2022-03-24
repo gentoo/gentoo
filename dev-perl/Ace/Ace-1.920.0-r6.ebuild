@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,7 +28,6 @@ DEPS_TIRPC="
 DEPEND="
 	elibc_glibc? ( ${DEPS_TIRPC} )
 	elibc_musl? ( ${DEPS_TIRPC} )
-	elibc_uclibc? ( ${DEPS_TIRPC} )
 "
 BDEPEND="
 	${RDEPEND}
@@ -40,7 +39,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-1.92-gcc-nonvoid.patch"
 	eapply "${FILESDIR}/${PN}-1.92-toolchain.patch"
 	cp "${FILESDIR}/${PN}-1.92-DARWIN_DEF" "${S}/acelib/wmake/DARWIN_DEF" || die "can't copy DARWIN_DEF"
-	if use elibc_glibc || use elibc_musl || use elibc_uclibc ; then
+	if use elibc_glibc || use elibc_musl ; then
 		export LIBS="-ltirpc"
 	fi
 	perl-module_src_prepare
@@ -55,9 +54,9 @@ src_compile() {
 		# Parallel compile breaks :(
 		"-j1"
 	)
-	if use elibc_glibc || use elibc_musl || use elibc_uclibc ; then
+	if use elibc_glibc || use elibc_musl ; then
 		mymake+=( "LIBS=-ltirpc -lm" )
-		mymake+=( "USEROPTS=-I/usr/include/tirpc -fPIC" )
+		mymake+=( "USEROPTS=-I${ESYSROOT}/usr/include/tirpc -fPIC" )
 	fi
 	perl-module_src_compile
 }

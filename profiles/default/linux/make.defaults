@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # System-wide defaults for the Portage system
@@ -53,3 +53,8 @@ VIDEO_CARDS="dummy fbdev v4l"
 # Note that adding LDFLAGS="-Wl,-O1 ${LDFLAGS}" breaks dev-util/boost-build
 # because of whitespace.
 LDFLAGS="-Wl,-O1 -Wl,--as-needed"
+
+# Mike Gilbert <floppym@gentoo.org> (2021-12-17)
+# Prevent automagic use of 64-bit time_t.
+# https://bugs.gentoo.org/828001
+enable_year2038="no"

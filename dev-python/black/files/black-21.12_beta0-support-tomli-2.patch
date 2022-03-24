@@ -1,0 +1,40 @@
+From 389e9c23a9e622ee6090d902cc5f56c5f76cdee9 Mon Sep 17 00:00:00 2001
+From: Taneli Hukkinen <3275109+hukkin@users.noreply.github.com>
+Date: Tue, 21 Dec 2021 18:03:07 +0200
+Subject: [PATCH] Disable universal newlines when reading TOML (#2408)
+
+--- a/Pipfile
++++ b/Pipfile
+@@ -42,7 +42,7 @@ platformdirs= ">=2"
+ click = ">=8.0.0"
+ mypy_extensions = ">=0.4.3"
+ pathspec = ">=0.8.1"
+-tomli = ">=0.2.6, <2.0.0"
++tomli = ">=1.1.0, <3.0.0"
+ typed-ast = "==1.4.3"
+ typing_extensions = {markers = "python_version < '3.10'", version = ">=3.10.0.0"}
+ black = {editable = true,extras = ["d"],path = "."}
+--- a/setup.py
++++ b/setup.py
+@@ -99,7 +99,7 @@ def find_python_files(base: Path) -> List[Path]:
+     install_requires=[
+         "click>=7.1.2",
+         "platformdirs>=2",
+-        "tomli>=0.2.6,<2.0.0",
++        "tomli>=1.1.0,<3.0.0",
+         "typed-ast>=1.4.2; python_version < '3.8' and implementation_name == 'cpython'",
+         "pathspec>=0.9.0, <1",
+         "dataclasses>=0.6; python_version < '3.7'",
+--- a/src/black/files.py
++++ b/src/black/files.py
+@@ -95,8 +95,8 @@ def parse_pyproject_toml(path_config: str) -> Dict[str, Any]:
+ 
+     If parsing fails, will raise a tomli.TOMLDecodeError
+     """
+-    with open(path_config, encoding="utf8") as f:
+-        pyproject_toml = tomli.loads(f.read())
++    with open(path_config, "rb") as f:
++        pyproject_toml = tomli.load(f)
+     config = pyproject_toml.get("tool", {}).get("black", {})
+     return {k.replace("--", "").replace("-", "_"): v for k, v in config.items()}
+ 

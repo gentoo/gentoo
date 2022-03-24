@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit desktop wrapper
 
 DESCRIPTION="Enemy Territory: Quake Wars"
-HOMEPAGE="http://zerowing.idsoftware.com/linux/etqw/ETQWFrontPage/"
+HOMEPAGE="https://zerowing.idsoftware.com/linux/etqw/ETQWFrontPage/index.html"
 SRC_URI="http://ftp.jeuxlinux.fr/files/ETQW-client-${PV}-full.x86.run"
 S="${WORKDIR}"/data
 

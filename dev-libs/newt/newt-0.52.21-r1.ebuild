@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,6 @@ RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-libs/popt-1.6
 	=sys-libs/slang-2*
-	elibc_uclibc? ( sys-libs/ncurses:0= )
 	gpm? ( sys-libs/gpm )
 	tcl? ( >=dev-lang/tcl-8.5:0 )
 	"
@@ -38,11 +37,6 @@ PATCHES=(
 )
 
 src_prepare() {
-	# bug 73850
-	if use elibc_uclibc; then
-		sed -i -e 's:-lslang:-lslang -lncurses:g' Makefile.in || die
-	fi
-
 	sed -i Makefile.in \
 		-e 's|$(SHCFLAGS) -o|$(LDFLAGS) &|g' \
 		-e 's|-g -o|$(CFLAGS) $(LDFLAGS) -o|g' \

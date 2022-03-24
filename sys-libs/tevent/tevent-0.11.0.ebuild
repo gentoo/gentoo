@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,14 +13,14 @@ SRC_URI="https://samba.org/ftp/tevent/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x86-linux"
-IUSE="elibc_glibc python"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x86-linux"
+IUSE="python"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="test"
 
 RDEPEND="
-	!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
+	dev-libs/libbsd[${MULTILIB_USEDEP}]
 	>=sys-libs/talloc-2.3.1[${MULTILIB_USEDEP}]
 	python? (
 		${PYTHON_DEPS}
@@ -40,6 +40,8 @@ DEPEND="${RDEPEND}
 BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 "
+
+PATCHES=( "${FILESDIR}"/${P}-missing-include.patch )
 
 WAF_BINARY="${S}/buildtools/bin/waf"
 

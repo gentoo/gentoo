@@ -1,0 +1,28 @@
+https://github.com/adrian-thurston/colm/pull/145
+
+commit 0a0fa0a41928564fa92100bff1bc21f85d770bfb
+Author: Fabian Groffen <grobian@gentoo.org>
+Date:   Wed Jan 12 20:32:44 2022 +0100
+
+    src/bytecode.c: include config.h to activate guards
+    
+    Fix compilation on Solaris, which needs sys/wait.h for macros like
+    WEXITSTATUS.
+    
+    Signed-off-by: Fabian Groffen <grobian@gentoo.org>
+
+diff --git a/src/bytecode.c b/src/bytecode.c
+index 8ef848b0..c30778da 100644
+--- a/src/bytecode.c
++++ b/src/bytecode.c
+@@ -20,6 +20,10 @@
+  * SOFTWARE.
+  */
+ 
++#ifdef HAVE_CONFIG_H
++# include "config.h"
++#endif
++
+ #include <colm/bytecode.h>
+ 
+ #include <sys/types.h>

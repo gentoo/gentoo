@@ -1,8 +1,33 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
+
+# Sam James <sam@gentoo.org> (2022-03-22)
+# media-libs/dav1d not keyworded here
+media-libs/xine-lib dav1d
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# Untested useflag on other arches, needs keywording
+media-video/ffmpeg vmaf
+
+# Sam James <sam@gentoo.org> (2022-03-06)
+# Unkeyworded dependencies
+net-mail/cyrus-imapd http
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
+# Mask AMF keyword on non-amd64 arches
+# It is unusable, for now, in other arches
+media-video/ffmpeg amf
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-02-08)
+# bash becomes corrupted and system breaks, bug #832946
+app-shells/bash mem-scramble
+
+# Sam James <sam@gentoo.org> (2022-01-29)
+# app-text/ronn-ng not keyworded here, bug #801103
+app-accessibility/espeak-ng man
 
 # Sam James <sam@gentoo.org> (2021-11-19)
 # Avoid dragging in doc/sphinx deps where we can help it
@@ -34,10 +59,6 @@ dev-python/argon2-cffi doc
 # keywords. Doubt anybody is using PW here anyway right now.
 # bug #807616
 media-libs/libsdl2 pipewire
-
-# Sam James <sam@gentoo.org> (2021-10-16)
-# Avoid unkeyworded dependencies
-x11-libs/gtk+ cloudprint
 
 # Sam James <sam@gentoo.org> (2021-09-14)
 # fdk-aac, libfreeaptx not keyworded here
@@ -98,7 +119,7 @@ dev-vcs/mercurial rust
 
 # Joonas Niilola <juippis@gentoo.org> (2020-10-08)
 # Dependency not keyworded on this arch.
-dev-libs/efl avif lua_single_target_luajit physics
+dev-libs/efl avif heif lua_single_target_luajit physics
 
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan
@@ -111,10 +132,6 @@ sys-block/fio -io-uring -zbc
 # Michał Górny <mgorny@gentoo.org> (2020-06-14)
 # Requires dev-python/networkx.
 app-portage/nattka depgraph-order
-
-# Michał Górny <mgorny@gentoo.org> (2020-05-03)
-# Requires unsupported dev-python/gevent.
-dev-python/socketpool eventlet gevent
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-25)
 # dependencies not yet keyworded
@@ -129,10 +146,6 @@ dev-python/pyopengl test
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-22)
 # dev-libs/criterion not yet keyworded
 >=app-admin/syslog-ng-3.25 test
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-20)
-# Not keyworded on hppa
-net-misc/whois xcrypt
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-18)
 # nagios and icinga not stable on hppa
@@ -230,17 +243,6 @@ app-forensics/sleuthkit java
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=seccomp that is masked in this profile.
 net-libs/gnutls test-full
-
-# Robin H. Johnson <robbat2@gentoo.org> (2017-08-05)
-# Upstream Git is switching to PCRE2 w/ JIT.
-# This is not available on some arches, where a fallback to PCRE1 without JIT is used.
-# Since >=dev-vcs/git-2.31.0 pcre1 support has been dropped from git.
-<dev-vcs/git-2.31.0 pcre-jit
-
-# Michał Górny <mgorny@gentoo.org> (2017-06-28)
-# app-misc/dtach is not keyworded, and tests are restricted anyway, so
-# no point in pursuing it right now.
-app-shells/bash-completion test
 
 # Jeroen Roovers <jer@gentoo.org> (2017-02-04)
 # media-libs/libilbc has not been ported to HPPA

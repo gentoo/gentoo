@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -78,19 +78,29 @@ src_unpack() {
 
 	mkdir base || die  # without this unpacking runtime will fail
 	./config/unpack "${S}" runtime || die
+
+	# Unpack asdl to fix autoconf linker check
+	unpack "${S}"/asdl.tgz
 }
 
 src_prepare() {
 	default
 
 	# respect CC et al. (bug 243886)
-	sed -e "/^AS/s:as:$(tc-getAS):" \
-		-e "/^CC/s:gcc:$(tc-getCC):" \
-		-e "/^CPP/s:gcc:$(tc-getCC):" \
-		-e "/^CFLAGS/{s:-O[0123s]:: ; s:=:= ${CFLAGS}:}" \
+	sed -e "/^AS/s|as|$(tc-getAS)|" \
+		-e "/^CC/s|gcc|$(tc-getCC)|" \
+		-e "/^CPP/s|gcc|$(tc-getCC)|" \
+		-e "/^CFLAGS/{s|-O[0123s]|| ; s|=|= ${CFLAGS}|}" \
 		-i base/runtime/objs/mk.* || die
+	sed -e "/^AS/s|as|$(tc-getAS)|" \
+		-e "/^AR/s|ar|$(tc-getAR)|" \
+		-e "/^CC/s|cc|$(tc-getCC)|" \
+		-e "/^CPP/s|/lib/cpp|$(tc-getCPP)|" \
+		-e "/^RANLIB/s|ranlib|$(tc-getRANLIB)|" \
+		-i base/runtime/objs/makefile || die
 
 	sed -i "s|nm |$(tc-getNM) |g" config/chk-global-names.sh || die
+	sed -i "/^AC_PATH_PROG/s|\[ld\]|\[$(tc-getLD)\]|" asdl/configure.ac || die
 }
 
 src_compile() {
@@ -109,7 +119,7 @@ src_install() {
 	for file in bin/{*,.*} ; do
 		[[ -f ${file} ]] &&
 			sed -e "2iSMLNJ_HOME=${EPREFIX}/${DIR}" \
-				-e "s:${WORKDIR}:${EPREFIX}/${DIR}:" \
+				-e "s|${WORKDIR}|${EPREFIX}/${DIR}|" \
 				-i ${file}
 	done
 

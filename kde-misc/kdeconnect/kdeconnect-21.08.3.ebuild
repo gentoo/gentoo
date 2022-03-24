@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -66,6 +66,13 @@ RDEPEND="${DEPEND}
 	>=dev-qt/qtmultimedia-${QTMIN}:5[qml]
 	>=kde-frameworks/kdeclarative-${KFMIN}:5
 	net-fs/sshfs
+"
+BDEPEND="
+	|| (
+		>=dev-qt/qtwaylandscanner-${QTMIN}:5
+		<dev-qt/qtwayland-5.15.3:5
+	)
+	dev-util/wayland-scanner
 "
 
 PATCHES=( "${FILESDIR}/${PN}-21.07.80-revert-disable-kpeople.patch" )

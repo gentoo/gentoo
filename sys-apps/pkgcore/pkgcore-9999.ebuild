@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ RDEPEND="
 if [[ ${PV} == *9999 ]]; then
 	RDEPEND+=" ~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
 else
-	RDEPEND+=" >=dev-python/snakeoil-0.9.6[${PYTHON_USEDEP}]"
+	RDEPEND+=" >=dev-python/snakeoil-0.9.10[${PYTHON_USEDEP}]"
 fi
 BDEPEND="
 	test? (

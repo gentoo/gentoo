@@ -1,17 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_8,3_9} )
+PYTHON_COMPAT=( python{3_8,3_9,3_10} )
 
-inherit autotools fcaps linux-info python-single-r1 systemd
+inherit autotools fcaps flag-o-matic linux-info python-single-r1 systemd toolchain-funcs
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/netdata/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/netdata/${PN}/releases/download/v${PV}/${PN}-v${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-v${PV}"
+	SRC_URI="https://github.com/netdata/${PN}/releases/download/${PV}/${PN}-${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${PV}"
 	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 
@@ -49,6 +49,7 @@ RDEPEND="
 		dev-libs/openssl:=
 	)
 	dev-libs/libuv
+	cloud? ( dev-libs/protobuf:= )
 	compression? ( sys-libs/zlib )
 	ipmi? ( sys-libs/freeipmi )
 	jsonc? ( dev-libs/json-c:= )
@@ -92,11 +93,17 @@ src_prepare() {
 }
 
 src_configure() {
+	if use ppc64; then
+		# bundled dlib does not support vsx on big-endian
+		# https://github.com/davisking/dlib/issues/397
+		[[ $(tc-endian) == big ]] && append-flags -mno-vsx
+	fi
+
 	econf \
 		--localstatedir="${EPREFIX}"/var \
 		--with-user=netdata \
+		--without-bundled-protobuf \
 		$(use_enable cloud) \
-		$(use_with cloud aclk-ng) \
 		$(use_enable jsonc) \
 		$(use_enable cups plugin-cups) \
 		$(use_enable dbengine) \

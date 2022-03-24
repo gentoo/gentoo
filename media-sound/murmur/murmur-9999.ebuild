@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,9 +22,9 @@ else
 		MY_P="${MY_PN}-${MY_PV}"
 		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/${MY_PV}/${MY_P}.tar.gz
 			https://dl.mumble.info/${MY_P}.tar.gz"
-		S="${WORKDIR}/${MY_PN}-${PV/_*}"
+		S="${WORKDIR}/${MY_PN}-${PV/_*}.src"
 	fi
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="BSD"
@@ -54,6 +54,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.41.0
+	dev-qt/qttest:5
 "
 BDEPEND="
 	acct-group/murmur
@@ -79,8 +80,6 @@ DOC_CONTENTS="
 "
 
 src_prepare() {
-	default
-
 	if [[ "${PV}" == *9999 ]] ; then
 		pushd scripts &>/dev/null || die
 		./mkini.sh || die
@@ -90,10 +89,12 @@ src_prepare() {
 	sed \
 		-e 's:mumble-server:murmur:g' \
 		-e 's:/var/run:/run:g' \
-		-i "${S}"/scripts/murmur.{conf,ini.system} || die
+		-i "${S}"/scripts/murmur.{conf,ini} || die
 
 	# Adjust systemd service file to our config location #689208
-	sed "s@/etc/${PN}\.ini@/etc/${PN}/${PN}.ini@" \
+	sed \
+		-e "s@/etc/${PN}\.ini@/etc/${PN}/${PN}.ini@" \
+		-e "s@murmurd@mumble-server@" \
 		-i scripts/${PN}.service || die
 
 	cmake_src_prepare
@@ -115,7 +116,9 @@ src_configure() {
 		-Dserver="ON"
 		-Dzeroconf="$(usex zeroconf)"
 	)
-
+	if [[ "${PV}" != 9999 ]] ; then
+		mycmakeargs+=( -DBUILD_NUMBER="$(ver_cut 3)" )
+	fi
 	cmake_src_configure
 }
 
@@ -130,7 +133,7 @@ src_install() {
 
 	local etcdir="/etc/murmur"
 	insinto ${etcdir}
-	newins scripts/${PN}.ini.system ${PN}.ini
+	doins scripts/${PN}.ini
 
 	insinto /etc/logrotate.d/
 	newins "${FILESDIR}"/murmur.logrotate murmur
@@ -141,7 +144,7 @@ src_install() {
 	insinto /usr/share/murmur/
 	doins src/murmur/Murmur.ice
 
-	newinitd "${FILESDIR}"/murmur.initd-r1 murmur
+	newinitd "${FILESDIR}"/murmur.initd-r2 murmur
 	newconfd "${FILESDIR}"/murmur.confd murmur
 
 	systemd_dounit scripts/${PN}.service

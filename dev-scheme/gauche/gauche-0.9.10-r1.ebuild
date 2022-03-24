@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -22,15 +22,13 @@ RDEPEND="sys-libs/gdbm
 	virtual/libcrypt:=
 	mbedtls? ( net-libs/mbedtls:= )"
 DEPEND="${RDEPEND}
-	test? (
-		dev-libs/openssl:0
-	)"
+	test? ( dev-libs/openssl:0 )"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-ext-ldflags.patch
 	"${FILESDIR}"/${PN}-gauche.m4.patch
-	"${FILESDIR}"/${PN}-info.patch
+	"${FILESDIR}"/${P}-info.patch
 	"${FILESDIR}"/${PN}-rfc.tls.patch
 	"${FILESDIR}"/${PN}-xz-info.patch
 	"${FILESDIR}"/${P}-srfi-134.patch

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-single-r1.eclass
@@ -35,7 +35,7 @@
 # to inherit both.
 #
 # For more information, please see the Python Guide:
-# https://dev.gentoo.org/~mgorny/python-guide/
+# https://projects.gentoo.org/python/guide/
 
 case "${EAPI:-0}" in
 	[0-5])
@@ -62,7 +62,7 @@ fi
 
 EXPORT_FUNCTIONS pkg_setup
 
-# @ECLASS-VARIABLE: PYTHON_COMPAT
+# @ECLASS_VARIABLE: PYTHON_COMPAT
 # @REQUIRED
 # @DESCRIPTION:
 # This variable contains a list of Python implementations the package
@@ -79,7 +79,7 @@ EXPORT_FUNCTIONS pkg_setup
 # PYTHON_COMPAT=( python2_7 python3_{3,4} )
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_COMPAT_OVERRIDE
+# @ECLASS_VARIABLE: PYTHON_COMPAT_OVERRIDE
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -99,7 +99,7 @@ EXPORT_FUNCTIONS pkg_setup
 # PYTHON_COMPAT_OVERRIDE='pypy' emerge -1v dev-python/bar
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_REQ_USE
+# @ECLASS_VARIABLE: PYTHON_REQ_USE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The list of USEflags required to be enabled on the chosen Python
@@ -119,7 +119,7 @@ EXPORT_FUNCTIONS pkg_setup
 # python_single_target_pythonX_Y? ( dev-lang/python:X.Y[gdbm,ncurses(-)?] )
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_DEPS
+# @ECLASS_VARIABLE: PYTHON_DEPS
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated Python dependency string for all
@@ -136,12 +136,11 @@ EXPORT_FUNCTIONS pkg_setup
 #
 # Example value:
 # @CODE
-# dev-lang/python-exec:=
 # python_single_target_python2_7? ( dev-lang/python:2.7[gdbm] )
 # python_single_target_pypy? ( dev-python/pypy[gdbm] )
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_SINGLE_USEDEP
+# @ECLASS_VARIABLE: PYTHON_SINGLE_USEDEP
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated USE-dependency string which can be used to
@@ -161,7 +160,7 @@ EXPORT_FUNCTIONS pkg_setup
 # python_single_target_python3_4(-)?
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_USEDEP
+# @ECLASS_VARIABLE: PYTHON_USEDEP
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is a placeholder variable supported by python_gen_cond_dep,
@@ -180,7 +179,7 @@ EXPORT_FUNCTIONS pkg_setup
 # python_targets_python3_4(-)
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_REQUIRED_USE
+# @ECLASS_VARIABLE: PYTHON_REQUIRED_USE
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated required-use expression which ensures
@@ -219,13 +218,8 @@ _python_single_set_globals() {
 	local deps= i PYTHON_PKG_DEP
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		_python_export "${i}" PYTHON_PKG_DEP
-		# 1) well, python-exec would suffice as an RDEP
-		# but no point in making this overcomplex, BDEP doesn't hurt anyone
-		# 2) python-exec should be built with all targets forced anyway
-		# but if new targets were added, we may need to force a rebuild
 		deps+="python_single_target_${i}? (
 			${PYTHON_PKG_DEP}
-			>=dev-lang/python-exec-2:=[python_targets_${i}]
 		) "
 	done
 
@@ -265,40 +259,6 @@ unset -f _python_single_set_globals
 
 if [[ ! ${_PYTHON_SINGLE_R1} ]]; then
 
-# @FUNCTION: _python_gen_usedep
-# @USAGE: [<pattern>...]
-# @INTERNAL
-# @DESCRIPTION:
-# Output a USE dependency string for Python implementations which
-# are both in PYTHON_COMPAT and match any of the patterns passed
-# as parameters to the function.
-#
-# The patterns are fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values).  Remember to escape
-# or quote the fnmatch patterns to prevent accidental shell filename
-# expansion.
-#
-# This is an internal function used to implement python_gen_cond_dep.
-_python_gen_usedep() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	local impl matches=()
-
-	_python_verify_patterns "${@}"
-	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		if _python_impl_matches "${impl}" "${@}"; then
-			matches+=(
-				"python_single_target_${impl}(-)?"
-			)
-		fi
-	done
-
-	[[ ${matches[@]} ]] || die "No supported implementations match python_gen_usedep patterns: ${@}"
-
-	local out=${matches[@]}
-	echo "${out// /,}"
-}
-
 # @FUNCTION: python_gen_useflags
 # @USAGE: [<pattern>...]
 # @DESCRIPTION:
@@ -306,10 +266,8 @@ _python_gen_usedep() {
 # are both in PYTHON_COMPAT and match any of the patterns passed
 # as parameters to the function.
 #
-# The patterns are fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values).  Remember to escape
-# or quote the fnmatch patterns to prevent accidental shell filename
-# expansion.
+# For the pattern syntax, please see _python_impl_matches
+# in python-utils-r1.eclass.
 #
 # Example:
 # @CODE
@@ -343,10 +301,8 @@ python_gen_useflags() {
 # of Python implementations which are both in PYTHON_COMPAT and match
 # any of the patterns passed as the remaining parameters.
 #
-# The patterns are fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values).  Remember to escape
-# or quote the fnmatch patterns to prevent accidental shell filename
-# expansion.
+# For the pattern syntax, please see _python_impl_matches
+# in python-utils-r1.eclass.
 #
 # In order to enforce USE constraints on the packages, verbatim
 # '${PYTHON_SINGLE_USEDEP}' and '${PYTHON_USEDEP}' (quoted!) may
@@ -378,22 +334,10 @@ python_gen_cond_dep() {
 	_python_verify_patterns "${@}"
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${impl}" "${@}"; then
-			# substitute ${PYTHON_SINGLE_USEDEP} if used
-			# (since python_gen_usedep() will not return
-			#  ${PYTHON_SINGLE_USEDEP}, the code is run at most once)
-			if [[ ${dep} == *'${PYTHON_SINGLE_USEDEP}'* ]]; then
-				local usedep=$(_python_gen_usedep "${@}")
-				dep=${dep//\$\{PYTHON_SINGLE_USEDEP\}/${usedep}}
-			fi
+			local single_usedep="python_single_target_${impl}(-)"
 			local multi_usedep="python_targets_${impl}(-)"
 
-			if [[ ${EAPI} != [67] ]]; then
-				if [[ ${dep} == *\$\{PYTHON_MULTI_USEDEP\}* ]]; then
-					die "Replace PYTHON_MULTI_USEDEP with PYTHON_USEDEP in EAPI ${EAPI}"
-				fi
-			fi
-
-			local subdep=${dep//\$\{PYTHON_MULTI_USEDEP\}/${multi_usedep}}
+			local subdep=${dep//\$\{PYTHON_SINGLE_USEDEP\}/${single_usedep}}
 			matches+=( "python_single_target_${impl}? (
 				${subdep//\$\{PYTHON_USEDEP\}/${multi_usedep}} )" )
 		fi
@@ -411,10 +355,8 @@ python_gen_cond_dep() {
 # patterns are passed, the output dependencies will be generated only
 # for the implementations matching them.
 #
-# The patterns are fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values).  Remember to escape
-# or quote the fnmatch patterns to prevent accidental shell filename
-# expansion.
+# For the pattern syntax, please see _python_impl_matches
+# in python-utils-r1.eclass.
 #
 # Use this function when you need to request different USE flags
 # on the Python interpreter depending on package's USE flags. If you

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,7 +28,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 DEPEND="
-	app-arch/libarchive[bzip2,lz4,lzma,lzo,zlib]
+	app-arch/libarchive[bzip2,lz4,lzma,lzo,zlib(+)]
 	app-arch/lzma
 	app-arch/bzip2
 	sys-libs/zlib

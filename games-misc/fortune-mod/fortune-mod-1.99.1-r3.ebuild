@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,8 +11,8 @@ SRC_URI="http://www.redellipse.net/code/downloads/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~m68k ~mips ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
-IUSE="offensive elibc_glibc"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~m68k ~mips ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
+IUSE="offensive"
 
 DEPEND="app-text/recode:0="
 RDEPEND="${DEPEND}"
@@ -34,7 +34,6 @@ src_prepare() {
 		Makefile || die "sed Makefile failed"
 
 	if ! use elibc_glibc ; then
-		[[ ${CHOST} == *-*bsd* ]] && local reglibs="-lcompat"
 		[[ ${CHOST} == *-darwin* ]] && local reglibs="-lc"
 		has_version "app-text/recode[nls]" && reglibs="${reglibs} -lintl"
 		sed -i \

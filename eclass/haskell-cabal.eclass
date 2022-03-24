@@ -52,7 +52,7 @@ inherit ghc-package multilib toolchain-funcs
 
 EXPORT_FUNCTIONS pkg_setup src_configure src_compile src_test src_install pkg_postinst pkg_postrm
 
-# @ECLASS-VARIABLE: CABAL_EXTRA_CONFIGURE_FLAGS
+# @ECLASS_VARIABLE: CABAL_EXTRA_CONFIGURE_FLAGS
 # @USER_VARIABLE
 # @DESCRIPTION:
 # User-specified additional parameters passed to 'setup configure'.
@@ -60,14 +60,14 @@ EXPORT_FUNCTIONS pkg_setup src_configure src_compile src_test src_install pkg_po
 #    CABAL_EXTRA_CONFIGURE_FLAGS="--enable-shared --enable-executable-dynamic"
 : ${CABAL_EXTRA_CONFIGURE_FLAGS:=}
 
-# @ECLASS-VARIABLE: CABAL_EXTRA_BUILD_FLAGS
+# @ECLASS_VARIABLE: CABAL_EXTRA_BUILD_FLAGS
 # @USER_VARIABLE
 # @DESCRIPTION:
 # User-specified additional parameters passed to 'setup build'.
 # example: /etc/portage/make.conf: CABAL_EXTRA_BUILD_FLAGS=-v
 : ${CABAL_EXTRA_BUILD_FLAGS:=}
 
-# @ECLASS-VARIABLE: GHC_BOOTSTRAP_FLAGS
+# @ECLASS_VARIABLE: GHC_BOOTSTRAP_FLAGS
 # @USER_VARIABLE
 # @DESCRIPTION:
 # User-specified additional parameters for ghc when building
@@ -76,7 +76,7 @@ EXPORT_FUNCTIONS pkg_setup src_configure src_compile src_test src_install pkg_po
 # linking 'setup' faster.
 : ${GHC_BOOTSTRAP_FLAGS:=}
 
-# @ECLASS-VARIABLE: CABAL_EXTRA_HADDOCK_FLAGS
+# @ECLASS_VARIABLE: CABAL_EXTRA_HADDOCK_FLAGS
 # @USER_VARIABLE
 # @DESCRIPTION:
 # User-specified additional parameters passed to 'setup haddock'.
@@ -84,7 +84,7 @@ EXPORT_FUNCTIONS pkg_setup src_configure src_compile src_test src_install pkg_po
 #    CABAL_EXTRA_HADDOCK_FLAGS="--haddock-options=--latex --haddock-options=--pretty-html"
 : ${CABAL_EXTRA_HADDOCK_FLAGS:=}
 
-# @ECLASS-VARIABLE: CABAL_EXTRA_HOOGLE_FLAGS
+# @ECLASS_VARIABLE: CABAL_EXTRA_HOOGLE_FLAGS
 # @USER_VARIABLE
 # @DESCRIPTION:
 # User-specified additional parameters passed to 'setup haddock --hoogle'.
@@ -92,7 +92,7 @@ EXPORT_FUNCTIONS pkg_setup src_configure src_compile src_test src_install pkg_po
 #    CABAL_EXTRA_HOOGLE_FLAGS="--haddock-options=--show-all"
 : ${CABAL_EXTRA_HOOGLE_FLAGS:=}
 
-# @ECLASS-VARIABLE: CABAL_EXTRA_HSCOLOUR_FLAGS
+# @ECLASS_VARIABLE: CABAL_EXTRA_HSCOLOUR_FLAGS
 # @USER_VARIABLE
 # @DESCRIPTION:
 # User-specified additional parameters passed to 'setup hscolour'.
@@ -101,7 +101,7 @@ EXPORT_FUNCTIONS pkg_setup src_configure src_compile src_test src_install pkg_po
 : ${CABAL_EXTRA_HSCOLOUR_FLAGS:=}
 
 
-# @ECLASS-VARIABLE: CABAL_EXTRA_TEST_FLAGS
+# @ECLASS_VARIABLE: CABAL_EXTRA_TEST_FLAGS
 # @USER_VARIABLE
 # @DESCRIPTION:
 # User-specified additional parameters passed to 'setup test'.
@@ -109,13 +109,13 @@ EXPORT_FUNCTIONS pkg_setup src_configure src_compile src_test src_install pkg_po
 #    CABAL_EXTRA_TEST_FLAGS="-v3 --show-details=streaming"
 : ${CABAL_EXTRA_TEST_FLAGS:=}
 
-# @ECLASS-VARIABLE: CABAL_DEBUG_LOOSENING
+# @ECLASS_VARIABLE: CABAL_DEBUG_LOOSENING
 # @DESCRIPTION:
 # Show debug output for 'cabal_chdeps' function if set.
 # Needs working 'diff'.
 : ${CABAL_DEBUG_LOOSENING:=}
 
-# @ECLASS-VARIABLE: CABAL_REPORT_OTHER_BROKEN_PACKAGES
+# @ECLASS_VARIABLE: CABAL_REPORT_OTHER_BROKEN_PACKAGES
 # @DESCRIPTION:
 # Show other broken packages if 'cabal configure' fails.
 # It should be normally enabled unless you know you are about

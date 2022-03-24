@@ -1,9 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="org.python:jython:2.7.0"
 
 inherit java-pkg-2 java-ant-2 python-utils-r1 flag-o-matic
 
@@ -16,7 +17,7 @@ SRC_URI="https://search.maven.org/remotecontent?filepath=org/python/${PN}/${MY_P
 
 LICENSE="PSF-2"
 SLOT="2.7"
-KEYWORDS="~amd64 arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="examples test"
 
 CP_DEPEND="dev-java/antlr:3
@@ -32,7 +33,6 @@ CP_DEPEND="dev-java/antlr:3
 	dev-java/jnr-netdb:1.0
 	dev-java/stringtemplate:0
 	dev-java/xerces:2
-	java-virtuals/script-api:0
 	java-virtuals/servlet-api:3.0"
 RDEPEND="${CP_DEPEND}
 	>=virtual/jre-1.8:*"

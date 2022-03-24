@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of QEMU_USER_TARGETS USE_EXPAND flags.
@@ -37,7 +37,6 @@ sh4 - userspace emulation target
 sparc32plus - userspace emulation target
 sparc64 - userspace emulation target
 sparc - userspace emulation target
-tilegx - TILE-Gx 64-bit userspace emulation target
 x86_64 - userspace emulation target
 xtensaeb - userspace emulation target
 xtensa - userspace emulation target

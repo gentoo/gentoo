@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,8 +15,9 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ppc ~ppc64 ~riscv sparc x86"
 IUSE="livecd"
 
-RDEPEND="sys-libs/ncurses:0=
-	!elibc_FreeBSD? ( >=dev-libs/libbsd-0.7.0 )"
+RDEPEND="
+	sys-libs/ncurses:0=
+	>=dev-libs/libbsd-0.7.0"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 

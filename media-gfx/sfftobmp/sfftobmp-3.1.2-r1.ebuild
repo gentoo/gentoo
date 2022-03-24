@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit autotools flag-o-matic
 MY_P=${PN}${PV//./_}
 
 DESCRIPTION="sff to bmp converter"
-HOMEPAGE="http://sfftools.sourceforge.net/"
+HOMEPAGE="https://sfftools.sourceforge.io/"
 SRC_URI="mirror://sourceforge/sfftools/${MY_P}_src.zip"
 S="${WORKDIR}/${MY_P}"
 

@@ -12,5 +12,7 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">mozilla/rhino</remote-id>
+		<changelog>https://github.com/mozilla/rhino/blob/master/RELEASE-NOTES.md</changelog>
+		<bugs-to>https://github.com/mozilla/rhino/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

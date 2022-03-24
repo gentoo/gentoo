@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,4 +9,4 @@ inherit perl-module
 
 DESCRIPTION="Get, unpack, build and install modules from CPAN"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc x86"
+KEYWORDS="amd64 ~arm64 ppc ~riscv x86"

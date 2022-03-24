@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -52,8 +52,8 @@ src_prepare() {
 }
 
 src_compile() {
-	emake V=1 CC=$(tc-getCC) $(usex usb "ttusb_dec_reset=1" "")
-	use alevt && emake -C util/alevt CC=$(tc-getCC) OPT="${CFLAGS}"
+	emake V=1 CC="$(tc-getCC)" $(usex usb "ttusb_dec_reset=1" "")
+	use alevt && emake -C util/alevt CC="$(tc-getCC)" OPT="${CFLAGS}"
 }
 
 src_install() {

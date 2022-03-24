@@ -1,0 +1,23 @@
+Addresses https://github.com/pyeve/cerberus/issues/568.
+Backported upstream commit 5c267b554a39b5a8650659d3eea0cf383e47a166.
+
+--- a/cerberus/errors.py
++++ b/cerberus/errors.py
+@@ -153,7 +153,7 @@
+ 
+     @property
+     def definitions_errors(self):
+-        """
++        r"""
+         Dictionary with errors of an \*of-rule mapped to the index of the definition it
+         occurred in. Returns :obj:`None` if not applicable.
+         """
+@@ -181,7 +181,7 @@
+ 
+     @property
+     def is_logic_error(self):
+-        """
++        r"""
+         ``True`` for validation errors against different schemas with \*of-rules.
+         """
+         return bool(self.code & LOGICAL.code - ERROR_GROUP.code)

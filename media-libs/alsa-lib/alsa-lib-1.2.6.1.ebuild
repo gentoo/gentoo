@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ fi
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="alisp debug doc elibc_uclibc python +thread-safety"
+IUSE="alisp debug doc python +thread-safety"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -42,10 +42,6 @@ pkg_setup() {
 
 src_prepare() {
 	find . -name Makefile.am -exec sed -i -e '/CFLAGS/s:-g -O2::' {} + || die
-	# https://bugs.gentoo.org/509886
-	if use elibc_uclibc ; then
-		sed -i -e 's:oldapi queue_timer:queue_timer:' test/Makefile.am || die
-	fi
 	# https://bugs.gentoo.org/545950
 	sed -i -e '5s:^$:\nAM_CPPFLAGS = -I$(top_srcdir)/include:' test/lsb/Makefile.am || die
 	default
@@ -65,7 +61,6 @@ multilib_src_configure() {
 		$(use_enable alisp)
 		$(use_enable thread-safety)
 		$(use_with debug)
-		$(usex elibc_uclibc --without-versioned '')
 	)
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"

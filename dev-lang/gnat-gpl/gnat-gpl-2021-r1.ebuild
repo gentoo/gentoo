@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,7 +41,7 @@ DESCRIPTION="GNAT Ada Compiler - GPL version"
 HOMEPAGE="http://libre.adacore.com/"
 
 LICENSE+=" GPL-2 GPL-3"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+ada +bootstrap"
 RESTRICT="test"
 
@@ -82,7 +82,16 @@ src_prepare() {
 		GNATMAKE="${gnatpath}/${GNATMAKE}"
 	fi
 	if use bootstrap; then
-		rm "${WORKDIR}"/${BTSTRP}/libexec/gcc/*/4.7.4/ld || die
+		rm "${WORKDIR}"/${BTSTRP}/libexec/gcc/x86_64-pc-linux-gnu/4.7.4/ld \
+			|| die
+		ln -s /usr/bin/$CHOST-ld \
+			"${WORKDIR}"/${BTSTRP}/libexec/gcc/x86_64-pc-linux-gnu/4.7.4/ld \
+			|| die
+		rm "${WORKDIR}"/${BTSTRP}/libexec/gcc/x86_64-pc-linux-gnu/4.7.4/as \
+			|| die
+		ln -s /usr/bin/$CHOST-as \
+			"${WORKDIR}"/${BTSTRP}/libexec/gcc/x86_64-pc-linux-gnu/4.7.4/as \
+			|| die
 	fi
 
 	CC=${GCC}
@@ -109,6 +118,10 @@ src_prepare() {
 	mv ${INTFDIR} ${MYP}/gcc/ada/gcc-interface || die
 	eapply "${FILESDIR}"/${P}-gentoo.patch
 	cd -
+	sed -i \
+		-e 's:-fcf-protection":":' \
+		libiberty/configure \
+		lto-plugin/configure || die
 	sed -i \
 		-e 's:$(P) ::g' \
 		gcc/ada/gcc-interface/Makefile.in \

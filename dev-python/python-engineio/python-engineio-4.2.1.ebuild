@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{8..9} )
 
 inherit distutils-r1
 
-DESCRIPTION="Python implementation of the Engine.IO realtime server."
+DESCRIPTION="Python implementation of the Engine.IO realtime server"
 HOMEPAGE="
 	https://python-engineio.readthedocs.io/
 	https://github.com/miguelgrinberg/python-engineio/

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -65,10 +65,6 @@ PATCHES=(
 src_prepare() {
 	default
 
-	if has_version ">=sys-libs/binutils-libs-2.34"; then
-		eapply "${FILESDIR}"/${PN}-1.16.0-binutils-2.34.patch
-	fi
-
 	# tests and perf tools require X, bug #483574
 	if ! use X; then
 		sed -e '/^SUBDIRS/ s#boilerplate test perf# #' -i Makefile.am || die
@@ -88,8 +84,6 @@ multilib_src_configure() {
 	local myopts
 
 	[[ ${CHOST} == *-interix* ]] && append-flags -D_REENTRANT
-
-	use elibc_FreeBSD && myopts+=" --disable-symbol-lookup"
 
 	# [[ ${PV} == *9999* ]] && myopts+=" $(use_enable doc gtk-doc)"
 
@@ -117,11 +111,6 @@ multilib_src_configure() {
 		--enable-png \
 		--enable-ps \
 		--enable-script \
-		--disable-drm \
-		--disable-directfb \
-		--disable-gallium \
-		--disable-qt \
-		--disable-vg \
 		--disable-xlib-xcb \
 		${myopts}
 }

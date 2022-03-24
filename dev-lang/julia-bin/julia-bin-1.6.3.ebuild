@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,6 @@ SRC_URI="
 		elibc_glibc? ( ${BASE_SRC_URI}/linux/x64/${MY_PV}/${MY_P}-linux-x86_64.tar.gz )
 		elibc_musl? ( ${BASE_SRC_URI}/musl/x64/${MY_PV}/${MY_P}-musl-x86_64.tar.gz )
 	)
-	amd64-fbsd? ( ${BASE_SRC_URI}/freebsd/x64/${MY_PV}/${MY_P}-freebsd-x86_64.tar.gz )
 	arm64? ( ${BASE_SRC_URI}/linux/aarch64/${MY_PV}/${MY_P}-linux-aarch64.tar.gz )
 	ppc64? ( ${BASE_SRC_URI}/linux/ppc64le/${MY_PV}/${MY_P}-linux-ppc64le.tar.gz )
 "
@@ -23,12 +22,8 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="${MY_PV}"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="elibc_glibc"
 
-RDEPEND="
-	!dev-lang/julia
-	app-arch/p7zip
-"
+RDEPEND="app-arch/p7zip"
 DEPEND="${RDEPEND}"
 
 RESTRICT="strip"

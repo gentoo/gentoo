@@ -1,4 +1,4 @@
-# Copyright 2004-2021 Gentoo Authors
+# Copyright 2004-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ##
@@ -11,7 +11,6 @@ sys-devel/automake
 sys-kernel/linux-headers
 sys-libs/glibc
 sys-libs/musl
-sys-libs/uclibc-ng
 sys-devel/binutils
 sys-devel/binutils-config
 sys-devel/libtool

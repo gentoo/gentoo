@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -12,7 +12,7 @@ SRC_URI="https://codeload.github.com/polyml/polyml/tar.gz/v${PV} -> ${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="X elibc_glibc +gmp portable test"
+IUSE="X +gmp portable test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="X? ( x11-libs/motif:0 )

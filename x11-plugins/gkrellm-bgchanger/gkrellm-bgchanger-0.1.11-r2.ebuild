@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,9 +23,10 @@ DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.1.11-fix-build-system.patch )
 
-PLUGIN_SO=( gkrellmbgchg$(get_modname) )
 PLUGIN_DOCS=( bgchg_info.sh kdewallpaper.sh )
 
 src_configure() {
 	tc-export CC
+
+	PLUGIN_SO=( gkrellmbgchg$(get_modname) )
 }
