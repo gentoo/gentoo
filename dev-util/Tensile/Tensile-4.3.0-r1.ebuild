@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1
+inherit distutils-r1 prefix
 
 DESCRIPTION="Stretching GPU performance for GEMMs and tensor contractions"
 HOMEPAGE="https://github.com/ROCmSoftwarePlatform/Tensile"
@@ -33,11 +33,11 @@ PATCHES=( "${FILESDIR}"/${PN}-4.3.0-output-commands.patch
 		  "${FILESDIR}"/${PN}-4.3.0-gfx1031.patch
 		  "${FILESDIR}"/${PN}-4.3.0-fix-arch-parse.patch
 		  "${FILESDIR}"/${PN}-4.3.0-use-ninja.patch
-		  "${FILESDIR}"/${PN}-4.3.0-gentoopath.patch
 	  )
 
 src_prepare() {
 	distutils-r1_src_prepare
+	eapply $(prefixify_ro "${FILESDIR}"/${PN}-4.3.0-gentoopath.patch)
 
 	pushd ${PN} || die
 
