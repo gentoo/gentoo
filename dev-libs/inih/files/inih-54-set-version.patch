@@ -1,0 +1,20 @@
+https://github.com/benhoyt/inih/pull/135
+
+From 690fd8cb5a1c7db67e78b9e2543ff5a9fc733ce3 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 24 Mar 2022 23:32:46 +0000
+Subject: [PATCH] meson.build: define version
+
+Otherwise, the installed .pc file contains "Version: undefined".
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/meson.build
++++ b/meson.build
+@@ -1,6 +1,7 @@
+ project('inih',
+     ['c'],
+     license : 'BSD-3-Clause',
++    version : '54',
+ )
+ 
+ #### options ####
