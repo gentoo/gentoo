@@ -66,8 +66,7 @@ src_configure() {
 		$(use_enable jnat) \
 		$(use_enable nsel) \
 		$(use_enable readpcap) \
-		$(use_enable sflow) \
-		--disable-static
+		$(use_enable sflow)
 }
 
 src_install() {
