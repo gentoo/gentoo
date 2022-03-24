@@ -24,7 +24,10 @@ DEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/jpeg[${MULTILIB_USEDEP}]
 	x11-misc/shared-mime-info
-	gdk-pixbuf? ( x11-libs/gdk-pixbuf:2 )
+	gdk-pixbuf? (
+		dev-libs/glib:2
+		x11-libs/gdk-pixbuf:2
+	)
 	gimp210? ( >=media-gfx/gimp-2.10.28:0/2 )
 	openexr? ( media-libs/openexr:= )
 "
