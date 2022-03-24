@@ -17,28 +17,43 @@ IUSE="bundled-libjpeg-turbo +bundled-qt opencl pulseaudio wayland"
 RESTRICT="mirror bindist strip"
 
 RDEPEND="!games-engines/zoom
+	app-accessibility/at-spi2-atk
+	app-accessibility/at-spi2-core
+	dev-libs/atk
+	dev-libs/expat
 	dev-libs/glib:2
+	dev-libs/nspr
+	dev-libs/nss
 	>=dev-libs/quazip-1.0:0=
+	media-libs/alsa-lib
 	media-libs/fdk-aac:0/2
 	media-libs/fontconfig
 	media-libs/freetype
+	media-libs/mesa
 	media-sound/mpg123
+	net-print/cups
 	sys-apps/dbus
 	sys-apps/util-linux
 	sys-libs/glibc
 	virtual/opengl
+	x11-libs/cairo
+	x11-libs/libdrm
 	x11-libs/libX11
 	x11-libs/libxcb
+	x11-libs/libXcomposite
+	x11-libs/libXdamage
 	x11-libs/libXext
 	x11-libs/libXfixes
 	x11-libs/libxkbcommon[X]
+	x11-libs/libXrandr
 	x11-libs/libXrender
+	x11-libs/libxshmfence
 	x11-libs/libXtst
+	x11-libs/pango
 	x11-libs/xcb-util-image
 	x11-libs/xcb-util-keysyms
 	opencl? ( virtual/opencl )
 	pulseaudio? ( media-sound/pulseaudio )
-	!pulseaudio? ( media-libs/alsa-lib )
 	wayland? ( dev-libs/wayland )
 	!bundled-libjpeg-turbo? ( >=media-libs/libjpeg-turbo-2.0.5 )
 	!bundled-qt? (
