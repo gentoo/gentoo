@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,9 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="A selection of tools from Debian"
 HOMEPAGE="https://packages.qa.debian.org/d/debianutils.html"
-SRC_URI="mirror://debian/pool/main/d/${PN}/${PN}_${PV}.orig.tar.xz"
+SRC_URI="https://dev.gentoo.org/~jsmolic/distfiles/${PN}_${PV}.orig.tar.xz"
+# Note: Tarball disappeared from Debian mirrors
+# SRC_URI="mirror://debian/pool/main/d/${PN}/${PN}_${PV}.orig.tar.xz"
 
 LICENSE="BSD GPL-2 SMAIL"
 SLOT="0"
