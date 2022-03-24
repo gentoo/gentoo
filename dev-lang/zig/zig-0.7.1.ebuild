@@ -1,9 +1,9 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit cmake llvm
+inherit cmake llvm check-reqs
 
 DESCRIPTION="A robust, optimal, and maintainable programming language"
 HOMEPAGE="https://ziglang.org/"
@@ -45,6 +45,9 @@ DEPEND="${RDEPEND}"
 llvm_check_deps() {
 	has_version "sys-devel/clang:${LLVM_SLOT}"
 }
+
+# see https://github.com/ziglang/zig/wiki/Troubleshooting-Build-Issues#high-memory-requirements
+CHECKREQS_MEMORY="6G"
 
 src_configure() {
 	local mycmakeargs=(
