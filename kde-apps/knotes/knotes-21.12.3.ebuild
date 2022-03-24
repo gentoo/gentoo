@@ -13,7 +13,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Note taking application"
 HOMEPAGE="https://apps.kde.org/knotes/
-https://kontact.kde.org/components/knotes.html"
+https://kontact.kde.org/components/knotes/"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="5"
