@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,6 +47,7 @@ RDEPEND="
 		dev-qt/qtmultimedia:5
 		dev-qt/qtnetwork:5
 		dev-qt/qtopengl:5
+		dev-qt/qtsvg:5
 		dev-qt/qtwidgets:5
 		x11-libs/qscintilla:=
 		dbus? ( dev-qt/qtdbus:5 )
@@ -70,8 +71,6 @@ DOCS=(
 	doc/hacking.md
 	doc/testing.txt
 )
-
-PATCHES=( "${FILESDIR}"/${P}-fix-pkg-config-name-and-include-directory-search.patch )
 
 src_configure() {
 	local mycmakeargs=(
