@@ -29,7 +29,7 @@ RDEPEND="!games-engines/zoom
 	media-libs/fdk-aac:0/2
 	media-libs/fontconfig
 	media-libs/freetype
-	media-libs/mesa
+	media-libs/mesa[gbm(+)]
 	media-sound/mpg123
 	net-print/cups
 	sys-apps/dbus
