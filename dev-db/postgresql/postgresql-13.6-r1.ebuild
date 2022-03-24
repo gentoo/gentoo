@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8,9,10} )
+LLVM_MAX_SLOT=14
 
 inherit flag-o-matic linux-info multilib pam prefix python-single-r1 systemd tmpfiles
 
@@ -36,8 +37,8 @@ icu? ( dev-libs/icu:= )
 kerberos? ( virtual/krb5 )
 ldap? ( net-nds/openldap:= )
 llvm? (
-	sys-devel/llvm:=
-	sys-devel/clang:=
+	<sys-devel/llvm-15:=
+	<sys-devel/clang-15:=
 )
 pam? ( sys-libs/pam )
 perl? ( >=dev-lang/perl-5.8:= )
@@ -83,6 +84,8 @@ selinux? ( sec-policy/selinux-postgresql )
 "
 
 pkg_setup() {
+	llvm_pkg_setup
+
 	use server && CONFIG_CHECK="~SYSVIPC" linux-info_pkg_setup
 
 	use python && python-single-r1_pkg_setup
