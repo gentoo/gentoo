@@ -16,20 +16,18 @@ LICENSE="BSD"
 SLOT="0"
 IUSE="examples gdk-pixbuf gimp210 openexr"
 
-DEPEND="app-arch/brotli[${MULTILIB_USEDEP}]
-	dev-cpp/gflags[${MULTILIB_USEDEP}]
+DEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
+	dev-cpp/gflags:=[${MULTILIB_USEDEP}]
 	>=dev-cpp/highway-0.16.0[${MULTILIB_USEDEP}]
-	media-libs/giflib[${MULTILIB_USEDEP}]
-	media-libs/libpng[${MULTILIB_USEDEP}]
-	openexr? ( media-libs/openexr:= )
+	media-libs/giflib:=[${MULTILIB_USEDEP}]
+	media-libs/libpng:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/jpeg[${MULTILIB_USEDEP}]
 	x11-misc/shared-mime-info
 	gdk-pixbuf? ( x11-libs/gdk-pixbuf:2 )
 	gimp210? ( >=media-gfx/gimp-2.10.28:0/2 )
+	openexr? ( media-libs/openexr:= )
 "
-
-BDEPEND=""
 
 RDEPEND="${DEPEND}"
 

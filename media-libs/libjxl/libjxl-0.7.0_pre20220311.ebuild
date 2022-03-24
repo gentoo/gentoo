@@ -16,23 +16,21 @@ LICENSE="BSD"
 SLOT="0"
 IUSE="examples openexr"
 
-DEPEND="app-arch/brotli[${MULTILIB_USEDEP}]
-	dev-cpp/gflags[${MULTILIB_USEDEP}]
+DEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
+	dev-cpp/gflags:=[${MULTILIB_USEDEP}]
 	>=dev-cpp/highway-0.16.0[${MULTILIB_USEDEP}]
-	media-libs/giflib[${MULTILIB_USEDEP}]
-	media-libs/lcms[${MULTILIB_USEDEP}]
-	media-libs/libpng[${MULTILIB_USEDEP}]
-	openexr? ( media-libs/openexr:= )
+	media-libs/giflib:=[${MULTILIB_USEDEP}]
+	media-libs/lcms:=[${MULTILIB_USEDEP}]
+	media-libs/libpng:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/jpeg[${MULTILIB_USEDEP}]
 	x11-misc/shared-mime-info
+	openexr? ( media-libs/openexr:= )
 "
-
-BDEPEND=""
 
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/libjxl-libjxl-3f8e77f
+S="${WORKDIR}/libjxl-libjxl-3f8e77f"
 
 multilib_src_configure() {
 	local mycmakeargs=(
