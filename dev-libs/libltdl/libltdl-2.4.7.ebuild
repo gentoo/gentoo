@@ -20,7 +20,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 IUSE="static-libs"
 # libltdl doesn't have a testsuite.
 
-RDEPEND="!<sys-devel/libtool-2.4.3-r2:2"
 BDEPEND="app-arch/xz-utils"
 
 multilib_src_configure() {
