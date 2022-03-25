@@ -31,9 +31,9 @@ PATCHES=(
 
 src_compile() {
 	emake \
-		CC=$(tc-getCC) \
-		RANLIB=$(tc-getRANLIB) \
-		AR=$(tc-getAR) \
+		CC="$(tc-getCC)" \
+		RANLIB="$(tc-getRANLIB)" \
+		AR="$(tc-getAR)" \
 		SFEED_CURSES=$(usex ncurses "sfeed_curses" "")
 }
 
