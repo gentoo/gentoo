@@ -35,7 +35,7 @@ BDEPEND="
 		dev-python/cython[${PYTHON_USEDEP}]
 	')
 	virtual/pkgconfig
-	nls? ( dev-util/intltool sys-devel/gettext )"
+	nls? ( sys-devel/gettext )"
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
 		dev-python/pycairo[${PYTHON_USEDEP}]
