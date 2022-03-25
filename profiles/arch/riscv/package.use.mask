@@ -3,6 +3,7 @@
 
 # Jakov Smolić <jsmolic@gentoo.org> (2022-03-25)
 # sys-process/criu doesn't support riscv (bug #835975)
+# Upstream bug for criu: https://github.com/checkpoint-restore/criu/issues/1702
 app-containers/crun criu
 
 # Jakov Smolić <jsmolic@gentoo.org> (2022-03-24)
