@@ -46,6 +46,7 @@ COMMON_DEPEND="
 			>=dev-qt/qtgui-${QTMIN}:5[X]
 		)
 		>=dev-qt/qtwayland-${QTMIN}:5
+		>=kde-frameworks/kwayland-${KFMIN}:5
 		media-libs/libepoxy
 		media-libs/mesa[gbm(+)]
 		>=media-video/pipewire-0.3:=
@@ -67,7 +68,10 @@ BDEPEND="
 	) )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-21.12.2-optional-pipewire.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-21.12.2-optional-pipewire.patch"
+	"${FILESDIR}/${P}-optional-wayland.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
