@@ -25,3 +25,6 @@ RDEPEND="
 	sci-astronomy/wcslib:=
 "
 DEPEND="${RDEPEND}"
+
+# https://github.com/rlancaste/stellarsolver/issues/108
+PATCHES=( "${FILESDIR}/${P}-fix-implicit-vasprintf-decl.patch" )

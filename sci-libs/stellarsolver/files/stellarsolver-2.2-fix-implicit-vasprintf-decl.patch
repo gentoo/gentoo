@@ -1,0 +1,88 @@
+From acb58bd78388adec25eb6e09ce6434546de008b8 Mon Sep 17 00:00:00 2001
+From: Robert Lancaster <rlancaste@gmail.com>
+Date: Wed, 16 Mar 2022 18:15:21 -0400
+Subject: [PATCH] Trying to eliminate vasprintf implicit declaration warning on
+ Linux
+
+---
+ stellarsolver/astrometry/util/bl.c          | 4 +++-
+ stellarsolver/astrometry/util/errors.c      | 4 +++-
+ stellarsolver/astrometry/util/fitsioutils.c | 3 +++
+ stellarsolver/astrometry/util/ioutils.c     | 4 +++-
+ stellarsolver/astrometry/util/log.c         | 4 +++-
+ 5 files changed, 15 insertions(+), 4 deletions(-)
+
+diff --git a/stellarsolver/astrometry/util/bl.c b/stellarsolver/astrometry/util/bl.c
+index 1a0fee9..e84d74a 100644
+--- a/stellarsolver/astrometry/util/bl.c
++++ b/stellarsolver/astrometry/util/bl.c
+@@ -2,7 +2,9 @@
+  # This file is part of the Astrometry.net suite.
+  # Licensed under a 3-clause BSD style license - see LICENSE
+  */
+-
++#ifdef __GNUC__ //# Modified by Robert Lancaster for the StellarSolver Internal Library
++#define __STDC_WANT_LIB_EXT2__ 1
++#endif
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdlib.h>
+diff --git a/stellarsolver/astrometry/util/errors.c b/stellarsolver/astrometry/util/errors.c
+index 94f5f9c..b7c4e9f 100644
+--- a/stellarsolver/astrometry/util/errors.c
++++ b/stellarsolver/astrometry/util/errors.c
+@@ -2,7 +2,9 @@
+  # This file is part of the Astrometry.net suite.
+  # Licensed under a 3-clause BSD style license - see LICENSE
+  */
+-
++#ifdef __GNUC__ //# Modified by Robert Lancaster for the StellarSolver Internal Library
++#define __STDC_WANT_LIB_EXT2__ 1
++#endif
+ #include <stdlib.h>
+ #include <string.h>
+ #include <errno.h>
+diff --git a/stellarsolver/astrometry/util/fitsioutils.c b/stellarsolver/astrometry/util/fitsioutils.c
+index 7451c36..f2b20bc 100644
+--- a/stellarsolver/astrometry/util/fitsioutils.c
++++ b/stellarsolver/astrometry/util/fitsioutils.c
+@@ -2,6 +2,9 @@
+  # This file is part of the Astrometry.net suite.
+  # Licensed under a 3-clause BSD style license - see LICENSE
+  */
++#ifdef __GNUC__ //# Modified by Robert Lancaster for the StellarSolver Internal Library
++#define __STDC_WANT_LIB_EXT2__ 1
++#endif
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdint.h>
+diff --git a/stellarsolver/astrometry/util/ioutils.c b/stellarsolver/astrometry/util/ioutils.c
+index ee17011..c490fb8 100644
+--- a/stellarsolver/astrometry/util/ioutils.c
++++ b/stellarsolver/astrometry/util/ioutils.c
+@@ -2,7 +2,9 @@
+  # This file is part of the Astrometry.net suite.
+  # Licensed under a 3-clause BSD style license - see LICENSE
+  */
+-
++#ifdef __GNUC__ //# Modified by Robert Lancaster for the StellarSolver Internal Library
++#define __STDC_WANT_LIB_EXT2__ 1
++#endif
+ #include <stdio.h>
+ #include <errno.h>
+ #include <string.h>
+diff --git a/stellarsolver/astrometry/util/log.c b/stellarsolver/astrometry/util/log.c
+index 256d5a1..1a2b8db 100644
+--- a/stellarsolver/astrometry/util/log.c
++++ b/stellarsolver/astrometry/util/log.c
+@@ -2,7 +2,9 @@
+  # This file is part of the Astrometry.net suite.
+  # Licensed under a 3-clause BSD style license - see LICENSE
+  */
+-
++#ifdef __GNUC__ //# Modified by Robert Lancaster for the StellarSolver Internal Library
++#define __STDC_WANT_LIB_EXT2__ 1
++#endif
+ #include <stdio.h>
+ #include <stdarg.h>
+ #include <stdlib.h>
