@@ -44,6 +44,8 @@ RDEPEND="
 BDEPEND="
 	test? (
 		>=dev-python/GitPython-3[${PYTHON_USEDEP}]
+		dev-python/pytest-timeout[${PYTHON_USEDEP}]
+		dev-python/typing-extensions[${PYTHON_USEDEP}]
 	)
 "
 
