@@ -15,9 +15,10 @@ SLOT="0/15"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="cairo +cpuid cuda debug gl nvml +pci static-libs svg udev xml X video_cards_nvidia"
 
-# opencl support dropped with x11-drivers/ati-drivers being removed (bug #582406).
-# Anyone with hardware is welcome to step up and help test to get it re-added.
-RDEPEND=">=sys-libs/ncurses-5.9-r3:0[${MULTILIB_USEDEP}]
+# opencl: opencl support dropped with x11-drivers/ati-drivers being removed (bug #582406).
+#         anyone with hardware is welcome to step up and help test to get it re-added.
+# video-cards_nvidia: libXext/libX11 deps are only here, see HWLOC_GL_REQUIRES usage in config/hwloc.m4
+RDEPEND=">=sys-libs/ncurses-5.9-r3:=[${MULTILIB_USEDEP}]
 	cairo? ( >=x11-libs/cairo-1.12.14-r4[X?,svg?,${MULTILIB_USEDEP}] )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.19-r1:= )
 	nvml? ( x11-drivers/nvidia-drivers[${MULTILIB_USEDEP}] )
@@ -25,15 +26,17 @@ RDEPEND=">=sys-libs/ncurses-5.9-r3:0[${MULTILIB_USEDEP}]
 		>=sys-apps/pciutils-3.3.0-r2[${MULTILIB_USEDEP}]
 		>=x11-libs/libpciaccess-0.13.1-r1[${MULTILIB_USEDEP}]
 	)
-	udev? ( virtual/libudev )
+	udev? ( virtual/libudev:= )
 	xml? ( >=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}] )
-	video_cards_nvidia? ( x11-drivers/nvidia-drivers[static-libs,tools] )"
+	video_cards_nvidia? (
+		x11-drivers/nvidia-drivers[static-libs]
+		x11-libs/libXext
+		x11-libs/libX11
+	)"
 DEPEND="${RDEPEND}"
 # 2.69-r5 for --runstatedir
-BDEPEND="
-	>=sys-devel/autoconf-2.69-r5
-	virtual/pkgconfig
-"
+BDEPEND=">=sys-devel/autoconf-2.69-r5
+	virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}/${PN}-1.8.1-gl.patch" )
 
@@ -48,6 +51,10 @@ src_prepare() {
 multilib_src_configure() {
 	# bug #393467
 	export HWLOC_PKG_CONFIG="$(tc-getPKG_CONFIG)"
+
+	if use video_cards_nvidia ; then
+		addpredict /dev/nvidiactl
+	fi
 
 	if use cuda ; then
 		append-cflags "-I${ESYSROOT}/opt/cuda/include"
