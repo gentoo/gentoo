@@ -37,6 +37,11 @@ DEPEND="
 	swaybg? ( gui-apps/swaybg )
 	swayidle? ( gui-apps/swayidle )
 	swaylock? ( gui-apps/swaylock )
+	tray? ( || (
+		sys-apps/systemd
+		sys-auth/elogind
+		sys-libs/basu
+	) )
 	wallpapers? ( x11-libs/gdk-pixbuf:2[jpeg] )
 	X? ( x11-libs/libxcb:0= )
 "
