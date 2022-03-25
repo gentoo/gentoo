@@ -38,6 +38,8 @@ RDEPEND="
 	>=virtual/jre-1.8:*
 "
 
+# https://bitbucket.org/snakeyaml/snakeyaml/pull-requests/7
+PATCHES=( "${FILESDIR}/snakeyaml-1.30-fix-test-check.patch" )
 DOCS=( README.md )
 
 S="${WORKDIR}/snakeyaml-snakeyaml-49227c24d741/"
@@ -47,6 +49,11 @@ JAVA_SRC_DIR="src/main/java"
 JAVA_TEST_GENTOO_CLASSPATH="joda-time,junit-4,velocity"
 JAVA_TEST_SRC_DIR="src/test/java"
 JAVA_TEST_RESOURCE_DIRS="src/test/resources"
+
+src_prepare() {
+	default
+	java-utils-2_src_prepare
+}
 
 src_test() {
 	export EnvironmentKey1="EnvironmentValue1"
