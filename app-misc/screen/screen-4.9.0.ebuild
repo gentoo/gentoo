@@ -28,7 +28,7 @@ DEPEND=">=sys-libs/ncurses-5.2:=
 RDEPEND="${DEPEND}
 	acct-group/utmp
 	selinux? ( sec-policy/selinux-screen )"
-BDEPEND="sys-apps/texinfo"
+BDEPEND="sys-apps/texinfo[nls]"
 
 PATCHES=(
 	# Don't use utempter even if it is found on the system.
