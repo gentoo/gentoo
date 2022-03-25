@@ -30,7 +30,7 @@ RDEPEND="
 	sys-devel/gnuconfig
 	>=sys-devel/autoconf-2.69:*
 	>=sys-devel/automake-1.13:*
-	dev-libs/libltdl"
+	>=dev-libs/libltdl-2.4.7"
 DEPEND="${RDEPEND}"
 [[ ${PV} == *9999 ]] && BDEPEND="sys-apps/help2man"
 
