@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -28,7 +28,7 @@ src_prepare() {
 src_configure() {
 	# Note this is not an autoconf configure script. econf fails
 	append-flags -DCLK_TCK=CLOCKS_PER_SEC
-	./configure --prefix=/usr --with-c-compiler=$(tc-getCC) || die "bad configure"
+	./configure --prefix=/usr --with-c-compiler="$(tc-getCC)" || die "bad configure"
 }
 
 src_install() {
