@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -44,6 +44,9 @@ PATCHES=(
 	# prevent dependency loop with networkmanager, libsoup, glib-networking; bug #467696
 	# https://github.com/libproxy/libproxy/issues/28
 	"${FILESDIR}/${PN}-0.4.16-avoid-nm-build-dep.patch"
+
+	# enable mozjs detection, bug #811858
+	"${FILESDIR}/${PN}-0.4.17-mozjs.patch"
 )
 
 multilib_src_configure() {
