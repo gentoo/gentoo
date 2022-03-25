@@ -17,7 +17,8 @@ KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-lin
 
 IUSE="glade +gtk gtk-doc lua +python vala"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
-	python? ( ${PYTHON_REQUIRED_USE} )"
+	python? ( ${PYTHON_REQUIRED_USE} )
+	gtk-doc? ( gtk )"
 
 RDEPEND="
 	>=dev-libs/glib-2.38:2

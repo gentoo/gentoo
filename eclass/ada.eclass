@@ -37,7 +37,7 @@ esac
 
 EXPORT_FUNCTIONS pkg_setup
 
-# @ECLASS-VARIABLE: ADA_DEPS
+# @ECLASS_VARIABLE: ADA_DEPS
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated Ada dependency string for all
@@ -53,7 +53,7 @@ EXPORT_FUNCTIONS pkg_setup
 # @CODE
 #
 
-# @ECLASS-VARIABLE: _ADA_ALL_IMPLS
+# @ECLASS_VARIABLE: _ADA_ALL_IMPLS
 # @INTERNAL
 # @DESCRIPTION:
 # All supported Ada implementations, most preferred last.

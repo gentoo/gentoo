@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,6 @@ COMMON_DEPEND="
 	>=x11-libs/gtk+-3.22:3[introspection]"
 DEPEND="${COMMON_DEPEND}
 	app-arch/unzip
-	>=dev-util/intltool-0.40.1
 	virtual/pkgconfig
 	>=sys-devel/gettext-0.17-r1"
 RDEPEND="${COMMON_DEPEND}

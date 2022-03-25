@@ -10,7 +10,7 @@ SRC_URI="https://github.com/royhills/arp-scan/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
 DEPEND="
 	net-libs/libpcap

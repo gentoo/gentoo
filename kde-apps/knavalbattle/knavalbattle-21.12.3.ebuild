@@ -39,3 +39,5 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS )
+
+PATCHES=( "${FILESDIR}/${P}-missing-link.patch" )

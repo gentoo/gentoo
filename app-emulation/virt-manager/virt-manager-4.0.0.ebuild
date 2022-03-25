@@ -48,8 +48,7 @@ RDEPEND="${PYTHON_DEPS}
 		x11-libs/vte:2.91[introspection]
 	)"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/docutils
-	dev-util/intltool"
+BDEPEND="dev-python/docutils"
 
 DOCS=( README.md NEWS.md )
 

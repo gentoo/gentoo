@@ -21,7 +21,7 @@ esac
 # Do not complain about CFLAGS etc since ml projects do not use them.
 QA_FLAGS_IGNORED='.*'
 
-# @ECLASS-VARIABLE: OPAM_INSTALLER_DEP
+# @ECLASS_VARIABLE: OPAM_INSTALLER_DEP
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Override dependency for OPAM_INSTALLER
@@ -38,7 +38,7 @@ case ${EAPI:-0} in
 		;;
 esac
 
-# @ECLASS-VARIABLE: OPAM_INSTALLER
+# @ECLASS_VARIABLE: OPAM_INSTALLER
 # @DESCRIPTION:
 # Eclass can use different opam-installer binary than the one provided in by system.
 : ${OPAM_INSTALLER:=opam-installer}

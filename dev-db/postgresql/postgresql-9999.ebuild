@@ -32,7 +32,7 @@ sys-apps/less
 virtual/libintl
 icu? ( dev-libs/icu:= )
 kerberos? ( virtual/krb5 )
-ldap? ( net-nds/openldap )
+ldap? ( net-nds/openldap:= )
 llvm? (
 	sys-devel/llvm:=
 	sys-devel/clang:=

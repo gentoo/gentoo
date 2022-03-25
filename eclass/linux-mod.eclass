@@ -19,14 +19,14 @@
 # A Couple of env vars are available to effect usage of this eclass
 # These are as follows:
 
-# @ECLASS-VARIABLE: MODULES_OPTIONAL_USE
+# @ECLASS_VARIABLE: MODULES_OPTIONAL_USE
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A string containing the USE flag to use for making this eclass optional
 # The recommended non-empty value is 'modules'
 
-# @ECLASS-VARIABLE: MODULES_OPTIONAL_USE_IUSE_DEFAULT
+# @ECLASS_VARIABLE: MODULES_OPTIONAL_USE_IUSE_DEFAULT
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -34,29 +34,29 @@
 # flag. Default value is unset (false). True represented by 1 or 'on', other
 # values including unset treated as false.
 
-# @ECLASS-VARIABLE: KERNEL_DIR
+# @ECLASS_VARIABLE: KERNEL_DIR
 # @DESCRIPTION:
 # A string containing the directory of the target kernel sources. The default value is
 # "/usr/src/linux"
 : ${KERNEL_DIR:=/usr/src/linux}
 
-# @ECLASS-VARIABLE: ECONF_PARAMS
+# @ECLASS_VARIABLE: ECONF_PARAMS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # It's a string containing the parameters to pass to econf.
 # If this is not set, then econf isn't run.
 
-# @ECLASS-VARIABLE: BUILD_PARAMS
+# @ECLASS_VARIABLE: BUILD_PARAMS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # It's a string with the parameters to pass to emake.
 
-# @ECLASS-VARIABLE: BUILD_TARGETS
+# @ECLASS_VARIABLE: BUILD_TARGETS
 # @DESCRIPTION:
 # It's a string with the build targets to pass to make. The default value is "clean module"
 : ${BUILD_TARGETS:=clean module}
 
-# @ECLASS-VARIABLE: MODULE_NAMES
+# @ECLASS_VARIABLE: MODULE_NAMES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # It's a string containing the modules to be built automatically using the default
@@ -101,14 +101,14 @@
 # There is also support for automated modprobe.d file generation.
 # This can be explicitly enabled by setting any of the following variables.
 
-# @ECLASS-VARIABLE: MODULESD_<modulename>_ENABLED
+# @ECLASS_VARIABLE: MODULESD_<modulename>_ENABLED
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # This is used to disable the modprobe.d file generation otherwise the file will be
 # always generated (unless no MODULESD_<modulename>_* variable is provided). Set to "no" to disable
 # the generation of the file and the installation of the documentation.
 
-# @ECLASS-VARIABLE: MODULESD_<modulename>_EXAMPLES
+# @ECLASS_VARIABLE: MODULESD_<modulename>_EXAMPLES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # This is a bash array containing a list of examples which should
@@ -120,7 +120,7 @@
 #
 # where array_component is "<modulename> options" (see modprobe.conf(5))
 
-# @ECLASS-VARIABLE: MODULESD_<modulename>_ALIASES
+# @ECLASS_VARIABLE: MODULESD_<modulename>_ALIASES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # This is a bash array containing a list of associated aliases.
@@ -131,20 +131,20 @@
 #
 # where array_component is "wildcard <modulename>" (see modprobe.conf(5))
 
-# @ECLASS-VARIABLE: MODULESD_<modulename>_ADDITIONS
+# @ECLASS_VARIABLE: MODULESD_<modulename>_ADDITIONS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # This is a bash array containing a list of additional things to
 # add to the bottom of the file. This can be absolutely anything.
 # Each entry is a new line.
 
-# @ECLASS-VARIABLE: MODULESD_<modulename>_DOCS
+# @ECLASS_VARIABLE: MODULESD_<modulename>_DOCS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # This is a string list which contains the full path to any associated
 # documents for <modulename>. These files are installed in the live tree.
 
-# @ECLASS-VARIABLE: KV_OBJ
+# @ECLASS_VARIABLE: KV_OBJ
 # @INTERNAL
 # @DESCRIPTION:
 # It's a read-only variable. It contains the extension of the kernel modules.

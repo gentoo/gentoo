@@ -25,7 +25,7 @@
 #
 # inherit emboss-r2
 
-# @ECLASS-VARIABLE: EBO_DESCRIPTION
+# @ECLASS_VARIABLE: EBO_DESCRIPTION
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -84,7 +84,7 @@ fi
 
 DEPEND="${RDEPEND}"
 
-# @ECLASS-VARIABLE: EBO_EAUTORECONF
+# @ECLASS_VARIABLE: EBO_EAUTORECONF
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set, run eautoreconf from autotools.eclass after applying patches

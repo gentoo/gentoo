@@ -30,34 +30,34 @@ case ${EAPI} in
 	*) BDEPEND="${DEPEND}"; DEPEND="" ;;
 esac
 
-# @ECLASS-VARIABLE: ESVN_STORE_DIR
+# @ECLASS_VARIABLE: ESVN_STORE_DIR
 # @USER_VARIABLE
 # @DESCRIPTION:
 # subversion sources store directory. Users may override this in /etc/portage/make.conf
 [[ -z ${ESVN_STORE_DIR} ]] && ESVN_STORE_DIR="${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}/svn-src"
 
-# @ECLASS-VARIABLE: ESVN_FETCH_CMD
+# @ECLASS_VARIABLE: ESVN_FETCH_CMD
 # @DESCRIPTION:
 # subversion checkout command
 ESVN_FETCH_CMD="svn checkout"
 
-# @ECLASS-VARIABLE: ESVN_UPDATE_CMD
+# @ECLASS_VARIABLE: ESVN_UPDATE_CMD
 # @DESCRIPTION:
 # subversion update command
 ESVN_UPDATE_CMD="svn update"
 
-# @ECLASS-VARIABLE: ESVN_SWITCH_CMD
+# @ECLASS_VARIABLE: ESVN_SWITCH_CMD
 # @DESCRIPTION:
 # subversion switch command
 ESVN_SWITCH_CMD="svn switch"
 
-# @ECLASS-VARIABLE: ESVN_OPTIONS
+# @ECLASS_VARIABLE: ESVN_OPTIONS
 # @DESCRIPTION:
 # the options passed to checkout or update. If you want a specific revision see
 # ESVN_REPO_URI instead of using -rREV.
 ESVN_OPTIONS="${ESVN_OPTIONS:-}"
 
-# @ECLASS-VARIABLE: ESVN_REPO_URI
+# @ECLASS_VARIABLE: ESVN_REPO_URI
 # @DESCRIPTION:
 # repository uri
 #
@@ -73,7 +73,7 @@ ESVN_OPTIONS="${ESVN_OPTIONS:-}"
 # to peg to a specific revision, append @REV to the repo's uri
 ESVN_REPO_URI="${ESVN_REPO_URI:-}"
 
-# @ECLASS-VARIABLE: ESVN_REVISION
+# @ECLASS_VARIABLE: ESVN_REVISION
 # @DESCRIPTION:
 # User configurable revision checkout or update to from the repository
 #
@@ -83,17 +83,17 @@ ESVN_REPO_URI="${ESVN_REPO_URI:-}"
 # Note: This should never be set in an ebuild!
 ESVN_REVISION="${ESVN_REVISION:-}"
 
-# @ECLASS-VARIABLE: ESVN_USER
+# @ECLASS_VARIABLE: ESVN_USER
 # @DESCRIPTION:
 # User name
 ESVN_USER="${ESVN_USER:-}"
 
-# @ECLASS-VARIABLE: ESVN_PASSWORD
+# @ECLASS_VARIABLE: ESVN_PASSWORD
 # @DESCRIPTION:
 # Password
 ESVN_PASSWORD="${ESVN_PASSWORD:-}"
 
-# @ECLASS-VARIABLE: ESVN_PROJECT
+# @ECLASS_VARIABLE: ESVN_PROJECT
 # @DESCRIPTION:
 # project name of your ebuild (= name space)
 #
@@ -116,7 +116,7 @@ ESVN_PASSWORD="${ESVN_PASSWORD:-}"
 # default: ${PN/-svn}.
 ESVN_PROJECT="${ESVN_PROJECT:-${PN/-svn}}"
 
-# @ECLASS-VARIABLE: ESVN_RESTRICT
+# @ECLASS_VARIABLE: ESVN_RESTRICT
 # @DESCRIPTION:
 # this should be a space delimited list of subversion eclass features to
 # restrict.
@@ -124,7 +124,7 @@ ESVN_PROJECT="${ESVN_PROJECT:-${PN/-svn}}"
 #     don't export the working copy to S.
 ESVN_RESTRICT="${ESVN_RESTRICT:-}"
 
-# @ECLASS-VARIABLE: ESVN_OFFLINE
+# @ECLASS_VARIABLE: ESVN_OFFLINE
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -133,7 +133,7 @@ ESVN_RESTRICT="${ESVN_RESTRICT:-}"
 # tree by users.
 ESVN_OFFLINE="${ESVN_OFFLINE:-${EVCS_OFFLINE}}"
 
-# @ECLASS-VARIABLE: ESVN_UMASK
+# @ECLASS_VARIABLE: ESVN_UMASK
 # @USER_VARIABLE
 # @DESCRIPTION:
 # Set this variable to a custom umask. This is intended to be set by users.
@@ -144,7 +144,7 @@ ESVN_OFFLINE="${ESVN_OFFLINE:-${EVCS_OFFLINE}}"
 # already can screw the system over in more creative ways.
 ESVN_UMASK="${ESVN_UMASK:-${EVCS_UMASK}}"
 
-# @ECLASS-VARIABLE: ESVN_UP_FREQ
+# @ECLASS_VARIABLE: ESVN_UP_FREQ
 # @USER_VARIABLE
 # @DESCRIPTION:
 # Set the minimum number of hours between svn up'ing in any given svn module. This is particularly
@@ -152,7 +152,7 @@ ESVN_UMASK="${ESVN_UMASK:-${EVCS_UMASK}}"
 # revision. It should also be kept user overrideable.
 ESVN_UP_FREQ="${ESVN_UP_FREQ:=}"
 
-# @ECLASS-VARIABLE: ESCM_LOGDIR
+# @ECLASS_VARIABLE: ESCM_LOGDIR
 # @USER_VARIABLE
 # @DESCRIPTION:
 # User configuration variable. If set to a path such as e.g. /var/log/scm any

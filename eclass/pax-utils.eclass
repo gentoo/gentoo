@@ -29,7 +29,7 @@ esac
 if [[ -z ${_PAX_UTILS_ECLASS} ]]; then
 _PAX_UTILS_ECLASS=1
 
-# @ECLASS-VARIABLE: PAX_MARKINGS
+# @ECLASS_VARIABLE: PAX_MARKINGS
 # @DESCRIPTION:
 # Control which markings are made:
 # PT = PT_PAX markings, XT = XATTR_PAX markings

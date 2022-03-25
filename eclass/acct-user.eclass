@@ -56,7 +56,7 @@ inherit user
 
 # << Eclass variables >>
 
-# @ECLASS-VARIABLE: ACCT_USER_NAME
+# @ECLASS_VARIABLE: ACCT_USER_NAME
 # @INTERNAL
 # @DESCRIPTION:
 # The name of the user.  This is forced to ${PN} and the policy prohibits
@@ -64,7 +64,7 @@ inherit user
 ACCT_USER_NAME=${PN}
 readonly ACCT_USER_NAME
 
-# @ECLASS-VARIABLE: ACCT_USER_ID
+# @ECLASS_VARIABLE: ACCT_USER_ID
 # @REQUIRED
 # @DESCRIPTION:
 # Preferred UID for the new user.  This variable is obligatory, and its
@@ -74,33 +74,33 @@ readonly ACCT_USER_NAME
 # Overlays should set this to -1 to dynamically allocate UID.  Using -1
 # in ::gentoo is prohibited by policy.
 
-# @ECLASS-VARIABLE: _ACCT_USER_ALREADY_EXISTS
+# @ECLASS_VARIABLE: _ACCT_USER_ALREADY_EXISTS
 # @INTERNAL
 # @DESCRIPTION:
 # Status variable which indicates if user already exists.
 
-# @ECLASS-VARIABLE: ACCT_USER_ENFORCE_ID
+# @ECLASS_VARIABLE: ACCT_USER_ENFORCE_ID
 # @DESCRIPTION:
 # If set to a non-null value, the eclass will require the user to have
 # specified UID.  If the user already exists with another UID, or
 # the UID is taken by another user, the install will fail.
 : ${ACCT_USER_ENFORCE_ID:=}
 
-# @ECLASS-VARIABLE: ACCT_USER_NO_MODIFY
+# @ECLASS_VARIABLE: ACCT_USER_NO_MODIFY
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set to a non-null value, the eclass will not make any changes
 # to an already existing user.
 : ${ACCT_USER_NO_MODIFY:=}
 
-# @ECLASS-VARIABLE: ACCT_USER_SHELL
+# @ECLASS_VARIABLE: ACCT_USER_SHELL
 # @DESCRIPTION:
 # The shell to use for the user.  If not specified, a 'nologin' variant
 # for the system is used.  This can be overriden in make.conf through
 # ACCT_USER_<UPPERCASE_USERNAME>_SHELL variable.
 : ${ACCT_USER_SHELL:=-1}
 
-# @ECLASS-VARIABLE: ACCT_USER_HOME
+# @ECLASS_VARIABLE: ACCT_USER_HOME
 # @DESCRIPTION:
 # The home directory for the user.  If not specified, /dev/null is used.
 # The directory will be created with appropriate permissions if it does
@@ -109,7 +109,7 @@ readonly ACCT_USER_NAME
 # ACCT_USER_<UPPERCASE_USERNAME>_HOME variable.
 : ${ACCT_USER_HOME:=/dev/null}
 
-# @ECLASS-VARIABLE: ACCT_USER_HOME_OWNER
+# @ECLASS_VARIABLE: ACCT_USER_HOME_OWNER
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The ownership to use for the home directory, in chown ([user][:group])
@@ -117,14 +117,14 @@ readonly ACCT_USER_NAME
 # This can be overriden in make.conf through
 # ACCT_USER_<UPPERCASE_USERNAME>_HOME_OWNER variable.
 
-# @ECLASS-VARIABLE: ACCT_USER_HOME_PERMS
+# @ECLASS_VARIABLE: ACCT_USER_HOME_PERMS
 # @DESCRIPTION:
 # The permissions to use for the home directory, in chmod (octal
 # or verbose) form.  This can be overriden in make.conf through
 # ACCT_USER_<UPPERCASE_USERNAME>_HOME_PERMS variable.
 : ${ACCT_USER_HOME_PERMS:=0755}
 
-# @ECLASS-VARIABLE: ACCT_USER_GROUPS
+# @ECLASS_VARIABLE: ACCT_USER_GROUPS
 # @REQUIRED
 # @DESCRIPTION:
 # List of groups the user should belong to.  This must be a bash

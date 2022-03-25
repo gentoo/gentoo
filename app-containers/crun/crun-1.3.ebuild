@@ -13,7 +13,7 @@ SRC_URI="https://github.com/containers/${PN}/releases/download/${PV}/${P}.tar.gz
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc64"
+KEYWORDS="amd64 ~arm arm64 ppc64"
 IUSE="+bpf +caps criu +seccomp systemd static-libs"
 
 DEPEND="

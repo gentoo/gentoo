@@ -31,7 +31,7 @@ SERVER_DEPEND="acct-group/quassel
 	acct-user/quassel
 	dev-qt/qtscript:5
 	crypt? ( app-crypt/qca:2[ssl] )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	postgres? ( dev-qt/qtsql:5[postgres] )
 	!postgres? ( dev-qt/qtsql:5[sqlite] dev-db/sqlite:3[threadsafe(+),-secure-delete] )
 	syslog? ( virtual/logger )"

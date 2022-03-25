@@ -53,7 +53,7 @@ esac
 
 EXPORT_FUNCTIONS src_unpack
 
-# @ECLASS-VARIABLE: EGO_VENDOR
+# @ECLASS_VARIABLE: EGO_VENDOR
 # @DESCRIPTION:
 # This variable contains a list of vendored packages.
 # The items of this array are strings that contain the

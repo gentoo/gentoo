@@ -22,7 +22,7 @@ esac
 
 # Inherit happens below after declaration of GNOME2_LA_PUNT
 
-# @ECLASS-VARIABLE: MATE_LA_PUNT
+# @ECLASS_VARIABLE: MATE_LA_PUNT
 # @DESCRIPTION:
 # Available values for MATE_LA_PUNT:
 # - "no": will not clean any .la files
@@ -63,7 +63,7 @@ mate_py_cond_func_wrap() {
 	fi
 }
 
-# @ECLASS-VARIABLE: MATE_FORCE_AUTORECONF
+# @ECLASS_VARIABLE: MATE_FORCE_AUTORECONF
 # @DESCRIPTION:
 # Available values for MATE_FORCE_AUTORECONF:
 # - true: will always run eautoreconf

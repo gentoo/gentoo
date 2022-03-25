@@ -67,7 +67,7 @@ inherit multibuild lua-utils
 
 fi
 
-# @ECLASS-VARIABLE: LUA_COMPAT
+# @ECLASS_VARIABLE: LUA_COMPAT
 # @REQUIRED
 # @PRE_INHERIT
 # @DESCRIPTION:
@@ -85,7 +85,7 @@ fi
 # LUA_COMPAT=( lua5-{1..3} )
 # @CODE
 
-# @ECLASS-VARIABLE: LUA_COMPAT_OVERRIDE
+# @ECLASS_VARIABLE: LUA_COMPAT_OVERRIDE
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -105,7 +105,7 @@ fi
 # LUA_COMPAT_OVERRIDE='luajit' emerge -1v dev-lua/foo
 # @CODE
 
-# @ECLASS-VARIABLE: LUA_REQ_USE
+# @ECLASS_VARIABLE: LUA_REQ_USE
 # @DEFAULT_UNSET
 # @PRE_INHERIT
 # @DESCRIPTION:
@@ -125,7 +125,7 @@ fi
 # lua_targets_luaX-Y? ( dev-lang/lua:X.Y[deprecated] )
 # @CODE
 
-# @ECLASS-VARIABLE: BUILD_DIR
+# @ECLASS_VARIABLE: BUILD_DIR
 # @OUTPUT_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -142,7 +142,7 @@ fi
 # ${WORKDIR}/foo-1.3-lua5-1
 # @CODE
 
-# @ECLASS-VARIABLE: LUA_DEPS
+# @ECLASS_VARIABLE: LUA_DEPS
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated Lua dependency string for all
@@ -161,7 +161,7 @@ fi
 # lua_targets_lua5-3? ( dev-lang/lua:5.3 )
 # @CODE
 
-# @ECLASS-VARIABLE: LUA_REQUIRED_USE
+# @ECLASS_VARIABLE: LUA_REQUIRED_USE
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated required-use expression which ensures at
@@ -180,7 +180,7 @@ fi
 # || ( lua_targets_lua5-1 lua_targets_lua5-3 )
 # @CODE
 
-# @ECLASS-VARIABLE: LUA_USEDEP
+# @ECLASS_VARIABLE: LUA_USEDEP
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated USE-dependency string which can be used to

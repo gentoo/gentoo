@@ -29,7 +29,7 @@ esac
 if [[ -z ${_ECM_ECLASS} ]]; then
 _ECM_ECLASS=1
 
-# @ECLASS-VARIABLE: VIRTUALX_REQUIRED
+# @ECLASS_VARIABLE: VIRTUALX_REQUIRED
 # @DESCRIPTION:
 # For proper description see virtualx.eclass manpage.
 # Here we redefine default value to be manual, if your package needs virtualx
@@ -38,7 +38,7 @@ _ECM_ECLASS=1
 
 inherit cmake flag-o-matic toolchain-funcs virtualx
 
-# @ECLASS-VARIABLE: ECM_NONGUI
+# @ECLASS_VARIABLE: ECM_NONGUI
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # By default, for all CATEGORIES except kde-frameworks, assume we are building
@@ -54,31 +54,31 @@ if [[ ${ECM_NONGUI} = false ]] ; then
 	inherit xdg
 fi
 
-# @ECLASS-VARIABLE: ECM_KDEINSTALLDIRS
+# @ECLASS_VARIABLE: ECM_KDEINSTALLDIRS
 # @DESCRIPTION:
 # Assume the package is using KDEInstallDirs macro and switch
 # KDE_INSTALL_USE_QT_SYS_PATHS to ON. If set to "false", do nothing.
 : ${ECM_KDEINSTALLDIRS:=true}
 
-# @ECLASS-VARIABLE: ECM_DEBUG
+# @ECLASS_VARIABLE: ECM_DEBUG
 # @DESCRIPTION:
 # Add "debug" to IUSE. If !debug, add -DQT_NO_DEBUG to CPPFLAGS. If set to
 # "false", do nothing.
 : ${ECM_DEBUG:=true}
 
-# @ECLASS-VARIABLE: ECM_DESIGNERPLUGIN
+# @ECLASS_VARIABLE: ECM_DESIGNERPLUGIN
 # @DESCRIPTION:
 # If set to "true", add "designer" to IUSE to toggle build of designer plugins
 # and add the necessary BDEPEND. If set to "false", do nothing.
 : ${ECM_DESIGNERPLUGIN:=false}
 
-# @ECLASS-VARIABLE: ECM_EXAMPLES
+# @ECLASS_VARIABLE: ECM_EXAMPLES
 # @DESCRIPTION:
 # By default unconditionally ignore a top-level examples subdirectory.
 # If set to "true", add "examples" to IUSE to toggle adding that subdirectory.
 : ${ECM_EXAMPLES:=false}
 
-# @ECLASS-VARIABLE: ECM_HANDBOOK
+# @ECLASS_VARIABLE: ECM_HANDBOOK
 # @DESCRIPTION:
 # Will accept "true", "false", "optional", "forceoptional". If set to "false",
 # do nothing.
@@ -92,20 +92,20 @@ fi
 # CMakeLists.txt in addition to the above.
 : ${ECM_HANDBOOK:=false}
 
-# @ECLASS-VARIABLE: ECM_HANDBOOK_DIR
+# @ECLASS_VARIABLE: ECM_HANDBOOK_DIR
 # @DESCRIPTION:
 # Specifies the directory containing the docbook file(s) relative to ${S} to
 # be processed by KF5DocTools (kdoctools_install).
 : ${ECM_HANDBOOK_DIR:=doc}
 
-# @ECLASS-VARIABLE: ECM_PO_DIRS
+# @ECLASS_VARIABLE: ECM_PO_DIRS
 # @DESCRIPTION:
 # Specifies directories of l10n files relative to ${S} to be processed by
 # KF5I18n (ki18n_install). If IUSE nls exists and is disabled then disable
 # build of these directories in CMakeLists.txt.
 : ${ECM_PO_DIRS:="po poqm"}
 
-# @ECLASS-VARIABLE: ECM_QTHELP
+# @ECLASS_VARIABLE: ECM_QTHELP
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Default value for all CATEGORIES except kde-frameworks is "false".
@@ -117,7 +117,7 @@ if [[ ${CATEGORY} = kde-frameworks ]]; then
 fi
 : ${ECM_QTHELP:=false}
 
-# @ECLASS-VARIABLE: ECM_TEST
+# @ECLASS_VARIABLE: ECM_TEST
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Will accept "true", "false", "optional", "forceoptional",
@@ -139,7 +139,7 @@ if [[ ${CATEGORY} = kde-frameworks ]]; then
 fi
 : ${ECM_TEST:=false}
 
-# @ECLASS-VARIABLE: KFMIN
+# @ECLASS_VARIABLE: KFMIN
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Minimum version of Frameworks to require. Default value for kde-frameworks
@@ -151,7 +151,7 @@ if [[ ${CATEGORY} = kde-frameworks ]]; then
 fi
 : ${KFMIN:=5.82.0}
 
-# @ECLASS-VARIABLE: KFSLOT
+# @ECLASS_VARIABLE: KFSLOT
 # @INTERNAL
 # @DESCRIPTION:
 # KDE Frameworks and Qt slot dependency, implied by KFMIN version.
@@ -255,7 +255,7 @@ DEPEND+=" ${COMMONDEPEND}"
 RDEPEND+=" ${COMMONDEPEND}"
 unset COMMONDEPEND
 
-# @ECLASS-VARIABLE: KDE_GCC_MINIMAL
+# @ECLASS_VARIABLE: KDE_GCC_MINIMAL
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Minimum version of active GCC to require. This is checked in

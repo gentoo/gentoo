@@ -22,15 +22,16 @@ LICENSE="MIT PSF-2"
 SLOT="0"
 IUSE="examples sasl ssl"
 
+# < dep on openldap for bug #835637, ldap_r is gone
 RDEPEND="
 	>=dev-python/pyasn1-0.3.7[${PYTHON_USEDEP}]
 	>=dev-python/pyasn1-modules-0.1.5[${PYTHON_USEDEP}]
-	>net-nds/openldap-2.4.11:=[sasl?,ssl?]
+	<net-nds/openldap-2.6:=[sasl?,ssl?]
 "
 # We do not link against cyrus-sasl but we use some
 # of its headers during the build.
-BDEPEND="
-	>net-nds/openldap-2.4.11:=[sasl?,ssl?]
+DEPEND="
+	<net-nds/openldap-2.6:=[sasl?,ssl?]
 	sasl? ( >=dev-libs/cyrus-sasl-2.1 )
 "
 

@@ -11,5 +11,5 @@
 # TIGERVNC_XSESSION_FILE="/etc/lightdm/Xsession"
 # TIGERVNC_XSESSION_FILE="/usr/share/slim/Xsession"
 
-# Specify any of vncserver(1) and Xvnc(1) options. See the respective man pages for more information.
-# VNC_OPTS=""
+# vncsession no longer supports VNC_OPTS
+# Use /etc/tigervnc/vncserver-config-defaults or $HOME/.vnc/config instead

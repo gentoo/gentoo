@@ -29,8 +29,6 @@ RDEPEND="${DEPEND}"
 BDEPEND="${PYTHON_DEPS}"
 
 src_prepare() {
-	use jit || PATCHES+=( "${FILESDIR}/${PN}-5.4.2-disable-jit.patch" )
-
 	qt_use_disable_mod localstorage sql \
 		src/imports/imports.pro
 
@@ -49,6 +47,7 @@ src_configure() {
 	local myqmakeargs=(
 		--
 		-qml-debug
+		$(qt_use jit feature-qml-jit)
 	)
 	qt5-build_src_configure
 }

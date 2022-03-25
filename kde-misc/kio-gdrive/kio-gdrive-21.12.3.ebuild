@@ -19,7 +19,8 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="+kaccounts +share"
 
-BDEPEND="dev-util/intltool"
+REQUIRED_USE="share? ( kaccounts )"
+
 COMMON_DEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
@@ -38,12 +39,14 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	kaccounts? ( >=kde-apps/kaccounts-providers-20.08.3:5 )
 "
+BDEPEND="dev-util/intltool"
 
 DOCS=( README.md )
 
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package kaccounts KAccounts)
+		$(cmake_use_find_package share KF5Purpose)
 	)
 	ecm_src_configure
 }

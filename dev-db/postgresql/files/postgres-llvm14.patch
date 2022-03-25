@@ -1,0 +1,154 @@
+From d9f7ad54e552262ee0090e88d5abd3e04fcdeac8 Mon Sep 17 00:00:00 2001
+From: Thomas Munro <tmunro@postgresql.org>
+Date: Wed, 16 Mar 2022 11:35:00 +1300
+Subject: [PATCH] Back-patch LLVM 14 API changes.
+
+Since LLVM 14 has stopped changing and is about to be released,
+back-patch the following changes from the master branch:
+
+  e6a7600202105919bffd62b3dfd941f4a94e082b
+  807fee1a39de6bb8184082012e643951abb9ad1d
+  a56e7b66010f330782243de9e25ac2a6596be0e1
+
+Back-patch to 11, where LLVM JIT support came in.
+---
+ src/backend/jit/llvm/Makefile           |  6 +++++
+ src/backend/jit/llvm/llvmjit_error.cpp  | 35 +++++++++++++++++++++----
+ src/backend/jit/llvm/llvmjit_inline.cpp | 12 ++++++++-
+ 3 files changed, 47 insertions(+), 6 deletions(-)
+
+diff --git a/src/backend/jit/llvm/Makefile b/src/backend/jit/llvm/Makefile
+index 0268bd46d5..2da122a391 100644
+--- a/src/backend/jit/llvm/Makefile
++++ b/src/backend/jit/llvm/Makefile
+@@ -22,6 +22,12 @@ endif
+ PGFILEDESC = "llvmjit - JIT using LLVM"
+ NAME = llvmjit
+ 
++# LLVM 14 produces deprecation warnings.  We'll need to make some changes
++# before the relevant functions are removed, but for now silence the warnings.
++ifeq ($(GCC), yes)
++LLVM_CFLAGS += -Wno-deprecated-declarations
++endif
++
+ # All files in this directory use LLVM.
+ CFLAGS += $(LLVM_CFLAGS)
+ CXXFLAGS += $(LLVM_CXXFLAGS)
+diff --git a/src/backend/jit/llvm/llvmjit_error.cpp b/src/backend/jit/llvm/llvmjit_error.cpp
+index f4720732a3..5ad92f3090 100644
+--- a/src/backend/jit/llvm/llvmjit_error.cpp
++++ b/src/backend/jit/llvm/llvmjit_error.cpp
+@@ -23,15 +23,22 @@ extern "C"
+ 
+ #include "jit/llvmjit.h"
+ 
++#include <new>
+ 
+ static int fatal_new_handler_depth = 0;
+ static std::new_handler old_new_handler = NULL;
+ 
+ static void fatal_system_new_handler(void);
+ #if LLVM_VERSION_MAJOR > 4
++static void fatal_llvm_new_handler(void *user_data, const char *reason, bool gen_crash_diag);
++#if LLVM_VERSION_MAJOR < 14
+ static void fatal_llvm_new_handler(void *user_data, const std::string& reason, bool gen_crash_diag);
+ #endif
++#endif
++static void fatal_llvm_error_handler(void *user_data, const char *reason, bool gen_crash_diag);
++#if LLVM_VERSION_MAJOR < 14
+ static void fatal_llvm_error_handler(void *user_data, const std::string& reason, bool gen_crash_diag);
++#endif
+ 
+ 
+ /*
+@@ -129,23 +136,41 @@ fatal_system_new_handler(void)
+ #if LLVM_VERSION_MAJOR > 4
+ static void
+ fatal_llvm_new_handler(void *user_data,
+-					   const std::string& reason,
++					   const char *reason,
+ 					   bool gen_crash_diag)
+ {
+ 	ereport(FATAL,
+ 			(errcode(ERRCODE_OUT_OF_MEMORY),
+ 			 errmsg("out of memory"),
+-			 errdetail("While in LLVM: %s", reason.c_str())));
++			 errdetail("While in LLVM: %s", reason)));
++}
++#if LLVM_VERSION_MAJOR < 14
++static void
++fatal_llvm_new_handler(void *user_data,
++					   const std::string& reason,
++					   bool gen_crash_diag)
++{
++	fatal_llvm_new_handler(user_data, reason.c_str(), gen_crash_diag);
+ }
+ #endif
++#endif
+ 
+ static void
+ fatal_llvm_error_handler(void *user_data,
+-						 const std::string& reason,
++						 const char *reason,
+ 						 bool gen_crash_diag)
+ {
+ 	ereport(FATAL,
+ 			(errcode(ERRCODE_OUT_OF_MEMORY),
+-			 errmsg("fatal llvm error: %s",
+-					reason.c_str())));
++			 errmsg("fatal llvm error: %s", reason)));
+ }
++
++#if LLVM_VERSION_MAJOR < 14
++static void
++fatal_llvm_error_handler(void *user_data,
++						 const std::string& reason,
++						 bool gen_crash_diag)
++{
++	fatal_llvm_error_handler(user_data, reason.c_str(), gen_crash_diag);
++}
++#endif
+diff --git a/src/backend/jit/llvm/llvmjit_inline.cpp b/src/backend/jit/llvm/llvmjit_inline.cpp
+index 6f03595db5..9bb4b672a7 100644
+--- a/src/backend/jit/llvm/llvmjit_inline.cpp
++++ b/src/backend/jit/llvm/llvmjit_inline.cpp
+@@ -594,7 +594,11 @@ function_inlinable(llvm::Function &F,
+ 	if (F.materialize())
+ 		elog(FATAL, "failed to materialize metadata");
+ 
+-	if (F.getAttributes().hasFnAttribute(llvm::Attribute::NoInline))
++#if LLVM_VERSION_MAJOR < 14
++#define hasFnAttr hasFnAttribute
++#endif
++
++	if (F.getAttributes().hasFnAttr(llvm::Attribute::NoInline))
+ 	{
+ 		ilog(DEBUG1, "ineligibile to import %s due to noinline",
+ 			 F.getName().data());
+@@ -871,7 +875,9 @@ create_redirection_function(std::unique_ptr<llvm::Module> &importMod,
+ 	llvm::Function *AF;
+ 	llvm::BasicBlock *BB;
+ 	llvm::CallInst *fwdcall;
++#if LLVM_VERSION_MAJOR < 14
+ 	llvm::Attribute inlineAttribute;
++#endif
+ 
+ 	AF = llvm::Function::Create(F->getFunctionType(),
+ 								LinkageTypes::AvailableExternallyLinkage,
+@@ -880,9 +886,13 @@ create_redirection_function(std::unique_ptr<llvm::Module> &importMod,
+ 
+ 	Builder.SetInsertPoint(BB);
+ 	fwdcall = Builder.CreateCall(F, &*AF->arg_begin());
++#if LLVM_VERSION_MAJOR < 14
+ 	inlineAttribute = llvm::Attribute::get(Context,
+ 										   llvm::Attribute::AlwaysInline);
+ 	fwdcall->addAttribute(~0U, inlineAttribute);
++#else
++	fwdcall->addFnAttr(llvm::Attribute::AlwaysInline);
++#endif
+ 	Builder.CreateRet(fwdcall);
+ 
+ 	return AF;
+-- 
+2.30.2
+

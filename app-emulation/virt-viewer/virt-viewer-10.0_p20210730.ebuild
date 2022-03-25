@@ -33,7 +33,6 @@ DEPEND="${RDEPEND}
 	spice? ( >=app-emulation/spice-protocol-0.12.10 )"
 BDEPEND="${PYTHON_DEPS}
 	dev-lang/perl
-	>=dev-util/intltool-0.35.0
 	virtual/pkgconfig"
 
 REQUIRED_USE="|| ( spice vnc )"

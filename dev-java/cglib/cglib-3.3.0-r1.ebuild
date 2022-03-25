@@ -19,7 +19,7 @@ SRC_URI="https://github.com/cglib/cglib/archive//${MY_PV}.tar.gz -> ${MY_P}.tar.
 
 LICENSE="Apache-2.0"
 SLOT="3"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
 
 CDEPEND="dev-java/ant-core:0
 	dev-java/asm:9

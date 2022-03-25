@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27"
+USE_RUBY="ruby27 ruby30"
 
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_DOCDIR="doc"

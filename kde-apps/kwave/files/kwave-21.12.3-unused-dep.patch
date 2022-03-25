@@ -1,0 +1,76 @@
+From a178fe327935384bb476c608717c1bc0af7b05e0 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Wed, 1 Dec 2021 23:09:17 +0100
+Subject: [PATCH] Remove unused KService dep
+
+---
+ CMakeLists.txt             | 1 -
+ kwave/CMakeLists.txt       | 1 -
+ libkwave/CMakeLists.txt    | 1 -
+ libkwave/PluginManager.cpp | 1 -
+ plugins/CMakeLists.txt     | 1 -
+ 5 files changed, 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d955576f..f9302ac0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -250,7 +250,6 @@ FIND_PACKAGE(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+     I18n
+     IconThemes
+     KIO
+-    Service
+     TextWidgets
+     XmlGui
+     WidgetsAddons
+diff --git a/kwave/CMakeLists.txt b/kwave/CMakeLists.txt
+index 6e2fef89..a8ba9537 100644
+--- a/kwave/CMakeLists.txt
++++ b/kwave/CMakeLists.txt
+@@ -99,7 +99,6 @@ TARGET_LINK_LIBRARIES(kwave_core
+     KF5::I18n
+     KF5::IconThemes
+     KF5::KIOFileWidgets
+-    KF5::Service
+     KF5::XmlGui
+ )
+ 
+diff --git a/libkwave/CMakeLists.txt b/libkwave/CMakeLists.txt
+index 5f303dd8..be753d6f 100644
+--- a/libkwave/CMakeLists.txt
++++ b/libkwave/CMakeLists.txt
+@@ -159,7 +159,6 @@ TARGET_LINK_LIBRARIES(libkwave
+     KF5::ConfigCore
+     KF5::CoreAddons
+     KF5::I18n
+-    KF5::Service
+     KF5::WidgetsAddons
+     KF5::XmlGui
+     pthread
+diff --git a/libkwave/PluginManager.cpp b/libkwave/PluginManager.cpp
+index d745cb33..1785d0cd 100644
+--- a/libkwave/PluginManager.cpp
++++ b/libkwave/PluginManager.cpp
+@@ -35,7 +35,6 @@
+ #include <KConfigGroup>
+ #include <KLocalizedString>
+ #include <KMainWindow>
+-#include <KPluginInfo>
+ #include <KPluginFactory>
+ #include <KPluginMetaData>
+ #include <KSharedConfig>
+diff --git a/plugins/CMakeLists.txt b/plugins/CMakeLists.txt
+index 171d6d99..7b9934f7 100644
+--- a/plugins/CMakeLists.txt
++++ b/plugins/CMakeLists.txt
+@@ -50,7 +50,6 @@ MACRO(KWAVE_PLUGIN _plugin)
+         KF5::I18n
+         KF5::IconThemes
+         KF5::KIOFileWidgets
+-        KF5::Service
+         KF5::TextWidgets
+         KF5::WidgetsAddons
+         KF5::XmlGui
+-- 
+GitLab
+

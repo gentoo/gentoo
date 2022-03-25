@@ -20,7 +20,7 @@ esac
 
 inherit multilib-build
 
-# @ECLASS-VARIABLE: RUST_TOOLCHAIN_BASEURL
+# @ECLASS_VARIABLE: RUST_TOOLCHAIN_BASEURL
 # @DESCRIPTION:
 # This variable specifies the base URL used by the
 # rust_arch_uri and rust_all_arch_uris functions when

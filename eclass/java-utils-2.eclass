@@ -43,7 +43,7 @@ has test ${JAVA_PKG_IUSE} && RESTRICT+=" !test? ( test )"
 JAVA_PKG_E_DEPEND=">=dev-java/java-config-2.2.0-r3"
 has source ${JAVA_PKG_IUSE} && JAVA_PKG_E_DEPEND="${JAVA_PKG_E_DEPEND} source? ( app-arch/zip )"
 
-# @ECLASS-VARIABLE: JAVA_PKG_WANT_BOOTCLASSPATH
+# @ECLASS_VARIABLE: JAVA_PKG_WANT_BOOTCLASSPATH
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The version of bootclasspath the package needs to work. Translates to a proper
@@ -58,7 +58,7 @@ if [[ -n "${JAVA_PKG_WANT_BOOTCLASSPATH}" ]]; then
 	fi
 fi
 
-# @ECLASS-VARIABLE: JAVA_PKG_ALLOW_VM_CHANGE
+# @ECLASS_VARIABLE: JAVA_PKG_ALLOW_VM_CHANGE
 # @DESCRIPTION:
 # Allow this eclass to change the active VM?
 # If your system VM isn't sufficient for the package, the build will fail
@@ -68,7 +68,7 @@ fi
 # should not be used in the final ebuild.
 JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 
-# @ECLASS-VARIABLE: JAVA_PKG_FORCE_VM
+# @ECLASS_VARIABLE: JAVA_PKG_FORCE_VM
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Explicitly set a particular VM to use. If its not valid, it'll fall back to
@@ -81,7 +81,7 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 #	JAVA_PKG_FORCE_VM=sun-jdk-1.5 emerge foo
 # @CODE
 
-# @ECLASS-VARIABLE: JAVA_PKG_WANT_BUILD_VM
+# @ECLASS_VARIABLE: JAVA_PKG_WANT_BUILD_VM
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A list of VM handles to choose a build VM from. If the list contains the
@@ -93,7 +93,7 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 # covered by DEPEND.
 # Requires JAVA_PKG_WANT_SOURCE and JAVA_PKG_WANT_TARGET to be set as well.
 
-# @ECLASS-VARIABLE: JAVA_PKG_WANT_SOURCE
+# @ECLASS_VARIABLE: JAVA_PKG_WANT_SOURCE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Specify a non-standard Java source version for compilation (via javac -source
@@ -108,7 +108,7 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 #	JAVA_PKG_WANT_SOURCE=1.4 emerge baz
 # @CODE
 
-# @ECLASS-VARIABLE: JAVA_PKG_WANT_TARGET
+# @ECLASS_VARIABLE: JAVA_PKG_WANT_TARGET
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Same as JAVA_PKG_WANT_SOURCE (see above) but for javac -target parameter,
@@ -123,7 +123,7 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 #	JAVA_PKG_WANT_TARGET=1.3 emerge bar
 # @CODE
 
-# @ECLASS-VARIABLE: JAVA_TEST_EXTRA_ARGS
+# @ECLASS_VARIABLE: JAVA_TEST_EXTRA_ARGS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array of extra arguments that should be passed to java command when running tests.
@@ -139,7 +139,7 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 #	)
 # @CODE
 
-# @ECLASS-VARIABLE: JAVA_PKG_DEBUG
+# @ECLASS_VARIABLE: JAVA_PKG_DEBUG
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A variable to be set with "yes" or "y", or ANY string of length non equal to
@@ -149,7 +149,7 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 #	JAVA_PKG_DEBUG="yes"
 # @CODE
 
-# @ECLASS-VARIABLE: JAVA_RM_FILES
+# @ECLASS_VARIABLE: JAVA_RM_FILES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array containing a list of files to remove. If defined, this array will be
@@ -177,7 +177,7 @@ JAVA_PKG_COMPILER_DIR=${JAVA_PKG_COMPILER_DIR:="/usr/share/java-config-2/compile
 # Can be overloaded, but it should be overloaded only for local testing.
 JAVA_PKG_COMPILERS_CONF=${JAVA_PKG_COMPILERS_CONF:="/etc/java-config-2/build/compilers.conf"}
 
-# @ECLASS-VARIABLE: JAVA_PKG_FORCE_COMPILER
+# @ECLASS_VARIABLE: JAVA_PKG_FORCE_COMPILER
 # @INTERNAL
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -191,7 +191,7 @@ JAVA_PKG_COMPILERS_CONF=${JAVA_PKG_COMPILERS_CONF:="/etc/java-config-2/build/com
 #	JAVA_PKG_FORCE_COMPILER="jikes javac"
 # @CODE
 
-# @ECLASS-VARIABLE: JAVA_PKG_FORCE_ANT_TASKS
+# @ECLASS_VARIABLE: JAVA_PKG_FORCE_ANT_TASKS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An $IFS separated list of ant tasks. Can be set in environment before calling

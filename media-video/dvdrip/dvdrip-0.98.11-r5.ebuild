@@ -10,7 +10,7 @@ HOMEPAGE="https://www.exit1.org/dvdrip/"
 SRC_URI="https://www.exit1.org/dvdrip/dist/${P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="ffmpeg fping mplayer ogg subtitles vcd vorbis xine xvid"
 
 DEPEND=">=dev-perl/Event-ExecFlow-0.64

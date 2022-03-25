@@ -9,3 +9,14 @@
  			fill_buff ()
  	in
  	let s = fill_buff () in
+--- a/mathexpr/mathexpr.ml	2022-03-22 12:36:30.252580025 +0100
++++ b/mathexpr/mathexpr.ml	2022-03-22 12:32:10.594137416 +0100
+@@ -2859,7 +2859,7 @@
+ 					while true do
+ 						let n = input f strbuf 0 1024 in
+ 						if n = 0 then raise Exit else
+-						Buffer.add_substring resbuf strbuf 0 n
++						Buffer.add_subbytes resbuf strbuf 0 n
+ 					done;
+ 					Buffer.contents resbuf
+ 					with Exit -> Buffer.contents resbuf

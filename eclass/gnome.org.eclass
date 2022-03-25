@@ -23,7 +23,7 @@ _GNOME_ORG_ECLASS=1
 # versionator inherit kept for older EAPIs due to ebuilds (potentially) relying on it
 [[ ${EAPI} == [56] ]] && inherit eapi7-ver versionator
 
-# @ECLASS-VARIABLE: GNOME_TARBALL_SUFFIX
+# @ECLASS_VARIABLE: GNOME_TARBALL_SUFFIX
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Most projects hosted on gnome.org mirrors provide tarballs as tar.bz2 or
@@ -41,13 +41,13 @@ if [[ ${GNOME_TARBALL_SUFFIX} == "xz" ]]; then
 	fi
 fi
 
-# @ECLASS-VARIABLE: GNOME_ORG_MODULE
+# @ECLASS_VARIABLE: GNOME_ORG_MODULE
 # @DESCRIPTION:
 # Name of the module as hosted on gnome.org mirrors.
 # Leave unset if package name matches module name.
 : ${GNOME_ORG_MODULE:=$PN}
 
-# @ECLASS-VARIABLE: GNOME_ORG_PVP
+# @ECLASS_VARIABLE: GNOME_ORG_PVP
 # @INTERNAL
 # @DESCRIPTION:
 # Components of the version number that correspond to a 6 month release.

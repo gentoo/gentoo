@@ -40,7 +40,7 @@ RESTRICT="strip"
 # force GO111MODULE to be auto for bug https://bugs.gentoo.org/771129
 export GO111MODULE=auto
 
-# @ECLASS-VARIABLE: EGO_PN
+# @ECLASS_VARIABLE: EGO_PN
 # @REQUIRED
 # @DESCRIPTION:
 # This is the import path for the go package to build. Please emerge

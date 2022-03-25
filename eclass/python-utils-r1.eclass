@@ -37,7 +37,7 @@ if [[ ! ${_PYTHON_UTILS_R1} ]]; then
 [[ ${EAPI} == [67] ]] && inherit eapi8-dosym
 inherit multiprocessing toolchain-funcs
 
-# @ECLASS-VARIABLE: _PYTHON_ALL_IMPLS
+# @ECLASS_VARIABLE: _PYTHON_ALL_IMPLS
 # @INTERNAL
 # @DESCRIPTION:
 # All supported Python implementations, most preferred last.
@@ -47,7 +47,7 @@ _PYTHON_ALL_IMPLS=(
 )
 readonly _PYTHON_ALL_IMPLS
 
-# @ECLASS-VARIABLE: _PYTHON_HISTORICAL_IMPLS
+# @ECLASS_VARIABLE: _PYTHON_HISTORICAL_IMPLS
 # @INTERNAL
 # @DESCRIPTION:
 # All historical Python implementations that are no longer supported.
@@ -59,7 +59,7 @@ _PYTHON_HISTORICAL_IMPLS=(
 )
 readonly _PYTHON_HISTORICAL_IMPLS
 
-# @ECLASS-VARIABLE: PYTHON_COMPAT_NO_STRICT
+# @ECLASS_VARIABLE: PYTHON_COMPAT_NO_STRICT
 # @INTERNAL
 # @DESCRIPTION:
 # Set to a non-empty value in order to make eclass tolerate (ignore)
@@ -258,7 +258,7 @@ _python_impl_matches() {
 	return 1
 }
 
-# @ECLASS-VARIABLE: PYTHON
+# @ECLASS_VARIABLE: PYTHON
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The absolute path to the current Python interpreter.
@@ -277,7 +277,7 @@ _python_impl_matches() {
 # /usr/bin/python2.7
 # @CODE
 
-# @ECLASS-VARIABLE: EPYTHON
+# @ECLASS_VARIABLE: EPYTHON
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The executable name of the current Python interpreter.

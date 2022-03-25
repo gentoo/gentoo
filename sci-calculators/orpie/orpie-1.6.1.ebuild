@@ -11,11 +11,12 @@ SRC_URI="https://github.com/pelzlpj/${PN}/archive/release-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
 DEPEND="dev-ml/gsl-ocaml:=
 	dev-ml/curses:=
+	dev-ml/num:=
 	dev-ml/camlp5":=
 RDEPEND="${DEPEND}"
 
@@ -25,6 +26,10 @@ PATCHES=(
 	"${FILESDIR}"/${P}-orpierc.patch
 	"${FILESDIR}"/${P}-rcfile.patch
 )
+
+src_compile() {
+	PREFIX=/usr dune_src_compile
+}
 
 src_install() {
 	dune_src_install

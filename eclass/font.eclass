@@ -17,30 +17,30 @@ _FONT_ECLASS=1
 
 EXPORT_FUNCTIONS pkg_setup src_install pkg_postinst pkg_postrm
 
-# @ECLASS-VARIABLE: FONT_SUFFIX
+# @ECLASS_VARIABLE: FONT_SUFFIX
 # @DEFAULT_UNSET
 # @REQUIRED
 # @DESCRIPTION:
 # Space delimited list of font suffixes to install.
 FONT_SUFFIX=${FONT_SUFFIX:-}
 
-# @ECLASS-VARIABLE: FONT_S
+# @ECLASS_VARIABLE: FONT_S
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Directory containing the fonts.  If unset, ${S} is used instead.
 # Can also be an array of several directories.
 
-# @ECLASS-VARIABLE: FONT_PN
+# @ECLASS_VARIABLE: FONT_PN
 # @DESCRIPTION:
 # Font name (ie. last part of FONTDIR).
 FONT_PN=${FONT_PN:-${PN}}
 
-# @ECLASS-VARIABLE: FONTDIR
+# @ECLASS_VARIABLE: FONTDIR
 # @DESCRIPTION:
 # Full path to installation directory.
 FONTDIR=${FONTDIR:-/usr/share/fonts/${FONT_PN}}
 
-# @ECLASS-VARIABLE: FONT_CONF
+# @ECLASS_VARIABLE: FONT_CONF
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array containing fontconfig conf files to install.

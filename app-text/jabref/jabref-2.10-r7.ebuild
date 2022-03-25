@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/${PN}/JabRef-${MY_PV}-src.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 
 CP_DEPEND="
 	dev-java/antlr:0

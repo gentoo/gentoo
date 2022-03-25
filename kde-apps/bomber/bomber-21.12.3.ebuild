@@ -33,3 +33,5 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!games-action/xbomber
 "
+
+PATCHES=( "${FILESDIR}/${P}-missing-link.patch" )

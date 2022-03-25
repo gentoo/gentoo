@@ -55,7 +55,7 @@ case "${EAPI:-0}" in
 		;;
 esac
 
-# @ECLASS-VARIABLE: DISTUTILS_OPTIONAL
+# @ECLASS_VARIABLE: DISTUTILS_OPTIONAL
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set to a non-null value, distutils part in the ebuild will
@@ -67,7 +67,7 @@ esac
 # distutils-r1 default phase functions or call the build system
 # manually.
 
-# @ECLASS-VARIABLE: DISTUTILS_SINGLE_IMPL
+# @ECLASS_VARIABLE: DISTUTILS_SINGLE_IMPL
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set to a non-null value, the ebuild will support setting a single
@@ -78,7 +78,7 @@ esac
 # to be exported. It must be run in order for the eclass functions
 # to function properly.
 
-# @ECLASS-VARIABLE: DISTUTILS_USE_PEP517
+# @ECLASS_VARIABLE: DISTUTILS_USE_PEP517
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -110,7 +110,7 @@ esac
 # The variable needs to be set before the inherit line.  The eclass
 # adds appropriate build-time dependencies and verifies the value.
 
-# @ECLASS-VARIABLE: DISTUTILS_USE_SETUPTOOLS
+# @ECLASS_VARIABLE: DISTUTILS_USE_SETUPTOOLS
 # @DEFAULT_UNSET
 # @PRE_INHERIT
 # @DESCRIPTION:
@@ -133,7 +133,7 @@ esac
 # It is available only in non-PEP517 mode.  It needs to be set before
 # the inherit line.
 
-# @ECLASS-VARIABLE: DISTUTILS_DEPS
+# @ECLASS_VARIABLE: DISTUTILS_DEPS
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated build-time dependency string for the build
@@ -268,7 +268,7 @@ _distutils_set_globals() {
 _distutils_set_globals
 unset -f _distutils_set_globals
 
-# @ECLASS-VARIABLE: PATCHES
+# @ECLASS_VARIABLE: PATCHES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array containing patches to be applied to the sources before
@@ -284,7 +284,7 @@ unset -f _distutils_set_globals
 # PATCHES=( "${FILESDIR}"/${P}-make-gentoo-happy.patch )
 # @CODE
 
-# @ECLASS-VARIABLE: DOCS
+# @ECLASS_VARIABLE: DOCS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array containing documents installed using dodoc. The files listed
@@ -300,7 +300,7 @@ unset -f _distutils_set_globals
 # DOCS=( NEWS README )
 # @CODE
 
-# @ECLASS-VARIABLE: HTML_DOCS
+# @ECLASS_VARIABLE: HTML_DOCS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array containing documents installed using dohtml. The files
@@ -314,7 +314,7 @@ unset -f _distutils_set_globals
 # HTML_DOCS=( doc/html/. )
 # @CODE
 
-# @ECLASS-VARIABLE: DISTUTILS_IN_SOURCE_BUILD
+# @ECLASS_VARIABLE: DISTUTILS_IN_SOURCE_BUILD
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set to a non-null value, in-source builds will be enabled.
@@ -330,7 +330,7 @@ unset -f _distutils_set_globals
 # 'build --build-base ${BUILD_DIR}' to enforce keeping & using built
 # files in the specific root.
 
-# @ECLASS-VARIABLE: DISTUTILS_ALL_SUBPHASE_IMPLS
+# @ECLASS_VARIABLE: DISTUTILS_ALL_SUBPHASE_IMPLS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array of patterns specifying which implementations can be used
@@ -358,7 +358,7 @@ unset -f _distutils_set_globals
 # }
 # @CODE
 
-# @ECLASS-VARIABLE: DISTUTILS_ARGS
+# @ECLASS_VARIABLE: DISTUTILS_ARGS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array containing options to be passed to setup.py.  They are passed

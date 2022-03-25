@@ -12,19 +12,19 @@
 # The myspell-r2 eclass is designed to streamline the construction of ebuilds for
 # the new Myspell dictionaries which support hunspell.
 
-# @ECLASS-VARIABLE: MYSPELL_DICT
+# @ECLASS_VARIABLE: MYSPELL_DICT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array variable containing list of all dictionary files.
 # MYSPELL_DICT=( "file.dic" "dir/file2.aff" )
 
-# @ECLASS-VARIABLE: MYSPELL_HYPH
+# @ECLASS_VARIABLE: MYSPELL_HYPH
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array variable containing list of all hyphenation files.
 # MYSPELL_HYPH=( "file.dic" "dir/file2.dic" )
 
-# @ECLASS-VARIABLE: MYSPELL_THES
+# @ECLASS_VARIABLE: MYSPELL_THES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array variable containing list of all thesarus files.

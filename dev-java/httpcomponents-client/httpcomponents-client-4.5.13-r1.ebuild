@@ -18,7 +18,7 @@ SRC_URI="mirror://apache/httpcomponents/httpclient/source/httpcomponents-client-
 
 LICENSE="Apache-2.0"
 SLOT="4"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
 
 # Common dependencies
 # POM: httpcomponents-client-${PV}/httpclient/pom.xml

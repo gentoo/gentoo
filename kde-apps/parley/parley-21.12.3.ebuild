@@ -8,7 +8,7 @@ ECM_HANDBOOK_DIR="docs"
 PVCUT=$(ver_cut 1-3)
 KFMIN=5.88.0
 QTMIN=5.15.2
-inherit ecm kde.org
+inherit ecm kde.org optfeature
 
 DESCRIPTION="A vocabulary trainer to help you memorize things"
 HOMEPAGE="https://apps.kde.org/parley/"
@@ -53,4 +53,9 @@ RDEPEND="${DEPEND}
 src_prepare() {
 	ecm_src_prepare
 	cmake_comment_add_subdirectory plugins
+}
+
+pkg_postinst() {
+	optfeature "online access to translations" app-i18n/translate-shell
+	ecm_pkg_postinst
 }

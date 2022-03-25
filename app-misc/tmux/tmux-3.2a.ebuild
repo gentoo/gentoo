@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.4-flags.patch"
 
 	# upstream fixes (can be removed with next version bump)
+	"${FILESDIR}"/${P}-Fix-crosscompiling-Marco-A-L-Barbosa.patch
 )
 
 src_prepare() {

@@ -33,6 +33,32 @@
 
 #--- END OF EXAMPLES ---
 
+# Marc Schiffbauer <mschiff@gentoo.org> (2022-03-22)
+# Unmaintained upstream. No reverse dependencies.
+# Removal on 2022-04-23.
+dev-libs/bareos-fastlzlib
+
+# Sam James <sam@gentoo.org> (2022-03-22)
+# Abandoned upstream (archived many years ago), fails
+# to build with modern versions of gnupg, and is
+# stuck on EAPI 5. No reverse dependencies.
+# bug #835388, bug #828948, bug #733010.
+# Maintainers welcome to take over.
+# Removal on 2022-04-22.
+app-crypt/seahorse-sharing
+
+# David Seifert <soap@gentoo.org> (2022-03-21)
+# Unmaintained, EAPI 5, no revdeps in tree.
+# Bug #786093, removal on 2022-04-20.
+dev-java/freehep-graphicsbase
+dev-java/freehep-io
+dev-java/glassfish-interceptor-api
+dev-java/gnu-classpath
+dev-java/invokebinder
+dev-java/java-apicheck
+dev-java/jboss-marshalling-river
+dev-java/jboss-marshalling-serial
+
 # David Seifert <soap@gentoo.org> (2022-03-21)
 # EAPI 5, last release 15 years ago, QA permission issues, no other
 # distro packages this.
@@ -127,12 +153,11 @@ sci-biology/GBrowse
 
 # Jakov Smolić <jsmolic@gentoo.org> (2022-03-16)
 # Unmaintaned, broken packages, no revdeps.
-# Bugs 822234, 809539, 809536, 832618, 731720, 713684,
+# Bugs 832618, 731720, 713684,
 # 733662, 741082, and many others.
 # Removal on 2022-04-16.
 net-wireless/yatebts
 net-wireless/srslte
-net-wireless/nanovna-saver
 net-wireless/gr-scan
 
 # Jakov Smolić <jsmolic@gentoo.org> (2022-03-16)
@@ -336,11 +361,6 @@ www-client/midori
 # bug #811891
 sys-apps/dmapi
 
-# Sam James <sam@gentoo.org> (2022-02-24)
-# No release since 2013, partly depends on stale dev-python/eventlet;
-# no reverse dependencies. Removal on 2022-03-24.
-dev-python/socketpool
-
 # Anton Fischl <github@fischl-online.de> (2022-02-23)
 # Version 2.5.* is not meant for production according to upstream
 =app-backup/burp-2.5*
@@ -363,23 +383,6 @@ dev-python/socketpool
 <sci-electronics/kicad-symbols-6.0.2
 <sci-electronics/kicad-templates-6.0.2
 <app-doc/kicad-doc-6.0.2
-
-# Brian Evans <grknight@gentoo.org> (2022-02-17)
-# Ancient version which likely does not work with modern software
-# New upstream exists but php team does not want to maintain
-# No revdeps. Removal in 30 days. Bug 833537
-dev-php/php-codebrowser
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-02-15)
-# Java libraries without consumers. Removal in 30 days.
-dev-java/upnplib
-dev-java/apple-java-extensions-bin
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-02-13)
-# This package is completely broken and some libraries existing only for
-# it cause unneeded workload for Java team. Removal in 30 days.
-# Bug #831106, bug #784107.
-games-strategy/triplea
 
 # Jonas Stein <jstein@gentoo.org> (2022-02-11)
 # Blocks gtk2 removal, which is EOL
@@ -441,11 +444,6 @@ app-misc/emelfm2
 # Alpha version
 =app-editors/ghex-4.0.0_alpha
 
-# Mart Raudsepp <leio@gentoo.org> (2021-12-18)
-# GNOME 42 mask, bug #835448
->=gui-libs/gtksourceview-5.3
->=app-editors/gnome-text-editor-42_alpha
-
 # Michał Górny <mgorny@gentoo.org> (2021-12-18)
 # EOL kernel with known vulnerabilities.  Please move to one of the LTS
 # branches.  Bug #829491.
@@ -495,6 +493,7 @@ dev-tex/pdfannotextractor
 # Needs testing to ensure valac-0.54 works for existing packages
 >=dev-libs/vala-common-0.53
 dev-lang/vala:0.54
+dev-lang/vala:0.56
 
 # Sam James <sam@gentoo.org> (2021-11-03)
 # Known issues with YAMA (kernel.yama.ptrace_scope=1) which is on by default
@@ -519,7 +518,7 @@ x11-drivers/nvidia-drivers:0/vulkan
 # Fabian Groffen <grobian@gentoo.org> (2021-10-03)
 # Masked for erratic behaviour
 # https://bugs.exim.org/show_bug.cgi?id=2813
-=mail-mta/exim-4.95
+=mail-mta/exim-4.95-r1
 
 # Mart Raudsepp <leio@gentoo.org> (2021-09-24)
 # Experimental split media-sound/pulseaudio packages, bug #536780.

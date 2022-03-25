@@ -26,7 +26,7 @@ esac
 if [[ -z ${_NINJA_UTILS_ECLASS} ]]; then
 _NINJA_UTILS_ECLASS=1
 
-# @ECLASS-VARIABLE: NINJAOPTS
+# @ECLASS_VARIABLE: NINJAOPTS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The default set of options to pass to Ninja. Similar to MAKEOPTS,

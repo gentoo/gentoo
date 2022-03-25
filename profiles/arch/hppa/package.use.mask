@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2022-03-22)
+# media-libs/dav1d not keyworded here
+media-libs/xine-lib dav1d
+
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
 media-video/ffmpeg vmaf
@@ -128,10 +132,6 @@ sys-block/fio -io-uring -zbc
 # Michał Górny <mgorny@gentoo.org> (2020-06-14)
 # Requires dev-python/networkx.
 app-portage/nattka depgraph-order
-
-# Michał Górny <mgorny@gentoo.org> (2020-05-03)
-# Requires unsupported dev-python/gevent.
-dev-python/socketpool eventlet gevent
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-25)
 # dependencies not yet keyworded

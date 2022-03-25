@@ -15,7 +15,7 @@ esac
 if [[ -z ${_OPTFEATURE_ECLASS} ]]; then
 _OPTFEATURE_ECLASS=1
 
-# @ECLASS-VARIABLE: _OPTFEATURE_DEFAULT_HEADER
+# @ECLASS_VARIABLE: _OPTFEATURE_DEFAULT_HEADER
 # @INTERNAL
 # @DESCRIPTION:
 # Default header printed ahead of optfeature output. Can be overridden
@@ -25,7 +25,7 @@ _OPTFEATURE_DEFAULT_HEADER="Install additional packages for optional runtime fea
 
 readonly _OPTFEATURE_DEFAULT_HEADER
 
-# @ECLASS-VARIABLE: _OPTFEATURE_HEADER
+# @ECLASS_VARIABLE: _OPTFEATURE_HEADER
 # @INTERNAL
 # @DESCRIPTION:
 # Default empty. Custom header printed ahead of optfeature output.
@@ -34,7 +34,7 @@ readonly _OPTFEATURE_DEFAULT_HEADER
 # dependencies are present.
 _OPTFEATURE_HEADER=
 
-# @ECLASS-VARIABLE: _OPTFEATURE_DOHEADER
+# @ECLASS_VARIABLE: _OPTFEATURE_DOHEADER
 # @INTERNAL
 # @DESCRIPTION:
 # If true, print header ahead of the first optfeature output.

@@ -29,13 +29,13 @@
 # A Couple of env vars are available to effect usage of this eclass
 # These are as follows:
 
-# @ECLASS-VARIABLE: KERNEL_DIR
+# @ECLASS_VARIABLE: KERNEL_DIR
 # @DESCRIPTION:
 # A string containing the directory of the target kernel sources. The default value is
 # "/usr/src/linux"
 KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 
-# @ECLASS-VARIABLE: CONFIG_CHECK
+# @ECLASS_VARIABLE: CONFIG_CHECK
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A string containing a list of .config options to check for before
@@ -58,7 +58,7 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # This is to allow usage of binary kernels, and minimal systems without kernel
 # sources.
 
-# @ECLASS-VARIABLE: ERROR_<CFG>
+# @ECLASS_VARIABLE: ERROR_<CFG>
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A string containing the error message to display when the check against CONFIG_CHECK
@@ -71,7 +71,7 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # CONFIG_CHECK="~CFG" with WARNING_<CFG>="Warning Message" calls ewarn without dieing
 
 
-# @ECLASS-VARIABLE: KBUILD_OUTPUT
+# @ECLASS_VARIABLE: KBUILD_OUTPUT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A string passed on commandline, or set from the kernel makefile. It contains the directory
@@ -80,7 +80,7 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # There are also a couple of variables which are set by this, and shouldn't be
 # set by hand. These are as follows:
 
-# @ECLASS-VARIABLE: KERNEL_MAKEFILE
+# @ECLASS_VARIABLE: KERNEL_MAKEFILE
 # @INTERNAL
 # @DESCRIPTION:
 # According to upstream documentation, by default, when make looks for the makefile, it tries
@@ -89,43 +89,43 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # See https://www.gnu.org/software/make/manual/make.html
 : ${KERNEL_MAKEFILE:=""}
 
-# @ECLASS-VARIABLE: KV_FULL
+# @ECLASS_VARIABLE: KV_FULL
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's a string containing the full kernel version. ie: 2.6.9-gentoo-johnm-r1
 
-# @ECLASS-VARIABLE: KV_MAJOR
+# @ECLASS_VARIABLE: KV_MAJOR
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's an integer containing the kernel major version. ie: 2
 
-# @ECLASS-VARIABLE: KV_MINOR
+# @ECLASS_VARIABLE: KV_MINOR
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's an integer containing the kernel minor version. ie: 6
 
-# @ECLASS-VARIABLE: KV_PATCH
+# @ECLASS_VARIABLE: KV_PATCH
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's an integer containing the kernel patch version. ie: 9
 
-# @ECLASS-VARIABLE: KV_EXTRA
+# @ECLASS_VARIABLE: KV_EXTRA
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's a string containing the kernel EXTRAVERSION. ie: -gentoo
 
-# @ECLASS-VARIABLE: KV_LOCAL
+# @ECLASS_VARIABLE: KV_LOCAL
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's a string containing the kernel LOCALVERSION concatenation. ie: -johnm
 
-# @ECLASS-VARIABLE: KV_DIR
+# @ECLASS_VARIABLE: KV_DIR
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's a string containing the kernel source directory, will be null if
 # KERNEL_DIR is invalid.
 
-# @ECLASS-VARIABLE: KV_OUT_DIR
+# @ECLASS_VARIABLE: KV_OUT_DIR
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's a string containing the kernel object directory, will be KV_DIR unless
@@ -244,7 +244,7 @@ getfilevar_noexec() {
 	fi
 }
 
-# @ECLASS-VARIABLE: _LINUX_CONFIG_EXISTS_DONE
+# @ECLASS_VARIABLE: _LINUX_CONFIG_EXISTS_DONE
 # @INTERNAL
 # @DESCRIPTION:
 # This is only set if one of the linux_config_*exists functions has been called.

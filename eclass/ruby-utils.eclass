@@ -23,7 +23,7 @@ esac
 if [[ ! ${_RUBY_UTILS} ]]; then
 
 
-# @ECLASS-VARIABLE: RUBY_TARGETS_PREFERENCE
+# @ECLASS_VARIABLE: RUBY_TARGETS_PREFERENCE
 # @INTERNAL
 # @DESCRIPTION:
 # This variable lists all the known ruby targets in preference of use as

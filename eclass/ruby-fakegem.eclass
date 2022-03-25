@@ -17,26 +17,26 @@
 
 inherit ruby-ng
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_NAME
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_NAME
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Sets the Gem name for the generated fake gemspec.
 # This variable MUST be set before inheriting the eclass.
 RUBY_FAKEGEM_NAME="${RUBY_FAKEGEM_NAME:-${PN}}"
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_VERSION
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_VERSION
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Sets the Gem version for the generated fake gemspec.
 # This variable MUST be set before inheriting the eclass.
 RUBY_FAKEGEM_VERSION="${RUBY_FAKEGEM_VERSION:-${PV/_pre/.pre}}"
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_TASK_DOC
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_TASK_DOC
 # @DESCRIPTION:
 # Specify the rake(1) task to run to generate documentation.
 RUBY_FAKEGEM_TASK_DOC="${RUBY_FAKEGEM_TASK_DOC-rdoc}"
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_RECIPE_TEST
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_RECIPE_TEST
 # @DESCRIPTION:
 # Specify one of the default testing function for ruby-fakegem:
 #  - rake (default; see also RUBY_FAKEGEM_TASK_TEST)
@@ -47,13 +47,13 @@ RUBY_FAKEGEM_TASK_DOC="${RUBY_FAKEGEM_TASK_DOC-rdoc}"
 #  - none
 RUBY_FAKEGEM_RECIPE_TEST="${RUBY_FAKEGEM_RECIPE_TEST-rake}"
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_TASK_TEST
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_TASK_TEST
 # @DESCRIPTION:
 # Specify the rake(1) task used for executing tests. Only valid
 # if RUBY_FAKEGEM_RECIPE_TEST is set to "rake" (the default).
 RUBY_FAKEGEM_TASK_TEST="${RUBY_FAKEGEM_TASK_TEST-test}"
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_RECIPE_DOC
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_RECIPE_DOC
 # @DESCRIPTION:
 # Specify one of the default API doc building function for ruby-fakegem:
 #  - rake (default; see also RUBY_FAKEGEM_TASK_DOC)
@@ -69,7 +69,7 @@ case ${EAPI} in
 		;;
 esac
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_DOCDIR
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_DOCDIR
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Specify the directory under which the documentation is built;
@@ -77,60 +77,60 @@ esac
 # Note: if RUBY_FAKEGEM_RECIPE_DOC is set to `rdoc`, this variable is
 # hardwired to `doc`.
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_EXTRADOC
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_EXTRADOC
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Extra documentation to install (readme, changelogs, …).
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_DOC_SOURCES
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_DOC_SOURCES
 # @DESCRIPTION:
 # Allow settings defined sources to scan for documentation.
 # This only applies if RUBY_FAKEGEM_DOC_TASK is set to `rdoc`.
 RUBY_FAKEGEM_DOC_SOURCES="${RUBY_FAKEGEM_DOC_SOURCES-lib}"
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_BINWRAP
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_BINWRAP
 # @DESCRIPTION:
 # Binaries to wrap around (relative to the RUBY_FAKEGEM_BINDIR directory)
 RUBY_FAKEGEM_BINWRAP="${RUBY_FAKEGEM_BINWRAP-*}"
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_BINDIR
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_BINDIR
 # @DESCRIPTION:
 # Path that contains binaries to be binwrapped. Equivalent to the
 # gemspec bindir option.
 RUBY_FAKEGEM_BINDIR="${RUBY_FAKEGEM_BINDIR-bin}"
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_REQUIRE_PATHS
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_REQUIRE_PATHS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Extra require paths (beside lib) to add to the specification
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_GEMSPEC
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_GEMSPEC
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Filename of .gemspec file to install instead of generating a generic one.
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_EXTRAINSTALL
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_EXTRAINSTALL
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # List of files and directories relative to the top directory that also
 # get installed. Some gems provide extra files such as version information,
 # Rails generators, or data that needs to be installed as well.
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_EXTENSIONS
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_EXTENSIONS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # List of extensions supported by this gem. Each extension is listed as
 # the configuration script that needs to be run to generate the
 # extension.
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_EXTENSION_OPTIONS
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_EXTENSION_OPTIONS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Additional options that are passed when configuring the
 # extension. Some extensions use this to locate paths or turn specific
 # parts of the extionsion on or off.
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_EXTENSION_LIBDIR
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_EXTENSION_LIBDIR
 # @DESCRIPTION:
 # The lib directory where extensions are copied directly after they have
 # been compiled. This is needed to run tests on the code and was the

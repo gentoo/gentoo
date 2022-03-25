@@ -18,7 +18,7 @@ SRC_URI="mirror://apache/jackrabbit/${PV}/jackrabbit-${PV}-src.zip"
 
 LICENSE="Apache-2.0"
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
 
 # Common dependencies
 # POM: pom.xml

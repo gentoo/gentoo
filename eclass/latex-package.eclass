@@ -68,13 +68,13 @@ esac
 HOMEPAGE="http://www.tug.org/"
 TEXMF="/usr/share/texmf-site"
 
-# @ECLASS-VARIABLE: SUPPLIER
+# @ECLASS_VARIABLE: SUPPLIER
 # @DESCRIPTION:
 # This refers to the font supplier; it should be overridden (see eclass
 # DESCRIPTION above)
 SUPPLIER="misc"
 
-# @ECLASS-VARIABLE: LATEX_DOC_ARGUMENTS
+# @ECLASS_VARIABLE: LATEX_DOC_ARGUMENTS
 # @DESCRIPTION:
 # When compiling documentation (.tex/.dtx), this variable will be passed
 # to pdflatex as additional argument (e.g. -shell-escape). This variable

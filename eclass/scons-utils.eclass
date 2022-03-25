@@ -59,7 +59,7 @@
 
 # -- public variables --
 
-# @ECLASS-VARIABLE: SCONS_MIN_VERSION
+# @ECLASS_VARIABLE: SCONS_MIN_VERSION
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The minimal version of SCons required for the build to work.
@@ -72,7 +72,7 @@
 # List of package-specific options to pass to all SCons calls. Supposed to be
 # set in src_configure().
 
-# @ECLASS-VARIABLE: SCONSOPTS
+# @ECLASS_VARIABLE: SCONSOPTS
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -80,7 +80,7 @@
 # supposed to be set in make.conf. If unset, escons() will use cleaned
 # up MAKEOPTS instead.
 
-# @ECLASS-VARIABLE: EXTRA_ESCONS
+# @ECLASS_VARIABLE: EXTRA_ESCONS
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -88,14 +88,14 @@
 # Much like EXTRA_EMAKE, this is not supposed to be used in make.conf
 # and not in ebuilds!
 
-# @ECLASS-VARIABLE: USE_SCONS_TRUE
+# @ECLASS_VARIABLE: USE_SCONS_TRUE
 # @DESCRIPTION:
 # DEPRECATED: use usex instead
 #
 # The default value for truth in scons-use() (1 by default).
 : ${USE_SCONS_TRUE:=1}
 
-# @ECLASS-VARIABLE: USE_SCONS_FALSE
+# @ECLASS_VARIABLE: USE_SCONS_FALSE
 # @DESCRIPTION:
 # DEPRECATED: use usex instead
 #

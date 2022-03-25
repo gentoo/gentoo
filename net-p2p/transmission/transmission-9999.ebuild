@@ -1,4 +1,4 @@
-# Copyright 2006-2021 Gentoo Authors
+# Copyright 2006-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,7 +32,6 @@ BDEPEND="${ACCT_DEPEND}
 	virtual/pkgconfig
 	nls? (
 		gtk? (
-			dev-util/intltool
 			sys-devel/gettext
 		)
 		qt5? (
@@ -68,7 +67,6 @@ DEPEND="${COMMON_DEPEND}
 	nls? (
 		virtual/libintl
 		gtk? (
-			dev-util/intltool
 			sys-devel/gettext
 		)
 		qt5? (

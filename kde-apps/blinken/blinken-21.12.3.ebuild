@@ -31,6 +31,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-missing-link.patch" )
+
 src_install() {
 	ecm_src_install
 	rm "${ED}"/usr/share/${PN}/README.packagers || die

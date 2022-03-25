@@ -1,0 +1,25 @@
+From 985c8dd411a27ad067fe9ac8951d644bad57324a Mon Sep 17 00:00:00 2001
+From: Christian Hergert <chergert@redhat.com>
+Date: Fri, 18 Mar 2022 22:35:37 -0700
+Subject: [PATCH] appdata: fix appstream validation
+
+Fixes #329
+---
+ data/org.gnome.TextEditor.appdata.xml.in.in | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/data/org.gnome.TextEditor.appdata.xml.in.in b/data/org.gnome.TextEditor.appdata.xml.in.in
+index f4e751f..3a39a8d 100644
+--- a/data/org.gnome.TextEditor.appdata.xml.in.in
++++ b/data/org.gnome.TextEditor.appdata.xml.in.in
+@@ -45,7 +45,6 @@
+ 
+   <releases>
+     <release version="42.0" date="2022-03-18"/>
+-    <release version="42.rc1" date="2022-03-07"/>
+   </releases>
+ 
+   <kudos>
+-- 
+2.34.1
+

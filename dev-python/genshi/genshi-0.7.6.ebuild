@@ -15,7 +15,7 @@ S="${WORKDIR}/${P^}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 

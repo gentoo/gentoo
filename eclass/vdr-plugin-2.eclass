@@ -14,20 +14,20 @@
 # @DESCRIPTION:
 # Eclass for easing maintenance of vdr plugin ebuilds
 
-# @ECLASS-VARIABLE: VDRPLUGIN
+# @ECLASS_VARIABLE: VDRPLUGIN
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The name of the vdr plugin, plain name without "vdr-" or "plugin" prefix or suffix.
 # This variable is derived from ${PN} and is read-only for the ebuild.
 
-# @ECLASS-VARIABLE: VDR_CONFD_FILE
+# @ECLASS_VARIABLE: VDR_CONFD_FILE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A plugin config file can be specified through the $VDR_CONFD_FILE variable, it
 # defaults to ${FILESDIR}/confd. Each config file will be installed as e.g.
 # ${D}/etc/conf.d/vdr.${VDRPLUGIN}
 
-# @ECLASS-VARIABLE: VDR_RCADDON_FILE
+# @ECLASS_VARIABLE: VDR_RCADDON_FILE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Installing rc-addon files is basically the same as for plugin config files
@@ -43,13 +43,13 @@
 #
 # NOTE: rc-addon files must be valid shell scripts!
 
-# @ECLASS-VARIABLE: GENTOO_VDR_CONDITIONAL
+# @ECLASS_VARIABLE: GENTOO_VDR_CONDITIONAL
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # This is a hack for ebuilds like vdr-xineliboutput that want to
 # conditionally install a vdr-plugin
 
-# @ECLASS-VARIABLE: PO_SUBDIR
+# @ECLASS_VARIABLE: PO_SUBDIR
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # By default, translation are found in"${S}"/po but this

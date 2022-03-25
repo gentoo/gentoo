@@ -72,6 +72,7 @@ python_test() {
 		# Needs network (or docker?) but not marked as such, bug #807031
 		# TODO: report upstream
 		tests/test_batch/test_batch_jobs.py::test_terminate_job
+		tests/test_batch/test_batch_jobs.py::test_cancel_pending_job
 		tests/test_batch/test_batch_jobs.py::test_cancel_running_job
 		tests/test_batch/test_batch_jobs.py::test_dependencies
 		tests/test_batch/test_batch_jobs.py::test_container_overrides

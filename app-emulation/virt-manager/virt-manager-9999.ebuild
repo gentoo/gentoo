@@ -48,8 +48,7 @@ RDEPEND="${PYTHON_DEPS}
 		policykit? ( sys-auth/polkit[introspection] )
 	)"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/docutils
-	dev-util/intltool"
+BDEPEND="dev-python/docutils"
 
 distutils_enable_tests pytest
 

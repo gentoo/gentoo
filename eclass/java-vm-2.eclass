@@ -28,25 +28,25 @@ DEPEND="${RDEPEND}"
 export WANT_JAVA_CONFIG=2
 
 
-# @ECLASS-VARIABLE: JAVA_VM_CONFIG_DIR
+# @ECLASS_VARIABLE: JAVA_VM_CONFIG_DIR
 # @INTERNAL
 # @DESCRIPTION:
 # Where to place the vm env file.
 JAVA_VM_CONFIG_DIR="/usr/share/java-config-2/vm"
 
-# @ECLASS-VARIABLE: JAVA_VM_DIR
+# @ECLASS_VARIABLE: JAVA_VM_DIR
 # @INTERNAL
 # @DESCRIPTION:
 # Base directory for vm links.
 JAVA_VM_DIR="/usr/lib/jvm"
 
-# @ECLASS-VARIABLE: JAVA_VM_SYSTEM
+# @ECLASS_VARIABLE: JAVA_VM_SYSTEM
 # @INTERNAL
 # @DESCRIPTION:
 # Link for system-vm
 JAVA_VM_SYSTEM="/etc/java-config-2/current-system-vm"
 
-# @ECLASS-VARIABLE: JAVA_VM_BUILD_ONLY
+# @ECLASS_VARIABLE: JAVA_VM_BUILD_ONLY
 # @DESCRIPTION:
 # Set to YES to mark a vm as build-only.
 JAVA_VM_BUILD_ONLY="${JAVA_VM_BUILD_ONLY:-FALSE}"

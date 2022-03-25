@@ -24,7 +24,6 @@ COMMON_DEPEND="
 	>=x11-libs/gtk+-3.22:3[introspection]"
 DEPEND="${COMMON_DEPEND}
 	app-arch/unzip
-	>=dev-util/intltool-0.40.1
 	virtual/pkgconfig
 	>=sys-devel/gettext-0.17-r1"
 RDEPEND="${COMMON_DEPEND}

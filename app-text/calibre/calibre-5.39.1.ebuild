@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE="ipv6(+),sqlite,ssl"
 
-inherit toolchain-funcs python-single-r1 xdg-utils
+inherit toolchain-funcs python-single-r1 qmake-utils xdg-utils
 
 DESCRIPTION="Ebook management application"
 HOMEPAGE="https://calibre-ebook.com/"
@@ -196,7 +196,7 @@ src_compile() {
 	local MY_LIBDIR="${ESYSROOT}/usr/$(get_libdir)"
 	export FT_LIB_DIR="${MY_LIBDIR}" HUNSPELL_LIB_DIR="${MY_LIBDIR}" PODOFO_LIB_DIR="${MY_LIBDIR}"
 
-	PATH="${T}/bin:${PATH}" ${EPYTHON} setup.py build || die
+	PATH="${T}/bin:$(qt5_get_bindir):${PATH}" ${EPYTHON} setup.py build || die
 }
 
 src_test() {
@@ -229,7 +229,7 @@ src_install() {
 	cp "${T}"/bin/{kbuildsycoca,update-mime-database} || die
 	chmod +x "${T}"/bin/{kbuildsycoca,update-mime-database} || die
 
-	export QMAKE="${EPREFIX}/usr/$(get_libdir)/qt5/bin/qmake"
+	export QMAKE="$(qt5_get_bindir)/qmake"
 
 	# Unset DISPLAY in order to prevent xdg-mime from triggering a sandbox
 	# violation with kbuildsycoca as in bug #287067, comment #13.

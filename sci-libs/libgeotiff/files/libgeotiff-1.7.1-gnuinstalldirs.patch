@@ -1,6 +1,6 @@
 https://github.com/OSGeo/libgeotiff/pull/74
 
-From 8541a109f3aad4756488f730ed8d71060f9b282f Mon Sep 17 00:00:00 2001
+From d18deccb461990c826ceee8fbcc57a44502ace2e Mon Sep 17 00:00:00 2001
 From: Sam James <sam@gentoo.org>
 Date: Sun, 20 Mar 2022 02:55:50 +0000
 Subject: [PATCH] CMake: adopt GNUInstallDirs
@@ -13,7 +13,15 @@ This works cross-platform still but it means libgeotiff uses the
 standard options which CMake projects tend to use for such locations
 and therefore no special treatment is needed when packaging it.
 
+Fixes: https://github.com/OSGeo/issues/33
 Signed-off-by: Sam James <sam@gentoo.org>
+---
+ CMakeLists.txt     | 41 ++++++++++-------------------------
+ bin/CMakeLists.txt |  6 ++---
+ 2 files changed, 14 insertions(+), 33 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 001df67..1840258 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -7,6 +7,8 @@
@@ -96,3 +104,17 @@ Signed-off-by: Sam James <sam@gentoo.org>
  
  # Define grouping of source files in PROJECT file (e.g. Visual Studio)
  SOURCE_GROUP("CMake Files" FILES CMakeLists.txt)
+diff --git a/bin/CMakeLists.txt b/bin/CMakeLists.txt
+index dad465f..c61585c 100644
+--- a/bin/CMakeLists.txt
++++ b/bin/CMakeLists.txt
+@@ -41,6 +41,6 @@ MESSAGE(STATUS "Adding GeoTIFF utilities to build - done: ${GEOTIFF_UTILITIES}")
+ # Targets installation
+ 
+ INSTALL(TARGETS ${GEOTIFF_UTILITIES}
+-    RUNTIME DESTINATION ${GEOTIFF_BIN_DIR}
+-    LIBRARY DESTINATION ${GEOTIFF_LIB_DIR}
+-    ARCHIVE DESTINATION ${GEOTIFF_LIB_DIR})
++    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})

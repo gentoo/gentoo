@@ -17,7 +17,7 @@ SRC_URI="https://gitlab.com/libvirt/${PN}/-/archive/${SNAPSHOT}/${PN}-${SNAPSHOT
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="doc"
 
 RDEPEND="app-emulation/libvirt

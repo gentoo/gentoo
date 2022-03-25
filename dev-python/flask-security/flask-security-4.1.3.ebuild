@@ -18,7 +18,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-python/bleach-3.3.1[${PYTHON_USEDEP}]
@@ -50,11 +50,7 @@ BDEPEND="
 		>=dev-python/pymysql-0.9.3[${PYTHON_USEDEP}]
 		>=dev-python/pyqrcode-1.2[${PYTHON_USEDEP}]
 		>=dev-python/zxcvbn-4.4.28[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			>=dev-python/pony-0.7.11[${PYTHON_USEDEP}]
-		' python3_8 python3_9)
-		amd64? ( >=dev-python/flask-mongoengine-0.9.5[${PYTHON_USEDEP}] )
-		arm64? ( >=dev-python/flask-mongoengine-0.9.5[${PYTHON_USEDEP}] )
+		>=dev-python/pony-0.7.11[${PYTHON_USEDEP}]
 	)
 "
 

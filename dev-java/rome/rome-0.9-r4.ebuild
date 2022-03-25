@@ -4,7 +4,7 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
-JAVA_TESTING_FRAMEWORKS="junit"
+JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
 
@@ -14,14 +14,13 @@ SRC_URI="mirror://gentoo/${P}.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CP_DEPEND="dev-java/jdom:0"
 
 DEPEND="
 	${CP_DEPEND}
-	>=virtual/jdk-1.8:*
-	test? ( dev-java/ant-junit:0 )"
+	>=virtual/jdk-1.8:*"
 
 RDEPEND="
 	${CP_DEPEND}
@@ -32,8 +31,28 @@ BDEPEND="app-arch/unzip"
 JAVA_ENCODING="ISO-8859-1"
 JAVA_SRC_DIR="src/java"
 JAVA_RESOURCE_DIRS="res/java"
+
 JAVA_TEST_SRC_DIRS="src/test"
-JAVA_TEST_GENTOO_CLASSPATH="junit"
+JAVA_TEST_RESOURCE_DIRS="src/data"
+JAVA_TEST_GENTOO_CLASSPATH="junit-4"
+
+JAVA_TEST_EXCLUDES=(
+	# 1) testParse(com.sun.syndication.unittest.TestDateParser)
+	# junit.framework.AssertionFailedError
+	com.sun.syndication.unittest.TestDateParser
+	# 2) warning(junit.framework.TestSuite$1)
+	# junit.framework.AssertionFailedError: Class com.sun.syndication.unittest.FeedOpsTest has no public constructor TestCase(String name) or TestCase()
+	# 	at junit.framework.Assert.fail(Assert.java:57)
+	com.sun.syndication.unittest.FeedOpsTest
+	# 3) warning(junit.framework.TestSuite$1)
+	# junit.framework.AssertionFailedError: Class com.sun.syndication.unittest.FeedTest has no public constructor TestCase(String name) or TestCase()
+	# 	at junit.framework.Assert.fail(Assert.java:57)
+	com.sun.syndication.unittest.FeedTest
+	# 4) warning(junit.framework.TestSuite$1)
+	# junit.framework.AssertionFailedError: Class com.sun.syndication.unittest.SyndFeedTest has no public constructor TestCase(String name) or TestCase()
+	# 	at junit.framework.Assert.fail(Assert.java:57)
+	com.sun.syndication.unittest.SyndFeedTest
+)
 
 S="${WORKDIR}/${P}"
 

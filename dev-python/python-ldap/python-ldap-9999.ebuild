@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 PYTHON_COMPAT=( pypy3 python3_{7..10} )
 
 inherit distutils-r1
@@ -18,21 +18,20 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-solaris"
 fi
 
-LICENSE="PSF-2"
+LICENSE="MIT PSF-2"
 SLOT="0"
 IUSE="examples sasl ssl"
 
-# We do not need OpenSSL, it is never directly used:
-# https://github.com/python-ldap/python-ldap/issues/224
+# < dep on openldap for bug #835637, ldap_r is gone
 RDEPEND="
 	>=dev-python/pyasn1-0.3.7[${PYTHON_USEDEP}]
 	>=dev-python/pyasn1-modules-0.1.5[${PYTHON_USEDEP}]
-	>net-nds/openldap-2.4.11:=[sasl?,ssl?]
+	<net-nds/openldap-2.6:=[sasl?,ssl?]
 "
 # We do not link against cyrus-sasl but we use some
 # of its headers during the build.
-BDEPEND="
-	>net-nds/openldap-2.4.11:=[sasl?,ssl?]
+DEPEND="
+	<net-nds/openldap-2.6:=[sasl?,ssl?]
 	sasl? ( >=dev-libs/cyrus-sasl-2.1 )
 "
 
@@ -58,7 +57,7 @@ python_prepare_all() {
 
 python_test() {
 	# Run all tests which don't require slapd
-	local ignored_tests=(
+	local EPYTEST_IGNORE=(
 		t_bind.py
 		t_cext.py
 		t_edit.py
@@ -70,7 +69,7 @@ python_test() {
 		t_slapdobject.py
 	)
 	pushd Tests >/dev/null || die
-	epytest ${ignored_tests[@]/#/--ignore }
+	epytest
 	popd > /dev/null || die
 }
 

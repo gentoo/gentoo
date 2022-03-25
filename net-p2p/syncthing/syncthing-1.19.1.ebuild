@@ -20,6 +20,8 @@ RDEPEND="acct-group/syncthing
 	tools? ( >=acct-user/stdiscosrv-1
 		>=acct-user/strelaysrv-1 )
 	selinux? ( sec-policy/selinux-syncthing )"
+# Bug #835408
+BDEPEND="<dev-lang/go-1.18"
 
 DOCS=( README.md AUTHORS CONTRIBUTING.md )
 

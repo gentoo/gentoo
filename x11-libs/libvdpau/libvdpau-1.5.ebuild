@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.freedesktop.org/vdpau/libvdpau/-/archive/${PV}/${P}.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="~alpha amd64 ~arm64 ~riscv x86"
 IUSE="doc dri"
 
 RDEPEND="

@@ -15,7 +15,7 @@
 if [[ -z ${_FREEDICT_ECLASS} ]]; then
 _FREEDICT_ECLASS=1
 
-# @ECLASS-VARIABLE: FREEDICT_P
+# @ECLASS_VARIABLE: FREEDICT_P
 # @DESCRIPTION:
 # Strips PN of 'freedict' prefix, to be used in SRC_URI and doins
 FREEDICT_P=${PN/freedict-/}

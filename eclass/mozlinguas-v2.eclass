@@ -27,7 +27,7 @@ esac
 
 EXPORT_FUNCTIONS src_unpack src_compile src_install
 
-# @ECLASS-VARIABLE: MOZ_LANGS
+# @ECLASS_VARIABLE: MOZ_LANGS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array containing the list of language pack xpis available for
@@ -35,59 +35,59 @@ EXPORT_FUNCTIONS src_unpack src_compile src_install
 # mozilla overlay.
 : ${MOZ_LANGS:=()}
 
-# @ECLASS-VARIABLE: MOZ_PV
+# @ECLASS_VARIABLE: MOZ_PV
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Ebuild package version converted to equivalent upstream version.
 # Defaults to ${PV}, and should be overridden for alphas, betas, and RCs
 : ${MOZ_PV:="${PV}"}
 
-# @ECLASS-VARIABLE: MOZ_PN
+# @ECLASS_VARIABLE: MOZ_PN
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Ebuild package name converted to equivalent upstream name.
 # Defaults to ${PN}, and should be overridden for binary ebuilds.
 : ${MOZ_PN:="${PN}"}
 
-# @ECLASS-VARIABLE: MOZ_P
+# @ECLASS_VARIABLE: MOZ_P
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Ebuild package name + version converted to upstream equivalent.
 # Defaults to ${MOZ_PN}-${MOZ_PV}
 : ${MOZ_P:="${MOZ_PN}-${MOZ_PV}"}
 
-# @ECLASS-VARIABLE: MOZ_FTP_URI
+# @ECLASS_VARIABLE: MOZ_FTP_URI
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The ftp URI prefix for the release tarballs and language packs.
 : ${MOZ_FTP_URI:=""}
 
-# @ECLASS-VARIABLE: MOZ_HTTP_URI
+# @ECLASS_VARIABLE: MOZ_HTTP_URI
 # @PRE_INHERIT
 # @DESCRIPTION:
 # The http URI prefix for the release tarballs and language packs.
 : ${MOZ_HTTP_URI:=""}
 
-# @ECLASS-VARIABLE: MOZ_LANGPACK_HTTP_URI
+# @ECLASS_VARIABLE: MOZ_LANGPACK_HTTP_URI
 # @PRE_INHERIT
 # @DESCRIPTION:
 # An alternative http URI if it differs from official mozilla URI.
 # Defaults to whatever MOZ_HTTP_URI was set to.
 : ${MOZ_LANGPACK_HTTP_URI:=${MOZ_HTTP_URI}}
 
-# @ECLASS-VARIABLE: MOZ_LANGPACK_PREFIX
+# @ECLASS_VARIABLE: MOZ_LANGPACK_PREFIX
 # @DESCRIPTION:
 # The relative path till the lang code in the langpack file URI.
 # Defaults to ${MOZ_PV}/linux-i686/xpi/
 : ${MOZ_LANGPACK_PREFIX:="${MOZ_PV}/linux-i686/xpi/"}
 
-# @ECLASS-VARIABLE: MOZ_LANGPACK_SUFFIX
+# @ECLASS_VARIABLE: MOZ_LANGPACK_SUFFIX
 # @DESCRIPTION:
 # The suffix after the lang code in the langpack file URI.
 # Defaults to '.xpi'
 : ${MOZ_LANGPACK_SUFFIX:=".xpi"}
 
-# @ECLASS-VARIABLE: MOZ_LANGPACK_UNOFFICIAL
+# @ECLASS_VARIABLE: MOZ_LANGPACK_UNOFFICIAL
 # @DESCRIPTION:
 # The status of the langpack, used to differentiate within
 # Manifests and on Gentoo mirrors as to when the langpacks are
@@ -97,7 +97,7 @@ EXPORT_FUNCTIONS src_unpack src_compile src_install
 # suffix.
 : ${MOZ_LANGPACK_UNOFFICIAL:=""}
 
-# @ECLASS-VARIABLE: MOZ_GENERATE_LANGPACKS
+# @ECLASS_VARIABLE: MOZ_GENERATE_LANGPACKS
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -108,13 +108,13 @@ EXPORT_FUNCTIONS src_unpack src_compile src_install
 # Defaults to empty.
 : ${MOZ_GENERATE_LANGPACKS:=""}
 
-# @ECLASS-VARIABLE: MOZ_L10N_SOURCEDIR
+# @ECLASS_VARIABLE: MOZ_L10N_SOURCEDIR
 # @DESCRIPTION:
 # The path that l10n sources can be found at, once unpacked.
 # Defaults to ${WORKDIR}/l10n-sources
 : ${MOZ_L10N_SOURCEDIR:="${WORKDIR}/l10n-sources"}
 
-# @ECLASS-VARIABLE: MOZ_L10N_URI_PREFIX
+# @ECLASS_VARIABLE: MOZ_L10N_URI_PREFIX
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -125,27 +125,27 @@ EXPORT_FUNCTIONS src_unpack src_compile src_install
 # Defaults to empty.
 : ${MOZ_L10N_URI_PREFIX:=""}
 
-# @ECLASS-VARIABLE: MOZ_L10N_URI_SUFFIX
+# @ECLASS_VARIABLE: MOZ_L10N_URI_SUFFIX
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The suffix of l10n source distfiles.
 # Defaults to '.tar.xz'
 : ${MOZ_L10N_URI_SUFFIX:=".tar.xz"}
 
-# @ECLASS-VARIABLE: MOZ_FORCE_UPSTREAM_L10N
+# @ECLASS_VARIABLE: MOZ_FORCE_UPSTREAM_L10N
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set this to use upstream langpaks even if the package normally
 # shouldn't (ie it is an alpha or beta package)
 : ${MOZ_FORCE_UPSTREAM_L10N:=""}
 
-# @ECLASS-VARIABLE: MOZ_TOO_REGIONALIZED_FOR_L10N
+# @ECLASS_VARIABLE: MOZ_TOO_REGIONALIZED_FOR_L10N
 # @INTERNAL
 # @DESCRIPTION:
 # Upstream identifiers that should not contain region subtags in L10N
 MOZ_TOO_REGIONALIZED_FOR_L10N=( fy-NL ga-IE gu-IN hi-IN hy-AM nb-NO nn-NO pa-IN sv-SE )
 
-# @ECLASS-VARIABLE: MOZ_INSTALL_L10N_XPIFILE
+# @ECLASS_VARIABLE: MOZ_INSTALL_L10N_XPIFILE
 # @DESCRIPTION:
 # Install langpacks as .xpi file instead of unpacked directory.
 # Leave unset to install unpacked

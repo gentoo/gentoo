@@ -525,9 +525,11 @@ setup_env() {
 		# a good start into that direction.
 		# Also, if you're crosscompiling, let's assume you know what you are doing.
 		# Hopefully.
+		# Last, we need the settings of the *build* environment, not of the
+		# target environment...
 
-		local current_binutils_path=$(binutils-config -B)
-		local current_gcc_path=$(gcc-config -B)
+		local current_binutils_path=$(env ROOT="${SYSROOT}" binutils-config -B)
+		local current_gcc_path=$(env ROOT="${SYSROOT}" gcc-config -B)
 		einfo "Overriding clang configuration, since it won't work here"
 
 		export CC="${current_gcc_path}/gcc"
@@ -870,6 +872,11 @@ src_prepare() {
 		eapply "${WORKDIR}"/patches
 		einfo "Done."
 	fi
+
+	# Contained within our next patchset version but build-time only fix
+	# (pretty much, anyway) so just apply manually here for now until
+	# next patchset version rolled.
+	eapply "${FILESDIR}"/2.34/${P}-hppa-asm-getcontext-fixes.patch
 
 	# TODO: We can drop this once patch is gone from our patchset
 	append-cppflags -DGENTOO_USE_CLONE3

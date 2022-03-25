@@ -1,0 +1,11 @@
+--- a/lib/tre-parse.c
++++ b/lib/tre-parse.c
+@@ -641,7 +641,7 @@ tre_parse_bound(tre_parse_ctx_t *ctx, tre_ast_node_t **result)
+     }
+ 
+   /* Check that the repeat counts are sane. */
+-  if ((max >= 0 && min > max) || max > RE_DUP_MAX)
++  if ((max >= 0 && min > max) || max > RE_DUP_MAX || min > RE_DUP_MAX)
+     return REG_BADBR;
+ 
+ 

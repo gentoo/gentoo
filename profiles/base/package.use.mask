@@ -63,11 +63,6 @@ sci-libs/flann doc
 # Gentoo bug #821253
 media-video/mjpg-streamer http-management
 
-# Thomas Deutschmann <whissi@gentoo.org> (2021-12-03)
-# Requires newer media-libs/dav1d which isn't available yet,
-# see https://bugzilla.mozilla.org/1734058
->=www-client/firefox-95.0 system-av1
-
 # Wolfgang E. Sanyer <ezzieyguywuf@gmail.com> (2021-12-01)
 # Requires pandoc, which is unstable due to various haskell dependencies
 # (including ghc)

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,6 +38,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.19-compiler.patch
 	"${FILESDIR}"/${PN}-1.6.19-libft.patch
+	"${FILESDIR}"/${PN}-1.6.23-m4-dir.patch
 )
 
 DOCS=( AUTHORS ChangeLog README.md )

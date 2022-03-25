@@ -21,7 +21,7 @@
 # Additionally, the inherited mount-boot eclass exports pkg_pretend.
 # It also stubs out pkg_preinst and pkg_prerm defined by mount-boot.
 
-# @ECLASS-VARIABLE: KV_LOCALVERSION
+# @ECLASS_VARIABLE: KV_LOCALVERSION
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A string containing the kernel LOCALVERSION, e.g. '-gentoo'.

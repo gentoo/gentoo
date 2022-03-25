@@ -29,7 +29,7 @@ DEPEND="dev-libs/tree-sitter"
 
 EXPORT_FUNCTIONS src_compile src_install
 
-# @ECLASS-VARIABLE: TS_PV
+# @ECLASS_VARIABLE: TS_PV
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:

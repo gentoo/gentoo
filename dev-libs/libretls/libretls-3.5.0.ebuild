@@ -11,7 +11,7 @@ SRC_URI="https://causal.agency/libretls/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0/22"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
 
 DEPEND="dev-libs/openssl:="
 RDEPEND="${DEPEND}"

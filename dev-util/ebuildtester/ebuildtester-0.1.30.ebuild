@@ -28,6 +28,8 @@ DEPEND="
 	dev-python/sphinx[${PYTHON_USEDEP}]
 "
 
+distutils_enable_tests unittest
+
 src_install() {
 	distutils-r1_src_install
 	newbashcomp "${FILESDIR}/${PN}.bash-completion" "${PN}"

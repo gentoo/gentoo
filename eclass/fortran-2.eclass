@@ -39,13 +39,13 @@ EXPORT_FUNCTIONS pkg_setup
 
 if [[ ! ${_FORTRAN_2_CLASS} ]]; then
 
-# @ECLASS-VARIABLE: FORTRAN_NEED_OPENMP
+# @ECLASS_VARIABLE: FORTRAN_NEED_OPENMP
 # @DESCRIPTION:
 # Set to "1" in order to automatically have the eclass abort if the fortran
 # compiler lacks openmp support.
 : ${FORTRAN_NEED_OPENMP:=0}
 
-# @ECLASS-VARIABLE: FORTRAN_STANDARD
+# @ECLASS_VARIABLE: FORTRAN_STANDARD
 # @DESCRIPTION:
 # Set this, if a special dialect needs to be supported.
 # Generally not needed as default is sufficient.
@@ -53,7 +53,7 @@ if [[ ! ${_FORTRAN_2_CLASS} ]]; then
 # Valid settings are any combination of: 77 90 95 2003
 : ${FORTRAN_STANDARD:=77}
 
-# @ECLASS-VARIABLE: FORTRAN_NEEDED
+# @ECLASS_VARIABLE: FORTRAN_NEEDED
 # @DESCRIPTION:
 # If your package has an optional fortran support, set this variable
 # to the space separated list of USE triggering the fortran

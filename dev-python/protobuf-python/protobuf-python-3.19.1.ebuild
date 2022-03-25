@@ -23,7 +23,7 @@ HOMEPAGE="https://developers.google.com/protocol-buffers/ https://github.com/pro
 
 LICENSE="BSD"
 SLOT="0/30"
-KEYWORDS="~alpha amd64 arm ~arm64 -hppa ~ia64 ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 -hppa ~ia64 ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 BDEPEND="${PYTHON_DEPS}
 	~dev-libs/protobuf-${PV}

@@ -20,7 +20,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-# @ECLASS-VARIABLE: QT5_BUILD_TYPE
+# @ECLASS_VARIABLE: QT5_BUILD_TYPE
 # @DESCRIPTION:
 # Default value is "release".
 # If PV matches "*9999*", this is automatically set to "live".
@@ -30,7 +30,7 @@ if [[ ${PV} == *9999* ]]; then
 fi
 readonly QT5_BUILD_TYPE
 
-# @ECLASS-VARIABLE: QT5_KDEPATCHSET_REV
+# @ECLASS_VARIABLE: QT5_KDEPATCHSET_REV
 # @DEFAULT_UNSET
 # @PRE_INHERIT
 # @DESCRIPTION:
@@ -44,32 +44,32 @@ readonly QT5_BUILD_TYPE
 # Used for SRC_URI and applied in src_prepare.
 # Must be set before inheriting the eclass.
 
-# @ECLASS-VARIABLE: QT5_MODULE
+# @ECLASS_VARIABLE: QT5_MODULE
 # @PRE_INHERIT
 # @DESCRIPTION:
 # The upstream name of the module this package belongs to. Used for
 # SRC_URI and EGIT_REPO_URI. Must be set before inheriting the eclass.
 : ${QT5_MODULE:=${PN}}
 
-# @ECLASS-VARIABLE: QT5_PV
+# @ECLASS_VARIABLE: QT5_PV
 # @DESCRIPTION:
 # 3-component version for use in dependency declarations on other dev-qt/ pkgs.
 QT5_PV=$(ver_cut 1-3)
 readonly QT5_PV
 
-# @ECLASS-VARIABLE: _QT5_P
+# @ECLASS_VARIABLE: _QT5_P
 # @INTERNAL
 # @DESCRIPTION:
 # The upstream package name of the module this package belongs to.
 # Used for SRC_URI and S.
 
-# @ECLASS-VARIABLE: QT5_TARGET_SUBDIRS
+# @ECLASS_VARIABLE: QT5_TARGET_SUBDIRS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array variable containing the source directories that should be built.
 # All paths must be relative to ${S}.
 
-# @ECLASS-VARIABLE: QT5_GENTOO_CONFIG
+# @ECLASS_VARIABLE: QT5_GENTOO_CONFIG
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array of <useflag:feature:macro> triplets that are evaluated in src_install
@@ -77,7 +77,7 @@ readonly QT5_PV
 # definitions, which are then merged together with all other Qt5 packages
 # installed on the system to obtain the global qconfig.{h,pri} files.
 
-# @ECLASS-VARIABLE: QT5_GENTOO_PRIVATE_CONFIG
+# @ECLASS_VARIABLE: QT5_GENTOO_PRIVATE_CONFIG
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array of <useflag:feature> pairs that are evaluated in src_install
@@ -85,7 +85,7 @@ readonly QT5_PV
 # which are then merged together with all other Qt5 packages installed on the
 # system to obtain the global qmodule.pri file.
 
-# @ECLASS-VARIABLE: VIRTUALX_REQUIRED
+# @ECLASS_VARIABLE: VIRTUALX_REQUIRED
 # @PRE_INHERIT
 # @DESCRIPTION:
 # For proper description see virtualx.eclass man page.
@@ -128,7 +128,7 @@ if [[ ${PN} != qtwebengine ]]; then
 	esac
 fi
 
-# @ECLASS-VARIABLE: QT5_BUILD_DIR
+# @ECLASS_VARIABLE: QT5_BUILD_DIR
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Build directory for out-of-source builds.

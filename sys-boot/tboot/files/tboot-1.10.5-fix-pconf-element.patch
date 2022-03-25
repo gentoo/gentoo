@@ -1,0 +1,21 @@
+# HG changeset patch
+# User Christopher Byrne <salah.coronya@gmail.com>
+# Date 1645847383 21600
+#      Fri Feb 25 21:49:43 2022 -0600
+# Node ID bbf8373779e4653be2e2cfbaf14e1abb1ae42af4
+# Parent  5941842afb661f0e78085cb1317781d362583a38
+lcptools-v2/pconf_legacy.c: Add missing BE size_of_pcrs to hash buffer
+
+Signed-of-by: Christopher Byrne <salah.coronya@gmail.com>
+
+diff --git a/lcptools-v2/pconf_legacy.c b/lcptools-v2/pconf_legacy.c
+--- a/lcptools-v2/pconf_legacy.c
++++ b/lcptools-v2/pconf_legacy.c
+@@ -241,6 +241,7 @@
+         ERROR("Error: failed to allocate buffer for composite digest.\n");
+         return false;
+     }
++    buff->size_of_pcrs = htonl(no_of_pcrs * SHA1_DIGEST_SIZE);
+     memcpy_s(
+         &buff->pcr_selection,
+         sizeof buff->pcr_selection,

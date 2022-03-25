@@ -46,7 +46,7 @@ case ${EAPI} in
 	*) IDEPEND="filecaps? ( sys-libs/libcap )" ;;
 esac
 
-# @ECLASS-VARIABLE: FILECAPS
+# @ECLASS_VARIABLE: FILECAPS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array of fcap arguments to use to automatically execute fcaps.  See that

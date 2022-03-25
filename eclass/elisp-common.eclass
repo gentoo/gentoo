@@ -171,44 +171,44 @@ case ${EAPI:-0} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-# @ECLASS-VARIABLE: SITELISP
+# @ECLASS_VARIABLE: SITELISP
 # @DESCRIPTION:
 # Directory where packages install Emacs Lisp files.
 SITELISP=/usr/share/emacs/site-lisp
 
-# @ECLASS-VARIABLE: SITEETC
+# @ECLASS_VARIABLE: SITEETC
 # @DESCRIPTION:
 # Directory where packages install miscellaneous (not Lisp) files.
 SITEETC=/usr/share/emacs/etc
 
-# @ECLASS-VARIABLE: EMACSMODULES
+# @ECLASS_VARIABLE: EMACSMODULES
 # @DESCRIPTION:
 # Directory where packages install dynamically loaded modules.
 # May contain a @libdir@ token which will be replaced by $(get_libdir).
 EMACSMODULES=/usr/@libdir@/emacs/modules
 
-# @ECLASS-VARIABLE: EMACS
+# @ECLASS_VARIABLE: EMACS
 # @DESCRIPTION:
 # Path of Emacs executable.
 EMACS=${EPREFIX}/usr/bin/emacs
 
-# @ECLASS-VARIABLE: EMACSFLAGS
+# @ECLASS_VARIABLE: EMACSFLAGS
 # @DESCRIPTION:
 # Flags for executing Emacs in batch mode.
 # These work for Emacs versions 18-24, so don't change them.
 EMACSFLAGS="-batch -q --no-site-file"
 
-# @ECLASS-VARIABLE: BYTECOMPFLAGS
+# @ECLASS_VARIABLE: BYTECOMPFLAGS
 # @DESCRIPTION:
 # Emacs flags used for byte-compilation in elisp-compile().
 BYTECOMPFLAGS="-L ."
 
-# @ECLASS-VARIABLE: NEED_EMACS
+# @ECLASS_VARIABLE: NEED_EMACS
 # @DESCRIPTION:
 # The minimum Emacs version required for the package.
 : ${NEED_EMACS:=23.1}
 
-# @ECLASS-VARIABLE: _ELISP_EMACS_VERSION
+# @ECLASS_VARIABLE: _ELISP_EMACS_VERSION
 # @INTERNAL
 # @DESCRIPTION:
 # Cached value of Emacs version detected in elisp-check-emacs-version().

@@ -42,7 +42,7 @@ if [[ ${EAPI} == 6 ]]; then
 	DEPEND+="${BDEPEND}"
 fi
 
-# @ECLASS-VARIABLE: REBAR_APP_SRC
+# @ECLASS_VARIABLE: REBAR_APP_SRC
 # @DESCRIPTION:
 # Relative path to .app.src description file.
 REBAR_APP_SRC="${REBAR_APP_SRC-src/${PN}.app.src}"

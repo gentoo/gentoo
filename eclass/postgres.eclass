@@ -22,7 +22,7 @@ case ${EAPI:-0} in
 	*) die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
 esac
 
-# @ECLASS-VARIABLE: _POSTGRES_ALL_VERSIONS
+# @ECLASS_VARIABLE: _POSTGRES_ALL_VERSIONS
 # @INTERNAL
 # @DESCRIPTION:
 # List of versions to reverse sort POSTGRES_COMPAT slots
@@ -31,7 +31,7 @@ _POSTGRES_ALL_VERSIONS=( 9999 14 13 12 11 10 9.6 9.5 9.4 9.3 9.2 )
 
 
 
-# @ECLASS-VARIABLE: POSTGRES_COMPAT
+# @ECLASS_VARIABLE: POSTGRES_COMPAT
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -43,13 +43,13 @@ _POSTGRES_ALL_VERSIONS=( 9999 14 13 12 11 10 9.6 9.5 9.4 9.3 9.2 )
 #POSTGRES_COMPAT=( 9.{2,3} 9.{4..6} 10 ) # Same as previous
 #@CODE
 
-# @ECLASS-VARIABLE: POSTGRES_DEP
+# @ECLASS_VARIABLE: POSTGRES_DEP
 # @DESCRIPTION:
 # An automatically generated dependency string suitable for use in
 # DEPEND and RDEPEND declarations.
 POSTGRES_DEP="dev-db/postgresql:="
 
-# @ECLASS-VARIABLE: POSTGRES_USEDEP
+# @ECLASS_VARIABLE: POSTGRES_USEDEP
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -57,7 +57,7 @@ POSTGRES_DEP="dev-db/postgresql:="
 # for POSTGRES_DEP. If declared, must be declared before inheriting this eclass.
 declare -p POSTGRES_USEDEP &>/dev/null && POSTGRES_DEP+="[${POSTGRES_USEDEP}]"
 
-# @ECLASS-VARIABLE: POSTGRES_REQ_USE
+# @ECLASS_VARIABLE: POSTGRES_REQ_USE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An automatically generated REQUIRED_USE-compatible string built upon
@@ -65,7 +65,7 @@ declare -p POSTGRES_USEDEP &>/dev/null && POSTGRES_DEP+="[${POSTGRES_USEDEP}]"
 # required if the package must build against one of the PostgreSQL slots
 # declared in POSTGRES_COMPAT.
 
-# @ECLASS-VARIABLE: _POSTGRES_COMPAT
+# @ECLASS_VARIABLE: _POSTGRES_COMPAT
 # @INTERNAL
 # @DESCRIPTION:
 # Copy of POSTGRES_COMPAT, reverse sorted

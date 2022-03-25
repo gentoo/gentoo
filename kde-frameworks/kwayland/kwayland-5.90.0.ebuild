@@ -32,5 +32,9 @@ DEPEND="${RDEPEND}
 	sys-kernel/linux-headers
 "
 BDEPEND="
+	|| (
+		>=dev-qt/qtwaylandscanner-${QTMIN}:5
+		<dev-qt/qtwayland-5.15.3:5
+	)
 	>=dev-util/wayland-scanner-1.19.0
 "

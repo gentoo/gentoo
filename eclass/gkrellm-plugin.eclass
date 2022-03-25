@@ -7,7 +7,8 @@
 # @AUTHOR:
 # Original author: Jim Ramsay <lack@gentoo.org>
 # EAPI 6 author: David Seifert <soap@gentoo.org>
-# @SUPPORTED_EAPIS: 6
+# EAPI 8 author: Thomas Bracht Laumann Jespersen <t@laumann.xyz>
+# @SUPPORTED_EAPIS: 6 8
 # @PROVIDES: multilib
 # @BLURB: Provides src_install used by (almost) all gkrellm plugins
 # @DESCRIPTION:
@@ -15,6 +16,8 @@
 # - Provides a common src_install method to avoid code duplication
 #
 # Changelog:
+#   17 March 2022: Thomas Bracht Laumann Jespersen <t@laumann.xyz>
+#     - Port to EAPI 8
 #   03 January 2018: David Seifert <soap@gentoo.org>
 #     - Port to EAPI 6, remove built_with_use, simplify a lot
 #   12 March 2007: Jim Ramsay <lack@gentoo.org>
@@ -23,41 +26,41 @@
 #     - Initial commit
 #
 
-# @ECLASS-VARIABLE: PLUGIN_SO
+# @ECLASS_VARIABLE: PLUGIN_SO
 # @DESCRIPTION:
 # The name of the plugin's .so file which will be installed in
 # the plugin dir. Defaults to "${PN}$(get_modname)". Has to be a bash array.
 
-# @ECLASS-VARIABLE: PLUGIN_SERVER_SO
+# @ECLASS_VARIABLE: PLUGIN_SERVER_SO
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # The name of the plugin's server plugin $(get_modname) portion.
 # Unset by default. Has to be a bash array.
 
-# @ECLASS-VARIABLE: PLUGIN_DOCS
+# @ECLASS_VARIABLE: PLUGIN_DOCS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # An optional list of docs to be installed, in addition to the default
 # DOCS variable which is respected too. Has to be a bash array.
 
-case ${EAPI:-0} in
-	[0-5])
-		die "${ECLASS} is banned in EAPI ${EAPI:-0}"
-		;;
-	6)
-		;;
-	*)
-		die "Unknown EAPI ${EAPI:-0}"
-		;;
+case ${EAPI} in
+	6|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 inherit multilib
 
-EXPORT_FUNCTIONS src_install
-
 if [[ ! ${_GKRELLM_PLUGIN_R1} ]]; then
+_GKRELLM_PLUGIN_R1=1
 
-DEPEND="virtual/pkgconfig"
+if [[ ${EAPI} == 6 ]]; then
+	DEPEND="virtual/pkgconfig"
+else
+	BDEPEND="virtual/pkgconfig"
+fi
 
 # @FUNCTION: gkrellm-plugin_src_install
+# @USAGE:
 # @DESCRIPTION:
 # Install the plugins and call einstalldocs
 gkrellm-plugin_src_install() {
@@ -70,7 +73,6 @@ gkrellm-plugin_src_install() {
 	else
 		die "PLUGIN_SO has to be a bash array!"
 	fi
-
 
 	if [[ -n ${PLUGIN_SERVER_SO} ]]; then
 		exeinto /usr/$(get_libdir)/gkrellm2/plugins-gkrellmd
@@ -97,5 +99,6 @@ gkrellm-plugin_src_install() {
 	fi
 }
 
-_GKRELLM_PLUGIN_R1=1
 fi
+
+EXPORT_FUNCTIONS src_install

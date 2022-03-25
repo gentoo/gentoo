@@ -62,7 +62,7 @@ fi
 
 EXPORT_FUNCTIONS pkg_setup
 
-# @ECLASS-VARIABLE: PYTHON_COMPAT
+# @ECLASS_VARIABLE: PYTHON_COMPAT
 # @REQUIRED
 # @DESCRIPTION:
 # This variable contains a list of Python implementations the package
@@ -79,7 +79,7 @@ EXPORT_FUNCTIONS pkg_setup
 # PYTHON_COMPAT=( python2_7 python3_{3,4} )
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_COMPAT_OVERRIDE
+# @ECLASS_VARIABLE: PYTHON_COMPAT_OVERRIDE
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -99,7 +99,7 @@ EXPORT_FUNCTIONS pkg_setup
 # PYTHON_COMPAT_OVERRIDE='pypy' emerge -1v dev-python/bar
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_REQ_USE
+# @ECLASS_VARIABLE: PYTHON_REQ_USE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The list of USEflags required to be enabled on the chosen Python
@@ -119,7 +119,7 @@ EXPORT_FUNCTIONS pkg_setup
 # python_single_target_pythonX_Y? ( dev-lang/python:X.Y[gdbm,ncurses(-)?] )
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_DEPS
+# @ECLASS_VARIABLE: PYTHON_DEPS
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated Python dependency string for all
@@ -140,7 +140,7 @@ EXPORT_FUNCTIONS pkg_setup
 # python_single_target_pypy? ( dev-python/pypy[gdbm] )
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_SINGLE_USEDEP
+# @ECLASS_VARIABLE: PYTHON_SINGLE_USEDEP
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated USE-dependency string which can be used to
@@ -160,7 +160,7 @@ EXPORT_FUNCTIONS pkg_setup
 # python_single_target_python3_4(-)?
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_USEDEP
+# @ECLASS_VARIABLE: PYTHON_USEDEP
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is a placeholder variable supported by python_gen_cond_dep,
@@ -179,7 +179,7 @@ EXPORT_FUNCTIONS pkg_setup
 # python_targets_python3_4(-)
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_REQUIRED_USE
+# @ECLASS_VARIABLE: PYTHON_REQUIRED_USE
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated required-use expression which ensures

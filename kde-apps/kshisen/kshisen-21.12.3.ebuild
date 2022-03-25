@@ -11,8 +11,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Solitaire-like game played using the standard set of Mahjong tiles"
-HOMEPAGE="https://apps.kde.org/kshisen/
-https://games.kde.org/games/kshisen/"
+HOMEPAGE="https://apps.kde.org/kshisen/ https://games.kde.org/games/kshisen/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
@@ -34,3 +33,8 @@ DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-missing-dep.patch"
+	"${FILESDIR}/${P}-missing-link.patch"
+)

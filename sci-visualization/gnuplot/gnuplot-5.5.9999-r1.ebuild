@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -148,8 +148,6 @@ src_compile() {
 	emake all
 
 	if use doc; then
-		# Avoid sandbox violation in epstopdf/ghostscript
-		addpredict /var/cache/fontconfig
 		if use cairo; then
 			emake -C docs pdf
 		else
