@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/sdispater/pendulum/archive/${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~x86"
 
 # Requires timezone information which is not installed by default
 # with dev-python/pytzdata, and otherwise approx. 50 out of 1600
