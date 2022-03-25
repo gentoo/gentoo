@@ -1,6 +1,0 @@
-# Copyright 2022 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# To avoid messy ABI problems, we change the CHOST when libcxx is default.
-CHOST="x86_64-libcxx-linux-musl"
-CHOST_amd64="${CHOST}"
