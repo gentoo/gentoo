@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools xdg-utils
 
 DESCRIPTION="A sticky note application for GTK"
 HOMEPAGE="https://launchpad.net/xpad"
@@ -33,4 +33,12 @@ src_prepare() {
 	default
 
 	eautoreconf
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
