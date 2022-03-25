@@ -27,7 +27,9 @@ RDEPEND="
 	~app-containers/runc-1.0.2
 "
 
+# bug #835367 for Go < 1.18 dep
 BDEPEND="
+	<dev-lang/go-1.18
 	dev-go/go-md2man
 	virtual/pkgconfig
 	test? ( ${RDEPEND} )
