@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Craig Andrews <candrews@gentoo.org> (2022-03-25)
+# Requires as of yet unreleased QUIC support in OpenSSL
+net-libs/ngtcp2 openssl
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-03-07)
 # Requires PMASKED dev-libs/device-atlas-api-c, bug #770499
 net-proxy/haproxy device-atlas
