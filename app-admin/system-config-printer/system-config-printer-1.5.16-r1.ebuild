@@ -38,7 +38,6 @@ DEPEND="${COMMON_DEPEND}
 	>=app-text/xmlto-0.0.22
 	dev-perl/XML-Parser
 	dev-util/desktop-file-utils
-	dev-util/intltool
 	>=sys-devel/gettext-0.20
 	virtual/pkgconfig
 "
