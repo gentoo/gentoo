@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Matt Turner <mattst88@gentoo.org> (2022-03-25)
+# Depends on libsoup:3.0
+>=gnome-base/gvfs-1.50 http
+
 # Craig Andrews <candrews@gentoo.org> (2022-03-25)
 # Requires as of yet unreleased QUIC support in OpenSSL
 net-libs/ngtcp2 openssl
