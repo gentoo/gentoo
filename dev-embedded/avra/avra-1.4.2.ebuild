@@ -15,10 +15,10 @@ KEYWORDS="amd64 ~ppc ~x86"
 
 src_compile() {
 	emake \
-	CC=$(tc-getCC) \
-	PREFIX=/usr \
-	CFLAGS="${CFLAGS} \$(CDEFS)" \
-	LDFLAGS="${LDFLAGS}"
+		CC="$(tc-getCC)" \
+		PREFIX=/usr \
+		CFLAGS="${CFLAGS} \$(CDEFS)" \
+		LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
