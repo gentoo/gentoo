@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -46,17 +46,17 @@ multilib_src_configure() {
 	if use arm ; then
 		# When building for thumb, we can't allow frame pointers.
 		# http://crbug.com/464517
-		if $(tc-getCPP) ${CFLAGS} ${CPPFLAGS} - <<<$'#ifndef __thumb__\n#error\n#endif' >&/dev/null ; then
+		if "$(tc-getCPP)" ${CFLAGS} ${CPPFLAGS} - <<<$'#ifndef __thumb__\n#error\n#endif' >&/dev/null ; then
 			append-flags -fomit-frame-pointer
 		fi
 	fi
 }
 
 _emake() {
-	CC=$(tc-getCC) \
-	AR=$(tc-getAR) \
-	RANLIB=$(tc-getRANLIB) \
-	ABI_LIBDIR=$(get_libdir) \
+	CC="$(tc-getCC)" \
+	AR="$(tc-getAR)" \
+	RANLIB="$(tc-getRANLIB)" \
+	ABI_LIBDIR="$(get_libdir)" \
 	CFLAGS_WERROR= \
 	emake "$@"
 }
