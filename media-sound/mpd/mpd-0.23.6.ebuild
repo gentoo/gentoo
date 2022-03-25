@@ -31,6 +31,7 @@ REQUIRED_USE="
 	network? ( || ( ${ENCODER_PLUGINS} ) )
 	recorder? ( || ( ${ENCODER_PLUGINS} ) )
 	qobuz? ( curl soundcloud )
+	soundcloud? ( curl qobuz )
 	udisks? ( dbus )
 	upnp? ( curl expat )
 	webdav? ( curl expat )
