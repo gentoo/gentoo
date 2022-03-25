@@ -85,7 +85,7 @@ selinux? ( sec-policy/selinux-postgresql )
 "
 
 pkg_setup() {
-	llvm_pkg_setup
+	use llvm && llvm_pkg_setup
 
 	use server && CONFIG_CHECK="~SYSVIPC" linux-info_pkg_setup
 
