@@ -1,6 +1,10 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jakov Smolić <jsmolic@gentoo.org> (2022-03-25)
+# sys-process/criu doesn't support riscv (bug #835975)
+app-containers/crun criu
+
 # Jakov Smolić <jsmolic@gentoo.org> (2022-03-24)
 # Depends on net-misc/memcached which has concerning test
 # failures on riscv (bug #811477)
