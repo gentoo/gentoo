@@ -1015,8 +1015,15 @@ distutils_pep517_install() {
 	einfo "  Building the wheel for ${PWD#${WORKDIR}/} via ${build_backend}"
 	local wheel=$(
 		"${EPYTHON}" - 3>&1 >&2 <<-EOF || die "Wheel build failed"
-			import ${build_backend%:*}
 			import os
+			import sys
+			import tomli
+
+			sys.path[:0] = (tomli.load(open("pyproject.toml", "rb"))
+					.get("build-system", {})
+					.get("backend-path", []))
+
+			import ${build_backend%:*}
 			print(${build_backend/:/.}.build_wheel(os.environ['WHEEL_BUILD_DIR']),
 				file=os.fdopen(3, 'w'))
 		EOF
