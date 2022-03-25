@@ -33,7 +33,6 @@ RDEPEND="
 "
 BDEPEND="
 	dev-util/itstool
-	>=dev-util/intltool-0.40.0
 	test? ( dev-python/pycodestyle )
 "
 
