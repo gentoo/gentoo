@@ -23,6 +23,7 @@ IUSE="debug profile"
 DEPEND="
 	dev-util/rocminfo:${SLOT}
 	=sys-devel/llvm-roc-${PV}*[runtime]
+	dev-libs/rocm-comgr:${SLOT}
 "
 RDEPEND="${DEPEND}
 	dev-perl/URI-Encode
