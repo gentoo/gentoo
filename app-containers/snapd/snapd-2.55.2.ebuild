@@ -17,8 +17,8 @@ KEYWORDS="~amd64"
 
 LICENSE="GPL-3 Apache-2.0 BSD BSD-2 LGPL-3-with-linking-exception MIT"
 SLOT="0"
-IUSE="apparmor +cgroup-hybrid +forced-devmode gtk kde systemd"
-REQUIRED_USE="!forced-devmode? ( apparmor cgroup-hybrid ) systemd"
+IUSE="apparmor +forced-devmode gtk kde systemd"
+REQUIRED_USE="!forced-devmode? ( apparmor ) systemd"
 
 CONFIG_CHECK="~CGROUPS
 		~CGROUP_DEVICE
@@ -40,7 +40,7 @@ RDEPEND="
 	)
 	dev-libs/glib
 	virtual/libudev
-	systemd? ( sys-apps/systemd[cgroup-hybrid(+)?] )
+	systemd? ( sys-apps/systemd )
 	sys-libs/libcap:=
 	sys-fs/squashfs-tools[lzma]"
 
