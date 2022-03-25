@@ -80,7 +80,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	# harfbuzz-gobject only used for instrospection, bug #535852
+	# harfbuzz-gobject only used for introspection, bug #535852
 	local emesonargs=(
 		-Dcoretext="disabled"
 		-Dchafa="disabled"
