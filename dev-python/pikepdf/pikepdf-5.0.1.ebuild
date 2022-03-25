@@ -18,7 +18,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DEPEND=">=app-text/qpdf-10.6.2:0="
 RDEPEND="${DEPEND}
