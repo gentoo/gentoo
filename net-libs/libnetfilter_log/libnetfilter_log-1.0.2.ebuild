@@ -3,22 +3,25 @@
 
 EAPI=8
 
-inherit linux-info
+inherit linux-info verify-sig
 
 DESCRIPTION="Interface to packets that have been logged by the kernel packet filter"
 HOMEPAGE="https://www.netfilter.org/projects/libnetfilter_log/"
-SRC_URI="https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2"
+SRC_URI="https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2
+	verify-sig? ( https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2.sig )"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ia64 ppc ~riscv ~sparc x86"
 IUSE="doc"
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/netfilter.org.asc
 
 RDEPEND=">=net-libs/libnfnetlink-1.0.0
 	>=net-libs/libmnl-1.0.3"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
+	doc? ( app-doc/doxygen )
+	verify-sig? ( sec-keys/openpgp-keys-netfilter )"
 
 CONFIG_CHECK="~NETFILTER_NETLINK_LOG"
 
