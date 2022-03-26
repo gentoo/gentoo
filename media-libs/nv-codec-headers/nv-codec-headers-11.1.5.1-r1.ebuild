@@ -11,8 +11,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
-RDEPEND=">=x11-drivers/nvidia-drivers-470.57.02[${MULTILIB_USEDEP}]"
-
 src_compile() {
 	emake PREFIX="${EPREFIX}"/usr LIBDIR="$(get_libdir)"
 }
