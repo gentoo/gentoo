@@ -32,7 +32,9 @@ SLOT="0"
 KEYWORDS="-* ~amd64"
 
 RDEPEND="
+	media-libs/amdgpu-pro-vulkan
 	media-libs/libglvnd
+	x11-libs/libdrm
 	x11-libs/libX11
 "
 
