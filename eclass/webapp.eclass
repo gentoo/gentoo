@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: webapp.eclass
@@ -457,7 +457,7 @@ webapp_src_install() {
 	chmod -R g-s "${D}/"
 
 	keepdir "${MY_PERSISTDIR}"
-	fowners "root:0" "${MY_PERSISTDIR}"
+	fowners "0:0" "${MY_PERSISTDIR}"
 	fperms 755 "${MY_PERSISTDIR}"
 }
 
