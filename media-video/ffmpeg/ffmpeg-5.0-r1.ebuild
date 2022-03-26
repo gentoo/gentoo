@@ -95,10 +95,10 @@ FFMPEG_FLAG_MAP=(
 
 # Same as above but for encoders, i.e. they do something only with USE=encode.
 FFMPEG_ENCODER_FLAG_MAP=(
-	amrenc:libvo-amrwbenc mp3:libmp3lame
-	kvazaar:libkvazaar libaom
-	openh264:libopenh264 rav1e:librav1e snappy:libsnappy svt-av1:libsvtav1 theora:libtheora twolame:libtwolame
-	webp:libwebp x264:libx264 x265:libx265 xvid:libxvid
+	amrenc:libvo-amrwbenc kvazaar:libkvazaar libaom	mp3:libmp3lame
+	openh264:libopenh264 rav1e:librav1e snappy:libsnappy svt-av1:libsvtav1
+	theora:libtheora twolame:libtwolame webp:libwebp x264:libx264
+	x265:libx265 xvid:libxvid
 )
 
 IUSE="
