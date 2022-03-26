@@ -182,7 +182,7 @@ src_configure() {
 		$(meson_feature udisks)
 		-Dupnp=$(usex upnp pupnp disabled)
 		$(meson_feature webdav)
-		$(meson_feature zeroconf)
+		-Dzeroconf=$(usex zeroconf avahi disabled)
 		$(meson_feature zlib)
 		$(meson_feature zip zzip)
 	)
