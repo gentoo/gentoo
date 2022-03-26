@@ -1,0 +1,52 @@
+From c9c58de65c07c8a940cb4c9b91777450698f635c Mon Sep 17 00:00:00 2001
+From: Alexander Lohnau <alexander.lohnau@gmx.de>
+Date: Sun, 6 Mar 2022 21:31:51 +0100
+Subject: [PATCH] Fix KPluginSelector KCMs missing their metadata on plugin
+ loading
+
+For the KWin KCMs we need the full metadata, because we read the
+plugin keyword.
+
+Without the X-KDE-ConfigModule key, plugins used to create a symlink
+in the kservices5 folder to their metadata, which then goes through the
+legacy code path we would read all the metadata.
+This includes the plugin keyword.
+
+When consumers would this key, but have an old KWin version which
+used the KPluginSelector class and a kcmutils version which reads X-KDE-ConfigModule, but does not
+include this bugfix, the plugin keyword will be empty and thus the config
+files can not be located.
+
+This makes it hard to fix the loading on kcmutils < 5.91, but keeping the
+code working with KWin < 5.24.
+
+To test this, you should check out KWin 5.23 and kcmutils master.
+Fox example https://github.com/nclarius/tile-gaps/ will then fail
+to load it's config. With this change included, it should load properly.
+
+BUG: 444378
+---
+ src/kpluginselector.cpp | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/src/kpluginselector.cpp b/src/kpluginselector.cpp
+index d5248d3..1f4c651 100644
+--- a/src/kpluginselector.cpp
++++ b/src/kpluginselector.cpp
+@@ -969,10 +969,9 @@ void KPluginSelector::Private::PluginDelegate::configure(const QModelIndex &inde
+             const QString pluginId = configModule.mid(idx + 1);
+             metaDataList = {KPluginMetaData::findPluginById(pluginNamespace, pluginId)}; // Clear the list to avoid old desktop files to appear twice
+         } else {
+-            // the KCMs don't need any metadata themselves, just set the name to make sure the KPluginMetaData object
+-            // is valid & the internal usage has the data it needs
+-            QJsonObject kplugin({{QLatin1String("Name"), pluginInfo.name()}});
+-            KPluginMetaData data(QJsonObject{{QLatin1String("KPlugin"), kplugin}}, absoluteKCMPath);
++            // the KCMs don't need any metadata themselves, just use the one from the KPluginInfo object
++            // this way for example a KPackage plugin can specify plugin keyword
++            KPluginMetaData data(pluginInfo.toMetaData().rawData(), absoluteKCMPath);
+             metaDataList = {data}; // Clear the list to avoid old desktop files to appear twice
+         }
+     }
+-- 
+GitLab
+
