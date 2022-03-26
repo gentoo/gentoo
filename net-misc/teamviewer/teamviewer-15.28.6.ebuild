@@ -25,7 +25,6 @@ RESTRICT="bindist mirror"
 BDEPEND="app-arch/xz-utils[extra-filters]"
 
 RDEPEND="
-	sys-libs/glibc
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
@@ -34,6 +33,7 @@ RDEPEND="
 	media-libs/libglvnd[X]
 	sys-apps/dbus
 	sys-apps/util-linux
+	sys-libs/glibc
 	sys-libs/zlib:0/1[minizip]
 	x11-libs/libICE
 	x11-libs/libSM
