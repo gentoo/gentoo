@@ -1780,7 +1780,7 @@ toolchain_src_install() {
 	# Use gid of 0 because some stupid ports don't have
 	# the group 'root' set to gid 0.  Send to /dev/null
 	# for people who are testing as non-root.
-	chown -R root:0 "${D}${LIBPATH}" 2>/dev/null
+	chown -R 0:0 "${D}${LIBPATH}" 2>/dev/null
 
 	# Installing gdb pretty-printers into gdb-specific location.
 	local py gdbdir=/usr/share/gdb/auto-load${LIBPATH}
