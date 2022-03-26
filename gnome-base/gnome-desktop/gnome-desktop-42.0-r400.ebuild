@@ -32,6 +32,7 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	seccomp? ( sys-apps/bubblewrap )
+	!<gnome-base/gnome-desktop-${PV}:3
 "
 BDEPEND="
 	app-text/docbook-xml-dtd:4.1.2
