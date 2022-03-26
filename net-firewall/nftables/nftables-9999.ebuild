@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_OPTIONAL=1
-inherit autotools linux-info distutils-r1 systemd
+inherit autotools linux-info distutils-r1 systemd verify-sig
 
 DESCRIPTION="Linux kernel (3.13+) firewall, NAT and packet mangling tools"
 HOMEPAGE="https://netfilter.org/projects/nftables/"
@@ -19,8 +19,11 @@ if [[ ${PV} =~ ^[9]{4,}$ ]]; then
 		sys-devel/flex
 	"
 else
-	SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.bz2
+		verify-sig? ( https://netfilter.org/projects/nftables/files/${P}.tar.bz2.sig )"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/netfilter.org.asc
+	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-netfilter )"
 fi
 
 LICENSE="GPL-2"
@@ -53,7 +56,9 @@ REQUIRED_USE="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.9.8-slibtool.patch"
+	"${FILESDIR}/nftables-1.0.2-compilation.patch"
+	"${FILESDIR}/nftables-1.0.2-build-explicitly-pass-version-script-to-linker.patch"
+	"${FILESDIR}/nftables-1.0.2-libnftables.map-export-new-nft_ctx_-get-set-_optimiz.patch"
 )
 
 pkg_setup() {
@@ -90,6 +95,7 @@ src_configure() {
 	local myeconfargs=(
 		# We handle python separately
 		--disable-python
+		--disable-static
 		--sbindir="${EPREFIX}"/sbin
 		$(use_enable debug)
 		$(use_enable doc man-doc)
