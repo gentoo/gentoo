@@ -6,7 +6,7 @@ EAPI=8
 MY_P="kryoflux_${PV}_linux"
 MY_P_WINDOWS="kryoflux_3.00_windows"
 
-inherit desktop udev xdg-utils
+inherit desktop udev wrapper xdg-utils
 
 DESCRIPTION="KryoFlux Host Software"
 HOMEPAGE="https://www.kryoflux.com"
