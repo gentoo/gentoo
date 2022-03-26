@@ -8,6 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">ansible-compat</remote-id>
-		<remote-id type="github">ansible-community/ansible-compat</remote-id>
+		<remote-id type="github">ansible/ansible-compat</remote-id>
 	</upstream>
 </pkgmetadata>
