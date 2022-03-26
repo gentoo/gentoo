@@ -17,7 +17,7 @@ SRC_URI="mirror://gimp/v2.99/${P}.tar.bz2"
 LICENSE="GPL-3 LGPL-3"
 SLOT="0/3"
 
-IUSE="aalib alsa aqua doc gnome heif javascript jpeg2k lua mng openexr postscript python udev unwind vala vector-icons webp wmf xpm cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse"
+IUSE="aalib alsa aqua doc gnome heif javascript jpeg2k jpegxl lua mng openexr postscript python udev unwind vala vector-icons webp wmf xpm cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse"
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -62,6 +62,7 @@ COMMON_DEPEND="
 	heif? ( >=media-libs/libheif-1.9.1:= )
 	javascript? ( dev-libs/gjs )
 	jpeg2k? ( >=media-libs/openjpeg-2.3.1:2= )
+	jpegxl? ( >=media-libs/libjxl-0.6.1:= )
 	lua? (
 		${LUA_DEPS}
 		$(lua_gen_cond_dep '
@@ -180,6 +181,7 @@ src_configure() {
 		$(use_with heif libheif)
 		$(use_with javascript)
 		$(use_with jpeg2k jpeg2000)
+		$(use_with jpegxl)
 		$(use_with lua)
 		$(use_with mng libmng)
 		$(use_with openexr)
