@@ -17,7 +17,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~riscv ~sparc"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc"
 
 RDEPEND="
 	dev-python/attrs[${PYTHON_USEDEP}]
