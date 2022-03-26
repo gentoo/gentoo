@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Martin Dummer <martin.dummer@gmx.net> (2022-03-26)
-# Binary package linked to glibc
+# Binary package linked to glibc. Bug #832558
 net-misc/teamviewer
 
 # Mike Pagano <mpagano@gentoo.org> (2022-03-21)
