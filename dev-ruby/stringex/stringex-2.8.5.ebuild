@@ -25,9 +25,9 @@ ruby_add_bdepend "
 		dev-ruby/i18n:1
 		dev-ruby/redcloth
 		dev-ruby/test-unit:2
-		>=dev-ruby/activerecord-3
+		|| ( dev-ruby/activerecord:6.0 dev-ruby/activerecord:5.2 )
 		dev-ruby/sqlite3 )"
 
 all_ruby_prepare() {
-	sed -i -e '1agem "i18n", "~>1.0"' test/test_helper.rb || die
+	sed -i -e '1agem "i18n", "~>1.0"; gem "activerecord", "~> 6.0.0"' test/test_helper.rb || die
 }
