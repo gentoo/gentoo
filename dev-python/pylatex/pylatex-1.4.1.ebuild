@@ -6,7 +6,7 @@ EAPI=8
 MY_PN="PyLaTeX"
 MY_P="${MY_PN}-${PV}"
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7..10} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1 optfeature
