@@ -6,7 +6,7 @@ EAPI=8
 LUA_COMPAT=( lua5-{1..2} )
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit fcaps flag-o-matic lua-single python-any-r1 qmake-utils xdg-utils cmake
+inherit fcaps flag-o-matic lua-single python-any-r1 qmake-utils xdg cmake
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
@@ -207,8 +207,7 @@ src_install() {
 
 	# install headers
 	insinto /usr/include/wireshark
-	doins ws_diag_control.h ws_symbol_export.h \
-		"${BUILD_DIR}"/config.h
+	doins "${BUILD_DIR}"/config.h
 
 	# If trying to remove this, try build e.g. libvirt first!
 	# At last check, Fedora is still doing this too.
@@ -233,12 +232,12 @@ src_install() {
 
 		for s in 16 32 48 64 128 256 512 1024 ; do
 			insinto /usr/share/icons/hicolor/${s}x${s}/apps
-			newins image/wsicon${s}.png wireshark.png
+			newins resources/icons/wsicon${s}.png wireshark.png
 		done
 
 		for s in 16 24 32 48 64 128 256 ; do
 			insinto /usr/share/icons/hicolor/${s}x${s}/mimetypes
-			newins image/WiresharkDoc-${s}.png application-vnd.tcpdump.pcap.png
+			newins resources/icons//WiresharkDoc-${s}.png application-vnd.tcpdump.pcap.png
 		done
 	fi
 
@@ -248,9 +247,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
+	xdg_pkg_postinst
 
 	# Add group for users allowed to sniff.
 	chgrp pcap "${EROOT}"/usr/bin/dumpcap
@@ -264,10 +261,4 @@ pkg_postinst() {
 	ewarn "NOTE: To capture traffic with wireshark as normal user you have to"
 	ewarn "add yourself to the pcap group. This security measure ensures"
 	ewarn "that only trusted users are allowed to sniff your traffic."
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
 }
