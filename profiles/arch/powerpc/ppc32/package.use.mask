@@ -53,6 +53,7 @@ app-i18n/uim kde
 # Sam James <sam@gentoo.org> (2021-10-17)
 # media-libs/libheif not keyworded here
 sci-libs/gdal heif
+media-gfx/graphicsmagick heif
 
 # Matt Turner <mattst88@gentoo.org> (2021-07-25)
 # gdm requires gnome-shell requires rustified librsvg.

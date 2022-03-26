@@ -47,6 +47,7 @@ media-libs/libsdl2 pipewire
 # Sam James <sam@gentoo.org> (2021-10-17)
 # media-libs/libheif not keyworded here
 sci-libs/gdal heif
+media-gfx/graphicsmagick heif
 
 # Sam James <sam@gentoo.org> (2021-09-14)
 # JACK2 isn't keyworded here
@@ -85,6 +86,7 @@ media-libs/rubberband jni
 # media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
 media-libs/gd avif heif
+media-gfx/graphicsmagick heif
 
 # Akinori Hattori <hattya@gentoo.org> (2021-03-03)
 # dev-lang/ruby is not keyworded

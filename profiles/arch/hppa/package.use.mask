@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2022-03-26)
+# media-libs/libjxl not keyworded here
+media-gfx/graphicsmagick jpegxl
+
 # Sam James <sam@gentoo.org> (2022-03-22)
 # media-libs/dav1d not keyworded here
 media-libs/xine-lib dav1d
@@ -95,6 +99,7 @@ media-libs/rubberband jni
 # media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
 media-libs/gd avif heif
+media-gfx/graphicsmagick heif
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-01-19)
 # uchardet not stable/keyworded yet on this arch
