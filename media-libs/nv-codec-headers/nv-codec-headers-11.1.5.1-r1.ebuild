@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit multilib-minimal
-
 DESCRIPTION="FFmpeg version of headers required to interface with Nvidias codec APIs"
 HOMEPAGE="https://git.videolan.org/?p=ffmpeg/nv-codec-headers.git"
 SRC_URI="https://github.com/FFmpeg/nv-codec-headers/releases/download/n${PV}/${P}.tar.gz"
@@ -15,15 +13,13 @@ KEYWORDS="~amd64 ~arm64"
 
 RDEPEND=">=x11-drivers/nvidia-drivers-470.57.02[${MULTILIB_USEDEP}]"
 
-src_prepare() {
-	default
-	multilib_copy_sources
-}
-
-multilib_src_compile() {
+src_compile() {
 	emake PREFIX="${EPREFIX}"/usr LIBDIR="$(get_libdir)"
 }
 
-multilib_src_install() {
-	emake PREFIX="${EPREFIX}"/usr LIBDIR="$(get_libdir)" DESTDIR="${D}" install
+src_install() {
+	emake PREFIX="${EPREFIX}"/usr LIBDIR="$(get_libdir)" DESTDIR="${ED}" install
+
+	mkdir -p "${ED}"/usr/share || die
+	mv "${ED}/usr/$(get_libdir)/pkgconfig" "${ED}"/usr/share/ || die
 }
