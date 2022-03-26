@@ -46,7 +46,7 @@ multilib_src_configure() {
 	if use arm ; then
 		# When building for thumb, we can't allow frame pointers.
 		# http://crbug.com/464517
-		if "$(tc-getCPP)" ${CFLAGS} ${CPPFLAGS} - <<<$'#ifndef __thumb__\n#error\n#endif' >&/dev/null ; then
+		if $(tc-getCPP) ${CFLAGS} ${CPPFLAGS} - <<<$'#ifndef __thumb__\n#error\n#endif' >&/dev/null ; then
 			append-flags -fomit-frame-pointer
 		fi
 	fi
