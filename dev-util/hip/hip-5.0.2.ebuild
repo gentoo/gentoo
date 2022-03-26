@@ -28,6 +28,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	dev-perl/URI-Encode
 	dev-libs/roct-thunk-interface:${SLOT}"
+BDEPEND="media-libs/libglvnd"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.0.1-DisableTest.patch"
