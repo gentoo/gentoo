@@ -473,6 +473,11 @@ acct-user_pkg_prerm() {
 		return 0
 	fi
 
+	if [[ ${ACCT_USER_ID} -eq 0 ]]; then
+		elog "Refusing to lock out the superuser (UID 0)"
+		return 0
+	fi
+
 	if [[ -z ${REPLACED_BY_VERSION} ]]; then
 		if [[ -z $(egetent passwd "${ACCT_USER_NAME}") ]]; then
 			ewarn "User account not found: ${ACCT_USER_NAME}"
