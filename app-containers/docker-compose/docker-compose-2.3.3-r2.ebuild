@@ -28,15 +28,14 @@ src_compile() {
 	emake -f builder.Makefile GIT_TAG=v${PV}
 }
 
-src_install() {
-	dodir /usr/libexec/docker/cli-plugins
-	exeinto /usr/libexec/docker/cli-plugins
-	doexe bin/docker-compose
-dodoc README.md
-}
-
 src_test() {
 	emake -f builder.Makefile test
+}
+
+src_install() {
+	exeinto /usr/libexec/docker/cli-plugins
+	doexe bin/docker-compose
+	dodoc README.md
 }
 
 pkg_postinst() {
