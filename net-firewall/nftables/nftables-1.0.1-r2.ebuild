@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7..10} )
 DISTUTILS_OPTIONAL=1
-inherit autotools linux-info distutils-r1 systemd
+inherit autotools linux-info distutils-r1 systemd verify-sig
 
 DESCRIPTION="Linux kernel (3.13+) firewall, NAT and packet mangling tools"
 HOMEPAGE="https://netfilter.org/projects/nftables/"
@@ -19,8 +19,11 @@ if [[ ${PV} =~ ^[9]{4,}$ ]]; then
 		sys-devel/flex
 	"
 else
-	SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.bz2"
+	SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.bz2
+		verify-sig? ( https://netfilter.org/projects/nftables/files/${P}.tar.bz2.sig )"
 	KEYWORDS="amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
+	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/netfilter.org.asc
+	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-netfilter )"
 fi
 
 LICENSE="GPL-2"
