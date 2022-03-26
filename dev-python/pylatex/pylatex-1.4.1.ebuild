@@ -36,6 +36,12 @@ BDEPEND+="
 		dev-texlive/texlive-latexextra
 	)"
 
+python_prepare_all() {
+	sed -i -e 's:description-file:description_file:' setup.cfg || die # bug 798381
+
+	distutils-r1_python_prepare_all
+}
+
 python_install_all() {
 	if use examples ; then
 		dodoc -r examples
