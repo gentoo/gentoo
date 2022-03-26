@@ -1,18 +1,20 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit linux-info systemd
+inherit linux-info systemd verify-sig
 
 DESCRIPTION="Connection tracking userspace tools"
 HOMEPAGE="http://conntrack-tools.netfilter.org"
-SRC_URI="http://www.netfilter.org/projects/conntrack-tools/files/${P}.tar.bz2"
+SRC_URI="https://www.netfilter.org/projects/conntrack-tools/files/${P}.tar.bz2
+	verify-sig? ( https://www.netfilter.org/projects/conntrack-tools/files/${P}.tar.bz2.sig )"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ppc64 ~riscv x86"
 IUSE="doc +cthelper +cttimeout systemd"
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/netfilter.org.asc
 
 RDEPEND="
 	>=net-libs/libmnl-1.0.3
@@ -39,6 +41,7 @@ BDEPEND="
 		app-text/docbook-xml-dtd:4.1.2
 		app-text/xmlto
 	)
+	verify-sig? ( sec-keys/openpgp-keys-netfilter )
 "
 
 pkg_setup() {
