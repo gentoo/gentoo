@@ -1,17 +1,19 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit linux-info
+inherit linux-info verify-sig
 
 DESCRIPTION="API to packets that have been queued by the kernel packet filter"
 HOMEPAGE="https://www.netfilter.org/projects/libnetfilter_queue/"
-SRC_URI="https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2"
+SRC_URI="https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2
+	verify-sig? ( https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2.sig )"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="doc static-libs"
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/netfilter.org.asc
 
 RDEPEND="
 	>=net-libs/libmnl-1.0.3
@@ -23,6 +25,7 @@ DEPEND="
 BDEPEND="
 	doc? ( app-doc/doxygen )
 	virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-netfilter )
 "
 CONFIG_CHECK="~NETFILTER_NETLINK_QUEUE"
 
