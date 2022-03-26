@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: qmail.eclass
@@ -133,7 +133,7 @@ qmail_base_install() {
 	# subshell to not leak the install options
 	(
 	einfo "Setting up basic directory hierarchy"
-	diropts -o root -g qmail
+	diropts -o 0 -g qmail
 	dodir "${QMAIL_HOME}"/bin
 	keepdir "${QMAIL_HOME}"/{control,users}
 	diropts -o alias -g qmail
@@ -145,7 +145,7 @@ qmail_base_install() {
 	einfo "Installing all qmail software"
 	exeinto "${QMAIL_HOME}"/bin
 
-	exeopts -o root -g qmail
+	exeopts -o 0 -g qmail
 	doexe bouncesaying condredirect config-fast datemail except forward maildir2mbox \
 		maildirmake mailsubj predate preline qbiff \
 		qmail-{inject,qmqpc,qmqpd,qmtpd,qread,qstat,smtpd,tcpok,tcpto,showctl} \
@@ -158,11 +158,11 @@ qmail_base_install() {
 
 	use pop3 && doexe qmail-pop3d
 
-	exeopts -o root -g qmail -m 711
+	exeopts -o 0 -g qmail -m 711
 	doexe qmail-{clean,getpw,local,pw2u,remote,rspawn,send} splogger
 	use pop3 && doexe qmail-popup
 
-	exeopts -o root -g qmail -m 700
+	exeopts -o 0 -g qmail -m 700
 	doexe qmail-{lspawn,newmrh,newu,start}
 
 	exeopts -o qmailq -g qmail -m 4711
@@ -262,7 +262,7 @@ qmail_supervise_install_one() {
 	dosupervise ${1}
 	# subshell to not leak the install options
 	(
-	diropts -o qmaill -g root
+	diropts -o qmaill -g 0
 	keepdir /var/log/qmail/${1}
 	)
 }
