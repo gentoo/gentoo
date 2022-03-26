@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,8 +22,7 @@ gpsprune_desktop="${WORKDIR}/gpsprune.desktop"
 
 S="${WORKDIR}"
 
-src_prepare()
-{
+src_prepare() {
 	default
 
 	# Provide the necessary files
@@ -51,8 +50,7 @@ src_prepare()
 	EOF
 }
 
-src_install()
-{
+src_install() {
 	insinto /opt/gpsprune
 	doins "gpsprune_${PV}.jar"
 	exeinto /usr/bin
