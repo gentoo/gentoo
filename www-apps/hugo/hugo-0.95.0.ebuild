@@ -22,8 +22,8 @@ IUSE="doc +sass"
 
 BDEPEND=">=dev-lang/go-1.18"
 RDEPEND="
-	media-libs/libwebp
-	sass? ( dev-libs/libsass )
+	media-libs/libwebp:=
+	sass? ( dev-libs/libsass:= )
 "
 DEPEND="${RDEPEND}"
 
