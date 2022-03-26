@@ -1,9 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+DOCS_BUILDER="doxygen"
+DOCS_DEPEND="media-gfx/graphviz"
+DOCS_DIR="doxydoc"
+DOCS_CONFIG_NAME="doxygen.conf"
+inherit docs toolchain-funcs
 
 MY_PN=Clp
 
@@ -15,7 +19,9 @@ S="${WORKDIR}/${MY_PN}-releases-${PV}/${MY_PN}"
 LICENSE="EPL-1.0"
 SLOT="0/1" # major soname component
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples glpk metis mpi mumps sparse static-libs test"
+IUSE="examples glpk metis mpi mumps sparse static-libs test"
+REQUIRED_USE="mpi? ( mumps )"
+RESTRICT="!test? ( test )"
 
 # Fortran is NOT needed, but the ./configure scripts for all of the CoinOR
 # packages contain a check for it. Gentoo bug 601648 and upstream issue,
@@ -25,7 +31,6 @@ IUSE="doc examples glpk metis mpi mumps sparse static-libs test"
 BDEPEND="
 	virtual/fortran
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen[dot] )
 	test? ( sci-libs/coinor-sample )
 "
 DEPEND="
@@ -38,8 +43,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-RESTRICT="!test? ( test )"
-
 src_prepare() {
 	# Needed to make the --with-coin-instdir in src_configure happy.
 	dodir /usr
@@ -49,14 +52,14 @@ src_prepare() {
 	if use mumps; then
 		if use mpi; then
 			# https://github.com/coin-or/Clp/issues/199
-			PATCHES+=( "${FILESDIR}/${P}-remove-extern-C-for-MPI.patch" )
+			eapply "${FILESDIR}/${P}-remove-extern-C-for-MPI.patch"
 			export CXX=mpicxx
 		else
 			# The file ClpCholeskyMumps.cpp does #include "mpi.h", and we
 			# need to point it to the right file. Our sci-libs/mumps ebuild
 			# is so ridiculous that I can't even tell if this is our fault
 			# or if it's something that should be reported upstream.
-			ln -s "${EPREFIX}/usr/include/mpiseq/mpi.h" src/mpi.h
+			ln -s "${EPREFIX}/usr/include/mpiseq/mpi.h" src/mpi.h || die
 			mumpslibs="${mumpslibs} -lmpiseq"
 		fi
 	fi
@@ -120,7 +123,8 @@ src_configure() {
 }
 
 src_compile() {
-	emake all $(usex doc doxydoc "")
+	emake all
+	docs_compile
 }
 
 src_test() {
@@ -130,9 +134,8 @@ src_test() {
 }
 
 src_install() {
-	use doc && HTML_DOC=("${BUILD_DIR}/doxydocs/html/")
-
-	emake DESTDIR="${D}" install
+	emake DESTDIR="${ED}" install
+	einstalldocs
 
 	# Duplicate junk, and in the wrong location.
 	rm -r "${ED}/usr/share/coin/doc/${MY_PN}" || die
