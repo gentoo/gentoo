@@ -55,7 +55,7 @@ src_prepare() {
 		mv "${WORKDIR}/http/web_ui" "${S}/http/web_ui" ||
 			die "mv failed"
 	else
-		mkdir "${S}/http/web_ui" || die
+		mkdir -p "${S}/http/web_ui" || die
 		touch "${S}/http/web_ui/no_web_ui" || die
 	fi
 }
