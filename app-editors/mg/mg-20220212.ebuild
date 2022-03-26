@@ -11,7 +11,7 @@ SRC_URI="https://github.com/hboetes/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ppc ~ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ppc ~ppc64 ~riscv sparc x86"
 IUSE="livecd"
 
 RDEPEND="
