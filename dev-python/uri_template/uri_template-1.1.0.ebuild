@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~ppc ~riscv"
 
 python_test() {
 	"${EPYTHON}" "test.py" || die "Tests fail with ${EPYTHON}."
