@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs flag-o-matic multilib
 
@@ -87,7 +87,6 @@ src_compile() {
 		static_to_shared lib/libptscotcherrexit.a
 		static_to_shared lib/libptscotch.a -Llib -lscotch -lptscotcherr -lz -lm -lrt
 		static_to_shared lib/libptesmumps.a -Llib -lscotch -lptscotch
-		static_to_shared lib/libptscotchparmetis.a -Llib -lscotch -lptscotch
 	fi
 	if use static-libs; then
 		emake -C src clean
