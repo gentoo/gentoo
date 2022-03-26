@@ -49,7 +49,6 @@ src_configure() {
 		--installbin="/usr/bin"
 		--installlib="/usr/$(get_libdir)"
 		--installman="/usr/share/man"
-		--temproot="${D}"  # required in order for DESTDIR to be respected
 		--installschemename=chezscheme
 		--installpetitename=chezscheme-petite
 		--installscriptname=chezscheme-script
@@ -59,9 +58,12 @@ src_configure() {
 }
 
 src_install() {
-	default
+	# TempRoot == DESTDIR
+	emake TempRoot="${D}" install
 
 	if ! use examples; then
 		rm -r "${D}/usr/$(get_libdir)/${CSV}/examples" || die
 	fi
+
+	einstalldocs
 }
