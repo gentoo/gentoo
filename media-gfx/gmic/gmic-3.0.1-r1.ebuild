@@ -168,7 +168,7 @@ pkg_postinst() {
 		for v in ${REPLACING_VERSIONS}; do
 			if ver_test "${v}" -le "3.0.0"; then
 				einfo "Note that starting with version 3.0.1 ${CATEGORY}/${PN} no longer provides a Krita interface."
-				einfo "Please use the built-in G'MIC plugin provided with Krita 5, or use an older version."
+				einfo "Please use the built-in G'MIC plugin provided with Krita 5 instead."
 				break
 			fi
 		done
