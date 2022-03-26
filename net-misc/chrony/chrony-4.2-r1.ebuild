@@ -19,7 +19,7 @@ else
 	SRC_URI+=" verify-sig? ( https://download.tuxfamily.org/chrony/${P/_/-}-tar-gz-asc.txt -> ${P/_/-}.tar.gz.asc )"
 
 	if [[ ${PV} != *_pre* ]] ; then
-		KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~riscv sparc x86"
+		KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~riscv sparc x86"
 	fi
 fi
 
