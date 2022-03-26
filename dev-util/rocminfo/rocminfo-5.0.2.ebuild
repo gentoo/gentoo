@@ -24,8 +24,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=("${FILESDIR}/${PN}-4.3.0-detect-builtin-amdgpu.patch")
 
-src_prepare()
-{
+src_prepare() {
 	sed -e "/CPACK_RESOURCE_FILE_LICENSE/d" -i CMakeLists.txt || die
 	cmake_src_prepare
 }
