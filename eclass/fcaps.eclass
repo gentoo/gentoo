@@ -88,7 +88,7 @@ esac
 fcaps() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	if [[ ${EUID} != 0 ]] ; then
+	if [[ ${EUID} -ne 0 ]] ; then
 		einfo "Insufficient privileges to execute ${FUNCNAME}, skipping."
 		return 0
 	fi
