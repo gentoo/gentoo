@@ -85,7 +85,7 @@ user_get_nologin() {
 # If -M is passed, enewuser does not create the home directory if it does not
 # exist.
 enewuser() {
-	if [[ ${EUID} != 0 ]] ; then
+	if [[ ${EUID} -ne 0 ]] ; then
 		ewarn "Insufficient privileges to execute ${FUNCNAME[0]}"
 		return 0
 	fi
@@ -240,7 +240,7 @@ enewuser() {
 # If -F is passed, enewgroup will always enforce specified GID and fail if it
 # can not be assigned.
 enewgroup() {
-	if [[ ${EUID} != 0 ]] ; then
+	if [[ ${EUID} -ne 0 ]] ; then
 		ewarn "Insufficient privileges to execute ${FUNCNAME[0]}"
 		return 0
 	fi
