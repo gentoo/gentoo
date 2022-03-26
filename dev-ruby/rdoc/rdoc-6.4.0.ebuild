@@ -13,7 +13,7 @@ RUBY_FAKEGEM_BINDIR="exe"
 
 RUBY_FAKEGEM_GEMSPEC="rdoc.gemspec"
 
-inherit prefix ruby-fakegem
+inherit ruby-fakegem
 
 DESCRIPTION="An extended version of the RDoc library from Ruby 1.8"
 HOMEPAGE="https://github.com/ruby/rdoc/"
@@ -86,7 +86,6 @@ all_ruby_install() {
 				ruby_fakegem_binwrapper $bin /usr/bin/${bin}${version}
 				sed -i -e "1s/env ruby/ruby${version}/" \
 					"${ED}/usr/bin/${bin}${version}" || die
-				use prefix && hprefixify "${ED}/usr/bin/${bin}${version}"
 			fi
 		done
 	done
