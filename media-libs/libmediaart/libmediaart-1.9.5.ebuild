@@ -13,7 +13,7 @@ SLOT="2.0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="gtk gtk-doc +introspection qt5 vala"
 REQUIRED_USE="
-	?? ( gtk qt5 )
+	^^ ( gtk qt5 )
 	vala? ( introspection )
 "
 
