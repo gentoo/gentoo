@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="JPEG image to ASCII art converter"
+DESCRIPTION="JPEG/PNG image to ASCII art converter"
 HOMEPAGE="https://github.com/Talinx/jp2a/"
 SRC_URI="https://github.com/Talinx/jp2a/releases/download/v${PV}/${P}.tar.gz"
 
@@ -15,6 +15,7 @@ IUSE="curl"
 # TODO: restore ncurses support?
 # See https://github.com/gentoo/gentoo/pull/24218#issuecomment-1043795319
 RDEPEND="virtual/jpeg
+	media-libs/libpng
 	curl? ( net-misc/curl )"
 DEPEND="${RDEPEND}"
 
