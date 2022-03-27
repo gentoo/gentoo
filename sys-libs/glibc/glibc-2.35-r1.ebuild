@@ -794,6 +794,7 @@ upgrade_warning() {
 				ewarn "After upgrading glibc, please restart all running processes."
 				ewarn "Be sure to include init (telinit u) or systemd (systemctl daemon-reexec)."
 				ewarn "Alternatively, reboot your system."
+				ewarn "(See bug #660556, bug #741116, bug #823756, etc)"
 				break
 			fi
 		done
