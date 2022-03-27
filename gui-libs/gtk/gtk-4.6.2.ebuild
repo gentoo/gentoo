@@ -36,7 +36,10 @@ COMMON_DEPEND="
 	colord? ( >=x11-misc/colord-0.1.9:0= )
 	cups? ( >=net-print/cups-2.0 )
 	ffmpeg? ( media-video/ffmpeg )
-	gstreamer? ( >=media-libs/gst-plugins-bad-1.12.3 )
+	gstreamer? (
+		>=media-libs/gst-plugins-bad-1.12.3
+		>=media-libs/gst-plugins-base-1.12.3[opengl]
+	)
 	introspection? ( >=dev-libs/gobject-introspection-1.39:= )
 	vulkan? ( media-libs/vulkan-loader:= )
 	wayland? (
