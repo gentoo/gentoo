@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2022-03-27)
+# Long abandoned upstreams, segfaults, bunch of tests fail,
+# no other major distro carries this anymore.
+# Bug #631320, #740484, #830090, #836278, removal on 2022-04-26.
+media-libs/libtaginfo
+media-sound/xnoise
+
 # Piotr Karbowski <slashbeast@gentoo.org> (2022-03-25)
 # Abandoned upstream, officialy limited to kernel 5.6,
 # no longer builds with kernel >=5.14. Use kernel's 
