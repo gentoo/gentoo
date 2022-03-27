@@ -70,7 +70,7 @@ python_install() {
 	distutils-r1_python_install
 
 	python_moduleinto Tensile
-	pushd Tensile
+	pushd Tensile || die
 	python_domodule Components
 	python_newexe Utilities/merge.py ${PN}-merge
 }
