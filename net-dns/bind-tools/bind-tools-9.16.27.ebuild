@@ -54,6 +54,10 @@ src_prepare() {
 	# Disable tests for now, bug 406399
 	sed -i '/^SUBDIRS/s:tests::' bin/Makefile.in lib/Makefile.in || die
 
+	# Do not disable thread local storage on Solaris, it works with our
+	# toolchain, and it breaks further configure checks
+	sed -i -e '/LDFLAGS=/s/-zrelax=transtls//' configure.ac configure || die
+
 	# bug #220361
 	rm aclocal.m4 || die
 	rm -rf libtool.m4/ || die
