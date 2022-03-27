@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2022-03-27)
+# GNOME 2 era packages. No reverse dependencies.
+# Removal on 2022-04-27
+dev-perl/gnome2-canvas
+dev-perl/Gtk2-Ex-PodViewer
+dev-perl/Gtk2-Ex-PrintDialog
+dev-perl/Gtk2-Ex-Simple-List
+dev-perl/Gtk2-ImageView
+
 # Conrad Kostecki <conikost@gentoo.org> (2022-03-27)
 # Long abandoned upstream, multiple bugs open,
 # no other major distro carries this anymore and
