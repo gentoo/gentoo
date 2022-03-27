@@ -28,6 +28,8 @@ RDEPEND="
 		media-libs/libogg:=[${MULTILIB_USEDEP}]
 		media-libs/libvorbis:=[${MULTILIB_USEDEP}]
 		media-libs/opus:=[${MULTILIB_USEDEP}]
+		media-sound/lame:=[${MULTILIB_USEDEP}]
+		media-sound/mpg123:=[${MULTILIB_USEDEP}]
 	)
 	alsa? ( media-libs/alsa-lib:= )
 	sqlite? ( dev-db/sqlite )"
@@ -60,6 +62,7 @@ multilib_src_configure() {
 		--disable-static \
 		--disable-werror \
 		$(use_enable !minimal external-libs) \
+		$(use_enable !minimal mpeg) \
 		$(multilib_native_enable full-suite) \
 		$(multilib_native_use_enable alsa) \
 		$(multilib_native_use_enable sqlite) \
