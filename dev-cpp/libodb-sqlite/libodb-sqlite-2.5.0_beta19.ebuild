@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -56,6 +56,7 @@ src_prepare() {
 
 	cd "${BS}" || die
 	eapply "${FILESDIR}"/build2-0.13.0_alpha0_pre20200710-nousrlocal.patch
+	eapply "${FILESDIR}"/build2-0.13.0-libcpp-undefined-symol-vtable-for-match_any_but_newline-exec.patch
 	sed \
 		-e 's:libsqlite3[/]\?::' \
 		-i buildfile build/bootstrap.build \
@@ -97,7 +98,6 @@ src_configure() {
 		config.bin.ar="$(tc-getAR)" \
 		config.bin.ranlib="$(tc-getRANLIB)" \
 		config.bin.lib=shared \
-		config.install.chroot="${D}" \
 		config.install.root="${EPREFIX}"/usr \
 		config.install.lib="${EPREFIX}"/usr/$(get_libdir) \
 		config.install.doc="${EPREFIX}"/usr/share/doc/${PF}
@@ -113,5 +113,6 @@ src_test() {
 }
 
 src_install() {
-	b install
+	b install \
+		config.install.chroot="${D}"
 }
