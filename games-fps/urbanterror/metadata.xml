@@ -22,6 +22,6 @@
 		<flag name="voip">Use ioq3 ingame VoIP (experimental)</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">Barbatos/ioq3-for-UrbanTerror-4</remote-id>
+		<remote-id type="github">mickael9/ioq3</remote-id>
 	</upstream>
 </pkgmetadata>
