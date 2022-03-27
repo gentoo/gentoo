@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Virtual for Java Runtime Environment (JRE)"
 SLOT="${PV}"
-KEYWORDS="amd64 ~arm arm64 ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 RDEPEND="|| (
 		virtual/jdk:${SLOT}
