@@ -30,6 +30,8 @@ DEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
 
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${PN}-0.7.0-pthread.patch" )
+
 S="${WORKDIR}/libjxl-libjxl-3f8e77f"
 
 multilib_src_configure() {
