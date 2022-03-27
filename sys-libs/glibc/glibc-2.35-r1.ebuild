@@ -860,9 +860,6 @@ src_prepare() {
 		einfo "Done."
 	fi
 
-	# TODO: We can drop this once patch is gone from our patchset
-	append-cppflags -DGENTOO_USE_CLONE3
-
 	default
 
 	gnuconfig_update
