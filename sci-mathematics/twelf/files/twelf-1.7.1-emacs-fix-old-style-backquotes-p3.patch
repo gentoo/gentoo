@@ -1,0 +1,13 @@
+diff --git a/emacs/auc-menu.el b/emacs/auc-menu.el
+index f6483b0..602c6fc 100644
+--- a/emacs/auc-menu.el
++++ b/emacs/auc-menu.el
+@@ -92,7 +92,7 @@
+ (defmacro easy-menu-define (symbol maps doc menu)
+   "Define SYMBOL to be a menu for keymaps MAPS.
+ DOC is the documentation string, and MENU is a Lucid style menu."
+-  (` (progn
++  `( (progn
+        (require 'auc-menu)		;For `easy-menu-do-define'.
+        (defvar (, symbol) nil (, doc))
+        (easy-menu-do-define (quote (, symbol)) (, maps) (, doc) (, menu)))))

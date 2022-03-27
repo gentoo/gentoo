@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 
-inherit elisp-common multilib
+inherit elisp-common
 
 MY_PN="${PN}-src"
 MY_P="${MY_PN}-${PV}"
@@ -36,22 +36,26 @@ S=${WORKDIR}/${PN}
 SITEFILE=50${PN}-gentoo.el
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.7.1-doc-guide-twelf-dot-texi.patch"
-	"${FILESDIR}/${PN}-1.7.1-doc-guide-Makefile.patch"
-	"${FILESDIR}/${PN}-1.7.1-emacs-twelf.patch"
-	"${FILESDIR}/${PN}-1.7.1-emacs-twelf-init.patch"
-	"${FILESDIR}/${PN}-1.7.1-Makefile.patch"
-	"${FILESDIR}/${PN}-1.7.1-mlton-mlb.patch"
-	"${FILESDIR}/${PN}-1.7.1-mlton-20180207.patch"
+	"${FILESDIR}"/${PN}-1.7.1-doc-guide-twelf-dot-texi.patch
+	"${FILESDIR}"/${PN}-1.7.1-doc-guide-Makefile.patch
+	"${FILESDIR}"/${PN}-1.7.1-emacs-twelf.patch
+	"${FILESDIR}"/${PN}-1.7.1-emacs-twelf-init.patch
+	"${FILESDIR}"/${PN}-1.7.1-Makefile.patch
+	"${FILESDIR}"/${PN}-1.7.1-mlton-mlb.patch
+	"${FILESDIR}"/${PN}-1.7.1-mlton-20180207.patch
+	"${FILESDIR}"/${PN}-1.7.1-remove-svnversion.patch                 # 728028
+	"${FILESDIR}"/${PN}-1.7.1-emacs-fix-old-style-backquotes-p1.patch # 803296
+	"${FILESDIR}"/${PN}-1.7.1-emacs-fix-old-style-backquotes-p2.patch
+	"${FILESDIR}"/${PN}-1.7.1-emacs-fix-old-style-backquotes-p3.patch
 )
 
 src_prepare() {
 	default
 	sed \
-		-e "s@/usr/bin@${ROOT}usr/bin@g" \
-		-e "s@/usr/share@${ROOT}usr/share@" \
+		-e "s@/usr/bin@${PREFIX}/usr/bin@g" \
+		-e "s@/usr/share@${PREFIIX}/usr/share@" \
 		-i "${S}"/emacs/twelf-init.el \
-		|| die "Could not set ROOT in ${S}/emacs/twelf-init.el"
+		|| die "Could not set PREFIX in ${S}/emacs/twelf-init.el"
 }
 
 src_compile() {
@@ -68,7 +72,7 @@ src_compile() {
 	fi
 	if use doc; then
 		pushd doc/guide
-		emake all
+		emake -j1
 		popd
 	fi
 }
