@@ -29,21 +29,20 @@ SLOT="0"
 RDEPEND="
 	dev-cpp/atkmm:0
 	dev-cpp/glibmm:2
-	dev-cpp/gtkmm:3.0
+	dev-cpp/gtkmm:3.0[X]
 	dev-cpp/pangomm:1.4
 	dev-libs/glib:2
 	dev-libs/json-c:=
 	dev-libs/libsigc++:2
-	dev-libs/libspnav
+	dev-libs/libspnav[X]
 	dev-libs/mimalloc:=
 	media-libs/fontconfig
-	media-libs/freetype:2
-	media-libs/libglvnd
+	media-libs/freetype:2[X]
 	media-libs/libpng:0=
 	sys-libs/zlib
 	virtual/opengl
-	x11-libs/cairo
-	x11-libs/gtk+:3
+	x11-libs/cairo[X]
+	x11-libs/gtk+:3[X]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
