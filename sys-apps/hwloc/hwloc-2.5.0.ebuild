@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -7,7 +7,7 @@ inherit autotools bash-completion-r1 cuda flag-o-matic systemd toolchain-funcs m
 
 MY_PV="v$(ver_cut 1-2)"
 
-DESCRIPTION="displays the hardware topology in convenient formats"
+DESCRIPTION="Displays the hardware topology in convenient formats"
 HOMEPAGE="https://www.open-mpi.org/projects/hwloc/"
 SRC_URI="https://www.open-mpi.org/software/${PN}/${MY_PV}/downloads/${P}.tar.bz2"
 

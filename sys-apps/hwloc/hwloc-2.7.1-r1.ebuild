@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools bash-completion-r1 cuda flag-o-matic systemd toolchain-funcs multilib-minimal
 
 MY_PV="v$(ver_cut 1-2)"
-DESCRIPTION="displays the hardware topology in convenient formats"
+DESCRIPTION="Displays the hardware topology in convenient formats"
 HOMEPAGE="https://www.open-mpi.org/projects/hwloc/"
 SRC_URI="https://www.open-mpi.org/software/${PN}/${MY_PV}/downloads/${P}.tar.bz2"
 
