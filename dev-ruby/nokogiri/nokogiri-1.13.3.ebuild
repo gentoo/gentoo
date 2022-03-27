@@ -37,7 +37,6 @@ ruby_add_rdepend ">=dev-ruby/racc-1.4:0"
 
 ruby_add_bdepend "
 	dev-ruby/mini_portile2:2.8
-	>=dev-ruby/pkg-config-1.1.7
 	>=dev-ruby/rexical-1.0.7
 	dev-ruby/rdoc
 	test? ( dev-ruby/minitest )"
