@@ -1,0 +1,30 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+ftpd_configfile="/etc/${SVCNAME/uploadscript/ftpd}.conf"
+pidfile="/run/pure-uploadscript.pid"
+
+command="/usr/sbin/pure-uploadscript"
+command_args="${UPLOADSCRIPT}"
+command_background="true"
+
+depend() {
+	need localmount
+	use netmount
+}
+
+start_pre() {
+	if [ -n "${UPLOADSCRIPT}" ] ; then
+		eerror "The file ${ftpd_configfile} does not exist!"
+		eerror "Please create and configure the uploadscript file."
+		return 1
+	fi
+
+	if ! grep "^CallUploadScript" "${ftpd_configfile}" ; then
+		eerror "You cannot start this uploadscript,"
+		eerror "unless you enable the option CallUploadScript"
+		eerror "in your main Pure-FTPd configuration file ${ftpd_configfile}"
+		return 1
+	fi
+}

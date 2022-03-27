@@ -1,0 +1,27 @@
+#!/bin/sh
+# Copyright 1999-2022 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Set default ssl directory
+SSL_DIR="/etc/ssl/pure-ftpd"
+
+# Check SNI and select certificate
+case "${CERTD_SNI_NAME}" in
+	domain1.tld)
+		FILE_CERT="${SSL_DIR}/domain1.tld.crt"
+		FILE_KEY="${SSL_DIR}/domain1.tld.key"
+	;;
+
+	domain2.tld)
+		FILE_CERT="${SSL_DIR}/domain2.tld.crt"
+		FILE_KEY="${SSL_DIR}/domain2.tld.key"
+	;;
+esac
+
+# Print selected certificate for 'pure-certd'.
+# You can modify 'action' for your needs.
+# See man page of 'pure-certd' for more information.
+echo "action:fallback"
+echo "cert_file:${FILE_CERT}"
+echo "key_file:${FILE_KEY}"
+echo "end"
