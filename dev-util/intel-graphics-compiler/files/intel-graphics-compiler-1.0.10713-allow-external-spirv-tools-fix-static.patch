@@ -1,0 +1,23 @@
+From 7e6b78d1ccf5afb4080795aa87029e55b9e5499c Mon Sep 17 00:00:00 2001
+From: Andrey Agrachev <andrey.agrachev@intel.com>
+Date: Thu, 10 Mar 2022 12:51:37 +0000
+Subject: [PATCH]  Remove 'static' suffix
+
+Remove 'static' suffix to enable shared lib usage
+---
+ external/SPIRV-Tools/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/external/SPIRV-Tools/CMakeLists.txt b/external/SPIRV-Tools/CMakeLists.txt
+index f46a6988683..f40605c4b36 100644
+--- a/external/SPIRV-Tools/CMakeLists.txt
++++ b/external/SPIRV-Tools/CMakeLists.txt
+@@ -34,7 +34,7 @@ if(IGC_OPTION__SPIRV_TOOLS_MODE STREQUAL PREBUILDS_MODE_NAME)
+ 
+  set(INCLUDE_DIRS_LIST "${SPIRV-Tools_ROOT_DIR}/include" "${SPIRV-Headers_INCLUDE_DIR}")
+  set_target_properties(SPIRV-Tools-static PROPERTIES INCLUDE_DIRECTORIES "${INCLUDE_DIRS_LIST}")
+- set(IGC_BUILD__PROJ__SPIRV-Tools SPIRV-Tools-static)
++ set(IGC_BUILD__PROJ__SPIRV-Tools SPIRV-Tools)
+ 
+ else() #By default use build from sources
+  message(STATUS "[SPIRV-Tools] : IGC_OPTION__SPIRV_TOOLS_MODE set to Source")
