@@ -1,0 +1,35 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/gitlab-runner"
+command_args="run
+	--config ${runner_config:-/etc/gitlab-runner/config.toml}
+	--service ${runner_service:-${RC_SVCNAME}}
+	--user ${runner_user:-gitlab-runner}
+	--working-directory ${runner_datadir:-/var/lib/gitlab-runner}
+	${RUNNER_OPTS}"
+command_background=true
+extra_started_commands="reload"
+name="${name:-GitLab Runner}"
+pidfile="/run/${RC_SVCNAME}.pid"
+output_log="${output_log:-${runner_logdir}/gitlab-runner.log"
+error_log="${error_log:-${runner_logdir}/gitlab-runner.err"
+retry="QUIT/60/TERM/60"
+required_files="${runner_config}"
+
+depend() {
+	need localmount
+	after net.lo loopback
+}
+
+start_pre() {
+	checkpath -d -m 0700 -o "${runner_user}" "${runner_datadir}"
+	checkpath -d -m 0750 -o "${runner_user}" "${runner_logdir}"
+}
+
+reload() {
+	ebegin "Reloading ${name} configuration"
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
+	eend $? "Failed to reload ${name}"
+}
