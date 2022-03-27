@@ -3,7 +3,8 @@
 
 EAPI=7
 
-inherit gnome.org gnome2-utils meson optfeature virtualx xdg
+PYTHON_COMPAT=( python3_{8..10} )
+inherit gnome.org gnome2-utils meson optfeature python-any-r1 virtualx xdg
 
 DESCRIPTION="GTK is a multi-platform toolkit for creating graphical user interfaces"
 HOMEPAGE="https://www.gtk.org/ https://gitlab.gnome.org/GNOME/gtk/"
@@ -72,6 +73,12 @@ PDEPEND="
 "
 BDEPEND="
 	dev-libs/gobject-introspection-common
+	introspection? (
+		${PYTHON_DEPS}
+		$(python_gen_any_dep '
+			dev-python/pygobject:3[${PYTHON_USEDEP}]
+		')
+	)
 	dev-python/docutils
 	>=dev-util/gdbus-codegen-2.48
 	dev-util/glib-utils
@@ -82,6 +89,14 @@ BDEPEND="
 		wayland? ( dev-libs/weston[headless] )
 	)
 "
+
+python_check_deps() {
+	python_has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]" || return
+}
+
+pkg_setup() {
+	use introspection && python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	xdg_src_prepare
