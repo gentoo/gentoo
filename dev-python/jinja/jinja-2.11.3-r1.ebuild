@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
+PYTHON_COMPAT=( python3_{8,9} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -31,13 +31,11 @@ distutils_enable_tests pytest
 
 src_prepare() {
 	# avoid unnecessary dep on extra sphinxcontrib modules
-	sed -i '/sphinxcontrib.log_cabinet/ d' docs/conf.py || die
+	sed -i -e '/sphinxcontrib.log_cabinet/ d' docs/conf.py || die
+	# fix compat with markupsafe-2.1.0+
+	sed -i -e 's:soft_unicode:soft_str:g' src/jinja2/*.py || die
 
 	distutils-r1_src_prepare
-}
-
-python_install() {
-	distutils-r1_python_install --skip-build
 }
 
 python_install_all() {
