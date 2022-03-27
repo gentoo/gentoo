@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ IUSE="+edit gpm nls sftp +slang spell test unicode X"
 
 REQUIRED_USE="spell? ( edit )"
 
-RDEPEND=">=dev-libs/glib-2.26.0:2
+RDEPEND=">=dev-libs/glib-2.30.0:2
 	gpm? ( sys-libs/gpm )
 	kernel_linux? ( sys-fs/e2fsprogs )
 	sftp? ( net-libs/libssh2 )
