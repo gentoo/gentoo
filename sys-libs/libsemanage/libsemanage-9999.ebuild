@@ -84,7 +84,6 @@ multilib_src_compile() {
 			emake \
 				AR="$(tc-getAR)" \
 				CC="$(tc-getCC)" \
-				PKG_CONFIG="$(tc-getPKG_CONFIG)" \
 				LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 				"$@"
 		}
@@ -102,7 +101,6 @@ multilib_src_install() {
 		installation_py() {
 			emake DESTDIR="${ED}" \
 				LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
-				PKG_CONFIG="$(tc-getPKG_CONFIG)" \
 				install-pywrap
 			python_optimize # bug 531638
 		}
