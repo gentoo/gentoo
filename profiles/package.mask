@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2022-03-27)
+# Dead package. No reverse dependencies.
+# Removal on 2022-04-27
+dev-util/fix-la-relink-command
+
+# Matt Turner <mattst88@gentoo.org> (2022-03-27)
 # Dead package. No reverse dependencies since 2017.
 # Removal on 2022-04-27
 dev-libs/gtx
