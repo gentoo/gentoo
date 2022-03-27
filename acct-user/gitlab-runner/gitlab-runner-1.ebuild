@@ -7,7 +7,7 @@ inherit acct-user
 
 DESCRIPTION="Dedicated user for gitlab-runner"
 
-ACCT_USER_ID=509
+ACCT_USER_ID=510
 ACCT_USER_GROUPS=( gitlab-runner )
 
 ACCT_USER_HOME=/var/lib/gitlab-runner
