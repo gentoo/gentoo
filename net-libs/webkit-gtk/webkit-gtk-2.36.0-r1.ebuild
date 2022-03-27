@@ -217,7 +217,8 @@ src_configure() {
 		-DENABLE_UNIFIED_BUILDS=$(usex jumbo-build)
 		-DENABLE_VIDEO=$(usex gstreamer)
 		-DENABLE_WEBGL=ON
-		-DENABLE_WEBGL2=ON
+		# Supported only under ANGLE
+		-DENABLE_WEBGL2=OFF
 		-DENABLE_WEB_AUDIO=$(usex gstreamer)
 		# Source/cmake/OptionsGTK.cmake
 		-DENABLE_GLES2=$(usex gles2-only)
@@ -227,7 +228,7 @@ src_configure() {
 		-DENABLE_QUARTZ_TARGET=$(usex aqua)
 		-DENABLE_WAYLAND_TARGET=$(usex wayland)
 		-DENABLE_X11_TARGET=$(usex X)
-		-DUSE_ANGLE_WEBGL=ON
+		-DUSE_ANGLE_WEBGL=OFF
 		-DUSE_AVIF=$(usex avif)
 		-DUSE_GTK4=OFF
 		-DUSE_JPEGXL=OFF
