@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,9 +31,7 @@ pkg_setup() {
 
 src_compile() {
 	set_arch_to_kernel
-	emake \
-		DESTDIR="${ED}" \
-		INSTALL_MOD_PATH="${ED}"
+	default
 }
 
 src_install() {
