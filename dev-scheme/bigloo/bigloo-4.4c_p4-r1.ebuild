@@ -67,7 +67,7 @@ src_configure() {
 		--ldflags="${LDFLAGS}"
 		# Installation directories
 		--prefix=/usr
-		--bindir=/usr/bin
+		--bindir=/usr/share/${PN}/bin
 		--docdir=/usr/share/doc/${PF}
 		--infodir=/usr/share/info
 		--libdir=/usr/"$(get_libdir)"
@@ -142,6 +142,27 @@ src_install() {
 	emake DESTDIR="${D}" -C bdb install
 	emake DESTDIR="${D}" -C cigloo install
 
+	# The ".sh" scripts set proper environment and library order for Bigloo,
+	# but programs (and the Bigloo Emacs library, "bee-mode") want "bigloo",
+	# not "bigloo.sh". To make programs work we install all executable files
+	# into "/usr/share/bigloo/bin", and then pick one by one for non-scripts:
+	# if a script with ".sh" extensions exists, then we link the script,
+	# not the picked executable to a binary name, otherwise link the binary.
+	mkdir -p "${D}"/usr/bin || die
+	pushd "${D}" >/dev/null || die
+	local bin bin_link
+	for bin in usr/share/${PN}/bin/* ; do
+		if [[ ${bin} != *.sh ]] ; then
+			bin_link=usr/bin/$(basename ${bin})
+			if [[ -f ${bin}.sh ]] ; then
+				ln -s ../../${bin}.sh ${bin_link} || die
+			else
+				ln -s ../../${bin} ${bin_link} || die
+			fi
+		fi
+	done
+	popd >/dev/null || die
+
 	if use emacs ; then
 		emake DESTDIR="${D}" install-bee
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
@@ -151,8 +172,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "Heads up: Bigloo is launched via \"bigloo.sh\" script, not \"bigloo\" executable!"
-
 	use emacs && elisp-site-regen
 }
 
