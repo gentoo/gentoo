@@ -18,7 +18,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~
 COMMON_DEPEND="
 	dev-libs/libbsd
 	dev-libs/openssl:=
-	>=dev-libs/wayland-1.5.0
+	>=dev-libs/wayland-1.20
 	>=dev-libs/wayland-protocols-1.22
 	media-fonts/font-util
 	>=media-libs/libepoxy-1.5.4[X,egl(+)]

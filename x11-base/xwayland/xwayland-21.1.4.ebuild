@@ -20,7 +20,7 @@ DEPEND="
 	dev-libs/libbsd
 	>=x11-libs/libXfont2-2.0.1
 	dev-libs/openssl:=
-	dev-libs/wayland
+	>=dev-libs/wayland-1.20
 	video_cards_nvidia? ( gui-libs/egl-wayland )
 	>=x11-libs/libXdmcp-1.0.2
 	>=x11-libs/libdrm-2.4.89
