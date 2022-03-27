@@ -73,8 +73,8 @@ src_configure() {
 		-DINSTALL_GENX_IR="ON"
 		-DSPIRVLLVMTranslator_INCLUDE_DIR="${EPREFIX}/usr/lib/llvm/${LLVM_MAX_SLOT}/include/LLVMSPIRVLib"
 
-		# VectorCompiler needs work, as at the moment upstream
-		# only supports building vc-intrinsics in place.
+		# Compilation with VectorCompiler causes currently a segfault.
+		# See https://github.com/intel/intel-graphics-compiler/issues/236
 		-DIGC_BUILD__VC_ENABLED="OFF"
 		# -DIGC_OPTION__VC_INTRINSICS_MODE="Prebuilds"
 
