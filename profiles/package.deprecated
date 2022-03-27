@@ -17,6 +17,41 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2022-03-27)
+# Deprecated GNOME 2 era packages
+app-misc/tracker:0
+app-misc/tracker-miners:0
+app-text/enchant:0
+app-text/gnome-doc-utils
+app-text/gtkspell:2
+app-text/rarian
+app-text/scrollkeeper-dtd
+dev-cpp/gconfmm
+dev-cpp/gtkmm:2.4
+dev-cpp/libglademm
+dev-cpp/libgnomecanvasmm
+dev-libs/libcroco
+gnome-base/gconf
+gnome-base/libgnomecanvas
+gnome-extra/gconf-editor
+gnome-extra/gtkhtml
+x11-libs/gtk+extra
+x11-libs/gtksourceview:2.0
+x11-libs/libwnck:1
+x11-themes/gnome-icon-theme-extras
+x11-themes/gnome-icon-theme-symbolic
+x11-themes/gtk-chtheme
+x11-themes/gtk-engines
+x11-themes/gtk-engines-adwaita
+x11-themes/gtk-engines-candido
+x11-themes/gtk-engines-experience
+x11-themes/gtk-engines-murrine
+x11-themes/gtk-engines-nodoka
+x11-themes/gtk-engines-qtpixmap
+x11-themes/gtk-engines-quartz
+x11-themes/gtk-engines-rezlooks
+x11-themes/gtk-engines-ubuntulooks
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-06-30)
 # Deprecated upstream, see HOMEPAGE
 dev-perl/Mail-Sender
