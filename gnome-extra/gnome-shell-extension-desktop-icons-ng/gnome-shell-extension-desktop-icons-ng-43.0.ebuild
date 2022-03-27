@@ -14,7 +14,7 @@ SRC_URI="https://gitlab.com/rastersoft/desktop-icons-ng/uploads/${COMMIT}/${MY_P
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 COMMON_DEPEND="dev-libs/glib:2"
