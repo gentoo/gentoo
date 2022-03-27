@@ -479,13 +479,6 @@ app-misc/emelfm2
 # Masked for testing
 ~sci-libs/vtk-9.1.0
 
-# Conrad Kostecki <conikost@gentoo.org> (2021-12-04)
-# Masking newer versions for both packages,
-# as they cannot be compiled due upstream change.
-# See bug #827651 for more information.
->=dev-libs/intel-compute-runtime-21.47.21710
->=dev-util/intel-graphics-compiler-1.0.9389
-
 # Sam James <sam@gentoo.org> (2021-12-01)
 # OSL 12 is a development release (for now).
 # Doesn't work with LLVM 13 yet; mask to help
