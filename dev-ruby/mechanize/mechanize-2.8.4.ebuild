@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby26 ruby27"
+USE_RUBY="ruby26 ruby27 ruby30"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md EXAMPLES.rdoc GUIDE.rdoc README.md"
 
@@ -32,6 +32,10 @@ ruby_add_rdepend "
 	>=dev-ruby/webrick-1.7:0
 	>=dev-ruby/webrobots-0.1.2 =dev-ruby/webrobots-0.1*
 "
+
+each_ruby_test() {
+	${RUBY} -Ilib:.:test -e '$VERBOSE=true; Dir["test/**/test_*.rb"].each{|f| require f}' || die
+}
 
 all_ruby_install() {
 	all_fakegem_install
