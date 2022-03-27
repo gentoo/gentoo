@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2022-03-27)
+# Dead package. See https://blogs.gnome.org/hughsie/2014/10/30/appdata-tools-is-dead/
+# Bug #680552
+# Removal on 2022-04-27
+dev-util/appdata-tools
+
+# Matt Turner <mattst88@gentoo.org> (2022-03-27)
 # GNOME 2 era packages. No reverse dependencies.
 # Removal on 2022-04-27
 dev-perl/gnome2-canvas
