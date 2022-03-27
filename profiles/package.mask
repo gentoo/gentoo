@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Conrad Kostecki <conikost@gentoo.org> (2022-03-27)
+# Long abandoned upstream, multiple bugs open,
+# no other major distro carries this anymore and
+# depends on deprecated jabber-base.
+# Bug #632622, #655566, #716850, removal on 2022-04-27.
+net-im/gg-transport
+
 # David Seifert <soap@gentoo.org> (2022-03-27)
 # Long abandoned upstreams, segfaults, bunch of tests fail,
 # no other major distro carries this anymore.
