@@ -1,0 +1,41 @@
+# Use link option -pthread instead of -lpthread
+
+# https://github.com/riscv-collab/riscv-gcc/issues/12 use Option 4
+# https://stackoverflow.com/questions/23250863/difference-between-pthread-and-lpthread-while-compiling
+# In riscv, "-pthread" equivalent to add link option "--push-state --as-needed -latomic --pop-state"
+
+diff --git a/mkspecs/common/linux.conf b/mkspecs/common/linux.conf
+index 544cc227..add969be 100644
+--- a/mkspecs/common/linux.conf
++++ b/mkspecs/common/linux.conf
+@@ -33,7 +33,7 @@ QMAKE_LIBS_EGL          = -lEGL
+ QMAKE_LIBS_OPENGL       = -lGL
+ QMAKE_LIBS_OPENGL_ES2   = -lGLESv2
+ QMAKE_LIBS_OPENVG       = -lOpenVG
+-QMAKE_LIBS_THREAD       = -lpthread
++QMAKE_LIBS_THREAD       = -pthread
+ QMAKE_LIBS_VULKAN       =
+ 
+ QMAKE_INCDIR_WAYLAND    =
+diff --git a/src/corelib/configure.json b/src/corelib/configure.json
+index 9b5d19d4..da028fb2 100644
+--- a/src/corelib/configure.json
++++ b/src/corelib/configure.json
+@@ -355,7 +355,7 @@
+                     "std::future<int> f = std::async([]() { return 42; });",
+                     "(void)f.get();"
+                 ],
+-                "qmake": "unix:LIBS += -lpthread"
++                "qmake": "unix:LIBS += -pthread"
+             }
+         },
+         "cxx11_random": {
+@@ -466,7 +466,7 @@
+                     "shm_open(\"test\", O_RDWR | O_CREAT | O_EXCL, 0666);",
+                     "shm_unlink(\"test\");"
+                 ],
+-                "qmake": "linux: LIBS += -lpthread -lrt"
++                "qmake": "linux: LIBS += -pthread -lrt"
+             }
+         },
+         "linkat": {
