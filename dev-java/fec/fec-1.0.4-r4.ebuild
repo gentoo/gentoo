@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 CDEPEND="dev-java/log4j-12-api:2"
 
