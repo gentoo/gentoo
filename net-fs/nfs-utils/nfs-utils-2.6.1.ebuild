@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="caps ipv6 junction kerberos ldap +libmount nfsdcld +nfsidmap +nfsv4 nfsv41 sasl selinux tcpd +uuid"
+IUSE="caps junction kerberos ldap +libmount nfsdcld +nfsidmap +nfsv4 nfsv41 sasl selinux tcpd +uuid"
 REQUIRED_USE="kerberos? ( nfsv4 )"
 RESTRICT="test" #315573
 
@@ -112,7 +112,7 @@ src_configure() {
 		--with-systemd="$(systemd_get_systemunitdir)"
 		--without-gssglue
 		$(use_enable caps)
-		$(use_enable ipv6)
+		--enable-ipv6
 		$(use_enable junction)
 		$(use_enable kerberos gss)
 		$(use_enable kerberos svcgss)
