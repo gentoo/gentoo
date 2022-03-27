@@ -55,12 +55,6 @@ REQUIRED_USE="
 	libedit? ( !readline )
 "
 
-PATCHES=(
-	"${FILESDIR}/nftables-1.0.2-compilation.patch"
-	"${FILESDIR}/nftables-1.0.2-build-explicitly-pass-version-script-to-linker.patch"
-	"${FILESDIR}/nftables-1.0.2-libnftables.map-export-new-nft_ctx_-get-set-_optimiz.patch"
-)
-
 pkg_setup() {
 	if kernel_is ge 3 13; then
 		if use modern-kernel && kernel_is lt 3 18; then
