@@ -301,12 +301,6 @@ dev-libs/device-atlas-api-c
 # if still needed. Removal on 2022-04-07.
 dev-lang/python:3.6
 
-# Conrad Kostecki <conikost@gentoo.org> (2022-03-06)
-# Since prelink has been already last-rited,
-# this package has no more use and can be removed.
-# Removal in 14 days, after 2022-03-22.
-sec-policy/selinux-prelink
-
 # Stephan Hartmann <sultan@gentoo.org> (2022-03-06)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
