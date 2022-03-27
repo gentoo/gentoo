@@ -30,7 +30,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-util/cmake-3.16
-	doc? ( dev-python/sphinx )
+	doc? ( $(python_gen_cond_dep '
+		dev-python/recommonmark[${PYTHON_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
+	') )
 	xml? ( virtual/pkgconfig )
 	${PYTHON_DEPS}"
 PDEPEND="
