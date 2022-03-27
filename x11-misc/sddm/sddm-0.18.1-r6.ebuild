@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PLOCALES="ar bn ca cs da de es et fi fr hi_IN hu is it ja kk ko lt lv nb nl nn pl pt_BR pt_PT ro ru sk sr sr@ijekavian sr@ijekavianlatin sr@latin sv tr uk zh_CN zh_TW"
-inherit cmake plocale systemd user
+inherit cmake plocale systemd tmpfiles
 
 DESCRIPTION="Simple Desktop Display Manager"
 HOMEPAGE="https://github.com/sddm/sddm"
@@ -25,6 +25,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 RDEPEND="
+	acct-group/sddm
+	acct-user/sddm
 	>=dev-qt/qtcore-5.9.4:5
 	>=dev-qt/qtdbus-5.9.4:5
 	>=dev-qt/qtdeclarative-5.9.4:5
@@ -56,6 +58,8 @@ PATCHES=(
 	"${FILESDIR}/pam-1.4-substack.patch"
 	# upstream git develop branch:
 	"${FILESDIR}/${P}-qt-5.15.2.patch"
+	# bug 753104
+	"${FILESDIR}/${P}-cve-2020-28049.patch"
 )
 
 src_prepare() {
@@ -87,6 +91,8 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
+	newtmpfiles "${FILESDIR}/${PN}.tmpfiles" "${PN}.conf"
+
 	# Create a default.conf as upstream dropped /etc/sddm.conf w/o replacement
 	local confd="/usr/share/sddm/sddm.conf.d"
 	dodir ${confd}
@@ -100,12 +106,11 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process "${PN}.conf"
+
 	elog "Starting with 0.18.0, SDDM no longer installs /etc/sddm.conf"
 	elog "Use it to override specific options. SDDM defaults are now"
 	elog "found in: /usr/share/sddm/sddm.conf.d/00default.conf"
-
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN},video
 
 	systemd_reenable sddm.service
 }
