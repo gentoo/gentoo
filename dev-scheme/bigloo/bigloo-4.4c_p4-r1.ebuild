@@ -54,13 +54,25 @@ BDEPEND="
 DOCS=( ChangeLog README.md TODO.org )
 SITEFILE="50${PN}-gentoo.el"
 
+src_prepare() {
+	default
+
+	sed -e "/^ar=/s|=|=\"$(tc-getAR)\"|" \
+		-e "/^ranlib=/s|=|=\"$(tc-getRANLIB)\"|" \
+		-i ./configure || die
+
+	sed "s|^ar |$(tc-getAR) |" -i ./autoconf/ranlib || die
+}
+
 src_configure() {
 	tc-export AR AS CC CPP CXX LD
-	export CFLAGS="${CFLAGS}"
-	export LDFLAGS="${LDFLAGS}"
+	export CFLAGS
+	export LDFLAGS
 
-	myconf=(
-		# Compilation FLAGS
+	local myconf=(
+		# Compilation
+		--as="$(tc-getAS)"
+		--cc="$(tc-getCC)"
 		--cflags="${CFLAGS}"
 		--cpicflags="-fPIC"
 		--cwarningflags=""
