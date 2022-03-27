@@ -35,6 +35,7 @@ RDEPEND="${DEPEND}
 BDEPEND="
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
+	dev-util/gdbus-codegen
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	doc? ( dev-util/gtk-doc )
