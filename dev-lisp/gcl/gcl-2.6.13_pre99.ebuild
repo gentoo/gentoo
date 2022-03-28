@@ -10,7 +10,7 @@ SRC_URI="https://dev.gentoo.org/~grozin/${P}.tar.xz"
 
 LICENSE="LGPL-2 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="+ansi athena emacs +readline tk X"
 
 # See bug #205803
