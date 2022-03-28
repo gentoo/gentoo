@@ -45,12 +45,7 @@ DEPEND="
 	acl? ( net-fs/cifs-utils[acl] )
 	locator? ( >=net-dns/c-ares-1.10.0-r1:=[${MULTILIB_USEDEP}] )
 	netlink? ( dev-libs/libnl:3 )
-	nfsv4? (
-		|| (
-			>=net-fs/nfs-utils-2.3.1-r2
-			net-libs/libnfsidmap
-		)
-	)
+	nfsv4? ( >=net-fs/nfs-utils-2.3.1-r2 )
 	pac? ( net-fs/samba )
 	python? ( ${PYTHON_DEPS} )
 	samba? ( >=net-fs/samba-4.10.2[winbind] )

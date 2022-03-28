@@ -68,7 +68,7 @@ DEPEND=">=app-crypt/mit-krb5-1.19.1[${MULTILIB_USEDEP}]
 	)
 	acl? ( net-fs/cifs-utils[acl] )
 	netlink? ( dev-libs/libnl:3 )
-	nfsv4? ( || ( >=net-fs/nfs-utils-2.3.1-r2 net-libs/libnfsidmap ) )
+	nfsv4? ( >=net-fs/nfs-utils-2.3.1-r2 )
 	nls? ( >=sys-devel/gettext-0.18 )
 	pac? (
 		net-fs/samba
