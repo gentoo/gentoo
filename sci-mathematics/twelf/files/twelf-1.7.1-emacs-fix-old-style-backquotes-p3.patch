@@ -1,13 +1,28 @@
 diff --git a/emacs/auc-menu.el b/emacs/auc-menu.el
-index f6483b0..602c6fc 100644
+index f6483b0..80fe660 100644
 --- a/emacs/auc-menu.el
 +++ b/emacs/auc-menu.el
-@@ -92,7 +92,7 @@
+@@ -92,10 +92,10 @@
  (defmacro easy-menu-define (symbol maps doc menu)
    "Define SYMBOL to be a menu for keymaps MAPS.
  DOC is the documentation string, and MENU is a Lucid style menu."
 -  (` (progn
-+  `( (progn
++    `(progn
         (require 'auc-menu)		;For `easy-menu-do-define'.
         (defvar (, symbol) nil (, doc))
-        (easy-menu-do-define (quote (, symbol)) (, maps) (, doc) (, menu)))))
+-       (easy-menu-do-define (quote (, symbol)) (, maps) (, doc) (, menu)))))
++       (easy-menu-do-define (quote (, symbol)) (, maps) (, doc) (, menu))))
+ 
+ (cond 
+ 
+@@ -212,8 +212,8 @@ DOC is the documentation string, and MENU is a Lucid style menu."
+ 
+ (defun easy-menu-do-define (symbol maps doc menu)
+   (set symbol (easy-menu-create-keymaps (car menu) (cdr menu)))
+-  (fset symbol (` (lambda (event) (, doc) (interactive "@e")
+-		    (easy-popup-menu event (, symbol)))))
++  (fset symbol `(lambda (event) (, doc) (interactive "@e")
++		    (easy-popup-menu event (, symbol))))
+   (mapcar (function (lambda (map) 
+ 	    (define-key map (vector 'menu-bar (intern (car menu)))
+ 	      (cons (car menu) (symbol-value symbol)))))
