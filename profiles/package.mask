@@ -388,13 +388,6 @@ x11-libs/libyui-qt
 # Removal on 2022-03-29.  Bug #834306
 sys-libs/tapi
 
-# Michał Górny <mgorny@gentoo.org> (2022-02-26)
-# The original Midori browser has been discontinued, and the new
-# Electron-based "Midori" (sic!) does not seem worth the effort
-# of packaging it.
-# Removal on 2022-03-28.  Bug #834120.
-www-client/midori
-
 # Anton Fischl <github@fischl-online.de> (2022-02-23)
 # Version 2.5.* is not meant for production according to upstream
 =app-backup/burp-2.5*
