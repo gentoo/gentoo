@@ -119,7 +119,7 @@ src_configure() {
 	# TODO: Replicate debug vs release meson build type behaviour under our buildtype=plain
 	local emesonargs=(
 		-Dopengl=true
-		-Dopengl_libname='libOpenGL.so.0'
+		#opengl_libname
 		#gles2_libname
 		$(meson_use wayland gles2)
 		-Degl=true
