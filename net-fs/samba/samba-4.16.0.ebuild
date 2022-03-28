@@ -115,6 +115,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-util/cmocka-1.1.3[${MULTILIB_USEDEP}]
+	dev-perl/JSON
 	net-libs/libtirpc[${MULTILIB_USEDEP}]
 	|| (
 		net-libs/rpcsvc-proto
