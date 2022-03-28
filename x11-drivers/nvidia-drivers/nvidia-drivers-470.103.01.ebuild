@@ -22,7 +22,7 @@ S="${WORKDIR}"
 LICENSE="NVIDIA-r2 BSD BSD-2 GPL-2 MIT ZLIB curl openssl"
 SLOT="0/${PV%%.*}"
 KEYWORDS="-* amd64"
-IUSE="+X abi_x86_32 abi_x86_64 +driver persistenced static-libs +tools wayland"
+IUSE="+X abi_x86_32 abi_x86_64 +driver persistenced +static-libs +tools wayland"
 
 COMMON_DEPEND="
 	acct-group/video
