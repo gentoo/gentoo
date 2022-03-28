@@ -362,12 +362,6 @@ sci-chemistry/mm-align
 # Bug #711880, #774519, removal on 2022-03-27.
 net-fs/smbtad
 
-# Sam James <sam@gentoo.org> (2022-02-27)
-# EAPI=6 consumer of deprecated cmake-utils.eclass. No reverse
-# dependencies and will soon be unbuildable with new CMake.
-# bug #774495. Dead HOMEPAGE. Removal on 2022-03-27.
-dev-libs/smack
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-02-27)
 # No revdeps since begin of gentoo.git history, outdated and unmaintained.
 # Bug #834307. Removal on 2022-03-29.
