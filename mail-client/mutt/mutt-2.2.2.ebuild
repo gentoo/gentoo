@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -14,9 +14,10 @@ MUTT_G_PATCHES="mutt-gentoo-${PV}-patches-${PATCHREV}.tar.xz"
 SRC_URI="ftp://ftp.mutt.org/pub/mutt/${P}.tar.gz
 	https://bitbucket.org/${PN}/${PN}/downloads/${P}.tar.gz
 	https://dev.gentoo.org/~grobian/distfiles/${MUTT_G_PATCHES}"
-IUSE="autocrypt berkdb debug doc gdbm gnutls gpgme +hcache idn +imap kerberos +lmdb mbox nls pgp-classic pop qdbm +sasl selinux slang smime-classic +smtp +ssl tokyocabinet vanilla prefix"
+IUSE="autocrypt berkdb debug doc gdbm gnutls gpgme gsasl +hcache idn +imap kerberos +lmdb mbox nls pgp-classic pop qdbm +sasl selinux slang smime-classic +smtp +ssl tokyocabinet vanilla prefix"
 # hcache: allow multiple, bug #607360
 REQUIRED_USE="
+	gsasl?            ( sasl )
 	hcache?           ( || ( berkdb gdbm lmdb qdbm tokyocabinet ) )
 	imap?             ( ssl )
 	pop?              ( ssl )
@@ -42,11 +43,14 @@ CDEPEND="
 
 	ssl? (
 		gnutls?    ( >=net-libs/gnutls-1.0.17:= )
-		!gnutls? ( >=dev-libs/openssl-0.9.6:0= )
-		)
+		!gnutls?   ( >=dev-libs/openssl-0.9.6:0= )
+	)
 
 	nls?           ( virtual/libintl )
-	sasl?          ( >=dev-libs/cyrus-sasl-2 )
+	sasl? (
+		gsasl?     ( virtual/gsasl )
+		!gsasl?    ( >=dev-libs/cyrus-sasl-2 )
+	)
 	kerberos?      ( virtual/krb5 )
 	idn?           ( net-dns/libidn2 )
 	gpgme?         ( >=app-crypt/gpgme-0.9.0:= )
@@ -135,7 +139,10 @@ src_configure() {
 		$(use  ssl && use !gnutls && echo --without-gnutls --with-ssl   )
 		$(use !ssl &&                echo --without-gnutls --without-ssl)
 
-		$(use_with sasl)
+		$(use  sasl && use  gsasl && echo --with-gsasl    --without-sasl)
+		$(use  sasl && use !gsasl && echo --without-gsasl --with-sasl   )
+		$(use !sasl &&               echo --without-gsasl --without-sasl)
+
 		$(use_with idn idn2) --without-idn  # avoid automagic libidn dep
 		$(use_with kerberos gss)
 		"$(use slang && echo --with-slang="${EPREFIX}"/usr || echo a=b)"
