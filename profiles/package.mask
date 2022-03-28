@@ -368,12 +368,6 @@ net-fs/smbtad
 # bug #774495. Dead HOMEPAGE. Removal on 2022-03-27.
 dev-libs/smack
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-02-27)
-# Outdated, fails to build with glibc-2.34, bug 806755
-# Has been integrated into net-fs/nfs-utils, please use that instead.
-# Removal in 30 days.
-net-libs/libnfsidmap
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-02-27)
 # No revdeps since begin of gentoo.git history, outdated and unmaintained.
 # Bug #834307. Removal on 2022-03-29.
