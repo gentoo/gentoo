@@ -1,0 +1,37 @@
+From a968cb223ea60d476d191a1f61dd4791178aacb4 Mon Sep 17 00:00:00 2001
+From: Grzegorz Choinski <grzegorz.choinski@intel.com>
+Date: Fri, 11 Mar 2022 18:41:30 +0000
+Subject: [PATCH] disable metrics discovery detection
+
+Disabling metrics discovery detection due to conflicts that the name libmd
+creates with packages from ubuntu.
+
+Signed-off-by: Grzegorz Choinski <grzegorz.choinski@intel.com>
+---
+ cmake/find_metrics.cmake | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/find_metrics.cmake b/cmake/find_metrics.cmake
+index e97e1d20b66..89445229b30 100644
+--- a/cmake/find_metrics.cmake
++++ b/cmake/find_metrics.cmake
+@@ -28,7 +28,9 @@ function(dependency_detect COMPONENT_NAME DLL_NAME VAR_NAME REL_LOCATION IS_THIR
+       set(OLD_PKG_CONFIG_PATH $ENV{PKG_CONFIG_PATH})
+       set(ENV{PKG_CONFIG_PATH} "${LIBRARY_DIR}/${__tmp_LIBDIR}/pkgconfig/")
+     endif()
+-    pkg_check_modules(NEO__${VAR_NAME} ${DLL_NAME})
++    if(NOT DLL_NAME STREQUAL "")
++      pkg_check_modules(NEO__${VAR_NAME} ${DLL_NAME})
++    endif()
+     if(DEFINED __tmp_LIBDIR)
+       set(ENV{PKG_CONFIG_PATH} ${OLD_PKG_CONFIG_PATH})
+     endif()
+@@ -76,7 +78,7 @@ if(NOT NEO__METRICS_LIBRARY_INCLUDE_DIR STREQUAL "")
+ endif()
+ 
+ # Metrics Discovery Detection
+-dependency_detect("Metrics Discovery" libmd METRICS_DISCOVERY "../metrics/discovery" TRUE)
++dependency_detect("Metrics Discovery" "" METRICS_DISCOVERY "../metrics/discovery" TRUE)
+ if(NOT NEO__METRICS_DISCOVERY_INCLUDE_DIR STREQUAL "")
+   include_directories("${NEO__METRICS_DISCOVERY_INCLUDE_DIR}")
+ endif()
