@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-03-28)
+# Hangs in src_compile when net-libs/nodejs is installed
+# Masked pending either a workaround in reportlab or
+# adaptations to nodejs.
+# bug #836301
+=dev-python/reportlab-3.6.9
+
 # Matt Turner <mattst88@gentoo.org> (2022-03-27)
 # Dead package. No reverse dependencies.
 # Removal on 2022-04-27
