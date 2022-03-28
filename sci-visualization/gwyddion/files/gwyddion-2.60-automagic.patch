@@ -1,0 +1,35 @@
+diff --git a/configure.ac b/configure.ac
+index 5a7465a..cc5a54d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -660,11 +660,13 @@ AM_CONDITIONAL([HAVE_CXX],[test "x$have_cxx" != xno])
+ #############################################################################
+ # OpenEXR 2.x+
+ # Optional.  Used for HDR greyscale OpenEXR pixmap import/export.
+-enable_exr=$have_cxx
+-PKG_CHECK_MODULES(EXR, [OpenEXR >= 2.0],
++GWY_WITH([exr],,[build with OpenEXR support])
++if test "x$enable_exr" != "xno" && "x$have_cxx" != "xno"; then
++  PKG_CHECK_MODULES(EXR, [OpenEXR],
+                   [AC_DEFINE(HAVE_EXR,1,
+                             [Define if we have the OpenEXR 2.x+ package.])],
+                   [enable_exr=no])
++fi
+ AM_CONDITIONAL([HAVE_EXR],[test "x$enable_exr" != xno])
+ 
+ #############################################################################
+@@ -679,10 +681,13 @@ AM_CONDITIONAL([HAVE_HDF5],[test "x$enable_hdf5" != xno])
+ #############################################################################
+ # CFITSIO
+ # Optional.  Used for FITS image import.
+-PKG_CHECK_MODULES(CFITSIO, [cfitsio],
++GWY_WITH([cfitsio],,[build with cfitsio support])
++if test "x$enable_cfitsio" != "xno"; then
++  PKG_CHECK_MODULES(CFITSIO, [cfitsio],
+                   [AC_DEFINE(HAVE_CFITSIO,1,
+                             [Define if we have the cfitsio package.])],
+                   [enable_cfitsio=no])
++fi
+ AM_CONDITIONAL([HAVE_CFITSIO],[test "x$enable_cfitsio" != xno])
+ 
+ #############################################################################

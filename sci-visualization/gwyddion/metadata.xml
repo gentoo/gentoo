@@ -23,5 +23,11 @@
     <flag name="fits">
       Enable FITS image import via <pkg>sci-libs/cfitsio</pkg>
     </flag>
+    <flag name="jansson">
+      Enable JSON data manipulation via <pkg>dev-libs/jansson</pkg>
+    </flag>
+    <flag name="unique">
+      Enable remote control backend via <pkg>dev-libs/libunique</pkg>
+    </flag>
   </use>
 </pkgmetadata>
