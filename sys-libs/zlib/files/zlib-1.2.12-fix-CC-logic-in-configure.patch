@@ -1,20 +1,35 @@
-From 95b9053f10710f9f881f4daec2f2e78da87560cf Mon Sep 17 00:00:00 2001
+https://github.com/madler/zlib/pull/607
+
+From c9b7587ff947638412a69df5ea820c563b8b1c1b Mon Sep 17 00:00:00 2001
 From: Sam James <sam@gentoo.org>
-Date: Mon, 28 Mar 2022 08:21:18 +0100
+Date: Mon, 28 Mar 2022 08:40:45 +0100
 Subject: [PATCH] Fix CC logic in configure
 
 In https://github.com/madler/zlib/commit/e9a52aa129efe3834383e415580716a7c4027f8d,
 the logic was changed to try check harder for GCC, but it dropped
-the default setting of cc=${CC}.
+the default setting of cc=${CC}. It was throwing away any pre-set CC value as
+a result.
 
 This led to e.g. misdetection of inability to build shared libs
-for say, multilib cases (w/ CC being one thing (e.g. x86_64-unknown-linux-gnu-gcc -m32
-and then 'cc' used for shared libs being w/o -m32).
+for say, multilib cases (w/ CC being one thing from the environment being used
+for one test (e.g. x86_64-unknown-linux-gnu-gcc -m32 and then 'cc' used for
+shared libs (but missing "-m32"!)). Obviously just one example of how
+the old logic could break.
 
+This restores the old default of 'CC' if nothing overrides it later
+in configure.
+
+Bug: https://bugs.gentoo.org/836308
 Signed-off-by: Sam James <sam@gentoo.org>
+---
+ configure | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/configure b/configure
+index 52ff4a04e..3fa3e8618 100755
 --- a/configure
 +++ b/configure
-@@ -180,7 +180,10 @@ if test -z "$CC"; then
+@@ -174,7 +174,10 @@ if test -z "$CC"; then
    else
      cc=${CROSS_PREFIX}cc
    fi
@@ -25,3 +40,4 @@ Signed-off-by: Sam James <sam@gentoo.org>
  cflags=${CFLAGS-"-O3"}
  # to force the asm version use: CFLAGS="-O3 -DASMV" ./configure
  case "$cc" in
+
