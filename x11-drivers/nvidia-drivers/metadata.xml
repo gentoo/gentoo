@@ -12,6 +12,7 @@
 	<use>
 		<flag name="driver">Install kernel driver modules</flag>
 		<flag name="persistenced">Install the persistence daemon for keeping devices state when unused</flag>
+		<flag name="static-libs">Install the XNVCtrl static library for accessing sensors and other features</flag>
 		<flag name="tools">Install additional tools such as nvidia-settings</flag>
 	</use>
 	<upstream>
