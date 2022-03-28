@@ -1,20 +1,23 @@
 #!/sbin/openrc-run
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 command="/usr/bin/gitlab-runner"
+runner_datadir="${runner_datadir:-/var/lib/gitlab-runner}"
 command_args="run
 	--config ${runner_config:-/etc/gitlab-runner/config.toml}
 	--service ${runner_service:-${RC_SVCNAME}}
 	--user ${runner_user:-gitlab-runner}
-	--working-directory ${runner_datadir:-/var/lib/gitlab-runner}
+	--working-directory ${runner_datadir}
 	${RUNNER_OPTS}"
 command_background=true
 extra_started_commands="reload"
 name="${name:-GitLab Runner}"
 pidfile="/run/${RC_SVCNAME}.pid"
-output_log="${output_log:-${runner_logdir}/gitlab-runner.log"
-error_log="${error_log:-${runner_logdir}/gitlab-runner.err"
+runner_user="${runner_user:-gitlab-runner}"
+runner_logdir="${runner_logdir:-/var/log/gitlab-runner}"
+output_log="${output_log:-${runner_logdir}/gitlab-runner.log}"
+error_log="${error_log:-${runner_logdir}/gitlab-runner.err}"
 retry="QUIT/60/TERM/60"
 required_files="${runner_config}"
 
