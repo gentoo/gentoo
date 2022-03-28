@@ -15,7 +15,7 @@ SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/${MY_P}.Final.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
 IUSE="test"
 
 # Same test failures as before the revbumps still occur. See https://bugs.gentoo.org/827221
