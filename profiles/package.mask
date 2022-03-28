@@ -395,12 +395,6 @@ sys-libs/tapi
 # Removal on 2022-03-28.  Bug #834120.
 www-client/midori
 
-# Sam James <sam@gentoo.org> (2022-02-24)
-# Obsolete, ex-dependency of xfsprogs. Fails to build on 32-bit arches.
-# No reverse dependencies. Discontinued upstream. Removal on 2022-03-24.
-# bug #811891
-sys-apps/dmapi
-
 # Anton Fischl <github@fischl-online.de> (2022-02-23)
 # Version 2.5.* is not meant for production according to upstream
 =app-backup/burp-2.5*
