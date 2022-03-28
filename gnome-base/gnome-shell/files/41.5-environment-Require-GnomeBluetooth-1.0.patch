@@ -1,0 +1,35 @@
+From 9ce6756235ba272b8602d50d1f005dc2ef265889 Mon Sep 17 00:00:00 2001
+From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
+Date: Sun, 31 Oct 2021 17:24:58 -0300
+Subject: [PATCH 1/2] environment: Require GnomeBluetooth 1.0
+
+libgnome-bluetooth will start to offer a 2.0 library version
+depending on GTK4. Given that GNOME Shell already depends on
+GTK3, it cannot use this next version of gnome-bluetooth. And
+since GJS will automatically try and use the latest version
+available of any library, Shell must specify it wants 1.0
+explicitly.
+
+Add a required GnomeBluetooth version number when importing it
+for the status indicator.
+
+Part-of: <https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/2015>
+---
+ js/ui/environment.js | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/js/ui/environment.js b/js/ui/environment.js
+index ef53e6022..e906fa6c6 100644
+--- a/js/ui/environment.js
++++ b/js/ui/environment.js
+@@ -6,6 +6,7 @@ const Config = imports.misc.config;
+ imports.gi.versions.Clutter = Config.LIBMUTTER_API_VERSION;
+ imports.gi.versions.Gio = '2.0';
+ imports.gi.versions.GdkPixbuf = '2.0';
++imports.gi.versions.GnomeBluetooth = '1.0';
+ imports.gi.versions.Gtk = '3.0';
+ imports.gi.versions.Soup = '3.0';
+ imports.gi.versions.TelepathyGLib = '0.12';
+-- 
+2.34.1
+
