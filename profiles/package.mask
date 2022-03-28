@@ -351,11 +351,6 @@ sci-chemistry/votca-ctp
 # Bug #834317. Removal on 2022-03-31.
 dev-libs/injeqt
 
-# Sam James <sam@gentoo.org> (2022-02-27)
-# Fails to build with modern GCC, stuck on cmake-utils.eclass too.
-# bug #723194, bug #834301. Removal on 2022-03-27.
-sci-chemistry/mm-align
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-02-27)
 # No revdeps since begin of gentoo.git history, outdated and unmaintained.
 # Bug #834307. Removal on 2022-03-29.
