@@ -21,12 +21,13 @@ fi
 LICENSE="BSD-2-with-patent"
 SLOT="0"
 
-# upstream issue, see bug #835471
-RESTRICT="test"
-
 BDEPEND="
 	dev-lang/nasm
+	app-editors/vim-core
 "
+# The app-editors/vim-core dep is needed to embed models within the library
+# could be made into a useflag if someones express the need for it
+# see https://github.com/Netflix/vmaf/blob/master/libvmaf/meson_options.txt#L21
 
 RDEPEND="${BDEPEND}"
 
