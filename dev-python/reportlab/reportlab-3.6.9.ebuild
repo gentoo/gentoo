@@ -33,6 +33,10 @@ BDEPEND="
 	app-arch/unzip
 "
 
+PATCHES=(
+	"${FILESDIR}"/reportlab-3.6.9-paths.patch
+)
+
 distutils_enable_sphinx docs/source
 
 src_unpack() {
