@@ -211,7 +211,7 @@ multilib_src_configure() {
 		$(meson_feature asyncns)
 		$(meson_native_use_feature zeroconf avahi)
 		$(meson_native_use_feature bluetooth bluez5)
-		$(meson_feature gstreamer bluez5-gstreamer)
+		$(meson_native_use_feature gstreamer bluez5-gstreamer)
 		$(meson_native_use_bool native-headset bluez5-native-headset)
 		$(meson_native_use_bool ofono-headset bluez5-ofono-headset)
 		$(meson_feature dbus)
