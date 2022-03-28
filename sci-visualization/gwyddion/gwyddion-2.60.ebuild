@@ -70,6 +70,7 @@ src_configure() {
 		$(use_with bzip2) \
 		$(use_with fits cfitsio) \
 		$(use_with hdf5) \
+		$(use_with jansson) \
 		$(use_with perl) \
 		$(use_with ruby) \
 		$(use_with openexr exr) \
