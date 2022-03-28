@@ -26,10 +26,6 @@ BDEPEND="
 	$(vala_depend)
 	sys-devel/gettext"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-10.0-no-icon-cache.patch
-)
-
 DOCS=( NEWS.md README.md )
 
 src_configure() {
