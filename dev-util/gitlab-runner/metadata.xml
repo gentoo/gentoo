@@ -6,7 +6,7 @@
 		<name>William Hubbs</name>
 	</maintainer>
 	<maintainer type="project">
-		<email>infra@gentoo.org</email>
+		<email>infra-bugs@gentoo.org</email>
 		<name>Gentoo Infrastructure Project</name>
 	</maintainer>
 </pkgmetadata>
