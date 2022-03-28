@@ -54,7 +54,6 @@ multilib_src_configure() {
 		-DBUILD_WSI_XCB_SUPPORT=$(usex X)
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
 		-DBUILD_TESTS=OFF
-		-DGLSLANG_INSTALL_DIR="${ESYSROOT}/usr"
 		-DCMAKE_INSTALL_INCLUDEDIR="${EPREFIX}/usr/include/"
 	)
 	cmake_src_configure
