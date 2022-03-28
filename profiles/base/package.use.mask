@@ -423,7 +423,7 @@ app-text/ghostscript-gpl l10n_ja
 
 # Michał Górny <mgorny@gentoo.org> (2019-03-21)
 # x11-wm/afterstep is slated for removal.
-x11-terms/aterm background
+<x11-terms/aterm-1.0.1-r5 background
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-03-05)
 # Not keyworded on non-x86 arches
