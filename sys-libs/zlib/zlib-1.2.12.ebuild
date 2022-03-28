@@ -36,6 +36,9 @@ PATCHES=(
 
 	# bug #831628
 	"${FILESDIR}"/${PN}-1.2.11-configure-fix-AR-RANLIB-NM-detection.patch
+
+	# Fix broken CC logic
+	"${FILESDIR}"/${PN}-1.2.12-fix-CC-logic-in-configure.patch
 )
 
 src_prepare() {
@@ -85,6 +88,7 @@ multilib_src_configure() {
 		*)
 			# bug #347167
 			local uname=$("${BROOT}"/usr/share/gnuconfig/config.sub "${CHOST}" | cut -d- -f3)
+
 			local myconf=(
 				--shared
 				--prefix="${EPREFIX}/usr"
