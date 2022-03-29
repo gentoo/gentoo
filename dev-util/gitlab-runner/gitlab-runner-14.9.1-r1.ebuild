@@ -14,8 +14,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-COMMON_DEPEND="acct-group/gitlab-runner
-	acct-user/gitlab-runner"
+COMMON_DEPEND="acct-user/gitlab-runner"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 BDEPEND="dev-go/gox"
