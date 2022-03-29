@@ -23,6 +23,10 @@ DEPEND="${LUA_DEPS}
 	systemd? ( sys-apps/systemd:0= )
 	snmp? ( net-analyzer/net-snmp )
 	sodium? ( dev-libs/libsodium:= )
+	elibc_glibc? (
+		arm? ( >=sys-libs/glibc-2.34 )
+		x86? ( >=sys-libs/glibc-2.34 )
+	)
 	dev-libs/openssl:=
 	>=dev-libs/boost-1.35:="
 RDEPEND="${DEPEND}
