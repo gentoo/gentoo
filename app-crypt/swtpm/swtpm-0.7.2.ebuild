@@ -44,10 +44,10 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-0.6.0-fix-localca-path.patch"
 	"${FILESDIR}/${PN}-0.5.0-build-sys-Remove-WError.patch"
+	"${FILESDIR}/${PN}-0.7.2-Conditionalize-test-dependencies.patch"
 )
 
 src_prepare() {
-	use test || eapply "${FILESDIR}/${PN}-0.5.0-disable-test-dependencies.patch"
 	default
 	eautoreconf
 }
@@ -58,7 +58,8 @@ src_configure() {
 		--without-selinux \
 		$(use_with fuse cuse) \
 		$(use_with gnutls) \
-		$(use_with seccomp)
+		$(use_with seccomp) \
+		$(use_enable test)
 }
 
 src_install() {
