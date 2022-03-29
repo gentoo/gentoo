@@ -49,6 +49,11 @@ llvm_check_deps() {
 # see https://github.com/ziglang/zig/wiki/Troubleshooting-Build-Issues#high-memory-requirements
 CHECKREQS_MEMORY="6G"
 
+pkg_setup() {
+	llvm_pkg_setup
+	check-reqs_pkg_setup
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DZIG_USE_CCACHE=OFF
