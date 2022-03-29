@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>java@gentoo.org</email>
-    <name>Java</name>
-  </maintainer>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://issues.apache.org/jira/projects/FOP/issues</bugs-to>
+		<changelog>https://xmlgraphics.apache.org/fop/changes.html</changelog>
+		<remote-id type="github">apache/xmlgraphics-fop</remote-id>
+	</upstream>
 </pkgmetadata>
