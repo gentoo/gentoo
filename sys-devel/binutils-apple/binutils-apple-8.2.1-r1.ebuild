@@ -1,9 +1,20 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 inherit eutils flag-o-matic toolchain-funcs llvm prefix
+
+# versions:
+# XCode-11.3.1                 ld64-530        cctools-949.0.1
+# XCode-11.2.1                 ld64-520        cctools-949.0.1
+# XCode-11.0                   ld64-512.4      cctools-949.0.1
+# XCode-8.2.1                  ld64-274.2      cctools-895         <== binutils-apple-8.2.1-r1  (2019)
+
+# macOS-10.15.6                dyld-750.6                          Causes build failures with Xcode-11 tools
+# macOS-10.14.4-10.14.6        dyld-655.1.1                        Causes build failures with Xcode-11 tools
+# macOS-10.13.6                dyld-551.4
+# macOS-10.12.1-10.12.3        dyld-421.2                          <== binutils-apple-8.2.1-r1,8.1
 
 LD64=ld64-274.2
 CCTOOLS_VERSION=895
@@ -22,7 +33,7 @@ SRC_URI="http://www.opensource.apple.com/tarballs/ld64/${LD64}.tar.gz
 
 LICENSE="APSL-2"
 KEYWORDS="~x64-macos"
-IUSE="lto tapi classic test"
+IUSE="lto classic test"
 RESTRICT="!test? ( test )"
 
 # ld64 can now only be compiled using llvm and libc++ since it massively uses
@@ -31,7 +42,6 @@ RESTRICT="!test? ( test )"
 # -Wa,-Q but since it's default we make llvm a static runtime dependency.
 RDEPEND="sys-devel/binutils-config
 	lto? ( app-arch/xar )
-	tapi? ( sys-libs/tapi )
 	sys-devel/llvm:*
 	sys-libs/libcxx"
 DEPEND="${RDEPEND}
@@ -200,7 +210,7 @@ compile_ld64() {
 		LTO=${ENABLE_LTO} \
 		LTO_INCDIR=${LLVM_INCDIR} \
 		LTO_LIBDIR=${LLVM_LIBDIR} \
-		TAPI=$(use tapi && echo 1 || echo 0) \
+		TAPI=0 \
 		TAPI_LIBDIR="${EPREFIX}"/usr/lib
 
 	use test && emake build_test
