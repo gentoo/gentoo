@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PLOCALES="de es fi fr hu id pl"
+PLOCALES="de es fr pl"
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/sysvinit.asc
 inherit toolchain-funcs flag-o-matic plocale verify-sig
 
@@ -142,10 +142,7 @@ src_install() {
 
 	if use nls && [[ -n "$(plocale_get_locales)" ]] ; then
 		install_locale_man_pages() {
-			local man=( man/po/${1}/* )
-			if [[ -e ${man[0]} ]]; then #836353,836371
-				doman -i18n=${1} "${man[@]}"
-			fi
+			doman -i18n=${1} man/po/${1}/*
 		}
 
 		plocale_for_each_locale install_locale_man_pages
