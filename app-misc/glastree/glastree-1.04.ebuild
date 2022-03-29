@@ -4,8 +4,9 @@
 EAPI=7
 
 DESCRIPTION="glastree is a poor mans snapshot utility using hardlinks written in perl"
-HOMEPAGE="http://www.igmus.org/code/"
-SRC_URI="http://www.igmus.org/files/${P}.tar.gz"
+HOMEPAGE="https://old.igmus.org/code/"
+SRC_URI="https://old.igmus.org/files/${P}.tar.gz"
+
 DEPEND="dev-lang/perl
 	dev-perl/Date-Calc"
 SLOT="0"
