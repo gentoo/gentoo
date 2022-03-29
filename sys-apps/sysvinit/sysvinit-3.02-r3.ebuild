@@ -3,8 +3,9 @@
 
 EAPI=7
 
+PLOCALES="de es fi fr hu id pl"
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/sysvinit.asc
-inherit toolchain-funcs flag-o-matic verify-sig
+inherit toolchain-funcs flag-o-matic plocale verify-sig
 
 DESCRIPTION="/sbin/init - parent of all processes"
 HOMEPAGE="https://savannah.nongnu.org/projects/sysvinit"
@@ -17,7 +18,7 @@ SLOT="0"
 if [[ ${PV} != *beta* ]] ; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
-IUSE="selinux ibm static"
+IUSE="selinux ibm nls static"
 
 COMMON_DEPEND="
 	selinux? (
@@ -30,9 +31,9 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	!<sys-apps/openrc-0.13
 	selinux? ( sec-policy/selinux-shutdown )"
-# We did have po4a for translations for a bit but clashes with i18n package
-# Leave it for now. bug #836362
-BDEPEND="verify-sig? ( sec-keys/openpgp-keys-sysvinit )"
+# po4a is for man page translations
+BDEPEND="nls? ( app-text/po4a )
+	verify-sig? ( sec-keys/openpgp-keys-sysvinit )"
 
 PATCHES=(
 	# bug #80220
@@ -92,6 +93,17 @@ src_prepare() {
 	if [[ ${#insert[@]} -gt 0 ]] ; then
 		printf '%s\n' '' '# Architecture specific features' "${insert[@]}" >> inittab
 	fi
+
+	delete_unused_locale() {
+		local locale=${1}
+
+		einfo "Deleting non-requested man page translations for locale=${locale}"
+		rm "${S}"/man/po/${locale}.po || die
+
+		sed -i -e "/^\[po4a_langs\]/ s:${locale}::" "${S}"/man/po/po4a.cfg || die
+	}
+
+	plocale_for_each_disabled_locale delete_unused_locale
 }
 
 src_compile() {
@@ -105,6 +117,11 @@ src_compile() {
 
 	use static && append-ldflags -static
 	emake -C src $(usex selinux 'WITH_SELINUX=yes' '')
+
+	if use nls && [[ -n "$(plocale_get_locales)" ]] ; then
+		cd man/po || die
+		po4a po4a.cfg || die
+	fi
 }
 
 src_install() {
@@ -121,6 +138,16 @@ src_install() {
 	dosbin "${FILESDIR}"/halt.sh
 
 	keepdir /etc/inittab.d
+
+	if use nls && [[ -n "$(plocale_get_locales)" ]] ; then
+		install_locale_man_pages() {
+			local locale=${1}
+
+			doman -i18n=${locale} man/po/${locale}/*
+		}
+
+		plocale_for_each_locale install_locale_man_pages
+	fi
 
 	# Dead symlink
 	find "${ED}" -xtype l -delete || die
