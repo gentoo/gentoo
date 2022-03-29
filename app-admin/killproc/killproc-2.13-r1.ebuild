@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,10 +6,10 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="killproc and assorted tools for boot scripts"
-HOMEPAGE="http://ftp.suse.com/pub/projects/init/"
-SRC_URI="ftp://ftp.suse.com/pub/projects/init/${P}.tar.gz"
+HOMEPAGE="https://ftp.suse.com/pub/projects/init/"
+SRC_URI="https://ftp.suse.com/pub/projects/init/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
