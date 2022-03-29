@@ -1,16 +1,18 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 MY_P=${PN/f/F}-$(ver_rs 4 '-')
-inherit autotools flag-o-matic user
+inherit autotools flag-o-matic
 
 DESCRIPTION="Relational database offering many ANSI SQL:2003 and some SQL:2008 features"
 HOMEPAGE="https://www.firebirdsql.org/"
 SRC_URI="
 	https://github.com/FirebirdSQL/firebird/releases/download/R$(ver_rs 1-3 '_' $(ver_cut 1-3))/${MY_P}.tar.bz2
-	doc? ( ftp://ftpc.inprise.com/pub/interbase/techpubs/ib_b60_doc.zip )"
+	doc? ( ftp://ftpc.inprise.com/pub/interbase/techpubs/ib_b60_doc.zip )
+"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="IDPL Interbase-1.0"
 SLOT="0"
@@ -27,12 +29,13 @@ DEPEND="
 	dev-libs/libedit
 	dev-libs/libtommath
 "
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
+	acct-group/firebird
+	acct-user/firebird
 	xinetd? ( virtual/inetd )
 	!sys-cluster/ganglia
 "
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.2.32703.0-unbundle.patch
@@ -48,11 +51,6 @@ pkg_pretend() {
 		ewarn "It is more secure to stop the firebird daemon before running emerge."
 		ewarn
 	fi
-}
-
-pkg_setup() {
-	enewgroup firebird 450
-	enewuser firebird 450 /bin/sh /usr/$(get_libdir)/firebird firebird
 }
 
 check_sed() {
