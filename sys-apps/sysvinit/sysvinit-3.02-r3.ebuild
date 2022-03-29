@@ -142,9 +142,10 @@ src_install() {
 
 	if use nls && [[ -n "$(plocale_get_locales)" ]] ; then
 		install_locale_man_pages() {
-			local locale=${1}
-
-			doman -i18n=${locale} man/po/${locale}/*
+			local man=( man/po/${1}/* )
+			if [[ -e ${man[0]} ]]; then #836353,836371
+				doman -i18n=${1} "${man[@]}"
+			fi
 		}
 
 		plocale_for_each_locale install_locale_man_pages
