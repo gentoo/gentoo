@@ -40,7 +40,7 @@ DEPEND="
 	)
 	lz4? ( app-arch/lz4 )
 	systemtap? ( dev-util/systemtap )
-	vaapi? ( x11-libs/libva[drm,wayland] )
+	vaapi? ( x11-libs/libva[drm(+),wayland] )
 	ffmpeg? (
 		media-video/ffmpeg[x264,vaapi?]
 	)
@@ -53,6 +53,10 @@ BDEPEND="
 	man? ( app-text/scdoc )
 	test? ( dev-libs/weston[examples,headless,remoting,screen-sharing,wayland-compositor] )
 "
+
+PATCHES=(
+	"${FILESDIR}"/waypipe-0.7.2-no-simd.patch
+)
 
 src_configure() {
 	local emesonargs=(
