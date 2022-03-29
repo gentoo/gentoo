@@ -44,6 +44,21 @@ src_prepare() {
 		# sys-apps/shadow
 		{cs,de,es,hu,nl,pl}/groups.1
 		de/su.1
+		# sys-apps/sysvinit
+		de/last.1
+		de/mesg.1
+		de/mountpoint.1
+		de/utmpdump.1
+		de/wall.1
+		{de,es,fr,pl}/initscript.5
+		{de,es,fr,pl}/inittab.5
+		fr/bootlogd.8
+		de/halt.8
+		{de,es,fr,pl}/init.8
+		{fr,pl}/killall5.8
+		{fr,pl}/pidof.8
+		de/runlevel.8
+		de/sulogin.8
 		# sys-process/procps
 		{de,fr,pl}/free.1
 		{de,fr}/pgrep.1
