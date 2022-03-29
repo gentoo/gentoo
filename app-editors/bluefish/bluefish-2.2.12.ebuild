@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,11 +8,11 @@ PYTHON_COMPAT=( python3_{7..9} )
 MY_P=${P/_/-}
 inherit autotools python-single-r1 xdg
 
-DESCRIPTION="A GTK HTML editor for the experienced web designer or programmer"
-HOMEPAGE="http://bluefish.openoffice.nl/"
+DESCRIPTION="GTK HTML editor for the experienced web designer or programmer"
+HOMEPAGE="https://bluefish.openoffice.nl/"
 SRC_URI="https://www.bennewitz.com/bluefish/stable/source/${MY_P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+"
 KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
 SLOT="0"
 IUSE="gucharmap nls python spell"
