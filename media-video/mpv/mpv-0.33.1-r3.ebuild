@@ -4,10 +4,10 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..2} luajit )
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE='threads(+)'
 
-WAF_PV=2.0.22
+WAF_PV=2.0.9
 
 inherit bash-completion-r1 flag-o-matic lua-single optfeature pax-utils python-r1 toolchain-funcs waf-utils xdg-utils
 
@@ -16,7 +16,7 @@ HOMEPAGE="https://mpv.io/ https://github.com/mpv-player/mpv"
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ppc ppc64 ~riscv x86 ~amd64-linux"
 	DOCS=( RELEASE_NOTES )
 else
 	EGIT_REPO_URI="https://github.com/mpv-player/mpv.git"
@@ -90,10 +90,10 @@ COMMON_DEPEND="
 	raspberry-pi? ( >=media-libs/raspberrypi-userland-0_pre20160305-r1 )
 	rubberband? ( >=media-libs/rubberband-1.8.0 )
 	sdl? ( media-libs/libsdl2[sound,threads,video] )
-	vaapi? ( x11-libs/libva:=[drm?,X?,wayland?] )
+	vaapi? ( x11-libs/libva:=[drm(+)?,X?,wayland?] )
 	vdpau? ( x11-libs/libvdpau )
 	vulkan? (
-		>=media-libs/libplacebo-3.104.0:=[vulkan]
+		<media-libs/libplacebo-3.104.0:=[vulkan]
 		media-libs/shaderc
 	)
 	wayland? (
@@ -336,7 +336,7 @@ pkg_postinst() {
 		elog "X11 or Mac OS Aqua. Consider enabling the 'opengl' USE flag."
 	fi
 
-	optfeature "URL support" net-misc/yt-dlp
+	optfeature "URL support" net-misc/youtube-dl
 
 	xdg_icon_cache_update
 	xdg_desktop_database_update
