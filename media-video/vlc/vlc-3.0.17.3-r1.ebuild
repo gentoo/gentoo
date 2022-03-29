@@ -10,23 +10,18 @@ MY_PV="${MY_PV/-beta/-test}"
 MY_P="${PN}-${MY_PV}"
 if [[ ${PV} = *9999 ]] ; then
 	if [[ ${PV%.9999} != ${PV} ]] ; then
-		EGIT_REPO_URI="https://git.videolan.org/git/vlc/vlc-${PV%.9999}.git"
-	else
-		EGIT_REPO_URI="https://git.videolan.org/git/vlc.git"
+		EGIT_BRANCH="3.0.x"
 	fi
+	EGIT_REPO_URI="https://code.videolan.org/videolan/vlc.git"
 	inherit git-r3
 else
-	SRC_URI="https://get.videolan.org/vlc/${PV}/${P}.tar.xz"
-	#S="${WORKDIR}/${PN}-$(ver_cut 1-2)-${PV}"
-	#SRC_URI="https://code.videolan.org/videolan/vlc-$(ver_cut 1-2)/-/archive/${PV}/vlc-$(ver_cut 1-2)-${PV}.tar.gz"
-	#if [[ ${MY_P} = ${P} ]] ; then
-	#	SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
-	#else
-	#	SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
-	#fi
-	KEYWORDS="amd64 ~arm arm64 ppc ppc64 ~riscv -sparc x86"
+	if [[ ${MY_P} = ${P} ]] ; then
+		SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
+	else
+		SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
+	fi
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv -sparc ~x86"
 fi
-
 inherit autotools flag-o-matic lua-single toolchain-funcs virtualx xdg
 
 DESCRIPTION="Media player and framework with support for most multimedia files and streaming"
@@ -35,16 +30,15 @@ HOMEPAGE="https://www.videolan.org/vlc/"
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-9" # vlc - vlccore
 
-IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast
-	dav1d dbus dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac
-	fluidsynth fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate
-	libass libcaca libnotify +libsamplerate libtar libtiger linsys lirc
-	live lua macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses
-	nfs ogg omxil optimisememory opus png projectm pulseaudio +qt5 rdp
-	run-as-root samba sdl-image sftp shout sid skins soxr speex srt ssl svg taglib
-	theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vpx wayland +X
-	x264 x265 xml zeroconf zvbi cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_mmx
-	cpu_flags_x86_sse
+IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast dav1d dbus
+	dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
+	fontconfig +gcrypt gme gnome-keyring gstreamer +gui ieee1394 jack jpeg kate
+	libass libcaca libnotify +libsamplerate libtar libtiger linsys lirc live lua
+	macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses nfs ogg
+	omxil optimisememory opus png projectm pulseaudio rdp run-as-root samba sdl-image
+	sftp shout sid skins soxr speex srt ssl svg taglib theora tremor truetype twolame
+	udev upnp vaapi v4l vdpau vnc vpx wayland +X x264 x265 xml zeroconf zvbi
+	cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse
 "
 REQUIRED_USE="
 	chromecast? ( encode )
@@ -54,7 +48,7 @@ REQUIRED_USE="
 	libtar? ( skins )
 	libtiger? ( kate )
 	lua? ( ${LUA_REQUIRED_USE} )
-	skins? ( qt5 truetype X xml )
+	skins? ( gui truetype X xml )
 	ssl? ( gcrypt )
 	vaapi? ( ffmpeg X )
 	vdpau? ( ffmpeg X )
@@ -118,6 +112,16 @@ RDEPEND="
 	gme? ( media-libs/game-music-emu )
 	gnome-keyring? ( app-crypt/libsecret )
 	gstreamer? ( >=media-libs/gst-plugins-base-1.4.5:1.0 )
+	gui? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtsvg:5
+		dev-qt/qtwidgets:5
+		X? (
+			dev-qt/qtx11extras:5
+			x11-libs/libX11
+		)
+	)
 	ieee1394? (
 		sys-libs/libavc1394
 		sys-libs/libraw1394
@@ -141,7 +145,7 @@ RDEPEND="
 	libtiger? ( media-libs/libtiger )
 	linsys? ( media-libs/zvbi )
 	lirc? ( app-misc/lirc )
-	live? ( >=media-plugins/live-2021.05.22:= )
+	live? ( media-plugins/live:= )
 	lua? ( ${LUA_DEPS} )
 	mad? ( media-libs/libmad )
 	matroska? (
@@ -163,16 +167,6 @@ RDEPEND="
 		>=media-libs/libprojectm-3.1.12:0=
 	)
 	pulseaudio? ( media-sound/pulseaudio )
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtsvg:5
-		dev-qt/qtwidgets:5
-		X? (
-			dev-qt/qtx11extras:5
-			x11-libs/libX11
-		)
-	)
 	rdp? ( >=net-misc/freerdp-2.0.0_rc0:=[client(+)] )
 	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
 	sdl-image? ( media-libs/sdl-image )
@@ -207,7 +201,7 @@ RDEPEND="
 	udev? ( virtual/udev )
 	upnp? ( net-libs/libupnp:=[ipv6] )
 	v4l? ( media-libs/libv4l:= )
-	vaapi? ( x11-libs/libva:=[drm,wayland?,X?] )
+	vaapi? ( x11-libs/libva:=[drm(+),wayland?,X?] )
 	vdpau? ( x11-libs/libvdpau )
 	vnc? ( net-libs/libvncserver )
 	vpx? ( media-libs/libvpx:= )
@@ -236,12 +230,12 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
 	"${FILESDIR}"/${PN}-3.0.6-fdk-aac-2.0.0.patch # bug 672290
 	"${FILESDIR}"/${PN}-3.0.11.1-configure_lua_version.patch
-	"${FILESDIR}"/${PN}-3.0.11.1-srt-1.4.2.patch # bug 758062
-	"${FILESDIR}"/${PN}-3.0.13-srt-1.3.0.patch
-	"${FILESDIR}"/${PN}-3.0.14-fix-live-address-api.patch # bug 795798
+	"${FILESDIR}"/${PN}-3.0.14-fix-live-address-api.patch # bug 835072
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
+
+S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	if use lua; then
@@ -261,7 +255,7 @@ src_prepare() {
 	fi
 
 	# Make it build with libtool 1.5
-	#rm m4/lt* m4/libtool.m4 || die
+	rm m4/lt* m4/libtool.m4 || die
 
 	# We are not in a real git checkout due to the absence of a .git directory.
 	touch src/revision.txt || die
@@ -340,6 +334,7 @@ src_configure() {
 		$(use_enable gme)
 		$(use_enable gnome-keyring secret)
 		$(use_enable gstreamer gst-decode)
+		$(use_enable gui qt)
 		$(use_enable ieee1394 dv1394)
 		$(use_enable jack)
 		$(use_enable jpeg)
@@ -372,7 +367,6 @@ src_configure() {
 		$(use_enable png)
 		$(use_enable projectm)
 		$(use_enable pulseaudio pulse)
-		$(use_enable qt5 qt)
 		$(use_enable rdp freerdp)
 		$(use_enable run-as-root)
 		$(use_enable samba smbclient)
@@ -458,10 +452,10 @@ src_configure() {
 	fi
 
 	# FIXME: Needs libresid-builder from libsidplay:2 which is in another directory...
-	append-ldflags "-L/usr/$(get_libdir)/sidplay/builders/"
+	append-ldflags "-L${ESYSROOT}/usr/$(get_libdir)/sidplay/builders/"
 
 	if use riscv; then
-		# Bug #803473
+		# bug #803473
 		append-libs -latomic
 	fi
 
@@ -500,11 +494,11 @@ src_install() {
 
 pkg_postinst() {
 	if [[ -z "${ROOT}" ]] && [[ -x "${EROOT}/usr/$(get_libdir)/vlc/vlc-cache-gen" ]] ; then
-		einfo "Running ${EROOT}/usr/$(get_libdir)/vlc/vlc-cache-gen on ${EROOT}/usr/$(get_libdir)/vlc/plugins/"
-		"${EROOT}/usr/$(get_libdir)/vlc/vlc-cache-gen" "${EROOT}/usr/$(get_libdir)/vlc/plugins/"
+		einfo "Running ${EPREFIX}/usr/$(get_libdir)/vlc/vlc-cache-gen on ${EROOT}/usr/$(get_libdir)/vlc/plugins/"
+		"${EPREFIX}/usr/$(get_libdir)/vlc/vlc-cache-gen" "${EROOT}/usr/$(get_libdir)/vlc/plugins/"
 	else
 		ewarn "We cannot run vlc-cache-gen (most likely ROOT != /)"
-		ewarn "Please run ${EROOT}/usr/$(get_libdir)/vlc/vlc-cache-gen manually"
+		ewarn "Please run ${EPREFIX}/usr/$(get_libdir)/vlc/vlc-cache-gen manually"
 		ewarn "If you do not do it, vlc will take a long time to load."
 	fi
 
