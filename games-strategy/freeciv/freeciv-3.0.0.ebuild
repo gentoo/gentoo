@@ -169,10 +169,14 @@ src_install() {
 			# servers, because the 'freeciv-manual' tool is then not built. Also
 			# delete freeciv-manual from the GAMES_BINDIR, because it's useless.
 			# Note: to have it localized, it should be ran from _postinst, or
-			# something like that, but then it's a PITA to avoid orphan files...
-			./tools/freeciv-manual || die
-			docinto html
-			dodoc civ2civ3*.html
+		    # something like that, but then it's a PITA to avoid orphan files...
+			# freeciv-manual only supports one ruleset argument at a time.
+			for RULESET in alien civ1 civ2 civ2civ3 classic experimental multiplayer sandbox
+			do
+			  ./tools/freeciv-manual -r ${RULESET} || die
+			  docinto rulesets/${RULESET}
+			  dodoc ${RULESET}*.html
+		   done
 		fi
 		if use sdl ; then
 			make_desktop_entry freeciv-sdl "Freeciv (SDL)" freeciv-client
