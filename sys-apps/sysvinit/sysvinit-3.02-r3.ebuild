@@ -29,6 +29,7 @@ DEPEND="${COMMON_DEPEND}
 # Old OpenRC blocker is for bug #587424
 # Keep for longer than usual given it's cheap and avoid user inconvenience
 RDEPEND="${COMMON_DEPEND}
+	!<app-i18n/man-pages-l10n-4.12.1-r2
 	!<sys-apps/openrc-0.13
 	selinux? ( sec-policy/selinux-shutdown )"
 # po4a is for man page translations
