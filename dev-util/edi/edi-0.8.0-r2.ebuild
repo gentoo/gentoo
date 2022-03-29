@@ -13,7 +13,7 @@ SRC_URI="https://github.com/Enlightenment/edi/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-2 GPL-3 LGPL-2.1-with-linking-exception"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="clang"
 
 RDEPEND="|| ( dev-libs/efl[X] dev-libs/efl[wayland] )
