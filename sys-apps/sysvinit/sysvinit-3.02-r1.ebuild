@@ -26,7 +26,10 @@ COMMON_DEPEND="
 	)"
 DEPEND="${COMMON_DEPEND}
 	virtual/os-headers"
+# Old OpenRC blocker is for bug #587424
+# Keep for longer than usual given it's cheap and avoid user inconvenience
 RDEPEND="${COMMON_DEPEND}
+	!<sys-apps/openrc-0.13
 	selinux? ( sec-policy/selinux-shutdown )"
 # po4a is for man page translations
 BDEPEND="nls? ( app-text/po4a )
