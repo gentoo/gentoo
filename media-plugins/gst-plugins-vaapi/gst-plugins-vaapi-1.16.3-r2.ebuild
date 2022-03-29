@@ -1,19 +1,18 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{8..10} )
+EAPI=6
 
-inherit gstreamer-meson python-any-r1
+inherit multilib-minimal
 
 MY_PN="gstreamer-vaapi"
 DESCRIPTION="Hardware accelerated video decoding through VA-API plugin for GStreamer"
-HOMEPAGE="https://gitlab.freedesktop.org/gstreamer/gstreamer-vaapi"
+HOMEPAGE="https://cgit.freedesktop.org/gstreamer/gstreamer-vaapi"
 SRC_URI="https://gstreamer.freedesktop.org/src/${MY_PN}/${MY_PN}-${PV}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="1.0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ppc64 x86"
 IUSE="+drm +egl gles2 +opengl wayland +X" # Keep default enabled IUSE in sync with gst-plugins-base and libva
 
 # gst-vaapi configure is based around GL platform mainly, unlike gst-plugins-bad that goes by GL API mainly; for less surprises,
@@ -45,54 +44,69 @@ REQUIRED_USE="
 GST_REQ="${PV}"
 GL_DEPS="
 	>=media-libs/gst-plugins-base-${GST_REQ}:${SLOT}[egl?,gles2?,opengl?,wayland?,X?]
-	media-libs/mesa[gles2?,egl(+)?,X?,${MULTILIB_USEDEP}]
+	media-libs/mesa[gles2?,egl(+)?,X(+),${MULTILIB_USEDEP}]
 "
 RDEPEND="
+	>=dev-libs/glib-2.40:2[${MULTILIB_USEDEP}]
+	>=media-libs/gstreamer-${GST_REQ}:${SLOT}[${MULTILIB_USEDEP}]
 	>=media-libs/gst-plugins-base-${GST_REQ}:${SLOT}[${MULTILIB_USEDEP}]
 	>=media-libs/gst-plugins-bad-${GST_REQ}:${SLOT}[${MULTILIB_USEDEP}]
-	>=x11-libs/libva-1.4.0:=[drm?,wayland?,X?,${MULTILIB_USEDEP}]
+	>=x11-libs/libva-1.4.0:=[drm(+)?,wayland?,X?,${MULTILIB_USEDEP}]
 	drm? (
 		>=virtual/libudev-208:=[${MULTILIB_USEDEP}]
-		>=x11-libs/libdrm-2.4.98[${MULTILIB_USEDEP}]
+		>=x11-libs/libdrm-2.4.46[${MULTILIB_USEDEP}]
 	)
 	gles2? ( ${GL_DEPS} )
 	opengl? ( ${GL_DEPS} )
-	wayland? ( >=dev-libs/wayland-1.11.0[${MULTILIB_USEDEP}] )
+	wayland? (
+		>=dev-libs/wayland-1.11.0[${MULTILIB_USEDEP}]
+		>=dev-libs/wayland-protocols-1.15 )
 	X? (
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXrandr-1.4.2[${MULTILIB_USEDEP}]
 		x11-libs/libXrender[${MULTILIB_USEDEP}] )
 "
-DEPEND="${RDEPEND}"
-BDEPEND="${PYTHON_DEPS}"
+DEPEND="${RDEPEND}
+	>=dev-util/gtk-doc-am-1.12
+	virtual/pkgconfig
+"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
-# FIXME: "Failed to create vaapipostproc element"
-RESTRICT="test"
-
 multilib_src_configure() {
-	local emesonargs=(
-		-Dwith_encoders=yes
-		-Dwith_drm=$(usex drm yes no)
-		-Dwith_x11=$(usex X yes no)
-		-Dwith_wayland=$(usex wayland yes no)
-	)
-
+	local myconf=()
 	if use opengl || use gles2; then
-		emesonargs+=( -Dwith_egl=$(usex egl yes no) )
+		myconf+=(
+			$(use_enable egl)
+			--with-glapi=$(usex opengl 'gl,' '')$(usex gles2 'gles2,gles3' '') # It's fine to have extra commas passed
+		)
 	else
-		emesonargs+=( -Dwith_egl=no )
+		myconf+=(
+			--disable-egl
+			--without-glapi
+		)
 	fi
 
 	if use opengl && use X; then
-		emesonargs+=( -Dwith_glx=yes )
+		myconf+=( --enable-glx )
 	else
-		emesonargs+=( -Dwith_glx=no )
+		myconf+=( --disable-glx )
 	fi
 
-	# Workaround EGL/eglplatform.h being built with X11 present
-	use X || export CFLAGS="${CFLAGS} -DEGL_NO_X11"
+	ECONF_SOURCE=${S} \
+	econf \
+		--disable-static \
+		--disable-debug \
+		--disable-examples \
+		--enable-encoders \
+		$(use_enable drm) \
+		$(use_enable X x11) \
+		$(use_enable wayland) \
+		--without-gtk \
+		"${myconf[@]}"
+}
 
-	gstreamer_multilib_src_configure
+multilib_src_install_all() {
+	einstalldocs
+	find "${ED}" -name '*.la' -delete || die
 }
