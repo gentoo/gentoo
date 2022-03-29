@@ -36,7 +36,8 @@ DEPEND="${LUA_DEPS}
 	sqlite? ( dev-db/sqlite:3 )
 	geoip? ( >=dev-cpp/yaml-cpp-0.5.1:= dev-libs/geoip )
 	sodium? ( dev-libs/libsodium:= )
-	tinydns? ( >=dev-db/tinycdb-0.77 )"
+	tinydns? ( >=dev-db/tinycdb-0.77 )
+	elibc_glibc? ( x86? ( >=sys-libs/glibc-2.34 ) )"
 RDEPEND="${DEPEND}
 	acct-user/pdns
 	acct-group/pdns"
