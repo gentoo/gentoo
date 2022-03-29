@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,14 +9,16 @@ if [[ ${PV} != 3.2.3 ]]; then
 fi
 
 WANT_LIBTOOL=none
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/waynedavison.asc
 
-inherit autotools flag-o-matic prefix systemd
+inherit autotools flag-o-matic prefix systemd verify-sig
 
 DESCRIPTION="File transfer program to keep remote files into sync"
 HOMEPAGE="https://rsync.samba.org/"
 SRC_DIR="src"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-SRC_URI="https://rsync.samba.org/ftp/rsync/${SRC_DIR}/${P/_/}.tar.gz"
+SRC_URI="https://rsync.samba.org/ftp/rsync/${SRC_DIR}/${P/_/}.tar.gz
+	verify-sig? ( https://rsync.samba.org/ftp/rsync/${SRC_DIR}/${P/_/}.tar.gz.asc )"
 S="${WORKDIR}/${P/_/}"
 
 LICENSE="GPL-3"
@@ -33,6 +35,7 @@ RDEPEND="acl? ( virtual/acl )
 	>=dev-libs/popt-1.5
 	iconv? ( virtual/libiconv )"
 DEPEND="${RDEPEND}"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-waynedavison )"
 
 src_prepare() {
 	local PATCHES=(
