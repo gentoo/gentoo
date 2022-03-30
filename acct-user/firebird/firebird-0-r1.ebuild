@@ -5,7 +5,7 @@ EAPI=8
 
 inherit acct-user
 
-DESCRIPTION="A user for net-dialup/mgetty"
+DESCRIPTION="A user for dev-db/firebird"
 
 ACCT_USER_GROUPS=( "firebird" )
 ACCT_USER_ID="520"
