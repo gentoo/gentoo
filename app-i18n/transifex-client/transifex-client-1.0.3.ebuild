@@ -216,7 +216,7 @@ S="${WORKDIR}"/cli-${PV}
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC LGPL-3 MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 
 src_test() {
 	# Skip tests depending on a network connection. Bug #831772
