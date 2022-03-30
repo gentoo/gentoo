@@ -116,69 +116,6 @@ dev-java/jboss-marshalling-serial
 # Bug #553404, #835364, removal on 2022-04-20.
 media-video/mplayer-sh
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2022-03-21)
-# Masked for testing until at least 2022-03-28.
-# Please test your packages and adapt to changes:
-# 1) dev-qt/qtwaylandscanner split from dev-qt/qtwayland
-# 2) No more unversioned Qt binaries in PATH
-# Remember to increase --backtrack if Portage acts up.
-~dev-qt/assistant-5.15.3
-~dev-qt/designer-5.15.3
-~dev-qt/linguist-5.15.3
-~dev-qt/linguist-tools-5.15.3
-~dev-qt/pixeltool-5.15.3
-~dev-qt/qdbus-5.15.3
-~dev-qt/qdbusviewer-5.15.3
-~dev-qt/qdoc-5.15.3
-~dev-qt/qt3d-5.15.3
-~dev-qt/qtbluetooth-5.15.3
-~dev-qt/qtcharts-5.15.3
-=dev-qt/qtchooser-66-r2
-~dev-qt/qtconcurrent-5.15.3
-~dev-qt/qtcore-5.15.3
-~dev-qt/qtdatavis3d-5.15.3
-~dev-qt/qtdbus-5.15.3
-~dev-qt/qtdeclarative-5.15.3
-~dev-qt/qtdiag-5.15.3
-~dev-qt/qtgamepad-5.15.3
-~dev-qt/qtgraphicaleffects-5.15.3
-~dev-qt/qtgui-5.15.3
-~dev-qt/qthelp-5.15.3
-~dev-qt/qtimageformats-5.15.3
-~dev-qt/qtlocation-5.15.3
-~dev-qt/qtmultimedia-5.15.3
-~dev-qt/qtnetworkauth-5.15.3
-~dev-qt/qtnetwork-5.15.3
-~dev-qt/qtopengl-5.15.3
-~dev-qt/qtpaths-5.15.3
-~dev-qt/qtplugininfo-5.15.3
-~dev-qt/qtpositioning-5.15.3
-~dev-qt/qtprintsupport-5.15.3
-~dev-qt/qtquickcontrols2-5.15.3
-~dev-qt/qtquickcontrols-5.15.3
-~dev-qt/qtquicktimeline-5.15.3
-~dev-qt/qtscript-5.15.3
-~dev-qt/qtscxml-5.15.3
-~dev-qt/qtsensors-5.15.3
-~dev-qt/qtserialbus-5.15.3
-~dev-qt/qtserialport-5.15.3
-~dev-qt/qtspeech-5.15.3
-~dev-qt/qtsql-5.15.3
-~dev-qt/qtsvg-5.15.3
-~dev-qt/qttest-5.15.3
-~dev-qt/qttranslations-5.15.3
-~dev-qt/qtvirtualkeyboard-5.15.3
-~dev-qt/qtwayland-5.15.3
-~dev-qt/qtwaylandscanner-5.15.3
-~dev-qt/qtwebchannel-5.15.3
-~dev-qt/qtwebengine-5.15.3_p20220329
-~dev-qt/qtwebsockets-5.15.3
-~dev-qt/qtwebview-5.15.3
-~dev-qt/qtwidgets-5.15.3
-~dev-qt/qtx11extras-5.15.3
-~dev-qt/qtxmlpatterns-5.15.3
-~dev-qt/qtxml-5.15.3
-
 # David Seifert <soap@gentoo.org> (2022-03-20)
 # Added and then left unmaintained by author, no revdeps in tree,
 # stuck on kernel 4.19, distribution model unlikely a good fit for
