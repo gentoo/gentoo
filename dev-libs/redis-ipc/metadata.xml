@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>nerdboy@gentoo.org</email>
+		<name>Stephen L Arnold</name>
+	</maintainer>
+	<longdescription lang="en">
+		Convenience library for using redis server and JSON as IPC
+		mechanism (command queues, settings, status, event channels).
+		Can use either local or network sockets via C or C++ interfaces.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">VCTLabs/redis-ipc</remote-id>
+	</upstream>
+</pkgmetadata>
