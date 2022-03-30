@@ -115,6 +115,5 @@ pkg_postinst() {
 	optfeature "ConnMan user interface for Enlightenment" net-misc/econnman
 	optfeature "system and process monitor" sys-process/evisum
 	optfeature "feature rich terminal emulator" x11-terms/terminology
-	optfeature "a modern flat enlightenment WM theme" x11-themes/e-flat-theme
 	optfeature "a matching GTK theme" x11-themes/e-gtk-theme
 }
