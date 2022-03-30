@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>base-system@gentoo.org</email>
-	</maintainer>
-	<stabilize-allarches/>
+  <maintainer type="project">
+    <email>freedesktop-bugs@gentoo.org</email>
+    <name>Gentoo Freedesktop Project</name>
+  </maintainer>
 </pkgmetadata>
