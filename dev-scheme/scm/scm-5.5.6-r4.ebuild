@@ -1,17 +1,19 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-#version magic thanks to masterdriverz and UberLord using bash array instead of tr
+# Version magic thanks to masterdriverz and UberLord using bash array instead of tr
 trarr="0abcdefghi"
 MY_PV="$(ver_cut 1)${trarr:$(ver_cut 2):1}$(ver_cut 3)"
-
 MY_P=${PN}-${MY_PV}
-S=${WORKDIR}/${PN}
+
+inherit toolchain-funcs
+
 DESCRIPTION="SCM is a Scheme implementation from the author of slib"
-SRC_URI="http://groups.csail.mit.edu/mac/ftpdir/scm/${MY_P}.zip"
 HOMEPAGE="http://swiss.csail.mit.edu/~jaffer/SCM"
+SRC_URI="http://groups.csail.mit.edu/mac/ftpdir/scm/${MY_P}.zip"
+S=${WORKDIR}/${PN}
 
 SLOT="0"
 LICENSE="LGPL-3"
@@ -28,6 +30,15 @@ RDEPEND="${DEPEND}"
 PATCHES=( "${FILESDIR}/${P}-multiplefixes.patch"
 	"${FILESDIR}/${P}-respect-ldflags.patch" )
 
+src_prepare() {
+	default
+
+	sed \
+		-e "s|\"gcc\"|\"$(tc-getCC)\"|g" \
+		-e "s|\"ld\"|\"$(tc-getLD)\"|g" \
+		-i ./build.scm || die
+}
+
 src_compile() {
 	# SLIB is required to build SCM.
 	local slibpath="${EPREFIX}/usr/share/slib/"
@@ -38,7 +49,7 @@ src_compile() {
 	fi
 
 	einfo "Making scmlit"
-	emake -j1 scmlit clean
+	emake -j1 CC=$(tc-getCC) scmlit clean
 
 	einfo "Building scm"
 	local features=""
