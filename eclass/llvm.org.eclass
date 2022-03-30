@@ -300,15 +300,10 @@ llvm.org_src_unpack() {
 		grep -E -r -L "^Gentoo-Component:.*(${components[*]})" \
 			"${WORKDIR}/llvm-gentoo-patchset-${LLVM_PATCHSET}" |
 			xargs rm
-		assert
-
-		if ver_test -ge 13.0.1_rc3; then
-			# fail if no patches remain
-			if [[ ! -s ${WORKDIR}/llvm-gentoo-patchset-${LLVM_PATCHSET} ]]
-			then
-				die "No patches in the patchset apply to the package"
-			fi
-		fi
+		local status=( "${PIPESTATUS[@]}" )
+		[[ ${status[1]} -ne 0 ]] && die "rm failed"
+		[[ ${status[0]} -ne 0 ]] &&
+			die "No patches in the patchset apply to the package"
 	fi
 }
 
