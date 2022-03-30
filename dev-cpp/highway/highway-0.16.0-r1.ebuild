@@ -25,6 +25,10 @@ DEPEND="test? ( dev-cpp/gtest[${MULTILIB_USEDEP}] )"
 
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-AVX512-detection-on-IceLakeClient.patch
+)
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)
