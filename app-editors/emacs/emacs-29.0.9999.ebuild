@@ -232,9 +232,9 @@ src_configure() {
 	elif use gtk && ! use X; then
 		einfo "Configuring to build with pure GTK (without X11) support"
 		myconf+=" --with-pgtk --without-x --without-ns"
+		myconf+=" --with-toolkit-scroll-bars" #836392
 		myconf+=" $(use_with gconf)"
 		myconf+=" $(use_with gsettings)"
-		myconf+=" $(use_with toolkit-scroll-bars)"
 		myconf+=" $(use_with harfbuzz)"
 		myconf+=" $(use_with m17n-lib libotf)"
 		myconf+=" $(use_with m17n-lib m17n-flt)"
