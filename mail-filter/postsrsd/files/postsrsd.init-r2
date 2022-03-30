@@ -1,10 +1,10 @@
 #!/sbin/openrc-run
-# Copyright 2015 Gentoo Foundation
+# Copyright 2015-2022 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 PIDFILE=/var/run/$SVCNAME.pid
-SRS_DOMAIN=`postconf -h mydomain || true`
-SRS_EXCLUDE_DOMAINS=
+SRS_DOMAIN="${SRS_DOMAIN:-`postconf -h mydomain || true`}"
+SRS_EXCLUDE_DOMAINS="${SRS_EXCLUDE_DOMAINS:-''}"
 
 depend() {
 	need net
@@ -18,6 +18,7 @@ start() {
 						-- -f "$SRS_FORWARD_PORT" -r "$SRS_REVERSE_PORT" \
 							-d "$SRS_DOMAIN" -s "$SRS_SECRET" -a "$SRS_SEPARATOR" \
 							-u "$RUN_AS" -p "$PIDFILE" -c "$CHROOT" \
+							-n "$SRS_HASHLENGTH" -N "$SRS_HASHMIN" -l "$SRS_LISTEN_ADDR" \
 							-D -X"$SRS_EXCLUDE_DOMAINS"
 	eend $?
 }
