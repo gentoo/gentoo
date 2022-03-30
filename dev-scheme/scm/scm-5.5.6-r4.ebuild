@@ -17,7 +17,7 @@ S=${WORKDIR}/${PN}
 
 SLOT="0"
 LICENSE="LGPL-3"
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 x86 ~amd64-linux"
 IUSE="arrays bignums cautious dynamic-linking engineering-notation gsubr inexact ioext libscm macro ncurses posix readline regex sockets unix"
 
 BDEPEND="app-arch/unzip"
