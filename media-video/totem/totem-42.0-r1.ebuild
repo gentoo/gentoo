@@ -46,6 +46,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	media-plugins/grilo-plugins:0.3
+	media-plugins/gst-plugins-gtk:1.0[opengl]
 	media-plugins/gst-plugins-meta:1.0
 	media-plugins/gst-plugins-taglib:1.0
 	x11-themes/adwaita-icon-theme
