@@ -1,0 +1,17 @@
+Upstream: https://github.com/uclouvain/openjpeg/commit/0afbdcf3e6d0d2bd2e16a0c4d513ee3cf86e460d
+From: xiaoxiaoafeifei <lliangliang2007@163.com>
+Date: Wed, 14 Jul 2021 09:35:13 +0800
+Subject: [PATCH] Fix segfault in src/bin/jp2/opj_decompress.c due to
+ uninitialized pointer (fixes #1368) (#1369)
+
+--- a/src/bin/jp2/opj_decompress.c
++++ b/src/bin/jp2/opj_decompress.c
+@@ -1356,7 +1356,7 @@ int main(int argc, char **argv)
+         int it_image;
+         num_images = get_num_images(img_fol.imgdirpath);
+ 
+-        dirptr = (dircnt_t*)malloc(sizeof(dircnt_t));
++        dirptr = (dircnt_t*)calloc(1, sizeof(dircnt_t));
+         if (!dirptr) {
+             destroy_parameters(&parameters);
+             return EXIT_FAILURE;
