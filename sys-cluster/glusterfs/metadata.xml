@@ -25,6 +25,7 @@
 		<flag name="georeplication">Enable support for georeplication (requires <pkg>dev-lang/python</pkg>)</flag>
 		<flag name="ipv6">Use IPv6 by default, requires libtirpc</flag>
 		<flag name="libtirpc">Build against <pkg>net-libs/libtirpc</pkg> for RPC support</flag>
+		<flag name="nfs">Enable legacy gluster-nfs server xlator.</flag>
 		<flag name="rsyslog">Install configuration snippet for <pkg>app-admin/rsyslog</pkg></flag>
 	</use>
 </pkgmetadata>
