@@ -3,11 +3,12 @@
 
 EAPI="7"
 
-inherit autotools prefix multilib-minimal
+inherit autotools prefix multilib-minimal verify-sig
 
 DESCRIPTION="A Client that groks URLs"
 HOMEPAGE="https://curl.haxx.se/"
-SRC_URI="https://curl.haxx.se/download/${P}.tar.xz"
+SRC_URI="https://curl.haxx.se/download/${P}.tar.xz
+	verify-sig? ( https://curl.haxx.se/download/${P}.tar.xz.asc )"
 
 LICENSE="curl"
 SLOT="0"
@@ -15,6 +16,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 IUSE="adns alt-svc brotli +ftp gnutls gopher hsts +http2 idn +imap ipv6 kerberos ldap mbedtls nss +openssl +pop3 +progress-meter rtmp samba +smtp ssh ssl sslv3 static-libs test telnet +tftp threads zstd"
 IUSE+=" curl_ssl_gnutls curl_ssl_mbedtls curl_ssl_nss +curl_ssl_openssl"
 IUSE+=" nghttp3 quiche"
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/danielstenberg.asc
 
 # c-ares must be disabled for threads
 # only one default ssl provider can be enabled
@@ -78,7 +80,8 @@ BDEPEND="dev-lang/perl
 	virtual/pkgconfig
 	test? (
 		sys-apps/diffutils
-	)"
+	)
+	verify-sig? ( sec-keys/openpgp-keys-danielstenberg )"
 
 DOCS=( CHANGES README docs/{FEATURES.md,INTERNALS.md,FAQ,BUGS.md,CONTRIBUTE.md} )
 
