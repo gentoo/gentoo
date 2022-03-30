@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE="kerberos"
 
 RDEPEND="
