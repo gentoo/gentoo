@@ -13,8 +13,8 @@
 		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
 	</maintainer>
-        <upstream>
-                <bugs-to>https://github.com/lunarmodules/luaexpat/issues</bugs-to>
-                <remote-id type="github">luaexpat/issues</remote-id>
-        </upstream>
+	<upstream>
+		<bugs-to>https://github.com/lunarmodules/luaexpat/issues</bugs-to>
+		<remote-id type="github">luaexpat/issues</remote-id>
+	</upstream>
 </pkgmetadata>
