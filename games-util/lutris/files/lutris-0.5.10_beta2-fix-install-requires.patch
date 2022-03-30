@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index 0388119..51bc8e1 100755
+--- a/setup.py
++++ b/setup.py
+@@ -57,7 +57,7 @@ setup(
+         'evdev',
+         'requests',
+         'python-magic',
+-        "distro>=1.7.0;platform_system='Linux'",
++        'distro>=1.7.0',
+         'lxml'
+     ],
+     url='https://lutris.net',
