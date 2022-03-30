@@ -19,14 +19,11 @@ else
 	if [[ ${PV} == *_beta* ]] ; then
 		SRC_URI="https://github.com/lutris/lutris/archive/refs/tags/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
 		S="${WORKDIR}"/${P/_/-}
-
-		KEYWORDS="~amd64 ~x86"
 	else
 		SRC_URI="https://lutris.net/releases/${P/-/_}.tar.xz"
 		S="${WORKDIR}/${PN}"
-
-		KEYWORDS="~amd64 ~x86"
 	fi
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-3"
