@@ -1,0 +1,449 @@
+# Copyright 2021-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Generate base ebuild via
+# cargo-ebuild ebuild --manifest-path sq/Cargo.toml --package-name sequoia-sq
+# and then extract contents of CRATES variable.
+
+EAPI=8
+
+CRATES="
+	addr2line-0.16.0
+	adler-1.0.2
+	aead-0.3.2
+	aes-0.6.0
+	aes-soft-0.6.4
+	aesni-0.10.0
+	aho-corasick-0.7.18
+	ansi_term-0.11.0
+	ansi_term-0.12.1
+	anyhow-1.0.44
+	ascii-canvas-3.0.0
+	assert_cmd-2.0.4
+	atty-0.2.14
+	autocfg-0.1.7
+	autocfg-1.0.1
+	backtrace-0.3.62
+	base64-0.13.0
+	bindgen-0.57.0
+	bit-set-0.5.2
+	bit-vec-0.6.3
+	bitflags-1.3.2
+	bitvec-0.20.4
+	block-buffer-0.7.3
+	block-buffer-0.9.0
+	block-modes-0.7.0
+	block-padding-0.1.5
+	block-padding-0.2.1
+	blowfish-0.7.0
+	bstr-0.2.17
+	bumpalo-3.8.0
+	byte-tools-0.3.1
+	byteorder-1.4.3
+	bytes-1.1.0
+	bzip2-0.4.3
+	bzip2-sys-0.1.11+1.0.8
+	capnp-0.13.6
+	capnp-futures-0.13.2
+	capnp-rpc-0.13.1
+	cast-0.2.7
+	cast5-0.9.0
+	cc-1.0.71
+	cexpr-0.4.0
+	cfg-if-0.1.10
+	cfg-if-1.0.0
+	chrono-0.4.19
+	chrono-tz-0.6.0
+	chrono-tz-build-0.0.2
+	cipher-0.2.5
+	clang-sys-1.2.2
+	clap-2.33.3
+	cmac-0.5.1
+	const-oid-0.5.2
+	core-foundation-0.9.2
+	core-foundation-sys-0.8.3
+	cpufeatures-0.2.1
+	crc32fast-1.2.1
+	criterion-0.3.5
+	criterion-plot-0.4.4
+	crossbeam-channel-0.5.1
+	crossbeam-deque-0.8.1
+	crossbeam-epoch-0.9.5
+	crossbeam-utils-0.8.5
+	crunchy-0.2.2
+	crypto-mac-0.10.1
+	crypto-mac-0.11.1
+	csv-1.1.6
+	csv-core-0.1.10
+	ctor-0.1.21
+	ctr-0.6.0
+	curve25519-dalek-3.2.0
+	dbl-0.3.1
+	der-0.3.5
+	des-0.6.0
+	deunicode-0.4.3
+	diff-0.1.12
+	difflib-0.4.0
+	digest-0.8.1
+	digest-0.9.0
+	dirs-2.0.2
+	dirs-next-2.0.0
+	dirs-sys-0.3.6
+	dirs-sys-next-0.1.2
+	doc-comment-0.3.3
+	dtoa-0.4.8
+	dyn-clone-1.0.4
+	eax-0.3.0
+	ecdsa-0.11.1
+	ed25519-1.2.0
+	ed25519-dalek-1.0.1
+	either-1.6.1
+	elliptic-curve-0.9.12
+	ena-0.14.0
+	fake-simd-0.1.2
+	fehler-1.0.0
+	fehler-macros-1.0.0
+	ff-0.9.0
+	file_diff-1.0.0
+	filetime-0.2.15
+	fixedbitset-0.2.0
+	flate2-1.0.22
+	float-cmp-0.9.0
+	fnv-1.0.7
+	foreign-types-0.3.2
+	foreign-types-shared-0.1.1
+	form_urlencoded-1.0.1
+	fs2-0.4.3
+	funty-1.1.0
+	futures-0.3.17
+	futures-channel-0.3.17
+	futures-core-0.3.17
+	futures-executor-0.3.17
+	futures-io-0.3.17
+	futures-macro-0.3.17
+	futures-sink-0.3.17
+	futures-task-0.3.17
+	futures-util-0.3.17
+	generator-0.7.0
+	generic-array-0.12.4
+	generic-array-0.14.4
+	getopts-0.2.21
+	getrandom-0.1.16
+	getrandom-0.2.3
+	gimli-0.25.0
+	git-testament-0.2.0
+	git-testament-derive-0.1.12
+	glob-0.3.0
+	globset-0.4.8
+	globwalk-0.8.1
+	group-0.9.0
+	h2-0.3.7
+	half-1.8.2
+	hashbrown-0.11.2
+	heck-0.3.3
+	hermit-abi-0.1.19
+	hmac-0.11.0
+	http-0.2.5
+	http-body-0.4.4
+	httparse-1.5.1
+	httpdate-1.0.1
+	humansize-1.1.1
+	hyper-0.14.14
+	hyper-tls-0.5.0
+	idea-0.3.0
+	idna-0.2.3
+	ignore-0.4.18
+	indexmap-1.7.0
+	instant-0.1.12
+	itertools-0.8.2
+	itertools-0.9.0
+	itertools-0.10.1
+	itoa-0.4.8
+	js-sys-0.3.55
+	lalrpop-0.19.6
+	lalrpop-util-0.19.6
+	lazy_static-1.4.0
+	lazycell-1.3.0
+	libc-0.2.105
+	libloading-0.7.1
+	libm-0.2.1
+	linked-hash-map-0.5.4
+	lock_api-0.4.5
+	log-0.4.14
+	loom-0.5.2
+	maplit-1.0.2
+	matchers-0.0.1
+	matches-0.1.9
+	md-5-0.9.1
+	memchr-2.4.1
+	memoffset-0.6.4
+	memsec-0.6.0
+	miniz_oxide-0.4.4
+	mio-0.7.14
+	miow-0.3.7
+	native-tls-0.2.8
+	nettle-7.0.2
+	nettle-sys-2.0.8
+	new_debug_unreachable-1.0.4
+	no-std-compat-0.4.1
+	nom-5.1.2
+	normalize-line-endings-0.3.0
+	ntapi-0.3.6
+	num-bigint-0.2.6
+	num-bigint-dig-0.6.1
+	num-integer-0.1.44
+	num-iter-0.1.42
+	num-traits-0.2.14
+	num_cpus-1.13.0
+	object-0.27.1
+	once_cell-1.8.0
+	oorandom-11.1.3
+	opaque-debug-0.2.3
+	opaque-debug-0.3.0
+	openssl-0.10.36
+	openssl-probe-0.1.4
+	openssl-sys-0.9.67
+	p256-0.8.1
+	pandoc-0.8.6
+	pandoc_ast-0.7.3
+	parking_lot-0.11.2
+	parking_lot_core-0.8.5
+	parse-zoneinfo-0.3.0
+	peeking_take_while-0.1.2
+	pem-0.8.3
+	percent-encoding-2.1.0
+	pest-2.1.3
+	pest_derive-2.1.0
+	pest_generator-2.1.3
+	pest_meta-2.1.3
+	petgraph-0.5.1
+	phf-0.10.0
+	phf_codegen-0.10.0
+	phf_generator-0.10.0
+	phf_shared-0.8.0
+	phf_shared-0.10.0
+	pico-args-0.4.2
+	pikchr-0.1.1
+	pin-project-lite-0.2.7
+	pin-utils-0.1.0
+	pkcs8-0.6.1
+	pkg-config-0.3.22
+	plotters-0.3.1
+	plotters-backend-0.3.2
+	plotters-svg-0.3.1
+	ppv-lite86-0.2.15
+	precomputed-hash-0.1.1
+	predicates-2.1.1
+	predicates-core-1.0.2
+	predicates-tree-1.0.4
+	proc-macro-error-1.0.4
+	proc-macro-error-attr-1.0.4
+	proc-macro-hack-0.5.19
+	proc-macro-nested-0.1.7
+	proc-macro2-1.0.32
+	pulldown-cmark-0.8.0
+	quickcheck-1.0.3
+	quickcheck_macros-1.0.0
+	quote-1.0.10
+	radium-0.6.2
+	rand-0.7.3
+	rand-0.8.4
+	rand_chacha-0.2.2
+	rand_chacha-0.3.1
+	rand_core-0.5.1
+	rand_core-0.6.3
+	rand_hc-0.2.0
+	rand_hc-0.3.1
+	rayon-1.5.1
+	rayon-core-1.9.1
+	redox_syscall-0.2.10
+	redox_users-0.4.0
+	regex-1.5.4
+	regex-automata-0.1.10
+	regex-syntax-0.6.25
+	remove_dir_all-0.5.3
+	remove_dir_all-0.7.0
+	ripemd160-0.9.1
+	roadmap-0.2.0
+	rpassword-5.0.1
+	rsa-0.3.0
+	rustc-demangle-0.1.21
+	rustc-hash-1.1.0
+	rustc_version-0.4.0
+	rustversion-1.0.5
+	ryu-1.0.5
+	same-file-1.0.6
+	schannel-0.1.19
+	scoped-tls-1.0.0
+	scopeguard-1.1.0
+	security-framework-2.4.2
+	security-framework-sys-2.4.2
+	semver-1.0.4
+	serde-1.0.130
+	serde-aux-2.3.0
+	serde_cbor-0.11.2
+	serde_derive-1.0.130
+	serde_json-1.0.68
+	serde_yaml-0.8.21
+	sha-1-0.8.2
+	sha-1-0.9.8
+	sha1collisiondetection-0.2.4
+	sha2-0.9.8
+	sharded-slab-0.1.4
+	shell-words-1.0.0
+	shlex-0.1.1
+	signature-1.3.2
+	simple_asn1-0.4.1
+	siphasher-0.3.7
+	slab-0.4.5
+	slug-0.1.4
+	smallvec-1.7.0
+	socket2-0.3.19
+	socket2-0.4.2
+	spin-0.5.2
+	spki-0.3.0
+	state-0.5.2
+	string_cache-0.8.2
+	strsim-0.8.0
+	structopt-0.3.25
+	structopt-derive-0.4.18
+	subplot-0.3.1
+	subplot-build-0.1.0
+	subplotlib-0.1.1
+	subplotlib-derive-0.1.0
+	subtle-2.4.1
+	syn-1.0.81
+	synstructure-0.12.6
+	tap-1.0.1
+	tempfile-3.2.0
+	tempfile-fast-0.3.4
+	tera-1.13.0
+	term-0.7.0
+	term_size-0.3.2
+	termtree-0.2.3
+	textwrap-0.11.0
+	thiserror-1.0.30
+	thiserror-impl-1.0.30
+	thread_local-1.1.3
+	time-0.1.43
+	tiny-keccak-2.0.2
+	tinytemplate-1.2.1
+	tinyvec-1.5.0
+	tinyvec_macros-0.1.0
+	tokio-1.14.0
+	tokio-macros-1.6.0
+	tokio-native-tls-0.3.0
+	tokio-util-0.6.8
+	tower-service-0.3.1
+	tracing-0.1.29
+	tracing-appender-0.1.2
+	tracing-attributes-0.1.18
+	tracing-core-0.1.21
+	tracing-log-0.1.2
+	tracing-serde-0.1.2
+	tracing-subscriber-0.2.25
+	try-lock-0.2.3
+	twofish-0.5.0
+	typenum-1.14.0
+	ucd-trie-0.1.3
+	uncased-0.9.6
+	unescape-0.1.0
+	unic-char-property-0.9.0
+	unic-char-range-0.9.0
+	unic-common-0.9.0
+	unic-segment-0.9.0
+	unic-ucd-segment-0.9.0
+	unic-ucd-version-0.9.0
+	unicase-2.6.0
+	unicode-bidi-0.3.7
+	unicode-normalization-0.1.19
+	unicode-segmentation-1.8.0
+	unicode-width-0.1.9
+	unicode-xid-0.2.2
+	url-2.2.2
+	vcpkg-0.2.15
+	vec_map-0.8.2
+	version_check-0.9.3
+	wait-timeout-0.2.0
+	walkdir-2.3.2
+	want-0.3.0
+	wasi-0.9.0+wasi-snapshot-preview1
+	wasi-0.10.2+wasi-snapshot-preview1
+	wasm-bindgen-0.2.78
+	wasm-bindgen-backend-0.2.78
+	wasm-bindgen-macro-0.2.78
+	wasm-bindgen-macro-support-0.2.78
+	wasm-bindgen-shared-0.2.78
+	web-sys-0.3.55
+	win-crypto-ng-0.4.0
+	winapi-0.3.9
+	winapi-i686-pc-windows-gnu-0.4.0
+	winapi-util-0.1.5
+	winapi-x86_64-pc-windows-gnu-0.4.0
+	wyz-0.2.0
+	x25519-dalek-1.1.1
+	xxhash-rust-0.8.2
+	yaml-rust-0.4.5
+	zbase32-0.1.2
+	zeroize-1.3.0
+	zeroize_derive-1.1.1
+"
+
+inherit bash-completion-r1 cargo
+
+DESCRIPTION="CLI of the Sequoia OpenPGP implementation"
+HOMEPAGE="https://sequoia-pgp.org/ https://gitlab.com/sequoia-pgp/sequoia"
+
+SRC_URI="
+	https://gitlab.com/sequoia-pgp/sequoia/-/archive/sq/v${PV}/${PN}-v${PV}.tar.bz2
+	$(cargo_crate_uris)
+"
+
+LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 CC0-1.0 GPL-2 GPL-2+ GPL-3 GPL-3+ ISC LGPL-2+ LGPL-3 LGPL-3+ MIT MPL-2.0 Unlicense ZLIB"
+SLOT="0"
+KEYWORDS="~amd64 ~ppc64"
+
+S="${WORKDIR}/${PN}-v${PV}"
+
+QA_FLAGS_IGNORED="usr/bin/sq"
+
+COMMON_DEPEND="
+	dev-libs/gmp:=
+	dev-libs/nettle:=
+	dev-libs/openssl:=
+"
+
+DEPEND="
+	sys-devel/clang
+	${COMMON_DEPEND}
+"
+RDEPEND="${COMMON_DEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+"
+
+src_compile() {
+	cd sq || die
+	# Setting CARGO_TARGET_DIR is required to have the build system
+	# create the bash and zsh completion files.
+	CARGO_TARGET_DIR="${S}/target" cargo_src_compile
+}
+
+src_test() {
+	cd sq || die
+	cargo_src_test
+}
+
+src_install() {
+	cargo_src_install --path sq
+
+	doman sq/man-sq-net-autocrypt/*
+
+	newbashcomp target/sq.bash sq
+
+	insinto /usr/share/zsh/site-functions
+	doins target/_sq
+
+	insinto /usr/share/fish/vendor_completions.d
+	doins target/sq.fish
+}
