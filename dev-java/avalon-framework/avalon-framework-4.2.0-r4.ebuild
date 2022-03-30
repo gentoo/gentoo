@@ -16,7 +16,7 @@ SRC_URI="mirror://apache/avalon/avalon-framework/source/${P}-src.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="4.2"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 
 CP_DEPEND="
 	dev-java/avalon-logkit:2.0
