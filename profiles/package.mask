@@ -351,14 +351,6 @@ sci-chemistry/votca-ctp
 # Bug #834317. Removal on 2022-03-31.
 dev-libs/injeqt
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2022-02-27)
-# No revdeps since begin of gentoo.git history, outdated and unmaintained.
-# Bug #834307. Removal on 2022-03-29.
-x11-libs/libyui
-x11-libs/libyui-gtk
-x11-libs/libyui-ncurses
-x11-libs/libyui-qt
-
 # Anton Fischl <github@fischl-online.de> (2022-02-23)
 # Version 2.5.* is not meant for production according to upstream
 =app-backup/burp-2.5*
