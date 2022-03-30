@@ -1,0 +1,136 @@
+include following patches :
+
+fde214c5f4dc5ffd0360401a68df33182edf9226 Refactor c11/atomic patch for riscv64
+326711f86719e6ce7b0422a7970ce8f8b1598f25 Make sure to list Threads::Threads in JPEGXL_DEC_INTERNAL_LIBS
+b12bb7a5f37d6bcaf134cfab7828ae08c4a0e60d Remove duplicate reference to hwy library
+87fe7c16e1fb2e21b6a1dca26782950ae1559d99 libjxl implementation rely on c11 atomics
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fc1bbac..cce9748 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -191,6 +191,15 @@ endif()  # JPEGXL_STATIC
+ set(THREADS_PREFER_PTHREAD_FLAG YES)
+ find_package(Threads REQUIRED)
+ 
++# These settings are important to drive check_cxx_source_compiles
++# See CMP0067 (min cmake version is 3.10 anyway)
++set(CMAKE_CXX_STANDARD 11)
++set(CMAKE_CXX_EXTENSIONS OFF)
++set(CMAKE_CXX_STANDARD_REQUIRED YES)
++
++# Atomics
++find_package(Atomics REQUIRED)
++
+ if(JPEGXL_STATIC)
+   if (MINGW)
+     # In MINGW libstdc++ uses pthreads directly. When building statically a
+@@ -298,10 +307,6 @@ endif ()  # !MSVC
+ 
+ include(GNUInstallDirs)
+ 
+-set(CMAKE_CXX_STANDARD 11)
+-set(CMAKE_CXX_EXTENSIONS OFF)
+-set(CMAKE_CXX_STANDARD_REQUIRED YES)
+-
+ add_subdirectory(third_party)
+ 
+ # Copy the JXL license file to the output build directory.
+diff --git a/cmake/FindAtomics.cmake b/cmake/FindAtomics.cmake
+new file mode 100644
+index 0000000..9a6cdc3
+--- /dev/null
++++ b/cmake/FindAtomics.cmake
+@@ -0,0 +1,53 @@
++# Original issue:
++# * https://gitlab.kitware.com/cmake/cmake/-/issues/23021#note_1098733
++#
++# For reference:
++# * https://gcc.gnu.org/wiki/Atomic/GCCMM
++#
++# riscv64 specific:
++# * https://lists.debian.org/debian-riscv/2022/01/msg00009.html
++#
++# ATOMICS_FOUND        - system has c++ atomics
++# ATOMICS_LIBRARIES    - libraries needed to use c++ atomics
++
++include(CheckCXXSourceCompiles)
++
++# RISC-V only has 32-bit and 64-bit atomic instructions. GCC is supposed
++# to convert smaller atomics to those larger ones via masking and
++# shifting like LLVM, but it’s a known bug that it does not. This means
++# anything that wants to use atomics on 1-byte or 2-byte types needs
++# -latomic, but not 4-byte or 8-byte (though it does no harm).
++set(atomic_code
++    "
++     #include <atomic>
++     #include <cstdint>
++     std::atomic<uint8_t> n8 (0); // riscv64
++     std::atomic<uint64_t> n64 (0); // armel, mipsel, powerpc
++     int main() {
++       ++n8;
++       ++n64;
++       return 0;
++     }")
++
++check_cxx_source_compiles("${atomic_code}" ATOMICS_LOCK_FREE_INSTRUCTIONS)
++
++if(ATOMICS_LOCK_FREE_INSTRUCTIONS)
++  set(ATOMICS_FOUND TRUE)
++  set(ATOMICS_LIBRARIES)
++else()
++  set(CMAKE_REQUIRED_LIBRARIES "-latomic")
++  check_cxx_source_compiles("${atomic_code}" ATOMICS_IN_LIBRARY)
++  set(CMAKE_REQUIRED_LIBRARIES)
++  if(ATOMICS_IN_LIBRARY)
++    set(ATOMICS_LIBRARY atomic)
++    include(FindPackageHandleStandardArgs)
++    find_package_handle_standard_args(Atomics DEFAULT_MSG ATOMICS_LIBRARY)
++    set(ATOMICS_LIBRARIES ${ATOMICS_LIBRARY})
++    unset(ATOMICS_LIBRARY)
++  else()
++    if(Atomics_FIND_REQUIRED)
++      message(FATAL_ERROR "Neither lock free instructions nor -latomic found.")
++    endif()
++  endif()
++endif()
++unset(atomic_code)
+diff --git a/lib/jxl.cmake b/lib/jxl.cmake
+index 97dfd73..8f69894 100644
+--- a/lib/jxl.cmake
++++ b/lib/jxl.cmake
+@@ -346,6 +346,8 @@ set(JPEGXL_DEC_INTERNAL_LIBS
+   brotlidec-static
+   brotlicommon-static
+   hwy
++  Threads::Threads
++  ${ATOMICS_LIBRARIES}
+ )
+ 
+ if(JPEGXL_ENABLE_PROFILER)
+@@ -355,7 +357,6 @@ endif()
+ set(JPEGXL_INTERNAL_LIBS
+   ${JPEGXL_DEC_INTERNAL_LIBS}
+   brotlienc-static
+-  Threads::Threads
+ )
+ 
+ # strips the -static suffix from all the elements in LIST
+@@ -467,7 +468,7 @@ add_library(jxl_dec-static STATIC
+   $<TARGET_OBJECTS:jxl_dec-obj>
+ )
+ target_link_libraries(jxl_dec-static
+-  PUBLIC ${JPEGXL_COVERAGE_FLAGS} ${JPEGXL_DEC_INTERNAL_LIBS} hwy)
++  PUBLIC ${JPEGXL_COVERAGE_FLAGS} ${JPEGXL_DEC_INTERNAL_LIBS})
+ target_include_directories(jxl_dec-static PUBLIC
+   "${PROJECT_SOURCE_DIR}"
+   "${CMAKE_CURRENT_SOURCE_DIR}/include"
+@@ -488,7 +489,7 @@ endif()
+ # to do, remove $<TARGET_OBJECTS:jxl_dec-obj> here and depend on jxl_dec-static
+ add_library(jxl-static STATIC ${JPEGXL_INTERNAL_OBJECTS})
+ target_link_libraries(jxl-static
+-  PUBLIC ${JPEGXL_COVERAGE_FLAGS} ${JPEGXL_INTERNAL_LIBS} hwy)
++  PUBLIC ${JPEGXL_COVERAGE_FLAGS} ${JPEGXL_INTERNAL_LIBS})
+ target_include_directories(jxl-static PUBLIC
+   "${PROJECT_SOURCE_DIR}"
+   "${CMAKE_CURRENT_SOURCE_DIR}/include"
