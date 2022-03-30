@@ -166,7 +166,6 @@ media-video/mplayer-sh
 ~dev-qt/qtwayland-5.15.3
 ~dev-qt/qtwaylandscanner-5.15.3
 ~dev-qt/qtwebchannel-5.15.3
-~dev-qt/qtwebengine-5.15.3_p20220310
 ~dev-qt/qtwebengine-5.15.3_p20220329
 ~dev-qt/qtwebsockets-5.15.3
 ~dev-qt/qtwebview-5.15.3
