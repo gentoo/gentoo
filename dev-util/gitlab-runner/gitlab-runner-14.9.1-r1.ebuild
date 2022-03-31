@@ -34,7 +34,7 @@ src_compile() {
 }
 
 src_test() {
-	ego test
+	CI=0 ego test
 }
 
 src_install() {
