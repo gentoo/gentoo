@@ -90,6 +90,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 RESTRICT="mirror"
 
+QA_FLAGS_IGNORED="usr/bin/difft"
+
 PATCHES=(
 	"${FILESDIR}/difftastic-0.24.0-regex-dep.patch"
 )
