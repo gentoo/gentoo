@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}-Source.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/2"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ppc ~ppc64 ~sparc ~x86"
 IUSE="bluetooth doc irda usb"
 
 BDEPEND="
