@@ -84,7 +84,7 @@ if [[ ${PV} == 9999 ]] ; then
 	# Required for man-page generation
 	BDEPEND+=" dev-ruby/asciidoctor"
 else
-	BDEPEND+=" sec-keys/openpgp-keys-karelzak"
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-karelzak )"
 fi
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) su? ( pam )"
