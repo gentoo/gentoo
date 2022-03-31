@@ -1,0 +1,12 @@
+Respect user's pkg-config
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,6 @@
+-GTK_INCLUDE = `pkg-config gtk+-2.0 --cflags`
+-GTK_LIB = `pkg-config gtk+-2.0 --libs`
++PKG_CONFIG ?= pkg-config
++GTK_INCLUDE = $(shell ${PKG_CONFIG} gtk+-2.0 --cflags)
++GTK_LIB = $(shel ${PKG_CONFIG} gtk+-2.0 --libs)
+ 
+ INSTALLDIR = ${DESTDIR}/usr/lib/gkrellm2/plugins
+ 
