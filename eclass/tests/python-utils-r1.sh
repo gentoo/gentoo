@@ -41,7 +41,7 @@ test_fix_shebang() {
 	local expect=${3}
 	local args=( "${@:4}" )
 
-	tbegin "python_fix_shebang${args[@]+ ${args[*]}} from ${from} to ${to} (exp: ${expect})"
+	tbegin "python_fix_shebang${args[@]+ ${args[*]}} from ${from@Q} to ${to@Q} (exp: ${expect@Q})"
 
 	echo "${from}" > "${tmpfile}"
 	output=$( EPYTHON=${to} python_fix_shebang "${args[@]}" -q "${tmpfile}" 2>&1 )
@@ -156,36 +156,60 @@ fi
 test_var PYTHON_PKG_DEP pypy3 '*dev-python/pypy3*:0='
 test_var PYTHON_SCRIPTDIR pypy3 /usr/lib/python-exec/pypy3
 
-# generic shebangs
-test_fix_shebang '#!/usr/bin/python' python3.6 '#!/usr/bin/python3.6'
-test_fix_shebang '#!/usr/bin/python' pypy3 '#!/usr/bin/pypy3'
+for EPREFIX in '' /foo; do
+	einfo "with EPREFIX=${EPREFIX@Q}"
+	eindent
+	# generic shebangs
+	test_fix_shebang '#!/usr/bin/python' python3.6 \
+		"#!${EPREFIX}/usr/bin/python3.6"
+	test_fix_shebang '#!/usr/bin/python' pypy3 \
+		"#!${EPREFIX}/usr/bin/pypy3"
 
-# python2/python3 matching
-test_fix_shebang '#!/usr/bin/python3' python3.6 '#!/usr/bin/python3.6'
-test_fix_shebang '#!/usr/bin/python2' python3.6 FAIL
-test_fix_shebang '#!/usr/bin/python2' python3.6 '#!/usr/bin/python3.6' --force
+	# python2/python3 matching
+	test_fix_shebang '#!/usr/bin/python3' python3.6 \
+		"#!${EPREFIX}/usr/bin/python3.6"
+	test_fix_shebang '#!/usr/bin/python2' python3.6 FAIL
+	test_fix_shebang '#!/usr/bin/python2' python3.6 \
+		"#!${EPREFIX}/usr/bin/python3.6" --force
 
-# pythonX.Y matching (those mostly test the patterns)
-test_fix_shebang '#!/usr/bin/python2.7' python3.2 FAIL
-test_fix_shebang '#!/usr/bin/python2.7' python3.2 '#!/usr/bin/python3.2' --force
-test_fix_shebang '#!/usr/bin/python3.2' python3.2 '#!/usr/bin/python3.2'
+	# pythonX.Y matching (those mostly test the patterns)
+	test_fix_shebang '#!/usr/bin/python2.7' python3.2 FAIL
+	test_fix_shebang '#!/usr/bin/python2.7' python3.2 \
+		"#!${EPREFIX}/usr/bin/python3.2" --force
+	test_fix_shebang '#!/usr/bin/python3.2' python3.2 \
+		"#!${EPREFIX}/usr/bin/python3.2"
 
-# fancy path handling
-test_fix_shebang '#!/mnt/python2/usr/bin/python' python3.6 \
-	'#!/mnt/python2/usr/bin/python3.6'
-test_fix_shebang '#!/mnt/python2/usr/bin/python3' python3.8 \
-	'#!/mnt/python2/usr/bin/python3.8'
-test_fix_shebang '#!/mnt/python2/usr/bin/env python' python3.8 \
-	'#!/mnt/python2/usr/bin/env python3.8'
-test_fix_shebang '#!/mnt/python2/usr/bin/python3 python3' python3.8 \
-	'#!/mnt/python2/usr/bin/python3.8 python3'
-test_fix_shebang '#!/mnt/python2/usr/bin/python2 python3' python3.8 FAIL
-test_fix_shebang '#!/mnt/python2/usr/bin/python2 python3' python3.8 \
-	'#!/mnt/python2/usr/bin/python3.8 python3' --force
-test_fix_shebang '#!/usr/bin/foo' python3.8 FAIL
+	# fancy path handling
+	test_fix_shebang '#!/mnt/python2/usr/bin/python' python3.6 \
+		"#!${EPREFIX}/usr/bin/python3.6"
+	test_fix_shebang '#!/mnt/python2/usr/bin/python3' python3.8 \
+		"#!${EPREFIX}/usr/bin/python3.8"
+	test_fix_shebang '#!/mnt/python2/usr/bin/env python' python3.8 \
+		"#!${EPREFIX}/usr/bin/python3.8"
+	test_fix_shebang '#!/mnt/python2/usr/bin/python3 python3' python3.8 \
+		"#!${EPREFIX}/usr/bin/python3.8 python3"
+	test_fix_shebang '#!/mnt/python2/usr/bin/python2 python3' python3.8 FAIL
+	test_fix_shebang '#!/mnt/python2/usr/bin/python2 python3' python3.8 \
+		"#!${EPREFIX}/usr/bin/python3.8 python3" --force
+	test_fix_shebang '#!/usr/bin/foo' python3.8 FAIL
 
-# regression test for bug #522080
-test_fix_shebang '#!/usr/bin/python ' python3.8 '#!/usr/bin/python3.8 '
+	# regression test for bug #522080
+	test_fix_shebang '#!/usr/bin/python ' python3.8 \
+		"#!${EPREFIX}/usr/bin/python3.8 "
+
+	# test random whitespace in shebang
+	test_fix_shebang '#! /usr/bin/python' python3.8 \
+		"#!${EPREFIX}/usr/bin/python3.8"
+	test_fix_shebang '#!  /usr/bin/python' python3.8 \
+		"#!${EPREFIX}/usr/bin/python3.8"
+	test_fix_shebang '#! /usr/bin/env   python' python3.8 \
+		"#!${EPREFIX}/usr/bin/python3.8"
+
+	# test preserving options
+	test_fix_shebang '#! /usr/bin/python -b' python3.8 \
+		"#!${EPREFIX}/usr/bin/python3.8 -b"
+	eoutdent
+done
 
 # check _python_impl_matches behavior
 test_is "_python_impl_matches python3_6 -3" 0
