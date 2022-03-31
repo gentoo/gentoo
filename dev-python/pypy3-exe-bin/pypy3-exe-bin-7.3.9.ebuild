@@ -34,7 +34,7 @@ RDEPEND="
 	dev-libs/expat:0/0
 	app-arch/bzip2:0/1
 	sys-libs/ncurses:0/6
-	!dev-python/pypy-exe:${SLOT}
+	!dev-python/pypy3-exe:${SLOT}
 "
 
 PYPY_PV=${PV%_p*}

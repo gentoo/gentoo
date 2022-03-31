@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,7 +32,7 @@ RDEPEND=">=sys-libs/zlib-1.1.3:0/1
 	dev-libs/expat:0/0
 	app-arch/bzip2:0/1
 	sys-libs/ncurses:0/6
-	!dev-python/pypy-exe:${SLOT}"
+	!dev-python/pypy3-exe:${SLOT}"
 
 PYPY_PV=${SLOT%_p*}
 QA_PREBUILT="
