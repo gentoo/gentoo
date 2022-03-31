@@ -413,7 +413,7 @@ media-sound/mpg123 cpu_flags_x86_mmx cpu_flags_x86_3dnow cpu_flags_x86_3dnowext
 # Alistair Bush <ali_bush@gentoo.org> (2007-05-08)
 # Mask doc flag for fop as nearly impossible to
 # run javadoc target.  see #177585
->=dev-java/fop-0.93 doc
+dev-java/fop:0 doc
 
 # Alexis Ballier <aballier@gentoo.org> (2008-08-08)
 # x86 asm only, it won't be built on amd64 if mmx useflag is enabled but that
