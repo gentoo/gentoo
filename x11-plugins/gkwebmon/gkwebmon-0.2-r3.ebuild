@@ -14,9 +14,10 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 
 # The Makefile links with -lssl.
-RDEPEND="
-	app-admin/gkrellm:2[X]
-	dev-libs/openssl"
+RDEPEND="app-admin/gkrellm:2[X]
+	dev-libs/glib:2
+	dev-libs/openssl
+	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
