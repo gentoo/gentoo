@@ -4,7 +4,7 @@
 EAPI=7
 
 PLOCALES="ar bn ca cs da de es et fi fr hi_IN hu is it ja kk ko lt lv nb nl nn pl pt_BR pt_PT ro ru sk sr sr@ijekavian sr@ijekavianlatin sr@latin sv tr uk zh_CN zh_TW"
-inherit cmake plocale systemd tmpfiles
+inherit cmake linux-info plocale systemd tmpfiles
 
 DESCRIPTION="Simple Desktop Display Manager"
 HOMEPAGE="https://github.com/sddm/sddm"
@@ -59,6 +59,11 @@ PATCHES=(
 	"${FILESDIR}/${P}-qt-5.15.2.patch"
 	"${FILESDIR}/${P}-cve-2020-28049.patch" # bug 753104
 )
+
+pkg_setup() {
+	local CONFIG_CHECK="~DRM"
+	use kernel_linux && linux-info_pkg_setup
+}
 
 src_prepare() {
 	cmake_src_prepare
