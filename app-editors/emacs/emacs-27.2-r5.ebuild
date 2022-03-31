@@ -133,8 +133,7 @@ BDEPEND="sys-apps/texinfo
 
 IDEPEND="app-eselect/eselect-emacs"
 
-RDEPEND+=" ${IDEPEND}
-	!app-editors/emacs-vcs:27"
+RDEPEND+=" ${IDEPEND}"
 
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
