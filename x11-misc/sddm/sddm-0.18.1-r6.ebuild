@@ -17,7 +17,7 @@ IUSE="elogind +pam systemd test"
 REQUIRED_USE="?? ( elogind systemd )"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
+COMMON_DEPEND="
 	acct-group/sddm
 	acct-user/sddm
 	>=dev-qt/qtcore-5.9.4:5
@@ -33,8 +33,11 @@ RDEPEND="
 	systemd? ( sys-apps/systemd:= )
 	!systemd? ( sys-power/upower )
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	test? ( >=dev-qt/qttest-5.9.4:5 )
+"
+RDEPEND="${COMMON_DEPEND}
+	!systemd? ( gui-libs/display-manager-init )
 "
 BDEPEND="
 	dev-python/docutils
