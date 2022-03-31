@@ -3,8 +3,7 @@
 
 EAPI=7
 
-PLOCALES="ar bn ca cs da de es et fi fr hi_IN hu is it ja kk ko lt lv nb nl nn pl pt_BR pt_PT ro ru sk sr sr@ijekavian sr@ijekavianlatin sr@latin sv tr uk zh_CN zh_TW"
-inherit cmake linux-info plocale systemd tmpfiles
+inherit cmake linux-info systemd tmpfiles
 
 DESCRIPTION="Simple Desktop Display Manager"
 HOMEPAGE="https://github.com/sddm/sddm"
@@ -67,12 +66,6 @@ pkg_setup() {
 
 src_prepare() {
 	cmake_src_prepare
-
-	disable_locale() {
-		sed -e "/${1}\.ts/d" -i data/translations/CMakeLists.txt || die
-	}
-	plocale_find_changes "data/translations" "" ".ts"
-	plocale_for_each_disabled_locale disable_locale
 
 	if ! use test; then
 		sed -e "/^find_package/s/ Test//" -i CMakeLists.txt || die
