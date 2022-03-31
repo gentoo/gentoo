@@ -21,7 +21,7 @@ SRC_URI="https://github.com/crypto-rb/x25519/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="BSD"
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64 ~arm ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ppc ppc64 ~x86"
 IUSE=""
 
 all_ruby_prepare() {
