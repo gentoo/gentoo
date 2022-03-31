@@ -114,7 +114,7 @@ S=${WORKDIR}/${PN}-${PV/_alpha/-alpha.}
 
 # License set may be more restrictive as OR is not respected
 # use cargo-license for a more accurate license picture
-LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSL-1.0 MIT Unlicense ZLIB"
+LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 MIT Unlicense ZLIB"
 SLOT="0"
 KEYWORDS="~amd64"
 RESTRICT="mirror"
