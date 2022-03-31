@@ -31,7 +31,7 @@ RDEPEND="
 	dev-libs/expat:0=
 	bzip2? ( app-arch/bzip2:0= )
 	ncurses? ( sys-libs/ncurses:0= )
-	!dev-python/pypy3-exe-bin:${PYPY_PV}
+	!dev-python/pypy3-exe-bin:${SLOT}
 "
 DEPEND="
 	${RDEPEND}
