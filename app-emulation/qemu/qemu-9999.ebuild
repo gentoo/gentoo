@@ -85,7 +85,6 @@ IUSE_USER_TARGETS="
 	hexagon
 	mipsn32
 	mipsn32el
-	ppc64abi32
 	ppc64le
 	sparc32plus
 "
@@ -308,7 +307,6 @@ QA_WX_LOAD="usr/bin/qemu-i386
 	usr/bin/qemu-or1k
 	usr/bin/qemu-ppc
 	usr/bin/qemu-ppc64
-	usr/bin/qemu-ppc64abi32
 	usr/bin/qemu-sh4
 	usr/bin/qemu-sh4eb
 	usr/bin/qemu-sparc
