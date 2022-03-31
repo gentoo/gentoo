@@ -110,6 +110,12 @@ pkg_postinst() {
 	elog "Starting with 0.18.0, SDDM no longer installs /etc/sddm.conf"
 	elog "Use it to override specific options. SDDM defaults are now"
 	elog "found in: /usr/share/sddm/sddm.conf.d/00default.conf"
+	elog
+	elog "NOTE: If SDDM startup appears to hang then entropy pool is too low."
+	elog "This can be fixed by configuring one of the following:"
+	elog "  - Enable CONFIG_RANDOM_TRUST_CPU in linux kernel"
+	elog "  - # emerge sys-apps/haveged && rc-update add haveged boot"
+	elog "  - # emerge sys-apps/rng-tools && rc-update add rngd boot"
 
 	systemd_reenable sddm.service
 }
