@@ -1001,25 +1001,30 @@ _python_wrapper_setup() {
 # @FUNCTION: python_fix_shebang
 # @USAGE: [-f|--force] [-q|--quiet] <path>...
 # @DESCRIPTION:
-# Replace the shebang in Python scripts with the current Python
-# implementation (EPYTHON). If a directory is passed, works recursively
-# on all Python scripts.
+# Replace the shebang in Python scripts with the full path
+# to the current Python implementation (PYTHON, including EPREFIX).
+# If a directory is passed, works recursively on all Python scripts
+# found inside the directory tree.
 #
-# Only files having a 'python*' shebang will be modified. Files with
-# other shebang will either be skipped when working recursively
-# on a directory or treated as error when specified explicitly.
+# Only files having a Python shebang (a path to any known Python
+# interpreter, optionally preceded by env(1) invocation) will
+# be processed.  Files with any other shebang will either be skipped
+# silently when a directory was passed, or an error will be reported
+# for any files without Python shebangs specified explicitly.
 #
-# Shebangs matching explicitly current Python version will be left
-# unmodified. Shebangs requesting another Python version will be treated
-# as fatal error, unless --force is given.
+# Shebangs that are compatible with the current Python version will be
+# mangled unconditionally.  Incompatible shebangs will cause a fatal
+# error, unless --force is specified.
 #
-# --force causes the function to replace even shebangs that require
-# incompatible Python version. --quiet causes the function not to list
-# modified files verbosely.
+# --force causes the function to replace shebangs with incompatible
+# Python version (but not non-Python shebangs).  --quiet causes
+# the function not to list modified files verbosely.
 python_fix_shebang() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	[[ ${EPYTHON} ]] || die "${FUNCNAME}: EPYTHON unset (pkg_setup not called?)"
+	local PYTHON
+	_python_export "${EPYTHON}" PYTHON
 
 	local force quiet
 	while [[ ${@} ]]; do
@@ -1035,13 +1040,13 @@ python_fix_shebang() {
 
 	local path f
 	for path; do
-		local any_correct any_fixed is_recursive
+		local any_fixed is_recursive
 
 		[[ -d ${path} ]] && is_recursive=1
 
 		while IFS= read -r -d '' f; do
 			local shebang i
-			local error= from=
+			local error= match=
 
 			# note: we can't ||die here since read will fail if file
 			# has no newline characters
@@ -1050,64 +1055,36 @@ python_fix_shebang() {
 			# First, check if it's shebang at all...
 			if [[ ${shebang} == '#!'* ]]; then
 				local split_shebang=()
-				read -r -a split_shebang <<<${shebang} || die
+				read -r -a split_shebang <<<${shebang#"#!"} || die
 
-				# Match left-to-right in a loop, to avoid matching random
-				# repetitions like 'python2.7 python2'.
-				for i in "${split_shebang[@]}"; do
-					case "${i}" in
-						*"${EPYTHON}")
-							debug-print "${FUNCNAME}: in file ${f#${D%/}}"
-							debug-print "${FUNCNAME}: shebang matches EPYTHON: ${shebang}"
+				local in_path=${split_shebang[0]}
+				local from='^#! *[^ ]*'
+				# if the first component is env(1), skip it
+				if [[ ${in_path} == */env ]]; then
+					in_path=${split_shebang[1]}
+					from+=' *[^ ]*'
+				fi
 
-							# Nothing to do, move along.
-							any_correct=1
-							from=${EPYTHON}
-							break
-							;;
-						*python|*python[23])
-							debug-print "${FUNCNAME}: in file ${f#${D%/}}"
-							debug-print "${FUNCNAME}: rewriting shebang: ${shebang}"
-
-							if [[ ${i} == *python2 ]]; then
-								from=python2
-								if [[ ! ${force} ]]; then
-									error=1
-								fi
-							elif [[ ${i} == *python3 ]]; then
-								from=python3
-							else
-								from=python
-							fi
-							break
-							;;
-						*python[23].[0-9]|*python3.[1-9][0-9]|*pypy|*pypy3|*jython[23].[0-9])
-							# Explicit mismatch.
-							if [[ ! ${force} ]]; then
-								error=1
-							else
-								case "${i}" in
-									*python[23].[0-9])
-										from="python[23].[0-9]";;
-									*python3.[1-9][0-9])
-										from="python3.[1-9][0-9]";;
-									*pypy)
-										from="pypy";;
-									*pypy3)
-										from="pypy3";;
-									*jython[23].[0-9])
-										from="jython[23].[0-9]";;
-									*)
-										die "${FUNCNAME}: internal error in 2nd pattern match";;
-								esac
-							fi
-							break
-							;;
-					esac
-				done
+				case ${in_path##*/} in
+					"${EPYTHON}")
+						match=1
+						;;
+					python|python[23])
+						match=1
+						[[ ${in_path##*/} == python2 ]] && error=1
+						;;
+					python[23].[0-9]|python3.[1-9][0-9]|pypy|pypy3|jython[23].[0-9])
+						# Explicit mismatch.
+						match=1
+						error=1
+						;;
+				esac
 			fi
 
-			if [[ ! ${error} && ! ${from} ]]; then
+			# disregard mismatches in force mode
+			[[ ${force} ]] && error=
+
+			if [[ ! ${match} ]]; then
 				# Non-Python shebang. Allowed in recursive mode,
 				# disallowed when specifying file explicitly.
 				[[ ${is_recursive} ]] && continue
@@ -1119,13 +1096,9 @@ python_fix_shebang() {
 			fi
 
 			if [[ ! ${error} ]]; then
-				# We either want to match ${from} followed by space
-				# or at end-of-string.
-				if [[ ${shebang} == *${from}" "* ]]; then
-					sed -i -e "1s:${from} :${EPYTHON} :" "${f}" || die
-				else
-					sed -i -e "1s:${from}$:${EPYTHON}:" "${f}" || die
-				fi
+				debug-print "${FUNCNAME}: in file ${f#${D%/}}"
+				debug-print "${FUNCNAME}: rewriting shebang: ${shebang}"
+				sed -i -e "1s@${from}@#!${PYTHON}@" "${f}" || die
 				any_fixed=1
 			else
 				eerror "The file has incompatible shebang:"
@@ -1138,12 +1111,7 @@ python_fix_shebang() {
 
 		if [[ ! ${any_fixed} ]]; then
 			eerror "QA error: ${FUNCNAME}, ${path#${D%/}} did not match any fixable files."
-			if [[ ${any_correct} ]]; then
-				eerror "All files have ${EPYTHON} shebang already."
-			else
-				eerror "There are no Python files in specified directory."
-			fi
-
+			eerror "There are no Python files in specified directory."
 			die "${FUNCNAME} did not match any fixable files"
 		fi
 	done
