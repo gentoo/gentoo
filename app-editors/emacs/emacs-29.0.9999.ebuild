@@ -40,7 +40,7 @@ DESCRIPTION="The extensible, customizable, self-documenting real-time display ed
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars webp wide-int +X Xaw3d xft +xpm xwidgets zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars webp wide-int +X Xaw3d xft +xpm xwidgets zlib"
 RESTRICT="test"
 
 X_DEPEND="x11-libs/libICE
@@ -123,7 +123,6 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 		webp? ( media-libs/libwebp:0= )
 		imagemagick? ( >=media-gfx/imagemagick-6.6.2:0= )
 		!aqua? (
-			gconf? ( >=gnome-base/gconf-2.26.2 )
 			gsettings? ( >=dev-libs/glib-2.28.6 )
 			gtk? ( !X? (
 				media-libs/fontconfig
@@ -233,7 +232,7 @@ src_configure() {
 		einfo "Configuring to build with pure GTK (without X11) support"
 		myconf+=" --with-pgtk --without-x --without-ns"
 		myconf+=" --with-toolkit-scroll-bars" #836392
-		myconf+=" $(use_with gconf)"
+		myconf+=" --without-gconf"
 		myconf+=" $(use_with gsettings)"
 		myconf+=" $(use_with harfbuzz)"
 		myconf+=" $(use_with m17n-lib libotf)"
@@ -242,7 +241,7 @@ src_configure() {
 	else
 		# X11
 		myconf+=" --with-x --without-pgtk --without-ns"
-		myconf+=" $(use_with gconf)"
+		myconf+=" --without-gconf"
 		myconf+=" $(use_with gsettings)"
 		myconf+=" $(use_with toolkit-scroll-bars)"
 		myconf+=" $(use_with xpm)"
