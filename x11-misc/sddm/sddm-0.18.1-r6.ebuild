@@ -46,7 +46,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${P}-respect-user-flags.patch"
-	"${FILESDIR}/${PN}-0.18.0-Xsession.patch" # bug 611210
+	"${FILESDIR}/${P}-Xsession.patch" # bug 611210
 	"${FILESDIR}/${PN}-0.18.0-sddmconfdir.patch"
 	# fix for groups: https://github.com/sddm/sddm/issues/1159
 	"${FILESDIR}/${P}-revert-honor-PAM-supplemental-groups.patch"
@@ -54,12 +54,10 @@ PATCHES=(
 	# fix for ReuseSession=true
 	"${FILESDIR}/${P}-only-reuse-online-sessions.patch"
 	# TODO: fix properly
-	"${FILESDIR}/${PN}-0.16.0-ck2-revert.patch" # bug 633920
 	"${FILESDIR}/pam-1.4-substack.patch"
 	# upstream git develop branch:
 	"${FILESDIR}/${P}-qt-5.15.2.patch"
-	# bug 753104
-	"${FILESDIR}/${P}-cve-2020-28049.patch"
+	"${FILESDIR}/${P}-cve-2020-28049.patch" # bug 753104
 )
 
 src_prepare() {
