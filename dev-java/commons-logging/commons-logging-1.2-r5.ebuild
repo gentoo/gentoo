@@ -14,7 +14,7 @@ SRC_URI="mirror://apache/commons/logging/source/${P}-src.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 IUSE="avalon-framework avalon-logkit log4j servletapi test"
 REQUIRED_USE="doc? ( avalon-framework avalon-logkit log4j servletapi )"
 RESTRICT="!test? ( test ) !servletapi? ( test )"
