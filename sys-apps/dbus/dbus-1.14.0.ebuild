@@ -207,6 +207,9 @@ multilib_src_compile() {
 }
 
 src_test() {
+	# https://bugs.gentoo.org/836560
+	addwrite /proc/self/oom_score_adj
+
 	# DBUS_TEST_MALLOC_FAILURES=0 to avoid huge test logs
 	# https://gitlab.freedesktop.org/dbus/dbus/-/blob/master/CONTRIBUTING.md#L231
 	DBUS_TEST_MALLOC_FAILURES=0 DBUS_VERBOSE=1 virtx emake -j1 -C "${TBD}" check
