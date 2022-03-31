@@ -17,7 +17,7 @@ DESCRIPTION="Easy-to-use Java logging toolkit"
 HOMEPAGE="https://avalon.apache.org/closed.html"
 SRC_URI="https://archive.apache.org/dist/excalibur/avalon-logkit/source/avalon-logkit-${PV}-src.tar.gz"
 
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 LICENSE="Apache-2.0"
 SLOT="2.0"
 
