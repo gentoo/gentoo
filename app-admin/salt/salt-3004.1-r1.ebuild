@@ -71,7 +71,7 @@ RDEPEND="
 	gnupg? ( dev-python/python-gnupg[${PYTHON_USEDEP}] )
 	profile? ( dev-python/yappi[${PYTHON_USEDEP}] )
 	vim-syntax? ( app-vim/salt-vim )
-	zeromq? ( >=dev-python/pyzmq-2.2.0[${PYTHON_USEDEP}] )
+	zeromq? ( >=dev-python/pyzmq-19.0.0[${PYTHON_USEDEP}] )
 "
 BDEPEND="
 	test? (
@@ -109,6 +109,7 @@ PATCHES=(
 	"${FILESDIR}/salt-3003.1-tests.patch"
 	"${FILESDIR}/salt-3004.1-jinja-3.patch"
 	"${FILESDIR}/salt-3004.1-tests.patch"
+	"${FILESDIR}/salt-3004.1-relax-pyzmq-dep.patch"
 )
 
 python_prepare_all() {
