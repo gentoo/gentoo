@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake linux-info systemd tmpfiles
 
@@ -13,16 +13,10 @@ LICENSE="GPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0 public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="elogind +pam systemd test"
-RESTRICT="!test? ( test )"
 
 REQUIRED_USE="?? ( elogind systemd )"
+RESTRICT="!test? ( test )"
 
-BDEPEND="
-	dev-python/docutils
-	>=dev-qt/linguist-tools-5.9.4:5
-	kde-frameworks/extra-cmake-modules:5
-	virtual/pkgconfig
-"
 RDEPEND="
 	acct-group/sddm
 	acct-user/sddm
@@ -41,6 +35,12 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? ( >=dev-qt/qttest-5.9.4:5 )
+"
+BDEPEND="
+	dev-python/docutils
+	>=dev-qt/linguist-tools-5.9.4:5
+	kde-frameworks/extra-cmake-modules:5
+	virtual/pkgconfig
 "
 
 PATCHES=(
