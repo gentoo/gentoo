@@ -35,11 +35,6 @@ app-emulation/qemu qemu_softmmu_targets_ppc qemu_softmmu_targets_ppc64
 # dev-python/pyilmbase isn't keyworded on arm
 media-gfx/alembic python
 
-# Sam James <sam@gentoo.org> (2021-10-26)
-# Avoid dragging in obscure parts of dev-qt/* unless/until
-# somebody needs them. bug #816981.
-dev-python/QtPy pyside2
-
 # Tomáš Mózes <hydrapolic@gmail.com> (2021-09-25)
 # Unkeyworded dependencies.
 app-admin/syslog-ng mongodb
