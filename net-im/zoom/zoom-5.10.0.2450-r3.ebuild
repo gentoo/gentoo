@@ -34,7 +34,7 @@ RDEPEND="!games-engines/zoom
 	net-print/cups
 	sys-apps/dbus
 	sys-apps/util-linux
-	sys-libs/glibc
+	|| ( >=sys-libs/glibc-2.34[-clone3(+)] <sys-libs/glibc-2.34 )
 	virtual/opengl
 	x11-libs/cairo
 	x11-libs/libdrm
