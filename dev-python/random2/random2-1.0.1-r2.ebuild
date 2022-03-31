@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 BDEPEND="app-arch/unzip"
 
