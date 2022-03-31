@@ -11,7 +11,7 @@ SRC_URI="https://www.leonerd.org.uk/code/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~riscv ~x86 ~x64-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86 ~x64-macos"
 
 BDEPEND="
 	dev-lang/perl
