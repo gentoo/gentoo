@@ -25,6 +25,7 @@ BDEPEND="
 	dev-python/wheel[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pypiserver[${PYTHON_USEDEP}]
+		dev-python/virtualenv[${PYTHON_USEDEP}]
 	)
 "
 
