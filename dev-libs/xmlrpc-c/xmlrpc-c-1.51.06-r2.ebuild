@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -64,6 +64,8 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	default_src_compile
+	# Needed for tests, bug #836469
+	cp "${BUILD_DIR}"/include/xmlrpc-c/config.h "${S}"/include/xmlrpc-c || die
 	# Tools building is broken in this release
 	#multilib_is_native_abi && use tools && emake -rC "${S}"/tools
 }
