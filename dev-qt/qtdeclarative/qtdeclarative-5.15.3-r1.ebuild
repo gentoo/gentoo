@@ -60,7 +60,6 @@ src_install() {
 	qt5-build_src_install
 	qt5_symlink_binary_to_path qml 5
 	qt5_symlink_binary_to_path qmleasing 5
-	qt5_symlink_binary_to_path qmljs 5
 	qt5_symlink_binary_to_path qmlpreview 5
 	qt5_symlink_binary_to_path qmlscene 5
 }
