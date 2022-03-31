@@ -143,6 +143,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.0.1-0001-fix-kepler-compute_arch-if-CUDA-toolkit-11-is-used.patch
 	"${FILESDIR}"/${PN}-8.2.0-freetype-2.10.3-provide-FT_CALLBACK_DEF.patch
 	"${FILESDIR}"/${PN}-9.0.3-IO-FFMPEG-support-FFmpeg-5.0-API-changes.patch
+	"${FILESDIR}"/${P}-adjust-to-find-binaries.patch
 )
 
 DOCS=( CONTRIBUTING.md README.md )
