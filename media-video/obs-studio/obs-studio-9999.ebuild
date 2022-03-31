@@ -138,30 +138,35 @@ src_unpack() {
 	fi
 }
 
+src_prepare() {
+	# We have not enabled VST before, but now it will be looked for unconditionally if
+	# any plugins are enabled, so make the VST part a warning instead of fatal for now.
+	sed -i 's/FATAL_ERROR "obs-vst submodule not available/WARNING "obs-vst submodule not available/' \
+		plugins/CMakeLists.txt || die
+
+	cmake_src_prepare
+}
+
 src_configure() {
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
 		$(usev browser -DCEF_ROOT_DIR=../${CEF_DIR})
-		-DBUILD_BROWSER=$(usex browser)
-		-DBUILD_VST=no
-		-DENABLE_WAYLAND=$(usex wayland)
-		-DDISABLE_ALSA=$(usex !alsa)
-		-DDISABLE_DECKLINK=$(usex !decklink)
-		-DDISABLE_FREETYPE=$(usex !truetype)
-		-DDISABLE_JACK=$(usex !jack)
-		-DDISABLE_LIBFDK=$(usex !fdk)
+		-DENABLE_ALSA=$(usex alsa)
+		-DENABLE_AJA=OFF
+		-DENABLE_BROWSER=$(usex browser)
+		-DENABLE_DECKLINK=$(usex decklink)
+		-DENABLE_FREETYPE=$(usex truetype)
+		-DENABLE_JACK=$(usex jack)
+		-DENABLE_LIBFDK=$(usex fdk)
 		-DENABLE_PIPEWIRE=$(usex pipewire)
-		-DDISABLE_PULSEAUDIO=$(usex !pulseaudio)
-		-DDISABLE_SPEEXDSP=$(usex !speex)
-		-DDISABLE_V4L2=$(usex !v4l)
-		-DDISABLE_VLC=$(usex !vlc)
+		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
+		-DENABLE_RTMPS=$(usex ssl ON OFF)
+		-DENABLE_SPEEXDSP=$(usex speex)
+		-DENABLE_V4L2=$(usex v4l)
+		-DENABLE_VLC=$(usex vlc)
+		-DENABLE_WAYLAND=$(usex wayland)
 		-DOBS_MULTIARCH_SUFFIX=${libdir#lib}
 		-DUNIX_STRUCTURE=1
-		-DWITH_RTMPS=$(usex ssl)
-
-		# deprecated and currently cause issues
-		# https://github.com/obsproject/obs-studio/pull/4560#issuecomment-826345608
-		-DLIBOBS_PREFER_IMAGEMAGICK=no
 	)
 
 	if [[ ${PV} != 9999 ]]; then
@@ -172,12 +177,12 @@ src_configure() {
 
 	if use lua || use python; then
 		mycmakeargs+=(
-			-DDISABLE_LUA=$(usex !lua)
-			-DDISABLE_PYTHON=$(usex !python)
-			-DENABLE_SCRIPTING=yes
+			-DENABLE_SCRIPTING_LUA=$(usex lua)
+			-DENABLE_SCRIPTING_PYTHON=$(usex python)
+			-DENABLE_SCRIPTING=ON
 		)
 	else
-		mycmakeargs+=( -DENABLE_SCRIPTING=no )
+		mycmakeargs+=( -DENABLE_SCRIPTING=OFF )
 	fi
 
 	cmake_src_configure
