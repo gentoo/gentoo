@@ -19,6 +19,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">pylint</remote-id>
-    <remote-id type="github">pycqa/pylint</remote-id>
+    <remote-id type="github">PyCQA/pylint</remote-id>
   </upstream>
 </pkgmetadata>
