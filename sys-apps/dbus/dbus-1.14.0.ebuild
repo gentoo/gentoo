@@ -63,10 +63,11 @@ DOC_CONTENTS="
 TBD="${WORKDIR}/${P}-tests-build"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-enable-elogind.patch"
-	"${FILESDIR}/${PN}-daemon-optional.patch" # bug #653136
+	"${FILESDIR}/dbus-enable-elogind.patch"
+	"${FILESDIR}/dbus-daemon-optional.patch" # bug #653136
 
-	"${FILESDIR}/${P}-x-autoconf-fixes.patch"
+	"${FILESDIR}/dbus-1.14.0-x-autoconf-fixes.patch"
+	"${FILESDIR}/dbus-1.12.22-check-fd.patch"
 )
 
 pkg_setup() {
