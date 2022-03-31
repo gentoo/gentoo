@@ -13,7 +13,6 @@ standards documents. Furthermore, PowerDNS interfaces with almost any database.
 <use>
 	<flag name="lua-records">Enable LUA records.</flag>
 	<flag name="mydns">Making it possible to use a MyDNS MySQL database with PowerDNS (not recommended for new deployments).</flag>
-	<flag name="protobuf">Enable support for <pkg>dev-libs/protobuf</pkg>.</flag>
 	<flag name="remote">Use a generic socket or pipe as a backend (via JSON RPC requests).</flag>
 	<flag name="sodium">Use <pkg>dev-libs/libsodium</pkg> for cryptography</flag>
 	<flag name="tinydns">Use a TinyDNS CDB database as backend.</flag>
