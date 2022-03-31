@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,7 @@ IUSE="+redistributable test X"
 RESTRICT="!test? ( test )"
 
 DEPEND=">=media-libs/gmmlib-22.0.0:=
-	>=x11-libs/libva-2.13.0[X?]
+	>=x11-libs/libva-2.14.0[X?]
 "
 RDEPEND="${DEPEND}"
 
