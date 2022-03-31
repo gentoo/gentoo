@@ -13,20 +13,18 @@ LICENSE="MIT GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-"
 RDEPEND="
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:2
 	x11-libs/libX11
 "
-BDEPEND=""
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}"/${PN}-trayer-${PV}
 
 src_configure() {
-	econf --prefix="${EPREFIX}"
+	./configure --prefix="${EPREFIX}" || die
 }
 
 src_compile() {
