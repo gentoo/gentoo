@@ -51,7 +51,7 @@ CRATES="
 	rayon-core-1.9.1
 	regex-1.5.5
 	regex-syntax-0.6.25
-	rpds-0.11.0
+	rpds-0.10.0
 	rustc-hash-1.1.0
 	same-file-1.0.6
 	scopeguard-1.1.0
