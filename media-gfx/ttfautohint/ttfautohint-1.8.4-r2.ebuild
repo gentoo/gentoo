@@ -35,6 +35,9 @@ src_prepare() {
 	# Don't invoke git to get the version number.
 	sed "s|m4_esyscmd.*VERSION)|${PV//_/-}|" -i configure.ac || die
 
+	# musl does not define _Bool for c++, bug #836426
+	sed 's/_Bool/bool/' -i lib/llrb.h || die
+
 	eautoreconf
 }
 
