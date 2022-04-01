@@ -27,6 +27,9 @@ BDEPEND="
 	)
 	virtual/pkgconfig
 	"
+PATCHES=(
+	"${FILESDIR}/${P}-loopback-monitoring.patch"
+)
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3

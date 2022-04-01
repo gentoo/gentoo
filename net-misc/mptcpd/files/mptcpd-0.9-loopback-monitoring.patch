@@ -1,0 +1,197 @@
+From a200ef26e4daf0347dd8f1bd35d49dd66fba7a7e Mon Sep 17 00:00:00 2001
+From: Ossama Othman <ossama.othman@intel.com>
+Date: Thu, 17 Feb 2022 16:39:59 -0800
+Subject: [PATCH] Allow loopback network interface monitoring. (#220)
+
+* network_monitor: Allow loopback monitoring.
+
+Add a new mptcpd_nm_monitor_loopback() function that allows the user
+to enable monitoring of loopback network interfaces.  Monitoring of
+loopback network interfaces is meant primarily for testing purposes.
+Mptcpd will retain the previous behavior of only monitoring
+non-loopback network interfaces by default.
+
+* tests: Enable loopback interface monitoring.
+
+Enable loopback network interface monitoring to allow the
+test-network-monitor unit test to succeed in cases where non-loopback
+interfaces are unavailable, such as in a sandboxed environment.
+
+Fixes #208.
+
+Co-authored-by: Mat Martineau <mathew.j.martineau@linux.intel.com>
+---
+ include/mptcpd/network_monitor.h | 21 ++++++++++++++++++
+ lib/network_monitor.c            | 38 +++++++++++++++++++++-----------
+ tests/test-network-monitor.c     | 15 +++++++++----
+ 3 files changed, 57 insertions(+), 17 deletions(-)
+
+diff --git a/include/mptcpd/network_monitor.h b/include/mptcpd/network_monitor.h
+index dc35e3d..ea1a95b 100644
+--- a/include/mptcpd/network_monitor.h
++++ b/include/mptcpd/network_monitor.h
+@@ -213,6 +213,27 @@ MPTCPD_API bool mptcpd_nm_register_ops(struct mptcpd_nm *nm,
+                                        struct mptcpd_nm_ops const *ops,
+                                        void *user_data);
+ 
++/**
++ * @brief Enable monitoring of the loopback network interface.
++ *
++ * Mptcpd normally only monitors non-loopback network interfaces.
++ * Call this function to enable monitoring of loopback network
++ * interfaces.
++ *
++ * @note Mptcpd monitoring of loopback network interfaces is meant
++ *       primarily for testing purposes.
++ *
++ * @param[in,out] nm     Pointer to the mptcpd network monitor
++ *                       object.
++ * @param[in]     enable Enable or disable monitoring of loopback
++ *                       network interfaces.
++ *
++ * @retval true  Successfully enable or disabled.
++ * @retval false Invalid @a nm argument.
++ */
++MPTCPD_API bool mptcpd_nm_monitor_loopback(struct mptcpd_nm *nm,
++                                           bool enable);
++
+ #ifdef __cplusplus
+ }
+ #endif
+diff --git a/lib/network_monitor.c b/lib/network_monitor.c
+index 2ae275b..7a3927e 100644
+--- a/lib/network_monitor.c
++++ b/lib/network_monitor.c
+@@ -4,7 +4,7 @@
+  *
+  * @brief mptcpd network device monitoring.
+  *
+- * Copyright (c) 2017-2021, Intel Corporation
++ * Copyright (c) 2017-2022, Intel Corporation
+  */
+ 
+ #ifdef HAVE_CONFIG_H
+@@ -78,6 +78,9 @@ struct mptcpd_nm
+ 
+         /// Flags controlling address notification.
+         uint32_t notify_flags;
++
++        /// Enable/disable loopback network interface monitoring.
++        bool monitor_loopback;
+ };
+ 
+ // -------------------------------------------------------------------
+@@ -525,16 +528,15 @@ static void mptcpd_interface_callback(void *data, void *user_data)
+  *
+  * @return @c true if network interface is ready, and @c false other.
+  */
+-static bool is_interface_ready(struct ifinfomsg const *ifi)
++static bool is_interface_ready(struct mptcpd_nm const *nm,
++                               struct ifinfomsg const *ifi)
+ {
+-        /*
+-          Only accept non-loopback network interfaces that are
+-          up and running.
+-        */
+-        static unsigned int const iff_ready = IFF_UP | IFF_RUNNING;
++        // Only accept network interfaces that are up and running.
++        static unsigned int iff_ready = IFF_UP | IFF_RUNNING;
+ 
+         return (ifi->ifi_flags & iff_ready) == iff_ready
+-                && (ifi->ifi_flags & IFF_LOOPBACK) == 0;
++                && ((ifi->ifi_flags & IFF_LOOPBACK) == 0
++                    || nm->monitor_loopback);
+ }
+ 
+ /**
+@@ -708,7 +710,7 @@ static void handle_link(uint16_t type,
+ 
+         switch (type) {
+         case RTM_NEWLINK:
+-                if (is_interface_ready(ifi))
++                if (is_interface_ready(nm, ifi))
+                         update_link(ifi, len, nm);
+                 else
+                         remove_link(ifi, nm);  // Interface disabled.
+@@ -1301,7 +1303,7 @@ static void handle_rtm_getlink(int error,
+         struct ifinfomsg const *const ifi = data;
+         struct mptcpd_nm *const nm        = user_data;
+ 
+-        if (is_interface_ready(ifi)) {
++        if (is_interface_ready(nm, ifi)) {
+                 (void) insert_link(ifi, len, nm);
+         }
+ }
+@@ -1442,9 +1444,10 @@ struct mptcpd_nm *mptcpd_nm_create(uint32_t flags)
+                 return NULL;
+         }
+ 
+-        nm->notify_flags = flags;
+-        nm->interfaces   = l_queue_new();
+-        nm->ops          = l_queue_new();
++        nm->notify_flags     = flags;
++        nm->interfaces       = l_queue_new();
++        nm->ops              = l_queue_new();
++        nm->monitor_loopback = false;
+ 
+         /**
+          * Get network interface information.
+@@ -1555,6 +1558,15 @@ bool mptcpd_nm_register_ops(struct mptcpd_nm *nm,
+         return registered;
+ }
+ 
++bool mptcpd_nm_monitor_loopback(struct mptcpd_nm *nm, bool enable)
++{
++        if (nm == NULL)
++                return false;
++
++        nm->monitor_loopback = enable;
++
++        return true;
++}
+ 
+ /*
+   Local Variables:
+diff --git a/tests/test-network-monitor.c b/tests/test-network-monitor.c
+index d7c6b87..d22f6be 100644
+--- a/tests/test-network-monitor.c
++++ b/tests/test-network-monitor.c
+@@ -4,7 +4,7 @@
+  *
+  * @brief mptcpd network monitor test.
+  *
+- * Copyright (c) 2018-2020, Intel Corporation
++ * Copyright (c) 2018-2020, 2022, Intel Corporation
+  */
+ 
+ #define _DEFAULT_SOURCE  // Enable IFF_... interface flags in <net/if.h>.
+@@ -115,12 +115,11 @@ static void check_interface(struct mptcpd_interface const *i, void *data)
+         l_queue_foreach(i->addrs, dump_addr, NULL);
+ 
+         /*
+-          Only non-loopback interfaces that are up and running should
+-          be monitored.
++          Only network interfaces that are up and running should be
++          monitored.
+         */
+         static unsigned int const ready = IFF_UP | IFF_RUNNING;
+         assert(ready == (i->flags & ready));
+-        assert(!(i->flags & IFF_LOOPBACK));
+ 
+         if (data) {
+                 struct foreach_data *const fdata = data;
+@@ -249,6 +248,14 @@ int main(void)
+         struct mptcpd_nm *const nm = mptcpd_nm_create(0);
+         assert(nm);
+ 
++        assert(!mptcpd_nm_monitor_loopback(NULL, true)); // Bad arg
++
++        /*
++          Enable loopback network interface monitoring for this unit
++          test in case non-loopback network interfaces are unavailable.
++        */
++        assert(mptcpd_nm_monitor_loopback(nm, true));
++
+         struct mptcpd_nm_ops const nm_events[] = {
+                 {
+                         .new_interface    = handle_new_interface,
