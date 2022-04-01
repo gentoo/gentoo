@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-bad
 inherit gstreamer-meson
 
 DESCRIPION="DVB device capture plugin for GStreamer"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ppc64 ~riscv ~x86"
+KEYWORDS="~alpha ~amd64 arm ~arm64 ~mips ~ppc ppc64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND=""
