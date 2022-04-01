@@ -146,10 +146,7 @@ RDEPEND="${COMMON_DEPEND}
 	policykit? ( sys-apps/accountsservice )
 "
 BDEPEND="
-	|| (
-		>=dev-qt/qtwaylandscanner-${QTMIN}:5
-		<dev-qt/qtwayland-5.15.3:5
-	)
+	>=dev-qt/qtwaylandscanner-${QTMIN}:5
 	virtual/pkgconfig
 "
 PDEPEND=">=kde-plasma/kde-cli-tools-${PVCUT}:5"

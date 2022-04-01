@@ -145,10 +145,7 @@ RDEPEND="${COMMON_DEPEND}
 	!<kde-plasma/plasma-desktop-5.21.90:5
 "
 BDEPEND="
-	|| (
-		>=dev-qt/qtwaylandscanner-${QTMIN}:5
-		<dev-qt/qtwayland-5.15.3:5
-	)
+	>=dev-qt/qtwaylandscanner-${QTMIN}:5
 	virtual/pkgconfig
 "
 PDEPEND=">=kde-plasma/kde-cli-tools-${PVCUT}:5"

@@ -34,10 +34,7 @@ DEPEND="${RDEPEND}
 	>=dev-libs/wayland-protocols-1.24
 "
 BDEPEND="
-	|| (
-		>=dev-qt/qtwaylandscanner-${QTMIN}:5
-		<dev-qt/qtwayland-5.15.3:5
-	)
+	>=dev-qt/qtwaylandscanner-${QTMIN}:5
 	dev-util/wayland-scanner
 "
 

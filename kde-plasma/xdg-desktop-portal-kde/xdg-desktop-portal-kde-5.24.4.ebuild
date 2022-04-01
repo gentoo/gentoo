@@ -39,9 +39,4 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	sys-apps/xdg-desktop-portal
 "
-BDEPEND="
-	|| (
-		>=dev-qt/qtwaylandscanner-${QTMIN}:5
-		<dev-qt/qtwayland-5.15.3:5
-	)
-"
+BDEPEND=">=dev-qt/qtwaylandscanner-${QTMIN}:5"

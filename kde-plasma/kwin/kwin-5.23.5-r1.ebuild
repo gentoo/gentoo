@@ -95,12 +95,7 @@ DEPEND="${COMMON_DEPEND}
 		>=dev-libs/wayland-protocols-1.19
 	)
 "
-BDEPEND="
-	test? ( || (
-		>=dev-qt/qtwaylandscanner-${QTMIN}:5
-		<dev-qt/qtwayland-5.15.3:5
-	) )
-"
+BDEPEND="test? ( >=dev-qt/qtwaylandscanner-${QTMIN}:5 )"
 PDEPEND=">=kde-plasma/kde-cli-tools-${PVCUT}:5"
 
 # https://mail.kde.org/pipermail/distributions/2022-February/001127.html
