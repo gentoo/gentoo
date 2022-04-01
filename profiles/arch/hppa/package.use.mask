@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Lars Wendler <polynomial-c@gentoo.org> (2022-04-01)
+# gnome-base/librsvg missing keywords
+media-libs/freetype svg
+
 # Sam James <sam@gentoo.org> (2022-03-26)
 # media-libs/libjxl not keyworded here
 media-gfx/graphicsmagick jpegxl

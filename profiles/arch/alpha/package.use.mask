@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Lars Wendler <polynomial-c@gentoo.org> (2022-04-01)
+# gnome-base/librsvg missing keywords
+media-libs/freetype svg
+
 # Sam James <sam@gentoo.org> (2022-03-26)
 # media-libs/libjxl not keyworded here
 media-gfx/graphicsmagick jpegxl
