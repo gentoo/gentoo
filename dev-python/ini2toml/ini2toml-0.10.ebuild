@@ -30,6 +30,7 @@ BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/tomli[${PYTHON_USEDEP}]
+		dev-python/tomlkit[${PYTHON_USEDEP}]
 	)
 "
 
