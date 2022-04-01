@@ -17,6 +17,11 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
 
+# As of 6.0.2, access to Ansible Galaxy (i.e. the Internet) is required even to get
+# the test suite started (Bug #836582). TODO: Talk to upstream about how to bypass this.
+PROPERTIES="test_network"
+RESTRICT="test"
+
 RDEPEND="
 	>=app-admin/ansible-base-2.12.0[${PYTHON_USEDEP}]
 	>=dev-python/ansible-compat-2.0.2[${PYTHON_USEDEP}]
