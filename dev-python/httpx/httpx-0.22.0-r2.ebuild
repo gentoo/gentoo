@@ -33,7 +33,7 @@ RDEPEND="
 	cli? (
 		=dev-python/click-8*[${PYTHON_USEDEP}]
 		=dev-python/pygments-2*[${PYTHON_USEDEP}]
-		<dev-python/rich-12[${PYTHON_USEDEP}]
+		<dev-python/rich-13[${PYTHON_USEDEP}]
 	)
 "
 BDEPEND="
@@ -54,7 +54,7 @@ BDEPEND="
 distutils_enable_tests pytest
 
 src_prepare() {
-	sed -i -e '/rich/s:==10[.][*]:<12:' setup.py || die
+	sed -i -e '/rich/s:==10[.][*]:<13:' setup.py || die
 	if ! use cli; then
 		sed -i -e '/console_scripts/d' setup.py || die
 	fi
