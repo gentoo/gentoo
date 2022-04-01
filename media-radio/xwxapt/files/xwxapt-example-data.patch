@@ -1,0 +1,13 @@
+diff --git a/src/main.c b/src/main.c
+index 6cec142..7d7c1bf 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -127,7 +127,7 @@ main (int argc, char *argv[])
+     /* Create file path to xwxapt examples directory */
+     exe_path[bytes] = '\0';
+     Strlcpy( file_path, exe_path, sizeof(file_path) );
+-    Strlcat( file_path, "/share/examples/xwxapt", sizeof(file_path) );
++    Strlcat( file_path, "/share/xwxapt", sizeof(file_path) );
+     fprintf( stderr, "xwxapt: creating xwxapt config directory from: %s\n", file_path );
+ 
+     /* Create system command to copy examples/xwxapt to ~/.xwxapt */
