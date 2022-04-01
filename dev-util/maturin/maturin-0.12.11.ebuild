@@ -306,6 +306,9 @@ PATCHES=(
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
+	# TODO: migrate to pep517, deleted meanwhile for bug #836597
+	rm pyproject.toml || die
+
 	# use setup.py only for pure python and handle cargo manually
 	sed -i 's/cmdclass.*/packages=["'${PN}'"],/' setup.py || die
 
