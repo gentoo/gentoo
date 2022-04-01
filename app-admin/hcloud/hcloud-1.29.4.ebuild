@@ -17,7 +17,7 @@ RESTRICT="strip"
 QA_FLAGS_IGNORED=".*"
 
 src_compile() {
-	go build -mod vendor -o ${PN} -ldflags "-w -X github.com/hetznercloud/cli/cli.Version=${PV}-gentoo" ./cmd/${PN} || die "build failed"
+	go build -mod vendor -o ${PN} -ldflags "-w -X github.com/hetznercloud/cli/internal/version.Version=${PV}-gentoo" ./cmd/${PN} || die "build failed"
 }
 
 src_test() {
