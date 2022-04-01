@@ -49,6 +49,8 @@ BDEPEND="
 	)
 "
 
+DOCS=( AUTHORS README.rst RELEASE-NOTES SECURITY.md )
+
 distutils_enable_tests pytest
 
 src_prepare() {
@@ -78,7 +80,6 @@ src_prepare() {
 
 src_install() {
 	doicon -s 128 electrum/gui/icons/${PN}.png
-	dodoc RELEASE-NOTES
 	distutils-r1_src_install
 }
 
