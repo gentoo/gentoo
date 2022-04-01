@@ -10,7 +10,7 @@ DESCRIPTION="JPEG XL image format reference implementation"
 HOMEPAGE="https://github.com/libjxl/libjxl"
 
 SRC_URI="https://api.github.com/repos/libjxl/libjxl/tarball/3f8e77fcfabe8ca8ddee6be4e662de525667c570 -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~ppc ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 LICENSE="BSD"
 SLOT="0"
