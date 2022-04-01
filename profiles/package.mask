@@ -33,11 +33,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Fabian Groffen <grobian@gentoo.org> (2022-04-01)
-# unused package, not enabling tests, bug #796830
-# Removal in 30 days
-dev-python/thrift
-
 # Ulrich Müller <ulm@gentoo.org> (2022-04-01)
 # Illegal instruction errors seen by several users.
 # Masked for testing. (bug #835930)
