@@ -11,7 +11,7 @@ SRC_URI=""
 
 LICENSE="metapackage"
 SLOT="$(ver_cut 1-3)"
-KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos"
 IUSE="+compiler-rt libcxx openmp +sanitize"
 REQUIRED_USE="sanitize? ( compiler-rt )"
 
