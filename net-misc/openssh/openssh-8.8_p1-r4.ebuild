@@ -303,7 +303,7 @@ src_configure() {
 		# We apply the sctp patch conditionally, so can't pass --without-sctp
 		# unconditionally else we get unknown flag warnings.
 		$(use sctp && use_with sctp)
-		$(use_with ldns ldns "${EPREFIX}"/usr)
+		$(use_with ldns)
 		$(use_with libedit)
 		$(use_with pam)
 		$(use_with pie)
