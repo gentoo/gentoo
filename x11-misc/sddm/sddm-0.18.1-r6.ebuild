@@ -20,12 +20,12 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	acct-group/sddm
 	acct-user/sddm
-	>=dev-qt/qtcore-5.9.4:5
-	>=dev-qt/qtdbus-5.9.4:5
-	>=dev-qt/qtdeclarative-5.9.4:5
-	>=dev-qt/qtgui-5.9.4:5
-	>=dev-qt/qtnetwork-5.9.4:5
-	>=x11-base/xorg-server-1.15.1
+	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
+	dev-qt/qtdeclarative:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	x11-base/xorg-server
 	x11-libs/libxcb[xkb]
 	elogind? ( sys-auth/elogind )
 	pam? ( sys-libs/pam )
@@ -34,14 +34,14 @@ COMMON_DEPEND="
 	!systemd? ( sys-power/upower )
 "
 DEPEND="${COMMON_DEPEND}
-	test? ( >=dev-qt/qttest-5.9.4:5 )
+	test? ( dev-qt/qttest:5 )
 "
 RDEPEND="${COMMON_DEPEND}
 	!systemd? ( gui-libs/display-manager-init )
 "
 BDEPEND="
 	dev-python/docutils
-	>=dev-qt/linguist-tools-5.9.4:5
+	dev-qt/linguist-tools:5
 	kde-frameworks/extra-cmake-modules:5
 	virtual/pkgconfig
 "
