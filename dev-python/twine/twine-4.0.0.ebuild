@@ -34,6 +34,7 @@ RDEPEND="
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
+		dev-python/build[${PYTHON_USEDEP}]
 		dev-python/jaraco-envs[${PYTHON_USEDEP}]
 		dev-python/jaraco-functools[${PYTHON_USEDEP}]
 		dev-python/munch[${PYTHON_USEDEP}]
