@@ -16,7 +16,7 @@ SRC_URI="https://archive.apache.org/dist/pdfbox/${PV}/${MY_P}-src.zip -> ${P}.zi
 
 LICENSE="BSD"
 SLOT="1.7"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~x64-macos"
+KEYWORDS="~amd64 ~arm64 ppc64 ~x86 ~x64-macos"
 
 RDEPEND="
 	>=virtual/jre-1.8:*"
