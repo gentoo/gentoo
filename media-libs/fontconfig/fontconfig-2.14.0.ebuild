@@ -1,8 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
+# Cannot yet migrate to Meson as of 2.14.0:
+# https://gitlab.freedesktop.org/fontconfig/fontconfig/-/issues/244
 inherit autotools multilib-minimal readme.gentoo-r1
 
 DESCRIPTION="A library for configuring and customizing font access"
@@ -11,20 +13,33 @@ SRC_URI="https://fontconfig.org/release/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="1.0"
-[[ $(ver_cut 3) -ge 90 ]] || \
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
-IUSE="doc static-libs"
+if ! [[ $(ver_cut 3) -ge 90 ]] ; then
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+fi
+IUSE="doc static-libs test"
+RESTRICT="!test? ( test )"
 
-# Test test-bz106632 is known to be broken, see bug #751232
-# and would require several backports. It will be fixed in
-# next version.
-# check-missing-doc is known to be broken, see bug #733608
-# because fontconfig-2.13.1-static_build.patch introduces a
-# function FcStrBuildFilename which is lacking documentation.
-# However, backporting isn't worth it. Will be fixed in
-# next version.
-RESTRICT="test"
-
+# - Check minimum freetype & other deps on bumps. See
+#   https://gitlab.freedesktop.org/fontconfig/fontconfig/-/blob/main/configure.ac#L314.
+#   Note that FT versioning is confusing, need to map it using
+#   https://git.savannah.gnu.org/cgit/freetype/freetype2.git/tree/docs/VERSIONS.TXT
+#   But sometimes it's actually greater than that, e.g. see Fedora's spec file
+#   https://src.fedoraproject.org/rpms/fontconfig/blob/rawhide/f/fontconfig.spec#_1
+#
+# - Purposefully dropped the xml USE flag and libxml2 support. Expat is the
+#   default and used by every distro. See bug #283191.
+#
+# - There's a test-only dep on json-c.
+#   It might become an optional(?) runtime dep in future though. Who knows.
+#   Keep an eye on it.
+RDEPEND=">=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
+	>=media-libs/freetype-2.9.1[${MULTILIB_USEDEP}]
+	!elibc_Darwin? ( !elibc_SunOS? ( sys-apps/util-linux[${MULTILIB_USEDEP}] ) )
+	elibc_Darwin? ( sys-libs/native-uuid )
+	elibc_SunOS? ( sys-libs/libuuid )
+	virtual/libintl[${MULTILIB_USEDEP}]"
+DEPEND="${RDEPEND}
+	test? ( dev-libs/json-c )"
 BDEPEND="dev-util/gperf
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
@@ -32,79 +47,88 @@ BDEPEND="dev-util/gperf
 		=app-text/docbook-sgml-dtd-3.1*
 		app-text/docbook-sgml-utils[jadetex]
 	)"
-# Purposefully dropped the xml USE flag and libxml2 support.  Expat is the
-# default and used by every distro.  See bug #283191.
-RDEPEND=">=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
-	>=media-libs/freetype-2.9[${MULTILIB_USEDEP}]
-	!elibc_Darwin? ( !elibc_SunOS? ( sys-apps/util-linux[${MULTILIB_USEDEP}] ) )
-	elibc_Darwin? ( sys-libs/native-uuid )
-	elibc_SunOS? ( sys-libs/libuuid )
-	virtual/libintl[${MULTILIB_USEDEP}]"
-DEPEND="${RDEPEND}"
 PDEPEND="!x86-winnt? ( app-eselect/eselect-fontconfig )
 	virtual/ttf-fonts"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.10.2-docbook.patch # 310157
-	"${FILESDIR}"/${PN}-2.13.93-latin-update.patch # 130466 + make liberation default
+	# bug #310157
+	"${FILESDIR}"/${PN}-2.14.0-docbook.patch
+	# bug #130466 + make liberation default
+	"${FILESDIR}"/${PN}-2.14.0-latin-update.patch
+	# Avoid test failure (bubblewrap doesn't work within sandbox)
+	"${FILESDIR}"/${PN}-2.14.0-skip-bubblewrap-tests.patch
 
 	# Patches from upstream (can usually be removed with next version bump)
 )
 
-pkg_setup() {
-	DOC_CONTENTS="Please make fontconfig configuration changes using
-	\`eselect fontconfig\`. Any changes made to /etc/fonts/fonts.conf will be
-	overwritten. If you need to reset your configuration to upstream defaults,
-	delete the directory ${EROOT}/etc/fonts/conf.d/ and re-emerge fontconfig."
-}
+DOC_CONTENTS="Please make fontconfig configuration changes using
+\`eselect fontconfig\`. Any changes made to /etc/fonts/fonts.conf will be
+overwritten. If you need to reset your configuration to upstream defaults,
+delete the directory ${EROOT}/etc/fonts/conf.d/ and re-emerge fontconfig."
 
 src_prepare() {
 	default
-	eautoreconf
 
-	# https://gitlab.freedesktop.org/fontconfig/fontconfig/-/issues/272
-	# Please remove on next version bump!
-	if [[ "${PV}" == 2.13.93 ]] ; then
-		local sgmlfile
-		for sgmlfile in doc/*.fncs ; do
-			touch -r ${sgmlfile} ${sgmlfile//.fncs/.sgml} || die
-		done
-	else
-		die "Forgot to clean up src_prepare()"
-	fi
+	# Needed for docbook patch
+	eautoreconf
 }
 
 multilib_src_configure() {
-	local addfonts
-	# harvest some font locations, such that users can benefit from the
+	local addfonts=(
+		"${EPREFIX}"/usr/local/share/fonts
+	)
+
+	# Harvest some font locations, such that users can benefit from the
 	# host OS's installed fonts
 	case ${CHOST} in
 		*-darwin*)
-			addfonts=",/Library/Fonts,/System/Library/Fonts"
+			addfonts+=(
+				/Library/Fonts
+				/System/Library/Fonts
+			)
 		;;
+
 		*-solaris*)
 			[[ -d /usr/X/lib/X11/fonts/TrueType ]] && \
-				addfonts=",/usr/X/lib/X11/fonts/TrueType"
-			[[ -d /usr/X/lib/X11/fonts/Type1 ]] && \
-				addfonts="${addfonts},/usr/X/lib/X11/fonts/Type1"
+				addfonts+=( /usr/X/lib/X11/fonts/TrueType )
+			[[ -d /usr/X/lib/X11/fonts/Type1 ]] &&
+				addfonts+=( /usr/X/lib/X11/fonts/Type1 )
 		;;
+
 		*-linux-gnu)
 			use prefix && [[ -d /usr/share/fonts ]] && \
-				addfonts=",/usr/share/fonts"
+				addfonts+=( /usr/share/fonts )
 		;;
 	esac
 
 	local myeconfargs=(
 		$(use_enable doc docbook)
 		$(use_enable static-libs static)
+
+		# man pages. We split out the docbook parts into its own flag.
 		--enable-docs
+		# We handle this ourselves.
+		--disable-cache-build
+		# See comment above *DEPEND. We use Expat instead.
+		--disable-libxml2
+
 		--localstatedir="${EPREFIX}"/var
 		--with-default-fonts="${EPREFIX}"/usr/share/fonts
-		--with-add-fonts="${EPREFIX}/usr/local/share/fonts${addfonts}"
+		--with-add-fonts=$(IFS=, ; echo "${addfonts[*]}" )
 		--with-templatedir="${EPREFIX}"/etc/fonts/conf.avail
 	)
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+}
+
+multilib_src_test() {
+	# Test needs network access
+	# https://gitlab.freedesktop.org/fontconfig/fontconfig/-/issues/319
+	# On bumps after 2.14.0, please check to see if this has been fixed
+	# to allow local access!
+	chmod -x test/test-crbug1004254 || die
+
+	default
 }
 
 multilib_src_install() {
@@ -112,9 +136,9 @@ multilib_src_install() {
 
 	default
 
-	# avoid calling this multiple times, bug #459210
+	# Avoid calling this multiple times, bug #459210
 	if multilib_is_native_abi; then
-		# stuff installed from build-dir
+		# Stuff installed from build-dir
 		emake -C doc DESTDIR="${D}" install-man
 
 		insinto /etc/fonts
@@ -124,6 +148,7 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	einstalldocs
+
 	find "${ED}" -name "*.la" -delete || die
 
 	# fc-lang directory contains language coverage datafiles
@@ -152,11 +177,13 @@ multilib_src_install_all() {
 
 	readme.gentoo_create_doc
 
-	keepdir /var/cache/${PN}
+	# We allow the cache generation to make this later
+	# bug #587492
+	rm -r "${ED}"/var/cache/fontconfig || die
 }
 
 pkg_preinst() {
-	# Bug #193476
+	# bug #193476
 	# /etc/fonts/conf.d/ contains symlinks to ../conf.avail/ to include various
 	# config files.  If we install as-is, we'll blow away user settings.
 	ebegin "Syncing fontconfig configuration to system"
@@ -183,7 +210,7 @@ pkg_postinst() {
 
 	readme.gentoo_print_elog
 
-	if [[ ${ROOT} == "" ]] ; then
+	if [[ -z ${ROOT} ]] ; then
 		multilib_pkg_postinst() {
 			ebegin "Creating global font cache for ${ABI}"
 			"${EPREFIX}"/usr/bin/${CHOST}-fc-cache -srf
