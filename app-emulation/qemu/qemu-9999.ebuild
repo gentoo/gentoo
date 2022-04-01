@@ -12,7 +12,7 @@ inherit linux-info toolchain-funcs python-r1 udev fcaps readme.gentoo-r1 \
 		pax-utils xdg-utils
 
 if [[ ${PV} = *9999* ]]; then
-	EGIT_REPO_URI="https://git.qemu.org/git/qemu.git"
+	EGIT_REPO_URI="https://gitlab.com/qemu-project/qemu.git/"
 	EGIT_SUBMODULES=(
 		meson
 		tests/fp/berkeley-softfloat-3
@@ -41,7 +41,7 @@ IUSE="accessibility +aio alsa bpf bzip2 capstone +caps +curl debug +doc
 	+slirp
 	smartcard snappy spice ssh static static-user systemtap test udev usb
 	usbredir vde +vhost-net vhost-user-fs virgl virtfs +vnc vte xattr xen
-	xfs zstd"
+	zstd"
 
 COMMON_TARGETS="
 	aarch64
@@ -135,7 +135,6 @@ ALL_DEPEND="
 # Dependencies required for qemu tools (qemu-nbd, qemu-img, qemu-io, ...)
 # softmmu targets (qemu-system-*).
 SOFTMMU_TOOLS_DEPEND="
-	dev-libs/libxml2[static-libs(+)]
 	>=x11-libs/pixman-0.28.0[static-libs(+)]
 	accessibility? (
 		app-accessibility/brltty[api]
@@ -205,7 +204,6 @@ SOFTMMU_TOOLS_DEPEND="
 	virgl? ( media-libs/virglrenderer[static-libs(+)] )
 	virtfs? ( sys-libs/libcap )
 	xen? ( app-emulation/xen-tools:= )
-	xfs? ( sys-fs/xfsprogs[static-libs(+)] )
 	zstd? ( >=app-arch/zstd-1.4.0[static-libs(+)] )
 "
 
@@ -564,17 +562,10 @@ qemu_src_configure() {
 		$(conf_notuser vte)
 		$(conf_notuser xen)
 		$(conf_notuser xen xen-pci-passthrough)
-		$(conf_notuser xfs xfsctl)
 		# use prebuilt keymaps, bug #759604
 		--disable-xkbcommon
 		$(conf_notuser zstd)
 	)
-
-	if [[ ${buildtype} == "user" ]] ; then
-		conf_opts+=( --disable-libxml2 )
-	else
-		conf_opts+=( --enable-libxml2 )
-	fi
 
 	if [[ ! ${buildtype} == "user" ]] ; then
 		# audio options
