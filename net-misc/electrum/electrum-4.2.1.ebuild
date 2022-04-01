@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE="ncurses?"
 
-inherit desktop distutils-r1 xdg-utils
+inherit desktop distutils-r1 optfeature xdg-utils
 
 DESCRIPTION="User friendly Bitcoin client"
 HOMEPAGE="https://electrum.org/"
@@ -85,6 +85,7 @@ src_install() {
 pkg_postinst() {
 	xdg_icon_cache_update
 	xdg_desktop_database_update
+	use qt5 && optfeature "dark application theme support" dev-python/qdarkstyle
 }
 
 pkg_postrm() {
