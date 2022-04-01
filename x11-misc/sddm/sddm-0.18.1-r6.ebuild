@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.xz"
 LICENSE="GPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0 public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="elogind +pam systemd test"
+IUSE="+elogind +pam systemd test"
 
 REQUIRED_USE="?? ( elogind systemd )"
 RESTRICT="!test? ( test )"
