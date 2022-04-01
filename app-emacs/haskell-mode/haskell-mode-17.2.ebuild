@@ -13,7 +13,7 @@ SRC_URI="https://github.com/haskell/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 
 BDEPEND="sys-apps/texinfo"
 
