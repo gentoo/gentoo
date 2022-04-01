@@ -8,13 +8,11 @@ DESCRIPTION="GNU Common Lisp"
 HOMEPAGE="https://www.gnu.org/software/gcl/gcl.html"
 SRC_URI="https://dev.gentoo.org/~grozin/${P}.tar.xz"
 
-LICENSE="LGPL-2 GPL-2"
+LICENSE="LGPL-2+ GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc ppc64 ~x86"
 IUSE="+ansi athena emacs +readline tk X"
-
-# See bug #205803
-RESTRICT="strip"
+RESTRICT="strip"  #205803
 
 RDEPEND="dev-libs/gmp
 	virtual/latex-base
