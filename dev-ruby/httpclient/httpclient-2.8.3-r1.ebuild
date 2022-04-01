@@ -23,7 +23,7 @@ SRC_URI="https://github.com/nahi/httpclient/archive/v${PV}.tar.gz -> ${P}.tgz"
 LICENSE="Ruby"
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
 IUSE=""
 
 ruby_add_rdepend "virtual/ruby-ssl"
