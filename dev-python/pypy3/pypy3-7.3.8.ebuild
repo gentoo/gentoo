@@ -20,7 +20,7 @@ LICENSE="MIT"
 # pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
 # also check pypy/interpreter/pycode.py -> pypy_incremental_magic
 SLOT="0/pypy39-pp73"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 gdbm +jit ncurses sqlite test tk"
 # many tests are failing upstream
 # see https://buildbot.pypy.org/summary?branch=py3.9
