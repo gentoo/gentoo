@@ -29,7 +29,7 @@ DEPEND="
 # https://github.com/moby/moby/blob/master/project/PACKAGERS.md#optional-dependencies
 # https://github.com/moby/moby/tree/master//hack/dockerfile/install
 # make sure docker-proxy is pinned to exact version from ^,
-# for appropriate branchch/version of course
+# for appropriate branch/version of course
 RDEPEND="
 	${DEPEND}
 	>=net-firewall/iptables-1.4
