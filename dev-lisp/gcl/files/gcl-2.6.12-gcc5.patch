@@ -1,8 +1,0 @@
-diff -r -U1 gcl.orig/makefile gcl/makefile
---- gcl.orig/makefile	2014-10-23 23:29:00.000000000 +0200
-+++ gcl/makefile	2016-02-17 18:10:29.871808118 +0100
-@@ -267,3 +267,3 @@
- 	$(AWK) 'BEGIN {print "#include \"include.h\"";print "#include \"cmponly.h\"";print "---"} {a=$$1;gsub("\\.\\.\\.","",a);print "\"#define " $$1 "\" " a}' $< |\
--	$(CC) -E -I./$(HDIR) - |\
-+	$(CC) -E -P -I./$(HDIR) - |\
- 	$(AWK) '/^\-\-\-$$/ {i=1;next} {if (!i) next} {gsub("\"","");print}' >$@
