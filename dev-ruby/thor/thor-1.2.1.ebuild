@@ -20,7 +20,7 @@ SRC_URI="https://github.com/erikhuda/${PN}/archive/v${PV}.tar.gz -> ${PN}-git-${
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ppc64 ~riscv ~sparc ~x86 ~amd64-linux"
 IUSE="doc"
 
 USE_RUBY="ruby26 ruby27" ruby_add_bdepend "
