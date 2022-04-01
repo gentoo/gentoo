@@ -116,6 +116,14 @@ pkg_postinst() {
 	elog "  - Enable CONFIG_RANDOM_TRUST_CPU in linux kernel"
 	elog "  - # emerge sys-apps/haveged && rc-update add haveged boot"
 	elog "  - # emerge sys-apps/rng-tools && rc-update add rngd boot"
+	elog
+	elog "For more information on how to configure SDDM, please visit the wiki:"
+	elog "  https://wiki.gentoo.org/wiki/SDDM"
+	if has_version x11-drivers/nvidia-drivers; then
+		elog
+		elog "  Nvidia GPU owners in particular should pay attention"
+		elog "  to the troubleshooting section."
+	fi
 
 	systemd_reenable sddm.service
 }
