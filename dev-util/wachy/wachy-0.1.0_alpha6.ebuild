@@ -105,7 +105,10 @@ inherit cargo
 DESCRIPTION="A dynamic tracing profiler for Linux"
 # Double check the homepage as the cargo_metadata crate
 # does not provide this value so instead repository is used
-HOMEPAGE="https://github.com/rubrikinc/wachy"
+HOMEPAGE="
+	https://rubrikinc.github.io/wachy/
+	https://github.com/rubrikinc/wachy
+"
 SRC_URI="
 	https://github.com/rubrikinc/${PN}/archive/refs/tags/${PV/_alpha/-alpha.}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})
