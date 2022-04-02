@@ -11,7 +11,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Framework providing additional format plugins for Qt's image I/O system"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="avif eps heif jpegxl openexr"
 
 DEPEND="
