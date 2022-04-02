@@ -125,6 +125,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-Gentoo-specific-don-t-check-vcs.patch
+	"${FILESDIR}"/${P}-backport-correctly-find-PySide2Tools.patch
 	"${FILESDIR}"/${PN}-0.19.1-0001-Gentoo-specific-Remove-ccache-usage.patch
 	"${WORKDIR}"/${PN}-0.19.2-0005-Make-smesh-compile-with-vtk9.patch
 	"${FILESDIR}"/${PN}-0.19.2-0006-add-boost-serialization-to-find_package.patch
