@@ -58,7 +58,10 @@ distutils_enable_tests pytest
 
 DOCS=( AUTHORS README.rst docs/installers.rst docs/steam.rst )
 
-PATCHES=( "${FILESDIR}/${P}-avoid-gtk-4.0-already-loaded-testerror.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-avoid-gtk-4.0-already-loaded-testerror.patch"
+	"${FILESDIR}/${PN}-0.5.9-choose-amdgpu-pro-vulkan-driver.patch"
+)
 
 python_test() {
 	virtx epytest

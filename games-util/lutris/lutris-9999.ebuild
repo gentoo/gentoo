@@ -57,6 +57,7 @@ RDEPEND="
 distutils_enable_tests pytest
 
 DOCS=( AUTHORS README.rst docs/installers.rst docs/steam.rst )
+PATCHES=( "${FILESDIR}/${PN}-0.5.9-choose-amdgpu-pro-vulkan-driver.patch" )
 
 python_test() {
 	virtx epytest

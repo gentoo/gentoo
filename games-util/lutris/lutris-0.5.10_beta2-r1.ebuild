@@ -63,6 +63,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.5.9.1-avoid-gtk-4.0-already-loaded-testerror.patch"
 	"${FILESDIR}/${P}-fix-install-requires.patch"
 	"${FILESDIR}/${P}-fix-launching-steam.patch"
+	"${FILESDIR}/${PN}-0.5.9-choose-amdgpu-pro-vulkan-driver.patch"
 )
 
 python_test() {
