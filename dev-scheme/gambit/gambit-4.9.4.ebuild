@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-tags-v${PV}"
 
 LICENSE="|| ( Apache-2.0 LGPL-2.1 )"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="emacs ssl static"
 
 RDEPEND="ssl? ( dev-libs/openssl:0= )"
