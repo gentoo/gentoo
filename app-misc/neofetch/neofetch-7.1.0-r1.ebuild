@@ -7,7 +7,7 @@ inherit optfeature prefix
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="https://github.com/dylanaraps/${PN}/archive/${PV}/${P}.tar.gz"
-	KEYWORDS="amd64 ~arm64 ~mips ~ppc ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/dylanaraps/neofetch.git"
