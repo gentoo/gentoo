@@ -19,6 +19,10 @@ RDEPEND="app-misc/spacenavd[X?]
 	${CDEPEND}"
 DEPEND="${CDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-no-xorg-compile.patch
+)
+
 src_configure() {
 	local args=(
 		--disable-opt
