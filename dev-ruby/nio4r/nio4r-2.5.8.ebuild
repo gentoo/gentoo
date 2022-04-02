@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/socketry/nio4r"
 
 LICENSE="MIT || ( BSD GPL-2 )"
 SLOT="2"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86 ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 # Note that nio4r bundles a patched copy of libev, and without these
