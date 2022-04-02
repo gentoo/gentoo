@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xorg-3.eclass
@@ -8,7 +8,7 @@
 # Author: Tomáš Chvátal <scarabeus@gentoo.org>
 # Author: Donnie Berkholz <dberkholz@gentoo.org>
 # Author: Matt Turner <mattst88@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: multilib-minimal
 # @BLURB: Reduces code duplication in the modularized X11 ebuilds.
 # @DESCRIPTION:
@@ -59,7 +59,7 @@ fi
 
 EXPORTED_FUNCTIONS="src_prepare src_configure src_unpack src_compile src_install pkg_postinst pkg_postrm"
 case "${EAPI:-0}" in
-	7) ;;
+	[7-8]) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
