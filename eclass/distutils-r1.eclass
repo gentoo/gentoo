@@ -1015,10 +1015,23 @@ distutils_pep517_install() {
 	einfo "  Building the wheel for ${PWD#${WORKDIR}/} via ${build_backend}"
 	local wheel=$(
 		"${EPYTHON}" - 3>&1 >&2 <<-EOF || die "Wheel build failed"
+			import os
+			import sys
+			import tomli
+
+			log_stream = os.fdopen(3, 'w')
+			try:
+			    sys.path[:0] = (tomli.load(open("pyproject.toml", "rb"))
+			        .get("build-system", {})
+			        .get("backend-path", []))
+			except FileNotFoundError:
+			    print("Skipping pyproject.toml load: pyproject.toml not found",
+			        file=log_stream)
+
 			import ${build_backend%:*}
 			import os
 			print(${build_backend/:/.}.build_wheel(os.environ['WHEEL_BUILD_DIR']),
-				file=os.fdopen(3, 'w'))
+				file=log_stream)
 		EOF
 	)
 	[[ -n ${wheel} ]] || die "No wheel name returned"
