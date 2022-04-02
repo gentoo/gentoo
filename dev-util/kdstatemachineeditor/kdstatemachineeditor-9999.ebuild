@@ -1,14 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake qmake-utils
 
 DESCRIPTION="Framework for creating Qt State Machine metacode using graphical user interfaces"
 HOMEPAGE="https://github.com/KDAB/KDStateMachineEditor"
 
-if [[ ${PV} == 9999 ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/KDAB/KDStateMachineEditor.git"
 else
@@ -17,9 +17,10 @@ else
 fi
 
 LICENSE="GPL-2+"
-IUSE="doc test"
-RESTRICT="!test? ( test )"
 SLOT="0"
+IUSE="doc test"
+
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-qt/qtcore:5
@@ -45,6 +46,7 @@ BDEPEND="
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_EXAMPLES=OFF
+		-DWITH_INTERNAL_GRAPHVIZ=OFF
 		-DBUILD_DOCS=$(usex doc)
 		-DBUILD_TESTING=$(usex test)
 		-DECM_MKSPECS_INSTALL_DIR=$(qt5_get_mkspecsdir)/modules
