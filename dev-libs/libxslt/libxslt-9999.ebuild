@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit autotools git-r3
 else
 	inherit gnome.org
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="MIT"
@@ -35,7 +35,7 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libxslt/xsltconfig.h
 )
 
-DOCS=( AUTHORS ChangeLog FEATURES NEWS README TODO )
+DOCS=( AUTHORS FEATURES NEWS README TODO )
 
 src_prepare() {
 	default
@@ -53,8 +53,6 @@ multilib_src_configure() {
 	# Work in 1.1.35+ is occurring to add prelim. Python 3 support, so could
 	# restore if something needs them.
 	ECONF_SOURCE="${S}" econf \
-		--with-html-dir="${EPREFIX}"/usr/share/doc/${PF} \
-		--with-html-subdir=html \
 		--without-python \
 		$(use_with crypt crypto) \
 		$(use_with debug) \
