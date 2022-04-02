@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools pam qmake-utils readme.gentoo-r1 systemd user vala xdg-utils
+inherit autotools pam qmake-utils readme.gentoo-r1 systemd vala xdg-utils
 
 DESCRIPTION="A lightweight display manager"
 HOMEPAGE="https://github.com/CanonicalLtd/lightdm"
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/CanonicalLtd/lightdm/releases/download/${PV}/${P}.ta
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 ~riscv x86"
-IUSE="audit +gnome +gtk +introspection non_root qt5 vala"
+IUSE="audit +gnome +gtk +introspection non-root qt5 vala"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.44.0:2
@@ -31,6 +31,9 @@ COMMON_DEPEND="
 	)
 "
 RDEPEND="${COMMON_DEPEND}
+	acct-group/lightdm
+	acct-group/video
+	acct-user/lightdm
 	>=sys-auth/pambase-20101024-r2"
 DEPEND="${COMMON_DEPEND}
 	gnome? ( gnome-base/gnome-common )
@@ -50,12 +53,6 @@ REQUIRED_USE="vala? ( introspection )"
 
 pkg_setup() {
 	export LIGHTDM_USER=${LIGHTDM_USER:-lightdm}
-	if use non_root ; then
-		enewgroup ${LIGHTDM_USER}
-		enewgroup video # Just in case it hasn't been created yet
-		enewuser ${LIGHTDM_USER} -1 -1 /var/lib/${LIGHTDM_USER} ${LIGHTDM_USER},video
-		esethome ${LIGHTDM_USER} /var/lib/${LIGHTDM_USER}
-	fi
 }
 
 src_prepare() {
@@ -92,7 +89,7 @@ src_configure() {
 	local _greeter _session _user
 	_greeter=${LIGHTDM_GREETER:=lightdm-gtk-greeter}
 	_session=${LIGHTDM_SESSION:=gnome}
-	_user="$(usex non_root "${LIGHTDM_USER}" root)"
+	_user="$(usex non-root "${LIGHTDM_USER}" root)"
 	# Let user know how lightdm is configured
 	einfo "Gentoo configuration"
 	einfo "Default greeter: ${_greeter}"
