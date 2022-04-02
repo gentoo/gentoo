@@ -18,7 +18,7 @@ RESTRICT="test"
 DOCS=( {README,CHANGELOG}.md )
 
 src_compile() {
-	ego build 
+	ego build
 }
 
 src_install() {
