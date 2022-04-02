@@ -5,6 +5,10 @@
     <email>reavertm@gentoo.org</email>
     <description>Feel free to maintain/fix</description>
   </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>waebbl-gentoo@posteo.net</email>
+    <name>Bernd Waibel</name>
+  </maintainer>
   <longdescription lang="en">
   Quarter is a light-weight glue library that provides seamless
   integration between Systems in Motions's Coin high-level 3D
