@@ -52,7 +52,7 @@ fi
 # we need to inherit autotools first to get the deps
 inherit autotools libtool multilib toolchain-funcs flag-o-matic \
 	${FONT_ECLASS} ${GIT_ECLASS}
-unset FONT_ECLASS GIT_ECLASS
+unset FONT_ECLASS
 
 if [[ ${XORG_MULTILIB} == yes ]]; then
 	inherit multilib-minimal
@@ -535,3 +535,5 @@ create_fonts_dir() {
 				-- "${EROOT}/usr/share/fonts/${FONT_DIR}"
 	eend $?
 }
+
+unset GIT_ECLASS
