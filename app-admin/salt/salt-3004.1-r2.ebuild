@@ -17,7 +17,7 @@ if [[ ${PV} == 9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm"
+	KEYWORDS="~amd64 ~arm ~arm64"
 fi
 
 LICENSE="Apache-2.0"
