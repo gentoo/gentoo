@@ -1,26 +1,32 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 MY_PV=v${PV}
 CHECKREQS_MEMORY="2G"
 
-inherit check-reqs toolchain-funcs user
+inherit check-reqs toolchain-funcs
 
 DESCRIPTION="open source database for building cloud services"
 HOMEPAGE="https://www.cockroachlabs.com"
 SRC_URI="https://binaries.cockroachdb.com/cockroach-${MY_PV}.src.tgz"
+S="${WORKDIR}/cockroach-${MY_PV}"
 
 LICENSE="Cockroach Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
-DEPEND=">=app-arch/xz-utils-5.2.3
+RDEPEND="
+	acct-group/cockroach
+	acct-user/cockroach
+"
+
+DEPEND="
+	${RDEPEND}
+	>=app-arch/xz-utils-5.2.3
 	>=dev-lang/go-1.8.3
-	>=dev-util/cmake-3.8.1"
-
-S="${WORKDIR}/cockroach-${MY_PV}"
+	>=dev-util/cmake-3.8.1
+"
 
 QA_EXECSTACK="usr/bin/cockroach"
 
@@ -35,8 +41,6 @@ pkg_pretend() {
 
 pkg_setup() {
 	check-reqs_pkg_setup
-	enewgroup cockroach
-	enewuser cockroach -1 /bin/sh /var/lib/cockroach cockroach
 }
 
 src_compile() {
