@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-03)
+# Java library without consumers.
+# Multiple vulnerabilities (bug #719146).
+# Removal in 30 days.
+dev-java/log4j
+
 # Matt Turner <mattst88@gentoo.org> (2022-03-27)
 # Dead package. Homepage doesn't resolve. Unmaintained in Gentoo for at
 # least 6 years.
