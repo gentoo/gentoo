@@ -52,6 +52,7 @@ fi
 # we need to inherit autotools first to get the deps
 inherit autotools libtool multilib toolchain-funcs flag-o-matic \
 	${FONT_ECLASS} ${GIT_ECLASS}
+unset FONT_ECLASS GIT_ECLASS
 
 if [[ ${XORG_MULTILIB} == yes ]]; then
 	inherit multilib-minimal
@@ -142,12 +143,10 @@ if [[ ${PN} != util-macros ]] ; then
 	# Required even by xorg-server
 	[[ ${PN} == "font-util" ]] || EAUTORECONF_DEPEND+=" >=media-fonts/font-util-1.2.0"
 fi
-WANT_AUTOCONF="latest"
-WANT_AUTOMAKE="latest"
 for arch in ${XORG_EAUTORECONF_ARCHES}; do
 	EAUTORECONF_DEPENDS+=" ${arch}? ( ${EAUTORECONF_DEPEND} )"
 done
-unset arch
+unset arch XORG_EAUTORECONF_ARCHES
 BDEPEND+=" ${EAUTORECONF_DEPENDS}"
 [[ ${XORG_EAUTORECONF} != no ]] && BDEPEND+=" ${EAUTORECONF_DEPEND}"
 unset EAUTORECONF_DEPENDS
