@@ -5,6 +5,6 @@ EAPI=8
 
 inherit acct-group
 
-DESCRIPTION="A group for x11-misc/ssdm"
+DESCRIPTION="A group for x11-misc/sddm"
 
 ACCT_GROUP_ID="219"
