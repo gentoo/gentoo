@@ -57,14 +57,13 @@ if [[ ${XORG_MULTILIB} == yes ]]; then
 	inherit multilib-minimal
 fi
 
-EXPORTED_FUNCTIONS="src_prepare src_configure src_unpack src_compile src_install pkg_postinst pkg_postrm"
 case "${EAPI:-0}" in
 	[7-8]) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
 # exports must be ALWAYS after inherit
-EXPORT_FUNCTIONS ${EXPORTED_FUNCTIONS}
+EXPORT_FUNCTIONS src_prepare src_configure src_unpack src_compile src_install pkg_postinst pkg_postrm
 
 IUSE=""
 
