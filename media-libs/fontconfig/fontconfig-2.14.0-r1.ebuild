@@ -181,7 +181,7 @@ multilib_src_install_all() {
 
 	# We allow the cache generation to make this later
 	# bug #587492
-	rm -r "${ED}"/var/cache/fontconfig || die
+	rm -r "${ED}"/var/cache/ || die
 }
 
 pkg_preinst() {
