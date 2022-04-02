@@ -6,21 +6,21 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 inherit python-any-r1 meson cmake
 
-SDP="systemd-stable-249.5"
+SDP="systemd-stable-249.11"
 MUSL_PATCHSET="249.5-r1"
 
 DESCRIPTION="High-level C++ D-Bus library"
 HOMEPAGE="https://github.com/Kistler-Group/sdbus-cpp"
 SRC_URI="https://github.com/Kistler-Group/sdbus-cpp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	!systemd? (
-		https://github.com/systemd/systemd/archive/v${SDP##*-}/${SDP}.tar.gz
+		https://github.com/systemd/${SDP%-*}/archive/v${SDP##*-}/${SDP}.tar.gz
 		elibc_musl? (
 			https://dev.gentoo.org/~gyakovlev/distfiles/systemd-musl-patches-${MUSL_PATCHSET}.tar.xz
 			https://dev.gentoo.org/~soap/distfiles/systemd-musl-patches-${MUSL_PATCHSET}.tar.xz
 		)
 	)"
 LICENSE="LGPL-2.1+ Nokia-Qt-LGPL-Exception-1.1" # Nothing to do with Qt but exception text is exactly the same.
-SLOT="0/0"
+SLOT="0/1"
 KEYWORDS="~amd64"
 IUSE="doc systemd test tools"
 RESTRICT="!test? ( test )"
@@ -56,6 +56,10 @@ python_check_deps() {
 S="${WORKDIR}/sdbus-cpp-${PV}"
 SDS="${WORKDIR}/${SDP}"
 SDB="${WORKDIR}/systemd-build"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-gtest-1.11.patch
+)
 
 pkg_setup() {
 	use systemd || python-any-r1_pkg_setup
