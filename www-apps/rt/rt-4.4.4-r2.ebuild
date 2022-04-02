@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit webapp depend.apache user
+inherit webapp depend.apache
 
 DESCRIPTION="RT is an enterprise-grade ticketing system"
 HOMEPAGE="https://www.bestpractical.com/rt/"
@@ -17,8 +17,9 @@ REQUIRED_USE="^^ ( mysql postgres )"
 RESTRICT="test"
 
 DEPEND="
+	acct-group/rt
+	acct-user/rt
 	>=dev-lang/perl-5.10.1
-
 	>=dev-perl/Apache-Session-1.53
 	>=dev-perl/CGI-4
 	>=dev-perl/CSS-Squish-0.06
@@ -141,46 +142,6 @@ RDEPEND="${DEPEND}
 
 need_httpd_cgi
 
-add_user_rt() {
-	# add new user
-	# suexec2 requires uid >= 1000; enewuser is of no help here
-	# From: Mike Frysinger <vapier@gentoo.org>
-	# Date: Fri, 17 Jun 2005 08:41:44 -0400
-	# i'd pick a 5 digit # if i were you
-
-	local euser="rt"
-
-	# first check if username rt exists
-	if [[ ${euser} == $(egetent passwd "${euser}" | cut -d: -f1) ]] ; then
-		# check uid
-		rt_uid=$(egetent passwd "${euser}" | cut -d: -f3)
-		if $(expr ${rt_uid} '<' 1000 > /dev/null); then
-			ewarn "uid of user rt is less than 1000. suexec2 will not work."
-			ewarn "If you want to use FastCGI, please delete the user 'rt'"
-			ewarn "from your system and re-emerge www-apps/rt"
-		fi
-		return 0 # all is well
-	fi
-
-	# add user
-	# stolen from enewuser
-	local pwrange euid
-
-	pwrange=$(seq 10001 11001)
-	for euid in ${pwrange} ; do
-		[[ -z $(egetent passwd ${euid}) ]] && break
-	done
-	if [[ ${euid} == "11001" ]]; then
-		# she gets around, doesn't she?
-		die "No available uid's found"
-	fi
-
-	elog " - Userid: ${euid}"
-
-	enewuser rt ${euid} -1 /dev/null rt
-	return 0
-}
-
 pkg_setup() {
 	webapp_pkg_setup
 
@@ -189,16 +150,13 @@ pkg_setup() {
 	ewarn "make sure to read the related upgrade documentation in"
 	ewarn "${ROOT}usr/share/doc/${PF}."
 	ewarn
-
-	enewgroup rt
-	add_user_rt || die "Could not add user"
 }
 
 src_prepare() {
 	# add Gentoo-specific layout
 	cat "${FILESDIR}"/config.layout-gentoo >> config.layout
-	sed -e "s|PREFIX|${ED}/${MY_HOSTROOTDIR}/${PF}|g" \
-		-e "s|HTMLDIR|${ED}/${MY_HTDOCSDIR}|g" \
+	sed -e "s|PREFIX|${EPREFIX}/${MY_HOSTROOTDIR}/${PF}|g" \
+		-e "s|HTMLDIR|${EPREFIX}/${MY_HTDOCSDIR}|g" \
 		-e 's|/\+|/|g' \
 		-i ./config.layout || die 'config sed failed'
 
