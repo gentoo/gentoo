@@ -47,8 +47,10 @@ BDEPEND="dev-util/gperf
 		=app-text/docbook-sgml-dtd-3.1*
 		app-text/docbook-sgml-utils[jadetex]
 	)"
-PDEPEND="!x86-winnt? ( app-eselect/eselect-fontconfig )
-	virtual/ttf-fonts"
+PDEPEND="virtual/ttf-fonts"
+# We need app-eselect/eselect-fontconfig in IDEPEND to update ROOT
+# when cross-compiling.
+IDEPEND+=" !x86-winnt? ( app-eselect/eselect-fontconfig )"
 
 PATCHES=(
 	# bug #310157
