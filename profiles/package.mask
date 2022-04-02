@@ -382,10 +382,6 @@ app-misc/emelfm2
 # and is available as app-shells/ksh-1.0.0_beta1 at time of writing.
 ~app-shells/ksh-2020.0.0
 
-# Bernd Waibel <waebbl-gentoo@posteo.net> (2021-12-07)
-# Masked for testing
-~sci-libs/vtk-9.1.0
-
 # Sam James <sam@gentoo.org> (2021-12-01)
 # OSL 12 is a development release (for now).
 # Doesn't work with LLVM 13 yet; mask to help
