@@ -7,7 +7,7 @@ index 1700a9fde..ed09f2680 100644
    auto allowFrom = parseACL("allow-from-file", "allow-from");
  
 -  if(allowFrom->size() == 0) {
-+  if(allowFrom != nullptr && allowFrom->size() == 0) {
++  if(allowFrom == nullptr || allowFrom->size() == 0) {
      if(::arg()["local-address"]!="127.0.0.1" && ::arg().asNum("local-port")==53)
        g_log<<Logger::Warning<<"WARNING: Allowing queries from all IP addresses - this can be a security risk!"<<endl;
      allowFrom = nullptr;
