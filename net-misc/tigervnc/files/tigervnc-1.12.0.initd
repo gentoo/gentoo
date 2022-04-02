@@ -12,7 +12,8 @@ checkconfig() {
 	if [ -n "${DISPLAYS}" ]; then
 		if [ "$1" = "start" ]; then
 			for user in $DISPLAYS; do
-				if eval [ ! -f "~${user%%:*}/.vnc/passwd" ]; then
+				# bug #690046
+				if ! runuser -l "${user%%:*}" -c "[ -f ~/.vnc/passwd ]"; then
 					eerror "There are no passwords defined for user ${user%%:*}."
 					return 1
 				elif [ -e "/tmp/.X11-unix/X${user##*:}" ]; then
