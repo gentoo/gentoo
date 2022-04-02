@@ -40,6 +40,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
+	app-arch/zstd:=
 	dev-libs/libgcrypt:0=
 	net-libs/gnutls:=
 	sys-libs/ncurses:0=
