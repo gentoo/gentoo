@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/crash-utility/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-		mirror://gnu/gdb/gdb-7.6.tar.gz"
+		mirror://gnu/gdb/gdb-10.2.tar.gz"
 	KEYWORDS="-* ~alpha ~amd64 ~arm ~ia64 ~ppc64 ~s390 ~x86"
 fi
 
@@ -27,9 +27,9 @@ IUSE=""
 RESTRICT="test"
 
 src_prepare() {
-	sed -i -e "s|ar -rs|\${AR} -rs|g" Makefile || die
-	ln -s "${DISTDIR}"/gdb-7.6.tar.gz . || die
 	default
+	sed -i -e "s|ar -rs|\${AR} -rs|g" Makefile || die
+	ln -s "${DISTDIR}"/gdb-10.2.tar.gz . || die
 }
 
 src_compile() {
