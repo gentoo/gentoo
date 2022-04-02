@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="BSD-1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~riscv ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv ~sparc x86"
 
 RDEPEND="!net-mail/signify
 	>=dev-libs/libbsd-0.7"
