@@ -410,14 +410,6 @@ dev-tex/pdfannotextractor
 dev-lang/vala:0.54
 dev-lang/vala:0.56
 
-# Sam James <sam@gentoo.org> (2021-11-03)
-# Known issues with YAMA (kernel.yama.ptrace_scope=1) which is on by default
-# in at least the sys-kernel/gento-kernel kernel config.
-# Work is in progress to fix these but latest sandbox versions still seem
-# to cause hangs in some situations. Mask for now to avoid duplicate reports.
-# bug #821532, bug #821523 (and bug #821403 but shouldn't be in 3.1+).
->=sys-apps/sandbox-3.0
-
 # Ionen Wolkens <ionen@gentoo.org> (2021-10-09)
 # Vulkan beta driver branch aimed at Vulkan developers for testing
 # new features. Beside vulkan, it is typically behind the main branch
