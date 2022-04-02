@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit webapp
 
@@ -19,6 +19,7 @@ PHP_RDEPEND="(
 )"
 
 RDEPEND="|| (
+	${PHP_RDEPEND//@SLOT@/8.1}
 	${PHP_RDEPEND//@SLOT@/8.0}
 	${PHP_RDEPEND//@SLOT@/7.4}
 	${PHP_RDEPEND//@SLOT@/7.3}
