@@ -58,8 +58,8 @@ distutils_enable_tests pytest
 src_prepare() {
 	distutils-r1_src_prepare
 
-	# Prevent icon from being installed in the wrong location
-	sed -i '/icons_dirname/d' setup.py || die
+	# Prevent icon and desktop item from being installed in the wrong location
+	sed -i -e "/data_files=data_files/d" setup.py || die
 
 	# use backwards-compatible cryptodome API
 	sed -i -e 's:Cryptodome:Crypto:' electrum/crypto.py || die
@@ -78,6 +78,7 @@ src_prepare() {
 
 src_install() {
 	doicon -s 128 electrum/gui/icons/${PN}.png
+	domenu ${PN}.desktop
 	distutils-r1_src_install
 }
 
