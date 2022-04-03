@@ -52,7 +52,7 @@ fi
 # we need to inherit autotools first to get the deps
 inherit autotools libtool multilib toolchain-funcs flag-o-matic \
 	${FONT_ECLASS} ${GIT_ECLASS}
-unset FONT_ECLASS
+unset FONT_ECLASS GIT_ECLASS
 
 if [[ ${XORG_MULTILIB} == yes ]]; then
 	inherit multilib-minimal
@@ -119,7 +119,7 @@ HOMEPAGE="https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/${XORG_MOD
 # to bz2.
 : ${XORG_TARBALL_SUFFIX:="bz2"}
 
-if [[ -n ${GIT_ECLASS} ]]; then
+if [[ ${PV} == *9999* ]]; then
 	: ${EGIT_REPO_URI:="https://gitlab.freedesktop.org/xorg/${XORG_MODULE}${XORG_PACKAGE_NAME}.git"}
 elif [[ -n ${XORG_BASE_INDIVIDUAL_URI} ]]; then
 	SRC_URI="${XORG_BASE_INDIVIDUAL_URI}/${XORG_MODULE}${P}.tar.${XORG_TARBALL_SUFFIX}"
@@ -266,7 +266,7 @@ xorg-3_pkg_setup() {
 xorg-3_src_unpack() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	if [[ -n ${GIT_ECLASS} ]]; then
+	if [[ ${PV} == *9999* ]]; then
 		git-r3_src_unpack
 	else
 		unpack ${A}
@@ -535,5 +535,3 @@ create_fonts_dir() {
 				-- "${EROOT}/usr/share/fonts/${FONT_DIR}"
 	eend $?
 }
-
-unset GIT_ECLASS
