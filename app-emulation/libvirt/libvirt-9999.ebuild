@@ -47,6 +47,7 @@ BDEPEND="
 	dev-perl/XML-XPath
 	dev-python/docutils
 	virtual/pkgconfig
+	net-libs/rpcsvc-proto
 	bash-completion? ( >=app-shells/bash-completion-2.0 )
 	verify-sig? ( sec-keys/openpgp-keys-libvirt )"
 
@@ -65,12 +66,10 @@ RDEPEND="
 	>=net-analyzer/openbsd-netcat-1.105-r1
 	>=net-libs/gnutls-3.2.0:=
 	net-libs/libtirpc:=
-	net-libs/rpcsvc-proto
 	>=net-misc/curl-7.18.0
 	sys-apps/dbus
 	sys-apps/dmidecode
 	sys-devel/gettext
-	sys-libs/ncurses:=
 	>=sys-libs/readline-7.0:=
 	virtual/acl
 	apparmor? ( sys-libs/libapparmor )
