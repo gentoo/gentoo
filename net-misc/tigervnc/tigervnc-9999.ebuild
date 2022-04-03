@@ -9,7 +9,7 @@ inherit autotools cmake flag-o-matic git-r3 systemd xdg
 XSERVER_VERSION="21.1.1"
 
 DESCRIPTION="Remote desktop viewer display system"
-HOMEPAGE="http://www.tigervnc.org"
+HOMEPAGE="https://www.tigervnc.org"
 SRC_URI="server? ( ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-${XSERVER_VERSION}.tar.xz )"
 EGIT_REPO_URI="https://github.com/TigerVNC/tigervnc/"
 
