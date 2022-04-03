@@ -404,12 +404,6 @@ dev-tex/pdfannotextractor
 =sys-kernel/gentoo-sources-5.14.19
 =sys-kernel/vanilla-sources-5.14.19
 
-# Mart Raudsepp <leio@gentoo.org> (2021-11-11)
-# Needs testing to ensure valac-0.54 works for existing packages
->=dev-libs/vala-common-0.53
-dev-lang/vala:0.54
-dev-lang/vala:0.56
-
 # Ionen Wolkens <ionen@gentoo.org> (2021-10-09)
 # Vulkan beta driver branch aimed at Vulkan developers for testing
 # new features. Beside vulkan, it is typically behind the main branch
