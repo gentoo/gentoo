@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2022-03-27)
+# Dead package. Homepage doesn't resolve. Unmaintained in Gentoo for at
+# least 6 years.
+# Removal on 2022-05-02
+app-pda/gtkpod
+
 # Ulrich Müller <ulm@gentoo.org> (2022-04-01)
 # Illegal instruction errors seen by several users.
 # Masked for testing. (bug #835930)
