@@ -8,8 +8,8 @@ LUA_COMPAT=( lua5-{1..4} luajit )
 inherit lua toolchain-funcs
 
 DESCRIPTION="A tool for linting and static analysis of Lua code"
-HOMEPAGE="https://github.com/luarocks/luacheck"
-SRC_URI="https://github.com/luarocks/luacheck/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/lunarmodules/luacheck"
+SRC_URI="https://github.com/lunarmodules/luacheck/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -12,9 +12,9 @@ inherit lua toolchain-funcs
 DESCRIPTION="Networking support library for the Lua language"
 HOMEPAGE="
 	http://www.tecgraf.puc-rio.br/~diego/professional/luasocket/
-	https://github.com/diegonehab/luasocket
+	https://github.com/lunarmodules/luasocket
 "
-SRC_URI="https://github.com/diegonehab/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lunarmodules/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"

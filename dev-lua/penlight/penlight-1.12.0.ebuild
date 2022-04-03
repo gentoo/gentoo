@@ -10,7 +10,7 @@ inherit lua toolchain-funcs
 
 DESCRIPTION="Lua utility libraries loosely based on the Python standard libraries"
 HOMEPAGE="https://github.com/lunarmodules/Penlight"
-SRC_URI="https://github.com/Tieske/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lunarmodules/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"
