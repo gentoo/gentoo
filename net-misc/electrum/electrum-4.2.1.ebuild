@@ -51,10 +51,12 @@ BDEPEND="
 
 DOCS=( AUTHORS README.rst RELEASE-NOTES SECURITY.md )
 
+PATCHES=( "${FILESDIR}/3.1.2-no-user-root.patch" )
+
 distutils_enable_tests pytest
 
 src_prepare() {
-	eapply "${FILESDIR}/3.1.2-no-user-root.patch"
+	distutils-r1_src_prepare
 
 	# Prevent icon from being installed in the wrong location
 	sed -i '/icons_dirname/d' setup.py || die
@@ -70,12 +72,8 @@ src_prepare() {
 	else
 		bestgui=stdio
 	fi
-	sed -i 's/^\([[:space:]]*\)\(config_options\['\''cwd'\''\] = .*\)$/\1\2\n\1config_options.setdefault("gui", "'"${bestgui}"'")\n/' ${PN}/${PN} || die
 
-	eapply_user
-
-	xdg_environment_reset
-	distutils-r1_src_prepare
+	sed -i "/config_options\['cwd'\]/a\    config_options.setdefault('gui', '${bestgui}')" ${PN}/${PN} || die
 }
 
 src_install() {
