@@ -37,6 +37,7 @@ RDEPEND="
 	>=sys-devel/lld-${LLVM_MAX_SLOT}
 	<sys-devel/lld-$((${LLVM_MAX_SLOT} + 1))
 	sys-devel/llvm:${LLVM_MAX_SLOT}[${LLVM_TARGET_USEDEPS// /,}]
+	!!dev-lang/zig-bin
 "
 DEPEND="${RDEPEND}"
 
