@@ -1,14 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: font.eclass
 # @MAINTAINER:
 # fonts@gentoo.org
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Eclass to make font installation uniform
 
 case ${EAPI:-0} in
-	7) ;;
+	[7-8]) ;;
 	*) die "EAPI ${EAPI} is not supported by font.eclass." ;;
 esac
 
