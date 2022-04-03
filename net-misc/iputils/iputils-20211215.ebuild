@@ -32,33 +32,30 @@ SLOT="0"
 IUSE="+arping caps clockdiff doc gcrypt idn nettle nls rarpd rdisc ssl static test tracepath"
 RESTRICT="!test? ( test )"
 
+LIB_DEPEND="
+	caps? ( sys-libs/libcap[static-libs(+)] )
+	idn? ( net-dns/libidn2:=[static-libs(+)] )
+	nls? ( virtual/libintl[static-libs(+)] )
+"
+RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
+DEPEND="
+	${RDEPEND}
+	virtual/os-headers
+	static? ( ${LIB_DEPEND} )
+"
 BDEPEND="
 	virtual/pkgconfig
 	test? ( sys-apps/iproute2 )
 	nls? ( sys-devel/gettext )
 "
 
-LIB_DEPEND="
-	caps? ( sys-libs/libcap[static-libs(+)] )
-	idn? ( net-dns/libidn2:=[static-libs(+)] )
-	nls? ( virtual/libintl[static-libs(+)] )
-"
-
-RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
-
-DEPEND="
-	${RDEPEND}
-	virtual/os-headers
-	static? ( ${LIB_DEPEND} )
-"
-
-if [[ ${PV} == "99999999" ]] ; then
+if [[ ${PV} == 99999999 ]] ; then
 	BDEPEND+="
 		app-text/docbook-xml-dtd:4.2
 		app-text/docbook-xml-dtd:4.5
 		app-text/docbook-xsl-ns-stylesheets
 		app-text/docbook-xsl-stylesheets
-		dev-libs/libxslt:0
+		dev-libs/libxslt
 	"
 fi
 
@@ -72,32 +69,32 @@ src_configure() {
 	use static && append-ldflags -static
 
 	local emesonargs=(
-		-DUSE_CAP="$(usex caps true false)"
-		-DUSE_IDN="$(usex idn true false)"
-		-DBUILD_ARPING="$(usex arping true false)"
-		-DBUILD_CLOCKDIFF="$(usex clockdiff true false)"
-		-DBUILD_PING="true"
-		-DBUILD_RARPD="$(usex rarpd true false)"
-		-DBUILD_RDISC="$(usex rdisc true false)"
-		-DENABLE_RDISC_SERVER="$(usex rdisc true false)"
-		-DBUILD_TRACEPATH="$(usex tracepath true false)"
-		-DBUILD_NINFOD="false"
-		-DNINFOD_MESSAGES="false"
-		-DNO_SETCAP_OR_SUID="true"
-		-Dsystemdunitdir="$(systemd_get_systemunitdir)"
-		-DUSE_GETTEXT="$(usex nls true false)"
+		-DUSE_CAP=$(usex caps true false)
+		-DUSE_IDN=$(usex idn true false)
+		-DBUILD_ARPING=$(usex arping true false)
+		-DBUILD_CLOCKDIFF=$(usex clockdiff true false)
+		-DBUILD_PING=true
+		-DBUILD_RARPD=$(usex rarpd true false)
+		-DBUILD_RDISC=$(usex rdisc true false)
+		-DENABLE_RDISC_SERVER=$(usex rdisc true false)
+		-DBUILD_TRACEPATH=$(usex tracepath true false)
+		-DBUILD_NINFOD=false
+		-DNINFOD_MESSAGES=false
+		-DNO_SETCAP_OR_SUID=true
+		-Dsystemdunitdir=$(systemd_get_systemunitdir)
+		-DUSE_GETTEXT=$(usex nls true false)
 		$(meson_use !test SKIP_TESTS)
 	)
 
 	if [[ ${PV} == 99999999 ]] ; then
 		emesonargs+=(
-			-DBUILD_HTML_MANS="$(usex doc true false)"
-			-DBUILD_MANS="true"
+			-DBUILD_HTML_MANS=$(usex doc true false)
+			-DBUILD_MANS=true
 		)
 	else
 		emesonargs+=(
-			-DBUILD_HTML_MANS="false"
-			-DBUILD_MANS="false"
+			-DBUILD_HTML_MANS=false
+			-DBUILD_MANS=false
 		)
 	fi
 
@@ -106,12 +103,13 @@ src_configure() {
 
 src_compile() {
 	tc-export CC
+
 	meson_src_compile
 }
 
 src_test() {
-	if [[ ${EUID} != 0 ]]; then
-		einfo "Tests require root privileges; Skipping ..."
+	if [[ ${EUID} != 0 ]] ; then
+		einfo "Tests require root privileges. Skipping ..."
 		return
 	fi
 
@@ -135,7 +133,7 @@ src_install() {
 		dosym tracepath.8 /usr/share/man/man8/tracepath6.8
 	fi
 
-	if [[ "${PV}" != 99999999 ]] ; then
+	if [[ ${PV} != 99999999 ]] ; then
 		local -a man_pages
 		local -a html_man_pages
 
