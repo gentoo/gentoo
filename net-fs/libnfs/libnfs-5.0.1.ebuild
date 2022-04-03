@@ -24,6 +24,10 @@ IUSE="examples static-libs utils"
 BDEPEND="net-libs/rpcsvc-proto
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/libnfs-5.0.1-pthread-configure.patch
+)
+
 src_prepare() {
 	default
 
