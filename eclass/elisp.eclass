@@ -1,4 +1,4 @@
-# Copyright 2002-2021 Gentoo Authors
+# Copyright 2002-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp.eclass
@@ -64,7 +64,7 @@
 
 inherit elisp-common
 
-case ${EAPI:-0} in
+case ${EAPI} in
 	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
