@@ -3,9 +3,11 @@
 
 EAPI=7
 
-inherit libtool multilib-minimal
-
 # Note: Please bump this in sync with dev-libs/libxml2.
+
+PYTHON_COMPAT=( python3_{8..10} )
+inherit libtool python-r1 multilib-minimal
+
 DESCRIPTION="XSLT libraries and tools"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/libxslt"
 if [[ ${PV} == 9999 ]] ; then
@@ -18,12 +20,14 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="crypt debug examples static-libs"
+IUSE="crypt debug examples python static-libs"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND=">=virtual/pkgconfig-1"
 RDEPEND="
 	>=dev-libs/libxml2-2.9.11:2[${MULTILIB_USEDEP}]
 	crypt? ( >=dev-libs/libgcrypt-1.5.3:0=[${MULTILIB_USEDEP}] )
+	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="${RDEPEND}"
 
@@ -49,25 +53,67 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	# Python bindings were dropped as they were Python 2 only at the time
-	# Work in 1.1.35+ is occurring to add prelim. Python 3 support, so could
-	# restore if something needs them.
-	ECONF_SOURCE="${S}" econf \
-		--without-python \
-		$(use_with crypt crypto) \
-		$(use_with debug) \
-		$(use_with debug mem-debug) \
-		$(use_enable static-libs static) \
-		"$@"
+	libxslt_configure() {
+		ECONF_SOURCE="${S}" econf \
+			--without-python \
+			$(use_with crypt crypto) \
+			$(use_with debug) \
+			$(use_with debug mem-debug) \
+			$(use_enable static-libs static) \
+			"$@"
+	}
+
+	# Build Python bindings separately
+	libxslt_configure --without-python
+
+	if multilib_is_native_abi && use python ; then
+		NATIVE_BUILD_DIR="${BUILD_DIR}"
+		python_foreach_impl run_in_build_dir libxslt_configure --with-python
+	fi
+}
+
+libxslt_py_emake() {
+	pushd "${BUILD_DIR}"/python >/dev/null || die
+
+	emake top_builddir="${NATIVE_BUILD_DIR}" "$@"
+
+	popd >/dev/null || die
+}
+
+multilib_src_compile() {
+	default
+
+	if multilib_is_native_abi && use python ; then
+		python_foreach_impl run_in_build_dir libxslt_py_emake all
+	fi
+}
+
+multilib_src_test() {
+	default
+
+	if multilib_is_native_abi && use python ; then
+		python_foreach_impl run_in_build_dir libxslt_py_emake test
+	fi
 }
 
 multilib_src_install() {
 	# "default" does not work here - docs are installed by multilib_src_install_all
 	emake DESTDIR="${D}" install
+
+	if multilib_is_native_abi && use python; then
+		python_foreach_impl run_in_build_dir libxslt_py_emake \
+			DESTDIR="${D}" \
+			install
+	fi
 }
 
 multilib_src_install_all() {
 	einstalldocs
+
+	if ! use examples ; then
+		rm -rf "${ED}"/usr/share/doc/${PF}/tutorial{,2} || die
+		rm -rf "${ED}"/usr/share/doc/${PF}/python/examples || die
+	fi
 
 	find "${ED}" -type f -name "*.la" -delete || die
 }
