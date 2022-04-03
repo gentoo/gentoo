@@ -64,6 +64,10 @@
 		Use <pkg>net-libs/libssh</pkg> to communicate with remote libvirtd hosts,
 		for example: qemu+libssh://server/system
 	</flag>
+	<flag name="libssh2">
+		Use <pkg>net-libs/libssh2</pkg> to communicate with remote libvirtd hosts,
+		for example: qemu+libssh2://server/system
+	</flag>
 	<flag name="pcap">
 		Support auto learning IP addreses for routing
 	</flag>
