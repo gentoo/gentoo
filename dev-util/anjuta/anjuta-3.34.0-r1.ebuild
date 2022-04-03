@@ -1,23 +1,22 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python3_{8..9} )
+EAPI=8
+PYTHON_COMPAT=( python3_{8..10} )
 # libanjuta-language-vala.so links to a specific slot of libvala; we want to
 # avoid automagic behavior.
-VALA_MIN_API_VERSION="0.46" # 3.34.0 upstream release supports up to 0.44, but 0.46 vala LTS support was added without any other adjustments post-release; 0.48 will need patches
+VALA_MIN_API_VERSION="0.56"
 VALA_MAX_API_VERSION="${VALA_MIN_API_VERSION}"
 
-# We inherit autotools explicitly because GNOME2_EAUTORECONF is set only conditionally later, so gnome2.eclass doesn't do it for us
-inherit autotools gnome2 flag-o-matic readme.gentoo-r1 python-single-r1 vala
+GNOME2_EAUTORECONF="yes"
+inherit gnome2 flag-o-matic readme.gentoo-r1 python-single-r1 vala
 
 DESCRIPTION="A versatile IDE for GNOME"
-HOMEPAGE="https://wiki.gnome.org/Apps/Anjuta"
+HOMEPAGE="https://wiki.gnome.org/Apps/Anjuta https://gitlab.gnome.org/GNOME/anjuta/"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~sparc x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
 IUSE="debug devhelp glade +introspection subversion terminal test vala"
 RESTRICT="!test? ( test )"
@@ -72,7 +71,6 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/flex
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
-	!!dev-libs/gnome-build
 	test? (
 		app-text/docbook-xml-dtd:4.1.2
 		app-text/docbook-xml-dtd:4.5 )
@@ -81,6 +79,12 @@ DEPEND="${COMMON_DEPEND}
 	gnome-base/gnome-common
 "
 # yelp-tools, gi-common and gnome-common are required by eautoreconf
+
+PATCHES=(
+	"${FILESDIR}"/${PV}-Add-new-vala-support.patch
+	"${FILESDIR}"/${PV}-autoconf-2.70.patch
+	"${FILESDIR}"/${PV}-prefer-newer-vala.patch
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup
@@ -95,10 +99,6 @@ will need to:
 1. Go to 'Build' -> 'Configure project'
 2. Add 'VALAC=/usr/bin/valac-X.XX' (respecting quotes) to
 'Configure options'."
-
-		# Without removing other vala versions, it ends up picking the oldest vala available, not newest
-		sed -i -e "s/\[0.44\], \[0.42\], \[0.40\], \[0.38\], \[0.36\], \[0.34\], \[0.32\], \[0.30\], \[0.28\], \[0.26\], \[0.24\], \[0.22\], \[0.20\], \[0.18\]/[${VALA_MAX_API_VERSION}]/" configure.ac || die
-		GNOME2_EAUTORECONF="yes"
 	fi
 
 	# COPYING is used in Anjuta's help/about entry
@@ -111,7 +111,7 @@ will need to:
 	sed -e '/SUBDIRS =/ s/benchmark//' \
 		-i plugins/symbol-db/Makefile.{am,in} || die
 
-	use vala && vala_src_prepare
+	use vala && vala_setup
 	gnome2_src_prepare
 }
 
