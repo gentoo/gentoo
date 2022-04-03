@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 1c4a444..aae406c 100644
+index 1c4a4447..5747df46 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -133,11 +133,8 @@ ENDIF()
+@@ -133,14 +133,12 @@ ENDIF()
  ####################
  ###### BEGIN: QT configuration
  ####################
@@ -14,5 +14,10 @@ index 1c4a444..aae406c 100644
 +FIND_PACKAGE(Qt5Core)
 +SET(DETECTED_QT_VERSION ${Qt5Core_VERSION})
  MESSAGE("Qt version: ${DETECTED_QT_VERSION}")
++GET_TARGET_PROPERTY(QMAKE_EXECUTABLE_PATH Qt5::qmake IMPORTED_LOCATION)
  EXECUTE_PROCESS(COMMAND
-     bash -c "qmake --version|grep -iE '^using qt version [0-9]'|awk '{print $4}'|grep -iE '^[0-9]'|awk -F . '{print $1}'"
+-    bash -c "qmake --version|grep -iE '^using qt version [0-9]'|awk '{print $4}'|grep -iE '^[0-9]'|awk -F . '{print $1}'"
++    bash -c "${QMAKE_EXECUTABLE_PATH} --version|grep -iE '^using qt version [0-9]'|awk '{print $4}'|grep -iE '^[0-9]'|awk -F . '{print $1}'"
+     OUTPUT_VARIABLE QT_VERSION_MAJOR
+     OUTPUT_STRIP_TRAILING_WHITESPACE)
+ MESSAGE("QT_VERSION_MAJOR: ${QT_VERSION_MAJOR}")
