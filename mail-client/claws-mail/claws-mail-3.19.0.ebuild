@@ -111,7 +111,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	xdg_src_prepare
+	default
 	eautoreconf
 }
 
