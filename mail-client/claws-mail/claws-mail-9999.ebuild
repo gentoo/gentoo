@@ -124,7 +124,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	xdg_src_prepare
+	default
 	eautoreconf
 }
 
