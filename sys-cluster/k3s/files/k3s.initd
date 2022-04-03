@@ -27,6 +27,6 @@ start() {
 }
 
 set -o allexport
-if [ -f /etc/environment ]; then source /etc/environment; fi
-if [ -f /etc/rancher/k3s/k3s.env ]; then source /etc/rancher/k3s/k3s.env; fi
+if [ -f /etc/environment ]; then . /etc/environment; fi
+if [ -f /etc/rancher/k3s/k3s.env ]; then . /etc/rancher/k3s/k3s.env; fi
 set +o allexport
