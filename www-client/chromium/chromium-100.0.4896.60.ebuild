@@ -15,8 +15,11 @@ DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
 PATCHSET="4"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
+PATCHSET_PPC64="1"
+PATCHSET_NAME_PPC64="chromium-$(ver_cut 1)-patchset-ppc64le-${PATCHSET_PPC64}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
-	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz"
+	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz
+	ppc64? ( https://dev.gentoo.org/~sultan/distfiles/www-client/chromium/${PATCHSET_NAME_PPC64}.tar.xz )"
 
 LICENSE="BSD"
 SLOT="0/stable"
@@ -250,6 +253,8 @@ src_prepare() {
 		"${FILESDIR}/chromium-shim_headers.patch"
 		"${FILESDIR}/chromium-cross-compile.patch"
 	)
+
+	use ppc64 && PATCHES+=( "${WORKDIR}/patches-ppc64" )
 
 	default
 
@@ -528,6 +533,11 @@ src_prepare() {
 			generate_gni.sh || die
 		./generate_gni.sh || die
 		popd >/dev/null || die
+
+		pushd third_party/ffmpeg >/dev/null || die
+		cp libavcodec/ppc/h264dsp.c libavcodec/ppc/h264dsp_ppc.c || die
+		cp libavcodec/ppc/h264qpel.c libavcodec/ppc/h264qpel_ppc.c || die
+		popd >/dev/null || die
 	fi
 
 	# Remove most bundled libraries. Some are still needed.
@@ -754,6 +764,12 @@ src_configure() {
 
 	# Disable fatal linker warnings, bug 506268.
 	myconf_gn+=" fatal_linker_warnings=false"
+
+	# Disable external code space for V8 for ppc64. It is disabled for ppc64
+	# by default, but cross-compiling on amd64 enables it again.
+	if use ppc64; then
+		myconf_gn+=" v8_enable_external_code_space=false"
+	fi
 
 	# Bug 491582.
 	export TMPDIR="${WORKDIR}/temp"
