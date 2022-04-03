@@ -42,10 +42,10 @@ src_configure() {
 		-DSKIP_PERFORMANCE_COMPARISON=ON
 
 		-DWITH_WERROR=OFF
-
-		# TODO: Enable if multilib?
-		-DSKIP_PORTABILITY_TEST=ON
 	)
+
+	# TODO: Enable if multilib?
+	use test && mycmakeargs+=( -DSKIP_PORTABILITY_TEST=ON )
 
 	cmake_src_configure
 }
