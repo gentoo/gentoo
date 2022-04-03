@@ -3,6 +3,8 @@
 
 EAPI=7
 
+# Please bump with dev-python/libvirt-python!
+
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit meson bash-completion-r1 linux-info python-any-r1 readme.gentoo-r1 tmpfiles verify-sig
