@@ -1,9 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
-
-inherit multilib
+EAPI=8
 
 MY_PN="ut_linux_megarc"
 MY_PV="${PV//./-}"
@@ -20,6 +18,7 @@ HOMEPAGE="http://www.avagotech.com/cs/Satellite?q=megacli&pagename=AVG2%2Fsearch
 SRC_URI="
 	https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${MY_P}.zip
 	https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/README_FOR_${MY_P}-zip.txt"
+S="${WORKDIR}"
 
 LICENSE="LSI"
 SLOT="0"
@@ -27,23 +26,18 @@ SLOT="0"
 # can remove the distfiles from their mirror anytime.
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
-
-DEPEND="app-arch/unzip
-	doc? ( app-text/antiword )"
-RDEPEND=""
-
 RESTRICT="mirror bindist"
 
-S="${WORKDIR}"
+BDEPEND="
+	app-arch/unzip
+	doc? ( app-text/antiword )"
 
 QA_PREBUILT="/opt/bin/megarc"
 
-pkg_setup() {
-	use amd64 && { has_multilib_profile || die "needs multilib profile on amd64"; }
-}
-
 src_compile() {
-	use doc && antiword ut_linux.doc > ${PN}-manual.txt
+	if use doc; then
+		antiword ut_linux.doc > ${PN}-manual.txt || die
+	fi
 }
 
 src_install() {
