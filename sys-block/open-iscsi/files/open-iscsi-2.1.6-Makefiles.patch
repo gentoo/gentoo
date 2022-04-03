@@ -1,0 +1,81 @@
+https://github.com/open-iscsi/open-iscsi/pull/333
+
+It's not the full series from that PR yet because
+our previous patch handles some of it (the most important bits)
+and some layout changed upstream pre-next release.
+
+From 96667e0e06a65c94fd875db048776aad29eea829 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 3 Apr 2022 03:22:32 +0100
+Subject: [PATCH] iscsiuio: don't clobber LDFLAGS in configure.ac
+
+The systemd check currently clobbers LDFLAGS from the environment
+rather than appending to it.
+
+But we actually want LIBS here anyway, rather than LDFLAGS.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/iscsiuio/configure.ac
++++ b/iscsiuio/configure.ac
+@@ -72,7 +72,7 @@ AC_ARG_WITH([systemd],
+      *)   AC_MSG_ERROR([bad value $withval for --with-systemd]) ;;
+      esac],[with_libsystemd=auto])
+ AS_IF([test "$with_libsystemd" != no],[
+-    PKG_CHECK_MODULES([LIBSYSTEMD],[libsystemd],[LDFLAGS=$LIBSYSTEMD_LIBS],[
++    PKG_CHECK_MODULES([LIBSYSTEMD],[libsystemd],[LIBS="${LIBS} $LIBSYSTEMD_LIBS"],[
+         if test "$with_libsystemd" = yes; then
+             AC_MSG_ERROR([could not find libsystemd using pkg-config])
+ 	else
+From 9fbd6009cd917f1152a367fa7e5ae3993133c1e4 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 3 Apr 2022 03:23:28 +0100
+Subject: [PATCH] iscsiuio: respect LDFLAGS fully
+
+Use LIBS rather than LDFLAGS which ensures automake gets the ordering
+right (some LDFLAGS values won't work correctly if not placed exactly before
+libraries).
+
+This should functionally work the same as before, just improve compatibility
+with bits like -Wl,--as-needed.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/iscsiuio/src/unix/Makefile.am
++++ b/iscsiuio/src/unix/Makefile.am
+@@ -27,13 +27,14 @@ iscsiuio_CFLAGS = 	$(AM_CFLAGS)		\
+ 			$(LIBNL_CFLAGS)		\
+ 			-DBYTE_ORDER=@ENDIAN@
+ 
+-iscsiuio_LDFLAGS= 	$(AM_LDADD)		\
++iscsiuio_LIBS = 	$(AM_LIBS)		\
+ 			-ldl			\
+ 			-rdynamic		\
+ 			$(LIBNL_LIBS)		\
+ 			-lpthread
+ 
+-iscsiuio_LDADD  = 	${top_srcdir}/src/uip/lib_iscsi_uip.a	\
++iscsiuio_LDADD  = 	$(AM_LDADD) \
++			${top_srcdir}/src/uip/lib_iscsi_uip.a	\
+ 			${top_srcdir}/src/apps/dhcpc/lib_apps_dhcpc.a\
+ 			${top_srcdir}/src/apps/brcm-iscsi/lib_apps_brcm_iscsi.a \
+ 			${top_srcdir}/src/unix/libs/lib_iscsiuio_hw_cnic.a
+From 980b1d36e1f5f38c6b33fe3b68a2cb89e4a77b90 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 3 Apr 2022 03:34:48 +0100
+Subject: [PATCH] libopeniscsiusr: fix version in installed pkgconfig (.pc)
+ file
+
+Looks like a typo from libnvme. Previously, the installed
+.pc file had a blank Version field.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/libopeniscsiusr/Makefile
++++ b/libopeniscsiusr/Makefile
+@@ -89,7 +89,7 @@ install: $(LIBS) $(LIBS_MAJOR)
+ 	ln -sf $(LIBS) $(DESTDIR)/$(LIB_DIR)/$(LIBS_MAJOR)
+ 	$(INSTALL) $(HEADERS) $(DESTDIR)$(INCLUDE_DIR)/
+ 	$(INSTALL) -m 644 -D $(PKGFILE).in $(DESTDIR)$(PKGCONF_DIR)/$(PKGFILE)
+-	perl -i -pe 's|__VERSION__|$(LIBNVME_VERSION)|g' \
++	perl -i -pe 's|__VERSION__|$(LIBISCSI_USR_VERSION)|g' \
+ 		$(DESTDIR)$(PKGCONF_DIR)/$(PKGFILE)
+ 	perl -i -pe 's|__LIB_DIR__|$(LIB_DIR)|g' \
+ 		$(DESTDIR)$(PKGCONF_DIR)/$(PKGFILE)
