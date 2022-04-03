@@ -17,8 +17,7 @@ HOMEPAGE="
 	https://pypi.org/project/setuptools/
 "
 SRC_URI="
-	https://github.com/pypa/setuptools/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+	mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
 	https://dev.gentoo.org/~floppym/python/${CPY_PATCHSET}.tar.xz
 "
 
