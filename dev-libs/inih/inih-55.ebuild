@@ -18,10 +18,6 @@ S="${WORKDIR}/inih-r${PV}"
 LICENSE="BSD"
 SLOT="0"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-set-version.patch
-)
-
 DOCS=( README.md )
 
 multilib_src_configure() {
