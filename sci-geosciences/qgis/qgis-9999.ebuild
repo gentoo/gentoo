@@ -14,19 +14,19 @@ else
 		examples? ( https://qgis.org/downloads/data/qgis_sample_data.tar.gz -> qgis_sample_data-2.8.14.tar.gz )"
 	KEYWORDS="~amd64 ~x86"
 fi
-inherit cmake python-single-r1 xdg
+inherit cmake python-single-r1 virtualx xdg
 
 DESCRIPTION="User friendly Geographic Information System"
 HOMEPAGE="https://www.qgis.org/"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-IUSE="3d examples georeferencer grass hdf5 mapserver netcdf opencl oracle pdal polar postgres python qml serial"
+IUSE="3d examples georeferencer grass hdf5 mapserver netcdf opencl oracle pdal polar postgres python qml serial test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE} mapserver? ( python )"
 
 # Disabling test suite because upstream disallow running from install path
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 # 3.22.5+ *does* support GRASS 8 but we can't enable it yet because of
 # https://github.com/OSGeo/grass/pull/2269 (=> unresolved SONAME dependencies)
@@ -112,6 +112,13 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 	sys-devel/bison
 	sys-devel/flex
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/PyQt5[${PYTHON_USEDEP},testlib]
+			dev-python/nose2[${PYTHON_USEDEP}]
+			dev-python/mock[${PYTHON_USEDEP}]
+		')
+	)
 "
 
 pkg_setup() {
@@ -137,7 +144,7 @@ src_configure() {
 		-DWITH_GUI=ON
 		-DWITH_INTERNAL_MDAL=ON # not packaged, bug 684538
 		-DWITH_QSPATIALITE=ON
-		-DENABLE_TESTS=OFF
+		-DENABLE_TESTS=$(usex test)
 		-DWITH_3D=$(usex 3d)
 		-DWITH_GSL=$(usex georeferencer)
 		$(cmake_use_find_package hdf5 HDF5)
@@ -202,8 +209,7 @@ src_configure() {
 		done
 	fi
 
-	use python && mycmakeargs+=( -DBINDINGS_GLOBAL_INSTALL=ON ) ||
-		mycmakeargs+=( -DWITH_QGIS_PROCESS=OFF ) # FIXME upstream issue #39973
+	use python && mycmakeargs+=( -DBINDINGS_GLOBAL_INSTALL=ON )
 
 	# bugs 612956, 648726
 	addpredict /dev/dri/renderD128
@@ -232,6 +238,17 @@ src_install() {
 	if use grass; then
 		python_fix_shebang "${ED}"/usr/share/qgis/grass/scripts
 	fi
+}
+
+src_test() {
+	myctestargs+=( -j1 )
+	myctestargs+=( -E '(ProcessingGuiTest|ProcessingQgisAlgorithmsTestPt1|ProcessingQgisAlgorithmsTestPt2|ProcessingQgisAlgorithmsTestPt3|ProcessingQgisAlgorithmsTestPt4|ProcessingGdalAlgorithmsRasterTest|ProcessingGdalAlgorithmsVectorTest|ProcessingGrass7AlgorithmsImageryTest|ProcessingGrass7AlgorithmsRasterTestPt1|ProcessingGrass7AlgorithmsRasterTestPt2|ProcessingGrass7AlgorithmsVectorTest|ProcessingOtbAlgorithmsTest|test_core_callout|test_core_compositionconverter|test_core_expression|test_core_gdalprovider|test_core_gdalutils|test_core_geonodeconnection|test_core_imagecache|test_core_labelingengine|test_core_layout|test_core_layoutcontext|test_core_layouthtml|test_core_layoutlabel|test_core_layoutmanualtable|test_core_layoutmap|test_core_layoutmapgrid|test_core_layoutmapoverview|test_core_layoutmultiframe|test_core_layoutpicture|test_core_linefillsymbol|test_core_mapdevicepixelratio|test_core_maprendererjob|test_core_meshlayer|test_core_meshlayerrenderer|test_core_networkaccessmanager|test_core_offlineediting|test_core_pointpatternfillsymbol|test_core_rastercontourrenderer|test_core_rasterlayer|test_core_simplemarker|test_core_style|test_core_svgmarker|test_core_tiledownloadmanager|test_core_ziplayer|test_core_coordinatereferencesystem|test_core_geometry|test_gui_dualview|test_gui_htmlwidgetwrapper|test_gui_processinggui|test_gui_filedownloader|test_gui_ogrprovidergui|test_gui_meshlayerpropertiesdialog|test_gui_queryresultwidget|test_gui_listwidget|test_3d_3drendering|test_3d_tessellator|test_analysis_processingalgspt1|test_analysis_processingalgspt2|test_analysis_meshcontours|test_analysis_triangulation|test_analysis_processing|test_provider_wcsprovider|test_provider_postgresconn|test_provider_virtualrasterprovider|qgis_grassprovidertest8|test_app_qgisappclipboard|test_app_fieldcalculator|test_app_maptoolcircularstring|test_app_vertextool|PyQgsLocalServer|PyQgsAFSProvider|PyQgsPythonProvider|PyQgsAnnotation|PyQgsAuthenticationSystem|PyQgsAuthBasicMethod|PyQgsDataItem|PyQgsDelimitedTextProvider|PyQgsEmbeddedSymbolRenderer|PyQgsExpressionBuilderWidget|PyQgsExternalStorageWebDAV|PyQgsGeometryTest|PyQgsGoogleMapsGeocoder|PyQgsImageCache|PyQgsLayout|PyQgsLayoutHtml|PyQgsLayoutLegend|PyQgsLayoutMap|PyQgsLayoutMapGrid|PyQgsLayoutMapOverview|PyQgsMapClippingUtils|PyQgsMapLayerComboBox|PyQgsMapLayerProxyModel|PyQgsMemoryProvider|PyQgsOGRProviderGpkg|PyQgsPalLabelingCanvas|PyQgsPalLabelingLayout|PyQgsPalLabelingPlacement|PyQgsPointCloudAttributeByRampRenderer|PyQgsPointCloudClassifiedRenderer|PyQgsPointCloudExtentRenderer|PyQgsPointCloudRgbRenderer|PyQgsProcessExecutable|PyQgsProcessingInPlace|TestQgsRandomMarkerSymbolLayer|PyQgsRasterLayer|PyQgsRasterLayerRenderer|PyQgsRasterResampler|PyQgsRulebasedRenderer|PyQgsShapefileProvider|PyQgsSvgCache|PyQgsOGRProvider|PyQgsSpatialiteProvider|PyQgsTaskManager|PyQgsVectorFileWriter|PyQgsVectorLayer|PyQgsVectorLayerCache|PyQgsVectorLayerEditBuffer|PyQgsVectorLayerSelectedFeatureSource|PyQgsVectorLayerShapefile|PyQgsVirtualLayerProvider|PyQgsWFSProvider|PyQgsOapifProvider|PyQgsDBManagerGpkg|PyQgsAuxiliaryStorage|PyQgsFieldValidator|PyQgsSelectiveMasking|PyQgsPalLabelingServer|PyQgsServerWMSGetMap|PyQgsServerWMSGetLegendGraphic|PyQgsServerWMSGetPrint|PyQgsServerWMSGetPrintExtra|PyQgsServerWMSGetPrintOutputs|PyQgsServerWMSGetPrintAtlas|PyQgsServerWMSDimension|PyQgsServerAccessControlWMS|PyQgsServerAccessControlWFSTransactional|PyQgsServerCacheManager|PyQgsServerWMTS|PyQgsServerWFS|qgis_sipify|qgis_sip_include|qgis_sip_uptodate)' )
+	# test_core_gdalprovider - see https://github.com/qgis/QGIS/pull/47887
+	# test_core_offlineediting - see https://github.com/qgis/QGIS/pull/48059
+
+	myctestargs+=( --output-on-failure )
+
+	virtx cmake_src_test
 }
 
 pkg_postinst() {
