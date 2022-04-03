@@ -31,7 +31,8 @@ RDEPEND="${PYTHON_DEPS}
 	net-libs/libsearpc[${PYTHON_SINGLE_USEDEP}]
 	net-misc/curl
 	sys-apps/util-linux
-	sys-libs/zlib"
+	sys-libs/zlib
+	elibc_musl? ( sys-libs/fts-standalone )"
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}
 	$(vala_depend)"
