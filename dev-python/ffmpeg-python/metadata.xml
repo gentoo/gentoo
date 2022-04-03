@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <upstream>
+    <bugs-to>https://github.com/kkroening/ffmpeg-python/issues/</bugs-to>
+    <remote-id type="github">kkroening/ffmpeg-python</remote-id>
+  </upstream>
+</pkgmetadata>
