@@ -51,6 +51,10 @@ src_prepare() {
 
 src_configure() {
 	local econf_args
+
+	# https://bugs.gentoo.org/836646
+	export PULSE_SERVER=""
+
 	econf_args=(
 		$(use_with async)
 		$(use_with klatt)
