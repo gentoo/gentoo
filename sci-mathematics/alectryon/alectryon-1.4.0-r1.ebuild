@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit elisp-common distutils-r1
@@ -42,6 +43,7 @@ BDEPEND="
 "
 
 DOCS=( CHANGES.rst CITATION.bib README.rst )
+PATCHES=( "${FILESDIR}"/${P}-setup.cfg-version.patch )
 SITEFILE="50${PN}-gentoo.el"
 
 src_compile() {

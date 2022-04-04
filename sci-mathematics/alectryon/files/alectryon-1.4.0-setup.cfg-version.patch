@@ -1,0 +1,11 @@
+index 1a25a92..066089b 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -1,6 +1,6 @@
+ [metadata]
+ name = alectryon
+-version = attr: alectryon.__version__
++version = attr: alectryon.__init__.__version__
+ description = A library to process Coq snippets embedded in documents, showing goals and messages for each Coq sentence.
+ long_description = file: README.rst
+ url = https://github.com/cpitclaudel/alectryon
