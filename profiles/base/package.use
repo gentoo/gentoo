@@ -4,10 +4,10 @@
 # Matt Turner <mattst88@gentoo.org> (2022-03-31)
 # Default to luajit, since that is what upstream recommends. Bug #795768.
 # See https://github.com/neovim/neovim/wiki/Building-Neovim#third-party-dependencies
-app-editors/neovim LUA_SINGLE_TARGET: -* luajit
-dev-lua/luv        LUA_SINGLE_TARGET: -* luajit
-dev-lua/lpeg       LUA_TARGETS: luajit
-dev-lua/mpack      LUA_TARGETS: luajit
+app-editors/neovim lua_single_target_luajit -lua_single_target_lua5-1
+dev-lua/luv        lua_single_target_luajit -lua_single_target_lua5-1
+dev-lua/lpeg       lua_targets_luajit
+dev-lua/mpack      lua_targets_luajit
 
 # Sam James <sam@gentoo.org> (2021-10-14)
 # Unconditional dependency on >= Lua 5.3, so let's just pick 5.4
