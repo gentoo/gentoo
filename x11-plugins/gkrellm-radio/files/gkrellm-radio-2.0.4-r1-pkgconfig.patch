@@ -1,0 +1,15 @@
+Respect user's pkg-config
+--- a/Makefile
++++ b/Makefile
+@@ -15,8 +15,9 @@ OBJS=gkrellm_radio.o radio.o
+ PLUGIN_DIR ?= /usr/local/lib/gkrellm2/plugins
+ INSTALL = install -c
+ INSTALL_PROGRAM = $(INSTALL) -s
+-GTK_CONFIG = pkg-config gtk+-2.0
+-CFLAGS := ${CFLAGS} -fPIC -I$(GKRELLMDIR)/include `$(GTK_CONFIG) --cflags`  -DVERSION=\"$(VERSION)\" -Wall
++PKG_CONFIG ?= pkg-config
++GTK_INCLUDE = $(shell ${PKG_CONFIG} gtk+-2.0 --cflags)
++CFLAGS := ${CFLAGS} -fPIC -I$(GKRELLMDIR)/include ${GTK_INCLUDE} -DVERSION=\"$(VERSION)\" -Wall
+ 
+ ifdef WITH_LIRC
+ CFLAGS := ${CFLAGS} -DHAVE_LIRC
