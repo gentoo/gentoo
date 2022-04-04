@@ -41,8 +41,6 @@ BDEPEND="virtual/pkgconfig"
 
 DOCS=( "README.md" "FAQ.md" )
 
-PATCHES=( "${FILESDIR}/${PN}-22.12.22749-metrics.patch" )
-
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
