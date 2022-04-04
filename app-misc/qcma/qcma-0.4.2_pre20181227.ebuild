@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,6 +33,10 @@ BDEPEND="
 "
 
 src_prepare() {
+	# http://ffmpeg.org/pipermail/ffmpeg-devel/2018-February/225051.html
+	sed -r \
+		-e '/av_register_all/d' \
+		-i "${S}"/common/avdecoder.h || die "Failed to fix ffmpeg stuff"
 	rm ChangeLog || die "Failed to rm changelog" # Triggers QA warn (symlink to nowhere)
 	default
 }
