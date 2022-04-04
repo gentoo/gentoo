@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
-DESCRIPTION="Simple, minimal and powerful logging library for Python"
+DESCRIPTION="Simple downloader with an customizable progressbar"
 HOMEPAGE="https://github.com/deepjyoti30/downloader-cli/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN/-/_}/${P/-/_}.tar.gz"
 S="${WORKDIR}"/${P/-/_}
