@@ -11,6 +11,30 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 
+IUSE="test"
+
+DEPEND="test? (
+	app-shells/bash:0
+	app-shells/dash
+	app-shells/ksh
+	app-shells/tcsh
+	app-shells/zsh
+)"
+RDEPEND=""
+
+src_prepare() {
+	# ash requires sys-apps/busybox[make-symlinks], so exclude it too
+	# Exclude app-shells/rc from tests
+	# Fix path for app-shells/tcsh
+	sed -i \
+		-e "s:'/bin/ash'::" \
+		-e "s:'/usr/bin/rc'::" \
+		-e "s:/usr/bin/tcsh:/bin/tcsh:" \
+		test/ttest.sh || die
+
+	default
+}
+
 src_install() {
 	dobin src/shc
 	doman shc.1
