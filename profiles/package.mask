@@ -362,13 +362,6 @@ app-misc/emelfm2
 ~sys-fs/zfs-0.8.6
 ~sys-fs/zfs-kmod-0.8.6
 
-# Ulrich Müller <ulm@gentoo.org> (2022-01-15)
-# Pretest versions, masked for testing.
-~app-editors/emacs-28.0.90
-~app-editors/emacs-28.0.91
-~app-editors/emacs-28.0.92
-~app-editors/emacs-28.0.93
-
 # Brian Evans <grknight@gentoo.org> (2022-01-07)
 # The main consumer, phpunit, does not initiate the new timer correctly
 # This is likely to cause issues in tests; Unmask if using for other purposes
