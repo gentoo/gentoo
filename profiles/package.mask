@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-04)
+# Last upstream activities in 2009.
+# Fails to compile with java 11 or higher (bug #831262).
+# Removal in 30 days.
+net-misc/jrdesktop
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-03)
 # Java library without consumers.
 # Multiple vulnerabilities (bug #719146).
