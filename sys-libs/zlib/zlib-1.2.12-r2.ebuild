@@ -16,6 +16,7 @@ CYGWINPATCHES=(
 DESCRIPTION="Standard (de)compression library"
 HOMEPAGE="https://zlib.net/"
 SRC_URI="https://zlib.net/${P}.tar.gz
+	https://zlib.net/fossils/${P}.tar.gz
 	https://www.gzip.org/zlib/${P}.tar.gz
 	https://www.zlib.net/current/beta/${P}.tar.gz
 	verify-sig? ( https://zlib.net/${P}.tar.gz.asc )
