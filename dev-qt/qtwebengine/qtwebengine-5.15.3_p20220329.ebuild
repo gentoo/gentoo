@@ -107,6 +107,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.15.2_p20210224-disable-git.patch" # downstream snapshot fix
 	"${FILESDIR}/${PN}-5.15.2_p20211015-pdfium-system-lcms2.patch" # by Debian, QTBUG-61746
 	"${WORKDIR}/${PN}-5.15.2_p20211019-jumbo-build.patch" # bug 813957
+	"${FILESDIR}/${PN}-5.15.3_p20220329-clang14.patch" # fixes build with clang 14
 )
 
 qtwebengine_check-reqs() {
