@@ -3,15 +3,15 @@
 
 EAPI=8
 
-inherit qmake-utils git-r3
+inherit qmake-utils
 
 DESCRIPTION="Cross-platform content manager assistant for the PS Vita"
 HOMEPAGE="https://github.com/codestation/qcma"
-EGIT_REPO_URI="https://github.com/codestation/qcma.git"
+SRC_URI="https://github.com/codestation/qcma/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+ffmpeg"
 
 DEPEND="
