@@ -24,7 +24,7 @@ SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.vbox-extpac
 LICENSE="PUEL"
 SLOT="0/$(ver_cut 1-2)"
 [[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 RESTRICT="bindist mirror strip"
 
