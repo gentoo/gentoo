@@ -24,7 +24,7 @@ HOMEPAGE="https://quassel-irc.org/"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="bundled-icons crypt +dbus debug kde ldap monolithic oxygen postgres +server snorenotify spell syslog test urlpreview X"
+IUSE="bundled-icons crypt +dbus debug gui kde ldap monolithic oxygen postgres +server snorenotify spell syslog test urlpreview"
 RESTRICT="!test? ( test )"
 
 SERVER_DEPEND="acct-group/quassel
@@ -68,7 +68,7 @@ DEPEND=">=dev-libs/boost-1.54:=
 	)
 	!monolithic? (
 		server? ( ${SERVER_DEPEND} )
-		X? ( ${GUI_DEPEND} )
+		gui? ( ${GUI_DEPEND} )
 	)"
 RDEPEND="${DEPEND}"
 BDEPEND="dev-qt/linguist-tools:5
@@ -78,13 +78,13 @@ DEPEND+=" test? ( dev-cpp/gtest dev-qt/qttest )"
 
 DOCS=( AUTHORS ChangeLog README.md )
 
-REQUIRED_USE="|| ( X server monolithic )
+REQUIRED_USE="|| ( gui server monolithic )
 	crypt? ( || ( server monolithic ) )
 	kde? ( dbus spell )
 	ldap? ( || ( server monolithic ) )
 	postgres? ( || ( server monolithic ) )
-	snorenotify? ( || ( X monolithic ) )
-	spell? ( || ( X monolithic ) )
+	snorenotify? ( || ( gui monolithic ) )
+	spell? ( || ( gui monolithic ) )
 	syslog? ( || ( server monolithic ) )"
 
 PATCHES=(
@@ -105,10 +105,10 @@ src_configure() {
 		-DWITH_OXYGEN_ICONS=$(usex oxygen)
 		-DWANT_CORE=$(usex server)
 		-DWITH_WEBENGINE=$(usex urlpreview)
-		-DWANT_QTCLIENT=$(usex X)
+		-DWANT_QTCLIENT=$(usex gui)
 	)
 
-	if use X || use monolithic ; then
+	if use gui || use monolithic ; then
 		# We can't always pass these (avoid "unused" warning)
 		# bug #830708
 		mycmakeargs+=(
