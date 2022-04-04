@@ -276,7 +276,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.2.0-disable-keymap.patch
 	"${FILESDIR}"/${PN}-6.0.0-make.patch
 	"${FILESDIR}"/${PN}-6.1.0-strings.patch
-	"${FILESDIR}"/${PN}-6.2.0-also-build-virtfs-proxy-helper.patch
+	"${FILESDIR}"/${PN}-7.0.0-also-build-virtfs-proxy-helper.patch
 )
 
 QA_PREBUILT="
