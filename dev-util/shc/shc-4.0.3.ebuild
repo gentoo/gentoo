@@ -22,6 +22,8 @@ DEPEND="test? (
 )"
 RDEPEND=""
 
+RESTRICT="!test? ( test )"
+
 src_prepare() {
 	# ash requires sys-apps/busybox[make-symlinks], so exclude it too
 	# Exclude app-shells/rc from tests
