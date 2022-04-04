@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit webapp
+inherit optfeature webapp
 
 DESCRIPTION="Personal cloud that runs on your own server"
 HOMEPAGE="https://nextcloud.com/"
@@ -40,4 +40,8 @@ src_install() {
 	webapp_postinst_txt en "${FILESDIR}"/php-argon2-en.txt
 
 	webapp_src_install
+}
+
+pkg_postinst() {
+	optfeature "Connecting to Windows file servers or other SMB-compatible servers with the SMB/CIFS backend support." dev-php/pecl-smbclient
 }
