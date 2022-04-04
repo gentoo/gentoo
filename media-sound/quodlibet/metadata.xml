@@ -5,10 +5,6 @@
 		<email>tamiko@gentoo.org</email>
 		<name>Matthias Maier</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>klausman@gentoo.org</email>
-		<name>Tobias Klausmann</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>sound@gentoo.org</email>
 		<name>Gentoo Sound project</name>
