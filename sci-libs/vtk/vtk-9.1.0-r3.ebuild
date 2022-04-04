@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 # TODO:
 # - add USE flag for remote modules? Those modules can be downloaded
@@ -37,21 +37,26 @@ S="${WORKDIR}/VTK-${PV}"
 
 LICENSE="BSD LGPL-2"
 SLOT="0/${MY_PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
+# ~arm64 #864791
+KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 # TODO: Like to simplifiy these. Mostly the flags related to Groups, plus
 # maybe some flags related to Kits and a few other needed flags.
 IUSE="all-modules +boost cuda debug doc examples +ffmpeg +gdal imaging java
-	mpi mysql odbc openmp postgres python qt5 +rendering tbb test +threads
+	mpi mysql odbc openmp postgres python qt5 qt6 +rendering tbb test +threads
 	tk video_cards_nvidia views web"
 
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
-	all-modules? ( boost ffmpeg gdal imaging mysql odbc postgres qt5 rendering views )
+	all-modules? (
+		boost ffmpeg gdal imaging mysql odbc postgres rendering views
+		|| ( qt5 qt6 )
+	)
 	cuda? ( video_cards_nvidia )
 	java? ( rendering )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	qt5? ( rendering )
+	qt6? ( rendering )
 	tk? ( rendering python )
 	web? ( python )
 "
@@ -64,13 +69,16 @@ RDEPEND="
 	dev-libs/expat
 	dev-libs/icu:=
 	dev-libs/jsoncpp:=
+	>=dev-libs/libfmt-8.1.1:=
 	dev-libs/libxml2:2
+	dev-libs/libzip:=
 	dev-libs/pugixml
 	media-libs/freetype
 	media-libs/libogg
 	media-libs/libpng:=
 	media-libs/libtheora
 	media-libs/tiff
+	>=sci-libs/cgnslib-4.1.1:=[hdf5,mpi=]
 	sci-libs/hdf5:=[mpi=]
 	sci-libs/netcdf:=[mpi=]
 	sys-libs/zlib
@@ -96,6 +104,11 @@ RDEPEND="
 		dev-qt/qtquickcontrols2:5
 		dev-qt/qtsql:5
 		dev-qt/qtwidgets:5
+	)
+	qt6? (
+		dev-qt/qtbase:6[gui,opengl,sql,widgets]
+		dev-qt/qtdeclarative:6[opengl]
+		dev-qt/qtshadertools:6
 	)
 	rendering? (
 		media-libs/freeglut
@@ -152,8 +165,6 @@ DOCS=( CONTRIBUTING.md README.md )
 
 # based on default settings
 CHECKREQS_DISK_BUILD="4G"
-# we want the EAPI 8 default
-CMAKE_BUILD_TYPE=RelWithDebInfo
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && has openmp && tc-check-openmp
@@ -178,6 +189,10 @@ pkg_pretend() {
 		# 10.2 GiB install directory, 6.4 GiB build directory with max. USE flags
 		CHECKREQS_MEMORY="7G"
 		CHECKREQS_DISK_BUILD="14G"
+	fi
+
+	if use qt6 && use qt5; then
+		ewarn "Both qt5 and qt6 USE flags have been selected. Using qt5!"
 	fi
 
 	check-reqs_pkg_setup
@@ -205,6 +220,10 @@ pkg_setup() {
 		CHECKREQS_DISK_BUILD="14G"
 	fi
 
+	if use qt6 && use qt5; then
+		ewarn "Both qt5 and qt6 USE flags have been selected. Using qt5!"
+	fi
+
 	check-reqs_pkg_setup
 
 	use java && java-pkg-opt-2_pkg_setup
@@ -220,11 +239,9 @@ src_prepare() {
 	#	diy2, exodusII, fides, h5part, kissfft, loguru, verdict, vpic,
 	#	vtkm, xdmf{2,3}, zfp
 	# Note: libharu is omitted: vtk needs an updated version (2.4.0)
-	# Note: fmt is ommited, >=libfmt-8.1.0 needed
-	# Note: cgns is ommited, >=cgnslib-4.1 needed
 	# Note: no valid mpi4py target found with system library
-	# TODO: cgns (4.1), cli11 (::guru), exprtk, ioss, libfmt (8.1.0)
-	local -a DROPS=( doubleconversion eigen expat freetype hdf5 jpeg jsoncpp
+	# TODO: cli11 (::guru), exprtk, ioss
+	local -a DROPS=( cgns doubleconversion eigen expat fmt freetype hdf5 jpeg jsoncpp
 		libxml2 lz4 lzma netcdf ogg pegtl png pugixml sqlite theora tiff utf8
 		zlib )
 	use rendering && DROPS+=( gl2ps glew libproj )
@@ -281,7 +298,6 @@ src_configure() {
 		-DVTK_ENABLE_REMOTE_MODULES=OFF
 
 		-DVTK_GROUP_ENABLE_Imaging=$(usex imaging "YES" "DONT_WANT")
-		-DVTK_GROUP_ENABLE_Qt=$(usex qt5 "YES" "DONT_WANT")
 		-DVTK_GROUP_ENABLE_Rendering=$(usex rendering "YES" "DONT_WANT")
 		-DVTK_GROUP_ENABLE_StandAlone="YES"
 		-DVTK_GROUP_ENABLE_Views=$(usex views "YES" "DONT_WANT")
@@ -289,17 +305,13 @@ src_configure() {
 
 		-DVTK_INSTALL_SDK=ON
 
-		-DVTK_MODULE_ENABLE_VTK_vtkm="WANT"
 		-DVTK_MODULE_ENABLE_VTK_IOGeoJSON="WANT"
 		-DVTK_MODULE_ENABLE_VTK_IOOggTheora="WANT"
+		-DVTK_MODULE_ENABLE_VTK_fmt="YES"
+		-DVTK_MODULE_ENABLE_VTK_vtkm="WANT"
 
-		# TODO: update one cgnslib-4.1.1 is packaged
-		-DVTK_MODULE_USE_EXTERNAL_VTK_cgns=OFF
 		# not packaged in Gentoo
 		-DVTK_MODULE_USE_EXTERNAL_VTK_exprtk=OFF
-		# TODO: update once libfmt-8.1.0 has been packaged
-		-DVTK_MODULE_USE_EXTERNAL_VTK_fmt=OFF
-		# not pacakged in Gentoo
 		-DVTK_MODULE_USE_EXTERNAL_VTK_ioss=OFF
 
 		-DVTK_RELOCATABLE_INSTALL=ON
@@ -459,10 +471,32 @@ src_configure() {
 		)
 	fi
 
-	if use qt5; then
+	if use qt5 && use qt6; then
+		# prefer Qt5: https://wiki.gentoo.org/wiki/Project:qt/Policies
 		mycmakeargs+=(
-			-DVTK_MODULE_ENABLE_VTK_GUISupportQt="WANT"
+			-DCMAKE_INSTALL_QMLDIR="/usr/$(get_libdir)/qt5/qml"
 			-DVTK_QT_VERSION="5"
+		)
+	else
+		if use qt5; then
+			mycmakeargs+=(
+				-DCMAKE_INSTALL_QMLDIR="/usr/$(get_libdir)/qt5/qml"
+				-DVTK_QT_VERSION="5"
+			)
+		elif use qt6; then
+			mycmakeargs+=(
+				-DCMAKE_INSTALL_QMLDIR="/usr/$(get_libdir)/qt6/qml"
+				-DVTK_QT_VERSION="6"
+			)
+		else
+			mycmakeargs+=( -DVTK_GROUP_ENABLE_Qt="DONT_WANT" )
+		fi
+	fi
+
+	if use qt5 || use qt6; then
+		mycmakeargs+=(
+			-DVTK_GROUP_ENABLE_Qt:STRING="YES"
+			-DVTK_MODULE_ENABLE_VTK_GUISupportQt="WANT"
 		)
 		if use mysql || use postgres; then
 			mycmakeargs+=( -DVTK_MODULE_ENABLE_VTK_GUISupportQtSQL="WANT" )
@@ -571,14 +605,6 @@ src_install() {
 	fi
 
 	use python && python_optimize
-
-	# environment
-#	cat >> "${T}"/40${PN} <<- EOF || die
-#		VTK_DATA_ROOT=${EPREFIX}/usr/share/${PN}/data
-#		VTK_DIR=${EPREFIX}/usr/$(get_libdir)/${PN}
-#		VTKHOME=${EPREFIX}/usr
-#		EOF
-#	doenvd "${T}"/40${PN}
 
 	use web && webapp_src_install
 
