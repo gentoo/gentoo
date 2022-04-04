@@ -27,7 +27,7 @@ BDEPEND="
 	sys-apps/checkpolicy
 	sys-devel/m4"
 
-MODS="application authlogin bootloader clock consoletype cron dmesg fstools getty hostname init iptables libraries locallogin logging lvm miscfiles modutils mount mta netutils nscd portage raid rsync selinuxutil setrans ssh staff storage su sysadm sysnetwork systemd tmpfiles udev userdomain usermanage unprivuser xdg"
+MODS="application authlogin bootloader clock consoletype cron dmesg fstools getty hostname init iptables libraries locallogin logging lvm miscfiles modutils mount mta netutils nscd portage raid rsync secadm selinuxutil setrans ssh staff storage su sysadm sysnetwork systemd tmpfiles udev userdomain usermanage unprivuser xdg"
 DEL_MODS="hotplug"
 LICENSE="GPL-2"
 SLOT="0"
