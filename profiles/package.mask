@@ -91,7 +91,7 @@ media-sound/xnoise
 
 # Piotr Karbowski <slashbeast@gentoo.org> (2022-03-25)
 # Abandoned upstream, officialy limited to kernel 5.6,
-# no longer builds with kernel >=5.14. Use kernel's 
+# no longer builds with kernel >=5.14. Use kernel's
 # CONFIG_USB_RTL8152 and CONFIG_USB_USBNET since 5.13.
 # Removal on 2022-04-25.
 net-misc/realtek-r8152
