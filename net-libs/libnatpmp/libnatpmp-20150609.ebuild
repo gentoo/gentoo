@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="http://miniupnp.free.fr/files/download.php?file=${P}.tar.gz -> ${P}.tar
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv sparc x86"
 
 PATCHES=( "${FILESDIR}"/${PN}-20150609-gentoo.patch )
 
