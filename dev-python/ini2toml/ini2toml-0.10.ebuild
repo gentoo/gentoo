@@ -38,6 +38,10 @@ distutils_enable_tests pytest
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
+PATCHES=(
+	"${FILESDIR}"/${P}-test.patch
+)
+
 EPYTEST_DESELECT=(
 	# pyproject_fmt is not packaged
 	tests/test_cli.py::test_auto_formatting

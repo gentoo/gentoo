@@ -1,0 +1,39 @@
+From 1a40d273d6671657ef10081123a675bd22e4bf06 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 2 Apr 2022 18:21:39 +0200
+Subject: [PATCH] Support duplicate plugin instances in
+ test_list_from_entry_points
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Account for the possibility of the isort plugin occurring more than
+once in the plugin list, in test_list_from_entry_points.  This is needed
+to avoid test failures on Gentoo where tests are run in a venv
+with --system-site-packages.  As a result, if ini2toml is installed
+already, it grabs all plugins twice — once from the venv, and then again
+from system site-packages directory.
+---
+ AUTHORS.rst           | 1 +
+ tests/test_plugins.py | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_plugins.py b/tests/test_plugins.py
+index a1e96eb..9b52432 100644
+--- a/tests/test_plugins.py
++++ b/tests/test_plugins.py
+@@ -46,6 +46,7 @@ def test_list_from_entry_points():
+     # Should return a list with all the plugins registered in the entrypoints
+     pluging_list = plugins.list_from_entry_points()
+     orig_len = len(pluging_list)
++    isort_count = len([e for e in pluging_list if "isort" in str(e.__module__)])
+     assert all(callable(e) for e in pluging_list)
+     plugin_names = " ".join(str(e.__module__) for e in pluging_list)
+     for example in EXISTING:
+@@ -54,5 +55,5 @@ def test_list_from_entry_points():
+     # a filtering function can be passed to avoid loading plugins that are not needed
+     pluging_list = plugins.list_from_entry_points(filtering=lambda e: e.name != "isort")
+     plugin_names = " ".join(str(e.__module__) for e in pluging_list)
+-    assert len(pluging_list) == orig_len - 1
++    assert len(pluging_list) == orig_len - isort_count
+     assert "isort" not in plugin_names
