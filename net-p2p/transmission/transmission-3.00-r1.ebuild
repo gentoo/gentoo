@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/transmission/transmission"
 else
 	SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm ~arm64 ~mips ppc ppc64 x86 ~amd64-linux"
+	KEYWORDS="amd64 ~arm ~arm64 ~mips ppc ppc64 ~riscv x86 ~amd64-linux"
 fi
 
 DESCRIPTION="A fast, easy, and free BitTorrent client"
