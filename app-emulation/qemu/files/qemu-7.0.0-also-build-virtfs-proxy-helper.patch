@@ -1,0 +1,33 @@
+From c1093041466772f4b62961bcc5a354801d41355d Mon Sep 17 00:00:00 2001
+Message-Id: <c1093041466772f4b62961bcc5a354801d41355d.1649069848.git.mprivozn@redhat.com>
+From: Matthias Maier <tamiko@43-1.org>
+Date: Mon, 4 Apr 2022 12:56:59 +0200
+Subject: [PATCH] also build virtfs-proxy-helper
+
+The Gentoo ebuild splits the qemu build into a softmmu, user and tool
+phase in order to be able to build and link some of the qemu emulators
+statically. This unfortunately has the consequence that we never
+configure with "have_virtfs" and "have_tools" at the same time.
+
+As a workaround, simply build the virtfs userland unconditionally. After
+all, it is a tiny executable
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 861de93c4f..a8d29be3aa 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1474,7 +1474,7 @@ have_virtfs = get_option('virtfs') \
+     .disable_auto_if(not have_tools and not have_system) \
+     .allowed()
+ 
+-have_virtfs_proxy_helper = targetos != 'darwin' and have_virtfs and have_tools
++have_virtfs_proxy_helper = have_tools and libattr.found() and libcap_ng.found()
+ 
+ foreach k : get_option('trace_backends')
+   config_host_data.set('CONFIG_TRACE_' + k.to_upper(), true)
+-- 
+2.35.1
+
