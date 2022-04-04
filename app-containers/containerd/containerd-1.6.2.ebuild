@@ -8,6 +8,7 @@ inherit go-module systemd
 DESCRIPTION="A daemon to control runC"
 HOMEPAGE="https://containerd.io/"
 SRC_URI="https://github.com/containerd/containerd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
