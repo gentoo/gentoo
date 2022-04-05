@@ -48,6 +48,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.8.26-ncurses-mouse.patch
+	"${FILESDIR}"/${P}-tests.patch #836812
 )
 
 pkg_pretend() {
