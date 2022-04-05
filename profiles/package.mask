@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-04-05)
+# First version with py3 buildsystem support.
+# May be succeeded quickly by another snapshot.
+~dev-qt/qtwebengine-5.15.3_p20220330
+
 # Sergey Popov <pinkbyte@gentoo.org> (2022-04-05)
 # Upstream is dead long time ago
 # SRC_URI and HOMEPAGE are gone(bug #680362)
