@@ -31,7 +31,7 @@ DEPEND="${CP_DEPEND}
 	dev-java/ant-core:0
 	dev-java/sun-jai-bin:0
 	test? (
-		dev-java/mockito:0
+		dev-java/mockito:4
 		dev-java/pdfbox:0
 		dev-java/xmlunit:1
 	)
@@ -119,7 +119,7 @@ src_compile() {
 }
 
 src_test() {
-	JAVA_TEST_GENTOO_CLASSPATH="junit-4,mockito,pdfbox,xmlunit-1"
+	JAVA_TEST_GENTOO_CLASSPATH="junit-4,mockito-4,pdfbox,xmlunit-1"
 
 	JAVA_TEST_SRC_DIR="fop-events/src/test/java"
 	JAVA_TEST_RUN_ONLY="org.apache.fop.events.BasicEventTestCase"
@@ -130,13 +130,14 @@ src_test() {
 
 	java-pkg-simple_src_test
 
+	sed \
+		-e 's:verifyZeroInteractions:verifyNoInteractions:' \
+		-i fop-core/src/test/java/org/apache/fop/render/intermediate/BorderPainterTestCase.java || die
+
 	JAVA_TEST_SRC_DIR="fop-core/src/test/java"
 	JAVA_TEST_RESOURCE_DIRS="fop-core/src/test/resources"
 
-	# Testing fop-core seems to want a newer mockito:
-	# error: cannot find symbol
-	# import static org.mockito.ArgumentMatchers.anyInt;
-#	java-pkg-simple_src_test
+	java-pkg-simple_src_test
 }
 
 src_install() {
