@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>reavertm@gentoo.org</email>
-    <description>Feel free to maintain/fix</description>
-  </maintainer>
-  <maintainer type="person" proxied="yes">
-    <email>waebbl-gentoo@posteo.net</email>
-    <name>Bernd Waibel</name>
-  </maintainer>
-  <longdescription lang="en">
-  Quarter is a light-weight glue library that provides seamless
-  integration between Systems in Motions's Coin high-level 3D
-  visualization library and Trolltech's Qt 2D user interface library.
-  It supersedes previous Qt binding - SoQt - by subclassing QGLWidget.
-  </longdescription>
-  <use>
-    <flag name="designer">Install plugin for <pkg>dev-qt/designer</pkg></flag>
-    <flag name="qthelp">Build API documentation in QtHelp format</flag>
-  </use>
-  <upstream>
-    <remote-id type="github">coin3d/quarter</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>reavertm@gentoo.org</email>
+		<description>Feel free to maintain/fix</description>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>waebbl-gentoo@posteo.net</email>
+		<name>Bernd Waibel</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Quarter is a light-weight glue library that provides seamless
+	integration between Systems in Motions's Coin high-level 3D
+	visualization library and Trolltech's Qt 2D user interface library.
+	It supersedes previous Qt binding - SoQt - by subclassing QGLWidget.
+	</longdescription>
+	<use>
+		<flag name="designer">Install plugin for <pkg>dev-qt/designer</pkg></flag>
+		<flag name="qthelp">Build API documentation in QtHelp format</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">coin3d/quarter</remote-id>
+	</upstream>
 </pkgmetadata>
