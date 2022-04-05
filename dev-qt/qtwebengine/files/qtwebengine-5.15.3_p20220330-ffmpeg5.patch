@@ -1,0 +1,169 @@
+From 05f6ffbbce0a2aad01dc05d682cbe4a1ec44fad5 Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Tue, 25 Jan 2022 10:51:58 +0000
+Subject: [PATCH] Fix build with ffmpeg 5
+
+---
+ chromium/media/ffmpeg/ffmpeg_common.h                |  1 +
+ chromium/media/filters/audio_file_reader.cc          |  2 +-
+ chromium/media/filters/ffmpeg_audio_decoder.cc       |  2 +-
+ chromium/media/filters/ffmpeg_demuxer.cc             | 12 ++++++------
+ chromium/media/filters/ffmpeg_glue.cc                |  4 ----
+ chromium/media/filters/ffmpeg_video_decoder.cc       |  2 +-
+ chromium/media/filters/media_file_checker.cc         |  2 +-
+ .../video_coding/codecs/h264/h264_decoder_impl.cc    |  2 +-
+ 8 files changed, 12 insertions(+), 15 deletions(-)
+
+diff --git a/chromium/media/ffmpeg/ffmpeg_common.h b/chromium/media/ffmpeg/ffmpeg_common.h
+index 2734a485cbd..70b1877a43c 100644
+--- a/chromium/media/ffmpeg/ffmpeg_common.h
++++ b/chromium/media/ffmpeg/ffmpeg_common.h
+@@ -29,6 +29,7 @@ extern "C" {
+ #include <libavformat/avformat.h>
+ #include <libavformat/avio.h>
+ #include <libavutil/avutil.h>
++#include <libavutil/channel_layout.h>
+ #include <libavutil/imgutils.h>
+ #include <libavutil/log.h>
+ #include <libavutil/mastering_display_metadata.h>
+diff --git a/chromium/media/filters/audio_file_reader.cc b/chromium/media/filters/audio_file_reader.cc
+index cb81d920def..bd73908d0ca 100644
+--- a/chromium/media/filters/audio_file_reader.cc
++++ b/chromium/media/filters/audio_file_reader.cc
+@@ -85,7 +85,7 @@ bool AudioFileReader::OpenDemuxer() {
+ }
+ 
+ bool AudioFileReader::OpenDecoder() {
+-  AVCodec* codec = avcodec_find_decoder(codec_context_->codec_id);
++  const AVCodec* codec = avcodec_find_decoder(codec_context_->codec_id);
+   if (codec) {
+     // MP3 decodes to S16P which we don't support, tell it to use S16 instead.
+     if (codec_context_->sample_fmt == AV_SAMPLE_FMT_S16P)
+diff --git a/chromium/media/filters/ffmpeg_audio_decoder.cc b/chromium/media/filters/ffmpeg_audio_decoder.cc
+index 0d825ed791b..72fac6167ef 100644
+--- a/chromium/media/filters/ffmpeg_audio_decoder.cc
++++ b/chromium/media/filters/ffmpeg_audio_decoder.cc
+@@ -329,7 +329,7 @@ bool FFmpegAudioDecoder::ConfigureDecoder(const AudioDecoderConfig& config) {
+     }
+   }
+ 
+-  AVCodec* codec = avcodec_find_decoder(codec_context_->codec_id);
++  const AVCodec* codec = avcodec_find_decoder(codec_context_->codec_id);
+   if (!codec ||
+       avcodec_open2(codec_context_.get(), codec, &codec_options) < 0) {
+     DLOG(ERROR) << "Could not initialize audio decoder: "
+diff --git a/chromium/media/filters/ffmpeg_demuxer.cc b/chromium/media/filters/ffmpeg_demuxer.cc
+index d34db63f3ef..427565b00c1 100644
+--- a/chromium/media/filters/ffmpeg_demuxer.cc
++++ b/chromium/media/filters/ffmpeg_demuxer.cc
+@@ -98,12 +98,12 @@ static base::TimeDelta ExtractStartTime(AVStream* stream) {
+ 
+   // Next try to use the first DTS value, for codecs where we know PTS == DTS
+   // (excludes all H26x codecs). The start time must be returned in PTS.
+-  if (stream->first_dts != kNoFFmpegTimestamp &&
++  if (av_stream_get_first_dts(stream) != kNoFFmpegTimestamp &&
+       stream->codecpar->codec_id != AV_CODEC_ID_HEVC &&
+       stream->codecpar->codec_id != AV_CODEC_ID_H264 &&
+       stream->codecpar->codec_id != AV_CODEC_ID_MPEG4) {
+     const base::TimeDelta first_pts =
+-        ConvertFromTimeBase(stream->time_base, stream->first_dts);
++        ConvertFromTimeBase(stream->time_base, av_stream_get_first_dts(stream));
+     if (first_pts < start_time)
+       start_time = first_pts;
+   }
+@@ -408,11 +408,11 @@ void FFmpegDemuxerStream::EnqueuePacket(ScopedAVPacket packet) {
+   scoped_refptr<DecoderBuffer> buffer;
+ 
+   if (type() == DemuxerStream::TEXT) {
+-    int id_size = 0;
++    size_t id_size = 0;
+     uint8_t* id_data = av_packet_get_side_data(
+         packet.get(), AV_PKT_DATA_WEBVTT_IDENTIFIER, &id_size);
+ 
+-    int settings_size = 0;
++    size_t settings_size = 0;
+     uint8_t* settings_data = av_packet_get_side_data(
+         packet.get(), AV_PKT_DATA_WEBVTT_SETTINGS, &settings_size);
+ 
+@@ -424,7 +424,7 @@ void FFmpegDemuxerStream::EnqueuePacket(ScopedAVPacket packet) {
+     buffer = DecoderBuffer::CopyFrom(packet->data, packet->size,
+                                      side_data.data(), side_data.size());
+   } else {
+-    int side_data_size = 0;
++    size_t side_data_size = 0;
+     uint8_t* side_data = av_packet_get_side_data(
+         packet.get(), AV_PKT_DATA_MATROSKA_BLOCKADDITIONAL, &side_data_size);
+ 
+@@ -485,7 +485,7 @@ void FFmpegDemuxerStream::EnqueuePacket(ScopedAVPacket packet) {
+                                        packet->size - data_offset);
+     }
+ 
+-    int skip_samples_size = 0;
++    size_t skip_samples_size = 0;
+     const uint32_t* skip_samples_ptr =
+         reinterpret_cast<const uint32_t*>(av_packet_get_side_data(
+             packet.get(), AV_PKT_DATA_SKIP_SAMPLES, &skip_samples_size));
+diff --git a/chromium/media/filters/ffmpeg_glue.cc b/chromium/media/filters/ffmpeg_glue.cc
+index 0ef3521473d..8483ecc348f 100644
+--- a/chromium/media/filters/ffmpeg_glue.cc
++++ b/chromium/media/filters/ffmpeg_glue.cc
+@@ -59,7 +59,6 @@ static int64_t AVIOSeekOperation(void* opaque, int64_t offset, int whence) {
+ }
+ 
+ void FFmpegGlue::InitializeFFmpeg() {
+-  av_register_all();
+ }
+ 
+ static void LogContainer(bool is_local_file,
+@@ -95,9 +94,6 @@ FFmpegGlue::FFmpegGlue(FFmpegURLProtocol* protocol) {
+   // Enable fast, but inaccurate seeks for MP3.
+   format_context_->flags |= AVFMT_FLAG_FAST_SEEK;
+ 
+-  // Ensures we can read out various metadata bits like vp8 alpha.
+-  format_context_->flags |= AVFMT_FLAG_KEEP_SIDE_DATA;
+-
+   // Ensures format parsing errors will bail out. From an audit on 11/2017, all
+   // instances were real failures. Solves bugs like http://crbug.com/710791.
+   format_context_->error_recognition |= AV_EF_EXPLODE;
+diff --git a/chromium/media/filters/ffmpeg_video_decoder.cc b/chromium/media/filters/ffmpeg_video_decoder.cc
+index ef12477ee89..7996606f5f9 100644
+--- a/chromium/media/filters/ffmpeg_video_decoder.cc
++++ b/chromium/media/filters/ffmpeg_video_decoder.cc
+@@ -391,7 +391,7 @@ bool FFmpegVideoDecoder::ConfigureDecoder(const VideoDecoderConfig& config,
+   if (decode_nalus_)
+     codec_context_->flags2 |= AV_CODEC_FLAG2_CHUNKS;
+ 
+-  AVCodec* codec = avcodec_find_decoder(codec_context_->codec_id);
++  const AVCodec* codec = avcodec_find_decoder(codec_context_->codec_id);
+   if (!codec || avcodec_open2(codec_context_.get(), codec, NULL) < 0) {
+     ReleaseFFmpegResources();
+     return false;
+diff --git a/chromium/media/filters/media_file_checker.cc b/chromium/media/filters/media_file_checker.cc
+index 59c2a2fc618..1a9872c7acb 100644
+--- a/chromium/media/filters/media_file_checker.cc
++++ b/chromium/media/filters/media_file_checker.cc
+@@ -68,7 +68,7 @@ bool MediaFileChecker::Start(base::TimeDelta check_time) {
+       auto context = AVStreamToAVCodecContext(format_context->streams[i]);
+       if (!context)
+         continue;
+-      AVCodec* codec = avcodec_find_decoder(cp->codec_id);
++      const AVCodec* codec = avcodec_find_decoder(cp->codec_id);
+       if (codec && avcodec_open2(context.get(), codec, nullptr) >= 0) {
+         auto loop = std::make_unique<FFmpegDecodingLoop>(context.get());
+         stream_contexts[i] = {std::move(context), std::move(loop)};
+diff --git a/chromium/third_party/webrtc/modules/video_coding/codecs/h264/h264_decoder_impl.cc b/chromium/third_party/webrtc/modules/video_coding/codecs/h264/h264_decoder_impl.cc
+index 9002b874611..d12fade8b63 100644
+--- a/chromium/third_party/webrtc/modules/video_coding/codecs/h264/h264_decoder_impl.cc
++++ b/chromium/third_party/webrtc/modules/video_coding/codecs/h264/h264_decoder_impl.cc
+@@ -203,7 +203,7 @@ int32_t H264DecoderImpl::InitDecode(const VideoCodec* codec_settings,
+   // a pointer |this|.
+   av_context_->opaque = this;
+ 
+-  AVCodec* codec = avcodec_find_decoder(av_context_->codec_id);
++  const AVCodec* codec = avcodec_find_decoder(av_context_->codec_id);
+   if (!codec) {
+     // This is an indication that FFmpeg has not been initialized or it has not
+     // been compiled/initialized with the correct set of codecs.
+-- 
+2.35.1
+

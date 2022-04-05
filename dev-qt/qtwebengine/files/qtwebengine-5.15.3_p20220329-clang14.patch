@@ -1,3 +1,29 @@
+From 0825e7bc64e47d87e1f1026cc80c933550f114f5 Mon Sep 17 00:00:00 2001
+From: Dimitry Andric <dim@FreeBSD.org>
+Date: Mon, 14 Feb 2022 13:55:25 +0100
+Subject: www/qt5-webengine: fix build with clang 14
+
+Fixes compile error:
+
+In file included from gen/third_party/blink/renderer/platform/platform_jumbo_63.cc:8:
+src/3rdparty/chromium/third_party/blink/renderer/platform/text/text_break_iterator_icu.cc:122:15: error: anonymous non-C-compatible type given name for linkage purposes by typedef declaration after its linkage was computed; add a tag name here to establish linkage prior to definition
+typedef struct {
+              ^
+               UTextWithBuffer
+src/3rdparty/chromium/third_party/blink/renderer/platform/text/text_break_iterator_icu.cc:123:3: note: type is not C-compatible due to this member declaration
+  DISALLOW_NEW();
+  ^~~~~~~~~~~~~~
+src/3rdparty/chromium/third_party/blink/renderer/platform/wtf/allocator/allocator.h:40:2: note: expanded from macro 'DISALLOW_NEW'
+ public:                                                                      \
+ ^~~~~~~
+src/3rdparty/chromium/third_party/blink/renderer/platform/text/text_break_iterator_icu.cc:126:3: note: type is given name 'UTextWithBuffer' for linkage purposes by this typedef declaration
+} UTextWithBuffer;
+  ^
+
+PR:		261949
+Approved by:	adridg (maintainer)
+MFH:		2022Q1
+
 --- a/src/3rdparty/chromium/third_party/blink/renderer/platform/text/text_break_iterator_icu.cc
 +++ b/src/3rdparty/chromium/third_party/blink/renderer/platform/text/text_break_iterator_icu.cc
 @@ -119,11 +119,11 @@ enum TextContext { kNoContext, kPriorContext, kPrimary
