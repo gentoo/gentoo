@@ -21,7 +21,7 @@ RDEPEND="
 	>=dev-libs/openssl-1.0.2:0=
 	>=dev-qt/qtcore-${QT_PV}
 	>=dev-qt/qtgui-${QT_PV}
-	>=dev-qt/qtnetwork-${QT_PV}
+	>=dev-qt/qtnetwork-${QT_PV}[ssl]
 	>=dev-qt/qtprintsupport-${QT_PV}
 	>=dev-qt/qtsql-${QT_PV}[sqlite]
 	>=dev-qt/qtsvg-${QT_PV}
