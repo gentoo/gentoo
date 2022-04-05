@@ -36,7 +36,6 @@ multilib_src_configure() {
 
 		-DBUILD_TOOLS=$(multilib_native_usex tools)
 		-DFFT_LIB=$(usex tools 'avfft' 'fftw3')
-		#-DAUDIO_PROCESSOR_LIB="swresample"
 		$(multilib_native_usex tools '-DAUDIO_PROCESSOR_LIB=swresample' '')
 		# Automagicallyish looks for ffmpeg, but there's no point
 		# even doing the check unless we're building with tools
