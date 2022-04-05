@@ -288,11 +288,6 @@ media-gfx/slic3r
 # Bug #834261. Removal on 2022-04-06.
 sci-chemistry/openbabel-perl
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2022-03-07)
-# Proprietary, requires login to download, no maintainer, blocks cleanup.
-# Bug #770499. Removal on 2022-04-06.
-dev-libs/device-atlas-api-c
-
 # Sam James <sam@gentoo.org> (2022-03-07)
 # Python 3.6 was declared end-of-life by upstream on 2021-11-04.
 # Please migrate to a newer Python version/slot or use a virtualenv
