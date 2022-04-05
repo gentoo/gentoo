@@ -153,6 +153,13 @@ esac
 #     ${DISTUTILS_DEPS}"
 # @CODE
 
+# @ECLASS_VARIABLE: GPEP517_TESTING
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Enable in make.conf to test building via dev-python/gpep517 instead of
+# inline Python snippets.  dev-python/gpep517 needs to be installed
+# first.
+
 if [[ ! ${_DISTUTILS_R1} ]]; then
 
 [[ ${EAPI} == 6 ]] && inherit eutils xdg-utils
@@ -947,16 +954,20 @@ _distutils-r1_get_backend() {
 	if [[ -f pyproject.toml ]]; then
 		# if pyproject.toml exists, try getting the backend from it
 		# NB: this could fail if pyproject.toml doesn't list one
-		build_backend=$(
-			"${EPYTHON}" - 3>&1 <<-EOF
-				import os
-				import tomli
-				print(tomli.load(open("pyproject.toml", "rb"))
-						.get("build-system", {})
-						.get("build-backend", ""),
-					file=os.fdopen(3, "w"))
-			EOF
-		)
+		if [[ ${GPEP517_TESTING} ]]; then
+			build_backend=$(gpep517 get-backend)
+		else
+			build_backend=$(
+				"${EPYTHON}" - 3>&1 <<-EOF
+					import os
+					import tomli
+					print(tomli.load(open("pyproject.toml", "rb"))
+							.get("build-system", {})
+							.get("build-backend", ""),
+						file=os.fdopen(3, "w"))
+				EOF
+			)
+		fi
 	fi
 	if [[ -z ${build_backend} && ${DISTUTILS_USE_PEP517} == setuptools &&
 		-f setup.py ]]
@@ -1022,30 +1033,45 @@ distutils_pep517_install() {
 
 	local build_backend=$(_distutils-r1_get_backend)
 	einfo "  Building the wheel for ${PWD#${WORKDIR}/} via ${build_backend}"
-	local wheel=$(
-		"${EPYTHON}" - 3>&1 >&2 <<-EOF || die "Wheel build failed"
-			import ${build_backend%:*}
-			import os
-			print(${build_backend/:/.}.build_wheel(os.environ['WHEEL_BUILD_DIR']),
-				file=os.fdopen(3, 'w'))
-		EOF
-	)
+	if [[ ${GPEP517_TESTING} ]]; then
+		local wheel=$(
+			gpep517 build-wheel --backend "${build_backend}" \
+					--output-fd 3 \
+					--wheel-dir "${WHEEL_BUILD_DIR}" 3>&1 >&2 ||
+				die "Wheel build failed"
+		)
+	else
+		local wheel=$(
+			"${EPYTHON}" - 3>&1 >&2 <<-EOF || die "Wheel build failed"
+				import ${build_backend%:*}
+				import os
+				print(${build_backend/:/.}.build_wheel(os.environ['WHEEL_BUILD_DIR']),
+					file=os.fdopen(3, 'w'))
+			EOF
+		)
+	fi
 	[[ -n ${wheel} ]] || die "No wheel name returned"
 
 	einfo "  Installing the wheel to ${root}"
-	# NB: --compile-bytecode does not produce the correct paths,
-	# and python_optimize doesn't handle being called outside D,
-	# so we just defer compiling until the final merge
-	# NB: we override sys.prefix & sys.exec_prefix because otherwise
-	# installer would use virtualenv's prefix
-	local -x PYTHON_PREFIX=${EPREFIX}/usr
-	"${EPYTHON}" - -d "${root}" "${WHEEL_BUILD_DIR}/${wheel}" --no-compile-bytecode \
-			<<-EOF || die "installer failed"
-		import os, sys
-		sys.prefix = sys.exec_prefix = os.environ["PYTHON_PREFIX"]
-		from installer.__main__ import main
-		main(sys.argv[1:])
-	EOF
+	if [[ ${GPEP517_TESTING} ]]; then
+		gpep517 install-wheel --destdir="${root}" --interpreter="${PYTHON}" \
+				--prefix="${EPREFIX}/usr" "${WHEEL_BUILD_DIR}/${wheel}" ||
+			die "Wheel install failed"
+	else
+		# NB: --compile-bytecode does not produce the correct paths,
+		# and python_optimize doesn't handle being called outside D,
+		# so we just defer compiling until the final merge
+		# NB: we override sys.prefix & sys.exec_prefix because otherwise
+		# installer would use virtualenv's prefix
+		local -x PYTHON_PREFIX=${EPREFIX}/usr
+		"${EPYTHON}" - -d "${root}" "${WHEEL_BUILD_DIR}/${wheel}" --no-compile-bytecode \
+				<<-EOF || die "installer failed"
+			import os, sys
+			sys.prefix = sys.exec_prefix = os.environ["PYTHON_PREFIX"]
+			from installer.__main__ import main
+			main(sys.argv[1:])
+		EOF
+	fi
 
 	# remove installed licenses
 	find "${root}$(python_get_sitedir)" \
