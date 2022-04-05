@@ -1,0 +1,13 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Default user and group for the rrdcached daemon
+GROUP="rrdcached"
+USER="root"
+
+# Default options for the rrdcached daemon
+RRCACHE_ARGS="-B -F -m 770 -s rrdcached -l unix:/run/rrdcached.sock"
+
+# Default path for database and journal
+RRCACHE_DATABASE="/var/lib/rrdcached/db"
+RRCACHE_JOURNAL="/var/lib/rrdcached/journal"

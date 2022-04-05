@@ -8,6 +8,7 @@
 	<use>
 		<flag name="graph">Enable support for graphing functions</flag>
 		<flag name="rados">Enable support for librados from <pkg>sys-cluster/ceph</pkg></flag>
+		<flag name="rrdcached">Build support for write-caching daemon</flag>
 		<flag name="rrdcgi">Build rrdcgi support</flag>
 	</use>
 	<upstream>
