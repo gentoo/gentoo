@@ -41,7 +41,7 @@ src_prepare() {
 
 src_configure() {
 	$(qt5_get_bindir)/lrelease common/resources/translations/*.ts || die
-	eqmake5 PREFIX="${D}"/usr qcma.pro CONFIG+="QT5_SUFFIX" $(usex ffmpeg "" CONFIG+="DISABLE_FFMPEG")
+	eqmake5 PREFIX="${EPREFIX}"/usr qcma.pro CONFIG+="QT5_SUFFIX" $(usex ffmpeg "" CONFIG+="DISABLE_FFMPEG")
 }
 
 src_install() {
