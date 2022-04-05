@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
@@ -10,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="A Python binding of ptrace library"
 HOMEPAGE="https://github.com/vstinner/python-ptrace"
 
-if [[ ${PV} == "9999" ]]; then
+if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/vstinner/python-ptrace"
 else
