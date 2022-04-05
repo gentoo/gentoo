@@ -141,7 +141,7 @@ src_prepare() {
 		strip_builddir SRC_SUBDIRS examples Makefile.{am,in}
 	fi
 
-	# bug #836763
+	# bug #835966
 	git apply "${DISTDIR}/${P}-add-legacy-icons.patch" || die
 
 	gnome2_src_prepare
