@@ -8,10 +8,14 @@ inherit unpacker
 DESCRIPTION="Proprietary plugins and firmware for HPLIP"
 HOMEPAGE="https://developers.hp.com/hp-linux-imaging-and-printing/plugins"
 SRC_URI="https://developers.hp.com/sites/default/files/hplip-${PV}-plugin.run"
+S="${WORKDIR}"
+
 LICENSE="hplip-plugin"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="orblite"
+# License does not allow us to redistribute the "source" package
+RESTRICT="mirror"
 
 RDEPEND="
 	~net-print/hplip-${PV}
@@ -22,20 +26,14 @@ RDEPEND="
 		virtual/libusb:0
 	)
 "
-DEPEND=""
-
-S=${WORKDIR}
 
 HPLIP_HOME=/usr/share/hplip
 
 # Binary prebuilt package
 QA_PREBUILT="${HPLIP_HOME}/*.so"
 
-# License does not allow us to redistribute the "source" package
-RESTRICT="mirror"
-
 src_install() {
-	local hplip_arch
+	local hplip_arch plugin
 	case "${ARCH}" in
 		amd64) hplip_arch="x86_64" ;;
 		arm)   hplip_arch="arm32"  ;;
