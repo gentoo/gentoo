@@ -3,15 +3,16 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1
 
 DESCRIPTION="Search for gadgets in binaries to facilitate your ROP exploitation"
-HOMEPAGE="http://shell-storm.org/project/ROPgadget/"
+HOMEPAGE="https://shell-storm.org/project/ROPgadget/"
 
-if [[ ${PV} == "9999" ]]; then
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/JonathanSalwan/ROPgadget"
 else
@@ -26,8 +27,6 @@ RDEPEND="
 	${PYTHON_DEPS}
 	dev-libs/capstone[python,${PYTHON_USEDEP}]
 "
-
-S="${WORKDIR}"/ROPgadget-${PV}
 
 src_test() {
 	pushd test-suite-binaries || die
