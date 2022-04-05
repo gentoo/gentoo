@@ -5,6 +5,7 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">mgorny/gpep517</remote-id>
 		<remote-id type="pypi">gpep517</remote-id>
