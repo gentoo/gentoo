@@ -34,14 +34,14 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTS=$(usex test)
 
+		-DBUILD_TOOLS=$(multilib_native_usex tools)
 		-DFFT_LIB=$(usex tools 'avfft' 'fftw3')
-
-		$(usev tools '-DAUDIO_PROCESSOR_LIB="swresample"')
-
+		#-DAUDIO_PROCESSOR_LIB="swresample"
+		$(multilib_native_usex tools '-DAUDIO_PROCESSOR_LIB=swresample' '')
 		# Automagicallyish looks for ffmpeg, but there's no point
 		# even doing the check unless we're building with tools
 		# (=> without fftw3, and with ffmpeg).
-		-DCMAKE_DISABLE_FIND_PACKAGE_FFmpeg=$(usex !tools)
+		-DCMAKE_DISABLE_FIND_PACKAGE_FFmpeg=$(multilib_native_usex !tools)
 	)
 
 	cmake_src_configure
