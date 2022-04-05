@@ -60,8 +60,4 @@ src_install() {
 pkg_postinst() {
 	elog "The apc.php file shipped with this release of pecl-apcu was"
 	elog "installed to ${EPREFIX}/usr/share/php7/apcu/."
-	elog
-	elog "If you depend on the apc_* functions,"
-	elog "please install dev-php/pecl-apcu_bc as this extension no longer"
-	elog "provides backwards compatibility."
 }
