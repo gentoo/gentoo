@@ -30,6 +30,7 @@ REQUIRED_USE="
 		${LUA_REQUIRED_USE}
 		test? ( graph )
 	)
+	test? ( rrdcached )
 "
 
 PDEPEND="ruby? ( ~dev-ruby/rrdtool-bindings-${PV} )"
