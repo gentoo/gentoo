@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergey Popov <pinkbyte@gentoo.org> (2022-04-05)
+# Upstream is dead long time ago
+# SRC_URI and HOMEPAGE are gone(bug #680362)
+# Has file collision with dev-util/bcc(bug #834093)
+# Suggested modern replacement is incorporated in dev-util/bcc
+# Removal in 30 days
+app-misc/ttysnoop
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-04)
 # Last upstream activities in 2009.
 # Fails to compile with java 11 or higher (bug #831262).
