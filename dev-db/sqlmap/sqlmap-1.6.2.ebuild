@@ -11,7 +11,7 @@ inherit bash-completion-r1 python-single-r1 wrapper
 DESCRIPTION="An automatic SQL injection and database takeover tool"
 HOMEPAGE="https://sqlmap.org/"
 
-if [[ ${PV} == "9999" ]]; then
+if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/sqlmapproject/sqlmap"
 else
@@ -39,7 +39,7 @@ fi
 # termcolor (BSD)
 # wininetpton (public-domain)
 LICENSE="BSD BSD-2 GPL-2+ LGPL-2.1+ MIT public-domain"
-SLOT=0
+SLOT="0"
 
 RDEPEND="${PYTHON_DEPS}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -49,12 +49,12 @@ DOCS=( doc/ README.md )
 src_install () {
 	einstalldocs
 
-	insinto "/usr/share/${PN}/"
+	insinto /usr/share/${PN}/
 	doins -r *
-	python_optimize "${ED}/usr/share/${PN}"
+	python_optimize "${ED}"/usr/share/${PN}
 
-	make_wrapper "${PN}" \
-		"${EPYTHON} /usr/share/${PN}/sqlmap.py"
+	make_wrapper ${PN} \
+		"${EPYTHON} ${EPREFIX}/usr/share/${PN}/sqlmap.py"
 
 	newbashcomp "${FILESDIR}"/sqlmap.bash-completion sqlmap
 }
