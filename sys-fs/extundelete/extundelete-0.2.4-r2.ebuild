@@ -9,9 +9,12 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~sparc x86"
+KEYWORDS="~amd64 ~arm ~sparc ~x86"
 
 RDEPEND="sys-fs/e2fsprogs"
-DEPEND=${RDEPEND}
+DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-e2fsprogs.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-e2fsprogs.patch"
+	"${FILESDIR}/${P}-clang.patch"
+)
