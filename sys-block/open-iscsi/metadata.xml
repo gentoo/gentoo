@@ -11,5 +11,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">open-iscsi/open-iscsi</remote-id>
+		<remote-id type="cpe">cpe:/a:open-iscsi_project:open-iscsi</remote-id>
 	</upstream>
 </pkgmetadata>
