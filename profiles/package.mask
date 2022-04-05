@@ -283,11 +283,6 @@ dev-perl/JavaScript-SpiderMonkey
 # Bug #834739. Removal on 2022-04-07.
 media-gfx/slic3r
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2022-03-07)
-# Obsolete by >=sci-chemistry/openbabel-3[perl].
-# Bug #834261. Removal on 2022-04-06.
-sci-chemistry/openbabel-perl
-
 # Sam James <sam@gentoo.org> (2022-03-07)
 # Python 3.6 was declared end-of-life by upstream on 2021-11-04.
 # Please migrate to a newer Python version/slot or use a virtualenv
