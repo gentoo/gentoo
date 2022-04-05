@@ -464,7 +464,7 @@ src_install() {
 	keepdir /var/lib/${PN}
 	fowners collectd:collectd /var/lib/${PN}
 
-	newinitd "${FILESDIR}/${PN}.initd-r2" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd-r3" ${PN}
 	newconfd "${FILESDIR}/${PN}.confd-r2" ${PN}
 	systemd_newunit "contrib/systemd.${PN}.service" ${PN}.service
 
