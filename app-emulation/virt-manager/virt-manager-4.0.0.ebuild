@@ -58,6 +58,7 @@ distutils_enable_tests pytest
 
 src_prepare() {
 	distutils-r1_src_prepare
+	eapply "${FILESDIR}/virt-manager-4.0.0-setuptools-61-fix.patch"
 }
 
 python_configure() {
