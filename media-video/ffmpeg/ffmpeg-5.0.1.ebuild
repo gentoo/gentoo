@@ -332,6 +332,7 @@ S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
 	"${FILESDIR}"/chromium-r1.patch
+	"${FILESDIR}"/ffmpeg-5.0-backport-ranlib-build-fix.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -346,6 +347,8 @@ src_prepare() {
 	if [[ "${PV%_p*}" != "${PV}" ]] ; then # Snapshot
 		export revision=git-N-${FFMPEG_REVISION}
 	fi
+
+	eapply "${FILESDIR}/vmaf-models-default-path.patch"
 
 	default
 	echo 'include $(SRC_PATH)/ffbuild/libffmpeg.mak' >> Makefile || die
