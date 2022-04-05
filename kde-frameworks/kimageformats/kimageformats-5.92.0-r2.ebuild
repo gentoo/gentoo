@@ -20,6 +20,7 @@ DEPEND="
 	avif? ( >=media-libs/libavif-0.8.2:= )
 	eps? ( >=dev-qt/qtprintsupport-${QTMIN}:5 )
 	heif? ( >=media-libs/libheif-1.10.0:= )
+	jpegxl? ( media-libs/libjxl )
 	openexr? ( >=media-libs/openexr-3:= )
 "
 RDEPEND="${DEPEND}"
