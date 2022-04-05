@@ -18,6 +18,10 @@
 			Build the Cloud workbench, to access cloud providers (mostly
 			Amazon S3).
 		</flag>
+		<flag name="designer">
+			Build and install the Qt designer plugin, so the FreeCAD widgets
+			can be used from within designer.
+		</flag>
 		<flag name="drawing">
 			Build the Drawing workbench, a predecessor to the TechDraw workbench.
 			Users are encouraged to learn how to use the TechDraw workbench and
