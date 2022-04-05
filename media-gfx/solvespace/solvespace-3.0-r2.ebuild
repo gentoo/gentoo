@@ -22,7 +22,7 @@ SRC_URI="https://github.com/solvespace/solvespace/archive/v${PV}.tar.gz -> ${P}.
 # + libdxfrw (GPL-2+)
 
 IUSE="openmp"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 LICENSE="BitstreamVera GPL-2+ GPL-3+"
 SLOT="0"
 
