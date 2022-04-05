@@ -1,11 +1,12 @@
+https://bugs.gentoo.org/732284
 --- a/src/extundelete.cc
 +++ b/src/extundelete.cc
-@@ -1268,7 +1268,7 @@
+@@ -1268,7 +1268,7 @@ static ext2_ino_t find_inode(ext2_filsys fs, ext2_filsys jfs, struct ext2_inode
  	*new_ino = 0;
  	priv->ret_ino = new_ino;
  	priv->curr_name = curr_part;
 -	struct dir_context ctx = {search_flags, DIRENT_FLAG_INCLUDE_REMOVED,
-+	struct dir_context ctx = {static_cast<unsigned int>(search_flags), DIRENT_FLAG_INCLUDE_REMOVED,
++	struct dir_context ctx = {(ext2_ino_t)search_flags, DIRENT_FLAG_INCLUDE_REMOVED,
  			buf, match_name2, priv, 0};
  	errcode_t code = extundelete_block_iterate3(fs, *inode, BLOCK_FLAG_DATA_ONLY,
  			NULL, match_ino, &ctx);
