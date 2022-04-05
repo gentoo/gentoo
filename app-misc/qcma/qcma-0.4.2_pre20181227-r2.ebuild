@@ -24,7 +24,7 @@ DEPEND="
 	dev-qt/qtsql:5
 	dev-qt/qtwidgets:5
 	media-libs/vitamtp:0
-	ffmpeg? ( media-video/ffmpeg:0 )
+	ffmpeg? ( media-video/ffmpeg:= )
 	x11-libs/libnotify:0
 "
 RDEPEND="${DEPEND}"
