@@ -29,7 +29,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	dev-qt/linguist-tools
+	dev-qt/linguist-tools:5
 "
 
 src_prepare() {
@@ -42,6 +42,14 @@ src_prepare() {
 }
 
 src_configure() {
-	lrelease common/resources/translations/*.ts
+	$(qt5_get_bindir)/lrelease common/resources/translations/*.ts || die
 	eqmake5 PREFIX="${D}"/usr qcma.pro CONFIG+="QT5_SUFFIX" $(usex ffmpeg "" CONFIG+="DISABLE_FFMPEG")
+}
+
+src_install() {
+	emake DESTDIR="${D}" INSTALL_ROOT="${ED}" install
+	einstalldocs
+
+	insinto /usr/share/${PN}/translations
+	doins common/resources/translations/${PN}_*.qm
 }
