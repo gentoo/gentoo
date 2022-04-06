@@ -324,11 +324,6 @@ dev-lang/python:3.6
 <app-doc/kicad-doc-6.0.2
 
 # Jonas Stein <jstein@gentoo.org> (2022-02-11)
-# Blocks gtk2 removal, which is EOL
-# Removal after 2022-04-01.  Bug #833145.
-x11-misc/gtk2fontsel
-
-# Jonas Stein <jstein@gentoo.org> (2022-02-11)
 # Not usable anymore
 # Removal after 2022-06-01.  Bug #833144.
 x11-misc/i855crt
