@@ -200,8 +200,8 @@ mail-mta/courier fax
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
 # Dependencies not keyworded here yet:
-#  - dev-cpp/glog, sci-libs/vtk
-media-libs/opencv contribsfm glog vtk
+#  - sci-libs/vtk
+media-libs/opencv vtk
 sci-libs/opencascade vtk
 #  - dev-util/aruba
 sys-block/thin-provisioning-tools test
