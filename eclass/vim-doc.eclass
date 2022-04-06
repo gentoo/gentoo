@@ -23,6 +23,10 @@ esac
 
 if [[ ! ${_VIM_DOC_ECLASS} ]] ; then
 
+# @FUNCTION: update_vim_helptags
+# @USAGE:
+# @DESCRIPTION:
+# Update the documentation tags in the versioned Vim directory.
 update_vim_helptags() {
 	debug-print-function ${FUNCNAME} "${@}"
 
