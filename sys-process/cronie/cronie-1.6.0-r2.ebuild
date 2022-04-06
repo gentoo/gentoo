@@ -33,6 +33,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.5.3-systemd.patch"
+	"${FILESDIR}/${P}-crontab_entries_regression.patch" #836888
 )
 
 src_prepare() {
