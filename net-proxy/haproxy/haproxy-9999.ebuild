@@ -16,12 +16,12 @@ if [[ ${PV} != *9999 ]]; then
 	SRC_URI="http://haproxy.1wt.eu/download/$(ver_cut 1-2)/src/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 else
-	EGIT_REPO_URI="https://git.haproxy.org/git/haproxy-$(ver_cut 1-2).git/"
+	EGIT_REPO_URI="https://git.haproxy.org/git/haproxy.git/"
 	EGIT_BRANCH=master
 fi
 
 LICENSE="GPL-2 LGPL-2.1"
-SLOT="0/$(ver_cut 1-2)"
+SLOT="0/${PV}"
 IUSE="+crypt doc examples +slz +net_ns +pcre pcre-jit pcre2 pcre2-jit prometheus-exporter
 ssl systemd +threads tools vim-syntax zlib lua device-atlas 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
@@ -102,19 +102,19 @@ src_compile() {
 	fi
 
 	# HAProxy really needs some of those "SPEC_CFLAGS", like -fno-strict-aliasing
-	emake CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" EXTRA_OBJS="${EXTRA_OBJS}"	TARGET_LDFLAGS="${TARGET_LDFLAGS}" PCRE_LIB=${ESYSROOT}/usr/$(get_libdir) ${args[@]}
-	emake -C admin/systemd CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" EXTRA_OBJS="${EXTRA_OBJS}" TARGET_LDFLAGS="${TARGET_LDFLAGS}" PCRE_LIB=${ESYSROOT}/usr/$(get_libdir) SBINDIR=/usr/sbin
+	emake CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) EXTRA_OBJS="${EXTRA_OBJS}"	TARGET_LDFLAGS="${TARGET_LDFLAGS}" PCRE_LIB=${ERROT}/usr/$(get_libdir) ${args[@]}
+	emake -C admin/systemd CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) EXTRA_OBJS="${EXTRA_OBJS}" TARGET_LDFLAGS="${TARGET_LDFLAGS}" PCRE_LIB=${ERROT}/usr/$(get_libdir) SBINDIR=/usr/sbin
 
 	if use tools ; then
 		for extra in ${EXTRAS[@]} ; do
 			if [ "${extra}" = "admin/halog" ]; then
-				emake CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" EXTRA_OBJS="${EXTRA_OBJS}" TARGET_LDFLAGS="${TARGET_LDFLAGS}" PCRE_LIB=${ESYSROOT}/usr/$(get_libdir) ${args[@]} admin/halog/halog
+				emake CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) EXTRA_OBJS="${EXTRA_OBJS}" TARGET_LDFLAGS="${TARGET_LDFLAGS}" PCRE_LIB=${ERROT}/usr/$(get_libdir) ${args[@]} admin/halog/halog
 			elif [ "${extra}" = "dev/hpack" ]; then
-				emake CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" EXTRA_OBJS="${EXTRA_OBJS}" TARGET_LDFLAGS="${TARGET_LDFLAGS}" PCRE_LIB=${ESYSROOT}/usr/$(get_libdir) ${args[@]} dev/hpack/{decode,gen-enc,gen-rht}
+				emake CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) EXTRA_OBJS="${EXTRA_OBJS}" TARGET_LDFLAGS="${TARGET_LDFLAGS}" PCRE_LIB=${ERROT}/usr/$(get_libdir) ${args[@]} dev/hpack/{decode,gen-enc,gen-rht}
 			else
 				# Those two includes are a workaround for hpack Makefile missing those
 				emake -C ${extra} \
-					CFLAGS="${CFLAGS} -I../../include/ -I../../ebtree/" OPTIMIZE="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" ${args[@]}
+					CFLAGS="${CFLAGS} -I../../include/ -I../../ebtree/" OPTIMIZE="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args[@]}
 			fi
 		done
 	fi
