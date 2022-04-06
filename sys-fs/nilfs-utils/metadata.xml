@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>naota@gentoo.org</email>
+		<name>Naohiro Aota</name>
 	</maintainer>
 	<longdescription lang="en">
 NILFS is a new implementation of a log-structured file system for the

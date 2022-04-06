@@ -3,9 +3,10 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>naota@gentoo.org</email>
+		<name>Naohiro Aota</name>
 	</maintainer>
 	<maintainer type="person" proxied="yes">
-		<email>arfrever.fta@gmail.com</email> 
+		<email>arfrever.fta@gmail.com</email>
 	</maintainer>
 	<use>
 		<flag name="vim">Integrate the GNU GLOBAL source code tag system with Vim</flag>
