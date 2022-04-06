@@ -26,6 +26,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 PDEPEND="python? ( =dev-python/yara-python-$(ver_cut 1)* )"
 
+PATCHES=( "${FILESDIR}/${P}-test.patch" )
+
 src_prepare() {
 	default
 	eautoreconf
