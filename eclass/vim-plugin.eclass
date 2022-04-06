@@ -32,13 +32,30 @@ if [[ ${PV} != 9999* ]] ; then
 fi
 SLOT="0"
 
+# @ECLASS_VARIABLE: _VIM_PLUGIN_ALLOWED_DIRS
+# @INTERNAL
+# @DESCRIPTION:
+# Vanilla Vim dirs.
+# See /usr/share/vim/vim* for reference.
+_VIM_PLUGIN_ALLOWED_DIRS=(
+	after autoload colors compiler doc ftdetect ftplugin indent keymap
+	macros plugin spell syntax
+)
+
 # @FUNCTION: vim-plugin_src_install
-# @USAGE:
+# @USAGE: [<dir>...]
 # @DESCRIPTION:
 # Overrides the default src_install phase. In order, this function:
-# * fixes file permission across all files in ${S}.
 # * installs help and documentation files.
-# * installs all files in "${ED}"/usr/share/vim/vimfiles.
+# * installs all files recognized by default Vim installation and directories
+#   passed to this function as arguments in "${ED}"/usr/share/vim/vimfiles.
+#
+# Example use:
+# @CODE
+# src_install() {
+# 	vim-plugin_src_install syntax_checkers
+# }
+# @CODE
 vim-plugin_src_install() {
 	# Install non-vim-help-docs
 	einstalldocs
@@ -46,10 +63,18 @@ vim-plugin_src_install() {
 	# Install remainder of plugin
 	insinto /usr/share/vim/vimfiles/
 	local d
-	for d in *; do
-		[[ -d "${d}" ]] || continue
-		doins -r "${d}"
-	done
+	case ${EAPI:-0} in
+		6|7)
+			for d in *; do
+				[[ -d "${d}" ]] || continue
+				doins -r "${d}"
+			done ;;
+		*)
+			for d in "${_VIM_PLUGIN_ALLOWED_DIRS[@]}" "${@}"; do
+				[[ -d "${d}" ]] || continue
+				doins -r "${d}"
+			done ;;
+	esac
 }
 
 # @FUNCTION: vim-plugin_pkg_postinst
