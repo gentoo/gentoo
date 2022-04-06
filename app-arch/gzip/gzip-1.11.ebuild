@@ -3,18 +3,24 @@
 
 EAPI=7
 
-inherit flag-o-matic
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gzip.asc
+inherit flag-o-matic verify-sig
 
 DESCRIPTION="Standard GNU compressor"
 HOMEPAGE="https://www.gnu.org/software/gzip/"
 SRC_URI="mirror://gnu/gzip/${P}.tar.xz
-	https://alpha.gnu.org/gnu/gzip/${P}.tar.xz
-	mirror://gentoo/${P}.tar.xz"
+	https://alpha.gnu.org/gnu/gzip/${P}.tar.xz"
+SRC_URI+=" verify-sig? (
+		mirror://gnu/gzip/${P}.tar.xz.sig
+		https://alpha.gnu.org/gnu/gzip/${P}.tar.xz.sig
+	)"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="pic static"
+
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-gzip )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.3.8-install-symlinks.patch"
