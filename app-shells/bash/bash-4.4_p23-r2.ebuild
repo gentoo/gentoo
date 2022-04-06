@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -37,7 +37,7 @@ patches() {
 READLINE_VER="7.0"
 
 DESCRIPTION="The standard GNU Bourne again shell"
-HOMEPAGE="http://tiswww.case.edu/php/chet/bash/bashtop.html"
+HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html"
 if is_release ; then
 	SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
 else

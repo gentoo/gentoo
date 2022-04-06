@@ -37,7 +37,7 @@ patches() {
 READLINE_VER="8.1"
 
 DESCRIPTION="The standard GNU Bourne again shell"
-HOMEPAGE="http://tiswww.case.edu/php/chet/bash/bashtop.html"
+HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html"
 if is_release ; then
 	SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
 else
