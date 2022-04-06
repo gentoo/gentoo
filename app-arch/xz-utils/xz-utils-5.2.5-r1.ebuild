@@ -8,20 +8,22 @@ EAPI=7
 
 inherit libtool multilib multilib-minimal preserve-libs usr-ldscript
 
-if [[ ${PV} == "9999" ]] ; then
+if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.tukaani.org/xz.git"
 	inherit git-r3 autotools
-	SRC_URI=""
-	BDEPEND="sys-devel/gettext dev-vcs/cvs >=sys-devel/libtool-2" #272880 286068
+
+	# bug #272880 and bug #286068
+	BDEPEND="sys-devel/gettext >=sys-devel/libtool-2"
 else
 	MY_P="${PN/-utils}-${PV/_}"
 	SRC_URI="https://tukaani.org/xz/${MY_P}.tar.gz"
-	[[ "${PV}" == *_alpha* ]] || [[ "${PV}" == *_beta* ]] || \
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	if [[ ${PV} != *_alpha* ]] && [[ ${PV} != *_beta* ]] ; then
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	fi
 	S="${WORKDIR}/${MY_P}"
 fi
 
-DESCRIPTION="utils for managing LZMA compressed files"
+DESCRIPTION="Utils for managing LZMA compressed files"
 HOMEPAGE="https://tukaani.org/xz/"
 
 # See top-level COPYING file as it outlines the various pieces and their licenses.
@@ -39,11 +41,13 @@ RESTRICT="!extra-filters? ( test )"
 
 src_prepare() {
 	default
-	if [[ ${PV} == "9999" ]] ; then
+
+	if [[ ${PV} == 9999 ]] ; then
 		eautopoint
 		eautoreconf
 	else
-		elibtoolize  # to allow building shared libs on Solaris/x64
+		# Allow building shared libs on Solaris/x64
+		elibtoolize
 	fi
 }
 
@@ -53,24 +57,32 @@ multilib_src_configure() {
 		$(use_enable nls)
 		$(use_enable static-libs static)
 	)
-	multilib_is_native_abi ||
-		myconf+=( --disable-{xz,xzdec,lzmadec,lzmainfo,lzma-links,scripts} )
-	if ! use extra-filters; then
+
+	if ! multilib_is_native_abi ; then
+		myconf+=(
+			--disable-{xz,xzdec,lzmadec,lzmainfo,lzma-links,scripts}
+		)
+	fi
+
+	if ! use extra-filters ; then
 		myconf+=(
 			# LZMA1 + LZMA2 for standard .lzma & .xz files
 			--enable-encoders=lzma1,lzma2
 			--enable-decoders=lzma1,lzma2
+
 			# those are used by default, depending on preset
 			--enable-match-finders=hc3,hc4,bt4
+
 			# CRC64 is used by default, though some (old?) files use CRC32
 			--enable-checks=crc32,crc64
 		)
 	fi
 
 	if [[ ${CHOST} == *-solaris* ]] ; then
-		# undo Solaris-based defaults pointing to /usr/xpg5/bin
+		export gl_cv_posix_shell="${EPREFIX}"/bin/sh
+
+		# Undo Solaris-based defaults pointing to /usr/xpg5/bin
 		myconf+=( --disable-path-for-script )
-		export gl_cv_posix_shell=${EPREFIX}/bin/sh
 	fi
 
 	ECONF_SOURCE="${S}" econf "${myconf[@]}"
@@ -78,6 +90,7 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	default
+
 	gen_usr_ldscript -a lzma
 }
 
