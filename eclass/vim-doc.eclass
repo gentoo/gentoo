@@ -24,6 +24,8 @@ esac
 if [[ ! ${_VIM_DOC_ECLASS} ]] ; then
 
 update_vim_helptags() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	local vimfiles helpfile files vim d
 
 	# This is where vim plugins are installed
