@@ -3,19 +3,21 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/antoniodiazdiaz.asc
+inherit toolchain-funcs verify-sig
 
 DESCRIPTION="Parallel lzip compressor"
 HOMEPAGE="https://www.nongnu.org/lzip/plzip.html"
 SRC_URI="https://download.savannah.gnu.org/releases/lzip/${PN}/${P}.tar.gz"
+SRC_URI+=" verify-sig? ( https://download.savannah.gnu.org/releases/lzip/${PN}/${P}.tar.gz.sig )"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
-IUSE=""
 
 RDEPEND="app-arch/lzlib:0="
-DEPEND=${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-antoniodiazdiaz )"
 
 src_configure() {
 	local myconf=(
