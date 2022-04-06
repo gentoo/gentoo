@@ -6,6 +6,7 @@
 	</maintainer>
 	<maintainer type="person">
 		<email>kensington@gentoo.org</email>
+		<name>Michael Palimaka</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">tat/mimetic</remote-id>

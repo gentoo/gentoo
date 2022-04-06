@@ -3,6 +3,7 @@
 <pkgmetadata>
   <maintainer type="person">
     <email>kensington@gentoo.org</email>
+    <name>Michael Palimaka</name>
   </maintainer>
   <use>
     <flag name="templates">Install template scripts to be used with tatt</flag>

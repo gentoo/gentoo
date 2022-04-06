@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>kensington@gentoo.org</email>
+		<name>Michael Palimaka</name>
 	</maintainer>
 	<use>
 		<flag name="bundled-openssl">Install precompiled versions of OpenSSL for greater testing coverage</flag>

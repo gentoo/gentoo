@@ -6,6 +6,7 @@
 	</maintainer>
 	<maintainer type="person">
 		<email>kensington@gentoo.org</email>
+		<name>Michael Palimaka</name>
 	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
