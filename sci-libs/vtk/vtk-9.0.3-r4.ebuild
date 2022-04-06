@@ -7,7 +7,7 @@ EAPI=7
 # - add USE flag for remote modules? Those modules can be downloaded
 #	properly before building.
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 WEBAPP_OPTIONAL=yes
 WEBAPP_MANUAL_SLOT=yes
 
