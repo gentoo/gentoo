@@ -1,0 +1,29 @@
+From bbc293564bf76fcdfdc37354d406b7ca77bc780f Mon Sep 17 00:00:00 2001
+From: Hans Schoenemann <hannes@mathematik.uni-kl.de>
+Date: Wed, 19 Jan 2022 15:02:14 +0100
+Subject: [PATCH] fix: missing includes
+
+---
+ kernel/oswrapper/feread.cc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/kernel/oswrapper/feread.cc b/kernel/oswrapper/feread.cc
+index ccdd272285..5491007478 100644
+--- a/kernel/oswrapper/feread.cc
++++ b/kernel/oswrapper/feread.cc
+@@ -7,6 +7,7 @@
+ 
+ #include "kernel/mod2.h"
+ #include <errno.h>
++#include <stdio.h>
+ 
+ // ----------------------------------------
+ // system settings:
+@@ -21,6 +22,7 @@
+ #include "misc/options.h"
+ 
+ #include "kernel/oswrapper/feread.h"
++#include "reporter/reporter.h"
+ 
+ #if defined(HAVE_DYN_RL)
+ #include <unistd.h>

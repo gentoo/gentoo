@@ -37,6 +37,8 @@ SITEFILE=60${PN}-gentoo.el
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.2.1-htmldoc.patch"
+	"${FILESDIR}/${PN}-4.3.0-slibtool.patch"
+	"${FILESDIR}/${PN}-4.3.0-includes.patch"
 )
 
 src_prepare() {
