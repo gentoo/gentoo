@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2022-04-06)
+# Unsupported branches, no consumers left, removal on 2023-01-01.
+sys-devel/automake:1.13
+sys-devel/automake:1.15
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-04-05)
 # First version with py3 buildsystem support.
 # May be succeeded quickly by another snapshot.
