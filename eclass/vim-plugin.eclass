@@ -13,7 +13,8 @@
 # documentation, for which we make a special case via vim-doc.eclass.
 
 case ${EAPI} in
-	6|7|8) ;;
+	6|7) ;;
+	8) _DEFINE_VIM_PLUGIN_SRC_PREPARE=true ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -31,6 +32,29 @@ if [[ ${PV} != 9999* ]] ; then
 		https://dev.gentoo.org/~radhermit/vim/${P}.tar.bz2"
 fi
 SLOT="0"
+
+if [[ ${_DEFINE_VIM_PLUGIN_SRC_PREPARE} ]]; then
+# @FUNCTION: vim-plugin_src_prepare
+# @USAGE:
+# @DESCRIPTION:
+# Moves "after/syntax" plugins to directories to avoid file collisions with
+# other packages.
+# Note that this function is only defined and exported in EAPIs >= 8.
+vim-plugin_src_prepare() {
+	default_src_prepare
+
+	# return if there's nothing to do
+	[[ -d after/syntax ]] || return
+
+	pushd after/syntax >/dev/null || die
+	for file in *.vim; do
+		[[ -f "${file}" ]] || continue
+		mkdir "${file%.vim}" || die
+		mv "${file}" "${file%.vim}/${PN}.vim" || die
+	done
+	popd >/dev/null || die
+}
+fi
 
 # @ECLASS_VARIABLE: _VIM_PLUGIN_ALLOWED_DIRS
 # @INTERNAL
@@ -190,3 +214,9 @@ _VIM_PLUGIN_ECLASS=1
 fi
 
 EXPORT_FUNCTIONS src_install pkg_postinst pkg_postrm
+
+# src_prepare is only exported in EAPI >= 8
+case ${EAPI} in
+	6|7) ;;
+	*) EXPORT_FUNCTIONS src_prepare ;;
+esac
