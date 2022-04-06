@@ -85,7 +85,7 @@ src_install() {
 	java-pkg_dolauncher unifi --java_args '-Dorg.xerial.snappy.tempdir=/usr/lib/unifi/tmp -Djava.library.path=' --jar ace.jar --pwd '/usr/lib/unifi'
 
 	newinitd "${FILESDIR}"/unifi.initd-r2 unifi
-	systemd_dounit "${FILESDIR}"/unifi.service-r1
+	systemd_newunit "${FILESDIR}"/unifi.service-r1 unifi.service
 
 	newconfd "${FILESDIR}"/unifi.confd unifi
 
