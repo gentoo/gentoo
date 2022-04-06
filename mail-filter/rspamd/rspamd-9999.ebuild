@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 LUA_COMPAT=( lua5-{1..4} luajit )
 
@@ -19,7 +19,7 @@ DESCRIPTION="Rapid spam filtering system"
 HOMEPAGE="https://rspamd.com https://github.com/rspamd/rspamd"
 LICENSE="Apache-2.0 Boost-1.0 BSD BSD-1 BSD-2 CC0-1.0 LGPL-3 MIT public-domain unicode ZLIB"
 SLOT="0"
-IUSE="blas cpu_flags_x86_ssse3 jemalloc +jit pcre2 test"
+IUSE="blas cpu_flags_x86_ssse3 jemalloc +jit test"
 RESTRICT="!test? ( test )"
 
 # A part of tests use ffi luajit extension
@@ -29,17 +29,19 @@ REQUIRED_USE="${LUA_REQUIRED_USE}
 RDEPEND="${LUA_DEPS}
 	$(lua_gen_cond_dep '
 		dev-lua/LuaBitOp[${LUA_USEDEP}]
+		dev-lua/lua-argparse[${LUA_USEDEP}]
 	')
 	acct-group/rspamd
 	acct-user/rspamd
 	app-arch/zstd:=
 	dev-db/sqlite:3
-	dev-cpp/doctest
 	dev-libs/glib:2
 	dev-libs/icu:=
 	dev-libs/libev
 	dev-libs/libfmt:=
+	dev-libs/libpcre2:=[jit=]
 	dev-libs/libsodium:=
+	dev-libs/openssl:0=[-bindist(-)]
 	dev-libs/snowball-stemmer:=
 	sys-apps/file
 	blas? (
@@ -48,10 +50,10 @@ RDEPEND="${LUA_DEPS}
 	)
 	cpu_flags_x86_ssse3? ( dev-libs/hyperscan )
 	jemalloc? ( dev-libs/jemalloc:= )
-	dev-libs/openssl:0=[-bindist(-)]
-	pcre2? ( dev-libs/libpcre2:=[jit=] )
-	!pcre2? ( dev-libs/libpcre[jit=] )"
-DEPEND="${RDEPEND}"
+"
+DEPEND="${RDEPEND}
+	dev-cpp/doctest
+"
 BDEPEND="
 	dev-util/ragel
 	virtual/pkgconfig
@@ -59,14 +61,14 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/rspamd-3.0-cmake-lua-version.patch"
-	"${FILESDIR}/rspamd-2.6-unbundle-lua.patch"
+	"${FILESDIR}/rspamd-3.2-unbundle-lua.patch"
 	"${FILESDIR}/rspamd-2.5-unbundle-snowball.patch"
 )
 
 src_prepare() {
 	cmake_src_prepare
 
-	rm -vrf contrib/{doctest,fmt,lua-bit,snowball,zstd} || die
+	rm -vrf contrib/{doctest,fmt,lua-{argparse,bit},snowball,zstd} || die
 
 	> cmake/Toolset.cmake || die #827550
 
@@ -90,7 +92,7 @@ src_configure() {
 		-DENABLE_HYPERSCAN=$(usex cpu_flags_x86_ssse3 ON OFF)
 		-DENABLE_JEMALLOC=$(usex jemalloc ON OFF)
 		-DENABLE_LUAJIT=$(usex lua_single_target_luajit ON OFF)
-		-DENABLE_PCRE2=$(usex pcre2 ON OFF)
+		-DENABLE_PCRE2=ON
 	)
 	cmake_src_configure
 }
