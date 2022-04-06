@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/836906
+
+--- evil-1.2.14/evil-ex.el
++++ evil-1.2.14/evil-ex.el
+@@ -592,7 +592,7 @@
+ 
+ (define-obsolete-function-alias
+   'evil-ex-shell-command-completion-at-point
+-  'comint-completion-at-point)
++  'comint-completion-at-point "")
+ 
+ (evil-ex-define-argument-type shell
+   "Shell argument type, supports completion."
