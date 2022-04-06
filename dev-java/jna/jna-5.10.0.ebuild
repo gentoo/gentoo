@@ -30,7 +30,7 @@ DEPEND="
 	dev-java/ant-core:0
 	dev-java/asm:9
 	test? (
-		dev-java/ant-junit:0
+		dev-java/ant-junit4:0
 		dev-java/junit:4
 		dev-java/reflections:0
 	)
@@ -46,7 +46,6 @@ RDEPEND="
 DOCS=( README.md CHANGES.md OTHERS TODO )
 PATCHES=(
 	"${FILESDIR}/${PV}-build.xml.patch"
-	"${FILESDIR}/${PV}-tests-exclude.patch"
 	"${FILESDIR}/4.2.2-makefile-flags.patch"
 )
 
