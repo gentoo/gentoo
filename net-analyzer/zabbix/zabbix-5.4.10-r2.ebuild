@@ -261,15 +261,16 @@ LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 WEBAPP_MANUAL_SLOT="yes"
 KEYWORDS="amd64 x86"
-IUSE="+agent +agent2 curl frontend gnutls ipv6 java ldap libxml2 mysql odbc openipmi +openssl oracle +postgres proxy server snmp sqlite ssh ssl static"
+IUSE="+agent +agent2 curl frontend gnutls ipv6 java ldap libxml2 mysql odbc openipmi +openssl oracle +postgres proxy server snmp sqlite ssh static"
 REQUIRED_USE="|| ( agent agent2 frontend proxy server )
+	?? ( gnutls openssl )
 	proxy? ( ^^ ( mysql oracle postgres sqlite ) )
 	server? ( ^^ ( mysql oracle postgres ) !sqlite )
-	ssl? ( ^^ ( gnutls openssl ) )
 	static? ( !oracle !snmp )"
 
 COMMON_DEPEND="
 	curl? ( net-misc/curl )
+	gnutls? ( net-libs/gnutls:0= )
 	java? ( >=virtual/jdk-1.8:* )
 	ldap? (
 		=dev-libs/cyrus-sasl-2*
@@ -280,6 +281,7 @@ COMMON_DEPEND="
 	mysql? ( dev-db/mysql-connector-c:= )
 	odbc? ( dev-db/unixODBC )
 	openipmi? ( sys-libs/openipmi )
+	openssl? ( dev-libs/openssl:=[-bindist(-)] )
 	oracle? ( dev-db/oracle-instantclient[odbc,sdk] )
 	postgres? ( dev-db/postgresql:* )
 	proxy?  ( sys-libs/zlib )
@@ -290,10 +292,6 @@ COMMON_DEPEND="
 	snmp? ( net-analyzer/net-snmp:= )
 	sqlite? ( dev-db/sqlite )
 	ssh? ( net-libs/libssh2 )
-	ssl? (
-		gnutls? ( net-libs/gnutls:0= )
-		openssl? ( dev-libs/openssl:=[-bindist(-)] )
-	)
 "
 
 RDEPEND="${COMMON_DEPEND}

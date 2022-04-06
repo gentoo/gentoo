@@ -16,15 +16,16 @@ LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 WEBAPP_MANUAL_SLOT="yes"
 KEYWORDS="amd64 x86"
-IUSE="+agent curl frontend gnutls ipv6 java ldap libxml2 mbedtls mysql odbc openipmi +openssl oracle +postgres proxy server snmp sqlite ssh ssl static xmpp"
+IUSE="+agent curl frontend gnutls ipv6 java ldap libxml2 mbedtls mysql odbc openipmi +openssl oracle +postgres proxy server snmp sqlite ssh static xmpp"
 REQUIRED_USE="|| ( agent frontend proxy server )
-	ssl? ( ^^ ( gnutls mbedtls openssl ) )
+	?? ( gnutls mbedtls openssl )
 	proxy? ( ^^ ( mysql oracle postgres sqlite ) )
 	server? ( ^^ ( mysql oracle postgres ) !sqlite )
 	static? ( !oracle !snmp )"
 
 COMMON_DEPEND="
 	curl? ( net-misc/curl )
+	gnutls? ( net-libs/gnutls:0= )
 	java? ( >=virtual/jdk-1.8:* )
 	ldap? (
 		=dev-libs/cyrus-sasl-2*
@@ -32,9 +33,11 @@ COMMON_DEPEND="
 		net-nds/openldap:=
 	)
 	libxml2? ( dev-libs/libxml2 )
+	mbedtls? ( net-libs/mbedtls:0= )
 	mysql? ( dev-db/mysql-connector-c:= )
 	odbc? ( dev-db/unixODBC )
 	openipmi? ( sys-libs/openipmi )
+	openssl? ( dev-libs/openssl:=[-bindist(-)] )
 	oracle? ( dev-db/oracle-instantclient[odbc,sdk] )
 	postgres? ( dev-db/postgresql:* )
 	proxy?  ( sys-libs/zlib )
@@ -45,11 +48,6 @@ COMMON_DEPEND="
 	snmp? ( net-analyzer/net-snmp:= )
 	sqlite? ( dev-db/sqlite )
 	ssh? ( net-libs/libssh2 )
-	ssl? (
-		gnutls? ( net-libs/gnutls:0= )
-		mbedtls? ( net-libs/mbedtls:0= )
-		openssl? ( dev-libs/openssl:=[-bindist(-)] )
-	)
 	xmpp? ( dev-libs/iksemel )
 "
 
