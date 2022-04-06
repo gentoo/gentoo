@@ -49,6 +49,11 @@ BDEPEND="
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	# bug 836951, drop on next version bump
+	"${FILESDIR}"/${PN}-3.4.1-atomic.patch
+)
+
 python_check_deps() {
 	use test || return 0
 	has_version -d "dev-python/pexpect[${PYTHON_USEDEP}]"
