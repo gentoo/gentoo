@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit toolchain-funcs qmake-utils
 
 DESCRIPTION="GTK-based GUI to configure a space navigator device"
 HOMEPAGE="http://spacenav.sourceforge.net/"
@@ -29,5 +29,11 @@ src_configure() {
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)"
+	local args=(
+		CC="$(tc-getCC)"
+		MOC="$(qt5_get_bindir)/moc"
+		RCC="$(qt5_get_bindir)/rcc"
+		UIC="$(qt5_get_bindir)/uic"
+	)
+	emake "${args[@]}"
 }
