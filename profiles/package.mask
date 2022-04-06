@@ -338,11 +338,6 @@ x11-misc/sisctrl
 # Removal after 2022-07-01.  Bug #832953.
 x11-misc/easystroke
 
-# Jonas Stein <jstein@gentoo.org> (2022-02-06)
-# Dead upstream, unmaintained, open bugs.
-# Removal after 2022-04-01.  Bug #832808.
-app-misc/emelfm2
-
 # Eray Aslan <eras@gentoo.org> (2022-01-24)
 # Mask experimental software
 =mail-mta/postfix-3.8*
