@@ -23,12 +23,11 @@ fi
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/${PV}"
 IUSE="+crypt doc examples +slz +net_ns +pcre pcre-jit pcre2 pcre2-jit prometheus-exporter
-ssl systemd +threads tools vim-syntax zlib lua device-atlas 51degrees wurfl"
+ssl systemd +threads tools vim-syntax zlib lua 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
 	pcre2-jit? ( pcre2 )
 	pcre? ( !pcre2 )
 	lua? ( ${LUA_REQUIRED_USE} )
-	device-atlas? ( pcre )
 	?? ( slz zlib )"
 
 BDEPEND="virtual/pkgconfig"
@@ -47,8 +46,7 @@ DEPEND="
 	)
 	systemd? ( sys-apps/systemd )
 	zlib? ( sys-libs/zlib )
-	lua? ( ${LUA_DEPS} )
-	device-atlas? ( dev-libs/device-atlas-api-c )"
+	lua? ( ${LUA_DEPS} )"
 RDEPEND="${DEPEND}
 	acct-group/haproxy
 	acct-user/haproxy"
@@ -91,7 +89,6 @@ src_compile() {
 	args+=( $(haproxy_use zlib ZLIB) )
 	args+=( $(haproxy_use lua LUA) )
 	args+=( $(haproxy_use 51degrees 51DEGREES) )
-	args+=( $(haproxy_use device-atlas DEVICEATLAS) )
 	args+=( $(haproxy_use wurfl WURFL) )
 	args+=( $(haproxy_use systemd SYSTEMD) )
 	args+=( $(haproxy_use prometheus-exporter PROMEX) )
