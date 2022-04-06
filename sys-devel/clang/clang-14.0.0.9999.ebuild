@@ -105,10 +105,6 @@ check_distribution_components() {
 					clang-libraries|distribution)
 						continue
 						;;
-					# headers for clang-tidy static library
-					clang-tidy-headers)
-						continue
-						;;
 					# tools
 					clang|clangd|clang-*)
 						;;
@@ -194,6 +190,7 @@ get_distribution_components() {
 			clang-query
 			clang-reorder-fields
 			clang-tidy
+			clang-tidy-headers
 			clangd
 			find-all-symbols
 			modularize
@@ -350,6 +347,7 @@ src_install() {
 	# Move runtime headers to /usr/lib/clang, where they belong
 	mv "${ED}"/usr/include/clangrt "${ED}"/usr/lib/clang || die
 	# move (remaining) wrapped headers back
+	mv "${T}"/clang-tidy "${ED}"/usr/include/ || die
 	mv "${ED}"/usr/include "${ED}"/usr/lib/llvm/${SLOT}/include || die
 
 	# Apply CHOST and version suffix to clang tools
@@ -395,6 +393,11 @@ multilib_src_install() {
 	rm -rf "${ED}"/usr/include || die
 	mv "${ED}"/usr/lib/llvm/${SLOT}/include "${ED}"/usr/include || die
 	mv "${ED}"/usr/lib/llvm/${SLOT}/$(get_libdir)/clang "${ED}"/usr/include/clangrt || die
+	if multilib_is_native_abi; then
+		# don't wrap clang-tidy headers, the list is too long
+		# (they're fine for non-native ABI but enabling the targets is problematic)
+		mv "${ED}"/usr/include/clang-tidy "${T}/" || die
+	fi
 }
 
 multilib_src_install_all() {
