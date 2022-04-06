@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vim-plugin.eclass
 # @MAINTAINER:
 # vim@gentoo.org
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: used for installing vim plugins
 # @DESCRIPTION:
 # This eclass simplifies installation of app-vim plugins into
@@ -13,11 +13,12 @@
 # documentation, for which we make a special case via vim-doc.eclass.
 
 case ${EAPI} in
-	6|7|8);;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} unsupported (too old)";;
+	6|7);;
+	*) die "EAPI ${EAPI:-0} unsupported (too old)";;
 esac
 
 inherit vim-doc
+EXPORT_FUNCTIONS src_install pkg_postinst pkg_postrm
 
 VIM_PLUGIN_VIM_VERSION="${VIM_PLUGIN_VIM_VERSION:-7.3}"
 
@@ -31,13 +32,13 @@ fi
 SLOT="0"
 
 # @FUNCTION: vim-plugin_src_install
-# @USAGE:
 # @DESCRIPTION:
 # Overrides the default src_install phase. In order, this function:
 # * fixes file permission across all files in ${S}.
 # * installs help and documentation files.
 # * installs all files in "${ED}"/usr/share/vim/vimfiles.
 vim-plugin_src_install() {
+	has "${EAPI:-0}" 0 1 2 && ! use prefix && ED="${D}"
 
 	# Install non-vim-help-docs
 	einstalldocs
@@ -52,7 +53,6 @@ vim-plugin_src_install() {
 }
 
 # @FUNCTION: vim-plugin_pkg_postinst
-# @USAGE:
 # @DESCRIPTION:
 # Overrides the pkg_postinst phase for this eclass.
 # The following functions are called:
@@ -71,6 +71,7 @@ vim-plugin_pkg_postinst() {
 # This function calls the update_vim_helptags and update_vim_afterscripts
 # functions and eventually removes a bunch of empty directories.
 vim-plugin_pkg_postrm() {
+	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
 	update_vim_helptags		# from vim-doc
 	update_vim_afterscripts	# see below
 
@@ -81,11 +82,12 @@ vim-plugin_pkg_postrm() {
 }
 
 # @FUNCTION: update_vim_afterscripts
-# @USAGE:
 # @DESCRIPTION:
 # Creates scripts in /usr/share/vim/vimfiles/after/*
 # comprised of the snippets in /usr/share/vim/vimfiles/after/*/*.d
 update_vim_afterscripts() {
+	has "${EAPI:-0}" 0 1 2 && ! use prefix && EROOT="${ROOT}"
+	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
 	local d f afterdir="${EROOT}"/usr/share/vim/vimfiles/after
 
 	# Nothing to do if the dir isn't there
@@ -113,7 +115,6 @@ update_vim_afterscripts() {
 }
 
 # @FUNCTION: display_vim_plugin_help
-# @USAGE:
 # @DESCRIPTION:
 # Displays a message with the plugin's help file if one is available. Uses the
 # VIM_PLUGIN_HELPFILES env var. If multiple help files are available, they
@@ -159,5 +160,3 @@ display_vim_plugin_help() {
 		fi
 	fi
 }
-
-EXPORT_FUNCTIONS src_install pkg_postinst pkg_postrm
