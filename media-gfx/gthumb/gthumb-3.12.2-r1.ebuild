@@ -31,7 +31,6 @@ RDEPEND="
 	)
 	raw? (
 		>=media-libs/libraw-0.14:=
-		<media-libs/libraw-0.21
 	)
 	http? (
 		>=net-libs/libsoup-2.42.0:2.4
