@@ -6,7 +6,9 @@
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
 	<use>
+		<flag name="heif">Enable support for ISO/IEC 23008-12:2017 HEIF/HEIC image format using <pkg>media-libs/libheif</pkg></flag>
 		<flag name="http">Enable webservice integration through <pkg>net-libs/webkit-gtk</pkg></flag>
+		<flag name="jpegxl">Support for JPEG XL image format</flag>
 		<flag name="slideshow">Enable slideshow plugin</flag>
 	</use>
 </pkgmetadata>
