@@ -15,8 +15,13 @@ if [[ ${PV} == 9999 ]] ; then
 	# bug #272880 and bug #286068
 	BDEPEND="sys-devel/gettext >=sys-devel/libtool-2"
 else
+	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/lassecollin.asc
+	inherit verify-sig
+
 	MY_P="${PN/-utils}-${PV/_}"
 	SRC_URI="https://tukaani.org/xz/${MY_P}.tar.gz"
+	SRC_URI+=" verify-sig? ( https://tukaani.org/xz/${MY_P}.tar.gz.sig )"
+
 	if [[ ${PV} != *_alpha* ]] && [[ ${PV} != *_beta* ]] ; then
 		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	fi
@@ -35,6 +40,10 @@ RDEPEND="!<app-arch/lzma-4.63
 	!<app-arch/p7zip-4.57
 	!<app-i18n/man-pages-de-2.16"
 DEPEND="${RDEPEND}"
+
+if [[ ${PV} != 9999 ]] ; then
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-lassecollin )"
+fi
 
 # Tests currently do not account for smaller feature set
 RESTRICT="!extra-filters? ( test )"
