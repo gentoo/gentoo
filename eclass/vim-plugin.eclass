@@ -22,7 +22,10 @@ if [[ ! ${_VIM_PLUGIN_ECLASS} ]]; then
 
 inherit vim-doc
 
-VIM_PLUGIN_VIM_VERSION="${VIM_PLUGIN_VIM_VERSION:-7.3}"
+# @ECLASS_VARIABLE: VIM_PLUGIN_VIM_VERSION
+# @DESCRIPTION:
+# Minimum Vim version the plugin supports.
+: ${VIM_PLUGIN_VIM_VERSION:=7.3}
 
 DEPEND="|| ( >=app-editors/vim-${VIM_PLUGIN_VIM_VERSION}
 	>=app-editors/gvim-${VIM_PLUGIN_VIM_VERSION} )"
