@@ -6,8 +6,9 @@ EAPI=7
 inherit elisp desktop xdg-utils
 
 DESCRIPTION="Attach to an already running Emacs"
-HOMEPAGE="http://meltin.net/hacks/emacs/"
-SRC_URI="http://meltin.net/hacks/emacs/src/${P}.tar.gz"
+HOMEPAGE="https://web.archive.org/web/20160508134736/http://martin.meltin.net/hacks/emacs/
+	https://www.emacswiki.org/emacs/GnuClient"
+SRC_URI="https://web.archive.org/web/20150908031821/http://martin.meltin.net/sites/martin.meltin.net/files/hacks/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -19,14 +20,13 @@ RDEPEND=">=app-eselect/eselect-emacs-1.15
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-backquotes.patch
+	"${FILESDIR}"/${P}-process-query.patch
+	"${FILESDIR}"/${P}-gnudoit.patch
+	"${FILESDIR}"/${P}-emacs-28.patch
+)
 SITEFILE="50${PN}-gentoo.el"
-
-src_prepare() {
-	eapply "${FILESDIR}"/${P}-backquotes.patch
-	eapply "${FILESDIR}"/${P}-process-query.patch
-	sed -i -e 's/exec gnuclient/&-emacs/' gnudoit || die
-	eapply_user
-}
 
 src_configure() {
 	econf $(use_enable X xauth) \
