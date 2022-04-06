@@ -3,15 +3,23 @@
 
 EAPI=7
 
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/tar.asc
+inherit verify-sig
+
 DESCRIPTION="Use this to make tarballs :)"
 HOMEPAGE="https://www.gnu.org/software/tar/"
 SRC_URI="mirror://gnu/tar/${P}.tar.xz
 	https://alpha.gnu.org/gnu/tar/${P}.tar.xz"
+SRC_URI+=" verify-sig? (
+		mirror://gnu/tar/${P}.tar.xz.sig
+		https://alpha.gnu.org/gnu/tar/${P}.tar.xz.sig
+	)"
 
 LICENSE="GPL-3+"
 SLOT="0"
-[[ -n "$(ver_cut 3)" ]] && [[ "$(ver_cut 3)" -ge 90 ]] || \
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+if [[ -z "$(ver_cut 3)" ]] || [[ "$(ver_cut 3)" -lt 90 ]] ; then
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+fi
 IUSE="acl minimal nls selinux xattr"
 
 RDEPEND="
@@ -23,6 +31,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	nls? ( sys-devel/gettext )
+	verify-sig? ( sec-keys/openpgp-keys-tar )
 "
 
 src_configure() {
@@ -35,6 +44,7 @@ src_configure() {
 		$(use_with selinux)
 		$(use_with xattr xattrs)
 	)
+
 	FORCE_UNSAFE_CONFIGURE=1 econf "${myeconfargs[@]}"
 }
 
