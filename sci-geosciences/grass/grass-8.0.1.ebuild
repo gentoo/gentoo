@@ -26,7 +26,7 @@ else
 	MY_P="${P/_rc/RC}"
 	SRC_URI="https://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="amd64 ~ppc ~x86"
+		KEYWORDS="amd64 ~ppc x86"
 	fi
 
 	S="${WORKDIR}/${MY_P}"
