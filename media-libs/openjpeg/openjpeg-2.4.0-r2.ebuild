@@ -34,7 +34,7 @@ DOCS=( AUTHORS.md CHANGELOG.md NEWS.md README.md THANKS.md )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.4.0-r1-gnuinstalldirs.patch" # bug 667150
-	"${FILESDIR}/${PN}-2.4.0-fix-r2-segfault.patch" # bug 832007
+	"${FILESDIR}/${PN}-2.4.0-r2-fix-segfault.patch" # bug 832007
 )
 
 src_prepare() {
