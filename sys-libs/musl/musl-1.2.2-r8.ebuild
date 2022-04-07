@@ -71,7 +71,8 @@ src_unpack() {
 	elif use verify-sig ; then
 		# We only verify the release; not the additional (fixed, safe) files
 		# we download.
-		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz{,.asc}
+		# (Seem to get IPC error on verifying in cross?)
+		! is_crosscompile && verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz{,.asc}
 	fi
 
 	default
