@@ -1,19 +1,22 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: Keep version bumps in sync with dev-libs/libintl.
 
 EAPI=7
 
-inherit mono-env libtool java-pkg-opt-2 multilib-minimal
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gettext.asc
+inherit mono-env libtool java-pkg-opt-2 multilib-minimal verify-sig
 
 DESCRIPTION="GNU locale utilities"
 HOMEPAGE="https://www.gnu.org/software/gettext/"
-if [[ "${PV}" == *_rc* ]] ; then
+if [[ ${PV} == *_rc* ]] ; then
 	SRC_URI="https://alpha.gnu.org/gnu/${PN}/${P/_/-}.tar.bz2"
+	SRC_URI+=" verify-sig? ( https://alpha.gnu.org/gnu/${PN}/${P/_/-}.tar.bz2.sig )"
 	S="${WORKDIR}/${P/_/-}"
 else
 	SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
+	SRC_URI+=" verify-sig? ( mirror://gnu/${PN}/${P}.tar.gz.sig )"
 	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 fi
 # Only libasprintf is under the LGPL (and libintl is in a sep package),
@@ -43,7 +46,7 @@ RDEPEND="${DEPEND}
 BDEPEND="
 	!git? ( cvs? ( dev-vcs/cvs ) )
 	git? ( dev-vcs/git )
-"
+	verify-sig? ( sec-keys/openpgp-keys-gettext )"
 PDEPEND="emacs? ( app-emacs/po-mode )"
 
 MULTILIB_WRAPPED_HEADERS=(
