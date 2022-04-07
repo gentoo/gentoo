@@ -13,7 +13,7 @@ DESCRIPTION="KDE library for CDDB"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="musicbrainz"
 
 DEPEND="
