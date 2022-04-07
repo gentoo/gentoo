@@ -11,7 +11,7 @@ DESCRIPTION="DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 IUSE=""
 
 DEPEND="
