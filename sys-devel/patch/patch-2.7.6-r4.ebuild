@@ -3,11 +3,13 @@
 
 EAPI="7"
 
-inherit flag-o-matic
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/patch.asc
+inherit flag-o-matic verify-sig
 
 DESCRIPTION="Utility to apply diffs to files"
 HOMEPAGE="https://www.gnu.org/software/patch/patch.html"
 SRC_URI="mirror://gnu/patch/${P}.tar.xz"
+SRC_URI+=" verify-sig? ( mirror://gnu/patch/${P}.tar.xz.sig )"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -16,8 +18,9 @@ IUSE="static test xattr"
 RESTRICT="!test? ( test )"
 
 RDEPEND="xattr? ( sys-apps/attr )"
-DEPEND="${RDEPEND}
-	test? ( sys-apps/ed )"
+DEPEND="${RDEPEND}"
+BDEPEND="test? ( sys-apps/ed )
+	verify-sig? ( sec-keys/openpgp-keys-patch )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-test-suite.patch
