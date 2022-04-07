@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mercurial.eclass
@@ -105,8 +105,6 @@ EHG_OFFLINE="${EHG_OFFLINE:-${EVCS_OFFLINE}}"
 
 mercurial_fetch() {
 	debug-print-function ${FUNCNAME} "${@}"
-
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
 
 	EHG_REPO_URI=${1-${EHG_REPO_URI}}
 	[[ -z "${EHG_REPO_URI}" ]] && die "EHG_REPO_URI is empty"
