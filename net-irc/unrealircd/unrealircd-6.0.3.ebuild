@@ -4,11 +4,13 @@
 EAPI=8
 
 SSL_CERT_MANDATORY=1
-inherit autotools ssl-cert systemd tmpfiles
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/unrealircd.asc
+inherit autotools ssl-cert systemd tmpfiles verify-sig
 
 DESCRIPTION="An advanced Internet Relay Chat daemon"
 HOMEPAGE="https://www.unrealircd.org/"
 SRC_URI="https://www.unrealircd.org/downloads/${P}.tar.gz"
+SRC_URI+=" verify-sig? ( https://www.unrealircd.org/downloads/${P}.tar.gz.asc )"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -27,7 +29,8 @@ RDEPEND="acct-group/unrealircd
 	curl? ( net-misc/curl[adns] )
 	geoip? ( dev-libs/libmaxminddb )"
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-unrealircd )"
 
 DOCS=( doc/{Authors,Donation,RELEASE-NOTES.md,tao.of.irc,technical/,translations.txt} )
 
