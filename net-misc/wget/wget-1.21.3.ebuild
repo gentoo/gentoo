@@ -4,12 +4,13 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
-
-inherit flag-o-matic python-any-r1 toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/wget.asc
+inherit flag-o-matic python-any-r1 toolchain-funcs verify-sig
 
 DESCRIPTION="Network utility to retrieve files from the WWW"
 HOMEPAGE="https://www.gnu.org/software/wget/"
 SRC_URI="mirror://gnu/wget/${P}.tar.gz"
+SRC_URI+=" verify-sig? ( mirror://gnu/wget/${P}.tar.gz.sig )"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -53,6 +54,7 @@ BDEPEND="
 		dev-perl/HTTP-Message
 		dev-perl/IO-Socket-SSL
 	)
+	verify-sig? ( sec-keys/openpgp-keys-wget )
 "
 
 DOCS=( AUTHORS MAILING-LIST NEWS README )
