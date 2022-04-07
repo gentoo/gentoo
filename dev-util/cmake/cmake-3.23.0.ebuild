@@ -62,6 +62,7 @@ BDEPEND="
 		dev-python/sphinx
 	)
 	test? ( app-arch/libarchive[zstd] )
+	verify-sig? ( sec-keys/openpgp-keys-bradking )
 "
 
 S="${WORKDIR}/${MY_P}"
