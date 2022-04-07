@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..10} )
 
 inherit distutils-r1
 
@@ -35,11 +35,13 @@ RDEPEND="
 BDEPEND="
 	${RDEPEND}
 	test? (
-		dev-python/atomicwrites[${PYTHON_USEDEP}]
-		dev-python/click[${PYTHON_USEDEP}]
-		dev-python/httpx[${PYTHON_USEDEP}]
-		dev-python/platformdirs[${PYTHON_USEDEP}]
-		dev-python/rich[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/atomicwrites[${PYTHON_USEDEP}]
+			dev-python/click[${PYTHON_USEDEP}]
+			dev-python/httpx[${PYTHON_USEDEP}]
+			dev-python/platformdirs[${PYTHON_USEDEP}]
+			dev-python/rich[${PYTHON_USEDEP}]
+		' 'python*')
 	)
 "
 
@@ -52,6 +54,11 @@ python_compile() {
 }
 
 python_test() {
+	if [[ ${EPYTHON} != python* ]]; then
+		einfo "Skipping tests on ${EPYTHON}"
+		return
+	fi
+
 	local -x EPYTEST_DESELECT=(
 		# these run pip to install stuff
 		tests/backend/dep/test_core.py::test_dependency_found
