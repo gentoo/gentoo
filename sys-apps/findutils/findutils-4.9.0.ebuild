@@ -4,12 +4,13 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
-
-inherit flag-o-matic python-any-r1
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/findutils.asc
+inherit flag-o-matic python-any-r1 verify-sig
 
 DESCRIPTION="GNU utilities for finding files"
 HOMEPAGE="https://www.gnu.org/software/findutils/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
+SRC_URI+=" verify-sig? ( mirror://gnu/${PN}/${P}.tar.xz.sig )"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -20,11 +21,9 @@ RESTRICT="!test? ( test )"
 RDEPEND="selinux? ( sys-libs/libselinux )
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
-	test? ( ${PYTHON_DEPS} )
-"
-BDEPEND="
-	nls? ( sys-devel/gettext )
-"
+	test? ( ${PYTHON_DEPS} )"
+BDEPEND="nls? ( sys-devel/gettext )
+	verify-sig? ( sec-keys/openpgp-keys-findutils )"
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
