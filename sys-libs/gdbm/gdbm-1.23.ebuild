@@ -3,11 +3,13 @@
 
 EAPI=7
 
-inherit multilib-minimal
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gdbm.asc
+inherit multilib-minimal verify-sig
 
 DESCRIPTION="Standard GNU database libraries"
 HOMEPAGE="https://www.gnu.org/software/gdbm/"
 SRC_URI="mirror://gnu/gdbm/${P}.tar.gz"
+SRC_URI+=" verify-sig? ( mirror://gnu/gdbm/${P}.tar.gz.sig )"
 
 LICENSE="GPL-3"
 SLOT="0/6" # libgdbm.so version
@@ -16,6 +18,7 @@ IUSE="+berkdb nls +readline static-libs"
 
 DEPEND="readline? ( sys-libs/readline:=[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-gdbm )"
 
 multilib_src_configure() {
 	# gdbm doesn't appear to use either of these libraries
