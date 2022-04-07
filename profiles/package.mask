@@ -362,10 +362,6 @@ x11-misc/easystroke
 # This is likely to cause issues in tests; Unmask if using for other purposes
 >=dev-php/PHP_Timer-5.0
 
-# Jonas Stein <jstein@gentoo.org> (2021-12-24)
-# Alpha version
-=app-editors/ghex-4.0.0_alpha
-
 # Michał Górny <mgorny@gentoo.org> (2021-12-18)
 # EOL kernel with known vulnerabilities.  Please move to one of the LTS
 # branches.  Bug #829491.
