@@ -430,6 +430,9 @@ setup_flags() {
 	replace-flags -O0 -O1
 
 	filter-flags '-fstack-protector*'
+
+	# See end of bug #830454; we handle this via USE=cet
+	filter-flags '-fcf-protection='
 }
 
 use_multiarch() {
