@@ -8,8 +8,14 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.musl-libc.org/musl"
 	inherit git-r3
 else
-	SRC_URI="http://www.musl-libc.org/releases/${P}.tar.gz"
+	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/musl.asc
+	inherit verify-sig
+
+	SRC_URI="https://musl.libc.org/releases/${P}.tar.gz"
+	SRC_URI+=" verify-sig? ( https://musl.libc.org/releases/${P}.tar.gz.asc )"
 	KEYWORDS="-* ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~x86"
+
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-musl )"
 fi
 GETENT_COMMIT="93a08815f8598db442d8b766b463d0150ed8e2ab"
 GETENT_FILE="musl-getent-${GETENT_COMMIT}.c"
@@ -60,19 +66,29 @@ pkg_setup() {
 }
 
 src_unpack() {
-	if [[ ${PV} == 9999 ]]; then
+	if [[ ${PV} == 9999 ]] ; then
 		git-r3_src_unpack
-	else
-		unpack "${P}.tar.gz"
+	elif use verify-sig ; then
+		# We only verify the release; not the additional (fixed, safe) files
+		# we download.
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz{,.asc}
 	fi
-	mkdir misc || die
-	cp "${DISTDIR}"/getconf.c misc/getconf.c || die
-	cp "${DISTDIR}/${GETENT_FILE}" misc/getent.c || die
-	cp "${DISTDIR}"/iconv.c misc/iconv.c || die
+
+	default
+}
+
+src_prepare() {
+	default
+
+	mkdir "${WORKDIR}"/misc || die
+	cp "${DISTDIR}"/getconf.c "${WORKDIR}"/misc/getconf.c || die
+	cp "${DISTDIR}/${GETENT_FILE}" "${WORKDIR}"/misc/getent.c || die
+	cp "${DISTDIR}"/iconv.c "${WORKDIR}"/misc/iconv.c || die
 }
 
 src_configure() {
 	tc-getCC ${CTARGET}
+
 	just_headers && export CC=true
 
 	local sysroot
