@@ -30,6 +30,7 @@ BDEPEND="
 		>=dev-python/hypothesis-4.0[${PYTHON_USEDEP}]
 		>=dev-python/pytest-7[${PYTHON_USEDEP}]
 		>=dev-python/pytest-mock-3.6.1[${PYTHON_USEDEP}]
+		dev-python/trio[${PYTHON_USEDEP}]
 		dev-python/trustme[${PYTHON_USEDEP}]
 		amd64? ( >=dev-python/uvloop-0.15[${PYTHON_USEDEP}] )
 	)
