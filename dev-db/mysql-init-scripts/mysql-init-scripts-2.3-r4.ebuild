@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -49,7 +49,7 @@ src_install() {
 	doexe "${FILESDIR}"/mysqld-wait-ready
 	systemd_newunit "${FILESDIR}/mysqld-v2.service" "mysqld.service"
 	systemd_newunit "${FILESDIR}/mysqld_at-v2.service" "mysqld@.service"
-	dotmpfiles "${FILESDIR}/mysql.conf"
+	newtmpfiles "${FILESDIR}/mysql.conf-r1" "mysql.conf"
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/logrotate.mysql-2.3" "mysql"
