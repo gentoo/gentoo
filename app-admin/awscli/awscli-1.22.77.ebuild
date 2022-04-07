@@ -16,7 +16,7 @@ S="${WORKDIR}/aws-cli-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 # awscli 1.22.55 → botocore 1.24.0
 # so botocore is x.(y+2).(z-55)
