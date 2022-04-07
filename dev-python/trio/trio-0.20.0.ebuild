@@ -31,7 +31,6 @@ BDEPEND="
 	test? (
 		>=dev-python/astor-0.8.0[${PYTHON_USEDEP}]
 		>=dev-python/immutables-0.6[${PYTHON_USEDEP}]
-		dev-python/ipython[${PYTHON_USEDEP}]
 	)
 "
 
