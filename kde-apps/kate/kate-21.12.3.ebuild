@@ -15,7 +15,7 @@ HOMEPAGE="https://kate-editor.org/ https://apps.kde.org/kate/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="activities +filebrowser lspclient +projects plasma +snippets sql telemetry"
 
 # only addons/externaltools depends on kiconthemes, too small for USE
