@@ -3,7 +3,8 @@
 
 EAPI=7
 
-inherit flag-o-matic multilib multilib-minimal preserve-libs toolchain-funcs usr-ldscript
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/chetramey.asc
+inherit flag-o-matic multilib multilib-minimal preserve-libs toolchain-funcs usr-ldscript verify-sig
 
 # Official patches
 # See ftp://ftp.cwru.edu/pub/bash/readline-8.1-patches/
@@ -23,6 +24,7 @@ patches() {
 		local u
 		for u in mirror://gnu/${PN} ftp://ftp.cwru.edu/pub/bash ; do
 			printf "${u}/${PN}-${MY_PV}-patches/%s " "$@"
+			printf "${u}/${PN}-${MY_PV}-patches/%s.sig " "$@"
 		done
 	fi
 }
@@ -36,9 +38,11 @@ case ${PV} in
 		inherit autotools
 
 		SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
+		SRC_URI+=" verify-sig? ( mirror://gnu/${PN}/${MY_P}.tar.gz.sig ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz.sig )"
 	;;
 	*)
 		SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz $(patches)"
+		SRC_URI+=" verify-sig? ( mirror://gnu/${PN}/${MY_P}.tar.gz.sig )"
 	;;
 esac
 
@@ -51,7 +55,8 @@ IUSE="static-libs +unicode utils"
 
 RDEPEND=">=sys-libs/ncurses-5.9-r3:=[static-libs?,unicode(+)?,${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-chetramey )"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -68,6 +73,8 @@ PATCHES=(
 # Needed because we don't want the patches being unpacked
 # (which emits annoying and useless error messages)
 src_unpack() {
+	verify-sig_src_unpack
+
 	unpack ${MY_P}.tar.gz
 }
 
