@@ -38,6 +38,7 @@ BDEPEND="
 		dev-python/atomicwrites[${PYTHON_USEDEP}]
 		dev-python/click[${PYTHON_USEDEP}]
 		dev-python/httpx[${PYTHON_USEDEP}]
+		dev-python/platformdirs[${PYTHON_USEDEP}]
 		dev-python/rich[${PYTHON_USEDEP}]
 	)
 "
