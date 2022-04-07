@@ -1,5 +1,5 @@
---- docbook-utils-0.6.14/doc/HTML/Makefile.am~	2007-10-08 04:13:04 +0200
-+++ docbook-utils-0.6.14/doc/HTML/Makefile.am	2007-10-08 04:13:34 +0200
+--- a/doc/HTML/Makefile.am
++++ b/doc/HTML/Makefile.am
 @@ -23,7 +23,7 @@
  		$(top_srcdir)/doc/refentry/docbook2texi-spec.pl.sgml \
  		$(top_srcdir)/doc/refentry/frontend-spec.sgml \
@@ -9,8 +9,8 @@
  	SGML_SEARCH_PATH=$(top_srcdir):$(top_srcdir)/doc:.. \
  		jade -t sgml -i html -d $(top_srcdir)/docbook-utils.dsl\#html \
  			-V '%use-id-as-filename%' $<
---- docbook-utils-0.6.14/doc/man/Makefile.am~	2007-10-08 04:14:16 +0200
-+++ docbook-utils-0.6.14/doc/man/Makefile.am	2007-10-08 04:14:29 +0200
+--- a/doc/man/Makefile.am
++++ b/doc/man/Makefile.am
 @@ -10,7 +10,7 @@
  
  $(man1_MANS) $(man7_MANS): $(top_srcdir)/doc/docbook-utils.sgml \
@@ -20,8 +20,8 @@
  	SGML_SEARCH_PATH=$(top_srcdir)/doc:.. \
  		nsgmls $< | \
  		sgmlspl $(top_srcdir)/helpers/docbook2man-spec.pl
---- docbook-utils-0.6.14/bin/jw.in~	2007-10-08 04:27:18 +0200
-+++ docbook-utils-0.6.14/bin/jw.in	2007-10-08 04:28:40 +0200
+--- a/bin/jw.in
++++ b/bin/jw.in
 @@ -63,7 +63,7 @@
  then
    SGML_CONF=`sgmlwhich`
@@ -40,8 +40,8 @@
  if [ -f "$SGML_CONF" ]
  then
    RE='^[:space:]*SGML_BASE_DIR[:space:]*=[:space:]*'
---- docbook-utils-0.6.14/backends/txt~	2007-10-08 04:59:59 +0200
-+++ docbook-utils-0.6.14/backends/txt	2007-10-08 05:00:52 +0200
+--- a/backends/txt
++++ b/backends/txt
 @@ -2,21 +2,21 @@
  # Send any comments to Eric Bischoff <eric@caldera.de>
  # This program is under GPL license. See LICENSE file for details.
@@ -72,8 +72,8 @@
    ARGS="-dump"
  else
    echo >&2 "No way to convert HTML to text found."
---- docbook-utils-0.6.14/configure.in~	2004-02-11 15:14:15 +0100
-+++ docbook-utils-0.6.14/configure.in	2007-10-14 10:40:51 +0200
+--- a/configure.in
++++ b/configure.in
 @@ -20,11 +20,11 @@
  AC_SUBST(docdir)
  
