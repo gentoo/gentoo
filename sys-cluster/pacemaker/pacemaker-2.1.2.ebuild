@@ -65,7 +65,7 @@ src_install() {
 	python_optimize
 
 	# remove provided initd file as we need support for OpenRC
-	rm -r "${ED}/etc/init.d" || die "Failed to remove old initd"
+	rm -rf "${ED}/etc/init.d" || die "Failed to remove old initd"
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
 
 	keepdir /var/lib/pacemaker/{blackbox,cib,cores,pengine}
