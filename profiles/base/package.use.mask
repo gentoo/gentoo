@@ -127,8 +127,7 @@ dev-lang/rust parallel-compiler
 # rspamd-3.0 segfaults a lot with jemalloc enabled (Bug #810337)
 # It is caused by -Wl,--as-needed linker flag,
 # see also: https://github.com/rspamd/rspamd/issues/3871
-~mail-filter/rspamd-3.0 jemalloc
-~mail-filter/rspamd-3.1 jemalloc
+>=mail-filter/rspamd-3.0 jemalloc
 
 # Matt Turner <mattst88@gentoo.org> (2021-08-28)
 # Mask experimental options.
