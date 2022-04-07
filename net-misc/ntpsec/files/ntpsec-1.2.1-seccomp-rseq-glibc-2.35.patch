@@ -1,0 +1,25 @@
+https://gitlab.com/NTPsec/ntpsec/-/merge_requests/1262
+https://bugs.gentoo.org/833274
+
+From 75970342391b0b1fad422e6ca3dc89dd76dcf607 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 7 Apr 2022 03:02:22 +0100
+Subject: [PATCH] ntpd/ntp_sandbox.c: allow rseq for glibc-2.35 in seccomp
+ filter
+
+Fixes: https://gitlab.com/NTPsec/ntpsec/-/issues/728
+Bug: https://bugs.gentoo.org/833274
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/ntpd/ntp_sandbox.c
++++ b/ntpd/ntp_sandbox.c
+@@ -366,6 +366,9 @@ int scmp_sc[] = {
+ 	SCMP_SYS(rt_sigaction),
+ 	SCMP_SYS(rt_sigprocmask),
+ 	SCMP_SYS(rt_sigreturn),
++#ifdef __NR_rseq
++	SCMP_SYS(rseq),		/* needed by glibc-2.35+ for resumable sequences */
++#endif
+ 	SCMP_SYS(sigaction),
+ 	SCMP_SYS(sigprocmask),
+ 	SCMP_SYS(sigreturn),
+GitLab
