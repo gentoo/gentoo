@@ -33,6 +33,8 @@ BDEPEND="
 	)
 "
 
+PATCHES=("${FILESDIR}/flatpak-builder-1.2.2-musl.patch")
+
 src_configure() {
 	econf \
 		$(use_enable doc documentation) \
