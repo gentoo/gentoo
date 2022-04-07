@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit gnome.org meson python-any-r1
+inherit gnome.org gnome2-utils meson python-any-r1 xdg
 
 DESCRIPTION="Graphical front-ends to various networking command-line"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-nettool"
@@ -39,3 +39,13 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PV}-meson-drop-unused-positional-arguments.patch
 )
+
+pkg_postinst() {
+	xdg_pkg_postinst
+	gnome2_schemas_update
+}
+
+pkg_postrm() {
+	xdg_pkg_postrm
+	gnome2_schemas_update
+}
