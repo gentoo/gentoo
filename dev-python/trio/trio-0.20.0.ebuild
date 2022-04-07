@@ -10,8 +10,8 @@ inherit distutils-r1
 
 DESCRIPTION="Python library for async concurrency and I/O"
 HOMEPAGE="
-	https://github.com/python-trio/trio
-	https://pypi.org/project/trio
+	https://github.com/python-trio/trio/
+	https://pypi.org/project/trio/
 "
 SRC_URI="
 	https://github.com/python-trio/${PN}/archive/v${PV}.tar.gz
