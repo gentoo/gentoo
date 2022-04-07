@@ -3,8 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_USE_PEP517=flit
+PYTHON_COMPAT=( pypy3 python3_{8..10} )
+
 inherit distutils-r1
 
 DESCRIPTION="Sans-I/O implementation of SOCKS4, SOCKS4A, and SOCKS5"
