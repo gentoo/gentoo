@@ -3,8 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..10} )
 DISTUTILS_USE_PEP517=setuptools
+
 inherit distutils-r1
 
 DESCRIPTION="Python library for async concurrency and I/O"
@@ -12,7 +13,10 @@ HOMEPAGE="
 	https://github.com/python-trio/trio
 	https://pypi.org/project/trio
 "
-SRC_URI="https://github.com/python-trio/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/python-trio/${PN}/archive/v${PV}.tar.gz
+		-> ${P}.tar.gz
+"
 
 LICENSE="|| ( Apache-2.0 MIT )"
 SLOT="0"
