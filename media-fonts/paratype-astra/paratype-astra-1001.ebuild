@@ -12,7 +12,7 @@ S="${WORKDIR}"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="X"
 
 BDEPEND="app-arch/unzip"
