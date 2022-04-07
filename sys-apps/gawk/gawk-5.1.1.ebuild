@@ -1,11 +1,15 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gawk.asc
+inherit verify-sig
+
 DESCRIPTION="GNU awk pattern-matching language"
 HOMEPAGE="https://www.gnu.org/software/gawk/gawk.html"
 SRC_URI="mirror://gnu/gawk/${P}.tar.xz"
+SRC_URI+=" verify-sig? ( mirror://gnu/gawk/${P}.tar.xz.sig )"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -22,6 +26,7 @@ BDEPEND="
 	>=sys-apps/texinfo-6.7
 	>=sys-devel/bison-3.5.4
 	nls? ( sys-devel/gettext )
+	verify-sig? ( sec-keys/openpgp-keys-gawk )
 "
 
 src_prepare() {
