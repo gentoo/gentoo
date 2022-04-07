@@ -25,6 +25,7 @@ RDEPEND="
 	>=dev-libs/glib-2.66.0:2
 	>=gui-libs/gtk-4.0.0:4
 	dev-libs/gobject-introspection
+	!app-editors/ghex:2
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
