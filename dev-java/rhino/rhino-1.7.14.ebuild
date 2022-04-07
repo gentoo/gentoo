@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/mozilla/rhino"
 SRC_URI="https://github.com/mozilla/rhino/archive/Rhino${PV//./_}_Release.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MPL-1.1 GPL-2"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 SLOT="1.6"
 
 # There are too many test failures:
