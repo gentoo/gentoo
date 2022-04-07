@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..10} )
 
 inherit distutils-r1
 
@@ -32,7 +32,11 @@ BDEPEND="
 		>=dev-python/pytest-mock-3.6.1[${PYTHON_USEDEP}]
 		dev-python/trio[${PYTHON_USEDEP}]
 		dev-python/trustme[${PYTHON_USEDEP}]
-		amd64? ( >=dev-python/uvloop-0.15[${PYTHON_USEDEP}] )
+		amd64? (
+			$(python_gen_cond_dep '
+				>=dev-python/uvloop-0.15[${PYTHON_USEDEP}]
+			' 'python*')
+		)
 	)
 "
 
