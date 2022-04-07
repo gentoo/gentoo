@@ -10,7 +10,7 @@ zfs set com.sun:auto-snapshot:<frequent|hourly|daily|weekly|monthly>=[true|false
 for example:
 
 # zfs set com.sun:auto-snapshot=false zroot
-Will disalbe all snapshots for zroot and all nested datasets will inherit the property.
+Will disable all snapshots for zroot and all nested datasets will inherit the property.
 
 # zfs set com.sun:auto-snapshot=true zroot/ROOT/default
 Will enable all types of snapshots for given dataset.
