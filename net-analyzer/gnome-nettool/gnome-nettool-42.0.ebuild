@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit gnome.org meson
+PYTHON_COMPAT=( python3_{8..10} )
+inherit gnome.org meson python-any-r1
 
 DESCRIPTION="Graphical front-ends to various networking command-line"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-nettool"
