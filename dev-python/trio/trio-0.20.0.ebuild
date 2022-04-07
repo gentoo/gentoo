@@ -38,6 +38,9 @@ EPYTEST_DESELECT=(
 	# Times out on slower arches (ia64 in this case)
 	# https://github.com/python-trio/trio/issues/1753
 	trio/tests/test_unix_pipes.py::test_close_at_bad_time_for_send_all
+
+	# incompatible ipython version?
+	trio/_core/tests/test_multierror.py::test_ipython_exc_handler
 )
 
 EPYTEST_IGNORE=(
@@ -54,5 +57,6 @@ distutils_enable_sphinx docs/source \
 	dev-python/towncrier
 
 python_test() {
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest -m "not redistributors_should_skip"
 }
