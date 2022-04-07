@@ -17,7 +17,7 @@ HOMEPAGE="https://kdeconnect.kde.org/ https://apps.kde.org/kdeconnect.kcm/"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 IUSE="bluetooth pulseaudio X"
 
 RESTRICT="test"
