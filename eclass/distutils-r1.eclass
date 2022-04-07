@@ -98,6 +98,8 @@ esac
 #
 # - flit - flit_core backend
 #
+# - hatchling - hatchling backend (from hatch)
+#
 # - pdm - pdm.pep517 backend
 #
 # - poetry - poetry-core backend
@@ -186,6 +188,10 @@ _distutils_set_globals() {
 			flit)
 				bdep+='
 					dev-python/flit_core[${PYTHON_USEDEP}]'
+				;;
+			hatchling)
+				bdep+='
+					dev-python/hatchling[${PYTHON_USEDEP}]'
 				;;
 			pdm)
 				bdep+='
@@ -910,6 +916,9 @@ _distutils-r1_backend_to_key() {
 	case ${backend} in
 		flit_core.buildapi|flit.buildapi)
 			echo flit
+			;;
+		hatchling.build)
+			echo hatchling
 			;;
 		pdm.pep517.api)
 			echo pdm
