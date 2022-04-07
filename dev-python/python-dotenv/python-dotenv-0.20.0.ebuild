@@ -19,7 +19,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 DEPEND="
 	test? (
 		>=dev-python/click-5[${PYTHON_USEDEP}]
-		dev-python/ipython[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		>=dev-python/sh-1.09[${PYTHON_USEDEP}]
 	)
@@ -28,6 +27,19 @@ DEPEND="
 DOCS=( CHANGELOG.md README.md )
 
 distutils_enable_tests pytest
+
+python_test() {
+	local EPYTEST_IGNORE=()
+	# remove when https://github.com/theskumar/python-dotenv/pull/397
+	# is merged
+	if ! has_version "dev-python/ipython[${PYTHON_USEDEP}]"; then
+		EPYTEST_IGNORE+=(
+			tests/test_ipython.py
+		)
+	fi
+
+	epytest
+}
 
 python_install() {
 	distutils-r1_python_install
