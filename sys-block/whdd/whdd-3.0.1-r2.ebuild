@@ -14,7 +14,7 @@ then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}-rel.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~riscv ~x86"
 fi
 
 LICENSE="GPL-3"
