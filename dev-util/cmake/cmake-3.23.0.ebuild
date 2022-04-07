@@ -21,6 +21,14 @@ if [[ ${PV} == 9999 ]] ; then
 else
 	SRC_URI="https://cmake.org/files/v$(ver_cut 1-2)/${MY_P}.tar.gz"
 	if [[ ${PV} != *_rc* ]] ; then
+		VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/bradking.asc
+		inherit verify-sig
+
+		SRC_URI+=" verify-sig? (
+			https://github.com/Kitware/CMake/releases/download/v$(ver_cut 1-3)/${MY_P}-SHA-256.txt
+			https://github.com/Kitware/CMake/releases/download/v$(ver_cut 1-3)/${MY_P}-SHA-256.txt.asc
+		)"
+
 		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	fi
 fi
@@ -98,6 +106,24 @@ cmake_src_bootstrap() {
 		--prefix="${T}/cmakestrap/" \
 		--parallel=$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)") \
 		|| die "Bootstrap failed"
+}
+
+src_unpack() {
+	if [[ ${PV} == 9999 ]] ; then
+		git-r3_src_unpack
+	elif ! use verify-sig || [[ ${PV} == *_rc ]] ; then
+		default
+	else
+		cd "${DISTDIR}" || die
+
+		# See https://mgorny.pl/articles/verify-sig-by-example.html#verifying-using-a-checksum-file-with-a-detached-signature
+		verify-sig_verify_detached ${MY_P}-SHA-256.txt{,.asc}
+		verify-sig_verify_unsigned_checksums ${MY_P}-SHA-256.txt sha256 cmake-3.23.0.tar.gz
+
+		cd "${WORKDIR}" || die
+
+		default
+	fi
 }
 
 src_prepare() {
