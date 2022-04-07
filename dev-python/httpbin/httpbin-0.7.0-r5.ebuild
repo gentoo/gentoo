@@ -17,7 +17,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~m68k ~riscv ~x86"
 
 RDEPEND="
 	dev-python/brotlicffi[${PYTHON_USEDEP}]
@@ -26,17 +26,20 @@ RDEPEND="
 	dev-python/itsdangerous[${PYTHON_USEDEP}]
 	dev-python/markupsafe[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	<dev-python/werkzeug-2.1[${PYTHON_USEDEP}]
+	>=dev-python/werkzeug-2.0[${PYTHON_USEDEP}]
 "
 
 PATCHES=(
 	# do not import raven if it's not going to be used
 	# (upstream removed it completely in git anyway)
-	"${FILESDIR}"/httpbin-0.7.0-optional-raven.patch
+	"${FILESDIR}"/${P}-optional-raven.patch
 	# fix tests with new versions of werkzeug
-	"${FILESDIR}"/httpbin-0.7.0-test-werkzeug.patch
+	"${FILESDIR}"/${P}-test-werkzeug.patch
 	# use brotlicffi instead of brotlipy
-	"${FILESDIR}"/httpbin-0.7.0-brotlicffi.patch
+	"${FILESDIR}"/${P}-brotlicffi.patch
+	# fix compat with werkzeug 2.1
+	# https://github.com/postmanlabs/httpbin/pull/674
+	"${FILESDIR}"/${P}-werkzeug-2.1.patch
 )
 
 distutils_enable_tests unittest
