@@ -25,7 +25,7 @@ BDEPEND="sys-apps/texinfo
 	verify-sig? ( sec-keys/openpgp-keys-antoniodiazdiaz )"
 
 src_unpack() {
-	verify-sig_verify_detached "${DISTDIR}"/${P}.tar.lz{,.sig}
+	use verify-sig && verify-sig_verify_detached "${DISTDIR}"/${P}.tar.lz{,.sig}
 	unpacker "${DISTDIR}"/${P}.tar.lz
 }
 
