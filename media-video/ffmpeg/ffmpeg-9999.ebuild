@@ -348,6 +348,11 @@ src_prepare() {
 	fi
 
 	default
+
+	# -fdiagnostics-color=auto gets appended after user flags which
+	# will ignore user's preference.
+	sed -i -e '/check_cflags -fdiagnostics-color=auto/d' configure || die
+
 	echo 'include $(SRC_PATH)/ffbuild/libffmpeg.mak' >> Makefile || die
 }
 
