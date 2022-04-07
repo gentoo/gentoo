@@ -8,7 +8,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="cjk emoji +latin ms"
 
 LANGS="as bn bo brx doi dz gu hi km kn kok ks mai ml mr ne or pa ru sa sat sd si syc ta te th"
