@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: Keep version bumps in sync with sys-devel/gettext.
@@ -6,12 +6,14 @@
 EAPI=7
 
 MY_P="gettext-${PV}"
-
-inherit multilib-minimal libtool usr-ldscript
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gettext.asc
+inherit multilib-minimal libtool usr-ldscript verify-sig
 
 DESCRIPTION="the GNU international library (split out of gettext)"
 HOMEPAGE="https://www.gnu.org/software/gettext/"
 SRC_URI="mirror://gnu/gettext/${MY_P}.tar.gz"
+SRC_URI+=" verify-sig? ( mirror://gnu/gettext/${MY_P}.tar.gz.sig )"
+S="${WORKDIR}/${MY_P}/gettext-runtime"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
@@ -24,8 +26,7 @@ RDEPEND="${DEPEND}
 	!sys-libs/glibc
 	!sys-libs/musl
 	!<sys-devel/gettext-0.19.6-r1"
-
-S="${WORKDIR}/${MY_P}/gettext-runtime"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-gettext )"
 
 src_prepare() {
 	default
