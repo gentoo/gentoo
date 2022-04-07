@@ -83,8 +83,8 @@ S="${S_K}/tools/perf"
 CONFIG_CHECK="~PERF_EVENTS ~KALLSYMS"
 
 QA_FLAGS_IGNORED=(
-	usr/bin/perf-read-vdso32 # not linked with anything except for libc
-	usr/libexec/perf-core/dlfilters/dlfilter-test-api-v0.so # not installed
+	'usr/bin/perf-read-vdso32' # not linked with anything except for libc
+	'usr/libexec/perf-core/dlfilters/.*' # plugins
 )
 
 pkg_pretend() {
