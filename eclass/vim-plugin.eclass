@@ -75,7 +75,9 @@ _VIM_PLUGIN_ALLOWED_DIRS=(
 # @USAGE: [<dir>...]
 # @DESCRIPTION:
 # Overrides the default src_install phase. In order, this function:
+#
 # * installs help and documentation files.
+#
 # * installs all files recognized by default Vim installation and directories
 #   passed to this function as arguments in "${ED}"/usr/share/vim/vimfiles.
 #
@@ -113,8 +115,11 @@ vim-plugin_src_install() {
 # @DESCRIPTION:
 # Overrides the pkg_postinst phase for this eclass.
 # The following functions are called:
+#
 # * update_vim_helptags
+#
 # * update_vim_afterscripts
+#
 # * display_vim_plugin_help
 vim-plugin_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "${@}"
