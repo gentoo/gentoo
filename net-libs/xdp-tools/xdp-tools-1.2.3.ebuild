@@ -48,3 +48,5 @@ src_install() {
 	# These are ELF objects but BPF ones.
 	dostrip -x /usr/lib/bpf
 }
+
+src_test() { :; }
