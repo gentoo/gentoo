@@ -31,4 +31,8 @@ PATCHES=(
 	"${FILESDIR}"/pytest-httpbin-1.0.0-pypy3-hang.patch
 )
 
+EPYTEST_DESELECT=(
+	tests/test_server.py::test_redirect_location_is_https_for_secure_server
+)
+
 distutils_enable_tests pytest
