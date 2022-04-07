@@ -13,7 +13,7 @@ SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/colyli/${PN}.git/snapsh
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm64 ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
