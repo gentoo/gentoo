@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2022-04-07)
+# No consumers left. Superseded by dev-libs/imath[python]
+# Removal in 30 days.
+dev-python/pyilmbase
+
 # Matt Turner <mattst88@gentoo.org> (2022-04-06)
 # Dead package upstream. No reverse dependencies.
 # Removal on 2022-05-06
