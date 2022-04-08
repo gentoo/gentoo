@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Data parsing and validation using Python type hints"
@@ -39,11 +39,24 @@ python_test() {
 		# flaky test, known upstream
 		tests/test_hypothesis_plugin.py::test_can_construct_models_with_all_fields
 	)
-	[[ ${EPYTHON} == "python3.8" ]] && EPYTEST_DESELECT+=(
-		# Those fail on python 3.8 as None changed typing semantic on >=3.9
-		"tests/test_types.py::test_none[value_type3]"
-		tests/test_typing.py::test_is_none_type
-	)
+	case ${EPYTHON} in
+		python3.8)
+			EPYTEST_DESELECT+=(
+				# Those fail on python 3.8 as None changed typing semantic on >=3.9
+				"tests/test_types.py::test_none[value_type3]"
+				tests/test_typing.py::test_is_none_type
+			)
+			;;
+		pypy3)
+			EPYTEST_DESELECT+=(
+				tests/test_private_attributes.py::test_private_attribute
+				tests/test_private_attributes.py::test_private_attribute_annotation
+				tests/test_private_attributes.py::test_private_attribute_factory
+				tests/test_private_attributes.py::test_private_attribute_multiple_inheritance
+				tests/test_private_attributes.py::test_underscore_attrs_are_private
+			)
+			;;
+	esac
 	distutils_install_for_testing
 	epytest
 }
