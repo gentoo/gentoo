@@ -100,7 +100,7 @@ esac
 #
 # - hatchling - hatchling backend (from hatch)
 #
-# - jupyter - jupyter_packaging backend (uses setuptools internally)
+# - jupyter - jupyter_packaging backend
 #
 # - pdm - pdm.pep517 backend
 #
@@ -204,9 +204,7 @@ _distutils_set_globals() {
 				;;
 			jupyter)
 				bdep+='
-					dev-python/jupyter_packaging[${PYTHON_USEDEP}]
-					>=dev-python/setuptools-60.5.0[${PYTHON_USEDEP}]
-					dev-python/wheel[${PYTHON_USEDEP}]'
+					dev-python/jupyter_packaging[${PYTHON_USEDEP}]'
 				;;
 			pdm)
 				bdep+='
