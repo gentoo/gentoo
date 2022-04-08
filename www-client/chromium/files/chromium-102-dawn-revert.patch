@@ -1,0 +1,268 @@
+diff --git a/third_party/dawn/generator/dawn_generator.gni b/third_party/dawn/generator/dawn_generator.gni
+index 28c5301..fb7e639 100644
+--- a/third_party/dawn/generator/dawn_generator.gni
++++ b/third_party/dawn/generator/dawn_generator.gni
+@@ -39,7 +39,6 @@ import("generator_lib.gni")
+ 
+ dawn_allowed_gen_output_dirs = [
+   "src/dawn/",
+-  "src/dawn/common/",
+   "src/dawn/native/",
+   "src/dawn/native/opengl/",
+   "src/dawn/wire/client/",
+diff --git a/third_party/dawn/generator/dawn_version_generator.py b/third_party/dawn/generator/dawn_version_generator.py
+deleted file mode 100644
+index 462cb31..0000000
+--- a/third_party/dawn/generator/dawn_version_generator.py
++++ /dev/null
+@@ -1,105 +0,0 @@
+-#!/usr/bin/env python3
+-# Copyright 2022 The Dawn Authors
+-#
+-# Licensed under the Apache License, Version 2.0 (the "License");
+-# you may not use this file except in compliance with the License.
+-# You may obtain a copy of the License at
+-#
+-#     http://www.apache.org/licenses/LICENSE-2.0
+-#
+-# Unless required by applicable law or agreed to in writing, software
+-# distributed under the License is distributed on an "AS IS" BASIS,
+-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+-# See the License for the specific language governing permissions and
+-# limitations under the License.
+-
+-import os, subprocess, sys
+-
+-from generator_lib import Generator, run_generator, FileRender
+-
+-
+-def get_git():
+-    return 'git.bat' if sys.platform == 'win32' else 'git'
+-
+-
+-def get_gitHash(dawnDir):
+-    result = subprocess.run([get_git(), 'rev-parse', 'HEAD'],
+-                            stdout=subprocess.PIPE,
+-                            cwd=dawnDir)
+-    if result.returncode == 0:
+-        return result.stdout.decode('utf-8').strip()
+-    return ''
+-
+-
+-def get_gitHead(dawnDir):
+-    return [os.path.join(dawnDir, '.git', 'HEAD')]
+-
+-
+-def unpackGitRef(packed, resolved):
+-    with open(packed) as fin:
+-        refs = fin.read().strip().split('\n')
+-
+-    # Strip comments
+-    refs = [ref.split(' ') for ref in refs if ref.strip()[0] != '#']
+-
+-    # Parse results which are in the format [<gitHash>, <refFile>] from previous step.
+-    refs = [gitHash for (gitHash, refFile) in refs if refFile == resolved]
+-    if len(refs) == 1:
+-        with open(resolved, 'w') as fout:
+-            fout.write(refs[0] + '\n')
+-        return True
+-    return False
+-
+-
+-def get_gitResolvedHead(dawnDir):
+-    result = subprocess.run(
+-        [get_git(), 'rev-parse', '--symbolic-full-name', 'HEAD'],
+-        stdout=subprocess.PIPE,
+-        cwd=dawnDir)
+-    if result.returncode != 0:
+-        raise Exception('Failed to execute git rev-parse to resolve git head.')
+-
+-    resolved = os.path.join(dawnDir, '.git',
+-                            result.stdout.decode('utf-8').strip())
+-
+-    # Check a packed-refs file exists. If so, we need to potentially unpack and include it as a dep.
+-    packed = os.path.join(dawnDir, '.git', 'packed-refs')
+-    if os.path.exists(packed) and unpackGitRef(packed, resolved):
+-        return [packed, resolved]
+-
+-    if not os.path.exists(resolved):
+-        raise Exception('Unable to resolve git HEAD hash file:', path)
+-    return [resolved]
+-
+-
+-def compute_params(args):
+-    return {
+-        'get_gitHash': lambda: get_gitHash(os.path.abspath(args.dawn_dir)),
+-    }
+-
+-
+-class DawnVersionGenerator(Generator):
+-    def get_description(self):
+-        return 'Generates version dependent Dawn code. Currently regenerated dependent on git hash.'
+-
+-    def add_commandline_arguments(self, parser):
+-        parser.add_argument('--dawn-dir',
+-                            required=True,
+-                            type=str,
+-                            help='The Dawn root directory path to use')
+-
+-    def get_dependencies(self, args):
+-        dawn_dir = os.path.abspath(args.dawn_dir)
+-        return get_gitHead(dawn_dir) + get_gitResolvedHead(dawn_dir)
+-
+-    def get_file_renders(self, args):
+-        params = compute_params(args)
+-
+-        return [
+-            FileRender('dawn/common/Version.h',
+-                       'src/dawn/common/Version_autogen.h', [params]),
+-        ]
+-
+-
+-if __name__ == '__main__':
+-    sys.exit(run_generator(DawnVersionGenerator()))
+diff --git a/third_party/dawn/generator/templates/dawn/common/Version.h b/third_party/dawn/generator/templates/dawn/common/Version.h
+deleted file mode 100644
+index f9f67e7..0000000
+--- a/third_party/dawn/generator/templates/dawn/common/Version.h
++++ /dev/null
+@@ -1,24 +0,0 @@
+-// Copyright 2022 The Dawn Authors
+-//
+-// Licensed under the Apache License, Version 2.0 (the "License");
+-// you may not use this file except in compliance with the License.
+-// You may obtain a copy of the License at
+-//
+-//     http://www.apache.org/licenses/LICENSE-2.0
+-//
+-// Unless required by applicable law or agreed to in writing, software
+-// distributed under the License is distributed on an "AS IS" BASIS,
+-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+-// See the License for the specific language governing permissions and
+-// limitations under the License.
+-
+-#ifndef COMMON_VERISON_AUTOGEN_H_
+-#define COMMON_VERISON_AUTOGEN_H_
+-
+-namespace dawn {
+-
+-static constexpr char kGitHash[] = "{{get_gitHash()}}";
+-
+-} // namespace dawn
+-
+-#endif  // COMMON_VERISON_AUTOGEN_H_
+diff --git a/third_party/dawn/src/dawn/common/BUILD.gn b/third_party/dawn/src/dawn/common/BUILD.gn
+index d09999d..8a15f02 100644
+--- a/third_party/dawn/src/dawn/common/BUILD.gn
++++ b/third_party/dawn/src/dawn/common/BUILD.gn
+@@ -15,7 +15,6 @@
+ import("../../../scripts/dawn_overrides_with_defaults.gni")
+ 
+ import("//build_overrides/build.gni")
+-import("${dawn_root}/generator/dawn_generator.gni")
+ import("${dawn_root}/scripts/dawn_features.gni")
+ 
+ # Use Chromium's dcheck_always_on when available so that we respect it when
+@@ -168,15 +167,6 @@ config("internal_config") {
+ # Common dawn library
+ ###############################################################################
+ 
+-dawn_generator("dawn_version_gen") {
+-  script = "${dawn_root}/generator/dawn_version_generator.py"
+-  args = [
+-    "--dawn-dir",
+-    rebase_path("${dawn_root}", root_build_dir),
+-  ]
+-  outputs = [ "src/dawn/common/Version_autogen.h" ]
+-}
+-
+ # This GN file is discovered by all Chromium builds, but common doesn't support
+ # all of Chromium's OSes so we explicitly make the target visible only on
+ # systems we know Dawn is able to compile on.
+@@ -233,8 +223,6 @@ if (is_win || is_linux || is_chromeos || is_mac || is_fuchsia || is_android) {
+       "xlib_with_undefs.h",
+     ]
+ 
+-    public_deps = [ ":dawn_version_gen" ]
+-
+     if (is_mac) {
+       sources += [ "SystemUtils_mac.mm" ]
+     }
+@@ -253,7 +241,7 @@ if (is_win || is_linux || is_chromeos || is_mac || is_fuchsia || is_android) {
+       ]
+     }
+     if (dawn_enable_vulkan) {
+-      public_deps += [ "${dawn_root}/third_party/khronos:vulkan_headers" ]
++      public_deps = [ "${dawn_root}/third_party/khronos:vulkan_headers" ]
+     }
+     if (is_android) {
+       libs = [ "log" ]
+diff --git a/third_party/dawn/src/dawn/common/CMakeLists.txt b/third_party/dawn/src/dawn/common/CMakeLists.txt
+index 1c28e71..d839d84 100644
+--- a/third_party/dawn/src/dawn/common/CMakeLists.txt
++++ b/third_party/dawn/src/dawn/common/CMakeLists.txt
+@@ -12,17 +12,8 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-DawnGenerator(
+-    SCRIPT "${Dawn_SOURCE_DIR}/generator/dawn_version_generator.py"
+-    PRINT_NAME "Dawn version based utilities"
+-    ARGS "--dawn-dir"
+-         "${Dawn_SOURCE_DIR}"
+-    RESULT_VARIABLE "DAWN_VERSION_AUTOGEN_SOURCES"
+-)
+-
+ add_library(dawn_common STATIC ${DAWN_DUMMY_FILE})
+ target_sources(dawn_common PRIVATE
+-    ${DAWN_VERSION_AUTOGEN_SOURCES}
+     "Alloc.h"
+     "Assert.cpp"
+     "Assert.h"
+diff --git a/third_party/dawn/src/dawn/tests/BUILD.gn b/third_party/dawn/src/dawn/tests/BUILD.gn
+index 0951b9b..990b5b9 100644
+--- a/third_party/dawn/src/dawn/tests/BUILD.gn
++++ b/third_party/dawn/src/dawn/tests/BUILD.gn
+@@ -238,7 +238,6 @@ dawn_test("dawn_unittests") {
+     "unittests/SystemUtilsTests.cpp",
+     "unittests/ToBackendTests.cpp",
+     "unittests/TypedIntegerTests.cpp",
+-    "unittests/VersionTests.cpp",
+     "unittests/native/CacheKeyTests.cpp",
+     "unittests/native/CommandBufferEncodingTests.cpp",
+     "unittests/native/CreatePipelineAsyncTaskTests.cpp",
+diff --git a/third_party/dawn/src/dawn/tests/unittests/VersionTests.cpp b/third_party/dawn/src/dawn/tests/unittests/VersionTests.cpp
+deleted file mode 100644
+index 60172a7..0000000
+--- a/third_party/dawn/src/dawn/tests/unittests/VersionTests.cpp
++++ /dev/null
+@@ -1,29 +0,0 @@
+-// Copyright 2022 The Dawn Authors
+-//
+-// Licensed under the Apache License, Version 2.0 (the "License");
+-// you may not use this file except in compliance with the License.
+-// You may obtain a copy of the License at
+-//
+-//     http://www.apache.org/licenses/LICENSE-2.0
+-//
+-// Unless required by applicable law or agreed to in writing, software
+-// distributed under the License is distributed on an "AS IS" BASIS,
+-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+-// See the License for the specific language governing permissions and
+-// limitations under the License.
+-
+-#include <gmock/gmock.h>
+-#include <gtest/gtest.h>
+-
+-#include "dawn/common/Version_autogen.h"
+-
+-namespace dawn { namespace {
+-
+-    using ::testing::SizeIs;
+-
+-    TEST(VersionTests, GitCommitHashLength) {
+-        // Git hashes should be 40 characters long.
+-        EXPECT_THAT(std::string(kGitHash), SizeIs(40));
+-    }
+-
+-}}  // namespace dawn::
