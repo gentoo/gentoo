@@ -77,7 +77,6 @@ src_test() {
 }
 
 src_install() {
-	mkdir -p "${S}_${EPYTHON}"/install/usr/lib/python-exec/${EPYTHON} || die
 	distutils-r1_src_install
 
 	elisp_src_install
