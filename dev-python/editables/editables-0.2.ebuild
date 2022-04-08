@@ -20,6 +20,6 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~riscv ~s390"
+KEYWORDS="~amd64 ~hppa ~ia64 ~riscv ~s390"
 
 distutils_enable_tests pytest
