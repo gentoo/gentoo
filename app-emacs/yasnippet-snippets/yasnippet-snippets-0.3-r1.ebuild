@@ -16,16 +16,26 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="app-emacs/yasnippet"
 BDEPEND="${RDEPEND}"
 
+DOCS=( README.md )
+PATCHES=( "${FILESDIR}"/${PN}-dir.patch )
 SITEFILE="50${PN}-gentoo.el"
 
+src_prepare() {
+	elisp_src_prepare
+
+	sed "s|@SITEETC@|${EPREFIX}${SITEETC}/${PN}|" -i ${PN}.el || die
+}
+
 src_compile() {
+	elisp_src_compile
+
 	${EMACS} ${EMACSFLAGS} --eval "(require 'yasnippet)" \
 			 --eval "(yas-compile-directory \"${S}/snippets\")" || die
 }
 
 src_install() {
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+	elisp_src_install
+
 	insinto "${SITEETC}/${PN}"
-	doins -r snippets/.
-	dodoc README.md
+	doins -r snippets
 }
