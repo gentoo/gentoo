@@ -30,7 +30,7 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
+src_install() {
 	PLUGIN_SO=( src/.libs/gkleds$(get_modname) )
-	default
+	gkrellm-plugin_src_install
 }
