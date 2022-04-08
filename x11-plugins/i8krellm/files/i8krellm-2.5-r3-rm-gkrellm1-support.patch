@@ -1,0 +1,50 @@
+Remove support for gkrellm1
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,4 @@
+ # To build for GKrellM v2, just type 'make' and 'make install'
+-# For GKrellM v1, type 'make i8krellm1' and 'make install1'
+ # 
+ 
+ LFLAGS = -shared
+@@ -43,40 +42,3 @@ install: i8krellm.so
+ 
+ clean:
+ 	rm -f *.o core *.so
+-
+-
+-## Support for GKrellM 1.2
+-#
+-GTK_INCLUDE = `gtk-config --cflags`
+-GTK_LIB = `gtk-config --libs` -lpthread
+-IMLIB_INCLUDE = `imlib-config --cflags-gdk`
+-IMLIB_LIB = `imlib-config --libs-gdk`
+-SINSTALLDIR = /usr/share/gkrellm/plugins
+-UINSTALLDIR = $(HOME)/.gkrellm/plugins
+-FLAGS = -O2 -Wall -fPIC -I. $(GTK_INCLUDE) $(IMLIB_INCLUDE)
+-LIBS = $(GTK_LIB) $(IMLIB_LIB)
+-CC = gcc $(FLAGS)
+-CCF = gcc $(FLAGS) -DFAKE
+-OBJS = i8krellm.o
+-
+-i8krellm1.so: $(OBJS)
+-#	@echo "========> i8krellm1.so"
+-	$(CC) $(OBJS) -o i8krellm1.so $(LFLAGS) $(LIBS)
+-
+-i8krellm1.o: i8krellm.c prop-anim.xpm
+-#	@echo "========> i8krellm1.o"
+-	$(CC) -c -o i8krellm1.o i8krellm.c
+-
+-fake1: i8krellm.c prop-anim.xpm
+-	$(CCF) -c -o i8krellm1.o i8krellm.c
+-	$(CCF) $(OBJS) -o i8krellm1.so $(LFLAGS) $(LIBS)
+-
+-site_install1: i8krellm1.so
+-	install -c -s -m 644 i8krellm1.so $(SINSTALLDIR)
+-
+-user_install1: i8krellm1.so
+-	install -c -s -m 644 i8krellm1.so $(UINSTALLDIR)
+-
+-install1: i8krellm1.so
+-	install -c -s -m 644 i8krellm1.so $(UINSTALLDIR)
+-
