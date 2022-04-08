@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
@@ -35,15 +36,18 @@ BDEPEND="
 	)
 "
 
-distutils_enable_tests unittest
+distutils_enable_tests pytest
 
-python_test() {
-	eunittest src
+python_compile() {
+	distutils-r1_python_compile
+	find "${BUILD_DIR}" -name '*.pth' -delete || die
 }
 
-python_install_all() {
-	distutils-r1_python_install_all
-
-	# remove .pth files since dev-python/namespace-zope handles the ns
-	find "${D}" -name '*.pth' -delete || die
+python_test() {
+	cd "${BUILD_DIR}/install$(python_get_sitedir)/zope" || die
+	cat > __init__.py <<-EOF || die
+		__import__('pkg_resources').declare_namespace(__name__)
+	EOF
+	eunittest -s configuration/tests
+	rm __init__.py || die
 }
