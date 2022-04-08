@@ -43,6 +43,7 @@ RDEPEND="${LUA_DEPS}
 	dev-libs/libsodium:=
 	dev-libs/openssl:0=[-bindist(-)]
 	dev-libs/snowball-stemmer:=
+	>=dev-libs/xxhash-0.8.0
 	sys-apps/file
 	blas? (
 		virtual/blas
@@ -68,7 +69,7 @@ PATCHES=(
 src_prepare() {
 	cmake_src_prepare
 
-	rm -vrf contrib/{doctest,fmt,lua-{argparse,bit},snowball,zstd} || die
+	rm -vrf contrib/{doctest,fmt,lua-{argparse,bit},snowball,xxhash,zstd} || die
 
 	> cmake/Toolset.cmake || die #827550
 
@@ -86,6 +87,7 @@ src_configure() {
 
 		-DSYSTEM_DOCTEST=ON
 		-DSYSTEM_FMT=ON
+		-DSYSTEM_XXHASH=ON
 		-DSYSTEM_ZSTD=ON
 
 		-DENABLE_BLAS=$(usex blas ON OFF)
