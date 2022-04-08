@@ -18,12 +18,8 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86"
 
-distutils_enable_tests unittest
+distutils_enable_tests pytest
 
-src_prepare() {
-	# these fail due to timeouts on slower hardware
-	sed -e 's:test_keepalive_ping_with_no_ping_timeout:_&:' \
-		-e 's:test_keepalive_ping(:_&:' \
-		-i tests/legacy/test_protocol.py || die
-	distutils-r1_src_prepare
+python_test() {
+	epytest tests
 }
