@@ -23,7 +23,7 @@ S=${WORKDIR}/${MY_P}/backend
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~riscv"
+KEYWORDS="~amd64 ~ia64 ~riscv ~s390"
 
 RDEPEND="
 	>=dev-python/editables-0.2[${PYTHON_USEDEP}]
