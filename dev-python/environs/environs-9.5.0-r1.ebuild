@@ -25,7 +25,6 @@ BDEPEND="
 		dev-python/django-cache-url[${PYTHON_USEDEP}]
 		dev-python/dj-database-url[${PYTHON_USEDEP}]
 		dev-python/dj-email-url[${PYTHON_USEDEP}]
-		dev-python/toml[${PYTHON_USEDEP}]
 	)
 "
 
