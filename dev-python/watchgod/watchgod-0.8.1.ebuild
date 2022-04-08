@@ -5,6 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{8..10} )
+
 inherit distutils-r1
 
 DESCRIPTION="Simple, modern file watching and code reload in Python"
@@ -34,7 +35,6 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
-
 
 src_prepare() {
 	# increase timeout
