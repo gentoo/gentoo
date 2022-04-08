@@ -100,6 +100,8 @@ esac
 #
 # - hatchling - hatchling backend (from hatch)
 #
+# - jupyter - jupyter_packaging backend (uses setuptools internally)
+#
 # - pdm - pdm.pep517 backend
 #
 # - poetry - poetry-core backend
@@ -199,6 +201,12 @@ _distutils_set_globals() {
 			hatchling)
 				bdep+='
 					dev-python/hatchling[${PYTHON_USEDEP}]'
+				;;
+			jupyter)
+				bdep+='
+					dev-python/jupyter_packaging[${PYTHON_USEDEP}]
+					>=dev-python/setuptools-60.5.0[${PYTHON_USEDEP}]
+					dev-python/wheel[${PYTHON_USEDEP}]'
 				;;
 			pdm)
 				bdep+='
@@ -926,6 +934,9 @@ _distutils-r1_backend_to_key() {
 			;;
 		hatchling.build)
 			echo hatchling
+			;;
+		jupyter_packaging.build_api)
+			echo jupyter
 			;;
 		pdm.pep517.api)
 			echo pdm
