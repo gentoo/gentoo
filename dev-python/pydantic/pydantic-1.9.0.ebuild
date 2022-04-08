@@ -35,6 +35,9 @@ src_prepare() {
 }
 
 python_test() {
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	local -x PYTEST_PLUGINS=pytest_mock
+
 	local EPYTEST_DESELECT=(
 		# flaky test, known upstream
 		tests/test_hypothesis_plugin.py::test_can_construct_models_with_all_fields
