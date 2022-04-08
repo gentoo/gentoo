@@ -36,6 +36,8 @@ DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5"
 BDEPEND=""
 
+PATCHES=( "${FILESDIR}/${P}-musl.patch" )
+
 pkg_setup() {
 	CONFIG_CHECK="~USB_ACM"
 	WARNING_USB_ACM="Some radios require CONFIG_USB_ACM to work, you may need to enable this driver to talk to your radio"
