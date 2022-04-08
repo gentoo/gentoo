@@ -10,7 +10,10 @@ inherit distutils-r1
 
 DESCRIPTION="A Python data validation library"
 HOMEPAGE="https://github.com/alecthomas/voluptuous/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="
+	https://github.com/alecthomas/voluptuous/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="BSD"
 SLOT="0"
@@ -20,4 +23,4 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.11.5-fix-doctest.patch
 )
 
-distutils_enable_tests nose
+distutils_enable_tests pytest
