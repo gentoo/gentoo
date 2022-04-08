@@ -1,8 +1,8 @@
 (add-to-list 'load-path "@SITELISP@")
+(autoload 'editorconfig-core-get-properties-hash "editorconfig-core"
+  "Get EditorConfig properties for FILE." t)
 (autoload 'editorconfig-mode "editorconfig"
   "Toggle EditorConfig feature." t)
-(autoload 'editorconfig-apply "editorconfig"
-  "Get and apply EditorConfig properties to current buffer." t)
 (autoload 'editorconfig-conf-mode "editorconfig-conf-mode"
   "Major mode for editing .editorconfig files." t)
 (add-to-list 'auto-mode-alist
