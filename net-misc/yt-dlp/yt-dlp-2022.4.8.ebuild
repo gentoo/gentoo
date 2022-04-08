@@ -27,7 +27,7 @@ python_prepare_all() {
 	# adjust requires for pycryptodome and optional dependencies (bug #828466)
 	sed -ri requirements.txt \
 		-e "s/^(pycryptodome)x/\1/" \
-		-e "/^(brotli.*|mutagen|websockets)/d" || die
+		-e "/^(brotli.*|certifi|mutagen|websockets)/d" || die
 }
 
 python_test() {
