@@ -1,0 +1,61 @@
+Respect the user's pkg-config, don't call cc directly, respect CFLAGS
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -7,9 +7,9 @@ endif
+ INSTALLDIR ?= $(INSTALLROOT)/lib/gkrellm2/plugins
+ INSTALL ?= install
+ 
+-
+-GTK_INCLUDE = `pkg-config gtk+-2.0 --cflags`
+-GTK_LIB = `pkg-config gtk+-2.0 --libs`
++PKG_CONFIG ?= pkg-config
++GTK_INCLUDE = $(shell ${PKG_CONFIG} gtk+-2.0 --cflags)
++GTK_LIB = $(shell ${PKG_CONFIG} gtk+-2.0 --libs)
+ 
+ OS_NAME=$(shell uname -s)
+ 
+@@ -92,7 +92,7 @@ ifeq ($(alsa),1)
+ 	FLAGS += -DGKRELLM_ALSA
+ endif
+ 
+-CC = gcc $(FLAGS) $(CFLAGS)
++CC = $(CC)
+ 
+ OBJS = gkrellmss.o oscope.o spectrum.o sdlib.o option.o
+ 
+@@ -101,7 +101,7 @@ all:	gkrellmss.so
+ warn: ; $(WARN)
+ 
+ gkrellmss.so: $(OBJS) warn
+-	$(CC) $(OBJS) -o gkrellmss.so $(LFLAGS) $(LIBS)
++	$(CC) $(FLAGS) $(CFLAGS) $(OBJS) -o gkrellmss.so $(LFLAGS) $(LIBS)
+ 
+ 
+ clean:
+@@ -121,7 +121,12 @@ help:
+ 	@echo ""
+ 
+ gkrellmss.o: gkrellmss.c gkrellmss.h configure
++	$(CC) $(CFLAGS) $(FLAGS) -c -o $@ $<
+ oscope.o: oscope.c gkrellmss.h configure
++	$(CC) $(CFLAGS) $(FLAGS) -c -o $@ $<
+ spectrum.o: spectrum.c gkrellmss.h configure
++	$(CC) $(CFLAGS) $(FLAGS) -c -o $@ $<
+ sdlib.o: sdlib.c gkrellmss.h sdlib-esd.c sdlib-alsa.c configure
++	$(CC) $(CFLAGS) $(FLAGS) -c -o $@ $<
+ option.o: option.c gkrellmss.h configure
++	$(CC) $(CFLAGS) $(FLAGS) -c -o $@ $<
+--- a/src/configure
++++ b/src/configure
+@@ -18,8 +18,9 @@ do
+ done
+ 
+ 
+-PKG_INCLUDE=`pkg-config gtk+-2.0 --cflags`
+-PKG_LIB=`pkg-config gtk+-2.0 --libs`
++PKG_CONFIG=${PKG_CONFIG-pkg-config}
++PKG_INCLUDE=$(${PKG_CONFIG} gtk+-2.0 --cflags)
++PKG_LIB=$(${PKG_CONFIG} gtk+-2.0 --libs)
+ 
+ rm -f configure.h configure.log test test.o test.c
+ 
