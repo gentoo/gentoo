@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# Please bump with dev-libs/icu-layoutex
+
 PYTHON_COMPAT=( python3_{8..10} )
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/icu.asc
 inherit autotools flag-o-matic multilib-minimal python-any-r1 toolchain-funcs verify-sig
@@ -16,7 +18,8 @@ S="${WORKDIR}/${PN}/source"
 LICENSE="BSD"
 SLOT="0/${PV}"
 #KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
-IUSE="debug doc examples static-libs"
+IUSE="debug doc examples static-libs test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
 	sys-devel/autoconf-archive
@@ -38,7 +41,8 @@ PATCHES=(
 src_prepare() {
 	default
 
-	# Disable renaming as it is stupid thing to do
+	# Disable renaming as it assumes stable ABI and that consumers
+	# won't use unofficial APIs. We need this despite the configure argument.
 	sed -i \
 		-e "s/#define U_DISABLE_RENAMING 0/#define U_DISABLE_RENAMING 1/" \
 		common/unicode/uconfig.h || die
@@ -83,6 +87,7 @@ multilib_src_configure() {
 		--disable-layoutex
 		$(use_enable debug)
 		$(use_enable static-libs static)
+		$(use_enable test tests)
 		$(multilib_native_use_enable examples samples)
 	)
 
@@ -90,18 +95,18 @@ multilib_src_configure() {
 		--with-cross-build="${WORKDIR}"/host
 	)
 
-	# work around cross-endian testing failures with LTO #757681
+	# Work around cross-endian testing failures with LTO #757681
 	if tc-is-cross-compiler && is-flagq '-flto*' ; then
 		myeconfargs+=( --disable-strict )
 	fi
 
-	# icu tries to use clang by default
+	# ICU tries to use clang by default
 	tc-export CC CXX
 
-	# make sure we configure with the same shell as we run icu-config
+	# Make sure we configure with the same shell as we run icu-config
 	# with, or ECHO_N, ECHO_T and ECHO_C will be wrongly defined
 	export CONFIG_SHELL="${EPREFIX}/bin/sh"
-	# probably have no /bin/sh in prefix-chain
+	# Probably have no /bin/sh in prefix-chain
 	[[ -x ${CONFIG_SHELL} ]] || CONFIG_SHELL="${BASH}"
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
