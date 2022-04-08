@@ -8,7 +8,7 @@ EAPI=8
 # DOCS_DEPEND="dev-python/mkdocs-material"
 # DOCS_AUTODOC=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..10} )
 inherit distutils-r1 optfeature # docs
 
 DESCRIPTION="Fully-featured HTTP client which provides sync and async APIs"
