@@ -61,13 +61,13 @@ src_configure() {
 		# Libdir is used as a libexec-style destination.
 		--libdir="${EPREFIX}"/usr/lib
 		# Attempts to call python-exec directly otherwise.
-		--with-sphinx-python=${PYTHON}
+		--with-sphinx-python="${PYTHON}"
 		# This disables -Werror, see also: https://github.com/hpc/charliecloud/pull/808
 		--enable-buggy-build
 		# Do not use bundled version of dev-python/lark-parser.
 		--disable-bundled-lark
 		# Use correct shebang.
-		--with-python=${PYTHON}
+		--with-python="${PYTHON}"
 	)
 	econf "${econf_args[@]}"
 }
