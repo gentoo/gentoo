@@ -18,7 +18,7 @@ SRC_URI="https://github.com/panorama-ed/memo_wise/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE=""
 
 all_ruby_prepare() {
