@@ -55,6 +55,7 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	ruby? (
 		|| (
+			dev-lang/ruby:3.1
 			dev-lang/ruby:3.0
 			dev-lang/ruby:2.7
 			dev-lang/ruby:2.6
