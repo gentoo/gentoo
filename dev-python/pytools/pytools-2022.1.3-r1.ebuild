@@ -21,6 +21,9 @@ KEYWORDS="~amd64"
 RDEPEND="
 	>=dev-python/numpy-1.6.0[${PYTHON_USEDEP}]
 	>=dev-python/platformdirs-2.2.0[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/typing-extensions[${PYTHON_USEDEP}]
+	' 3.8 3.9 3.10)
 "
 
 distutils_enable_tests pytest
