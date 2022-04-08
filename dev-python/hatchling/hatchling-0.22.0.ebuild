@@ -42,6 +42,7 @@ BDEPEND="
 			dev-python/platformdirs[${PYTHON_USEDEP}]
 			dev-python/rich[${PYTHON_USEDEP}]
 			dev-python/tomli-w[${PYTHON_USEDEP}]
+			dev-python/virtualenv[${PYTHON_USEDEP}]
 		' 'python*')
 	)
 "
