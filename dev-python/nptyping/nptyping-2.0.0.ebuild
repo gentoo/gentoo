@@ -30,6 +30,7 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
+		dev-python/mypy[${PYTHON_USEDEP}]
 		dev-python/typeguard[${PYTHON_USEDEP}]
 	)
 "
