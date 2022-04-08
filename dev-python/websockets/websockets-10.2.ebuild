@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..10} )
 
 inherit distutils-r1
 
@@ -21,5 +21,14 @@ KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86"
 distutils_enable_tests pytest
 
 python_test() {
+	local EPYTEST_DESELECT=(
+		# very fragile to speed
+		tests/legacy/test_protocol.py::ServerTests::test_local_close_receive_close_frame_timeout
+	)
+	[[ ${EPYTHON} == pypy3 ]] && EPYTEST_DESELECT+=(
+		tests/test_utils.py::SpeedupsTests::test_apply_mask_non_contiguous_memoryview
+		tests/legacy/test_client_server.py::SecureClientServerTests::test_http_request_ws_endpoint
+	)
+
 	epytest tests
 }
