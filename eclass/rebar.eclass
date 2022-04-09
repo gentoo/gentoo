@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rebar.eclass
@@ -35,7 +35,7 @@ EXPORT_FUNCTIONS src_prepare src_compile src_test src_install
 RDEPEND="dev-lang/erlang:="
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-util/rebar
+	dev-util/rebar:0
 	>=sys-apps/gawk-4.1
 "
 if [[ ${EAPI} == 6 ]]; then
