@@ -33,16 +33,16 @@ depend() {
 start_pre() {
 	checkpath -d -o "${command_user}:${command_group}" -q "${bedrock_path}" "${bedrock_path_instance}"
 
-	local bedrock_configs=( "allowlist.json" "permissions.json" "server.properties" )
-	for bedrock_config in ${bedrock_configs[@]}; do
+	set -- "allowlist.json" "permissions.json" "server.properties"
+	for bedrock_config in $@; do
 		if [ ! -f "${bedrock_path_instance}/${bedrock_config}" ]; then
 			cp "${bedrock_path_data}/${bedrock_config}" "${bedrock_path_instance}"
 			checkpath -f -o "${command_user}:${command_group}" -q "${bedrock_path_instance}/${bedrock_config}"
 		fi
 	done
 
-	local bedrock_ressources=( "behavior_packs" "definitions" "resource_packs" "structures" )
-	for bedrock_ressource in ${bedrock_ressources[@]}; do
+	set -- "behavior_packs" "definitions" "resource_packs" "structures"
+	for bedrock_ressource in $@; do
 		if [ ! -L "${bedrock_path_instance}/${bedrock_ressource}" ]; then
 			ln -sf "${bedrock_path_data}/${bedrock_ressource}" "${bedrock_path_instance}"
 		fi
