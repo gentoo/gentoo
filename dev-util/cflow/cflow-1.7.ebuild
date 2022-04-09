@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit elisp-common
 
 DESCRIPTION="C function call hierarchy analyzer"
 HOMEPAGE="https://www.gnu.org/software/cflow/"
-SRC_URI="http://ftp.gnu.org/gnu/cflow/${P}.tar.bz2"
+SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
