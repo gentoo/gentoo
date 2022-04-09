@@ -24,7 +24,6 @@ BDEPEND="
 		dev-python/manuel[${PYTHON_USEDEP}]
 		dev-python/zope-exceptions[${PYTHON_USEDEP}]
 		dev-python/zope-interface[${PYTHON_USEDEP}]
-		dev-python/zope-testrunner[${PYTHON_USEDEP}]
 	)
 "
 
