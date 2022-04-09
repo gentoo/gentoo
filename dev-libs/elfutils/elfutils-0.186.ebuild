@@ -6,7 +6,7 @@ EAPI=7
 inherit flag-o-matic multilib-minimal
 
 DESCRIPTION="Libraries/utilities to handle ELF objects (drop in replacement for libelf)"
-HOMEPAGE="https://elfutils.org/"
+HOMEPAGE="https://sourceware.org/elfutils/"
 SRC_URI="https://sourceware.org/elfutils/ftp/${PV}/${P}.tar.bz2"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-0.186-patches.tar.gz"
 
