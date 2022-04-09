@@ -31,7 +31,7 @@ else
 			l10n_uk? ( https://docs.darktable.org/usermanual/${DOC_PV}/uk/${PN}_user_manual.pdf -> ${PN}-usermanual-${DOC_PV}.uk.pdf )
 		)"
 
-	KEYWORDS="~amd64 ~arm64 -x86"
+	KEYWORDS="amd64 ~arm64 -x86"
 	LANGS=" de eo es fi fr he hu it ja pl pt-BR sl uk zh-CN"
 fi
 
