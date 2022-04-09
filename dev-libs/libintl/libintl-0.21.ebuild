@@ -11,8 +11,8 @@ inherit multilib-minimal libtool usr-ldscript verify-sig
 
 DESCRIPTION="the GNU international library (split out of gettext)"
 HOMEPAGE="https://www.gnu.org/software/gettext/"
-SRC_URI="mirror://gnu/gettext/${MY_P}.tar.gz"
-SRC_URI+=" verify-sig? ( mirror://gnu/gettext/${MY_P}.tar.gz.sig )"
+SRC_URI="mirror://gnu/gettext/${MY_P}.tar.xz"
+SRC_URI+=" verify-sig? ( mirror://gnu/gettext/${MY_P}.tar.xz.sig )"
 S="${WORKDIR}/${MY_P}/gettext-runtime"
 
 LICENSE="LGPL-2.1+"
