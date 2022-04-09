@@ -1133,7 +1133,17 @@ distutils-r1_python_compile() {
 		fi
 
 		if [[ ${DISTUTILS_USE_PEP517} && ${GPEP517_TESTING} ]]; then
-			esetup.py build_ext -j "${jobs}" "${@}"
+			# issue build_ext only if it looks like we have something
+			# to build; setuptools is expensive to start
+			# see extension.py for list of suffixes
+			# .pyx is added for Cython
+			if [[ -n $(
+				find '(' -name '*.c' -o -name '*.cc' -o -name '*.cpp' \
+					-o -name '*.cxx' -o -name '*.c++' -o -name '*.m' \
+					-o -name '*.mm' -o -name '*.pyx' ')' -print -quit
+			) ]]; then
+				esetup.py build_ext -j "${jobs}" "${@}"
+			fi
 		else
 			esetup.py build -j "${jobs}" "${@}"
 		fi
