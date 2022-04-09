@@ -25,7 +25,7 @@ REQUIRED_USE="spell? ( edit )"
 
 RDEPEND=">=dev-libs/glib-2.30.0:2
 	gpm? ( sys-libs/gpm )
-	kernel_linux? ( sys-fs/e2fsprogs )
+	kernel_linux? ( sys-fs/e2fsprogs[tools(+)] )
 	sftp? ( net-libs/libssh2 )
 	slang? ( >=sys-libs/slang-2 )
 	!slang? ( sys-libs/ncurses:=[unicode(+)?] )

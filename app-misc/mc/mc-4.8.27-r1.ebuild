@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ REQUIRED_USE="spell? ( edit )"
 
 RDEPEND=">=dev-libs/glib-2.26.0:2
 	gpm? ( sys-libs/gpm )
-	kernel_linux? ( sys-fs/e2fsprogs )
+	kernel_linux? ( sys-fs/e2fsprogs[tools(+)] )
 	samba? ( net-fs/samba )
 	sftp? ( net-libs/libssh2 )
 	slang? ( >=sys-libs/slang-2 )
