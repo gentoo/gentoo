@@ -3,18 +3,30 @@
 
 EAPI=8
 
-inherit cmake git-r3 java-pkg-2 optfeature xdg
+inherit cmake java-pkg-2 optfeature xdg
 
 HOMEPAGE="https://polymc.org/"
 DESCRIPTION="A custom, open source Minecraft launcher"
 
-EGIT_REPO_URI="
-	https://github.com/PolyMC/PolyMC
-	https://github.com/MultiMC/libnbtplusplus
-	https://github.com/stachenov/quazip
-"
-# Include all submodules
-EGIT_SUBMODULES=( '*' )
+if [[ ${PV} != 9999 ]]; then
+	MY_PN="PolyMC"
+
+	# Let's use the vendored tarball to avoid dealing with the submodules directly
+	SRC_URI="
+		https://github.com/PolyMC/PolyMC/releases/download/${PV}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz
+	"
+else
+	inherit git-r3
+
+	EGIT_REPO_URI="
+		https://github.com/PolyMC/PolyMC
+		https://github.com/MultiMC/libnbtplusplus
+		https://github.com/stachenov/quazip
+	"
+
+	# Include all submodules
+	EGIT_SUBMODULES=( '*' )
+fi
 
 # Apache-2.0 for MultiMC (PolyMC is forked from it)
 # GPL-3 for PolyMC
@@ -24,6 +36,15 @@ EGIT_SUBMODULES=( '*' )
 LICENSE="Apache-2.0 Boost-1.0 BSD BSD-2 GPL-2+ GPL-3 LGPL-3 LGPL-2.1-with-linking-exception OFL-1.1 MIT"
 
 SLOT="0"
+if [[ ${PV} != 9999 ]]; then
+	KEYWORDS="amd64 x86"
+
+	# We'll fetch the files from the GitHub archive directly, at least for now...
+	RESTRICT="mirror"
+
+	# The PolyMC's files are unpacked to ${WORKDIR}/PolyMC-${PV}
+	S="${WORKDIR}/${MY_PN}-${PV}"
+fi
 
 IUSE="debug"
 
