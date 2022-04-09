@@ -6,7 +6,7 @@ inherit flag-o-matic autotools
 
 DESCRIPTION="GNU Ubiquitous Intelligent Language for Extensions"
 HOMEPAGE="https://www.gnu.org/software/guile/"
-SRC_URI="mirror://gnu/guile/${P}.tar.gz"
+SRC_URI="mirror://gnu/guile/${P}.tar.xz"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 LICENSE="LGPL-3+"
 IUSE="debug debug-malloc +deprecated +networking +nls +regex +threads" # upstream recommended +networking +nls
