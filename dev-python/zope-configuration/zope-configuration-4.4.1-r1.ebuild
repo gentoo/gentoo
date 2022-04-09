@@ -46,7 +46,7 @@ python_compile() {
 python_test() {
 	cd "${BUILD_DIR}/install$(python_get_sitedir)/zope" || die
 	cat > __init__.py <<-EOF || die
-		__import__('pkg_resources').declare_namespace(__name__)
+		__path__ = __import__('pkgutil').extend_path(__path__, __name__)
 	EOF
 	eunittest -s configuration/tests
 	rm __init__.py || die
