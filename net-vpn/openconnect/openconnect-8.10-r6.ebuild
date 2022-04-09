@@ -1,4 +1,4 @@
-# Copyright 2011-2021 Gentoo Authors
+# Copyright 2011-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ HOMEPAGE="http://www.infradead.org/openconnect.html"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5"
-IUSE="doc +gnutls gssapi libproxy lz4 nls pskc smartcard stoken test"
+IUSE="doc +gnutls gssapi libproxy lz4 nls pskc selinux smartcard stoken test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -51,6 +51,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	sys-apps/iproute2
 	>=net-vpn/vpnc-scripts-20210402-r1
+	selinux? ( sec-policy/selinux-vpn )
 "
 BDEPEND="
 	virtual/pkgconfig
