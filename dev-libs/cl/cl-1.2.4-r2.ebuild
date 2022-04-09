@@ -13,12 +13,12 @@ KEYWORDS="amd64 x86"
 
 RDEPEND="
 	>=dev-lang/erlang-16
-	dev-util/rebar
+	dev-util/rebar:0
 	virtual/opencl
 "
 DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/${PN}-${P}
+S="${WORKDIR}"/${PN}-${P}
 
 src_compile() {
 	rebar compile || die
