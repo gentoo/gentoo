@@ -39,7 +39,8 @@ DEPEND="
 	${COMMON_DEPEND}
 	dev-go/go-md2man"
 RDEPEND="${COMMON_DEPEND}
-	fuse? ( sys-fs/fuse-overlayfs )"
+	fuse? ( sys-fs/fuse-overlayfs )
+	selinux? ( sec-policy/selinux-podman )"
 
 S=${WORKDIR}/${MY_P}
 
