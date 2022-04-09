@@ -36,7 +36,7 @@ BDEPEND="
 	)
 "
 
-distutils_enable_tests pytest
+distutils_enable_tests unittest
 
 python_compile() {
 	distutils-r1_python_compile
