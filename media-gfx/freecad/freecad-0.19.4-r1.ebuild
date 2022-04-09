@@ -267,6 +267,7 @@ src_install() {
 
 	if ! use headless; then
 		dosym -r /usr/$(get_libdir)/${PN}/bin/FreeCAD /usr/bin/freecad
+		mv "${ED}"/usr/$(get_libdir)/${PN}/share/* "${ED}"/usr/share || die "failed to move shared resources"
 	fi
 	dosym -r /usr/$(get_libdir)/${PN}/bin/FreeCADCmd /usr/bin/freecadcmd
 
