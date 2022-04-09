@@ -90,6 +90,9 @@ pkg_postinst() {
 		done
 
 		if ! [[ -e ${EROOT}/bin/awk ]] ; then
+			# /bin might not exist yet (stage1)
+			[[ -d "${EROOT}/bin" ]] || mkdir "${EROOT}/bin" || die
+
 			ln -s "../usr/bin/gawk" "${EROOT}/bin/awk" || die
 		fi
 	fi
