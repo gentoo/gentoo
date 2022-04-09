@@ -116,3 +116,9 @@ src_configure() {
 	)
 	cmake_src_configure
 }
+
+src_test() {
+	local myctestargs=()
+	use elibc_musl && myctestargs+=( -E TestBacktrace )
+	cmake_src_test
+}
