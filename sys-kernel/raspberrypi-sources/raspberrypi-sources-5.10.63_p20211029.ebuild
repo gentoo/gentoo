@@ -17,7 +17,7 @@ DESCRIPTION="Raspberry Pi kernel sources"
 HOMEPAGE="https://github.com/raspberrypi/linux"
 SRC_URI="https://github.com/raspberrypi/linux/archive/${MY_P}.tar.gz -> linux-${KV_FULL}.tar.gz"
 
-KEYWORDS="~arm arm64"
+KEYWORDS="arm arm64"
 
 src_unpack() {
 	default
