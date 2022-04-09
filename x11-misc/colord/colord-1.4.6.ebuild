@@ -14,7 +14,7 @@ LICENSE="GPL-2+"
 SLOT="0/2" # subslot = libcolord soname version
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~sparc x86"
 
-IUSE="gtk-doc argyllcms examples extra-print-profiles +introspection scanner systemd test vala"
+IUSE="gtk-doc argyllcms examples extra-print-profiles +introspection scanner selinux systemd test vala"
 RESTRICT="!test? ( test ) test" # Tests try to read and write files in /tmp
 REQUIRED_USE="vala? ( introspection )"
 
@@ -40,6 +40,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	acct-group/colord
 	acct-user/colord
+	selinux? ( sec-policy/selinux-colord )
 "
 BDEPEND="
 	acct-group/colord
