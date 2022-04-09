@@ -37,6 +37,7 @@ DOCS=( doc/{AUTHORS,MANUAL,NEWS}.adoc CONTRIBUTING.md README.md )
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-nvcc-test.patch
 	"${FILESDIR}"/${PN}-4.0-objdump.patch
+	"${FILESDIR}"/${PN}-4.6-avoid-run-user.patch
 )
 
 src_prepare() {
