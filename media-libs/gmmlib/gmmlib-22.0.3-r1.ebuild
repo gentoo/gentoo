@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/intel/gmmlib"
 SRC_URI="https://github.com/intel/gmmlib/archive/intel-${P}.tar.gz"
 S="${WORKDIR}/${PN}-intel-${P}"
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 LICENSE="MIT"
 # gmmlib version 22.0.3 made breaking ABI changes without changing the
 # soname, so the "_1" subslot suffix was added. There is no need to keep
