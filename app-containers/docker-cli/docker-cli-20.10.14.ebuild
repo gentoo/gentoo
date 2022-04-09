@@ -1,5 +1,6 @@
 # Copyright 1999-2022 Gentoo Authors
-# Distributed under the terms of the GNU General Public Lic
+# Distributed under the terms of the GNU General Public License v2
+
 EAPI=7
 GIT_COMMIT=a224086349
 EGO_PN="github.com/docker/cli"
@@ -13,9 +14,10 @@ SRC_URI="https://github.com/docker/cli/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="hardened"
+IUSE="hardened selinux"
 
-RDEPEND="!<app-containers/docker-20.10.1"
+RDEPEND="!<app-containers/docker-20.10.1
+	selinux? ( sec-policy/selinux-docker )"
 BDEPEND="
 	>=dev-lang/go-1.16.6
 	dev-go/go-md2man"
