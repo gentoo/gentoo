@@ -1637,7 +1637,7 @@ _distutils-r1_check_namespace_pth() {
 		ewarn "read our documentation on reliable handling of namespaces and update"
 		ewarn "the ebuild accordingly:"
 		ewarn
-		ewarn "  https://wiki.gentoo.org/wiki/Project:Python/Namespace_packages"
+		ewarn "  https://projects.gentoo.org/python/guide/concept.html#namespace-packages"
 	fi
 }
 
