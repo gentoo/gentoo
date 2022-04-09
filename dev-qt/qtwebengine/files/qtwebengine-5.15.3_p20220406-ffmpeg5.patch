@@ -16,8 +16,8 @@ Subject: [PATCH] Fix build with ffmpeg 5
 
 diff --git a/chromium/media/ffmpeg/ffmpeg_common.h b/chromium/media/ffmpeg/ffmpeg_common.h
 index 2734a485cbd..70b1877a43c 100644
---- a/chromium/media/ffmpeg/ffmpeg_common.h
-+++ b/chromium/media/ffmpeg/ffmpeg_common.h
+--- a/src/3rdparty/chromium/media/ffmpeg/ffmpeg_common.h
++++ b/src/3rdparty/chromium/media/ffmpeg/ffmpeg_common.h
 @@ -29,6 +29,7 @@ extern "C" {
  #include <libavformat/avformat.h>
  #include <libavformat/avio.h>
@@ -28,8 +28,8 @@ index 2734a485cbd..70b1877a43c 100644
  #include <libavutil/mastering_display_metadata.h>
 diff --git a/chromium/media/filters/audio_file_reader.cc b/chromium/media/filters/audio_file_reader.cc
 index cb81d920def..bd73908d0ca 100644
---- a/chromium/media/filters/audio_file_reader.cc
-+++ b/chromium/media/filters/audio_file_reader.cc
+--- a/src/3rdparty/chromium/media/filters/audio_file_reader.cc
++++ b/src/3rdparty/chromium/media/filters/audio_file_reader.cc
 @@ -85,7 +85,7 @@ bool AudioFileReader::OpenDemuxer() {
  }
  
@@ -41,8 +41,8 @@ index cb81d920def..bd73908d0ca 100644
      if (codec_context_->sample_fmt == AV_SAMPLE_FMT_S16P)
 diff --git a/chromium/media/filters/ffmpeg_audio_decoder.cc b/chromium/media/filters/ffmpeg_audio_decoder.cc
 index 0d825ed791b..72fac6167ef 100644
---- a/chromium/media/filters/ffmpeg_audio_decoder.cc
-+++ b/chromium/media/filters/ffmpeg_audio_decoder.cc
+--- a/src/3rdparty/chromium/media/filters/ffmpeg_audio_decoder.cc
++++ b/src/3rdparty/chromium/media/filters/ffmpeg_audio_decoder.cc
 @@ -329,7 +329,7 @@ bool FFmpegAudioDecoder::ConfigureDecoder(const AudioDecoderConfig& config) {
      }
    }
@@ -54,8 +54,8 @@ index 0d825ed791b..72fac6167ef 100644
      DLOG(ERROR) << "Could not initialize audio decoder: "
 diff --git a/chromium/media/filters/ffmpeg_demuxer.cc b/chromium/media/filters/ffmpeg_demuxer.cc
 index d34db63f3ef..427565b00c1 100644
---- a/chromium/media/filters/ffmpeg_demuxer.cc
-+++ b/chromium/media/filters/ffmpeg_demuxer.cc
+--- a/src/3rdparty/chromium/media/filters/ffmpeg_demuxer.cc
++++ b/src/3rdparty/chromium/media/filters/ffmpeg_demuxer.cc
 @@ -98,12 +98,12 @@ static base::TimeDelta ExtractStartTime(AVStream* stream) {
  
    // Next try to use the first DTS value, for codecs where we know PTS == DTS
@@ -105,8 +105,8 @@ index d34db63f3ef..427565b00c1 100644
              packet.get(), AV_PKT_DATA_SKIP_SAMPLES, &skip_samples_size));
 diff --git a/chromium/media/filters/ffmpeg_glue.cc b/chromium/media/filters/ffmpeg_glue.cc
 index 0ef3521473d..8483ecc348f 100644
---- a/chromium/media/filters/ffmpeg_glue.cc
-+++ b/chromium/media/filters/ffmpeg_glue.cc
+--- a/src/3rdparty/chromium/media/filters/ffmpeg_glue.cc
++++ b/src/3rdparty/chromium/media/filters/ffmpeg_glue.cc
 @@ -59,7 +59,6 @@ static int64_t AVIOSeekOperation(void* opaque, int64_t offset, int whence) {
  }
  
@@ -127,8 +127,8 @@ index 0ef3521473d..8483ecc348f 100644
    format_context_->error_recognition |= AV_EF_EXPLODE;
 diff --git a/chromium/media/filters/ffmpeg_video_decoder.cc b/chromium/media/filters/ffmpeg_video_decoder.cc
 index ef12477ee89..7996606f5f9 100644
---- a/chromium/media/filters/ffmpeg_video_decoder.cc
-+++ b/chromium/media/filters/ffmpeg_video_decoder.cc
+--- a/src/3rdparty/chromium/media/filters/ffmpeg_video_decoder.cc
++++ b/src/3rdparty/chromium/media/filters/ffmpeg_video_decoder.cc
 @@ -391,7 +391,7 @@ bool FFmpegVideoDecoder::ConfigureDecoder(const VideoDecoderConfig& config,
    if (decode_nalus_)
      codec_context_->flags2 |= AV_CODEC_FLAG2_CHUNKS;
@@ -140,8 +140,8 @@ index ef12477ee89..7996606f5f9 100644
      return false;
 diff --git a/chromium/media/filters/media_file_checker.cc b/chromium/media/filters/media_file_checker.cc
 index 59c2a2fc618..1a9872c7acb 100644
---- a/chromium/media/filters/media_file_checker.cc
-+++ b/chromium/media/filters/media_file_checker.cc
+--- a/src/3rdparty/chromium/media/filters/media_file_checker.cc
++++ b/src/3rdparty/chromium/media/filters/media_file_checker.cc
 @@ -68,7 +68,7 @@ bool MediaFileChecker::Start(base::TimeDelta check_time) {
        auto context = AVStreamToAVCodecContext(format_context->streams[i]);
        if (!context)
@@ -153,8 +153,8 @@ index 59c2a2fc618..1a9872c7acb 100644
          stream_contexts[i] = {std::move(context), std::move(loop)};
 diff --git a/chromium/third_party/webrtc/modules/video_coding/codecs/h264/h264_decoder_impl.cc b/chromium/third_party/webrtc/modules/video_coding/codecs/h264/h264_decoder_impl.cc
 index 9002b874611..d12fade8b63 100644
---- a/chromium/third_party/webrtc/modules/video_coding/codecs/h264/h264_decoder_impl.cc
-+++ b/chromium/third_party/webrtc/modules/video_coding/codecs/h264/h264_decoder_impl.cc
+--- a/src/3rdparty/chromium/third_party/webrtc/modules/video_coding/codecs/h264/h264_decoder_impl.cc
++++ b/src/3rdparty/chromium/third_party/webrtc/modules/video_coding/codecs/h264/h264_decoder_impl.cc
 @@ -203,7 +203,7 @@ int32_t H264DecoderImpl::InitDecode(const VideoCodec* codec_settings,
    // a pointer |this|.
    av_context_->opaque = this;
