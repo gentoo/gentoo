@@ -1132,7 +1132,11 @@ distutils-r1_python_compile() {
 			jobs=$(( nproc + 1 ))
 		fi
 
-		esetup.py build -j "${jobs}" "${@}"
+		if [[ ${DISTUTILS_USE_PEP517} && ${GPEP517_TESTING} ]]; then
+			esetup.py build_ext -j "${jobs}" "${@}"
+		else
+			esetup.py build -j "${jobs}" "${@}"
+		fi
 	fi
 
 	if [[ ${DISTUTILS_USE_PEP517} ]]; then
