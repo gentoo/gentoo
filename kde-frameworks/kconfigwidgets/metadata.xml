@@ -9,7 +9,6 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 	<use>
-		<flag name="auth">Enable authentication support via <pkg>kde-frameworks/kauth</pkg></flag>
 		<flag name="designer">Build plugins for <pkg>dev-qt/designer</pkg></flag>
 	</use>
 	<slots>
