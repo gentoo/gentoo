@@ -1090,7 +1090,11 @@ distutils_pep517_install() {
 	# clean the build tree; otherwise we may end up with PyPy3
 	# extensions duplicated into CPython dists
 	if [[ ${DISTUTILS_USE_PEP517:-setuptools} == setuptools ]]; then
-		esetup.py clean -a
+		if [[ ${GPEP517_TESTING} ]]; then
+			rm -rf build || die
+		else
+			esetup.py clean -a
+		fi
 	fi
 }
 
