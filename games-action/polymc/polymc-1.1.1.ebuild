@@ -37,7 +37,7 @@ LICENSE="Apache-2.0 Boost-1.0 BSD BSD-2 GPL-2+ GPL-3 LGPL-3 LGPL-2.1-with-linkin
 
 SLOT="0"
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 	# We'll fetch the files from the GitHub archive directly, at least for now...
 	RESTRICT="mirror"
