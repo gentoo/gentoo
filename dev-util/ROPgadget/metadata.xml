@@ -16,5 +16,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">JonathanSalwan/ROPgadget</remote-id>
+		<remote-id type="pypi">ROPGadget</remote-id>
 	</upstream>
 </pkgmetadata>
