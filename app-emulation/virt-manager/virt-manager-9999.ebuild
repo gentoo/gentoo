@@ -50,13 +50,9 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/docutils"
 
-distutils_enable_tests pytest
-
 DOCS=( README.md NEWS.md )
 
-src_prepare() {
-	distutils-r1_src_prepare
-}
+distutils_enable_tests pytest
 
 python_configure() {
 	esetup.py configure --default-graphics=spice

@@ -54,12 +54,12 @@ DOCS=( README.md NEWS.md )
 
 # Doesn't seem to play nicely in a sandboxed environment.
 RESTRICT="test"
-distutils_enable_tests pytest
 
-src_prepare() {
-	distutils-r1_src_prepare
-	eapply "${FILESDIR}/virt-manager-4.0.0-setuptools-61-fix.patch"
-}
+PATCHES=(
+	"${FILESDIR}"/virt-manager-4.0.0-setuptools-61-fix.patch
+)
+
+distutils_enable_tests pytest
 
 python_configure() {
 	esetup.py configure --default-graphics=spice
