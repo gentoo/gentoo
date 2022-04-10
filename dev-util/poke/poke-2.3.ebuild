@@ -16,10 +16,13 @@ RESTRICT="!test? ( test )"
 
 # TODO: libnbd: not packaged in gentoo yet
 # TODO: gui: does not seem to do anything :)
-RDEPEND="dev-libs/boehm-gc:=
+RDEPEND="
+	dev-libs/boehm-gc:=
+	dev-libs/libatomic_ops
 	sys-devel/gettext
 	sys-libs/readline:=
-	machine-interface? ( dev-libs/json-c:= )"
+	machine-interface? ( dev-libs/json-c:= )
+"
 DEPEND="${RDEPEND}
 	test? ( dev-util/dejagnu )"
 BDEPEND="sys-devel/flex
