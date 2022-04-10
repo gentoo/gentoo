@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools flag-o-matic multilib pam systemd
 
 DESCRIPTION="Open Source AFP server"
-HOMEPAGE="http://netatalk.sourceforge.net/"
+HOMEPAGE="https://netatalk.sourceforge.net/"
 SRC_URI="mirror://sourceforge/project/${PN}/${PN}/$(ver_cut 1-3)/${P}.tar.bz2"
 
 LICENSE="GPL-2 BSD"
