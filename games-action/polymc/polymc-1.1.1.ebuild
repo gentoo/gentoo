@@ -8,17 +8,7 @@ inherit cmake java-pkg-2 optfeature xdg
 HOMEPAGE="https://polymc.org/"
 DESCRIPTION="A custom, open source Minecraft launcher"
 
-if [[ ${PV} != 9999 ]]; then
-	MY_PN="PolyMC"
-
-	# Let's use the vendored tarball to avoid dealing with the submodules directly
-	SRC_URI="
-		https://github.com/PolyMC/PolyMC/releases/download/${PV}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz
-	"
-
-	# The PolyMC's files are unpacked to ${WORKDIR}/PolyMC-${PV}
-	S="${WORKDIR}/${MY_PN}-${PV}"
-else
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 
 	EGIT_REPO_URI="
@@ -29,6 +19,16 @@ else
 
 	# Include all submodules
 	EGIT_SUBMODULES=( '*' )
+else
+	MY_PN="PolyMC"
+
+	# Let's use the vendored tarball to avoid dealing with the submodules directly
+	SRC_URI="
+		https://github.com/PolyMC/PolyMC/releases/download/${PV}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz
+	"
+
+	# The PolyMC's files are unpacked to ${WORKDIR}/PolyMC-${PV}
+	S="${WORKDIR}/${MY_PN}-${PV}"
 fi
 
 # Apache-2.0 for MultiMC (PolyMC is forked from it)
