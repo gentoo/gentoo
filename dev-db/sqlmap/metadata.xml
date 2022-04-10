@@ -16,5 +16,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">sqlmapproject/sqlmap</remote-id>
+		<remote-id type="pypi">sqlmap</remote-id>
 	</upstream>
 </pkgmetadata>
