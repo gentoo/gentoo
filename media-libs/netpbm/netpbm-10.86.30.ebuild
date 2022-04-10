@@ -127,6 +127,11 @@ src_prepare() {
 		sed -i -e '/^$/d' test/legacy-names.ok || die
 		sed -i -e 's:png-roundtrip.*::' test/Test-Order || die
 	fi
+
+	# this test requires LC_ALL=en_US.iso88591, not available on musl
+	if use elibc_musl; then
+		sed -i -e 's:pbmtext-iso88591.*::' test/Test-Order || die
+	fi
 }
 
 src_configure() {
