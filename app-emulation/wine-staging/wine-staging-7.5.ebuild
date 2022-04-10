@@ -547,12 +547,12 @@ multilib_src_install_all() {
 	find "${ED}" -name *.la -delete || die
 
 	if ! use perl ; then # winedump calls function_grep.pl, and winemaker is a perl script
-		rm "${D%/}${MY_PREFIX}"/bin/{wine{dump,maker},function_grep.pl} \
-			"${D%/}${MY_MANDIR}"/man1/wine{dump,maker}.1 || die
+		rm "${D%}${MY_PREFIX}"/bin/{wine{dump,maker},function_grep.pl} \
+			"${D%}${MY_MANDIR}"/man1/wine{dump,maker}.1 || die
 	fi
 
-	use abi_x86_32 && pax-mark psmr "${D%/}${MY_PREFIX}"/bin/wine{,-preloader} #255055
-	use abi_x86_64 && pax-mark psmr "${D%/}${MY_PREFIX}"/bin/wine64{,-preloader}
+	use abi_x86_32 && pax-mark psmr "${D%}${MY_PREFIX}"/bin/wine{,-preloader} #255055
+	use abi_x86_64 && pax-mark psmr "${D%}${MY_PREFIX}"/bin/wine64{,-preloader}
 
 	# Avoid double prefix from dosym and make_wrapper
 	MY_PREFIX=${MY_PREFIX#${EPREFIX}}
@@ -567,7 +567,7 @@ multilib_src_install_all() {
 	# Make wrappers for binaries for handling multiple variants
 	# Note: wrappers instead of symlinks because some are shell which use basename
 	local b
-	for b in "${ED%/}${MY_PREFIX}"/bin/*; do
+	for b in "${ED%}${MY_PREFIX}"/bin/*; do
 		make_wrapper "${b##*/}-${WINE_VARIANT}" "${MY_PREFIX}/bin/${b##*/}"
 	done
 	eshopts_pop
