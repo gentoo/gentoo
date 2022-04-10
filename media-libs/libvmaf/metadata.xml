@@ -16,4 +16,7 @@
 		<remote-id type="github">Netflix/vmaf</remote-id>
 		<bugs-to>https://github.com/Netflix/vmaf/issues</bugs-to>
 	</upstream>
+	<use>
+		<flag name="embed-models">Compile default vmaf models into the library (needs <pkg>app-editors/vim-core</pkg>)</flag>
+	</use>
 </pkgmetadata>

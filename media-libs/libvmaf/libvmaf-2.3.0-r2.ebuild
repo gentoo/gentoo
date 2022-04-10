@@ -20,20 +20,33 @@ fi
 
 LICENSE="BSD-2-with-patent"
 SLOT="0"
+IUSE="+embed-models test"
+
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	dev-lang/nasm
-	app-editors/vim-core
+	embed-models? ( app-editors/vim-core )
 "
-# The app-editors/vim-core dep is needed to embed models within the library
-# could be made into a useflag if someones express the need for it
-# see https://github.com/Netflix/vmaf/blob/master/libvmaf/meson_options.txt#L21
 
 RDEPEND="${BDEPEND}"
 
 S="${WORKDIR}/vmaf-${PV}"
 
+src_prepare() {
+	default
+
+	# Workaround for https://bugs.gentoo.org/837221
+	# The paths in the tests are hard coded to look for the model folder as "../../model"
+	sed -i "s|\"../../model|\"../vmaf-${PV}/model|g" ${S}/libvmaf/test/* || die
+}
+
 multilib_src_configure() {
+	local emesonargs=(
+		$(meson_use embed-models built_in_models)
+		$(meson_use test enable_tests)
+	)
+
 	EMESON_SOURCE="${S}/libvmaf"
 	meson_src_configure
 }
