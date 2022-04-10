@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 # Set this var for any releases except stable
 RC_SUFFIX="-1d0581c00d"
 
-inherit systemd
+inherit java-pkg-2 systemd
 
 DESCRIPTION="A Management Controller for Ubiquiti Networks UniFi APs"
 HOMEPAGE="https://www.ubnt.com"
@@ -65,6 +65,10 @@ src_prepare() {
 	default
 }
 
+src_compile() {
+	:;
+}
+
 src_install() {
 	insinto /usr/lib/unifi
 	doins -r bin dl lib webapps
@@ -77,8 +81,11 @@ src_install() {
 	done
 	dosym ../../../var/log/unifi /usr/lib/unifi/logs
 
-	newinitd "${FILESDIR}"/unifi.initd-r1 unifi
-	systemd_dounit "${FILESDIR}"/unifi.service
+	java-pkg_regjar "${D}"/usr/lib/unifi/lib/*.jar
+	java-pkg_dolauncher unifi --java_args '-Dorg.xerial.snappy.tempdir=/usr/lib/unifi/tmp -Djava.library.path=' --jar ace.jar --pwd '/usr/lib/unifi'
+
+	newinitd "${FILESDIR}"/unifi.initd-r2 unifi
+	systemd_newunit "${FILESDIR}"/unifi.service-r1 unifi.service
 
 	newconfd "${FILESDIR}"/unifi.confd unifi
 
