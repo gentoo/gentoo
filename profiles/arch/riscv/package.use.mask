@@ -1,6 +1,10 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2022-04-10)
+# sys-cluster/glusterfs not keyworded here yet
+sys-block/fio glusterfs
+
 # Jakov Smolić <jsmolic@gentoo.org> (2022-04-07)
 # Depends on sys-cluster/ceph which pulls in valgrind, which is
 # unavailable on riscv currently
