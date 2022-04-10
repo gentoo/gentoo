@@ -24,21 +24,21 @@ IUSE="debug"
 DEPEND="
 	dev-libs/opencl-clang:${LLVM_MAX_SLOT}=
 	dev-util/spirv-tools
+	=sys-devel/lld-${LLVM_MAX_SLOT}*
 	sys-devel/llvm:${LLVM_MAX_SLOT}=
 "
 
 RDEPEND="${DEPEND}"
 
 BDEPEND="
+	=sys-devel/lld-${LLVM_MAX_SLOT}*
 	${PYTHON_DEPS}
-	>=sys-devel/lld-${LLVM_MAX_SLOT}
 "
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.9-no_Werror.patch"
 	"${FILESDIR}/${PN}-1.0.8173-opencl-clang_version.patch"
 	"${FILESDIR}/${PN}-1.0.8365-disable-git.patch"
-	"${FILESDIR}/${PN}-1.0.10713-allow-external-spirv-tools-fix-static.patch"
 	"${FILESDIR}/${PN}-1.0.10713-allow-external-spirv-tools-last-fix.patch"
 )
 
