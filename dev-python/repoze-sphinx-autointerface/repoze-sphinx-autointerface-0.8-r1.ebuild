@@ -1,10 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+
 inherit distutils-r1
 
 MY_PN=${PN//-/.}
@@ -20,21 +21,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
-	dev-python/namespace-repoze[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]
 "
 
-python_install() {
-	distutils-r1_python_install
-
-	# install the namespace (it's the only subpackage)
-	python_moduleinto repoze.sphinx
-	python_domodule repoze/sphinx/__init__.py
-}
-
-python_install_all() {
-	distutils-r1_python_install_all
-
-	find "${D}" -name '*.pth' -delete || die
+python_compile() {
+	distutils-r1_python_compile
+	find "${BUILD_DIR}" -name '*.pth' -delete || die
 }
