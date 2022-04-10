@@ -9,5 +9,6 @@
   <upstream>
     <bugs-to>https://github.com/sleepyfran/itunespy/issues/</bugs-to>
     <remote-id type="github">sleepyfran/itunespy</remote-id>
+    <remote-id type="pypi">itunespy</remote-id>
   </upstream>
 </pkgmetadata>
