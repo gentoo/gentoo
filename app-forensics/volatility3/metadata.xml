@@ -25,5 +25,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">volatilityfoundation/volatility3</remote-id>
+		<remote-id type="pypi">volatility3</remote-id>
 	</upstream>
 </pkgmetadata>
