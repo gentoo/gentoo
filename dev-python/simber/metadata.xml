@@ -9,5 +9,6 @@
   <upstream>
     <bugs-to>https://github.com/deepjyoti30/simber/issues/</bugs-to>
     <remote-id type="github">deepjyoti30/simber</remote-id>
+    <remote-id type="pypi">simber</remote-id>
   </upstream>
 </pkgmetadata>
