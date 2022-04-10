@@ -212,11 +212,11 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		kde-frameworks/kio:5
 		kde-frameworks/kwindowsystem:5
 	)
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
-	libreoffice_extensions_scripting-javascript? ( dev-java/rhino:1.6 )
-	mariadb? ( dev-db/mariadb-connector-c )
-	!mariadb? ( dev-db/mysql-connector-c )
+	libreoffice_extensions_scripting-javascript? ( >=dev-java/rhino-1.7.14:1.6 )
+	mariadb? ( dev-db/mariadb-connector-c:= )
+	!mariadb? ( dev-db/mysql-connector-c:= )
 	pdfimport? ( app-text/poppler:=[cxx] )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
 "
@@ -269,6 +269,10 @@ BDEPEND="
 	virtual/pkgconfig
 	clang? (
 		|| (
+			(
+				sys-devel/clang:14
+				sys-devel/llvm:14
+				=sys-devel/lld-14*	)
 			(	sys-devel/clang:13
 				sys-devel/llvm:13
 				=sys-devel/lld-13*	)
@@ -575,7 +579,7 @@ src_configure() {
 			myeconfargs+=( --with-beanshell-jar=$(java-pkg_getjar bsh bsh.jar) )
 
 		use libreoffice_extensions_scripting-javascript && \
-			myeconfargs+=( --with-rhino-jar=$(java-pkg_getjar rhino-1.6 js.jar) )
+			myeconfargs+=( --with-rhino-jar=$(java-pkg_getjar rhino-1.6 rhino.jar) )
 	fi
 
 	is-flagq "-flto*" && myeconfargs+=( --enable-lto )
