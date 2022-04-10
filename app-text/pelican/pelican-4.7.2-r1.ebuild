@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9,10} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
@@ -18,18 +18,18 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc examples markdown"
 
 RESTRICT="test"
-RDEPEND=">=dev-python/feedgenerator-1.9[${PYTHON_USEDEP}]
+RDEPEND=">=dev-python/docutils-0.16[${PYTHON_USEDEP}]
+	>=dev-python/blinker-1.4[${PYTHON_USEDEP}]
+	>=dev-python/feedgenerator-1.9[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.7[${PYTHON_USEDEP}]
-	dev-python/docutils[${PYTHON_USEDEP}]
-	dev-python/pygments[${PYTHON_USEDEP}]
-	dev-python/pytz[${PYTHON_USEDEP}]
-	dev-python/unidecode[${PYTHON_USEDEP}]
-	dev-python/blinker[${PYTHON_USEDEP}]
-	>=dev-python/six-1.4[${PYTHON_USEDEP}]
-	dev-python/python-dateutil[${PYTHON_USEDEP}]
+	>=dev-python/pygments-2.6[${PYTHON_USEDEP}]
+	>=dev-python/python-dateutil-2.8[${PYTHON_USEDEP}]
+	>=dev-python/pytz-2020.1[${PYTHON_USEDEP}]
+	>=dev-python/rich-10.1[${PYTHON_USEDEP}]
+	>=dev-python/unidecode-1.1[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	markdown? ( dev-python/markdown[${PYTHON_USEDEP}] )"
-DEPEND="test? ( dev-python/markdown[${PYTHON_USEDEP}] )"
+	markdown? ( >=dev-python/markdown-3.1[${PYTHON_USEDEP}] )"
+BDEPEND="test? ( >=dev-python/markdown-3.1[${PYTHON_USEDEP}] )"
 
 DOCS=( README.rst )
 
