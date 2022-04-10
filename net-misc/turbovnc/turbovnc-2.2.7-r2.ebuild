@@ -44,6 +44,8 @@ RDEPEND="
 	x11-apps/xkbcomp
 "
 
+PATCHES=( "${FILESDIR}"/"${P}"-fix-musl-compilation.patch )
+
 src_prepare() {
 	use java && java-pkg-opt-2_src_prepare
 	cmake_src_prepare
@@ -57,6 +59,7 @@ src_configure() {
 		-DTVNC_BUILDNATIVE=$(usex java)
 		-DXKB_BIN_DIRECTORY=/usr/bin
 		-DXKB_DFLT_RULES=base
+		-DBUILDING_ON_MUSL=$(usex elibc_musl)	# bug #836723
 	)
 
 	if use ssl ; then
