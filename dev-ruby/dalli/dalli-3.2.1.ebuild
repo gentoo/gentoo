@@ -35,4 +35,6 @@ all_ruby_prepare() {
 
 	sed -i -e '3igem "minitest", "~> 5.0"; require "dalli"' \
 		-e '/bundler/ s:^:#:' test/helper.rb || die
+
+	sed -i -e "s:/tmp:${T}:" test/utils/certificate_generator.rb || die
 }
