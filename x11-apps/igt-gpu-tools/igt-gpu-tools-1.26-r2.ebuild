@@ -36,7 +36,6 @@ RDEPEND="
 	dev-libs/elfutils
 	dev-libs/glib:2
 	sys-apps/kmod:=
-	sys-libs/libunwind:=
 	sys-libs/zlib:=
 	sys-process/procps:=
 	virtual/libudev:=
@@ -58,7 +57,7 @@ RDEPEND="
 		)
 	)
 	runner? ( dev-libs/json-c:= )
-	unwind? ( sys-libs/libunwind )
+	unwind? ( sys-libs/libunwind:= )
 	valgrind? ( dev-util/valgrind )
 	"
 DEPEND="${RDEPEND}
