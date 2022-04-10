@@ -17,5 +17,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">erocarrera/pefile</remote-id>
+		<remote-id type="pypi">pefile</remote-id>
 	</upstream>
 </pkgmetadata>
