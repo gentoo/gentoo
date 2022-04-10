@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -108,6 +108,7 @@ src_configure() {
 		-DDISABLE_GOOGLE_BENCHMARK=ON
 		-DDISABLE_GUI=$(usex dedicated)
 		-DDISABLE_HTTP=OFF
+		-DDISABLE_IPO=ON
 		-DDISABLE_NETWORK=OFF
 		$(usex !dedicated "-DDISABLE_OPENGL=$(usex !opengl)" "")
 		-DDISABLE_TTF=$(usex !truetype)
