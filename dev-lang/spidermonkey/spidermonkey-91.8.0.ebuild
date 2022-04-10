@@ -7,7 +7,7 @@ EAPI="7"
 FIREFOX_PATCHSET="firefox-91esr-patches-05j.tar.xz"
 SPIDERMONKEY_PATCHSET="spidermonkey-91-patches-04j.tar.xz"
 
-LLVM_MAX_SLOT=13
+LLVM_MAX_SLOT=14
 
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="ssl,xml(+)"
@@ -77,6 +77,13 @@ BDEPEND="${PYTHON_DEPS}
 		$(python_gen_any_dep 'dev-python/six[${PYTHON_USEDEP}]')
 	)
 	|| (
+		(
+			sys-devel/llvm:14
+			clang? (
+				sys-devel/clang:14
+				lto? ( =sys-devel/lld-14* )
+			)
+		)
 		(
 			sys-devel/llvm:13
 			clang? (
