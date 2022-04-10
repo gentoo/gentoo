@@ -119,7 +119,7 @@ src_configure() {
 
 src_test() {
 	local charset
-	for charset in UTF-8 ISO8859-2; do
+	for charset in UTF-8 ISO-8859-2; do
 		if [[ $(LC_ALL=cs_CZ.${charset} locale charmap 2>/dev/null) != ${charset} ]]; then
 			# If we don't have valid cs_CZ locale data, auth-nonascii will fail.
 			# Force a test skip by exiting with status 77.
