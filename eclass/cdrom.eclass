@@ -79,11 +79,11 @@ fi
 cdrom_get_cds() {
 	unset CDROM_SET
 	export CDROM_CURRENT_CD=0
-    export CDROM_NUM_CDS="${#}"
-    local i
-    for i in $(seq ${#}); do
-        export CDROM_CHECK_${i}="${!i}"
-    done
+	export CDROM_NUM_CDS="${#}"
+	local i
+	for i in $(seq ${#}); do
+		export CDROM_CHECK_${i}="${!i}"
+	done
 
 	# If the user has set CD_ROOT or CD_ROOT_1, don't bother informing
 	# them about which discs are needed as they presumably already know.
