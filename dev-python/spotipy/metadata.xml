@@ -9,5 +9,6 @@
   <upstream>
     <bugs-to>https://github.com/plamere/spotipy/issues/</bugs-to>
     <remote-id type="github">plamere/spotipy</remote-id>
+    <remote-id type="pypi">spotipy</remote-id>
   </upstream>
 </pkgmetadata>
