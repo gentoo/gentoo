@@ -28,7 +28,7 @@ RDEPEND="
 	media-libs/glew:0=
 	media-libs/harfbuzz:=
 	media-libs/libpng:0=
-	media-libs/libsdl2
+	media-libs/libsdl2[opengl,video]
 	media-libs/libvorbis
 	media-libs/openal
 	net-libs/enet:1.3=
