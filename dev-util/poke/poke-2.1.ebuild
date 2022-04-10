@@ -4,7 +4,7 @@
 EAPI=8
 
 DESCRIPTION="Extensible editor for structured binary data"
-HOMEPAGE="http://www.jemarch.net/poke"
+HOMEPAGE="https://www.jemarch.net/poke"
 SRC_URI="mirror://gnu/poke/${P}.tar.gz"
 
 LICENSE="GPL-3+"
