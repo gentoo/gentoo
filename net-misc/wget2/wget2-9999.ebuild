@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="GNU Wget2 is a file and recursive website downloader"
 HOMEPAGE="https://gitlab.com/gnuwget/wget2"
@@ -108,7 +108,16 @@ src_configure() {
 src_install() {
 	default
 
-	doman docs/man/man{1/*.1,3/*.3}
+	if [[ ${PV} == *9999 ]] ; then
+		if use doc ; then
+			local mpage
+			for mpage in $(find docs/man -type f -regextype grep -regex ".*\.[[:digit:]]$") ; do
+				doman ${mpage}
+			done
+		fi
+	else
+		doman docs/man/man{1/*.1,3/*.3}
+	fi
 
 	find "${D}" -type f -name '*.la' -delete || die
 	rm "${ED}"/usr/bin/${PN}_noinstall || die
