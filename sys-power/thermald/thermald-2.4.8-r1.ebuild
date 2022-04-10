@@ -32,6 +32,9 @@ src_prepare() {
 	sed -i -e "/group=/s/power/wheel/g" \
 		data/org.freedesktop.thermald.conf || die
 
+	sed -i -e '/tdrundir/s@\$localstatedir/run@\$runstatedir@' \
+		configure.ac || die
+
 	default
 	eautoreconf
 }
@@ -39,6 +42,7 @@ src_prepare() {
 my_src_configure() {
 	ECONF_SOURCE="${S}" econf \
 		--disable-werror \
+		--runstatedir="${EPREFIX}"/run \
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 }
 
