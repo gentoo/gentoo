@@ -39,9 +39,6 @@ SLOT="0"
 if [[ ${PV} != 9999 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
-	# We'll fetch the files from the GitHub archive directly, at least for now...
-	RESTRICT="mirror"
-
 	# The PolyMC's files are unpacked to ${WORKDIR}/PolyMC-${PV}
 	S="${WORKDIR}/${MY_PN}-${PV}"
 fi
