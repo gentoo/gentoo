@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,10 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="A tiny LRU cache implementation and decorator"
 HOMEPAGE="http://www.repoze.org"
-SRC_URI="https://github.com/repoze/repoze.lru/archive/${PV}.tar.gz -> ${PN}-${PVR}.tar.gz"
+SRC_URI="
+	https://github.com/repoze/repoze.lru/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="repoze"
