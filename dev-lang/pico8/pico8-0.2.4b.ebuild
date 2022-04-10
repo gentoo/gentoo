@@ -7,7 +7,7 @@ inherit desktop xdg
 
 MY_PN="pico-8"
 DESCRIPTION="Fantasy console for making, sharing and playing tiny games and other computer programs"
-HOMEPAGE="https://lexaloffle.itch.io/pico-8"
+HOMEPAGE="https://www.lexaloffle.com/pico-8.php"
 SRC_URI="
 	amd64? ( ${MY_PN}_${PV}_amd64.zip )
 	arm? ( ${MY_PN}_${PV}_raspi.zip )
@@ -32,8 +32,9 @@ DIR="/opt/${PN}"
 QA_PREBUILT="${DIR}/${PN}"
 
 pkg_nofetch() {
-	einfo "Please buy and download ${A} from:"
+	einfo "Please buy and download ${A} from one of:"
 	einfo "  ${HOMEPAGE}"
+	einfo "  https://lexaloffle.itch.io/${MY_PN}"
 	einfo "and move it to your distfiles directory."
 }
 
