@@ -68,17 +68,18 @@ RDEPEND="
 "
 
 QA_PREBUILT="
+	/opt/vscodium/chrome_crashpad_handler
+	/opt/vscodium/chrome-sandbox
 	/opt/vscodium/codium
 	/opt/vscodium/libEGL.so
 	/opt/vscodium/libffmpeg.so
 	/opt/vscodium/libGLESv2.so
-	/opt/vscodium/libvulkan.so*
-	/opt/vscodium/chrome-sandbox
 	/opt/vscodium/libvk_swiftshader.so
-	/opt/vscodium/swiftshader/libEGL.so
-	/opt/vscodium/swiftshader/libGLESv2.so
+	/opt/vscodium/libvulkan.so*
 	/opt/vscodium/resources/app/extensions/*
 	/opt/vscodium/resources/app/node_modules.asar.unpacked/*
+	/opt/vscodium/swiftshader/libEGL.so
+	/opt/vscodium/swiftshader/libGLESv2.so
 "
 
 S="${WORKDIR}"
