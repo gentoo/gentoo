@@ -11,7 +11,7 @@ inherit selinux-policy-2
 DESCRIPTION="SELinux policy for acpi"
 
 if [[ ${PV} != 9999* ]] ; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
+	KEYWORDS="amd64 arm arm64 ~mips x86"
 fi
 
 pkg_postinst() {
