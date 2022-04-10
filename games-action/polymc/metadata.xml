@@ -20,6 +20,7 @@
   <upstream>
     <bugs-to>https://github.com/PolyMC/PolyMC/issues</bugs-to>
     <doc>https://polymc.org/wiki/</doc>
+    <remote-id type="github">PolyMC/PolyMC</remote-id>
   </upstream>
   <longdescription>PolyMC is a multi-instance Minecraft launcher focused on user freedom, redistributability, and simplicity.</longdescription>
 </pkgmetadata>
