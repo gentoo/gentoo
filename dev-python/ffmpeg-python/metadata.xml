@@ -9,5 +9,6 @@
   <upstream>
     <bugs-to>https://github.com/kkroening/ffmpeg-python/issues/</bugs-to>
     <remote-id type="github">kkroening/ffmpeg-python</remote-id>
+    <remote-id type="pypi">ffmpeg-python</remote-id>
   </upstream>
 </pkgmetadata>
