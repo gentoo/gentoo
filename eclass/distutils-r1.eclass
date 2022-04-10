@@ -750,6 +750,42 @@ distutils_install_for_testing() {
 	esetup.py install "${add_args[@]}" "${@}"
 }
 
+# @FUNCTION: distutils_write_namespace
+# @USAGE: <namespace>...
+# @DESCRIPTION:
+# Write the __init__.py file for the requested namespace into PEP517
+# install tree, in order to fix running tests when legacy namespace
+# packages are installed (dev-python/namespace-*).
+#
+# This function must only be used in python_test().  The created file
+# will automatically be removed upon leaving the test phase.
+distutils_write_namespace() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	if [[ ! ${DISTUTILS_USE_PEP517} ]]; then
+		die "${FUNCNAME} is available only in PEP517 mode"
+	fi
+	if [[ ${EBUILD_PHASE} != test || ! ${BUILD_DIR} ]]; then
+		die "${FUNCNAME} should only be used in python_test"
+	fi
+
+	local namespace
+	for namespace; do
+		if [[ ${namespace} == *[./]* ]]; then
+			die "${FUNCNAME} does not support nested namespaces at the moment"
+		fi
+
+		local path=${BUILD_DIR}/install$(python_get_sitedir)/${namespace}/__init__.py
+		if [[ -f ${path} ]]; then
+			die "Requested namespace ${path} exists already!"
+		fi
+		cat > "${path}" <<-EOF || die
+			__path__ = __import__('pkgutil').extend_path(__path__, __name__)
+		EOF
+		_DISTUTILS_POST_PHASE_RM+=( "${path}" )
+	done
+}
+
 # @FUNCTION: _distutils-r1_disable_ez_setup
 # @INTERNAL
 # @DESCRIPTION:
@@ -1477,9 +1513,14 @@ distutils-r1_run_phase() {
 	esac
 
 	local -x LDSHARED="${CC} ${ldopts}" LDCXXSHARED="${CXX} ${ldopts}"
+	local _DISTUTILS_POST_PHASE_RM=()
 
 	"${@}"
 	local ret=${?}
+
+	if [[ -n ${_DISTUTILS_POST_PHASE_RM} ]]; then
+		rm "${_DISTUTILS_POST_PHASE_RM[@]}" || die
+	fi
 
 	cd "${_DISTUTILS_INITIAL_CWD}" || die
 	return "${ret}"
