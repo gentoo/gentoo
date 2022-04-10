@@ -1,27 +1,23 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8} )
+
+MY_P=${P%_p*}
+MY_PV=${PV%_p*}
 
 inherit eutils flag-o-matic python-any-r1 qmake-utils readme.gentoo-r1 systemd user-info
 
-MY_COMMIT="5824c588db24b4e71a7d94e829e6419f71089297"
+MYTHTV_BRANCH="fixes/${P%.*}"
 
 DESCRIPTION="Open Source DVR and media center hub"
 HOMEPAGE="https://www.mythtv.org https://github.com/MythTV/mythtv"
-if [[ $(ver_cut 3) == "p" ]] ; then
-	SRC_URI="https://github.com/MythTV/mythtv/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
-	# mythtv and mythplugins are separate builds in the github MythTV project
-	S="${WORKDIR}/mythtv-${MY_COMMIT}/mythtv"
-else
-	SRC_URI="https://github.com/MythTV/mythtv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	# mythtv and mythplugins are separate builds in the github mythtv project
-	S="${WORKDIR}/${P}/mythtv"
-fi
-KEYWORDS="~amd64 ~x86"
+SRC_URI="https://github.com/MythTV/mythtv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="GPL-2+"
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
 IUSE_INPUT_DEVICES="input_devices_joystick"
@@ -52,6 +48,7 @@ RDEPEND="
 	media-fonts/liberation-fonts
 	media-fonts/tex-gyre
 	media-gfx/exiv2:=
+	<media-libs/dav1d-1.0.0:=
 	media-libs/freetype:2
 	media-libs/libsamplerate
 	media-libs/taglib
@@ -137,7 +134,6 @@ DEPEND="
 	)
 	python? (
 		$(python_gen_any_dep '
-			dev-python/python-dateutil[${PYTHON_USEDEP}]
 			dev-python/future[${PYTHON_USEDEP}]
 			dev-python/lxml[${PYTHON_USEDEP}]
 			dev-python/mysqlclient[${PYTHON_USEDEP}]
@@ -148,7 +144,6 @@ DEPEND="
 "
 python_check_deps() {
 	use python || return 0
-	has_version "dev-python/python-dateutil[${PYTHON_USEDEP}]" &&
 	has_version "dev-python/future[${PYTHON_USEDEP}]" &&
 	has_version "dev-python/lxml[${PYTHON_USEDEP}]" &&
 	has_version "dev-python/mysqlclient[${PYTHON_USEDEP}]" &&
@@ -158,14 +153,16 @@ python_check_deps() {
 
 PATCHES=(
 	"${FILESDIR}/${PN}-30.0_p20190808-respect_LDFLAGS.patch"
+	"${FILESDIR}/${P}-Remove_ldconfig.patch"
+	"${FILESDIR}/${P}-Include_QPainterPath.patch"
 )
+
+# mythtv and mythplugins are separate builds in the github mythtv project
+S="${WORKDIR}/${P}/mythtv"
 
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="
-Support for metadata lookup changes is added. User configuration required.
-Details at: https://www.mythtv.org/wiki/Metadata_Lookup_Changes_March_2021
-
-Suppport for Python 2.7 is removed.
+Suppport for Python 2.7 has been removed.
 
 If a MYSQL server is installed, a mythtv MySQL user and mythconverg database
 is created if it does not already exist.
@@ -219,6 +216,11 @@ src_prepare() {
 	sed -e "s:pure_install:pure_install INSTALLDIRS=vendor:" \
 		-i "${S}"/bindings/perl/Makefile || die "Cannot convert site_perl to vendor_perl!"
 
+	# Fix up the version info when using the fixes/${PV} branch
+#	echo "SOURCE_VERSION=\"v${MY_PV}\"" > "${S}"/VERSION
+#	echo "BRANCH=\"${MYTHTV_BRANCH}\"" >> "${S}"/VERSION
+#	echo "SOURCE_VERSION=\"${BACKPORTS}\"" > "${S}"/EXPORTED_VERSION
+#	echo "BRANCH=\"${MYTHTV_BRANCH}\"" >> "${S}"/EXPORTED_VERSION
 }
 
 src_configure() {
