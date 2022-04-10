@@ -15,6 +15,9 @@ if [[ ${PV} != 9999 ]]; then
 	SRC_URI="
 		https://github.com/PolyMC/PolyMC/releases/download/${PV}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz
 	"
+
+	# The PolyMC's files are unpacked to ${WORKDIR}/PolyMC-${PV}
+	S="${WORKDIR}/${MY_PN}-${PV}"
 else
 	inherit git-r3
 
@@ -38,9 +41,6 @@ LICENSE="Apache-2.0 Boost-1.0 BSD BSD-2 GPL-2+ GPL-3 LGPL-3 LGPL-2.1-with-linkin
 SLOT="0"
 if [[ ${PV} != 9999 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-
-	# The PolyMC's files are unpacked to ${WORKDIR}/PolyMC-${PV}
-	S="${WORKDIR}/${MY_PN}-${PV}"
 fi
 
 IUSE="debug"
