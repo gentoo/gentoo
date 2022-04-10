@@ -13,7 +13,7 @@ SRC_URI="https://movit.sesse.net/${P}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~ppc64 x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 
 # no sane way to use OpenGL from within tests?
 RESTRICT="test"
