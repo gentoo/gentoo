@@ -12,6 +12,7 @@ SLOT="0"
 LICENSE="BSD-4 BSD ISC"
 KEYWORDS="~amd64 ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="ipv6 socks5 ssl"
+REQUIRED_USE="socks5? ( !ipv6 )"
 
 DEPEND=">=sys-libs/ncurses-5.1
 	dev-libs/libedit
