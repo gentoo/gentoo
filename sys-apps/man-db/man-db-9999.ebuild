@@ -5,7 +5,7 @@ EAPI=7
 
 inherit systemd prefix tmpfiles
 
-DESCRIPTION="A man replacement that utilizes berkdb instead of flat files"
+DESCRIPTION="A man replacement that utilizes dbm instead of flat files"
 HOMEPAGE="https://gitlab.com/cjwatson/man-db https://www.nongnu.org/man-db/"
 if [[ ${PV} == *9999 ]] ; then
 	inherit autotools git-r3
@@ -18,13 +18,12 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="berkdb +manpager nls +seccomp selinux static-libs zlib"
+IUSE="+manpager nls +seccomp selinux static-libs zlib"
 
-CDEPEND="!sys-apps/man
+CDEPEND="
 	>=dev-libs/libpipeline-1.5.0
 	sys-apps/groff
-	!berkdb? ( sys-libs/gdbm:= )
-	berkdb? ( sys-libs/db:= )
+	sys-libs/gdbm:=
 	seccomp? ( sys-libs/libseccomp )
 	zlib? ( sys-libs/zlib )"
 DEPEND="${CDEPEND}"
@@ -117,7 +116,7 @@ src_configure() {
 		$(use_enable static-libs static)
 		$(use_with seccomp libseccomp)
 
-		--with-db=$(usex berkdb db gdbm)
+		--with-db=gdbm
 	)
 
 	case ${CHOST} in
