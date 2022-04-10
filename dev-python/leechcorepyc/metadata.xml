@@ -13,4 +13,8 @@
 		The LeechCore Memory Acquisition Library focuses on Physical Memory
 		Acquisition using various hardware and software based methods.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">ufrisk/LeechCore</remote-id>
+		<remote-id type="pypi">leechcorepyc</remote-id>
+	</upstream>
 </pkgmetadata>
