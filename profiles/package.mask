@@ -288,12 +288,6 @@ dev-java/edtftpj
 # Stuck on EAPI 5 too. Removal on 2022-04-09. bug #832313.
 dev-perl/JavaScript-SpiderMonkey
 
-# Matthew Smith <matthew@gentoo.org> (2022-03-08)
-# Dead upstream, multiple vulnerabilities.
-# Try the fork media-gfx/prusaslicer instead.
-# Bug #834739. Removal on 2022-04-07.
-media-gfx/slic3r
-
 # Sam James <sam@gentoo.org> (2022-03-07)
 # Python 3.6 was declared end-of-life by upstream on 2021-11-04.
 # Please migrate to a newer Python version/slot or use a virtualenv
