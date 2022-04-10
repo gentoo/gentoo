@@ -9,5 +9,6 @@
   <upstream>
     <bugs-to>https://github.com/twhiteman/pyDes/issues/</bugs-to>
     <remote-id type="github">twhiteman/pyDes</remote-id>
+    <remote-id type="pypi">pyDes</remote-id>
   </upstream>
 </pkgmetadata>
