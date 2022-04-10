@@ -9,5 +9,6 @@
   <upstream>
     <bugs-to>https://github.com/deepjyoti30/ytmdl/issues/</bugs-to>
     <remote-id type="github">deepjyoti30/ytmdl</remote-id>
+    <remote-id type="pypi">ytmdl</remote-id>
   </upstream>
 </pkgmetadata>
