@@ -9,5 +9,6 @@
   <upstream>
     <bugs-to>https://github.com/alexmercerind/youtube-search-python/issues/</bugs-to>
     <remote-id type="github">alexmercerind/youtube-search-python</remote-id>
+    <remote-id type="pypi">youtube-search-python</remote-id>
   </upstream>
 </pkgmetadata>
