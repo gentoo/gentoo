@@ -30,6 +30,7 @@ COMMON_DEPEND="
 	>=app-admin/augeas-1.8.0
 	app-arch/cpio
 	app-arch/lzma
+	app-arch/rpm
 	app-arch/unzip[natspec]
 	app-arch/xz-utils
 	app-cdr/cdrtools
@@ -49,7 +50,6 @@ COMMON_DEPEND="
 	sys-apps/file
 	sys-devel/gettext
 	sys-fs/squashfs-tools:*
-	>=sys-libs/db-4.6:*
 	sys-libs/libcap
 	sys-libs/readline:=
 	virtual/acl
