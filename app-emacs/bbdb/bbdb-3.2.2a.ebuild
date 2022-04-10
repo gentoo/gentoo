@@ -16,12 +16,12 @@ KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-maco
 IUSE="tex vm wanderlust"
 RESTRICT="test" #631700
 
-RDEPEND="vm? ( app-emacs/vm )
+DEPEND="vm? ( app-emacs/vm )
 	wanderlust? ( app-emacs/wanderlust )"
-BDEPEND="${RDEPEND}
-	sys-apps/texinfo"
-RDEPEND="${RDEPEND}
+RDEPEND="${DEPEND}
 	tex? ( virtual/latex-base )"
+BDEPEND="sys-apps/texinfo
+	tex? ( virtual/texi2dvi )"
 
 SITEFILE="50${PN}-gentoo-3.2.el"
 TEXMF="/usr/share/texmf-site"
