@@ -46,6 +46,15 @@ src_prepare() {
 	# Fix cross-compile relinking issue, bug #626402
 	elibtoolize
 
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		# somehow libtool/configure is messed up and (custom patch at
+		# upstream?) and misdetects (basically assumes) nm can be called
+		# with -B arg -- can't run eautoreconf (fails), so patch up
+		# manually, this would break any target that needs -B to nm
+		sed -i -e 's/lt_cv_path_NM="$tmp_nm -B"/lt_cv_path_NM="$tmp_nm"/' \
+			libctf/configure || die
+	fi
+
 	default
 }
 
