@@ -23,6 +23,7 @@ DEPEND="
 	media-libs/rtmidi
 	net-libs/libslirp
 	sys-libs/zlib
+	qt5? ( x11-libs/libXi )
 "
 
 RDEPEND="
