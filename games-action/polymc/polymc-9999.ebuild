@@ -45,29 +45,33 @@ fi
 
 IUSE="debug"
 
-BDEPEND="
-	>=virtual/jdk-1.8.0:*
-	media-libs/libglvnd
-"
+MIN_QT="5.6.0"
 
 QT_DEPS="
-	>=dev-qt/qtcore-5.6.0:5
-	>=dev-qt/qttest-5.6.0:5
-	>=dev-qt/qtconcurrent-5.6.0:5
-	>=dev-qt/qtgui-5.6.0:5
-	>=dev-qt/qtnetwork-5.6.0:5
-	>=dev-qt/qtwidgets-5.6.0:5
-	>=dev-qt/qtxml-5.6.0:5
+	>=dev-qt/qtcore-${MIN_QT}:5
+	>=dev-qt/qttest-${MIN_QT}:5
+	>=dev-qt/qtconcurrent-${MIN_QT}:5
+	>=dev-qt/qtgui-${MIN_QT}:5
+	>=dev-qt/qtnetwork-${MIN_QT}:5
+	>=dev-qt/qtwidgets-${MIN_QT}:5
+	>=dev-qt/qtxml-${MIN_QT}:5
 "
 
 DEPEND="
+	${QT_DEPS}
+	>=virtual/jdk-1.8.0:*
+	media-libs/libglvnd
+	sys-libs/zlib
+"
+
+# At run-time we don't depend on JDK, only JRE
+# And we need more than just the GL headers
+RDEPEND="
 	${QT_DEPS}
 	>=virtual/jre-1.8.0:*
 	virtual/opengl
 	sys-libs/zlib
 "
-
-RDEPEND="${DEPEND}"
 
 src_prepare() {
 	cmake_src_prepare
