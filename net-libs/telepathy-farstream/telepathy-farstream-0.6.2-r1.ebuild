@@ -1,8 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=8
 
 inherit gnome2
 
@@ -24,14 +23,14 @@ RDEPEND="
 	net-libs/farstream:0.2=[introspection?]
 	introspection? ( >=dev-libs/gobject-introspection-1.30 )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	>=dev-util/gtk-doc-am-1.17
 	virtual/pkgconfig
 "
 
 src_configure() {
 	gnome2_src_configure \
-		--disable-static \
 		--disable-Werror \
 		$(use_enable introspection)
 }
@@ -43,6 +42,7 @@ src_install() {
 		docinto examples
 		dodoc examples/*.c
 		docompress -x /usr/share/doc/${PF}/examples
+
 		docinto examples/python
 		dodoc examples/python/*.py
 		docompress -x /usr/share/doc/${PF}/examples/python
