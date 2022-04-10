@@ -22,7 +22,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	${PYTHON_DEPS}
 	app-text/hunspell:=
-	dev-libs/libpcre:3=[pcre16]
+	dev-libs/libpcre2:=[pcre16]
 	$(python_gen_cond_dep '
 		dev-python/css-parser[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
