@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -121,6 +121,7 @@ BDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-lang/yasm
+	<media-libs/dav1d-1.0.0
 	x11-base/xorg-proto
 	perl? (
 		dev-perl/DBD-mysql
