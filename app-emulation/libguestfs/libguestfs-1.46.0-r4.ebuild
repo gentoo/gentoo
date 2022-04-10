@@ -3,6 +3,8 @@
 
 EAPI=7
 
+# Bump with app-emulation/guestfs-tools and app-emulation/libguestfs-appliance (if any new release there)
+
 LUA_COMPAT=( lua5-1 )
 PYTHON_COMPAT=( python3_{8,9,10} )
 
