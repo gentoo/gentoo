@@ -9,5 +9,6 @@
   <upstream>
     <bugs-to>https://github.com/deepjyoti30/downloader-cli/issues/</bugs-to>
     <remote-id type="github">deepjyoti30/downloader-cli</remote-id>
+    <remote-id type="pypi">downloader-cli</remote-id>
   </upstream>
 </pkgmetadata>
