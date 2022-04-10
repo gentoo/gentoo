@@ -1,17 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=8
 
 DESCRIPTION="Meta package for utilities for the GNOME desktop"
 HOMEPAGE="https://wiki.gnome.org/Apps/Attic/GnomeUtils"
 
 LICENSE="metapackage"
 SLOT="0"
-IUSE=""
 KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 
-DEPEND=""
 RDEPEND="
 	>=app-admin/gnome-system-log-${PV}
 	>=app-dicts/gnome-dictionary-${PV}
