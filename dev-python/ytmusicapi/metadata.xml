@@ -9,5 +9,6 @@
   <upstream>
     <bugs-to>https://github.com/sigma67/ytmusicapi/issues/</bugs-to>
     <remote-id type="github">sigma67/ytmusicapi</remote-id>
+    <remote-id type="pypi">ytmusicapi</remote-id>
   </upstream>
 </pkgmetadata>
