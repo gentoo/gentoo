@@ -1,12 +1,12 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 PLOCALES="ar ast bg ca cs da de el en en_US eo es fa fi fr he hi hr hu it ja ko lt ml nb_NO nl or pa pl pt_BR pt_PT rm ro ru si sk sl sr_RS@cyrillic sr_RS@latin sv ta te th tr uk wa zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit autotools eapi7-ver estack eutils flag-o-matic gnome2-utils multilib multilib-minimal pax-utils plocale toolchain-funcs virtualx xdg-utils
+inherit autotools estack flag-o-matic multilib-minimal pax-utils plocale toolchain-funcs virtualx wrapper xdg-utils
 MY_PN="${PN%%-*}"
 MY_PV="${PV/_/-}"
 MY_P="${MY_PN}-${MY_PV}"
@@ -60,6 +60,11 @@ REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 # FIXME: the test suite is unsuitable for us; many tests require net access
 # or fail due to Xvfb's opengl limitations.
 RESTRICT="test"
+
+BDEPEND="mingw? ( !!>=cross-i686-w64-mingw32/binutils-2.38 !!>=cross-x86_64-w64-mingw32/binutils-2.38 )
+	sys-devel/flex
+	virtual/yacc
+	virtual/pkgconfig"
 
 COMMON_DEPEND="
 	X? (
@@ -131,10 +136,8 @@ RDEPEND="${COMMON_DEPEND}
 
 # tools/make_requests requires perl
 DEPEND="${COMMON_DEPEND}
-	sys-devel/flex
+	${BDEPEND}
 	>=sys-kernel/linux-headers-2.6
-	virtual/pkgconfig
-	virtual/yacc
 	X? ( x11-base/xorg-proto )
 	staging? (
 		dev-lang/perl
@@ -275,8 +278,8 @@ pkg_pretend() {
 		# Verify OSS support
 		if use oss; then
 			if ! has_version ">=media-sound/oss-4"; then
-				eerror "You cannot build wine with USE=oss without having support from a"
-				eerror "FreeBSD kernel or >=media-sound/oss-4 (only available through external repos)"
+				eerror "You cannot build wine with USE=oss without having support from"
+				eerror ">=media-sound/oss-4 (only available through external repos)"
 				eerror
 				die
 			fi
