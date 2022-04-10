@@ -16,5 +16,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">sashs/filebytes</remote-id>
+		<remote-id type="pypi">filebytes</remote-id>
 	</upstream>
 </pkgmetadata>
