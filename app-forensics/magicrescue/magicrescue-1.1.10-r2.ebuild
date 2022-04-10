@@ -13,10 +13,10 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-DEPEND="sys-libs/gdbm"
+DEPEND="sys-libs/gdbm:="
 RDEPEND="${DEPEND}
 	!net-mail/safecat"
-# File collision with net-mail/safecat, #702004
+# File collision with net-mail/safecat, bug #702004
 
 PATCHES=(
 	"${FILESDIR}/${P}-ldflags.patch"
