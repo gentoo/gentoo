@@ -44,7 +44,7 @@ src_prepare() {
 }
 
 src_compile() {
-	lrelease gpxsee.pro
+	$(qt5_get_bindir)/lrelease gpxsee.pro || die "lrelease failed"
 	eqmake5 gpxsee.pro
 	emake
 }
