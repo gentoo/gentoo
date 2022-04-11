@@ -175,9 +175,9 @@ src_prepare() {
 		# for live ebuilds FULL_VERSION doesn't exist in global scope
 		QA_FLAGS_IGNORED="usr/$(get_libdir)/emacs/${FULL_VERSION}/native-lisp/.*"
 
-		# gccjit doesn't play well with ccache #801580
+		# gccjit doesn't play well with ccache or distcc #801580
 		# For now, work around the problem with an explicit LIBRARY_PATH
-		has ccache ${FEATURES} && tc-is-gcc \
+		has ccache ${FEATURES} || has distcc ${FEATURES} && tc-is-gcc \
 			&& export LIBRARY_PATH=$("$(tc-getCC)" -print-search-dirs \
 				| sed -n '/^libraries:/{s:^[^/]*::;p}')
 	fi
