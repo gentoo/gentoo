@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-10)
+# Dead package upstream. No reverse dependencies.
+# Removal on 2022-05-10
+net-misc/vinagre
+net-misc/vino
+
+# Matt Turner <mattst88@gentoo.org> (2022-04-10)
 # Dead package upstream (last release in 2004). No reverse dependencies.
 # Removal on 2022-05-10
 net-misc/grdesktop
