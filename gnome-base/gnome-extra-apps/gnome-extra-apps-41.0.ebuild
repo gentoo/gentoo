@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Sub-meta package for the applications of GNOME"
 HOMEPAGE="https://www.gnome.org/"
@@ -14,7 +14,7 @@ KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 # Note to developers:
 # This is a wrapper for the extra apps integrated with GNOME
 # Keep pkg order within a USE flag as upstream releng versions file
-# TODO: Should we keep these here: gnome-dictionary, gucharmap, sound-juicer, vinagre; replace gucharmap with gnome-characters?
+# TODO: Should we keep these here: gnome-dictionary, gucharmap, sound-juicer; replace gucharmap with gnome-characters?
 # TODO: Add gnome-remote-desktop as replacement for vino that was removed from meta in 3.36?
 # gnome-documents removed for now, as it didn't find a good place upstream and is getting dropped from default sets for distros for 3.30 (and for 3.26 it required newer tracker than we had at the time)
 RDEPEND="
@@ -41,7 +41,6 @@ RDEPEND="
 	>=mail-client/evolution-3.${PV}
 	>=gnome-extra/gnome-tweaks-40.0
 	>=gnome-extra/nautilus-sendto-3.8.6
-	>=net-misc/vinagre-3.22.0
 
 	games? (
 		>=games-puzzle/five-or-more-3.32.2
