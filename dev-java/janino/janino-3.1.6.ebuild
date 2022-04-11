@@ -79,7 +79,6 @@ src_test() {
 	JAVA_TEST_GENTOO_CLASSPATH="junit-4"
 	JAVA_TEST_SRC_DIR="src/test/java"
 	JAVA_TEST_RESOURCE_DIRS="src/test/resources"
-	echo 'We are in '"$(pwd)"
 	java-pkg-simple_src_test
 }
 
