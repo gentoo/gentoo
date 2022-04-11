@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Matthew Turk <satai@gentoo.org>
 # Martin Ehmsen <ehmsen@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: An eclass for easy installation of LaTeX packages
 # @DESCRIPTION:
 # This eClass is designed to be easy to use and implement.  The vast majority of
@@ -51,21 +51,24 @@
 # you must either grab each file individually, or find a place to mirror an
 # archive of them.  (iBiblio)
 
+case ${EAPI} in
+	7) inherit eapi8-dosym ;;
+	8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
 if [[ -z ${_LATEX_PACKAGE_ECLASS} ]]; then
 _LATEX_PACKAGE_ECLASS=1
 
 RDEPEND="virtual/latex-base"
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=sys-apps/texinfo-4.2-r5"
 
-case ${EAPI:-0} in
-	[0-6])
-		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
-	7)	;;
-	*)	die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
-esac
-
 HOMEPAGE="http://www.tug.org/"
+
+# @ECLASS_VARIABLE: TEXMF
+# @DESCRIPTION:
+# Top-level installation path.
 TEXMF="/usr/share/texmf-site"
 
 # @ECLASS_VARIABLE: SUPPLIER
@@ -90,7 +93,7 @@ LATEX_DOC_ARGUMENTS=""
 # It installs the files found in the current directory to the standard locations
 # for a TeX installation
 latex-package_src_doinstall() {
-	debug-print function $FUNCNAME $*
+	debug-print-function "${FUNCNAME}" "$@"
 
 	# Avoid generating font cache outside of the sandbox
 	export VARTEXFONTS="${T}/fonts"
@@ -118,7 +121,9 @@ latex-package_src_doinstall() {
 				while IFS= read -r -d '' i; do
 					insinto /usr/share/doc/${PF}
 					doins "${i}"
-					dosym "/usr/share/doc/${PF}/$(basename "${i}")" \
+					local dosym=dosym
+					[[ ${EAPI} == 7 ]] && dosym=dosym8
+					${dosym} -r "/usr/share/doc/${PF}/$(basename "${i}")" \
 						"${TEXMF}/doc/latex/${PN}/${i}"
 					docompress -x "/usr/share/doc/${PF}/$(basename "${i}")"
 				done < <(find -maxdepth 1 -type f -name "*.${1}" -print0)
@@ -200,7 +205,7 @@ latex-package_src_doinstall() {
 # Calls latex for each *.ins in the current directory in order to generate the
 # relevant files that will be installed
 latex-package_src_compile() {
-	debug-print function $FUNCNAME $*
+	debug-print-function "${FUNCNAME}" "$@"
 	while IFS= read -r -d '' i; do
 		einfo "Extracting from ${i}"
 		latex --halt-on-error --interaction=nonstopmode "${i}" || die
@@ -211,7 +216,7 @@ latex-package_src_compile() {
 # @DESCRIPTION:
 # Installs the package
 latex-package_src_install() {
-	debug-print function $FUNCNAME $*
+	debug-print-function "${FUNCNAME}" "$@"
 	latex-package_src_doinstall all
 	einstalldocs
 }
@@ -221,7 +226,7 @@ latex-package_src_install() {
 # Calls latex-package_rehash to ensure the TeX installation is consistent with
 # the kpathsea database
 latex-package_pkg_postinst() {
-	debug-print function $FUNCNAME $*
+	debug-print-function "${FUNCNAME}" "$@"
 	latex-package_rehash
 }
 
@@ -230,7 +235,7 @@ latex-package_pkg_postinst() {
 # Calls latex-package_rehash to ensure the TeX installation is consistent with
 # the kpathsea database
 latex-package_pkg_postrm() {
-	debug-print function $FUNCNAME $*
+	debug-print-function "${FUNCNAME}" "$@"
 	latex-package_rehash
 }
 
@@ -238,10 +243,10 @@ latex-package_pkg_postrm() {
 # @DESCRIPTION:
 # Rehashes the kpathsea database, according to the current TeX installation
 latex-package_rehash() {
-	debug-print function $FUNCNAME $*
+	debug-print-function "${FUNCNAME}" "$@"
 	texmf-update
 }
 
-EXPORT_FUNCTIONS src_compile src_install pkg_postinst pkg_postrm
-
 fi
+
+EXPORT_FUNCTIONS src_compile src_install pkg_postinst pkg_postrm
