@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cdrom.eclass
 # @MAINTAINER:
 # games@gentoo.org
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Functions for CD-ROM handling
 # @DESCRIPTION:
 # Acquire CD(s) for those lovely CD-based emerges.  Yes, this violates
@@ -16,7 +16,7 @@
 # The functions are generally called in src_unpack.
 
 case ${EAPI:-0} in
-	[67]) ;;
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 

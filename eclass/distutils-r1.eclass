@@ -196,23 +196,23 @@ _distutils_set_globals() {
 		case ${DISTUTILS_USE_PEP517} in
 			flit)
 				bdep+='
-					dev-python/flit_core[${PYTHON_USEDEP}]'
+					>=dev-python/flit_core-3.7.1[${PYTHON_USEDEP}]'
 				;;
 			hatchling)
 				bdep+='
-					dev-python/hatchling[${PYTHON_USEDEP}]'
+					>=dev-python/hatchling-0.22.0[${PYTHON_USEDEP}]'
 				;;
 			jupyter)
 				bdep+='
-					dev-python/jupyter_packaging[${PYTHON_USEDEP}]'
+					>=dev-python/jupyter_packaging-0.11.1[${PYTHON_USEDEP}]'
 				;;
 			pdm)
 				bdep+='
-					dev-python/pdm-pep517[${PYTHON_USEDEP}]'
+					>=dev-python/pdm-pep517-0.12.3[${PYTHON_USEDEP}]'
 				;;
 			poetry)
 				bdep+='
-					dev-python/poetry-core[${PYTHON_USEDEP}]'
+					>=dev-python/poetry-core-1.0.8[${PYTHON_USEDEP}]'
 				;;
 			setuptools)
 				bdep+='
@@ -425,7 +425,7 @@ distutils_enable_sphinx() {
 	_DISTUTILS_SPHINX_PLUGINS=( "${@}" )
 
 	local deps autodoc=1 d
-	deps="dev-python/sphinx[\${PYTHON_USEDEP}]"
+	deps=">=dev-python/sphinx-4.4.0[\${PYTHON_USEDEP}]"
 	for d; do
 		if [[ ${d} == --no-autodoc ]]; then
 			autodoc=
@@ -449,13 +449,15 @@ distutils_enable_sphinx() {
 			use doc || return 0
 
 			local p
-			for p in dev-python/sphinx "${_DISTUTILS_SPHINX_PLUGINS[@]}"; do
+			for p in ">=dev-python/sphinx-4.4.0" \
+				"${_DISTUTILS_SPHINX_PLUGINS[@]}"
+			do
 				python_has_version "${p}[${PYTHON_USEDEP}]" ||
 					return 1
 			done
 		}
 	else
-		deps="dev-python/sphinx"
+		deps=">=dev-python/sphinx-4.4.0"
 	fi
 
 	sphinx_compile_all() {
@@ -538,7 +540,7 @@ distutils_enable_tests() {
 			test_pkg=">=dev-python/nose-1.3.7-r4"
 			;;
 		pytest)
-			test_pkg=">=dev-python/pytest-6.2.5-r2"
+			test_pkg=">=dev-python/pytest-7.0.1"
 			;;
 		setup.py)
 			;;
@@ -750,6 +752,42 @@ distutils_install_for_testing() {
 	esetup.py install "${add_args[@]}" "${@}"
 }
 
+# @FUNCTION: distutils_write_namespace
+# @USAGE: <namespace>...
+# @DESCRIPTION:
+# Write the __init__.py file for the requested namespace into PEP517
+# install tree, in order to fix running tests when legacy namespace
+# packages are installed (dev-python/namespace-*).
+#
+# This function must only be used in python_test().  The created file
+# will automatically be removed upon leaving the test phase.
+distutils_write_namespace() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	if [[ ! ${DISTUTILS_USE_PEP517} ]]; then
+		die "${FUNCNAME} is available only in PEP517 mode"
+	fi
+	if [[ ${EBUILD_PHASE} != test || ! ${BUILD_DIR} ]]; then
+		die "${FUNCNAME} should only be used in python_test"
+	fi
+
+	local namespace
+	for namespace; do
+		if [[ ${namespace} == *[./]* ]]; then
+			die "${FUNCNAME} does not support nested namespaces at the moment"
+		fi
+
+		local path=${BUILD_DIR}/install$(python_get_sitedir)/${namespace}/__init__.py
+		if [[ -f ${path} ]]; then
+			die "Requested namespace ${path} exists already!"
+		fi
+		cat > "${path}" <<-EOF || die
+			__path__ = __import__('pkgutil').extend_path(__path__, __name__)
+		EOF
+		_DISTUTILS_POST_PHASE_RM+=( "${path}" )
+	done
+}
+
 # @FUNCTION: _distutils-r1_disable_ez_setup
 # @INTERNAL
 # @DESCRIPTION:
@@ -831,6 +869,15 @@ distutils-r1_python_prepare_all() {
 	if [[ ! ${DISTUTILS_USE_PEP517} ]]; then
 		_distutils-r1_disable_ez_setup
 		_distutils-r1_handle_pyproject_toml
+
+		case ${DISTUTILS_USE_SETUPTOOLS} in
+			no)
+				eqawarn "Non-PEP517 builds are deprecated for ebuilds using plain distutils."
+				eqawarn "Please migrate to DISTUTILS_USE_PEP517=setuptools."
+				eqawarn "Please see Python Guide for more details:"
+				eqawarn "  https://projects.gentoo.org/python/guide/distutils.html"
+				;;
+		esac
 	fi
 
 	if [[ ${DISTUTILS_IN_SOURCE_BUILD} && ! ${DISTUTILS_SINGLE_IMPL} ]]
@@ -1090,7 +1137,11 @@ distutils_pep517_install() {
 	# clean the build tree; otherwise we may end up with PyPy3
 	# extensions duplicated into CPython dists
 	if [[ ${DISTUTILS_USE_PEP517:-setuptools} == setuptools ]]; then
-		esetup.py clean -a
+		if [[ ${GPEP517_TESTING} ]]; then
+			rm -rf build || die
+		else
+			esetup.py clean -a
+		fi
 	fi
 }
 
@@ -1111,7 +1162,13 @@ distutils-r1_python_compile() {
 	# call setup.py build when using setuptools (either via PEP517
 	# or in legacy mode)
 	if [[ ${DISTUTILS_USE_PEP517:-setuptools} == setuptools ]]; then
-		if [[ ! ${DISTUTILS_USE_PEP517} ]]; then
+		if [[ ${GPEP517_TESTING} ]]; then
+			if [[ -d build ]]; then
+				eqawarn "A 'build' directory exists already.  Artifacts from this directory may"
+				eqawarn "be picked up by setuptools when building for another interpreter."
+				eqawarn "Please remove this directory prior to building."
+			fi
+		elif [[ ! ${DISTUTILS_USE_PEP517} ]]; then
 			_distutils-r1_copy_egg_info
 		fi
 
@@ -1122,7 +1179,21 @@ distutils-r1_python_compile() {
 			jobs=$(( nproc + 1 ))
 		fi
 
-		esetup.py build -j "${jobs}" "${@}"
+		if [[ ${DISTUTILS_USE_PEP517} && ${GPEP517_TESTING} ]]; then
+			# issue build_ext only if it looks like we have something
+			# to build; setuptools is expensive to start
+			# see extension.py for list of suffixes
+			# .pyx is added for Cython
+			if [[ -n $(
+				find '(' -name '*.c' -o -name '*.cc' -o -name '*.cpp' \
+					-o -name '*.cxx' -o -name '*.c++' -o -name '*.m' \
+					-o -name '*.mm' -o -name '*.pyx' ')' -print -quit
+			) ]]; then
+				esetup.py build_ext -j "${jobs}" "${@}"
+			fi
+		else
+			esetup.py build -j "${jobs}" "${@}"
+		fi
 	fi
 
 	if [[ ${DISTUTILS_USE_PEP517} ]]; then
@@ -1453,9 +1524,14 @@ distutils-r1_run_phase() {
 	esac
 
 	local -x LDSHARED="${CC} ${ldopts}" LDCXXSHARED="${CXX} ${ldopts}"
+	local _DISTUTILS_POST_PHASE_RM=()
 
 	"${@}"
 	local ret=${?}
+
+	if [[ -n ${_DISTUTILS_POST_PHASE_RM} ]]; then
+		rm "${_DISTUTILS_POST_PHASE_RM[@]}" || die
+	fi
 
 	cd "${_DISTUTILS_INITIAL_CWD}" || die
 	return "${ret}"
@@ -1627,7 +1703,7 @@ _distutils-r1_check_namespace_pth() {
 		ewarn "read our documentation on reliable handling of namespaces and update"
 		ewarn "the ebuild accordingly:"
 		ewarn
-		ewarn "  https://wiki.gentoo.org/wiki/Project:Python/Namespace_packages"
+		ewarn "  https://projects.gentoo.org/python/guide/concept.html#namespace-packages"
 	fi
 }
 

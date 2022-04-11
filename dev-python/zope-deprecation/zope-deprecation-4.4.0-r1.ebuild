@@ -37,11 +37,6 @@ python_compile() {
 
 python_test() {
 	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
-	# this is needed to keep the tests working while
-	# dev-python/namespace-zope is still installed
-	cat > zope/__init__.py <<-EOF || die
-		__path__ = __import__('pkgutil').extend_path(__path__, __name__)
-	EOF
+	distutils_write_namespace zope
 	eunittest
-	rm zope/__init__.py || die
 }

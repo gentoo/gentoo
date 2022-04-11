@@ -7,7 +7,7 @@ inherit autotools
 
 MY_P="tacacs+-F${PV}"
 DESCRIPTION="An updated version of Cisco's TACACS+ server"
-HOMEPAGE="http://www.shrubbery.net/tac_plus/"
+HOMEPAGE="https://www.shrubbery.net/tac_plus/"
 SRC_URI="ftp://ftp.shrubbery.net/pub/tac_plus/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 

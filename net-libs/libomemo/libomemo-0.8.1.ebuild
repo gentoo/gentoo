@@ -29,3 +29,10 @@ DEPEND="
 RESTRICT="!test? ( test )"
 
 DOCS=( CHANGELOG.md README.md )
+
+src_configure() {
+	local mycmakeargs=(
+		-DOMEMO_WITH_TESTS=$(usex test)
+	)
+	cmake_src_configure
+}
