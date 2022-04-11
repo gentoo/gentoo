@@ -1,5 +1,4 @@
 We let users enable ccache by themselves. Avoids sandbox violation.
-
 https://bugs.gentoo.org/813768
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
