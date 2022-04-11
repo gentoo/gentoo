@@ -64,10 +64,14 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	default_src_compile
-	# Needed for tests, bug #836469
-	cp "${BUILD_DIR}"/include/xmlrpc-c/config.h "${S}"/include/xmlrpc-c || die
 	# Tools building is broken in this release
 	#multilib_is_native_abi && use tools && emake -rC "${S}"/tools
+}
+
+multilib_src_test() {
+	# Needed for tests, bug #836469
+	cp "${BUILD_DIR}"/include/xmlrpc-c/config.h "${S}"/include/xmlrpc-c || die
+	default_src_test
 }
 
 #multilib_src_install_all() {
