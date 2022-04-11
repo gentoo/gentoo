@@ -16,6 +16,9 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
+SNAPSHOT="ee5fbc693f07b2d6f0d9fd748f131be82310f386"
+SRC_URI="https://github.com/zeromq/php-zmq/archive/${SNAPSHOT}.tar.gz -> ${P}.tar.gz"
+
 DESCRIPTION="PHP Bindings for ZeroMQ messaging"
 LICENSE="BSD"
 SLOT="0"
@@ -24,3 +27,6 @@ IUSE=""
 BDEPEND="virtual/pkgconfig"
 DEPEND="net-libs/zeromq"
 RDEPEND="net-libs/zeromq:="
+
+S="${WORKDIR}/php-zmq-${SNAPSHOT}"
+PHP_EXT_S="${S}"
