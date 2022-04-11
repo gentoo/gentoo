@@ -52,9 +52,6 @@ python_test() {
 
 	# this is needed to keep the tests working while
 	# dev-python/namespace-ruamel is still installed
-	cat > "${BUILD_DIR}/install$(python_get_sitedir)"/ruamel/__init__.py <<-EOF || die
-		__path__ = __import__('pkgutil').extend_path(__path__, __name__)
-	EOF
+	distutils_write_namespace ruamel
 	epytest
-	rm "${BUILD_DIR}/install$(python_get_sitedir)"/ruamel/__init__.py || die
 }
