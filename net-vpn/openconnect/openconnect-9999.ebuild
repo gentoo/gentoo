@@ -24,17 +24,13 @@ SLOT="0/5"
 IUSE="doc +gnutls gssapi libproxy lz4 nls pskc selinux smartcard stoken test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+COMMON_DEPEND="
 	dev-libs/libxml2
 	sys-libs/zlib
 	app-crypt/p11-kit
 	!gnutls? (
 		>=dev-libs/openssl-1.0.1h:0=
 		dev-libs/libp11
-		test? ( || (
-			>=dev-libs/openssl-1.1.0:0[weak-ssl-ciphers(-)]
-			<dev-libs/openssl-1.1.0:0
-		) )
 	)
 	gnutls? (
 		app-crypt/trousers
@@ -52,7 +48,14 @@ DEPEND="
 	smartcard? ( sys-apps/pcsc-lite:0= )
 	stoken? ( app-crypt/stoken )
 "
-RDEPEND="${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	test? (
+		net-libs/socket_wrapper
+		sys-libs/uid_wrapper
+		!gnutls? ( dev-libs/openssl:0[weak-ssl-ciphers(-)] )
+	)
+"
+RDEPEND="${COMMON_DEPEND}
 	sys-apps/iproute2
 	>=net-vpn/vpnc-scripts-20210402-r1
 	selinux? ( sec-policy/selinux-vpn )
@@ -61,11 +64,7 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( ${PYTHON_DEPS} sys-apps/groff )
 	nls? ( sys-devel/gettext )
-	test? (
-		net-libs/socket_wrapper
-		net-vpn/ocserv
-		sys-libs/uid_wrapper
-	)
+	test? ( net-vpn/ocserv )
 "
 
 CONFIG_CHECK="~TUN"
