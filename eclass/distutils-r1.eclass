@@ -867,6 +867,15 @@ distutils-r1_python_prepare_all() {
 	if [[ ! ${DISTUTILS_USE_PEP517} ]]; then
 		_distutils-r1_disable_ez_setup
 		_distutils-r1_handle_pyproject_toml
+
+		case ${DISTUTILS_USE_SETUPTOOLS} in
+			no)
+				eqawarn "Non-PEP517 builds are deprecated for ebuilds using plain distutils."
+				eqawarn "Please migrate to DISTUTILS_USE_PEP517=setuptools."
+				eqawarn "Please see Python Guide for more details:"
+				eqawarn "  https://projects.gentoo.org/python/guide/distutils.html"
+				;;
+		esac
 	fi
 
 	if [[ ${DISTUTILS_IN_SOURCE_BUILD} && ! ${DISTUTILS_SINGLE_IMPL} ]]
