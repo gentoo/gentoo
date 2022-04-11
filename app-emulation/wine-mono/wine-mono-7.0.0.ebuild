@@ -12,7 +12,7 @@ SRC_URI="
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 MIT MPL-1.1"
 SLOT="${PV}"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="+shared"
 
 DEPEND="!!app-emulation/wine:0"
