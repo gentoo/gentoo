@@ -196,23 +196,23 @@ _distutils_set_globals() {
 		case ${DISTUTILS_USE_PEP517} in
 			flit)
 				bdep+='
-					dev-python/flit_core[${PYTHON_USEDEP}]'
+					>=dev-python/flit_core-3.7.1[${PYTHON_USEDEP}]'
 				;;
 			hatchling)
 				bdep+='
-					dev-python/hatchling[${PYTHON_USEDEP}]'
+					>=dev-python/hatchling-0.22.0[${PYTHON_USEDEP}]'
 				;;
 			jupyter)
 				bdep+='
-					dev-python/jupyter_packaging[${PYTHON_USEDEP}]'
+					>=dev-python/jupyter_packaging-0.11.1[${PYTHON_USEDEP}]'
 				;;
 			pdm)
 				bdep+='
-					dev-python/pdm-pep517[${PYTHON_USEDEP}]'
+					>=dev-python/pdm-pep517-0.12.3[${PYTHON_USEDEP}]'
 				;;
 			poetry)
 				bdep+='
-					dev-python/poetry-core[${PYTHON_USEDEP}]'
+					>=dev-python/poetry-core-1.0.8[${PYTHON_USEDEP}]'
 				;;
 			setuptools)
 				bdep+='
@@ -425,7 +425,7 @@ distutils_enable_sphinx() {
 	_DISTUTILS_SPHINX_PLUGINS=( "${@}" )
 
 	local deps autodoc=1 d
-	deps="dev-python/sphinx[\${PYTHON_USEDEP}]"
+	deps=">=dev-python/sphinx-4.4.0[\${PYTHON_USEDEP}]"
 	for d; do
 		if [[ ${d} == --no-autodoc ]]; then
 			autodoc=
@@ -449,13 +449,15 @@ distutils_enable_sphinx() {
 			use doc || return 0
 
 			local p
-			for p in dev-python/sphinx "${_DISTUTILS_SPHINX_PLUGINS[@]}"; do
+			for p in ">=dev-python/sphinx-4.4.0" \
+				"${_DISTUTILS_SPHINX_PLUGINS[@]}"
+			do
 				python_has_version "${p}[${PYTHON_USEDEP}]" ||
 					return 1
 			done
 		}
 	else
-		deps="dev-python/sphinx"
+		deps=">=dev-python/sphinx-4.4.0"
 	fi
 
 	sphinx_compile_all() {
@@ -538,7 +540,7 @@ distutils_enable_tests() {
 			test_pkg=">=dev-python/nose-1.3.7-r4"
 			;;
 		pytest)
-			test_pkg=">=dev-python/pytest-6.2.5-r2"
+			test_pkg=">=dev-python/pytest-7.0.1"
 			;;
 		setup.py)
 			;;
