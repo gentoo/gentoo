@@ -73,6 +73,7 @@ PATCHES=(
 	"${FILESDIR}/tdesktop-3.3.0-fix-enchant.patch"
 	"${FILESDIR}/tdesktop-3.5.2-musl.patch"
 	"${FILESDIR}/tdesktop-3.5.2-jemalloc-optional.patch"
+	"${FILESDIR}/tdesktop-3.6.1-fix-kwayland-5.93.patch"
 )
 
 # Current desktop-file-utils-0.26 does not understand Version=1.5
