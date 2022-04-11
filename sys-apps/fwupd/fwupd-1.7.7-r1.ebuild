@@ -88,6 +88,7 @@ DEPEND="
 
 pkg_setup() {
 	python-single-r1_pkg_setup
+	vala_setup
 	if use nvme ; then
 		kernel_is -ge 4 4 || die "NVMe support requires kernel >= 4.4"
 	fi
@@ -104,8 +105,6 @@ src_prepare() {
 
 	sed -e "/install_dir.*'doc'/s/fwupd/${PF}/" \
 		-i data/builder/meson.build || die
-
-	vala_src_prepare
 }
 
 src_configure() {
