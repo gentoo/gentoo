@@ -7,8 +7,8 @@ inherit desktop readme.gentoo-r1 wrapper
 
 MY_PN=${PN/-professional/}
 DESCRIPTION="Intelligent Python IDE with unique code assistance and analysis"
-HOMEPAGE="http://www.jetbrains.com/pycharm/"
-SRC_URI="http://download.jetbrains.com/python/${P}.tar.gz"
+HOMEPAGE="https://www.jetbrains.com/pycharm/"
+SRC_URI="https://download.jetbrains.com/python/${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="PyCharm_Academic PyCharm_Classroom PyCharm PyCharm_OpenSource PyCharm_Preview"
