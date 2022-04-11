@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit go-module bash-completion-r1 optfeature
+inherit go-module bash-completion-r1
 
 DESCRIPTION="Fast static HTML and CSS website generator"
 HOMEPAGE="https://gohugo.io https://github.com/gohugoio/hugo"
@@ -18,13 +18,14 @@ SRC_URI="
 LICENSE="Apache-2.0 BSD BSD-2 MIT Unlicense"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc +sass test"
+IUSE="doc +sass test test-full"
 
 BDEPEND="
 	>=dev-lang/go-1.18
 	test? (
 		dev-python/docutils
 		dev-ruby/asciidoctor
+		test-full? ( app-text/pandoc )
 	)
 "
 RDEPEND="
@@ -39,13 +40,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.96.0-unbundle-libwebp-and-libsass.patch"
 	"${FILESDIR}/${PN}-0.96.0-skip-some-tests.patch"
 )
-
-pkg_setup() {
-	if use test; then
-		optfeature_header "Install additional packages for optional tests:"
-		optfeature "pandoc converter tests" "app-text/pandoc"
-	fi
-}
 
 src_configure() {
 	export CGO_ENABLED=1
