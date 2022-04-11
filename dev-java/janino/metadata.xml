@@ -5,4 +5,7 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
+	<longdescription>
+		The "JANINO" implementation of the "commons-compiler" API: Super-small, super-fast, independent from the JDK's "tools.jar".
+	</longdescription>
 </pkgmetadata>
