@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
-USE_PHP="php7-2 php7-3 php7-4"
+USE_PHP="php7-4 php8-0 php8-1"
 inherit php-ext-pecl-r3
 
 if [[ ${PV} == "9999" ]]; then
@@ -16,6 +16,9 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
+SNAPSHOT="ee5fbc693f07b2d6f0d9fd748f131be82310f386"
+SRC_URI="https://github.com/zeromq/php-zmq/archive/${SNAPSHOT}.tar.gz -> ${P}.tar.gz"
+
 DESCRIPTION="PHP Bindings for ZeroMQ messaging"
 LICENSE="BSD"
 SLOT="0"
@@ -25,4 +28,5 @@ BDEPEND="virtual/pkgconfig"
 DEPEND="net-libs/zeromq"
 RDEPEND="net-libs/zeromq:="
 
-PATCHES=( "${FILESDIR}"/${PN}-1.1.3-php7-3-compatibility.patch )
+S="${WORKDIR}/php-zmq-${SNAPSHOT}"
+PHP_EXT_S="${S}"
