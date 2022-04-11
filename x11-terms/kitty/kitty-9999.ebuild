@@ -81,6 +81,9 @@ src_prepare() {
 	# test relies on 'who' command which doesn't detect users with pid-sandbox
 	rm kitty_tests/utmp.py || die
 
+	# test may fail/hang depending on environment and shell initialization scripts
+	rm kitty_tests/ssh.py || die
+
 	# skip docs for live version
 	[[ ${PV} != 9999 ]] || sed -i '/exists.*_build/,/docs(ddir)/d' setup.py || die
 }
@@ -116,7 +119,8 @@ src_install() {
 	insinto /usr
 	doins -r linux-package/.
 
-	fperms +x /usr/bin/kitty
+	fperms +x /usr/bin/kitty \
+		/usr/$(get_libdir)/kitty/shell-integration/ssh/{askpass.py,kitty}
 }
 
 pkg_postinst() {
