@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit autotools flag-o-matic fortran-2 java-pkg-opt-2 pax-utils toolchain-funcs xdg-utils
+inherit autotools flag-o-matic fortran-2 java-pkg-opt-2 pax-utils qmake-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="High-level interactive language for numerical computations"
 LICENSE="GPL-3"
@@ -76,7 +76,7 @@ RDEPEND="
 		sci-libs/umfpack:0=
 	)
 	ssl? (
-		 dev-libs/openssl:0=
+		dev-libs/openssl:0=
 	)
 	sundials? ( >=sci-libs/sundials-4:0= )
 	X? ( x11-libs/libX11:0= )"
@@ -92,7 +92,8 @@ DEPEND="${RDEPEND}
 	gui? ( dev-qt/linguist-tools:5 )
 	java? ( >=virtual/jdk-1.6.0 )
 	qrupdate? ( app-misc/pax-utils )
-	sparse? ( app-misc/pax-utils )"
+	sparse? ( app-misc/pax-utils )
+	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.1.0-pkgbuilddir.patch
@@ -117,6 +118,11 @@ src_configure() {
 	# unfortunate dependency on mpi from hdf5 (bug #302621)
 	use hdf5 && has_version sci-libs/hdf5[mpi] && \
 		export CXX=mpicxx CC=mpicc FC=mpif77 F77=mpif77
+
+	# tell autoconf where to find qt binaries, fix bug #837752
+	export MOC="$(qt5_get_bindir)/moc" UIC="$(qt5_get_bindir)/uic" RCC="$(qt5_get_bindir)/rcc" \
+		LRELEASE="$(qt5_get_bindir)/lrelease" QCOLLECTIONGENERATOR="$(qt5_get_bindir)/qcollectiongenerator" \
+		QHELPGENERATOR="$(qt5_get_bindir)/qhelpgenerator"
 
 	# Some of these use_with flags are a bit mismatched. The configure
 	# script offers only --without-foo, and detects "foo" automatically
@@ -187,7 +193,7 @@ src_install() {
 	fi
 	[[ -e test/fntests.log ]] && dodoc test/fntests.log
 	use java && \
-		java-pkg_regjar "${ED%/}/usr/share/${PN}/${PV}/m/java/octave.jar"
+		java-pkg_regjar "${ED}/usr/share/${PN}/${PV}/m/java/octave.jar"
 	echo "LDPATH=${EPREFIX}/usr/$(get_libdir)/${PN}/${PV}" > 99octave || die
 	doenvd 99octave
 }
