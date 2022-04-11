@@ -1168,7 +1168,7 @@ distutils-r1_python_compile() {
 				eqawarn "be picked up by setuptools when building for another interpreter."
 				eqawarn "Please remove this directory prior to building."
 			fi
-		else
+		elif [[ ! ${DISTUTILS_USE_PEP517} ]]; then
 			_distutils-r1_copy_egg_info
 		fi
 
