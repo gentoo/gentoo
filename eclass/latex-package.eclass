@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: latex-package.eclass
@@ -103,23 +103,24 @@ latex-package_src_doinstall() {
 		case ${1} in
 			"sh")
 				while IFS= read -r -d '' i; do
-					dobin ${i}
+					dobin "${i}"
 				done < <(find -maxdepth 1 -type f -name "*.${1}" -print0)
 				;;
 
 			"sty" | "cls" | "fd" | "clo" | "def" | "cfg")
 				while IFS= read -r -d '' i; do
-					insinto ${TEXMF}/tex/latex/${PN}
-					doins ${i}
+					insinto "${TEXMF}/tex/latex/${PN}"
+					doins "${i}"
 				done < <(find -maxdepth 1 -type f -name "*.${1}" -print0)
 				;;
 
 			"dvi" | "ps" | "pdf")
 				while IFS= read -r -d '' i; do
 					insinto /usr/share/doc/${PF}
-					doins ${i}
-					dosym /usr/share/doc/${PF}/$(basename ${i}) ${TEXMF}/doc/latex/${PN}/${i}
-					docompress -x /usr/share/doc/${PF}/$(basename ${i})
+					doins "${i}"
+					dosym "/usr/share/doc/${PF}/$(basename "${i}")" \
+						"${TEXMF}/doc/latex/${PN}/${i}"
+					docompress -x "/usr/share/doc/${PF}/$(basename "${i}")"
 				done < <(find -maxdepth 1 -type f -name "*.${1}" -print0)
 				;;
 
@@ -127,17 +128,18 @@ latex-package_src_doinstall() {
 				if ! in_iuse doc || use doc ; then
 					while IFS= read -r -d '' i; do
 						[[ -n ${LATEX_PACKAGE_SKIP} ]] &&
-						has ${i##*/} ${LATEX_PACKAGE_SKIP} &&
+						has "${i##*/}" ${LATEX_PACKAGE_SKIP} &&
 						continue
 
 						einfo "Making documentation: ${i}"
 						# some macros need compiler called twice, do it here.
-						set -- pdflatex ${LATEX_DOC_ARGUMENTS} --halt-on-error --interaction=nonstopmode ${i}
+						set -- pdflatex ${LATEX_DOC_ARGUMENTS} \
+							--halt-on-error --interaction=nonstopmode "${i}"
 						if "${@}"; then
 							"${@}"
 						else
 							einfo "pdflatex failed, trying texi2dvi"
-							texi2dvi -q -c --language=latex ${i} || die
+							texi2dvi -q -c --language=latex "${i}" || die
 						fi
 					done < <(find -maxdepth 1 -type f -name "*.${1}" -print0)
 				fi
@@ -145,27 +147,27 @@ latex-package_src_doinstall() {
 
 			"tfm" | "vf" | "afm")
 				while IFS= read -r -d '' i; do
-					insinto ${TEXMF}/fonts/${1}/${SUPPLIER}/${PN}
-					doins ${i}
+					insinto "${TEXMF}/fonts/${1}/${SUPPLIER}/${PN}"
+					doins "${i}"
 				done < <(find -maxdepth 1 -type f -name "*.${1}" -print0)
 				;;
 
 			"pfb")
 				while IFS= read -r -d '' i; do
-					insinto ${TEXMF}/fonts/type1/${SUPPLIER}/${PN}
-					doins ${i}
+					insinto "${TEXMF}/fonts/type1/${SUPPLIER}/${PN}"
+					doins "${i}"
 				done < <(find -maxdepth 1 -type f -name "*.pfb" -print0)
 				;;
 			"ttf")
 				while IFS= read -r -d '' i; do
-					insinto ${TEXMF}/fonts/truetype/${SUPPLIER}/${PN}
-					doins ${i}
+					insinto "${TEXMF}/fonts/truetype/${SUPPLIER}/${PN}"
+					doins "${i}"
 				done < <(find -maxdepth 1 -type f -name "*.ttf" -print0)
 				;;
 			"bst")
 				while IFS= read -r -d '' i; do
-					insinto ${TEXMF}/bibtex/bst/${PN}
-					doins ${i}
+					insinto "${TEXMF}/bibtex/bst/${PN}"
+					doins "${i}"
 				done < <(find -maxdepth 1 -type f -name "*.bst" -print0)
 				;;
 
@@ -201,7 +203,7 @@ latex-package_src_compile() {
 	debug-print function $FUNCNAME $*
 	while IFS= read -r -d '' i; do
 		einfo "Extracting from ${i}"
-		latex --halt-on-error --interaction=nonstopmode ${i} || die
+		latex --halt-on-error --interaction=nonstopmode "${i}" || die
 	done < <(find -maxdepth 1 -type f -name "*.ins" -print0)
 }
 
