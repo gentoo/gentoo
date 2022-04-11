@@ -31,6 +31,10 @@ DEPEND="
 	!gnutls? (
 		>=dev-libs/openssl-1.0.1h:0=
 		dev-libs/libp11
+		test? ( || (
+			>=dev-libs/openssl-1.1.0:0[weak-ssl-ciphers(-)]
+			<dev-libs/openssl-1.1.0:0
+		) )
 	)
 	gnutls? (
 		app-crypt/trousers
