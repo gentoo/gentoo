@@ -9,7 +9,7 @@ inherit autotools lua-single readme.gentoo-r1 systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="Lightweight high-performance web server"
 HOMEPAGE="https://www.lighttpd.net https://github.com/lighttpd"
-SRC_URI="https://download.lighttpd.net/lighttpd/releases-1.4.x/${P}.tar.xz"
+SRC_URI="https://download.lighttpd.net/lighttpd/releases-$(ver_cut 1-2).x/${P}.tar.xz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
