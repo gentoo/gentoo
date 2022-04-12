@@ -10,6 +10,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 s
 RDEPEND="
 	!prefix-guest? (
 		|| (
+			sys-apps/systemd-utils[tmpfiles]
 			sys-apps/systemd-tmpfiles
 			sys-apps/opentmpfiles
 			sys-apps/systemd
