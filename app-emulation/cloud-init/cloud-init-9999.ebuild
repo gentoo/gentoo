@@ -51,13 +51,6 @@ RDEPEND="
 	virtual/logger
 "
 
-PATCHES=(
-	# Fix Gentoo support
-	# https://code.launchpad.net/~gilles-dartiguelongue/cloud-init/+git/cloud-init/+merge/358777
-	"${FILESDIR}"/22.1-fix-update_package_sources-function.patch
-	"${FILESDIR}"/22.1-add-support-for-package_upgrade.patch
-)
-
 distutils_enable_tests pytest
 
 python_prepare_all() {
