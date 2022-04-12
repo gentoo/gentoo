@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="ftp://ftp.ntpsec.org/pub/releases/${PN}-${PV}.tar.gz"
 	RESTRICT="mirror"
-	KEYWORDS="amd64 arm arm64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 DESCRIPTION="The NTP reference implementation, refactored"
@@ -59,6 +59,9 @@ DEPEND="${CDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.9-remove-asciidoctor-from-config.patch"
+	"${FILESDIR}/${PN}-1.2.1-seccomp-rollup.patch"
+	"${FILESDIR}/${PN}-1.2.1-seccomp-rseq-glibc-2.35.patch"
+	"${FILESDIR}/${PN}-1.2.1-build-notests.patch"
 	"${FILESDIR}/${PN}-py3-test-clarify.patch"
 )
 
@@ -123,7 +126,6 @@ src_compile() {
 }
 
 src_test() {
-	debug-print-function ${FUNCNAME} "$@"
 	python_compile() {
 		waf-utils_src_compile check
 	}
