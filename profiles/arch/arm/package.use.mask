@@ -74,6 +74,7 @@ net-im/prosody selinux
 # gnuefi + systemd-boot works on arm
 # bug #729720
 sys-apps/systemd -gnuefi
+sys-apps/systemd-utils -boot
 
 # Joonas Niilola <juippis@gentoo.org> (2021-01-15)
 # Dependency not keyworded on this arch.
