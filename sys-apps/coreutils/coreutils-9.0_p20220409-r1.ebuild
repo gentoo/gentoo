@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/coreutils.asc
 inherit flag-o-matic python-any-r1 toolchain-funcs verify-sig
 
-PATCH="${PN}-8.30-patches-01"
+MY_PATCH="${PN}-9.0_p20220409-patches-01"
 DESCRIPTION="Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)"
 HOMEPAGE="https://www.gnu.org/software/coreutils/"
 
@@ -20,14 +20,12 @@ if [[ ${PV} == *_p* ]] ; then
 	S="${WORKDIR}"/${PN}-${MY_SNAPSHOT}
 else
 	SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
-		!vanilla? (
-			mirror://gentoo/${PATCH}.tar.xz
-			https://dev.gentoo.org/~polynomial-c/dist/${PATCH}.tar.xz
-		)
 		verify-sig? ( mirror://gnu/${PN}/${P}.tar.xz.sig )"
 
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x86-linux"
 fi
+
+SRC_URI+=" !vanilla? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${MY_PATCH}.tar.xz )"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -91,10 +89,8 @@ src_prepare() {
 		# Upstream patches
 	)
 
-	if [[ ${PV} != *_p* ]] && ! use vanilla ; then
+	if ! use vanilla ; then
 		PATCHES+=( "${WORKDIR}"/patch )
-		PATCHES+=( "${FILESDIR}"/${PN}-8.32-sandbox-env-test.patch )
-		PATCHES+=( "${FILESDIR}"/${PN}-9.0-r1-0001-dircolors-consider-COLORTERM-sufficient-for-color.patch )
 	fi
 
 	default
@@ -198,8 +194,7 @@ src_test() {
 	addwrite /dev/full
 	#export RUN_EXPENSIVE_TESTS="yes"
 	#export FETISH_GROUPS="portage wheel"
-	env PATH="${T}/mount-wrappers:${PATH}" \
-	emake -j1 -k check
+	env PATH="${T}/mount-wrappers:${PATH}" emake -k check VERBOSE=yes
 }
 
 src_install() {
