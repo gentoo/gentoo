@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2022-04-12)
+# dev-ruby/nokogumbo is now part of dev-ruby/nokogiri and nokogiri
+# versions still supporting a separate nokogumbo have known security
+# issues. nokogumbo's only reverse dependency is dev-ruby/sanitize:5,
+# but a newer slot is available.
+dev-ruby/nokogumbo
+dev-ruby/sanitize:5
+
 # Michał Górny <mgorny@gentoo.org> (2022-04-11)
 # Tests are broken once again.  Last activity in Jan 2020, last release
 # in Aug 2019.  No revdeps.
