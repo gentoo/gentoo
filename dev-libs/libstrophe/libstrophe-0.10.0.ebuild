@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 DESCRIPTION="A simple, lightweight C library for writing XMPP clients"
 HOMEPAGE="http://strophe.im/libstrophe/"
-SRC_URI="https://github.com/strophe/${PN}/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/strophe/${PN}/releases/download/${PV}/${P}.tar.xz"
 LICENSE="|| ( MIT GPL-3 )"
 SLOT="0"
 KEYWORDS="amd64"
