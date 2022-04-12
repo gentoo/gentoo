@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>gentoo@seichter.de</email>
+		<name>Ralph Seichter</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<longdescription>
+		Manage DANE TLSA records in DNS servers. Supports multiple domains
+		with multiple TLS certificates each. LetsDNS can be invoked manually,
+		from cron jobs, or called in hook functions of ACME-clients like
+		dehydrated or certbot.
+	</longdescription>
+	<upstream>
+		<doc>https://letsdns.org</doc>
+		<maintainer>
+			<email>author@letsdns.org</email>
+			<name>Ralph Seichter</name>
+		</maintainer>
+		<remote-id type="github">LetsDNS/letsdns</remote-id>
+	</upstream>
+</pkgmetadata>
