@@ -22,6 +22,7 @@ RDEPEND="
 	dedicated? (
 		acct-group/openttd
 		acct-user/openttd
+		app-misc/dtach
 	)
 	!dedicated? (
 		allegro? ( media-libs/allegro:5 )
@@ -90,8 +91,8 @@ src_configure() {
 src_install() {
 	cmake_src_install
 	if use dedicated ; then
-		newconfd "${FILESDIR}"/openttd.confd openttd
-		newinitd "${FILESDIR}"/openttd.initd-r2 openttd
+		newconfd "${FILESDIR}"/openttd.confd-r1 openttd
+		newinitd "${FILESDIR}"/openttd.initd-r3 openttd
 	fi
 }
 
