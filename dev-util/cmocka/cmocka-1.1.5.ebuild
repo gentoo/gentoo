@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit cmake-multilib
 
 DESCRIPTION="Unit testing framework for C"
 HOMEPAGE="https://cmocka.org/"
-SRC_URI="https://cmocka.org/files/1.1/${P}.tar.xz"
+SRC_URI="https://cmocka.org/files/$(ver_cut 1-2)/${P}.tar.xz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
