@@ -3,9 +3,14 @@
 
 EAPI=7
 
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gawk.asc
+
+inherit verify-sig
+
 DESCRIPTION="GNU awk pattern-matching language"
 HOMEPAGE="https://www.gnu.org/software/gawk/gawk.html"
 SRC_URI="mirror://gnu/gawk/${P}.tar.xz"
+SRC_URI+=" verify-sig? ( mirror://gnu/gawk/${P}.tar.xz.sig )"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,6 +29,7 @@ BDEPEND="
 	>=sys-apps/texinfo-6.7
 	>=sys-devel/bison-3.5.4
 	nls? ( sys-devel/gettext )
+	verify-sig? ( sec-keys/openpgp-keys-gawk )
 "
 
 src_prepare() {
