@@ -1,12 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
 
 DESCRIPTION="Apps for querying the sg SCSI interface"
-HOMEPAGE="http://sg.danny.cz/sg/"
+HOMEPAGE="https://sg.danny.cz/sg/"
 #SRC_URI="https://github.com/hreinecke/sg3_utils/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-SRC_URI="http://sg.danny.cz/sg/p/${P}.tar.xz"
+SRC_URI="https://sg.danny.cz/sg/p/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
