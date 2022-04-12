@@ -36,7 +36,9 @@ DEPEND="
 RDEPEND="${DEPEND}
 	php_targets_php7-4? ( dev-php/pecl-http:7[php_targets_php7-4(-)] )"
 
-PHP_EXT_ECONF_ARGS=( --with-http --without-http-shared-deps --without-http-libidn-dir )
+PHP_EXT_ECONF_ARGS=( --with-http --without-http-shared-deps
+	--without-http-libidn-dir  --without-http-libicu-dir
+	--without-http-libidnkit2-dir --without-http-libidnkit-dir )
 
 src_prepare() {
 	if use php_targets_php8-0 || use php_targets_php8-1 ; then
