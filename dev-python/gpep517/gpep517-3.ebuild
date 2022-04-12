@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64"
+KEYWORDS="~alpha ~amd64 ~riscv"
 
 RDEPEND="
 	>=dev-python/installer-0.5.0[${PYTHON_USEDEP}]
