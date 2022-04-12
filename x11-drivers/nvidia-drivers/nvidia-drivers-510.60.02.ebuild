@@ -135,7 +135,8 @@ pkg_setup() {
 		ewarn "  <=sys-kernel/gentoo-kernel-${NV_KERNEL_MAX}.x"
 		ewarn "  <=sys-kernel/gentoo-sources-${NV_KERNEL_MAX}.x"
 		ewarn "You are free to try or use /etc/portage/patches, but support will"
-		ewarn "not be given and issues wait until NVIDIA releases a fixed version."
+		ewarn "not be given and issues wait until NVIDIA releases a fixed version"
+		ewarn "(Gentoo will not accept patches for this)."
 		ewarn
 		ewarn "Do _not_ file a bug report if run into issues."
 		ewarn
