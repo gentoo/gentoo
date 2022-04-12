@@ -13,17 +13,16 @@ HOMEPAGE="https://github.com/SELinuxProject/setools/wiki"
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/SELinuxProject/setools.git"
-	S="${WORKDIR}/${P}"
 else
 	SRC_URI="https://github.com/SELinuxProject/setools/releases/download/${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	S="${WORKDIR}/${PN}"
+	KEYWORDS="amd64 arm arm64 x86"
 fi
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 IUSE="test infoflow X"
 RESTRICT="!test? ( test )"
+S="${WORKDIR}/${PN}"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -46,7 +45,8 @@ python_prepare_all() {
 	sed -i "s@^lib_dirs = .*@lib_dirs = ['${ROOT:-/}usr/$(get_libdir)']@" "${S}"/setup.py || \
 		die "failed to set lib_dirs"
 
-	use X || local PATCHES=( "${FILESDIR}"/setools-4.4.0-remove-gui.patch )
+	local PATCHES=( "${FILESDIR}"/0001-__init__.py-Make-NetworkX-dep-optional.patch )
+	use X || PATCHES+=( "${FILESDIR}"/setools-4.4.0-remove-gui.patch )
 	distutils-r1_python_prepare_all
 }
 
