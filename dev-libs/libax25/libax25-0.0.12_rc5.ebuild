@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ MY_P=${PN}-$(ver_rs 3 '-')
 
 DESCRIPTION="AX.25 library for hamradio applications"
 HOMEPAGE="http://www.linux-ax25.org/"
-SRC_URI="http://www.linux-ax25.org/pub/${PN}/${MY_P}.tar.gz"
+SRC_URI="http://www.linux-ax25.org/pub/${PN}/${MY_P}.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="0"
