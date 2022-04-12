@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Kerberos V PAM Authentication Module"
 HOMEPAGE="https://www.eyrie.org/~eagle/software/pam-krb5/"
-SRC_URI="https://archives.eyrie.org/software/kerberos/pam-krb5-${PV}.tar.gz"
+SRC_URI="https://archives.eyrie.org/software/kerberos/${P/_/-}.tar.xz"
 
 LICENSE="|| ( BSD-2 GPL-2 )"
 SLOT="0"
