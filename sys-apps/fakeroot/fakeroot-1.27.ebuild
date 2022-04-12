@@ -47,6 +47,10 @@ src_configure() {
 	use acl || export ac_cv_search_acl_get_fd=no # bug 759568
 	use debug && append-cppflags -DLIBFAKEROOT_DEBUGGING
 
+	# https://bugs.gentoo.org/834445
+	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=101270
+	filter-flags -fno-semantic-interposition
+
 	econf --disable-static
 }
 
