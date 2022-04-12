@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,8 +35,8 @@ CDEPEND="
 	dev-python/jsonschema[${PYTHON_USEDEP}]
 	dev-python/netifaces[${PYTHON_USEDEP}]
 "
-DEPEND="
-		${CDEPEND}
+BDEPEND="
+	${CDEPEND}
 	test? (
 		>=dev-python/httpretty-0.7.1[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
