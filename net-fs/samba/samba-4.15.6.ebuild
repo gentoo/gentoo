@@ -249,16 +249,16 @@ multilib_src_configure() {
 		myconf+=( --with-shared-modules=DEFAULT,!vfs_snapper )
 	fi
 
-	CPPFLAGS="-I${SYSROOT}${EPREFIX}/usr/include/et ${CPPFLAGS}" \
+	PYTHONHASHSEED=1 CPPFLAGS="-I${SYSROOT}${EPREFIX}/usr/include/et ${CPPFLAGS}" \
 		waf-utils_src_configure ${myconf[@]}
 }
 
 multilib_src_compile() {
-	waf-utils_src_compile
+	PYTHONHASHSEED=1 waf-utils_src_compile
 }
 
 multilib_src_install() {
-	waf-utils_src_install
+	PYTHONHASHSEED=1 waf-utils_src_install
 
 	# Make all .so files executable
 	find "${ED}" -type f -name "*.so" -exec chmod +x {} + || die
