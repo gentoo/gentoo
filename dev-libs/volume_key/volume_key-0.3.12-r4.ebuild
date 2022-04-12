@@ -9,7 +9,7 @@ inherit autotools python-single-r1
 
 DESCRIPTION="Library for manipulating and storing storage volume encryption keys"
 HOMEPAGE="https://pagure.io/volume_key"
-SRC_URI="http://releases.pagure.org/${PN}/${P}.tar.xz"
+SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
