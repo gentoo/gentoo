@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,7 +41,10 @@ RDEPEND="
 		>=x11-libs/pango-1.12
 	)
 	devil? ( media-libs/devil[png,jpeg] )
-	gtk? ( x11-libs/gtk+:2 )
+	gtk? (
+		x11-libs/gdk-pixbuf:2
+		x11-libs/gtk+:2
+	)
 	gts? ( sci-libs/gts )
 	guile? ( dev-scheme/guile )
 	java? ( >=virtual/jre-1.8:* )
@@ -71,7 +74,6 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	sys-devel/flex
 	sys-devel/libtool
-	x11-libs/gdk-pixbuf:2
 	virtual/pkgconfig
 	doc? (
 		app-text/ghostscript-gpl
@@ -101,7 +103,7 @@ BDEPEND="
 #   needs 'pangocairo' enabled in graphviz configuration
 #   gtk-2 depends on pango, cairo and libX11 directly.
 # - gdk-pixbuf
-#   Disabled, GTK-1 junk.
+#   Directly depends on gtk-2 and gdk-pixbuf.
 # - glitz
 #   Disabled, no particular reason
 #   needs 'pangocairo' enabled in graphviz configuration
@@ -190,6 +192,8 @@ src_configure() {
 		--enable-ltdl
 		$(use_with cairo pangocairo)
 		$(use_with devil)
+		$(use_with gtk gdk)
+		$(use_with gtk gdk-pixbuf)
 		$(use_with gtk)
 		$(use_with gts)
 		$(use_with qt5 qt)
