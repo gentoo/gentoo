@@ -22,7 +22,6 @@ else
 	else
 		SRC_URI="https://lutris.net/releases/${P/-/_}.tar.xz"
 		S="${WORKDIR}/${PN}"
-
 		KEYWORDS="~amd64 ~x86"
 	fi
 fi
@@ -57,7 +56,6 @@ RDEPEND="
 distutils_enable_tests pytest
 
 DOCS=( AUTHORS README.rst docs/installers.rst docs/steam.rst )
-PATCHES=( "${FILESDIR}/${PN}-0.5.9-choose-amdgpu-pro-vulkan-driver.patch" )
 
 python_test() {
 	virtx epytest
