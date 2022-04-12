@@ -9,7 +9,7 @@ inherit python-any-r1
 
 DESCRIPTION="A fast and low-memory footprint OCI Container Runtime fully written in C"
 HOMEPAGE="https://github.com/containers/crun"
-SRC_URI="https://github.com/containers/${PN}/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/containers/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
