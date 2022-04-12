@@ -1,13 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 PYTHON_COMPAT=( python3_{7,8,9,10} )
 inherit multilib-minimal python-single-r1
 
-DESCRIPTION="a library with the aim to simplify DNS programming in C"
-HOMEPAGE="http://www.nlnetlabs.nl/projects/ldns/"
-SRC_URI="http://www.nlnetlabs.nl/downloads/${PN}/${P}.tar.gz"
+DESCRIPTION="A library with the aim to simplify DNS programming in C"
+HOMEPAGE="https://www.nlnetlabs.nl/projects/ldns/"
+SRC_URI="https://www.nlnetlabs.nl/downloads/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/3"
