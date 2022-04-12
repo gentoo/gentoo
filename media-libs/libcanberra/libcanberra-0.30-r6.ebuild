@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="http://0pointer.de/lennart/projects/${PN}/${P}.tar.xz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
-IUSE="alsa gnome gstreamer +gtk +gtk3 oss pulseaudio +sound tdb udev"
+IUSE="alsa gnome gstreamer gtk2 +gtk3 oss pulseaudio +sound tdb udev"
 
 DEPEND="
 	dev-libs/libltdl:0[${MULTILIB_USEDEP}]
@@ -20,7 +20,7 @@ DEPEND="
 		media-libs/alsa-lib:=[${MULTILIB_USEDEP}]
 		udev? ( virtual/libudev:=[${MULTILIB_USEDEP}] ) )
 	gstreamer? ( media-libs/gstreamer:1.0[${MULTILIB_USEDEP}] )
-	gtk? (
+	gtk2? (
 		>=dev-libs/glib-2.32:2[${MULTILIB_USEDEP}]
 		>=x11-libs/gtk+-2.20.0:2[${MULTILIB_USEDEP}]
 		x11-libs/libX11[${MULTILIB_USEDEP}] )
@@ -55,7 +55,7 @@ multilib_src_configure() {
 		$(use_enable oss) \
 		$(use_enable pulseaudio pulse) \
 		$(use_enable gstreamer) \
-		$(use_enable gtk) \
+		$(use_enable gtk2 gtk) \
 		$(use_enable gtk3) \
 		$(use_enable tdb) \
 		$(use_enable udev) \
