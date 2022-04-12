@@ -74,7 +74,7 @@ COMMONDEPEND="
 		appindicator? ( dev-libs/libindicate:3[gtk] )
 		libcanberra? (
 			!gtk2? ( media-libs/libcanberra[gtk3] )
-			gtk2? ( media-libs/libcanberra[gtk] )
+			gtk2? ( media-libs/libcanberra[gtk2] )
 		)
 		libnotify? ( x11-libs/libnotify )
 	)

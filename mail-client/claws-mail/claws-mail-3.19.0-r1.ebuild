@@ -68,7 +68,7 @@ COMMONDEPEND="
 	notification? (
 		dev-libs/glib:2
 		appindicator? ( dev-libs/libindicate:3[gtk] )
-		libcanberra? (  media-libs/libcanberra[gtk] )
+		libcanberra? (  media-libs/libcanberra[gtk2] )
 		libnotify? ( x11-libs/libnotify )
 	)
 	pdf? ( app-text/poppler[cairo] )
