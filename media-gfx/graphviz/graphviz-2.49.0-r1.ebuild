@@ -15,10 +15,10 @@ SRC_URI="https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-re
 LICENSE="CPL-1.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris"
-IUSE="+cairo devil doc examples gtk gts guile java lasi lefty nls pdf perl postscript python qt5 ruby svg tcl webp X"
+IUSE="+cairo devil doc examples gtk2 gts guile java lasi lefty nls pdf perl postscript python qt5 ruby svg tcl webp X"
 
 REQUIRED_USE="
-	!cairo? ( !X !gtk !postscript !lasi )
+	!cairo? ( !X !gtk2 !postscript !lasi )
 	pdf? ( cairo )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -41,7 +41,7 @@ RDEPEND="
 		>=x11-libs/pango-1.12
 	)
 	devil? ( media-libs/devil[png,jpeg] )
-	gtk? (
+	gtk2? (
 		x11-libs/gdk-pixbuf:2
 		x11-libs/gtk+:2
 	)
@@ -192,9 +192,9 @@ src_configure() {
 		--enable-ltdl
 		$(use_with cairo pangocairo)
 		$(use_with devil)
-		$(use_with gtk gdk)
-		$(use_with gtk gdk-pixbuf)
-		$(use_with gtk)
+		$(use_with gtk2 gdk)
+		$(use_with gtk2 gdk-pixbuf)
+		$(use_with gtk2)
 		$(use_with gts)
 		$(use_with qt5 qt)
 		$(use_with lasi)
