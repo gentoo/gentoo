@@ -25,19 +25,19 @@ SLOT="0"
 
 IUSE_INPUT_DEVICES="input_devices_joystick"
 IUSE_VIDEO_CAPTURE_DEVICES="v4l ieee1394 hdhomerun vbox ceton"
-IUSE="alsa altivec asi autostart bluray cdda cdr cec debug dvd dvb exif fftw jack java
+IUSE="alsa altivec asi autostart cdda cdr cec debug dvd dvb exif fftw jack java
 	+lame lcd libass lirc nvdec +opengl oss perl pulseaudio python raw systemd vaapi vdpau vpx
 	+wrapper x264 x265 +xml xmltv +xvid +X zeroconf
 	${IUSE_INPUT_DEVICES} ${IUSE_VIDEO_CAPTURE_DEVICES}"
 
 REQUIRED_USE="
-	bluray? ( xml )
 	cdr? ( cdda )
 "
 RDEPEND="
 	acct-user/mythtv
 	dev-libs/glib:2
 	dev-libs/lzo
+	dev-libs/libzip
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5[jpeg]
@@ -52,6 +52,7 @@ RDEPEND="
 	media-fonts/tex-gyre
 	media-gfx/exiv2:=
 	media-libs/freetype:2
+	media-libs/libbluray:=[java?]
 	media-libs/libsamplerate
 	media-libs/libsoundtouch
 	media-libs/taglib
@@ -61,11 +62,6 @@ RDEPEND="
 		net-dialup/mingetty
 		x11-apps/xset
 		x11-wm/evilwm
-	)
-	bluray? (
-		dev-libs/libcdio:=
-		media-libs/libbluray:=[java?]
-		sys-fs/udisks:2
 	)
 	cec? ( dev-libs/libcec )
 	dvd? (
