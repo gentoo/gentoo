@@ -71,7 +71,7 @@ proxy_balancer - mod_proxy extension for load balancing
 proxy_connect - mod_proxy extension for CONNECT request handling
 proxy_fcgi - FastCGI support module for mod_proxy
 proxy_ftp - FTP support module for mod_proxy
-proxy_check - Dynamic health check of Balancer members (workers) for mod_proxy
+proxy_hcheck - Dynamic health check of Balancer members (workers) for mod_proxy
 proxy_html - Module to rewrite links in html pages behind a reverse proxy
 proxy_http - HTTP support module for mod_proxy
 proxy_http2 - HTTP2 support module for mod_proxy
