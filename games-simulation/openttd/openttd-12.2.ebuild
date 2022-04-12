@@ -91,7 +91,7 @@ src_install() {
 	cmake_src_install
 	if use dedicated ; then
 		newconfd "${FILESDIR}"/openttd.confd openttd
-		newinitd "${FILESDIR}"/openttd.initd-r1 openttd
+		newinitd "${FILESDIR}"/openttd.initd-r2 openttd
 	fi
 }
 
