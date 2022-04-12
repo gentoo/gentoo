@@ -45,6 +45,7 @@ RDEPEND="${LUA_DEPS}
 	dev-libs/snowball-stemmer:=
 	>=dev-libs/xxhash-0.8.0
 	sys-apps/file
+	sys-libs/zlib
 	blas? (
 		virtual/blas
 		virtual/lapack

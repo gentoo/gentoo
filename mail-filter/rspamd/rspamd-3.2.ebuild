@@ -44,6 +44,7 @@ RDEPEND="${LUA_DEPS}
 	dev-libs/openssl:0=[-bindist(-)]
 	dev-libs/snowball-stemmer:=
 	sys-apps/file
+	sys-libs/zlib
 	blas? (
 		virtual/blas
 		virtual/lapack
