@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Remote procedure call package for IP/UDP (used by Coda)"
 HOMEPAGE="http://www.coda.cs.cmu.edu/"
-SRC_URI="http://www.coda.cs.cmu.edu/pub/rpc2/src/${P}.tar.gz"
+SRC_URI="http://www.coda.cs.cmu.edu/pub/rpc2/src/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="1"
