@@ -3,14 +3,12 @@
 
 EAPI=7
 
-inherit autotools
-
 DESCRIPTION="rpcsvc protocol definitions from glibc"
 HOMEPAGE="https://github.com/thkukuk/rpcsvc-proto"
-SRC_URI="https://github.com/thkukuk/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/thkukuk/rpcsvc-proto/releases/download/v${PV}/${P}.tar.xz"
 
-SLOT="0"
 LICENSE="LGPL-2.1+ BSD"
+SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="!<sys-libs/glibc-2.26
@@ -20,7 +18,6 @@ BDEPEND="sys-devel/gettext"
 
 src_prepare() {
 	default
-	eautoreconf
 
 	# Use ${CHOST}-cpp, not 'cpp': bug #718138
 	# Ideally we should use @CPP@ but rpcgen makes it hard to use '${CHOST}-gcc -E'
