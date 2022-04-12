@@ -9,7 +9,7 @@ inherit qt5-build
 DESCRIPTION="SVG rendering library for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 arm arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${P}-QTBUG-90744.tar.xz"
 fi
 
