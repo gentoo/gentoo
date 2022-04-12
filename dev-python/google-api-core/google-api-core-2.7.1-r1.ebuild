@@ -59,8 +59,12 @@ python_compile() {
 	find "${BUILD_DIR}" -name '*.pth' -delete || die
 }
 
+src_test() {
+	rm -r google || die
+	distutils-r1_src_test
+}
+
 python_test() {
 	distutils_write_namespace google
-	cd "${T}" || die
-	epytest -p no:aiohttp -p no:trio "${S}/tests"
+	epytest -p no:aiohttp -p no:trio tests
 }
