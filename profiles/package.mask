@@ -409,7 +409,7 @@ x11-misc/easystroke
 
 # James Beddek <telans@posteo.de> (2022-01-19)
 # FFmpeg 5.0 ABI/API changes break many packages.
-# Masking for tracker/tinderbox.
+# Masking for tracker/tinderbox. Bug #831437
 >=media-video/ffmpeg-5.0
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-15)
