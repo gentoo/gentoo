@@ -8,8 +8,8 @@ inherit verify-sig
 
 DESCRIPTION="An IRC server written from scratch"
 HOMEPAGE="https://ngircd.barton.de/"
-SRC_URI="https://arthur.barton.de/pub/${PN}/${P}.tar.gz"
-SRC_URI+=" verify-sig? ( https://arthur.barton.de/pub/${PN}/${P}.tar.gz.sig )"
+SRC_URI="https://arthur.barton.de/pub/${PN}/${P}.tar.xz"
+SRC_URI+=" verify-sig? ( https://arthur.barton.de/pub/${PN}/${P}.tar.xz.sig )"
 
 LICENSE="GPL-2"
 SLOT="0"
