@@ -181,7 +181,7 @@ pkg_pretend() {
 			ewarn "See https://bugs.gentoo.org/674458."
 		fi
 
-		local CONFIG_CHECK="~AUTOFS4_FS ~BINFMT_MISC ~BLK_DEV_BSG ~CGROUPS
+		local CONFIG_CHECK=" ~BINFMT_MISC ~BLK_DEV_BSG ~CGROUPS
 			~DEVTMPFS ~EPOLL ~FANOTIFY ~FHANDLE
 			~INOTIFY_USER ~IPV6 ~NET ~NET_NS ~PROC_FS ~SIGNALFD ~SYSFS
 			~TIMERFD ~TMPFS_XATTR ~UNIX ~USER_NS
@@ -195,10 +195,16 @@ pkg_pretend() {
 		kernel_is -lt 4 7 && CONFIG_CHECK+=" ~DEVPTS_MULTIPLE_INSTANCES"
 		kernel_is -ge 4 10 && CONFIG_CHECK+=" ~CGROUP_BPF"
 
-		if kernel_is -lt 5 10 20; then
-			CONFIG_CHECK+=" ~CHECKPOINT_RESTORE"
-		else
+		if kernel_is -ge 5 10 20; then
 			CONFIG_CHECK+=" ~KCMP"
+		else
+			CONFIG_CHECK+=" ~CHECKPOINT_RESTORE"
+		fi
+
+		if kernel_is -ge 4 18; then
+			CONFIG_CHECK+=" ~AUTOFS_FS"
+		else
+			CONFIG_CHECK+=" ~AUTOFS4_FS"
 		fi
 
 		if linux_config_exists; then
