@@ -283,7 +283,7 @@ src_configure() {
 		$(use_enable X x11)
 	)
 
-	# Hardware accellerators
+	# Hardware accelerators
 	myconf+=(
 		$(use_enable nvdec)
 		$(use_enable vaapi)
