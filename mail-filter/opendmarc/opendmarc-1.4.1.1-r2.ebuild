@@ -23,7 +23,8 @@ RDEPEND="${DEPEND}
 		dev-perl/HTTP-Message
 		dev-perl/Switch
 	)
-	spf? ( mail-filter/libspf2 )"
+	spf? ( mail-filter/libspf2 )
+	virtual/libc"
 
 S=${WORKDIR}/OpenDMARC-rel-${PN}-${PV//./-}
 
