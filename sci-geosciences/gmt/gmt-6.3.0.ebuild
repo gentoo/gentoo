@@ -7,7 +7,7 @@ inherit bash-completion-r1 cmake
 
 DESCRIPTION="Powerful map generator"
 HOMEPAGE="https://www.generic-mapping-tools.org"
-SRC_URI="https://github.com/GenericMappingTools/${PN}/releases/download/${PV}/${P}-src.tar.gz"
+SRC_URI="https://github.com/GenericMappingTools/${PN}/releases/download/${PV}/${P}-src.tar.xz"
 
 LICENSE="GPL-3+ gmttria? ( Artistic )"
 SLOT="6"
