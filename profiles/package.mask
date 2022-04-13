@@ -413,13 +413,6 @@ x11-misc/easystroke
 # Blocks (CVE-2018-11797, CVE-2021-{27807,27906,31811,31812})
 dev-tex/pdfannotextractor
 
-# Mike Pagano <mpagano@gentoo.org> (2021-11-18)
-# Bug introduced in this version that can
-# cause system freeze with data loss.
-# Bug #824558.
-=sys-kernel/gentoo-sources-5.14.19
-=sys-kernel/vanilla-sources-5.14.19
-
 # Ionen Wolkens <ionen@gentoo.org> (2021-10-09)
 # Vulkan beta driver branch aimed at Vulkan developers for testing
 # new features. Beside vulkan, it is typically behind the main branch
@@ -445,20 +438,6 @@ media-libs/webrtc-audio-processing:1
 # sys-devel/automake version 1.11 is EOL and is only useful for testing
 # old de-ANSI-fication/ansi2knr/AM_C_PROTOTYPES code. Please uninstall.
 sys-devel/automake:1.11
-
-# Alice Ferrazzi <alicef@gentoo.org> (2021-09-16)
-# Regression in POSIX CPU timers.
-# Please upgrade your gentoo-sources.
-# Adding affected vanilla-sources
-# https://www.spinics.net/lists/stable/msg499206.html
-=sys-kernel/gentoo-sources-5.14.4
-=sys-kernel/gentoo-sources-5.13.17
-=sys-kernel/gentoo-sources-5.10.65
-=sys-kernel/gentoo-sources-5.4.146
-=sys-kernel/vanilla-sources-5.14.4
-=sys-kernel/vanilla-sources-5.13.17
-=sys-kernel/vanilla-sources-5.10.65
-=sys-kernel/vanilla-sources-5.4.146
 
 # Mart Raudsepp <leio@gentoo.org> (2021-09-15)
 # New major parallel-installable release which needs special care to not
