@@ -27,10 +27,6 @@ RDEPEND="
 	doc? ( app-doc/blas-docs )"
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	#"${FILESDIR}"/${PN}-3.9.0-build-tests.patch
-)
-
 src_configure() {
 	local mycmakeargs=(
 		-DCBLAS=ON
