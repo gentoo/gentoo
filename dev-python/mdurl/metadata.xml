@@ -8,6 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">mdurl</remote-id>
-		<remote-id type="github">hukkin/mdurl</remote-id>
+		<remote-id type="github">executablebooks/mdurl</remote-id>
 	</upstream>
 </pkgmetadata>
