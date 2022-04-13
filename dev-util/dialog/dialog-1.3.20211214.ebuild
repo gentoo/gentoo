@@ -7,7 +7,7 @@ MY_P=${PN}-$(ver_rs 2 -)
 
 DESCRIPTION="Tool to display dialog boxes from a shell"
 HOMEPAGE="https://invisible-island.net/dialog/"
-SRC_URI="https://invisible-mirror.net/archives/dialog/${MY_P}.tgz"
+SRC_URI="https://invisible-island.net/archives/dialog/${MY_P}.tgz"
 S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
