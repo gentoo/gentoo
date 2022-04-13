@@ -322,13 +322,6 @@ net-p2p/arti
 # Removal on 2022-04-13.
 www-apps/rocketwiki-lqfb
 
-# David Seifert <soap@gentoo.org> (2022-03-12)
-# Unmaintained, no revdeps in tree, no other distro packages this,
-# HOMEPAGE gone, stuck on deprecated (and soon-to-stop-working)
-# cmake-utils. bug #725610, #732056, #834117.
-# Removal on 2022-04-11.
-sys-apps/rtl-entropy
-
 # Stephan Hartmann <sultan@gentoo.org> (2022-04-01)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
