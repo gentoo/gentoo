@@ -7,7 +7,7 @@ CMAKE_BUILD_TYPE="Release"
 MY_PN="${PN/intel-/}"
 MY_P="${MY_PN}-${PV}"
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="Intel Graphics Compute Runtime for oneAPI Level Zero and OpenCL Driver"
 HOMEPAGE="https://github.com/intel/compute-runtime"
@@ -42,6 +42,9 @@ BDEPEND="virtual/pkgconfig"
 DOCS=( "README.md" "FAQ.md" )
 
 src_configure() {
+	# See https://github.com/intel/compute-runtime/issues/531
+	filter-flags -flto=* -flto
+
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
 		-DCMAKE_INSTALL_LIBDIR="$(get_libdir)"
