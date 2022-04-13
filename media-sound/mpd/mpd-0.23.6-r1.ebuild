@@ -41,20 +41,21 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-user/mpd
+	dev-libs/libfmt:=
+	dev-libs/libpcre2
+	media-libs/libogg
 	sys-libs/liburing:=
 	alsa? (
 		media-libs/alsa-lib
 		media-sound/alsa-utils
 	)
-
 	ao? ( media-libs/libao:=[alsa?,pulseaudio?] )
 	audiofile? ( media-libs/audiofile:= )
-
+	bzip2? ( app-arch/bzip2 )
 	cdio? (
 		dev-libs/libcdio:=
 		dev-libs/libcdio-paranoia
 	)
-
 	chromaprint? ( media-libs/chromaprint )
 	curl? ( net-misc/curl )
 	dbus? ( sys-apps/dbus )
@@ -97,7 +98,7 @@ RDEPEND="
 	sndio? ( media-sound/sndio )
 	soundcloud? ( >=dev-libs/yajl-2:= )
 	sqlite? ( dev-db/sqlite:3 )
-	systemd? ( sys-apps/systemd )
+	systemd? ( sys-apps/systemd:= )
 	twolame? ( media-sound/twolame )
 	udisks? ( sys-fs/udisks:2 )
 	upnp? ( net-libs/libupnp:0 )
@@ -110,7 +111,6 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.68:=
-	dev-libs/libfmt:=
 	test? ( dev-cpp/gtest )"
 
 BDEPEND="virtual/pkgconfig"
