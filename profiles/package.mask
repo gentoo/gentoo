@@ -305,11 +305,6 @@ dev-python/sphinx-jinja
 # Removal on 2022-04-15. bug #835350.
 dev-java/headius-options
 
-# Matthew Smith <matthew@gentoo.org> (2022-03-14)
-# Dead upstream, multiple open bugs.
-# Bug #835162. Removal on 2022-04-13.
-net-im/corebird
-
 # John Helmert III <ajak@gentoo.org> (2022-03-13)
 # Arti is not a production-ready Tor client. According to upstream, "do
 # not use this program yet if you seriously need anonymity, privacy,
