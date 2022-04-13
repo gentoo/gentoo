@@ -5,7 +5,7 @@ EAPI=8
 
 inherit meson-multilib
 
-DESCRIPTION="C libary for Netflix's Perceptual video quality assessment based on multi-method fusion."
+DESCRIPTION="C libary for Netflix's Perceptual video quality assessment"
 HOMEPAGE="https://github.com/Netflix/vmaf"
 
 if [[ ${PV} == "9999" ]]; then
