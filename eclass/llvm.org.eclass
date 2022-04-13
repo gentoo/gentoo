@@ -213,6 +213,7 @@ llvm.org_set_globals() {
 			SRC_URI+="
 				!doc? (
 					https://dev.gentoo.org/~mgorny/dist/llvm/llvm-${PV}-manpages.tar.bz2
+					https://dev.gentoo.org/~sam/distfiles/llvm/llvm-${PV}-manpages.tar.bz2
 				)"
 			;;
 		*)
@@ -221,7 +222,8 @@ llvm.org_set_globals() {
 
 	if [[ -n ${LLVM_PATCHSET} ]]; then
 		SRC_URI+="
-			https://dev.gentoo.org/~mgorny/dist/llvm/llvm-gentoo-patchset-${LLVM_PATCHSET}.tar.xz"
+			https://dev.gentoo.org/~mgorny/dist/llvm/llvm-gentoo-patchset-${LLVM_PATCHSET}.tar.xz
+			https://dev.gentoo.org/~sam/distfiles/llvm/llvm-gentoo-patchset-${LLVM_PATCHSET}.tar.xz"
 	fi
 
 	local x
