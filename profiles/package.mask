@@ -353,12 +353,6 @@ dev-db/mysql-cluster
 # Removal on 2022-04-09.
 dev-java/edtftpj
 
-# Sam James <sam@gentoo.org> (2022-03-09)
-# Depends on very-old slot of SpiderMonkey which shouldn't be
-# used with untrusted input (vulnerable to lots of security bugs).
-# No reverse dependencies and no updates upstream for a long while.
-# Stuck on EAPI 5 too. Removal on 2022-04-09. bug #832313.
-dev-perl/JavaScript-SpiderMonkey
 
 # Sam James <sam@gentoo.org> (2022-03-07)
 # Python 3.6 was declared end-of-life by upstream on 2021-11-04.
