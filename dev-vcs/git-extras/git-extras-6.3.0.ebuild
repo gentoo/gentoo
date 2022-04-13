@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-DESCRIPTION="Git utilities -- repo summary, repl, changelog population, author commit percentages and more"
+DESCRIPTION="Git utilities -- repo summary, repl, changelog population, and many more"
 HOMEPAGE="https://github.com/tj/git-extras"
 SRC_URI="https://github.com/tj/git-extras/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
