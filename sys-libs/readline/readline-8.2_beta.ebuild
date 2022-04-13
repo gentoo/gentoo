@@ -48,7 +48,7 @@ esac
 
 LICENSE="GPL-3"
 SLOT="0/8"  # subslot matches SONAME major
-if [[ ${PV} != *_alpha* && ${PV} != *_rc* ]] ; then
+if [[ ${PV} != *_alpha* && ${PV} != *_beta* && ${PV} != *_rc* ]] ; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 IUSE="static-libs +unicode utils"
@@ -82,7 +82,7 @@ src_prepare() {
 	[[ ${PLEVEL} -gt 0 ]] && eapply -p0 $(patches -s)
 	default
 
-	[[ ${PV} == *_alpha* ]] && eautoreconf
+	[[ ${PV} == *_alpha* || ${PV} == *_beta* || ${PV} == *_rc* ]] && eautoreconf
 
 	if use prefix && [[ ! -x "${BROOT}"/usr/bin/pkg-config ]] ; then
 		# If we're bootstrapping, make a guess. We don't have pkg-config
