@@ -63,10 +63,6 @@ dev-python/anyio test
 # depends on dev-lang/ocaml
 app-accessibility/brltty ocaml ocamlopt
 
-# Sam James <sam@gentoo.org> (2021-10-26)
-# sys-libs/libhugetlbfs is not keyworded on ~riscv right now
-sys-apps/nvme-cli hugepages
-
 # Marek Szuba <marecki@gentoo.org> (2021-09-23)
 # mkdocs ecosystem only partly keyworded on riscv, has rather messy
 # Python-target requirements.
