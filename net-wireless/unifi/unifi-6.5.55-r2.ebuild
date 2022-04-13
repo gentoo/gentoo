@@ -4,7 +4,7 @@
 EAPI=8
 
 # Set this var for any releases except stable
-RC_SUFFIX="-43e7fc6711"
+RC_SUFFIX="-1d0581c00d"
 
 inherit java-pkg-2 systemd
 
@@ -13,7 +13,7 @@ HOMEPAGE="https://www.ubnt.com"
 SRC_URI="https://dl.ui.com/unifi/${PV}${RC_SUFFIX}/UniFi.unix.zip -> ${P}.zip"
 S="${WORKDIR}/UniFi"
 
-KEYWORDS="-* ~amd64 ~arm64"
+KEYWORDS="-* amd64 ~arm64"
 LICENSE="Apache-1.0 Apache-2.0 BSD-1 BSD-2 BSD CDDL EPL-1.0 GPL-2 LGPL-2.1 LGPL-3 MIT ubiquiti"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="systemd"
@@ -85,7 +85,7 @@ src_install() {
 	java-pkg_dolauncher unifi --java_args '-Dorg.xerial.snappy.tempdir=/usr/lib/unifi/tmp -Djava.library.path=' --jar ace.jar --pwd '/usr/lib/unifi'
 
 	newinitd "${FILESDIR}"/unifi.initd-r2 unifi
-	systemd_newunit "${FILESDIR}"/unifi.service-r1 unifi.service
+	systemd_newunit "${FILESDIR}"/unifi.service-r2 unifi.service
 
 	newconfd "${FILESDIR}"/unifi.confd unifi
 

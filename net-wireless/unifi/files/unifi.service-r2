@@ -1,6 +1,6 @@
 [Unit]
 Description=UniFi Controller
-After=network-online.target
+After=network.target
 
 [Service]
 Type=simple
@@ -11,4 +11,4 @@ ExecStart=/usr/bin/unifi start
 ExecStop=/usr/bin/unifi stop
 
 [Install]
-WantedBy=network.target
+WantedBy=multi-user.target
