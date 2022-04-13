@@ -25,7 +25,7 @@ COMMON_DEPEND="
 	app-arch/xz-utils
 	dev-libs/libassuan
 	dev-libs/glib:2
-	>=sys-fs/fuse-2.9.2
+	sys-fs/fuse:3
 	sys-libs/zlib
 	archive? ( app-arch/libarchive:= )
 	curl? ( net-misc/curl )
