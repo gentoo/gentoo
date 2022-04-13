@@ -336,30 +336,6 @@ sys-apps/rtl-entropy
 # Removal on 2022-04-11.
 net-wireless/rtl_power_fftw
 
-# Sam James <sam@gentoo.org> (2022-03-11)
-# No maintainer, out of date, stuck on deprecated
-# (and soon-to-stop-working) cmake-utils. bug #774480.
-# Removal on 2022-04-11.
-dev-libs/processor-trace
-
-# Sam James <sam@gentoo.org> (2022-03-11)
-# Significant number of open bugs including unaddressed security issues;
-# out of date; stuck on deprecated (and soon-to-stop-working) cmake-utils
-# eclass. See bug #834113. Removal on 2022-04-11.
-dev-db/mysql-cluster
-
-# Sam James <sam@gentoo.org> (2022-03-09)
-# EAPI 5, out-of-date. Not packaged by any other distributions.
-# Removal on 2022-04-09.
-dev-java/edtftpj
-
-
-# Sam James <sam@gentoo.org> (2022-03-07)
-# Python 3.6 was declared end-of-life by upstream on 2021-11-04.
-# Please migrate to a newer Python version/slot or use a virtualenv
-# if still needed. Removal on 2022-04-07.
-dev-lang/python:3.6
-
 # Stephan Hartmann <sultan@gentoo.org> (2022-04-01)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
