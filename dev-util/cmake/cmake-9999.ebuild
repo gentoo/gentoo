@@ -120,7 +120,7 @@ src_unpack() {
 
 		# See https://mgorny.pl/articles/verify-sig-by-example.html#verifying-using-a-checksum-file-with-a-detached-signature
 		verify-sig_verify_detached ${MY_P}-SHA-256.txt{,.asc}
-		verify-sig_verify_unsigned_checksums ${MY_P}-SHA-256.txt sha256 cmake-3.23.0.tar.gz
+		verify-sig_verify_unsigned_checksums ${MY_P}-SHA-256.txt sha256 ${MY_P}.tar.gz
 
 		cd "${WORKDIR}" || die
 
