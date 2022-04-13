@@ -7,7 +7,7 @@ NEED_EMACS=25.1
 
 inherit elisp
 
-DESCRIPTION="Toggle visibility of hidden Org mode element parts upon entering and leaving an element"
+DESCRIPTION="Toggle Org mode element visibility upon entering and leaving"
 HOMEPAGE="https://github.com/awth13/org-appear/"
 SRC_URI="https://github.com/awth13/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
