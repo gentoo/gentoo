@@ -42,7 +42,7 @@ patches() {
 }
 
 # The version of readline this bash normally ships with.
-READLINE_VER="8.2_alpha"
+READLINE_VER="8.2_beta"
 
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html"
@@ -56,7 +56,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-if [[ ${PV} != *_alpha* && ${PV} != *_rc* ]] ; then
+if [[ ${PV} != *_alpha* && ${PV} != *_beta* && ${PV} != *_rc* ]] ; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 IUSE="afs bashlogger examples mem-scramble +net nls plugins +readline"
@@ -168,7 +168,7 @@ src_configure() {
 	export ac_cv_rl_version=${READLINE_VER%%_*}
 
 	# TODO: Clean this up before 5.2 release
-	if [[ ${PV} == 5.2_alpha ]] || is_release ; then
+	if [[ ${PV} == *_alpha* || ${PV} == *_beta* || ${PV} == *_rc* ]] || is_release ; then
 		# Use system readline only with released versions.
 		myconf+=( --with-installed-readline=. )
 	fi
