@@ -5,10 +5,6 @@
 		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>andrey_utkin@gentoo.org</email>
-		<name>Andrey Utkin</name>
-	</maintainer>
 	<longdescription>
 		Swift is an elegant, secure, adaptable and intuitive XMPP client,
 		with features that make it suitable for a wide range of use scenarios.
