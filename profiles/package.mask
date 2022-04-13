@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-04-13)
+# 2.35.2 was a quick release to mitigate a security issue (bug #838127), but
+# introduces problems of its own with e.g. Portage. bug #838223. Pending
+# investigation both on the Portage side and potentially upstream (as there's
+# at least some UX issues with 2.35.2+ with the new "safe directory" mechanism).
+# Earlier versions are still safe as long as you do not use git commands
+# on a local repository controlled by a user you do not trust.
+=dev-vcs/git-2.35.2
+
 # Conrad Kostecki <conikost@gentoo.org> (2022-04-13)
 # Abandoned by upstream, does not work correctly anymore.
 # Removal on 2022-06-13. Bug #832431.
