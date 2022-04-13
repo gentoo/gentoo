@@ -781,7 +781,7 @@ check_extra_config() {
 		require_configured_kernel
 	fi
 
-	einfo "Checking for suitable kernel configuration options..."
+	ebegin "Checking for suitable kernel configuration options"
 
 	for config in ${CONFIG_CHECK}
 	do
@@ -857,6 +857,7 @@ check_extra_config() {
 	done
 
 	if [[ ${hard_errors_count} -gt 0 ]]; then
+		eend 1
 		eerror "Please check to make sure these options are set correctly."
 		eerror "Failure to do so may cause unexpected problems."
 		eerror "Once you have satisfied these options, please try merging"
@@ -864,6 +865,7 @@ check_extra_config() {
 		export LINUX_CONFIG_EXISTS_DONE="${old_LINUX_CONFIG_EXISTS_DONE}"
 		die "Incorrect kernel configuration options"
 	elif [[ ${soft_errors_count} -gt 0 ]]; then
+		eend 1
 		ewarn "Please check to make sure these options are set correctly."
 		ewarn "Failure to do so may cause unexpected problems."
 	else
