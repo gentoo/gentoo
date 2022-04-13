@@ -329,13 +329,6 @@ www-apps/rocketwiki-lqfb
 # Removal on 2022-04-11.
 sys-apps/rtl-entropy
 
-# David Seifert <soap@gentoo.org> (2022-03-12)
-# Unmaintained, no revdeps in tree, no other distro packages this,
-# wrong dependencies, out of date, stuck on deprecated
-# (and soon-to-stop-working) cmake-utils. bug #702980, #834121.
-# Removal on 2022-04-11.
-net-wireless/rtl_power_fftw
-
 # Stephan Hartmann <sultan@gentoo.org> (2022-04-01)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
