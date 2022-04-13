@@ -51,6 +51,10 @@ if [[ ${PV} == *9999 ]] ; then
 		)"
 fi
 
+PATCHES=(
+	"${FILESDIR}/${P}-non_interactive_shell_regression_fix.patch"
+)
+
 src_prepare() {
 	if [[ ${PV} != *9999 ]]; then
 		# fix zshall problem with soelim
