@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Conrad Kostecki <conikost@gentoo.org> (2022-04-13)
+# Abandoned by upstream, does not work correctly anymore.
+# Removal on 2022-06-13. Bug #832431.
+x11-plugins/pidgin-telegram
+
 # Michał Górny <mgorny@gentoo.org> (2022-04-13)
 # Unmaintained.  Last release in 2017, the Gentoo ebuild has not been
 # even bumped to it.  Requires old dev-lang/spidermonkey that requires
