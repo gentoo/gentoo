@@ -41,6 +41,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.86-kexec.patch"
 	# bug #158615
 	"${FILESDIR}/${PN}-2.94_beta-shutdown-single.patch"
+	# bug #836602
+	"${FILESDIR}/${PN}-3.02-musl-limits.patch"
 )
 
 src_prepare() {
