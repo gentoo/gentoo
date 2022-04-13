@@ -10,7 +10,7 @@ inherit check-reqs desktop wrapper xdg
 MY_EXE="setup_the_longest_journey_${PV%.*}_lang_update_(${PV##*.})"
 ICON="9c94fffadc23bac626a24a9c04cf8f107598ef9d0d2a58cbb6a9abd4d6eb0fbc.png"
 
-DESCRIPTION="Adventure through the twin worlds of Stark and Arcadia, seen through the eyes of an 18-year old student"
+DESCRIPTION="An adventure through fantasy worlds, seen through the eyes of a student"
 HOMEPAGE="https://www.gog.com/game/the_longest_journey"
 SRC_URI="${MY_EXE}.exe ${MY_EXE}-1.bin"
 LICENSE="GOG-EULA"
