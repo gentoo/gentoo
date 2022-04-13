@@ -38,7 +38,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	kernel_linux? (
 		virtual/os-headers
-		e2fsprogs? ( sys-fs/e2fsprogs )
+		e2fsprogs? ( sys-fs/e2fsprogs[${MULTILIB_USEDEP}] )
 	)
 "
 BDEPEND="
