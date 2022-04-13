@@ -6,7 +6,7 @@ EAPI=8
 inherit desktop xdg
 
 MY_PN="pico-8"
-DESCRIPTION="Fantasy console for making, sharing and playing tiny games and other computer programs"
+DESCRIPTION="Fantasy console for making and playing tiny games and other computer programs"
 HOMEPAGE="https://www.lexaloffle.com/pico-8.php"
 SRC_URI="
 	amd64? ( ${MY_PN}_${PV}_amd64.zip )
