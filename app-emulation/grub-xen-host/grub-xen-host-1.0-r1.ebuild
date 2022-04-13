@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Grub2 built as a PV grub per the Xen PV Boot Protocol"
-HOMEPAGE="https://blog.xenproject.org/2015/01/07/using-grub-2-as-a-bootloader-for-xen-pv-guests/"
+HOMEPAGE="https://wiki.xenproject.org/wiki/PvGrub2"
 SRC_URI=""
 
 LICENSE="BSD-2"
