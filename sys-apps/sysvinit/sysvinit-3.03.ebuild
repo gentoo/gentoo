@@ -34,7 +34,7 @@ RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-shutdown )"
 # po4a is for man page translations
 BDEPEND="nls? ( app-text/po4a )
-	verify-sig? ( sec-keys/openpgp-keys-sysvinit )"
+	verify-sig? ( >=sec-keys/openpgp-keys-sysvinit-20220413 )"
 
 PATCHES=(
 	# bug #80220
