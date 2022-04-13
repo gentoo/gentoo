@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Parallelized network login hacker"
 HOMEPAGE="https://github.com/vanhauser-thc/thc-hydra"
@@ -21,7 +21,7 @@ RDEPEND="
 		dev-libs/atk
 		dev-libs/glib:2
 		x11-libs/gdk-pixbuf:2
-		x11-libs/gtk+:3
+		x11-libs/gtk+:2
 	)
 	firebird? ( dev-db/firebird )
 	gcrypt? ( dev-libs/libgcrypt )
@@ -58,6 +58,12 @@ src_prepare() {
 		-e '/^OPTS/{s|=|+=|;s| -O3||}' \
 		-e '/ -o /s:$(OPTS):& $(LDFLAGS):g' \
 		Makefile.am || die
+
+	# Needed to get GTK+ 3 change in configure.in (.in got updated, but
+	# configure not regen'd.)
+	#cd hydra-gtk || die
+	#sed -i -e 's:AC_INIT(configure.in):AC_INIT(configure.ac):' configure.in || die
+	#eautoreconf
 }
 
 src_configure() {
