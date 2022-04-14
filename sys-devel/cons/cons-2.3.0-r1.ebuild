@@ -1,29 +1,31 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Extensible perl-based build utility"
 HOMEPAGE="https://www.gnu.org/software/cons/"
 SRC_URI="https://www.gnu.org/software/${PN}/stable/${P}.tgz
 	https://www.gnu.org/software/${PN}/dev/${P}.tgz"
 
-SLOT="2.2"
 LICENSE="GPL-2"
+SLOT="2.2"
 KEYWORDS="~alpha ~amd64 ~ppc ~sparc x86"
-IUSE=""
 
-DEPEND="
-	dev-lang/perl
-	virtual/perl-Digest-MD5"
-RDEPEND="
-	${DEPEND}
+RDEPEND="dev-lang/perl
+	virtual/perl-Digest-MD5
 	!sci-biology/emboss"
+BDEPEND="${RDEPEND}
+	app-arch/gzip"
+
+DOCS=( CHANGES INSTALL MANIFEST README RELEASE TODO )
 
 src_install() {
 	dobin cons
-	dodoc CHANGES INSTALL MANIFEST README RELEASE TODO
+
 	docinto html
 	dodoc *.html
-	doman cons.1.gz
+
+	gunzip cons.1.gz || die
+	doman cons.1
 }
