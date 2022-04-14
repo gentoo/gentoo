@@ -15,7 +15,7 @@ LICENSE="GPL-2 GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
-IUSE="clisp clozurecl clozurecl64 cmucl ecls emacs gcl gui nls +sbcl unicode vtk X test"
+IUSE="clisp clozurecl clozurecl64 cmucl ecls emacs gcl gui nls +sbcl vtk X test"
 RESTRICT="!test? ( test )"
 
 # Languages
@@ -124,7 +124,6 @@ src_configure() {
 		for lang in ${LANGS}; do
 			if use "l10n_${lang/_/-}"; then
 				CONFS="${CONFS} --enable-lang-${lang}"
-				use unicode && CONFS="${CONFS} --enable-lang-${lang}-utf8"
 			fi
 		done
 	fi
