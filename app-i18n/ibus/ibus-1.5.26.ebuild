@@ -19,7 +19,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="+X appindicator +emoji +gtk2 +gtk3 +gtk4 +gui +introspection nls +python systemd test +unicode vala wayland"
+IUSE="X appindicator +emoji gtk2 +gtk3 +gtk4 +gui +introspection nls +python systemd test +unicode vala wayland"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	appindicator? ( gtk3 )
