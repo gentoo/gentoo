@@ -19,7 +19,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="+X appindicator +emoji +gtk +gtk2 +gtk3 +gtk4 +introspection nls +python systemd test +unicode vala wayland"
+IUSE="+X appindicator +emoji +gtk2 +gtk3 +gtk4 +gui +introspection nls +python systemd test +unicode vala wayland"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	appindicator? ( gtk3 )
@@ -41,12 +41,12 @@ DEPEND="
 		x11-libs/libX11
 		>=x11-libs/libXfixes-6.0.0
 	)
-	gtk? (
+	gtk2? ( x11-libs/gtk+:2 )
+	gtk3? ( x11-libs/gtk+:3 )
+	gtk4? ( gui-libs/gtk:4 )
+	gui? (
 		x11-libs/libX11
 		x11-libs/libXi
-		gtk2? ( x11-libs/gtk+:2 )
-		gtk3? ( x11-libs/gtk+:3 )
-		gtk4? ( gui-libs/gtk:4 )
 	)
 	introspection? ( dev-libs/gobject-introspection )
 	nls? ( virtual/libintl )
@@ -60,7 +60,7 @@ DEPEND="
 	)"
 RDEPEND="${DEPEND}
 	python? (
-		gtk? (
+		gui? (
 			x11-libs/gtk+:3[introspection]
 		)
 	)"
@@ -116,7 +116,7 @@ src_configure() {
 	if use python; then
 		python_setup
 		python_conf+=(
-			$(use_enable gtk setup)
+			$(use_enable gui setup)
 			--with-python=${EPYTHON}
 		)
 	else
@@ -141,10 +141,10 @@ src_configure() {
 		$(use_enable emoji emoji-dict)
 		$(use_with emoji unicode-emoji-dir "${unicodedir}"/emoji)
 		$(use_with emoji emoji-annotation-dir "${unicodedir}"/cldr/common/annotations)
-		$(use_enable gtk ui)
 		$(use_enable gtk2)
 		$(use_enable gtk3)
 		$(use_enable gtk4)
+		$(use_enable gui ui)
 		$(use_enable introspection)
 		$(use_enable nls)
 		$(use_enable systemd systemd-services)
