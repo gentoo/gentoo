@@ -174,7 +174,7 @@ src_install() {
 			for RULESET in alien civ1 civ2 civ2civ3 classic experimental multiplayer sandbox
 			do
 				./tools/freeciv-manual -r ${RULESET} || die
-				docinto rulesets/${RULESET}
+				docinto html/rulesets/${RULESET}
 				dodoc ${RULESET}*.html
 			done
 		fi
