@@ -33,6 +33,19 @@ src_prepare() {
 }
 
 src_install() {
+	addtoinifile() {
+		local inifile="${WORKDIR}/${1}"
+		local inidir="${inifile%/*}"
+
+		mkdir -p "${inidir}" || die "failed to create INI directory ${inidir}"
+
+		local my_added="${2}=${3}"
+		echo "${my_added}" >> "${inifile}" || die "failed to append to ${inifile}"
+		einfo "Added '${my_added}' to /${1}"
+
+		insinto "/${1%/*}"
+		doins "${inifile}"
+	}
 	einstalldocs
 	local slot x cfgdir
 	php-ext-source-r3_src_install
@@ -41,13 +54,15 @@ src_install() {
 		php_init_slot_env "${slot}"
 		for x in ${PHP_EXT_SAPIS} ; do
 			cfgdir="/etc/php/${x}-${slot}"
-			php-ext-source-r3_addtoinifile "${cfgdir}/ext/${PHP_INI_NAME}.ini" \
-				 "sp.configuration_file" "${cfgdir}/${PN}.rules"
-			insinto "${cfgdir}"
-			case ${PHP_CURRENTSLOT:0:1} in
-				8) newins "${S}/config/default_php8.rules" "${PN}.rules" ;;
-				*) newins "${S}/config/default.rules" "${PN}.rules" ;;
-			esac
+			if [[ -f "${ED}${cfgdir}/ext/${PHP_INI_NAME}.ini" ]]; then
+				addtoinifile "${cfgdir#/}/ext/${PHP_INI_NAME}.ini" \
+					"sp.configuration_file" "${cfgdir}/${PN}.rules"
+				insinto "${cfgdir}"
+				case ${PHP_CURRENTSLOT:0:1} in
+					8) newins "${S}/config/default_php8.rules" "${PN}.rules" ;;
+					*) newins "${S}/config/default.rules" "${PN}.rules" ;;
+				esac
+			fi
 		done
 	done
 }
