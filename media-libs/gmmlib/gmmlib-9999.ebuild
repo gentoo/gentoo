@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,10 +18,7 @@ HOMEPAGE="https://github.com/intel/gmmlib"
 SRC_URI=""
 
 LICENSE="MIT"
-# gmmlib version 22.0.3 made breaking ABI changes without changing the
-# soname, so the "_1" subslot suffix was added. There is no need to keep
-# this suffix after the next soname version bump.
-SLOT="0/12_1"
+SLOT="0/12.1"
 IUSE="test +custom-cflags"
 RESTRICT="!test? ( test )"
 
