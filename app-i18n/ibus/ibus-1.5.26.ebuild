@@ -19,11 +19,11 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="+X +emoji +gtk +gtk2 +introspection kde nls +python systemd test +unicode vala wayland"
+IUSE="+X appindicator +emoji +gtk +gtk2 +introspection nls +python systemd test +unicode vala wayland"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="emoji? ( gtk )
 	gtk2? ( gtk )
-	kde? ( gtk )
+	appindicator? ( gtk )
 	python? (
 		${PYTHON_REQUIRED_USE}
 		introspection
@@ -49,7 +49,6 @@ DEPEND="
 		gtk2? ( x11-libs/gtk+:2 )
 	)
 	introspection? ( dev-libs/gobject-introspection )
-	kde? ( dev-qt/qtgui:5 )
 	nls? ( virtual/libintl )
 	python? (
 		${PYTHON_DEPS}
@@ -89,7 +88,7 @@ src_prepare() {
 			tools/main.vala \
 			ui/gtk3/panel.vala
 	fi
-	if ! use kde; then
+	if ! use appindicator; then
 		touch ui/gtk3/panel.vala
 	fi
 	if [[ -n ${GENTOO_VER} ]]; then
@@ -138,6 +137,7 @@ src_configure() {
 
 	local myconf=(
 		$(use_enable X xim)
+		$(use_enable appindicator)
 		$(use_enable emoji emoji-dict)
 		$(use_with emoji unicode-emoji-dir "${unicodedir}"/emoji)
 		$(use_with emoji emoji-annotation-dir "${unicodedir}"/cldr/common/annotations)
@@ -145,7 +145,6 @@ src_configure() {
 		$(use_enable gtk ui)
 		$(use_enable gtk2)
 		$(use_enable introspection)
-		$(use_enable kde appindicator)
 		$(use_enable nls)
 		$(use_enable systemd systemd-services)
 		$(use_enable test tests)
