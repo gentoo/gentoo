@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 RDEPEND="
 	>=dev-python/installer-0.5.0[${PYTHON_USEDEP}]
@@ -36,7 +36,7 @@ python_compile() { :; }
 python_install() {
 	python_domodule gpep517
 	python_newscript - gpep517 <<-EOF
-		#!/usr/bin/python
+		#!${EPREFIX}/usr/bin/python
 		import sys
 		from gpep517.__main__ import main
 		sys.exit(main())
