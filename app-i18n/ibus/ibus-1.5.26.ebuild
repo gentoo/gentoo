@@ -22,15 +22,15 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="+X appindicator +emoji +gtk +gtk2 +gtk3 +gtk4 +introspection nls +python systemd test +unicode vala wayland"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
-	gtk2? ( gtk )
 	appindicator? ( gtk3 )
 	python? (
 		${PYTHON_REQUIRED_USE}
 		introspection
 	)
 	test? ( gtk3 )
-	vala? ( introspection )"
-
+	vala? ( introspection )
+	X? ( gtk3 )
+"
 DEPEND="
 	app-text/iso-codes
 	>=dev-libs/glib-2.65.0:2
@@ -40,7 +40,6 @@ DEPEND="
 	X? (
 		x11-libs/libX11
 		>=x11-libs/libXfixes-6.0.0
-		!gtk? ( x11-libs/gtk+:2 )
 	)
 	gtk? (
 		x11-libs/libX11
