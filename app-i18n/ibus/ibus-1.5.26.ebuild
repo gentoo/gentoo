@@ -18,8 +18,8 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="+X appindicator +emoji +gtk +gtk2 +introspection nls +python systemd test +unicode vala wayland"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+IUSE="+X appindicator +emoji +gtk +gtk2 +gtk4 +introspection nls +python systemd test +unicode vala wayland"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	gtk2? ( gtk )
@@ -47,6 +47,7 @@ DEPEND="
 		x11-libs/libX11
 		x11-libs/libXi
 		gtk2? ( x11-libs/gtk+:2 )
+		gtk4? ( gui-libs/gtk:4 )
 	)
 	introspection? ( dev-libs/gobject-introspection )
 	nls? ( virtual/libintl )
@@ -144,6 +145,7 @@ src_configure() {
 		$(use_enable gtk gtk3)
 		$(use_enable gtk ui)
 		$(use_enable gtk2)
+		$(use_enable gtk4)
 		$(use_enable introspection)
 		$(use_enable nls)
 		$(use_enable systemd systemd-services)
