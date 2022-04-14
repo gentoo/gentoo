@@ -108,7 +108,7 @@ RDEPEND="${DEPEND}
 	networkmanager? (
 		net-misc/mobile-broadband-provider-info
 		sys-libs/timezone-data )
-	ibus? ( >=app-i18n/ibus-1.4.99[dconf(+),gtk,introspection] )
+	ibus? ( >=app-i18n/ibus-1.5.26[gtk3,gtk4,introspection] )
 	telepathy? (
 		>=net-im/telepathy-logger-0.2.4[introspection]
 		>=net-libs/telepathy-glib-0.19[introspection] )
