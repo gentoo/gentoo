@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake java-pkg-2 optfeature xdg
 
-HOMEPAGE="https://polymc.org/"
+HOMEPAGE="https://polymc.org/ https://github.com/PolyMC/PolyMC"
 DESCRIPTION="A custom, open source Minecraft launcher"
 
 if [[ ${PV} == 9999 ]]; then
@@ -47,29 +47,29 @@ IUSE="debug"
 MIN_QT="5.6.0"
 
 QT_DEPS="
-	>=dev-qt/qtcore-${MIN_QT}:5
-	>=dev-qt/qttest-${MIN_QT}:5
 	>=dev-qt/qtconcurrent-${MIN_QT}:5
+	>=dev-qt/qtcore-${MIN_QT}:5
 	>=dev-qt/qtgui-${MIN_QT}:5
 	>=dev-qt/qtnetwork-${MIN_QT}:5
+	>=dev-qt/qttest-${MIN_QT}:5
 	>=dev-qt/qtwidgets-${MIN_QT}:5
 	>=dev-qt/qtxml-${MIN_QT}:5
 "
 
 DEPEND="
 	${QT_DEPS}
-	>=virtual/jdk-1.8.0:*
 	media-libs/libglvnd
 	sys-libs/zlib
+	>=virtual/jdk-1.8.0:*
 "
 
 # At run-time we don't depend on JDK, only JRE
 # And we need more than just the GL headers
 RDEPEND="
 	${QT_DEPS}
+	sys-libs/zlib
 	>=virtual/jre-1.8.0:*
 	virtual/opengl
-	sys-libs/zlib
 "
 
 src_prepare() {
