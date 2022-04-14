@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="+X appindicator +emoji +gtk +gtk2 +introspection nls +python systemd test +unicode vala wayland"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="emoji? ( gtk )
+REQUIRED_USE="
 	gtk2? ( gtk )
 	appindicator? ( gtk )
 	python? (
