@@ -1,35 +1,19 @@
 #!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 
-NAME=${SVCNAME##*.}
-if [ -n "${NAME}" -a "${SVCNAME}" != "automatic" ]; then
-    PID="/run/automatic.${NAME}.pid"
-    PNAME=$(echo ${RC_SVCNAME} | sed 's/\..*//g')
-    CONF_DEFAULT="/etc/conf.d/automatic.${NAME}"
-else
-    PID="/run/automatic.pid"
-    PNAME=${RC_SVCNAME}
-    CONF_DEFAULT="/etc/conf.d/automatic"
-fi
-CONF=${CONF:-${CONF_DEFAULT}}
-EXEC=${EXEC:-/usr/bin/automatic}
+command="/usr/bin/automatic"
+command_args="${OPTS} ${CONFIG}"
+description="RSS downloader"
+name="RSS downloader"
+user="${AUTOMATIC_USER:-automatic}"
+group="${AUTOMATIC_GROUP:-automatic}"
+pidfile="/run/${RC_SVCNAME}.pid"
 
 depend() {
 	need net
 }
 
-start() {
-	ebegin "Starting automatic"
-	start-stop-daemon --start --quiet --make-pidfile --pidfile ${PID} --exec ${EXEC} -- ${OPTS} ${CONFIG}
-	eend $?
-}
-
 start_post() {
-	pgrep -n $(echo ${PNAME}) > ${PID}
-}
-
-stop() {
-	ebegin "Stopping automatic"
-	start-stop-daemon --stop --quiet --pidfile ${PID}
-	rm -f ${PID}
-	eend $?
+	pgrep -n "${RC_SVCNAME%%.*}" > "${pidfile}"
 }
