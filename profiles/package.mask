@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2022-04-14)
+# Singularity has been renamed upstream to Apptainer. Therefore, up-to-date
+# versions of this software are now available as app-containers/apptainer.
+sys-cluster/singularity
+
 # Sam James <sam@gentoo.org> (2022-04-13)
 # 2.35.2 was a quick release to mitigate a security issue (bug #838127), but
 # introduces problems of its own with e.g. Portage. bug #838223. Pending
