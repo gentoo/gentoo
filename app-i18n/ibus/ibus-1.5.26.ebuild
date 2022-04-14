@@ -19,16 +19,16 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="+X appindicator +emoji +gtk +gtk2 +gtk4 +introspection nls +python systemd test +unicode vala wayland"
+IUSE="+X appindicator +emoji +gtk +gtk2 +gtk3 +gtk4 +introspection nls +python systemd test +unicode vala wayland"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	gtk2? ( gtk )
-	appindicator? ( gtk )
+	appindicator? ( gtk3 )
 	python? (
 		${PYTHON_REQUIRED_USE}
 		introspection
 	)
-	test? ( gtk )
+	test? ( gtk3 )
 	vala? ( introspection )"
 
 DEPEND="
@@ -43,10 +43,10 @@ DEPEND="
 		!gtk? ( x11-libs/gtk+:2 )
 	)
 	gtk? (
-		x11-libs/gtk+:3
 		x11-libs/libX11
 		x11-libs/libXi
 		gtk2? ( x11-libs/gtk+:2 )
+		gtk3? ( x11-libs/gtk+:3 )
 		gtk4? ( gui-libs/gtk:4 )
 	)
 	introspection? ( dev-libs/gobject-introspection )
@@ -142,9 +142,9 @@ src_configure() {
 		$(use_enable emoji emoji-dict)
 		$(use_with emoji unicode-emoji-dir "${unicodedir}"/emoji)
 		$(use_with emoji emoji-annotation-dir "${unicodedir}"/cldr/common/annotations)
-		$(use_enable gtk gtk3)
 		$(use_enable gtk ui)
 		$(use_enable gtk2)
+		$(use_enable gtk3)
 		$(use_enable gtk4)
 		$(use_enable introspection)
 		$(use_enable nls)
@@ -208,16 +208,16 @@ src_install() {
 }
 
 pkg_postinst() {
-	use gtk && gnome2_query_immodules_gtk3
 	use gtk2 && gnome2_query_immodules_gtk2
+	use gtk3 && gnome2_query_immodules_gtk3
 	xdg_icon_cache_update
 	gnome2_schemas_update
 	dconf update
 }
 
 pkg_postrm() {
-	use gtk && gnome2_query_immodules_gtk3
 	use gtk2 && gnome2_query_immodules_gtk2
+	use gtk3 && gnome2_query_immodules_gtk3
 	xdg_icon_cache_update
 	gnome2_schemas_update
 }
