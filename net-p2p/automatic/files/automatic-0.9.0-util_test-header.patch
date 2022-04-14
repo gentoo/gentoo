@@ -1,0 +1,11 @@
+# https://github.com/1100101/Automatic/pull/20
+--- ../src/tests/utils_test.c.org	2022-08-21 11:39:01.502847479 +0300
++++ ../src/tests/utils_test.c	2022-08-21 11:39:18.455043931 +0300
+@@ -6,6 +6,7 @@
+  */
+ 
+ 
++#include <stdint.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <assert.h>
