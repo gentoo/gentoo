@@ -29,7 +29,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 DEPEND="
 	>=virtual/jdk-1.8:*
 	dev-java/findbugs-annotations:0
-	dev-java/jna:4
+	>=dev-java/jna-5.10.0:4
 "
 
 RDEPEND="
