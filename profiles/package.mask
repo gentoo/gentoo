@@ -296,12 +296,6 @@ media-sound/deinvert
 net-wireless/gr-m2k
 net-wireless/libm2k
 
-# Jakov Smolić <jsmolic@gentoo.org> (2022-03-16)
-# Python packages with no revdeps, tests are not
-# enabled, not ported to python 3.10
-# Removal on 2022-04-15.
-net-wireless/soapy_power
-
 # John Helmert III <ajak@gentoo.org> (2022-03-13)
 # Arti is not a production-ready Tor client. According to upstream, "do
 # not use this program yet if you seriously need anonymity, privacy,
