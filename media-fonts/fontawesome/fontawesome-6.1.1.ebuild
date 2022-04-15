@@ -7,7 +7,7 @@ inherit font
 
 DESCRIPTION="The iconic font"
 HOMEPAGE="https://fontawesome.com"
-SRC_URI="https://github.com/FortAwesome/Font-Awesome/archive/refs/tags/6.1.1.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/FortAwesome/Font-Awesome/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 S="${WORKDIR}/Font-Awesome-${PV}"
 
@@ -24,7 +24,3 @@ src_install() {
 		FONT_S="${S}/webfonts" FONT_SUFFIX="ttf" font_src_install
 	fi
 }
-
-DEPEND=""
-RDEPEND="${DEPEND}"
-BDEPEND=""
