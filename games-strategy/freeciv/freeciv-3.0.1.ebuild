@@ -25,6 +25,7 @@ IUSE="aimodules auth dedicated +gtk ipv6 mapimg modpack mysql nls qt5 readline s
 
 REQUIRED_USE="system-lua? ( ${LUA_REQUIRED_USE} )"
 
+# postgres isn't yet really supported by upstream
 RDEPEND="
 	app-arch/bzip2
 	app-arch/xz-utils
@@ -66,7 +67,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	!dedicated? ( x11-base/xorg-proto )
 "
-# postgres isn't yet really supported by upstream
 BDEPEND="
 	virtual/pkgconfig
 	!dedicated? ( nls? ( sys-devel/gettext ) )
