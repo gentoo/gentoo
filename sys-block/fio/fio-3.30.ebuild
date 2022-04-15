@@ -148,7 +148,7 @@ src_install() {
 	# This tool has security/parallel issues -- it hardcodes /tmp/template.fio.
 	rm "${ED}"/usr/bin/genfio || die
 
-	dodoc README REPORTING-BUGS HOWTO
+	dodoc README.rst REPORTING-BUGS HOWTO.rst
 	docinto examples
 	dodoc examples/*
 }
