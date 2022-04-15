@@ -23,7 +23,7 @@ RDEPEND="
 	=kde-frameworks/ki18n-${PVCUT}*:5
 "
 DEPEND="${RDEPEND}
-	test? ( =dev-qt/qtdeclarative-${QTMIN}*:5 )
+	test? ( >=dev-qt/qtdeclarative-${QTMIN}:5 )
 "
 
 src_test() {
