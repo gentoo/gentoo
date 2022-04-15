@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# Check for bumps & cleanup with app-misc/ddcui
+
 inherit autotools linux-info udev
 
 DESCRIPTION="Program for querying and changing monitor settings"
