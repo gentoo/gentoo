@@ -461,9 +461,19 @@ toolchain_src_prepare() {
 	gcc_version_patch
 
 	local actual_version=$(< "${S}"/gcc/BASE-VER)
-	if [[ "${GCC_RELEASE_VER}" != "${actual_version}" ]] ; then
-		eerror "'${S}/gcc/BASE-VER' contains '${actual_version}', expected '${GCC_RELEASE_VER}'"
-		die "Please set 'TOOLCHAIN_GCC_PV' to '${actual_version}'"
+	if [[ ${PV} == *_rc* ]] ; then
+		# Mangle e.g. 11.2.1 -> 11.3.0
+		# Upstream don't update the file until the final release
+		local actual_version_mangled=$(ver_cut 1 ${actual_version}).$(($(ver_cut 3 ${actual_version}) + 1)).$(($(ver_cut 5 ${actual_version}) + 1))
+		local gcc_release_ver_mangled=$(ver_cut 1 ${GCC_RELEASE_VER}).$(($(ver_cut 3 ${GCC_RELEASE_VER}) + 2)).$(($(ver_cut 5 ${GCC_RELEASE_VER}) + 1))
+	else
+		local actual_version_mangled=${actual_version}
+		local gcc_release_ver_mangled=${GCC_RELEASE_VER}
+	fi
+
+	if [[ "${actual_version_mangled}" != "${gcc_release_ver_mangled}" ]] ; then
+		eerror "'${S}/gcc/BASE-VER' contains '${actual_version_mangled}', expected '${gcc_release_ver_mangled}'"
+		die "Please set 'TOOLCHAIN_GCC_PV' to '${actual_version_mangled}'"
 	fi
 
 	# >= gcc-4.3 doesn't bundle ecj.jar, so copy it
