@@ -14,7 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Async event-driven framework for high performance network applications"
 HOMEPAGE="https://netty.io/"
-SRC_URI="https://codeload.github.com/netty/netty/tar.gz/netty-${PV}.Final -> ${P}.Final.tar.gz"
+SRC_URI="https://github.com/netty/netty/archive/refs/tags/netty-${PV}.Final.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -23,7 +23,7 @@ KEYWORDS="~amd64"
 # We do not build the full range of modules provided by netty but only what
 # was available before in netty-common, netty-buffer and netty-transport.
 # Further modules might be added to the array.
-modules=(
+NETTY_MODULES=(
 	"common"
 	"resolver"
 	"buffer"
@@ -73,7 +73,8 @@ DEPEND="
 
 RDEPEND="
 	>=virtual/jre-1.8:*
-	${CP_DEPEND}"
+	${CP_DEPEND}
+"
 
 S="${WORKDIR}/netty-netty-${PV}.Final"
 
@@ -118,14 +119,12 @@ src_prepare() {
 }
 
 src_compile() {
+	local module
 	# We loop over the modules list and compile the jar files.
-	for module in "${modules[@]}" ; do \
-
-		JAVA_SRC_DIR=""
-		JAVA_RESOURCE_DIRS=""
+	for module in "${NETTY_MODULES[@]}"; do
+		JAVA_SRC_DIR=()
+		JAVA_RESOURCE_DIRS=()
 		JAVA_MAIN_CLASS=""
-
-		echo "compiling $module"
 
 		JAVA_SRC_DIR=(
 			"$module/src/main/java"
@@ -139,6 +138,7 @@ src_compile() {
 
 		JAVA_JAR_FILENAME="$module.jar"
 
+		einfo "Compiling netty-${module}"
 		java-pkg-simple_src_compile
 
 		JAVA_GENTOO_CLASSPATH_EXTRA+=":$module.jar"
@@ -148,12 +148,10 @@ src_compile() {
 	done
 
 	if use doc; then
-
-		JAVA_SRC_DIR=""
+		JAVA_SRC_DIR=()
 		JAVA_JAR_FILENAME="ignoreme.jar"
 
-		for module in "${modules[@]}" ; do \
-
+		for module in "${NETTY_MODULES[@]}" ; do
 			# Some modules don't have source code
 			if [[ -d $module/src/main/java/io ]]; then \
 				JAVA_SRC_DIR+=( "$module/src/main/java" )
@@ -166,38 +164,35 @@ src_compile() {
 }
 
 src_test() {
-	for module in "${modules[@]}" ; do \
-
+	local module
+	for module in "${NETTY_MODULES[@]}"; do
 		JAVA_TEST_SRC_DIR="$module/src/test/java"
-		JAVA_TEST_RESOURCE_DIRS=""
+		JAVA_TEST_RESOURCE_DIRS=()
 
 		# Not all of the modules have test resources.
 		if [[ -d $module/src/test/resources ]]; then \
 			JAVA_TEST_RESOURCE_DIRS="$module/src/test/resources"
 		fi
 
+		einfo "Testing netty-${module}"
 		java-pkg-simple_src_test
-
 	done
 }
 
 src_install() {
 	einstalldocs # https://bugs.gentoo.org/789582
 
-	for module in "${modules[@]}" ; do \
-
+	local module
+	for module in "${NETTY_MODULES[@]}"; do
 		JAVA_MAIN_CLASS=$( sed -n 's:.*<mainClass>\(.*\)</mainClass>:\1:p' $module/pom.xml )
 		java-pkg_dojar $module.jar
 
 		# Some modules don't have source code
-		if [[ -d $module/src/main/java/org ]]; then \
-
+		if [[ -d $module/src/main/java/org ]]; then
 			if use source; then
 				java-pkg_dosrc "$module/src/main/java/*"
 			fi
-
 		fi
-
 	done
 
 	if use doc; then
