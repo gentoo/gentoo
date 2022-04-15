@@ -287,12 +287,6 @@ net-wireless/gr-scan
 # Removal on 2022-04-16. Bug #643444. Bug #749639. Bug #684758.
 net-libs/libosmocore
 
-# Jakov Smolić <jsmolic@gentoo.org> (2022-03-16)
-# 9999-only ebuilds, various other QA issues (no python
-# 3.10, using deprecated EAPI, ...)
-# Removal on 2022-04-15.
-net-libs/libmirisdr
-
 # John Helmert III <ajak@gentoo.org> (2022-03-13)
 # Arti is not a production-ready Tor client. According to upstream, "do
 # not use this program yet if you seriously need anonymity, privacy,
