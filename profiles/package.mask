@@ -309,11 +309,6 @@ dev-python/simplespectral
 # Removal in 30 days
 www-apps/agendav
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-03-16)
-# Java library without consumers.
-# Removal in 30 days. Bug #835389.
-dev-java/android-util
-
 # John Helmert III <ajak@gentoo.org> (2022-03-13)
 # Arti is not a production-ready Tor client. According to upstream, "do
 # not use this program yet if you seriously need anonymity, privacy,
