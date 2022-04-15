@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic multilib-minimal preserve-libs ssl-cert toolchain-funcs systemd tmpfiles
+inherit autotools flag-o-matic multilib multilib-minimal preserve-libs ssl-cert toolchain-funcs systemd tmpfiles
 
 MY_PV="$(ver_rs 1-2 _)"
 
