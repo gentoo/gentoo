@@ -1,4 +1,4 @@
-# Copyright 2017-2020 Gentoo Authors
+# Copyright 2017-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Anthony Ryan <anthonyryan1@gmail.com> (2017-01-21)
@@ -27,3 +27,4 @@ virtual/rust
 gnome-base/gdm
 gnome-extra/chrome-gnome-shell
 gnome-extra/gnome-tweaks
+>=media-libs/freetype-2.12.0
