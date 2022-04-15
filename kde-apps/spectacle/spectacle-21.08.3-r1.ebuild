@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,6 @@ IUSE="+annotate kipi share"
 
 # TODO: Qt5Svg leaking from media-libs/kimageannotator
 DEPEND="
-	>=dev-qt/qdbus-${QTMIN}:5
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
@@ -51,6 +50,7 @@ DEPEND="
 	share? ( >=kde-frameworks/purpose-${KFMIN}:5 )
 "
 RDEPEND="${DEPEND}
+	>=dev-qt/qdbus-${QTMIN}:*
 	kipi? ( >=kde-apps/kipi-plugins-${PVCUT}:5 )
 "
 
