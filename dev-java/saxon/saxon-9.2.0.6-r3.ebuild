@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/project/saxon/Saxon-HE/$(ver_cut 1-2)/saxonhe${PV/
 
 LICENSE="MPL-1.0"
 SLOT="9"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ppc64 ~x86"
 
 CDEPEND="
 	dev-java/xom:0
