@@ -294,7 +294,6 @@ net-libs/libosmocore
 net-libs/libmirisdr
 media-sound/deinvert
 net-wireless/gr-m2k
-net-wireless/libm2k
 
 # John Helmert III <ajak@gentoo.org> (2022-03-13)
 # Arti is not a production-ready Tor client. According to upstream, "do
