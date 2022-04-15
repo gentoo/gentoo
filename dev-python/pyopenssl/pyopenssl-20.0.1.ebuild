@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7..10} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1 flag-o-matic toolchain-funcs
+inherit distutils-r1 toolchain-funcs
 
 MY_PN=pyOpenSSL
 MY_P=${MY_PN}-${PV}
@@ -45,6 +45,7 @@ src_configure() {
 		#include <sys/types.h>
 		int test[sizeof(time_t) >= 8 ? 1 : -1];
 	EOF
+
 	if [[ ${?} -eq 0 ]]; then
 		PYOPENSSL_SKIP_LARGE_TIME=
 		einfo "time_t is at least 64-bit long"
@@ -62,5 +63,6 @@ python_test() {
 	[[ ${PYOPENSSL_SKIP_LARGE_TIME} ]] && deselect+=(
 		tests/test_crypto.py::TestX509StoreContext::test_verify_with_time
 	)
+
 	epytest ${deselect[@]/#/--deselect }
 }
