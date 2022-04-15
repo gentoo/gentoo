@@ -22,11 +22,6 @@ RDEPEND="pam? ( sys-libs/pam )
 	!pam? ( virtual/libcrypt:= )"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	default
-	sed -i 's/-Werror //' GNUmakefile || die
-}
-
 src_configure() {
 	tc-export CC AR
 
