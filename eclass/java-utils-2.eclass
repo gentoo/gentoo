@@ -2099,8 +2099,9 @@ ejavac() {
 		einfo "${compiler_executable} ${javac_args} ${@}"
 	fi
 
-	ebegin "Compiling"
-	${compiler_executable} ${javac_args} "${@}" || die "ejavac failed"
+	local args=( ${compiler_executable} ${javac_args} "${@}" )
+	echo "${args[@]}" >&2
+	"${args[@]}" || die "ejavac failed"
 }
 
 # @FUNCTION: ejavadoc
@@ -2125,8 +2126,9 @@ ejavadoc() {
 		einfo "javadoc ${javadoc_args} ${@}"
 	fi
 
-	ebegin "Generating JavaDoc"
-	javadoc ${javadoc_args} "${@}" || die "ejavadoc failed"
+	local args=( javadoc ${javadoc_args} "${@}" )
+	echo "${args[@]}" >&2
+	"${args[@]}" || die "ejavadoc failed"
 }
 
 # @FUNCTION: java-pkg_filter-compiler
