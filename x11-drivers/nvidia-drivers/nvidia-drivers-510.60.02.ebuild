@@ -5,7 +5,7 @@ EAPI=8
 
 MODULES_OPTIONAL_USE="driver"
 inherit desktop flag-o-matic linux-mod multilib readme.gentoo-r1 \
-	systemd toolchain-funcs unpacker
+	systemd toolchain-funcs unpacker user-info
 
 NV_KERNEL_MAX="5.17"
 
@@ -386,8 +386,8 @@ pkg_preinst() {
 	linux-mod_pkg_preinst
 
 	# set video group id based on live system (bug #491414)
-	local g=$(getent group video | cut -d: -f3)
-	[[ ${g} ]] || die "Failed to determine video group id"
+	local g=$(egetent group video | cut -d: -f3)
+	[[ ${g} =~ ^[0-9]+$ ]] || die "Failed to determine video group id (got '${g}')"
 	sed -i "s/@VIDEOGID@/${g}/" "${ED}"/etc/modprobe.d/nvidia.conf || die
 
 	# try to find driver mismatches using temporary supported-gpus.json
