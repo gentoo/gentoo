@@ -20,4 +20,4 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="x11-libs/libdrm"
-RDEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
