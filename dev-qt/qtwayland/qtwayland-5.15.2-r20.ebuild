@@ -9,7 +9,7 @@ inherit qt5-build
 DESCRIPTION="Wayland platform plugin for Qt"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~ppc ~ppc64"
 fi
 
 SLOT=5/${QT5_PV} # bug 815646
