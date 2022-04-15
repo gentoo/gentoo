@@ -332,11 +332,6 @@ dev-java/headius-options
 # necessity.
 net-p2p/arti
 
-# Alfredo Tupone <tupone@gentoo.org> (2022-03-13)
-# No revdeps, last update on 2011
-# Removal on 2022-04-13.
-www-apps/rocketwiki-lqfb
-
 # Stephan Hartmann <sultan@gentoo.org> (2022-04-01)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
