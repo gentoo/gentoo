@@ -30,15 +30,16 @@ RDEPEND="
 	app-arch/bzip2
 	app-arch/xz-utils
 	net-misc/curl
+	dev-libs/icu:=
 	sys-libs/zlib
 	auth? (
-		!mysql? ( ( !sqlite? ( dev-db/mysql-connector-c:0= ) ) )
-		mysql? ( dev-db/mysql-connector-c:0= )
+		!mysql? ( ( !sqlite? ( dev-db/mysql-connector-c:= ) ) )
+		mysql? ( dev-db/mysql-connector-c:= )
 		sqlite? ( dev-db/sqlite:3 )
 	)
-	dedicated? ( aimodules? ( dev-libs/libltdl:0 ) )
+	dedicated? ( aimodules? ( dev-libs/libltdl ) )
 	!dedicated? (
-		media-libs/libpng:0
+		media-libs/libpng
 		gtk? ( x11-libs/gtk+:3 )
 		mapimg? ( media-gfx/imagemagick:= )
 		modpack? ( x11-libs/gtk+:3 )
@@ -55,19 +56,21 @@ RDEPEND="
 			media-libs/sdl2-image[png]
 			media-libs/sdl2-ttf
 		)
-		server? ( aimodules? ( sys-devel/libtool:2 ) )
+		server? ( aimodules? ( sys-devel/libtool ) )
 		sound? (
 			media-libs/libsdl2[sound]
 			media-libs/sdl2-mixer[vorbis]
 		)
 	)
-	readline? ( sys-libs/readline:0= )
+	readline? ( sys-libs/readline:= )
 	system-lua? ( ${LUA_DEPS} )
 "
 DEPEND="${RDEPEND}
 	!dedicated? ( x11-base/xorg-proto )
 "
+# Calls gzip during build
 BDEPEND="
+	app-arch/gzip
 	virtual/pkgconfig
 	!dedicated? ( nls? ( sys-devel/gettext ) )
 "
