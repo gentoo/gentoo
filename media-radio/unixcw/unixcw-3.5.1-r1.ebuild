@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,6 +30,9 @@ src_prepare() {
 	append-cxxflags -std=gnu++11
 	eapply -p0 "${FILESDIR}"/${PN}-3.5-tinfo.patch \
 		"${FILESDIR}"/${PN}-tests.patch
+	# Bug# 837617
+	sed -i -e "s/curses, initscr/ncurses, initscr/" \
+		-e "s/_curses_initscr/_ncurses_initscr/" configure.ac || die
 	eapply_user
 	eautoreconf
 }
