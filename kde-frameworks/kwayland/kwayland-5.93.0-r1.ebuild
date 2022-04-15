@@ -38,3 +38,5 @@ BDEPEND="
 	)
 	>=dev-util/wayland-scanner-1.19.0
 "
+
+PATCHES=( "${FILESDIR}/${P}-pkgconfig.patch" ) # bug 838376
