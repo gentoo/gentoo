@@ -105,7 +105,7 @@ QA_FLAGS_IGNORED='.*'
 RESTRICT+=" strip"
 
 # @ECLASS_VARIABLE: EGO_SUM
-# @DEPRECATED
+# @DEPRECATED: none
 # @DESCRIPTION:
 # This is replaced by a dependency tarball, see above for how to create
 # one.
@@ -153,7 +153,7 @@ RESTRICT+=" strip"
 # go.sum copy of the Hash1 values during building of the package.
 
 # @ECLASS_VARIABLE: _GOMODULE_GOPROXY_BASEURI
-# @DEPRECATED
+# @DEPRECATED: none
 # @DESCRIPTION:
 # Golang module proxy service to fetch module files from. Note that the module
 # proxy generally verifies modules via the Hash1 code.
@@ -176,7 +176,7 @@ RESTRICT+=" strip"
 : "${_GOMODULE_GOPROXY_BASEURI:=mirror://goproxy/}"
 
 # @ECLASS_VARIABLE: _GOMODULE_GOSUM_REVERSE_MAP
-# @DEPRECATED
+# @DEPRECATED: none
 # @DESCRIPTION:
 # Mapping back from Gentoo distfile name to upstream distfile path.
 # Associative array to avoid O(N*M) performance when populating the GOPROXY
@@ -206,7 +206,7 @@ ego() {
 }
 
 # @FUNCTION: go-module_set_globals
-# @DEPRECATED
+# @DEPRECATED: none
 # @DESCRIPTION:
 # Convert the information in EGO_SUM for other usage in the ebuild.
 # - Populates EGO_SUM_SRC_URI that can be added to SRC_URI
@@ -297,7 +297,7 @@ go-module_set_globals() {
 }
 
 # @FUNCTION: go-module_setup_proxy
-# @DEPRECATED
+# @DEPRECATED: none
 # @DESCRIPTION:
 # If your ebuild redefines src_unpack and uses EGO_SUM you need to call
 # this function in src_unpack.
@@ -359,7 +359,7 @@ go-module_src_unpack() {
 }
 
 # @FUNCTION: _go-module_src_unpack_gosum
-# @DEPRECATED
+# @DEPRECATED: none
 # @DESCRIPTION:
 # Populate a GOPROXY directory hierarchy with distfiles from EGO_SUM and
 # unpack the base distfiles.
@@ -405,7 +405,7 @@ _go-module_src_unpack_gosum() {
 }
 
 # @FUNCTION: _go-module_gosum_synthesize_files
-# @DEPRECATED
+# @DEPRECATED: none
 # @DESCRIPTION:
 # Given a path &  version, populate all Goproxy metadata files which aren't
 # needed to be downloaded directly.
@@ -433,7 +433,7 @@ _go-module_gosum_synthesize_files() {
 }
 
 # @FUNCTION: _go-module_src_unpack_verify_gosum
-# @DEPRECATED
+# @DEPRECATED: none
 # @DESCRIPTION:
 # Validate the Go modules declared by EGO_SUM are sufficient to cover building
 # the package, without actually building it yet.
@@ -482,7 +482,7 @@ go-module_live_vendor() {
 }
 
 # @FUNCTION: _go-module_gomod_encode
-# @DEPRECATED
+# @DEPRECATED: none
 # @DESCRIPTION:
 # Encode the name(path) of a Golang module in the format expected by Goproxy.
 #
