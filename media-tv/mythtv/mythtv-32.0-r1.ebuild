@@ -37,7 +37,7 @@ RDEPEND="
 	acct-user/mythtv
 	dev-libs/glib:2
 	dev-libs/lzo
-	dev-libs/libzip
+	dev-libs/libzip:=
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5[jpeg]
