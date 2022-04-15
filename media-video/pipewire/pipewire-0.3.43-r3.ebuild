@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit meson-multilib optfeature prefix python-any-r1 systemd udev
+inherit flag-o-matic meson-multilib optfeature prefix python-any-r1 systemd udev
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/${PN}/${PN}.git"
@@ -119,6 +119,9 @@ python_check_deps() {
 }
 
 src_prepare() {
+	# https://bugs.gentoo.org/838301
+	filter-flags -fno-semantic-interposition
+
 	default
 
 	einfo "Generating ${limitsdfile}"
@@ -132,6 +135,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# https://bugs.gentoo.org/838301
+	filter-flags -fno-semantic-interposition
+
 	local emesonargs=(
 		-Ddocdir="${EPREFIX}"/usr/share/doc/${PF}
 		$(meson_native_use_feature zeroconf avahi)
