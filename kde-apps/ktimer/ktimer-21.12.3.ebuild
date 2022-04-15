@@ -30,3 +30,5 @@ DEPEND="
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-use-KDECompilerSettings.patch" ) # bug 838040
