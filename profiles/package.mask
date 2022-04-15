@@ -273,13 +273,6 @@ sci-biology/GBrowse
 # tries to fetch and install all dependencies locally).
 ~dev-python/jaraco-packaging-9.0.0
 
-# Jakov Smolić <jsmolic@gentoo.org> (2022-03-16)
-# Unmaintaned, broken packages, no revdeps.
-# Bugs 832618, 731720, 713684,
-# 733662, 741082, and many others.
-# Removal on 2022-04-16.
-net-wireless/yatebts
-
 # John Helmert III <ajak@gentoo.org> (2022-03-13)
 # Arti is not a production-ready Tor client. According to upstream, "do
 # not use this program yet if you seriously need anonymity, privacy,
