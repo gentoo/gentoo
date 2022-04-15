@@ -64,7 +64,6 @@ IUSE="${IUSE} ${PLUGINS} ${PROTOCOLS}"
 
 COMMON_DEPEND="
 	app-crypt/gpgme:=[cxx,qt5]
-	dev-libs/libpcre
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtsql-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
