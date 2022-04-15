@@ -279,7 +279,6 @@ sci-biology/GBrowse
 # 733662, 741082, and many others.
 # Removal on 2022-04-16.
 net-wireless/yatebts
-net-wireless/srslte
 
 # John Helmert III <ajak@gentoo.org> (2022-03-13)
 # Arti is not a production-ready Tor client. According to upstream, "do
