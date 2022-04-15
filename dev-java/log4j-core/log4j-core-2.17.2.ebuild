@@ -157,9 +157,11 @@ src_compile() {
 		"${JAVA_GENTOO_CLASSPATH},${JAVA_CLASSPATH_EXTRA}")"
 	# Just in case java-pkg-simple.eclass changes the path in the future
 	mkdir -p "${classes}" || die "Failed to create directory for classes"
+	local sources_list_file="${T}/sources.lst"
+	find "${JAVA_SRC_DIR}" -type f -name "*.java" > "${sources_list_file}" || die
 	ejavac -d "${classes}" -cp "${classpath}" \
 		-proc:only -processor "${processor}" \
-		$(find "${JAVA_SRC_DIR}" -name "*.java")
+		@"${sources_list_file}"
 	# Update the JAR to include the serialized plugin listing file
 	local jar="$(java-config -j)"
 	"${jar}" -uf "${JAVA_JAR_FILENAME}" -C "${classes}" . ||
