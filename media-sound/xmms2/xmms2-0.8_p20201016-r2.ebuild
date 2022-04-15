@@ -20,7 +20,7 @@ S="${WORKDIR}/${PN}-devel-${XMMS2_COMMIT}"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ppc ~riscv x86"
+KEYWORDS="~alpha amd64 ~arm ppc ~riscv x86"
 
 # IUSE static map to be passed to --with-{optionals,plugins}=opt1,opt2,...
 # flag:opt = `usev flag opt`, opt = `usev opt`, :opt = `echo opt`
