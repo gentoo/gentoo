@@ -304,11 +304,6 @@ net-wireless/soapy_power
 dev-python/simplesoapy
 dev-python/simplespectral
 
-# Fabian Groffen <grobian@gentoo.org> (2022-03-16)
-# little activity upstream, doesn't work with PHP 8.0
-# Removal in 30 days
-www-apps/agendav
-
 # John Helmert III <ajak@gentoo.org> (2022-03-13)
 # Arti is not a production-ready Tor client. According to upstream, "do
 # not use this program yet if you seriously need anonymity, privacy,
