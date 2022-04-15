@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-2.eclass
@@ -8,7 +8,7 @@
 # John Mylchreest <johnm@gentoo.org>
 # Mike Pagano <mpagano@gentoo.org>
 # <so many, many others, please add yourself>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Eclass for kernel packages
 # @DESCRIPTION:
 # This is the kernel.eclass rewrite for a clean base regarding the 2.6
@@ -282,10 +282,9 @@
 # that of course does not mean we're not willing to help.
 
 inherit estack toolchain-funcs
-[[ ${EAPI} == 6 ]] && inherit eapi7-ver
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -657,7 +656,6 @@ kernel_is() {
 
 # Capture the sources type and set DEPENDs
 if [[ ${ETYPE} == sources ]]; then
-	[[ ${EAPI} == 6 ]] && DEPEND="!build? ( sys-apps/sed )" ||
 	BDEPEND="!build? ( sys-apps/sed )"
 	RDEPEND="!build? (
 		app-arch/cpio
@@ -863,10 +861,10 @@ install_headers() {
 	local ddir=$(kernel_header_destdir)
 
 	env_setup_xmakeopts
-	emake headers_install INSTALL_HDR_PATH="${ED%/}"${ddir}/.. ${xmakeopts}
+	emake headers_install INSTALL_HDR_PATH="${ED}"${ddir}/.. ${xmakeopts}
 
 	# let other packages install some of these headers
-	rm -rf "${ED%/}"${ddir}/scsi || die #glibc/uclibc/etc...
+	rm -rf "${ED}"${ddir}/scsi || die #glibc/uclibc/etc...
 	return 0
 }
 
@@ -893,7 +891,7 @@ install_sources() {
 		done
 	fi
 
-	mv "${WORKDIR}"/linux* "${ED%/}"/usr/src || die
+	mv "${WORKDIR}"/linux* "${ED}"/usr/src || die
 
 	if [[ -n ${UNIPATCH_DOCS} ]]; then
 		for i in ${UNIPATCH_DOCS}; do
@@ -933,15 +931,15 @@ postinst_sources() {
 
 	# if we are to forcably symlink, delete it if it already exists first.
 	if [[ ${K_SYMLINK} -gt 0 ]]; then
-		if [[ -e ${EROOT%/}/usr/src/linux && ! -L ${EROOT%/}/usr/src/linux ]] ; then
-			die "${EROOT%/}/usr/src/linux exist and is not a symlink"
+		if [[ -e ${EROOT}/usr/src/linux && ! -L ${EROOT}/usr/src/linux ]] ; then
+			die "${EROOT}/usr/src/linux exist and is not a symlink"
 		fi
 
-		ln -snf linux-${KV_FULL} "${EROOT%/}"/usr/src/linux || die
+		ln -snf linux-${KV_FULL} "${EROOT}"/usr/src/linux || die
 	fi
 
 	# Don't forget to make directory for sysfs
-	[[ ! -d ${EROOT%/}/sys ]] && kernel_is 2 6 && { mkdir "${EROOT%/}"/sys || die ; }
+	[[ ! -d ${EROOT}/sys ]] && kernel_is 2 6 && { mkdir "${EROOT}"/sys || die ; }
 
 	elog "If you are upgrading from a previous kernel, you may be interested"
 	elog "in the following document:"
@@ -1537,10 +1535,10 @@ kernel-2_pkg_postrm() {
 	[[ ${ETYPE} == headers ]] && return 0
 
 	# If there isn't anything left behind, then don't complain.
-	[[ -e ${EROOT%/}/usr/src/linux-${KV_FULL} ]] || return 0
+	[[ -e ${EROOT}/usr/src/linux-${KV_FULL} ]] || return 0
 	ewarn "Note: Even though you have successfully unmerged "
 	ewarn "your kernel package, directories in kernel source location: "
-	ewarn "${EROOT%/}/usr/src/linux-${KV_FULL}"
+	ewarn "${EROOT}/usr/src/linux-${KV_FULL}"
 	ewarn "with modified files will remain behind. By design, package managers"
 	ewarn "will not remove these modified files and the directories they reside in."
 	ewarn "For more detailed kernel removal instructions, please see: "
