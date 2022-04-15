@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python 3 bindings for libfuse 3 with asynchronous API"
 HOMEPAGE="https://github.com/libfuse/pyfuse3"
-SRC_URI="https://github.com/libfuse/${PN}/releases/download/release-${PV}/${P}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/libfuse/${PN}/releases/download/release-${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
