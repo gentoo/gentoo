@@ -16,7 +16,6 @@
 	<use>
 		<flag name="origin">Add support for reading OriginLab OPJ project files through <pkg>sci-libs/liborigin</pkg>.</flag>
 		<flag name="python">Build support for python scripting.</flag>
-		<flag name="muparser">Build support for muparser scripting.</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">scidavis</remote-id>

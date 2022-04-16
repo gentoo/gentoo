@@ -18,7 +18,7 @@ LICENSE="GPL-2+ ZLIB"
 KEYWORDS="~amd64"
 SLOT="0"
 
-IUSE="doc +muparser origin python test"
+IUSE="doc origin python test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # requires network
@@ -26,7 +26,7 @@ RESTRICT="test"
 PROPERTIES="test_network"
 
 RDEPEND="
-	muparser? ( dev-cpp/muParser )
+	dev-cpp/muParser
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
@@ -58,8 +58,9 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-muparser.patch"
-	"${FILESDIR}/${PN}-qwtplot3d.patch"
+	"${FILESDIR}/${P}-install-locations.patch"
+	"${FILESDIR}/${P}-find-qwtplot3d.patch"
+	"${FILESDIR}/${P}-fix-build-if-sip4-installed.patch"
 )
 
 src_prepare() {
@@ -76,12 +77,19 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DSCRIPTING_MUPARSER=$(usex muparser)
-		-DSCRIPTING_PYTHON=$(usex python)
-		-DPYTHON_SCRIPTDIR="$(python_get_scriptdir)"
+		# Even if we disable muparser scripting, we still need MuParser.h
+		# for Graph3D.cpp. So just enable it unconditionally. Bug 834074
+		-DSCRIPTING_MUPARSER=ON
 		-DORIGIN_IMPORT=$(usex origin)
+		-DSCRIPTING_PYTHON=$(usex python)
 		-DBUILD_TESTS=$(usex test)
 	)
+
+	if use python; then
+		mycmakeargs+=(
+			-DPYTHON_SCRIPTDIR="$(python_get_scriptdir)"
+		)
+	fi
 	cmake_src_configure
 }
 
