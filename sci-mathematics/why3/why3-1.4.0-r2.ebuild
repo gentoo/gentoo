@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ IUSE="coq doc emacs gtk +ocamlopt re sexp +zarith zip"
 RDEPEND="
 	!sci-mathematics/why3-for-spark
 	>=dev-lang/ocaml-4.05.0:=[ocamlopt?]
-	>=dev-ml/menhir-20151112:=
+	>=dev-ml/menhir-20170418:=
 	dev-ml/num:=
 	coq? ( >=sci-mathematics/coq-8.6 )
 	emacs? ( app-editors/emacs:* )
