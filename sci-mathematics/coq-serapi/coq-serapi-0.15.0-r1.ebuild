@@ -22,11 +22,11 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=sci-mathematics/coq-${COQV}:=
+	>=dev-ml/ppx_sexp_conv-0.13.0:= <dev-ml/ppx_sexp_conv-0.15.0:=
 	dev-ml/cmdliner:=
 	dev-ml/ppx_deriving:=
 	dev-ml/ppx_deriving_yojson:=
 	dev-ml/ppx_import:=
-	dev-ml/ppx_sexp_conv:=
 	dev-ml/sexplib:=
 	dev-ml/yojson:=
 "
