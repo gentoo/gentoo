@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/libthreadar/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ppc ~sparc ~x86"
 
 src_prepare() {
 	default
