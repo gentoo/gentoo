@@ -670,7 +670,7 @@ if [[ ${ETYPE} == sources ]]; then
 	)"
 
 	SLOT="${PVR}"
-	DESCRIPTION="Sources based on the Linux Kernel."
+	DESCRIPTION="Sources based on the Linux Kernel"
 	IUSE="symlink build"
 
 	# Bug #266157, deblob for libre support
@@ -932,7 +932,7 @@ postinst_sources() {
 	# if we are to forcably symlink, delete it if it already exists first.
 	if [[ ${K_SYMLINK} -gt 0 ]]; then
 		if [[ -e ${EROOT}/usr/src/linux && ! -L ${EROOT}/usr/src/linux ]] ; then
-			die "${EROOT}/usr/src/linux exist and is not a symlink"
+			die "${EROOT}/usr/src/linux exists and is not a symlink"
 		fi
 
 		ln -snf linux-${KV_FULL} "${EROOT}"/usr/src/linux || die
