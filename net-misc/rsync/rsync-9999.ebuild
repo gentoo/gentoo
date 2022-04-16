@@ -9,7 +9,7 @@ DESCRIPTION="File transfer program to keep remote files into sync"
 HOMEPAGE="https://rsync.samba.org/"
 if [[ ${PV} == *9999 ]] ; then
 	PYTHON_COMPAT=( python3_{8,9,10} )
-        EGIT_REPO_URI="https://github.com/WayneD/rsync.git"
+	EGIT_REPO_URI="https://github.com/WayneD/rsync.git"
 	inherit autotools git-r3 python-any-r1
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/waynedavison.asc
