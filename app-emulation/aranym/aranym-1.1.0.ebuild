@@ -38,6 +38,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.0-conditional-installs.patch
+	"${FILESDIR}"/${PN}-1.1.0-libcwrap.patch
 )
 
 ECONF_SOURCE="${S}"
