@@ -3,14 +3,16 @@
 
 EAPI=7
 
-inherit flag-o-matic prefix systemd
+PYTHON_COMPAT=( python3_{8,9,10} )
+inherit flag-o-matic prefix python-single-r1 systemd
 
 DESCRIPTION="File transfer program to keep remote files into sync"
 HOMEPAGE="https://rsync.samba.org/"
 if [[ ${PV} == *9999 ]] ; then
-	PYTHON_COMPAT=( python3_{8,9,10} )
 	EGIT_REPO_URI="https://github.com/WayneD/rsync.git"
-	inherit autotools git-r3 python-any-r1
+	inherit autotools git-r3
+
+	REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/waynedavison.asc
 	inherit verify-sig
@@ -30,8 +32,13 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="acl examples iconv ipv6 lz4 ssl stunnel system-zlib xattr xxhash zstd"
+REQUIRED_USE+=" examples? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="acl? ( virtual/acl )
+	examples? (
+		${PYTHON_DEPS}
+		dev-lang/perl
+	)
 	lz4? ( app-arch/lz4 )
 	ssl? ( dev-libs/openssl:0= )
 	system-zlib? ( sys-libs/zlib )
@@ -41,19 +48,23 @@ RDEPEND="acl? ( virtual/acl )
 	>=dev-libs/popt-1.5
 	iconv? ( virtual/libiconv )"
 DEPEND="${RDEPEND}"
+BDEPEND="examples? ( ${PYTHON_DEPS} )"
 
 if [[ ${PV} == *9999 ]] ; then
 	BDEPEND+=" ${PYTHON_DEPS}
-		$(python_gen_any_dep '
+		$(python_gen_cond_dep '
 			dev-python/commonmark[${PYTHON_USEDEP}]
 		')"
 else
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-waynedavison )"
 fi
 
-# Only required for live ebuild
-python_check_deps() {
-	has_version -b "dev-python/commonmark[${PYTHON_USEDEP}]"
+pkg_setup() {
+	# - USE=examples needs Python itself at runtime, but nothing else
+	# - 9999 needs commonmark at build time
+	if [[ ${PV} == *9999 ]] || use examples ; then
+		python-single-r1_pkg_setup
+	fi
 }
 
 src_prepare() {
@@ -112,8 +123,11 @@ src_install() {
 
 	# Install the useful contrib scripts
 	if use examples ; then
+		python_fix_shebang support/
+
 		exeinto /usr/share/rsync
 		doexe support/*
+
 		rm -f "${ED}"/usr/share/rsync/{Makefile*,*.c}
 	fi
 
