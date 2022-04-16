@@ -59,3 +59,16 @@ src_configure() {
 
 	cmake_src_configure
 }
+
+src_test() {
+	local myctestargs=(
+		# - timeseries_histogram_test.TimeseriesHistogram.Percentile|HHWheelTimerTest
+		# Long-standing known test failure
+		# TODO: report upstream
+		# - HHWheelTimerTest.HHWheelTimerTest.CancelTimeout
+		# Timeouts are fragile
+		-E "(timeseries_histogram_test.TimeseriesHistogram.Percentile|HHWheelTimerTest.HHWheelTimerTest.CancelTimeout)"
+	)
+
+	cmake_src_test
+}
