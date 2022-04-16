@@ -33,12 +33,10 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 IUSE="bzip2 +jit libedit +pcre16 pcre32 +readline static-libs unicode zlib"
 REQUIRED_USE="?? ( libedit readline )"
 
-RDEPEND="
-	bzip2? ( app-arch/bzip2 )
+RDEPEND="bzip2? ( app-arch/bzip2 )
 	libedit? ( dev-libs/libedit )
-	readline? ( sys-libs/readline:0= )
-	zlib? ( sys-libs/zlib )
-"
+	readline? ( sys-libs/readline:= )
+	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	verify-sig? ( sec-keys/openpgp-keys-philiphazel )"
@@ -88,6 +86,10 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	emake V=1 $(multilib_is_native_abi || echo "bin_PROGRAMS=")
+}
+
+multilib_src_test() {
+	emake check VERBOSE=yes
 }
 
 multilib_src_install() {
