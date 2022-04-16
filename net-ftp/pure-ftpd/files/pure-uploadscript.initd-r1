@@ -2,7 +2,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-ftpd_configfile="/etc/${SVCNAME/uploadscript/ftpd}.conf"
+ftpd_configfile="/etc/pure-ftpd.conf"
 pidfile="/run/pure-uploadscript.pid"
 
 command="/usr/sbin/pure-uploadscript"

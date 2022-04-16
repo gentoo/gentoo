@@ -111,7 +111,7 @@ src_install() {
 	newinitd "${FILESDIR}/pure-ftpd.initd-r12" pure-ftpd
 	newconfd "${FILESDIR}/pure-ftpd.confd-r4" pure-ftpd
 
-	newinitd "${FILESDIR}/pure-uploadscript.initd" pure-uploadscript
+	newinitd "${FILESDIR}/pure-uploadscript.initd-r1" pure-uploadscript
 	newconfd "${FILESDIR}/pure-uploadscript.confd" pure-uploadscript
 
 	if use implicittls ; then
