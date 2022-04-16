@@ -51,11 +51,6 @@ else
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-waynedavison )"
 fi
 
-# Only required for live ebuild
-python_check_deps() {
-	has_version -b "dev-python/commonmark[${PYTHON_USEDEP}]"
-}
-
 src_prepare() {
 	default
 
