@@ -1,0 +1,10 @@
+--- a/lib/imagery/Makefile.orig	2022-03-26 11:51:11.017214548 +0100
++++ b/lib/imagery/Makefile	2022-03-26 11:51:17.343881127 +0100
+@@ -7,7 +7,6 @@
+ 
+ include $(MODULE_TOPDIR)/include/Make/Lib.make
+ include $(MODULE_TOPDIR)/include/Make/Doxygen.make
+-include $(MODULE_TOPDIR)/include/Make/Grass.make
+ 
+ # images
+ IMGSRC := $(wildcard *.png) $(wildcard *.jpg) $(wildcard *.gif)
