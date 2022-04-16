@@ -14,7 +14,7 @@ SRC_URI+=" verify-sig? ( mirror://gnupg/${PN}/${P}.tar.bz2.sig )"
 LICENSE="LGPL-2.1 MIT"
 SLOT="0/20" # subslot = soname major version
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="+asm custom-cflags cpu_flags_arm_neon cpu_flags_arm_aes cpu_flags_arm_sha1 cpu_flags_arm_sha2 cpu_flags_ppc_altivec cpu_flags_ppc_vsx2 cpu_flags_ppc_vsx3 cpu_flags_x86_aes cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_padlock cpu_flags_x86_sha cpu_flags_x86_sse4_1 doc static-libs"
+IUSE="+asm cpu_flags_arm_neon cpu_flags_arm_aes cpu_flags_arm_sha1 cpu_flags_arm_sha2 cpu_flags_ppc_altivec cpu_flags_ppc_vsx2 cpu_flags_ppc_vsx3 cpu_flags_x86_aes cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_padlock cpu_flags_x86_sha cpu_flags_x86_sse4_1 doc static-libs"
 
 # Build system only has --disable-arm-crypto-support right now
 # If changing this, update src_configure logic too.
@@ -92,7 +92,6 @@ multilib_src_configure() {
 		$(use_enable cpu_flags_x86_sse4_1 sse41-support)
 		# required for sys-power/suspend[crypt], bug 751568
 		$(use_enable static-libs static)
-		$(use_enable !custom-cflags O-flag-munging)
 
 		# disabled due to various applications requiring privileges
 		# after libgcrypt drops them (bug #468616)

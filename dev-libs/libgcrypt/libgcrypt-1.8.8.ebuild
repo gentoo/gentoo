@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
 LICENSE="LGPL-2.1 MIT"
 SLOT="0/20" # subslot = soname major version
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc o-flag-munging static-libs"
+IUSE="doc static-libs"
 
 RDEPEND=">=dev-libs/libgpg-error-1.25[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
@@ -51,7 +51,6 @@ multilib_src_configure() {
 
 		# required for sys-power/suspend[crypt], bug 751568
 		$(use_enable static-libs static)
-		$(use_enable o-flag-munging O-flag-munging)
 
 		# http://trac.videolan.org/vlc/ticket/620
 		# causes bus-errors on sparc64-solaris
