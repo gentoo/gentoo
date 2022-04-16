@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby26 ruby27"
+USE_RUBY="ruby26 ruby27 ruby30"
 
 RUBY_FAKEGEM_EXTRADOC="changelog.txt README.md"
 RUBY_FAKEGEM_GEMSPEC="excon.gemspec"
@@ -25,7 +25,6 @@ ruby_add_bdepend "
 	dev-ruby/rake
 	test? (
 		dev-ruby/activesupport
-		>=dev-ruby/eventmachine-1.0.4
 		>=dev-ruby/json-1.8.5
 		dev-ruby/open4
 		dev-ruby/rdoc
