@@ -1,0 +1,84 @@
+From 5ecc80d27276ba978b8c0268aab722fe8f09b394 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 20 Feb 2021 12:22:24 +0000
+Subject: [PATCH] Unbundle the DUMB library
+
+---
+ src/Application/App.cpp   | 2 +-
+ src/Audio/ModMusic.cpp    | 2 +-
+ src/CMakeLists.txt        | 4 +++-
+ thirdparty/CMakeLists.txt | 1 -
+ 4 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/src/Application/App.cpp b/src/Application/App.cpp
+index 936a8212..2960ca1d 100644
+--- a/src/Application/App.cpp
++++ b/src/Application/App.cpp
+@@ -60,7 +60,7 @@
+ #include "UI/WxUtils.h"
+ #include "Utility/StringUtils.h"
+ #include "Utility/Tokenizer.h"
+-#include "thirdparty/dumb/dumb.h"
++#include <dumb.h>
+ #include <filesystem>
+ 
+ using namespace slade;
+diff --git a/src/Audio/ModMusic.cpp b/src/Audio/ModMusic.cpp
+index cc4b60cf..6d54516d 100644
+--- a/src/Audio/ModMusic.cpp
++++ b/src/Audio/ModMusic.cpp
+@@ -32,7 +32,7 @@
+ // -----------------------------------------------------------------------------
+ #include "Main.h"
+ #include "ModMusic.h"
+-#include "thirdparty/dumb/dumb.h"
++#include <dumb.h>
+ 
+ using namespace slade;
+ using namespace audio;
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index fef3d009..5363802c 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -107,6 +107,7 @@ if (NOT NO_LUA)
+ 	find_package(Lua REQUIRED)
+ endif()
+ find_package(MPG123 REQUIRED)
++pkg_check_modules(DUMB REQUIRED dumb>=1.0)
+ include_directories(
+ 	${FREEIMAGE_INCLUDE_DIR}
+ 	${SFML_INCLUDE_DIR}
+@@ -114,9 +115,9 @@ include_directories(
+ 	${FTGL_INCLUDE_DIR}
+ 	${LUA_INCLUDE_DIR}
+ 	${MPG123_INCLUDE_DIR}
++	${DUMB_INCLUDE_DIRS}
+ 	.
+ 	..
+-	../thirdparty/dumb
+ 	../thirdparty/glad/include
+ 	./Application
+ 	)
+@@ -201,6 +202,7 @@ target_link_libraries(slade
+ 	${OPENGL_LIBRARIES}
+ 	${LUA_LIBRARIES}
+ 	${MPG123_LIBRARIES}
++	${DUMB_LIBRARIES}
+ )
+ 
+ if(LINUX)
+diff --git a/thirdparty/CMakeLists.txt b/thirdparty/CMakeLists.txt
+index f84cfc8a..2622852b 100644
+--- a/thirdparty/CMakeLists.txt
++++ b/thirdparty/CMakeLists.txt
+@@ -10,7 +10,6 @@ set(BZIP2_LIBRARIES ${BZIP2_LIBRARIES} PARENT_SCOPE)
+ set(EXTERNAL_SOURCES
+ )
+ file(GLOB_RECURSE EXTERNAL_SOURCES
+-	dumb/*.c
+ 	lzma/C/LzmaDec.c
+ 	mus2mid/mus2mid.cpp
+ 	zreaders/*.cpp
+-- 
+2.34.1
+
