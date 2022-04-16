@@ -37,12 +37,12 @@ RDEPEND="app-arch/bzip2
 	virtual/libintl"
 
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen[dot] )
 	test? ( dev-libs/libgcrypt:0
 		dev-qt/qttest:5
 		sys-devel/gdb:0 )"
 
-BDEPEND="sys-devel/gettext"
+BDEPEND="sys-devel/gettext
+	doc? ( app-doc/doxygen )"
 
 src_prepare() {
 	# preprocessed graphics are unpacked into wrong directory
@@ -73,7 +73,7 @@ src_compile() {
 
 src_test() {
 	# testca will return 0 if all unit tests pass
-	virtx ./testca/testca
+	virtx ./testca/testca || die
 }
 
 src_install() {
