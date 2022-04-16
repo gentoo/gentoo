@@ -20,7 +20,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+man +swaybar +swaybg +swayidle +swaylock +swaymsg +swaynag tray wallpapers X"
+IUSE="grimshot +man +swaybar +swaybg +swayidle +swaylock +swaymsg +swaynag tray wallpapers X"
 
 DEPEND="
 	>=dev-libs/json-c-0.13:0=
@@ -55,6 +55,13 @@ else
 fi
 RDEPEND="
 	x11-misc/xkeyboard-config
+	grimshot? (
+		app-misc/jq
+		gui-apps/grim
+		gui-apps/slurp
+		gui-apps/wl-clipboard
+		x11-libs/libnotify
+	)
 	${DEPEND}
 "
 BDEPEND="
@@ -67,6 +74,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	BDEPEND+="man? ( >=app-text/scdoc-1.9.3 )"
 fi
+REQUIRED_USE="grimshot? ( swaymsg )"
 
 src_configure() {
 	local emesonargs=(
@@ -83,4 +91,13 @@ src_configure() {
 	)
 
 	meson_src_configure
+}
+
+src_install() {
+	meson_src_install
+
+	if use grimshot; then
+		doman contrib/grimshot.1
+		dobin contrib/grimshot
+	fi
 }

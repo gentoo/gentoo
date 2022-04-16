@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MY_PV=${PV/_rc/-rc}
 	SRC_URI="https://github.com/swaywm/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
@@ -37,6 +37,11 @@ DEPEND="
 	swaybg? ( gui-apps/swaybg )
 	swayidle? ( gui-apps/swayidle )
 	swaylock? ( gui-apps/swaylock )
+	tray? ( || (
+		sys-apps/systemd
+		sys-auth/elogind
+		sys-libs/basu
+	) )
 	wallpapers? ( x11-libs/gdk-pixbuf:2[jpeg] )
 	X? ( x11-libs/libxcb:0= )
 "
@@ -69,6 +74,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	BDEPEND+="man? ( >=app-text/scdoc-1.9.3 )"
 fi
+REQUIRED_USE="grimshot? ( swaymsg )"
 
 src_configure() {
 	local emesonargs=(
@@ -82,7 +88,6 @@ src_configure() {
 		-Dfish-completions=true
 		-Dzsh-completions=true
 		-Dbash-completions=true
-		-Dwerror=false
 	)
 
 	meson_src_configure
