@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -amd64
 
+# Matt Turner <mattst88@gentoo.org> (2022-04-16)
+# dev-util/sysprof-capture is keyworded on amd64
+-sysprof
+
 # David Seifert <soap@gentoo.org> (2022-03-13)
 # Cuda/NVENC works here
 -cuda

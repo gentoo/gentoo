@@ -145,17 +145,6 @@ sys-libs/glibc -static-pie
 mail-client/thunderbird -eme-free
 www-client/firefox -eme-free
 
-# Mart Raudsepp <leio@gentoo.org> (2020-03-01)
-# dev-util/sysprof-capture is keyworded on x86
-x11-wm/mutter -sysprof
-dev-libs/gjs -sysprof
-dev-libs/glib -sysprof
-gnome-extra/cjs -sysprof
-x11-libs/gtk+ -sysprof
-net-libs/libsoup -sysprof
-x11-libs/pango -sysprof
-gui-libs/gtk -sysprof
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
 # Vulkan is available on x86.
 dev-qt/qt3d -vulkan
