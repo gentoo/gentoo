@@ -4,7 +4,7 @@
 EAPI="7"
 
 JAVA_PKG_OPT_USE="collectd_plugins_java"
-LUA_COMPAT=( lua5-{1..3} )
+LUA_COMPAT=( lua5-{1..4} )
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit autotools fcaps flag-o-matic java-pkg-opt-2 linux-info lua-single \
