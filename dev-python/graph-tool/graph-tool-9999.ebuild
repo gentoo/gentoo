@@ -34,6 +34,7 @@ RDEPEND="
 	cairo? (
 		dev-cpp/cairomm:0
 		dev-python/pycairo[${PYTHON_USEDEP}]
+		x11-libs/cairo[X]
 	)"
 DEPEND="${RDEPEND}
 	dev-cpp/sparsehash"
