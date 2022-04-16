@@ -39,6 +39,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
+		dev-python/cbor2[${PYTHON_USEDEP}]
 		dev-python/chardet[${PYTHON_USEDEP}]
 		dev-python/cloudscraper[${PYTHON_USEDEP}]
 		dev-python/html5lib[${PYTHON_USEDEP}]
