@@ -141,10 +141,6 @@ kde-plasma/plasma-meta grub plymouth
 sys-auth/sssd test
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-11)
-# dev-ruby/httpclient not keyworded here due to failing tests
-# (Bug #807727). That said, with httpclient-2.8.3 installed manually
-# (and without testing) all webmock-3.13.0 tests passed.
-dev-ruby/webmock test
 # Currently requires dev-lang/spidermonkey:68, which explicitly
 # does not support riscv. Hopefully temporary, see Bug #807772.
 net-libs/libproxy spidermonkey
