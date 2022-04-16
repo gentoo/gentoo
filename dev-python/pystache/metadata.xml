@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>nerdboy@gentoo.org</email>
+	<name>Steve Arnold</name>
+</maintainer>
+<longdescription lang="en">
+	Updated Python implementation of Mustache templating framework.
+</longdescription>
+<upstream>
+	<remote-id type="github">PennyDreadfulMTG/pystache</remote-id>
+</upstream>
+</pkgmetadata>
