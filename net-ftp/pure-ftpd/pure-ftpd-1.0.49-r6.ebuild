@@ -16,7 +16,7 @@ else
 	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 fi
 
-LICENSE="BSD"
+LICENSE="BSD GPL-2"
 SLOT="0"
 
 IUSE="anondel anonperm anonren anonres caps implicittls ldap mysql noiplog pam paranoidmsg postgres resolveids selinux ssl sysquota vchroot xinetd"
