@@ -28,12 +28,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE} mapserver? ( python )"
 # Disabling test suite because upstream disallow running from install path
 RESTRICT="!test? ( test )"
 
-# 3.22.5+ *does* support GRASS 8 but we can't enable it yet because of
-# https://github.com/OSGeo/grass/pull/2269 (=> unresolved SONAME dependencies)
-# Keep an eye on that bug / a fixed GRASS release and readd support
-# by unrestricting the dep in ${COMMON_DEPEND} once it's fixed!
-# (No need to change the supported GRASS versions in src_configure b/c
-# it won't find GRASS 8 with this dependency set.)
 COMMON_DEPEND="
 	app-crypt/qca:2[qt5(+),ssl]
 	>=dev-db/spatialite-4.2.0
@@ -63,7 +57,7 @@ COMMON_DEPEND="
 	>=x11-libs/qwt-6.1.2:6=[qt5(+),svg]
 	3d? ( dev-qt/qt3d:5 )
 	georeferencer? ( sci-libs/gsl:= )
-	grass? ( =sci-geosciences/grass-7*:= )
+	grass? ( sci-geosciences/grass:= )
 	hdf5? ( sci-libs/hdf5:= )
 	mapserver? ( dev-libs/fcgi )
 	netcdf? ( sci-libs/netcdf:= )
