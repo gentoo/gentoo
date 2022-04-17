@@ -1,7 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit autotools
 
 DESCRIPTION="Groonga plugin that provides MySQL compatible normalizers"
@@ -11,20 +12,21 @@ SRC_URI="https://packages.groonga.org/source/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="app-text/groonga"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
 DOCS=( README.md )
 
 src_prepare() {
-	default_src_prepare
+	default
+
 	eautoreconf
 }
 
 src_configure() {
-	# ruby is only uses for tests
+	# ruby is only used for tests
 	econf --without-ruby
 }
 
@@ -32,5 +34,5 @@ src_install() {
 	default
 
 	find "${ED}" -name '*.la' -delete || die
-	rm -r "${D}usr/share/doc/${PN}" || die
+	rm -r "${ED}"/usr/share/doc/${PN} || die
 }
