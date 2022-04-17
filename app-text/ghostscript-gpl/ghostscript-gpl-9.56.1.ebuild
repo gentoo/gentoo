@@ -10,6 +10,8 @@ MY_P="${MY_PN}-${PV/_}"
 PVM=$(ver_cut 1-2)
 PVM_S=$(ver_rs 1-2 "")
 
+# Use https://gitweb.gentoo.org/proj/codec/ghostscript-gpl-patches.git/ for patches
+# See 'index' branch for README
 MY_PATCHSET="ghostscript-gpl-9.56.1-patchset-01.tar.xz"
 
 DESCRIPTION="Interpreter for the PostScript language and PDF"
