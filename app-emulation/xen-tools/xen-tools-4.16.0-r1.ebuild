@@ -69,7 +69,7 @@ SLOT="0/$(ver_cut 1-2)"
 # Inclusion of IUSE ocaml on stabalizing requires maintainer of ocaml to (get off his hands and) make
 # >=dev-lang/ocaml-4 stable
 # Masked in profiles/eapi-5-files instead
-IUSE="api debug doc +hvm +ipxe ocaml ovmf +pam pygrub python +qemu +qemu-traditional +rombios screen selinux sdl static-libs system-ipxe system-qemu system-seabios"
+IUSE="api debug doc +hvm +ipxe ocaml ovmf +pam pygrub python +qemu +qemu-traditional +rombios screen selinux sdl static-libs system-ipxe system-qemu system-seabios systemd"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -426,6 +426,7 @@ src_configure() {
 		$(use_enable ovmf)
 		$(use_enable pam)
 		$(use_enable rombios)
+		$(use_enable systemd)
 		--with-xenstored=$(usex ocaml 'oxenstored' 'xenstored')
 	)
 
