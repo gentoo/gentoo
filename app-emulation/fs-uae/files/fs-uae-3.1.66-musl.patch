@@ -1,0 +1,35 @@
+From 5d7287d1aa99f100e560b5a2d231e49b64a18da3 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 17 Apr 2022 10:29:22 +0100
+Subject: [PATCH] Don't return NULL in mapped_malloc when a bool is expected
+
+This was apparently breaking the build under musl.
+---
+ src/memory.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/memory.cpp b/src/memory.cpp
+index 3cd7dee6..18d1283a 100644
+--- a/src/memory.cpp
++++ b/src/memory.cpp
+@@ -1872,7 +1872,7 @@ bool mapped_malloc (addrbank *ab)
+ 	if (id == -1) {
+ 		nocanbang ();
+ 		if (recurse)
+-			return NULL;
++			return false;
+ 		recurse++;
+ 		mapped_malloc (ab);
+ 		recurse--;
+@@ -1904,7 +1904,7 @@ bool mapped_malloc (addrbank *ab)
+ 		return ab->baseaddr != NULL;
+ 	}
+ 	if (recurse)
+-		return NULL;
++		return false;
+ 	nocanbang ();
+ 	recurse++;
+ 	mapped_malloc (ab);
+-- 
+2.34.1
+
