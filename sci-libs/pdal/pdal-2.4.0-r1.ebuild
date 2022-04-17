@@ -10,7 +10,7 @@ HOMEPAGE="https://pdal.io/"
 SRC_URI="https://github.com/PDAL/PDAL/releases/download/${PV}/PDAL-${PV}-src.tar.gz"
 
 LICENSE="BSD"
-SLOT="0/13"
+SLOT="0/14"
 KEYWORDS="~amd64 ~x86"
 IUSE="postgres test"
 RESTRICT="!test? ( test )"
