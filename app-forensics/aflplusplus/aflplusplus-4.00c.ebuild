@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8,9,10} )
 LLVM_MAX_SLOT=13
@@ -24,23 +24,18 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="test"
 
 # It turns out we need Clang too
-RDEPEND="
-	${PYTHON_DEPS}
-	>=sys-devel/llvm-10:=
+RDEPEND="${PYTHON_DEPS}
+	>=sys-devel/llvm-11:=
 	|| (
-		sys-devel/clang:10
 		sys-devel/clang:11
 		sys-devel/clang:12
 		sys-devel/clang:13
 	)
-	!app-forensics/afl
-"
-DEPEND="
-	${RDEPEND}
-	test? ( dev-util/cmocka )
-"
+	!app-forensics/afl"
+DEPEND="${RDEPEND}
+	test? ( dev-util/cmocka )"
 
-QA_PREBUILT="/usr/share/afl/testcases/others/elf/small_exec.elf"
+QA_PREBUILT="usr/share/afl/testcases/others/elf/small_exec.elf"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.00c-respect-flags.patch
