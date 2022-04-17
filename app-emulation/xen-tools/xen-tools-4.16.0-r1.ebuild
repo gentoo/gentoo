@@ -318,10 +318,6 @@ src_prepare() {
 	# Fix texi2html build error with new texi2html, qemu.doc.html
 	sed -i -e "/texi2html -monolithic/s/-number//" tools/qemu-xen-traditional/Makefile || die
 
-	use api || sed -e "/SUBDIRS-\$(LIBXENAPI_BINDINGS) += libxen/d" -i tools/Makefile || die
-	sed -e 's:$(MAKE) PYTHON=$(PYTHON) subdirs-$@:LC_ALL=C "$(MAKE)" PYTHON=$(PYTHON) subdirs-$@:' \
-		-i tools/firmware/Makefile || die
-
 	# Drop .config, fixes to gcc-4.6
 	sed -e '/-include $(XEN_ROOT)\/.config/d' -i Config.mk || die "Couldn't	drop"
 
@@ -362,10 +358,6 @@ src_prepare() {
 		# Don't bother with qemu, only needed for fully virtualised guests
 		sed -i '/SUBDIRS-$(CONFIG_QEMU_XEN)/s/^/#/g' tools/Makefile || die
 	fi
-
-	# Reset bash completion dir; Bug 472438
-	sed -e "s:^BASH_COMPLETION_DIR ?= \$(CONFIG_DIR)/bash_completion.d:BASH_COMPLETION_DIR ?= $(get_bashcompdir):" \
-		-i Config.mk || die
 
 	# xencommons, Bug #492332, sed lighter weight than patching
 	sed -e 's:\$QEMU_XEN -xen-domid:test -e "\$QEMU_XEN" \&\& &:' \
@@ -418,30 +410,30 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf="--prefix=${PREFIX}/usr \
-		--libdir=${PREFIX}/usr/$(get_libdir) \
-		--libexecdir=${PREFIX}/usr/libexec \
-		--localstatedir=${EPREFIX}/var \
-		--disable-golang \
-		--disable-werror \
-		--disable-xen \
-		--enable-tools \
-		--enable-docs \
-		$(use_enable api xenapi) \
-		$(use_enable ipxe) \
-		$(usex system-ipxe '--with-system-ipxe=/usr/share/ipxe' '') \
-		$(use_enable ocaml ocamltools) \
-		$(use_enable ovmf) \
-		$(use_enable pam) \
-		$(use_enable rombios) \
-		--with-xenstored=$(usex ocaml 'oxenstored' 'xenstored') \
-		"
+	local myconf=(
+		--libdir=${PREFIX}/usr/$(get_libdir)
+		--libexecdir=${PREFIX}/usr/libexec
+		--localstatedir=${EPREFIX}/var
+		--disable-golang
+		--disable-werror
+		--disable-xen
+		--enable-tools
+		--enable-docs
+		$(use_enable api xenapi)
+		$(use_enable ipxe)
+		$(usex system-ipxe '--with-system-ipxe=/usr/share/ipxe' '')
+		$(use_enable ocaml ocamltools)
+		$(use_enable ovmf)
+		$(use_enable pam)
+		$(use_enable rombios)
+		--with-xenstored=$(usex ocaml 'oxenstored' 'xenstored')
+	)
 
-	use system-seabios && myconf+=" --with-system-seabios=/usr/share/seabios/bios.bin"
-	use system-qemu && myconf+=" --with-system-qemu=/usr/bin/qemu-system-x86_64"
-	use amd64 && myconf+=" $(use_enable qemu-traditional)"
+	use system-seabios && myconf+=( --with-system-seabios=/usr/share/seabios/bios.bin )
+	use system-qemu && myconf+=( --with-system-qemu=/usr/bin/qemu-system-x86_64 )
+	use amd64 && myconf+=( $(use_enable qemu-traditional) )
 	tc-ld-disable-gold # Bug 669570
-	econf ${myconf}
+	econf ${myconf[@]}
 }
 
 src_compile() {
