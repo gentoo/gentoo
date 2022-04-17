@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 CRATES="
 	ahash-0.7.6
@@ -116,7 +116,7 @@ PYTHON_COMPAT=( python3_{8,9,10} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit autotools distutils-r1 systemd tmpfiles db-use cargo
+inherit autotools distutils-r1 systemd tmpfiles cargo
 
 DESCRIPTION="389 Directory Server (core libraries and daemons)"
 HOMEPAGE="https://directory.fedoraproject.org/"
@@ -133,13 +133,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # lib389 tests (which is most of the suite) can't find their own modules.
 RESTRICT="test"
 
-# always list newer first
 # Do not add any AGPL-3 BDB here!
 # See bug 525110, comment 15.
-BERKDB_SLOTS=( 5.3 )
 
 DEPEND="
 	>=app-crypt/mit-krb5-1.7-r100[openldap]
+	dev-db/lmdb:=
 	>=dev-libs/cyrus-sasl-2.1.19:2[kerberos]
 	>=dev-libs/icu-60.2:=
 	dev-libs/nspr
@@ -149,11 +148,9 @@ DEPEND="
 	dev-libs/openssl:0=
 	>=net-analyzer/net-snmp-5.1.2:=
 	net-nds/openldap:=[sasl]
-	|| (
-		$(for slot in ${BERKDB_SLOTS[@]} ; do printf '%s\n' "sys-libs/db:${slot}" ; done)
-	)
 	sys-libs/cracklib
-	|| ( sys-fs/e2fsprogs sys-libs/e2fsprogs-libs )
+	sys-libs/db:5.3
+	sys-fs/e2fsprogs
 	pam-passthru? ( sys-libs/pam )
 	selinux? (
 		$(python_gen_cond_dep '
@@ -176,7 +173,7 @@ BDEPEND=">=sys-devel/autoconf-2.69-r5
 
 # perl dependencies are for logconv.pl
 RDEPEND="${DEPEND}
-	!net-nds/389-ds-base:2.1
+	!net-nds/389-ds-base:1.4
 	acct-user/dirsrv
 	acct-group/dirsrv
 	${PYTHON_DEPS}
@@ -243,7 +240,7 @@ src_configure() {
 		--with-pythonexec="${PYTHON}"
 		--with-fhs
 		--with-openldap
-		--with-db-inc="$(db_includedir)"
+		--with-db-inc="${EPREFIX}"/usr/include/db5.3
 		--disable-cockpit
 	)
 
