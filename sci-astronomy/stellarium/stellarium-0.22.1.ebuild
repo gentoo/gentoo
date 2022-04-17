@@ -71,6 +71,7 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}/stellarium-0.20.3-unbundle-indi.patch"
 	"${FILESDIR}/stellarium-0.20.3-unbundle-zlib.patch"
+	"${FILESDIR}/stellarium-0.22.1-fix-star-manager-segfault.patch"
 	"${FILESDIR}/stellarium-0.22.1-unbundle-qtcompress.patch"
 )
 
