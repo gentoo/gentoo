@@ -359,6 +359,10 @@ src_prepare() {
 		sed -i '/SUBDIRS-$(CONFIG_QEMU_XEN)/s/^/#/g' tools/Makefile || die
 	fi
 
+	# Reset bash completion dir; Bug 472438
+	sed -e "s;^BASH_COMPLETION_DIR      :=.*;BASH_COMPLETION_DIR := $(get_bashcompdir);" \
+		-i config/Paths.mk.in || die
+
 	# xencommons, Bug #492332, sed lighter weight than patching
 	sed -e 's:\$QEMU_XEN -xen-domid:test -e "\$QEMU_XEN" \&\& &:' \
 		-i tools/hotplug/Linux/init.d/xencommons.in || die
