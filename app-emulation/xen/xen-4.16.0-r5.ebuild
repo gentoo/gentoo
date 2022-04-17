@@ -100,9 +100,6 @@ src_prepare() {
 		eapply "${FILESDIR}"/${PN}-4.16-no-symlink.patch
 	fi
 
-	# Enable XSM-FLASK
-	use flask && eapply "${FILESDIR}"/${PN}-4.15-flask.patch
-
 	# Workaround new gcc-11 options
 	sed -e '/^CFLAGS/s/-Werror//g' -i xen/Makefile || die
 
@@ -117,11 +114,28 @@ src_prepare() {
 	default
 }
 
-XEN_OPTS=()
-
 src_configure() {
-	use arm && XEN_OPTS+=( CONFIG_EARLY_PRINTK=sun7i )
-	use debug && XEN_OPTS+=( debug=y )
+	cd xen || die
+	emake defconfig
+
+	touch gentoo-config || die
+	if use arm; then
+	   echo "CONFIG_EARLY_PRINTK=sun7i" > gentoo-config || die
+	fi
+	if use debug; then
+		echo "CONFIG_DEBUG=y" > gentoo-config || die
+	fi
+	if use flask; then
+		echo "CONFIG_XSM=y" > gentoo-config || die
+	fi
+
+	local merge_cmd=(
+		./tools/kconfig/merge_config.sh
+		-m -r
+		.config gentoo-config
+	)
+	einfo "${merge_cmd[*]}"
+	"${merge_cmd[@]}" || die "Merging Gentoo config failed"
 
 	# remove flags
 	unset CFLAGS
@@ -133,19 +147,26 @@ src_configure() {
 
 src_compile() {
 	# Send raw LDFLAGS so that --as-needed works
-	emake V=1 CC="$(tc-getCC)" LDFLAGS="$(raw-ldflags)" LD="$(tc-getLD)" -C xen ${XEN_OPTS[@]}
+	emake \
+		V=1 \
+		CC="$(tc-getCC)" \
+		LDFLAGS="$(raw-ldflags)" \
+		LD="$(tc-getLD)" \
+		-C xen
 }
 
 src_install() {
-	local myopt
-	use debug && myopt="${myopt} debug=y"
-
 	# The 'make install' doesn't 'mkdir -p' the subdirs
 	if use efi; then
 		mkdir -p "${D}"${EFI_MOUNTPOINT}/efi/${EFI_VENDOR} || die
 	fi
 
-	emake LDFLAGS="$(raw-ldflags)" LD="$(tc-getLD)" DESTDIR="${D}" -C xen ${myopt} install
+	emake \
+		LDFLAGS="$(raw-ldflags)" \
+		LD="$(tc-getLD)" \
+		DESTDIR="${D}" \
+		-C xen \
+		install
 
 	# make install likes to throw in some extra EFI bits if it built
 	use efi || rm -rf "${D}/usr/$(get_libdir)/efi"
