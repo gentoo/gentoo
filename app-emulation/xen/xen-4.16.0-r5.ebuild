@@ -117,9 +117,11 @@ src_prepare() {
 	default
 }
 
+XEN_OPTS=()
+
 src_configure() {
-	use arm && myopt="${myopt} CONFIG_EARLY_PRINTK=sun7i"
-	use debug && myopt="${myopt} debug=y"
+	use arm && XEN_OPTS+=( CONFIG_EARLY_PRINTK=sun7i )
+	use debug && XEN_OPTS+=( debug=y )
 
 	# remove flags
 	unset CFLAGS
@@ -131,7 +133,7 @@ src_configure() {
 
 src_compile() {
 	# Send raw LDFLAGS so that --as-needed works
-	emake V=1 CC="$(tc-getCC)" LDFLAGS="$(raw-ldflags)" LD="$(tc-getLD)" -C xen ${myopt}
+	emake V=1 CC="$(tc-getCC)" LDFLAGS="$(raw-ldflags)" LD="$(tc-getLD)" -C xen ${XEN_OPTS[@]}
 }
 
 src_install() {
