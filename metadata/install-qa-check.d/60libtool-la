@@ -11,7 +11,7 @@ libtool_la_check() {
 	local files=$(find "${ED}"/usr/lib* -name '*.la' -print 2>/dev/null)
 	[[ -n "${files[@]}" ]] || return
 
-	if grep -q "dev-libs/libltdl" <<<${RDEPEND}; then
+	if has "dev-libs/libltdl" ${RDEPEND}; then
 		# Nothing to do here
 		return
 	fi
