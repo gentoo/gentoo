@@ -70,6 +70,7 @@ RDEPEND="${COMMON_DEPEND}
 		!sys-apps/gentoo-systemd-integration
 		!sys-apps/hwids[udev]
 		!<sys-fs/udev-250
+		!sys-fs/eudev
 	)
 	!sys-apps/systemd
 "
