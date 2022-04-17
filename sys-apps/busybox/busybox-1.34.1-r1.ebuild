@@ -277,6 +277,7 @@ src_install() {
 		newinitd "${FILESDIR}"/watchdog.initd busybox-watchdog
 	fi
 	if busybox_config_enabled UDHCPC; then
+		sed -i 's:$((metric++)):$metric; metric=$((metric + 1)):' examples/udhcp/simple.script || die #801535
 		local path=$(busybox_config_enabled UDHCPC_DEFAULT_SCRIPT)
 		exeinto "${path%/*}"
 		newexe examples/udhcp/simple.script "${path##*/}"
