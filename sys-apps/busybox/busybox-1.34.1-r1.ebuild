@@ -291,7 +291,9 @@ src_install() {
 	rm _install/bin/busybox || die
 	# for compatibility, provide /usr/bin/env
 	mkdir -p _install/usr/bin || die
-	ln -s /bin/env _install/usr/bin/env || die
+	if [[ ! -e _install/usr/bin/env ]]; then
+		ln -s /bin/env _install/usr/bin/env || die
+	fi
 	tar cf busybox-links.tar -C _install . || : #;die
 	insinto /usr/share/${PN}
 	use make-symlinks && doins busybox-links.tar
