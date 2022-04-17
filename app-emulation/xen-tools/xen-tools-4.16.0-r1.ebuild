@@ -61,7 +61,7 @@ else
 fi
 
 DESCRIPTION="Xen tools including QEMU and xl"
-HOMEPAGE="https://www.xenproject.org"
+HOMEPAGE="https://xenproject.org"
 DOCS=( README )
 
 LICENSE="GPL-2"
