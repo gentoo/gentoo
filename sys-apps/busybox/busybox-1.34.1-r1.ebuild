@@ -131,6 +131,10 @@ src_configure() {
 	busybox_config_option n MONOTONIC_SYSCALL
 	busybox_config_option n USE_PORTABLE_CODE
 	busybox_config_option n WERROR
+	# CONFIG_MODPROBE_SMALL=y disables depmod.c and uses a smaller one that
+	# does not support -b. Setting this to no creates slightly larger and
+	# slightly more useful modutils
+	busybox_config_option n MODPROBE_SMALL #472464
 	# triming the BSS size may be dangerous
 	busybox_config_option n FEATURE_USE_BSS_TAIL
 
