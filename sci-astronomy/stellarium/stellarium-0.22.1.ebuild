@@ -8,7 +8,7 @@ inherit cmake desktop flag-o-matic python-any-r1 xdg virtualx
 
 DESCRIPTION="3D photo-realistic skies in real time"
 HOMEPAGE="https://stellarium.org/"
-MY_DSO_VERSION="3.13"
+MY_DSO_VERSION="3.15"
 SRC_URI="
 	https://github.com/Stellarium/stellarium/releases/download/v${PV}/${P}.tar.gz
 	deep-sky? (
