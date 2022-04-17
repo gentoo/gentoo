@@ -12,12 +12,7 @@ SLOT="0"
 KEYWORDS="amd64"
 IUSE="doc"
 
-#PATCHES=( "${FILESDIR}"/${P}-include-sysmacros.patch )
 DOCS=( doc/${PN}.{txt,pdf} )
-
-src_configure() {
-	econf --disable-static
-}
 
 src_install() {
 	default
