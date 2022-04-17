@@ -276,12 +276,6 @@ sys-cluster/lustre
 # to a fresher gcc branch.
 <sys-devel/gcc-9
 
-# David Seifert <soap@gentoo.org> (2022-03-19)
-# Unmaintained, no revdeps in tree, not even on latest version, EAPI 5,
-# typical 'webapp' smell, last upstream release more than 9 years ago.
-# Bug #402849, #513594, #690042, #828702, removal on 2022-04-18.
-sci-biology/GBrowse
-
 # Michał Górny <mgorny@gentoo.org> (2022-03-18)
 # The new version breaks building docs w/o Internet access (because it
 # tries to fetch and install all dependencies locally).
