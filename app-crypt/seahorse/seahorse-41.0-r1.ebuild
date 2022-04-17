@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit gnome.org gnome2-utils meson xdg vala
+PYTHON_COMPAT=( python3_{8..10} )
+inherit gnome.org gnome2-utils meson python-any-r1 xdg vala
 
 DESCRIPTION="Manage your passwords and encryption keys"
 HOMEPAGE="https://wiki.gnome.org/Apps/Seahorse"
@@ -34,6 +35,7 @@ DEPEND="${RDEPEND}
 	gui-libs/libhandy:1[vala]
 "
 BDEPEND="
+	${PYTHON_DEPS}
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xsl-stylesheets
 	dev-libs/appstream-glib
