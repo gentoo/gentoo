@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-VALA_USE_DEPEND="vapigen"
 
-inherit gnome.org meson vala xdg
+inherit gnome.org gnome2-utils meson vala xdg
 
 DESCRIPTION="GLib-based library for accessing online service APIs using the GData protocol"
 HOMEPAGE="https://wiki.gnome.org/Projects/libgdata"
@@ -41,8 +40,9 @@ BDEPEND="
 "
 
 src_prepare() {
+	default
 	use vala && vala_src_prepare
-	xdg_src_prepare
+	gnome2_environment_reset
 	# Don't waste time building a couple small demos that aren't installed
 	sed -i -e '/subdir.*demos/d' meson.build || die
 }
