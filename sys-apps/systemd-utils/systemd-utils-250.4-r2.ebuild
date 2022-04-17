@@ -25,18 +25,21 @@ SRC_URI+=" elibc_musl? ( https://dev.gentoo.org/~floppym/dist/${MUSL_PATCHSET}.t
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="boot selinux sysusers +tmpfiles test +udev"
+IUSE="+acl boot +kmod selinux sysusers +tmpfiles test +udev"
 REQUIRED_USE="|| ( boot tmpfiles sysusers udev )"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
-	sys-apps/acl:0=
-	>=sys-apps/kmod-15:0=
 	selinux? ( sys-libs/libselinux:0= )
+	tmpfiles? (
+		acl? ( sys-apps/acl:0= )
+	)
 	udev? (
 		>=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 		sys-libs/libcap:0=[${MULTILIB_USEDEP}]
 		virtual/libcrypt:=[${MULTILIB_USEDEP}]
+		acl? ( sys-apps/acl:0= )
+		kmod? ( >=sys-apps/kmod-15:0= )
 	)
 	!udev? (
 		>=sys-apps/util-linux-2.30:0=
