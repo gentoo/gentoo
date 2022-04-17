@@ -45,6 +45,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-meson-fix-gpg-version-check-for-recent-gnupg.patch
+)
+
 src_prepare() {
 	default
 	vala_src_prepare
