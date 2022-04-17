@@ -33,6 +33,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-17)
+# Unused java libraries. Removal in 30 days.
+dev-java/boot-bin
+dev-java/eclipsito
+dev-java/gcj-jdk
+dev-java/japitools
+dev-java/jboss-marshalling
+dev-java/jdbc-mssqlserver
+dev-java/jsr250
+dev-java/maven-hawtjni-plugin
+dev-java/mimepull
+dev-java/oracle-javamail
+dev-java/xjavac
+
 # Michał Górny <mgorny@gentoo.org> (2022-04-17)
 # Unmaintained in Gentoo.  Pending a bump since January.  Non-trivial
 # to test.  No revdeps.
