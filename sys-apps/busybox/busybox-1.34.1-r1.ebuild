@@ -310,6 +310,9 @@ src_install() {
 	cd ../examples || die
 	docinto examples
 	dodoc inittab depmod.pl *.conf *.script undeb unrpm
+
+	cd ../networking || die
+	dodoc httpd_indexcgi.c httpd_post_upload.cgi
 }
 
 pkg_preinst() {
