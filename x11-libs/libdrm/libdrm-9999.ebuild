@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
 done
 
-IUSE="${IUSE_VIDEO_CARDS} libkms valgrind"
+IUSE="${IUSE_VIDEO_CARDS} valgrind"
 RESTRICT="test" # see bug #236845
 LICENSE="MIT"
 SLOT="0"
@@ -58,7 +58,6 @@ multilib_src_configure() {
 		$(meson_use video_cards_vc4 vc4)
 		$(meson_use video_cards_vivante etnaviv)
 		$(meson_use video_cards_vmware vmwgfx)
-		$(meson_use libkms)
 		# valgrind installs its .pc file to the pkgconfig for the primary arch
 		-Dvalgrind=$(usex valgrind auto false)
 	)
