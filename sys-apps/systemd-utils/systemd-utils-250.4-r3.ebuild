@@ -118,7 +118,6 @@ multilib_src_configure() {
 	local emesonargs=(
 		-Drootprefix="${EPREFIX:-/}"
 		-Dsysvinit-path=
-		$(meson_native_true acl)
 		$(meson_native_use_bool boot efi)
 		$(meson_native_use_bool boot gnu-efi)
 		$(meson_native_use_bool selinux)
@@ -126,7 +125,6 @@ multilib_src_configure() {
 		$(meson_use test tests)
 		$(meson_native_use_bool tmpfiles)
 		$(meson_use udev hwdb)
-		$(meson_native_use_bool udev kmod)
 
 		-Defi-libdir="${ESYSROOT}/usr/$(get_libdir)"
 
@@ -208,6 +206,18 @@ multilib_src_configure() {
 		-Dzlib=false
 		-Dzstd=false
 	)
+
+	if use tmpfiles || use udev; then
+		emesonargs+=( $(meson_native_use_bool acl) )
+	else
+		emesonargs+=( -Dacl=false )
+	fi
+
+	if use udev; then
+		emesonargs+=( $(meson_native_use_bool kmod) )
+	else
+		emesonargs+=( -Dkmod=false )
+	fi
 
 	if use elibc_musl; then
 		# Avoid redefinition of struct ethhdr.
