@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -59,6 +59,10 @@ RDEPEND="${DEPEND}
 "
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-9.55.0-no-force-libstdcxx.patch
+)
 
 src_prepare() {
 	if [[ -n "${MY_PATCHSET}" ]] ; then
