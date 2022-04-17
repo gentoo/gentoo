@@ -92,6 +92,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.3.1-verbose-build.patch
+	"${FILESDIR}"/${P}-glibc-2.35-fsqrt.patch
 )
 
 pkg_setup() {
