@@ -12,7 +12,7 @@ KEYWORDS="amd64 x86"
 
 RDEPEND="
 	kernel_linux? (
-		x11-libs/libdrm[libkms,video_cards_vmware]
+		x11-libs/libdrm[video_cards_vmware]
 		media-libs/mesa[xa]
 	)"
 DEPEND="${RDEPEND}"
