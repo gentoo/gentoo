@@ -324,7 +324,7 @@ multilib_src_test() {
 		fi
 		if use tmpfiles; then
 			tests+=(
-				test-systmed-tmpfiles
+				test-systemd-tmpfiles
 				test-tmpfiles
 			)
 		fi
