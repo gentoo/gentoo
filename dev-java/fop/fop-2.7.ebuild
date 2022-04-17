@@ -11,7 +11,10 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="XML Graphics Format Object Processor All-In-One"
 HOMEPAGE="https://xmlgraphics.apache.org/fop/"
-SRC_URI="mirror://apache/xmlgraphics/fop/source/fop-${PV}-src.tar.gz"
+SRC_URI="
+	mirror://apache/xmlgraphics/fop/source/${P}-src.tar.gz
+	https://dev.gentoo.org/~flow/distfiles/fop/${P}-jars.tar.xz
+"
 
 LICENSE="Apache-2.0"
 SLOT="2.7"
@@ -95,7 +98,7 @@ src_compile() {
 	# Update "fop-core.jar" with "event-mode.xml" files produced manually
 	# by running "mvn package".
 	mkdir event-model && pushd $_ >/dev/null || die
-		jar -xf "${FILESDIR}/fop-2.7-core-event-models.jar"
+		jar -xf "${WORKDIR}/fop-2.7-core-event-models.jar"
 	popd
 	jar -uf "fop-core.jar" -C event-model . || die
 	# Upstream does this with maven-antrun-plugin:
@@ -126,7 +129,7 @@ src_test() {
 
 	# This jar file was created manually from the output of "mvn test".
 	# Upstream does this with maven-antrun-plugin
-	jar -xf ${FILESDIR}/fop-2.7-test-event-model.jar || die
+	jar -xf "${WORKDIR}/fop-2.7-test-event-model.jar" || die
 
 	java-pkg-simple_src_test
 
