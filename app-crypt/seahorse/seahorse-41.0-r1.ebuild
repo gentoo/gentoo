@@ -46,8 +46,9 @@ BDEPEND="
 "
 
 src_prepare() {
-	xdg_src_prepare
+	default
 	vala_src_prepare
+	gnome2_environment_reset
 }
 
 src_configure() {
