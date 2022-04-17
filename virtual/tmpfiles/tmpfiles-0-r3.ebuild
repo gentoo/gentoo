@@ -11,6 +11,7 @@ RDEPEND="
 	!prefix-guest? (
 		|| (
 			sys-apps/systemd-utils[tmpfiles]
+			sys-apps/systemd-tmpfiles
 			sys-apps/systemd
 		)
 	)"
