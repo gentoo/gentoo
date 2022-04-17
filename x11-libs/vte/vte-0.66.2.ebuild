@@ -3,8 +3,8 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
-VALA_USE_DEPEND="vapigen"
 VALA_MIN_API_VERSION="0.48"
+VALA_MAX_API_VERSION="0.54"
 
 inherit gnome.org meson python-any-r1 vala xdg
 
