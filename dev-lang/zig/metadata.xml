@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<use>
-		<flag name="experimental">Enable builds that do not support all of LLVM's target architectures</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">ziglang/zig</remote-id>
 	</upstream>
