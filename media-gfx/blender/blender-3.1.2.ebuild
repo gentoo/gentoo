@@ -121,6 +121,7 @@ BDEPEND="
 		dev-texlive/texlive-latexextra
 	)
 	nls? ( sys-devel/gettext )
+	system-numpy? ( system-python? ( dev-python/cython ) )
 "
 
 blender_check_requirements() {
