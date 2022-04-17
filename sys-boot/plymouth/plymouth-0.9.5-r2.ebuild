@@ -10,29 +10,27 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/plymouth/plymouth"
 else
-	PRE_RELEASE_SHA="5b91b9ed84cc91759c986634a4d64d474e6092cf"
-	SRC_URI="${SRC_URI} https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PRE_RELEASE_SHA}/${PN}-${PRE_RELEASE_SHA}.tar.gz"
+	SRC_URI="${SRC_URI} https://www.freedesktop.org/software/plymouth/releases/${P}.tar.xz"
 	KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 ~riscv sparc x86"
-	S="${WORKDIR}/${PN}-${PRE_RELEASE_SHA}"
 fi
 
-inherit autotools readme.gentoo-r1 systemd
+inherit autotools readme.gentoo-r1 systemd toolchain-funcs
 
 DESCRIPTION="Graphical boot animation (splash) and logger"
 HOMEPAGE="https://cgit.freedesktop.org/plymouth/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug +gtk +libkms +pango +split-usr static-libs +udev"
+IUSE="debug +drm +gtk +pango +split-usr static-libs +udev"
 
 CDEPEND="
 	>=media-libs/libpng-1.2.16:=
+	drm? ( x11-libs/libdrm )
 	gtk? (
 		dev-libs/glib:2
 		>=x11-libs/gtk+-3.14:3
 		x11-libs/cairo
 	)
-	libkms? ( x11-libs/libdrm[libkms] )
 	pango? ( >=x11-libs/pango-1.21 )
 "
 DEPEND="${CDEPEND}
@@ -73,8 +71,8 @@ src_configure() {
 		$(use_enable !static-libs shared)
 		$(use_enable static-libs static)
 		$(use_enable debug tracing)
-		$(use_enable gtk gtk)
-		$(use_enable libkms drm)
+		$(use_enable drm)
+		$(use_enable gtk)
 		$(use_enable pango)
 		$(use_with udev)
 	)
