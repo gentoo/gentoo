@@ -128,9 +128,7 @@ dev-lang/ruby xemacs
 # Yixun Lan <dlan@gentoo.org> (2021-08-20)
 # dependencies not keyworded/tested
 gnome-extra/sushi office
-gnome-base/gnome-control-center v4l
-gnome-base/gnome-shell telepathy browser-extension
-gnome-base/gdm accessibility
+gnome-base/gnome-shell browser-extension
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
 # dependencies not keyworded/tested
