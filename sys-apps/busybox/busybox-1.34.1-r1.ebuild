@@ -286,6 +286,9 @@ src_install() {
 		insinto /etc
 		doins examples/udhcp/udhcpd.conf
 	fi
+	if busybox_config_enabled ASH && ! use make-symlinks; then
+		dosym -r /bin/busybox /bin/ash
+	fi
 
 	# bundle up the symlink files for use later
 	emake DESTDIR="${ED}" install
