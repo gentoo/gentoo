@@ -26,7 +26,6 @@ BDEPEND="virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.40-fbsd.patch
 	"${FILESDIR}"/${PN}-1.42.13-fix-build-cflags.patch #516854
 
 	# Upstream patches (can usually removed with next version bump)
