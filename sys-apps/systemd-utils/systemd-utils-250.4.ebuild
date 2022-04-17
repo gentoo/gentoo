@@ -98,6 +98,7 @@ QA_FLAGS_IGNORED="usr/lib/systemd/boot/efi/.*"
 
 src_prepare() {
 	local PATCHES=(
+		"${FILESDIR}/250.4-test-systemd-tmpfiles.standalone.patch"
 	)
 	if use elibc_musl; then
 		PATCHES+=( "${WORKDIR}/${MUSL_PATCHSET}" )
@@ -325,7 +326,7 @@ multilib_src_test() {
 		fi
 		if use tmpfiles; then
 			tests+=(
-				test-systemd-tmpfiles
+				test-systemd-tmpfiles.standalone
 				test-tmpfiles
 			)
 		fi
