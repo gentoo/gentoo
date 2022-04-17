@@ -280,7 +280,7 @@ src_test() {
 # Call eselect vi update with --if-unset
 # to respect user's choice (bug 187449)
 eselect_vi_update() {
-	einfo "Calling eselect vi update..."
+	ebegin "Calling eselect vi update"
 	eselect vi update --if-unset
 	eend $?
 }
