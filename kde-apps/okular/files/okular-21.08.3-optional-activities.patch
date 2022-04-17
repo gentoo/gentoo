@@ -1,0 +1,20 @@
+diff -Naru a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2020-05-08 09:35:35.727641239 +0200
++++ b/CMakeLists.txt	2020-05-08 09:35:53.647640263 +0200
+@@ -106,16 +106,6 @@
+     add_definitions(-DWITH_KJS=1)
+ endif()
+ 
+-if(NOT WIN32 AND NOT ANDROID)
+-    find_package(KF5 ${KF5_REQUIRED_VERSION} REQUIRED COMPONENTS
+-        Activities
+-    )
+-    set_package_properties("KF5Activities" PROPERTIES
+-        DESCRIPTION  "Activities interface library"
+-        URL "https://api.kde.org/frameworks/kactivities/html/"
+-        TYPE RECOMMENDED
+-        PURPOSE "Required for Activities integration.")
+-endif()
+ find_package(KF5Kirigami2)
+ set_package_properties(KF5Kirigami2 PROPERTIES
+     DESCRIPTION "A QtQuick based components set"
