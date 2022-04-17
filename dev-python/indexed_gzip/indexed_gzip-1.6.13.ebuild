@@ -37,6 +37,14 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	# strip custom "clean" command that doesn't support "-a"
+	# https://bugs.gentoo.org/838955
+	# TODO: this can be removed once distutils-r1 stops using clean
+	sed -i -e '/cmdclass/d' setup.py || die
+	distutils-r1_src_prepare
+}
+
 src_compile() {
 	if use test; then
 		export INDEXED_GZIP_TESTING=1
