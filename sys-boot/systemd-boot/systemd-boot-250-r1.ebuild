@@ -10,4 +10,4 @@ LICENSE="metapackage"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
-RDEPEND="sys-apps/systemd-utils[udev]"
+RDEPEND="sys-apps/systemd-utils[boot]"
