@@ -34,7 +34,7 @@ else
 fi
 
 DESCRIPTION="The Xen virtual machine monitor"
-HOMEPAGE="https://www.xenproject.org"
+HOMEPAGE="https://xenproject.org"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug efi flask"
