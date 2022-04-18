@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,8 @@ inherit go-module
 GIT_COMMIT=b0b6bfdd
 
 DESCRIPTION="A project that allows anyone to have trust over arbitrary collections of data"
-HOMEPAGE="https://github.com/theupdateframework/notary"
-SRC_URI="https://github.com/theupdateframework/notary/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/notaryproject/notary"
+SRC_URI="https://github.com/notaryproject/notary/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
