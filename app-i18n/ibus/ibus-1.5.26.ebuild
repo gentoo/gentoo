@@ -81,16 +81,16 @@ src_prepare() {
 	vala_src_prepare --ignore-use
 	sed -i "/UCD_DIR=/s/\$with_emoji_annotation_dir/\$with_ucd_dir/" configure.ac
 	if ! has_version 'x11-libs/gtk+:3[wayland]'; then
-		touch ui/gtk3/panelbinding.vala
-		touch ui/gtk3/emojierapp.vala
+		touch ui/gtk3/panelbinding.vala \
+			ui/gtk3/emojierapp.vala || die
 	fi
 	if ! use emoji; then
 		touch \
 			tools/main.vala \
-			ui/gtk3/panel.vala
+			ui/gtk3/panel.vala || dile
 	fi
 	if ! use appindicator; then
-		touch ui/gtk3/panel.vala
+		touch ui/gtk3/panel.vala || die
 	fi
 	if [[ -n ${GENTOO_VER} ]]; then
 		einfo "Try to apply Gentoo specific patch set"
@@ -98,13 +98,13 @@ src_prepare() {
 	fi
 
 	# for multiple Python implementations
-	sed -i "s/^\(PYGOBJECT_DIR =\).*/\1/" bindings/Makefile.am
+	sed -i "s/^\(PYGOBJECT_DIR =\).*/\1/" bindings/Makefile.am || die
 	# fix for parallel install
-	sed -i "/^if ENABLE_PYTHON2/,/^endif/d" bindings/pygobject/Makefile.am
+	sed -i "/^if ENABLE_PYTHON2/,/^endif/d" bindings/pygobject/Makefile.am || die
 	# require user interaction
-	sed -i "/^TESTS += ibus-\(compose\|keypress\)/d" src/tests/Makefile.am
+	sed -i "/^TESTS += ibus-\(compose\|keypress\)/d" src/tests/Makefile.am || die
 
-	sed -i "/^bash_completion/d" tools/Makefile.am
+	sed -i "/^bash_completion/d" tools/Makefile.am || die
 
 	default
 	eautoreconf
