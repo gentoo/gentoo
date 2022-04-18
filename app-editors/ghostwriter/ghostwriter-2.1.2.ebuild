@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit qmake-utils xdg-utils
+inherit qmake-utils xdg
 
 DESCRIPTION="Cross-platform, aesthetic, distraction-free markdown editor"
 HOMEPAGE="https://wereturtle.github.io/ghostwriter/"
@@ -47,12 +47,3 @@ src_install() {
 	einstalldocs
 }
 
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-}
