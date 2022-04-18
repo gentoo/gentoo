@@ -93,7 +93,7 @@ BDEPEND="
 PATCHES=(
 	# bug 746590
 	"${FILESDIR}/${PN}-flock.patch"
-	"${FILESDIR}/${PN}-lib_imagery.patch"
+	"${FILESDIR}/${P}-lib_imagery.patch"
 )
 
 pkg_setup() {
