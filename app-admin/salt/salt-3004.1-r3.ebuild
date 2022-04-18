@@ -110,6 +110,7 @@ PATCHES=(
 	"${FILESDIR}/salt-3004.1-jinja-3.patch"
 	"${FILESDIR}/salt-3004.1-tests.patch"
 	"${FILESDIR}/salt-3004.1-relax-pyzmq-dep.patch"
+	"${FILESDIR}/salt-3004.1-py310.patch"
 )
 
 python_prepare_all() {
