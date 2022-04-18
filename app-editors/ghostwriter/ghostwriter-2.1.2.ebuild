@@ -40,4 +40,3 @@ src_install() {
 	emake INSTALL_ROOT="${D}" install
 	einstalldocs
 }
-
