@@ -44,9 +44,9 @@ src_configure() {
 }
 
 src_test() {
-	# requires virtual dbus, otherwise hangs; bugs #630672, #789351
+	# requires virtual dbus, otherwise hangs; bugs #630672, #789351, #838502
 	local myctestargs=(
-		-E "(dbusrunnertest|runnermanagersinglerunnermodetest)"
+		-E "(dbusrunnertest|runnermanagersinglerunnermodetest|runnermanagertest)"
 	)
 	ecm_src_test
 }
