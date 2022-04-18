@@ -31,6 +31,11 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-increase-runnermanagertest-timeout.patch"
+	"${FILESDIR}/${P}-drop-runnermanagertest-timeouts.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package activities KF5Activities)
