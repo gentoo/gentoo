@@ -69,7 +69,7 @@ SLOT="0/$(ver_cut 1-2)"
 # Inclusion of IUSE ocaml on stabalizing requires maintainer of ocaml to (get off his hands and) make
 # >=dev-lang/ocaml-4 stable
 # Masked in profiles/eapi-5-files instead
-IUSE="api debug doc +hvm +ipxe ocaml ovmf +pam pygrub python +qemu +qemu-traditional +rombios screen selinux sdl static-libs system-ipxe system-qemu system-seabios systemd"
+IUSE="api debug doc +hvm +ipxe lzma ocaml ovmf +pam pygrub python +qemu +qemu-traditional +rombios screen selinux sdl static-libs system-ipxe system-qemu system-seabios systemd zstd"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -82,12 +82,17 @@ REQUIRED_USE="
 	?? ( qemu system-qemu )"
 
 COMMON_DEPEND="
-	sys-apps/pciutils
+	lzma? ( app-arch/xz-utils )
+	qemu? ( dev-libs/glib:2 )
+	zstd? ( app-arch/zstd )
+	app-arch/bzip2
+	app-arch/zstd
+	dev-libs/libnl:3
 	dev-libs/lzo:2
-	dev-libs/glib:2
 	dev-libs/yajl
-	dev-libs/libaio
-	dev-libs/libgcrypt:0
+	sys-apps/util-linux
+	sys-fs/e2fsprogs
+	sys-libs/ncurses
 	sys-libs/zlib
 	${PYTHON_DEPS}
 "
