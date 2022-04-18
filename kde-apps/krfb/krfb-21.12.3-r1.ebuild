@@ -61,12 +61,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	wayland? ( sys-apps/xdg-desktop-portal[screencast] )
 "
-BDEPEND="
-	wayland? ( || (
-		>=dev-qt/qtwaylandscanner-${QTMIN}:5
-		<dev-qt/qtwayland-5.15.3:5
-	) )
-"
+BDEPEND="wayland? ( >=dev-qt/qtwaylandscanner-${QTMIN}:5 )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-21.12.2-optional-pipewire.patch"
