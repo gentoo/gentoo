@@ -39,7 +39,7 @@ BDEPEND="${LUA_DEPS}
 # Check https://github.com/neovim/neovim/blob/master/third-party/CMakeLists.txt for
 # new dependency bounds and so on on bumps (obviously adjust for right branch/tag).
 DEPEND="${LUA_DEPS}
-	>=dev-lua/luv-1.42.0[${LUA_SINGLE_USEDEP}]
+	>=dev-lua/luv-1.43.0[${LUA_SINGLE_USEDEP}]
 	$(lua_gen_cond_dep '
 		dev-lua/lpeg[${LUA_USEDEP}]
 		dev-lua/mpack[${LUA_USEDEP}]
@@ -47,10 +47,10 @@ DEPEND="${LUA_DEPS}
 	$(lua_gen_cond_dep '
 		dev-lua/LuaBitOp[${LUA_USEDEP}]
 	' lua5-{1,2})
-	>=dev-libs/libuv-1.42.0:=
+	>=dev-libs/libuv-1.44.1:=
 	>=dev-libs/libvterm-0.1.4
 	>=dev-libs/msgpack-3.0.0:=
-	>=dev-libs/tree-sitter-0.20.1:=
+	>=dev-libs/tree-sitter-0.20.6:=
 	tui? (
 		>=dev-libs/libtermkey-0.22
 		>=dev-libs/unibilium-2.0.0:0=
