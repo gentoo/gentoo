@@ -11,8 +11,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Potato game for kids by KDE"
-HOMEPAGE="https://apps.kde.org/ktuberling/
-https://games.kde.org/games/ktuberling/"
+HOMEPAGE="https://apps.kde.org/ktuberling/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
