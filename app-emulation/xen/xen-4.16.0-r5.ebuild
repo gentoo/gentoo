@@ -116,7 +116,6 @@ src_prepare() {
 
 src_configure() {
 	cd xen || die
-	emake defconfig
 
 	touch gentoo-config || die
 	if use arm; then
@@ -129,13 +128,7 @@ src_configure() {
 		echo "CONFIG_XSM=y" > gentoo-config || die
 	fi
 
-	local merge_cmd=(
-		./tools/kconfig/merge_config.sh
-		-m -r
-		.config gentoo-config
-	)
-	einfo "${merge_cmd[*]}"
-	"${merge_cmd[@]}" || die "Merging Gentoo config failed"
+	emake KCONFIG_ALLCONFIG=gentoo-config alldefconfig
 
 	# remove flags
 	unset CFLAGS
