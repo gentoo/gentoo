@@ -82,6 +82,7 @@ BDEPEND="
 		dev-python/mako[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 		>=dev-python/moto-0.3.6[${PYTHON_USEDEP}]
+		dev-python/passlib
 		dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
