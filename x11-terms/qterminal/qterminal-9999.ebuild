@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ fi
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
 
-BDEPEND=">=dev-util/lxqt-build-tools-0.10.0"
+BDEPEND=">=dev-util/lxqt-build-tools-0.11.0"
 DEPEND="
 	>=dev-qt/qtcore-5.15:5
 	>=dev-qt/qtdbus-5.15:5
@@ -30,8 +30,6 @@ DEPEND="
 	~x11-libs/qtermwidget-${PV}:=
 "
 RDEPEND="${DEPEND}"
-
-PATCHES=( "${FILESDIR}/qterminal-0.16.1-appdata.patch" )
 
 pkg_postinst() {
 	xdg_icon_cache_update
