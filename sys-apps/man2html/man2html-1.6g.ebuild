@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit edo toolchain-funcs
 
 MY_P="man-${PV}"
 
@@ -25,21 +25,14 @@ PATCHES=(
 )
 
 src_configure() {
-	echoit() {
-		echo "$@"
-		"$@"
-	}
-
 	tc-export CC BUILD_CC
 
 	# Just a stub to disable configure check.  man2html doesn't use it.
 	export COMPRESS=true
-	echoit \
-	./configure \
+	edo ./configure \
 		-confdir=/etc \
 		+sgid +fhs \
-		+lang none \
-		|| die "configure failed"
+		+lang none
 }
 
 src_compile() {
