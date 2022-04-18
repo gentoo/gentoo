@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 # over 50% of tests rely on Internet
 PROPERTIES="test_network"
 RESTRICT="test"
