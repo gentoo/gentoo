@@ -29,12 +29,7 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	X? ( x11-libs/libxcb )
 "
-BDEPEND="
-	wayland? ( || (
-		>=dev-qt/qtwaylandscanner-${QTMIN}:5
-		<dev-qt/qtwayland-5.15.3:5
-	) )
-"
+BDEPEND="wayland? ( >=dev-qt/qtwaylandscanner-${QTMIN}:5 )"
 
 src_configure() {
 	local mycmakeargs=(
