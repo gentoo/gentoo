@@ -1,0 +1,21 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# LoongArch la64v100/lp64d no-multilib profile
+#
+# la64v100 -- the ISA as defined in LoongArch Reference Manual Volume 1, v1.00.
+
+CHOST="loongarch64-unknown-linux-gnu"
+MULTILIB_ABIS="lp64d"
+DEFAULT_ABI="lp64d"
+ABI="lp64d"
+
+CFLAGS="-O2 -pipe -march=loongarch64 -mabi=lp64d"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"
+
+# We have only one ABI
+MULTILIB_ABIS="lp64d"
+DEFAULT_ABI="lp64d"
+ABI="lp64d"
