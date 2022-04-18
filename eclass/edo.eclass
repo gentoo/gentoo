@@ -1,7 +1,7 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# @ECLASS: edo.class
+# @ECLASS: edo.eclass
 # @MAINTAINER:
 # QA Team <qa@gentoo.org>
 # @AUTHOR:
