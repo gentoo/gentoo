@@ -47,7 +47,7 @@ else
 
 	SRC_URI="https://downloads.xenproject.org/release/xen/${MY_PV}/xen-${MY_PV}.tar.gz
 	https://www.seabios.org/downloads/seabios-${SEABIOS_VER}.tar.gz
-	ipxe? ( http://xenbits.xen.org/xen-extfiles/ipxe-git-${IPXE_COMMIT}.tar.gz )
+	ipxe? ( https://xenbits.xen.org/xen-extfiles/ipxe-git-${IPXE_COMMIT}.tar.gz )
 	ovmf? ( https://github.com/tianocore/edk2/archive/${EDK2_COMMIT}.tar.gz -> edk2-${EDK2_COMMIT}.tar.gz
 		https://github.com/openssl/openssl/archive/OpenSSL_${EDK2_OPENSSL_VERSION}.tar.gz
 		https://github.com/ucb-bar/berkeley-softfloat-3/archive/${EDK2_SOFTFLOAT_COMMIT}.tar.gz -> berkeley-softfloat-${EDK2_SOFTFLOAT_COMMIT}.tar.gz
