@@ -420,9 +420,9 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		--libdir=${PREFIX}/usr/$(get_libdir)
-		--libexecdir=${PREFIX}/usr/libexec
-		--localstatedir=${EPREFIX}/var
+		--libdir="${EPREFIX}/usr/$(get_libdir)"
+		--libexecdir="${EPREFIX}/usr/libexec"
+		--localstatedir="${EPREFIX}/var"
 		--disable-golang
 		--disable-werror
 		--disable-xen
