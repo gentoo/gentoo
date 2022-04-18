@@ -61,8 +61,7 @@ REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 # or fail due to Xvfb's opengl limitations.
 RESTRICT="test"
 
-BDEPEND="mingw? ( !!>=cross-i686-w64-mingw32/binutils-2.38 !!>=cross-x86_64-w64-mingw32/binutils-2.38 )
-	sys-devel/flex
+BDEPEND="sys-devel/flex
 	virtual/yacc
 	virtual/pkgconfig"
 
