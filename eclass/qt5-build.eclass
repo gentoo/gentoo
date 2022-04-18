@@ -98,20 +98,7 @@ inherit estack flag-o-matic toolchain-funcs virtualx
 if [[ ${PN} != qtwebengine ]]; then
 	case ${PV} in
 		*9999 )
-			# kde/5.15 branch on invent.kde.org
-			inherit kde.org
-			;;
-		5.15.2* )
-			if [[ -n ${KDE_ORG_COMMIT} ]]; then
-				# KDE Qt5PatchCollection snapshot based on Qt 5.15.2
-				inherit kde.org
-			else
-				# official stable release
-				_QT5_P=${QT5_MODULE}-everywhere-src-${PV}
-				HOMEPAGE="https://www.qt.io/"
-				SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}/submodules/${_QT5_P}.tar.xz"
-				S=${WORKDIR}/${_QT5_P}
-			fi
+			inherit kde.org # kde/5.15 branch
 			;;
 		5.15.[3-9]* )
 			# official stable release
@@ -136,22 +123,15 @@ fi
 
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
 
-case ${PV} in
-	5.15.2*)
-		SLOT=5/$(ver_cut 1-2)
-		;;
+case ${PN} in
+	assistant|linguist|qdbus|qdbusviewer|pixeltool)
+		SLOT=0 ;;
+	linguist-tools|qdoc|qtdiag|qtgraphicaleffects|qtimageformats| \
+	qtpaths|qtplugininfo|qtquickcontrols|qtquicktimeline| \
+	qttranslations|qtwaylandscanner|qtxmlpatterns)
+		SLOT=5 ;;
 	*)
-		case ${PN} in
-			assistant|linguist|qdbus|qdbusviewer|pixeltool)
-				SLOT=0 ;;
-			linguist-tools|qdoc|qtdiag|qtgraphicaleffects|qtimageformats| \
-			qtpaths|qtplugininfo|qtquickcontrols|qtquicktimeline| \
-			qttranslations|qtwaylandscanner|qtxmlpatterns)
-				SLOT=5 ;;
-			*)
-				SLOT=5/$(ver_cut 1-2) ;;
-		esac
-		;;
+		SLOT=5/$(ver_cut 1-2) ;;
 esac
 
 IUSE="debug test"
@@ -185,10 +165,6 @@ qt5-build_src_prepare() {
 			einfo "Preparing KDE Qt5PatchCollection snapshot at ${KDE_ORG_COMMIT}"
 			mkdir -p .git || die # need to fake a git repository for configure
 		fi
-		# Ensure our ${QT5_PV} is not contradicted by any upstream (Qt) commit
-		# bumping version in 5.15 branch after release (probably can be dropped
-		# after 5.15.2_p* are gone)
-		sed -e "/^MODULE_VERSION/s/5\.15\.[3456789]/${QT5_PV}/" -i .qmake.conf || die
 	fi
 
 	if [[ ${QT5_MODULE} == qtbase ]]; then
@@ -300,24 +276,6 @@ qt5-build_src_install() {
 		sed -i -e '1i #include <Gentoo/gentoo-qconfig.h>\n' \
 			"${D}${QT5_HEADERDIR}"/QtCore/qconfig.h \
 			|| die "sed failed (qconfig.h)"
-
-		if ver_test -lt 5.15.2-r10; then
-			# install qtchooser configuration file
-			cat > "${T}/qt5-${CHOST}.conf" <<-_EOF_ || die
-				${QT5_BINDIR}
-				${QT5_LIBDIR}
-			_EOF_
-
-			(
-				insinto /etc/xdg/qtchooser
-				doins "${T}/qt5-${CHOST}.conf"
-			)
-
-			# convenience symlinks
-			dosym qt5-"${CHOST}".conf /etc/xdg/qtchooser/5.conf
-			dosym qt5-"${CHOST}".conf /etc/xdg/qtchooser/qt5.conf
-			dosym qt5.conf /etc/xdg/qtchooser/default.conf
-		fi
 	fi
 
 	qt5_install_module_config
