@@ -4,7 +4,7 @@
 EAPI="8"
 
 PYTHON_COMPAT=( python3_{8,9} )
-inherit flag-o-matic python-any-r1 readme.gentoo-r1 systemd verify-sig
+inherit python-any-r1 readme.gentoo-r1 systemd verify-sig
 
 MY_PV="$(ver_rs 4 -)"
 MY_PF="${PN}-${MY_PV}"
