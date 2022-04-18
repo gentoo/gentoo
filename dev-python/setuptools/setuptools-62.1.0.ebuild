@@ -23,7 +23,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~m68k ~s390 ~x86 ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~m68k ~riscv ~s390 ~x86 ~x64-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
