@@ -1,13 +1,13 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{7..10} )
-LLVM_MAX_SLOT=13
+PYTHON_COMPAT=( python3_{8..10} )
+LLVM_MAX_SLOT=14
 
-inherit cmake eapi8-dosym linux-info llvm lua-single python-r1 toolchain-funcs
+inherit cmake linux-info llvm lua-single python-r1 toolchain-funcs
 
 DESCRIPTION="Tools for BPF-based Linux IO analysis, networking, monitoring, and more"
 HOMEPAGE="https://iovisor.github.io/bcc/"
@@ -126,7 +126,7 @@ src_install() {
 		[[ ! -x ${tool} && ! -L ${tool} || -d ${tool} ]] && continue
 		name=${tool##*/}
 		[[ -n ${rename_tools[${name}]} ]] && name=bcc-${name}
-		dosym8 -r "${tool#${ED}}" /usr/sbin/${name}
+		dosym -r "${tool#${ED}}" /usr/sbin/${name}
 	done
 
 	docompress /usr/share/${PN}/man
