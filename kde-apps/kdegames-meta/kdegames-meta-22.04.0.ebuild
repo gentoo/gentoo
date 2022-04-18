@@ -4,7 +4,7 @@
 EAPI=8
 
 DESCRIPTION="kdegames - merge this to pull in all kdegames-derived packages"
-HOMEPAGE="https://games.kde.org/"
+HOMEPAGE="https://apps.kde.org/categories/games/"
 
 LICENSE="metapackage"
 SLOT="5"
