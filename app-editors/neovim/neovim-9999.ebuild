@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 LUA_COMPAT=( lua5-{1..2} luajit )
 
@@ -47,10 +47,10 @@ DEPEND="${LUA_DEPS}
 	$(lua_gen_cond_dep '
 		dev-lua/LuaBitOp[${LUA_USEDEP}]
 	' lua5-{1,2})
-	>=dev-libs/libuv-1.43.0:=
+	>=dev-libs/libuv-1.44.1:=
 	>=dev-libs/libvterm-0.1.4
 	>=dev-libs/msgpack-3.0.0:=
-	>=dev-libs/tree-sitter-0.20.1:=
+	>=dev-libs/tree-sitter-0.20.6:=
 	tui? (
 		>=dev-libs/libtermkey-0.22
 		>=dev-libs/unibilium-2.0.0:0=
