@@ -412,6 +412,7 @@ _ruby_invoke_environment() {
 
 	ebegin "Running ${_PHASE:-${EBUILD_PHASE}} phase for $environment"
 	"$@"
+	eend $?
 	popd &>/dev/null || die
 
 	S=${old_S}
