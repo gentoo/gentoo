@@ -4,8 +4,3 @@
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-03-20)
 # sys-libs/libunwind doesn't work on s390
 sys-libs/libunwind
-
-# Sam James <sam@gentoo.org> (2021-11-05)
-# Perl segfaults during build on s390(x). Presumably related to
-# now truly respecting CFLAGS. bug #821577
->=dev-lang/perl-5.34.0-r5
