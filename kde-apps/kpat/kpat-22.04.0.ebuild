@@ -13,8 +13,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="KDE patience game"
-HOMEPAGE="https://apps.kde.org/kpat/
-https://games.kde.org/games/kpat/"
+HOMEPAGE="https://apps.kde.org/kpat/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
