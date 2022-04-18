@@ -82,6 +82,7 @@ src_prepare() {
 	sed -i "/UCD_DIR=/s/\$with_emoji_annotation_dir/\$with_ucd_dir/" configure.ac
 	if ! has_version 'x11-libs/gtk+:3[wayland]'; then
 		touch ui/gtk3/panelbinding.vala
+		touch ui/gtk3/emojierapp.vala
 	fi
 	if ! use emoji; then
 		touch \
