@@ -36,7 +36,7 @@ lua_src_compile() {
 
 	local myemakeargs=(
 		"CC=$(tc-getCC)"
-		"CFLAGS=${CFLAGS} ${LDFLAGS} $(lua_get_CFLAGS)"
+		"CFLAGS=${CFLAGS} -fPIC ${LDFLAGS} $(lua_get_CFLAGS)"
 	)
 
 	emake "${myemakeargs[@]}" all
