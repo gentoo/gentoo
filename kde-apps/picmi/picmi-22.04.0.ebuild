@@ -12,8 +12,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Nonogram logic game by KDE"
-HOMEPAGE="https://apps.kde.org/picmi/
-https://games.kde.org/games/picmi/"
+HOMEPAGE="https://apps.kde.org/picmi/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
