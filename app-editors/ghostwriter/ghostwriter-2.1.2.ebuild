@@ -30,12 +30,6 @@ DEPEND="${RDEPEND}"
 
 DOCS=( CREDITS.md README.md )
 
-src_prepare() {
-	default
-
-	sed -i -e "/^VERSION =/s/\$.*/${PV}/" ghostwriter.pro || die "failed to override version"
-}
-
 src_configure() {
 	eqmake5 \
 		CONFIG+=$(usex debug debug release) \
