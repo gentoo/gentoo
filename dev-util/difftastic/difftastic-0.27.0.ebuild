@@ -12,9 +12,9 @@ CRATES="
 	atty-0.2.14
 	autocfg-1.0.1
 	bitflags-1.3.2
-	cc-1.0.72
+	cc-1.0.73
 	cfg-if-1.0.0
-	clap-3.0.13
+	clap-3.1.8
 	const_format-0.2.22
 	const_format_proc_macros-0.2.22
 	crossbeam-channel-0.5.1
@@ -32,23 +32,23 @@ CRATES="
 	itertools-0.10.3
 	lazy_static-1.4.0
 	libc-0.2.112
-	libmimalloc-sys-0.1.23
+	libmimalloc-sys-0.1.24
 	log-0.4.14
 	memchr-2.4.1
 	memoffset-0.6.5
-	mimalloc-0.1.27
+	mimalloc-0.1.28
 	num_cpus-1.13.1
 	os_str_bytes-6.0.0
 	output_vt100-0.1.2
-	owo-colors-3.2.0
+	owo-colors-3.3.0
 	pretty_assertions-1.0.0
 	pretty_env_logger-0.4.0
 	proc-macro2-1.0.36
 	quick-error-1.2.3
 	quote-1.0.13
 	radix-heap-0.4.2
-	rayon-1.5.1
-	rayon-core-1.9.1
+	rayon-1.5.2
+	rayon-core-1.9.2
 	regex-1.5.5
 	regex-syntax-0.6.25
 	rpds-0.10.0
@@ -60,8 +60,8 @@ CRATES="
 	syn-1.0.84
 	term_size-0.3.2
 	termcolor-1.1.2
-	textwrap-0.14.2
-	tree-sitter-0.20.5
+	textwrap-0.15.0
+	tree-sitter-0.20.6
 	typed-arena-2.0.1
 	unicode-xid-0.2.2
 	walkdir-2.3.2
@@ -88,12 +88,11 @@ SRC_URI="
 LICENSE="Apache-2.0 MIT MPL-2.0 Unlicense ZLIB"
 SLOT="0"
 KEYWORDS="~amd64"
-RESTRICT="mirror"
 
 QA_FLAGS_IGNORED="usr/bin/difft"
 
 PATCHES=(
-	"${FILESDIR}/difftastic-0.26.3-regex-dep.patch"
+	"${FILESDIR}/difftastic-0.27.0-regex-dep.patch"
 )
 
 DOCS=(

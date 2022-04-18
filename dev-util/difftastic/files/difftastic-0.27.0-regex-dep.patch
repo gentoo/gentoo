@@ -1,8 +1,8 @@
 diff --git a/Cargo.lock b/Cargo.lock
-index b31dab30f..a3e7795aa 100644
+index f307f4a86..49cc65fae 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -418,9 +418,9 @@ dependencies = [
+@@ -417,9 +417,9 @@ dependencies = [
  
  [[package]]
  name = "regex"
@@ -15,7 +15,7 @@ index b31dab30f..a3e7795aa 100644
   "aho-corasick",
   "memchr",
 diff --git a/Cargo.toml b/Cargo.toml
-index f5916fa44..8d7cf3ea2 100644
+index a84b8716e..2db0dbf33 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -21,7 +21,7 @@ include = [
@@ -24,6 +24,6 @@ index f5916fa44..8d7cf3ea2 100644
  [dependencies]
 -regex = "1.5.4"
 +regex = "1.5.5"
- clap = { version = "3.0.13", features = ["cargo"] }
+ clap = { version = "3.1.8", features = ["cargo", "env"] }
  itertools = "0.10.1"
  typed-arena = "2.0.1"
