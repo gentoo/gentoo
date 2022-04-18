@@ -140,6 +140,13 @@ ia64		default/linux/ia64/17.0/desktop/gnome/systemd	stable
 ia64		default/linux/ia64/17.0/developer		exp
 ia64		default/linux/ia64/17.0/systemd			exp
 
+# LoongArch Profiles
+# @MAINTAINER: loong@gentoo.org
+loong		default/linux/loong/22.0/la64v100/lp64d					exp
+loong		default/linux/loong/22.0/la64v100/lp64d/desktop				exp
+loong		default/linux/loong/22.0/la64v100/lp64d/desktop/systemd			exp
+loong		default/linux/loong/22.0/la64v100/lp64d/systemd				exp
+
 # M68K Profiles
 # @MAINTAINER: m68k@gentoo.org
 m68k		default/linux/m68k/17.0				exp
