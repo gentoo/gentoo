@@ -21,7 +21,8 @@ fi
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 
-IUSE="alsa debug fluidsynth jack libgig mp3 ogg portaudio pulseaudio sdl soundio stk vst"
+IUSE="alsa debug fluidsynth jack libgig mp3 ogg portaudio pulseaudio sdl soundio stk vst calf caps cmt swh tap"
+
 
 COMMON_DEPEND="
 	dev-qt/qtcore:5
@@ -59,11 +60,11 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 "
 RDEPEND="${COMMON_DEPEND}
-	media-plugins/calf
-	media-plugins/caps-plugins
-	media-plugins/cmt-plugins
-	media-plugins/swh-plugins
-	media-plugins/tap-plugins
+	calf? ( media-plugins/calf )
+	caps? ( media-plugins/caps-plugins )
+	cmt? ( media-plugins/cmt-plugins )
+	swh? ( media-plugins/swh-plugins )
+	tap? ( media-plugins/tap-plugins )
 "
 
 DOCS=( README.md doc/AUTHORS )
@@ -72,11 +73,11 @@ src_configure() {
 	local mycmakeargs+=(
 		-DBASHCOMP_PKG_PATH="$(get_bashcompdir)"
 		-DUSE_WERROR=FALSE
-		-DWANT_CAPS=FALSE
-		-DWANT_TAP=FALSE
-		-DWANT_SWH=FALSE
-		-DWANT_CMT=FALSE
-		-DWANT_CALF=FALSE
+		-DWANT_CAPS=$(usex caps)
+		-DWANT_TAP=$(usex tap)
+		-DWANT_SWH=$(usex swh)
+		-DWANT_CMT=$(usex cmt)
+		-DWANT_CALF=$(usex calf)
 		-DWANT_QT5=TRUE
 		-DWANT_ALSA=$(usex alsa)
 		-DWANT_JACK=$(usex jack)
