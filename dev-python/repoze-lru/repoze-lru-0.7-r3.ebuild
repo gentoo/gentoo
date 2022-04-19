@@ -23,6 +23,10 @@ LICENSE="repoze"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~ia64 ppc ~ppc64 ~riscv x86"
 
+RDEPEND="
+	!dev-python/namespace-repoze
+"
+
 distutils_enable_tests unittest
 
 python_compile() {
