@@ -40,7 +40,8 @@ patches() {
 }
 
 # The version of readline this bash normally ships with.
-READLINE_VER="8.2_beta"
+# Note: right now, we don't use the system copy of readline for bash for non-releases.
+READLINE_VER="8.2"
 
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html"
