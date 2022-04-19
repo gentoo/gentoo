@@ -1,0 +1,43 @@
+diff --git a/cask-cli.el b/cask-cli.el
+index f97a28a..eda6d8f 100644
+--- a/cask-cli.el
++++ b/cask-cli.el
+@@ -34,8 +34,7 @@
+       (or load-file-name byte-compile-current-file buffer-file-name)))
+     "Path to Cask root."))
+ 
+-(require 'cask-bootstrap (expand-file-name "cask-bootstrap" cask-directory))
+-(require 'cask (expand-file-name "cask" cask-directory))
++(require 'cask)
+ 
+ (when noninteractive
+   (shut-up-silence-emacs))
+diff --git a/cask.el b/cask.el
+index 7828f49..0bfc7ab 100644
+--- a/cask.el
++++ b/cask.el
+@@ -1,4 +1,4 @@
+-;;; cask.el --- Cask: Project management for package development  -*- lexical-binding: t; no-byte-compile: t -*-
++;;; cask.el --- Cask: Project management for package development  -*- lexical-binding: t -*-
+ 
+ ;; Copyright (C) 2012-2022 Johan Andersson
+ ;; Copyright (C) 2013 Sebastian Wiesner <swiesner@lunaryorn.com>
+@@ -45,7 +45,17 @@
+       (:else (buffer-file-name))))
+     "Path to Cask root."))
+ 
+-(require 'cask-bootstrap (expand-file-name "cask-bootstrap" cask-directory))
++(require 'ansi)
++(require 'cl-generic)
++(require 'cl-lib)
++(require 'commander)
++(require 'eieio)
++(require 'epl)
++(require 'f)
++(require 'package-build)
++(require 'package-recipe)
++(require 's)
++(require 'shut-up)
+ 
+ (setq package-build-verbose nil)        ; Make package-build quiet by
+                                         ; not allowing it to print any
