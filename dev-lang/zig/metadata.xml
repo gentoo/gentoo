@@ -2,6 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<use>
+		<flag name="stage2">Install stage2 alongside stage1</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">ziglang/zig</remote-id>
 	</upstream>
