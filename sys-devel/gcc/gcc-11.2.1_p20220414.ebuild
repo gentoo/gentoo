@@ -7,7 +7,7 @@ PATCH_VER="4"
 PATCH_GCC_VER="11.3.0"
 MUSL_VER="1"
 MUSL_GCC_VER="11.3.0"
-
+TOOLCHAIN_SET_S=no
 MY_PV=$(ver_cut 1).$((($(ver_cut 2) + 1))).$((($(ver_cut 3) - 1)))-RC-$(ver_cut 5)
 MY_P=${PN}-${MY_PV}
 GCC_TARBALL_SRC_URI="https://mirrorservice.org/sites/sourceware.org/pub/gcc/snapshots/${MY_PV}/${MY_P}.tar.xz"
