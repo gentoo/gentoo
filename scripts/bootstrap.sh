@@ -172,7 +172,7 @@ pycmd() {
 }
 
 # TSTP messes ^Z of bootstrap up, so we don't trap it anymore.
-trap "cleanup" TERM KILL INT QUIT ABRT
+trap "cleanup" TERM INT QUIT ABRT
 
 # Bug #50158 (don't use `which` in a bootstrap).
 if ! type -path portageq &>/dev/null ; then
