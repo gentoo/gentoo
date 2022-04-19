@@ -60,8 +60,8 @@ src_configure() {
 		--libexecdir="${EPREFIX}"/usr/$(get_libdir)/apache2/modules
 		--sbindir="${EPREFIX}"/usr/sbin
 		--with-z="${EPREFIX}"/usr
-		--with-apr="${SYSROOT}${EPREFIX}"/usr
-		--with-apr-util="${SYSROOT}${EPREFIX}"/usr
+		--with-apr="${ESYSROOT}"/usr
+		--with-apr-util="${ESYSROOT}"/usr
 		--with-pcre="${T}"/pcre-config
 		$(use_enable ssl)
 		$(usex ssl '--with-ssl="${EPREFIX}"/usr' '')
