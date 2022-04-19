@@ -103,4 +103,6 @@ src_install() {
 	fi
 
 	find "${D}" -name '*.la' -delete || die
+
+	keepdir /var/lib/knot
 }
