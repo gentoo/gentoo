@@ -244,7 +244,7 @@ fi
 if tc_has_feature sanitize ; then
 	# libsanitizer relies on 'crypt.h' to be present
 	# on target. glibc user to provide it unconditionally.
-	# Nowadays it's a standalone library: #802648
+	# Nowadays it's a standalone library: bug #802648
 	DEPEND+=" sanitize? ( virtual/libcrypt )"
 fi
 
@@ -268,15 +268,17 @@ PDEPEND=">=sys-devel/gcc-config-2.3"
 
 # Set the source directory depending on whether we're using
 # a live git tree, snapshot, or release tarball.
-S=$(
-	if tc_is_live ; then
-		echo ${EGIT_CHECKOUT_DIR}
-	elif [[ -n ${SNAPSHOT} ]] ; then
-		echo ${WORKDIR}/gcc-${SNAPSHOT}
-	else
-		echo ${WORKDIR}/gcc-${GCC_RELEASE_VER}
-	fi
-)
+if [[ -z ${S} ]] ; then
+	S=$(
+		if tc_is_live ; then
+			echo ${EGIT_CHECKOUT_DIR}
+		elif [[ -n ${SNAPSHOT} ]] ; then
+			echo ${WORKDIR}/gcc-${SNAPSHOT}
+		else
+			echo ${WORKDIR}/gcc-${GCC_RELEASE_VER}
+		fi
+	)
+fi
 
 gentoo_urls() {
 	local devspace="
