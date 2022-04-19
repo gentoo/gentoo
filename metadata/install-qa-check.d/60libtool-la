@@ -34,7 +34,7 @@ libtool_la_check() {
 	done
 
 	if [[ -n "${bad_files[@]}" ]] ; then
-		eqawarn "QA Notice: Installing libtool files (.la) without corresponding libraries!"
+		eqawarn "QA Notice: Installing libtool files (.la) without corresponding static libraries!"
 		eqatag -v libtool-la.unnecessary "${bad_files[@]#${D}}"
 	fi
 }
