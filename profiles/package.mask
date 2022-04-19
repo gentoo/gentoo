@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-19)
+# Release of the source-based ebuild is from 2014. At the moment
+# impossible to provide source-based ebuild for the current version.
+# Up-to-date binary package exists. Removal on 2022-05-30
+app-text/jabref
+dev-java/glazedlists
+dev-java/jempbox
+dev-java/microba
+dev-java/spin
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-17)
 # Unused java libraries. Removal in 30 days.
 dev-java/boot-bin
