@@ -70,7 +70,7 @@ src_prepare() {
 src_configure() {
 	local myconf=(
 		--datadir="${EPREFIX}"/usr/share/apr-util-1
-		--with-apr="${SYSROOT}${EPREFIX}"/usr
+		--with-apr="${ESYSROOT}"/usr
 		--with-expat="${EPREFIX}"/usr
 		--without-sqlite2
 		$(use_with gdbm)
