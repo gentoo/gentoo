@@ -21,7 +21,8 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="+dbus +gui webui"
-REQUIRED_USE="dbus? ( gui )"
+REQUIRED_USE="dbus? ( gui )
+	|| ( gui webui )"
 
 RDEPEND="
 	>=dev-libs/boost-1.65.0-r1:=
@@ -47,7 +48,6 @@ DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md TODO )
 
 src_prepare() {
 	MULTIBUILD_VARIANTS=( base )
-	use gui && MULTIBUILD_VARIANTS+=( gui )
 	use webui && MULTIBUILD_VARIANTS+=( webui )
 
 	multibuild_foreach_variant cmake_src_prepare
@@ -73,12 +73,16 @@ src_configure() {
 
 			# We do these in multibuild, see bug #839531 for why
 			# Fedora has to do the same thing.
-			-DGUI=OFF
-			-DWEBUI=OFF
+			-DGUI=$(usex gui)
 		)
 
-		if [[ ${MULTIBUILD_VARIANT} != base ]] ; then
-			mycmakeargs+=( -D${MULTIBUILD_VARIANT^^}=$(usex ${MULTIBUILD_VARIANT}) )
+		if [[ ${MULTIBUILD_VARIANT} == webui ]] ; then
+			mycmakeargs+=(
+				-DGUI=OFF
+				-DWEBUI=ON
+			)
+		else
+			mycmakeargs+=( -DWEBUI=OFF )
 		fi
 
 		cmake_src_configure
@@ -93,6 +97,11 @@ src_compile() {
 
 src_install() {
 	multibuild_foreach_variant cmake_src_install
+
+	if ! use webui ; then
+		# No || die deliberately as it doesn't always exist
+		rm "${ED}/$(systemd_get_systemunitdir)"/qbittorrent-nox*.service
+	fi
 
 	einstalldocs
 }
