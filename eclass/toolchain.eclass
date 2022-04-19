@@ -266,9 +266,11 @@ PDEPEND=">=sys-devel/gcc-config-2.3"
 
 #---->> S + SRC_URI essentials <<----
 
+: ${TOOLCHAIN_SET_S:=yes}
+
 # Set the source directory depending on whether we're using
 # a live git tree, snapshot, or release tarball.
-if [[ -z ${S} ]] ; then
+if [[ ${TOOLCHAIN_SET_S} == yes ]] ; then
 	S=$(
 		if tc_is_live ; then
 			echo ${EGIT_CHECKOUT_DIR}
