@@ -1,0 +1,31 @@
+index 45ea622..b20754e 100755
+--- a/bin/ecukes
++++ b/bin/ecukes
+@@ -33,7 +33,7 @@
+ # Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ # Boston, MA 02110-2022, USA.
+ 
+-ECUKES_HOME=$(dirname "$(dirname "$BASH_SOURCE")")
++ECUKES_HOME="@SITELISP@"
+ ECUKES_CLI=$ECUKES_HOME/ecukes-cli.el
+ 
+ if [[ -n "$INSIDE_EMACS" ]]; then
+@@ -60,9 +60,9 @@ if has_option "--win" $@ || has_option "--no-win" $@ ; then
+   export ECUKES_OUTFILE=$(mktemp /tmp/ecukes.XXX)
+ 
+   if has_option "--win" $@; then
+-    "$ECUKES_EMACS" --load "$ECUKES_CLI" -Q
++    "$ECUKES_EMACS" --load "$ECUKES_CLI" -q
+   else
+-    "$ECUKES_EMACS" -nw --load "$ECUKES_CLI" -Q
++    "$ECUKES_EMACS" -nw --load "$ECUKES_CLI" -q
+   fi
+ 
+   STATUS=$?
+@@ -72,5 +72,5 @@ if has_option "--win" $@ || has_option "--no-win" $@ ; then
+ 
+   exit $STATUS
+ else
+-  "$ECUKES_EMACS" --script "$ECUKES_CLI" -Q
++  "$ECUKES_EMACS" --script "$ECUKES_CLI" -q
+ fi
