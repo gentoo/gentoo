@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ IUSE="+gui test zstd"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	dev-libs/boost:=[zstd?]
+	dev-libs/boost:=[zstd?,zlib]
 	sys-libs/libunwind:=
 	sys-libs/zlib
 	gui? (
