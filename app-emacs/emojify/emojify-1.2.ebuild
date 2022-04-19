@@ -16,7 +16,7 @@ S="${WORKDIR}"/emacs-${P}
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
-RESTRICT="test"  # requires some (5) unpackaged Emacs testing tools
+RESTRICT="test"  # Tests fail
 
 RDEPEND="app-emacs/ht"
 BDEPEND="${RDEPEND}"
