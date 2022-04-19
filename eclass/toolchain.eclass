@@ -313,7 +313,7 @@ gentoo_urls() {
 #	PATCH_GCC_VER
 #			This should be set to the version of the gentoo patch tarball.
 #			The resulting filename of this tarball will be:
-#			gcc-${PATCH_GCC_VER:-${GCC_RELEASE_VER}}-patches-${PATCH_VER}.tar.bz2
+#			gcc-${PATCH_GCC_VER:-${GCC_RELEASE_VER}}-patches-${PATCH_VER}.tar.xz
 #
 #	PIE_VER
 #	PIE_GCC_VER
@@ -325,7 +325,7 @@ gentoo_urls() {
 #					PIE_VER="8.7.6.5"
 #					PIE_GCC_VER="3.4.0"
 #			The resulting filename of this tarball will be:
-#			gcc-${PIE_GCC_VER:-${GCC_RELEASE_VER}}-piepatches-v${PIE_VER}.tar.bz2
+#			gcc-${PIE_GCC_VER:-${GCC_RELEASE_VER}}-piepatches-v${PIE_VER}.tar.xz
 #
 #	SPECS_VER
 #	SPECS_GCC_VER
@@ -337,7 +337,7 @@ gentoo_urls() {
 #					SPECS_VER="8.7.6.5"
 #					SPECS_GCC_VER="3.4.0"
 #			The resulting filename of this tarball will be:
-#			gcc-${SPECS_GCC_VER:-${GCC_RELEASE_VER}}-specs-${SPECS_VER}.tar.bz2
+#			gcc-${SPECS_GCC_VER:-${GCC_RELEASE_VER}}-specs-${SPECS_VER}.tar.xz
 #
 #	CYGWINPORTS_GITREV
 #			If set, this variable signals that we should apply additional patches
@@ -370,18 +370,26 @@ get_gcc_src_uri() {
 		fi
 	fi
 
+	local PATCH_SUFFIX="xz"
+	if ! tc_version_is_at_least 9.4.1_p20220317 || tc_version_is_between 9 9.5 \
+		|| tc_version_is_between 10 10.4 || tc_version_is_between 11 11.3 \
+		|| tc_version_is_between 12 12.1 ; then
+		# These are versions before we started to use .xz
+		PATCH_SUFFIX="bz2"
+	fi
+
 	[[ -n ${PATCH_VER} ]] && \
-		GCC_SRC_URI+=" $(gentoo_urls gcc-${PATCH_GCC_VER}-patches-${PATCH_VER}.tar.bz2)"
+		GCC_SRC_URI+=" $(gentoo_urls gcc-${PATCH_GCC_VER}-patches-${PATCH_VER}.tar.${PATCH_SUFFIX})"
 	[[ -n ${MUSL_VER} ]] && \
-		GCC_SRC_URI+=" $(gentoo_urls gcc-${MUSL_GCC_VER}-musl-patches-${MUSL_VER}.tar.bz2)"
+		GCC_SRC_URI+=" $(gentoo_urls gcc-${MUSL_GCC_VER}-musl-patches-${MUSL_VER}.tar.${PATCH_SUFFIX})"
 
 	[[ -n ${PIE_VER} ]] && \
-		PIE_CORE=${PIE_CORE:-gcc-${PIE_GCC_VER}-piepatches-v${PIE_VER}.tar.bz2} && \
+		PIE_CORE=${PIE_CORE:-gcc-${PIE_GCC_VER}-piepatches-v${PIE_VER}.tar.${PATCH_SUFFIX}} && \
 		GCC_SRC_URI+=" $(gentoo_urls ${PIE_CORE})"
 
 	# gcc minispec for the hardened gcc 4 compiler
 	[[ -n ${SPECS_VER} ]] && \
-		GCC_SRC_URI+=" $(gentoo_urls gcc-${SPECS_GCC_VER}-specs-${SPECS_VER}.tar.bz2)"
+		GCC_SRC_URI+=" $(gentoo_urls gcc-${SPECS_GCC_VER}-specs-${SPECS_VER}.tar.${PATCH_SUFFIX})"
 
 	if tc_has_feature gcj ; then
 		if tc_version_is_at_least 4.5 ; then
