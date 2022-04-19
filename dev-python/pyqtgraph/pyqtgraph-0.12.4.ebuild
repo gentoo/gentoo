@@ -22,7 +22,7 @@ S=${WORKDIR}/${PN}-${P}
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples opengl svg"
+IUSE="opengl svg"
 REQUIRED_USE="test? ( opengl svg )"
 
 RDEPEND="
@@ -85,9 +85,4 @@ src_test() {
 	cd - >/dev/null || die
 
 	distutils-r1_src_test
-}
-
-python_install_all() {
-	use examples && DOCS+=( examples/ )
-	distutils-r1_python_install_all
 }
