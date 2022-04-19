@@ -114,13 +114,13 @@ src_prepare() {
 		fi
 	fi
 
-	# Make sure our explicit libdir paths don't get clobbered. #562460
+	# Make sure our explicit libdir paths don't get clobbered, bug #562460
 	sed -i \
 		-e 's:@bfdlibdir@:@libdir@:g' \
 		-e 's:@bfdincludedir@:@includedir@:g' \
 		{bfd,opcodes}/Makefile.in || die
 
-	# Fix locale issues if possible #122216
+	# Fix locale issues if possible, bug #122216
 	if [[ -e ${FILESDIR}/binutils-configure-LANG.patch ]] ; then
 		einfo "Fixing misc issues in configure files"
 		for f in $(find "${S}" -name configure -exec grep -l 'autoconf version 2.13' {} +) ; do
@@ -129,11 +129,6 @@ src_prepare() {
 				|| eerror "Please file a bug about this"
 			eend $?
 		done
-	fi
-
-	# Fix conflicts with newer glibc #272594
-	if [[ -e libiberty/testsuite/test-demangle.c ]] ; then
-		sed -i 's:\<getline\>:get_line:g' libiberty/testsuite/test-demangle.c
 	fi
 
 	# Apply things from PATCHES and user dirs
@@ -165,7 +160,7 @@ src_configure() {
 	BINPATH=${TOOLPATH}/binutils-bin/${PV}
 
 	# Make sure we filter $LINGUAS so that only ones that
-	# actually work make it through #42033
+	# actually work make it through, bug #42033
 	strip-linguas -u */po
 
 	# Keep things sane
@@ -202,9 +197,10 @@ src_configure() {
 
 	myconf+=( --with-system-zlib )
 
-	# For bi-arch systems, enable a 64bit bfd.  This matches
-	# the bi-arch logic in toolchain.eclass. #446946
-	# We used to do it for everyone, but it's slow on 32bit arches. #438522
+	# For bi-arch systems, enable a 64bit bfd. This matches the bi-arch
+	# logic in toolchain.eclass. bug #446946
+	#
+	# We used to do it for everyone, but it's slow on 32bit arches. bug #438522
 	case $(tc-arch) in
 		ppc|sparc|x86) myconf+=( --enable-64-bit-bfd ) ;;
 	esac
@@ -218,10 +214,7 @@ src_configure() {
 		--enable-poison-system-directories
 	)
 
-	# glibc-2.3.6 lacks support for this ... so rather than force glibc-2.5+
-	# on everyone in alpha (for now), we'll just enable it when possible
-	has_version ">=${CATEGORY}/glibc-2.5" && myconf+=( --enable-secureplt )
-	has_version ">=sys-libs/glibc-2.5" && myconf+=( --enable-secureplt )
+	myconf+=( --enable-secureplt )
 
 	# mips can't do hash-style=gnu ...
 	if [[ $(tc-arch) != mips ]] ; then
@@ -245,24 +238,24 @@ src_configure() {
 		--enable-threads
 		# Newer versions (>=2.27) offer a configure flag now.
 		--enable-relro
-		# Newer versions (>=2.24) make this an explicit option. #497268
+		# Newer versions (>=2.24) make this an explicit option, bug #497268
 		--enable-install-libiberty
 		# Available from 2.35 on
 		--enable-textrel-check=warning
-		# Works better than vapier's patch... #808787
+		# Works better than vapier's patch, bug #808787
 		--enable-new-dtags
 		--disable-werror
 		--with-bugurl="$(toolchain-binutils_bugurl)"
 		--with-pkgversion="$(toolchain-binutils_pkgversion)"
 		$(use_enable static-libs static)
 		${EXTRA_ECONF}
-		# Disable modules that are in a combined binutils/gdb tree. #490566
+		# Disable modules that are in a combined binutils/gdb tree, bug #490566
 		--disable-{gdb,libdecnumber,readline,sim}
 		# Strip out broken static link flags.
 		# https://gcc.gnu.org/PR56750
 		--without-stage1-ldflags
 		# Change SONAME to avoid conflict across
-		# {native,cross}/binutils, binutils-libs. #666100
+		# {native,cross}/binutils, binutils-libs. bug #666100
 		--with-extra-soversion-suffix=gentoo-${CATEGORY}-${PN}-$(usex multitarget mt st)
 
 		# avoid automagic dependency on (currently prefix) systems
@@ -295,7 +288,8 @@ src_configure() {
 }
 
 src_compile() {
-	cd "${MY_BUILDDIR}"
+	cd "${MY_BUILDDIR}" || die
+
 	# see Note [tooldir hack for ldscripts]
 	emake tooldir="${EPREFIX}${TOOLPATH}" all
 
@@ -310,9 +304,9 @@ src_compile() {
 }
 
 src_test() {
-	cd "${MY_BUILDDIR}"
+	cd "${MY_BUILDDIR}" || die
 
-	# bug 637066
+	# bug #637066
 	filter-flags -Wall -Wreturn-type
 
 	emake -k check
@@ -321,14 +315,15 @@ src_test() {
 src_install() {
 	local x d
 
-	cd "${MY_BUILDDIR}"
+	cd "${MY_BUILDDIR}" || die
+
 	# see Note [tooldir hack for ldscripts]
 	emake DESTDIR="${D}" tooldir="${EPREFIX}${LIBPATH}" install
-	rm -rf "${ED}"/${LIBPATH}/bin
+	rm -rf "${ED}"/${LIBPATH}/bin || die
 	use static-libs || find "${ED}" -name '*.la' -delete
 
-	# Newer versions of binutils get fancy with ${LIBPATH} #171905
-	cd "${ED}"/${LIBPATH}
+	# Newer versions of binutils get fancy with ${LIBPATH}, bug #171905
+	cd "${ED}"/${LIBPATH} || die
 	for d in ../* ; do
 		[[ ${d} == ../${PV} ]] && continue
 		mv ${d}/* . || die
@@ -339,9 +334,9 @@ src_install() {
 	# When something is built to cross-compile, it installs into
 	# /usr/$CHOST/ by default ... we have to 'fix' that :)
 	if is_cross ; then
-		cd "${ED}"/${BINPATH}
+		cd "${ED}"/${BINPATH} || die
 		for x in * ; do
-			mv ${x} ${x/${CTARGET}-}
+			mv ${x} ${x/${CTARGET}-} || die
 		done
 
 		if [[ -d ${ED}/usr/${CHOST}/${CTARGET} ]] ; then
@@ -350,6 +345,7 @@ src_install() {
 			rm -r "${ED}"/usr/${CHOST}/{include,lib}
 		fi
 	fi
+
 	insinto ${INCPATH}
 	local libiberty_headers=(
 		# Not all the libiberty headers.  See libiberty/Makefile.in:install_to_libdir.
@@ -363,8 +359,8 @@ src_install() {
 	)
 	doins "${libiberty_headers[@]/#/${S}/include/}"
 	if [[ -d ${ED}/${LIBPATH}/lib ]] ; then
-		mv "${ED}"/${LIBPATH}/lib/* "${ED}"/${LIBPATH}/
-		rm -r "${ED}"/${LIBPATH}/lib
+		mv "${ED}"/${LIBPATH}/lib/* "${ED}"/${LIBPATH}/ || die
+		rm -r "${ED}"/${LIBPATH}/lib || die
 	fi
 
 	# Generate an env.d entry for this binutils
@@ -378,29 +374,36 @@ src_install() {
 
 	# Handle documentation
 	if ! is_cross ; then
-		cd "${S}"
+		cd "${S}" || die
 		dodoc README
+
 		docinto bfd
 		dodoc bfd/ChangeLog* bfd/README bfd/PORTING bfd/TODO
+
 		docinto binutils
 		dodoc binutils/ChangeLog binutils/NEWS binutils/README
+
 		docinto gas
 		dodoc gas/ChangeLog* gas/CONTRIBUTORS gas/NEWS gas/README*
+
 		docinto gprof
 		dodoc gprof/ChangeLog* gprof/TEST gprof/TODO gprof/bbconv.pl
+
 		docinto ld
 		dodoc ld/ChangeLog* ld/README ld/NEWS ld/TODO
+
 		docinto libiberty
 		dodoc libiberty/ChangeLog* libiberty/README
+
 		docinto opcodes
 		dodoc opcodes/ChangeLog*
 	fi
 
 	# Remove shared info pages
-	rm -f "${ED}"/${DATAPATH}/info/{dir,configure.info,standards.info}
+	rm -f "${ED}"/${DATAPATH}/info/{dir,configure.info,standards.info} || die
 
 	# Trim all empty dirs
-	find "${ED}" -depth -type d -exec rmdir {} + 2>/dev/null
+	find "${ED}" -depth -type d -exec rmdir {} + 2>/dev/null || die
 }
 
 pkg_postinst() {
