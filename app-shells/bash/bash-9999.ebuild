@@ -5,8 +5,6 @@ EAPI=7
 
 # TODO on release:
 # - check READLINE_VER, obviously
-# - remove autotools/eautoreconf from readline ebuild
-# - tidy up is_release check in this ebuild for using system readline
 # (presumably there weren't always readline releases for bash RCs etc)
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/chetramey.asc
@@ -20,8 +18,8 @@ MY_PV="${MY_PV/_/-}"
 MY_P="${PN}-${MY_PV}"
 is_release() {
 	case ${PV} in
-	9999|*_alpha*|*_beta*|*_rc*) return 1 ;;
-	*) return 0 ;;
+		9999|*_alpha*|*_beta*|*_rc*) return 1 ;;
+		*) return 0 ;;
 	esac
 }
 [[ ${PV} != *_p* ]] && PLEVEL=0
@@ -48,6 +46,7 @@ DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html"
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/bash.git"
+	EGIT_BRANCH=devel
 	inherit git-r3
 elif is_release ; then
 	SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
