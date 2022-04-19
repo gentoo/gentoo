@@ -10,6 +10,8 @@
 # @SUPPORTED_EAPIS: 8
 # @BLURB: Common functions and variables for Tree Sitter grammars
 
+inherit edo
+
 if [[ -z ${_TREE_SITTER_GRAMMAR_ECLASS} ]]; then
 _TREE_SITTER_GRAMMAR_ECLASS=1
 
@@ -74,7 +76,7 @@ tree-sitter-grammar_src_compile() {
 	fi
 
 	local soname=lib${PN}$(get_libname $(_get_tsg_abi_ver))
-	${link} ${LDFLAGS} \
+	edo ${link} ${LDFLAGS} \
 			-shared \
 			*.o \
 			-Wl,--soname=${soname} \
