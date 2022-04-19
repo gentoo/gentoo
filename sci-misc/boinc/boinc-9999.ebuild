@@ -1,9 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-MY_PV=7.16
+# For live ebuilds this should be set to the latest available patch in ${FILESDIR}
+# It does not need to reflect the actual internal version reported by BOINC unless that patch is broken.
+MY_PV=7.18
 WX_GTK_VER=3.0-gtk3
 
 inherit autotools desktop flag-o-matic linux-info systemd wxwidgets xdg-utils
@@ -29,8 +31,7 @@ REQUIRED_USE="^^ ( curl_ssl_gnutls curl_ssl_openssl ) "
 
 # libcurl must not be using an ssl backend boinc does not support.
 # If the libcurl ssl backend changes, boinc should be recompiled.
-COMMON_DEPEND="
-	acct-group/boinc
+DEPEND="
 	acct-user/boinc
 	>=app-misc/ca-certificates-20080809
 	cuda? (
@@ -54,13 +55,12 @@ COMMON_DEPEND="
 		virtual/jpeg
 	)
 "
-DEPEND="${RDEPEND}
-	app-text/docbook-xml-dtd:4.4
+BDEPEND="app-text/docbook-xml-dtd:4.4
 	app-text/docbook2X
 	sys-devel/gettext
 	X? ( virtual/imagemagick-tools[png,tiff] )
 "
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	!app-admin/quickswitch
 "
 
@@ -93,22 +93,12 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# bug #732024
-	if test "x$(get_libdir)" = "xlib64"; then
-	    sed -i -e 's,/:/lib:/usr/lib:,:/lib64:/usr/lib64:,g' m4/sah_check_lib.m4 || die
-	fi
-
 	default
 
 	# prevent bad changes in compile flags, bug 286701
 	sed -i -e "s:BOINC_SET_COMPILE_FLAGS::" configure.ac || die "sed failed"
 
 	eautoreconf
-
-	# bug #732024
-	if test "x$(get_libdir)" = "xlib64"; then
-	    sed -i -e 's,/lib\([ /;:"]\),/lib64\1,g' configure || die
-	fi
 }
 
 src_configure() {
