@@ -83,15 +83,18 @@ GCCMICRO=$(ver_cut 3 ${GCC_PV})
 
 # Ideally this variable should allow for custom gentoo versioning
 # of binary and gcc-config names not directly tied to upstream
-# versioning. In practive it's hard to untangle from gcc/BASE-VER
+# versioning. In practice it's hard to untangle from gcc/BASE-VER
 # (GCC_RELEASE_VER) value.
 GCC_CONFIG_VER=${GCC_RELEASE_VER}
 
 # Pre-release support. Versioning schema:
 # 1.0.0_pre9999: live ebuild
-# 1.2.3_pYYYYMMDD: weekly snapshots
+# 1.2.3_pYYYYMMDD (or 1.2.3_preYYYYMMDD for unreleased major versions): weekly snapshots
 # 1.2.3_rcYYYYMMDD: release candidates
-if [[ ${GCC_PV} == *_p* ]] ; then
+if [[ ${GCC_PV} == *_pre* ]] ; then
+	# weekly snapshots
+	SNAPSHOT=${GCCMAJOR}-${GCC_PV##*_pre}
+elif [[ ${GCC_PV} == *_p* ]] ; then
 	# weekly snapshots
 	SNAPSHOT=${GCCMAJOR}-${GCC_PV##*_p}
 elif [[ ${GCC_PV} == *_rc* ]] ; then
