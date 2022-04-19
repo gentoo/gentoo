@@ -50,7 +50,7 @@ src_install() {
 
 	rm -r "${D}"/usr/share/emacs || die
 	if use emacs ; then
-		elisp-install sertop sertop.el{,c}
+		elisp-install ${PN} sertop.el{,c}
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 	fi
 }
