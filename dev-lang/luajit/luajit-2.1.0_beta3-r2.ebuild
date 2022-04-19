@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ SRC_URI="https://luajit.org/download/${MY_P}.tar.gz"
 LICENSE="MIT"
 # this should probably be pkgmoved to 2.0 for sake of consistency.
 SLOT="2"
-KEYWORDS="~arm64 -hppa -riscv -sparc"
+KEYWORDS="arm64 -hppa -riscv -sparc"
 IUSE="lua52compat static-libs"
 
 PATCHES=(
