@@ -994,11 +994,6 @@ glibc_do_configure() {
 	export libc_cv_rootsbindir="$(host_eprefix)/sbin"
 	export libc_cv_slibdir="$(host_eprefix)/$(get_libdir)"
 
-	# We take care of patching our binutils to use both hash styles,
-	# and many people like to force gnu hash style only, so disable
-	# this overriding check.  #347761
-	export libc_cv_hashstyle=no
-
 	local builddir=$(builddir nptl)
 	mkdir -p "${builddir}"
 	cd "${builddir}"
