@@ -132,6 +132,13 @@ src_configure() {
 	ebegin "Configuring Bigloo with the following options: ${myconf[@]}"
 	sh ./configure "${myconf[@]}"
 	eend $? || die "configure script failed"
+
+	# When Emacs version is too high (e.g. 28) bigloo will skip compiling
+	# and installing the Emacs support files.
+	# The file "bmacs/Makefile" lists all officially supported Emacs versions.
+	if use emacs ; then
+		sed "/^EMACSBRAND=/s|generic|emacs23|" -i Makefile.config || die
+	fi
 }
 
 src_compile() {
