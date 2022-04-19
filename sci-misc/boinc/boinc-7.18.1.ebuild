@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -92,22 +92,12 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# bug #732024
-	if test "x$(get_libdir)" = "xlib64"; then
-	    sed -i -e 's,/:/lib:/usr/lib:,:/lib64:/usr/lib64:,g' m4/sah_check_lib.m4 || die
-	fi
-
 	default
 
 	# prevent bad changes in compile flags, bug 286701
 	sed -i -e "s:BOINC_SET_COMPILE_FLAGS::" configure.ac || die "sed failed"
 
 	eautoreconf
-
-	# bug #732024
-	if test "x$(get_libdir)" = "xlib64"; then
-	    sed -i -e 's,/lib\([ /;:"]\),/lib64\1,g' configure || die
-	fi
 }
 
 src_configure() {
