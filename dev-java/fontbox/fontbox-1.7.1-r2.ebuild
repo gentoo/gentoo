@@ -42,6 +42,14 @@ src_prepare() {
 }
 
 src_test() {
+	# junit.framework.AssertionFailedError:
+	# No tests found in org.apache.fontbox.cff.Type1CharStringTest
+	rm src/test/java/org/apache/fontbox/cff/Type1CharStringTest.java || die
+
+	# junit.framework.AssertionFailedError:
+	# No tests found in org.apache.fontbox.cff.Type1FontUtilTest
+	rm src/test/java/org/apache/fontbox/cff/Type1FontUtilTest.java || die
+
 	java-pkg-2_src_test
 }
 
