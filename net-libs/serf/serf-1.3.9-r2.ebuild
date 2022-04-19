@@ -52,8 +52,8 @@ src_compile() {
 		# These config scripts are sent through a shell with an empty env
 		# which breaks the SYSROOT usage in them.  Set the vars inline to
 		# avoid that.
-		APR="SYSROOT='${SYSROOT}' ${SYSROOT}${EPREFIX}/usr/bin/apr-1-config"
-		APU="SYSROOT='${SYSROOT}' ${SYSROOT}${EPREFIX}/usr/bin/apu-1-config"
+		APR="SYSROOT='${SYSROOT}' ${ESYSROOT}/usr/bin/apr-1-config"
+		APU="SYSROOT='${SYSROOT}' ${ESYSROOT}/usr/bin/apu-1-config"
 		AR="$(tc-getAR)"
 		RANLIB="$(tc-getRANLIB)"
 		CC="$(tc-getCC)"
@@ -63,7 +63,7 @@ src_compile() {
 	)
 
 	if use kerberos; then
-		myesconsargs+=( GSSAPI="${SYSROOT}${EPREFIX}/usr/bin/krb5-config" )
+		myesconsargs+=( GSSAPI="${ESYSROOT}/usr/bin/krb5-config" )
 	fi
 
 	escons "${myesconsargs[@]}"
