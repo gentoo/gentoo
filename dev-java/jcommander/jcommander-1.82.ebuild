@@ -40,10 +40,10 @@ JAVA_SRC_DIR="src/main/java"
 # Needs "java-util-2-runner-args.patch" from https://github.com/gentoo/gentoo/pull/21319#issuecomment-878128343
 JAVA_TEST_RUNNER_EXTRA_ARGS=( -verbose 3 -usedefaultlisteners true )
 
-JAVA_TEST_EXTRA_ARGS="-Djava.io.tmpdir=${T}"
 JAVA_TEST_GENTOO_CLASSPATH="jackson-annotations-2,testng"
-JAVA_TEST_SRC_DIR="src/test/java"
-JAVA_TEST_RESOURCE_DIRS="src/test/resources"
+JAVA_TEST_EXTRA_ARGS=( -Djava.io.tmpdir="${T}" )
+JAVA_TEST_SRC_DIR=( src/test/java )
+JAVA_TEST_RESOURCE_DIRS=( src/test/resources )
 
 src_prepare() {
 	default
