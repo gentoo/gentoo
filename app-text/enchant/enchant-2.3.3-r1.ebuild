@@ -23,7 +23,7 @@ COMMON_DEPEND="
 	voikko? ( dev-libs/libvoikko )
 "
 RDEPEND="${COMMON_DEPEND}
-	!<app-text/enchant-1.6.1-r2:1
+	!<app-text/enchant-1.6.1-r2:0
 "
 DEPEND="${COMMON_DEPEND}
 	test? ( >=dev-libs/unittest++-2.0.0-r2 )
