@@ -54,7 +54,7 @@ JAVA_ANT_REWRITE_CLASSPATH="true"
 JAVA_PKG_BSFIX_NAME="build.xml build-ant-tools.xml"
 EANT_BUILD_TARGET="jar contrib-jars"
 EANT_EXTRA_ARGS="-Dbuild-native=true -Dcompatibility=1.8 -Ddynlink.native=true"
-EANT_TEST_EXTRA_ARGS="-Djava.io.tmpdir=${T}"
+EANT_TEST_EXTRA_ARGS="-Djava.io.tmpdir=\"${T}\""
 EANT_TEST_GENTOO_CLASSPATH="animal-sniffer-annotations,reflections"
 
 pkg_setup() {
