@@ -20,6 +20,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~am
 
 RDEPEND="
 	>=dev-python/six-1.4.0[${PYTHON_USEDEP}]
+	!dev-python/namespace-paste
 "
 
 distutils_enable_tests pytest
