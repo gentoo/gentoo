@@ -296,11 +296,11 @@ src_configure() {
 	fi
 
 	# These are enabled by default in all mozilla applications
-	mozconfig_annotate '' --with-system-nspr --with-nspr-prefix="${SYSROOT}${EPREFIX}"/usr
-	mozconfig_annotate '' --with-system-nss --with-nss-prefix="${SYSROOT}${EPREFIX}"/usr
-	mozconfig_annotate '' --x-includes="${SYSROOT}${EPREFIX}"/usr/include --x-libraries="${SYSROOT}${EPREFIX}"/usr/$(get_libdir)
+	mozconfig_annotate '' --with-system-nspr --with-nspr-prefix="${ESYSROOT}"/usr
+	mozconfig_annotate '' --with-system-nss --with-nss-prefix="${ESYSROOT}"/usr
+	mozconfig_annotate '' --x-includes="${ESYSROOT}"/usr/include --x-libraries="${ESYSROOT}"/usr/$(get_libdir)
 	if use system-libevent ; then
-		mozconfig_annotate '' --with-system-libevent="${SYSROOT}${EPREFIX}"/usr
+		mozconfig_annotate '' --with-system-libevent="${ESYSROOT}"/usr
 	fi
 	mozconfig_annotate '' --prefix="${EPREFIX}"/usr
 	mozconfig_annotate '' --libdir="${EPREFIX}"/usr/$(get_libdir)
