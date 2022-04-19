@@ -82,7 +82,7 @@ src_prepare() {
 }
 
 src_compile() {
-	ebegin "Generating ANTLR 3 parsers"
+	einfo "Generating ANTLR 3 parsers"
 	"${MY_JAVA}" -cp "$(java-pkg_getjars \
 		--build-only --with-dependencies antlr-tool-3.5)" \
 		org.antlr.Tool $(find "${JAVA_SRC_DIR[@]}" -name "*.g") ||
@@ -109,7 +109,7 @@ src_test() {
 		CP+=":${res_dir}"
 	done
 
-	ebegin "Generating ANTLR 4 parsers for tests"
+	einfo "Generating ANTLR 4 parsers for tests"
 	pushd runtime-testsuite/test > /dev/null ||
 		die "Failed to enter runtime test source directory"
 	g4_files=( $(find * -name "*.g4") )
