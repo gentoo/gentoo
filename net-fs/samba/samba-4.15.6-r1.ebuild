@@ -246,7 +246,7 @@ multilib_src_configure() {
 		myconf+=( --with-shared-modules=DEFAULT,!vfs_snapper )
 	fi
 
-	PYTHONHASHSEED=1 CPPFLAGS="-I${SYSROOT}${EPREFIX}/usr/include/et ${CPPFLAGS}" \
+	PYTHONHASHSEED=1 CPPFLAGS="-I${ESYSROOT}/usr/include/et ${CPPFLAGS}" \
 		waf-utils_src_configure ${myconf[@]}
 }
 

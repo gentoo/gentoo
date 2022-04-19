@@ -246,7 +246,7 @@ multilib_src_configure() {
 		myconf+=( --with-shared-modules=DEFAULT,!vfs_snapper )
 	fi
 
-	CPPFLAGS="-I${SYSROOT}${EPREFIX}/usr/include/et ${CPPFLAGS}" \
+	CPPFLAGS="-I${ESYSROOT}/usr/include/et ${CPPFLAGS}" \
 		waf-utils_src_configure ${myconf[@]}
 }
 
