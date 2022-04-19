@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
-DESCRIPTION="Type hints support for the Sphinx autodoc extension "
+DESCRIPTION="Type hints support for the Sphinx autodoc extension"
 HOMEPAGE="
 	https://github.com/tox-dev/sphinx-autodoc-typehints/
 	https://pypi.org/project/sphinx-autodoc-typehints/
