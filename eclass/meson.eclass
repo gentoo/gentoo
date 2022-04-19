@@ -329,6 +329,10 @@ meson_src_configure() {
 		# bug #839549), but in any case, we don't want to bother attempting
 		# this.
 		-Db_pch=false
+
+		# It's Gentoo policy to not have builds die on blanket -Werror, as it's
+		# an upstream development matter. bug #754279.
+		-Dwerror=false
 	)
 
 	if [[ -n ${EMESON_BUILDTYPE} ]]; then
