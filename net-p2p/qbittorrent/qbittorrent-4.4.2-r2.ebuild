@@ -100,7 +100,7 @@ src_install() {
 
 	if ! use webui ; then
 		# No || die deliberately as it doesn't always exist
-		rm "${ED}/$(systemd_get_systemunitdir)"/qbittorrent-nox*.service
+		rm "${D}/$(systemd_get_systemunitdir)"/qbittorrent-nox*.service
 	fi
 
 	einstalldocs
