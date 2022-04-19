@@ -2,6 +2,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Maintainer: releng@gentoo.org
+
 file_version="2021.0"		# update manually: <year>.<counter>
 
 # people who were here:
