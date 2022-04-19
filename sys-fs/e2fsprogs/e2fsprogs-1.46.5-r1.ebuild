@@ -12,16 +12,22 @@ SRC_URI="https://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v${PV}/$
 LICENSE="GPL-2 BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="cron fuse lto nls static-libs +threads +tools"
+IUSE="cron fuse lto nls static-libs test +threads +tools"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!sys-libs/${PN}-libs
 	cron? ( sys-fs/lvm2[-device-mapper-only(-)] )
 	fuse? ( sys-fs/fuse:0 )
 	nls? ( virtual/libintl )
-	tools? ( >=sys-apps/util-linux-2.16 )"
-DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig
+	tools? ( sys-apps/util-linux )"
+# For testing lib/ext2fs, lib/support/libsupport.a is required, which
+# unconditionally includes '<blkid/blkid.h>' from sys-apps/util-linux.
+DEPEND="
+	${RDEPEND}
+	test? ( sys-apps/util-linux[${MULTILIB_USEDEP}] )"
+BDEPEND="
+	virtual/pkgconfig
 	sys-apps/texinfo
 	nls? ( sys-devel/gettext )"
 
@@ -32,13 +38,9 @@ PATCHES=(
 	"${FILESDIR}"/${P}-parallel-make.patch
 )
 
-pkg_setup() {
-	if use tools ; then
-		MULTILIB_WRAPPED_HEADERS=(
-			/usr/include/ext2fs/ext2_types.h
-		)
-	fi
-}
+MULTILIB_WRAPPED_HEADERS=(
+	/usr/include/ext2fs/ext2_types.h
+)
 
 src_prepare() {
 	default
@@ -101,50 +103,44 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	if ! multilib_is_native_abi || ! use tools ; then
+	if multilib_is_native_abi && use tools ; then
+		emake V=1
+	else
 		emake -C lib/et V=1
 		emake -C lib/ss V=1
-		if use tools ; then
-			emake -C lib/ext2fs V=1
-			emake -C lib/e2p V=1
-		fi
-		return 0
+		emake -C lib/ext2fs V=1
+		emake -C lib/e2p V=1
 	fi
-
-	emake V=1
 }
 
 multilib_src_test() {
-	if multilib_is_native_abi ; then
+	if multilib_is_native_abi && use tools ; then
 		emake V=1 check
 	else
+		# required by lib/ext2fs's check target
+		emake -C lib/support V=1
+
 		# For non-native, there's no binaries to test. Just libraries.
 		emake -C lib/et V=1 check
 		emake -C lib/ss V=1 check
+		emake -C lib/ext2fs V=1 check
+		emake -C lib/e2p V=1 check
 	fi
 }
 
 multilib_src_install() {
-	if ! multilib_is_native_abi || ! use tools ; then
+	if multilib_is_native_abi && use tools ; then
+		emake STRIP=':' V=1 DESTDIR="${D}" install
+	else
 		emake -C lib/et V=1 DESTDIR="${D}" install
 		emake -C lib/ss V=1 DESTDIR="${D}" install
-
-		if use tools ; then
-			emake -C lib/ext2fs V=1 DESTDIR="${D}" install
-			emake -C lib/e2p V=1 DESTDIR="${D}" install
-		fi
-	else
-		emake \
-			STRIP=: \
-			DESTDIR="${D}" \
-			install
-
-		# Move shared libraries to /lib/, install static libraries to
-		# /usr/lib/, and install linker scripts to /usr/lib/.
-		gen_usr_ldscript -a e2p ext2fs
+		emake -C lib/ext2fs V=1 DESTDIR="${D}" install
+		emake -C lib/e2p V=1 DESTDIR="${D}" install
 	fi
 
-	gen_usr_ldscript -a com_err ss $(usex kernel_linux '' 'uuid blkid')
+	# Move shared libraries to /lib/, install static libraries to
+	# /usr/lib/, and install linker scripts to /usr/lib/.
+	gen_usr_ldscript -a com_err ss ext2fs e2p
 
 	# configure doesn't have an option to disable static libs :/
 	if ! use static-libs ; then
