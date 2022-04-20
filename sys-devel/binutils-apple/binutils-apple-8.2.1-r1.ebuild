@@ -335,7 +335,7 @@ install_cctools() {
 }
 
 src_test() {
-	if ! [ "${EPREFIX}"/usr/bin/clang ] ; then
+	if ! [[ -x "${EPREFIX}"/usr/bin/clang ]] ; then
 		einfo "Test suite only works properly with clang - please install"
 		return
 	fi
