@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -s390
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-04-20)
+# Not keyworded
+emacs
+
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
 # sys-libs/llvm-libunwind not supported on S390.
 llvm-libunwind
