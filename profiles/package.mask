@@ -274,7 +274,6 @@ app-crypt/seahorse-sharing
 # Bug #786093, removal on 2022-04-20.
 dev-java/freehep-graphicsbase
 dev-java/freehep-io
-dev-java/glassfish-interceptor-api
 
 # David Seifert <soap@gentoo.org> (2022-03-20)
 # Mask gcc-8 branch (ended upstream support). Please switch
