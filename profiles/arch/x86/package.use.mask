@@ -1,10 +1,6 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Maciej Barć <xgqt@gentoo.org> (2022-04-20)
-# Tests require app-emacs/buttercup which is unkeyworded on x86.
-app-emacs/fsharp-mode test
-
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
 media-video/ffmpeg vmaf
