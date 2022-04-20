@@ -8,14 +8,12 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 optfeature
 
-MY_P=${P,,}
 DESCRIPTION="Messaging API for RPC and notifications over different messaging transports"
 HOMEPAGE="
 	https://opendev.org/openstack/pyeclib/
 	https://pypi.org/project/pyeclib/
 "
-SRC_URI="mirror://pypi/${MY_P::1}/${PN,,}/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
