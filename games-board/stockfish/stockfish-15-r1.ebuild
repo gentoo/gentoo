@@ -26,6 +26,9 @@ S="${WORKDIR}/Stockfish-sf_${PV}/src"
 src_prepare() {
 	default
 
+	# remove config sanity check that doesn't like our COMPILER settings
+	sed -i -e 's/ config-sanity//g' Makefile || die
+
 	cp "${DISTDIR}"/${P}-${NNUE_FILE} ${NNUE_FILE} || die "copying the nnue file failed"
 
 	# prevent pre-stripping
@@ -56,12 +59,10 @@ src_compile() {
 	use ppc && my_arch=ppc
 	use ppc64 && my_arch=ppc64
 
-	# Skip the "build" target and use "all" instead to avoid the config
-	# sanity check (which would throw a fit about our compiler). There's
-	# a nice hack in the Makefile that overrides the value of CXX with
+	# There's a nice hack in the Makefile that overrides the value of CXX with
 	# COMPILER to support Travis CI and we abuse it to make sure that we
 	# build with our compiler of choice.
-	emake all ARCH="${my_arch}" \
+	emake profile-build ARCH="${my_arch}" \
 		COMP="$(tc-getCXX)" \
 		COMPILER="$(tc-getCXX)" \
 		debug=$(usex debug "yes" "no") \
