@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8,9,10} )
 PYTHON_REQ_USE="ncurses,readline"
 
-FIRMWARE_ABI_VERSION="6.2.0"
+FIRMWARE_ABI_VERSION="7.0.0"
 
 inherit linux-info toolchain-funcs python-r1 udev fcaps readme.gentoo-r1 \
 		pax-utils xdg-utils
@@ -149,7 +149,7 @@ SOFTMMU_TOOLS_DEPEND="
 	capstone? ( dev-libs/capstone:= )
 	caps? ( sys-libs/libcap-ng[static-libs(+)] )
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
-	fdt? ( >=sys-apps/dtc-1.5.0[static-libs(+)] )
+	fdt? ( >=sys-apps/dtc-1.5.1[static-libs(+)] )
 	fuse? ( >=sys-fs/fuse-3.1:3[static-libs(+)] )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.0[static-libs(+)] )
 	gnutls? (
