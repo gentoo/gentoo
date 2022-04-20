@@ -273,7 +273,6 @@ app-crypt/seahorse-sharing
 # Unmaintained, EAPI 5, no revdeps in tree.
 # Bug #786093, removal on 2022-04-20.
 dev-java/freehep-graphicsbase
-dev-java/freehep-io
 
 # David Seifert <soap@gentoo.org> (2022-03-20)
 # Mask gcc-8 branch (ended upstream support). Please switch
