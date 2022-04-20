@@ -25,7 +25,10 @@ RDEPEND="
 "
 BDEPEND="
 	${RDEPEND}
-	test? ( app-emacs/el-mock )
+	test? (
+		app-emacs/el-mock
+		app-emacs/ert-runner
+	)
 "
 
 DOCS=( README.markdown )
@@ -47,15 +50,7 @@ src_compile() {
 }
 
 src_test() {
-	local i
-	for i in test/ecukes-*-test.el ; do
-		ebegin "Running tests from ${i}"
-		${EMACS} ${EMACSFLAGS} -L . -L test \
-				 --eval "(require 'cl)" \
-				 -l test/test-helper.el -l ${i} -l test/ecukes-test.el \
-				 -f ert-run-tests-batch-and-exit
-		eend $? || die "tests failed, last ran tests from ${i}"
-	done
+	ert-runner --reporter ert+duration --script || die
 }
 
 src_install() {
