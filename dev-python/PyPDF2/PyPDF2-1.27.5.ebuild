@@ -21,19 +21,9 @@ SRC_URI="
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc64 x86"
-IUSE="examples"
 
 BDEPEND="
 	dev-python/pillow[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
-
-src_install() {
-	if use examples; then
-		docinto examples
-		dodoc -r Sample_Code/.
-		docompress -x /usr/share/doc/${PF}/examples
-	fi
-	distutils-r1_src_install
-}
