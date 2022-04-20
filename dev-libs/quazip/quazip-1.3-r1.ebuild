@@ -10,7 +10,8 @@ HOMEPAGE="https://stachenov.github.io/quazip/"
 SRC_URI="https://github.com/stachenov/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1-with-linking-exception"
-SLOT="0/1"
+# SONAME of libquazip1-qt5.so, check QUAZIP_LIB_SOVERSION in CMakeLists.txt
+SLOT="0/1.3"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
@@ -34,6 +35,7 @@ PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
 
 src_configure() {
 	local mycmakeargs=(
+		-DQUAZIP_QT_MAJOR_VERSION=5
 		-DBUILD_TESTING=$(usex test)
 	)
 
