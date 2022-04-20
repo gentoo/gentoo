@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-04-20)
+# Needs Ruby (dev-ruby/asciidoctor)
+dev-util/ccache doc
+
+# Sam James <sam@gentoo.org> (2022-04-20)
 # Requires dev-python/networkx.
 app-portage/nattka depgraph-order
 
