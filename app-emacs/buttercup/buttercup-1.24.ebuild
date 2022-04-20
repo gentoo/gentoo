@@ -14,7 +14,7 @@ S="${WORKDIR}"/emacs-buttercup-${PV}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 # https://github.com/jorgenschaefer/emacs-buttercup/pull/210
 PATCHES=( "${FILESDIR}"/${PN}-1.24-properties-equal.patch )
