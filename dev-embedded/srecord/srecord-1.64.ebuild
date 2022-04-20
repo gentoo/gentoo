@@ -19,6 +19,7 @@ RDEPEND="dev-libs/libgcrypt:0"
 DEPEND="${RDEPEND}
 	dev-libs/boost
 	sys-apps/groff
+	app-text/ghostscript-gpl
 	test? ( app-arch/sharutils )"
 
 PATCHES=( "${FILESDIR}"/${PN}-1.57-libtool.patch )
