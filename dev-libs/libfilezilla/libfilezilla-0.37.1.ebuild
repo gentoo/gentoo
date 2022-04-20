@@ -23,6 +23,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-util/cppunit )"
 
+PATCHES=( "${FILESDIR}"/${PN}-0.37.1-pthread.patch )
+
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		if ! test-flag-CXX -std=c++14; then
