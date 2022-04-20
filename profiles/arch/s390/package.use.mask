@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-04-20)
+# sys-apps/hwloc is not keyworded on s390
+sys-process/htop hwloc
+
+# Sam James <sam@gentoo.org> (2022-04-20)
 # Needs Ruby (dev-ruby/asciidoctor)
 dev-util/ccache doc
 
