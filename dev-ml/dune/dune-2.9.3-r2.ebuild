@@ -30,6 +30,8 @@ DEPEND="
 "
 
 QA_FLAGS_IGNORED="usr/bin/dune"
+
+BYTECOMPFLAGS="-L ${S}/editor-integration/emacs"
 SITEFILE="50${PN}-gentoo.el"
 
 src_configure() {
