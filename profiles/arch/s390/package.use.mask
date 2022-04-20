@@ -43,7 +43,7 @@ dev-vcs/subversion ruby
 dev-python/cssselect doc
 # not really interested in supporting alternative
 # VCS for overlays yet.
-app-portage/layman darcs mercurial
+app-portage/layman darcs mercurial subversion
 dev-python/setuptools_scm test
 # no lua support for vim
 app-editors/vim lua
