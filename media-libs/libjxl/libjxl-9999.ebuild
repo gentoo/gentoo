@@ -13,7 +13,7 @@ EGIT_SUBMODULES=(third_party/skcms)
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="examples gdk-pixbuf gimp210 openexr"
+IUSE="gdk-pixbuf gimp210 openexr"
 
 DEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
 	dev-cpp/gflags:=[${MULTILIB_USEDEP}]
@@ -50,12 +50,12 @@ multilib_src_configure() {
 		-DJPEGXL_ENABLE_MANPAGES=OFF
 		-DJPEGXL_ENABLE_JNI=OFF
 		-DJPEGXL_ENABLE_TCMALLOC=OFF
+		-DJPEGXL_ENABLE_EXAMPLES=OFF
 	)
 
 	if multilib_is_native_abi; then
 		mycmakeargs+=(
 			-DJPEGXL_ENABLE_TOOLS=ON
-			-DJPEGXL_ENABLE_EXAMPLES=$(usex examples)
 			-DJPEGXL_ENABLE_OPENEXR=$(usex openexr)
 			-DJPEGXL_ENABLE_PLUGINS=ON
 			-DJPEGXL_ENABLE_PLUGIN_GDKPIXBUF=$(usex gdk-pixbuf)
@@ -65,18 +65,10 @@ multilib_src_configure() {
 	else
 		mycmakeargs+=(
 			-DJPEGXL_ENABLE_TOOLS=OFF
-			-DJPEGXL_ENABLE_EXAMPLES=OFF
 			-DJPEGXL_ENABLE_OPENEXR=OFF
 			-DJPEGXL_ENABLE_PLUGINS=OFF
 		)
 	fi
 
 	cmake_src_configure
-}
-
-multilib_src_install() {
-	cmake_src_install
-	if use examples && multilib_is_native_abi; then
-		dobin "${BUILD_DIR}/jxlinfo"
-	fi
 }
