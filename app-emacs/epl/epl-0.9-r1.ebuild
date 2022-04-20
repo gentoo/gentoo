@@ -23,5 +23,5 @@ DOCS=( README.md )
 SITEFILE="50epl-gentoo.el"
 
 src_test() {
-	ert-runner || die
+	ert-runner --reporter ert+duration --script || die
 }
