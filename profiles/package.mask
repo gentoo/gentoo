@@ -281,12 +281,6 @@ dev-java/java-apicheck
 dev-java/jboss-marshalling-river
 dev-java/jboss-marshalling-serial
 
-# David Seifert <soap@gentoo.org> (2022-03-21)
-# EAPI 5, last release 15 years ago, QA permission issues, no other
-# distro packages this.
-# Bug #553404, #835364, removal on 2022-04-20.
-media-video/mplayer-sh
-
 # David Seifert <soap@gentoo.org> (2022-03-20)
 # Mask gcc-8 branch (ended upstream support). Please switch
 # to a fresher gcc branch.
