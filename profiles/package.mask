@@ -279,7 +279,6 @@ dev-java/gnu-classpath
 dev-java/invokebinder
 dev-java/java-apicheck
 dev-java/jboss-marshalling-river
-dev-java/jboss-marshalling-serial
 
 # David Seifert <soap@gentoo.org> (2022-03-20)
 # Mask gcc-8 branch (ended upstream support). Please switch
