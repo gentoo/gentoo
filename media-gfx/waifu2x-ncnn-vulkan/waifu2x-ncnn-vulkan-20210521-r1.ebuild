@@ -13,9 +13,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-# Pin dev-libs/ncnn near bundled copy until more stable.
 RDEPEND="
-	~dev-libs/ncnn-20210525[vulkan]
+	dev-libs/ncnn:=[vulkan]
 	dev-util/glslang
 	media-libs/libwebp:=
 	media-libs/vulkan-loader"
