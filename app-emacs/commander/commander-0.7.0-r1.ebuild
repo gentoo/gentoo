@@ -37,5 +37,5 @@ SITEFILE="50${PN}-gentoo.el"
 
 src_test() {
 	ert-runner || die
-	ecukes --script features --debug || die
+	ecukes --debug --reporter spec --script	features || die
 }
