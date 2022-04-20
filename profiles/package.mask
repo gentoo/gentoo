@@ -276,7 +276,6 @@ dev-java/freehep-graphicsbase
 dev-java/freehep-io
 dev-java/glassfish-interceptor-api
 dev-java/gnu-classpath
-dev-java/invokebinder
 
 # David Seifert <soap@gentoo.org> (2022-03-20)
 # Mask gcc-8 branch (ended upstream support). Please switch
