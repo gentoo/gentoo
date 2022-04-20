@@ -22,6 +22,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	dev-python/lazr-delegates[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]
+	!dev-python/namespace-lazr
 "
 
 distutils_enable_tests pytest
