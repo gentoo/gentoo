@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE='threads(+)'
 DISTUTILS_USE_SETUPTOOLS=no
 
@@ -13,9 +13,8 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/NTPsec/ntpsec.git"
 else
-	SRC_URI="ftp://ftp.ntpsec.org/pub/releases/${PN}-${PV}.tar.gz"
-	RESTRICT="mirror"
-	KEYWORDS="amd64 arm arm64 ~riscv ~x86"
+	SRC_URI="ftp://ftp.ntpsec.org/pub/releases/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 DESCRIPTION="The NTP reference implementation, refactored"
@@ -24,7 +23,7 @@ HOMEPAGE="https://www.ntpsec.org/"
 NTPSEC_REFCLOCK=(
 	oncore trimble truetime gpsd jjy generic spectracom
 	shm pps hpgps zyfer arbiter nmea modem local
-	)
+)
 
 IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
 
