@@ -27,6 +27,7 @@ BDEPEND="
 	test? (
 		app-emacs/ecukes
 		app-emacs/el-mock
+		app-emacs/ert-runner
 		app-emacs/espuds
 	)
 "
@@ -35,11 +36,6 @@ DOCS=( README.md )
 SITEFILE="50${PN}-gentoo.el"
 
 src_test() {
-	${EMACS} ${EMACSFLAGS} -L . -L test --eval "(require 'f)" \
-			 -l ${PN}-command-test.el -l ${PN}-config-test.el \
-			 -l ${PN}-init.el -l ${PN}-option-test.el -l ${PN}-test.el \
-			 -l ${PN}-usage-test.el -l ert-loader.el -l test-helper.el \
-			 -f ert-run-tests-batch-and-exit || die "tests failed"
-
+	ert-runner || die
 	ecukes --script features --debug || die
 }
