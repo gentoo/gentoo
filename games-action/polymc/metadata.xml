@@ -23,4 +23,7 @@
     <remote-id type="github">PolyMC/PolyMC</remote-id>
   </upstream>
   <longdescription>PolyMC is a multi-instance Minecraft launcher focused on user freedom, redistributability, and simplicity.</longdescription>
+  <use>
+    <flag name="lto">Enable link-time optimization</flag>
+  </use>
 </pkgmetadata>
