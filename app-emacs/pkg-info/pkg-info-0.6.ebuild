@@ -14,7 +14,7 @@ SRC_URI="https://github.com/emacsorphanage/pkg-info/archive/refs/tags/${PV}.tar.
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-RESTRICT="test" # test requires cask and ert-runner which are not packaged
+RESTRICT="test"  # Tests fail
 
 RDEPEND=">=app-emacs/epl-0.8"
 
