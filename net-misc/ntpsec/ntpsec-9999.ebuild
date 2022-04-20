@@ -33,28 +33,24 @@ IUSE="${IUSE_NTPSEC_REFCLOCK} debug doc early gdb heat libbsd nist ntpviz samba 
 REQUIRED_USE="${PYTHON_REQUIRED_USE} nist? ( rclock_local )"
 
 # net-misc/pps-tools oncore,pps
-CDEPEND="${PYTHON_DEPS}
-	sys-libs/libcap
+DEPEND="${PYTHON_DEPS}
+	dev-libs/openssl:=
 	dev-python/psutil[${PYTHON_USEDEP}]
+	sys-libs/libcap
 	libbsd? ( dev-libs/libbsd:0= )
-	dev-libs/openssl:0=
 	seccomp? ( sys-libs/libseccomp )
-"
-RDEPEND="${CDEPEND}
-	ntpviz? ( sci-visualization/gnuplot media-fonts/liberation-fonts )
+	rclock_oncore? ( net-misc/pps-tools )
+	rclock_pps? ( net-misc/pps-tools )"
+RDEPEND="${DEPEND}
 	!net-misc/ntp
 	!net-misc/openntpd
 	acct-group/ntp
 	acct-user/ntp
-"
-DEPEND="${CDEPEND}
-	>=app-text/asciidoc-8.6.8
+	ntpviz? ( sci-visualization/gnuplot media-fonts/liberation-fonts )"
+BDEPEND=">=app-text/asciidoc-8.6.8
 	dev-libs/libxslt
 	app-text/docbook-xsl-stylesheets
-	sys-devel/bison
-	rclock_oncore? ( net-misc/pps-tools )
-	rclock_pps? ( net-misc/pps-tools )
-"
+	sys-devel/bison"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.9-remove-asciidoctor-from-config.patch"
