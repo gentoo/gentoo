@@ -13,12 +13,10 @@ if [[ ${PV} == 9999 ]]; then
 
 	EGIT_REPO_URI="
 		https://github.com/PolyMC/PolyMC
-		https://github.com/MultiMC/libnbtplusplus
-		https://github.com/stachenov/quazip
+		https://github.com/PolyMC/libnbtplusplus
 	"
 
-	# Include all submodules
-	EGIT_SUBMODULES=( '*' )
+	EGIT_SUBMODULES=( 'depends/libnbtplusplus' )
 else
 	MY_PN="PolyMC"
 
@@ -42,7 +40,10 @@ LICENSE="Apache-2.0 Boost-1.0 BSD BSD-2 GPL-2+ GPL-3 LGPL-3 LGPL-2.1-with-linkin
 
 SLOT="0"
 
-IUSE="debug"
+IUSE="debug lto"
+REQUIRED_USE="
+	lto? ( !debug )
+"
 
 MIN_QT="5.6.0"
 
@@ -58,6 +59,7 @@ QT_DEPS="
 
 DEPEND="
 	${QT_DEPS}
+	>=dev-libs/quazip-1.3
 	media-libs/libglvnd
 	sys-libs/zlib
 	>=virtual/jdk-1.8.0:*
@@ -77,21 +79,22 @@ src_prepare() {
 }
 
 src_configure(){
-	if use debug; then
-		CMAKE_BUILD_TYPE=Debug
-	else
-		# Prepare for LTO in 1.2.0 (?)
-		# See https://github.com/PolyMC/PolyMC/pull/333
-		CMAKE_BUILD_TYPE=Release
-	fi
-
 	local mycmakeargs=(
-		# Do a system install
-		-DLauncher_PORTABLE=0
 		-DCMAKE_INSTALL_PREFIX="/usr"
 		# Resulting binary is named polymc
 		-DLauncher_APP_BINARY_NAME="${PN}"
+
+		-DENABLE_LTO=$(usex lto)
+
+		# Needed by libraries/iconfix
+		-DBUILD_SHARED_LIBS=0
 	)
+
+	if use debug; then
+		CMAKE_BUILD_TYPE=Debug
+	else
+		CMAKE_BUILD_TYPE=Release
+	fi
 
 	cmake_src_configure
 }
