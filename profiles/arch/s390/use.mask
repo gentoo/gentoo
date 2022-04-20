@@ -5,6 +5,10 @@
 -s390
 
 # Sam James <sam@gentoo.org> (2022-04-20)
+# dev-vcs/subversion is not keyworded here
+subversion
+
+# Sam James <sam@gentoo.org> (2022-04-20)
 # app-crypt/tpm2-tss is not keyworded here
 tpm
 
