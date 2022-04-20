@@ -17,6 +17,9 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+RDEPEND="app-emacs/dash"
+BDEPEND="${RDEPEND}"
+
 DOCS=( README.creole )
 PATCHES=( "${FILESDIR}"/${PN}-fix-requires.patch )
 
