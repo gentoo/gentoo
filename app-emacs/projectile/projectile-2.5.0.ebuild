@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,10 +14,18 @@ SRC_URI="https://github.com/bbatsov/projectile/archive/refs/tags/v${PV}.tar.gz -
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="test"
+RESTRICT="!test? ( test )"
+
+BDEPEND="test? ( app-emacs/buttercup )"
 
 SITEFILE="50projectile-gentoo.el"
 DOCS=( README.md )
-RESTRICT="test" # tests require buttercup which is not packaged
+
+src_test() {
+	mkdir -p "${HOME}"/.emacs.d || die  # For "projectile--directory-p" test
+	buttercup -L . -L test --traceback full || die
+}
 
 src_install() {
 	elisp-make-autoload-file "${S}"/${PN}-autoload.el "${S}"/
