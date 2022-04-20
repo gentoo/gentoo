@@ -293,6 +293,10 @@ src_install() {
 	if busybox_config_enabled ASH && ! use make-symlinks; then
 		dosym -r /bin/busybox /bin/ash
 	fi
+	if busybox_config_enabled CROND; then
+		newconfd "${FILESDIR}"/crond.confd busybox-crond
+		newinitd "${FILESDIR}"/crond.initd busybox-crond
+	fi
 
 	# bundle up the symlink files for use later
 	emake DESTDIR="${ED}" install
