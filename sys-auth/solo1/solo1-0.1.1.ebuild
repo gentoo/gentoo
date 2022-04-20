@@ -8,12 +8,9 @@ DISTUTILS_USE_PEP517=flit
 
 inherit distutils-r1
 
-MY_PN="solo1"
-MY_P="${MY_PN}-${PV}"
-
 DESCRIPTION="CLI and Python library for SoloKeys Solo 1"
 HOMEPAGE="https://github.com/solokeys/solo1-cli"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0 MIT"
 SLOT="0"
@@ -28,14 +25,12 @@ RDEPEND=">=dev-python/click-7.1.0[${PYTHON_USEDEP}]
 	dev-python/pyusb[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]"
 
-S="${WORKDIR}"/${MY_P}
-
 pkg_postinst() {
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
 		local ver
 		for ver in ${REPLACING_VERSIONS}; do
 			if ver_test ${ver} -lt 0.1.1; then
-				ewarn "Note that since version 0.1.1 the CLI executable is called '${MY_PN}' rather than 'solo'"
+				ewarn "Note that since version 0.1.1 the CLI executable is called '${PN}' rather than 'solo'"
 				ewarn "The old name can still be used for now but is deprecated"
 				break
 			fi

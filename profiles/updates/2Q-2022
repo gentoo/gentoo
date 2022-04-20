@@ -1,2 +1,3 @@
 move app-text/kramdown-rfc2629 app-text/kramdown-rfc
 move dev-python/PyECLib dev-python/pyeclib
+move sys-auth/solo-python sys-auth/solo1
