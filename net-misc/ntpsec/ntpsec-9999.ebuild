@@ -122,11 +122,15 @@ src_compile() {
 }
 
 src_test() {
-	debug-print-function ${FUNCNAME} "$@"
 	python_compile() {
 		waf-utils_src_compile check
 	}
 	python_foreach_impl run_in_build_dir python_compile
+}
+
+python_test() {
+	# Silence QA warning as we're running tests via src_test anyway.
+	:;
 }
 
 src_install() {

@@ -131,6 +131,11 @@ src_test() {
 	python_foreach_impl run_in_build_dir python_compile
 }
 
+python_test() {
+	# Silence QA warning as we're running tests via src_test anyway.
+	:;
+}
+
 src_install() {
 	python_install() {
 		waf-utils_src_install --notests
