@@ -52,8 +52,6 @@ RDEPEND="
 	>=virtual/jre-1.8:*
 	${CP_DEPEND}"
 
-DOCS=( README.md )
-
 S="${WORKDIR}/${P}"
 
 JAVA_CLASSPATH_EXTRA="servlet-api-2.5"
