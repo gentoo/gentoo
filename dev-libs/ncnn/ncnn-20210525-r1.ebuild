@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/Tencent/ncnn"
 SRC_URI="https://github.com/Tencent/ncnn/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD ZLIB"
-SLOT="0"
+SLOT="0/${PV}" # currently has unstable ABI that often requires rebuilds
 KEYWORDS="~amd64 ~x86"
 IUSE="tools +vulkan"
 
