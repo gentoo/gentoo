@@ -681,7 +681,7 @@ multilib_src_install() {
 		configfile="${ED}"/etc/openldap/slapd.conf
 
 		# populate with built backends
-		ebegin "populate config with built backends"
+		einfo "populate config with built backends"
 		for x in "${ED}"/usr/$(get_libdir)/openldap/openldap/back_*.so; do
 			einfo "Adding $(basename ${x})"
 			sed -e "/###INSERTDYNAMICMODULESHERE###$/a# moduleload\t$(basename ${x})" -i "${configfile}" || die
@@ -690,7 +690,6 @@ multilib_src_install() {
 		use prefix || fowners root:ldap /etc/openldap/slapd.conf
 		fperms 0640 /etc/openldap/slapd.conf
 		cp "${configfile}" "${configfile}".default || die
-		eend
 
 		# install our own init scripts and systemd unit files
 		einfo "Install init scripts"
