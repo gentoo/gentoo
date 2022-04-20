@@ -74,8 +74,8 @@ src_prepare() {
 	# Provide kernel sources
 	pushd src/VBox/Additions &>/dev/null || die
 	ebegin "Extracting guest kernel module sources"
-	kmk GuestDrivers-src vboxguest-src vboxsf-src vboxvideo-src &>/dev/null || die
-	eend
+	kmk GuestDrivers-src vboxguest-src vboxsf-src vboxvideo-src &>/dev/null
+	eend $? || die
 	popd &>/dev/null || die
 
 	# PaX fixes (see bug #298988)
