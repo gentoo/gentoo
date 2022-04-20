@@ -269,11 +269,6 @@ dev-libs/bareos-fastlzlib
 # Removal on 2022-04-22.
 app-crypt/seahorse-sharing
 
-# David Seifert <soap@gentoo.org> (2022-03-21)
-# Unmaintained, EAPI 5, no revdeps in tree.
-# Bug #786093, removal on 2022-04-20.
-dev-java/freehep-graphicsbase
-
 # David Seifert <soap@gentoo.org> (2022-03-20)
 # Mask gcc-8 branch (ended upstream support). Please switch
 # to a fresher gcc branch.
