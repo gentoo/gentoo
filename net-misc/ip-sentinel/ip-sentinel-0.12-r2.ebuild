@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,10 +40,9 @@ pkg_config() {
 	CHROOT=`sed -n 's/^[[:blank:]]\?CHROOT="\([^"]\+\)"/\1/p' /etc/conf.d/ip-sentinel 2>/dev/null`
 
 	if [ ! -d "${CHROOT:=/chroot/ip-sentinel}" ] ; then
-		ebegin "Setting up the chroot directory"
-			mkdir -m 0755 -p "${CHROOT}/etc"
-			cp -R /etc/ip-sentinel.cfg "${CHROOT}/etc"
-		eend
+		einfo "Setting up the chroot directory"
+		mkdir -m 0755 -p "${CHROOT}/etc" || die
+		cp -R /etc/ip-sentinel.cfg "${CHROOT}/etc" || die
 
 		if [ "`grep '^#[[:blank:]]\?CHROOT' /etc/conf.d/ip-sentinel`" ] ; then
 			sed -e '/^#[[:blank:]]\?CHROOT/s/^#[[:blank:]]\?//' \
