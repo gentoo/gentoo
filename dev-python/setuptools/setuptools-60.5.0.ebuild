@@ -66,7 +66,7 @@ python_test() {
 	local -x SETUPTOOLS_USE_DISTUTILS=stdlib
 
 	# keep in sync with python_gen_cond_dep above!
-	has "${EPYTHON}" python3.{8..10} pypy3 || continue
+	has "${EPYTHON}" python3.{8..10} pypy3 || return
 
 	distutils_install_for_testing
 	local EPYTEST_DESELECT=(
