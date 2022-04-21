@@ -14,7 +14,7 @@ SRC_URI="https://github.com/requests/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="ISC"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm ~riscv x86"
 
 RDEPEND="
 	>=dev-python/requests-2.0.0[${PYTHON_USEDEP}]
