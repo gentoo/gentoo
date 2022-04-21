@@ -20,6 +20,7 @@ DEPEND="
 	x11-libs/gtk+:3
 	net-libs/webkit-gtk
 	app-text/ebook-tools
+	media-libs/freetype
 	djvu? ( app-text/djvu:= )
 "
 src_configure() {
