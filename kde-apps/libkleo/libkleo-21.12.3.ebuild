@@ -36,6 +36,8 @@ DEPEND="${RDEPEND}
 	dev-libs/boost
 "
 
+PATCHES=( "${FILESDIR}/${P}-gcc-12.patch" ) # bug 839921
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package fancyviewer KF5PimTextEdit)
