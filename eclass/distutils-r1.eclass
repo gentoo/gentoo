@@ -98,6 +98,8 @@ esac
 #
 # - flit - flit_core backend
 #
+# - flit_scm - flit_scm backend
+#
 # - hatchling - hatchling backend (from hatch)
 #
 # - jupyter - jupyter_packaging backend
@@ -197,6 +199,10 @@ _distutils_set_globals() {
 			flit)
 				bdep+='
 					>=dev-python/flit_core-3.7.1[${PYTHON_USEDEP}]'
+				;;
+			flit_scm)
+				bdep+='
+					dev-python/flit_scm[${PYTHON_USEDEP}]'
 				;;
 			hatchling)
 				bdep+='
@@ -976,6 +982,9 @@ _distutils-r1_backend_to_key() {
 	case ${backend} in
 		flit_core.buildapi|flit.buildapi)
 			echo flit
+			;;
+		flit_scm:buildapi)
+			echo flit_scm
 			;;
 		hatchling.build)
 			echo hatchling
