@@ -56,20 +56,23 @@ QT_DEPS="
 	>=dev-qt/qtxml-${MIN_QT}:5
 "
 
-DEPEND="
+# Required at both build-time and run-time
+COMMON_DEPENDS="
 	${QT_DEPS}
 	>=dev-libs/quazip-1.3:=
-	media-libs/libglvnd
 	sys-libs/zlib
+"
+
+DEPEND="
+	${COMMON_DEPENDS}
+	media-libs/libglvnd
 	>=virtual/jdk-1.8.0:*
 "
 
 # At run-time we don't depend on JDK, only JRE
 # And we need more than just the GL headers
 RDEPEND="
-	${QT_DEPS}
-	>=dev-libs/quazip-1.3:=
-	sys-libs/zlib
+	${COMMON_DEPENDS}
 	>=virtual/jre-1.8.0:*
 	virtual/opengl
 "
