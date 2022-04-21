@@ -68,10 +68,7 @@ RDEPEND="${DEPEND}
 	net-fs/sshfs
 "
 BDEPEND="
-	|| (
-		>=dev-qt/qtwaylandscanner-${QTMIN}:5
-		<dev-qt/qtwayland-5.15.3:5
-	)
+	>=dev-qt/qtwaylandscanner-${QTMIN}:5
 	dev-util/wayland-scanner
 "
 
