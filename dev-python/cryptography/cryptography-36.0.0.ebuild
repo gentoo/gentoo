@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -78,7 +78,7 @@ DEPEND="${RDEPEND}
 	$(python_gen_cond_dep '
 		>=dev-python/cffi-1.8:=[${PYTHON_USEDEP}]
 	' 'python*')"
-BDEPEND="dev-python/setuptools_rust[${PYTHON_USEDEP}]
+BDEPEND="dev-python/setuptools-rust[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/hypothesis-1.11.4[${PYTHON_USEDEP}]
 		dev-python/iso8601[${PYTHON_USEDEP}]
