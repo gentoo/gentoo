@@ -1,0 +1,63 @@
+diff -urNp octave-6.4.0-orig/configure octave-6.4.0-dwok/configure
+--- octave-6.4.0-orig/configure	2022-04-19 20:45:23.112463584 +0200
++++ octave-6.4.0-dwok/configure	2022-04-19 20:44:19.024774083 +0200
+@@ -77543,9 +77543,6 @@ esac
+ fi
+ 
+     if test -n "$MOC"; then
+-      if test -n "$QTCHOOSER"; then
+-        MOCFLAGS="-qt=$qt_version"
+-      fi
+       QT_TOOLS_AVAILABLE="$QT_TOOLS_AVAILABLE moc"
+     else
+       QT_TOOLS_MISSING="$QT_TOOLS_MISSING moc"
+@@ -77778,9 +77775,6 @@ esac
+ fi
+ 
+     if test -n "$UIC"; then
+-      if test -n "$QTCHOOSER"; then
+-        UICFLAGS="-qt=$qt_version"
+-      fi
+       QT_TOOLS_AVAILABLE="$QT_TOOLS_AVAILABLE uic"
+     else
+       QT_TOOLS_MISSING="$QT_TOOLS_MISSING uic"
+@@ -78013,9 +78007,6 @@ esac
+ fi
+ 
+     if test -n "$RCC"; then
+-      if test -n "$QTCHOOSER"; then
+-        RCCFLAGS="-qt=$qt_version"
+-      fi
+       QT_TOOLS_AVAILABLE="$QT_TOOLS_AVAILABLE rcc"
+     else
+       QT_TOOLS_MISSING="$QT_TOOLS_MISSING rcc"
+@@ -78248,9 +78239,6 @@ esac
+ fi
+ 
+     if test -n "$LRELEASE"; then
+-      if test -n "$QTCHOOSER"; then
+-        LRELEASEFLAGS="-qt=$qt_version"
+-      fi
+       QT_TOOLS_AVAILABLE="$QT_TOOLS_AVAILABLE lrelease"
+     else
+       QT_TOOLS_MISSING="$QT_TOOLS_MISSING lrelease"
+@@ -78483,9 +78471,6 @@ esac
+ fi
+ 
+     if test -n "$QCOLLECTIONGENERATOR"; then
+-      if test -n "$QTCHOOSER"; then
+-        QCOLLECTIONGENERATORFLAGS="-qt=$qt_version"
+-      fi
+       QT_TOOLS_AVAILABLE="$QT_TOOLS_AVAILABLE qcollectiongenerator"
+     else
+       QT_TOOLS_MISSING="$QT_TOOLS_MISSING qcollectiongenerator"
+@@ -78718,9 +78703,6 @@ esac
+ fi
+ 
+     if test -n "$QHELPGENERATOR"; then
+-      if test -n "$QTCHOOSER"; then
+-        QHELPGENERATORFLAGS="-qt=$qt_version"
+-      fi
+       QT_TOOLS_AVAILABLE="$QT_TOOLS_AVAILABLE qhelpgenerator"
+     else
+       QT_TOOLS_MISSING="$QT_TOOLS_MISSING qhelpgenerator"
