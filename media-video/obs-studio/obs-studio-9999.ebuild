@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit cmake lua-single python-single-r1 xdg
 
-OBS_BROWSER_COMMIT="915761778ec1eae99e740ad4bf63b40db3142ee2"
+OBS_BROWSER_COMMIT="b798763ae75b538e405c2d7e2ab3a1edfe59ed0c"
 CEF_DIR="cef_binary_4638_linux64"
 
 if [[ ${PV} == 9999 ]]; then
@@ -46,15 +46,11 @@ DEPEND="
 	dev-libs/glib:2
 	dev-libs/jansson:=
 	dev-qt/qtcore:5
-	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5[wayland?]
-	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtquickcontrols:5
-	dev-qt/qtsql:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
 	media-libs/libglvnd
 	media-libs/x264:=
@@ -63,12 +59,9 @@ DEPEND="
 	sys-apps/dbus
 	sys-apps/pciutils
 	sys-libs/zlib:=
-	virtual/udev
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXfixes
-	x11-libs/libXinerama
-	x11-libs/libXrandr
 	x11-libs/libxcb:=
 	alsa? ( media-libs/alsa-lib )
 	browser? (
@@ -105,9 +98,15 @@ DEPEND="
 		media-libs/fontconfig
 		media-libs/freetype
 	)
-	v4l? ( media-libs/libv4l )
+	v4l? (
+		media-libs/libv4l
+		virtual/udev
+	)
 	vlc? ( media-video/vlc:= )
-	wayland? ( dev-libs/wayland )
+	wayland? (
+		dev-libs/wayland
+		x11-libs/libxkbcommon
+	)
 "
 RDEPEND="${DEPEND}"
 
