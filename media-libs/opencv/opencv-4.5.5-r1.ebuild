@@ -76,7 +76,7 @@ REQUIRED_USE="
 	contribxfeatures2d? ( contrib download )
 	examples? ( contribdnn )
 	java? ( python )
-	opengl? ( || ( gtk3 qt5 ) )
+	opengl? ( qt5 )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	tesseract? ( contrib )
 	?? ( gtk3 qt5 )"
