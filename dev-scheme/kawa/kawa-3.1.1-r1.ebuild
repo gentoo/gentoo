@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ JAVA_PKG_IUSE="source"
 
 inherit autotools java-pkg-2
 
-DESCRIPTION=" Java-based Scheme system & Language Framework"
+DESCRIPTION="Java-based Scheme system & Language Framework"
 HOMEPAGE="https://www.gnu.org/software/kawa/"
 SRC_URI="https://gitlab.com/kashell/${PN^}/-/archive/${PV}/${PN^}-${PV}.tar.gz"
 S="${WORKDIR}/${PN^}-${PV}"
