@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit xdg cmake
 
-DESCRIPTION="apvlv is a PDF/EPUB Viewer and its behaviour like Vim"
+inherit xdg cmake desktop
+
+DESCRIPTION="Alf's PDF/DJVU/EPUB Viewer like Vim"
 HOMEPAGE="https://github.com/naihe2010/apvlv/"
 SRC_URI="https://github.com/naihe2010/apvlv/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -21,7 +22,19 @@ DEPEND="
 	app-text/ebook-tools
 	djvu? ( app-text/djvu:= )
 "
+src_configure() {
+	local mycmakeargs=(
+		-DAPVLV_WITH_DJVU=$(usex djvu)
+		-DAPVLV_ENABLE_DEBUG=$(usex debug)
+		-DAPVLV_WITH_TXT=ON
+	)
+	cmake_src_configure
+}
+src_install() {
+	cmake_src_install
+	newicon -s 32 icons/pdf.png ${PN}.png
+}
 RDEPEND="${DEPEND}"
 BDEPEND="
-virtual/pkgconfig
+	virtual/pkgconfig
 "
