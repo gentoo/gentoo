@@ -78,8 +78,7 @@ SRC_URI="
 # and some are Apache 2.0 or MIT
 LICENSE="Apache-2.0 MIT BSD"
 SLOT="0"
-# See bug #769482, bug #827350
-#KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64"
 
 RDEPEND="
 	>=dev-libs/openssl-1.0.2o-r6:0=
