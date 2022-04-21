@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 RESTRICT="bindist fetch splitdebug"
 
 RDEPEND="
-	>=dev-libs/nwjs-0.62.1
+	>=dev-libs/nwjs-0.63.0
 "
 
 BDEPEND="
