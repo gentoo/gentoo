@@ -32,6 +32,10 @@ PATCHES=( "${FILESDIR}"/${PN}-require-diminish.patch )
 ELISP_TEXINFO="${PN}.texi"
 SITEFILE="50${PN}-gentoo.el"
 
+src_test() {
+	emake BATCH="${EMACS} ${EMACSFLAGS} -L . -l diminish" test
+}
+
 src_install() {
 	rm bind-{chord,key}.el{,c} ${PN}-tests.el || die
 
