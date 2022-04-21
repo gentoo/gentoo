@@ -58,7 +58,7 @@ QT_DEPS="
 
 DEPEND="
 	${QT_DEPS}
-	>=dev-libs/quazip-1.3
+	>=dev-libs/quazip-1.3:=
 	media-libs/libglvnd
 	sys-libs/zlib
 	>=virtual/jdk-1.8.0:*
@@ -68,6 +68,7 @@ DEPEND="
 # And we need more than just the GL headers
 RDEPEND="
 	${QT_DEPS}
+	>=dev-libs/quazip-1.3:=
 	sys-libs/zlib
 	>=virtual/jre-1.8.0:*
 	virtual/opengl
