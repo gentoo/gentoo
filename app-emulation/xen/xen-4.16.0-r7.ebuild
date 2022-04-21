@@ -114,6 +114,24 @@ src_prepare() {
 	default
 }
 
+xen_make() {
+	# Setting clang to either 'y' or 'n' tells Xen's build system
+	# whether or not clang is used.
+	local clang=n
+	if tc-is-clang; then
+		clang=y
+	fi
+
+	# Send raw LDFLAGS so that --as-needed works
+	emake \
+		V=1 \
+		LDFLAGS="$(raw-ldflags)" \
+		HOSTCC="$(tc-getBUILD_CC)" \
+		HOSTCXX="$(tc-getBUILD_CXX)" \
+		clang="${clang}" \
+		"$@"
+}
+
 src_configure() {
 	cd xen || die
 
@@ -131,24 +149,16 @@ EOF
 		echo "CONFIG_XSM=y" >> gentoo-config || die
 	fi
 
-	emake KCONFIG_ALLCONFIG=gentoo-config alldefconfig
-
 	# remove flags
 	unset CFLAGS
-	unset LDFLAGS
-	unset ASFLAGS
 
 	tc-ld-disable-gold # Bug 700374
+
+	xen_make KCONFIG_ALLCONFIG=gentoo-config alldefconfig
 }
 
 src_compile() {
-	# Send raw LDFLAGS so that --as-needed works
-	emake \
-		V=1 \
-		CC="$(tc-getCC)" \
-		LDFLAGS="$(raw-ldflags)" \
-		LD="$(tc-getLD)" \
-		-C xen
+	xen_make -C xen
 }
 
 src_install() {
@@ -157,12 +167,7 @@ src_install() {
 		mkdir -p "${D}"${EFI_MOUNTPOINT}/efi/${EFI_VENDOR} || die
 	fi
 
-	emake \
-		LDFLAGS="$(raw-ldflags)" \
-		LD="$(tc-getLD)" \
-		DESTDIR="${D}" \
-		-C xen \
-		install
+	xen_make DESTDIR="${D}" -C xen install
 
 	# make install likes to throw in some extra EFI bits if it built
 	use efi || rm -rf "${D}/usr/$(get_libdir)/efi"
