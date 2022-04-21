@@ -30,6 +30,7 @@ RDEPEND="
 	dev-libs/libchdr
 	>=dev-libs/libfmt-7.1.3:=
 	dev-libs/libxml2:2
+	dev-libs/libzip:=[zstd]
 	media-libs/alsa-lib
 	media-libs/cubeb
 	media-libs/freetype
@@ -73,8 +74,11 @@ src_prepare() {
 	cmake_src_prepare
 
 	# unbundle, use sed over patch for less chances to break -9999
+	# (zstd is only used by libzip, so can remove entirely)
 	sed -e '/add_subdir.*cubeb/c\find_package(cubeb REQUIRED)' \
 		-e '/add_subdir.*libchdr/c\pkg_check_modules(chdr REQUIRED IMPORTED_TARGET libchdr)' \
+		-e '/add_subdir.*libzip/c\find_package(libzip REQUIRED)' \
+		-e '/add_subdir.*zstd/d' \
 		-e '/compile_options(\(cubeb\|chdr-static\|speex\)/d' \
 		-i cmake/SearchForStuff.cmake || die
 	sed -i 's/chdr-static/PkgConfig::chdr/' pcsx2/CMakeLists.txt || die
@@ -99,7 +103,8 @@ src_configure() {
 		-DDISABLE_SETCAP=TRUE
 		-DENABLE_TESTS=$(usex test)
 		-DPACKAGE_MODE=TRUE
-		-DSDL2_API=TRUE # uses SDL2 either way but option is needed if wxGTK[sdl]
+		-DQT_BUILD=FALSE # TODO
+		-DSDL2_API=TRUE # conditionally needed if wxGTK[sdl], cmake/ApiValidation.cmake
 		-DUSE_SYSTEM_YAML=TRUE
 		-DUSE_VTUNE=FALSE
 		-DXDG_STD=TRUE
