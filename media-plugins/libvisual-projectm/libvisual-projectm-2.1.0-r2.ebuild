@@ -13,7 +13,7 @@ S="${WORKDIR}"/${MY_P}/src/projectM-libvisual/
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND=">=media-libs/libprojectm-3.1.12:0=
 	media-libs/libsdl
