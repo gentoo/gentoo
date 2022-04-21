@@ -119,13 +119,16 @@ src_configure() {
 
 	touch gentoo-config || die
 	if use arm; then
-	   echo "CONFIG_EARLY_PRINTK=sun7i" > gentoo-config || die
+	   echo "CONFIG_EARLY_PRINTK=sun7i" >> gentoo-config || die
 	fi
 	if use debug; then
-		echo "CONFIG_DEBUG=y" > gentoo-config || die
+		cat <<-EOF >> gentoo-config || die
+		CONFIG_DEBUG=y
+		CONFIG_CRASH_DEBUG=y
+EOF
 	fi
 	if use flask; then
-		echo "CONFIG_XSM=y" > gentoo-config || die
+		echo "CONFIG_XSM=y" >> gentoo-config || die
 	fi
 
 	emake KCONFIG_ALLCONFIG=gentoo-config alldefconfig
