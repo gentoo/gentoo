@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit qmake-utils virtualx xdg
 
 DESCRIPTION="Program for displaying classified advertisement items"
@@ -31,7 +32,7 @@ RDEPEND="app-arch/bzip2
 	dev-qt/qtwidgets:5
 	media-libs/opus
 	net-libs/libnatpmp
-	net-libs/miniupnpc
+	net-libs/miniupnpc:=
 	sys-apps/file
 	sys-libs/zlib
 	virtual/libintl"
