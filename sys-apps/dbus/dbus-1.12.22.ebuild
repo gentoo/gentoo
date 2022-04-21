@@ -208,7 +208,7 @@ multilib_src_compile() {
 
 src_test() {
 	# https://bugs.gentoo.org/836560
-	addwrite /proc/self/oom_score_adj
+	addwrite /proc/self
 
 	DBUS_VERBOSE=1 virtx emake -j1 -C "${TBD}" check
 }
