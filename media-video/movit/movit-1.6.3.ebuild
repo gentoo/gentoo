@@ -21,11 +21,14 @@ RESTRICT="test"
 RDEPEND="media-libs/mesa[X(+)]
 	>=dev-cpp/eigen-3.2.0:3
 	media-libs/libepoxy[egl]
-	>=sci-libs/fftw-3
-	media-libs/libsdl2
-	"
+	>=sci-libs/fftw-3:=
+	media-libs/libsdl2"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.3-gcc12.patch
+)
 
 src_compile() {
 	GTEST_DIR="${WORKDIR}/googletest-release-${GTEST_PV}/googletest" emake
