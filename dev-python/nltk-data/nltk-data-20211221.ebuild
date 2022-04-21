@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ HOMEPAGE="https://www.nltk.org/nltk_data/"
 # TODO: create a USE flag for free-ish subset
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="extra"
 RESTRICT="bindist mirror"
 
