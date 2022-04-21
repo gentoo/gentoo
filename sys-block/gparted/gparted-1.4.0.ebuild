@@ -35,6 +35,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.3.1-musl-nullptr.patch
+)
+
 src_configure() {
 	gnome2_src_configure \
 		--enable-doc \
