@@ -18,8 +18,7 @@ S="${WORKDIR}/${LIBNL_P}"
 
 LICENSE="LGPL-2.1 utils? ( GPL-2 )"
 SLOT="3"
-# Test failure: https://github.com/thom311/libnl/issues/308
-#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="+debug python test utils"
 RESTRICT="!test? ( test )"
 
@@ -31,8 +30,6 @@ BDEPEND="${RDEPEND}
 	python? ( dev-lang/swig )
 	test? ( dev-libs/check )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
-
-DOCS=( ChangeLog )
 
 MULTILIB_WRAPPED_HEADERS=(
 	# we do not install CLI stuff for non-native
@@ -52,6 +49,7 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${FILESDIR}"/${P}-static-tests.patch
+	"${FILESDIR}"/${P}-test-fixes-sandbox.patch
 )
 
 src_prepare() {
@@ -101,6 +99,8 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
+	DOCS=( ChangeLog )
+
 	einstalldocs
 
 	find "${ED}" -name '*.la' -delete || die
