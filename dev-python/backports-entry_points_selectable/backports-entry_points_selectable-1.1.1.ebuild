@@ -27,3 +27,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 distutils_enable_tests pytest
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
+
+python_compile() {
+	distutils-r1_python_compile
+	rm "${BUILD_DIR}/install$(python_get_sitedir)"/backports/__init__.py || die
+}
