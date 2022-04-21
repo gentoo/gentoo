@@ -16,7 +16,7 @@ REQUIRED_USE="
 	gtk-doc? ( introspection )
 	vala? ( introspection )
 "
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="
 	>=dev-libs/glib-2.70:2
