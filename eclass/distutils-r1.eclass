@@ -1171,7 +1171,7 @@ distutils-r1_python_compile() {
 	# call setup.py build when using setuptools (either via PEP517
 	# or in legacy mode)
 	if [[ ${DISTUTILS_USE_PEP517:-setuptools} == setuptools ]]; then
-		if [[ ${GPEP517_TESTING} ]]; then
+		if [[ ${GPEP517_TESTING} && ${DISTUTILS_USE_PEP517} ]]; then
 			if [[ -d build ]]; then
 				eqawarn "A 'build' directory exists already.  Artifacts from this directory may"
 				eqawarn "be picked up by setuptools when building for another interpreter."
