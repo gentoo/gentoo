@@ -240,12 +240,12 @@ _python_impl_matches() {
 				fi
 				return 0
 				;;
-			3.8)
-				# the only unmasked pypy3 version is pypy3.8 atm
+			3.9)
+				# the only unmasked pypy3 version is pypy3.9 atm
 				[[ ${impl} == python${pattern/./_} || ${impl} == pypy3 ]] &&
 					return 0
 				;;
-			3.9|3.10)
+			3.8|3.10)
 				[[ ${impl} == python${pattern/./_} ]] && return 0
 				;;
 			*)
