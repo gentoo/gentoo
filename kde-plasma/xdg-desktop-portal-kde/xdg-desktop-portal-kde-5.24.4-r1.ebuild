@@ -23,18 +23,20 @@ COMMON_DEPEND="
 	>=dev-qt/qtprintsupport-${QTMIN}:5[cups]
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
+	>=kde-frameworks/kconfig-${KFMIN}:5
 	>=kde-frameworks/kdeclarative-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kio-${KFMIN}:5
 	>=kde-frameworks/kirigami-${KFMIN}:5
 	>=kde-frameworks/knotifications-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
+	>=kde-frameworks/kwindowsystem-${KFMIN}:5
+	>=kde-frameworks/kwayland-${KFMIN}:5
 	>=kde-frameworks/plasma-${KFMIN}:5
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/plasma-wayland-protocols-1.1.1
 	>=dev-qt/qtconcurrent-${QTMIN}:5
-	>=kde-frameworks/kwayland-${KFMIN}:5
 "
 RDEPEND="${COMMON_DEPEND}
 	sys-apps/xdg-desktop-portal
