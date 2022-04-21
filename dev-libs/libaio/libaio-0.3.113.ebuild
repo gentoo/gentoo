@@ -13,6 +13,7 @@ if [[ ${PV} == 9999 ]] ; then
 else
 	SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.gz"
 	# Has test failure on abi_x86_32 which needs investigating
+	# https://marc.info/?l=linux-aio&m=164996470108464&w=2
 	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 LICENSE="LGPL-2"
