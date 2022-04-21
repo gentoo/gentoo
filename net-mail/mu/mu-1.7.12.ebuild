@@ -26,7 +26,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-1.7.12-optional-mu4e.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.7.12-optional-mu4e.patch
+	"${FILESDIR}"/${PN}-1.7.12-gcc12.patch
+)
 
 SITEFILE="70mu-gentoo-autoload.el"
 
