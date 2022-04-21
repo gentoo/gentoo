@@ -73,6 +73,8 @@ RDEPEND="
 	virtual/opengl
 "
 
+PATCHES=( "${FILESDIR}/${PN}-iconfix.patch" )
+
 src_prepare() {
 	cmake_src_prepare
 }
@@ -84,9 +86,6 @@ src_configure(){
 		-DLauncher_APP_BINARY_NAME="${PN}"
 
 		-DENABLE_LTO=$(usex lto)
-
-		# Needed by libraries/iconfix
-		-DBUILD_SHARED_LIBS=0
 	)
 
 	if use debug; then
