@@ -223,6 +223,15 @@ test_is "_python_impl_matches python3_6 python*" 0
 test_is "_python_impl_matches python3_7 python*" 0
 test_is "_python_impl_matches pypy3 python*" 1
 set +f
+test_is "_python_impl_matches python3_8 3.8" 0
+test_is "_python_impl_matches python3_8 3.9" 1
+test_is "_python_impl_matches python3_8 3.10" 1
+test_is "_python_impl_matches python3_9 3.8" 1
+test_is "_python_impl_matches python3_9 3.9" 0
+test_is "_python_impl_matches python3_9 3.10" 1
+test_is "_python_impl_matches pypy3 3.8" 1
+test_is "_python_impl_matches pypy3 3.9" 0
+test_is "_python_impl_matches pypy3 3.10" 1
 
 rm "${tmpfile}"
 
