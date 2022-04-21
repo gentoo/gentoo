@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+        after logger
+}
+
+command="/usr/bin/gridcoinresearchd-staging -testnet"
+command_background="yes"
+command_user="gridcoin"
+description="Gridcoin Wallet Daemon (Staging)"
+pidfile="/run/gridcoin-staging.pid"

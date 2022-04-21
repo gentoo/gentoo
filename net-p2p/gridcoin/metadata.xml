@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>Matt.Jolly@footclan.ninja</email>
+		<name>Matt Jolly</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Gridcoin crypto-currency wallet that rewards BOINC computation
+	https://gridcoin.us/
+	https://github.com/gridcoin/Gridcoin-Research
+	</longdescription>
+	<use>
+		<flag name="boinc">
+			Enable research wallet functions for BOINC mining
+		</flag>
+		<flag name="daemon">
+			Build research wallet daemon
+		</flag>
+		<flag name="dbus">
+			Enable desktop notifications via DBus
+		</flag>
+		<flag name="gui">
+			Build the Qt GUI
+		</flag>
+		<flag name="qrcode">
+			Enable generation of QR Codes for receiving payments with media-gfx/qrencode
+		</flag>
+		<flag name="upnp">
+			Enable Universal Plug and Play
+		</flag>
+		<flag name="hardened">
+			Apply hardening to generated binaries
+		</flag>
+		<flag name="pic">
+			Disable optimized assembly code that is not PIC friendly
+		</flag>
+		<flag name="bench">
+			Compile benchmarks
+		</flag>
+		<flag name="utils">
+			Build bitcoin-cli and bitcoin-tx utilities
+		</flag>
+		<flag name="libraries">
+			Build extra libraries
+		</flag>
+		<flag name="debug">
+			Use debug compiler flags and macros
+		</flag>
+	</use>
+</pkgmetadata>

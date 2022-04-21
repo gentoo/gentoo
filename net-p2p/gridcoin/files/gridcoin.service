@@ -1,0 +1,12 @@
+[Unit]
+Description=Gridcoin Wallet Daemon
+After=network.target
+
+[Service]
+Type=forking
+User=gridcoin
+Group=gridcoin
+ExecStart=/usr/bin/gridcoinresearchd
+
+[Install]
+WantedBy=multi-user.target

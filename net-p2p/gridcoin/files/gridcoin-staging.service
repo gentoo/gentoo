@@ -1,0 +1,12 @@
+[Unit]
+Description=Gridcoin Wallet Daemon (Staging)
+After=network.target
+
+[Service]
+Type=forking
+User=gridcoin
+Group=gridcoin
+ExecStart=/usr/bin/gridcoinresearchd-staging -testnet
+
+[Install]
+WantedBy=multi-user.target
