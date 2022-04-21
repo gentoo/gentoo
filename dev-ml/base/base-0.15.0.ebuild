@@ -5,10 +5,9 @@ EAPI=7
 
 inherit dune
 
-MYP=${PN}-v${PV}
 DESCRIPTION="Standard library for OCaml"
 HOMEPAGE="https://github.com/janestreet/base"
-SRC_URI="https://ocaml.janestreet.com/ocaml-core/v$(ver_cut 1-2)/files/${MYP}.tar.gz"
+SRC_URI="https://github.com/janestreet/base/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
@@ -20,5 +19,3 @@ RDEPEND="
 	dev-ml/dune-configurator:=
 "
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}"/${MYP}
