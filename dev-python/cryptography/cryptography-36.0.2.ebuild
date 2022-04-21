@@ -5,7 +5,7 @@ EAPI=8
 
 CARGO_OPTIONAL=yes
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 CRATES="
