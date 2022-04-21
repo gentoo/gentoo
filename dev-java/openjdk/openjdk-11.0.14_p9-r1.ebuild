@@ -13,6 +13,7 @@ SLOT="${MY_PV%%[.+]*}"
 # variable name format: <UPPERCASE_KEYWORD>_XPAK
 PPC64_XPAK="11.0.13_p8" # big-endian bootstrap tarball
 X86_XPAK="11.0.13_p8"
+RISCV_XPAK="11.0.14_p9"
 
 # Usage: bootstrap_uri <keyword> <version> [extracond]
 # Example: $(bootstrap_uri ppc64 17.0.1_p12 big-endian)
@@ -36,7 +37,9 @@ SRC_URI="
 	!system-bootstrap? (
 		$(bootstrap_uri ppc64 ${PPC64_XPAK} big-endian)
 		$(bootstrap_uri x86 ${X86_XPAK})
+		$(bootstrap_uri riscv ${RISCV_XPAK})
 	)
+	riscv? ( https://dev.gentoo.org/~arthurzam/distfiles/dev-java/openjdk/openjdk-11.0.14-riscv.patch.xz )
 "
 
 LICENSE="GPL-2"
@@ -146,6 +149,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	if use riscv; then
+		eapply -p1 "${WORKDIR}"/openjdk-11.0.14-riscv.patch
+	fi
 	default
 	chmod +x configure || die
 }
@@ -175,7 +181,7 @@ src_configure() {
 		--with-freetype="${XPAK_BOOTSTRAP:-system}"
 		--with-giflib="${XPAK_BOOTSTRAP:-system}"
 		--with-harfbuzz="${XPAK_BOOTSTRAP:-system}"
-		--with-jvm-features=shenandoahgc
+		--with-jvm-features=$(usex riscv zgc shenandoahgc)
 		--with-lcms="${XPAK_BOOTSTRAP:-system}"
 		--with-libjpeg="${XPAK_BOOTSTRAP:-system}"
 		--with-libpng="${XPAK_BOOTSTRAP:-system}"
