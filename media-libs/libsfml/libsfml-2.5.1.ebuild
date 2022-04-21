@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,6 +40,10 @@ BDEPEND="
 DOCS=( changelog.md readme.md )
 
 S="${WORKDIR}/SFML-${PV}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-musl-1.2.3-nullptr.patch
+)
 
 src_prepare() {
 	sed -i "s:DESTINATION .*:DESTINATION /usr/share/doc/${PF}:" \
