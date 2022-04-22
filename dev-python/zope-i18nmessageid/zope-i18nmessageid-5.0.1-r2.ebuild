@@ -24,6 +24,7 @@ KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 
 RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
+	!dev-python/namespace-zope
 "
 
 distutils_enable_tests unittest
