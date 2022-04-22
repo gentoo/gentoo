@@ -28,6 +28,7 @@ RDEPEND="
 	dev-python/zope-i18nmessageid[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]
 	>=dev-python/zope-schema-4.9[${PYTHON_USEDEP}]
+	!dev-python/namespace-zope
 "
 BDEPEND="
 	test? (
