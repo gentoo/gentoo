@@ -1168,46 +1168,49 @@ distutils-r1_python_compile() {
 
 	_python_check_EPYTHON
 
-	# call setup.py build when using setuptools (either via PEP517
-	# or in legacy mode)
-	if [[ ${DISTUTILS_USE_PEP517:-setuptools} == setuptools ]]; then
-		if [[ ${GPEP517_TESTING} && ${DISTUTILS_USE_PEP517} ]]; then
-			if [[ -d build ]]; then
-				eqawarn "A 'build' directory exists already.  Artifacts from this directory may"
-				eqawarn "be picked up by setuptools when building for another interpreter."
-				eqawarn "Please remove this directory prior to building."
-			fi
-		elif [[ ! ${DISTUTILS_USE_PEP517} ]]; then
-			_distutils-r1_copy_egg_info
-		fi
+	case ${DISTUTILS_USE_PEP517:-setuptools} in
+		setuptools)
+			# call setup.py build when using setuptools (either via PEP517
+			# or in legacy mode)
 
-		# distutils is parallel-capable since py3.5
-		local jobs=$(makeopts_jobs "${MAKEOPTS} ${*}" INF)
-		if [[ ${jobs} == INF ]]; then
-			local nproc=$(get_nproc)
-			jobs=$(( nproc + 1 ))
-		fi
-
-		if [[ ${DISTUTILS_USE_PEP517} && ${GPEP517_TESTING} ]]; then
-			# issue build_ext only if it looks like we have at least
-			# two source files to build; setuptools is expensive
-			# to start and parallel builds can only benefit us if we're
-			# compiling at least two files
-			#
-			# see extension.py for list of suffixes
-			# .pyx is added for Cython
-			if [[ 1 -ne ${jobs} && 2 -eq $(
-				find '(' -name '*.c' -o -name '*.cc' -o -name '*.cpp' \
-					-o -name '*.cxx' -o -name '*.c++' -o -name '*.m' \
-					-o -name '*.mm' -o -name '*.pyx' ')' -printf '\n' |
-					head -n 2 | wc -l
-			) ]]; then
-				esetup.py build_ext -j "${jobs}" "${@}"
+			if [[ ${GPEP517_TESTING} && ${DISTUTILS_USE_PEP517} ]]; then
+				if [[ -d build ]]; then
+					eqawarn "A 'build' directory exists already.  Artifacts from this directory may"
+					eqawarn "be picked up by setuptools when building for another interpreter."
+					eqawarn "Please remove this directory prior to building."
+				fi
+			elif [[ ! ${DISTUTILS_USE_PEP517} ]]; then
+				_distutils-r1_copy_egg_info
 			fi
-		else
-			esetup.py build -j "${jobs}" "${@}"
-		fi
-	fi
+
+			# distutils is parallel-capable since py3.5
+			local jobs=$(makeopts_jobs "${MAKEOPTS} ${*}" INF)
+			if [[ ${jobs} == INF ]]; then
+				local nproc=$(get_nproc)
+				jobs=$(( nproc + 1 ))
+			fi
+
+			if [[ ${DISTUTILS_USE_PEP517} && ${GPEP517_TESTING} ]]; then
+				# issue build_ext only if it looks like we have at least
+				# two source files to build; setuptools is expensive
+				# to start and parallel builds can only benefit us if we're
+				# compiling at least two files
+				#
+				# see extension.py for list of suffixes
+				# .pyx is added for Cython
+				if [[ 1 -ne ${jobs} && 2 -eq $(
+					find '(' -name '*.c' -o -name '*.cc' -o -name '*.cpp' \
+						-o -name '*.cxx' -o -name '*.c++' -o -name '*.m' \
+						-o -name '*.mm' -o -name '*.pyx' ')' -printf '\n' |
+						head -n 2 | wc -l
+				) ]]; then
+					esetup.py build_ext -j "${jobs}" "${@}"
+				fi
+			else
+				esetup.py build -j "${jobs}" "${@}"
+			fi
+			;;
+	esac
 
 	if [[ ${DISTUTILS_USE_PEP517} ]]; then
 		if [[ -n ${DISTUTILS_ARGS[@]} || -n ${mydistutilsargs[@]} ]]; then
