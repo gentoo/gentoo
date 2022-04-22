@@ -110,9 +110,12 @@ BDEPEND="
 	>=dev-python/setuptools_scm-6.3.2[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
-		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/cffi[${PYTHON_USEDEP}]
+		' 'python*')
 		dev-python/lxml[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "
 
