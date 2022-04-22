@@ -8,6 +8,10 @@
 	<maintainer type="project">
 		<email>gnu-emacs@gentoo.org</email>
 		<name>Gentoo GNU Emacs project</name>
+		<description>
+			For mu4e (installed with USE=emacs).
+			Do not assign for anything else.
+		</description>
 	</maintainer>
 	<longdescription lang="en">
 		'mu' is a set of command-line tools for Linux/Unix that enable you to quickly find the e-mails you
