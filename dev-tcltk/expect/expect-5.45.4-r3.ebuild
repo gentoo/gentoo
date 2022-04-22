@@ -17,7 +17,7 @@ IUSE="debug doc threads"
 
 # We need dejagnu for src_test, but dejagnu needs expect
 # to compile/run, so we cant add dejagnu to DEPEND :/
-DEPEND=">=dev-lang/tcl-8.2:0[threads?]"
+DEPEND=">=dev-lang/tcl-8.2:=[threads?]"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}
