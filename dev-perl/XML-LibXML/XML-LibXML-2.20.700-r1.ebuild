@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -65,7 +65,7 @@ pkg_update_parser() {
 	local action=$1
 	local parser_module=$2
 
-	if [[ "$ROOT" = "/" ]] ; then
+	if [[ -z "${ROOT}" ]] ; then
 		einfo "Update Parser: $1 $2"
 		perl -MXML::SAX -e "XML::SAX->${action}_parser(q(${parser_module}))->save_parsers()" \
 			|| ewarn "Update Parser: $1 $2 failed"
