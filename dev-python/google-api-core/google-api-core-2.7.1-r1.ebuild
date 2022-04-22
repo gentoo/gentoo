@@ -16,7 +16,7 @@ S="${WORKDIR}/${P//google/python}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 RDEPEND="
 	dev-python/protobuf-python[${PYTHON_USEDEP}]
