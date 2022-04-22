@@ -129,10 +129,6 @@ media-video/vdrsync dvdr
 # anywhere yet.
 media-plugins/grilo-plugins chromaprint
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
-# net-libs/libmediawiki not stable anywhere.
-kde-apps/kipi-plugins mediawiki
-
 # Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
 # sssd is only stable for amd64 and x86
 app-admin/sudo sssd
