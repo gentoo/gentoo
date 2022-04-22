@@ -56,6 +56,8 @@ src_prepare() {
 	use vala && vala_setup
 	xdg_environment_reset
 
+	use elibc_musl && eapply "${FILESDIR}"/${PN}-0.66.2-musl-W_EXITCODE.patch
+
 	if ! use vanilla; then
 		# Part of https://src.fedoraproject.org/rpms/vte291/raw/f31/f/vte291-cntnr-precmd-preexec-scroll.patch
 		# Adds OSC 777 support for desktop notifications in gnome-terminal or elsewhere
