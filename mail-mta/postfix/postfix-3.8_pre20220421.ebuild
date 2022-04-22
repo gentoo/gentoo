@@ -220,7 +220,7 @@ src_install() {
 	keepdir /etc/postfix
 	keepdir /etc/postfix/postfix-files.d
 	if use mbox; then
-		mypostconf="mail_spool_directory=/var/spool/mail"
+		mypostconf="mail_spool_directory=/var/mail"
 	else
 		mypostconf="home_mailbox=.maildir/"
 	fi
@@ -264,7 +264,10 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ ! -e /etc/mail/aliases.db ]] ; then
+	# do not assume berkdb
+	if [[ ! -e /etc/mail/aliases.db \
+	   && ! -e /etc/mail/aliases.cdb \
+	   && ! -e /etc/mail/aliases.lmdb ]] ; then
 		ewarn
 		ewarn "You must edit /etc/mail/aliases to suit your needs"
 		ewarn "and then run /usr/bin/newaliases. Postfix will not"
