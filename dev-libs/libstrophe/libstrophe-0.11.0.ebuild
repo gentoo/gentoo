@@ -17,7 +17,8 @@ RDEPEND="
 	!gnutls? ( dev-libs/openssl:0= )
 	dev-libs/openssl:0=
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	doc? ( app-doc/doxygen )
 "
 

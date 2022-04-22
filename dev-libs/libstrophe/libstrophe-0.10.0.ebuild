@@ -15,7 +15,8 @@ RDEPEND="
 	!expat? ( dev-libs/libxml2:2 )
 	dev-libs/openssl:0=
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	doc? ( app-doc/doxygen )
 "
 
