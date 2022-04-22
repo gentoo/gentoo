@@ -1,6 +1,8 @@
 Lazy migration from audio4 that's missing in ffmpeg5, may not be
 entirely right but tested to play at least .tta/.wma properly.
 
+https://github.com/xmms2/xmms2-devel/pull/11
+
 Bug: https://bugs.gentoo.org/834398
 Signed-off-by: Ionen Wolkens <ionen@gentoo.org>
 --- a/src/plugins/avcodec/avcodec.c
