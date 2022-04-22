@@ -36,4 +36,10 @@ all_ruby_prepare() {
 
 	# test that need network
 	rm -f spec/excon/test/server_spec.rb || die
+
+	# tests that depend on eventmachine which is broken and no longer maintained
+	rm -f tests/{bad,error,pipeline,response,request}_tests.rb \
+		tests/{batch-requests,complete_responses}.rb \
+		tests/middlewares/{decompress,mock}_tests.rb  || die
+	rm -f spec/requests/eof_requests_spec.rb spec/excon/error_spec.rb || die
 }
