@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-22)
+# Unused java library. Removal in 30 days.
+dev-java/jgraph
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-19)
 # Release of the source-based ebuild is from 2014. At the moment
 # impossible to provide source-based ebuild for the current version.
