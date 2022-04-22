@@ -45,7 +45,11 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}"/${P}-0001-respect-distribution-CFLAGS.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-0001-respect-distribution-CFLAGS.patch
+	"${FILESDIR}"/${P}-add-missing-limits-header.patch
+)
+
 DOCS=( AUTHORS.md CHANGELOG.md CODING.md INSTALL.md README.md )
 
 pkg_setup() {
