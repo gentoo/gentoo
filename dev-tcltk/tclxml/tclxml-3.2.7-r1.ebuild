@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ KEYWORDS="~alpha amd64 ppc sparc x86"
 IUSE="debug threads"
 
 DEPEND="
-	>=dev-lang/tcl-8.2:0
+	>=dev-lang/tcl-8.2:=
 	>=dev-libs/libxml2-2.6.9
 	dev-libs/libxslt
 	>=dev-tcltk/tcllib-1.2
