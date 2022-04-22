@@ -37,6 +37,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-cmake-cxxflags.patch
+	"${FILESDIR}"/${P}-icon.patch
 )
 src_prepare() {
 	cmake_src_prepare
