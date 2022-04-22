@@ -16,7 +16,7 @@ IUSE="spf +reports static-libs"
 
 DEPEND="reports? ( dev-perl/DBI )
 	|| ( mail-filter/libmilter mail-mta/sendmail )
-	elibc_glibc? ( <sys-libs/glibc-2.34 )"  #839951
+	elibc_glibc? ( >=sys-libs/glibc-2.34 )"  #839951
 RDEPEND="${DEPEND}
 	acct-user/opendmarc
 	reports? (
