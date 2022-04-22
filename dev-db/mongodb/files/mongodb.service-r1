@@ -1,0 +1,12 @@
+[Unit]
+Description=High-performance, schema-free document-oriented database
+After=network.target
+
+[Service]
+User=mongodb
+ExecStart=/usr/bin/mongod --quiet --config /etc/mongodb.conf
+LimitNOFILE=65536
+
+
+[Install]
+WantedBy=multi-user.target
