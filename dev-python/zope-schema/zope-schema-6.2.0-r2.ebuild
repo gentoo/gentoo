@@ -25,6 +25,7 @@ KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 RDEPEND="
 	dev-python/zope-event[${PYTHON_USEDEP}]
 	>=dev-python/zope-interface-5.0.0[${PYTHON_USEDEP}]
+	!dev-python/namespace-zope
 "
 BDEPEND="
 	test? (
