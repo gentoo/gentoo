@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ RDEPEND="
 S="${WORKDIR}/rich0-cfg-update-2f10786"
 
 pkg_prerm() {
-	if [[ ${ROOT} == / ]]
+	if [[ -z ${ROOT} ]]
 	then
 		ebegin "Disabling portage hook"
 		cfg-update --ebuild --disable-portage-hook
@@ -80,7 +80,7 @@ pkg_postinst() {
 		echo
 	fi
 
-	if [[ ${ROOT} == / ]]
+	if [[ -z ${ROOT} ]]
 	then
 		ebegin "Moving backups to /var/lib/cfg-update/backups"
 		/usr/bin/cfg-update --ebuild --move-backups
