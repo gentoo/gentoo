@@ -16,15 +16,15 @@ IUSE="debug djvu"
 
 RDEPEND="
 	app-text/ebook-tools
-	>=app-text/poppler-0.5.0[cairo,xpdf-headers(+)]
+	>=app-text/poppler-0.5.0:=[cairo,xpdf-headers(+)]
 	dev-libs/glib:2
 	dev-libs/libxml2
-	net-libs/webkit-gtk
+	net-libs/webkit-gtk:=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	x11-libs/pango
-	djvu? ( app-text/djvu:= )
+	djvu? ( app-text/djvu )
 "
 
 DEPEND="${RDEPEND}
