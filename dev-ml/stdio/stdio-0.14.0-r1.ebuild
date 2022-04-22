@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit dune
 
@@ -15,6 +15,6 @@ KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
 IUSE="+ocamlopt"
 
 RDEPEND="
-	>=dev-ml/base-0.11.0:=
-		dev-ml/sexplib0:="
+	>=dev-ml/base-0.14:= <dev-ml/base-0.15:=
+	dev-ml/sexplib0:="
 DEPEND="${RDEPEND}"
