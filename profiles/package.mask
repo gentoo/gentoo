@@ -33,6 +33,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-04-22)
+# Obsolete namespace packages.  PEP 420 implicit namespaces are now
+# the preferred solution.  Upgrade the reverse dependencies to get
+# these packages unmerged.
+# Removal on 2022-05-09.
+dev-python/namespace-google
+dev-python/namespace-lazr
+dev-python/namespace-paste
+dev-python/namespace-repoze
+dev-python/namespace-ruamel
+dev-python/namespace-zope
+
 # Hans de Graaff <graaff@gentoo.org> (2022-04-22)
 # Obsolete slots that are no longer used by current
 # dev-ruby/simplecov versions and have no use on their own.
