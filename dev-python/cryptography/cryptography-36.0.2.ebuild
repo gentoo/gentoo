@@ -103,7 +103,7 @@ BDEPEND="
 "
 
 # Files built without CFLAGS/LDFLAGS, acceptable for rust
-QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/cryptography/hazmat/bindings/_rust.abi3.so"
+QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/cryptography/hazmat/bindings/_rust.*.so"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-pyo3-bump.patch
