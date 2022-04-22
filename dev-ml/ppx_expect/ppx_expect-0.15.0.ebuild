@@ -17,15 +17,16 @@ IUSE="+ocamlopt"
 RESTRICT="test"
 
 RDEPEND="
-	>=dev-ml/base-0.14.0:=
+	=dev-ml/base-0.15*:=
 	>=dev-ml/ppx_here-0.14.0:=
-	>=dev-ml/ppx_inline_test-0.14.1:=
-	>=dev-ml/stdio-0.14.0:=
-	>=dev-ml/ppxlib-0.18.0:=
+	=dev-ml/ppx_inline_test-0.15*:=
+	=dev-ml/stdio-0.15*:=
+	>=dev-ml/ppxlib-0.23.0:=
 	>=dev-ml/ocaml-compiler-libs-0.11.0:=
 	>=dev-ml/ocaml-migrate-parsetree-2.0.0:=
 	dev-ml/cinaps:=
 	dev-ml/re:=
-	=dev-ml/ppx_sexp_conv-0.14*:=
+	=dev-ml/ppx_sexp_conv-0.15*:=
+	>=dev-lang/ocaml-4.09
 "
 DEPEND="${RDEPEND}"

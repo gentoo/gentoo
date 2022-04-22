@@ -26,5 +26,6 @@ RDEPEND="
 	>=dev-ml/ocaml-migrate-parsetree-2.0.0:=
 	dev-ml/cinaps:=
 	dev-ml/re:=
+	=dev-ml/ppx_sexp_conv-0.14*:=
 "
 DEPEND="${RDEPEND}"
