@@ -6,7 +6,7 @@ EAPI=7
 inherit alternatives flag-o-matic toolchain-funcs multilib multiprocessing
 
 PATCH_VER=1
-CROSS_VER=1.3.7
+CROSS_VER=1.3.6
 PATCH_BASE="perl-5.34.0-patches-${PATCH_VER}"
 PATCH_DEV=dilfridge
 
@@ -86,12 +86,12 @@ dual_scripts() {
 	src_remove_dual      perl-core/Archive-Tar        2.380.0       ptar ptardiff ptargrep
 	src_remove_dual      perl-core/CPAN               2.280.0       cpan
 	src_remove_dual      perl-core/Digest-SHA         6.20.0        shasum
-	src_remove_dual      perl-core/Encode             3.80.100_rc   enc2xs piconv
+	src_remove_dual      perl-core/Encode             3.80.0        enc2xs piconv
 	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.620.0       instmodsh
 	src_remove_dual      perl-core/ExtUtils-ParseXS   3.430.0       xsubpp
 	src_remove_dual      perl-core/IO-Compress        2.102.0        zipdetails
 	src_remove_dual      perl-core/JSON-PP            4.60.0        json_pp
-	src_remove_dual      perl-core/Module-CoreList    5.202.203.130 corelist
+	src_remove_dual      perl-core/Module-CoreList    5.202.105.200 corelist
 	src_remove_dual      perl-core/Pod-Checker        1.740.0       podchecker
 	src_remove_dual      perl-core/Pod-Perldoc        3.280.100     perldoc
 	src_remove_dual      perl-core/Pod-Usage          2.10.0       pod2usage
@@ -396,8 +396,12 @@ src_prepare() {
 	#		"Fix broken miniperl on hppa"\
 	#		"https://bugs.debian.org/869122" "https://bugs.gentoo.org/634162"
 
+	add_patch "${FILESDIR}/${P}-gdbm-1.20.patch" "0101-Fix-build-with-gdb120.patch"\
+			"Fix GDBM_File to compile with version 1.20 and earlier"\
+			"https://bugs.gentoo.org/802945"
+
 	if use prefix ; then
-		add_patch "${FILESDIR}/${PN}"-5.34.0-fallback-getcwd-pwd.patch "0102-5.34.0-fallback-get-cwd-pwd.patch"\
+		add_patch "${FILESDIR}/${P}"-fallback-getcwd-pwd.patch "0102-5.34.0-fallback-get-cwd-pwd.patch"\
 			"Fix installation during Prefix bootstrap (finding 'pwd' from coreutils)"\
 			"https://bugs.gentoo.org/818172"
 	fi
@@ -797,7 +801,7 @@ pkg_preinst() {
 pkg_postinst() {
 	dual_scripts
 
-	if [[ "${ROOT}" = "/" ]] ; then
+	if [[ -z "${ROOT}" ]] ; then
 		local INC DIR file
 		INC=$(perl -e 'for $line (@INC) { next if $line eq "."; next if $line =~ m/'${SHORT_PV}'|etc|local|perl$/; print "$line\n" }')
 		einfo "Removing old .ph files"

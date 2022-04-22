@@ -46,12 +46,6 @@ SRC_URI="
 	https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${PATCH_BASE}.tar.xz
 	https://github.com/arsv/perl-cross/releases/download/${CROSS_VER}/perl-cross-${CROSS_VER}.tar.gz
 "
-
-SRC_URI+="
-	https://dev.gentoo.org/~dilfridge/distfiles/perl-5.34.1-zlib-1.2.12.patch.xz
-	https://dev.gentoo.org/~dilfridge/distfiles/perl-5.34.1-zlib-1.2.12-encrypt-standard.zip.bin
-"
-
 HOMEPAGE="https://www.perl.org/"
 
 LICENSE="|| ( Artistic GPL-1+ )"
@@ -95,7 +89,7 @@ dual_scripts() {
 	src_remove_dual      perl-core/Encode             3.80.100_rc   enc2xs piconv
 	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.620.0       instmodsh
 	src_remove_dual      perl-core/ExtUtils-ParseXS   3.430.0       xsubpp
-	src_remove_dual      perl-core/IO-Compress        2.103.0        zipdetails
+	src_remove_dual      perl-core/IO-Compress        2.102.0        zipdetails
 	src_remove_dual      perl-core/JSON-PP            4.60.0        json_pp
 	src_remove_dual      perl-core/Module-CoreList    5.202.203.130 corelist
 	src_remove_dual      perl-core/Pod-Checker        1.740.0       podchecker
@@ -401,12 +395,6 @@ src_prepare() {
 	# add_patch "${FILESDIR}/${PN}-5.26.2-hppa.patch" "100-5.26.2-hppa.patch"\
 	#		"Fix broken miniperl on hppa"\
 	#		"https://bugs.debian.org/869122" "https://bugs.gentoo.org/634162"
-
-	add_patch "${WORKDIR}/perl-5.34.1-zlib-1.2.12.patch" "0501-5.34.1-zlib-1.2.12.patch"\
-			"Update IO-Compress, Compress-Raw-* to 2.103"\
-			"https://bugs.gentoo.org/837176"
-	# this is the binary chunk that gnu patch can't do
-	cp "${DISTDIR}/perl-5.34.1-zlib-1.2.12-encrypt-standard.zip.bin" "${S}/cpan/IO-Compress/t/files/encrypt-standard.zip" || die
 
 	if use prefix ; then
 		add_patch "${FILESDIR}/${PN}"-5.34.0-fallback-getcwd-pwd.patch "0102-5.34.0-fallback-get-cwd-pwd.patch"\
@@ -809,7 +797,7 @@ pkg_preinst() {
 pkg_postinst() {
 	dual_scripts
 
-	if [[ "${ROOT}" = "/" ]] ; then
+	if [[ -z "${ROOT}" ]] ; then
 		local INC DIR file
 		INC=$(perl -e 'for $line (@INC) { next if $line eq "."; next if $line =~ m/'${SHORT_PV}'|etc|local|perl$/; print "$line\n" }')
 		einfo "Removing old .ph files"

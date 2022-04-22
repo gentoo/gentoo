@@ -6,7 +6,7 @@ EAPI=7
 inherit alternatives flag-o-matic toolchain-funcs multilib multiprocessing
 
 PATCH_VER=1
-CROSS_VER=1.3.6
+CROSS_VER=1.3.7
 PATCH_BASE="perl-5.34.0-patches-${PATCH_VER}"
 PATCH_DEV=dilfridge
 
@@ -46,6 +46,12 @@ SRC_URI="
 	https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${PATCH_BASE}.tar.xz
 	https://github.com/arsv/perl-cross/releases/download/${CROSS_VER}/perl-cross-${CROSS_VER}.tar.gz
 "
+
+SRC_URI+="
+	https://dev.gentoo.org/~dilfridge/distfiles/perl-5.34.1-zlib-1.2.12.patch.xz
+	https://dev.gentoo.org/~dilfridge/distfiles/perl-5.34.1-zlib-1.2.12-encrypt-standard.zip.bin
+"
+
 HOMEPAGE="https://www.perl.org/"
 
 LICENSE="|| ( Artistic GPL-1+ )"
@@ -86,12 +92,12 @@ dual_scripts() {
 	src_remove_dual      perl-core/Archive-Tar        2.380.0       ptar ptardiff ptargrep
 	src_remove_dual      perl-core/CPAN               2.280.0       cpan
 	src_remove_dual      perl-core/Digest-SHA         6.20.0        shasum
-	src_remove_dual      perl-core/Encode             3.80.0        enc2xs piconv
+	src_remove_dual      perl-core/Encode             3.80.100_rc   enc2xs piconv
 	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.620.0       instmodsh
 	src_remove_dual      perl-core/ExtUtils-ParseXS   3.430.0       xsubpp
-	src_remove_dual      perl-core/IO-Compress        2.102.0        zipdetails
+	src_remove_dual      perl-core/IO-Compress        2.103.0        zipdetails
 	src_remove_dual      perl-core/JSON-PP            4.60.0        json_pp
-	src_remove_dual      perl-core/Module-CoreList    5.202.105.200 corelist
+	src_remove_dual      perl-core/Module-CoreList    5.202.203.130 corelist
 	src_remove_dual      perl-core/Pod-Checker        1.740.0       podchecker
 	src_remove_dual      perl-core/Pod-Perldoc        3.280.100     perldoc
 	src_remove_dual      perl-core/Pod-Usage          2.10.0       pod2usage
@@ -396,12 +402,14 @@ src_prepare() {
 	#		"Fix broken miniperl on hppa"\
 	#		"https://bugs.debian.org/869122" "https://bugs.gentoo.org/634162"
 
-	add_patch "${FILESDIR}/${P}-gdbm-1.20.patch" "0101-Fix-build-with-gdb120.patch"\
-			"Fix GDBM_File to compile with version 1.20 and earlier"\
-			"https://bugs.gentoo.org/802945"
+	add_patch "${WORKDIR}/perl-5.34.1-zlib-1.2.12.patch" "0501-5.34.1-zlib-1.2.12.patch"\
+			"Update IO-Compress, Compress-Raw-* to 2.103"\
+			"https://bugs.gentoo.org/837176"
+	# this is the binary chunk that gnu patch can't do
+	cp "${DISTDIR}/perl-5.34.1-zlib-1.2.12-encrypt-standard.zip.bin" "${S}/cpan/IO-Compress/t/files/encrypt-standard.zip" || die
 
 	if use prefix ; then
-		add_patch "${FILESDIR}/${P}"-fallback-getcwd-pwd.patch "0102-5.34.0-fallback-get-cwd-pwd.patch"\
+		add_patch "${FILESDIR}/${PN}"-5.34.0-fallback-getcwd-pwd.patch "0102-5.34.0-fallback-get-cwd-pwd.patch"\
 			"Fix installation during Prefix bootstrap (finding 'pwd' from coreutils)"\
 			"https://bugs.gentoo.org/818172"
 	fi
@@ -801,7 +809,7 @@ pkg_preinst() {
 pkg_postinst() {
 	dual_scripts
 
-	if [[ "${ROOT}" = "/" ]] ; then
+	if [[ -z "${ROOT}" ]] ; then
 		local INC DIR file
 		INC=$(perl -e 'for $line (@INC) { next if $line eq "."; next if $line =~ m/'${SHORT_PV}'|etc|local|perl$/; print "$line\n" }')
 		einfo "Removing old .ph files"

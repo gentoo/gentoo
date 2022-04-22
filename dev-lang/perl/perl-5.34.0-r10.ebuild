@@ -52,10 +52,10 @@ LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0/${SUBSLOT}"
 
 if [[ "${PV##*.}" != "9999" ]] && [[ "${PV/rc//}" == "${PV}" ]] ; then
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
-IUSE="berkdb debug doc gdbm ithreads minimal"
+IUSE="berkdb debug doc gdbm ithreads minimal quadmath"
 
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
@@ -126,13 +126,16 @@ check_rebuild() {
 		return 0;
 
 	# Reinstall w/ USE Change
-	elif (   use ithreads && ! has_version dev-lang/perl[ithreads] ) || \
+	elif
+		 (   use ithreads && ! has_version dev-lang/perl[ithreads] ) || \
 		 ( ! use ithreads &&   has_version dev-lang/perl[ithreads] ) || \
+		 (   use quadmath && ! has_version dev-lang/perl[quadmath] ) || \
+		 ( ! use quadmath &&   has_version dev-lang/perl[quadmath] ) || \
 		 (   use debug    && ! has_version dev-lang/perl[debug]    ) || \
 		 ( ! use debug    &&   has_version dev-lang/perl[debug]    ) ; then
 		echo ""
 		ewarn "TOGGLED USE-FLAGS WARNING:"
-		ewarn "You changed one of the use-flags ithreads or debug."
+		ewarn "You changed one of the use-flags ithreads, quadmath, or debug."
 		ewarn "You must rebuild all perl-modules installed."
 		ewarn "Use: perl-cleaner --modules ; perl-cleaner --force --libperl"
 	fi
@@ -153,6 +156,9 @@ pkg_setup() {
 	myarch="${CHOST%%-*}-${osname}"
 	if use debug ; then
 		myarch+="-debug"
+	fi
+	if use quadmath ; then
+		myarch+="-quadmath"
 	fi
 	if use ithreads ; then
 		mythreading="-multi"
@@ -573,6 +579,8 @@ src_configure() {
 
 	use ithreads && myconf -Dusethreads
 
+	use quadmath && myconf -Dusequadmath
+
 	if use debug ; then
 		append-cflags "-g"
 		myconf -DDEBUGGING
@@ -793,7 +801,7 @@ pkg_preinst() {
 pkg_postinst() {
 	dual_scripts
 
-	if [[ "${ROOT}" = "/" ]] ; then
+	if [[ -z "${ROOT}" ]] ; then
 		local INC DIR file
 		INC=$(perl -e 'for $line (@INC) { next if $line eq "."; next if $line =~ m/'${SHORT_PV}'|etc|local|perl$/; print "$line\n" }')
 		einfo "Removing old .ph files"
