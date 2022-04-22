@@ -501,20 +501,17 @@ all_ruby_unpack() {
 				# one .gem file, since we won't support that at all.
 				[[ -d "${S}" ]] && die "Unable to unpack ${archive}, ${S} exists"
 
-				ebegin "Unpacking .gem file..."
+				einfo "Unpacking .gem file..."
 				tar -mxf "${DISTDIR}"/${archive} || die
-				eend $?
 
-				ebegin "Uncompressing metadata"
+				einfo "Uncompressing metadata"
 				gunzip metadata.gz || die
-				eend $?
 
 				mkdir "${S}"
 				pushd "${S}" &>/dev/null || die
 
-				ebegin "Unpacking data.tar.gz"
+				einfo "Unpacking data.tar.gz"
 				tar -mxf "${my_WORKDIR}"/data.tar.gz || die
-				eend $?
 
 				popd &>/dev/null || die
 				;;
