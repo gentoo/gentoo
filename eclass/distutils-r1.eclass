@@ -1196,7 +1196,7 @@ distutils-r1_python_compile() {
 			#
 			# see extension.py for list of suffixes
 			# .pyx is added for Cython
-			if [[ 2 -eq $(
+			if [[ 1 -ne ${jobs} && 2 -eq $(
 				find '(' -name '*.c' -o -name '*.cc' -o -name '*.cpp' \
 					-o -name '*.cxx' -o -name '*.c++' -o -name '*.m' \
 					-o -name '*.mm' -o -name '*.pyx' ')' -printf '\n' |
