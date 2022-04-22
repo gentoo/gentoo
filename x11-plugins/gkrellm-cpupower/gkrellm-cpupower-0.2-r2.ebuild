@@ -35,7 +35,7 @@ src_compile() {
 src_install() {
 	local PLUGIN_SO=( cpupower$(get_modname) )
 	gkrellm-plugin_src_install
-	emake DESTDIR="${D}" install-sudo
+	emake CC="$(tc-getCC)" DESTDIR="${D}" install-sudo
 }
 
 pkg_postinst() {
