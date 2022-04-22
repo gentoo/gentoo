@@ -118,6 +118,12 @@ BDEPEND="
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "
+# there seems to be a problem with setuptools-rust and python-distutils-extra
+# being installed simultaneously
+# https://github.com/PyO3/setuptools-rust/issues/221
+RDEPEND+="
+	!!dev-python/python-distutils-extra
+"
 
 src_unpack() {
 	cargo_src_unpack
