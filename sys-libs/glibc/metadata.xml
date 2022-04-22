@@ -11,6 +11,7 @@
  <flag name="compile-locales">build *all* locales in src_install; this is generally meant for stage building only as it ignores /etc/locale.gen file and can be pretty slow</flag>
  <flag name="crypt">build and install libcrypt and crypt.h</flag>
  <flag name="debug">When USE=hardened, allow fortify/stack violations to dump core (SIGABRT) and not kill self (SIGKILL)</flag>
+ <flag name="experimental-loong">Add experimental LoongArch patchset</flag>
  <flag name="gd">build memusage and memusagestat tools</flag>
  <flag name="multiarch">enable optimizations for multiple CPU architectures (detected at runtime)</flag>
  <flag name="multilib-bootstrap">Provide prebuilt libgcc.a and crt files if missing. Only needed for ABI switch.</flag>

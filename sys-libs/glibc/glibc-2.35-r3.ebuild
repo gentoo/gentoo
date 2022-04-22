@@ -29,6 +29,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	SRC_URI="mirror://gnu/glibc/${P}.tar.xz"
 	SRC_URI+=" https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
+	SRC_URI+=" experimental-loong? ( https://dev.gentoo.org/~xen0n/distfiles/glibc-2.35-loongarch-patches-20220422.tar.xz )"
 fi
 
 RELEASE_VER=${PV}
@@ -43,7 +44,7 @@ SRC_URI+=" https://gitweb.gentoo.org/proj/locale-gen.git/snapshot/locale-gen-${L
 SRC_URI+=" multilib-bootstrap? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 SRC_URI+=" systemd? ( https://gitweb.gentoo.org/proj/toolchain/glibc-systemd.git/snapshot/glibc-systemd-${GLIBC_SYSTEMD_VER}.tar.gz )"
 
-IUSE="audit caps cet +clone3 compile-locales +crypt custom-cflags doc gd headers-only +multiarch multilib multilib-bootstrap nscd profile selinux +ssp +static-libs suid systemd systemtap test vanilla"
+IUSE="audit caps cet +clone3 compile-locales +crypt custom-cflags doc experimental-loong gd headers-only +multiarch multilib multilib-bootstrap nscd profile selinux +ssp +static-libs suid systemd systemtap test vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
@@ -843,6 +844,7 @@ src_unpack() {
 
 		cd "${WORKDIR}" || die
 		unpack glibc-${RELEASE_VER}-patches-${PATCH_VER}.tar.xz
+		use experimental-loong && unpack glibc-2.35-loongarch-patches-20220422.tar.xz
 	fi
 
 	cd "${WORKDIR}" || die
@@ -861,6 +863,12 @@ src_prepare() {
 		einfo "Applying Gentoo Glibc Patchset ${patchsetname}"
 		eapply "${WORKDIR}"/patches
 		einfo "Done."
+
+		if use experimental-loong ; then
+			einfo "Applying experimental LoongArch patchset"
+			eapply "${WORKDIR}"/loongarch-2.35
+			einfo "Done."
+		fi
 	fi
 
 	if use clone3 ; then
