@@ -24,6 +24,7 @@ RDEPEND="
 	>=dev-python/google-auth-1.25.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.18.0[${PYTHON_USEDEP}]
 	<dev-python/requests-3[${PYTHON_USEDEP}]
+	!dev-python/namespace-google
 "
 # grpcio support is broken if grpcio-status is not installed,
 # and we do not package the latter
