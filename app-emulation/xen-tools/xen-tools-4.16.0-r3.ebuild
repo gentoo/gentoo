@@ -415,6 +415,10 @@ src_prepare() {
 	sed -e 's/$(ABI_DUMPER) /echo /g' \
 		-i tools/libs/libs.mk || die
 
+	# Remove -Werror
+	find . -type f \( -name Makefile -o -name "*.mk" \) \
+		 -exec sed -i "s/-Werror //g" {} + || die
+
 	default
 }
 
