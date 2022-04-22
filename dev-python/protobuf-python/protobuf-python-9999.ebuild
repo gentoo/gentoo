@@ -40,7 +40,10 @@ DEPEND="
 	${PYTHON_DEPS}
 	~dev-libs/protobuf-${PV}
 "
-RDEPEND="${BDEPEND}"
+RDEPEND="
+	${BDEPEND}
+	!dev-python/namespace-google
+"
 
 if [[ "${PV}" == "9999" ]]; then
 	EGIT_CHECKOUT_DIR="${WORKDIR}/protobuf-${PV}"
