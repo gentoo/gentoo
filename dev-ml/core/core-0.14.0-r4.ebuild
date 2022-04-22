@@ -20,10 +20,10 @@ RESTRICT="test"
 RDEPEND="
 	<dev-lang/ocaml-4.12
 	dev-ml/base:=
-	dev-ml/core_kernel:=
-	dev-ml/jst-config:=
-	dev-ml/ppx_jane:=
-	dev-ml/sexplib:=
+	<dev-ml/core_kernel-0.15:=
+	<dev-ml/jst-config-0.15:=
+	<dev-ml/ppx_jane-0.15:=
+	<dev-ml/sexplib-0.15:=
 	dev-ml/spawn:=
 	dev-ml/stdio:=
 	dev-ml/timezone:=
