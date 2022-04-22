@@ -27,7 +27,6 @@ virtual/rust
 gnome-base/gdm
 gnome-extra/chrome-gnome-shell
 gnome-extra/gnome-tweaks
->=media-libs/freetype-2.12.0
 >=dev-python/cryptography-36
 >=dev-python/pyopenssl-22
 dev-python/setuptools-rust
