@@ -64,6 +64,9 @@ PATCHES=(
 	"${FILESDIR}/dbus-daemon-optional.patch" # bug #653136
 
 	"${FILESDIR}/dbus-1.12.22-check-fd.patch"
+
+	# https://bugs.gentoo.org/836560
+	"${FILESDIR}/dbus-1.14.0-oom_score_adj.patch"
 )
 
 pkg_setup() {
@@ -207,9 +210,6 @@ multilib_src_compile() {
 }
 
 src_test() {
-	# https://bugs.gentoo.org/836560
-	addwrite /proc/self
-
 	DBUS_VERBOSE=1 virtx emake -j1 -C "${TBD}" check
 }
 
