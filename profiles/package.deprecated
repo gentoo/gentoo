@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file specifies packages that are considered deprecated (but not
@@ -16,6 +16,12 @@
 ## dev-foo/foo
 
 #--- END OF EXAMPLES ---
+
+# Sam James <sam@gentoo.org> (2022-04-22)
+# Obsolete virtual.
+# Only one provider is left (media-libs/libjpeg-turbo), please change
+# dependency to that instead.
+virtual/jpeg
 
 # Matt Turner <mattst88@gentoo.org> (2022-03-27)
 # Deprecated GNOME 2 era packages
