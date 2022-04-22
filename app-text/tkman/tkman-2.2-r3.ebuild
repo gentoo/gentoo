@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,8 +15,8 @@ KEYWORDS="~amd64 ppc sparc x86"
 
 DEPEND="
 	>=app-text/rman-3.1
-	>=dev-lang/tcl-8.4:0
-	>=dev-lang/tk-8.4:0
+	>=dev-lang/tcl-8.4:=
+	>=dev-lang/tk-8.4:=
 "
 RDEPEND="${DEPEND}"
 
