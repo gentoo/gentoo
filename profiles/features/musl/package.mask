@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-04-22)
+# Needs strndupa, upstream not interested in supporting musl
+# bug #713542
+net-misc/casync
+
 # Martin Dummer <martin.dummer@gmx.net> (2022-03-26)
 # Binary package linked to glibc. Bug #832558
 net-misc/teamviewer
