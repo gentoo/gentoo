@@ -10,7 +10,7 @@
 		<name>Rust</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="pypi">setuptools_rust</remote-id>
+		<remote-id type="pypi">setuptools-rust</remote-id>
 		<remote-id type="github">PyO3/setuptools-rust</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -87,7 +87,7 @@ inherit distutils-r1 cargo
 DESCRIPTION="A plugin for setuptools to build Rust Python extensions"
 HOMEPAGE="
 	https://github.com/PyO3/setuptools-rust/
-	https://pypi.org/project/setuptools_rust/
+	https://pypi.org/project/setuptools-rust/
 "
 SRC_URI="
 	mirror://pypi/${PN::1}/${PN}/${P}.tar.gz
