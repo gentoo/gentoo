@@ -170,7 +170,7 @@ pkg_postinst() {
 
 	readme.gentoo_print_elog
 
-	if [[ ${ROOT} == "" ]]; then
+	if [[ -z ${ROOT} ]]; then
 		multilib_pkg_postinst() {
 			ebegin "Creating global font cache for ${ABI}"
 			"${EPREFIX}"/usr/bin/${CHOST}-fc-cache -srf
