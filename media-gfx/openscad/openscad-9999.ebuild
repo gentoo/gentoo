@@ -30,7 +30,7 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/libxml2
 	dev-libs/libzip:=
-	media-gfx/opencsg
+	media-gfx/opencsg:=
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/glew:0=
