@@ -31,6 +31,7 @@ BDEPEND="
 	test? (
 		${RDEPEND}
 		dev-python/django-filter[${PYTHON_USEDEP}]
+		dev-python/lxml[${PYTHON_USEDEP}]
 	)
 "
 
