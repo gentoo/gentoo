@@ -14,6 +14,9 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 IUSE="minimal"
 
+# >= on XML-Sax needed to avoid "miscompilation" (essentially empty install), as newer XML-Sax
+# has the ROOT check fixed. Didn't happen with XML-SAX-Expat, but best to be careful.
+# bug #840053
 RDEPEND="
 	virtual/perl-Carp
 	virtual/perl-Encode
@@ -21,7 +24,7 @@ RDEPEND="
 	virtual/perl-IO
 	virtual/perl-Scalar-List-Utils
 	>=dev-perl/XML-NamespaceSupport-1.70.0
-	>=dev-perl/XML-SAX-0.110.0
+	>=dev-perl/XML-SAX-1.20.0-r1
 	dev-perl/XML-SAX-Base
 	>=dev-libs/libxml2-2.6.21:2=
 	virtual/perl-parent
