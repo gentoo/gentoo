@@ -25,6 +25,7 @@ RDEPEND="
 	>=dev-python/pyasn1-modules-0.2.1[${PYTHON_USEDEP}]
 	>=dev-python/rsa-3.1.4[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
+	!dev-python/namespace-google
 "
 BDEPEND="
 	test? (
