@@ -18,6 +18,7 @@ KEYWORDS="amd64 ~arm ~arm64 x86"
 
 RDEPEND="
 	>=dev-python/protobuf-python-3.12.0[${PYTHON_USEDEP}]
+	!dev-python/namespace-google
 "
 
 python_compile() {
