@@ -104,6 +104,8 @@ esac
 #
 # - jupyter - jupyter_packaging backend
 #
+# - maturin - maturin backend
+#
 # - pdm - pdm.pep517 backend
 #
 # - poetry - poetry-core backend
@@ -211,6 +213,10 @@ _distutils_set_globals() {
 			jupyter)
 				bdep+='
 					>=dev-python/jupyter_packaging-0.11.1[${PYTHON_USEDEP}]'
+				;;
+			maturin)
+				bdep+='
+					>=dev-util/maturin-0.12.7[${PYTHON_USEDEP}]'
 				;;
 			pdm)
 				bdep+='
@@ -992,6 +998,9 @@ _distutils-r1_backend_to_key() {
 		jupyter_packaging.build_api)
 			echo jupyter
 			;;
+		maturin)
+			echo maturin
+			;;
 		pdm.pep517.api)
 			echo pdm
 			;;
@@ -1209,6 +1218,14 @@ distutils-r1_python_compile() {
 			else
 				esetup.py build -j "${jobs}" "${@}"
 			fi
+			;;
+		maturin)
+			# auditwheel may attempt to auto-bundle libraries, bug #831171
+			local -x MATURIN_PEP517_ARGS=--skip-auditwheel
+
+			# support cargo.eclass' IUSE=debug if available
+			in_iuse debug && use debug &&
+				MATURIN_PEP517_ARGS+=" --cargo-extra-args=--profile=dev"
 			;;
 	esac
 
