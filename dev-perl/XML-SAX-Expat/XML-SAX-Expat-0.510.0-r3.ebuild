@@ -11,8 +11,11 @@ DESCRIPTION="SAX2 Driver for Expat"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
+# >= on XML-Sax needed to avoid "miscompilation" (essentially empty install), as newer XML-Sax
+# has the ROOT check fixed. Didn't happen with XML-SAX-Expat, but best to be careful.
+# bug #840053
 RDEPEND="
-	>=dev-perl/XML-SAX-0.150.0-r1
+	>=dev-perl/XML-SAX-1.20.0-r1
 	>=dev-perl/XML-NamespaceSupport-1.90.0
 	dev-perl/XML-Parser
 "
