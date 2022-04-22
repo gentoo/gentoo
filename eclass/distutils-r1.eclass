@@ -1182,7 +1182,7 @@ distutils-r1_python_compile() {
 		fi
 
 		# distutils is parallel-capable since py3.5
-		local jobs=$(makeopts_jobs "${MAKEOPTS}" INF)
+		local jobs=$(makeopts_jobs "${MAKEOPTS} ${*}" INF)
 		if [[ ${jobs} == INF ]]; then
 			local nproc=$(get_nproc)
 			jobs=$(( nproc + 1 ))
