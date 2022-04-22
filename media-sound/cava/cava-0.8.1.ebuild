@@ -37,6 +37,7 @@ src_prepare() {
 	echo ${PV} > version || die
 	xxd -i example_files/config config_file.h || die
 
+	# https://github.com/karlstav/cava/issues/450
 	sed -i 's/-Werror //' Makefile.am || die
 
 	eautoreconf
