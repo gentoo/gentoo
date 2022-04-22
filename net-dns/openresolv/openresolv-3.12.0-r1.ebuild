@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,7 @@ src_configure() {
 }
 
 pkg_config() {
-	if [[ ${ROOT} != / ]]; then
+	if [[ -z ${ROOT} ]]; then
 		eerror "We cannot configure unless \$ROOT=/"
 		return 1
 	fi
