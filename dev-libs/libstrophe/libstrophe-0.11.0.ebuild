@@ -44,7 +44,7 @@ src_compile() {
 src_install() {
 	default
 	use doc && dodoc -r examples
-	find "${D}" -name '*.la' -o -name '*.a' -delete || die
+	find "${D}" -type f \( -name '*.la' -o -name '*.a' \) -delete || die
 }
 
 # Explicit src_test is there to document that the test suite is integrated and
