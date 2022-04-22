@@ -32,6 +32,14 @@ src_configure() {
 	econf
 }
 
+src_test() {
+	# Tests attempt to call rcs commands on /dev/null and /tmp.
+	# https://bugs.gentoo.org/840173
+	local -x SANDBOX_PREDICT=${SANDBOX_PREDICT}
+	addpredict /
+	default
+}
+
 src_install() {
 	emake DESTDIR="${D}" install
 

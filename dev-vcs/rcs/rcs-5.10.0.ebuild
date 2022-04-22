@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,6 +39,14 @@ src_configure() {
 
 src_test() {
 	emake check
+}
+
+src_test() {
+	# Tests attempt to call rcs commands on /dev/null and /tmp.
+	# https://bugs.gentoo.org/840173
+	local -x SANDBOX_PREDICT=${SANDBOX_PREDICT}
+	addpredict /
+	default
 }
 
 src_install() {
