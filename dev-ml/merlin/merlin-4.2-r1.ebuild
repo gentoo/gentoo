@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,6 @@ RDEPEND="
 	dev-ml/csexp:=
 	dev-ml/yojson:=
 	dev-ml/menhir:=
-	>=dev-ml/dune-2.9
 	|| (
 		dev-lang/ocaml:0/4.11
 		dev-lang/ocaml:0/4.12
