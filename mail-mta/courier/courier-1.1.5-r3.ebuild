@@ -264,7 +264,7 @@ pkg_config() {
 	fi
 	export domainname
 
-	if [ "${ROOT}" = "/" ] ; then
+	if [[ -z "${ROOT}" ]] ; then
 		file="${ROOT}/etc/courier/locals"
 		if [ ! -f "${file}" ] ; then
 			echo "localhost" > "${file}";
