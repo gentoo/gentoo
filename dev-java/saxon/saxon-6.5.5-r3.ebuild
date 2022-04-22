@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/project/saxon/saxon6/${PV}/saxon${PV//./-}.zip"
 
 LICENSE="MPL-1.1"
 SLOT="6.5"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CP_DEPEND="dev-java/jdom:0"
 
