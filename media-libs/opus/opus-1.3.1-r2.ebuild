@@ -37,7 +37,7 @@ multilib_src_configure() {
 	# We want to disable intrinsics if no flags are enabled
 	# (This is a fun Bash construct to do that!)
 	# bug #752069
-	for i in "${INTRINSIC_FLAGS}" ; do
+	for i in ${INTRINSIC_FLAGS} ; do
 		use ${i} && myeconfargs+=( --enable-intrinsics ) && break
 	done || myeconfargs+=( --disable-intrinsics )
 
