@@ -11,14 +11,15 @@ SRC_URI="https://github.com/janestreet/ppx_sexp_conv/archive/v${PV}.tar.gz -> ${
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+ocamlopt"
 
 # Upper bound on ppxlib for bug #769536
 DEPEND="
-	=dev-ml/base-0.14*:=
+	>=dev-lang/ocaml-4.09.0
+	=dev-ml/base-0.15*:=
 	dev-ml/findlib:=
-	>=dev-ml/ppxlib-0.22.0:=
+	>=dev-ml/ppxlib-0.23:=
 	>=dev-ml/ocaml-compiler-libs-0.11.0:=
 	>=dev-ml/ocaml-migrate-parsetree-2.0.0:=
 	dev-ml/cinaps:=

@@ -15,7 +15,7 @@ KEYWORDS="amd64 arm arm64 ~ppc ppc64 x86"
 IUSE="+ocamlopt"
 
 DEPEND="
-	>=dev-ml/base-0.14.0:=
+	=dev-ml/base-0.14*:=
 	dev-ml/findlib:=
 	>=dev-ml/ppxlib-0.18.0:=
 	<dev-ml/ppxlib-0.22:=

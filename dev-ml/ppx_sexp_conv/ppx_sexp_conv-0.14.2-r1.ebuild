@@ -16,7 +16,7 @@ IUSE="+ocamlopt"
 
 # Upper bound on ppxlib for bug #769536
 DEPEND="
-	>=dev-ml/base-0.14.0:=
+	=dev-ml/base-0.14*:=
 	dev-ml/findlib:=
 	>=dev-ml/ppxlib-0.18.0:=
 	<dev-ml/ppxlib-0.21.0:=
