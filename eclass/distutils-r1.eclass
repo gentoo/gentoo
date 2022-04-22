@@ -1189,14 +1189,18 @@ distutils-r1_python_compile() {
 		fi
 
 		if [[ ${DISTUTILS_USE_PEP517} && ${GPEP517_TESTING} ]]; then
-			# issue build_ext only if it looks like we have something
-			# to build; setuptools is expensive to start
+			# issue build_ext only if it looks like we have at least
+			# two source files to build; setuptools is expensive
+			# to start and parallel builds can only benefit us if we're
+			# compiling at least two files
+			#
 			# see extension.py for list of suffixes
 			# .pyx is added for Cython
-			if [[ -n $(
+			if [[ 2 -eq $(
 				find '(' -name '*.c' -o -name '*.cc' -o -name '*.cpp' \
 					-o -name '*.cxx' -o -name '*.c++' -o -name '*.m' \
-					-o -name '*.mm' -o -name '*.pyx' ')' -print -quit
+					-o -name '*.mm' -o -name '*.pyx' ')' -printf '\n' |
+					head -n 2 | wc -l
 			) ]]; then
 				esetup.py build_ext -j "${jobs}" "${@}"
 			fi
