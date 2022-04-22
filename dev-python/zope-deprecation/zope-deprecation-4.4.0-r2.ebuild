@@ -22,6 +22,10 @@ LICENSE="ZPL"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
+RDEPEND="
+	!dev-python/namespace-zope
+"
+
 distutils_enable_tests unittest
 
 src_prepare() {
