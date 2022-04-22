@@ -8,7 +8,7 @@ NEED_EMACS=25.1
 
 inherit elisp
 
-DESCRIPTION="Simple mocking framework for Emacs "
+DESCRIPTION="Simple mocking framework for Emacs"
 HOMEPAGE="https://github.com/sigma/mocker.el/"
 SRC_URI="https://github.com/sigma/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/${MY_PN}-${PV}
