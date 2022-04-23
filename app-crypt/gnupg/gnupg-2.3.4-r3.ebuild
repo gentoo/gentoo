@@ -34,7 +34,7 @@ DEPEND=">=dev-libs/libassuan-2.5.0
 	readline? ( sys-libs/readline:0= )
 	smartcard? ( usb? ( virtual/libusb:1 ) )
 	tofu? ( >=dev-db/sqlite-3.27 )
-	tpm? ( >=app-crypt/tpm2-tss-2.4.0 )
+	tpm? ( >=app-crypt/tpm2-tss-2.4.0:= )
 	ssl? ( >=net-libs/gnutls-3.0:0= )
 	sys-libs/zlib
 "
