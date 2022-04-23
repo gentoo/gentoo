@@ -72,6 +72,7 @@ busybox_config_enabled() {
 # patches go here!
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.26.2-bb.patch
+	"${FILESDIR}"/${PN}-1.34.1-skip-selinux-search.patch
 	# "${FILESDIR}"/${P}-*.patch
 )
 
@@ -114,12 +115,14 @@ src_configure() {
 		ewarn "Could not locate user configfile, so we will save a default one"
 	fi
 
+	# setting SKIP_SELINUX skips searching for selinux at this stage. We don't
+	# need to search now in case we end up not needing it after all.
 	# setup the config file
-	emake -j1 -s allyesconfig >/dev/null
+	emake -j1 -s allyesconfig SKIP_SELINUX=$(usex selinux n y) >/dev/null #620918
 	# nommu forces a bunch of things off which we want on #387555
 	busybox_config_option n NOMMU
 	sed -i '/^#/d' .config
-	yes "" | emake -j1 -s oldconfig >/dev/null
+	yes "" | emake -j1 -s oldconfig SKIP_SELINUX=$(usex selinux n y) >/dev/null #620918
 
 	# now turn off stuff we really don't want
 	busybox_config_option n DMALLOC
