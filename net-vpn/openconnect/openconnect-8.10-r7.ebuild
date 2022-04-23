@@ -1,7 +1,7 @@
 # Copyright 2011-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="xml"
@@ -21,10 +21,10 @@ HOMEPAGE="http://www.infradead.org/openconnect.html"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5"
-IUSE="doc +gnutls gssapi libproxy lz4 nls pskc selinux smartcard stoken test"
+IUSE="doc +gnutls gssapi libproxy lz4 nls pskc smartcard stoken test"
 RESTRICT="!test? ( test )"
 
-COMMON_DEPEND="
+DEPEND="
 	dev-libs/libxml2
 	sys-libs/zlib
 	app-crypt/p11-kit
@@ -48,23 +48,19 @@ COMMON_DEPEND="
 	smartcard? ( sys-apps/pcsc-lite:0= )
 	stoken? ( app-crypt/stoken )
 "
-DEPEND="${COMMON_DEPEND}
-	test? (
-		net-libs/socket_wrapper
-		sys-libs/uid_wrapper
-		!gnutls? ( dev-libs/openssl:0[weak-ssl-ciphers(-)] )
-	)
-"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	sys-apps/iproute2
 	>=net-vpn/vpnc-scripts-20210402-r1
-	selinux? ( sec-policy/selinux-vpn )
 "
 BDEPEND="
 	virtual/pkgconfig
 	doc? ( ${PYTHON_DEPS} sys-apps/groff )
 	nls? ( sys-devel/gettext )
-	test? ( net-vpn/ocserv )
+	test? (
+		net-libs/socket_wrapper
+		net-vpn/ocserv
+		sys-libs/uid_wrapper
+	)
 "
 
 CONFIG_CHECK="~TUN"
@@ -122,7 +118,7 @@ src_configure() {
 
 src_test() {
 	local charset
-	for charset in UTF-8 ISO-8859-2; do
+	for charset in UTF-8 ISO8859-2; do
 		if [[ $(LC_ALL=cs_CZ.${charset} locale charmap 2>/dev/null) != ${charset} ]]; then
 			# If we don't have valid cs_CZ locale data, auth-nonascii will fail.
 			# Force a test skip by exiting with status 77.
