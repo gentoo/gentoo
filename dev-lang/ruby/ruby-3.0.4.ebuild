@@ -69,7 +69,7 @@ src_prepare() {
 
 	if use elibc_musl ; then
 		eapply "${FILESDIR}"/3.0/900-musl-*.patch
-		eapply "${FILESDIR}"/2.7/901-musl-*.patch
+		eapply "${FILESDIR}"/3.0/901-musl-*.patch
 	fi
 
 	einfo "Unbundling gems..."
