@@ -14,7 +14,7 @@ SRC_URI="
 	arm64? ( ${MY_PN}_${PV}_raspi.zip )
 	x86? ( ${MY_PN}_${PV}_i386.zip )
 "
-LICENSE="${MY_PN^^}"
+LICENSE="PICO-8 MIT BSD-2"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~arm ~arm64 ~x86"
 RESTRICT="bindist fetch"
