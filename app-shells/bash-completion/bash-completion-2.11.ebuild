@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -89,7 +89,10 @@ src_prepare() {
 
 src_test() {
 	# portage's HOME override breaks tests
-	emake check HOME="$(egethome "${UID}")" PYTESTFLAGS="-vv" NETWORK=none
+	local myhome=$(unset HOME; echo ~)
+	local -x SANDBOX_PREDICT=${SANDBOX_PREDICT}
+	addpredict "${myhome}"
+	emake check HOME="${myhome}" PYTESTFLAGS="-vv" NETWORK=none
 }
 
 src_install() {
