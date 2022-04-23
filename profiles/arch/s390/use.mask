@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -s390
 
+# Sam James <sam@gentoo.org> (2022-04-24)
+# gi-docgen (and friends?) not keyworded here
+gtk-doc
+
 # Sam James <sam@gentoo.org> (2022-04-20)
 # dev-vcs/subversion is not keyworded here
 subversion
