@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="app-crypt/tpm2-tss
+RDEPEND="app-crypt/tpm2-tss:=
 	dev-libs/openssl:0="
 DEPEND="${RDEPEND}
 	test? ( dev-util/cmocka )"
