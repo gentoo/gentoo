@@ -226,3 +226,23 @@ Signed-off-by: A. Wilcox <AWilcox@Wilcox-Tech.com>
    };
    guint n;
  
+--- a/src/polkitbackend/polkitbackendduktapeauthority.c
++++ b/src/polkitbackend/polkitbackendduktapeauthority.c
+@@ -1035,7 +1035,7 @@ js_polkit_user_is_in_netgroup (duk_context *cx)
+
+   user = duk_require_string (cx, 0);
+   netgroup = duk_require_string (cx, 1);
+-
++#ifdef HAVE_SETNETGRENT
+   if (innetgr (netgroup,
+                NULL,  /* host */
+                user,
+@@ -1043,7 +1043,7 @@ js_polkit_user_is_in_netgroup (duk_context *cx)
+     {
+       is_in_netgroup = TRUE;
+     }
+-
++#endif
+   duk_push_boolean (cx, is_in_netgroup);
+   return 1;
+ }
