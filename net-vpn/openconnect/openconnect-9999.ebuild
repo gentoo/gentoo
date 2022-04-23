@@ -38,7 +38,7 @@ COMMON_DEPEND="
 		dev-libs/nettle
 		>=net-libs/gnutls-3.6.13:0=
 		dev-libs/libtasn1:0=
-		app-crypt/tpm2-tss
+		app-crypt/tpm2-tss:=
 	)
 	gssapi? ( virtual/krb5 )
 	libproxy? ( net-libs/libproxy )
