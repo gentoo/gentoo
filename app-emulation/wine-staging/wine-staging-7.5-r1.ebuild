@@ -80,7 +80,7 @@ COMMON_DEPEND="
 	fontconfig? ( media-libs/fontconfig:=[${MULTILIB_USEDEP}] )
 	gphoto2? (
 		media-libs/libgphoto2:=[${MULTILIB_USEDEP}]
-		virtual/jpeg:0=[${MULTILIB_USEDEP}]
+		media-libs/libjpeg-turbo:0=[${MULTILIB_USEDEP}]
 	)
 	gssapi? ( virtual/krb5[${MULTILIB_USEDEP}] )
 	gstreamer? (
