@@ -30,6 +30,7 @@ REQUIRED_USE="^^ ( curl_ssl_gnutls curl_ssl_openssl ) "
 # libcurl must not be using an ssl backend boinc does not support.
 # If the libcurl ssl backend changes, boinc should be recompiled.
 DEPEND="
+	acct-group/boinc
 	acct-user/boinc
 	>=app-misc/ca-certificates-20080809
 	cuda? (
