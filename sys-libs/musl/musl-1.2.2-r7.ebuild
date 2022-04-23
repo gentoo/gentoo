@@ -161,7 +161,7 @@ src_install() {
 pkg_postinst() {
 	is_crosscompile && return 0
 
-	[ "${ROOT}" != "/" ] && return 0
+	[ -n "${ROOT}" ] && return 0
 
 	ldconfig || die
 }
