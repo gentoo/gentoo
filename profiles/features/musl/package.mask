@@ -2,6 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-04-22)
+# Compatibility packages for binary/pre-built software shouldn't
+# be needed on musl (and these fail to build anyway).
+sys-libs/libtermcap-compat
+sys-libs/libstdc++-v3
+
+# Sam James <sam@gentoo.org> (2022-04-22)
 # Needs strndupa, upstream not interested in supporting musl
 # bug #713542
 net-misc/casync
