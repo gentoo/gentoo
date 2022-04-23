@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit autotools bash-completion-r1 python-single-r1
+inherit autotools bash-completion-r1 python-any-r1
 
 DESCRIPTION="Tools for the TPM 2.0 TSS"
 HOMEPAGE="https://github.com/tpm2-software/tpm2-tools"
@@ -16,13 +16,11 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="+fapi test"
 
 RESTRICT="!test? ( test )"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND=">=app-crypt/tpm2-tss-3.0.1:=[fapi?]
 	dev-libs/openssl:=
 	net-misc/curl
-	sys-libs/efivar:=
-	${PYTHON_DEPS}"
+	sys-libs/efivar:="
 DEPEND="${RDEPEND}
 	test? (
 		app-crypt/swtpm
@@ -34,7 +32,7 @@ BDEPEND="virtual/pkgconfig
 	test? (
 		app-editors/vim-core
 		dev-tcltk/expect
-		$(python_gen_cond_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]')
+		$(python_gen_any_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]')
 	)
 	${PYTHON_DEPS}"
 
