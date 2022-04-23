@@ -67,7 +67,7 @@ COMMON_DEPEND="
 		media-libs/gstreamer:1.0[${MULTILIB_USEDEP}]
 		media-plugins/gst-plugins-meta:1.0[${MULTILIB_USEDEP}]
 	)
-	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
+	jpeg? ( media-libs/libjpeg-turbo:0=[${MULTILIB_USEDEP}] )
 	kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
 	lcms? ( media-libs/lcms:2=[${MULTILIB_USEDEP}] )
 	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
