@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2022-04-23)
+# Obsolete slots that are no longer used by current
+# dev-ruby/rqrcode versions and has no use on its own.
+# Masked for removal in 30 days.
+dev-ruby/rqrcode_core:0
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-22)
 # Unused java library. Removal on 2022-05-24.
 dev-java/jgraph
