@@ -186,6 +186,10 @@ multilib_src_test() {
 	unset GSETTINGS_BACKEND # bug #596380
 	python_setup
 
+	# https://bugs.gentoo.org/839807
+	local -x SANDBOX_PREDICT=${SANDBOX_PREDICT}
+	addpredict /usr/b
+
 	# Related test is a bit nitpicking
 	mkdir "$G_DBUS_COOKIE_SHA1_KEYRING_DIR"
 	chmod 0700 "$G_DBUS_COOKIE_SHA1_KEYRING_DIR"
