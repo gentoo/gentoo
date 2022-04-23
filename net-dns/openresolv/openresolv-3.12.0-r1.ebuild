@@ -25,8 +25,8 @@ src_configure() {
 }
 
 pkg_config() {
-	if [[ -z ${ROOT} ]]; then
-		eerror "We cannot configure unless \$ROOT=/"
+	if [[ -n ${ROOT} ]]; then
+		eerror "We cannot configure unless \$ROOT is empty"
 		return 1
 	fi
 
