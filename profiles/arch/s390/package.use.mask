@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-04-24)
+# dev-libs/libzip not keyworded on s390
+dev-lang/php zip
+
 # Sam James <sam@gentoo.org> (2022-04-20)
 # sys-apps/hwloc is not keyworded on s390
 sys-process/htop hwloc
