@@ -92,8 +92,7 @@ multilib_src_install_all() {
 }
 
 pkg_config() {
-
-	[ "${ROOT}" != "/" ] && \
+	[ -n "${ROOT}" ] && \
 		die 'Sorry, non-standard ROOT setting is not supported :-('
 
 	local msg='MySQL ODBC driver'
