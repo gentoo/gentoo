@@ -1,6 +1,14 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2022-04-24)
+# This is only for bringing in the not-upstreamed-yet LoongArch patchset;
+# masked everywhere in order to minimize impact on other arches.
+# In the meantime, force-enable on loong only.
+# This is not inside use.mask, because crossdev toolchain packages would
+# want to have the flag enabled without hassle.
+sys-libs/glibc experimental-loong
+
 # James Le Cuirot <chewi@gentoo.org> (2022-02-24)
 # These GRUB platforms are only for MIPS.
 sys-boot/grub grub_platforms_loongson grub_platforms_qemu-mips
