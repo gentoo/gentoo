@@ -27,7 +27,7 @@ DEPEND="
 	dev-libs/libnl:3
 	dev-libs/libxml2:2
 	>=dev-util/intel-graphics-compiler-1.0.10713
-	>=dev-util/intel-graphics-system-controller-0.2.4
+	>=dev-util/intel-graphics-system-controller-0.2.4:=
 	media-libs/mesa
 	>=virtual/opencl-3
 	l0? ( >=dev-libs/level-zero-1.7.15 )
