@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="app-crypt/tpm2-tss
+RDEPEND="app-crypt/tpm2-tss:=
 	dev-libs/openssl:0="
 DEPEND="${RDEPEND}
 	test? ( dev-util/cmocka )"
