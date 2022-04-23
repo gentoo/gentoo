@@ -155,8 +155,6 @@ zeroize-1.4.3
 inherit cargo systemd
 
 DESCRIPTION="High performance peer-to-peer mesh VPN"
-# Double check the homepage as the cargo_metadata crate
-# does not provide this value so instead repository is used
 HOMEPAGE="https://vpncloud.ddswd.de/"
 SRC_URI="https://github.com/dswd/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
@@ -170,6 +168,8 @@ IUSE="man"
 
 DEPEND="man? ( dev-ruby/asciidoctor )"
 RDEPEND=""
+
+QA_FLAGS_IGNORED="/usr/bin/${PN}"
 
 src_install() {
 	cargo_src_install
