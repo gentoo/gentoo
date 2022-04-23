@@ -8,15 +8,15 @@ inherit autotools systemd
 DESCRIPTION="Open source DMARC implementation"
 HOMEPAGE="http://www.trusteddomain.org/opendmarc/"
 SRC_URI="https://github.com/trusteddomainproject/OpenDMARC/archive/rel-${PN}-${PV//./-}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/OpenDMARC-rel-${PN}-${PV//./-}"
 
 LICENSE="BSD"
 SLOT="0/3"  # 1.4 has API breakage with 1.3, yet uses same soname
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
-IUSE="spf +reports static-libs"
+IUSE="spf +reports"
 
 DEPEND="reports? ( dev-perl/DBI )
-	|| ( mail-filter/libmilter mail-mta/sendmail )
-	elibc_glibc? ( <sys-libs/glibc-2.34 )"  #839951
+	|| ( mail-filter/libmilter mail-mta/sendmail )"
 RDEPEND="${DEPEND}
 	acct-user/opendmarc
 	reports? (
@@ -26,10 +26,9 @@ RDEPEND="${DEPEND}
 	)
 	spf? ( mail-filter/libspf2 )"
 
-S=${WORKDIR}/OpenDMARC-rel-${PN}-${PV//./-}
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.1.1-CVE-2021-34555.patch
+	"${FILESDIR}"/${PN}-1.4.1.1-underlinking.patch
 )
 
 src_prepare() {
@@ -43,16 +42,16 @@ src_prepare() {
 
 src_configure() {
 	econf \
+		--disable-static \
 		$(use_with spf) \
 		$(use_with spf spf2-include "${EPREFIX}"/usr/include/spf2) \
-		$(use_with spf spf2-lib "${EPREFIX}"/usr/$(get_libdir)) \
-		$(use_enable static-libs static)
+		$(use_with spf spf2-lib "${EPREFIX}"/usr/$(get_libdir))
 }
 
 src_install() {
 	default
 
-	use static-libs || rm -f "${ED}"/usr/$(get_libdir)/*.la
+	find "${ED}" -name '*.la' -delete || die
 
 	newinitd "${FILESDIR}"/opendmarc.initd opendmarc
 	newconfd "${FILESDIR}"/opendmarc.confd opendmarc
