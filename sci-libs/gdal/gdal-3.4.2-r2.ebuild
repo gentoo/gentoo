@@ -56,7 +56,7 @@ DEPEND="
 	gml? ( >=dev-libs/xerces-c-3.1 )
 	heif? ( media-libs/libheif:= )
 	hdf5? ( >=sci-libs/hdf5-1.6.4:=[szip] )
-	jpeg? ( virtual/jpeg:0= )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
 	lzma? ( || (
 		app-arch/xz-utils
@@ -297,7 +297,7 @@ src_install() {
 	if use java; then
 		# bug #752399
 		java-pkg_dojar "${S}"/swig/java/gdal.jar
-		dolib.so "${S}"/swig/java/.libs/libgdalalljni.so.*
+		dolib.so "${S}"/swig/java/.libs/libgdalalljni.so*
 	fi
 
 	if use perl; then
