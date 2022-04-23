@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,8 @@ RESTRICT="strip" # includes non-native binaries
 
 RDEPEND="
 	acct-group/plugdev
-	>=dev-lang/jimtcl-0.76:0=
+	>=dev-lang/jimtcl-0.76:=
+	<dev-lang/jimtcl-0.80:=
 	capstone? ( dev-libs/capstone )
 	cmsis-dap? ( dev-libs/hidapi )
 	jlink? ( >=dev-embedded/libjaylink-0.2.0 )
