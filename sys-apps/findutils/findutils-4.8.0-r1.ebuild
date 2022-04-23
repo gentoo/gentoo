@@ -67,6 +67,12 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
+src_test() {
+	local -x SANDBOX_PREDICT=${SANDBOX_PREDICT}
+	addpredict /
+	default
+}
+
 src_compile() {
 	# We don't build locate, but the docs want a file in there.
 	emake -C locate dblocation.texi
