@@ -365,6 +365,11 @@ multilib_src_test() {
 
 	local -x SQLITE_HISTORY="${T}/sqlite_history_${ABI}"
 
+	# e_uri.test tries to open files in /.
+	# https://bugs.gentoo.org/839798
+	local SANDBOX_PREDICT=${SANDBOX_PREDICT}
+	addpredict "/test.db:/ÿ.db"
+
 	emake HAVE_TCL="$(usex tcl 1 "")" $(use debug && echo fulltest || echo test)
 }
 
