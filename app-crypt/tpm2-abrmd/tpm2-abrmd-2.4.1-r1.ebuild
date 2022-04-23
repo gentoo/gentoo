@@ -20,11 +20,11 @@ RDEPEND="acct-group/tss
 	acct-user/tss
 	sys-apps/dbus
 	dev-libs/glib:=
-	app-crypt/tpm2-tss"
+	app-crypt/tpm2-tss:="
 DEPEND="${RDEPEND}
 	test? (
 		app-crypt/swtpm
-		>=app-crypt/tpm2-tss-3.0.0
+		>=app-crypt/tpm2-tss-3.0.0:=
 		dev-util/cmocka
 	)"
 BDEPEND="virtual/pkgconfig
