@@ -8,15 +8,17 @@ PYTHON_COMPAT=( pypy3 python3_{8..10} )
 
 inherit distutils-r1
 
+MY_P=watchfiles-${PV}
 DESCRIPTION="Simple, modern file watching and code reload in Python"
 HOMEPAGE="
 	https://pypi.org/project/watchgod/
-	https://github.com/samuelcolvin/watchgod/
+	https://github.com/samuelcolvin/watchfiles/
 "
 SRC_URI="
-	https://github.com/samuelcolvin/watchgod/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+	https://github.com/samuelcolvin/watchfiles/archive/v${PV}.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
+S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
