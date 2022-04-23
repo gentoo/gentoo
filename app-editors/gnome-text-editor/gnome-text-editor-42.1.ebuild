@@ -38,10 +38,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PV}-appdata-fix-appstream-validation.patch
-)
-
 src_configure() {
 	local emesonargs=(
 		$(meson_feature spell enchant)
