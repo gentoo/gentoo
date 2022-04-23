@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby26 ruby27"
+USE_RUBY="ruby26 ruby27 ruby30"
 
 RUBY_FAKEGEM_RECIPE_TEST="cucumber"
 RUBY_FAKEGEM_RECIPE_DOC="none"
@@ -28,7 +28,7 @@ RDEPEND="${RDEPEND}"
 ruby_add_rdepend "
 	=dev-ruby/bundler-2*
 	>=dev-ruby/childprocess-2.0 <dev-ruby/childprocess-5
-	>=dev-ruby/contracts-0.16.0:0 <dev-ruby/contracts-0.18:0
+	>=dev-ruby/contracts-0.16.0 <dev-ruby/contracts-0.18
 	>=dev-ruby/rspec-expectations-3.4:3
 	dev-ruby/thor:1
 	>=dev-util/cucumber-2.4 <dev-util/cucumber-8
