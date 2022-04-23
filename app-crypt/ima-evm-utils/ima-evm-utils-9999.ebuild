@@ -16,7 +16,7 @@ IUSE="debug test tpm"
 RDEPEND="
 	dev-libs/openssl:0=
 	sys-apps/keyutils:=
-	tpm? ( app-crypt/tpm2-tss )"
+	tpm? ( app-crypt/tpm2-tss:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/asciidoc
