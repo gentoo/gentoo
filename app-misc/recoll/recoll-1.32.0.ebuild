@@ -23,8 +23,10 @@ REQUIRED_USE="
 "
 
 DEPEND="
+	dev-libs/libxml2
+	dev-libs/libxslt
 	dev-libs/xapian:=
-	sys-libs/zlib:=
+	sys-libs/zlib
 	virtual/libiconv
 	chm? (
 		dev-libs/chmlib
@@ -57,17 +59,6 @@ RDEPEND="
 	${DEPEND}
 	app-arch/unzip
 "
-
-pkg_pretend() {
-	if has_version "<app-misc/recoll-1.20"; then
-		elog "Installing ${PV} over an 1.19 index is possible,"
-		elog "but there have been small changes in the way"
-		elog "compound words are indexed. So it is best to reset"
-		elog "the index. The best method to reset the index is to"
-		elog "quit all recoll programs and delete the index directory"
-		elog "rm -rf ~/.recoll/xapiandb, then start recoll or recollindex."
-	fi
-}
 
 pkg_setup() {
 	if use inotify; then
