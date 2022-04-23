@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ IUSE="+fapi test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND=">=app-crypt/tpm2-tss-3.0.1[fapi?]
+RDEPEND=">=app-crypt/tpm2-tss-3.0.1:=[fapi?]
 	dev-libs/openssl:=
 	net-misc/curl
 	sys-libs/efivar:=
