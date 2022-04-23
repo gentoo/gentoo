@@ -25,6 +25,7 @@ RDEPEND="
 	dev-qt/qtwebchannel:5
 	dev-qt/qtwebengine:5[widgets]
 	dev-qt/qtwidgets:5
+	virtual/opengl
 "
 
 DEPEND="${RDEPEND}"
