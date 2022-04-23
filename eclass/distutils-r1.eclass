@@ -159,13 +159,6 @@ esac
 #     ${DISTUTILS_DEPS}"
 # @CODE
 
-# @ECLASS_VARIABLE: GPEP517_TESTING
-# @USER_VARIABLE
-# @DESCRIPTION:
-# Enable in make.conf to test building via dev-python/gpep517 instead of
-# inline Python snippets.  dev-python/gpep517 needs to be installed
-# first.
-
 if [[ ! ${_DISTUTILS_R1} ]]; then
 
 [[ ${EAPI} == 6 ]] && inherit eutils xdg-utils
@@ -192,12 +185,8 @@ _distutils_set_globals() {
 			die "DISTUTILS_USE_SETUPTOOLS is not used in PEP517 mode"
 		fi
 
-		# installer is used to install the wheel
-		# tomli is used to read build-backend from pyproject.toml
 		bdep='
-			<dev-python/installer-0.5.1[${PYTHON_USEDEP}]
-			>=dev-python/installer-0.4.0_p20220124[${PYTHON_USEDEP}]
-			>=dev-python/tomli-1.2.3[${PYTHON_USEDEP}]'
+			>=dev-python/gpep517-3[${PYTHON_USEDEP}]'
 		case ${DISTUTILS_USE_PEP517} in
 			flit)
 				bdep+='
@@ -1029,20 +1018,7 @@ _distutils-r1_get_backend() {
 	if [[ -f pyproject.toml ]]; then
 		# if pyproject.toml exists, try getting the backend from it
 		# NB: this could fail if pyproject.toml doesn't list one
-		if [[ ${GPEP517_TESTING} ]]; then
-			build_backend=$(gpep517 get-backend)
-		else
-			build_backend=$(
-				"${EPYTHON}" - 3>&1 <<-EOF
-					import os
-					import tomli
-					print(tomli.load(open("pyproject.toml", "rb"))
-							.get("build-system", {})
-							.get("build-backend", ""),
-						file=os.fdopen(3, "w"))
-				EOF
-			)
-		fi
+		build_backend=$(gpep517 get-backend)
 	fi
 	if [[ -z ${build_backend} && ${DISTUTILS_USE_PEP517} == setuptools &&
 		-f setup.py ]]
@@ -1108,45 +1084,18 @@ distutils_pep517_install() {
 
 	local build_backend=$(_distutils-r1_get_backend)
 	einfo "  Building the wheel for ${PWD#${WORKDIR}/} via ${build_backend}"
-	if [[ ${GPEP517_TESTING} ]]; then
-		local wheel=$(
-			gpep517 build-wheel --backend "${build_backend}" \
-					--output-fd 3 \
-					--wheel-dir "${WHEEL_BUILD_DIR}" 3>&1 >&2 ||
-				die "Wheel build failed"
-		)
-	else
-		local wheel=$(
-			"${EPYTHON}" - 3>&1 >&2 <<-EOF || die "Wheel build failed"
-				import ${build_backend%:*}
-				import os
-				print(${build_backend/:/.}.build_wheel(os.environ['WHEEL_BUILD_DIR']),
-					file=os.fdopen(3, 'w'))
-			EOF
-		)
-	fi
+	local wheel=$(
+		gpep517 build-wheel --backend "${build_backend}" \
+				--output-fd 3 \
+				--wheel-dir "${WHEEL_BUILD_DIR}" 3>&1 >&2 ||
+			die "Wheel build failed"
+	)
 	[[ -n ${wheel} ]] || die "No wheel name returned"
 
 	einfo "  Installing the wheel to ${root}"
-	if [[ ${GPEP517_TESTING} ]]; then
-		gpep517 install-wheel --destdir="${root}" --interpreter="${PYTHON}" \
-				--prefix="${EPREFIX}/usr" "${WHEEL_BUILD_DIR}/${wheel}" ||
-			die "Wheel install failed"
-	else
-		# NB: --compile-bytecode does not produce the correct paths,
-		# and python_optimize doesn't handle being called outside D,
-		# so we just defer compiling until the final merge
-		# NB: we override sys.prefix & sys.exec_prefix because otherwise
-		# installer would use virtualenv's prefix
-		local -x PYTHON_PREFIX=${EPREFIX}/usr
-		"${EPYTHON}" - -d "${root}" "${WHEEL_BUILD_DIR}/${wheel}" --no-compile-bytecode \
-				<<-EOF || die "installer failed"
-			import os, sys
-			sys.prefix = sys.exec_prefix = os.environ["PYTHON_PREFIX"]
-			from installer.__main__ import main
-			main(sys.argv[1:])
-		EOF
-	fi
+	gpep517 install-wheel --destdir="${root}" --interpreter="${PYTHON}" \
+			--prefix="${EPREFIX}/usr" "${WHEEL_BUILD_DIR}/${wheel}" ||
+		die "Wheel install failed"
 
 	# remove installed licenses
 	find "${root}$(python_get_sitedir)" \
@@ -1156,11 +1105,7 @@ distutils_pep517_install() {
 	# clean the build tree; otherwise we may end up with PyPy3
 	# extensions duplicated into CPython dists
 	if [[ ${DISTUTILS_USE_PEP517:-setuptools} == setuptools ]]; then
-		if [[ ${GPEP517_TESTING} ]]; then
-			rm -rf build || die
-		else
-			esetup.py clean -a
-		fi
+		rm -rf build || die
 	fi
 }
 
@@ -1183,13 +1128,13 @@ distutils-r1_python_compile() {
 			# call setup.py build when using setuptools (either via PEP517
 			# or in legacy mode)
 
-			if [[ ${GPEP517_TESTING} && ${DISTUTILS_USE_PEP517} ]]; then
+			if [[ ${DISTUTILS_USE_PEP517} ]]; then
 				if [[ -d build ]]; then
 					eqawarn "A 'build' directory exists already.  Artifacts from this directory may"
 					eqawarn "be picked up by setuptools when building for another interpreter."
 					eqawarn "Please remove this directory prior to building."
 				fi
-			elif [[ ! ${DISTUTILS_USE_PEP517} ]]; then
+			else
 				_distutils-r1_copy_egg_info
 			fi
 
@@ -1200,7 +1145,7 @@ distutils-r1_python_compile() {
 				jobs=$(( nproc + 1 ))
 			fi
 
-			if [[ ${DISTUTILS_USE_PEP517} && ${GPEP517_TESTING} ]]; then
+			if [[ ${DISTUTILS_USE_PEP517} ]]; then
 				# issue build_ext only if it looks like we have at least
 				# two source files to build; setuptools is expensive
 				# to start and parallel builds can only benefit us if we're
