@@ -19,7 +19,7 @@ SRC_URI="https://codeload.github.com/stleary/JSON-java/tar.gz/${PV} -> ${P}.tar.
 
 LICENSE="JSON"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 # Compile dependencies
 # POM: pom.xml
