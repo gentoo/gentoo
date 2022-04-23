@@ -8,7 +8,7 @@ inherit desktop xdg
 DESCRIPTION="A time-frequency browser designed for visualization of spectral domains"
 HOMEPAGE="https://www.baudline.com/"
 SRC_URI="amd64? ( https://www.baudline.com/${PN}_${PV}_linux_x86_64.tar.gz )
-	x86? ( https://www.baudline.com/baudline_1.08_linux_i686.tar.gz )"
+	x86? ( https://www.baudline.com/${PN}_${PV}_linux_i686.tar.gz )"
 
 LICENSE="baudline"
 SLOT="0"
