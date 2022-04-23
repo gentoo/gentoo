@@ -39,6 +39,11 @@ BDEPEND="
 distutils_enable_tests setup.py
 
 src_test() {
+	# With PYTHONDONTWRITEBYTECODE=, python will try rebuild all sorts of modules.
+	# https://bugs.gentoo.org/840266
+	local -x SANDBOX_PREDICT=${SANDBOX_PREDICT}
+	addpredict /
+
 	local -x PYTHONDONTWRITEBYTECODE=
 	distutils-r1_src_test
 }
