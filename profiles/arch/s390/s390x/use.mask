@@ -4,3 +4,4 @@ abi_s390_32
 
 # sys-libs/libunwind is keyworded on s390x
 -unwind
+-libunwind

@@ -137,3 +137,4 @@ opencl
 
 # sys-libs/libunwind is masked on s390, but enabled on s390x
 unwind
+libunwind
