@@ -66,7 +66,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	policykit? ( >=sys-auth/polkit-0.103 )
 	sqlite? ( dev-db/sqlite )
 	systemd? ( >=sys-apps/systemd-211 )
-	tpm? ( app-crypt/tpm2-tss )
+	tpm? ( app-crypt/tpm2-tss:= )
 	uefi? (
 		sys-apps/fwupd-efi
 		sys-boot/efibootmgr
