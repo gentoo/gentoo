@@ -77,6 +77,9 @@ PATCHES=(
 
 	# Don't bother copying Python's libraries (bug #798942)
 	"${WORKDIR}"/${PN}-2.9.12-dont-copy-python-ldflags.patch
+
+	# https://bugs.gentoo.org/839804
+	"${FILESDIR}"/libxml2-2.9.13-testapi-missing-xml.patch
 )
 
 src_unpack() {
