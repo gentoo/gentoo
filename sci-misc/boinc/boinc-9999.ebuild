@@ -8,10 +8,10 @@ EAPI=8
 MY_PV=7.18
 WX_GTK_VER=3.0-gtk3
 
-inherit autotools desktop flag-o-matic linux-info systemd wxwidgets xdg-utils
+inherit autotools desktop flag-o-matic linux-info wxwidgets xdg-utils
 
 DESCRIPTION="The Berkeley Open Infrastructure for Network Computing"
-HOMEPAGE="https://boinc.ssl.berkeley.edu/"
+HOMEPAGE="https://boinc.berkeley.edu/"
 
 SRC_URI="X? ( https://boinc.berkeley.edu/logo/boinc_glossy2_512_F.tif -> ${PN}.tif )"
 if [[ ${PV} == *9999 ]] ; then
@@ -44,7 +44,6 @@ DEPEND="
 	X? (
 		dev-db/sqlite:3
 		media-libs/freeglut
-		virtual/jpeg:0=
 		x11-libs/gtk+:3
 		x11-libs/libICE
 		>=x11-libs/libnotify-0.7
