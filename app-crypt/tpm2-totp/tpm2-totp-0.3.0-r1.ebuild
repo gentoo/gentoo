@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,14 +16,14 @@ IUSE="plymouth test"
 
 REQUIRED_USE="test? ( plymouth )"
 
-RDEPEND="app-crypt/tpm2-tss
+RDEPEND="app-crypt/tpm2-tss:=
 	media-gfx/qrencode
 	plymouth? ( sys-boot/plymouth )"
 DEPEND="${RDEPEND}
 	test? (
 		app-crypt/swtpm
 		app-crypt/tpm2-tools
-		>=app-crypt/tpm2-tss-3.0.0
+		>=app-crypt/tpm2-tss-3.0.0:=
 		sys-apps/fakeroot
 		sys-auth/oath-toolkit
 	)"
