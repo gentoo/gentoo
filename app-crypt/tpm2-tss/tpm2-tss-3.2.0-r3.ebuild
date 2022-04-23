@@ -91,4 +91,5 @@ multilib_src_install() {
 
 pkg_postinst() {
 	tmpfiles_process tpm2-tss-fapi.conf
+	udev_reload
 }
