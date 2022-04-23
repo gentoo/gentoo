@@ -45,6 +45,7 @@ REQUIRED_USE="pam? ( !static )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.46-dbscp.patch
+	"${FILESDIR}"/${PN}-2022.82-x11.patch
 )
 
 set_options() {
