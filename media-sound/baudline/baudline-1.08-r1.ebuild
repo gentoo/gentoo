@@ -6,11 +6,9 @@ EAPI=6
 inherit desktop xdg
 
 DESCRIPTION="A time-frequency browser designed for visualization of spectral domains"
-HOMEPAGE="http://www.baudline.com/"
-SRC_URI="amd64? ( http://www.baudline.com/${PN}_${PV}_linux_x86_64.tar.gz )
-	ppc? ( http://www.baudline.com/${PN}_${PV}_linux_ppc.tar.gz )
-	s390? ( http://www.baudline.com/${PN}_${PV}_linux_s390.tar.gz )
-	x86? ( http://www.baudline.com/baudline_1.08_linux_i686.tar.gz )"
+HOMEPAGE="https://www.baudline.com/"
+SRC_URI="amd64? ( https://www.baudline.com/${PN}_${PV}_linux_x86_64.tar.gz )
+	x86? ( https://www.baudline.com/baudline_1.08_linux_i686.tar.gz )"
 
 LICENSE="baudline"
 SLOT="0"
