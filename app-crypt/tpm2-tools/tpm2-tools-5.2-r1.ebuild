@@ -18,7 +18,7 @@ IUSE="+fapi test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND=">=app-crypt/tpm2-tss-3.0.1[fapi?]
+RDEPEND=">=app-crypt/tpm2-tss-3.0.1:=[fapi?]
 	dev-libs/openssl:=
 	net-misc/curl
 	sys-libs/efivar:=
