@@ -10,6 +10,9 @@
 		<flag name="bzip2">Bzip2 loader support</flag>
 		<flag name="gif">Gif image loader support</flag>
 		<flag name="jpeg">Jpeg image loader support</flag>
+		<flag name="heif">Hief and Avif image loader support</flag>
+		<flag name="eps">Eps image loader support</flag>
+		<flag name="jpegxl">Jxl image loader support</flag>
 		<flag name="mp3">ID3 loader support</flag>
 		<flag name="png">PNG image loader support</flag>
 		<flag name="shm">Use MIT shared memory support for X image transfer</flag>

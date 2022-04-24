@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Nickolas Raymond Kaczynski <nrk@disroot.org> (2022-04-24)
+# Dependencies are missing keywords
+media-libs/imlib2 svg heif jpegxl
+
 # Sam James <sam@gentoo.org> (2022-04-24)
 # Requires dev-util/pahole.
 sys-kernel/gentoo-kernel debug
