@@ -34,3 +34,5 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+distutils_enable_sphinx docs \
+	dev-python/alabaster
