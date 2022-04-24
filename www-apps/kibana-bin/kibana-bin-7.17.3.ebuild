@@ -21,6 +21,7 @@ RDEPEND="
 	acct-group/kibana
 	acct-user/kibana
 	dev-libs/expat
+	dev-libs/nspr
 	dev-libs/nss
 	>=net-libs/nodejs-16.13.0
 "
