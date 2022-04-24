@@ -49,6 +49,7 @@ dev-ml/ppx_base:0/0.15
 dev-ml/ppx_fields_conv:0/0.15
 dev-ml/ppx_here:0/0.15
 dev-ml/ppx_let:0/0.15
+dev-ml/ppx_sexp_message:0/0.15
 dev-ml/ppx_inline_test:0/0.15.0
 dev-ml/ppx_expect:0/0.15.0
 
