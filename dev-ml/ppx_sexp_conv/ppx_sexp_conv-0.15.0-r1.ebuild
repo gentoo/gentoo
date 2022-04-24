@@ -16,12 +16,9 @@ IUSE="+ocamlopt"
 
 # Upper bound on ppxlib for bug #769536
 DEPEND="
-	>=dev-lang/ocaml-4.09.0
 	dev-ml/base:${SLOT}
 	dev-ml/findlib:=
 	>=dev-ml/ppxlib-0.23:=
 	>=dev-ml/ocaml-compiler-libs-0.11.0:=
-	>=dev-ml/ocaml-migrate-parsetree-2.0.0:=
-	dev-ml/cinaps:=
 "
 RDEPEND="${DEPEND}"
