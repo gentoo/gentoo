@@ -16,6 +16,7 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="
 	x11-libs/gtk+:3
 	>=dev-libs/glib-2.6:2
+	x11-libs/gdk-pixbuf:2
 "
 RDEPEND="${DEPEND}"
 
