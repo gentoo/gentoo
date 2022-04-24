@@ -90,12 +90,12 @@ src_configure() {
 		$(crt-use_with libraries)
 		$(crt-use_with tools)
 		$(
-			$(tc-getCPP ${CTARGET}) ${CPPFLAGS} -dM - </dev/null | grep -q __MINGW64__
-			case ${PIPESTATUS[*]} in
-				'0 0') echo --disable-lib32 --enable-lib64;;
-				'0 1') echo --enable-lib32 --disable-lib64;;
-				*) die "failed check for __MINGW64__";;
-			esac
+			if use !headers-only; then
+				# not checking cpp errors due to bug #840662
+				$(tc-getCPP ${CTARGET}) ${CPPFLAGS} -dM - </dev/null | grep -q __MINGW64__ \
+					&& echo --disable-lib32 --enable-lib64 \
+					|| echo --enable-lib32 --disable-lib64
+			fi
 		)
 	)
 
