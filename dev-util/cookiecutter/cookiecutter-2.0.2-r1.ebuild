@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~ppc64 ~x86"
 RDEPEND="
 	>=dev-python/binaryornot-0.4.4[${PYTHON_USEDEP}]
 	>=dev-python/click-7.0[${PYTHON_USEDEP}]
-	<dev-python/click-8.0.0[${PYTHON_USEDEP}]
+	<dev-python/click-9.0.0[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.7[${PYTHON_USEDEP}]
 	<dev-python/jinja-4.0.0[${PYTHON_USEDEP}]
 	>=dev-python/jinja2-time-0.2.0[${PYTHON_USEDEP}]
@@ -40,6 +40,8 @@ PATCHES=(
 	"${FILESDIR}/test_cli-1.7.2.patch"
 	# https://github.com/cookiecutter/cookiecutter/issues/1655
 	"${FILESDIR}/${P}-fix-path-in-test.patch"
+	# https://github.com/cookiecutter/cookiecutter/pull/1643
+	"${FILESDIR}/${P}-relax-click-dependency.patch"
 )
 
 distutils_enable_tests pytest
