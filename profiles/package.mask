@@ -37,15 +37,15 @@
 # New release of janestreet packages need to tested
 dev-ml/sexplib0:0/0.15
 dev-ml/base:0/0.15
-dev-ml/ppx_expect:0/0.15.0
-dev-ml/ppx_inline_test:0/0.15.0
+dev-ml/stdio:0/0.15
 dev-ml/ppx_sexp_conv:0/0.15
-dev-ml/stdio:0/0.15.0
-dev-ml/parsexp:0/0.15
-dev-ml/ppx_cold:0/0.15
-dev-ml/ppx_compare:0/0.15
 dev-ml/ppx_enumerate:0/0.15
+dev-ml/ppx_compare:0/0.15
 dev-ml/ppx_hash:0/0.15
+dev-ml/ppx_cold:0/0.15
+dev-ml/parsexp:0/0.15
+dev-ml/ppx_inline_test:0/0.15.0
+dev-ml/ppx_expect:0/0.15.0
 
 # Hans de Graaff <graaff@gentoo.org> (2022-04-23)
 # Obsolete slots that are no longer used by current
