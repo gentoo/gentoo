@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -207,14 +207,12 @@ src_compile() {
 }
 
 src_install() {
-	local inst INSTALL_TARGETS
-	INSTALL_TARGETS=( install install_tmpfiles_configuration )
+	local inst
+	local INSTALL_TARGETS=( install install_tmpfiles_configuration )
 	# install systemd related files only when requested, bug #522430
-	use systemd && INSTALL_TARGETS+=( install_systemd_units install_systemd_generators )
+	use systemd && INSTALL_TARGETS+=( systemdutildir="$(systemd_get_utildir)" install_systemd_units install_systemd_generators )
 	use device-mapper-only && INSTALL_TARGETS=( install_device-mapper )
-	for inst in ${INSTALL_TARGETS[@]}; do
-		emake V=1 DESTDIR="${D}" ${inst}
-	done
+	emake V=1 DESTDIR="${D}" "${INSTALL_TARGETS[@]}"
 
 	newinitd "${FILESDIR}"/device-mapper.rc-2.02.105-r2 device-mapper
 	newconfd "${FILESDIR}"/device-mapper.conf-1.02.22-r3 device-mapper
