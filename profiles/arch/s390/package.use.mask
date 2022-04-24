@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-04-24)
+# sssd not keyworded here
+app-admin/sudo sssd
+
+# Sam James <sam@gentoo.org> (2022-04-24)
 # sys-apps/systemd is not keyworded here
 sys-auth/pambase homed
 
