@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="
+	>=dev-lang/ocaml-4.10.0
 	dev-ml/sexplib0:${SLOT}
 	dev-ml/dune-configurator:=
 "
