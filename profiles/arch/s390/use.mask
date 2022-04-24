@@ -5,6 +5,11 @@
 -s390
 
 # Sam James <sam@gentoo.org> (2022-04-24)
+# Desktopy stacks not currently keyworded
+alsa
+pulseaudio
+
+# Sam James <sam@gentoo.org> (2022-04-24)
 # gi-docgen (and friends?) not keyworded here
 gtk-doc
 
