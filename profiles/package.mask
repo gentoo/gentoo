@@ -45,6 +45,7 @@ dev-ml/parsexp:0/0.15
 dev-ml/ppx_cold:0/0.15
 dev-ml/ppx_compare:0/0.15
 dev-ml/ppx_enumerate:0/0.15
+dev-ml/ppx_hash:0/0.15
 
 # Hans de Graaff <graaff@gentoo.org> (2022-04-23)
 # Obsolete slots that are no longer used by current
