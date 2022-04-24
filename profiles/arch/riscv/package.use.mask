@@ -1,6 +1,11 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jakov Smolić <jsmolic@gentoo.org> (2022-04-24)
+# sys-libs/db is being deprecated (bug #837629)
+# so avoid keywording 4.8 slot
+dev-lisp/clisp berkdb
+
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded
 app-text/enchant nuspell
