@@ -6,6 +6,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-24)
+# Old version of dev-java/fop gets masked (bug #616474).
+# Remove this entry after stabilization of dev-java/fop:2.7 (bug #727504).
+dev-lang/logtalk fop
+net-fs/openafs doc
+
 # Matt Turner <mattst88@gentoo.org> (2022-03-25)
 # Depends on libsoup:3.0
 >=gnome-base/gvfs-1.50 http
