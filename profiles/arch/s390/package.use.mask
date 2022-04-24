@@ -33,6 +33,7 @@ dev-libs/libisoburn launch-frontend launch-frontend-setuid frontend-optional
 
 # Sam James <sam@gentoo.org> (2022-04-24)
 # dev-libs/libzip not keyworded on s390
+media-gfx/imagemagick zip
 dev-lang/php zip
 
 # Sam James <sam@gentoo.org> (2022-04-20)
