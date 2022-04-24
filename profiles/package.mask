@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-24)
+# Vulnerable (CVE-2017-5661), bug #616474.
+# Stabilization of newer version (bug #727504) presently blocked by bug #832824.
+<dev-java/fop-2.7
+<dev-java/fontbox-2.0.24
+
 # Alfredo Tupone <tupone@gentoo.org> (2022-04-24)
 # New release of janestreet packages need to tested
 dev-ml/sexplib0:0/0.15
