@@ -32,7 +32,6 @@ REQUIRED_USE="^^ ( curl_ssl_gnutls curl_ssl_openssl ) "
 # libcurl must not be using an ssl backend boinc does not support.
 # If the libcurl ssl backend changes, boinc should be recompiled.
 DEPEND="
-	acct-group/boinc
 	acct-user/boinc
 	>=app-misc/ca-certificates-20080809
 	cuda? (
@@ -45,6 +44,7 @@ DEPEND="
 	X? (
 		dev-db/sqlite:3
 		media-libs/freeglut
+		media-libs/libjpeg-turbo:=
 		x11-libs/gtk+:3
 		x11-libs/libICE
 		>=x11-libs/libnotify-0.7
@@ -52,7 +52,6 @@ DEPEND="
 		x11-libs/libXi
 		x11-libs/libXmu
 		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,webkit]
-		virtual/jpeg
 	)
 "
 BDEPEND="app-text/docbook-xml-dtd:4.4
