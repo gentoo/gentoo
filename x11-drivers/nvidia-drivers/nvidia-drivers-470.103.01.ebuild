@@ -172,6 +172,7 @@ src_compile() {
 		HOST_LD="$(tc-getBUILD_LD)"
 		NV_USE_BUNDLED_LIBJANSSON=0
 		NV_VERBOSE=1 DO_STRIP= MANPAGE_GZIP= OUTPUTDIR=out
+		XNVCTRL_CFLAGS=-fPIC #840389
 	)
 
 	use driver && linux-mod_src_compile
