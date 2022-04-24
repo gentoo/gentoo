@@ -1,0 +1,67 @@
+https://github.com/PyO3/setuptools-rust/pull/222
+https://github.com/PyO3/setuptools-rust/issues/221
+https://bugs.gentoo.org/840122
+
+From 3441f25d9524d649f17475a40c292a7fdb14efd4 Mon Sep 17 00:00:00 2001
+From: David Hewitt <1939362+davidhewitt@users.noreply.github.com>
+Date: Sat, 23 Apr 2022 07:23:08 +0100
+Subject: [PATCH] remove setuptools monkey patch
+
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["setuptools>=46.1", "setuptools_scm[toml]>=3.4.3"]
++requires = ["setuptools>=58.0", "setuptools_scm[toml]>=3.4.3"]
+ build-backend = "setuptools.build_meta"
+ 
+ [tool.setuptools_scm]
+--- a/setuptools_rust/setuptools_ext.py
++++ b/setuptools_rust/setuptools_ext.py
+@@ -240,44 +240,19 @@ def get_tag(self) -> Tuple[str, str, str]:
+         dist.cmdclass["bdist_wheel"] = bdist_wheel_rust_extension
+ 
+ 
+-def patch_distutils_build() -> None:
+-    """Patch distutils to use `has_ext_modules()`
+-
+-    See https://github.com/pypa/distutils/pull/43
+-    """
+-    from distutils.command import build as _build
+-
+-    class build(_build.build):
+-        # Missing type def from distutils.cmd.Command; add it here for now
+-        distribution: Distribution
+-
+-        def finalize_options(self) -> None:
+-            build_lib_user_specified = self.build_lib is not None
+-            super().finalize_options()
+-            if not build_lib_user_specified:
+-                if self.distribution.has_ext_modules():  # type: ignore[attr-defined]
+-                    self.build_lib = self.build_platlib
+-                else:
+-                    self.build_lib = self.build_purelib
+-
+-    _build.build = build  # type: ignore[misc]
+-
+-
+ def rust_extensions(
+     dist: Distribution, attr: Literal["rust_extensions"], value: List[RustExtension]
+ ) -> None:
+     assert attr == "rust_extensions"
+     has_rust_extensions = len(value) > 0
+ 
+-    # Monkey patch has_ext_modules to include Rust extensions; pairs with
+-    # patch_distutils_build above.
++    # Monkey patch has_ext_modules to include Rust extensions.
+     #
+     # has_ext_modules is missing from Distribution typing.
+     orig_has_ext_modules = dist.has_ext_modules  # type: ignore[attr-defined]
+     dist.has_ext_modules = lambda: (orig_has_ext_modules() or has_rust_extensions)  # type: ignore[attr-defined]
+ 
+     if has_rust_extensions:
+-        patch_distutils_build()
+         add_rust_extension(dist)
+ 
+ 
+
