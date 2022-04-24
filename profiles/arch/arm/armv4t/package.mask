@@ -30,3 +30,4 @@ gnome-extra/gnome-tweaks
 >=dev-python/cryptography-36
 >=dev-python/pyopenssl-22
 dev-python/setuptools-rust
+dev-python/watchfiles
