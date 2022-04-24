@@ -17,6 +17,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
 
