@@ -52,6 +52,8 @@ dev-ml/ppx_let:0/0.15
 dev-ml/ppx_sexp_message:0/0.15
 dev-ml/ppx_sexp_value:0/0.15
 dev-ml/ppx_assert:0/0.15
+#dev-ml/jst-config
+dev-ml/ppx_optcomp:0/0.15
 dev-ml/ppx_inline_test:0/0.15.0
 dev-ml/ppx_expect:0/0.15.0
 
