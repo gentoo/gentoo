@@ -59,6 +59,8 @@ dev-ml/ppx_inline_test:0/0.15
 dev-ml/ppx_bench:0/0.15
 dev-ml/splittable_random:0/0.15
 dev-ml/base_quickcheck:0/0.15
+#dev-ml/bin_prot:0/0.15
+dev-ml/ppx_bin_prot:0/0.15
 dev-ml/ppx_expect:0/0.15.0
 
 # Hans de Graaff <graaff@gentoo.org> (2022-04-23)
