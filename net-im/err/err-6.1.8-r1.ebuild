@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES="${FILESDIR}/err-6.1.8-fix-irc-backend.patch"
 
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="irc +xmpp"
