@@ -18,7 +18,7 @@ SRC_URI="https://github.com/OpenNMS/${PN}/archive/${P}-1.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # Common dependencies
 # POM: pom.xml
