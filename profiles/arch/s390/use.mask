@@ -8,6 +8,7 @@
 # Desktopy stacks not currently keyworded
 alsa
 pulseaudio
+samba
 
 # Sam James <sam@gentoo.org> (2022-04-24)
 # gi-docgen (and friends?) not keyworded here
