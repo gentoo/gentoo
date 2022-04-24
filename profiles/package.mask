@@ -45,6 +45,8 @@ dev-ml/ppx_hash:0/0.15
 dev-ml/ppx_cold:0/0.15
 dev-ml/parsexp:0/0.15
 dev-ml/ppx_base:0/0.15
+#dev-ml/fieldslib
+dev-ml/ppx_fields_conv:0/0.15
 dev-ml/ppx_inline_test:0/0.15.0
 dev-ml/ppx_expect:0/0.15.0
 
