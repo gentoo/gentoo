@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd
+inherit systemd udev
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/gentoo-systemd-integration.git"
@@ -35,6 +35,7 @@ src_configure() {
 	local myconf=(
 		--with-systemdsystemgeneratordir="$(systemd_get_systemgeneratordir)"
 		--with-systemdsystempresetdir="$(systemd_get_systempresetdir)"
+		udevdir="${EPREFIX}$(get_udevdir)"
 	)
 	econf "${myconf[@]}"
 }
