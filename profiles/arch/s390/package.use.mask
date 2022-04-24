@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-04-24)
+# dev-libs/efl not keyworded here and is a desktop application mainly
+app-crypt/pinentry efl
+
+# Sam James <sam@gentoo.org> (2022-04-24)
 # sssd not keyworded here
 app-admin/sudo sssd
 
