@@ -1,11 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-CMAKE_ECLASS=cmake
+LLVM_MAX_SLOT="13"
 
-inherit cmake-multilib llvm
+inherit cmake llvm
 
 DESCRIPTION="OpenCL-oriented thin wrapper library around clang"
 HOMEPAGE="https://github.com/intel/opencl-clang"
@@ -16,14 +16,13 @@ LICENSE="UoI-NCSA"
 SLOT="13"
 KEYWORDS="amd64"
 
-DEPEND="
-	>=dev-util/spirv-llvm-translator-13.0.0:13=[${MULTILIB_USEDEP}]
-	>=sys-devel/clang-13.0.0:13=[static-analyzer,${MULTILIB_USEDEP}]
-	sys-devel/llvm:13=[${MULTILIB_USEDEP}]
+RDEPEND="
+	dev-util/spirv-llvm-translator:${SLOT}=
+	sys-devel/clang:${SLOT}=[static-analyzer]
+	sys-devel/llvm:${SLOT}=
 "
-RDEPEND="${DEPEND}"
 
-LLVM_MAX_SLOT=13
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.0.0-clang_library_dir.patch
@@ -31,10 +30,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-13.0.0_version.patch
 )
 
-multilib_src_configure() {
+src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX="$(get_llvm_prefix ${LLVM_MAX_SLOT})"
 		-DCLANG_LIBRARY_DIRS="${EPREFIX}"/usr/lib/clang
 	)
+
 	cmake_src_configure
 }
