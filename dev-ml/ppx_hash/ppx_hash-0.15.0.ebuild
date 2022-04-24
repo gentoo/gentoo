@@ -15,10 +15,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+ocamlopt"
 
 DEPEND="
-	dev-ml/base:${SLOT}
-	dev-ml/ppx_compare:${SLOT}
 	dev-ml/ppx_sexp_conv:${SLOT}
-	>=dev-ml/ppxlib-0.23.0:=
-	>=dev-ml/ocaml-compiler-libs-0.11.0:=
+	dev-ml/ppx_compare:${SLOT}
 "
 RDEPEND="${DEPEND}"
