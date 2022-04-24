@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
 
 RDEPEND="
 	>=dev-python/pytz-2021.3[${PYTHON_USEDEP}]
