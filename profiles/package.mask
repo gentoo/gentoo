@@ -294,11 +294,6 @@ media-sound/xnoise
 # Removal on 2022-04-25.
 net-misc/realtek-r8152
 
-# Marc Schiffbauer <mschiff@gentoo.org> (2022-03-22)
-# Unmaintained upstream. No reverse dependencies.
-# Removal on 2022-04-23.
-dev-libs/bareos-fastlzlib
-
 # Sam James <sam@gentoo.org> (2022-03-22)
 # Abandoned upstream (archived many years ago), fails
 # to build with modern versions of gnupg, and is
