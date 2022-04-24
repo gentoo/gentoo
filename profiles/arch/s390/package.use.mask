@@ -2,6 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-04-24)
+# media-libs/libheif isn't keyworded here
+# media-libs/libavif isn't keyworded here
+media-libs/gd avif heif
+media-gfx/graphicsmagick heif
+
+# Sam James <sam@gentoo.org> (2022-04-24)
 # Unkeyworded dev-tcltk/* dependencies
 dev-libs/libisoburn launch-frontend launch-frontend-setuid frontend-optional
 
