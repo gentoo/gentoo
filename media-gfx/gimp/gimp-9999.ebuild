@@ -43,7 +43,7 @@ COMMON_DEPEND="
 	>=media-libs/fontconfig-2.12.6
 	>=media-libs/freetype-2.10.2
 	>=media-libs/gegl-0.4.36:0.4[cairo,introspection,lcms,vala?]
-	>=media-libs/gexiv2-0.12.2
+	>=media-libs/gexiv2-0.14.0
 	>=media-libs/harfbuzz-2.6.5:=
 	>=media-libs/lcms-2.9:2
 	>=media-libs/libmypaint-1.6.1:=
@@ -167,6 +167,7 @@ src_configure() {
 		--enable-mp
 		--with-appdata-test
 		--with-bug-report-url=https://bugs.gentoo.org/
+		--with-pdbgen
 		--with-xmc
 		--without-libbacktrace
 		--without-webkit
