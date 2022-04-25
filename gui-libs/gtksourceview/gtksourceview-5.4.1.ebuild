@@ -58,7 +58,7 @@ src_configure() {
 src_test() {
 	# Tests fail in test-regex with libpcre2[recursion-limit] - https://gitlab.gnome.org/GNOME/gtksourceview/-/issues/255
 	# Ensured OK via USE dep, as it would mean issues in real usage for syntax highlighting as well
-	virtx meson_src_test
+	virtx meson_src_test --timeout-multiplier=2
 }
 
 src_install() {
