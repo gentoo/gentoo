@@ -9,7 +9,7 @@ SRC_URI="https://github.com/justinrainbow/json-schema/archive/${PV}.tar.gz -> ${
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 # Tests are not in the release tarball
 RESTRICT="test"
