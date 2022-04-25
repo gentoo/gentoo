@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_MAX_SLOT="13"
+LLVM_MAX_SLOT="14"
 MY_PN="SPIRV-LLVM-Translator"
 MY_P="${MY_PN}-${PV}"
 
@@ -12,18 +12,18 @@ inherit cmake flag-o-matic llvm
 DESCRIPTION="Bi-directional translator between SPIR-V and LLVM IR"
 HOMEPAGE="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
 SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-rename-OpConstFunctionPointerINTEL.patch.bz2"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="UoI-NCSA"
-SLOT="13"
-KEYWORDS="amd64"
+SLOT="14"
+KEYWORDS="~amd64"
 IUSE="test +tools"
 REQUIRED_USE="test? ( tools )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-util/spirv-headers
+	sys-devel/clang:${SLOT}
 	sys-devel/llvm:${SLOT}
 "
 
@@ -33,8 +33,6 @@ BDEPEND="
 	virtual/pkgconfig
 	test? ( dev-python/lit )
 "
-
-PATCHES=( "${WORKDIR}"/${P}-rename-OpConstFunctionPointerINTEL.patch )
 
 src_prepare() {
 	append-flags -fPIC
