@@ -43,6 +43,8 @@ DEPEND="${RDEPEND}
 	client? ( vulkan? ( dev-util/vulkan-headers ) )
 "
 
+PATCHES=( "${FILESDIR}"/${PN}-8.01-execinfo.patch )
+
 DOCS=( CHANGELOG README.md doc )
 
 src_compile() {
@@ -51,6 +53,7 @@ src_compile() {
 	local targets=( game )
 	local emakeargs=(
 		VERBOSE=1
+		WITH_EXECINFO=$(usex elibc_musl no yes)
 		WITH_SYSTEMWIDE=yes
 		WITH_SYSTEMDIR="${EPREFIX}"/usr/share/quake2
 		WITH_OPENAL=$(usex openal)
