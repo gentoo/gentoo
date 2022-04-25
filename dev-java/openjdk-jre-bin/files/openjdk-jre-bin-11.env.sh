@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 VERSION="Eclipse Temurin JRE ${PV}"
-JAVA_HOME="${EPREFIX}/opt/${P}"
-JDK_HOME="${EPREFIX}/opt/${P}"
+JAVA_HOME="${EPREFIX}/opt/${PN}-${SLOT}"
+JDK_HOME="${JAVA_HOME}"
 JAVAC="\${JAVA_HOME}/bin/javac"
 PATH="\${JAVA_HOME}/bin"
 ROOTPATH="\${JAVA_HOME}/bin"
