@@ -33,6 +33,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 # Remember: cannot dep on autoconf since it needs us
 BDEPEND="app-arch/xz-utils
+	sys-apps/texinfo
 	nls? ( sys-devel/gettext )
 	verify-sig? ( sec-keys/openpgp-keys-m4 )"
 
