@@ -70,6 +70,8 @@ dev-ml/ppx_module_timer:0/0.15
 dev-ml/ppx_optional:0/0.15
 dev-ml/ppx_stable:0/0.15
 dev-ml/ppx_string:0/0.15
+dev-ml/typerep:0/0.15
+dev-ml/ppx_typerep_conv:0/0.15
 
 # Hans de Graaff <graaff@gentoo.org> (2022-04-23)
 # Obsolete slots that are no longer used by current
