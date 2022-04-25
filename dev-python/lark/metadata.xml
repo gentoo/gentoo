@@ -6,7 +6,7 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="pypi">lark-parser</remote-id>
+		<remote-id type="pypi">lark</remote-id>
 		<remote-id type="github">lark-parser/lark</remote-id>
 	</upstream>
 </pkgmetadata>
