@@ -31,7 +31,10 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 	verify-sig? ( sec-keys/openpgp-keys-grep )"
 
-PATCHES=( "${FILESDIR}/ppc-musl.patch" )
+PATCHES=(
+	"${FILESDIR}/ppc-musl.patch"
+	"${FILESDIR}/loong-fix-build.patch"
+)
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 
