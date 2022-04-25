@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -52,22 +52,30 @@ python_prepare_all() {
 }
 
 python_test() {
-	local deselect=(
+	local EPYTEST_DESELECT=(
 		# TODO
 		'test/test_integration.py::test_completion[stdlib:155]'
 		'test/test_integration.py::test_completion[on_import:29]'
+		# pytest?
+		'test/test_integration.py::test_completion[conftest:27]'
 		# assume pristine virtualenv
 		test/test_utils.py::TestSetupReadline::test_local_import
 		test/test_inference/test_imports.py::test_os_issues
 		# fragile
 		test/test_speed.py
 	)
-	[[ ${EPYTHON} == python3.10 ]] && deselect+=(
+	[[ ${EPYTHON} != python3.8 ]] && EPYTEST_DESELECT+=(
+		# TODO
+		'test/test_integration.py::test_completion[lambdas:112]'
+	)
+	[[ ${EPYTHON} == python3.10 ]] && EPYTEST_DESELECT+=(
 		# new features increased the match count again
 		test/test_utils.py::TestSetupReadline::test_import
 
 	)
 
+	# some plugin breaks case-insensitivity on completions
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	# django and pytest tests are very version dependent
-	epytest ${deselect[@]/#/--deselect } -k "not django and not pytest"
+	epytest -k "not django and not pytest"
 }
