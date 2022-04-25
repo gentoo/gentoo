@@ -46,7 +46,7 @@ CRATES="
 	clap_complete_fig-3.1.5
 	clap_derive-3.1.7
 	clap_lex-0.1.1
-	combine-4.6.3
+	combine-4.6.4
 	concurrent-queue-1.2.2
 	configparser-3.0.0
 	console-0.15.0
@@ -214,7 +214,7 @@ CRATES="
 	thread_local-1.1.4
 	time-0.3.9
 	time-macros-0.2.4
-	tinyvec-1.5.1
+	tinyvec-1.6.0
 	tinyvec_macros-0.1.0
 	toml-0.5.9
 	toml_edit-0.14.2
