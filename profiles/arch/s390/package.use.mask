@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-04-25)
+# Needs unkeyworded dev-python/commonmark, dev-python/recommonmark
+dev-libs/libinput doc
+
+# Sam James <sam@gentoo.org> (2022-04-25)
 # Needs unkeyworded dev-python/markdown
 dev-libs/gobject-introspection doctool
 
