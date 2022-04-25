@@ -19,9 +19,10 @@ HOMEPAGE="https://github.com/grobian/html2text"
 LICENSE="GPL-2"
 SLOT="0"
 
-src_prepare() {
-	default
+src_configure() {
+	# non-autoconf configure
 	tc-export CXX
+	./configure || die
 }
 
 src_compile() {
