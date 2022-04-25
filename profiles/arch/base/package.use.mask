@@ -7,6 +7,7 @@
 # In the meantime, force-enable on loong only.
 # This is not inside use.mask, because crossdev toolchain packages would
 # want to have the flag enabled without hassle.
+dev-libs/libffi experimental-loong
 sys-kernel/linux-headers experimental-loong
 sys-libs/glibc experimental-loong
 sys-libs/libseccomp experimental-loong

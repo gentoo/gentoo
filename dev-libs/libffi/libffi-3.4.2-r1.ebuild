@@ -10,7 +10,8 @@ MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="a portable, high level programming interface to various calling conventions"
 HOMEPAGE="https://sourceware.org/libffi/"
-SRC_URI="https://github.com/libffi/libffi/releases/download/v${MY_PV}/${MY_P}.tar.gz"
+SRC_URI="https://github.com/libffi/libffi/releases/download/v${MY_PV}/${MY_P}.tar.gz
+	experimental-loong? ( https://dev.gentoo.org/~xen0n/distfiles/${MY_P}-loongarch64-20220428.patch.xz )"
 S="${WORKDIR}"/${MY_P}
 
 LICENSE="MIT"
@@ -20,7 +21,7 @@ LICENSE="MIT"
 # changes.
 SLOT="0/8" # SONAME=libffi.so.8
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="debug exec-static-trampoline pax-kernel static-libs test"
+IUSE="debug exec-static-trampoline experimental-loong pax-kernel static-libs test"
 
 RESTRICT="!test? ( test )"
 BDEPEND="test? ( dev-util/dejagnu )"
@@ -30,6 +31,10 @@ DOCS="ChangeLog* README.md"
 ECONF_SOURCE=${S}
 
 src_prepare() {
+	if use experimental-loong; then
+		PATCHES+=( "${WORKDIR}/${MY_P}-loongarch64-20220428.patch" )
+	fi
+
 	default
 	if [[ ${CHOST} == arm64-*-darwin* ]] ; then
 		# ensure we use aarch64 asm, not x86 on arm64
