@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-25)
+# Mask tests until test dependencies are keyworded.
+app-text/pdftk test
+
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded
 app-text/enchant nuspell
