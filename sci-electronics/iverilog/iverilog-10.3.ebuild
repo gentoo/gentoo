@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -26,23 +26,25 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="examples"
 
-# If you are building from git, you will also need gperf to generate
-# the configure scripts.
-RDEPEND="
-	sys-libs/readline:0
+# 721022, should depend on sys-libs/readline:=
+DEPEND="
+	sys-libs/readline:=
 	sys-libs/zlib
 "
-
-DEPEND="
+RDEPEND="${DEPEND}"
+BDEPEND="
 	dev-util/gperf
 	sys-devel/bison
 	sys-devel/flex
-	${RDEPEND}
 "
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3-file-missing.patch #705412
 	"${FILESDIR}"/${PN}-10.3-fno-common.patch #706366
+	"${FILESDIR}"/${PN}-10.3-gen-bison-header.patch #734760
+	"${FILESDIR}"/${PN}-10.3-call-nm.patch #731906
+	"${FILESDIR}"/${PN}-10.3-configure-ac.patch #426262
+	"${FILESDIR}"/${PN}-10.3-override-var.patch #730096
 )
 
 src_prepare() {
@@ -51,6 +53,9 @@ src_prepare() {
 	# From upstreams autoconf.sh, to make it utilize the autotools eclass
 	# Here translate the autoconf.sh, equivalent to the following code
 	# > sh autoconf.sh
+
+	# Move configure.in to configure.ac (bug #426262)
+	mv configure.in configure.ac || die
 
 	# Autoconf in root ...
 	eautoconf --force

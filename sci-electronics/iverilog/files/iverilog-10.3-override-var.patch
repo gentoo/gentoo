@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/730096
+--- a/vpi/Makefile.in	2022-04-25 18:39:03.748939186 +0800
++++ b/vpi/Makefile.in	2022-04-25 18:38:43.754679053 +0800
+@@ -71,7 +71,7 @@
+ M = sys_clog2.o v2005_math.o
+ 
+ # Object files for va_math.vpi
+-V = va_math.o
++override V = va_math.o
+ 
+ V2009 = v2009_table.o v2009_array.o v2009_enum.o v2009_string.o
+ 
