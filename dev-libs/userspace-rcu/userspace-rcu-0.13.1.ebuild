@@ -19,6 +19,7 @@ BDEPEND="test? ( sys-process/time )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.13.1-tests-no-benchmark.patch
+	"${FILESDIR}"/${PN}-0.13.1-loong.patch
 )
 
 src_prepare() {
@@ -26,6 +27,7 @@ src_prepare() {
 
 	# Needed for tests patch
 	# ... and refresh libtool (see https://github.com/gentoo/gentoo/pull/23973)
+	# ... and for build on loong (see https://github.com/gentoo/gentoo/pull/25189)
 	eautoreconf
 }
 
