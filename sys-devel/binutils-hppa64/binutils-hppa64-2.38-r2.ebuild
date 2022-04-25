@@ -410,7 +410,7 @@ src_install() {
 	rm -f "${ED}"/${DATAPATH}/info/{dir,configure.info,standards.info} || die
 
 	# Trim all empty dirs
-	find "${ED}" -depth -type d -exec rmdir {} + 2>/dev/null || die
+	find "${ED}" -depth -type d -exec rmdir {} + 2>/dev/null
 
 	# the hppa64 hack; this should go into 9999 as a PN-conditional
 	# tweak the default fake list a little bit
