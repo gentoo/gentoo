@@ -39,6 +39,7 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libnl3/netlink/cli/ct.h
 	/usr/include/libnl3/netlink/cli/exp.h
 	/usr/include/libnl3/netlink/cli/link.h
+	/usr/include/libnl3/netlink/cli/mdb.h
 	/usr/include/libnl3/netlink/cli/neigh.h
 	/usr/include/libnl3/netlink/cli/qdisc.h
 	/usr/include/libnl3/netlink/cli/route.h

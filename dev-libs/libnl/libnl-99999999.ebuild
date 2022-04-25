@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,16 +38,13 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libnl3/netlink/cli/ct.h
 	/usr/include/libnl3/netlink/cli/exp.h
 	/usr/include/libnl3/netlink/cli/link.h
+	/usr/include/libnl3/netlink/cli/mdb.h
 	/usr/include/libnl3/netlink/cli/neigh.h
 	/usr/include/libnl3/netlink/cli/qdisc.h
 	/usr/include/libnl3/netlink/cli/route.h
 	/usr/include/libnl3/netlink/cli/rule.h
 	/usr/include/libnl3/netlink/cli/tc.h
 	/usr/include/libnl3/netlink/cli/utils.h
-)
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-99999999-2to3.patch
 )
 
 src_prepare() {
