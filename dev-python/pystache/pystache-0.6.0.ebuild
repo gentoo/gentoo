@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS="pyproject.toml"
 
 inherit distutils-r1
 
-DESCRIPTION="Python implementation of Mustache"
+DESCRIPTION="Updated Python implementation of Mustache templating framework"
 HOMEPAGE="https://github.com/PennyDreadfulMTG/pystache"
 
 if [[ ${PV} = 9999* ]]; then
