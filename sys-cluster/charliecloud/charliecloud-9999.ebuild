@@ -36,7 +36,7 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="
 	ch-image? (
 		$(python_gen_cond_dep '
-			dev-python/lark-parser[${PYTHON_USEDEP}]
+			dev-python/lark[${PYTHON_USEDEP}]
 			dev-python/requests[${PYTHON_USEDEP}]
 		')
 	)
@@ -64,7 +64,7 @@ src_configure() {
 		--with-sphinx-python="${PYTHON}"
 		# This disables -Werror, see also: https://github.com/hpc/charliecloud/pull/808
 		--enable-buggy-build
-		# Do not use bundled version of dev-python/lark-parser.
+		# Do not use bundled version of dev-python/lark.
 		--disable-bundled-lark
 		# Use correct shebang.
 		--with-python="${PYTHON}"
