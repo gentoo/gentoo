@@ -65,6 +65,7 @@ dev-ml/ppx_custom_printf:0/0.15
 dev-ml/ppx_disable_unused_warnings:0/0.15
 dev-ml/ppx_expect:0/0.15
 dev-ml/ppx_fixed_literal:0/0.15
+dev-ml/ppx_log:0/0.15
 
 # Hans de Graaff <graaff@gentoo.org> (2022-04-23)
 # Obsolete slots that are no longer used by current
