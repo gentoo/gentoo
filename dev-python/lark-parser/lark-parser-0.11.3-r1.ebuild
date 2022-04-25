@@ -5,11 +5,14 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} pypy3 )
+
 inherit distutils-r1
 
+MY_P=lark-parser-${PV}
 DESCRIPTION="Python module to propose a modern general-purpose parsing library for Python"
 HOMEPAGE="https://github.com/lark-parser/lark"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/lark-parser/${MY_P}.tar.gz"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
@@ -21,7 +24,8 @@ BDEPEND="
 	test? (
 		dev-python/atomicwrites[${PYTHON_USEDEP}]
 		dev-python/regex[${PYTHON_USEDEP}]
-	)"
+	)
+"
 
 python_test() {
 	"${EPYTHON}" -m tests -v || die "Tests fail with ${EPYTHON}"
