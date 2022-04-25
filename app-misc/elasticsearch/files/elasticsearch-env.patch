@@ -1,0 +1,24 @@
+Since ES 8.0.0 upstream stopped distributing a 'no-JDK' package.
+This requires us to set `ES_JAVA_HOME` else it fails to find the
+JDK that we unbundled and will not start.
+--- a/bin/elasticsearch-env
++++ b/bin/elasticsearch-env
+@@ -36,6 +36,18 @@ ES_HOME=`dirname "$ES_HOME"`
+ ES_CLASSPATH="$ES_HOME/lib/*"
+ LAUNCHERS_CLASSPATH="$ES_CLASSPATH:$ES_HOME/lib/launchers/*"
+ 
++# Set our JVM in a Gentoo-specific manner
++if [ -z "$ES_JAVA_HOME" ]; then
++  GENTOO_VM=$(depend-java-query --get-vm virtual/jre:17)
++  if [ ! -z "$GENTOO_VM" ]; then
++    ES_JAVA_HOME=$(java-config-2 --select-vm=${GENTOO_VM} --jre-home)
++  else
++    echo "Unable to automatically detect a supported Java 17 VM. Elasticsearch is unlikely to launch."
++    echo "Please ensure that you have installed an appropriate Java VM using portage"
++    echo "OR pass the ES_JAVA_HOME environment variable."
++  fi
++fi
++
+ # now set the path to java
+ if [ ! -z "$ES_JAVA_HOME" ]; then
+   JAVA="$ES_JAVA_HOME/bin/java"
