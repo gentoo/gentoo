@@ -9,6 +9,7 @@
 # want to have the flag enabled without hassle.
 sys-kernel/linux-headers experimental-loong
 sys-libs/glibc experimental-loong
+sys-libs/libseccomp experimental-loong
 
 # James Le Cuirot <chewi@gentoo.org> (2022-02-24)
 # These GRUB platforms are only for MIPS.
