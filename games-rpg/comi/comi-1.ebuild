@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ DESCRIPTION="The Curse of Monkey Island, the third game in the series"
 HOMEPAGE="https://en.wikipedia.org/wiki/The_Curse_of_Monkey_Island"
 SRC_URI="https://dev.gentoo.org/~chewi/distfiles/${PN}.jpg"
 
-LICENSE="${PN}"
+LICENSE="comi"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
