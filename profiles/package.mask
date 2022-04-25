@@ -33,7 +33,7 @@
 
 #--- END OF EXAMPLES ---
 
-# Alfredo Tupone <tupone@gentoo.org> (2022-04-24)
+# Alfredo Tupone <tupone@gentoo.org> (2022-04-25)
 # New release of janestreet packages need to tested
 dev-ml/sexplib0:0/0.15
 dev-ml/base:0/0.15
@@ -61,6 +61,7 @@ dev-ml/splittable_random:0/0.15
 dev-ml/base_quickcheck:0/0.15
 #dev-ml/bin_prot:0/0.15
 dev-ml/ppx_bin_prot:0/0.15
+dev-ml/ppx_custom_printf:0/0.15
 dev-ml/ppx_expect:0/0.15.0
 
 # Hans de Graaff <graaff@gentoo.org> (2022-04-23)
