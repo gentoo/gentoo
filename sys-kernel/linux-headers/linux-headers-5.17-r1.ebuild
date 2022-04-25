@@ -18,7 +18,7 @@ SRC_URI="${KERNEL_URI}
 	experimental-loong? ( ${LOONGARCH_PATCH_VER:+https://dev.gentoo.org/~${LOONGARCH_PATCH_DEV}/distfiles/linux-loongarch-next-on-${PATCH_PV}-${LOONGARCH_PATCH_VER}.tar.xz} )"
 S="${WORKDIR}/linux-${PV}"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE+=" experimental-loong"
 
 BDEPEND="app-arch/xz-utils
