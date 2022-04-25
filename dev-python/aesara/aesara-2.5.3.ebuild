@@ -63,6 +63,7 @@ python_test() {
 }
 
 python_compile() {
+	esetup.py build_py
 	distutils-r1_python_compile
 	rm "${BUILD_DIR}/install$(python_get_sitedir)/bin/__init__.py" || die
 }
