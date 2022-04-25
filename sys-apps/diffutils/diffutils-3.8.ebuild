@@ -23,7 +23,10 @@ IUSE="nls static"
 BDEPEND="nls? ( sys-devel/gettext )
 	verify-sig? ( sec-keys/openpgp-keys-diffutils )"
 
-PATCHES=( "${FILESDIR}/ppc-musl.patch" )
+PATCHES=(
+	"${FILESDIR}/ppc-musl.patch"
+	"${FILESDIR}/loong-fix-build.patch"
+)
 
 src_configure() {
 	use static && append-ldflags -static
