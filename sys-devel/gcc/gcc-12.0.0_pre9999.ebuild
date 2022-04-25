@@ -5,10 +5,10 @@ EAPI=7
 
 TOOLCHAIN_GCC_PV=12.0.1
 
-PATCH_VER="4"
+PATCH_VER="5"
 PATCH_GCC_VER="12.0.0"
 MUSL_VER="1"
-MUSL_GCC_VER="11.2.0"
+MUSL_GCC_VER="12.0.0"
 
 inherit toolchain
 # Needs to be after inherit (for now?), bug #830908
