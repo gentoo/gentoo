@@ -364,8 +364,9 @@ src_install() {
 	)
 	doins "${libiberty_headers[@]/#/${S}/include/}"
 	if [[ -d ${ED}/${LIBPATH}/lib ]] ; then
-		mv "${ED}"/${LIBPATH}/lib/* "${ED}"/${LIBPATH}/ || die
-		rm -r "${ED}"/${LIBPATH}/lib || die
+		# TODO: add || die here, fails on hppa?
+		mv "${ED}"/${LIBPATH}/lib/* "${ED}"/${LIBPATH}/
+		rm -r "${ED}"/${LIBPATH}/lib
 	fi
 
 	# Generate an env.d entry for this binutils
