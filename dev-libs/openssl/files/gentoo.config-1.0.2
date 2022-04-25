@@ -97,6 +97,7 @@ linux)
 		i[0-9]86*|\
 		x86_64*:x86)  machine=elf;;
 		ia64*)        machine=ia64;;
+		loongarch64*) machine="generic64 -DL_ENDIAN";;
 		m68*)         machine="generic32 -DB_ENDIAN";;
 		mips*el*)     machine="generic32 -DL_ENDIAN";;
 		mips*)        machine="generic32 -DB_ENDIAN";;
