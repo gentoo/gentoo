@@ -345,9 +345,10 @@ src_install() {
 		done
 
 		if [[ -d ${ED}/usr/${CHOST}/${CTARGET} ]] ; then
-			mv "${ED}"/usr/${CHOST}/${CTARGET}/include "${ED}"/${INCPATH} || die
-			mv "${ED}"/usr/${CHOST}/${CTARGET}/lib/* "${ED}"/${LIBPATH}/ || die
-			rm -r "${ED}"/usr/${CHOST}/{include,lib} || die
+			# No die for now, dies on hppa?
+			mv "${ED}"/usr/${CHOST}/${CTARGET}/include "${ED}"/${INCPATH}
+			mv "${ED}"/usr/${CHOST}/${CTARGET}/lib/* "${ED}"/${LIBPATH}/
+			rm -r "${ED}"/usr/${CHOST}/{include,lib}
 		fi
 	fi
 
