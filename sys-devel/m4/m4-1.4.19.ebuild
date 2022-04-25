@@ -38,6 +38,7 @@ BDEPEND="app-arch/xz-utils
 
 PATCHES=(
 	"${FILESDIR}"/ppc-musl.patch
+	"${FILESDIR}"/loong-fix-build.patch
 	"${WORKDIR}"/${P}-test-198-sysval-r1.patch
 )
 
