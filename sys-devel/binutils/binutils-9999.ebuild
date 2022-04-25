@@ -175,7 +175,7 @@ src_configure() {
 	done
 	echo
 
-	cd "${MY_BUILDDIR}"
+	cd "${MY_BUILDDIR}" || die
 	local myconf=()
 
 	if use plugins ; then
@@ -248,7 +248,6 @@ src_configure() {
 		--with-bugurl="$(toolchain-binutils_bugurl)"
 		--with-pkgversion="$(toolchain-binutils_pkgversion)"
 		$(use_enable static-libs static)
-		${EXTRA_ECONF}
 		# Disable modules that are in a combined binutils/gdb tree, bug #490566
 		--disable-{gdb,libdecnumber,readline,sim}
 		# Strip out broken static link flags.
@@ -276,8 +275,7 @@ src_configure() {
 		fi
 	fi
 
-	echo ./configure "${myconf[@]}"
-	"${S}"/configure "${myconf[@]}" || die
+	ECONF_SOURCE="${S}" econf "${myconf[@]}" || die
 
 	# Prevent makeinfo from running if doc is unset.
 	if ! use doc ; then
