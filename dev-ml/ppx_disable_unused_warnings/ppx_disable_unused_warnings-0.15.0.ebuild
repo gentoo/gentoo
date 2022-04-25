@@ -7,7 +7,8 @@ inherit dune
 
 DESCRIPTION="Expands [@disable_unused_warnings]"
 HOMEPAGE="https://github.com/janestreet/ppx_disable_unused_warnings"
-SRC_URI="https://github.com/janestreet/${PN}/archive/refs/tags/v${PV}.tar.gz"
+SRC_URI="https://github.com/janestreet/${PN}/archive/refs/tags/v${PV}.tar.gz
+	-> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
