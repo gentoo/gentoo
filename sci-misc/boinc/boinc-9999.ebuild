@@ -38,20 +38,21 @@ DEPEND="
 		>=dev-util/nvidia-cuda-toolkit-2.1
 		>=x11-drivers/nvidia-drivers-180.22
 	)
+	dev-libs/openssl:=
 	net-misc/curl[curl_ssl_gnutls(-)=,-curl_ssl_nss(-),curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-)]
 	sys-apps/util-linux
 	sys-libs/zlib
 	X? (
-		dev-db/sqlite:3
+		dev-libs/glib:2
 		media-libs/freeglut
 		media-libs/libjpeg-turbo:=
 		x11-libs/gtk+:3
-		x11-libs/libICE
 		>=x11-libs/libnotify-0.7
-		x11-libs/libSM
-		x11-libs/libXi
-		x11-libs/libXmu
+		x11-libs/libX11
+		x11-libs/libXScrnSaver
+		x11-libs/libxcb:=
 		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,webkit]
+		x11-libs/xcb-util
 	)
 "
 BDEPEND="app-text/docbook-xml-dtd:4.4
@@ -59,7 +60,9 @@ BDEPEND="app-text/docbook-xml-dtd:4.4
 	sys-devel/gettext
 	X? ( virtual/imagemagick-tools[png,tiff] )
 "
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
+	sys-apps/util-linux
 	!app-admin/quickswitch
 "
 
