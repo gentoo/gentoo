@@ -123,8 +123,7 @@ multilib_src_configure() {
 			"${S}"/opcodes/Makefile.in || die
 	fi
 
-	ECONF_SOURCE=${S} \
-	econf "${myconf[@]}"
+	ECONF_SOURCE="${S}" econf "${myconf[@]}"
 
 	# Prevent makeinfo from running as we don't build docs here.
 	# bug #622652
