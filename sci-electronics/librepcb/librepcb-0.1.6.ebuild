@@ -39,12 +39,12 @@ PATCHES=( "${FILESDIR}"/${P}-muparser-fix.patch )
 
 src_configure() {
 	local mycmakeargs+=(
-	    -DUNBUNDLE_QUAZIP=ON
-	    -DUNBUNDLE_MUPARSER=ON )
+		-DUNBUNDLE_QUAZIP=ON
+		-DUNBUNDLE_MUPARSER=ON )
 	cmake_src_configure
 }
 
 src_test() {
 	cd "${BUILD_DIR}"/tests/unittests || die
-	virtx ./librepcb-unittests --gtest_filter=-SystemInfoTest.testGetUsername || die
+	virtx ./librepcb-unittests --gtest_filter=-SystemInfoTest.testGetUsername
 }
