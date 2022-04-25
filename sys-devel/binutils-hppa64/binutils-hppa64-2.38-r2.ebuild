@@ -70,19 +70,19 @@ BDEPEND="
 
 RESTRICT="!test? ( test )"
 
-MY_BUILDDIR=${WORKDIR}/build
-S=${WORKDIR}/${P/-hppa64/}
+MY_BUILDDIR="${WORKDIR}"/build
+S="${WORKDIR}"/${P/-hppa64/}
 
 src_unpack() {
 	if [[ ${PV} == 9999* ]] ; then
 		EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/toolchain/binutils-patches.git"
-		EGIT_CHECKOUT_DIR=${WORKDIR}/patches-git
+		EGIT_CHECKOUT_DIR="${WORKDIR}"/patches-git
 		git-r3_src_unpack
 		mv patches-git/9999 patch || die
 
+		S="${WORKDIR}"/binutils
 		EGIT_REPO_URI="https://sourceware.org/git/binutils-gdb.git"
-		S=${WORKDIR}/binutils
-		EGIT_CHECKOUT_DIR=${S}
+		EGIT_CHECKOUT_DIR="${S}"
 		git-r3_src_unpack
 	else
 		unpack ${P/-hppa64/}.tar.xz
@@ -94,7 +94,7 @@ src_unpack() {
 		local dir=${P%_p?}
 		dir=${dir/-hppa64/}
 
-		S=${WORKDIR}/${dir}
+		S="${WORKDIR}"/${dir}
 	fi
 
 	cd "${WORKDIR}" || die
@@ -178,7 +178,7 @@ src_configure() {
 	done
 	echo
 
-	cd "${MY_BUILDDIR}"
+	cd "${MY_BUILDDIR}" || die
 	local myconf=()
 
 	if use plugins ; then
@@ -251,7 +251,6 @@ src_configure() {
 		--with-bugurl="$(toolchain-binutils_bugurl)"
 		--with-pkgversion="$(toolchain-binutils_pkgversion)"
 		$(use_enable static-libs static)
-		${EXTRA_ECONF}
 		# Disable modules that are in a combined binutils/gdb tree. bug #490566
 		--disable-{gdb,libdecnumber,readline,sim}
 		# Strip out broken static link flags.
@@ -281,8 +280,7 @@ src_configure() {
 		fi
 	fi
 
-	echo ./configure "${myconf[@]}"
-	"${S}"/configure "${myconf[@]}" || die
+	ECONF_SOURCE="${S}" econf "${myconf[@]}" || die
 
 	# Prevent makeinfo from running if doc is unset.
 	if ! use doc ; then
@@ -309,7 +307,7 @@ src_compile() {
 }
 
 src_test() {
-	cd "${MY_BUILDDIR}"
+	cd "${MY_BUILDDIR}" || die
 
 	# bug #637066
 	filter-flags -Wall -Wreturn-type
