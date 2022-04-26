@@ -53,19 +53,19 @@
 # to stop working, apparently making it impossible to leave suspend
 # on some laptops without a (difficult) hard reset.
 ~sys-kernel/gentoo-kernel-5.10.111
-~sys-kernel/gentoo-kernel-5.10.112
+=sys-kernel/gentoo-kernel-5.10.112
 ~sys-kernel/gentoo-kernel-5.15.34
-~sys-kernel/gentoo-kernel-5.15.35
+=sys-kernel/gentoo-kernel-5.15.35
 ~sys-kernel/gentoo-kernel-5.16.20
 ~sys-kernel/gentoo-kernel-5.17.3
-~sys-kernel/gentoo-kernel-5.17.4
+=sys-kernel/gentoo-kernel-5.17.4
 ~sys-kernel/gentoo-kernel-bin-5.10.111
-~sys-kernel/gentoo-kernel-bin-5.10.112
+=sys-kernel/gentoo-kernel-bin-5.10.112
 ~sys-kernel/gentoo-kernel-bin-5.15.34
-~sys-kernel/gentoo-kernel-bin-5.15.35
+=sys-kernel/gentoo-kernel-bin-5.15.35
 ~sys-kernel/gentoo-kernel-bin-5.16.20
 ~sys-kernel/gentoo-kernel-bin-5.17.3
-~sys-kernel/gentoo-kernel-bin-5.17.4
+=sys-kernel/gentoo-kernel-bin-5.17.4
 ~sys-kernel/vanilla-kernel-5.10.111
 ~sys-kernel/vanilla-kernel-5.10.112
 ~sys-kernel/vanilla-kernel-5.15.34
@@ -74,12 +74,9 @@
 ~sys-kernel/vanilla-kernel-5.17.3
 ~sys-kernel/vanilla-kernel-5.17.4
 ~virtual/dist-kernel-5.10.111
-~virtual/dist-kernel-5.10.112
 ~virtual/dist-kernel-5.15.34
-~virtual/dist-kernel-5.15.35
 ~virtual/dist-kernel-5.16.20
 ~virtual/dist-kernel-5.17.3
-~virtual/dist-kernel-5.17.4
 
 # Alfredo Tupone <tupone@gentoo.org> (2022-04-26)
 # New release of janestreet packages need to tested
