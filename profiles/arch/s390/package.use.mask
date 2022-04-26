@@ -3,7 +3,8 @@
 
 # Sam James <sam@gentoo.org> (2022-04-26)
 # Needs unkeyworded dev-libs/librdkafka
-app-admin/syslog-ng kafka
+# dev-libs/boxfort does not support s390 either
+app-admin/syslog-ng kafka test
 
 # Sam James <sam@gentoo.org> (2022-04-26)
 # Large number of unkeyworded sci testdeps
