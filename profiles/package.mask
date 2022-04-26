@@ -58,6 +58,13 @@
 ~sys-kernel/vanilla-kernel-5.16.20
 ~sys-kernel/vanilla-kernel-5.17.3
 ~sys-kernel/vanilla-kernel-5.17.4
+~virtual/dist-kernel-5.10.111
+~virtual/dist-kernel-5.10.112
+~virtual/dist-kernel-5.15.34
+~virtual/dist-kernel-5.15.35
+~virtual/dist-kernel-5.16.20
+~virtual/dist-kernel-5.17.3
+~virtual/dist-kernel-5.17.4
 
 # Alfredo Tupone <tupone@gentoo.org> (2022-04-26)
 # New release of janestreet packages need to tested
