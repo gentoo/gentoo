@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-04-26)
+# Avoid unkeyworded dependencies
+app-text/enchant hunspell nuspell voikko
+
+# Sam James <sam@gentoo.org> (2022-04-26)
 # Needs unkeyworded virtual/szip provider
 sci-libs/hdf5 szip
 
