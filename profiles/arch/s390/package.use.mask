@@ -2,6 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-04-26)
+# eps: app-text/libspectre not keyworded here
+# svg: rustified librsvg not keyworded here
+# jpegxl: libjxl not keyworded here
+media-libs/imlib2 eps svg jpegxl
+
+# Sam James <sam@gentoo.org> (2022-04-26)
 # Avoid unkeyworded dependencies
 app-text/enchant hunspell nuspell voikko
 
