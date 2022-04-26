@@ -45,6 +45,12 @@ src_prepare() {
 		src/egrep.sh || die #523898
 
 	default
+
+	# touch generated files after patching m4, to avoid activating maintainer
+	# mode
+	# remove when loong-fix-build.patch is no longer necessary
+	touch ./aclocal.m4 ./config.hin ./configure || die
+	find . -name Makefile.in -exec touch {} + || die
 }
 
 src_configure() {
