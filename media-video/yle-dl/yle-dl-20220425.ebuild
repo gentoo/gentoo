@@ -37,7 +37,7 @@ BDEPEND="test? (
 		dev-python/wheel[${PYTHON_USEDEP}]
 	)"
 
-distutils_enable_tests setup.py
+distutils_enable_tests pytest
 
 DOCS=( COPYING ChangeLog README.fi README.md yledl.conf.sample )
 
