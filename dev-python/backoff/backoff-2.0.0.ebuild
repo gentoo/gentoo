@@ -27,6 +27,8 @@ DOCS=( README.rst )
 BDEPEND="
 	test? (
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/responses[${PYTHON_USEDEP}]
 	)
 "
 
