@@ -27,10 +27,10 @@ RDEPEND="
 BDEPEND="
 	test? (
 		${RDEPEND}
-		!hppa? ( !ia64? (
+		!hppa? ( !ia64? ( !s390? (
 			dev-python/gevent[${PYTHON_USEDEP}]
 			dev-python/geventhttpclient[${PYTHON_USEDEP}]
-		) )
+		) ) )
 		app-crypt/gpgme[python,${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/fastimport[${PYTHON_USEDEP}]
