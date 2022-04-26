@@ -93,7 +93,8 @@ python_test() {
 		# value in JAVA_HOME, and the tests should get skipped.
 		export JAVA_HOME=$(java-config -O 2>/dev/null)
 
-		${EPYTHON} -u run_tests.py
+		# Call python3 instead of EPYTHON to satisfy test_meson_uninstalled.
+		python3 run_tests.py
 	) || die "Testing failed with ${EPYTHON}"
 }
 
