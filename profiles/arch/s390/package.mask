@@ -7,6 +7,7 @@
 app-eselect/eselect-rust
 dev-lang/rust
 dev-lang/rust-bin
+>=dev-lang/spidermonkey-78
 virtual/rust
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-03-20)
