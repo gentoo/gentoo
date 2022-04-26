@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-04-26)
+# Needs unkeyworded virtual/szip provider
+sci-libs/hdf5 szip
+
+# Sam James <sam@gentoo.org> (2022-04-26)
 # Needs unkeyworded dev-libs/librdkafka
 # dev-libs/boxfort does not support s390 either
 app-admin/syslog-ng kafka test
