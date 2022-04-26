@@ -30,6 +30,8 @@ distutils_enable_tests pytest
 
 src_prepare() {
 	sed -i -e 's:--cov-report= --cov=numpydoc::' setup.cfg || die
+	# unpin the dep
+	sed -i -e '/Jinja2/s:,<3.1::' setup.py || die
 
 	distutils-r1_src_prepare
 }
