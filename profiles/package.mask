@@ -33,6 +33,21 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Pagano <mpagano@gentoo.org> (2022-04-26)
+# These kernels contain a major regression that causes power button
+# to stop working, apparently making it impossible to leave suspend
+# on some laptops without a (difficult) hard reset.
+~sys-kernel/gentoo-sources-5.10.111
+~sys-kernel/gentoo-sources-5.10.112
+~sys-kernel/gentoo-sources-5.15.34
+~sys-kernel/gentoo-sources-5.15.35
+~sys-kernel/gentoo-sources-5.16.20
+~sys-kernel/gentoo-sources-5.17.3
+~sys-kernel/gentoo-sources-5.17.4
+~sys-kernel/vanilla-sources-5.10.112
+~sys-kernel/vanilla-sources-5.15.35
+~sys-kernel/vanilla-sources-5.17.4
+
 # Michał Górny <mgorny@gentoo.org> (2022-04-26)
 # These kernels contain a major regression that causes power button
 # to stop working, apparently making it impossible to leave suspend
