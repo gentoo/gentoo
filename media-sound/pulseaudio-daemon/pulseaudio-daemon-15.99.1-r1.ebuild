@@ -272,6 +272,12 @@ src_install() {
 			|| die
 	fi
 
+	# Only enable autospawning pulseaudio daemon on systems without systemd
+	if ! use systemd; then
+		insinto /etc/pulse/client.conf.d
+		newins "${FILESDIR}/enable-autospawn.conf" "enable-autospawn.conf"
+	fi
+
 	find "${ED}" \( -name '*.a' -o -name '*.la' \) -delete || die
 }
 
