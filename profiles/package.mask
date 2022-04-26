@@ -126,6 +126,7 @@ dev-ml/ppx_js_style:0/0.15
 dev-ml/core:0/0.15
 dev-ml/core_kernel:0/0.15
 dev-ml/sexp_pretty:0/0.15
+dev-ml/expect_test_helpers_core:0/0.15
 
 # Hans de Graaff <graaff@gentoo.org> (2022-04-23)
 # Obsolete slots that are no longer used by current
