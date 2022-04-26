@@ -23,10 +23,10 @@ RDEPEND="
 	>=dev-python/jeepney-0.6[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	test? ( !hppa? ( !sparc? (
+	test? ( !hppa? ( !sparc? ( !s390? (
 		sys-apps/dbus
 		virtual/secret-service
-	) ) )
+	) ) ) )
 "
 
 distutils_enable_tests unittest
