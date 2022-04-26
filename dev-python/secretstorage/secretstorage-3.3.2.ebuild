@@ -29,8 +29,8 @@ RDEPEND="
 BDEPEND="
 	test? (
 		!hppa? ( !sparc? (
-			gnome-base/gnome-keyring
 			sys-apps/dbus
+			virtual/secret-service
 		)
 	) )
 "
