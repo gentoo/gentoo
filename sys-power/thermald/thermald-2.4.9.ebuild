@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools out-of-source systemd
 
 DESCRIPTION="Thermal daemon for Intel architectures"
-HOMEPAGE="https://01.org/linux-thermal-daemon https://github.com/intel/thermal_daemon"
+HOMEPAGE="https://github.com/intel/thermal_daemon"
 SRC_URI="https://github.com/intel/thermal_daemon/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
