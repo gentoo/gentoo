@@ -15,7 +15,6 @@ LICENSE="GPL-3+"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
-DOCS=( README.md )
 PATCHES=( "${FILESDIR}"/${PN}-symbol-info-data-directory.patch )
 SITEFILE="50${PN}-gentoo.el"
 
@@ -31,4 +30,6 @@ src_install() {
 
 	insinto ${SITEETC}/${PN}
 	doins -r data
+
+	einstalldocs
 }
