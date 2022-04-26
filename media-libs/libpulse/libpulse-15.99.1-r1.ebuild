@@ -77,6 +77,9 @@ PATCHES=(
 src_prepare() {
 	default
 
+	# disable autospawn by client
+	sed -i -e 's:; autospawn = yes:autospawn = no:g' src/pulse/client.conf.in || die
+
 	gnome2_environment_reset
 }
 
