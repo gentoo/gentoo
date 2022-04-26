@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit toolchain-funcs
-
 DESCRIPTION="Maximum likelihood analysis for nucleotide, amino acid, and two-state data"
 HOMEPAGE="http://www.tree-puzzle.de"
 SRC_URI="http://www.tree-puzzle.de/${P}.tar.gz"
