@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -s390
 
+# Sam James <sam@gentoo.org> (2022-04-26)
+# dev-libs/mongo-c-driver not keyworded here
+mongodb
+
 # Sam James <sam@gentoo.org> (2022-04-24)
 # Avoid unkeyworded dev-util/google-perftools
 tcmalloc
