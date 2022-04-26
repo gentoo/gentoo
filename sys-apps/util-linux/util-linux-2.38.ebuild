@@ -374,6 +374,12 @@ multilib_src_install_all() {
 	# This triggers a known QA warning which we ignore for now to magically
 	# keep bash completion for "su" command which shadow package does not
 	# provide.
+
+	local ver=$(tools/git-version-gen .tarballversion)
+	local major=$(ver_cut 1 ${ver})
+	local minor=$(ver_cut 2 ${ver})
+	local release=$(ver_cut 3 ${ver})
+	export QA_PKGCONFIG_VERSION="${major}.${minor}.${release:-0}"
 }
 
 pkg_postinst() {
