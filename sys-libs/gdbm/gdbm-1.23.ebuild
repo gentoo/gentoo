@@ -4,7 +4,7 @@
 EAPI=7
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gdbm.asc
-inherit multilib-minimal verify-sig
+inherit autotools multilib-minimal verify-sig
 
 DESCRIPTION="Standard GNU database libraries"
 HOMEPAGE="https://www.gnu.org/software/gdbm/"
@@ -19,6 +19,13 @@ IUSE="+berkdb nls +readline static-libs"
 DEPEND="readline? ( sys-libs/readline:=[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-gdbm )"
+
+src_prepare() {
+	default
+	# gdbm ships with very old libtool files, regen to avoid
+	# errors when cross-compiling.
+	elibtoolize
+}
 
 multilib_src_configure() {
 	# gdbm doesn't appear to use either of these libraries
