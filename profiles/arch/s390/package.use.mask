@@ -3,7 +3,8 @@
 
 # Sam James <sam@gentoo.org> (2022-04-26)
 # Unkeyworded dependencies
-dev-ruby/activerecord mysql postgres sqlite
+app-text/htmltidy test
+dev-ruby/activerecord mysql postgres sqlite test
 
 # Sam James <sam@gentoo.org> (2022-04-26)
 # eps: app-text/libspectre not keyworded here
