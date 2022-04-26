@@ -1,10 +1,6 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2022-04-26)
-# Spidermonkey needs Rust and not available for s390 (but is for s390x)
-sys-auth/polkit -duktape
-
 # Michał Górny <mgorny@gentoo.org> (2016-11-11)
 # Force the host target to avoid dependency hell
 dev-ml/llvm-ocaml llvm_targets_SystemZ

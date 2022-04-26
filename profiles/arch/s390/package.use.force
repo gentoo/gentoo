@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-04-26)
-# Spidermonkey needs Rust and not available for s390 (but is for s390x)
+# Spidermonkey needs Rust and LLVM, not available for s390
 sys-auth/polkit duktape
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-04-20)
