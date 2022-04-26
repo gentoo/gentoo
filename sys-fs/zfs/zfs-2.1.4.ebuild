@@ -25,7 +25,7 @@ else
 
 	# 2.1.3 unkeyworded briefly for some testing
 	if [[ ${PV} != *_rc* ]]; then
-		KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+		KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv"
 	fi
 fi
 
