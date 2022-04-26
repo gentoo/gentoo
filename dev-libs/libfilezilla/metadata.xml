@@ -9,6 +9,10 @@
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
+	</maintainer>
 	<longdescription>
 libfilezilla is a small and modern C++ library, offering some basic functionality to build high-performing, platform-independent programs. Some of the highlights include:
 
