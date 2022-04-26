@@ -23,3 +23,9 @@ RDEPEND="
 
 distutils_enable_sphinx docs
 distutils_enable_tests pytest
+
+src_prepare() {
+	# unpin the dep
+	sed -i -e '/mando/s:,<0.7::' setup.py || die
+	distutils-r1_src_prepare
+}
