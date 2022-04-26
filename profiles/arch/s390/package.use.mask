@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-04-26)
+# Unkeyworded dependencies
+dev-ruby/activerecord mysql postgres sqlite
+
+# Sam James <sam@gentoo.org> (2022-04-26)
 # eps: app-text/libspectre not keyworded here
 # heif: media-libs/libheif not keyworded here
 # svg: rustified librsvg not keyworded here
