@@ -34,7 +34,7 @@ RDEPEND="!games-engines/zoom
 	net-print/cups
 	sys-apps/dbus
 	sys-apps/util-linux
-	|| ( >=sys-libs/glibc-2.34[-clone3(+)] <sys-libs/glibc-2.34 )
+	sys-libs/glibc
 	virtual/opengl
 	x11-libs/cairo
 	x11-libs/libdrm
@@ -159,17 +159,26 @@ src_install() {
 			application/x-zoom)"
 	doicon videoconference-zoom.svg
 	doicon -s scalable videoconference-zoom.svg
+
+	local DOC_CONTENTS="Some of Zoom's screen share features (e.g.
+		the whiteboard) require display compositing. If you encounter
+		a black window when sharing the screen, then one of the following
+		actions should help:
+		\\n- Enable compositing in your window manager if it is supported
+		\\n- Alternatively, run the xcompmgr command (from x11-misc/xcompmgr)"
+	use wayland \
+		&& DOC_CONTENTS+="\\n\\nTo enable screen sharing on GNOME Wayland,
+			edit ~/.config/zoomus.conf and change the value of
+			enableWaylandShare to true."
+	has_version ">=sys-libs/glibc-2.34[clone3(+)]" \
+		&& DOC_CONTENTS+="\\n\\nIf you encounter illegal instruction errors,
+			try disabling the clone3 use flag of sys-libs/glibc."
 	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
-
-	local FORCE_PRINT_ELOG v
-	for v in ${REPLACING_VERSIONS}; do
-		ver_test ${v} -lt 5.7.28852.0718 && use wayland && FORCE_PRINT_ELOG=1
-	done
 	readme.gentoo_print_elog
 }
 
