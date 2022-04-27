@@ -12,13 +12,16 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="A set of java classes  to assist the tests for Guava itself"
+DESCRIPTION="A set of java classes to assist the tests for Guava itself"
 HOMEPAGE="https://github.com/google/guava"
 SRC_URI="https://github.com/google/guava/archive/v${PV}.tar.gz -> guava-${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+
+# error: package com.google.common.truth does not exist
+RESRTICT="test"
 
 # Common dependencies
 # POM: ${PN}
@@ -56,11 +59,9 @@ RDEPEND="
 
 S="${WORKDIR}/guava-${PV}"
 
-JAVA_SRC_DIR="${PN}/src"
+JAVA_SRC_DIR=( "${PN}/src" )
 #	JAVA_RESOURCE_DIRS="${PN}/src"
 
 #	JAVA_TEST_GENTOO_CLASSPATH="!!!groupId-not-found!!!"
-#	JAVA_TEST_SRC_DIR="${PN}/test"
-#	JAVA_TEST_RESOURCE_DIRS=(
-#		"${PN}/test"
-#	)
+JAVA_TEST_SRC_DIR=( "${PN}/test" )
+JAVA_TEST_RESOURCE_DIRS=( "${PN}/test" )
