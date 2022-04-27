@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 inherit check-reqs cmake flag-o-matic llvm llvm.org python-any-r1
@@ -27,14 +27,19 @@ REQUIRED_USE="
 	test? (
 		cfi? ( ubsan )
 		gwp-asan? ( scudo )
-	)"
-RESTRICT="!test? ( test ) !clang? ( test )"
+	)
+"
+RESTRICT="
+	!clang? ( test )
+	!test? ( test )
+"
 
 CLANG_SLOT=${SLOT%%.*}
 # llvm-6 for new lit options
 DEPEND="
 	>=sys-devel/llvm-6
-	virtual/libcrypt[abi_x86_32(-)?,abi_x86_64(-)?]"
+	virtual/libcrypt[abi_x86_32(-)?,abi_x86_64(-)?]
+"
 BDEPEND="
 	>=dev-util/cmake-3.16
 	clang? ( sys-devel/clang )
@@ -47,7 +52,8 @@ BDEPEND="
 	)
 	!test? (
 		${PYTHON_DEPS}
-	)"
+	)
+"
 
 LLVM_COMPONENTS=( compiler-rt cmake )
 LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
