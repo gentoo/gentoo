@@ -23,7 +23,6 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	test? (
 		app-emacs/ert-runner
-		app-emacs/undercover
 		dev-lang/elixir
 	)
 "
