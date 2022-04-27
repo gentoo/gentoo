@@ -13,7 +13,7 @@ KEYWORDS="~amd64"
 IUSE="background cjk xgetdefault"
 
 RDEPEND="
-	virtual/jpeg:0
+	media-libs/libjpeg-turbo:0=
 	media-libs/libpng:0=
 	background? ( media-libs/libafterimage )
 	x11-libs/libX11
