@@ -83,7 +83,7 @@ gnome-base/gnome-vfs
 ~virtual/dist-kernel-5.16.20
 ~virtual/dist-kernel-5.17.3
 
-# Alfredo Tupone <tupone@gentoo.org> (2022-04-26)
+# Alfredo Tupone <tupone@gentoo.org> (2022-04-27)
 # New release of janestreet packages need to tested
 dev-ml/sexplib0:0/0.15
 dev-ml/base:0/0.15
@@ -95,21 +95,18 @@ dev-ml/ppx_hash:0/0.15
 dev-ml/ppx_cold:0/0.15
 dev-ml/parsexp:0/0.15
 dev-ml/ppx_base:0/0.15
-#dev-ml/fieldslib
 dev-ml/ppx_fields_conv:0/0.15
 dev-ml/ppx_here:0/0.15
 dev-ml/ppx_let:0/0.15
 dev-ml/ppx_sexp_message:0/0.15
 dev-ml/ppx_sexp_value:0/0.15
 dev-ml/ppx_assert:0/0.15
-#dev-ml/jst-config
 dev-ml/ppx_optcomp:0/0.15
 dev-ml/time_now:0/0.15
 dev-ml/ppx_inline_test:0/0.15
 dev-ml/ppx_bench:0/0.15
 dev-ml/splittable_random:0/0.15
 dev-ml/base_quickcheck:0/0.15
-#dev-ml/bin_prot:0/0.15
 dev-ml/ppx_bin_prot:0/0.15
 dev-ml/ppx_custom_printf:0/0.15
 dev-ml/ppx_disable_unused_warnings:0/0.15
@@ -132,6 +129,7 @@ dev-ml/core:0/0.15
 dev-ml/core_kernel:0/0.15
 dev-ml/sexp_pretty:0/0.15
 dev-ml/expect_test_helpers_core:0/0.15
+dev-ml/timezone:0/0.15
 
 # Hans de Graaff <graaff@gentoo.org> (2022-04-23)
 # Obsolete slots that are no longer used by current
