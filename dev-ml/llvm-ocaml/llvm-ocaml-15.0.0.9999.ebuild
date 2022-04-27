@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 inherit cmake llvm llvm.org python-any-r1
@@ -19,14 +19,18 @@ RDEPEND="
 	>=dev-lang/ocaml-4.00.0:0=
 	dev-ml/ocaml-ctypes:=
 	~sys-devel/llvm-${PV}:=[debug?]
-	!sys-devel/llvm[ocaml(-)]"
+	!sys-devel/llvm[ocaml(-)]
+"
 
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+"
 BDEPEND="
+	${PYTHON_DEPS}
 	dev-lang/perl
 	dev-ml/findlib
 	>=dev-util/cmake-3.16
-	${PYTHON_DEPS}"
+"
 
 LLVM_COMPONENTS=( llvm cmake third-party )
 LLVM_USE_TARGETS=llvm
