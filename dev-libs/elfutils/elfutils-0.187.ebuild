@@ -3,12 +3,14 @@
 
 EAPI=7
 
-inherit flag-o-matic multilib-minimal
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/elfutils.gpg
+inherit flag-o-matic multilib-minimal verify-sig
 
 DESCRIPTION="Libraries/utilities to handle ELF objects (drop in replacement for libelf)"
 HOMEPAGE="https://sourceware.org/elfutils/"
 SRC_URI="https://sourceware.org/elfutils/ftp/${PV}/${P}.tar.bz2"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-0.186-patches.tar.gz"
+SRC_URI+=" verify-sig? ( https://sourceware.org/elfutils/ftp/${PV}/${P}.tar.bz2.sig )"
 
 LICENSE="|| ( GPL-2+ LGPL-3+ ) utils? ( GPL-3+ )"
 SLOT="0"
@@ -25,20 +27,27 @@ RDEPEND=">=sys-libs/zlib-1.2.8-r1[static-libs?,${MULTILIB_USEDEP}]
 		sys-libs/fts-standalone
 		sys-libs/obstack-standalone
 	)
-	!dev-libs/libelf
-"
+	!dev-libs/libelf"
 DEPEND="${RDEPEND}
-	valgrind? ( dev-util/valgrind )
-"
-BDEPEND="nls? ( sys-devel/gettext )
-	>=sys-devel/flex-2.5.4a
+	valgrind? ( dev-util/valgrind )"
+BDEPEND=">=sys-devel/flex-2.5.4a
 	sys-devel/m4
-"
+	nls? ( sys-devel/gettext )
+	verify-sig? ( sec-keys/openpgp-keys-elfutils )"
 RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${WORKDIR}"/${PN}-0.186-patches/
 )
+
+src_unpack() {
+	if use verify-sig ; then
+		# Needed for downloaded patch (which is unsigned, which is fine)
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.bz2{,.sig}
+	fi
+
+	default
+}
 
 src_prepare() {
 	default
