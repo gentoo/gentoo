@@ -25,7 +25,7 @@ S=${WORKDIR}
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="minimal truetype upnp zstd"
 
 DEPEND="
