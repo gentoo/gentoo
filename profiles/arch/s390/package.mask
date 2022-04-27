@@ -7,6 +7,10 @@
 app-eselect/eselect-rust
 dev-lang/rust
 dev-lang/rust-bin
+>=dev-python/cryptography-36
+>=dev-python/pyopenssl-22
+dev-python/setuptools-rust
+dev-python/watchfiles
 virtual/rust
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-03-20)
