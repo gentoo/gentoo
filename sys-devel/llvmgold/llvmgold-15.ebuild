@@ -5,18 +5,17 @@ EAPI=8
 
 DESCRIPTION="LLVMgold plugin symlink for autoloading"
 HOMEPAGE="https://llvm.org/"
-SRC_URI=""
+S=${WORKDIR}
 
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 PROPERTIES="live"
 
-RDEPEND="sys-devel/llvm:${PV}[binutils-plugin]
-	!sys-devel/llvm:0"
-
-S=${WORKDIR}
+RDEPEND="
+	sys-devel/llvm:${PV}[binutils-plugin]
+	!sys-devel/llvm:0
+"
 
 src_install() {
 	dodir "/usr/${CHOST}/binutils-bin/lib/bfd-plugins"
