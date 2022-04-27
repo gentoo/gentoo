@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 CMAKE_ECLASS=cmake
 PYTHON_COMPAT=( python3_{8..10} )
@@ -13,13 +13,16 @@ HOMEPAGE="https://openmp.llvm.org"
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS=""
-IUSE="cuda debug hwloc offload ompt test
-	llvm_targets_AMDGPU llvm_targets_NVPTX"
+IUSE="
+	cuda debug hwloc offload ompt test
+	llvm_targets_AMDGPU llvm_targets_NVPTX
+"
+RESTRICT="!test? ( test )"
 # CUDA works only with the x86_64 ABI
 REQUIRED_USE="
 	cuda? ( llvm_targets_NVPTX )
-	offload? ( cuda? ( abi_x86_64 ) )"
-RESTRICT="!test? ( test )"
+	offload? ( cuda? ( abi_x86_64 ) )
+"
 
 RDEPEND="
 	hwloc? ( >=sys-apps/hwloc-2.5:0=[${MULTILIB_USEDEP}] )
@@ -28,13 +31,17 @@ RDEPEND="
 		dev-libs/libffi:=[${MULTILIB_USEDEP}]
 		~sys-devel/llvm-${PV}[${MULTILIB_USEDEP}]
 		cuda? ( dev-util/nvidia-cuda-toolkit:= )
-	)"
+	)
+"
 # tests:
 # - dev-python/lit provides the test runner
 # - sys-devel/llvm provide test utils (e.g. FileCheck)
 # - sys-devel/clang provides the compiler to run tests
-DEPEND="${RDEPEND}"
-BDEPEND="dev-lang/perl
+DEPEND="
+	${RDEPEND}
+"
+BDEPEND="
+	dev-lang/perl
 	offload? (
 		llvm_targets_AMDGPU? ( sys-devel/clang )
 		llvm_targets_NVPTX? ( sys-devel/clang )
@@ -43,7 +50,8 @@ BDEPEND="dev-lang/perl
 	test? (
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 		sys-devel/clang
-	)"
+	)
+"
 
 LLVM_COMPONENTS=( openmp llvm/include )
 llvm.org_set_globals
