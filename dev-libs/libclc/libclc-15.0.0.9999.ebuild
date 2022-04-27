@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 inherit cmake llvm llvm.org python-any-r1
@@ -18,6 +18,7 @@ REQUIRED_USE="|| ( ${IUSE_VIDEO_CARDS} )"
 
 LLVM_MAX_SLOT=15
 BDEPEND="
+	${PYTHON_DEPS}
 	|| (
 		sys-devel/clang:15
 		sys-devel/clang:14
@@ -26,7 +27,7 @@ BDEPEND="
 		sys-devel/clang:11
 		sys-devel/clang:10
 	)
-	${PYTHON_DEPS}"
+"
 
 LLVM_COMPONENTS=( libclc )
 llvm.org_set_globals
