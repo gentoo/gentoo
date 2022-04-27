@@ -9,7 +9,7 @@ inherit flag-o-matic multilib-minimal verify-sig
 DESCRIPTION="Libraries/utilities to handle ELF objects (drop in replacement for libelf)"
 HOMEPAGE="https://sourceware.org/elfutils/"
 SRC_URI="https://sourceware.org/elfutils/ftp/${PV}/${P}.tar.bz2"
-SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-0.186-patches.tar.gz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-0.187-patches.tar.xz"
 SRC_URI+=" verify-sig? ( https://sourceware.org/elfutils/ftp/${PV}/${P}.tar.bz2.sig )"
 
 LICENSE="|| ( GPL-2+ LGPL-3+ ) utils? ( GPL-3+ )"
@@ -37,7 +37,7 @@ BDEPEND=">=sys-devel/flex-2.5.4a
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${WORKDIR}"/${PN}-0.186-patches/
+	"${WORKDIR}"/${PN}-0.187-patches/
 )
 
 src_unpack() {
@@ -53,7 +53,7 @@ src_prepare() {
 	default
 
 	if use elibc_musl; then
-		eapply "${WORKDIR}"/${PN}-0.186-patches/musl/
+		eapply "${WORKDIR}"/${PN}-0.187-patches/musl/
 	fi
 
 	if ! use static-libs; then
@@ -65,7 +65,8 @@ src_prepare() {
 }
 
 src_configure() {
-	use test && append-flags -g #407135
+	# bug #407135
+	use test && append-flags -g
 
 	# Symbol aliases are implemented as asm statements.
 	# Will require porting: https://gcc.gnu.org/PR48200
