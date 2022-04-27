@@ -22,7 +22,8 @@ BDEPEND="
 	test? (
 		dev-python/psutil[${PYTHON_USEDEP}]
 		sys-devel/llvm
-	)"
+	)
+"
 
 LLVM_COMPONENTS=( llvm/utils/lit )
 llvm.org_set_globals
