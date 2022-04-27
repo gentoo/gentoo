@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 inherit cmake llvm llvm.org python-single-r1
@@ -13,26 +13,35 @@ LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
 IUSE="debug +libedit lzma ncurses +python test +xml"
-REQUIRED_USE=${PYTHON_REQUIRED_USE}
 RESTRICT="test"
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
-RDEPEND="
+DEPEND="
 	libedit? ( dev-libs/libedit:0= )
 	lzma? ( app-arch/xz-utils:= )
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0= )
+	xml? ( dev-libs/libxml2:= )
+	~sys-devel/clang-${PV}
+	~sys-devel/llvm-${PV}
+"
+RDEPEND="
+	${DEPEND}
 	python? (
 		$(python_gen_cond_dep '
 			dev-python/six[${PYTHON_USEDEP}]
 		')
 		${PYTHON_DEPS}
 	)
-	xml? ( dev-libs/libxml2:= )
-	~sys-devel/clang-${PV}
-	~sys-devel/llvm-${PV}"
-DEPEND="${RDEPEND}"
+"
 BDEPEND="
+	${PYTHON_DEPS}
 	>=dev-util/cmake-3.16
-	python? ( >=dev-lang/swig-3.0.11 )
+	python? (
+		>=dev-lang/swig-3.0.11
+		$(python_gen_cond_dep '
+			dev-python/six[${PYTHON_USEDEP}]
+		')
+	)
 	test? (
 		$(python_gen_cond_dep "
 			~dev-python/lit-${PV}[\${PYTHON_USEDEP}]
@@ -40,7 +49,7 @@ BDEPEND="
 		")
 		sys-devel/lld
 	)
-	${PYTHON_DEPS}"
+"
 
 LLVM_COMPONENTS=( lldb )
 LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
