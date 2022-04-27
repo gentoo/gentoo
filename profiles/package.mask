@@ -348,7 +348,6 @@ net-im/gg-transport
 # no other major distro carries this anymore.
 # Bug #631320, #740484, #830090, #836278, removal on 2022-04-26.
 media-libs/libtaginfo
-media-sound/xnoise
 
 # David Seifert <soap@gentoo.org> (2022-03-20)
 # Mask gcc-8 branch (ended upstream support). Please switch
