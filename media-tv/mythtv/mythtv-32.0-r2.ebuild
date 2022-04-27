@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit flag-o-matic java-pkg-opt-2 java-ant-2 python-any-r1 qmake-utils readme.gentoo-r1 systemd user-info
 
