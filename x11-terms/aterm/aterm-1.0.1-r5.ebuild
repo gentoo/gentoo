@@ -9,7 +9,7 @@ SRC_URI="ftp://ftp.afterstep.org/apps/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="background cjk xgetdefault"
 
 RDEPEND="
