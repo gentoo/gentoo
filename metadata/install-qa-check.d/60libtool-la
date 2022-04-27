@@ -8,7 +8,8 @@ libtool_la_check() {
 	fi
 
 	# Bail out if there aren't any .la files being installed
-	readarray -d '' files < <(find "${ED}"/usr/lib* -name '*.la' -print0 2>/dev/null)
+	# TODO: use -d'' w/ newer EAPIs (bash 4.4+)
+	readarray files < <(find "${ED}"/usr/lib* -name '*.la' -print 2>/dev/null)
 	[[ -n "${files[@]}" ]] || return
 
 	if grep -q "dev-libs/libltdl" <<<${RDEPEND}; then
