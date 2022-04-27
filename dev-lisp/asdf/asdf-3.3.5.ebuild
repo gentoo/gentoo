@@ -22,6 +22,11 @@ DEPEND="!dev-lisp/cl-${PN}
 PDEPEND="virtual/commonlisp
 	~dev-lisp/uiop-${PV}"
 
+PATCHES=(
+	# bug 841335, drop on next version bump
+	"${FILESDIR}"/${PN}-3.3.5-test-utilities.patch
+)
+
 install_docs() {
 	(
 		cd doc || die
