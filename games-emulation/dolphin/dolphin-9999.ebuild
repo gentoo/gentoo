@@ -22,8 +22,7 @@ fi
 DESCRIPTION="Gamecube and Wii game emulator"
 HOMEPAGE="https://dolphin-emu.org/"
 
-# NB: appended below
-LICENSE="GPL-2+"
+LICENSE="GPL-2+ Apache-2.0 BSD BSD-2 ISC LGPL-2.1+ MIT MPL-2.0 ZLIB"
 SLOT="0"
 IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg +gui log mgba
 	profile pulseaudio systemd upnp vulkan"
@@ -110,7 +109,6 @@ declare -A KEEP_BUNDLED=(
 	# This is a stripped-down mGBA for integrated GBA support
 	[mGBA]=MPL-2.0
 )
-LICENSE+=" ${KEEP_BUNDLED[*]}"
 
 src_prepare() {
 	cmake_src_prepare

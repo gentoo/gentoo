@@ -21,8 +21,7 @@ fi
 DESCRIPTION="Gamecube and Wii game emulator"
 HOMEPAGE="https://dolphin-emu.org/"
 
-# NB: appended below
-LICENSE="GPL-2+"
+LICENSE="GPL-2+ Apache-2.0 BSD BSD-2 ISC LGPL-2.1+ MIT ZLIB"
 SLOT="0"
 IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg +gui log
 	profile pulseaudio systemd upnp vulkan"
@@ -108,7 +107,6 @@ declare -A KEEP_BUNDLED=(
 	# No code to detect shared library.
 	[zstd]=BSD
 )
-LICENSE+=" ${KEEP_BUNDLED[*]}"
 
 src_prepare() {
 	cmake_src_prepare
