@@ -140,6 +140,7 @@ dev-ml/core_unix:0/0.15
 dev-ml/textutils_kernel:0/0.15
 dev-ml/textutils:0/0.15
 dev-ml/async_kernel:0/0.15
+dev-ml/protocol_version_header:0/0.15
 
 # Hans de Graaff <graaff@gentoo.org> (2022-04-23)
 # Obsolete slots that are no longer used by current
