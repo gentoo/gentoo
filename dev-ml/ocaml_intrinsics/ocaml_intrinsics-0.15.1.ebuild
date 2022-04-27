@@ -7,7 +7,8 @@ inherit dune
 
 DESCRIPTION="invoke amd64 instructions (such as clz,popcnt,rdtsc,rdpmc)"
 HOMEPAGE="https://github.com/janestreet/ocaml_intrinsics"
-SRC_URI="https://github.com/janestreet/${PN}/archive/refs/tags/v${PV}.tar.gz"
+SRC_URI="https://github.com/janestreet/${PN}/archive/refs/tags/v${PV}.tar.gz
+	-> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
