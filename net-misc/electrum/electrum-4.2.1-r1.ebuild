@@ -56,8 +56,8 @@ distutils_enable_tests pytest
 src_prepare() {
 	eapply "${FILESDIR}/3.1.2-no-user-root.patch"
 
-	# Prevent icon from being installed in the wrong location
-	sed -i '/icons_dirname/d' setup.py || die
+	# Prevent data files from being installed in the wrong location
+	sed -i -e '/icons_dirname/d' -e '/applications/d' setup.py || die
 
 	# use backwards-compatible cryptodome API
 	sed -i -e 's:Cryptodome:Crypto:' electrum/crypto.py || die
@@ -80,6 +80,7 @@ src_prepare() {
 
 src_install() {
 	doicon -s 128 electrum/gui/icons/${PN}.png
+	domenu electrum.desktop
 	dodoc RELEASE-NOTES
 	distutils-r1_src_install
 }
