@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 CMAKE_ECLASS=cmake
 PYTHON_COMPAT=( python3_{8..10} )
@@ -14,25 +14,33 @@ LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS=""
 IUSE="+libcxxabi +libunwind static-libs test"
-REQUIRED_USE="libunwind? ( libcxxabi )"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="libunwind? ( libcxxabi )"
 
 RDEPEND="
-	libcxxabi? ( ~sys-libs/libcxxabi-${PV}[libunwind=,static-libs?,${MULTILIB_USEDEP}] )
-	!libcxxabi? ( >=sys-devel/gcc-4.7:=[cxx] )"
+	libcxxabi? (
+		~sys-libs/libcxxabi-${PV}[libunwind=,static-libs?,${MULTILIB_USEDEP}]
+	)
+	!libcxxabi? ( >=sys-devel/gcc-4.7:=[cxx] )
+"
 # llvm-6 for new lit options
 # clang-3.9.0 installs necessary target symlinks unconditionally
 # which removes the need for MULTILIB_USEDEP
-DEPEND="${RDEPEND}
-	>=sys-devel/llvm-6"
+DEPEND="
+	${RDEPEND}
+	>=sys-devel/llvm-6
+"
 BDEPEND="
-	${PYTHON_DEPS}
+	!test? (
+		${PYTHON_DEPS}
+	)
 	test? (
 		>=dev-util/cmake-3.16
 		>=sys-devel/clang-3.9.0
 		sys-devel/gdb[python]
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
-	)"
+	)
+"
 
 LLVM_COMPONENTS=( runtimes libcxx{,abi} llvm/{cmake,utils/llvm-lit} cmake )
 LLVM_PATCHSET=9999-1
