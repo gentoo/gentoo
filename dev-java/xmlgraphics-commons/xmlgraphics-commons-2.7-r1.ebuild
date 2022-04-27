@@ -46,6 +46,8 @@ DEPEND="${CP_DEPEND}
 RDEPEND="${CP_DEPEND}
 	>=virtual/jre-1.8:*"
 
+DOCS=( NOTICE README )
+
 S="${WORKDIR}/${P}"
 
 JAVA_SRC_DIR="src/main/java"
