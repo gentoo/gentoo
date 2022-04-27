@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 inherit cmake flag-o-matic llvm llvm.org python-any-r1
@@ -15,13 +15,18 @@ KEYWORDS=""
 IUSE="debug test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="~sys-devel/llvm-${PV}"
-DEPEND="${RDEPEND}"
+DEPEND="
+	~sys-devel/llvm-${PV}
+"
+RDEPEND="
+	${DEPEND}
+"
 BDEPEND="
 	test? (
 		>=dev-util/cmake-3.16
 		$(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]")
-	)"
+	)
+"
 
 LLVM_COMPONENTS=( lld cmake libunwind/include/mach-o )
 LLVM_TEST_COMPONENTS=( llvm/utils/{lit,unittest} )
