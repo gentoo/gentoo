@@ -17,7 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
 # Skip failing test (sandbox and csh)
-PATCHES=( "${FILESDIR}"/${PN}-20210206-tests.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-20210206-tests.patch
+	"${FILESDIR}"/${PN}-20220418-warnings.patch
+)
 
 src_prepare() {
 	default
