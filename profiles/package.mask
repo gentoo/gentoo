@@ -343,12 +343,6 @@ dev-java/log4j
 # Bug #632622, #655566, #716850, removal on 2022-04-27.
 net-im/gg-transport
 
-# David Seifert <soap@gentoo.org> (2022-03-27)
-# Long abandoned upstreams, segfaults, bunch of tests fail,
-# no other major distro carries this anymore.
-# Bug #631320, #740484, #830090, #836278, removal on 2022-04-26.
-media-libs/libtaginfo
-
 # David Seifert <soap@gentoo.org> (2022-03-20)
 # Mask gcc-8 branch (ended upstream support). Please switch
 # to a fresher gcc branch.
