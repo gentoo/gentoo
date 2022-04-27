@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Conrad Kostecki <conikost@gentoo.org> (2022-04-27)
+# Old base package for jabber services, which is not being used anymore,
+# as jabber services do now use their own user instead of generic jabber user.
+# Removal in 30 days on 2022-05-27.
+net-im/jabber-base
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-22)
 # Blocks removal of vulnerable dev-java/guava:20, bug #833309.
 # Removal on 2022-05-30
