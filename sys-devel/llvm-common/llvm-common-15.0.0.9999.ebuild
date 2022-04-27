@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit llvm.org
 
@@ -11,9 +11,10 @@ HOMEPAGE="https://llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 
-RDEPEND="!sys-devel/llvm:0"
+RDEPEND="
+	!sys-devel/llvm:0
+"
 
 LLVM_COMPONENTS=( llvm/utils/vim )
 llvm.org_set_globals
