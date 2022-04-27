@@ -43,7 +43,9 @@ RDEPEND="
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-luatex
 		app-text/dvipng
-	)"
+	)
+	!dev-python/namespace-sphinxcontrib
+"
 BDEPEND="
 	doc? (
 		dev-python/sphinxcontrib-websupport[${PYTHON_USEDEP}]
@@ -56,7 +58,8 @@ BDEPEND="
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-luatex
 		app-text/dvipng
-	)"
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.2.1-doc-link.patch"
