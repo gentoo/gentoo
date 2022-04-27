@@ -7,7 +7,10 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Python interface to MySQL"
-HOMEPAGE="https://pypi.org/project/mysqlclient/ https://github.com/PyMySQL/mysqlclient-python"
+HOMEPAGE="
+	https://pypi.org/project/mysqlclient/
+	https://github.com/PyMySQL/mysqlclient/
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"

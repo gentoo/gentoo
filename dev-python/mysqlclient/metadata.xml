@@ -11,6 +11,6 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">mysqlclient</remote-id>
-    <remote-id type="github">PyMySQL/mysqlclient-python</remote-id>
+    <remote-id type="github">PyMySQL/mysqlclient</remote-id>
   </upstream>
 </pkgmetadata>
