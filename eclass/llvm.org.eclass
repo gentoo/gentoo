@@ -321,17 +321,19 @@ llvm.org_src_prepare() {
 		)
 	fi
 
+	pushd "${WORKDIR}" >/dev/null || die
 	if declare -f cmake_src_prepare >/dev/null; then
-		# cmake eclasses force ${S} for default_src_prepare
-		# but use ${CMAKE_USE_DIR} for everything else
-		CMAKE_USE_DIR=${S} \
-		S=${WORKDIR} \
+		CMAKE_USE_DIR=${S}
+		if [[ ${EAPI} == 7 ]]; then
+			# cmake eclasses force ${S} for default_src_prepare in EAPI 7
+			# but use ${CMAKE_USE_DIR} for everything else
+			local S=${WORKDIR}
+		fi
 		cmake_src_prepare
 	else
-		pushd "${WORKDIR}" >/dev/null || die
 		default_src_prepare
-		popd >/dev/null || die
 	fi
+	popd >/dev/null || die
 }
 
 
