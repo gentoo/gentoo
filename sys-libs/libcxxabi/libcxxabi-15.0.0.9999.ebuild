@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 CMAKE_ECLASS=cmake
 PYTHON_COMPAT=( python3_{8..10} )
@@ -22,16 +22,22 @@ RDEPEND="
 			>=sys-libs/libunwind-1.0.1-r1[static-libs?,${MULTILIB_USEDEP}]
 			>=sys-libs/llvm-libunwind-3.9.0-r1[static-libs?,${MULTILIB_USEDEP}]
 		)
-	)"
+	)
+"
 # llvm-6 for new lit options
-DEPEND="${RDEPEND}
-	>=sys-devel/llvm-6"
+DEPEND="
+	${RDEPEND}
+	>=sys-devel/llvm-6
+"
 BDEPEND="
-	${PYTHON_DEPS}
+	!test? (
+		${PYTHON_DEPS}
+	)
 	test? (
 		>=sys-devel/clang-3.9.0
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
-	)"
+	)
+"
 
 LLVM_COMPONENTS=( runtimes libcxx{abi,} llvm/cmake cmake )
 LLVM_TEST_COMPONENTS=( llvm/utils/llvm-lit )
