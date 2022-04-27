@@ -26,8 +26,3 @@ src_test() {
 	mkdir -p "${HOME}"/.emacs.d || die  # For "projectile--directory-p" test
 	buttercup -L . -L test --traceback full || die
 }
-
-src_install() {
-	elisp-make-autoload-file "${S}"/${PN}-autoload.el "${S}"/
-	elisp_src_install
-}
