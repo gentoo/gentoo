@@ -73,7 +73,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" UDEVRULESDIR="/lib/udev/rules.d" install
+	emake DESTDIR="${D}" UDEVRULESDIR="$(get_udevdir)/rules.d" install
 
 	einstalldocs
 }
