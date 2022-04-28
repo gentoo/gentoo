@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-inherit bash-completion-r1 cmake cuda python-utils-r1 readme.gentoo-r1 toolchain-funcs xdg-utils
+inherit bash-completion-r1 cmake cuda readme.gentoo-r1 toolchain-funcs xdg-utils
 
 SRC_URI="
 	http://ftp.gromacs.org/gromacs/${PN}-${PV/_/-}.tar.gz
