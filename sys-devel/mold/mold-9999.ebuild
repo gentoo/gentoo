@@ -45,8 +45,8 @@ src_prepare() {
 	# Needs unpackaged dwarfdump
 	rm test/elf/{{dead,compress}-debug-sections,compressed-debug-info}.sh || die
 
-	# Heavy test, needs qemu
-	rm test/elf/gdb-index.sh || die
+	# Heavy tests, need qemu
+	rm test/elf/gdb-index-{compress-output,dwarf{2,3,4,5}}.sh || die
 
 	# Sandbox sadness
 	rm test/elf/run.sh || die
