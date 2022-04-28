@@ -351,7 +351,7 @@ llvm.org_src_prepare() {
 # Get the standard recommended lit flags for running tests, in CMake
 # list form (;-separated).
 get_lit_flags() {
-	echo "-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
+	echo "-vv;-j;${LIT_JOBS:-$(makeopts_jobs)}"
 }
 
 # @FUNCTION: llvm_are_manpages_built
