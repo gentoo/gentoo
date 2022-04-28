@@ -49,7 +49,7 @@ REQUIRED_USE="
 	zink? ( vulkan )
 "
 
-LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.109"
+LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.110"
 RDEPEND="
 	>=dev-libs/expat-2.1.0-r3:=[${MULTILIB_USEDEP}]
 	>=media-libs/libglvnd-1.3.2[X?,${MULTILIB_USEDEP}]
