@@ -55,8 +55,9 @@ distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
 	# This fails if your terminal is zsh (and maybe other non-bash as well?)
-	tests/test_terminal.py::test_terminal_create_with_cwd
 	tests/test_terminal.py::test_culling
+	tests/test_terminal.py::test_terminal_create_with_cwd
+	tests/test_terminal.py::test_terminal_create_with_relative_cwd
 )
 
 src_prepare() {
