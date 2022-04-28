@@ -18,7 +18,7 @@ depend() {
 start_pre() {
 	if [ ! -s /etc/headscale/config.yaml ] ; then
 		eerror "Missing headscale configuration file"
-		eerror "Please use /etc/headscale/config.yaml.example as example"
+		eerror "Please check the documentation directory for an example"
 		return 1
 	fi
 
