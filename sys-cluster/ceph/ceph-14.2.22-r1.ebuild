@@ -28,8 +28,8 @@ SLOT="0"
 CPU_FLAGS_X86=(sse{,2,3,4_1,4_2} ssse3)
 
 IUSE="babeltrace +cephfs custom-cflags diskprediction dpdk fuse grafana jemalloc
-	kafka kerberos ldap lttng +mgr numa rabbitmq +radosgw +ssl spdk system-boost
-	systemd +tcmalloc test xfs zfs"
+	kafka kerberos ldap lttng +mgr numa rabbitmq +radosgw rdma +ssl spdk
+	system-boost systemd +tcmalloc test xfs zfs"
 IUSE+=" $(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
 
 DEPEND="
@@ -261,7 +261,7 @@ ceph_src_configure() {
 		-DWITH_SYSTEM_BOOST=$(usex system-boost)
 		-DBOOST_J=$(makeopts_jobs)
 		-DWITH_SYSTEM_ROCKSDB=ON
-		-DWITH_RDMA=OFF
+		-DWITH_RDMA=$(usex rdma)
 		-DWITH_TBB=OFF
 		-DSYSTEMD_UNITDIR=$(systemd_get_systemunitdir)
 		-DCMAKE_INSTALL_SYSTEMD_SERVICEDIR=$(systemd_get_systemunitdir)

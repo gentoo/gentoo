@@ -32,8 +32,8 @@ CPU_FLAGS_X86=(avx2 avx512f pclmul sse{,2,3,4_1,4_2} ssse3)
 
 IUSE="babeltrace +cephfs custom-cflags diskprediction dpdk fuse grafana
 	jemalloc jaeger kafka kerberos ldap lttng +mgr numa pmdk rabbitmq
-	+radosgw rbd-rwl rbd-ssd rgw-lua +ssl spdk +sqlite +system-boost systemd
-	+tcmalloc test uring xfs zbd zfs"
+	+radosgw rbd-rwl rbd-ssd rdma rgw-lua +ssl spdk +sqlite +system-boost
+	systemd +tcmalloc test uring xfs zbd zfs"
 IUSE+=" $(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
 
 DEPEND="
@@ -314,7 +314,7 @@ ceph_src_configure() {
 		-DWITH_SYSTEM_BOOST=$(usex system-boost)
 		-DBOOST_J=$(makeopts_jobs)
 		-DWITH_SYSTEM_ROCKSDB=ON
-		-DWITH_RDMA=OFF
+		-DWITH_RDMA=$(usex rdma)
 		-DWITH_TBB=OFF
 		-DSYSTEMD_UNITDIR=$(systemd_get_systemunitdir)
 		-DCMAKE_INSTALL_SYSTEMD_SERVICEDIR=$(systemd_get_systemunitdir)
