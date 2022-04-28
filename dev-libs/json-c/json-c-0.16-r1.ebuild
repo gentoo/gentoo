@@ -28,6 +28,7 @@ src_prepare() {
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_STATIC_LIBS=$(usex static-libs)
+		-DDISABLE_EXTRA_LIBS=ON
 		-DDISABLE_WERROR=ON
 		-DENABLE_RDRAND=$(usex cpu_flags_x86_rdrand)
 		-DENABLE_THREADING=$(usex threads)
