@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit rpm linux-info
+inherit rpm linux-info udev
 
 PV_BASE=${PV/_*}
 PV_FULL=${PV/_p/-}
@@ -43,7 +43,8 @@ src_install() {
 	dosbin xe-daemon
 	dosbin xe-linux-distribution
 	dosbin xe-update-guest-attrs
-	insinto /lib/udev/rules.d
+
+	insinto $(get_udevdir)/rules.d
 	newins xen-vcpu-hotplug.rules 10-xen-vcpu-hotplug.rules
 
 	if use xenstore; then
