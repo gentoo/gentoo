@@ -631,9 +631,7 @@ python_optimize() {
 		debug-print "${FUNCNAME}: using sys.path: ${*/%/;}"
 	fi
 
-	local jobs=$(makeopts_jobs "${MAKEOPTS}" INF)
-	[[ ${jobs} == INF ]] && jobs=$(get_nproc)
-
+	local jobs=$(makeopts_jobs)
 	local d
 	for d; do
 		# make sure to get a nice path without //
