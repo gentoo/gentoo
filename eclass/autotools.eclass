@@ -393,8 +393,8 @@ eautoconf() {
 
 
 	if [[ ${WANT_AUTOCONF} != "2.1" && -e configure.in ]] ; then
-		case ${EAPI:-0} in
-			0|1|2|3|4|5|6|7)
+		case ${EAPI} in
+			5|6|7)
 				eqawarn "This package has a configure.in file which has long been deprecated.  Please"
 				eqawarn "update it to use configure.ac instead as newer versions of autotools will die"
 				eqawarn "when it finds this file.  See https://bugs.gentoo.org/426262 for details."
@@ -519,7 +519,7 @@ autotools_env_setup() {
 				5|6)
 					hv_args="--host-root"
 					;;
-				7)
+				*)
 					hv_args="-b"
 					;;
 			esac
