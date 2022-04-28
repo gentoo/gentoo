@@ -106,6 +106,8 @@ esac
 #
 # - maturin - maturin backend
 #
+# - pbr - pbr backend
+#
 # - pdm - pdm.pep517 backend
 #
 # - poetry - poetry-core backend
@@ -207,6 +209,10 @@ _distutils_set_globals() {
 			maturin)
 				bdep+='
 					>=dev-util/maturin-0.12.7[${PYTHON_USEDEP}]'
+				;;
+			pbr)
+				bdep+='
+					>=dev-python/pbr-5.8.0-r1[${PYTHON_USEDEP}]'
 				;;
 			pdm)
 				bdep+='
@@ -990,6 +996,9 @@ _distutils-r1_backend_to_key() {
 			;;
 		maturin)
 			echo maturin
+			;;
+		pbr.build)
+			echo pbr
 			;;
 		pdm.pep517.api)
 			echo pdm
