@@ -674,7 +674,8 @@ cmake_src_test() {
 
 	[[ -n ${TEST_VERBOSE} ]] && myctestargs+=( --extra-verbose --output-on-failure )
 
-	set -- ctest -j "$(makeopts_jobs)" --test-load "$(makeopts_loadavg)" "${myctestargs[@]}" "$@"
+	set -- ctest -j "$(makeopts_jobs "${MAKEOPTS}" 999)" \
+		--test-load "$(makeopts_loadavg)" "${myctestargs[@]}" "$@"
 	echo "$@" >&2
 	if "$@" ; then
 		einfo "Tests succeeded."
