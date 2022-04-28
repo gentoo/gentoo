@@ -101,8 +101,12 @@ PATCHES=(
 
 src_prepare() {
 	if [[ ${PV} == *_p* ]] ; then
-		#eapply "${WORKDIR}"/${P/_p/-}-patch.sh
-		eapply "${WORKDIR}"/
+		if [[ -z ${PATCH_DATES[@]} ]] ; then
+			# If we have a rollup patch, use that instead of the individual ones.
+			eapply "${WORKDIR}"/${P/_p/-}-patch.sh
+		else
+			eapply "${WORKDIR}"/
+		fi
 	fi
 
 	default
