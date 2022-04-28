@@ -32,6 +32,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2021.5.0-musl-mallinfo.patch
 	# musl again, should be in.. 2022?
 	"${FILESDIR}"/${PN}-2021.5.0-musl-setcontext.patch
+
+	"${FILESDIR}"/${PN}-2021.5.0-flags-stripping.patch
 )
 
 src_configure() {
