@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic linux-mod toolchain-funcs
+inherit flag-o-matic linux-mod toolchain-funcs udev
 
 DESCRIPTION="A library for running svga graphics on the console"
 HOMEPAGE="http://www.svgalib.org/"
@@ -89,8 +89,7 @@ src_install() {
 	doins src/vga.h gl/vgagl.h src/mouse/vgamouse.h src/joystick/vgajoystick.h
 	doins src/keyboard/vgakeyboard.h kernel/svgalib_helper/svgalib_helper.h
 
-	insinto /lib/udev/rules.d
-	newins "${FILESDIR}"/svgalib.udev.rules.d.2 30-svgalib.rules
+	udev_newrules "${FILESDIR}"/svgalib.udev.rules.d.2 30-svgalib.rules
 
 	exeinto /usr/lib/svgalib/demos
 	for x in "${S}"/demos/* ; do
@@ -122,5 +121,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
+
 	! use build && use kernel-helper && linux-mod_pkg_postinst
 }
