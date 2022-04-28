@@ -75,7 +75,7 @@ RDEPEND="
 	wxwidgets? (
 		$(python_gen_cond_dep '
 			dev-python/wxpython:*[${PYTHON_USEDEP}]
-		' python3_{8,9})
+		')
 	)
 "
 
