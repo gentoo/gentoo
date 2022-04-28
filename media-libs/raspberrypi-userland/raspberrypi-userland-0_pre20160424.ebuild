@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake
+inherit cmake udev
 
 DESCRIPTION="Raspberry Pi userspace tools and libraries"
 HOMEPAGE="https://github.com/raspberrypi/userland"
@@ -64,8 +64,7 @@ src_install() {
 
 	doenvd "${FILESDIR}"/04${PN}
 
-	insinto /lib/udev/rules.d
-	doins "${FILESDIR}"/92-local-vchiq-permissions.rules
+	udev_dorules "${FILESDIR}/92-local-vchiq-permissions.rules"
 
 	# enable dynamic switching of the GL implementation
 	dodir /usr/lib/opengl
@@ -109,4 +108,8 @@ src_install() {
 	fi
 
 	rm -rfv "${D}"/opt/vc/src || die
+}
+
+pkg_postinst() {
+	udev_reload
 }
