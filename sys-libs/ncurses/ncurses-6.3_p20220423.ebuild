@@ -80,8 +80,7 @@ IUSE="ada +cxx debug doc gpm minimal profile static-libs test tinfo trace"
 RESTRICT="!test? ( test )"
 
 DEPEND="gpm? ( sys-libs/gpm[${MULTILIB_USEDEP}] )"
-#	berkdb? ( sys-libs/db )"
-# Block the older ncurses that installed all files w/SLOT=5. #557472
+# Block the older ncurses that installed all files w/SLOT=5, bug #557472
 RDEPEND="${DEPEND}
 	!<=sys-libs/ncurses-5.9-r4:5
 	!<sys-libs/slang-2.3.2_pre23
@@ -93,10 +92,10 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.7-nongnu.patch"
-	"${FILESDIR}/${PN}-6.0-rxvt-unicode-9.15.patch" #192083 #383871
+	"${FILESDIR}/${PN}-6.0-rxvt-unicode-9.15.patch" # bug #192083, bug #383871
 	"${FILESDIR}/${PN}-6.0-pkg-config.patch"
-	"${FILESDIR}/${PN}-6.0-ticlib.patch" #557360
-	"${FILESDIR}/${PN}-6.2_p20210123-cppflags-cross.patch" #601426
+	"${FILESDIR}/${PN}-6.0-ticlib.patch" # bug #557360
+	"${FILESDIR}/${PN}-6.2_p20210123-cppflags-cross.patch" # bug #601426
 )
 
 src_prepare() {
@@ -113,9 +112,13 @@ src_prepare() {
 }
 
 src_configure() {
-	unset TERMINFO #115036
+	# bug #115036
+	unset TERMINFO
+
 	tc-export_build_env BUILD_{CC,CPP}
-	BUILD_CPPFLAGS+=" -D_GNU_SOURCE" #214642
+
+	# bug #214642
+	BUILD_CPPFLAGS+=" -D_GNU_SOURCE"
 
 	# Build the various variants of ncurses -- narrow, wide, and threaded. #510440
 	# Order matters here -- we want unicode/thread versions to come last so that the
@@ -132,7 +135,7 @@ src_configure() {
 	# When installing ncurses, we have to use a compatible version of tic.
 	# This comes up when cross-compiling, doing multilib builds, upgrading,
 	# or installing for the first time.  Build a local copy of tic whenever
-	# the host version isn't available. #249363 #557598
+	# the host version isn't available. bug #249363, bug #557598
 	if ! has_version -b "~sys-libs/${P}:0" ; then
 		local lbuildflags="-static"
 
@@ -179,9 +182,6 @@ do_configure() {
 		# src_install() ...
 		--with-terminfo-dirs="${EPREFIX}/etc/terminfo:${EPREFIX}/usr/share/terminfo"
 
-		# Disabled until #245417 is sorted out.
-		#$(use_with berkdb hashed-db)
-
 		# Enable installation of .pc files.
 		--enable-pc-files
 		# This path is used to control where the .pc files are installed.
@@ -189,6 +189,9 @@ do_configure() {
 
 		# Now the rest of the various standard flags.
 		--with-shared
+		# (Originally disabled until bug #245417 is sorted out, but now
+		# just keeping it off for good, given nobody needed it until now
+		# (2022) and we're trying to phase out bdb.)
 		--without-hashed-db
 		$(use_with ada)
 		$(use_with cxx)
@@ -233,6 +236,7 @@ do_configure() {
 	else
 		conf+=( --without-{pthread,reentrant} )
 	fi
+
 	# Make sure each variant goes in a unique location.
 	if [[ ${target} == "ncurses" ]] ; then
 		# "ncurses" variant goes into "${EPREFIX}"/usr/include
@@ -249,7 +253,7 @@ do_configure() {
 	fi
 
 	# Force bash until upstream rebuilds the configure script with a newer
-	# version of autotools. #545532
+	# version of autotools. bug #545532
 	#CONFIG_SHELL=${EPREFIX}/bin/bash \
 	ECONF_SOURCE="${S}" \
 	econf "${conf[@]}" "$@"
@@ -293,6 +297,7 @@ do_compile() {
 	# in parallel.  This is not really a perf hit since the source
 	# generation is quite small.
 	emake -j1 sources
+
 	# For some reason, sources depends on pc-files which depends on
 	# compiled libraries which depends on sources which ...
 	# Manually delete the pc-files file so the install step will
@@ -313,18 +318,20 @@ multilib_src_install() {
 			"${NCURSES_TARGETS[@]}" \
 			$(usex tinfo 'tinfow tinfo' '')
 	fi
+
 	if ! tc-is-static-only ; then
 		# Provide a link for -lcurses.
 		ln -sf libncurses$(get_libname) "${ED}"/usr/$(get_libdir)/libcurses$(get_libname) || die
 	fi
-	# don't delete '*.dll.a', needed for linking #631468
+
+	# Don't delete '*.dll.a', needed for linking, bug #631468
 	if ! use static-libs; then
 		find "${ED}"/usr/ -name '*.a' ! -name '*.dll.a' -delete || die
 	fi
 
 	# Build fails to create this ...
 	# -FIXME-
-	# Ugly hackaround for riscv having two parts libdir (#689240)
+	# Ugly hackaround for riscv having two parts libdir (bug #689240)
 	# Replace this hack with an official solution once we have one...
 	# -FIXME-
 	dosym $(sed 's@[^/]\+@..@g' <<< $(get_libdir))/share/terminfo \
@@ -332,41 +339,40 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-#	if ! use berkdb ; then
-		# We need the basic terminfo files in /etc for embedded/recovery. #37026
-		einfo "Installing basic terminfo files in /etc..."
-		local terms=(
-			# Dumb/simple values that show up when using the in-kernel VT.
-			ansi console dumb linux
-			vt{52,100,102,200,220}
-			# [u]rxvt users used to be pretty common.  Probably should drop this
-			# since upstream is dead and people are moving away from it.
-			rxvt{,-unicode}{,-256color}
-			# xterm users are common, as is terminals re-using/spoofing it.
-			xterm xterm-{,256}color
-			# screen is common (and reused by tmux).
-			screen{,-256color}
-			screen.xterm-256color
-		)
-		local x
-		for x in "${terms[@]}"; do
-			local termfile=$(find "${ED}"/usr/share/terminfo/ -name "${x}" 2>/dev/null)
-			local basedir=$(basename "$(dirname "${termfile}")")
+	# We need the basic terminfo files in /etc for embedded/recovery, bug #37026
+	einfo "Installing basic terminfo files in /etc..."
+	local terms=(
+		# Dumb/simple values that show up when using the in-kernel VT.
+		ansi console dumb linux
+		vt{52,100,102,200,220}
+		# [u]rxvt users used to be pretty common.  Probably should drop this
+		# since upstream is dead and people are moving away from it.
+		rxvt{,-unicode}{,-256color}
+		# xterm users are common, as is terminals re-using/spoofing it.
+		xterm xterm-{,256}color
+		# screen is common (and reused by tmux).
+		screen{,-256color}
+		screen.xterm-256color
+	)
+	local x
+	for x in "${terms[@]}"; do
+		local termfile=$(find "${ED}"/usr/share/terminfo/ -name "${x}" 2>/dev/null)
+		local basedir=$(basename "$(dirname "${termfile}")")
 
-			if [[ -n ${termfile} ]] ; then
-				dodir "/etc/terminfo/${basedir}"
-				mv "${termfile}" "${ED}/etc/terminfo/${basedir}/" || die
-				dosym "../../../../etc/terminfo/${basedir}/${x}" \
-					"/usr/share/terminfo/${basedir}/${x}"
-			fi
-		done
-#	fi
+		if [[ -n ${termfile} ]] ; then
+			dodir "/etc/terminfo/${basedir}"
+			mv "${termfile}" "${ED}/etc/terminfo/${basedir}/" || die
+			dosym "../../../../etc/terminfo/${basedir}/${x}" \
+				"/usr/share/terminfo/${basedir}/${x}"
+		fi
+	done
 
 	echo "CONFIG_PROTECT_MASK=\"/etc/terminfo\"" | newenvd - 50ncurses
 
 	use minimal && rm -r "${ED}"/usr/share/terminfo*
 	# Because ncurses5-config --terminfo returns the directory we keep it
-	keepdir /usr/share/terminfo #245374
+	# bug #245374
+	keepdir /usr/share/terminfo
 
 	cd "${S}" || die
 	dodoc ANNOUNCE MANIFEST NEWS README* TO-DO doc/*.doc
