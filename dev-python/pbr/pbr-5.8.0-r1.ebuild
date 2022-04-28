@@ -15,6 +15,9 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux"
 
+RDEPEND="
+	>=dev-python/setuptools-60.5.0[${PYTHON_USEDEP}]
+"
 # git is needed for tests, see https://bugs.launchpad.net/pbr/+bug/1326682 and https://bugs.gentoo.org/show_bug.cgi?id=561038
 # docutils is needed for sphinx exceptions... https://bugs.gentoo.org/show_bug.cgi?id=603848
 # stestr is run as external tool
