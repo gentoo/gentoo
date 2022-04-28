@@ -163,8 +163,8 @@ src_configure() {
 	# bug #787935
 	append-flags -fno-strict-aliasing
 
-	# https://bugs.gentoo.org/720806
-	if use ppc || use arm || use hppa; then
+	# bug #720806, bug #801592
+	if use ppc || use arm || use hppa || use x86; then
 		append-libs -latomic
 	fi
 
