@@ -233,7 +233,7 @@ src_prepare() {
 
 src_configure() {
 	export NINJA_PATH=/usr/bin/ninja
-	export NINJAFLAGS="${NINJAFLAGS:--j$(makeopts_jobs) -l$(makeopts_loadavg "${MAKEOPTS}" 0) -v}"
+	export NINJAFLAGS="${NINJAFLAGS:--j$(makeopts_jobs "${MAKEOPTS}" 999) -l$(makeopts_loadavg "${MAKEOPTS}" 0) -v}"
 
 	local myqmakeargs=(
 		--
