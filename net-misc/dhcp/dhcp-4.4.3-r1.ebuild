@@ -168,7 +168,7 @@ src_configure() {
 	append-flags -fno-strict-aliasing
 
 	# bug #720806, bug #801592
-	if use ppc || use arm || use hppa || use x86; then
+	if use ppc || use arm || use hppa || [[ ${CHOST} == i486* ]] ; then
 		append-libs -latomic
 	fi
 
