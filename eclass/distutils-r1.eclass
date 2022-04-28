@@ -1148,11 +1148,7 @@ distutils-r1_python_compile() {
 			fi
 
 			# distutils is parallel-capable since py3.5
-			local jobs=$(makeopts_jobs "${MAKEOPTS} ${*}" INF)
-			if [[ ${jobs} == INF ]]; then
-				local nproc=$(get_nproc)
-				jobs=$(( nproc + 1 ))
-			fi
+			local jobs=$(makeopts_jobs "${MAKEOPTS} ${*}")
 
 			if [[ ${DISTUTILS_USE_PEP517} ]]; then
 				# issue build_ext only if it looks like we have at least
