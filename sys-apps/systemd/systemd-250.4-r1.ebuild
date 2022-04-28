@@ -244,6 +244,7 @@ src_prepare() {
 	# Add local patches here
 	PATCHES+=(
 		"${FILESDIR}/250.4-random-seed-hash.patch"
+		"${FILESDIR}/250.4-fortify-source-3-malloc.patch"
 	)
 
 	if ! use vanilla; then
