@@ -32,10 +32,19 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.2.2-fix-usage-of-incompatible-minizip-data-structure.patch
+	"${FILESDIR}"/${P}-drop-Werror-gcc-option.patch
 	"${FILESDIR}"/${PN}-5.2.2-disable-failing-tests.patch
 )
 
 DOCS=( CodeConventions.md Readme.md )
+
+src_prepare() {
+	if use abi_x86_32; then
+		eapply "${FILESDIR}"/${P}-drop-failing-tests-for-abi_x86_32.patch
+	fi
+
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
