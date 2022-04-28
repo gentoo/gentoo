@@ -2,9 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-04-24)
-# Force-enable experimental-loong on toolchain packages; we're loong.
+# Force-enable experimental-loong on packages; we're loong.
+dev-libs/libffi experimental-loong
 sys-kernel/linux-headers experimental-loong
 sys-libs/glibc experimental-loong
+sys-libs/libseccomp experimental-loong
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-04-18)
 # gcc-12 is live ebuild for now, hence requiring this
