@@ -3,3 +3,6 @@
 
 # Unmask the flag which corresponds to ARCH.
 -loong
+
+# Unmask systemd
+-systemd
