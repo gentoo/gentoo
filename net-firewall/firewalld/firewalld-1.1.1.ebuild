@@ -35,7 +35,8 @@ RDEPEND="${PYTHON_DEPS}
 	')"
 DEPEND="${RDEPEND}
 	dev-libs/glib:2"
-BDEPEND=">=dev-util/intltool-0.35
+BDEPEND="app-text/docbook-xml-dtd
+	>=dev-util/intltool-0.35
 	sys-devel/gettext"
 
 RESTRICT="test" # bug 650760
