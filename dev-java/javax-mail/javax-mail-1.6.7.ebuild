@@ -61,7 +61,7 @@ src_test() {
 	pushd src/test/java || die
 		# Selection according to 137,138 pom.xml
 		# 1) com.sun.mail.util.logging.MailHandlerTest
-		# java.io.IOException: Permission denied			
+		# java.io.IOException: Permission denied
 		local JAVA_TEST_RUN_ONLY=$(find * \
 			-name "*TestSuite.java" -o -name "*Test.java" \
 			! -name "MailHandlerTest.java" \
