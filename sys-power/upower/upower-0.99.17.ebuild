@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit meson systemd udev xdg-utils
+PYTHON_COMPAT=( python3_{8..10} )
+inherit meson python-any-r1 systemd udev xdg-utils
 
 DESCRIPTION="D-Bus abstraction for enumerating power devices, querying history and statistics"
 HOMEPAGE="https://upower.freedesktop.org/"
@@ -14,7 +15,8 @@ SLOT="0/3" # based on SONAME of libupower-glib.so
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 # gtk-doc files are not available as prebuilt in the tarball
-IUSE="doc +introspection ios selinux"
+IUSE="doc +introspection ios selinux test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-libs/glib-2.56:2
@@ -39,6 +41,13 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	doc? ( dev-util/gtk-doc )
+	test? (
+		$(python_gen_any_dep '
+			dev-python/dbus-python[${PYTHON_USEDEP}]
+			dev-python/python-dbusmock[${PYTHON_USEDEP}]
+		')
+		dev-util/umockdev
+	)
 "
 
 S="${WORKDIR}/${PN}-v${PV}"
@@ -48,6 +57,15 @@ QA_MULTILIB_PATHS="usr/lib/${PN}/.*"
 PATCHES=(
 	"${FILESDIR}"/${P}-meson-Don-t-search-for-gtk-doc-if-disabled.patch
 )
+
+python_check_deps() {
+	python_has_version -b "dev-python/dbus-python[${PYTHON_USEDEP}]" &&
+	python_has_version -b "dev-python/python-dbusmock[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	default
