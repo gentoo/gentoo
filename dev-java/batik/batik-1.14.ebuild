@@ -18,7 +18,7 @@ SRC_URI="mirror://apache/xmlgraphics/batik/source/batik-src-${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="1.14"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ppc64 ~x86"
 
 CP_DEPEND="
 	dev-java/jacl:0
