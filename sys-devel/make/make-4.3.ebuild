@@ -32,12 +32,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.2-default-cxx.patch
 )
 
-src_prepare() {
-	# sources were moved into src directory
-	cd src || die
-	default
-}
-
 src_configure() {
 	use static && append-ldflags -static
 	local myeconfargs=(
