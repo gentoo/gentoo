@@ -9,13 +9,14 @@ EAPI=8
 #  - 5.2 fails with:
 # scripting.c:(.text+0x1f9b): undefined reference to `lua_open'
 #    because lua_open became lua_newstate in 5.2
-#LUA_COMPAT=( lua5-1 luajit )
+LUA_COMPAT=( lua5-1 luajit )
 
 # Upstream have deviated too far from vanilla Lua, adding their own APIs
-# like lua_enablereadonlytable
-inherit autotools flag-o-matic systemd toolchain-funcs tmpfiles
+# like lua_enablereadonlytable, but we still need the eclass and such
+# for bug #841422.
+inherit autotools flag-o-matic systemd toolchain-funcs lua-single tmpfiles
 
-DESCRIPTION="A persistent caching system, key-value and data structures database"
+DESCRIPTION="A persistent caching system, key-value, and data structures database"
 HOMEPAGE="https://redis.io"
 SRC_URI="https://download.redis.io/releases/${P}.tar.gz"
 
@@ -94,11 +95,11 @@ src_prepare() {
 
 	# Use the correct pkgconfig name for Lua.
 	# The upstream configure script handles luajit specially, and is not
-	# effected by these changes.
-	# -e "/PKG_CHECK_MODULES.*\<LUA\>/s,lua5.1,${ELUA},g" \
+	# affected by these changes.
 	sed -i	\
 		-e "/^AC_INIT/s|, [0-9].+, |, $PV, |" \
 		-e "s:AC_CONFIG_FILES(\[Makefile\]):AC_CONFIG_FILES([${makefiles}]):g" \
+		-e "/PKG_CHECK_MODULES.*\<LUA\>/s,lua5.1,${ELUA},g" \
 		configure.ac || die "Sed failed for configure.ac"
 	eautoreconf
 }
