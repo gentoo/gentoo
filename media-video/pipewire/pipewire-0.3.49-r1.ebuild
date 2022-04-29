@@ -28,7 +28,7 @@ HOMEPAGE="https://pipewire.org/"
 LICENSE="MIT LGPL-2.1+ GPL-2"
 # ABI was broken in 0.3.42 for https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues/49
 SLOT="0/0.4"
-IUSE="bluetooth doc echo-cancel extra gstreamer jack-client jack-sdk lv2 pipewire-alsa ssl system-service systemd test v4l X zeroconf"
+IUSE="bluetooth doc echo-cancel extra gstreamer jack-client jack-sdk lv2 pipewire-alsa ssl system-service systemd test udev v4l X zeroconf"
 
 # Once replacing system JACK libraries is possible, it's likely that
 # jack-client IUSE will need blocking to avoid users accidentally
@@ -60,7 +60,6 @@ RDEPEND="
 	sys-libs/readline:=
 	sys-libs/ncurses:=[unicode(+)]
 	virtual/libintl[${MULTILIB_USEDEP}]
-	virtual/libudev[${MULTILIB_USEDEP}]
 	bluetooth? (
 		media-libs/fdk-aac
 		media-libs/libldac
@@ -95,6 +94,7 @@ RDEPEND="
 		acct-user/pipewire
 		acct-group/pipewire
 	)
+	udev? ( virtual/libudev[${MULTILIB_USEDEP}] )
 	v4l? ( media-libs/libv4l )
 	X? (
 		media-libs/libcanberra
@@ -211,7 +211,7 @@ multilib_src_configure() {
 		-Dvolume=enabled # Matches upstream
 		-Dvulkan=disabled # Uses pre-compiled Vulkan compute shader to provide a CGI video source (dev thing; disabled by upstream)
 		$(meson_native_use_feature extra pw-cat)
-		-Dudev=enabled
+		$(meson_feature udev)
 		-Dudevrulesdir="${EPREFIX}$(get_udevdir)/rules.d"
 		-Dsdl2=disabled # Controls SDL2 dependent code (currently only examples when -Dinstalled_tests=enabled which we never install)
 		$(meson_native_use_feature extra sndfile) # Enables libsndfile dependent code (currently only pw-cat)
