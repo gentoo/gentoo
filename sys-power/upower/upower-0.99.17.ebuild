@@ -101,6 +101,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
+
 	if [[ ${REPLACING_VERSIONS} ]] && ver_test ${REPLACING_VERSIONS} -lt 0.99.12; then
 		elog "Support for Logitech Unifying Receiver battery state readout was"
 		elog "removed in version 0.99.12, these devices have been directly"
