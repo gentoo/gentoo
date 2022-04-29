@@ -469,12 +469,6 @@ x11-drivers/nvidia-drivers:0/vulkan
 # https://bugs.exim.org/show_bug.cgi?id=2813
 =mail-mta/exim-4.95-r1
 
-# Mart Raudsepp <leio@gentoo.org> (2021-09-24)
-# Experimental split media-sound/pulseaudio packages, bug #536780.
-media-libs/libpulse
-media-sound/pulseaudio-daemon
->=media-sound/pulseaudio-15.0-r100
-
 # Mart Raudsepp <leio@gentoo.org> (2021-09-23)
 # Incompatible with c++17 abseil-cpp, no in-tree consumers yet
 media-libs/webrtc-audio-processing:1
