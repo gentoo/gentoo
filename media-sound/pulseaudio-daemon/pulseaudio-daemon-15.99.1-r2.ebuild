@@ -56,7 +56,7 @@ REQUIRED_USE="
 # - media-libs/speexdsp is providing echo canceller implementation and used in resampler
 # TODO: libatomic_ops is only needed on some architectures and conditions, and then at runtime too
 COMMON_DEPEND="
-	>=media-libs/libpulse-${PV}[glib?,systemd?,tcpd?]
+	>=media-libs/libpulse-${PV}[dbus?,glib?,systemd?,tcpd?,X?]
 	dev-libs/libatomic_ops
 	>=media-libs/libsndfile-1.0.20
 	>=media-libs/speexdsp-1.2
