@@ -28,7 +28,7 @@ RDEPEND="dev-libs/nanomsg:=
 	dev-libs/libgit2:=
 	dev-libs/libffi:="
 DEPEND="${RDEPEND}
-	dev-libs/boxfort
+	>=dev-libs/boxfort-0.1.4
 	test? (
 		$(python_gen_any_dep 'dev-util/cram[${PYTHON_USEDEP}]')
 	)"
