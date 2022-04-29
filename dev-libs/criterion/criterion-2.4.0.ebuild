@@ -32,7 +32,8 @@ DEPEND="${RDEPEND}
 	test? (
 		$(python_gen_any_dep 'dev-util/cram[${PYTHON_USEDEP}]')
 	)"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="dev-util/cmake
+	virtual/pkgconfig"
 
 S="${WORKDIR}/Criterion-${PV}"
 
