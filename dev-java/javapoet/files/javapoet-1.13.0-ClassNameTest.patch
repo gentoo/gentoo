@@ -1,0 +1,83 @@
+There was 1 failure:
+1) classNameFromTypeElementDoesntUseGetKind(com.squareup.javapoet.ClassNameTest)
+org.mockito.exceptions.base.MockitoException: 
+Mockito cannot mock this class: class com.sun.tools.javac.code.Symbol$ClassSymbol.
+
+Mockito can only mock non-private & non-final classes.
+If you're not sure why you're getting this error, please report to the mailing list.
+
+
+Java               : 25
+JVM vendor name    : Gentoo
+JVM vendor version : 25+17
+JVM name           : OpenJDK 64-Bit Server VM
+JVM version        : 25+17
+JVM info           : mixed mode, sharing
+OS name            : Linux
+OS version         : 6.12.21-gentoo
+
+
+Underlying exception : org.mockito.exceptions.base.MockitoException: 
+Could not force module adjustment of the module of class com.sun.tools.javac.code.Symbol$ClassSymbol
+
+This is required to adjust the module graph to enable mock creation
+	at com.squareup.javapoet.ClassNameTest.preventGetKind(ClassNameTest.java:134)
+	at com.squareup.javapoet.ClassNameTest.classNameFromTypeElementDoesntUseGetKind(ClassNameTest.java:122)
+	... 45 trimmed
+Caused by: org.mockito.exceptions.base.MockitoException: 
+Could not force module adjustment of the module of class com.sun.tools.javac.code.Symbol$ClassSymbol
+
+This is required to adjust the module graph to enable mock creation
+	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:168)
+	at net.bytebuddy.TypeCache$WithInlineExpunction.findOrInsert(TypeCache.java:399)
+	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:190)
+	at net.bytebuddy.TypeCache$WithInlineExpunction.findOrInsert(TypeCache.java:410)
+	... 48 more
+Caused by: java.lang.IllegalArgumentException: com.sun.tools.javac.code.Symbol$ClassSymbol$MockitoModuleProbe$58544662 must be defined in the same package as org.mockito.codegen.InjectionBase
+	at net.bytebuddy.dynamic.loading.ClassInjector$UsingLookup.injectRaw(ClassInjector.java:1683)
+	at net.bytebuddy.dynamic.loading.ClassInjector$AbstractBase.injectRaw(ClassInjector.java:167)
+	at net.bytebuddy.dynamic.loading.ClassInjector$AbstractBase.inject(ClassInjector.java:155)
+	at net.bytebuddy.dynamic.loading.ClassLoadingStrategy$UsingLookup.load(ClassLoadingStrategy.java:519)
+	at net.bytebuddy.dynamic.TypeResolutionStrategy$Passive.initialize(TypeResolutionStrategy.java:101)
+	at net.bytebuddy.dynamic.DynamicType$Default$Unloaded.load(DynamicType.java:6432)
+	at org.mockito.internal.creation.bytebuddy.ModuleHandler$ModuleSystemFound.adjustModuleGraph(ModuleHandler.java:198)
+	at org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator.mockClass(SubclassBytecodeGenerator.java:106)
+	at org.mockito.internal.creation.bytebuddy.TypeCachingBytecodeGenerator$1.call(TypeCachingBytecodeGenerator.java:37)
+	at org.mockito.internal.creation.bytebuddy.TypeCachingBytecodeGenerator$1.call(TypeCachingBytecodeGenerator.java:34)
+	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:168)
+	at net.bytebuddy.TypeCache$WithInlineExpunction.findOrInsert(TypeCache.java:399)
+	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:190)
+	at net.bytebuddy.TypeCache$WithInlineExpunction.findOrInsert(TypeCache.java:410)
+	at org.mockito.internal.creation.bytebuddy.TypeCachingBytecodeGenerator.mockClass(TypeCachingBytecodeGenerator.java:32)
+	at org.mockito.internal.creation.bytebuddy.SubclassByteBuddyMockMaker.createMockType(SubclassByteBuddyMockMaker.java:71)
+	at org.mockito.internal.creation.bytebuddy.SubclassByteBuddyMockMaker.createMock(SubclassByteBuddyMockMaker.java:42)
+	at org.mockito.internal.creation.bytebuddy.ByteBuddyMockMaker.createMock(ByteBuddyMockMaker.java:25)
+	at org.mockito.internal.util.MockUtil.createMock(MockUtil.java:35)
+	at org.mockito.internal.MockitoCore.mock(MockitoCore.java:62)
+	at org.mockito.Mockito.spy(Mockito.java:1992)
+	... 48 more
+
+FAILURES!!!
+Tests run: 383,  Failures: 1
+
+With Java versions 21 and lower the tests pass.
+
+--- a/src/test/java/com/squareup/javapoet/ClassNameTest.java
++++ b/src/test/java/com/squareup/javapoet/ClassNameTest.java
+@@ -21,6 +21,7 @@ import javax.lang.model.element.TypeElement;
+ import javax.lang.model.util.Elements;
+ import org.junit.Rule;
+ import org.junit.Test;
++import org.junit.Ignore;
+ import org.junit.runner.RunWith;
+ import org.junit.runners.JUnit4;
+ import org.mockito.Mockito;
+@@ -116,7 +117,7 @@ public final class ClassNameTest {
+    * Buck builds with "source-based ABI generation" and those builds don't support
+    * {@link TypeElement#getKind()}. Test to confirm that we don't use that API.
+    */
+-  @Test public void classNameFromTypeElementDoesntUseGetKind() {
++  @Test @Ignore public void classNameFromTypeElementDoesntUseGetKind() {
+     Elements elements = compilationRule.getElements();
+     TypeElement object = elements.getTypeElement(Object.class.getCanonicalName());
+     assertThat(ClassName.get(preventGetKind(object)).toString())
