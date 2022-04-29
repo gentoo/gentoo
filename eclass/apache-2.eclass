@@ -650,7 +650,6 @@ apache-2_src_install() {
 	mv -f "${ED%/}/var/www/localhost/icons" \
 		"${ED%/}/usr/share/apache2/icons" || die
 	rm -rf "${ED%/}/var/www/localhost/" || die
-	eend $?
 
 	# set some sane permissions for suexec
 	if use suexec ; then
