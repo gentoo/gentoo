@@ -254,6 +254,8 @@ multilib_src_install_all() {
 }
 
 pkg_postinst() {
+	use udev && udev_reload
+
 	elog "It is recommended to raise RLIMIT_MEMLOCK to 256 for users"
 	elog "using PipeWire. Do it either manually or add yourself"
 	elog "to the 'audio' group:"
