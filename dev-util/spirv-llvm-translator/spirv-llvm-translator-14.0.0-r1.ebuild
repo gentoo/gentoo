@@ -15,7 +15,7 @@ SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="UoI-NCSA"
-SLOT="14"
+SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64"
 IUSE="test +tools"
 REQUIRED_USE="test? ( tools )"
@@ -41,10 +41,12 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DCCACHE_ALLOWED="OFF"
 		-DCMAKE_INSTALL_PREFIX="$(get_llvm_prefix ${LLVM_MAX_SLOT})"
 		-DLLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR="${BROOT}/usr/include/spirv"
 		-DLLVM_BUILD_TOOLS=$(usex tools "ON" "OFF")
 		-DLLVM_SPIRV_INCLUDE_TESTS=$(usex test "ON" "OFF")
+		-Wno-dev
 	)
 
 	cmake_src_configure
