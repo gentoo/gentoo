@@ -15,9 +15,9 @@ LICENSE="MIT"
 SLOT="0"
 
 src_configure() {
-        local mycmakeargs=(
+	local mycmakeargs=(
 		-DRH_STANDALONE_PROJECT=OFF
 		-DCMAKE_INSTALL_LIBDIR="${ESYSROOT}/usr/share/"
-        )
-        cmake_src_configure
+	)
+	cmake_src_configure
 }
