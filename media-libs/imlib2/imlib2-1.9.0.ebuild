@@ -59,7 +59,7 @@ multilib_src_configure() {
 		$(use_with zlib)
 		$(use_with svg)
 		$(use_with heif)
-		$(use_with eps ps)
+		$(multilib_native_use_with eps ps)
 		$(use_with jpeg2k j2k)
 		$(use_with jpegxl jxl)
 	)
