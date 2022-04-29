@@ -56,7 +56,7 @@ CP_DEPEND="
 # test? org.slf4j:slf4j-ext:1.7.32 -> >=dev-java/slf4j-ext-1.7.36:0
 # test? org.subethamail:subethasmtp:2.1.0 -> !!!groupId-not-found!!!
 
-# Restricting to jdk:1.8 
+# Restricting to jdk:1.8
 # src/main/java/ch/qos/logback/classic/spi/PackagingDataCalculator.java:20: error: cannot find symbol
 # import sun.reflect.Reflection;
 #                   ^
@@ -64,15 +64,15 @@ CP_DEPEND="
 DEPEND="
 	virtual/jdk:1.8
 	${CP_DEPEND}"
-# 	test? (
-# 		dev-java/dom4j:1
-# 		dev-java/assertj-core:2
-# 		dev-java/log4j-12-api:2
-# 		dev-java/logback-core:0
-# 		dev-java/mockito:4
-# 		dev-java/slf4j-api:0
-# 		dev-java/slf4j-ext:0
-# 	)
+#	test? (
+#		dev-java/dom4j:1
+#		dev-java/assertj-core:2
+#		dev-java/log4j-12-api:2
+#		dev-java/logback-core:0
+#		dev-java/mockito:4
+#		dev-java/slf4j-api:0
+#		dev-java/slf4j-ext:0
+#	)
 # "
 
 RDEPEND="
