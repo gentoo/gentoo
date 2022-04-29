@@ -87,7 +87,7 @@ src_prepare() {
 	if ! use emoji; then
 		touch \
 			tools/main.vala \
-			ui/gtk3/panel.vala || dile
+			ui/gtk3/panel.vala || die
 	fi
 	if ! use appindicator; then
 		touch ui/gtk3/panel.vala || die
