@@ -34,9 +34,10 @@
 #--- END OF EXAMPLES ---
 
 # John Helmert III <ajak@gentoo.org> (2022-04-29)
-# Installs broken pkgconfig and cmake build configuration files,
-# breaking reverse dependencies. #841716
+# New capstone rc installs broken pkgconfig and cmake build
+# configuration files, breaking reverse dependencies. #841716
 =dev-libs/capstone-5.0_rc2
+=dev-util/ROPgadget-6.7
 
 # Joonas Niilola <juippis@gentoo.org> (2022-04-29)
 # Apparently the "b" in version means "beta". 3.24 is available, we
