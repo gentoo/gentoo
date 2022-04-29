@@ -358,6 +358,7 @@ dev-libs/libpcre jit
 # Jeroen Roovers <jer@gentoo.org> (2014-02-18)
 # OSS is the only kernel audio interface that works on HPPA
 media-sound/pulseaudio equalizer -oss
+media-sound/pulseaudio-daemon equalizer -oss
 
 # Jeroen Roovers <jer@gentoo.org> (2012-05-21)
 # media-sound/lilypond has problems running mpost (bug #416961)

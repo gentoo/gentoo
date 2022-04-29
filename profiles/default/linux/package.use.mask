@@ -48,6 +48,7 @@ app-arch/libarchive -e2fsprogs
 # Older versions also had an OSS compatibility wrapper on that USE so
 # they are excluded.
 >=media-sound/pulseaudio-0.9.16_rc5 oss
+media-sound/pulseaudio-daemon oss
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (2011-03-27)
 #

@@ -728,6 +728,7 @@ dev-lisp/clisp svm
 # Don't use system-wide mode unless you *really* know what you're doing.
 # Keep it masked here so that I don't need to manage two versions every time.
 media-sound/pulseaudio system-wide
+media-sound/pulseaudio-daemon system-wide
 
 # Alexis Ballier <aballier@gentoo.org> (2011-02-16)
 # Win32 specific useflag for vlc. Can be used for cross-compiling.

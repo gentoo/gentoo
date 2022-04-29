@@ -312,6 +312,7 @@ net-libs/gnutls test-full
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=bluetooth that is masked in this profile.
 media-sound/pulseaudio native-headset
+media-sound/pulseaudio-daemon native-headset
 
 # Tobias Klausmann <klausman@gentoo.org> (2017-05-18)
 # Stack protector code is not ported to alpha (and may not ever be)
@@ -394,6 +395,7 @@ net-misc/networkmanager wext
 # Tobias Klausmann <klausman@gentoo.org> (2015-08-10)
 # Opting out of the net-misc/ofono dep tree until we have a user request
 >=media-sound/pulseaudio-6.0 ofono-headset
+media-sound/pulseaudio-daemon ofono-headset
 
 # Gilles Dartiguelongue <eva@gentoo.org> (2015-06-09)
 # dev-lua/lgi lacks alpha keyword, bug #551540

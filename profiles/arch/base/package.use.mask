@@ -338,6 +338,7 @@ app-arch/zpaq jit
 # webrtc-audio-processing is only supported on x86/amd64. Possibly arm can be
 # added.
 media-sound/pulseaudio webrtc-aec
+media-sound/pulseaudio-daemon webrtc-aec
 
 # Christoph Junghans <junghans@gentoo.org> (2012-02-04)
 # mips only use flags

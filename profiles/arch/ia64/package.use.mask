@@ -289,6 +289,7 @@ media-video/ffmpeg libv4l
 # Michał Górny <mgorny@gentoo.org> (2017-08-07)
 # Requires USE=bluetooth that is masked in this profile.
 media-sound/pulseaudio native-headset
+media-sound/pulseaudio-daemon native-headset
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-07-20)
 # pulls in unkeyworded java
@@ -385,6 +386,7 @@ net-misc/networkmanager wext
 # Pacho Ramos <pacho@gentoo.org> (2015-09-06)
 # Missing keywords
 media-sound/pulseaudio ofono-headset
+media-sound/pulseaudio-daemon ofono-headset
 
 # Mike Gilbert <floppym@gentoo.org> (2015-09-05)
 # sys-boot/gnu-efi is not supported on all archs.
