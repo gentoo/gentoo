@@ -12,6 +12,9 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 
+# Needed for sof-ctl
+RDEPEND="media-libs/alsa-lib"
+
 QA_PREBUILT="usr/bin/sof-ctl
 	usr/bin/sof-logger
 	usr/bin/sof-probes"
@@ -24,7 +27,7 @@ src_install() {
 
 pkg_preinst() {
 	local sofpath="${EROOT}/lib/firmware/intel/sof"
-	if [[ ! -L "${sofpath}" ]] ; then
+	if [[ ! -L "${sofpath}" && -d "${sofpath}" ]] ; then
 		rm -r "${sofpath}" || die
 	fi
 }
