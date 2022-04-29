@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    SLY is Sylvester the Cat's Common Lisp IDE for Emacs.
+    SLY is a fork of SLIME. All SLIME's familar features (debugger, inspector,
+    xref, etc...) are still available, with improved overall UX. SLY's
+    highlights are:
+    A full-featured REPL based on Emacs's comint.el. Everything can be copied
+    to the REPL;
+    Stickers, or live code annotations that record values as code traverses
+    them.
+    Flex-style completion out-of-the-box, using Emacs's completion API.
+    Company, Helm, and other supported natively, no plugin required;
+    An interactive Trace Dialog;
+    Cleanly ASDF-loaded by default, including contribs, enabled out-of-the-box;
+    Multiple inspectors and multiple REPLs;
+    "Presentations" replaced by interactive backreferences which highlight the
+    object and remain stable throughout the REPL session;
+    Support for NAMED-READTABLES, macrostep.el and quicklisp.
+    A portable, annotation-based stepper in early but functional prototype
+    stage.
+  </longdescription>
+  <use>
+    <flag name="xref">Install xref.lisp cross-referencing tool</flag>
+  </use>
+  <upstream>
+    <bugs-to>https://github.com/joaotavora/sly/issues/</bugs-to>
+    <remote-id type="github">joaotavora/sly</remote-id>
+  </upstream>
+</pkgmetadata>
