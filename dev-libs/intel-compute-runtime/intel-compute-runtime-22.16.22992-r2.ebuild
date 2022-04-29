@@ -54,16 +54,15 @@ src_configure() {
 		-DKHRONOS_GL_HEADERS_DIR="${ESYSROOT}/usr/include"
 		-DOCL_ICD_VENDORDIR="${EPREFIX}/etc/OpenCL/vendors"
 		-DSUPPORT_DG1="ON"
+		-Wno-dev
 
 		# See https://github.com/intel/intel-graphics-compiler/issues/204
-		-DNEO_DISABLE_BUILTINS_COMPILATION="ON"
+		# -DNEO_DISABLE_BUILTINS_COMPILATION="ON"
 
 		# If enabled, tests are automatically run during
 		# the compile phase and we cannot run them because
 		# they require permissions to access the hardware.
 		-DSKIP_UNIT_TESTS="1"
-
-		-Wno-dev
 	)
 
 	cmake_src_configure
