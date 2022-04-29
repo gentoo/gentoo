@@ -6,3 +6,27 @@
 
 # Unmask systemd
 -systemd
+
+# Things without support yet
+java
+valgrind
+
+# Temporarily masked during initial keywording
+audit
+bluetooth
+doc
+emacs
+elogind
+gd
+gpm
+gtk
+gtk2
+gtk3
+gtk4
+latex
+qt5
+systemtap
+tk
+tpm
+X
+xkb
