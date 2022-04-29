@@ -42,8 +42,8 @@ BDEPEND="virtual/pkgconfig"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-    "${FILESDIR}/RT_5.8_fix_crop.patch"
-    "${FILESDIR}/RT_5.8_glibc234.patch"
+	"${FILESDIR}/RT_5.8_fix_crop.patch"
+	"${FILESDIR}/RT_5.8_glibc234.patch"
 )
 
 pkg_pretend() {
