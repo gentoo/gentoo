@@ -108,7 +108,7 @@ elogind
 
 # Paul de Vrieze <pauldv@gentoo.org>
 # There is no java in this profile (if there is it must be available). Without
-# this repoman will fail on apps like sys-libs/db
+# this, sys-libs/db has unsolvable dependencies
 java
 
 # USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.

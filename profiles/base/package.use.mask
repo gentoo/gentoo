@@ -469,7 +469,7 @@ sci-libs/ipopt hsl
 net-fs/samba ceph
 
 # Jan Ziak <0xe2.0x9a.0x9b@gmail.com> (2018-03-14)
-# Mask local USE flag to satisfy repoman
+# media-libs/svgalib is not keyworded everywhere
 app-emulation/fuse backend-svga
 
 # Patrick McLean <chutzpah@gentoo.org> (2018-03-06)
@@ -701,10 +701,6 @@ sci-libs/mathgl octave
 # Mask pdnsd's Linux-specific USE flags.
 net-dns/pdnsd urandom
 
-# Raúl Porcel <armin76@gentoo.org> (2011-02-13)
-# Masked until devs know how to use repoman
-<media-video/mplayer-9999 bluray
-
 # Tomas Touceda <chiiph@gentoo.org> (2010-04-13)
 # Masked because libsvm module is broken with this release on every arch.
 dev-lisp/clisp svm
@@ -720,8 +716,7 @@ media-sound/pulseaudio-daemon system-wide
 media-video/vlc directx
 
 # Ross Charles Campbell <rossbridger.cc@gmail.com> (2020-09-21)
-# Since >=dev-games/ogre-1.11.2 is masked, mask contribovis USE to
-# make repoman happy
+# Since >=dev-games/ogre-1.11.2 is masked, mask contribovis USE.
 media-libs/opencv contribovis
 
 # Tobias Klausmann <klausman@gentoo.org> (2021-04-16)
