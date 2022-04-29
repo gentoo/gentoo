@@ -39,7 +39,7 @@ PATCHES=(
 DOCS=( CodeConventions.md Readme.md )
 
 src_prepare() {
-	if use abi_x86_32; then
+	if use x86 ; then
 		eapply "${FILESDIR}"/${P}-drop-failing-tests-for-abi_x86_32.patch
 	fi
 
