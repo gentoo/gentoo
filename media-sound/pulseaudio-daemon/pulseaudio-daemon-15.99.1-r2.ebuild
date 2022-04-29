@@ -284,6 +284,8 @@ src_install() {
 pkg_postinst() {
 	gnome2_schemas_update
 
+	use udev && udev_reload
+
 	if use system-wide; then
 		tmpfiles_process "pulseaudio.conf"
 
