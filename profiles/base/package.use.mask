@@ -6,6 +6,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Piotr Karbowski <slashbeast@gentoo.org> (2022-04-29)
+# There's a bug with gnutls support leading TLS certificates
+# validation failures on some certificates that are otherwise valid.
+# https://github.com/aria2/aria2/issues/1636
+net-misc/aria2 gnutls
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-22)
 # java conditional dependencies are getting last-rited as they are
 # blocking removal of vulnerable slot dev-java/guava:20 (bug #760111).
