@@ -22,6 +22,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.6-makefile-fixup.patch
 	"${FILESDIR}"/${PN}-1.5.10-disable-tests.patch #519062 #522050
 	"${FILESDIR}"/${PN}-1.5.9-header-extern-c.patch
+	"${FILESDIR}"/${PN}-1.6.3-fix-rpmspec-check.patch
 )
 
 pkg_setup() {
