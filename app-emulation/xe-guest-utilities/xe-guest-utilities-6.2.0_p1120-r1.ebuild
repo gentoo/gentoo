@@ -44,8 +44,7 @@ src_install() {
 	dosbin xe-linux-distribution
 	dosbin xe-update-guest-attrs
 
-	insinto $(get_udevdir)/rules.d
-	newins xen-vcpu-hotplug.rules 10-xen-vcpu-hotplug.rules
+	udev_newrules xen-vcpu-hotplug.rules 10-xen-vcpu-hotplug.rules
 
 	if use xenstore; then
 		dobin usr/bin/xeninfo
@@ -55,6 +54,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
+
 	if [ ! -e /etc/runlevels/boot/xe-daemon ]; then
 		elog "To start the xe-daemon automatically by default"
 		elog "you should add it to the boot runlevel :"
