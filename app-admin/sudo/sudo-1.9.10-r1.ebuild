@@ -30,7 +30,7 @@ else
 			ftp://ftp.sudo.ws/pub/sudo/${uri_prefix}${MY_P}.tar.gz.sig
 		)"
 	if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~sparc-solaris"
+		KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~sparc-solaris"
 	fi
 fi
 
