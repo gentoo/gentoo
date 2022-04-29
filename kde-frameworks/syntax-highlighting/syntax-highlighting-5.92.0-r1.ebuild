@@ -11,7 +11,7 @@ DESCRIPTION="Framework for syntax highlighting"
 SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${P}-fix-bash.patch.xz"
 
 LICENSE="MIT"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 IUSE="nls"
 
 DEPEND="
