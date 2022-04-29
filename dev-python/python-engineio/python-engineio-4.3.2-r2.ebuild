@@ -24,6 +24,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	dev-python/aiohttp[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/websocket-client[${PYTHON_USEDEP}]
 "
 # Can use eventlet, werkzeug, or gevent, but no tests for werkzeug
 # eventlet doesn't yet support Python 3.10, so let's work around it
