@@ -4,7 +4,7 @@
 EAPI=8
 
 CMAKE_BUILD_TYPE="Release"
-LLVM_MAX_SLOT="13"
+LLVM_MAX_SLOT="12"
 MY_PN="igc"
 MY_P="${MY_PN}-${PV}"
 PYTHON_COMPAT=( python3_{8..10} )
@@ -71,15 +71,12 @@ src_configure() {
 		-DIGC_OPTION__USE_PREINSTALLED_SPRIV_HEADERS="ON"
 		-DINSTALL_GENX_IR="ON"
 		-DSPIRVLLVMTranslator_INCLUDE_DIR="${EPREFIX}/usr/lib/llvm/${LLVM_MAX_SLOT}/include/LLVMSPIRVLib"
+		-Wno-dev
 
 		# Compilation with VectorCompiler causes currently a segfault.
 		# See https://github.com/intel/intel-graphics-compiler/issues/236
 		-DIGC_BUILD__VC_ENABLED="OFF"
 		# -DIGC_OPTION__VC_INTRINSICS_MODE="Prebuilds"
-
-		# This will suspress some CMake warnings,
-		# which cannot be fixed at the moment.
-		-Wno-dev
 	)
 
 	cmake_src_configure
