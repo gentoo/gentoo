@@ -6,7 +6,7 @@ EAPI=8
 GENTOO_DEPEND_ON_PERL=no
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit autotools gnome2-utils flag-o-matic toolchain-funcs multilib perl-module python-single-r1 xdg
+inherit autotools gnome2-utils flag-o-matic perl-module python-single-r1 xdg
 
 DESCRIPTION="GTK Instant Messenger client"
 HOMEPAGE="https://pidgin.im/"
@@ -158,7 +158,6 @@ pkg_setup() {
 	if use python || use dbus ; then
 		python-single-r1_pkg_setup
 	fi
-	
 }
 
 src_prepare() {
