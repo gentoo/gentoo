@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2022-04-29)
+# Apparently the "b" in version means "beta". 3.24 is available, we
+# should update to that. #841437
+~sci-physics/bullet-3.22b
+
 # Conrad Kostecki <conikost@gentoo.org> (2022-04-27)
 # Old base package for jabber services, which is not being used anymore,
 # as jabber services do now use their own user instead of generic jabber user.
