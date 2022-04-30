@@ -7,7 +7,6 @@ inherit bash-completion-r1 llvm.org
 
 DESCRIPTION="Common files shared between multiple slots of clang"
 HOMEPAGE="https://llvm.org/"
-S=${WORKDIR}/clang/utils
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
@@ -17,7 +16,7 @@ PDEPEND="
 	sys-devel/clang:*
 "
 
-LLVM_COMPONENTS=( clang/utils/bash-autocomplete.sh )
+LLVM_COMPONENTS=( clang/utils )
 llvm.org_set_globals
 
 src_install() {
