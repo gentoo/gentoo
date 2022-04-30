@@ -12,6 +12,7 @@ SLOT="${MY_PV%%[.+]*}"
 
 # variable name format: <UPPERCASE_KEYWORD>_XPAK
 PPC64_XPAK="11.0.13_p8" # big-endian bootstrap tarball
+RISCV_XPAK="11.0.14_p9" # lp64d bootstrap tarball
 X86_XPAK="11.0.13_p8"
 
 # Usage: bootstrap_uri <keyword> <version> [extracond]
@@ -35,12 +36,14 @@ SRC_URI="
 		-> ${P}.tar.gz
 	!system-bootstrap? (
 		$(bootstrap_uri ppc64 ${PPC64_XPAK} big-endian)
+		$(bootstrap_uri riscv ${RISCV_XPAK})
 		$(bootstrap_uri x86 ${X86_XPAK})
 	)
+	riscv? ( https://dev.gentoo.org/~arthurzam/distfiles/dev-java/openjdk/openjdk-11.0.14-riscv.patch.xz )
 "
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv x86"
 
 IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap selinux source system-bootstrap systemtap"
 
@@ -146,6 +149,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	use riscv && eapply "${WORKDIR}"/openjdk-11.0.14-riscv.patch
 	default
 	chmod +x configure || die
 }
@@ -175,7 +179,6 @@ src_configure() {
 		--with-freetype="${XPAK_BOOTSTRAP:-system}"
 		--with-giflib="${XPAK_BOOTSTRAP:-system}"
 		--with-harfbuzz="${XPAK_BOOTSTRAP:-system}"
-		--with-jvm-features=shenandoahgc
 		--with-lcms="${XPAK_BOOTSTRAP:-system}"
 		--with-libjpeg="${XPAK_BOOTSTRAP:-system}"
 		--with-libpng="${XPAK_BOOTSTRAP:-system}"
@@ -193,6 +196,7 @@ src_configure() {
 		--enable-headless-only=$(usex headless-awt yes no)
 		$(tc-is-clang && echo "--with-toolchain-type=clang")
 	)
+	! use riscv && myconf+=( --with-jvm-features=shenandoahgc )
 
 	if use javafx; then
 		# this is not useful for users, just for upstream developers
