@@ -105,12 +105,6 @@ sys-apps/xdg-desktop-portal-gnome
 # Masked for testing. Apparently causes crashes. Bug #841857.
 >=x11-libs/libX11-1.8
 
-# John Helmert III <ajak@gentoo.org> (2022-04-29)
-# New capstone rc installs broken pkgconfig and cmake build
-# configuration files, breaking reverse dependencies. #841716
-=dev-libs/capstone-5.0_rc2
-=dev-util/ROPgadget-6.7
-
 # Joonas Niilola <juippis@gentoo.org> (2022-04-29)
 # Apparently the "b" in version means "beta". 3.24 is available, we
 # should update to that. #841437
