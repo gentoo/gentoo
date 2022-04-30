@@ -17,6 +17,7 @@
 		<flag name="lm-sensors">Enable Gallium HUD lm-sensors support.</flag>
 		<flag name="opencl">Enable the Clover Gallium OpenCL state tracker.</flag>
 		<flag name="osmesa">Build the Mesa library for off-screen rendering.</flag>
+		<flag name="proprietary-codecs">Enable codecs for patent-encumbered audio and video formats.</flag>
 		<flag name="valgrind">Compile in valgrind memory hints</flag>
 		<flag name="vdpau">Enable the VDPAU acceleration interface for the Gallium3D Video Layer.</flag>
 		<flag name="vulkan">Enable Vulkan drivers</flag>
