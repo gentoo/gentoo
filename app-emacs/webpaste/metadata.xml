@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <upstream>
+    <changelog>https://github.com/etu/webpaste.el/releases/</changelog>
+    <bugs-to>https://github.com/etu/webpaste.el/issues/</bugs-to>
+    <remote-id type="github">etu/webpaste.el</remote-id>
+  </upstream>
+  <longdescription>
+    Webpaste.el allows to paste whole buffers or parts of buffers to
+    pastebin-like services. It supports more than one service and will failover
+    if one service fails.
+  </longdescription>
+</pkgmetadata>
