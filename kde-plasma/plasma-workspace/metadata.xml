@@ -10,7 +10,6 @@
 	</upstream>
 	<use>
 		<flag name="appstream">Enable AppStream software metadata support</flag>
-		<flag name="calculator">Enable calculator runner using <pkg>sci-libs/libqalculate</pkg></flag>
 		<flag name="geolocation">Enables dataengine providing location information</flag>
 		<flag name="policykit">Build the Users KCM using <pkg>sys-apps/accountsservice</pkg> and <pkg>sys-auth/polkit</pkg></flag>
 		<flag name="screencast">Enable screencast portal using <pkg>media-video/pipewire</pkg></flag>
