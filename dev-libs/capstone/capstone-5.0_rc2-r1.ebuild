@@ -27,6 +27,10 @@ distutils_enable_tests setup.py
 
 S=${WORKDIR}/${P/_rc/-rc}
 
+PATCHES=(
+	"${FILESDIR}"/${P}-pkgconfig.patch
+)
+
 wrap_python() {
 	local phase=$1
 	shift
