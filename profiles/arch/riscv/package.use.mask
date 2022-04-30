@@ -1,6 +1,11 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gmail.com> (2022-04-30)
+# net-wireless/sdrplay contains prebuilt binaries, currently available
+# upstream only for amd64/x86 and arm
+net-wireless/gr-osmosdr sdrplay
+
 # Yixun Lan <dlan@gentoo.org> (2022-04-30)
 # net-misc/memcached has test failure (bug #811477)
 net-ftp/proftpd memcache
