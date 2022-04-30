@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ SRC_URI="xA4? ( http://nuand.com/fpga/v${PV}/hostedxA4.rbf -> hostedxA4-${PV}.rb
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm ~riscv x86"
 IUSE="+xA4 +xA9 +x40 +x115"
 
 DEPEND=""
