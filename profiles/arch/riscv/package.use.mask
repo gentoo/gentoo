@@ -1,6 +1,10 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Yixun Lan <dlan@gentoo.org> (2022-04-30)
+# net-misc/memcached has test failure (bug #811477)
+net-ftp/proftpd memcache
+
 # Jakov Smolić <jsmolic@gentoo.org> (2022-04-24)
 # sys-libs/db is being deprecated (bug #837629)
 # so avoid keywording 4.8 slot
