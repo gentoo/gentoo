@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	S="${WORKDIR}/hackrf-${PV}/host/libhackrf"
 	SRC_URI="https://github.com/greatscottgadgets/hackrf/releases/download/v${PV}/hackrf-${PV}.tar.xz"
-	KEYWORDS="amd64 ~arm ~ppc x86"
+	KEYWORDS="amd64 ~arm ~ppc ~riscv x86"
 fi
 
 LICENSE="BSD"
