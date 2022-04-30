@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -78,11 +78,6 @@ multilib_src_install_all() {
 		doins "${FILESDIR}"/pulse-default.conf
 		insinto /usr/share/alsa/alsa.conf.d
 		doins "${FILESDIR}"/51-pulseaudio-probe.conf
-		# bug #410261, comment 5+
-		# seems to work fine without any path
-		sed \
-			-e "s:/usr/lib/alsa-lib/::" \
-			-i "${ED}"/usr/share/alsa/alsa.conf.d/51-pulseaudio-probe.conf || die #410261
 		dosym ../../../usr/share/alsa/alsa.conf.d/51-pulseaudio-probe.conf \
 			/etc/alsa/conf.d/51-pulseaudio-probe.conf #670960
 	fi
