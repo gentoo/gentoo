@@ -28,6 +28,11 @@ RDEPEND=">=dev-cpp/tbb-2021.4.0:=
 # TODO: restore SYSTEM_XXHASH upstream?
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	# Bug #841575
+	"${FILESDIR}"/${PN}-1.2.1-install-nopython.patch
+)
+
 pkg_pretend() {
 	# Requires a c++20 compiler, see #831473
 	if [[ ${MERGE_TYPE} != binary ]]; then
