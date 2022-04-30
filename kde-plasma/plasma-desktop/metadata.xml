@@ -12,7 +12,6 @@
 		<flag name="emoji">Build emojipicker applet using <pkg>app-i18n/ibus</pkg> and <pkg>media-fonts/noto-emoji</pkg></flag>
 		<flag name="ibus">Use ibus input method via <pkg>app-i18n/ibus</pkg></flag>
 		<flag name="kaccounts">Build the OpenDesktop integration plugin</flag>
-		<flag name="policykit">Build the Users KCM using <pkg>sys-apps/accountsservice</pkg> and <pkg>sys-auth/polkit</pkg></flag>
 		<flag name="scim">Enable applets that use <pkg>app-i18n/scim</pkg></flag>
 	</use>
 </pkgmetadata>
