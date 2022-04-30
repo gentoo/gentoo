@@ -8,13 +8,12 @@ inherit cmake systemd toolchain-funcs
 
 DESCRIPTION="Greenbone vulnerability manager, previously named openvas-manager"
 HOMEPAGE="https://www.greenbone.net/en/ https://github.com/greenbone/gvmd/"
-SRC_URI="https://github.com/greenbone/gvmd/archive/v${PV}.tar.gz -> ${P}.tar.gz
-		https://github.com/j-licht/gvmd_report_formats/archive/v0.1.tar.gz -> gvm-report-formats-0.1.tar.gz"
+SRC_URI="https://github.com/greenbone/gvmd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
-IUSE="extras test"
+IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -23,29 +22,29 @@ DEPEND="
 	app-crypt/gpgme:1=
 	dev-db/postgresql:*[uuid]
 	dev-libs/glib:2
-	dev-libs/libgcrypt:0=
 	dev-libs/libical:=
-	>=net-analyzer/gvm-libs-${PV}
+	>=net-analyzer/gvm-libs-21.4.4
 	net-libs/gnutls:=[tools]
-	extras?   (
+	doc?   (
 		app-text/xmlstarlet
-		dev-texlive/texlive-latexextra )"
-
+		dev-texlive/texlive-latexextra )
+"
 RDEPEND="
 	${DEPEND}
-	net-analyzer/ospd-openvas"
-
+	net-analyzer/ospd-openvas
+"
 BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
-	extras? (
+	doc? (
 		app-doc/doxygen[dot]
 		app-doc/xmltoman
 		app-text/htmldoc
 		dev-libs/libxslt
 	)
-	test? ( dev-libs/cgreen )"
+	test? ( dev-libs/cgreen )
+"
 
 src_prepare() {
 	cmake_src_prepare
@@ -53,7 +52,7 @@ src_prepare() {
 	sed -i -e "s*share/doc/gvm/html/*share/doc/gvmd-${PV}/html/*g" doc/CMakeLists.txt || die
 	sed -i -e "s*/doc/gvm/*/doc/gvmd-${PV}/*g" CMakeLists.txt || die
 	# QA-Fix | Remove !CLANG Doxygen warnings for 9.0.0
-	if use extras; then
+	if use doc; then
 		if ! tc-is-clang; then
 		   local f
 		   for f in doc/*.in
@@ -79,7 +78,7 @@ src_configure() {
 
 src_compile() {
 	cmake_src_compile
-	if use extras; then
+	if use doc; then
 		cmake_build -C "${BUILD_DIR}" doc
 		cmake_build doc-full -C "${BUILD_DIR}" doc
 	fi
@@ -90,26 +89,20 @@ src_compile() {
 }
 
 src_install() {
-	if use extras; then
+	if use doc; then
 		local HTML_DOCS=( "${BUILD_DIR}"/doc/generated/html/. )
 	fi
 	cmake_src_install
-
-	#QA-Fix
-	#rm -r "${D}/usr/etc" || die
-
-	insinto /etc/gvm
-	doins -r "${FILESDIR}"/*sync*
 
 	insinto /etc/gvm/sysconfig
 	doins "${FILESDIR}/${PN}-daemon.conf"
 
 	exeinto /etc/gvm
-	doexe "${FILESDIR}"/gvmd-startpre.sh
+	newexe "${FILESDIR}"/${P}-startpre.sh gvmd-startpre.sh
 
 	fowners -R gvm:gvm /etc/gvm
 
-	newinitd "${FILESDIR}/${PN}.init" "${PN}"
+	newinitd "${FILESDIR}/${P}.init" "${PN}"
 	newconfd "${FILESDIR}/${PN}-daemon.conf" "${PN}"
 
 	insinto /etc/logrotate.d
@@ -121,7 +114,5 @@ src_install() {
 	keepdir /var/lib/gvm/gvmd
 	fowners -R gvm:gvm /var/lib/gvm
 
-	#add report formats from old version for migration
-	insinto /usr/share/gvm/gvmd/
-	doins -r "${WORKDIR}/gvmd_report_formats-0.1/report_formats/"
+	rm -r "${D}/run" || die
 }
