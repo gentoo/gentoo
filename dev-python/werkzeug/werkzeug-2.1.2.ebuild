@@ -23,6 +23,8 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
+# NOTE: remove the loong mask after greenlet gains support for loong
+# see https://github.com/python-greenlet/greenlet/pull/257
 BDEPEND="
 	test? (
 		dev-python/ephemeral-port-reserve[${PYTHON_USEDEP}]
@@ -32,11 +34,11 @@ BDEPEND="
 		!alpha? ( !hppa? ( !ia64? (
 			dev-python/cryptography[${PYTHON_USEDEP}]
 		) ) )
-		!hppa? ( !ia64? (
+		!hppa? ( !ia64? ( !loong? (
 			$(python_gen_cond_dep '
 				dev-python/greenlet[${PYTHON_USEDEP}]
 			' 'python*')
-		) )
+		) ) )
 	)
 "
 
