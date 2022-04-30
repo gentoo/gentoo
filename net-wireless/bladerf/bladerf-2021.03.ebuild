@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,7 @@ else
 	S="${WORKDIR}/${MY_PN}-${MY_PV}"
 	SRC_URI="https://github.com/Nuand/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz \
 			https://github.com/analogdevicesinc/no-OS/archive/0bba46e6f6f75785a65d425ece37d0a04daf6157.tar.gz -> analogdevices-no-OS-0bba46.tar.gz"
-	KEYWORDS="amd64 ~arm x86"
+	KEYWORDS="amd64 ~arm ~riscv x86"
 fi
 
 CDEPEND=">=dev-libs/libusb-1.0.16
