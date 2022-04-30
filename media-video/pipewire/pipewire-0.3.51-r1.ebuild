@@ -83,10 +83,7 @@ RDEPEND="
 		!media-sound/jack2
 	)
 	lv2? ( media-libs/lilv )
-	pipewire-alsa? (
-		>=media-libs/alsa-lib-1.1.7[${MULTILIB_USEDEP}]
-		!media-plugins/alsa-plugins[${MULTILIB_USEDEP},pulseaudio]
-	)
+	pipewire-alsa? ( !<media-plugins/alsa-plugins-1.2.6-r1 )
 	!pipewire-alsa? ( media-plugins/alsa-plugins[${MULTILIB_USEDEP},pulseaudio] )
 	ssl? ( dev-libs/openssl:= )
 	systemd? ( sys-apps/systemd )
