@@ -32,6 +32,13 @@ BDEPEND="
 
 distutils_enable_tests --install pytest
 
+src_prepare() {
+	# Workaround man page compilation issue with removed setup.py file
+	# https://bugs.gentoo.org/841134
+	echo '.PHONY: setup.py' >> Makefile
+	eapply_user
+}
+
 python_install_all() {
 	use doc && doman man/${PN}.1
 	distutils-r1_python_install_all
@@ -39,6 +46,6 @@ python_install_all() {
 
 src_compile() {
 	# Upstream https://github.com/pycontribs/ansi2html/issues/124
-	use doc && emake man/ansi2html.1
+	use doc && emake _MANUAL_VERSION="${PV}" man/ansi2html.1
 	distutils-r1_src_compile
 }
