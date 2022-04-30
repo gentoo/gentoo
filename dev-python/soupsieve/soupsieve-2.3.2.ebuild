@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~hppa ~ia64 ~m68k ~ppc ~riscv ~s390 ~sparc"
+KEYWORDS="~amd64 ~arm64 ~hppa ~ia64 ~loong ~m68k ~ppc ~riscv ~s390 ~sparc"
 
 BDEPEND="
 	test? (
