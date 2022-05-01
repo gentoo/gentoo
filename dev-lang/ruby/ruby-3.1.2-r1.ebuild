@@ -182,7 +182,7 @@ src_compile() {
 }
 
 src_test() {
-	emake -j1 V=1 check
+	emake V=1 check
 }
 
 src_install() {
