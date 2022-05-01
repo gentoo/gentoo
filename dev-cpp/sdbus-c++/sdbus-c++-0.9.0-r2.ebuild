@@ -81,7 +81,10 @@ src_configure() {
 			--includedir "${SDP}/src" \
 			-Drootlibdir="${SDB}" \
 			-Dselinux=false \
-			-Dstatic-libsystemd=pic
+			-Dstatic-libsystemd=pic \
+			-Dgshadow=false \
+			-Dsmack=false \
+			-Dutmp=false
 
 		# systemd doesn't generate the needed pkg-config file during configure.
 		BUILD_DIR=${SDB} \
