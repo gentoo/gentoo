@@ -35,7 +35,7 @@ DEPEND="${CP_DEPEND}
 RDEPEND="${CP_DEPEND}
 	>=virtual/jre-1.8:*"
 
-DOCS=( {CHANGES,NOTICE,README} )
+DOCS=( CHANGES NOTICE README )
 
 S="${WORKDIR}/batik-${PV}"
 
@@ -45,10 +45,8 @@ src_prepare() {
 }
 
 src_compile() {
-
 	# We loop over the modules list and compile the jar files.
 	while read module; do
-
 		einfo "Compiling $module"
 
 		JAVA_SRC_DIR=""
@@ -82,7 +80,6 @@ src_compile() {
 		JAVA_GENTOO_CLASSPATH_EXTRA+=":$module.jar"
 
 		rm -fr target || die
-
 	# Modules batik-rasterizer-ext and batik-squiggle-ext, upstream puts their jar files in the extensions
 	# directory, see batik-extension/src/main/resources/org/apache/batik/extensions/README.txt
 	# We keep them in the mudules list for later but omit them by 'grep -v'.
@@ -91,17 +88,14 @@ src_compile() {
 	done < <(grep -v '\(batik-rasterizer-ext\|batik-squiggle-ext\|batik-test-old\)' "${FILESDIR}"/batik-1.14-modules)
 
 	if use doc; then
-
 		JAVA_SRC_DIR=""
 		JAVA_JAR_FILENAME="ignoreme.jar"
 
 		while read module; do
-
 			# Some modules don't have source code
 			if [[ -d $module/src/main/java/org ]]; then
 				JAVA_SRC_DIR+=( "$module/src/main/java" )
 			fi
-
 		done < "${FILESDIR}"/batik-1.14-modules
 
 		java-pkg-simple_src_compile
@@ -109,11 +103,9 @@ src_compile() {
 }
 
 src_test() {
-
 	JAVA_TEST_GENTOO_CLASSPATH="junit-4"
 
 	while read module; do
-
 		einfo "Testing $module"
 
 		JAVA_TEST_SRC_DIR=""
@@ -133,7 +125,6 @@ src_test() {
 			JAVA_TEST_SRC_DIR="$module/src/test/java"
 			java-pkg-simple_src_test
 		fi
-
 	done < <(grep -v '\(batik-rasterizer-ext\|batik-squiggle-ext\|batik-test-old\)' "${FILESDIR}"/batik-1.14-modules)
 }
 
@@ -143,7 +134,6 @@ src_install() {
 	doicon batik-svgbrowser/src/main/resources/org/apache/batik/apps/svgbrowser/resources/init.svg
 
 	while read module; do
-
 		JAVA_MAIN_CLASS=$( sed -n 's:.*<mainClass>\(.*\)</mainClass>:\1:p' $module/pom.xml )
 
 		java-pkg_dojar $module.jar
@@ -155,13 +145,10 @@ src_install() {
 
 		# Some modules don't have source code
 		if [[ -d $module/src/main/java/org ]]; then
-
 			if use source; then
 				java-pkg_dosrc "$module/src/main/java/*"
 			fi
-
 		fi
-
 	done < <(grep -v '\(batik-rasterizer-ext\|batik-squiggle-ext\|batik-test-old\)' "${FILESDIR}"/batik-1.14-modules)
 
 	local java_policy_file="${JAVA_PKG_SHAREPATH}/etc/${PN}.policy"
