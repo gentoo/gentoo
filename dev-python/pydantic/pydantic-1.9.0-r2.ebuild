@@ -3,9 +3,7 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{8..10} )
-
 inherit distutils-r1
 
 DESCRIPTION="Data parsing and validation using Python type hints"
@@ -14,7 +12,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
@@ -25,7 +23,7 @@ BDEPEND="
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/python-dotenv[${PYTHON_USEDEP}]
-		dev-python/python-email-validator[${PYTHON_USEDEP}]
+		<dev-python/python-email-validator-1.2[${PYTHON_USEDEP}]
 	)
 "
 
@@ -34,13 +32,6 @@ distutils_enable_tests pytest
 src_prepare() {
 	sed -i -e '/CFLAGS/d' setup.py || die
 	distutils-r1_src_prepare
-}
-
-python_compile() {
-	distutils-r1_python_compile
-	# "setup.py clean" is broken
-	# TODO: remove this if distutils-r1.eclass is updated to do rm
-	rm -rf build || die
 }
 
 python_test() {
@@ -69,5 +60,6 @@ python_test() {
 			)
 			;;
 	esac
+	distutils_install_for_testing
 	epytest
 }
