@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -59,35 +59,32 @@ IUSE_PROGRAMMERS="
 "
 IUSE="${IUSE_PROGRAMMERS} +internal-dmi tools"
 
-LIB_DEPEND="
-	atahpt? ( sys-apps/pciutils[static-libs(+)] )
-	atapromise? ( sys-apps/pciutils[static-libs(+)] )
-	atavia? ( sys-apps/pciutils[static-libs(+)] )
-	ch341a-spi? ( virtual/libusb:1[static-libs(+)] )
-	dediprog? ( virtual/libusb:1[static-libs(+)] )
-	developerbox-spi? ( virtual/libusb:1[static-libs(+)] )
-	digilent-spi? ( virtual/libusb:1[static-libs(+)] )
-	drkaiser? ( sys-apps/pciutils[static-libs(+)] )
-	ft2232-spi? ( dev-embedded/libftdi:1=[static-libs(+)] )
-	gfxnvidia? ( sys-apps/pciutils[static-libs(+)] )
-	internal? ( sys-apps/pciutils[static-libs(+)] )
-	it8212? ( sys-apps/pciutils[static-libs(+)] )
-	jlink-spi? ( dev-embedded/libjaylink[static-libs(+)] )
-	nic3com? ( sys-apps/pciutils[static-libs(+)] )
-	nicintel-eeprom? ( sys-apps/pciutils[static-libs(+)] )
-	nicintel-spi? ( sys-apps/pciutils[static-libs(+)] )
-	nicintel? ( sys-apps/pciutils[static-libs(+)] )
-	nicnatsemi? ( sys-apps/pciutils[static-libs(+)] )
-	nicrealtek? ( sys-apps/pciutils[static-libs(+)] )
-	ogp-spi? ( sys-apps/pciutils[static-libs(+)] )
-	pickit2-spi? ( virtual/libusb:0[static-libs(+)] )
-	rayer-spi? ( sys-apps/pciutils[static-libs(+)] )
-	satamv? ( sys-apps/pciutils[static-libs(+)] )
-	satasii? ( sys-apps/pciutils[static-libs(+)] )
-	stlinkv3-spi? ( virtual/libusb:1[static-libs(+)] )
-	usbblaster-spi? ( dev-embedded/libftdi:1=[static-libs(+)] )
-"
-RDEPEND="${LIB_DEPEND//\[static-libs(+)]}"
+RDEPEND="atahpt? ( sys-apps/pciutils )
+	atapromise? ( sys-apps/pciutils )
+	atavia? ( sys-apps/pciutils )
+	ch341a-spi? ( virtual/libusb:1 )
+	dediprog? ( virtual/libusb:1 )
+	developerbox-spi? ( virtual/libusb:1 )
+	digilent-spi? ( virtual/libusb:1 )
+	drkaiser? ( sys-apps/pciutils )
+	ft2232-spi? ( dev-embedded/libftdi:1= )
+	gfxnvidia? ( sys-apps/pciutils )
+	internal? ( sys-apps/pciutils )
+	it8212? ( sys-apps/pciutils )
+	jlink-spi? ( dev-embedded/libjaylink )
+	nic3com? ( sys-apps/pciutils )
+	nicintel-eeprom? ( sys-apps/pciutils )
+	nicintel-spi? ( sys-apps/pciutils )
+	nicintel? ( sys-apps/pciutils )
+	nicnatsemi? ( sys-apps/pciutils )
+	nicrealtek? ( sys-apps/pciutils )
+	ogp-spi? ( sys-apps/pciutils )
+	pickit2-spi? ( virtual/libusb:0 )
+	rayer-spi? ( sys-apps/pciutils )
+	satamv? ( sys-apps/pciutils )
+	satasii? ( sys-apps/pciutils )
+	stlinkv3-spi? ( virtual/libusb:1 )
+	usbblaster-spi? ( dev-embedded/libftdi:1= )"
 DEPEND="${RDEPEND}
 	sys-apps/diffutils"
 RDEPEND+=" !internal-dmi? ( sys-apps/dmidecode )"
