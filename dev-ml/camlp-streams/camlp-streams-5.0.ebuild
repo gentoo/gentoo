@@ -12,7 +12,7 @@ SRC_URI="https://github.com/ocaml/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="LGPL-2-with-linking-exception"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
