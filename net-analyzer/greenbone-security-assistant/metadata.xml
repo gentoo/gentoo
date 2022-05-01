@@ -19,6 +19,6 @@
 	GSAD - The HTTP server talking to the GVM daemon.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">greenbone/gsa</remote-id>
+		<remote-id type="github">greenbone/gsad</remote-id>
 	</upstream>
 </pkgmetadata>
