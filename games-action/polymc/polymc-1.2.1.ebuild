@@ -77,7 +77,9 @@ RDEPEND="
 	virtual/opengl
 "
 
-PATCHES=( "${FILESDIR}/${PN}-iconfix.patch" )
+if [[ ${PV} != 9999 ]]; then
+	PATCHES=( "${FILESDIR}/${PN}-iconfix.patch" )
+fi
 
 src_prepare() {
 	cmake_src_prepare
