@@ -240,6 +240,7 @@ multilib_src_install_all() {
 		# Install pipewire conf loader hook
 		insinto /usr/share/alsa/alsa.conf.d
 		doins "${FILESDIR}"/99-pipewire-default-hook.conf
+		eprefixify "${ED}"/usr/share/alsa/alsa.conf.d/99-pipewire-default-hook.conf
 
 		# These will break if someone has /etc that is a symbolic link to a subfolder! See #724222
 		# And the current dosym8 -r implementation is likely affected by the same issue, too.
