@@ -64,9 +64,13 @@ multilib_src_configure() {
 		$(use_enable static-libs static)
 
 		# http://trac.videolan.org/vlc/ticket/620
-		# causes bus-errors on sparc64-solaris
 		$([[ ${CHOST} == *86*-darwin* ]] && echo "--disable-asm")
+		# causes bus-errors on sparc64-solaris
 		$([[ ${CHOST} == sparcv9-*-solaris* ]] && echo "--disable-asm")
+		# bug #832871
+		$([[ ${CHOST} == hppa1.1* ]] && echo "--disable-asm")
+
+		$(use asm || echo "--disable-asm")
 
 		GPG_ERROR_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpg-error-config"
 	)
