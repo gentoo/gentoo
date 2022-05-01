@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,8 @@ KEYWORDS="~amd64"
 SLOT="0"
 
 RDEPEND="=dev-util/hip-$(ver_cut 1-2)*"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND=">=dev-util/cmake-3.22
 	dev-util/rocm-cmake"
 
 S="${WORKDIR}/rccl-rocm-${PV}"
@@ -34,7 +35,6 @@ src_configure() {
 		-DBUILD_TESTS=OFF
 		-Wno-dev
 		${AMDGPU_TARGETS+-DAMDGPU_TARGETS="${AMDGPU_TARGETS}"}
-		-D__skip_rocmclang="ON" ## fix cmake-3.21 configuration issue caused by officialy support programming language "HIP"
 	)
 
 	cmake_src_configure
