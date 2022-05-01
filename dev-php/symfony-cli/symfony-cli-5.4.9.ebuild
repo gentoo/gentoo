@@ -19,10 +19,10 @@ DOCS=(
 )
 
 src_compile() {
-	ego build .
+	ego build -o symfony .
 }
 
 src_install() {
-	dobin symfony-cli
+	dobin symfony
 	dodoc
 }
