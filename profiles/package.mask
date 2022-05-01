@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2022-04-30)
+# Masked for testing. Apparently causes crashes. Bug #841857.
+>=x11-libs/libX11-1.8
+
 # John Helmert III <ajak@gentoo.org> (2022-04-29)
 # New capstone rc installs broken pkgconfig and cmake build
 # configuration files, breaking reverse dependencies. #841716
