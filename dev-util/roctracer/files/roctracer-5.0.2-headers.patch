@@ -1,0 +1,36 @@
+do not install a second set of header files, strip package name from
+libraries and headers.
+
+Index: roctracer-rocm-5.0.2/CMakeLists.txt
+===================================================================
+--- roctracer-rocm-5.0.2.orig/CMakeLists.txt
++++ roctracer-rocm-5.0.2/CMakeLists.txt
+@@ -131,16 +131,12 @@ add_custom_target ( so-patch-link ALL WO
+                     COMMAND ${CMAKE_COMMAND} -E create_symlink ../${DEST_NAME}/lib/${ROCTRACER_LIBRARY}.so.${LIB_VERSION_STRING} so-patch-link )
+ 
+ ## Install information
+-install ( TARGETS ${ROCTRACER_TARGET} LIBRARY DESTINATION ${DEST_NAME}/lib )
++install ( TARGETS ${ROCTRACER_TARGET} LIBRARY DESTINATION lib )
+ foreach ( header ${PUBLIC_HEADERS} )
+-  get_filename_component ( header_subdir ${header} DIRECTORY )
+-  install ( FILES ${CMAKE_CURRENT_SOURCE_DIR}/inc/${header} DESTINATION ${DEST_NAME}/include/${header_subdir} )
+-  install ( FILES ${CMAKE_CURRENT_SOURCE_DIR}/inc/${header} DESTINATION include/${DEST_NAME}/${header_subdir} )
++  install ( FILES ${CMAKE_CURRENT_SOURCE_DIR}/inc/${header} DESTINATION include )
+ endforeach ()
+ foreach ( header ${GEN_HEADERS} )
+-  get_filename_component ( header_subdir ${header} DIRECTORY )
+-  install ( FILES ${PROJECT_BINARY_DIR}/inc/${header} DESTINATION ${DEST_NAME}/include/${header_subdir} )
+-  install ( FILES ${PROJECT_BINARY_DIR}/inc/${header} DESTINATION include/${DEST_NAME}/${header_subdir} )
++  install ( FILES ${PROJECT_BINARY_DIR}/inc/${header} DESTINATION include )
+ endforeach ()
+ #install ( FILES ${PROJECT_BINARY_DIR}/inc-link DESTINATION include RENAME ${DEST_NAME} )
+ install ( FILES ${PROJECT_BINARY_DIR}/so-link DESTINATION lib RENAME ${ROCTRACER_LIBRARY}.so )
+@@ -162,7 +158,7 @@ add_custom_target ( so-roctx-major-link
+ add_custom_target ( so-roctx-patch-link ALL WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+                     COMMAND ${CMAKE_COMMAND} -E create_symlink ../${DEST_NAME}/lib/${ROCTX_LIBRARY}.so.${LIB_VERSION_STRING} so-roctx-patch-link )
+ 
+-install ( TARGETS "roctx64" LIBRARY DESTINATION ${DEST_NAME}/lib )
++install ( TARGETS "roctx64" LIBRARY DESTINATION lib )
+ install ( FILES ${PROJECT_BINARY_DIR}/so-roctx-link DESTINATION lib RENAME ${ROCTX_LIBRARY}.so )
+ install ( FILES ${PROJECT_BINARY_DIR}/so-roctx-major-link DESTINATION lib RENAME ${ROCTX_LIBRARY}.so.${LIB_VERSION_MAJOR} )
+ install ( FILES ${PROJECT_BINARY_DIR}/so-roctx-patch-link DESTINATION lib RENAME ${ROCTX_LIBRARY}.so.${LIB_VERSION_STRING} )
