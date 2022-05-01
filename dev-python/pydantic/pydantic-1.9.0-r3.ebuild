@@ -37,10 +37,12 @@ src_prepare() {
 }
 
 python_compile() {
+	if [[ ${EPYTHON} == pypy3 ]]; then
+		# do not build extensions on PyPy to workaround
+		# https://github.com/cython/cython/issues/4763
+		local -x SKIP_CYTHON=1
+	fi
 	distutils-r1_python_compile
-	# "setup.py clean" is broken
-	# TODO: remove this if distutils-r1.eclass is updated to do rm
-	rm -rf build || die
 }
 
 python_test() {
@@ -69,5 +71,6 @@ python_test() {
 			)
 			;;
 	esac
+	rm -rf pydantic || die
 	epytest
 }
