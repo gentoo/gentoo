@@ -38,7 +38,7 @@ udev_rules_check() {
 
 	if [[ -d "${ED}"/lib/udev/rules.d/ ]] ; then
 		if ! has udev ${INHERITED} ; then
-			eqawarn "QA Notice: package is installing udev ruleswithout inheriting udev.eclass!"
+			eqawarn "QA Notice: package is installing udev rules without inheriting udev.eclass!"
 			eqawarn "Packages must inherit udev.eclass then call udev_reload in pkg_postinst."
 			return
 		fi
