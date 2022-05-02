@@ -57,7 +57,10 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	net-misc/curl
 	archive? ( app-arch/libarchive:= )
 	cbor? ( dev-libs/libcbor )
-	dell? ( >=sys-libs/libsmbios-2.4.0 )
+	dell? (
+		>=app-crypt/tpm2-tss-2.0
+		>=sys-libs/libsmbios-2.4.0
+	)
 	elogind? ( >=sys-auth/elogind-211 )
 	flashrom? ( >=sys-apps/flashrom-1.2-r3 )
 	gnutls? ( net-libs/gnutls )
@@ -138,7 +141,7 @@ src_configure() {
 		-Dcurl="enabled"
 		-Ddocs="$(usex gtk-doc gtkdoc none)"
 		-Defi_binary="false"
-		-Dsupported_build="true"
+		-Dsupported_build="enabled"
 		$(meson_feature archive libarchive)
 		$(meson_use bash-completion bash_completion)
 		$(meson_feature bluetooth bluez)
