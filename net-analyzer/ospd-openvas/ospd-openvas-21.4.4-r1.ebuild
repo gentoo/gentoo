@@ -14,13 +14,19 @@ SRC_URI="https://github.com/greenbone/ospd-openvas/archive/v${PV}.tar.gz -> ${P}
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="doc"
 
 DEPEND="
 	acct-group/gvm
 	acct-user/gvm
+	dev-python/defusedxml[${PYTHON_USEDEP}]
+	dev-python/deprecated[${PYTHON_USEDEP}]
+	dev-python/lxml[${PYTHON_USEDEP}]
 	>=dev-python/packaging-20.4[${PYTHON_USEDEP}]
+	dev-python/paramiko[${PYTHON_USEDEP}]
 	>=dev-python/psutil-5.7.0[${PYTHON_USEDEP}]
 	>=dev-python/redis-py-3.5.3[${PYTHON_USEDEP}]
+	!net-analyzer/ospd[${PYTHON_USEDEP}]
 "
 RDEPEND="
 	${DEPEND}
@@ -28,6 +34,14 @@ RDEPEND="
 "
 
 distutils_enable_tests unittest
+
+python_compile() {
+	if use doc; then
+		bash "${S}"/docs/generate || die
+		HTML_DOCS=( "${S}"/docs/. )
+	fi
+	distutils-r1_python_compile
+}
 
 python_install() {
 	distutils-r1_python_install
