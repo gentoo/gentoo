@@ -53,6 +53,7 @@ fi
 
 PATCHES=(
 	"${FILESDIR}/${P}-non_interactive_shell_regression_fix.patch"
+	"${FILESDIR}/${P}-performance_regression_fix.patch" #839900
 )
 
 src_prepare() {
