@@ -49,6 +49,14 @@ python_test() {
 	[[ ${EPYTHON} == pypy3 ]] && EPYTEST_DESELECT+=(
 		test/ext/test_associationproxy.py::ProxyHybridTest::test_msg_fails_on_cls_access
 	)
+	if ! has_version "dev-python/greenlet[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			test/ext/asyncio/test_engine_py3k.py::TextSyncDBAPI::test_sync_driver_execution
+			test/ext/asyncio/test_engine_py3k.py::TextSyncDBAPI::test_sync_driver_run_sync
+			"test/engine/test_pool.py::PoolEventsTest::test_checkin_event_gc[True-_exclusions0]"
+			"test/engine/test_pool.py::QueuePoolTest::test_userspace_disconnectionerror_weakref_finalizer[True-_exclusions0]"
+		)
+	fi
 
 	# upstream's test suite is horribly hacky; it relies on disabling
 	# the warnings plugin and turning warnings into errors;  this also
