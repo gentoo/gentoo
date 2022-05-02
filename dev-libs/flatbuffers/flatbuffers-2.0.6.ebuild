@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
@@ -25,6 +25,7 @@ src_configure() {
 		-DFLATBUFFERS_BUILD_FLATLIB=$(usex static-libs)
 		-DFLATBUFFERS_BUILD_SHAREDLIB=ON
 		-DFLATBUFFERS_BUILD_TESTS=$(usex test)
+		-DFLATBUFFERS_BUILD_BENCHMARKS=OFF
 	)
 
 	use elibc_musl && mycmakeargs+=( -DFLATBUFFERS_LOCALE_INDEPENDENT=0 )
