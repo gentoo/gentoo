@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,9 +16,11 @@ IUSE="benchmark test"
 
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-util/hip:${SLOT}
+RDEPEND="dev-util/hip
 	sci-libs/rocPRIM:${SLOT}"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-cpp/gtest )"
+BDEPEND=">=dev-util/cmake-3.22"
 
 S="${WORKDIR}/rocThrust-rocm-${PV}"
 
@@ -27,9 +29,9 @@ PATCHES=( "${FILESDIR}/${PN}-4.0-operator_new.patch"
 
 src_prepare() {
 	sed -e "/PREFIX rocthrust/d" \
-		-e "/DESTINATION/s:rocthrust/include/thrust:include/rocthrust/thrust:" \
+		-e "/DESTINATION/s:rocthrust/include/thrust:include/thrust:" \
 		-e "/rocm_install_symlink_subdir(rocthrust)/d" \
-		-e "/<INSTALL_INTERFACE/s:rocthrust/include/:include/rocthrust/:" -i thrust/CMakeLists.txt || die
+		-e "/<INSTALL_INTERFACE/s:rocthrust/include/:include/:" -i thrust/CMakeLists.txt || die
 
 	sed -e "s:\${CMAKE_INSTALL_INCLUDEDIR}:&/rocthrust:" \
 		-e "s:\${ROCM_INSTALL_LIBDIR}:\${CMAKE_INSTALL_LIBDIR}:" -i cmake/ROCMExportTargetsHeaderOnly.cmake || die
@@ -56,7 +58,6 @@ src_configure() {
 		-DBUILD_TEST=$(usex test ON OFF)
 		-DBUILD_BENCHMARKS=$(usex benchmark ON OFF)
 		${AMDGPU_TARGETS+-DAMDGPU_TARGETS="${AMDGPU_TARGETS}"}
-		-D__skip_rocmclang="ON" ## fix cmake-3.21 configuration issue caused by officialy support programming language "HIP"
 	)
 
 	cmake_src_configure
