@@ -27,11 +27,15 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 RDEPEND="
 	>=dev-python/ifaddr-0.1.7[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	test? (
+		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
-	tests/utils/test_asyncio.py::test_run_coro_with_timeout
 	# network
 	tests/test_core.py::Framework::test_close_multiple_times
 	tests/test_core.py::Framework::test_launch_and_close
