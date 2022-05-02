@@ -38,4 +38,7 @@ EPYTEST_DESELECT=(
 	"tests/test_main.py::test_email_example_reserved_domain[me@example.com]"
 	"tests/test_main.py::test_email_example_reserved_domain[me@mail.example.com]"
 	tests/test_main.py::test_validate_email__with_caching_resolver
+	tests/test_main.py::test_main_single_good_input
+	tests/test_main.py::test_main_multi_input
+	tests/test_main.py::test_main_input_shim
 )
