@@ -16,7 +16,7 @@ SRC_URI="https://github.com/greenbone/openvas-scanner/archive/v${PV}.tar.gz -> $
 SLOT="0"
 LICENSE="GPL-2 GPL-2+"
 KEYWORDS="~amd64 ~x86"
-IUSE="cron extras snmp test"
+IUSE="cron doc snmp test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -41,7 +41,7 @@ BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
-	extras? (
+	doc? (
 		app-doc/doxygen[dot]
 		app-doc/xmltoman
 		app-text/htmldoc
@@ -62,7 +62,7 @@ src_prepare() {
 	# QA-Fix | Correct FHS/Gentoo policy paths for 7.0.0
 	sed -i -e "s*/doc/openvas-scanner/*/doc/openvas-scanner-${PV}/*g" "${S}"/src/CMakeLists.txt || die
 	# QA-Fix | Remove !CLANG doxygen warnings for 7.0.0
-	if use extras; then
+	if use doc; then
 		if ! tc-is-clang; then
 		   local f
 		   for f in doc/*.in
@@ -93,7 +93,7 @@ src_configure() {
 
 src_compile() {
 	cmake_src_compile
-	if use extras; then
+	if use doc; then
 		cmake_build -C "${BUILD_DIR}" doc
 		cmake_build doc-full -C "${BUILD_DIR}" doc
 	fi
@@ -104,7 +104,7 @@ src_compile() {
 }
 
 src_install() {
-	if use extras; then
+	if use doc; then
 		local HTML_DOCS=( "${BUILD_DIR}"/doc/generated/html/. )
 	fi
 	cmake_src_install
