@@ -9,7 +9,8 @@ MY_P="gc-${PV}"
 
 DESCRIPTION="The Boehm-Demers-Weiser conservative garbage collector"
 HOMEPAGE="https://www.hboehm.info/gc/ https://github.com/ivmai/bdwgc/"
-SRC_URI="https://github.com/ivmai/bdwgc/releases/download/v${PV}/${MY_P}.tar.gz"
+SRC_URI="https://github.com/ivmai/bdwgc/releases/download/v${PV}/${MY_P}.tar.gz
+	https://dev.gentoo.org/~xen0n/distfiles/${P}-fix-headers-install.patch.xz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="boehm-gc"
@@ -23,6 +24,10 @@ IUSE="cxx +large static-libs +threads"
 RDEPEND=">=dev-libs/libatomic_ops-7.4[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${WORKDIR}/${P}-fix-headers-install.patch"
+)
 
 src_prepare() {
 	default
