@@ -43,7 +43,7 @@ RDEPEND="
 	livecd? (
 		${GRAPHICS_DEPEND}
 		sys-libs/gpm
-		virtual/jpeg:0
+		media-libs/libjpeg-turbo:=
 	)
 	lzip? (
 		app-arch/lzip
