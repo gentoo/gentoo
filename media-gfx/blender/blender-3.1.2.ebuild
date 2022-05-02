@@ -24,7 +24,7 @@ fi
 
 SLOT="${PV%.*}"
 LICENSE="|| ( GPL-3 BL )"
-IUSE="+bullet +dds +fluid +openexr +system-python +system-numpy +tbb \
+IUSE="+bullet +dds +fluid +openexr +tbb \
 	alembic collada +color-management cuda +cycles \
 	debug doc +embree +ffmpeg +fftw +gmp headless jack jemalloc jpeg2k \
 	man +nanovdb ndof nls openal +oidn +openimageio +openmp +opensubdiv \
@@ -47,6 +47,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=[nls?,threads(+)]
 	dev-libs/lzo:2=
 	$(python_gen_cond_dep '
+		dev-python/cython[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/zstandard[${PYTHON_USEDEP}]
@@ -121,7 +122,6 @@ BDEPEND="
 		dev-texlive/texlive-latexextra
 	)
 	nls? ( sys-devel/gettext )
-	system-numpy? ( system-python? ( dev-python/cython ) )
 "
 
 blender_check_requirements() {
@@ -253,8 +253,7 @@ src_configure() {
 		-DWITH_POTRACE=$(usex potrace)
 		-DWITH_PUGIXML=$(usex pugixml)
 		-DWITH_PULSEAUDIO=$(usex pulseaudio)
-		-DWITH_PYTHON_INSTALL=$(usex system-python OFF ON)
-		-DWITH_PYTHON_INSTALL_NUMPY=$(usex system-numpy OFF ON)
+		-DWITH_PYTHON_INSTALL=OFF
 		-DWITH_SDL=$(usex sdl)
 		-DWITH_STATIC_LIBS=OFF
 		-DWITH_SYSTEM_EIGEN3=ON
