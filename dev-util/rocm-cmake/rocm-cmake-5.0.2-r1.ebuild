@@ -20,7 +20,12 @@ LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.0.2-license.patch
+)
+
 src_prepare() {
-	sed -e "s:set(ROCM_INSTALL_LIBDIR lib):set(ROCM_INSTALL_LIBDIR $(get_libdir)):" -i "${S}/share/rocm/cmake/ROCMInstallTargets.cmake" || die
+	sed -e "/ROCM_INSTALL_LIBDIR/s:lib:$(get_libdir):" \
+		-i "${S}/share/rocm/cmake/ROCMInstallTargets.cmake" || die
 	cmake_src_prepare
 }
