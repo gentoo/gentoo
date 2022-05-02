@@ -22,6 +22,7 @@ RESTRICT="test"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
+		dev-python/defusedxml[${PYTHON_USEDEP}]
 		dev-python/pycryptodome[${PYTHON_USEDEP}]
 		dev-python/pygobject[${PYTHON_USEDEP}]
 		dev-libs/libpwquality[python,${PYTHON_USEDEP}]
