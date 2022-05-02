@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,11 +12,11 @@ COMMIT="07ef89796ec97be3c6ea2681441992d5d4bfa87b"
 
 DESCRIPTION="Plugin for Mkdocs page redirects"
 HOMEPAGE="
-	https://github.com/datarobot/mkdocs-redirects
+	https://github.com/mkdocs/mkdocs-redirects
 	https://pypi.org/project/mkdocs-redirects/
 "
 SRC_URI="
-	https://github.com/datarobot/mkdocs-redirects/archive/${COMMIT}.tar.gz
+	https://github.com/mkdocs/mkdocs-redirects/archive/${COMMIT}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S="${WORKDIR}/${PN}-${COMMIT}"

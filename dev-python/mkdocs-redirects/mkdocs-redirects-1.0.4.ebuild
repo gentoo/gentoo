@@ -7,10 +7,9 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
-
 DESCRIPTION="Plugin for Mkdocs page redirects"
 HOMEPAGE="
-	https://github.com/datarobot/mkdocs-redirects
+	https://github.com/mkdocs/mkdocs-redirects
 	https://pypi.org/project/mkdocs-redirects/
 "
 SRC_URI="https://github.com/mkdocs/mkdocs-redirects/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
