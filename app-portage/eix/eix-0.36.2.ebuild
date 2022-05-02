@@ -22,6 +22,7 @@ RDEPEND="${DEPEND}
 	>=app-shells/quoter-3.0_p2-r1"
 BDEPEND="
 	app-arch/xz-utils
+	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
 pkg_setup() {
