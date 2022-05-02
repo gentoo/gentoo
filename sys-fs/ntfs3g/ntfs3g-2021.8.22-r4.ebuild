@@ -51,7 +51,6 @@ src_configure() {
 		$(use_enable xattr xattr-mappings)
 		$(use_enable ntfsdecrypt crypto)
 		$(use_enable ntfsprogs)
-		$(use_enable ntfsprogs quarantined)
 		$(use_enable static-libs static)
 
 		--with-uuid
