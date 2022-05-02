@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake udev
 
 DESCRIPTION="EEPROM and microcontroller programmer/flasher"
 HOMEPAGE="https://github.com/lancos/ponyprog/"
@@ -32,6 +32,8 @@ RDEPEND="${DEPEND}
 PATCHES=( "${FILESDIR}"/${P}-fix-build-system.patch )
 
 pkg_postinst() {
+	udev_reload
+
 	elog "To use the COM port in user mode (not as root), you need to"
 	elog "be in the 'uucp' group."
 	elog
