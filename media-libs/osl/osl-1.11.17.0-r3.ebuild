@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8,9,10} )
 
 # check this on updates
-LLVM_MAX_SLOT=13
+LLVM_MAX_SLOT=14
 
 CMAKE_REMOVE_MODULES_LIST=()
 
@@ -63,6 +63,10 @@ BDEPEND="
 RESTRICT="test"
 
 S="${WORKDIR}/OpenShadingLanguage-Release-${PV}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.11.17.0-llvm14.patch
+)
 
 llvm_check_deps() {
 	has_version -r "sys-devel/clang:${LLVM_SLOT}"
