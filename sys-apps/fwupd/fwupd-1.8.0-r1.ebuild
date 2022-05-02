@@ -135,7 +135,7 @@ src_configure() {
 		--localstatedir "${EPREFIX}"/var
 		-Dbuild="$(usex minimal standalone all)"
 		-Dconsolekit="disabled"
-		-Dcurl="disabled"
+		-Dcurl="enabled"
 		-Ddocs="$(usex gtk-doc gtkdoc none)"
 		-Defi_binary="false"
 		-Dsupported_build="true"
