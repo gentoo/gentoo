@@ -39,7 +39,7 @@ RDEPEND="
 		>=dev-python/marshmallow-2.20.5[${PYTHON_USEDEP}]
 		=dev-python/starlette-0.18*[${PYTHON_USEDEP}]
 		=dev-python/uvicorn-0.17*[${PYTHON_USEDEP}]
-		=dev-python/wsproto-1.0*[${PYTHON_USEDEP}]
+		dev-python/wsproto[${PYTHON_USEDEP}]
 		>=dev-python/zeroconf-0.37[${PYTHON_USEDEP}]
 	')
 	virtual/udev"
@@ -70,7 +70,10 @@ distutils_enable_tests pytest
 
 src_prepare() {
 	# Allow newer versions of zeroconf, Bug #831181.
-	sed -i '/zeroconf/s/==/>=/' "${S}"/setup.py || die
+	# Also wsproto.
+	sed -e '/zeroconf/s/==[0-9.*]*//' \
+		-e '/wsproto/s/==[0-9.*]*//' \
+		-i setup.py || die
 	default
 }
 
