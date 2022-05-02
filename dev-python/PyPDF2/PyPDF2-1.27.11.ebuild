@@ -36,7 +36,9 @@ distutils_enable_tests pytest
 
 src_unpack() {
 	default
-	mv "sample-files-${SAMPLE_COMMIT}"/* "${P}"/sample-files/ || die
+	if use test; then
+		mv "sample-files-${SAMPLE_COMMIT}"/* "${P}"/sample-files/ || die
+	fi
 }
 
 src_install() {
