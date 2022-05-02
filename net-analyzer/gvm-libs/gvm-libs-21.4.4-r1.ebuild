@@ -10,10 +10,10 @@ DESCRIPTION="Greenbone vulnerability management libraries, previously named open
 HOMEPAGE="https://www.greenbone.net/en/ https://github.com/greenbone/gvm-libs/"
 SRC_URI="https://github.com/greenbone/gvm-libs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2+"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="extras ldap test radius"
+IUSE="doc ldap test radius"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -43,7 +43,7 @@ BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
-	extras? (
+	doc? (
 		app-doc/doxygen[dot]
 		app-doc/xmltoman
 		app-text/htmldoc
@@ -59,7 +59,7 @@ PATCHES=(
 src_prepare() {
 	cmake_src_prepare
 	# QA-Fix | Remove doxygen warnings for !CLANG
-	if use extras; then
+	if use doc; then
 		if ! tc-is-clang; then
 		   local f
 		   for f in doc/*.in
@@ -93,7 +93,7 @@ src_configure() {
 
 src_compile() {
 	cmake_src_compile
-	if use extras; then
+	if use doc; then
 		cmake_build -C "${BUILD_DIR}" doc
 		cmake_build doc-full -C "${BUILD_DIR}" doc
 	fi
@@ -104,7 +104,7 @@ src_compile() {
 }
 
 src_install() {
-	if use extras; then
+	if use doc; then
 		local HTML_DOCS=( "${BUILD_DIR}"/doc/generated/html/. )
 	fi
 	cmake_src_install
