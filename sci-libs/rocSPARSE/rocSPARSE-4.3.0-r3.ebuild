@@ -43,7 +43,7 @@ KEYWORDS="~amd64"
 IUSE="benchmark test"
 SLOT="0/$(ver_cut 1-2)"
 
-RDEPEND="dev-util/hip:${SLOT}
+RDEPEND="dev-util/hip
 	sci-libs/rocPRIM:${SLOT}"
 DEPEND="${RDEPEND}"
 BDEPEND="test? (

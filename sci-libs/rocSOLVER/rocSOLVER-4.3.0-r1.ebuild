@@ -15,7 +15,7 @@ SLOT="0/$(ver_cut 1-2)"
 
 IUSE="test benchmark"
 
-RDEPEND="dev-util/hip:${SLOT}
+RDEPEND="dev-util/hip
 	sci-libs/rocBLAS:${SLOT}
 	benchmark? ( virtual/blas )"
 DEPEND="${RDEPEND}"

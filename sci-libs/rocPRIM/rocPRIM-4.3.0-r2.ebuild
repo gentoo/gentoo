@@ -14,9 +14,9 @@ KEYWORDS="~amd64"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="benchmark test"
 
-RDEPEND="dev-util/hip:${SLOT}
+RDEPEND="dev-util/hip
 	benchmark? ( dev-cpp/benchmark )"
-BDEPEND="dev-util/rocm-cmake:${SLOT}
+BDEPEND="dev-util/rocm-cmake
 	>=dev-util/cmake-3.22
 	test? ( dev-cpp/gtest )"
 DEPEND="${RDEPEND}"

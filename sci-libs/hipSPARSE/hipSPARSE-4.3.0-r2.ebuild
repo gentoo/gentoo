@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit cmake toolchain-funcs
 
 DESCRIPTION="ROCm SPARSE marshalling library"
 HOMEPAGE="https://github.com/ROCmSoftwarePlatform/hipSPARSE"
@@ -38,8 +38,8 @@ IUSE="test"
 
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-util/rocminfo:${SLOT}
-		dev-util/hip:${SLOT}
+RDEPEND="dev-util/rocminfo
+		dev-util/hip
 		sci-libs/rocSPARSE:${SLOT}"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-util/rocm-cmake
