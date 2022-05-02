@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,6 +31,8 @@ else
 		>=sys-apps/pkgcore-0.12.8[${PYTHON_USEDEP}]"
 fi
 RDEPEND+="
+	dev-libs/tree-sitter
+	dev-libs/tree-sitter-bash
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/lazy-object-proxy[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
@@ -46,6 +48,8 @@ BDEPEND="
 "
 
 distutils_enable_tests setup.py
+
+export USE_SYSTEM_TREE_SITTER_BASH=1
 
 src_test() {
 	local -x PYTHONDONTWRITEBYTECODE=
