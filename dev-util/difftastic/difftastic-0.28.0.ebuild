@@ -60,6 +60,7 @@ CRATES="
 	syn-1.0.84
 	term_size-0.3.2
 	termcolor-1.1.2
+	terminal_size-0.1.17
 	textwrap-0.15.0
 	tree-sitter-0.20.6
 	typed-arena-2.0.1
@@ -92,7 +93,7 @@ KEYWORDS="~amd64"
 QA_FLAGS_IGNORED="usr/bin/difft"
 
 PATCHES=(
-	"${FILESDIR}/difftastic-0.27.0-regex-dep.patch"
+	"${FILESDIR}/difftastic-0.28.0-regex-dep.patch"
 )
 
 DOCS=(
