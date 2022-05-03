@@ -7,7 +7,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="xml"
-inherit flag-o-matic python-r1 multilib-minimal
+inherit autotools flag-o-matic python-r1 multilib-minimal
 
 XSTS_HOME="http://www.w3.org/XML/2004/xml-schema-test-suite"
 XSTS_NAME_1="xmlschema2002-01-16"
@@ -15,6 +15,8 @@ XSTS_NAME_2="xmlschema2004-01-14"
 XSTS_TARBALL_1="xsts-2002-01-16.tar.gz"
 XSTS_TARBALL_2="xsts-2004-01-14.tar.gz"
 XMLCONF_TARBALL="xmlts20130923.tar.gz"
+
+PATCHSET_VERSION="2.9.14-patches-r0"
 
 DESCRIPTION="XML C parser and toolkit"
 HOMEPAGE="http://www.xmlsoft.org/ https://gitlab.gnome.org/GNOME/libxml2"
@@ -27,6 +29,7 @@ else
 fi
 
 SRC_URI+="
+	https://dev.gentoo.org/~soap/distfiles/${PN}-${PATCHSET_VERSION}.tar.bz2
 	test? (
 		${XSTS_HOME}/${XSTS_NAME_1}/${XSTS_TARBALL_1}
 		${XSTS_HOME}/${XSTS_NAME_2}/${XSTS_TARBALL_2}
@@ -58,9 +61,7 @@ MULTILIB_CHOST_TOOLS=(
 
 DOCS=( NEWS README.md TODO TODO_SCHEMAS python/TODO )
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.9.8-out-of-tree-test.patch
-)
+PATCHES=( "${WORKDIR}"/patches )
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]] ; then
@@ -90,14 +91,7 @@ src_unpack() {
 
 src_prepare() {
 	default
-
-	if [[ ${PV} == 9999 ]] ; then
-		eautoreconf
-	else
-		# Please do not remove, as else we get references to PORTAGE_TMPDIR
-		# in /usr/lib/python?.?/site-packages/libxml2mod.la among things.
-		elibtoolize
-	fi
+	eautoreconf
 }
 
 multilib_src_configure() {
