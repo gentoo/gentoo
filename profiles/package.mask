@@ -33,11 +33,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Sam James <sam@gentoo.org> (2022-03-05)
-# Python bindings broken. Will be fixed shortly.
-# bug #842297 and friends.
-=dev-libs/libxml2-2.9.14
-
 # Pacho Ramos <pacho@gentoo.org> (2022-05-03)
 # Waiting for keywording and adapting reverse deps. Bug #816135.
 >=sys-apps/xdg-desktop-portal-gtk-1.14.0
