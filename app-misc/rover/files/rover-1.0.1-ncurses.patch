@@ -1,0 +1,72 @@
+Upstream-PR: https://github.com/lecram/rover/pull/41
+From 9e1f635a4c31d1621141dce51bb620365c784a0e Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sat, 7 May 2022 08:41:22 -0700
+Subject: [PATCH 1/2] build: Use pkgconfig to fix undefined references
+
+On gentoo the build also requires -ltinfow which is exposed
+by the ncursesw.pc pkgconfig file.
+---
+ Makefile | 8 ++++++--
+ rover.c  | 2 ++
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 291a7b3..bbf376b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,14 +1,18 @@
+-LDLIBS := -lncursesw
+ PREFIX ?= /usr/local
+ BINDIR ?= $(PREFIX)/bin
+ DATAROOTDIR ?= $(PREFIX)/share
+ DATADIR ?= $(DATAROOTDIR)
+ MANDIR ?= $(DATADIR)/man
+ 
++PKG_CONFIG ?= pkg-config
++
++CFLAGS_NCURSESW := `$(PKG_CONFIG) --cflags ncursesw`
++LIBS_NCURSESW := `$(PKG_CONFIG) --libs ncursesw`
++
+ all: rover
+ 
+ rover: rover.c config.h
+-	$(CC) $(CFLAGS) -o $@ $< $(LDFLAGS) $(LDLIBS)
++	$(CC) $(CFLAGS) $(CFLAGS_NCURSESW) -o $@ $< $(LDFLAGS) $(LIBS_NCURSESW)
+ 
+ install: rover
+ 	rm -f $(DESTDIR)$(BINDIR)/rover
+diff --git a/rover.c b/rover.c
+index eca6aeb..342aa48 100644
+--- a/rover.c
++++ b/rover.c
+@@ -1,4 +1,6 @@
++#ifndef _XOPEN_SOURCE
+ #define _XOPEN_SOURCE       700
++#endif
+ #define _XOPEN_SOURCE_EXTENDED
+ #define _FILE_OFFSET_BITS   64
+ 
+
+From 7b5983d9d90d8ec0ff6e846a7fc7126cddc1d808 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sat, 7 May 2022 08:49:07 -0700
+Subject: [PATCH 2/2] build: Add CFLAGS default
+
+---
+ Makefile | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Makefile b/Makefile
+index bbf376b..c2890fe 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,6 +4,8 @@ DATAROOTDIR ?= $(PREFIX)/share
+ DATADIR ?= $(DATAROOTDIR)
+ MANDIR ?= $(DATADIR)/man
+ 
++CFLAGS ?= -O2
++
+ PKG_CONFIG ?= pkg-config
+ 
+ CFLAGS_NCURSESW := `$(PKG_CONFIG) --cflags ncursesw`
