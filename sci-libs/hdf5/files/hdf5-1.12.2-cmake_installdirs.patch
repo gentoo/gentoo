@@ -1,3 +1,4 @@
+https://github.com/HDFGroup/hdf5/pull/1716
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -46,6 +46,13 @@ if (CMAKE_VERSION VERSION_LESS "3.14.0")
