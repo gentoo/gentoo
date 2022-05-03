@@ -107,7 +107,6 @@ BDEPEND="
 		>=media-gfx/graphviz-2.42.3[cairo]
 	)
 	test? (
-		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
@@ -160,9 +159,6 @@ python_prepare_all() {
 		-e 's/matplotlib.pyparsing_py[23]/pyparsing/g' \
 		-i lib/matplotlib/{mathtext,fontconfig_pattern}.py \
 		|| die "sed pyparsing failed"
-
-	sed -e 's:\(@pytest.mark.flaky\)(reruns=3):\1:' \
-		-i lib/matplotlib/tests/test_*.py || die
 
 	hprefixify setupext.py
 
