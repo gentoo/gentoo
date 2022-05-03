@@ -152,9 +152,6 @@ python_prepare_all() {
 		"${FILESDIR}"/matplotlib-3.5.2-test.patch
 	)
 
-	# requires jupyter-nbconvert
-	rm lib/matplotlib/tests/test_backend_nbagg.py || die
-
 	sed \
 		-e 's/matplotlib.pyparsing_py[23]/pyparsing/g' \
 		-i lib/matplotlib/{mathtext,fontconfig_pattern}.py \
