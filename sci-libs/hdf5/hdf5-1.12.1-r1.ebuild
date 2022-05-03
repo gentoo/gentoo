@@ -5,7 +5,7 @@ EAPI=7
 
 FORTRAN_NEEDED="fortran"
 
-inherit cmake flag-o-matic fortran-2
+inherit cmake flag-o-matic fortran-2 toolchain-funcs
 
 MY_P="${PN}-${PV/_p/-patch}"
 MAJOR_P="${PN}-$(ver_cut 1-2)"
@@ -66,6 +66,7 @@ pkg_setup() {
 }
 
 src_configure() {
+	use sparc && tc-is-gcc && append-flags -fno-tree-ccp # bug 686620
 	local mycmakeargs=(
 		# Workaround needed to allow build with USE=fortran when an older
 		# version is installed. See bug #808633 and
