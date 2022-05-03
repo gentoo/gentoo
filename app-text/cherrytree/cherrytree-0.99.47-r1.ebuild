@@ -54,7 +54,6 @@ DEPEND="${RDEPEND}
 BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 	nls? (
-		dev-util/intltool
 		sys-devel/gettext
 	)
 	test? ( dev-util/cpputest )"
