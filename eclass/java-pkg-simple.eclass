@@ -1,4 +1,4 @@
-# Copyright 2004-2021 Gentoo Authors
+# Copyright 2004-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-pkg-simple.eclass
@@ -17,7 +17,8 @@
 # directory before calling the src_compile function of this eclass.
 
 case ${EAPI:-0} in
-	[5678]) ;;
+	5|6) inherit eutils ;; # eutils for eqawarn
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -393,8 +394,8 @@ java-pkg-simple_src_compile() {
 			JAVA_PKG_WANT_SOURCE=${tmp_source}
 			JAVA_PKG_WANT_TARGET=${tmp_target}
 		else
-			ewarn "Need at least JDK 9 to compile module-info.java in src_compile,"
-			ewarn "see https://bugs.gentoo.org/796875"
+			eqawarn "Need at least JDK 9 to compile module-info.java in src_compile."
+			eqawarn "Please adjust DEPEND accordingly. See https://bugs.gentoo.org/796875#c3"
 		fi
 	fi
 
