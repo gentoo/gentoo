@@ -6,18 +6,17 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE='threads(+)'
 
-inherit python-any-r1 waf-utils xdg git-r3
+inherit python-any-r1 waf-utils xdg
 
 MY_P="${PN}2-${PV}"
 
 DESCRIPTION="Virtual guitar amplifier for Linux"
 HOMEPAGE="https://guitarix.org/"
-EGIT_REPO_URI="https://git.code.sf.net/p/guitarix/git"
-S="${WORKDIR}/${P}/trunk"
+SRC_URI="mirror://sourceforge/guitarix/guitarix/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="bluetooth debug lv2 nls nsm +standalone zeroconf"
 REQUIRED_USE="|| ( lv2 standalone )"
 
@@ -63,6 +62,10 @@ BDEPEND="
 "
 
 DOCS=( changelog README )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.41.0-nostrip.patch
+)
 
 src_configure() {
 	local myconf=(
