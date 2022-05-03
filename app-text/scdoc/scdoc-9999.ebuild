@@ -36,10 +36,10 @@ src_compile() {
 		mv scdoc hostscdoc || die 'Failed to rename host scdoc'
 	fi
 
-	emake CC="$(tc-getCC)" LDFLAGS="${LDFLAGS}" HOST_SCDOC="${MY_HS}"
+	emake CC="$(tc-getCC)" LDFLAGS="${LDFLAGS}" PREFIX="${EPREFIX}/usr" HOST_SCDOC="${MY_HS}"
 }
 
 src_install() {
-	emake DESTDIR="${ED}" PREFIX="/usr" HOST_SCDOC="${MY_HS}" \
+	emake DESTDIR="${ED}" PREFIX="${EPREFIX}/usr" HOST_SCDOC="${MY_HS}" \
 		PCDIR="/usr/$(get_libdir)/pkgconfig" install
 }
