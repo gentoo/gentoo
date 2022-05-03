@@ -260,6 +260,13 @@ src_test() {
 }
 
 python_test() {
+	local EPYTEST_DESELECT=(
+		# broken by -Wdefault
+		"tests/test_rcparams.py::test_validator_invalid[validate_strlist-arg6-MatplotlibDeprecationWarning]"
+		"tests/test_rcparams.py::test_validator_invalid[validate_strlist-arg7-MatplotlibDeprecationWarning]"
+		tests/test_testing.py::test_warn_to_fail
+	)
+
 	# we need to rebuild mpl against bundled freetype, otherwise
 	# over 1000 tests will fail because of mismatched font rendering
 	grep -v system_freetype "${BUILD_DIR}"/setup.cfg \
@@ -269,7 +276,9 @@ python_test() {
 	distutils-r1_python_compile -j1 --build-lib="${BUILD_DIR}"/test-lib
 	local -x PYTHONPATH=${BUILD_DIR}/test-lib:${PYTHONPATH}
 
-	"${EPYTHON}" -c "import sys, matplotlib as m; sys.exit(m.test(argv=['-m', 'not network'], verbosity=2))" || die
+	# speed tests up
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	nonfatal epytest --pyargs matplotlib -m "not network" || die
 }
 
 python_install() {
