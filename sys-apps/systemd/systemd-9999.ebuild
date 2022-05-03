@@ -32,7 +32,7 @@ LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
 IUSE="
 	acl apparmor audit build cgroup-hybrid cryptsetup curl +dns-over-tls elfutils
-	fido2 +gcrypt gnuefi gnutls homed hostnamed-fallback http idn importd +kmod
+	fido2 +gcrypt gnuefi gnutls homed http idn importd +kmod
 	+lz4 lzma nat +openssl pam pcre pkcs11 policykit pwquality qrcode
 	+resolvconf +seccomp selinux split-usr +sysv-utils test tpm vanilla xkb +zstd
 "
@@ -40,7 +40,6 @@ REQUIRED_USE="
 	dns-over-tls? ( || ( gnutls openssl ) )
 	homed? ( cryptsetup pam openssl )
 	importd? ( curl lzma || ( gcrypt openssl ) )
-	policykit? ( !hostnamed-fallback )
 	pwquality? ( homed )
 "
 RESTRICT="!test? ( test )"
@@ -118,10 +117,6 @@ RDEPEND="${COMMON_DEPEND}
 	>=acct-user/systemd-resolve-0-r1
 	>=acct-user/systemd-timesync-0-r1
 	>=sys-apps/baselayout-2.2
-	hostnamed-fallback? (
-		acct-group/systemd-hostname
-		sys-apps/dbus-broker
-	)
 	selinux? ( sec-policy/selinux-base-policy[systemd] )
 	sysv-utils? (
 		!sys-apps/openrc[sysv-utils(-)]
@@ -407,16 +402,6 @@ multilib_src_install_all() {
 		dosym ../../../lib/systemd/systemd-shutdown /usr/lib/systemd/systemd-shutdown
 	fi
 
-	# workaround for https://github.com/systemd/systemd/issues/13501
-	if use hostnamed-fallback; then
-		# this file requires dbus-broker
-		insinto /usr/share/dbus-1/system.d/
-		doins "${FILESDIR}/org.freedesktop.hostname1_no_polkit.conf"
-
-		insinto "${rootprefix}/lib/systemd/system/systemd-hostnamed.service.d/"
-		doins "${FILESDIR}/00-hostnamed-network-user.conf"
-	fi
-
 	gen_usr_ldscript -a systemd udev
 }
 
@@ -512,14 +497,6 @@ pkg_postinst() {
 		eerror "for errors. You may need to clean up your system and/or try installing"
 		eerror "systemd again."
 		eerror
-	fi
-
-	if use hostnamed-fallback; then
-		if ! systemctl --root="${ROOT:-/}" is-enabled --quiet dbus-broker.service 2>/dev/null; then
-			ewarn "dbus-broker.service is not enabled, systemd-hostnamed will fail to run."
-			ewarn "To enable dbus-broker.service run the next command as root:"
-			ewarn "systemctl enable dbus-broker.service"
-		fi
 	fi
 }
 
