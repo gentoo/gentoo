@@ -55,11 +55,11 @@ RDEPEND="${PYTHON_DEPS}
 	')
 	media-libs/freetype:=
 	media-libs/glew:*
+	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/libsamplerate
 	sys-libs/zlib:=
 	virtual/glu
-	virtual/jpeg
 	virtual/libintl
 	virtual/opengl
 	alembic? ( >=media-gfx/alembic-1.8.3-r2[boost(+),hdf(+)] )
