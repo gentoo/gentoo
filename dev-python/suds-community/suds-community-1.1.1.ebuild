@@ -22,4 +22,10 @@ KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 
 DOCS=( README.md notes/. )
 
+BDEPEND="
+	test? (
+		dev-python/six[${PYTHON_USEDEP}]
+	)
+"
+
 distutils_enable_tests pytest
