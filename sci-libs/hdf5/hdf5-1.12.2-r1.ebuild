@@ -65,6 +65,7 @@ src_configure() {
 	use sparc && tc-is-gcc && append-flags -fno-tree-ccp # bug 686620
 	local mycmakeargs=(
 		-DBUILD_STATIC_LIBS=OFF
+		-DONLY_SHARED_LIBS=ON
 		-DFETCHCONTENT_FULLY_DISCONNECTED=ON
 		-DHDF5_BUILD_EXAMPLES=OFF
 		-DALLOW_UNSUPPORTED=$(usex unsupported)
