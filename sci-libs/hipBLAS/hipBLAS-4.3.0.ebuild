@@ -15,7 +15,7 @@ SLOT="0/$(ver_cut 1-2)"
 RDEPEND="dev-util/hip:${SLOT}
 	sci-libs/rocBLAS:${SLOT}
 	sci-libs/rocSOLVER:${SLOT}"
-DEPEND="${RDPEND}"
+DEPEND="${RDEPEND}"
 BDEPEND=""
 
 S="${WORKDIR}/hipBLAS-rocm-${PV}"
