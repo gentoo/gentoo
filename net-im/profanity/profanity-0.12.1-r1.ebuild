@@ -54,5 +54,14 @@ src_configure() {
 		$(use_enable omemo) \
 		$(use_enable otr) \
 		$(use_enable gpg pgp) \
-		$(with_enable xscreensaver)
+		$(use_with xscreensaver)
+}
+
+src_compile() {
+	emake CFLAGS="${CFLAGS}"
+}
+
+src_install() {
+	default
+	find "${ED}" -type f -name '*.la' -delete || die
 }
