@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
-MY_PN="${PN}-community"
+MY_PN="suds-community"
 DESCRIPTION="Lightweight SOAP client"
 HOMEPAGE="https://github.com/suds-community/suds"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
