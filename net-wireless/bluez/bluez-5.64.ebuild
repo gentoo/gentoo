@@ -20,6 +20,7 @@ IUSE="btpclient cups doc debug deprecated extra-tools experimental +mesh midi +o
 # again in the future.
 # btpclient needs mesh, bug #790587
 REQUIRED_USE="
+	btpclient? ( mesh )
 	extra-tools? ( deprecated readline )
 	test? ( ${PYTHON_REQUIRED_USE} )
 	test-programs? ( ${PYTHON_REQUIRED_USE} )
