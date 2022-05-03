@@ -123,19 +123,9 @@ pkg_setup() {
 	unset DISPLAY # bug #278524
 }
 
-use_supported() {
-	case ${1} in
-		wxwidgets)
-			[[ ${EPYTHON} == python3.[678] ]]
-			;;
-	esac
-
-	return 0
-}
-
 use_setup() {
 	local uword="${2:-${1}}"
-	if use_supported "${1}" && use "${1}"; then
+	if use "${1}"; then
 		echo "${uword} = True"
 		echo "${uword}agg = True"
 	else
