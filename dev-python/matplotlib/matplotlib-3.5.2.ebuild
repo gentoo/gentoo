@@ -6,7 +6,8 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
-inherit distutils-r1 flag-o-matic virtualx toolchain-funcs prefix
+inherit distutils-r1 flag-o-matic multiprocessing prefix toolchain-funcs \
+	virtualx
 
 FT_PV=2.6.1
 DESCRIPTION="Pure python plotting library with matlab like syntax"
@@ -109,6 +110,7 @@ BDEPEND="
 		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		>=dev-python/pygobject-3.40.1-r1:3[cairo?,${PYTHON_USEDEP}]
 		>=www-servers/tornado-6.0.4[${PYTHON_USEDEP}]
 		x11-libs/gtk+:3[introspection]
@@ -275,7 +277,8 @@ python_test() {
 
 	# speed tests up
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	nonfatal epytest --pyargs matplotlib -m "not network" || die
+	nonfatal epytest --pyargs matplotlib -m "not network" \
+		-p xdist.plugin -n "$(makeopts_jobs)" || die
 }
 
 python_install() {
