@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools linux-info flag-o-matic toolchain-funcs
+inherit autotools linux-info flag-o-matic toolchain-funcs systemd
 
 DESCRIPTION="A performant, transport independent, multi-platform implementation of RFC3720"
 HOMEPAGE="https://www.open-iscsi.com/"
@@ -98,7 +98,7 @@ src_install() {
 		DESTDIR="${ED}" \
 		sbindir="/usr/sbin" \
 		SED="${EPREFIX}/bin/sed" \
-		systemddir="${EPREFIX}/lib/systemd" \
+		systemddir="$(systemd_get_utildir)" \
 		install install_systemd
 
 	# Upstream make is not deterministic, per bug #601514
