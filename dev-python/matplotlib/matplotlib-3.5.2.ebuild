@@ -115,10 +115,6 @@ BDEPEND="
 	)
 "
 
-# A few C++ source files are written to srcdir.
-# Other than that, the ebuild shall be fit for out-of-source build.
-DISTUTILS_IN_SOURCE_BUILD=1
-
 distutils_enable_tests pytest
 
 pkg_setup() {
@@ -256,6 +252,8 @@ python_compile_all() {
 }
 
 src_test() {
+	mkdir build || die
+	ln -s "${WORKDIR}/freetype-${FT_PV}" build/ || die
 	virtx distutils-r1_src_test
 }
 
@@ -272,7 +270,6 @@ python_test() {
 	grep -v system_freetype "${BUILD_DIR}"/setup.cfg \
 		> "${BUILD_DIR}"/test-setup.cfg || die
 	local -x MPLSETUPCFG="${BUILD_DIR}"/test-setup.cfg
-	ln -s "${WORKDIR}/freetype-${FT_PV}" "${BUILD_DIR}" || die
 	distutils-r1_python_compile -j1 --build-lib="${BUILD_DIR}"/test-lib
 	local -x PYTHONPATH=${BUILD_DIR}/test-lib:${PYTHONPATH}
 
