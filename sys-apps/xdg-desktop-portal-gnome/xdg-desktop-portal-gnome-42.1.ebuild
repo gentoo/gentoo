@@ -5,9 +5,6 @@ EAPI=8
 
 inherit gnome.org meson systemd xdg
 
-MY_PV="${PV//_pre*}"
-MY_P="${PN}-${MY_PV}"
-
 DESCRIPTION="Backend implementation for xdg-desktop-portal using GNOME"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome"
 
