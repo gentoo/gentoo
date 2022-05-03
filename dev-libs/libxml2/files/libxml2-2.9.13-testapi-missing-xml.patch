@@ -6,12 +6,6 @@ Subject: [PATCH] testapi: remove leading slash from "/missing.xml"
 Fixes an error when running tests in a sandbox on Gentoo Linux.
 
 Bug: https://bugs.gentoo.org/839804
----
- testapi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/testapi.c b/testapi.c
-index d4258c43..c7a5b163 100644
 --- a/testapi.c
 +++ b/testapi.c
 @@ -442,7 +442,7 @@ static void des_eaten_name(int no ATTRIBUTE_UNUSED, xmlChar *val ATTRIBUTE_UNUSE
@@ -23,6 +17,3 @@ index d4258c43..c7a5b163 100644
      if (no == 1) return("<foo/>");
      if (no == 2) return(REMOTE2GOOD);
      if (no == 3) return(REMOTE1GOOD);
--- 
-2.35.1
-
