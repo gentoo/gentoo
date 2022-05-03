@@ -70,7 +70,7 @@ src_prepare() {
 				destination=${BUILD_DIR}/clients/matrices/$(basename -s '.mtx' ${mtxfile}).bin
 				ebegin "Converting ${mtxfile} to ${destination}"
 				deps/convert ${mtxfile} ${destination}
-				eend
+				eend $?
 			done
 	fi
 	eapply_user
