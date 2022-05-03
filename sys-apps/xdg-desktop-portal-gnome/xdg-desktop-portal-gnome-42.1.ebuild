@@ -32,8 +32,6 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${MY_P}"
-
 src_configure() {
 	local emesonargs=(
 		-Dsystemduserunitdir="$(systemd_get_userunitdir)"
