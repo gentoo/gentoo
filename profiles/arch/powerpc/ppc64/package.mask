@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Florian Schmaus <flow@gentoo.org (2022-05-03)
+# >=dev-java/stax2-api-4.2.1-r1 depends on masked >=virtual/{jdk,jre}-11
+>=dev-java/stax2-api-4.2.1-r1
+
 # Sam James <sam@gentoo.org> (2022-01-18)
 # No bootstrap binary available on big endian PPC64 right now
 dev-lisp/sbcl
