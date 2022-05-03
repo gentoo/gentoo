@@ -69,7 +69,7 @@ SLOT="0/$(ver_cut 1-2)"
 # Inclusion of IUSE ocaml on stabalizing requires maintainer of ocaml to (get off his hands and) make
 # >=dev-lang/ocaml-4 stable
 # Masked in profiles/eapi-5-files instead
-IUSE="api debug doc +hvm +ipxe lzma ocaml ovmf +pam pygrub python +qemu +qemu-traditional +rombios screen selinux sdl static-libs system-ipxe system-qemu system-seabios systemd zstd"
+IUSE="api debug doc +hvm +ipxe lzma ocaml ovmf pygrub python +qemu +qemu-traditional +rombios screen selinux sdl static-libs system-ipxe system-qemu system-seabios systemd zstd"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -83,7 +83,10 @@ REQUIRED_USE="
 
 COMMON_DEPEND="
 	lzma? ( app-arch/xz-utils )
-	qemu? ( dev-libs/glib:2 )
+	qemu? (
+		dev-libs/glib:2
+		sys-libs/pam
+	)
 	zstd? ( app-arch/zstd )
 	app-arch/bzip2
 	app-arch/zstd
@@ -112,7 +115,6 @@ DEPEND="${COMMON_DEPEND}
 	x11-libs/pixman
 	$(python_gen_cond_dep '
 		dev-python/lxml[${PYTHON_USEDEP}]
-		pam? ( dev-python/pypam[${PYTHON_USEDEP}] )
 	')
 	x86? ( sys-devel/dev86
 		system-ipxe? ( sys-firmware/ipxe[qemu] )
@@ -417,7 +419,7 @@ src_prepare() {
 
 	# Remove -Werror
 	find . -type f \( -name Makefile -o -name "*.mk" \) \
-		 -exec sed -i "s/-Werror //g" {} + || die
+		-exec sed -i "s/-Werror //g" {} + || die
 
 	default
 }
@@ -437,7 +439,6 @@ src_configure() {
 		$(usex system-ipxe '--with-system-ipxe=/usr/share/ipxe' '')
 		$(use_enable ocaml ocamltools)
 		$(use_enable ovmf)
-		$(use_enable pam)
 		$(use_enable rombios)
 		$(use_enable systemd)
 		--with-xenstored=$(usex ocaml 'oxenstored' 'xenstored')
