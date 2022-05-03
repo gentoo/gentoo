@@ -310,14 +310,6 @@ src_install() {
 }
 
 pkg_preinst() {
-	if use make-symlinks && [[ ! ${VERY_BRAVE_OR_VERY_DUMB} == "yes" ]] && [[ -z "${ROOT}" ]] ; then
-		ewarn "setting USE=make-symlinks and emerging to / is very dangerous."
-		ewarn "it WILL overwrite lots of system programs like: ls bash awk grep (bug 60805 for full list)."
-		ewarn "If you are creating a binary only and not merging this is probably ok."
-		ewarn "set env VERY_BRAVE_OR_VERY_DUMB=yes if this is really what you want."
-		die "silly options will destroy your system"
-	fi
-
 	if use make-symlinks ; then
 		mv "${ED}"/usr/share/${PN}/busybox-links.tar "${T}"/ || die
 	fi
