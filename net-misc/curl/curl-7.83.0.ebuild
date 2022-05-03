@@ -215,6 +215,7 @@ multilib_src_configure() {
 		$(use_with kerberos gssapi "${EPREFIX}"/usr)
 		--without-libgsasl
 		--without-libpsl
+		--without-msh3
 		$(use_with nghttp3)
 		$(use_with nghttp3 ngtcp2)
 		$(use_with quiche)
