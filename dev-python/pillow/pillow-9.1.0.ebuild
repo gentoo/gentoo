@@ -26,7 +26,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	imagequant? ( media-gfx/libimagequant:0 )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo )
 	jpeg2k? ( media-libs/openjpeg:2= )
 	lcms? ( media-libs/lcms:2= )
 	tiff? ( media-libs/tiff:0=[jpeg,zlib] )
