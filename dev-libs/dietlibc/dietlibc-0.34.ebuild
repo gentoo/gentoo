@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -23,6 +23,9 @@ src_prepare() {
 
 	# Replace sparc64 related C[XX]FLAGS (see bug #45716)
 	use sparc && replace-sparc64-flags
+
+	# bug 676704
+	use sparc && tc-is-gcc && append-flags -fno-tree-pre
 
 	# gcc-hppa suffers support for SSP, compilation will fail
 	use hppa && strip-unsupported-flags
