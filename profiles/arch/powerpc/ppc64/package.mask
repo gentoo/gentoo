@@ -16,11 +16,6 @@ dev-lisp/sbcl
 >=dev-java/eclipse-ecj-4.10
 >=www-servers/tomcat-9
 
-# Sam James <sam@gentoo.org> (2022-01-09)
-# No provider (e.g. OpenJDK) available on big endian PPC64 right now
-virtual/jdk:11
-virtual/jre:11
-
 # Sam James <sam@gentoo.org> (2021-10-16)
 # Mask for media-libs/openexr and its reverse dependencies.
 # Broken on big endian.
