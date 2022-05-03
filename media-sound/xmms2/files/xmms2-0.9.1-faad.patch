@@ -1,0 +1,13 @@
+This line has stopped working since security fixes in the faad 2.9.0
+release. XMMS2 upstream were informed via IRC but have yet to act on
+it. I've run XMMS2 with this patch for months without issue.
+
+-- Chewi
+--- a/src/plugins/faad/faad.c
++++ b/src/plugins/faad/faad.c
+@@ -243,5 +243,4 @@
+ 	 * it frame 1.
+ 	 */
+-	NeAACDecPostSeekReset (data->decoder, 1);
+ 
+ 	/* FIXME: Because for HE AAC files some versions of libfaad return the wrong
