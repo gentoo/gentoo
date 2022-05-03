@@ -69,7 +69,7 @@ SLOT="0/$(ver_cut 1-2)"
 # Inclusion of IUSE ocaml on stabalizing requires maintainer of ocaml to (get off his hands and) make
 # >=dev-lang/ocaml-4 stable
 # Masked in profiles/eapi-5-files instead
-IUSE="api debug doc +hvm +ipxe ocaml ovmf +pam pygrub python +qemu +qemu-traditional +rombios screen selinux sdl static-libs system-ipxe system-qemu system-seabios"
+IUSE="api debug doc +hvm +ipxe ocaml ovmf pygrub python +qemu +qemu-traditional +rombios screen selinux sdl static-libs system-ipxe system-qemu system-seabios"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -82,6 +82,7 @@ REQUIRED_USE="
 	?? ( qemu system-qemu )"
 
 COMMON_DEPEND="
+	qemu? ( sys-libs/pam )
 	sys-apps/pciutils
 	dev-libs/lzo:2
 	dev-libs/glib:2
@@ -107,7 +108,6 @@ DEPEND="${COMMON_DEPEND}
 	x11-libs/pixman
 	$(python_gen_cond_dep '
 		dev-python/lxml[${PYTHON_USEDEP}]
-		pam? ( dev-python/pypam[${PYTHON_USEDEP}] )
 	')
 	x86? ( sys-devel/dev86
 		system-ipxe? ( sys-firmware/ipxe[qemu] )
@@ -430,7 +430,6 @@ src_configure() {
 		$(usex system-ipxe '--with-system-ipxe=/usr/share/ipxe' '') \
 		$(use_enable ocaml ocamltools) \
 		$(use_enable ovmf) \
-		$(use_enable pam) \
 		$(use_enable rombios) \
 		--with-xenstored=$(usex ocaml 'oxenstored' 'xenstored') \
 		"
