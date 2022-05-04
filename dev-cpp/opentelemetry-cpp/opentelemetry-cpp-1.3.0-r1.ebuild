@@ -19,6 +19,7 @@ IUSE="+jaeger prometheus test"
 
 RDEPEND="
 	net-misc/curl:=
+	dev-libs/thrift:=
 "
 DEPEND="
 	${RDEPEND}
