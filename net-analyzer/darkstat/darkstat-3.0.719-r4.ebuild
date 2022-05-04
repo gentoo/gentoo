@@ -18,8 +18,6 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-# The live ebuild requires xxd to generate favicon.h.
-BDEPEND="app-editors/vim-core"
 DEPEND="acct-user/darkstat
 	dev-libs/libbsd
 	net-libs/libpcap
