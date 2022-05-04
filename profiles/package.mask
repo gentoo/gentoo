@@ -421,11 +421,6 @@ net-p2p/arti
 # Removal after 2022-06-01.  Bug #833144.
 x11-misc/i855crt
 
-# Jonas Stein <jstein@gentoo.org> (2022-02-09)
-# Upstream is 404, open bugs, not maintained.
-# Removal after 2022-05-01.  Bug #832954.
-x11-misc/sisctrl
-
 # Jonas Stein <jstein@gentoo.org> (2022-02-08)
 # Not maintained, open bugs, upstream outdated.
 # Removal after 2022-07-01.  Bug #832953.
