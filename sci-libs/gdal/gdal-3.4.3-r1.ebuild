@@ -41,7 +41,7 @@ BDEPEND="
 DEPEND="
 	dev-libs/expat
 	dev-libs/json-c:=
-	dev-libs/libpcre
+	dev-libs/libpcre2
 	dev-libs/libxml2:2
 	dev-libs/openssl:=
 	media-libs/tiff
@@ -148,6 +148,7 @@ src_configure() {
 		--with-libtiff
 		--with-libtool
 		--with-libz="${ESYSROOT}"/usr
+		--with-pcre2
 		--without-blosc
 		--without-charls
 		--without-dods-root
@@ -176,6 +177,7 @@ src_configure() {
 		--without-rasterlite2
 		# Revisit when OpenEXR 3 / ilmmath migration is more complete in tree
 		--without-exr
+		--without-pcre
 		--without-pcraster
 		--without-pdfium
 		--without-perl
@@ -294,7 +296,7 @@ src_install() {
 	if use java; then
 		# bug #752399
 		java-pkg_dojar "${S}"/swig/java/gdal.jar
-		dolib.so "${S}"/swig/java/.libs/libgdalalljni.so.*
+		dolib.so "${S}"/swig/java/.libs/libgdalalljni.so*
 	fi
 
 	if use perl; then
