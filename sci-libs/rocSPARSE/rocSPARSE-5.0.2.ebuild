@@ -81,6 +81,8 @@ src_prepare() {
 	# use python interpreter specifyied by python-any-r1
 	sed -e "/COMMAND ..\/common\/rocsparse_gentest.py/s,COMMAND ,COMMAND ${EPYTHON} ," -i clients/tests/CMakeLists.txt || die
 
+	cmake_src_prepare
+
 	# Test need download data from https://sparse.tamu.edu (or other mirror site), check MD5, unpack and convert them into csr format
 	# This process is handled default by ${S}/cmake/ClientMatrices.cmake, but should be the responsibility of portage.
 	if use test; then
@@ -97,8 +99,6 @@ src_prepare() {
 				eend $?
 			done
 	fi
-
-	cmake_src_prepare
 }
 
 src_configure() {
@@ -125,7 +125,7 @@ src_test() {
 	addwrite /dev/kfd
 	addwrite /dev/dri/
 	cd "${BUILD_DIR}/clients/staging" || die
-	./rocsparse-test || die
+	LD_LIBRARY_PATH="${BUILD_DIR}/library" ./rocsparse-test || die
 }
 
 src_install() {
