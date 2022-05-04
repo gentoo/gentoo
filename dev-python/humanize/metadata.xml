@@ -12,7 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">humanize</remote-id>
-		<remote-id type="github">jmoiron/humanize</remote-id>
-		<bugs-to>https://github.com/jmoiron/humanize/issues</bugs-to>
+		<remote-id type="github">python-humanize/humanize</remote-id>
 	</upstream>
 </pkgmetadata>
