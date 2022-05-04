@@ -191,7 +191,7 @@ RESTRICT+="test"
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
 # false positives unless all USE flags are on
-#CMAKE_WARN_UNUSED_CLI=no
+CMAKE_WARN_UNUSED_CLI=no
 
 PATCHES=(
 	"${FILESDIR}/ceph-12.2.0-use-provided-cpu-flag-values.patch"
@@ -309,7 +309,6 @@ ceph_src_configure() {
 		-DWITH_SYSTEM_PMDK:BOOL=$(usex pmdk 'YES' "$(usex rbd-rwl)")
 		-DWITH_SYSTEM_BOOST:BOOL=$(usex system-boost)
 		-DWITH_SYSTEM_ROCKSDB:BOOL=ON
-		-DWITH_SYSTEM_ZSTD:BOOL=ON
 		-DWITH_RDMA:BOOL=$(usex rdma)
 		-DCMAKE_INSTALL_DOCDIR:PATH="${EPREFIX}/usr/share/doc/${PN}-${PVR}"
 		-DCMAKE_INSTALL_SYSCONFDIR:PATH="${EPREFIX}/etc"
