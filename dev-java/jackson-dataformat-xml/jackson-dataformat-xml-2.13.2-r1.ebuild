@@ -32,7 +32,7 @@ CP_DEPEND="
 	~dev-java/jackson-annotations-${PV}:2
 	~dev-java/jackson-core-${PV}:0
 	~dev-java/jackson-databind-${PV}.2:0
-	dev-java/stax2-api:0
+	>=dev-java/stax2-api-4.2.1-r1:0
 	dev-java/woodstox-core:0
 "
 
