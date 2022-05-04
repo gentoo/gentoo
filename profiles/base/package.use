@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Patrick McLean <chutzpah@gentoo.org) (2022-05-04)
+# Default to lua 5.4 (upstream requires 5.3 or higher)
+>=sys-cluster/ceph-17.2.0 lua_single_target_lua5-4
+
 # Matt Turner <mattst88@gentoo.org> (2022-03-31)
 # Default to luajit, since that is what upstream recommends. Bug #795768.
 # See https://github.com/neovim/neovim/wiki/Building-Neovim#third-party-dependencies
