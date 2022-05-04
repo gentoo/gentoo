@@ -7,12 +7,13 @@ inherit cmake
 
 DESCRIPTION="Radeon Open Compute llvm,lld,clang"
 HOMEPAGE="https://github.com/RadeonOpenCompute/ROCm/"
-SRC_URI="https://github.com/RadeonOpenCompute/llvm-project/archive/rocm-${PV}.tar.gz -> llvm-rocm-ocl-${PV}.tar.gz"
+SRC_URI="https://github.com/RadeonOpenCompute/llvm-project/archive/rocm-${PV}.tar.gz -> llvm-rocm-ocl-${PV}.tar.gz
+	https://github.com/RadeonOpenCompute/ROCm-Device-Libs/archive/rocm-rocm-device-libs.tar.gz -> rocm-device-libs-${PV}.tar.gz"
 
 LICENSE="UoI-NCSA rc BSD public-domain"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="debug +runtime"
+IUSE="debug +runtime +openmp"
 
 RDEPEND="
 	dev-libs/libxml2
@@ -30,6 +31,7 @@ PATCHES=(
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
 src_prepare() {
+	mv "${WORKDIR}"/ROCm-Device-Libs-rocm-${PV} "${WORKDIR}"/rocm-device-libs || die
 	pushd "${WORKDIR}/llvm-project-rocm-${PV}" || die
 	eapply "${FILESDIR}/${PN}-4.0.0-remove-isystem-usr-include.patch"
 	eapply "${FILESDIR}/${PN}-5.0.0-hip-location.patch"
@@ -63,8 +65,11 @@ src_prepare() {
 src_configure() {
 	PROJECTS="clang;lld;llvm"
 
-	if usex runtime; then
+	if use runtime; then
 		PROJECTS+=";compiler-rt"
+	fi
+	if use openmp; then
+		PROJECTS+=";openmp"
 	fi
 
 	local mycmakeargs=(
@@ -73,6 +78,7 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_CUDA=ON
 		-DLLVM_ENABLE_PROJECTS="${PROJECTS}"
 		-DLLVM_TARGETS_TO_BUILD="AMDGPU;X86"
+		-DOPENMP_ENABLE_LIBOMPTARGET_HSA=$(usex openmp ON OFF)
 		-DLLVM_BUILD_DOCS=NO
 		-DLLVM_ENABLE_BINDINGS=OFF
 		-DLLVM_ENABLE_OCAMLDOC=OFF
