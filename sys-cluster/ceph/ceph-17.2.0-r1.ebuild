@@ -75,7 +75,7 @@ DEPEND="
 	virtual/libcrypt:=
 	x11-libs/libpciaccess:=
 	babeltrace? ( dev-util/babeltrace )
-	fuse? ( sys-fs/fuse:0= )
+	fuse? ( sys-fs/fuse:3= )
 	jemalloc? ( dev-libs/jemalloc:= )
 	!jemalloc? ( >=dev-util/google-perftools-2.6.1:= )
 	jaeger? (
@@ -212,6 +212,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-17.2.0-install-dbstore.patch"
 	"${FILESDIR}/ceph-17.2.0-deprecated-boost.patch"
 	"${FILESDIR}/ceph-17.2.0-system-opentelemetry.patch"
+	"${FILESDIR}/ceph-17.2.0-fuse3.patch"
 )
 
 check-reqs_export_vars() {
