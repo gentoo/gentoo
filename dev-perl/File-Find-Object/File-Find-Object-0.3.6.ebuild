@@ -9,7 +9,7 @@ inherit perl-module
 DESCRIPTION="An object oriented File::Find replacement"
 
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~riscv ~x86"
 
 RDEPEND="
 	virtual/perl-Carp
