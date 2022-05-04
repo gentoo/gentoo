@@ -19,5 +19,12 @@ depend() {
 }
 
 start_pre() {
-	/bin/bash /etc/gvm/gvmd-startpre.sh
+	mkdir /run/gvmd
+	for p in gvm-checking gvm-create-functions gvm-helping gvm-migrating gvm-serving; do
+		touch /run/gvmd/${p}
+	done
+	chown -R gvm:gvm /run/gvmd/
+
+	touch /run/feed-update.lock
+	chown gvm:gvm /run/feed-update.lock
 }

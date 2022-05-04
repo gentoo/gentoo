@@ -3,11 +3,10 @@
 
 EAPI=8
 
-CMAKE_MAKEFILE_GENERATOR="emake"
 inherit cmake systemd toolchain-funcs
 
 DESCRIPTION="Greenbone vulnerability manager, previously named openvas-manager"
-HOMEPAGE="https://www.greenbone.net/en/ https://github.com/greenbone/gvmd/"
+HOMEPAGE="https://www.greenbone.net https://github.com/greenbone/gvmd/"
 SRC_URI="https://github.com/greenbone/gvmd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
@@ -49,8 +48,8 @@ BDEPEND="
 src_prepare() {
 	cmake_src_prepare
 	# QA-Fix | Use correct FHS/Gentoo policy paths for 9.0.0
-	sed -i -e "s*share/doc/gvm/html/*share/doc/gvmd-${PV}/html/*g" doc/CMakeLists.txt || die
-	sed -i -e "s*/doc/gvm/*/doc/gvmd-${PV}/*g" CMakeLists.txt || die
+	sed -i -e "s*share/doc/gvm/html/*share/doc/${PF}/html/*g" doc/CMakeLists.txt || die
+	sed -i -e "s*/doc/gvm/*/doc/${PF}/*g" CMakeLists.txt || die
 	# QA-Fix | Remove !CLANG Doxygen warnings for 9.0.0
 	if use doc; then
 		if ! tc-is-clang; then
@@ -64,6 +63,9 @@ src_prepare() {
 		   done
 		fi
 	fi
+
+	# https://github.com/greenbone/gvmd/pull/1819
+	sed -i "/^EnvironmentFile/d" config/gvmd.service.in || die
 }
 
 src_configure() {
@@ -72,6 +74,7 @@ src_configure() {
 		"-DSYSCONFDIR=${EPREFIX}/etc"
 		"-DLIBDIR=${EPREFIX}/usr/$(get_libdir)"
 		"-DSBINDIR=${EPREFIX}/usr/bin"
+		"-DSYSTEMD_SERVICE_DIR=$(systemd_get_systemunitdir)"
 	)
 	cmake_src_configure
 }
@@ -97,18 +100,10 @@ src_install() {
 	insinto /etc/gvm/sysconfig
 	doins "${FILESDIR}/${PN}-daemon.conf"
 
-	exeinto /etc/gvm
-	newexe "${FILESDIR}"/${P}-startpre.sh gvmd-startpre.sh
-
 	fowners -R gvm:gvm /etc/gvm
 
 	newinitd "${FILESDIR}/${P}.init" "${PN}"
 	newconfd "${FILESDIR}/${PN}-daemon.conf" "${PN}"
-
-	insinto /etc/logrotate.d
-	newins "${FILESDIR}/${PN}.logrotate" "${PN}"
-
-	systemd_dounit "${FILESDIR}/${PN}.service"
 
 	# Set proper permissions on required files/directories
 	keepdir /var/lib/gvm/gvmd
