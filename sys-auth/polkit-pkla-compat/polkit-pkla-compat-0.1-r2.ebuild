@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,19 +11,23 @@ LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc x86"
 
-RDEPEND=">=dev-libs/glib-2.30
+RDEPEND="
+	acct-group/polkitd
+	>=dev-libs/glib-2.30
 	>=sys-auth/polkit-0.110"
 DEPEND="${RDEPEND}"
 BDEPEND="
+	acct-group/polkitd
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
 	virtual/pkgconfig"
 
-src_install() {
-	default
-	fowners -R root:polkitd /etc/polkit-1/localauthority
+src_configure() {
+	econf --localstatedir="${EPREFIX}/var"
 }
 
-pkg_postinst() {
-	chown -R root:polkitd "${EROOT}"/etc/polkit-1/localauthority || die
+src_install() {
+	default
+	keepdir /etc/polkit-1/localauthority.conf.d
+	keepdir /{etc,var/lib}/polkit-1/localauthority/{10-vendor.d,20-org.d,30-site.d,50-local.d,90-mandatory.d}
 }
