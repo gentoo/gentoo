@@ -19,7 +19,7 @@ DEPEND="
 	dev-libs/wayland
 	=dev-qt/qtcore-${QT5_PV}*:5=
 	=dev-qt/qtdeclarative-${QT5_PV}*:5=
-	=dev-qt/qtgui-${QT5_PV}*:5=[egl,jpeg,libinput,vulkan=,X?]
+	=dev-qt/qtgui-${QT5_PV}*:5=[egl,libinput,vulkan=,X?]
 	media-libs/libglvnd
 	vulkan? ( dev-util/vulkan-headers )
 	X? (
