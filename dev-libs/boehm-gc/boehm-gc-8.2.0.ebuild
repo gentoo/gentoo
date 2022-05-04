@@ -18,7 +18,7 @@ LICENSE="boehm-gc"
 # We've been using subslot 0 for these instead of "1.1".
 SLOT="0"
 # Upstream marked this version as "Pre-release"
-KEYWORDS=""
+KEYWORDS="~loong"
 IUSE="cxx +large static-libs +threads"
 
 RDEPEND=">=dev-libs/libatomic_ops-7.4[${MULTILIB_USEDEP}]"
