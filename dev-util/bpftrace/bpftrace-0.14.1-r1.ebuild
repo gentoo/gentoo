@@ -10,7 +10,10 @@ inherit llvm linux-info cmake toolchain-funcs
 DESCRIPTION="High-level tracing language for eBPF"
 HOMEPAGE="https://github.com/iovisor/bpftrace"
 MY_PV="${PV//_/}"
-SRC_URI="https://github.com/iovisor/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/iovisor/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~chutzpah/dist/bpftrace/bpftrace-0.14.1-llvm14.patch.gz
+"
 S="${WORKDIR}/${PN}-${MY_PV:-${PV}}"
 
 LICENSE="Apache-2.0"
@@ -51,7 +54,7 @@ PATCHES=(
 	"${FILESDIR}/bpftrace-0.11.4-old-kernels.patch"
 	"${FILESDIR}/bpftrace-0.12.0-fuzzing-build.patch"
 	"${FILESDIR}/bpftrace-0.14-libbpf-0.6.patch"
-	"${FILESDIR}/bpftrace-0.14.1-llvm14.patch"
+	"${WORKDIR}/bpftrace-0.14.1-llvm14.patch"
 )
 
 pkg_pretend() {
