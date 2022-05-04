@@ -32,7 +32,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/openssl-1.0.0b:0=
-	dev-libs/poco
+	dev-libs/poco[util,xml,zip]
 	>=dev-libs/protobuf-2.2.0:=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
