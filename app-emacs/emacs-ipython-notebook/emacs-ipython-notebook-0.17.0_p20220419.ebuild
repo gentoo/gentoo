@@ -36,7 +36,10 @@ RDEPEND="
 "
 BDEPEND="
 	${RDEPEND}
-	test? ( app-emacs/ert-runner )
+	test? (
+		app-emacs/ert-runner
+		app-emacs/mocker
+	)
 "
 
 DOCS=( README.rst thumbnail.png )
