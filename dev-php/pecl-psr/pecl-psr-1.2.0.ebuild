@@ -16,6 +16,6 @@ inherit php-ext-pecl-r3
 KEYWORDS="~amd64"
 
 DESCRIPTION="Provides the accepted PSR interfaces, so they can be used in an extension"
-LICENSE="BSD"
+LICENSE="BSD-2"
 SLOT="0"
 IUSE=""
