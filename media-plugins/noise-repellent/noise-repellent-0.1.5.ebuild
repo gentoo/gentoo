@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/lucianodato/${PN}/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND="
 	media-libs/lv2
