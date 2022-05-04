@@ -10,7 +10,7 @@ CMAKE_MAKEFILE_GENERATOR=emake
 
 inherit check-reqs bash-completion-r1 cmake python-r1 flag-o-matic \
 		lua-single python-r1 udev readme.gentoo-r1 toolchain-funcs \
-		systemd tmpfiles multiprocessing
+		systemd tmpfiles
 
 SRC_URI="https://download.ceph.com/tarballs/${P}.tar.gz"
 KEYWORDS="~amd64 ~arm64 ~ppc64"
