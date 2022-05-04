@@ -8,8 +8,8 @@ inherit autotools flag-o-matic fortran-2 java-pkg-opt-2 pax-utils qmake-utils to
 DESCRIPTION="High-level interactive language for numerical computations"
 HOMEPAGE="https://www.gnu.org/software/octave/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
-LICENSE="GPL-3"
 
+LICENSE="GPL-3"
 SLOT="0/${PV}"
 IUSE="curl doc fftw +glpk gnuplot gui hdf5 java opengl
 	portaudio postscript +qhull +qrupdate readline sndfile +sparse
@@ -98,10 +98,13 @@ BDEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.1.0-pkgbuilddir.patch
 	"${FILESDIR}"/${PN}-4.2.2-ncurses-pkgconfig.patch
-	"${FILESDIR}/${PN}-6.4.0-slibtool.patch"
+	"${FILESDIR}"/${PN}-6.4.0-slibtool.patch
+	"${FILESDIR}"/${PN}-7.1.0-omit-qtchooser-qtver.patch
 )
 
 src_prepare() {
+	default
+
 	# nasty prefix hacks for fltk:1 linking
 	if use prefix; then
 		use opengl && append-ldflags -Wl,-rpath,"${EPREFIX}/usr/$(get_libdir)/fltk-1"
@@ -110,9 +113,6 @@ src_prepare() {
 	# occasional fail on install, force regeneration (bug #401189)
 	rm doc/interpreter/contributors.texi || die
 
-	default
-	# patch for unknown option 'qt' (bug #839285)
-	eapply "${FILESDIR}/${PN}-6.4.0-omit-qtchooser-qtver.patch"
 	eautoreconf
 }
 
