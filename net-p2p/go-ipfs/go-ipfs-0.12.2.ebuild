@@ -41,7 +41,7 @@ src_compile() {
 	go build "${mygoargs[@]}" -o ipfs ./cmd/ipfs || die
 	go build "${mygoargs[@]}" -o ipfswatch ./cmd/ipfswatch || die
 
-	./ipfs commands completion bash > ipfs-completion.bash || die
+	IPFS_PATH="" ./ipfs commands completion bash > ipfs-completion.bash || die
 }
 
 src_test() {
