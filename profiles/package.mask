@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-05-04)
+# Unused java libraries and useless java-virtual. Removal on 2022-06-04
+dev-java/glassfish-jms-api
+dev-java/sun-jms
+java-virtuals/jms
+
 # Pacho Ramos <pacho@gentoo.org> (2022-05-03)
 # Waiting for keywording and adapting reverse deps. Bug #816135.
 >=sys-apps/xdg-desktop-portal-gtk-1.14.0
