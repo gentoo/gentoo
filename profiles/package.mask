@@ -364,12 +364,6 @@ app-misc/ttysnoop
 # Removal in 30 days.
 net-misc/jrdesktop
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-03)
-# Java library without consumers.
-# Multiple vulnerabilities (bug #719146).
-# Removal in 30 days.
-dev-java/log4j
-
 # David Seifert <soap@gentoo.org> (2022-03-20)
 # Mask gcc-8 branch (ended upstream support). Please switch
 # to a fresher gcc branch.
