@@ -7,6 +7,6 @@
 		Used as LD_PRELOAD hack to hijack fsync() and open(O_SYNC) calls.
 	</longdescription>
 	<upstream>
-		<remote-id type="launchpad">libeatmydata</remote-id>
+		<remote-id type="github">stewartsmith/libeatmydata</remote-id>
 	</upstream>
 </pkgmetadata>
