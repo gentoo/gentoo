@@ -82,7 +82,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-qt/qtcore:5=
 	dev-qt/qtdbus:5=
 	dev-qt/qtgui:5=[jpeg]
-	>=dev-qt/qtwebengine-5.12
 	dev-qt/qtwidgets:5=
 	dev-util/desktop-file-utils
 	dev-util/gtk-update-icon-cache

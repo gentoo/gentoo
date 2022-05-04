@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -77,7 +77,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-qt/qtcore:5=
 	dev-qt/qtdbus:5=
 	dev-qt/qtgui:5=[jpeg]
-	>=dev-qt/qtwebengine-5.12
 	dev-qt/qtwidgets:5=
 	dev-util/desktop-file-utils
 	dev-util/gtk-update-icon-cache
