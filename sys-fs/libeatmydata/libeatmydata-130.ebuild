@@ -3,6 +3,7 @@
 
 EAPI=8
 
+# Multilib because "handy to inject into wine"
 inherit multilib-minimal
 
 DESCRIPTION="LD_PRELOAD hack to convert sync()/msync() and the like to NO-OP"
