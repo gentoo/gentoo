@@ -350,14 +350,6 @@ dev-util/nemiver
 sys-devel/automake:1.13
 sys-devel/automake:1.15
 
-# Sergey Popov <pinkbyte@gentoo.org> (2022-04-05)
-# Upstream is dead long time ago
-# SRC_URI and HOMEPAGE are gone(bug #680362)
-# Has file collision with dev-util/bcc(bug #834093)
-# Suggested modern replacement is incorporated in dev-util/bcc
-# Removal in 30 days
-app-misc/ttysnoop
-
 # David Seifert <soap@gentoo.org> (2022-03-20)
 # Mask gcc-8 branch (ended upstream support). Please switch
 # to a fresher gcc branch.
