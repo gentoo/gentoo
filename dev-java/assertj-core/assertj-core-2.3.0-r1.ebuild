@@ -13,7 +13,7 @@ HOMEPAGE="https://joel-costigliola.github.io/assertj/"
 SRC_URI="https://github.com/assertj/assertj-core/archive/assertj-core-${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 SLOT="2"
 
 CDEPEND="dev-java/cglib:3
