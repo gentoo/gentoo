@@ -96,7 +96,7 @@ src_prepare() {
 	fi
 
 	# We need to disable mprotect on two files when it builds Bug 694100.
-	use pax-kernel && PATCHES+=( "${FILESDIR}"/${PN}-13.8.0-paxmarking.patch )
+	use pax-kernel && PATCHES+=( "${FILESDIR}"/${PN}-16.4.2-paxmarking.patch )
 
 	# All this test does is check if the npm CLI produces warnings of any sort,
 	# failing if it does. Overkill, much? Especially given one possible warning
