@@ -87,7 +87,6 @@ src_prepare() {
 	# Remove tests that are known to fail
 	rm -f test/ruby/test_process.rb test/rubygems/test_gem{,_path_support}.rb || die
 
-
 	if use prefix ; then
 		# Fix hardcoded SHELL var in mkmf library
 		sed -i -e "s#\(SHELL = \).*#\1${EPREFIX}/bin/sh#" lib/mkmf.rb || die
