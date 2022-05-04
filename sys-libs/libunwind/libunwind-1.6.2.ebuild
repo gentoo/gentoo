@@ -5,7 +5,7 @@ EAPI=7
 
 MY_PV=${PV/_/-}
 MY_P=${PN}-${MY_PV}
-inherit autotools multilib-minimal
+inherit multilib-minimal
 
 DESCRIPTION="Portable and efficient API to determine the call-chain of a program"
 HOMEPAGE="https://savannah.nongnu.org/projects/libunwind"
@@ -49,8 +49,6 @@ src_prepare() {
 	default
 
 	chmod +x src/ia64/mk_cursor_i || die
-
-	eautoreconf
 }
 
 multilib_src_configure() {
