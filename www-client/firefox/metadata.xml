@@ -35,7 +35,7 @@
 		instead of bundled</flag>
 	<flag name="system-png">Use the system-wide <pkg>media-libs/libpng</pkg>
 		instead of bundled (requires APNG patches)</flag>
-	<flag name="system-python">Use system's python site instead of bundled python libraries</flag>
+	<flag name="system-python-libs">Use system's python site instead of bundled python libraries</flag>
 	<flag name="system-webp">Use the system-wide <pkg>media-libs/libwebp</pkg>
 		instead of bundled</flag>
 </use>

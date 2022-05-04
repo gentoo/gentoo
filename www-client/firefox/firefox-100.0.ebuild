@@ -64,7 +64,7 @@ LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 
 IUSE="+clang cpu_flags_arm_neon dbus debug eme-free hardened hwaccel"
 IUSE+=" jack libproxy lto +openh264 pgo pulseaudio sndio selinux"
-IUSE+=" +system-av1 +system-harfbuzz +system-icu +system-jpeg +system-libevent +system-libvpx system-png system-python +system-webp"
+IUSE+=" +system-av1 +system-harfbuzz +system-icu +system-jpeg +system-libevent +system-libvpx system-png system-python-libs +system-webp"
 IUSE+=" wayland wifi"
 
 # Firefox-only IUSE
@@ -954,7 +954,7 @@ src_configure() {
 	# Use system's Python environment
 	PIP_NETWORK_INSTALL_RESTRICTED_VIRTUALENVS=mach
 
-	if use system-python; then
+	if use system-python-libs; then
 		export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE="system"
 	else
 		export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE="none"
