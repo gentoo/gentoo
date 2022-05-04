@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic
+inherit flag-o-matic
 
 DESCRIPTION="Utilities to access MS-DOS disks from Unix without mounting them"
 HOMEPAGE="https://www.gnu.org/software/mtools/ https://savannah.gnu.org/projects/mtools"
@@ -23,13 +23,6 @@ RDEPEND="!elibc_glibc? ( virtual/libiconv )
 		x11-libs/libXt
 	)"
 DEPEND="${RDEPEND}"
-
-src_prepare() {
-	default
-
-	# Only needed for strtoi patch
-	eautoreconf
-}
 
 src_configure() {
 	if ! use elibc_glibc && ! use elibc_musl ; then
