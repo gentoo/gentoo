@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,7 +33,10 @@ DEPEND="${RDEPEND}"
 
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/${PN}-0.9.1-dont-compress-manpage.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-0.9.1-dont-compress-manpage.patch"
+	"${FILESDIR}/${PN}-0.9.2-gcc12.patch"
+)
 
 src_prepare() {
 	cmake_src_prepare
