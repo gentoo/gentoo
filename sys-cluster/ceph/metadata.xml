@@ -31,7 +31,7 @@
     <flag name="radosgw">Add radosgw support</flag>
     <flag name="rbd-rwl">Enable librbd persistent write back cache</flag>
     <flag name="rbd-ssd">Enable librbd persistent write back cache for SSDs</flag>
-	<flag name="rdma">Enable RDMA support via <pkg>sys-cluster/rdma-core</pkg></flag>
+    <flag name="rdma">Enable RDMA support via <pkg>sys-cluster/rdma-core</pkg></flag>
     <flag name="rgw-lua">Rados Gateway's support for dynamically adding lua packagess</flag>
     <flag name="system-boost">Use system <pkg>dev-libs/boost</pkg> instead of the bundled one</flag>
     <flag name="uring">Build with support for <pkg>sys-libs/liburing</pkg></flag>
