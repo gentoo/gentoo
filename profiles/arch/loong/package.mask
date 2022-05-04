@@ -1,0 +1,7 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-05-04)
+# We have no Rust at the moment
+>=dev-python/cryptography-37
+>=gnome-base/librsvg-2.41
