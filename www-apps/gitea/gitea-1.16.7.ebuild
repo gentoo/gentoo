@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit fcaps go-module tmpfiles systemd
+inherit fcaps go-module tmpfiles systemd flag-o-matic
 
 DESCRIPTION="A painless self-hosted Git service"
 HOMEPAGE="https://gitea.io https://github.com/go-gitea/gitea"
@@ -13,7 +13,7 @@ S="${WORKDIR}"
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
-IUSE="+acct pam sqlite"
+IUSE="+acct pam sqlite pie"
 
 DEPEND="
 	acct? (
@@ -52,6 +52,12 @@ src_prepare() {
 	fi
 }
 
+src_configure() {
+	# bug 832756 - PIE build issues
+	filter-flags -fPIE
+	filter-ldflags -fPIE -pie
+}
+
 src_compile() {
 	local gitea_tags=(
 		bindata
@@ -69,7 +75,12 @@ src_compile() {
 		TAGS="${gitea_tags[*]}"
 	)
 
-	env "${makeenv[@]}" emake backend
+	GOFLAGS=""
+	if use pie ; then
+		GOFLAGS+="-buildmode=pie"
+	fi
+
+	env "${makeenv[@]}" emake EXTRA_GOFLAGS="${GOFLAGS}" backend
 }
 
 src_install() {
