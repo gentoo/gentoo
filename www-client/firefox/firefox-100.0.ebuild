@@ -464,7 +464,7 @@ pkg_setup() {
 				eerror "  - Switch to dev-lang/rust[system-llvm] which will guarantee matching version"
 				eerror "  - Build ${CATEGORY}/${PN} without USE=lto"
 				eerror "  - Rebuild lld with llvm that was used to build rust (may need to rebuild the whole "
-				eerror "    chain depending on your @world updates)"
+				eerror "    llvm/clang/lld/rust chain depending on your @world updates)"
 				die "LLVM version used by Rust (${version_llvm_rust}) does not match with ld.lld version (${version_lld})!"
 			fi
 		fi
