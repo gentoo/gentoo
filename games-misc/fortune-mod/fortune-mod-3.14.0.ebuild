@@ -12,7 +12,7 @@ SRC_URI="https://www.shlomifish.org/open-source/projects/${PN}/arcs/${P}.tar.xz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~m68k ~mips"
+KEYWORDS="~amd64 ~m68k ~mips ~riscv"
 IUSE="offensive test"
 RESTRICT="!test? ( test )"
 
