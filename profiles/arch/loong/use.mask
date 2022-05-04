@@ -24,6 +24,7 @@ gtk2
 gtk3
 gtk4
 latex
+ldap
 qt5
 systemtap
 tk
