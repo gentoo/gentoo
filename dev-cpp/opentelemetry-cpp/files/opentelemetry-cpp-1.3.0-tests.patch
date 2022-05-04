@@ -1,0 +1,92 @@
+diff --git a/ext/test/http/curl_http_test.cc b/ext/test/http/curl_http_test.cc
+index f8d248b..9a5be49 100644
+--- a/ext/test/http/curl_http_test.cc
++++ b/ext/test/http/curl_http_test.cc
+@@ -187,50 +187,6 @@ TEST_F(BasicCurlHttpTests, HttpResponse)
+   ASSERT_EQ(count, 4);
+ }
+ 
+-TEST_F(BasicCurlHttpTests, SendGetRequest)
+-{
+-  received_requests_.clear();
+-  auto session_manager = http_client::HttpClientFactory::Create();
+-  EXPECT_TRUE(session_manager != nullptr);
+-
+-  auto session = session_manager->CreateSession("http://127.0.0.1:19000");
+-  auto request = session->CreateRequest();
+-  request->SetUri("get/");
+-  GetEventHandler *handler = new GetEventHandler();
+-  session->SendRequest(*handler);
+-  ASSERT_TRUE(waitForRequests(30, 1));
+-  session->FinishSession();
+-  ASSERT_TRUE(handler->is_called_);
+-  delete handler;
+-}
+-
+-TEST_F(BasicCurlHttpTests, SendPostRequest)
+-{
+-  received_requests_.clear();
+-  auto session_manager = http_client::HttpClientFactory::Create();
+-  EXPECT_TRUE(session_manager != nullptr);
+-
+-  auto session = session_manager->CreateSession("http://127.0.0.1:19000");
+-  auto request = session->CreateRequest();
+-  request->SetUri("post/");
+-  request->SetMethod(http_client::Method::Post);
+-
+-  const char *b          = "test-data";
+-  http_client::Body body = {b, b + strlen(b)};
+-  request->SetBody(body);
+-  request->AddHeader("Content-Type", "text/plain");
+-  PostEventHandler *handler = new PostEventHandler();
+-  session->SendRequest(*handler);
+-  ASSERT_TRUE(waitForRequests(30, 1));
+-  session->FinishSession();
+-  ASSERT_TRUE(handler->is_called_);
+-
+-  session_manager->CancelAllSessions();
+-  session_manager->FinishAllSessions();
+-
+-  delete handler;
+-}
+-
+ TEST_F(BasicCurlHttpTests, RequestTimeout)
+ {
+   received_requests_.clear();
+@@ -271,17 +227,6 @@ TEST_F(BasicCurlHttpTests, CurlHttpOperations)
+   delete handler;
+ }
+ 
+-TEST_F(BasicCurlHttpTests, SendGetRequestSync)
+-{
+-  received_requests_.clear();
+-  curl::HttpClientSync http_client;
+-
+-  http_client::Headers m1 = {};
+-  auto result             = http_client.Get("http://127.0.0.1:19000/get/", m1);
+-  EXPECT_EQ(result, true);
+-  EXPECT_EQ(result.GetSessionState(), http_client::SessionState::Response);
+-}
+-
+ TEST_F(BasicCurlHttpTests, SendGetRequestSyncTimeout)
+ {
+   received_requests_.clear();
+@@ -296,18 +241,6 @@ TEST_F(BasicCurlHttpTests, SendGetRequestSyncTimeout)
+               result.GetSessionState() == http_client::SessionState::SendFailed);
+ }
+ 
+-TEST_F(BasicCurlHttpTests, SendPostRequestSync)
+-{
+-  received_requests_.clear();
+-  curl::HttpClientSync http_client;
+-
+-  http_client::Headers m1 = {};
+-  http_client::Body body  = {};
+-  auto result             = http_client.Post("http://127.0.0.1:19000/post/", body, m1);
+-  EXPECT_EQ(result, true);
+-  EXPECT_EQ(result.GetSessionState(), http_client::SessionState::Response);
+-}
+-
+ TEST_F(BasicCurlHttpTests, GetBaseUri)
+ {
+   curl::HttpClient session_manager;
