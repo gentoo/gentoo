@@ -76,7 +76,7 @@ src_unpack() {
 }
 
 src_configure() {
-	use doc && DOCS+=( README ChangeLog ReleaseNotes doc/HACKING )
+	use doc && DOCS+=( README.md ChangeLog ReleaseNotes doc/HACKING )
 	export ac_cv_lib_cap_cap_init=$(usex caps)
 	econf \
 		--localstatedir="${EPREFIX}/var" \
