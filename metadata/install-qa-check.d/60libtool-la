@@ -25,11 +25,7 @@ libtool_la_check() {
 	local base
 	local bad_files=()
 	for file in "${files[@]}" ; do
-		dir=$(dirname ${file})
-		base=${dir%/}
-		base=${base%.la}
-
-		if [[ ! -f ${dir}/${base}.a ]] ; then
+		if [[ ! -f ${file%.la}.a ]] ; then
 			bad_files+=( ${file} )
 		fi
 	done
