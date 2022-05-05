@@ -47,6 +47,7 @@ S="${WORKDIR}/otp-OTP-${PV}"
 PATCHES=(
 	"${FILESDIR}"/18.2.1-wx3.0.patch
 	"${FILESDIR}"/${PN}-22.0-dont-ignore-LDFLAGS.patch
+	"${FILESDIR}"/${PN}-23.3.4.14-emacs28-compat.patch
 )
 
 SITEFILE=50"${PN}"-gentoo.el
