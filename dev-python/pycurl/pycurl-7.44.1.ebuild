@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,6 +43,10 @@ DEPEND="${RDEPEND}
 		net-misc/curl[curl_ssl_gnutls(-)=,curl_ssl_nss(-)=,curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-),http2]
 		>=dev-python/bottle-0.12.7[${PYTHON_USEDEP}]
 	)"
+
+PATCHES=(
+	"${FILESDIR}/7.44-fix-tests.patch"
+)
 
 python_prepare_all() {
 	# docs installed into the wrong directory
