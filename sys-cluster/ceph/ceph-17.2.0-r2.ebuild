@@ -213,6 +213,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-17.2.0-deprecated-boost.patch"
 	"${FILESDIR}/ceph-17.2.0-system-opentelemetry.patch"
 	"${FILESDIR}/ceph-17.2.0-fuse3.patch"
+	"${FILESDIR}/ceph-17.2.0-osd_class_dir.patch"
 )
 
 check-reqs_export_vars() {
