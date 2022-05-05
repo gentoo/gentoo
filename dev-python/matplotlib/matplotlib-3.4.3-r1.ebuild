@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -71,9 +71,7 @@ RDEPEND="
 		>=www-servers/tornado-6.0.4[${PYTHON_USEDEP}]
 	)
 	wxwidgets? (
-		$(python_gen_cond_dep '
-			dev-python/wxpython:*[${PYTHON_USEDEP}]
-		')
+		dev-python/wxpython:*[${PYTHON_USEDEP}]
 	)
 "
 
