@@ -24,7 +24,7 @@ BDEPEND="
 	>=dev-util/cmake-3.16
 	clang? ( sys-devel/clang )
 	test? (
-		$(python_gen_any_dep ">=dev-python/lit-9.0.1[\${PYTHON_USEDEP}]")
+		$(python_gen_any_dep ">=dev-python/lit-15[\${PYTHON_USEDEP}]")
 		=sys-devel/clang-${PV%_*}*:${CLANG_SLOT}
 	)
 	!test? (
