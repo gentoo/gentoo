@@ -17,11 +17,9 @@ IUSE="libevent lua +ssl test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
+	dev-libs/boost:=
 	dev-libs/openssl:=
 	libevent? ( dev-libs/libevent )
-	test? (
-		dev-libs/boost
-	)
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
