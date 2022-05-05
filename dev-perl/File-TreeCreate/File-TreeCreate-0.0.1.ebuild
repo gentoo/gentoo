@@ -9,7 +9,7 @@ inherit perl-module
 DESCRIPTION="Recursively create a directory tree"
 
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~sparc ~x86"
 
 RDEPEND="
 	virtual/perl-Carp
