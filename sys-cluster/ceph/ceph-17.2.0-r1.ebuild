@@ -13,7 +13,7 @@ SRC_URI="
 	https://download.ceph.com/tarballs/${P}.tar.gz
 	parquet? ( https://github.com/xtensor-stack/xsimd/archive/aeec9c872c8b475dedd7781336710f2dd2666cb2.tar.gz -> ceph-xsimd-${PV}.tar.gz )
 "
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 DESCRIPTION="Ceph distributed filesystem"
 HOMEPAGE="https://ceph.com/"
