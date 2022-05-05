@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
-IUSE="curl doc fftw +glpk gnuplot gui hdf5 java opengl
+IUSE="curl doc fftw +glpk gnuplot gui hdf5 java json opengl
 	portaudio postscript +qhull +qrupdate readline sndfile +sparse
 	ssl static-libs sundials X zlib"
 # Issue when building w/ SSL needs investigation
@@ -50,6 +50,7 @@ RDEPEND="
 	)
 	hdf5? ( sci-libs/hdf5:0= )
 	java? ( >=virtual/jre-1.6.0:* )
+	json? ( dev-libs/rapidjson )
 	opengl? (
 		media-libs/freetype:2=
 		media-libs/fontconfig:1.0=
@@ -151,6 +152,7 @@ src_configure() {
 		$(use_enable static-libs static) \
 		$(use_enable doc docs) \
 		$(use_enable java) \
+		$(use_enable json rapidjson) \
 		$(use_enable readline) \
 		$(use_with curl) \
 		$(use_with fftw fftw3) \
@@ -162,7 +164,7 @@ src_configure() {
 		$(use_with opengl fltk) \
 		$(use_with ssl openssl) \
 		$(use_with portaudio) \
-		$(use_with qhull_r) \
+		$(use_with qhull qhull_r) \
 		$(use_with qrupdate) \
 		$(use_with gui qt 5) \
 		$(use_with sndfile) \
