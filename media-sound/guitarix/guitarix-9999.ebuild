@@ -6,6 +6,9 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE='threads(+)'
 
+EGIT_OVERRIDE_REPO_ENYOJS_BOOTPLATE="https://github.com/enyojs/bootplate.git"
+EGIT_OVERRIDE_BRANCH_ENYOJS_BOOTPLATE="master"
+
 inherit python-any-r1 waf-utils xdg git-r3
 
 MY_P="${PN}2-${PV}"
