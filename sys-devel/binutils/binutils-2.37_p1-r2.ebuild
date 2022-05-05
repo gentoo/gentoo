@@ -334,6 +334,16 @@ src_install() {
 		rmdir ${d} || die
 	done
 
+        # Create relative symlinks for cross-compilation
+        if [[ ${CBUILD} != ${CTARGET} ]] ; then
+                cd ${ED}/${BINPATH}
+                for x in * ; do
+                        dosym ../binutils-bin/${PV}/${x}  /usr/${CTARGET}/bin/${x}
+                        dosym ../${CTARGET}/bin/${x} /usr/bin/${CTARGET}-${x}
+                        dosym ${CTARGET}-${x} /usr/bin/${x}
+                done
+        fi
+
 	# Now we collect everything intp the proper SLOT-ed dirs
 	# When something is built to cross-compile, it installs into
 	# /usr/$CHOST/ by default ... we have to 'fix' that :)
