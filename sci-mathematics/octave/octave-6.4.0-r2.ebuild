@@ -99,7 +99,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.1.0-pkgbuilddir.patch
 	"${FILESDIR}"/${PN}-4.2.2-ncurses-pkgconfig.patch
 	"${FILESDIR}/${PN}-6.4.0-slibtool.patch"
-	"${FILESDIR}"/${PN}-7.1.0-omit-qtchooser-qtver.patch
+	"${FILESDIR}"/${PN}-6.4.0-omit-qtchooser-qtver.patch
 )
 
 src_prepare() {
