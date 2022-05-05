@@ -23,6 +23,7 @@ RDEPEND="
 	dev-python/backcall[${PYTHON_USEDEP}]
 	dev-python/decorator[${PYTHON_USEDEP}]
 	>=dev-python/jedi-0.16[${PYTHON_USEDEP}]
+	dev-python/matplotlib[${PYTHON_USEDEP}]
 	dev-python/matplotlib-inline[${PYTHON_USEDEP}]
 	>=dev-python/pexpect-4.3[${PYTHON_USEDEP}]
 	dev-python/pickleshare[${PYTHON_USEDEP}]
@@ -32,9 +33,6 @@ RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/stack_data[${PYTHON_USEDEP}]
 	>=dev-python/traitlets-5.0[${PYTHON_USEDEP}]
-	matplotlib? (
-		dev-python/matplotlib[${PYTHON_USEDEP}]
-	)
 "
 
 BDEPEND="
