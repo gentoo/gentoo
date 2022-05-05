@@ -15,6 +15,7 @@ valgrind
 audit
 bluetooth
 doc
+efl
 elogind
 emacs
 fam
