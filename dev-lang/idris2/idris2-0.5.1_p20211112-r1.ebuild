@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,8 +26,8 @@ REQUIRED_USE="^^ ( chez racket )"
 
 RDEPEND="
 	dev-libs/gmp
-	chez? ( dev-scheme/chez[threads] )
-	racket? ( dev-scheme/racket[threads] )
+	chez? ( dev-scheme/chez:=[threads] )
+	racket? ( dev-scheme/racket:=[threads] )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

@@ -26,8 +26,8 @@ REQUIRED_USE="^^ ( chez racket )"
 
 RDEPEND="
 	dev-libs/gmp
-	chez? ( dev-scheme/chez[threads] )
-	racket? ( dev-scheme/racket[threads] )
+	chez? ( dev-scheme/chez:=[threads] )
+	racket? ( dev-scheme/racket:=[threads] )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
