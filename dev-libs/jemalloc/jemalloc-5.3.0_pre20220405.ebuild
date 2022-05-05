@@ -13,6 +13,7 @@ SRC_URI="https://dev.gentoo.org/~xen0n/distfiles/${P}.tar.xz"
 LICENSE="BSD"
 SLOT="0/2"
 #KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+KEYWORDS="~loong"
 IUSE="debug lazy-lock prof stats xmalloc"
 HTML_DOCS=( doc/jemalloc.html )
 PATCHES=( "${FILESDIR}/${PN}-5.3.0-gentoo-fixups.patch" )
