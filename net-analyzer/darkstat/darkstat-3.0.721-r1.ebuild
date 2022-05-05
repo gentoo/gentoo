@@ -61,20 +61,12 @@ src_install() {
 }
 
 pkg_postinst() {
-	# Workaround bug #141619
-	DARKSTAT_CHROOT_DIR=$(
-		sed -n 's/^#CHROOT=\(.*\)/\1/p' "${EROOT}"/etc/conf.d/darkstat
-	)
-
-	if [[ -n "${DARKSTAT_CHROOT_DIR}" ]] && [[ "${DARKSTAT_CHROOT_DIR}" != "${EROOT:-/}" ]] ; then
-		chown darkstat:0 "${EROOT}/${DARKSTAT_CHROOT_DIR#/}/"
-	fi
-
 	elog "To start different darkstat instances which will listen on a different"
 	elog "interface, create within the ${EROOT}/etc/init.d directory a 'darkstat.if' symlink to"
 	elog "darkstat script where 'if' is the name of the interface."
 	elog "Also in the ${EROOT}/etc/conf.d directory, copy darkstat to darkstat.if"
 	elog "and edit it to change default values."
 	elog
-	elog "darkstat's default chroot directory is: ${EROOT}/${DARKSTAT_CHROOT_DIR#/}"
+	elog "darkstat's default chroot directory is: ${EROOT}/var/lib/darkstat."
+	elog "Please chown it to darkstat:0 (or a different directory if you change it)."
 }
