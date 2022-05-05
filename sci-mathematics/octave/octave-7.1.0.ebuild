@@ -49,7 +49,7 @@ RDEPEND="
 		x11-libs/qscintilla:=
 	)
 	hdf5? ( sci-libs/hdf5:0= )
-	java? ( >=virtual/jre-1.6.0:* )
+	java? ( >=virtual/jre-1.8:* )
 	json? ( dev-libs/rapidjson )
 	opengl? (
 		media-libs/freetype:2=
@@ -93,7 +93,7 @@ BDEPEND="dev-util/gperf
 		virtual/latex-base
 	)
 	gui? ( dev-qt/linguist-tools:5 )
-	java? ( >=virtual/jdk-1.6.0 )
+	java? ( >=virtual/jdk-1.8:* )
 	qrupdate? ( app-misc/pax-utils )
 	sparse? ( app-misc/pax-utils )"
 
