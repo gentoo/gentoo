@@ -29,6 +29,7 @@ RDEPEND="
 	tcl? ( >=dev-lang/tcl-8.5:0 )
 	"
 DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/gettext"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.52.13-gold.patch
