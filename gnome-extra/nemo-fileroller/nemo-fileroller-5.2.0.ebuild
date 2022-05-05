@@ -11,7 +11,7 @@ SRC_URI="https://github.com/linuxmint/nemo-extensions/archive/5.2.0.tar.gz -> ne
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 DEPEND="
 	>=dev-libs/glib-2.14.0
