@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic fortran-2 java-pkg-opt-2 pax-utils qmake-utils toolchain-funcs xdg-utils
+inherit autotools flag-o-matic fortran-2 java-pkg-opt-2 pax-utils qmake-utils toolchain-funcs xdg
 
 DESCRIPTION="High-level interactive language for numerical computations"
 HOMEPAGE="https://www.gnu.org/software/octave/"
@@ -81,9 +81,10 @@ RDEPEND="
 	)
 	sundials? ( >=sci-libs/sundials-4:0= )
 	X? ( x11-libs/libX11:0= )"
-BDEPEND="${RDEPEND}
-	dev-util/gperf
+DEPEND="${RDEPEND}"
+BDEPEND="dev-util/gperf
 	virtual/pkgconfig
+	virtual/imagemagick-tools
 	doc? (
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-plaingeneric
@@ -93,8 +94,7 @@ BDEPEND="${RDEPEND}
 	gui? ( dev-qt/linguist-tools:5 )
 	java? ( >=virtual/jdk-1.6.0 )
 	qrupdate? ( app-misc/pax-utils )
-	sparse? ( app-misc/pax-utils )
-	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )"
+	sparse? ( app-misc/pax-utils )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.1.0-pkgbuilddir.patch
@@ -138,13 +138,12 @@ src_configure() {
 	# The --enable-link-all-dependencies flag is needed because
 	# otherwise, the build system appends --no-undefined to LDFLAGS and
 	# then proceeds to undefine things. GNU libtool ignores this, but
-	# slibtool (for example) does not (bug 776583).
+	# slibtool (for example) does not (bug #776583).
 	econf \
 		--localstatedir="${EPREFIX}/var/state/octave" \
 		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)" \
 		--with-lapack="$($(tc-getPKG_CONFIG) --libs lapack)" \
 		--disable-64 \
-		--disable-jit \
 		--enable-link-all-dependencies \
 		--enable-shared \
 		--with-z \
@@ -163,7 +162,7 @@ src_configure() {
 		$(use_with opengl fltk) \
 		$(use_with ssl openssl) \
 		$(use_with portaudio) \
-		$(use_with qhull) \
+		$(use_with qhull_r) \
 		$(use_with qrupdate) \
 		$(use_with gui qt 5) \
 		$(use_with sndfile) \
@@ -179,7 +178,9 @@ src_configure() {
 
 src_compile() {
 	export VARTEXFONTS="${T}/fonts" # otherwise it will write to /var/cache/fonts/ and trip sandbox
+
 	default
+
 	if use java; then
 		pax-mark m "${S}/src/.libs/octave-cli"
 	fi
@@ -187,28 +188,20 @@ src_compile() {
 
 src_install() {
 	default
+
 	if use doc; then
 		dodoc $(find doc -name '*.pdf')
 	else
-		# bug 566134, macros.texi is installed by make install if use doc
+		# bug #566134, macros.texi is installed by make install if use doc
 		insinto /usr/share/${PN}/${PV}/etc
 		doins doc/interpreter/macros.texi
 	fi
+
 	[[ -e test/fntests.log ]] && dodoc test/fntests.log
+
 	use java && \
 		java-pkg_regjar "${ED}/usr/share/${PN}/${PV}/m/java/octave.jar"
+
 	echo "LDPATH=${EPREFIX}/usr/$(get_libdir)/${PN}/${PV}" > 99octave || die
 	doenvd 99octave
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
 }
