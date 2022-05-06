@@ -15,7 +15,8 @@ else
 	# Has test failure on abi_x86_32 which needs investigating
 	# https://marc.info/?l=linux-aio&m=164996470108464&w=2
 	# https://pagure.io/libaio/issue/21
-	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~loong"
 fi
 LICENSE="LGPL-2"
 SLOT="0"
