@@ -23,6 +23,7 @@ BDEPEND="
 		app-text/tesseract[jpeg,png,tiff,webp]
 		media-libs/leptonica[gif,jpeg2k]
 		app-text/tessdata_fast[l10n_fr]
+		dev-python/pillow
 	)
 "
 
