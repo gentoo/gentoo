@@ -1,7 +1,7 @@
 https://bugs.gentoo.org/818415
 
---- fe-2.0/configure.ac
-+++ fe-2.0/configure.ac
+--- fe-2.0/configure.in
++++ fe-2.0/configure.in
 @@ -55,19 +55,6 @@
  AC_CHECK_FUNCS(strdup)
  AC_CHECK_FUNCS(strndup)
