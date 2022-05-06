@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit flag-o-matic linux-info toolchain-funcs multilib-minimal verify-sig
+inherit flag-o-matic linux-info toolchain-funcs multilib-minimal multiprocessing verify-sig
 
 MY_P=${P/_/-}
 
@@ -219,11 +219,14 @@ multilib_src_compile() {
 	# depend is needed to use $confopts; it also doesn't matter
 	# that it's -j1 as the code itself serializes subdirs
 	emake -j1 depend
+
 	emake all
 }
 
 multilib_src_test() {
-	emake -j1 test
+	# VFP = show subtests verbosely and show failed tests verbosely
+	# Normal V=1 would show everything verbosely but this slows things down.
+	emake HARNESS_JOBS="$(makeopts_jobs)" VFP=1 test
 }
 
 multilib_src_install() {
