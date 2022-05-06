@@ -5,7 +5,7 @@ EAPI=8
 
 FORTRAN_NEEDED=test
 
-inherit autotools fortran-2
+inherit autotools fortran-2 flag-o-matic
 
 DEB_PR="1"
 
@@ -17,7 +17,7 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="LGPL-2"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 IUSE="examples test"
 
 RESTRICT="!test? ( test )"
@@ -36,6 +36,11 @@ src_prepare() {
 		cp -ar eg eg_src || die "Failed to preserve a clean copy of examples"
 		rm -f eg_src/Makefile{,.am,.in}
 	fi
+}
+
+src_configure() {
+	use sparc && append-fflags $(test-flags-FC -fno-store-merging -fno-tree-slp-vectorize)
+	default
 }
 
 src_install() {
