@@ -13,7 +13,7 @@ UPSTREAM_VER=
 [[ -n ${UPSTREAM_VER} ]] && \
 	UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P}-upstream-patches-${UPSTREAM_VER}.tar.xz"
 
-SRC_URI="https://github.com/ctmarinas/stgit/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/stacked-git/stgit/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${UPSTREAM_PATCHSET_URI}"
 
 LICENSE="GPL-2"
