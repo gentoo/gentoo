@@ -34,6 +34,25 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2022-05-06)
+# The "better quality" dependencies of Mailman.  These packages were
+# generally fixed by the Python team but they have no reverse
+# dependencies.  If you need them, please let us know and we'll keep
+# them.
+# Removal on 2022-06-05.  Bug #842888.
+dev-python/authheaders
+dev-python/django-allauth
+dev-python/django-appconf
+dev-python/django-debug-toolbar
+dev-python/flufl-bounce
+dev-python/flufl-i18n
+dev-python/lazr-config
+dev-python/lazr-delegates
+dev-python/python3-openid
+dev-python/rcssmin
+dev-python/rjsmin
+dev-python/robot-detection
+
+# Michał Górny <mgorny@gentoo.org> (2022-05-06)
 # Mailman along with a bunch of dependencies that are of bad quality.
 # At the very least, the Mailman packages need a dedicated maintainer.
 # Their Python dependencies can be maintained by the Python team
