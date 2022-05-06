@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Optical character recognition (OCR) tool"
@@ -17,13 +17,14 @@ KEYWORDS="~amd64"
 
 DEPEND=""
 RDEPEND="${DEPEND}
-	dev-python/pillow
+	dev-python/pillow[${PYTHON_USEDEP}]
 	app-text/tesseract"
 BDEPEND="
 	test? (
 		app-text/tesseract[jpeg,png,tiff,webp]
 		media-libs/leptonica[gif,jpeg2k]
 		app-text/tessdata_fast[l10n_fr]
+		dev-python/pillow[jpeg,zlib]
 	)
 "
 
