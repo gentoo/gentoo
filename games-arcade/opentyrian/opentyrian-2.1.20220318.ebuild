@@ -8,7 +8,7 @@ inherit desktop toolchain-funcs xdg-utils
 DESCRIPTION="Open-source port of the DOS game Tyrian, vertical scrolling shooter"
 HOMEPAGE="https://github.com/opentyrian/opentyrian"
 SRC_URI="http://darklomax.org/tyrian/tyrian21.zip
-	https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz"
+	https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
