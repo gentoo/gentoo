@@ -5,4 +5,5 @@
     <email>eras@gentoo.org</email>
     <name>Eray Aslan</name>
   </maintainer>
+  <stabilize-allarches/>
 </pkgmetadata>
