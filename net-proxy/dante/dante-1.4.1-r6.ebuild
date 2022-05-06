@@ -48,6 +48,9 @@ PATCHES=(
 src_prepare() {
 	default
 
+	# 780039
+	sed -e 's/-all-dynamic//' -i dlib/Makefile.am dlib64/Makefile.am || die
+
 	sed \
 		-e 's:/etc/socks\.conf:"${EPREFIX}"/etc/socks/socks.conf:' \
 		-e 's:/etc/sockd\.conf:"${EPREFIX}"/etc/socks/sockd.conf:' \
