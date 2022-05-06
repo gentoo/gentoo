@@ -761,6 +761,14 @@ src_configure() {
 	# Disable fatal linker warnings, bug 506268.
 	myconf_gn+=" fatal_linker_warnings=false"
 
+	# Disable external code space for V8 for ppc64. It is disabled for ppc64
+	# by default, but cross-compiling on amd64 enables it again.
+	if tc-is-cross-compiler; then
+		if ! use amd64 && ! use arm64; then
+			myconf_gn+=" v8_enable_external_code_space=false"
+		fi
+	fi
+
 	# Bug 491582.
 	export TMPDIR="${WORKDIR}/temp"
 	mkdir -p -m 755 "${TMPDIR}" || die
