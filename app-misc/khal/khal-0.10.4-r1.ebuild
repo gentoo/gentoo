@@ -25,7 +25,7 @@ RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
 	>=dev-python/atomicwrites-0.1.7[${PYTHON_USEDEP}]
-	<dev-python/tzlocal-3[${PYTHON_USEDEP}]
+	dev-python/tzlocal[${PYTHON_USEDEP}]
 	dev-python/setproctitle[${PYTHON_USEDEP}]"
 BDEPEND=">dev-python/setuptools_scm-1.12.0[${PYTHON_USEDEP}]
 	dev-python/vdirsyncer[${PYTHON_USEDEP}]
