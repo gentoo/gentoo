@@ -29,6 +29,7 @@ COMMON_DEPEND="non-root? (
 		acct-user/ipsec
 		acct-group/ipsec
 	)
+	dev-libs/glib:2
 	gmp? ( >=dev-libs/gmp-4.1.5:= )
 	gcrypt? ( dev-libs/libgcrypt:= )
 	caps? ( sys-libs/libcap )
@@ -36,7 +37,7 @@ COMMON_DEPEND="non-root? (
 	ldap? ( net-nds/openldap:= )
 	openssl? ( >=dev-libs/openssl-0.9.8:=[-bindist(-)] )
 	mysql? ( dev-db/mysql-connector-c:= )
-	sqlite? ( >=dev-db/sqlite-3.3.1 )
+	sqlite? ( >=dev-db/sqlite-3.3.1:3 )
 	systemd? ( sys-apps/systemd )
 	networkmanager? ( net-misc/networkmanager )
 	pam? ( sys-libs/pam )
