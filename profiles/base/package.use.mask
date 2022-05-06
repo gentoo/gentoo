@@ -18,11 +18,6 @@
 # https://github.com/aria2/aria2/issues/1636
 net-misc/aria2 gnutls
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-22)
-# java conditional dependencies are getting last-rited as they are
-# blocking removal of vulnerable slot dev-java/guava:20 (bug #760111).
-app-emacs/ecb java
-
 # Matt Turner <mattst88@gentoo.org> (2022-03-25)
 # Depends on libsoup:3.0
 >=gnome-base/gvfs-1.50 http
