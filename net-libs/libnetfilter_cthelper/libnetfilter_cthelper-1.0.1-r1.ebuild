@@ -27,3 +27,9 @@ pkg_setup() {
 
 	kernel_is lt 3 6 0 && ewarn "requires at least 3.6.0 kernel version"
 }
+
+src_install() {
+	default
+
+	find "${ED}" -name '*.la' -delete || die
+}
