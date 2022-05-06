@@ -1,0 +1,20 @@
+diff --git a/src/gnu/io/RXTXCommDriver.java b/src/gnu/io/RXTXCommDriver.java
+index 3dce198..954b102 100644
+--- a/src/gnu/io/RXTXCommDriver.java
++++ b/src/gnu/io/RXTXCommDriver.java
+@@ -576,6 +576,7 @@ public class RXTXCommDriver implements CommDriver
+ 						String[] Temp = {
+ 						"ttyS", // linux Serial Ports
+ 						"ttySA", // for the IPAQs
++						"ttyPZ", // for G4/G5 RackMac
+ 						"ttyUSB", // for USB frobs
+ 						"rfcomm",       // bluetooth serial device
+ 						"ttyircomm", // linux IrCommdevices (IrDA serial emu)
+@@ -608,6 +609,7 @@ public class RXTXCommDriver implements CommDriver
+ 							// linux ISI serial card
+ 						"ttyMX",// linux Moxa Smart IO cards
+ 						"ttyP", // linux Hayes ESP serial card
++						"ttyPZ", // linux PPC/PPC64 Zilog serial ports
+ 						"ttyR", // linux comtrol cards
+ 							// linux Specialix RIO serial card
+ 						"ttyS", // linux Serial Ports
