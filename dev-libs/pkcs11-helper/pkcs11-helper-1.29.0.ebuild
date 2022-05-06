@@ -31,5 +31,8 @@ src_configure() {
 src_install() {
 	default
 
+	# bug #555262
+	rm "${ED}"/usr/share/doc/${PF}/COPYING.{BSD,GPL} || die
+
 	find "${ED}" -name '*.la' -delete || die
 }
