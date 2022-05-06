@@ -529,6 +529,11 @@ src_prepare() {
 			generate_gni.sh || die
 		./generate_gni.sh || die
 		popd >/dev/null || die
+
+		pushd third_party/ffmpeg >/dev/null || die
+		cp libavcodec/ppc/h264dsp.c libavcodec/ppc/h264dsp_ppc.c || die
+		cp libavcodec/ppc/h264qpel.c libavcodec/ppc/h264qpel_ppc.c || die
+		popd >/dev/null || die
 	fi
 
 	# Remove most bundled libraries. Some are still needed.
