@@ -33,6 +33,28 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-05-06)
+# Mailman along with a bunch of dependencies that are of bad quality.
+# At the very least, the Mailman packages need a dedicated maintainer.
+# Their Python dependencies can be maintained by the Python team
+# if someone takes care of getting the tests working.
+# Removal on 2022-06-05.  Bug #842888.
+dev-python/aiosmtpd
+dev-python/django-compressor
+dev-python/django-extensions
+dev-python/django-gravatar2
+dev-python/django-haystack
+dev-python/django-picklefield
+dev-python/django-q
+dev-python/falcon
+dev-python/flufl-testing
+net-mail/django-mailman3
+net-mail/mailman
+net-mail/mailmanclient
+net-mail/mailman-meta
+net-mail/hyperkitty
+net-mail/postorius
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-05-04)
 # Unused java libraries and useless java-virtual. Removal on 2022-06-04
 dev-java/glassfish-jms-api
