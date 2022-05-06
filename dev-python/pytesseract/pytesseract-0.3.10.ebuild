@@ -17,13 +17,13 @@ KEYWORDS="~amd64"
 
 DEPEND=""
 RDEPEND="${DEPEND}
+	dev-python/pillow
 	app-text/tesseract"
 BDEPEND="
 	test? (
 		app-text/tesseract[jpeg,png,tiff,webp]
 		media-libs/leptonica[gif,jpeg2k]
 		app-text/tessdata_fast[l10n_fr]
-		dev-python/pillow
 	)
 "
 
