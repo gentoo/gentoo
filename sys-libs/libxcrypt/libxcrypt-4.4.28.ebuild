@@ -39,10 +39,10 @@ is_cross() {
 
 DEPEND="system? (
 		elibc_glibc? (
-			sys-libs/glibc[-crypt(+)]
-			!sys-libs/glibc[crypt(+)]
+			${CATEGORY}/glibc[-crypt(+)]
+			!${CATEGORY}/glibc[crypt(+)]
 		)
-		!sys-libs/musl
+		!${CATEGORY}/musl
 	)
 "
 RDEPEND="${DEPEND}"
