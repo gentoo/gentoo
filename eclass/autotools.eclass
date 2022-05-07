@@ -283,7 +283,7 @@ _at_uses_pkg() {
 		for macro ; do
 			args+=( -e "^[[:space:]]*${macro}\>" )
 		done
-		egrep -q "${args[@]}" configure.??
+		grep -E -q "${args[@]}" configure.??
 	fi
 }
 _at_uses_autoheader()  { _at_uses_pkg A{C,M}_CONFIG_HEADER{S,}; }
