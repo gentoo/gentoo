@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-05-07)
+# The current version is severely outdated and blocks upgrade
+# of dependencies.  Packaging a new release poses serious problems.
+# Removal on 2022-06-06.  Bug #836282.
+dev-db/pgadmin4
+
 # Hans de Graaff <graaff@gentoo.org> (2022-05-07)
 # Old slot without reverse dependencies. Originally introduced for
 # dev-ruby/gherkin but no longer used there. Upgrade to the new slotted
