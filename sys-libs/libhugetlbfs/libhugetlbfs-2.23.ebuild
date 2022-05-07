@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit toolchain-funcs python-any-r1
 
@@ -47,17 +47,6 @@ src_prepare() {
 	# Tarballs from github don't have the version set.
 	# https://github.com/libhugetlbfs/libhugetlbfs/issues/7
 	[[ -f version ]] || echo "${PV}" > version
-}
-
-src_compile() {
-	tc-export AR
-	emake CC="$(tc-getCC)" libs tools
-}
-
-src_install() {
-	default
-
-	use static-libs || rm -f "${ED}"/usr/$(get_libdir)/*.a
 }
 
 src_test_alloc_one() {
@@ -168,4 +157,15 @@ src_test() {
 	# ---------------------------------------------------------
 
 	return ${rc}
+}
+
+src_compile() {
+	tc-export AR
+	emake CC="$(tc-getCC)" libs tools
+}
+
+src_install() {
+	default
+
+	use static-libs || rm -f "${ED}"/usr/$(get_libdir)/*.a
 }
