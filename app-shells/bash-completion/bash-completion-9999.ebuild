@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit autotools git-r3 python-any-r1 user-info
 
 DESCRIPTION="Programmable Completion for bash"
