@@ -604,7 +604,7 @@ _each_ruby_check_install() {
 	# that's what changes between two implementations (otherwise you'd get false
 	# positives now that Ruby 1.9.2 installs with the same sitedir as 1.8)
 	${scancmd} -qnR "${D}${sitelibdir}" "${D}${sitelibdir/site_ruby/gems}" \
-		| fgrep -v "${libruby_soname}" \
+		| grep -F -v "${libruby_soname}" \
 		| grep -E -v "${RUBY_QA_ALLOWED_LIBS}" \
 		> "${T}"/ruby-ng-${_ruby_implementation}-mislink.log
 
