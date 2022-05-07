@@ -170,9 +170,12 @@ src_install() {
 		&& DOC_CONTENTS+="\\n\\nTo enable screen sharing on GNOME Wayland,
 			edit ~/.config/zoomus.conf and change the value of
 			enableWaylandShare to true."
-	has_version ">=sys-libs/glibc-2.34[clone3(+)]" \
-		&& DOC_CONTENTS+="\\n\\nIf you encounter illegal instruction errors,
-			try disabling the clone3 use flag of sys-libs/glibc."
+	if has_version ">=sys-libs/glibc-2.34[clone3(+)]"; then
+		local w warn=( "If you encounter illegal instruction errors with zoom,"
+			"try disabling the clone3 use flag of sys-libs/glibc." )
+		DOC_CONTENTS+="\\n\\n${warn[*]}"
+		for w in "${warn[@]}"; do ewarn "${w}"; done
+	fi
 	readme.gentoo_create_doc
 }
 
