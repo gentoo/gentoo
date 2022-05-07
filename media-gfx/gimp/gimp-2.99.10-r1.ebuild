@@ -132,7 +132,7 @@ src_prepare() {
 	gnome2_src_prepare  # calls eautoreconf
 
 	sed 's:-DGIMP_protect_DISABLE_DEPRECATED:-DGIMP_DISABLE_DEPRECATED:g' -i configure || die #615144
-	fgrep -q GIMP_DISABLE_DEPRECATED configure || die #615144, self-test
+	grep -F -q GIMP_DISABLE_DEPRECATED configure || die #615144, self-test
 
 	export CC_FOR_BUILD="$(tc-getBUILD_CC)"
 }
