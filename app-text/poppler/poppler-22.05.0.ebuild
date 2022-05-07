@@ -26,7 +26,7 @@ RESTRICT="test"
 
 DEPEND="
 	media-libs/fontconfig
-	media-libs/freetype
+	>=media-libs/freetype-2.8
 	sys-libs/zlib
 	cairo? (
 		dev-libs/glib:2
