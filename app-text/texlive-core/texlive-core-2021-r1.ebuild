@@ -268,7 +268,7 @@ src_compile() {
 	cd "${B}" || die
 	# Mimic updmap --syncwithtrees to enable only fonts installed
 	# Code copied from updmap script
-	for i in `egrep '^(Mixed|Kanji)?Map' "texmf-dist/web2c/updmap.cfg" | sed 's@.* @@'`; do
+	for i in `grep -E '^(Mixed|Kanji)?Map' "texmf-dist/web2c/updmap.cfg" | sed 's@.* @@'`; do
 		texlive-common_is_file_present_in_texmf "${i}" || echo "${i}"
 	done > "${T}/updmap_update"
 	{
