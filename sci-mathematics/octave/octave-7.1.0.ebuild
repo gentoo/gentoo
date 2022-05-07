@@ -206,4 +206,6 @@ src_install() {
 
 	echo "LDPATH=${EPREFIX}/usr/$(get_libdir)/${PN}/${PV}" > 99octave || die
 	doenvd 99octave
+
+	find "${ED}" -type f -name '*.la' -delete || die
 }
