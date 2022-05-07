@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: haskell-cabal.eclass
@@ -288,8 +288,8 @@ cabal-show-brokens() {
 	elog "ghc-pkg check: 'checking for other broken packages:'"
 	# pretty-printer
 	$(ghc-getghcpkg) check 2>&1 \
-		| egrep -v '^Warning: haddock-(html|interfaces): ' \
-		| egrep -v '^Warning: include-dirs: ' \
+		| grep -E -v '^Warning: haddock-(html|interfaces): ' \
+		| grep -E -v '^Warning: include-dirs: ' \
 		| head -n 20
 
 	cabal-die-if-nonempty 'broken' \
