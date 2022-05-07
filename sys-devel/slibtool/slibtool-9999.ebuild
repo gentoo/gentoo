@@ -32,5 +32,6 @@ src_configure() {
 		--compiler="$(tc-getCC)" \
 		--host=${CHOST} \
 		--prefix="${EPREFIX}"/usr \
+		--libdir="$(get_libdir)" \
 			|| die
 }
