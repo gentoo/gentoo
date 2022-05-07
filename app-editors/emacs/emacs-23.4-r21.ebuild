@@ -32,7 +32,7 @@ RDEPEND="acct-group/mail
 		x11-misc/xbitmaps
 		gconf? ( >=gnome-base/gconf-2.26.2 )
 		gif? ( media-libs/giflib:0= )
-		jpeg? ( virtual/jpeg:0= )
+		jpeg? ( media-libs/libjpeg-turbo:0= )
 		png? ( >=media-libs/libpng-1.4:0= )
 		svg? ( >=gnome-base/librsvg-2.0 )
 		tiff? ( media-libs/tiff:0 )
