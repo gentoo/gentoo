@@ -16,6 +16,7 @@
 		between pass and tpm is that the latter is a lot more minimal.
 		Furthermore, tpm is written entirely in POSIX shell.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">nmeum/tpm</remote-id>
 	</upstream>
