@@ -84,8 +84,9 @@ src_prepare() {
 	einfo "Removing bundled libraries..."
 	rm -fr ext/fiddle/libffi-3.2.1 || die
 
-	# Remove tests that are known to fail
+	# Remove tests that are known to fail or require a network connection
 	rm -f test/ruby/test_process.rb test/rubygems/test_gem{,_path_support}.rb || die
+	rm -f test/rinda/test_rinda.rb test/socket/test_tcp.rb test/fiber/test_address_resolve.rb spec/ruby/library/socket/tcpsocket/{initialize,open}_spec.rb|| die
 
 	if use prefix ; then
 		# Fix hardcoded SHELL var in mkmf library
