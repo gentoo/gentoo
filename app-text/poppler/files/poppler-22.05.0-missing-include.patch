@@ -1,0 +1,18 @@
+https://github.com/freedesktop/poppler/commit/5d543e801d304e4cdbe12506f62c340d509f12f3
+
+From: "Tobias C. Berner" <tcberner@gmail.com>
+Date: Thu, 5 May 2022 04:59:42 +0000
+Subject: [PATCH] Fix c_time usage
+
+In 2656d986d01da5aea4f51c75e4deee569ca88064 the time type was switched
+to time_t, without including the necessary ctime header.
+--- a/cpp/poppler-global.h
++++ b/cpp/poppler-global.h
+@@ -25,6 +25,7 @@
+ 
+ #include "poppler_cpp_export.h"
+ 
++#include <ctime>
+ #include <iosfwd>
+ #include <string>
+ #include <vector>
