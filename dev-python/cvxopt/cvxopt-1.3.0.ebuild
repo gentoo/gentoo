@@ -31,6 +31,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}/cvxopt-1.3.0-versioneer-buildfix.patch" )
+
 distutils_enable_sphinx doc/source --no-autodoc
 distutils_enable_tests pytest
 
