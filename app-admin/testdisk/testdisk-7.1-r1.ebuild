@@ -73,13 +73,13 @@ src_configure() {
 	econf "${myconf[@]}"
 
 	# perform safety checks for NTFS, REISERFS and JPEG
-	if use ntfs && ! egrep -q '^#define HAVE_LIBNTFS(3G)? 1$' "${S}"/config.h ; then
+	if use ntfs && ! grep -E -q '^#define HAVE_LIBNTFS(3G)? 1$' "${S}"/config.h ; then
 		die "Failed to find either NTFS or NTFS-3G library."
 	fi
-	if use reiserfs && egrep -q 'undef HAVE_LIBREISERFS\>' "${S}"/config.h ; then
+	if use reiserfs && grep -E -q 'undef HAVE_LIBREISERFS\>' "${S}"/config.h ; then
 		die "Failed to find reiserfs library."
 	fi
-	if use jpeg && egrep -q 'undef HAVE_LIBJPEG\>' "${S}"/config.h ; then
+	if use jpeg && grep -E -q 'undef HAVE_LIBJPEG\>' "${S}"/config.h ; then
 		die "Failed to find jpeg library."
 	fi
 }
