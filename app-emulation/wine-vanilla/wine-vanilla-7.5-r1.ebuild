@@ -400,7 +400,7 @@ multilib_src_configure() {
 		$(use_with gphoto2 gphoto)
 		$(use_with gssapi)
 		$(use_with gstreamer)
-		--without-hal
+		--disable-hal
 		$(use_with kerberos krb5)
 		$(use_with ldap)
 		# TODO: Will bug 685172 still need special handling?
@@ -424,7 +424,7 @@ multilib_src_configure() {
 		$(use_with unwind)
 		$(use_with usb)
 		$(use_with v4l v4l2)
-		$(use_with vkd3d)
+		$(use_enable vkd3d)
 		$(use_with vulkan)
 		$(use_with X x)
 		$(use_with X xfixes)
