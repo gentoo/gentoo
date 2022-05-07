@@ -11,7 +11,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86"
 
-RDEPEND=">=app-editors/xemacs-21.4.20-r5
+RDEPEND=">=app-editors/xemacs-21.5.34
 	app-xemacs/sh-script"
 BDEPEND="${RDEPEND}"
 
