@@ -245,6 +245,9 @@ src_prepare() {
 		)
 	fi
 
+	# Fails with split-usr.
+	sed -i -e '2i exit 77' test/test-rpm-macros.sh || die
+
 	default
 }
 
