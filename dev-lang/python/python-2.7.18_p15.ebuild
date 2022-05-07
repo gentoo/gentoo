@@ -65,6 +65,8 @@ RDEPEND+="
 
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/python.org.asc
 
+QA_PKGCONFIG_VERSION=${PYVER}
+
 pkg_setup() {
 	if use berkdb; then
 		ewarn "'bsddb' module is out-of-date and no longer maintained inside"

@@ -78,6 +78,8 @@ VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/python.org.asc
 # large file tests involve a 2.5G file being copied (duplicated)
 CHECKREQS_DISK_BUILD=5500M
 
+QA_PKGCONFIG_VERSION=${PYVER}
+
 pkg_pretend() {
 	use test && check-reqs_pkg_pretend
 }

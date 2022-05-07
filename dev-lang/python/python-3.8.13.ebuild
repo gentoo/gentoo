@@ -74,6 +74,8 @@ RDEPEND+="
 
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/python.org.asc
 
+QA_PKGCONFIG_VERSION=${PYVER}
+
 src_unpack() {
 	if use verify-sig; then
 		verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.xz{,.asc}
