@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -77,7 +77,7 @@ amanda_variable_setup() {
 	local currentamanda
 
 	# Grab the current settings
-	currentamanda="$(set | egrep "^AMANDA_" | grep -v '^AMANDA_ENV_SETTINGS' | xargs)"
+	currentamanda="$(set | grep -E "^AMANDA_" | grep -v '^AMANDA_ENV_SETTINGS' | xargs)"
 
 	# First we set the defaults
 	AMANDA_GROUP_NAME=amanda
@@ -106,7 +106,7 @@ amanda_variable_setup() {
 	# Now pull in the old stuff
 	if [[ -f ${EROOT}${ENVDIR}/${ENVDFILE} ]]; then
 		# We don't just source it as we don't want everything in there.
-		eval $(egrep "^AMANDA_" "${EROOT}${ENVDIR}/${ENVDFILE}" | grep -v '^AMANDA_ENV_SETTINGS')
+		eval $(grep -E "^AMANDA_" "${EROOT}${ENVDIR}/${ENVDFILE}" | grep -v '^AMANDA_ENV_SETTINGS')
 	fi
 
 	# Re-apply the new settings if any
@@ -152,7 +152,7 @@ src_prepare() {
 	# places for us to work in
 	mkdir -p "${MYFILESDIR}" || die
 	# Now we store the settings we just created
-	set | egrep "^AMANDA_" | grep -v '^AMANDA_ENV_SETTINGS' > "${TMPENVFILE}" || die
+	set | grep -E "^AMANDA_" | grep -v '^AMANDA_ENV_SETTINGS' > "${TMPENVFILE}" || die
 
 	# Prepare our custom files
 	einfo "Building custom configuration files"
