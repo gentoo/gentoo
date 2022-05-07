@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]];then
 	EGIT_BRANCH="master"
 else
 	SRC_URI="https://codeload.github.com/Icinga/${PN}/tar.gz/v${PV} -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2"
