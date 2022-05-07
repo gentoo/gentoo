@@ -1,17 +1,16 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit java-virtuals-2
 
 DESCRIPTION="Virtual for servlet api"
-HOMEPAGE="http://java.sun.com/products/servlet/"
-SRC_URI=""
+HOMEPAGE="https://jcp.org/en/jsr/detail?id=340"
 
 LICENSE="public-domain"
 SLOT="${PV}"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 RDEPEND="|| (
 		dev-java/tomcat-servlet-api:${SLOT}
