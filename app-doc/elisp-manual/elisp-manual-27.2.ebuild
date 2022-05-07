@@ -11,7 +11,7 @@ S="${WORKDIR}/lispref"
 
 LICENSE="FDL-1.3+"
 SLOT="27"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ppc ~riscv x86"
 
 BDEPEND="sys-apps/texinfo"
 
