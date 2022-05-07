@@ -19,7 +19,7 @@ IUSE="odbc"
 
 RDEPEND="
 	>=app-text/htmltidy-5.0.0:=
-	dev-libs/libpcre:=
+	dev-libs/libpcre2:=
 	net-misc/curl
 	sys-libs/readline:=
 	odbc? ( dev-db/unixODBC )"
