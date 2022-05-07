@@ -44,7 +44,7 @@ src_configure() {
 	)
 
 	if use lapack; then
-		myeconfargs+=( --with-lapack="$($(tc-getPKG_CONFIG) --libs lapack)" )
+		myeconfargs+=( --with-lapack="$($(tc-getPKG_CONFIG) --libs blas lapack)" )
 	else
 		myeconfargs+=( --without-lapack )
 	fi
