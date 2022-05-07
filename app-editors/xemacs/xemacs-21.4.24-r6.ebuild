@@ -10,7 +10,7 @@ WANT_AUTOCONF="2.1"
 inherit autotools flag-o-matic toolchain-funcs xdg-utils desktop
 
 DESCRIPTION="highly customizable open source text editor and application development system"
-HOMEPAGE="http://www.xemacs.org/"
+HOMEPAGE="https://www.xemacs.org/"
 SRC_URI="http://ftp.xemacs.org/xemacs-21.4/${P}.tar.gz
 	neXt? ( http://www.malfunction.de/afterstep/files/NeXT_XEmacs.tar.gz )"
 
@@ -40,7 +40,7 @@ RDEPEND="
 	xface? ( media-libs/compface )
 	tiff? ( media-libs/tiff:0 )
 	png? ( >=media-libs/libpng-1.2:0 )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:0= )
 	!amd64? ( freewnn? ( app-i18n/freewnn ) )
 	>=sys-libs/ncurses-5.2:=
 	>=app-eselect/eselect-emacs-1.15"
