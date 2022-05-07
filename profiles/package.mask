@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2022-05-07)
+# Old slot without reverse dependencies. Originally introduced for
+# dev-ruby/gherkin but no longer used there. Upgrade to the new slotted
+# version. Masked for removal in 30 days.
+dev-ruby/c21e:1
+
 # Michał Górny <mgorny@gentoo.org> (2022-05-06)
 # The "better quality" dependencies of Mailman.  These packages were
 # generally fixed by the Python team but they have no reverse
