@@ -122,7 +122,7 @@ pkg_postinst() {
 	ewarn "restart the software manually after the update."
 	ewarn ""
 	ewarn "You can get a list of such software running a command like"
-	ewarn "  lsof / | egrep -i 'del.*libpam\\.so'"
+	ewarn "  lsof / | grep -E -i 'del.*libpam\\.so'"
 	ewarn ""
 	ewarn "Alternatively, simply reboot your system."
 
