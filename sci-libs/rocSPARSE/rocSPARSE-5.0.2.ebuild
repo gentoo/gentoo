@@ -89,7 +89,7 @@ src_prepare() {
 		ebegin "$(tc-getCXX) deps/convert.cpp -o deps/convert"
 		$(tc-getCXX) deps/convert.cpp -o deps/convert
 		eend $?
-		find "${WORKDIR}" -maxdepth 2 -regextype egrep -regex ".*/(.*)/\1\.mtx" -print0 |
+		find "${WORKDIR}" -maxdepth 2 -regextype grep -E -regex ".*/(.*)/\1\.mtx" -print0 |
 			while IFS= read -r -d '' mtxfile; do
 				destination=${BUILD_DIR}/clients/matrices/$(basename -s '.mtx' ${mtxfile}).csr
 				ebegin "Converting ${mtxfile} to ${destination}"
