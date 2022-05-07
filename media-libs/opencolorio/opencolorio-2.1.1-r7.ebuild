@@ -55,6 +55,10 @@ RESTRICT="test"
 
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc12.patch
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
