@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit python-any-r1 readme.gentoo-r1 systemd verify-sig
 
 MY_PV="$(ver_rs 4 -)"
