@@ -1,0 +1,10 @@
+Fix clash when enabling lib32 and lib64 at same time, backport from:
+https://sourceforge.net/p/mingw-w64/mingw-w64/ci/953bcd32ae470c4647e94de8548dda5a8f07d82d/
+(except directly to Makefile.in to avoid autoreconf over this)
+--- a/mingw64/mingw-w64-crt/Makefile.in
++++ b/mingw64/mingw-w64-crt/Makefile.in
+@@ -153,3 +153,3 @@
+ host_triplet = @host@
+-@DLLTOOL_HAS_TEMP_PREFIX_TRUE@am__append_1 = --temp-prefix $$(basename $@ .a)
++@DLLTOOL_HAS_TEMP_PREFIX_TRUE@am__append_1 = --temp-prefix $(basename $@)
+ @DELAY_IMPORT_LIBS_TRUE@am__append_2 = --output-delaylib $@.delayimp.a
