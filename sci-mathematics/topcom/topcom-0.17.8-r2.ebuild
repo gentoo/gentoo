@@ -1,15 +1,18 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
 inherit autotools flag-o-matic
 
+MY_PV=$(ver_rs 0-2 _)
+MY_P="${PN^^}-${MY_PV}"
+
 DESCRIPTION="Computing Triangulations Of Point Configurations and Oriented Matroids"
-HOMEPAGE="http://www.rambau.wm.uni-bayreuth.de/TOPCOM/"
+HOMEPAGE="https://www.wm.uni-bayreuth.de/de/team/rambau_joerg/TOPCOM/index.html"
 SRC_URI="
-	http://www.rambau.wm.uni-bayreuth.de/Software/TOPCOM-${PV}.tar.gz
-	http://www.rambau.wm.uni-bayreuth.de/TOPCOM/TOPCOM-manual.html
+	https://www.wm.uni-bayreuth.de/de/team/rambau_joerg/TOPCOM-Downloads/${MY_P}.tgz
+	https://www.wm.uni-bayreuth.de/de/team/rambau_joerg/TOPCOM-Manual/index.html -> TOPCOM-manual.html
 "
 KEYWORDS="~amd64 ~riscv ~x86"
 SLOT="0"
@@ -21,7 +24,6 @@ DEPEND="
 	>=sci-libs/cddlib-094f
 "
 RDEPEND="${DEPEND}"
-BDEPEND="app-shells/tcsh"
 
 PATCHES=( "${FILESDIR}/${P}-buildsystem.patch" )
 

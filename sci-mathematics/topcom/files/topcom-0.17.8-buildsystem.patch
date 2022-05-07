@@ -1,7 +1,34 @@
-diff -ur a/configure.ac b/configure.ac
---- a/configure.ac	2020-02-15 12:44:55.065569980 +0100
-+++ b/configure.ac	2020-02-15 14:08:21.905767776 +0100
-@@ -9,7 +9,9 @@
+From 27284e6a9cb95dcd274abbe184b21eed8a899904 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 7 May 2022 16:00:45 -0400
+Subject: [PATCH 1/3] Gentoo's existing build system patch
+
+---
+ Makefile.am                |  5 -----
+ configure.ac               |  8 +++-----
+ lib-src-reg/Makefile.am    |  8 ++++----
+ lib-src/Makefile.am        |  8 ++++----
+ src-reg/Makefile.am        | 15 +++++----------
+ src/Makefile.am            | 14 +++++---------
+ wrap-gmp-gmpxx/Makefile.am |  4 ++--
+ 7 files changed, 23 insertions(+), 39 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 5dd0de0..4586f79 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,6 +1 @@
+ SUBDIRS      = wrap-gmp-gmpxx lib-src-reg lib-src src-reg src examples
+-EXTRA_DIST   = external/Makefile
+-EXTRA_DIST  += external/gmp-6.1.1.tar.bz2
+-EXTRA_DIST  += external/cddlib-0.94f-TOPCOM.tar.gz
+-EXTRA_DIST  += external/gmpxx-patch
+-
+diff --git a/configure.ac b/configure.ac
+index 6635345..a10fb97 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -9,7 +9,9 @@ dnl Checks for programs.
  AC_PROG_CC
  AC_PROG_INSTALL
  AC_PROG_CXX
@@ -12,7 +39,7 @@ diff -ur a/configure.ac b/configure.ac
  
  dnl Checks for libraries.
  dnl Replace `main' with a function in -lg:
-@@ -18,10 +20,6 @@
+@@ -18,10 +20,6 @@ dnl Replace `main' with a function in -lstdc:
  dnl AC_CHECK_LIB(stdc, main)
  dnl Replace `main' with a function in -lstdc++:
  dnl AC_CHECK_LIB(stdc++, main)
@@ -23,33 +50,10 @@ diff -ur a/configure.ac b/configure.ac
  dnl Check for soplex:
  AC_CHECK_LIB(soplex, main, , csh -c 'echo soplex not found: --soplex will not work.')
  
-diff -ur a/lib-src/Makefile.am b/lib-src/Makefile.am
---- a/lib-src/Makefile.am	2020-02-15 12:44:55.145570436 +0100
-+++ b/lib-src/Makefile.am	2020-02-15 14:08:44.741903592 +0100
-@@ -1,6 +1,6 @@
--lib_LIBRARIES       = libTOPCOM.a
-+lib_LTLIBRARIES       = libTOPCOM.la
- 
--libTOPCOM_a_SOURCES = \
-+libTOPCOM_la_SOURCES = \
- Admissibles.cc \
- CheckTriang.cc \
- Circuits.cc \
-@@ -90,9 +90,9 @@
- 
- AM_CPPFLAGS     = -I../lib-src-reg
- AM_CPPFLAGS    += -I../wrap-gmp-gmpxx
--AM_CPPFLAGS    += -I../external/include
-+AM_CPPFLAGS    += $(CPPFLAGS)
- AM_CPPFLAGS    += -I$(includedir)
- 
- AM_CPPFLAGS    += -DVERBOSE -DGMPRATIONAL -ftemplate-depth-35
- 
--AM_CXXFLAGS     = -O2 -g
-+AM_CXXFLAGS     = $(CXXFLAGS)
-diff -ur a/lib-src-reg/Makefile.am b/lib-src-reg/Makefile.am
---- a/lib-src-reg/Makefile.am	2020-02-15 12:44:55.165570550 +0100
-+++ b/lib-src-reg/Makefile.am	2020-02-15 14:08:22.921773817 +0100
+diff --git a/lib-src-reg/Makefile.am b/lib-src-reg/Makefile.am
+index fc8b005..d07b8f8 100644
+--- a/lib-src-reg/Makefile.am
++++ b/lib-src-reg/Makefile.am
 @@ -1,6 +1,6 @@
 -lib_LIBRARIES = libCHECKREG.a
 +lib_LTLIBRARIES = libCHECKREG.la
@@ -59,7 +63,7 @@ diff -ur a/lib-src-reg/Makefile.am b/lib-src-reg/Makefile.am
  SPXinterface.cc \
  LPinterface.cc \
  RegularityCheck.cc
-@@ -12,9 +12,9 @@
+@@ -12,9 +12,9 @@ LPinterface.hh
  
  AM_CPPFLAGS     = -I../lib-src 
  AM_CPPFLAGS    += -I../wrap-gmp-gmpxx
@@ -71,47 +75,36 @@ diff -ur a/lib-src-reg/Makefile.am b/lib-src-reg/Makefile.am
  
 -AM_CXXFLAGS     = -O2
 +AM_CXXFLAGS     = $(CXXFLAGS)
-diff -ur a/Makefile.am b/Makefile.am
---- a/Makefile.am	2020-02-15 12:44:55.065569980 +0100
-+++ b/Makefile.am	2020-02-15 14:08:22.929773865 +0100
-@@ -1,6 +1 @@
- SUBDIRS      = wrap-gmp-gmpxx lib-src-reg lib-src src-reg src examples
--EXTRA_DIST   = external/Makefile
--EXTRA_DIST  += external/gmp-6.1.1.tar.bz2
--EXTRA_DIST  += external/cddlib-0.94f-TOPCOM.tar.gz
--EXTRA_DIST  += external/gmpxx-patch
--
-diff -ur a/src/Makefile.am b/src/Makefile.am
---- a/src/Makefile.am	2020-02-15 12:44:55.165570550 +0100
-+++ b/src/Makefile.am	2020-02-15 14:08:22.933773888 +0100
-@@ -83,18 +83,14 @@
- santos_dim4_triang_SOURCES         = santos_dim4_triang.cc
- santos_22_triang_SOURCES           = santos_22_triang.cc
+diff --git a/lib-src/Makefile.am b/lib-src/Makefile.am
+index b2358cc..90b735a 100644
+--- a/lib-src/Makefile.am
++++ b/lib-src/Makefile.am
+@@ -1,6 +1,6 @@
+-lib_LIBRARIES       = libTOPCOM.a
++lib_LTLIBRARIES       = libTOPCOM.la
  
--LDADD           = ../lib-src/libTOPCOM.a \
--                  ../lib-src-reg/libCHECKREG.a \
--                  ../external/lib/libcddgmp.a \
--                  ../external/lib/libgmpxx.a \
--                  ../external/lib/libgmp.a
--
- AM_CPPFLAGS     = -I../lib-src
- AM_CPPFLAGS    += -I../lib-src-reg
-+AM_CPPFLAGS    += -L../lib-src-reg
-+AM_CPPFLAGS    += -L../lib-src
+-libTOPCOM_a_SOURCES = \
++libTOPCOM_la_SOURCES = \
+ Admissibles.cc \
+ CheckTriang.cc \
+ Circuits.cc \
+@@ -90,9 +90,9 @@ VirtualChiro.hh
+ 
+ AM_CPPFLAGS     = -I../lib-src-reg
  AM_CPPFLAGS    += -I../wrap-gmp-gmpxx
 -AM_CPPFLAGS    += -I../external/include
 +AM_CPPFLAGS    += $(CPPFLAGS)
  AM_CPPFLAGS    += -I$(includedir)
  
--AM_CPPFLAGS    += -DVERBOSE -DGMPRATIONAL -ftemplate-depth-30
-+AM_CPPFLAGS    += -DVERBOSE -DGMPRATIONAL -ftemplate-depth-30 -lTOPCOM -lCHECKREG
+ AM_CPPFLAGS    += -DVERBOSE -DGMPRATIONAL -ftemplate-depth-35
  
--AM_CXXFLAGS     = -O2
-+AM_CXXFLAGS     = $(CXXFLAGS) -L../lib-src-reg -L../lib-src -lTOPCOM -lCHECKREG
-diff -ur a/src-reg/Makefile.am b/src-reg/Makefile.am
---- a/src-reg/Makefile.am	2020-02-15 12:44:55.165570550 +0100
-+++ b/src-reg/Makefile.am	2020-02-15 14:08:22.933773888 +0100
-@@ -2,20 +2,15 @@
+-AM_CXXFLAGS     = -O2 -g
++AM_CXXFLAGS     = $(CXXFLAGS)
+diff --git a/src-reg/Makefile.am b/src-reg/Makefile.am
+index a351951..38f8f9f 100644
+--- a/src-reg/Makefile.am
++++ b/src-reg/Makefile.am
+@@ -2,20 +2,15 @@ bin_PROGRAMS = checkregularity
  
  checkregularity_SOURCES = checkregularity.cc
  
@@ -137,10 +130,39 @@ diff -ur a/src-reg/Makefile.am b/src-reg/Makefile.am
 +AM_CPPFLAGS    += -DVERBOSE -DGMPRATIONAL -ftemplate-depth-30 -lTOPCOM -lCHECKREG
  
 +AM_CXXFLAGS     = $(CXXFLAGS) -L../lib-src-reg -L../lib-src -lTOPCOM -lCHECKREG
-diff -ur a/wrap-gmp-gmpxx/Makefile.am b/wrap-gmp-gmpxx/Makefile.am
---- a/wrap-gmp-gmpxx/Makefile.am	2020-02-15 12:44:55.165570550 +0100
-+++ b/wrap-gmp-gmpxx/Makefile.am	2020-02-15 14:08:23.105774912 +0100
-@@ -3,6 +3,6 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index ff7e574..63a76fc 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -83,18 +83,14 @@ santos_triang_SOURCES              = santos_triang.cc
+ santos_dim4_triang_SOURCES         = santos_dim4_triang.cc
+ santos_22_triang_SOURCES           = santos_22_triang.cc
+ 
+-LDADD           = ../lib-src/libTOPCOM.a \
+-                  ../lib-src-reg/libCHECKREG.a \
+-                  ../external/lib/libcddgmp.a \
+-                  ../external/lib/libgmpxx.a \
+-                  ../external/lib/libgmp.a
+-
+ AM_CPPFLAGS     = -I../lib-src
+ AM_CPPFLAGS    += -I../lib-src-reg
++AM_CPPFLAGS    += -L../lib-src-reg
++AM_CPPFLAGS    += -L../lib-src
+ AM_CPPFLAGS    += -I../wrap-gmp-gmpxx
+-AM_CPPFLAGS    += -I../external/include
++AM_CPPFLAGS    += $(CPPFLAGS)
+ AM_CPPFLAGS    += -I$(includedir)
+ 
+-AM_CPPFLAGS    += -DVERBOSE -DGMPRATIONAL -ftemplate-depth-30
++AM_CPPFLAGS    += -DVERBOSE -DGMPRATIONAL -ftemplate-depth-30 -lTOPCOM -lCHECKREG
+ 
+-AM_CXXFLAGS     = -O2
++AM_CXXFLAGS     = $(CXXFLAGS) -L../lib-src-reg -L../lib-src -lTOPCOM -lCHECKREG
+diff --git a/wrap-gmp-gmpxx/Makefile.am b/wrap-gmp-gmpxx/Makefile.am
+index b9ef8db..4c3f675 100644
+--- a/wrap-gmp-gmpxx/Makefile.am
++++ b/wrap-gmp-gmpxx/Makefile.am
+@@ -3,6 +3,6 @@ Integer.h \
  Rational.h
  
  AM_CPPFLAGS        = -I../external/include
@@ -149,3 +171,87 @@ diff -ur a/wrap-gmp-gmpxx/Makefile.am b/wrap-gmp-gmpxx/Makefile.am
  
 -AM_CXXFLAGS     = -O2
 +AM_CXXFLAGS     = $(CXXFLAGS)
+-- 
+2.35.1
+
+From 1980a3cba20ac549f488d7e00a01d3eee61485be Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 7 May 2022 16:14:57 -0400
+Subject: [PATCH 2/3] configure.ac: don't try to invoke csh to print an
+ informational message.
+
+On systems that don't have csh, running "csh -c 'echo...'" will result
+in an error; for example,
+
+  ./configure: line 4102: csh: command not found
+
+Autoconf already provides macros to print the status and results of
+various checks, so here we switch this particular invocation to make
+use of AC_MSG_CHECKING and AC_MSG_RESULT.
+
+While we're at it, the old-fashioned AC_CHECK_LIB was updated to use
+the newer AC_SEARCH_LIBS.
+---
+ configure.ac | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index a10fb97..0b2c0aa 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -21,7 +21,11 @@ dnl AC_CHECK_LIB(stdc, main)
+ dnl Replace `main' with a function in -lstdc++:
+ dnl AC_CHECK_LIB(stdc++, main)
+ dnl Check for soplex:
+-AC_CHECK_LIB(soplex, main, , csh -c 'echo soplex not found: --soplex will not work.')
++AC_MSG_CHECKING([for soplex])
++AC_SEARCH_LIBS([main],
++               [soplex],
++               [AC_MSG_RESULT([success])],
++               [AC_MSG_RESULT([failed, --soplex will not work])])
+ 
+ dnl Checks for header files.
+ AC_HEADER_STDC
+-- 
+2.35.1
+
+From 041f20f5712262ab99bfdfe29e20355d5e4fbf5d Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 7 May 2022 16:19:50 -0400
+Subject: [PATCH 3/3] configure.ac: run autoupdate.
+
+Autoconf-2.7x emits a few warnings while processing configure.ac. This
+commit is the result of running "autoupdate" to fix them.
+---
+ configure.ac | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 0b2c0aa..cddaef6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,5 +1,5 @@
+ dnl Process this file with autoconf to produce a configure script.
+-AC_INIT(TOPCOM, 0.17.8)
++AC_INIT([TOPCOM],[0.17.8])
+ AC_CONFIG_SRCDIR(.)
+ 
+ dnl Init automake.
+@@ -27,12 +27,9 @@ AC_SEARCH_LIBS([main],
+                [AC_MSG_RESULT([success])],
+                [AC_MSG_RESULT([failed, --soplex will not work])])
+ 
+-dnl Checks for header files.
+-AC_HEADER_STDC
+ 
+ dnl Checks for typedefs, structures, and compiler characteristics.
+ AC_C_CONST
+ 
+-dnl Checks for library functions.
+-
+-AC_OUTPUT(wrap-gmp-gmpxx/Makefile lib-src/Makefile lib-src-reg/Makefile src/Makefile src-reg/Makefile examples/Makefile Makefile)
++AC_CONFIG_FILES([wrap-gmp-gmpxx/Makefile lib-src/Makefile lib-src-reg/Makefile src/Makefile src-reg/Makefile examples/Makefile Makefile])
++AC_OUTPUT
+-- 
+2.35.1
+
