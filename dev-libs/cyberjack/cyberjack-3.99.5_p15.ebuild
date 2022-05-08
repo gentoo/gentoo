@@ -88,3 +88,11 @@ src_install() {
 
 	find "${D}" -name '*.la' -delete || die
 }
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
+}
