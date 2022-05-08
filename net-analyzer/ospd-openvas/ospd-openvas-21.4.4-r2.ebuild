@@ -17,7 +17,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 DEPEND="
-	acct-group/gvm
 	acct-user/gvm
 	dev-python/defusedxml[${PYTHON_USEDEP}]
 	dev-python/deprecated[${PYTHON_USEDEP}]
@@ -35,6 +34,13 @@ RDEPEND="
 
 distutils_enable_tests unittest
 
+src_prepare() {
+	default
+
+	# https://github.com/greenbone/ospd-openvas/pull/649
+	sed -i '/^Group=gvm/d' config/ospd-openvas.service || die
+}
+
 python_compile() {
 	if use doc; then
 		bash "${S}"/docs/generate || die
@@ -49,12 +55,11 @@ python_install() {
 	dodoc "${FILESDIR}"/redis.conf.example
 
 	insinto /etc/openvas
-	doins "${FILESDIR}"/ospd.conf
-
+	doins config/${PN}.conf
 	fowners -R gvm:gvm /etc/openvas
 
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
 	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
 
-	systemd_dounit "${FILESDIR}/${PN}.service"
+	systemd_dounit config/${PN}.service
 }
