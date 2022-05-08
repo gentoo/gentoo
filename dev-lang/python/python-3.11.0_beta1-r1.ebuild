@@ -79,8 +79,7 @@ BDEPEND="
 RDEPEND+="
 	!build? ( app-misc/mime-types )
 "
-# TODO: enable this after adding eclass support
-if [[ ${PV} != *_alpha* ]] && false; then
+if [[ ${PV} != *_alpha* ]]; then
 	RDEPEND+="
 		dev-lang/python-exec[python_targets_python${PYVER/./_}(-)]
 	"
