@@ -60,6 +60,33 @@ qt5_get_plugindir() {
 	echo $(qt5_get_libdir)/qt5/plugins
 }
 
+# @FUNCTION: qt5_get_qmake_args
+# @DESCRIPTION:
+# Echoes a multi-line string containing arguments to pass to qmake.
+qt5_get_qmake_args() {
+	cat <<-EOF
+		QMAKE_AR="$(tc-getAR) cqs"
+		QMAKE_CC="$(tc-getCC)"
+		QMAKE_LINK_C="$(tc-getCC)"
+		QMAKE_LINK_C_SHLIB="$(tc-getCC)"
+		QMAKE_CXX="$(tc-getCXX)"
+		QMAKE_LINK="$(tc-getCXX)"
+		QMAKE_LINK_SHLIB="$(tc-getCXX)"
+		QMAKE_OBJCOPY="$(tc-getOBJCOPY)"
+		QMAKE_RANLIB=
+		QMAKE_STRIP=
+		QMAKE_CFLAGS="${CFLAGS}"
+		QMAKE_CFLAGS_RELEASE=
+		QMAKE_CFLAGS_DEBUG=
+		QMAKE_CXXFLAGS="${CXXFLAGS}"
+		QMAKE_CXXFLAGS_RELEASE=
+		QMAKE_CXXFLAGS_DEBUG=
+		QMAKE_LFLAGS="${LDFLAGS}"
+		QMAKE_LFLAGS_RELEASE=
+		QMAKE_LFLAGS_DEBUG=
+	EOF
+}
+
 # @FUNCTION: eqmake5
 # @USAGE: [arguments for qmake]
 # @DESCRIPTION:
