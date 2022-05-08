@@ -69,10 +69,6 @@ sys-fs/multipath-tools rbd
 # requires sys-apps/dbus-broker, which is keyworded here.
 sys-apps/systemd -hostnamed-fallback
 
-# Yongxinag Liang <tanekliang@gmail.com> (2021-12-30)
-# untested.
-net-misc/vinagre spice
-
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2012-12-25)
 # Requires dev-qt/qtwebengine
 sci-astronomy/stellarium webengine

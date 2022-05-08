@@ -422,10 +422,6 @@ net-misc/modemmanager mbim
 # Various deps not ported to ia64.
 dev-python/ipython nbconvert notebook
 
-# Pacho Ramos <pacho@gentoo.org> (2014-03-15)
-# Missing keywords, bug #504672
->=net-misc/vinagre-3.10 rdp
-
 # Pacho Ramos <pacho@gentoo.org> (2014-02-23)
 # Needed dependencies cannot be installed on ia64, bug #498638
 dev-util/dbus-test-runner test

@@ -465,10 +465,6 @@ sci-visualization/gnuplot libcerf
 # Missing keywords, bug #507490
 net-misc/modemmanager mbim
 
-# Pacho Ramos <pacho@gentoo.org> (2014-03-15)
-# Missing keywords, bug #504672
->=net-misc/vinagre-3.10 rdp
-
 # Pacho Ramos <pacho@gentoo.org> (2014-02-22)
 # Missing keywords, bug #495250
 >=gnome-base/gnome-extra-apps-3.10 tracker
