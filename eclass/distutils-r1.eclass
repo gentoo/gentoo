@@ -851,6 +851,97 @@ _distutils-r1_check_all_phase_mismatch() {
 	fi
 }
 
+# @FUNCTION: _distutils-r1_print_package_versions
+# @INTERNAL
+# @DESCRIPTION:
+# Print the version of the relevant build system packages to aid
+# debugging.
+_distutils-r1_print_package_versions() {
+	local packages=()
+
+	if [[ ${DISTUTILS_USE_PEP517} ]]; then
+		packages+=(
+			dev-python/gpep517
+			dev-python/installer
+		)
+		case ${DISTUTILS_USE_PEP517} in
+			flit)
+				packages+=(
+					dev-python/flit_core
+				)
+				;;
+			flit_scm)
+				packages+=(
+					dev-python/flit_core
+					dev-python/flit_scm
+					dev-python/setuptools_scm
+				)
+				;;
+			hatchling)
+				packages+=(
+					dev-python/hatchling
+				)
+				;;
+			jupyter)
+				packages+=(
+					dev-python/jupyter_packaging
+					dev-python/setuptools
+					dev-python/setuptools_scm
+					dev-python/wheel
+				)
+				;;
+			maturin)
+				packages+=(
+					dev-util/maturin
+				)
+				;;
+			pbr)
+				packages+=(
+					dev-python/pbr
+					dev-python/setuptools
+					dev-python/wheel
+				)
+				;;
+			pdm)
+				packages+=(
+					dev-python/pdm-pep517
+					dev-python/setuptools
+				)
+				;;
+			poetry)
+				packages+=(
+					dev-python/poetry-core
+				)
+				;;
+			setuptools)
+				packages+=(
+					dev-python/setuptools
+					dev-python/setuptools_scm
+					dev-python/wheel
+				)
+				;;
+		esac
+	else
+		case ${DISTUTILS_USE_SETUPTOOLS} in
+			manual|no)
+				return
+				;;
+			*)
+				packages+=(
+					dev-python/setuptools
+				)
+				;;
+		esac
+	fi
+
+	local pkg
+	einfo "Build system packages:"
+	for pkg in "${packages[@]}"; do
+		local installed=$(best_version "${pkg}")
+		einfo "  $(printf '%-30s' "${pkg}"): ${installed#${pkg}-}"
+	done
+}
+
 # @FUNCTION: distutils-r1_python_prepare_all
 # @DESCRIPTION:
 # The default python_prepare_all(). It applies the patches from PATCHES
@@ -894,6 +985,7 @@ distutils-r1_python_prepare_all() {
 		python_copy_sources
 	fi
 
+	_distutils-r1_print_package_versions
 	_DISTUTILS_DEFAULT_CALLED=1
 }
 
