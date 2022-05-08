@@ -563,15 +563,6 @@ app-office/texmacs
 ~net-libs/libnsl-0
 ~net-libs/rpcsvc-proto-0
 
-# James Le Cuirot <chewi@gentoo.org> (2017-12-17)
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-10-16)
-# Java 11+ is not yet fully supported on Gentoo. Packages cannot depend
-# on it so these virtuals are not yet required. If you wish to use
-# Java 11+ then install openjdk-(jdk|jre)-bin directly.
-# bug #697014
-virtual/jdk:17
-virtual/jre:17
-
 # Nicolas Bock <nicolasbock@gentoo.org> (2017-10-31)
 # There are multiple unresolved upstream issues with >=jabref-bin-4.0 (#636036).
 # If you still would like to use this version, please report any issues to
