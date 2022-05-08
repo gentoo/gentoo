@@ -355,7 +355,6 @@ x11-misc/gcolor2
 # Dead package upstream. No reverse dependencies.
 # Removal on 2022-05-10
 net-misc/vinagre
-net-misc/vino
 
 # David Seifert <soap@gentoo.org> (2022-04-10)
 # Unmaintained, last release upstream 16 years ago, Fedora dropped it,
