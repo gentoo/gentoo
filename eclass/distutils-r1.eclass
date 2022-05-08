@@ -985,7 +985,10 @@ distutils-r1_python_prepare_all() {
 		python_copy_sources
 	fi
 
+	python_export_utf8_locale
+	[[ ${EAPI} == 6 ]] && xdg_environment_reset # Bug 577704
 	_distutils-r1_print_package_versions
+
 	_DISTUTILS_DEFAULT_CALLED=1
 }
 
@@ -1714,9 +1717,6 @@ distutils-r1_src_prepare() {
 distutils-r1_src_configure() {
 	debug-print-function ${FUNCNAME} "${@}"
 	local ret=0
-
-	python_export_utf8_locale
-	[[ ${EAPI} == 6 ]] && xdg_environment_reset # Bug 577704
 
 	if declare -f python_configure >/dev/null; then
 		_distutils-r1_run_foreach_impl python_configure || ret=${?}
