@@ -96,6 +96,41 @@ for minor in 6 7 8 9 10 11; do
 	fi
 	test_var PYTHON_PKG_DEP "python3_${minor}" "*dev-lang/python*:3.${minor}"
 	test_var PYTHON_SCRIPTDIR "python3_${minor}" "/usr/lib/python-exec/python3.${minor}"
+
+	tbegin "Testing that python3_${minor} is present in an impl array"
+	has "python3_${minor}" "${_PYTHON_ALL_IMPLS[@]}"
+	has_in_all=${?}
+	has "python3_${minor}" "${_PYTHON_HISTORICAL_IMPLS[@]}"
+	has_in_historical=${?}
+	if [[ ${has_in_all} -eq ${has_in_historical} ]]; then
+		if [[ ${has_in_all} -eq 1 ]]; then
+			eerror "python3_${minor} not found in _PYTHON_ALL_IMPLS or _PYTHON_HISTORICAL_IMPLS"
+		else
+			eerror "python3_${minor} listed both in _PYTHON_ALL_IMPLS and _PYTHON_HISTORICAL_IMPLS"
+		fi
+	fi
+	tend ${?}
+
+	tbegin "Testing that PYTHON_COMPAT accepts the impl"
+	(
+		# NB: we add pypy3 as we need to always have at least one
+		# non-historical impl
+		PYTHON_COMPAT=( pypy3 "python3_${minor}" )
+		_python_set_impls
+	)
+	tend ${?}
+
+	# these tests apply to py3.8+ only
+	if [[ ${minor} -ge 8 ]]; then
+		tbegin "Testing that _python_verify_patterns accepts stdlib version"
+		( _python_verify_patterns "3.${minor}" )
+		tend ${?}
+
+		tbegin "Testing _python_impl_matches on stdlib version"
+		_python_impl_matches "python3_${minor}" "3.${minor}"
+		tend ${?}
+	fi
+
 	eoutdent
 done
 
