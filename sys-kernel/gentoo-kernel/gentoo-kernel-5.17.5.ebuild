@@ -42,7 +42,9 @@ S=${WORKDIR}/${MY_P}
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="debug hardened"
-REQUIRED_USE="arm? ( savedconfig )"
+REQUIRED_USE="arm? ( savedconfig )
+	hppa? ( savedconfig )
+	riscv? ( savedconfig )"
 
 RDEPEND="
 	!sys-kernel/gentoo-kernel-bin:${SLOT}
@@ -92,6 +94,9 @@ src_prepare() {
 		ppc64)
 			cp "${DISTDIR}/kernel-ppc64le-fedora.config.${CONFIG_VER}" .config || die
 			biendian=true
+			;;
+		riscv)
+			return
 			;;
 		x86)
 			cp "${DISTDIR}/kernel-i686-fedora.config.${CONFIG_VER}" .config || die
