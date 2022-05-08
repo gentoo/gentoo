@@ -1,0 +1,39 @@
+From 6536bf3ceb05e4d32f985a896354b98310c49b5b Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sat, 7 May 2022 14:04:08 -0700
+Subject: [PATCH 2/2] resid: Fix build with slibtool
+
+---
+ resid/Makefile.am | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/resid/Makefile.am b/resid/Makefile.am
+index bbec226..0a32647 100644
+--- a/resid/Makefile.am
++++ b/resid/Makefile.am
+@@ -7,20 +7,15 @@ if INSTALL_RESID
+ lib_LTLIBRARIES = libresid.la
+ pkginclude_HEADERS = $(resid_headers)
+ else
+-noinst_LTLIBRARIES = libresidc.la
++noinst_LTLIBRARIES = libresid.la
+ noinst_HEADERS = $(resid_headers)
+-
+-all-local:
+-	ln -sf libresidc.la libresid.la
+-
+ endif
+ 
+ ## Make sure these will be cleaned even when they're not built by
+ ## default.
+-CLEANFILES = libresid.la libresidc.la
++CLEANFILES = libresid.la
+ 
+ libresid_la_SOURCES = $(resid_sources)
+-libresidc_la_SOURCES = $(resid_sources)
+ 
+ BUILT_SOURCES = $(noinst_DATA:.dat=.cc)
+ 
+-- 
+2.35.1
+
