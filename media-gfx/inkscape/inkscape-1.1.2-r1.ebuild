@@ -73,7 +73,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
 	)
 	jemalloc? ( dev-libs/jemalloc )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	readline? ( sys-libs/readline:= )
 	spell? ( app-text/gspell )
 	visio? (
