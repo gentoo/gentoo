@@ -9,6 +9,7 @@
 
 # Things without support yet
 java
+llvm
 valgrind
 
 # Temporarily masked during initial keywording
