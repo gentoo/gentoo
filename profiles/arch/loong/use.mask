@@ -34,5 +34,3 @@ sctp
 systemtap
 tk
 tpm
-X
-xkb
