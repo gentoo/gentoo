@@ -32,6 +32,7 @@ REQUIRED_USE="
 BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	>=dev-libs/libpcre-8.42
+	activerecord? ( !app-arch/arc )
 	mysql? ( !mariadb? ( dev-db/mysql-connector-c:0= )
 		 mariadb? ( dev-db/mariadb-connector-c:0= ) )
 	odbc? ( iodbc? ( dev-db/libiodbc )
