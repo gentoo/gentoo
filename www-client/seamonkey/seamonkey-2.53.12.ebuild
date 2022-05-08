@@ -116,7 +116,7 @@ COMMON_DEPEND="
 	system-libevent? ( >=dev-libs/libevent-2.0:0= )
 	system-libvpx? ( >=media-libs/libvpx-1.8.0:0=[postproc] )
 	system-png? ( >=media-libs/libpng-1.6.31:0=[apng] )
-	system-sqlite? ( >=dev-db/sqlite-3.36.0:3[secure-delete,debug=] )
+	system-sqlite? ( >=dev-db/sqlite-3.38.2:3[secure-delete,debug=] )
 	wifi? (
 		kernel_linux? (
 			>=dev-libs/dbus-glib-0.72
