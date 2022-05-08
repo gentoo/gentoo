@@ -58,7 +58,7 @@ GL_DEPS="
 
 	>=media-libs/graphene-1.4.0[${MULTILIB_USEDEP}]
 	media-libs/libpng:0[${MULTILIB_USEDEP}]
-	virtual/jpeg:0[${MULTILIB_USEDEP}]
+	media-libs/libjpeg-turbo:0=[${MULTILIB_USEDEP}]
 " # graphene for optional gltransformation and glvideoflip elements and more GLSL Uniforms support in glshader; libpng/jpeg for gloverlay element
 # >=media-libs/graphene-1.4.0[${MULTILIB_USEDEP}]
 
