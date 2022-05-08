@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-install.eclass
@@ -167,6 +167,9 @@ kernel-install_get_qemu_arch() {
 			;;
 		ppc64)
 			echo ppc64
+			;;
+		riscv)
+			echo riscv
 			;;
 		*)
 			die "${FUNCNAME}: unsupported ARCH=${ARCH}"
