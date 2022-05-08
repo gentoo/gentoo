@@ -506,16 +506,6 @@ dev-db/mysql client-libs
 # Can be unmasked in prefix/darwin/macos profiles. Bug #637482
 media-video/ffmpeg appkit
 
-# James Le Cuirot <chewi@gentoo.org> (2017-12-17)
-# Georgy Yakovlev <gyakovlev@gentoo.org (2021-10-08)
-# Java 9+ is not yet fully supported on Gentoo. Having a masked
-# gentoo-vm flag allows us to provide it without it breaking Gentoo
-# packages. Those who wish to experiment with it as a fully recognised
-# Gentoo JVM can unmask the flag.
-dev-java/openjdk-jre-bin:17 gentoo-vm
-dev-java/openjdk-bin:17 gentoo-vm
-dev-java/openjdk:17 gentoo-vm
-
 # Andreas K. Huettel <dilfridge@gentoo.org> (2017-09-09)
 # Potentially destructive. Use it only if you know what you're doing.
 sys-libs/glibc vanilla
