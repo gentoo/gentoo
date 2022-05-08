@@ -10,7 +10,8 @@ DESCRIPTION="Passenger makes deployment of Ruby on Rails applications a breeze"
 HOMEPAGE="https://www.phusionpassenger.com/"
 SRC_URI="https://s3.amazonaws.com/phusion-passenger/releases/${P}.tar.gz"
 
-LICENSE="GPL-2"
+# Passenger is licensed MIT, but vendored code licenses should also be taken into account.
+LICENSE="Boost-1.0 MIT BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="apache2 debug"
