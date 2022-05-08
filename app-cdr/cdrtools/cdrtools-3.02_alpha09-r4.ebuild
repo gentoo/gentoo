@@ -84,6 +84,11 @@ src_prepare() {
 		$(find ./ -type f -exec grep -l '^include.\+rules\.lib' '{}' '+') \
 		|| die "sed rules"
 
+	# Don't quote $(MAKE)
+	sed -i -e 's|"$(MAKE)"|$(MAKE)|' \
+		$(find ./RULES -type f -exec grep -l '"$(MAKE)"' '{}' '+') \
+		|| die "sed RULES/"
+
 	# Enable verbose build.
 	sed -i -e '/@echo.*==>.*;/s:@echo[^;]*;:&set -x;:' \
 		RULES/*.rul RULES/rules.prg RULES/rules.inc \
