@@ -96,4 +96,6 @@ src_install() {
 
 	echo "LDPATH=/usr/$(get_libdir)/hamlib" > "${T}"/73hamlib
 	doenvd "${T}"/73hamlib
+
+	find "${ED}" -name '*.la' -delete || die
 }
