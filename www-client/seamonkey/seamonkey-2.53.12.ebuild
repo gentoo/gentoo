@@ -393,8 +393,28 @@ src_configure() {
 	# use startup-cache for faster startup time
 	mozconfig_annotate '' --enable-startupcache
 
-	# Broken on some arches
-	mozconfig_annotate '' --disable-elf-hack
+	# Elf hack should be enabled by default on architectures that support it.
+	# On archs that don't support it, it should not be enabled by default.
+	# www-client/firefox says building with clang breaks elf hack on archs that
+	# support it, so they disable that. We assume this is the same for www-client/seamonkey.
+	# The code below is copied over from www-client/firefox.
+	if tc-is-clang ; then
+		# https://bugzilla.mozilla.org/show_bug.cgi?id=1482204
+		# https://bugzilla.mozilla.org/show_bug.cgi?id=1483822
+		# toolkit/moz.configure Elfhack section: target.cpu in ('arm', 'x86', 'x86_64')
+		local disable_elf_hack=
+		if use amd64 ; then
+			disable_elf_hack=yes
+		elif use x86 ; then
+			disable_elf_hack=yes
+		elif use arm ; then
+			disable_elf_hack=yes
+		fi
+
+		if [[ -n ${disable_elf_hack} ]] ; then
+			mozconfig_annotate 'elf-hack is broken when using Clang' --disable-elf-hack
+		fi
+	fi
 
 	# Disabled by default. See bug 836319 , comment 17.
 	if ! use webrtc ; then
