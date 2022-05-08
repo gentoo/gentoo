@@ -419,7 +419,11 @@ src_prepare() {
 
 	# Remove -Werror
 	find . -type f \( -name Makefile -o -name "*.mk" \) \
-		-exec sed -i "s/-Werror //g" {} + || die
+		 -exec sed -i \
+		 -e 's/-Werror //g' \
+		 -e '/^CFLAGS *+= -Werror$/d' \
+		 -e 's/, "-Werror"//' \
+		 {} + || die
 
 	default
 }
