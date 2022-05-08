@@ -3,11 +3,16 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..10} )
+
 inherit distutils-r1
 
 DESCRIPTION="simple, lightweight library for creating and processing background jobs"
-HOMEPAGE="https://python-rq.org https://github.com/rq/rq"
+HOMEPAGE="
+	https://python-rq.org/
+	https://github.com/rq/rq/
+"
 SRC_URI="https://github.com/rq/rq/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
@@ -27,7 +32,7 @@ BDEPEND="
 	)
 "
 
-distutils_enable_tests --install pytest
+distutils_enable_tests pytest
 
 src_test() {
 	local redis_pid="${T}"/redis.pid
