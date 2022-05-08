@@ -64,6 +64,8 @@ tmpfile=$(mktemp)
 
 inherit python-utils-r1
 
+ebegin "Testing python2.7"
+eindent
 test_var EPYTHON python2_7 python2.7
 test_var PYTHON python2_7 /usr/bin/python2.7
 if [[ -x /usr/bin/python2.7 ]]; then
@@ -76,91 +78,29 @@ if [[ -x /usr/bin/python2.7 ]]; then
 fi
 test_var PYTHON_PKG_DEP python2_7 '*dev-lang/python*:2.7'
 test_var PYTHON_SCRIPTDIR python2_7 /usr/lib/python-exec/python2.7
+eoutdent
 
-test_var EPYTHON python3_6 python3.6
-test_var PYTHON python3_6 /usr/bin/python3.6
-if [[ -x /usr/bin/python3.6 ]]; then
-	abiflags=$(/usr/bin/python3.6 -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS"))')
-	test_var PYTHON_SITEDIR python3_6 "/usr/lib*/python3.6/site-packages"
-	test_var PYTHON_INCLUDEDIR python3_6 "/usr/include/python3.6${abiflags}"
-	test_var PYTHON_LIBPATH python3_6 "/usr/lib*/libpython3.6${abiflags}$(get_libname)"
-	test_var PYTHON_CONFIG python3_6 "/usr/bin/python3.6${abiflags}-config"
-	test_var PYTHON_CFLAGS python3_6 "*-I/usr/include/python3.6*"
-	test_var PYTHON_LIBS python3_6 "*-lpython3.6*"
-fi
-test_var PYTHON_PKG_DEP python3_6 '*dev-lang/python*:3.6'
-test_var PYTHON_SCRIPTDIR python3_6 /usr/lib/python-exec/python3.6
+for minor in 6 7 8 9 10 11; do
+	ebegin "Testing python3.${minor}"
+	eindent
+	test_var EPYTHON "python3_${minor}" "python3.${minor}"
+	test_var PYTHON "python3_${minor}" "/usr/bin/python3.${minor}"
+	if [[ -x /usr/bin/python3.${minor} ]]; then
+		abiflags=$(/usr/bin/python3.${minor} -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS"))')
+		test_var PYTHON_SITEDIR "python3_${minor}" "/usr/lib*/python3.${minor}/site-packages"
+		test_var PYTHON_INCLUDEDIR "python3_${minor}" "/usr/include/python3.${minor}${abiflags}"
+		test_var PYTHON_LIBPATH "python3_${minor}" "/usr/lib*/libpython3.${minor}${abiflags}$(get_libname)"
+		test_var PYTHON_CONFIG "python3_${minor}" "/usr/bin/python3.${minor}${abiflags}-config"
+		test_var PYTHON_CFLAGS "python3_${minor}" "*-I/usr/include/python3.${minor}*"
+		test_var PYTHON_LIBS "python3_${minor}" "*-lpython3.${minor}*"
+	fi
+	test_var PYTHON_PKG_DEP "python3_${minor}" "*dev-lang/python*:3.${minor}"
+	test_var PYTHON_SCRIPTDIR "python3_${minor}" "/usr/lib/python-exec/python3.${minor}"
+	eoutdent
+done
 
-test_var EPYTHON python3_7 python3.7
-test_var PYTHON python3_7 /usr/bin/python3.7
-if [[ -x /usr/bin/python3.7 ]]; then
-	abiflags=$(/usr/bin/python3.7 -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS"))')
-	test_var PYTHON_SITEDIR python3_7 "/usr/lib/python3.7/site-packages"
-	test_var PYTHON_INCLUDEDIR python3_7 "/usr/include/python3.7${abiflags}"
-	test_var PYTHON_LIBPATH python3_7 "/usr/lib*/libpython3.7${abiflags}$(get_libname)"
-	test_var PYTHON_CONFIG python3_7 "/usr/bin/python3.7${abiflags}-config"
-	test_var PYTHON_CFLAGS python3_7 "*-I/usr/include/python3.7*"
-	test_var PYTHON_LIBS python3_7 "*-lpython3.7*"
-fi
-test_var PYTHON_PKG_DEP python3_7 '*dev-lang/python*:3.7'
-test_var PYTHON_SCRIPTDIR python3_7 /usr/lib/python-exec/python3.7
-
-test_var EPYTHON python3_8 python3.8
-test_var PYTHON python3_8 /usr/bin/python3.8
-if [[ -x /usr/bin/python3.8 ]]; then
-	abiflags=$(/usr/bin/python3.8 -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS"))')
-	test_var PYTHON_SITEDIR python3_8 "/usr/lib/python3.8/site-packages"
-	test_var PYTHON_INCLUDEDIR python3_8 "/usr/include/python3.8${abiflags}"
-	test_var PYTHON_LIBPATH python3_8 "/usr/lib*/libpython3.8${abiflags}$(get_libname)"
-	test_var PYTHON_CONFIG python3_8 "/usr/bin/python3.8${abiflags}-config"
-	test_var PYTHON_CFLAGS python3_8 "*-I/usr/include/python3.8*"
-	test_var PYTHON_LIBS python3_8 "*-lpython3.8*"
-fi
-test_var PYTHON_PKG_DEP python3_8 '*dev-lang/python*:3.8'
-test_var PYTHON_SCRIPTDIR python3_8 /usr/lib/python-exec/python3.8
-
-test_var EPYTHON python3_9 python3.9
-test_var PYTHON python3_9 /usr/bin/python3.9
-if [[ -x /usr/bin/python3.9 ]]; then
-	abiflags=$(/usr/bin/python3.9 -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS"))')
-	test_var PYTHON_SITEDIR python3_9 "/usr/lib/python3.9/site-packages"
-	test_var PYTHON_INCLUDEDIR python3_9 "/usr/include/python3.9${abiflags}"
-	test_var PYTHON_LIBPATH python3_9 "/usr/lib*/libpython3.9${abiflags}$(get_libname)"
-	test_var PYTHON_CONFIG python3_9 "/usr/bin/python3.9${abiflags}-config"
-	test_var PYTHON_CFLAGS python3_9 "*-I/usr/include/python3.9*"
-	test_var PYTHON_LIBS python3_9 "*-lpython3.9*"
-fi
-test_var PYTHON_PKG_DEP python3_9 '*dev-lang/python*:3.9'
-test_var PYTHON_SCRIPTDIR python3_9 /usr/lib/python-exec/python3.9
-
-test_var EPYTHON python3_10 python3.10
-test_var PYTHON python3_10 /usr/bin/python3.10
-if [[ -x /usr/bin/python3.10 ]]; then
-	abiflags=$(/usr/bin/python3.10 -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS"))')
-	test_var PYTHON_SITEDIR python3_10 "/usr/lib/python3.10/site-packages"
-	test_var PYTHON_INCLUDEDIR python3_10 "/usr/include/python3.10${abiflags}"
-	test_var PYTHON_LIBPATH python3_10 "/usr/lib*/libpython3.10${abiflags}$(get_libname)"
-	test_var PYTHON_CONFIG python3_10 "/usr/bin/python3.10${abiflags}-config"
-	test_var PYTHON_CFLAGS python3_10 "*-I/usr/include/python3.10*"
-	test_var PYTHON_LIBS python3_10 "*-lpython3.10*"
-fi
-test_var PYTHON_PKG_DEP python3_10 '*dev-lang/python*:3.10'
-test_var PYTHON_SCRIPTDIR python3_10 /usr/lib/python-exec/python3.10
-
-test_var EPYTHON python3_11 python3.11
-test_var PYTHON python3_11 /usr/bin/python3.11
-if [[ -x /usr/bin/python3.11 ]]; then
-	abiflags=$(/usr/bin/python3.11 -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS"))')
-	test_var PYTHON_SITEDIR python3_11 "/usr/lib/python3.11/site-packages"
-	test_var PYTHON_INCLUDEDIR python3_11 "/usr/include/python3.11${abiflags}"
-	test_var PYTHON_LIBPATH python3_11 "/usr/lib*/libpython3.11${abiflags}$(get_libname)"
-	test_var PYTHON_CONFIG python3_11 "/usr/bin/python3.11${abiflags}-config"
-	test_var PYTHON_CFLAGS python3_11 "*-I/usr/include/python3.11*"
-	test_var PYTHON_LIBS python3_11 "*-lpython3.11*"
-fi
-test_var PYTHON_PKG_DEP python3_11 '*dev-lang/python*:3.11'
-test_var PYTHON_SCRIPTDIR python3_11 /usr/lib/python-exec/python3.11
-
+ebegin "Testing pypy3"
+eindent
 test_var EPYTHON pypy3 pypy3
 test_var PYTHON pypy3 /usr/bin/pypy3
 if [[ -x /usr/bin/pypy3 ]]; then
@@ -169,9 +109,10 @@ if [[ -x /usr/bin/pypy3 ]]; then
 fi
 test_var PYTHON_PKG_DEP pypy3 '*dev-python/pypy3*:0='
 test_var PYTHON_SCRIPTDIR pypy3 /usr/lib/python-exec/pypy3
+eoutdent
 
 for EPREFIX in '' /foo; do
-	einfo "with EPREFIX=${EPREFIX@Q}"
+	einfo "Testing python_fix_shebang with EPREFIX=${EPREFIX@Q}"
 	eindent
 	# generic shebangs
 	test_fix_shebang '#!/usr/bin/python' python3.6 \
@@ -226,6 +167,8 @@ for EPREFIX in '' /foo; do
 done
 
 # check _python_impl_matches behavior
+einfo "Testing python_impl_matches"
+eindent
 test_is "_python_impl_matches python3_6 -3" 0
 test_is "_python_impl_matches python3_7 -3" 0
 test_is "_python_impl_matches pypy3 -3" 0
@@ -246,6 +189,7 @@ test_is "_python_impl_matches python3_9 3.10" 1
 test_is "_python_impl_matches pypy3 3.8" 1
 test_is "_python_impl_matches pypy3 3.9" 0
 test_is "_python_impl_matches pypy3 3.10" 1
+eoutdent
 
 rm "${tmpfile}"
 
