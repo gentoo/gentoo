@@ -346,11 +346,6 @@ dev-ruby/sanitize:5
 # Removal on 2022-05-11.  Bug #832317.
 dev-python/ctypescrypto
 
-# Matt Turner <mattst88@gentoo.org> (2022-04-10)
-# Dead package upstream. Uses GTK+ 2. No reverse dependencies.
-# Removal on 2022-05-10
-x11-misc/gcolor2
-
 # David Seifert <soap@gentoo.org> (2022-04-10)
 # Unmaintained, last release upstream 16 years ago, Fedora dropped it,
 # relies on sys-libs/db, low quality port to EAPI 6, removal on 2022-05-10.
