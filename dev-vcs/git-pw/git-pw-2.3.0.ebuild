@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,7 @@ IUSE=""
 
 RDEPEND="
 	>=dev-python/arrow-0.10[${PYTHON_USEDEP}]
-	<dev-python/click-8.0[${PYTHON_USEDEP}]
+	>=dev-python/click-6.0[${PYTHON_USEDEP}]
 	dev-python/pbr[${PYTHON_USEDEP}]
 	<dev-python/requests-3.0[${PYTHON_USEDEP}]
 	>=dev-python/tabulate-0.8[${PYTHON_USEDEP}]
