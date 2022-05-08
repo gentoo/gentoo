@@ -114,6 +114,8 @@ esac
 #
 # - setuptools - distutils or setuptools (incl. legacy mode)
 #
+# - sip - sipbuild backend
+#
 # - standalone - standalone build systems without external deps
 #                (used for bootstrapping).
 #
@@ -226,6 +228,10 @@ _distutils_set_globals() {
 				bdep+='
 					>=dev-python/setuptools-60.5.0[${PYTHON_USEDEP}]
 					dev-python/wheel[${PYTHON_USEDEP}]'
+				;;
+			sip)
+				bdep+='
+					>=dev-python/sip-6.5.0-r1[${PYTHON_USEDEP}]'
 				;;
 			standalone)
 				;;
@@ -388,8 +394,19 @@ unset -f _distutils_set_globals
 # @ECLASS_VARIABLE: DISTUTILS_ARGS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# An array containing options to be passed to setup.py.  They are passed
-# before the default arguments, i.e. before the first command.
+# An array containing options to be passed to the build system.
+# Supported by a subset of build systems used by the eclass.
+#
+# For setuptools, the arguments will be passed as first parameters
+# to setup.py invocations (via esetup.py), as well as to the PEP517
+# backend.  For future compatibility, only global options should be used
+# and specifying commands should be avoided.
+#
+# For sip, the options are passed to the PEP517 backend in a form
+# resembling sip-build calls.  Options taking arguments need to
+# be specified in the "--key=value" form, while flag options as "--key".
+# If an option takes multiple arguments, it can be specified multiple
+# times, same as for sip-build.
 #
 # Example:
 # @CODE
@@ -920,6 +937,11 @@ _distutils-r1_print_package_versions() {
 					dev-python/wheel
 				)
 				;;
+			sip)
+				packages+=(
+					dev-python/sip
+				)
+				;;
 		esac
 	else
 		case ${DISTUTILS_USE_SETUPTOOLS} in
@@ -1104,6 +1126,9 @@ _distutils-r1_backend_to_key() {
 		setuptools.build_meta|setuptools.build_meta:__legacy__)
 			echo setuptools
 			;;
+		sipbuild.api)
+			echo sip
+			;;
 		*)
 			die "Unknown backend: ${backend}"
 			;;
@@ -1199,6 +1224,30 @@ distutils_pep517_install() {
 						import json
 						import sys
 						print(json.dumps({"--global-option": sys.argv[1:]}))
+					EOF
+				)
+				;;
+			sip)
+				# NB: for practical reasons, we support only --foo=bar,
+				# not --foo bar
+				local arg
+				for arg in "${DISTUTILS_ARGS[@]}"; do
+					[[ ${arg} != -* ]] &&
+						die "Bare arguments in DISTUTILS_ARGS unsupported: ${arg}"
+				done
+
+				config_settings=$(
+					"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
+						import collections
+						import json
+						import sys
+
+						args = collections.defaultdict(list)
+						for arg in (x.split("=", 1) for x in sys.argv[1:]): \
+							args[arg[0]].extend(
+								[arg[1]] if len(arg) > 1 else [])
+
+						print(json.dumps(args))
 					EOF
 				)
 				;;
