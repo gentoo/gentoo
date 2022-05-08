@@ -1,0 +1,126 @@
+commit cfad44e501f71e1576f1106a97350ea9b229ac1a
+Author: orbea <orbea@riseup.net>
+Date:   Sun May 8 08:12:38 2022 -0700
+
+    build: Fix the build with slibtool
+
+      * cats: soname is a linker argument
+      * stored: Linker -lfoo flags are for external dependencies
+
+diff --git a/src/cats/Makefile.in b/src/cats/Makefile.in
+index d30cc75..f06266f 100644
+--- a/src/cats/Makefile.in
++++ b/src/cats/Makefile.in
+@@ -135,21 +135,21 @@ libbaccats.la: Makefile cats_null.lo
+ libbaccats-mysql.la: Makefile $(MYSQL_LOBJS)
+ 	@echo "Making $@ ..."
+ 	$(LIBTOOL_LINK) $(CXX) $(DEFS) $(DEBUG) $(LDFLAGS) -o $@ $(MYSQL_LOBJS) -export-dynamic -rpath $(libdir) -release $(LIBBACCATS_LT_RELEASE) \
+-							   -soname libbaccats-$(LIBBACCATS_LT_RELEASE).so $(MYSQL_LIBS)
++							   -Wl,-soname,libbaccats-$(LIBBACCATS_LT_RELEASE).so $(MYSQL_LIBS)
+ 
+ libbaccats-postgresql.la: Makefile $(POSTGRESQL_LOBJS)
+ 	@echo "Making $@ ..."
+ 	$(LIBTOOL_LINK) $(CXX) $(DEFS) $(DEBUG) $(LDFLAGS) -o $@ $(POSTGRESQL_LOBJS) -export-dynamic -rpath $(libdir) -release $(LIBBACCATS_LT_RELEASE) \
+-							   -soname libbaccats-$(LIBBACCATS_LT_RELEASE).so $(POSTGRESQL_LIBS)
++							   -Wl,-soname,libbaccats-$(LIBBACCATS_LT_RELEASE).so $(POSTGRESQL_LIBS)
+ 
+ libbaccats-sqlite3.la: Makefile $(SQLITE_LOBJS)
+ 	@echo "Making $@ ..."
+ 	$(LIBTOOL_LINK) $(CXX) $(DEFS) $(DEBUG) $(LDFLAGS) -o $@ $(SQLITE_LOBJS) -export-dynamic -rpath $(libdir) -release $(LIBBACCATS_LT_RELEASE) \
+-							   -soname libbaccats-$(LIBBACCATS_LT_RELEASE).so $(SQLITE_LIBS)
++							   -Wl,-soname,libbaccats-$(LIBBACCATS_LT_RELEASE).so $(SQLITE_LIBS)
+ #libbaccats-dbi.la: Makefile $(DBI_LOBJS)
+ #	 @echo "Making $@ ..."
+ #	 $(LIBTOOL_LINK) $(CXX) $(DEFS) $(DEBUG) $(LDFLAGS) -o $@ $(DBI_LOBJS) -export-dynamic -rpath $(libdir) -release $(LIBBACCATS_LT_RELEASE) \
+-#							    -soname libbaccats-$(LIBBACCATS_LT_RELEASE).so $(DBI_LIBS)
++#							    -Wl,-soname,libbaccats-$(LIBBACCATS_LT_RELEASE).so $(DBI_LIBS)
+ 
+ Makefile: $(srcdir)/Makefile.in $(topdir)/config.status
+ 	cd $(topdir) \
+diff --git a/src/stored/Makefile.in b/src/stored/Makefile.in
+index cfc3aa7..bead1c7 100644
+--- a/src/stored/Makefile.in
++++ b/src/stored/Makefile.in
+@@ -123,7 +123,7 @@ LZO_INC= @LZO_INC@
+ TOKYOCABINET_LIBS = @TOKYOCABINET_LIBS@
+ TOKYOCABINET_INC = @TOKYOCABINET_INC@
+ 
+-SD_LIBS = -lbacsd -lbaccfg -lbac -lbacfind
++SD_LIBS = libbacsd.la ../lib/libbaccfg.la ../lib/libbac.la ../findlib/libbacfind.la
+ 
+ 
+ .SUFFIXES:	.c .o .lo
+@@ -153,7 +153,7 @@ bacula-sd: Makefile libbacsd.la $(SDOBJS) \
+ 	../lib/libbac$(DEFAULT_ARCHIVE_TYPE) \
+ 	../findlib/libbacfind$(DEFAULT_ARCHIVE_TYPE)
+ 	@echo "Linking $@ ..."
+-	$(LIBTOOL_LINK) $(CXX) $(WLDFLAGS) $(LDFLAGS) -L. -L../lib -L../findlib \
++	$(LIBTOOL_LINK) $(CXX) $(WLDFLAGS) $(LDFLAGS) \
+ 	   -o $@ $(SDOBJS) $(ZLIBS) \
+ 	   $(SD_LIBS) -lm $(DLIB) $(LIBS) $(WRAPLIBS) \
+ 	   $(GETTEXT_LIBS) $(OPENSSL_LIBS) $(CAP_LIBS)
+@@ -206,7 +206,7 @@ btape.o: btape.c
+ 	   -I$(basedir) $(DINCLUDE) $(CFLAGS) $<
+ 
+ btape: Makefile  $(TAPEOBJS) libbacsd.la drivers ../lib/libbac$(DEFAULT_ARCHIVE_TYPE) ../lib/libbaccfg$(DEFAULT_ARCHIVE_TYPE)
+-	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -L../lib -L../findlib -o $@ $(TAPEOBJS) \
++	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -o $@ $(TAPEOBJS) \
+ 	  $(SD_LIBS) $(DLIB) -lm $(LIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS)
+ 
+ 
+@@ -216,7 +216,7 @@ cloud_test.o: cloud_test.c
+            -I$(basedir) $(DINCLUDE) $(CFLAGS) $<
+ 
+ cloud_test: Makefile cloud_test.o ../lib/libbac$(DEFAULT_ARCHIVE_TYPE)  $(BLSOBJS)  libbacsd.la drivers
+-	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -L../lib -L../findlib -o $@ $(CLOUDTESTOBJS) $(DLIB) \
++	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -o $@ $(CLOUDTESTOBJS) $(DLIB) \
+            $(SD_LIBS) -lm $(LIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS)
+ 
+ bcloud.o: bcloud.c
+@@ -225,7 +225,7 @@ bcloud.o: bcloud.c
+            -I$(basedir) $(DINCLUDE) $(S3_INC) $(CFLAGS) $<
+ 
+ bcloud: Makefile bcloud.o ../lib/libbac$(DEFAULT_ARCHIVE_TYPE)  $(BLSOBJS)  libbacsd.la drivers
+-	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -L../lib -L../findlib -o $@ $(CLOUDCLIOBJS) $(DLIB) \
++	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -o $@ $(CLOUDCLIOBJS) $(DLIB) \
+            $(SD_LIBS) -lm $(LIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS) $(S3_LIBS)
+ 
+ bls.o:	bls.c
+@@ -235,7 +235,7 @@ bls.o:	bls.c
+ 
+ bls:	Makefile $(BLSOBJS) libbacsd.la drivers  ../findlib/libbacfind$(DEFAULT_ARCHIVE_TYPE) ../lib/libbaccfg$(DEFAULT_ARCHIVE_TYPE) ../lib/libbac$(DEFAULT_ARCHIVE_TYPE)
+ 	@echo "Compiling $<"
+-	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -L../lib -L../findlib -o $@ $(BLSOBJS) $(DLIB) \
++	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -o $@ $(BLSOBJS) $(DLIB) \
+ 	   $(SD_LIBS) -lm $(LIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS)
+ 
+ bextract.o: bextract.c
+@@ -245,7 +245,7 @@ bextract.o: bextract.c
+ 
+ bextract: Makefile $(BEXTOBJS) libbacsd.la drivers ../findlib/libbacfind$(DEFAULT_ARCHIVE_TYPE) ../lib/libbaccfg$(DEFAULT_ARCHIVE_TYPE) ../lib/libbac$(DEFAULT_ARCHIVE_TYPE)
+ 	@echo "Compiling $<"
+-	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -L../lib -L../findlib -o $@ $(BEXTOBJS) $(DLIB) $(ZLIBS) $(LZO_LIBS) \
++	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -o $@ $(BEXTOBJS) $(DLIB) $(ZLIBS) $(LZO_LIBS) \
+ 	   $(SD_LIBS) -lm $(LIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS)
+ 
+ bscan.o: bscan.c
+@@ -255,8 +255,8 @@ bscan.o: bscan.c
+ 
+ bscan:	Makefile $(SCNOBJS) libbacsd.la drivers ../findlib/libbacfind$(DEFAULT_ARCHIVE_TYPE) ../lib/libbaccfg$(DEFAULT_ARCHIVE_TYPE) \
+ 	../cats/libbacsql$(DEFAULT_ARCHIVE_TYPE) ../cats/libbaccats$(DEFAULT_ARCHIVE_TYPE)
+-	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -L../lib -L../cats -L../findlib -o $@ $(SCNOBJS) \
+-	   $(SD_LIBS) -lbacsql -lbaccats $(DB_LIBS) $(ZLIBS) -lbacfind -lbaccfg -lbac -lm $(LIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS)
++	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -o $@ $(SCNOBJS) $(SD_LIBS) ../cats/libbacsql.la ../cats/libbaccats.la \
++	   $(DB_LIBS) $(ZLIBS) ../findlib/libbacfind.la ../lib/libbaccfg.la ../lib/libbac.la -lm $(LIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS)
+ 
+ bcopy.o: bcopy.c
+ 	@echo "Compiling $<"
+@@ -264,7 +264,7 @@ bcopy.o: bcopy.c
+ 	   -I$(basedir) $(DINCLUDE) $(CFLAGS) $<
+ 
+ bcopy:	Makefile $(COPYOBJS) libbacsd.la drivers ../findlib/libbacfind$(DEFAULT_ARCHIVE_TYPE) ../lib/libbaccfg$(DEFAULT_ARCHIVE_TYPE) ../lib/libbac$(DEFAULT_ARCHIVE_TYPE)
+-	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -L../lib -L../findlib -o $@ $(COPYOBJS) \
++	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -o $@ $(COPYOBJS) \
+ 	   $(SD_LIBS) -lm $(LIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS)
+ 
+ cloud_parts_test: Makefile cloud_parts.c
