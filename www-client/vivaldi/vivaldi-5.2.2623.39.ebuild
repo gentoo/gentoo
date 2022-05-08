@@ -132,6 +132,7 @@ RDEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/libXrandr
 	x11-libs/pango[X]
+	|| ( gui-libs/gtk:4 x11-libs/gtk+:3 )
 	proprietary-codecs? ( media-video/ffmpeg-chromium:${CHROMIUM_VERSION} )
 	widevine? ( www-plugins/chrome-binary-plugins )
 "
