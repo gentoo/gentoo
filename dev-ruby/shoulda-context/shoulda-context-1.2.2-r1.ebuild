@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/thoughtbot/shoulda-context"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="doc test"
 
 ruby_add_bdepend "test? ( dev-ruby/test-unit:2
