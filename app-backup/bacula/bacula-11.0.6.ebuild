@@ -125,6 +125,9 @@ src_prepare() {
 	# fix soname in libbaccat.so bug #602952
 	eapply -p0 "${FILESDIR}/bacula-fix-sonames.patch"
 
+	# fix the build with slibtool bug #790140
+	eapply -p1 "${FILESDIR}/bacula-fix-slibtool.patch"
+
 	# do not strip binaries
 	sed -i -e "s/strip /# strip /" src/filed/Makefile.in || die
 	sed -i -e "s/strip /# strip /" src/console/Makefile.in || die
