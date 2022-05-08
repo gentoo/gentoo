@@ -19,8 +19,9 @@ SLOT="0"
 LICENSE="GPL-2"
 IUSE="examples"
 
+# need gmp[cxx] since we append -lgmpxx to LIBS
 DEPEND="
-	dev-libs/gmp:0
+	dev-libs/gmp:0[cxx]
 	>=sci-libs/cddlib-094f
 "
 RDEPEND="${DEPEND}"
