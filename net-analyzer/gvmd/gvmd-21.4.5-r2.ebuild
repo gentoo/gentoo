@@ -66,6 +66,12 @@ src_prepare() {
 
 	# https://github.com/greenbone/gvmd/pull/1819
 	sed -i "/^EnvironmentFile/d" config/gvmd.service.in || die
+
+	# Upstream 3ebab6044818f1710b73c04e94fd9bea148c9853
+	sed -i \
+		-e 's/^RuntimeDirectory=gvm/RuntimeDirectory=gvmd/' \
+		-e 's/GVM_RUN_DIR/GVMD_RUN_DIR/' \
+		config/gvmd.service.in || die
 }
 
 src_configure() {
