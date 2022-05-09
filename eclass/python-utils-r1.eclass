@@ -1288,6 +1288,9 @@ epytest() {
 		-Wdefault
 		# override color output
 		"--color=${color}"
+		# count is more precise when we're dealing with a large number
+		# of tests
+		-o console_output_style=count
 		# disable the undesirable-dependency plugins by default to
 		# trigger missing argument strips.  strip options that require
 		# them from config files.  enable them explicitly via "-p ..."
