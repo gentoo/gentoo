@@ -26,6 +26,7 @@ DEPEND="
 	dev-perl/UUID
 	net-libs/gnutls:=
 	net-libs/libnet:1.1
+	net-libs/libpcap
 	net-libs/libssh:=
 	sys-apps/util-linux
 	sys-libs/libxcrypt:=
