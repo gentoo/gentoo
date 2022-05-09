@@ -39,6 +39,9 @@ src_prepare() {
 
 	# https://github.com/greenbone/ospd-openvas/pull/649
 	sed -i '/^Group=gvm/d' config/ospd-openvas.service || die
+
+	# https://github.com/greenbone/ospd-openvas/pull/653
+	sed -i 's;/usr/local/bin/;/usr/bin/;' config/ospd-openvas.service || die
 }
 
 python_compile() {
@@ -54,9 +57,11 @@ python_install() {
 
 	dodoc "${FILESDIR}"/redis.conf.example
 
-	insinto /etc/openvas
+	insinto /etc/gvm
 	doins config/${PN}.conf
-	fowners -R gvm:gvm /etc/openvas
+	if ! use prefix; then
+		fowners -R gvm:gvm /etc/gvm
+	fi
 
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
 	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
