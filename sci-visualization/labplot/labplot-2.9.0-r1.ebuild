@@ -22,7 +22,7 @@ SLOT="5"
 IUSE="cantor fftw fits hdf5 libcerf markdown matio netcdf origin root serial telemetry"
 
 DEPEND="
-	app-text/poppler:=
+	app-text/poppler
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtnetwork-${QTMIN}:5
