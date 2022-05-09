@@ -27,7 +27,6 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		>dev-python/virtualenv-20[${PYTHON_USEDEP}]
 		dev-vcs/git
 		!sparc? (
 			dev-vcs/mercurial
