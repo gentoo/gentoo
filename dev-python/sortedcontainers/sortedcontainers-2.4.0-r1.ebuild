@@ -11,7 +11,7 @@ inherit distutils-r1
 MY_P=python-${P}
 DESCRIPTION="Python library to sort collections and containers"
 HOMEPAGE="
-	http://www.grantjenks.com/docs/sortedcontainers/
+	https://www.grantjenks.com/docs/sortedcontainers/
 	https://github.com/grantjenks/python-sortedcontainers/
 	https://pypi.org/project/sortedcontainers/
 "
