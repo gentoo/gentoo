@@ -9,7 +9,7 @@ MY_P=linux-${PV%.*}
 GENPATCHES_P=genpatches-${PV%.*}-$(( ${PV##*.} + 3 ))
 BINPKG=${P/-bin/}-r1-1
 
-DESCRIPTION="Pre-built Linux kernel with genpatches"
+DESCRIPTION="Pre-built Linux kernel with Gentoo patches"
 HOMEPAGE="https://www.kernel.org/"
 SRC_URI+="
 	https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.xz
