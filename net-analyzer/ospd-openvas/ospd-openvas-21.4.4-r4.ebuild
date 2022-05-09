@@ -4,14 +4,14 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+DISTUTILS_USE_PEP517=poetry
 inherit distutils-r1 systemd
 
 DESCRIPTION="This is an OSP server implementation to allow GVM to remotely control OpenVAS"
-HOMEPAGE="https://github.com/greenbone/ospd-openvas"
+HOMEPAGE="https://www.greenbone.net https://github.com/greenbone/ospd-openvas"
 SRC_URI="https://github.com/greenbone/ospd-openvas/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="AGPL-3+ GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
@@ -29,6 +29,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
+	app-admin/sudo
 	>=net-analyzer/openvas-scanner-${PV}
 "
 
@@ -55,8 +56,6 @@ python_compile() {
 python_install() {
 	distutils-r1_python_install
 
-	dodoc "${FILESDIR}"/redis.conf.example
-
 	insinto /etc/gvm
 	doins config/${PN}.conf
 	if ! use prefix; then
@@ -67,4 +66,11 @@ python_install() {
 	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
 
 	systemd_dounit config/${PN}.service
+
+	# OSPD OpenVAS attempts to call openvas via sudo as network security
+	# scanning often requires priviliged operations.
+	insinto /etc/sudoers.d
+	newins - openvas <<-EOF
+	gvm  ALL = NOPASSWD: /usr/bin/openvas
+EOF
 }
