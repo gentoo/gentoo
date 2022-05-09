@@ -278,14 +278,14 @@ pkg_postinst() {
 	# check and fix file permissions
 	"${EROOT}"/usr/sbin/postfix set-permissions
 
-	# configure tls
+	# hint for configuring tls
 	if use ssl ; then
 		if "${EROOT}"/usr/sbin/postfix tls all-default-client; then
-			elog "To configure client side TLS settings:"
+			elog "To configure client side TLS settings, please run:"
 			elog "${EROOT}"/usr/sbin/postfix tls enable-client
 		fi
 		if "${EROOT}"/usr/sbin/postfix tls all-default-server; then
-			elog "To configure server side TLS settings:"
+			elog "To configure server side TLS settings, please run:"
 			elog "${EROOT}"/usr/sbin/postfix tls enable-server
 		fi
 	fi
