@@ -23,6 +23,10 @@ BDEPEND="sys-apps/texinfo"
 # It's a portage's false positive. bug #677600
 QA_PREBUILT='*[.]go'
 
+PATCHES=(
+	"${FILESDIR}/${P}-slibtool.patch" # 843416
+)
+
 src_prepare() {
 	default
 
