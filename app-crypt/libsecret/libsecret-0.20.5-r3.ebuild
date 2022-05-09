@@ -28,8 +28,8 @@ DEPEND="
 	tpm? ( >=app-crypt/tpm2-tss-3.0.3:= )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 "
-RDEPEND="${DEPEND}
-	virtual/secret-service"
+RDEPEND="${DEPEND}"
+PDEPEND="virtual/secret-service"
 BDEPEND="
 	app-text/docbook-xml-dtd:4.2
 	dev-libs/libxslt
