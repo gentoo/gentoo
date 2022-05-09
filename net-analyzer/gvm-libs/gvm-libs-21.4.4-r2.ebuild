@@ -3,11 +3,10 @@
 
 EAPI=8
 
-CMAKE_MAKEFILE_GENERATOR="emake"
 inherit cmake toolchain-funcs
 
-DESCRIPTION="Greenbone vulnerability management libraries, previously named openvas-libraries"
-HOMEPAGE="https://www.greenbone.net/en/ https://github.com/greenbone/gvm-libs/"
+DESCRIPTION="Greenbone Vulnerability Management (GVM) libraries, previously named openvas-libraries"
+HOMEPAGE="https://www.greenbone.net https://github.com/greenbone/gvm-libs/"
 SRC_URI="https://github.com/greenbone/gvm-libs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
@@ -17,7 +16,6 @@ IUSE="doc ldap test radius"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	acct-group/gvm
 	acct-user/gvm
 	app-crypt/gpgme:=
 	dev-libs/glib:2
@@ -33,11 +31,9 @@ DEPEND="
 	sys-libs/libxcrypt:=
 	sys-libs/zlib
 	ldap? ( net-nds/openldap:= )
-	radius? ( net-dialup/freeradius-client )"
-
-RDEPEND="
-	${DEPEND}"
-
+	radius? ( net-dialup/freeradius-client )
+"
+RDEPEND="${DEPEND}"
 BDEPEND="
 	dev-vcs/git
 	sys-devel/bison
@@ -50,7 +46,8 @@ BDEPEND="
 		dev-perl/CGI
 		dev-perl/SQL-Translator
 	)
-	test? ( dev-libs/cgreen )"
+	test? ( dev-libs/cgreen )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-20.8.1-disable-automagic-dep.patch
@@ -111,5 +108,7 @@ src_install() {
 
 	# Set proper permissions on required files/directories
 	keepdir /var/lib/gvm
-	fowners -R gvm:gvm /var/lib/gvm
+	if ! use prefix; then
+		fowners -R gvm:gvm /var/lib/gvm
+	fi
 }
