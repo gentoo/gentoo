@@ -24,12 +24,15 @@ DEPEND="
 	dev-libs/libical:=
 	>=net-analyzer/gvm-libs-21.4.4
 	net-libs/gnutls:=[tools]
-	doc?   (
+	doc? (
 		app-text/xmlstarlet
-		dev-texlive/texlive-latexextra )
+		dev-texlive/texlive-latexextra
+	)
 "
+# gvmd (optionally) uses xml_split from XML-Twig at runtime.
 RDEPEND="
 	${DEPEND}
+	dev-perl/XML-Twig
 	net-analyzer/ospd-openvas
 "
 BDEPEND="
@@ -72,6 +75,9 @@ src_prepare() {
 		-e 's/^RuntimeDirectory=gvm/RuntimeDirectory=gvmd/' \
 		-e 's/GVM_RUN_DIR/GVMD_RUN_DIR/' \
 		config/gvmd.service.in || die
+
+	# https://github.com/greenbone/gvmd/pull/1824
+	sed -i '/^install (DIRECTORY DESTINATION ${GVMD_RUN_DIR})/d' CMakeLists.txt || die
 }
 
 src_configure() {
@@ -105,15 +111,16 @@ src_install() {
 
 	insinto /etc/gvm/sysconfig
 	doins "${FILESDIR}/${PN}-daemon.conf"
-
-	fowners -R gvm:gvm /etc/gvm
+	if ! use prefix; then
+		fowners -R gvm:gvm /etc/gvm
+	fi
 
 	newinitd "${FILESDIR}/${P}.init" "${PN}"
 	newconfd "${FILESDIR}/${PN}-daemon.conf" "${PN}"
 
 	# Set proper permissions on required files/directories
 	keepdir /var/lib/gvm/gvmd
-	fowners -R gvm:gvm /var/lib/gvm
-
-	rm -r "${D}/run" || die
+	if ! use prefix; then
+		fowners -R gvm:gvm /var/lib/gvm
+	fi
 }
