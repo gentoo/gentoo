@@ -329,7 +329,8 @@ src_test() {
 src_install() {
 	local libdir=${ED}/usr/lib/python${PYVER}
 
-	emake DESTDIR="${D}" altinstall
+	# -j1 hack for now for bug #843458
+	emake -j1 DESTDIR="${D}" altinstall
 
 	# Fix collisions between different slots of Python.
 	rm "${ED}/usr/$(get_libdir)/libpython3.so" || die
