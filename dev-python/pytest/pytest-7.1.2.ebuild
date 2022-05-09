@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1 multiprocessing
 
@@ -35,14 +35,16 @@ BDEPEND="
 	>=dev-python/setuptools_scm-6.2.3[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
-		dev-python/argcomplete[${PYTHON_USEDEP}]
-		>=dev-python/hypothesis-3.56[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
-		>=dev-python/pygments-2.7.2[${PYTHON_USEDEP}]
-		dev-python/pytest-xdist[${PYTHON_USEDEP}]
-		dev-python/requests[${PYTHON_USEDEP}]
-		dev-python/xmlschema[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/argcomplete[${PYTHON_USEDEP}]
+			>=dev-python/hypothesis-3.56[${PYTHON_USEDEP}]
+			dev-python/mock[${PYTHON_USEDEP}]
+			dev-python/nose[${PYTHON_USEDEP}]
+			>=dev-python/pygments-2.7.2[${PYTHON_USEDEP}]
+			dev-python/pytest-xdist[${PYTHON_USEDEP}]
+			dev-python/requests[${PYTHON_USEDEP}]
+			dev-python/xmlschema[${PYTHON_USEDEP}]
+		' python3_{8..10} pypy3)
 	)
 "
 
@@ -54,6 +56,11 @@ src_test() {
 }
 
 python_test() {
+	if ! has "${EPYTHON}" python3.{8..10} pypy3; then
+		einfo "Skipping tests on ${EPYTHON}"
+		return
+	fi
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local -x COLUMNS=80
 
