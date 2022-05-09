@@ -5,7 +5,7 @@
 EAPI=7
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1 multiprocessing
