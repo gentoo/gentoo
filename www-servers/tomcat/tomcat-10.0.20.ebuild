@@ -17,7 +17,7 @@ BNDLIB="biz.aQute.bndlib-${BND_VERSION}.jar"
 
 DESCRIPTION="Tomcat Servlet-5.0/JSP-3.0/EL-4.0/WebSocket-2.0/JASIC-2.0 Container"
 HOMEPAGE="https://tomcat.apache.org/"
-SRC_URI="mirror://apache/${PN}/tomcat-9/v${PV}/src/${MY_P}.tar.gz
+SRC_URI="mirror://apache/${PN}/tomcat-10/v${PV}/src/${MY_P}.tar.gz
 	https://repo.maven.apache.org/maven2/biz/aQute/bnd/biz.aQute.bnd/${BND_VERSION}/${BND}
 	https://repo.maven.apache.org/maven2/biz/aQute/bnd/biz.aQute.bndlib/${BND_VERSION}/${BNDLIB}"
 
