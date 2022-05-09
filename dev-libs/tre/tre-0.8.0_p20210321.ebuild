@@ -100,6 +100,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	use agrep || return 0
 	ewarn "app-misc/glimpse, app-text/agrep and this package all provide agrep."
 	ewarn "If this causes any unforeseen incompatibilities please file a bug"
 	ewarn "on https://bugs.gentoo.org."
