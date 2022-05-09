@@ -141,6 +141,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.1-fix-missing-mapping.patch
 	"${FILESDIR}"/${PN}-2.6.1-make-flags.patch
 	"${FILESDIR}"/${PN}-2.6.1-fix-bashism-configure.patch
+	"${FILESDIR}"/${PN}-2.6.1-parallel-build.patch
 )
 
 openldap_filecount() {
