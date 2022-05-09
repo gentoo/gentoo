@@ -13,10 +13,12 @@ SRC_URI="https://github.com/Maratyszcza/${PN}/archive/${CommitId}.tar.gz
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="test"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
-BDEPEND=""
+BDEPEND="test? ( dev-cpp/gtest )"
+RESTRICT="!test? ( test )"
 
 S="${WORKDIR}"/${PN}-${CommitId}
 
