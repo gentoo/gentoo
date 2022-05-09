@@ -564,10 +564,10 @@ each_fakegem_test() {
 	esac
 }
 
+# @FUNCTION: each_ruby_test
+# @DESCRIPTION:
+# Run the tests for this package.
 if [[ ${RUBY_FAKEGEM_RECIPE_TEST} != none ]]; then
-		# @FUNCTION: each_ruby_test
-		# @DESCRIPTION:
-		# Run the tests for this package.
 		each_ruby_test() {
 			each_fakegem_test
 		}
