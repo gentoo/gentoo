@@ -23,11 +23,6 @@ PATCHES=(
 )
 
 python_test() {
-	if [[ ${EPYTHON} == pypy* ]]; then
-		ewarn "Not running tests on ${EPYTHON} since they are broken"
-		return 0
-	fi
-
 	# since we are running in an environment a bit similar to CI,
 	# let's skip the tests that are disable for CI
 	local -x TRAVIS=1
