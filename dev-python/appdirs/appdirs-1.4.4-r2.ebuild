@@ -33,5 +33,5 @@ src_configure() {
 }
 
 python_test() {
-	"${PYTHON}" test/test_api.py -v || die "Tests fail with ${EPYTHON}"
+	"${EPYTHON}" test/test_api.py -v || die "Tests fail with ${EPYTHON}"
 }
