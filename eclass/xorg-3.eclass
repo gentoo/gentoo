@@ -152,6 +152,14 @@ BDEPEND+=" ${EAUTORECONF_DEPENDS}"
 unset EAUTORECONF_DEPENDS
 unset EAUTORECONF_DEPEND
 
+# @ECLASS_VARIABLE: FONT_DIR
+# @PRE_INHERIT
+# @DESCRIPTION:
+# If you're creating a font package and the suffix of PN is not equal to
+# the subdirectory of /usr/share/fonts/ it should install into, set
+# FONT_DIR to that directory or directories.  Set before inheriting this
+# eclass.
+
 if [[ ${FONT} == yes ]]; then
 	RDEPEND+=" media-fonts/encodings
 		>=x11-apps/mkfontscale-1.2.0"
@@ -160,13 +168,6 @@ if [[ ${FONT} == yes ]]; then
 		>=x11-apps/mkfontscale-1.2.0"
 	BDEPEND+=" x11-apps/bdftopcf"
 
-	# @ECLASS_VARIABLE: FONT_DIR
-	# @PRE_INHERIT
-	# @DESCRIPTION:
-	# If you're creating a font package and the suffix of PN is not equal to
-	# the subdirectory of /usr/share/fonts/ it should install into, set
-	# FONT_DIR to that directory or directories. Set before inheriting this
-	# eclass.
 	[[ -z ${FONT_DIR} ]] && FONT_DIR=${PN##*-}
 
 	# Fix case of font directories
@@ -352,6 +353,11 @@ multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf "${econfargs[@]}"
 }
 
+# @VARIABLE: XORG_CONFIGURE_OPTIONS
+# @DESCRIPTION:
+# Array of an additional options to pass to configure.
+# @DEFAULT_UNSET
+
 # @FUNCTION: xorg-3_src_configure
 # @DESCRIPTION:
 # Perform any necessary pre-configuration steps, then run configure
@@ -360,10 +366,6 @@ xorg-3_src_configure() {
 
 	xorg-3_flags_setup
 
-	# @VARIABLE: XORG_CONFIGURE_OPTIONS
-	# @DESCRIPTION:
-	# Array of an additional options to pass to configure.
-	# @DEFAULT_UNSET
 	local xorgconfadd=("${XORG_CONFIGURE_OPTIONS[@]}")
 
 	local FONT_OPTIONS=()
