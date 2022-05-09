@@ -3,24 +3,22 @@
 
 EAPI=8
 
-CMAKE_MAKEFILE_GENERATOR="emake"
 inherit cmake toolchain-funcs
 
 MY_PN="openvas"
 MY_DN="openvassd"
 
 DESCRIPTION="Open Vulnerability Assessment Scanner"
-HOMEPAGE="https://www.greenbone.net/en/ https://github.com/greenbone/openvas-scanner/"
+HOMEPAGE="https://www.greenbone.net https://github.com/greenbone/openvas-scanner/"
 SRC_URI="https://github.com/greenbone/openvas-scanner/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2 GPL-2+"
 KEYWORDS="~amd64 ~x86"
-IUSE="cron doc snmp test"
+IUSE="doc snmp test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	acct-group/gvm
 	acct-user/gvm
 	app-crypt/gpgme:=
 	dev-db/redis
@@ -32,11 +30,9 @@ DEPEND="
 	snmp? ( net-analyzer/net-snmp:= )
 	net-libs/gnutls:=
 	net-libs/libpcap
-	net-libs/libssh:="
-
-RDEPEND="
-	${DEPEND}"
-
+	net-libs/libssh:=
+"
+RDEPEND="${DEPEND}"
 BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
@@ -48,7 +44,8 @@ BDEPEND="
 		dev-perl/CGI
 		dev-perl/SQL-Translator
 	)
-	test? ( dev-libs/cgreen )"
+	test? ( dev-libs/cgreen )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.1-disable-automagic-dep.patch
@@ -109,24 +106,19 @@ src_install() {
 	fi
 	cmake_src_install
 
-	if use cron; then
-		# Install the cron job if they want it.
-		exeinto /etc/gvm
-		newexe "${FILESDIR}/gvm-feed-sync-20.8.1.sh" gvm-feed-sync.sh
-		fowners gvm:gvm /etc/gvm/gvm-feed-sync.sh
-
-		insinto /etc/cron.d
-		newins "${FILESDIR}"/gvm-feed-sync.cron gvm
-	fi
-
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${MY_DN}.logrotate" "${MY_DN}"
 
 	# Set proper permissions on required files/directories
 	keepdir /var/log/gvm
-	fowners gvm:gvm /var/log/gvm
+	if ! use prefix; then
+		fowners gvm:gvm /var/log/gvm
+	fi
+
 	keepdir /var/lib/openvas/{gnupg,plugins}
-	fowners -R gvm:gvm /var/lib/openvas
+	if ! use prefix; then
+		fowners -R gvm:gvm /var/lib/openvas
+	fi
 
 	insinto /etc/openvas
 	doins "${FILESDIR}/openvas.conf"
