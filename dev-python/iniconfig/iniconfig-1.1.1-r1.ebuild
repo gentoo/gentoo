@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Brain-dead simple config-ini parsing"
 HOMEPAGE="
-	https://github.com/RonnyPfannschmidt/iniconfig/
+	https://github.com/pytest-dev/iniconfig/
 	https://pypi.org/project/iniconfig/
 "
 SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"

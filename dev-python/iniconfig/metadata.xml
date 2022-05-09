@@ -6,6 +6,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">pytest-dev/iniconfig</remote-id>
 		<remote-id type="pypi">iniconfig</remote-id>
 	</upstream>
 </pkgmetadata>
