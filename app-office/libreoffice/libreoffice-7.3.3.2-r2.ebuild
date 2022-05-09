@@ -302,7 +302,7 @@ PATCHES=(
 	# TODO: upstream
 	"${FILESDIR}/${PN}-7.2.6.2-poppler-22.03.0.patch" # by Archlinux
 	"${FILESDIR}/${PN}-7.3.3.2-Import-FreeBSD-patch-for-Poppler-22.04.0-build.patch" # from FreeBSD
-	#"${FILESDIR}/${PN}-7.3.3.2-Add-missing-nSize-set-for-Poppler-22.04.0.patch" # fixup for FreeBSD patch
+	"${FILESDIR}/${PN}-7.3.3.2-Add-missing-nSize-set-for-Poppler-22.04.0.patch" # fixup for FreeBSD patch
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
