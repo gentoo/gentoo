@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake toolchain-funcs
 
-DESCRIPTION="Greenbone Vulnerability Management (GVM) libraries, previously named openvas-libraries"
+DESCRIPTION="Greenbone Vulnerability Management (GVM) libraries"
 HOMEPAGE="https://www.greenbone.net https://github.com/greenbone/gvm-libs/"
 SRC_URI="https://github.com/greenbone/gvm-libs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
