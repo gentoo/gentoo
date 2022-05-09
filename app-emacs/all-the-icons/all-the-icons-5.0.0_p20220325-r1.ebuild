@@ -3,15 +3,16 @@
 
 EAPI=8
 
+H=65c496d3d1d1298345beb9845840067bffb2ffd8
 NEED_EMACS=24.3
 
-inherit elisp readme.gentoo-r1
+inherit elisp font readme.gentoo-r1
 
 DESCRIPTION="Various icon fonts propertized for Emacs"
 HOMEPAGE="https://github.com/domtronn/all-the-icons.el/"
-SRC_URI="https://github.com/domtronn/${PN}.el/archive/${PV}.tar.gz
+SRC_URI="https://github.com/domtronn/${PN}.el/archive/${H}.tar.gz
 			-> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}.el-${PV}
+S="${WORKDIR}"/${PN}.el-${H}
 
 LICENSE="MIT"
 SLOT="0"
@@ -25,6 +26,11 @@ DOC_CONTENTS="You may need to install the required fonts by executing
 	the \"all-the-icons-install-fonts\" function."
 DOCS=( README.md logo.png )
 SITEFILE="50${PN}-gentoo.el"
+
+pkg_setup() {
+	elisp_pkg_setup
+	font_pkg_setup
+}
 
 src_compile() {
 	elisp_src_compile
@@ -40,4 +46,25 @@ src_test() {
 src_install() {
 	elisp_src_install
 	elisp-install ${PN}/data data/*.el{,c}
+
+	# Install all-the-icons.ttf, special font made explicitly for this library.
+	# NOTICE: "fonts" directory also contains some bundled fonts,
+	# that is why we need this small re-implementation of font eclass,
+	# to suit this specific use case.
+	pushd "${S}"/fonts >/dev/null || die
+	insinto ${FONTDIR}
+	doins ${PN}.ttf
+	font_xfont_config
+	font_fontconfig
+	popd >/dev/null || die
+}
+
+pkg_postinst() {
+	elisp_pkg_postinst
+	font_pkg_postinst
+}
+
+pkg_postrm() {
+	elisp_pkg_postrm
+	font_pkg_postrm
 }
