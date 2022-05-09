@@ -4,11 +4,11 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+DISTUTILS_USE_PEP517=poetry
 inherit distutils-r1
 
 DESCRIPTION="Remote control for Greenbone Vulnerability Manager, previously named openvas-cli"
-HOMEPAGE="https://www.greenbone.net/en/ https://github.com/greenbone/gvm-tools/"
+HOMEPAGE="https://www.greenbone.net https://github.com/greenbone/gvm-tools/"
 SRC_URI="https://github.com/greenbone/gvm-tools/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
@@ -19,10 +19,9 @@ IUSE=""
 RDEPEND="
 	>=net-analyzer/python-gvm-21.11.0[${PYTHON_USEDEP}]
 	!net-analyzer/openvas-cli
-	!net-analyzer/openvas-tools"
-
-DEPEND="
-	${RDEPEND}"
+	!net-analyzer/openvas-tools
+"
+DEPEND="${RDEPEND}"
 
 distutils_enable_tests unittest
 
