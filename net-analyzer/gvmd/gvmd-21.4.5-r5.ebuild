@@ -24,15 +24,14 @@ DEPEND="
 	dev-libs/libical:=
 	>=net-analyzer/gvm-libs-21.4.4
 	net-libs/gnutls:=[tools]
-	doc? (
-		app-text/xmlstarlet
-		dev-texlive/texlive-latexextra
-	)
 "
-# gvmd (optionally) uses xml_split from XML-Twig at runtime.
+# gvmd (optionally) uses xml_split from XML-Twig at runtime. And texlive
+# and xmlstartlet are used for (PDF) report generator at runtime.
 RDEPEND="
 	${DEPEND}
+	app-text/xmlstarlet
 	dev-perl/XML-Twig
+	dev-texlive/texlive-latexextra
 	net-analyzer/ospd-openvas
 "
 BDEPEND="
