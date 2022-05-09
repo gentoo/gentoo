@@ -61,6 +61,14 @@ multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
+multilib_src_install() {
+	# Needed to workaround parallel build failure
+	# bug #835920
+	dodir /usr/$(get_libdir)/alsa-lib
+
+	default
+}
+
 multilib_src_install_all() {
 	einstalldocs
 
