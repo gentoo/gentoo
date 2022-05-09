@@ -10,7 +10,7 @@ HOMEPAGE="https://www.greenbone.net https://github.com/greenbone/gvmd/"
 SRC_URI="https://github.com/greenbone/gvmd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
-LICENSE="GPL-2+"
+LICENSE="AGPL-3+"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
@@ -87,6 +87,7 @@ src_configure() {
 		"-DLIBDIR=${EPREFIX}/usr/$(get_libdir)"
 		"-DSBINDIR=${EPREFIX}/usr/bin"
 		"-DSYSTEMD_SERVICE_DIR=$(systemd_get_systemunitdir)"
+		"-DGVM_DEFAULT_DROP_USER=gvm"
 	)
 	cmake_src_configure
 }
@@ -123,4 +124,7 @@ src_install() {
 	if ! use prefix; then
 		fowners -R gvm:gvm /var/lib/gvm
 	fi
+
+	dosbin "${FILESDIR}"/gvm-sync-all
+	systemd_dounit "${FILESDIR}"/gvm-sync-all.{service,timer}
 }
