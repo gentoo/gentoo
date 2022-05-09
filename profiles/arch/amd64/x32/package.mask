@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jonas Licht <jonas.licht@gmail.com> (2022-05-01)
+# Requires net-libs/nodejs, plus mask all reverse-dependecies.
+net-analyzer/gsa
+net-analyzer/gsad
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-02-13)
 # Requires qtwebengine
 sci-electronics/eagle
