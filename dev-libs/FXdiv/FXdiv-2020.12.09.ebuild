@@ -29,6 +29,7 @@ PATCHES=(
 src_configure() {
 	local mycmakeargs=(
 		-DFXDIV_BUILD_BENCHMARKS=OFF
+		-DFXDIV_BUILD_TESTS=$(usex test ON OFF)
 	)
 	cmake_src_configure
 }
