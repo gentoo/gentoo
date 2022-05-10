@@ -93,9 +93,6 @@ src_prepare() {
 	cd "${S}"/RULES || die
 	local tcCC="$(tc-getCC)"
 	local tcCXX="$(tc-getCXX)"
-	# fix RISC-V build err, bug 811375
-	ln -s i586-linux-cc.rul riscv-linux-cc.rul || die
-	ln -s i586-linux-cc.rul riscv64-linux-cc.rul || die
 
 	sed -i -e "/cc-config.sh/s|\$(C_ARCH:%64=%) \$(CCOM_DEF)|${tcCC} ${tcCC}|" \
 		rules1.top || die "sed rules1.top"
@@ -109,6 +106,10 @@ src_prepare() {
 
 	# Add support for arm64
 	symlink_build_rules aarch64_be
+
+	# fix RISC-V build err, bug 811375
+	symlink_build_rules riscv
+	symlink_build_rules riscv64
 
 	# Schily make setup.
 	cd "${S}"/DEFAULTS || die
