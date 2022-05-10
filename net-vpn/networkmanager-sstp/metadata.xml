@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<!--maintainer-needed-->
 	<use>
-		<flag name="gtk4">Use <pkg>gui-libs/gtk:4</pkg> for GUI support.</flag>
+		<flag name="gtk4">Use <pkg>gui-libs/gtk</pkg> for GUI support.</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">sstp-client</remote-id>
