@@ -356,12 +356,6 @@ net-p2p/syrep
 # Removal on 2022-05-10.  Bug #837641.
 dev-python/repoze-sphinx-autointerface
 
-# Michał Górny <mgorny@gentoo.org> (2022-04-09)
-# A test runner specific to zope packages that was never really used
-# (only as a mistaken test-dep).  No revdeps left.
-# Removal on 2022-05-09.  Bug #837530.
-dev-python/zope-testrunner
-
 # David Seifert <soap@gentoo.org> (2022-04-06)
 # Unsupported branches, no consumers left, removal on 2023-01-01.
 sys-devel/automake:1.13
