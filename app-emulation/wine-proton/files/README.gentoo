@@ -1,0 +1,52 @@
+While this version of Wine is usable independently, it does contain some
+Steam-oriented changes that may be unexpected. Notably C:\users\steamuser
+is used rather than C:\users\<user-name> and it may be necessary to move
+files if converting from non-proton Wine prefixes (like games' save files).
+
+To keep a low maintenance cost, these changes are not reverted in Gentoo
+with the exception of re-enabling winemenubuilder for desktop entries.
+
+Also, given this Wine variant is oriented toward running games, some
+normally unrelated features (e.g. ldap) may not have real upstream
+(Valve) support. Because of this, some are left always disabled.
+
+If needed, use other variants for the more expected Wine behavior.
+
+---
+
+Given Proton is not creating the Wine prefixes, some features are not
+enabled by default and PROTON_* variables to control them are unrecognized.
+
+To (optionally) setup some notable defaults of Proton:
+- export WINEFSYNC=1
+.    Often improves performance for CPU-bound applications, recommended
+.    but should be left disabled if get crashes mentioning fsync errors.
+.   >Requires linux kernel >=5.16 if unpatched.
+- export WINE_LARGE_ADDRESS_AWARE=1
+.    Allows 32bit applications to access more memory, notably helps
+.    prevent crashes on memory-heavy applications while using dxvk below.
+- WINEPREFIX=/path/to setup_dxvk.sh install --symlink
+.    Vulkan-based d3d9/10/11 that often provides both better performance
+.    and compatibility (strongly recommended).
+.   >Requires app-emulation/dxvk
+- WINEPREFIX=/path/to setup_vkd3d_proton.sh install --symlink
+.    Like above, but for d3d12. Wine also supports vkd3d as-is but this
+.    is the modified fork used by Proton (may or may not be better).
+.   >Requires app-emulation/vkd3d-proton
+
+For some applications it may be better to disable these or do other
+workarounds, see https://www.protondb.com/ for specific information.
+
+Many other proton-specific improvements / fixes are always enabled, and
+some game-specific quirks are auto-enabled as needed (can see a few from
+running winecfg).
+
+If have audio/video playback issues, note to look at GStreamer plugins.
+Notably USE=ffmpeg on media-plugins/gst-plugins-meta which Proton normally
+provide by default.
+
+---
+
+If have other Wine variants installed, remember to either use `eselect wine`
+to select this variant or call it as wine-proton. Note other available
+variants may be auto-selected when removing/replacing a selected slot.
