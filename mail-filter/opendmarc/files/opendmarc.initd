@@ -15,8 +15,9 @@ check_cfg() {
 		return 1
 	fi
 	# create /var/run/opendmarc
-	mkdir -p /var/run/opendmarc >& /dev/null
-	chown ${OPENDMARC_USER}:${OPENDMARC_GROUP} /var/run/opendmarc >& /dev/null
+	mkdir -p /var/run/opendmarc > /dev/null 2>&1
+	chown ${OPENDMARC_USER}:${OPENDMARC_GROUP} \
+		/var/run/opendmarc > /dev/null 2>&1
 	PIDFILE=$(sed -ne 's/^[[:space:]]*PidFile[[:space:]]\+//p' "${CONFFILE}")
 	local PIDDIR="${PIDFILE%/*}"
 	if [ ! -d  "${PIDDIR}" ] ; then
