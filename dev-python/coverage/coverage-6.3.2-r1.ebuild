@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 PYTHON_REQ_USE="threads(+),sqlite(+)"
 
 inherit distutils-r1
@@ -48,8 +48,13 @@ python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local -x PYTEST_PLUGINS=_hypothesis_pytestplugin,flaky.flaky_pytest_plugin,xdist.plugin
 
-	if [[ ${EPYTHON} != pypy* ]]; then
-		cp "${BUILD_DIR}/install$(python_get_sitedir)"/coverage/*.so \
+	local prev_opt=$(shopt -p nullglob)
+	shopt -s nullglob
+	local c_ext=( "${BUILD_DIR}/install$(python_get_sitedir)"/coverage/*.so )
+	${prev_opt}
+
+	if [[ -n ${c_ext} ]]; then
+		cp "${c_ext}" \
 			coverage/ || die
 		test_tracer c
 		rm coverage/*.so || die
