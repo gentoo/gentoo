@@ -188,6 +188,11 @@ multilib_src_configure() {
 	# makes more sense when facing multilib support.
 	sed -i -e 's:CUPS_SERVERBIN="$exec_prefix/lib/cups":CUPS_SERVERBIN="$exec_prefix/libexec/cups":g' configure ||die
 
+	# Don't use the libtool build
+	# https://bugs.gentoo.org/843638
+	# https://github.com/OpenPrinting/cups/pull/394
+	unset LIBTOOL
+
 	econf "${myeconfargs[@]}"
 
 	sed -i -e "s:SERVERBIN.*:SERVERBIN = \"\$\(BUILDROOT\)${EPREFIX}/usr/libexec/cups\":" Makedefs || die
