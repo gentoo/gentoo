@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="Guile FFI to ncurses library for text-based console UI"
 HOMEPAGE="https://www.gnu.org/software/guile-ncurses/"
 SRC_URI="mirror://gnu/guile-ncurses/${P}.tar.gz"
@@ -56,6 +58,8 @@ src_prepare() {
 	for bad_test in "${bad_tests[@]}" ; do
 		echo "#t" > test/${bad_test}.scm || die
 	done
+
+	eautoreconf  # 843560
 }
 
 src_test() {
