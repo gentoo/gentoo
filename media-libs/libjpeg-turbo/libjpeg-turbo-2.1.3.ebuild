@@ -75,6 +75,15 @@ multilib_src_configure() {
 		)
 	fi
 
+	# We should tell the test suite which floating-point flavor we are
+	# expecting: https://github.com/libjpeg-turbo/libjpeg-turbo/issues/597
+	# For now, mark loong as fp-contract.
+	if use loong; then
+		mycmakeargs+=(
+			-DFLOATTEST=fp-contract
+		)
+	fi
+
 	# mostly for Prefix, ensure that we use our yasm if installed and
 	# not pick up host-provided nasm
 	if has_version -b dev-lang/yasm && ! has_version -b dev-lang/nasm; then
