@@ -35,8 +35,32 @@ pkg_setup() {
 		die "Invalid configuration, please see: https://wiki.gentoo.org/wiki/Mingw"
 }
 
+mingw-foreach_tool() {
+	use !tools || use headers-only && return
+
+	local tool
+	for tool in gendef genidl widl; do
+		# not using top-level --with-tools given it skips widl
+		pushd mingw-w64-tools/${tool} || die
+		"${@}"
+		popd >/dev/null || die
+	done
+}
+
 src_configure() {
-	CHOST=${CTARGET}
+	# native tools, see #644556
+	local toolsconf=(
+		--prefix="${EPREFIX}"/usr
+	)
+	# normally only widl is prefixed, but avoids clash with other targets
+	${MW_CROSS} && toolsconf+=( --program-prefix=${CTARGET}- )
+
+	mingw-foreach_tool econf "${toolsconf[@]}"
+
+	MW_LDFLAGS=${LDFLAGS} # keep non-stripped for gendef not respecting it
+
+	# cross-compiling from here
+	local CHOST=${CTARGET}
 	strip-unsupported-flags
 
 	# Normally mingw64 does not use dynamic linker.
@@ -64,7 +88,6 @@ src_configure() {
 		conf+=(
 			$(use_enable idl)
 			$(use_with libraries)
-			$(use_with tools)
 		)
 
 		# prefer tuple to determine if should do 32 or 64bits, but fall
@@ -93,12 +116,14 @@ src_configure() {
 
 src_compile() {
 	use headers-only || emake -C ../headers install
-
-	default
+	emake
+	mingw-foreach_tool emake LDFLAGS="${MW_LDFLAGS}"
 }
 
 src_install() {
 	default
+
+	mingw-foreach_tool emake DESTDIR="${D}" install
 
 	if ${MW_CROSS}; then
 		# gcc is configured to look at specific hard-coded paths for mingw #419601
