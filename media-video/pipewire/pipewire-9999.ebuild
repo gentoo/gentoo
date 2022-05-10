@@ -305,8 +305,9 @@ pkg_postinst() {
 		ewarn
 		if has_version 'media-sound/pulseaudio[daemon]' || has_version 'media-sound/pulseaudio-daemon'; then
 			elog "This ebuild auto-enables PulseAudio replacement. Because of that, users"
-			elog "are recommended to edit: ${EROOT}/etc/pulse/client.conf and disable"
-			elog "autospawning of the original daemon by setting:"
+			elog "are recommended to edit pulseaudio client configuration files:"
+			elog "${EROOT}/etc/pulse/client.conf and ${EROOT}/etc/pulse/client.conf.d/enable-autospawn.conf"
+			elog "if it exists, and disable autospawning of the original daemon by setting:"
 			elog
 			elog "  autospawn = no"
 			elog
