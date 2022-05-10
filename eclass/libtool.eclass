@@ -25,6 +25,69 @@ esac
 
 inherit toolchain-funcs
 
+# @ECLASS_VARIABLE: LIBTOOL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# The default libtool implementation. If unset GNU libtool will be used in most
+# cases.
+
+# @FUNCTION: eslibtool
+# @USAGE: [flag]
+# @DESCRIPTION:
+# If the LIBTOOL variable in the user's environment is set and contains one of
+# the slibtool symlinks it will be modified as required by the ebuild.
+#
+# If the MAKE or MAKEFLAGS environment variables are set they will also be
+# modified accordingly.
+#
+# The flag should '-shared', '-static' or unset to use the equivalent slibtool
+# symlink. With no arguments both shared and static libraries will be enabled.
+eslibtool() {
+	[[ -n "${LIBTOOL}" ]] || return
+
+	local d new_libtool
+	local shared="${1:-}"
+
+	case "${shared}" in
+		-shared|-static|'') : ;;
+		*) die "Unknown argument '${shared}' for eslibtool()" ;;
+	esac
+
+	[[ "${LIBTOOL}" == ${LIBTOOL%/*} ]] || d="${LIBTOOL%/*}/"
+
+	case "${LIBTOOL##*/}" in
+		rlibtool|slibtool*) new_libtool="${d}slibtool${shared}" ;;
+		rdlibtool|dlibtool*) new_libtool="${d}dlibtool${shared}" ;;
+		rclibtool|rdclibtool|clibtool*) new_libtool="${d}clibtool${shared}" ;;
+	esac
+
+	[[ -n "${new_libtool}" ]] || return
+
+	LIBTOOL="${new_libtool}"
+
+	local slibtool=(
+		{s,c,d}libtool{,-shared,-static}
+		r{,c,d,dc}libtool
+	)
+
+	type -p "${LIBTOOL}" &>/dev/null ||
+		die "${LIBTOOL} not found; is sys-devel/slibtool installed?"
+
+	local i
+
+	if [[ -n "${MAKE}" ]]; then
+		for i in ${slibtool[@]}; do
+			export MAKE="$(echo ${MAKE} | sed -e "s|LIBTOOL=${i}[^ ]*|LIBTOOL=${LIBTOOL}|g")"
+		done
+	fi
+
+	if [[ -n "${MAKEFLAGS}" ]]; then
+		for i in ${slibtool[@]}; do
+			export MAKEFLAGS="$(echo ${MAKEFLAGS} | sed -e "s|LIBTOOL=${i}[^ ]*|LIBTOOL=${LIBTOOL}|g")"
+		done
+	fi
+}
+
 # @FUNCTION: elibtoolize
 # @USAGE: [dirs] [--portage] [--reverse-deps] [--patch-only] [--remove-internal-dep=xxx] [--shallow] [--no-uclibc]
 # @DESCRIPTION:
