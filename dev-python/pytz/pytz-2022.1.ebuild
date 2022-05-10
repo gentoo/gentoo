@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -22,11 +22,13 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 IUSE=""
 
 DEPEND="
-	|| ( >=sys-libs/timezone-data-2017a sys-libs/glibc[vanilla] )
+	|| (
+		>=sys-libs/timezone-data-2017a
+		sys-libs/glibc[vanilla]
+	)
 "
-RDEPEND="${DEPEND}"
-BDEPEND="
-	app-arch/unzip
+RDEPEND="
+	${DEPEND}
 "
 
 PATCHES=(
