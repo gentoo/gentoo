@@ -44,6 +44,19 @@ cdrtools_os() {
 	echo "${os}"
 }
 
+symlink_build_rules() {
+	local cputype="$1"
+	pushd "${S}"/RULES > /dev/null || die
+	ln -sf i586-linux-cc.rul       "${cputype}"-linux-cc.rul      || die
+	ln -sf i586-linux-clang.rul    "${cputype}"-linux-clang.rul   || die
+	ln -sf i586-linux-clang32.rul  "${cputype}"-linux-clang32.rul || die
+	ln -sf i586-linux-clang64.rul  "${cputype}"-linux-clang64.rul || die
+	ln -sf i586-linux-gcc.rul      "${cputype}"-linux-gcc.rul     || die
+	ln -sf i586-linux-gcc32.rul    "${cputype}"-linux-gcc32.rul   || die
+	ln -sf i586-linux-gcc64.rul    "${cputype}"-linux-gcc64.rul   || die
+	popd > /dev/null || die
+}
+
 src_prepare() {
 	default
 
@@ -95,13 +108,7 @@ src_prepare() {
 		rules.cnf || die "sed rules.cnf"
 
 	# Add support for arm64
-	ln -sf i586-linux-cc.rul       aarch64_be-linux-cc.rul
-	ln -sf i586-linux-clang.rul    aarch64_be-linux-clang.rul
-	ln -sf i586-linux-clang32.rul  aarch64_be-linux-clang32.rul
-	ln -sf i586-linux-clang64.rul  aarch64_be-linux-clang64.rul
-	ln -sf i586-linux-gcc.rul      aarch64_be-linux-gcc.rul
-	ln -sf i586-linux-gcc32.rul    aarch64_be-linux-gcc32.rul
-	ln -sf i586-linux-gcc64.rul    aarch64_be-linux-gcc64.rul
+	symlink_build_rules aarch64_be
 
 	# Schily make setup.
 	cd "${S}"/DEFAULTS || die
