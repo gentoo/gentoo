@@ -351,11 +351,6 @@ dev-python/ctypescrypto
 # relies on sys-libs/db, low quality port to EAPI 6, removal on 2022-05-10.
 net-p2p/syrep
 
-# Michał Górny <mgorny@gentoo.org> (2022-04-10)
-# Last release in 2016.  Last git commit in 2020.  No revdeps.
-# Removal on 2022-05-10.  Bug #837641.
-dev-python/repoze-sphinx-autointerface
-
 # David Seifert <soap@gentoo.org> (2022-04-06)
 # Unsupported branches, no consumers left, removal on 2023-01-01.
 sys-devel/automake:1.13
