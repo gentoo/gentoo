@@ -318,9 +318,18 @@ pkg_postinst() {
 	fi
 
 	if use systemd; then
+		elog "Pulseaudio autospawn by client library is no longer enabled when systemd is available."
 		elog "It's recommended to start pulseaudio via its systemd user units:"
 		elog ""
 		elog "  systemctl --user enable pulseaudio.service pulseaudio.socket"
+		elog ""
+		elog "Root user can change system default configuration for all users:"
+		elog ""
+		elog "  systemctl --global enable pulseaudio.service pulseaudio.socket"
+		elog ""
+		elog "If you would like to enable autospawn by client library, edit autospawn flag in /etc/pulse/client.conf like this:"
+		elog ""
+		elog "  autospawn = yes"
 		elog ""
 		elog "The change from autospawn to user units will take effect after restarting."
 		elog ""
