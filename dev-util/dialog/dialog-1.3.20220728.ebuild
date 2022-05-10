@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit libtool
+
 MY_P=${PN}-$(ver_rs 2 -)
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/thomasdickey.asc
 inherit verify-sig
@@ -31,6 +33,8 @@ BDEPEND="
 
 src_prepare() {
 	default
+
+	eslibtool -shared
 
 	sed -i -e '/LIB_CREATE=/s:${CC}:& ${LDFLAGS}:g' configure || die
 	sed -i '/$(LIBTOOL_COMPILE)/s:$: $(LIBTOOL_OPTS):' makefile.in || die
