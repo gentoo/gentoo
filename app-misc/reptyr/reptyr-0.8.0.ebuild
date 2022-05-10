@@ -15,6 +15,11 @@ KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 
 RESTRICT="test"
 
+PATCHES=(
+	# drop on next version bump
+	"${FILESDIR}"/${PN}-0.8.0-riscv64-support.patch
+)
+
 src_prepare() {
 	default
 	# respect CFLAGS
