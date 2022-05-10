@@ -1,0 +1,35 @@
+Index: roctracer-rocm-4.3.0/test/CMakeLists.txt
+===================================================================
+--- roctracer-rocm-4.3.0.orig/test/CMakeLists.txt
++++ roctracer-rocm-4.3.0/test/CMakeLists.txt
+@@ -75,7 +75,7 @@ set ( TEST_DIR ${HSA_TEST_DIR} )
+ set ( TEST_DIR ${TMP} )
+ 
+ ## Util sources
+-file( GLOB UTIL_SRC "${HSA_TEST_DIR}/util/*.cpp" )
++file( GLOB UTIL_SRC "${CMAKE_CURRENT_SOURCE_DIR}/../src/util/*.cpp" )
+ 
+ if ( DEFINED ROCTRACER_TARGET )
+   ## Build test library
+Index: roctracer-rocm-4.3.0/test/tool/tracer_tool.cpp
+===================================================================
+--- roctracer-rocm-4.3.0.orig/test/tool/tracer_tool.cpp
++++ roctracer-rocm-4.3.0/test/tool/tracer_tool.cpp
+@@ -285,7 +285,7 @@ void stop_callback() { roctracer::RocTxL
+ void roctx_flush_cb(roctx_trace_entry_t* entry) {
+ #if ROCTX_CLOCK_TIME
+   timestamp_t timestamp = 0;
+-  HsaRsrcFactory::Instance().GetTimestamp(HsaTimer::TIME_ID_CLOCK_MONOTONIC, entry->time, &timestamp);
++  util::HsaRsrcFactory::Instance().GetTimestamp(HsaTimer::TIME_ID_CLOCK_MONOTONIC, entry->time, &timestamp);
+ #else
+   const timestamp_t timestamp = entry->time;
+ #endif
+@@ -1148,7 +1148,7 @@ extern "C" PUBLIC_API bool OnLoad(HsaApi
+ 
+   // Dumping HSA handles for agents and pools
+   FILE* handles_file_handle = open_output_file(output_prefix, "hsa_handles.txt");
+-  HsaRsrcFactory::Instance().DumpHandles(handles_file_handle);
++  util::HsaRsrcFactory::Instance().DumpHandles(handles_file_handle);
+   close_output_file(handles_file_handle);
+ 
+   ONLOAD_TRACE_END();
