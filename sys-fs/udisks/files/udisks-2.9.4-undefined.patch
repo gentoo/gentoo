@@ -1,0 +1,30 @@
+Upstream-PR: https://github.com/storaged-project/udisks/pull/978
+From 362cc8f1613193f8e68d13a416421bb36fd7f713 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Tue, 10 May 2022 09:29:10 -0700
+Subject: [PATCH] modules/btrfs: Add missing dependency
+
+When building udisks with --enable-btrfs using slibtool instead of GNU
+libtool the build will fail with undefined references.
+
+This is because of a missing dependency for libudisks2_btrfs_la_LIBADD
+and GNU libtool will hide this issue by silently ignoring -no-undefined
+while slibtool does not.
+
+Gentoo Bug: https://bugs.gentoo.org/782061
+---
+ modules/btrfs/Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/modules/btrfs/Makefile.am b/modules/btrfs/Makefile.am
+index ac8c941849..f96cd16186 100644
+--- a/modules/btrfs/Makefile.am
++++ b/modules/btrfs/Makefile.am
+@@ -73,6 +73,7 @@ libudisks2_btrfs_la_LDFLAGS =                                                  \
+ 	$(NULL)
+ 
+ libudisks2_btrfs_la_LIBADD =                                                   \
++	$(top_builddir)/src/libudisks-daemon.la                                \
+ 	$(GLIB_LIBS)                                                           \
+ 	$(GIO_LIBS)                                                            \
+ 	$(GUDEV_LIBS)                                                          \
