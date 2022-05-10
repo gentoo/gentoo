@@ -7,7 +7,7 @@ EAPI=7
 DISTUTILS_USE_PEP517=setuptools
 # DO NOT ADD pypy to PYTHON_COMPAT
 # pypy bundles a modified version of cffi. Use python_gen_cond_dep instead.
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1 toolchain-funcs
 
@@ -54,10 +54,17 @@ src_configure() {
 }
 
 python_test() {
+	local EPYTEST_DESELECT=()
 	local EPYTEST_IGNORE=(
 		# these tests call pip
 		testing/cffi0/test_zintegration.py
 	)
+	if [[ ${EPYTHON} == python3.11 ]]; then
+		EPYTEST_DESELECT+=(
+			# exception printing format has changed
+			c/test_c.py::test_callback_exception
+		)
+	fi
 
 	"${EPYTHON}" -c "import _cffi_backend as backend" || die
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
