@@ -141,6 +141,10 @@ python_test() {
 			numpy/core/tests/test_umath.py::TestRemainder::test_float_remainder_overflow
 			# https://github.com/numpy/numpy/issues/18387
 			numpy/random/tests/test_generator_mt19937.py::TestRandomDist::test_pareto
+			# more precision problems
+			numpy/core/tests/test_einsum.py::TestEinsum::test_einsum_sums_int16
+			# too large for the tiny x86 world
+			numpy/core/tests/test_ufunc.py::TestUfunc::test_identityless_reduction_huge_array
 		)
 	fi
 
