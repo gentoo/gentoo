@@ -13,7 +13,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="SOAP with Attachments API for Java (SAAJ) API (Eclipse Project for JAX-WS)"
 HOMEPAGE="https://projects.eclipse.org/projects/ee4j.jaxws"
-SRC_URI="https://github.com/eclipse-ee4j/saaj-api/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/eclipse-ee4j/saaj-api/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 # EDL-1.0 equivalent to BSD
 # - 'SPDX-License-Identifier: BSD-3-Clause' in source files' headers
@@ -24,11 +24,11 @@ SLOT="1"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 CP_DEPEND="
-	dev-java/jakarta-activation-api:1
+	>=dev-java/jakarta-activation-api-1.2.2-r1:1
 "
 
 DEPEND="
-	>=virtual/jdk-1.8:*
+	>=virtual/jdk-11:*
 	${CP_DEPEND}
 "
 
@@ -44,20 +44,9 @@ JAVA_SRC_DIR="api/src/main/java"
 JAVA_TEST_GENTOO_CLASSPATH="junit-4"
 JAVA_TEST_SRC_DIR="api/src/test/java"
 JAVA_TEST_RESOURCE_DIRS=( "api/src/test/resources" )
+JAVA_TEST_EXTRA_ARGS=( -Xbootclasspath/a:target/classes )
 
 DOCS=( CONTRIBUTING.md NOTICE.md README.md )
-
-src_test() {
-	if ver_test "$(java-config -g PROVIDES_VERSION)" -lt 9; then
-		# https://github.com/javaee/javax.xml.soap/blob/1.4.0/pom.xml#L134-L143
-		JAVA_TEST_EXTRA_ARGS=( -Xbootclasspath/p:target/classes )
-	else
-		# '-Xbootclasspath/p' removed since JDK 9; '-Xbootclasspath/a' remains
-		# https://openjdk.java.net/jeps/261
-		JAVA_TEST_EXTRA_ARGS=( -Xbootclasspath/a:target/classes )
-	fi
-	java-pkg-simple_src_test
-}
 
 src_install() {
 	java-pkg-simple_src_install
