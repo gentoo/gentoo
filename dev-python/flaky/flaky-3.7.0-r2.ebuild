@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
@@ -22,15 +22,21 @@ DEPEND="
 	test? (
 		dev-python/genty[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/nose[${PYTHON_USEDEP}]
+		' python3_{8..10} pypy3)
 	)
 "
 
 python_test() {
-	nosetests --with-flaky --exclude="test_nose_options_example" test/test_nose/ || die
 	epytest -k 'example and not options' --doctest-modules test/test_pytest/ || die
 	epytest -p no:flaky test/test_pytest/test_flaky_pytest_plugin.py || die
-	nosetests --with-flaky --force-flaky --max-runs 2 test/test_nose/test_nose_options_example.py || die
 	epytest --force-flaky --max-runs 2 test/test_pytest/test_pytest_options_example.py || die
+
+	# please keep this in sync with python_gen_cond_dep!
+	if has "${EPYTHON}" python3_{8..10} pypy3; then
+		"${EPYTHON}" -m nose --with-flaky --exclude="test_nose_options_example" test/test_nose/ || die
+		"${EPYTHON}" -m nose --with-flaky --force-flaky --max-runs 2 test/test_nose/test_nose_options_example.py || die
+	fi
 }
