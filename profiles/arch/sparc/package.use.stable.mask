@@ -1,6 +1,11 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-05-11)
+# sys-apps/keyutils not stable here (test failures)
+# bug #636252
+net-fs/nfs-utils nfsv4
+
 # Sam James <sam@gentoo.org> (2022-05-10)
 # sys-apps/keyutils not stable here, because of
 # test failures. bug #636252
