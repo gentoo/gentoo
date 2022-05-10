@@ -111,6 +111,9 @@ src_prepare() {
 	symlink_build_rules riscv
 	symlink_build_rules riscv64
 
+	# Add support for loong
+	symlink_build_rules loongarch64
+
 	# Schily make setup.
 	cd "${S}"/DEFAULTS || die
 	local os=$(cdrtools_os)
