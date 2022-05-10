@@ -1277,9 +1277,12 @@ distutils_pep517_install() {
 		die "Wheel install failed"
 
 	# remove installed licenses
-	find "${root}$(python_get_sitedir)" \
-		'(' -path '*.dist-info/COPYING*' -o \
-		-path '*.dist-info/LICENSE*' ')' -delete || die
+	find "${root}$(python_get_sitedir)" -depth \
+		\( -path '*.dist-info/COPYING*' \
+		-o -path '*.dist-info/LICENSE*' \
+		-o -path '*.dist-info/license_files/*' \
+		-o -path '*.dist-info/license_files' \
+		\) -delete || die
 
 	# clean the build tree; otherwise we may end up with PyPy3
 	# extensions duplicated into CPython dists
