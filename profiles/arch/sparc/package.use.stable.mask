@@ -1,5 +1,10 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2022-05-10)
+# sys-apps/keyutils not stable here, because of
+# test failures. bug #636252
+app-crypt/mit-krb5 keyutils
 
 # Sam James <sam@gentoo.org> (2022-03-07)
 # sys-cluster/torque not marked stable on sparc
