@@ -33,6 +33,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Florian Schmaus <flow@gentoo.org> (2022-05-10)
+# Was split by upstream (and us) into
+# net-analyzer/gsa and net-analyzer/gsad.
+# Removal on 2022-06-10.
+net-analyzer/greenbone-security-assistant
+
+# Florian Schmaus <flow@gentoo.org> (2022-05-10)
+# Functionality now in net-analyzer/ospd-openvas.
+# Removal on 2022-06-10.
+net-analyzer/ospd
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-05-06)
 # Unused java library. Removal on 2022-06-06
 dev-java/commons-jxpath
