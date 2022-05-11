@@ -4,12 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1 optfeature toolchain-funcs
 
 DESCRIPTION="A Pythonic binding for the libxml2 and libxslt libraries"
-HOMEPAGE="https://lxml.de/ https://pypi.org/project/lxml/ https://github.com/lxml/lxml"
+HOMEPAGE="
+	https://lxml.de/
+	https://pypi.org/project/lxml/
+	https://github.com/lxml/lxml
+"
 SRC_URI="https://github.com/lxml/lxml/archive/${P}.tar.gz"
 S=${WORKDIR}/lxml-${P}
 
@@ -20,10 +24,12 @@ IUSE="doc examples +threads test"
 RESTRICT="!test? ( test )"
 
 # Note: lib{xml2,xslt} are used as C libraries, not Python modules.
-RDEPEND="
+DEPEND="
 	>=dev-libs/libxml2-2.9.12-r2
 	>=dev-libs/libxslt-1.1.28"
-DEPEND="${RDEPEND}"
+RDEPEND="
+	${DEPEND}
+"
 BDEPEND="
 	virtual/pkgconfig
 	dev-python/cython[${PYTHON_USEDEP}]
@@ -35,8 +41,10 @@ BDEPEND="
 			dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 		')
 	)
-	test? ( dev-python/cssselect[${PYTHON_USEDEP}] )
-	"
+	test? (
+		dev-python/cssselect[${PYTHON_USEDEP}]
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.6.0-tests-pypy.patch
