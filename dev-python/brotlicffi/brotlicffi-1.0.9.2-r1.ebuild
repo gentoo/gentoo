@@ -59,7 +59,3 @@ src_unpack() {
 src_configure() {
 	export USE_SHARED_BROTLI=1
 }
-
-python_test() {
-	epytest test
-}
