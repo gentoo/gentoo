@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/openil/${MY_P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~hppa ~mips ppc ppc64 ~riscv x86"
-IUSE="allegro cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 gif glut jpeg mng nvtt opengl png sdl static-libs tiff X xpm"
+IUSE="allegro cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 gif glut jpeg mng opengl png sdl static-libs tiff X xpm"
 
 # OpenEXR support dropped b/c no support for OpenEXR 3
 # See bug #833833
@@ -22,21 +22,25 @@ RDEPEND="
 	allegro? ( media-libs/allegro:0 )
 	gif? ( media-libs/giflib:= )
 	glut? ( media-libs/freeglut )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	mng? ( media-libs/libmng:= )
-	nvtt? ( media-gfx/nvidia-texture-tools )
-	opengl? ( virtual/opengl
-		virtual/glu )
+	opengl? (
+		virtual/opengl
+		virtual/glu
+	)
 	png? ( media-libs/libpng:0= )
 	sdl? ( media-libs/libsdl )
 	tiff? ( media-libs/tiff:0 )
-	X? ( x11-libs/libXext
+	X? (
+		x11-libs/libXext
 		x11-libs/libX11
-		x11-libs/libXrender )
+		x11-libs/libXrender
+	)
 	xpm? ( x11-libs/libXpm )"
-DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig
+DEPEND="
+	${RDEPEND}
 	X? ( x11-base/xorg-proto )"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${P}"-CVE-2009-3994.patch
@@ -80,7 +84,7 @@ src_configure() {
 		$(use_enable X render) \
 		$(use_enable glut) \
 		$(use_with X x) \
-		$(use_with nvtt)
+		--without-nvtt
 }
 
 src_install() {
