@@ -10,9 +10,15 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1 toolchain-funcs elisp-common
 
 DESCRIPTION="A Python to C compiler"
-HOMEPAGE="https://cython.org https://pypi.org/project/Cython/
-	https://github.com/cython/cython"
-SRC_URI="https://github.com/cython/cython/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://cython.org/
+	https://github.com/cython/cython/
+	https://pypi.org/project/Cython/
+"
+SRC_URI="
+	https://github.com/cython/cython/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -23,11 +29,14 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	emacs? ( >=app-editors/emacs-23.1:* )
 "
-BDEPEND="${RDEPEND}
+BDEPEND="
+	${RDEPEND}
 	test? (
-		$(python_gen_cond_dep 'dev-python/numpy[${PYTHON_USEDEP}]' \
-			'python3*')
-	)"
+		$(python_gen_cond_dep '
+			dev-python/numpy[${PYTHON_USEDEP}]
+		' python3_{8..10})
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.29.22-spawn-multiprocessing.patch"
