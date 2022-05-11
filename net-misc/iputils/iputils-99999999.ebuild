@@ -29,7 +29,7 @@ HOMEPAGE="https://wiki.linuxfoundation.org/networking/iputils"
 
 LICENSE="BSD GPL-2+ rdisc"
 SLOT="0"
-IUSE="+arping caps clockdiff doc gcrypt idn nettle nls ssl static test tracepath"
+IUSE="+arping caps clockdiff doc idn nls static test tracepath"
 RESTRICT="!test? ( test )"
 
 LIB_DEPEND="
