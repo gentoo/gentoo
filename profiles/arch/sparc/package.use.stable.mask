@@ -7,6 +7,9 @@
 # bug #636252
 net-fs/nfs-utils nfsv4
 net-fs/samba client
+gnome-base/gvfs samba
+media-video/ffmpeg samba
+media-video/vlc samba
 
 # Sam James <sam@gentoo.org> (2022-05-10)
 # sys-apps/keyutils not stable here, because of
