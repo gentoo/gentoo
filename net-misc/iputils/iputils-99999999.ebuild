@@ -110,13 +110,8 @@ src_test() {
 src_install() {
 	meson_src_install
 
-	dodir /bin
-	local my_bin
-	for my_bin in $(usex arping arping '') ping ; do
-		mv "${ED}"/usr/bin/${my_bin} "${ED}"/bin/ || die
-	done
-	dosym ping /bin/ping4
-	dosym ping /bin/ping6
+	dosym ping /usr/bin/ping4
+	dosym ping /usr/bin/ping6
 
 	if use tracepath ; then
 		dosym tracepath /usr/bin/tracepath4
