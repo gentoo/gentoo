@@ -11,7 +11,7 @@ HOMEPAGE="https://plantuml.com"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DEPEND=">=virtual/jdk-1.8:*"
 
