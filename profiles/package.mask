@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2022-05-11)
+# Declared EOL by upstream at the end of 2020, no revdeps, last version
+# has many issues. Removal on 2022-06-10. Bug #741846, #770760.
+media-gfx/nvidia-texture-tools
+
 # Florian Schmaus <flow@gentoo.org> (2022-05-10)
 # Was split by upstream (and us) into
 # net-analyzer/gsa and net-analyzer/gsad.
