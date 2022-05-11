@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{7..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
@@ -22,7 +22,6 @@ RDEPEND="
 BDEPEND="
 	test? (
 		$(python_gen_impl_dep sqlite)
-		dev-python/nose[${PYTHON_USEDEP}]
 	)
 "
 
