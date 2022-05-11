@@ -85,7 +85,3 @@ EPYTEST_DESELECT=(
 	# TODO
 	tests/integrations/wsgi/test_wsgi.py::test_auto_session_tracking_with_aggregates
 )
-
-python_test() {
-	epytest tests
-}
