@@ -21,7 +21,7 @@ DEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
 	media-libs/giflib:=[${MULTILIB_USEDEP}]
 	media-libs/libpng:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
-	virtual/jpeg[${MULTILIB_USEDEP}]
+	media-libs/libjpeg-turbo[${MULTILIB_USEDEP}]
 	>=x11-misc/shared-mime-info-2.2
 	gdk-pixbuf? (
 		dev-libs/glib:2
@@ -34,7 +34,6 @@ RDEPEND="${DEPEND}"
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_SKIP_RPATH=ON
 		-DBUILD_TESTING=OFF
 		-DJPEGXL_ENABLE_BENCHMARK=OFF
 		-DJPEGXL_ENABLE_COVERAGE=OFF
