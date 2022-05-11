@@ -40,6 +40,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	app-arch/bzip2:=
 	app-arch/xz-utils:=
+	app-crypt/libb2
 	>=dev-libs/expat-2.1:=
 	dev-libs/libffi:=
 	sys-apps/util-linux:=
@@ -195,6 +196,7 @@ src_configure() {
 		--with-system-expat
 		--with-system-ffi
 		--with-platlibdir=lib
+		--with-pkg-config=yes
 
 		$(use_with lto)
 		$(use_enable pgo optimizations)
