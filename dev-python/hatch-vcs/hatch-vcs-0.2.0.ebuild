@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~m68k ~riscv"
+KEYWORDS="~amd64 ~arm64 ~loong ~m68k ~ppc ~riscv"
 
 RDEPEND="
 	>=dev-python/setuptools_scm-6.4.0[${PYTHON_USEDEP}]
