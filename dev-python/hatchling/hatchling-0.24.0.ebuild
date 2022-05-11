@@ -13,10 +13,10 @@ MY_P=hatch-${TAG}
 DESCRIPTION="Modern, extensible Python build backend"
 HOMEPAGE="
 	https://pypi.org/project/hatchling/
-	https://github.com/ofek/hatch/
+	https://github.com/pypa/hatch/
 "
 SRC_URI="
-	https://github.com/ofek/hatch/archive/${TAG}.tar.gz
+	https://github.com/pypa/hatch/archive/${TAG}.tar.gz
 		-> ${MY_P}.tar.gz
 "
 S=${WORKDIR}/${MY_P}/backend
