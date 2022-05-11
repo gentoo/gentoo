@@ -3,40 +3,35 @@
 
 EAPI=8
 
-CMAKE_ECLASS=cmake
-inherit cmake-multilib xdg
+inherit cmake-multilib
 
 DESCRIPTION="JPEG XL image format reference implementation"
 HOMEPAGE="https://github.com/libjxl/libjxl"
 
-SRC_URI="https://api.github.com/repos/libjxl/libjxl/tarball/3f8e77fcfabe8ca8ddee6be4e662de525667c570 -> ${P}.tar.gz"
+SRC_URI="https://api.github.com/repos/libjxl/libjxl/tarball/105bf1a20be35c2d0d7dd302c008f3669c2f998c -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="examples openexr"
+IUSE="openexr"
 
 DEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
 	dev-cpp/gflags:=[${MULTILIB_USEDEP}]
 	>=dev-cpp/highway-0.16.0[${MULTILIB_USEDEP}]
 	media-libs/giflib:=[${MULTILIB_USEDEP}]
-	media-libs/lcms:=[${MULTILIB_USEDEP}]
+	>=media-libs/lcms-2.13:=[${MULTILIB_USEDEP}]
 	media-libs/libpng:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
-	virtual/jpeg[${MULTILIB_USEDEP}]
-	x11-misc/shared-mime-info
+	media-libs/libjpeg-turbo[${MULTILIB_USEDEP}]
+	>=x11-misc/shared-mime-info-2.2
 	openexr? ( media-libs/openexr:= )
 "
-
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-0.7.0-atomic.patch" )
-
-S="${WORKDIR}/libjxl-libjxl-3f8e77f"
+S="${WORKDIR}/libjxl-libjxl-105bf1a"
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_SKIP_RPATH=ON
 		-DBUILD_TESTING=OFF
 		-DJPEGXL_ENABLE_BENCHMARK=OFF
 		-DJPEGXL_ENABLE_COVERAGE=OFF
@@ -54,18 +49,17 @@ multilib_src_configure() {
 		-DJPEGXL_ENABLE_MANPAGES=OFF
 		-DJPEGXL_ENABLE_JNI=OFF
 		-DJPEGXL_ENABLE_TCMALLOC=OFF
+		-DJPEGXL_ENABLE_EXAMPLES=OFF
 	)
 
 	if multilib_is_native_abi; then
 		mycmakeargs+=(
 			-DJPEGXL_ENABLE_TOOLS=ON
-			-DJPEGXL_ENABLE_EXAMPLES=$(usex examples)
 			-DJPEGXL_ENABLE_OPENEXR=$(usex openexr)
 		)
 	else
 		mycmakeargs+=(
 			-DJPEGXL_ENABLE_TOOLS=OFF
-			-DJPEGXL_ENABLE_EXAMPLES=OFF
 			-DJPEGXL_ENABLE_OPENEXR=OFF
 		)
 	fi
@@ -75,15 +69,6 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	cmake_src_install
-
-	if multilib_is_native_abi; then
-		if use examples; then
-			dobin "${BUILD_DIR}/jxlinfo"
-		fi
-
-		insinto /usr/share/mime/packages
-		doins -r "${S}"/plugins/mime/image-jxl.xml
-	fi
 
 	find "${D}" -name '*.a' -delete || die
 }
