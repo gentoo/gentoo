@@ -20,6 +20,8 @@ IUSE="static-libs"
 RDEPEND=">=sys-libs/ncurses-5.9-r3[static-libs?,${MULTILIB_USEDEP}]"
 DEPEND=${RDEPEND}
 
+QA_PKGCONFIG_VERSION=$(ver_cut 2-3)
+
 multilib_src_configure() {
 	local myconf=(
 		$(use_enable static-libs static)
