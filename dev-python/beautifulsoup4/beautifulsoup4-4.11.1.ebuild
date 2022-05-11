@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
@@ -20,6 +20,17 @@ RDEPEND="
 	dev-python/soupsieve[${PYTHON_USEDEP}]
 	dev-python/html5lib[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
+"
+# bs4 prefers cchardet > chardet > charset-normalizer
+# however, charset-normalizer causes test failures, so force the other two
+# dev-python/chardet[${PYTHON_USEDEP}]
+BDEPEND="
+	test? (
+		|| (
+			dev-python/cchardet[${PYTHON_USEDEP}]
+			dev-python/chardet[${PYTHON_USEDEP}]
+		)
+	)
 "
 
 distutils_enable_tests pytest
