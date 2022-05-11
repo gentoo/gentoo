@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
@@ -32,12 +32,15 @@ BDEPEND="
 		dev-python/pytest-xprocess[${PYTHON_USEDEP}]
 		dev-python/watchdog[${PYTHON_USEDEP}]
 		!alpha? ( !hppa? ( !ia64? (
-			dev-python/cryptography[${PYTHON_USEDEP}]
+			$(python_gen_cond_dep '
+				dev-python/cryptography[${PYTHON_USEDEP}]
+			' python3_{8..10} pypy3 # TODO: add py3.11 when ported
+			)
 		) ) )
 		!hppa? ( !ia64? ( !loong? (
 			$(python_gen_cond_dep '
 				dev-python/greenlet[${PYTHON_USEDEP}]
-			' 'python*')
+			' python3_{8..10})
 		) ) )
 	)
 "
