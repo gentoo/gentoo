@@ -55,3 +55,7 @@ distutils_enable_sphinx docs \
 	dev-python/sphinx_ansible_theme
 
 distutils_enable_tests pytest
+
+python_test() {
+	epytest -p pytest_markdown.plugin
+}
