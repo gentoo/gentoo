@@ -21,7 +21,6 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 SLOT="0"
 
 RDEPEND="
-	>=dev-python/backports-entry_points_selectable-1.0.4[${PYTHON_USEDEP}]
 	>=dev-python/distlib-0.3.1[${PYTHON_USEDEP}]
 	>=dev-python/filelock-3[${PYTHON_USEDEP}]
 	>=dev-python/platformdirs-2[${PYTHON_USEDEP}]
