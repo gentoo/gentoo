@@ -4,12 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
 DESCRIPTION="Python library providing a few tools handling SemVer in Python"
-HOMEPAGE="https://pypi.org/project/semantic-version/"
+HOMEPAGE="
+	https://github.com/rbarrois/python-semanticversion/
+	https://pypi.org/project/semantic-version/
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
