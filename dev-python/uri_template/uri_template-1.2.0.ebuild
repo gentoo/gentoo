@@ -4,14 +4,19 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..11} )
 
 inherit distutils-r1
 
 MY_P="${PN}-v${PV}"
 DESCRIPTION="URI Template expansion in strict adherence to RFC 6570"
-HOMEPAGE="https://gitlab.linss.com/open-source/uri_template/"
-SRC_URI="https://gitlab.linss.com/open-source/${PN}/-/archive/v${PV}/${MY_P}.tar.gz"
+HOMEPAGE="
+	https://gitlab.linss.com/open-source/uri_template/
+	https://pypi.org/project/uri-template/
+"
+SRC_URI="
+	https://gitlab.linss.com/open-source/${PN}/-/archive/v${PV}/${MY_P}.tar.gz
+"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
