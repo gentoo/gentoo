@@ -23,7 +23,6 @@ DEPEND=${RDEPEND}
 multilib_src_configure() {
 	local myconf=(
 		$(use_enable static-libs static)
-		--enable-widec
 		--enable-fast-install
 	)
 
