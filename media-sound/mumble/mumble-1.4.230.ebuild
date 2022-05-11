@@ -71,6 +71,8 @@ BDEPEND="
 
 PATCHES=(
 	"${WORKDIR}/${PN}-1.4-openssl3.patch"
+	"${FILESDIR}/${PN}-1.4.230-gcc12-include-memory.patch"
+	"${FILESDIR}/${PN}-1.4.230-poco-link-cmake.patch"
 )
 
 src_prepare() {
