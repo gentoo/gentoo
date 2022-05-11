@@ -1299,6 +1299,9 @@ epytest() {
 		-p no:flake8
 		-p no:flakes
 		-p no:pylint
+		# sterilize pytest-markdown as it runs code snippets from all
+		# *.md files found without any warning
+		-p no:markdown
 	)
 	local x
 	for x in "${EPYTEST_DESELECT[@]}"; do
