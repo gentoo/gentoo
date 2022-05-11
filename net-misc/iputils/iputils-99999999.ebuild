@@ -29,19 +29,17 @@ HOMEPAGE="https://wiki.linuxfoundation.org/networking/iputils"
 
 LICENSE="BSD GPL-2+ rdisc"
 SLOT="0"
-IUSE="+arping caps clockdiff doc idn nls static test tracepath"
+IUSE="+arping caps clockdiff doc idn nls test tracepath"
 RESTRICT="!test? ( test )"
 
-LIB_DEPEND="
-	caps? ( sys-libs/libcap[static-libs(+)] )
-	idn? ( net-dns/libidn2:=[static-libs(+)] )
-	nls? ( virtual/libintl[static-libs(+)] )
+RDEPEND="
+	caps? ( sys-libs/libcap )
+	idn? ( net-dns/libidn2:= )
+	nls? ( virtual/libintl )
 "
-RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="
 	${RDEPEND}
 	virtual/os-headers
-	static? ( ${LIB_DEPEND} )
 "
 BDEPEND="
 	virtual/pkgconfig
@@ -66,8 +64,6 @@ src_prepare() {
 }
 
 src_configure() {
-	use static && append-ldflags -static
-
 	local emesonargs=(
 		-DUSE_CAP=$(usex caps true false)
 		-DUSE_IDN=$(usex idn true false)
