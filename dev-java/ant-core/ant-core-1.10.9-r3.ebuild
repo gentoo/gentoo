@@ -9,6 +9,7 @@ JAVA_ANT_DISABLE_ANT_CORE_DEP="true"
 # Rewriting build.xml files for the testcases has no use at the moment.
 JAVA_PKG_BSFIX_ALL="no"
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="org.apache.ant:ant:1.10.9"
 
 inherit java-pkg-2 java-ant-2 prefix
 
