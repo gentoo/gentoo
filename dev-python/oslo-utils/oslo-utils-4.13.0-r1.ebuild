@@ -27,6 +27,7 @@ RDEPEND="
 	>=dev-python/debtcollector-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/pyparsing-2.1.0[${PYTHON_USEDEP}]
 	>=dev-python/packaging-20.4[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	>=dev-python/pbr-2.2.0[${PYTHON_USEDEP}]
