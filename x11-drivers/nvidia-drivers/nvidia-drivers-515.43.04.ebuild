@@ -15,8 +15,9 @@ HOMEPAGE="https://www.nvidia.com/download/index.aspx"
 SRC_URI="
 	amd64? ( ${NV_URI}Linux-x86_64/${PV}/NVIDIA-Linux-x86_64-${PV}.run )
 	arm64? ( ${NV_URI}Linux-aarch64/${PV}/NVIDIA-Linux-aarch64-${PV}.run )
-		$(printf "${NV_URI}%s/%s-${PV}.tar.bz2 " \
-			nvidia-{installer,modprobe,persistenced,settings,xconfig}{,})"
+	$(printf "${NV_URI}%s/%s-${PV}.tar.bz2 " \
+		nvidia-{installer,modprobe,persistenced,settings,xconfig}{,})
+	${NV_URI}NVIDIA-kernel-module-source/NVIDIA-kernel-module-source-${PV}.tar.xz"
 # nvidia-installer is unused but here for GPL-2's "distribute sources"
 S="${WORKDIR}"
 
@@ -111,7 +112,8 @@ pkg_setup() {
 		nvidia-modeset(video:kernel)
 		nvidia-peermem(video:kernel)
 		nvidia-uvm(video:kernel)"
-	use kernel-open && MODULE_NAMES=${MODULE_NAMES//:kernel/:kernel-open}
+	use kernel-open &&
+		MODULE_NAMES=${MODULE_NAMES//:kernel/:kernel-module-source:kernel-module-source/kernel-open}
 
 	linux-mod_pkg_setup
 
@@ -153,12 +155,13 @@ src_prepare() {
 	rm nvidia-persistenced && mv nvidia-persistenced{-${PV},} || die
 	rm nvidia-settings && mv nvidia-settings{-${PV},} || die
 	rm nvidia-xconfig && mv nvidia-xconfig{-${PV},} || die
+	mv NVIDIA-kernel-module-source-${PV} kernel-module-source || die
 
 	default
 
 	# prevent detection of incomplete kernel DRM support (bug #603818)
 	sed 's/defined(CONFIG_DRM/defined(CONFIG_DRM_KMS_HELPER/g' \
-		-i kernel{,-open}/conftest.sh || die
+		-i kernel{,-module-source/kernel-open}/conftest.sh || die
 
 	# adjust service files
 	sed 's/__USER__/nvpd/' \
@@ -173,6 +176,13 @@ src_prepare() {
 	# makefile attempts to install wayland library even if not built
 	use wayland || sed -i 's/ WAYLAND_LIB_install$//' \
 		nvidia-settings/src/Makefile || die
+
+	# temporary option, nvidia will remove in the future
+	use !kernel-open ||
+		sed -i '/blacklist/a\
+\
+# Enable using kernel-open with workstation GPUs (experimental)\
+options nvidia NVreg_OpenRmEnableUnsupportedGpus=1' "${T}"/nvidia.conf || die
 }
 
 src_compile() {
@@ -386,6 +396,11 @@ https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 		insinto /usr/share/dbus-1/system.d
 		doins nvidia-dbus.conf
 	fi
+
+	# symlink non-versioned profile for nvidia-settings in case
+	# fails to detect version (i.e. mismatch, or with kernel-open)
+	dosym nvidia-application-profiles-${PV}-key-documentation \
+		${paths[APPLICATION_PROFILE]}/nvidia-application-profiles-key-documentation
 }
 
 pkg_preinst() {
