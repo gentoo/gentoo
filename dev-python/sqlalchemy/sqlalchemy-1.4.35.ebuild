@@ -45,7 +45,10 @@ src_prepare() {
 }
 
 python_test() {
-	local EPYTEST_DESELECT=()
+	local EPYTEST_DESELECT=(
+		# warning tests are unreliable
+		test/base/test_warnings.py
+	)
 	[[ ${EPYTHON} == pypy3 ]] && EPYTEST_DESELECT+=(
 		test/ext/test_associationproxy.py::ProxyHybridTest::test_msg_fails_on_cls_access
 	)
