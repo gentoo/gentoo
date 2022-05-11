@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/JoshData/python-email-validator"
 SRC_URI="https://github.com/JoshData/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CC0-1.0"
-KEYWORDS="amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 SLOT="0"
 
 RDEPEND="
