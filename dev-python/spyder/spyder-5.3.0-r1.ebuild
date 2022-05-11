@@ -126,6 +126,7 @@ python_prepare_all() {
 	# Do not depend on pyqtwebengine<5.16, this dependency is carried by QtPy[webengine]
 	# Do not depend on parso and jedi, this is dependency is carried in python-lsp-server
 	# Do not depend on python-lsp-server, this dependency is carried in pyls-spyder
+	# Do not depend on ipython, this dependency is carried in spyder-kernels
 	# The explicit version requirements only make things more complicated, if e.g.
 	# pyls-spyder gains compatibility with a newer version of python-lsp-server
 	# in a new release it will take time for this information to propagate into
@@ -139,6 +140,7 @@ python_prepare_all() {
 		-e '/parso/d' \
 		-e '/jedi/d' \
 		-e '/pylint/d' \
+		-e '/ipython/d' \
 			requirements/conda.txt || die
 	sed -i \
 		-e "/'pyqt5[ 0-9<=>.,]*',/d" \
@@ -147,6 +149,7 @@ python_prepare_all() {
 		-e "/'parso[ 0-9<=>.,]*',/d" \
 		-e "/'jedi[ 0-9<=>.,]*',/d" \
 		-e "/'pylint[ 0-9<=>.,]*',/d" \
+		-e "/'ipython[ 0-9<=>.,]*',/d" \
 			setup.py || die
 	sed -i \
 		-e "/^PYLS_REQVER/c\PYLS_REQVER = '>=0.0.1'" \
@@ -154,6 +157,7 @@ python_prepare_all() {
 		-e "/^PARSO_REQVER/c\PARSO_REQVER = '>=0.0.1'" \
 		-e "/^JEDI_REQVER/c\JEDI_REQVER = '>=0.0.1'" \
 		-e "/^PYLINT_REQVER/c\PYLINT_REQVER = '>=0.0.1'" \
+		-e "/^IPYTHON_REQVER/c\IPYTHON_REQVER = '>=0.0.1'" \
 			spyder/dependencies.py || die
 
 	# do not check deps, fails because we removed dependencies above
