@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~m68k ~ppc ~riscv"
+KEYWORDS="~amd64 ~arm64 ~loong ~m68k ~ppc ~riscv ~sparc"
 
 BDEPEND="
 	dev-python/hatch-vcs[${PYTHON_USEDEP}]
