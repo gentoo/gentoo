@@ -20,7 +20,6 @@ RDEPEND="
 	dev-python/cloudpickle[${PYTHON_USEDEP}]
 	>=dev-python/ipykernel-6.9.2[${PYTHON_USEDEP}]
 	>=dev-python/ipython-7.31.1[${PYTHON_USEDEP}]
-	<dev-python/ipython-8[${PYTHON_USEDEP}]
 	>=dev-python/jupyter_client-7.1.0[${PYTHON_USEDEP}]
 	dev-python/matplotlib-inline[${PYTHON_USEDEP}]
 	>=dev-python/pyzmq-22.1.0[${PYTHON_USEDEP}]
@@ -32,7 +31,7 @@ BDEPEND="
 		dev-python/cython[${PYTHON_USEDEP}]
 		dev-python/dask[${PYTHON_USEDEP}]
 		dev-python/flaky[${PYTHON_USEDEP}]
-		dev-python/matplotlib[tk,${PYTHON_USEDEP}]
+		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
@@ -42,6 +41,15 @@ BDEPEND="
 	)"
 
 distutils_enable_tests pytest
+
+python_prepare_all() {
+	# No additional test failures with ipython-8: 843251
+	sed -i \
+		-e "s/ipython>=7.31.1,<8/ipython>=7.31.1/g" \
+			setup.py || die
+
+	distutils-r1_python_prepare_all
+}
 
 python_test() {
 	local deselect=(
