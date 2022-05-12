@@ -3,7 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( pypy3 python3_{8..10} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( pypy3 python3_{8..11} )
 inherit distutils-r1
 
 DESCRIPTION="Standalone version of django.utils.feedgenerator"
