@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
@@ -27,7 +27,8 @@ BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
-	)"
+	)
+"
 
 distutils_enable_tests pytest
 
@@ -36,5 +37,13 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local -x PYTEST_PLUGINS=xdist.plugin,xdist.looponfail,pytest_forked,pytest_subtests
+	local EPYTEST_DESELECT=()
+	[[ ${EPYTHON} == python3.11 ]] && EPYTEST_DESELECT+=(
+		# broken by output changes
+		# https://github.com/pytest-dev/pytest-subtests/issues/69
+		"tests/test_subtests.py::TestSubTest::test_simple_terminal_normal[unittest]"
+		"tests/test_subtests.py::TestSubTest::test_simple_terminal_verbose[unittest]"
+	)
+
 	epytest
 }
