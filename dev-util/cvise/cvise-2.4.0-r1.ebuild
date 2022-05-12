@@ -67,6 +67,5 @@ src_test() {
 src_install() {
 	cmake_src_install
 
-
 	python_fix_shebang "${ED}"/usr/bin/cvise
 }
