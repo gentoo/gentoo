@@ -1383,6 +1383,8 @@ gcc_do_filter_flags() {
 	filter-flags -frecord-gcc-switches # 490738
 	filter-flags -mno-rtm -mno-htm # 506202
 
+	filter-flags '-fsanitize=*'
+
 	if tc_version_is_between 6 8 ; then
 		# -mstackrealign triggers crashes in exception throwing
 		# at least on ada: bug #688580
