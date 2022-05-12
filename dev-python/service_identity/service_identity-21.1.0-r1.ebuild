@@ -4,14 +4,14 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
 DESCRIPTION="Service identity verification for pyOpenSSL"
 HOMEPAGE="
 	https://github.com/pyca/service-identity/
-	https://pypi.org/project/service_identity/
+	https://pypi.org/project/service-identity/
 "
 SRC_URI="
 	https://github.com/pyca/service-identity/archive/${PV}.tar.gz
