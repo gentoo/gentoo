@@ -47,6 +47,8 @@ src_prepare() {
 	sed -i -e 's:test_custom_shebang:_&:' tests/test_scripts.py || die
 	# broken with py3.11, doesn't look important
 	sed -i -e 's:test_sequencer_basic:_&:' tests/test_util.py || die
+	# https://bugs.gentoo.org/843839
+	sed -i -e 's:test_interpreter_args:_&:' tests/test_scripts.py || die
 
 	distutils-r1_src_prepare
 }
