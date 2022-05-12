@@ -4,11 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( pypy3 python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..11} )
+
 inherit distutils-r1
 
 DESCRIPTION="Poetry PEP 517 Build Backend"
-HOMEPAGE="https://pypi.org/project/poetry-core/ https://github.com/python-poetry/poetry-core"
+HOMEPAGE="
+	https://github.com/python-poetry/poetry-core/
+	https://pypi.org/project/poetry-core/
+"
 SRC_URI="
 	https://github.com/python-poetry/poetry-core/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
