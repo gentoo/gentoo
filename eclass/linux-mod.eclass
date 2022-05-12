@@ -719,7 +719,7 @@ linux-mod_src_compile() {
 		fi
 	done
 
-	set_arch_to_portage
+	set_arch_to_pkgmgr
 	ABI="${myABI}"
 }
 
