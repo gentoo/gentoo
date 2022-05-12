@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop wrapper xdg-utils
 
@@ -181,12 +181,14 @@ src_install() {
 	dosym ../../../../etc/ssl/certs "${ICAROOT}"/keystore/cacerts
 
 	local util_files=(
+		HdxRtcEngine
 		configmgr
 		conncenter
 		ctx_app_bind
 		ctx_rehash
 		ctxlogd
 		ctxwebhelper
+		echo_cmd
 		gst_play1.0
 		gst_read1.0
 		hdxcheck.sh
