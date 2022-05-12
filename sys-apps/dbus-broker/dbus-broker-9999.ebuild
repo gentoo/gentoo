@@ -41,7 +41,7 @@ if [[ ${PV} == 9999 ]]; then
 src_unpack() {
 	git-r3_src_unpack
 	cd "${P}" || die
-	meson subprojects download
+	meson subprojects download || die
 }
 fi
 
