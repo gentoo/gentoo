@@ -54,7 +54,6 @@ BDEPEND="
 			dev-python/mock[${PYTHON_USEDEP}]
 			dev-python/pip[${PYTHON_USEDEP}]
 			dev-python/pip-run[${PYTHON_USEDEP}]
-			dev-python/sphinx[${PYTHON_USEDEP}]
 			dev-python/pytest[${PYTHON_USEDEP}]
 			dev-python/pytest-fixture-config[${PYTHON_USEDEP}]
 			dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
@@ -63,7 +62,7 @@ BDEPEND="
 			>=dev-python/tomli-w-1.0.0[${PYTHON_USEDEP}]
 			>=dev-python/virtualenv-20[${PYTHON_USEDEP}]
 			dev-python/wheel[${PYTHON_USEDEP}]
-		' python3_{8..10} pypy3)
+		' python3_{8..11} pypy3)
 	)
 "
 PDEPEND="
@@ -99,7 +98,7 @@ python_test() {
 	local -x SETUPTOOLS_USE_DISTUTILS=stdlib
 
 	# keep in sync with python_gen_cond_dep above!
-	has "${EPYTHON}" python3.{8..10} pypy3 || return
+	has "${EPYTHON}" python3.{8..11} pypy3 || return
 
 	local EPYTEST_DESELECT=(
 		# network
