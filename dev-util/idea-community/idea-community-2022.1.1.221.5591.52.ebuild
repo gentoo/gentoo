@@ -8,9 +8,6 @@ SLOT="0"
 PV_STRING="$(ver_cut 2-6)"
 MY_PV="$(ver_cut 1-3)"
 
-echo "PV_STRING is ${PV_STRING}"
-echo "MY_PV is ${MY_PV}"
-
 MY_PN="idea"
 # Using the most recent Jetbrains Runtime binaries available at the time of writing
 # ( jre 11.0.10 build 1304.4  )
@@ -29,8 +26,6 @@ else
 	SRC_URI="https://download.jetbrains.com/idea/${MY_PN}IC-${MY_PV}-no-jbr.tar.gz?_ga=${IDEA_VER} -> ${MY_PN}IC-${PV_STRING}.tar.gz
 		amd64? ( https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-${JRE11_BASE}-linux-x64-b${JRE11_VER}.tar.gz -> jbr-${JRE11_BASE}-linux-x64-b${JRE11_VER}.tar.gz )"
 fi
-
-echo "SRC_URI is ${SRC_URI}"
 
 DESCRIPTION="A complete toolset for web, mobile and enterprise development"
 HOMEPAGE="https://www.jetbrains.com/idea"
@@ -55,8 +50,6 @@ RDEPEND="${DEPEND}
 BDEPEND="dev-util/patchelf"
 RESTRICT="splitdebug"
 S="${WORKDIR}/${MY_PN}-IC-$(ver_cut 4-6)"
-
-echo "S is ${S}"
 
 QA_PREBUILT="opt/${PN}-${MY_PV}/*"
 
