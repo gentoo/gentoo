@@ -12,7 +12,8 @@ DESCRIPTION="HTTP/2 State-Machine based protocol implementation"
 HOMEPAGE="
 	https://python-hyper.org/projects/h2/en/stable/
 	https://github.com/python-hyper/h2/
-	https://pypi.org/project/h2/"
+	https://pypi.org/project/h2/
+"
 SRC_URI="https://github.com/python-hyper/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
