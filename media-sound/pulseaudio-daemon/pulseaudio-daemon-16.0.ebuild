@@ -32,7 +32,7 @@ SLOT="0"
 # +alsa-plugin as discussed in bug #519530
 # TODO: Find out why webrtc-aec is + prefixed - there's already the always available speexdsp-aec
 # NOTE: The current ebuild sets +X almost certainly just for the pulseaudio.desktop file
-IUSE="+alsa +alsa-plugin aptx +asyncns bluetooth dbus elogind equalizer +gdbm +glib gstreamer gtk ipv6 jack ldac lirc
+IUSE="+alsa +alsa-plugin aptx +asyncns bluetooth dbus elogind equalizer fftw +gdbm +glib gstreamer gtk ipv6 jack ldac lirc
 native-headset ofono-headset +orc oss selinux sox ssl systemd system-wide tcpd test +udev valgrind +webrtc-aec +X zeroconf"
 
 RESTRICT="!test? ( test )"
@@ -83,7 +83,10 @@ COMMON_DEPEND="
 	dbus? ( >=sys-apps/dbus-1.4.12 )
 	elogind? ( sys-auth/elogind )
 	equalizer? (
-		sci-libs/fftw:3.0
+		sci-libs/fftw:3.0=
+	)
+	fftw? (
+		sci-libs/fftw:3.0=
 	)
 	gdbm? ( sys-libs/gdbm:= )
 	glib? ( >=dev-libs/glib-2.28.0:2 )
@@ -173,6 +176,11 @@ src_configure() {
 		enable_bluez5_gstreamer="enabled"
 	fi
 
+	local enable_fftw="disabled"
+	if use equalizer || use fftw ; then
+		enable_fftw="enabled"
+	fi
+
 	local emesonargs=(
 		--localstatedir="${EPREFIX}"/var
 
@@ -203,7 +211,7 @@ src_configure() {
 		$(meson_use ofono-headset bluez5-ofono-headset)
 		$(meson_feature dbus)
 		$(meson_feature elogind)
-		$(meson_feature equalizer fftw)
+		-Dfftw=${enable_fftw}
 		$(meson_feature glib) # WARNING: toggling this likely changes ABI
 		$(meson_feature glib gsettings) # Supposedly correct?
 		$(meson_feature gstreamer)

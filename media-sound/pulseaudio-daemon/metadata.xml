@@ -36,7 +36,10 @@
     </flag>
     <flag name="asyncns">Use libasyncns for asynchronous name resolution.</flag>
     <flag name="equalizer">
-      Enable the equalizer module (requires <pkg>sci-libs/fftw</pkg>).
+      Enable the equalizer module (requires <pkg>sci-libs/fftw</pkg> and <pkg>sys-apps/dbus</pkg>).
+    </flag>
+    <flag name="fftw">
+      Enable the virtual surround sink module (requires <pkg>sci-libs/fftw</pkg>).
     </flag>
     <flag name="ssl">
       Use <pkg>dev-libs/openssl</pkg> to provide support for RAOP
