@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
@@ -30,6 +30,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/automat-0.8.0-no-setup-py-m2r-import.patch"
 	"${FILESDIR}/test_visualize-twisted-import-errors.patch"
+	"${FILESDIR}/${P}-py311.patch"
 )
 
 distutils_enable_tests pytest
