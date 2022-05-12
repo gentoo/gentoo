@@ -466,8 +466,8 @@ pkg_postinst() {
 	if use kernel-open; then
 		ewarn
 		ewarn "Open source variant of ${PN} was selected, be warned it is experimental"
-		ewarn "and only usable with Turing / Ampere and later GPUs. Please also see:"
-		ewarn "${EROOT}/usr/share/doc/${PF}/html/kernel_open.html"
+		ewarn "and only usable with Turing / Ampere and later GPUs, aka GTX 1650+."
+		ewarn "Please also see: ${EROOT}/usr/share/doc/${PF}/html/kernel_open.html"
 	fi
 
 	if use !abi_x86_32 && [[ -v NV_HAD_ABI32 ]]; then
