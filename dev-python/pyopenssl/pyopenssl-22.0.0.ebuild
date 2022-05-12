@@ -4,13 +4,14 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 toolchain-funcs
 
 MY_PN=pyOpenSSL
 MY_P=${MY_PN}-${PV}
+
 DESCRIPTION="Python interface to the OpenSSL library"
 HOMEPAGE="
 	https://www.pyopenssl.org/
@@ -41,7 +42,12 @@ distutils_enable_sphinx doc \
 	dev-python/sphinx_rtd_theme
 distutils_enable_tests pytest
 
-src_configure() {
+src_test() {
+	local -x TZ=UTC
+	local EPYTEST_DESELECT=(
+		tests/test_ssl.py::TestContext::test_set_default_verify_paths
+	)
+
 	# test for 32-bit time_t
 	"$(tc-getCC)" ${CFLAGS} ${CPPFLAGS} -c -x c - -o /dev/null <<-EOF &>/dev/null
 		#include <sys/types.h>
@@ -49,22 +55,13 @@ src_configure() {
 	EOF
 
 	if [[ ${?} -eq 0 ]]; then
-		PYOPENSSL_SKIP_LARGE_TIME=
 		einfo "time_t is at least 64-bit long"
 	else
-		PYOPENSSL_SKIP_LARGE_TIME=1
 		einfo "time_t is smaller than 64 bits, will skip broken tests"
+		EPYTEST_DESELECT+=(
+			tests/test_crypto.py::TestX509StoreContext::test_verify_with_time
+		)
 	fi
-}
 
-python_test() {
-	local -x TZ=UTC
-	local EPYTEST_DESELECT=(
-		tests/test_ssl.py::TestContext::test_set_default_verify_paths
-	)
-	[[ ${PYOPENSSL_SKIP_LARGE_TIME} ]] && EPYTEST_DESELECT+=(
-		tests/test_crypto.py::TestX509StoreContext::test_verify_with_time
-	)
-
-	epytest
+	distutils-r1_src_test
 }
