@@ -473,6 +473,10 @@ pkg_postinst() {
 		ewarn "Open source variant of ${PN} was selected, be warned it is experimental"
 		ewarn "and only usable with Turing / Ampere and later GPUs, aka GTX 1650+."
 		ewarn "Please also see: ${EROOT}/usr/share/doc/${PF}/html/kernel_open.html"
+		ewarn
+		ewarn "Many features are not yet implemented in the drivers and limitations are"
+		ewarn "to be expected. Please do not report non-build/packaging bugs to Gentoo."
+		ewarn "Switch back to USE=-kernel-open to restore functionality if needed for now."
 	fi
 
 	if use !abi_x86_32 && [[ -v NV_HAD_ABI32 ]]; then
