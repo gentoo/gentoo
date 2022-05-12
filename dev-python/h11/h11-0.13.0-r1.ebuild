@@ -4,12 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..11} )
 
 inherit distutils-r1
 
 DESCRIPTION="A pure-Python implementation of HTTP/1.1 inspired by hyper-h2"
-HOMEPAGE="https://github.com/python-hyper/h11/ https://pypi.org/project/h11/"
+HOMEPAGE="
+	https://h11.readthedocs.io/en/latest/
+	https://github.com/python-hyper/h11/
+	https://pypi.org/project/h11/
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
