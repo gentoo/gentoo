@@ -100,7 +100,6 @@ src_prepare() {
 	sed 's/@install_bin@/install -c/' -i src/Makefile.global.in || die
 
 	use server || eapply "${FILESDIR}/${PN}-14_rc1-no-server.patch"
-	use llvm && eapply "${FILESDIR}/postgres-llvm14.patch"
 
 	if use pam ; then
 		sed "s/\(#define PGSQL_PAM_SERVICE \"postgresql\)/\1-${SLOT}/" \
