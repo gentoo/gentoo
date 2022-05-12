@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1 multiprocessing
 
@@ -55,7 +55,11 @@ python_test() {
 		'tests/test_util.py::test_wheel_metadata[True]'
 		tests/test_util.py::test_with_get_requires
 	)
+	[[ ${EPYTHON} == python3.11 ]] && EPYTEST_DESELECT+=(
+		# fixed in git but the patch is large-ish
+		tests/test_env.py::test_executable_missing_post_creation
+	)
 
-	epytest -p no:flaky \
-		-n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")"
+	epytest -p no:flaky -n "$(makeopts_jobs)" \
+		-W"ignore:path is deprecated.:DeprecationWarning"
 }
