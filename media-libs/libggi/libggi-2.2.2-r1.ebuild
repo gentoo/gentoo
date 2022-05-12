@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit autotools
+
 DESCRIPTION="Provides an opaque interface to the display's acceleration function"
 HOMEPAGE="https://ibiblio.org/ggicore/packages/libggi.html"
 SRC_URI="mirror://sourceforge/ggi/${P}.src.tar.bz2"
@@ -24,6 +26,20 @@ DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 
 DOCS=( ChangeLog ChangeLog.1999 FAQ NEWS README )
+
+PATCHES=(
+	"${FILESDIR}/${P}-slibtool.patch" # 775584
+)
+
+src_prepare() {
+	default
+
+	# We really don't want this
+	# https://sourceforge.net/p/ggi/patches/7/
+	rm -f acinclude.m4 || die
+
+	eautoreconf
+}
 
 src_configure() {
 	local myconf=""
