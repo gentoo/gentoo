@@ -15,6 +15,7 @@ KEYWORDS="~amd64"
 IUSE="dinput +dynarec experimental +fluidsynth +munt new-dynarec +openal +qt5 +threads"
 
 DEPEND="
+	app-emulation/faudio
 	dev-libs/libevdev
 	media-libs/freetype:2=
 	media-libs/libpng:=
