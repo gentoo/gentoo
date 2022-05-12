@@ -64,8 +64,7 @@
       Build with oFono HFP backend for bluez 5, requires <pkg>net-misc/ofono</pkg>.
     </flag>
     <flag name="gstreamer">
-      Build with support for gstreamer including ability to use bluetooth codecs.
-      For bluetooth codecs see USE ldac and aptx.
+      Build GStreamer-based RTP protocol module which supports more advanced RTP features like OPUS payload encoding.
     </flag>
     <flag name="aptx">
       aptX (HD) over Bluetooth (many Android compatible headphones), requires <pkg>media-plugins/gst-plugins-openaptx</pkg>.
