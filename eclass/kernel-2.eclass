@@ -1411,7 +1411,16 @@ kernel-2_src_unpack() {
 
 	# allow ebuilds to massage the source tree after patching but before
 	# we run misc `make` functions below
-	[[ $(type -t kernel-2_hook_premake) == "function" ]] && kernel-2_hook_premake
+	if [[ $(type -t kernel-2_hook_premake) == "function" ]]; then
+		ewarn "The function name: kernel-2_hook_premake is being deprecated and"
+		ewarn "being changed to:  kernel-2_insert_premake to comply with pms policy."
+		ewarn "See bug #843686 "
+		ewarn "The call to the old function name will be removed on or about July 1st, 2022 "
+		ewarn "Please update your ebuild before this date."
+		kernel-2_hook_premake
+	else
+		[[ $(type -t kernel-2_insert_premake) == "function" ]] && kernel-2_insert_premake
+	fi
 
 	debug-print "Doing unpack_set_extraversion"
 
