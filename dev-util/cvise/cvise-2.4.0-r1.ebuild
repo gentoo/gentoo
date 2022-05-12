@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,8 +24,6 @@ DEPEND="
 	|| (
 		sys-devel/clang:13
 		sys-devel/clang:12
-		sys-devel/clang:11
-		sys-devel/clang:10
 	)
 	<sys-devel/clang-$(( LLVM_MAX_SLOT + 1 )):="
 RDEPEND="${DEPEND}
@@ -64,4 +62,11 @@ src_prepare() {
 src_test() {
 	cd "${BUILD_DIR}" || die
 	epytest
+}
+
+src_install() {
+	cmake_src_install
+
+
+	python_fix_shebang "${ED}"/usr/bin/cvise
 }
