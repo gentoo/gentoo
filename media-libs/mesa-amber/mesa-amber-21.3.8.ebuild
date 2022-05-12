@@ -7,7 +7,8 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit meson-multilib python-any-r1 linux-info
 
-MY_P="${P/_/-}"
+MY_P="${P/-amber}"
+MY_P="${MY_P/_/-}"
 
 DESCRIPTION="OpenGL-like graphic library for Linux"
 HOMEPAGE="https://www.mesa3d.org/ https://mesa.freedesktop.org/"
@@ -37,6 +38,8 @@ IUSE="${IUSE_VIDEO_CARDS}
 LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.107"
 RDEPEND="
 	!<=media-libs/mesa-21.3.8
+	!media-libs/mesa:amber
+	media-libs/mesa[${MULTILIB_USEDEP}]
 
 	>=dev-libs/expat-2.1.0-r3:=[${MULTILIB_USEDEP}]
 	>=media-libs/libglvnd-1.3.2[X?,${MULTILIB_USEDEP}]
