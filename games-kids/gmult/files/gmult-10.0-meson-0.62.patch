@@ -1,0 +1,21 @@
+New meson is more picky about using exe in test() that wasn't found.
+https://bugs.gentoo.org/843866
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -41,9 +41,11 @@
+ )
+ 
+-test(
+-    'validate-appstream',
+-    appstream_util,
+-    args: ['--nonet', 'validate-relax', gmult_appdata],
+-)
++if appstream_util.found()
++    test(
++        'validate-appstream',
++        appstream_util,
++        args: ['--nonet', 'validate-relax', gmult_appdata],
++    )
++endif
+ 
+ resources = gnome.compile_resources(

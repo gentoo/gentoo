@@ -28,6 +28,10 @@ BDEPEND="
 
 DOCS=( NEWS.md README.md )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-meson-0.62.patch
+)
+
 src_configure() {
 	vala_setup
 	meson_src_configure
