@@ -27,6 +27,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-swf_vertification_type_2.patch"
 	"${FILESDIR}/${PN}-swf_vertification_type_2_part_2.patch"
 	"${FILESDIR}/${PN}-fix-chunk-size.patch"
+	"${FILESDIR}/${PN}-2.4_p20210219-gcc-11-missing-include.patch"
 )
 
 if [[ ${PV} == *9999 ]] ; then
