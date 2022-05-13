@@ -5,7 +5,7 @@
 EAPI=7
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1
@@ -41,7 +41,7 @@ BDEPEND="
 			dev-python/pytest-freezegun[\${PYTHON_USEDEP}]
 			>=dev-python/trustme-0.5.3[\${PYTHON_USEDEP}]
 			>=www-servers/tornado-4.2.1[\${PYTHON_USEDEP}]
-		" python3_{8..10})
+		" python3_{8..11})
 	)
 "
 
@@ -49,7 +49,7 @@ python_test() {
 	local -x CI=1
 	# FIXME: get tornado ported
 	# please keep in sync with BDEPEND!
-	if ! has "${EPYTHON}" python3.{8..10}; then
+	if ! has "${EPYTHON}" python3.{8..11}; then
 		einfo "Skipping tests on ${EPYTHON}"
 		return
 	fi
