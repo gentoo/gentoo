@@ -17,7 +17,7 @@ COMMON_DEPEND="acct-group/kube-controller-manager
 	acct-user/kube-controller-manager"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
-BDEPEND=">=dev-lang/go-1.17"
+BDEPEND=">=dev-lang/go-1.18.1"
 
 RESTRICT+=" test"
 S="${WORKDIR}/kubernetes-${PV}"
