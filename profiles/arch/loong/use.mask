@@ -10,7 +10,10 @@
 # Things without support yet
 java
 llvm
+lua_single_target_luajit
+lua_targets_luajit
 valgrind
+
 
 # Temporarily masked during initial keywording
 audit
