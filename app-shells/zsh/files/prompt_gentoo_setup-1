@@ -14,7 +14,7 @@ prompt_gentoo_setup () {
   local prompt_gentoo_user=${2:-'green'}
   local prompt_gentoo_root=${3:-'red'}
 
-  if [ "$USER" = 'root' ]
+  if [ "$EUID" = '0' ]
   then
     local base_prompt="%B%F{$prompt_gentoo_root}%m%k "
   else
