@@ -16,22 +16,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-# Note: requires a glibc version with DT_HASH fix or split libdl.so.
-# For the latter, <glibc-2.34 is acceptable but skip so portage
-# doesn't suggest downgrading to stable users.
-# https://gitlab.com/torkel104/libstrangle/-/issues/59
-# (cleanup these after fixed glibc is stable for some time)
-RDEPEND="
-	sys-apps/grep[pcre]
-	elibc_glibc? (
-		|| (
-			>=sys-libs/glibc-2.35-r4
-			(
-				>=sys-libs/glibc-2.34-r12
-				<sys-libs/glibc-2.35
-			)
-		)
-	)"
+RDEPEND="sys-apps/grep[pcre]"
 DEPEND="
 	media-libs/libglvnd
 	dev-util/vulkan-headers"
