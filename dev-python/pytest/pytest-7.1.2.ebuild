@@ -39,14 +39,17 @@ BDEPEND="
 			dev-python/argcomplete[${PYTHON_USEDEP}]
 			>=dev-python/hypothesis-3.56[${PYTHON_USEDEP}]
 			dev-python/mock[${PYTHON_USEDEP}]
-			dev-python/nose[${PYTHON_USEDEP}]
 			>=dev-python/pygments-2.7.2[${PYTHON_USEDEP}]
 			dev-python/pytest-xdist[${PYTHON_USEDEP}]
 			dev-python/requests[${PYTHON_USEDEP}]
 			dev-python/xmlschema[${PYTHON_USEDEP}]
-		' python3_{8..10} pypy3)
+		' python3_{8..11} pypy3)
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-py311.patch"
+)
 
 src_test() {
 	# workaround new readline defaults
@@ -56,7 +59,7 @@ src_test() {
 }
 
 python_test() {
-	if ! has "${EPYTHON}" python3.{8..10} pypy3; then
+	if ! has "${EPYTHON}" python3.{8..11} pypy3; then
 		einfo "Skipping tests on ${EPYTHON}"
 		return
 	fi
