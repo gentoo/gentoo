@@ -21,7 +21,7 @@ abi_uri() {
 # https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u282-b08/OpenJDK8U-jdk_aarch64_linux_hotspot_jdk8u282-b08.tar.gz
 
 MY_PV=$(ver_rs 1 'u' 2 '-' ${PV//p/b})
-SLOT="$(ver_cut 1)"
+SLOT=$(ver_cut 1)
 
 DESCRIPTION="Prebuilt Java JDK binaries provided by Eclipse Temurin"
 HOMEPAGE="https://adoptium.net"
