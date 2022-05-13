@@ -18,7 +18,7 @@ COMMON_DEPEND="
 	acct-user/kube-apiserver"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
-BDEPEND=">=dev-lang/go-1.17"
+BDEPEND=">=dev-lang/go-1.18.1"
 
 RESTRICT+=" test"
 S="${WORKDIR}/kubernetes-${PV}"
