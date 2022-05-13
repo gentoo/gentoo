@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~arm64"
 IUSE="hardened"
 
 RDEPEND="net-firewall/conntrack-tools"
-BDEPEND=">=dev-lang/go-1.17"
+BDEPEND=">=dev-lang/go-1.18.1"
 
 RESTRICT+=" test"
 S="${WORKDIR}/kubernetes-${PV}"
