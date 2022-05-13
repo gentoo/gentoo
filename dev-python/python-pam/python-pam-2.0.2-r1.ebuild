@@ -13,7 +13,7 @@ SRC_URI="https://github.com/FirefighterBlu3/python-pam/archive/refs/tags/v${PV}.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~riscv x86"
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]"
