@@ -4,12 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..11} )
 
 inherit distutils-r1
 
 DESCRIPTION="A high-performance immutable mapping type for Python"
-HOMEPAGE="https://github.com/MagicStack/immutables"
+HOMEPAGE="
+	https://github.com/MagicStack/immutables/
+	https://pypi.org/project/immutables/
+"
 SRC_URI="
 	https://github.com/MagicStack/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
