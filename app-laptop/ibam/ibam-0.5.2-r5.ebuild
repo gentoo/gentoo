@@ -16,15 +16,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gkrellm"
 
-RDEPEND="
-	gkrellm? (
+RDEPEND="gkrellm? (
 		app-admin/gkrellm:2[X]
 		x11-libs/gdk-pixbuf
 		x11-libs/gtk+:2
 	)"
-DEPEND="
-	${RDEPEND}
-	gkrellm? ( virtual/pkgconfig )"
+DEPEND="${RDEPEND}"
+BDEPEND="gkrellm? ( virtual/pkgconfig )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-build.patch
