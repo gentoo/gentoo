@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1 optfeature
 
@@ -30,6 +30,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.12.8-py3.5-backport.patch
+	"${FILESDIR}"/${P}-py311.patch
 )
 
 python_prepare_all() {
