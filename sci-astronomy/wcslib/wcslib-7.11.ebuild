@@ -55,10 +55,6 @@ src_configure() {
 	sed -i -e 's/COPYING\*//' GNUmakefile || die
 }
 
-src_test() {
-	emake check
-}
-
 src_install () {
 	default
 	# static libs share the same symbols as shared (i.e. compiled with PIC)
