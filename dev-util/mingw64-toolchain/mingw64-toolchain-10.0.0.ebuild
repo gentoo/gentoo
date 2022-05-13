@@ -111,6 +111,7 @@ src_compile() {
 		--host=${CHOST}
 		--disable-bootstrap
 		--disable-cet
+		--disable-gcov #843989
 		--disable-gomp
 		--disable-libquadmath
 		--disable-libsanitizer
