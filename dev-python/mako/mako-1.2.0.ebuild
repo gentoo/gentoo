@@ -22,6 +22,11 @@ IUSE="doc"
 RDEPEND="
 	>=dev-python/markupsafe-0.9.2[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	test? (
+		dev-python/Babel[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
 
