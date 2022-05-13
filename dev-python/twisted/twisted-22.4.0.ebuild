@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 virtualx
@@ -54,28 +54,32 @@ RDEPEND="
 BDEPEND="
 	>=dev-python/incremental-21.3.0[${PYTHON_USEDEP}]
 	test? (
-		>=dev-python/appdirs-1.4.0[${PYTHON_USEDEP}]
-		dev-python/bcrypt[${PYTHON_USEDEP}]
-		>=dev-python/constantly-15.1.0[${PYTHON_USEDEP}]
-		dev-python/cython-test-exception-raiser[${PYTHON_USEDEP}]
-		dev-python/idna[${PYTHON_USEDEP}]
-		dev-python/pyasn1[${PYTHON_USEDEP}]
-		dev-python/pyserial[${PYTHON_USEDEP}]
-		net-misc/openssh
+		$(python_gen_cond_dep '
+			>=dev-python/appdirs-1.4.0[${PYTHON_USEDEP}]
+			dev-python/bcrypt[${PYTHON_USEDEP}]
+			>=dev-python/constantly-15.1.0[${PYTHON_USEDEP}]
+			dev-python/cython-test-exception-raiser[${PYTHON_USEDEP}]
+			dev-python/idna[${PYTHON_USEDEP}]
+			dev-python/pyasn1[${PYTHON_USEDEP}]
+			dev-python/pyserial[${PYTHON_USEDEP}]
+			net-misc/openssh
+			!alpha? ( !hppa? ( !ia64? (
+				>=dev-python/cryptography-0.9.1[${PYTHON_USEDEP}]
+				>=dev-python/pyopenssl-0.13[${PYTHON_USEDEP}]
+				dev-python/service_identity[${PYTHON_USEDEP}]
+			) ) )
+		' python3_{8..10} pypy3)
 		$(python_gen_cond_dep '
 			dev-python/gmpy[${PYTHON_USEDEP}]
-		' 'python*')
-		!alpha? ( !hppa? ( !ia64? (
-			>=dev-python/cryptography-0.9.1[${PYTHON_USEDEP}]
-			>=dev-python/pyopenssl-0.13[${PYTHON_USEDEP}]
-			dev-python/service_identity[${PYTHON_USEDEP}]
-		) ) )
+		' python3_{8..10})
 	)
 "
 
 PATCHES=(
 	# https://twistedmatrix.com/trac/ticket/10200
 	"${FILESDIR}/${PN}-22.1.0-force-gtk3.patch"
+	# https://github.com/twisted/twisted/pull/1723
+	"${FILESDIR}/${P}-py311.patch"
 )
 
 python_prepare_all() {
@@ -114,6 +118,12 @@ src_test() {
 }
 
 python_test() {
+	# please keep in sync with python_gen_cond_dep!
+	if ! has "${EPYTHON}" python3_{8..10} pypy3; then
+		einfo "Skipping tests on ${EPYTHON} (xfail)"
+		return
+	fi
+
 	"${EPYTHON}" -m twisted.trial twisted ||
 		die "Tests failed with ${EPYTHON}"
 }
