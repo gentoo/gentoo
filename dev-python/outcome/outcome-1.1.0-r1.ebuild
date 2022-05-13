@@ -4,14 +4,14 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..11} )
 
 inherit distutils-r1
 
 DESCRIPTION="Capture the outcome of Python function calls"
 HOMEPAGE="
-	https://github.com/python-trio/outcome
-	https://pypi.org/project/outcome
+	https://github.com/python-trio/outcome/
+	https://pypi.org/project/outcome/
 "
 SRC_URI="
 	https://github.com/python-trio/${PN}/archive/v${PV}.tar.gz
