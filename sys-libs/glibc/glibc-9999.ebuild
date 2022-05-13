@@ -429,7 +429,12 @@ setup_flags() {
 	#  include/libc-symbols.h:75:3: #error "glibc cannot be compiled without optimization"
 	replace-flags -O0 -O1
 
+	# glibc handles this internally already where it's appropriate;
+	# can't always have SSP when we're the ones setting it up, etc
 	filter-flags '-fstack-protector*'
+
+	# Similar issues as with SSP. Can't inject yourself that early.
+	filter-flags '-fsanitize=*'
 
 	# See end of bug #830454; we handle this via USE=cet
 	filter-flags '-fcf-protection='
