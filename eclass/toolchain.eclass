@@ -55,32 +55,76 @@ is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
 }
 
-# General purpose version check.  Without a second arg matches up to minor version (x.x.x)
+# @FUNCTION: tc_version_is_at_least
+# @USAGE: ver1 [ver2]
+# @DESCRIPTION:
+# General purpose version check. Without a second argument, matches
+# up to minor version (x.x.x).
 tc_version_is_at_least() {
 	ver_test "${2:-${GCC_RELEASE_VER}}" -ge "$1"
 }
 
-# General purpose version range check
+# @FUNCTION: tc_version_is_between
+# @USAGE: ver1 ver2
+# @DESCRIPTION:
+# General purpose version range check.
 # Note that it matches up to but NOT including the second version
 tc_version_is_between() {
 	tc_version_is_at_least "${1}" && ! tc_version_is_at_least "${2}"
 }
 
+# @ECLASS_VARIABLE: TOOLCHAIN_GCC_PV
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Used to override GCC version. Useful for e.g. live ebuilds or snapshots.
+# Defaults to ${PV}.
+
+# @ECLASS_VARIABLE: GCC_PV
+# @INTERNAL
+# @DESCRIPTION:
+# Internal variable representing (spoofed) GCC version.
 GCC_PV=${TOOLCHAIN_GCC_PV:-${PV}}
+
+# @ECLASS_VARIABLE: GCC_PVR
+# @INTERNAL
+# @DESCRIPTION:
+# Full GCC version including revision.
 GCC_PVR=${GCC_PV}
 [[ ${PR} != "r0" ]] && GCC_PVR=${GCC_PVR}-${PR}
 
+# @ECLASS_VARIABLE: GCC_RELEASE_VER
+# @INTERNAL
+# @DESCRIPTION:
 # GCC_RELEASE_VER must always match 'gcc/BASE-VER' value.
 # It's an internal representation of gcc version used for:
 # - versioned paths on disk
 # - 'gcc -dumpversion' output. Must always match <digit>.<digit>.<digit>.
 GCC_RELEASE_VER=$(ver_cut 1-3 ${GCC_PV})
 
+# @ECLASS_VARIABLE: GCC_BRANCH_VER
+# @INTERNAL
+# @DESCRIPTION:
+# GCC branch version.
 GCC_BRANCH_VER=$(ver_cut 1-2 ${GCC_PV})
+# @ECLASS_VARIABLE: GCCMAJOR
+# @INTERNAL
+# @DESCRIPTION:
+# Major GCC version.
 GCCMAJOR=$(ver_cut 1 ${GCC_PV})
+# @ECLASS_VARIABLE: GCCMINOR
+# @INTERNAL
+# @DESCRIPTION:
+# Minor GCC version.
 GCCMINOR=$(ver_cut 2 ${GCC_PV})
+# @ECLASS_VARIABLE: GCCMICRO
+# @INTERNAL
+# @DESCRIPTION:
+# GCC micro version.
 GCCMICRO=$(ver_cut 3 ${GCC_PV})
 
+# @ECLASS_VARIABLE: GCC_CONFIG_VER
+# @INTERNAL
+# @DESCRIPTION:
 # Ideally this variable should allow for custom gentoo versioning
 # of binary and gcc-config names not directly tied to upstream
 # versioning. In practice it's hard to untangle from gcc/BASE-VER
@@ -92,13 +136,13 @@ GCC_CONFIG_VER=${GCC_RELEASE_VER}
 # 1.2.3_pYYYYMMDD (or 1.2.3_preYYYYMMDD for unreleased major versions): weekly snapshots
 # 1.2.3_rcYYYYMMDD: release candidates
 if [[ ${GCC_PV} == *_pre* ]] ; then
-	# weekly snapshots
+	# Weekly snapshots
 	SNAPSHOT=${GCCMAJOR}-${GCC_PV##*_pre}
 elif [[ ${GCC_PV} == *_p* ]] ; then
-	# weekly snapshots
+	# Weekly snapshots
 	SNAPSHOT=${GCCMAJOR}-${GCC_PV##*_p}
 elif [[ ${GCC_PV} == *_rc* ]] ; then
-	# release candidates
+	# Release candidates
 	SNAPSHOT=${GCC_PV%_rc*}-RC-${GCC_PV##*_rc}
 fi
 
@@ -272,6 +316,10 @@ PDEPEND=">=sys-devel/gcc-config-2.3"
 
 #---->> S + SRC_URI essentials <<----
 
+# @ECLASS_VARIABLE: TOOLCHAIN_SET_S
+# @DESCRIPTION:
+# Used to override value of S for snapshots and such. Mainly useful
+# if needing to set GCC_TARBALL_SRC_URI.
 : ${TOOLCHAIN_SET_S:=yes}
 
 # Set the source directory depending on whether we're using
@@ -328,7 +376,7 @@ gentoo_urls() {
 #	PIE_VER
 #	PIE_GCC_VER
 #			These variables control patching in various updates for the logic
-#			controlling Position Independant Executables. PIE_VER is expected
+#			controlling Position Independent Executables. PIE_VER is expected
 #			to be the version of this patch, and PIE_GCC_VER the gcc version of
 #			the patch:
 #			An example:
