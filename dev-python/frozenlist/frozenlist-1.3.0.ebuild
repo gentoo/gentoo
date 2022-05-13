@@ -4,16 +4,19 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
+
 inherit distutils-r1
 
 DESCRIPTION="A list-like structure which implements collections.abc.MutableSequence"
 HOMEPAGE="
 	https://pypi.org/project/frozenlist/
-	https://github.com/aio-libs/frozenlist/"
+	https://github.com/aio-libs/frozenlist/
+"
 SRC_URI="
 	https://github.com/aio-libs/frozenlist/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz"
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -22,7 +25,8 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc 
 BDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/cython[${PYTHON_USEDEP}]
-	' 'python*')"
+	' 'python*')
+"
 
 distutils_enable_tests pytest
 
