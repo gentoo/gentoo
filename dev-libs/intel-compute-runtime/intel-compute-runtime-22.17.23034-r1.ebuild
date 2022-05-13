@@ -23,7 +23,7 @@ RDEPEND=">=media-libs/gmmlib-22.0.2:="
 
 DEPEND="
 	${DEPEND}
-	dev-libs/intel-metrics-library
+	dev-libs/intel-metrics-library:=
 	dev-libs/libnl:3
 	dev-libs/libxml2:2
 	>=dev-util/intel-graphics-compiler-1.0.11061-r1
@@ -40,15 +40,6 @@ DEPEND="
 BDEPEND="virtual/pkgconfig"
 
 DOCS=( "README.md" "FAQ.md" )
-
-src_prepare() {
-	default
-
-	# Remove '-Werror' from default
-	set -e '/Werror/d' -i CMakeLists.txt || die
-
-	cmake_src_prepare
-}
 
 src_configure() {
 	# See https://github.com/intel/compute-runtime/issues/531

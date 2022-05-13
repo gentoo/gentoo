@@ -23,10 +23,10 @@ RDEPEND=">=media-libs/gmmlib-22.0.2:="
 
 DEPEND="
 	${DEPEND}
-	dev-libs/intel-metrics-library
+	dev-libs/intel-metrics-library:=
 	dev-libs/libnl:3
 	dev-libs/libxml2:2
-	>=dev-util/intel-graphics-compiler-1.0.10713
+	>=dev-util/intel-graphics-compiler-1.0.11061-r1
 	>=dev-util/intel-graphics-system-controller-0.2.4:=
 	media-libs/mesa
 	>=virtual/opencl-3
@@ -41,11 +41,21 @@ BDEPEND="virtual/pkgconfig"
 
 DOCS=( "README.md" "FAQ.md" )
 
+src_prepare() {
+	default
+
+	# Remove '-Werror' from default
+	set -e '/Werror/d' -i CMakeLists.txt || die
+
+	cmake_src_prepare
+}
+
 src_configure() {
 	# See https://github.com/intel/compute-runtime/issues/531
 	filter-flags -flto=* -flto
 
 	local mycmakeargs=(
+		-DCCACHE_ALLOWED="OFF"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
 		-DCMAKE_INSTALL_LIBDIR="$(get_libdir)"
 		-DBUILD_WITH_L0="$(usex l0)"

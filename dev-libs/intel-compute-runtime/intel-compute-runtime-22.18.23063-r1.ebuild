@@ -23,7 +23,7 @@ RDEPEND=">=media-libs/gmmlib-22.0.2:="
 
 DEPEND="
 	${DEPEND}
-	dev-libs/intel-metrics-library
+	dev-libs/intel-metrics-library:=
 	dev-libs/libnl:3
 	dev-libs/libxml2:2
 	>=dev-util/intel-graphics-compiler-1.0.11061-r1
