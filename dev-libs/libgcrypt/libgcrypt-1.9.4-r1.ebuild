@@ -102,8 +102,6 @@ multilib_src_configure() {
 		$([[ ${CHOST} == *86*-darwin* ]] && echo "--disable-asm")
 		# causes bus-errors on sparc64-solaris
 		$([[ ${CHOST} == sparcv9-*-solaris* ]] && echo "--disable-asm")
-		# bug #832871
-		$([[ ${CHOST} == hppa1.1* ]] && echo "--disable-asm")
 
 		$(use asm || echo "--disable-asm")
 
