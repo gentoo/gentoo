@@ -23,6 +23,7 @@ efl
 elogind
 emacs
 fam
+fontforge
 gd
 gpm
 gtk
