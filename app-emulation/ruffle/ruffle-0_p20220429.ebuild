@@ -401,7 +401,7 @@ CRATES="
 	xcursor-0.3.4
 	xml-rs-0.8.4"
 # python is needed by xcb-0.8.2 until update to >=0.10
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="xml(+)"
 inherit cargo desktop flag-o-matic python-any-r1 xdg
 
