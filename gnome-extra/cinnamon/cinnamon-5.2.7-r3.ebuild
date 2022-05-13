@@ -16,7 +16,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 IUSE="+eds +gstreamer gtk-doc +nls +networkmanager"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~riscv x86"
 
 DEPEND="
 	${PYTHON_DEPS}
