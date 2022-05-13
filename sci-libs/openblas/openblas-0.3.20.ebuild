@@ -28,6 +28,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}/${PN}-0.3.12-shared-blas-lapack.patch"
 	"${FILESDIR}/${PN}-0.3.20-fix-riscv.patch"
+	"${FILESDIR}/${PN}-0.3.20-fix-loong.patch"
 )
 
 pkg_pretend() {
