@@ -25,5 +25,5 @@ RDEPEND="
 BDEPEND="test? ( dev-perl/Test-Exception )"
 
 src_install() {
-    emake install DESTDIR="${D}" PREFIX=/usr
+	emake install DESTDIR="${D}" PREFIX=/usr
 }
