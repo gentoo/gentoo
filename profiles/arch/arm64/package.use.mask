@@ -1,10 +1,6 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Matt Turnbull <sparky@bluefang-logic.com> (2022-05-05)
-# Cinnamon is not keyworded. Bug 842033
-x11-themes/arc-theme cinnamon
-
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded
 app-text/enchant nuspell
