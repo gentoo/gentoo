@@ -438,26 +438,6 @@ kernel_is() {
 		"${1:-${KV_MAJOR:-0}}.${2:-${KV_MINOR:-0}}.${3:-${KV_PATCH:-0}}"
 }
 
-get_localversion() {
-	local lv_list i x
-
-	local shopt_save=$(shopt -p nullglob)
-	shopt -s nullglob
-	local files=( ${1}/localversion* )
-	${shopt_save}
-
-	# ignore files with ~ in it.
-	for i in "${files[@]}"; do
-		[[ -n ${i//*~*} ]] && lv_list="${lv_list} ${i}"
-	done
-
-	for i in ${lv_list}; do
-		x="${x}$(<${i})"
-	done
-	x=${x/ /}
-	echo ${x}
-}
-
 # Check if the Makefile is valid for direct parsing.
 # Check status results:
 # - PASS, use 'getfilevar' to extract values
