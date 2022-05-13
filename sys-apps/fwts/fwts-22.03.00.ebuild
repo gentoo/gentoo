@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="Firmware Test Suite"
-HOMEPAGE="https://kernel.ubuntu.com/git/hwe/fwts.git"
+HOMEPAGE="https://wiki.ubuntu.com/Kernel/Reference/fwts https://kernel.ubuntu.com/git/hwe/fwts.git"
 SRC_URI="https://launchpad.net/ubuntu/+archive/primary/+files/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-2"
