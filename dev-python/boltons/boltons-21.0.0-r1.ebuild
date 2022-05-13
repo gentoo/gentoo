@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1
 
 DESCRIPTION="Pure-python utilities in the same spirit as the standard library"
@@ -23,9 +23,11 @@ DOCS=( CHANGELOG.md README.md TODO.rst )
 
 PATCHES=(
 	"${FILESDIR}"/${P}-python3.10.patch
+	"${FILESDIR}"/${P}-python3.11-tests.patch
 )
 
-python_test() {
-	# failure in test_exception_info with pytest-qt
-	epytest -p no:pytest-qt
-}
+EPYTEST_DESELECT=(
+	# fails if there's any noise/differences in traceback text caused
+	# by e.g. pytest-qt noise or python3.11 adding ^^^^^^ markers
+	tests/test_tbutils.py::test_exception_info
+)
