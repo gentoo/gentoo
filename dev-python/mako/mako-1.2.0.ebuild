@@ -4,13 +4,17 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..11} )
 
 inherit distutils-r1
 
 MY_P=${P^}
 DESCRIPTION="A Python templating language"
-HOMEPAGE="https://www.makotemplates.org/ https://pypi.org/project/Mako/"
+HOMEPAGE="
+	https://www.makotemplates.org/
+	https://github.com/sqlalchemy/mako/
+	https://pypi.org/project/Mako/
+"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${PN^}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
@@ -31,9 +35,17 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
-	local EPYTEST_DESELECT=()
+	local EPYTEST_DESELECT=(
+		# change in pygments
+		test/test_exceptions.py::ExceptionsTest::test_format_exceptions_pygments
+	)
 	[[ ${EPYTHON} == pypy3 ]] && EPYTEST_DESELECT+=(
 		test/test_exceptions.py::ExceptionsTest::test_alternating_file_names
+	)
+	[[ ${EPYTHON} == python3.11 ]] && EPYTEST_DESELECT+=(
+		# py3.11 changed tracebacks
+		test/test_exceptions.py::ExceptionsTest::test_tback_no_trace_from_py_file
+		test/test_exceptions.py::ExceptionsTest::test_tback_trace_from_py_file
 	)
 	local EPYTEST_IGNORE=(
 		# lingua is not packaged in Gentoo and the skip is currently broken
