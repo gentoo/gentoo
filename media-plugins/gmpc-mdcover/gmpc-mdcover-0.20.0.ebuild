@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Plugin for fetching cover art, artist art, album and artist information"
 HOMEPAGE="https://gmpc.fandom.com/wiki/GMPC_PLUGIN_MDCOVER"
-SRC_URI="https://download.sarine.nl/Programs/gmpc/0.20.0/${P}.tar.gz"
+SRC_URI="https://download.sarine.nl/Programs/gmpc/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
