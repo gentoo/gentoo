@@ -28,7 +28,11 @@ RDEPEND="
 	x11-libs/gtk+:3
 	x11-libs/libX11
 	x11-libs/pango
-	gstreamer? ( media-plugins/gst-plugins-meta[ffmpeg,http,X] )
+	gstreamer? (
+		media-plugins/gst-plugins-gtk
+		media-plugins/gst-plugins-hls
+		media-plugins/gst-plugins-meta[ffmpeg,http,X]
+	)
 	spell? ( app-text/gspell:=[vala] )
 "
 DEPEND="${RDEPEND}"
