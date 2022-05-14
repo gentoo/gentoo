@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="Small library for display text and graphics on a Logitech G15 keyboard"
-HOMEPAGE="https://sourceforge.net/projects/g15tools/"
+HOMEPAGE="https://gitlab.com/menelkir/libg15render"
 if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/menelkir/libg15render.git"
