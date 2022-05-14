@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -mips
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-05-15)
+# rdma-core is not keyworded mips...
+rdma
+
 # Matt Turner <mattst88@gentoo.org> (2018-03-25)
 # Unmask systemd since it is keyworded here.
 -systemd
