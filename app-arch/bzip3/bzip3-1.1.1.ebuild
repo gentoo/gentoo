@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="A better and stronger spiritual successor to BZip2"
-HOMEPAGE="https://github.com/kspalaiologos/bzip2/"
+HOMEPAGE="https://github.com/kspalaiologos/bzip3"
 
 if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
@@ -17,7 +17,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-LICENSE="LGPL-3"
+LICENSE="LGPL-3+"
 SLOT="0"
 IUSE="static-libs"
 
