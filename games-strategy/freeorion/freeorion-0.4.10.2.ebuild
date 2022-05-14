@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python{3_8,3_9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit cmake python-single-r1 xdg
 
 DESCRIPTION="A free turn-based space empire and galactic conquest game"
@@ -35,7 +35,7 @@ BDEPEND="
 "
 RDEPEND="
 	$(python_gen_cond_dep '
-		>=dev-libs/boost-1.58:=[nls,python,threads(+),${PYTHON_USEDEP}]
+		>=dev-libs/boost-1.60:=[nls,python,threads(+),${PYTHON_USEDEP}]
 	')
 	!dedicated? (
 		media-libs/freealut
