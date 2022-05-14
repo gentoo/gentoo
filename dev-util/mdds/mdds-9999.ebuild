@@ -48,13 +48,9 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		$(use_enable doc docs)
+		$(use_enable openmp)
 		$(use_enable valgrind memory_tests)
 	)
-	if use openmp && tc-has-openmp; then
-		myeconfargs+=( --enable-openmp )
-	else
-		myeconfargs+=( --disable-openmp )
-	fi
 	econf "${myeconfargs[@]}"
 }
 
