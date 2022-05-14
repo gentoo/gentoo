@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -63,7 +63,7 @@ src_configure() {
 
 src_compile() {
 	# Prepare mmake flags
-	echo "EXTRA_CFLAGS = ${CFLAGS}"  >> Mmake.params
+	echo "EXTRA_CFLAGS = ${CFLAGS} -Wno-error"  >> Mmake.params
 	echo "EXTRA_LDFLAGS = ${LDFLAGS}" >> Mmake.params
 	echo "EXTRA_LD_LIBFLAGS = ${LDFLAGS}" >> Mmake.params
 	echo "EXTRA_MLFLAGS = --no-strip" >> Mmake.params
