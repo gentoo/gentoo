@@ -60,7 +60,7 @@ src_configure() {
 	MW_LDFLAGS=${LDFLAGS} # keep non-stripped for gendef not respecting it
 
 	# likely cross-compiling from here, update toolchain variables
-	${MW_CROSS} &&
+	${MW_CROSS} && [[ ! -v MINGW_BYPASS ]] &&
 		unset AR AS CC CPP CXX LD NM OBJCOPY OBJDUMP RANLIB RC STRIP
 	local CHOST=${CTARGET}
 	strip-unsupported-flags
