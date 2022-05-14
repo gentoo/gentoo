@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,15 +26,20 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MYP}
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 src_prepare() {
 	./bootstrap.sh || die
 	default
 }
 
 src_configure() {
-	if use openmp && ! tc-has-openmp ; then
-		die "You requested openmp, but your toolchain does not support it."
-	fi
 	econf $(use_enable openmp)
 }
 
