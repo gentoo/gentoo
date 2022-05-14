@@ -340,13 +340,6 @@ sys-cluster/singularity
 # Removal on 2022-06-13. Bug #832431.
 x11-plugins/pidgin-telegram
 
-# Michał Górny <mgorny@gentoo.org> (2022-04-13)
-# Unmaintained.  Last release in 2017, the Gentoo ebuild has not been
-# even bumped to it.  Requires old dev-lang/spidermonkey that requires
-# Python 2.7.
-# Removal on 2022-05-13.  Bug #838139.
-media-video/gxine
-
 # Hans de Graaff <graaff@gentoo.org> (2022-04-12)
 # dev-ruby/nokogumbo is now part of dev-ruby/nokogiri and nokogiri
 # versions still supporting a separate nokogumbo have known security
