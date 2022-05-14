@@ -101,9 +101,12 @@ RESTRICT="test"
 S="${WORKDIR}/${P}_2021-05-24_c4e8f9ed74"
 
 pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
-		tc-has-openmp || die "Please switch to an openmp compatible compiler"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+	python-single-r1_pkg_setup
 }
 
 src_prepare() {
