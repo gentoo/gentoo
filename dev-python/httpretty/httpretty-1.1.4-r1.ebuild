@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
@@ -35,10 +35,12 @@ BDEPEND="
 # We're skipping redis entirely since it requires a running server.
 BDEPEND+="
 	test? (
-		>=dev-python/boto3-1.17.72[${PYTHON_USEDEP}]
-		dev-python/httplib2[${PYTHON_USEDEP}]
-		>=dev-python/httpx-0.18.1[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/boto3-1.17.72[${PYTHON_USEDEP}]
+			dev-python/httplib2[${PYTHON_USEDEP}]
+			>=dev-python/httpx-0.18.1[${PYTHON_USEDEP}]
+		' python3_{8..10})
 		$(python_gen_cond_dep '
 			>=dev-python/eventlet-0.25.1[${PYTHON_USEDEP}]
 		' python3_{8..9})
