@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -14,16 +14,14 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 RDEPEND="
-	media-libs/libpng:0=
-	sys-libs/zlib
-	virtual/jpeg:0"
+	media-libs/libjpeg-turbo:=
+	media-libs/libpng:="
 DEPEND="${RDEPEND}"
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
+}
+
 pkg_setup() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		[[ $(gcc-major-version) -lt 4 ]] || \
-		( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 2 ]] ) \
-		&& die "Sorry, but gcc 4.2 or higher is required"
-		tc-has-openmp || die "Please switch to an openmp compatible compiler"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
 }
