@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1 multiprocessing
 
@@ -39,6 +39,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/1.8.6-tests-pass-all-env-vars-to-cmd-runner.patch"
+	"${FILESDIR}/botocore-1.26.0-py311.patch"
 )
 
 distutils_enable_sphinx docs/source \
