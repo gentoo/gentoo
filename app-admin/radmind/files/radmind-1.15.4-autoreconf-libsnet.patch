@@ -165,3 +165,112 @@ index 0000000..88a421b
 -- 
 2.35.1
 
+From 4ea29130382b5ae8b9cf3e3dc8962da764f65377 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Fri, 13 May 2022 13:41:49 -0700
+Subject: [PATCH 2/2] Add AC_ARG_ENABLE options for ssl, sasl and zlib
+
+---
+ configure.ac | 83 +++++++++++++++++++++++++++++++++++++++++-----------
+ 1 file changed, 66 insertions(+), 17 deletions(-)
+
+diff --git a/libsnet/configure.ac b/libsnet/configure.ac
+index 83f7e59..9cd16c7 100644
+--- a/libsnet/configure.ac
++++ b/libsnet/configure.ac
+@@ -11,26 +11,75 @@ AC_PROG_AWK
+ AC_PROG_CC
+ AC_PROG_INSTALL
+ 
+-PKG_CHECK_MODULES([zlib], [zlib],
+-    [AC_DEFINE([HAVE_ZLIB], [1], [zlib])],
+-    [AC_MSG_WARN(zlib.pc not found, building without zlib support)])
+-AC_SUBST([zlib_LIBS])
+-AC_SUBST([zlib_CFLAGS])
++# Enable features
++AC_ARG_ENABLE([sasl],
++    AS_HELP_STRING([--enable-sasl], [Build with crypto_sasl @<:@default=yes@:>@]),
++    [AS_CASE(${enableval}, [yes], [], [no], [],
++        [AC_MSG_ERROR([bad value '${enableval}' for --enable-sasl])])],
++    [enable_sasl=check])
+ 
+-# Checks for libraries.
+-if test \! x_$with_ssl = x_no; then
+-    PKG_CHECK_MODULES([ssl], [openssl],
+-        [AC_DEFINE([HAVE_LIBSSL], [1], [libssl])],
+-        [AC_MSG_WARN(openssl.pc not found, building without libssl support)])
+-    AC_SUBST([ssl_LIBS])
+-    AC_SUBST([ssl_CFLAGS])
+-fi
++AC_ARG_ENABLE([ssl],
++    AS_HELP_STRING([--enable-ssl], [Build with openssl @<:@default=yes@:>@]),
++    [AS_CASE(${enableval}, [yes], [], [no], [],
++        [AC_MSG_ERROR([bad value '${enableval}' for --enable-ssl])])],
++    [enable_ssl=check])
+ 
+-PKG_CHECK_MODULES([sasl], [libsasl2],
+-    [AC_DEFINE([HAVE_LIBSASL], [1], [libsasl])],
+-    [AC_MSG_WARN(libsasl2.pc not found, building without libsasl support)])
+-AC_SUBST([sasl_LIBS])
++AC_ARG_ENABLE([zlib],
++    AS_HELP_STRING([--enable-zlib], [Build with zlib @<:@default=yes@:>@]),
++    [AS_CASE(${enableval}, [yes], [], [no], [],
++        [AC_MSG_ERROR([bad value '${enableval}' for --enable-zlib])])],
++    [enable_zlib=check])
++
++# Checks for crypto_sasl.
++AS_IF([test x$enable_sasl != xno],
++    [PKG_CHECK_MODULES([sasl], [libsasl2],
++        [AC_DEFINE([HAVE_LIBSASL], [1], [libsasl])],
++        [AS_IF([test x$enable_sasl != xyes],
++            [AC_MSG_WARN([cannot find libsasl2.pc, disabling libsasl support])],
++            [enable_sasl=error])
++        ])
++    ])
++
++AS_IF([test x$enable_sasl = xerror],
++    [AC_MSG_ERROR([cannot find libsasl2.pc and libsasl support requested])])
++
++AM_CONDITIONAL([ENABLE_LIBSASL], [test x$enable_sasl = xyes])
+ AC_SUBST([sasl_CFLAGS])
++AC_SUBST([sasl_LIBS])
++
++# Checks for openssl.
++AS_IF([test x$enable_ssl != xno],
++    [PKG_CHECK_MODULES([ssl], [openssl],
++        [AC_DEFINE([HAVE_LIBSSL], [1], [libssl])],
++        [AS_IF([test x$enable_ssl != xyes],
++            [AC_MSG_WARN([cannot find openssl.pc, disabling libssl support])],
++            [enable_ssl=error])
++        ])
++    ])
++
++AS_IF([test x$enable_ssl = xerror],
++    [AC_MSG_ERROR([cannot find openssl.pc and libssl support requested])])
++
++AM_CONDITIONAL([ENABLE_LIBSSL], [test x$enable_ssl = xyes])
++AC_SUBST([ssl_CFLAGS])
++AC_SUBST([ssl_LIBS])
++
++# Checks for zlib.
++AS_IF([test x$enable_zlib != xno],
++    [PKG_CHECK_MODULES([zlib], [zlib],
++        [AC_DEFINE([HAVE_ZLIB], [1], [zlib])],
++        [AS_IF([test x$enable_zlib != xyes],
++            [AC_MSG_WARN([cannot find zlib.pc, disabling zlib support])],
++	    [enable_zlib=error])
++        ])
++    ])
++
++AS_IF([test x$enable_zlib = xerror],
++    [AC_MSG_ERROR([cannot find zlib.pc and zlib support requested])])
++
++AM_CONDITIONAL([ENABLE_ZLIB], [test x$enable_zlib = xyes])
++AC_SUBST([zlib_CFLAGS])
++AC_SUBST([zlib_LIBS])
+ 
+ # Checks for header files.
+ #AC_HEADER_STDC
+-- 
+2.35.1
+
