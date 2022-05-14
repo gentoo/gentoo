@@ -1,0 +1,32 @@
+https://build.opensuse.org/package/view_file/KDE:Qt:5.15/libqt5-qtwebengine/0001-skia-Some-includes-to-fix-build-with-GCC-12.patch?expand=1
+https://bugs.gentoo.org/840326
+
+From 68799a1e0815b20ca59ce354a55280399257a201 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.de>
+Date: Fri, 25 Mar 2022 15:29:28 +0100
+Subject: [PATCH] skia: Some includes to fix build with GCC 12
+
+Those includes got introduced upstream for other reasons and fixed building
+with GCC 12 as a side effect.
+--- a/src/3rdparty/chromium/third_party/skia/include/core/SkColor.h
++++ b/src/3rdparty/chromium/third_party/skia/include/core/SkColor.h
+@@ -12,6 +12,8 @@
+ #include "include/core/SkScalar.h"
+ #include "include/core/SkTypes.h"
+ 
++#include <array>
++
+ /** \file SkColor.h
+ 
+     Types, consts, functions, and macros for colors.
+--- a/src/3rdparty/chromium/third_party/skia/src/utils/SkParseColor.cpp
++++ b/src/3rdparty/chromium/third_party/skia/src/utils/SkParseColor.cpp
+@@ -8,6 +8,8 @@
+ 
+ #include "include/utils/SkParse.h"
+ 
++#include <algorithm> // std::lower_bound
++
+ static constexpr const char* gColorNames[] = {
+     "aliceblue",
+     "antiquewhite",
