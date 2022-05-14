@@ -53,9 +53,11 @@ PATCHES=( "${FILESDIR}"/${PN}-3.0-use-system-mimalloc.patch )
 MY_HASH="0e0b0252e23dd5bd4ae82ababcc54c44aee036d6"
 
 pkg_pretend() {
-	if use openmp; then
-		tc-has-openmp || die "Please switch to an openmp compatible compiler"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_prepare() {
