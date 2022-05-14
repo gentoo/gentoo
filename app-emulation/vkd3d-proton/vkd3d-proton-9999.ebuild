@@ -43,7 +43,7 @@ BDEPEND="
 pkg_pretend() {
 	[[ ${MERGE_TYPE} == binary ]] && return
 
-	if use crossdev-mingw; then
+	if use crossdev-mingw && [[ ! -v MINGW_BYPASS ]]; then
 		local tool=-w64-mingw32-g++
 		for tool in $(usev abi_x86_64 x86_64${tool}) $(usev abi_x86_32 i686${tool}); do
 			if ! type -P ${tool} >/dev/null; then
@@ -94,7 +94,7 @@ src_configure() {
 	use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
 
 	if [[ ${CHOST} != *-mingw* ]]; then
-		unset AR CC CXX STRIP WIDL # likely unusable unless CHOST is mingw
+		[[ ! -v MINGW_BYPASS ]] && unset AR CC CXX STRIP WIDL
 
 		CHOST_amd64=x86_64-w64-mingw32
 		CHOST_x86=i686-w64-mingw32
@@ -113,7 +113,7 @@ src_configure() {
 multilib_src_configure() {
 	# multilib's ${CHOST_amd64}-gcc -m32 is unusable with crossdev,
 	# unset again so meson eclass will set ${CHOST}-gcc + others
-	use crossdev-mingw && unset AR CC CXX STRIP WIDL
+	use crossdev-mingw && [[ ! -v MINGW_BYPASS ]] && unset AR CC CXX STRIP WIDL
 
 	# prefer ${CHOST}'s widl (mingw) over wine's as used by upstream if
 	# possible, but eclasses don't handle that so setup machine files
