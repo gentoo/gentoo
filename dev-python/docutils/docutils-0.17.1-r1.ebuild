@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
@@ -25,6 +25,10 @@ RDEPEND="
 BDEPEND="
 	${RDEPEND}
 "
+
+PATCHES=(
+	"${FILESDIR}/docutils-0.18.1-py311.patch"
+)
 
 python_compile_all() {
 	# Generate html docs from reStructured text sources.
