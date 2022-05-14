@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( pypy3 python3_{7..10} )
 
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( pypy3 python3_{8..11} )
 inherit distutils-r1
 
 DESCRIPTION="Various LDAP-related Python modules"
@@ -22,16 +23,15 @@ LICENSE="MIT PSF-2"
 SLOT="0"
 IUSE="examples sasl ssl"
 
-# < dep on openldap for bug #835637, ldap_r is gone
 RDEPEND="
 	>=dev-python/pyasn1-0.3.7[${PYTHON_USEDEP}]
 	>=dev-python/pyasn1-modules-0.1.5[${PYTHON_USEDEP}]
-	<net-nds/openldap-2.6:=[sasl?,ssl?]
+	net-nds/openldap:=[sasl?,ssl?]
 "
 # We do not link against cyrus-sasl but we use some
 # of its headers during the build.
 DEPEND="
-	<net-nds/openldap-2.6:=[sasl?,ssl?]
+	net-nds/openldap:=[sasl?,ssl?]
 	sasl? ( >=dev-libs/cyrus-sasl-2.1 )
 "
 
