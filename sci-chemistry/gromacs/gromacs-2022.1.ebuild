@@ -87,12 +87,11 @@ if [[ ${PV} != *9999 ]]; then
 fi
 
 pkg_pretend() {
-	[[ $(gcc-version) == "4.1" ]] && die "gcc 4.1 is not supported by gromacs"
-	use openmp && ! tc-has-openmp && \
-		die "Please switch to an openmp compatible compiler"
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 	python-single-r1_pkg_setup
 }
 
