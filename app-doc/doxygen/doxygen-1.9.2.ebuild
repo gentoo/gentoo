@@ -61,6 +61,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.9.1-ignore-bad-encoding.patch"
 	"${FILESDIR}/${PN}-1.9.1-header-dep.patch"
 	"${FILESDIR}/${P}-xml-static.patch"
+	"${FILESDIR}/${PN}-1.9.1-do_not_force_libcxx.patch"
 )
 
 DOCS=( LANGUAGE.HOWTO README.md )
