@@ -48,15 +48,11 @@ PATCHES=(
 )
 
 pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
-		if [[ $(tc-getCXX) == *g++* ]] && ! tc-has-openmp; then
-			ewarn "OpenMP is not available in your current selected gcc"
-			die "need openmp capable gcc"
-		fi
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 	use doc && python-any-r1_pkg_setup
 }
 

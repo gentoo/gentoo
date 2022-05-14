@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -48,15 +48,11 @@ DEPEND="${RDEPEND}"
 DOCS=( README.md VERSION )
 
 pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
-		if [[ $(tc-getCXX) == *g++* ]] && ! tc-has-openmp; then
-			ewarn "OpenMP is not available in your current selected gcc"
-			die "need openmp capable gcc"
-		fi
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 	use doc && python-any-r1_pkg_setup
 }
 
