@@ -34,6 +34,11 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	# Set correct version, as upstream shows wrongly '-rc1'.
+	# This has been already changed by upstream, but no new release.
+        sed -e 's/-rc1/.0/g' -i src/luasocket.h || die
+
 	lua_copy_sources
 }
 
