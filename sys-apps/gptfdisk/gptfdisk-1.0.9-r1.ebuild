@@ -30,6 +30,10 @@ DEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-libuuid.patch" #844073
+)
+
 src_prepare() {
 	default
 
