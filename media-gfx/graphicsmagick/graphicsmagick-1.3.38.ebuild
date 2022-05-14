@@ -91,6 +91,7 @@ src_configure() {
 		$(use_enable debug prof)
 		$(use_enable debug gcov)
 		$(use_enable imagemagick magick-compat)
+		$(use_enable openmp)
 		$(use_with threads)
 		$(use_with dynamic-loading modules)
 		--with-quantum-depth=${depth}
@@ -120,12 +121,6 @@ src_configure() {
 		$(use_with zlib)
 		$(use_with X x)
 	)
-
-	if use openmp && tc-has-openmp ; then
-		myeconfargs+=( --enable-openmp )
-	else
-		myeconfargs+=( --disable-openmp )
-	fi
 
 	econf "${myeconfargs[@]}"
 }

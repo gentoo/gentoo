@@ -57,6 +57,14 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.19-perl.patch
 )
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 src_prepare() {
 	default
 
@@ -68,19 +76,14 @@ src_configure() {
 	use q16 && depth=16
 	use q32 && depth=32
 
-	local openmp=disable
-	if use openmp && tc-has-openmp ; then
-		openmp=enable
-	fi
-
 	local myeconfargs=(
-		--${openmp}-openmp
 		--enable-largefile
 		--enable-shared
 		$(use_enable static-libs static)
 		$(use_enable debug prof)
 		$(use_enable debug gcov)
 		$(use_enable imagemagick magick-compat)
+		$(use_enable openmp)
 		$(use_with threads)
 		$(use_with dynamic-loading modules)
 		--with-quantum-depth=${depth}
