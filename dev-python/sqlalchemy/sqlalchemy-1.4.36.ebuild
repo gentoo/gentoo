@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..11} )
 PYTHON_REQ_USE="sqlite?"
 
 inherit distutils-r1 optfeature
@@ -51,6 +51,10 @@ python_test() {
 	)
 	[[ ${EPYTHON} == pypy3 ]] && EPYTEST_DESELECT+=(
 		test/ext/test_associationproxy.py::ProxyHybridTest::test_msg_fails_on_cls_access
+	)
+	[[ ${EPYTHON} == python3.11 ]] && EPYTEST_DESELECT+=(
+		# https://github.com/sqlalchemy/sqlalchemy/issues/8019
+		test/engine/test_logging.py::TransactionContextLoggingTest::test_log_messages_have_correct_metadata_echo
 	)
 	if ! has_version "dev-python/greenlet[${PYTHON_USEDEP}]"; then
 		EPYTEST_DESELECT+=(
