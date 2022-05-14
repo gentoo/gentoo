@@ -12,7 +12,7 @@ SRC_URI="https://git.savannah.nongnu.org/cgit/bbdb.git/snapshot/${P}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="~alpha amd64 ~ia64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 IUSE="doc tex vm wanderlust"
 RESTRICT="test" #631700
 
