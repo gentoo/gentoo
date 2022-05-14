@@ -58,6 +58,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.4.1-boost.patch"
 	"${FILESDIR}/${PN}-4.4.1-gcc11.patch"
 	"${FILESDIR}/${PN}-5.0.2-glibc-2.34.patch"
+	"${FILESDIR}/${PN}-4.4.10-boost-1.79.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
@@ -120,6 +121,10 @@ src_configure() {
 	use kerberos && scons_opts+=( --use-sasl-client )
 	use lto && scons_opts+=( --lto=on )
 	use ssl && scons_opts+=( --ssl )
+
+	# Needed to avoid forcing FORTIFY_SOURCE
+	# Gentoo's toolchain applies these anyway
+	scons_opts+=( --runtime-hardening=off )
 
 	# respect mongoDB upstream's basic recommendations
 	# see bug #536688 and #526114
