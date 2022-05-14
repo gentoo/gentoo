@@ -1,38 +1,36 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-GENTOO_DEPEND_ON_PERL="no"
-ESVN_PROJECT=${PN}/trunk
-ESVN_REPO_URI="https://svn.code.sf.net/p/${PN}/code/trunk/${PN}-wip"
-
-inherit autotools flag-o-matic linux-info perl-module subversion systemd toolchain-funcs udev
+inherit autotools flag-o-matic linux-info perl-module systemd toolchain-funcs udev
 
 DESCRIPTION="Takes control of the G15 keyboard, through the linux kernel uinput device driver"
-HOMEPAGE="https://sourceforge.net/projects/g15daemon/"
-[[ ${PV} = *9999* ]] || SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+HOMEPAGE="https://gitlab.com/menelkir/g15daemon"
+if [[ ${PV} == *9999* ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://gitlab.com/menelkir/g15daemon.git"
+else
+	SRC_URI="https://gitlab.com/menelkir/${PN}/-/archive/${PV}/${P}.tar.bz2"
+	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="perl static-libs"
 
+# Has no "test" target in Makefile
+RESTRICT="test"
+
 DEPEND="virtual/libusb:0
-	>=dev-libs/libg15-9999
-	>=dev-libs/libg15render-9999
+	>=dev-libs/libg15-3.0
+	>=dev-libs/libg15render-3.0
 	perl? (
 		dev-lang/perl
 		dev-perl/GDGraph
 		>=dev-perl/Inline-0.4
 	)"
 RDEPEND="${DEPEND}"
-
-PATCHES=(
-	"${FILESDIR}/${PN}-1.9.5.3-g510-keys.patch"
-	"${FILESDIR}/${PN}-1.9.5.3-docdir.patch"
-	"${FILESDIR}/${PN}-1.9.5.3-avoid_bashisms.patch"
-)
 
 uinput_check() {
 	ebegin "Checking for uinput support"
@@ -60,20 +58,18 @@ pkg_setup() {
 }
 
 src_unpack() {
-	if [[ ${PV} = *9999* ]] ; then
-		subversion_src_unpack
+	if [[ ${PV} == *9999* ]] ; then
+		git-r3_src_unpack
 	else
-		unpack ${A}
+		default
 	fi
+
 	if use perl ; then
 		unpack "./${P}/lang-bindings/perl-G15Daemon-0.2.tar.gz"
 	fi
 }
 
 src_prepare() {
-	if [[ ${PV} = *9999* ]] ; then
-		subversion_wc_info
-	fi
 	if use perl ; then
 		perl-module_src_prepare
 		sed -i \
@@ -83,10 +79,7 @@ src_prepare() {
 		# perl-module_src_prepare always calls base_src_prepare
 		default
 	fi
-	if [[ ${PV} = *9999* ]] ; then
-		mv configure.{in,ac} || die
-		eautoreconf
-	fi
+	eautoreconf
 }
 
 src_configure() {
@@ -118,7 +111,7 @@ src_install() {
 	rm "${ED}"/usr/share/doc/${PF}/README.usage || die
 
 	insinto /usr/share/${PN}/contrib
-	doins contrib/xmodmaprc
+	doins contrib/Xmodmap{,-alternative}
 	doins contrib/xmodmap.sh
 	if use perl ; then
 		doins contrib/testbindings.pl
