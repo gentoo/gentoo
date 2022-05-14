@@ -27,27 +27,16 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/3.11-openmp.patch"
-	"${FILESDIR}/3.14-makefile.patch"
+	"${FILESDIR}"/${PN}-3.25-openmp.patch
+	"${FILESDIR}"/${PN}-3.25-makefile.patch
 )
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
-	if use openmp; then
-		if ! tc-has-openmp; then
-			ewarn "OpenMP is not supported by your currently selected compiler"
-
-			if tc-is-clang; then
-				ewarn "OpenMP support in sys-devel/clang is provided by sys-libs/libomp,"
-				ewarn "which you will need to build ${CATEGORY}/${PN} for USE=\"openmp\""
-			fi
-
-			die "need openmp capable compiler"
-		fi
-
-		append-cflags -fopenmp
-		append-cxxflags -fopenmp
-		append-cppflags -DOPENMP
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_prepare() {
@@ -66,6 +55,14 @@ src_prepare() {
 			-e "s/JAVAC_FLAGS =/JAVAC_FLAGS=${JAVAC_FLAGS}/g" \
 			java/Makefile || die "Failed to fix java makefile"
 	fi
+}
+
+src_configure() {
+	if use openmp; then
+		export OPENMP_CFLAGS="-fopenmp -DOPENMP"
+		export OPENMP_LIBS="-fopenmp"
+	fi
+
 	tc-export CXX CC
 }
 
