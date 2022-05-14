@@ -3,7 +3,7 @@
 
 EAPI=7
 
-COMMIT="3c25c893a94dd3f88a7515437c42cd5628220625"
+COMMIT="0557dc2d2489b88c813c695b0d75107be82292f8"
 
 inherit qmake-utils xdg-utils
 
