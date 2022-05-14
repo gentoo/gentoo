@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,10 +31,15 @@ RESTRICT="mirror"
 
 S="${WORKDIR}"/${PN}/source
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
+}
+
 pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
+
 	fortran-2_pkg_setup
 	java-pkg-opt-2_pkg_setup
-	tc-has-openmp || die "Please use an openmp capable compiler like gcc[openmp]"
 }
 
 src_prepare() {
