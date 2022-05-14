@@ -22,12 +22,18 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="cpu_flags_ppc_altivec cpu_flags_arm_iwmmxt cpu_flags_arm_iwmmxt2 cpu_flags_arm_neon loongson2f cpu_flags_x86_mmxext cpu_flags_x86_sse2 cpu_flags_x86_ssse3 static-libs"
+IUSE="cpu_flags_ppc_altivec cpu_flags_arm_iwmmxt cpu_flags_arm_iwmmxt2 cpu_flags_arm_neon loongson2f cpu_flags_x86_mmxext cpu_flags_x86_sse2 cpu_flags_x86_ssse3 static-libs test"
+RESTRICT="!test? ( test )"
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use test && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use test && tc-check-openmp
+}
 
 multilib_src_configure() {
-	local openmp=disabled
-	tc-has-openmp && openmp=enabled
-
 	if use arm && tc-is-clang ; then
 		# See bug #768138 and https://gitlab.freedesktop.org/pixman/pixman/-/issues/46
 		append-cflags $(test-flags-CC -fno-integrated-as)
@@ -42,10 +48,10 @@ multilib_src_configure() {
 		$(meson_feature cpu_flags_ppc_altivec vmx)
 		$(meson_feature cpu_flags_arm_neon neon)
 		$(meson_feature loongson2f loongson-mmi)
+		$(meson_feature test openmp) # only used in unit tests
 		-Ddefault_library=$(usex static-libs both shared)
 		-Dgtk=disabled
 		-Dlibpng=disabled
-		-Dopenmp=$openmp # only used in unit tests
 	)
 	meson_src_configure
 }
