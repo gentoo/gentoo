@@ -1,0 +1,15 @@
+From 752fc3bd9a971858dbb7b51a0ef0289232e67e58 Mon Sep 17 00:00:00 2001
+From: Mike Lothian <mike@fireburn.co.uk>
+Date: Sat, 14 May 2022 02:01:18 +0100
+Subject: [PATCH] Add functional include
+
+--- a/tls/include/adb/tls/tls_connection.h
++++ b/tls/include/adb/tls/tls_connection.h
+@@ -19,6 +19,7 @@
+ #include <stddef.h>
+ #include <stdint.h>
+ 
++#include <functional>
+ #include <string_view>
+ #include <vector>
+ 
