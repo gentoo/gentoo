@@ -53,10 +53,12 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix-bashism.patch
 )
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
-	if use openmp && [[ ${MERGE_TYPE} != binary ]]; then
-		tc-has-openmp || die "Please switch to an OpenMP compatible compiler"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_prepare() {
