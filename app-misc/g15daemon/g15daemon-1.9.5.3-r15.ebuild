@@ -136,6 +136,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
+
 	elog "To use g15daemon, you need to add g15daemon to the default runlevel."
 	elog "This can be done with:"
 	elog "# /sbin/rc-update add g15daemon default"
