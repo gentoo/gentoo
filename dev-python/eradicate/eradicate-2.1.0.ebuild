@@ -4,15 +4,19 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..11} )
 
 inherit distutils-r1
 
 DESCRIPTION="Removes commented-out code from Python files"
-HOMEPAGE="https://github.com/myint/eradicate"
-# TODO: revert to PyPI tarball once it includes tests
-# https://github.com/myint/eradicate/pull/28
-SRC_URI="https://github.com/myint/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="
+	https://github.com/myint/eradicate/
+	https://pypi.org/project/eradicate/
+"
+SRC_URI="
+	https://github.com/myint/eradicate/archive/v${PV}.tar.gz
+		-> ${P}.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
