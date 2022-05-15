@@ -31,12 +31,12 @@ _USER_ECLASS=1
 
 inherit user-info
 
-# @FUNCTION: _assert_pkg_ebuild_phase
+# @FUNCTION: _user_assert_pkg_phase
 # @INTERNAL
 # @USAGE: <calling func name>
 # @DESCRIPTION:
 # Raises an alert if the phase is not suitable for user.eclass usage.
-_assert_pkg_ebuild_phase() {
+_user_assert_pkg_phase() {
 	case ${EBUILD_PHASE} in
 	setup|preinst|postinst|prerm|postrm) ;;
 	*)
@@ -89,7 +89,7 @@ enewuser() {
 		ewarn "Insufficient privileges to execute ${FUNCNAME[0]}"
 		return 0
 	fi
-	_assert_pkg_ebuild_phase ${FUNCNAME}
+	_user_assert_pkg_phase ${FUNCNAME}
 
 	local create_home=1 force_uid=
 	while [[ ${1} == -* ]]; do
@@ -262,7 +262,7 @@ enewgroup() {
 		ewarn "Insufficient privileges to execute ${FUNCNAME[0]}"
 		return 0
 	fi
-	_assert_pkg_ebuild_phase ${FUNCNAME}
+	_user_assert_pkg_phase ${FUNCNAME}
 
 	local force_gid=
 	while [[ ${1} == -* ]]; do
@@ -365,7 +365,7 @@ enewgroup() {
 # If the new home directory does not exist, it is created.
 # Any previously existing home directory is NOT moved.
 esethome() {
-	_assert_pkg_ebuild_phase ${FUNCNAME}
+	_user_assert_pkg_phase ${FUNCNAME}
 
 	# get the username
 	local euser=${1}; shift
@@ -451,7 +451,7 @@ esethome() {
 # Required parameters is the username and the new shell.
 # Specify -1 if you want to set shell to platform-specific nologin.
 esetshell() {
-	_assert_pkg_ebuild_phase ${FUNCNAME}
+	_user_assert_pkg_phase ${FUNCNAME}
 
 	# get the username
 	local euser=${1}; shift
@@ -528,7 +528,7 @@ esetshell() {
 # Update the comment field in a platform-agnostic way.
 # Required parameters is the username and the new comment.
 esetcomment() {
-	_assert_pkg_ebuild_phase ${FUNCNAME}
+	_user_assert_pkg_phase ${FUNCNAME}
 
 	# get the username
 	local euser=${1}; shift
@@ -602,7 +602,7 @@ esetcomment() {
 # Required parameters is the username and the new list of groups,
 # primary group first.
 esetgroups() {
-	_assert_pkg_ebuild_phase ${FUNCNAME}
+	_user_assert_pkg_phase ${FUNCNAME}
 
 	[[ ${#} -eq 2 ]] || die "Usage: ${FUNCNAME} <user> <groups>"
 
