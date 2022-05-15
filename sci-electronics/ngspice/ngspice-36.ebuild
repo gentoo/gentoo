@@ -40,11 +40,16 @@ DOCS=(
 	Stuarts_Poly_Notes
 )
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+
 	MULTIBUILD_VARIANTS=( "binaries" )
 	use shared && MULTIBUILD_VARIANTS+=( "shared" )
 	use tcl && MULTIBUILD_VARIANTS+=( "tcl" )
-	use openmp && tc-check-openmp
 }
 
 src_prepare() {
