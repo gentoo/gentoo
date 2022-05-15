@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/openconnect/ocserv.git"
 else
 	SRC_URI="ftp://ftp.infradead.org/pub/ocserv/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm ~arm64 ppc64 ~riscv x86"
+	KEYWORDS="amd64 arm ~arm64 ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Openconnect SSL VPN server"
