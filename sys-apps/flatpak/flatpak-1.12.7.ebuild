@@ -13,7 +13,7 @@ HOMEPAGE="https://flatpak.org/"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="doc gtk kde introspection policykit seccomp systemd X"
+IUSE="doc introspection policykit seccomp systemd X"
 RESTRICT+=" test"
 
 RDEPEND="
@@ -64,10 +64,7 @@ BDEPEND="
 	$(python_gen_any_dep 'dev-python/pyparsing[${PYTHON_USEDEP}]')
 "
 
-PDEPEND="
-	gtk? ( sys-apps/xdg-desktop-portal-gtk )
-	kde? ( kde-plasma/xdg-desktop-portal-kde )
-"
+PDEPEND="sys-apps/xdg-desktop-portal"
 
 python_check_deps() {
 	has_version -b "dev-python/pyparsing[${PYTHON_USEDEP}]"
