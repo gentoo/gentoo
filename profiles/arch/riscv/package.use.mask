@@ -151,7 +151,7 @@ gnome-base/gnome-shell browser-extension
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
 # dependencies not keyworded/tested
-kde-plasma/plasma-meta grub plymouth
+kde-plasma/plasma-meta plymouth
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-17)
 # sys-libs/libfaketime does not work properly on this arch
