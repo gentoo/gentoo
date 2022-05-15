@@ -50,7 +50,7 @@ RDEPEND="
 	x11-libs/libXi
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( dev-qt/qtdbus:5 )
-	g15? ( app-misc/g15daemon )
+	g15? ( app-misc/g15daemon:= )
 	jack? ( virtual/jack )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-sound/pulseaudio )
