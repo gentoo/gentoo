@@ -131,11 +131,6 @@ dev-java/glassfish-jms-api
 dev-java/sun-jms
 java-virtuals/jms
 
-# Pacho Ramos <pacho@gentoo.org> (2022-05-03)
-# Waiting for keywording and adapting reverse deps. Bug #816135.
->=sys-apps/xdg-desktop-portal-gtk-1.14.0
-sys-apps/xdg-desktop-portal-gnome
-
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
 >=x11-libs/libX11-1.8
