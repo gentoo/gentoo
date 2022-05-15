@@ -8,13 +8,18 @@ EAPI=8
 # DOCS_DEPEND="dev-python/mkdocs-material"
 # DOCS_AUTODOC=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..11} )
+
 inherit distutils-r1 optfeature # docs
 
 DESCRIPTION="Fully-featured HTTP client which provides sync and async APIs"
-HOMEPAGE="https://www.python-httpx.org/"
+HOMEPAGE="
+	https://www.python-httpx.org/
+	https://github.com/encode/httpx/
+	https://pypi.org/project/httpx/
+"
 SRC_URI="
-	https://github.com/encode/${PN}/archive/${PV}.tar.gz
+	https://github.com/encode/httpx/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 
