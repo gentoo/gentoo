@@ -1,0 +1,6 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2022-05-15)
+# No Rust here (so no Spidermonkey), force Duktape instead
+sys-auth/polkit duktape
