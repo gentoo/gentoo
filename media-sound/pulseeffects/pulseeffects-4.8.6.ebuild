@@ -61,6 +61,7 @@ BDEPEND="dev-libs/appstream-glib
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.8.6-meson_no_automagic.patch
+	"${FILESDIR}"/${P}-boost_1.79.patch
 )
 
 S="${WORKDIR}"/easyeffects-${PV}

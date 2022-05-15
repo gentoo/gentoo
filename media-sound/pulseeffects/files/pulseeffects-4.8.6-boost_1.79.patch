@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/844898
+https://github.com/wwmm/easyeffects/commit/1000de1c27f422fb2fd6106c554844e9d81925cf
+
+From: Sven Hesse <drmccoy@drmccoy.de>
+Date: Sun, 15 May 2022 19:04:32 +0200
+Subject: [PATCH] fix compilation with Boost 1.79.0
+
+Boost.Filesystem in Boost 1.79.0 changed the already-deprecated header
+of string_file.hpp to be not included by default anymore in its commit
+266e1ac892a6f54d807fb35bf639a9aa1c8b2db1.
+
+Boost.Filesystem's fstream.hpp was never included directly by default,
+but string_file.hpp did include it, so this code here in PulseEffects
+worked. With Boost 1.79.0, though, it explodes in lin 179.
+--- a/src/general_settings_ui.cpp
++++ b/src/general_settings_ui.cpp
+@@ -21,6 +21,7 @@
+ #include <giomm/file.h>
+ #include <glibmm.h>
+ #include <boost/filesystem.hpp>
++#include <boost/filesystem/fstream.hpp>
+ #include "util.hpp"
+ 
+ namespace {
+
