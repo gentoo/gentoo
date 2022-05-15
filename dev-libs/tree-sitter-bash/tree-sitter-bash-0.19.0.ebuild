@@ -10,4 +10,4 @@ HOMEPAGE="https://github.com/tree-sitter/tree-sitter-bash"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc64 ~riscv ~sparc"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc64 ~riscv ~sparc"
