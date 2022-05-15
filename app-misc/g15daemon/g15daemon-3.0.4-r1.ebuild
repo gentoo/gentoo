@@ -16,7 +16,8 @@ else
 fi
 
 LICENSE="GPL-2"
-SLOT="0"
+# Subslot = libg15daemon_client.so major version
+SLOT="0/3"
 IUSE="perl static-libs"
 
 # Has no "test" target in Makefile
