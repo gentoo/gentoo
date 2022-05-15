@@ -13,6 +13,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 RDEPEND="
+	dev-libs/openssl:=
 	>=virtual/perl-Carp-1.100.0
 	>=virtual/perl-Exporter-5.560.0
 	>=virtual/perl-File-Spec-0.860.0
