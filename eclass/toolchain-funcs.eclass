@@ -611,6 +611,19 @@ tc-has-openmp() {
 # OpenMP support that has been requested by the ebuild. Using this function
 # to test for OpenMP support should be preferred over tc-has-openmp and
 # printing a custom message, as it presents a uniform interface to the user.
+#
+# You should test for any necessary OpenMP support in pkg_pretend in order to
+# warn the user of required toolchain changes.  You must still check for OpenMP
+# support at build-time, e.g.
+# @CODE
+# pkg_pretend() {
+#	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+# }
+#
+# pkg_setup() {
+#	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+# }
+# @CODE
 tc-check-openmp() {
 	if ! _tc-has-openmp; then
 		eerror "Your current compiler does not support OpenMP!"
