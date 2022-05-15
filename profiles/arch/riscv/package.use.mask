@@ -82,10 +82,6 @@ sci-astronomy/stellarium webengine
 # but with it installed, anyio passes all tests
 dev-python/anyio test
 
-# Alex Fan <alex.fan.q@gmail.com> (2021-11-19)
-# depends on dev-lang/ocaml
-app-accessibility/brltty ocaml ocamlopt
-
 # Marek Szuba <marecki@gentoo.org> (2021-09-23)
 # mkdocs ecosystem only partly keyworded on riscv, has rather messy
 # Python-target requirements.
