@@ -54,7 +54,7 @@ distutils_enable_tests pytest
 
 src_prepare() {
 	# unpin deps
-	sed -i -e 's:==[0-9.*]*::' -e 's:,<[0-9.]*::' setup.py || die
+	sed -i -e 's:==[0-9.*]\+::' -e 's:,<[0-9.]\+::' setup.py || die
 	if ! use cli; then
 		sed -i -e '/console_scripts/d' setup.py || die
 	fi
