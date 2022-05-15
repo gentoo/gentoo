@@ -4,13 +4,20 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
+
 inherit distutils-r1
 
 DESCRIPTION="DNS toolkit for Python"
-HOMEPAGE="https://www.dnspython.org/
-	https://pypi.org/project/dnspython/"
-SRC_URI="https://github.com/rthalley/dnspython/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="
+	https://www.dnspython.org/
+	https://github.com/rthalley/dnspython/
+	https://pypi.org/project/dnspython/
+"
+SRC_URI="
+	https://github.com/rthalley/dnspython/archive/v${PV}.tar.gz
+		-> ${P}.tar.gz
+"
 
 LICENSE="ISC"
 SLOT="0"
@@ -19,7 +26,8 @@ IUSE="examples"
 
 RDEPEND="
 	dev-python/cryptography[${PYTHON_USEDEP}]
-	<dev-python/idna-4.0[${PYTHON_USEDEP}]"
+	<dev-python/idna-4.0[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests pytest
 
