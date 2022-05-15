@@ -1,0 +1,35 @@
+Index: hipFFT-rocm-5.0.2/cmake/dependencies.cmake
+===================================================================
+--- hipFFT-rocm-5.0.2.orig/cmake/dependencies.cmake
++++ hipFFT-rocm-5.0.2/cmake/dependencies.cmake
+@@ -21,9 +21,6 @@
+ #
+ # #############################################################################
+ 
+-# Git
+-find_package(Git REQUIRED)
+-
+ # HIP
+ if( NOT CMAKE_CXX_COMPILER MATCHES ".*/hipcc$" )
+   if( NOT BUILD_WITH_LIB STREQUAL "CUDA" )
+Index: hipFFT-rocm-5.0.2/clients/CMakeLists.txt
+===================================================================
+--- hipFFT-rocm-5.0.2.orig/clients/CMakeLists.txt
++++ hipFFT-rocm-5.0.2/clients/CMakeLists.txt
+@@ -54,16 +54,6 @@ list( APPEND CMAKE_MODULE_PATH ${CMAKE_C
+ 
+ include( build-options )
+ 
+-if( GIT_FOUND AND EXISTS "${CMAKE_SOURCE_DIR}/.git" )
+-  message(STATUS "rocFFT submodule update")
+-  execute_process(COMMAND ${GIT_EXECUTABLE} submodule update --init --recursive
+-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/clients/rocFFT
+-    RESULT_VARIABLE GIT_SUBMOD_RESULT)
+-  if( NOT GIT_SUBMOD_RESULT EQUAL "0" )
+-    message(FATAL_ERROR "git submodule update --init --recursive failed with ${GIT_SUBMOD_RESULT}, please checkout submodules manually.")
+-  endif( )
+-endif( )
+-
+ if( NOT EXISTS "${CMAKE_SOURCE_DIR}/clients/rocFFT/CMakeLists.txt" )
+   message(FATAL_ERROR "The rocFFT submodule is not present!  Please update git submodules and try again. ${CMAKE_CURRENT_SOURCE_DIR}/clients/rocFFT/CMakeLists.txt")
+ endif( )
