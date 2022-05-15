@@ -1,4 +1,4 @@
-# Copyright 2018-2020 Gentoo Authors
+# Copyright 2018-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,6 +21,15 @@ fi
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="openmp cpu_flags_x86_sse2"
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 src_prepare() {
 	# USE=cpu_flags_x86_sse2 instead
 	sed -E 's#include (FindSSE)##' -i CMakeLists.txt || die
@@ -34,7 +43,6 @@ src_prepare() {
 }
 
 src_configure() {
-	use openmp && tc-check-openmp
 	local mycmakeargs=(
 		-DUSE_OMP="$(usex openmp)"
 		-DSSE2_FOUND="$(usex cpu_flags_x86_sse2)"
