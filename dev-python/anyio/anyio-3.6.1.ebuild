@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..11} )
 
 inherit distutils-r1
 
@@ -34,7 +34,7 @@ BDEPEND="
 		amd64? (
 			$(python_gen_cond_dep '
 				>=dev-python/uvloop-0.15[${PYTHON_USEDEP}]
-			' 'python*')
+			' python3_{8..10})
 		)
 	)
 "
