@@ -74,7 +74,7 @@ RDEPEND="
 	<sci-libs/hdf5-1.12:=[mpi=]
 	sci-libs/netcdf:=[mpi=]
 	sys-libs/zlib
-	virtual/jpeg
+	media-libs/libjpeg-turbo
 	all-modules? ( sci-geosciences/liblas[gdal] )
 	boost? ( dev-libs/boost:=[mpi?] )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
@@ -114,13 +114,13 @@ RDEPEND="
 		x11-libs/libXext
 	)
 	web? ( ${WEBAPP_DEPEND} )
-	$(python_gen_cond_dep '
-		python? (
+	python? (
+		$(python_gen_cond_dep '
 			boost? ( dev-libs/boost:=[mpi?,python?,${PYTHON_USEDEP}] )
-			gdal? ( sci-libs/gdal:=[python?,${PYTHON_USEDEP}] )
 			mpi? ( dev-python/mpi4py[${PYTHON_USEDEP}] )
-		)
-	')
+		')
+		gdal? ( sci-libs/gdal:=[python?,${PYTHON_SINGLE_USEDEP}] )
+	)
 "
 
 DEPEND="
