@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="amd64 arm64 ~riscv x86"
 IUSE=""
 
-DEPEND="app-crypt/gpgme:="
+DEPEND="app-crypt/gpgme:=[python,${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 
 python_configure_all() {
