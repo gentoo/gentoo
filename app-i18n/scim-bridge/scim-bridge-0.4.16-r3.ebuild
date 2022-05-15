@@ -43,6 +43,7 @@ PATCHES=(
 	"${FILESDIR}/${P}+gcc-4.7.patch"
 	"${FILESDIR}/${P}-configure.ac.patch" #280887
 	"${FILESDIR}/${P}-fixes-send-function-call.patch" # 645168
+	"${FILESDIR}/${P}-slibtool.patch" # 779121
 )
 
 src_prepare() {
