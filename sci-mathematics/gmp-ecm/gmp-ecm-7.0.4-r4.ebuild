@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic toolchain-funcs
+inherit autotools toolchain-funcs
 
 MY_PN="ecm"
 MY_P="${MY_PN}-${PV}"
@@ -27,7 +27,11 @@ PATCHES=(
 S="${WORKDIR}/${MY_P}"
 
 pkg_pretend() {
-	use openmp && tc-check-openmp
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_prepare(){
@@ -64,6 +68,7 @@ src_compile() {
 		emake ecm-params && emake clean && emake
 	fi
 }
+
 src_configure() {
 	econf \
 		--enable-shared \
