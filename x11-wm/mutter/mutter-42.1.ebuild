@@ -174,6 +174,7 @@ src_test() {
 }
 
 pkg_postinst() {
+	use udev && udev_reload
 	xdg_pkg_postinst
 	gnome2_schemas_update
 }
