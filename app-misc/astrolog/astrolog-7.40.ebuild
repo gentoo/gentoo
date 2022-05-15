@@ -6,8 +6,8 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="A many featured astrology chart calculation program"
-HOMEPAGE="http://www.astrolog.org/astrolog.htm"
-SRC_URI="http://www.astrolog.org/ftp/ast74src.zip"
+HOMEPAGE="https://www.astrolog.org/astrolog.htm"
+SRC_URI="https://www.astrolog.org/ftp/ast74src.zip"
 
 LICENSE="astrolog"
 SLOT="0"
