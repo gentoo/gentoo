@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1 optfeature
 
@@ -35,6 +35,14 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		# broken with =dev-python/pygments-2.12.0
 		tests/test_console.py::test_size_can_fall_back_to_std_descriptors
+	)
+	[[ ${EPYTHON} == python3.11 ]] && EPYTEST_DESELECT+=(
+		# the usual deal: output changes that cause test mismatches
+		tests/test_inspect.py::test_inspect_text
+		tests/test_inspect.py::test_inspect_builtin_function
+		tests/test_inspect.py::test_inspect_integer_with_methods
+		tests/test_log.py::test_log
+		tests/test_pretty.py::test_attrs_broken
 	)
 	epytest -p no:pytest-qt
 }
