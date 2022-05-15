@@ -6,7 +6,6 @@
 	</maintainer>
 	<use>
 		<flag name="duktape">Use <pkg>dev-lang/duktape</pkg> instead of <pkg>dev-lang/spidermonkey</pkg> as JavaScript engine</flag>
-		<flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking</flag>
 		<flag name="systemd">Use <pkg>sys-apps/systemd</pkg> for session tracking</flag>
 	</use>
 </pkgmetadata>
