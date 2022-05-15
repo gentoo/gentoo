@@ -93,10 +93,6 @@ dev-python/backrefs doc
 dev-python/pyspelling doc
 dev-python/wcmatch doc
 
-# Marek Szuba <marecki@gentoo.org> (2021-09-19)
-# media-gfx/nvidia-texture-tools reports arch as unknown, fails to build
-media-libs/devil nvtt
-
 # Alex Fan <alexfanqi@yahoo.com> (2021-09-13)
 # These depend on Haskell:
 #  - dev-vcs/darcs
