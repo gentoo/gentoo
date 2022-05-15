@@ -4,12 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( pypy3 python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..11} )
 
 inherit distutils-r1
 
 DESCRIPTION="Sans-I/O implementation of SOCKS4, SOCKS4A, and SOCKS5"
-HOMEPAGE="https://pypi.org/project/socksio/ https://github.com/sethmlarson/socksio"
+HOMEPAGE="
+	https://github.com/sethmlarson/socksio/
+	https://pypi.org/project/socksio/
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
