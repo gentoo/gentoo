@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,8 @@ RDEPEND="
 	${DEPEND}
 	sys-apps/hwdata
 "
-BDEPEND="kmod? ( virtual/pkgconfig )"
+BDEPEND="sys-apps/which
+	kmod? ( virtual/pkgconfig )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.9-static-pc.patch

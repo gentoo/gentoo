@@ -24,7 +24,8 @@ DEPEND="kmod? ( sys-apps/kmod )
 	!static-libs? ( ${LIB_DEPEND//static-libs([+-]),} )"
 RDEPEND="${DEPEND}
 	sys-apps/hwdata"
-BDEPEND="kmod? ( virtual/pkgconfig )"
+BDEPEND="sys-apps/which
+	kmod? ( virtual/pkgconfig )"
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/pci/config.h )
 
