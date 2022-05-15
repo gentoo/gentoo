@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby25 ruby26 ruby27"
+USE_RUBY="ruby26 ruby27 ruby30"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
@@ -20,10 +20,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
-
-# Restrict tests since they now require the specific rspec version to be
-# provided in an environment variable.
-#RESTRICT="test"
 
 ruby_add_rdepend "
 	>=dev-ruby/activesupport-3.0:*
@@ -61,5 +57,5 @@ all_ruby_prepare() {
 }
 
 each_ruby_test() {
-	${RUBY} -S bundle exec ${RUBY} -S rspec-3 spec || die
+	RSPEC_VERSION=">=4" ${RUBY} -S bundle exec ${RUBY} -S rspec-3 spec || die
 }
