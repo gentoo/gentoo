@@ -4,15 +4,19 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
 MY_PN="${PN/-/_}"
 DESCRIPTION="Send responses to HTTPX using pytest"
-HOMEPAGE="https://colin-b.github.io/pytest_httpx/"
+HOMEPAGE="
+	https://colin-b.github.io/pytest_httpx/
+	https://github.com/Colin-b/pytest_httpx/
+	https://pypi.org/project/pytest-httpx/
+"
 SRC_URI="
-	https://github.com/Colin-b/${MY_PN}/archive/v${PV}.tar.gz
+	https://github.com/Colin-b/pytest_httpx/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S="${WORKDIR}/${MY_PN}-${PV}"
