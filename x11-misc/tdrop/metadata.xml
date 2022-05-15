@@ -6,6 +6,7 @@
 		<name>Georgy Yakovlev</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">octuid/tdrop</remote-id>
+		<remote-id type="github">noctuid/tdrop</remote-id>
+		<changelog>https://github.com/noctuid/tdrop/blob/master/Changelog.org</changelog>
 	</upstream>
 </pkgmetadata>
