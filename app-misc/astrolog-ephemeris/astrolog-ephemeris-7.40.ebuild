@@ -4,8 +4,8 @@
 EAPI=8
 
 DESCRIPTION="ephemeris files for optional extended accuracy of astrolog's calculations"
-HOMEPAGE="http://www.astrolog.org/astrolog.htm"
-SRC_URI="http://www.astrolog.org/ftp/ephem/ephemall.zip"
+HOMEPAGE="https://www.astrolog.org/astrolog.htm"
+SRC_URI="https://www.astrolog.org/ftp/ephem/ephemall.zip"
 
 LICENSE="astrolog"
 SLOT="0"
