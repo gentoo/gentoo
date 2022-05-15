@@ -18,7 +18,6 @@ virtual/rust
 >=gnome-base/gnome-core-libs-3.36.5
 >=gnome-base/gnome-core-apps-3.36.5
 >=gnome-base/gnome-light-3.36.5
->=sys-auth/polkit-0.118
 >=dev-libs/gjs-1.66
 >=gnome-base/gnome-shell-3.38
 >=x11-themes/adwaita-icon-theme-3.36
