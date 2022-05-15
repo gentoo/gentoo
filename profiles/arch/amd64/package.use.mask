@@ -17,6 +17,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jakov Smolić <jsmolic@gentoo.org> (2022-05-15)
+# media-video/nvidia_video_sdk is masked for removal
+media-libs/avidemux-core nvenc
+media-libs/avidemux-plugins nvenc
+media-video/avidemux nvenc
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-01)
 # requires sys-apps/dbus-broker, which is keyworded here.
 sys-apps/systemd -hostnamed-fallback
