@@ -228,8 +228,3 @@ sys-block/thin-provisioning-tools test
 dev-libs/libpcre2 jit
 dev-libs/libpcre jit
 www-servers/nginx pcre-jit
-
-# app-shells/fish not keyworded due to failing tests (Bug #807742).
-# That said, with fish-3.3.1-r1 installed manually (and without testing)
-# all argcomplete-1.12.3 tests passed.
-dev-python/argcomplete test
