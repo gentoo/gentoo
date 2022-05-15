@@ -83,7 +83,7 @@ RDEPEND="
 	java? ( >=virtual/jdk-1.8:* )
 	mpi? (
 		media-libs/glew:=
-		sys-cluster/openmpi[cxx,romio]
+		virtual/mpi[cxx,romio]
 		virtual/opengl
 	)
 	mysql? ( dev-db/mariadb-connector-c )

@@ -79,7 +79,7 @@ RDEPEND="
 	json? ( dev-libs/jsoncpp:= )
 	mpi? (
 		sci-libs/h5part
-		sys-cluster/openmpi[cxx,romio]
+		virtual/mpi[cxx,romio]
 	)
 	mysql? ( dev-db/mariadb-connector-c )
 	odbc? ( dev-db/unixODBC )
