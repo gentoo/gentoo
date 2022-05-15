@@ -29,7 +29,6 @@ RDEPEND="
 	dev-python/sniffio[${PYTHON_USEDEP}]
 	=dev-python/httpcore-0.14*[${PYTHON_USEDEP}]
 	>=dev-python/rfc3986-1.3[${PYTHON_USEDEP}]
-	<dev-python/rfc3986-2[${PYTHON_USEDEP}]
 	cli? (
 		=dev-python/click-8*[${PYTHON_USEDEP}]
 		=dev-python/pygments-2*[${PYTHON_USEDEP}]
@@ -54,7 +53,8 @@ BDEPEND="
 distutils_enable_tests pytest
 
 src_prepare() {
-	sed -i -e '/rich/s:==10[.][*]:<13:' setup.py || die
+	# unpin deps
+	sed -i -e 's:==[0-9.*]*::' -e 's:,<[0-9.]*::' setup.py || die
 	if ! use cli; then
 		sed -i -e '/console_scripts/d' setup.py || die
 	fi
