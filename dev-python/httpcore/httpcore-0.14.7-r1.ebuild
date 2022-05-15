@@ -4,14 +4,18 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..11} )
 
 inherit distutils-r1 optfeature
 
 DESCRIPTION="A minimal low-level HTTP client"
-HOMEPAGE="https://www.encode.io/httpcore/"
+HOMEPAGE="
+	https://www.encode.io/httpcore/
+	https://github.com/encode/httpcore/
+	https://pypi.org/project/httpcore/
+"
 SRC_URI="
-	https://github.com/encode/${PN}/archive/${PV}.tar.gz
+	https://github.com/encode/httpcore/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="BSD"
