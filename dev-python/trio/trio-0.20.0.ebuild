@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( pypy3 python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..11} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1
@@ -38,19 +38,8 @@ BDEPEND="
 	)
 "
 
-EPYTEST_DESELECT=(
-	# Times out on slower arches (ia64 in this case)
-	# https://github.com/python-trio/trio/issues/1753
-	trio/tests/test_unix_pipes.py::test_close_at_bad_time_for_send_all
-
-	# incompatible ipython version?
-	trio/_core/tests/test_multierror.py::test_ipython_exc_handler
-)
-
-EPYTEST_IGNORE=(
-	# these tests require internet access
-	trio/tests/test_ssl.py
-	trio/tests/test_highlevel_ssl_helpers.py
+PATCHES=(
+	"${FILESDIR}/${P}-py311.patch"
 )
 
 distutils_enable_tests pytest
@@ -61,6 +50,26 @@ distutils_enable_sphinx docs/source \
 	dev-python/towncrier
 
 python_test() {
+	local EPYTEST_IGNORE=(
+		# these tests require internet access
+		trio/tests/test_ssl.py
+		trio/tests/test_highlevel_ssl_helpers.py
+	)
+
+	local EPYTEST_DESELECT=(
+		# Times out on slower arches (ia64 in this case)
+		# https://github.com/python-trio/trio/issues/1753
+		trio/tests/test_unix_pipes.py::test_close_at_bad_time_for_send_all
+
+		# incompatible ipython version?
+		trio/_core/tests/test_multierror.py::test_ipython_exc_handler
+	)
+
+	[[ ${EPYTHON} == python3.11 ]] && EPYTEST_DESELECT+=(
+		# test for functionality that has been removed from py3.11
+		trio/tests/test_util.py::test_coroutine_or_error
+	)
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest -m "not redistributors_should_skip"
 }
