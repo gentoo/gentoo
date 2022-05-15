@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=8
 
 inherit autotools gnome2-utils readme.gentoo-r1
 
@@ -42,6 +42,7 @@ PATCHES=(
 	"${FILESDIR}/${P}+gcc-4.4.patch"
 	"${FILESDIR}/${P}+gcc-4.7.patch"
 	"${FILESDIR}/${P}-configure.ac.patch" #280887
+	"${FILESDIR}/${P}-fixes-send-function-call.patch" # 645168
 )
 
 src_prepare() {
