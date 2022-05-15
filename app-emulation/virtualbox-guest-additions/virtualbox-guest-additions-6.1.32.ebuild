@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-mod systemd toolchain-funcs
+inherit linux-mod systemd toolchain-funcs udev
 
 MY_PN="VirtualBox"
 MY_PV="${PV/beta/BETA}"
@@ -185,6 +185,7 @@ src_install() {
 
 pkg_postinst() {
 	linux-mod_pkg_postinst
+	udev_reload
 	if ! use X ; then
 		elog "use flag X is off, enable it to install the"
 		elog "X Window System video driver."
