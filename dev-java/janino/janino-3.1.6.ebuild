@@ -18,7 +18,7 @@ SRC_URI="https://codeload.github.com/janino-compiler/janino/tar.gz/v${PV} -> ${P
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 # Common dependencies
 # POM: janino/pom.xml
