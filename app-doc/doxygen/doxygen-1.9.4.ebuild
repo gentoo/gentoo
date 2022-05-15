@@ -59,6 +59,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.9.4-link_with_pthread.patch"
 	"${FILESDIR}/${PN}-1.9.1-ignore-bad-encoding.patch"
 	"${FILESDIR}/${PN}-1.9.1-do_not_force_libcxx.patch"
+	"${FILESDIR}/${P}-gcc12-include.patch"
 )
 
 DOCS=( LANGUAGE.HOWTO README.md )
