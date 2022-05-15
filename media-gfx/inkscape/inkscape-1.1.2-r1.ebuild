@@ -31,6 +31,7 @@ BDEPEND="
 	>=dev-util/intltool-0.40
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
+	test? ( virtual/imagemagick-tools )
 "
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/poppler-0.57.0:=[cairo]
