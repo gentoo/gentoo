@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Gthumb"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="cdr colord exif gnome-keyring gstreamer heif http jpegxl lcms raw slideshow svg tiff webp"
 
 # libX11 dep is a workaround. See files/3.12.2-link-with-x11.patch
@@ -41,6 +41,8 @@ RDEPEND="
 	cdr? ( >=app-cdr/brasero-3.2.0 )
 	svg? ( >=gnome-base/librsvg-2.34:2 )
 	webp? ( >=media-libs/libwebp-0.2.0:= )
+	jpegxl? ( >=media-libs/libjxl-0.3.0 )
+	heif? ( >=media-libs/libheif-1.11:0= )
 	lcms? ( >=media-libs/lcms-2.6:2 )
 	colord? (
 		>=x11-misc/colord-1.3
@@ -48,7 +50,7 @@ RDEPEND="
 	)
 
 	sys-libs/zlib
-	virtual/jpeg:0=
+	media-libs/libjpeg-turbo:0=
 	tiff? ( media-libs/tiff:= )
 	media-libs/libpng:0=
 	>=gnome-base/gsettings-desktop-schemas-0.1.4
