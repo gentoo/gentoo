@@ -19,7 +19,7 @@ DEPEND="
 	>=dev-libs/glib-2.50:2
 	>=x11-libs/gtk+-3.22:3[introspection]
 	>=net-libs/gtk-vnc-0.4.4[pulseaudio,vala]
-	>=gui-libs/libhandy-1.2.0:1[vala]
+	>=gui-libs/libhandy-1.6.0:1[vala]
 	>=dev-libs/libxml2-2.7.8
 	app-crypt/libsecret[vala]
 
