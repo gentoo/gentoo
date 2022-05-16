@@ -1,0 +1,70 @@
+Upstream: https://git.dcmtk.org/?p=dcmtk.git;a=commitdiff;h=09afb527bb889932f919c28f47b08c84fe19ab32
+
+From 46b4b4c2d48612b60f27969db142599f56042a47 Mon Sep 17 00:00:00 2001
+From: Marco Eichelberg <dicom@offis.de>
+Date: Tue, 10 Nov 2020 12:31:00 +0100
+Subject: [PATCH] Renamed libcharls to libdcmtkcharls.
+
+Renamed the CharLS JPEG-LS library that is built into DCMTK from
+"charls" to "dcmtkcharls" to avoid a naming conflict with another
+installation of the CharLS library when building shared libraries.
+
+Thanks to Mathieu Malaterre <malat@debian.org> for the suggestion
+and the patch.
+---
+ dcmjpls/apps/CMakeLists.txt      | 2 +-
+ dcmjpls/libcharls/CMakeLists.txt | 4 ++--
+ dcmjpls/libcharls/intrface.h     | 2 +-
+ dcmjpls/libsrc/CMakeLists.txt    | 2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/dcmjpls/apps/CMakeLists.txt b/dcmjpls/apps/CMakeLists.txt
+index 2a9a452..0cb3f53 100644
+--- a/dcmjpls/apps/CMakeLists.txt
++++ b/dcmjpls/apps/CMakeLists.txt
+@@ -8,5 +8,5 @@ endforeach()
+ 
+ # make sure executables are linked to the corresponding libraries
+ foreach(PROGRAM dcmcjpls dcmdjpls dcml2pnm)
+-  DCMTK_TARGET_LINK_MODULES(${PROGRAM} dcmjpls charls dcmimage dcmimgle dcmdata oflog ofstd ofstd)
++  DCMTK_TARGET_LINK_MODULES(${PROGRAM} dcmjpls dcmtkcharls dcmimage dcmimgle dcmdata oflog ofstd ofstd)
+ endforeach()
+diff --git a/dcmjpls/libcharls/CMakeLists.txt b/dcmjpls/libcharls/CMakeLists.txt
+index 0c5b143..ae0c017 100644
+--- a/dcmjpls/libcharls/CMakeLists.txt
++++ b/dcmjpls/libcharls/CMakeLists.txt
+@@ -2,6 +2,6 @@
+ include_directories("${dcmjpls_SOURCE_DIR}/libcharls" "${ofstd_SOURCE_DIR}/include")
+ 
+ # create library from source files
+-DCMTK_ADD_LIBRARY(charls header intrface jpegls)
++DCMTK_ADD_LIBRARY(dcmtkcharls header intrface jpegls)
+ 
+-DCMTK_TARGET_LINK_MODULES(charls ofstd oflog)
++DCMTK_TARGET_LINK_MODULES(dcmtkcharls ofstd oflog)
+diff --git a/dcmjpls/libcharls/intrface.h b/dcmjpls/libcharls/intrface.h
+index c8fdaa9..3aa27fd 100644
+--- a/dcmjpls/libcharls/intrface.h
++++ b/dcmjpls/libcharls/intrface.h
+@@ -10,7 +10,7 @@
+ #include "dcmtk/ofstd/ofstd.h"    /* for size_t */
+ #include "dcmtk/ofstd/ofdefine.h" /* for DCMTK_DECL_EXPORT */
+ 
+-#ifdef charls_EXPORTS
++#ifdef dcmtkcharls_EXPORTS
+ #define DCMTK_CHARLS_EXPORT DCMTK_DECL_EXPORT
+ #else
+ #define DCMTK_CHARLS_EXPORT DCMTK_DECL_IMPORT
+diff --git a/dcmjpls/libsrc/CMakeLists.txt b/dcmjpls/libsrc/CMakeLists.txt
+index 314face..bd928f8 100644
+--- a/dcmjpls/libsrc/CMakeLists.txt
++++ b/dcmjpls/libsrc/CMakeLists.txt
+@@ -4,4 +4,4 @@ include_directories("${dcmjpls_SOURCE_DIR}/include" "${ofstd_SOURCE_DIR}/include
+ # create library from source files
+ DCMTK_ADD_LIBRARY(dcmjpls djcparam djdecode djencode djrparam djcodecd djutils djcodece)
+ 
+-DCMTK_TARGET_LINK_MODULES(dcmjpls ofstd oflog dcmdata dcmimgle dcmimage charls)
++DCMTK_TARGET_LINK_MODULES(dcmjpls ofstd oflog dcmdata dcmimgle dcmimage dcmtkcharls)
+-- 
+2.1.4
+
