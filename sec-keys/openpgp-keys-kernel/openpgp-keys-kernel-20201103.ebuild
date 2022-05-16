@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="OpenPGP keys used to sign Linux kernel releases"
-HOMEPAGE="http://miniupnp.free.fr/files/"
+HOMEPAGE="https://www.kernel.org/signature.html"
 SRC_URI="
 	https://kernel.org/.well-known/openpgpkey/hu/e3n9xnm94c5apezqnj1pmrfuaoyfm8cf?l=gregkh
 		-> gregkh@kernel.org.key
