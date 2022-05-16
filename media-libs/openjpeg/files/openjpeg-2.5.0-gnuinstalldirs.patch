@@ -1,0 +1,299 @@
+From fecc8e9e23f78de94c41bc641b3e5b9e9a84560b Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 11 Apr 2019 13:10:57 +0200
+Subject: [PATCH] Use GNUInstallDirs for standard installation directories
+
+Raises minimum cmake version by a little.
+(Later rebased by sam@gentoo.org for 2.4.0)
+(Again rebased by t@laumann.xyz for 2.5.0)
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,7 +7,7 @@
+ # For this purpose you can define a CMake var: OPENJPEG_NAMESPACE to whatever you like
+ # e.g.:
+ # set(OPENJPEG_NAMESPACE "GDCMOPENJPEG")
+-cmake_minimum_required(VERSION 2.8.2)
++cmake_minimum_required(VERSION 2.8.5)
+ 
+ if(COMMAND CMAKE_POLICY)
+   cmake_policy(SET CMP0003 NEW)
+@@ -106,54 +106,23 @@ endif()
+ # --------------------------------------------------------------------------
+ # Install directories
+ # Build DOCUMENTATION (not in ALL target and only if Doxygen is found)
++include(GNUInstallDirs)
++
+ option(BUILD_DOC "Build the HTML documentation (with doxygen if available)." OFF)
+ 
+ string(TOLOWER ${PROJECT_NAME} projectname)
+ set(OPENJPEG_INSTALL_SUBDIR "${projectname}-${OPENJPEG_VERSION_MAJOR}.${OPENJPEG_VERSION_MINOR}")
+ 
+-if(NOT OPENJPEG_INSTALL_BIN_DIR)
+-  set(OPENJPEG_INSTALL_BIN_DIR "bin")
+-endif()
+-
+-if(NOT OPENJPEG_INSTALL_LIB_DIR)
+-  set(OPENJPEG_INSTALL_LIB_DIR "lib")
+-endif()
+-
+-if(NOT OPENJPEG_INSTALL_SHARE_DIR)
+-  set(OPENJPEG_INSTALL_SHARE_DIR "share")
+-endif()
+-
+-if(NOT OPENJPEG_INSTALL_DATA_DIR)
+-  set(OPENJPEG_INSTALL_DATA_DIR "${OPENJPEG_INSTALL_SHARE_DIR}/${OPENJPEG_INSTALL_SUBDIR}")
+-endif()
+-
+-if(NOT OPENJPEG_INSTALL_INCLUDE_DIR)
+-  set(OPENJPEG_INSTALL_INCLUDE_DIR "include/${OPENJPEG_INSTALL_SUBDIR}")
+-endif()
+-
+-if(BUILD_DOC)
+-if(NOT OPENJPEG_INSTALL_MAN_DIR)
+-  set(OPENJPEG_INSTALL_MAN_DIR "share/man/")
+-endif()
+-
+-if(NOT OPENJPEG_INSTALL_DOC_DIR)
+-  set(OPENJPEG_INSTALL_DOC_DIR "share/doc/${OPENJPEG_INSTALL_SUBDIR}")
+-endif()
+-endif()
+-
+ if(NOT OPENJPEG_INSTALL_JNI_DIR)
+   if(WIN32)
+-    set(OPENJPEG_INSTALL_JNI_DIR ${OPENJPEG_INSTALL_BIN_DIR})
++    set(OPENJPEG_INSTALL_JNI_DIR ${CMAKE_INSTALL_BINDIR})
+   else()
+-    set(OPENJPEG_INSTALL_JNI_DIR ${OPENJPEG_INSTALL_LIB_DIR})
++    set(OPENJPEG_INSTALL_JNI_DIR ${CMAKE_INSTALL_LIBDIR})
+   endif()
+ endif()
+ 
+ if(NOT OPENJPEG_INSTALL_PACKAGE_DIR)
+-  # We could install *.cmake files in share/ however those files contains
+-  # hardcoded path to libraries on a multi-arch system (fedora/debian) those
+-  # path will be different (lib/i386-linux-gnu vs lib/x86_64-linux-gnu)
+-  set(OPENJPEG_INSTALL_PACKAGE_DIR "${OPENJPEG_INSTALL_LIB_DIR}/${OPENJPEG_INSTALL_SUBDIR}")
++  set(OPENJPEG_INSTALL_PACKAGE_DIR "${CMAKE_INSTALL_LIBDIR}/cmake/${CMAKE_INSTALL_SUBDIR}")
+ endif()
+ 
+ if (APPLE)
+@@ -161,7 +130,7 @@ if (APPLE)
+         # For cmake >= 3.0, we turn on CMP0042 and
+         # https://cmake.org/cmake/help/v3.0/policy/CMP0042.html mentions
+         # "Projects wanting @rpath in a target’s install name may remove any setting of the INSTALL_NAME_DIR and CMAKE_INSTALL_NAME_DIR variables"
+-        list(APPEND OPENJPEG_LIBRARY_PROPERTIES INSTALL_NAME_DIR "${CMAKE_INSTALL_PREFIX}/${OPENJPEG_INSTALL_LIB_DIR}")
++        list(APPEND OPENJPEG_LIBRARY_PROPERTIES INSTALL_NAME_DIR "${CMAKE_INSTALL_FULL_LIBDIR}")
+     endif()
+ 	option(OPJ_USE_DSYMUTIL "Call dsymutil on binaries after build." OFF)
+ endif()
+@@ -346,14 +315,6 @@ install( FILES ${OPENJPEG_BINARY_DIR}/OpenJPEGConfig.cmake
+ )
+ 
+ #-----------------------------------------------------------------------------
+-# install CHANGES and LICENSE
+-if(BUILD_DOC)
+-if(EXISTS ${OPENJPEG_SOURCE_DIR}/CHANGES)
+-  install(FILES CHANGES DESTINATION ${OPENJPEG_INSTALL_DOC_DIR})
+-endif()
+-
+-install(FILES LICENSE DESTINATION ${OPENJPEG_INSTALL_DOC_DIR})
+-endif()
+ 
+ include (cmake/OpenJPEGCPack.cmake)
+ 
+@@ -370,14 +331,14 @@ if(BUILD_PKGCONFIG_FILES)
+   configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/lib/openjp2/libopenjp2.pc.cmake.in
+     ${CMAKE_CURRENT_BINARY_DIR}/libopenjp2.pc @ONLY)
+   install( FILES  ${CMAKE_CURRENT_BINARY_DIR}/libopenjp2.pc DESTINATION
+-    ${OPENJPEG_INSTALL_LIB_DIR}/pkgconfig )
++    ${CMAKE_INSTALL_LIBDIR}/pkgconfig )
+ #
+   if(BUILD_JPIP)
+   # install in lib and not share (see multi-arch note above)
+   configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/lib/openjpip/libopenjpip.pc.cmake.in
+     ${CMAKE_CURRENT_BINARY_DIR}/libopenjpip.pc @ONLY)
+   install( FILES  ${CMAKE_CURRENT_BINARY_DIR}/libopenjpip.pc DESTINATION
+-    ${OPENJPEG_INSTALL_LIB_DIR}/pkgconfig )
++    ${CMAKE_INSTALL_LIBDIR}/pkgconfig )
+   endif()
+ endif()
+ 
+--- a/cmake/OpenJPEGConfig.cmake.in
++++ b/cmake/OpenJPEGConfig.cmake.in
+@@ -28,8 +28,8 @@ if(EXISTS ${SELF_DIR}/OpenJPEGTargets.cmake)
+   include(${SELF_DIR}/OpenJPEGTargets.cmake)
+ 
+   # We find a relative path from the PKG directory to header files.
+-  set(PKG_DIR "@CMAKE_INSTALL_PREFIX@/@OPENJPEG_INSTALL_PACKAGE_DIR@")
+-  set(INC_DIR "@CMAKE_INSTALL_PREFIX@/@OPENJPEG_INSTALL_INCLUDE_DIR@")
++  set(PKG_DIR "@CMAKE_INSTALL_FULL_INCLUDEDIR@/@OPENJPEG_INSTALL_PACKAGE_DIR@")
++  set(INC_DIR "@CMAKE_INSTALL_FULL_INCLUDEDIR@/@OPENJPEG_INSTALL_INCLUDE_DIR@")
+   file(RELATIVE_PATH PKG_TO_INC_RPATH "${PKG_DIR}" "${INC_DIR}")
+ 
+   get_filename_component(OPENJPEG_INCLUDE_DIRS "${SELF_DIR}/${PKG_TO_INC_RPATH}" REALPATH)
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -44,7 +44,7 @@ if(DOXYGEN_FOUND)
+ 
+   # install HTML documentation (install png files too):
+   install(DIRECTORY ${CMAKE_BINARY_DIR}/doc/html
+-    DESTINATION ${OPENJPEG_INSTALL_DOC_DIR}
++    DESTINATION ${CMAKE_INSTALL_DOCDIR}
+     PATTERN ".svn" EXCLUDE
+   )
+ else()
+--- a/src/bin/jp2/CMakeLists.txt
++++ b/src/bin/jp2/CMakeLists.txt
+@@ -67,7 +67,7 @@ foreach(exe opj_decompress opj_compress opj_dump)
+   # Install exe
+   install(TARGETS ${exe}
+     EXPORT OpenJPEGTargets
+-    DESTINATION ${OPENJPEG_INSTALL_BIN_DIR} COMPONENT Applications
++    DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT Applications
+   )
+   if(OPJ_USE_DSYMUTIL)
+     add_custom_command(TARGET ${exe} POST_BUILD
+@@ -83,6 +83,6 @@ install(
+   FILES       ${OPENJPEG_SOURCE_DIR}/doc/man/man1/opj_compress.1
+               ${OPENJPEG_SOURCE_DIR}/doc/man/man1/opj_decompress.1
+               ${OPENJPEG_SOURCE_DIR}/doc/man/man1/opj_dump.1
+-  DESTINATION ${OPENJPEG_INSTALL_MAN_DIR}/man1)
++  DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+ #
+ endif()
+--- a/src/bin/jpip/CMakeLists.txt
++++ b/src/bin/jpip/CMakeLists.txt
+@@ -13,7 +13,7 @@ add_executable(opj_jpip_addxml opj_jpip_addxml.c)
+ # Install exe
+ install(TARGETS opj_jpip_addxml
+   EXPORT OpenJPEGTargets
+-  DESTINATION ${OPENJPEG_INSTALL_BIN_DIR} COMPONENT Applications
++  DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT Applications
+   )
+ 
+ if(BUILD_JPIP_SERVER)
+@@ -38,7 +38,7 @@ if(BUILD_JPIP_SERVER)
+   # Install exe
+   install(TARGETS opj_server
+     EXPORT OpenJPEGTargets
+-    DESTINATION ${OPENJPEG_INSTALL_BIN_DIR} COMPONENT Applications
++    DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT Applications
+     )
+ endif()
+ 
+@@ -52,7 +52,7 @@ add_executable(${exe} ${exe}.c)
+   target_link_libraries(${exe} openjpip)
+   install(TARGETS ${exe}
+     EXPORT OpenJPEGTargets
+-    DESTINATION ${OPENJPEG_INSTALL_BIN_DIR} COMPONENT Applications
++    DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT Applications
+     )
+ endforeach()
+ 
+--- a/src/lib/openjp2/CMakeLists.txt
++++ b/src/lib/openjp2/CMakeLists.txt
+@@ -2,7 +2,7 @@ include_regular_expression("^.*$")
+ 
+ #
+ install( FILES  ${CMAKE_CURRENT_BINARY_DIR}/opj_config.h
+- DESTINATION ${OPENJPEG_INSTALL_INCLUDE_DIR} COMPONENT Headers)
++ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${OPENJPEG_INSTALL_SUBDIR} COMPONENT Headers)
+ 
+ include_directories(
+   ${${OPENJPEG_NAMESPACE}_BINARY_DIR}/src/lib/openjp2 # opj_config.h and opj_config_private.h
+@@ -117,21 +117,21 @@ endif()
+ # Install library
+ install(TARGETS ${INSTALL_LIBS}
+   EXPORT OpenJPEGTargets
+-  RUNTIME DESTINATION ${OPENJPEG_INSTALL_BIN_DIR} COMPONENT Applications
+-  LIBRARY DESTINATION ${OPENJPEG_INSTALL_LIB_DIR} COMPONENT Libraries
+-  ARCHIVE DESTINATION ${OPENJPEG_INSTALL_LIB_DIR} COMPONENT Libraries
++  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT Applications
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Libraries
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Libraries
+ )
+ 
+ # Install includes files
+ install(FILES openjpeg.h opj_stdint.h
+-  DESTINATION ${OPENJPEG_INSTALL_INCLUDE_DIR} COMPONENT Headers
++  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${OPENJPEG_INSTALL_SUBDIR} COMPONENT Headers
+ )
+ 
+ if(BUILD_DOC)
+ # install man page of the library
+ install(
+   FILES       ${OPENJPEG_SOURCE_DIR}/doc/man/man3/libopenjp2.3
+-  DESTINATION ${OPENJPEG_INSTALL_MAN_DIR}/man3)
++  DESTINATION ${CMAKE_INSTALL_MANDIR}/man3)
+ endif()
+ 
+ if(BUILD_LUTS_GENERATOR)
+--- a/src/lib/openjp2/libopenjp2.pc.cmake.in
++++ b/src/lib/openjp2/libopenjp2.pc.cmake.in
+@@ -1,9 +1,9 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+-bindir=${prefix}/@OPENJPEG_INSTALL_BIN_DIR@
+-mandir=${prefix}/@OPENJPEG_INSTALL_MAN_DIR@
+-docdir=${prefix}/@OPENJPEG_INSTALL_DOC_DIR@
+-libdir=${prefix}/@OPENJPEG_INSTALL_LIB_DIR@
+-includedir=${prefix}/@OPENJPEG_INSTALL_INCLUDE_DIR@
++bindir=${prefix}/@CMAKE_INSTALL_BINDIR@
++mandir=@CMAKE_INSTALL_MANDIR@
++docdir=@CMAKE_INSTALL_DOCDIR@
++libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
++includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
+ 
+ Name: openjp2
+ Description: JPEG2000 library (Part 1 and 2)
+--- a/src/lib/openjpip/CMakeLists.txt
++++ b/src/lib/openjpip/CMakeLists.txt
+@@ -74,9 +74,9 @@ endif()
+ # Install library
+ install(TARGETS openjpip
+   EXPORT OpenJPEGTargets
+-  RUNTIME DESTINATION ${OPENJPEG_INSTALL_BIN_DIR} COMPONENT Applications
+-  LIBRARY DESTINATION ${OPENJPEG_INSTALL_LIB_DIR} COMPONENT Libraries
+-  ARCHIVE DESTINATION ${OPENJPEG_INSTALL_LIB_DIR} COMPONENT Libraries
++  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT Applications
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Libraries
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Libraries
+   )
+ 
+ if(BUILD_JPIP_SERVER)
+@@ -86,6 +86,6 @@ if(BUILD_JPIP_SERVER)
+     PROPERTIES COMPILE_FLAGS "-DSERVER")
+   install(TARGETS openjpip_server
+     EXPORT OpenJPEGTargets
+-    DESTINATION ${OPENJPEG_INSTALL_LIB_DIR} COMPONENT Libraries
++    DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Libraries
+     )
+ endif()
+--- a/src/lib/openjpip/libopenjpip.pc.cmake.in
++++ b/src/lib/openjpip/libopenjpip.pc.cmake.in
+@@ -1,9 +1,9 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+-bindir=${prefix}/@OPENJPEG_INSTALL_BIN_DIR@
+-mandir=${prefix}/@OPENJPEG_INSTALL_MAN_DIR@
+-docdir=${prefix}/@OPENJPEG_INSTALL_DOC_DIR@
+-libdir=${prefix}/@OPENJPEG_INSTALL_LIB_DIR@
+-includedir=${prefix}/@OPENJPEG_INSTALL_INCLUDE_DIR@
++bindir=${prefix}/@CMAKE_INSTALL_BINDIR@
++mandir=@CMAKE_INSTALL_MANDIR@
++docdir=@CMAKE_INSTALL_DOCDIR@
++libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
++includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
+ 
+ Name: openjpip
+ Description: JPEG2000 Interactivity tools, APIs and protocols (Part 9)
+--- a/wrapping/java/openjp2/CMakeLists.txt
++++ b/wrapping/java/openjp2/CMakeLists.txt
+@@ -66,5 +66,5 @@ add_custom_target(OpenJPEGJavaJar ALL
+ )
+ 
+ install(FILES ${LIBRARY_OUTPUT_PATH}/openjpeg.jar
+-  DESTINATION ${OPENJPEG_INSTALL_SHARE_DIR} COMPONENT JavaModule
++  DESTINATION ${CMAKE_INSTALL_DATAROOTDIR} COMPONENT JavaModule
+ )
+-- 
+2.35.1
+
