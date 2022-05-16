@@ -93,6 +93,8 @@ BDEPEND="
 	test? ( dev-libs/check )
 "
 
+PATCHES=( "${FILESDIR}/${PV}"-relax-meson-version-check.patch )
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }

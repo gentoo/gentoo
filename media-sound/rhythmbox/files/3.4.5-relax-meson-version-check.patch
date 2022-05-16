@@ -1,0 +1,42 @@
+https://github.com/GNOME/rhythmbox/commit/29a1627f1683aac358103710ffc1a51791951edd
+https://bugs.gentoo.org/845006
+--- a/meson.build
++++ b/meson.build
+@@ -3,10 +3,6 @@ project('rhythmbox', 'c',
+   meson_version: '>= 0.59.0',
+   default_options: ['c_std=gnu89'])
+ 
+-if meson.version().version_compare('> 0.62.0')
+-      error('unsupported version of meson, please use 0.62')
+-endif
+-
+ gnome = import('gnome')
+ i18n = import('i18n')
+ pkg = import('pkgconfig')
+GitLab
+From 0fe3a388fac73a5d4217aed510d65976850734c4 Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Wed, 4 May 2022 10:23:16 +0200
+Subject: [PATCH 2/2] ci: Install latest meson
+
+--- a/.gitlab-ci.yml
++++ b/.gitlab-ci.yml
+@@ -4,8 +4,6 @@ stages:
+   - test
+ 
+ variables:
+-  MESON_VER: 0.62.0
+-
+   UBUNTU_DEPS:
+     build-essential
+     desktop-file-utils
+@@ -64,7 +62,7 @@ before_script:
+   - export DEBIAN_FRONTEND=noninteractive
+   - apt-get update
+   - apt-get install -y $UBUNTU_DEPS
+-  - pip3 install meson==$MESON_VER
++  - pip3 install meson
+ 
+ test:
+   stage: test
+GitLab
