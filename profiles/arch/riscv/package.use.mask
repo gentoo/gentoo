@@ -147,7 +147,7 @@ gnome-base/gnome-shell browser-extension
 kde-plasma/plasma-meta plymouth
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-17)
-# sys-libs/libfaketime does not work properly on this arch
+# sys-libs/libfaketime does not work properly on this arch, bug #844958
 sys-auth/sssd test
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-11)
@@ -194,7 +194,7 @@ media-gfx/gimp lua
 www-servers/nginx nginx_modules_http_lua
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-11)
-# Causes 35 tests to fail with "fatal llvm error"
+# Causes 35 tests to fail with "fatal llvm error", bug #844946
 dev-db/postgresql llvm
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
@@ -202,7 +202,7 @@ dev-db/postgresql llvm
 sys-cluster/slurm ucx
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
-# net-dialup/mgetty fails to compile on this arch
+# net-dialup/mgetty fails to compile on this arch, bug #844955
 mail-mta/courier fax
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
