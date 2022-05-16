@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -54,9 +54,11 @@ PATCHES=(
 DOCS=( README ChangeLog CompatLog )
 
 pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		use openmp && tc-check-openmp
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_configure() {
