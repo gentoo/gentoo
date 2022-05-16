@@ -213,8 +213,6 @@ mail-mta/courier fax
 #  - sci-libs/vtk
 media-libs/opencv vtk
 sci-libs/opencascade vtk
-#  - dev-util/aruba
-sys-block/thin-provisioning-tools test
 
 # This doesn't work for (any) riscv yet.
 dev-libs/libpcre2 jit
