@@ -59,7 +59,7 @@ python_compile_all() {
 }
 
 python_test() {
-	if [[ ${EPYTHON} == python3.11 ]]; then
+	if has "${EPYTHON}" pypy3 python3.11; then
 		einfo "Skipping tests on ${EPYTHON} (xfail)"
 		return
 	fi
