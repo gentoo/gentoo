@@ -31,7 +31,7 @@ else
 			l10n_uk? ( https://docs.darktable.org/usermanual/${DOC_PV}/uk/${PN}_user_manual.pdf -> ${PN}-usermanual-${DOC_PV}.uk.pdf )
 		)"
 
-	KEYWORDS="amd64 ~arm64 -x86"
+	KEYWORDS="amd64 arm64 -x86"
 	LANGS=" de eo es fi fr he hu it ja pl pt-BR sl uk zh-CN"
 fi
 
@@ -47,7 +47,6 @@ BDEPEND="dev-util/intltool
 	nls? ( sys-devel/gettext )
 	test? ( >=dev-python/jsonschema-3.2.0 )"
 DEPEND="dev-db/sqlite:3
-	dev-libs/icu:=
 	dev-libs/json-glib
 	dev-libs/libxml2:2
 	>=dev-libs/pugixml-1.8:0=
@@ -55,12 +54,12 @@ DEPEND="dev-db/sqlite:3
 	>=media-gfx/exiv2-0.25-r2:0=[xmp]
 	media-libs/lcms:2
 	>=media-libs/lensfun-0.2.3:0=
+	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
 	media-libs/tiff:0
 	net-libs/libsoup:2.4
 	net-misc/curl
 	sys-libs/zlib:=
-	virtual/jpeg:0
 	x11-libs/cairo
 	>=x11-libs/gtk+-3.22:3
 	x11-libs/pango
@@ -107,6 +106,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 	use lua && lua-single_pkg_setup
 }
 
