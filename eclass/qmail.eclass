@@ -409,7 +409,7 @@ qmail_config_fast() {
 }
 
 qmail_tcprules_config() {
-	local localips ip tcpstring line proto f
+	local localips ip tcpstring proto f
 
 	einfo "Accepting relaying by default from all ips configured on this machine."
 
@@ -425,10 +425,9 @@ qmail_tcprules_config() {
 	tcpstring=':allow,RELAYCLIENT="",RBLSMTPD=""'
 
 	for ip in ${localips}; do
-		line="${ip}${tcpstring}"
 		for proto in smtp qmtp qmqp; do
 			f="${EROOT}${TCPRULES_DIR}/tcp.qmail-${proto}"
-			egrep -qs "${line}" "${f}" || echo "${line}" >> "${f}"
+			grep -qs "^${ip}:" "${f}" || echo "${ip}${tcpstring}" >> "${f}"
 		done
 	done
 }
