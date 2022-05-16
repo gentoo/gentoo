@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -182,7 +182,7 @@ pkg_postinst() {
 	fi
 
 	if [[ -z ${ROOT} ]] && use dist-kernel; then
-		set_arch_to_portage
+		set_arch_to_pkgmgr
 		dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
 	fi
 

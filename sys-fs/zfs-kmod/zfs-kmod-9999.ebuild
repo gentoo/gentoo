@@ -180,7 +180,7 @@ pkg_postinst() {
 	linux-mod_pkg_postinst
 
 	if [[ -z ${ROOT} ]] && use dist-kernel; then
-		set_arch_to_portage
+		set_arch_to_pkgmgr
 		dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
 	fi
 
