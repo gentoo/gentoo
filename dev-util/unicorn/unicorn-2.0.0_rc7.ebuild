@@ -7,7 +7,7 @@ MY_PV=${PV/_/-}
 
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit cmake distutils-r1
 
 DESCRIPTION="A lightweight multi-platform, multi-architecture CPU emulator framework"
@@ -39,7 +39,7 @@ UNICORN_TARGETS="x86 arm aarch64 riscv mips sparc m68k ppc s390x"
 wrap_python() {
 	if use python; then
 		# src_prepare
-		# do not compile C extensions
+		# Do not compile C extensions
 		export LIBUNICORN_PATH=1
 
 		pushd bindings/python >/dev/null || die
