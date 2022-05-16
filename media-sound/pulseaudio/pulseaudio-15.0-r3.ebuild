@@ -17,7 +17,7 @@ if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/${PN}/${PN}"
 else
 	SRC_URI="https://freedesktop.org/software/${PN}/releases/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 # libpulse-simple and libpulse link to libpulse-core; this is daemon's
