@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-base
 inherit gstreamer-meson
 
 DESCRIPTION="Opus audio parser plugin for GStreamer"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 COMMON_DEPEND=">=media-libs/opus-1.1:=[${MULTILIB_USEDEP}]"
 
