@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson xdg
+inherit meson toolchain-funcs xdg
 
 DESCRIPTION="A free astronomical image processing software"
 HOMEPAGE="https://www.siril.org/"
@@ -54,7 +54,11 @@ PATCHES=(
 DOCS=( README.md NEWS ChangeLog LICENSE.md LICENSE_sleef.txt AUTHORS )
 
 pkg_pretend() {
-	use openmp && tc-check-openmp
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_configure() {
