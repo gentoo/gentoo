@@ -7,7 +7,6 @@
   </maintainer>
   <use>
     <flag name="server">Enable compilation of server</flag>
-    <flag name="fribidi">Support for right-to-left languages</flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">wesnoth</remote-id>
