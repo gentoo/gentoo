@@ -24,10 +24,6 @@ net-ftp/proftpd memcache
 # so avoid keywording 4.8 slot
 dev-lisp/clisp berkdb
 
-# Matt Turner <mattst88@gentoo.org> (2022-04-18)
-# app-text/nuspell is not keyworded
-app-text/enchant nuspell
-
 # Jakov Smolić <jsmolic@gentoo.org> (2022-04-07)
 # Depends on sys-cluster/ceph which pulls in valgrind, which is
 # unavailable on riscv currently
