@@ -24,7 +24,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	sys-libs/zlib:=
 	x11-libs/libX11
-	virtual/jpeg:="
+	media-libs/libjpeg-turbo:="
 DEPEND="${RDEPEND}
 	test? (
 		x11-apps/xhost
