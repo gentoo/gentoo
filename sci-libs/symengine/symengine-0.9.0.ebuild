@@ -35,11 +35,11 @@ PATCHES=(
 )
 
 pkg_pretend() {
-	use openmp && [[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 pkg_setup() {
-	use openmp && [[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
 	use llvm && llvm_pkg_setup
 }
