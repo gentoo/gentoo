@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="sqlite"
 
 inherit bash-completion-r1 python-single-r1 wrapper
