@@ -35,6 +35,10 @@ DEPEND="${RDEPEND}
 
 FILECAPS=( cap_net_raw usr/sbin/arping )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.23-configure.ac-seccomp-disable.patch
+)
+
 src_prepare() {
 	default
 
