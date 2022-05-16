@@ -30,6 +30,8 @@ PATCHES=(
 )
 
 pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+
 	elog "This software has a massive number of options that"
 	elog "are configurable and it is *impossible* for all of"
 	elog "those to fit inside any manageable ebuild."
@@ -57,7 +59,7 @@ pkg_setup() {
 	export HOSTCC="$(tc-getBUILD_CC)"
 
 	# threading options
-	use openmp && tc-check-openmp
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 	USE_THREAD=0
 	if use openmp; then
 		USE_THREAD=1; USE_OPENMP=1;
