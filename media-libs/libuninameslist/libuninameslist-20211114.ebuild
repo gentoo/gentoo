@@ -19,11 +19,12 @@ PATCHES=(
 
 src_prepare() {
 	default
+
 	eautoreconf
 }
 
 src_configure() {
-	econf --disable-static --enable-frenchlib
+	econf --enable-frenchlib
 }
 
 src_install() {
