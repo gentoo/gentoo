@@ -114,12 +114,6 @@ dev-ruby/dalli test
 # Requires CPU with SSSE3 support
 net-analyzer/suricata hyperscan
 
-# Marek Szuba <marecki@gentoo.org> (2021-09-02)
-# dev-python/pebble not keyworded here due to failing tests.
-# That said, with pebble-4.6.3 installed manually
-# (and without testing) all nbconvert-6.0.7 tests passed.
-dev-python/nbconvert test
-
 # Yixun Lan <dlan@gentoo.org> (2021-08-29)
 #  sys-apps/fwupd not tested, USE=spi,uefi,dell
 #  sys-apps/flashrom no risc-v support, bug 810880
