@@ -10,7 +10,10 @@ PYTHON_REQ_USE="xml(+)"
 inherit distutils-r1
 
 DESCRIPTION="Automation Library for Denon AVR receivers"
-HOMEPAGE="https://github.com/scarface-4711/denonavr"
+HOMEPAGE="
+	https://github.com/ol-iver/denonavr/
+	https://pypi.org/project/denonavr/
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
