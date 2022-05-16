@@ -1,10 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8,9} )
-
+PYTHON_COMPAT=( python3_{8..10} )
 inherit autotools python-single-r1
 
 MY_PN=AFFLIBv3
@@ -25,15 +24,15 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-libs/expat
-	sys-libs/zlib:0=
-	fuse? ( sys-fs/fuse:= )
-	dev-libs/openssl:0=
-	ncurses? ( sys-libs/ncurses:0= )
+	sys-libs/zlib:=
+	fuse? ( sys-fs/fuse:0 )
+	dev-libs/openssl:=
+	ncurses? ( sys-libs/ncurses:= )
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep 'dev-python/cython[${PYTHON_USEDEP}]')
 	)
-	readline? ( sys-libs/readline:0= )
+	readline? ( sys-libs/readline:= )
 	s3? ( net-misc/curl )
 "
 DEPEND="${RDEPEND}"
@@ -66,10 +65,12 @@ src_configure() {
 		$(use_enable static-libs static)
 		$(use_enable threads threading)
 	)
+
 	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
+
 	find "${ED}" -name "*.la" -delete || die
 }
