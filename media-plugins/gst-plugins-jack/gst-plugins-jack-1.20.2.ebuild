@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-good
 inherit gstreamer-meson
 
 DESCRIPION="JACK audio server source/sink plugin for GStreamer"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 # >=jack-1.9.7 is provided by pipewire[jack-sdk] as well
 RDEPEND="|| (
