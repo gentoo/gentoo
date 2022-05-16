@@ -169,9 +169,6 @@ qmail_base_install() {
 	doexe qmail-queue
 
 	)
-
-	declare -F qmail_base_install_hook >/dev/null && \
-		qmail_base_install_hook
 }
 
 qmail_config_install() {
@@ -182,9 +179,6 @@ qmail_config_install() {
 	einfo "Installing configuration sanity checker and launcher"
 	insinto "${QMAIL_HOME}"/bin
 	doins "${GENQMAIL_S}"/control/qmail-config-system
-
-	declare -F qmail_config_install_hook >/dev/null && \
-		qmail_config_install_hook
 }
 
 qmail_man_install() {
@@ -200,9 +194,6 @@ qmail_man_install() {
 	else
 		dodoc CHANGES.md FAQ.md SECURITY.md THOUGHTS.md UPGRADE.md
 	fi
-
-	declare -F qmail_man_install_hook >/dev/null && \
-		qmail_man_install_hook
 }
 
 qmail_sendmail_install() {
@@ -211,9 +202,6 @@ qmail_sendmail_install() {
 
 	dosym "${QMAIL_HOME}"/bin/sendmail /usr/sbin/sendmail
 	dosym "${QMAIL_HOME}"/bin/sendmail /usr/lib/sendmail
-
-	declare -F qmail_sendmail_install_hook >/dev/null && \
-		qmail_sendmail_install_hook
 }
 
 qmail_maildir_install() {
@@ -245,9 +233,6 @@ qmail_maildir_install() {
 	done
 
 	)
-
-	declare -F qmail_maildir_install_hook >/dev/null && \
-		qmail_maildir_install_hook
 }
 
 qmail_tcprules_install() {
@@ -280,9 +265,6 @@ qmail_supervise_install() {
 		qmail_supervise_install_one qmail-pop3d
 		use ssl && qmail_supervise_install_one qmail-pop3sd
 	fi
-
-	declare -F qmail_supervise_install_hook >/dev/null && \
-		qmail_supervise_install_hook
 }
 
 qmail_spp_install() {
@@ -295,9 +277,6 @@ qmail_spp_install() {
 	for i in authlog mfdnscheck ifauthnext tarpit; do
 		dospp "${GENQMAIL_S}"/spp/${i}
 	done
-
-	declare -F qmail_spp_install_hook >/dev/null && \
-		qmail_spp_install_hook
 }
 
 qmail_ssl_install() {
@@ -317,9 +296,6 @@ qmail_ssl_install() {
 	doexe "${GENQMAIL_S}"/ssl/qmail-genrsacert.sh
 
 	keepdir "${QMAIL_HOME}"/control/tlshosts
-
-	declare -F qmail_ssl_install_hook >/dev/null && \
-		qmail_ssl_install_hook
 }
 
 qmail_src_install() {
