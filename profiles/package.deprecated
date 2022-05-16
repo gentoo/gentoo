@@ -91,8 +91,3 @@ gnome-base/gnome-vfs
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-08)
 # x11-libs/gtkglext is in the process of being removed, tracker bug #698950
 x11-libs/gtkglext
-
-# Zac Medico <zmedico@gentoo.org> (2019-12-06)
-# These golang libraries should be vendored either by upstream or via
-# the EGO_VENDOR variable.
-dev-go/go-sqlite3
