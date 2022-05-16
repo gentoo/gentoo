@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~riscv x86"
 
 DEPEND="
 	=dev-libs/libgit2-1.4*:=
