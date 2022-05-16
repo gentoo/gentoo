@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="A setuptools_scm plugin for git archives"
 HOMEPAGE="
 	https://github.com/Changaco/setuptools_scm_git_archive/
-	https://pypi.org/project/setuptools_scm_git_archive/
+	https://pypi.org/project/setuptools-scm-git-archive/
 "
 SRC_URI="
 	https://github.com/Changaco/setuptools_scm_git_archive/archive/${PV}.tar.gz
