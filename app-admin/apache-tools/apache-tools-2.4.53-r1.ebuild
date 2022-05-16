@@ -23,7 +23,10 @@ RDEPEND=">=dev-libs/apr-1.5.0:1=
 	ssl? ( dev-libs/openssl:0= )"
 DEPEND="${RDEPEND}
 	sys-devel/libtool"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	sys-apps/which
+	virtual/pkgconfig
+"
 
 S="${WORKDIR}/httpd-${PV}"
 
