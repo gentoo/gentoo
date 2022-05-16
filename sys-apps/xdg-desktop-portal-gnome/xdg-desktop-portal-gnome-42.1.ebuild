@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 IUSE="wayland X"
 
 BDEPEND="
