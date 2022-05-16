@@ -59,9 +59,14 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.1.5-ldflags.patch"
 )
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+
 	use python && python-single-r1_pkg_setup
-	use openmp && tc-check-openmp
 	setup-wxwidgets
 	check-reqs_pkg_setup
 }

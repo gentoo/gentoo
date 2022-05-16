@@ -74,8 +74,12 @@ fi
 
 CHECKREQS_DISK_BUILD="900M"
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
-	use openmp && tc-check-openmp
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
 	python-single-r1_pkg_setup
 	setup-wxwidgets
