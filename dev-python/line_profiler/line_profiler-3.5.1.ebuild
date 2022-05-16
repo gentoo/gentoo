@@ -13,6 +13,7 @@ inherit cmake distutils-r1
 DESCRIPTION="Line-by-line profiler"
 HOMEPAGE="
 	https://github.com/pyutils/line_profiler/
+	https://pypi.org/project/line-profiler/
 "
 SRC_URI="
 	https://github.com/pyutils/line_profiler/archive/v${PV}.tar.gz
