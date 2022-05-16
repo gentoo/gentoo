@@ -4,7 +4,6 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-
 inherit python-single-r1 xdg
 
 DESCRIPTION="Backup system inspired by TimeVault and FlyBack"

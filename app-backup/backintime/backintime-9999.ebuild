@@ -1,10 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..9} )
-
+PYTHON_COMPAT=( python3_{8..10} )
 inherit python-single-r1 git-r3 xdg
 
 DESCRIPTION="Backup system inspired by TimeVault and FlyBack"
@@ -26,6 +25,7 @@ RDEPEND="${DEPEND}
 	net-misc/openssh
 	net-misc/rsync[xattr,acl]
 	qt5? ( dev-python/PyQt5[gui,widgets] )"
+BDEPEND="sys-devel/gettext"
 
 PATCHES=( "${FILESDIR}/${PN}-1.2.1-no-compress-docs-examples.patch" )
 
