@@ -89,12 +89,13 @@ dev-python/backrefs doc
 dev-python/pyspelling doc
 dev-python/wcmatch doc
 
-# Alex Fan <alexfanqi@yahoo.com> (2021-09-13)
+# Alex Fan <alex.fan.q@gmail.com> (2022-05-16)
 # These depend on Haskell:
 #  - dev-vcs/darcs
 app-portage/layman darcs
 #  - app-text/pandoc
 sys-cluster/ceph pmdk
+app-text/nuspell doc
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-09-15)
 # Marek Szuba <marecki@gentoo.org> (2021-09-07)
