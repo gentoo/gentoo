@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit llvm pax-utils toolchain-funcs
 
@@ -28,7 +28,6 @@ SRC_URI="
 	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/make-install-no-build.patch
 	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/julia-llvm-patchelf.patch
 	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/julia-libunwind-1.6.patch
-	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/julia-curl-7.81.patch
 	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/julia-libblastrampoline-4.patch
 "
 
@@ -51,7 +50,7 @@ RDEPEND+="
 	>=dev-libs/libutf8proc-2.6.1:0=[-cjk]
 	>=dev-util/patchelf-0.13
 	>=net-libs/mbedtls-2.2
-	<net-misc/curl-7.81.0[http2,ssh]
+	net-misc/curl[http2,ssh]
 	sci-libs/amd:0=
 	sci-libs/arpack:0=
 	sci-libs/camd:0=
@@ -86,7 +85,6 @@ PATCHES=(
 	"${DISTDIR}"/make-install-no-build.patch
 	"${DISTDIR}"/julia-llvm-patchelf.patch
 	"${DISTDIR}"/julia-libunwind-1.6.patch
-	"${DISTDIR}"/julia-curl-7.81.patch
 	"${DISTDIR}"/julia-libblastrampoline-4.patch
 )
 
