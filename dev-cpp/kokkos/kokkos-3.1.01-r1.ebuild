@@ -18,6 +18,10 @@ RESTRICT="!test? ( test )"
 DEPEND="sys-apps/hwloc:="
 RDEPEND="${DEPEND}"
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
