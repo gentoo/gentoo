@@ -42,8 +42,13 @@ BDEPEND="
 	doc? ( app-doc/doxygen virtual/latex-base )
 "
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+	fortran-2_pkg_setup
 }
 
 src_prepare() {
