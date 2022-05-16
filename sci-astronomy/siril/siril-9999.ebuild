@@ -36,7 +36,7 @@ DEPEND="
 	curl? ( net-misc/curl )
 	ffmpeg? ( media-video/ffmpeg:= )
 	heif? ( media-libs/libheif )
-	jpeg? ( virtual/jpeg )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? ( >=media-libs/libpng-1.6.0 )
 	raw? ( media-libs/libraw )
 	tiff? ( media-libs/tiff )
