@@ -43,7 +43,6 @@ src_configure() {
 		"-Dfish-completions=true"
 		"-Dzsh-completions=true"
 		"-Dbash-completions=true"
-		"-Dwerror=false"
 	)
 
 	meson_src_configure
