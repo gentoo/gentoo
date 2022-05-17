@@ -37,7 +37,6 @@ fi
 src_configure() {
 	local emesonargs=(
 		$(meson_feature man man-pages)
-		"-Dwerror=false"
 	)
 	meson_src_configure
 }
