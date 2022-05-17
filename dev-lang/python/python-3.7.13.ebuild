@@ -126,9 +126,7 @@ src_configure() {
 		einfo "Disabled modules: ${PYTHON_DISABLE_MODULES}"
 	fi
 
-	if [[ "$(gcc-major-version)" -ge 4 ]]; then
-		append-flags -fwrapv
-	fi
+	append-flags -fwrapv
 
 	filter-flags -malign-double
 
