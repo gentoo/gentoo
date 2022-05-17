@@ -1,0 +1,32 @@
+From f7b1edc79e9526fe6bad69a8ad475a5d77e5aead Mon Sep 17 00:00:00 2001
+From: Xaver Hugl <xaver.hugl@gmail.com>
+Date: Tue, 10 May 2022 13:07:03 +0200
+Subject: [PATCH] tabbox: don't dismiss popups
+
+The glitches that dismissing popups was supposed to prevent are apparently
+no longer present.
+
+BUG: 446318
+(cherry picked from commit 94b0ca814688bf3622aa53f4d4d26f97d8de7306)
+---
+ src/tabbox/tabbox.cpp | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/src/tabbox/tabbox.cpp b/src/tabbox/tabbox.cpp
+index a1c50b27fc..76a50795ad 100644
+--- a/src/tabbox/tabbox.cpp
++++ b/src/tabbox/tabbox.cpp
+@@ -1020,10 +1020,6 @@ void TabBox::navigatingThroughWindows(bool forward, const QKeySequence &shortcut
+         // CDE style raise / lower
+         CDEWalkThroughWindows(forward);
+     } else {
+-        workspace()->forEachAbstractClient([](Toplevel *toplevel) {
+-            if (toplevel->isPopupWindow())
+-                toplevel->popupDone();
+-        });
+         if (areModKeysDepressed(shortcut)) {
+             if (startKDEWalkThroughWindows(mode))
+                 KDEWalkThroughWindows(forward);
+-- 
+GitLab
+
