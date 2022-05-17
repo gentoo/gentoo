@@ -18,7 +18,7 @@ SRC_URI="https://github.com/google/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="4"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 
 # Most of the test dependencies are missing in Gentoo.
 RESTRICT="test"
