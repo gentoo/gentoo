@@ -95,6 +95,7 @@ src_configure() {
 		-DUSE_SYSTEM_NATPMP=ON
 		-DUSE_SYSTEM_UTP=OFF
 		-DUSE_SYSTEM_B64=OFF
+		-DUSE_QT_VERSION=5
 		-DRUN_CLANG_TIDY=OFF
 
 		-DWITH_CRYPTO=$(usex mbedtls polarssl openssl)
