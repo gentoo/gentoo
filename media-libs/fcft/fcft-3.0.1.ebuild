@@ -74,7 +74,6 @@ src_configure() {
 		$(meson_use examples)
 		$(use test && meson_use harfbuzz test-text-shaping)
 		-Ddocs=enabled
-		-Dwerror=false
 	)
 
 	meson_src_configure
