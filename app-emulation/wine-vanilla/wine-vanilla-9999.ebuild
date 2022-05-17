@@ -142,79 +142,13 @@ if [[ ${#PATCHES_BIN[@]} -ge 1 ]] || [[ ${PV} == 9999 ]]; then
 fi
 
 wine_compiler_check() {
-	# GCC-specific bugs
-	if tc-is-gcc; then
-		# bug #549768
-		if use abi_x86_64 && [[ $(gcc-major-version) = 5 && $(gcc-minor-version) -le 2 ]]; then
-			ebegin "Checking for gcc-5 ms_abi compiler bug"
-			$(tc-getCC) -O2 "${PATCHDIR}/files/pr66838.c" -o "${T}"/pr66838 || die
-			# Run in subshell to prevent "Aborted" message
-			( "${T}"/pr66838 || false ) >/dev/null 2>&1
-			if ! eend $?; then
-				eerror "64-bit wine cannot be built with gcc-5.1 or initial patchset of 5.2.0"
-				eerror "due to compiler bugs; please re-emerge the latest gcc-5.2.x ebuild,"
-				eerror "or use gcc-config to select a different compiler version."
-				eerror "See https://bugs.gentoo.org/549768"
-				eerror
-				return 1
-			fi
-		fi
-		# bug #574044
-		if use abi_x86_64 && [[ $(gcc-major-version) = 5 && $(gcc-minor-version) = 3 ]]; then
-			ebegin "Checking for gcc-5-3 stack realignment compiler bug"
-			# Compile in subshell to prevent "Aborted" message
-			( $(tc-getCC) -O2 -mincoming-stack-boundary=3 "${PATCHDIR}/files/pr69140.c" -o "${T}"/pr69140 ) >/dev/null 2>&1
-			if ! eend $?; then
-				eerror "Wine cannot be built with this version of gcc-5.3"
-				eerror "due to compiler bugs; please re-emerge the latest gcc-5.3.x ebuild,"
-				eerror "or use gcc-config to select a different compiler version."
-				eerror "See https://bugs.gentoo.org/574044"
-				eerror
-				return 1
-			fi
-		fi
-	fi
-
 	# Ensure compiler support
-	if use abi_x86_64; then
-		ebegin "Checking for 64-bit compiler with builtin_ms_va_list support"
-		# Compile in subshell to prevent "Aborted" message
-		( $(tc-getCC) -O2 "${PATCHDIR}/files/builtin_ms_va_list.c" -o "${T}"/builtin_ms_va_list >/dev/null 2>&1)
-		if ! eend $?; then
-			eerror "This version of $(tc-getCC) does not support builtin_ms_va_list, can't enable 64-bit wine"
-			eerror
-			eerror "You need gcc-4.4+ or clang 3.8+ to build 64-bit wine"
-			eerror
-			return 1
-		fi
-	fi
+	# (No checks here as of 2022)
+	return 0
 }
 
 wine_build_environment_check() {
 	[[ ${MERGE_TYPE} = "binary" ]] && return 0
-
-	if use abi_x86_64; then
-		if tc-is-gcc && [[ $(gcc-major-version) -lt 4 || ( $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 4 ) ]]; then
-			eerror "You need gcc-4.4+ to compile 64-bit wine"
-			die
-		elif tc-is-clang && [[ $(clang-major-version) -lt 3 || ( $(clang-major-version) -eq 3 && $(clang-minor-version) -lt 8 ) ]]; then
-			eerror "You need clang-3.8+ to compile 64-bit wine"
-			die
-		fi
-	fi
-	if tc-is-gcc && [[ $(gcc-major-version) -eq 5 && $(gcc-minor-version) -le 3 ]]; then
-		ewarn "GCC-5.0-5.3 suffered from compiler bugs and are no longer supported by"
-		ewarn "Gentoo's Toolchain Team. If your ebuild fails the compiler checks in"
-		ewarn "the configure phase, either update your compiler or switch to <5.0 || >=5.4"
-	fi
-	if tc-is-gcc && [[ $(gcc-major-version) -eq 5 && $(gcc-minor-version) -eq 4 ]]; then
-		if has "-march=i686" ${CFLAGS} && ! has "-mtune=generic" ${CFLAGS}; then
-			ewarn "Compilation can hang with CFLAGS=\"-march=i686\".  You can temporarily work"
-			ewarn "around this by adding \"-mtune=generic\" to your CFLAGS for wine."
-			ewarn "See package.env in man 5 portage for more information on how to do this."
-			ewarn "See https://bugs.gentoo.org/show_bug.cgi?id=613128 for more details"
-		fi
-	fi
 
 	if use abi_x86_32 && use opencl && [[ "$(eselect opencl show 2> /dev/null)" == "intel" ]]; then
 		eerror "You cannot build wine with USE=opencl because intel-ocl-sdk is 64-bit only."
