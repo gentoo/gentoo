@@ -55,7 +55,6 @@ src_configure() {
 		-Dthemes=true
 		-Dime=true
 		-Dterminfo=disabled
-		-Dwerror=false
 	)
 	meson_src_configure
 
