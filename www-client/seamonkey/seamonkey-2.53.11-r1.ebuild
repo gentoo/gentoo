@@ -412,12 +412,8 @@ src_configure() {
 	# Work around breakage in makeopts with --no-print-directory
 	MAKEOPTS="${MAKEOPTS/--no-print-directory/}"
 
-	if [[ $(gcc-major-version) -lt 4 ]] ; then
-		append-cxxflags -fno-stack-protector
-	elif [[ $(gcc-major-version) -gt 4 || $(gcc-minor-version) -gt 3 ]] ; then
-		if use amd64 || use x86 ; then
-			append-flags -mno-avx
-		fi
+	if use amd64 || use x86 ; then
+		append-flags -mno-avx
 	fi
 
 	# Pass $MAKEOPTS to build system
