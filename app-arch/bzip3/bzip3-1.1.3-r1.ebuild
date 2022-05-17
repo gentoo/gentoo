@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs autotools
+inherit toolchain-funcs
 
 DESCRIPTION="A better and stronger spiritual successor to BZip2"
 HOMEPAGE="https://github.com/kspalaiologos/bzip3"
@@ -18,23 +18,15 @@ fi
 
 LICENSE="LGPL-3+"
 SLOT="0"
-IUSE="static-libs"
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 src_configure() {
 	# ./configure script will default to Clang if it is found on the system,
 	# force the use of CC selected by the user with CC=$(tc-getCC)
-	econf $(use_enable static-libs static) CC=$(tc-getCC)
+	econf CC=$(tc-getCC)
 }
 
 src_install() {
 	default
 
-	if ! use static-libs ; then
-		find "${ED}" -type f -name '*.la' -delete || die
-	fi
+	find "${ED}" -type f -name '*.la' -delete || die
 }
