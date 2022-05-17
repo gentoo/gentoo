@@ -134,9 +134,7 @@ src_configure() {
 	# disable automagic bluetooth headers detection
 	use bluetooth || export ac_cv_header_bluetooth_bluetooth_h=no
 
-	if [[ "$(gcc-major-version)" -ge 4 ]]; then
-		append-flags -fwrapv
-	fi
+	append-flags -fwrapv
 
 	filter-flags -malign-double
 
