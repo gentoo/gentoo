@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm arm64 ~hppa ppc ppc64 ~riscv sparc x86 ~amd64-linux"
 IUSE="doc"
 
 BDEPEND="doc? ( app-doc/doxygen )"
