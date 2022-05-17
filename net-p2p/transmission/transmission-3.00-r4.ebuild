@@ -49,7 +49,6 @@ COMMON_DEPEND="
 	sys-libs/zlib:=
 	nls? ( virtual/libintl )
 	gtk? (
-		>=dev-libs/dbus-glib-0.100
 		>=dev-libs/glib-2.32:2
 		>=x11-libs/gtk+-3.4:3
 		appindicator? ( >=dev-libs/libappindicator-0.4.30:3 )
