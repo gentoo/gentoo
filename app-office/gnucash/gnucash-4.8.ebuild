@@ -86,10 +86,6 @@ BDEPEND="
 	dev-lang/swig
 	dev-util/cmake
 	virtual/pkgconfig
-	|| (
-		>=sys-devel/gcc-8:*
-		>=sys-devel/clang-6:*
-	)
 "
 
 PDEPEND="doc? (
@@ -103,18 +99,6 @@ PATCHES=(
 )
 
 S="${WORKDIR}/${PN}-$(ver_cut 1-2)"
-
-pkg_pretend() {
-	if tc-is-gcc; then
-		if [[ $(gcc-major-version) -lt 8 ]]; then
-			die "GnuCash needs at least GCC version 8."
-		fi
-	elif tc-is-clang; then
-		if [[ $(clang-major-version) -lt 6 ]]; then
-			die "GnuCash needs at least clang version 6."
-		fi
-	fi
-}
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
