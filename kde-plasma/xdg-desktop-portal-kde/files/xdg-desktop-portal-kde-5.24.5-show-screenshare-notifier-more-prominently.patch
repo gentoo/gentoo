@@ -1,0 +1,32 @@
+From bbff465e6a005c737ee2e53eb5e072da006d9b4b Mon Sep 17 00:00:00 2001
+From: Aleix Pol <aleixpol@kde.org>
+Date: Fri, 13 May 2022 16:47:36 +0200
+Subject: [PATCH] screenshare: Show the screen sharing notifier more
+ prominently
+
+Sets it as active, otherwise it got buried in the extended view of the
+system tray.
+
+BUG: 452980
+
+
+(cherry picked from commit 3d61dae1fa334a9f3dadc505a038f75aa5846588)
+---
+ src/waylandintegration.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/waylandintegration.cpp b/src/waylandintegration.cpp
+index e125578..b1b2d4d 100644
+--- a/src/waylandintegration.cpp
++++ b/src/waylandintegration.cpp
+@@ -292,6 +292,7 @@ bool WaylandIntegration::WaylandIntegrationPrivate::startStreaming(Screencasting
+         }
+         item->setOverlayIconByName("media-record");
+         item->setToolTip(item->iconName(), item->title(), i18n("Press to cancel"));
++        item->setStatus(KStatusNotifierItem::Active);
+         connect(item, &KStatusNotifierItem::activateRequested, stream, [=] {
+             stopStreaming(nodeid);
+             stream->deleteLater();
+-- 
+GitLab
+
