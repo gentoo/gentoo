@@ -609,7 +609,6 @@ dev-java/icedtea cacao jamvm
 # and it should probably only be used if you really know what you're
 # doing *and* your name is gnu_andrew. ;) See bug #531900.
 sys-devel/gcc awt
-dev-java/gcj-jdk awt
 
 # Mike Gilbert <floppym@gentoo.org> (2015-05-16)
 # dev-lang/python[berkdb] fails with recent multilib sys-libs/db (bug 519584).
