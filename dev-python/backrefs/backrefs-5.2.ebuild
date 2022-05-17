@@ -1,9 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
+DISTUTILS_USE_PEP517=setuptools
 
 DOCS_BUILDER="mkdocs"
 DOCS_DEPEND="
@@ -33,6 +34,10 @@ BDEPEND="
 		dev-python/regex[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)"
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-regex-unrecognized-escape.patch"
+)
 
 distutils_enable_tests pytest
 
