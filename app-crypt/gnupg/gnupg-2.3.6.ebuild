@@ -29,6 +29,7 @@ DEPEND=">=dev-libs/libassuan-2.5.0
 	>=dev-libs/libksba-1.3.4
 	>=dev-libs/npth-1.2
 	>=net-misc/curl-7.10
+	sys-libs/zlib
 	bzip2? ( app-arch/bzip2 )
 	ldap? ( net-nds/openldap:= )
 	readline? ( sys-libs/readline:0= )
@@ -36,7 +37,6 @@ DEPEND=">=dev-libs/libassuan-2.5.0
 	tofu? ( >=dev-db/sqlite-3.27 )
 	tpm? ( >=app-crypt/tpm2-tss-2.4.0:= )
 	ssl? ( >=net-libs/gnutls-3.0:0= )
-	sys-libs/zlib
 "
 
 RDEPEND="${DEPEND}
@@ -78,6 +78,8 @@ src_configure() {
 		$(use_enable nls)
 		$(use_enable smartcard scdaemon)
 		$(use_enable ssl gnutls)
+		$(use_enable test all-tests)
+		$(use_enable test tests)
 		$(use_enable tofu)
 		$(use_enable tofu keyboxd)
 		$(use_enable tofu sqlite)
@@ -88,31 +90,31 @@ src_configure() {
 		$(use_with readline)
 		--with-mailprog=/usr/libexec/sendmail
 		--disable-ntbtls
-		--enable-all-tests
 		--enable-gpgsm
 		--enable-large-secmem
+
 		CC_FOR_BUILD="$(tc-getBUILD_CC)"
 		GPG_ERROR_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpg-error-config"
 		KSBA_CONFIG="${ESYSROOT}/usr/bin/ksba-config"
 		LIBASSUAN_CONFIG="${ESYSROOT}/usr/bin/libassuan-config"
 		LIBGCRYPT_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-libgcrypt-config"
 		NPTH_CONFIG="${ESYSROOT}/usr/bin/npth-config"
+
 		$("${S}/configure" --help | grep -o -- '--without-.*-prefix')
 	)
 
 	if use prefix && use usb; then
 		# bug #649598
-		append-cppflags -I"${EPREFIX}/usr/include/libusb-1.0"
+		append-cppflags -I"${ESYSROOT}/usr/include/libusb-1.0"
 	fi
 
-	#bug 663142
+	# bug #663142
 	if use user-socket; then
 		myconf+=( --enable-run-gnupg-user-socket )
 	fi
 
 	# glib fails and picks up clang's internal stdint.h causing weird errors
-	[[ ${CC} == *clang ]] && \
-		export gl_cv_absolute_stdint_h=/usr/include/stdint.h
+	tc-is-clang && export gl_cv_absolute_stdint_h="${ESYSROOT}"/usr/include/stdint.h
 
 	# Hardcode mailprog to /usr/libexec/sendmail even if it does not exist.
 	# As of GnuPG 2.3, the mailprog substitution is used for the binary called
@@ -133,8 +135,9 @@ src_compile() {
 }
 
 src_test() {
-	#Bug: 638574
+	# bug #638574
 	use tofu && export TESTFLAGS=--parallel
+
 	default
 }
 
