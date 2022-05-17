@@ -67,6 +67,11 @@ multilib_src_compile() {
 	bemake -f "${S}"/Makefile all LDFLAGS="${LDFLAGS} $(usex static -static '')"
 }
 
+multilib_src_test() {
+	cp "${S}"/sample* "${BUILD_DIR}" || die
+	bemake -f "${S}"/Makefile check
+}
+
 multilib_src_install() {
 	into /usr
 
