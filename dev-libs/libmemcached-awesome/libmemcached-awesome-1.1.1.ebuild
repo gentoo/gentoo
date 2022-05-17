@@ -42,9 +42,3 @@ src_test() {
 
 	cmake_src_test
 }
-
-# Running tests:
-#
-# FEATURES="test -network-sandbox" \
-# USE="test" \
-# emerge dev-libs/libmemcached-awesome
