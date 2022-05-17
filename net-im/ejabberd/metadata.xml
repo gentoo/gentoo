@@ -26,6 +26,7 @@
 		<!-- TODO Add later: flag name="tools">Build development tools</flag -->
 	</use>
 	<upstream>
+		<doc>https://docs.ejabberd.im</doc>
 		<remote-id type="github">processone/ejabberd</remote-id>
 	</upstream>
 </pkgmetadata>
