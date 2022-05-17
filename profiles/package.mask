@@ -315,10 +315,6 @@ dev-java/jempbox
 dev-java/microba
 dev-java/spin
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-17)
-# Unused java libraries. Removal in 30 days.
-dev-java/boot-bin
-
 # David Seifert <soap@gentoo.org> (2022-04-17)
 # Dead library, part of >=sys-fs/e2fsprogs-1.46.5 now, bug #806875,
 # removal on 2022-05-17.
