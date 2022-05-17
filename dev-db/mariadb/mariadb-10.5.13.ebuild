@@ -87,9 +87,7 @@ COMMON_DEPEND="
 		>=dev-libs/openssl-1.0.0:0=
 	)
 "
-BDEPEND="virtual/yacc
-	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
-"
+BDEPEND="virtual/yacc"
 DEPEND="${COMMON_DEPEND}
 	server? (
 		extraengine? ( jdbc? ( >=virtual/jdk-1.8 ) )
@@ -185,18 +183,6 @@ mysql_init_vars() {
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]] ; then
-		local GCC_MAJOR_SET=$(gcc-major-version)
-		local GCC_MINOR_SET=$(gcc-minor-version)
-
-		# Bug 565584.  InnoDB now requires atomic functions introduced with gcc-4.7 on
-		# non x86{,_64} arches
-		if ! use amd64 && ! use x86 && [[ ${GCC_MAJOR_SET} -lt 4 || \
-			${GCC_MAJOR_SET} -eq 4 && ${GCC_MINOR_SET} -lt 7 ]] ; then
-			eerror "${PN} needs to be built with gcc-4.7 or later."
-			eerror "Please use gcc-config to switch to gcc-4.7 or later version."
-			die
-		fi
-
 		if has test ${FEATURES} ; then
 			# Bug #213475 - MySQL _will_ object strenuously if your machine is named
 			# localhost. Also causes weird failures.
