@@ -40,7 +40,7 @@ esac
 # @ECLASS_VARIABLE: GST_PLUGINS_ENABLED
 # @DESCRIPTION:
 # Defines the plugins to be built.
-# May be set by an ebuild and contain more than one indentifier, space
+# May be set by an ebuild and contain more than one identifier, space
 # separated (only src_configure can handle mutiple plugins at this time).
 
 # @ECLASS_VARIABLE: GST_PLUGINS_NOAUTO
@@ -202,7 +202,7 @@ multilib_src_compile() { gstreamer_multilib_src_compile; }
 multilib_src_install() { gstreamer_multilib_src_install; }
 
 if [[ "${PN}" != "${GST_ORG_MODULE}" ]]; then
-	# Do not run test phase for invididual plugin ebuilds.
+	# Do not run test phase for individual plugin ebuilds.
 	RESTRICT="test"
 	RDEPEND="${RDEPEND}
 		>=media-libs/${GST_ORG_MODULE}-${PV}:${SLOT}[${MULTILIB_USEDEP}]"
