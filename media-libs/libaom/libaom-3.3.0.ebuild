@@ -11,7 +11,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://aomedia.googlesource.com/aom"
 else
 	SRC_URI="https://storage.googleapis.com/aom-releases/${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~sparc x86"
 fi
 
 DESCRIPTION="Alliance for Open Media AV1 Codec SDK"
