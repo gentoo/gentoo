@@ -1,0 +1,44 @@
+From f669d7002b3966f53f8e17275123b24ec41e8e21 Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Mon, 16 May 2022 16:28:53 +0300
+Subject: [PATCH] wayland: Fix supported action initialization in data offer
+ interface
+
+Currently we guess the supported and preferred dnd actions in data offer
+for version >= 3. This can create problems because kwin may not send the
+right action events when the supported dnd actions actually change.
+---
+ src/server/dataoffer_interface.cpp | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/src/server/dataoffer_interface.cpp b/src/server/dataoffer_interface.cpp
+index ed682172..d78abeca 100644
+--- a/src/server/dataoffer_interface.cpp
++++ b/src/server/dataoffer_interface.cpp
+@@ -25,9 +25,8 @@ public:
+     DataOfferInterface *q;
+     QPointer<AbstractDataSource> source;
+ 
+-    // defaults are set to sensible values for < version 3 interfaces
+-    DataDeviceManagerInterface::DnDActions supportedDnDActions = DataDeviceManagerInterface::DnDAction::Copy | DataDeviceManagerInterface::DnDAction::Move;
+-    DataDeviceManagerInterface::DnDAction preferredDnDAction = DataDeviceManagerInterface::DnDAction::Copy;
++    DataDeviceManagerInterface::DnDActions supportedDnDActions = DataDeviceManagerInterface::DnDAction::None;
++    DataDeviceManagerInterface::DnDAction preferredDnDAction = DataDeviceManagerInterface::DnDAction::None;
+ 
+ protected:
+     void data_offer_destroy_resource(Resource *resource) override;
+@@ -43,6 +42,11 @@ DataOfferInterfacePrivate::DataOfferInterfacePrivate(AbstractDataSource *_source
+     , q(_q)
+     , source(_source)
+ {
++    // defaults are set to sensible values for < version 3 interfaces
++    if (wl_resource_get_version(resource) < WL_DATA_OFFER_ACTION_SINCE_VERSION) {
++        supportedDnDActions = DataDeviceManagerInterface::DnDAction::Copy | DataDeviceManagerInterface::DnDAction::Move;
++        preferredDnDAction = DataDeviceManagerInterface::DnDAction::Copy;
++    }
+ }
+ 
+ void DataOfferInterfacePrivate::data_offer_accept(Resource *resource, uint32_t serial, const QString &mime_type)
+-- 
+GitLab
+
