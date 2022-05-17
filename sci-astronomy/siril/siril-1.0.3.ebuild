@@ -19,11 +19,12 @@ fi
 
 LICENSE="GPL-3+ Boost-1.0"
 SLOT="0"
-IUSE="curl ffmpeg heif jpeg libconfig openmp png raw tiff wcs"
+IUSE="curl ffmpeg heif jpeg openmp png raw tiff wcs"
 
 DEPEND="
 	>=dev-libs/glib-2.56.0:2
 	>=dev-libs/json-glib-1.2.6
+	>=dev-libs/libconfig-1.4[cxx]
 	>=media-gfx/exiv2-0.25
 	media-libs/librtprocess:=
 	>=media-libs/opencv-4.4.0:=
@@ -35,7 +36,6 @@ DEPEND="
 	curl? ( net-misc/curl )
 	ffmpeg? ( media-video/ffmpeg:= )
 	heif? ( media-libs/libheif )
-	libconfig? ( >=dev-libs/libconfig-1.4[cxx] )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? ( >=media-libs/libpng-1.6.0 )
 	raw? ( media-libs/libraw )
@@ -48,7 +48,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-docfiles.patch"
-	"${FILESDIR}/${PN}-dependencies.patch"
+	"${FILESDIR}/${P}-dependencies.patch"
 )
 
 DOCS=( README.md NEWS ChangeLog AUTHORS )
@@ -68,7 +68,6 @@ src_configure() {
 		$(meson_use ffmpeg)
 		$(meson_use heif libheif)
 		$(meson_use jpeg libjpeg)
-		$(meson_use libconfig)
 		$(meson_use openmp)
 		$(meson_use png libpng)
 		$(meson_use raw libraw)
