@@ -441,9 +441,6 @@ src_configure() {
 		replace-flags -Os -O2
 	fi
 
-	# VLC now requires C++11 after commit 4b1c9dcdda0bbff801e47505ff9dfd3f274eb0d8
-	append-cxxflags -std=c++11
-
 	if use omxil; then
 		# bug #723006
 		# https://trac.videolan.org/vlc/ticket/24617
