@@ -1,0 +1,137 @@
+From ea2833e4dd7114f8bf22a322a26c6c05ebf767f2 Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Mon, 25 Apr 2022 21:58:58 +0300
+Subject: [PATCH 3/8] applets/systemtray: Prefer IconName over IconPixmap
+
+In case both IconName and IconPixmap are provided, the system tray
+applet is going to prefer the pixmap.
+
+That can create a dark icon on dark background bug because plasma can't
+recolor pixmaps.
+
+The SNI spec recommends visualizations to prefer icons over pixmaps:
+
+> An icon can either be identified by its Freedesktop-compliant icon
+> name, carried by this property of by the icon data itself, carried by
+> the property IconPixmap. Visualizations are encouraged to prefer icon
+> names over icon pixmaps if both are available (FIXME: still not very
+> defined: could e the pixmap used as fallback if an icon name is not found?)
+
+BUG: 418996
+
+- Unset iconName when icon can't be loaded
+- no code duplication
+(cherry picked from commit 7363d0e0f3c1a447e6264e92762735bd33da2682)
+---
+ .../systemtray/statusnotifieritemsource.cpp   | 82 ++++++++-----------
+ 1 file changed, 33 insertions(+), 49 deletions(-)
+
+diff --git a/applets/systemtray/statusnotifieritemsource.cpp b/applets/systemtray/statusnotifieritemsource.cpp
+index f67845e42..731aecadc 100644
+--- a/applets/systemtray/statusnotifieritemsource.cpp
++++ b/applets/systemtray/statusnotifieritemsource.cpp
+@@ -286,68 +286,52 @@ void StatusNotifierItemSource::refreshCallback(QDBusPendingCallWatcher *call)
+         QIcon overlay;
+         QStringList overlayNames;
+ 
+-        // Icon
++        // Overlay icon
+         {
+-            KDbusImageVector image;
+-            QIcon icon;
+-            QString iconName;
+-
+-            properties[QStringLiteral("OverlayIconPixmap")].value<QDBusArgument>() >> image;
+-            if (image.isEmpty()) {
+-                QString iconName = properties[QStringLiteral("OverlayIconName")].toString();
+-                m_overlayIconName = iconName;
+-                if (!iconName.isEmpty()) {
++            m_overlayIconName = QString();
++
++            const QString iconName = properties[QStringLiteral("OverlayIconName")].toString();
++            if (!iconName.isEmpty()) {
++                overlay = QIcon(new KIconEngine(iconName, iconLoader()));
++                if (!overlay.isNull()) {
++                    m_overlayIconName = iconName;
+                     overlayNames << iconName;
+-                    overlay = QIcon(new KIconEngine(iconName, iconLoader()));
+                 }
+-            } else {
+-                overlay = imageVectorToPixmap(image);
+             }
++            if (overlay.isNull()) {
++                KDbusImageVector image;
++                properties[QStringLiteral("OverlayIconPixmap")].value<QDBusArgument>() >> image;
++                if (!image.isEmpty()) {
++                    overlay = imageVectorToPixmap(image);
++                }
++            }
++        }
+ 
+-            properties[QStringLiteral("IconPixmap")].value<QDBusArgument>() >> image;
+-            if (image.isEmpty()) {
+-                iconName = properties[QStringLiteral("IconName")].toString();
+-                if (!iconName.isEmpty()) {
+-                    icon = QIcon(new KIconEngine(iconName, iconLoader(), overlayNames));
+-
+-                    if (overlayNames.isEmpty() && !overlay.isNull()) {
++        auto loadIcon = [this, &properties, &overlay, &overlayNames](const QString &iconKey, const QString &pixmapKey) -> std::tuple<QIcon, QString> {
++            const QString iconName = properties[iconKey].toString();
++            if (!iconName.isEmpty()) {
++                QIcon icon = QIcon(new KIconEngine(iconName, iconLoader(), overlayNames));
++                if (!icon.isNull()) {
++                    if (!overlay.isNull() && overlayNames.isEmpty()) {
+                         overlayIcon(&icon, &overlay);
+                     }
++                    return {icon, iconName};
+                 }
+-            } else {
+-                icon = imageVectorToPixmap(image);
++            }
++            KDbusImageVector image;
++            properties[pixmapKey].value<QDBusArgument>() >> image;
++            if (!image.isEmpty()) {
++                QIcon icon = imageVectorToPixmap(image);
+                 if (!icon.isNull() && !overlay.isNull()) {
+                     overlayIcon(&icon, &overlay);
+                 }
++                return {icon, QString()};
+             }
+-            m_icon = icon;
+-            m_iconName = iconName;
+-        }
++            return {};
++        };
+ 
+-        // Attention icon
+-        {
+-            KDbusImageVector image;
+-            QIcon attentionIcon;
+-
+-            properties[QStringLiteral("AttentionIconPixmap")].value<QDBusArgument>() >> image;
+-            if (image.isEmpty()) {
+-                QString iconName = properties[QStringLiteral("AttentionIconName")].toString();
+-                m_attentionIconName = iconName;
+-                if (!iconName.isEmpty()) {
+-                    attentionIcon = QIcon(new KIconEngine(iconName, iconLoader(), overlayNames));
+-
+-                    if (overlayNames.isEmpty() && !overlay.isNull()) {
+-                        overlayIcon(&attentionIcon, &overlay);
+-                    }
+-                }
+-            } else {
+-                attentionIcon = imageVectorToPixmap(image);
+-                if (!attentionIcon.isNull() && !overlay.isNull()) {
+-                    overlayIcon(&attentionIcon, &overlay);
+-                }
+-            }
+-            m_attentionIcon = attentionIcon;
+-        }
++        std::tie(m_icon, m_iconName) = loadIcon(QStringLiteral("IconName"), QStringLiteral("IconPixmap"));
++        std::tie(m_attentionIcon, m_attentionIconName) = loadIcon(QStringLiteral("AttentionIconName"), QStringLiteral("AttentionIconPixmap"));
+ 
+         // ToolTip
+         {
+-- 
+2.35.1
+
