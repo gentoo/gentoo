@@ -1,0 +1,72 @@
+From 110cffbf0a10a6dabe902eecb9c139663ad737af Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sun, 15 May 2022 12:37:51 -0400
+Subject: [PATCH] gen_initramfs.sh: append devicemanager only for specific
+ modules
+
+dmraid
+luks
+lvm
+multipath
+
+Bug: https://bugs.gentoo.org/749957
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+---
+ gen_funcs.sh     |  9 +++++++++
+ gen_initramfs.sh | 11 +++++++----
+ 2 files changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/gen_funcs.sh b/gen_funcs.sh
+index 500caf2..db396e3 100755
+--- a/gen_funcs.sh
++++ b/gen_funcs.sh
+@@ -22,6 +22,15 @@ isTrue() {
+ 	return 1
+ }
+ 
++anyTrue() {
++	local x
++	for x
++	do
++		isTrue "${x}" && return 0
++	done
++	return 1
++}
++
+ set_color_vars() {
+ 	if ! isTrue "${NOCOLOR}"
+ 	then
+diff --git a/gen_initramfs.sh b/gen_initramfs.sh
+index 4ec296e..0b74f4c 100755
+--- a/gen_initramfs.sh
++++ b/gen_initramfs.sh
+@@ -2007,11 +2007,14 @@ append_auxiliary() {
+ }
+ 
+ append_data() {
+-	local name=$1 var=$2
++	[ $# -eq 0 ] && gen_die "append_data() called with zero arguments"
++
++	local name=$1
+ 	local func="append_${name}"
+ 
+-	[ $# -eq 0 ] && gen_die "append_data() called with zero arguments"
+-	if [ $# -eq 1 ] || isTrue "${var}"
++	shift
++
++	if [ $# -eq 0 ] || anyTrue "$@"
+ 	then
+ 		print_info 1 "$(get_indent 1)>> Appending ${name} cpio data ..."
+ 		${func} || gen_die "${func}() failed!"
+@@ -2037,7 +2040,7 @@ create_initramfs() {
+ 	append_data 'base_layout'
+ 	append_data 'util-linux'
+ 	append_data 'eudev'
+-	append_data 'devicemanager'
++	append_data 'devicemanager' "${DMRAID}" "${LVM}" "${LUKS}" "${MULTIPATH}"
+ 	append_data 'auxiliary' "${BUSYBOX}"
+ 	append_data 'busybox' "${BUSYBOX}"
+ 	append_data 'b2sum' "${B2SUM}"
+-- 
+2.35.1
+
