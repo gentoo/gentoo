@@ -11,6 +11,7 @@ DESCRIPTION="A collection of algorithms and sample code for various computer vis
 HOMEPAGE="https://opencv.org"
 TINY_DNN_PV="1.0.0a3"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/opencv/opencv/commit/5440fd6cb43ea65a056c46b691fcdab1a425e92d.patch -> ${PN}-4.5.5-fix-build-with-ffmpeg5.patch
 	dnnsamples? ( https://dev.gentoo.org/~amynka/snap/${PN}-3.4.0-res10_300x300-caffeemodel.tar.gz )
 	download? ( https://github.com/rossbridger/opencv-extdep/archive/4.4.0.tar.gz -> ${PN}-4.4.0_extdep.tar.gz )
 	contrib? (
@@ -291,6 +292,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.1.2-opencl-license.patch
 	"${FILESDIR}"/${PN}-4.4.0-disable-native-cpuflag-detect.patch
 	"${FILESDIR}"/${PN}-4.5.0-link-with-cblas-for-lapack.patch
+	"${DISTDIR}"/${PN}-4.5.5-fix-build-with-ffmpeg5.patch
 )
 
 pkg_pretend() {
