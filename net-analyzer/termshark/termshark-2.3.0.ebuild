@@ -13,7 +13,6 @@ SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-deps.tar
 LICENSE="Apache-2.0 BSD-2 BSD MIT MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-RESTRICT="mirror"
 
 # termshark doesn't link against wireshark. It reads data via IPC during
 # runtime.
