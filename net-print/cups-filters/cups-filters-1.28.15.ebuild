@@ -48,6 +48,8 @@ BDEPEND="
 "
 
 src_configure() {
+	# (As of 1.28.15, still defaults upstream to c++0x, so it's still needed,
+	# probably.)
 	# Bug #626800
 	append-cxxflags -std=c++11
 
