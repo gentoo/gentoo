@@ -52,8 +52,6 @@ src_prepare() {
 }
 
 src_configure() {
-	append-cxxflags -std=gnu++11
-
 	export QTLIB="$(qt5_get_libdir)"
 
 	econf \
