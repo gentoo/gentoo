@@ -12,7 +12,7 @@ SRC_URI="https://github.com/systemd-cron/${PN}/archive/v${MY_PV}.tar.gz -> syste
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 ~arm arm64 ppc ppc64 ~riscv sparc x86"
 IUSE="cron-boot etc-crontab-systemd minutely +runparts setgid test yearly"
 RESTRICT="!test? ( test )"
 
