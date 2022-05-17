@@ -12,6 +12,7 @@ SRC_URI="mirror://gnu/guile-ncurses/${P}.tar.gz"
 LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="static-libs"
 RESTRICT="strip"
 
 RDEPEND="
@@ -62,6 +63,18 @@ src_prepare() {
 	eautoreconf  # 843560
 }
 
+src_configure() {
+	econf $(use_enable static-libs static)
+}
+
 src_test() {
 	emake check
+}
+
+src_install() {
+	default
+
+	if ! use static-libs ; then
+		find "${ED}" -type f -name '*.la' -delete || die
+	fi
 }
