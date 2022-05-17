@@ -881,7 +881,7 @@ pkg_postinst() {
 	xdg_icon_cache_update
 
 	[[ -z ${EPREFIX} ]] && [[ -f ${EROOT}/usr/libexec/qemu-bridge-helper ]] && \
-		fcaps cap_net_admin ${EROOT}/usr/libexec/qemu-bridge-helper
+		fcaps cap_net_admin "${EROOT}"/usr/libexec/qemu-bridge-helper
 
 	DISABLE_AUTOFORMATTING=true
 	readme.gentoo_print_elog
