@@ -102,6 +102,10 @@ multilib_src_install_all() {
 	find "${ED}" -type f -name '*.a' -delete || die
 }
 
+pkg_preinst() {
+	[[ -e /usr/$(get_libdir)/dxvk/d3d11.dll ]] && DXVK_HAD_OVERLAY=
+}
+
 pkg_postinst() {
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		elog "To enable ${PN} on a wine prefix, you can run the following command:"
@@ -109,6 +113,16 @@ pkg_postinst() {
 		elog "	WINEPREFIX=/path/to/prefix setup_dxvk.sh install --symlink"
 		elog
 		elog "See ${EROOT}/usr/share/doc/${PF}/README.md* for details."
+	elif [[ -v DXVK_HAD_OVERLAY ]]; then
+		# temporary warning until this version is more widely used
+		elog "Gentoo's main repo ebuild for ${PN} uses different paths than most overlays."
+		elog "If you were using symbolic links in wine prefixes it may be necessary to"
+		elog "refresh them by re-running the command:"
+		elog
+		elog "	WINEPREFIX=/path/to/prefix setup_dxvk.sh install --symlink"
+		elog
+		elog "Also, if you were using /etc/${PN}.conf, ${PN} is no longer patched to load"
+		elog "it. See ${EROOT}/usr/share/doc/${PF}/README.md* for handling configs."
 	fi
 
 	# don't try to keep wine-*[vulkan] in RDEPEND, but still give a warning
