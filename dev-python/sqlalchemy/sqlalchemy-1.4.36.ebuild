@@ -93,6 +93,5 @@ pkg_postinst() {
 		dev-python/mysqlclient \
 		dev-python/pymysql \
 		dev-python/mysql-connector-python
-	optfeature "mssql support" dev-python/pymssql
 	optfeature "postgresql support" dev-python/psycopg:2
 }
