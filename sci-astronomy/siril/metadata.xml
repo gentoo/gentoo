@@ -22,6 +22,7 @@
 	</longdescription>
 	<use>
 		<flag name="heif">Add support for the HEIF image format</flag>
+		<flag name="libconfig">Require <pkg>dev-libs/libconfig</pkg> to read old configuration files</flag>
 		<flag name="wcs">Add supprt astrometry features using <pkg>sci-astronomy/wcslib</pkg></flag>
 	</use>
 	<upstream>
