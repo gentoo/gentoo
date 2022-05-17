@@ -18,7 +18,6 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="static-libs"
 RESTRICT="strip"
 
 DEPEND="
@@ -43,7 +42,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --enable-introspection=yes $(use_enable static-libs static)
+	econf --disable-static --enable-introspection=yes
 }
 
 src_test() {
@@ -54,8 +53,5 @@ src_install() {
 	default
 
 	mv "${D}"/usr/share/doc/${PN} "${D}"/usr/share/doc/${PF} || die
-
-	if ! use static-libs ; then
-		find "${ED}" -type f -name '*.la' -delete || die
-	fi
+	find "${ED}" -type f -name '*.la' -delete || die
 }

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit virtualx autotools
 
 DESCRIPTION="Bindings for GObject Introspection and libgirepository for Guile"
 HOMEPAGE="https://spk121.github.io/guile-gi/"
@@ -18,8 +18,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="static-libs"
-RESTRICT="strip test"  # Tests fail
+RESTRICT="strip"
 
 DEPEND="
 	>=dev-scheme/guile-2.0.9:=
@@ -43,15 +42,16 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --enable-introspection=yes $(use_enable static-libs static)
+	econf --disable-static --enable-introspection=yes
+}
+
+src_test() {
+	virtx default
 }
 
 src_install() {
 	default
 
 	mv "${D}"/usr/share/doc/${PN} "${D}"/usr/share/doc/${PF} || die
-
-	if ! use static-libs ; then
-		find "${ED}" -type f -name '*.la' -delete || die
-	fi
+	find "${ED}" -type f -name '*.la' -delete || die
 }
