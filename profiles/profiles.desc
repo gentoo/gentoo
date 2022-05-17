@@ -11,11 +11,11 @@
 
 # Alpha Profiles
 # @MAINTAINER: alpha@gentoo.org
-alpha		default/linux/alpha/17.0			stable
-alpha		default/linux/alpha/17.0/systemd		dev
-alpha		default/linux/alpha/17.0/desktop		stable
-alpha		default/linux/alpha/17.0/desktop/gnome		stable
-alpha		default/linux/alpha/17.0/desktop/gnome/systemd	stable
+alpha		default/linux/alpha/17.0			exp
+alpha		default/linux/alpha/17.0/systemd		exp
+alpha		default/linux/alpha/17.0/desktop		exp
+alpha		default/linux/alpha/17.0/desktop/gnome		exp
+alpha		default/linux/alpha/17.0/desktop/gnome/systemd	exp
 alpha		default/linux/alpha/17.0/developer		exp
 
 # SYMLINK_LIB=no profiles
