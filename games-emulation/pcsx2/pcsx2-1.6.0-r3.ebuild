@@ -53,9 +53,7 @@ pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary && $(tc-getCC) == *gcc* ]]; then
 		# -mxsave flag is needed when GCC >= 8.2 is used
 		# https://bugs.gentoo.org/685156
-		if [[ $(gcc-major-version) -gt 8 || $(gcc-major-version) == 8 && $(gcc-minor-version) -ge 2 ]]; then
-			append-flags -mxsave
-		fi
+		append-flags -mxsave
 	fi
 }
 
