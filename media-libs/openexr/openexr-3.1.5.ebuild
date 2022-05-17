@@ -14,7 +14,7 @@ SRC_URI="https://github.com/AcademySoftwareFoundation/openexr/archive/refs/tags/
 LICENSE="BSD"
 SLOT="0/30" # based on SONAME
 # -ppc -sparc because broken on big endian, bug #818424
-KEYWORDS="amd64 ~arm arm64 ~ia64 -ppc ~ppc64 ~riscv -sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ~loong -ppc ~ppc64 ~riscv -sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
 IUSE="cpu_flags_x86_avx doc examples large-stack utils test threads"
 RESTRICT="!test? ( test )"
 
