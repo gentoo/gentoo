@@ -1,0 +1,31 @@
+From ff8dc215e8d2691fcf41d0bb305f820531d95150 Mon Sep 17 00:00:00 2001
+From: Aleix Pol <aleixpol@kde.org>
+Date: Sat, 14 May 2022 01:29:01 +0200
+Subject: [PATCH] Fix connecting external monitors when a monitor is rotated
+
+It would be placed right by the unrotated geometry and after rotating it
+the new output would end up floating in the logical space.
+This happened because the explicitLogicalSize is cached and needs
+updating after changing its settings.
+
+
+(cherry picked from commit cc832fd4296440fcd9298cb03b0cc736a99ed8bb)
+---
+ kded/generator.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/kded/generator.cpp b/kded/generator.cpp
+index e5117a9..e311b04 100644
+--- a/kded/generator.cpp
++++ b/kded/generator.cpp
+@@ -85,6 +85,7 @@ KScreen::ConfigPtr Generator::idealConfig(const KScreen::ConfigPtr &currentConfi
+ 
+     for (const auto &output : connectedOutputs) {
+         initializeOutput(output, config->supportedFeatures());
++        output->setExplicitLogicalSize(config->logicalSizeForOutput(*output));
+     }
+ 
+     if (connectedOutputs.count() == 1) {
+-- 
+GitLab
+
