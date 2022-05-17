@@ -293,7 +293,6 @@ dev-java/jgraph
 dev-python/namespace-google
 dev-python/namespace-lazr
 dev-python/namespace-paste
-dev-python/namespace-repoze
 
 # Hans de Graaff <graaff@gentoo.org> (2022-04-22)
 # Obsolete slots that are no longer used by current
