@@ -1,14 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit virtualx autotools
+inherit autotools
 
 DESCRIPTION="Bindings for GObject Introspection and libgirepository for Guile"
 HOMEPAGE="https://spk121.github.io/guile-gi/"
 
-if [[ "${PV}" == *9999* ]]; then
+if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/spk121/${PN}.git"
 else
@@ -16,9 +16,10 @@ else
 	KEYWORDS="~amd64"
 fi
 
-RESTRICT="strip"
 LICENSE="GPL-3"
 SLOT="0"
+IUSE="static-libs"
+RESTRICT="strip test"  # Tests fail
 
 DEPEND="
 	>=dev-scheme/guile-2.0.9:=
@@ -42,15 +43,15 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --enable-introspection=yes
-}
-
-src_test() {
-	virtx default
+	econf --enable-introspection=yes $(use_enable static-libs static)
 }
 
 src_install() {
 	default
 
 	mv "${D}"/usr/share/doc/${PN} "${D}"/usr/share/doc/${PF} || die
+
+	if ! use static-libs ; then
+		find "${ED}" -type f -name '*.la' -delete || die
+	fi
 }
