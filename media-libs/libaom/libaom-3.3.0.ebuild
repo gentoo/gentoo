@@ -19,10 +19,12 @@ HOMEPAGE="https://aomedia.org https://aomedia.googlesource.com/aom/"
 
 LICENSE="BSD-2"
 SLOT="0/3"
-IUSE="doc +examples"
+IUSE="doc +examples test"
 IUSE="${IUSE} cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3"
 IUSE="${IUSE} cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2"
 IUSE="${IUSE} cpu_flags_arm_neon"
+# Tests need more wiring up
+RESTRICT="!test? ( test ) test"
 
 REQUIRED_USE="
 	cpu_flags_x86_sse2? ( cpu_flags_x86_mmx )
@@ -45,7 +47,7 @@ multilib_src_configure() {
 		-DENABLE_DOCS=$(multilib_native_usex doc ON OFF)
 		-DENABLE_EXAMPLES=$(multilib_native_usex examples ON OFF)
 		-DENABLE_NASM=OFF
-		-DENABLE_TESTS=OFF
+		-DENABLE_TESTS=$(usex test)
 		-DENABLE_TOOLS=ON
 		-DENABLE_WERROR=OFF
 
@@ -87,6 +89,10 @@ multilib_src_configure() {
 	fi
 
 	cmake_src_configure
+}
+
+multilib_src_test() {
+	"${BUILD_DIR}"/test_libaom || die
 }
 
 multilib_src_install() {
