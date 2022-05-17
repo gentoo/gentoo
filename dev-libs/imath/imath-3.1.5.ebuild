@@ -13,7 +13,7 @@ DESCRIPTION="Imath basic math package"
 HOMEPAGE="https://imath.readthedocs.io"
 SRC_URI="https://github.com/AcademySoftwareFoundation/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 # re-keywording needed for (according to ilmbase keywords): ~x64-macos ~x86-solaris
-KEYWORDS="amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD"
