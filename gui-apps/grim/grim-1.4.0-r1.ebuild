@@ -36,7 +36,6 @@ src_configure() {
 		$(meson_feature man man-pages)
 		"-Dbash-completions=false"
 		"-Dfish-completions=false"
-		"-Dwerror=false"
 	)
 	meson_src_configure
 }
