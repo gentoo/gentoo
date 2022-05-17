@@ -25,11 +25,6 @@ PATCHES=(
 )
 
 src_prepare() {
-	# bug #349005
-	[[ $(tc-getCC)$ == *gcc* ]] && \
-		[[ $(tc-getCC)$ != *apple* ]] && \
-		[[ $(gcc-major-version)$(gcc-minor-version) -eq 44 ]] \
-		&& filter-mfpmath sse
 	filter-flags -ffast-math
 
 	default
