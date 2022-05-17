@@ -60,7 +60,6 @@ src_configure() {
 	local emesonargs=(
 		"-Dxcb-errors=disabled"
 		"-Dexamples=false"
-		"-Dwerror=false"
 		-Drenderers=$(usex vulkan 'gles2,vulkan' gles2)
 		-Dxwayland=$(usex X enabled disabled)
 		-Dbackends=drm,libinput$(usex x11-backend ',x11' '')
