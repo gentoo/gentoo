@@ -44,6 +44,7 @@ COMMON_DEPEND="
 	!mbedtls? ( dev-libs/openssl:0= )
 	mbedtls? ( net-libs/mbedtls:0= )
 	net-libs/libnatpmp
+	>=net-libs/libpsl-0.21.1
 	>=net-libs/miniupnpc-1.7:=
 	>=net-misc/curl-7.16.3[ssl]
 	sys-libs/zlib:=
@@ -90,12 +91,15 @@ src_configure() {
 		-DENABLE_WEB=$(usex web ON OFF)
 
 		-DUSE_SYSTEM_EVENT2=ON
+		-DUSE_SYSTEM_DEFLATE=OFF
 		-DUSE_SYSTEM_DHT=OFF
 		-DUSE_SYSTEM_MINIUPNPC=ON
 		-DUSE_SYSTEM_NATPMP=ON
 		-DUSE_SYSTEM_UTP=OFF
 		-DUSE_SYSTEM_B64=OFF
+		-DUSE_SYSTEM_PSL=ON
 		-DUSE_QT_VERSION=5
+
 		-DRUN_CLANG_TIDY=OFF
 
 		-DWITH_CRYPTO=$(usex mbedtls polarssl openssl)
