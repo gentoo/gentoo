@@ -101,6 +101,9 @@ src_configure() {
 		-DGDAL_USE_EXTERNAL_LIBS=ON
 		-DGDAL_USE_INTERNAL_LIBS=OFF
 
+		# bug #844874
+		-DCMAKE_INSTALL_INCLUDEDIR="/usr/include/gdal"
+
 		# Options here are generally off because of one of:
 		# - Not yet packaged dependencies
 		#
