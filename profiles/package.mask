@@ -296,7 +296,6 @@ dev-python/namespace-paste
 dev-python/namespace-repoze
 dev-python/namespace-ruamel
 dev-python/namespace-sphinxcontrib
-dev-python/namespace-zope
 
 # Hans de Graaff <graaff@gentoo.org> (2022-04-22)
 # Obsolete slots that are no longer used by current
