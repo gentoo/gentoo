@@ -15,7 +15,7 @@ SRC_URI+=" test? ( https://download.osgeo.org/${PN}/${PV}/${PN}autotest-${PV}.ta
 LICENSE="BSD Info-ZIP MIT"
 SLOT="0/31" # subslot is libgdal.so.<SONAME>
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="armadillo +curl cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_ssse3 doc fits geos gif gml hdf5 heif java jpeg2k lzma mysql netcdf odbc ogdi opencl oracle pdf png postgres python spatialite sqlite test webp xls zstd"
+IUSE="armadillo +curl cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_ssse3 doc fits geos gif gml hdf5 heif java jpeg jpeg2k lzma mysql netcdf odbc ogdi opencl oracle pdf png postgres python spatialite sqlite test webp xls zstd"
 # Tests fail to build in 3.5.0, let's not worry too much yet given
 # we're only just porting to CMake. Revisit later.
 RESTRICT="!test? ( test ) test"
@@ -42,7 +42,6 @@ DEPEND="dev-libs/expat
 	dev-libs/libxml2:2
 	dev-libs/openssl:=
 	media-libs/tiff
-	media-libs/libjpeg-turbo:=
 	>=sci-libs/libgeotiff-1.5.1-r1:=
 	>=sci-libs/proj-6.0.0:=
 	sys-libs/zlib[minizip(+)]
@@ -54,6 +53,7 @@ DEPEND="dev-libs/expat
 	gml? ( >=dev-libs/xerces-c-3.1 )
 	heif? ( media-libs/libheif:= )
 	hdf5? ( >=sci-libs/hdf5-1.6.4:=[szip] )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
 	lzma? ( || (
 		app-arch/xz-utils
@@ -134,7 +134,7 @@ src_configure() {
 		-DGDAL_USE_HDFS=OFF
 		-DGDAL_USE_ICONV=ON # TODO dep
 		-DGDAL_USE_IDB=OFF
-		-DGDAL_USE_JPEG=ON
+		-DGDAL_USE_JPEG=$(usex jpeg)
 
 		# https://gdal.org/build_hints.html#jpeg12
 		# Independent of whether using system libjpeg
