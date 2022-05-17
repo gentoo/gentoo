@@ -37,6 +37,8 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	default
 	gnome2_environment_reset
+
+	sed -i -e 's/Description/description/' meson.build || die # bug 843266
 }
 
 src_configure() {
