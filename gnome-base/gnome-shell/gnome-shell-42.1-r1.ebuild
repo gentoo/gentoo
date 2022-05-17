@@ -140,6 +140,9 @@ PATCHES=(
 	"${FILESDIR}"/42.0-optional-bluetooth.patch
 	# Change favorites defaults, bug #479918
 	"${FILESDIR}"/40.0-defaults.patch
+
+	# Upstream backport, bug #844919
+	"${FILESDIR}"/42.1-polkit-g_autoptr.patch
 )
 
 src_prepare() {

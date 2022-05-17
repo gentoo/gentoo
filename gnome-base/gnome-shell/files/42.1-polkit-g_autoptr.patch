@@ -1,0 +1,53 @@
+https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/1d0a08b5e25fea7b0e792ec9798e68a7c5606a75
+https://bugs.gentoo.org/844919
+
+From: =?UTF-8?q?Florian=20M=C3=BCllner?= <fmuellner@gnome.org>
+Date: Tue, 17 May 2022 15:36:43 +0200
+Subject: [PATCH] build: Do not redefine polkit autocleanup
+
+PolkitAgent recently added autocleanup functions itself, so check
+for their existence at configure time and only define our own when
+they don't exist upstream.
+
+https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/5490
+
+Part-of: <https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/2296>
+--- a/config.h.meson
++++ b/config.h.meson
+@@ -33,3 +33,6 @@
+ 
+ /* Define if fdwalk is available in libc */
+ #mesondefine HAVE_FDWALK
++
++/* Define if polkit defines autocleanup functions */
++#mesondefine HAVE_POLKIT_AUTOCLEANUP
+--- a/meson.build
++++ b/meson.build
+@@ -169,6 +169,13 @@ cdata.set('HAVE_FDWALK',
+           cc.has_function('fdwalk')
+ )
+ 
++polkit_has_autocleanup = cc.compiles(
++  '#define POLKIT_AGENT_I_KNOW_API_IS_SUBJECT_TO_CHANGE
++  #include <polkitagent/polkitagent.h>
++  void main(void) { g_autoptr(PolkitAgentListener) agent = NULL; }',
++  dependencies: polkit_dep)
++cdata.set('HAVE_POLKIT_AUTOCLEANUP', polkit_has_autocleanup)
++
+ buildtype = get_option('buildtype')
+ if buildtype != 'plain'
+   all_warnings = [
+--- a/src/shell-polkit-authentication-agent.h
++++ b/src/shell-polkit-authentication-agent.h
+@@ -14,8 +14,10 @@
+ 
+ G_BEGIN_DECLS
+ 
++#ifndef HAVE_POLKIT_AUTOCLEANUP
+ /* Polkit doesn't have g_autoptr support, thus we have to manually set the autoptr function here */
+ G_DEFINE_AUTOPTR_CLEANUP_FUNC (PolkitAgentListener, g_object_unref)
++#endif
+ 
+ #define SHELL_TYPE_POLKIT_AUTHENTICATION_AGENT (shell_polkit_authentication_agent_get_type())
+ 
+GitLab
