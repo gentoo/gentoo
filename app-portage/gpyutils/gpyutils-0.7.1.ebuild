@@ -30,5 +30,5 @@ RDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
-	epytest --doctest-modules
+	epytest --doctest-modules gpyutils
 }
