@@ -292,7 +292,6 @@ dev-java/jgraph
 # Removal on 2022-05-09.
 dev-python/namespace-google
 dev-python/namespace-lazr
-dev-python/namespace-paste
 
 # Hans de Graaff <graaff@gentoo.org> (2022-04-22)
 # Obsolete slots that are no longer used by current
