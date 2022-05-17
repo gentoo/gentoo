@@ -39,7 +39,6 @@ src_configure() {
 		"-Dfish-completions=true"
 		"-Dzsh-completions=true"
 		"-Dbash-completions=true"
-		"-Dwerror=false"
 	)
 	if use systemd; then
 		emesonargs+=("-Dlogind=enabled" "-Dlogind-provider=systemd")
