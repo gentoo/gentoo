@@ -11,7 +11,6 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="strip"
-IUSE="static-libs"
 
 RDEPEND=">=dev-scheme/guile-2.0.0:="
 DEPEND="${RDEPEND}"
@@ -28,14 +27,8 @@ src_prepare() {
 	find "${S}" -name "*.scm" -exec touch {} + || die
 }
 
-src_configure() {
-	econf $(use_enable static-libs static)
-}
-
 src_install() {
 	default
 
-	if ! use static-libs ; then
-		find "${ED}" -type f -name '*.la' -delete || die
-	fi
+	find "${ED}" -type f -name '*.la' -delete || die
 }
