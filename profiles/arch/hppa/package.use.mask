@@ -4,6 +4,11 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2022-05-17)
+# sci-libs/sundials fails to build tests on HPPA
+# bug #845222
+sci-mathematics/octave sundials
+
 # Matt Turner <mattst88@gentoo.org> (2022-05-07)
 # app-crypt/gcr is not keyworded
 app-crypt/pinentry gtk
