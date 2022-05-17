@@ -337,12 +337,6 @@ dev-java/xjavac
 # This is necessary as your world file should not contain dependencies.)
 sys-libs/e2fsprogs-libs
 
-# Michał Górny <mgorny@gentoo.org> (2022-04-17)
-# Unmaintained in Gentoo.  Pending a bump since January.  Non-trivial
-# to test.  No revdeps.
-# Removal on 2022-05-17.  Bug #838895.
-dev-python/pymssql
-
 # Marek Szuba <marecki@gentoo.org> (2022-04-14)
 # Singularity has been renamed upstream to Apptainer. Therefore, up-to-date
 # versions of this software are now available as app-containers/apptainer.
