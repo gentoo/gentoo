@@ -179,6 +179,7 @@ REQUIRED_USE="
 	mgr? ( cephfs )
 	rabbitmq? ( radosgw )
 	!system-boost? (
+		python_targets_python3_10
 		|| (
 			python_targets_python3_8
 			python_targets_python3_9
