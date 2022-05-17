@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic toolchain-funcs xdg
+inherit cmake flag-o-matic xdg
 
 DESCRIPTION="Battle for Wesnoth - A fantasy turn-based strategy game"
 HOMEPAGE="http://www.wesnoth.org
@@ -64,10 +64,6 @@ src_prepare() {
 
 src_configure() {
 	filter-flags -ftracer -fomit-frame-pointer
-	if [[ $(gcc-major-version) -eq 3 ]] ; then
-		filter-flags -fstack-protector
-		append-flags -fno-stack-protector
-	fi
 
 	if use dedicated || use server ; then
 		mycmakeargs=(
