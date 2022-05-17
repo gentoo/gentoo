@@ -4,16 +4,22 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
 MY_PN="PasteDeploy"
 MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Load, configure, and compose WSGI applications and servers"
-HOMEPAGE="https://pypi.org/project/PasteDeploy/"
+HOMEPAGE="
+	https://github.com/Pylons/pastedeploy/
+	https://pypi.org/project/PasteDeploy/
+"
 # pypi tarball does not include tests
-SRC_URI="https://github.com/Pylons/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/Pylons/pastedeploy/archive/${PV}.tar.gz
+		-> ${P}.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
