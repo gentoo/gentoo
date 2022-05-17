@@ -13,6 +13,7 @@ llvm
 luajittex
 lua_single_target_luajit
 lua_targets_luajit
+mono
 opencl
 valgrind
 
