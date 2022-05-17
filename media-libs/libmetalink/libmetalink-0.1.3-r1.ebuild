@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://launchpad.net/${PN}/trunk/${P}/+download/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 hppa ~m68k ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="expat static-libs test xml"
 
 RDEPEND="expat? ( >=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}] )
