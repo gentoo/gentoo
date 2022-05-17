@@ -3,14 +3,15 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit cmake prefix python-any-r1
 
 DESCRIPTION="Callback/Activity Library for Performance tracing AMD GPU's"
 HOMEPAGE="https://github.com/ROCm-Developer-Tools/roctracer.git"
 SRC_URI="https://github.com/ROCm-Developer-Tools/roctracer/archive/rocm-${PV}.tar.gz -> rocm-tracer-${PV}.tar.gz
-		https://github.com/ROCm-Developer-Tools/rocprofiler/archive/rocm-${PV}.tar.gz -> rocprofiler-${PV}.tar.gz"
+		https://github.com/ROCm-Developer-Tools/rocprofiler/archive/rocm-${PV}.tar.gz -> rocprofiler-${PV}.tar.gz
+		https://github.com/ROCmSoftwarePlatform/hsa-class/archive/f8b387043b9f510afdf2e72e38a011900360d6ab.tar.gz -> hsa-class-f8b3870.tar.gz"
 S="${WORKDIR}/roctracer-rocm-${PV}"
 
 LICENSE="MIT"
@@ -30,6 +31,7 @@ BDEPEND="
 PATCHES=(
 	# https://github.com/ROCm-Developer-Tools/roctracer/pull/63
 	"${FILESDIR}"/${PN}-4.3.0-glibc-2.34.patch
+	"${FILESDIR}"/${PN}-4.3.0-tracer_tool.patch
 	"${FILESDIR}"/${PN}-5.0.2-Werror.patch
 	"${FILESDIR}"/${PN}-5.0.2-headers.patch
 	"${FILESDIR}"/${PN}-5.0.2-strip-license.patch
@@ -44,15 +46,22 @@ src_prepare() {
 	cmake_src_prepare
 
 	mv "${WORKDIR}"/rocprofiler-rocm-${PV} "${WORKDIR}"/rocprofiler || die
+	mv "${WORKDIR}"/hsa-class-*/test/util "${S}"/inc/ || die
+	rm "${S}"/inc/util/hsa* || die
+	cp -a "${S}"/src/util/hsa* "${S}"/inc/util/ || die
+
+	# change destination for headers to include/roctracer;
 
 	sed -e "/LIBRARY DESTINATION/s,lib,$(get_libdir)," \
-		-e "/add_subdirectory ( \${TEST_DIR} \${PROJECT_BINARY_DIR}/d" \
+		-e "/DESTINATION/s,\${DEST_NAME}/include,include/roctracer," \
 		-e "/install ( FILES \${PROJECT_BINARY_DIR}\/so/d" \
+		-e "/DESTINATION/s,\${DEST_NAME}/lib64,$(get_libdir),g" \
 		-i CMakeLists.txt || die
 
 	# do not download additional sources via git
 	sed -e "/execute_process ( COMMAND sh -xc \"if/d" \
 		-e "/add_subdirectory ( \${HSA_TEST_DIR} \${PROJECT_BINARY_DIR}/d" \
+		-e "/DESTINATION/s,\${DEST_NAME}/tool,$(get_libdir),g" \
 		-i test/CMakeLists.txt || die
 
 	hprefixify script/*.py
