@@ -30,6 +30,7 @@ gd
 gpm
 gtk4
 gtk-doc
+kde
 latex
 ldap
 mpi
@@ -38,3 +39,4 @@ sctp
 systemtap
 tk
 tpm
+xemacs
