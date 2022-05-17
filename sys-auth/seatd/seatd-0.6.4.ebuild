@@ -31,7 +31,6 @@ BDEPEND=">=app-text/scdoc-1.9.7"
 src_configure() {
 	local emesonargs=(
 		-Dman-pages=enabled
-		-Dwerror=false
 		$(meson_feature builtin libseat-builtin)
 		$(meson_feature server)
 	)
