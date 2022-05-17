@@ -39,10 +39,6 @@ PATCHES=(
 	"${WORKDIR}"/${P}-fix-path-builds.patch
 	"${WORKDIR}"/${P}-fix-template-files.patch)
 
-src_prepare() {
-	default
-}
-
 src_configure() {
 	local extras=""
 
