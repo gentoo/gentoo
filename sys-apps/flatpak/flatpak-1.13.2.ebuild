@@ -100,3 +100,9 @@ src_configure() {
 
 	econf "${myeconfargs[@]}"
 }
+
+src_install() {
+	default
+	# https://projects.gentoo.org/qa/policy-guide/installed-files.html#pg0303
+	find "${ED}" -name '*.la' -delete || die
+}
