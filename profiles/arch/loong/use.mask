@@ -27,9 +27,6 @@ fam
 fontforge
 gd
 gpm
-gtk
-gtk2
-gtk3
 gtk4
 gtk-doc
 latex
