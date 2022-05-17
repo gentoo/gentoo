@@ -52,7 +52,7 @@ src_prepare() {
 }
 
 src_configure() {
-	[[ "$(gcc-major-version)" -ge 5 ]] && append-cxxflags -std=gnu++11
+	append-cxxflags -std=gnu++11
 
 	export QTLIB="$(qt5_get_libdir)"
 
