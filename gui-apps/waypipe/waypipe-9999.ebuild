@@ -56,7 +56,6 @@ BDEPEND="
 
 src_configure() {
 	local emesonargs=(
-		-Dwerror=false
 		$(meson_use systemtap with_systemtap)
 		$(meson_feature dmabuf with_dmabuf)
 		$(meson_feature ffmpeg with_video)
