@@ -23,7 +23,7 @@ fi
 
 LICENSE="|| ( BSD-2 LGPL-2.1+ )"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 arm64 ~hppa ppc ppc64 ~riscv sparc x86"
 IUSE="python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
