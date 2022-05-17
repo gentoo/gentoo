@@ -285,13 +285,6 @@ dev-ruby/rqrcode_core:0
 # Unused java library. Removal on 2022-05-24.
 dev-java/jgraph
 
-# Michał Górny <mgorny@gentoo.org> (2022-04-22)
-# Obsolete namespace packages.  PEP 420 implicit namespaces are now
-# the preferred solution.  Upgrade the reverse dependencies to get
-# these packages unmerged.
-# Removal on 2022-05-09.
-dev-python/namespace-google
-
 # Hans de Graaff <graaff@gentoo.org> (2022-04-22)
 # Obsolete slots that are no longer used by current
 # dev-ruby/simplecov versions and have no use on their own.
