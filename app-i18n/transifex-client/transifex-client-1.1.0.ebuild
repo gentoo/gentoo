@@ -8,8 +8,6 @@ inherit go-module
 DESCRIPTION="The Transifex command-line client"
 HOMEPAGE="https://github.com/transifex/cli"
 
-go-module_set_globals
-
 SRC_URI="https://github.com/transifex/cli/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://gitlab.com/api/v4/projects/35204985/packages/generic/${PN}/${PV}/${PN}-1.1-deps.tar.xz"
 S="${WORKDIR}"/cli-${PV}
