@@ -325,7 +325,6 @@ dev-java/jboss-marshalling
 dev-java/jdbc-mssqlserver
 dev-java/jsr250
 dev-java/maven-hawtjni-plugin
-dev-java/mimepull
 
 # David Seifert <soap@gentoo.org> (2022-04-17)
 # Dead library, part of >=sys-fs/e2fsprogs-1.46.5 now, bug #806875,
