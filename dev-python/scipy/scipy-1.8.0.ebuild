@@ -11,7 +11,11 @@ inherit fortran-2 distutils-r1 flag-o-matic multiprocessing toolchain-funcs
 # upstream is slacking forever with doc updates
 DOC_PV=1.7.1
 DESCRIPTION="Scientific algorithms library for Python"
-HOMEPAGE="https://www.scipy.org/"
+HOMEPAGE="
+	https://scipy.org/
+	https://github.com/scipy/scipy/
+	https://pypi.org/project/scipy/
+"
 SRC_URI="
 	mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
 	doc? (
