@@ -193,46 +193,6 @@ DEPEND="${RDEPEND}
 # eclass utilities
 # ----------------------------------
 
-check_vermagic() {
-	debug-print-function ${FUNCNAME} $*
-
-	local curr_gcc_ver=$(gcc -dumpversion)
-	local tmpfile old_chost old_gcc_ver result=0
-	[ -n "${MODULES_OPTIONAL_USE}" ] && use !${MODULES_OPTIONAL_USE} && return
-
-	tmpfile=`find "${KV_DIR}/" -iname "*.o.cmd" -exec grep usr/lib/gcc {} \; -quit`
-	tmpfile=${tmpfile//*usr/lib}
-	tmpfile=${tmpfile//\/include*}
-	old_chost=${tmpfile//*gcc\/}
-	old_chost=${old_chost//\/*}
-	old_gcc_ver=${tmpfile//*\/}
-
-	if [[ -z ${old_gcc_ver} || -z ${old_chost} ]]; then
-		ewarn ""
-		ewarn "Unable to detect what version of GCC was used to compile"
-		ewarn "the kernel. Build will continue, but you may experience problems."
-	elif [[ ${curr_gcc_ver} != ${old_gcc_ver} ]]; then
-		ewarn ""
-		ewarn "The version of GCC you are using (${curr_gcc_ver}) does"
-		ewarn "not match the version of GCC used to compile the"
-		ewarn "kernel (${old_gcc_ver})."
-		result=1
-	elif [[ ${CHOST} != ${old_chost} ]]; then
-		ewarn ""
-		ewarn "The current CHOST (${CHOST}) does not match the chost"
-		ewarn "used when compiling the kernel (${old_chost})."
-		result=1
-	fi
-
-	if [[ ${result} -gt 0 ]]; then
-		ewarn ""
-		ewarn "Build will not continue, because you will experience problems."
-		ewarn "To fix this either change the version of GCC you wish to use"
-		ewarn "to match the kernel, or recompile the kernel first."
-		die "GCC Version Mismatch."
-	fi
-}
-
 # @FUNCTION: use_m
 # @RETURN: true or false
 # @DESCRIPTION:
@@ -621,10 +581,6 @@ linux-mod_pkg_setup() {
 	strip_modulenames;
 	[[ -n ${MODULE_NAMES} ]] && check_modules_supported
 	set_kvobj;
-	# Commented out with permission from johnm until a fixed version for arches
-	# who intentionally use different kernel and userland compilers can be
-	# introduced - Jason Wever <weeve@gentoo.org>, 23 Oct 2005
-	#check_vermagic;
 }
 
 # @FUNCTION: linux-mod_pkg_setup_binary
