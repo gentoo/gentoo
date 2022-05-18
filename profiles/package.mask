@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-05-18)
+# Unused java library. Removal on 2022-06-18
+dev-java/jta
+
 # Matt Turner <mattst88@gentoo.org> (2022-05-17)
 # Dead packages. No reverse dependencies.
 # Removal on 2022-06-17
