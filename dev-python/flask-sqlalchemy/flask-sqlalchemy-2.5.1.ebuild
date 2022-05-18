@@ -23,6 +23,10 @@ RDEPEND="
 	>=dev-python/sqlalchemy-0.8.0[${PYTHON_USEDEP}]
 "
 
+BDEPEND="test? (
+	dev-python/mock[${PYTHON_USEDEP}]
+)"
+
 distutils_enable_tests pytest
 distutils_enable_sphinx docs dev-python/pallets-sphinx-themes \
 	dev-python/sphinx-issues
