@@ -28,7 +28,8 @@ BDEPEND="
 		>=dev-python/requests-1.1[${PYTHON_USEDEP}]
 		dev-python/sure[${PYTHON_USEDEP}]
 		>=www-servers/tornado-2.2[${PYTHON_USEDEP}]
-	)"
+	)
+"
 # These are optional test deps, that are used to test compatibility
 # with various HTTP libs.  We prefer pulling them in whenever possible
 # to increase test coverage but we can live without them.
@@ -40,7 +41,7 @@ BDEPEND+="
 			>=dev-python/boto3-1.17.72[${PYTHON_USEDEP}]
 			dev-python/httplib2[${PYTHON_USEDEP}]
 			>=dev-python/httpx-0.18.1[${PYTHON_USEDEP}]
-		' python3_{8..10})
+		' python3_{8..11})
 		$(python_gen_cond_dep '
 			>=dev-python/eventlet-0.25.1[${PYTHON_USEDEP}]
 		' python3_{8..9})
