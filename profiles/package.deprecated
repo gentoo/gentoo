@@ -17,6 +17,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-05-18)
+# pp2sp is no longer maintained.  Its build system support is limited
+# and buggy.  Packages need to migrate to using DISTUTILS_USE_PEP517
+# instead.
+dev-python/pyproject2setuppy
+
 # Sam James <sam@gentoo.org> (2022-04-22)
 # Obsolete virtual.
 # Only one provider is left (media-libs/libjpeg-turbo), please change
