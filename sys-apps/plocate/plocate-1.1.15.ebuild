@@ -24,12 +24,17 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-CONFIG_CHECK="~IO_URING"
-ERROR_IO_URING="required for USE=io-uring"
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.15-meson-use-feature-option-for-libiouring.patch
 )
+
+pkg_setup() {
+	if use io-uring && linux_config_exists; then
+		if ! linux_chkconfig_present IO_URING; then
+			ewarn "CONFIG_IO_URING must be enabled for USE=io-uring"
+		fi
+	fi
+}
 
 src_prepare() {
 	# We'll install the manpage ourself to locate.1
