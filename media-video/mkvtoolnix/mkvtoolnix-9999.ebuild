@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools flag-o-matic multiprocessing qmake-utils xdg
 
@@ -19,36 +19,37 @@ HOMEPAGE="https://mkvtoolnix.download/ https://gitlab.com/mbunkus/mkvtoolnix"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="dbus debug dvd nls pch test"
+IUSE="dbus debug dvd gui nls pch test"
 RESTRICT="!test? ( test )"
 
 # check NEWS.md for build system changes entries for boost/libebml/libmatroska
 # version requirement updates and other packaging info
 RDEPEND="
 	>=dev-libs/boost-1.66:=
-	>=dev-libs/libebml-1.4.0:=
-	>=dev-libs/libfmt-6.1.0:=
-	dev-libs/libpcre2:=
-	dev-libs/pugixml:=
+	dev-libs/gmp:=
+	>=dev-libs/libebml-1.4.2:=
+	>=dev-libs/libfmt-8.0.1:=
+	>=dev-libs/pugixml-1.11:=
 	media-libs/flac:=
 	>=media-libs/libmatroska-1.6.3:=
 	media-libs/libogg:=
 	media-libs/libvorbis:=
-	sys-apps/file
 	sys-libs/zlib
 	dvd? ( media-libs/libdvdread:= )
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtconcurrent:5
-	dev-qt/qtmultimedia:5
+	gui? (
+		dev-qt/qtgui:5
+		dev-qt/qtnetwork:5
+		dev-qt/qtwidgets:5
+		dev-qt/qtconcurrent:5
+		dev-qt/qtmultimedia:5
+	)
 	app-text/cmark:0=
 	dbus? ( dev-qt/qtdbus:5 )
 "
 DEPEND="${RDEPEND}
-	dev-cpp/nlohmann_json
-	dev-libs/utfcpp
+	>=dev-cpp/nlohmann_json-3.9.1
+	>=dev-libs/utfcpp-3.1.2
 	test? ( dev-cpp/gtest )
 "
 BDEPEND="
@@ -62,16 +63,20 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}"/mkvtoolnix-58.0.0-qt5dbus.patch )
+PATCHES=(
+	"${FILESDIR}"/mkvtoolnix-58.0.0-qt5dbus.patch
+	"${FILESDIR}"/mkvtoolnix-67.0.0-no-uic-qtwidgets.patch
+)
 
 src_prepare() {
-	xdg_src_prepare
+	default
+
 	if [[ ${PV} == *9999 ]]; then
 		./autogen.sh || die
 	fi
 
-	# https://bugs.gentoo.org/692018
-	sed -e 's/pandoc/diSaBlEd/' -i ac/pandoc.m4 || die
+	# bug #692018
+	sed -i -e 's/pandoc/diSaBlEd/' ac/pandoc.m4 || die
 
 	eautoreconf
 
@@ -80,16 +85,17 @@ src_prepare() {
 }
 
 src_configure() {
-	# bug 692322, use system dev-libs/utfcpp
+	# bug #692322, use system dev-libs/utfcpp
 	append-cppflags -I"${ESYSROOT}"/usr/include/utf8cpp
 
 	local myeconfargs=(
 		$(use_enable debug)
 		$(usex pch "" --disable-precompiled-headers)
 		$(use_enable dbus)
+		$(use_enable gui)
 		--disable-qt6
 		--enable-qt5
-		--with-qmake=$(qt5_get_bindir)/qmake
+		--with-qmake="$(qt5_get_bindir)"/qmake
 		$(use_with dvd dvdread)
 		$(use_with nls gettext)
 		$(usex nls "" --with-po4a-translate=false)
