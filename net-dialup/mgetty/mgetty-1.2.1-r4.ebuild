@@ -39,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.1-Lucent.c.patch
 	"${FILESDIR}"/${PN}-1.2.1-gentoo.patch
 	"${FILESDIR}"/${PN}-1.2.1-aarch64.patch
+	"${FILESDIR}"/${PN}-1.2.1-riscv64.patch
 )
 
 src_prepare() {
