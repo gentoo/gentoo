@@ -51,6 +51,7 @@ PATCHES=(
 	"${FILESDIR}/iptables-1.8.2-link.patch"
 
 	"${FILESDIR}/${P}-format-security.patch"
+	"${FILESDIR}/${P}-uint-musl.patch"
 )
 
 src_prepare() {
