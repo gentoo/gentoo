@@ -71,7 +71,7 @@ RDEPEND="
 	media-libs/libpng:=
 	media-libs/libtheora
 	media-libs/tiff
-	<sci-libs/hdf5-1.12:=[mpi=]
+	sci-libs/hdf5:=[mpi=]
 	sci-libs/netcdf:=[mpi=]
 	sys-libs/zlib
 	media-libs/libjpeg-turbo
