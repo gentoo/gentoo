@@ -92,10 +92,15 @@ src_configure() {
 		$(use_enable debug)
 		$(usex pch "" --disable-precompiled-headers)
 		$(use_enable dbus)
-		$(use_enable gui)
+
+		# Qt (of some version) is always needed, even for non-GUI builds,
+		# to do e.g. MIME detection. See e.g. bug #844097.
+		# But most of the Qt deps are conditional on a GUI build.
 		--disable-qt6
 		--enable-qt5
+		$(use_enable gui)
 		--with-qmake="$(qt5_get_bindir)"/qmake
+
 		$(use_with dvd dvdread)
 		$(use_with nls gettext)
 		$(usex nls "" --with-po4a-translate=false)
