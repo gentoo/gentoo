@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2022-05-17)
+# Dead packages. No reverse dependencies.
+# Removal on 2022-06-17
+dev-perl/Gtk2-SourceView2
+dev-perl/Gtk2-Unique
+
 # Michał Górny <mgorny@gentoo.org> (2022-05-16)
 # This was only added for dev-python/nptyping, and nptyping-2.0.0
 # no longer uses it.  No activity since Aug 2021.
