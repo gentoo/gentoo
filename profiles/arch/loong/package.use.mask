@@ -9,11 +9,16 @@ net-libs/libssh mbedtls
 # WANG Xuerui <xen0n@gentoo.org> (2022-05-13)
 # dev-lang/rust is not available on loong yet.
 dev-vcs/mercurial rust
+media-gfx/eog svg
+media-gfx/imv svg
 media-libs/freetype svg
+>=media-libs/imlib2-1.9.0 svg
 media-libs/libavif rav1e
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-05-13)
 # dev-lang/go is not available on loong yet.
+media-libs/libheif go test
+sys-apps/earlyoom test
 sys-libs/libcap tools
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-04-24)
