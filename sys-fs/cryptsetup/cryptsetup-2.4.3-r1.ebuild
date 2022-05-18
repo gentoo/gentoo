@@ -77,7 +77,7 @@ src_configure() {
 	local myeconfargs=(
 		--disable-internal-argon2
 		--enable-shared
-		--sbindir=/sbin
+		--sbindir="${EPREFIX}"/sbin
 		# for later use
 		--with-default-luks-format=LUKS2
 		--with-tmpfilesdir="${EPREFIX}/usr/lib/tmpfiles.d"
