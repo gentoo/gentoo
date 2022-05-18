@@ -168,6 +168,9 @@ src_install() {
 	newinitd "${FILESDIR}/${PN}-22.05.initd" "${PN}"
 	systemd_dounit "${PN}.service"
 
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}/${PN}-22.05.logrotate" "${PN}"
+
 	keepdir /var/{lib,log}/ejabberd
 }
 
