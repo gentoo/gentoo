@@ -191,6 +191,7 @@ multilib_src_configure() {
 		$(use_ssl asm) \
 		$(use_ssl rfc3779) \
 		$(use_ssl sctp) \
+		$(use test || echo "no-tests") \
 		$(use_ssl tls-compression zlib) \
 		$(use_ssl tls-heartbeat heartbeats) \
 		$(use_ssl weak-ssl-ciphers) \
