@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/831305
+
+Upstream git has merged autotoolsification PR so no need for this.
+--- a/pppd/Makefile.linux
++++ b/pppd/Makefile.linux
+@@ -155,7 +155,7 @@ endif
+ 
+ ifdef NEEDDES
+ ifndef USE_CRYPT
+-CFLAGS   += -I$(shell $(CC) --print-sysroot)/usr/include/openssl
++CFLAGS   += -I$(INSTROOT)/usr/include/openssl
+ NEEDCRYPTOLIB = y
+ else
+ CFLAGS   += -DUSE_CRYPT=1
