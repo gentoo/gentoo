@@ -4,3 +4,4 @@ move sys-auth/solo-python sys-auth/solo1
 move dev-python/setuptools_rust dev-python/setuptools-rust
 move dev-python/lark-parser dev-python/lark
 move dev-python/suds dev-python/suds-community
+move dev-cpp/cpp-taskflow dev-cpp/taskflow

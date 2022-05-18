@@ -10,11 +10,11 @@
 		<name>Gentoo Science Project</name>
 	</maintainer>
 	<longdescription>
-		Cpp-Taskflow is faster, more expressive, and easier for drop-in
+		Taskflow is faster, more expressive, and easier for drop-in
 		integration than many of existing task programming frameworks in
 		handling complex parallel workloads.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">cpp-taskflow/cpp-taskflow</remote-id>
+		<remote-id type="github">taskflow/taskflow</remote-id>
 	</upstream>
 </pkgmetadata>

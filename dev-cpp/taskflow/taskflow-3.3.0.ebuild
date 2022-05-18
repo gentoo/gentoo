@@ -6,11 +6,11 @@ EAPI=8
 inherit cmake
 
 DESCRIPTION="Modern C++ Parallel Task Programming"
-HOMEPAGE="https://cpp-taskflow.github.io"
+HOMEPAGE="https://taskflow.github.io"
 if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="https://github.com/cpp-taskflow/${PN}.git"
+	EGIT_REPO_URI="https://github.com/taskflow/${PN}.git"
 	inherit git-r3
-	S="${WORKDIR}/cpp-taskflow-${PV}"
+	S="${WORKDIR}/taskflow-${PV}"
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
@@ -27,7 +27,7 @@ DEPEND="test? ( dev-cpp/doctest )"
 HTML_DOCS=( docs/. )
 
 PATCHES=(
-	"${FILESDIR}"/cpp-taskflow-9999-fix_doctest.patch
+	"${FILESDIR}"/taskflow-3.3.0-fix_doctest.patch
 )
 
 src_prepare() {

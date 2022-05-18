@@ -43,7 +43,7 @@ REQUIRED_USE="
 RDEPEND="dev-libs/boost:=
 	app-arch/bzip2
 	sys-libs/zlib
-	dev-cpp/cpp-taskflow
+	dev-cpp/taskflow
 	dev-cpp/tbb:=
 	adolc? ( sci-libs/adolc )
 	arpack? ( sci-libs/arpack[mpi=] )
