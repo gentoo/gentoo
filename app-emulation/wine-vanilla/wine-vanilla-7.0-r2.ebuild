@@ -296,7 +296,11 @@ src_configure() {
 	if use mingw; then
 		use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
 
-		export CROSSCFLAGS="${CFLAGS}"
+		# use *FLAGS for mingw, but strip unsupported (e.g. --hash-style=gnu)
+		local mingwcc=${CROSSCC:-$(usex x86 i686 x86_64)-w64-mingw32-gcc}
+		: "${CROSSCFLAGS:=$(CC=${mingwcc} test-flags-CC ${CFLAGS:--O2})}"
+		: "${CROSSLDFLAGS:=$(CC=${mingwcc} test-flags-CCLD ${LDFLAGS})}"
+		export CROSS{C,LD}FLAGS
 	fi
 
 	multilib-minimal_src_configure
