@@ -40,7 +40,7 @@ SRC_URI="mirror://sourceforge/sbcl/${P}-source.tar.bz2
 LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="-* ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
-IUSE="debug doc source +threads +unicode zlib"
+IUSE="debug doc linkable-runtime source +threads +unicode zlib"
 
 CDEPEND=">=dev-lisp/asdf-3.3:="
 BDEPEND="${CDEPEND}
@@ -80,6 +80,7 @@ sbcl_apply_features() {
 	sbcl_feature "$(usep unicode)" ":sb-unicode"
 	sbcl_feature "$(usep zlib)" ":sb-core-compression"
 	sbcl_feature "$(usep debug)" ":sb-xref-for-internals"
+	sbcl_feature "$(usep linkable-runtime)" ":sb-linkable-runtime"
 	sed 's/^X//' >> "${CONFIG}" <<-'EOF'
 	X    )
 	X  list)
