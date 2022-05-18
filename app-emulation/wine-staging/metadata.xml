@@ -18,6 +18,10 @@ This variant of the Wine packaging includes the Wine-Staging patchset.
 	</longdescription>
 	<use>
 		<flag name="capi">Enable ISDN support via CAPI</flag>
+		<flag name="crossdev-mingw">
+			Use <pkg>sys-devel/crossdev</pkg> for the toolchain rather than
+			<pkg>dev-util/mingw64-toolchain</pkg> (requires manual setting up)
+		</flag>
 		<flag name="custom-cflags">Bypass strip-flags; use at your own peril</flag>
 		<flag name="dos">Pull in <pkg>games-emulation/dosbox</pkg> to run DOS applications</flag>
 		<flag name="gecko">Add support for the Gecko engine when using iexplore</flag>
