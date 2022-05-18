@@ -43,6 +43,9 @@ RDEPEND="
 		)
 	)
 "
+BDEPEND="
+	dev-qt/linguist-tools:5
+"
 
 python_prepare_all() {
 	# set the correct search path
