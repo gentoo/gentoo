@@ -25,9 +25,4 @@ DOCS=( CHANGELOG.md README.md )
 src_prepare() {
 	rebar_src_prepare
 	rebar_fix_include_path stun
-
-	# ebin contains lonely .gitignore file asking for removal.
-	rm    "${S}/ebin/examples/.gitignore" || die
-	rmdir "${S}/ebin/examples" || die
-	rmdir "${S}/ebin" || die
 }
