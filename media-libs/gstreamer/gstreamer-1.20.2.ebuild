@@ -33,6 +33,10 @@ BDEPEND="
 
 DOCS=( AUTHORS ChangeLog NEWS MAINTAINERS README.md RELEASE )
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.20-loong.patch"
+)
+
 multilib_src_configure() {
 	local emesonargs=(
 		-Dbenchmarks=disabled
