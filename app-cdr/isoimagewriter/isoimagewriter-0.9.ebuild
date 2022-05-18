@@ -32,3 +32,5 @@ DEPEND="
 	>=kde-frameworks/solid-${KFMIN}:5
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-missing-headers.patch" ) # bug 842657
