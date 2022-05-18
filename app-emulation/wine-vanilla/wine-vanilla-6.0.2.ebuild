@@ -34,9 +34,10 @@ SRC_URI="${SRC_URI}
 
 LICENSE="LGPL-2.1"
 SLOT="${PV}"
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos +faudio +fontconfig +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos +lcms ldap mingw +mono mp3 netapi nls odbc openal opencl +opengl osmesa oss +perl pcap +png pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl test +threads +truetype udev +udisks +unwind usb v4l vkd3d vulkan +X +xcomposite xinerama +xml"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi crossdev-mingw cups custom-cflags dos +faudio +fontconfig +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos +lcms ldap mingw +mono mp3 netapi nls odbc openal opencl +opengl osmesa oss +perl pcap +png pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl test +threads +truetype udev +udisks +unwind usb v4l vkd3d vulkan +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
+	crossdev-mingw? ( mingw )
 	elibc_glibc? ( threads )
 	osmesa? ( opengl )
 	test? ( abi_x86_32 )
@@ -128,7 +129,8 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	virtual/yacc
 	X? ( x11-base/xorg-proto )
-	xinerama? ( x11-base/xorg-proto )"
+	xinerama? ( x11-base/xorg-proto )
+	!crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] )"
 
 # These use a non-standard "Wine" category, which is provided by
 # /etc/xdg/applications-merged/wine.menu
@@ -194,32 +196,18 @@ pkg_pretend() {
 		fi
 	fi
 
-	if use mingw && use abi_x86_32 && ! has_version "cross-i686-w64-mingw32/gcc"; then
-		eerror
-		eerror "USE=\"mingw\" is currently experimental, and requires the"
-		eerror "'cross-i686-w64-mingw32' compiler and its runtime for 32-bit builds."
-		eerror
-		eerror "These can be installed by using 'sys-devel/crossdev':"
-		eerror
-		eerror "crossdev --target i686-w64-mingw32"
-		eerror
-		eerror "For more information on setting up MinGW, see: https://wiki.gentoo.org/wiki/Mingw"
-		eerror
-		die "MinGW build was enabled, but no compiler to support it was found."
-	fi
-
-	if use mingw && use abi_x86_64 && ! has_version "cross-x86_64-w64-mingw32/gcc"; then
-		eerror
-		eerror "USE=\"mingw\" is currently experimental, and requires the"
-		eerror "'cross-x86_64-w64-mingw32' compiler and its runtime for 64-bit builds."
-		eerror
-		eerror "These can be installed by using 'sys-devel/crossdev':"
-		eerror
-		eerror "crossdev --target x86_64-w64-mingw32"
-		eerror
-		eerror "For more information on setting up MinGW, see: https://wiki.gentoo.org/wiki/Mingw"
-		eerror
-		die "MinGW build was enabled, but no compiler to support it was found."
+	if use crossdev-mingw && [[ ! -v MINGW_BYPASS ]]; then
+		local mingw=-w64-mingw32
+		for mingw in $(usex abi_x86_64 x86_64${mingw} '') $(usex abi_x86_32 i686${mingw} ''); do
+			type -P ${mingw}-gcc && continue
+			eerror "With USE=crossdev-mingw, you must prepare the MinGW toolchain"
+			eerror "yourself by installing sys-devel/crossdev then running:"
+			eerror
+			eerror "    crossdev --target ${mingw}"
+			eerror
+			eerror "For more information, please see: https://wiki.gentoo.org/wiki/Mingw"
+			die "USE=crossdev-mingw is enabled, but ${mingw}-gcc was not found"
+		done
 	fi
 }
 
@@ -315,6 +303,8 @@ src_configure() {
 	export LDCONFIG=/bin/true
 	use custom-cflags || strip-flags
 	if use mingw; then
+		use crossdev-mingw || PATH=${EPREFIX}/usr/lib/mingw64-toolchain/bin:${PATH}
+
 		export CROSSCFLAGS="${CFLAGS}"
 	fi
 
