@@ -41,7 +41,7 @@ S="${WORKDIR}"/${PN}-${CommitId}
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 python_check_deps() {
-	python_has_version "dev-python/PeachPy[${PYTHON_USEDEP}]"
+	has_version -b "dev-python/PeachPy[${PYTHON_USEDEP}]"
 }
 
 src_configure() {
