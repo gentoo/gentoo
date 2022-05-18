@@ -46,6 +46,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${P}-tests-optional.patch"
 	"${FILESDIR}/${P}-gles-support.patch" # bug 820035
+	"${FILESDIR}/${P}-ffmpeg-5.patch" # bug 834416
 )
 
 src_configure() {
