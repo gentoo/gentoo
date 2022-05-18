@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PV="${PV//_p/-P}"
 MY_PV="${MY_PV/_/-}"
@@ -10,7 +10,9 @@ MY_P="${PN}-${MY_PV}"
 DESCRIPTION="High-performance production grade DHCPv4 & DHCPv6 server"
 HOMEPAGE="https://www.isc.org/kea/"
 
-inherit autotools systemd tmpfiles
+PYTHON_COMPAT=( python3_{8..10} )
+
+inherit autotools fcaps python-single-r1 systemd tmpfiles
 
 if [[ ${PV} = 9999* ]] ; then
 	inherit git-r3
@@ -18,13 +20,16 @@ if [[ ${PV} = 9999* ]] ; then
 else
 	SRC_URI="ftp://ftp.isc.org/isc/kea/${MY_P}.tar.gz
 		ftp://ftp.isc.org/isc/kea/${MY_PV}/${MY_P}.tar.gz"
-	[[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	# Odd minor version = development release
+	if [[ $(( $(ver_cut 2) % 2 )) -ne 1 ]] ; then
+		[[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
+		KEYWORDS="~amd64 ~arm64 ~x86"
+	fi
 fi
 
 LICENSE="ISC BSD SSLeay GPL-2" # GPL-2 only for init script
 SLOT="0"
-IUSE="mysql +openssl postgres +samples test"
+IUSE="mysql +openssl postgres +samples shell test"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -33,7 +38,9 @@ COMMON_DEPEND="
 	mysql? ( dev-db/mysql-connector-c )
 	!openssl? ( dev-libs/botan:2= )
 	openssl? ( dev-libs/openssl:0= )
-	postgres? ( dev-db/postgresql:* )"
+	postgres? ( dev-db/postgresql:* )
+	shell? ( ${PYTHON_DEPS} )
+"
 DEPEND="${COMMON_DEPEND}
 	test? ( dev-cpp/gtest )
 "
@@ -42,6 +49,8 @@ RDEPEND="${COMMON_DEPEND}
 	acct-user/dhcp"
 BDEPEND="virtual/pkgconfig"
 
+REQUIRED_USE="shell? ( ${PYTHON_REQUIRED_USE} )"
+
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
@@ -49,11 +58,15 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.10-gtest.patch
 )
 
+pkg_setup() {
+	use shell && python-single-r1_pkg_setup
+}
+
 src_prepare() {
 	default
 	# Brand the version with Gentoo
 	sed -i \
-		-e "s/AC_INIT(kea,${PV}.*, kea-dev@lists.isc.org)/AC_INIT(kea,${PVR}-gentoo, kea-dev@lists.isc.org)/g" \
+		-e "s/AC_INIT(kea,${PV}.*, kea-dev@lists.isc.org)/AC_INIT([kea], [${PVR}-gentoo], [kea-dev@lists.isc.org])/g" \
 		configure.ac || die
 
 	sed -i \
@@ -67,14 +80,16 @@ src_configure() {
 	local myeconfargs=(
 		--disable-install-configurations
 		--disable-static
+		--enable-generate-messages
 		--enable-perfdhcp
 		--localstatedir="${EPREFIX}/var"
 		--runstatedir="${EPREFIX}/run"
 		--without-werror
+		$(use_enable test gtest)
+		$(use_enable shell)
 		$(use_with mysql)
 		$(use_with openssl)
 		$(use_with postgres pgsql)
-		$(use_enable test gtest)
 	)
 	econf "${myeconfargs[@]}"
 }
@@ -108,4 +123,5 @@ src_install() {
 
 pkg_postinst() {
 	tmpfiles_process ${PN}.conf
+	fcaps cap_net_bind_service,cap_net_raw=+ep /usr/sbin/kea-dhcp{4,6}
 }
