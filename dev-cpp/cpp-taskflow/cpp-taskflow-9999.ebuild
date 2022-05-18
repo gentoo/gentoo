@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,9 +26,12 @@ DEPEND="test? ( dev-cpp/doctest )"
 
 HTML_DOCS=( docs/. )
 
+PATCHES=(
+	"${FILESDIR}"/cpp-taskflow-9999-fix_doctest.patch
+)
+
 src_prepare() {
 	rm -r "${S}/3rd-party" || die "rm failed"
-	default
 	cmake_src_prepare
 }
 
