@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 WX_GTK_VER="3.0-gtk3"
 inherit wxwidgets xdg cmake
@@ -35,8 +35,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-devel/gettext
 	sys-apps/lsb-release"
-
-#PATCHES=( "${FILESDIR}"/${P}-cmake.patch )
 
 src_configure() {
 	use doc && HTML_DOCS=( "${S}"/../${PN}/doc/. )
