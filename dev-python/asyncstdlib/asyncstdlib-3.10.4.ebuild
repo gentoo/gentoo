@@ -11,10 +11,12 @@ inherit distutils-r1
 DESCRIPTION="The missing async toolbox"
 HOMEPAGE="
 	https://github.com/maxfischer2781/asyncstdlib/
-	https://pypi.org/project/asyncstdlib/"
+	https://pypi.org/project/asyncstdlib/
+"
 SRC_URI="
 	https://github.com/maxfischer2781/asyncstdlib/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz"
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
