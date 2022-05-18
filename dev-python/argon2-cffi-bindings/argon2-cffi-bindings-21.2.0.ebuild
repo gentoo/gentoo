@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Low-level CFFI bindings for the Argon2 password hashing library"
