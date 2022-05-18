@@ -271,7 +271,6 @@ move_old_moduledb() {
 }
 
 # @FUNCTION: update_moduledb
-# @INTERNAL
 # @DESCRIPTION:
 # Adds the package to the /var/lib/module-rebuild/moduledb database used by the module-rebuild utility.
 update_moduledb() {
@@ -292,7 +291,6 @@ update_moduledb() {
 }
 
 # @FUNCTION: remove_moduledb
-# @INTERNAL
 # @DESCRIPTION:
 # Removes the package from the /var/lib/module-rebuild/moduledb database used by
 remove_moduledb() {
