@@ -196,10 +196,6 @@ dev-db/postgresql llvm
 sys-cluster/slurm ucx
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
-# net-dialup/mgetty fails to compile on this arch, bug #844955
-mail-mta/courier fax
-
-# Marek Szuba <marecki@gentoo.org> (2021-07-05)
 # Dependencies not keyworded here yet:
 #  - sci-libs/vtk
 media-libs/opencv vtk
