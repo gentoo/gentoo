@@ -193,6 +193,8 @@ src_configure() {
 		# Bindings
 		-DBUILD_PYTHON_BINDINGS=$(usex python)
 		-DBUILD_JAVA_BINDINGS=$(usex java)
+		# bug #845369
+		-DBUILD_CSHARP_BINDINGS=OFF
 
 		# Check work/gdal-3.5.0_build/CMakeCache.txt after configure
 		# and https://github.com/OSGeo/gdal/blob/master/cmake/helpers/CheckCompilerMachineOption.cmake#L71
