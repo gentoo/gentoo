@@ -1,12 +1,12 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PN="NetworkManager-l2tp"
 MY_P="${MY_PN}-${PV}"
 
-inherit gnome.org autotools
+inherit autotools gnome.org
 
 DESCRIPTION="NetworkManager L2TP plugin"
 HOMEPAGE="https://github.com/nm-l2tp/network-manager-l2tp"
@@ -41,8 +41,9 @@ BDEPEND="
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
+	default
+
 	eautoreconf
-	eapply_user
 }
 
 src_configure() {
