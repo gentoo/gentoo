@@ -27,6 +27,12 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ppc ppc64 ~riscv sparc x86"
 distutils_enable_sphinx docs
 distutils_enable_tests unittest
 
+src_prepare() {
+	# relevant only to upstream packaging, requires docutils
+	rm tests/test_setup.py || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	eunittest -s tests
 }
