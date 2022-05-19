@@ -21,7 +21,7 @@ else
 	MY_PV=$(ver_rs 1 '_' ${MY_PV})
 	SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 		https://raw.githubusercontent.com/waebbl/waebbl-gentoo/master/patches/${PN}-0.19.2-0005-Make-smesh-compile-with-vtk9.patch.xz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	S="${WORKDIR}/FreeCAD-${PV}"
 fi
 
