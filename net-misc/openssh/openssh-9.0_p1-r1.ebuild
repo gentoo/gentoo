@@ -149,6 +149,7 @@ src_prepare() {
 		popd &>/dev/null || die
 
 		eapply "${WORKDIR}"/${X509_PATCH%.*}
+		eapply "${FILESDIR}/${PN}-9.0_p1-X509-uninitialized-delay.patch"
 
 		# We need to patch package version or any X.509 sshd will reject our ssh client
 		# with "userauth_pubkey: could not parse key: string is too large [preauth]"
