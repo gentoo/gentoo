@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}-${PV}"
 
 LICENSE="BSD-4"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~sparc ~x86"
 
 DEPEND="dev-libs/libbsd"
 RDEPEND="${DEPEND}"
