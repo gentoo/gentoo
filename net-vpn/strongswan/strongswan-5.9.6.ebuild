@@ -55,6 +55,10 @@ RDEPEND="${COMMON_DEPEND}
 
 UGID="ipsec"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-werror-security.patch
+)
+
 pkg_setup() {
 	linux-info_pkg_setup
 
