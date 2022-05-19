@@ -5,7 +5,7 @@
 # Force on jpeg & png for now until build system fixes are made
 # by upstream. The CMake port is new so it's fairly expected
 # to have a few bumps. bug #844751.
->=sci-libs/gdal-3.5.0 jpeg png
+=sci-libs/gdal-3.5.0-r3 jpeg png
 
 # Esteve Varela Colominas <esteve.varela@gmail.com> (2022-02-19)
 # Use the jemalloc allocator for telegram, as recommended by upstream,
