@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="First Baptist Confession of Faith, London 1646 Edition with an Addendum by B.Cox"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=BaptistConfession1646"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="~amd64 ~loong ~ppc ~riscv ~x86"
