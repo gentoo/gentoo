@@ -185,6 +185,7 @@ app-text/zotero-bin
 media-video/popcorntime-bin
 net-im/rocketchat-desktop-bin
 net-im/whatsapp-desktop-bin
+net-im/wazzapp-bin
 sci-misc/jupyterlab-desktop-bin
 sci-misc/netlogo-bin
 sci-electronics/eagle
