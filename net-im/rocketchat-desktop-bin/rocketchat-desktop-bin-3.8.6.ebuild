@@ -11,7 +11,11 @@ SRC_URI="https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/${
 S="${WORKDIR}"
 
 KEYWORDS="-* ~amd64"
-LICENSE="MIT"
+# Electron bundles a bunch of things
+LICENSE="
+	MIT BSD BSD-2 BSD-4 AFL-2.1 Apache-2.0 Ms-PL GPL-2 LGPL-2.1 APSL-2
+	unRAR OFL CC-BY-SA-3.0 MPL-2.0 android public-domain all-rights-reserved
+"
 SLOT="0"
 
 RDEPEND="
