@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit cmake
+PYTHON_COMPAT=( python3_{8..11} )
+inherit python-any-r1 cmake
 
 DESCRIPTION="Open Neural Network Exchange (ONNX)"
 HOMEPAGE="https://github.com/onnx/onnx"
@@ -17,7 +18,17 @@ RESTRICT="test"
 DEPEND=""
 RDEPEND="${DEPEND}
 	dev-libs/protobuf"
-BDEPEND="dev-util/patchelf"
+BDEPEND="
+	${PYTHON_DEPS}
+	dev-util/patchelf
+"
+
+src_configure() {
+	local mycmakeargs=(
+		-DONNX_USE_PROTOBUF_SHARED_LIBS=ON
+	)
+	cmake_src_configure
+}
 
 src_install() {
 	cmake_src_install
