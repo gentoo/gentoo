@@ -72,7 +72,5 @@
 		<flag name="xattr">Add support for getting and setting POSIX extended attributes, through
 		<pkg>sys-apps/attr</pkg>. Requisite for the virtfs backend.</flag>
 		<flag name="xen">Enables support for Xen backends</flag>
-		<flag name="xfs">Support xfsctl() notification and syncing for XFS backed
-		virtual disks.</flag>
 	</use>
 </pkgmetadata>
