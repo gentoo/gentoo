@@ -12,7 +12,7 @@ SLOT="0"
 IUSE="+json ssl +uuid"
 
 SRC_URI="https://github.com/linux-nvme/libnvme/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 DEPEND="
 	json? ( dev-libs/json-c:= )
 	ssl? ( >=dev-libs/openssl-1.1:= )
