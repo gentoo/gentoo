@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
@@ -12,6 +12,7 @@ DESCRIPTION="Library to extract data from Microsoft Excel spreadsheets"
 HOMEPAGE="
 	https://www.python-excel.org/
 	https://github.com/python-excel/xlrd/
+	https://pypi.org/project/xlrd/
 "
 SRC_URI="
 	https://github.com/python-excel/xlrd/archive/${PV}.tar.gz
