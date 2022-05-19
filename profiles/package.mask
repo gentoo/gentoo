@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2022-05-19)
+# Dead package upstream for more than 10 years.
+# Removal on 2022-06-19. Bug #808375
+dev-cpp/libgnomecanvasmm
+
+# Matt Turner <mattst88@gentoo.org> (2022-05-19)
 # Last release in 2006. Last upstream commit in 2007. One of two remaining
 # reverse dependencies of dev-cpp/libglademm, which is dead. Last remaining
 # reverse dependency of dev-cpp/libgnomecanvasmm, which is dead.
