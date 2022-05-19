@@ -45,4 +45,5 @@ python_test() {
 			tests/test_comparison.py::test_close_to_now_{false,true}
 		)
 	fi
+	epytest
 }
