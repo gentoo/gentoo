@@ -1,0 +1,85 @@
+From 5155427417fa722a27c110b2c1939c0979c6dcbc Mon Sep 17 00:00:00 2001
+From: Hans Schoenemann <hannes@mathematik.uni-kl.de>
+Date: Tue, 10 May 2022 16:52:42 +0200
+Subject: [PATCH] fix: gcc-12 does not like offsetof ?
+
+---
+ kernel/oswrapper/vspace.cc | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
+
+diff --git a/kernel/oswrapper/vspace.cc b/kernel/oswrapper/vspace.cc
+index fa42bf5e28..aefa661600 100644
+--- a/kernel/oswrapper/vspace.cc
++++ b/kernel/oswrapper/vspace.cc
+@@ -197,7 +197,11 @@ static void print_freelists() {
+ 
+ void vmem_free(vaddr_t vaddr) {
+   lock_allocator();
++  #if defined(__GNUC__) && (__GNUC__>11)
++  vaddr -= (sizeof(vaddr_t)*2);
++  #else
+   vaddr -= offsetof(Block, data);
++  #endif
+   vmem.ensure_is_mapped(vaddr);
+   size_t segno = vmem.segment_no(vaddr);
+   VSeg seg = vmem.segment(vaddr);
+@@ -245,7 +249,11 @@ void vmem_free(vaddr_t vaddr) {
+ 
+ vaddr_t vmem_alloc(size_t size) {
+   lock_allocator();
++  #if defined(__GNUC__) && (__GNUC__>11)
++  size_t alloc_size = size + (sizeof(vaddr_t)*2);
++  #else
+   size_t alloc_size = size + offsetof(Block, data);
++  #endif
+   int level = find_level(alloc_size);
+   int flevel = level;
+   while (flevel < LOG2_SEGMENT_SIZE && vmem.freelist[flevel] == VADDR_NULL)
+@@ -275,7 +283,11 @@ vaddr_t vmem_alloc(size_t size) {
+   assert(vmem.freelist[level] != VADDR_NULL);
+   Block *block = vmem.block_ptr(vmem.freelist[level]);
+   vaddr_t vaddr = vmem.freelist[level];
++  #if defined(__GNUC__) && (__GNUC__>11)
++  vaddr_t result = vaddr + (sizeof(vaddr_t)*2);
++  #else
+   vaddr_t result = vaddr + offsetof(Block, data);
++  #endif
+   vmem.freelist[level] = block->next;
+   if (block->next != VADDR_NULL)
+     vmem.block_ptr(block->next)->prev = VADDR_NULL;
+@@ -751,7 +763,11 @@ static void print_freelists() {
+ 
+ void vmem_free(vaddr_t vaddr) {
+   lock_allocator();
++  #if defined(__GNUC__) && (__GNUC__>11)
++  vaddr_t vaddr -= (sizeof(vaddr_t)*2);
++  #else
+   vaddr -= offsetof(Block, data);
++  #endif
+   vmem.ensure_is_mapped(vaddr);
+   size_t segno = vmem.segment_no(vaddr);
+   VSeg seg = vmem.segment(vaddr);
+@@ -799,7 +815,11 @@ void vmem_free(vaddr_t vaddr) {
+ 
+ vaddr_t vmem_alloc(size_t size) {
+   lock_allocator();
++  #if defined(__GNUC__) && (__GNUC__>11)
++  size_t alloc_size = size +  (sizeof(vaddr_t)*2);
++  #else
+   size_t alloc_size = size + offsetof(Block, data);
++  #endif
+   int level = find_level(alloc_size);
+   int flevel = level;
+   while (flevel < LOG2_SEGMENT_SIZE && vmem.freelist[flevel] == VADDR_NULL)
+@@ -829,7 +849,11 @@ vaddr_t vmem_alloc(size_t size) {
+   assert(vmem.freelist[level] != VADDR_NULL);
+   Block *block = vmem.block_ptr(vmem.freelist[level]);
+   vaddr_t vaddr = vmem.freelist[level];
++  #if defined(__GNUC__) && (__GNUC__>11)
++  vaddr_t result = vaddr + (sizeof(vaddr_t)*2);
++  #else
+   vaddr_t result = vaddr + offsetof(Block, data);
++  #endif
+   vmem.freelist[level] = block->next;
+   if (block->next != VADDR_NULL)
+     vmem.block_ptr(block->next)->prev = VADDR_NULL;
