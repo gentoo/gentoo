@@ -40,6 +40,7 @@ fi
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.2.6-riscv_word_size.patch"
+	"${FILESDIR}/${PN}-0.2.6-loong_word_size.patch"
 )
 
 src_prepare() {
