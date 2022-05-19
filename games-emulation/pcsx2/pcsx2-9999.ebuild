@@ -24,6 +24,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-arch/xz-utils
+	app-arch/zstd:=
 	dev-cpp/rapidyaml:=
 	dev-libs/glib:2
 	dev-libs/libaio
@@ -72,14 +73,15 @@ src_prepare() {
 	cmake_src_prepare
 
 	# unbundle, use sed over patch for less chances to break -9999
-	# (zstd is only used by libzip, so can remove entirely)
 	sed -e '/add_subdir.*cubeb/c\find_package(cubeb REQUIRED)' \
 		-e '/add_subdir.*libchdr/c\pkg_check_modules(chdr REQUIRED IMPORTED_TARGET libchdr)' \
 		-e '/add_subdir.*libzip/c\find_package(libzip REQUIRED)' \
-		-e '/add_subdir.*zstd/d' \
+		-e '/add_subdir.*zstd/c\pkg_check_modules(zstd REQUIRED IMPORTED_TARGET libzstd)' \
 		-e '/compile_options(\(cubeb\|chdr-static\|speex\)/d' \
 		-i cmake/SearchForStuff.cmake || die
-	sed -i 's/chdr-static/PkgConfig::chdr/' pcsx2/CMakeLists.txt || die
+	sed -e 's/chdr-static/PkgConfig::chdr/' \
+		-e 's/Zstd::Zstd/PkgConfig::zstd/' \
+		-i pcsx2/CMakeLists.txt || die
 
 	# pulseaudio is only used for usb-mic, not audio output
 	use pulseaudio || > cmake/FindPulseAudio.cmake || die
