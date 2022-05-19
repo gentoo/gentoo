@@ -4,17 +4,19 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
 DESCRIPTION="Tools for generating printable PDF documents from any data source"
 HOMEPAGE="
 	https://www.reportlab.com/
-	https://pypi.org/project/reportlab/"
+	https://pypi.org/project/reportlab/
+"
 SRC_URI="
 	mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz
-	https://www.reportlab.com/ftp/fonts/pfbfer-20070710.zip"
+	https://www.reportlab.com/ftp/fonts/pfbfer-20070710.zip
+"
 
 LICENSE="BSD"
 SLOT="0"
