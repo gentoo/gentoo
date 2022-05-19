@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-05-19)
+# Masked for removal. No upstream activity since 2013. nose is considered
+# obsolete and on life-support anyway. Removal on 2022-06-19.
+dev-python/nose_fixes
+
 # Michał Górny <mgorny@gentoo.org> (2022-05-19)
 # No upstream commits since 2015.  The project seems only relevant
 # to Python 2.  No revdeps left.
