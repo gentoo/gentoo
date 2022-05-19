@@ -4,12 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
 DESCRIPTION="IRC client framework written in Python"
-HOMEPAGE="https://github.com/jaraco/irc"
+HOMEPAGE="
+	https://github.com/jaraco/irc/
+	https://pypi.org/project/irc/
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
