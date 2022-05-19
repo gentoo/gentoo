@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-05-19)
+# Unfortunately this has completely stopped working due to
+# upstream changes in WhatsApp. Bug 844985. As an alternative
+# try: *net-im/wazzapp-bin* which still works and also
+# offers additional features over whatsapp-desktop-bin
+# Masked for removal in 30 days
+net-im/whatsapp-desktop-bin
+
 # Sam James <sam@gentoo.org> (2022-05-19)
 # Crashes xine (from xine-ui) on startup for several users.
 # bug #845396
