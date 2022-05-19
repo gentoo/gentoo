@@ -16,14 +16,15 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="+assembly jit +memopt +sparse static-libs test"
 
-DEPEND="
-	dev-libs/FP16
-	dev-libs/FXdiv
-"
-RDEPEND="${DEPEND}
+RDEPEND="
 	dev-libs/cpuinfo
 	dev-libs/pthreadpool
 "
+DEPEND="${RDEPEND}
+	dev-libs/FP16
+	dev-libs/FXdiv
+"
+
 BDEPEND="test? ( dev-cpp/gtest )"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( static-libs )"
