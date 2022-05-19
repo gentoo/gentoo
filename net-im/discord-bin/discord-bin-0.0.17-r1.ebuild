@@ -13,7 +13,7 @@ CHROMIUM_LANGS="
 	sw ta te th tr uk vi zh-CN zh-TW
 "
 
-inherit chromium-2 desktop linux-info optfeature pax-utils unpacker
+inherit chromium-2 desktop linux-info optfeature pax-utils unpacker xdg
 
 DESCRIPTION="All-in-one voice and text chat for gamers"
 HOMEPAGE="https://discordapp.com"
@@ -56,25 +56,25 @@ RDEPEND="
 
 RESTRICT="bindist mirror strip test"
 
+DESTDIR="/opt/${MY_BIN}"
+
 QA_PREBUILT="
-	${DESTDIR}/${MY_BIN}
-	${DESTDIR}/chrome-sandbox
-	${DESTDIR}/libffmpeg.so
-	${DESTDIR}/libvk_swiftshader.so
-	${DESTDIR}/libvulkan.so
-	${DESTDIR}/libEGL.so
-	${DESTDIR}/libGLESv2.so
-	${DESTDIR}/libVkICD_mock_icd.so
-	${DESTDIR}/swiftshader/libEGL.so
-	${DESTDIR}/swiftshader/libGLESv2.so
-	${DESTDIR}/swiftshader/libvk_swiftshader.so
+	${DESTDIR#/}/${MY_BIN}
+	${DESTDIR#/}/chrome-sandbox
+	${DESTDIR#/}/libffmpeg.so
+	${DESTDIR#/}/libvk_swiftshader.so
+	${DESTDIR#/}/libvulkan.so
+	${DESTDIR#/}/libEGL.so
+	${DESTDIR#/}/libGLESv2.so
+	${DESTDIR#/}/libVkICD_mock_icd.so
+	${DESTDIR#/}/swiftshader/libEGL.so
+	${DESTDIR#/}/swiftshader/libGLESv2.so
+	${DESTDIR#/}/swiftshader/libvk_swiftshader.so
 "
 
 CONFIG_CHECK="~USER_NS"
 
 S="${WORKDIR}/${MY_BIN}"
-
-DESTDIR="/opt/${MY_BIN}"
 
 pkg_pretend() {
 	chromium_suid_sandbox_check_kernel_config
@@ -86,6 +86,7 @@ src_unpack() {
 
 src_configure() {
 	chromium_suid_sandbox_check_kernel_config
+
 	default
 }
 
@@ -96,11 +97,9 @@ src_prepare() {
 
 	pushd "locales/" || die
 	chromium_remove_language_paks
-	popd
-	
-	sed -i \
-	-e "s:/usr/share/discord/Discord:${DESTDIR}/${MY_BIN}:" \
-	${MY_PN}.desktop || die
+	popd || die
+
+	sed -i -e "s:/usr/share/discord/Discord:${DESTDIR}/${MY_BIN}:" ${MY_PN}.desktop || die
 }
 
 src_install() {
@@ -109,37 +108,27 @@ src_install() {
 	# Install desktop file
 	domenu ${MY_PN}.desktop
 
-	exeinto ${DESTDIR}
+	exeinto "${DESTDIR}"
 	doexe ${MY_BIN} chrome-sandbox libEGL.so libffmpeg.so libGLESv2.so  libvk_swiftshader.so
 
-	insinto ${DESTDIR}
+	insinto "${DESTDIR}"
 	doins chrome_100_percent.pak chrome_200_percent.pak icudtl.dat resources.pak snapshot_blob.bin v8_context_snapshot.bin
 	insopts -m0755
 	doins -r locales resources swiftshader
 
 	# chrome-sandbox requires the setuid bit to be specifically set.
 	# See https://github.com/electron/electron/issues/17972
-	fperms 4755 ${DESTDIR}/chrome-sandbox || die
+	fperms 4755 "${DESTDIR}"/chrome-sandbox || die
 
-	pax-mark m ${DESTDIR}/${MY_BIN} || die "could not set proper PAX permissions"
+	pax-mark m "${DESTDIR}"/${MY_BIN} || die "could not set proper PAX permissions"
 
-	dosym ${DESTDIR}/${MY_BIN} /usr/bin/${MY_PN} || die
-
-	dodir ${DESTDIR}
+	dosym "${DESTDIR}"/${MY_BIN} /usr/bin/${MY_PN} || die
 }
 
 pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
-	
+	xdg_pkg_postinst
+
 	optfeature "sound support" \
 		media-sound/pulseaudio media-sound/apulse[sdk] media-video/pipewire
 	optfeature "system tray support" dev-libs/libappindicator
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
 }
