@@ -30,7 +30,7 @@ IUSE="+bullet +dds +fluid +openexr +tbb \
 	alembic collada +color-management cuda +cycles \
 	debug doc +embree +ffmpeg +fftw +gmp headless jack jemalloc jpeg2k \
 	man ndof nls openal +oidn +openimageio +openmp +opensubdiv \
-	+openvdb +osl +pdf +potrace +pugixml pulseaudio sdl +sndfile standalone test +tiff valgrind"
+	+openvdb +osl +pdf +potrace +pugixml pulseaudio sdl +sndfile test +tiff valgrind"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -40,7 +40,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	fluid? ( tbb )
 	openvdb? ( tbb )
 	osl? ( cycles )
-	standalone? ( cycles )
 	test? ( color-management )"
 
 # Library versions for official builds can be found in the blender source directory in:
@@ -229,8 +228,8 @@ src_configure() {
 		-DWITH_CYCLES_DEVICE_CUDA=$(usex cuda TRUE FALSE)
 		-DWITH_CYCLES_EMBREE=$(usex embree)
 		-DWITH_CYCLES_OSL=$(usex osl)
-		-DWITH_CYCLES_STANDALONE=$(usex standalone)
-		-DWITH_CYCLES_STANDALONE_GUI=$(usex standalone)
+		-DWITH_CYCLES_STANDALONE=OFF
+		-DWITH_CYCLES_STANDALONE_GUI=OFF
 		-DWITH_DOC_MANPAGE=$(usex man)
 		-DWITH_FFTW3=$(usex fftw)
 		-DWITH_GMP=$(usex gmp)
@@ -315,10 +314,6 @@ src_install() {
 
 	# Pax mark blender for hardened support.
 	pax-mark m "${BUILD_DIR}"/bin/blender
-
-	if use standalone; then
-		dobin "${BUILD_DIR}"/bin/cycles
-	fi
 
 	cmake_src_install
 
