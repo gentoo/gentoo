@@ -91,12 +91,6 @@ dev-python/unicodecsv
 # Masked for removal in 30 days
 net-im/whatsapp-desktop-bin
 
-# Sam James <sam@gentoo.org> (2022-05-19)
-# Crashes xine (from xine-ui) on startup for several users.
-# bug #845396
-=media-libs/xine-lib-1.2.12
-=media-libs/xine-lib-1.2.12-r1
-
 # Matt Turner <mattst88@gentoo.org> (2022-05-17)
 # Dead packages. No reverse dependencies.
 # Removal on 2022-06-17
