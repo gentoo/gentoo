@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -49,7 +49,7 @@ RDEPEND="${NLS_RDEPEND}
 	gtk? ( x11-libs/gdk-pixbuf:2 )
 	imagemagick? ( virtual/imagemagick-tools )
 	jack? ( virtual/jack )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	libcaca? ( media-libs/libcaca )
 	mad? ( media-libs/libmad )
 	mng? ( media-libs/libmng:= )
@@ -156,6 +156,7 @@ src_configure() {
 		--with-real-codecs-path=/usr/$(get_libdir)/codecs
 		--with-w32-path=${win32dir}
 		--with-xv-path=/usr/$(get_libdir)
+		--without-dav1d
 		--without-esound
 		--without-fusionsound
 		$(use_enable a52 a52dec)
