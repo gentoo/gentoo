@@ -32,7 +32,7 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	dev-python/paramiko[${PYTHON_USEDEP}]
 	dev-python/future[${PYTHON_USEDEP}]
-	s3? ( dev-python/boto[${PYTHON_USEDEP}] )
+	s3? ( dev-python/boto3[${PYTHON_USEDEP}] )
 "
 
 RESTRICT="test"
