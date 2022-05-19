@@ -1,11 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 DISTUTILS_IN_SOURCE_BUILD=1
-DISTUTILS_USE_SETUPTOOLS="no"
 
 inherit elisp distutils-r1
 
