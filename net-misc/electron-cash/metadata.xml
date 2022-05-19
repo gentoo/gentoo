@@ -17,6 +17,6 @@
 		<flag name="vkb">Enable plugin for virtual keyboard</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">fyookball/electrum</remote-id>
+		<remote-id type="github">Electron-Cash/Electron-Cash</remote-id>
 	</upstream>
 </pkgmetadata>
