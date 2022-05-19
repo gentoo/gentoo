@@ -11,7 +11,7 @@ SRC_URI="https://lttng.org/files/urcu/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0/8" # subslot = soname version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
