@@ -4,20 +4,27 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
+
 inherit distutils-r1
 
 DESCRIPTION="Python binding for the xxHash library"
-HOMEPAGE="https://github.com/ifduyue/python-xxhash
-	https://pypi.org/project/xxhash/"
+HOMEPAGE="
+	https://github.com/ifduyue/python-xxhash/
+	https://pypi.org/project/xxhash/
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~x86"
 
-RDEPEND=">=dev-libs/xxhash-0.8.0"
-DEPEND="${RDEPEND}"
+DEPEND="
+	>=dev-libs/xxhash-0.8.0
+"
+RDEPEND="
+	${DEPEND}
+"
 
 distutils_enable_tests unittest
 
