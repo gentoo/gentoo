@@ -11,9 +11,11 @@ inherit distutils-r1 optfeature
 MY_P=${PN}-$(ver_rs 3 -)
 
 DESCRIPTION="WebSocket and WAMP for Twisted and Asyncio"
-HOMEPAGE="https://pypi.org/project/autobahn/
+HOMEPAGE="
 	https://crossbar.io/autobahn/
-	https://github.com/crossbario/autobahn-python"
+	https://github.com/crossbario/autobahn-python/
+	https://pypi.org/project/autobahn/
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
@@ -47,7 +49,6 @@ BDEPEND="
 		>=dev-python/service_identity-18.1.0[${PYTHON_USEDEP}]
 		>=dev-python/pynacl-1.4.0[${PYTHON_USEDEP}]
 		>=dev-python/pytrie-0.4[${PYTHON_USEDEP}]
-		>=dev-python/pyqrcode-1.2.1[${PYTHON_USEDEP}]
 		>=dev-python/cffi-1.14.5[${PYTHON_USEDEP}]
 		>=dev-python/argon2-cffi-20.1.0[${PYTHON_USEDEP}]
 		>=dev-python/passlib-1.7.4[${PYTHON_USEDEP}]
