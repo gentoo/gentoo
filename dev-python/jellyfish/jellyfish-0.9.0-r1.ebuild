@@ -16,12 +16,6 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 ~riscv x86"
 
-BDEPEND="
-	test? (
-		dev-python/unicodecsv[${PYTHON_USEDEP}]
-	)
-"
-
 distutils_enable_tests pytest
 
 src_test() {
