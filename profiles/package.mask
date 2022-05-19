@@ -34,6 +34,13 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2022-05-19)
+# Last release in 2006. Last upstream commit in 2007. One of two remaining
+# reverse dependencies of dev-cpp/libglademm, which is dead. Last remaining
+# reverse dependency of dev-cpp/libgnomecanvasmm, which is dead.
+# Removal on 2022-06-19. Bug #845228
+games-board/ascal
+
+# Matt Turner <mattst88@gentoo.org> (2022-05-19)
 # Last release in 2013. Last upstream commit in 2015. One of two remaining
 # reverse dependencies of dev-cpp/libglademm, which is dead.
 # Removal on 2022-06-19. Bug #845231
