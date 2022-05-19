@@ -4,14 +4,17 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
 TAG=RELEASE_${PV}
 MY_P=XlsxWriter-${TAG}
 DESCRIPTION="Python module for creating Excel XLSX files"
-HOMEPAGE="https://github.com/jmcnamara/XlsxWriter"
+HOMEPAGE="
+	https://github.com/jmcnamara/XlsxWriter/
+	https://pypi.org/project/XlsxWriter/
+"
 SRC_URI="
 	https://github.com/jmcnamara/XlsxWriter/archive/${TAG}.tar.gz
 		-> ${MY_P}.tar.gz
