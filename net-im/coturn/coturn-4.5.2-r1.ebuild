@@ -2,14 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit systemd tmpfiles
+
+inherit toolchain-funcs systemd tmpfiles
 DESCRIPTION="coturn TURN server project"
 HOMEPAGE="https://github.com/coturn/coturn"
 
 if [ ${PV} = 9999 ]; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 	inherit git-r3
-	DEPEND="dev-vcs/git"
 #	S="${WORKDIR}/${PN}-master"
 else
 	KEYWORDS="~amd64 ~x86"
@@ -22,13 +22,18 @@ IUSE="mongodb mysql postgres redis sqlite"
 RDEPEND="acct-group/turnserver
 	acct-user/turnserver
 	>dev-libs/libevent-2.1.8:=
+	dev-libs/openssl:=
 	mongodb? ( dev-libs/mongo-c-driver )
 	mysql?  ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:* )
 	redis? ( dev-libs/hiredis:= )
 	sqlite? ( dev-db/sqlite )"
-
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.5.2-respect-TMPDIR.patch
+)
 
 src_configure() {
 	if [ -n "${AR}" ]; then
@@ -56,7 +61,13 @@ src_configure() {
 	if ! use sqlite; then
 		export TURN_NO_SQLITE=yes
 	fi
+
+	tc-export CC
+
+	export ARCHIVERCMD="$(tc-getAR) -r"
+	export PKGCONFIG="$(tc-getPKG_CONFIG)"
 	export DOCSDIR="/usr/share/doc/${PN}-${PV}"
+
 	econf $(use_with sqlite)
 }
 
