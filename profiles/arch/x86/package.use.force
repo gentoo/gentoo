@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Joonas Niilola <juippis@roskakori.org> (2022-05-19)
+# Bundled libvpx results in a failure, force the system-libvpx to be
+# used. bmo#1768145. Confirmed on 91:esr and 100.0:rapid.
+www-client/firefox system-libvpx
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-01-16)
 # Bootstrapping is possible using our build snapshot, so don't force
 # system bootstrap
