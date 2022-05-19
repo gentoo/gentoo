@@ -106,9 +106,19 @@ src_prepare() {
 	# and 'make depend' uses -Werror for added fun (#417795 again)
 	[[ ${CC} == *clang* ]] && append-flags -Qunused-arguments
 
+	# We really, really need to build OpenSSL w/ strict aliasing disabled.
+	# It's filled with violations and it *will* result in miscompiled
+	# code. This has been in the ebuild for > 10 years but even in 2022,
+	# it's still relevant:
+	# - https://github.com/llvm/llvm-project/issues/55255
+	# - https://github.com/openssl/openssl/issues/18225
+	# Don't remove the no strict aliasing bits below!
+	filter-flags -fstrict-aliasing
 	append-flags -fno-strict-aliasing
-	append-flags $(test-flags-CC -Wa,--noexecstack)
+
 	append-cppflags -DOPENSSL_NO_BUF_FREELISTS
+
+	append-flags $(test-flags-CC -Wa,--noexecstack)
 
 	# Prefixify Configure shebang (#141906)
 	sed \
