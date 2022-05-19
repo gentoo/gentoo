@@ -4,12 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
+
 inherit distutils-r1
 
 DESCRIPTION="Parses CSS3 Selectors and translates them to XPath 1.0"
 HOMEPAGE="
-	https://cssselect2.readthedocs.io/en/latest/
+	https://doc.courtbouillon.org/cssselect2/stable/
 	https://pypi.org/project/cssselect2/
 	https://github.com/Kozea/cssselect2/
 "
