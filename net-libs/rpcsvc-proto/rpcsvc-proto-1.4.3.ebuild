@@ -9,7 +9,7 @@ SRC_URI="https://github.com/thkukuk/rpcsvc-proto/releases/download/v${PV}/${P}.t
 
 LICENSE="LGPL-2.1+ BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="!<sys-libs/glibc-2.26
 	virtual/libintl"
