@@ -13,7 +13,7 @@ SRC_URI="https://github.com/stefanberger/swtpm/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm ~arm64 ~ppc ppc64 ~riscv x86"
 IUSE="fuse +gnutls seccomp test"
 RESTRICT="!test? ( test )"
 
