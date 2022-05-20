@@ -82,7 +82,6 @@ lpsol
 openexr
 enchant
 fftw
-systemd
 devil
 gts
 clang
