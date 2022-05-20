@@ -20,10 +20,9 @@ IUSE=""
 
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
-	virtual/jpeg
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pygobject[${PYTHON_USEDEP}]
-	!media-gfx/comix"
+	media-libs/libjpeg-turbo:0"
 BDEPEND="sys-devel/gettext"
 
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
