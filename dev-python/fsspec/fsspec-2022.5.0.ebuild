@@ -29,6 +29,7 @@ BDEPEND="
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/tqdm[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)
 "
