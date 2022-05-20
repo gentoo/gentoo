@@ -14,7 +14,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="LGPL-2.1+"
 SLOT="0/12"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="+epoll ssl static-libs test +thread-names"
 RESTRICT="!test? ( test )"
 
