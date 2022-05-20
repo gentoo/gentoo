@@ -78,7 +78,6 @@ src_configure() {
 		# bundled, tiny, I believe this means we should always include it
 		-Dsvg-backend=nanosvg
 		-Ddocs=enabled
-		-Dwerror=false
 	)
 
 	meson_src_configure
