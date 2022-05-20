@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -33,9 +33,6 @@ valgrind
 # versions do not even build on this arch. See
 # https://github.com/dotnet/runtime/issues/36748
 mono
-
-# No proper support for this arch yet
-java
 
 # Neither the virtual nor any of the runtimes (except mesa) keyworded here yet
 opencl
