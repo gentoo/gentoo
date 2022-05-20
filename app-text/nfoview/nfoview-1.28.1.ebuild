@@ -29,12 +29,13 @@ RDEPEND="${DEPEND}
 	media-fonts/cascadia-code
 	x11-libs/gtk+:3[introspection]"
 
+EPYTEST_DESELECT=(
+	"nfoview/test/test_util.py::TestModule::test_show_uri__unix"
+	"nfoview/test/test_util.py::TestModule::test_show_uri__windows"
+)
+
 distutils_enable_tests pytest
 
-python_test() {
-	local deselect=(
-		--deselect 'nfoview/test/test_util.py::TestModule::test_show_uri__unix'
-		--deselect 'nfoview/test/test_util.py::TestModule::test_show_uri__windows'
-	)
-	virtx epytest "${deselect[@]}"
+src_test() {
+	virtx distutils-r1_src_test
 }
