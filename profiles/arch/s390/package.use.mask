@@ -60,10 +60,6 @@ app-crypt/pinentry efl
 app-admin/sudo sssd
 
 # Sam James <sam@gentoo.org> (2022-04-24)
-# sys-apps/systemd is not keyworded here
-sys-auth/pambase homed
-
-# Sam James <sam@gentoo.org> (2022-04-24)
 # app-crypt/dieharder and dev-libs/softhsm:2 unkeyworded here
 net-libs/gnutls test-full
 
