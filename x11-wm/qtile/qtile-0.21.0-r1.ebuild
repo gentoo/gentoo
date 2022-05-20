@@ -65,5 +65,5 @@ python_install_all() {
 	doins "${FILESDIR}"/qtile.desktop
 
 	exeinto /etc/X11/Sessions
-	newexe "${FILESDIR}"/${PN}-session ${PN}
+	newexe "${FILESDIR}"/${PN}-session-r1 ${PN}
 }
