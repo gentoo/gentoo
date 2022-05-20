@@ -62,6 +62,12 @@ RDEPEND="${DEPEND}
 
 DOCS=( {NEWS,README}.rst )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-m-lua-scripting-allow-converting-GValue-holding-NUL.patch
+	"${FILESDIR}"/${P}-alsa.lua-fix-device-name-deduplication-when-reserva.patch
+	"${FILESDIR}"/${P}-m-lua-scripting-fix-object-refcounting.patch
+)
+
 src_configure() {
 	local emesonargs=(
 		-Ddoc=disabled # Ebuild not wired up yet (Sphinx, Doxygen?)
