@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Till Schäfer <till2.schaefer@uni-dortmund.de> (2022-05-20)
+# Upstream unmaintained for a long time.
+# Has known bugs.
+# Removal in 30 days, bug #837092
+kde-misc/playbar2
+
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2022-05-20)
 # No consumers left. Superseded by dev-libs/imath[python]
 # Removal in 30 days. Bug #845810
