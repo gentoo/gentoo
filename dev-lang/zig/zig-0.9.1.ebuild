@@ -18,8 +18,10 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test"
+IUSE="test +threads"
 RESTRICT="!test? ( test )"
+
+PATCHES=("${FILESDIR}/${P}-fix-single-threaded.patch")
 
 BUILD_DIR="${S}/build"
 
@@ -56,6 +58,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DZIG_USE_CCACHE=OFF
 		-DZIG_PREFER_CLANG_CPP_DYLIB=ON
+		-DZIG_SINGLE_THREADED="$(usex threads OFF ON)"
 	)
 
 	cmake_src_configure
