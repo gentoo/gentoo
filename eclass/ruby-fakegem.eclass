@@ -210,6 +210,11 @@ case ${EAPI} in
 		;;
 esac
 
+# Many (but not all) extensions use pkgconfig in src_configure.
+if [[ ${#RUBY_FAKEGEM_EXTENSIONS[@]} -gt 0 ]]; then
+	BDEPEND+=" virtual/pkgconfig "
+fi
+
 # @FUNCTION: ruby_fakegem_gemsdir
 # @RETURN: Returns the gem data directory
 # @DESCRIPTION:
