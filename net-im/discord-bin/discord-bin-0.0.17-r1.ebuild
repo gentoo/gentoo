@@ -5,6 +5,7 @@ EAPI=8
 
 MY_PN="${PN/-bin}"
 MY_PV="${PV/-r*}"
+MY_BIN="${MY_PN^}"
 
 CHROMIUM_LANGS="
 	am ar bg bn ca cs da de el en-GB en-US es es-419 et fa fi fil fr gu he hi
@@ -12,7 +13,7 @@ CHROMIUM_LANGS="
 	sw ta te th tr uk vi zh-CN zh-TW
 "
 
-inherit chromium-2 desktop linux-info optfeature unpacker xdg
+inherit chromium-2 desktop linux-info optfeature pax-utils unpacker xdg
 
 DESCRIPTION="All-in-one voice and text chat for gamers"
 HOMEPAGE="https://discordapp.com"
@@ -55,10 +56,10 @@ RDEPEND="
 
 RESTRICT="bindist mirror strip test"
 
-DESTDIR="/opt/${MY_PN}"
+DESTDIR="/opt/${MY_BIN}"
 
 QA_PREBUILT="
-	${DESTDIR#/}/${MY_PN}
+	${DESTDIR#/}/${MY_BIN}
 	${DESTDIR#/}/chrome-sandbox
 	${DESTDIR#/}/libffmpeg.so
 	${DESTDIR#/}/libvk_swiftshader.so
@@ -73,14 +74,14 @@ QA_PREBUILT="
 
 CONFIG_CHECK="~USER_NS"
 
-S="${WORKDIR}/${MY_PN}"
+S="${WORKDIR}/${MY_BIN}"
 
 pkg_pretend() {
 	chromium_suid_sandbox_check_kernel_config
 }
 
 src_unpack() {
-	unpack ${MY_PN}-${MY_PV}.tar.gz
+	unpack ${MY_PN}-${MY_PV}.tar.gz || die
 }
 
 src_configure() {
@@ -91,35 +92,37 @@ src_configure() {
 
 src_prepare() {
 	default
-	# remove post-install script
-	rm postinst.sh || die "the removal of the unneeded post-install script failed"
-	# cleanup languages
-	pushd "locales/" || die "location change for language cleanup failed"
+
+	rm postinst.sh
+
+	pushd "locales/" || die
 	chromium_remove_language_paks
-	popd || die "location reset for language cleanup failed"
-	# fix .desktop exec location
-	sed -i -e "s:/usr/share/discord/Discord:${DESTDIR}/${MY_PN}:" ${MY_PN}.desktop || die "fixing of exec location on .desktop failed"
+	popd || die
+
+	sed -i -e "s:/usr/share/discord/Discord:${DESTDIR}/${MY_BIN}:" ${MY_PN}.desktop || die
 }
 
 src_install() {
 	doicon -s 256 ${MY_PN}.png
 
-	# install .desktop file
+	# Install desktop file
 	domenu ${MY_PN}.desktop
 
 	exeinto "${DESTDIR}"
-	doexe ${MY_PN} chrome-sandbox libEGL.so libffmpeg.so libGLESv2.so libvk_swiftshader.so
+	doexe ${MY_BIN} chrome-sandbox libEGL.so libffmpeg.so libGLESv2.so  libvk_swiftshader.so
 
 	insinto "${DESTDIR}"
 	doins chrome_100_percent.pak chrome_200_percent.pak icudtl.dat resources.pak snapshot_blob.bin v8_context_snapshot.bin
 	insopts -m0755
 	doins -r locales resources swiftshader
 
-	# Chrome-sandbox requires the setuid bit to be specifically set.
-	# see https://github.com/electron/electron/issues/17972
-	fperms 4755 "${DESTDIR}"/chrome-sandbox
+	# chrome-sandbox requires the setuid bit to be specifically set.
+	# See https://github.com/electron/electron/issues/17972
+	fperms 4755 "${DESTDIR}"/chrome-sandbox || die
 
-	dosym "${DESTDIR}"/${MY_PN} /usr/bin/${MY_PN}
+	pax-mark m "${DESTDIR}"/${MY_BIN} || die "could not set proper PAX permissions"
+
+	dosym "${DESTDIR}"/${MY_BIN} /usr/bin/${MY_PN} || die
 }
 
 pkg_postinst() {
