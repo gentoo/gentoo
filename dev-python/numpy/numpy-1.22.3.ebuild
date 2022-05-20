@@ -143,7 +143,11 @@ python_test() {
 			numpy/random/tests/test_generator_mt19937.py::TestRandomDist::test_pareto
 			# more precision problems
 			numpy/core/tests/test_einsum.py::TestEinsum::test_einsum_sums_int16
-			# too large for the tiny x86 world
+		)
+	fi
+	if use arm || use x86 ; then
+		EPYTEST_DESELECT+=(
+			# too large for 32-bit platforms
 			numpy/core/tests/test_ufunc.py::TestUfunc::test_identityless_reduction_huge_array
 		)
 	fi
