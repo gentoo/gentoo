@@ -22,7 +22,7 @@ else
 		)
 	"
 	S=${WORKDIR}/${PN}-${EGIT_COMMIT}
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="~amd64"
 fi
 
 DESCRIPTION="Gamecube and Wii game emulator"
