@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 DEPEND="virtual/libcrypt:="
 RDEPEND="${DEPEND}"
