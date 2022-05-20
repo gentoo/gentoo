@@ -129,6 +129,8 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	udev_reload
+
 	# TODO: obsolete with tmpfiles_process?
 	# mkdir -p "${EROOT}"/run #415987
 
