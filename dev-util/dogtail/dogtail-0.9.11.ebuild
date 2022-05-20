@@ -3,12 +3,12 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 gnome2-utils xdg
 
 DESCRIPTION="GUI test tool and automation framework using accessibility framework"
-HOMEPAGE="https://gitlab.com/dogtail/dogtail/commits/master"
+HOMEPAGE="https://gitlab.com/dogtail/dogtail"
 SRC_URI="https://gitlab.com/${PN}/${PN}/raw/released/${P}.tar.gz"
 
 LICENSE="GPL-2"
