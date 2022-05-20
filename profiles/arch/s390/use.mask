@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -s390
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-05-20)
+# Keyworded here
+-systemd
+
 # Sam James <sam@gentoo.org> (2022-04-26)
 # dev-libs/mongo-c-driver not keyworded here
 mongodb
