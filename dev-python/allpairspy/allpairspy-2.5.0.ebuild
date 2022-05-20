@@ -14,5 +14,6 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
