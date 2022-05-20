@@ -33,6 +33,23 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2022-05-20)
+# Unused slots of cucumber components that are no longer or were never
+# used by current cucumber versions. Masked for removal in 30 days.
+dev-util/cucumber-core:9
+dev-util/cucumber-create-meta:4
+dev-util/cucumber-cucumber-expressions:10
+dev-util/cucumber-gherkin:18
+dev-util/cucumber-gherkin:20
+dev-util/cucumber-html-formatter:13
+dev-util/cucumber-html-formatter:16
+dev-util/cucumber-messages:13
+dev-util/cucumber-messages:14
+dev-util/cucumber-messages:15
+dev-util/cucumber-tag-expressions:2
+dev-util/cucumber-tag-expressions:3
+dev-util/cucumber-wire:5
+
 # Sam James <sam@gentoo.org> (2022-05-20)
 # Unmaintained, out of date, failing tests, and uses deprecated eclass methods
 # (EGO_SUM). bug #700846, bug #844445. Removal on 2022-06-20.
