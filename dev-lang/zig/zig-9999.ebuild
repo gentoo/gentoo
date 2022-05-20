@@ -18,7 +18,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test +stage2"
+IUSE="test +stage2 +threads"
 RESTRICT="!test? ( test )"
 
 BUILD_DIR="${S}/build"
@@ -59,6 +59,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DZIG_USE_CCACHE=OFF
 		-DZIG_PREFER_CLANG_CPP_DYLIB=ON
+		-DZIG_SINGLE_THREADED="$(usex threads OFF ON)"
 	)
 
 	cmake_src_configure
@@ -69,7 +70,7 @@ src_compile() {
 
 	if use stage2 ; then
 		cd "${BUILD_DIR}" || die
-		./zig build -p stage2 -Dstatic-llvm=false -Denable-llvm=true || die
+		./zig build -p stage2 -Dstatic-llvm=false -Denable-llvm=true -Dsingle-threaded="$(usex threads false true)" || die
 	fi
 }
 
