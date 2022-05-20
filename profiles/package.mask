@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2022-05-20)
+# No consumers left. Superseded by dev-libs/imath[python]
+# Removal in 30 days. Bug #845810
+dev-python/pyilmbase
+
 # Hans de Graaff <graaff@gentoo.org> (2022-05-20)
 # Unused slots of cucumber components that are no longer or were never
 # used by current cucumber versions. Masked for removal in 30 days.
