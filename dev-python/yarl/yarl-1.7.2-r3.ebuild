@@ -34,7 +34,7 @@ distutils_enable_tests pytest
 distutils_enable_sphinx docs \
 	dev-python/alabaster
 
-python_configure_all() {
+python_configure() {
 	> .install-cython || die
 	emake cythonize
 }
