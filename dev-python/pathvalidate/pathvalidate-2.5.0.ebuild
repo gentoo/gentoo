@@ -16,6 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
+RDEPEND="dev-python/click[${PYTHON_USEDEP}]"
 BDEPEND="test? (
 	dev-python/allpairspy[${PYTHON_USEDEP}]
 	dev-python/tcolorpy[${PYTHON_USEDEP}] )
