@@ -11,7 +11,7 @@ SRC_URI="https://github.com/troydhanson/uthash/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="BSD-1"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
