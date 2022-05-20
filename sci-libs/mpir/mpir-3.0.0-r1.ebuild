@@ -25,12 +25,14 @@ PATCHES=(
 
 src_prepare() {
 	tc-export CC
+
 	default
+
 	# In the same way there was QA regarding executable stacks
 	# with GMP we have some here as well. We cannot apply the
 	# GMP solution as yasm is used, at least on x86/amd64.
 	# Furthermore we are able to patch config.ac.
-	ebegin "Patching assembler files to remove executable sections"
+	einfo "Patching assembler files to remove executable sections"
 	local i
 	for i in $(find . -type f -name '*.asm') ; do
 		cat >> $i <<-EOF || die
@@ -49,7 +51,7 @@ src_prepare() {
 			%endif
 		EOF
 	done
-	eend
+
 	eautoreconf
 }
 
