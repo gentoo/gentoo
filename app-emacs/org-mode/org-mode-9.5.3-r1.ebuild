@@ -23,12 +23,15 @@ BDEPEND="doc? ( virtual/texi2dvi )"
 SITEFILE="50${PN}-gentoo.el"
 
 src_compile() {
-	emake datadir="${EPREFIX}${SITEETC}/${PN}"
+	emake \
+		ORGVERSION=${PV} \
+		datadir="${EPREFIX}${SITEETC}/${PN}"
 	use doc && emake pdf card
 }
 
 src_install() {
 	emake \
+		ORGVERSION=${PV} \
 		DESTDIR="${D}" \
 		ETCDIRS="styles csl $(use odt-schema && echo schema)" \
 		lispdir="${EPREFIX}${SITELISP}/${PN}" \
