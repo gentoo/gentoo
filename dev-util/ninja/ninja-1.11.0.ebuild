@@ -31,6 +31,7 @@ BDEPEND="
 		app-text/asciidoc
 		app-doc/doxygen
 		dev-libs/libxslt
+		media-gfx/graphviz
 	)
 	test? ( dev-cpp/gtest )
 "
