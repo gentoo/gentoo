@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>duje.mihanovic@skole.hr</email>
+		<name>Duje Mihanović</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
-		<remote-id type="github">Benjamin-Dobell/Heimdall</remote-id>
+		<maintainer status="active">
+			<name>Henrik Grimler</name>
+			<email>henrik@grimler.se</email>
+		</maintainer>
+		<doc>https://git.sr.ht/~grimler/Heimdall/tree/master/Linux/README</doc>
 	</upstream>
 </pkgmetadata>
