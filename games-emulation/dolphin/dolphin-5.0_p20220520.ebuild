@@ -117,7 +117,7 @@ declare -A KEEP_BUNDLED=(
 )
 
 src_prepare() {
-	if use mgba; then
+	if use mgba && [[ ${PV} != *9999 ]]; then
 		rmdir Externals/mGBA/mgba || die
 		mv "${WORKDIR}/mgba-${MGBA_COMMIT}" Externals/mGBA/mgba || die
 	fi
