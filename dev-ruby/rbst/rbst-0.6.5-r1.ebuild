@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
-USE_RUBY="ruby25 ruby26 ruby27"
+USE_RUBY="ruby26 ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_NAME="RbST"
 RUBY_FAKEGEM_GEMSPEC="RbST.gemspec"
