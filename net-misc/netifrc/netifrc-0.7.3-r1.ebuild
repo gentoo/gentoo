@@ -62,6 +62,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
 	if [[ ! -e "${EROOT}"/etc/conf.d/net && -z ${REPLACING_VERSIONS} ]]; then
 		elog "The network configuration scripts will use dhcp by"
 		elog "default to set up your interfaces."
