@@ -42,7 +42,9 @@ RDEPEND="
 	x11-libs/libXtst
 	x11-libs/libSM
 	x11-libs/libICE
+	!gnome-extra/gnome-integration-spotify
 "
+	#gnome-integration-spotify causes spotify to fail to launch
 	#sys-libs/glibc
 
 S="${WORKDIR}/"
@@ -111,6 +113,5 @@ pkg_postinst() {
 	ewarn "To remove the cache:"
 	ewarn "rm -rf ~/.cache/spotify"
 
-	optfeature "Gnome specific systray integration" gnome-extra/gnome-integration-spotify
 	optfeature "systray integration on non-Gnome DEs" media-sound/spotify-tray
 }
