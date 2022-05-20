@@ -89,6 +89,9 @@ src_install() {
 	fi
 }
 
+# see https://github.com/ziglang/zig/issues/3382
+QA_FLAGS_IGNORED="/usr/bin/zig-stage2"
+
 pkg_postinst() {
 	use stage2 && elog "You enabled stage2 USE flag, Zig stage1 was installed as /usr/bin/zig, Zig stage2 was installed as /usr/bin/zig-stage2"
 }
