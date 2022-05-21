@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-05-21)
+# Work in progress, do not use yet
+=dev-lang/perl-5.36*
+
 # Michał Górny <mgorny@gentoo.org> (2022-05-21)
 # dev-python/mongoengine has had repeated test regressions, and this
 # time I am unable to get them anywhere close to passing.  The current
