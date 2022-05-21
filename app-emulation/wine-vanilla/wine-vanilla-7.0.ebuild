@@ -122,8 +122,8 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	virtual/yacc
 	X? ( x11-base/xorg-proto )
-	xinerama? ( x11-base/xorg-proto )
-	!crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] )"
+	mingw? ( !crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] ) )
+	xinerama? ( x11-base/xorg-proto )"
 
 # These use a non-standard "Wine" category, which is provided by
 # /etc/xdg/applications-merged/wine.menu

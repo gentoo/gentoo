@@ -50,7 +50,7 @@ RESTRICT="test"
 BDEPEND="sys-devel/flex
 	virtual/yacc
 	virtual/pkgconfig
-	!crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] )"
+	mingw? ( !crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] ) )"
 
 COMMON_DEPEND="
 	X? (
