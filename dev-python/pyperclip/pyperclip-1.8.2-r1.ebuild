@@ -21,18 +21,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc64 ~riscv ~s390 ~sparc
 
 RDEPEND="
 	|| (
-		(
-			x11-misc/xsel
-			sys-apps/which
-		)
-		(
-			x11-misc/xclip
-			sys-apps/which
-		)
-		(
-			kde-plasma/plasma-workspace
-			sys-apps/which
-		)
+		x11-misc/xsel
+		x11-misc/xclip
+		kde-plasma/plasma-workspace
 		dev-python/PyQt5[${PYTHON_USEDEP}]
 		dev-python/QtPy[${PYTHON_USEDEP}]
 	)
