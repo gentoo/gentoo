@@ -9,7 +9,11 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Oslo test framework"
-HOMEPAGE="https://launchpad.net/oslo"
+HOMEPAGE="
+	https://opendev.org/openstack/oslotest/
+	https://github.com/openstack/oslotest/
+	https://pypi.org/project/oslotest/
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
@@ -21,7 +25,6 @@ BDEPEND="
 "
 RDEPEND="
 	>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
-	>=dev-python/subunit-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
 	>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
 "
