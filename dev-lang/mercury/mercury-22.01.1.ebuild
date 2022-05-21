@@ -17,7 +17,7 @@ LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="debug doc emacs examples java mono profile readline threads trail"
+IUSE="debug doc emacs examples java mono profile readline test threads trail"
 
 DEPEND="net-libs/libnsl:0=
 	readline? ( sys-libs/readline:= )
@@ -27,6 +27,8 @@ DEPEND="net-libs/libnsl:0=
 
 RDEPEND="${DEPEND}
 	emacs? ( >=app-editors/emacs-23.1:* )"
+
+BDEPEND="test? ( sys-libs/timezone-data )"
 
 S="${WORKDIR}"/${MY_P}
 
