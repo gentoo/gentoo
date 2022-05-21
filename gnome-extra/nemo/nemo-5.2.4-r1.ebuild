@@ -22,14 +22,17 @@ RESTRICT="test"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
+	dev-libs/atk
 	>=dev-libs/glib-2.45.7:2[dbus]
 	>=dev-libs/gobject-introspection-0.9.12:=
 	>=dev-libs/libxml2-2.7.8:2
 	gnome-base/dconf:0=
 	>=gnome-extra/cinnamon-desktop-5.2:0=
-	gnome-extra/libgsf
+	gnome-extra/libgsf:=
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-3.10.0:3[introspection]
-	>=x11-libs/libnotify-0.7:=
+	>=x11-libs/libnotify-0.7
 	x11-libs/libX11
 	>=x11-libs/pango-1.40.0
 	>=x11-libs/xapp-2.2.8
@@ -96,11 +99,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# tracker: only supports unmaintained tracker-2, not >=tracker-3.
 	local emesonargs=(
 		$(meson_use exif)
 		$(meson_use xmp)
 		$(meson_use selinux)
 		$(meson_use gtk-doc gtk_doc)
+
+		-Dtracker=false
 	)
 	meson_src_configure
 }
