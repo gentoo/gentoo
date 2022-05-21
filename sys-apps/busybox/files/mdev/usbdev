@@ -5,7 +5,7 @@
 
 # add zeros to device or bus
 add_zeros () {
-	case "$(echo $1 | wc -L)" in
+	case "$(echo "$1" | wc -L)" in
 		1)	echo "00$1" ;;
 		2)	echo "0$1" ;;
 		*)	echo "$1"
@@ -15,48 +15,48 @@ add_zeros () {
 
 
 # bus and device dirs in /sys
-USB_PATH=$(echo $MDEV | sed -e 's/usbdev\([0-9]\).[0-9]/usb\1/')
-USB_PATH=$(find /sys/devices -type d -name "$USB_PATH")
-USB_DEV_DIR=$(echo $MDEV | sed -e 's/usbdev\([0-9]\).\([0-9]\)/\1-\2/')
+USB_PATH=$(echo "${MDEV}" | sed -e 's/usbdev\([0-9]\).[0-9]/usb\1/')
+USB_PATH=$(find /sys/devices -type d -name "${USB_PATH}")
+USB_DEV_DIR=$(echo "${MDEV}" | sed -e 's/usbdev\([0-9]\).\([0-9]\)/\1-\2/')
 
 # dir names in /dev
-BUS=$(add_zeros $(echo $MDEV | sed -e 's/^usbdev\([0-9]\).[0-9]/\1/'))
-USB_DEV=$(add_zeros $(echo $MDEV | sed -e 's/^usbdev[0-9].\([0-9]\)/\1/'))
+BUS=$(add_zeros "$(echo "${MDEV}" | sed -e 's/^usbdev\([0-9]\).[0-9]/\1/')")
+USB_DEV=$(add_zeros "$(echo "${MDEV}" | sed -e 's/^usbdev[0-9].\([0-9]\)/\1/')")
 
 
 # try to load the proper driver for usb devices
-case "$ACTION" in
+case "${ACTION}" in
 	add|"")
 		# load usb bus driver
-		for i in $USB_PATH/*/modalias ; do
-			modprobe `cat $i` 2>/dev/null
+		for i in "${USB_PATH}"/*/modalias ; do
+			modprobe "$(cat "$i")" 2>/dev/null
 		done
 		# load usb device driver if existent
-		if [ -d $USB_PATH/$USB_DEV_DIR ]; then
-			for i in $USB_PATH/$USB_DEV_DIR/*/modalias ; do
-				modprobe `cat $i` 2>/dev/null
+		if [ -d "${USB_PATH}/${USB_DEV_DIR}" ]; then
+			for i in "${USB_PATH}/${USB_DEV_DIR}"/*/modalias ; do
+				modprobe "$(cat "$i")" 2>/dev/null
 			done
 		fi
 		# move usb device file
-		mkdir -p bus/usb/$BUS
-		mv $MDEV bus/usb/$BUS/$USB_DEV
+		mkdir -p "bus/usb/${BUS}"
+		mv "${MDEV}" "bus/usb/${BUS}/${USB_DEV}"
 		;;
 	remove)
 		# unload device driver, if device dir is existent
-		if [ -d $USB_PATH/$USB_DEV_DIR ]; then
-			for i in $USB_PATH/$USB_DEV_DIR/*/modalias ; do
-				modprobe -r `cat $i` 2>/dev/null
+		if [ -d "${USB_PATH}/${USB_DEV_DIR}" ]; then
+			for i in "${USB_PATH}/${USB_DEV_DIR}"/*/modalias ; do
+				modprobe -r "$(cat "$i")" 2>/dev/null
 		done
 		fi
 		# unload usb bus driver. Does this make sense?
 		# what happens, if two usb devices are plugged in
 		# and one is removed?
-		for i in $USB_PATH/*/modalias ; do
-			modprobe -r `cat $i` 2>/dev/null
+		for i in "${USB_PATH}"/*/modalias ; do
+			modprobe -r "$(cat "$i")" 2>/dev/null
 		done
 		# remove device file and possible empty dirs
-		rm -f bus/usb/$BUS/$USB_DEV
-		rmdir bus/usb/$BUS/ 2>/dev/null
+		rm -f "bus/usb/${BUS}/${USB_DEV}"
+		rmdir "bus/usb/${BUS}/" 2>/dev/null
 		rmdir bus/usb/ 2>/dev/null
 		rmdir bus/ 2>/dev/null
 esac
