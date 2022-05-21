@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/djberg96/sys-uname"
 
 LICENSE="Apache-2.0"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 arm arm64 ~hppa ~loong ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/ffi-1.1"
