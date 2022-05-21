@@ -35,3 +35,9 @@ BDEPEND="
 "
 
 distutils_enable_tests unittest
+
+src_prepare() {
+	# remove .dev tag that breaks revdeps
+	sed -i -e '/tag_build/d' setup.cfg || die
+	distutils-r1_src_prepare
+}
