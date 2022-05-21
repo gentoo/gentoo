@@ -408,7 +408,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	use driver && linux-mod_pkg_postinst
+	linux-mod_pkg_postinst
 
 	readme.gentoo_print_elog
 
