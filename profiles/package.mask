@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-05-21)
+# Unmaintained in Gentoo, no recent activity upstream, and most importantly
+# does not yet support Python 3.10+. Removal on 2022-06-21. bugs #845720, #797850.
+dev-python/drf-yasg
+
 # Michał Górny <mgorny@gentoo.org> (2022-05-21)
 # No commit activity since 2016.  Requires patching for Python 3.10.
 # No tests.  No revdeps.
