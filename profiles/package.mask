@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2022-05-21)
+# No activity upstream since 2018, unmaintained upstream, does not support
+# Python 3.10+. Removal on 2022-06-21. bug #845726.
+dev-python/fusepy
+
+# Sam James <sam@gentoo.org> (2022-05-21)
 # Unmaintained in Gentoo, no recent activity upstream, and most importantly
 # does not yet support Python 3.10+. Removal on 2022-06-21. bugs #845720, #797850.
 dev-python/drf-yasg
