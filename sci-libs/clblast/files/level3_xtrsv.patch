@@ -1,3 +1,6 @@
+This fixes a problem in the upstream code.  There is an extra argument in
+the call to the x_buffer.CopyToAsync function that must be removed. Otherwise
+the build fails when CUDA is enabled.
 --- CLBlast/src/routines/level3/xtrsm.cpp	2022-05-21 08:44:13.815816361 -0600
 +++ CLBlast_fixed/src/routines/level3/xtrsm.cpp	2022-05-21 08:28:06.756355738 -0600
 @@ -246,7 +246,7 @@
