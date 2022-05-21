@@ -3,7 +3,6 @@
 
 # This file contains descriptions of POSTGRES_TARGETS USE_EXPAND flags.
 
-postgres9_6 - Build against PostgreSQL 9.6
 postgres10 - Build against PostgreSQL 10
 postgres11 - Build against PostgreSQL 11
 postgres12 - Build against PostgreSQL 12
