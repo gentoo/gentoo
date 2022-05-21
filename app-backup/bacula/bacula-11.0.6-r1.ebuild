@@ -231,6 +231,9 @@ src_install() {
 	emake DESTDIR="${D}" install
 	doicon scripts/bacula.png
 
+	# remove not needed .la files #840957
+	find "${ED}" -name '*.la' -delete || die
+
 	# install bat icon and desktop file when enabled
 	# (for some reason ./configure doesn't pick this up)
 	if use qt5 && ! use static ; then
