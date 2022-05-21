@@ -9,7 +9,11 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Python deprecation patterns and strategies that collect technical debt"
-HOMEPAGE="https://www.openstack.org/"
+HOMEPAGE="
+	https://opendev.org/openstack/debtcollector/
+	https://github.com/openstack/debtcollector/
+	https://pypi.org/project/debtcollector/
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
@@ -22,7 +26,6 @@ RDEPEND="
 BDEPEND="
 	>dev-python/pbr-2.1.0[${PYTHON_USEDEP}]
 	test? (
-		dev-python/subunit[${PYTHON_USEDEP}]
 		dev-python/testtools[${PYTHON_USEDEP}]
 		dev-python/fixtures[${PYTHON_USEDEP}]
 	)
