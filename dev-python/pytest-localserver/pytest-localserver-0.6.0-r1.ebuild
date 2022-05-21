@@ -33,3 +33,9 @@ EPYTEST_IGNORE=(
 	# requires aiosmtpd that is dead and broken beyond repair
 	tests/test_smtp.py
 )
+
+src_prepare() {
+	# remove aiosmtpd dep
+	sed -i -e '/aiosmtpd/d' setup.py || die
+	distutils-r1_src_prepare
+}
