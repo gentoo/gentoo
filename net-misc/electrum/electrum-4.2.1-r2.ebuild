@@ -62,6 +62,9 @@ src_prepare() {
 	# use backwards-compatible cryptodome API
 	sed -i -e 's:Cryptodome:Crypto:' electrum/crypto.py || die
 
+	# make qdarkstyle dep optional
+	sed -i -e '/qdarkstyle/d' contrib/requirements/requirements.txt || die
+
 	local bestgui
 	if use qt5; then
 		bestgui=qt
