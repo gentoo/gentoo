@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -41,8 +41,13 @@ PDEPEND="
 
 distutils_enable_sphinx doc
 
+PATCHES=(
+	# https://github.com/testing-cabal/testtools/pull/328
+	"${FILESDIR}"/${P}-py311.patch
+)
+
 src_prepare() {
-	# very fragile to formatting changes
+	# very fragile to formatting changes (broken on py3.10 & pypy3)
 	sed -i -e 's:test_syntax_error(:_&:' \
 		testtools/tests/test_testresult.py || die
 
