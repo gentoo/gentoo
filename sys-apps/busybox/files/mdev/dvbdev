@@ -8,11 +8,11 @@ DVB_DEV=${MDEV#*.}
 
 case "$ACTION" in
 	add|"")
-		mkdir -p dvb/adapter${N}
-		mv ${MDEV} dvb/adapter${N}/${DVB_DEV}
+		mkdir -p "dvb/adapter${N}"
+		mv "${MDEV}" "dvb/adapter${N}/${DVB_DEV}"
 		;;
 	remove)
-		rm -f dvb/adapter${N}/${DVB_DEV}
-		rmdir dvb/adapter${N} 2>/dev/null
+		rm -f "dvb/adapter${N}/${DVB_DEV}"
+		rmdir "dvb/adapter${N}" 2>/dev/null
 		rmdir dvb/ 2>/dev/null
 esac
