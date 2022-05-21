@@ -1,12 +1,12 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="OpenPGP keys used by Even Rouault"
 HOMEPAGE="https://github.com/rouault"
 SRC_URI="https://github.com/rouault.gpg"
-S=${WORKDIR}
+S="${WORKDIR}"
 
 LICENSE="public-domain"
 SLOT="0"
