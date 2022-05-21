@@ -32,6 +32,7 @@ S="${WORKDIR}"/${P}
 
 src_prepare() {
 	eapply "${FILESDIR}"/${P}-portage.patch
+	eapply "${FILESDIR}"/${P}/printf-musl.patch
 	eapply "${FILESDIR}"/${P}-test-io.patch
 	eapply_user
 
