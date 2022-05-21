@@ -7,7 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">netaddr</remote-id>
-		<remote-id type="github">drkjam/netaddr</remote-id>
+		<remote-id type="github">netaddr/netaddr</remote-id>
 		<bugs-to>https://github.com/netaddr/netaddr/issues</bugs-to>
 		<changelog>https://github.com/netaddr/netaddr/blob/master/CHANGELOG</changelog>
 		<doc>https://netaddr.readthedocs.io/</doc>
