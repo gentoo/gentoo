@@ -18,6 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 IUSE="debug doc emacs examples java mono profile readline test threads trail"
+RESTRICT="!test? ( test )"
 
 DEPEND="net-libs/libnsl:0=
 	readline? ( sys-libs/readline:= )
