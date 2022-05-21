@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit golang-base toolchain-funcs
+inherit go-module toolchain-funcs
 
 DESCRIPTION="Automated Component Toolkit code generator"
 HOMEPAGE="https://github.com/Autodesk/AutomaticComponentToolkit"
@@ -14,7 +14,7 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 
-RESTRICT="strip test"
+RESTRICT="test"
 
 # Package does not follow the usual go directory structure
 # Functions borrowed from dev-lang/go ebuild.
