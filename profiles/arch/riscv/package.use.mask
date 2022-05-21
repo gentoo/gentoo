@@ -1,10 +1,6 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Jimi Huotari <chiitoo@gentoo.org> (2022-05-08)
-# Not keyworded here yet.
-lxqt-base/lxqt-meta desktop-portal
-
 # Sam James <sam@gentoo.org> (2022-05-08)
 # Requires dev-util/pahole.
 sys-kernel/gentoo-kernel debug
