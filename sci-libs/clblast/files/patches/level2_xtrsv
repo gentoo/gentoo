@@ -1,0 +1,11 @@
+--- CLBlast/src/routines/level2/xtrsv.cpp	2022-05-21 08:44:13.811816246 -0600
++++ CLBlast_fixed/src/routines/level2/xtrsv.cpp	2022-05-21 08:28:34.601124921 -0600
+@@ -154,7 +154,7 @@
+   }
+ 
+   // Retrieves the results
+-  x_buffer.CopyToAsync(queue_, x_size, b_buffer, event_);
++  x_buffer.CopyToAsync(queue_, x_size, b_buffer);
+ }
+ 
+ // =================================================================================================
