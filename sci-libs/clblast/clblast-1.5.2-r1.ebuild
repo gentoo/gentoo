@@ -33,8 +33,8 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/patches/level2_xtrsv
-	  "${FILESDIR}"/patches/level3_xtrsv )
+PATCHES=( "${FILESDIR}"/level2_xtrsv.patch
+	  "${FILESDIR}"/level3_xtrsv.patch )
 
 src_prepare() {
 	# no forced optimisation, libdir
