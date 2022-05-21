@@ -5,7 +5,7 @@ EAPI=8
 
 MODULES_OPTIONAL_USE="driver"
 inherit desktop flag-o-matic linux-mod multilib readme.gentoo-r1 \
-	systemd toolchain-funcs unpacker user-info
+	systemd toolchain-funcs udev unpacker user-info
 
 NV_KERNEL_MAX="5.15"
 NV_PIN="470.103.01"
@@ -363,6 +363,9 @@ https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 	systemd_dounit systemd/system/nvidia-{hibernate,resume,suspend}.service
 
 	dobin nvidia-bug-report.sh
+
+	# udev rules taken from nvidia's README.txt to help with power management
+	use driver && udev_newrules "${FILESDIR}"/nvidia-470.rules 60-nvidia.rules
 }
 
 pkg_preinst() {
@@ -393,7 +396,8 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	use driver && linux-mod_pkg_postinst
+	linux-mod_pkg_postinst
+	use driver && udev_reload
 
 	readme.gentoo_print_elog
 
@@ -444,4 +448,9 @@ pkg_postinst() {
 		elog "This version of ${PN} only supports EGLStream which is only"
 		elog "supported by a few wayland compositors (e.g. kwin / mutter, not sway)."
 	fi
+}
+
+pkg_postrm() {
+	linux-mod_pkg_postrm
+	use driver && udev_reload
 }
