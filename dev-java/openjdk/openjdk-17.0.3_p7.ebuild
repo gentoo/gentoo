@@ -8,6 +8,7 @@ inherit check-reqs eapi8-dosym flag-o-matic java-pkg-2 java-vm-2 multiprocessing
 # variable name format: <UPPERCASE_KEYWORD>_XPAK
 ARM64_XPAK="17.0.2_p8" # musl bootstrap install
 PPC64_XPAK="17.0.1_p12" # big-endian bootstrap tarball
+RISCV_XPAK="17.0.3_p7"
 X86_XPAK="17.0.1_p12"
 
 # Usage: bootstrap_uri <keyword> <version> [extracond]
@@ -37,7 +38,9 @@ SRC_URI="
 		$(bootstrap_uri arm64 ${ARM64_XPAK} elibc_musl)
 		$(bootstrap_uri ppc64 ${PPC64_XPAK} big-endian)
 		$(bootstrap_uri x86 ${X86_XPAK})
+		$(bootstrap_uri riscv ${RISCV_XPAK})
 	)
+	riscv? ( https://dev.gentoo.org/~arthurzam/distfiles/dev-java/openjdk/openjdk-17.0.3-riscv.patch.xz )
 "
 
 LICENSE="GPL-2"
@@ -165,6 +168,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	use riscv && eapply "${WORKDIR}"/openjdk-17.0.3-riscv.patch
 	default
 	chmod +x configure || die
 }
@@ -212,6 +216,8 @@ src_configure() {
 		--enable-headless-only=$(usex headless-awt yes no)
 		$(tc-is-clang && echo "--with-toolchain-type=clang")
 	)
+
+	use riscv && myconf+=( --with-boot-jdk-jvmargs="-Djdk.lang.Process.launchMechanism=vfork" )
 
 	if use javafx; then
 		local zip="${EPREFIX}/usr/$(get_libdir)/openjfx-${SLOT}/javafx-exports.zip"
