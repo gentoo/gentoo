@@ -5,7 +5,7 @@ EAPI=7
 
 PV_COMMIT=5bebd8e3aae655690ddf33dfb32289766910fa25
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit cmake flag-o-matic python-single-r1
 
