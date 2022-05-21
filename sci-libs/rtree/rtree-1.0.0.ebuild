@@ -25,9 +25,9 @@ RDEPEND="
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 "
 
-distutils_enable_sphinx docs/source
-distutils_enable_tests pytest
-
 BDEPEND="
 	test? ( dev-python/numpy[${PYTHON_USEDEP}] )
 "
+
+distutils_enable_sphinx docs/source
+distutils_enable_tests pytest
