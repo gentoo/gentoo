@@ -41,7 +41,7 @@ mingw-foreach_tool() {
 	local tool
 	for tool in gendef genidl widl; do
 		# not using top-level --with-tools given it skips widl
-		pushd mingw-w64-tools/${tool} || die
+		pushd mingw-w64-tools/${tool} >/dev/null || die
 		"${@}"
 		popd >/dev/null || die
 	done
