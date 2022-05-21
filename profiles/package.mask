@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-05-21)
+# No commit activity since 2016.  Requires patching for Python 3.10.
+# No tests.  No revdeps.
+# Removal on 2022-06-20.  Bug #846788.
+dev-python/dicttoxml
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-05-21)
 # Work in progress, do not use yet
 =dev-lang/perl-5.36*
