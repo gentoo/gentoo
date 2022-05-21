@@ -34,5 +34,10 @@ distutils_enable_sphinx 'doc/source' \
 python_prepare_all() {
 	# Delete spurious data in requirements.txt
 	sed -e '/^pbr/d' -i requirements.txt || die
+
+	# Known bug in tests
+	# https://bugs.launchpad.net/python-stevedore/+bug/1966040
+	sed -i -e 's:test_extras:_&:' stevedore/tests/test_extension.py || die
+
 	distutils-r1_python_prepare_all
 }
