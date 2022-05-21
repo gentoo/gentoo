@@ -6,11 +6,11 @@ variables, but not all.
 
 diff -Naur a/configure b/configure
 --- a/configure	2019-09-08 19:32:47.000000000 +0100
-+++ b/configure	2022-05-15 09:45:11.158669066 +0100
++++ b/configure	2022-05-21 09:43:26.396618735 +0100
 @@ -4894,6 +4894,7 @@
  ac_compiler_gnu=$ac_cv_c_compiler_gnu
-
-
+ 
+ 
 +: <<'END'
  for ac_prog in flex lex
  do
@@ -25,40 +25,56 @@ diff -Naur a/configure b/configure
  ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
 @@ -17726,6 +17728,7 @@
  fi
-
-
+ 
+ 
 +: <<'END'
  pkg_failed=no
  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for GDA" >&5
  $as_echo_n "checking for GDA... " >&6; }
 @@ -19533,6 +19536,7 @@
  $as_echo "#define ENABLE_PACKAGEKIT 1" >>confdefs.h
-
+ 
  fi
 +END
-
+ 
  LIBANJUTA_CFLAGS='$(ANJUTA_CFLAGS) $(GDL_CFLAGS) $(DEPRECATED_FLAGS) -I$(top_srcdir) -I$(top_builddir)/libanjuta -DPACKAGE_PIXMAPS_DIR=\""$(datadir)/pixmaps/$(PACKAGE)"\" -DPACKAGE_LIB_DIR=\""$(pkglibdir)"\" -DPACKAGE_DATA_DIR=\""$(datadir)/$(PACKAGE)"\"'
  LIBANJUTA_LIBS='$(top_builddir)/libanjuta/libanjuta-3.la'
 @@ -19624,6 +19628,7 @@
-
-
-
+ 
+ 
+ 
 +: <<'END'
  case "$am__api_version" in
      1.01234)
  	as_fn_error $? "Automake 1.5 or newer is required to use intltool" "$LINENO" 5
 @@ -20441,6 +20446,7 @@
-
-
+ 
+ 
    ac_config_commands="$ac_config_commands po-directories"
 +END
-
-
-
-@@ -24091,6 +24097,14 @@
+ 
+ 
+ 
+@@ -22459,6 +22465,7 @@
+ 
+ 
+ 
++: <<'END'
+ YELP_LC_MEDIA_LINKS=true
+ YELP_LC_DIST=true
+ 
+@@ -22738,6 +22745,7 @@
+ 	  done; \
+ 	done;
+ '
++END
+ 
+ 
+ 
+@@ -24091,6 +24099,14 @@
    am__EXEEXT_FALSE=
  fi
-
+ 
 +HAVE_PLUGIN_TERMINAL_TRUE='#'
 +HAVE_PLUGIN_DEVHELP_TRUE='#'
 +HAVE_PLUGIN_GLADE_TRUE='#'
