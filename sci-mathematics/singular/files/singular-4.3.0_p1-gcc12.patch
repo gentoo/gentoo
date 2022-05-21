@@ -1,12 +1,3 @@
-From 5155427417fa722a27c110b2c1939c0979c6dcbc Mon Sep 17 00:00:00 2001
-From: Hans Schoenemann <hannes@mathematik.uni-kl.de>
-Date: Tue, 10 May 2022 16:52:42 +0200
-Subject: [PATCH] fix: gcc-12 does not like offsetof ?
-
----
- kernel/oswrapper/vspace.cc | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
-
 diff --git a/kernel/oswrapper/vspace.cc b/kernel/oswrapper/vspace.cc
 index fa42bf5e28..aefa661600 100644
 --- a/kernel/oswrapper/vspace.cc
@@ -52,7 +43,7 @@ index fa42bf5e28..aefa661600 100644
  void vmem_free(vaddr_t vaddr) {
    lock_allocator();
 +  #if defined(__GNUC__) && (__GNUC__>11)
-+  vaddr_t vaddr -= (sizeof(vaddr_t)*2);
++  vaddr -= (sizeof(vaddr_t)*2);
 +  #else
    vaddr -= offsetof(Block, data);
 +  #endif
