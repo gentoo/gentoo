@@ -30,7 +30,7 @@ RDEPEND="
 
 BDEPEND="
 	test? (
-		app-text/ghostscript-gpl
+		<app-text/ghostscript-gpl-9.56
 		media-fonts/ahem
 		media-fonts/dejavu
 	)
