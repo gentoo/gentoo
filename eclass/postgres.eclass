@@ -27,7 +27,7 @@ esac
 # @DESCRIPTION:
 # List of versions to reverse sort POSTGRES_COMPAT slots
 
-_POSTGRES_ALL_VERSIONS=( 9999 14 13 12 11 10 9.6 9.5 9.4 9.3 9.2 )
+_POSTGRES_ALL_VERSIONS=( 9999 14 13 12 11 10 )
 
 
 
