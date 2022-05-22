@@ -23,6 +23,8 @@ HOMEPAGE="https://github.com/certbot/certbot https://letsencrypt.org/"
 LICENSE="Apache-2.0"
 SLOT="0"
 
+IUSE="selinux"
+
 RDEPEND="
 	>=app-crypt/acme-${PV}[${PYTHON_USEDEP}]
 	>=dev-python/configargparse-0.9.3[${PYTHON_USEDEP}]
@@ -34,6 +36,7 @@ RDEPEND="
 	dev-python/pyrfc3339[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2019.3[${PYTHON_USEDEP}]
 	dev-python/zope-component[${PYTHON_USEDEP}]
-	dev-python/zope-interface[${PYTHON_USEDEP}]"
+	dev-python/zope-interface[${PYTHON_USEDEP}]
+	selinux? ( sec-policy/selinux-certbot )"
 
 distutils_enable_tests pytest
