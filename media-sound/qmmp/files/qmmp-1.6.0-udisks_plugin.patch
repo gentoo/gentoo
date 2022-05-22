@@ -1,0 +1,11 @@
+--- qmmp-1.6.0/src/plugins/General/CMakeLists.txt
++++ qmmp-1.6.0/src/plugins/General/CMakeLists.txt
+@@ -51,7 +51,7 @@
+ ENDIF(USE_HAL AND Qt5DBus_FOUND)
+ 
+ IF(USE_UDISKS2 AND Qt5DBus_FOUND)
+-add_subdirectory(udisks2)
++add_subdirectory(udisks)
+ ENDIF(USE_UDISKS2 AND Qt5DBus_FOUND)
+ 
+ IF(USE_HOTKEY AND Qt5X11Extras_FOUND)
