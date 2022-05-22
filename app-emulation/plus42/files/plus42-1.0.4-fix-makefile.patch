@@ -1,0 +1,38 @@
+diff -Naur plus42-upstream-1.0.4.orig/gtk/Makefile plus42-upstream-1.0.4/gtk/Makefile
+--- plus42-upstream-1.0.4.orig/gtk/Makefile	2022-05-17 11:47:13.000000000 +0200
++++ plus42-upstream-1.0.4/gtk/Makefile	2022-05-22 21:41:34.492591806 +0200
+@@ -15,7 +15,7 @@
+ # along with this program; if not, see http://www.gnu.org/licenses/.
+ ###############################################################################
+ 
+-CFLAGS = -MMD \
++CFLAGS := -MMD \
+ 	 -Wall \
+ 	 -Wno-parentheses \
+ 	 -Wno-write-strings \
+@@ -35,11 +35,13 @@
+ 	 -DDECIMAL_GLOBAL_ROUNDING=1 \
+ 	 -DDECIMAL_GLOBAL_ROUNDING_ACCESS_FUNCTIONS=1 \
+ 	 -DDECIMAL_GLOBAL_EXCEPTION_FLAGS=1 \
+-	 -DDECIMAL_GLOBAL_EXCEPTION_FLAGS_ACCESS_FUNCTIONS=1
++	 -DDECIMAL_GLOBAL_EXCEPTION_FLAGS_ACCESS_FUNCTIONS=1 \
++	 ${CFLAGS}
+ 
+-CXXFLAGS = $(CFLAGS) \
++CXXFLAGS := $(CFLAGS) \
+ 	 -fno-rtti \
+-	 -D_WCHAR_T_DEFINED
++	 -D_WCHAR_T_DEFINED \
++	 ${CXXFLAGS}
+ 
+ LIBS = gcc111libbid.a $(shell pkg-config --libs gtk+-3.0)
+ 
+@@ -118,7 +120,7 @@
+ 	./keymap2cc
+ 
+ gcc111libbid.a:
+-	sh ./build-intel-lib.sh
++	+sh ./build-intel-lib.sh
+ 	ln -s IntelRDFPMathLib20U1/TESTS/readtest.c
+ 
+ symlinks:
