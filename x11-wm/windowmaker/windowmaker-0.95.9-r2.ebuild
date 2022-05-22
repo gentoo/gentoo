@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://windowmaker.org/pub/source/release/${P/windowm/WindowM}.tar.gz
 SLOT="0"
 LICENSE="GPL-2"
 IUSE="gif imagemagick jpeg modelock nls png tiff webp xinerama +xpm xrandr"
-KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ~ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 
 DEPEND="media-libs/fontconfig
 	>=x11-libs/libXft-2.1.0
