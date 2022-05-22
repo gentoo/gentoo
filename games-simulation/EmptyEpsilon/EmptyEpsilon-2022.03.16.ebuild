@@ -70,8 +70,12 @@ src_prepare() {
 		ln -rs "${target}" "${link}" || die
 	done
 
+	local serious_proton_patches=(
+		"${FILESDIR}/SeriousProton-cmake.patch"
+		"${FILESDIR}/SeriousProton-Add-missing-include-memory-to-websocket.h.patch"
+	)
 	eapply --directory="${WORKDIR}/SeriousProton-EE-${PV}" \
-		   "${FILESDIR}/SeriousProton-cmake.patch"
+		   "${serious_proton_patches[@]}"
 }
 
 src_configure() {
