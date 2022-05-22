@@ -1,6 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# media-libs/libxmp requires keywording
+media-sound/qmmp xmp
+
 # WANG Xuerui <xen0n@gentoo.org> (2022-04-24)
 # This is only for bringing in the not-upstreamed-yet LoongArch patchset;
 # masked everywhere in order to minimize impact on other arches.

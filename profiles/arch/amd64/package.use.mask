@@ -17,6 +17,9 @@
 
 #--- END OF EXAMPLES ---
 
+# Unmask media-libs/libxmp here
+media-sound/qmmp -xmp
+
 # Jakov Smolić <jsmolic@gentoo.org> (2022-05-15)
 # media-video/nvidia_video_sdk is masked for removal
 media-libs/avidemux-core nvenc
