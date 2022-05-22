@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2022-05-22)
+# No upstream activity since 2017. Doesn't support Python 3.10.
+# Removal on 2022-06-22. bug #845732.
+dev-python/gevent-websocket
+
+# Sam James <sam@gentoo.org> (2022-05-22)
 # Several open bugs. No upstream activity for a while, doesn't
 # support Python 3.10+, test suite not being run. Removal on 2022-06-22.
 # bug #625800, bug #796974, bug #796977, bug #831916, bug #845888.
