@@ -23,7 +23,7 @@ src_prepare() {
 	sed -i 's/-Werror//' CMakeLists.txt || die
 	sed -i '/-fsanitize=/d' test/CMakeLists.txt || die
 
-	# Fix build with CLANG and LLD.
+	# Fix build with clang and lld.
 	# https://bugs.gentoo.org/831338
 	append-flags -fPIC
 }
