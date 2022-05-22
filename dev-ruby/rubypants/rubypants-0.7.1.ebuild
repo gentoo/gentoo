@@ -16,7 +16,7 @@ HOMEPAGE="https://leahneukirchen.org/repos/rubypants/README"
 
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE=""
 
 all_ruby_prepare() {
