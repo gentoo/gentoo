@@ -1,3 +1,5 @@
+https://github.com/uclouvain/openjpeg/pull/1165
+
 From fecc8e9e23f78de94c41bc641b3e5b9e9a84560b Mon Sep 17 00:00:00 2001
 From: Andreas Sturmlechner <asturm@gentoo.org>
 Date: Thu, 11 Apr 2019 13:10:57 +0200
@@ -294,6 +296,3 @@ Raises minimum cmake version by a little.
 -  DESTINATION ${OPENJPEG_INSTALL_SHARE_DIR} COMPONENT JavaModule
 +  DESTINATION ${CMAKE_INSTALL_DATAROOTDIR} COMPONENT JavaModule
  )
--- 
-2.35.1
-
