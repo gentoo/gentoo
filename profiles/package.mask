@@ -89,6 +89,9 @@ dev-python/dicttoxml
 ~virtual/perl-DB_File-1.857.0
 ~virtual/perl-Devel-PPPort-3.680.0
 ~virtual/perl-Digest-1.200.0
+~virtual/perl-Encode-3.170.0
+~virtual/perl-Exporter-5.770.0
+~virtual/perl-ExtUtils-MakeMaker-7.640.0
 
 # Michał Górny <mgorny@gentoo.org> (2022-05-21)
 # dev-python/mongoengine has had repeated test regressions, and this
