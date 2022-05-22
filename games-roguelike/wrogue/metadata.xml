@@ -9,7 +9,4 @@
 Warp Rogue is a gothic science fantasy roguelike game. It features RPG-like game
 mechanics, recruitable NPCs, and a consistent theme.
 </longdescription>
-	<upstream>
-		<remote-id type="freecode">wrogue</remote-id>
-	</upstream>
 </pkgmetadata>
