@@ -5,11 +5,6 @@
     <email>printing@gentoo.org</email>
     <name>Gentoo Printing Project</name>
   </maintainer>
-  <use>
-    <flag name="lprng-compat">
-      Do not install lp... binaries so cups and lprng can coexist.
-    </flag>
-  </use>
   <upstream>
     <remote-id type="cpe">cpe:/a:apple:cups</remote-id>
     <remote-id type="github">apple/cups</remote-id>
