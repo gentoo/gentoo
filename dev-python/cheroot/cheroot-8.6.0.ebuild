@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="High-performance, pure-Python HTTP server used by CherryPy"
-HOMEPAGE="https://cherrypy.org/
+HOMEPAGE="https://cherrypy.dev/
 	https://pypi.org/project/cheroot/
 	https://github.com/cherrypy/cheroot/"
 SRC_URI="mirror://pypi/C/${PN/c/C}/${P}.tar.gz"

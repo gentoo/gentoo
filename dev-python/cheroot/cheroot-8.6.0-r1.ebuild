@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="High-performance, pure-Python HTTP server used by CherryPy"
 HOMEPAGE="
-	https://www.cherrypy.org/
+	https://cherrypy.dev/
 	https://pypi.org/project/cheroot/
 	https://github.com/cherrypy/cheroot/
 "
