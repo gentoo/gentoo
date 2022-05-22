@@ -127,7 +127,7 @@ RDEPEND="
 		sys-libs/libraw1394
 	)
 	jack? ( virtual/jack )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:0 )
 	kate? ( media-libs/libkate )
 	libass? (
 		media-libs/fontconfig:1.0
