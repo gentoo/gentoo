@@ -117,6 +117,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.2_ignore-gentoo-no-compile.patch
 	"${FILESDIR}"/${PN}-4.2-suid-warning.patch
 	"${FILESDIR}"/${PN}-4.3-no-service.patch
+	"${FILESDIR}"/${PN}-4.3-cpp.patch
 	"${DISTDIR}"/${PN}-4.3.1-tests.patch
 )
 
