@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/ReFirmLabs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~x64-macos"
+	KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv x86 ~x64-macos"
 fi
 
 DESCRIPTION="A tool for identifying files embedded inside firmware images"
@@ -24,6 +24,8 @@ SLOT="0"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.0-disable-test-coverage.patch
+	"${FILESDIR}"/2.3.3-tests.patch
+	"${FILESDIR}"/${PN}-2.3.3-syntax-fix.patch
 
 )
 
