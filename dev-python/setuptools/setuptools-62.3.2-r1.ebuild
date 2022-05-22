@@ -32,11 +32,12 @@ RDEPEND="
 	>=dev-python/appdirs-1.4.4-r2[${PYTHON_USEDEP}]
 	>=dev-python/jaraco-text-3.7.0-r1[${PYTHON_USEDEP}]
 	>=dev-python/more-itertools-8.12.0-r1[${PYTHON_USEDEP}]
-	dev-python/nspektr[${PYTHON_USEDEP}]
+	>=dev-python/nspektr-0.3.0[${PYTHON_USEDEP}]
 	>=dev-python/ordered-set-4.0.2-r1[${PYTHON_USEDEP}]
 	>=dev-python/packaging-21.3-r2[${PYTHON_USEDEP}]
+	>=dev-python/tomli-2.0.1[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
-		>=dev-python/importlib_metadata-4.10.1-r1[${PYTHON_USEDEP}]
+		>=dev-python/importlib_metadata-4.11.1[${PYTHON_USEDEP}]
 	' 3.8 3.9)
 	$(python_gen_cond_dep '
 		>=dev-python/importlib_resources-5.4.0-r3[${PYTHON_USEDEP}]
@@ -59,7 +60,6 @@ BDEPEND="
 			dev-python/pytest-fixture-config[${PYTHON_USEDEP}]
 			dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
 			dev-python/pytest-xdist[${PYTHON_USEDEP}]
-			dev-python/tomli[${PYTHON_USEDEP}]
 			>=dev-python/tomli-w-1.0.0[${PYTHON_USEDEP}]
 			>=dev-python/virtualenv-20[${PYTHON_USEDEP}]
 			dev-python/wheel[${PYTHON_USEDEP}]
