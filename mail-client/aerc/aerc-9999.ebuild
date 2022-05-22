@@ -39,7 +39,7 @@ src_unpack() {
 src_compile() {
 	LDFLAGS= \
 	emake GOFLAGS="-mod=vendor $(usex notmuch "-tags=notmuch" "")" \
-		PREFIX="${EPREFIX}/usr"VERSION=${PV}  all
+		PREFIX="${EPREFIX}/usr" VERSION=${PV}  all
 }
 
 src_install() {
