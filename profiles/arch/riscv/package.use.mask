@@ -1,11 +1,6 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2022-05-08)
-# Requires dev-util/pahole.
-sys-kernel/gentoo-kernel debug
-sys-kernel/vanilla-kernel debug
-
 # Marek Szuba <marecki@gmail.com> (2022-04-30)
 # net-wireless/sdrplay contains prebuilt binaries, currently available
 # upstream only for amd64/x86 and arm
