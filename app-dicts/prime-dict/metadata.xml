@@ -6,6 +6,6 @@
 		<name>Cjk</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge-jp">prime</remote-id>
+		<remote-id type="osdn">prime</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -22,6 +22,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">magicant/yash</remote-id>
-		<remote-id type="sourceforge-jp">yash</remote-id>
+		<remote-id type="osdn">yash</remote-id>
 	</upstream>
 </pkgmetadata>

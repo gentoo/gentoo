@@ -11,6 +11,6 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="sourceforge-jp">mplus-fonts</remote-id>
+		<remote-id type="osdn">mplus-fonts</remote-id>
 	</upstream>
 </pkgmetadata>

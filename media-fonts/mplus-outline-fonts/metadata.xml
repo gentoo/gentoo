@@ -14,6 +14,6 @@
 		<flag name="ipafont">Generates new fonts merged with <pkg>media-fonts/ja-ipafonts</pkg></flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge-jp">mplus-fonts</remote-id>
+		<remote-id type="osdn">mplus-fonts</remote-id>
 	</upstream>
 </pkgmetadata>

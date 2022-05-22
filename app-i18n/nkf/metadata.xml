@@ -6,6 +6,6 @@
 		<name>Cjk</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge-jp">nkf</remote-id>
+		<remote-id type="osdn">nkf</remote-id>
 	</upstream>
 </pkgmetadata>

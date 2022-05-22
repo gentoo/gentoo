@@ -10,6 +10,6 @@
   </use>
   <upstream>
     <remote-id type="sourceforge">tomoe</remote-id>
-    <remote-id type="sourceforge-jp">tomoe</remote-id>
+    <remote-id type="osdn">tomoe</remote-id>
   </upstream>
 </pkgmetadata>

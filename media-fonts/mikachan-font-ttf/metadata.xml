@@ -10,6 +10,6 @@
 		<name>Cjk</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge-jp">mikachan</remote-id>
+		<remote-id type="osdn">mikachan</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -10,6 +10,6 @@
 		<name>Cjk</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge-jp">x-tt</remote-id>
+		<remote-id type="osdn">x-tt</remote-id>
 	</upstream>
 </pkgmetadata>
