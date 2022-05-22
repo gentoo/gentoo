@@ -21,7 +21,7 @@ if [[ ${PV} =~ ^[9]{4,}$ ]]; then
 else
 	SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.bz2
 		verify-sig? ( https://netfilter.org/projects/nftables/files/${P}.tar.bz2.sig )"
-	KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
+	KEYWORDS="amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/netfilter.org.asc
 	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-netfilter )"
 fi
