@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
@@ -39,6 +39,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/pylibmc-1.6.1-fix-test-failures-r1.patch"
+	"${FILESDIR}/pylibmc-1.6.1-py311.patch"
 	"${DISTDIR}/${P}-no-nose.patch"
 )
 
