@@ -13,6 +13,7 @@
 		<flag name="headless">Build Ozone only with headless backend, NOT RECOMMENDED for general use.</flag>
 		<flag name="hangouts">Enable support for Google Hangouts features such as screen sharing</flag>
 		<flag name="libcxx">Use bundled libc++ instead of libstdc++ for building.</flag>
+		<flag name="lto">Build with Link Time Optimizations (via clang's ThinLTO)</flag>
 		<flag name="official">Enable Official build instead of Developer build.</flag>
 		<flag name="pic">Disable optimized assembly code that is not PIC friendly</flag>
 		<flag name="proprietary-codecs">Enable codecs for patent-encumbered audio and video formats.</flag>
