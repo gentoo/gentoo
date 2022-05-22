@@ -1,0 +1,55 @@
+From bdb1ca45454d90410031c4c2054005a995f76180 Mon Sep 17 00:00:00 2001
+From: Zdenek Dohnal <zdohnal@redhat.com>
+Date: Wed, 6 Apr 2022 15:04:45 +0200
+Subject: [PATCH] cups/tls-gnutls.c: Use always GNUTLS_SHUT_WR
+
+The current mode for `gnutls_bye()` in client use cases strictly
+follows TLS v1.2 standard, which in this particular part says:
+
+```
+Unless some other fatal alert has been transmitted, each party is
+required to send a close_notify alert before closing the write
+side of the connection.  The other party MUST respond with a
+close_notify alert of its own and close down the connection immediately,
+discarding any pending writes.  It is not required for the initiator
+of the close to wait for the responding close_notify alert before
+closing the read side of the connection.
+```
+
+and waits for the other side of TLS connection to confirm the close.
+
+Unfortunately it can undesired for reasons:
+- we support switching of TLS versions in CUPS, and this mode strictly
+  follows TLS v1.2 - so for older version this behavior is not expected
+  and can cause delays
+- even some TLS v1.2 implementations (like Windows Server 2016) don't
+  comply TLS v1.2 behavior even if it says it does - in that case,
+  encrypted printing takes 30s till HTTP timeout is reached, because the
+  other side didn't send confirmation
+- AFAIU openssl's SSL_shutdown() doesn't make this TLS v1.2 difference,
+  so we could end up with two TLS implementations in CUPS which will
+  behave differently
+
+Since the standard defines that waiting for confirmation is not required
+and due the problems above, I would propose using GNUTLS_SHUT_WR mode
+regardless of HTTP mode.
+---
+ cups/tls-gnutls.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cups/tls-gnutls.c b/cups/tls-gnutls.c
+index c55995b2b..f87b4f4df 100644
+--- a/cups/tls-gnutls.c
++++ b/cups/tls-gnutls.c
+@@ -1667,7 +1667,7 @@ _httpTLSStop(http_t *http)		/* I - Connection to server */
+   int	error;				/* Error code */
+ 
+ 
+-  error = gnutls_bye(http->tls, http->mode == _HTTP_MODE_CLIENT ? GNUTLS_SHUT_RDWR : GNUTLS_SHUT_WR);
++  error = gnutls_bye(http->tls, GNUTLS_SHUT_WR);
+   if (error != GNUTLS_E_SUCCESS)
+     _cupsSetError(IPP_STATUS_ERROR_INTERNAL, gnutls_strerror(errno), 0);
+ 
+-- 
+2.35.1
+

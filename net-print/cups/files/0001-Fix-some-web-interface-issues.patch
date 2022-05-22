@@ -1,0 +1,667 @@
+diff -up cups-2.4.1/doc/cups.css.css-issues cups-2.4.1/doc/cups.css
+--- cups-2.4.1/doc/cups.css.css-issues	2022-01-27 12:11:42.000000000 +0100
++++ cups-2.4.1/doc/cups.css	2022-03-08 13:55:16.075624812 +0100
+@@ -1,5 +1,5 @@
+ /* Layout CSS */
+-.header {
++.cups-header {
+   background: rgba(46,46,46,.9);
+   box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+   color: white;
+@@ -11,7 +11,7 @@
+   top: 0;
+   width: 100%;
+ }
+-.header ul {
++.cups-header ul {
+   list-style: none;
+   margin: 0;
+   -webkit-margin-before: 0;
+@@ -20,37 +20,37 @@
+   -webkit-margin-end: 5px;
+   -webkit-padding-start: 0;
+ }
+-.header ul li {
++.cups-header ul li {
+   float: left;
+ }
+-.header a {
++.cups-header a {
+   display: block;
+   padding: 5px 10px !important;
+ }
+-.header a:link, .header a:visited {
++.cups-header a:link, .cups-header a:visited {
+   color: white !important;
+   text-decoration: none !important;
+ }
+-.header a:hover {
++.cups-header a:hover {
+   background: #cccccc !important;
+   color: #333333 !important;
+   text-decoration: none !important;
+ }
+-.header a.active {
++.cups-header a.active {
+   background: white !important;
+   box-shadow: rgba(0,0,0,0.1) 0 0 10px 0 inset;
+   color: black !important;
+   text-decoration: none !important;
+ }
+ 
+-.body {
++.cups-body {
+   padding: 40px 20px;
+ }
+-.row .body {
++.row .cups-body {
+   padding: 0;
+ }
+ 
+-.footer {
++.cups-footer {
+   background: rgba(46,46,46,.9);
+   bottom: 0;
+   box-shadow: 0 -2px 5px rgba(0,0,0,0.25);
+@@ -62,7 +62,7 @@
+   position: fixed;
+   width: 100%;
+ }
+-.footer a:link, footer a:hover, .footer a:visited {
++.cups-footer a:link, footer a:hover, .cups-footer a:visited {
+   color: white !important;
+   text-decoration: none !important;
+ }
+@@ -131,6 +131,7 @@ pre {
+ }
+ 
+ blockquote {
++  background: rgba(191,191,191,0.1);
+   border-left: solid 2px #777;
+   margin: 1em 0;
+   padding: 10px;
+@@ -207,7 +208,7 @@ table.page {
+   width: 100%;
+ }
+ 
+-td.body {
++td.cups-body {
+   height: 100%;
+   vertical-align: top;
+ }
+@@ -365,7 +366,7 @@ h1.title {
+   display: none;
+ }
+ 
+-h2.title, h3.title, .row .body h2, .row .body h3 {
++h2.title, h3.title, .row .cups-body h2, .row .cups-body h3 {
+   border-bottom: solid 2pt black;
+ }
+ 
+@@ -451,8 +452,8 @@ div.sidebar p.l2 {
+ }
+ 
+ table.inset {
+-  background: rgba(191,191,191,0.15);
+-  border: thin solid rgba(191,191,191,0.3);
++  background: #f4f4f4;
++  border: thin solid rgba(191,191,191,0.5);
+   margin-top: 1em;
+   padding: 0;
+   width: 100%;
+@@ -471,7 +472,7 @@ table.inset caption {
+ }
+ 
+ table.inset td {
+-  padding: 2px;
++  padding: 2px 5px;
+ }
+ 
+ dt {
+@@ -525,15 +526,15 @@ div.tab {
+ }
+ 
+ /* API documentation styles... */
+-div.body h1 {
++div.cups-body h1 {
+ }
+-div.body h2 {
++div.cups-body h2 {
+ }
+-div.body h3 {
++div.cups-body h3 {
+ }
+-div.body h4 {
++div.cups-body h4 {
+ }
+-div.body h5 {
++div.cups-body h5 {
+ }
+ div.contents {
+ }
+@@ -589,9 +590,14 @@ h1, h2, h3, h4, h5, h6 {
+ blockquote {
+   page-break-inside: avoid;
+ }
+-p code, li code, p.code, pre, ul.code li {
+-  background: rgba(127,127,127,0.1);
++p.code, pre, ul.code li {
+   border-left: thin dotted gray;
++  background: rgba(191,191,191,0.1);
++}
++p code, li code {
++  background: rgba(191,191,191,0.3);
++}
++p code, li code, p.code, pre, ul.code li {
+   font-family: monospace;
+   hyphens: manual;
+   margin: 18pt 0;
+@@ -644,19 +650,19 @@ ul.contents li ul.code, ul.contents li u
+     display: none;
+   }
+ 
+-  .header {
++  .cups-header {
+     margin: 0;
+     position: relative;
+   }
+-  .header ul li {
++  .cups-header ul li {
+     float: none;
+   }
+ 
+-  .body {
++  .cups-body {
+     padding: 0;
+   }
+ 
+-  .footer {
++  .cups-footer {
+     font-size: 10px;
+     height: auto;
+     position: relative;
+@@ -715,6 +721,12 @@ ul.contents li ul.code, ul.contents li u
+   hr {
+     color: #666;
+   }
++  table.inset {
++    background: #1d1d1d;
++  }
++  h2.title, h3.title, .row .cups-body h2, .row .cups-body h3 {
++    border-bottom: solid 2pt #ccc;
++  }
+   div.table table td, table.list th {
+     background: black;
+   }
+diff -up cups-2.4.1/doc/da/index.html.in.css-issues cups-2.4.1/doc/da/index.html.in
+--- cups-2.4.1/doc/da/index.html.in.css-issues	2022-01-27 12:11:42.000000000 +0100
++++ cups-2.4.1/doc/da/index.html.in	2022-03-08 13:55:16.075624812 +0100
+@@ -10,7 +10,7 @@
+     <title>Hjem - CUPS @CUPS_VERSION@</title>
+   </head>
+   <body>
+-    <div class="header">
++    <div class="cups-header">
+       <ul>
+ 	<li><a href="https://openprinting.github.io/cups/" target="_blank">OpenPrinting CUPS</a></li>
+ 	<li><a class="active" href="/">Hjem</a></li>
+@@ -21,7 +21,7 @@
+ 	<li><a href="/printers/">Printere</a></li>
+       </ul>
+     </div>
+-    <div class="body">
++    <div class="cups-body">
+       <div class="row">
+ 	<h1>CUPS @CUPS_VERSION@</h1>
+ 	<p>CUPS er det standardbaseret, open source-udskrivningssystem som er udviklet af <a class="jumbolink" href="https://openprinting.github.io/" target="_blank">OpenPrinting</a> til Linux® og andre UNIX<sup>&reg;</sup>-lignende styresystemer. CUPS uses <a href="https://www.pwg.org/ipp/everywhere.html" target="_blank">IPP Everywhere™</a> to support printing to local and network printers</p>
+@@ -47,6 +47,6 @@
+ 	</div>
+       </div>
+     </div>
+-    <div class="footer">Ophavsret &copy; 2021-2022 OpenPrinting. Alle rettigheder forbeholdt.</div>
++    <div class="cups-footer">Ophavsret &copy; 2021-2022 OpenPrinting. Alle rettigheder forbeholdt.</div>
+   </body>
+ </html>
+diff -up cups-2.4.1/doc/de/index.html.in.css-issues cups-2.4.1/doc/de/index.html.in
+--- cups-2.4.1/doc/de/index.html.in.css-issues	2022-01-27 12:11:42.000000000 +0100
++++ cups-2.4.1/doc/de/index.html.in	2022-03-08 13:55:16.075624812 +0100
+@@ -10,7 +10,7 @@
+     <title>Startseite - CUPS @CUPS_VERSION@</title>
+   </head>
+   <body>
+-    <div class="header">
++    <div class="cups-header">
+       <ul>
+ 	<li><a href="https://openprinting.github.io/cups/" target="_blank">OpenPrinting CUPS</a></li>
+ 	<li><a class="active" href="/">Startseite</a></li>
+@@ -21,7 +21,7 @@
+ 	<li><a href="/printers/">Drucker</a></li>
+       </ul>
+     </div>
+-    <div class="body">
++    <div class="cups-body">
+       <div class="row">
+ 	<h1>OpenPrinting CUPS @CUPS_VERSION@</h1>
+ 	<p>CUPS basiert auf Standards, Open Source Drucksystem entwickelt durch <a class="jumbolink" href="https://openprinting.github.io/" target="_blank">OpenPrinting</a> für Linux® und andere UNIX®-artige Betriebssysteme. CUPS benutzt <a href="https://www.pwg.org/ipp/everywhere.html" target="_blank">IPP Everywhere™</a> zur Unterstützung lokaler und Netzwerkdrucker.</p>
+@@ -47,6 +47,6 @@
+ 	</div>
+       </div>
+     </div>
+-    <div class="footer">Copyright &copy; 2021-2022 OpenPrinting. Alle Rechte vorbehalten.</div>
++    <div class="cups-footer">Copyright &copy; 2021-2022 OpenPrinting. Alle Rechte vorbehalten.</div>
+   </body>
+ </html>
+diff -up cups-2.4.1/doc/es/index.html.in.css-issues cups-2.4.1/doc/es/index.html.in
+--- cups-2.4.1/doc/es/index.html.in.css-issues	2022-01-27 12:11:42.000000000 +0100
++++ cups-2.4.1/doc/es/index.html.in	2022-03-08 13:55:16.075624812 +0100
+@@ -10,7 +10,7 @@
+     <title>Inicio - CUPS @CUPS_VERSION@</title>
+   </head>
+   <body>
+-    <div class="header">
++    <div class="cups-header">
+       <ul>
+ 	<li><a href="https://openprinting.github.io/cups/" target="_blank">OpenPrinting CUPS</a></li>
+ 	<li><a class="active" href="/">Inicio</a></li>
+@@ -21,7 +21,7 @@
+ 	<li><a href="/printers/">Impresoras</a></li>
+       </ul>
+     </div>
+-    <div class="body">
++    <div class="cups-body">
+       <div class="row">
+ 	<h1>CUPS @CUPS_VERSION@</h1>
+ 	<p>CUPS es el sistema de impresi&oacute;n de c&oacute;digo abierto basado en est&aacute;ndares desarrollado por <a class="jumbolink" href="https://openprinting.github.io/" target="_blank">OpenPrinting</a> para macOS<sup>&reg;</sup> y otros sistemas operativos tipo UNIX<sup>&reg;</sup>. CUPS uses <a href="https://www.pwg.org/ipp/everywhere.html" target="_blank">IPP Everywhere™</a> to support printing to local and network printers.</p>
+@@ -47,6 +47,6 @@
+ 	</div>
+       </div>
+     </div>
+-    <div class="footer">Derechos de autor &copy; 2021-2022 OpenPrinting. Todos los derechos reservados.</div>
++    <div class="cups-footer">Derechos de autor &copy; 2021-2022 OpenPrinting. Todos los derechos reservados.</div>
+   </body>
+ </html>
+diff -up cups-2.4.1/doc/fr/index.html.in.css-issues cups-2.4.1/doc/fr/index.html.in
+--- cups-2.4.1/doc/fr/index.html.in.css-issues	2022-01-27 12:11:42.000000000 +0100
++++ cups-2.4.1/doc/fr/index.html.in	2022-03-08 13:55:16.075624812 +0100
+@@ -10,7 +10,7 @@
+     <title>Home - CUPS @CUPS_VERSION@</title>
+   </head>
+   <body>
+-    <div class="header">
++    <div class="cups-header">
+       <ul>
+ 	<li><a href="https://openprinting.github.io/cups/" target="_blank">OpenPrinting CUPS</a></li>
+ 	<li><a class="active" href="/">Home</a></li>
+@@ -21,7 +21,7 @@
+ 	<li><a href="/printers/">Imprimantes</a></li>
+       </ul>
+     </div>
+-    <div class="body">
++    <div class="cups-body">
+       <div class="row">
+ 	<h1>OpenPrinting CUPS @CUPS_VERSION@</h1>
+ 	<p>Le système d'impression open source basé sur des normes, développé par <a class="jumbolink" href="https://openprinting.github.io/" target="_blank">OpenPrinting</a> for Linux® and other Unix®-like operating systems. CUPS uses <a href="https://www.pwg.org/ipp/everywhere.html" target="_blank">IPP Everywhere™</a> pour prendre en charge l'impression vers des imprimantes locales et de réseau.</p>
+@@ -47,6 +47,6 @@
+ 	</div>
+       </div>
+     </div>
+-    <div class="footer">Copyright &copy; 2021-2022 OpenPrinting. All rights reserved.</div>
++    <div class="cups-footer">Copyright &copy; 2021-2022 OpenPrinting. All rights reserved.</div>
+   </body>
+ </html>
+diff -up cups-2.4.1/doc/index.html.in.css-issues cups-2.4.1/doc/index.html.in
+--- cups-2.4.1/doc/index.html.in.css-issues	2022-01-27 12:11:42.000000000 +0100
++++ cups-2.4.1/doc/index.html.in	2022-03-08 13:55:16.075624812 +0100
+@@ -10,7 +10,7 @@
+     <title>Home - CUPS @CUPS_VERSION@</title>
+   </head>
+   <body>
+-    <div class="header">
++    <div class="cups-header">
+       <ul>
+ 	<li><a href="https://openprinting.github.io/cups/" target="_blank">OpenPrinting CUPS</a></li>
+ 	<li><a class="active" href="/">Home</a></li>
+@@ -21,7 +21,7 @@
+ 	<li><a href="/printers/">Printers</a></li>
+       </ul>
+     </div>
+-    <div class="body">
++    <div class="cups-body">
+       <div class="row">
+ 	<h1>OpenPrinting CUPS @CUPS_VERSION@</h1>
+ 	<p>The standards-based, open source printing system developed by <a class="jumbolink" href="https://openprinting.github.io/" target="_blank">OpenPrinting</a> for Linux® and other Unix®-like operating systems. CUPS uses <a href="https://www.pwg.org/ipp/everywhere.html" target="_blank">IPP Everywhere™</a> to support printing to local and network printers.</p>
+@@ -47,6 +47,6 @@
+ 	</div>
+       </div>
+     </div>
+-    <div class="footer">Copyright &copy; 2021-2022 OpenPrinting. All rights reserved.</div>
++    <div class="cups-footer">Copyright &copy; 2021-2022 OpenPrinting. All rights reserved.</div>
+   </body>
+ </html>
+diff -up cups-2.4.1/doc/ja/index.html.in.css-issues cups-2.4.1/doc/ja/index.html.in
+--- cups-2.4.1/doc/ja/index.html.in.css-issues	2022-01-27 12:11:42.000000000 +0100
++++ cups-2.4.1/doc/ja/index.html.in	2022-03-08 13:55:16.075624812 +0100
+@@ -10,7 +10,7 @@
+     <title>ホーム - CUPS @CUPS_VERSION@</title>
+   </head>
+   <body>
+-    <div class="header">
++    <div class="cups-header">
+       <ul>
+ 	<li><a href="https://openprinting.github.io/cups/" target="_blank">OpenPrinting CUPS</a></li>
+ 	<li><a class="active" href="/">ホーム</a></li>
+@@ -21,7 +21,7 @@
+ 	<li><a href="/printers/">プリンター</a></li>
+       </ul>
+     </div>
+-    <div class="body">
++    <div class="cups-body">
+       <div class="row">
+ 	<h1>CUPS @CUPS_VERSION@</h1>
+ 	<p>CUPS は、macOS<sup>&reg;</sup> およびその他の UNIX <SUP>&reg;</sup> 系 OS のために、<a href="http://www.apple.com/">Apple Inc.</a> によって開発された標準ベースのオープンソース印刷システムです。</p>
+@@ -47,6 +47,6 @@
+ 	</div>
+       </div>
+     </div>
+-    <div class="footer">Copyright &copy; 2021-2022 OpenPrinting. All rights reserved.</div>
++    <div class="cups-footer">Copyright &copy; 2021-2022 OpenPrinting. All rights reserved.</div>
+   </body>
+ </html>
+diff -up cups-2.4.1/doc/pt_BR/index.html.in.css-issues cups-2.4.1/doc/pt_BR/index.html.in
+--- cups-2.4.1/doc/pt_BR/index.html.in.css-issues	2022-01-27 12:11:42.000000000 +0100
++++ cups-2.4.1/doc/pt_BR/index.html.in	2022-03-08 13:55:16.075624812 +0100
+@@ -10,7 +10,7 @@
+     <title>In&iacute;cio - CUPS @CUPS_VERSION@</title>
+   </head>
+   <body>
+-    <div class="header">
++    <div class="cups-header">
+       <ul>
+ 	<li><a href="https://openprinting.github.io/cups/" target="_blank">OpenPrinting CUPS</a></li>
+ 	<li><a class="active" href="/">In&iacute;cio</a></li>
+@@ -21,7 +21,7 @@
+ 	<li><a href="/printers/">Impressoras</a></li>
+       </ul>
+     </div>
+-    <div class="body">
++    <div class="cups-body">
+       <div class="row">
+ 	<h1>CUPS @CUPS_VERSION@</h1>
+ 	<p>CUPS &eacute; o sistema de impress&atilde;o baseado em padr&otilde;es e de c&oacute;digo aberto desenvolvido pela <a class="jumbolink" href="https://openprinting.github.io/" target="_blank">OpenPrinting</a> para Linux® e outros sistemas operacionais similares ao UNIX<sup>&reg;</sup>. CUPS uses <a href="https://www.pwg.org/ipp/everywhere.html" target="_blank">IPP Everywhere™</a> to support printing to local and network printers.</p>
+@@ -47,6 +47,6 @@
+ 	</div>
+       </div>
+     </div>
+-    <div class="footer">Copyright &copy; 2021-2022 OpenPrinting. Todos os direitos reservados.</div>
++    <div class="cups-footer">Copyright &copy; 2021-2022 OpenPrinting. Todos os direitos reservados.</div>
+   </body>
+ </html>
+diff -up cups-2.4.1/doc/ru/index.html.in.css-issues cups-2.4.1/doc/ru/index.html.in
+--- cups-2.4.1/doc/ru/index.html.in.css-issues	2022-01-27 12:11:42.000000000 +0100
++++ cups-2.4.1/doc/ru/index.html.in	2022-03-08 13:55:16.075624812 +0100
+@@ -10,7 +10,7 @@
+ 	<title>Home - CUPS @CUPS_VERSION@</title>
+   </head>
+   <body>
+-    <div class="header">
++    <div class="cups-header">
+       <ul>
+ 	<li><a href="https://openprinting.github.io/cups/" target="_blank">OpenPrinting CUPS</a></li>
+ 	<li><a class="active" href="/">Начало</a></li>
+@@ -21,7 +21,7 @@
+ 	<li><a href="/printers/">Принтеры</a></li>
+       </ul>
+     </div>
+-    <div class="body">
++    <div class="cups-body">
+       <div class="row">
+ 	<h1>OpenPrinting CUPS @CUPS_VERSION@</h1>
+ 	<P>CUPS — поддерживающая большинство стандартов, свободная подсистема печати, разрабатываемая компанией <a class="jumbolink" href="https://openprinting.github.io/" target="_blank">OpenPrinting</a> для операционной системы Linux® и других UNIX<SUP>&reg;</SUP>-подобных операционных систем. CUPS uses <a href="https://www.pwg.org/ipp/everywhere.html" target="_blank">IPP Everywhere™</a> to support printing to local and network printers</P>
+@@ -47,6 +47,6 @@
+ </div>
+       </div>
+     </div>
+-    <div class="footer"> Авторские права на CUPS принадлежат (2021) компании OpenPrinting Все права защищены.</div>
++    <div class="cups-footer">Copyright &copy; 2021-2022 OpenPrinting. All Rights Reserved.</div>
+   </body>
+ </html>
+diff -up cups-2.4.1/templates/da/header.tmpl.in.css-issues cups-2.4.1/templates/da/header.tmpl.in
+--- cups-2.4.1/templates/da/header.tmpl.in.css-issues	2022-01-27 12:11:42.000000000 +0100
++++ cups-2.4.1/templates/da/header.tmpl.in	2022-03-08 13:55:16.075624812 +0100
+@@ -27,7 +27,7 @@
+     <title>{title} - CUPS @CUPS_VERSION@</title>
+   </head>
+   <body onload="check_cookies();">
+-    <div class="header">
++    <div class="cups-header">
+       <ul>
+ 	<li><a href="https://openprinting.github.io/cups/" target="_blank">OpenPrinting CUPS</a></li>
+ 	<li><a href="/">Hjem</a></li>
+@@ -38,6 +38,6 @@
+ 	<li><a {SECTION=printers?class="active" :}href="/printers/">Printere</a></li>
+       </ul>
+     </div>
+-    <div class="body">
++    <div class="cups-body">
+       <div class="row">
+ 	<h1>{title}</h1>
+diff -up cups-2.4.1/templates/da/trailer.tmpl.css-issues cups-2.4.1/templates/da/trailer.tmpl
+--- cups-2.4.1/templates/da/trailer.tmpl.css-issues	2022-03-08 13:55:16.076624818 +0100
++++ cups-2.4.1/templates/da/trailer.tmpl	2022-03-08 13:56:03.419892000 +0100
+@@ -1,5 +1,5 @@
+       </div>
+     </div>
+-    <div class="footer">Ophavsret &copy; 2021-2022 OpenPrinting. Alle rettigheder forbeholdt.</div>
++    <div class="cups-footer">Ophavsret &copy; 2021-2022 OpenPrinting. Alle rettigheder forbeholdt.</div>
+   </body>
+ </html>
+diff -up cups-2.4.1/templates/de/header.tmpl.in.css-issues cups-2.4.1/templates/de/header.tmpl.in
+--- cups-2.4.1/templates/de/header.tmpl.in.css-issues	2022-01-27 12:11:42.000000000 +0100
++++ cups-2.4.1/templates/de/header.tmpl.in	2022-03-08 13:55:16.076624818 +0100
+@@ -27,7 +27,7 @@
+     <title>{title} - CUPS @CUPS_VERSION@</title>
+   </head>
+   <body onload="check_cookies();">
+-    <div class="header">
++    <div class="cups-header">
+       <ul>
+ 	<li><a href="https://openprinting.github.io/cups/" target="_blank">OpenPrinting CUPS</a></li>
+ 	<li><a href="/">Startseite</a></li>
+@@ -38,6 +38,6 @@
+ 	<li><a {SECTION=printers?class="active" :}href="/printers/">Drucker</a></li>
+       </ul>
+     </div>
+-    <div class="body">
++    <div class="cups-body">
+       <div class="row">
+ 	<h1>{title}</h1>
+diff -up cups-2.4.1/templates/de/trailer.tmpl.css-issues cups-2.4.1/templates/de/trailer.tmpl
+--- cups-2.4.1/templates/de/trailer.tmpl.css-issues	2022-03-08 13:55:16.076624818 +0100
++++ cups-2.4.1/templates/de/trailer.tmpl	2022-03-08 13:56:14.892956747 +0100
+@@ -1,5 +1,5 @@
+       </div>
+     </div>
+-    <div class="footer">Copyright &copy; 2021-2022 OpenPrinting. Alle Rechte vorbehalten.</div>
++    <div class="cups-footer">Copyright &copy; 2021-2022 OpenPrinting. Alle Rechte vorbehalten.</div>
+   </body>
+ </html>
+diff -up cups-2.4.1/templates/es/header.tmpl.in.css-issues cups-2.4.1/templates/es/header.tmpl.in
+--- cups-2.4.1/templates/es/header.tmpl.in.css-issues	2022-01-27 12:11:42.000000000 +0100
++++ cups-2.4.1/templates/es/header.tmpl.in	2022-03-08 13:55:16.076624818 +0100
+@@ -27,7 +27,7 @@
+     <title>{title} - CUPS @CUPS_VERSION@</title>
+   </head>
+   <body onload="check_cookies();">
+-    <div class="header">
++    <div class="cups-header">
+       <ul>
+ 	<li><a href="https://openprinting.github.io/cups/" target="_blank">OpenPrinting CUPS</a></li>
+ 	<li><a href="/">Inicio</a></li>
+@@ -38,6 +38,6 @@
+ 	<li><a {SECTION=printers?class="active" :}href="/printers/">Impresoras</a></li>
+       </ul>
+     </div>
+-    <div class="body">
++    <div class="cups-body">
+       <div class="row">
+ 	<h1>{title}</h1>
+diff -up cups-2.4.1/templates/es/trailer.tmpl.css-issues cups-2.4.1/templates/es/trailer.tmpl
+--- cups-2.4.1/templates/es/trailer.tmpl.css-issues	2022-03-08 13:55:16.076624818 +0100
++++ cups-2.4.1/templates/es/trailer.tmpl	2022-03-08 13:56:29.420038731 +0100
+@@ -1,5 +1,5 @@
+       </div>
+     </div>
+-    <div class="footer">Derechos de autor &copy; 2021-2022 OpenPrinting. Todos los derechos reservados.</div>
++    <div class="cups-footer">Derechos de autor &copy; 2021-2022 OpenPrinting. Todos los derechos reservados.</div>
+   </body>
+ </html>
+diff -up cups-2.4.1/templates/fr/header.tmpl.in.css-issues cups-2.4.1/templates/fr/header.tmpl.in
+--- cups-2.4.1/templates/fr/header.tmpl.in.css-issues	2022-01-27 12:11:42.000000000 +0100
++++ cups-2.4.1/templates/fr/header.tmpl.in	2022-03-08 13:55:16.076624818 +0100
+@@ -27,7 +27,7 @@
+     <title>{title} - CUPS @CUPS_VERSION@</title>
+   </head>
+   <body onload="check_cookies();">
+-    <div class="header">
++    <div class="cups-header">
+       <ul>
+ 	<li><a href="https://openprinting.github.io/cups/" target="_blank">OpenPrinting CUPS</a></li>
+ 	<li><a href="/">Home</a></li>
+@@ -38,6 +38,6 @@
+ 	<li><a {SECTION=printers?class="active" :}href="/printers/">Imprimantes</a></li>
+       </ul>
+     </div>
+-    <div class="body">
++    <div class="cups-body">
+       <div class="row">
+ 	<h1>{title}</h1>
+diff -up cups-2.4.1/templates/fr/trailer.tmpl.css-issues cups-2.4.1/templates/fr/trailer.tmpl
+--- cups-2.4.1/templates/fr/trailer.tmpl.css-issues	2022-03-08 13:55:16.076624818 +0100
++++ cups-2.4.1/templates/fr/trailer.tmpl	2022-03-08 13:56:40.341100363 +0100
+@@ -1,5 +1,5 @@
+       </div>
+     </div>
+-    <div class="footer">Copyright &copy; 2021-2022 OpenPrinting. Tous droits r&eacute;serv&eacute;s.</div>
++    <div class="cups-footer">Copyright &copy; 2021-2022 OpenPrinting. Tous droits r&eacute;serv&eacute;s.</div>
+   </body>
+ </html>
+diff -up cups-2.4.1/templates/header.tmpl.in.css-issues cups-2.4.1/templates/header.tmpl.in
+--- cups-2.4.1/templates/header.tmpl.in.css-issues	2022-01-27 12:11:42.000000000 +0100
++++ cups-2.4.1/templates/header.tmpl.in	2022-03-08 13:55:16.076624818 +0100
+@@ -27,7 +27,7 @@
+     <title>{title} - CUPS @CUPS_VERSION@</title>
+   </head>
+   <body onload="check_cookies();">
+-    <div class="header">
++    <div class="cups-header">
+       <ul>
+ 	<li><a href="https://openprinting.github.io/cups/" target="_blank">OpenPrinting CUPS</a></li>
+ 	<li><a href="/">Home</a></li>
+@@ -38,6 +38,6 @@
+ 	<li><a {SECTION=printers?class="active" :}href="/printers/">Printers</a></li>
+       </ul>
+     </div>
+-    <div class="body">
++    <div class="cups-body">
+       <div class="row">
+ 	<h1>{title}</h1>
+diff -up cups-2.4.1/templates/ja/header.tmpl.in.css-issues cups-2.4.1/templates/ja/header.tmpl.in
+--- cups-2.4.1/templates/ja/header.tmpl.in.css-issues	2022-01-27 12:11:42.000000000 +0100
++++ cups-2.4.1/templates/ja/header.tmpl.in	2022-03-08 13:55:16.076624818 +0100
+@@ -19,7 +19,7 @@
+     <title>{title} - CUPS @CUPS_VERSION@</title>
+   </head>
+   <body onload="check_cookies();">
+-    <div class="header">
++    <div class="cups-header">
+       <ul>
+ 	<li><a href="https://openprinting.github.io/cups/" target="_blank">OpenPrinting CUPS</a></li>
+ 	<li><a href="/">ホーム</a></li>
+@@ -30,6 +30,6 @@
+ 	<li><a {SECTION=printers?class="active" :}href="/printers/">プリンター</a></li>
+       </ul>
+     </div>
+-    <div class="body">
++    <div class="cups-body">
+       <div class="row">
+ 	<h1>{title}</h1>
+diff -up cups-2.4.1/templates/ja/trailer.tmpl.css-issues cups-2.4.1/templates/ja/trailer.tmpl
+--- cups-2.4.1/templates/ja/trailer.tmpl.css-issues	2022-03-08 13:55:16.077624823 +0100
++++ cups-2.4.1/templates/ja/trailer.tmpl	2022-03-08 13:56:55.101183659 +0100
+@@ -1,5 +1,5 @@
+       </div>
+     </div>
+-    <div class="footer">Copyright &copy; 2021-2022 OpenPrinting. All rights reserved.</div>
++    <div class="cups-footer">Copyright &copy; 2021-2022 OpenPrinting. All rights reserved.</div>
+   </body>
+ </html>
+diff -up cups-2.4.1/templates/pt_BR/header.tmpl.in.css-issues cups-2.4.1/templates/pt_BR/header.tmpl.in
+--- cups-2.4.1/templates/pt_BR/header.tmpl.in.css-issues	2022-01-27 12:11:42.000000000 +0100
++++ cups-2.4.1/templates/pt_BR/header.tmpl.in	2022-03-08 13:55:16.077624823 +0100
+@@ -27,7 +27,7 @@
+     <title>{title} - CUPS @CUPS_VERSION@</title>
+   </head>
+   <body onload="check_cookies();">
+-    <div class="header">
++    <div class="cups-header">
+       <ul>
+ 	<li><a href="https://openprinting.github.io/cups/" target="_blank">OpenPrinting CUPS</a></li>
+ 	<li><a href="/">In&iacute;cio</a></li>
+@@ -38,6 +38,6 @@
+ 	<li><a {SECTION=printers?class="active" :}href="/printers/">Impressoras</a></li>
+       </ul>
+     </div>
+-    <div class="body">
++    <div class="cups-body">
+       <div class="row">
+ 	<h1>{title}</h1>
+diff -up cups-2.4.1/templates/pt_BR/trailer.tmpl.css-issues cups-2.4.1/templates/pt_BR/trailer.tmpl
+--- cups-2.4.1/templates/pt_BR/trailer.tmpl.css-issues	2022-03-08 13:55:16.077624823 +0100
++++ cups-2.4.1/templates/pt_BR/trailer.tmpl	2022-03-08 13:57:11.349275354 +0100
+@@ -1,5 +1,5 @@
+       </div>
+     </div>
+-    <div class="footer">Copyright &copy; 2021-2022 OpenPrinting. Todos os direitos reservados.</div>
++    <div class="cups-footer">Copyright &copy; 2021-2022 OpenPrinting. Todos os direitos reservados.</div>
+   </body>
+ </html>
+diff -up cups-2.4.1/templates/ru/header.tmpl.in.css-issues cups-2.4.1/templates/ru/header.tmpl.in
+--- cups-2.4.1/templates/ru/header.tmpl.in.css-issues	2022-01-27 12:11:42.000000000 +0100
++++ cups-2.4.1/templates/ru/header.tmpl.in	2022-03-08 13:55:16.077624823 +0100
+@@ -27,7 +27,7 @@
+     <title>{title} - CUPS @CUPS_VERSION@</title>
+   </head>
+   <body onload="check_cookies();">
+-    <div class="header">
++    <div class="cups-header">
+       <ul>
+ 	<li><a href="https://openprinting.github.io/cups/" target="_blank">OpenPrinting CUPS</a></li>
+ 	<li><a href="/">Начало</a></li>
+@@ -38,6 +38,6 @@
+ 	<li><a {SECTION=printers?class="active" :}href="/printers/">Принтеры</a></li>
+       </ul>
+     </div>
+-    <div class="body">
++    <div class="cups-body">
+       <div class="row">
+ 	<h1>{title}</h1>
+diff -up cups-2.4.1/templates/ru/trailer.tmpl.css-issues cups-2.4.1/templates/ru/trailer.tmpl
+--- cups-2.4.1/templates/ru/trailer.tmpl.css-issues	2022-03-08 13:55:16.077624823 +0100
++++ cups-2.4.1/templates/ru/trailer.tmpl	2022-03-08 13:57:25.262353870 +0100
+@@ -1,5 +1,5 @@
+       </div>
+     </div>
+-    <div class="footer">Copyright &copy; 2021-2022 OpenPrinting. Все права защищены.</div>
++    <div class="cups-footer">Copyright &copy; 2021-2022 OpenPrinting. Все права защищены.</div>
+   </body>
+ </html>
+diff -up cups-2.4.1/templates/trailer.tmpl.css-issues cups-2.4.1/templates/trailer.tmpl
+--- cups-2.4.1/templates/trailer.tmpl.css-issues	2022-03-08 13:55:16.073624801 +0100
++++ cups-2.4.1/templates/trailer.tmpl	2022-03-08 13:55:16.077624823 +0100
+@@ -1,5 +1,5 @@
+       </div>
+     </div>
+-    <div class="footer">Copyright &copy; 2021-2022 OpenPrinting. All rights reserved.</div>
++    <div class="cups-footer">Copyright &copy; 2021-2022 OpenPrinting. All rights reserved.</div>
+   </body>
+ </html>
