@@ -23,7 +23,7 @@ SRC_URI="https://download.redis.io/releases/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="+jemalloc ssl systemd tcmalloc test"
+IUSE="+jemalloc selinux ssl systemd tcmalloc test"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -38,6 +38,7 @@ RDEPEND="
 	${COMMON_DEPEND}
 	acct-group/redis
 	acct-user/redis
+	selinux? ( sec-policy/selinux-redis )
 "
 
 BDEPEND="
