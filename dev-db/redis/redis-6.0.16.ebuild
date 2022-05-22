@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ SRC_URI="https://download.redis.io/releases/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="+jemalloc ssl systemd tcmalloc test"
+IUSE="+jemalloc selinux ssl systemd tcmalloc test"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -35,6 +35,7 @@ RDEPEND="
 	${COMMON_DEPEND}
 	acct-group/redis
 	acct-user/redis
+	selinux? ( sec-policy/selinux-redis )
 "
 
 BDEPEND="

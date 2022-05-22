@@ -29,7 +29,6 @@
 		<flag name="openssl">Enable use of <pkg>dev-libs/openssl</pkg> for various features</flag>
 		<flag name="pkcs11">Enable PKCS#11 support for cryptsetup and homed</flag>
 		<flag name="pwquality">Enable password quality checking in homed</flag>
-		<flag name="repart">Enable support for growing/adding partitions</flag>
 		<flag name="qrcode">Enable qrcode output support in journal</flag>
 		<flag name="resolvconf">Install resolvconf symlink for systemd-resolve</flag>
 		<flag name="sysv-utils">Install sysvinit compatibility symlinks and manpages for init, telinit, halt, poweroff, reboot, runlevel, and shutdown</flag>

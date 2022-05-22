@@ -4,14 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
 DESCRIPTION="Pure Python PNG image encoder/decoder"
 HOMEPAGE="
 	https://github.com/drj11/pypng/
-	https://pypi.org/project/pypng/"
+	https://pypi.org/project/pypng/
+"
 SRC_URI="https://github.com/drj11/pypng/archive/${P}.tar.gz"
 S=${WORKDIR}/pypng-${P}
 

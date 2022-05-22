@@ -33,6 +33,60 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-05-22)
+# Doesn't support Python 3.10, out of date, unmaintained in Gentoo.
+# Removal on 2022-06-22. bug #731674, bug #846158.
+net-misc/omniORB
+
+# Sam James <sam@gentoo.org> (2022-05-22)
+# No upstream activity since 2017. Doesn't support Python 3.10.
+# Removal on 2022-06-22. bug #845732.
+dev-python/gevent-websocket
+
+# Sam James <sam@gentoo.org> (2022-05-22)
+# Several open bugs. No upstream activity for a while, doesn't
+# support Python 3.10+, test suite not being run. Removal on 2022-06-22.
+# bug #625800, bug #796974, bug #796977, bug #831916, bug #845888.
+dev-python/sqlalchemy-migrate
+
+# Sam James <sam@gentoo.org> (2022-05-22)
+# No upstream activity since 2015, no reverse dependencies,
+# no Python 3.10 support. Removal on 2022-06-22. bug #845822.
+dev-python/pypeg2
+
+# Sam James <sam@gentoo.org> (2022-05-22)
+# Unmaintained, no upstream activity since 2013, upstream repository disappeared.
+# Long obsolete with no reverse dependencies, as now integrated within pytest.
+# Doesn't support Python 3.10+.
+# Removal on 2022-06-22. bug #700944, bug #845834
+dev-python/pytest-cache
+
+# Sam James <sam@gentoo.org> (2022-05-21)
+# No activity upstream since 2018, unmaintained upstream, does not support
+# Python 3.10+. Removal on 2022-06-21. bug #845726.
+dev-python/fusepy
+
+# Sam James <sam@gentoo.org> (2022-05-21)
+# Unmaintained in Gentoo, no recent activity upstream, and most importantly
+# does not yet support Python 3.10+. Removal on 2022-06-21. bugs #845720, #797850.
+dev-python/drf-yasg
+
+# Michał Górny <mgorny@gentoo.org> (2022-05-21)
+# No commit activity since 2016.  Requires patching for Python 3.10.
+# No tests.  No revdeps.
+# Removal on 2022-06-20.  Bug #846788.
+dev-python/dicttoxml
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-05-21)
+# Work in progress, do not use yet
+=dev-lang/perl-5.36*
+~virtual/perl-Archive-Tar-2.400.0
+~virtual/perl-Attribute-Handlers-1.20.0
+~virtual/perl-bignum-0.650.0
+~virtual/perl-Compress-Raw-Zlib-2.105.0
+~virtual/perl-CPAN-2.330.0
+~virtual/perl-Data-Dumper-2.184.0
+
 # Michał Górny <mgorny@gentoo.org> (2022-05-21)
 # dev-python/mongoengine has had repeated test regressions, and this
 # time I am unable to get them anywhere close to passing.  The current

@@ -19,7 +19,7 @@ SRC_URI="
 "
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 SLOT="0"
 
 RDEPEND=">=dev-python/sphinx-4.5[${PYTHON_USEDEP}]"

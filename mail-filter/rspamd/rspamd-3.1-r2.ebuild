@@ -19,7 +19,7 @@ DESCRIPTION="Rapid spam filtering system"
 HOMEPAGE="https://rspamd.com https://github.com/rspamd/rspamd"
 LICENSE="Apache-2.0 Boost-1.0 BSD BSD-1 BSD-2 CC0-1.0 LGPL-3 MIT public-domain unicode ZLIB"
 SLOT="0"
-IUSE="blas cpu_flags_x86_ssse3 jemalloc +jit pcre2 test"
+IUSE="blas cpu_flags_x86_ssse3 jemalloc +jit pcre2 selinux test"
 RESTRICT="!test? ( test )"
 
 # A part of tests use ffi luajit extension
@@ -50,7 +50,8 @@ RDEPEND="${LUA_DEPS}
 	jemalloc? ( dev-libs/jemalloc:= )
 	dev-libs/openssl:0=[-bindist(-)]
 	pcre2? ( dev-libs/libpcre2:=[jit=] )
-	!pcre2? ( dev-libs/libpcre[jit=] )"
+	!pcre2? ( dev-libs/libpcre[jit=] )
+	selinux? ( sec-policy/selinux-spamassassin )"
 DEPEND="
 	${RDEPEND}
 	<dev-cpp/doctest-2.4.7"
