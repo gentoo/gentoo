@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2022-05-22)
+# Doesn't support Python 3.10, out of date, unmaintained in Gentoo.
+# Removal on 2022-06-22. bug #731674, bug #846158.
+net-misc/omniORB
+
+# Sam James <sam@gentoo.org> (2022-05-22)
 # No upstream activity since 2017. Doesn't support Python 3.10.
 # Removal on 2022-06-22. bug #845732.
 dev-python/gevent-websocket
