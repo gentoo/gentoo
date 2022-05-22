@@ -30,7 +30,6 @@ ruby_add_bdepend "test? (
 	dev-ruby/rspec:3
 	>=dev-ruby/test-unit-3.0.0
 	dev-ruby/rack
-	>=dev-ruby/httpclient-2.8.0
 )"
 
 all_ruby_prepare() {
@@ -43,18 +42,13 @@ all_ruby_prepare() {
 	# There is now optional support for curb and typhoeus which we don't
 	# have in Gentoo yet. em_http_request is available in Gentoo but its
 	# version is too old. patron's latest version is not compatible.
-	sed -i -e '/\(curb\|typhoeus\|em-http\|patron\)/ s:^:#:' spec/spec_helper.rb || die
-	rm -f spec/acceptance/{typhoeus,curb,excon,em_http_request,patron,async_http_client}/* || die
+	# httpclient is no longer maintained and has various test failures.
+	sed -i -e '/\(curb\|typhoeus\|em-http\|patron\|httpclient\)/ s:^:#:' spec/spec_helper.rb || die
+	rm -f spec/acceptance/{typhoeus,curb,excon,em_http_request,patron,async_http_client,httpclient}/* || die
 
 	# Drop tests for dev-ruby/http for now since this package only works with ruby26
 	sed -i -e '/http_rb/ s:^:#:' spec/spec_helper.rb || die
 	rm -f spec/acceptance/http_rb/* || die
-
-	# Avoid httpclient specs that require network access, most likely
-	# because mocking does not fully work.
-	sed -i -e '/httpclient streams response/,/^  end/ s:^:#:' \
-		-e '/are detected when manually specifying Authorization header/,/^    end/ s:^:#:' \
-		spec/acceptance/httpclient/httpclient_spec.rb
 
 	# Avoid specs that require network access
 	sed -i -e '/when request is not stubbed/,/^      end/ s:^:#:' spec/acceptance/shared/callbacks.rb
