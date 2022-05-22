@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit flag-o-matic systemd autotools gnome2-utils python-r1
+inherit flag-o-matic systemd autotools xdg-utils python-r1
 
 DESCRIPTION="A screen color temperature adjusting software"
 HOMEPAGE="http://jonls.dk/redshift/"
@@ -81,14 +81,10 @@ src_install() {
 	fi
 }
 
-pkg_preinst() {
-	use gtk && gnome2_icon_savelist
-}
-
 pkg_postinst() {
-	use gtk && gnome2_icon_cache_update
+	use gtk && xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	use gtk && gnome2_icon_cache_update
+	use gtk && xdg_icon_cache_update
 }
