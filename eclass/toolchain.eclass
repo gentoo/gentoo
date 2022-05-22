@@ -429,9 +429,8 @@ get_gcc_src_uri() {
 	fi
 
 	local PATCH_SUFFIX="xz"
-	if ! tc_version_is_at_least 9.4.1_p20220317 || tc_version_is_between 9 9.5 \
-		|| tc_version_is_between 10 10.4 || tc_version_is_between 11 11.4 \
-		|| tc_version_is_between 12 12.0.1_pre20220424 ; then
+	if ! tc_version_is_at_least 10 || tc_version_is_between 10 10.4 \
+		|| tc_version_is_between 11 11.4 || tc_version_is_between 12 12.0.1_pre20220424 ; then
 		# These are versions before we started to use .xz
 		PATCH_SUFFIX="bz2"
 	fi
