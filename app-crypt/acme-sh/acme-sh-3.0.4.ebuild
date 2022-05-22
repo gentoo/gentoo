@@ -17,10 +17,13 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
+IUSE="selinux"
+
 RDEPEND="
 	dev-libs/openssl:0
 	net-misc/curl
 	net-misc/socat
+	selinux? ( sec-policy/selinux-certbot )
 "
 
 src_install() {
