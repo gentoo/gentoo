@@ -48,7 +48,7 @@ media-video/ffmpeg amf
 # Yongxinag Liang <tanekliang@gmail.com> (2022-01-09)
 # app-emulation/xen-tools doesn't support riscv yet
 app-emulation/qemu xen
-# untested useflag: rbd
+# unkeyworded depdendency - sys-cluster/ceph
 app-emulation/qemu rbd
 sys-fs/multipath-tools rbd
 
