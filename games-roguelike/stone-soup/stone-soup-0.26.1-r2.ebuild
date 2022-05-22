@@ -23,8 +23,8 @@ SRC_URI="
 # Public Domain|CC0: most of tiles
 # MIT: json.cc/json.h, some .js files in webserver/static/scripts/contrib/
 LICENSE="GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT"
-KEYWORDS="amd64 x86"
-IUSE="debug ncurses sound test +tiles"
+KEYWORDS="~amd64 ~x86"
+IUSE="advpng debug ncurses sound test +tiles"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -47,15 +47,24 @@ RDEPEND="
 		virtual/opengl
 	)"
 DEPEND="${RDEPEND}
+	test? ( dev-cpp/catch:0 )
+	tiles? (
+		sys-libs/ncurses:0
+	)
+	"
+BDEPEND="
 	app-arch/unzip
 	dev-lang/perl
 	${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]')
 	sys-devel/flex
-	test? ( dev-cpp/catch:0 )
 	tiles? (
-		media-gfx/pngcrush
-		sys-libs/ncurses:0
+		advpng? (
+			app-arch/advancecomp
+		)
+		!advpng? (
+			media-gfx/pngcrush
+		)
 	)
 	virtual/pkgconfig
 	virtual/yacc
@@ -63,7 +72,7 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}/source
 PATCHES=(
-	"${FILESDIR}"/make-no-png-dep-fix.patch
+	"${FILESDIR}"/make.patch
 	"${FILESDIR}"/rltiles-make.patch
 )
 
@@ -89,6 +98,10 @@ pkg_setup() {
 src_prepare() {
 	default
 	python_fix_shebang "${S}/util/species-gen.py"
+
+	if use advpng; then
+		eapply "${FILESDIR}/make-advpng.patch"
+	fi
 
 	sed -i -e "s/GAME = crawl$/GAME = crawl-${SLOT}/" "${S}/Makefile" \
 		|| die "Couldn't append slot to executable name"

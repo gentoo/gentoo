@@ -1,5 +1,5 @@
---- a/Makefile	2022-05-22 11:25:51.733047395 -0500
-+++ b/Makefile	2022-05-22 11:42:54.240102003 -0500
+--- a/Makefile	2021-08-02 13:54:26.603900984 -0500
++++ b/Makefile	2021-08-02 13:57:26.018910565 -0500
 @@ -186,7 +186,7 @@
  uname_S := $(shell sh -c 'uname -s 2>/dev/null || echo not')
  uname_M := $(shell sh -c 'uname -m 2>/dev/null || echo not')
@@ -9,7 +9,7 @@
  ARCH := $(HOST)
  
  ifdef CROSSHOST
-@@ -451,15 +451,7 @@
+@@ -457,15 +457,7 @@
  GCC_VER_SUFFIX:=-$(GCC_VER)
  endif
  
@@ -25,7 +25,7 @@
  
  ifneq ($(FORCE_CC),)
  GCC := $(FORCE_CC)
-@@ -759,7 +751,6 @@
+@@ -765,7 +757,6 @@
  	FULLDEBUG=YesPlease
  	DEBUG=YesPlease
  	NO_OPTIMIZE=YesPlease
@@ -33,7 +33,7 @@
  endif
  
  # Debug-Lite
-@@ -767,7 +758,6 @@
+@@ -773,7 +764,6 @@
  ifneq (,$(filter debug-lite,$(MAKECMDGOALS)))
  	DEBUG=YesPlease
  	NO_OPTIMIZE=YesPlease
@@ -41,7 +41,7 @@
  endif
  
  # Profile
-@@ -775,12 +765,10 @@
+@@ -781,12 +771,10 @@
  ifneq (,$(filter profile,$(MAKECMDGOALS)))
  	FULLDEBUG=YesPlease
  	DEBUG=YesPlease
@@ -54,7 +54,7 @@
  endif
  
  ifdef HURRY
-@@ -932,7 +920,7 @@
+@@ -938,7 +926,7 @@
      INSTALL_FONTS += "$(PROPORTIONAL_FONT)"
    endif
  else
@@ -63,7 +63,7 @@
    ifneq (,$(SYS_PROPORTIONAL_FONT))
      ifeq (,$(COPY_FONTS))
        DEFINES += -DPROPORTIONAL_FONT=\"$(SYS_PROPORTIONAL_FONT)\"
-@@ -952,7 +940,7 @@
+@@ -958,7 +946,7 @@
      INSTALL_FONTS += "$(MONOSPACED_FONT)"
    endif
  else
@@ -72,22 +72,7 @@
    ifneq (,$(SYS_MONOSPACED_FONT))
      ifeq (,$(COPY_FONTS))
        DEFINES += -DMONOSPACED_FONT=\"$(SYS_MONOSPACED_FONT)\"
-@@ -1092,14 +1080,8 @@
- 
- ifdef TILES_ANY
- ifndef NO_OPTIMIZE
--  ifneq (,$(shell which advpng))
--    USE_ADVPNG = y
--  else
--    ifneq (,$(shell which pngcrush))
-       PNGCRUSH = pngcrush -q -m 113
-       PNGCRUSH_LABEL = PNGCRUSH
--    endif
--  endif
- endif
- endif
- 
-@@ -1181,9 +1163,8 @@
+@@ -1187,9 +1175,8 @@
  
  LANGUAGES = $(filter-out en, $(notdir $(wildcard dat/descript/??)))
  SRC_PKG_BASE  := stone_soup
@@ -98,7 +83,7 @@
  WINARCH := $(shell $(GXX) -dumpmachine | grep -q x64_64 && echo win64 || echo win32)
  
  export SRC_VERSION
-@@ -1511,7 +1492,7 @@
+@@ -1523,7 +1510,7 @@
  endif
  endif
  
@@ -107,13 +92,3 @@
  	[ -d $(prefix_fp)/$(bin_prefix) ] || mkdir -p $(prefix_fp)/$(bin_prefix)
  	$(COPY) $(GAME) $(prefix_fp)/$(bin_prefix)/
  	$(STRIP) $(prefix_fp)/$(bin_prefix)/$(GAME)
-@@ -1747,9 +1728,6 @@
- 
- dat/tiles/%.png: $(RLTILES)/%.png
- 	$(QUIET_PNGCRUSH)$(PNGCRUSH) $< $@
--ifdef USE_ADVPNG
--	$(QUIET_ADVPNG)$(ADVPNG) $@
--endif
- 
- clean-rltiles:
- 	$(RM) $(DESTTILEFILES)

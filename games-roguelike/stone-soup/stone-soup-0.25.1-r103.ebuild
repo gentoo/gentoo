@@ -11,7 +11,7 @@ inherit desktop python-any-r1 lua-single xdg-utils toolchain-funcs
 MY_P="stone_soup-${PV}"
 DESCRIPTION="Role-playing roguelike game of exploration and treasure-hunting in dungeons"
 HOMEPAGE="https://crawl.develz.org"
-SLOT="0.26"
+SLOT="0.25"
 SRC_URI="
 	https://github.com/crawl/crawl/releases/download/${PV}/${PN/-/_}-${PV}.zip
 	https://dev.gentoo.org/~stasibear/distfiles/${PN}.png -> ${PN}-${SLOT}.png
@@ -23,8 +23,8 @@ SRC_URI="
 # Public Domain|CC0: most of tiles
 # MIT: json.cc/json.h, some .js files in webserver/static/scripts/contrib/
 LICENSE="GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT"
-KEYWORDS="amd64 x86"
-IUSE="debug ncurses sound test +tiles"
+KEYWORDS="~amd64 ~x86"
+IUSE="advpng debug ncurses sound test +tiles"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -47,15 +47,24 @@ RDEPEND="
 		virtual/opengl
 	)"
 DEPEND="${RDEPEND}
+	test? ( dev-cpp/catch:0 )
+	tiles? (
+		sys-libs/ncurses:0
+	)
+	"
+BDEPEND="
 	app-arch/unzip
 	dev-lang/perl
 	${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]')
 	sys-devel/flex
-	test? ( dev-cpp/catch:0 )
 	tiles? (
-		media-gfx/pngcrush
-		sys-libs/ncurses:0
+		advpng? (
+			app-arch/advancecomp
+		)
+		!advpng? (
+			media-gfx/pngcrush
+		)
 	)
 	virtual/pkgconfig
 	virtual/yacc
@@ -63,7 +72,7 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}/source
 PATCHES=(
-	"${FILESDIR}"/make-no-png-dep-fix.patch
+	"${FILESDIR}"/make.patch
 	"${FILESDIR}"/rltiles-make.patch
 )
 
@@ -89,6 +98,10 @@ pkg_setup() {
 src_prepare() {
 	default
 	python_fix_shebang "${S}/util/species-gen.py"
+
+	if use advpng; then
+		eapply "${FILESDIR}/make-advpng.patch"
+	fi
 
 	sed -i -e "s/GAME = crawl$/GAME = crawl-${SLOT}/" "${S}/Makefile" \
 		|| die "Couldn't append slot to executable name"
@@ -173,13 +186,9 @@ src_install() {
 pkg_postinst() {
 	xdg_icon_cache_update
 
-	elog "Since version 0.25.1-r101, crawl is a slotted install"
-	elog "that supports having multiple versions installed.  The"
-	elog "binary has the slot appended, e.g. 'crawl-"${SLOT}"'."
-	elog
-	elog "The local save directory also has the slot appended."
-	elog "If you have saved games from 0.25 but before 0.25.1-r101"
-	elog "you can 'mv ~/.crawl ~/.crawl-0.25' to fix it"
+	elog "crawl is a slotted install that supports having"
+	elog "multiple versions installed.  The binary has the"
+	elog "slot appended, e.g. 'crawl-"${SLOT}"'."
 
 	if use tiles && use ncurses ; then
 		elog

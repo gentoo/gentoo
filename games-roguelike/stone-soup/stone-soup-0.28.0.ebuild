@@ -77,7 +77,7 @@ DEPEND="${RDEPEND}
 	"
 
 PATCHES=(
-	"${FILESDIR}"/make.patch
+	"${FILESDIR}"/make-no-png-dep-fix.patch
 	"${FILESDIR}"/rltiles-make.patch
 )
 

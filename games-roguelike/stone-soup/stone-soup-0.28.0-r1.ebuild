@@ -8,25 +8,40 @@ PYTHON_COMPAT=( python3_{7,8,9,10} )
 VIRTUALX_REQUIRED="manual"
 inherit desktop python-any-r1 lua-single xdg-utils toolchain-funcs
 
-MY_P="stone_soup-${PV}"
 DESCRIPTION="Role-playing roguelike game of exploration and treasure-hunting in dungeons"
 HOMEPAGE="https://crawl.develz.org"
-SLOT="0.26"
-SRC_URI="
-	https://github.com/crawl/crawl/releases/download/${PV}/${PN/-/_}-${PV}.zip
-	https://dev.gentoo.org/~stasibear/distfiles/${PN}.png -> ${PN}-${SLOT}.png
-	https://dev.gentoo.org/~stasibear/distfiles/${PN}.svg -> ${PN}-${SLOT}.svg
-"
+SLOT="0.28"
+
+# Leave empty string if not a _pre release
+COMMITSHA=""
+if [ -z "${COMMITSHA}" ]; then
+	# This is a proper release
+	SRC_URI="
+		https://github.com/crawl/crawl/releases/download/${PV}/${PN/-/_}-${PV}.zip
+		https://dev.gentoo.org/~stasibear/distfiles/${PN}.png -> ${PN}-${SLOT}.png
+		https://dev.gentoo.org/~stasibear/distfiles/${PN}.svg -> ${PN}-${SLOT}.svg
+	"
+	MY_P="stone_soup-${PV}"
+else
+	# This is a _pre release
+	SRC_URI="
+		https://github.com/crawl/crawl/archive/${COMMITSHA}.tar.gz -> ${P}.tar.gz
+		https://dev.gentoo.org/~stasibear/distfiles/${PN}.png -> ${PN}-${SLOT}.png
+		https://dev.gentoo.org/~stasibear/distfiles/${PN}.svg -> ${PN}-${SLOT}.svg
+	"
+	MY_P="crawl-${COMMITSHA}/crawl-ref"
+fi
 
 # 3-clause BSD: mt19937ar.cc, MSVC/stdint.h
 # 2-clause BSD: all contributions by Steve Noonan and Jesse Luehrs
 # Public Domain|CC0: most of tiles
 # MIT: json.cc/json.h, some .js files in webserver/static/scripts/contrib/
 LICENSE="GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT"
-KEYWORDS="amd64 x86"
-IUSE="debug ncurses sound test +tiles"
+KEYWORDS="~amd64 ~x86"
+IUSE="advpng debug ncurses sound test +tiles"
 RESTRICT="!test? ( test )"
 
+S=${WORKDIR}/${MY_P}/source
 RDEPEND="
 	${LUA_DEPS}
 	dev-db/sqlite:3
@@ -47,23 +62,31 @@ RDEPEND="
 		virtual/opengl
 	)"
 DEPEND="${RDEPEND}
+	test? ( dev-cpp/catch:0 )
+	tiles? (
+		sys-libs/ncurses:0
+	)
+	"
+BDEPEND="
 	app-arch/unzip
 	dev-lang/perl
 	${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]')
 	sys-devel/flex
-	test? ( dev-cpp/catch:0 )
 	tiles? (
-		media-gfx/pngcrush
-		sys-libs/ncurses:0
+		advpng? (
+			app-arch/advancecomp
+		)
+		!advpng? (
+			media-gfx/pngcrush
+		)
 	)
 	virtual/pkgconfig
 	virtual/yacc
 	"
 
-S=${WORKDIR}/${MY_P}/source
 PATCHES=(
-	"${FILESDIR}"/make-no-png-dep-fix.patch
+	"${FILESDIR}"/make.patch
 	"${FILESDIR}"/rltiles-make.patch
 )
 
@@ -90,8 +113,17 @@ src_prepare() {
 	default
 	python_fix_shebang "${S}/util/species-gen.py"
 
+	if use advpng; then
+		eapply "${FILESDIR}/make-advpng.patch"
+	fi
+
 	sed -i -e "s/GAME = crawl$/GAME = crawl-${SLOT}/" "${S}/Makefile" \
 		|| die "Couldn't append slot to executable name"
+
+	# File required for a _pre build
+	if ! [ -f "${S}/util/release_ver" ]; then
+		echo "${SLOT}" >"${S}/util/release_ver" || die "Couldn't write release_ver"
+	fi
 
 	# Replace bundled catch2 package with system implementation
 	# https://bugs.gentoo.org/829950
@@ -173,13 +205,9 @@ src_install() {
 pkg_postinst() {
 	xdg_icon_cache_update
 
-	elog "Since version 0.25.1-r101, crawl is a slotted install"
-	elog "that supports having multiple versions installed.  The"
-	elog "binary has the slot appended, e.g. 'crawl-"${SLOT}"'."
-	elog
-	elog "The local save directory also has the slot appended."
-	elog "If you have saved games from 0.25 but before 0.25.1-r101"
-	elog "you can 'mv ~/.crawl ~/.crawl-0.25' to fix it"
+	elog "crawl is a slotted install that supports having"
+	elog "multiple versions installed.  The binary has the"
+	elog "slot appended, e.g. 'crawl-"${SLOT}"'."
 
 	if use tiles && use ncurses ; then
 		elog

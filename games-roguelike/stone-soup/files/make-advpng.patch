@@ -1,0 +1,21 @@
+--- a/Makefile	2022-05-22 11:54:15.819138403 -0500
++++ b/Makefile	2022-05-22 11:56:24.475145274 -0500
+@@ -1080,8 +1080,7 @@
+ 
+ ifdef TILES_ANY
+ ifndef NO_OPTIMIZE
+-      PNGCRUSH = pngcrush -q -m 113
+-      PNGCRUSH_LABEL = PNGCRUSH
++    USE_ADVPNG = y
+ endif
+ endif
+ 
+@@ -1727,7 +1726,8 @@
+ $(TILEDEFSRCS) $(TILEDEFHDRS) $(ORIGTILEFILES): build-rltiles
+ 
+ dat/tiles/%.png: $(RLTILES)/%.png
+ 	$(QUIET_PNGCRUSH)$(PNGCRUSH) $< $@
++	$(QUIET_ADVPNG)$(ADVPNG) $@
+ 
+ clean-rltiles:
+ 	$(RM) $(DESTTILEFILES)

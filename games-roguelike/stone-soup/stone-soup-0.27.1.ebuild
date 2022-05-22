@@ -63,7 +63,7 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}/source
 PATCHES=(
-	"${FILESDIR}"/make.patch
+	"${FILESDIR}"/make-no-png-dep-fix.patch
 	"${FILESDIR}"/rltiles-make.patch
 )
 
