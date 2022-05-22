@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-05-22)
+# Unmaintained, no upstream activity since 2013, upstream repository disappeared.
+# Long obsolete with no reverse dependencies, as now integrated within pytest.
+# Doesn't support Python 3.10+.
+# Removal on 2022-06-22. bug #700944, bug #845834
+dev-python/pytest-cache
+
 # Sam James <sam@gentoo.org> (2022-05-21)
 # No activity upstream since 2018, unmaintained upstream, does not support
 # Python 3.10+. Removal on 2022-06-21. bug #845726.
