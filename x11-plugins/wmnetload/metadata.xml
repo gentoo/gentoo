@@ -13,7 +13,4 @@ throughput, along with an auto-scaling graph of recent network activity (the
 graph separates upstream and downstream traffic load cleanly without resorting 
 to colors).
 </longdescription>
-	<upstream>
-		<remote-id type="freshmeat">wmnetload</remote-id>
-	</upstream>
 </pkgmetadata>

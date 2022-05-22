@@ -5,7 +5,4 @@
 		<email>voyageur@gentoo.org</email>
 		<name>Bernard Cafarelli</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="freshmeat">wmblob</remote-id>
-	</upstream>
 </pkgmetadata>
