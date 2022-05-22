@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit python-any-r1 scons-utils
 
 DESCRIPTION="A simple converter to create Ogg Theora files"
@@ -22,8 +22,7 @@ RDEPEND="
 	>=media-libs/libtheora-1.1[encode]
 	kate? ( >=media-libs/libkate-0.3.7 )"
 DEPEND="${RDEPEND}"
-BDEPEND="
-	virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.29-swr.patch
@@ -32,6 +31,7 @@ PATCHES=(
 
 src_prepare() {
 	default
+
 	2to3 -n -w --no-diffs SConstruct || die
 }
 
