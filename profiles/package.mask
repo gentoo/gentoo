@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2022-05-22)
+# No upstream activity since 2015, no reverse dependencies,
+# no Python 3.10 support. Removal on 2022-06-22. bug #845822.
+dev-python/pypeg2
+
+# Sam James <sam@gentoo.org> (2022-05-22)
 # Unmaintained, no upstream activity since 2013, upstream repository disappeared.
 # Long obsolete with no reverse dependencies, as now integrated within pytest.
 # Doesn't support Python 3.10+.
