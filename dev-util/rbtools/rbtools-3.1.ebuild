@@ -27,6 +27,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/kgb[${PYTHON_USEDEP}] )
 "
 
 DOCS=( AUTHORS NEWS README.md )
