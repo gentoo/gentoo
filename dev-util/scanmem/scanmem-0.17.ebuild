@@ -25,6 +25,10 @@ RDEPEND="${DEPEND}
 
 REQUIRED_USE="gui? ( ${PYTHON_REQUIRED_USE} )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-musl-tests.patch
+)
+
 pkg_setup() {
 	use gui && python-single-r1_pkg_setup
 }
