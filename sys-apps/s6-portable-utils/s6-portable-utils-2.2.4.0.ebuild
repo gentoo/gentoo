@@ -11,7 +11,7 @@ SRC_URI="https://www.skarnet.org/software/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="static"
 
 RDEPEND="!static? ( >=dev-libs/skalibs-2.11.2.0:= )"
