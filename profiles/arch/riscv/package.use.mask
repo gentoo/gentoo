@@ -35,10 +35,6 @@ app-containers/crun criu
 # failures on riscv (bug #811477)
 dev-python/pytest-services test
 
-# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
-# Untested useflag on other arches, needs keywording
-media-video/ffmpeg vmaf
-
 # Alex Fan <alex.fan.q@gmail.com> (2022-02-28)
 # dev-libs/vc is a dummy implementation on this arch
 # krita fails to build with it
