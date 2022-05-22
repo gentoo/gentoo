@@ -3,7 +3,9 @@
 
 # Joonas Niilola <juippis@gentoo.org> (2022-05-19)
 # Bundled libvpx results in a failure, force the system-libvpx to be
-# used. bmo#1768145. Confirmed on 91:esr and 100.0:rapid.
+# used. bmo#1768145. Confirmed on firefox-91 and firefox-100.0.
+# (And on thunderbird-91)
+mail-client/thunderbird system-libvpx
 www-client/firefox system-libvpx
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-01-16)
