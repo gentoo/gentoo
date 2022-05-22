@@ -48,8 +48,8 @@ media-video/ffmpeg amf
 # Yongxinag Liang <tanekliang@gmail.com> (2022-01-09)
 # app-emulation/xen-tools doesn't support riscv yet
 app-emulation/qemu xen
-# untested useflag: rbd glusterfs
-app-emulation/qemu rbd glusterfs
+# untested useflag: rbd
+app-emulation/qemu rbd
 sys-fs/multipath-tools rbd
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-16)
