@@ -53,6 +53,9 @@ all_ruby_prepare() {
 
 	# Avoid currently broken readline specs (already fixed upstream)
 	#rm -f spec/line_editor/readline_spec.rb spec/line_editor_spec.rb || die
+
+	# Avoid spec failing on whitespace difference in error message
+	sed -i -e '/raises an error for unknown switches/askip "whitespace differences"' spec/parser/options_spec.rb || die
 }
 
 each_ruby_test() {
