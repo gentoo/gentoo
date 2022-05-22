@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>mintsuki@protonmail.com</email>
+    <name>Rachel Venti</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">limine-bootloader/limine</remote-id>
+    <bugs-to>https://github.com/limine-bootloader/limine/issues</bugs-to>
+  </upstream>
+  <use>
+    <flag name="uefi">
+      Enable UEFI support.
+    </flag>
+    <flag name="uefi32">
+      Enable 32-bit UEFI support.
+    </flag>
+    <flag name="uefi64">
+      Enable 64-bit UEFI support.
+    </flag>
+    <flag name="cd-efi">
+      Enable building cd-efi.bin using <pkg>sys-fs/mtools</pkg>.
+    </flag>
+    <flag name="bios">
+      Enable BIOS/MBR boot support.
+    </flag>
+    <flag name="bios-pxe">
+      Enables BIOS PXE boot support.
+    </flag>
+    <flag name="bios-cd">
+      Enables BIOS boot support for CDs.
+    </flag>
+    <flag name="limine-deploy">
+      Enables building the limine-deploy program.
+    </flag>
+  </use>
+</pkgmetadata>
