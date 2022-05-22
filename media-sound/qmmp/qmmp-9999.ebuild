@@ -21,9 +21,9 @@ LICENSE="GPL-2"
 SLOT="0"
 # KEYWORDS further up
 IUSE="aac +alsa analyzer archive bs2b cdda cover crossfade cue curl +dbus enca
-ffmpeg flac game gnome jack ladspa lyrics +mad midi mms modplug mplayer musepack
+ffmpeg flac game gnome jack ladspa lyrics +mad midi mms mplayer musepack
 notifier opus oss pipewire projectm pulseaudio qsui qtmedia scrobbler shout sid
-sndfile soxr stereo tray udisks +vorbis wavpack"
+sndfile soxr stereo tray udisks +vorbis wavpack xmp"
 
 REQUIRED_USE="
 	gnome? ( dbus )
@@ -65,7 +65,6 @@ RDEPEND="
 	)
 	midi? ( media-sound/wildmidi )
 	mms? ( media-libs/libmms )
-	modplug? ( >=media-libs/libmodplug-0.8.4 )
 	mplayer? ( media-video/mplayer )
 	musepack? ( >=media-sound/musepack-tools-444 )
 	opus? ( media-libs/opusfile )
@@ -88,12 +87,17 @@ RDEPEND="
 		media-libs/libvorbis
 	)
 	wavpack? ( media-sound/wavpack )
+	xmp? ( media-libs/libxmp )
 "
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 "
 
 DOCS=( AUTHORS ChangeLog README )
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.6.0-udisks_plugin.patch"
+)
 
 src_prepare() {
 	if has_version dev-libs/libcdio-paranoia ; then
@@ -132,7 +136,6 @@ src_configure() {
 		-DUSE_MAD="$(usex mad)"
 		-DUSE_MIDI="$(usex midi)"
 		-DUSE_MMS="$(usex mms)"
-		-DUSE_MODPLUG="$(usex modplug)"
 		-DUSE_MPLAYER="$(usex mplayer)"
 		-DUSE_MPC="$(usex musepack)"
 		-DUSE_NOTIFIER="$(usex notifier)"
@@ -153,6 +156,7 @@ src_configure() {
 		-DUSE_UDISKS2="$(usex udisks)"
 		-DUSE_VORBIS="$(usex vorbis)"
 		-DUSE_WAVPACK="$(usex wavpack)"
+		-DUSE_XMP="$(usex xmp)"
 	)
 
 	cmake_src_configure
