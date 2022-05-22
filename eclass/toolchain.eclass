@@ -316,6 +316,17 @@ PDEPEND=">=sys-devel/gcc-config-2.3"
 
 #---->> S + SRC_URI essentials <<----
 
+# @ECLASS_VARIABLE: TOOLCHAIN_PATCH_SUFFIX
+# @DESCRIPTION:
+# Used to override compression used for for patchsets.
+# Default is xz for EAPI 8+ and bz2 for older EAPIs.
+if [[ ${EAPI} == 8 ]] ; then
+	: ${TOOLCHAIN_PATCH_SUFFIX:=xz}
+else
+	# Older EAPIs
+	: ${TOOLCHAIN_PATCH_SUFFIX:=bz2}
+fi
+
 # @ECLASS_VARIABLE: TOOLCHAIN_SET_S
 # @DESCRIPTION:
 # Used to override value of S for snapshots and such. Mainly useful
@@ -428,25 +439,18 @@ get_gcc_src_uri() {
 		fi
 	fi
 
-	local PATCH_SUFFIX="xz"
-	if ! tc_version_is_at_least 10 || tc_version_is_between 10 10.4 \
-		|| tc_version_is_between 11 11.4 || tc_version_is_between 12 12.0.1_pre20220424 ; then
-		# These are versions before we started to use .xz
-		PATCH_SUFFIX="bz2"
-	fi
-
 	[[ -n ${PATCH_VER} ]] && \
-		GCC_SRC_URI+=" $(gentoo_urls gcc-${PATCH_GCC_VER}-patches-${PATCH_VER}.tar.${PATCH_SUFFIX})"
+		GCC_SRC_URI+=" $(gentoo_urls gcc-${PATCH_GCC_VER}-patches-${PATCH_VER}.tar.${TOOLCHAIN_PATCH_SUFFIX})"
 	[[ -n ${MUSL_VER} ]] && \
-		GCC_SRC_URI+=" $(gentoo_urls gcc-${MUSL_GCC_VER}-musl-patches-${MUSL_VER}.tar.${PATCH_SUFFIX})"
+		GCC_SRC_URI+=" $(gentoo_urls gcc-${MUSL_GCC_VER}-musl-patches-${MUSL_VER}.tar.${TOOLCHAIN_PATCH_SUFFIX})"
 
 	[[ -n ${PIE_VER} ]] && \
-		PIE_CORE=${PIE_CORE:-gcc-${PIE_GCC_VER}-piepatches-v${PIE_VER}.tar.${PATCH_SUFFIX}} && \
+		PIE_CORE=${PIE_CORE:-gcc-${PIE_GCC_VER}-piepatches-v${PIE_VER}.tar.${TOOLCHAIN_PATCH_SUFFIX}} && \
 		GCC_SRC_URI+=" $(gentoo_urls ${PIE_CORE})"
 
 	# gcc minispec for the hardened gcc 4 compiler
 	[[ -n ${SPECS_VER} ]] && \
-		GCC_SRC_URI+=" $(gentoo_urls gcc-${SPECS_GCC_VER}-specs-${SPECS_VER}.tar.${PATCH_SUFFIX})"
+		GCC_SRC_URI+=" $(gentoo_urls gcc-${SPECS_GCC_VER}-specs-${SPECS_VER}.tar.${TOOLCHAIN_PATCH_SUFFIX})"
 
 	if tc_has_feature gcj ; then
 		if tc_version_is_at_least 4.5 ; then

@@ -3,10 +3,11 @@
 
 EAPI=7
 
-PATCH_VER="4"
-PATCH_GCC_VER="11.3.0"
-MUSL_VER="1"
-MUSL_GCC_VER="11.3.0"
+TOOLCHAIN_PATCH_SUFFIX="xz"
+PATCH_VER="0"
+PATCH_GCC_VER="11.4.0"
+MUSL_VER="0"
+MUSL_GCC_VER="11.4.0"
 
 if [[ $(ver_cut 3) == 9999 ]] ; then
 	MY_PV_2=$(ver_cut 2)
