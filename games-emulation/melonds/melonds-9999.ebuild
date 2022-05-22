@@ -53,14 +53,6 @@ DOC_CONTENTS="You need the following files in order to run melonDS:
 Place them in ~/.config/melonDS
 Those files can be found somewhere on the Internet ;-)"
 
-PATCHES=( "${FILESDIR}"/melonds-system-teakra.patch )
-
-src_prepare() {
-	rm -r ./src/teakra || die
-
-	cmake_src_prepare
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_JIT=$(usex jit)
