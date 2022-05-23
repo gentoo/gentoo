@@ -54,3 +54,7 @@ dev-python/QtPy test
 # The QML (V4) and JSC JITs do not work on x32.
 dev-qt/qtdeclarative jit
 dev-qt/qtscript jit
+
+# Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-12)
+# Dependency x11-libs/intel-hybrid-codec-driver does not work on x32
+x11-libs/libva-intel-driver hybrid

@@ -105,3 +105,8 @@ gnustep-base/gnustep-make libobjc2
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.
 dev-lang/python-exec -python_targets_pypy3
+
+# Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-12)
+# Dependency x11-libs/intel-hybrid-codec-driver is only available on unstable
+# branch
+x11-libs/libva-intel-driver hybrid

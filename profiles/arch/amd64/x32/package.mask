@@ -161,3 +161,7 @@ sys-apps/yarn
 www-apps/jekyll-coffeescript
 www-apps/kibana-bin
 www-client/chromium
+
+# Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-12)
+# intel-hybrid-codec-driver does not work on x32
+x11-libs/intel-hybrid-codec-driver
