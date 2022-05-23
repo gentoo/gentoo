@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2022-05-23)
+# Dead package upstream. Depends on dead app-misc/tracker:0.
+# Removal on 2022-06-23. Bug #846605
+gnome-extra/gnome-documents
+
 # Sam James <sam@gentoo.org> (2022-05-22)
 # Doesn't support Python 3.10, out of date, unmaintained in Gentoo.
 # Removal on 2022-06-22. bug #731674, bug #846158.
