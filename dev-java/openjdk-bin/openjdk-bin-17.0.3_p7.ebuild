@@ -42,7 +42,7 @@ SRC_URI="
 DESCRIPTION="Prebuilt Java JDK binaries provided by Eclipse Temurin"
 HOMEPAGE="https://adoptium.net"
 LICENSE="GPL-2-with-classpath-exception"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ppc64 ~x64-macos"
 IUSE="alsa cups +gentoo-vm headless-awt selinux source"
 
 RDEPEND="
