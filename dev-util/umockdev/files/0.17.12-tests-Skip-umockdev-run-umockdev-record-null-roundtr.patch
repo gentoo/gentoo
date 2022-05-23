@@ -1,0 +1,35 @@
+From 9396f753179ae68bb275072021db95a994bd7273 Mon Sep 17 00:00:00 2001
+From: Martin Pitt <martin@piware.de>
+Date: Fri, 20 May 2022 20:19:59 +0200
+Subject: [PATCH] tests: Skip /umockdev-run/umockdev-record-null-roundtrip
+
+Running stat or any other program crashes in Gentoo's sandbox when
+running umockdev-run. Skip this new test for the time being, to avoid a
+package build failure.
+
+Fixes #182
+---
+ tests/test-umockdev-run.vala | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/tests/test-umockdev-run.vala b/tests/test-umockdev-run.vala
+index 9407ce9..cc9d03d 100644
+--- a/tests/test-umockdev-run.vala
++++ b/tests/test-umockdev-run.vala
+@@ -317,6 +317,13 @@ t_run_record_null ()
+         return;
+     }
+ 
++    // stat or other programs segfault under Gentoo's sandbox in umockdev
++    if (Environ.get_variable(Environ.get(), "SANDBOX_ON") == "1") {
++        stdout.printf ("[SKIP: crashes in Gentoo's sandbox] ");
++        stdout.flush ();
++        return;
++    }
++
+     Posix.close (checked_open_tmp ("null.XXXXXX.umockdev", out umockdev_file));
+     assert (get_program_out ("true", umockdev_record_command + "/dev/null", out sout, out serr, out exit));
+     assert_cmpstr (serr, CompareOperator.EQ, "");
+-- 
+2.35.1
+
