@@ -32,6 +32,8 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/check )"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}/${P}-openssl3.patch" )
+
 src_prepare() {
 	default
 
