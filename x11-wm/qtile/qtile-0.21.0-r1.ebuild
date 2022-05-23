@@ -28,7 +28,11 @@ RDEPEND=">=dev-python/cairocffi-0.9.0[${PYTHON_USEDEP}]
 	x11-libs/cairo[X,xcb(+)]
 	x11-libs/libnotify[introspection]
 	x11-libs/pango"
-BDEPEND="test? ( x11-base/xorg-server[xephyr] )"
+BDEPEND="
+	test? (
+		media-gfx/imagemagick[X]
+		x11-base/xorg-server[xephyr]
+	)"
 
 EPYTEST_DESELECT=(
 	# Can't find built qtile like migrate
