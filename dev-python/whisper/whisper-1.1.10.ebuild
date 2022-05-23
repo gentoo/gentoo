@@ -28,8 +28,7 @@ RDEPEND="
 
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
-	# not a regression (fails the same with the previous version)
-	# https://github.com/graphite-project/whisper/issues/321
-	test_whisper.py::TestWhisper::test_resize_with_aggregate
-)
+python_test() {
+	local -x TZ=UTC
+	epytest
+}
