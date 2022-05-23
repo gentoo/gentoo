@@ -33,6 +33,11 @@ distutils_enable_tests pytest
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
+PATCHES=(
+	# backport from https://github.com/agronholm/typeguard/pull/243
+	"${FILESDIR}"/${P}-test.patch
+)
+
 python_test() {
 	local EPYTEST_IGNORE=(
 		# mypy changes results from version to version
