@@ -120,21 +120,6 @@ Raises minimum cmake version by a little.
    endif()
  endif()
  
-@@ -385,3 +346,14 @@ endif()
- 
- # build our version of astyle
- SET (WITH_ASTYLE FALSE CACHE BOOL "If you plan to contribute you should reindent with scripts/prepare-commit.sh (using 'our' astyle)")
-+
-+message(STATUS "<<< Gentoo configuration >>>
-+Build type      ${CMAKE_BUILD_TYPE}
-+Install path    ${CMAKE_INSTALL_PREFIX}
-+Compiler flags:
-+C               ${CMAKE_C_FLAGS}
-+C++             ${CMAKE_CXX_FLAGS}
-+Linker flags:
-+Executable      ${CMAKE_EXE_LINKER_FLAGS}
-+Module          ${CMAKE_MODULE_LINKER_FLAGS}
-+Shared          ${CMAKE_SHARED_LINKER_FLAGS}\n")
 --- a/cmake/OpenJPEGConfig.cmake.in
 +++ b/cmake/OpenJPEGConfig.cmake.in
 @@ -27,12 +27,8 @@ if(EXISTS ${SELF_DIR}/OpenJPEGTargets.cmake)
