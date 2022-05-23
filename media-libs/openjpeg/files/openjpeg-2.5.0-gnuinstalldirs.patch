@@ -75,7 +75,7 @@ Raises minimum cmake version by a little.
 -  # hardcoded path to libraries on a multi-arch system (fedora/debian) those
 -  # path will be different (lib/i386-linux-gnu vs lib/x86_64-linux-gnu)
 -  set(OPENJPEG_INSTALL_PACKAGE_DIR "${OPENJPEG_INSTALL_LIB_DIR}/${OPENJPEG_INSTALL_SUBDIR}")
-+  set(OPENJPEG_INSTALL_PACKAGE_DIR "${CMAKE_INSTALL_LIBDIR}/cmake/${CMAKE_INSTALL_SUBDIR}")
++  set(OPENJPEG_INSTALL_PACKAGE_DIR "${CMAKE_INSTALL_LIBDIR}/cmake/${OPENJPEG_INSTALL_SUBDIR}")
  endif()
  
  if (APPLE)
@@ -120,19 +120,38 @@ Raises minimum cmake version by a little.
    endif()
  endif()
  
+@@ -385,3 +346,14 @@ endif()
+ 
+ # build our version of astyle
+ SET (WITH_ASTYLE FALSE CACHE BOOL "If you plan to contribute you should reindent with scripts/prepare-commit.sh (using 'our' astyle)")
++
++message(STATUS "<<< Gentoo configuration >>>
++Build type      ${CMAKE_BUILD_TYPE}
++Install path    ${CMAKE_INSTALL_PREFIX}
++Compiler flags:
++C               ${CMAKE_C_FLAGS}
++C++             ${CMAKE_CXX_FLAGS}
++Linker flags:
++Executable      ${CMAKE_EXE_LINKER_FLAGS}
++Module          ${CMAKE_MODULE_LINKER_FLAGS}
++Shared          ${CMAKE_SHARED_LINKER_FLAGS}\n")
 --- a/cmake/OpenJPEGConfig.cmake.in
 +++ b/cmake/OpenJPEGConfig.cmake.in
-@@ -28,8 +28,8 @@ if(EXISTS ${SELF_DIR}/OpenJPEGTargets.cmake)
+@@ -27,12 +27,8 @@ if(EXISTS ${SELF_DIR}/OpenJPEGTargets.cmake)
+   # This is an install tree
    include(${SELF_DIR}/OpenJPEGTargets.cmake)
  
-   # We find a relative path from the PKG directory to header files.
+-  # We find a relative path from the PKG directory to header files.
 -  set(PKG_DIR "@CMAKE_INSTALL_PREFIX@/@OPENJPEG_INSTALL_PACKAGE_DIR@")
 -  set(INC_DIR "@CMAKE_INSTALL_PREFIX@/@OPENJPEG_INSTALL_INCLUDE_DIR@")
-+  set(PKG_DIR "@CMAKE_INSTALL_FULL_INCLUDEDIR@/@OPENJPEG_INSTALL_PACKAGE_DIR@")
-+  set(INC_DIR "@CMAKE_INSTALL_FULL_INCLUDEDIR@/@OPENJPEG_INSTALL_INCLUDE_DIR@")
-   file(RELATIVE_PATH PKG_TO_INC_RPATH "${PKG_DIR}" "${INC_DIR}")
+-  file(RELATIVE_PATH PKG_TO_INC_RPATH "${PKG_DIR}" "${INC_DIR}")
+-
+-  get_filename_component(OPENJPEG_INCLUDE_DIRS "${SELF_DIR}/${PKG_TO_INC_RPATH}" REALPATH)
++  set(INC_DIR "@CMAKE_INSTALL_FULL_INCLUDEDIR@/@OPENJPEG_INSTALL_SUBDIR@")
++  get_filename_component(OPENJPEG_INCLUDE_DIRS "${INC_DIR}" ABSOLUTE)
  
-   get_filename_component(OPENJPEG_INCLUDE_DIRS "${SELF_DIR}/${PKG_TO_INC_RPATH}" REALPATH)
+ else()
+   if(EXISTS ${SELF_DIR}/OpenJPEGExports.cmake)
 --- a/doc/CMakeLists.txt
 +++ b/doc/CMakeLists.txt
 @@ -44,7 +44,7 @@ if(DOXYGEN_FOUND)
