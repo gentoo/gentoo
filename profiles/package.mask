@@ -100,6 +100,9 @@ dev-python/dicttoxml
 ~virtual/perl-ExtUtils-ParseXS-3.450.0
 ~virtual/perl-File-Spec-3.840.0
 ~virtual/perl-HTTP-Tiny-0.80.0
+~virtual/perl-if-0.61.0
+~virtual/perl-IO-1.500.0
+~virtual/perl-IO-Compress-2.106.0
 
 # Michał Górny <mgorny@gentoo.org> (2022-05-21)
 # dev-python/mongoengine has had repeated test regressions, and this
