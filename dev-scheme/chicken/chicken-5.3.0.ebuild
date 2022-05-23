@@ -11,7 +11,7 @@ SRC_URI="https://code.call-cc.org/releases/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ppc64 ~riscv x86"
+KEYWORDS="~alpha amd64 ~mips ppc ppc64 ~riscv x86"
 IUSE="doc"
 
 RDEPEND=""
