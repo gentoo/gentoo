@@ -249,7 +249,7 @@ riscv		default/linux/riscv/20.0/rv64gc/multilib/systemd			exp
 # @MAINTAINER: s390@gentoo.org
 s390		default/linux/s390/17.0				stable
 s390		default/linux/s390/17.0/s390x			stable
-s390		default/linux/s390/17.0/systemd			exp
+s390		default/linux/s390/17.0/systemd			stable
 s390		default/linux/s390/17.0/s390x/systemd		exp
 
 # SPARC Profiles
