@@ -243,7 +243,7 @@ Raises minimum cmake version by a little.
 +mandir=@CMAKE_INSTALL_MANDIR@
 +docdir=@CMAKE_INSTALL_DOCDIR@
 +libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
-+includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
++includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@/@OPENJPEG_INSTALL_SUBDIR@
  
  Name: openjp2
  Description: JPEG2000 library (Part 1 and 2)
@@ -283,7 +283,7 @@ Raises minimum cmake version by a little.
 +mandir=@CMAKE_INSTALL_MANDIR@
 +docdir=@CMAKE_INSTALL_DOCDIR@
 +libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
-+includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
++includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@/@OPENJPEG_INSTALL_SUBDIR@
  
  Name: openjpip
  Description: JPEG2000 Interactivity tools, APIs and protocols (Part 9)
