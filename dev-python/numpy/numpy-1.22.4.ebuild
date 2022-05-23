@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="threads(+)"
 
 FORTRAN_NEEDED=lapack
@@ -46,7 +46,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.22.0-no-hardcode-blasv2.patch
+	"${FILESDIR}"/numpy-1.22.0-no-hardcode-blasv2.patch
+	"${FILESDIR}"/numpy-1.22.4-py311.patch
 )
 
 distutils_enable_tests pytest
@@ -151,6 +152,11 @@ python_test() {
 			numpy/core/tests/test_ufunc.py::TestUfunc::test_identityless_reduction_huge_array
 		)
 	fi
+
+	[[ ${EPYTHON} == python3.11 ]] && EPYTEST_DESELECT+=(
+		# known problem
+		'numpy/typing/tests/test_generic_alias.py::TestGenericAlias::test_pass[__dir__-<lambda>]'
+	)
 
 	distutils_install_for_testing --single-version-externally-managed \
 		--record "${TMPDIR}/record.txt" ${NUMPY_FCONFIG}
