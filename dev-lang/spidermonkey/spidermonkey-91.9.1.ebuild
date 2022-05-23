@@ -61,7 +61,7 @@ SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}
 DESCRIPTION="SpiderMonkey is Mozilla's JavaScript engine written in C and C++"
 HOMEPAGE="https://spidermonkey.dev https://firefox-source-docs.mozilla.org/js/index.html "
 
-KEYWORDS="amd64 ~arm ~arm64 ~mips ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~mips ~ppc ppc64 ~riscv x86"
 
 SLOT="91"
 LICENSE="MPL-2.0"
