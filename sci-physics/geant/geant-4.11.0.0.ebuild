@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -80,7 +80,7 @@ S="${WORKDIR}/${MY_P}"
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DATADIR="${EPREFIX}/usr/share/geant4"
-		-DCMAKE_CXX_STANDARD=$((usev c++17 || usev c++20) | cut -c4-)
+		-DCMAKE_CXX_STANDARD=$( (usev c++17 || usev c++20) | cut -c4-)
 		-DGEANT4_BUILD_BUILTIN_BACKTRACE=$(usex debug)
 		-DGEANT4_BUILD_MULTITHREADED=$(usex threads)
 		-DGEANT4_BUILD_STORE_TRAJECTORY=OFF
