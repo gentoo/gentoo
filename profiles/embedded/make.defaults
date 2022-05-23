@@ -43,3 +43,45 @@ PROFILE_ONLY_VARIABLES="IUSE_IMPLICIT USERLAND USE_EXPAND_IMPLICIT USE_EXPAND_UN
 # Accept only licenses in the FREE license group, i.e., with
 # the freedom to use, share, modify and share modifications
 ACCEPT_LICENSE="-* @FREE"
+
+# Imported from profiles/base/make.defaults
+#
+CONFIG_PROTECT="/etc"
+CONFIG_PROTECT_MASK="/etc/env.d /etc/gconf"
+
+# EAPI 7 environment variable blacklist.
+#
+# DBUS_SESSION_BUS_ADDRESS to avoid trying to access the user's session
+# bus.
+#
+# DISPLAY and XAUTHORITY to avoid trying to access the user's X11.
+#
+# CARGO_HOME may leak to build env if package is not using cargo.eclass
+# such leak will result in sandbox violations
+#
+# XDG_* since the values coming from user environment can collide with
+# ebuild-set ${HOME} (e.g. by referring to user's home directory).
+# We exclude XDG_DATA_DIRS & XDG_CONFIG_DIRS as those are set in env.d.
+#
+# PERL_MM_OPT PERL5LIB PERL5OPT PERL_MB_OPT PERL_CORE PERLPREFIX:
+# These are guaranteed to confuse perl module installation. Pre-EAPI7
+# the Perl eclasses bail out if they are set. Now we declare them here.
+#
+# GOBIN needs to be cleaned as random values in GOBIN can affect the
+# building of some packages:
+# https://archives.gentoo.org/gentoo-dev/message/163010f83ae7819d80c0cfdf797cbfe0
+ENV_UNSET="DBUS_SESSION_BUS_ADDRESS DISPLAY CARGO_HOME XAUTHORITY XDG_CACHE_HOME XDG_CONFIG_HOME XDG_DATA_HOME XDG_RUNTIME_DIR PERL_MM_OPT PERL5LIB PERL5OPT PERL_MB_OPT PERL_CORE PERLPREFIX GOBIN GOPATH"
+
+# Tiziano Müller <dev-zero@gentoo.org> (2010-01-24)
+# We usually don't want python to (re)write .py[co] files during phase runs
+# since it could cause sandbox violations
+PYTHONDONTWRITEBYTECODE="1"
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2013-08-23)
+# Make emerge messages default to English as per Council decision
+LC_MESSAGES="C"
+
+# Brian Dolbec <dolsen@gentoo.org> (2017-06-16)
+# disable twisted's plugin cache update to prevent access violations
+# call /usr/bin/twisted-regen-cache in pkg_postinst()
+TWISTED_DISABLE_WRITING_OF_PLUGIN_CACHE="1"
