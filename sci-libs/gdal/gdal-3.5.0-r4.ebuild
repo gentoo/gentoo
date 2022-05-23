@@ -53,7 +53,7 @@ DEPEND="dev-libs/expat
 	gif? ( media-libs/giflib:= )
 	gml? ( >=dev-libs/xerces-c-3.1 )
 	heif? ( media-libs/libheif:= )
-	hdf5? ( >=sci-libs/hdf5-1.6.4:=[szip] )
+	hdf5? ( >=sci-libs/hdf5-1.6.4:=[cxx,szip] )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
 	lzma? ( || (
