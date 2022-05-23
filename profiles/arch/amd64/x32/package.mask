@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-26)
+# intel-hybrid-codec-driver does not work on x32
+x11-libs/intel-hybrid-codec-driver
+
 # Jonas Licht <jonas.licht@gmail.com> (2022-05-01)
 # Requires net-libs/nodejs, plus mask all reverse-dependecies.
 net-analyzer/gsa

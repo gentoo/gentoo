@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-26)
+# Dependency x11-libs/intel-hybrid-codec-driver does not work on x32
+x11-libs/libva-intel-driver hybrid
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-02-09)
 # Requires net-libs/nodejs, plus mask all reverse-dependencies.
 app-i18n/fcitx-libpinyin dictionary-manager
