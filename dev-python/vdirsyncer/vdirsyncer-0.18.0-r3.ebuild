@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 
 RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 	>=dev-python/click-log-0.3.0[${PYTHON_USEDEP}]
-	<dev-python/click-log-0.4.0[${PYTHON_USEDEP}]
 	>=dev-python/click-threading-0.5[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/requests-toolbelt[${PYTHON_USEDEP}]
@@ -38,6 +37,13 @@ PATCHES=(
 DOCS=( AUTHORS.rst CHANGELOG.rst CONTRIBUTING.rst README.rst config.example )
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	# unpin click-log
+	# https://github.com/pimutils/vdirsyncer/commit/ea640001d0ad6e56369102e02b949c865c48726f
+	sed -i -e '/click-log/s:, <0.4.0::' setup.py || die
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	# skip tests needing servers running
