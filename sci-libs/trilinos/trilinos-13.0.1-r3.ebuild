@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ SLOT="0"
 
 IUSE="
 	adolc arprec clp cuda eigen glpk gtest hdf5 hwloc hypre
-	matio metis mkl mumps netcdf petsc qd scalapack scotch sparse
+	matio metis mkl mumps netcdf openmp petsc qd scalapack scotch sparse
 	superlu taucs tbb test threads tvmet yaml zlib X
 "
 
@@ -69,6 +69,14 @@ PATCHES=(
 	"${WORKDIR}"/patches
 )
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 trilinos_conf() {
 	local dirs libs d
 	for d in $($(tc-getPKG_CONFIG) --libs-only-L $1); do
@@ -95,11 +103,13 @@ src_configure() {
 		-DTrilinos_INSTALL_INCLUDE_DIR="${EPREFIX}/usr/include/trilinos"
 		-DTrilinos_INSTALL_LIB_DIR="${EPREFIX}/usr/$(get_libdir)/trilinos"
 		-DTrilinos_ENABLE_ALL_PACKAGES=ON
+		-DTrilinos_ENABLE_OpenMP="$(usex openmp)"
 		-DTrilinos_ENABLE_PyTrilinos=OFF
-		-DTrilinos_ENABLE_SEACAS=OFF
 		-DTrilinos_ENABLE_SEACASChaco=OFF
 		-DTrilinos_ENABLE_SEACASExodiff="$(usex netcdf)"
 		-DTrilinos_ENABLE_SEACASExodus="$(usex netcdf)"
+		-DTrilinos_ENABLE_SEACAS=OFF
+		-DTrilinos_ENABLE_ADELUS=OFF
 		-DTrilinos_ENABLE_TESTS="$(usex test)"
 		-DTPL_ENABLE_BinUtils=ON
 		-DTPL_ENABLE_BLAS=ON
