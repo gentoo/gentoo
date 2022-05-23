@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
@@ -19,8 +19,9 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 
-RDEPEND="dev-python/click[${PYTHON_USEDEP}]"
-BDEPEND="${RDEPEND}"
+RDEPEND="
+	dev-python/click[${PYTHON_USEDEP}]
+"
 
 DOCS=( README.rst )
 
