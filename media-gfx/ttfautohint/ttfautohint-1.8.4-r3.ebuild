@@ -16,7 +16,7 @@ IUSE="qt5"
 
 RDEPEND="
 	media-libs/freetype
-	media-libs/harfbuzz:=
+	media-libs/harfbuzz:=[truetype]
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
