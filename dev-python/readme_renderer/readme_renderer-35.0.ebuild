@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
@@ -25,7 +25,9 @@ RDEPEND="
 	>=dev-python/pygments-2.5.2[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	test? ( dev-python/mock[${PYTHON_USEDEP}] )
+	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+	)
 "
 
 DOCS=( README.rst )
