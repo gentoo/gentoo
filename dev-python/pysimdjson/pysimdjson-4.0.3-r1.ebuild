@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
@@ -36,7 +36,7 @@ distutils_enable_tests pytest
 
 src_prepare() {
 	# benchmarks aren't run
-	sed -i -e 's:pytest-benchmark::' setup.cfg || die
+	sed -i -e 's:pytest-benchmark:: ; /license_file/ d' setup.cfg || die
 	# force regen
 	rm simdjson/csimdjson.cpp || die
 	# unbundle
