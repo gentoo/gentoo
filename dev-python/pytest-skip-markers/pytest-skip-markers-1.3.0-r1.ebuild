@@ -31,6 +31,7 @@ BDEPEND="
 	dev-python/setuptools-declarative-requirements[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
+		dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/pyfakefs[${PYTHON_USEDEP}]
 		dev-python/pytest-subtests[${PYTHON_USEDEP}]
 	)
