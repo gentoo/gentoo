@@ -24,7 +24,9 @@ DEPEND="kmod? ( sys-apps/kmod )
 	!static-libs? ( ${LIB_DEPEND//static-libs([+-]),} )"
 RDEPEND="${DEPEND}
 	sys-apps/hwdata"
+# See bug #847133 re binutils check
 BDEPEND="sys-apps/which
+	|| ( >=sys-devel/binutils-2.37:* sys-devel/lld sys-devel/native-cctools )
 	kmod? ( virtual/pkgconfig )"
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/pci/config.h )
