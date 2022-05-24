@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
+
 inherit distutils-r1
 
 DESCRIPTION="Collection of utilities for publishing packages on PyPI"
@@ -65,6 +66,10 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		# regression due to deps?
 		tests/test_check.py::test_fails_rst_no_content
+	)
+	[[ ${EPYTHON} == python3.11 ]] && EPYTEST_DESELECT+=(
+		# confused by extra log entries that don't seem relevant
+		tests/test_auth.py::test_warns_for_empty_password
 	)
 
 	local -x COLUMNS=80
