@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -96,6 +96,15 @@ src_configure() {
 		--disable-grapher
 		--disable-refdocs
 		--disable-server
+		# Our toolchain sets this for us already and adding in
+		# -D_FORTIFY_SOURCE=2 breaks builds w/ no optimisation.
+		# This option (at least as of 4.5) doesn't pass -fno* etc,
+		# it just doesn't _add_ options, which is good. If it changes
+		# to actually pass -fno-stack-protector and friends, we'll
+		# need to change course. Forcing =2 also has problems for
+		# setting it to 3.
+		# bug #794667.
+		--disable-ssp
 		--enable-pie
 		--with-python3
 		--without-java
