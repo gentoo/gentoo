@@ -48,8 +48,6 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	# requires internet
-	rm -f tests/test_integration.py || die
 	# pytest-socket dep relevant only to test_integration, and upstream
 	# disables it anyway
 	sed -i -e '/--disable-socket/d' pytest.ini || die
@@ -60,6 +58,15 @@ python_prepare_all() {
 }
 
 python_test() {
+	local EPYTEST_IGNORE=(
+		# Internet
+		tests/test_integration.py
+	)
+	local EPYTEST_DESELECT=(
+		# regression due to deps?
+		tests/test_check.py::test_fails_rst_no_content
+	)
+
 	local -x COLUMNS=80
 	epytest
 }
