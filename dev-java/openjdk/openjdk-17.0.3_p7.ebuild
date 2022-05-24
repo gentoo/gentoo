@@ -46,7 +46,7 @@ SRC_URI="
 LICENSE="GPL-2"
 KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv x86"
 
-IUSE="alsa big-endian cups debug doc examples gentoo-vm headless-awt javafx +jbootstrap selinux source system-bootstrap systemtap"
+IUSE="alsa big-endian cups debug doc examples +gentoo-vm headless-awt javafx +jbootstrap selinux source system-bootstrap systemtap"
 
 REQUIRED_USE="
 	javafx? ( alsa !headless-awt )
