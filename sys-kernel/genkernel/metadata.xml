@@ -7,11 +7,9 @@
 	<use>
 		<flag name="firmware">Prefer system firmware <pkg>sys-kernel/linux-firmware</pkg> over local copy.</flag>
 	</use>
-	<!--
 	<upstream>
-		<remote-id type="gentoo">git://git.gentoo.org/proj/genkernel</remote-id>
+		<remote-id type="gentoo">proj/genkernel</remote-id>
 	</upstream>
-	-->
 	<upstream>
 		<remote-id type="sourceforge">fuse</remote-id>
 	</upstream>
