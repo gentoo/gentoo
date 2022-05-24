@@ -394,7 +394,7 @@ RDEPEND="
 		app-dicts/sword-Kapingamarangi
 	)
 	l10n_ktu? (
-		app-dicts/sword-KtuVb
+		app-dicts/sword-KtuVB
 	)
 	l10n_la? (
 		app-dicts/sword-VulgClementine

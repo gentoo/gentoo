@@ -5,3 +5,4 @@ move dev-python/setuptools_rust dev-python/setuptools-rust
 move dev-python/lark-parser dev-python/lark
 move dev-python/suds dev-python/suds-community
 move dev-cpp/cpp-taskflow dev-cpp/taskflow
+move app-dicts/sword-KtuVb app-dicts/sword-KtuVB
