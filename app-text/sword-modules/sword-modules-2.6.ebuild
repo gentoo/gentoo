@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ HOMEPAGE="https://www.crosswire.org/sword/modules/"
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="~amd64 ~loong ~ppc ~riscv ~x86"
 
 LANGS=" af ar az be bea bg br ceb ch chr ckb cop cs cu cy da de el en eo es et eu fa fi fr ga gd gez got grc gv he hi hr ht hu hy it ja kek kk km ko kpg ktu la ln lt lv mg mi ml mn my nb nd nl nn pl pon pot ppk prs pt rmq ro ru sl sml sn so sq sr sv sw syr th tl tlh tr tsg ug uk ur vi vls zh"
 IUSE="esoteric ${LANGS// / l10n_}"
@@ -39,6 +39,7 @@ RDEPEND="
 		app-dicts/sword-BeaMRK
 	)
 	l10n_bg? (
+		app-dicts/sword-BulCarigradNT
 		app-dicts/sword-BulVeren
 	)
 	l10n_br? (
@@ -274,11 +275,13 @@ RDEPEND="
 		app-dicts/sword-FinSTLK2017
 	)
 	l10n_fr? (
+		app-dicts/sword-FreAug
 		app-dicts/sword-FreBBB
 		app-dicts/sword-FreBDM1707
 		app-dicts/sword-FreBDM1744
 		app-dicts/sword-FreBailly
 		app-dicts/sword-FreCJE
+		app-dicts/sword-FreChry
 		app-dicts/sword-FreCrampon
 		app-dicts/sword-FreDAW
 		app-dicts/sword-FreGBM
