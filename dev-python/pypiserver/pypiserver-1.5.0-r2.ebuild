@@ -23,6 +23,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
 
 RDEPEND="
+	dev-python/bottle[${PYTHON_USEDEP}]
 	dev-python/pip[${PYTHON_USEDEP}]
 	>=dev-python/wheel-0.25.0[${PYTHON_USEDEP}]
 "
@@ -30,7 +31,6 @@ RDEPEND="
 BDEPEND="
 	dev-python/setuptools-git[${PYTHON_USEDEP}]
 	test? (
-		dev-python/bottle[${PYTHON_USEDEP}]
 		>=dev-python/passlib-1.6[${PYTHON_USEDEP}]
 		dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/twine[${PYTHON_USEDEP}]
