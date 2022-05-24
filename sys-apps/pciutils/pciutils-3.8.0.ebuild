@@ -37,6 +37,50 @@ switch_config() {
 	return 0
 }
 
+check_binutils_version() {
+	if ! tc-ld-is-gold && ! tc-ld-is-lld ; then
+		# Okay, hopefully it's Binutils' bfd.
+		# bug #847133
+
+		# Convert this:
+		# ```
+		# GNU ld (Gentoo 2.38 p4) 2.38
+		# Copyright (C) 2022 Free Software Foundation, Inc.
+		# This program is free software; you may redistribute it under the terms of
+		# the GNU General Public License version 3 or (at your option) a later version.
+		# This program has absolutely no warranty.
+		# ```
+		#
+		# into...
+		# ```
+		# 2.38
+		# ```
+		local ver=$($(tc-getLD) --version 2>&1 | head -1 | rev | cut -d' ' -f1 | rev)
+		ver_major=$(ver_cut 1 "${ver}")
+		ver_minor=$(ver_cut 2 "${ver}")
+
+		if [[ ${ver_major} -eq 2 && ${ver_minor} -lt 37 ]] ; then
+			eerror "Old version of binutils activated! ${P} cannot be built with an old version."
+			eerror "Please follow these steps:"
+			eerror "1. Select a newer binutils (>= 2.37) using binutils-config"
+			eerror "2. Run: . /etc/profile"
+			eerror "3. Try emerging again with: emerge -v1 ${CATEGORY}/${P}"
+			eerror "4. Complete your world upgrade if you were performing one."
+			eerror "4. Perform a depclean (emerge -acv)"
+			eerror "\tYou MUST depclean after every world upgrade in future!"
+			die "Old binutils found! Change to a newer ld using binutils-config (bug #847133)."
+		fi
+	fi
+}
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && check_binutils_version
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && check_binutils_version
+}
+
 src_prepare() {
 	default
 
