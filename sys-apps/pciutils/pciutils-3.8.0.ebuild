@@ -58,6 +58,13 @@ check_binutils_version() {
 		# 2.38
 		# ```
 		local ver=$($(tc-getLD) --version 2>&1 | head -1 | rev | cut -d' ' -f1 | rev)
+
+		if ! [[ ${ver} =~ [0-9].[0-9][0-9] ]] ; then
+			# Skip if unrecognised format so we don't pass something
+			# odd into ver_cut.
+			return
+		fi
+
 		ver_major=$(ver_cut 1 "${ver}")
 		ver_minor=$(ver_cut 2 "${ver}")
 
