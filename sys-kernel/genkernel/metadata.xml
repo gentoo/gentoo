@@ -9,8 +9,6 @@
 	</use>
 	<upstream>
 		<remote-id type="gentoo">proj/genkernel</remote-id>
-	</upstream>
-	<upstream>
 		<remote-id type="sourceforge">fuse</remote-id>
 	</upstream>
 </pkgmetadata>
