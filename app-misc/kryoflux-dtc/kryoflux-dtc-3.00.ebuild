@@ -15,7 +15,7 @@ HOMEPAGE="https://www.kryoflux.com"
 SRC_URI="https://www.kryoflux.com/download/${MY_P}.tgz"
 S="${WORKDIR}/${MY_P}"
 
-KEYWORDS="-* ~amd64 ~arm64"
+KEYWORDS="-* amd64 ~arm64"
 LICENSE="SPS"
 SLOT="0"
 IUSE="demos doc gui"
