@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
 
 RDEPEND="
 	>=dev-python/jsonschema-3.2.0[${PYTHON_USEDEP}]
