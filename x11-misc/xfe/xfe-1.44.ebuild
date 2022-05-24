@@ -23,13 +23,17 @@ RDEPEND="
 	x11-libs/libXrandr
 	x11-libs/libX11
 	x11-libs/libXft
-	startup-notification? ( x11-libs/startup-notification )
+	startup-notification? (
+		x11-libs/libxcb:=
+		x11-libs/startup-notification
+		x11-libs/xcb-util
+	)
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
+	dev-util/intltool
 	virtual/pkgconfig
 	nls? (
-		dev-util/intltool
 		sys-devel/gettext
 	)
 "
