@@ -38,7 +38,7 @@ switch_config() {
 }
 
 check_binutils_version() {
-	if ! tc-ld-is-gold && ! tc-ld-is-lld ; then
+	if [[ -z ${I_KNOW_WHAT_I_AM_DOING} ]] && ! tc-ld-is-gold && ! tc-ld-is-lld ; then
 		# Okay, hopefully it's Binutils' bfd.
 		# bug #847133
 
