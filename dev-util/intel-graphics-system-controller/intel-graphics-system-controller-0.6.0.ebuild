@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
 SLOT="0/0.6.0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="+cli doc"
 
 RDEPEND="dev-libs/metee:="
