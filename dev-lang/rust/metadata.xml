@@ -13,7 +13,7 @@
 		<flag name="clippy">Install clippy, Rust code linter</flag>
 		<flag name="dist">Install dist tarballs (used for bootstrapping)</flag>
 		<flag name="miri">Install miri, an interpreter for Rust's mid-level intermediate representation (requires USE=nightly)</flag>
-		<flag name="nightly">Enable nightly (UNSTABLE) features</flag>
+		<flag name="nightly">Enable nightly (UNSTABLE) features (NOTE: it does not install nightly version, just enables features marked as nightly at time of release)</flag>
 		<flag name="parallel-compiler">Build a multi-threaded rustc (experimental, not tested by upstream)</flag>
 		<flag name="profiler">Build the profiler runtime and rust-demangler tool (needed for '-C profile-generate' or '-C instrument-coverage' codegen opts)</flag>
 		<flag name="rls">Install rls, Rust Language Server (used with IDEs supporting RLS protocol)</flag>
