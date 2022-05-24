@@ -23,7 +23,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
-	dev-libs/simdjson:=
+	<dev-libs/simdjson-1.1:=
 "
 RDEPEND="
 	${DEPEND}
