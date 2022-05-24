@@ -45,7 +45,8 @@ multilib_src_configure() {
 	if is-flagq '-O[23]' || is-flagq '-Ofast' ; then
 		# We can't unconditionally do this b/c we fortify needs
 		# some level of optimisation.
-		append-flags -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
+		filter-flags -D_FORTIFY_SOURCE=3
+		append-cppflags -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
 	fi
 
 	local myeconfargs=(
