@@ -906,6 +906,11 @@ src_configure() {
 		myconf_gn+=" ozone_platform=$(usex wayland \"wayland\" \"x11\")"
 	fi
 
+	# Results in undefined references in chrome linking, may require CFI to work
+	if use arm64; then
+		myconf_gn+=" arm_control_flow_integrity=\"none\""
+	fi
+
 	# Enable official builds
 	myconf_gn+=" is_official_build=$(usex official true false)"
 	myconf_gn+=" use_thin_lto=$(usex lto true false)"
