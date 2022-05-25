@@ -23,9 +23,6 @@ RDEPEND="
 	>=dev-python/attrs-19.2.0[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	dev-python/m2r[${PYTHON_USEDEP}]
-"
 
 PATCHES=(
 	"${FILESDIR}/automat-0.8.0-no-setup-py-m2r-import.patch"
