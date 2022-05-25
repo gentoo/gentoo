@@ -1,4 +1,4 @@
-# Copyright 2008-2021 Gentoo Authors
+# Copyright 2008-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~jstein/dist/${P}.tar.xz"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc ~riscv x86 ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc ~riscv x86 ~ppc-macos ~x64-macos"
 IUSE=""
 
 # Only installs fonts
