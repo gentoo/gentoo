@@ -3,9 +3,9 @@
 
 EAPI=8
 
-CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
+CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
-	sv sw ta te th tr uk vi zh-CN zh-TW"
+	sv sw ta te th tr uk ur vi zh-CN zh-TW"
 
 inherit chromium-2 desktop pax-utils readme.gentoo-r1 unpacker xdg-utils
 
@@ -35,7 +35,7 @@ SRC_URI="https://dev.gentoo.org/~sultan/distfiles/www-client/chromium-bin/${MY_P
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~arm64 ~x86"
-IUSE="cpu_flags_x86_sse2 suid +swiftshader wayland widevine"
+IUSE="cpu_flags_x86_sse2 suid wayland widevine"
 
 RDEPEND="
 	app-accessibility/at-spi2-atk:2
@@ -151,11 +151,6 @@ src_install() {
 
 	if ! use suid; then
 		rm "${CHROMIUM_BIN_HOME}/chrome-sandbox" || die
-	fi
-
-	# Remove SwiftShader OpenGL libraries
-	if ! use swiftshader; then
-		rm -r "${CHROMIUM_BIN_HOME}/swiftshader" || die
 	fi
 
 	# Clean unneeded languages
