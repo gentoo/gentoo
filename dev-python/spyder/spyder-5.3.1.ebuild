@@ -76,7 +76,7 @@ BDEPEND="
 		dev-python/pytest-lazy-fixture[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/pytest-ordering[${PYTHON_USEDEP}]
-		<dev-python/pytest-qt-4[${PYTHON_USEDEP}]
+		dev-python/pytest-qt[${PYTHON_USEDEP}]
 		dev-python/pytest-xvfb[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}]
