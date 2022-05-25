@@ -15,6 +15,10 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-move-only-types-fix.patch" # bug 830624
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DDOCTEST_WITH_TESTS=$(usex test)
