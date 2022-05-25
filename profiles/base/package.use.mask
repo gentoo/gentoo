@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2022-05-25)
+# dev-python/sphinxcontrib-openapi is masked for removal.
+dev-python/jupyter_server doc
+
 # Joonas Niilola <juippis@gentoo.org> (2022-05-03)
 # sndio is currently broken in Gentoo, #842420.
 # system-python-libs is HIGHLY EXPERIMENTAL according to upstream, and

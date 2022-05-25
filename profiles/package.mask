@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-05-25)
+# dev-python/m2r has not seen any activity since Jun 2019 and requires
+# old version of dev-python/mistune.  dev-python/sphinxcontrib-openapi
+# has not seen any activity since Oct 2020.  Their only revdep
+# is dev-python/jupyter_server[doc], so let's mask the flag and remove
+# them.
+# Removal on 2022-06-24.  Bug #843881.
+dev-python/m2r
+dev-python/sphinxcontrib-openapi
+
 # Matt Turner <mattst88@gentoo.org> (2022-05-23)
 # Dead package upstream. Depends on dead app-misc/tracker:0.
 # Removal on 2022-06-23. Bug #846605
