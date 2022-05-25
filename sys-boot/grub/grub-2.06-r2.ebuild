@@ -56,6 +56,7 @@ PATCHES=(
 	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
 	"${FILESDIR}"/grub-2.06-test-words.patch
 	"${FILESDIR}"/grub-2.06-binutils-2.36.patch
+	"${FILESDIR}"/grub-2.06-improve-initramfs-detection.patch
 )
 
 DEJAVU=dejavu-sans-ttf-2.37

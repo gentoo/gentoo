@@ -1,0 +1,55 @@
+From 3efd7912d9f8bedf1f46b0ebe4d80d976f62edfb Mon Sep 17 00:00:00 2001
+From: Oskari Pirhonen <xxc3ncoredxx@gmail.com>
+Date: Mon, 2 May 2022 23:12:56 -0500
+Subject: [PATCH] templates: Improve initramfs detection
+
+Add detection for initramfs of the form *.img.old. For example, Gentoo's
+sys-kernel/genkernel installs it as initramfs-*.img and moves any existing
+one to initramfs-*.img.old.
+
+Apply the same scheme to initrd-*.img and initrd-*.gz files for consistency.
+
+Signed-off-by: Oskari Pirhonen <xxc3ncoredxx@gmail.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ util/grub.d/10_linux.in     | 6 ++++--
+ util/grub.d/20_linux_xen.in | 6 ++++--
+ 2 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
+index ca068038e..b4a4d6900 100644
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -215,8 +215,10 @@ while [ "x$list" != "x" ] ; do
+   done
+ 
+   initrd_real=
+-  for i in "initrd.img-${version}" "initrd-${version}.img" "initrd-${version}.gz" \
+-	   "initrd-${version}" "initramfs-${version}.img" \
++  for i in "initrd.img-${version}" "initrd-${version}.img" \
++	   "initrd-${alt_version}.img.old" "initrd-${version}.gz" \
++	   "initrd-${alt_version}.gz.old" "initrd-${version}" \
++	   "initramfs-${version}.img" "initramfs-${alt_version}.img.old" \
+ 	   "initrd.img-${alt_version}" "initrd-${alt_version}.img" \
+ 	   "initrd-${alt_version}" "initramfs-${alt_version}.img" \
+ 	   "initramfs-genkernel-${version}" \
+diff --git a/util/grub.d/20_linux_xen.in b/util/grub.d/20_linux_xen.in
+index f45559ff8..51a983926 100644
+--- a/util/grub.d/20_linux_xen.in
++++ b/util/grub.d/20_linux_xen.in
+@@ -284,8 +284,10 @@ while [ "x${xen_list}" != "x" ] ; do
+ 	linux_root_device_thisversion="${LINUX_ROOT_DEVICE}"
+ 
+ 	initrd_real=
+-	for i in "initrd.img-${version}" "initrd-${version}.img" "initrd-${version}.gz" \
+-	   "initrd-${version}" "initramfs-${version}.img" \
++	for i in "initrd.img-${version}" "initrd-${version}.img" \
++	   "initrd-${alt_version}.img.old" "initrd-${version}.gz" \
++	   "initrd-${alt_version}.gz.old" "initrd-${version}" \
++	   "initramfs-${version}.img" "initramfs-${alt_version}.img.old" \
+ 	   "initrd.img-${alt_version}" "initrd-${alt_version}.img" \
+ 	   "initrd-${alt_version}" "initramfs-${alt_version}.img" \
+ 	   "initramfs-genkernel-${version}" \
+-- 
+2.35.1
+
