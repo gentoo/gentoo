@@ -1,0 +1,32 @@
+From 1b96d21507a3b6b0a9ac6eac424d4e4db5602839 Mon Sep 17 00:00:00 2001
+From: David Redondo <kde@david-redondo.de>
+Date: Wed, 18 May 2022 13:34:45 +0200
+Subject: [PATCH] Update device outputName when setting output
+
+BUG:451279
+FIXED-IN:5.25.0
+
+
+(cherry picked from commit d3a37aa9aef58fbaedcef77d2797c22a015dc9c0)
+---
+ src/backends/libinput/device.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/backends/libinput/device.cpp b/src/backends/libinput/device.cpp
+index f247b66d74..30f51aca3c 100644
+--- a/src/backends/libinput/device.cpp
++++ b/src/backends/libinput/device.cpp
+@@ -668,8 +668,10 @@ void Device::setOutput(AbstractOutput *output)
+ {
+     m_output = output;
+     if (m_output) {
++        m_outputName = output->name();
+         writeEntry(ConfigKey::OutputName, output->name());
+     } else {
++        m_outputName = QString();
+         writeEntry(ConfigKey::OutputName, QString());
+     }
+     Q_EMIT outputNameChanged();
+-- 
+GitLab
+
