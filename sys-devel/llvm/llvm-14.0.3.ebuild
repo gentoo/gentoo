@@ -51,6 +51,9 @@ BDEPEND="
 		dev-python/sphinx[${PYTHON_USEDEP}]
 	') )
 	libffi? ( virtual/pkgconfig )
+	test? (
+		sys-apps/which
+	)
 "
 # There are no file collisions between these versions but having :0
 # installed means llvm-config there will take precedence.
