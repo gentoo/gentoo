@@ -10,14 +10,16 @@ MUSL_GCC_VER="12.0.0"
 
 if [[ $(ver_cut 3) == 9999 ]] ; then
 	MY_PV_2=$(ver_cut 2)
+	MY_PV_3=$(($(ver_cut 3) - 9998))
 	if [[ ${MY_PV_2} == 0 ]] ; then
 		MY_PV_2=0
+		MY_PV_3=0
 	else
 		MY_PV_2=$(($(ver_cut 2) - 1))
 	fi
 
 	# e.g. 12.2.9999 -> 12.1.1
-	TOOLCHAIN_GCC_PV=$(ver_cut 1).${MY_PV_2}.$(($(ver_cut 3) - 9998))
+	TOOLCHAIN_GCC_PV=$(ver_cut 1).${MY_PV_2}.${MY_PV_3}
 fi
 
 inherit toolchain
