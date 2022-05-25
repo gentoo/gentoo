@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit go-module linux-info
+inherit go-module linux-info systemd
 
 DESCRIPTION="Standard networking plugins for container networking"
 HOMEPAGE="https://github.com/containernetworking/plugins"
@@ -28,5 +28,6 @@ src_install() {
 	for i in plugins/{meta/{bandwidth,firewall,flannel,portmap,sbr,tuning},main/{bridge,host-device,ipvlan,loopback,macvlan,ptp,vlan},ipam/{dhcp,host-local,static},sample}; do
 		newdoc README.md ${i##*/}.README.md
 	done
+	systemd_dounit plugins/ipam/dhcp/systemd/cni-dhcp.{service,socket}
 	newinitd "${FILESDIR}"/cni-dhcp.initd cni-dhcp
 }
