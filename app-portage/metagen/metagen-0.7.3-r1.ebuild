@@ -4,15 +4,15 @@
 EAPI="8"
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="metadata.xml generator for ebuilds"
 HOMEPAGE="https://cgit.gentoo.org/proj/metagen.git"
-EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/metagen.git"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~x86 ~amd64-linux ~x86-linux"
 
 IUSE=""
 DEPEND="dev-python/lxml[${PYTHON_USEDEP}]
@@ -23,9 +23,11 @@ python_install_all() {
 	distutils-r1_python_install_all
 	doman docs/metagen.1
 
-	# Address expected path warning for /usr/share/doc/metagen-<not-9999>
-	mv "${ED}"/usr/share/doc/metagen-{*.*.*/*,${PV}/} || die
-	rmdir "${ED}"/usr/share/doc/metagen-*.*.*/ || die
+	# Bug 814545 and 832069
+	if [[ ${PF} != ${P} ]]; then  # to be robust across bumps
+		mv "${ED}"/usr/share/doc/${P}/* "${ED}"/usr/share/doc/${PF}/ || die
+		rmdir "${ED}"/usr/share/doc/${P}/ || die
+	fi
 }
 
 python_test() {
