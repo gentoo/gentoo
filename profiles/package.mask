@@ -103,6 +103,12 @@ dev-python/dicttoxml
 ~virtual/perl-if-0.61.0
 ~virtual/perl-IO-1.500.0
 ~virtual/perl-IO-Compress-2.106.0
+~virtual/perl-JSON-PP-4.70.0
+~virtual/perl-libnet-3.140.0
+~virtual/perl-Locale-Maketext-1.310.0
+~virtual/perl-Math-BigInt-1.999.830
+~virtual/perl-Math-BigInt-FastCalc-0.501.200
+~virtual/perl-Math-BigRat-0.262.100
 
 # Michał Górny <mgorny@gentoo.org> (2022-05-21)
 # dev-python/mongoengine has had repeated test regressions, and this
