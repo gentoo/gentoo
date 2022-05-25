@@ -32,6 +32,7 @@ RDEPEND="
 	>=dev-python/virtualenv-20.0.35[${PYTHON_USEDEP}]
 	dev-python/virtualenv-clone[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.26.0[${PYTHON_USEDEP}]
+	dev-python/toml[${PYTHON_USEDEP}]
 	>=dev-python/tomli-2.0.1[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-1.26.7[${PYTHON_USEDEP}]
 	>=dev-python/wheel-0.36.0[${PYTHON_USEDEP}]
