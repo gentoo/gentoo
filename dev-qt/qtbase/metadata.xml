@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
+	<use>
+		<flag name="brotli">Enable support for Brotli decompression</flag>
+		<flag name="concurrent">Build Qt6Concurrent module</flag>
+		<flag name="dbus">Build Qt6DBus module</flag>
+		<flag name="egl">Enable EGL integration</flag>
+		<flag name="eglfs">Build the EGL Full Screen/Single Surface platform plugin</flag>
+		<flag name="evdev">Enable support for input devices via evdev</flag>
+		<flag name="gssapi">Enable support for GSSAPI (<pkg>virtual/krb5</pkg>)</flag>
+		<flag name="gtk">Build the GTK platform theme plugin</flag>
+		<flag name="gui">Build Qt6Gui module</flag>
+		<flag name="libinput">Enable support for input devices via <pkg>dev-libs/libinput</pkg></flag>
+		<flag name="libproxy">Use <pkg>net-libs/libproxy</pkg> for automatic HTTP/SOCKS proxy configuration</flag>
+		<flag name="network">Build Qt6Network module</flag>
+		<flag name="sql">Build Qt6Sql module</flag>
+		<flag name="systemd">Enable native journald logging support</flag>
+		<flag name="tslib">Enable support for touchscreen devices via <pkg>x11-libs/tslib</pkg></flag>
+		<flag name="tuio">Build plugin to receive touch events over the TUIO protocol</flag>
+		<flag name="vulkan">Enable support for Vulkan</flag>
+		<flag name="widgets">Build Qt6Widgets module</flag>
+		<flag name="X">Build the XCB platform plugin and enable X11 integration</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://bugreports.qt.io/</bugs-to>
+		<doc>https://doc.qt.io/</doc>
+	</upstream>
+	<slots>
+		<subslots>
+			Must only be used by packages that are known to use private parts of the Qt API.
+		</subslots>
+	</slots>
+</pkgmetadata>
