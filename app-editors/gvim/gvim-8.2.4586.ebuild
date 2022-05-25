@@ -255,7 +255,7 @@ src_configure() {
 		myconf+=( --enable-gui=gtk2 )
 	elif use motif; then
 		einfo "Building gvim with the MOTIF GUI"
-		myconf+=( --enable-gui=motif )
+		myconf+=( --enable-gui=motif --with-motif-lib=lXm )
 	elif use neXt; then
 		einfo "Building gvim with the neXtaw GUI"
 		myconf+=( --enable-gui=nextaw )
