@@ -8,5 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">CJKwrap</remote-id>
+    <remote-id type="gitlab">fgallaire/cjkwrap</remote-id>
   </upstream>
 </pkgmetadata>
