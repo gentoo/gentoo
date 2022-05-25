@@ -500,11 +500,6 @@ dev-ruby/sanitize:5
 sys-devel/automake:1.13
 sys-devel/automake:1.15
 
-# Ulrich Müller <ulm@gentoo.org> (2022-04-01)
-# Illegal instruction errors seen by several users.
-# Masked for testing. (bug #835930)
->=net-im/zoom-5.10
-
 # David Seifert <soap@gentoo.org> (2022-03-20)
 # Mask gcc-8 branch (ended upstream support). Please switch
 # to a fresher gcc branch.
