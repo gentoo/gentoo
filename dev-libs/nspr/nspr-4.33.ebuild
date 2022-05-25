@@ -28,6 +28,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.8.9-link-flags.patch
 	# We do not need to pass -L$libdir via nspr-config --libs
 	"${FILESDIR}"/${PN}-4.9.5_nspr_config.patch
+	"${FILESDIR}"/${PN}-4.33-loong.patch
 )
 
 src_prepare() {
