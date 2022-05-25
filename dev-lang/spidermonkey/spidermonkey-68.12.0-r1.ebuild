@@ -101,6 +101,7 @@ src_prepare() {
 	eapply "${WORKDIR}"/firefox
 	eapply "${WORKDIR}"/spidermonkey-patches
 	eapply "${FILESDIR}"/spidermonkey-68.0-add-riscv-support.patch
+	eapply "${FILESDIR}"/spidermonkey-68.0-loong-support.patch
 
 	default
 
