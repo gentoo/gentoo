@@ -13,4 +13,7 @@
     Use alternative minimal stylesheet instead of Tyrian theme
   </flag>
 </use>
+<upstream>
+  <remote-id type="gentoo">proj/devmanual</remote-id>
+</upstream>
 </pkgmetadata>
