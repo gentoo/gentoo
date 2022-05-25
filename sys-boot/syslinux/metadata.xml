@@ -11,4 +11,7 @@
 <upstream>
 	<remote-id type="cpe">cpe:/a:gentoo:syslinux</remote-id>
 </upstream>
+<use>
+        <flag name="bios">Build installers for BIOS</flag>
+</use>
 </pkgmetadata>

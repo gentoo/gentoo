@@ -20,7 +20,7 @@ SRC_URI="https://www.kernel.org/pub/linux/utils/boot/syslinux/${SRC_URI_DIR}/${P
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* amd64 x86"
-IUSE="custom-cflags"
+IUSE="custom-cflags bios"
 
 RDEPEND="sys-apps/util-linux
 	sys-fs/mtools
@@ -74,8 +74,8 @@ src_prepare() {
 			"
 	fi
 	case ${ARCH} in
-		amd64)	loaderarch="efi64" ;;
-		x86)	loaderarch="efi32" ;;
+		amd64)	loaderarch=$(usex bios bios efi64) ;;
+		x86)	loaderarch=$(usex bios bios efi32) ;;
 		*)	ewarn "Unsupported architecture, building installers only." ;;
 	esac
 
