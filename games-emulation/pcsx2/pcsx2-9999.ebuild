@@ -73,15 +73,12 @@ src_prepare() {
 	cmake_src_prepare
 
 	# unbundle, use sed over patch for less chances to break -9999
+	# note: gentoo's zstd lacks a cmake module which upstream tries to use
 	sed -e '/add_subdir.*cubeb/c\find_package(cubeb REQUIRED)' \
-		-e '/add_subdir.*libchdr/c\pkg_check_modules(chdr REQUIRED IMPORTED_TARGET libchdr)' \
-		-e '/add_subdir.*libzip/c\find_package(libzip REQUIRED)' \
-		-e '/add_subdir.*zstd/c\pkg_check_modules(zstd REQUIRED IMPORTED_TARGET libzstd)' \
+		-e '/add_subdir.*libchdr/c\pkg_check_modules(chdr REQUIRED IMPORTED_TARGET libchdr)\nalias_library(chdr-static PkgConfig::chdr)' \
+		-e '/system_library.*zstd/,/endif()/c\pkg_check_modules(zstd REQUIRED IMPORTED_TARGET libzstd)\nalias_library(Zstd::Zstd PkgConfig::zstd)' \
 		-e '/compile_options(\(cubeb\|chdr-static\|speex\)/d' \
 		-i cmake/SearchForStuff.cmake || die
-	sed -e 's/chdr-static/PkgConfig::chdr/' \
-		-e 's/Zstd::Zstd/PkgConfig::zstd/' \
-		-i pcsx2/CMakeLists.txt || die
 
 	# pulseaudio is only used for usb-mic, not audio output
 	use pulseaudio || > cmake/FindPulseAudio.cmake || die
@@ -103,9 +100,9 @@ src_configure() {
 		-DDISABLE_SETCAP=TRUE
 		-DENABLE_TESTS=$(usex test)
 		-DPACKAGE_MODE=TRUE
-		-DQT_BUILD=FALSE # TODO
+		-DQT_BUILD=FALSE # TODO when qt6 is in tree
 		-DSDL2_API=TRUE # conditionally needed if wxGTK[sdl], cmake/ApiValidation.cmake
-		-DUSE_SYSTEM_YAML=TRUE
+		-DUSE_SYSTEM_LIBS=TRUE
 		-DUSE_VTUNE=FALSE
 		-DXDG_STD=TRUE
 	)
