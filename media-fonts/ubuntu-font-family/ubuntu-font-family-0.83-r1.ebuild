@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://assets.ubuntu.com/v1/fad7939b-${P}.zip -> ${P}.zip"
 
 LICENSE="UbuntuFontLicense-1.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv x86"
 IUSE=""
 
 BDEPEND="app-arch/unzip"
