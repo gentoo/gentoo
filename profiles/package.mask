@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrey Grozin <grozin@gentoo.org> (2022-05-25)
+# Does not work with the current dev-python/pyx
+# Removal on 2022-06-24
+dev-python/pyfeyn
+
 # Michał Górny <mgorny@gentoo.org> (2022-05-25)
 # dev-python/m2r has not seen any activity since Jun 2019 and requires
 # old version of dev-python/mistune.  dev-python/sphinxcontrib-openapi
