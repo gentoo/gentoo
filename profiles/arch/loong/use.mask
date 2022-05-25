@@ -25,16 +25,12 @@ efl
 elogind
 emacs
 fam
-fontforge
-gd
-gpm
 gtk4
 gtk-doc
 kde
 latex
 ldap
 mpi
-qt5
 sctp
 systemtap
 tk
