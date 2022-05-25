@@ -47,11 +47,6 @@ SRC_URI="
 	https://github.com/arsv/perl-cross/releases/download/${CROSS_VER}/perl-cross-${CROSS_VER}.tar.gz
 "
 
-SRC_URI+="
-	https://dev.gentoo.org/~dilfridge/distfiles/perl-5.34.1-zlib-1.2.12.patch.xz
-	https://dev.gentoo.org/~dilfridge/distfiles/perl-5.34.1-zlib-1.2.12-encrypt-standard.zip.bin
-"
-
 HOMEPAGE="https://www.perl.org/"
 
 LICENSE="|| ( Artistic GPL-1+ )"
@@ -89,19 +84,19 @@ PDEPEND="
 S="${WORKDIR}/${MY_P}"
 
 dual_scripts() {
-	src_remove_dual      perl-core/Archive-Tar        2.380.0       ptar ptardiff ptargrep
-	src_remove_dual      perl-core/CPAN               2.280.0       cpan
+	src_remove_dual      perl-core/Archive-Tar        2.400.0       ptar ptardiff ptargrep
+	src_remove_dual      perl-core/CPAN               2.330.0       cpan
 	src_remove_dual      perl-core/Digest-SHA         6.20.0        shasum
-	src_remove_dual      perl-core/Encode             3.80.100_rc   enc2xs piconv
-	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.620.0       instmodsh
-	src_remove_dual      perl-core/ExtUtils-ParseXS   3.430.0       xsubpp
-	src_remove_dual      perl-core/IO-Compress        2.103.0        zipdetails
-	src_remove_dual      perl-core/JSON-PP            4.60.0        json_pp
-	src_remove_dual      perl-core/Module-CoreList    5.202.203.130 corelist
+	src_remove_dual      perl-core/Encode             3.170.0       enc2xs piconv
+	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.640.0       instmodsh
+	src_remove_dual      perl-core/ExtUtils-ParseXS   3.450.0       xsubpp
+	src_remove_dual      perl-core/IO-Compress        2.106.0       zipdetails
+	src_remove_dual      perl-core/JSON-PP            4.70.0        json_pp
+	src_remove_dual      perl-core/Module-CoreList    5.202.205.200 corelist
 	src_remove_dual      perl-core/Pod-Checker        1.740.0       podchecker
 	src_remove_dual      perl-core/Pod-Perldoc        3.280.100     perldoc
 	src_remove_dual      perl-core/Pod-Usage          2.10.0       pod2usage
-	src_remove_dual      perl-core/Test-Harness       3.430.0       prove
+	src_remove_dual      perl-core/Test-Harness       3.440.0       prove
 	src_remove_dual      perl-core/podlators          4.140.0       pod2man pod2text
 	src_remove_dual_man  perl-core/podlators          4.140.0       /usr/share/man/man1/perlpodstyle.1
 }
