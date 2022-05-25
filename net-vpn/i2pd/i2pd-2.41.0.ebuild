@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,7 +37,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DWITH_AESNI=$(usex cpu_flags_x86_aes ON OFF)
 		-DWITH_HARDENING=$(usex i2p-hardening ON OFF)
-		-DWITH_PCH=OFF
 		-DWITH_STATIC=OFF
 		-DWITH_UPNP=$(usex upnp ON OFF)
 		-DWITH_LIBRARY=ON
