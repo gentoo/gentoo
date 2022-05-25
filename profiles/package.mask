@@ -128,6 +128,18 @@ dev-python/dicttoxml
 ~virtual/perl-Pod-Simple-3.430.0
 ~virtual/perl-Scalar-List-Utils-1.620.0
 ~virtual/perl-Socket-2.33.0
+~virtual/perl-Storable-3.260.0
+~virtual/perl-Test-Harness-3.440.0
+~virtual/perl-Test-Simple-1.302.190
+~virtual/perl-Text-ParseWords-3.310.0
+~virtual/perl-Text-Tabs+Wrap-2021.81.400
+~virtual/perl-threads-2.270.0
+~virtual/perl-threads-shared-1.640.0
+~virtual/perl-Time-HiRes-1.977.0
+~virtual/perl-Unicode-Collate-1.310.0
+~virtual/perl-Unicode-Normalize-1.310.0
+~virtual/perl-version-0.992.900
+~virtual/perl-XSLoader-0.310.0
 
 # Michał Górny <mgorny@gentoo.org> (2022-05-21)
 # dev-python/mongoengine has had repeated test regressions, and this
