@@ -207,4 +207,6 @@ pkg_postinst() {
 	if [[ -f ${old_udev_rules} ]]; then
 		rm -f "${old_udev_rules}"
 	fi
+
+	udev_reload
 }
