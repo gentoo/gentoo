@@ -7,6 +7,9 @@
 # Unmask systemd
 -systemd
 
+# Things we actually can support
+-input_devices_synaptics
+
 # Things without support yet
 java
 llvm
