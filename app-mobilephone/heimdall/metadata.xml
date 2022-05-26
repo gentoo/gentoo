@@ -9,11 +9,4 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<upstream>
-		<maintainer status="active">
-			<name>Henrik Grimler</name>
-			<email>henrik@grimler.se</email>
-		</maintainer>
-		<doc>https://git.sr.ht/~grimler/Heimdall/tree/master/Linux/README</doc>
-	</upstream>
 </pkgmetadata>
