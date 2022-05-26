@@ -26,7 +26,7 @@ IUSE="+adblock widevine"
 RDEPEND="
 	dev-qt/qtcore:5[icu]
 	dev-qt/qtgui:5[png]
-	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' python3_8)
+	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' 3.8)
 	$(python_gen_cond_dep '
 		dev-python/colorama[${PYTHON_USEDEP}]
 		>=dev-python/jinja-3.0.2[${PYTHON_USEDEP}]
@@ -56,8 +56,8 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-python_prepare_all() {
-	distutils-r1_python_prepare_all
+src_prepare() {
+	distutils-r1_src_prepare
 
 	if use widevine; then
 		local widevine=${EPREFIX}/usr/$(get_libdir)/chromium-browser/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so
