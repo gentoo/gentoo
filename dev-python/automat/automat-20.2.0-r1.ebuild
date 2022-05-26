@@ -28,7 +28,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/automat-0.8.0-no-setup-py-m2r-import.patch"
 	"${FILESDIR}/test_visualize-twisted-import-errors.patch"
 	"${FILESDIR}/${P}-py311.patch"
 )
