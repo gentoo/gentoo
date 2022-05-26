@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit cmake
+PYTHON_COMPAT=( python3_{8..11} )
+inherit python-any-r1 cmake
 
 CommitId=135412d2646f3bd753c8f1cfd33616110bbccd27
 
@@ -22,7 +23,10 @@ DEPEND="
 	dev-libs/cpuinfo
 "
 RDEPEND="${DEPEND}"
-BDEPEND="test? ( dev-cpp/gtest )"
+BDEPEND="
+	test? ( dev-cpp/gtest )
+	${PYTHON_DEPS}
+"
 RESTRICT="!test? ( test )"
 
 S="${WORKDIR}"/${PN}-${CommitId}
