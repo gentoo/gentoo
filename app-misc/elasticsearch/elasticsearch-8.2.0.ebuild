@@ -16,7 +16,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-env.patch"
 )
 
-BDEPEND="acct-group/elasticsearch
+DEPEND="acct-group/elasticsearch
 	acct-user/elasticsearch"
 
 RDEPEND="acct-group/elasticsearch
