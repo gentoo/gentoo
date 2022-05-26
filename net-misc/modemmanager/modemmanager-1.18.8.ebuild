@@ -139,6 +139,8 @@ pkg_postinst() {
 		ewarn "about your modem port manually."
 	fi
 
+	use udev && udev_reload
+
 	systemd_reenable ModemManager.service
 
 	readme.gentoo_print_elog
