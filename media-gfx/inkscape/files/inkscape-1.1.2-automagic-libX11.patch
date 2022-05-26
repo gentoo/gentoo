@@ -5,45 +5,35 @@ Subject: [PATCH] CMake: Fix automagic dependency on X11
 
 Related: https://bugs.gentoo.org/768663
 Related: https://github.com/gentoo/gentoo/pull/20181
----
- CMakeLists.txt                           |  3 +++
- CMakeScripts/DefineDependsandFlags.cmake | 13 +++++++----
- src/ege-color-prof-tracker.cpp           | 28 ++++++++++++------------
- 3 files changed, 26 insertions(+), 18 deletions(-)
-
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index c5cb3f7fbd..2a04d86fbf 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -36,6 +36,7 @@ project(inkscape)
- set(CMAKE_INSTALL_DEFAULT_COMPONENT_NAME inkscape) # needs to be before any install() commands
+@@ -36,6 +36,7 @@ set(CMAKE_INSTALL_DEFAULT_COMPONENT_NAME inkscape) # needs to be before any inst
  
+ include(GNUInstallDirs) # for the CMAKE_INSTALL_LIBDIR variable
  include(CMakeScripts/ConfigPaths.cmake)
 +include(CMakeDependentOption)
  
  set(PROJECT_NAME inkscape)
  
-@@ -127,6 +128,7 @@ option(WITH_LIBWPG "Compile with support of libwpg for WordPerfect Graphics" ON)
+@@ -126,6 +127,7 @@ option(WITH_GSPELL "Compile with support of gspell" ON)
  option(WITH_NLS "Compile with Native Language Support (using gettext)" ON)
  option(WITH_JEMALLOC "Compile with JEMALLOC support" OFF)
  option(WITH_ASAN "Compile with Clang's AddressSanitizer (for debugging purposes)" OFF)
 +cmake_dependent_option(WITH_X11 "Compile with X11 support" ON "UNIX; NOT APPLE" OFF)
+ option(WITH_INTERNAL_2GEOM "Prefer internal copy of lib2geom" OFF)
  
  option(WITH_FUZZ "Compile for fuzzing purpose (use 'make fuzz' only)" OFF)
- mark_as_advanced(WITH_FUZZ)
-@@ -284,6 +286,7 @@ message("WITH_LIBWPG:             ${WITH_LIBWPG}")
+@@ -285,6 +287,7 @@ message("WITH_LIBWPG:             ${WITH_LIBWPG}")
  message("WITH_NLS:                ${WITH_NLS}")
  message("WITH_OPENMP:             ${WITH_OPENMP}")
  message("WITH_JEMALLOC:           ${WITH_JEMALLOC}")
 +message("WITH_X11:                ${WITH_X11}")
+ message("WITH_INTERNAL_2GEOM:     ${WITH_INTERNAL_2GEOM}")
  
  message("WITH_PROFILING:          ${WITH_PROFILING}")
- message("BUILD_TESTING:           ${BUILD_TESTING}")
-diff --git a/CMakeScripts/DefineDependsandFlags.cmake b/CMakeScripts/DefineDependsandFlags.cmake
-index 1b5ed0d349..ef3f321977 100644
 --- a/CMakeScripts/DefineDependsandFlags.cmake
 +++ b/CMakeScripts/DefineDependsandFlags.cmake
-@@ -384,12 +384,17 @@ sanitize_ldflags_for_libs(SIGC++_LDFLAGS)
+@@ -403,12 +403,17 @@ sanitize_ldflags_for_libs(SIGC++_LDFLAGS)
  list(APPEND INKSCAPE_LIBS ${SIGC++_LDFLAGS})
  list(APPEND INKSCAPE_CXX_FLAGS ${SIGC++_CFLAGS_OTHER})
  
@@ -65,8 +55,6 @@ index 1b5ed0d349..ef3f321977 100644
  
  # end Dependencies
  
-diff --git a/src/ege-color-prof-tracker.cpp b/src/ege-color-prof-tracker.cpp
-index 0b118f1a57..6fb721c2f3 100644
 --- a/src/ege-color-prof-tracker.cpp
 +++ b/src/ege-color-prof-tracker.cpp
 @@ -46,11 +46,11 @@
@@ -83,7 +71,7 @@ index 0b118f1a57..6fb721c2f3 100644
  
  #include "ege-color-prof-tracker.h"
  #include "helper/sp-marshal.h"
-@@ -68,24 +68,24 @@ static void ege_color_prof_tracker_set_property( GObject* obj, guint propId, con
+@@ -69,24 +69,24 @@ static void ege_color_prof_tracker_dispose(GObject *);
  
  class ScreenTrack {
      public:
@@ -112,7 +100,7 @@ index 0b118f1a57..6fb721c2f3 100644
  
  static guint signals[LAST_SIGNAL] = {0};
  
-@@ -296,10 +296,10 @@ void track_screen( GdkScreen* screen, EgeColorProfTracker* tracker )
+@@ -323,10 +323,10 @@ void track_screen( GdkScreen* screen, EgeColorProfTracker* tracker )
  
          int numMonitors = gdk_display_get_n_monitors(display);
  
@@ -125,7 +113,7 @@ index 0b118f1a57..6fb721c2f3 100644
          tracked_screen->trackers= new std::vector<EgeColorProfTracker *>;
          tracked_screen->trackers->push_back(tracker );
          tracked_screen->profiles = g_ptr_array_new();
-@@ -309,14 +309,14 @@ void track_screen( GdkScreen* screen, EgeColorProfTracker* tracker )
+@@ -336,14 +336,14 @@ void track_screen( GdkScreen* screen, EgeColorProfTracker* tracker )
  
          g_signal_connect( G_OBJECT(screen), "size-changed", G_CALLBACK( screen_size_changed_cb ), tracker );
  
@@ -142,7 +130,7 @@ index 0b118f1a57..6fb721c2f3 100644
      }
  }
  
-@@ -408,13 +408,13 @@ void screen_size_changed_cb(GdkScreen* screen, gpointer user_data)
+@@ -411,13 +411,13 @@ void screen_size_changed_cb(GdkScreen* screen, gpointer user_data)
          if ( numMonitors > (gint)tracked_screen->profiles->len ) {
              for ( guint i = tracked_screen->profiles->len; i < (guint)numMonitors; i++ ) {
                  g_ptr_array_add( tracked_screen->profiles, nullptr );
@@ -158,7 +146,7 @@ index 0b118f1a57..6fb721c2f3 100644
              }
          } else if ( numMonitors < (gint)tracked_screen->profiles->len ) {
  /*             g_message("The count of monitors decreased, remove some"); */
-@@ -422,7 +422,7 @@ void screen_size_changed_cb(GdkScreen* screen, gpointer user_data)
+@@ -425,7 +425,7 @@ void screen_size_changed_cb(GdkScreen* screen, gpointer user_data)
      }
  }
  
@@ -167,7 +155,7 @@ index 0b118f1a57..6fb721c2f3 100644
  GdkFilterReturn x11_win_filter(GdkXEvent *xevent,
                                 GdkEvent *event,
                                 gpointer data)
-@@ -615,7 +615,7 @@ static void set_profile( guint monitor, const guint8* data, guint len )
+@@ -618,7 +618,7 @@ static void set_profile( guint monitor, const guint8* data, guint len )
          }
      }
  }
@@ -176,6 +164,3 @@ index 0b118f1a57..6fb721c2f3 100644
  /*
    Local Variables:
    mode:c++
--- 
-2.26.3
-
