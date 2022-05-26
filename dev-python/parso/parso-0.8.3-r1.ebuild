@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
@@ -28,4 +28,7 @@ distutils_enable_tests pytest
 EPYTEST_DESELECT=(
 	# py3.10 changed exception messages
 	test/test_python_errors.py::test_python_exception_matches
+	# With python3.11 this additional file is run by pytest,
+	# but it is not actually a test and thus fails
+	parso/python/token.py::parso.python.token.PythonTokenTypes
 )
