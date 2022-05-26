@@ -78,8 +78,9 @@ RDEPEND="
 	ssl? (
 		dev-libs/openssl:0=
 	)
-	sundials? ( >=sci-libs/sundials-4:0= )
+	sundials? ( <sci-libs/sundials-6.2.0:= )
 	X? ( x11-libs/libX11:0= )"
+# bug #846968 for sundials < dep
 DEPEND="${RDEPEND}
 	dev-util/gperf
 	virtual/pkgconfig
