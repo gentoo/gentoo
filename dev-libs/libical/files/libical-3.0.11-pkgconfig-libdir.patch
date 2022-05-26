@@ -1,0 +1,22 @@
+Fix pkgconfig libdir paths.
+
+--- a/libical.pc.in
++++ b/libical.pc.in
+@@ -8,7 +8,7 @@
+ Name: libical
+ Description: An implementation of basic iCAL protocols
+ Version: @LIBICAL_LIB_VERSION_STRING@
+-Libs: -L${libdir} -lical -licalss -licalvcal
++Libs: -lical -licalss -licalvcal
+ Libs.private: @PTHREAD_LIBS@
+ @REQUIRES_PRIVATE_ICU@
+ Cflags: -I${includedir}
+--- a/src/libical-glib/libical-glib.pc.in
++++ b/src/libical-glib/libical-glib.pc.in
+@@ -8,4 +8,4 @@
+ Version: @LIBICAL_LIB_VERSION_STRING@
+ Requires: glib-2.0, gobject-2.0, libical
+ Cflags: -I${includedir}
+-Libs: -L${libdir} -lical-glib
++Libs: -lical-glib
+ 

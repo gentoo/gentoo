@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>thebitpit@earthlink.net</email>
+	<maintainer type="person" proxied="yes">
+		<email>thebitpit@austincustomerrands.com</email>
 		<name>Wilson Michaels</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -34,7 +34,6 @@
 		<flag name="wrapper">Use Ubuntu mythtfrontend wrapper</flag>
 		<flag name="x265">Enable h265 encoding using x265</flag>
 		<flag name="xmltv">Support <pkg>media-tv/xmltv</pkg> TV listing - not used by Schedules Direct]</flag>
-		<flag name="xnvctrl">External XNVCtrl support using Nvidia proprietary driver</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">MythTV/mythtv</remote-id>

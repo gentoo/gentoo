@@ -14,12 +14,6 @@ Starting with Qt 5.9.4, calling QT5_WRAP_CPP() disables the AUTOMOC property
 on the macro's input files, which means neither CMake's automoc
 infrastructure not QT5_WRAP_CPP()'s code were being used and we ended up
 with several 'undefined reference to vtable' errors when linking.
----
- CMakeLists.txt | 2 --
- 1 file changed, 2 deletions(-)
-
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 63ef851..0e47889 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -499,7 +499,6 @@ if (UNIX)

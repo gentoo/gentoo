@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit eutils pax-utils multilib-minimal
+inherit pax-utils multilib-minimal
 
 DESCRIPTION="Oracle 18c Instant Client with SDK"
 HOMEPAGE="https://www.oracle.com/technetwork/database/database-technologies/instant-client/overview/index.html"
@@ -67,10 +67,7 @@ RESTRICT="fetch splitdebug"
 DEPEND="app-arch/unzip"
 RDEPEND="
 	>=dev-libs/libaio-0.3.109-r5[${MULTILIB_USEDEP}]
-	!<dev-db/oracle-instantclient-basic-12
-	!<dev-db/oracle-instantclient-odbc-12
-	!<dev-db/oracle-instantclient-jdbc-12
-	!<dev-db/oracle-instantclient-sqlplus-12
+	sys-libs/glibc
 "
 
 S="${WORKDIR}/${MY_P}"

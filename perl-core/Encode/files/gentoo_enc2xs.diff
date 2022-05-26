@@ -12,8 +12,8 @@ http://git.debian.org/?p=perl/perl-5.12.git;a=blob;h=227dc105;hb=9d9ed099
 
 diff --git a/cpan/Encode/bin/enc2xs b/cpan/Encode/bin/enc2xs
 index 773c0a0..b95507b 100644
---- a/cpan/Encode/bin/enc2xs
-+++ b/cpan/Encode/bin/enc2xs
+--- a/bin/enc2xs
++++ b/bin/enc2xs
 @@ -924,7 +924,7 @@ use vars qw(
  sub find_e2x{
      eval { require File::Find; };

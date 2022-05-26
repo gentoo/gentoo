@@ -1,9 +1,13 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>titanofold@gentoo.org</email>
 		<name>Aaron W. Swenson</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>candrews@gentoo.org</email>
+		<name>Craig Andrews</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>web-apps@gentoo.org</email>
@@ -20,6 +24,10 @@
 		<flag name="enigma">
 			Add dependencies to support server-side GnuPG signing
 			and/or encryption through the enigma plugin
+		</flag>
+		<flag name="fileinfo">
+			Use the dev-lang/php fileinfo extension to guess the 
+			mime_type of attachments
 		</flag>
 		<flag name="ldap">
 			Add dependencies to support connecting to an LDAP address

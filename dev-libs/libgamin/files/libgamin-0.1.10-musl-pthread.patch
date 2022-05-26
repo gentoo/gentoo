@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/538474
+https://bugzilla.gnome.org/show_bug.cgi?id=588337
+
+From: Felix Janda <felix.janda@posteo.de>
+Date: Mon, 2 Feb 2015 20:08:40 +0100
+Subject: [PATCH] Use PTHREAD_MUTEX_RECURSIVE unconditionally
+
+Previously the nonportable PTHREAD_MUTEX_RECURSIVE_NP had been
+used for portability with glibc. However since 1998 glibc also
+has PTHREAD_MUTEX_RECURSIVE if _XOPEN_SOURCE is >= 500. So we
+can use the portable version for all known systems.
+--- a/libgamin/gam_data.c
++++ b/libgamin/gam_data.c
+@@ -2,6 +2,7 @@
+  * gam_data.c: implementation of the connection data handling of libgamin
+  */
+ 
++#define _XOPEN_SOURCE 700
+ #include <stdlib.h>
+ #include <string.h>             /* for memset */
+ #include <stdio.h>
+@@ -470,11 +471,7 @@ gamin_data_new(void)
+     }
+     if (is_threaded > 0) {
+ 	pthread_mutexattr_init(&attr);
+-#if defined(linux) || defined(PTHREAD_MUTEX_RECURSIVE_NP)
+-	pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE_NP);
+-#else
+ 	pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE);
+-#endif
+ 	pthread_mutex_init(&ret->lock, &attr);
+ 	pthread_mutexattr_destroy(&attr);
+     }

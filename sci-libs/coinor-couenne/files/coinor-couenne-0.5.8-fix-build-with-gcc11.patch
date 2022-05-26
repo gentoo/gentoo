@@ -1,0 +1,46 @@
+https://github.com/coin-or/Couenne/pull/57
+https://github.com/coin-or/Couenne/commit/fdfe17562c59518b4db478ca51c18ab5e01a59a5 (later found post-patch)
+
+https://bugs.gentoo.org/792798
+
+From debc5de2d0ac9654c01db080448df064b808c56e Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 15 Jun 2021 04:24:22 +0000
+Subject: [PATCH] Fix build with GCC 11
+diff --git a/src/problem/CouenneProblem.hpp b/src/problem/CouenneProblem.hpp
+index e5b54a5..db28cfd 100644
+--- a/src/problem/CouenneProblem.hpp
++++ b/src/problem/CouenneProblem.hpp
+@@ -74,7 +74,7 @@ class Nauty;
+ #define COUENNE_EPS_SYMM 1e-8
+ 
+   struct myclass0 {
+-    inline bool operator() (register const Node &a, register const Node &b) {
++    inline bool operator() (register const Node &a, register const Node &b) const {
+ 
+       return ((               a.get_code  () <  b.get_code  ())                     ||
+ 	      ((              a.get_code  () == b.get_code  ()                      &&
+@@ -120,7 +120,7 @@ class Nauty;
+     
+       
+   struct myclass {
+-    inline bool operator() (register const  Node &a, register const Node &b) {
++    inline bool operator() (register const  Node &a, register const Node &b) const {
+       return (a.get_index() < b.get_index() );
+     }
+   };
+
+--- a/src/cut/sdpcuts/CouenneMatrix.hpp
++++ b/src/cut/sdpcuts/CouenneMatrix.hpp
+@@ -69,7 +69,7 @@ namespace Couenne {
+ 
+     struct compare_scalars {
+       inline bool operator() (register CouenneScalar * const &a, 
+-			      register CouenneScalar * const &b)
++			      register CouenneScalar * const &b) const
+       {return a -> getIndex () < b -> getIndex ();}
+     };
+ 
+-- 
+2.32.0
+

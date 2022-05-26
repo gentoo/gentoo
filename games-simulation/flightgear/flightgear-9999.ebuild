@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,6 +26,7 @@ COMMON_DEPEND="
 	dev-games/openscenegraph[jpeg,png]
 	~dev-games/simgear-${PV}[gdal=]
 	media-libs/openal
+	>=media-libs/plib-1.8.5
 	>=media-libs/speex-1.2.0:0
 	media-libs/speexdsp:0
 	media-sound/gsm
@@ -53,9 +54,7 @@ COMMON_DEPEND="
 "
 # libXi and libXmu are build-only-deps according to FindGLUT.cmake
 DEPEND="${COMMON_DEPEND}
-	>=dev-libs/boost-1.44
-	>=media-libs/plib-1.8.5
-	qt5? ( >=dev-qt/linguist-tools-5.7.1:5 )
+	dev-libs/boost
 	utils? (
 		x11-libs/libXi
 		x11-libs/libXmu
@@ -64,15 +63,20 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	~games-simulation/${PN}-data-${PV}
 "
+BDEPEND="qt5? ( >=dev-qt/linguist-tools-5.7.1:5 )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2020.1.2-cmake.patch"
+	"${FILESDIR}/${PN}-2020.3.5-cmake.patch"
 )
 
 DOCS=(AUTHORS ChangeLog NEWS README Thanks)
 
 pkg_pretend() {
-	use openmp && tc-check-openmp
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_configure() {
@@ -96,8 +100,7 @@ src_configure() {
 		-DENABLE_PROFILE=OFF
 		-DENABLE_QT=$(usex qt5)
 		-DENABLE_RTI=OFF
-		-DENABLE_SIMD=OFF # see CPU_FLAGS
-		-DENABLE_SIMD_CODE=$(usex cpu_flags_x86_sse2)
+		-DENABLE_SIMD=$(usex cpu_flags_x86_sse2)
 		-DENABLE_STGMERGE=ON
 		-DENABLE_SWIFT=OFF # swift pilot client not packaged yet
 		-DENABLE_TERRASYNC=$(usex utils)
@@ -120,9 +123,6 @@ src_configure() {
 		-DUSE_DBUS=$(usex dbus)
 		-DWITH_FGPANEL=$(usex utils)
 	)
-	if use cpu_flags_x86_sse2; then
-		append-flags -msse2 -mfpmath=sse
-	fi
 	if use gdal && use utils; then
 		mycmakeargs+=(-DENABLE_DEMCONVERT=ON)
 	else

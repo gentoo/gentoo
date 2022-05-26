@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop eutils gnome2-utils unpacker
+inherit desktop unpacker wrapper xdg
 
-DESCRIPTION="A physics-based action game with character-dependent solutions to challenges"
+DESCRIPTION="Physics-based action game with character-dependent solutions to challenges"
 HOMEPAGE="https://www.frozenbyte.com/games/trine-enchanted-edition"
 SRC_URI="TrineUpdate4.64.run"
 LICENSE="frozenbyte-eula"
@@ -17,7 +17,7 @@ RESTRICT="bindist fetch strip"
 QA_PREBUILT="opt/${PN}/${PN}*
 	opt/${PN}/lib/*"
 
-DEPEND="
+BDEPEND="
 	app-admin/chrpath
 	app-arch/unzip
 "
@@ -91,7 +91,3 @@ src_install() {
 	newicon -s 512 Trine.xpm ${PN}.xpm
 	dodoc Trine_Manual_linux.pdf Trine_updates.txt
 }
-
-pkg_preinst() { gnome2_icon_savelist; }
-pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }

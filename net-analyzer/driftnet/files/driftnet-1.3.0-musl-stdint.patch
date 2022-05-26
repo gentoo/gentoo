@@ -1,0 +1,113 @@
+https://bugs.gentoo.org/832419
+--- a/src/media/image.c
++++ b/src/media/image.c
+@@ -11,6 +11,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h> /* On many systems (Darwin...), stdio.h is a prerequisite. */
++#include <stdint.h>
+ #include <string.h>
+ 
+ #include <netinet/in.h> /* ntohl */
+@@ -288,7 +289,7 @@ unsigned char *find_jpeg_image(const unsigned char *data, const size_t len, unsi
+ unsigned char *find_png_eoi(unsigned char *buffer, const size_t len) {
+     unsigned char *end_data, *data, chunk_code[PNG_CODE_LEN + 1];
+     struct png_chunk chunk;
+-    u_int32_t datalen;
++    uint32_t datalen;
+ 
+     /* Move past the PNG header */
+     data = (buffer + PNG_SIG_LEN);
+--- a/src/network/layer2.c
++++ b/src/network/layer2.c
+@@ -12,6 +12,7 @@
+ 
+ #include "compat/compat.h"
+ 
++#include <stdint.h>
+ #include <string.h>
+ 
+ #ifdef __FreeBSD__
+@@ -39,7 +40,7 @@
+ struct ethhdr {
+ 	unsigned char   h_dest[ETH_ALEN];
+ 	unsigned char   h_source[ETH_ALEN];
+-	u_int16_t       h_proto;
++	uint16_t       h_proto;
+ } __attribute__((packed));
+ #endif
+ 
+@@ -55,20 +56,20 @@ struct ethhdr {
+ #endif
+ 
+ struct ieee80211_radiotap_header {
+-	u_int8_t        it_version;     /* set to 0 */
+-	u_int8_t        it_pad;
+-	u_int16_t       it_len;         /* entire length */
+-	u_int32_t       it_present;     /* fields present */
++	uint8_t        it_version;     /* set to 0 */
++	uint8_t        it_pad;
++	uint16_t       it_len;         /* entire length */
++	uint32_t       it_present;     /* fields present */
+ };
+ 
+ struct ieee80211_frame {
+-    u_int16_t fc;
+-    u_int16_t wi_duration;
+-    u_int8_t wi_add1[6];
+-    u_int8_t wi_add2[6];
+-    u_int8_t wi_add3[6];
+-    u_int16_t wi_sequenceControl;
+-    // u_int8_t wi_add4[6];
++    uint16_t fc;
++    uint16_t wi_duration;
++    uint8_t wi_add1[6];
++    uint8_t wi_add2[6];
++    uint8_t wi_add3[6];
++    uint16_t wi_sequenceControl;
++    // uint8_t wi_add4[6];
+     //unsigned int qosControl:2;
+     //unsigned int frameBody[23124];
+ };
+@@ -89,13 +90,13 @@ struct frame_control {
+ 
+ /* SNAP LLC header format */
+ struct snap_header {
+-  u_int8_t dsap;
+-  u_int8_t ssap;
+-  u_int8_t ctl;
+-  u_int8_t org1;
+-  u_int8_t org2;
+-  u_int8_t org3;
+-  u_int16_t ether_type;          /* ethernet type */
++  uint8_t dsap;
++  uint8_t ssap;
++  uint8_t ctl;
++  uint8_t org1;
++  uint8_t org2;
++  uint8_t org3;
++  uint16_t ether_type;          /* ethernet type */
+ };
+ 
+ /*
+--- a/src/network/layer3.c
++++ b/src/network/layer3.c
+@@ -12,6 +12,7 @@
+ 
+ #include "compat/compat.h"
+ 
++#include <stdint.h>
+ #include <string.h>
+ #include <assert.h>
+ 
+@@ -30,8 +31,8 @@
+ int layer3_find_tcp(const u_char *pkt, uint8_t nextproto, int * offset,
+ 		struct sockaddr * src, struct sockaddr * dst, struct tcphdr * tcp)
+ {
+-	u_int16_t *sport = NULL;
+-	u_int16_t *dport = NULL;
++	uint16_t *sport = NULL;
++	uint16_t *dport = NULL;
+ 
+ 	while (1) {
+ 		switch (nextproto) {

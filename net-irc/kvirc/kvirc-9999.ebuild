@@ -1,9 +1,9 @@
-# Copyright 2009-2020 Gentoo Authors
+# Copyright 2009-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 CMAKE_MAKEFILE_GENERATOR="emake"
-PYTHON_COMPAT=(python{3_6,3_7,3_8})
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit cmake flag-o-matic python-single-r1 xdg-utils
 
@@ -30,11 +30,10 @@ fi
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-IUSE="audiofile +dbus dcc_video debug doc gsm kde libressl +nls oss +perl +phonon profile +python spell +ssl theora webkit"
+IUSE="audiofile +dbus dcc-video debug doc gsm kde +nls oss +perl +phonon profile +python spell +ssl theora"
 REQUIRED_USE="audiofile? ( oss ) python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="dev-lang/perl:0
-	>=dev-util/cmake-3.16
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	kde? ( kde-frameworks/extra-cmake-modules:5 )
@@ -53,7 +52,7 @@ DEPEND="dev-qt/qtcore:5
 	x11-libs/libXScrnSaver
 	audiofile? ( media-libs/audiofile )
 	dbus? ( dev-qt/qtdbus:5 )
-	dcc_video? ( dev-qt/qtmultimedia:5[widgets] )
+	dcc-video? ( dev-qt/qtmultimedia:5[widgets] )
 	kde? (
 		kde-frameworks/kcoreaddons:5
 		kde-frameworks/ki18n:5
@@ -66,16 +65,12 @@ DEPEND="dev-qt/qtcore:5
 	phonon? ( media-libs/phonon[qt5(+)] )
 	python? ( ${PYTHON_DEPS} )
 	spell? ( app-text/enchant:0= )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	theora? (
 		media-libs/libogg
 		media-libs/libtheora
 		media-libs/libvorbis
-	)
-	webkit? ( dev-qt/qtwebkit:5 )"
+	)"
 RDEPEND="${DEPEND}
 	gsm? ( media-sound/gsm )"
 
@@ -120,7 +115,7 @@ src_configure() {
 		-DWANT_TRANSPARENCY=ON
 
 		-DWANT_AUDIOFILE=$(usex audiofile ON OFF)
-		-DWANT_DCC_VIDEO=$(usex dcc_video ON OFF)
+		-DWANT_DCC_VIDEO=$(usex dcc-video ON OFF)
 		-DWANT_DEBUG=$(usex debug ON OFF)
 		-DWANT_DOXYGEN=$(usex doc ON OFF)
 		-DWANT_GETTEXT=$(usex nls ON OFF)
@@ -134,18 +129,16 @@ src_configure() {
 		-DWANT_PHONON=$(usex phonon ON OFF)
 		-DWANT_PYTHON=$(usex python ON OFF)
 		-DWANT_QTDBUS=$(usex dbus ON OFF)
-		-DWANT_QTWEBKIT=$(usex webkit ON OFF)
+		-DWANT_QTWEBKIT=OFF
 		-DWANT_SPELLCHECKER=$(usex spell ON OFF)
 
 		# COMPILE_SVG_SUPPORT not used in source code.
 		-DWANT_QTSVG=OFF
 	)
 	if use python; then
-		local PYTHON_INCLUDEDIR PYTHON_LIBPATH
-		python_export PYTHON_INCLUDEDIR PYTHON_LIBPATH
 		mycmakeargs+=(
-			-DPython3_INCLUDE_DIR="${PYTHON_INCLUDEDIR}"
-			-DPython3_LIBRARY="${PYTHON_LIBPATH}"
+			-DPython3_INCLUDE_DIR="$(python_get_includedir)"
+			-DPython3_LIBRARY="$(python_get_library_path)"
 		)
 	fi
 

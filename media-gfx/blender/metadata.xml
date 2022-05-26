@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>agrigo2001@yahoo.com.au</email>
 		<name>Adrian Grigo</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="person" proxied="yes">
+		<email>darkdefende@gmail.com</email>
+		<name>Sebastian Parborg</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -14,12 +18,6 @@
 		rendering, post-production, interactive creation and playback.
 	</longdescription>
 	<use>
-		<flag name="abi6-compat">
-			Build for OpenVDB ABI 6.
-		</flag>
-		<flag name="abi7-compat">
-			Build for OpenVDB ABI 7.
-		</flag>
 		<flag name="alembic">
 			Add support for Alembic through
 			<pkg>media-gfx/alembic</pkg>.
@@ -42,27 +40,22 @@
 		<flag name="dds">
 			Adds DDS textures support to Blender.
 		</flag>
-		<flag name="doc">
-			Build C and Python API documentation directly from the source code.
+		<flag name="embree">
+			Use embree to accelerate certain areas of the Cycles render engine.
 		</flag>
-		<flag name="elbeem">
-			Adds surface fluid simulation to Blender using El'Beem library.
-		</flag>
-		<flag name="game-engine">
-			Adds Game Engine support to Blender.
+		<flag name="fluid">
+			Adds fluid simulation support via the built-in Mantaflow library.
 		</flag>
 		<flag name="headless">
 			Build without graphical support (renderfarm, server mode only).
 		</flag>
-		<flag name="llvm">
-			Enable features depending on llvm.
-		</flag>
-		<flag name="man">
-			Build and install man pages.
+		<flag name="nanovdb">
+			Enable nanoVDB support in Cycles. Uses less memory than regular openVDB when rendering.
 		</flag>
 		<flag name="ndof">
 			Enable NDOF input devices (SpaceNavigator and friends).
 		</flag>
+		<flag name="oidn">Enable OpenImageDenoiser Support</flag>
 		<flag name="opencl">
 			Allow OpenCL Graphics Acceleration. This may
 			require extra graphics card drivers.</flag>
@@ -72,13 +65,16 @@
 			through <pkg>media-libs/opensubdiv</pkg>.
 		</flag>
 		<flag name="openvdb">
-			Add GPU preview rendering. Only works with nVidia cards.
+			Enable openvdb for volumetric processing, like the voxel remesher. Also enables volumetric GPU preview rendering for Nvidia cards.
 		</flag>
 		<flag name="osl">
 			Add support for OpenShadingLanguage scripting.
 		</flag>
-		<flag name="player">
-			Build the Blender Player. THis requires the Game engine.
+		<flag name="potrace">
+			Add support for converting bitmaps into Grease pencil line using the potrace library.
+		</flag>
+		<flag name="pugixml">
+			Enable PugiXML support (Used for OpenImageIO, Grease Pencil SVG export)
 		</flag>
 		<flag name="standalone">
 			Build the standalone version of Cycles.
@@ -91,9 +87,6 @@
 		</flag>
 		<flag name="tbb">
 			Use threading building blocks library from <pkg>dev-cpp/tbb</pkg>.
-		</flag>
-		<flag name="test">
-			Build the provided unit tests.
 		</flag>
 		<flag name="valgrind">
 			Add support for memory debugging using

@@ -1,6 +1,5 @@
-diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/CMakeLists.txt osg-my/CMakeLists.txt
---- OpenSceneGraph-OpenSceneGraph-3.6.5/CMakeLists.txt	2020-01-31 12:03:07.000000000 +0100
-+++ osg-my/CMakeLists.txt	2020-09-26 18:45:41.191099844 +0200
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -764,7 +764,7 @@
      FIND_PACKAGE(DirectInput)
      FIND_PACKAGE(NVTT)
@@ -10,9 +9,8 @@ diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/CMakeLists.txt osg-my/CMakeLists.t
      ENDIF()
      FIND_PACKAGE(ZeroConf)
  
-diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/CMakeModules/FindAsio.cmake osg-my/CMakeModules/FindAsio.cmake
---- OpenSceneGraph-OpenSceneGraph-3.6.5/CMakeModules/FindAsio.cmake	2020-01-31 12:03:07.000000000 +0100
-+++ osg-my/CMakeModules/FindAsio.cmake	1970-01-01 01:00:00.000000000 +0100
+--- a/CMakeModules/FindAsio.cmake
++++ b/CMakeModules/FindAsio.cmake
 @@ -1,22 +0,0 @@
 -# Locate ASIO-headers (http://think-async.com/Asio)
 -# This module defines
@@ -36,9 +34,8 @@ diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/CMakeModules/FindAsio.cmake osg-my
 -        SET(ASIO_FOUND "YES")
 -    ENDIF()
 -ENDIF()
-diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/CMakeLists.txt osg-my/src/osgPlugins/CMakeLists.txt
---- OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/CMakeLists.txt	2020-01-31 12:03:07.000000000 +0100
-+++ osg-my/src/osgPlugins/CMakeLists.txt	2020-09-26 20:04:59.345449848 +0200
+--- a/src/osgPlugins/CMakeLists.txt
++++ b/src/osgPlugins/CMakeLists.txt
 @@ -299,13 +299,13 @@
  #
  # Device integration plugins
@@ -57,9 +54,8 @@ diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/CMakeLists.txt osg-
  
  
  IF(ZEROCONF_FOUND)
-diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/CMakeLists.txt osg-my/src/osgPlugins/RestHttpDevice/CMakeLists.txt
---- OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/CMakeLists.txt	2020-01-31 12:03:07.000000000 +0100
-+++ osg-my/src/osgPlugins/RestHttpDevice/CMakeLists.txt	2020-09-26 18:46:57.096859301 +0200
+--- a/src/osgPlugins/RestHttpDevice/CMakeLists.txt
++++ b/src/osgPlugins/RestHttpDevice/CMakeLists.txt
 @@ -1,6 +1,5 @@
  INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
 -INCLUDE_DIRECTORIES(${ASIO_INCLUDE_DIR})
@@ -77,9 +73,8 @@ diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/CMak
  
  #### end var setup  ###
  SETUP_PLUGIN(resthttp)
-diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/connection.cpp osg-my/src/osgPlugins/RestHttpDevice/connection.cpp
---- OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/connection.cpp	2020-01-31 12:03:07.000000000 +0100
-+++ osg-my/src/osgPlugins/RestHttpDevice/connection.cpp	2020-09-26 18:32:19.690576603 +0200
+--- a/src/osgPlugins/RestHttpDevice/connection.cpp
++++ b/src/osgPlugins/RestHttpDevice/connection.cpp
 @@ -37,14 +37,14 @@
  void connection::start()
  {
@@ -112,9 +107,8 @@ diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/conn
      socket_.shutdown(asio::ip::tcp::socket::shutdown_both, ignored_ec);
    }
  
-diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/connection.hpp osg-my/src/osgPlugins/RestHttpDevice/connection.hpp
---- OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/connection.hpp	2020-01-31 12:03:07.000000000 +0100
-+++ osg-my/src/osgPlugins/RestHttpDevice/connection.hpp	2020-09-26 19:56:49.410701890 +0200
+--- a/src/osgPlugins/RestHttpDevice/connection.hpp
++++ b/src/osgPlugins/RestHttpDevice/connection.hpp
 @@ -11,7 +11,7 @@
  #ifndef HTTP_SERVER_CONNECTION_HPP
  #define HTTP_SERVER_CONNECTION_HPP
@@ -147,9 +141,8 @@ diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/conn
  
    /// Socket for the connection.
    asio::ip::tcp::socket socket_;
-diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/io_service_pool.cpp osg-my/src/osgPlugins/RestHttpDevice/io_service_pool.cpp
---- OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/io_service_pool.cpp	2020-01-31 12:03:07.000000000 +0100
-+++ osg-my/src/osgPlugins/RestHttpDevice/io_service_pool.cpp	2020-09-26 19:56:12.353279737 +0200
+--- a/src/osgPlugins/RestHttpDevice/io_service_pool.cpp
++++ b/src/osgPlugins/RestHttpDevice/io_service_pool.cpp
 @@ -11,7 +11,7 @@
  #include "server.hpp"
  #include <stdexcept>
@@ -181,9 +174,8 @@ diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/io_s
  }
  
  void io_service_pool::stop()
-diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/io_service_pool.hpp osg-my/src/osgPlugins/RestHttpDevice/io_service_pool.hpp
---- OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/io_service_pool.hpp	2020-01-31 12:03:07.000000000 +0100
-+++ osg-my/src/osgPlugins/RestHttpDevice/io_service_pool.hpp	2020-09-26 18:37:02.119722575 +0200
+--- a/src/osgPlugins/RestHttpDevice/io_service_pool.hpp
++++ b/src/osgPlugins/RestHttpDevice/io_service_pool.hpp
 @@ -11,11 +11,13 @@
  #ifndef HTTP_SERVER_IO_SERVICE_POOL_HPP
  #define HTTP_SERVER_IO_SERVICE_POOL_HPP
@@ -199,9 +191,8 @@ diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/io_s
  namespace http {
  namespace server {
  
-diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/reply.hpp osg-my/src/osgPlugins/RestHttpDevice/reply.hpp
---- OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/reply.hpp	2020-01-31 12:03:07.000000000 +0100
-+++ osg-my/src/osgPlugins/RestHttpDevice/reply.hpp	2020-09-26 18:28:42.741206569 +0200
+--- a/src/osgPlugins/RestHttpDevice/reply.hpp
++++ b/src/osgPlugins/RestHttpDevice/reply.hpp
 @@ -13,9 +13,11 @@
  
  #include <string>
@@ -215,9 +206,8 @@ diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/repl
  namespace http {
  namespace server {
  
-diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/server.cpp osg-my/src/osgPlugins/RestHttpDevice/server.cpp
---- OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/server.cpp	2020-01-31 12:03:07.000000000 +0100
-+++ osg-my/src/osgPlugins/RestHttpDevice/server.cpp	2020-09-26 19:53:17.692061347 +0200
+--- a/src/osgPlugins/RestHttpDevice/server.cpp
++++ b/src/osgPlugins/RestHttpDevice/server.cpp
 @@ -23,7 +23,7 @@
      request_handler_(doc_root)
  {
@@ -236,9 +226,8 @@ diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/serv
  {
    if (!e)
    {
-diff -ruN OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/server.hpp osg-my/src/osgPlugins/RestHttpDevice/server.hpp
---- OpenSceneGraph-OpenSceneGraph-3.6.5/src/osgPlugins/RestHttpDevice/server.hpp	2020-01-31 12:03:07.000000000 +0100
-+++ osg-my/src/osgPlugins/RestHttpDevice/server.hpp	2020-09-26 18:29:38.894046375 +0200
+--- a/src/osgPlugins/RestHttpDevice/server.hpp
++++ b/src/osgPlugins/RestHttpDevice/server.hpp
 @@ -11,7 +11,7 @@
  #ifndef HTTP_SERVER_SERVER_HPP
  #define HTTP_SERVER_SERVER_HPP

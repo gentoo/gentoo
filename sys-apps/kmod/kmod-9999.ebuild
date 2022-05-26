@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit autotools bash-completion-r1 multilib python-r1
 
@@ -21,7 +21,7 @@ HOMEPAGE="https://git.kernel.org/?p=utils/kernel/kmod/kmod.git"
 
 LICENSE="LGPL-2"
 SLOT="0"
-IUSE="debug doc libressl lzma pkcs7 python static-libs +tools zlib"
+IUSE="debug doc +lzma pkcs7 python static-libs +tools +zlib zstd"
 
 # Upstream does not support running the test suite with custom configure flags.
 # I was also told that the test suite is intended for kmod developers.
@@ -29,6 +29,7 @@ IUSE="debug doc libressl lzma pkcs7 python static-libs +tools zlib"
 # See bug #408915.
 RESTRICT="test"
 
+# >=zlib-1.2.6 required because of bug #427130
 # Block systemd below 217 for -static-nodes-indicate-that-creation-of-static-nodes-.patch
 RDEPEND="!sys-apps/module-init-tools
 	!sys-apps/modutils
@@ -36,11 +37,9 @@ RDEPEND="!sys-apps/module-init-tools
 	!<sys-apps/systemd-216-r3
 	lzma? ( >=app-arch/xz-utils-5.0.4-r1 )
 	python? ( ${PYTHON_DEPS} )
-	pkcs7? (
-		!libressl? ( >=dev-libs/openssl-1.1.0:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
-	zlib? ( >=sys-libs/zlib-1.2.6 )" #427130
+	pkcs7? ( >=dev-libs/openssl-1.1.0:0= )
+	zlib? ( >=sys-libs/zlib-1.2.6 )
+	zstd? ( >=app-arch/zstd-1.4.4 )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	doc? (
@@ -55,20 +54,20 @@ BDEPEND="
 	zlib? ( virtual/pkgconfig )
 "
 if [[ ${PV} == 9999* ]]; then
-	DEPEND="${DEPEND}
+	BDEPEND="${BDEPEND}
 		dev-libs/libxslt"
 fi
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-DOCS="NEWS README TODO"
+DOCS=( NEWS README TODO )
 
 src_prepare() {
 	default
 
 	if [[ ! -e configure ]] || use doc ; then
 		if use doc; then
-			cp "${EROOT}"/usr/share/aclocal/gtk-doc.m4 m4 || die
+			cp "${BROOT}"/usr/share/aclocal/gtk-doc.m4 m4 || die
 			gtkdocize --copy --docdir libkmod/docs || die
 		else
 			touch libkmod/docs/gtk-doc.make
@@ -97,6 +96,7 @@ src_configure() {
 		$(use_with lzma xz)
 		$(use_with pkcs7 openssl)
 		$(use_with zlib)
+		$(use_with zstd)
 	)
 
 	local ECONF_SOURCE="${S}"

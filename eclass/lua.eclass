@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: lua.eclass
@@ -7,8 +7,9 @@
 # Marek Szuba <marecki@gentoo.org>
 # @AUTHOR:
 # Marek Szuba <marecki@gentoo.org>
-# Based on python{,-utils}-r1.eclass by Michał Górny <mgorny@gentoo.org> et al.
-# @SUPPORTED_EAPIS: 7
+# Based on python-r1.eclass by Michał Górny <mgorny@gentoo.org> et al.
+# @SUPPORTED_EAPIS: 7 8
+# @PROVIDES: lua-utils
 # @BLURB: A common eclass for Lua packages
 # @DESCRIPTION:
 # A common eclass providing helper functions to build and install
@@ -21,13 +22,15 @@
 # package easily. It also provides methods to easily run a command for
 # each enabled Lua implementation and duplicate the sources for them.
 #
-# Please note that for the time being this eclass does NOT support luajit.
+# Note that since this eclass always inherits lua-utils as well, in ebuilds
+# using the former there is no need to explicitly inherit the latter in order
+# to use helper functions such as lua_get_CFLAGS.
 #
 # @EXAMPLE:
 # @CODE
-# EAPI=7
+# EAPI=8
 #
-# LUA_COMPAT=( lua5-{1..3} )
+# LUA_COMPAT=( lua5-{3..4} )
 #
 # inherit lua
 #
@@ -36,36 +39,35 @@
 # REQUIRED_USE="${LUA_REQUIRED_USE}"
 # DEPEND="${LUA_DEPS}"
 # RDEPEND="${DEPEND}
-#	dev-lua/foo[${LUA_USEDEP}]"
+#     dev-lua/foo[${LUA_USEDEP}]"
 # BDEPEND="virtual/pkgconfig"
 #
 # lua_src_install() {
-#	emake LUA_VERSION="$(lua_get_version)" install
+#     emake LUA_VERSION="$(lua_get_version)" install
 # }
 #
 # src_install() {
-#	lua_foreach_impl lua_src_install
+#     lua_foreach_impl lua_src_install
 # }
 # @CODE
 
-case ${EAPI:-0} in
-	0|1|2|3|4|5|6)
-		die "Unsupported EAPI=${EAPI} (too old) for ${ECLASS}"
+case ${EAPI} in
+	7|8)
 		;;
-	7)
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ ! ${_LUA_R0} ]]; then
 
-inherit multibuild toolchain-funcs
+if [[ ${_LUA_SINGLE_R0} ]]; then
+	die 'lua.eclass cannot be used with lua-single.eclass.'
+fi
+
+inherit multibuild lua-utils
 
 fi
 
-# @ECLASS-VARIABLE: LUA_COMPAT
+# @ECLASS_VARIABLE: LUA_COMPAT
 # @REQUIRED
 # @PRE_INHERIT
 # @DESCRIPTION:
@@ -75,7 +77,7 @@ fi
 #
 # Example:
 # @CODE
-# LUA_COMPAT=( lua5-1 lua5-2 lua5-3 )
+# LUA_COMPAT=( lua5-1 lua5-3 lua5-4 )
 # @CODE
 #
 # Please note that you can also use bash brace expansion if you like:
@@ -83,7 +85,7 @@ fi
 # LUA_COMPAT=( lua5-{1..3} )
 # @CODE
 
-# @ECLASS-VARIABLE: LUA_COMPAT_OVERRIDE
+# @ECLASS_VARIABLE: LUA_COMPAT_OVERRIDE
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -100,10 +102,10 @@ fi
 #
 # Example:
 # @CODE
-# LUA_COMPAT_OVERRIDE='lua5-2' emerge -1v dev-lua/foo
+# LUA_COMPAT_OVERRIDE='luajit' emerge -1v dev-lua/foo
 # @CODE
 
-# @ECLASS-VARIABLE: LUA_REQ_USE
+# @ECLASS_VARIABLE: LUA_REQ_USE
 # @DEFAULT_UNSET
 # @PRE_INHERIT
 # @DESCRIPTION:
@@ -123,7 +125,7 @@ fi
 # lua_targets_luaX-Y? ( dev-lang/lua:X.Y[deprecated] )
 # @CODE
 
-# @ECLASS-VARIABLE: BUILD_DIR
+# @ECLASS_VARIABLE: BUILD_DIR
 # @OUTPUT_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -140,29 +142,7 @@ fi
 # ${WORKDIR}/foo-1.3-lua5-1
 # @CODE
 
-# @ECLASS-VARIABLE: ELUA
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# The executable name of the current Lua interpreter. This variable is set
-# automatically in functions called by lua_foreach_impl().
-#
-# Example value:
-# @CODE
-# lua5.1
-# @CODE
-
-# @ECLASS-VARIABLE: LUA
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# The absolute path to the current Lua interpreter. This variable is set
-# automatically in functions called by lua_foreach_impl().
-#
-# Example value:
-# @CODE
-# /usr/bin/lua5.1
-# @CODE
-
-# @ECLASS-VARIABLE: LUA_DEPS
+# @ECLASS_VARIABLE: LUA_DEPS
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated Lua dependency string for all
@@ -178,10 +158,10 @@ fi
 # Example value:
 # @CODE
 # lua_targets_lua5-1? ( dev-lang/lua:5.1 )
-# lua_targets_lua5-2? ( dev-lang/lua:5.2 )
+# lua_targets_lua5-3? ( dev-lang/lua:5.3 )
 # @CODE
 
-# @ECLASS-VARIABLE: LUA_REQUIRED_USE
+# @ECLASS_VARIABLE: LUA_REQUIRED_USE
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated required-use expression which ensures at
@@ -197,10 +177,10 @@ fi
 #
 # Example value:
 # @CODE
-# || ( lua_targets_lua5-1 lua_targets_lua5-2 )
+# || ( lua_targets_lua5-1 lua_targets_lua5-3 )
 # @CODE
 
-# @ECLASS-VARIABLE: LUA_USEDEP
+# @ECLASS_VARIABLE: LUA_USEDEP
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated USE-dependency string which can be used to
@@ -214,116 +194,10 @@ fi
 #
 # Example value:
 # @CODE
-# lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?
+# lua_targets_lua5-1(-)?,lua_targets_lua5-3(-)?
 # @CODE
 
 if [[ ! ${_LUA_R0} ]]; then
-
-# @FUNCTION: _lua_export
-# @USAGE: [<impl>] <variables>...
-# @INTERNAL
-# @DESCRIPTION:
-# Set and export the Lua implementation-relevant variables passed
-# as parameters.
-#
-# The optional first parameter may specify the requested Lua
-# implementation (either as LUA_TARGETS value, e.g. lua5-2,
-# or an ELUA one, e.g. lua5.2). If no implementation passed,
-# the current one will be obtained from ${ELUA}.
-_lua_export() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	local impl var
-
-	case "${1}" in
-		lua*)
-			impl=${1/-/.}
-			shift
-			;;
-		*)
-			impl=${ELUA}
-			if [[ -z ${impl} ]]; then
-				die "_lua_export called without a Lua implementation and ELUA is unset"
-			fi
-			;;
-	esac
-	debug-print "${FUNCNAME}: implementation: ${impl}"
-
-	for var; do
-		case "${var}" in
-			ELUA)
-				export ELUA=${impl}
-				debug-print "${FUNCNAME}: ELUA = ${ELUA}"
-				;;
-			LUA)
-				export LUA="${EPREFIX}"/usr/bin/${impl}
-				debug-print "${FUNCNAME}: LUA = ${LUA}"
-				;;
-			LUA_CFLAGS)
-				local val
-
-				val=$($(tc-getPKG_CONFIG) --cflags ${impl}) || die
-
-				export LUA_CFLAGS=${val}
-				debug-print "${FUNCNAME}: LUA_CFLAGS = ${LUA_CFLAGS}"
-				;;
-			LUA_CMOD_DIR)
-				local val
-
-				val=$($(tc-getPKG_CONFIG) --variable INSTALL_CMOD ${impl}) || die
-
-				export LUA_CMOD_DIR=${val}
-				debug-print "${FUNCNAME}: LUA_CMOD_DIR = ${LUA_CMOD_DIR}"
-				;;
-			LUA_LIBS)
-				local val
-
-				val=$($(tc-getPKG_CONFIG) --libs ${impl}) || die
-
-				export LUA_LIBS=${val}
-				debug-print "${FUNCNAME}: LUA_LIBS = ${LUA_LIBS}"
-				;;
-			LUA_LMOD_DIR)
-				local val
-
-				val=$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD ${impl}) || die
-
-				export LUA_LMOD_DIR=${val}
-				debug-print "${FUNCNAME}: LUA_LMOD_DIR = ${LUA_LMOD_DIR}"
-				;;
-			LUA_PKG_DEP)
-				local d
-				case ${impl} in
-					lua*)
-						LUA_PKG_DEP="dev-lang/lua:${impl#lua}"
-						;;
-					*)
-						die "Invalid implementation: ${impl}"
-						;;
-				esac
-
-				# use-dep
-				if [[ ${LUA_REQ_USE} ]]; then
-					LUA_PKG_DEP+=[${LUA_REQ_USE}]
-				fi
-
-				export LUA_PKG_DEP
-				debug-print "${FUNCNAME}: LUA_PKG_DEP = ${LUA_PKG_DEP}"
-				;;
-			LUA_VERSION)
-				local val
-
-				val=$($(tc-getPKG_CONFIG) --modversion ${impl}) || die
-
-				export LUA_VERSION=${val}
-				debug-print "${FUNCNAME}: LUA_VERSION = ${LUA_VERSION}"
-				;;
-			*)
-				die "_lua_export: unknown variable ${var}"
-				;;
-		esac
-	done
-}
 
 # @FUNCTION: _lua_validate_useflags
 # @INTERNAL
@@ -401,61 +275,6 @@ _lua_multibuild_wrapper() {
 	"${@}"
 }
 
-# @FUNCTION: _lua_wrapper_setup
-# @USAGE: [<path> [<impl>]]
-# @INTERNAL
-# @DESCRIPTION:
-# Create proper Lua executables and pkg-config wrappers
-# (if available) in the directory named by <path>. Set up PATH
-# and PKG_CONFIG_PATH appropriately. <path> defaults to ${T}/${ELUA}.
-#
-# The wrappers will be created for implementation named by <impl>,
-# or for one named by ${ELUA} if no <impl> passed.
-#
-# If the named directory contains a lua symlink already, it will
-# be assumed to contain proper wrappers already and only environment
-# setup will be done. If wrapper update is requested, the directory
-# shall be removed first.
-_lua_wrapper_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	local workdir=${1:-${T}/${ELUA}}
-	local impl=${2:-${ELUA}}
-
-	[[ ${workdir} ]] || die "${FUNCNAME}: no workdir specified."
-	[[ ${impl} ]] || die "${FUNCNAME}: no impl nor ELUA specified."
-
-	if [[ ! -x ${workdir}/bin/lua ]]; then
-		mkdir -p "${workdir}"/{bin,pkgconfig} || die
-
-		# Clean up, in case we were supposed to do a cheap update
-		rm -f "${workdir}"/bin/lua{,c} || die
-		rm -f "${workdir}"/pkgconfig/lua.pc || die
-
-		local ELUA LUA
-		_lua_export "${impl}" ELUA LUA
-
-		# Lua interpreter and compiler
-		ln -s "${EPREFIX}"/usr/bin/${ELUA} "${workdir}"/bin/lua || die
-		ln -s "${EPREFIX}"/usr/bin/${ELUA/a/ac} "${workdir}"/bin/luac || die
-
-		# pkg-config
-		ln -s "${EPREFIX}"/usr/$(get_libdir)/pkgconfig/${ELUA}.pc \
-			"${workdir}"/pkgconfig/lua.pc || die
-	fi
-
-	# Now, set the environment.
-	# But note that ${workdir} may be shared with something else,
-	# and thus already on top of PATH.
-	if [[ ${PATH##:*} != ${workdir}/bin ]]; then
-		PATH=${workdir}/bin${PATH:+:${PATH}}
-	fi
-	if [[ ${PKG_CONFIG_PATH##:*} != ${workdir}/pkgconfig ]]; then
-		PKG_CONFIG_PATH=${workdir}/pkgconfig${PKG_CONFIG_PATH:+:${PKG_CONFIG_PATH}}
-	fi
-	export PATH PKG_CONFIG_PATH
-}
-
 # @FUNCTION: lua_copy_sources
 # @DESCRIPTION:
 # Create a single copy of the package sources for each enabled Lua
@@ -495,160 +314,8 @@ lua_foreach_impl() {
 	multibuild_foreach_variant _lua_multibuild_wrapper "${@}"
 }
 
-# @FUNCTION: lua_get_CFLAGS
-# @USAGE: [<impl>]
-# @DESCRIPTION:
-# Obtain and print the compiler flags for building against Lua,
-# for the given implementation. If no implementation is provided,
-# ${ELUA} will be used.
-#
-# Please note that this function requires Lua and pkg-config installed,
-# and therefore proper build-time dependencies need be added to the ebuild.
-lua_get_CFLAGS() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	_lua_export "${@}" LUA_CFLAGS
-	echo "${LUA_CFLAGS}"
-}
-
-# @FUNCTION: lua_get_cmod_dir
-# @USAGE: [<impl>]
-# @DESCRIPTION:
-# Obtain and print the name of the directory into which compiled Lua
-# modules are installed, for the given implementation. If no implementation
-# is provided, ${ELUA} will be used.
-#
-# Please note that this function requires Lua and pkg-config installed,
-# and therefore proper build-time dependencies need be added to the ebuild.
-lua_get_cmod_dir() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	_lua_export "${@}" LUA_CMOD_DIR
-	echo "${LUA_CMOD_DIR}"
-}
-
-# @FUNCTION: lua_get_LIBS
-# @USAGE: [<impl>]
-# @DESCRIPTION:
-# Obtain and print the compiler flags for linking against Lua,
-# for the given implementation. If no implementation is provided,
-# ${ELUA} will be used.
-#
-# Please note that this function requires Lua and pkg-config installed,
-# and therefore proper build-time dependencies need be added to the ebuild.
-lua_get_LIBS() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	_lua_export "${@}" LUA_LIBS
-	echo "${LUA_LIBS}"
-}
-
-# @FUNCTION: lua_get_lmod_dir
-# @USAGE: [<impl>]
-# @DESCRIPTION:
-# Obtain and print the name of the directory into which native-Lua
-# modules are installed, for the given implementation. If no implementation
-# is provided, ${ELUA} will be used.
-#
-# Please note that this function requires Lua and pkg-config installed,
-# and therefore proper build-time dependencies need be added to the ebuild.
-lua_get_lmod_dir() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	_lua_export "${@}" LUA_LMOD_DIR
-	echo "${LUA_LMOD_DIR}"
-}
-
-# @FUNCTION: lua_get_version
-# @USAGE: [<impl>]
-# @DESCRIPTION:
-# Obtain and print the full version number of the given Lua implementation.
-# If no implementation is provided, ${ELUA} will be used.
-#
-# Please note that this function requires Lua and pkg-config installed,
-# and therefore proper build-time dependencies need be added to the ebuild.
-lua_get_version() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	_lua_export "${@}" LUA_VERSION
-	echo "${LUA_VERSION}"
-}
-
 _LUA_R0=1
 fi
-
-# @ECLASS-VARIABLE: _LUA_ALL_IMPLS
-# @INTERNAL
-# @DESCRIPTION:
-# All supported Lua implementations, most preferred last
-_LUA_ALL_IMPLS=(
-	lua5-1
-	lua5-2
-	lua5-3
-	lua5-4
-)
-readonly _LUA_ALL_IMPLS
-
-# @FUNCTION: _lua_set_impls
-# @INTERNAL
-# @DESCRIPTION:
-# Check LUA_COMPAT for well-formedness and validity, then set
-# two global variables:
-#
-# - _LUA_SUPPORTED_IMPLS containing valid implementations supported
-#   by the ebuild (LUA_COMPAT minus dead implementations),
-#
-# - and _LUA_UNSUPPORTED_IMPLS containing valid implementations that
-#   are not supported by the ebuild.
-#
-# Implementations in both variables are ordered using the pre-defined
-# eclass implementation ordering.
-#
-# This function must only be called once.
-_lua_set_impls() {
-	local i
-
-	if ! declare -p LUA_COMPAT &>/dev/null; then
-		die 'LUA_COMPAT not declared.'
-	fi
-	if [[ $(declare -p LUA_COMPAT) != "declare -a"* ]]; then
-		die 'LUA_COMPAT must be an array.'
-	fi
-
-	local supp=() unsupp=()
-
-	for i in "${_LUA_ALL_IMPLS[@]}"; do
-		if has "${i}" "${LUA_COMPAT[@]}"; then
-			supp+=( "${i}" )
-		else
-			unsupp+=( "${i}" )
-		fi
-	done
-
-	if [[ ! ${supp[@]} ]]; then
-		die "No supported implementation in LUA_COMPAT."
-	fi
-
-	if [[ ${_LUA_SUPPORTED_IMPLS[@]} ]]; then
-		# set once already, verify integrity
-		if [[ ${_LUA_SUPPORTED_IMPLS[@]} != ${supp[@]} ]]; then
-			eerror "Supported impls (LUA_COMPAT) changed between inherits!"
-			eerror "Before: ${_LUA_SUPPORTED_IMPLS[*]}"
-			eerror "Now   : ${supp[*]}"
-			die "_LUA_SUPPORTED_IMPLS integrity check failed"
-		fi
-		if [[ ${_LUA_UNSUPPORTED_IMPLS[@]} != ${unsupp[@]} ]]; then
-			eerror "Unsupported impls changed between inherits!"
-			eerror "Before: ${_LUA_UNSUPPORTED_IMPLS[*]}"
-			eerror "Now   : ${unsupp[*]}"
-			die "_LUA_UNSUPPORTED_IMPLS integrity check failed"
-		fi
-	else
-		_LUA_SUPPORTED_IMPLS=( "${supp[@]}" )
-		_LUA_UNSUPPORTED_IMPLS=( "${unsupp[@]}" )
-		readonly _LUA_SUPPORTED_IMPLS _LUA_UNSUPPORTED_IMPLS
-	fi
-}
 
 # @FUNCTION: _lua_set_globals
 # @INTERNAL
@@ -707,4 +374,4 @@ _lua_set_globals() {
 }
 
 _lua_set_globals
-unset -f _lua_set_globals _lua_set_impls
+unset -f _lua_set_globals

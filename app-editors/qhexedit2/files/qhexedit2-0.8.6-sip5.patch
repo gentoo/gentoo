@@ -1,0 +1,82 @@
+https://bugs.gentoo.org/820473
+https://bugs.gentoo.org/815133
+https://github.com/Simsys/qhexedit2/pull/137
+https://src.fedoraproject.org/rpms/qhexedit2/blob/rawhide/f/sip5.patch
+From ce17d35586de1b9fdc21e3f8450dd1d2b76d5bcc Mon Sep 17 00:00:00 2001
+From: Scott Talbert <swt@techie.net>
+Date: Mon, 18 Jan 2021 21:06:46 -0500
+Subject: [PATCH] Add support for building with sip 5
+
+---
+ project.py       | 29 +++++++++++++++++++++++++++++
+ pyproject.toml   | 14 ++++++++++++++
+ src/qhexedit.sip |  2 +-
+ 3 files changed, 44 insertions(+), 1 deletion(-)
+ create mode 100644 project.py
+ create mode 100644 pyproject.toml
+
+diff --git a/project.py b/project.py
+new file mode 100644
+index 0000000..c9ee67f
+--- /dev/null
++++ b/project.py
+@@ -0,0 +1,29 @@
++"""The build configuration file for QHexEdit, used by sip."""
++
++import os
++from os.path import abspath, join
++from sipbuild import Option
++from pyqtbuild import PyQtBindings, PyQtProject
++import PyQt5
++
++
++class QHexEditProject(PyQtProject):
++    """The QHexEdit Project class."""
++
++    def __init__(self):
++        super().__init__()
++        self.bindings_factories = [QHexEditBindings]
++
++    def update(self, tool):
++        """Allows SIP to find PyQt5 .sip files."""
++        super().update(tool)
++        self.sip_include_dirs.append(join(PyQt5.__path__[0], 'bindings'))
++
++
++class QHexEditBindings(PyQtBindings):
++    """The QHexEdit Bindings class."""
++
++    def __init__(self, project):
++        super().__init__(project, name='QHexEdit',
++                         sip_file='qhexedit.sip',
++                         qmake_QT=['widgets'])
+diff --git a/pyproject.toml b/pyproject.toml
+new file mode 100644
+index 0000000..b5edaa4
+--- /dev/null
++++ b/pyproject.toml
+@@ -0,0 +1,14 @@
++[build-system]
++requires = ["sip >=5, <7", "PyQt-builder >=1.1.0, <2", "PyQt5"]
++build-backend = "sipbuild.api"
++
++[tool.sip.metadata]
++name = "QHexEdit"
++version = "0.8.9"
++
++[tools.sip]
++abi-version = "12.8"
++project-factory = "pyqtbuild:PyQtProject"
++
++[tool.sip.project]
++sip-files-dir = "src"
+diff --git a/src/qhexedit.sip b/src/qhexedit.sip
+index f7db293..6d4ebae 100644
+--- a/src/qhexedit.sip
++++ b/src/qhexedit.sip
+@@ -1,4 +1,4 @@
+-%Module(name=qhexedit, version=1)
++%Module(name=qhexedit)
+ 
+ %Import QtCore/QtCoremod.sip
+ %Import QtGui/QtGuimod.sip

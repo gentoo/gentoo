@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: pam.eclass
@@ -6,15 +6,21 @@
 # Mikle Kolyada <zlogene@gentoo.org>
 # @AUTHOR:
 # Diego Pettenò <flameeyes@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Handles pam related tasks
 # @DESCRIPTION:
 # This eclass contains functions to install pamd configuration files and
 # pam modules.
 
+case ${EAPI:-0} in
+	[678]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
 if [[ -z ${_PAM_ECLASS} ]]; then
 _PAM_ECLASS=1
 
-inherit flag-o-matic multilib
+inherit flag-o-matic
 
 # @FUNCTION: dopamd
 # @USAGE: <file> [more files]
@@ -94,12 +100,7 @@ newpamsecurity() {
 # @DESCRIPTION:
 # Returns the pam modules' directory for current implementation
 getpam_mod_dir() {
-	if has_version sys-libs/pam; then
-		PAM_MOD_DIR=/$(get_libdir)/security
-	else
-		# Unable to find PAM implementation... defaulting
-		PAM_MOD_DIR=/$(get_libdir)/security
-	fi
+	PAM_MOD_DIR=/$(get_libdir)/security
 
 	echo ${PAM_MOD_DIR}
 }
@@ -182,11 +183,7 @@ pamd_mimic() {
 	originalstack=$1
 	authlevels="auth account password session"
 
-	if has_version '<sys-libs/pam-0.78'; then
-		mimic="\trequired\t\tpam_stack.so service=${originalstack}"
-	else
-		mimic="\tinclude\t\t${originalstack}"
-	fi
+	mimic="\tsubstack\t\t${originalstack}"
 
 	shift; shift
 
@@ -207,54 +204,11 @@ pamd_mimic() {
 cleanpamd() {
 	while [[ -n $1 ]]; do
 		if ! has_version sys-libs/pam; then
-			sed -i -e '/pam_shells\|pam_console/s:^:#:' "${D}/etc/pam.d/$1"
+			sed -i -e '/pam_shells\|pam_console/s:^:#:' "${D}/etc/pam.d/$1" || die
 		fi
 
 		shift
 	done
 }
-
-# @FUNCTION: pam_epam_expand
-# @USAGE: <pamd file>
-# @DESCRIPTION:
-# Steer clear, deprecated, don't use, bad experiment
-pam_epam_expand() {
-	sed -n -e 's|#%EPAM-\([[:alpha:]-]\+\):\([-+<>=/.![:alnum:]]\+\)%#.*|\1 \2|p' \
-	"$@" | sort -u | while read condition parameter; do
-
-	disable="yes"
-
-	case "$condition" in
-		If-Has)
-		message="This can be used only if you have ${parameter} installed"
-		has_version "$parameter" && disable="no"
-		;;
-		Use-Flag)
-		message="This can be used only if you enabled the ${parameter} USE flag"
-		use "$parameter" && disable="no"
-		;;
-		*)
-		eerror "Unknown EPAM condition '${condition}' ('${parameter}')"
-		die "Unknown EPAM condition '${condition}' ('${parameter}')"
-		;;
-	esac
-
-	if [ "${disable}" = "yes" ]; then
-		sed -i -e "/#%EPAM-${condition}:${parameter/\//\\/}%#/d" "$@"
-	else
-		sed -i -e "s|#%EPAM-${condition}:${parameter}%#||" "$@"
-	fi
-
-	done
-}
-
-# Think about it before uncommenting this one, for now run it by hand
-# pam_pkg_preinst() {
-# 	eshopts_push -o noglob # so that bash doen't expand "*"
-#
-# 	pam_epam_expand "${D}"/etc/pam.d/*
-#
-# 	eshopts_pop # reset old shell opts
-# }
 
 fi

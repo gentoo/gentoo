@@ -1,5 +1,5 @@
---- bristol-0.60.11/bin/Makefile.am
-+++ bristol-0.60.11/bin/Makefile.am
+--- a/bin/Makefile.am
++++ b/bin/Makefile.am
 @@ -1,7 +1,7 @@
  AUTOMAKE_OPTIONS = foreign
  
@@ -9,8 +9,8 @@
  
  #bin_PROGRAMS = bristoljackstats bristolnotegen bristolNRPgen
  bin_PROGRAMS = bristoljackstats
---- bristol-0.60.11/brighton/Makefile.am
-+++ bristol-0.60.11/brighton/Makefile.am
+--- a/brighton/Makefile.am
++++ b/brighton/Makefile.am
 @@ -1,6 +1,6 @@
  AUTOMAKE_OPTIONS = foreign
  
@@ -19,8 +19,8 @@
  
  bin_PROGRAMS = brighton
  brighton_LDFLAGS = -Bdynamic -L../libbrighton/ -L../libbristolmidi/.libs @BRIGHTON_LIBXLIBS@ -L/usr/X11R6/lib -L../libbvg
---- bristol-0.60.11/bristol/Makefile.am
-+++ bristol-0.60.11/bristol/Makefile.am
+--- a/bristol/Makefile.am
++++ b/bristol/Makefile.am
 @@ -1,6 +1,6 @@
  AUTOMAKE_OPTIONS = foreign
  
@@ -29,8 +29,8 @@
  
  bin_PROGRAMS = bristol
  #bristol_LDFLAGS = -Bdynamic -L../libbristolmidi/.libs -L../libbristolaudio/.libs -L../libbristol -L../libbristolic
---- bristol-0.60.11/libbrighton/Makefile.am
-+++ bristol-0.60.11/libbrighton/Makefile.am
+--- a/libbrighton/Makefile.am
++++ b/libbrighton/Makefile.am
 @@ -1,6 +1,6 @@
  AUTOMAKE_OPTIONS = foreign
  
@@ -39,8 +39,8 @@
  
  noinst_LIBRARIES = libbrighton.a
  #libbrighton_a_LDFLAGS=-export-dynamic -version-info @BRISTOL_SO_VERSION@ @BRIGHTON_LIBXLIBS@ @BRIGHTON_LIBXLIBS@
---- bristol-0.60.11/libbrightonC11/Makefile.am
-+++ bristol-0.60.11/libbrightonC11/Makefile.am
+--- a/libbrightonC11/Makefile.am
++++ b/libbrightonC11/Makefile.am
 @@ -1,6 +1,6 @@
  AUTOMAKE_OPTIONS = foreign
  
@@ -49,8 +49,8 @@
  
  #libC11_la_LDFLAGS= -export-dynamic -version-info @BRISTOL_SO_VERSION@
  #libC11_la_LIBADD=
---- bristol-0.60.11/libbrightonX11/Makefile.am
-+++ bristol-0.60.11/libbrightonX11/Makefile.am
+--- a/libbrightonX11/Makefile.am
++++ b/libbrightonX11/Makefile.am
 @@ -1,6 +1,6 @@
  AUTOMAKE_OPTIONS = foreign
  
@@ -59,8 +59,8 @@
  
  #libB11_a_LDFLAGS= -export-dynamic -version-info @BRISTOL_SO_VERSION@
  #libB11_a_LIBADD= -L/usr/X11R6/lib -lX11
---- bristol-0.60.11/libbristol/Makefile.am
-+++ bristol-0.60.11/libbristol/Makefile.am
+--- a/libbristol/Makefile.am
++++ b/libbristol/Makefile.am
 @@ -1,6 +1,6 @@
  AUTOMAKE_OPTIONS = foreign
  
@@ -69,8 +69,8 @@
  #libbristol_a_LDFLAGS=-export-dynamic -version-info @BRISTOL_SO_VERSION@ -march=core2 -msse -msse2 -mfpmath=sse -ffast-math -fomit-frame-pointer -O3
  #libbristol_la_LIBADD=$(top_builddir)/libbristol/libbristol.la
  
---- bristol-0.60.11/libbristolaudio/Makefile.am
-+++ bristol-0.60.11/libbristolaudio/Makefile.am
+--- a/libbristolaudio/Makefile.am
++++ b/libbristolaudio/Makefile.am
 @@ -1,6 +1,6 @@
  AUTOMAKE_OPTIONS = foreign
  
@@ -79,8 +79,8 @@
  
  #libbristolaudio_la_LDFLAGS=-export-dynamic -version-info @BRISTOL_SO_VERSION@
  #libbristolaudio_la_LIBADD=@ALSA_LIBS@ @JACK_LIBS@
---- bristol-0.60.11/libbristolic/Makefile.am
-+++ bristol-0.60.11/libbristolic/Makefile.am
+--- a/libbristolic/Makefile.am
++++ b/libbristolic/Makefile.am
 @@ -1,6 +1,6 @@
  AUTOMAKE_OPTIONS = foreign
  
@@ -89,8 +89,8 @@
  #libbristolic_la_LDFLAGS=-export-dynamic -version-info @BRISTOL_SO_VERSION@
  
  noinst_LIBRARIES = libbristolic.a
---- bristol-0.60.11/libbristolmidi/Makefile.am
-+++ bristol-0.60.11/libbristolmidi/Makefile.am
+--- a/libbristolmidi/Makefile.am
++++ b/libbristolmidi/Makefile.am
 @@ -1,6 +1,6 @@
  AUTOMAKE_OPTIONS = foreign
  
@@ -99,8 +99,8 @@
  libbristolmidi_la_LDFLAGS=-export-dynamic -version-info @BRISTOL_SO_VERSION@
  libbristolmidi_la_LIBADD=@ALSA_LIBS@ @JACK_LIBS@ -lm
  
---- bristol-0.60.11/libbvg/Makefile.am
-+++ bristol-0.60.11/libbvg/Makefile.am
+--- a/libbvg/Makefile.am
++++ b/libbvg/Makefile.am
 @@ -1,6 +1,6 @@
  AUTOMAKE_OPTIONS = foreign
  

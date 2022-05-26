@@ -1,4 +1,4 @@
-# Copyright 2007-2016 Gentoo Foundation.
+# Copyright 2007-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of APACHE2_MODULES USE_EXPAND flags.
@@ -16,13 +16,11 @@ authn_anon - Allows "anonymous" user access to authenticated areas
 authn_core - Provides core authentication capabilities common to all authentication providers (functionality provided by authn_alias in previous versions)
 authn_dbd - User authentication using an SQL database
 authn_dbm - User authentication using DBM files
-authn_default - Authentication fallback module
 authn_file - User authentication using text files
 authn_socache - Maintains a cache of authentication credentials, so that a new backend lookup is not required for every authenticated request
 authz_core - Provides core authorization capabilities to various authorization/authorization modules, such as authn_file and authz_user
 authz_dbd - Provides authorization capabilities via SQL database so that authenticated users can be allowed or denied access to portions of the web site by group membership
 authz_dbm - Group authorization using DBM files
-authz_default - Authorization fallback module
 authz_groupfile - Group authorization using plaintext files
 authz_host - Group authorizations based on host (name or IP address)
 authz_owner - Authorization based on file ownership
@@ -42,7 +40,6 @@ dav_lock - generic locking module for mod_dav
 dbd - Manages SQL database connections
 deflate - Compress content before it is delivered to the client
 dir - Provides for "trailing slash" redirects and serving directory index files
-disk_cache - Content cache storage manager keyed to URIs
 dumpio - Dumps all I/O to error log as desired
 env - Modifies the environment which is passed to CGI scripts and SSI pages
 expires - Generation of Expires and Cache-Control HTTP headers according to user-specified criteria
@@ -62,9 +59,9 @@ lbmethod_heartbeat - Heartbeat Traffic Counting load balancer scheduler algorith
 log_config - Logging of the requests made to the server
 log_forensic - Forensic Logging of the requests made to the server
 logio - Logging of input and output bytes per request
+lua - Provides Lua hooks into various portions of the httpd request processing
 macro - Macros for the Apache config file
 md - Managing domains across virtual hosts, certificate provisioning via the ACME protocol
-mem_cache - Content cache keyed to URIs
 mime - Associates the requested filename's extensions with the file's behavior (handlers and filters) and content (mime-type, language, character set and encoding)
 mime_magic - Determines the MIME type of a file by looking at a few bytes of its contents
 negotiation - Provides for content negotiation
@@ -74,10 +71,12 @@ proxy_balancer - mod_proxy extension for load balancing
 proxy_connect - mod_proxy extension for CONNECT request handling
 proxy_fcgi - FastCGI support module for mod_proxy
 proxy_ftp - FTP support module for mod_proxy
+proxy_hcheck - Dynamic health check of Balancer members (workers) for mod_proxy
 proxy_html - Module to rewrite links in html pages behind a reverse proxy
 proxy_http - HTTP support module for mod_proxy
 proxy_http2 - HTTP2 support module for mod_proxy
 proxy_scgi - SCGI gateway module for mod_proxy
+proxy_uwsgi - UWSGI gateway module for mod_proxy
 proxy_wstunnel - Provides support for the tunnelling of web socket connections to a backend websockets server
 ratelimit - Bandwidth Rate Limiting for Clients
 remoteip - Replaces the original client IP address for the connection with the useragent IP address list presented by a proxies or a load balancer via the request headers

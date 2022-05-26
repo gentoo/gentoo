@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>n@nirf.de</email>
-		<name>Nick Erdmann</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
-		<flag name="experimental">Enable builds that do not support all of LLVM's target architectures</flag>
+		<flag name="stage2">Install stage2 alongside stage1</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">ziglang/zig</remote-id>

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,8 @@ SRC_URI="mirror://debian/pool/main/r/restartd/${PN}_${MY_PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 src_prepare() {
 	default
@@ -21,7 +22,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CC=$(tc-getCC) C_ARGS="${CFLAGS}"
+	emake CC="$(tc-getCC)" C_ARGS="${CFLAGS}"
 }
 
 src_install() {

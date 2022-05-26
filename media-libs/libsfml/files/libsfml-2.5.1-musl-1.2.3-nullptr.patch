@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/839639
+https://github.com/SFML/SFML/commit/c9f7cb3d525a995912fc62507802f3f265de2728.patch
+https://git.alpinelinux.org/aports/plain/community/sfml/musl-1.2.3.patch
+--- a/src/SFML/Window/Unix/WindowImplX11.cpp
++++ b/src/SFML/Window/Unix/WindowImplX11.cpp
+@@ -1556,7 +1556,7 @@
+                                    m_window,
+                                    XNInputStyle,
+                                    XIMPreeditNothing | XIMStatusNothing,
+-                                   reinterpret_cast<void*>(NULL));
++                                   reinterpret_cast<void*>(0));
+     }
+     else
+     {

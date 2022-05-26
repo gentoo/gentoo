@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
     <email>graaff@gentoo.org</email>
@@ -15,14 +15,8 @@
     <flag name="libexif">
       Use <pkg>media-libs/libexif</pkg> for EXIF support
     </flag>
-    <flag name="mapnik">
-      Enable a layer based on <pkg>sci-geosciences/mapnik</pkg>
-    </flag>
     <flag name="oauth">
       Enable OAuth authentication for OSM
-    </flag>
-    <flag name="sqlite">
-      Enable MBTiles support based on <pkg>dev-db/sqlite</pkg>
     </flag>
   </use>
   <upstream>

@@ -1,0 +1,206 @@
+replace hardcoded hip finder with Gentoo paths.
+
+It is not necessary to check HIP runtime each time.
+
+Author: Benda Xu <heroxbd@gentoo.org>
+Author: Yiyang Wu <xgreenlandforwyy@gmail.com>
+
+Index: llvm-project-rocm-5.0.1/clang/lib/Driver/ToolChains/AMDGPU.cpp
+===================================================================
+--- llvm-project-rocm-5.0.1.orig/clang/lib/Driver/ToolChains/AMDGPU.cpp
++++ llvm-project-rocm-5.0.1/clang/lib/Driver/ToolChains/AMDGPU.cpp
+@@ -169,139 +169,8 @@ bool RocmInstallationDetector::parseHIPV
+ /// cached and populated only once.
+ const SmallVectorImpl<RocmInstallationDetector::Candidate> &
+ RocmInstallationDetector::getInstallationPathCandidates() {
+-
+-  // Return the cached candidate list if it has already been populated.
+-  if (!ROCmSearchDirs.empty())
+-    return ROCmSearchDirs;
+-
+-  auto DoPrintROCmSearchDirs = [&]() {
+-    if (PrintROCmSearchDirs)
+-      for (auto Cand : ROCmSearchDirs) {
+-        llvm::errs() << "ROCm installation search path";
+-        if (Cand.isSPACK())
+-          llvm::errs() << " (Spack " << Cand.SPACKReleaseStr << ")";
+-        llvm::errs() << ": " << Cand.Path << '\n';
+-      }
+-  };
+-
+-  // For candidate specified by --rocm-path we do not do strict check, i.e.,
+-  // checking existence of HIP version file and device library files.
+-  if (!RocmPathArg.empty()) {
+-    ROCmSearchDirs.emplace_back(RocmPathArg.str());
+-    DoPrintROCmSearchDirs();
+-    return ROCmSearchDirs;
+-  } else if (const char *RocmPathEnv = ::getenv("ROCM_PATH")) {
+-    if (!StringRef(RocmPathEnv).empty()) {
+-      ROCmSearchDirs.emplace_back(RocmPathEnv);
+-      DoPrintROCmSearchDirs();
+-      return ROCmSearchDirs;
+-    }
+-  }
+-
+-  // Try to find relative to the compiler binary.
+-  const char *InstallDir = D.getInstalledDir();
+-
+-  // Check both a normal Unix prefix position of the clang binary, as well as
+-  // the Windows-esque layout the ROCm packages use with the host architecture
+-  // subdirectory of bin.
+-  auto DeduceROCmPath = [](StringRef ClangPath) {
+-    // Strip off directory (usually bin)
+-    StringRef ParentDir = llvm::sys::path::parent_path(ClangPath);
+-    StringRef ParentName = llvm::sys::path::filename(ParentDir);
+-
+-    // Some builds use bin/{host arch}, so go up again.
+-    if (ParentName == "bin") {
+-      ParentDir = llvm::sys::path::parent_path(ParentDir);
+-      ParentName = llvm::sys::path::filename(ParentDir);
+-    }
+-
+-    // Detect ROCm packages built with SPACK.
+-    // clang is installed at
+-    // <rocm_root>/llvm-amdgpu-<rocm_release_string>-<hash>/bin directory.
+-    // We only consider the parent directory of llvm-amdgpu package as ROCm
+-    // installation candidate for SPACK.
+-    if (ParentName.startswith("llvm-amdgpu-")) {
+-      auto SPACKPostfix =
+-          ParentName.drop_front(strlen("llvm-amdgpu-")).split('-');
+-      auto SPACKReleaseStr = SPACKPostfix.first;
+-      if (!SPACKReleaseStr.empty()) {
+-        ParentDir = llvm::sys::path::parent_path(ParentDir);
+-        return Candidate(ParentDir.str(), /*StrictChecking=*/true,
+-                         SPACKReleaseStr);
+-      }
+-    }
+-
+-    // Some versions of the rocm llvm package install to /opt/rocm/llvm/bin
+-    // Some versions of the aomp package install to /opt/rocm/aomp/bin
+-    if (ParentName == "llvm" || ParentName.startswith("aomp"))
+-      ParentDir = llvm::sys::path::parent_path(ParentDir);
+-    // Some versions of the aomp package install to /opt/rocm/aomp/bin
+-    // and it seems ParentDir is already pointing to correct place.
+-    return Candidate(ParentDir.str(), /*StrictChecking=*/true);
+-  };
+-
+-  // Deduce ROCm path by the path used to invoke clang. Do not resolve symbolic
+-  // link of clang itself.
+-  ROCmSearchDirs.emplace_back(DeduceROCmPath(InstallDir));
+-
+-  // Deduce ROCm path by the real path of the invoked clang, resolving symbolic
+-  // link of clang itself.
+-  llvm::SmallString<256> RealClangPath;
+-  llvm::sys::fs::real_path(D.getClangProgramPath(), RealClangPath);
+-  auto ParentPath = llvm::sys::path::parent_path(RealClangPath);
+-  if (ParentPath != InstallDir)
+-    ROCmSearchDirs.emplace_back(DeduceROCmPath(ParentPath));
+-
+-  // Device library may be installed in clang or resource directory.
+-  auto ClangRoot = llvm::sys::path::parent_path(InstallDir);
+-  auto RealClangRoot = llvm::sys::path::parent_path(ParentPath);
+-  ROCmSearchDirs.emplace_back(ClangRoot.str(), /*StrictChecking=*/true);
+-  if (RealClangRoot != ClangRoot)
+-    ROCmSearchDirs.emplace_back(RealClangRoot.str(), /*StrictChecking=*/true);
+-  ROCmSearchDirs.emplace_back(D.ResourceDir,
+-                              /*StrictChecking=*/true);
+-
+-  ROCmSearchDirs.emplace_back(D.SysRoot + "/opt/rocm",
+-                              /*StrictChecking=*/true);
+-
+-  // Find the latest /opt/rocm-{release} directory.
+-  std::error_code EC;
+-  std::string LatestROCm;
+-  llvm::VersionTuple LatestVer;
+-  // Get ROCm version from ROCm directory name.
+-  auto GetROCmVersion = [](StringRef DirName) {
+-    llvm::VersionTuple V;
+-    std::string VerStr = DirName.drop_front(strlen("rocm-")).str();
+-    // The ROCm directory name follows the format of
+-    // rocm-{major}.{minor}.{subMinor}[-{build}]
+-    std::replace(VerStr.begin(), VerStr.end(), '-', '.');
+-    V.tryParse(VerStr);
+-    return V;
+-  };
+-  for (llvm::vfs::directory_iterator
+-           File = D.getVFS().dir_begin(D.SysRoot + "/opt", EC),
+-           FileEnd;
+-       File != FileEnd && !EC; File.increment(EC)) {
+-    llvm::StringRef FileName = llvm::sys::path::filename(File->path());
+-    if (!FileName.startswith("rocm-"))
+-      continue;
+-    if (LatestROCm.empty()) {
+-      LatestROCm = FileName.str();
+-      LatestVer = GetROCmVersion(LatestROCm);
+-      continue;
+-    }
+-    auto Ver = GetROCmVersion(FileName);
+-    if (LatestVer < Ver) {
+-      LatestROCm = FileName.str();
+-      LatestVer = Ver;
+-    }
+-  }
+-  if (!LatestROCm.empty())
+-    ROCmSearchDirs.emplace_back(D.SysRoot + "/opt/" + LatestROCm,
+-                                /*StrictChecking=*/true);
+-
+-  DoPrintROCmSearchDirs();
+-  return ROCmSearchDirs;
++	ROCmSearchDirs.emplace_back(D.SysRoot + "/usr", /*StrictChecking=*/true);
++	return ROCmSearchDirs;
+ }
+ 
+ RocmInstallationDetector::RocmInstallationDetector(
+@@ -410,7 +279,7 @@ void RocmInstallationDetector::detectDev
+     // - ${ROCM_ROOT}/lib/bitcode/*
+     // so try to detect these layouts.
+     static constexpr std::array<const char *, 2> SubDirsList[] = {
+-        {"amdgcn", "bitcode"},
++        {"lib/amdgcn", "bitcode"},
+         {"lib", ""},
+         {"lib", "bitcode"},
+     };
+@@ -433,42 +302,7 @@ void RocmInstallationDetector::detectDev
+ }
+ 
+ void RocmInstallationDetector::detectHIPRuntime() {
+-  SmallVector<Candidate, 4> HIPSearchDirs;
+-  if (!HIPPathArg.empty())
+-    HIPSearchDirs.emplace_back(HIPPathArg.str(), /*StrictChecking=*/true);
+-  else
+-    HIPSearchDirs.append(getInstallationPathCandidates());
+-  auto &FS = D.getVFS();
+-
+-  for (const auto &Candidate : HIPSearchDirs) {
+-    InstallPath = Candidate.Path;
+-    if (InstallPath.empty() || !FS.exists(InstallPath))
+-      continue;
+-    // HIP runtime built by SPACK is installed to
+-    // <rocm_root>/hip-<rocm_release_string>-<hash> directory.
+-    auto SPACKPath = findSPACKPackage(Candidate, "hip");
+-    InstallPath = SPACKPath.empty() ? InstallPath : SPACKPath;
+-
+-    BinPath = InstallPath;
+-    llvm::sys::path::append(BinPath, "bin");
+-    IncludePath = InstallPath;
+-    llvm::sys::path::append(IncludePath, "include");
+-    LibPath = InstallPath;
+-    llvm::sys::path::append(LibPath, "lib");
+-
+-    llvm::ErrorOr<std::unique_ptr<llvm::MemoryBuffer>> VersionFile =
+-        FS.getBufferForFile(BinPath + "/.hipVersion");
+-    if (!VersionFile && Candidate.StrictChecking)
+-      continue;
+-
+-    if (HIPVersionArg.empty() && VersionFile)
+-      if (parseHIPVersionFile((*VersionFile)->getBuffer()))
+-        continue;
+-
+-    HasHIPRuntime = true;
+-    return;
+-  }
+-  HasHIPRuntime = false;
++  HasHIPRuntime = true;
+ }
+ 
+ void RocmInstallationDetector::print(raw_ostream &OS) const {

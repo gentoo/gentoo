@@ -1,0 +1,13 @@
+https://dev.deluge-torrent.org/changeset/351664ec071daa04
+https://dev.deluge-torrent.org/ticket/3327
+Index: deluge/log.py
+===================================================================
+--- a/deluge/log.py
++++ b/deluge/log.py
+@@ -87,5 +87,5 @@
+         yield LoggingLoggerClass.exception(self, msg, *args, **kwargs)
+ 
+-    def findCaller(self, stack_info=False):  # NOQA: N802
++    def findCaller(self, *args, **kwargs):  # NOQA: N802
+         f = logging.currentframe().f_back
+         rv = '(unknown file)', 0, '(unknown function)'

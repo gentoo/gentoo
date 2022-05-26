@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
     <email>mjo@gentoo.org</email>
@@ -9,11 +9,11 @@
       long before I moved it into ::gentoo. You don't need an ACK from me
       to merge his changes.
   -->
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>frp.bissey@gmail.com</email>
     <name>François Bissey</name>
   </maintainer>
-  <maintainer type="project">
+  <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>

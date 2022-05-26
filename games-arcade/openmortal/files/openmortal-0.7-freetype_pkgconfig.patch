@@ -1,5 +1,5 @@
---- openmortal-0.7/configure.in
-+++ openmortal-0.7/configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -25,6 +25,7 @@
  AC_C_CONST
  AC_PROG_CXX

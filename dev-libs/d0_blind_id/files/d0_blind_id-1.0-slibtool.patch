@@ -1,0 +1,43 @@
+From 0d3d1f2655901776b2fc3e911eb78478412f789a Mon Sep 17 00:00:00 2001
+From: Lyberta <lyberta@lyberta.net>
+Date: Sat, 7 Oct 2017 19:26:40 +0300
+Subject: [PATCH] Fixed version-info.
+
+---
+ Makefile.am | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index d21887d..07338eb 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -5,7 +5,7 @@ blind_id_SOURCES = main.c
+ blind_id_LDADD = libd0_blind_id.la
+ 
+ lib_LTLIBRARIES = libd0_blind_id.la
+-# versioninfo:
++# version-info:
+ #   - compatible interface change: c:r:a -> c+1:0:a+1
+ #   - incompatible interface change: c:r:a -> c+1:0:0
+ #   - internal change: c:r:a -> c:r+1:a
+@@ -29,7 +29,7 @@ libd0_blind_id_la_SOURCES += d0_bignum-gmp.c
+ endif
+ endif
+ endif
+-libd0_blind_id_la_LDFLAGS = -versioninfo 7:1:7
++libd0_blind_id_la_LDFLAGS = -version-info 7:1:7
+ libd0_blind_id_la_CFLAGS = -fvisibility=hidden -Wold-style-definition -Wstrict-prototypes -Wsign-compare -Wdeclaration-after-statement
+ library_includedir = $(includedir)/d0_blind_id
+ library_include_HEADERS = d0_blind_id.h d0.h
+@@ -40,7 +40,7 @@ if ENABLE_RIJNDAEL
+ lib_LTLIBRARIES += libd0_rijndael.la
+ libd0_rijndael_la_SOURCES = d0_rijndael.c \
+                             d0_rijndael.h
+-libd0_rijndael_la_LDFLAGS = -versioninfo 0:0:0
++libd0_rijndael_la_LDFLAGS = -version-info 0:0:0
+ libd0_rijndael_la_CFLAGS = -fvisibility=hidden -Wold-style-definition -Wstrict-prototypes -Wsign-compare -Wdeclaration-after-statement
+ library_include_HEADERS += d0_rijndael.h
+ pkgconfig_HEADERS += d0_rijndael.pc
+-- 
+2.20.1
+

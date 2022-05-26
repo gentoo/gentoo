@@ -1,17 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DIST_AUTHOR=LDS
 DIST_VERSION=1.43
-inherit perl-module toolchain-funcs multilib
+inherit perl-module toolchain-funcs
 
 DESCRIPTION="Read SAM/BAM database files"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-LICENSE="|| ( Apache-2.0 Artistic-2 GPL-1+ )"
 
 RDEPEND="
 	>=sci-biology/bioperl-1.6.9
@@ -40,6 +39,7 @@ src_configure() {
 		SAM_INCLUDE="${EPREFIX}/usr/include/bam-0.1-legacy" \
 		perl-module_src_configure
 }
+
 src_compile() {
 	./Build --config optimize="${CFLAGS}" build || die
 }

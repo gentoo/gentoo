@@ -1,0 +1,31 @@
+From eab3dd5f39b7633a3bc074713da69c53f123345d Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 16 Jul 2021 23:15:26 +0200
+Subject: [PATCH] Revert "Disable kpeople qml module finding"
+
+This reverts commit 89f52af4389e9e98f7428db670355d144b6045a2.
+
+We don't have to do that, because we already apply downstream magic
+and set -DECM_DISABLE_QMLPLUGINDUMP=ON globally.
+
+See also: https://phabricator.kde.org/D25812
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 44af637f..b2027e92 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -84,7 +84,7 @@ else()
+ 
+     add_definitions(-DHAVE_KIO)
+ 
+-    #ecm_find_qmlmodule(org.kde.people 1.0) FIXME This results in KPeople code being called which triggers DBus calls which breaks the Windows CI
++    ecm_find_qmlmodule(org.kde.people 1.0)
+     ecm_find_qmlmodule(QtQuick.Particles 2.0)
+ 
+ endif()
+-- 
+2.32.0
+

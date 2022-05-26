@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/salt-master"
+command_args="${SALT_OPTS}"
+pidfile="/var/run/supervisor-salt-master.pid"
+daemon_pidfile="/var/run/salt-master.pid"
+command_args_background="--daemon --pid-file=\"${daemon_pidfile}\""
+name="SALT master daemon"
+retry="20"
+
+supervisor=supervise-daemon
+output_logger="logger -p daemon.info -t salt-master.stdout --"
+error_logger="logger -p daemon.err -t salt-master.error --"
+
+depend() {
+	use net logger
+}

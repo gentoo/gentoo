@@ -1,0 +1,11 @@
+--- a/ryosmk/libroccatryosmk/ryos_device.h
++++ b/ryosmk/libroccatryosmk/ryos_device.h
+@@ -22,7 +22,7 @@
+ 
+ G_BEGIN_DECLS
+ 
+-enum {
++typedef enum {
+ 	RYOS_WRITE_CHECK_WAIT_LIGHT_CONTROL = 10,
+ } RyosWriteCheckWait;
+ 

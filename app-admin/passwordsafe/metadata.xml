@@ -1,20 +1,18 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>martin.dummer@gmx.net</email>
 		<name>Martin Dummer</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="minimal">Avoid collision with <pkg>app-misc/pwsafe</pkg></flag>
 		<flag name="qr">Enable QR code password display</flag>
 		<flag name="yubikey">Enable support for Yubikey</flag>
 		<flag name="xml">Enable XML import support</flag>
-		<flag name="xvkbd">Install <pkg>x11-misc/xvkbd</pkg> on-screen keyboard</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">pwsafe/pwsafe</remote-id>

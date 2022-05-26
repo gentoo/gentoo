@@ -1,9 +1,9 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit meson
+inherit meson toolchain-funcs
 
 DESCRIPTION="compiz like 3D wayland compositor"
 HOMEPAGE="https://github.com/WayfireWM/wayfire"
@@ -12,40 +12,42 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/WayfireWM/${PN}.git"
 else
-	SRC_URI="https://github.com/WayfireWM/${PN}/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	SRC_URI="https://github.com/WayfireWM/${PN}/releases/download/v${PV}/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+gles +system-wfconfig +system-wlroots elogind systemd X"
-REQUIRED_USE="?? ( elogind systemd )"
+IUSE="debug +gles +system-wfconfig +system-wlroots X"
 
 DEPEND="
 	dev-libs/libevdev
 	dev-libs/libinput
+	dev-libs/wayland
 	gui-libs/gtk-layer-shell
 	media-libs/glm
 	media-libs/mesa:=[gles2,wayland,X?]
+	media-libs/libglvnd[X?]
 	media-libs/libjpeg-turbo
 	media-libs/libpng
 	media-libs/freetype:=[X?]
 	x11-libs/libdrm
 	x11-libs/gtk+:3=[wayland,X?]
 	x11-libs/cairo:=[X?,svg]
-	X? ( x11-libs/libxkbcommon:=[X] )
+	x11-libs/libxkbcommon:=[X?]
 	x11-libs/pixman
-	gles? ( media-libs/libglvnd[X?] )
-	system-wfconfig? ( >=gui-libs/wf-config-${PV} )
+	X? (
+		x11-libs/libxcb
+		x11-base/xwayland
+	)
+	system-wfconfig? ( ~gui-libs/wf-config-9999:= )
 	!system-wfconfig? ( !gui-libs/wf-config )
-	system-wlroots? ( >=gui-libs/wlroots-0.11.0[elogind=,systemd=,X?] )
+	system-wlroots? ( ~gui-libs/wlroots-9999:=[X?] )
 	!system-wlroots? ( !gui-libs/wlroots )
 "
 
 RDEPEND="
 	${DEPEND}
-	elogind? ( sys-auth/elogind )
-	systemd? ( sys-apps/systemd )
 	x11-misc/xkeyboard-config
 "
 
@@ -55,38 +57,44 @@ BDEPEND="
 "
 
 src_configure() {
+	sed -e "s:@EPREFIX@:${EPREFIX}:" \
+		"${FILESDIR}"/wayfire-session > "${T}"/wayfire-session || die
+	sed -e "s:@EPREFIX@:${EPREFIX}:" \
+		"${FILESDIR}"/wayfire-session.desktop > "${T}"/wayfire-session.desktop || die
 	local emesonargs=(
 		$(meson_feature system-wfconfig use_system_wfconfig)
 		$(meson_feature system-wlroots use_system_wlroots)
 		$(meson_feature X xwayland)
 		$(meson_use gles enable_gles32)
+		$(usex debug --buildtype=debug "")
+		$(usex debug -Db_sanitize=address,undefined "")
 	)
+
+	# Clang will fail to link without this
+	tc-is-clang && emesonargs+=( $(usex debug -Db_lundef=false "") )
+
 	meson_src_configure
 }
 
 src_install() {
-	default
 	meson_src_install
-	einstalldocs
+	dobin "${T}"/wayfire-session
 
 	insinto "/usr/share/wayland-sessions/"
 	insopts -m644
 	doins wayfire.desktop
+	doins "${T}"/wayfire-session.desktop
 
-	dodoc wayfire.ini
-
-	if ! use systemd && ! use elogind; then
-		fowners root:0 /usr/bin/wayfire
-		fperms 4511 /usr/bin/wayfire
-	fi
+	insinto "/usr/share/wayfire/"
+	doins wayfire.ini
 }
 
 pkg_postinst() {
 	if [ -z "${REPLACING_VERSIONS}" ]; then
 		elog "Wayfire has been installed but the session cannot be used"
 		elog "until you install a configuration file. The default config"
-		elog "file is installed at \"/usr/share/doc/${PF}/wayfire.ini.bz2\""
+		elog "file is installed at \"/usr/share/wayfire/wayfire.ini\""
 		elog "To install the file execute"
-		elog "\$ mkdir -p ~/.config && bzcat /usr/share/doc/${PF}/wayfire.ini.bz2 > ~/.config/wayfire.ini"
+		elog "\$ cp /usr/share/wayfire.ini ~/.config/wayfire.ini"
 	fi
 }

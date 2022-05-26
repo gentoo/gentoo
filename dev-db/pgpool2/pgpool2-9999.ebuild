@@ -1,57 +1,51 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGIT_REPO_URI="https://git.postgresql.org/git/pgpool2.git"
 
-POSTGRES_COMPAT=( 9.{5..6} {10..11} )
+POSTGRES_COMPAT=( 9.6 {10..13} )
 
 inherit autotools git-r3 postgres-multi
 
 DESCRIPTION="Connection pool server for PostgreSQL"
 HOMEPAGE="https://www.pgpool.net/"
-SRC_URI=""
+
 LICENSE="BSD"
 SLOT="0"
-
-KEYWORDS=""
-
-IUSE="doc libressl memcached pam ssl static-libs"
+IUSE="doc memcached pam ssl static-libs"
 
 RDEPEND="
 	${POSTGRES_DEP}
+	acct-group/postgres
+	acct-user/pgpool
 	net-libs/libnsl:0=
+	virtual/libcrypt:=
 	memcached? ( dev-libs/libmemcached )
 	pam? ( sys-auth/pambase )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( dev-libs/openssl:= )
 "
 DEPEND="${RDEPEND}
-	!!dev-db/pgpool
 	sys-devel/bison
 	virtual/pkgconfig
 	doc? (
-		 app-text/openjade
-		 dev-libs/libxml2
-		 dev-libs/libxslt
-	 )
+		app-text/openjade
+		dev-libs/libxml2
+		dev-libs/libxslt
+	)
 "
 
 pkg_setup() {
-	postgres_new_user pgpool
-
 	postgres-multi_pkg_setup
 }
 
 src_prepare() {
 	eapply \
-		"${FILESDIR}/pgpool-configure-memcached.patch" \
+		"${FILESDIR}/pgpool-4.2.0-configure-memcached.patch" \
 		"${FILESDIR}/pgpool-configure-pam.patch" \
-		"${FILESDIR}/pgpool-configure-pthread.patch" \
-		"${FILESDIR}/pgpool_run_paths-3.7.10.patch"
+		"${FILESDIR}/pgpool-4.2.0-configure-pthread.patch" \
+		"${FILESDIR}/pgpool-4.2.0-run_paths.patch"
 
 	eautoreconf
 
@@ -61,7 +55,7 @@ src_prepare() {
 src_configure() {
 	postgres-multi_foreach econf \
 		--disable-rpath \
-		--sysconfdir="${EROOT%/}/etc/${PN}" \
+		--sysconfdir="${EROOT}/etc/${PN}" \
 		--with-pgsql-includedir='/usr/include/postgresql-@PG_SLOT@' \
 		--with-pgsql-libdir="/usr/$(get_libdir)/postgresql-@PG_SLOT@/$(get_libdir)" \
 		$(use_enable static-libs static) \
@@ -93,14 +87,9 @@ src_install() {
 	dodoc NEWS TODO
 	use doc && postgres-multi_forbest emake DESTDIR="${D}" -C doc install
 
-	# Examples and extras
 	# mv some files that get installed to /usr/share/pgpool-II so that
 	# they all wind up in the same place
-	mv "${ED%/}/usr/share/${PN/2/-II}" "${ED%/}/usr/share/${PN}" || die
-	into "/usr/share/${PN}"
-	dobin src/sample/{pgpool_recovery,pgpool_recovery_pitr,pgpool_remote_start}
-	insinto "/usr/share/${PN}"
-	doins src/sample/{{pcp,pgpool,pool_hba}.conf.sample*,pgpool.pam}
+	mv "${ED}/usr/share/${PN/2/-II}" "${ED}/usr/share/${PN}" || die
 
 	# One more thing: Evil la files!
 	find "${ED}" -name '*.la' -exec rm -f {} +

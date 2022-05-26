@@ -1,0 +1,30 @@
+From 6d2e45a67cadd9498b24e8e4ea7adc6cf627333d Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann <whissi@gentoo.org>
+Date: Thu, 3 Jun 2021 14:15:44 +0200
+Subject: [PATCH] Revert "openaptx: Blacklist >= 0.2.1 due to license change"
+
+This reverts commit d08b6fac6bec0d334ee9fc785d551a67832f95fe.
+
+Doesn't apply to us.
+
+Bug: https://bugs.gentoo.org/785634
+---
+ spa/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/spa/meson.build b/spa/meson.build
+index 263af4c2..7671c74b 100644
+--- a/spa/meson.build
++++ b/spa/meson.build
+@@ -23,7 +23,7 @@ if not get_option('spa-plugins').disabled()
+     sbc_dep = dependency('sbc', required: get_option('bluez5'))
+     ldac_dep = dependency('ldacBT-enc', required : get_option('bluez5-codec-ldac'))
+     ldac_abr_dep = dependency('ldacBT-abr', required : get_option('bluez5-codec-ldac'))
+-    aptx_dep = dependency('libopenaptx', version : '< 0.2.1', required : get_option('bluez5-codec-aptx'))
++    aptx_dep = dependency('libopenaptx', required : get_option('bluez5-codec-aptx'))
+     fdk_aac_dep = dependency('fdk-aac', required : get_option('bluez5-codec-aac'))
+   endif
+   avcodec_dep = dependency('libavcodec', required: get_option('ffmpeg'))
+-- 
+2.32.0.rc3
+

@@ -1,0 +1,14 @@
+[Unit]
+Description=Sagan daemon
+Documentation=https://sagan.readthedocs.io/
+Before=rsyslog.service syslog-ng.service
+
+[Service]
+User=sagan
+Group=sagan
+ExecStart=/usr/bin/sagan $OPTIONS
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

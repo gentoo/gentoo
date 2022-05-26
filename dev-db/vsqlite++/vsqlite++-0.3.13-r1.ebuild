@@ -1,39 +1,40 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-AUTOTOOLS_IN_SOURCE_BUILD=1
-AUTOTOOLS_AUTORECONF=1
+EAPI=7
 
-inherit autotools-utils
+inherit autotools
 
-DESCRIPTION="VSQLite++ - A welldesigned and portable SQLite3 Wrapper for C++"
+DESCRIPTION="VSQLite++ - A well designed and portable SQLite3 Wrapper for C++"
 HOMEPAGE="http://evilissimo.fedorapeople.org/releases/vsqlite--/"
 SRC_URI="https://github.com/vinzenz/vsqlite--/archive/${PV}.tar.gz -> ${P}.tar.gz"
-IUSE="static-libs"
-
-LICENSE="BSD"
-
-SLOT="0"
-
-KEYWORDS="amd64 ppc x86"
-
-DEPEND=">=dev-libs/boost-1.33.1"
-
-RDEPEND="${DEPEND}
-		dev-db/sqlite:3"
-
-DOCS=(AUTHORS COPYING ChangeLog INSTALL NEWS README.md TODO VERSION)
-
 # package name is vsqlite++, but github / homepage name is vsqlite--
 S="${WORKDIR}/vsqlite---${PV}"
 
+LICENSE="BSD"
+SLOT="0"
+KEYWORDS="amd64 ppc x86"
+
+RDEPEND="dev-db/sqlite:3"
+DEPEND="
+	${RDEPEND}
+	dev-libs/boost"
+
 src_prepare() {
+	default
 	## remove O3 in AM_CXXFLAGS
 	sed -i -e 's/-O3//' Makefile.am || die
-	autotools-utils_src_prepare
+
+	eautoreconf
 }
 
 src_configure() {
-	econf $(use_enable static-libs static)
+	econf --disable-static
+}
+
+src_install() {
+	default
+	dodoc VERSION
+
+	find "${ED}" -name '*.la' -delete || die
 }

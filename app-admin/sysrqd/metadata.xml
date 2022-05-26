@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<longdescription>
@@ -7,5 +7,7 @@
 		Its philosophy is to be very responsive under heavy load and try to
 		be somehow reliable. Authentication is made by clear password.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">jd/sysrqd</remote-id>
+	</upstream>
 </pkgmetadata>
-

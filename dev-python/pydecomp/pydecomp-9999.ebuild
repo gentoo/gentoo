@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-DISTUTILS_USE_SETUPTOOLS=no
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{8..10} )
 
-inherit distutils-r1 python-r1
+inherit distutils-r1
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_BRANCH="master"
@@ -14,7 +14,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~dolsen/releases/${PN}/pyDeComp-${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	S="${WORKDIR}/pyDeComp-${PV}"
 fi
 
@@ -23,22 +23,3 @@ HOMEPAGE="https://github.com/dol-sen/pyDeComp"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE=""
-
-python_install_all() {
-	distutils-r1_python_install_all
-}
-
-pkg_postinst() {
-	einfo
-	einfo "This is new software."
-	einfo "The API's it installs should be considered unstable"
-	einfo "and are subject to change."
-	einfo
-	einfo "Please file any enhancement requests, or bugs"
-	einfo "at https://github.com/dol-sen/pyDeComp/issues"
-	einfo "I am also on IRC @ #gentoo-releng of the freenode network"
-	einfo
-	ewarn "There may be some python 3 compatibility issues still."
-	ewarn "Please help debug/fix/report them in github or bugzilla."
-}

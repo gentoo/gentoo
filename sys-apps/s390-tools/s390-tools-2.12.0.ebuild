@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ibm-${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="-* s390"
+KEYWORDS="-* ~s390"
 IUSE="cryptsetup fuse ncurses openssl pfm snmp zlib"
 
 RDEPEND="fuse? ( sys-fs/fuse:0= )
@@ -26,9 +26,8 @@ RDEPEND="fuse? ( sys-fs/fuse:0= )
 	pfm? ( app-misc/pfm )
 	snmp? ( net-analyzer/net-snmp )
 	zlib? ( sys-libs/zlib )"
-DEPEND="${RDEPEND}
-	dev-util/indent
-	app-admin/genromfs"
+DEPEND="${RDEPEND}"
+BDEPEND="app-admin/genromfs"
 
 src_prepare() {
 	default

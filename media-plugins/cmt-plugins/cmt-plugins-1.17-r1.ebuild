@@ -1,18 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils multilib toolchain-funcs multilib-minimal
+inherit multilib toolchain-funcs multilib-minimal
 
 MY_P="cmt_${PV}"
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="CMT (computer music toolkit) LADSPA library plugins"
-HOMEPAGE="http://www.ladspa.org/"
-SRC_URI="http://www.ladspa.org/download/${MY_P}.tgz"
+HOMEPAGE="https://www.ladspa.org/"
+SRC_URI="https://www.ladspa.org/download/${MY_P}.tgz"
 
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ppc ppc64 ~riscv sparc x86"
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE=""

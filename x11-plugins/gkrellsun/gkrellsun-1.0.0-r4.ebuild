@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/gkrellsun/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="1"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc sparc x86"
 IUSE="nls"
 
 RDEPEND="app-admin/gkrellm:2[X]"
@@ -23,7 +23,10 @@ PATCHES=(
 	"${FILESDIR}"/${P}-Respect-LDFLAGS.patch
 )
 
-PLUGIN_SO=( src20/gkrellsun$(get_modname) )
+src_configure() {
+	PLUGIN_SO=( src20/gkrellsun$(get_modname) )
+	default
+}
 
 src_compile() {
 	use nls && local myconf="enable_nls=1"

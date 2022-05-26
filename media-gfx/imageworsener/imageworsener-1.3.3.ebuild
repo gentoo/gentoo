@@ -1,9 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
-inherit eutils
 
 MY_P=${PN}-src-${PV}
 MY_PN=imagew
@@ -14,7 +12,7 @@ SRC_URI="http://entropymine.com/${PN}/${P}.tar.gz"
 
 LICENSE="MIT-with-advertising"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="jpeg png static-libs test webp zlib"
 
 DEPEND="png? ( media-libs/libpng:0 )

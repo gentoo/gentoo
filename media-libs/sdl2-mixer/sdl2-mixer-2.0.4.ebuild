@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 MY_P="SDL2_mixer-${PV}"
-inherit multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="Simple Direct Media Layer Mixer Library"
 HOMEPAGE="https://www.libsdl.org/projects/SDL_mixer/"
@@ -12,7 +12,7 @@ SRC_URI="https://www.libsdl.org/projects/SDL_mixer/release/${MY_P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ~ppc64 sparc x86"
 IUSE="flac fluidsynth mad midi mikmod mod modplug mp3 opus playtools static-libs timidity tremor vorbis +wav"
 REQUIRED_USE="
 	midi? ( || ( timidity fluidsynth ) )
@@ -51,6 +51,19 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2.0.4-slibtool.patch"
+)
+
+src_prepare() {
+	default
+
+	# for slibtool patch in 2.0.4, can drop in future with eautoreconf
+	rm aclocal.m4 || die
+	eautoreconf
+	multilib_copy_sources
+}
 
 multilib_src_configure() {
 	local myeconfargs=(

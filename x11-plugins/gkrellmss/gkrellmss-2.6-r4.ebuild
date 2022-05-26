@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,10 +20,17 @@ RDEPEND="
 	sci-libs/fftw:3.0="
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-Respect-LDFLAGS.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-Respect-LDFLAGS.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
-PLUGIN_SO=( src/gkrellmss$(get_modname) )
 PLUGIN_DOCS=( Themes )
+
+src_configure() {
+	PLUGIN_SO=( src/gkrellmss$(get_modname) )
+	default
+}
 
 src_compile() {
 	addpredict /dev/snd

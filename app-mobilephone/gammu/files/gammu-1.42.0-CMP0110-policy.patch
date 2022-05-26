@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt.orig b/CMakeLists.txt
+index 6cffb02..f7993cf 100644
+--- a/CMakeLists.txt.orig
++++ b/CMakeLists.txt
+@@ -13,6 +13,7 @@ set (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+ # Silent some warnings from CMake 2.6
+ cmake_policy(SET CMP0003 NEW)
+ cmake_policy(SET CMP0009 NEW)
++cmake_policy(SET CMP0110 NEW)
+ 
+ option (COVERAGE "Add flags for Coverage analysis" OFF)
+ 

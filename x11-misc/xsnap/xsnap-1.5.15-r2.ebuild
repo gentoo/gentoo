@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.ac-grenoble.fr/ge/Xutils/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux"
+KEYWORDS="amd64 ppc x86 ~amd64-linux"
 IUSE=""
 
 COMMON_DEPEND="
@@ -24,12 +24,12 @@ RDEPEND="
 	${COMMON_DEPEND}
 	media-fonts/font-misc-misc
 "
-DEPEND="
-	${COMMON_DEPEND}
+DEPEND="${COMMON_DEPEND}"
+BDEPEND="
 	app-text/rman
 	dev-lang/perl
 	x11-base/xorg-proto
-	x11-misc/imake
+	>=x11-misc/imake-1.0.8-r1
 "
 DOCS=( AUTHORS Changelog README )
 PATCHES=( "${FILESDIR}"/${P}-root_name.patch )
@@ -46,21 +46,18 @@ src_prepare() {
 	sed -i \
 		-e '/^LOCALEDIR=/d' \
 		po/Makefile || die
+}
 
-	xmkmf || die
-
-	sed -i \
-		-e '/ CC = /d' \
-		-e '/ LD = /d' \
-		-e '/ CDEBUGFLAGS = /d' \
-		-e '/ CCOPTIONS = /d' \
-		-e 's|CPP = cpp|CPP = $(CC)|g' \
-		Makefile || die
+src_configure() {
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf || die
 }
 
 src_compile() {
-	tc-export CC
-	emake CCOPTIONS="${CFLAGS}" EXTRA_LDOPTIONS="${LDFLAGS}"
+	emake \
+		CC="$(tc-getCC)" \
+		CDEBUGFLAGS="${CFLAGS}" \
+		EXTRA_LDOPTIONS="${LDFLAGS}"
 }
 
 src_install() {

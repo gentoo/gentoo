@@ -1,0 +1,71 @@
+diff --git a/Makefile b/Makefile
+index f182225..c84368e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -15,8 +15,8 @@
+ #   USA
+ #
+ CINCLUDES=-I$(shell ocamlc -where)
+-CFLAGS+=-O3 -Werror-implicit-function-declaration $(CINCLUDES) -I .
+-CXXFLAGS+=-O3 $(CINCLUDES) -I .
++CFLAGS+=$(CINCLUDES) -I .
++CXXFLAGS+=$(CINCLUDES) -I .
+ 
+ ifndef OCAMLC
+ 	OCAMLC=ocamlfind ocamlc
+@@ -60,8 +60,8 @@ OCAMLFLAGS=$(COMMONCAMLFLAGS) -linkpkg -g $(CAMLLIBS)
+ OCAMLOPTFLAGS=$(COMMONCAMLFLAGS) -linkpkg -inline 40 $(CAMLLIBS:.cma=.cmxa)
+ 
+ EXE=sks sks_add_mail
+-ALL=$(EXE) sks.8.gz
+-ALL.bc=$(EXE:=.bc) sks.8.gz
++ALL=$(EXE) sks.8
++ALL.bc=$(EXE:=.bc) sks.8
+ 
+ all: $(ALL)
+ all.bc: $(ALL.bc)
+@@ -132,13 +132,13 @@ install:
+ 	mkdir -p $(DESTDIR)$(PREFIX)/bin
+ 	install sks_build.sh sks sks_add_mail $(DESTDIR)$(PREFIX)/bin
+ 	mkdir -p $(DESTDIR)$(MANDIR)/man8
+-	install sks.8.gz $(DESTDIR)$(MANDIR)/man8
++	install sks.8 $(DESTDIR)$(MANDIR)/man8
+ 
+ install.bc:
+ 	mkdir -p $(DESTDIR)$(PREFIX)/bin
+ 	install sks_build.bc.sh sks.bc sks_add_mail.bc $(DESTDIR)$(PREFIX)/bin
+ 	mkdir -p $(DESTDIR)$(MANDIR)/man8
+-	install sks.8.gz $(DESTDIR)$(MANDIR)/man8
++	install sks.8 $(DESTDIR)$(MANDIR)/man8
+ 
+ 
+ Makefile.local:
+@@ -151,9 +151,6 @@ src:
+ 
+ # Ordinary targets
+ 
+-sks.8.gz: sks.8
+-	gzip -9nf sks.8
+-
+ sks.8: sks.pod
+ 	pod2man -c "SKS OpenPGP Key server" --section 8 -r 0.1 -name sks sks.pod sks.8
+ 
+diff --git a/bdb/Makefile b/bdb/Makefile
+index 0913014..4a68399 100644
+--- a/bdb/Makefile
++++ b/bdb/Makefile
+@@ -15,11 +15,11 @@
+ -include ../Makefile.local
+ 
+ CINCLUDES=-I$(shell ocamlc -where) $(BDBINCLUDE)
+-CFLAGS+=-O3 -Werror-implicit-function-declaration $(CINCLUDES) $(BDBLIB) -I .
+-CXXFLAGS+=-O3 $(CINCLUDES) $(BDBLIB) -I .
++CFLAGS+=$(CINCLUDES) $(BDBLIB) -I .
++CXXFLAGS+=$(CINCLUDES) $(BDBLIB) -I .
+ 
+ MKLIB=ocamlmklib
+-RANLIB=ranlib
++RANLIB?=ranlib
+ OCAMLDEP=ocamldep $(PP)
+ CAMLINCLUDE=
+ COMMONCAMLFLAGS= $(CAMLINCLUDE) $(PP) #-thread

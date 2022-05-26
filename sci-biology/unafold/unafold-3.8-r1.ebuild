@@ -1,7 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit flag-o-matic
 
@@ -14,14 +14,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="custom-cflags"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
+RDEPEND="
+	media-libs/freeglut
+	media-libs/gd
+	virtual/opengl"
+DEPEND="${RDEPEND}"
 
-src_prepare() {
+PATCHES=( "${FILESDIR}"/${P}-doc-version.patch )
+
+src_configure() {
 	# recommended in README
 	use custom-cflags || append-flags -O3
 
-	sed \
-		-e 's:hybrid (UNAFold) 3.7:hybrid (UNAFold) 3.8:g' \
-		-i tests/hybrid.tml || die
+	default
 }

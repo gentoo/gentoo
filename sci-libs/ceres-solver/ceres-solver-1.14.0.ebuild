@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_ECLASS=cmake
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit cmake-multilib python-any-r1 toolchain-funcs
 
 DESCRIPTION="Nonlinear least-squares minimizer"
@@ -23,8 +23,10 @@ RESTRICT="!test? ( test )"
 BDEPEND="${PYTHON_DEPS}
 	>=dev-cpp/eigen-3.3.4:3
 	doc? (
-		dev-python/sphinx
-		dev-python/sphinx_rtd_theme
+		$(python_gen_any_dep '
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
+		')
 	)
 	lapack? ( virtual/pkgconfig )
 "
@@ -46,15 +48,11 @@ DEPEND="${RDEPEND}"
 DOCS=( README.md VERSION )
 
 pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
-		if [[ $(tc-getCXX) == *g++* ]] && ! tc-has-openmp; then
-			ewarn "OpenMP is not available in your current selected gcc"
-			die "need openmp capable gcc"
-		fi
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 	use doc && python-any-r1_pkg_setup
 }
 

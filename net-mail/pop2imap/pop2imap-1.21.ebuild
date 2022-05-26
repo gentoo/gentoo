@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 DESCRIPTION="Synchronize mailboxes between a pop and an imap servers"
 HOMEPAGE="http://www.linux-france.org/prj/pop2imap/"
@@ -10,7 +10,6 @@ SRC_URI="http://www.linux-france.org/prj/pop2imap/dist/${P}.tgz"
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 x86"
-IUSE=""
 
 DEPEND=""
 RDEPEND="dev-lang/perl

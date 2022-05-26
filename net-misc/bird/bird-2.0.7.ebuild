@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ SRC_URI="ftp://bird.network.cz/pub/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86 ~x64-macos"
+KEYWORDS="amd64 ~arm64 ~x86 ~x64-macos"
 IUSE="+client debug"
 
 RDEPEND="client? ( sys-libs/ncurses )
@@ -17,6 +17,10 @@ RDEPEND="client? ( sys-libs/ncurses )
 DEPEND="sys-devel/flex
 	sys-devel/bison
 	sys-devel/m4"
+
+PATCHES=(
+	"${FILESDIR}/${P}-gcc10.patch"
+)
 
 src_configure() {
 	econf \

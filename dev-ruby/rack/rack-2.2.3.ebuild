@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby25 ruby26 ruby27"
+USE_RUBY="ruby25 ruby26 ruby27 ruby30"
 
 RUBY_FAKEGEM_DOCDIR="doc"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.rdoc SPEC.rdoc"
@@ -12,12 +12,12 @@ RUBY_FAKEGEM_GEMSPEC="rack.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="A modular Ruby webserver interface"
-HOMEPAGE="https://rack.github.com/"
+HOMEPAGE="https://github.com/rack/rack"
 SRC_URI="https://github.com/rack/rack/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE=""
 
 ruby_add_rdepend "virtual/ruby-ssl"

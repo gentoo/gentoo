@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,24 +19,31 @@ IUSE="+fuse +zlib"
 RDEPEND="
 	app-arch/bzip2:0=
 	fuse? ( sys-fs/fuse:0= )
-	zlib? ( sys-libs/zlib:0= )
-"
+	zlib? ( sys-libs/zlib:0= )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-DOCS="doc/*.txt"
+S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-makefile.patch
-	"${FILESDIR}"/${PN}-2.30a-no-exec-stack.patch
+	"${FILESDIR}"/${P}-no-exec-stack.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
-S=${WORKDIR}/${MY_P}
-
-src_compile() {
+src_configure() {
 	export NO_FUSE=$(usex fuse 0 1)
 	export NO_ZLIB=$(usex zlib 0 1)
 
-	emake INSTALL_PATH="${D}"/usr CC="$(tc-getCC)"
+	tc-export CC PKG_CONFIG
+}
+
+src_compile() {
+	emake INSTALL_PATH="${ED}"/usr
 	emake doc
+}
+
+src_install() {
+	default
+	dodoc doc/*.txt
 }

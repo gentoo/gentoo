@@ -1,0 +1,72 @@
+--- a/tests/ttk/entry.test	2020-12-26 18:46:45.262306641 +0100
++++ b/tests/ttk/entry.test	2020-12-26 18:47:00.246040124 +0100
+@@ -111,34 +111,34 @@
+     set result [.e xview]
+ } -result {0.0 0.5}
+ 
+-test entry-3.3 "xview" -body {
++test entry-3.3 "xview" -constraints knownBug -body {
+     .e delete 0 end;
+     .e insert end abcdefghijklmnopqrstuvwxyz
+     .e xview end
+     set result [.e index @0]
+ } -result 7
+ 
+-test entry-3.4 "xview" -body {
++test entry-3.4 "xview" -constraints knownBug -body {
+     .e delete 0 end;
+     .e insert end abcdefghijklmnopqrstuvwxyz
+     .e xview moveto 1.0
+     set result [.e index @0]
+ } -result 7
+ 
+-test entry-3.5 "xview" -body {
++test entry-3.5 "xview" -constraints knownBug -body {
+     .e delete 0 end;
+     .e insert end abcdefghijklmnopqrstuvwxyz
+     .e xview scroll 5 units
+     set result [.e index @0]
+ } -result 5
+ 
+-test entry-3.6 "xview" -body {
++test entry-3.6 "xview" -constraints knownBug -body {
+     .e delete 0 end;
+     .e insert end [string repeat abcdefghijklmnopqrstuvwxyz 5]
+     .e xview scroll 2 pages
+     set result [.e index @0]
+ } -result 40
+ 
+ test entry-3.last "Series 3 cleanup" -body {
+     destroy .e
+ }
+--- a/tests/ttk/spinbox.test	2020-12-26 18:49:19.967554727 +0100
++++ b/tests/ttk/spinbox.test	2020-12-26 18:49:58.015877788 +0100
+@@ -136,7 +136,7 @@
+     destroy .sb
+ } -returnCodes error -result {bad validate "bogus": must be all, key, focus, focusin, focusout, or none}
+ 
+-test spinbox-1.8.4 "-validate option: " -setup {
++test spinbox-1.8.4 "-validate option: " -constraints knownBug -setup {
+     set ::spinbox_test {}
+     ttk::spinbox .sb -from 0 -to 100
+ } -body {
+--- a/tests/font.test	2020-12-26 19:15:55.199228774 +0100
++++ b/tests/font.test	2020-12-26 19:18:05.414951407 +0100
+@@ -399,7 +399,7 @@
+     # (tkfont == NULL)
+     font measure "\{xyz" abc
+ } -returnCodes error -result "font \"{xyz\" doesn't exist"
+-test font-9.5 {font command: measure} -body {
++test font-9.5 {font command: measure} -constraints knownBug -body {
+     # Tk_TextWidth()
+     expr {[font measure $fixed "abcdefg"] == [font measure $fixed "a"]*7 }
+ } -result 1
+@@ -450,7 +450,7 @@
+     # (Tcl_GetIndexFromObj() != TCL_OK)
+     font metrics $fixed -xyz
+ } -returnCodes error -result {bad metric "-xyz": must be -ascent, -descent, -linespace, or -fixed}
+-test font-10.9 {font command: metrics: get individual metrics} -body {
++test font-10.9 {font command: metrics: get individual metrics} -constraints knownBug -body {
+     font metrics $fixed -ascent
+     font metrics $fixed -descent
+     font metrics $fixed -linespace

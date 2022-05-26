@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="xml"
 
-inherit eutils gnome2 python-single-r1 multilib virtualx
+inherit gnome2 python-single-r1 multilib virtualx
 
 DESCRIPTION="Music management and playback software for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Rhythmbox"
@@ -23,7 +23,7 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.38:2
@@ -49,7 +49,7 @@ COMMON_DEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			>=dev-python/pygobject-3.0:3[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/pygobject-3.0:3[${PYTHON_USEDEP}]
 		')
 	)
 	udev? (

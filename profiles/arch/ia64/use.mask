@@ -1,8 +1,24 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -ia64
+
+# Matt Turner <mattst88@gentoo.org> (2022-02-21)
+# app-crypt/tpm2-tss is not keyworded here
+tpm
+
+# James Le Cuirot <chewi@gentoo.org> (2021-08-10)
+# media-video/pipewire is not keyworded. Bug #807616.
+pipewire
+
+# Matt Turner <mattst88@gentoo.org> (2021-07-25)
+# gnome-shell requires rustified librsvg.
+gnome-shell
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
+# sys-libs/llvm-libunwind not supported on IA64.
+llvm-libunwind
 
 # Matt Turner <mattst88@gentoo.org> (2020-07-01)
 # Unlikely.
@@ -29,12 +45,10 @@ ayatana
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-06-17)
 # There is no luajit support on ia64. Bug #554376
+lua_single_target_luajit
+lua_targets_luajit
 luajit
 luajittex
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-02-25)
-# kwallet integration split from kde to distinct flag
-kwallet
 
 # No hardware to test by the team
 3dfx
@@ -58,19 +72,16 @@ wifi
 apm
 battery
 lm-sensors
-pm-utils
 
 # Stuff that doesn't work on ia64, or not tested
 afs
-blas
 djbfft
-emboss
 jack
-lapack
 lqr
 capi
 lensfun
 kde
+kwallet
 metalink
 upnp
 fdk
@@ -84,7 +95,6 @@ scim
 antlr
 lasi
 mpi
-networkmanager
 octave
 timidity
 semantic-desktop
@@ -93,7 +103,6 @@ libburn
 topal
 indi
 flite
-nut
 sctp
 bs2b
 tokyocabinet
@@ -172,10 +181,6 @@ alsa_cards_wavefront
 # Michael Sterrett <mr_bones_@gentoo.org> (2012-08-24)
 # media-sound/fluidsynth isn't keyworded
 fluidsynth
-
-# Anthony G. Basile <blueness@gentoo.org> (2012-04-15)
-# Pulls in net-libs/axtls which is not keyworded for arch
-curl_ssl_axtls
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
 # net-misc/connman is not keyworded, bug 348308

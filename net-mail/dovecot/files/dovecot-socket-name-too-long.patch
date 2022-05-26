@@ -1,0 +1,11 @@
+--- a/src/imap/test-imap-client-hibernate.c	2021-01-05 11:42:53.073912808 +0300
++++ b/src/imap/test-imap-client-hibernate.c	2021-01-05 11:43:49.790616213 +0300
+@@ -19,7 +19,7 @@
+ 
+ #include <sys/stat.h>
+ 
+-#define TEMP_DIRNAME ".test-imap-client-hibernate"
++#define TEMP_DIRNAME ".t-ic-h" /* test-imap-client-hibernate */
+ 
+ #define EVILSTR "\t\r\n\001"
+ 

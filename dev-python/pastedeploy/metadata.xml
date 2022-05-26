@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
@@ -14,5 +14,7 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">PasteDeploy</remote-id>
+		<remote-id type="github">Pylons/pastedeploy</remote-id>
+		<doc>https://docs.pylonsproject.org/projects/pastedeploy/en/latest/</doc>
 	</upstream>
 </pkgmetadata>

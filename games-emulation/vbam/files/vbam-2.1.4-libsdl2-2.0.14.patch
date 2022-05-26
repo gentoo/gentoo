@@ -1,0 +1,27 @@
+From 619a5cce683ec4b1d03f08f316ba276d8f8cd824 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?R=C3=A9mi=20Verschelde?= <rverschelde@gmail.com>
+Date: Thu, 31 Dec 2020 00:22:21 +0100
+Subject: [PATCH] SDL: Fix build with SDL 2.0.14 after KMOD_GUI change to enum
+
+Since SDL 2.0.14, KMOD_GUI is no longer a macro but an enum value:
+https://hg.libsdl.org/SDL/rev/15a0bc9612e9
+
+So this code broke as the enum value doesn't satisfy `defined()`.
+---
+ src/sdl/SDL.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/sdl/SDL.cpp b/src/sdl/SDL.cpp
+index ee8ae50a3..082b47c0c 100644
+--- a/src/sdl/SDL.cpp
++++ b/src/sdl/SDL.cpp
+@@ -878,7 +878,8 @@ void sdlInitVideo()
+ 
+     sdlResizeVideo();
+ }
+-#if defined(KMOD_GUI)
++
++#ifndef KMOD_META
+ #define KMOD_META KMOD_GUI
+ #endif
+ 

@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 
-inherit eutils flag-o-matic linux-info python-single-r1 systemd xdg-utils
+inherit flag-o-matic linux-info python-single-r1 systemd xdg-utils
 
 DESCRIPTION="decode and send infra-red signals of many commonly used remote controls"
 HOMEPAGE="https://www.lirc.org/"
@@ -22,7 +22,7 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 ~riscv x86"
 IUSE="audio +devinput doc ftdi gtk inputlirc static-libs systemd +uinput usb X"
 
 REQUIRED_USE="
@@ -39,7 +39,7 @@ COMMON_DEPEND="
 		media-libs/alsa-lib
 	)
 	$(python_gen_cond_dep '
-		dev-python/pyyaml[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
 	')
 	ftdi? ( dev-embedded/libftdi:0 )
 	systemd? ( sys-apps/systemd )
@@ -55,7 +55,7 @@ DEPEND="
 	${COMMON_DEPEND}
 	dev-libs/libxslt
 	$(python_gen_cond_dep '
-		dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+		dev-python/setuptools[${PYTHON_USEDEP}]
 	')
 	doc? ( app-doc/doxygen )
 	sys-apps/kmod
@@ -67,7 +67,7 @@ RDEPEND="
 	gtk? (
 		x11-libs/vte[introspection]
 		$(python_gen_cond_dep '
-			dev-python/pygobject[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygobject[${PYTHON_USEDEP}]
 		')
 	)
 	inputlirc? ( app-misc/inputlircd )

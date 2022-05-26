@@ -1,0 +1,31 @@
+- Testscript doesn't need to run tests for multiple python implementations,
+  PM will take care of that.
+
+- Disabling test which requires specific locales.
+
+--- a/httpstat_test.sh
++++ b/httpstat_test.sh
+@@ -19,8 +19,7 @@ function title() {
+ http_url="google.com"
+ https_url="https://http2.akamai.com"
+ 
+-for pybin in python python3; do
+-#for pybin in python; do
++for pybin in python; do
+     echo
+     echo "# Test in $pybin"
+ 
+@@ -40,9 +39,9 @@ for pybin in python python3; do
+     main_silent $https_url
+     assert_exit 0
+ 
+-    title "comma decimal language (ru_RU)"
+-    LC_ALL=ru_RU main_silent $http_url
+-    assert_exit 0
++    #title "comma decimal language (ru_RU)"
++    #LC_ALL=ru_RU main_silent $http_url
++    #assert_exit 0
+ 
+     title "HTTPSTAT_DEBUG"
+     HTTPSTAT_DEBUG=true main $http_url | grep -q 'HTTPSTAT_DEBUG=true'
+ 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="project">
 	<email>games@gentoo.org</email>
@@ -12,4 +12,7 @@ attack weapons with an enormous power of fire that can be build by gaining
 bonuses. Numerous decors, musics and sounds complete this great game. This
 game was ported from the Commodore Amiga.
 </longdescription>
+<upstream>
+	<remote-id type="github">brunonymous/tecnoballz</remote-id>
+</upstream>
 </pkgmetadata>

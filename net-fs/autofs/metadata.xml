@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>dlan@gentoo.org</email>
 		<name>Yixun Lan</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>mattst88@gentoo.org</email>
-		<name>Matt Turner</name>
 	</maintainer>
 	<use>
 		<flag name="dmalloc">Enable debugging with the dmalloc library</flag>

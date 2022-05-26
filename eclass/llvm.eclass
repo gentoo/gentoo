@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: llvm.eclass
@@ -6,7 +6,7 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Utility functions to build against slotted LLVM
 # @DESCRIPTION:
 # The llvm.eclass provides utility functions that can be used to build
@@ -17,21 +17,21 @@
 # a proper dependency string yourself to guarantee that appropriate
 # version of LLVM is installed.
 #
-# Example use for a package supporting LLVM 5 to 7:
+# Example use for a package supporting LLVM 9 to 11:
 # @CODE
-# inherit cmake-utils llvm
+# inherit cmake llvm
 #
 # RDEPEND="
-#	<sys-devel/llvm-8:=
+#	<sys-devel/llvm-11:=
 #	|| (
-#		sys-devel/llvm:7
-#		sys-devel/llvm:6
-#		sys-devel/llvm:5
+#		sys-devel/llvm:9
+#		sys-devel/llvm:10
+#		sys-devel/llvm:11
 #	)
 # "
 # DEPEND=${RDEPEND}
 #
-# LLVM_MAX_SLOT=7
+# LLVM_MAX_SLOT=11
 #
 # # only if you need to define one explicitly
 # pkg_setup() {
@@ -42,12 +42,12 @@
 #
 # Example for a package needing LLVM+clang w/ a specific target:
 # @CODE
-# inherit cmake-utils llvm
+# inherit cmake llvm
 #
 # # note: do not use := on both clang and llvm, it can match different
 # # slots then. clang pulls llvm in, so we can skip the latter.
 # RDEPEND="
-#	>=sys-devel/clang-6:=[llvm_targets_AMDGPU(+)]
+#	>=sys-devel/clang-9:=[llvm_targets_AMDGPU(+)]
 # "
 # DEPEND=${RDEPEND}
 #
@@ -60,7 +60,7 @@ case "${EAPI:-0}" in
 	0|1|2|3|4|5)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
-	6|7)
+	6|7|8)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -75,17 +75,17 @@ if [[ ! ${_LLVM_ECLASS} ]]; then
 # are uninstalled
 DEPEND="!!sys-devel/llvm:0"
 
-# @ECLASS-VARIABLE: LLVM_MAX_SLOT
+# @ECLASS_VARIABLE: LLVM_MAX_SLOT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Highest LLVM slot supported by the package. Needs to be set before
 # llvm_pkg_setup is called. If unset, no upper bound is assumed.
 
-# @ECLASS-VARIABLE: _LLVM_KNOWN_SLOTS
+# @ECLASS_VARIABLE: _LLVM_KNOWN_SLOTS
 # @INTERNAL
 # @DESCRIPTION:
 # Correct values of LLVM slots, newest first.
-declare -g -r _LLVM_KNOWN_SLOTS=( {12..8} )
+declare -g -r _LLVM_KNOWN_SLOTS=( {15..8} )
 
 # @FUNCTION: get_llvm_prefix
 # @USAGE: [-b|-d] [<max_slot>]
@@ -177,7 +177,7 @@ get_llvm_prefix() {
 		die "${FUNCNAME}: invalid max_slot=${max_slot}"
 	fi
 
-	die "No LLVM slot${1:+ <= ${1}} found installed!"
+	die "No LLVM slot${1:+ <= ${1}} satisfying the package's dependencies found installed!"
 }
 
 # @FUNCTION: llvm_pkg_setup

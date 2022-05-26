@@ -1,0 +1,369 @@
+From 13681a79d9389603d9788802f0a114671a753df1 Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@remirepo.net>
+Date: Fri, 25 Sep 2020 16:06:39 +0200
+Subject: [PATCH] Fix compatibility with PHP 8 - cleanup remaining TSRMLS
+ macros - fix read/update_property parameters - adapt test suite for exception
+ in arg. parsing - fix callback
+
+---
+ php_stomp.c                    | 38 ++++++++++++++++++++--------------
+ stomp.c                        |  6 +++---
+ stomp.h                        |  4 ++--
+ tests/003-connect/003.phpt     |  2 +-
+ tests/005-close/001.phpt       |  8 +++++--
+ tests/007-subscribe/001.phpt   |  2 +-
+ tests/008-unsubscribe/001.phpt |  2 +-
+ tests/010-timeout/001.phpt     | 24 ++++++++++++---------
+ tests/010-timeout/002.phpt     | 26 ++++++++++++++---------
+ 9 files changed, 67 insertions(+), 45 deletions(-)
+
+diff --git a/php_stomp.c b/php_stomp.c
+index 0dcefed..b99a9ff 100644
+--- a/php_stomp.c
++++ b/php_stomp.c
+@@ -97,7 +97,7 @@
+ 		zval _object, *object = &_object; \
+ 		THROW_STOMP_EXCEPTION(object, errno, msg) \
+         if (details) { \
+-            zend_update_property_string(stomp_ce_exception, object, "details", sizeof("details")-1, (char *) details ); \
++            zend_update_property_string(stomp_ce_exception, OBJ_FOR_PROP(object), "details", sizeof("details")-1, (char *) details ); \
+         } \
+     }
+ 
+@@ -107,6 +107,12 @@
+ #define STOMP_URL_STR(a) ZSTR_VAL(a)
+ #endif
+ 
++#if PHP_VERSION_ID < 80000
++#define OBJ_FOR_PROP(zv) (zv)
++#else
++#define OBJ_FOR_PROP(zv) Z_OBJ_P(zv)
++#endif
++
+ static int le_stomp;
+ static zend_object_handlers stomp_obj_handlers;
+ 
+@@ -564,7 +570,7 @@ PHP_FUNCTION(stomp_connect)
+ 			zval excobj;
+ 			THROW_STOMP_EXCEPTION(&excobj, stomp->errnum, stomp->error);
+ 			if (stomp->error_details) {
+-				zend_update_property_string(stomp_ce_exception, &excobj, "details", sizeof("details")-1, stomp->error_details );
++				zend_update_property_string(stomp_ce_exception, OBJ_FOR_PROP(&excobj), "details", sizeof("details")-1, stomp->error_details );
+ 			}
+ 			return;
+ 		}
+@@ -578,7 +584,7 @@ PHP_FUNCTION(stomp_connect)
+ 			if ((error_msg = zend_hash_str_find(res->headers, ZEND_STRL("message"))) != NULL) {
+ 				THROW_STOMP_EXCEPTION(&excobj, 0, ZSTR_VAL(Z_STR_P(error_msg)));
+ 				if (res->body) {
+-					zend_update_property_string(stomp_ce_exception, &excobj, "details", sizeof("details")-1, (char *) res->body );
++					zend_update_property_string(stomp_ce_exception, OBJ_FOR_PROP(&excobj), "details", sizeof("details")-1, (char *) res->body );
+ 				}
+ 			}
+ 			stomp_free_frame(res);
+@@ -735,17 +741,17 @@ PHP_FUNCTION(stomp_send)
+ 		frame.body_length = Z_STRLEN_P(msg);
+ 	} else if (Z_TYPE_P(msg) == IS_OBJECT && instanceof_function(Z_OBJCE_P(msg), stomp_ce_frame )) {
+ 		zval *frame_obj_prop = NULL;
+-		frame_obj_prop = zend_read_property(stomp_ce_frame, msg, "command", sizeof("command")-1, 1, &rv);
++		frame_obj_prop = zend_read_property(stomp_ce_frame, OBJ_FOR_PROP(msg), "command", sizeof("command")-1, 1, &rv);
+ 		if (Z_TYPE_P(frame_obj_prop) == IS_STRING) {
+ 			frame.command = Z_STRVAL_P(frame_obj_prop);
+ 			frame.command_length = Z_STRLEN_P(frame_obj_prop);
+ 		}
+-		frame_obj_prop = zend_read_property(stomp_ce_frame, msg, "body", sizeof("body")-1, 1, &rv);
++		frame_obj_prop = zend_read_property(stomp_ce_frame, OBJ_FOR_PROP(msg), "body", sizeof("body")-1, 1, &rv);
+ 		if (Z_TYPE_P(frame_obj_prop) == IS_STRING) {
+ 			frame.body = Z_STRVAL_P(frame_obj_prop);
+ 			frame.body_length = Z_STRLEN_P(frame_obj_prop);
+ 		}
+-		frame_obj_prop = zend_read_property(stomp_ce_frame, msg, "headers", sizeof("headers")-1, 1, &rv);
++		frame_obj_prop = zend_read_property(stomp_ce_frame, OBJ_FOR_PROP(msg), "headers", sizeof("headers")-1, 1, &rv);
+ 		if (Z_TYPE_P(frame_obj_prop) == IS_ARRAY) {
+ 			FRAME_HEADER_FROM_HASHTABLE(frame.headers, Z_ARRVAL_P(frame_obj_prop));
+ 		}
+@@ -930,7 +936,7 @@ PHP_FUNCTION(stomp_read_frame)
+ 				zval excobj;
+ 				THROW_STOMP_EXCEPTION(&excobj, 0, Z_STRVAL_P(error_msg));
+ 				if (res->body) {
+-					zend_update_property_string(stomp_ce_exception, &excobj, ZEND_STRL("details"), (char *)res->body );
++					zend_update_property_string(stomp_ce_exception, OBJ_FOR_PROP(&excobj), ZEND_STRL("details"), (char *)res->body );
+ 				}
+ 				stomp_free_frame(res);
+ 				RETURN_FALSE;
+@@ -968,10 +974,11 @@ PHP_FUNCTION(stomp_read_frame)
+ 					ZVAL_NULL(&body);
+ 				}
+ 
++				memset(&fci, 0, sizeof(fci));
++				memset(&fcc, 0, sizeof(fcc));
+ 				fci.size = sizeof(fci);
+ #if (PHP_MAJOR_VERSION == 7 && PHP_MINOR_VERSION == 0)
+ 				fci.function_table = &ce->function_table;
+-				fci.symbol_table = NULL;
+ #endif
+ 				/* PARAMS */
+ 				fci.param_count = 3;
+@@ -983,8 +990,9 @@ PHP_FUNCTION(stomp_read_frame)
+ 				ZVAL_UNDEF(&fci.function_name);
+ 				fci.object = Z_OBJ_P(return_value);
+ 				fci.retval = &retval;
++#if PHP_VERSION_ID < 80000
+ 				fci.no_separation = 1;
+-
++#endif
+ #if PHP_VERSION_ID < 70300
+ 				fcc.initialized = 1;
+ #endif
+@@ -997,7 +1005,7 @@ PHP_FUNCTION(stomp_read_frame)
+ 				fcc.object = Z_OBJ_P(return_value);
+ 
+ 				if (zend_call_function(&fci, &fcc ) == FAILURE) {
+-					zend_throw_exception_ex(zend_exception_get_default(TSRMLS_C), 0 , "Could not execute %s::%s()", ZSTR_VAL(ce->name), ZSTR_VAL(ce->constructor->common.function_name));
++					zend_throw_exception_ex(zend_exception_get_default(), 0 , "Could not execute %s::%s()", ZSTR_VAL(ce->name), ZSTR_VAL(ce->constructor->common.function_name));
+ 				} else {
+ 					zval_ptr_dtor(&retval);
+ 				}
+@@ -1127,7 +1135,7 @@ static void _php_stomp_acknowledgment(INTERNAL_FUNCTION_PARAMETERS, char *cmd) {
+ 	} else if (Z_TYPE_P(msg) == IS_OBJECT && instanceof_function(Z_OBJCE_P(msg), stomp_ce_frame )) {
+ 		zval *frame_obj_prop, rv;
+ 
+-		frame_obj_prop = zend_read_property(stomp_ce_frame, msg, "headers", sizeof("headers")-1, 1, &rv);
++		frame_obj_prop = zend_read_property(stomp_ce_frame, OBJ_FOR_PROP(msg), "headers", sizeof("headers")-1, 1, &rv);
+ 		if (Z_TYPE_P(frame_obj_prop) == IS_ARRAY) {
+ 			FRAME_HEADER_FROM_HASHTABLE(frame.headers, Z_ARRVAL_P(frame_obj_prop));
+ 		}
+@@ -1257,13 +1265,13 @@ PHP_METHOD(stompframe, __construct)
+ 	}
+ 
+ 	if (command_length > 0) {
+-		zend_update_property_stringl(stomp_ce_frame, object, "command", sizeof("command")-1, command, command_length );
++		zend_update_property_stringl(stomp_ce_frame, OBJ_FOR_PROP(object), "command", sizeof("command")-1, command, command_length );
+ 	}
+ 	if (headers) {
+-		zend_update_property(stomp_ce_frame, object, "headers", sizeof("headers")-1, headers );
++		zend_update_property(stomp_ce_frame, OBJ_FOR_PROP(object), "headers", sizeof("headers")-1, headers );
+ 	}
+ 	if (body_length > 0) {
+-		zend_update_property_stringl(stomp_ce_frame, object, "body", sizeof("body")-1, body, body_length );
++		zend_update_property_stringl(stomp_ce_frame, OBJ_FOR_PROP(object), "body", sizeof("body")-1, body, body_length );
+ 	}
+ }
+ /* }}} */
+@@ -1273,7 +1281,7 @@ PHP_METHOD(stompframe, __construct)
+ PHP_METHOD(stompexception, getDetails)
+ {
+ 	zval *object = getThis();	
+-	zval rv, *details = zend_read_property(stomp_ce_exception, object, "details", sizeof("details")-1, 1, &rv);
++	zval rv, *details = zend_read_property(stomp_ce_exception, OBJ_FOR_PROP(object), "details", sizeof("details")-1, 1, &rv);
+ 	RETURN_STR(zval_get_string(details));
+ }
+ /* }}} */
+diff --git a/stomp.c b/stomp.c
+index d83a4e6..6e77ede 100644
+--- a/stomp.c
++++ b/stomp.c
+@@ -36,7 +36,7 @@ extern zend_class_entry *stomp_ce_exception;
+ 
+ /* {{{ DEBUG */
+ #if PHP_DEBUG
+-static void print_stomp_frame(stomp_frame_t *frame TSRMLS_DC) {
++static void print_stomp_frame(stomp_frame_t *frame) {
+ 	php_printf("------ START FRAME ------\n");
+ 	php_printf("%s\n", frame->command);
+ 	/* Headers */
+@@ -188,7 +188,7 @@ int stomp_writable(stomp_t *stomp)
+ 
+ /* {{{ stomp_connect
+  */
+-int stomp_connect(stomp_t *stomp, const char *host, unsigned short port TSRMLS_DC)
++int stomp_connect(stomp_t *stomp, const char *host, unsigned short port)
+ {
+ 	char error[1024];
+ 	socklen_t size;
+@@ -299,7 +299,7 @@ void stomp_close(stomp_t *stomp)
+ 
+ /* {{{ stomp_send
+  */
+-int stomp_send(stomp_t *stomp, stomp_frame_t *frame TSRMLS_DC)
++int stomp_send(stomp_t *stomp, stomp_frame_t *frame)
+ {
+ 	smart_str buf = {0};
+ 
+diff --git a/stomp.h b/stomp.h
+index 1a422b7..e4d02b3 100644
+--- a/stomp.h
++++ b/stomp.h
+@@ -81,9 +81,9 @@ typedef struct _stomp {
+ } stomp_t;
+ 
+ stomp_t *stomp_init();
+-int stomp_connect(stomp_t *stomp, const char *host, unsigned short port TSRMLS_DC);
++int stomp_connect(stomp_t *stomp, const char *host, unsigned short port);
+ void stomp_close(stomp_t *stomp);
+-int stomp_send(stomp_t *connection, stomp_frame_t *frame TSRMLS_DC);
++int stomp_send(stomp_t *connection, stomp_frame_t *frame);
+ stomp_frame_t *stomp_read_frame_ex(stomp_t *connection, int use_stack);
+ int stomp_valid_receipt(stomp_t *connection, stomp_frame_t *frame);
+ int stomp_select_ex(stomp_t *connection, const long int sec, const long int usec);
+diff --git a/tests/003-connect/003.phpt b/tests/003-connect/003.phpt
+index b3de8d6..ba60e15 100644
+--- a/tests/003-connect/003.phpt
++++ b/tests/003-connect/003.phpt
+@@ -2,7 +2,7 @@
+ Test stomp_connect() - Test error on CONNECT
+ --SKIPIF--
+ <?php
+-include "../skipif.inc"
++include dirname(__DIR__) . "/skipif.inc";
+ ?>
+ --FILE--
+ <?php 
+diff --git a/tests/005-close/001.phpt b/tests/005-close/001.phpt
+index 0a23a59..77cc014 100644
+--- a/tests/005-close/001.phpt
++++ b/tests/005-close/001.phpt
+@@ -6,7 +6,11 @@ include dirname(__DIR__) . "/skipif.inc";
+ ?>
+ --FILE--
+ <?php 
+-stomp_close(null);
++try {
++	stomp_close(null);
++} catch (TypeError $e) {
++	echo $e->getMessage() . PHP_EOL;
++}
+ ?>
+ --EXPECTF--
+-Warning: stomp_close() expects parameter 1 to be resource, null given in %s on line %d
++%stomp_close()%s1%s null %s
+diff --git a/tests/007-subscribe/001.phpt b/tests/007-subscribe/001.phpt
+index 8d190dd..494471c 100644
+--- a/tests/007-subscribe/001.phpt
++++ b/tests/007-subscribe/001.phpt
+@@ -16,7 +16,7 @@ $s->subscribe('/queue/test', 'string');
+ --EXPECTF--
+ Warning: Stomp::subscribe(): Destination can not be empty in %s007-subscribe%c001.php on line %d
+ 
+-Fatal error: Uncaught TypeError: Argument 2 passed to Stomp::subscribe() must be of the type array, string given in %s007-subscribe%c001.php:%d
++Fatal error: Uncaught TypeError: %s, string given in %s007-subscribe%c001.php:%d
+ Stack trace:
+ #0 %s001.php(%d): Stomp->subscribe('/queue/test', 'string')
+ #1 {main}
+diff --git a/tests/008-unsubscribe/001.phpt b/tests/008-unsubscribe/001.phpt
+index c1200eb..7d1b50f 100644
+--- a/tests/008-unsubscribe/001.phpt
++++ b/tests/008-unsubscribe/001.phpt
+@@ -17,7 +17,7 @@ $s->unsubscribe('/queue/test', 'string');
+ --EXPECTF--
+ Warning: Stomp::unsubscribe(): Destination can not be empty in %s008-unsubscribe%c001.php on line %d
+ 
+-Fatal error: Uncaught TypeError: Argument 2 passed to Stomp::unsubscribe() must be of the type array, string given in %s008-unsubscribe%c001.php:%d
++Fatal error: Uncaught TypeError: %s2%s string given in %s008-unsubscribe%c001.php:%d
+ Stack trace:
+ #0 %s(%d): Stomp->unsubscribe('/queue/test', 'string')
+ #1 {main}
+diff --git a/tests/010-timeout/001.phpt b/tests/010-timeout/001.phpt
+index 7389f70..b9886db 100644
+--- a/tests/010-timeout/001.phpt
++++ b/tests/010-timeout/001.phpt
+@@ -25,13 +25,21 @@ var_dump($s->setReadTimeout(10, 5));
+ // Third test, read supposed to return 10.5
+ var_dump($s->getReadTimeout());
+ 
+-// Set read timout with the first param as a string, supposed to trigger a warning
+-var_dump($s->setReadTimeout(''));
++try {
++	// Set read timout with the first param as a string, supposed to trigger a warning/exception
++	var_dump($s->setReadTimeout(''));
++} catch (TypeError $e) {
++	echo $e->getMessage() . PHP_EOL;
++}
+ // Fourth test, read supposed to get the last value set : 10.5
+ var_dump($s->getReadTimeout());
+ 
+-// Set read timout with the second param as a string, supposed to trigger a warning
+-var_dump($s->setReadTimeout(10, ''));
++try {
++	// Set read timout with the second param as a string, supposed to trigger a warning/exception
++	var_dump($s->setReadTimeout(10, ''));
++} catch (TypeError $e) {
++	echo $e->getMessage() . PHP_EOL;
++}
+ // Fourth test, read supposed to get the last value set : 10.5
+ var_dump($s->getReadTimeout());
+ 
+@@ -64,18 +72,14 @@ array(2) {
+   ["usec"]=>
+   int(5)
+ }
+-
+-Warning: Stomp::setReadTimeout() expects parameter 1 to be long, string given in %s on line %d
+-NULL
++%AStomp::setReadTimeout()%s1%s string given%A
+ array(2) {
+   ["sec"]=>
+   int(10)
+   ["usec"]=>
+   int(5)
+ }
+-
+-Warning: Stomp::setReadTimeout() expects parameter 2 to be long, string given in %s on line %d
+-NULL
++%AStomp::setReadTimeout()%s2%s string given%A
+ array(2) {
+   ["sec"]=>
+   int(10)
+diff --git a/tests/010-timeout/002.phpt b/tests/010-timeout/002.phpt
+index a6a9b4a..c22dedf 100644
+--- a/tests/010-timeout/002.phpt
++++ b/tests/010-timeout/002.phpt
+@@ -25,13 +25,23 @@ var_dump(stomp_set_read_timeout($link, 10, 5));
+ // Third test, read supposed to return 10.5
+ var_dump(stomp_get_read_timeout($link));
+ 
+-// Set read timout with the first param as a string, supposed to trigger a warning
+-var_dump(stomp_set_read_timeout($link, ''));
++try {
++	// Set read timout with the first param as a string, supposed to trigger a warning on PHP 7
++	// supposed to trigger an exception on PHP 8
++	var_dump(stomp_set_read_timeout($link, ''));
++} catch (TypeError $e) {
++	echo $e->getMessage() . PHP_EOL;
++}
+ // Fourth test, read supposed to get the last value set : 10.5
+ var_dump(stomp_get_read_timeout($link));
+ 
+-// Set read timout with the second param as a string, supposed to trigger a warning
+-var_dump(stomp_set_read_timeout($link, 10, ''));
++try {
++	// Set read timout with the second param as a string, supposed to trigger a warning on PHP 7
++	// supposed to trigger an exception on PHP 8
++	var_dump(stomp_set_read_timeout($link, 10, ''));
++} catch (TypeError $e) {
++	echo $e->getMessage() . PHP_EOL;
++}
+ // Fourth test, read supposed to get the last value set : 10.5
+ var_dump(stomp_get_read_timeout($link));
+ 
+@@ -64,18 +74,14 @@ array(2) {
+   ["usec"]=>
+   int(5)
+ }
+-
+-Warning: stomp_set_read_timeout() expects parameter 2 to be long, string given in %s on line %d
+-NULL
++%Astomp_set_read_timeout()%s2%S string given%A
+ array(2) {
+   ["sec"]=>
+   int(10)
+   ["usec"]=>
+   int(5)
+ }
+-
+-Warning: stomp_set_read_timeout() expects parameter 3 to be long, string given in %s on line %d
+-NULL
++%Astomp_set_read_timeout()%s3%s string given%A
+ array(2) {
+   ["sec"]=>
+   int(10)

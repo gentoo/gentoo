@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: portability.eclass
@@ -6,14 +6,19 @@
 # base-system@gentoo.org
 # @AUTHOR:
 # Diego Pettenò <flameeyes@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: This eclass is created to avoid using non-portable GNUisms inside ebuilds
+
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 if [[ -z ${_PORTABILITY_ECLASS} ]]; then
 _PORTABILITY_ECLASS=1
 
 # @FUNCTION: treecopy
 # @USAGE: <orig1> [orig2 orig3 ....] <dest>
-# @RETURN:
 # @DESCRIPTION:
 # mimic cp --parents copy, but working on BSD userland as well
 treecopy() {
@@ -118,7 +123,6 @@ get_bmake() {
 # @FUNCTION: get_mounts
 # @USAGE:
 # @RETURN: table of mounts in form "point node fs opts"
-# @MAINTAINER:
 # @DESCRIPTION:
 # Portable method of getting mount names and points.
 # Returns as "point node fs options"
@@ -148,8 +152,5 @@ get_mounts() {
 		echo "${point// /\040} ${node// /\040} ${fs%% *} ${opts// /\040}"
 	done
 }
-
-_dead_portability_user_funcs() { die "if you really need this, please file a bug for base-system@gentoo.org"; }
-is-login-disabled() { _dead_portability_user_funcs; }
 
 fi

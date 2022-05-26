@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cmake-utils.eclass
@@ -10,7 +10,9 @@
 # (undisclosed contributors)
 # Original author: Zephyrus (zephyrus@mirach.it)
 # @SUPPORTED_EAPIS: 5 6 7
+# @PROVIDES: ninja-utils
 # @BLURB: common ebuild functions for cmake-based packages
+# @DEPRECATED: cmake.eclass
 # @DESCRIPTION:
 # DEPRECATED: This no longer receives any changes. Everyone must port to cmake.eclass.
 # The cmake-utils eclass makes creating ebuilds for cmake-based packages much easier.
@@ -21,7 +23,7 @@
 if [[ -z ${_CMAKE_UTILS_ECLASS} ]]; then
 _CMAKE_UTILS_ECLASS=1
 
-# @ECLASS-VARIABLE: BUILD_DIR
+# @ECLASS_VARIABLE: BUILD_DIR
 # @DESCRIPTION:
 # Build directory where all cmake processed files should be generated.
 # For in-source build it's fixed to ${CMAKE_USE_DIR}.
@@ -31,12 +33,12 @@ _CMAKE_UTILS_ECLASS=1
 # This variable has been called CMAKE_BUILD_DIR formerly.
 # It is set under that name for compatibility.
 
-# @ECLASS-VARIABLE: CMAKE_BINARY
+# @ECLASS_VARIABLE: CMAKE_BINARY
 # @DESCRIPTION:
 # Eclass can use different cmake binary than the one provided in by system.
 : ${CMAKE_BINARY:=cmake}
 
-# @ECLASS-VARIABLE: CMAKE_BUILD_TYPE
+# @ECLASS_VARIABLE: CMAKE_BUILD_TYPE
 # @DESCRIPTION:
 # Set to override default CMAKE_BUILD_TYPE. Only useful for packages
 # known to make use of "if (CMAKE_BUILD_TYPE MATCHES xxx)".
@@ -45,12 +47,12 @@ _CMAKE_UTILS_ECLASS=1
 # specific compiler flags overriding make.conf.
 : ${CMAKE_BUILD_TYPE:=Gentoo}
 
-# @ECLASS-VARIABLE: CMAKE_IN_SOURCE_BUILD
+# @ECLASS_VARIABLE: CMAKE_IN_SOURCE_BUILD
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set to enable in-source build.
 
-# @ECLASS-VARIABLE: CMAKE_MAKEFILE_GENERATOR
+# @ECLASS_VARIABLE: CMAKE_MAKEFILE_GENERATOR
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Specify a makefile generator to be used by cmake.
@@ -58,48 +60,50 @@ _CMAKE_UTILS_ECLASS=1
 # In EAPI 7 and above, the default is set to "ninja",
 # whereas in EAPIs below 7, it is set to "emake".
 
-# @ECLASS-VARIABLE: CMAKE_MIN_VERSION
+# @ECLASS_VARIABLE: CMAKE_MIN_VERSION
 # @DESCRIPTION:
 # Specify the minimum required CMake version.
 : ${CMAKE_MIN_VERSION:=3.9.6}
 
-# @ECLASS-VARIABLE: CMAKE_REMOVE_MODULES
+# @ECLASS_VARIABLE: CMAKE_REMOVE_MODULES
 # @DESCRIPTION:
 # Do we want to remove anything? yes or whatever else for no
 : ${CMAKE_REMOVE_MODULES:=yes}
 
-# @ECLASS-VARIABLE: CMAKE_REMOVE_MODULES_LIST
+# @ECLASS_VARIABLE: CMAKE_REMOVE_MODULES_LIST
 # @DESCRIPTION:
 # Space-separated list of CMake modules that will be removed in $S during src_prepare,
 # in order to force packages to use the system version.
 : ${CMAKE_REMOVE_MODULES_LIST:=FindBLAS FindLAPACK}
 
-# @ECLASS-VARIABLE: CMAKE_USE_DIR
+# @ECLASS_VARIABLE: CMAKE_USE_DIR
 # @DESCRIPTION:
 # Sets the directory where we are working with cmake.
 # For example when application uses autotools and only one
 # plugin needs to be done by cmake.
 # By default it uses ${S}.
 
-# @ECLASS-VARIABLE: CMAKE_VERBOSE
+# @ECLASS_VARIABLE: CMAKE_VERBOSE
 # @DESCRIPTION:
 # Set to OFF to disable verbose messages during compilation
 : ${CMAKE_VERBOSE:=ON}
 
-# @ECLASS-VARIABLE: CMAKE_WARN_UNUSED_CLI
+# @ECLASS_VARIABLE: CMAKE_WARN_UNUSED_CLI
 # @DESCRIPTION:
 # Warn about variables that are declared on the command line
 # but not used. Might give false-positives.
 # "no" to disable (default) or anything else to enable.
 
-# @ECLASS-VARIABLE: CMAKE_EXTRA_CACHE_FILE
+# @ECLASS_VARIABLE: CMAKE_EXTRA_CACHE_FILE
+# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Specifies an extra cache file to pass to cmake. This is the analog of EXTRA_ECONF
 # for econf and is needed to pass TRY_RUN results when cross-compiling.
 # Should be set by user in a per-package basis in /etc/portage/package.env.
 
-# @ECLASS-VARIABLE: CMAKE_UTILS_QA_SRC_DIR_READONLY
+# @ECLASS_VARIABLE: CMAKE_UTILS_QA_SRC_DIR_READONLY
+# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # After running cmake-utils_src_prepare, sets ${S} to read-only. This is
@@ -802,7 +806,8 @@ cmake-utils_src_test() {
 
 	[[ -n ${TEST_VERBOSE} ]] && myctestargs+=( --extra-verbose --output-on-failure )
 
-	set -- ctest -j "$(makeopts_jobs)" --test-load "$(makeopts_loadavg)" "${myctestargs[@]}" "$@"
+	set -- ctest -j "$(makeopts_jobs "${MAKEOPTS}" 999)" \
+		--test-load "$(makeopts_loadavg)" "${myctestargs[@]}" "$@"
 	echo "$@" >&2
 	if "$@" ; then
 		einfo "Tests succeeded."

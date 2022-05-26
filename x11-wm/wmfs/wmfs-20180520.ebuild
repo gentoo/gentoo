@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Window Manager From Scratch, A tiling window manager highly configurable"
 HOMEPAGE="https://github.com/xorg62/wmfs"
-SRC_URI="https://dev.gentoo.org/~jer/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~jsmolic/distfiles/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -23,9 +23,11 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	virtual/pkgconfig
 	x11-base/xorg-proto
+	elibc_musl? ( sys-libs/queue-standalone )
 "
+BDEPEND="virtual/pkgconfig"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-99999999-Debian.patch
 	"${FILESDIR}"/${PN}-99999999-desktop.patch

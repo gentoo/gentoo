@@ -1,0 +1,31 @@
+commit cd04daa9777f613daa23b3dd6f8ae1f7bc270cf8
+Author: orbea <orbea@riseup.net>
+Date:   Wed Mar 31 06:58:01 2021 -0700
+
+    build: Fix undefined references for libm.
+
+diff --git a/configure.ac b/configure.ac
+index 1cf7578..3e3ba4c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -21,6 +21,9 @@ disableval="y"
+ 
+ AC_ARG_ENABLE(animation, 	[  --enable-animation		compile clearlooks with animation support], 	[animation=$disableval], 	[animation=$enableval])
+ 
++AC_CHECK_LIBM
++AC_SUBST([LIBM])
++
+ PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.8.0,,
+                   AC_MSG_ERROR([GTK+-2.8 is required to compile gtk-engines]))
+ 
+diff --git a/engine/Makefile.am b/engine/Makefile.am
+index d98d0a0..d555e6e 100644
+--- a/engine/Makefile.am
++++ b/engine/Makefile.am
+@@ -22,5 +22,4 @@ libubuntulooks_la_SOURCES =		\
+ 	./src/config.h
+ 
+ libubuntulooks_la_LDFLAGS = -module -avoid-version -no-undefined
+-libubuntulooks_la_LIBADD =  $(GTK_LIBS)
+-
++libubuntulooks_la_LIBADD = $(GTK_LIBS) $(LIBM)

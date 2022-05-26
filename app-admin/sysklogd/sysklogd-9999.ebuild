@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/troglobit/sysklogd.git"
 else
 	SRC_URI="https://github.com/troglobit/sysklogd/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 LICENSE="BSD"
@@ -27,7 +27,8 @@ DEPEND="
 		!>=sys-apps/util-linux-2.34-r3[logger]
 	)
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	logrotate? ( app-admin/logrotate )"
 
 DOCS=( ChangeLog.md README.md )
 
@@ -43,6 +44,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-static
 		--runstatedir="${EPREFIX}"/run
 		$(use_with logger)
 		$(use_with systemd systemd $(systemd_get_systemunitdir))
@@ -66,7 +68,7 @@ src_install() {
 		sed 's@ -r 10M:10@@' -i "${ED}"/etc/conf.d/sysklogd || die
 	fi
 
-	find "${ED}" -type f \( -name "*.a" -o -name "*.la" \) -delete || die
+	find "${ED}" -type f -name "*.la" -delete || die
 }
 
 pkg_postinst() {

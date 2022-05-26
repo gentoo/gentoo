@@ -1,0 +1,17 @@
+diff -Naur grass-7.8.3.org/include/Make/HtmlRules.make grass-7.8.3/include/Make/HtmlRules.make
+--- grass-7.8.3.org/include/Make/HtmlRules.make	2020-05-05 10:51:50.000000000 +0200
++++ grass-7.8.3/include/Make/HtmlRules.make	2020-10-10 13:43:42.800880621 +0200
+@@ -11,10 +11,10 @@
+ endif
+ 
+ $(HTMLDIR)/%.png: %.png | $(HTMLDIR)
+-	$(INSTALL_DATA) $< $@
++	flock $@ $(INSTALL_DATA) $< $@
+ 
+ $(HTMLDIR)/%.jpg: %.jpg | $(HTMLDIR)
+-	$(INSTALL_DATA) $< $@
++	flock $@ $(INSTALL_DATA) $< $@
+ 
+ $(HTMLDIR)/%.gif: %.gif | $(HTMLDIR)
+-	$(INSTALL_DATA) $< $@
++	flock $@ $(INSTALL_DATA) $< $@

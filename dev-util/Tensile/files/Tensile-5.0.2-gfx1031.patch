@@ -1,0 +1,104 @@
+Index: Tensile-rocm-5.0.1/pytest.ini
+===================================================================
+--- Tensile-rocm-5.0.1.orig/pytest.ini
++++ Tensile-rocm-5.0.1/pytest.ini
+@@ -87,6 +87,7 @@ markers =
+  xfail-gfx1011: architecture
+  xfail-gfx1012: architecture
+  xfail-gfx1030: architecture
++ xfail-gfx1031: architecture
+  skip-gfx000:  architecture
+  skip-gfx900:  architecture
+  skip-gfx906:  architecture
+@@ -96,3 +97,4 @@ markers =
+  skip-gfx1011: architecture
+  skip-gfx1012: architecture
+  skip-gfx1030: architecture
++ skip-gfx1031: architecture
+Index: Tensile-rocm-5.0.1/Tensile/Common.py
+===================================================================
+--- Tensile-rocm-5.0.1.orig/Tensile/Common.py
++++ Tensile-rocm-5.0.1/Tensile/Common.py
+@@ -198,7 +198,7 @@ globalParameters["MergeFiles"] = True
+ globalParameters["NumMergedFiles"] = 1            # The number of files that kernels should be split between when merging
+ 
+ globalParameters["MaxFileName"] = 64              # If a file name would be longer than this, shorten it with a hash.
+-globalParameters["SupportedISA"] = [(8,0,3), (9,0,0), (9,0,6), (9,0,8), (9,0,10), (10,1,0), (10,1,1), (10,1,2), (10,3,0)] # assembly kernels writer supports these architectures
++globalParameters["SupportedISA"] = [(8,0,3), (9,0,0), (9,0,6), (9,0,8), (9,0,10), (10,1,0), (10,1,1), (10,1,2), (10,3,0),(10,3,1)] # assembly kernels writer supports these architectures
+ 
+ globalParameters["GenerateManifestAndExit"] = False               # Output manifest file with list of expected library objects and exit
+ globalParameters["NewClient"] = 2                                 # Old client deprecated: NewClient must be set to 2.
+@@ -264,7 +264,7 @@ architectureMap = {
+   'gfx906':'vega20', 'gfx906:xnack+':'vega20', 'gfx906:xnack-':'vega20',
+   'gfx908':'arcturus','gfx908:xnack+':'arcturus', 'gfx908:xnack-':'arcturus',
+   'gfx90a':'aldebaran', 'gfx90a:xnack+':'aldebaran', 'gfx90a:xnack-':'aldebaran',
+-  'gfx1010':'navi10', 'gfx1011':'navi12', 'gfx1012':'navi14', 'gfx1030':'navi21'
++  'gfx1010':'navi10', 'gfx1011':'navi12', 'gfx1012':'navi14', 'gfx1030':'navi21', 'gfx1031':'navi22'
+ }
+ 
+ def getArchitectureName(gfxName):
+Index: Tensile-rocm-5.0.1/Tensile/KernelWriterAssembly.py
+===================================================================
+--- Tensile-rocm-5.0.1.orig/Tensile/KernelWriterAssembly.py
++++ Tensile-rocm-5.0.1/Tensile/KernelWriterAssembly.py
+@@ -2364,7 +2364,7 @@ class KernelWriterAssembly(KernelWriter)
+ 
+     # integer i8x4
+     elif kernel["ProblemType"]["DataType"].isInt8x4():
+-      if self.version == (9,0,6) or self.version == (9,0,8) or self.version == (9,0,10) or self.version == (10,3,0):
++      if self.version == (9,0,6) or self.version == (9,0,8) or self.version == (9,0,10) or self.version == (10,3,0) or self.version == (10,3,1):
+         for b in range(0, kernel["ThreadTile1"]):
+           for a in range(0, kernel["ThreadTile0"]):
+             for iui in range(0, innerUnroll):
+Index: Tensile-rocm-5.0.1/Tensile/Source/CMakeLists.txt
+===================================================================
+--- Tensile-rocm-5.0.1.orig/Tensile/Source/CMakeLists.txt
++++ Tensile-rocm-5.0.1/Tensile/Source/CMakeLists.txt
+@@ -47,7 +47,7 @@ if(NOT DEFINED CXX_VERSION_STRING)
+ endif()
+ 
+ if(CMAKE_CXX_COMPILER STREQUAL "hipcc")
+-  set(TENSILE_GPU_ARCHS gfx803 gfx900 gfx906:xnack- gfx908:xnack- gfx90a:xnack- gfx1010 gfx1011 gfx1012 gfx1030 CACHE STRING "GPU architectures")
++  set(TENSILE_GPU_ARCHS gfx803 gfx900 gfx906:xnack- gfx908:xnack- gfx90a:xnack- gfx1010 gfx1011 gfx1012 gfx1030 gfx1031 CACHE STRING "GPU architectures")
+ else()
+   set(TENSILE_GPU_ARCHS gfx803 gfx900 gfx906 gfx908 gfx90a CACHE STRING "GPU architectures")
+ endif()
+Index: Tensile-rocm-5.0.1/Tensile/Source/lib/include/Tensile/AMDGPU.hpp
+===================================================================
+--- Tensile-rocm-5.0.1.orig/Tensile/Source/lib/include/Tensile/AMDGPU.hpp
++++ Tensile-rocm-5.0.1/Tensile/Source/lib/include/Tensile/AMDGPU.hpp
+@@ -62,7 +62,8 @@ namespace Tensile
+             gfx1010 = 1010,
+             gfx1011 = 1011,
+             gfx1012 = 1012,
+-            gfx1030 = 1030
++            gfx1030 = 1030,
++            gfx1031 = 1031
+         };
+ 
+         AMDGPU();
+Index: Tensile-rocm-5.0.1/Tensile/Source/lib/include/Tensile/Serialization/Predicates.hpp
+===================================================================
+--- Tensile-rocm-5.0.1.orig/Tensile/Source/lib/include/Tensile/Serialization/Predicates.hpp
++++ Tensile-rocm-5.0.1/Tensile/Source/lib/include/Tensile/Serialization/Predicates.hpp
+@@ -215,6 +215,7 @@ namespace Tensile
+                 iot::enumCase(io, value, "gfx1011", AMDGPU::Processor::gfx1011);
+                 iot::enumCase(io, value, "gfx1012", AMDGPU::Processor::gfx1012);
+                 iot::enumCase(io, value, "gfx1030", AMDGPU::Processor::gfx1030);
++                iot::enumCase(io, value, "gfx1031", AMDGPU::Processor::gfx1031);
+             }
+         };
+     } // namespace Serialization
+Index: Tensile-rocm-5.0.1/Tensile/Source/lib/source/AMDGPU.cpp
+===================================================================
+--- Tensile-rocm-5.0.1.orig/Tensile/Source/lib/source/AMDGPU.cpp
++++ Tensile-rocm-5.0.1/Tensile/Source/lib/source/AMDGPU.cpp
+@@ -82,6 +82,8 @@ namespace Tensile
+             return stream << "gfx1012";
+         case AMDGPU::Processor::gfx1030:
+             return stream << "gfx1030";
++        case AMDGPU::Processor::gfx1031:
++            return stream << "gfx1031";
+         }
+         return stream;
+     }

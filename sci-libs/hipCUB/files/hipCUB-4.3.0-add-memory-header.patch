@@ -1,0 +1,12 @@
+resolves compilation error: no template named 'shared_ptr' in namespace 'std'
+
+--- orig/benchmark/benchmark_device_radix_sort.cpp	2021-08-26 11:37:12.587196186 +0800
++++ hipCUB-rocm-4.3.0/benchmark/benchmark_device_radix_sort.cpp	2021-08-26 11:37:27.459196285 +0800
+@@ -21,6 +21,7 @@
+ // SOFTWARE.
+ 
+ #include "common_benchmark_header.hpp"
++#include <memory>
+ 
+ // HIP API
+ #include "hipcub/device/device_radix_sort.hpp"

@@ -1,0 +1,25 @@
+From 2dd2c02094ab9dfd964b2363039527d414db3b28 Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Wed, 13 Apr 2022 21:30:14 +0200
+Subject: [PATCH 3/3] SvgOutputDev: Fix ifdef version for getFont API change
+
+---
+ filters/karbon/pdf/SvgOutputDev.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/filters/karbon/pdf/SvgOutputDev.cpp b/filters/karbon/pdf/SvgOutputDev.cpp
+index 76b909e3b69..588cda8ecbe 100644
+--- a/filters/karbon/pdf/SvgOutputDev.cpp
++++ b/filters/karbon/pdf/SvgOutputDev.cpp
+@@ -414,7 +414,7 @@ void SvgOutputDev::drawString(GfxState * state, const GooString * s)
+     if (s->getLength() == 0)
+         return;
+ 
+-#if POPPLER_VERSION_MACRO < QT_VERSION_CHECK(22, 03, 0)
++#if POPPLER_VERSION_MACRO < QT_VERSION_CHECK(22, 04, 0)
+     GfxFont * font = state->getFont();
+ #else
+     std::shared_ptr<GfxFont> font = state->getFont();
+-- 
+2.35.1
+

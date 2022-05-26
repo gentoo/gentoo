@@ -1,0 +1,116 @@
+From 77953cf633ecd149b2c29e616f8d9d4e0cf8e5fa Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@canonical.com>
+Date: Sat, 23 Apr 2022 22:53:48 +0100
+Subject: [PATCH] Fix various test failures with Python 3.11
+
+The changes for https://peps.python.org/pep-0657/ require a number of
+changes in our tests.
+
+Some tests still fail due to
+https://twistedmatrix.com/trac/ticket/10336, so I'm not adding
+3.11 to the test matrix yet.
+
+Fixes #325.
+---
+ testtools/tests/test_run.py        |  4 ++--
+ testtools/tests/test_testresult.py | 23 +++++++++++++----------
+ testtools/tests/test_testsuite.py  |  2 +-
+ 3 files changed, 16 insertions(+), 13 deletions(-)
+
+diff --git a/testtools/tests/test_run.py b/testtools/tests/test_run.py
+index ee96eec9..9808421b 100644
+--- a/testtools/tests/test_run.py
++++ b/testtools/tests/test_run.py
+@@ -202,9 +202,9 @@ def test_run_list_failed_import(self):
+ Failed to import test module: runexample
+ Traceback (most recent call last):
+   File ".../loader.py", line ..., in _find_test_path
+-    package = self._get_module_from_name(name)
++    package = self._get_module_from_name(name)...
+   File ".../loader.py", line ..., in _get_module_from_name
+-    __import__(name)
++    __import__(name)...
+   File ".../runexample/__init__.py", line 1
+     class not in
+ ...^...
+diff --git a/testtools/tests/test_testresult.py b/testtools/tests/test_testresult.py
+index 4fbf15d1..7824ff46 100644
+--- a/testtools/tests/test_testresult.py
++++ b/testtools/tests/test_testresult.py
+@@ -1266,11 +1266,11 @@ def test_traceback_formatting_without_stack_hidden(self):
+             DocTestMatches(
+                 'Traceback (most recent call last):\n'
+                 '  File "...testtools...runtest.py", line ..., in _run_user\n'
+-                '    return fn(*args, **kwargs)\n'
++                '    return fn(*args, **kwargs)\n...'
+                 '  File "...testtools...testcase.py", line ..., in _run_test_method\n'
+-                '    return self._get_test_method()()\n'
++                '    return self._get_test_method()()\n...'
+                 '  File "...testtools...tests...test_testresult.py", line ..., in error\n'
+-                '    1/0\n'
++                '    1/0\n...'
+                 'ZeroDivisionError: ...\n',
+                 doctest.ELLIPSIS | doctest.REPORT_UDIFF))
+ 
+@@ -1283,7 +1283,7 @@ def test_traceback_formatting_with_stack_hidden(self):
+             DocTestMatches(
+                 'Traceback (most recent call last):\n'
+                 '  File "...testtools...tests...test_testresult.py", line ..., in error\n'
+-                '    1/0\n'
++                '    1/0\n...'
+                 'ZeroDivisionError: ...\n',
+                 doctest.ELLIPSIS))
+ 
+@@ -1322,17 +1322,17 @@ def test_traceback_with_locals(self):
+             DocTestMatches(
+                 'Traceback (most recent call last):\n'
+                 '  File "...testtools...runtest.py", line ..., in _run_user\n'
+-                '    return fn(*args, **kwargs)\n'
++                '    return fn(*args, **kwargs)\n...'
+                 '    args = ...\n'
+                 '    fn = ...\n'
+                 '    kwargs = ...\n'
+                 '    self = ...\n'
+                 '  File "...testtools...testcase.py", line ..., in _run_test_method\n'
+-                '    return self._get_test_method()()\n'
++                '    return self._get_test_method()()\n...'
+                 '    result = ...\n'
+                 '    self = ...\n'
+                 '  File "...testtools...tests...test_testresult.py", line ..., in error\n'
+-                '    1/0\n'
++                '    1/0\n...'
+                 '    a = 1\n'
+                 '    self = ...\n'
+                 'ZeroDivisionError: ...\n',
+@@ -2645,12 +2645,15 @@ def test_unprintable_exception(self):
+             "        raise RuntimeError\n"
+             "    def __repr__(self):\n"
+             "        raise RuntimeError\n")
++        if sys.version_info >= (3, 11):
++            expected = "UnprintableError: <exception str() failed>\n"
++        else:
++            expected = (
++                "UnprintableError: <unprintable UnprintableError object>\n")
+         textoutput = self._test_external_case(
+             modulelevel=exception_class,
+             testline="raise UnprintableError")
+-        self.assertIn(self._as_output(
+-            "UnprintableError: <unprintable UnprintableError object>\n"),
+-            textoutput)
++        self.assertIn(self._as_output(expected), textoutput)
+ 
+     def test_non_ascii_dirname(self):
+         """Script paths in the traceback can be non-ascii"""
+diff --git a/testtools/tests/test_testsuite.py b/testtools/tests/test_testsuite.py
+index 65cb88d7..01abb23c 100644
+--- a/testtools/tests/test_testsuite.py
++++ b/testtools/tests/test_testsuite.py
+@@ -178,7 +178,7 @@ def run(self):
+             "Traceback (most recent call last):\n")
+         self.assertThat(events[2][6].decode('utf8'), DocTestMatches("""\
+   File "...testtools/testsuite.py", line ..., in _run_test
+-    test.run(process_result)
++    test.run(process_result)...
+ """, doctest.ELLIPSIS))
+         self.assertThat(events[3][6].decode('utf8'), DocTestMatches("""\
+ TypeError: ...run() takes ...1 ...argument...2...given...

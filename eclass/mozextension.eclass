@@ -1,22 +1,21 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
+
 # @ECLASS: mozextension.eclass
 # @MAINTAINER:
 # Mozilla team <mozilla@gentoo.org>
-# @BLURB: Install extensions for use in mozilla products.
-#
+# @BLURB: Install extensions for use in Mozilla products.
+
 if [[ ! ${_MOZEXTENSION} ]]; then
 
-# @ECLASS-VARIABLE: MOZEXTENSION_TARGET
+# @ECLASS_VARIABLE: MOZEXTENSION_TARGET
 # @DESCRIPTION:
 # This variable allows the installation path for xpi_install
 # to be overridden from the default app-global extensions path.
 # Default is empty, which installs to predetermined hard-coded
 # paths specified in the eclass.
 : ${MOZEXTENSION_TARGET:=""}
-
-inherit eutils
 
 DEPEND="app-arch/unzip"
 

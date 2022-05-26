@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-inherit bash-completion-r1 estack eutils llvm toolchain-funcs prefix python-r1 linux-info
+PYTHON_COMPAT=( python3_{7,8} )
+inherit bash-completion-r1 estack llvm toolchain-funcs prefix python-r1 linux-info
 
 MY_PV="${PV/_/-}"
 MY_PV="${MY_PV/-pre/-git}"
@@ -62,6 +62,7 @@ DEPEND="${RDEPEND}
 	${LINUX_PATCH+dev-util/patchutils}
 	sys-devel/bison
 	sys-devel/flex
+	virtual/pkgconfig
 	java? ( virtual/jdk )
 	doc? (
 		app-text/asciidoc
@@ -184,6 +185,8 @@ perf_make() {
 		NO_ZLIB= \
 		WERROR=0 \
 		LIBDIR="/usr/libexec/perf-core" \
+		libdir="${EPREFIX}/usr/$(get_libdir)" \
+		plugindir="${EPREFIX}/usr/$(get_libdir)/perf/plugins" \
 		"$@"
 }
 
@@ -215,7 +218,11 @@ src_install() {
 	rm -rv "${ED}"/usr/share/doc/perf-tip || die
 
 	if use gtk; then
-		mv "${ED}"/usr/$(get_libdir)/libperf-gtk.so \
+		local libdir
+		libdir="$(get_libdir)"
+		# on some arches it ends up in lib even on 64bit, ppc64 for instance.
+		[[ -f "${ED}"/usr/lib/libperf-gtk.so ]] && libdir="lib"
+		mv "${ED}"/usr/${libdir}/libperf-gtk.so \
 			"${ED}"/usr/libexec/perf-core || die
 	fi
 

@@ -1,0 +1,22 @@
+From b0d26dd060475505f3c0a6369f4fbbd3c20d84b0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Patrick=20H=C3=B6hn?= <hoehnp@users.noreply.github.com>
+Date: Fri, 7 Feb 2020 10:26:46 +0100
+Subject: [PATCH] Update configure.ac to make compatible with python3
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index dfd8a1b..fefd90d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -96,7 +96,7 @@ PKG_CHECK_MODULES(GTK, [gtk+-2.0])
+ AC_SUBST(GTK_LIBS)
+ AC_SUBST(GTK_CFLAGS)
+ 
+-PKG_CHECK_MODULES(INDICATOR, [appindicator-0.1])
++PKG_CHECK_MODULES(INDICATOR, [appindicator3-0.1])
+ AC_SUBST(INDICATOR_LIBS)
+ AC_SUBST(INDICATOR_CFLAGS)
+ 

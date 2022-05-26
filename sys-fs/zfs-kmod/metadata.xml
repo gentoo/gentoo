@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>ryao@gentoo.org</email>
-		<name>Richard Yao</name>
-	</maintainer>
 	<maintainer type="person">
 		<email>gyakovlev@gentoo.org</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
 	<use>
-		<flag name="rootfs">Install zfs-shutdown script to support exporting a pool containing rootfs</flag>
+		<flag name="rootfs">Pull dependencies and check kernel options required for root-on-zfs</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">zfsonlinux/zfs</remote-id>
+		<bugs-to>https://github.com/openzfs/zfs/issues</bugs-to>
+		<doc>https://openzfs.github.io/openzfs-docs</doc>
+		<remote-id type="github">openzfs/zfs</remote-id>
 	</upstream>
 </pkgmetadata>

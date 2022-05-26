@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,10 +30,7 @@ RDEPEND="
 	kde-frameworks/breeze-icons:5
 	kde-frameworks/extra-cmake-modules:5
 	kde-frameworks/kcodecs:5
-	|| (
-		kde-frameworks/kcontacts:5
-		kde-apps/kcontacts:5
-	)
+	kde-frameworks/kcontacts:5
 "
 DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )
@@ -44,6 +41,7 @@ RESTRICT+=" test"
 PATCHES=(
 	"${FILESDIR}/${P}-tests-optional.patch"
 	"${FILESDIR}/${P}-require-cxx14.patch"
+	"${FILESDIR}/${P}-appdata-location.patch"
 )
 
 src_prepare() {

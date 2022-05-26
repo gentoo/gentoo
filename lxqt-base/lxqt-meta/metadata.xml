@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>lxqt@gentoo.org</email>
@@ -9,6 +9,7 @@
 		<flag name="about">Install <pkg>lxqt-base/lxqt-about</pkg></flag>
 		<flag name="admin">Install <pkg>lxqt-base/lxqt-admin</pkg></flag>
 		<flag name="archiver">Install <pkg>app-arch/lxqt-archiver</pkg></flag>
+		<flag name="desktop-portal">Enable the LXQt sys-apps/xdg-desktop-portal backend implementation</flag>
 		<flag name="display-manager">Install a graphical display manager</flag>
 		<flag name="filemanager">Install <pkg>x11-misc/pcmanfm-qt</pkg>file manager</flag>
 		<flag name="lximage">Install <pkg>media-gfx/lximage-qt</pkg>image viewer</flag>

@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 GENQMAIL_PV=20200817
 QMAIL_SPP_PV=0.42
@@ -11,19 +11,23 @@ QMAIL_TLS_F=notqmail-1.08-tls-${QMAIL_TLS_PV}.patch
 
 QMAIL_BIGTODO_F=notqmail-1.08-big-todo.patch
 
-QMAIL_LARGE_DNS="qmail-103.patch"
-
 inherit qmail systemd
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/notqmail/notqmail.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-	SRC_URI="https://github.com/notqmail/notqmail/releases/download/${P}/${P}.tar.xz"
+	inherit verify-sig
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+	SRC_URI="
+		https://github.com/notqmail/notqmail/releases/download/${P}/${P}.tar.xz
+		verify-sig? (
+			https://github.com/notqmail/notqmail/releases/download/${P}/${P}.tar.xz.sig
+		)
+	"
 fi
 
-DESCRIPTION="qmail -- a secure, reliable, efficient, simple message transfer agent"
+DESCRIPTION="Collaborative open-source successor to qmail"
 HOMEPAGE="
 	https://notqmail.org
 	https://cr.yp.to/qmail.html
@@ -31,7 +35,6 @@ HOMEPAGE="
 "
 SRC_URI="${SRC_URI}
 	https://github.com/DerDakon/genqmail/releases/download/genqmail-${GENQMAIL_PV}/${GENQMAIL_F}
-	https://www.ckdhr.com/ckd/${QMAIL_LARGE_DNS}
 	!vanilla? (
 		highvolume? (
 			https://github.com/notqmail/notqmail/commit/3a22b45974ddd1230da0dfa21f886c3401bee020.patch -> ${QMAIL_BIGTODO_F}
@@ -54,20 +57,22 @@ SRC_URI="${SRC_URI}
 	)
 "
 
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/notqmail.asc
+
 LICENSE="public-domain"
 SLOT="0"
-IUSE="authcram gencertdaily highvolume libressl -pop3 qmail-spp ssl test vanilla"
-REQUIRED_USE="vanilla? ( !ssl !qmail-spp !highvolume !authcram !gencertdaily ) gencertdaily? ( ssl ) libressl? ( ssl )"
+IUSE="authcram gencertdaily highvolume pop3 qmail-spp ssl test vanilla"
+REQUIRED_USE="vanilla? ( !ssl !qmail-spp !highvolume !authcram !gencertdaily ) gencertdaily? ( ssl )"
 RESTRICT="!test? ( test )"
 
+if [[ ${PV} != 9999 ]] ; then
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-notqmail )"
+fi
 DEPEND="
 	net-dns/libidn2
 	net-mail/queue-repair
 	sys-apps/gentoo-functions
-	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.1:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( >=dev-libs/openssl-1.1:0= )
 	test? ( dev-libs/check )
 "
 RDEPEND="${DEPEND}
@@ -81,8 +86,6 @@ RDEPEND="${DEPEND}
 	acct-user/qmailr
 	acct-user/qmails
 	sys-apps/ucspi-tcp
-	virtual/checkpassword
-	virtual/daemontools
 	authcram? ( >=net-mail/cmd5checkpw-0.30 )
 	ssl? (
 		pop3? ( sys-apps/ucspi-ssl )
@@ -99,17 +102,21 @@ RDEPEND="${DEPEND}
 	!mail-mta/sendmail
 	!mail-mta/ssmtp[mta]
 "
+PDEPEND="
+	virtual/daemontools
+"
 
 src_unpack() {
 	genqmail_src_unpack
 
 	[[ ${PV} == "9999" ]] && git-r3_src_unpack
-	[[ ${PV} != "9999" ]] && default
+	if [[ ${PV} != "9999" ]]; then
+		default
+		if use verify-sig; then
+			verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.sig}
+		fi
+	fi
 }
-
-PATCHES=(
-	"${DISTDIR}/${QMAIL_LARGE_DNS}"
-)
 
 src_prepare() {
 	if ! use vanilla; then
@@ -174,10 +181,6 @@ pkg_postinst() {
 	elog "http://www.lifewithqmail.com/"
 	elog "  -- Life with qmail"
 	elog
-}
-
-pkg_preinst() {
-	qmail_tcprules_fixup
 }
 
 pkg_config() {

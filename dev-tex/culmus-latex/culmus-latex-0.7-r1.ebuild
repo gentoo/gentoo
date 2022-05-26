@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/ivritex/${P}_src.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 IUSE="examples"
 
 RDEPEND="virtual/latex-base"
@@ -38,10 +38,8 @@ src_install() {
 
 	dodoc README
 
-	if use examples ; then
-		insinto /usr/share/doc/${PF}/examples
-		doins examples/*
-		insinto /usr/share/doc/${PF}/examples/hiriq
-		doins examples/hiriq/*
+	if use examples; then
+		dodoc -r examples
+		docompress -x /usr/share/doc/${PF}/examples
 	fi
 }

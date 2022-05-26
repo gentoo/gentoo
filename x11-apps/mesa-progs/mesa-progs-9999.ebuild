@@ -1,9 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
-inherit toolchain-funcs
 
 MY_PN="${PN/progs/demos}"
 MY_P="${MY_PN}-${PV}"
@@ -18,7 +16,7 @@ if [[ ${PV} = 9999* ]]; then
 else
 	SRC_URI="https://mesa.freedesktop.org/archive/demos/${MY_P}.tar.bz2
 		https://mesa.freedesktop.org/archive/demos/${PV}/${MY_P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 	S="${WORKDIR}/${MY_P}"
 fi
 LICENSE="LGPL-2"
@@ -26,20 +24,22 @@ SLOT="0"
 IUSE="egl gles2"
 
 RDEPEND="
-	media-libs/mesa[egl?,gles2?]
+	media-libs/mesa[egl(+)?,gles2?]
 	virtual/opengl
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
-	media-libs/glew
 	virtual/glu
 	x11-base/xorg-proto"
+BDEPEND="sys-apps/grep
+	sys-apps/file"
 
 src_prepare() {
 	default
-	[[ $PV = 9999* ]] && eautoreconf
+	[[ ${PV} = 9999* ]] && eautoreconf
 }
 
 src_compile() {
+	emake -C src/glad libglad.la
 	emake -C src/xdemos glxgears glxinfo
 
 	if use egl; then
@@ -55,10 +55,15 @@ src_compile() {
 }
 
 src_install() {
-	dobin src/xdemos/{glxgears,glxinfo}
+	local demo='src/xdemos'
 	if use egl; then
-		dobin src/egl/opengl/egl{info,gears_x11}
+		demo="${demo} src/egl/opengl"
 
-		use gles2 && dobin src/egl/opengles2/es2{_info,gears_x11}
+		use gles2 && demo="${demo} src/egl/opengles2"
 	fi
+
+	# Ensure only the binaries are installed and not a similarly named wrapper script
+	find ${demo} -type f -print0 |
+		xargs -0 file | grep executable | grep ELF | cut -f 1 -d : |
+		xargs -I '{}' dobin '{}' || die
 }

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>jsmolic@gentoo.org</email>
+		<name>Jakov Smolić</name>
+	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 Bluelet is a simple, pure-Python solution for writing intelligible asynchronous socket applications. It uses PEP 342 coroutines to make concurrent I/O look and act like sequential programming.
 
@@ -9,5 +13,6 @@ In this way, it is similar to the Greenlet green-threads library and its associa
 	</longdescription>
 	<upstream>
 		<remote-id type="github">sampsyo/bluelet</remote-id>
+		<remote-id type="pypi">bluelet</remote-id>
 	</upstream>
 </pkgmetadata>

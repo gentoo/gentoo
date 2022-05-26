@@ -1,0 +1,38 @@
+From 60a26c23d2d385e62a006d68074ca25479e10639 Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Wed, 15 Jan 2020 20:27:31 -0800
+Subject: [PATCH] fix systemd unit path
+
+---
+ scripts/Makefile.am | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/scripts/Makefile.am b/scripts/Makefile.am
+index 29dcb78..36efcfb 100644
+--- a/scripts/Makefile.am
++++ b/scripts/Makefile.am
+@@ -16,8 +16,8 @@ install-exec-hook-scripts:
+ 	install -D --mode=644 $(CONFIG_FILE) $(DESTDIR)/etc/ppc64-diag
+ 	install -d --mode=755 $(DESTDIR)/usr/libexec/ppc64-diag/
+ 	install -D --mode=755 $(INIT_FILES) $(DESTDIR)/usr/libexec/ppc64-diag/
+-	install -d --mode=755 $(DESTDIR)/usr/lib/systemd/system/
+-	install -D --mode=644 $(SERVICE_SCRIPT) $(DESTDIR)/usr/lib/systemd/system/
++	install -d --mode=755 $(DESTDIR)/lib/systemd/system/
++	install -D --mode=644 $(SERVICE_SCRIPT) $(DESTDIR)/lib/systemd/system/
+ 
+ uninstall-hook-scripts:
+ 	rm -f $(DESTDIR)/etc/ppc64-diag/ppc64_diag_setup
+@@ -28,8 +28,8 @@ uninstall-hook-scripts:
+ 	rm -f $(DESTDIR)/etc/ppc64-diag/ppc64-diag.config
+ 	rm -f $(DESTDIR)/usr/libexec/ppc64-diag/rtas_errd
+ 	rm -f $(DESTDIR)/usr/libexec/ppc64-diag/opal_errd
+-	rm -f $(DESTDIR)/usr/lib/systemd/system/rtas_errd.service
+-	rm -f $(DESTDIR)/usr/lib/systemd/system/opal_errd.service
++	rm -f $(DESTDIR)/lib/systemd/system/rtas_errd.service
++	rm -f $(DESTDIR)/lib/systemd/system/opal_errd.service
+ 
+ INSTALL_EXEC_HOOKS += install-exec-hook-scripts
+ UNINSTALL_HOOKS += uninstall-hook-scripts
+-- 
+2.25.0
+

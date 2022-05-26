@@ -1,0 +1,8 @@
+--- a/amd_icd64.json
++++ b/amd_icd64.json
+@@ -4 +4 @@
+-        "library_path": "/opt/amdgpu-pro/lib/x86_64-linux-gnu/amdvlk64.so",
++        "library_path": "/usr/lib64/amdvlkpro64.so",
+@@ -10 +10 @@
+-        "library_path": "/opt/amdgpu-pro/lib/x86_64-linux-gnu/amdvlk64.so",
++        "library_path": "/usr/lib64/amdvlkpro64.so",

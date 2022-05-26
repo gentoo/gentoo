@@ -1,0 +1,24 @@
+From 86abf3cbddbdc590dbb2ff5b0bda263e42595b88 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Wed, 10 Oct 2012 08:48:02 +0000
+Subject: [PATCH] build: fix issue with latest automake
+
+---
+ etc/Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/etc/Makefile.am b/etc/Makefile.am
+index ff66d4e..dc00f47 100644
+--- a/etc/Makefile.am
++++ b/etc/Makefile.am
+@@ -30,8 +30,8 @@ dist_noinst_DATA += openct.usermap
+ endif
+ 
+ 
+-sysconf_DATA=#required in order to create dir
+-install-exec-hook:	install-sysconfDATA openct.conf
++install-exec-hook:	openct.conf
++	$(MKDIR_P) "$(DESTDIR)$(sysconfdir)"
+ 	if [ -f "$(DESTDIR)$(sysconfdir)/openct.conf" ]; then \
+ 		$(INSTALL_DATA) openct.conf "$(DESTDIR)$(sysconfdir)/openct.conf.new"; \
+ 	else \

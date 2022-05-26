@@ -1,8 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-inherit toolchain-funcs multilib-minimal
+EAPI=8
+
+LUA_COMPAT=( lua5-{1..4} luajit )
+
+inherit flag-o-matic lua toolchain-funcs
 
 DESCRIPTION="Bit Operations Library for the Lua Programming Language"
 HOMEPAGE="http://bitop.luajit.org"
@@ -10,35 +13,85 @@ SRC_URI="http://bitop.luajit.org/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 sparc x86"
-IUSE=""
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~x64-macos"
+REQUIRED_USE="${LUA_REQUIRED_USE}"
 
-RDEPEND=">=dev-lang/lua-5.1.5-r2:*[${MULTILIB_USEDEP}]"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+RDEPEND="${LUA_DEPS}"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+HTML_DOCS=( "doc/." )
+
+PATCHES=( "${FILESDIR}/${P}-support-lua5-3+.patch" )
 
 src_prepare() {
-	multilib_copy_sources
+	default
+
+	lua_copy_sources
 }
 
-multilib_src_compile()
-{
-	emake CC="$(tc-getCC)" INCLUDES= CCOPT=
+lua_src_compile() {
+	pushd "${BUILD_DIR}" || die
+
+	local myemakeargs=(
+		"CC=$(tc-getCC)"
+		"CCOPT="
+		"INCLUDES=$(lua_get_CFLAGS)"
+	)
+
+	emake "${myemakeargs[@]}" all
+
+	popd
 }
 
-multilib_src_test() {
-	# tests use native lua interpreter
-	multilib_is_native_abi && default
+src_compile() {
+	if [[ $CHOST == *-darwin* ]] ; then
+		append-ldflags "-undefined dynamic_lookup"
+	fi
+	lua_foreach_impl lua_src_compile
 }
 
-multilib_src_install()
-{
-	local instdir="$($(tc-getPKG_CONFIG) --variable INSTALL_CMOD lua)"
-	exeinto "${instdir#${EPREFIX}}"
+lua_src_test() {
+	pushd "${BUILD_DIR}" || die
+
+	local mytests=(
+		"bitbench.lua"
+		"bittest.lua"
+		"md5test.lua"
+		"nsievebits.lua"
+	)
+
+	for mytest in ${mytests[@]}; do
+		LUA_CPATH="./?.so" ${ELUA} ${mytest}
+	done
+
+	popd
+}
+
+src_test() {
+	lua_foreach_impl lua_src_test
+}
+
+lua_src_install() {
+	pushd "${BUILD_DIR}" || die
+
+	mycmoddir="$(lua_get_cmod_dir)"
+	exeinto "${mycmoddir#$EPREFIX}"
 	doexe bit.so
+
+	popd
+
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		local luav=$(lua_get_version)
+		# we only want the major version (e.g. 5.1)
+		local luamv=${luav:0:3}
+		local file="lua/${luamv}/bit.so"
+		install_name_tool -id "${EPREFIX}/usr/$(get_libdir)/${file}" "${ED}/usr/$(get_libdir)/${file}" || die "Failed to adjust install_name"
+	fi
 }
 
-multilib_src_install_all() {
-	dodoc README
-	dohtml -r doc/.
+src_install() {
+	lua_foreach_impl lua_src_install
+
+	einstalldocs
 }

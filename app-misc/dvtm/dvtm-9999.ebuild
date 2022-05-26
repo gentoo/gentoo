@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ HOMEPAGE="https://www.brain-dump.org/projects/dvtm/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://repo.or.cz/dvtm.git"
+	EGIT_REPO_URI="https://repo.or.cz/dvtm.git"
 else
 	SRC_URI="https://www.brain-dump.org/projects/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~x86"
@@ -19,7 +19,7 @@ fi
 LICENSE="MIT"
 SLOT="0"
 
-RDEPEND=">=sys-libs/ncurses-6.1:0=[unicode]"
+RDEPEND=">=sys-libs/ncurses-6.1:=[unicode(+)]"
 DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
@@ -39,7 +39,7 @@ src_compile() {
 	tc-export PKG_CONFIG
 	local msg=""
 	use savedconfig && msg=", please check the configfile"
-	emake CC=$(tc-getCC) ${PN}
+	emake CC="$(tc-getCC)" ${PN}
 }
 
 src_install() {

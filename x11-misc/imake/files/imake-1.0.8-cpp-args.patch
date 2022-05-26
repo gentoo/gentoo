@@ -1,0 +1,18 @@
+Copy code from IMAKEINCLUDE to IMAKECPP to handle arguments
+such as -E. Lets IMAKECPP=$(tc-getCPP) be usable.
+--- a/imake.c
++++ b/imake.c
+@@ -532,6 +532,12 @@
+ 			}
+ 	}
+-	if ((p = getenv("IMAKECPP")))
++	if ((p = getenv("IMAKECPP"))) {
+ 		cpp = p;
++		for (; *p; p++)
++			if (*p == ' ') {
++				*p++ = '\0';
++				AddCppArg(p);
++			}
++	}
+ 	if ((p = getenv("IMAKEMAKE")))
+ 		make_argv[0] = p;

@@ -1,9 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 JAVA_PKG_IUSE="doc source test"
+MAVEN_ID="org.apache-extras.beanshell:bsh:2.0b6"
 
 inherit java-pkg-2 java-ant-2
 
@@ -18,7 +19,7 @@ SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/${MY_PV}${MY_BETA}.tar.gz 
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 CDEPEND="

@@ -1,9 +1,49 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2021-12-31)
+# Don't apply stable masks to python-exec since we're forcing every
+# impl there anyway. Please keep this in sync with use.stable.mask.
+dev-lang/python-exec -python_targets_pypy3
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-13)
+# ppc64 has pipewire keyworded
+www-client/firefox -screencast
+
+# Sam James <sam@gentoo.org> (2021-09-23)
+# Needs media-libs/libldac which builds on ppc64le, but not be
+media-video/pipewire -bluetooth
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-06-02)
+# altivec code is big-endian only, #773100
+media-libs/libdvbcsa cpu_flags_ppc_altivec
+
+# Michał Górny <mgorny@gentoo.org> (2021-03-06)
+# LLVM 9 has been removed.
+dev-util/perf clang
+
+# Michał Górny <mgorny@gentoo.org> (2020-12-21)
+# Additional sanitizers supported on ppc64le.
+sys-libs/compiler-rt-sanitizers -xray
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-05)
+# dropbox requires binaries unavaliable for ppc64
+kde-apps/kdenetwork-meta webengine
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-05)
+# criu is unmasked on little-endian ppc64
+app-containers/crun -criu
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-19)
 # openjfx is keyworded on ppc64le
+dev-java/openjdk:8 -javafx
 dev-java/openjdk:11 -javafx
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-05-03)
+# Problems even on ppc64le needs more work
+dev-lang/spidermonkey clang
+mail-client/thunderbird clang
+www-client/firefox clang
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-02-26)
 # vulkan tested and works on ppc64le
@@ -11,13 +51,8 @@ dev-qt/qtdeclarative -vulkan
 dev-qt/qtgui -vulkan
 dev-qt/qtwayland -vulkan
 media-libs/mesa -vulkan -vulkan-overlay
-media-libs/libsdl2 -vulkan
 media-video/mpv -vulkan
 media-video/vlc -libplacebo
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-21)
-# mask untested card for libva
-x11-libs/libva video_cards_nouveau
 
 # Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
 # PPS should work on all arches, but only keyworded on some arches

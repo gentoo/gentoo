@@ -1,7 +1,5 @@
-Index: alock-svn-94/src/auth_passwd.c
-===================================================================
---- alock-svn-94.orig/src/auth_passwd.c
-+++ alock-svn-94/src/auth_passwd.c
+--- a/src/auth_passwd.c
++++ b/src/auth_passwd.c
 @@ -43,7 +43,7 @@
  \* ---------------------------------------------------------------- */
  

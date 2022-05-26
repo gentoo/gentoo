@@ -1,8 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -mips
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-05-15)
+# rdma-core is not keyworded mips...
+rdma
 
 # Matt Turner <mattst88@gentoo.org> (2018-03-25)
 # Unmask systemd since it is keyworded here.
@@ -168,37 +172,17 @@ scanner
 # This should work, someone with a usb card and digital camera should test it
 gphoto2
 
-# Ciaran McCreesh <ciaranm@gentoo.org>
-# unresolved dep, bug #82428
-emboss
-
 # Joshua Kinard <kumba@gentoo.org>
 # dietlibc isn't known to work on mips
 diet
 
 # Stephen P. Becker <geoman@gentoo.org>
-# masked because it hoses xchat on 64-bit machines
-xosd
-
-# Stephen P. Becker <geoman@gentoo.org>
 # masked for now until this can be properly tested with alsa
 jack
 
-# Stephen P. Becker <geoman@gentoo.org>
-# masked because of silly java deps with gnome (we have no jre on mips)
-accessibility
-
-# Stephen P. Becker <geoman@gentoo.org>
-# masked because I say so, gnome--
-pda
-
-# Stephen P. Becker <geoman@gentoo.org>
-# masked because gaim sucks
-evo
-
 # Paul de Vrieze <pauldv@gentoo.org>
 # There is no java in this profile (if there is it must be available). Without
-# this repoman will fail on apps like sys-libs/db
+# this, sys-libs/db has unresolvable dependencies
 java
 
 # Ciaran McCreesh <ciaranm@gentoo.org>

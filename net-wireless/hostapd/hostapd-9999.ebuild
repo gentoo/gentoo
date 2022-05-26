@@ -1,66 +1,57 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit toolchain-funcs systemd savedconfig
+inherit flag-o-matic systemd savedconfig toolchain-funcs
 
-DESCRIPTION="IEEE 802.11 wireless LAN Host AP daemon"
-HOMEPAGE="http://w1.fi"
 EXTRAS_VER="2.7-r2"
 EXTRAS_NAME="${CATEGORY}_${PN}_${EXTRAS_VER}_extras"
+DESCRIPTION="IEEE 802.11 wireless LAN Host AP daemon"
+HOMEPAGE="https://w1.fi/ https://w1.fi/cgit/hostap/"
 SRC_URI="https://dev.gentoo.org/~andrey_utkin/distfiles/${EXTRAS_NAME}.tar.xz"
+S="${S}/${PN}"
 
-if [[ $PV == 9999 ]]; then
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://w1.fi/hostap.git"
 else
-	if [[ $PV =~ ^.*_p[0-9]{8}$ ]]; then
+	if [[ ${PV} =~ ^.*_p[0-9]{8}$ ]]; then
 		SRC_URI+=" https://dev.gentoo.org/~andrey_utkin/distfiles/${P}.tar.xz"
 	else
 		SRC_URI+=" https://w1.fi/releases/${P}.tar.gz"
 	fi
+
 	# Never stabilize snapshot ebuilds please
 	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~x86"
 fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="internal-tls ipv6 libressl logwatch netlink sqlite +suiteb +wps +crda"
-
-# suiteb impl uses openssl feature not available in libressl, see bug 710992
-REQUIRED_USE="?? ( libressl suiteb )"
+IUSE="internal-tls ipv6 netlink sqlite +suiteb +wps +crda"
 
 DEPEND="
-	libressl? ( dev-libs/libressl:0= )
-	!libressl? (
-		internal-tls? ( dev-libs/libtommath )
-		!internal-tls? ( dev-libs/openssl:0=[-bindist] )
-	)
+	internal-tls? ( dev-libs/libtommath )
+	!internal-tls? ( dev-libs/openssl:0=[-bindist(-)] )
 	kernel_linux? (
-		dev-libs/libnl:3
+		>=dev-libs/libnl-3.2:3
 		crda? ( net-wireless/crda )
 	)
 	netlink? ( net-libs/libnfnetlink )
 	sqlite? ( >=dev-db/sqlite-3 )"
-
 RDEPEND="${DEPEND}"
-
-S="${S}/${PN}"
+BDEPEND="virtual/pkgconfig"
 
 pkg_pretend() {
 	if use internal-tls; then
-		if use libressl; then
-			elog "libressl flag takes precedence over internal-tls"
-		else
-			ewarn "internal-tls implementation is experimental and provides fewer features"
-		fi
+		ewarn "internal-tls implementation is experimental and provides fewer features"
 	fi
 }
 
 src_unpack() {
 	# Override default one because we need the SRC_URI ones even in case of 9999 ebuilds
 	default
+
 	if [[ ${PV} == 9999 ]] ; then
 		git-r3_src_unpack
 	fi
@@ -78,132 +69,131 @@ src_prepare() {
 }
 
 src_configure() {
-	local CONFIG="${S}/.config"
+	local CONFIG="${S}"/.config
 
 	restore_config "${CONFIG}"
 	if [[ -f "${CONFIG}" ]]; then
-		default_src_configure
+		default
 		return 0
 	fi
 
 	# toolchain setup
-	echo "CC = $(tc-getCC)" > ${CONFIG}
+	echo "CC = $(tc-getCC)" > ${CONFIG} || die
 
 	# EAP authentication methods
-	echo "CONFIG_EAP=y" >> ${CONFIG}
-	echo "CONFIG_ERP=y" >> ${CONFIG}
-	echo "CONFIG_EAP_MD5=y" >> ${CONFIG}
-	echo "CONFIG_SAE=y" >> ${CONFIG}
-	echo "CONFIG_OWE=y" >> ${CONFIG}
-	echo "CONFIG_DPP=y" >> ${CONFIG}
+	echo "CONFIG_EAP=y" >> ${CONFIG} || die
+	echo "CONFIG_ERP=y" >> ${CONFIG} || die
+	echo "CONFIG_EAP_MD5=y" >> ${CONFIG} || die
 
 	if use suiteb; then
-		echo "CONFIG_SUITEB=y" >> ${CONFIG}
-		echo "CONFIG_SUITEB192=y" >> ${CONFIG}
+		echo "CONFIG_SUITEB=y" >> ${CONFIG} || die
+		echo "CONFIG_SUITEB192=y" >> ${CONFIG} || die
 	fi
 
-	if use internal-tls && ! use libressl; then
-		echo "CONFIG_TLS=internal" >> ${CONFIG}
+	if use internal-tls ; then
+		echo "CONFIG_TLS=internal" >> ${CONFIG} || die
 	else
 		# SSL authentication methods
-		echo "CONFIG_EAP_FAST=y" >> ${CONFIG}
-		echo "CONFIG_EAP_TLS=y" >> ${CONFIG}
-		echo "CONFIG_EAP_TTLS=y" >> ${CONFIG}
-		echo "CONFIG_EAP_MSCHAPV2=y" >> ${CONFIG}
-		echo "CONFIG_EAP_PEAP=y" >> ${CONFIG}
-		echo "CONFIG_TLSV11=y" >> ${CONFIG}
-		echo "CONFIG_TLSV12=y" >> ${CONFIG}
-		echo "CONFIG_EAP_PWD=y" >> ${CONFIG}
+		echo "CONFIG_DPP=y" >> ${CONFIG} || die
+		echo "CONFIG_EAP_FAST=y" >> ${CONFIG} || die
+		echo "CONFIG_EAP_MSCHAPV2=y" >> ${CONFIG} || die
+		echo "CONFIG_EAP_PEAP=y" >> ${CONFIG} || die
+		echo "CONFIG_EAP_PWD=y" >> ${CONFIG} || die
+		echo "CONFIG_EAP_TLS=y" >> ${CONFIG} || die
+		echo "CONFIG_EAP_TTLS=y" >> ${CONFIG} || die
+		echo "CONFIG_OWE=y" >> ${CONFIG} || die
+		echo "CONFIG_SAE=y" >> ${CONFIG} || die
+		echo "CONFIG_TLSV11=y" >> ${CONFIG} || die
+		echo "CONFIG_TLSV12=y" >> ${CONFIG} || die
 	fi
 
 	if use wps; then
 		# Enable Wi-Fi Protected Setup
-		echo "CONFIG_WPS=y" >> ${CONFIG}
-		echo "CONFIG_WPS2=y" >> ${CONFIG}
-		echo "CONFIG_WPS_UPNP=y" >> ${CONFIG}
-		echo "CONFIG_WPS_NFC=y" >> ${CONFIG}
+		echo "CONFIG_WPS=y" >> ${CONFIG} || die
+		echo "CONFIG_WPS2=y" >> ${CONFIG} || die
+		echo "CONFIG_WPS_UPNP=y" >> ${CONFIG} || die
+		echo "CONFIG_WPS_NFC=y" >> ${CONFIG} || die
 		einfo "Enabling Wi-Fi Protected Setup support"
 	fi
 
-	echo "CONFIG_EAP_IKEV2=y" >> ${CONFIG}
-	echo "CONFIG_EAP_TNC=y" >> ${CONFIG}
-	echo "CONFIG_EAP_GTC=y" >> ${CONFIG}
-	echo "CONFIG_EAP_SIM=y" >> ${CONFIG}
-	echo "CONFIG_EAP_AKA=y" >> ${CONFIG}
-	echo "CONFIG_EAP_AKA_PRIME=y" >> ${CONFIG}
-	echo "CONFIG_EAP_EKE=y" >> ${CONFIG}
-	echo "CONFIG_EAP_PAX=y" >> ${CONFIG}
-	echo "CONFIG_EAP_PSK=y" >> ${CONFIG}
-	echo "CONFIG_EAP_SAKE=y" >> ${CONFIG}
-	echo "CONFIG_EAP_GPSK=y" >> ${CONFIG}
-	echo "CONFIG_EAP_GPSK_SHA256=y" >> ${CONFIG}
+	echo "CONFIG_EAP_IKEV2=y" >> ${CONFIG} || die
+	echo "CONFIG_EAP_TNC=y" >> ${CONFIG} || die
+	echo "CONFIG_EAP_GTC=y" >> ${CONFIG} || die
+	echo "CONFIG_EAP_SIM=y" >> ${CONFIG} || die
+	echo "CONFIG_EAP_AKA=y" >> ${CONFIG} || die
+	echo "CONFIG_EAP_AKA_PRIME=y" >> ${CONFIG} || die
+	echo "CONFIG_EAP_EKE=y" >> ${CONFIG} || die
+	echo "CONFIG_EAP_PAX=y" >> ${CONFIG} || die
+	echo "CONFIG_EAP_PSK=y" >> ${CONFIG} || die
+	echo "CONFIG_EAP_SAKE=y" >> ${CONFIG} || die
+	echo "CONFIG_EAP_GPSK=y" >> ${CONFIG} || die
+	echo "CONFIG_EAP_GPSK_SHA256=y" >> ${CONFIG} || die
 
 	einfo "Enabling drivers: "
 
 	# drivers
-	echo "CONFIG_DRIVER_HOSTAP=y" >> ${CONFIG}
+	echo "CONFIG_DRIVER_HOSTAP=y" >> ${CONFIG} || die
 	einfo "  HostAP driver enabled"
-	echo "CONFIG_DRIVER_WIRED=y" >> ${CONFIG}
+	echo "CONFIG_DRIVER_WIRED=y" >> ${CONFIG} || die
 	einfo "  Wired driver enabled"
-	echo "CONFIG_DRIVER_NONE=y" >> ${CONFIG}
+	echo "CONFIG_DRIVER_NONE=y" >> ${CONFIG} || die
 	einfo "  None driver enabled"
 
 	einfo "  nl80211 driver enabled"
-	echo "CONFIG_DRIVER_NL80211=y" >> ${CONFIG}
+	echo "CONFIG_DRIVER_NL80211=y" >> ${CONFIG} || die
 
 	# epoll
-	echo "CONFIG_ELOOP_EPOLL=y" >> ${CONFIG}
+	echo "CONFIG_ELOOP_EPOLL=y" >> ${CONFIG} || die
 
 	# misc
-	echo "CONFIG_DEBUG_FILE=y" >> ${CONFIG}
-	echo "CONFIG_PKCS12=y" >> ${CONFIG}
-	echo "CONFIG_RADIUS_SERVER=y" >> ${CONFIG}
-	echo "CONFIG_IAPP=y" >> ${CONFIG}
-	echo "CONFIG_IEEE80211R=y" >> ${CONFIG}
-	echo "CONFIG_IEEE80211W=y" >> ${CONFIG}
-	echo "CONFIG_IEEE80211N=y" >> ${CONFIG}
-	echo "CONFIG_IEEE80211AC=y" >> ${CONFIG}
-	echo "CONFIG_PEERKEY=y" >> ${CONFIG}
-	echo "CONFIG_RSN_PREAUTH=y" >> ${CONFIG}
-	echo "CONFIG_INTERWORKING=y" >> ${CONFIG}
-	echo "CONFIG_FULL_DYNAMIC_VLAN=y" >> ${CONFIG}
-	echo "CONFIG_HS20=y" >> ${CONFIG}
-	echo "CONFIG_WNM=y" >> ${CONFIG}
-	echo "CONFIG_FST=y" >> ${CONFIG}
-	echo "CONFIG_FST_TEST=y" >> ${CONFIG}
-	echo "CONFIG_ACS=y" >> ${CONFIG}
+	echo "CONFIG_DEBUG_FILE=y" >> ${CONFIG} || die
+	echo "CONFIG_PKCS12=y" >> ${CONFIG} || die
+	echo "CONFIG_RADIUS_SERVER=y" >> ${CONFIG} || die
+	echo "CONFIG_IAPP=y" >> ${CONFIG} || die
+	echo "CONFIG_IEEE80211R=y" >> ${CONFIG} || die
+	echo "CONFIG_IEEE80211W=y" >> ${CONFIG} || die
+	echo "CONFIG_IEEE80211N=y" >> ${CONFIG} || die
+	echo "CONFIG_IEEE80211AC=y" >> ${CONFIG} || die
+	echo "CONFIG_OCV=y" >> ${CONFIG} || die
+	echo "CONFIG_PEERKEY=y" >> ${CONFIG} || die
+	echo "CONFIG_RSN_PREAUTH=y" >> ${CONFIG} || die
+	echo "CONFIG_INTERWORKING=y" >> ${CONFIG} || die
+	echo "CONFIG_FULL_DYNAMIC_VLAN=y" >> ${CONFIG} || die
+	echo "CONFIG_HS20=y" >> ${CONFIG} || die
+	echo "CONFIG_WNM=y" >> ${CONFIG} || die
+	echo "CONFIG_FST=y" >> ${CONFIG} || die
+	echo "CONFIG_FST_TEST=y" >> ${CONFIG} || die
+	echo "CONFIG_ACS=y" >> ${CONFIG} || die
 
 	if use netlink; then
 		# Netlink support
-		echo "CONFIG_VLAN_NETLINK=y" >> ${CONFIG}
+		echo "CONFIG_VLAN_NETLINK=y" >> ${CONFIG} || die
 	fi
 
 	if use ipv6; then
 		# IPv6 support
-		echo "CONFIG_IPV6=y" >> ${CONFIG}
+		echo "CONFIG_IPV6=y" >> ${CONFIG} || die
 	fi
 
 	if use sqlite; then
 		# Sqlite support
-		echo "CONFIG_SQLITE=y" >> ${CONFIG}
+		echo "CONFIG_SQLITE=y" >> ${CONFIG} || die
 	fi
 
-	# If we are using libnl 2.0 and above, enable support for it
-	# Removed for now, since the 3.2 version is broken, and we don't
-	# support it.
-	if has_version ">=dev-libs/libnl-3.2"; then
-		echo "CONFIG_LIBNL32=y" >> .config
+	if use kernel_linux; then
+		echo "CONFIG_LIBNL32=y" >> ${CONFIG} || die
+		append-cflags $($(tc-getPKG_CONFIG) --cflags libnl-3.0)
 	fi
 
 	# TODO: Add support for BSD drivers
 
-	default_src_configure
+	default
 }
 
 src_compile() {
 	emake V=1
 
-	if use libressl || ! use internal-tls; then
+	if ! use internal-tls; then
 		emake V=1 nt_password_hash
 		emake V=1 hlr_auc_gw
 	fi
@@ -218,7 +208,7 @@ src_install() {
 	dosbin ${PN}
 	dobin ${PN}_cli
 
-	if use libressl || ! use internal-tls; then
+	if ! use internal-tls; then
 		dobin nt_password_hash hlr_auc_gw
 	fi
 
@@ -234,20 +224,18 @@ src_install() {
 	docinto examples
 	dodoc wired.conf
 
-	if use logwatch; then
-		insinto /etc/log.d/conf/services/
-		doins logwatch/${PN}.conf
+	insinto /etc/log.d/conf/services/
+	doins logwatch/${PN}.conf
 
-		exeinto /etc/log.d/scripts/services/
-		doexe logwatch/${PN}
-	fi
+	exeinto /etc/log.d/scripts/services/
+	doexe logwatch/${PN}
 
 	save_config .config
 }
 
 pkg_postinst() {
 	einfo
-	einfo "If you are running openRC you need to follow this instructions:"
+	einfo "If you are running OpenRC you need to follow this instructions:"
 	einfo "In order to use ${PN} you need to set up your wireless card"
 	einfo "for master mode in /etc/conf.d/net and then start"
 	einfo "/etc/init.d/${PN}."
@@ -259,7 +247,8 @@ pkg_postinst() {
 	einfo "essid_wlan0=\"test\""
 	einfo "mode_wlan0=\"master\""
 	einfo
-	#if [ -e "${KV_DIR}"/net/mac80211 ]; then
+
+	#if [[ -e "${KV_DIR}"/net/mac80211 ]]; then
 	#	einfo "This package now compiles against the headers installed by"
 	#	einfo "the kernel source for the mac80211 driver. You should "
 	#	einfo "re-emerge ${PN} after upgrading your kernel source."
@@ -267,7 +256,7 @@ pkg_postinst() {
 
 	if use wps; then
 		einfo "You have enabled Wi-Fi Protected Setup support, please"
-		einfo "read the README-WPS file in /usr/share/doc/${P}"
+		einfo "read the README-WPS file in /usr/share/doc/${PF}"
 		einfo "for info on how to use WPS"
 	fi
 }

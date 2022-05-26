@@ -1,6 +1,5 @@
-diff -ruN mtink-1.0.16.orig/Makefile.ORG mtink-1.0.16/Makefile.ORG
---- mtink-1.0.16.orig/Makefile.ORG	2007-08-28 12:52:30.000000000 +0200
-+++ mtink-1.0.16/Makefile.ORG	2017-01-29 18:09:40.550182789 +0100
+--- a/Makefile.ORG
++++ b/Makefile.ORG
 @@ -4,7 +4,7 @@
  setUid=1
  gimpVersion=

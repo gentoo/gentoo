@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,21 +12,16 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/libs/ell/ell.git"
 else
 	SRC_URI="https://mirrors.edge.kernel.org/pub/linux/libs/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 LICENSE="LGPL-2.1"
 SLOT="0"
 
-IUSE="glib pie test"
+IUSE="pie test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	glib? ( dev-libs/glib:2[${MULTILIB_USEDEP}] )
-"
-DEPEND="
-	${RDEPEND}
-	test? ( sys-apps/dbus )
-"
+RDEPEND=""
+DEPEND="test? ( sys-apps/dbus )"
 
 CONFIG_CHECK="
 	~TIMERFD
@@ -46,7 +41,6 @@ src_prepare() {
 multilib_src_configure() {
 	append-cflags "-fsigned-char" #662694
 	local myeconfargs=(
-		$(use_enable glib)
 		$(use_enable pie)
 	)
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"

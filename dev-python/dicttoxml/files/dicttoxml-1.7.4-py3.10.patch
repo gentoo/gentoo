@@ -1,0 +1,58 @@
+From 2b7b4522b7255fbc8f1e04304d2e440d333909d5 Mon Sep 17 00:00:00 2001
+From: Kier von Konigslow <kvonkonigslow@gmail.com>
+Date: Sat, 28 Dec 2019 14:08:46 -0500
+Subject: [PATCH] Fix deprecation with collections abc
+
+---
+ dicttoxml.py | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/dicttoxml.py b/dicttoxml.py
+index ae1384a..5d2dd54 100755
+--- a/dicttoxml.py
++++ b/dicttoxml.py
+@@ -15,7 +15,7 @@
+ version = __version__
+ 
+ from random import randint
+-import collections
++import collections.abc
+ import numbers
+ import logging
+ from xml.dom.minidom import parseString
+@@ -96,7 +96,7 @@ def get_xml_type(val):
+         return 'null'
+     if isinstance(val, dict):
+         return 'dict'
+-    if isinstance(val, collections.Iterable):
++    if isinstance(val, collections.abc.Iterable):
+         return 'list'
+     return type(val).__name__
+ 
+@@ -188,7 +188,7 @@ def convert(obj, ids, attr_type, item_func, cdata, parent='root'):
+     if isinstance(obj, dict):
+         return convert_dict(obj, ids, parent, attr_type, item_func, cdata)
+         
+-    if isinstance(obj, collections.Iterable):
++    if isinstance(obj, collections.abc.Iterable):
+         return convert_list(obj, ids, parent, attr_type, item_func, cdata)
+         
+     raise TypeError('Unsupported data type: %s (%s)' % (obj, type(obj).__name__))
+@@ -232,7 +232,7 @@ def convert_dict(obj, ids, parent, attr_type, item_func, cdata):
+                 )
+             )
+ 
+-        elif isinstance(val, collections.Iterable):
++        elif isinstance(val, collections.abc.Iterable):
+             if attr_type:
+                 attr['type'] = get_xml_type(val)
+             addline('<%s%s>%s</%s>' % (
+@@ -295,7 +295,7 @@ def convert_list(items, ids, parent, attr_type, item_func, cdata):
+                     )
+                 )
+ 
+-        elif isinstance(item, collections.Iterable):
++        elif isinstance(item, collections.abc.Iterable):
+             if not attr_type:
+                 addline('<%s %s>%s</%s>' % (
+                     item_name, make_attrstring(attr), 

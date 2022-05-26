@@ -1,0 +1,26 @@
+Taken from: https://sources.debian.org/patches/pnm2ppa/1.13-10/0005-Declare-syslog_message-correctly-for-GCC-10-FTBFS.patch
+Author: Zdenek Dohnal <zdohnal@redhat.com>
+--- a/ppa_syslog.h
++++ b/ppa_syslog.h
+@@ -39,7 +39,7 @@
+ #include <syslog.h>
+ #endif
+ 
+-char syslog_message[128];
++extern char syslog_message[128];
+ extern size_t message_size ;
+ 
+ void wrap_syslog( int, char *, char *);
+diff --git a/syslog.c b/syslog.c
+index 9b11c55..dccab91 100644
+--- a/syslog.c
++++ b/syslog.c
+@@ -31,6 +31,8 @@
+ #include "ppa_syslog.h"
+ #include "global.h"
+ 
++char syslog_message[128];
++
+ BOOLEAN verbose = false ;
+ 
+ /*

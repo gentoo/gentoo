@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
     <email>voyageur@gentoo.org</email>
@@ -16,9 +16,7 @@
     <remote-id type="github">tesseract-ocr/tesseract</remote-id>
   </upstream>
   <use>
-    <flag name="math"> Enable support for recognition of equations.</flag>
-    <flag name="scrollview"> Install viewer to debug recognition (ScrollView).</flag>
-    <flag name="osd"> Enable support orientation and script detection.</flag>
+    <flag name="float32">Support float for model training and text recognition (faster, requires less RAM)</flag>
     <flag name="opencl">Enable opencl support for speedup using GPU computation.</flag>
     <flag name="training">Install training applications to add support for new languages.</flag>
   </use>

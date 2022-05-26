@@ -1,8 +1,8 @@
-# Copyright 2010-2020 Gentoo Authors
+# Copyright 2010-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=(python{3_6,3_7,3_8})
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit elisp-common multiprocessing python-any-r1 toolchain-funcs
 
@@ -13,9 +13,16 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_SUBMODULES=(src/third_party/japanese_usage_dictionary)
 else
 	MOZC_GIT_REVISION=""
+	MOZC_DATE="${PV#*_p}"
+	MOZC_DATE="${MOZC_DATE%%_p*}"
+
+	FCITX_MOZC_GIT_REVISION=""
+	FCITX_MOZC_DATE="${PV#*_p}"
+	FCITX_MOZC_DATE="${FCITX_MOZC_DATE#*_p}"
+	FCITX_MOZC_DATE="${FCITX_MOZC_DATE%%_p*}"
+
 	JAPANESE_USAGE_DICTIONARY_GIT_REVISION=""
 	JAPANESE_USAGE_DICTIONARY_DATE=""
-	FCITX_PATCH_VERSION=""
 fi
 
 DESCRIPTION="Mozc - Japanese input method editor"
@@ -23,9 +30,9 @@ HOMEPAGE="https://github.com/google/mozc"
 if [[ "${PV}" == "9999" ]]; then
 	SRC_URI=""
 else
-	SRC_URI="https://github.com/google/${PN}/archive/${MOZC_GIT_REVISION}.tar.gz -> ${P}.tar.gz
+	SRC_URI="https://github.com/google/${PN}/archive/${MOZC_GIT_REVISION}.tar.gz -> ${PN}-${PV%%_p*}-${MOZC_DATE}.tar.gz
 		https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/${JAPANESE_USAGE_DICTIONARY_GIT_REVISION}.tar.gz -> japanese-usage-dictionary-${JAPANESE_USAGE_DICTIONARY_DATE}.tar.gz
-		fcitx4? ( https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${FCITX_PATCH_VERSION}.patch )"
+		fcitx4? ( https://github.com/fcitx/${PN}/archive/${FCITX_MOZC_GIT_REVISION}.tar.gz -> fcitx-${PN}-${PV%%_p*}-${FCITX_MOZC_DATE}.tar.gz )"
 fi
 
 # Mozc: BSD
@@ -35,30 +42,54 @@ fi
 LICENSE="BSD BSD-2 ipadic public-domain unicode"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug emacs fcitx4 +gui +handwriting-tegaki handwriting-tomoe ibus renderer test"
-REQUIRED_USE="|| ( emacs fcitx4 ibus ) gui? ( ^^ ( handwriting-tegaki handwriting-tomoe ) ) !gui? ( !handwriting-tegaki !handwriting-tomoe )"
+IUSE="debug emacs fcitx4 +gui ibus renderer test"
+REQUIRED_USE="|| ( emacs fcitx4 ibus )"
 RESTRICT="!test? ( test )"
 
-BDEPEND="${PYTHON_DEPS}
+BDEPEND="$(python_gen_any_dep 'dev-python/six[${PYTHON_USEDEP}]')
 	>=dev-libs/protobuf-3.0.0
 	dev-util/gyp
 	dev-util/ninja
 	virtual/pkgconfig
 	emacs? ( app-editors/emacs:* )
 	fcitx4? ( sys-devel/gettext )"
-RDEPEND=">=dev-libs/protobuf-3.0.0:=
+DEPEND=">=dev-cpp/abseil-cpp-20200923[cxx17(+)]
+	>=dev-libs/protobuf-3.0.0:=
+	fcitx4? (
+		app-i18n/fcitx:4
+		virtual/libintl
+	)
+	gui? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+	)
+	ibus? (
+		>=app-i18n/ibus-1.4.1
+		dev-libs/glib:2
+		x11-libs/libxcb
+	)
+	renderer? (
+		dev-libs/glib:2
+		x11-libs/cairo
+		x11-libs/gtk+:2
+		x11-libs/pango
+	)
+	test? (
+		>=dev-cpp/gtest-1.8.0
+		dev-libs/jsoncpp
+	)"
+RDEPEND=">=dev-cpp/abseil-cpp-20200923[cxx17(+)]
+	>=dev-libs/protobuf-3.0.0:=
 	emacs? ( app-editors/emacs:* )
 	fcitx4? (
 		app-i18n/fcitx:4
 		virtual/libintl
 	)
 	gui? (
-		app-i18n/zinnia
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
-		handwriting-tegaki? ( app-i18n/tegaki-zinnia-japanese )
-		handwriting-tomoe? ( app-i18n/zinnia-tomoe )
 	)
 	ibus? (
 		>=app-i18n/ibus-1.4.1
@@ -71,11 +102,6 @@ RDEPEND=">=dev-libs/protobuf-3.0.0:=
 		x11-libs/gtk+:2
 		x11-libs/pango
 	)"
-DEPEND="${RDEPEND}
-	test? (
-		>=dev-cpp/gtest-1.8.0
-		dev-libs/jsoncpp
-	)"
 
 S="${WORKDIR}/${P}/src"
 
@@ -84,6 +110,10 @@ SITEFILE="50${PN}-gentoo.el"
 execute() {
 	einfo "$@"
 	"$@"
+}
+
+python_check_deps() {
+	has_version -b "dev-python/six[${PYTHON_USEDEP}]"
 }
 
 src_unpack() {
@@ -96,55 +126,48 @@ src_unpack() {
 			git-r3_checkout https://github.com/fcitx/mozc "${WORKDIR}/fcitx-mozc"
 		fi
 	else
-		unpack ${P}.tar.gz
+		unpack ${PN}-${PV%%_p*}-${MOZC_DATE}.tar.gz
 		mv mozc-${MOZC_GIT_REVISION} ${P} || die
 
 		unpack japanese-usage-dictionary-${JAPANESE_USAGE_DICTIONARY_DATE}.tar.gz
 		cp -p japanese-usage-dictionary-${JAPANESE_USAGE_DICTIONARY_GIT_REVISION}/usage_dict.txt ${P}/src/third_party/japanese_usage_dictionary || die
+
+		if use fcitx4; then
+			unpack fcitx-${PN}-${PV%%_p*}-${FCITX_MOZC_DATE}.tar.gz
+			mv mozc-${FCITX_MOZC_GIT_REVISION} fcitx-${PN}
+		fi
 	fi
 }
 
 src_prepare() {
-	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-python-3_1.patch"
-	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-python-3_2.patch"
-	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-python-3_3.patch"
-	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-python-3_4.patch"
-	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-system_libraries.patch"
-	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-gcc-8.patch"
-	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-protobuf_generated_classes_no_inheritance.patch"
-	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-environmental_variables.patch"
-	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-reiwa.patch"
-	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-server_path_check.patch"
-	eapply -p2 "${FILESDIR}/${PN}-2.20.2673.102-tests_build.patch"
-	eapply -p2 "${FILESDIR}/${PN}-2.20.2673.102-tests_skipping.patch"
-
 	if use fcitx4; then
-		if [[ "${PV}" == "9999" ]]; then
-			cp -pr "${WORKDIR}/fcitx-mozc/src/unix/fcitx" unix || die
-		else
-			eapply -p2 "${DISTDIR}/fcitx-mozc-${FCITX_PATCH_VERSION}.patch"
-		fi
+		cp -pr "${WORKDIR}/fcitx-mozc/src/unix/fcitx" unix || die
 	fi
 
+	pushd "${WORKDIR}/${P}" > /dev/null || die
+
+	eapply "${FILESDIR}/${PN}-2.26.4220-system_abseil-cpp.patch"
+	eapply "${FILESDIR}/${PN}-2.26.4220-system_gtest.patch"
+	eapply "${FILESDIR}/${PN}-2.26.4220-system_jsoncpp.patch"
+	eapply "${FILESDIR}/${PN}-2.26.4220-environmental_variables.patch"
+	eapply "${FILESDIR}/${PN}-2.26.4220-server_path_check.patch"
+
 	eapply_user
+
+	popd > /dev/null || die
 
 	sed \
 		-e "s/def GypMain(options, unused_args):/def GypMain(options, gyp_args):/" \
 		-e "s/RunOrDie(gyp_command + gyp_options)/RunOrDie(gyp_command + gyp_options + gyp_args)/" \
-		-e "s/RunOrDie(\[ninja/&, '-j$(makeopts_jobs)', '-l$(makeopts_loadavg "${MAKEOPTS}" 0)', '-v'/" \
+		-e "s/RunOrDie(\[ninja/&, '-j$(makeopts_jobs "${MAKEOPTS}" 999)', '-l$(makeopts_loadavg "${MAKEOPTS}" 0)', '-v'/" \
 		-i build_mozc.py || die
-
-	sed \
-		-e "s/'release_extra_cflags%': \['-O2'\]/'release_extra_cflags%': []/" \
-		-e "s/'debug_extra_cflags%': \['-O0', '-g'\]/'debug_extra_cflags%': []/" \
-		-i gyp/common.gypi || die
 
 	local ar=($(tc-getAR))
 	local cc=($(tc-getCC))
 	local cxx=($(tc-getCXX))
 	local ld=($(tc-getLD))
 	local nm=($(tc-getNM))
-	local readelf=($(tc-getPROG READELF readelf))
+	local readelf=($(tc-getREADELF))
 
 	# Use absolute paths. Non-absolute paths are mishandled by GYP.
 	ar[0]=$(type -P ${ar[0]})
@@ -161,6 +184,12 @@ src_prepare() {
 		-e "s:<!(which ld):${ld[@]}:" \
 		-e "s:<!(which nm):${nm[@]}:" \
 		-e "s:<!(which readelf):${readelf[@]}:" \
+		-i gyp/common.gypi || die
+
+	# https://github.com/google/mozc/issues/489
+	sed \
+		-e "/'-lc++'/d" \
+		-e "/'-stdlib=libc++'/d" \
 		-i gyp/common.gypi || die
 }
 
@@ -181,22 +210,19 @@ src_configure() {
 		gyp_arguments+=(-D compiler_host=unknown -D compiler_target=unknown)
 	fi
 
+	gyp_arguments+=(-D debug_extra_cflags=)
+	gyp_arguments+=(-D release_extra_cflags=)
+
 	gyp_arguments+=(-D use_fcitx=$(usex fcitx4 YES NO))
-	gyp_arguments+=(-D use_libgtest=$(usex test 1 0))
 	gyp_arguments+=(-D use_libibus=$(usex ibus 1 0))
-	gyp_arguments+=(-D use_libjsoncpp=$(usex test 1 0))
 	gyp_arguments+=(-D use_libprotobuf=1)
-	gyp_arguments+=(-D use_libzinnia=$(usex gui 1 0))
+	gyp_arguments+=(-D use_system_abseil_cpp=1)
+	gyp_arguments+=(-D use_system_gtest=$(usex test 1 0))
+	gyp_arguments+=(-D use_system_jsoncpp=$(usex test 1 0))
 	gyp_arguments+=(-D enable_gtk_renderer=$(usex renderer 1 0))
 
 	gyp_arguments+=(-D server_dir="${EPREFIX}/usr/libexec/mozc")
 	gyp_arguments+=(-D document_dir="${EPREFIX}/usr/libexec/mozc/documents")
-
-	if use handwriting-tegaki; then
-		gyp_arguments+=(-D zinnia_model_file="${EPREFIX}/usr/share/tegaki/models/zinnia/handwriting-ja.model")
-	elif use handwriting-tomoe; then
-		gyp_arguments+=(-D zinnia_model_file="${EPREFIX}/usr/$(get_libdir)/zinnia/model/tomoe/handwriting-ja.model")
-	fi
 
 	if use ibus; then
 		gyp_arguments+=(-D ibus_mozc_path="${EPREFIX}/usr/libexec/ibus-engine-mozc")
@@ -279,8 +305,8 @@ src_install() {
 		insinto /usr/share/fcitx/mozc/icon
 		newins data/images/product_icon_32bpp-128.png mozc.png
 		local image
-		for image in data/images/unix/ui-*.png; do
-			newins "${image}" "mozc-${image#data/images/unix/ui-}"
+		for image in ../../fcitx-${PN}/src/data/images/unix/ui-*.png; do
+			newins "${image}" "mozc-${image#../../fcitx-${PN}/src/data/images/unix/ui-}"
 		done
 
 		local locale mo_file
@@ -321,18 +347,6 @@ pkg_postinst() {
 	elog "MOZC_CONFIGURATION_DIRECTORY"
 	elog "  Mozc configuration directory"
 	elog "  Value used by default: \"~/.mozc\""
-	if use gui; then
-		elog "MOZC_ZINNIA_MODEL_FILE"
-		elog "  Zinnia handwriting recognition model file"
-		if use handwriting-tegaki; then
-			elog "  Value used by default: \"${EPREFIX}/usr/share/tegaki/models/zinnia/handwriting-ja.model\""
-		elif use handwriting-tomoe; then
-			elog "  Value used by default: \"${EPREFIX}/usr/$(get_libdir)/zinnia/model/tomoe/handwriting-ja.model\""
-		fi
-		elog "  Potential values:"
-		elog "    \"${EPREFIX}/usr/share/tegaki/models/zinnia/handwriting-ja.model\""
-		elog "    \"${EPREFIX}/usr/$(get_libdir)/zinnia/model/tomoe/handwriting-ja.model\""
-	fi
 	elog
 	if use emacs; then
 		elog

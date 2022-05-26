@@ -1,0 +1,26 @@
+From d2af3bc375e2a77139c3a28d6128c60cd8d08655 Mon Sep 17 00:00:00 2001
+From: Michael Forney <mforney@mforney.org>
+Date: Sun, 4 Apr 2021 03:50:09 -0700
+Subject: [PATCH] parse: Check for non-empty command/rspfile/rspfile_content
+
+This matches ninja behavior and prevents the possibility of a rule
+with an empty (NULL) command string.
+
+Fixes #68.
+---
+ parse.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/parse.c b/parse.c
+index f79a5ee..b4b98a1 100644
+--- a/parse.c
++++ b/parse.c
+@@ -42,6 +42,8 @@ parserule(struct scanner *s, struct environment *env)
+ 		var = scanname(s);
+ 		parselet(s, &val);
+ 		ruleaddvar(r, var, val);
++		if (!val)
++			continue;
+ 		if (strcmp(var, "command") == 0)
+ 			hascommand = true;
+ 		else if (strcmp(var, "rspfile") == 0)

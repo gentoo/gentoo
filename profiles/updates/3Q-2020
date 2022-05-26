@@ -44,7 +44,6 @@ move app-dicts/sword-geneva app-dicts/sword-Geneva
 move app-dicts/sword-geneva1599 app-dicts/sword-Geneva1599
 move app-dicts/sword-gerelb1871 app-dicts/sword-GerElb1871
 move app-dicts/sword-gerelb1905 app-dicts/sword-GerElb1905
-move app-dicts/sword-gerlut1545 app-dicts/sword-GerLut1545
 move app-dicts/sword-gersch app-dicts/sword-GerSch
 move app-dicts/sword-greekhebrew app-dicts/sword-GreekHebrew
 move app-dicts/sword-hebrewgreek app-dicts/sword-HebrewGreek
@@ -127,7 +126,6 @@ move app-dicts/sword-wlc app-dicts/sword-WLC
 move app-dicts/sword-wulfila app-dicts/sword-Wulfila
 move app-dicts/sword-wycliffe app-dicts/sword-Wycliffe
 move app-dicts/sword-ylt app-dicts/sword-YLT
-move dev-python/pyicu dev-python/PyICU
 move app-dicts/sword-Cro app-dicts/sword-CroSaric
 move app-dicts/sword-FarsiOPV app-dicts/sword-FarOPV
 move app-dicts/sword-FreMartin app-dicts/sword-FreBDM1744
@@ -144,3 +142,5 @@ slotmove <media-sound/teamspeak-client-5 0 3
 slotmove dev-haskell/network 3 0
 move sci-libs/scipy dev-python/scipy
 move dev-perl/frontier-rpc dev-perl/Frontier-RPC
+move sci-libs/Rtree sci-libs/rtree
+move sci-libs/Shapely sci-libs/shapely

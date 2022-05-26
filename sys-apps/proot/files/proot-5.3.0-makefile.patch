@@ -1,0 +1,11 @@
+--- a/src/GNUmakefile	2022-01-21 11:40:00.957743804 +0300
++++ b/src/GNUmakefile	2022-01-21 11:40:34.876741798 +0300
+@@ -21,8 +21,8 @@
+ HAS_PYTHON_CONFIG := $(shell ${PYTHON}-config --ldflags ${PYTHON_EMBED} 2>/dev/null)
+ 
+ CPPFLAGS += -D_FILE_OFFSET_BITS=64 -D_GNU_SOURCE -I. -I$(VPATH)
+-CFLAGS   += -g -Wall -Wextra -O2
++CFLAGS   += -Wall -Wextra
+ CFLAGS   += $(shell pkg-config --cflags talloc libarchive)
+ LDFLAGS  += -Wl,-z,noexecstack
+ LDFLAGS  += $(shell pkg-config --libs talloc libarchive)

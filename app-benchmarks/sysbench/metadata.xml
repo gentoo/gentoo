@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>hydrapolic@gmail.com</email>
-		<name>Tomáš Mózes</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
 	</maintainer>
 	<use>
-		<flag name="aio">Enable libaio support</flag>
+		<flag name="aio">Add support for AIO.</flag>
+		<flag name="attachsql">Add support for AttachSQL.</flag>
+		<flag name="drizzle">Add support for Drizzles.</flag>
+		<flag name="largefile">Add support for large files.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">akopytov/sysbench</remote-id>

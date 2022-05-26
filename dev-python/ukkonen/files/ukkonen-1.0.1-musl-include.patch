@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/828871
+https://github.com/asottile/ukkonen/commit/1b2aa2833b08e00279ff77612e82dad152eb3c14.patch
+
+From: Joonas Niilola <juippis@gentoo.org>
+Date: Sat, 11 Dec 2021 10:39:16 +0200
+Subject: [PATCH] _ukkonen.cpp: add #include <cstdint>
+
+--- a/_ukkonen.cpp
++++ b/_ukkonen.cpp
+@@ -1,4 +1,5 @@
+ #include <algorithm>
++#include <cstdint>
+ #include <vector>
+ 
+ template <typename T> int64_t edit_distance_k_impl(

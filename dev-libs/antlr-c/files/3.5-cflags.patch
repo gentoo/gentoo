@@ -1,6 +1,5 @@
-diff -ur libantlr3c-3.3-SNAPSHOT.old//configure.ac libantlr3c-3.3-SNAPSHOT/configure.ac
---- libantlr3c-3.3-SNAPSHOT.old//configure.ac	2011-04-03 10:40:51.277000042 +0300
-+++ libantlr3c-3.3-SNAPSHOT/configure.ac	2011-04-03 10:41:22.092000042 +0300
+--- a/configure.ac
++++ b/configure.ac
 @@ -134,8 +134,8 @@
   ;;
  esac

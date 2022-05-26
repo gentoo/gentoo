@@ -1,6 +1,5 @@
-diff -ru xfreecellg/card.cpp xfreecell/card.cpp
---- xfreecellg/card.cpp	1999-03-27 05:36:28.000000000 -0800
-+++ xfreecell/card.cpp	2004-02-25 02:17:24.000000000 -0800
+--- a/card.cpp
++++ b/card.cpp
 @@ -119,7 +119,7 @@
      int oldy = y();
      int newx = dest_x;
@@ -10,9 +9,8 @@ diff -ru xfreecellg/card.cpp xfreecell/card.cpp
      float curx = (float) oldx;
      float cury = (float) oldy;
  
-diff -ru xfreecellg/freecell.cpp xfreecell/freecell.cpp
---- xfreecellg/freecell.cpp	1999-07-27 07:15:27.000000000 -0700
-+++ xfreecell/freecell.cpp	2004-02-25 02:18:13.000000000 -0800
+--- a/freecell.cpp
++++ b/freecell.cpp
 @@ -64,7 +64,7 @@
  static GameNumberManager* gnManager; 
  static const int PathLength = 256;
@@ -31,9 +29,8 @@ diff -ru xfreecellg/freecell.cpp xfreecell/freecell.cpp
  
    if (home == NULL) {
      fprintf(stderr, "Cannot get $HOME. Assuming I am at home directory now.\n");
-diff -ru xfreecellg/gnmanager.cpp xfreecell/gnmanager.cpp
---- xfreecellg/gnmanager.cpp	1999-07-27 07:18:05.000000000 -0700
-+++ xfreecell/gnmanager.cpp	2004-02-25 02:17:24.000000000 -0800
+--- a/gnmanager.cpp
++++ b/gnmanager.cpp
 @@ -16,7 +16,7 @@
  GameNumberManager::GameNumberManager()
  {
@@ -61,9 +58,8 @@ diff -ru xfreecellg/gnmanager.cpp xfreecell/gnmanager.cpp
  {
    FILE* fp = fopen(file.c_str(), "w+");
  
-diff -ru xfreecellg/gnmanager.h xfreecell/gnmanager.h
---- xfreecellg/gnmanager.h	1999-03-29 05:07:19.000000000 -0800
-+++ xfreecell/gnmanager.h	2004-02-25 02:17:24.000000000 -0800
+--- a/gnmanager.h
++++ b/gnmanager.h
 @@ -2,7 +2,13 @@
  #define GNManager_H
  
@@ -98,9 +94,8 @@ diff -ru xfreecellg/gnmanager.h xfreecell/gnmanager.h
  
    hash_set<int> msWonGames;
    hash_set<int> msLostGames;
-diff -ru xfreecellg/makefile xfreecell/makefile
---- xfreecellg/makefile	1999-04-03 05:42:49.000000000 -0800
-+++ xfreecell/makefile	2004-02-25 02:17:48.000000000 -0800
+--- a/makefile
++++ b/makefile
 @@ -1,16 +1,15 @@
  OBJECTS=card.o freecell.o option.o stack.o subwindows.o undo.o util.o gnmanager.o random.o
 -CC=g++
@@ -146,9 +141,8 @@ diff -ru xfreecellg/makefile xfreecell/makefile
 -#	install ms-compatible/MSNumbers $(DESTDIR)/usr/local/lib/xfreecell
 \ No newline at end of file
 +#	install ms-compatible/MSNumbers $(DESTDIR)/usr/share/xfreecell
-diff -ru xfreecellg/option.h xfreecell/option.h
---- xfreecellg/option.h	1999-03-27 11:39:17.000000000 -0800
-+++ xfreecell/option.h	2004-02-25 02:17:24.000000000 -0800
+--- a/option.h
++++ b/option.h
 @@ -22,7 +22,7 @@
    void readPrefs();
    void writePrefs();
@@ -158,9 +152,8 @@ diff -ru xfreecellg/option.h xfreecell/option.h
  
    static int _speedup;
    static bool _queryWindow;
-diff -ru xfreecellg/stack.h xfreecell/stack.h
---- xfreecellg/stack.h	1999-03-02 10:20:02.000000000 -0800
-+++ xfreecell/stack.h	2004-02-25 02:17:24.000000000 -0800
+--- a/stack.h
++++ b/stack.h
 @@ -28,7 +28,7 @@
    int _next_x, _next_y;
  
@@ -170,9 +163,8 @@ diff -ru xfreecellg/stack.h xfreecell/stack.h
  };
  
  class PlayStack : public Stack {
-diff -ru xfreecellg/subwindows.h xfreecell/subwindows.h
---- xfreecellg/subwindows.h	1999-03-15 15:09:49.000000000 -0800
-+++ xfreecell/subwindows.h	2004-02-25 02:17:24.000000000 -0800
+--- a/subwindows.h
++++ b/subwindows.h
 @@ -76,7 +76,7 @@
    int _undos;
    int _totalScore;
@@ -182,9 +174,8 @@ diff -ru xfreecellg/subwindows.h xfreecell/subwindows.h
  
    bool exitPressed;
  
-diff -ru xfreecellg/undo.cpp xfreecell/undo.cpp
---- xfreecellg/undo.cpp	1999-03-25 07:48:40.000000000 -0800
-+++ xfreecell/undo.cpp	2004-02-25 02:17:24.000000000 -0800
+--- a/undo.cpp
++++ b/undo.cpp
 @@ -22,7 +22,7 @@
    c->moveToStack(from, false, false);
  }
@@ -194,9 +185,8 @@ diff -ru xfreecellg/undo.cpp xfreecell/undo.cpp
  
  void undoClearMoves()
  {
-diff -ru xfreecellg/widget/container.cpp xfreecell/widget/container.cpp
---- xfreecellg/widget/container.cpp	1999-03-03 09:34:52.000000000 -0800
-+++ xfreecell/widget/container.cpp	2004-02-25 02:17:24.000000000 -0800
+--- a/widget/container.cpp
++++ b/widget/container.cpp
 @@ -61,18 +61,18 @@
  
  void NSContainer::remove(NSComponent* nsc)
@@ -233,9 +223,8 @@ diff -ru xfreecellg/widget/container.cpp xfreecell/widget/container.cpp
        if (nscVec.size() == 0) {
  	_width = 0; _height = 0;
        } else {
-diff -ru xfreecellg/widget/makefile xfreecell/widget/makefile
---- xfreecellg/widget/makefile	1999-03-17 21:54:57.000000000 -0800
-+++ xfreecell/widget/makefile	2004-02-25 02:17:59.000000000 -0800
+--- a/widget/makefile
++++ b/widget/makefile
 @@ -1,15 +1,13 @@
  OBJECTS=window.o plate.o string.o button.o label.o textfield.o container.o frame.o util.o scrollbar.o font.o main.o
 -#C=/usr/local/gcc-2.8.1/bin/g++
@@ -255,17 +244,15 @@ diff -ru xfreecellg/widget/makefile xfreecell/widget/makefile
  
  clean:
  	rm -f *.o *~ a.out .nfs* dummy
-diff -ru xfreecellg/widget/textfield.cpp xfreecell/widget/textfield.cpp
---- xfreecellg/widget/textfield.cpp	1999-03-03 09:34:52.000000000 -0800
-+++ xfreecell/widget/textfield.cpp	2004-02-25 02:17:24.000000000 -0800
+--- a/widget/textfield.cpp
++++ b/widget/textfield.cpp
 @@ -1,3 +1,4 @@
 +#include <cctype>
  #include "widget.h"
  
  GC NSTextField::gc;
-diff -ru xfreecellg/widget/widget.h xfreecell/widget/widget.h
---- xfreecellg/widget/widget.h	1999-03-15 08:29:32.000000000 -0800
-+++ xfreecell/widget/widget.h	2004-02-25 02:17:24.000000000 -0800
+--- a/widget/widget.h
++++ b/widget/widget.h
 @@ -114,7 +114,7 @@
      Elt(NSWindow* nw, Window w) { nswindow = nw; window = w; }
    };
@@ -302,9 +289,8 @@ diff -ru xfreecellg/widget/widget.h xfreecell/widget/widget.h
  };
  
  // ##### NSHContainer #####
-diff -ru xfreecellg/widget/window.cpp xfreecell/widget/window.cpp
---- xfreecellg/widget/window.cpp	1999-03-03 09:34:52.000000000 -0800
-+++ xfreecell/widget/window.cpp	2004-02-25 02:17:24.000000000 -0800
+--- a/widget/window.cpp
++++ b/widget/window.cpp
 @@ -2,7 +2,7 @@
  
  bool NSWindow::windowInitialized = false;

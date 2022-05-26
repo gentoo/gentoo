@@ -1,0 +1,24 @@
+From b1a8c0fe022e99cffb0fb4f321740464f35bc6b9 Mon Sep 17 00:00:00 2001
+From: Nicholas Marriott <nicholas.marriott@gmail.com>
+Date: Tue, 22 Jun 2021 12:16:48 +0100
+Subject: [PATCH] Fix crosscompiling, Marco A L Barbosa.
+
+---
+ configure.ac | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure.ac b/configure.ac
+index f6bdd3c7..30b4d370 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -160,6 +160,7 @@ AC_RUN_IFELSE([AC_LANG_PROGRAM(
+          [return (strtonum("0", 0, 1, NULL) == 0 ? 0 : 1);]
+ 	 )],
+ 	 [AC_DEFINE(HAVE_STRTONUM) AC_MSG_RESULT(yes)],
++	 [AC_LIBOBJ(strtonum) AC_MSG_RESULT(no)],
+ 	 [AC_LIBOBJ(strtonum) AC_MSG_RESULT(no)]
+ )
+ 
+-- 
+2.34.1
+

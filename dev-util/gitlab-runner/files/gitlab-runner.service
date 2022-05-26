@@ -1,0 +1,18 @@
+[Unit]
+Description=GitLab Runner service
+After=syslog.target network.target
+ConditionFileIsExecutable=/usr/bin/gitlab-runner
+
+[Service]
+StartLimitInterval=5
+StartLimitBurst=10
+ExecStart=/usr/bin/gitlab-runner run -c /etc/gitlab-runner/config.toml -u gitlab-runner -d /var/lib/gitlab-runner --syslog
+Restart=always
+RestartSec=120
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=gitlab-runner
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

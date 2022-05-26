@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
@@ -11,7 +11,8 @@
 			<email>mahmoud@hatnote.com</email>
 			<name>Mahmoud Hashemi</name>
 		</maintainer>
-		<remote-id type="pypi">hyperframe</remote-id>
+		<remote-id type="pypi">hyperlink</remote-id>
+		<remote-id type="github">python-hyper/hyperlink</remote-id>
 	</upstream>
 	<longdescription>
 		The humble, but powerful, URL runs everything around us.

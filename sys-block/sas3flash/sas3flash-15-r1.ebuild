@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -71,10 +71,6 @@ src_install() {
 		doexe sas3flash_rel/sas3flash/sas3flash_linux_arm_rel/sas3flash
 	elif use ppc64; then
 		doexe sas3flash_rel/sas3flash/sas3flash_linux_ppc64_rel/sas3flash
-	elif use amd64-fbsd; then
-		doexe sas3flash_rel/sas3flash/sas3flash_freebsd_amd64_rel/sas3flash
-	elif use x86-fbsd; then
-		doexe sas3flash_rel/sas3flash/sas3flash_freebsd_i386_rel/sas3flash
 	elif use x64-solaris || use x86-solaris; then
 		doexe sas3flash_rel/sas3flash/sas3flash_solaris_x86_rel/sas3flash
 	elif use sparc-solaris; then

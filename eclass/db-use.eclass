@@ -1,13 +1,24 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 # This is a common location for functions that aid the use of sys-libs/db
 #
-# Bugs: maintainer-needed@gentoo.org
+
+# @ECLASS: db-use.eclass
+# @MAINTAINER:
+# maintainer-needed@gentoo.org
+# @AUTHOR:
+# Paul de Vrieze <pauldv@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7 8
+# @BLURB: This is a common location for functions that aid the use of sys-libs/db
+# @DESCRIPTION:
+# This eclass is designed to provide helpful functions for depending on
+# sys-libs/db.
 
 # multilib is used for get_libname in all EAPI
-case "${EAPI:-0}" in
-	0|1|2|3|4|5|6) inherit eapi7-ver multilib ;;
-	*) inherit multilib ;;
+case ${EAPI} in
+	5|6) inherit eapi7-ver ;& # fallthrough
+	7|8) inherit multilib ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 #Convert a version to a db slot
@@ -30,7 +41,6 @@ db_ver_to_slot() {
 
 #Find the version that correspond to the given atom
 db_findver() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
 	if [ $# -ne 1 ]; then
 		eerror "Function db_findver needs one argument" >&2
 		eerror "args given:" >&2
@@ -58,7 +68,6 @@ db_findver() {
 # to test for, it will aim to find the library corresponding to it.
 
 db_includedir() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
 	if [ $# -eq 0 ]; then
 		VER="$(db_findver sys-libs/db)" || return 1
 		VER="$(db_ver_to_slot "$VER")"
@@ -92,7 +101,6 @@ db_includedir() {
 # packages to test for, it will aim to find the library corresponding to it.
 
 db_libname() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
 	if [ $# -eq 0 ]; then
 		VER="$(db_findver sys-libs/db)" || return 1
 		if [ -e "${EPREFIX}/usr/$(get_libdir)/libdb-${VER}$(get_libname)" ]; then

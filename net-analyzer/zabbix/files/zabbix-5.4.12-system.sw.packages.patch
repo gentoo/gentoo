@@ -1,0 +1,35 @@
+From ee5ed14f0f858eb0f776f5b8c4c1a1e740787bfa Mon Sep 17 00:00:00 2001
+From: Alexey Shvetsov <alexxy@gentoo.org>
+Date: Mon, 21 Mar 2022 11:23:54 +0300
+Subject: [PATCH] Allow to use system.sw.packages on gentoo linux
+
+Signed-off-by: Alexey Shvetsov <alexxy@gentoo.org>
+---
+ src/go/plugins/system/sw/sw.go       | 1 +
+ src/libs/zbxsysinfo/linux/software.c | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/go/plugins/system/sw/sw.go b/src/go/plugins/system/sw/sw.go
+index 6ff354fd711..db9a4b763f7 100644
+--- a/src/go/plugins/system/sw/sw.go
++++ b/src/go/plugins/system/sw/sw.go
+@@ -163,6 +163,7 @@ func getManagers() []manager {
+ 		{"pkgtools", "[ -d /var/log/packages ] && echo true", "ls /var/log/packages", parseRegex},
+ 		{"rpm", "rpm --version 2> /dev/null", "rpm -qa", parseRegex},
+ 		{"pacman", "pacman --version 2> /dev/null", "pacman -Q", parseRegex},
++		{"portage", "emerge --version 2> /dev/null", "qlist -IRCv", parseRegex},
+ 	}
+ }
+ 
+diff --git a/src/libs/zbxsysinfo/linux/software.c b/src/libs/zbxsysinfo/linux/software.c
+index 24f8e93eed8..8dcf01a3e47 100644
+--- a/src/libs/zbxsysinfo/linux/software.c
++++ b/src/libs/zbxsysinfo/linux/software.c
+@@ -176,6 +176,7 @@ static ZBX_PACKAGE_MANAGER	package_managers[] =
+ 	{"pkgtools",	"[ -d /var/log/packages ] && echo true",	"ls /var/log/packages",		NULL},
+ 	{"rpm",		"rpm --version 2> /dev/null",			"rpm -qa",			NULL},
+ 	{"pacman",	"pacman --version 2> /dev/null",		"pacman -Q",			NULL},
++	{"portage",     "emerge --version 2> /dev/null",                "qlist -IRCv",                  NULL},
+ 	{NULL}
+ };
+ 

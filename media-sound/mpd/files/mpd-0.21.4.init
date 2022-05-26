@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 : CFGFILE=${CFGFILE:=/etc/mpd.conf}
@@ -19,6 +19,8 @@ get_config() {
 }
 
 extra_started_commands='reload'
+# Required by io_uring
+rc_ulimit="-l 65535"
 command=/usr/bin/mpd
 command_args=${CFGFILE}
 required_files=${CFGFILE}

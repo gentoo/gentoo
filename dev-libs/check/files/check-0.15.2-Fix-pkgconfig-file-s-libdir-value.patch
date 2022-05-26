@@ -1,0 +1,30 @@
+From a6de6b02e6f8b971149c477eeca04de7d0fa5d3c Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Wed, 10 Mar 2021 17:00:33 -0500
+Subject: [PATCH] Fix pkgconfig file's libdir value
+
+And make a similar fix for includedir while we're here.
+
+Bug: https://bugs.gentoo.org/729642
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 23311d8..9d3ac07 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -439,8 +439,8 @@ if(NOT THIS_IS_SUBPROJECT)
+   set(prefix_save "${PREFIX}")
+   set(prefix "${CMAKE_INSTALL_PREFIX}")
+   set(exec_prefix "\${prefix}")
+-  set(libdir "\${exec_prefix}/lib")
+-  set(includedir "\${prefix}/include")
++  set(libdir ${CMAKE_INSTALL_FULL_LIBDIR})
++  set(includedir ${CMAKE_INSTALL_FULL_INCLUDEDIR})
+   set(VERSION "${PROJECT_VERSION}")
+ 
+   if (HAVE_SUBUNIT)
+-- 
+2.26.2
+

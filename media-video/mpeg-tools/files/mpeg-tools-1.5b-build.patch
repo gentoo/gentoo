@@ -1,5 +1,5 @@
---- convert/Makefile
-+++ convert/Makefile
+--- a/convert/Makefile
++++ b/convert/Makefile
 @@ -24,7 +24,7 @@
  #CC = cc
  
@@ -25,8 +25,8 @@
  vidtoppm: vidtoppm.c
  	$(CC) -lXvid -lX11 $(INCLUDE) -o vidtoppm vidtoppm.c 
  
---- convert/mtv/Makefile
-+++ convert/mtv/Makefile
+--- a/convert/mtv/Makefile
++++ b/convert/mtv/Makefile
 @@ -4,7 +4,7 @@
  
  PURIFY        = $(PURIFYHOME)/purify
@@ -45,8 +45,8 @@
  
  clean:
  	rm -f core lintout makeout tags Makefile.bak *.o \
---- mpeg_encode/Makefile.orig	2005-09-26 16:01:51.000000000 -0400
-+++ mpeg_encode/Makefile	2005-09-26 16:02:11.000000000 -0400
+--- a/mpeg_encode/Makefile
++++ b/mpeg_encode/Makefile
 @@ -97,5 +97,5 @@
  
  #	gcc

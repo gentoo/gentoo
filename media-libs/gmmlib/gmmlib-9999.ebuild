@@ -1,10 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-CMAKE_ECLASS=cmake
-inherit cmake-multilib
+inherit cmake
 
 if [[ ${PV} == *9999 ]] ; then
 	: ${EGIT_REPO_URI:="https://github.com/intel/gmmlib"}
@@ -16,27 +15,25 @@ fi
 
 DESCRIPTION="Intel Graphics Memory Management Library"
 HOMEPAGE="https://github.com/intel/gmmlib"
-if [[ ${PV} == *9999 ]] ; then
-	SRC_URI=""
-	KEYWORDS=""
-else
-	SRC_URI="https://github.com/intel/gmmlib/archive/intel-${P}.tar.gz"
-	S="${WORKDIR}/${PN}-intel-${P}"
-	KEYWORDS="~amd64"
-fi
+SRC_URI=""
 
 LICENSE="MIT"
-SLOT="0"
-IUSE=""
+SLOT="0/12.1"
+IUSE="test +custom-cflags"
+RESTRICT="!test? ( test )"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
+PATCHES=(
+	"${FILESDIR}"/${PN}-20.2.2_conditional_testing.patch
+	"${FILESDIR}"/${PN}-20.3.2_cmake_project.patch
+	"${FILESDIR}"/${PN}-22.1.1_custom_cflags.patch
+)
 
-multilib_src_configure() {
-# once upstream makes this optional
-#	local mycmakeargs=(
-#		-DMEDIA_RUN_TEST_SUITE=OFF
-#	)
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_TESTING="$(usex test)"
+		-DBUILD_TYPE="Release"
+		-DOVERRIDE_COMPILER_FLAGS="$(usex !custom-cflags)"
+	)
 
 	cmake_src_configure
 }

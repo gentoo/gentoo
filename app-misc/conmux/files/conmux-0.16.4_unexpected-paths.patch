@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -18,8 +18,6 @@
+ 	@[ -d $(BASE)/bin ] || mkdir $(BASE)/bin
+ 	@[ -d $(BASE)/lib ] || mkdir $(BASE)/lib
+ 	@[ -d $(BASE)/sbin ] || mkdir $(BASE)/sbin
+-	@[ -d $(BASE)/log ] || mkdir $(BASE)/log
+-	@[ -d $(BASE)/etc ] || mkdir $(BASE)/etc
+ 	for f in $(BINS); do \
+ 	    rm -f $(BASE)/bin/$$f; \
+ 	    cp -p $$f $(BASE)/bin/$$f; \

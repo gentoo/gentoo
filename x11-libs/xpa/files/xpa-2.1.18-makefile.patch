@@ -1,5 +1,5 @@
---- a/Makefile.in	2016-12-19 19:21:28.566222982 +0000
-+++ b/Makefile.in	2016-12-19 19:23:23.795246443 +0000
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -28,6 +28,11 @@
  
  prefix =		@prefix@
@@ -37,24 +37,33 @@
  
  # Platform-specific X compiler flags (include file specifications)
  X_CFLAGS = 		@X_CFLAGS@
-@@ -177,7 +182,7 @@
+@@ -173,12 +178,12 @@
+ 
+ $(LIB):		$(LIBOBJS)
+ 		$(RM) $(LIB)
+-		ar crv $(LIB) $(LIBOBJS)
++		$(AR) crv $(LIB) $(LIBOBJS)
  		$(RANLIB) $(LIB)
  
  shlib:		$(LIB)
 -		@(rm -rf lib$(PACKAGE).tmp; mkdir lib$(PACKAGE).tmp; \
+-		(cd lib$(PACKAGE).tmp && ar x ../lib$(PACKAGE).a); \
 +		@(rm -rf lib$(PACKAGE).tmp; mkdir -p lib$(PACKAGE).tmp; \
- 		(cd lib$(PACKAGE).tmp && ar x ../lib$(PACKAGE).a); \
++		(cd lib$(PACKAGE).tmp && $(AR) x ../lib$(PACKAGE).a); \
  		rm -f lib$(PACKAGE).tmp/xt*.o; \
  		rm -f lib$(PACKAGE).tmp/tcl*.o; \
-@@ -193,7 +198,7 @@
+ 		CC='$(CC)' CXX=$(CXX) \
+@@ -193,8 +198,8 @@
  		-lwsock32
  
  tclxpa:		$(LIB)
 -		@(rm -rf libtclxpa.tmp; mkdir libtclxpa.tmp; \
+-		(cd libtclxpa.tmp && ar x ../lib$(PACKAGE).a); \
 +		@(rm -rf libtclxpa.tmp; mkdir -p libtclxpa.tmp; \
- 		(cd libtclxpa.tmp && ar x ../lib$(PACKAGE).a); \
++		(cd libtclxpa.tmp && $(AR) x ../lib$(PACKAGE).a); \
  		rm -f libtclxpa.tmp/xt*.o; \
  		CC='$(CC)' CXX=$(CXX) \
+ 		./mklib -o tclxpa libtclxpa.tmp/*.o $(TCL_LIBS); \
 @@ -275,7 +280,7 @@
  	    do \
  	    if [ ! -d $$i ] ; then \
@@ -108,3 +117,26 @@
  		cp -p -R ./man/* $(DISTDIR)/man/.)
  
  release:	dist
+--- a/mklib
++++ b/mklib
+@@ -211,9 +211,9 @@
+ 	if [ "x$LINK" = "x" ] ; then
+ 	    # -linker was not specified so set default link command now
+             if [ $CPLUSPLUS = 1 ] ; then
+-                LINK=g++
++                LINK=${CXX}
+             else
+-                LINK=gcc
++                LINK=${CC}
+             fi
+ 	fi
+ 
+@@ -248,7 +248,7 @@
+         elif [ $STATIC = 1 ] ; then
+             LIBNAME="lib${LIBNAME}.a"     # prefix with "lib", suffix with ".a"
+             echo "mklib: Making" $ARCH "static library: " ${LIBNAME}
+-            LINK="ar"
++            LINK="${AR}"
+             OPTS="-ru"
+             if [ "${ALTOPTS}" ] ; then
+                 OPTS=${ALTOPTS}

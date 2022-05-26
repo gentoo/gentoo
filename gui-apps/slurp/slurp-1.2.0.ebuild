@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit meson
 
-DESCRIPTION="Select a region in a Wayland compositor and print it to the standard output."
+DESCRIPTION="Select a region in a Wayland compositor and print it to the standard output"
 HOMEPAGE="https://github.com/emersion/slurp"
 
 if [[ ${PV} == 9999 ]]; then
@@ -36,7 +36,6 @@ fi
 src_configure() {
 	local emesonargs=(
 		$(meson_feature man man-pages)
-		"-Dwerror=false"
 	)
 	meson_src_configure
 }

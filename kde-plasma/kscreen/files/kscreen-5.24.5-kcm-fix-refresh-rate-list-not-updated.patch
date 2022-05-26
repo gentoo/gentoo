@@ -1,0 +1,29 @@
+From 584ed8a067a7c0329e1572dd9970b6e3dae6a56f Mon Sep 17 00:00:00 2001
+From: Xaver Hugl <xaver.hugl@gmail.com>
+Date: Thu, 5 May 2022 18:22:46 +0200
+Subject: [PATCH] kcm: fix refresh rate list not being updated
+
+BUG: 453392
+
+
+(cherry picked from commit 8c1e2cffda762fef83ea48658a08847382c71486)
+---
+ kcm/output_model.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kcm/output_model.cpp b/kcm/output_model.cpp
+index fcdb738..92e4ea3 100644
+--- a/kcm/output_model.cpp
++++ b/kcm/output_model.cpp
+@@ -417,7 +417,7 @@ bool OutputModel::setResolution(int outputIndex, int resIndex)
+     QModelIndex index = createIndex(outputIndex, 0);
+     // Calling this directly ignores possible optimization when the
+     // refresh rate hasn't changed in fact. But that's ok.
+-    Q_EMIT dataChanged(index, index, {ResolutionIndexRole, ResolutionRole, SizeRole, RefreshRateIndexRole});
++    Q_EMIT dataChanged(index, index, {ResolutionIndexRole, ResolutionRole, SizeRole, RefreshRatesRole, RefreshRateIndexRole});
+     Q_EMIT sizeChanged();
+     return true;
+ }
+-- 
+GitLab
+

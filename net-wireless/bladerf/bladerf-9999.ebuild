@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils udev
+inherit cmake udev
 
 DESCRIPTION="Libraries for supporing the BladeRF hardware from Nuand"
 HOMEPAGE="https://nuand.com/"
@@ -24,7 +24,6 @@ MY_PN="bladeRF"
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Nuand/${MY_PN}.git"
-	KEYWORDS=""
 else
 	MY_PV=${PV/\_/-}
 	S="${WORKDIR}/${MY_PN}-${MY_PV}"
@@ -38,8 +37,8 @@ CDEPEND=">=dev-libs/libusb-1.0.16
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}"
-PDEPEND=">=net-wireless/bladerf-firmware-2.3.2
-	>=net-wireless/bladerf-fpga-0.11.0"
+PDEPEND=">=net-wireless/bladerf-firmware-2.4.0
+	>=net-wireless/bladerf-fpga-0.12.0"
 
 src_unpack() {
 	if [ "${PV}" = "9999" ]; then
@@ -58,5 +57,5 @@ src_configure() {
 		-DTREAT_WARNINGS_AS_ERRORS=OFF
 		-DUDEV_RULES_PATH="$(get_udevdir)"/rules.d
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

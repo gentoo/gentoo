@@ -1,5 +1,5 @@
---- ripperX.pc.in
-+++ ripperX.pc.in
+--- a/ripperX.pc.in
++++ b/ripperX.pc.in
 @@ -1,6 +1,7 @@
  prefix=@prefix@
  exec_prefix=@exec_prefix@

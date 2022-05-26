@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 inherit findlib
 
@@ -31,8 +31,10 @@ src_compile() {
 src_install() {
 	# Can't use opam-installer here as it is an opam dep...
 	findlib_src_preinst
+
 	local nativelibs="$(echo _build/src/${PN}.cm{x,xa,xs,ti} _build/src/${PN}.a)"
 	ocamlfind install ${PN} _build/pkg/META _build/src/${PN}.mli _build/src/${PN}.cm{a,i} ${nativelibs} || die
+
 	newbin _build/test/jsontrip.native jsontrip
 	dodoc CHANGES.md TODO.md README.md
 }

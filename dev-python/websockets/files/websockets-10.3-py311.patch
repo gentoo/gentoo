@@ -1,0 +1,24 @@
+diff --git a/tests/legacy/test_client_server.py b/tests/legacy/test_client_server.py
+index f9de70c..05070c8 100644
+--- a/tests/legacy/test_client_server.py
++++ b/tests/legacy/test_client_server.py
+@@ -426,6 +426,10 @@ class CommonClientServerTests:
+                 self.used_for_read = True
+                 return super().recv(*args, **kwargs)
+ 
++            def recv_into(self, *args, **kwargs):
++                self.used_for_read = True
++                return super().recv_into(*args, **kwargs)
++
+             def send(self, *args, **kwargs):
+                 self.used_for_write = True
+                 return super().send(*args, **kwargs)
+@@ -1299,6 +1303,8 @@ class ClientServerOriginTests(ClientServerTestsMixin, AsyncioTestCase):
+         self.assertEqual(self.loop.run_until_complete(self.client.recv()), "Hello!")
+ 
+ 
++@unittest.skipIf(sys.version_info[:2] >= (3, 11),
++                 "asyncio.coroutine has been removed in Python 3.11")
+ class YieldFromTests(ClientServerTestsMixin, AsyncioTestCase):
+     @with_server()
+     def test_client(self):

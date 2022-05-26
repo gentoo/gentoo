@@ -1,0 +1,60 @@
+https://bugs.gentoo.org/808120
+
+From e65b71cec99b2c3a4d0ed6aa448e7a2dc28fabac Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 17 Aug 2021 22:22:40 +0100
+Subject: [PATCH] Don't compress manpages
+
+---
+ doc/CMakeLists.txt | 34 ++++++----------------------------
+ 1 file changed, 6 insertions(+), 28 deletions(-)
+
+diff --git a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+index 3d27a1a..f3c702b 100644
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -236,35 +236,13 @@ install(FILES ${wz2100_doc_FILES} DESTINATION "${CMAKE_INSTALL_DOCDIR}${WZ_OUTPU
+ if(UNIX)
+ 	# Man-page gzip and installation
+ 
+-	find_program(GZIP_BIN NAMES gzip PATHS /bin /usr/bin /usr/local/bin)
+-	if (GZIP_BIN)
+-		set(_warzone2100_6_uncompressed_orig "${CMAKE_CURRENT_BINARY_DIR}/warzone2100.6")
+-		set(_warzone2100_6_uncompressed "${CMAKE_CURRENT_BINARY_DIR}/warzone2100${WZ_OUTPUT_NAME_SUFFIX}.6")
+-		set(_warzone2100_6_compressed "${_warzone2100_6_uncompressed}.gz")
+-
+-		add_custom_target(wz2100_manpages ALL)
+-		set_property(TARGET wz2100_manpages PROPERTY FOLDER "doc")
+-		add_dependencies(wz2100_manpages wz2100_doc)
+-
+-		if (NOT "${_warzone2100_6_uncompressed_orig}" STREQUAL "${_warzone2100_6_uncompressed}")
+-			add_custom_command(
+-				TARGET wz2100_manpages
+-				COMMAND ${CMAKE_COMMAND} -E copy "${_warzone2100_6_uncompressed_orig}" "${_warzone2100_6_uncompressed}"
+-				COMMAND ${GZIP_BIN} -n -c ${_warzone2100_6_uncompressed} > ${_warzone2100_6_compressed}
+-				VERBATIM
+-			)
+-		else()
+-			add_custom_command(
+-				TARGET wz2100_manpages
+-				COMMAND ${GZIP_BIN} -n -c ${_warzone2100_6_uncompressed} > ${_warzone2100_6_compressed}
+-				VERBATIM
+-			)
+-		endif()
++	set(_warzone2100_6 "${CMAKE_CURRENT_BINARY_DIR}/warzone2100${WZ_OUTPUT_NAME_SUFFIX}.6")
+ 
+-		install(FILES "${_warzone2100_6_compressed}" DESTINATION "${CMAKE_INSTALL_MANDIR}/man6" COMPONENT Manpages)
+-	else()
+-		message( WARNING "Unable to find gzip tool; skipping Unix man page generation" )
+-	endif()
++	add_custom_target(wz2100_manpages ALL)
++	set_property(TARGET wz2100_manpages PROPERTY FOLDER "doc")
++	add_dependencies(wz2100_manpages wz2100_doc)
++
++	install(FILES "${_warzone2100_6}" DESTINATION "${CMAKE_INSTALL_MANDIR}/man6" COMPONENT Manpages)
+ endif()
+ 
+ set(wz2100_doc_IMAGES_FILES ${wz2100_doc_IMAGES_FILES} PARENT_SCOPE)
+-- 
+2.33.0
+

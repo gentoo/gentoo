@@ -1,0 +1,70 @@
+https://bugs.gentoo.org/777423
+
+--- a/src/plugins/libovh.c
++++ b/src/plugins/libovh.c
+@@ -181,6 +181,7 @@
+ 
+ 	char *b64user;
+ 	char message[BUFLEN];
++	size_t pos, towrite;
+ 
+ 	if(strlen(args->login) > 128) {
+ 		ret_msg(NONE, "username is too long");
+@@ -220,10 +221,18 @@
+ 		    "\n--------------------------------------\n"
+ 		    "%s--------------------------------------\n\n",
+                     message);
+-	
+-	if(write(s, message, strlen(message)) == -1) {
+-		ret_msg(PERR, "write() failed");
+-		return RET_WARNING;
++
++	for (pos = 0, towrite = strlen(message); towrite > 0; ) {
++		ssize_t ret;
++
++		ret = write(s, message + pos, towrite - pos);
++		if(ret <= 0) {
++			ret_msg(PERR, "write() failed");
++			return RET_WARNING;
++		}
++
++		pos += ret;
++		towrite -= ret;
+ 	}
+ 
+ 	free(b64user);
+@@ -236,13 +245,22 @@
+ {
+ 
+ 	int n;
+-	char server_msg[BUFSIZE], *ptr;
++	char server_msg[BUFLEN], *ptr;
+ 
+ 	/* get server_msg */
+ 	(void)memset(server_msg, 0, sizeof(server_msg));
+-	if(read(s, server_msg, sizeof(server_msg) - 1) < 0) {
+-		ret_msg(PERR, "read() failed");
+-		return RET_WARNING;
++
++	for (ptr = server_msg; ptr < &server_msg[BUFLEN]; ) {
++		ssize_t ret;
++
++		ret = read(s, ptr, &server_msg[BUFLEN] - ptr);
++		if (ret < 0) {
++			ret_msg(PERR, "read() failed");
++			return RET_WARNING;
++		} else if (ret == 0)
++			break;
++
++		ptr += ret;
+ 	}
+ 
+ 	print_debug("\n\nServer message:"
+@@ -267,6 +285,7 @@
+ 				}
+ 			}
+ 		}
++		ret_msg(NONE, "unknown server response");
+ 	} else if(strstr(server_msg, "401 Authorization Required")) {
+ 		ret_msg(NONE, "wrong username or password");
+ 	} else {

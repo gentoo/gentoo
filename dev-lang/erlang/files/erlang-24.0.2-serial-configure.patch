@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/790563
+--- a/configure
++++ b/configure
+@@ -355,7 +355,7 @@ for app_dir in $app_dirs; do
+ 	echo ""
+     elif test $app_dir != erts; then
+ 	echo $cmd_str >./configure.result.command
+-	eval $cmd_str 1>./configure.result.stdout 2>./configure.result.stderr || echo "fatal" > "./configure.result.failed" &
++	eval $cmd_str 1>./configure.result.stdout 2>./configure.result.stderr || echo "fatal" > "./configure.result.failed"
+     else
+ 	# ERTS configure gets to use stdout/stderr; the others are printed when done...
+ 	echo "=== Running configure in $ERL_TOP/erts ==="

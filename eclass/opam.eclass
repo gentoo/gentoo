@@ -1,9 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: opam.eclass
 # @MAINTAINER:
-# maintainer-needed@gentoo.org
+# Mark Wright <gienah@gentoo.org>
+# ML <ml@gentoo.org>
 # @AUTHOR:
 # Alexis Ballier <aballier@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
@@ -17,9 +18,30 @@ case ${EAPI:-0} in
 	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
 esac
 
+# Do not complain about CFLAGS etc since ml projects do not use them.
+QA_FLAGS_IGNORED='.*'
+
+# @ECLASS_VARIABLE: OPAM_INSTALLER_DEP
+# @PRE_INHERIT
+# @DESCRIPTION:
+# Override dependency for OPAM_INSTALLER
+: ${OPAM_INSTALLER_DEP:="dev-ml/opam-installer"}
+
 RDEPEND=">=dev-lang/ocaml-4:="
-DEPEND="${RDEPEND}
-	dev-ml/opam"
+case ${EAPI:-0} in
+	5|6)
+		DEPEND="${RDEPEND} ${OPAM_INSTALLER_DEP}"
+		;;
+	*)
+		BDEPEND="${OPAM_INSTALLER_DEP} dev-lang/ocaml"
+		DEPEND="${RDEPEND}"
+		;;
+esac
+
+# @ECLASS_VARIABLE: OPAM_INSTALLER
+# @DESCRIPTION:
+# Eclass can use different opam-installer binary than the one provided in by system.
+: ${OPAM_INSTALLER:=opam-installer}
 
 # @FUNCTION: opam-install
 # @USAGE: <list of packages>
@@ -29,7 +51,7 @@ DEPEND="${RDEPEND}
 opam-install() {
 	local pkg
 	for pkg ; do
-		opam-installer -i \
+		${OPAM_INSTALLER} -i \
 			--prefix="${ED%/}/usr" \
 			--libdir="${D%/}/$(ocamlc -where)" \
 			--docdir="${ED%/}/usr/share/doc/${PF}" \

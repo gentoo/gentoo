@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Eclass for installing SELinux policy, and optionally
@@ -7,7 +7,7 @@
 # @ECLASS: selinux-policy-2.eclass
 # @MAINTAINER:
 # selinux@gentoo.org
-# @SUPPORTED_EAPIS: 5 6
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: This eclass supports the deployment of the various SELinux modules in sec-policy
 # @DESCRIPTION:
 # The selinux-policy-2.eclass supports deployment of the various SELinux modules
@@ -18,27 +18,27 @@
 # Also, it supports for bundling patches to make the whole thing just a bit more
 # manageable.
 
-# @ECLASS-VARIABLE: MODS
+# @ECLASS_VARIABLE: MODS
 # @DESCRIPTION:
 # This variable contains the (upstream) module name for the SELinux module.
 # This name is only the module name, not the category!
 : ${MODS:="_illegal"}
 
-# @ECLASS-VARIABLE: BASEPOL
+# @ECLASS_VARIABLE: BASEPOL
 # @DESCRIPTION:
 # This variable contains the version string of the selinux-base-policy package
 # that this module build depends on. It is used to patch with the appropriate
 # patch bundle(s) that are part of selinux-base-policy.
 : ${BASEPOL:=${PVR}}
 
-# @ECLASS-VARIABLE: POLICY_PATCH
+# @ECLASS_VARIABLE: POLICY_PATCH
 # @DESCRIPTION:
 # This variable contains the additional patch(es) that need to be applied on top
 # of the patchset already contained within the BASEPOL variable. The variable
 # can be both a simple string (space-separated) or a bash array.
 : ${POLICY_PATCH:=""}
 
-# @ECLASS-VARIABLE: POLICY_FILES
+# @ECLASS_VARIABLE: POLICY_FILES
 # @DESCRIPTION:
 # When defined, this contains the files (located in the ebuilds' files/
 # directory) which should be copied as policy module files into the store.
@@ -47,7 +47,7 @@
 # (space-separated) or a bash array.
 : ${POLICY_FILES:=""}
 
-# @ECLASS-VARIABLE: POLICY_TYPES
+# @ECLASS_VARIABLE: POLICY_TYPES
 # @DESCRIPTION:
 # This variable informs the eclass for which SELinux policies the module should
 # be built. Currently, Gentoo supports targeted, strict, mcs and mls.
@@ -56,7 +56,7 @@
 # override it, but the user.
 : ${POLICY_TYPES:="targeted strict mcs mls"}
 
-# @ECLASS-VARIABLE: SELINUX_GIT_REPO
+# @ECLASS_VARIABLE: SELINUX_GIT_REPO
 # @DESCRIPTION:
 # When defined, this variable overrides the default repository URL as used by
 # this eclass. It allows end users to point to a different policy repository
@@ -65,7 +65,7 @@
 # The default value is Gentoo's hardened-refpolicy repository.
 : ${SELINUX_GIT_REPO:="https://anongit.gentoo.org/git/proj/hardened-refpolicy.git"};
 
-# @ECLASS-VARIABLE: SELINUX_GIT_BRANCH
+# @ECLASS_VARIABLE: SELINUX_GIT_BRANCH
 # @DESCRIPTION:
 # When defined, this variable sets the Git branch to use of the repository. This
 # allows for users and developers to use a different branch for the entire set of
@@ -75,8 +75,8 @@
 : ${SELINUX_GIT_BRANCH:="master"};
 
 case "${EAPI:-0}" in
-	0|1|2|3|4) die "EAPI<5 is not supported";;
-	5|6) : ;;
+	0|1|2|3|4|5) die "EAPI<6 is not supported";;
+	6|7) : ;;
 	*) die "unknown EAPI" ;;
 esac
 
@@ -86,10 +86,6 @@ case ${BASEPOL} in
 			EGIT_BRANCH="${SELINUX_GIT_BRANCH}";
 			EGIT_CHECKOUT_DIR="${WORKDIR}/refpolicy";;
 esac
-
-if [[ ${EAPI:-0} == 5 ]]; then
-	inherit eutils
-fi
 
 IUSE=""
 
@@ -117,9 +113,15 @@ else
 	RDEPEND=">=sys-apps/policycoreutils-2.0.82
 		>=sec-policy/selinux-base-policy-${PV}"
 fi
-DEPEND="${RDEPEND}
-	sys-devel/m4
-	>=sys-apps/checkpolicy-2.0.21"
+if [[ ${EAPI} == 6 ]]; then
+	DEPEND="${RDEPEND}
+		sys-devel/m4
+		>=sys-apps/checkpolicy-2.0.21"
+else
+	DEPEND="${RDEPEND}"
+	BDEPEND="sys-devel/m4
+		>=sys-apps/checkpolicy-2.0.21"
+fi
 
 EXPORT_FUNCTIONS src_unpack src_prepare src_compile src_install pkg_postinst pkg_postrm
 
@@ -156,25 +158,13 @@ selinux-policy-2_src_prepare() {
 	# Patch the sources with the base patchbundle
 	if [[ -n ${BASEPOL} ]] && [[ "${BASEPOL}" != "9999" ]]; then
 		cd "${S}"
-		if [[ ${EAPI:-0} == 5 ]]; then
-			EPATCH_MULTI_MSG="Applying SELinux policy updates ... " \
-			EPATCH_SUFFIX="patch" \
-			EPATCH_SOURCE="${WORKDIR}" \
-			EPATCH_FORCE="yes" \
-			epatch
-		else
-			einfo "Applying SELinux policy updates ... "
-			eapply -p0 "${WORKDIR}/0001-full-patch-against-stable-release.patch"
-		fi
+		einfo "Applying SELinux policy updates ... "
+		eapply -p0 "${WORKDIR}/0001-full-patch-against-stable-release.patch"
 	fi
 
-	# Call in epatch_user. We do this early on as we start moving
+	# Call in eapply_user. We do this early on as we start moving
 	# files left and right hereafter.
-	if [[ ${EAPI:-0} == 5 ]]; then
-		epatch_user
-	else
-		eapply_user
-	fi
+	eapply_user
 
 	# Copy additional files to the 3rd_party/ location
 	if [[ "$(declare -p POLICY_FILES 2>/dev/null 2>&1)" == "declare -a"* ]] ||
@@ -189,17 +179,10 @@ selinux-policy-2_src_prepare() {
 
 	# Apply the additional patches refered to by the module ebuild.
 	# But first some magic to differentiate between bash arrays and strings
-	if [[ "$(declare -p POLICY_PATCH 2>/dev/null 2>&1)" == "declare -a"* ]] ||
-	   [[ -n ${POLICY_PATCH} ]]; then
-		cd "${S}/refpolicy/policy/modules"
-		for POLPATCH in ${POLICY_PATCH[@]};
-		do
-			if [[ ${EAPI:-0} == 5 ]]; then
-				epatch "${POLPATCH}"
-			else
-				eapply "${POLPATCH}"
-			fi
-		done
+	if [[ "$(declare -p POLICY_PATCH 2>/dev/null 2>&1)" == "declare -a"* ]]; then
+		[[ -n ${POLICY_PATCH[*]} ]] && eapply -d "${S}/refpolicy/policy/modules" "${POLICY_PATCH[@]}"
+	else
+		[[ -n ${POLICY_PATCH} ]] && eapply -d "${S}/refpolicy/policy/modules" ${POLICY_PATCH}
 	fi
 
 	# Collect only those files needed for this particular module
@@ -280,10 +263,15 @@ selinux-policy-2_pkg_postinst() {
 	local COMMAND
 
 	for i in ${POLICY_TYPES}; do
-		if [[ "${i}" == "strict" ]] && [[ "${MODS}" = "unconfined" ]]; then
-			einfo "Ignoring loading of unconfined module in strict module store.";
-			continue;
+		if [[ "${MODS}" = "unconfined" ]]; then
+			case ${i} in
+			strict|mcs|mls)
+				einfo "Ignoring loading of unconfined module in ${i} module store.";
+				continue
+				;;
+			esac
 		fi
+
 		einfo "Inserting the following modules into the $i module store: ${MODS}"
 
 		cd "${ROOT%/}/usr/share/selinux/${i}" || die "Could not enter /usr/share/selinux/${i}"

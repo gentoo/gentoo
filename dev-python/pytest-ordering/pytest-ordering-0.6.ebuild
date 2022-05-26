@@ -1,26 +1,30 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
 DESCRIPTION="pytest plugin to run your tests in a specific order"
 HOMEPAGE="
-	https://github.com/ftobia/pytest-ordering
-	https://pypi.org/project/pytest-ordering
+	https://github.com/ftobia/pytest-ordering/
+	https://pypi.org/project/pytest-ordering/
 "
 SRC_URI="https://github.com/ftobia/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
-DEPEND="test? ( dev-python/pytest-ordering[${PYTHON_USEDEP}] )"
+RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]"
 
-distutils_enable_tests pytest
+PATCHES=(
+	"${FILESDIR}/${P}-fix-pytest-6.patch"
+)
+
+distutils_enable_tests --install pytest
 distutils_enable_sphinx docs/source
 
 python_prepare_all() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD="77 90"
 # if FFLAGS and FCFLAGS are set then should be equal
 
-inherit cmake fortran-2 toolchain-funcs
+inherit cmake fortran-2 toolchain-funcs flag-o-matic
 
 DESCRIPTION="Suite of nonlinear solvers"
 HOMEPAGE="https://computation.llnl.gov/projects/sundials"
@@ -16,7 +16,7 @@ SRC_URI="https://computation.llnl.gov/projects/sundials/download/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1)"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="cxx doc examples fortran hypre lapack mpi openmp sparse static-libs superlumt threads"
 REQUIRED_USE="hypre? ( mpi )"
 
@@ -31,11 +31,20 @@ DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${P}-fix-license-install-path.patch )
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
-	if [[ ${MERGE_TYPE} != binary ]] && use openmp && [[ $(tc-getCC) == *gcc ]] && ! tc-has-openmp; then
-		ewarn "OpenMP is not available in your current selected gcc"
-		die "need openmp capable gcc"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+	use fortran && fortran-2_pkg_setup
+}
+
+src_prepare() {
+	# bug #707240
+	append-cflags -fcommon
+
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -57,7 +66,7 @@ src_configure() {
 		-DSUPERLUMT_LIBRARY="-lsuperlu_mt"
 		-DEXAMPLES_ENABLE="$(usex examples)"
 		-DEXAMPLES_INSTALL=ON
-		-DEXAMPLES_INSTALL_PATH="/usr/share/doc/${PF}/examples"
+		-DEXAMPLES_INSTALL_PATH="${EPREFIX}/usr/share/doc/${PF}/examples"
 		-DUSE_GENERIC_MATH=ON
 	)
 	use sparse && mycmakeargs+=( -DKLU_LIBRARY="${EPREFIX}/usr/$(get_libdir)/libklu.so" )

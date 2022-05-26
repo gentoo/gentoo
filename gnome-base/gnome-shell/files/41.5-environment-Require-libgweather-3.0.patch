@@ -1,0 +1,29 @@
+From f07a40d5eeb1daf6e2d118c548c8314c721d558c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Florian=20M=C3=BCllner?= <fmuellner@gnome.org>
+Date: Wed, 5 Jan 2022 02:42:49 +0100
+Subject: [PATCH] environment: Require libgweather 3.0
+
+GWeather did a major version bump on its main branch, so it is
+now possible that multiple versions are installed in parallel,
+and we should explicitly pick the one we are using.
+
+Part-of: <https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/2083>
+---
+ js/ui/environment.js | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/js/ui/environment.js b/js/ui/environment.js
+index cb254e319..ad2b8e4f2 100644
+--- a/js/ui/environment.js
++++ b/js/ui/environment.js
+@@ -9,6 +9,7 @@ imports.gi.versions.GdkPixbuf = '2.0';
+ imports.gi.versions.GnomeBluetooth = '1.0';
+ imports.gi.versions.GnomeDesktop = '3.0';
+ imports.gi.versions.Gtk = '3.0';
++imports.gi.versions.GWeather = '3.0';
+ imports.gi.versions.Soup = '3.0';
+ imports.gi.versions.TelepathyGLib = '0.12';
+ imports.gi.versions.TelepathyLogger = '0.2';
+-- 
+2.34.1
+

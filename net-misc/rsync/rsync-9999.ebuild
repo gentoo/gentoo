@@ -1,64 +1,76 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic prefix systemd
+PYTHON_COMPAT=( python3_{8,9,10} )
+inherit flag-o-matic prefix python-single-r1 systemd
 
 DESCRIPTION="File transfer program to keep remote files into sync"
 HOMEPAGE="https://rsync.samba.org/"
-if [[ "${PV}" == *9999 ]] ; then
-	PYTHON_COMPAT=( python3_{6,7,8} )
-	inherit autotools git-r3 python-any-r1
+if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/WayneD/rsync.git"
+	inherit autotools git-r3
+
+	REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 else
-	if [[ "${PV}" == *_pre* ]] ; then
+	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/waynedavison.asc
+	inherit verify-sig
+
+	if [[ ${PV} == *_pre* ]] ; then
 		SRC_DIR="src-previews"
 	else
 		SRC_DIR="src"
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	fi
-	SRC_URI="https://rsync.samba.org/ftp/rsync/${SRC_DIR}/${P/_/}.tar.gz"
-	S="${WORKDIR}/${P/_/}"
+
+	SRC_URI="https://rsync.samba.org/ftp/rsync/${SRC_DIR}/${P/_/}.tar.gz
+		verify-sig? ( https://rsync.samba.org/ftp/rsync/${SRC_DIR}/${P/_/}.tar.gz.asc )"
+	S="${WORKDIR}"/${P/_/}
 fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE_CPU_FLAGS_X86=" sse2"
-IUSE="acl examples iconv ipv6 libressl lz4 ssl static stunnel system-zlib xattr xxhash zstd"
-IUSE+=" ${IUSE_CPU_FLAGS_X86// / cpu_flags_x86_}"
+IUSE="acl examples iconv ipv6 lz4 ssl stunnel system-zlib xattr xxhash zstd"
+REQUIRED_USE+=" examples? ( ${PYTHON_REQUIRED_USE} )"
 
-LIB_DEPEND="acl? ( virtual/acl[static-libs(+)] )
-	lz4? ( app-arch/lz4[static-libs(+)] )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0=[static-libs(+)] )
-		libressl? ( dev-libs/libressl:0=[static-libs(+)] )
+RDEPEND="acl? ( virtual/acl )
+	examples? (
+		${PYTHON_DEPS}
+		dev-lang/perl
 	)
-	system-zlib? ( sys-libs/zlib[static-libs(+)] )
-	xattr? ( kernel_linux? ( sys-apps/attr[static-libs(+)] ) )
-	xxhash? ( dev-libs/xxhash[static-libs(+)] )
-	zstd? ( >=app-arch/zstd-1.4[static-libs(+)] )
-	>=dev-libs/popt-1.5[static-libs(+)]"
-RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
+	lz4? ( app-arch/lz4 )
+	ssl? ( dev-libs/openssl:0= )
+	system-zlib? ( sys-libs/zlib )
+	xattr? ( kernel_linux? ( sys-apps/attr ) )
+	xxhash? ( dev-libs/xxhash )
+	zstd? ( >=app-arch/zstd-1.4 )
+	>=dev-libs/popt-1.5
 	iconv? ( virtual/libiconv )"
-DEPEND="${RDEPEND}
-	static? ( ${LIB_DEPEND} )"
+DEPEND="${RDEPEND}"
+BDEPEND="examples? ( ${PYTHON_DEPS} )"
 
-if [[ "${PV}" == *9999 ]] ; then
-	BDEPEND="${PYTHON_DEPS}
-		$(python_gen_any_dep '
+if [[ ${PV} == *9999 ]] ; then
+	BDEPEND+=" ${PYTHON_DEPS}
+		$(python_gen_cond_dep '
 			dev-python/commonmark[${PYTHON_USEDEP}]
 		')"
+else
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-waynedavison )"
 fi
 
-# Only required for live ebuild
-python_check_deps() {
-	has_version "dev-python/commonmark[${PYTHON_USEDEP}]"
+pkg_setup() {
+	# - USE=examples needs Python itself at runtime, but nothing else
+	# - 9999 needs commonmark at build time
+	if [[ ${PV} == *9999 ]] || use examples ; then
+		python-single-r1_pkg_setup
+	fi
 }
 
 src_prepare() {
 	default
-	if [[ "${PV}" == *9999 ]] ; then
+
+	if [[ ${PV} == *9999 ]] ; then
 		eaclocal -I m4
 		eautoconf -o configure.sh
 		eautoheader && touch config.h.in
@@ -66,7 +78,10 @@ src_prepare() {
 }
 
 src_configure() {
-	use static && append-ldflags -static
+	# Force enable IPv6 on musl - upstream bug:
+	# https://bugzilla.samba.org/show_bug.cgi?id=10715
+	use elibc_musl && use ipv6 && append-cppflags -DINET6
+
 	local myeconfargs=(
 		--with-rsyncd-conf="${EPREFIX}"/etc/rsyncd.conf
 		--without-included-popt
@@ -81,16 +96,7 @@ src_configure() {
 		$(use_enable zstd)
 	)
 
-	if use elibc_glibc && [[ "${ARCH}" == "amd64" ]] ; then
-		# SIMD is only available for x86_64 right now
-		# and only on glibc (#728868)
-		myeconfargs+=( $(use_enable cpu_flags_x86_sse2 simd) )
-	else
-		myeconfargs+=( --disable-simd )
-	fi
-
 	econf "${myeconfargs[@]}"
-	[[ "${PV}" == *9999 ]] || touch proto.h-tstamp #421625
 }
 
 src_install() {
@@ -117,29 +123,34 @@ src_install() {
 
 	# Install the useful contrib scripts
 	if use examples ; then
+		python_fix_shebang support/
+
 		exeinto /usr/share/rsync
 		doexe support/*
+
 		rm -f "${ED}"/usr/share/rsync/{Makefile*,*.c}
 	fi
 
 	eprefixify "${ED}"/etc/{,xinetd.d}/rsyncd*
 
-	systemd_dounit "${FILESDIR}/rsyncd.service"
+	systemd_newunit packaging/systemd/rsync.service rsyncd.service
 }
 
 pkg_postinst() {
-	if egrep -qis '^[[:space:]]use chroot[[:space:]]*=[[:space:]]*(no|0|false)' \
+	if grep -Eqis '^[[:space:]]use chroot[[:space:]]*=[[:space:]]*(no|0|false)' \
 		"${EROOT}"/etc/rsyncd.conf "${EROOT}"/etc/rsync/rsyncd.conf ; then
 		ewarn "You have disabled chroot support in your rsyncd.conf.  This"
 		ewarn "is a security risk which you should fix.  Please check your"
 		ewarn "/etc/rsyncd.conf file and fix the setting 'use chroot'."
 	fi
+
 	if use stunnel ; then
 		einfo "Please install \">=net-misc/stunnel-4\" in order to use stunnel feature."
 		einfo
 		einfo "You maybe have to update the certificates configured in"
 		einfo "${EROOT}/etc/stunnel/rsync.conf"
 	fi
+
 	if use system-zlib ; then
 		ewarn "Using system-zlib is incompatible with <rsync-3.1.1 when"
 		ewarn "using the --compress option."

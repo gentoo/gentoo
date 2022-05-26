@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit desktop flag-o-matic toolchain-funcs
 
 DESCRIPTION="The ultimate old-school single player dungeon exploration game"
@@ -10,29 +11,36 @@ SRC_URI="https://nethack.org/download/${PV}/nethack-${PV//.}-src.tgz -> ${P}.tar
 
 LICENSE="nethack"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
 IUSE="X"
 
-RDEPEND="acct-group/gamestat
+RDEPEND="
+	acct-group/gamestat
 	sys-libs/ncurses:0=
 	X? (
 		x11-libs/libXaw
 		x11-libs/libXpm
 		x11-libs/libXt
-	)"
-DEPEND="${RDEPEND}
+	)
+"
+DEPEND="
+	${RDEPEND}
 	X? ( x11-base/xorg-proto )
-	"
-BDEPEND="virtual/pkgconfig
+"
+BDEPEND="
+	virtual/pkgconfig
+	virtual/yacc
 	X? (
 		x11-apps/bdftopcf
 		x11-apps/mkfontscale
-	)"
+	)
+"
 
 S="${WORKDIR}/NetHack-NetHack-${PV}_Released"
 
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-3.6.3-recover.patch"
+	eapply "${FILESDIR}/${PN}-3.6.6-wunused-result.patch" # bug 830556
 	eapply_user
 
 	cp "${FILESDIR}/${PN}-3.6.3-hint-$(usex X x11 tty)" hint || die "Failed to copy hint file"

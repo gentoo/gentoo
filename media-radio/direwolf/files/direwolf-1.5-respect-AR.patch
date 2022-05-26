@@ -1,0 +1,22 @@
+diff --git a/Makefile.linux b/Makefile.linux
+index 3d433bd..bf8ed3d 100644
+--- a/Makefile.linux
++++ b/Makefile.linux
+@@ -474,7 +474,7 @@ ttcalc : ttcalc.o ax25_pad.o fcs_calc.o textcolor.o misc.a
+ # UTM, USNG, MGRS conversions.
+ 
+ geotranz.a : error_string.o  mgrs.o  polarst.o  tranmerc.o  ups.o  usng.o  utm.o
+-	ar -cr $@ $^
++	$(AR) -cr $@ $^
+ 
+ error_string.o : geotranz/error_string.c
+ 	$(CC) $(CFLAGS) -c -o $@ $^
+@@ -502,7 +502,7 @@ utm.o : geotranz/utm.c
+ # We don't need the others in that same directory.
+ 
+ misc.a : strlcpy.o strlcat.o
+-	ar -cr $@ $^	
++	$(AR) -cr $@ $^
+  
+ strlcpy.o : misc/strlcpy.c
+ 	$(CC) $(CFLAGS) -I. -c -o $@ $^

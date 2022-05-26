@@ -1,60 +1,57 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
-SCM=""
-if [ "${PV#9999}" != "${PV}" ] ; then
-	SCM="git-r3"
-	EGIT_REPO_URI="https://github.com/vcstools/vcstools"
-fi
+PYTHON_COMPAT=( python3_{8..10} )
 
-inherit ${SCM} distutils-r1
+inherit distutils-r1
 
 DESCRIPTION="Python library for interacting with various VCS systems"
 HOMEPAGE="https://wiki.ros.org/vcstools"
-if [ "${PV#9999}" != "${PV}" ] ; then
-	SRC_URI=""
-	KEYWORDS=""
-else
-	SRC_URI="http://download.ros.org/downloads/${PN}/${P}.tar.gz
-		https://github.com/vcstools/vcstools/archive/${PV}.tar.gz -> ${P}.tar.gz
-	"
-	KEYWORDS="~amd64 ~arm"
-fi
+SRC_URI="
+	http://download.ros.org/downloads/${PN}/${P}.tar.gz
+	https://github.com/vcstools/vcstools/archive/${PV}.tar.gz -> ${P}.tar.gz
+"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
+KEYWORDS="~amd64 ~arm"
 
 RDEPEND="
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}"
 BDEPEND="test? (
-		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
 		dev-vcs/git
-		dev-vcs/bzr
 		dev-vcs/mercurial
 		dev-vcs/subversion
 	)
 "
+
 PATCHES=( "${FILESDIR}/yaml.patch" )
 
-python_test() {
+distutils_enable_tests nose
+
+src_prepare() {
+	# Those fail because of broken upstream testing
+	rm test/test_bzr.py || die
+	sed -e 's/test_checkout_timeout/_&/' -i test/test_git.py || die
+
+	distutils-r1_src_prepare
+}
+
+src_test() {
 	# From travis.yml
 	# Set git config to silence some stuff in the tests
-	git config --global user.email "foo@example.com"
-	git config --global user.name "Foo Bar"
+	git config --global user.email "foo@example.com" || die
+	git config --global user.name "Foo Bar" || die
 	# Set the hg user
-	echo -e "[ui]\nusername = Your Name <your@mail.com>" >> ~/.hgrc
-	# Set the bzr user
-	bzr whoami "Your Name <name@example.com>"
-	#git config --global user.email "you@example.com"
-	#git config --global user.name "Your Name"
+	cat > ~/.hgrc <<- EOF || die
+		[ui]
+		username = Your Name <your@mail.com>
+	EOF
 
-	nosetests --with-coverage --cover-package vcstools || die
+	distutils-r1_src_test
 }

@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Optional encoders:"
 	optfeature "aac support" "media-libs/faac media-libs/libaacplus"
 	optfeature "dvd support" media-video/lsdvd
 	optfeature "flac support" media-libs/flac

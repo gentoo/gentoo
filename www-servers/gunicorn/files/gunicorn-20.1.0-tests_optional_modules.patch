@@ -1,0 +1,22 @@
+--- a/tests/workers/test_geventlet.py
++++ b/tests/workers/test_geventlet.py
+@@ -3,5 +3,8 @@
+ # This file is part of gunicorn released under the MIT license.
+ # See the NOTICE for more information.
+ 
++import pytest
++pytest.importorskip('eventlet')
++
+ def test_import():
+     __import__('gunicorn.workers.geventlet')
+--- a/tests/workers/test_ggevent.py
++++ b/tests/workers/test_ggevent.py
+@@ -3,5 +3,8 @@
+ # This file is part of gunicorn released under the MIT license.
+ # See the NOTICE for more information.
+ 
++import pytest
++pytest.importorskip('gevent')
++
+ def test_import():
+     __import__('gunicorn.workers.ggevent')

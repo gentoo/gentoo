@@ -1,0 +1,28 @@
+From: Sam James <sam@gentoo.org>
+Date: Thu, 22 Apr 2021 14:33:15 +0000
+Subject: [PATCH] Use pkg-config for freetype2
+
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -1,5 +1,7 @@
+ override CXXFLAGS+= -Wall -fsigned-char -fno-exceptions -fno-rtti
+ 
++PKG_CONFIG?=pkg-config
++
+ PLATFORM= $(shell uname -s | tr '[:lower:]' '[:upper:]')
+ PLATFORM_PREFIX= native
+ 
+@@ -206,10 +208,10 @@ master: libenet $(MASTER_OBJS)
+ 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o sauer_master $(MASTER_OBJS) $(MASTER_LIBS)
+ 
+ shared/cube2font.o: shared/cube2font.c
+-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c -o $@ $< `freetype-config --cflags`
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c -o $@ $< `${PKG_CONFIG} --cflags freetype2`
+ 
+ cube2font: shared/cube2font.o
+-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o cube2font shared/cube2font.o `freetype-config --libs` -lz
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o cube2font shared/cube2font.o `${PKG_CONFIG} --libs freetype2` -lz
+ 
+ ifneq (,$(findstring DARWIN,$(PLATFORM)))
+ install: client
+-- 

@@ -1,0 +1,149 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,9 +11,6 @@
+     add_compile_definitions("USE_HDF5=ON")
+ endif(USE_HDF5)
+ 
+-set(EXT_PROJECTS_DIR ${PROJECT_SOURCE_DIR}/ext)
+-set(CMAKE_CXX_FLAGS_PROFILE "-g")
+-
+ # Set Release type for builds where CMAKE_BUILD_TYPE is unset
+ # This is usually a good default as this implictly enables
+ #
+@@ -33,44 +30,12 @@
+     set(CMAKE_CXX_EXTENSIONS OFF)
+ endif()
+ 
+-#add_compile_options(-Wall -Wno-unused-function)
+-
+-if(LINK MATCHES static)
+-    message("static build")
+-ELSE(LINK MATCHES shared)
+-    message("shared build")
+-ENDIF(LINK MATCHES static)
+-
+-
+-include(ExternalProject)
+-ExternalProject_Add(htslib
+-    PREFIX ${PROJECT_SOURCE_DIR}/ext/htslib
+-    SOURCE_DIR ${PROJECT_SOURCE_DIR}/ext/htslib
+-    BUILD_IN_SOURCE 1
+-    CONFIGURE_COMMAND autoheader && autoconf && ${PROJECT_SOURCE_DIR}/ext/htslib/configure 
+-        --prefix=${PREFIX} --disable-bz2 --disable-lzma --disable-libcurl
+-    BUILD_COMMAND make lib-static
+-    INSTALL_COMMAND ""
+-)
+-
+-include_directories(${htslib_PREFIX}/src/htslib)
+-
+-
+-
+-# add_compile_options(-Wdeprecated-register)
+-
+ add_subdirectory(src)
+-include_directories(${EXT_PROJECTS_DIR})
+ 
+ option(BUILD_TESTING "Build unit tests." OFF)
+ include(CTest)
+ 
+ if (BUILD_TESTING)
+-    add_subdirectory(${EXT_PROJECTS_DIR}/catch)
+-
+-    # Includes Catch in the project:
+-    include_directories(${CATCH_INCLUDE_DIR} ${COMMON_INCLUDES})
+-
+     add_subdirectory(unit_tests)
+ endif(BUILD_TESTING)
+ 
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -3,30 +3,17 @@
+ 
+ list(REMOVE_ITEM sources main.cpp)
+ 
+-include_directories(../ext/htslib)
+-
+ add_library(kallisto_core ${sources} ${headers})
+ target_include_directories(kallisto_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+ 
+ add_executable(kallisto main.cpp)
+ 
+-find_package( Threads REQUIRED )
+-target_link_libraries(kallisto kallisto_core pthread ${CMAKE_CURRENT_SOURCE_DIR}/../ext/htslib/libhts.a)
+-
+-if(LINK MATCHES static)
+-    set(BUILD_SHARED_LIBS OFF)
+-    set(HDF5_USE_STATIC_LIBRARIES 1)
+-
+-    if (UNIX AND NOT APPLE)
+-        #set(CMAKE_EXE_LINKER_FLAGS  "-static -static-libgcc -static-libstdc++")
+-        set(CMAKE_EXE_LINKER_FLAGS  "-static -static-libstdc++")
+-        SET(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
+-        set(CMAKE_EXE_LINKER_FLAGS  "-static -static-libgcc -static-libstdc++")
+-    endif(UNIX AND NOT APPLE)
+-
+-    SET_TARGET_PROPERTIES(kallisto kallisto_core PROPERTIES LINK_SEARCH_END_STATIC 1)
+-endif(LINK MATCHES static)
++find_package( PkgConfig REQUIRED )
++pkg_check_modules( HTSLIB REQUIRED htslib )
+ 
++find_package( Threads REQUIRED )
++target_include_directories(kallisto PRIVATE ${HTSLIB_CFLAGS})
++target_link_libraries(kallisto PRIVATE kallisto_core Threads::Threads ${HTSLIB_LDFLAGS})
+ 
+ if(USE_HDF5)
+     find_package( HDF5 REQUIRED )
+@@ -36,7 +23,7 @@
+ 
+ if ( ZLIB_FOUND )
+     include_directories( ${ZLIB_INCLUDE_DIRS} )
+-    target_link_libraries(kallisto kallisto_core ${ZLIB_LIBRARIES})
++    target_link_libraries(kallisto PRIVATE kallisto_core ${ZLIB_LIBRARIES})
+ else()
+     message(FATAL_ERROR "zlib not found. Required for to output files" )
+ endif( ZLIB_FOUND )
+@@ -44,22 +31,17 @@
+ if(USE_HDF5)
+     if(HDF5_FOUND)
+         include_directories( ${HDF5_INCLUDE_DIRS} )
+-        target_link_libraries( kallisto_core ${HDF5_LIBRARIES} )
+-        target_link_libraries( kallisto ${HDF5_LIBRARIES} )
++        target_link_libraries( kallisto_core PRIVATE ${HDF5_LIBRARIES} )
++        target_link_libraries( kallisto PRIVATE ${HDF5_LIBRARIES} )
+     else()
+         message(FATAL_ERROR "HDF5 not found. Required to output files")
+     endif()
+ endif(USE_HDF5)
+ 
+-if(LINK MATCHES static)
+-    if (UNIX AND NOT APPLE)
+-        target_link_libraries(kallisto librt.a)
+-    endif()
+-else()
+-    if (UNIX AND NOT APPLE)
+-        target_link_libraries(kallisto rt)
+-    endif()
+-endif(LINK MATCHES static)
+-
++target_compile_options( kallisto_core PRIVATE ${HTSLIB_CFLAGS} )
++target_link_libraries( kallisto_core PRIVATE ${HTSLIB_LDFLAGS} )
+ 
+-install(TARGETS kallisto DESTINATION "${CMAKE_INSTALL_BINDIR}")
+\ No newline at end of file
++install(TARGETS kallisto DESTINATION "${CMAKE_INSTALL_BINDIR}")
++if ( BUILD_SHARED_LIBS )
++    install(TARGETS kallisto_core DESTINATION "${CMAKE_INSTALL_LIBDIR}")
++endif()
+--- a/unit_tests/CMakeLists.txt
++++ b/unit_tests/CMakeLists.txt
+@@ -8,6 +8,10 @@
+ add_executable(tests ${sources})
+ add_test(unittest tests)
+ 
++find_package( Catch2 REQUIRED )
++include_directories( ${Catch2_INCLUDE_DIRS} )
++target_link_libraries( tests ${Catch2_LIBRARIES} )
++
+ find_package( ZLIB REQUIRED )
+ if ( ZLIB_FOUND )
+     include_directories( ${ZLIB_INCLUDE_DIRS} )

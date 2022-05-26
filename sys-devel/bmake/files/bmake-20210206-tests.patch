@@ -1,0 +1,18 @@
+--- a/unit-tests/Makefile
++++ b/unit-tests/Makefile
+@@ -191,7 +191,6 @@ TESTS+=		dotwait
+ TESTS+=		envfirst
+ TESTS+=		error
+ TESTS+=		# escape	# broken by reverting POSIX changes
+-TESTS+=		export
+ TESTS+=		export-all
+ TESTS+=		export-env
+ TESTS+=		export-variants
+@@ -290,7 +289,6 @@ TESTS+=		sh-leading-plus
+ TESTS+=		sh-meta-chars
+ TESTS+=		sh-multi-line
+ TESTS+=		sh-single-line
+-TESTS+=		shell-csh
+ TESTS+=		shell-custom
+ .if exists(/bin/ksh)
+ TESTS+=		shell-ksh

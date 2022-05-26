@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>adel.ks@zegrapher.com</email>
+		<name>Adel KARA SLIMANE</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		VMAF is a perceptual video quality assessment algorithm developed by Netflix. This software package includes a stand-alone C library libvmaf.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Netflix/vmaf</remote-id>
+		<bugs-to>https://github.com/Netflix/vmaf/issues</bugs-to>
+	</upstream>
+	<use>
+		<flag name="embed-models">Compile default vmaf models into the library (needs <pkg>app-editors/vim-core</pkg>)</flag>
+	</use>
+</pkgmetadata>

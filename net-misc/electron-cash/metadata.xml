@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>zmedico@gentoo.org</email>
@@ -7,7 +7,8 @@
 	</maintainer>
 	<use>
 		<flag name="cli">Enables the CLI interface</flag>
-		<flag name="audio_modem">Enable plugin to support Audio Modem</flag>
+		<flag name="amodem">Enable plugin to support Audio Modem</flag>
+		<flag name="audio_modem">Deprecated name for amodem</flag>
 		<flag name="cosign">Enable plugin to support multisig wallets between multiple Electrum clients</flag>
 		<flag name="digitalbitbox">Enable plugin to support Digital Bitbox hardware wallet</flag>
 		<flag name="email">Enable plugin to support emailing invoices</flag>
@@ -16,6 +17,6 @@
 		<flag name="vkb">Enable plugin for virtual keyboard</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">fyookball/electrum</remote-id>
+		<remote-id type="github">Electron-Cash/Electron-Cash</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,48 +1,42 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools flag-o-matic pam tmpfiles toolchain-funcs
+inherit autotools flag-o-matic pam tmpfiles
 
 DESCRIPTION="screen manager with VT100/ANSI terminal emulation"
 HOMEPAGE="https://www.gnu.org/software/screen/"
 
-if [[ "${PV}" != 9999 ]] ; then
+if [[ ${PV} != 9999 ]] ; then
 	SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/screen.git"
 	EGIT_CHECKOUT_DIR="${WORKDIR}/${P}" # needed for setting S later on
-	S="${WORKDIR}/${P}/src"
+	S="${WORKDIR}"/${P}/src
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug nethack pam selinux multiuser"
 
-CDEPEND="
-	>=sys-libs/ncurses-5.2:0=
+DEPEND=">=sys-libs/ncurses-5.2:=
+	virtual/libcrypt:=
 	pam? ( sys-libs/pam )"
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	acct-group/utmp
 	selinux? ( sec-policy/selinux-screen )"
-DEPEND="${CDEPEND}
-	sys-apps/texinfo"
+BDEPEND="sys-apps/texinfo"
 
 PATCHES=(
 	# Don't use utempter even if it is found on the system.
-	"${FILESDIR}"/${PN}-4.3.0-no-utempter.patch
-	"${FILESDIR}"/${PN}-4.6.2-utmp-exit.patch
+	"${FILESDIR}"/${P}-no-utempter.patch
 )
 
 src_prepare() {
-	if [[ "${PV}" != *9999 ]] ; then
-		default
-	else
-		eapply_user
-	fi
+	default
 
 	# sched.h is a system header and causes problems with some C libraries
 	mv sched.h _sched.h || die
@@ -50,7 +44,7 @@ src_prepare() {
 		screen.h winmsg.c window.h sched.c canvas.h || die
 	sed -i 's@[[:space:]]sched\.h@ _sched.h@' Makefile.in || die
 
-	# Fix manpage.
+	# Fix manpage
 	sed -i \
 		-e "s:/usr/local/etc/screenrc:${EPREFIX}/etc/screenrc:g" \
 		-e "s:/usr/local/screens:${EPREFIX}/tmp/screen:g" \
@@ -59,7 +53,7 @@ src_prepare() {
 		-e "s:/local/screens/S\\\-:${EPREFIX}/tmp/screen/S\\\-:g" \
 		doc/screen.1 || die
 
-	if [[ ${CHOST} == *-darwin* ]] || use elibc_musl ; then
+	if [[ ${CHOST} == *-darwin* ]] || use elibc_musl; then
 		sed -i -e '/^#define UTMPOK/s/define/undef/' acconfig.h || die
 	fi
 
@@ -73,7 +67,7 @@ src_prepare() {
 src_configure() {
 	append-cppflags "-DMAXWIN=${MAX_SCREEN_WINDOWS:-100}"
 
-	if [[ ${CHOST} == *-solaris* ]] ; then
+	if [[ ${CHOST} == *-solaris* ]]; then
 		# enable msg_header by upping the feature standard compatible
 		# with c99 mode
 		append-cppflags -D_XOPEN_SOURCE=600
@@ -88,6 +82,7 @@ src_configure() {
 		--with-pty-mode=0620
 		--with-pty-group=5
 		--enable-telnet
+		--enable-utmp
 		$(use_enable pam)
 	)
 	econf "${myeconfargs[@]}"
@@ -129,31 +124,21 @@ src_install() {
 	insinto /etc
 	doins "${FILESDIR}"/screenrc
 
-	pamd_mimic_system screen auth
+	if use pam; then
+		pamd_mimic_system screen auth
+	fi
 
 	dodoc "${DOCS[@]}"
 }
 
 pkg_postinst() {
-	if [[ -z ${REPLACING_VERSIONS} ]]
-	then
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		elog "Some dangerous key bindings have been removed or changed to more safe values."
 		elog "We enable some xterm hacks in our default screenrc, which might break some"
 		elog "applications. Please check /etc/screenrc for information on these changes."
 	fi
 
-	# Add /tmp/screen in case it doesn't exist yet. This should solve
-	# problems like bug #508634 where tmpfiles.d isn't in effect.
-	local rundir="${EROOT}/tmp/${PN}"
-	if [[ ! -d ${rundir} ]] ; then
-		if use multiuser || use prefix ; then
-			tmpfiles_group="root"
-		else
-			tmpfiles_group="utmp"
-		fi
-		mkdir -m 0775 "${rundir}"
-		chgrp ${tmpfiles_group} "${rundir}"
-	fi
+	tmpfiles_process screen.conf
 
-	ewarn "This revision changes the screen socket location to ${rundir}"
+	ewarn "This revision changes the screen socket location to ${EROOT}/tmp/${PN}"
 }

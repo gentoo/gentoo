@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -34,6 +34,7 @@ PATCHES=(
 	"${S}"/debian/patches/02_fix-firefox-buttons.patch
 	# https://bugs.gentoo.org/419395
 	"${FILESDIR}"/${P}-glib-2.31.patch
+	"${FILESDIR}"/${P}-libm.patch
 )
 
 src_prepare() {

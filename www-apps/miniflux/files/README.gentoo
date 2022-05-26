@@ -1,0 +1,76 @@
+Introduction
+============
+
+Below are some common tasks needed to administrate a miniflux instance.
+
+
+Create the Database (Example)
+=============================
+
+# Switch to the postgres user
+$ su - postgres
+
+# Create a database user for miniflux
+$ createuser -P miniflux
+Enter password for new role: ******
+Enter it again: ******
+
+# Create a database for miniflux that belongs to our user
+$ createdb -O miniflux miniflux
+
+# Create the extension hstore as superuser
+$ psql miniflux -c 'create extension hstore'
+CREATE EXTENSION
+
+
+Create the hstore Extension
+===========================
+
+To create the hstore extension, connect to the miniflux database as any user
+with SUPERUSER privileges (like the postgres user) and run:
+
+  CREATE EXTENSION hstore;
+
+Alternatively, give SUPERUSER privileges to the miniflux user only during the
+schema migration:
+
+  ALTER USER miniflux WITH SUPERUSER;
+  -- Run the migrations (miniflux -migrate)
+  ALTER USER miniflux WITH NOSUPERUSER;
+
+
+Create the First Admin User
+===========================
+
+The easiest way to create the first admin user with your new miniflux instance
+is by running:
+
+  miniflux -create-admin
+
+Alternatively, set the DATABASE_URL, RUN_MIGRATIONS, CREATE_ADMIN,
+ADMIN_USERNAME, and ADMIN_PASSWORD variables in your config file or run miniflux
+with these set as environment variables. For example:
+
+  export DATABASE_URL=postgres://miniflux:secretpassword@db/miniflux
+  export RUN_MIGRATIONS=1
+  export CREATE_ADMIN=1
+  export ADMIN_USERNAME=admin
+  export ADMIN_PASSWORD=n0tAstrongPassw0rd!
+  miniflux
+
+
+Migrating the Database
+======================
+
+On upgrades, the miniflux database needs to be migrated to the new schema
+version. This is handled automatically when you run 'emerge --config miniflux'
+but can also be performed using the following manual steps:
+
+1. Export the DATABASE_URL variable.
+2. Disconnect all users by flushing all sessions with 'miniflux -flush-sessions'
+3. Stop the miniflux server.
+4. Backup your database.
+5. Verify that your backup is really working.
+6. Run the database migrations with 'miniflux -migrate' or set the environment
+   variable RUN_MIGRATIONS=1.
+7. Start miniflux.

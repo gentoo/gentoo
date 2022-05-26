@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit cmake xdg-utils
 
 DESCRIPTION="A Gtk+-based Bible-study frontend for SWORD"
 HOMEPAGE="https://xiphos.org/"
-SRC_URI="https://github.com/crosswire/${PN}/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/crosswire/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2 FDL-1.1 LGPL-2 MIT MPL-1.1"
 SLOT="0"
@@ -39,6 +39,7 @@ BDEPEND="${COMMON}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.2.1-appdata_metainfo.patch
+	"${FILESDIR}"/${PN}-4.2.1-glib_version_min_required.patch
 )
 
 src_configure() {

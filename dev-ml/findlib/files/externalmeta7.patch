@@ -1,0 +1,13 @@
+Index: findlib-1.8.0/configure
+===================================================================
+--- findlib-1.8.0.orig/configure
++++ findlib-1.8.0/configure
+@@ -581,7 +581,7 @@ fi
+ 
+ # Generate the META files now.
+ 
+-l="$ldbm dynlink $lgraphics $lnum str threads unix stdlib bigarray ocamldoc $llabltk $lcamlp4 $lobuild $lcomplibs $lbytes $lspacetime"
++l="dynlink str threads unix stdlib bigarray ocamldoc $lcomplibs $lbytes $lspacetime"
+ 
+ for dir in site-lib-src/*; do
+     # We do not really know if $dir is a directory.

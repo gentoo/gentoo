@@ -1,22 +1,23 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+# Please bump with app-emulation/libvirt!
 
+PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_USE_SETUPTOOLS=no
 MY_P="${P/_rc/-rc}"
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/libvirt.org.asc
+inherit distutils-r1 verify-sig
 
-inherit distutils-r1
-
-if [[ ${PV} = *9999* ]]; then
+if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/libvirt/libvirt-python.git"
-	SRC_URI=""
-	KEYWORDS=""
 	RDEPEND="app-emulation/libvirt:=[-python(-)]"
 else
-	SRC_URI="https://libvirt.org/sources/python/${MY_P}.tar.gz"
+	SRC_URI="https://libvirt.org/sources/python/${MY_P}.tar.gz
+		verify-sig? ( https://libvirt.org/sources/python/${MY_P}.tar.gz.asc )"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 	RDEPEND="app-emulation/libvirt:0/${PV}"
 fi
@@ -24,24 +25,28 @@ S="${WORKDIR}/${P%_rc*}"
 
 DESCRIPTION="libvirt Python bindings"
 HOMEPAGE="https://www.libvirt.org"
+
 LICENSE="LGPL-2"
 SLOT="0"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
-DEPEND="${RDEPEND}
+BDEPEND="
 	virtual/pkgconfig
-	test? ( dev-python/lxml[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}] )"
+	test? (
+		dev-python/lxml[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
+	)
+	verify-sig? ( sec-keys/openpgp-keys-libvirt )
+"
 
-python_test() {
-	esetup.py test
-}
+distutils_enable_tests setup.py
 
 python_install_all() {
 	if use examples; then
 		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
+
 	distutils-r1_python_install_all
 }

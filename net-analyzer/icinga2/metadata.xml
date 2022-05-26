@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>prometheanfire@gentoo.org</email>
@@ -8,6 +8,7 @@
 	<use>
 		<flag name="console">Adds support for line-editing in the console</flag>
 		<flag name="lto">Adds support for link time optimization</flag>
+		<flag name="jumbo-build">Combine source files to speed up build process, requires more memory</flag>
 		<flag name="mail">Allows for mailing of alerts</flag>
 		<flag name="mariadb">Enable support for the mariadb database backend</flag>
 		<flag name="nano-syntax">Adds support for syntax used in the nano editor</flag>

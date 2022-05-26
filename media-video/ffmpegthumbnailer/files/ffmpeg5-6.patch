@@ -1,0 +1,23 @@
+From 19675349662a4ea4455d7d13b01cca28ab585762 Mon Sep 17 00:00:00 2001
+From: Zane van Iperen <zane@zanevaniperen.com>
+Date: Mon, 15 Mar 2021 17:39:58 +1000
+Subject: [PATCH] lib/moviedecoder: use m_pVideoCodecContext instead of
+ AVStream::codec
+
+---
+ libffmpegthumbnailer/moviedecoder.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libffmpegthumbnailer/moviedecoder.cpp b/libffmpegthumbnailer/moviedecoder.cpp
+index dece668..0b7a280 100644
+--- a/libffmpegthumbnailer/moviedecoder.cpp
++++ b/libffmpegthumbnailer/moviedecoder.cpp
+@@ -484,7 +484,7 @@ void MovieDecoder::seek(int timeInSeconds)
+     }
+ 
+     checkRc(av_seek_frame(m_pFormatContext, -1, timestamp, 0), "Seeking in video failed");
+-    avcodec_flush_buffers(m_pFormatContext->streams[m_VideoStream]->codec);
++    avcodec_flush_buffers(m_pVideoCodecContext);
+ 
+     int keyFrameAttempts = 0;
+     bool gotFrame;

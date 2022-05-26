@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # XXX: atm, libbz2.a is always PIC :(, so it is always built quickly
@@ -6,16 +6,24 @@
 
 EAPI=7
 
-inherit toolchain-funcs multilib-minimal usr-ldscript
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/bzip2.gpg
+inherit toolchain-funcs multilib-minimal usr-ldscript verify-sig
+
+if [[ ${PVR} != 1.0.8-r1 ]]; then
+	die "Please remove libbz2.so.1.0 logic from multilib_src_install"
+fi
 
 DESCRIPTION="A high-quality data compressor used extensively by Gentoo Linux"
 HOMEPAGE="https://sourceware.org/bzip2/"
 SRC_URI="https://sourceware.org/pub/${PN}/${P}.tar.gz"
+SRC_URI+=" verify-sig? ( https://sourceware.org/pub/${PN}/${P}.tar.gz.sig )"
 
 LICENSE="BZIP2"
 SLOT="0/1" # subslot = SONAME
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="static static-libs"
+
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-bzip2 )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.4-makefile-CFLAGS.patch
@@ -57,6 +65,11 @@ multilib_src_compile() {
 	# Make sure we link against the shared lib #504648
 	ln -s libbz2.so.${PV} libbz2.so || die
 	bemake -f "${S}"/Makefile all LDFLAGS="${LDFLAGS} $(usex static -static '')"
+}
+
+multilib_src_test() {
+	cp "${S}"/sample* "${BUILD_DIR}" || die
+	bemake -f "${S}"/Makefile check
 }
 
 multilib_src_install() {

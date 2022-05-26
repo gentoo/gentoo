@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>gnome@gentoo.org</email>
@@ -17,7 +17,7 @@
 		<flag name="alsa">Enables ALSA sound driver.</flag>
 		<flag name="gstreamer">Enables gstreamer sound driver. Not useful when
 			alsa or pulseaudio is available.</flag>
-		<flag name="gtk">Enables building of gtk+ helper library, gtk+ runtime
+		<flag name="gtk2">Enables building of gtk+ helper library, gtk+ runtime
 			sound effects and the canberra-gtk-play utility. To enable the gtk+
 			sound effects add canberra-gtk-module to the colon separated list of
 			modules in the GTK_MODULES environment variable.</flag>

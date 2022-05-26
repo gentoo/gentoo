@@ -1,0 +1,22 @@
+From 04994984239e18ea68af04734c4c8a1324bc0ac6 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sat, 2 Apr 2022 15:00:42 +0200
+Subject: [PATCH] find qhelpgenerator binary
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -204,7 +204,9 @@ if(QUARTER_BUILD_DOCUMENTATION)
+     endif()
+   endif()
+   if(QUARTER_BUILD_DOC_QTHELP)
+-    find_program(QHG_LOCATION NAMES qhelpgenerator qhelpgenerator-qt5 DOC "Qt qhelpgenerator")
++    get_target_property(qt_qmake_location Qt5::qmake LOCATION)
++    get_filename_component(qt_bin_dir "${qt_qmake_location}" PATH)
++    find_program(QHG_LOCATION NAMES qhelpgenerator qhelpgenerator-qt5 DOC "Qt qhelpgenerator" HINTS "${qt_bin_dir}")
+     if(NOT QHG_LOCATION)
+       message(FATAL_ERROR "Missing program Qt qhelpgenerator")
+     else()
+-- 
+2.35.1
+

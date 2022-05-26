@@ -1,0 +1,40 @@
+From 4d3f99558cff95259590e70dfbf854a479f772ce Mon Sep 17 00:00:00 2001
+From: Nate Graham <nate@kde.org>
+Date: Wed, 4 May 2022 10:45:52 -0600
+Subject: [PATCH 2/8] applets/appmenu: fix top-level menu text coloration
+
+28537cf3ff3cd9210f7568f40334ac3a2c9bed18 made the color dynamic, but
+neglected to respect the Plasma color scheme, if any. This causes
+problems with Plasma themes that have their own colors and don't
+respect the systemwide color scheme, such as Breeze Twilight.
+
+Fix it by using the appropriate colors from the PlasmaCore color scheme
+object, not the systemwide object provided by Qt.
+
+BUG: 453348
+FIXED-IN: 5.24.6
+
+
+(cherry picked from commit 19d9bc7e395d8c6e007afdc3b3b5c11a7d02190e)
+---
+ applets/appmenu/package/contents/ui/MenuDelegate.qml | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/applets/appmenu/package/contents/ui/MenuDelegate.qml b/applets/appmenu/package/contents/ui/MenuDelegate.qml
+index 441e99016..afb37589a 100644
+--- a/applets/appmenu/package/contents/ui/MenuDelegate.qml
++++ b/applets/appmenu/package/contents/ui/MenuDelegate.qml
+@@ -66,9 +66,6 @@ AbstractButton {
+ 
+     contentItem: PC3.Label {
+         text: controlRoot.Kirigami.MnemonicData.richTextLabel
+-        // Kirigami.Theme.highlightedTextColor returns different colors
+-        // depending on window focus, which does not apply to this applet
+-        // instead, we use palette.highlightedText here, which returns consistent result
+-        color: background.state == MenuDelegate.State.Rest ? palette.windowText : palette.highlightedText
++        color: background.state == MenuDelegate.State.Rest ? PlasmaCore.Theme.textColor : PlasmaCore.Theme.highlightedTextColor
+     }
+ }
+-- 
+2.35.1
+

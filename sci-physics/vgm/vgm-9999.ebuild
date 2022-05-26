@@ -1,14 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/vmc-project/${PN}.git"
-	KEYWORDS=""
 else
 	MY_PV=$(ver_rs 1- -)
 	SRC_URI="https://github.com/vmc-project/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
@@ -17,35 +16,32 @@ else
 fi
 
 DESCRIPTION="Virtual Geometry Model for High Energy Physics Experiments"
-HOMEPAGE="http://ivana.home.cern.ch/ivana/VGM.html"
+HOMEPAGE="https://github.com/vmc-project/vgm/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+c++11 c++14 c++17 doc examples +geant4 +root test"
-
-REQUIRED_USE="^^ ( c++11 c++14 c++17 )"
+IUSE="doc examples +geant4 +root test"
 
 RDEPEND="
 	sci-physics/clhep:=
-	geant4? ( >=sci-physics/geant-4.10.6[c++11?,c++14?,c++17?] )
-	root? ( >=sci-physics/root-6.14:=[c++11?,c++14?,c++17?] )"
+	geant4? ( sci-physics/geant[c++17] )
+	root? ( sci-physics/root:=[c++17] )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[dot] )
 	test? (
 		sci-physics/geant[gdml]
-		sci-physics/geant-vmc[g4root]
+		sci-physics/geant4_vmc[g4root]
 	)"
 RESTRICT="
 	!geant4? ( test )
 	!root? ( test )
-	!test? ( test )"
+	!test? ( test )
+	!examples? ( test )"
 
 DOCS=(
 	doc/README
-	doc/todo.txt
 	doc/VGMhistory.txt
-	doc/VGM.html
-	doc/VGMversions.html
+	doc/todo.txt
 )
 
 src_configure() {
@@ -68,14 +64,15 @@ src_configure() {
 src_compile() {
 	cmake_src_compile
 	if use doc; then
-		cd packages
-		doxygen || die
+		doxygen packages/Doxyfile || die
 	fi
 }
 
 src_test() {
 	cd "${BUILD_DIR}"/test || die
-	./test_suite.sh || die
+	# See upstream issue: https://github.com/vmc-project/vgm/issues/5
+	sed -i 's/ ScaledSolids / /' test3_suite.sh || die
+	PATH="${BUILD_DIR}"/test:${PATH} ./test_suite.sh || die
 }
 
 src_install() {

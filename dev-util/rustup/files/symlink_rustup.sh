@@ -3,7 +3,8 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-SYMLINK_RUSTUP_VERSION="0.0.2"
+SYMLINK_RUSTUP_VERSION="0.0.3"
+
 
 : "${CARGO_HOME:=${HOME}/.cargo}"
 : "${RUSTUP_HOME:=${HOME}/.rustup}"
@@ -79,6 +80,7 @@ symlink_rustup() {
 
 
 main(){
+	[[ "$EUID" -eq 0 ]] && die "Running as root is not supported"
 	local me
 	me="$(basename "${BASH_SOURCE[${#BASH_SOURCE[@]} - 1]}")"
 	while [[ ${#} -gt 0 ]]; do

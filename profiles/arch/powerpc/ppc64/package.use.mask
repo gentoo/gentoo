@@ -1,5 +1,82 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Jimi Huotari <chiitoo@gentoo.org> (2022-05-08)
+# Not keyworded here yet.
+lxqt-base/lxqt-meta desktop-portal
+
+# Michał Górny <mgorny@gentoo.org> (2021-12-31)
+# Don't apply stable masks to python-exec since we're forcing every
+# impl there anyway. Please keep this in sync with use.stable.mask.
+dev-lang/python-exec -python_targets_pypy3
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-12)
+# telepathy stack is not keyworded
+dev-util/kdevelop reviewboard
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-01)
+# requires sys-apps/dbus-broker, which is keyworded here.
+sys-apps/systemd -hostnamed-fallback
+
+# Sam James <sam@gentoo.org> (2021-10-17)
+# Go doesn't support pie on ppc64, bug #818529
+net-dns/dnscrypt-proxy pie
+
+# Sam James <sam@gentoo.org> (2021-09-23)
+# Needs media-libs/libldac which builds on ppc64le, but not be
+media-video/pipewire -bluetooth
+
+# Marek Szuba <marecki@gentoo.org> (2021-07-18)
+# media-plugins/zam-plugins not keyworded here
+media-sound/easyeffects zamaudio
+
+# Ionen Wolkens <ionen@gentoo.org> (2021-07-01)
+# Feature currently relies on amd64 prebuilt binaries.
+media-video/obs-studio browser
+
+# Joonas Niilola <juippis@gentoo.org> (2021-06-23)
+# Pandoc is a required dep, and not keyworded.
+sys-apps/exa man
+
+# Matt Turner <mattst88@gentoo.org> (2021-06-10)
+# dev-python/django is not keyworded here
+dev-python/diskcache test
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-02-25)
+# depends on ring crate, which is not so portable
+# https://github.com/briansmith/ring/issues/389
+dev-util/sccache dist-server
+
+# Sam James <sam@gentoo.org> (2021-02-14)
+# Brings in a large number of unkeyworded
+# (broad) deps. Not keywording yet.
+# bug #769956
+dev-util/diffoscope R pascal
+
+# Sam James <sam@gentoo.org> (2021-02-14)
+# Haskell isn't keyworded on ppc64
+# bug #769956, bug #583400
+dev-util/diffoscope haskell
+
+# Michał Górny <mgorny@gentoo.org> (2020-12-21)
+# Sanitizers supported on this architecture.
+sys-libs/compiler-rt-sanitizers -asan -lsan -msan -tsan
+sys-libs/compiler-rt-sanitizers -ubsan -scudo
+sys-libs/compiler-rt-sanitizers -profile
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
+# fwupd keyworded now on ppc64
+kde-plasma/discover -firmware
+
+# Sam James <sam@gentoo.org> (2020-10-24)
+# asm redc is only available on amd64,
+# ppc64. bug #750974.
+sci-mathematics/gmp-ecm -custom-tune
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-05)
+# dropbox requires binaries unavaliable for ppc64
+# webengine flag requires unkeyworded plasma-telepathy-meta
+kde-apps/kdenetwork-meta dropbox webengine
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-08-20)
 # zfs is keyworded on ppc64
@@ -22,10 +99,6 @@ media-video/vlc -libplacebo
 # works on ppc64
 app-emulation/qemu -spice -usbredir
 
-# Georgy Yakovlev <gyakovlev@gentoo.org (2020-05-03)
-# works on ppc64
-sys-devel/llvm -gold
-
 # Jimi Huotari <chiitoo@gentoo.org> (2020-05-17)
 # Mask until 'app-arch/lxqt-archiver' is keyworded.
 lxqt-base/lxqt-meta archiver
@@ -36,7 +109,7 @@ net-analyzer/pnp4nagios icinga
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
 # bolt not keyworded on ~ppc64
-kde-plasma/plasma-meta crypt thunderbolt
+kde-plasma/plasma-meta thunderbolt
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-28)
 # not keyworded or irrelevant on ~ppc64, bug 679888
@@ -57,38 +130,17 @@ sys-apps/flashrom jlink-spi
 
 # Jimi Huotari <chiitoo@gentoo.org> (2019-07-28)
 # Mask unkeyworded, untested dependencies.
-# https://bugs.gentoo.org/689606
+# bug #689606
 lxqt-base/lxqt-meta admin powermanagement processviewer screenshot sudo
 lxqt-base/lxqt-panel cpuload networkmonitor pulseaudio sysstat
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-07-16)
-# sci-libs/dcmtk is not keyworded
-media-libs/openimageio dicom
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-12-10)
 # dev-lang/luajit lacks ppc64 keyword. luajit upstream does not support ppc64
 net-analyzer/snort open-appid
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-03-13)
-# missing keyword on media-libs/portmidi
-media-sound/hydrogen portmidi
-
-# Gilles Dartiguelongue <eva@gentoo.org> (2017-08-16)
-# missing keyword on dev-python/dbusmock, bug #620024
->=gnome-base/gnome-settings-daemon-3.24 test
-
-# Michał Górny <mgorny@gentoo.org> (2017-06-28)
-# app-misc/dtach is not keyworded, and tests are restricted anyway, so
-# no point in pursuing it right now.
-app-shells/bash-completion test
-
 # Jeroen Roovers <jer@gentoo.org> (2017-01-16)
 # Incomplete support, bug #605878.
 net-vpn/tor seccomp
-
-# Jeroen Roovers <jer@gentoo.org> (2017-02-05)
-# media-libs/libilbc has not been ported to PPC64
-media-video/ffmpeg libilbc
 
 # Robin H. Johnson <robbat2@gentoo.org> (2016-11-18)
 # dev-lang/luajit lacks ppc64 keyword. luajit upstream does not support ppc64
@@ -115,10 +167,6 @@ dev-java/ant-apache-bsf python
 # Mask until >sys-cluster/ceph-0.94 goes stable
 net-analyzer/rrdtool rados
 
-# Matthias Maier <tamiko@gentoo.org> (2014-12-24)
-# sys-devel/clang is not keyworded
-app-doc/doxygen clang
-
 # Michael Sterrett <mr_bones_@gentoo.org (2013-11-12)
 # Mask openmedia use flag because the content generation tools
 # are missing keywords.
@@ -141,16 +189,6 @@ www-client/seamonkey ipc
 # Kacper Kowalik <xarthisius@gentoo.org> (2010-05-30)
 # quesoglc is not keyworded
 x11-misc/rss-glx quesoglc
-
-# Brent Baude <ranger@gentoo.org> (2009-05-05)
-# Masking webkit from  libproxy due to TOC failure on webkit
-# and stupid 64bit toolchain.
-net-libs/libproxy webkit
-
-# Brent Baude <ranger@gentoo.org> (2008-06-11)
-# Masking out passwdqc from older pambase since pam_passwdqc is not keyworded
-# new versions require sys-auth/passwdqc which is keyworded
-<=sys-auth/pambase-20200304 passwdqc
 
 # Joseph Jezak <josejx@gentoo.org> (2010-02-12)
 # Mask unstable pidgin deps until we can mark them stable (farsight2)

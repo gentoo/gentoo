@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE='xml(+)'
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
@@ -23,7 +23,7 @@ SRC_URI+=" test? ( mirror://sourceforge/matroska/test_files/matroska_test_w1_1.z
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 
 BDEPEND="
 	test? (
@@ -35,7 +35,7 @@ BDEPEND="
 RDEPEND="
 	>=dev-python/appdirs-1.3[${PYTHON_USEDEP}]
 	>=dev-python/babelfish-0.5.2[${PYTHON_USEDEP}]
-	>=dev-python/beautifulsoup-4.4.0:4[${PYTHON_USEDEP}]
+	>=dev-python/beautifulsoup4-4.4.0[${PYTHON_USEDEP}]
 	>=dev-python/chardet-2.3.0[${PYTHON_USEDEP}]
 	>=dev-python/click-4.0[${PYTHON_USEDEP}]
 	dev-python/decorator[${PYTHON_USEDEP}]

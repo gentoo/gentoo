@@ -1,15 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 FINDLIB_USE="ocaml"
 JAVA_PKG_WANT_SOURCE="1.8"
 JAVA_PKG_WANT_TARGET="1.8"
 
-inherit findlib eutils multilib toolchain-funcs java-pkg-opt-2 flag-o-matic usr-ldscript \
-	autotools udev systemd python-r1
+inherit findlib multilib toolchain-funcs java-pkg-opt-2 flag-o-matic usr-ldscript \
+	autotools udev systemd python-r1 tmpfiles
 
 DESCRIPTION="Daemon that provides access to the Linux/Unix console for a blind person"
 HOMEPAGE="https://brltty.app/"
@@ -17,7 +17,7 @@ SRC_URI="https://brltty.app/archive/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ppc64 x86"
 IUSE="+api +beeper bluetooth +contracted-braille doc +fm gpm iconv icu
 		java louis +midi ncurses nls ocaml +pcm policykit python
 		usb systemd +speech tcl xml X"
@@ -110,7 +110,6 @@ src_configure() {
 		--includedir="${EPREFIX}"/usr/include
 		--localstatedir="${EPREFIX}"/var
 		--disable-stripping
-		--with-install-root="${D}"
 		--with-writable-directory="${EPREFIX}"/run/brltty
 		$(use_enable api)
 		$(use_with beeper beep-package)
@@ -163,12 +162,12 @@ src_install() {
 		findlib_src_preinst
 	fi
 
-	emake OCAML_LDCONF= install
+	emake INSTALL_ROOT="${D}" OCAML_LDCONF= install
 
 	if use python; then
 		python_install() {
 			cd "Bindings/Python" || die
-			emake install
+			emake INSTALL_ROOT="${D}" install
 		}
 		python_foreach_impl run_in_build_dir python_install
 	fi
@@ -183,7 +182,7 @@ src_install() {
 	udev_newrules Autostart/Udev/rules 70-brltty.rules
 	newinitd "${FILESDIR}"/brltty.rc brltty
 	systemd_dounit Autostart/Systemd/brltty@.service
-	systemd_dotmpfilesd "${FILESDIR}/${PN}.tmpfiles.conf"
+	dotmpfiles "${FILESDIR}/${PN}.tmpfiles.conf"
 
 	if use api ; then
 		local libdir="$(get_libdir)"
@@ -208,8 +207,10 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process ${PN}.tmpfiles.conf
+
 	elog
-	elog "please be sure ${ROOT}/etc/brltty.conf is correct for your system."
+	elog "please be sure ${EROOT}/etc/brltty.conf is correct for your system."
 	elog
 	elog "To make brltty start on boot, type this command as root:"
 	elog

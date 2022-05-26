@@ -1,0 +1,23 @@
+https://github.com/sahib/glyr/pull/104
+
+From bf0a0f0a040aed89f7fef3dadf52754b73efc597 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 27 Feb 2022 00:48:25 +0000
+Subject: [PATCH] CMakeLists.txt: fix version
+
+This avoids e.g. the pkg-config file installed having the wrong version.
+
+It must be updated on new tags/releases (just before tagging).
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -38,7 +38,7 @@ ENDIF()
+ # ------------------------------------------------
+ SET(GLYR_VERSION_MAJOR "1")
+ SET(GLYR_VERSION_MINOR "0")
+-SET(GLYR_VERSION_MICRO "9")
++SET(GLYR_VERSION_MICRO "10")
+ SET(GLYR_VERSION_NAME  "Raving Raven")
+ # ------------------------------------------------
+ 

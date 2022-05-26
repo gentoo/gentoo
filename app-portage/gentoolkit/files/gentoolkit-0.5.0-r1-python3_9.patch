@@ -1,0 +1,34 @@
+From f14b6198d1dd9cb7f4a83f3822e4a1782a5581e8 Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <dolsen@gentoo.org>
+Date: Tue, 13 Oct 2020 10:04:07 -0400
+Subject: [PATCH] metadata.py: Fix duplicated use flag text bug 748129
+
+Regression from commit: 517581df206766
+link: https://gitweb.gentoo.org/proj/gentoolkit.git/commit/?id=517581df206766fabf10273cde565e0a6dc62829
+Gentoo bug: https://bugs.gentoo.org/748129
+Signed-off-by: Brian Dolbec <dolsen@gentoo.org>
+---
+ pym/gentoolkit/metadata.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/pym/gentoolkit/metadata.py b/pym/gentoolkit/metadata.py
+index c3dba98..0b58392 100644
+--- a/pym/gentoolkit/metadata.py
++++ b/pym/gentoolkit/metadata.py
+@@ -101,8 +101,11 @@ class _Useflag(object):
+ 		if node.text:
+ 			_desc = node.text
+ 		for child in node.iter():
+-			_desc += child.text if child.text else ''
+-			_desc += child.tail if child.tail else ''
++			# prevent duplicate text
++			if child.text and child.text not in _desc:
++				_desc += child.text
++			if child.tail and not child.tail in _desc:
++				_desc += child.tail
+ 		# This takes care of tabs and newlines left from the file
+ 		self.description = re.sub(r'\s+', ' ', _desc)
+ 
+--
+libgit2 1.0.1
+

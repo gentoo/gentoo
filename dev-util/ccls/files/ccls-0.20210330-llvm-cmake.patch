@@ -1,0 +1,18 @@
+https://github.com/MaskRay/ccls/commit/dce86b1362acbabb8f997869fdaa27adc67f9a55.patch
+https://bugs.gentoo.org/835916
+
+From: Fangrui Song <i@maskray.me>
+Date: Wed, 15 Dec 2021 10:13:29 -0800
+Subject: [PATCH] cmake: Add LANGUAGE C to fix find_package(Clang REQUIRED)
+ error
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ cmake_minimum_required(VERSION 3.8)
+-project(ccls LANGUAGES CXX)
++project(ccls LANGUAGES CXX C)
+ 
+ option(USE_SYSTEM_RAPIDJSON "Use system RapidJSON instead of the git submodule if exists" ON)
+ 
+

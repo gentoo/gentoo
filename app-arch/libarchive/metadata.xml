@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>mgorny@gentoo.org</email>
@@ -23,13 +23,6 @@
 		</flag>
 		<flag name="nettle">
 			Use <pkg>dev-libs/nettle</pkg> as crypto backend
-		</flag>
-		<flag name="zlib">
-			Allow accessing gzip-compressed archives through
-			<pkg>sys-libs/zlib</pkg>. This only affects libarchive's native
-			support: bsdtar will keep using gunzip as a filter if that's not
-			built-in. It's also needed for supporting extraction of ZIP
-			files.
 		</flag>
 	</use>
 	<upstream>

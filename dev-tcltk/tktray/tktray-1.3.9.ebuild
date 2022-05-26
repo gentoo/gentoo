@@ -1,21 +1,20 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils virtualx
-
-MY_P="${PN}${PV}"
+EAPI=7
 
 DESCRIPTION="System Tray Icon Support for Tk on X11"
 HOMEPAGE="https://code.google.com/p/tktray/"
-SRC_URI="https://tktray.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://tktray.googlecode.com/files/${PN}${PV}.tar.gz"
+S="${WORKDIR}/${PN}${PV}"
 
 LICENSE="tcltk"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~sparc x86"
-IUSE="debug threads test"
-RESTRICT="!test? ( test )"
+IUSE="debug threads"
+
+# tests need actual X server with user interaction, bug #284919
+RESTRICT="test"
 
 DEPEND="
 	>=dev-lang/tcl-8.4:0=
@@ -23,11 +22,7 @@ DEPEND="
 	x11-libs/libXext"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${MY_P}"
-
-src_prepare() {
-	epatch "${FILESDIR}"/1.1-ldflags.patch
-}
+PATCHES=( "${FILESDIR}"/1.1-ldflags.patch )
 
 src_configure() {
 	source /usr/lib/tclConfig.sh
@@ -35,8 +30,4 @@ src_configure() {
 	econf \
 		$(use_enable debug symbols) \
 		$(use_enable threads)
-}
-
-src_test() {
-	Xemake
 }

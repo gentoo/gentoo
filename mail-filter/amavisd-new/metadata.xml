@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>gentoo@seichter.de</email>
 		<name>Ralph Seichter</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -17,6 +17,5 @@
 		<flag name="rspamd">Add support for mail-filter/rspamd extension (HTTP only)</flag>
 		<flag name="rspamd-https">Add support for mail-filter/rspamd extension (both HTTP and HTTPS)</flag>
 		<flag name="spamassassin">Add support for mail-filter/spamassassin</flag>
-		<flag name="zmq">Add support for zeromq sockets</flag>
 	</use>
 </pkgmetadata>

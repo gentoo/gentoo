@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools desktop eutils linux-info
 
 HOMEPAGE="https://www.gnokii.org/"
-if [[ $PV == *9999 ]]; then
+if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="
 		git://git.savannah.nongnu.org/${PN}.git
 		http://git.savannah.gnu.org/r/${PN}.git"
@@ -52,7 +52,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	[[ $PV == *9999 ]] && \
+	[[ ${PV} == *9999 ]] && \
 		PATCHES=(
 			"${FILESDIR}"/${P}-icon.patch
 			"${FILESDIR}"/${P}-translations.patch
@@ -126,7 +126,7 @@ pkg_postinst() {
 	elog "Make sure the user that runs gnokii has read/write access to the device"
 	elog "which your phone is connected to."
 	elog "The simple way of doing that is to add your user to the uucp group."
-	if [[ $PV == *9999 ]]; then
+	if [[ ${PV} == *9999 ]]; then
 		elog "This is the GIT version of ${PN}. It is experimental but may have important bug fixes."
 		elog "You can keep track of the most recent commits at:"
 		elog "    http://git.savannah.gnu.org/cgit/gnokii.git/"

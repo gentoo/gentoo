@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,11 +6,11 @@ inherit toolchain-funcs
 
 DESCRIPTION="A utility to poison ARP caches"
 HOMEPAGE="http://arpoison.sourceforge.net/ http://www.arpoison.net/"
-SRC_URI="https://dev.gentoo.org/~jer/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~jsmolic/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ppc ~riscv x86"
 
 RDEPEND="
 	net-libs/libnet:1.1

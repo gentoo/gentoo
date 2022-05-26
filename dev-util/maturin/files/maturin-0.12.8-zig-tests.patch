@@ -1,0 +1,18 @@
+Prevent the manylinux wheel assert from expecting
+results from --zig when it wasn't used.
+--- a/tests/common/integration.rs
++++ b/tests/common/integration.rs
+@@ -44,11 +44,13 @@
+         cli.push(bindings);
+     }
+ 
++    let mut zig = zig;
+     if zig && (env::var("GITHUB_ACTIONS").is_ok() || Zig::find_zig().is_ok()) {
+         cli.push("--zig")
+     } else {
+         cli.push("--compatibility");
+         cli.push("linux");
++        zig = false;
+     }
+ 
+     let options: BuildOptions = BuildOptions::try_parse_from(cli)?;

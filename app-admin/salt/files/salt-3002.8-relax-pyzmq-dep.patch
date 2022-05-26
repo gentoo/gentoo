@@ -1,0 +1,11 @@
+diff --git a/requirements/zeromq.txt b/requirements/zeromq.txt
+index 77c9bd8be1..ffa1589043 100644
+--- a/requirements/zeromq.txt
++++ b/requirements/zeromq.txt
+@@ -1,5 +1,4 @@
+ -r base.txt
+ -r crypto.txt
+ 
+-pyzmq>=17.0.0 ; python_version < "3.9"
+-pyzmq>=19.0.2 ; python_version >= "3.9"
++pyzmq

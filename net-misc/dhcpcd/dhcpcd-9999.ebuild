@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit systemd toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://roy.marples.name/cgit/dhcpcd.git"
+	EGIT_REPO_URI="https://github.com/NetworkConfiguration/dhcpcd.git"
 else
 	MY_P="${P/_alpha/-alpha}"
 	MY_P="${MY_P/_beta/-beta}"
@@ -18,10 +18,11 @@ else
 fi
 
 DESCRIPTION="A fully featured, yet light weight RFC2131 compliant DHCP client"
-HOMEPAGE="https://roy.marples.name/projects/dhcpcd"
+HOMEPAGE="https://github.com/NetworkConfiguration/dhcpcd/
+https://roy.marples.name/projects/dhcpcd/"
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="debug elibc_glibc +embedded ipv6 kernel_linux privsep +udev"
+IUSE="debug +embedded ipv6 privsep +udev"
 
 COMMON_DEPEND="udev? ( virtual/udev )"
 DEPEND="${COMMON_DEPEND}"

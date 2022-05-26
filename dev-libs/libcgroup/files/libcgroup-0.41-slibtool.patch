@@ -1,0 +1,59 @@
+https://bugs.gentoo.org/777450
+
+commit 0c710d2f82184984e73b643a8e752f55371c6bc8
+Author: orbea <orbea@riseup.net>
+Date:   Sun Mar 21 13:24:23 2021 -0700
+
+    build: Remove .libs from Makefile.am files.
+    
+    Signed-off-by: orbea <orbea@riseup.net>
+
+diff --git a/src/bindings/Makefile.am b/src/bindings/Makefile.am
+index 8bb7334..c59641b 100644
+--- a/src/bindings/Makefile.am
++++ b/src/bindings/Makefile.am
+@@ -5,7 +5,7 @@ lib_LTLIBRARIES = _libcgroup.la
+ _libcgroup_la_SOURCES = libcgroup.c
+ _libcgroup_la_LDFLAGS = $(shell python-config --ldflags) -module -avoid-version
+ _libcgroup_la_CFLAGS = $(shell python-config --cflags)
+-_libcgroup_la_LIBADD = $(top_builddir)/src/.libs/libcgroup.la
++_libcgroup_la_LIBADD = $(top_builddir)/src/libcgroup.la
+ SWIG=swig
+ 
+ 
+diff --git a/src/daemon/Makefile.am b/src/daemon/Makefile.am
+index 2e08a4d..c8dbe67 100644
+--- a/src/daemon/Makefile.am
++++ b/src/daemon/Makefile.am
+@@ -4,7 +4,7 @@ if WITH_DAEMON
+ 
+ sbin_PROGRAMS = cgrulesengd
+ cgrulesengd_SOURCES = cgrulesengd.c cgrulesengd.h
+-cgrulesengd_LDADD = $(top_builddir)/src/.libs/libcgroup.la -lrt
++cgrulesengd_LDADD = $(top_builddir)/src/libcgroup.la -lrt
+ cgrulesengd_LDFLAGS = -L$(top_builddir)/src/.libs
+ 
+ endif
+diff --git a/src/pam/Makefile.am b/src/pam/Makefile.am
+index 852ceae..df173c2 100644
+--- a/src/pam/Makefile.am
++++ b/src/pam/Makefile.am
+@@ -5,6 +5,6 @@ if WITH_PAM
+ pamlib_LTLIBRARIES = pam_cgroup.la
+ pam_cgroup_la_SOURCES = pam_cgroup.c
+ pam_cgroup_la_LDFLAGS = -module
+-pam_cgroup_la_LIBADD = $(top_builddir)/src/.libs/libcgroup.la -lpam
++pam_cgroup_la_LIBADD = $(top_builddir)/src/libcgroup.la -lpam
+ 
+ endif
+diff --git a/src/tools/Makefile.am b/src/tools/Makefile.am
+index 0280d4a..cb0b8f3 100644
+--- a/src/tools/Makefile.am
++++ b/src/tools/Makefile.am
+@@ -1,5 +1,5 @@
+ AM_CPPFLAGS = -I$(top_srcdir)/src -I$(top_srcdir)/include
+-LDADD = $(top_builddir)/src/.libs/libcgroup.la
++LDADD = $(top_builddir)/src/libcgroup.la
+ 
+ if WITH_TOOLS
+ 

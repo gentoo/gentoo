@@ -1,12 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
-DESCRIPTION="Golden Disk Image builder."
+DESCRIPTION="Golden Disk Image builder"
 HOMEPAGE="http://docs.openstack.org/developer/diskimage-builder/"
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
@@ -22,8 +23,7 @@ IUSE=""
 
 CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	!~dev-python/pbr-2.1.0[${PYTHON_USEDEP}]"
-DEPEND="${CDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="${CDEPEND}"
 RDEPEND="${CDEPEND}
 	>=dev-python/Babel-2.3.4[${PYTHON_USEDEP}]
 	!~dev-python/Babel-2.4.0[${PYTHON_USEDEP}]

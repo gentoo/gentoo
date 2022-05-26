@@ -1,7 +1,13 @@
-# Copyright 2011-2020 Gentoo Authors
+# Copyright 2011-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+PYTHON_COMPAT=( python3_{8..10} )
+
+# Avoid QA warnings
+TMPFILES_OPTIONAL=1
+
+QA_PKGCONFIG_VERSION=$(ver_cut 1)
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
@@ -16,45 +22,46 @@ else
 	MY_P=${MY_PN}-${MY_PV}
 	S=${WORKDIR}/${MY_P}
 	SRC_URI="https://github.com/systemd/${MY_PN}/archive/v${MY_PV}/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-
-inherit bash-completion-r1 linux-info meson multilib-minimal ninja-utils pam python-any-r1 systemd toolchain-funcs udev usr-ldscript
+inherit bash-completion-r1 flag-o-matic linux-info meson-multilib pam python-any-r1 systemd toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="System and service manager for Linux"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit build cgroup-hybrid cryptsetup curl dns-over-tls elfutils +gcrypt gnuefi homed http +hwdb idn importd +kmod +lz4 lzma nat pam pcre pkcs11 policykit pwquality qrcode repart +resolvconf +seccomp selinux split-usr static-libs +sysv-utils test vanilla xkb"
-
+IUSE="
+	acl apparmor audit build cgroup-hybrid cryptsetup curl +dns-over-tls elfutils
+	fido2 +gcrypt gnuefi gnutls homed http idn importd +kmod
+	+lz4 lzma nat +openssl pam pcre pkcs11 policykit pwquality qrcode
+	+resolvconf +seccomp selinux split-usr +sysv-utils test tpm vanilla xkb +zstd
+"
 REQUIRED_USE="
-	homed? ( cryptsetup )
-	importd? ( curl gcrypt lzma )
+	dns-over-tls? ( || ( gnutls openssl ) )
+	homed? ( cryptsetup pam openssl )
+	importd? ( curl lzma || ( gcrypt openssl ) )
+	pwquality? ( homed )
 "
 RESTRICT="!test? ( test )"
 
-MINKV="3.11"
+MINKV="4.15"
 
-OPENSSL_DEP=">=dev-libs/openssl-1.1.0:0="
-
-COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
+COMMON_DEPEND="
+	>=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	sys-libs/libcap:0=[${MULTILIB_USEDEP}]
+	virtual/libcrypt:=[${MULTILIB_USEDEP}]
 	acl? ( sys-apps/acl:0= )
 	apparmor? ( sys-libs/libapparmor:0= )
 	audit? ( >=sys-process/audit-2:0= )
 	cryptsetup? ( >=sys-fs/cryptsetup-2.0.1:0= )
 	curl? ( net-misc/curl:0= )
-	dns-over-tls? ( >=net-libs/gnutls-3.6.0:0= )
 	elfutils? ( >=dev-libs/elfutils-0.158:0= )
+	fido2? ( dev-libs/libfido2:0= )
 	gcrypt? ( >=dev-libs/libgcrypt-1.4.5:0=[${MULTILIB_USEDEP}] )
-	homed? ( ${OPENSSL_DEP} )
-	http? (
-		>=net-libs/libmicrohttpd-0.9.33:0=[epoll(+)]
-		>=net-libs/gnutls-3.1.4:0=
-	)
+	gnutls? ( >=net-libs/gnutls-3.6.0:0= )
+	http? ( >=net-libs/libmicrohttpd-0.9.33:0=[epoll(+)] )
 	idn? ( net-dns/libidn2:= )
 	importd? (
 		app-arch/bzip2:0=
@@ -64,15 +71,18 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	lz4? ( >=app-arch/lz4-0_p131:0=[${MULTILIB_USEDEP}] )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1:0=[${MULTILIB_USEDEP}] )
 	nat? ( net-firewall/iptables:0= )
+	openssl? ( >=dev-libs/openssl-1.1.0:0= )
 	pam? ( sys-libs/pam:=[${MULTILIB_USEDEP}] )
 	pkcs11? ( app-crypt/p11-kit:0= )
 	pcre? ( dev-libs/libpcre2 )
 	pwquality? ( dev-libs/libpwquality:0= )
 	qrcode? ( media-gfx/qrencode:0= )
-	repart? ( ${OPENSSL_DEP} )
 	seccomp? ( >=sys-libs/libseccomp-2.3.3:0= )
 	selinux? ( sys-libs/libselinux:0= )
-	xkb? ( >=x11-libs/libxkbcommon-0.4.1:0= )"
+	tpm? ( app-crypt/tpm2-tss:0= )
+	xkb? ( >=x11-libs/libxkbcommon-0.4.1:0= )
+	zstd? ( >=app-arch/zstd-1.4.0:0=[${MULTILIB_USEDEP}] )
+"
 
 # Newer linux-headers needed by ia64, bug #480218
 DEPEND="${COMMON_DEPEND}
@@ -82,29 +92,38 @@ DEPEND="${COMMON_DEPEND}
 
 # baselayout-2.2 has /run
 RDEPEND="${COMMON_DEPEND}
-	acct-group/adm
-	acct-group/wheel
-	acct-group/kmem
-	acct-group/tty
-	acct-group/utmp
-	acct-group/audio
-	acct-group/cdrom
-	acct-group/dialout
-	acct-group/disk
-	acct-group/input
-	acct-group/kvm
-	acct-group/render
-	acct-group/tape
-	acct-group/video
-	acct-group/systemd-journal
-	acct-user/systemd-journal-remote
-	acct-user/systemd-coredump
-	acct-user/systemd-network
-	acct-user/systemd-resolve
-	acct-user/systemd-timesync
+	>=acct-group/adm-0-r1
+	>=acct-group/wheel-0-r1
+	>=acct-group/kmem-0-r1
+	>=acct-group/tty-0-r1
+	>=acct-group/utmp-0-r1
+	>=acct-group/audio-0-r1
+	>=acct-group/cdrom-0-r1
+	>=acct-group/dialout-0-r1
+	>=acct-group/disk-0-r1
+	>=acct-group/input-0-r1
+	>=acct-group/kvm-0-r1
+	>=acct-group/lp-0-r1
+	>=acct-group/render-0-r1
+	acct-group/sgx
+	>=acct-group/tape-0-r1
+	acct-group/users
+	>=acct-group/video-0-r1
+	>=acct-group/systemd-journal-0-r1
+	>=acct-user/root-0-r1
+	acct-user/nobody
+	>=acct-user/systemd-journal-remote-0-r1
+	>=acct-user/systemd-coredump-0-r1
+	>=acct-user/systemd-network-0-r1
+	acct-user/systemd-oom
+	>=acct-user/systemd-resolve-0-r1
+	>=acct-user/systemd-timesync-0-r1
 	>=sys-apps/baselayout-2.2
 	selinux? ( sec-policy/selinux-base-policy[systemd] )
-	sysv-utils? ( !sys-apps/sysvinit )
+	sysv-utils? (
+		!sys-apps/openrc[sysv-utils(-)]
+		!sys-apps/sysvinit
+	)
 	!sysv-utils? ( sys-apps/sysvinit )
 	resolvconf? ( !net-dns/openresolv )
 	!build? ( || (
@@ -112,6 +131,7 @@ RDEPEND="${COMMON_DEPEND}
 		sys-process/procps[kill(+)]
 		sys-apps/coreutils[kill(-)]
 	) )
+	!sys-apps/hwids[udev]
 	!sys-auth/nss-myhostname
 	!sys-fs/eudev
 	!sys-fs/udev
@@ -119,7 +139,6 @@ RDEPEND="${COMMON_DEPEND}
 
 # sys-apps/dbus: the daemon only (+ build-time lib dep for tests)
 PDEPEND=">=sys-apps/dbus-1.9.8[systemd]
-	hwdb? ( >=sys-apps/hwids-20150417[udev] )
 	>=sys-fs/udev-init-scripts-34
 	policykit? ( sys-auth/polkit )
 	!vanilla? ( sys-apps/gentoo-systemd-integration )"
@@ -128,21 +147,29 @@ BDEPEND="
 	app-arch/xz-utils:0
 	dev-util/gperf
 	>=dev-util/meson-0.46
-	>=dev-util/intltool-0.50
 	>=sys-apps/coreutils-8.16
-	sys-devel/m4
+	sys-devel/gettext
 	virtual/pkgconfig
-	test? ( sys-apps/dbus )
+	test? (
+		app-text/tree
+		dev-lang/perl
+		sys-apps/dbus
+	)
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt:0
+	$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')
 	$(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]')
 "
 
 python_check_deps() {
+	has_version -b "dev-python/jinja[${PYTHON_USEDEP}]" &&
 	has_version -b "dev-python/lxml[${PYTHON_USEDEP}]"
 }
+
+QA_FLAGS_IGNORED="usr/lib/systemd/boot/efi/.*"
+QA_EXECSTACK="usr/lib/systemd/boot/efi/*"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
@@ -151,8 +178,8 @@ pkg_pretend() {
 			ewarn "See https://bugs.gentoo.org/674458."
 		fi
 
-		local CONFIG_CHECK="~AUTOFS4_FS ~BLK_DEV_BSG ~CGROUPS
-			~CHECKPOINT_RESTORE ~DEVTMPFS ~EPOLL ~FANOTIFY ~FHANDLE
+		local CONFIG_CHECK=" ~BINFMT_MISC ~BLK_DEV_BSG ~CGROUPS
+			~CGROUP_BPF ~DEVTMPFS ~EPOLL ~FANOTIFY ~FHANDLE
 			~INOTIFY_USER ~IPV6 ~NET ~NET_NS ~PROC_FS ~SIGNALFD ~SYSFS
 			~TIMERFD ~TMPFS_XATTR ~UNIX ~USER_NS
 			~CRYPTO_HMAC ~CRYPTO_SHA256 ~CRYPTO_USER_API_HASH
@@ -161,9 +188,18 @@ pkg_pretend() {
 
 		use acl && CONFIG_CHECK+=" ~TMPFS_POSIX_ACL"
 		use seccomp && CONFIG_CHECK+=" ~SECCOMP ~SECCOMP_FILTER"
-		kernel_is -lt 3 7 && CONFIG_CHECK+=" ~HOTPLUG"
-		kernel_is -lt 4 7 && CONFIG_CHECK+=" ~DEVPTS_MULTIPLE_INSTANCES"
-		kernel_is -ge 4 10 && CONFIG_CHECK+=" ~CGROUP_BPF"
+
+		if kernel_is -ge 5 10 20; then
+			CONFIG_CHECK+=" ~KCMP"
+		else
+			CONFIG_CHECK+=" ~CHECKPOINT_RESTORE"
+		fi
+
+		if kernel_is -ge 4 18; then
+			CONFIG_CHECK+=" ~AUTOFS_FS"
+		else
+			CONFIG_CHECK+=" ~AUTOFS4_FS"
+		fi
 
 		if linux_config_exists; then
 			local uevent_helper_path=$(linux_chkconfig_string UEVENT_HELPER_PATH)
@@ -201,15 +237,21 @@ src_prepare() {
 
 	# Add local patches here
 	PATCHES+=(
+		# Breaks Clang. Revert the commit for now and force off F_S=3.
+		# bug #841770.
+		"${FILESDIR}/251-revert-fortify-source-3-fix.patch"
 	)
 
 	if ! use vanilla; then
 		PATCHES+=(
 			"${FILESDIR}/gentoo-generator-path-r2.patch"
-			"${FILESDIR}/gentoo-systemctl-disable-sysv-sync.patch"
+			"${FILESDIR}/gentoo-systemctl-disable-sysv-sync-r1.patch"
 			"${FILESDIR}/gentoo-journald-audit.patch"
 		)
 	fi
+
+	# Fails with split-usr.
+	sed -i -e '2i exit 77' test/test-rpm-macros.sh || die
 
 	default
 }
@@ -218,29 +260,24 @@ src_configure() {
 	# Prevent conflicts with i686 cross toolchain, bug 559726
 	tc-export AR CC NM OBJCOPY RANLIB
 
+	# Broken with FORTIFY_SOURCE=3 without a patch. We have to revert
+	# the upstream patch for it because it breaks Clang: bug #841770.
+	#
+	# Our toolchain sets F_S=2 by default w/ >= -O2, so we need
+	# to unset F_S first, then explicitly set 2, to negate any default
+	# and anything set by the user if they're choosing 3 (or if they've
+	# modified GCC to set 3).
+	#
+	if is-flagq '-O[23]' || is-flagq '-Ofast' ; then
+		# We can't unconditionally do this b/c we fortify needs
+		# some level of optimisation.
+		filter-flags -D_FORTIFY_SOURCE=3
+		append-cppflags -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
+	fi
+
 	python_setup
 
 	multilib-minimal_src_configure
-}
-
-meson_use() {
-	usex "$1" true false
-}
-
-meson_multilib() {
-	if multilib_is_native_abi; then
-		echo true
-	else
-		echo false
-	fi
-}
-
-meson_multilib_native_use() {
-	if multilib_is_native_abi && use "$1"; then
-		echo true
-	else
-		echo false
-	fi
 }
 
 multilib_src_configure() {
@@ -251,7 +288,7 @@ multilib_src_configure() {
 		# avoid bash-completion dep
 		-Dbashcompletiondir="$(get_bashcompdir)"
 		# make sure we get /bin:/sbin in PATH
-		-Dsplit-usr=$(usex split-usr true false)
+		$(meson_use split-usr)
 		-Dsplit-bin=true
 		-Drootprefix="$(usex split-usr "${EPREFIX:-/}" "${EPREFIX}/usr")"
 		-Drootlibdir="${EPREFIX}/usr/$(get_libdir)"
@@ -261,83 +298,75 @@ multilib_src_configure() {
 		-Dima=true
 		-Ddefault-hierarchy=$(usex cgroup-hybrid hybrid unified)
 		# Optional components/dependencies
-		-Dacl=$(meson_multilib_native_use acl)
-		-Dapparmor=$(meson_multilib_native_use apparmor)
-		-Daudit=$(meson_multilib_native_use audit)
-		-Dlibcryptsetup=$(meson_multilib_native_use cryptsetup)
-		-Dlibcurl=$(meson_multilib_native_use curl)
-		-Ddns-over-tls=$(meson_multilib_native_use dns-over-tls)
-		-Delfutils=$(meson_multilib_native_use elfutils)
-		-Dgcrypt=$(meson_use gcrypt)
-		-Dgnu-efi=$(meson_multilib_native_use gnuefi)
+		$(meson_native_use_bool acl)
+		$(meson_native_use_bool apparmor)
+		$(meson_native_use_bool audit)
+		$(meson_native_use_bool cryptsetup libcryptsetup)
+		$(meson_native_use_bool curl libcurl)
+		$(meson_native_use_bool dns-over-tls dns-over-tls)
+		$(meson_native_use_bool elfutils)
+		$(meson_native_use_bool fido2 libfido2)
+		$(meson_use gcrypt)
+		$(meson_native_use_bool gnuefi gnu-efi)
+		$(meson_native_use_bool gnutls)
+		-Defi-includedir="${ESYSROOT}/usr/include/efi"
 		-Defi-libdir="${ESYSROOT}/usr/$(get_libdir)"
-		-Dhomed=$(meson_multilib_native_use homed)
-		-Dhwdb=$(meson_multilib_native_use hwdb)
-		-Dmicrohttpd=$(meson_multilib_native_use http)
-		-Didn=$(meson_multilib_native_use idn)
-		-Dimportd=$(meson_multilib_native_use importd)
-		-Dbzip2=$(meson_multilib_native_use importd)
-		-Dzlib=$(meson_multilib_native_use importd)
-		-Dkmod=$(meson_multilib_native_use kmod)
-		-Dlz4=$(meson_use lz4)
-		-Dxz=$(meson_use lzma)
-		-Dlibiptc=$(meson_multilib_native_use nat)
-		-Dpam=$(meson_use pam)
-		-Dp11kit=$(meson_multilib_native_use pkcs11)
-		-Dpcre2=$(meson_multilib_native_use pcre)
-		-Dpolkit=$(meson_multilib_native_use policykit)
-		-Dpwquality=$(meson_multilib_native_use pwquality)
-		-Dqrencode=$(meson_multilib_native_use qrcode)
-		-Drepart=$(meson_multilib_native_use repart)
-		-Dseccomp=$(meson_multilib_native_use seccomp)
-		-Dselinux=$(meson_multilib_native_use selinux)
-		-Ddbus=$(meson_multilib_native_use test)
-		-Dxkbcommon=$(meson_multilib_native_use xkb)
+		$(meson_native_use_bool homed)
+		$(meson_native_use_bool http microhttpd)
+		$(meson_native_use_bool idn)
+		$(meson_native_use_bool importd)
+		$(meson_native_use_bool importd bzip2)
+		$(meson_native_use_bool importd zlib)
+		$(meson_native_use_bool kmod)
+		$(meson_use lz4)
+		$(meson_use lzma xz)
+		$(meson_use zstd)
+		$(meson_native_use_bool nat libiptc)
+		$(meson_native_use_bool openssl)
+		$(meson_use pam)
+		$(meson_native_use_bool pkcs11 p11kit)
+		$(meson_native_use_bool pcre pcre2)
+		$(meson_native_use_bool policykit polkit)
+		$(meson_native_use_bool pwquality)
+		$(meson_native_use_bool qrcode qrencode)
+		$(meson_native_use_bool seccomp)
+		$(meson_native_use_bool selinux)
+		$(meson_native_use_bool tpm tpm2)
+		$(meson_native_use_bool test dbus)
+		$(meson_native_use_bool xkb xkbcommon)
 		-Dntp-servers="0.gentoo.pool.ntp.org 1.gentoo.pool.ntp.org 2.gentoo.pool.ntp.org 3.gentoo.pool.ntp.org"
 		# Breaks screen, tmux, etc.
 		-Ddefault-kill-user-processes=false
 		-Dcreate-log-dirs=false
 
 		# multilib options
-		-Dbacklight=$(meson_multilib)
-		-Dbinfmt=$(meson_multilib)
-		-Dcoredump=$(meson_multilib)
-		-Denvironment-d=$(meson_multilib)
-		-Dfirstboot=$(meson_multilib)
-		-Dhibernate=$(meson_multilib)
-		-Dhostnamed=$(meson_multilib)
-		-Dldconfig=$(meson_multilib)
-		-Dlocaled=$(meson_multilib)
-		-Dman=$(meson_multilib)
-		-Dnetworkd=$(meson_multilib)
-		-Dquotacheck=$(meson_multilib)
-		-Drandomseed=$(meson_multilib)
-		-Drfkill=$(meson_multilib)
-		-Dsysusers=$(meson_multilib)
-		-Dtimedated=$(meson_multilib)
-		-Dtimesyncd=$(meson_multilib)
-		-Dtmpfiles=$(meson_multilib)
-		-Dvconsole=$(meson_multilib)
-
-		# static-libs
-		-Dstatic-libsystemd=$(usex static-libs true false)
-		-Dstatic-libudev=$(usex static-libs true false)
+		$(meson_native_true backlight)
+		$(meson_native_true binfmt)
+		$(meson_native_true coredump)
+		$(meson_native_true environment-d)
+		$(meson_native_true firstboot)
+		$(meson_native_true hibernate)
+		$(meson_native_true hostnamed)
+		$(meson_native_true ldconfig)
+		$(meson_native_true localed)
+		$(meson_native_true man)
+		$(meson_native_true networkd)
+		$(meson_native_true quotacheck)
+		$(meson_native_true randomseed)
+		$(meson_native_true rfkill)
+		$(meson_native_true sysusers)
+		$(meson_native_true timedated)
+		$(meson_native_true timesyncd)
+		$(meson_native_true tmpfiles)
+		$(meson_native_true vconsole)
 	)
 
 	meson_src_configure "${myconf[@]}"
 }
 
-multilib_src_compile() {
-	eninja
-}
-
 multilib_src_test() {
 	unset DBUS_SESSION_BUS_ADDRESS XDG_RUNTIME_DIR
 	meson_src_test
-}
-
-multilib_src_install() {
-	DESTDIR="${D}" eninja install
 }
 
 multilib_src_install_all() {
@@ -366,15 +395,16 @@ multilib_src_install_all() {
 		rmdir "${ED}${rootprefix}"/sbin || die
 	fi
 
+	# https://bugs.gentoo.org/761763
+	rm -r "${ED}"/usr/lib/sysusers.d || die
+
 	# Preserve empty dirs in /etc & /var, bug #437008
 	keepdir /etc/{binfmt.d,modules-load.d,tmpfiles.d}
 	keepdir /etc/kernel/install.d
 	keepdir /etc/systemd/{network,system,user}
 	keepdir /etc/udev/rules.d
 
-	if use hwdb; then
-		keepdir /etc/udev/hwdb.d
-	fi
+	keepdir /etc/udev/hwdb.d
 
 	keepdir "${rootprefix}"/lib/systemd/{system-sleep,system-shutdown}
 	keepdir /usr/lib/{binfmt.d,modules-load.d}
@@ -383,10 +413,10 @@ multilib_src_install_all() {
 	keepdir /var/log/journal
 
 	# Symlink /etc/sysctl.conf for easy migration.
-	dosym ../sysctl.conf /etc/sysctl.d/99-sysctl.conf
+	dosym ../../../etc/sysctl.conf /usr/lib/sysctl.d/99-sysctl.conf
 
-	if use hwdb; then
-		rm -r "${ED}${rootprefix}"/lib/udev/hwdb.d || die
+	if use pam; then
+		newpamd "${FILESDIR}"/systemd-user.pam systemd-user
 	fi
 
 	if use split-usr; then
@@ -442,19 +472,7 @@ migrate_locale() {
 	fi
 }
 
-save_enabled_units() {
-	ENABLED_UNITS=()
-	type systemctl &>/dev/null || return
-	for x; do
-		if systemctl --quiet --root="${ROOT:-/}" is-enabled "${x}"; then
-			ENABLED_UNITS+=( "${x}" )
-		fi
-	done
-}
-
 pkg_preinst() {
-	save_enabled_units {machines,remote-{cryptsetup,fs}}.target getty@tty1.service
-
 	if ! use split-usr; then
 		local dir
 		for dir in bin sbin lib; do
@@ -476,22 +494,14 @@ pkg_postinst() {
 	systemd_update_catalog
 
 	# Keep this here in case the database format changes so it gets updated
-	# when required. Despite that this file is owned by sys-apps/hwids.
-	if has_version "sys-apps/hwids[udev]"; then
-		udevadm hwdb --update --root="${EROOT}"
-	fi
+	# when required.
+	systemd-hwdb --root="${ROOT}" update
 
 	udev_reload || FAIL=1
 
-	# Bug 465468, make sure locales are respect, and ensure consistency
+	# Bug 465468, make sure locales are respected, and ensure consistency
 	# between OpenRC & systemd
 	migrate_locale
-
-	systemd_reenable systemd-networkd.service systemd-resolved.service
-
-	if [[ ${ENABLED_UNITS[@]} ]]; then
-		systemctl --root="${ROOT:-/}" enable "${ENABLED_UNITS[@]}"
-	fi
 
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		if type systemctl &>/dev/null; then
@@ -503,12 +513,6 @@ pkg_postinst() {
 
 	if [[ -L ${EROOT}/var/lib/systemd/timesync ]]; then
 		rm "${EROOT}/var/lib/systemd/timesync"
-	fi
-
-	if [[ -z ${ROOT} && -d /run/systemd/system ]]; then
-		ebegin "Reexecuting system manager"
-		systemctl daemon-reexec
-		eend $?
 	fi
 
 	if [[ ${FAIL} ]]; then

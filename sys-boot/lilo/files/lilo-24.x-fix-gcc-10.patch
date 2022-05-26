@@ -1,0 +1,51 @@
+Description: Fix ftbfs with GCC-10
+
+Author: Ryan Finnie <ryan@finnie.org>
+Bug-Debian: https://bugs.debian.org/957490
+Forwarded: no
+
+---
+
+--- a/src/raid.h
++++ b/src/raid.h
+@@ -8,7 +8,7 @@
+  * in the source directory.
+  */
+ 
+-int do_md_install, ndisk, md_bios;
++extern int ndisk, md_bios;
+ 
+ int raid_setup(void);
+ void raid_final(void);
+--- a/src/bsect.c
++++ b/src/bsect.c
+@@ -54,8 +54,6 @@
+ #endif
+ 
+ 
+-int boot_dev_nr;
+-
+ static BOOT_SECTOR bsect,bsect_orig;
+ static MENUTABLE menuparams;
+ static DESCR_SECTORS descrs;
+--- a/src/identify.c
++++ b/src/identify.c
+@@ -19,7 +19,6 @@
+ #include "common.h"
+ #include "cfg.h"
+ 
+-char *identify;
+ static char *opt;
+ static char *first, *dflt;
+ static int idefault;
+--- a/src/raid.c
++++ b/src/raid.c
+@@ -41,7 +41,7 @@
+ static int raid_bios[MAX_RAID+1];
+ static int device;
+ enum {MD_NULL=0, MD_PARALLEL, MD_MIXED, MD_SKEWED};
+-int do_md_install, ndisk, md_bios;
++int ndisk, md_bios;
+ static char *raid_list[MAX_RAID];
+ static int list_index[MAX_RAID];
+ static int nlist, faulty;

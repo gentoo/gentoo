@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: Keep version bumps in sync with sys-devel/gettext.
@@ -6,16 +6,18 @@
 EAPI=7
 
 MY_P="gettext-${PV}"
-
-inherit multilib-minimal toolchain-funcs libtool usr-ldscript
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gettext.asc
+inherit multilib-minimal libtool usr-ldscript verify-sig
 
 DESCRIPTION="the GNU international library (split out of gettext)"
 HOMEPAGE="https://www.gnu.org/software/gettext/"
-SRC_URI="mirror://gnu/gettext/${MY_P}.tar.gz"
+SRC_URI="mirror://gnu/gettext/${MY_P}.tar.xz"
+SRC_URI+=" verify-sig? ( mirror://gnu/gettext/${MY_P}.tar.xz.sig )"
+S="${WORKDIR}/${MY_P}/gettext-runtime"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 IUSE="static-libs +threads"
 
 DEPEND=">=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]"
@@ -24,8 +26,7 @@ RDEPEND="${DEPEND}
 	!sys-libs/glibc
 	!sys-libs/musl
 	!<sys-devel/gettext-0.19.6-r1"
-
-S="${WORKDIR}/${MY_P}/gettext-runtime"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-gettext )"
 
 src_prepare() {
 	default
@@ -48,7 +49,7 @@ multilib_src_configure() {
 		# The gettext package provides this library.
 		--disable-c++
 		--disable-libasprintf
-		# No java until someone cares.
+		# No Java until someone cares.
 		--disable-java
 
 		$(use_enable static-libs static)

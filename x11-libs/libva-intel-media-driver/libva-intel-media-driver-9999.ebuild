@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 if [[ ${PV} == *9999 ]] ; then
 	: ${EGIT_REPO_URI:="https://github.com/intel/media-driver"}
@@ -12,29 +12,44 @@ if [[ ${PV} == *9999 ]] ; then
 	fi
 	inherit git-r3
 else
-	SRC_URI="https://github.com/intel/media-driver/archive/intel-media-${PV}.tar.gz"
-	S="${WORKDIR}/media-driver-intel-media-${PV}"
-	KEYWORDS="~amd64"
+	MY_PV="${PV%_pre}"
+	SRC_URI="https://github.com/intel/media-driver/archive/intel-media-${MY_PV}.tar.gz"
+	S="${WORKDIR}/media-driver-intel-media-${MY_PV}"
+	if [[ ${PV} != *_pre* ]] ; then
+		KEYWORDS="~amd64"
+	fi
 fi
 
 DESCRIPTION="Intel Media Driver for VAAPI (iHD)"
 HOMEPAGE="https://github.com/intel/media-driver"
 
-LICENSE="MIT BSD"
+LICENSE="MIT BSD redistributable? ( no-source-code )"
 SLOT="0"
-IUSE=""
+IUSE="+redistributable test X"
 
-DEPEND=">=media-libs/gmmlib-${PV}
-	>=x11-libs/libva-2.8.0
-	>=x11-libs/libpciaccess-0.13.1-r1:=
+RESTRICT="!test? ( test )"
+
+DEPEND=">=media-libs/gmmlib-22.0.0:=
+	>=x11-libs/libva-2.14.0[X?]
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-20.2.0_x11_optional.patch
+	"${FILESDIR}"/${PN}-21.4.2-Remove-unwanted-CFLAGS.patch
+	"${FILESDIR}"/${PN}-20.4.5_testing_in_src_test.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
 		-DMEDIA_BUILD_FATAL_WARNINGS=OFF
-		-DMEDIA_RUN_TEST_SUITE=OFF
+		-DMEDIA_RUN_TEST_SUITE=$(usex test)
+		-DBUILD_TYPE=Release
+		-DPLATFORM=linux
+		-DUSE_X11=$(usex X)
+		-DENABLE_NONFREE_KERNELS=$(usex redistributable)
+		-DLATEST_CPP_NEEDED=ON # Seems to be the best option for now
 	)
-
-	cmake-utils_src_configure
+	local CMAKE_BUILD_TYPE="Release"
+	cmake_src_configure
 }

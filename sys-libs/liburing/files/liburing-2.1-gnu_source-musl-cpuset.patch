@@ -1,0 +1,42 @@
+https://github.com/axboe/liburing/commit/c34070e08199491fe9653617364f4aea9b9b22be
+
+From: Sam James <sam@gentoo.org>
+Date: Mon, 14 Mar 2022 14:18:55 +0000
+Subject: [PATCH] liburing.h: define GNU_SOURCE for cpu_set_t
+
+On musl, cpu_set_t is only exposed if GNU_SOURCE is defined. While in
+the liburing build system, this is set (43b7ec8d17888df0debccda27dd58f4d1b90245e),
+it can't be guaranteed that folks including the header externally will set
+that macro.
+
+Noticed while investigating a build failure for glusterfs on a musl
+system:
+```
+configure:17701: checking for liburing.h
+configure:17701: x86_64-gentoo-linux-musl-gcc -c -pipe -march=native -fno-diagnostics-color -O2  conftest.c >&5
+In file included from conftest.c:105:
+/usr/include/liburing.h:162:39: error: unknown type name 'cpu_set_t'
+  162 |                                 const cpu_set_t *mask);
+      |                                       ^~~~~~~~~
+configure:17701: $? = 1
+```
+
+Just like _XOPEN_SOURCE, set if needed.
+
+Bug: https://bugs.gentoo.org/829293
+Bug: https://github.com/axboe/liburing/issues/422
+See: 43b7ec8d17888df0debccda27dd58f4d1b90245e
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/src/include/liburing.h
++++ b/src/include/liburing.h
+@@ -6,6 +6,10 @@
+ #define _XOPEN_SOURCE 500 /* Required for glibc to expose sigset_t */
+ #endif
+ 
++#ifndef _GNU_SOURCE
++#define _GNU_SOURCE /* Required for musl to expose cpu_set_t */
++#endif
++
+ #include <sys/socket.h>
+ #include <sys/stat.h>
+ #include <sys/uio.h>

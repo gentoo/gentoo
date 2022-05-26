@@ -1,4 +1,4 @@
-# Copyright 2008-2020 Gentoo Authors
+# Copyright 2008-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 USE="kdrive minimal multicall zlib"
@@ -23,18 +23,18 @@ LINGUAS="en"
 IUSE_IMPLICIT="prefix prefix-guest prefix-stack"
 USE_EXPAND_UNPREFIXED="ARCH"
 USE_EXPAND_IMPLICIT="ARCH ELIBC KERNEL USERLAND"
-USE_EXPAND_VALUES_ARCH="alpha amd64 amd64-fbsd amd64-linux arm arm64 hppa ia64 m68k m68k-mint mips ppc ppc64 ppc64-linux ppc-aix ppc-macos riscv s390 sparc sparc64-solaris sparc-solaris x64-cygwin x64-macos x64-solaris x64-winnt x86 x86-cygwin x86-fbsd x86-linux x86-macos x86-solaris x86-winnt"
-USE_EXPAND_VALUES_ELIBC="AIX bionic Cygwin Darwin DragonFly FreeBSD glibc HPUX Interix mingw mintlib musl NetBSD OpenBSD SunOS uclibc Winnt"
-USE_EXPAND_VALUES_KERNEL="AIX Darwin FreeBSD freemint HPUX linux NetBSD OpenBSD SunOS Winnt"
+USE_EXPAND_VALUES_ARCH="alpha amd64 amd64-linux arm arm64 hppa ia64 loong m68k mips ppc ppc64 ppc64-linux ppc-macos riscv s390 sparc sparc64-solaris sparc-solaris x64-cygwin x64-macos x64-solaris x64-winnt x86 x86-linux x86-solaris x86-winnt"
+USE_EXPAND_VALUES_ELIBC="bionic Cygwin Darwin glibc mingw musl SunOS Winnt"
+USE_EXPAND_VALUES_KERNEL="Darwin linux SunOS Winnt"
 USE_EXPAND_VALUES_USERLAND="BSD GNU"
 
 # Env vars to expand into USE vars.  Modifying this requires prior
 # discussion on gentoo-dev@lists.gentoo.org.
-USE_EXPAND="ABI_MIPS ABI_PPC ABI_S390 ABI_X86 ALSA_CARDS APACHE2_MODULES APACHE2_MPMS CALLIGRA_FEATURES CAMERAS COLLECTD_PLUGINS CPU_FLAGS_ARM CPU_FLAGS_X86 CURL_SSL ELIBC ENLIGHTENMENT_MODULES FFTOOLS GPSD_PROTOCOLS GRUB_PLATFORMS INPUT_DEVICES KERNEL L10N LCD_DEVICES LIBREOFFICE_EXTENSIONS LIRC_DEVICES LLVM_TARGETS MONKEYD_PLUGINS NGINX_MODULES_HTTP NGINX_MODULES_MAIL NGINX_MODULES_STREAM OFED_DRIVERS OFFICE_IMPLEMENTATION OPENMPI_FABRICS OPENMPI_OFED_FEATURES OPENMPI_RM PHP_TARGETS POSTGRES_TARGETS PYTHON_SINGLE_TARGET PYTHON_TARGETS QEMU_SOFTMMU_TARGETS QEMU_USER_TARGETS ROS_MESSAGES RUBY_TARGETS SANE_BACKENDS USERLAND UWSGI_PLUGINS VIDEO_CARDS VOICEMAIL_STORAGE XFCE_PLUGINS XTABLES_ADDONS"
+USE_EXPAND="ABI_MIPS ABI_S390 ABI_X86 ADA_TARGET ALSA_CARDS APACHE2_MODULES APACHE2_MPMS CALLIGRA_FEATURES CAMERAS COLLECTD_PLUGINS CPU_FLAGS_ARM CPU_FLAGS_PPC CPU_FLAGS_X86 CURL_SSL ELIBC FFTOOLS GPSD_PROTOCOLS GRUB_PLATFORMS INPUT_DEVICES KERNEL L10N LCD_DEVICES LIBREOFFICE_EXTENSIONS LLVM_TARGETS LUA_SINGLE_TARGET LUA_TARGETS MONKEYD_PLUGINS NGINX_MODULES_HTTP NGINX_MODULES_MAIL NGINX_MODULES_STREAM OFED_DRIVERS OFFICE_IMPLEMENTATION OPENMPI_FABRICS OPENMPI_OFED_FEATURES OPENMPI_RM PHP_TARGETS POSTGRES_TARGETS PYTHON_SINGLE_TARGET PYTHON_TARGETS QEMU_SOFTMMU_TARGETS QEMU_USER_TARGETS ROS_MESSAGES RUBY_TARGETS SANE_BACKENDS USERLAND UWSGI_PLUGINS VIDEO_CARDS VOICEMAIL_STORAGE XTABLES_ADDONS"
 
 # USE_EXPAND variables whose contents are not shown in package manager
 # output. Changes need discussion on gentoo-dev.
-USE_EXPAND_HIDDEN="USERLAND KERNEL ELIBC ABI_MIPS ABI_PPC ABI_S390 ABI_X86 CPU_FLAGS_ARM CPU_FLAGS_X86"
+USE_EXPAND_HIDDEN="USERLAND KERNEL ELIBC ABI_MIPS ABI_S390 ABI_X86 CPU_FLAGS_ARM CPU_FLAGS_PPC CPU_FLAGS_X86"
 
 # Variables that are set exclusively by the profile
 # and not by user configuration files.
@@ -43,3 +43,45 @@ PROFILE_ONLY_VARIABLES="IUSE_IMPLICIT USERLAND USE_EXPAND_IMPLICIT USE_EXPAND_UN
 # Accept only licenses in the FREE license group, i.e., with
 # the freedom to use, share, modify and share modifications
 ACCEPT_LICENSE="-* @FREE"
+
+# Imported from profiles/base/make.defaults
+#
+CONFIG_PROTECT="/etc"
+CONFIG_PROTECT_MASK="/etc/env.d /etc/gconf"
+
+# EAPI 7 environment variable blacklist.
+#
+# DBUS_SESSION_BUS_ADDRESS to avoid trying to access the user's session
+# bus.
+#
+# DISPLAY and XAUTHORITY to avoid trying to access the user's X11.
+#
+# CARGO_HOME may leak to build env if package is not using cargo.eclass
+# such leak will result in sandbox violations
+#
+# XDG_* since the values coming from user environment can collide with
+# ebuild-set ${HOME} (e.g. by referring to user's home directory).
+# We exclude XDG_DATA_DIRS & XDG_CONFIG_DIRS as those are set in env.d.
+#
+# PERL_MM_OPT PERL5LIB PERL5OPT PERL_MB_OPT PERL_CORE PERLPREFIX:
+# These are guaranteed to confuse perl module installation. Pre-EAPI7
+# the Perl eclasses bail out if they are set. Now we declare them here.
+#
+# GOBIN needs to be cleaned as random values in GOBIN can affect the
+# building of some packages:
+# https://archives.gentoo.org/gentoo-dev/message/163010f83ae7819d80c0cfdf797cbfe0
+ENV_UNSET="DBUS_SESSION_BUS_ADDRESS DISPLAY CARGO_HOME XAUTHORITY XDG_CACHE_HOME XDG_CONFIG_HOME XDG_DATA_HOME XDG_RUNTIME_DIR PERL_MM_OPT PERL5LIB PERL5OPT PERL_MB_OPT PERL_CORE PERLPREFIX GOBIN GOPATH"
+
+# Tiziano Müller <dev-zero@gentoo.org> (2010-01-24)
+# We usually don't want python to (re)write .py[co] files during phase runs
+# since it could cause sandbox violations
+PYTHONDONTWRITEBYTECODE="1"
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2013-08-23)
+# Make emerge messages default to English as per Council decision
+LC_MESSAGES="C"
+
+# Brian Dolbec <dolsen@gentoo.org> (2017-06-16)
+# disable twisted's plugin cache update to prevent access violations
+# call /usr/bin/twisted-regen-cache in pkg_postinst()
+TWISTED_DISABLE_WRITING_OF_PLUGIN_CACHE="1"

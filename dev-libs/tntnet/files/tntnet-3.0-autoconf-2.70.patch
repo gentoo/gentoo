@@ -1,0 +1,78 @@
+diff --git a/configure.ac b/configure.ac
+index 0c7732c4..52227db0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -74,21 +74,21 @@ AC_CHECK_HEADERS([sys/sendfile.h])
+ # optional components
+ #
+ AC_ARG_ENABLE([server],
+-  AS_HELP_STRING([--disable-server], [disable building tntnet server]),
++  [AS_HELP_STRING([--disable-server], [disable building tntnet server])],
+   [enable_server=$enableval],
+   [enable_server=yes])
+ 
+ AM_CONDITIONAL(MAKE_SERVER, test x$enable_server = xyes)
+ 
+ AC_ARG_ENABLE([sdk],
+-  AS_HELP_STRING([--disable-sdk], [disable building sdk]),
++  [AS_HELP_STRING([--disable-sdk], [disable building sdk])],
+   [enable_sdk=$enableval],
+   [enable_sdk=yes])
+ 
+ AM_CONDITIONAL(MAKE_SDK, test x$enable_sdk = xyes)
+ 
+ AC_ARG_ENABLE([demos],
+-  AS_HELP_STRING([--enable-demos], [enable building demos]),
++  [AS_HELP_STRING([--enable-demos], [enable building demos])],
+   [enable_demos=$enableval],
+   [enable_demos=no])
+ 
+@@ -105,17 +105,16 @@ AS_IF([test "$enable_demos" = "yes"],
+ )
+ 
+ AC_ARG_WITH([md2man],
+-  AS_HELP_STRING([--with-md2man], [use go-md2man tool to generate man pages from markdown])
++  [AS_HELP_STRING([--with-md2man], [use go-md2man tool to generate man pages from markdown])],
+   [with_md2man=$withval])
+ 
+ AS_IF(
+   [test "$with_md2man"],
+-  AC_CHECK_PROG(MD2MAN, [go-md2man], [go-md2man])
++  [AC_CHECK_PROG(MD2MAN, [go-md2man], [go-md2man])
+   AS_IF(
+     [test -z "$MD2MAN"],
+     AC_MSG_ERROR([go-md2man not found])
+-  )
+-
++  )]
+ )
+ 
+ AM_CONDITIONAL(GENERATE_MAN, test ! -z "$with_md2man")
+@@ -125,21 +124,15 @@ AM_CONDITIONAL(GENERATE_MAN, test ! -z "$with_md2man")
+ #
+ AC_CHECK_FUNCS([setenv])
+ 
+-case "${host_cpu}-${host_os}" in
+-*-aix*)
+-    SHARED_LIB_FLAG=-qmkshrobj
+-    ;;
+-*-darwin*)
+-    SHARED_LIB_FLAG=-dynamiclib
+-    ;;
+-*)
+-    SHARED_LIB_FLAG=-shared
+-    ;;
+-esac
++AS_CASE(["${host_cpu}-${host_os}"],
++    [*-aix*], [SHARED_LIB_FLAG=-qmkshrobj],
++    [*-darwin*], [SHARED_LIB_FLAG=-dynamiclib],
++    [SHARED_LIB_FLAG=-shared]
++)
+ AC_SUBST(SHARED_LIB_FLAG)
+ 
+ AC_ARG_ENABLE([unittest],
+-  AS_HELP_STRING([--disable-unittest], [disable unittest]),
++  [AS_HELP_STRING([--disable-unittest], [disable unittest])],
+   [enable_unittest=$enableval],
+   [enable_unittest=enable_unittest])
+ 

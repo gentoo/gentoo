@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>slyfox@gentoo.org</email>
-    <name>Sergei Trofimovich</name>
+    <email>matthew@gentoo.org</email>
+    <name>Matthew Smith</name>
   </maintainer>
   <longdescription>
 The Netwide Assembler, NASM, is an 80x86 assembler designed for portability
@@ -14,7 +14,7 @@ and easy to understand, similar to Intel's but less complex. It supports
 Pentium, P6, MMX, 3DNow!, SSE and SSE2 opcodes, and has macro capability.
   </longdescription>
   <upstream>
-    <remote-id type="sourceforge">nasm</remote-id>
+    <remote-id type="github">netwide-assembler/nasm</remote-id>
     <bugs-to>https://bugzilla.nasm.us/</bugs-to>
   </upstream>
 </pkgmetadata>

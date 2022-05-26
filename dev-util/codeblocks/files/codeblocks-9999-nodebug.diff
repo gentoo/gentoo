@@ -1,0 +1,13 @@
+# Remove adding of "-g" to CFLAGS and CXXFLAGS if "./configure --enable-debug"
+diff -Naur old/m4/acinclude.m4 new/m4/acinclude.m4
+--- old/m4/acinclude.m4
++++ new/m4/acinclude.m4
+@@ -91,8 +91,6 @@
+ AC_ARG_ENABLE(debug, [AC_HELP_STRING([--enable-debug], [turn on debugging (default is OFF)])],,
+                        enable_debug=$debug_default)
+     if test "x$enable_debug" = "xyes"; then
+-        CFLAGS="-g $CFLAGS"
+-        CXXFLAGS="-g $CXXFLAGS"
+         CPPFLAGS="-DDEBUG -DcbDEBUG $CPPFLAGS"
+         AC_MSG_RESULT(yes)
+     else

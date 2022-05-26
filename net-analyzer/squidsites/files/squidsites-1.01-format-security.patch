@@ -1,5 +1,5 @@
---- a/src/squidsites.c
-+++ b/src/squidsites.c
+--- a/squidsites.c
++++ b/squidsites.c
 @@ -286,7 +286,7 @@
  static
  void print_help()

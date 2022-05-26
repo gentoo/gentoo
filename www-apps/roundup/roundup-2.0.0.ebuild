@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{7..9} )
+DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1
 MY_P=${P/_/}
@@ -14,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT ZPL"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ~ppc sparc x86"
 IUSE="+tz sqlite mysql postgres xapian whoosh ssl jinja pyjwt markdown"
 
 DEPEND=""
@@ -35,6 +36,11 @@ RDEPEND="${DEPEND}
 		)"
 
 DOCS="CHANGES.txt doc/*.txt"
+PATCHES=(
+	"${FILESDIR}/${P}-test-pyjwt.patch"
+)
+
+distutils_enable_tests pytest
 
 python_install_all() {
 	distutils-r1_python_install_all

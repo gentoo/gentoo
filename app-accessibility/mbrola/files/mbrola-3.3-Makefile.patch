@@ -1,0 +1,87 @@
+diff --git a/Makefile b/Makefile
+index 47cf410..ac3eac5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -3,14 +3,20 @@
+ # Mbrola Speech Synthesize Makefile ( tune the #define and type "make" )
+ VERSION=3.3
+ 
++# set CC
++CC = gcc
++
+ # To test strict C ANSI compliance
+-CC = gcc -ansi -pedantic
++ANSIFLAGS = -ansi -pedantic
+ LIB= -lm
+ 
+ # This allow you to write commands like "make PURE=purify demo1"
+ # or "make PURE=quantify lib2"
+ CCPURE = $(PURE) $(CC)
+ 
++# To test strict C ANSI compliance
++CFLAGS += $(ANSIFLAGS)
++
+ ########################
+ # Machine specific #define, uncomment as needed
+ # If your OS is not here, may be it provides some __linux or __sunos
+@@ -33,7 +39,7 @@ CFLAGS += -DLITTLE_ENDIAN
+ # GENERAL FLAGS FOR GCC
+ 
+ # Optimized code
+-CFLAGS += -O6
++#CFLAGS += -O6
+ 
+ # Debug mode with gdb
+ #CFLAGS += -g 
+@@ -128,7 +134,7 @@ BINOBJS = $(BINSRCS:%.c=Bin/Standalone/%.o)
+ PROJ = mbrola
+ 
+ $(PROJ): install_dir  $(BINOBJS) 
+-	$(CCPURE) $(CFLAGS) -o $(MBRDIR)/$(PROJ) $(BINOBJS) $(LIB)	
++	$(CCPURE) $(CFLAGS) $(LDFLAGS) -o $(MBRDIR)/$(PROJ) $(BINOBJS) $(LIB)
+ 
+ clean:
+ 	\rm -f $(MBRDIR)/$(PROJ) $(PROJ).a core demo* TAGS $(BIN)/lib*.o $(BINOBJS) 
+@@ -147,7 +153,7 @@ net:
+ 	\rm -f *~ */*~
+ 
+ $(BINDIR)/%.o: %.c
+-	$(CCPURE) $(CFLAGS) -o $@ -c $<
++	$(CCPURE) $(CPPFLAGS) $(CFLAGS) -o $@ -c $<
+ 
+ # to create the compilation directory, if necessary
+ install_dir: 
+@@ -156,25 +162,25 @@ install_dir:
+ 	fi
+ 
+ lib1 : LibOneChannel/lib1.c
+-	$(CCPURE) $(CFLAGS) -o Bin/LibOneChannel/lib1.o -c LibOneChannel/lib1.c
++	$(CCPURE) $(CPPFLAGS) $(CFLAGS) -o Bin/LibOneChannel/lib1.o -c LibOneChannel/lib1.c
+ 
+ demo1:  install_dir lib1 LibOneChannel/demo1.c
+-	$(CCPURE) $(CFLAGS) -c -o Bin/LibOneChannel/demo1.o LibOneChannel/demo1.c
+-	$(CCPURE) $(CFLAGS) -o demo1 Bin/LibOneChannel/demo1.o Bin/LibOneChannel/lib1.o $(LIB)		
++	$(CCPURE) $(CPPFLAGS) $(CFLAGS) -c -o Bin/LibOneChannel/demo1.o LibOneChannel/demo1.c
++	$(CCPURE) $(CFLAGS) $(LDFLAGS) -o demo1 Bin/LibOneChannel/demo1.o Bin/LibOneChannel/lib1.o $(LIB)
+ 
+ # END_WWW
+ 
+ demo1b:  install_dir lib1 LibOneChannel/demo1b.c
+-	$(CCPURE) $(CFLAGS) -c -o Bin/LibOneChannel/demo1b.o LibOneChannel/demo1b.c
+-	$(CCPURE) $(CFLAGS) -o demo1b Bin/LibOneChannel/demo1b.o Bin/LibOneChannel/lib1.o $(LIB)	
++	$(CCPURE) $(CPPFLAGS) $(CFLAGS) -c -o Bin/LibOneChannel/demo1b.o LibOneChannel/demo1b.c
++	$(CCPURE) $(CFLAGS) $(LDFLAGS) -o demo1b Bin/LibOneChannel/demo1b.o Bin/LibOneChannel/lib1.o $(LIB)
+ 
+ 
+ lib2 : LibMultiChannel/lib2.c
+-	$(CCPURE) $(CFLAGS) -o Bin/LibMultiChannel/lib2.o -c LibMultiChannel/lib2.c
++	$(CCPURE) $(CPPFLAGS) $(CFLAGS) -o Bin/LibMultiChannel/lib2.o -c LibMultiChannel/lib2.c
+ 
+ demo2: install_dir lib2 LibMultiChannel/demo2.c	
+-	$(CCPURE) $(CFLAGS) -c -o Bin/LibMultiChannel/demo2.o LibMultiChannel/demo2.c
+-	$(CCPURE) $(CFLAGS) -o demo2 Bin/LibMultiChannel/demo2.o Bin/LibMultiChannel/lib2.o $(LIB)		
++	$(CCPURE) $(CPPFLAGS) $(CFLAGS) -c -o Bin/LibMultiChannel/demo2.o LibMultiChannel/demo2.c
++	$(CCPURE) $(CFLAGS) $(LDFLAGS) -o demo2 Bin/LibMultiChannel/demo2.o Bin/LibMultiChannel/lib2.o $(LIB)
+ # END_COMM
+ 
+ # Check the integrity of the new Mbrola version by comparing the output 

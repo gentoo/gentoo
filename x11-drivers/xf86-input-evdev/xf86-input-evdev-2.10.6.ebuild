@@ -1,18 +1,20 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit linux-info xorg-2
+EAPI=7
+
+inherit linux-info xorg-3
 
 DESCRIPTION="Generic Linux input driver"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86"
-IUSE=""
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv sparc x86"
 
-RDEPEND=">=x11-base/xorg-server-1.18[udev]
+RDEPEND="
+	>=x11-base/xorg-server-1.18[udev]
 	dev-libs/libevdev
 	sys-libs/mtdev
 	virtual/libudev:="
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	>=sys-kernel/linux-headers-2.6
 	x11-base/xorg-proto"
 

@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils
+EAPI=7
+
+inherit desktop toolchain-funcs
 
 MY_PN=Nexuiz
 MY_P=${PN}-${PV//./}
@@ -14,7 +15,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="alsa dedicated maps opengl sdl"
 
 # no headers for libpng needed
@@ -69,15 +70,14 @@ src_prepare() {
 
 	# Make the game automatically look in the correct data directory
 	sed -i \
-		-e "/^CC=/d" \
-		-e "s:-O2:${CFLAGS}:" \
-		-e "/-lm/s:$: ${LDFLAGS}:" \
+		-e 's:-O2:$(CFLAGS):' \
+		-e '/-lm/s:$: $(LDFLAGS):' \
 		-e '/^STRIP/s/strip/true/' \
 		makefile.inc || die
 
 	sed -i \
 		-e '1i DP_LINK_TO_LIBJPEG=1' \
-		-e "s:ifdef DP_.*:DP_FS_BASEDIR=/usr/share/${PN}\n&:" \
+		-e "s:ifdef DP_.*:DP_FS_BASEDIR=${EPREFIX}/usr/share/${PN}\n&:" \
 		makefile || die
 
 	if ! use alsa ; then
@@ -88,6 +88,13 @@ src_prepare() {
 }
 
 src_compile() {
+	# Unset STRIP because the build system by default will not strip
+	# If users express a preference, this triggers strip
+	# bug #739294
+	unset STRIP
+
+	tc-export CC
+
 	if use opengl || ! use dedicated ; then
 		emake cl-${PN}
 		if use sdl ; then

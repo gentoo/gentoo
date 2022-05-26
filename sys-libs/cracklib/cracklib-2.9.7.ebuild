@@ -1,12 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+# Note: ideally bump with sys-apps/cracklib-words
+
+PYTHON_COMPAT=( python3_{7..10} )
 DISTUTILS_OPTIONAL=1
 
-inherit distutils-r1 libtool multilib-minimal toolchain-funcs usr-ldscript
+inherit distutils-r1 libtool multilib-minimal usr-ldscript
 
 MY_P=${P/_}
 DESCRIPTION="Password Checking Library"
@@ -15,16 +17,18 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~m68k-mint"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="nls python static-libs zlib"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
+	nls? ( virtual/libintl )
 	python? (
 		dev-python/setuptools[${PYTHON_USEDEP}]
 	)"
+BDEPEND="nls? ( sys-devel/gettext )"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -88,15 +92,15 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	einstalldocs
-	find "${ED}" -name "*.la" -delete || die
-	rm -r "${ED%/}"/usr/share/cracklib || die
+	find "${ED}" -type f -name "*.la" -delete || die
+	rm -r "${ED}"/usr/share/cracklib || die
 
 	insinto /usr/share/dict
 	doins dicts/cracklib-small
 }
 
 pkg_postinst() {
-	if [[ ${ROOT} == "/" ]] ; then
+	if [[ -z ${ROOT} ]] ; then
 		ebegin "Regenerating cracklib dictionary"
 		create-cracklib-dict "${EPREFIX}"/usr/share/dict/* > /dev/null
 		eend $?

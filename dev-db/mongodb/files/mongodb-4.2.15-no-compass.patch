@@ -1,0 +1,45 @@
+diff --git a/src/mongo/SConscript b/src/mongo/SConscript
+index 0379fcb0..1aabddba 100644
+--- a/src/mongo/SConscript
++++ b/src/mongo/SConscript
+@@ -808,32 +808,6 @@ for full_dir, archive_dir in list(env["ARCHIVE_ADDITION_DIR_MAP"].items()):
+ for target in env["DIST_BINARIES"]:
+     installBinary(env, "db/modules/" + target)
+ 
+-compass_script = "install_compass"
+-if env.TargetOSIs('windows'):
+-    # On windows the .in needs to be explicitly added to the file.
+-    compass_script = "Install-Compass.ps1"
+-
+-compass_installer = f"#/src/mongo/installer/compass/{compass_script}"
+-
+-distBinaries.append(compass_installer)
+-
+-if not hygienic:
+-    compass_script_installer = env.Install("$INSTALL_DIR/bin", compass_installer)
+-else:
+-    compass_script_installer = env.AutoInstall(
+-        'bin',
+-        source=[
+-            compass_installer,
+-        ],
+-        INSTALL_ALIAS=[
+-            'tools',
+-        ],
+-    )
+-
+-if env.TargetOSIs('posix'):
+-    env.AddPostAction( compass_script_installer, 'chmod 755 $TARGET' )
+-    env.AddPostAction( compass_installer, 'chmod 755 $TARGET' )
+-
+ # "dist" target is valid only when --use-new-tools is specified
+ # Attempts to build release artifacts without tools must fail
+ if has_option("use-new-tools"):
+@@ -851,7 +825,6 @@ if has_option("use-new-tools"):
+                 '--transform $BUILD_DIR/mongo=$SERVER_DIST_BASENAME/bin',
+                 '--transform $BUILD_DIR/mongo/stripped/src/mongo-tools=$SERVER_DIST_BASENAME/bin',
+                 '--transform src/mongo-tools=$SERVER_DIST_BASENAME/bin',
+-                '--transform src/mongo/installer/compass=$SERVER_DIST_BASENAME/bin',
+                 '${TEMPFILE(SOURCES[1:])}'
+             ],
+         ),

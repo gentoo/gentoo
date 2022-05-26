@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,11 +7,11 @@ inherit toolchain-funcs
 
 DESCRIPTION="pgrep(1) and pkill(1) for Darwin"
 HOMEPAGE="https://sourceforge.net/p/pkilldarwin/code/ci/default/tree/"
-SRC_URI="https://www.gentoo.org/~grobian/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~grobian/distfiles/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~ppc-macos ~x64-macos"
 IUSE=""
 
 src_compile() {

@@ -1,0 +1,15 @@
+--- rip-1.07/rip	2003-01-16 06:51:14.000000000 +0000
++++ rip-1.07/rip	2020-12-26 01:19:08.093961072 +0000
+@@ -130,9 +130,9 @@
+ my %config;                                       # Configuration passed to CDDB/CDDB_get
+ my $dev             = "/dev/cdrom";               # CDROM device to read (used by -d/--dev)
+ $config{CD_DEVICE}  = $dev;                       # Device that has the audio CD
+-$config{CDDB_HOST}  = "freedb.freedb.org";        # CDDB host to find the server on
+-$config{CDDB_PORT}  = 888;                        # CDDB port the CDDB server is using
+-$config{CDDB_MODE}  = "http";                     # CDDB mode can be: cddb, http
++$config{CDDB_HOST}  = "gnudb.gnudb.org";        # CDDB host to find the server on
++$config{CDDB_PORT}  = 8880;                        # CDDB port the CDDB server is using
++$config{CDDB_MODE}  = "cddb";                     # CDDB mode can be: cddb, http
+ $config{input}      = 1;                          # User interaction: 1 = true, 0 = false
+ $config{HELLO_ID}   = "greg my.net rip $version"; # HELLO string to give CDDB server
+ 

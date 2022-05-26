@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>dilfridge@gentoo.org</email>
@@ -13,10 +13,17 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
 	<use>
 		<flag name="cantor">Enable support for different open-source computer algebra systems via <pkg>kde-apps/cantor</pkg></flag>
 		<flag name="fits">Enable support for NASA's <pkg>sci-libs/cfitsio</pkg> library</flag>
 		<flag name="libcerf">Enable special functions from <pkg>sci-libs/libcerf</pkg></flag>
+		<flag name="markdown">Enable Markdown support via <pkg>app-text/discount</pkg></flag>
+		<flag name="matio">Enable support for matio (<pkg>sci-libs/matio</pkg>)</flag>
+		<flag name="origin">Enable support for reading OriginLab OPJ project files through <pkg>sci-libs/liborigin</pkg></flag>
 		<flag name="root">Enable support for CERN's ROOT file type</flag>
+		<flag name="serial">Enable support for RS232 serial ports using <pkg>dev-qt/qtserialport</pkg></flag>
 	</use>
 </pkgmetadata>

@@ -1,0 +1,273 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI="7"
+
+PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_REQ_USE="ssl"
+
+WANT_AUTOCONF="2.1"
+
+inherit autotools check-reqs python-any-r1 toolchain-funcs
+
+MY_PN="mozjs"
+MY_PV="${PV/_pre*}" # Handle Gentoo pre-releases
+
+MY_MAJOR=$(ver_cut 1)
+
+MOZ_ESR="1"
+
+# Convert the ebuild version to the upstream mozilla version
+MOZ_PV="${MY_PV/_alpha/a}" # Handle alpha for SRC_URI
+MOZ_PV="${MOZ_PV/_beta/b}" # Handle beta for SRC_URI
+MOZ_PV="${MOZ_PV%%_rc*}" # Handle rc for SRC_URI
+
+if [[ ${MOZ_ESR} == 1 ]] ; then
+	# ESR releases have slightly different version numbers
+	MOZ_PV="${MOZ_PV}esr"
+fi
+
+# Patch version
+FIREFOX_PATCHSET="firefox-68.0-patches-15"
+SPIDERMONKEY_PATCHSET="${PN}-68.6.0-patches-04"
+
+MOZ_HTTP_URI="https://archive.mozilla.org/pub/firefox/releases"
+MOZ_SRC_URI="${MOZ_HTTP_URI}/${MOZ_PV}/source/firefox-${MOZ_PV}.source.tar.xz"
+
+if [[ "${PV}" == *_rc* ]]; then
+	MOZ_HTTP_URI="https://archive.mozilla.org/pub/firefox/candidates/${MOZ_PV}-candidates/build${PV##*_rc}"
+	MOZ_SRC_URI="${MOZ_HTTP_URI}/source/firefox-${MOZ_PV}.source.tar.xz"
+fi
+
+PATCH_URIS=(
+	https://dev.gentoo.org/~{anarchy,whissi,polynomial-c,axs}/mozilla/patchsets/${FIREFOX_PATCHSET}.tar.xz
+	https://dev.gentoo.org/~{whissi,polynomial-c,axs}/mozilla/patchsets/${SPIDERMONKEY_PATCHSET}.tar.xz
+)
+
+SRC_URI="${MOZ_SRC_URI}
+	${PATCH_URIS[@]}"
+
+DESCRIPTION="SpiderMonkey is Mozilla's JavaScript engine written in C and C++"
+HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
+
+# riscv support requires a patch currently only available in firefox-78 patch sets
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 -riscv sparc x86"
+
+SLOT="68"
+LICENSE="MPL-2.0"
+IUSE="cpu_flags_arm_neon debug +jit test"
+
+RESTRICT="!test? ( test )"
+
+BDEPEND="dev-lang/python:2.7
+	virtual/pkgconfig
+	test? ( ${PYTHON_DEPS} )"
+
+DEPEND="dev-libs/icu:=
+	>=dev-libs/nspr-4.21
+	sys-libs/readline:0=
+	>=sys-libs/zlib-1.2.3"
+RDEPEND="${DEPEND}"
+
+S="${WORKDIR}/firefox-${MY_PV}/js/src"
+
+pkg_pretend() {
+	if use test ; then
+		CHECKREQS_DISK_BUILD="6G"
+	else
+		CHECKREQS_DISK_BUILD="5G"
+	fi
+
+	check-reqs_pkg_pretend
+}
+
+pkg_setup() {
+	if use test ; then
+		CHECKREQS_DISK_BUILD="6G"
+	else
+		CHECKREQS_DISK_BUILD="5G"
+	fi
+
+	check-reqs_pkg_setup
+
+	use test && python-any-r1_pkg_setup
+}
+
+src_prepare() {
+	cd ../.. || die
+	rm "${WORKDIR}"/firefox/2013_avoid_noinline_on_GCC_with_skcms.patch
+	rm "${WORKDIR}"/firefox/2015_fix_cssparser.patch
+	rm "${WORKDIR}"/firefox/2016_set_CARGO_PROFILE_RELEASE_LTO.patch
+	eapply "${WORKDIR}"/firefox
+	eapply "${WORKDIR}"/spidermonkey-patches
+	eapply "${FILESDIR}"/spidermonkey-68.0-add-riscv-support.patch
+	eapply "${FILESDIR}"/spidermonkey-68.0-loong-support.patch
+
+	default
+
+	# sed-in toolchain prefix
+	sed -i \
+		-e "s/objdump/${CHOST}-objdump/" \
+		python/mozbuild/mozbuild/configure/check_debug_ranges.py \
+		|| die "sed failed to set toolchain prefix"
+
+	MOZJS_BUILDDIR="${WORKDIR}/build"
+	mkdir "${MOZJS_BUILDDIR}" || die
+
+	cd "${S}" || die
+	eautoconf
+}
+
+src_configure() {
+	tc-export CC CXX LD AR RANLIB
+
+	# backup current active Python version
+	local PYTHON_OLD=${PYTHON}
+
+	# build system will require Python2.7
+	export PYTHON=python2.7
+
+	cd "${MOZJS_BUILDDIR}" || die
+
+	# ../python/mach/mach/mixin/process.py fails to detect SHELL
+	export SHELL="${EPREFIX}/bin/bash"
+
+	local -a myeconfargs=(
+		--host="${CBUILD:-${CHOST}}"
+		--target="${CHOST}"
+		--disable-jemalloc
+		--disable-optimize
+		--disable-strip
+		--enable-readline
+		--enable-shared-js
+		--with-intl-api
+		--with-system-icu
+		--with-system-nspr
+		--with-system-zlib
+		--with-toolchain-prefix="${CHOST}-"
+		$(use_enable debug)
+		$(use_enable jit ion)
+		$(use_enable test tests)
+	)
+
+	# Modifications to better support ARM, bug 717344
+	if use cpu_flags_arm_neon ; then
+		myeconfargs+=( --with-fpu=neon )
+
+		if ! tc-is-clang ; then
+			# thumb options aren't supported when using clang, bug 666966
+			myeconfargs+=( --with-thumb=yes )
+			myeconfargs+=( --with-thumb-interwork=no )
+		fi
+	fi
+
+	# Forcing system-icu allows us to skip patching bundled ICU for PPC
+	# and other minor arches
+	ECONF_SOURCE="${S}" \
+		econf \
+		${myeconfargs[@]} \
+		XARGS="${EPREFIX}/usr/bin/xargs"
+
+	# restore PYTHON
+	export PYTHON=${PYTHON_OLD}
+}
+
+src_compile() {
+	cd "${MOZJS_BUILDDIR}" || die
+	default
+}
+
+src_test() {
+	if "${MOZJS_BUILDDIR}/js/src/js" -e 'print("Hello world!")'; then
+		einfo "Smoke-test successful, continuing with full test suite"
+	else
+		die "Smoke-test failed: did interpreter initialization fail?"
+	fi
+
+	local -a KNOWN_TESTFAILURES
+	KNOWN_TESTFAILURES+=( test262/built-ins/Atomics/wait/bigint/waiterlist-order-of-operations-is-fifo.js )
+	KNOWN_TESTFAILURES+=( test262/intl402/RelativeTimeFormat/prototype/format/en-us-numeric-auto.js )
+	KNOWN_TESTFAILURES+=( non262/Intl/DateTimeFormat/timeZone_backward_links.js )
+	KNOWN_TESTFAILURES+=( non262/Intl/DateTimeFormat/tz-environment-variable.js )
+	KNOWN_TESTFAILURES+=( non262/Intl/RelativeTimeFormat/format.js )
+	KNOWN_TESTFAILURES+=( non262/Date/time-zones-imported.js )
+	KNOWN_TESTFAILURES+=( non262/Date/toString-localized.js )
+	KNOWN_TESTFAILURES+=( non262/Date/time-zone-path.js )
+	KNOWN_TESTFAILURES+=( non262/Date/time-zones-historic.js )
+	KNOWN_TESTFAILURES+=( non262/Date/toString-localized-posix.js )
+	KNOWN_TESTFAILURES+=( non262/Date/reset-time-zone-cache-same-offset.js )
+	KNOWN_TESTFAILURES+=( non262/Intl/DateTimeFormat/format_timeZone.js )
+	KNOWN_TESTFAILURES+=( non262/Intl/DateTimeFormat/format.js )
+	KNOWN_TESTFAILURES+=( non262/Intl/Date/toLocaleDateString_timeZone.js )
+	KNOWN_TESTFAILURES+=( non262/Intl/Date/toLocaleString_timeZone.js )
+
+	if use x86 ; then
+		KNOWN_TESTFAILURES+=( test262/language/types/number/S8.5_A2.1.js )
+		KNOWN_TESTFAILURES+=( test262/language/types/number/S8.5_A2.2.js )
+		KNOWN_TESTFAILURES+=( test262/built-ins/Number/prototype/toPrecision/return-values.js )
+		KNOWN_TESTFAILURES+=( non262/Date/timeclip.js )
+	elif use sparc ; then
+		KNOWN_TESTFAILURES+=( non262/Array/regress-157652.js )
+		KNOWN_TESTFAILURES+=( non262/Array/regress-330812.js )
+		KNOWN_TESTFAILURES+=( non262/regress/regress-422348.js )
+	fi
+
+	if [[ $(tc-endian) == "big" ]] ; then
+		KNOWN_TESTFAILURES+=( test262/built-ins/TypedArray/prototype/set/typedarray-arg-set-values-same-buffer-other-type.js )
+	fi
+
+	echo "" > "${T}"/known_failures.list || die
+
+	local KNOWN_TESTFAILURE
+	for KNOWN_TESTFAILURE in ${KNOWN_TESTFAILURES[@]} ; do
+		echo "${KNOWN_TESTFAILURE}" >> "${T}"/known_failures.list
+	done
+
+	PYTHONPATH="${S}/tests/lib" \
+		${PYTHON} \
+		"${S}"/tests/jstests.py -d -s -t 1800 --wpt=disabled --no-progress \
+		--exclude-file="${T}"/known_failures.list \
+		"${MOZJS_BUILDDIR}"/js/src/js \
+		|| die
+
+	if use jit ; then
+		KNOWN_TESTFAILURES=()
+
+		echo "" > "${T}"/known_failures.list || die
+
+		for KNOWN_TESTFAILURE in ${KNOWN_TESTFAILURES[@]} ; do
+			echo "${KNOWN_TESTFAILURE}" >> "${T}"/known_failures.list
+		done
+
+		PYTHONPATH="${S}/tests/lib" \
+			${PYTHON} \
+			"${S}"/tests/jstests.py -d -s -t 1800 --wpt=disabled --no-progress \
+			--exclude-file="${T}"/known_failures.list \
+			"${MOZJS_BUILDDIR}"/js/src/js basic \
+			|| die
+	fi
+}
+
+src_install() {
+	cd "${MOZJS_BUILDDIR}" || die
+	default
+
+	# fix soname links
+	pushd "${ED}"/usr/$(get_libdir) &>/dev/null || die
+	mv lib${MY_PN}-${MY_MAJOR}.so lib${MY_PN}-${MY_MAJOR}.so.0.0.0 || die
+	ln -s lib${MY_PN}-${MY_MAJOR}.so.0.0.0 lib${MY_PN}-${MY_MAJOR}.so.0 || die
+	ln -s lib${MY_PN}-${MY_MAJOR}.so.0 lib${MY_PN}-${MY_MAJOR}.so || die
+	popd &>/dev/null || die
+
+	# remove unneeded files
+	rm \
+		"${ED}"/usr/bin/js${MY_MAJOR}-config \
+		"${ED}"/usr/$(get_libdir)/libjs_static.ajs \
+		|| die
+
+	# fix permissions
+	chmod -x \
+		"${ED}"/usr/$(get_libdir)/pkgconfig/*.pc \
+		"${ED}"/usr/include/mozjs-${MY_MAJOR}/js-config.h \
+		|| die
+}

@@ -1,0 +1,23 @@
+--- a/src/gnatprove/configuration.adb	2021-06-21 22:30:18.962850246 +0200
++++ b/src/gnatprove/configuration.adb	2021-06-21 22:31:03.621210570 +0200
+@@ -1269,7 +1269,9 @@
+ 
+          end if;
+ 
+-         Set_Path_From_Gnatls (Proj_Env.all, "gnatls", GNAT_Version);
++         Set_Path_From_Gnatls (Proj_Env.all,
++                               "gnatls",
++                               GNAT_Version);
+          Free (GNAT_Version);
+          Set_Object_Subdir (Proj_Env.all,
+                             Filesystem_String
+--- a/gnat2why/gnat2why_c.gpr	2017-10-04 21:41:41.613376056 +0200
++++ b/gnat2why/gnat2why_c.gpr	2017-10-04 21:42:30.582572536 +0200
+@@ -1,4 +1,7 @@
+ project Gnat2Why_C is
+    for Languages use ("C");
+    for Object_Dir use "obj";
++   package Compiler is
++      for Driver ("C") use External ("CC", "gcc");
++   end Compiler;
+ end Gnat2Why_C;

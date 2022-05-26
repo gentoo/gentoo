@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ RDEPEND="dev-lang/clojure"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
-DOCS=( doc/LICENSE.txt )
+DOCS=( README README.markdown )
 
 # Files with similar names are already installed by app-vim/slimv.
 DUPLICATE_FILES=(
@@ -46,7 +46,6 @@ src_prepare() {
 }
 
 src_install() {
-	einstalldocs
-	rm -rv "${DOCS[@]}" bin || die
+	rm -rv doc/LICENSE.txt bin || die
 	vim-plugin_src_install
 }

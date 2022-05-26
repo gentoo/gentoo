@@ -1,0 +1,11 @@
+--- ledger-mode-4.0.0/ledger-report.el
++++ ledger-mode-4.0.0/ledger-report.el
+@@ -584,7 +584,7 @@
+   (set-window-configuration ledger-original-window-cfg)
+   (kill-buffer (get-buffer ledger-report-buffer-name)))
+ 
+-(define-obsolete-function-alias 'ledger-report-kill #'ledger-report-quit)
++(define-obsolete-function-alias 'ledger-report-kill #'ledger-report-quit "")
+ 
+ (defun ledger-report-edit-reports ()
+   "Edit the defined ledger reports."

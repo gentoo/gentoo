@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>virtualization@gentoo.org</email>
@@ -10,6 +10,8 @@
 			managed by libvirt.</flag>
 		<flag name="spice">Support connecting to SPICE-enabled virtual
 			machines.</flag>
+		<flag name="vte">Enable terminal support (<pkg>x11-libs/vte</pkg>)
+			in the GTK+ interface</flag>
 		<flag name="vnc">Support connecting to VNC-enabled virtual
 			machines.</flag>
 	</use>

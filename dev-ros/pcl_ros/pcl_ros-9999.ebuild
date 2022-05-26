@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ RDEPEND="
 	dev-ros/nodelet_topic_tools
 	sci-libs/pcl:=[qhull]
 	>=dev-ros/pcl_conversions-0.2.1-r1
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 "
 DEPEND="${RDEPEND}
 	dev-ros/pcl_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
@@ -42,3 +42,10 @@ DEPEND="${RDEPEND}
 		dev-cpp/gtest
 	)
 "
+PATCHES=( "${FILESDIR}/tests.patch" )
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	export CATKIN_PREFIX_PATH="${BUILD_DIR}/devel/:${CATKIN_PREFIX_PATH}"
+	ros-catkin_src_test
+}

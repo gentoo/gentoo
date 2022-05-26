@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,17 +11,24 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ppc ~sparc x86"
-IUSE=""
+KEYWORDS="~alpha ~amd64 ~ppc ~sparc x86"
 
 # The Makefile links with -lssl.
 RDEPEND="
 	app-admin/gkrellm:2[X]
 	dev-libs/openssl:0="
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
+"
 
-PATCHES=( "${FILESDIR}"/respect-cc-cflags-ldflags.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-cc-cflags-ldflags.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 src_compile() {
+	tc-export PKG_CONFIG
+
 	emake CC="$(tc-getCC)"
 }

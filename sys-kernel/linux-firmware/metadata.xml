@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
 	<email>chithanh@gentoo.org</email>
@@ -8,6 +8,10 @@
 <maintainer type="person">
 	<email>zerochaos@gentoo.org</email>
 	<name>Rick Farina</name>
+</maintainer>
+<maintainer type="person">
+	<email>mpagano@gentoo.org</email>
+	<name>Mike Pagano</name>
 </maintainer>
 <maintainer type="project">
 	<email>kernel@gentoo.org</email>

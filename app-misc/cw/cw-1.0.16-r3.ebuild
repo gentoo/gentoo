@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="A non-intrusive real-time ANSI color wrapper for common unix-based commands"
 HOMEPAGE="http://cwrapper.sourceforge.net/"
@@ -12,15 +12,17 @@ SRC_URI="mirror://sourceforge/cwrapper/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PV}-ldflags.patch \
-		"${FILESDIR}"/${PV}-path.patch \
-		"${FILESDIR}"/${PV}-collision.patch \
-		"${FILESDIR}"/${PV}-format-security.patch
+PATCHES=(
+	"${FILESDIR}"/${PV}-ldflags.patch
+	"${FILESDIR}"/${PV}-path.patch
+	"${FILESDIR}"/${PV}-collision.patch
+	"${FILESDIR}"/${PV}-format-security.patch
+)
+
+src_configure() {
 	tc-export CC
+	econf
 }
 
 src_compile() {

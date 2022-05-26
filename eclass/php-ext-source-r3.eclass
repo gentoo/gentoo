@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: php-ext-source-r3.eclass
 # @MAINTAINER:
 # Gentoo PHP team <php-bugs@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Compile and install standalone PHP extensions.
 # @DESCRIPTION:
 # A unified interface for compiling and installing standalone PHP
@@ -12,16 +12,15 @@
 
 inherit autotools
 
-EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install src_test
-
 case ${EAPI:-0} in
 	6) inherit eapi7-ver ;;
-	7) ;;
+	7|8) ;;
 	*)
 		die "${ECLASS} is not compatible with EAPI=${EAPI}"
 esac
 
-# @ECLASS-VARIABLE: PHP_EXT_NAME
+# @ECLASS_VARIABLE: PHP_EXT_NAME
+# @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
 # The extension name. This must be set, otherwise the eclass dies.
@@ -30,19 +29,19 @@ esac
 [[ -z "${PHP_EXT_NAME}" ]] && \
 	die "no extension name specified for the php-ext-source-r3 eclass"
 
-# @ECLASS-VARIABLE: PHP_EXT_INI
+# @ECLASS_VARIABLE: PHP_EXT_INI
 # @DESCRIPTION:
 # Controls whether or not to add a line to php.ini for the extension.
 # Defaults to "yes" and should not be changed in most cases.
 [[ -z "${PHP_EXT_INI}" ]] && PHP_EXT_INI="yes"
 
-# @ECLASS-VARIABLE: PHP_EXT_ZENDEXT
+# @ECLASS_VARIABLE: PHP_EXT_ZENDEXT
 # @DESCRIPTION:
 # Controls whether the extension is a ZendEngine extension or not.
 # Defaults to "no". If you don't know what this is, you don't need it.
 [[ -z "${PHP_EXT_ZENDEXT}" ]] && PHP_EXT_ZENDEXT="no"
 
-# @ECLASS-VARIABLE: USE_PHP
+# @ECLASS_VARIABLE: USE_PHP
 # @REQUIRED
 # @DESCRIPTION:
 # Lists the PHP slots compatible the extension is compatible with.
@@ -53,7 +52,7 @@ esac
 [[ -z "${USE_PHP}" ]] && \
 	die "USE_PHP is not set for the php-ext-source-r3 eclass"
 
-# @ECLASS-VARIABLE: PHP_EXT_OPTIONAL_USE
+# @ECLASS_VARIABLE: PHP_EXT_OPTIONAL_USE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set, all of the dependencies added by this eclass will be
@@ -61,21 +60,21 @@ esac
 # ebuilds have to inherit this eclass unconditionally, but only
 # actually use it when (for example) the user has USE=php.
 
-# @ECLASS-VARIABLE: PHP_EXT_S
+# @ECLASS_VARIABLE: PHP_EXT_S
 # @DESCRIPTION:
 # The relative location of the temporary build directory for the PHP
 # extension within the source package. This is useful for packages that
 # bundle the PHP extension. Defaults to ${S}.
 [[ -z "${PHP_EXT_S}" ]] && PHP_EXT_S="${S}"
 
-# @ECLASS-VARIABLE: PHP_EXT_SAPIS
+# @ECLASS_VARIABLE: PHP_EXT_SAPIS
 # @DESCRIPTION:
 # A list of SAPIs for which we will install this extension. Formerly
 # called PHPSAPILIST. The default includes every SAPI currently used in
 # the tree.
 [[ -z "${PHP_EXT_SAPIS}" ]] && PHP_EXT_SAPIS="apache2 cli cgi fpm embed phpdbg"
 
-# @ECLASS-VARIABLE: PHP_INI_NAME
+# @ECLASS_VARIABLE: PHP_INI_NAME
 # @DESCRIPTION:
 # An optional file name of the saved ini file minis the ini extension
 # This allows ordering of extensions such that one is loaded before
@@ -86,7 +85,8 @@ esac
 # @CODE
 : ${PHP_INI_NAME:=${PHP_EXT_NAME}}
 
-# @ECLASS-VARIABLE: PHP_EXT_NEEDED_USE
+# @ECLASS_VARIABLE: PHP_EXT_NEEDED_USE
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A list of USE flags to append to each PHP target selected
@@ -134,19 +134,19 @@ RDEPEND="${PHPDEPEND}"
 
 case ${EAPI:-0} in
 	6) DEPEND="${TOOLDEPS} ${PHPDEPEND}" ;;
-	7) DEPEND="${PHPDEPEND}" ; BDEPEND="${TOOLDEPS} ${PHPDEPEND}" ;;
+	7|8) DEPEND="${PHPDEPEND}" ; BDEPEND="${TOOLDEPS} ${PHPDEPEND}" ;;
 esac
 
 unset PHPDEPEND TOOLDEPS
 
-# @ECLASS-VARIABLE: PHP_EXT_SKIP_PHPIZE
+# @ECLASS_VARIABLE: PHP_EXT_SKIP_PHPIZE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # By default, we run "phpize" in php-ext-source-r3_src_prepare(). Set
 # PHP_EXT_SKIP_PHPIZE="yes" in your ebuild if you do not want to run
 # phpize (and the autoreconf that becomes necessary afterwards).
 
-# @ECLASS-VARIABLE: PHP_EXT_SKIP_PATCHES
+# @ECLASS_VARIABLE: PHP_EXT_SKIP_PATCHES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # By default, we run default_src_prepare to PHP_EXT_S.
@@ -200,7 +200,7 @@ php-ext-source-r3_phpize() {
 }
 
 
-# @ECLASS-VARIABLE: PHP_EXT_ECONF_ARGS
+# @ECLASS_VARIABLE: PHP_EXT_ECONF_ARGS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set this in the ebuild to pass additional configure options to
@@ -459,3 +459,5 @@ php-ext-source-r3_addtoinifiles() {
 		done
 	done
 }
+
+EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install src_test

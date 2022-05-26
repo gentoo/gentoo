@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,10 +6,10 @@ EAPI=7
 inherit autotools desktop xdg
 
 DESCRIPTION="Streaming GTK+ Front-End based on Darkice Ice Streamer"
-HOMEPAGE="http://darksnow.radiolivre.org"
-SRC_URI="http://darksnow.radiolivre.org/pacotes/${P}.tar.gz"
+HOMEPAGE="https://darksnow.radiolivre.org"
+SRC_URI="https://darksnow.radiolivre.org/pacotes/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
 

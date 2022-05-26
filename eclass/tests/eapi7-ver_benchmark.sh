@@ -4,7 +4,7 @@
 
 EAPI=6
 
-source tests-common.sh
+source tests-common.sh || exit
 
 inherit eapi7-ver versionator
 

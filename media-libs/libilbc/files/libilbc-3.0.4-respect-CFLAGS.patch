@@ -1,0 +1,25 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cda8105..b766ec2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -52,15 +52,15 @@ set(CMAKE_CXX_STANDARD 14)
+ 
+ if((CMAKE_C_COMPILER_ID STREQUAL "GNU") OR
+    (CMAKE_C_COMPILER_ID MATCHES "Clang" AND CMAKE_C_COMPILER_FRONTEND_VARIANT STREQUAL "GNU"))
+-    set(CMAKE_C_FLAGS "-Wall -Wextra -Wmissing-prototypes -Wstrict-prototypes -Wno-unused-parameter -fno-strict-aliasing")
+-    set(CMAKE_C_FLAGS_DEBUG "-g")
+-    set(CMAKE_C_FLAGS_RELEASE "-O2")
++    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wmissing-prototypes -Wstrict-prototypes -Wno-unused-parameter -fno-strict-aliasing")
++    set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS}")
++    set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS}")
+ endif()
+ if((CMAKE_CXX_COMPILER_ID STREQUAL "GNU") OR
+    (CMAKE_CXX_COMPILER_ID MATCHES "Clang" AND CMAKE_CXX_COMPILER_FRONTEND_VARIANT STREQUAL "GNU"))
+     set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-unused-parameter -fno-strict-aliasing")
+-    set(CMAKE_CXX_FLAGS_DEBUG "-g")
+-    set(CMAKE_CXX_FLAGS_RELEASE "-O2")
++    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_C_FLAGS}")
++    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_C_FLAGS}")
+ endif()
+ 
+ if(CMAKE_C_COMPILER_ID STREQUAL "MSVC")

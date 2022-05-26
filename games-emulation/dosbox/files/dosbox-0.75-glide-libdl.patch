@@ -1,0 +1,18 @@
+https://github.com/voyageur/openglide/pull/25
+
+diff -Naur dosbox.orig/configure.ac dosbox/configure.ac
+--- dosbox.orig/configure.ac	2021-10-26 13:06:35.585761330 +0100
++++ dosbox/configure.ac	2021-10-26 13:07:31.641323631 +0100
+@@ -20,6 +20,12 @@
+ AC_PROG_RANLIB
+ AM_PROG_AR
+
++dnl The dlopen() function is in the C library for *BSD and in
++dnl libdl on GLIBC-based systems
++AC_SEARCH_LIBS([dlopen], [dl dld], [], [
++  AC_MSG_ERROR([unable to find the dlopen() function])
++])
++
+ dnl Some needed libaries for OS2
+ dnl perharps join this with the other target depended checks. move them upwards
+ if test x$host = xi386-pc-os2-emx ; then

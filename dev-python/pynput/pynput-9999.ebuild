@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} pypy )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit distutils-r1
 
@@ -28,7 +28,7 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 
-src_prepare(){
+src_prepare() {
 	sed -i "s/ + SETUP_PACKAGES,/,/g" setup.py
 	distutils-r1_src_prepare
 }

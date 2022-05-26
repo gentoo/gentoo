@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
@@ -8,4 +8,9 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">pytest-helpers-namespace</remote-id>
+		<remote-id type="github">saltstack/pytest-helpers-namespace</remote-id>
+	</upstream>
 </pkgmetadata>

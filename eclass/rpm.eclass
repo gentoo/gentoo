@@ -1,16 +1,27 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rpm.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: convenience class for extracting RPMs
 
-inherit estack eutils
+case ${EAPI} in
+	5|6) inherit epatch eutils ;; # eutils for eqawarn
+	7) inherit eutils ;; # not needed, but ebuilds may still rely on it
+	8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
-case "${EAPI:-0}" in
-	[0-6]) DEPEND=">=app-arch/rpm2targz-9.0.0.3g" ;;
-	*) BDEPEND=">=app-arch/rpm2targz-9.0.0.3g" ;;
+if [[ -z ${_RPM_ECLASS} ]] ; then
+_RPM_ECLASS=1
+
+inherit estack
+
+case ${EAPI} in
+	5|6) DEPEND="app-arch/rpm2targz" ;;
+	*) BDEPEND="app-arch/rpm2targz" ;;
 esac
 
 # @FUNCTION: rpm_unpack
@@ -23,15 +34,16 @@ rpm_unpack() {
 	for a in "$@" ; do
 		echo ">>> Unpacking ${a} to ${PWD}"
 		if [[ ${a} == ./* ]] ; then
-			: nothing to do -- path is local
-		elif [[ ${a} == ${DISTDIR}/* ]] ; then
-			ewarn 'QA: do not use ${DISTDIR} with rpm_unpack -- it is added for you'
+			: # nothing to do -- path is local
+		elif [[ ${a} == "${DISTDIR}"/* ]] ; then
+			eqawarn 'do not use ${DISTDIR} with rpm_unpack -- it is added for you'
 		elif [[ ${a} == /* ]] ; then
-			ewarn 'QA: do not use full paths with rpm_unpack -- use ./ paths instead'
+			eqawarn 'do not use full paths with rpm_unpack -- use ./ paths instead'
 		else
 			a="${DISTDIR}/${a}"
 		fi
-		rpm2tar -O "${a}" | tar xf - || die "failure unpacking ${a}"
+		rpm2tar -O "${a}" | tar xf -
+		assert "failure unpacking ${a}"
 	done
 }
 
@@ -53,9 +65,9 @@ srcrpm_unpack() {
 
 	# unpack everything
 	local a
-	for a in *.tar.{gz,bz2,xz} *.t{gz,bz2,xz,pxz} *.zip *.ZIP ; do
+	for a in *.tar.{gz,bz2,xz} *.t{gz,bz2,xz} *.zip *.ZIP ; do
 		unpack "./${a}"
-		rm -f "${a}"
+		rm -f "${a}" || die
 	done
 
 	eshopts_pop
@@ -79,11 +91,15 @@ rpm_src_unpack() {
 
 # @FUNCTION: rpm_spec_epatch
 # @USAGE: [spec]
+# @DEPRECATED: none
 # @DESCRIPTION:
 # Read the specified spec (defaults to ${PN}.spec) and attempt to apply
 # all the patches listed in it.  If the spec does funky things like moving
 # files around, well this won't handle that.
 rpm_spec_epatch() {
+	# no epatch in EAPI 7 and later
+	[[ ${EAPI} == [56] ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}"
+
 	local p spec=$1
 	local dir
 
@@ -125,5 +141,7 @@ rpm_spec_epatch() {
 
 	eend
 }
+
+fi
 
 EXPORT_FUNCTIONS src_unpack

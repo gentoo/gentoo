@@ -1,11 +1,5 @@
-# Copyright 1999-2019 DXX Rebirth project contributors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# This file is part of the DXX-Rebirth project.
-#
-# It is copyright by its individual contributors, as recorded in the
-# project's Git history.  See COPYING.txt at the top level for license
-# terms and a link to the Git history.
 
 EAPI=7
 
@@ -28,8 +22,8 @@ fi
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-S="$WORKDIR"
+KEYWORDS="~amd64 ~arm64 ~x86"
+S="${WORKDIR}"
 
 # If all USE flags are unset, this ebuild installs zero files.  Require
 # at least one to be set.

@@ -1,5 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Lars Wendler <polynomial-c@gentoo.org> (2022-04-22)
+# gnome-base/librsvg missing keywords
+media-libs/freetype svg
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-01-19)
+# dev-java/openjdk:11 is not keyworded
+>=app-office/libreoffice-7 java
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
 # media-libs/libheif is not keyworded

@@ -1,9 +1,10 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-CRATES=""
+CRATES="
+"
 
 inherit bash-completion-r1 cargo prefix
 
@@ -46,8 +47,21 @@ src_unpack() {
 }
 
 src_configure() {
-	local myfeatures=( no-self-update )
-	cargo_src_configure
+	# modeled after ci/run.bash upstream
+	# reqwest-rustls-tls requires ring crate, which is not very portable.
+	local myfeatures=(
+		no-self-update
+		curl-backend
+		reqwest-backend
+		reqwest-default-tls
+	)
+	case ${ARCH} in
+		ppc*|mips*|riscv*|s390*)
+			;;
+		*) myfeatures+=( reqwest-rustls-tls )
+			;;
+	esac
+	cargo_src_configure --no-default-features
 }
 
 src_compile() {
@@ -58,8 +72,7 @@ src_compile() {
 src_install() {
 	cargo_src_install
 	einstalldocs
-	exeinto /usr/share/rustup
-	newexe "$(prefixify_ro "${FILESDIR}"/symlink_rustup.sh)" symlink_rustup
+	newbin "$(prefixify_ro "${FILESDIR}"/symlink_rustup.sh)" rustup-init-gentoo
 
 	ln -s "${ED}/usr/bin/rustup-init" rustup || die
 	./rustup completions bash rustup > "${T}/rustup" || die
@@ -72,10 +85,11 @@ src_install() {
 }
 
 pkg_postinst() {
-		einfo "No rustup toolchains installed by default"
-		einfo "system rust toolchain can be added to rustup by running"
-		einfo "helper script installed to ${EPREFIX}/usr/share/rustup/symlink_rustup"
-		einfo "it will create proper symlinks in user home directory"
-		einfo "and rustup updates will be managed by portage"
-		einfo "please delete current rustup installation (if any) before running the script"
+		elog "No rustup toolchains installed by default"
+		elog "eselect activated system rust toolchain can be added to rustup by running"
+		elog "helper script installed as ${EPREFIX}/usr/bin/rustup-init-gentoo"
+		elog "it will create symlinks to system-installed rustup in home directory"
+		elog "and rustup updates will be managed by portage"
+		elog "please delete current rustup binaries from ~/.cargo/bin/ (if any)"
+		elog "before running rustup-init-gentoo"
 }

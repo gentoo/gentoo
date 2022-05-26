@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,15 +16,17 @@ KEYWORDS="amd64 ppc ppc64 sparc x86"
 src_prepare() {
 	# Don't strip, install in correct share dir and respect CFLAGS
 	sed \
-		-e "s:install -s:install:g" -e "s:#SHARE:SHARE:g" -e "s:-O2:${CFLAGS}:g" \
+		-e "s@install -s@install@g" \
+		-e "s@#SHARE@SHARE@g" \
+		-e "s@-O2@${CFLAGS}@g" \
 		-i Makefile || die
 	sed \
-		-e 's:grep -v:grep --binary-files=text -v:g' \
+		-e 's@grep -v@grep --binary-files=text -v@g' \
 		-i runtest.sh || die
 
 	default
 }
 
 src_compile() {
-	emake CC=$(tc-getCC)
+	emake CC="$(tc-getCC)"
 }

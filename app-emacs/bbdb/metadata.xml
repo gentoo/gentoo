@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="project">
   <email>gnu-emacs@gentoo.org</email>
@@ -14,6 +14,7 @@
 <use>
   <flag name="tex">Install plain TeX support files</flag>
   <flag name="vm">Add support for <pkg>app-emacs/vm</pkg></flag>
+  <flag name="wanderlust">Add support for <pkg>app-emacs/wanderlust</pkg></flag>
 </use>
 <upstream>
   <remote-id type="sourceforge">bbdb</remote-id>

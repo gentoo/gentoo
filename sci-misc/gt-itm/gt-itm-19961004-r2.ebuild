@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,8 +29,8 @@ DOCS=( README docs/. )
 src_unpack() {
 	unpack "sgb2ns-${PV}.tar.gz"
 
-	mkdir "$S" || die
-	cd "$S" || die
+	mkdir "${S}" || die
+	cd "${S}" || die
 	unpack "${P}.tar.gz"
 }
 

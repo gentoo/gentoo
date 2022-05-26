@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<use>
 		<flag name="cracklib">Enable nickserv/cracklib module for enforcing strong account passwords</flag>
@@ -7,11 +7,11 @@
 		<flag name="ldap">Enable ldap-backed authentication module</flag>
 		<flag name="perl">Install a perl module which wraps around the services' XML-RPC interface</flag>
 	</use>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>wadecline@hotmail.com</email>
 		<name>Wade Cline</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>

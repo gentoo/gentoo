@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit eutils java-pkg-2
+inherit java-pkg-2
 
 L_PN="sbt-launch"
 L_P="${L_PN}-${PV}"
@@ -97,12 +97,12 @@ src_prepare() {
 		cp -p "${DISTDIR}/${L_P}.jar" "${WORKDIR}/${L_P}/${L_PN}.jar" || die
 		cat <<- EOF > "${WORKDIR}/${L_P}/sbt"
 			#!/bin/sh
-			SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled"
+			SBT_OPTS="-Xms512M -Xmx3072M -Xss1M -XX:+CMSClassUnloadingEnabled"
 			java -Djavac.args="-encoding UTF-8" -Duser.home="${WORKDIR}" \${SBT_OPTS} -jar "${WORKDIR}/${L_P}/sbt-launch.jar" "\$@"
 		EOF
 		cat <<- EOF > "${S}/${P}"
 			#!/bin/sh
-			SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled"
+			SBT_OPTS="-Xms512M -Xmx3072M -Xss1M -XX:+CMSClassUnloadingEnabled"
 			java -Djavac.args="-encoding UTF-8" -Duser.home="${WORKDIR}" \${SBT_OPTS} -jar "${S}/launch/target/sbt-launch.jar" "\$@"
 		EOF
 		chmod u+x "${WORKDIR}/${L_P}/sbt" "${S}/${P}" || die

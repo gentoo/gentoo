@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>jaco@uls.co.za</email>
 		<name>Jaco Kroon</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -23,6 +23,7 @@
 		<flag name="resample">Include resampling implementations in the build</flag>
 		<flag name="silk">Include SILK support in the build</flag>
 		<flag name="v4l2">Include Video4Linux v2 support in the build</flag>
+		<flag name="vpx">Include VP8 and VP9 codec support in the build</flag>
 		<flag name="webrtc">Enable WebRTC support</flag>
 	</use>
 </pkgmetadata>

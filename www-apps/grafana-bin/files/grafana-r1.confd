@@ -1,0 +1,27 @@
+# Config file for /etc/init.d/grafana
+
+# The user to run your application as
+#GRAFANA_USER=grafana
+
+# The group to run your application as
+#GRAFANA_GROUP=grafana
+
+# Configuration file
+#GRAFANA_CONFIGFILE="/etc/grafana/${RC_SVCNAME}.ini"
+
+# PID file
+#GRAFANA_PIDFILE="/run/${RC_SVCNAME}.pid"
+
+# The grafana datadir
+#GRAFANA_DATADIR=/var/lib/grafana
+
+# You can use this configuration option to pass additional options to the
+# start-stop-daemon, see start-stop-daemon(8) for more details.
+# Per default we wait 1000ms after we have started the service to ensure
+# that the daemon is really up and running.
+#GRAFANA_SSDARGS="--wait 1000"
+
+# The termination timeout (start-stop-daemon parameter "retry") ensures
+# that the service will be terminated within a given time (60 + 5 seconds
+# per default) when you are stopping the service.
+#GRAFANA_TERMTIMEOUT="TERM/60/KILL/5"

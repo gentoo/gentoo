@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=8
 
-inherit autotools eutils gnome2-utils ltprune multilib readme.gentoo-r1
+inherit autotools gnome2-utils readme.gentoo-r1
 
 DESCRIPTION="Yet another IM-client of SCIM"
 HOMEPAGE="http://www.scim-im.org/projects/scim_bridge"
@@ -42,6 +42,8 @@ PATCHES=(
 	"${FILESDIR}/${P}+gcc-4.4.patch"
 	"${FILESDIR}/${P}+gcc-4.7.patch"
 	"${FILESDIR}/${P}-configure.ac.patch" #280887
+	"${FILESDIR}/${P}-fixes-send-function-call.patch" # 645168
+	"${FILESDIR}/${P}-slibtool.patch" # 779121
 )
 
 src_prepare() {
@@ -72,7 +74,7 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --modules
+	find "${ED}" -name '*.la' -delete || die
 	readme.gentoo_create_doc
 }
 

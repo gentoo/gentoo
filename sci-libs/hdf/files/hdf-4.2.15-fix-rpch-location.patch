@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 5601a1c..df03984 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -693,7 +693,7 @@ if test "X$BUILD_XDR" != "Xyes"; then
+       if test -z "$HAVE_OLDRPC" ; then
+         LIBS="$LIBS -ltirpc"
+         CPPFLAGS="$SYSCPPFLAGS -I/usr/include/tirpc"
+-        AC_CHECK_HEADER([rpc/rpc.h],[:], [unset HAVE_TIRPC])
++        AC_CHECK_HEADER([tirpc/rpc/rpc.h],[:], [unset HAVE_TIRPC])
+         if test -z "$HAVE_TIRPC" ; then
+           CPPFLAGS="$SYSCPPFLAGS"
+           AC_MSG_ERROR([couldn't find rpc headers])

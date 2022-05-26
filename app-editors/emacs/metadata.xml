@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="project">
   <email>gnu-emacs@gentoo.org</email>
@@ -22,22 +22,24 @@
 <use>
   <flag name="athena">Enable the MIT Athena widget set
     (<pkg>x11-libs/libXaw</pkg>)</flag>
-  <flag name="dynamic-loading">Enable loading of dynamic libraries at
-    runtime</flag>
+  <flag name="dynamic-loading">Enable loading of dynamic libraries (modules)
+    at runtime</flag>
   <flag name="games">Support shared score files for games</flag>
   <flag name="gconf">Use <pkg>gnome-base/gconf</pkg> to read the system
     font name</flag>
   <flag name="gfile">Use gfile (<pkg>dev-libs/glib</pkg>) for file
     notification</flag>
+  <flag name="gmp">Use the GNU multiple precision arithmetic library
+    (<pkg>dev-libs/gmp</pkg>) instead of the bundled mini-gmp subset</flag>
   <flag name="gsettings">Use gsettings (<pkg>dev-libs/glib</pkg>) to read the
     system font name</flag>
-  <flag name="gtk2">Prefer version 2 of the GIMP Toolkit to version 3
-    (<pkg>x11-libs/gtk+</pkg>)</flag>
   <flag name="gzip-el">Compress bundled Emacs Lisp source</flag>
   <flag name="harfbuzz">Use <pkg>media-libs/harfbuzz</pkg> as text shaping
     engine</flag>
   <flag name="imagemagick">Use <pkg>media-gfx/imagemagick</pkg> for image
     processing</flag>
+  <flag name="jit">Compile with Emacs Lisp native compiler support via
+    libgccjit</flag>
   <flag name="json">Compile with native JSON support using
     <pkg>dev-libs/jansson</pkg></flag>
   <flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> to parse XML instead

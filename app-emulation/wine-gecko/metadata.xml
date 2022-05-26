@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>wine@gentoo.org</email>
 		<name>Wine</name>
 	</maintainer>
+	<longdescription>
+		A Mozilla Gecko based version of Internet Explorer for Wine
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">wine/wine-gecko</remote-id>
 	</upstream>
+	<use>
+		<flag name="shared">Install pre-unpacked files which do not need to be copied into the Wine prefix</flag>
+	</use>
 </pkgmetadata>

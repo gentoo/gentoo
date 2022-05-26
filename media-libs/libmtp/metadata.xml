@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>sound@gentoo.org</email>
@@ -7,6 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:libmtp_project:libmtp</remote-id>
+		<remote-id type="github">libmtp/libmtp</remote-id>
 		<remote-id type="sourceforge">libmtp</remote-id>
 	</upstream>
 </pkgmetadata>

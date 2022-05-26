@@ -1,0 +1,11 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# usage of FSF GCC, disabling Clang, without binutils-apple (due to
+# missing blocks support in GCC)
+*sys-devel/gcc
+*sys-devel/gcc-config
+*sys-devel/native-cctools
+-*sys-devel/binutils-apple
+-*sys-devel/clang
+-*sys-devel/gcc-apple

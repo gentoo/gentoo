@@ -1,15 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/junghans/${PN}.git"
 	inherit git-r3
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/junghans/cwdiff/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x64-macos ~x86-macos"
+	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x64-macos"
 fi
 
 DESCRIPTION="A script that wraps wdiff to support directories and colorize the output"
@@ -19,11 +18,8 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="mercurial"
 
-DEPEND="sys-apps/help2man
-	sys-apps/coreutils"
+BDEPEND="sys-apps/help2man"
 RDEPEND="
-	sys-apps/sed
-	app-shells/bash
 	app-text/wdiff
 	sys-apps/diffutils
 	mercurial? ( dev-vcs/mercurial )

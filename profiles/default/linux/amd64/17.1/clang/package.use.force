@@ -1,0 +1,16 @@
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# in a multilib profile we need multilib madness
+dev-libs/libffi abi_x86_32 abi_x86_64
+dev-libs/libxml2 abi_x86_32 abi_x86_64
+sys-devel/clang abi_x86_32 abi_x86_64
+sys-devel/clang-runtime abi_x86_32 abi_x86_64
+sys-devel/llvm abi_x86_32 abi_x86_64
+sys-libs/compiler-rt abi_x86_32 abi_x86_64
+sys-libs/libcxxabi abi_x86_32 abi_x86_64
+sys-libs/libcxx abi_x86_32 abi_x86_64
+sys-libs/libunwind abi_x86_32 abi_x86_64
+sys-libs/llvm-libunwind abi_x86_32 abi_x86_64
+sys-libs/ncurses abi_x86_32 abi_x86_64
+sys-libs/zlib abi_x86_32 abi_x86_64

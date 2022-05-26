@@ -1,0 +1,32 @@
+--- a/src/lde.h
++++ b/src/lde.h
+@@ -211,7 +211,7 @@ struct fs_constants {
+ };
+ 
+ /* File system specific commands */
+-struct {
++struct _FS_cmd {
+   /* Check if inode is marked in use */
+   int (*inode_in_use)(unsigned long n);
+   /* Check if data zone/block is marked in use */
+@@ -231,7 +231,9 @@ struct {
+   unsigned long (*map_inode)(unsigned long n);
+   /* Map block number in file chain to physical block on disk */
+   int (*map_block)(unsigned long zone_index[], unsigned long blknr, unsigned long *mapped_block);
+-} FS_cmd;
++};
++
++extern struct _FS_cmd FS_cmd;
+ 
+ /* Flags */
+ struct _lde_flags {
+--- a/src/main_lde.c
++++ b/src/main_lde.c
+@@ -90,6 +90,7 @@ int  (*mgetch)(void) = tty_mgetch;
+ 
+ struct _lde_typedata lde_typedata[] = LDE_ALLTYPES;
+ 
++struct _FS_cmd FS_cmd;
+ 
+ /* Check if device is mounted, return 1 if is mounted else 0 */
+ static int check_mount(char *device_name)

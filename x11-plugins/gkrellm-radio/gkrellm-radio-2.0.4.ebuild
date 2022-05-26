@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ HOMEPAGE="http://gkrellm.luon.net/gkrellm-radio.php"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~amd64 ppc sparc x86"
+KEYWORDS="~amd64 ~ppc sparc x86"
 IUSE="lirc"
 
 RDEPEND="
@@ -22,7 +22,10 @@ DEPEND="${RDEPEND}"
 S=${WORKDIR}/${PN}
 PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
-PLUGIN_SO=( radio$(get_modname) )
+src_configure() {
+	PLUGIN_SO=( radio$(get_modname) )
+	default
+}
 
 src_compile() {
 	use lirc && myconf="${myconf} WITH_LIRC=1"

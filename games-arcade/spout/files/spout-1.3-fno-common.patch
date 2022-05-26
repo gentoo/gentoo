@@ -1,0 +1,18 @@
+--- a/piece.c
++++ b/piece.c
+@@ -11,6 +11,7 @@
+ 
+ SDL_Surface *video, *layer;
+ SDL_Rect layerRect;
++int zoom, fullscreen;
+ 
+ unsigned char *vBuffer = NULL;
+ 
+--- a/piece.h
++++ b/piece.h
+@@ -53,4 +53,4 @@
+ 
+ int pcePadGet ();
+ 
+-int zoom, fullscreen;
++extern int zoom, fullscreen;

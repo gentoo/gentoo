@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/717424
+--- a/src/utils.h
++++ b/src/utils.h
+@@ -21,7 +21,7 @@ pcre* regex(const char* pattern, int options);
+ int capture(pcre* re, const char *text, int len, ...);
+ 
+ #ifndef WIN32
+-DBusGConnection *connection;
++extern DBusGConnection *connection;
+ gboolean dbus_g_init_connection(void);
+ gboolean dbus_g_running(const char *name);
+ #endif

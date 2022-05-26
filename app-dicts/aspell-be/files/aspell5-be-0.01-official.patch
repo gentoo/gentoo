@@ -1,11 +1,11 @@
---- aspell5-be-0.01.orig/be_BY.alias	2004-07-06 00:40:25.000000000 +0300
-+++ aspell5-be-0.01/be_BY.alias	2006-04-15 10:33:22.000000000 +0300
+--- a/be_BY.alias
++++ b/be_BY.alias
 @@ -1,2 +1,2 @@
  # Generated with Aspell Dicts "proc" script version 0.60.2
 -add be.multi
 +add be_SU.multi
---- aspell5-be-0.01.orig/belarusian.alias	2004-07-06 00:40:25.000000000 +0300
-+++ aspell5-be-0.01/belarusian.alias	2006-04-15 10:33:37.000000000 +0300
+--- a/belarusian.alias
++++ b/belarusian.alias
 @@ -1,2 +1,2 @@
  # Generated with Aspell Dicts "proc" script version 0.60.2
 -add be.multi

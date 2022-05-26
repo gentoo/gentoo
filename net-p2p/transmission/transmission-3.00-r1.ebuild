@@ -1,4 +1,4 @@
-# Copyright 2006-2020 Gentoo Authors
+# Copyright 2006-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/transmission/transmission"
 else
 	SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm ~arm64 ~mips ppc ppc64 x86 ~amd64-linux"
+	KEYWORDS="amd64 ~arm ~arm64 ~mips ppc ppc64 ~riscv x86 ~amd64-linux"
 fi
 
 DESCRIPTION="A fast, easy, and free BitTorrent client"
@@ -21,7 +21,7 @@ HOMEPAGE="https://transmissionbt.com/"
 # MIT is in several libtransmission/ headers
 LICENSE="|| ( GPL-2 GPL-3 Transmission-OpenSSL-exception ) GPL-2 MIT"
 SLOT="0"
-IUSE="appindicator gtk libressl lightweight nls mbedtls qt5 systemd test"
+IUSE="appindicator cli gtk lightweight nls mbedtls qt5 systemd test"
 RESTRICT="!test? ( test )"
 
 ACCT_DEPEND="
@@ -32,7 +32,6 @@ BDEPEND="${ACCT_DEPEND}
 	virtual/pkgconfig
 	nls? (
 		gtk? (
-			dev-util/intltool
 			sys-devel/gettext
 		)
 		qt5? (
@@ -42,10 +41,7 @@ BDEPEND="${ACCT_DEPEND}
 "
 COMMON_DEPEND="
 	>=dev-libs/libevent-2.0.10:=
-	!mbedtls? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	!mbedtls? ( dev-libs/openssl:0= )
 	mbedtls? ( net-libs/mbedtls:0= )
 	net-libs/libnatpmp
 	>=net-libs/miniupnpc-1.7:=
@@ -71,7 +67,6 @@ DEPEND="${COMMON_DEPEND}
 	nls? (
 		virtual/libintl
 		gtk? (
-			dev-util/intltool
 			sys-devel/gettext
 		)
 		qt5? (
@@ -91,6 +86,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR=share/doc/${PF}
 
+		-DENABLE_CLI=$(usex cli ON OFF)
 		-DENABLE_GTK=$(usex gtk ON OFF)
 		-DENABLE_LIGHTWEIGHT=$(usex lightweight ON OFF)
 		-DENABLE_NLS=$(usex nls ON OFF)
@@ -118,8 +114,12 @@ src_install() {
 
 	newinitd "${FILESDIR}"/transmission-daemon.initd.10 transmission-daemon
 	newconfd "${FILESDIR}"/transmission-daemon.confd.4 transmission-daemon
-	systemd_dounit daemon/transmission-daemon.service
-	systemd_install_serviced "${FILESDIR}"/transmission-daemon.service.conf
+
+	if use systemd; then
+		# Service sets Type=notify
+		systemd_dounit daemon/transmission-daemon.service
+		systemd_install_serviced "${FILESDIR}"/transmission-daemon.service.conf
+	fi
 
 	insinto /usr/lib/sysctl.d
 	doins "${FILESDIR}"/60-transmission.conf

@@ -1,7 +1,7 @@
 Only dump -L/-rpath if libdir is non-standard
 
---- smpeg-config.in
-+++ smpeg-config.in
+--- a/smpeg-config.in
++++ b/smpeg-config.in
 @@ -45,11 +45,13 @@
        echo $includes -I@includedir@/smpeg `@SDL_CONFIG@ --cflags`
        ;;

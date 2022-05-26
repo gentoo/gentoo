@@ -1,0 +1,21 @@
+Do not try to auto-guess Lua directories from the path to the interpreter,
+it does not work with the wrapper set up by lua-single.eclass. Use the
+values of LUA, LUA_BINDIR and LUA_SHAREDIR provided by the ebuild instead.
+
+--- a/makefile
++++ b/makefile
+@@ -1,13 +1,9 @@
+-LUA= $(shell echo `which lua`)
+-LUA_BINDIR= $(shell echo `dirname $(LUA)`)
+-LUA_PREFIX= $(shell echo `dirname $(LUA_BINDIR)`)
+-LUA_SHAREDIR=$(LUA_PREFIX)/share/lua/5.1
+ 
+ ldoc:
+ 
+ install: install_parts
+ 	mkdir -p $(DESTDIR)$(LUA_BINDIR)
+-	echo "lua $(LUA_SHAREDIR)/ldoc.lua \$$*" > $(DESTDIR)$(LUA_BINDIR)/ldoc
++	echo "$(LUA) $(LUA_SHAREDIR)/ldoc.lua \$$*" > $(DESTDIR)$(LUA_BINDIR)/ldoc
+ 	chmod +x $(DESTDIR)$(LUA_BINDIR)/ldoc
+ 
+ install_luajit: install_parts

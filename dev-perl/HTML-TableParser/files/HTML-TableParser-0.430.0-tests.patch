@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/737338
+https://rt.cpan.org/Public/Bug/Display.html?id=121341
+
+
+diff -ruN HTML-TableParser-0.43.orig/t/req_order.t HTML-TableParser-0.43/t/req_order.t
+--- HTML-TableParser-0.43.orig/t/req_order.t	2018-03-22 21:31:52.000000000 +0100
++++ HTML-TableParser-0.43/t/req_order.t	2021-12-18 17:14:37.239637221 +0100
+@@ -48,5 +48,5 @@
+ my $p = HTML::TableParser->new( \@reqs );
+ $p->parse_file( 'data/ned.html' ) || die;
+ 
+-ok( eq_array( $header, $columns ), "$html header" );
+-ok( eq_array( $data->{Default}, \@parse_data ), "$html data" );
++is_deeply( $header, $columns, "$html header" );
++is_deeply( $data->{Default}, \@parse_data, "$html data" );

@@ -1,0 +1,12 @@
+--- rdesktop-1.9.0/configure.ac.orig	2021-05-22 14:38:14.854099405 +0300
++++ rdesktop-1.9.0/configure.ac	2021-05-22 14:43:41.476323564 +0300
+@@ -84,6 +84,9 @@
+ 				fi
+ 				;;
+ 			*)
++				if test -n "$PKG_CONFIG"; then
++					PKG_CHECK_MODULES(GSSAPI, krb5-gssapi, [WITH_CREDSSP=1], [WITH_CREDSSP=0])
++				fi
+ 				;;
+ 			esac
+ 		else

@@ -1,5 +1,0 @@
-#!/bin/sh
-set -e
-[ -e "${HOME}"/.local/share/higan ] || mkdir "${HOME}"/.local/share/higan
-cp -ru /usr/share/higan/* "${HOME}"/.local/share/higan/
-exec ${0}.bin "$@"

@@ -1,5 +1,5 @@
---- db-18.1.25/dist/aclocal/sql.m4
-+++ db-18.1.25/dist/aclocal/sql.m4
+--- a/dist/aclocal/sql.m4
++++ b/dist/aclocal/sql.m4
 @@ -99,7 +99,7 @@
  if test "$db_cv_debug" = "yes"; then
    CPPFLAGS="$CPPFLAGS -g"

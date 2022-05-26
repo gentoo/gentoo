@@ -1,22 +1,24 @@
 #!/sbin/openrc-run
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 description="Serial to network proxy (${RC_SVCNAME#*.})"
 pidfile="/var/run/${RC_SVCNAME}.pid"
 command="/usr/sbin/ser2net"
-name="${RC_SVCNAME}"
+name="${description}"
 
 extra_started_commands="reload"
 description_reload="Reread configuration file and make the appropriate changes"
-start_stop_daemon_args="--quiet --exec ${command} --name ${name} --pidfile ${pidfile}"
+start_stop_daemon_args="--quiet"
+command_args_background="-P ${pidfile}"
+command_args_foreground="-n"
 
 depend() {
 	use logger
 	need net
 }
 
-config_check() {
+start_pre() {
 	command_args="${EXTRA_OPTS}"
 	CONFIG_FILE_DEFAULT="/etc/ser2net.conf"
 
@@ -34,21 +36,8 @@ config_check() {
 	return 0
 }
 
-start() {
-	config_check || return ${?}
-	ebegin "Starting ${description}"
-	start-stop-daemon --start ${start_stop_daemon_args} -- ${command_args} -P "${pidfile}"
-	eend ${?}
-}
-
-stop() {
-	ebegin "Stopping ${description}"
-	start-stop-daemon --stop ${start_stop_daemon_args}
-	eend ${?}
-}
-
 reload() {
 	ebegin "Reloading ${description}"
-	start-stop-daemon --signal HUP ${start_stop_daemon_args}
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
 	eend ${?}
 }

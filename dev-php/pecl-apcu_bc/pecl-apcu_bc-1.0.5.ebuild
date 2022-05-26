@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -10,18 +10,18 @@ PHP_EXT_ZENDEXT="no"
 PHP_EXT_EXTRA_ECONF=""
 DOCS=( README.md )
 
-USE_PHP="php7-1 php7-2 php7-3 php7-4"
+USE_PHP="php7-2 php7-3 php7-4"
 
 inherit php-ext-pecl-r3 multilib
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DESCRIPTION="Provides APC backwards compatibility functions via APCu"
 LICENSE="PHP-3.01"
 SLOT="0"
 IUSE=""
 
-DEPEND=">=dev-php/pecl-apcu-5.1.18:7[php_targets_php7-1?,php_targets_php7-2?,php_targets_php7-3?,php_targets_php7-4?]"
+DEPEND=">=dev-php/pecl-apcu-5.1.18:7[php_targets_php7-2(-)?,php_targets_php7-3(-)?,php_targets_php7-4(-)?]"
 RDEPEND="${DEPEND}"
 
 src_test() {

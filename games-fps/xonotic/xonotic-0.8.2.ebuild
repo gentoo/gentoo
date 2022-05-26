@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://dl.xonotic.org/${P}.zip"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="alsa debug dedicated doc ode sdl"
 
 UIRDEPEND="
@@ -44,6 +44,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	!dedicated? ( ${UIDEPEND} )"
 BDEPEND="app-arch/unzip"
+
+PATCHES=("${FILESDIR}"/${P}-gcc-11.patch)
 
 DOCS="Docs/*.txt"
 

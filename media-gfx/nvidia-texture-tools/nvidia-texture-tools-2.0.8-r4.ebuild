@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils eutils
+inherit cmake-utils edos2unix
 
 DESCRIPTION="A set of cuda-enabled texture tools and compressors"
 HOMEPAGE="http://developer.nvidia.com/object/texture_tools.html"
@@ -12,7 +12,7 @@ SRC_URI="https://${PN}.googlecode.com/files/${P}-1.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 -riscv x86"
 IUSE="cg glew glut openexr"
 
 RDEPEND="

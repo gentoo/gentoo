@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: depend.apache.eclass
 # @MAINTAINER:
-# apache-devs@gentoo.org
-# @SUPPORTED_EAPIS: 0 2 3 4 5 6
+# apache-bugs@gentoo.org
+# @SUPPORTED_EAPIS: 0 2 3 4 5 6 7
 # @BLURB: Functions to allow ebuilds to depend on apache
 # @DESCRIPTION:
 # This eclass handles depending on apache in a sane way and provides information
@@ -44,7 +44,7 @@ case ${EAPI:-0} in
 	0|2|3|4|5)
 		inherit multilib
 		;;
-	6)
+	6|7)
 		;;
 	*)
 		die "EAPI=${EAPI} is not supported by depend.apache.eclass"
@@ -55,69 +55,69 @@ esac
 # INTERNAL VARIABLES
 # ==============================================================================
 
-# @ECLASS-VARIABLE: APACHE_VERSION
+# @ECLASS_VARIABLE: APACHE_VERSION
 # @DESCRIPTION:
 # Stores the version of apache we are going to be ebuilding.
 # This variable is set by the want/need_apache functions.
 
-# @ECLASS-VARIABLE: APXS
+# @ECLASS_VARIABLE: APXS
 # @DESCRIPTION:
 # Path to the apxs tool.
 # This variable is set by the want/need_apache functions.
 
-# @ECLASS-VARIABLE: APACHE_BIN
+# @ECLASS_VARIABLE: APACHE_BIN
 # @DESCRIPTION:
 # Path to the apache binary.
 # This variable is set by the want/need_apache functions.
 
-# @ECLASS-VARIABLE: APACHE_CTL
+# @ECLASS_VARIABLE: APACHE_CTL
 # @DESCRIPTION:
 # Path to the apachectl tool.
 # This variable is set by the want/need_apache functions.
 
-# @ECLASS-VARIABLE: APACHE_BASEDIR
+# @ECLASS_VARIABLE: APACHE_BASEDIR
 # @DESCRIPTION:
 # Path to the server root directory.
 # This variable is set by the want/need_apache functions (EAPI=0 through 5)
 # or depend.apache_pkg_setup (EAPI=6 and later).
 
-# @ECLASS-VARIABLE: APACHE_CONFDIR
+# @ECLASS_VARIABLE: APACHE_CONFDIR
 # @DESCRIPTION:
 # Path to the configuration file directory.
 # This variable is set by the want/need_apache functions.
 
-# @ECLASS-VARIABLE: APACHE_MODULES_CONFDIR
+# @ECLASS_VARIABLE: APACHE_MODULES_CONFDIR
 # @DESCRIPTION:
 # Path where module configuration files are kept.
 # This variable is set by the want/need_apache functions.
 
-# @ECLASS-VARIABLE: APACHE_VHOSTS_CONFDIR
+# @ECLASS_VARIABLE: APACHE_VHOSTS_CONFDIR
 # @DESCRIPTION:
 # Path where virtual host configuration files are kept.
 # This variable is set by the want/need_apache functions.
 
-# @ECLASS-VARIABLE: APACHE_MODULESDIR
+# @ECLASS_VARIABLE: APACHE_MODULESDIR
 # @DESCRIPTION:
 # Path where we install modules.
 # This variable is set by the want/need_apache functions (EAPI=0 through 5)
 # or depend.apache_pkg_setup (EAPI=6 and later).
 
-# @ECLASS-VARIABLE: APACHE_DEPEND
+# @ECLASS_VARIABLE: APACHE_DEPEND
 # @DESCRIPTION:
 # Dependencies for Apache
 APACHE_DEPEND="www-servers/apache"
 
-# @ECLASS-VARIABLE: APACHE2_DEPEND
+# @ECLASS_VARIABLE: APACHE2_DEPEND
 # @DESCRIPTION:
 # Dependencies for Apache 2.x
 APACHE2_DEPEND="=www-servers/apache-2*"
 
-# @ECLASS-VARIABLE: APACHE2_2_DEPEND
+# @ECLASS_VARIABLE: APACHE2_2_DEPEND
 # @DESCRIPTION:
 # Dependencies for Apache 2.2.x
 APACHE2_2_DEPEND="=www-servers/apache-2.2*"
 
-# @ECLASS-VARIABLE: APACHE2_4_DEPEND
+# @ECLASS_VARIABLE: APACHE2_4_DEPEND
 # @DESCRIPTION:
 # Dependencies for Apache 2.4.x
 APACHE2_4_DEPEND="=www-servers/apache-2.4*"

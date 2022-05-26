@@ -1,0 +1,42 @@
+From e2d271b6365188a86755af82745ad37535ceb4d7 Mon Sep 17 00:00:00 2001
+From: Erik Kurzinger <ekurzinger@nvidia.com>
+Date: Sun, 8 May 2022 12:16:20 -0700
+Subject: [PATCH] platforms/drm: set read buffer in
+ GbmSurface::makeContextCurrent
+
+The first time the GBM backend's EGL context is made current after
+creation, both the read and draw surfaces are set to EGL_NO_SURFACE.
+This will set the GL read and draw buffers to GL_NONE in accordance with
+the EGL spec.
+
+When a real surface is later made current, however, the spec is arguably
+unclear on whether the read and draw buffers should remain set to
+GL_NONE or whether they should be restored to the default GL_BACK.  The
+Mesa driver does the latter, the NVIDIA driver does the former.
+
+To work around this difference, Kwin has an explicit call to
+glDrawBuffer in GbmSurface::makeContextCurrent. It does not have a
+corresponding call to glReadBuffer, though, which can cause some desktop
+effects such as background contrast to render incorrectly with the
+NVIDIA driver. This change adds that missing call.
+
+(cherry picked from commit e6d2bc153f499d1ec3510c02badca38d4c42c340)
+---
+ src/backends/drm/egl_gbm_backend.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/backends/drm/egl_gbm_backend.cpp b/src/backends/drm/egl_gbm_backend.cpp
+index 5a0be7ccaf..b34fa1320b 100644
+--- a/src/backends/drm/egl_gbm_backend.cpp
++++ b/src/backends/drm/egl_gbm_backend.cpp
+@@ -377,6 +377,7 @@ bool EglGbmBackend::makeContextCurrent(const Output::RenderData &render) const
+     }
+     if (!GLPlatform::instance()->isGLES()) {
+         glDrawBuffer(GL_BACK);
++        glReadBuffer(GL_BACK);
+     }
+     return true;
+ }
+-- 
+GitLab
+

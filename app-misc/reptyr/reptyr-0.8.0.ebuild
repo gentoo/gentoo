@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,9 +11,14 @@ SRC_URI="https://github.com/nelhage/${PN}/archive/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 
 RESTRICT="test"
+
+PATCHES=(
+	# drop on next version bump
+	"${FILESDIR}"/${PN}-0.8.0-riscv64-support.patch
+)
 
 src_prepare() {
 	default
@@ -23,7 +28,7 @@ src_prepare() {
 
 src_compile() {
 	append-cppflags -D_GNU_SOURCE
-	emake CC=$(tc-getCC) CFLAGS="${CFLAGS}"
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
 }
 
 src_install() {

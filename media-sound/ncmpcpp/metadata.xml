@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>jer@gentoo.org</email>
-	</maintainer>
-	<maintainer type="project">
-		<email>sound@gentoo.org</email>
-		<name>Gentoo Sound project</name>
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
 	</maintainer>
 	<use>
 		<flag name="clock">Enable clock screen</flag>
+		<flag name="lto">Build with link-time optimisation</flag>
 		<flag name="outputs">Enable outputs screen</flag>
 		<flag name="visualizer">Enable visualizer screen with sound wave/frequency spectrum modes</flag>
 	</use>

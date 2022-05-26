@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Bayesian Filtering Library"
 HOMEPAGE="https://orocos.org/bfl"
@@ -12,54 +12,55 @@ SRC_URI="https://people.mech.kuleuven.be/~tdelaet/bfl_tar/${P}-src.tar.bz2"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm"
-IUSE="doc examples static-libs test"
+IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/boost:="
 DEPEND="${RDEPEND}
+	test? ( dev-util/cppunit )"
+BDEPEND="
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
 		virtual/latex-base
-	)
-	test? ( dev-util/cppunit )"
+	)"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -e 's:/lib:/${CMAKE_INSTALL_LIBDIR}:' \
-		-i "${S}/"{,src/,src/bindings/rtt/}CMakeLists.txt || die
+		-i {,src/,src/bindings/rtt/}CMakeLists.txt || die
 }
 
 src_configure() {
 	local mycmakeargs=(
-		"-DLIBRARY_TYPE=$(usex static-libs both shared)"
-		"-DBUILD_EXAMPLES=$(usex examples ON OFF)"
-		"-DBUILD_TESTS=$(usex test ON OFF)"
+		-DLIBRARY_TYPE=shared
+		# installs test binaries
+		-DBUILD_EXAMPLES=NO
+		-DBUILD_TESTS=$(usex test)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
+
 	if use doc ; then
-		cd "${BUILD_DIR}"
+		cd "${BUILD_DIR}" || die
 		doxygen || die
 		cd "${S}/docs" || die
 		pdflatex getting_started_guide || die
 		pdflatex getting_started_guide || die
+
+		HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
 	fi
 }
 
 src_test() {
-	cd "${BUILD_DIR}"
-	emake check
+	cmake_build check
 }
 
 src_install() {
-	cmake-utils_src_install
-	if use doc ; then
-		dohtml -r "${BUILD_DIR}/doc/html/"
-		dodoc "${S}/docs/getting_started_guide.pdf"
-	fi
+	cmake_src_install
+	use doc && dodoc docs/getting_started_guide.pdf
 }

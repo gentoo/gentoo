@@ -1,0 +1,12 @@
+diff --git a/tests/ondemand/compilation_failure_tests/CMakeLists.txt b/tests/ondemand/compilation_failure_tests/CMakeLists.txt
+index 2d0959be..324edf80 100644
+--- a/tests/ondemand/compilation_failure_tests/CMakeLists.txt
++++ b/tests/ondemand/compilation_failure_tests/CMakeLists.txt
+@@ -14,6 +14,7 @@ function(add_dual_compile_test TEST_NAME)
+ endfunction(add_dual_compile_test)
+ 
+ 
++target_compile_options(simdjson-internal-flags INTERFACE -Werror=uninitialized)
+ add_dual_compile_test(iterate_char_star)
+ add_dual_compile_test(iterate_string_view)
+ add_dual_compile_test(iterate_temporary_buffer)

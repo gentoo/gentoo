@@ -1,0 +1,12 @@
+We need to place LDFLAGS earlier to ensure e.g. as-needed works correctly.
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -56,7 +56,7 @@ libaio.a: $(libaio_objs)
+ 
+ $(libname): $(libaio_sobjs) libaio.map
+ 	$(CC) $(CFLAGS) -c struct_offsets.c
+-	$(CC) $(SO_CFLAGS) -Wl,--version-script=libaio.map -Wl,-soname=$(soname) -o $@ $(libaio_sobjs) $(LINK_FLAGS)
++	$(CC) $(SO_CFLAGS) $(LINK_FLAGS) -Wl,--version-script=libaio.map -Wl,-soname=$(soname) -o $@ $(libaio_sobjs)
+ 
+ install: $(all_targets)
+ 	install -D -m 644 libaio.h $(includedir)/libaio.h

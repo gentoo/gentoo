@@ -10,7 +10,7 @@ SRC_URI="https://github.com/poroussel/simpleagenda/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="dbus"
 
 DEPEND=">=dev-libs/libical-0.27

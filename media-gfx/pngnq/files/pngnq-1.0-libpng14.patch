@@ -1,7 +1,7 @@
 http://aur.archlinux.org/packages.php?ID=10325
 
---- src/rwpng.c
-+++ src/rwpng.c
+--- a/src/rwpng.c
++++ b/src/rwpng.c
 @@ -80,7 +80,7 @@
       * have used slightly more general png_sig_cmp() function instead */
  

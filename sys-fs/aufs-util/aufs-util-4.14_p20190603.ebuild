@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils flag-o-matic linux-info multilib toolchain-funcs
+inherit linux-info multilib toolchain-funcs
 
 DESCRIPTION="Utilities are always necessary for aufs"
 HOMEPAGE="http://aufs.sourceforge.net/"
@@ -12,9 +12,8 @@ SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 # xz -ve9 *.tar
 
 SLOT="0"
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	!sys-fs/aufs2
@@ -42,7 +41,7 @@ src_prepare() {
 		-i fhsm/Makefile || die
 
 	tc-export CC AR
-	export HOSTCC=$(tc-getCC)
+	export HOSTCC="$(tc-getCC)"
 	export STRIP=true
 	default
 }

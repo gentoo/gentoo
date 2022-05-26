@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit multilib readme.gentoo-r1 toolchain-funcs
+inherit readme.gentoo-r1 toolchain-funcs
 
 DESCRIPTION="A tiny pseudoshell which only permits scp and sftp"
 HOMEPAGE="https://github.com/scponly/scponly"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/scponly/${P}.tgz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ~ppc sparc x86"
 IUSE="chroot +sftp scp winscp gftp rsync unison subversion wildcards quota passwd logging"
 REQUIRED_USE="
 	|| ( sftp scp winscp rsync unison subversion )
@@ -55,7 +55,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake CC=$(tc-getCC)
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {

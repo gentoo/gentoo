@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="examples">Build and install examples</flag>
+		<flag name="jpeg">Enable fast encodings</flag>
+		<flag name="tracing">Trace kernel and memory calls</flag>
+	</use>
+</pkgmetadata>

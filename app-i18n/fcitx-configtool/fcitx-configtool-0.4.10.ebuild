@@ -1,9 +1,9 @@
-# Copyright 2010-2020 Gentoo Authors
+# Copyright 2010-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit cmake-utils
+inherit cmake
 
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="4"
-KEYWORDS="amd64 ppc ppc64 x86"
+KEYWORDS="amd64 ~arm64 ppc ppc64 ~riscv x86"
 IUSE=""
 
 BDEPEND="dev-libs/glib:2
@@ -40,5 +40,5 @@ src_configure() {
 		-DENABLE_GTK3=ON
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

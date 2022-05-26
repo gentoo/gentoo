@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-r1.eclass
@@ -7,7 +7,8 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 6 7 8
+# @PROVIDES: multibuild python-utils-r1
 # @BLURB: A common, simple eclass for Python packages.
 # @DESCRIPTION:
 # A common eclass providing helper functions to build and install
@@ -27,14 +28,13 @@
 # both.
 #
 # For more information, please see the Python Guide:
-# https://dev.gentoo.org/~mgorny/python-guide/
+# https://projects.gentoo.org/python/guide/
 
 case "${EAPI:-0}" in
-	0|1|2|3|4)
+	[0-5])
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
-	5|6|7)
-		# EAPI=5 is required for sane USE_EXPAND dependencies
+	[6-8])
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -49,12 +49,11 @@ elif [[ ${_PYTHON_ANY_R1} ]]; then
 	die 'python-r1.eclass can not be used with python-any-r1.eclass.'
 fi
 
-[[ ${EAPI} == [45] ]] && inherit eutils
 inherit multibuild python-utils-r1
 
 fi
 
-# @ECLASS-VARIABLE: PYTHON_COMPAT
+# @ECLASS_VARIABLE: PYTHON_COMPAT
 # @REQUIRED
 # @DESCRIPTION:
 # This variable contains a list of Python implementations the package
@@ -71,7 +70,7 @@ fi
 # PYTHON_COMPAT=( python2_7 python3_{3,4} )
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_COMPAT_OVERRIDE
+# @ECLASS_VARIABLE: PYTHON_COMPAT_OVERRIDE
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -91,7 +90,7 @@ fi
 # PYTHON_COMPAT_OVERRIDE='pypy python3_3' emerge -1v dev-python/foo
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_REQ_USE
+# @ECLASS_VARIABLE: PYTHON_REQ_USE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The list of USEflags required to be enabled on the chosen Python
@@ -111,7 +110,7 @@ fi
 # python_targets_pythonX_Y? ( dev-lang/python:X.Y[gdbm,ncurses(-)?] )
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_DEPS
+# @ECLASS_VARIABLE: PYTHON_DEPS
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated Python dependency string for all
@@ -121,17 +120,16 @@ fi
 # @CODE
 # RDEPEND="${PYTHON_DEPS}
 #	dev-foo/mydep"
-# DEPEND="${RDEPEND}"
+# BDEPEND="${PYTHON_DEPS}"
 # @CODE
 #
 # Example value:
 # @CODE
-# dev-lang/python-exec:=
 # python_targets_python2_7? ( dev-lang/python:2.7[gdbm] )
 # python_targets_pypy? ( dev-python/pypy[gdbm] )
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_USEDEP
+# @ECLASS_VARIABLE: PYTHON_USEDEP
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated USE-dependency string which can be used to
@@ -152,7 +150,29 @@ fi
 # python_targets_python2_7(-)?,python_targets_python3_4(-)?
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_REQUIRED_USE
+# @ECLASS_VARIABLE: PYTHON_SINGLE_USEDEP
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# An eclass-generated USE-dependency string for the currently tested
+# implementation. It is set locally for python_check_deps() call.
+#
+# The generated USE-flag list is compatible with packages using
+# python-single-r1 eclass. For python-r1 dependencies,
+# use PYTHON_USEDEP.
+#
+# Example use:
+# @CODE
+# python_check_deps() {
+# 	has_version "dev-python/bar[${PYTHON_SINGLE_USEDEP}]"
+# }
+# @CODE
+#
+# Example value:
+# @CODE
+# python_single_target_python3_7(-)
+# @CODE
+
+# @ECLASS_VARIABLE: PYTHON_REQUIRED_USE
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated required-use expression which ensures at
@@ -183,23 +203,8 @@ _python_set_globals() {
 
 	local flags=( "${_PYTHON_SUPPORTED_IMPLS[@]/#/python_targets_}" )
 	local optflags=${flags[@]/%/(-)?}
-
-	# A nice QA trick here. Since a python-single-r1 package has to have
-	# at least one PYTHON_SINGLE_TARGET enabled (REQUIRED_USE),
-	# the following check will always fail on those packages. Therefore,
-	# it should prevent developers from mistakenly depending on packages
-	# not supporting multiple Python implementations.
-
-	local flags_st=( "${_PYTHON_SUPPORTED_IMPLS[@]/#/-python_single_target_}" )
-	optflags+=,${flags_st[@]/%/(-)}
 	local requse="|| ( ${flags[*]} )"
 	local usedep=${optflags// /,}
-
-	# 1) well, python-exec would suffice as an RDEP
-	# but no point in making this overcomplex, BDEP doesn't hurt anyone
-	# 2) python-exec should be built with all targets forced anyway
-	# but if new targets were added, we may need to force a rebuild
-	deps+=">=dev-lang/python-exec-2:=[${usedep}]"
 
 	if [[ ${PYTHON_DEPS+1} ]]; then
 		# IUSE is magical, so we can't really check it
@@ -284,14 +289,7 @@ _python_validate_useflags() {
 # are both in PYTHON_COMPAT and match any of the patterns passed
 # as parameters to the function.
 #
-# The patterns can be either fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
-# appropriately all enabled Python 2/3 implementations (alike
-# python_is_python3). Remember to escape or quote the fnmatch patterns
-# to prevent accidental shell filename expansion.
-#
-# This is an internal function used to implement python_gen_cond_dep
-# and deprecated python_gen_usedep.
+# This is an internal function used to implement python_gen_cond_dep.
 _python_gen_usedep() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -302,7 +300,6 @@ _python_gen_usedep() {
 		if _python_impl_matches "${impl}" "${@}"; then
 			matches+=(
 				"python_targets_${impl}(-)?"
-				"-python_single_target_${impl}(-)"
 			)
 		fi
 	done
@@ -313,46 +310,6 @@ _python_gen_usedep() {
 	echo "${out// /,}"
 }
 
-# @FUNCTION: python_gen_usedep
-# @USAGE: <pattern> [...]
-# @DESCRIPTION:
-# DEPRECATED.  Please use python_gen_cond_dep instead.
-#
-# Output a USE dependency string for Python implementations which
-# are both in PYTHON_COMPAT and match any of the patterns passed
-# as parameters to the function.
-#
-# The patterns can be either fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
-# appropriately all enabled Python 2/3 implementations (alike
-# python_is_python3). Remember to escape or quote the fnmatch patterns
-# to prevent accidental shell filename expansion.
-#
-# When all implementations are requested, please use ${PYTHON_USEDEP}
-# instead. Please also remember to set an appropriate REQUIRED_USE
-# to avoid ineffective USE flags.
-#
-# Example:
-# @CODE
-# PYTHON_COMPAT=( python{2_7,3_4} )
-# DEPEND="doc? ( dev-python/epydoc[$(python_gen_usedep 'python2*')] )"
-# @CODE
-#
-# It will cause the dependency to look like:
-# @CODE
-# DEPEND="doc? ( dev-python/epydoc[python_targets_python2_7?] )"
-# @CODE
-python_gen_usedep() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	# output only once, during some reasonable phase
-	# (avoid spamming cache regen runs)
-	if [[ ${EBUILD_PHASE} == setup ]]; then
-		eqawarn "python_gen_usedep() is deprecated. Please use python_gen_cond_dep instead."
-	fi
-	_python_gen_usedep "${@}"
-}
-
 # @FUNCTION: python_gen_useflags
 # @USAGE: [<pattern>...]
 # @DESCRIPTION:
@@ -360,11 +317,8 @@ python_gen_usedep() {
 # are both in PYTHON_COMPAT and match any of the patterns passed
 # as parameters to the function.
 #
-# The patterns can be either fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
-# appropriately all enabled Python 2/3 implementations (alike
-# python_is_python3). Remember to escape or quote the fnmatch patterns
-# to prevent accidental shell filename expansion.
+# For the pattern syntax, please see _python_impl_matches
+# in python-utils-r1.eclass.
 #
 # Example:
 # @CODE
@@ -398,11 +352,8 @@ python_gen_useflags() {
 # of Python implementations which are both in PYTHON_COMPAT and match
 # any of the patterns passed as the remaining parameters.
 #
-# The patterns can be either fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
-# appropriately all enabled Python 2/3 implementations (alike
-# python_is_python3). Remember to escape or quote the fnmatch patterns
-# to prevent accidental shell filename expansion.
+# For the pattern syntax, please see _python_impl_matches
+# in python-utils-r1.eclass.
 #
 # In order to enforce USE constraints on the packages, verbatim
 # '${PYTHON_USEDEP}' (quoted!) may be placed in the dependency
@@ -433,9 +384,15 @@ python_gen_cond_dep() {
 	_python_verify_patterns "${@}"
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${impl}" "${@}"; then
-			# substitute ${PYTHON_USEDEP} if used
-			# (since python_gen_usedep() will not return ${PYTHON_USEDEP}
-			#  the code is run at most once)
+			# substitute ${PYTHON_USEDEP} with USE-dep on *all* matching
+			# targets, if it is used.  this ensures that Portage will
+			# report all missing USE flags simultaneously rather than
+			# requesting the user to enable them one by one.
+			#
+			# NB: the first call with replace all instances
+			# of ${PYTHON_USEDEP}, so the condition will be false
+			# on subsequent loop iterations and _python_gen_usedep()
+			# will run at most once.
 			if [[ ${dep} == *'${PYTHON_USEDEP}'* ]]; then
 				local usedep=$(_python_gen_usedep "${@}")
 				dep=${dep//\$\{PYTHON_USEDEP\}/${usedep}}
@@ -457,11 +414,8 @@ python_gen_cond_dep() {
 # patterns are passed, the output dependencies will be generated only
 # for the implementations matching them.
 #
-# The patterns can be either fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
-# appropriately all enabled Python 2/3 implementations (alike
-# python_is_python3). Remember to escape or quote the fnmatch patterns
-# to prevent accidental shell filename expansion.
+# For the pattern syntax, please see _python_impl_matches
+# in python-utils-r1.eclass.
 #
 # Use this function when you need to request different USE flags
 # on the Python interpreter depending on package's USE flags. If you
@@ -502,20 +456,20 @@ python_gen_impl_dep() {
 }
 
 # @FUNCTION: python_gen_any_dep
-# @USAGE: <dependency-block> [<impl-pattern>...]
+# @USAGE: [<dependency-block> [<impl-pattern>...]]
 # @DESCRIPTION:
 # Generate an any-of dependency that enforces a version match between
-# the Python interpreter and Python packages. <dependency-block> needs
-# to list one or more dependencies with verbatim '${PYTHON_USEDEP}'
-# references (quoted!) that will get expanded inside the function.
-# Optionally, patterns may be specified to restrict the dependency
-# to a subset of Python implementations supported by the ebuild.
+# the Python interpreter and Python packages. <dependency-block> may
+# list one or more dependencies with verbatim '${PYTHON_USEDEP}'
+# or '${PYTHON_SINGLE_USEDEP}' references (quoted!) that will get
+# expanded inside the function. If <dependency-block> is an empty string
+# (or no arguments are passed), a pure dependency on any Python
+# interpreter will be generated.
 #
-# The patterns can be either fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
-# appropriately all enabled Python 2/3 implementations (alike
-# python_is_python3). Remember to escape or quote the fnmatch patterns
-# to prevent accidental shell filename expansion.
+# Optionally, patterns may be specified to restrict the dependency to
+# a subset of Python implementations supported by the ebuild.
+# For the pattern syntax, please see _python_impl_matches
+# in python-utils-r1.eclass.
 #
 # This should be used along with an appropriate python_check_deps()
 # that checks which of the any-of blocks were matched, and python_setup
@@ -523,13 +477,13 @@ python_gen_impl_dep() {
 #
 # Example use:
 # @CODE
-# DEPEND="$(python_gen_any_dep '
-#	dev-python/foo[${PYTHON_USEDEP}]
+# BDEPEND="$(python_gen_any_dep '
+#	dev-python/foo[${PYTHON_SINGLE_USEDEP}]
 #	|| ( dev-python/bar[${PYTHON_USEDEP}]
 #		dev-python/baz[${PYTHON_USEDEP}] )' -2)"
 #
 # python_check_deps() {
-#	has_version "dev-python/foo[${PYTHON_USEDEP}]" \
+#	has_version "dev-python/foo[${PYTHON_SINGLE_USEDEP}]" \
 #		&& { has_version "dev-python/bar[${PYTHON_USEDEP}]" \
 #			|| has_version "dev-python/baz[${PYTHON_USEDEP}]"; }
 # }
@@ -547,16 +501,16 @@ python_gen_impl_dep() {
 # @CODE
 # || (
 #	(
-#		dev-lang/python:2.7
-#		dev-python/foo[python_targets_python2_7(-)?,python_single_target_python2_7(+)?]
-#		|| ( dev-python/bar[python_targets_python2_7(-)?,python_single_target_python2_7(+)?]
-#			dev-python/baz[python_targets_python2_7(-)?,python_single_target_python2_7(+)?] )
+#		dev-lang/python:3.7
+#		dev-python/foo[python_single_target_python3_7(-)]
+#		|| ( dev-python/bar[python_targets_python3_7(-),-python_single_target_python3_7(-)]
+#			dev-python/baz[python_targets_python3_7(-),-python_single_target_python3_7(-)] )
 #	)
 #	(
-#		dev-lang/python:3.3
-#		dev-python/foo[python_targets_python3_3(-)?,python_single_target_python3_3(+)?]
-#		|| ( dev-python/bar[python_targets_python3_3(-)?,python_single_target_python3_3(+)?]
-#			dev-python/baz[python_targets_python3_3(-)?,python_single_target_python3_3(+)?] )
+#		dev-lang/python:3.8
+#		dev-python/foo[python_single_target_python3_8(-)]
+#		|| ( dev-python/bar[python_targets_python3_8(-)]
+#			dev-python/baz[python_targets_python3_8(-)] )
 #	)
 # )
 # @CODE
@@ -564,17 +518,18 @@ python_gen_any_dep() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local depstr=${1}
-	[[ ${depstr} ]] || die "No dependency string provided"
 	shift
 
 	local i PYTHON_PKG_DEP out=
 	_python_verify_patterns "${@}"
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${i}" "${@}"; then
-			local PYTHON_USEDEP="python_targets_${i}(-),python_single_target_${i}(+)"
+			local PYTHON_USEDEP="python_targets_${i}(-)"
+			local PYTHON_SINGLE_USEDEP="python_single_target_${i}(-)"
 			_python_export "${i}" PYTHON_PKG_DEP
 
 			local i_depstr=${depstr//\$\{PYTHON_USEDEP\}/${PYTHON_USEDEP}}
+			i_depstr=${i_depstr//\$\{PYTHON_SINGLE_USEDEP\}/${PYTHON_SINGLE_USEDEP}}
 			# note: need to strip '=' slot operator for || deps
 			out="( ${PYTHON_PKG_DEP/:0=/:0} ${i_depstr} ) ${out}"
 		fi
@@ -582,7 +537,7 @@ python_gen_any_dep() {
 	echo "|| ( ${out})"
 }
 
-# @ECLASS-VARIABLE: BUILD_DIR
+# @ECLASS_VARIABLE: BUILD_DIR
 # @OUTPUT_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -701,11 +656,8 @@ python_foreach_impl() {
 # The python_check_deps() function in the any-of mode needs to be
 # accompanied by appropriate any-of dependencies.
 #
-# The patterns can be either fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
-# appropriately all enabled Python 2/3 implementations (alike
-# python_is_python3). Remember to escape or quote the fnmatch patterns
-# to prevent accidental shell filename expansion.
+# For the pattern syntax, please see _python_impl_matches
+# in python-utils-r1.eclass.
 #
 # This function needs to be used when Python is being called outside
 # of python_foreach_impl calls (e.g. for shared processes like doc
@@ -713,7 +665,7 @@ python_foreach_impl() {
 #
 # Pure mode example:
 # @CODE
-# DEPEND="doc? ( dev-python/epydoc[$(python_gen_usedep 'python2*')] )"
+# BDEPEND="doc? ( dev-python/epydoc[$(python_gen_usedep 'python2*')] )"
 # REQUIRED_USE="doc? ( $(python_gen_useflags 'python2*') )"
 #
 # src_compile() {
@@ -727,7 +679,7 @@ python_foreach_impl() {
 #
 # Any-of mode example:
 # @CODE
-# DEPEND="doc? (
+# BDEPEND="doc? (
 #	$(python_gen_any_dep 'dev-python/epydoc[${PYTHON_USEDEP}]' 'python2*') )"
 #
 # python_check_deps() {
@@ -745,14 +697,17 @@ python_foreach_impl() {
 python_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	_python_validate_useflags
+	local has_check_deps
+	declare -f python_check_deps >/dev/null && has_check_deps=1
+
+	if [[ ! ${has_check_deps} ]]; then
+		_python_validate_useflags
+	fi
+
 	local pycompat=( "${PYTHON_COMPAT[@]}" )
 	if [[ ${PYTHON_COMPAT_OVERRIDE} ]]; then
 		pycompat=( ${PYTHON_COMPAT_OVERRIDE} )
 	fi
-
-	local has_check_deps
-	declare -f python_check_deps >/dev/null && has_check_deps=1
 
 	# (reverse iteration -- newest impl first)
 	local found
@@ -776,11 +731,7 @@ python_setup() {
 
 		# if python_check_deps() is declared, switch into any-of mode
 		if [[ ${has_check_deps} ]]; then
-			# first check if the interpreter is installed
-			python_is_installed "${impl}" || continue
-			# then run python_check_deps
-			local PYTHON_USEDEP="python_targets_${impl}(-),python_single_target_${impl}(+)"
-			python_check_deps || continue
+			_python_run_check_deps "${impl}" || continue
 		fi
 
 		found=1
@@ -834,7 +785,9 @@ python_replicate_script() {
 	# install the wrappers
 	local f
 	for f; do
-		_python_ln_rel "${ED%/}/usr/lib/python-exec/python-exec2" "${f}" || die
+		local dosym=dosym
+		[[ ${EAPI} == [67] ]] && dosym=dosym8
+		"${dosym}" -r /usr/lib/python-exec/python-exec2 "${f#${ED}}"
 	done
 }
 

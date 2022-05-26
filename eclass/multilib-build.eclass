@@ -1,12 +1,13 @@
-# Copyright 2013-2020 Gentoo Authors
+# Copyright 2013-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multilib-build.eclass
 # @MAINTAINER:
-# gx86-multilib team <multilib@gentoo.org>
+# Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 6 7 8
+# @PROVIDES: multibuild
 # @BLURB: flags and utility functions for building multilib packages
 # @DESCRIPTION:
 # The multilib-build.eclass exports USE flags and utility functions
@@ -17,18 +18,17 @@
 # dependencies shall use the USE dependency string in ${MULTILIB_USEDEP}
 # to properly request multilib enabled.
 
-if [[ ! ${_MULTILIB_BUILD} ]]; then
-
-# EAPI=4 is required for meaningful MULTILIB_USEDEP.
-case ${EAPI:-0} in
-	4|5|6|7) ;;
-	*) die "EAPI=${EAPI} is not supported" ;;
+case ${EAPI} in
+	6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-[[ ${EAPI} == [45] ]] && inherit eutils
+if [[ -z ${_MULTILIB_BUILD_ECLASS} ]]; then
+_MULTILIB_BUILD_ECLASS=1
+
 inherit multibuild multilib
 
-# @ECLASS-VARIABLE: _MULTILIB_FLAGS
+# @ECLASS_VARIABLE: _MULTILIB_FLAGS
 # @INTERNAL
 # @DESCRIPTION:
 # The list of multilib flags and corresponding ABI values. If the same
@@ -52,7 +52,7 @@ _MULTILIB_FLAGS=(
 )
 readonly _MULTILIB_FLAGS
 
-# @ECLASS-VARIABLE: MULTILIB_COMPAT
+# @ECLASS_VARIABLE: MULTILIB_COMPAT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # List of multilib ABIs supported by the ebuild. If unset, defaults to
@@ -76,7 +76,7 @@ readonly _MULTILIB_FLAGS
 # MULTILIB_COMPAT=( abi_x86_{32,64} )
 # @CODE
 
-# @ECLASS-VARIABLE: MULTILIB_USEDEP
+# @ECLASS_VARIABLE: MULTILIB_USEDEP
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The USE-dependency to be used on dependencies (libraries) needing
@@ -88,7 +88,7 @@ readonly _MULTILIB_FLAGS
 #	net-libs/libbar[ssl,${MULTILIB_USEDEP}]"
 # @CODE
 
-# @ECLASS-VARIABLE: MULTILIB_ABI_FLAG
+# @ECLASS_VARIABLE: MULTILIB_ABI_FLAG
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The complete ABI name. Resembles the USE flag name.
@@ -243,23 +243,6 @@ multilib_parallel_foreach_abi() {
 	multibuild_foreach_variant _multilib_multibuild_wrapper "${@}"
 }
 
-# @FUNCTION: multilib_for_best_abi
-# @USAGE: <argv>...
-# @DESCRIPTION:
-# Runs the given command with setup for the 'best' (usually native) ABI.
-multilib_for_best_abi() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	[[ ${EAPI} == [45] ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}, use multilib_is_native_abi() instead"
-
-	eqawarn "QA warning: multilib_for_best_abi() function is deprecated and should"
-	eqawarn "not be used. The multilib_is_native_abi() check may be used instead."
-
-	local MULTIBUILD_VARIANTS=( $(multilib_get_enabled_abi_pairs) )
-
-	multibuild_for_best_variant _multilib_multibuild_wrapper "${@}"
-}
-
 # @FUNCTION: multilib_check_headers
 # @DESCRIPTION:
 # Check whether the header files are consistent between ABIs.
@@ -318,7 +301,7 @@ multilib_copy_sources() {
 	multibuild_copy_sources
 }
 
-# @ECLASS-VARIABLE: MULTILIB_WRAPPED_HEADERS
+# @ECLASS_VARIABLE: MULTILIB_WRAPPED_HEADERS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A list of headers to wrap for multilib support. The listed headers
@@ -341,7 +324,7 @@ multilib_copy_sources() {
 # )
 # @CODE
 
-# @ECLASS-VARIABLE: MULTILIB_CHOST_TOOLS
+# @ECLASS_VARIABLE: MULTILIB_CHOST_TOOLS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A list of tool executables to preserve for each multilib ABI.
@@ -582,20 +565,6 @@ multilib_is_native_abi() {
 	[[ ${COMPLETE_MULTILIB} == yes || ${ABI} == ${DEFAULT_ABI} ]]
 }
 
-# @FUNCTION: multilib_build_binaries
-# @DESCRIPTION:
-# Deprecated synonym for multilib_is_native_abi
-multilib_build_binaries() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	[[ ${EAPI} == [45] ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}, use multilib_is_native_abi() instead"
-
-	eqawarn "QA warning: multilib_build_binaries is deprecated. Please use the equivalent"
-	eqawarn "multilib_is_native_abi function instead."
-
-	multilib_is_native_abi "${@}"
-}
-
 # @FUNCTION: multilib_native_use_with
 # @USAGE: <flag> [<opt-name> [<opt-value>]]
 # @DESCRIPTION:
@@ -663,7 +632,6 @@ multilib_native_with() {
 # of <false1> (or 'no' if unspecified) and <false2>. Arguments
 # are the same as for usex in the EAPI.
 #
-# Note: in EAPI 4 you need to inherit eutils to use this function.
 multilib_native_usex() {
 	if multilib_is_native_abi; then
 		usex "${@}"
@@ -672,5 +640,4 @@ multilib_native_usex() {
 	fi
 }
 
-_MULTILIB_BUILD=1
 fi

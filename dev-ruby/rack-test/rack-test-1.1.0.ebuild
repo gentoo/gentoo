@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,19 +20,21 @@ SRC_URI="https://github.com/rack-test/rack-test/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="MIT"
 SLOT="1.0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/rack-1.0:* <dev-ruby/rack-3:*"
 ruby_add_bdepend "
-	test? ( dev-ruby/sinatra:2 || ( dev-ruby/rack:2.1 dev-ruby/rack:2.0 ) )"
+	test? ( dev-ruby/sinatra:2 )"
 
 all_ruby_prepare() {
 	rm Gemfile* || die
 	sed -e '/bundler/d' \
 		-e '/[Cc]ode[Cc]limate/d' \
 		-e '/simplecov/,/^end/ s:^:#:' \
-		-e '1igem "rack", "<2.2"' \
 		-i spec/spec_helper.rb || die
 	sed -i -e 's/git ls-files --/find/' ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	# Avoid test broken with rack 2.2
+	sed -i -e '/closes response.s body/askip "rack 2.2 compatibility"' spec/rack/test_spec.rb || die
 }

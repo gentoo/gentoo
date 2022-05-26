@@ -1,0 +1,11 @@
+--- a/tools/Makefile.linux
++++ b/tools/Makefile.linux
+@@ -47,7 +47,7 @@
+
+ ctmviewer: $(CTMVIEWEROBJS)
+ 	$(CPP) -s -o $@ -L$(OPENCTMDIR) $(CTMVIEWEROBJS) -lopenctm \
+-	-ltinyxml -ljpeg -lpnglite -lz -lglut -lGLU -lGLEW \
++	-ltinyxml -ljpeg -lpnglite -lz -lGL -lglut -lGLU -lGLEW \
+ 	-lgtk-x11-2.0 -lgobject-2.0 -lglib-2.0
+
+ ctmbench: $(CTMBENCHOBJS)

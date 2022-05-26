@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit git-r3 linux-info linux-mod toolchain-funcs
 
 DESCRIPTION="Netflow iptables module"
@@ -13,18 +14,18 @@ EGIT_REPO_URI="https://github.com/aabc/ipt-netflow"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-
 IUSE="debug natevents snmp"
 
 RDEPEND="
 	net-firewall/iptables:0=
 	snmp? ( net-analyzer/net-snmp )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/linux-sources
 	virtual/pkgconfig
 "
+
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0-configure.patch" # bug #455984
 	"${FILESDIR}/${PN}-9999-gentoo.patch"
@@ -45,7 +46,7 @@ pkg_setup() {
 	fi
 
 	BUILD_TARGETS="all"
-	MODULE_NAMES="ipt_NETFLOW(ipt_netflow:${S})"
+	MODULE_NAMES="ipt_NETFLOW(ipt_netflow)"
 	IPT_LIB="/usr/$(get_libdir)/xtables"
 
 	linux-mod_pkg_setup
@@ -92,7 +93,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake ARCH="$(tc-arch-kernel)" CC="$(tc-getCC)" all
+	emake ARCH="$(tc-arch-kernel)" CC="$(tc-getCC)" LD="$(tc-getLD)" OBJDUMP="$(tc-getOBJDUMP)" all
 }
 
 src_install() {

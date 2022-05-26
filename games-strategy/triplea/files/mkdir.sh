@@ -1,1 +1,0 @@
-mkdir -v "${HOME}/.triplea"

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ RUBY_FAKEGEM_GEMSPEC="hocon.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="This is a port of the Typesafe Config library to Ruby."
+DESCRIPTION="This is a port of the Typesafe Config library to Ruby"
 HOMEPAGE="https://github.com/puppetlabs/ruby-hocon"
 SRC_URI="https://github.com/puppetlabs/ruby-hocon/archive/${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="ruby-hocon-${PV}"
@@ -21,4 +21,4 @@ RUBY_S="ruby-hocon-${PV}"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc x86"

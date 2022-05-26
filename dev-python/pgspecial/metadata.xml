@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>andreacerisara@gmail.com</email>
-      <name>Andrea Cerisara</name>
-    </maintainer>
-    <maintainer type="project">
-      <email>proxy-maint@gentoo.org</email>
-      <name>Proxy Maintainers</name>
-  </maintainer>
-  <longdescription>
-    PGSpecial provides an API to execute meta-commands
-    (AKA "special", or "backslash commands") on PostgreSQL.
-  </longdescription>
-  <upstream>
-    <remote-id type="github">dbcli/pgspecial</remote-id>
-  </upstream>
+	<!-- maintainer-needed -->
+	<longdescription>
+		PGSpecial provides an API to execute meta-commands
+		(AKA "special", or "backslash commands") on PostgreSQL.
+	</longdescription>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">dbcli/pgspecial</remote-id>
+		<remote-id type="pypi">pgspecial</remote-id>
+	</upstream>
 </pkgmetadata>

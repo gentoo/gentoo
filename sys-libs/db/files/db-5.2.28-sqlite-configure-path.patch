@@ -1,6 +1,5 @@
-diff -Nuar db-5.2.28.orig//dist/aclocal/sql.m4 db-5.2.28//dist/aclocal/sql.m4
---- db-5.2.28.orig//dist/aclocal/sql.m4	2011-06-10 09:50:45.000000000 -0700
-+++ db-5.2.28//dist/aclocal/sql.m4	2011-07-15 17:02:54.646521189 -0700
+--- a/dist/aclocal/sql.m4
++++ b/dist/aclocal/sql.m4
 @@ -91,7 +91,7 @@
  # !!! END COPIED from autoconf distribution
  

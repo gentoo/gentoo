@@ -1,0 +1,115 @@
+--- a./x2x.c
++++ b./x2x.c
+@@ -321,6 +321,12 @@ typedef struct _sticky {
+   KeySym keysym;
+ } STICKY, *PSTICKY;
+ 
++typedef struct _keymap {
++  struct _keymap * pNext;
++  KeySym from;
++  KeySym to;
++} KEYMAP, *PKEYMAP;
++
+ typedef int  (*HANDLER)(); /* event handler function */
+ 
+ /* These prototypes need the typedefs */
+@@ -377,6 +383,7 @@ static Bool    doDpmsMouse  = False;
+ static int     logicalOffset= 0;
+ static int     nButtons     = 0;
+ static KeySym  buttonmap[N_BUTTONS + 1][MAX_BUTTONMAPEVENTS + 1];
++static PKEYMAP keymaps      = NULL;
+ static Bool    noScale      = False;
+ static int     compRegLeft  = 0;
+ static int     compRegRight = 0;
+@@ -571,7 +578,8 @@ char **argv;
+   PSHADOW pShadow;
+   extern  char *lawyerese;
+   PSTICKY pNewSticky;
+-  KeySym  keysym;
++  PKEYMAP pNewKeymap;
++  KeySym  keysym,keysym2;
+   int     button;
+   int     eventno;
+   char    *keyname, *argptr;
+@@ -703,6 +711,22 @@ char **argv;
+       } else {
+         printf("x2x: warning: can't translate %s\n", argv[arg]);
+       }
++    } else if (!strcasecmp(argv[arg], "-keymap")) {
++      if ((++arg+1) >= argc) Usage();
++      if (((keysym = XStringToKeysym(argv[arg])) != NoSymbol) &&
++	  ((keysym2 = XStringToKeysym(argv[arg+1])) != NoSymbol)) {
++	pNewKeymap = (PKEYMAP)malloc(sizeof(KEYMAP));
++	pNewKeymap->pNext = keymaps;
++	pNewKeymap->from  = keysym;
++	pNewKeymap->to    = keysym2;
++	keymaps = pNewKeymap;
++#ifdef DEBUG
++	printf("will translate key %s to %s\n", argv[arg],argv[arg+1]);
++#endif
++      } else {
++	printf("x2x: warning: can't translate %s or %s\n", argv[arg],argv[arg+1]);
++      }
++      arg++;
+     } else if (!strcasecmp(argv[arg], "-buttonmap")) {
+       if (++arg >= argc) Usage();
+       button = atoi(argv[arg]);
+@@ -842,6 +842,7 @@ static void Usage()
+   printf("       -completeregionup <COORDINATE>\n");
+   printf("       -completeregionlow <COORDINATE>\n");
+   printf("       -struts\n");
++  printf("       -keymap <FROM-KEYSYM> <TO-KEYSYM>\n");
+ #ifdef WIN_2_X
+   printf("       -offset [-]<pixel offset of \"to\">\n");
+   printf("WIN_2_X build allows Windows or X as -from display\n");
+@@ -2200,6 +2224,7 @@ XKeyEvent *pEv;
+   PSHADOW   pShadow;
+   Bool      bPress;
+   PSTICKY   pSticky;
++  PKEYMAP   pKeymap;
+   Bool      DoFakeShift = False;
+   KeyCode   toShiftCode;
+ 
+@@ -2211,6 +2236,15 @@ XKeyEvent *pEv;
+ 	XKeysymToString(keysym), (bPress ? "pressed" : "released"), pEv->state);
+ #endif
+ 
++  for (pKeymap = keymaps; pKeymap; pKeymap = pKeymap->pNext) 
++    if (keysym == pKeymap->from) {
++      keysym = pKeymap->to;
++#ifdef DEBUG
++      printf("Key mapped from  %x to %x\n", pKeymap->from, pKeymap->to);
++#endif 
++    }
++
++
+   /* If CapsLock is on, we need to do some funny business to make sure the */
+   /* "to" display does the right thing */
+   if(doCapsLkHack && (pEv->state & 0x2))
+
+--- a./x2x.1
++++ b./x2x.1
+@@ -309,6 +309,12 @@ Describes uppermost coordinate of complete rectangle region in from-display.
+ .B \-completeregionlow
+ .IP
+ Describes lowermost coordinate of complete rectangle region in from-display.
++.TP
++.B \-keymap \fIfrom-keysym\fP \fIto-keysym\fP
++.IP
++Translates the \fIfrom-keysym\fP keysym of the first X to \fIto-keysym\fP of the second X.
++See X11/keysymdef.h for available keysyms.
++Alternatively you can use setxkbmap, as described in the BUGS section.
+ .SH EXAMPLES
+ Calling the system whose keyboard is to be used "primary" and the
+ other system "secondary", you need to specify either \-from
+@@ -329,6 +333,10 @@ secondary $ ssh \-X primary x2x \-from :0 \-west
+ run directly indirectly on primary:
+ .IP
+ primary $ ssh \-A secondary env DISPLAY=:0.0 ssh \-X primary x2x \-from :0 \-east
++.TP
++set a custom keymap binding:
++.IP
++x2x -keymap ISO_Level3_Shift Mode_switch
+ 
+ .RE
+ If your primary display is configured with several monitors having different

@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -12,14 +12,14 @@ SRC_URI="http://linvdr.org/download/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE=""
 
 src_prepare() {
+	default
 	sed "/^\.IR/s@${PN}@${PF}@" -i ${PN}.8 || die
 }
 
 src_compile() {
-	$(tc-getCC) ${CFLAGS} ${LDFLAGS} -o ${PN} ${PN}.c dvd_udf.c || die
+	$(tc-getCC) ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -o ${PN} ${PN}.c dvd_udf.c || die
 }
 
 src_install() {
@@ -29,7 +29,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	ewarn "By default regionset uses /dev/dvd, specify a different device"
+	ewarn "By default, regionset uses /dev/dvd, specify a different device"
 	ewarn "as a command line argument if you need to. You need write access"
 	ewarn "to do this, preferably as root."
 	ewarn

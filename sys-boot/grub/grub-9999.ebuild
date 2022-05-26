@@ -1,30 +1,44 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+# This ebuild uses 3 special global variables:
+# GRUB_BOOTSTRAP: Depend on python and invoke bootstrap (gnulib).
+# GRUB_AUTOGEN: Depend on python and invoke the autogen.sh.
+# GRUB_AUTORECONF: Inherit autotools and invoke eautoreconf.
+#
+# When applying patches:
+# If gnulib is updated, set GRUB_BOOTSTRAP=1
+# If *.def is updated, set GRUB_AUTOGEN=1
+# If gnulib, *.def, or any autotools files are updated, set GRUB_AUTORECONF=1
+#
+# If any of the above applies to a user patch, the user should set the
+# corresponding variable in make.conf or the environment.
 
 if [[ ${PV} == 9999  ]]; then
 	GRUB_AUTORECONF=1
 	GRUB_BOOTSTRAP=1
 fi
 
+PYTHON_COMPAT=( python3_{8..10} )
+WANT_LIBTOOL=none
+
 if [[ -n ${GRUB_AUTOGEN} || -n ${GRUB_BOOTSTRAP} ]]; then
-	PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
 	inherit python-any-r1
 fi
 
 if [[ -n ${GRUB_AUTORECONF} ]]; then
-	WANT_LIBTOOL=none
 	inherit autotools
 fi
 
-inherit bash-completion-r1 flag-o-matic multibuild optfeature pax-utils toolchain-funcs
+inherit bash-completion-r1 flag-o-matic multibuild optfeature toolchain-funcs
 
 if [[ ${PV} != 9999 ]]; then
 	if [[ ${PV} == *_alpha* || ${PV} == *_beta* || ${PV} == *_rc* ]]; then
 		# The quote style is to work with <=bash-4.2 and >=bash-4.3 #503860
 		MY_P=${P/_/'~'}
-		SRC_URI="mirror://gnu-alpha/${PN}/${MY_P}.tar.xz"
+		SRC_URI="https://alpha.gnu.org/gnu/${PN}/${MY_P}.tar.xz"
 		S=${WORKDIR}/${MY_P}
 	else
 		SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
@@ -39,6 +53,7 @@ fi
 PATCHES=(
 	"${FILESDIR}"/gfxpayload.patch
 	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
+	"${FILESDIR}"/grub-2.06-test-words.patch
 )
 
 DEJAVU=dejavu-sans-ttf-2.37
@@ -66,7 +81,6 @@ REQUIRED_USE="
 
 BDEPEND="
 	${PYTHON_DEPS}
-	app-misc/pax-utils
 	sys-devel/flex
 	sys-devel/bison
 	sys-apps/help2man
@@ -95,9 +109,11 @@ BDEPEND="
 DEPEND="
 	app-arch/xz-utils
 	>=sys-libs/ncurses-5.2-r5:0=
-	sdl? ( media-libs/libsdl )
+	grub_platforms_emu? (
+		sdl? ( media-libs/libsdl )
+	)
 	device-mapper? ( >=sys-fs/lvm2-2.02.45 )
-	libzfs? ( sys-fs/zfs )
+	libzfs? ( sys-fs/zfs:= )
 	mount? ( sys-fs/fuse:0 )
 	truetype? ( media-libs/freetype:2= )
 	ppc? ( >=sys-apps/ibm-powerpc-utils-1.3.5 )
@@ -108,7 +124,7 @@ RDEPEND="${DEPEND}
 		grub_platforms_efi-32? ( sys-boot/efibootmgr )
 		grub_platforms_efi-64? ( sys-boot/efibootmgr )
 	)
-	!sys-boot/grub:0 !sys-boot/grub-static
+	!sys-boot/grub:0
 	nls? ( sys-devel/gettext )
 "
 
@@ -118,6 +134,10 @@ QA_EXECSTACK="usr/bin/grub-emu* usr/lib/grub/*"
 QA_PRESTRIPPED="usr/lib/grub/.*"
 QA_MULTILIB_PATHS="usr/lib/grub/.*"
 QA_WX_LOAD="usr/lib/grub/*"
+
+pkg_setup() {
+	:
+}
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
@@ -137,16 +157,10 @@ src_prepare() {
 
 	sed -i -e /autoreconf/d autogen.sh || die
 
-	# Nothing in Gentoo packages 'american-english' in the exact path
-	# wanted for the test, but all that is needed is a compressible text
-	# file, and we do have 'words' from miscfiles in the same path.
-	sed -i \
-		-e '/CFILESSRC.*=/s,american-english,words,' \
-		tests/util/grub-fs-tester.in \
-		|| die
-
 	if [[ -n ${GRUB_AUTOGEN} || -n ${GRUB_BOOTSTRAP} ]]; then
 		python_setup
+	else
+		export PYTHON=true
 	fi
 
 	if [[ -n ${GRUB_BOOTSTRAP} ]]; then
@@ -226,6 +240,9 @@ src_configure() {
 	# Bug 508758.
 	replace-flags -O3 -O2
 
+	# Workaround for bug 829165.
+	filter-ldflags -pie
+
 	# We don't want to leak flags onto boot code.
 	export HOST_CCASFLAGS=${CCASFLAGS}
 	export HOST_CFLAGS=${CFLAGS}
@@ -238,7 +255,7 @@ src_configure() {
 	unset LDFLAGS
 
 	tc-export CC NM OBJCOPY RANLIB STRIP
-	tc-export BUILD_CC # Bug 485592
+	tc-export BUILD_CC BUILD_PKG_CONFIG
 
 	MULTIBUILD_VARIANTS=()
 	local p
@@ -287,9 +304,13 @@ pkg_postinst() {
 
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		elog
-		elog "You may consider installing the following optional packages:"
-		optfeature "Detect other operating systems (grub-mkconfig)" sys-boot/os-prober
-		optfeature "Create rescue media (grub-mkrescue)" dev-libs/libisoburn
-		optfeature "Enable RAID device detection" sys-fs/mdadm
+		optfeature "detecting other operating systems (grub-mkconfig)" sys-boot/os-prober
+		optfeature "creating rescue media (grub-mkrescue)" dev-libs/libisoburn
+		optfeature "enabling RAID device detection" sys-fs/mdadm
+	fi
+
+	if has_version sys-boot/os-prober; then
+		ewarn "Due to security concerns, os-prober is disabled by default."
+		ewarn "Set GRUB_DISABLE_OS_PROBER=false in /etc/default/grub to enable it."
 	fi
 }

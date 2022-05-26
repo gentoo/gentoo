@@ -1,41 +1,86 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: flag-o-matic.eclass
 # @MAINTAINER:
 # toolchain@gentoo.org
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: common functions to manipulate and query toolchain flags
 # @DESCRIPTION:
 # This eclass contains a suite of functions to help developers sanely
 # and safely manage toolchain flags in their builds.
 
+case ${EAPI:-0} in
+	0|1|2|3|4) die "flag-o-matic.eclass: EAPI ${EAPI} is too old." ;;
+	5|6|7|8) ;;
+	*) die "EAPI ${EAPI} is not supported by flag-o-matic.eclass." ;;
+esac
+
 if [[ -z ${_FLAG_O_MATIC_ECLASS} ]]; then
 _FLAG_O_MATIC_ECLASS=1
 
-inherit eutils toolchain-funcs multilib
+inherit toolchain-funcs
 
+[[ ${EAPI} == [567] ]] && inherit eutils
+
+# @FUNCTION: all-flag-vars
+# @DESCRIPTION:
 # Return all the flag variables that our high level funcs operate on.
 all-flag-vars() {
 	echo {ADA,C,CPP,CXX,CCAS,F,FC,LD}FLAGS
 }
 
+# @FUNCTION: setup-allowed-flags
+# @INTERNAL
+# @DESCRIPTION:
 # {C,CPP,CXX,CCAS,F,FC,LD}FLAGS that we allow in strip-flags
 # Note: shell globs and character lists are allowed
 setup-allowed-flags() {
-	ALLOWED_FLAGS=(
-		-pipe -O '-O[12sg]' -mcpu -march -mtune
-		'-fstack-protector*' '-fsanitize*' '-fstack-check*' -fno-stack-check
-		-fbounds-check -fbounds-checking -fno-strict-overflow
-		-fno-PIE -fno-pie -nopie -no-pie -fno-unit-at-a-time
+	[[ ${EAPI} == [567] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_setup-allowed-flags "$@"
+}
 
-		# debugging symbols should generally be very safe to add
+# @FUNCTION: _setup-allowed-flags
+# @INTERNAL
+# @DESCRIPTION:
+# {C,CPP,CXX,CCAS,F,FC,LD}FLAGS that we allow in strip-flags
+# Note: shell globs and character lists are allowed
+_setup-allowed-flags() {
+	ALLOWED_FLAGS=(
+		-pipe -O '-O[12sg]' '-mcpu=*' '-march=*' '-mtune=*'
+
+		# Hardening flags
+		'-fstack-protector*'
+		'-fstack-check*' -fno-stack-check
+		-fstack-clash-protection
+		'-fcf-protection=*'
+		-fbounds-check -fbounds-checking
+		-fno-PIE -fno-pie -nopie -no-pie
+		# Spectre mitigations, bug #646076
+		'-mindirect-branch=*'
+		-mindirect-branch-register
+		'-mfunction-return=*'
+		-mretpoline
+
+		# Misc
+		-fno-unit-at-a-time -fno-strict-overflow
+
+		# Sanitizers
+		'-fsanitize*' '-fno-sanitize*'
+
+		# Debugging symbols should generally be very safe to add
 		-g '-g[0-9]'
 		-ggdb '-ggdb[0-9]'
 		-gdwarf '-gdwarf-*'
 		-gstabs -gstabs+
 		-gz
+		-glldb
 
+		# Cosmetic/output related, see e.g. bug #830534
+		-fno-diagnostics-color '-fmessage-length=*'
 		-fno-ident -fpermissive -frecord-gcc-switches
+		-frecord-command-line
 		'-fdiagnostics*' '-fplugin*'
 		'-W*' -w
 
@@ -43,7 +88,7 @@ setup-allowed-flags() {
 		'-[DUILR]*' '-Wl,*'
 
 		# Linker choice flag
-		'-fuse-ld'
+		'-fuse-ld=*'
 	)
 
 	# allow a bunch of flags that negate features / control ABI
@@ -53,19 +98,22 @@ setup-allowed-flags() {
 		-fno-omit-frame-pointer '-fno-builtin*'
 	)
 	ALLOWED_FLAGS+=(
-		-mregparm -mno-app-regs -mapp-regs -mno-mmx -mno-sse
+		'-mregparm=*' -mno-app-regs -mapp-regs -mno-mmx -mno-sse
 		-mno-sse2 -mno-sse3 -mno-ssse3 -mno-sse4 -mno-sse4.1 -mno-sse4.2
 		-mno-avx -mno-aes -mno-pclmul -mno-sse4a -mno-3dnow -mno-popcnt
 		-mno-abm -mips1 -mips2 -mips3 -mips4 -mips32 -mips64 -mips16 -mplt
-		-msoft-float -mno-soft-float -mhard-float -mno-hard-float -mfpu
-		-mieee -mieee-with-inexact -mschedule -mfloat-gprs -mspe -mno-spe
+		-msoft-float -mno-soft-float -mhard-float -mno-hard-float '-mfpu=*'
+		-mieee -mieee-with-inexact '-mschedule=*' -mfloat-gprs -mspe -mno-spe
 		-mtls-direct-seg-refs -mno-tls-direct-seg-refs -mflat -mno-flat
-		-mno-faster-structs -mfaster-structs -m32 -m64 -mx32 -mabi
-		-mlittle-endian -mbig-endian -EL -EB -fPIC -mlive-g0 -mcmodel
-		-mstack-bias -mno-stack-bias -msecure-plt '-m*-toc' -mfloat-abi
+		-mno-faster-structs -mfaster-structs -m32 -m64 -mx32 '-mabi=*'
+		-mlittle-endian -mbig-endian -EL -EB -fPIC -mlive-g0 '-mcmodel=*'
+		-mstack-bias -mno-stack-bias -msecure-plt '-m*-toc' '-mfloat-abi=*'
 		-mfix-r4000 -mno-fix-r4000 -mfix-r4400 -mno-fix-r4400
 		-mfix-rm7000 -mno-fix-rm7000 -mfix-r10000 -mno-fix-r10000
-		-mr10k-cache-barrier -mthumb -marm
+		'-mr10k-cache-barrier=*' -mthumb -marm
+
+		# needed for arm64 (and in particular SCS)
+		-ffixed-x18
 
 		# gcc 4.5
 		-mno-fma4 -mno-movbe -mno-xop -mno-lwp
@@ -87,7 +135,10 @@ setup-allowed-flags() {
 	)
 }
 
-# inverted filters for hardened compiler.  This is trying to unpick
+# @FUNCTION: _filter-hardened
+# @INTERNAL
+# @DESCRIPTION:
+# Inverted filters for hardened compiler.  This is trying to unpick
 # the hardened compiler defaults.
 _filter-hardened() {
 	local f
@@ -121,6 +172,9 @@ _filter-hardened() {
 	done
 }
 
+# @FUNCTION: _filter-var
+# @INTERNAL
+# @DESCRIPTION:
 # Remove occurrences of strings from variable given in $1
 # Strings removed are matched as globs, so for example
 # '-O*' would remove -O1, -O2 etc.
@@ -160,7 +214,8 @@ filter-lfs-flags() {
 	# _LARGEFILE_SOURCE: enable support for new LFS funcs (ftello/etc...)
 	# _LARGEFILE64_SOURCE: enable support for 64bit variants (off64_t/fseeko64/etc...)
 	# _FILE_OFFSET_BITS: default to 64bit variants (off_t is defined as off64_t)
-	filter-flags -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE
+	# _TIME_BITS: default to 64bit time_t (requires _FILE_OFFSET_BITS=64)
+	filter-flags -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_TIME_BITS=64
 }
 
 # @FUNCTION: filter-ldflags
@@ -313,6 +368,11 @@ replace-cpu-flags() {
 	return 0
 }
 
+# @FUNCTION: _is_flagq
+# @USAGE: <variable> <flag>
+# @INTERNAL
+# @DESCRIPTION:
+# Returns shell true if <flag> is in a given <variable>, else returns shell false.
 _is_flagq() {
 	local x var="$1[*]"
 	for x in ${!var} ; do
@@ -405,7 +465,7 @@ strip-flags() {
 	local x y var
 
 	local ALLOWED_FLAGS
-	setup-allowed-flags
+	_setup-allowed-flags
 
 	set -f	# disable pathname expansion
 
@@ -413,9 +473,8 @@ strip-flags() {
 		local new=()
 
 		for x in ${!var} ; do
-			local flag=${x%%=*}
 			for y in "${ALLOWED_FLAGS[@]}" ; do
-				if [[ -z ${flag%%${y}} ]] ; then
+				if [[ ${x} == ${y} ]] ; then
 					new+=( "${x}" )
 					break
 				fi
@@ -438,7 +497,25 @@ strip-flags() {
 	return 0
 }
 
+# @FUNCTION: test-flag-PROG
+# @USAGE: <compiler> <flag>
+# @INTERNAL
+# @DESCRIPTION:
+# Returns shell true if <flag> is supported by given <compiler>,
+# else returns shell false.
 test-flag-PROG() {
+	[[ ${EAPI} == [567] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_test-flag-PROG "$@"
+}
+
+# @FUNCTION: _test-flag-PROG
+# @USAGE: <compiler> <flag>
+# @INTERNAL
+# @DESCRIPTION:
+# Returns shell true if <flag> is supported by given <compiler>,
+# else returns shell false.
+_test-flag-PROG() {
 	local comp=$1
 	local lang=$2
 	shift 2
@@ -533,33 +610,51 @@ test-flag-PROG() {
 # @USAGE: <flag>
 # @DESCRIPTION:
 # Returns shell true if <flag> is supported by the C compiler, else returns shell false.
-test-flag-CC() { test-flag-PROG "CC" c "$@"; }
+test-flag-CC() { _test-flag-PROG CC c "$@"; }
 
 # @FUNCTION: test-flag-CXX
 # @USAGE: <flag>
 # @DESCRIPTION:
 # Returns shell true if <flag> is supported by the C++ compiler, else returns shell false.
-test-flag-CXX() { test-flag-PROG "CXX" c++ "$@"; }
+test-flag-CXX() { _test-flag-PROG CXX c++ "$@"; }
 
 # @FUNCTION: test-flag-F77
 # @USAGE: <flag>
 # @DESCRIPTION:
 # Returns shell true if <flag> is supported by the Fortran 77 compiler, else returns shell false.
-test-flag-F77() { test-flag-PROG "F77" f77 "$@"; }
+test-flag-F77() { _test-flag-PROG F77 f77 "$@"; }
 
 # @FUNCTION: test-flag-FC
 # @USAGE: <flag>
 # @DESCRIPTION:
 # Returns shell true if <flag> is supported by the Fortran 90 compiler, else returns shell false.
-test-flag-FC() { test-flag-PROG "FC" f95 "$@"; }
+test-flag-FC() { _test-flag-PROG FC f95 "$@"; }
 
 # @FUNCTION: test-flag-CCLD
 # @USAGE: <flag>
 # @DESCRIPTION:
 # Returns shell true if <flag> is supported by the C compiler and linker, else returns shell false.
-test-flag-CCLD() { test-flag-PROG "CC" c+ld "$@"; }
+test-flag-CCLD() { _test-flag-PROG CC c+ld "$@"; }
 
+# @FUNCTION: test-flags-PROG
+# @USAGE: <compiler> <flag> [more flags...]
+# @INTERNAL
+# @DESCRIPTION:
+# Returns shell true if <flags> are supported by given <compiler>,
+# else returns shell false.
 test-flags-PROG() {
+	[[ ${EAPI} == [567] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_test-flags-PROG "$@"
+}
+
+# @FUNCTION: _test-flags-PROG
+# @USAGE: <compiler> <flag> [more flags...]
+# @INTERNAL
+# @DESCRIPTION:
+# Returns shell true if <flags> are supported by given <compiler>,
+# else returns shell false.
+_test-flags-PROG() {
 	local comp=$1
 	local flags=()
 	local x
@@ -596,31 +691,31 @@ test-flags-PROG() {
 # @USAGE: <flags>
 # @DESCRIPTION:
 # Returns shell true if <flags> are supported by the C compiler, else returns shell false.
-test-flags-CC() { test-flags-PROG "CC" "$@"; }
+test-flags-CC() { _test-flags-PROG CC "$@"; }
 
 # @FUNCTION: test-flags-CXX
 # @USAGE: <flags>
 # @DESCRIPTION:
 # Returns shell true if <flags> are supported by the C++ compiler, else returns shell false.
-test-flags-CXX() { test-flags-PROG "CXX" "$@"; }
+test-flags-CXX() { _test-flags-PROG CXX "$@"; }
 
 # @FUNCTION: test-flags-F77
 # @USAGE: <flags>
 # @DESCRIPTION:
 # Returns shell true if <flags> are supported by the Fortran 77 compiler, else returns shell false.
-test-flags-F77() { test-flags-PROG "F77" "$@"; }
+test-flags-F77() { _test-flags-PROG F77 "$@"; }
 
 # @FUNCTION: test-flags-FC
 # @USAGE: <flags>
 # @DESCRIPTION:
 # Returns shell true if <flags> are supported by the Fortran 90 compiler, else returns shell false.
-test-flags-FC() { test-flags-PROG "FC" "$@"; }
+test-flags-FC() { _test-flags-PROG FC "$@"; }
 
 # @FUNCTION: test-flags-CCLD
 # @USAGE: <flags>
 # @DESCRIPTION:
 # Returns shell true if <flags> are supported by the C compiler and default linker, else returns shell false.
-test-flags-CCLD() { test-flags-PROG "CCLD" "$@"; }
+test-flags-CCLD() { _test-flags-PROG CCLD "$@"; }
 
 # @FUNCTION: test-flags
 # @USAGE: <flags>

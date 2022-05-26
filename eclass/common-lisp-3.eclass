@@ -1,42 +1,49 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: common-lisp-3.eclass
 # @MAINTAINER:
 # Common Lisp project <common-lisp@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: functions to support the installation of Common Lisp libraries
 # @DESCRIPTION:
 # Since Common Lisp libraries share similar structure, this eclass aims
 # to provide a simple way to write ebuilds with these characteristics.
 
+case ${EAPI} in
+	[67]) ;;
+	*) die "EAPI=${EAPI:-0} is not supported" ;;
+esac
+
 inherit eutils
 
-# @ECLASS-VARIABLE: CLIMPLEMENTATIONS
+if [[ -z ${_COMMON_LISP_3_ECLASS} ]]; then
+_COMMON_LISP_3_ECLASS=1
+
+# @ECLASS_VARIABLE: CLIMPLEMENTATIONS
 # @DESCRIPTION:
 # Common Lisp implementations
 CLIMPLEMENTATIONS="sbcl clisp clozurecl cmucl ecls gcl abcl"
 
-# @ECLASS-VARIABLE: CLSOURCEROOT
+# @ECLASS_VARIABLE: CLSOURCEROOT
 # @DESCRIPTION:
 # Default path of Common Lisp libraries sources. Sources will
 # be installed into ${CLSOURCEROOT}/${CLPACKAGE}.
 CLSOURCEROOT="${ROOT%/}"/usr/share/common-lisp/source
 
-# @ECLASS-VARIABLE: CLSYSTEMROOT
+# @ECLASS_VARIABLE: CLSYSTEMROOT
 # @DESCRIPTION:
 # Default path to find any asdf file. Any asdf files will be
 # symlinked in ${CLSYSTEMROOT}/${CLSYSTEM} as they may be in
 # an arbitrarily deeply nested directory under ${CLSOURCEROOT}/${CLPACKAGE}.
 CLSYSTEMROOT="${ROOT%/}"/usr/share/common-lisp/systems
 
-# @ECLASS-VARIABLE: CLPACKAGE
+# @ECLASS_VARIABLE: CLPACKAGE
 # @DESCRIPTION:
 # Default package name. To override, set these after inheriting this eclass.
 CLPACKAGE="${PN}"
 
 PDEPEND="virtual/commonlisp"
-
-EXPORT_FUNCTIONS src_compile src_install
 
 # @FUNCTION: common-lisp-3_src_compile
 # @DESCRIPTION:
@@ -120,7 +127,9 @@ common-lisp-install-sources() {
 		if [[ -f ${path} ]] ; then
 			common-lisp-install-one-source ${fpredicate} "${path}" "$(dirname "${path}")"
 		elif [[ -d ${path} ]] ; then
-			common-lisp-install-sources -t ${ftype} $(find "${path}" -type f)
+			local files
+			readarray -d '' files < <(find "${path}" -type f -print0 || die "cannot traverse ${path}" )
+			common-lisp-install-sources -t ${ftype} "${files[@]}" || die
 		else
 			die "${path} is neither a regular file nor a directory"
 		fi
@@ -136,7 +145,7 @@ common-lisp-install-one-asdf() {
 	[[ $# != 1 ]] && die "${FUNCNAME[0]} must receive exactly one argument"
 
 	# the suffix «.asd» is optional
-	local source=${1/.asd}.asd
+	local source=${1%.asd}.asd
 	common-lisp-install-one-source true "${source}" "$(dirname "${source}")"
 	local target="${CLSOURCEROOT%/}/${CLPACKAGE}/${source}"
 	dosym "${target}" "${CLSYSTEMROOT%/}/$(basename ${target})"
@@ -160,13 +169,11 @@ common-lisp-install-asdf() {
 
 # @FUNCTION: common-lisp-3_src_install
 # @DESCRIPTION:
-# Recursively install Lisp sources, asdf files and most common doc files.
+# Recursively install Lisp sources, asdf files and doc files.
 common-lisp-3_src_install() {
 	common-lisp-install-sources .
 	common-lisp-install-asdf
-	for i in AUTHORS README* HEADER TODO* CHANGELOG Change[lL]og CHANGES BUGS CONTRIBUTORS *NEWS* ; do
-		[[ -f ${i} ]] && dodoc ${i}
-	done
+	einstalldocs
 }
 
 # @FUNCTION: common-lisp-find-lisp-impl
@@ -197,6 +204,7 @@ common-lisp-export-impl-args() {
 	CL_BINARY="${1}"
 	case "${CL_BINARY}" in
 		sbcl)
+			CL_BINARY="${CL_BINARY} --non-interactive"
 			CL_NORC="--sysinit /dev/null --userinit /dev/null"
 			CL_LOAD="--load"
 			CL_EVAL="--eval"
@@ -234,3 +242,7 @@ common-lisp-export-impl-args() {
 	esac
 	export CL_BINARY CL_NORC CL_LOAD CL_EVAL
 }
+
+fi
+
+EXPORT_FUNCTIONS src_compile src_install

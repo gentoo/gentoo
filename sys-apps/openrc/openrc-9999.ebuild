@@ -1,32 +1,28 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic pam toolchain-funcs
+inherit flag-o-matic meson pam toolchain-funcs
 
 DESCRIPTION="OpenRC manages the services, startup and shutdown of a host"
 HOMEPAGE="https://github.com/openrc/openrc/"
 
-if [[ ${PV} == "9999" ]]; then
+if [[ ${PV} =~ ^9{4,}$ ]]; then
 	EGIT_REPO_URI="https://github.com/OpenRC/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/OpenRC/openrc/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="audit bash debug ncurses pam newnet prefix +netifrc selinux sysv-utils
-	unicode"
+IUSE="audit bash debug ncurses pam newnet +netifrc selinux sysv-utils unicode"
 
 COMMON_DEPEND="
 	ncurses? ( sys-libs/ncurses:0= )
-	pam? (
-		sys-auth/pambase
-		sys-libs/pam
-	)
+	pam? ( sys-libs/pam )
 	audit? ( sys-process/audit )
 	sys-process/psmisc
 	!<sys-process/procps-3.3.9-r2
@@ -42,7 +38,10 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	bash? ( app-shells/bash )
 	!prefix? (
-		sysv-utils? ( !sys-apps/sysvinit )
+		sysv-utils? (
+			!sys-apps/systemd[sysv-utils(-)]
+			!sys-apps/sysvinit
+		)
 		!sysv-utils? ( >=sys-apps/sysvinit-2.86-r6[selinux?] )
 		virtual/tmpfiles
 	)
@@ -56,40 +55,21 @@ RDEPEND="${COMMON_DEPEND}
 
 PDEPEND="netifrc? ( net-misc/netifrc )"
 
-src_prepare() {
-	default
-	if [[ ${PV} == "9999" ]] ; then
-		local ver="git-${EGIT_VERSION:0:6}"
-		sed -i "/^GITVER[[:space:]]*=/s:=.*:=${ver}:" mk/gitver.mk || die
-	fi
-}
-
-src_compile() {
-	unset LIBDIR #266688
-
-	MAKE_ARGS="${MAKE_ARGS}
-		LIBNAME=$(get_libdir)
-		LIBEXECDIR=${EPREFIX}/lib/rc
-		MKBASHCOMP=yes
-		MKNET=$(usex newnet)
-		MKSELINUX=$(usex selinux)
-		MKSYSVINIT=$(usex sysv-utils)
-		MKAUDIT=$(usex audit)
-		MKPAM=$(usev pam)
-		MKSTATICLIBS=no
-		MKZSHCOMP=yes
-		SH=$(usex bash /bin/bash /bin/sh)"
-
-	local brand="Unknown"
-	MAKE_ARGS="${MAKE_ARGS} OS=Linux"
-	brand="Linux"
-	export BRANDING="Gentoo ${brand}"
-	use prefix && MAKE_ARGS="${MAKE_ARGS} MKPREFIX=yes PREFIX=${EPREFIX}"
-	export DEBUG=$(usev debug)
-	export MKTERMCAP=$(usev ncurses)
-
-	tc-export CC AR RANLIB
-	emake ${MAKE_ARGS}
+src_configure() {
+	local emesonargs=(
+	$(meson_feature audit)
+	"-Dbranding=\"Gentoo Linux\""
+		$(meson_use newnet)
+		-Dos=Linux
+		$(meson_use pam)
+		$(meson_feature selinux)
+		-Drootprefix="${EPREFIX}"
+		-Dshell=$(usex bash /bin/bash /bin/sh)
+		$(meson_use sysv-utils sysvinit)
+		-Dtermcap=$(usev ncurses)
+	)
+	# export DEBUG=$(usev debug)
+	meson_src_configure
 }
 
 # set_config <file> <option name> <yes value> <no value> test
@@ -106,7 +86,7 @@ set_config_yes_no() {
 }
 
 src_install() {
-	emake ${MAKE_ARGS} DESTDIR="${D}" install
+	meson_install
 
 	keepdir /lib/rc/tmp
 
@@ -125,15 +105,14 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/openrc.logrotate openrc
 
-	# install gentoo pam.d files
-	newpamd "${FILESDIR}"/start-stop-daemon.pam start-stop-daemon
-	newpamd "${FILESDIR}"/start-stop-daemon.pam supervise-daemon
+	if use pam; then
+		# install gentoo pam.d files
+		newpamd "${FILESDIR}"/start-stop-daemon.pam start-stop-daemon
+		newpamd "${FILESDIR}"/start-stop-daemon.pam supervise-daemon
+	fi
 
 	# install documentation
 	dodoc ChangeLog *.md
-	if use newnet; then
-		dodoc README.newnet
-	fi
 }
 
 pkg_preinst() {
@@ -159,18 +138,11 @@ pkg_postinst() {
 		elog "# rc-update add consolefont boot"
 	fi
 
-	# Added for 0.35.
-	if [[ ! -h "${EROOT}"/lib ]]; then
-		if [[ -d "${EROOT}/$(get_libdir)"/rc ]]; then
-			cp -RPp "${EROOT}/$(get_libdir)/rc" "${EROOT}"/lib
-		fi
-	fi
-
 	if ! use newnet && ! use netifrc; then
 		ewarn "You have emerged OpenRc without network support. This"
 		ewarn "means you need to SET UP a network manager such as"
 		ewarn "	net-misc/netifrc, net-misc/dhcpcd, net-misc/connman,"
-		ewarn "net-misc/NetworkManager, or net-vpn/badvpn."
+		ewarn " net-misc/NetworkManager, or net-vpn/badvpn."
 		ewarn "Or, you have the option of emerging openrc with the newnet"
 		ewarn "use flag and configuring /etc/conf.d/network and"
 		ewarn "/etc/conf.d/staticroute if you only use static interfaces."

@@ -1,0 +1,11 @@
+--- a/initsystems/systemd/ipsec.service.in.~1~	2021-02-03 02:36:01.000000000 +0100
++++ b/initsystems/systemd/ipsec.service.in	2021-02-21 07:37:50.841582048 +0100
+@@ -33,7 +33,7 @@
+ # ExecStartPost=@FINALLIBEXECDIR@/portexcludes
+ ExecStop=@FINALLIBEXECDIR@/whack --shutdown
+ # 12 is the exit code of pluto for shutting down "leaving state"
+-ExecStopPost=/bin/bash -c 'if test "$EXIT_STATUS" != "12"; then /sbin/ip xfrm policy flush; /sbin/ip xfrm state flush; fi'
++ExecStopPost=/bin/bash -c 'if test "$EXIT_STATUS" != "12"; then /bin/ip xfrm policy flush; /bin/ip xfrm state flush; fi'
+ ExecStopPost=@FINALSBINDIR@/ipsec --stopnflog
+ ExecReload=@FINALLIBEXECDIR@/whack --listen
+ 

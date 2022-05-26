@@ -37,7 +37,7 @@ esac
 
 EXPORT_FUNCTIONS pkg_setup
 
-# @ECLASS-VARIABLE: ADA_DEPS
+# @ECLASS_VARIABLE: ADA_DEPS
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated Ada dependency string for all
@@ -53,12 +53,12 @@ EXPORT_FUNCTIONS pkg_setup
 # @CODE
 #
 
-# @ECLASS-VARIABLE: _ADA_ALL_IMPLS
+# @ECLASS_VARIABLE: _ADA_ALL_IMPLS
 # @INTERNAL
 # @DESCRIPTION:
 # All supported Ada implementations, most preferred last.
 _ADA_ALL_IMPLS=(
-	gnat_2016 gnat_2017 gnat_2018 gnat_2019
+	gnat_2020 gnat_2021
 )
 readonly _ADA_ALL_IMPLS
 
@@ -83,7 +83,7 @@ _ada_impl_supported() {
 	# keep in sync with _ADA_ALL_IMPLS!
 	# (not using that list because inline patterns shall be faster)
 	case "${impl}" in
-		gnat_201[6789])
+		gnat_202[01])
 			return 0
 			;;
 		*)
@@ -177,7 +177,7 @@ ada_export() {
 	local impl var
 
 	case "${1}" in
-		gnat_201[6789])
+		gnat_202[01])
 			impl=${1}
 			shift
 			;;
@@ -191,21 +191,19 @@ ada_export() {
 	debug-print "${FUNCNAME}: implementation: ${impl}"
 
 	local gcc_pv
+	local slot
 	case "${impl}" in
-		gnat_2016)
-			gcc_pv=4.9.4
+		gnat_2020)
+			gcc_pv=9.3.1
+			slot=9.3.1
 			;;
-		gnat_2017)
-			gcc_pv=6.3.0
-			;;
-		gnat_2018)
-			gcc_pv=7.3.1
-			;;
-		gnat_2019)
-			gcc_pv=8.3.1
+		gnat_2021)
+			gcc_pv=10.3.1
+			slot=10
 			;;
 		*)
 			gcc_pv="9.9.9"
+			slot=9.9.9
 			;;
 	esac
 
@@ -248,7 +246,7 @@ ada_export() {
 				debug-print "${FUNCNAME}: GNATCHOP = ${GNATCHOP}"
 				;;
 			ADA_PKG_DEP)
-				ADA_PKG_DEP="dev-lang/gnat-gpl:${gcc_pv}"
+				ADA_PKG_DEP="dev-lang/gnat-gpl:${slot}[ada]"
 
 				# use-dep
 				if [[ ${ADA_REQ_USE} ]]; then
@@ -270,7 +268,7 @@ _ada_single_set_globals() {
 
 	local flags=( "${_ADA_SUPPORTED_IMPLS[@]/#/ada_target_}" )
 	local unflags=( "${_ADA_UNSUPPORTED_IMPLS[@]/#/-ada_target_}" )
-	local allflags=( ${flags[@]} ${unflags[@]} )
+	local allflags=( "${_ADA_ALL_IMPLS[@]/#/ada_target_}" )
 
 	local optflags=${flags[@]/%/(-)?}
 

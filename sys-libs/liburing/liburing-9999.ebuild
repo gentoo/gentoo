@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit multilib-minimal toolchain-funcs
 
@@ -12,10 +12,10 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/axboe/liburing.git"
 else
 	SRC_URI="https://git.kernel.dk/cgit/${PN}/snapshot/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 LICENSE="MIT"
-SLOT="0"
+SLOT="0/2" # liburing.so major version
 
 IUSE="static-libs"
 # fsync test hangs forever
@@ -23,6 +23,13 @@ RESTRICT="test"
 
 src_prepare() {
 	default
+
+	if [[ "${PV}" != *9999 ]] ; then
+		# Make sure pkgconfig files contain the correct version
+		# bug #809095 and #833895
+		sed -i "/^Version:/s@[[:digit:]\.]\+@${PV}@" ${PN}.spec || die
+	fi
+
 	multilib_copy_sources
 }
 
@@ -33,6 +40,7 @@ multilib_src_configure() {
 		--libdevdir="${EPREFIX}/usr/$(get_libdir)"
 		--mandir="${EPREFIX}/usr/share/man"
 		--cc="$(tc-getCC)"
+		--cxx="$(tc-getCXX)"
 	)
 	# No autotools configure! "econf" will fail.
 	TMPDIR="${T}" ./configure "${myconf[@]}"

@@ -1,26 +1,20 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-PYTHON_COMPAT=( python3_{6,7,8} )
+EAPI=8
 
+PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
-
-DISTUTILS_USE_SETUPTOOLS="rdepend"
-
-inherit git-r3
-inherit readme.gentoo-r1 distutils-r1
+inherit readme.gentoo-r1 git-r3 distutils-r1
 
 DESCRIPTION="BuildBot Worker (slave) Daemon"
-HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.org/project/buildbot-worker/"
-
-MY_V="${PV/_p/.post}"
-MY_P="${PN}-${MY_V}"
+HOMEPAGE="https://buildbot.net/
+	https://github.com/buildbot/buildbot
+	https://pypi.org/project/buildbot-worker/"
+S="${S}/worker"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -30,26 +24,24 @@ RDEPEND="
 	dev-python/future[${PYTHON_USEDEP}]
 	!<dev-util/buildbot-1.0.0
 "
-DEPEND="${RDEPEND}
+BDEPEND="
 	test? (
+		${RDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/setuptools_trial[${PYTHON_USEDEP}]
 	)
 "
 
-S="${S}/worker"
+DOC_CONTENTS="The \"buildbot\" user and the \"buildbot_worker\" init script has been added
+to support starting buildbot_worker through Gentoo's init system. To use this,
+execute \"emerge --config =${CATEGORY}/${PF}\" to create a new instance.
+Set up your build worker following the documentation, make sure the
+resulting directories are owned by the \"buildbot\" user and point
+\"${ROOT}/etc/conf.d/buildbot_worker.myinstance\" at the right location.
+The scripts can	run as a different user if desired."
 
-pkg_setup() {
-	DOC_CONTENTS="The \"buildbot\" user and the \"buildbot_worker\" init script has been added
-		to support starting buildbot_worker through Gentoo's init system. To use this,
-		execute \"emerge --config =${CATEGORY}/${PF}\" to create a new instance.
-		Set up your build worker following the documentation, make sure the
-		resulting directories are owned by the \"buildbot\" user and point
-		\"${ROOT}/etc/conf.d/buildbot_worker.myinstance\" at the right location.
-		The scripts can	run as a different user if desired."
+python_test() {
+	"${EPYTHON}" -m twisted.trial buildbot_worker || die "Tests failed with ${EPYTHON}"
 }
-
-distutils_enable_tests setup.py
 
 python_install_all() {
 	distutils-r1_python_install_all

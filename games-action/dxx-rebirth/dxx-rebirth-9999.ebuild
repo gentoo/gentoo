@@ -1,28 +1,23 @@
-# Copyright 2017-2020 DXX Rebirth project contributors
+# Copyright 2017-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# This file is part of the DXX-Rebirth project.
-#
-# It is copyright by its individual contributors, as recorded in the
-# project's Git history.  See COPYING.txt at the top level for license
-# terms and a link to the Git history.
-
 EAPI=7
-PYTHON_COMPAT=( python3_7 )
 
-inherit desktop eutils python-any-r1 scons-utils toolchain-funcs xdg
-if [[ "$PV" = 9999 ]]; then
+PYTHON_COMPAT=( python3_{8..10} )
+
+inherit desktop flag-o-matic python-any-r1 scons-utils toolchain-funcs xdg
+
+if [[ "${PV}" = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/dxx-rebirth/dxx-rebirth"
-	# Live ebuilds have blank keywords.
-	KEYWORDS=
-	PROPERTIES="live"
 else
 	MY_COMMIT=''
-	S="$WORKDIR/$PN-$MY_COMMIT"
-	SRC_URI="https://codeload.github.com/dxx-rebirth/dxx-rebirth/tar.gz/$MY_COMMIT -> $PN-$PVR.tar.gz"
+	S="${WORKDIR}/${PN}-${MY_COMMIT}"
+	SRC_URI="https://codeload.github.com/dxx-rebirth/dxx-rebirth/tar.gz/${MY_COMMIT} -> ${PN}-${PVR}.tar.gz"
 	unset MY_COMMIT
 
+	# Games under Gentoo are marked as 'testing' by convention
+	#
 	# Other architectures are reported to work, but not tested regularly by
 	# the core team.
 	#
@@ -30,7 +25,7 @@ else
 	# fixes are merged into the main source by upstream.
 	#
 	# Cross-compilation to Windows is also supported.
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 DESCRIPTION="Descent Rebirth - enhanced Descent 1 & 2 engine"
@@ -158,6 +153,8 @@ REQUIRED_USE='
 	sdl2? ( opengl )
 '
 
+BDEPEND="virtual/pkgconfig"
+
 # As of this writing, IUSE_RUNTIME is a GLEP, but not an implemented
 # feature.  This variable is stored here to be ready to activate when
 # Portage implements this feature.
@@ -220,13 +217,14 @@ dxx_scons() {
 
 src_compile() {
 	tc-export CXX PKG_CONFIG
+	replace-flags -O3 -O2 #831896
 	dxx_scons register_install_target=0 build
 }
 
 src_install() {
 	# Use upstream install target to handle the various combinations of
 	# enabled/disabled engines and optional editor support.
-	dxx_scons register_compile_target=0 register_install_target=1 DESTDIR="$D" "$D"
+	dxx_scons register_compile_target=0 register_install_target=1 DESTDIR="${D}" "${D}"
 	local DV
 	for DV in 1 2; do
 		if ! use d${DV}x; then
@@ -243,7 +241,7 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 	if ! use data; then
-		elog "$PN requires game data to play."
+		elog "${PN} requires game data to play."
 		elog "Game data is not included in this package.  To play the game,"
 		elog "emerge the packages required by USE=data or install the game"
 		elog "data by hand."

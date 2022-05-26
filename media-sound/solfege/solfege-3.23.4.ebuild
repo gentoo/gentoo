@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="sqlite"
 inherit autotools python-single-r1
 
@@ -30,8 +30,8 @@ BDEPEND="${PYTHON_DEPS}
 "
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycairo[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	x11-libs/gtk+:3
 	alsa? ( dev-python/pyalsa )
@@ -57,7 +57,7 @@ src_prepare() {
 	sed -i 's/charset=iso-8859-2/charset=utf-8/' po/hu.po.new || die
 	mv po/hu.po.new po/hu.po || die
 
-	sed -E 's|(PYTHON_INCLUDES=).+|\1"$(pkg-config --cflags-only-I python3)"|g' \
+	sed -E 's|(PYTHON_INCLUDES=).+|\1"$($(tc-getPKG_CONFIG) --cflags-only-I python3)"|g' \
 		-i acinclude.m4 || die
 
 	eautoreconf

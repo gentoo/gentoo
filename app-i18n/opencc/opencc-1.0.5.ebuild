@@ -1,48 +1,64 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 2010-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
+PYTHON_COMPAT=( python3_{8..9} )
 
-inherit cmake-utils
+inherit cmake python-any-r1
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 
 	EGIT_REPO_URI="https://github.com/BYVoid/OpenCC"
-else
-	inherit vcs-snapshot
-
-	SRC_URI="https://github.com/BYVoid/${PN^^[oc]}/archive/ver.${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
-DESCRIPTION="Libraries for conversion between Traditional and Simplified Chinese"
+DESCRIPTION="Library for conversion between Traditional and Simplified Chinese characters"
 HOMEPAGE="https://github.com/BYVoid/OpenCC"
+if [[ "${PV}" == "9999" ]]; then
+	SRC_URI=""
+else
+	SRC_URI="https://github.com/BYVoid/OpenCC/archive/ver.${PV}.tar.gz -> ${P}.tar.gz"
+fi
 
-LICENSE="Apache-2.0"
+# OpenCC: Apache-2.0
+# deps/darts-clone: BSD-2
+# deps/gtest-1.7.0: BSD
+# deps/rapidjson-0.11: MIT
+# deps/tclap-1.2.1: MIT
+LICENSE="Apache-2.0 BSD-2 MIT test? ( BSD )"
 SLOT="0/2"
-KEYWORDS="amd64 arm64 hppa ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm64 ~hppa ppc ppc64 sparc x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
-DEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="${PYTHON_DEPS}
+	doc? ( app-doc/doxygen )"
+DEPEND=""
+RDEPEND=""
 
-DOCS="AUTHORS *.md"
+if [[ "${PV}" != "9999" ]]; then
+	S="${WORKDIR}/OpenCC-ver.${PV}"
+fi
+
 PATCHES=(
-	"${FILESDIR}"/${PN}-test.patch
-	"${FILESDIR}"/${PN}-stop-copy.patch
+	"${FILESDIR}/${PN}-test.patch"
+	"${FILESDIR}/${PN}-stop-copy.patch"
 )
 
-src_prepare() {
-	sed -i "s|\${DIR_SHARE_OPENCC}/doc|share/doc/${PF}|" doc/CMakeLists.txt
+DOCS=(AUTHORS NEWS.md README.md)
 
-	cmake-utils_src_prepare
+src_prepare() {
+	cmake_src_prepare
+
+	sed -e "s:\${DIR_SHARE_OPENCC}/doc:share/doc/${PF}:" -i doc/CMakeLists.txt || die
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_DOCUMENTATION=$(usex doc)
+		-DBUILD_DOCUMENTATION=$(usex doc ON OFF)
 		-DBUILD_SHARED_LIBS=ON
-		-DENABLE_GTEST=$(usex test)
+		-DENABLE_GTEST=$(usex test ON OFF)
 	)
-	cmake-utils_src_configure
+
+	cmake_src_configure
 }

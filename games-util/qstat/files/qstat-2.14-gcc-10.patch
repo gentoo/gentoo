@@ -1,10 +1,6 @@
-From 878fa5fd6475685c3465a6e71a10c2fc61c1a09c Mon Sep 17 00:00:00 2001
 From: Sergei Trofimovich <slyfox@gentoo.org>
 Date: Sun, 26 Jan 2020 11:15:10 +0000
 Subject: [PATCH] qstat: fix build failure against gcc-10
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
 
 On gcc-10 (and gcc-9 -fno-common) build fails as:
 
@@ -24,10 +20,6 @@ The error also happens if CFLAGS=-fno-common passed explicitly.
 Reported-by: Toralf Förster
 Bug: https://bugs.gentoo.org/706390
 Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
----
- debug.c        | 2 +-
- debug.h        | 2 +-
-
 --- a/debug.c
 +++ b/debug.c
 @@ -114,6 +114,7 @@ static void _dump_packet(const char* tag, const char* buf, int buflen)

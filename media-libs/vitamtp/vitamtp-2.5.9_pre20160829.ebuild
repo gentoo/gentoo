@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools vcs-snapshot
+inherit autotools vcs-snapshot udev
 
 GIT_COMMIT="7ab537a4f45e34984cbeb9cf1b1af543a75a3dc0"
 
@@ -34,9 +34,18 @@ src_prepare() {
 	eautoreconf
 }
 
+src_configure() {
+	econf --disable-static
+}
+
 src_install() {
 	default
-	find "${D}" -name '*.la' -type f -delete || die
-	insinto /lib/udev/rules.d
-	newins debian/libvitamtp5.udev 10-vitamtp.rules
+
+	find "${ED}" -name '*.la' -delete || die
+
+	udev_newrules debian/libvitamtp5.udev 10-vitamtp.rules
+}
+
+pkg_postinst() {
+	udev_reload
 }

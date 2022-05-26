@@ -1,9 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-inherit eutils ltprune
 
 MY_P=${P/_p/-r}
 DESCRIPTION="Calculate speeds, equilibrium arguments, node factors of tidal constituents"
@@ -29,5 +27,8 @@ src_configure() {
 
 src_install() {
 	default
-	use static-libs || prune_libtool_files
+
+	if ! use static-libs; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
 }

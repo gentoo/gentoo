@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit go-module systemd
+inherit go-module systemd tmpfiles
 GIT_COMMIT=bdd57848d
 MY_PV="${PV/_rc/-rc.}"
 
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/etcd-io/etcd/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc +server"
 
 COMMON_DEPEND="server? (
@@ -52,6 +52,10 @@ src_compile() {
 	 ./build || die
 }
 
+src_test() {
+	./test || die
+}
+
 src_install() {
 	dobin bin/etcdctl
 	use doc && dodoc -r Documentation
@@ -61,7 +65,7 @@ src_install() {
 		dobin bin/etcd
 		dodoc README.md
 		systemd_dounit "${FILESDIR}/${PN}.service"
-		systemd_newtmpfilesd "${FILESDIR}/${PN}.tmpfiles.d.conf" ${PN}.conf
+		newtmpfiles "${FILESDIR}/${PN}.tmpfiles.d.conf" ${PN}.conf
 		newinitd "${FILESDIR}"/${PN}.initd ${PN}
 		newconfd "${FILESDIR}"/${PN}.confd ${PN}
 		insinto /etc/logrotate.d
@@ -75,6 +79,8 @@ src_install() {
 	fi
 }
 
-src_test() {
-	./test || die
+pkg_postinst() {
+	if use server; then
+		tmpfiles_process ${PN}.conf
+	fi
 }

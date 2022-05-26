@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>vilhelm.gray@gmail.com</email>
-		<name>William Breathitt Gray</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<use>
 		<flag name="client">Build client target</flag>
+		<flag name="hidpi">Use bundled FLTK 1.4, which has better support for HiDPI screens</flag>
 		<flag name="master">Build master server target (advertises odamex server list)</flag>
 		<flag name="odalaunch">Build the wxWidgets based launcher</flag>
 		<flag name="portmidi">Enable PortMidi support</flag>
@@ -33,6 +26,6 @@
 		broader expanse of security features, personal configuration, gameplay
 		options, and editing features. Odamex can run on a wide range of
 		operating systems and hardware, so players should be able to play
-		on almost any platform. 
+		on almost any platform.
 	</longdescription>
 </pkgmetadata>

@@ -1,0 +1,40 @@
+we change some variables in the Makefile
+for a better handling in gentoo ebuild
+
+Signed-off-by: Joerg Bornkessel <hd_brummy@gentoo.org> 2021/Feb/11
+diff -Naur vdr-2.4.6.orig/Makefile vdr-2.4.6/Makefile
+--- vdr-2.4.6.orig/Makefile	2020-06-27 11:13:04.000000000 +0200
++++ vdr-2.4.6/Makefile	2020-08-08 18:16:02.519719542 +0200
+@@ -65,7 +65,7 @@
+ 
+ # Output control
+ 
+-ifdef VERBOSE
++ifeq ($(VERBOSE),1)
+ Q =
+ else
+ Q = @
+@@ -100,7 +100,7 @@
+ ifdef HDRDIR
+ HDRDIR   := -I$(HDRDIR)
+ endif
+-ifndef NO_KBD
++ifeq ($(USE_KBD),1)
+ DEFINES += -DREMOTE_KBD
+ endif
+ ifdef REMOTE
+@@ -109,12 +109,12 @@
+ ifdef VDR_USER
+ DEFINES += -DVDR_USER=\"$(VDR_USER)\"
+ endif
+-ifdef BIDI
++ifeq ($(BIDI),1)
+ INCLUDES += $(shell $(PKG_CONFIG) --cflags fribidi)
+ DEFINES += -DBIDI
+ LIBS += $(shell $(PKG_CONFIG) --libs fribidi)
+ endif
+-ifdef SDNOTIFY
++ifeq ($(SDNOTIFY),1)
+ INCLUDES += $(shell $(PKG_CONFIG) --silence-errors --cflags libsystemd-daemon || $(PKG_CONFIG) --cflags libsystemd)
+ DEFINES += -DSDNOTIFY
+ LIBS += $(shell $(PKG_CONFIG) --silence-errors --libs libsystemd-daemon || $(PKG_CONFIG) --libs libsystemd)

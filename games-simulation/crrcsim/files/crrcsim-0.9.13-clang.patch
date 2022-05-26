@@ -1,0 +1,10 @@
+https://bugs.gentoo.org/830572
+--- a/src/mod_fdm_config.h
++++ b/src/mod_fdm_config.h
+@@ -36,5 +36,5 @@
+ #define MOD_FDM_USE_MCOPTER01   1
+ 
+-#define MOD_FDM_INFOSTR  "CRRCSim "PACKAGE_VERSION
++#define MOD_FDM_INFOSTR  "CRRCSim " PACKAGE_VERSION
+ 
+ 

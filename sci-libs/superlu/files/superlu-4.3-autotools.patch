@@ -1,14 +1,3 @@
- EXAMPLE/Makefile |   68 +++++++++---------
- FORTRAN/Makefile |   14 ++--
- Makefile.am      |    4 +
- SRC/Makefile.am  |  110 +++++++++++++++++++++++++++++
- ax_blas.m4       |  201 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
- configure.ac     |   16 ++++
- superlu.pc.in    |   13 ++++
- 7 files changed, 385 insertions(+), 41 deletions(-)
-
-diff --git a/EXAMPLE/Makefile b/EXAMPLE/Makefile
-index c286ded..37950dc 100644
 --- a/EXAMPLE/Makefile
 +++ b/EXAMPLE/Makefile
 @@ -1,4 +1,3 @@
@@ -21,8 +10,8 @@ index c286ded..37950dc 100644
  #######################################################################
  
 -HEADER   = ../SRC
-+HEADER = $(shell pkg-config --cflags superlu)
-+LIBS   = $(shell pkg-config --libs superlu)
++HEADER = $(shell ${PKG_CONFIG} --cflags superlu)
++LIBS   = $(shell ${PKG_CONFIG} --libs superlu)
 +CDEFS  = -DAdd_
  
  SLINEXM		= slinsol.o
@@ -164,8 +153,6 @@ index c286ded..37950dc 100644
  
  clean:	
  	rm -f *.o *linsol *linsol1 *linsolx *linsolx1 *linsolx2 \
-diff --git a/FORTRAN/Makefile b/FORTRAN/Makefile
-index 23671a7..54da751 100644
 --- a/FORTRAN/Makefile
 +++ b/FORTRAN/Makefile
 @@ -1,12 +1,12 @@
@@ -179,8 +166,8 @@ index 23671a7..54da751 100644
  
 -HEADER   = ../SRC
 -LIBS	= $(SUPERLULIB) $(BLASLIB) -lm
-+HEADER   = $(shell pkg-config --cflags superlu)
-+LIBS	= $(shell pkg-config --libs superlu)
++HEADER   = $(shell ${PKG_CONFIG} --cflags superlu)
++LIBS	= $(shell ${PKG_CONFIG} --libs superlu)
  
  # double real
  F77EXM	= f77_main.o hbcode1.o c_fortran_dgssv.o
@@ -208,8 +195,6 @@ index 23671a7..54da751 100644
  
  clean:	
  	rm -f *.o f77exm zf77exm
-diff --git a/Makefile.am b/Makefile.am
-new file mode 100644
 index 0000000..7e51046
 --- /dev/null
 +++ b/Makefile.am
@@ -218,8 +203,6 @@ index 0000000..7e51046
 +
 +pkgconfigdir = $(libdir)/pkgconfig
 +pkgconfig_DATA = superlu.pc
-diff --git a/SRC/Makefile.am b/SRC/Makefile.am
-new file mode 100644
 index 0000000..748e5e9
 --- /dev/null
 +++ b/SRC/Makefile.am
@@ -334,9 +317,6 @@ index 0000000..748e5e9
 +libsuperlu_la_CFLAGS = $(CFLAGS_SAV)
 +libsuperlu_la_LIBADD = $(BLAS_LIBS) libnoopt.la
 +libsuperlu_la_LDFLAGS = -no-undefined -version-info 4:2:0
-diff --git a/ax_blas.m4 b/ax_blas.m4
-new file mode 100644
-index 0000000..e4f96cb
 --- /dev/null
 +++ b/ax_blas.m4
 @@ -0,0 +1,201 @@
@@ -541,9 +521,6 @@ index 0000000..e4f96cb
 +        $2
 +fi
 +])dnl AX_BLAS
-diff --git a/configure.ac b/configure.ac
-new file mode 100644
-index 0000000..f6707be
 --- /dev/null
 +++ b/configure.ac
 @@ -0,0 +1,16 @@
@@ -563,9 +540,6 @@ index 0000000..f6707be
 +AC_CHECK_LIB([m], [floor])
 +AC_CONFIG_FILES([Makefile SRC/Makefile superlu.pc])
 +AC_OUTPUT
-diff --git a/superlu.pc.in b/superlu.pc.in
-new file mode 100644
-index 0000000..7bf9942
 --- /dev/null
 +++ b/superlu.pc.in
 @@ -0,0 +1,13 @@

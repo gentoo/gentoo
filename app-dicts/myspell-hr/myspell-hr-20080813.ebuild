@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MYSPELL_DICT=(
 	"hr_HR.aff"
@@ -12,9 +12,6 @@ MYSPELL_HYPH=(
 	"hyph_hr.dic"
 )
 
-MYSPELL_THES=(
-)
-
 inherit myspell-r2
 
 DESCRIPTION="Croatian dictionaries for myspell/hunspell"
@@ -23,5 +20,4 @@ HOMEPAGE="https://extensions.openoffice.org/en/project/croatian-dictionary-and-h
 SRC_URI="mirror://sourceforge/aoo-extensions/dict-hr.oxt -> ${P}.oxt"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
-IUSE=""
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"

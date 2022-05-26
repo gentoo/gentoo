@@ -1,10 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_OPTIONAL=1
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1 libtool toolchain-funcs multilib-minimal
 
@@ -13,7 +14,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit autotools git-r3
 else
 	SRC_URI="ftp://ftp.astron.com/pub/file/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="identify a file's format by scanning binary data for patterns"
@@ -35,6 +36,11 @@ DEPEND="
 RDEPEND="${DEPEND}
 	python? ( !dev-python/python-magic )
 	seccomp? ( sys-libs/libseccomp[${MULTILIB_USEDEP}] )"
+BDEPEND="
+	python? (
+		${PYTHON_DEPS}
+		${DISTUTILS_DEPS}
+	)"
 
 PATCHES=(
 	"${FILESDIR}/file-5.39-portage-sandbox.patch" #713710 #728978
@@ -43,7 +49,7 @@ PATCHES=(
 src_prepare() {
 	default
 
-	if [[ ${PV} == 9999 ]]; then
+	if [[ ${PV} == 9999 ]] ; then
 		eautoreconf
 	fi
 
@@ -74,7 +80,7 @@ build_src_configure() {
 		--disable-xzlib
 		--disable-zlib
 	)
-	tc-env_build econf "${myeconfargs[@]}"
+	econf_build "${myeconfargs[@]}"
 }
 
 need_build_file() {
@@ -85,9 +91,9 @@ need_build_file() {
 }
 
 src_configure() {
-	local ECONF_SOURCE=${S}
+	local ECONF_SOURCE="${S}"
 
-	if need_build_file; then
+	if need_build_file ; then
 		mkdir -p "${WORKDIR}"/build || die
 		cd "${WORKDIR}"/build || die
 		build_src_configure
@@ -107,7 +113,7 @@ multilib_src_compile() {
 }
 
 src_compile() {
-	if need_build_file; then
+	if need_build_file ; then
 		emake -C "${WORKDIR}"/build/src magic.h #586444
 		emake -C "${WORKDIR}"/build/src file
 		local -x PATH="${WORKDIR}/build/src:${PATH}"
@@ -132,7 +138,6 @@ multilib_src_install_all() {
 	dodoc ChangeLog MAINT README
 
 	# Required for `file -C`
-	dodir /usr/share/misc/magic
 	insinto /usr/share/misc/magic
 	doins -r magic/Magdir/*
 

@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: go-module.eclass
@@ -7,25 +7,43 @@
 # @AUTHOR:
 # William Hubbs <williamh@gentoo.org>
 # Robin H. Johnson <robbat2@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: basic eclass for building software written as go modules
 # @DESCRIPTION:
 # This eclass provides basic settings and functions needed by all software
 # written in the go programming language that uses modules.
+# If the software you are packaging has a file named go.mod in its top level
+# directory, it uses modules.
+# 
+# Modules have been the preferred method of tracking dependencies in software
+# written in Go since version 1.16,
+# so if the software isn't using modules, it should be updated.
 #
-# If the software you are packaging  has a file named go.mod in its top
-# level directory, it uses modules and  your ebuild should inherit this
-# eclass. If it does not, your ebuild should use the golang-* eclasses.
+# Also, if the top level go.mod file contains a go directive that
+# specifies a version of go prior to 1.14, this should be reported
+# upstream and updated.
 #
-# If, besides go.mod, your software has a directory named vendor in its
+# If the software has a directory named vendor in its
 # top level directory, the only thing you need to do is inherit the
-# eclass. If there is no vendor directory, you need to also populate
-# EGO_SUM and call go-module_set_globals as discussed below.
+# eclass. If it doesn't, you need to also create a dependency tarball and
+# host it somewhere, for example in your dev space.
+#
+# Here is an example of how to create a dependency tarball.
+# The base directory in the GOMODCACHE setting must be go-mod in order
+# to match the settings in this eclass.
+#
+# @CODE
+#
+# $ cd /path/to/project
+# $ GOMODCACHE="${PWD}"/go-mod go mod download -modcacherw
+# $ tar -acf project-1.0-deps.tar.xz go-mod
+#
+# @CODE
 #
 # Since Go programs are statically linked, it is important that your ebuild's
 # LICENSE= setting includes the licenses of all statically linked
 # dependencies. So please make sure it is accurate.
-# You can use a utility like dev-util/golicense (network connectivity is
+# You can use a utility like dev-go/golicense (network connectivity is
 # required) to extract this information from the compiled binary.
 #
 # @EXAMPLE:
@@ -34,34 +52,32 @@
 #
 # inherit go-module
 #
-# EGO_SUM=(
-#   "github.com/aybabtme/rgbterm v0.0.0-20170906152045-cc83f3b3ce59/go.mod"
-#   "github.com/aybabtme/rgbterm v0.0.0-20170906152045-cc83f3b3ce59"
-# )
-#
-# go-module_set_globals
-#
-# SRC_URI="https://github.com/example/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-#		   ${EGO_SUM_SRC_URI}"
+# SRC_URI="https://github.com/example/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+# Add this line if you have a dependency tarball.
+# SRC_URI+=" ${P}-deps.tar.xz"
 #
 # @CODE
 
-case ${EAPI:-0} in
-	7) ;;
-	*) die "${ECLASS} EAPI ${EAPI} is not supported."
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ -z ${_GO_MODULE} ]]; then
 
 _GO_MODULE=1
 
-BDEPEND=">=dev-lang/go-1.12"
+if [[ ! ${GO_OPTIONAL} ]]; then
+	BDEPEND=">=dev-lang/go-1.16"
 
-# Workaround for pkgcheck false positive: https://github.com/pkgcore/pkgcheck/issues/214
-# MissingUnpackerDep: version ...: missing BDEPEND="app-arch/unzip"
-# Added here rather than to each affected package, so it can be cleaned up just
-# once when pkgcheck is improved.
-BDEPEND+=" app-arch/unzip"
+	# Workaround for pkgcheck false positive: https://github.com/pkgcore/pkgcheck/issues/214
+	# MissingUnpackerDep: version ...: missing BDEPEND="app-arch/unzip"
+	# Added here rather than to each affected package, so it can be cleaned up just
+	# once when pkgcheck is improved.
+	BDEPEND+=" app-arch/unzip"
+
+	EXPORT_FUNCTIONS src_unpack
+fi
 
 # Force go to build in module mode.
 # In this mode the GOPATH environment variable is ignored.
@@ -72,12 +88,15 @@ export GO111MODULE=on
 # See "go help environment" for information on this setting
 export GOCACHE="${T}/go-build"
 
+# Set the default for the go module cache
+# See "go help environment" for information on this setting
+export GOMODCACHE="${WORKDIR}/go-mod"
+
 # The following go flags should be used for all builds.
+# -modcacherw makes the build cache read/write
 # -v prints the names of packages as they are compiled
 # -x prints commands as they are executed
-# -mod=readonly do not update go.mod/go.sum but fail if updates are needed
-# -mod=vendor use the vendor directory instead of downloading dependencies
-export GOFLAGS="-v -x -mod=readonly"
+export GOFLAGS="-modcacherw -v -x"
 
 # Do not complain about CFLAGS etc since go projects do not use them.
 QA_FLAGS_IGNORED='.*'
@@ -85,16 +104,29 @@ QA_FLAGS_IGNORED='.*'
 # Go packages should not be stripped with strip(1).
 RESTRICT+=" strip"
 
-EXPORT_FUNCTIONS src_unpack pkg_postinst
-
-# @ECLASS-VARIABLE: EGO_SUM
+# @ECLASS_VARIABLE: EGO_SUM
+# @DEPRECATED: none
 # @DESCRIPTION:
-# This is an array based on the go.sum content from inside the target package.
-# Each array entry must be quoted and contain information from a single
-# line from go.sum.
+# This is replaced by a dependency tarball, see above for how to create
+# one.
+#
+# This array is based on the contents of the go.sum file from the top
+# level directory of the software you are packaging. Each entry must be
+# quoted and contain the first two fields of a line from go.sum.
+#
+# You can use some combination of sed/awk/cut to extract the
+# contents of EGO_SUM or use the dev-go/get-ego-vendor tool.
+# 
+# One manual way to do this is the following:
+#
+# @CODE
+#
+# cat go.sum | cut -d" " -f1,2 | awk '{print "\t\"" $0 "\""}'
+# 
+# @CODE
 #
 # The format of go.sum is described upstream here:
-# https://tip.golang.org/cmd/go/#hdr-Module_authentication_using_go_sum
+# https://go.dev/ref/mod#go-sum-files
 #
 # For inclusion in EGO_SUM, the h1: value and other future extensions SHOULD be
 # omitted at this time. The EGO_SUM parser will accept them for ease of ebuild
@@ -120,7 +152,8 @@ EXPORT_FUNCTIONS src_unpack pkg_postinst
 # This decision  does NOT weaken Go module security, as Go will verify the
 # go.sum copy of the Hash1 values during building of the package.
 
-# @ECLASS-VARIABLE: _GOMODULE_GOPROXY_BASEURI
+# @ECLASS_VARIABLE: _GOMODULE_GOPROXY_BASEURI
+# @DEPRECATED: none
 # @DESCRIPTION:
 # Golang module proxy service to fetch module files from. Note that the module
 # proxy generally verifies modules via the Hash1 code.
@@ -142,14 +175,38 @@ EXPORT_FUNCTIONS src_unpack pkg_postinst
 # below, so please do not rely on it.
 : "${_GOMODULE_GOPROXY_BASEURI:=mirror://goproxy/}"
 
-# @ECLASS-VARIABLE: _GOMODULE_GOSUM_REVERSE_MAP
+# @ECLASS_VARIABLE: _GOMODULE_GOSUM_REVERSE_MAP
+# @DEPRECATED: none
 # @DESCRIPTION:
 # Mapping back from Gentoo distfile name to upstream distfile path.
 # Associative array to avoid O(N*M) performance when populating the GOPROXY
 # directory structure.
 declare -A -g _GOMODULE_GOSUM_REVERSE_MAP
 
+# @ECLASS_VARIABLE: GO_OPTIONAL
+# @DEFAULT_UNSET
+# @PRE_INHERIT
+# @DESCRIPTION:
+# If set to a non-null value before inherit, the Go part of the
+# ebuild will be considered optional. No dependencies will be added and
+# no phase functions will be exported. You will need to set BDEPEND and
+# call go-module_src_unpack in your ebuild.
+
+# @FUNCTION: ego
+# @USAGE: [<args>...]
+# @DESCRIPTION:
+# Call go, passing the supplied arguments.
+# This function dies if go fails. It also supports being called via 'nonfatal'.
+# If you need to call go directly in your ebuilds, this is the way it
+# should be done.
+ego() {
+	set -- go "$@"
+	echo "$@" >&2
+	"$@" || die -n "${*} failed"
+}
+
 # @FUNCTION: go-module_set_globals
+# @DEPRECATED: none
 # @DESCRIPTION:
 # Convert the information in EGO_SUM for other usage in the ebuild.
 # - Populates EGO_SUM_SRC_URI that can be added to SRC_URI
@@ -232,18 +289,66 @@ go-module_set_globals() {
 	readonly EGO_SUM_SRC_URI
 	readonly _GOMODULE_GOSUM_REVERSE_MAP
 
+	# export the GOPROXY setting
+	export GOPROXY="file://${T}/go-proxy"
+
 	# Set the guard that we are safe
 	_GO_MODULE_SET_GLOBALS_CALLED=1
+}
+
+# @FUNCTION: go-module_setup_proxy
+# @DEPRECATED: none
+# @DESCRIPTION:
+# If your ebuild redefines src_unpack and uses EGO_SUM you need to call
+# this function in src_unpack.
+# It sets up the go module proxy in the appropriate location.
+go-module_setup_proxy() {
+	# shellcheck disable=SC2120
+	debug-print-function "${FUNCNAME}" "$@"
+
+	if [[ ! ${_GO_MODULE_SET_GLOBALS_CALLED} ]]; then
+		die "go-module_set_globals must be called in global scope"
+	fi
+
+	local goproxy_dir="${GOPROXY/file:\/\//}"
+	mkdir -p "${goproxy_dir}" || die
+
+	# For each Golang module distfile, look up where it's supposed to go and
+	# symlink it into place.
+	local f
+	local goproxy_mod_dir
+	for f in ${A}; do
+		goproxy_mod_path="${_GOMODULE_GOSUM_REVERSE_MAP["${f}"]}"
+		if [[ -n "${goproxy_mod_path}" ]]; then
+			debug-print-function "Populating go proxy for ${goproxy_mod_path}"
+			# Build symlink hierarchy
+			goproxy_mod_dir=$( dirname "${goproxy_dir}"/"${goproxy_mod_path}" )
+			mkdir -p "${goproxy_mod_dir}" || die
+			ln -sf "${DISTDIR}"/"${f}" "${goproxy_dir}/${goproxy_mod_path}" ||
+				die "Failed to ln"
+			local v=${goproxy_mod_path}
+			v="${v%.mod}"
+			v="${v%.zip}"
+			v="${v//*\/}"
+			_go-module_gosum_synthesize_files "${goproxy_mod_dir}" "${v}"
+		fi
+	done
+
+	# Validate the gosum now
+	_go-module_src_unpack_verify_gosum
 }
 
 # @FUNCTION: go-module_src_unpack
 # @DESCRIPTION:
 # If EGO_SUM is set, unpack the base tarball(s) and set up the
-#   local go proxy.
+#   local go proxy. Also warn that this usage is deprecated.
 # - Otherwise, if EGO_VENDOR is set, bail out.
 # - Otherwise do a normal unpack.
 go-module_src_unpack() {
 	if [[ "${#EGO_SUM[@]}" -gt 0 ]]; then
+		eqawarn "This ebuild uses EGO_SUM which is deprecated"
+		eqawarn "Please migrate to a dependency tarball"
+		eqawarn "This will become a fatal error in the future"
 		_go-module_src_unpack_gosum
 	elif [[ "${#EGO_VENDOR[@]}" -gt 0 ]]; then
 		eerror "${EBUILD} is using EGO_VENDOR which is no longer supported"
@@ -254,6 +359,7 @@ go-module_src_unpack() {
 }
 
 # @FUNCTION: _go-module_src_unpack_gosum
+# @DEPRECATED: none
 # @DESCRIPTION:
 # Populate a GOPROXY directory hierarchy with distfiles from EGO_SUM and
 # unpack the base distfiles.
@@ -268,7 +374,7 @@ _go-module_src_unpack_gosum() {
 		die "go-module_set_globals must be called in global scope"
 	fi
 
-	local goproxy_dir="${T}/go-proxy"
+	local goproxy_dir="${GOPROXY/file:\/\//}"
 	mkdir -p "${goproxy_dir}" || die
 
 	# For each Golang module distfile, look up where it's supposed to go, and
@@ -293,13 +399,13 @@ _go-module_src_unpack_gosum() {
 			unpack "$f"
 		fi
 	done
-	export GOPROXY="file://${goproxy_dir}"
 
 	# Validate the gosum now
 	_go-module_src_unpack_verify_gosum
 }
 
 # @FUNCTION: _go-module_gosum_synthesize_files
+# @DEPRECATED: none
 # @DESCRIPTION:
 # Given a path &  version, populate all Goproxy metadata files which aren't
 # needed to be downloaded directly.
@@ -327,6 +433,7 @@ _go-module_gosum_synthesize_files() {
 }
 
 # @FUNCTION: _go-module_src_unpack_verify_gosum
+# @DEPRECATED: none
 # @DESCRIPTION:
 # Validate the Go modules declared by EGO_SUM are sufficient to cover building
 # the package, without actually building it yet.
@@ -344,7 +451,7 @@ _go-module_src_unpack_verify_gosum() {
 	# This will print 'downloading' messages, but it's accessing content from
 	# the $GOPROXY file:/// URL!
 	einfo "Tidying go.mod/go.sum"
-	go mod tidy >/dev/null
+	nonfatal ego mod tidy >/dev/null
 
 	# This used to call 'go get' to verify by fetching everything from the main
 	# go.mod. However 'go get' also turns out to recursively try to fetch
@@ -370,26 +477,12 @@ go-module_live_vendor() {
 		die "${FUNCNAME} only allowed when upstream isn't vendoring"
 
 	pushd "${S}" >& /dev/null || die
-	go mod vendor || die
+	ego mod vendor
 	popd >& /dev/null || die
 }
 
-# @FUNCTION: go-module_pkg_postinst
-# @DESCRIPTION:
-# Display a warning about security updates for Go programs.
-go-module_pkg_postinst() {
-	debug-print-function "${FUNCNAME}" "$@"
-	[[ -n ${REPLACING_VERSIONS} ]] && return 0
-	ewarn "${PN} is written in the Go programming language."
-	ewarn "Since this language is statically linked, security"
-	ewarn "updates will be handled in individual packages and will be"
-	ewarn "difficult for us to track as a distribution."
-	ewarn "For this reason, please update any go packages asap when new"
-	ewarn "versions enter the tree or go stable if you are running the"
-	ewarn "stable tree."
-}
-
 # @FUNCTION: _go-module_gomod_encode
+# @DEPRECATED: none
 # @DESCRIPTION:
 # Encode the name(path) of a Golang module in the format expected by Goproxy.
 #

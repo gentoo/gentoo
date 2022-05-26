@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<bugs-to>https://github.com/wireservice/agate-sql/issues</bugs-to>
+		<changelog>https://github.com/wireservice/agate-sql/blob/master/CHANGELOG.rst</changelog>
+		<remote-id type="pypi">agate-sql</remote-id>
+		<remote-id type="github">wireservice/agate-sql</remote-id>
+	</upstream>
+</pkgmetadata>

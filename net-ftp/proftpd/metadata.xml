@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>slyfox@gentoo.org</email>
-		<name>Sergei Trofimovich</name>
-		<description>Mostly user.</description>
+		<email>slashbeast@gentoo.org</email>
+		<name>Piotr Karbowski</name>
 	</maintainer>
 	<longdescription>ProFTPD grew out of the desire to have a secure and 
 configurable FTP server, and out of a significant admiration of the Apache web 
@@ -40,6 +39,6 @@ server.</longdescription>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">gssmod</remote-id>
-		<remote-id type="github">Castaglia/proftpd-mod_vroot</remote-id>
+		<remote-id type="github">proftpd/proftpd</remote-id>
 	</upstream>
 </pkgmetadata>

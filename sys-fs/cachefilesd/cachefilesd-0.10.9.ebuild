@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit flag-o-matic systemd toolchain-funcs
+inherit flag-o-matic systemd toolchain-funcs tmpfiles
 
 DESCRIPTION="Provides a caching directory on an already mounted filesystem"
 HOMEPAGE="https://people.redhat.com/~dhowells/fscache/"
@@ -32,8 +32,8 @@ src_install() {
 	default
 
 	if use selinux; then
-		insinto /usr/share/doc/${P}
-		doins -r selinux
+		dodoc -r selinux
+		docompress -x /usr/share/doc/${PF}/selinux
 	fi
 
 	dodoc howto.txt
@@ -42,10 +42,12 @@ src_install() {
 	newinitd "${FILESDIR}"/${PN}-3.init ${PN}
 
 	systemd_dounit ${PN}.service
-	systemd_newtmpfilesd "${FILESDIR}"/${PN}-tmpfiles.d ${PN}.conf
+	newtmpfiles "${FILESDIR}"/${PN}-tmpfiles.d ${PN}.conf
 }
 
 pkg_postinst() {
+	tmpfiles_process ${PN}.conf
+
 	[[ -d /var/cache/fscache ]] && return
 	elog "Before CacheFiles can be used, a directory for local storage"
 	elog "must be created.  The default configuration of /etc/cachefilesd.conf"

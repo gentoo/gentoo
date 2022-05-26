@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,21 +17,48 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-05-11)
+# sys-apps/keyutils not stable here (test failures)
+# ... and samba[client] pulls in cifs-utils which pulls in keyutils.
+# bug #636252
+net-fs/nfs-utils nfsv4
+net-fs/samba client
+gnome-base/gvfs samba
+media-video/ffmpeg samba
+media-video/vlc samba
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# net-nds/openldap / dev-libs/cyrus-sasl not stable here
+dev-lang/php ldap-sasl
+mail-mta/postfix ldap-bind
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# No kerberos provider is marked stable here
+net-fs/samba addns ads system-heimdal system-mitkrb5
+net-fs/cifs-utils ads
+sys-auth/pambase pam_krb5
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# sys-cluster/rdma-core is not marked stable here
+net-libs/libpcap rdma
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# sys-cluster/sanlock is not marked stable here
+sys-fs/lvm2 sanlock
+
+# Marek Szuba <marecki@gentoo.org> (2021-12-31)
+# No stable dev-ruby/{thor,tty-editor} on this arch yet
+# and there are many dependencies to go through before there are
+app-text/htmltidy test
+
+# Sam James <sam@gentoo.org> (2021-02-06)
+# Drags in too much unstable GNOME for now
+# bug #727572
+mail-client/claws-mail gdata
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-07-21)
 # Unstable test deps.
 dev-cpp/eigen test
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-08-15)
-# media-libs/libsidplay:2 appears to be broken, bug #660288
-media-video/vlc sid
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-06-03)
-# Requires not yet stable dependencies
-sys-libs/gwenhywfar sensors serialport webkit
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-06-03)
-# dev-qt/qtwebkit:5 is not stable.
-dev-qt/designer webkit
 
 # Michael Weber <xmw@gentoo.org> (2017-03-01)
 # Mask until >sys-cluster/ceph-0.94 goes stable
@@ -47,4 +74,3 @@ sci-libs/plplot ocaml
 gnome-base/gvfs google
 mail-client/balsa webkit
 net-libs/libproxy webkit
->=x11-libs/gtk+-3.12.2 cloudprint

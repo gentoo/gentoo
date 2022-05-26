@@ -1,56 +1,90 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake flag-o-matic git-r3 multilib toolchain-funcs wxwidgets
+WX_GTK_VER="3.0-gtk3"
+inherit cmake fcaps flag-o-matic git-r3 toolchain-funcs wxwidgets
 
 DESCRIPTION="A PlayStation 2 emulator"
-HOMEPAGE="https://www.pcsx2.net"
+HOMEPAGE="https://pcsx2.net/"
 EGIT_REPO_URI="https://github.com/PCSX2/${PN}.git"
+EGIT_SUBMODULES=(
+	3rdparty/glslang/glslang # needs StandAlone/ResourceLimits.h
+	3rdparty/imgui/imgui # not made to be system-wide
+	3rdparty/vulkan-headers # to keep in sync with glslang
+)
 
-LICENSE="GPL-3"
+LICENSE="GPL-3 Apache-2.0 OFL-1.1" # TODO: needs review for a full list
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="pulseaudio test"
+
+RESTRICT="!test? ( test )"
 
 RDEPEND="
-	app-arch/bzip2[abi_x86_32(-)]
-	app-arch/xz-utils[abi_x86_32(-)]
-	dev-libs/libaio[abi_x86_32(-)]
-	dev-libs/libxml2:2[abi_x86_32(-)]
-	media-libs/alsa-lib[abi_x86_32(-)]
-	media-libs/libpng:=[abi_x86_32(-)]
-	media-libs/libsdl2[abi_x86_32(-),haptic,joystick,sound]
-	media-libs/libsoundtouch[abi_x86_32(-)]
-	media-libs/portaudio[abi_x86_32(-)]
-	net-libs/libpcap[abi_x86_32(-)]
-	sys-libs/zlib[abi_x86_32(-)]
-	virtual/libudev[abi_x86_32(-)]
-	virtual/opengl[abi_x86_32(-)]
-	x11-libs/gtk+:3[abi_x86_32(-)]
-	x11-libs/libICE[abi_x86_32(-)]
-	x11-libs/libX11[abi_x86_32(-)]
-	x11-libs/libXext[abi_x86_32(-)]
-	>=x11-libs/wxGTK-3.0.4-r301:3.0-gtk3[abi_x86_32(-),X]
+	app-arch/xz-utils
+	app-arch/zstd:=
+	dev-cpp/rapidyaml:=
+	dev-libs/glib:2
+	dev-libs/libaio
+	dev-libs/libchdr
+	>=dev-libs/libfmt-7.1.3:=
+	dev-libs/libxml2:2
+	dev-libs/libzip:=[zstd]
+	media-libs/alsa-lib
+	media-libs/cubeb
+	media-libs/freetype
+	media-libs/libglvnd
+	media-libs/libpng:=
+	media-libs/libsamplerate
+	media-libs/libsdl2[haptic,joystick,sound]
+	media-libs/libsoundtouch:=
+	net-libs/libpcap
+	sys-libs/zlib
+	virtual/libudev:=
+	x11-libs/gdk-pixbuf:2
+	x11-libs/gtk+:3
+	x11-libs/libICE
+	x11-libs/libX11
+	x11-libs/libXext
+	x11-libs/libXrandr
+	x11-libs/wxGTK:${WX_GTK_VER}[X]
+	pulseaudio? ( media-sound/pulseaudio )
 "
-DEPEND="${RDEPEND}
-	dev-cpp/pngpp
-	dev-cpp/sparsehash
-"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto"
+BDEPEND="test? ( dev-cpp/gtest )"
+
+FILECAPS=(
+	-m 755 "CAP_NET_RAW+eip CAP_NET_ADMIN+eip" usr/bin/pcsx2
+)
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary && $(tc-getCC) == *gcc* ]]; then
 		# -mxsave flag is needed when GCC >= 8.2 is used
 		# https://bugs.gentoo.org/685156
-		if [[ $(gcc-major-version) -gt 8 || $(gcc-major-version) == 8 && $(gcc-minor-version) -ge 2 ]]; then
-			append-flags -mxsave
-		fi
+		append-flags -mxsave
 	fi
 }
 
+src_prepare() {
+	cmake_src_prepare
+
+	# unbundle, use sed over patch for less chances to break -9999
+	# note: gentoo's zstd lacks a cmake module which upstream tries to use
+	sed -e '/add_subdir.*cubeb/c\find_package(cubeb REQUIRED)' \
+		-e '/add_subdir.*libchdr/c\pkg_check_modules(chdr REQUIRED IMPORTED_TARGET libchdr)\nalias_library(chdr-static PkgConfig::chdr)' \
+		-e '/system_library.*zstd/,/endif()/c\pkg_check_modules(zstd REQUIRED IMPORTED_TARGET libzstd)\nalias_library(Zstd::Zstd PkgConfig::zstd)' \
+		-e '/compile_options(\(cubeb\|chdr-static\|speex\)/d' \
+		-i cmake/SearchForStuff.cmake || die
+
+	# pulseaudio is only used for usb-mic, not audio output
+	use pulseaudio || > cmake/FindPulseAudio.cmake || die
+}
+
 src_configure() {
-	multilib_toolchain_setup x86
 	# Build with ld.gold fails
 	# https://github.com/PCSX2/pcsx2/issues/1671
 	tc-ld-disable-gold
@@ -58,42 +92,21 @@ src_configure() {
 	# pcsx2 build scripts will force CMAKE_BUILD_TYPE=Devel
 	# if it something other than "Devel|Debug|Release"
 	local CMAKE_BUILD_TYPE="Release"
-
-	if use amd64; then
-		# Passing correct CMAKE_TOOLCHAIN_FILE for amd64
-		# https://github.com/PCSX2/pcsx2/pull/422
-		local MYCMAKEARGS=(-DCMAKE_TOOLCHAIN_FILE=cmake/linux-compiler-i386-multilib.cmake)
-	fi
-
 	local mycmakeargs=(
 		-DARCH_FLAG=
+		-DBUILD_SHARED_LIBS=FALSE
 		-DDISABLE_BUILD_DATE=TRUE
 		-DDISABLE_PCSX2_WRAPPER=TRUE
-		-DEXTRA_PLUGINS=FALSE
-		-DOPTIMIZATION_FLAG=
+		-DDISABLE_SETCAP=TRUE
+		-DENABLE_TESTS=$(usex test)
 		-DPACKAGE_MODE=TRUE
-		-DXDG_STD=TRUE
-
-		-DCMAKE_LIBRARY_PATH="/usr/$(get_libdir)/${PN}"
-		-DDOC_DIR=/usr/share/doc/"${PF}"
-		-DEGL_API=FALSE
-		-DGTK3_API=TRUE
-		-DOPENCL_API=FALSE
-		-DPLUGIN_DIR="/usr/$(get_libdir)/${PN}"
-		# wxGTK must be built against same sdl version
-		-DSDL2_API=TRUE
+		-DQT_BUILD=FALSE # TODO when qt6 is in tree
+		-DSDL2_API=TRUE # conditionally needed if wxGTK[sdl], cmake/ApiValidation.cmake
+		-DUSE_SYSTEM_LIBS=TRUE
 		-DUSE_VTUNE=FALSE
+		-DXDG_STD=TRUE
 	)
 
-	WX_GTK_VER="3.0-gtk3" setup-wxwidgets
+	setup-wxwidgets
 	cmake_src_configure
-}
-
-src_install() {
-	# Upstream issues:
-	#  https://github.com/PCSX2/pcsx2/issues/417
-	#  https://github.com/PCSX2/pcsx2/issues/3077
-	QA_EXECSTACK="usr/bin/PCSX2"
-	QA_TEXTRELS="usr/$(get_libdir)/pcsx2/* usr/bin/PCSX2"
-	cmake_src_install
 }

@@ -2,9 +2,8 @@ From: Nathan Phillip Brink <binki@gentoo.org>
 Subject: Respect CCASFLAGS (which often defaults to CFLAGS). Fixes
 	compilation for portage-multilib users.
 
-diff -r c090ed619e90 configure.ac
---- a/configure.ac	Sun Jun 26 16:00:09 2011 -0400
-+++ b/configure.ac	Sun Jun 26 20:52:01 2011 -0400
+--- a/configure.ac
++++ b/configure.ac
 @@ -47,14 +47,12 @@
  AC_CANONICAL_TARGET
  AM_MAINTAINER_MODE
@@ -49,9 +48,8 @@ diff -r c090ed619e90 configure.ac
  AC_CONFIG_FILES([Makefile examples/Makefile include/Makefile include/ucl/Makefile src/Makefile])
  AC_OUTPUT
  
-diff -r c090ed619e90 src/Makefile.am
---- a/src/Makefile.am	Sun Jun 26 16:00:09 2011 -0400
-+++ b/src/Makefile.am	Sun Jun 26 20:52:01 2011 -0400
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -4,11 +4,10 @@
  #
  

@@ -1,44 +1,50 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-22)
-# app-office/openoffice-bin is being removed.
-office_implementation_openoffice
-
-# Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
-# consolekit is masked for removal
-consolekit
 
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
+
+# Matt Turner <mattst88@gentoo.org> (2022-04-16)
+# dev-util/sysprof not keyworded on most arches yet
+sysprof
+
+# Brian Evans <grknight@gentoo.org> (2022-01-21)
+# PHP 7.3 is end-of-life
+# Please upgrade to a newer slot
+php_targets_php7-3
+php7-3
+
+# Sam James <sam@gentoo.org> (2022-01-12)
+# PCH has proven itself to be unreliable and lead to spurious build
+# failures. Masking so users aren't exposed to such failures without opting-in.
+# Failures aren't always reproducible and implementations are often fragile.
+# Please speak to <toolchain@gentoo.org> and/or <qa@gentoo.org> before dropping.
+# See e.g. bug #753323, bug #822690.
+pch
+
+# Hans de Graaff <graaff@gentoo.org> (2021-07-09)
+# Mask Ruby 2.5 as EOL
+ruby_targets_ruby25
+
+# Brian Evans <grknight@gentoo.org> (2021-01-07)
+# PHP 7.2 is security vulnerable and end-of-life
+# Please upgrade to a newer slot
+php_targets_php7-2
+
+# Alexis Ballier <aballier@gentoo.org> (2020-10-13)
+# Nothing depends on those ROS messages. dev-ros/geneus
+# is half broken in our setup where it looks for packages
+# on the filesystem and causes build failures.
+# See e.g. bug #741076
+ros_messages_eus
 
 # Hans de Graaff <graaff@gentoo.org> (2020-06-13)
 # Mask Ruby 2.4 as EOL
 ruby_targets_ruby24
 
-# Matt Turner <mattst88@gentoo.org> (2020-03-25)
-# media-libs/libav is masked for removal
-libav
-
-# Brian Evans <grknight@gentoo.org> (2019-12-19)
-# PHP 7.1 is end of life and has security issues Bug 703326
-php_targets_php7-1
-
-# Brian Evans <grknight@gentoo.org> (2019-10-01)
-# Mask PHP 5.6 target for EOL
-php_targets_php5-6
-
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # app-office/texmacs is package.mask'd. Bug #436400
 texmacs
-
-# Hans de Graaff <graaff@gentoo.org> (2019-04-07)
-# Mask Ruby 2.3 as EOL
-ruby_targets_ruby23
-
-# Brian Evans <grknight@gentoo.org> (2019-01-11)
-# Mask PHP 7.0 target as EOL
-php_targets_php7-0
 
 # Matt Turner <mattst88@gentoo.org> (2018-11-11)
 # d3d9 only works on amd64/x86.
@@ -60,35 +66,19 @@ packagekit
 # Don't put hardened in here.
 # TODO: move multilib into arch/base once inherit order is fixed
 selinux
-uclibc
 multilib
 
 # Mask ELIBC, KERNEL, and USERLAND flags that apply to specific profiles.
 userland_BSD
 
-elibc_AIX
 elibc_bionic
 elibc_Cygwin
 elibc_Darwin
-elibc_DragonFly
-elibc_FreeBSD
-elibc_HPUX
-elibc_Interix
-elibc_mintlib
 elibc_musl
-elibc_NetBSD
-elibc_OpenBSD
 elibc_SunOS
-elibc_uclibc
 elibc_Winnt
 
-kernel_AIX
 kernel_Darwin
-kernel_FreeBSD
-kernel_freemint
-kernel_HPUX
-kernel_NetBSD
-kernel_OpenBSD
 kernel_SunOS
 kernel_Winnt
 
@@ -103,10 +93,6 @@ prefix
 prefix-guest
 prefix-stack
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (2010-10-19)
-# masking flags that only apply to FreeBSD
-kqueue
-
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-18)
 # Prelude is being masked for removal
 prelude
@@ -114,11 +100,3 @@ prelude
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-27)
 # netlink is a Linux-specific interface
 netlink
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2019-09-18)
-# mask removed ABI_RISCV flags so they do not trigger rebuild
-# in emerge
-abi_riscv_lp64
-abi_riscv_lp64d
-abi_riscv_ilp32
-abi_riscv_ilp32d

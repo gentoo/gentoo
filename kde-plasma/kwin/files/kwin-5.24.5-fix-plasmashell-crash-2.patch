@@ -1,0 +1,35 @@
+From a8477c1cf7acbf3358c85e53b236150dd43b4640 Mon Sep 17 00:00:00 2001
+From: Xaver Hugl <xaver.hugl@gmail.com>
+Date: Thu, 14 Apr 2022 18:48:56 +0200
+Subject: [PATCH] toplevel: set valid output in the constructor
+
+This makes it less easy to cause crashes and fixes some segfaults.
+
+BUG: 452433
+BUG: 448064
+
+(cherry picked from commit e48a5c0535f01dc380449ba8481c869ff23e5558)
+
+Tested-by: Merge Service <https://invent.kde.org/plasma/kwin/-/merge_requests/2448>
+Part-of: <https://invent.kde.org/plasma/kwin/-/merge_requests/2448>
+---
+ src/toplevel.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/toplevel.cpp b/src/toplevel.cpp
+index ff216835c4..5d3d7a5dde 100644
+--- a/src/toplevel.cpp
++++ b/src/toplevel.cpp
+@@ -34,7 +34,8 @@ namespace KWin
+ {
+ 
+ Toplevel::Toplevel()
+-    : m_visual(XCB_NONE)
++    : m_output(workspace()->activeOutput())
++    , m_visual(XCB_NONE)
+     , bit_depth(24)
+     , info(nullptr)
+     , ready_for_painting(false)
+-- 
+GitLab
+

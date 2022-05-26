@@ -1,4 +1,4 @@
-# Copyright 2004-2018 Gentoo Authors
+# Copyright 2004-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-utils-2.eclass
@@ -6,6 +6,7 @@
 # java@gentoo.org
 # @AUTHOR:
 # Thomas Matthijs <axxo@gentoo.org>, Karl Trygve Kalleberg <karltk@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: Base eclass for Java packages
 # @DESCRIPTION:
 # This eclass provides functionality which is used by java-pkg-2.eclass,
@@ -16,17 +17,20 @@
 # that have optional Java support. In addition you can inherit java-ant-2 for
 # Ant-based packages.
 
+case ${EAPI:-0} in
+	[5678]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ -z ${_JAVA_UTILS_2_ECLASS} ]] ; then
+_JAVA_UTILS_2_ECLASS=1
+
 # EAPI 7 has version functions built-in. Use eapi7-ver for all earlier eclasses.
 # Keep versionator inheritance in case consumers are using it implicitly.
-[[ ${EAPI} == [0123456] ]] && inherit eapi7-ver eutils multilib versionator
-
-IUSE="elibc_FreeBSD"
+[[ ${EAPI} == [56] ]] && inherit eapi7-ver eutils multilib versionator
 
 # Make sure we use java-config-2
 export WANT_JAVA_CONFIG="2"
-
-# Prefix variables are only available for EAPI>=3
-has "${EAPI:-0}" 0 1 2 && ED="${D}" EPREFIX= EROOT="${ROOT}"
 
 has test ${JAVA_PKG_IUSE} && RESTRICT+=" !test? ( test )"
 
@@ -39,22 +43,7 @@ has test ${JAVA_PKG_IUSE} && RESTRICT+=" !test? ( test )"
 JAVA_PKG_E_DEPEND=">=dev-java/java-config-2.2.0-r3"
 has source ${JAVA_PKG_IUSE} && JAVA_PKG_E_DEPEND="${JAVA_PKG_E_DEPEND} source? ( app-arch/zip )"
 
-# @ECLASS-VARIABLE: JAVA_PKG_WANT_BOOTCLASSPATH
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# The version of bootclasspath the package needs to work. Translates to a proper
-# dependency. The bootclasspath can then be obtained by java-ant_rewrite-bootclasspath
-if [[ -n "${JAVA_PKG_WANT_BOOTCLASSPATH}" ]]; then
-	if [[ "${JAVA_PKG_WANT_BOOTCLASSPATH}" == "1.5" ]]; then
-		JAVA_PKG_E_DEPEND="${JAVA_PKG_E_DEPEND} >=dev-java/gnu-classpath-0.98-r1:0.98"
-	else
-		eerror "Unknown value of JAVA_PKG_WANT_BOOTCLASSPATH"
-		# since die in global scope doesn't work, this will make repoman fail
-		JAVA_PKG_E_DEPEND="${JAVA_PKG_E_DEPEND} BAD_JAVA_PKG_WANT_BOOTCLASSPATH"
-	fi
-fi
-
-# @ECLASS-VARIABLE: JAVA_PKG_ALLOW_VM_CHANGE
+# @ECLASS_VARIABLE: JAVA_PKG_ALLOW_VM_CHANGE
 # @DESCRIPTION:
 # Allow this eclass to change the active VM?
 # If your system VM isn't sufficient for the package, the build will fail
@@ -64,7 +53,7 @@ fi
 # should not be used in the final ebuild.
 JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 
-# @ECLASS-VARIABLE: JAVA_PKG_FORCE_VM
+# @ECLASS_VARIABLE: JAVA_PKG_FORCE_VM
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Explicitly set a particular VM to use. If its not valid, it'll fall back to
@@ -72,12 +61,12 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 #
 # Should only be used for testing and debugging.
 #
-# Example: use sun-jdk-1.5 to emerge foo:
+# Example: use openjdk-11 to emerge foo:
 # @CODE
-#	JAVA_PKG_FORCE_VM=sun-jdk-1.5 emerge foo
+#	JAVA_PKG_FORCE_VM=openjdk-11 emerge foo
 # @CODE
 
-# @ECLASS-VARIABLE: JAVA_PKG_WANT_BUILD_VM
+# @ECLASS_VARIABLE: JAVA_PKG_WANT_BUILD_VM
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A list of VM handles to choose a build VM from. If the list contains the
@@ -89,7 +78,7 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 # covered by DEPEND.
 # Requires JAVA_PKG_WANT_SOURCE and JAVA_PKG_WANT_TARGET to be set as well.
 
-# @ECLASS-VARIABLE: JAVA_PKG_WANT_SOURCE
+# @ECLASS_VARIABLE: JAVA_PKG_WANT_SOURCE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Specify a non-standard Java source version for compilation (via javac -source
@@ -99,12 +88,12 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 #
 # Should generally only be used for testing and debugging.
 #
-# Use 1.4 source to emerge baz
+# Use 1.8 source to emerge baz
 # @CODE
-#	JAVA_PKG_WANT_SOURCE=1.4 emerge baz
+#	JAVA_PKG_WANT_SOURCE=1.8 emerge baz
 # @CODE
 
-# @ECLASS-VARIABLE: JAVA_PKG_WANT_TARGET
+# @ECLASS_VARIABLE: JAVA_PKG_WANT_TARGET
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Same as JAVA_PKG_WANT_SOURCE (see above) but for javac -target parameter,
@@ -112,14 +101,44 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 # Normally this is determined from the jre/jdk version specified in RDEPEND.
 # See java-pkg_get-target function below.
 #
-# Should generallyonly be used for testing and debugging.
+# Should generally only be used for testing and debugging.
 #
-# emerge bar to be compatible with 1.3
+# emerge bar to be compatible with 1.8
 # @CODE
-#	JAVA_PKG_WANT_TARGET=1.3 emerge bar
+#	JAVA_PKG_WANT_TARGET=1.8 emerge bar
 # @CODE
 
-# @ECLASS-VARIABLE: JAVA_PKG_DEBUG
+# @ECLASS_VARIABLE: JAVA_TEST_EXTRA_ARGS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Array of extra arguments that should be passed to java command when running tests.
+# It is useful when you need to pass a value to a Java program that uses
+# System.getProperty(). If it uses System.getenv(), use `export var=value` instead.
+#
+# It is used only when running tests.
+#
+# @CODE
+#	JAVA_TEST_EXTRA_ARGS=(
+#		-Dsome.var=x
+#		"-Dother.var=\"y z\""
+#	)
+# @CODE
+
+# @ECLASS-VARIABLE: JAVA_TEST_RUNNER_EXTRA_ARGS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Array of extra arguments that should be passed to the test runner when running tests.
+# It is useful when you need to pass an extra argument to the test runner.
+#
+# It is used only when running tests.
+#
+# @CODE
+#	JAVA_TEST_RUNNER_EXTRA_ARGS=(
+#		-verbose 3
+#	)
+# @CODE
+
+# @ECLASS_VARIABLE: JAVA_PKG_DEBUG
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A variable to be set with "yes" or "y", or ANY string of length non equal to
@@ -129,7 +148,7 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 #	JAVA_PKG_DEBUG="yes"
 # @CODE
 
-# @ECLASS-VARIABLE: JAVA_RM_FILES
+# @ECLASS_VARIABLE: JAVA_RM_FILES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array containing a list of files to remove. If defined, this array will be
@@ -157,7 +176,7 @@ JAVA_PKG_COMPILER_DIR=${JAVA_PKG_COMPILER_DIR:="/usr/share/java-config-2/compile
 # Can be overloaded, but it should be overloaded only for local testing.
 JAVA_PKG_COMPILERS_CONF=${JAVA_PKG_COMPILERS_CONF:="/etc/java-config-2/build/compilers.conf"}
 
-# @ECLASS-VARIABLE: JAVA_PKG_FORCE_COMPILER
+# @ECLASS_VARIABLE: JAVA_PKG_FORCE_COMPILER
 # @INTERNAL
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -171,7 +190,7 @@ JAVA_PKG_COMPILERS_CONF=${JAVA_PKG_COMPILERS_CONF:="/etc/java-config-2/build/com
 #	JAVA_PKG_FORCE_COMPILER="jikes javac"
 # @CODE
 
-# @ECLASS-VARIABLE: JAVA_PKG_FORCE_ANT_TASKS
+# @ECLASS_VARIABLE: JAVA_PKG_FORCE_ANT_TASKS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An $IFS separated list of ant tasks. Can be set in environment before calling
@@ -351,7 +370,7 @@ java-pkg_dojar() {
 					insinto "${JAVA_PKG_JARDEST}"
 					doins "${jar}"
 				) || die "failed to install ${jar}"
-				java-pkg_append_ JAVA_PKG_CLASSPATH "${EPREFIX}/${JAVA_PKG_JARDEST}/${jar_basename}"
+				java-pkg_append_ JAVA_PKG_CLASSPATH "${EPREFIX}${JAVA_PKG_JARDEST}/${jar_basename}"
 				debug-print "installed ${jar} to ${ED}${JAVA_PKG_JARDEST}"
 			# make a symlink to the original jar if it's symlink
 			else
@@ -975,10 +994,6 @@ java-pkg_jar-from() {
 
 	[[ -z ${target_pkg} ]] && die "Must specify a package"
 
-	if [[ "${EAPI}" == "1" ]]; then
-		target_pkg="${target_pkg//:/-}"
-	fi
-
 	# default destjar to the target jar
 	[[ -z "${destjar}" ]] && destjar="${target_jar}"
 
@@ -1114,10 +1129,6 @@ java-pkg_getjars() {
 
 	local pkgs="${1}"
 
-	if [[ "${EAPI}" == "1" ]]; then
-		pkgs="${pkgs//:/-}"
-	fi
-
 	jars="$(java-config ${deep} --classpath=${pkgs})"
 	[[ $? != 0 ]] && die "java-config --classpath=${pkgs} failed"
 	debug-print "${pkgs}:${jars}"
@@ -1182,10 +1193,6 @@ java-pkg_getjar() {
 	[[ ${#} -ne 2 ]] && die "${FUNCNAME} takes only two arguments besides --*"
 
 	local pkg="${1}" target_jar="${2}" jar
-
-	if [[ "${EAPI}" == "1" ]]; then
-		pkg="${pkg//:/-}"
-	fi
 
 	[[ -z ${pkg} ]] && die "Must specify package to get a jar from"
 	[[ -z ${target_jar} ]] && die "Must specify jar to get"
@@ -1272,10 +1279,6 @@ java-pkg_register-dependency() {
 
 	[[ -z "${pkgs}" ]] && die "${FUNCNAME} called with no package(s) specified"
 
-	if [[ "${EAPI}" == "1" ]]; then
-		pkgs="${pkgs//:/-}"
-	fi
-
 	if [[ -z "${jar}" ]]; then
 		for pkg in ${pkgs//,/ }; do
 			java-pkg_ensure-dep runtime "${pkg}"
@@ -1329,10 +1332,6 @@ java-pkg_register-optional-dependency() {
 
 	[[ -z "${pkgs}" ]] && die "${FUNCNAME} called with no package(s) specified"
 
-	if [[ "${EAPI}" == "1" ]]; then
-		pkgs="${pkgs//:/-}"
-	fi
-
 	if [[ -z "${jar}" ]]; then
 		for pkg in ${pkgs//,/ }; do
 			java-pkg_record-jar_ --optional "${pkg}"
@@ -1373,7 +1372,7 @@ java-pkg_register-environment-variable() {
 # @DESCRIPTION:
 # Returns classpath of a given bootclasspath-providing package version.
 #
-# @param $1 - the version of bootclasspath (e.g. 1.5), 'auto' for bootclasspath
+# @param $1 - the version of bootclasspath (e.g. 1.8), 'auto' for bootclasspath
 #             of the current JDK
 java-pkg_get-bootclasspath() {
 	local version="${1}"
@@ -1382,9 +1381,6 @@ java-pkg_get-bootclasspath() {
 	case "${version}" in
 		auto)
 			bcp="$(java-config -g BOOTCLASSPATH)"
-			;;
-		1.5)
-			bcp="$(java-pkg_getjars --build-only gnu-classpath-0.98)"
 			;;
 		*)
 			eerror "unknown parameter of java-pkg_get-bootclasspath"
@@ -1484,7 +1480,6 @@ java-pkg_ensure-vm-version-sufficient() {
 
 # @FUNCTION: java-pkg_is-vm-version-sufficient
 # @INTERNAL
-# @DESCRIPTION:
 # @RETURN: zero - VM is sufficient; non-zero - VM is not sufficient
 java-pkg_is-vm-version-sufficient() {
 	debug-print-function ${FUNCNAME} $*
@@ -1564,8 +1559,7 @@ java-pkg_ensure-vm-version-ge() {
 # Parameters:
 # $@ - VM version to compare current VM to
 # @CODE
-# @RETURN: zero - current VM version is greater than checked version;
-# 	non-zero - current VM version is not greater than checked version
+# @RETURN: zero - current VM version is greater than checked version; non-zero - current VM version is not greater than checked version
 java-pkg_is-vm-version-ge() {
 	debug-print-function ${FUNCNAME} $*
 
@@ -1689,11 +1683,8 @@ java-pkg_javac-args() {
 java-pkg_get-jni-cflags() {
 	local flags="-I${JAVA_HOME}/include"
 
-	local platform="linux"
-	use elibc_FreeBSD && platform="freebsd"
-
 	# TODO do a check that the directories are valid
-	flags="${flags} -I${JAVA_HOME}/include/${platform}"
+	flags="${flags} -I${JAVA_HOME}/include/linux"
 
 	echo ${flags}
 }
@@ -1812,8 +1803,18 @@ ejunit_() {
 	if [[ "${junit}" == "junit-4" ]] ; then
 		runner=org.junit.runner.JUnitCore
 	fi
-	debug-print "Calling: java -cp \"${cp}\" -Djava.io.tmpdir=\"${T}\" -Djava.awt.headless=true ${runner} ${@}"
-	java -cp "${cp}" -Djava.io.tmpdir="${T}/" -Djava.awt.headless=true ${runner} "${@}" || die "Running junit failed"
+
+	local args=(
+		-cp ${cp}
+		-Djava.io.tmpdir="${T}"
+		-Djava.awt.headless=true
+		${JAVA_TEST_EXTRA_ARGS[@]}
+		${runner}
+		${JAVA_TEST_RUNNER_EXTRA_ARGS[@]}
+		${@}
+	)
+	debug-print "Calling: java ${args[@]}"
+	java "${args[@]}" || die "Running junit failed"
 }
 
 # @FUNCTION: ejunit
@@ -1891,12 +1892,21 @@ etestng() {
 		tests+="${test},"
 	done
 
-	debug-print "java -cp \"${cp}\" -Djava.io.tmpdir=\"${T}\""\
-		"-Djava.awt.headless=true ${runner}"\
-		"-usedefaultlisteners false -testclass ${tests}"
-	java -cp "${cp}" -Djava.io.tmpdir=\"${T}\" -Djava.awt.headless=true\
-		${runner} -usedefaultlisteners false -testclass ${tests}\
-		|| die "Running TestNG failed."
+	local args=(
+		-cp ${cp}
+		-Djava.io.tmpdir="${T}"
+		-Djava.awt.headless=true
+		${JAVA_TEST_EXTRA_ARGS[@]}
+		${runner}
+		${JAVA_TEST_RUNNER_EXTRA_ARGS[@]}
+	)
+
+	[[ ! "${JAVA_TEST_RUNNER_EXTRA_ARGS[@]}" =~ "-usedefaultlisteners" ]] && args+=( -usedefaultlisteners false )
+
+	args+=( -testclass ${tests} )
+
+	debug-print "java ${args[@]}"
+	java ${args[@]} || die "Running TestNG failed."
 }
 
 # @FUNCTION: java-utils-2_src_prepare
@@ -1905,7 +1915,7 @@ etestng() {
 # Don't call directly, but via java-pkg-2_src_prepare!
 java-utils-2_src_prepare() {
 	case ${EAPI:-0} in
-		[0-5])
+		5)
 			java-pkg_func-exists java_prepare && java_prepare ;;
 		*)
 			java-pkg_func-exists java_prepare &&
@@ -2104,8 +2114,9 @@ ejavac() {
 		einfo "${compiler_executable} ${javac_args} ${@}"
 	fi
 
-	ebegin "Compiling"
-	${compiler_executable} ${javac_args} "${@}" || die "ejavac failed"
+	local args=( ${compiler_executable} ${javac_args} "${@}" )
+	echo "${args[@]}" >&2
+	"${args[@]}" || die "ejavac failed"
 }
 
 # @FUNCTION: ejavadoc
@@ -2130,8 +2141,9 @@ ejavadoc() {
 		einfo "javadoc ${javadoc_args} ${@}"
 	fi
 
-	ebegin "Generating JavaDoc"
-	javadoc ${javadoc_args} "${@}" || die "ejavadoc failed"
+	local args=( javadoc ${javadoc_args} "${@}" )
+	echo "${args[@]}" >&2
+	"${args[@]}" || die "ejavadoc failed"
 }
 
 # @FUNCTION: java-pkg_filter-compiler
@@ -2192,9 +2204,6 @@ java-pkg_init() {
 
 	# Don't set up build environment if installing from binary. #206024 #258423
 	[[ "${MERGE_TYPE}" == "binary" ]] && return
-	# Also try Portage's nonstandard EMERGE_FROM for old EAPIs, if it doesn't
-	# work nothing is lost.
-	has ${EAPI:-0} 0 1 2 3 && [[ "${EMERGE_FROM}" == "binary" ]] && return
 
 	unset JAVAC
 	unset JAVA_HOME
@@ -2202,8 +2211,7 @@ java-pkg_init() {
 	java-config --help >/dev/null || {
 		eerror ""
 		eerror "Can't run java-config --help"
-		eerror "Have you upgraded python recently but haven't"
-		eerror "run python-updater yet?"
+		eerror "Have you upgraded Python recently but not completed a world upgrade yet?"
 		die "Can't run java-config --help"
 	}
 
@@ -2554,20 +2562,9 @@ java-pkg_setup-vm() {
 	debug-print-function ${FUNCNAME} $*
 
 	local vendor="$(java-pkg_get-vm-vendor)"
-	if [[ "${vendor}" == "sun" ]] && java-pkg_is-vm-version-ge "1.5" ; then
-		addpredict "/dev/random"
-	elif [[ "${vendor}" == "ibm" ]]; then
-		addpredict "/proc/self/maps"
-		addpredict "/proc/cpuinfo"
-		addpredict "/proc/self/coredump_filter"
-	elif [[ "${vendor}" == "oracle" ]]; then
+	if [[ "${vendor}" == icedtea* ]] && java-pkg_is-vm-version-ge "1.8" ; then
 		addpredict "/dev/random"
 		addpredict "/proc/self/coredump_filter"
-	elif [[ "${vendor}" == icedtea* ]] && java-pkg_is-vm-version-ge "1.7" ; then
-		addpredict "/dev/random"
-		addpredict "/proc/self/coredump_filter"
-	elif [[ "${vendor}" == "jrockit" ]]; then
-		addpredict "/proc/cpuinfo"
 	fi
 }
 
@@ -2592,14 +2589,14 @@ java-pkg_needs-vm() {
 
 # @FUNCTION: java-pkg_get-current-vm
 # @INTERNAL
-# @RETURN - The current VM being used
+# @RETURN: The current VM being used
 java-pkg_get-current-vm() {
 	java-config -f
 }
 
 # @FUNCTION: java-pkg_get-vm-vendor
 # @INTERNAL
-# @RETURN - The vendor of the current VM
+# @RETURN: The vendor of the current VM
 java-pkg_get-vm-vendor() {
 	debug-print-function ${FUNCNAME} $*
 
@@ -2610,7 +2607,7 @@ java-pkg_get-vm-vendor() {
 
 # @FUNCTION: java-pkg_get-vm-version
 # @INTERNAL
-# @RETURN - The version of the current VM
+# @RETURN: The version of the current VM
 java-pkg_get-vm-version() {
 	debug-print-function ${FUNCNAME} $*
 
@@ -2619,12 +2616,12 @@ java-pkg_get-vm-version() {
 
 # @FUNCTION: java-pkg_build-vm-from-handle
 # @INTERNAL
+# @RETURN: VM handle of an available JDK
 # @DESCRIPTION:
 # Selects a build vm from a list of vm handles. First checks for the system-vm
 # beeing usable, then steps through the listed handles till a suitable vm is
 # found.
 #
-# @RETURN - VM handle of an available JDK
 java-pkg_build-vm-from-handle() {
 	debug-print-function ${FUNCNAME} "$*"
 
@@ -2957,3 +2954,5 @@ java-pkg_gen-cp() {
 		fi
 	done
 }
+
+fi

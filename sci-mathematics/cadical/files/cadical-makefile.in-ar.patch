@@ -1,0 +1,12 @@
+index 8fd957f..cdad96e 100644
+--- a/makefile.in
++++ b/makefile.in
+@@ -47,7 +48,7 @@ mobical: mobical.o libcadical.a makefile $(LIBS)
+ 	$(COMPILE) -o $@ $< -L. -lcadical
+ 
+ libcadical.a: $(OBJ) makefile
+-	ar rc $@ $(OBJ)
++	${AR} rc $@ $(OBJ)
+ 
+ #--------------------------------------------------------------------------#
+ 

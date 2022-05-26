@@ -1,10 +1,8 @@
 More aliases for ARM.
 Do not force CFLAGS for ARM.
 
-Index: source/CMakeLists.txt
-===================================================================
---- source.orig/CMakeLists.txt
-+++ source/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -40,7 +40,7 @@ SET(CMAKE_MODULE_PATH "${PROJECT_SOURCE_
  # System architecture detection
  string(TOLOWER "${CMAKE_SYSTEM_PROCESSOR}" SYSPROC)
@@ -40,3 +38,31 @@ Index: source/CMakeLists.txt
              endif()
          endif()
      endif()
+--- a/dynamicHDR10/CMakeLists.txt
++++ b/dynamicHDR10/CMakeLists.txt
+@@ -43,14 +43,14 @@ if(GCC)
+         endif()
+     endif()
+     if(ARM AND CROSS_COMPILE_ARM)
+-        set(ARM_ARGS -march=armv6 -mfloat-abi=soft -mfpu=vfp -marm -fPIC)
++        set(ARM_ARGS -fPIC)
+     elseif(ARM)
+         find_package(Neon)
+         if(CPU_HAS_NEON)
+-            set(ARM_ARGS -mcpu=native -mfloat-abi=hard -mfpu=neon -marm -fPIC)
++            set(ARM_ARGS -fPIC)
+             add_definitions(-DHAVE_NEON)
+         else()
+-            set(ARM_ARGS -mcpu=native -mfloat-abi=hard -mfpu=vfp -marm)
++            set(ARM_ARGS -fPIC)
+         endif()
+     endif()
+     add_definitions(${ARM_ARGS})
+@@ -150,4 +150,4 @@ set(BIN_INSTALL_DIR bin CACHE STRING "Install location of executables")
+ option(ENABLE_SHARED "Build shared library" OFF)
+ 
+ install(FILES hdr10plus.h DESTINATION include)
+-endif()
+\ No newline at end of file
++endif()
+

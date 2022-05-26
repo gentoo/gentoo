@@ -1,0 +1,133 @@
+Let's not bother trying to inline these -- the compiler is smart enough
+to do it if it wants to. They're not defined correctly right now if
+we wanted to keep them inline and this is far simpler.
+--- a/src/bbe.h
++++ b/src/bbe.h
+@@ -167,10 +167,10 @@ set_input_file(char *file);
+ extern void
+ init_buffer();
+ 
+-extern inline unsigned char  
++extern unsigned char
+ read_byte();
+ 
+-extern inline int 
++extern int
+ get_next_byte();
+ 
+ extern void
+@@ -179,16 +179,16 @@ mark_block_end();
+ extern int
+ find_block();
+ 
+-extern inline int
++extern int
+ last_byte();
+ 
+ extern void
+ write_buffer(unsigned char *buf,off_t length);
+ 
+-extern inline void
++extern void
+ put_byte(unsigned char byte);
+ 
+-extern inline void
++extern void
+ write_next_byte();
+  
+ extern void
+@@ -215,10 +215,10 @@ write_string(char *string);
+ extern char *
+ get_current_file(void);
+ 
+-extern inline unsigned char *
++extern unsigned char *
+ read_pos();
+ 
+-extern inline unsigned char *
++extern unsigned char *
+ block_end_pos();
+ 
+ extern char *
+--- a/src/buffer.c
++++ b/src/buffer.c
+@@ -191,21 +191,21 @@ read_input_stream()
+ }
+ 
+ /* reads byte from the buffer */
+-inline unsigned char  
++unsigned char
+ read_byte()
+ {
+     return *in_buffer.read_pos;
+ }
+ 
+ /* returns pointer to the read position */
+-inline unsigned char *
++unsigned char *
+ read_pos()
+ {
+     return in_buffer.read_pos;
+ }
+ 
+ /* return the block end pointer */
+-inline unsigned char *
++unsigned char *
+ block_end_pos()
+ {
+     return in_buffer.block_end;
+@@ -214,7 +214,7 @@ block_end_pos()
+ /* advances the read pointer, if buffer has reached low water, get more from stream to buffer */
+ /* returns false in case of end of stream */
+ 
+-inline int 
++int
+ get_next_byte()
+ {
+     if(in_buffer.read_pos >= in_buffer.low_pos) 
+@@ -335,14 +335,14 @@ mark_block_end()
+ }
+ 
+ /* returns true if current byte is last in block */
+-inline int
++int
+ last_byte()
+ {
+     return in_buffer.block_end == in_buffer.read_pos;
+ }
+ 
+ /* returns true if end of stream has been reached */
+-inline int
++int
+ end_of_stream()
+ {
+     if(in_buffer.stream_end != NULL && in_buffer.stream_end == in_buffer.read_pos) 
+@@ -487,7 +487,7 @@ write_buffer(unsigned char *buf,off_t length)
+ }
+ 
+ /* put_byte, put one byte att current write position */
+-inline void
++void
+ put_byte(unsigned char byte)
+ {
+     *out_buffer.write_pos = byte;
+@@ -495,7 +495,7 @@ put_byte(unsigned char byte)
+ 
+ /* next_byte, advance the write pointer by one */
+ /* if buffer full write it to disk */
+-inline void
++void
+ write_next_byte()
+ {
+     out_buffer.write_pos++;
+--- a/src/execute.c
++++ b/src/execute.c
+@@ -677,7 +677,7 @@ close_commands(struct commands *commands)
+ }
+ 
+ /* reset the rpos counter for next block, in case block was shorter eg. delete count */
+-inline void
++void
+ reset_rpos(struct command_list *c)
+ {
+     while(c != NULL)

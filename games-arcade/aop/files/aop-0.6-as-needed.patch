@@ -1,9 +1,9 @@
---- a/Makefile.old	2009-01-30 17:00:58.000000000 +0100
-+++ b/Makefile	2009-01-30 17:01:15.000000000 +0100
+--- a/Makefile
++++ b/Makefile
 @@ -1,5 +1,5 @@
  
 -LDFLAGS = -lncurses
-+LDLIBS := $(shell pkg-config ncurses --libs)
++LDLIBS := $(shell ${PKG_CONFIG} ncurses --libs)
  
  aop: aop.c
  

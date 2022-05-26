@@ -1,6 +1,6 @@
-diff -up PyPAM-0.5.0/PAMmodule.c.retval PyPAM-0.5.0/PAMmodule.c
---- PyPAM-0.5.0/PAMmodule.c.retval	2012-05-04 21:47:51.000000000 +0200
-+++ PyPAM-0.5.0/PAMmodule.c	2012-05-07 09:42:27.690963206 +0200
+diff -up a/PAMmodule.c b/PAMmodule.c
+--- a/PAMmodule.c
++++ b/PAMmodule.c
 @@ -248,7 +248,7 @@ static PyObject * PyPAM_setcred(PyObject
      result = pam_setcred(_self->pamh, flags);
      

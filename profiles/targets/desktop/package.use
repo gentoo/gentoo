@@ -1,5 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-04-18)
+# Avoid a circular dependency, bug 764623
+dev-lang/python -bluetooth
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-12-18)
+# Required by media-gfx/digikam
+media-gfx/exiv2 xmp
+
+# Marek Szuba <marecki@gentoo.org> (2020-12-24)
+# Required by qt5
+media-gfx/gmic fftw
 
 # Lars Wendler <polynomial-c@gentoo.org> (2020-08-06)
 # USE="qt5" and USE="libnotify" are mutually exclusive in this package
@@ -18,18 +30,9 @@ net-fs/samba client
 # Required by app-office/libreoffice
 dev-libs/xmlsec nss
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-06-09)
-# Enable sensible defaults for desktop users
-dev-qt/qtwebkit:5 printsupport
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-11-30)
 # Not required, but makes life easier with Qt; bug #457934
 app-arch/unzip natspec
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-11-30)
-# Required by dev-qt/qtcore
-dev-libs/libpcre pcre16
-dev-libs/libpcre2 pcre16
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-11-30)
 # Required by kde-frameworks/kwayland
@@ -55,7 +58,11 @@ dev-lang/php -exif -truetype
 # Enable luajit for OSC and youtube-dl support by default.
 # Override default +sdl from desktop profile and disable sdl outputs.
 # These outputs are for systems without a proper audio/video support.
-media-video/mpv lua luajit -sdl
+# NOTE: Needs syncing to negate profile defaults if we decide
+# to keep this up.
+media-video/mpv lua -sdl
+media-video/mpv -lua_single_target_lua5-1
+media-video/mpv lua_single_target_luajit
 
 # Mike Gilbert <floppym@gentoo.org> (2017-01-04)
 # Needed by x11-misc/xdg-utils.
@@ -65,26 +72,16 @@ app-text/xmlto text
 # Enable sensible defaults for desktop users (bug #540046)
 dev-python/PyQt5 gui multimedia network printsupport widgets
 
-# Samuli Suominen <ssuominen@gentoo.org> (2014-07-24)
-# Because targets/desktop/make.defaults has USE="bluetooth" but net-libs/libpcap doesn't
-# support BlueZ 5.x, disable USE="bluetooth" by default to avoid conflicting packages:
-net-libs/libpcap -bluetooth
-
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2014-05-08)
 # Enable x11-libs/libxcb[xkb] as it is needed by x11-libs/libxkbcommon[X]
 # and the X flag is enabled by default in the desktop profile
 x11-libs/libxcb xkb
-
-# Samuli Suominen <ssuominen@gentoo.org> (2011-09-27)
-# Required by mozilla browsers wrt #372419
-media-libs/libpng apng
 
 # Samuli Suominen <ssuominen@gentoo.org> (2010-12-19)
 # gudev, required by freedesktop.org udev helpers like udisks and upower
 # introspection, exception, enabled from here instead of ebuild to skip extra deps for a system package
 dev-libs/libgudev introspection
 sys-fs/eudev introspection
-virtual/libgudev introspection
 
 # Samuli Suominen <ssuominen@gentoo.org> (2010-12-19)
 # Support for desktop file icons

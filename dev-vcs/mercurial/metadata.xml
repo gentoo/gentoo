@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>cedk@gentoo.org</email>
@@ -8,6 +8,7 @@
 		<flag name="chg">Support Mercurial command server client</flag>
 		<flag name="gpg">Support signing with GnuPG.</flag>
 		<flag name="tk">Install dev-lang/tk for hgk script.</flag>
+		<flag name="rust">Use Rust extensions.</flag>
 	</use>
 	<upstream>
 		<remote-id type="pypi">mercurial</remote-id>

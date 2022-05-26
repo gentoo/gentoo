@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
@@ -11,4 +11,9 @@
 	<longdescription lang="en">
 			This module allows you to get the public suffix of a domain name using the Public Suffix List from http://publicsuffix.org
 	</longdescription>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">publicsuffix</remote-id>
+		<remote-id type="github">nexB/python-publicsuffix2</remote-id>
+	</upstream>
 </pkgmetadata>

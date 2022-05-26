@@ -1,16 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ecm.eclass
 # @MAINTAINER:
 # kde@gentoo.org
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
+# @PROVIDES: cmake virtualx
 # @BLURB: Support eclass for packages that use KDE Frameworks with ECM.
 # @DESCRIPTION:
 # This eclass is intended to streamline the creation of ebuilds for packages
 # that use cmake and KDE Frameworks' extra-cmake-modules, thereby following
 # some of their packaging conventions. It is primarily intended for the three
-# upstream release groups (Frameworks, Plasma, Applications) but also for any
+# upstream release groups (Frameworks, Plasma, Gear) but also for any
 # other package that follows similar conventions.
 #
 # This eclass unconditionally inherits cmake.eclass and all its public
@@ -19,25 +20,25 @@
 #
 # This eclass's phase functions are not intended to be mixed and matched, so if
 # any phase functions are overridden the version here should also be called.
-#
-# Porting from kde5.class
-# - Convert all add_*_dep dependency functions to regular dependencies
-# - Manually set LICENSE
-# - Manually set SLOT
-# - Rename vars and function names as needed, see kde5.eclass PORTING comments
-# - Instead of FRAMEWORKS_MINIMAL, define KFMIN in ebuilds and use it for deps
+
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI=${EAPI:-0} is not supported" ;;
+esac
 
 if [[ -z ${_ECM_ECLASS} ]]; then
 _ECM_ECLASS=1
 
-# @ECLASS-VARIABLE: VIRTUALX_REQUIRED
+# @ECLASS_VARIABLE: VIRTUALX_REQUIRED
 # @DESCRIPTION:
 # For proper description see virtualx.eclass manpage.
 # Here we redefine default value to be manual, if your package needs virtualx
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : ${VIRTUALX_REQUIRED:=manual}
 
-# @ECLASS-VARIABLE: ECM_NONGUI
+inherit cmake flag-o-matic toolchain-funcs virtualx
+
+# @ECLASS_VARIABLE: ECM_NONGUI
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # By default, for all CATEGORIES except kde-frameworks, assume we are building
@@ -49,48 +50,35 @@ if [[ ${CATEGORY} = kde-frameworks ]] ; then
 fi
 : ${ECM_NONGUI:=false}
 
-inherit cmake flag-o-matic toolchain-funcs virtualx
-
 if [[ ${ECM_NONGUI} = false ]] ; then
 	inherit xdg
 fi
 
-case ${EAPI} in
-	7) ;;
-	*) die "EAPI=${EAPI:-0} is not supported" ;;
-esac
-
-if [[ -v KDE_GCC_MINIMAL ]]; then
-	EXPORT_FUNCTIONS pkg_pretend
-fi
-
-EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_test pkg_preinst pkg_postinst pkg_postrm
-
-# @ECLASS-VARIABLE: ECM_KDEINSTALLDIRS
+# @ECLASS_VARIABLE: ECM_KDEINSTALLDIRS
 # @DESCRIPTION:
 # Assume the package is using KDEInstallDirs macro and switch
 # KDE_INSTALL_USE_QT_SYS_PATHS to ON. If set to "false", do nothing.
 : ${ECM_KDEINSTALLDIRS:=true}
 
-# @ECLASS-VARIABLE: ECM_DEBUG
+# @ECLASS_VARIABLE: ECM_DEBUG
 # @DESCRIPTION:
 # Add "debug" to IUSE. If !debug, add -DQT_NO_DEBUG to CPPFLAGS. If set to
 # "false", do nothing.
 : ${ECM_DEBUG:=true}
 
-# @ECLASS-VARIABLE: ECM_DESIGNERPLUGIN
+# @ECLASS_VARIABLE: ECM_DESIGNERPLUGIN
 # @DESCRIPTION:
 # If set to "true", add "designer" to IUSE to toggle build of designer plugins
 # and add the necessary BDEPEND. If set to "false", do nothing.
 : ${ECM_DESIGNERPLUGIN:=false}
 
-# @ECLASS-VARIABLE: ECM_EXAMPLES
+# @ECLASS_VARIABLE: ECM_EXAMPLES
 # @DESCRIPTION:
 # By default unconditionally ignore a top-level examples subdirectory.
 # If set to "true", add "examples" to IUSE to toggle adding that subdirectory.
 : ${ECM_EXAMPLES:=false}
 
-# @ECLASS-VARIABLE: ECM_HANDBOOK
+# @ECLASS_VARIABLE: ECM_HANDBOOK
 # @DESCRIPTION:
 # Will accept "true", "false", "optional", "forceoptional". If set to "false",
 # do nothing.
@@ -104,20 +92,20 @@ EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_test pkg_preinst pkg_po
 # CMakeLists.txt in addition to the above.
 : ${ECM_HANDBOOK:=false}
 
-# @ECLASS-VARIABLE: ECM_HANDBOOK_DIR
+# @ECLASS_VARIABLE: ECM_HANDBOOK_DIR
 # @DESCRIPTION:
 # Specifies the directory containing the docbook file(s) relative to ${S} to
 # be processed by KF5DocTools (kdoctools_install).
 : ${ECM_HANDBOOK_DIR:=doc}
 
-# @ECLASS-VARIABLE: ECM_PO_DIRS
+# @ECLASS_VARIABLE: ECM_PO_DIRS
 # @DESCRIPTION:
 # Specifies directories of l10n files relative to ${S} to be processed by
 # KF5I18n (ki18n_install). If IUSE nls exists and is disabled then disable
 # build of these directories in CMakeLists.txt.
 : ${ECM_PO_DIRS:="po poqm"}
 
-# @ECLASS-VARIABLE: ECM_QTHELP
+# @ECLASS_VARIABLE: ECM_QTHELP
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Default value for all CATEGORIES except kde-frameworks is "false".
@@ -129,7 +117,7 @@ if [[ ${CATEGORY} = kde-frameworks ]]; then
 fi
 : ${ECM_QTHELP:=false}
 
-# @ECLASS-VARIABLE: ECM_TEST
+# @ECLASS_VARIABLE: ECM_TEST
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Will accept "true", "false", "optional", "forceoptional",
@@ -151,7 +139,7 @@ if [[ ${CATEGORY} = kde-frameworks ]]; then
 fi
 : ${ECM_TEST:=false}
 
-# @ECLASS-VARIABLE: KFMIN
+# @ECLASS_VARIABLE: KFMIN
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Minimum version of Frameworks to require. Default value for kde-frameworks
@@ -161,9 +149,9 @@ fi
 if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: ${KFMIN:=$(ver_cut 1-2)}
 fi
-: ${KFMIN:=5.64.0}
+: ${KFMIN:=5.82.0}
 
-# @ECLASS-VARIABLE: KFSLOT
+# @ECLASS_VARIABLE: KFSLOT
 # @INTERNAL
 # @DESCRIPTION:
 # KDE Frameworks and Qt slot dependency, implied by KFMIN version.
@@ -267,25 +255,7 @@ DEPEND+=" ${COMMONDEPEND}"
 RDEPEND+=" ${COMMONDEPEND}"
 unset COMMONDEPEND
 
-# @FUNCTION: _ecm_banned_var
-# @INTERNAL
-# @DESCRIPTION:
-# Banned kde5*.eclass variables are banned.
-_ecm_banned_var() {
-	die "$1 is banned. use $2 instead."
-}
-
-if [[ -z ${_KDE5_ECLASS} ]] ; then
-	[[ -n ${KDE_DEBUG} ]] && _ecm_banned_var KDE_DEBUG ECM_DEBUG
-	[[ -n ${KDE_EXAMPLES} ]] && _ecm_banned_var KDE_EXAMPLES ECM_EXAMPLES
-	[[ -n ${KDE_HANDBOOK} ]] && _ecm_banned_var KDE_HANDBOOK ECM_HANDBOOK
-	[[ -n ${KDE_DOC_DIR} ]] && _ecm_banned_var KDE_DOC_DIR ECM_HANDBOOK_DIR
-	[[ -n ${KDE_PO_DIRS} ]] && _ecm_banned_var KDE_PO_DIRS ECM_PO_DIRS
-	[[ -n ${KDE_QTHELP} ]] && _ecm_banned_var KDE_QTHELP ECM_QTHELP
-	[[ -n ${KDE_TEST} ]] && _ecm_banned_var KDE_TEST ECM_TEST
-fi
-
-# @ECLASS-VARIABLE: KDE_GCC_MINIMAL
+# @ECLASS_VARIABLE: KDE_GCC_MINIMAL
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Minimum version of active GCC to require. This is checked in
@@ -296,7 +266,7 @@ fi
 # @DESCRIPTION:
 # Determine if the current GCC version is acceptable, otherwise die.
 _ecm_check_gcc_version() {
-	if [[ ${MERGE_TYPE} != binary && -v KDE_GCC_MINIMAL ]] && tc-is-gcc; then
+	if [[ ${MERGE_TYPE} != binary && -v ${KDE_GCC_MINIMAL} ]] && tc-is-gcc; then
 
 		local version=$(gcc-version)
 
@@ -340,6 +310,55 @@ _ecm_strip_handbook_translations() {
 			popd > /dev/null || die
 		fi
 	done
+}
+
+# @FUNCTION: _ecm_punt_kfqt_module
+# @INTERNAL
+# @USAGE: <prefix> <dependency>
+# @DESCRIPTION:
+# Removes a specified dependency from a find_package call with multiple
+# components.
+_ecm_punt_kfqt_module() {
+	local prefix=${1}
+	local dep=${2}
+
+	[[ ! -e "CMakeLists.txt" ]] && return
+
+	# FIXME: dep=WebKit will result in 'Widgets' over 'WebKitWidgets' (no regression)
+	pcregrep -Mni "(?s)find_package\s*\(\s*${prefix}(\d+|\\$\{\w*\})[^)]*?${dep}.*?\)" \
+		CMakeLists.txt > "${T}/bogus${dep}"
+
+	# pcregrep returns non-zero on no matches/error
+	[[ $? -ne 0 ]] && return
+
+	local length=$(wc -l "${T}/bogus${dep}" | cut -d " " -f 1)
+	local first=$(head -n 1 "${T}/bogus${dep}" | cut -d ":" -f 1)
+	local last=$(( length + first - 1))
+
+	sed -e "${first},${last}s/${dep}//" -i CMakeLists.txt || die
+
+	if [[ ${length} -eq 1 ]] ; then
+		sed -e "/find_package\s*(\s*${prefix}\([0-9]\|\${[A-Z0-9_]*}\)\(\s\+\(REQUIRED\|CONFIG\|COMPONENTS\|\${[A-Z0-9_]*}\)\)\+\s*)/Is/^/# '${dep}' removed by ecm.eclass - /" \
+			-i CMakeLists.txt || die
+	fi
+}
+
+# @FUNCTION: ecm_punt_kf_module
+# @USAGE: <modulename>
+# @DESCRIPTION:
+# Removes a Frameworks (KF - matching any single-digit version)
+# module from a find_package call with multiple components.
+ecm_punt_kf_module() {
+	_ecm_punt_kfqt_module kf ${1}
+}
+
+# @FUNCTION: ecm_punt_qt_module
+# @USAGE: <modulename>
+# @DESCRIPTION:
+# Removes a Qt (matching any single-digit version) module from a
+# find_package call with multiple components.
+ecm_punt_qt_module() {
+	_ecm_punt_kfqt_module qt ${1}
 }
 
 # @FUNCTION: ecm_punt_bogus_dep
@@ -409,8 +428,8 @@ ecm_src_prepare() {
 		cmake_comment_add_subdirectory ${ECM_HANDBOOK_DIR}
 
 		if [[ ${ECM_HANDBOOK} = forceoptional ]] ; then
-			ecm_punt_bogus_dep KF5 DocTools
-			sed -i -e "/kdoctools_install/ s/^/#DONT/" CMakeLists.txt || die
+			ecm_punt_kf_module DocTools
+			sed -i -e "/kdoctools_install/I s/^/#DONT/" CMakeLists.txt || die
 		fi
 	fi
 
@@ -434,20 +453,20 @@ ecm_src_prepare() {
 	# only build unit tests when required
 	if ! { in_iuse test && use test; } ; then
 		if [[ ${ECM_TEST} = forceoptional ]] ; then
-			ecm_punt_bogus_dep Qt5 Test
+			ecm_punt_qt_module Test
 			# if forceoptional, also cover non-kde categories
 			cmake_comment_add_subdirectory autotests test tests
 		elif [[ ${ECM_TEST} = forceoptional-recursive ]] ; then
-			ecm_punt_bogus_dep Qt5 Test
+			ecm_punt_qt_module Test
 			local f pf="${T}/${P}"-tests-optional.patch
 			touch ${pf} || die "Failed to touch patch file"
 			for f in $(find . -type f -name "CMakeLists.txt" -exec \
-				grep -l "^\s*add_subdirectory\s*\(\s*.*\(auto|unit\)\?tests\?\s*)\s*\)" {} \;); do
+				grep -li "^\s*add_subdirectory\s*\(\s*.*\(auto|unit\)\?tests\?\s*)\s*\)" {} \;); do
 				cp ${f} ${f}.old || die "Failed to prepare patch origfile"
 				pushd ${f%/*} > /dev/null || die
-					ecm_punt_bogus_dep Qt5 Test
+					ecm_punt_qt_module Test
 					sed -i CMakeLists.txt -e \
-						"/^#/! s/add_subdirectory\s*\(\s*.*\(auto|unit\)\?tests\?\s*)\s*\)/if(BUILD_TESTING)\n&\nendif()/" \
+						"/^#/! s/add_subdirectory\s*\(\s*.*\(auto|unit\)\?tests\?\s*)\s*\)/if(BUILD_TESTING)\n&\nendif()/I" \
 						|| die
 				popd > /dev/null || die
 				diff -Naur ${f}.old ${f} 1>>${pf}
@@ -538,7 +557,8 @@ ecm_src_test() {
 			export $(dbus-launch)
 		fi
 
-		cmake_src_test
+		# KDE_DEBUG stops crash handlers from launching and hanging the test phase
+		KDE_DEBUG=1 cmake_src_test
 	}
 
 	# When run as normal user during ebuild development with the ebuild command,
@@ -560,12 +580,26 @@ ecm_src_test() {
 
 # @FUNCTION: ecm_src_install
 # @DESCRIPTION:
-# Wrapper for cmake_src_install. Currently doesn't do anything extra, but
-# is included as part of the API just in case it's needed in the future.
+# Wrapper for cmake_src_install. Drops executable bit from .desktop files
+# installed inside /usr/share/applications. This is set by cmake when install()
+# is called in PROGRAM form, as seen in many kde.org projects.
 ecm_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	cmake_src_install
+
+	# bug 621970
+	if [[ ${EAPI} != 7 ]]; then
+		if [[ -d "${ED}"/usr/share/applications ]]; then
+			local f
+			for f in "${ED}"/usr/share/applications/*.desktop; do
+				if [[ -x ${f} ]]; then
+					einfo "Removing executable bit from ${f#${ED}}"
+					fperms a-x "${f#${ED}}"
+				fi
+			done
+		fi
+	fi
 }
 
 # @FUNCTION: ecm_pkg_preinst
@@ -610,4 +644,14 @@ ecm_pkg_postrm() {
 	esac
 }
 
+fi
+
+if [[ -v ${KDE_GCC_MINIMAL} ]]; then
+	EXPORT_FUNCTIONS pkg_pretend
+fi
+
+EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_test pkg_preinst pkg_postinst pkg_postrm
+
+if [[ ${EAPI} != 7 ]]; then
+	EXPORT_FUNCTIONS src_install
 fi

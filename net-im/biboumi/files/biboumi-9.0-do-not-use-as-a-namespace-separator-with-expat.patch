@@ -1,0 +1,301 @@
+From 0061298dd0945f7f67e7fa340c6649b179c804d5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?louiz=E2=80=99?= <louiz@louiz.org>
+Date: Thu, 10 Mar 2022 23:23:47 +0100
+Subject: [PATCH] Do not use ':' as a namespace separator with expat
+
+Instead use \1, and build our own nodes by explicitely separating the
+namespace and the node name.
+---
+ src/xmpp/adhoc_command.cpp          |  6 +++---
+ src/xmpp/adhoc_commands_handler.cpp | 12 ++++++------
+ src/xmpp/biboumi_adhoc_commands.cpp | 28 ++++++++++++++--------------
+ src/xmpp/xmpp_component.cpp         |  2 +-
+ src/xmpp/xmpp_parser.cpp            |  2 +-
+ src/xmpp/xmpp_parser.hpp            |  4 ++--
+ src/xmpp/xmpp_stanza.cpp            | 14 +++++++++++++-
+ src/xmpp/xmpp_stanza.hpp            |  6 ++++++
+ tests/xmpp.cpp                      |  2 ++
+ 9 files changed, 48 insertions(+), 28 deletions(-)
+
+diff --git a/src/xmpp/adhoc_command.cpp b/src/xmpp/adhoc_command.cpp
+index fbf4ce200b82..f8c8e4f146d6 100644
+--- a/src/xmpp/adhoc_command.cpp
++++ b/src/xmpp/adhoc_command.cpp
+@@ -26,7 +26,7 @@ void PingStep1(XmppComponent&, AdhocSession&, XmlNode& command_node)
+ 
+ void HelloStep1(XmppComponent&, AdhocSession&, XmlNode& command_node)
+ {
+-  XmlSubNode x(command_node, "jabber:x:data:x");
++  XmlSubNode x(command_node, "jabber:x:data", "x");
+   x["type"] = "form";
+   XmlSubNode title(x, "title");
+   title.set_inner("Configure your name.");
+@@ -65,9 +65,9 @@ void HelloStep2(XmppComponent&, AdhocSession& session, XmlNode& command_node)
+         }
+     }
+   command_node.delete_all_children();
+-  XmlSubNode error(command_node, ADHOC_NS":error");
++  XmlSubNode error(command_node, ADHOC_NS, "error");
+   error["type"] = "modify";
+-  XmlSubNode condition(error, STANZA_NS":bad-request");
++  XmlSubNode condition(error, STANZA_NS, "bad-request");
+   session.terminate();
+ }
+ 
+diff --git a/src/xmpp/adhoc_commands_handler.cpp b/src/xmpp/adhoc_commands_handler.cpp
+index ff4c1e5506fb..7a84b2e11a45 100644
+--- a/src/xmpp/adhoc_commands_handler.cpp
++++ b/src/xmpp/adhoc_commands_handler.cpp
+@@ -36,16 +36,16 @@ XmlNode AdhocCommandsHandler::handle_request(const std::string& executor_jid, co
+   auto command_it = this->commands.find(node);
+   if (command_it == this->commands.end())
+     {
+-      XmlSubNode error(command_node, ADHOC_NS":error");
++      XmlSubNode error(command_node, ADHOC_NS, "error");
+       error["type"] = "cancel";
+-      XmlSubNode condition(error, STANZA_NS":item-not-found");
++      XmlSubNode condition(error, STANZA_NS, "item-not-found");
+     }
+   else if (command_it->second.is_admin_only() &&
+            !Config::is_in_list("admin", jid.bare()))
+     {
+-      XmlSubNode error(command_node, ADHOC_NS":error");
++      XmlSubNode error(command_node, ADHOC_NS, "error");
+       error["type"] = "cancel";
+-      XmlSubNode condition(error, STANZA_NS":forbidden");
++      XmlSubNode condition(error, STANZA_NS, "forbidden");
+     }
+   else
+     {
+@@ -94,9 +94,9 @@ XmlNode AdhocCommandsHandler::handle_request(const std::string& executor_jid, co
+         }
+       else                      // unsupported action
+         {
+-          XmlSubNode error(command_node, ADHOC_NS":error");
++          XmlSubNode error(command_node, ADHOC_NS, "error");
+           error["type"] = "modify";
+-          XmlSubNode condition(error, STANZA_NS":bad-request");
++          XmlSubNode condition(error, STANZA_NS, "bad-request");
+         }
+     }
+   return command_node;
+diff --git a/src/xmpp/biboumi_adhoc_commands.cpp b/src/xmpp/biboumi_adhoc_commands.cpp
+index 792955c37ec7..aea316d64042 100644
+--- a/src/xmpp/biboumi_adhoc_commands.cpp
++++ b/src/xmpp/biboumi_adhoc_commands.cpp
+@@ -34,7 +34,7 @@ void DisconnectUserStep1(XmppComponent& xmpp_component, AdhocSession&, XmlNode&
+ {
+   auto& biboumi_component = dynamic_cast<BiboumiComponent&>(xmpp_component);
+ 
+-  XmlSubNode x(command_node, "jabber:x:data:x");
++  XmlSubNode x(command_node, "jabber:x:data", "x");
+   x["type"] = "form";
+   XmlSubNode title(x, "title");
+   title.set_inner("Disconnect a user from the gateway");
+@@ -108,9 +108,9 @@ void DisconnectUserStep2(XmppComponent& xmpp_component, AdhocSession& session, X
+           return;
+         }
+     }
+-  XmlSubNode error(command_node, ADHOC_NS":error");
++  XmlSubNode error(command_node, ADHOC_NS, "error");
+   error["type"] = "modify";
+-  XmlSubNode condition(error, STANZA_NS":bad-request");
++  XmlSubNode condition(error, STANZA_NS, "bad-request");
+   session.terminate();
+ }
+ 
+@@ -124,7 +124,7 @@ void ConfigureGlobalStep1(XmppComponent&, AdhocSession& session, XmlNode& comman
+   auto options = Database::get_global_options(owner.bare());
+ 
+   command_node.delete_all_children();
+-  XmlSubNode x(command_node, "jabber:x:data:x");
++  XmlSubNode x(command_node, "jabber:x:data", "x");
+   x["type"] = "form";
+   XmlSubNode title(x, "title");
+   title.set_inner("Configure some global default settings.");
+@@ -220,9 +220,9 @@ void ConfigureGlobalStep2(XmppComponent& xmpp_component, AdhocSession& session,
+       note.set_inner("Configuration successfully applied.");
+       return;
+     }
+-  XmlSubNode error(command_node, ADHOC_NS":error");
++  XmlSubNode error(command_node, ADHOC_NS, "error");
+   error["type"] = "modify";
+-  XmlSubNode condition(error, STANZA_NS":bad-request");
++  XmlSubNode condition(error, STANZA_NS, "bad-request");
+   session.terminate();
+ }
+ 
+@@ -238,7 +238,7 @@ void ConfigureIrcServerStep1(XmppComponent&, AdhocSession& session, XmlNode& com
+   auto commands = Database::get_after_connection_commands(options);
+ 
+   command_node.delete_all_children();
+-  XmlSubNode x(command_node, "jabber:x:data:x");
++  XmlSubNode x(command_node, "jabber:x:data", "x");
+   x["type"] = "form";
+   XmlSubNode title(x, "title");
+   title.set_inner("Configure the IRC server " + server_domain);
+@@ -565,9 +565,9 @@ void ConfigureIrcServerStep2(XmppComponent& xmpp_component, AdhocSession& sessio
+       note.set_inner("Configuration successfully applied.");
+       return;
+     }
+-  XmlSubNode error(command_node, ADHOC_NS":error");
++  XmlSubNode error(command_node, ADHOC_NS, "error");
+   error["type"] = "modify";
+-  XmlSubNode condition(error, STANZA_NS":bad-request");
++  XmlSubNode condition(error, STANZA_NS, "bad-request");
+   session.terminate();
+ }
+ 
+@@ -586,7 +586,7 @@ void insert_irc_channel_configuration_form(XmlNode& node, const Jid& requester,
+   auto options = Database::get_irc_channel_options_with_server_default(requester.local + "@" + requester.domain,
+                                                                        iid.get_server(), iid.get_local());
+   node.delete_all_children();
+-  XmlSubNode x(node, "jabber:x:data:x");
++  XmlSubNode x(node, "jabber:x:data", "x");
+   x["type"] = "form";
+   XmlSubNode title(x, "title");
+   title.set_inner("Configure the IRC channel " + iid.get_local() + " on server " + iid.get_server());
+@@ -671,9 +671,9 @@ void ConfigureIrcChannelStep2(XmppComponent& xmpp_component, AdhocSession& sessi
+     }
+   else
+     {
+-      XmlSubNode error(command_node, ADHOC_NS":error");
++      XmlSubNode error(command_node, ADHOC_NS, "error");
+       error["type"] = "modify";
+-      XmlSubNode condition(error, STANZA_NS":bad-request");
++      XmlSubNode condition(error, STANZA_NS, "bad-request");
+       session.terminate();
+     }
+ }
+@@ -749,7 +749,7 @@ void DisconnectUserFromServerStep1(XmppComponent& xmpp_component, AdhocSession&
+     { // Send a form to select the user to disconnect
+       auto& biboumi_component = dynamic_cast<BiboumiComponent&>(xmpp_component);
+ 
+-      XmlSubNode x(command_node, "jabber:x:data:x");
++      XmlSubNode x(command_node, "jabber:x:data", "x");
+       x["type"] = "form";
+       XmlSubNode title(x, "title");
+       title.set_inner("Disconnect a user from selected IRC servers");
+@@ -794,7 +794,7 @@ void DisconnectUserFromServerStep2(XmppComponent& xmpp_component, AdhocSession&
+   command_node.delete_all_children();
+   auto& biboumi_component = dynamic_cast<BiboumiComponent&>(xmpp_component);
+ 
+-  XmlSubNode x(command_node, "jabber:x:data:x");
++  XmlSubNode x(command_node, "jabber:x:data", "x");
+   x["type"] = "form";
+   XmlSubNode title(x, "title");
+   title.set_inner("Disconnect a user from selected IRC servers");
+diff --git a/src/xmpp/xmpp_component.cpp b/src/xmpp/xmpp_component.cpp
+index de9a7a631be6..62a98ce3bb2c 100644
+--- a/src/xmpp/xmpp_component.cpp
++++ b/src/xmpp/xmpp_component.cpp
+@@ -175,7 +175,7 @@ void XmppComponent::on_stanza(const Stanza& stanza)
+ 
+ void XmppComponent::send_stream_error(const std::string& name, const std::string& explanation)
+ {
+-  Stanza node("stream:error");
++  Stanza node("stream", "error");
+   {
+     XmlSubNode error(node, name);
+     error["xmlns"] = STREAM_NS;
+diff --git a/src/xmpp/xmpp_parser.cpp b/src/xmpp/xmpp_parser.cpp
+index 781fe4cd94b0..1f25fa6f982b 100644
+--- a/src/xmpp/xmpp_parser.cpp
++++ b/src/xmpp/xmpp_parser.cpp
+@@ -38,7 +38,7 @@ XmppParser::XmppParser():
+ void XmppParser::init_xml_parser()
+ {
+   // Create the expat parser
+-  this->parser = XML_ParserCreateNS("UTF-8", ':');
++  this->parser = XML_ParserCreateNS("UTF-8", '\1');
+   XML_SetUserData(this->parser, static_cast<void*>(this));
+ 
+   // Install Expat handlers
+diff --git a/src/xmpp/xmpp_parser.hpp b/src/xmpp/xmpp_parser.hpp
+index ec42f9a326e1..1e5e4e55a875 100644
+--- a/src/xmpp/xmpp_parser.hpp
++++ b/src/xmpp/xmpp_parser.hpp
+@@ -18,9 +18,9 @@
+  * stanza is reasonnably short.
+  *
+  * The element names generated by expat contain the namespace of the
+- * element, a colon (':') and then the actual name of the element.  To get
++ * element, a \1 separator and then the actual name of the element.  To get
+  * an element "x" with a namespace of "http://jabber.org/protocol/muc", you
+- * just look for an XmlNode named "http://jabber.org/protocol/muc:x"
++ * just look for an XmlNode named "http://jabber.org/protocol/muc\1x"
+  *
+  * TODO: enforce the size-limit for the stanza (limit the number of childs
+  * it can contain). For example forbid the parser going further than level
+diff --git a/src/xmpp/xmpp_stanza.cpp b/src/xmpp/xmpp_stanza.cpp
+index 435f33313b09..0103dd71a357 100644
+--- a/src/xmpp/xmpp_stanza.cpp
++++ b/src/xmpp/xmpp_stanza.cpp
+@@ -52,7 +52,7 @@ XmlNode::XmlNode(const std::string& name, XmlNode* parent):
+   parent(parent)
+ {
+   // split the namespace and the name
+-  auto n = name.rfind(':');
++  auto n = name.rfind('\1');
+   if (n == std::string::npos)
+     this->name = name;
+   else
+@@ -67,6 +67,18 @@ XmlNode::XmlNode(const std::string& name):
+ {
+ }
+ 
++XmlNode::XmlNode(const std::string& xmlns, const std::string& name, XmlNode* parent):
++    name(name),
++    parent(parent)
++{
++  this->attributes["xmlns"] = xmlns;
++}
++
++XmlNode::XmlNode(const std::string& xmlns, const std::string& name):
++    XmlNode(xmlns, name, nullptr)
++{
++}
++
+ void XmlNode::delete_all_children()
+ {
+   this->children.clear();
+diff --git a/src/xmpp/xmpp_stanza.hpp b/src/xmpp/xmpp_stanza.hpp
+index f4b394814e5b..a706337baca0 100644
+--- a/src/xmpp/xmpp_stanza.hpp
++++ b/src/xmpp/xmpp_stanza.hpp
+@@ -25,6 +25,8 @@ class XmlNode
+ public:
+   explicit XmlNode(const std::string& name, XmlNode* parent);
+   explicit XmlNode(const std::string& name);
++  explicit XmlNode(const std::string& xmlns, const std::string& name, XmlNode* parent);
++  explicit XmlNode(const std::string& xmlns, const std::string& name);
+   /**
+    * The copy constructor does not copy the parent attribute. The children
+    * nodes are all copied recursively.
+@@ -150,6 +152,10 @@ public:
+             XmlNode(name),
+             parent_to_add(parent_ref)
+     {}
++    XmlSubNode(XmlNode& parent_ref, const std::string& xmlns, const std::string& name):
++        XmlNode(xmlns, name),
++        parent_to_add(parent_ref)
++    {}
+ 
+     ~XmlSubNode()
+     {
+diff --git a/tests/xmpp.cpp b/tests/xmpp.cpp
+index 14c51daa460f..c49c2fda94ea 100644
+--- a/tests/xmpp.cpp
++++ b/tests/xmpp.cpp
+@@ -67,6 +67,8 @@ TEST_CASE("substanzas")
+       CHECK(!d.has_children());
+     }
+     CHECK(b.has_children());
++    XmlSubNode e(a, "namespace", "name");
++    CHECK(e.get_tag("xmlns") == "namespace");
+   }
+   CHECK(a.has_children());
+ }
+-- 
+2.34.1
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,7 +28,9 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5[widgets,qml]
 	dev-qt/qtnetwork:5
+	dev-qt/qtprintsupport:5
 	dev-qt/qtscript:5
+	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	media-libs/alsa-lib
 	media-libs/libmad

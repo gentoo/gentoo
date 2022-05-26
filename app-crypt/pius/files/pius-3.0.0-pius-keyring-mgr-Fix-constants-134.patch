@@ -1,0 +1,58 @@
+From f54adce7ba47ad8882441aec3b0583ee788ea8e1 Mon Sep 17 00:00:00 2001
+From: Phil Dibowitz <phil@ipom.com>
+Date: Tue, 4 Feb 2020 09:33:40 -0800
+Subject: [PATCH] [pius-keyring-mgr] Fix constants (#134)
+
+The refactor of the code meant these constants are now in the
+constants module, not in self.
+
+Fixes #133
+
+Signed-off-by: Phil Dibowitz <phil@ipom.com>
+---
+ pius-keyring-mgr | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/pius-keyring-mgr b/pius-keyring-mgr
+index 1daddeb..fb0b46a 100755
+--- a/pius-keyring-mgr
++++ b/pius-keyring-mgr
+@@ -28,6 +28,8 @@ from libpius.constants import (
+     GPG_BASE_OPTS,
+     GPG_QUIET_OPTS,
+     GPG_FD_OPTS,
++    FP_RE,
++    FIXFP_RE,
+ )
+ 
+ BADKEYS_RE = re.compile(r"00000000|12345678|no pgp key")
+@@ -143,10 +145,10 @@ class PiusParser:
+     def parse_flatfile(self, filename):
+         with open(filename, "r") as fd:
+             contents = fd.read()
+-        matches = self.FP_RE.findall(contents)
++        matches = FP_RE.findall(contents)
+         keys = []
+         for match in matches:
+-            flatfp = self.FIXFP_RE.sub("", match)
++            flatfp = FIXFP_RE.sub("", match)
+             keyid = flatfp[-8:]
+             keys.append(
+                 {
+@@ -199,11 +201,11 @@ class PiusParser:
+                         tmp["key"] = match
+                         keys.append(tmp)
+                     continue
+-                matches = self.FP_RE.findall(decoded)
++                matches = FP_RE.findall(decoded)
+                 if matches:
+                     for match in matches:
+                         num_fps = num_fps + 1
+-                        fp = self.FIXFP_RE.sub("", match)
++                        fp = FIXFP_RE.sub("", match)
+                         keyid = keyid_from_fp(fp)
+                         tmp = data.copy()
+                         tmp.update({"fingerprint": fp, "keyid": keyid})
+-- 
+2.29.2
+

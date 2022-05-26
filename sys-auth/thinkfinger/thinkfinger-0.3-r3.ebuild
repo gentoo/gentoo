@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit linux-info pam
+inherit autotools linux-info pam udev
 
 DESCRIPTION="Support for the UPEK/SGS Thomson fingerprint reader, common in Thinkpads"
 HOMEPAGE="http://thinkfinger.sourceforge.net/"
@@ -28,6 +28,8 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-send-sync-event.patch
 	"${FILESDIR}"/${PV}-tftoolgroup.patch
 	"${FILESDIR}"/${PV}-strip-strip.patch
+	"${FILESDIR}"/${PV}-autoreconf.patch
+	"${FILESDIR}"/${PV}-slibtool.patch
 )
 
 pkg_setup() {
@@ -36,6 +38,11 @@ pkg_setup() {
 		ERROR_CFG="Your kernel needs uinput for the pam module to work"
 		check_extra_config
 	fi
+}
+
+src_prepare() {
+	default
+	eautoreconf
 }
 
 src_configure() {
@@ -52,14 +59,16 @@ src_install() {
 	default
 
 	keepdir /etc/pam_thinkfinger
-	insinto /lib/udev/rules.d
-	doins "${FILESDIR}"/60-thinkfinger.rules
+
+	udev_dorules "${FILESDIR}"/60-thinkfinger.rules
 
 	# no static archives
 	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
+	udev_reload
+
 	fowners root:fingerprint /etc/pam_thinkfinger
 	fperms 710 /etc/pam_thinkfinger
 

@@ -1,0 +1,14 @@
+Fix -fno-common
+
+diff -r c259e312716e vehicle.h
+--- a/src/vehicle.h	Sat Oct 03 12:42:08 2020 +0000
++++ b/src/vehicle.h	Sat Oct 03 12:44:13 2020 +0000
+@@ -70,7 +70,7 @@
+ 
+   /* constants */
+   float mu[128];		/* friction factor */
+-} GrBreak;
++};
+ 
+ struct _GrTireData {
+   GrRef ref;

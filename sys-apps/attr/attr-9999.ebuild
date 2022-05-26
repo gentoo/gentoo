@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -10,8 +10,8 @@ if [[ ${PV} == 9999 ]] ; then
 
 	inherit autotools git-r3
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-	SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
 fi
 
 DESCRIPTION="Extended attributes tools"
@@ -21,12 +21,10 @@ SLOT="0"
 
 IUSE="debug nls static-libs"
 
-BDEPEND="nls? ( sys-devel/gettext )"
-
-pkg_setup() {
-	# Remove -flto* from flags as this breaks binaries (bug #644048)
-	filter-flags -flto*
-}
+BDEPEND="
+	sys-devel/binutils
+	nls? ( sys-devel/gettext )
+"
 
 src_prepare() {
 	default
@@ -40,13 +38,16 @@ src_prepare() {
 	fi
 }
 
+src_configure() {
+	# Remove -flto* from flags as this breaks binaries (bug #644048)
+	filter-flags -flto*
+	append-ldflags "-Wl,--no-gc-sections" #700116
+	tc-ld-force-bfd #644048
+	append-lfs-flags #760857
+	multilib-minimal_src_configure
+}
+
 multilib_src_configure() {
-	unset PLATFORM #184564
-	export OPTIMIZER=${CFLAGS}
-	export DEBUG=-DNDEBUG
-
-	tc-ld-disable-gold #644048
-
 	local myeconfargs=(
 		--bindir="${EPREFIX}"/bin
 		--enable-shared

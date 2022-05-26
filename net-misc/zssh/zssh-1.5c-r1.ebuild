@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="An ssh wrapper enabling zmodem up/download in ssh"
 HOMEPAGE="http://zssh.sourceforge.net/"
@@ -23,12 +23,12 @@ RDEPEND="${DEPEND}
 	net-dialup/lrzsz"
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-1.5a-gentoo-include.diff"
+	eapply "${FILESDIR}/${PN}-1.5a-gentoo-include.diff"
 
 	# Fix linking with sys-libs/ncurses[tinfo], bug #527036
 	sed -i -e 's/-ltermcap/-ltinfo/g' configure || die
 
-	epatch_user
+	eapply_user
 }
 
 src_configure() {

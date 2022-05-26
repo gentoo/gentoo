@@ -1,0 +1,24 @@
+https://sources.debian.org/patches/see/0.72-7/40-fix_ftbfs.patch/
+https://bugs.gentoo.org/707402
+--- a/src/main.h
++++ b/src/main.h
+@@ -92,7 +92,8 @@ typedef struct {
+ struct matchspec {
+ 	int bgn;
+ 	int end;
+-} rgxp;
++};
++extern struct matchspec rgxp;
+ 
+ /* see.c */
+ void addtohistory (char *line);
+--- a/src/util.c
++++ b/src/util.c
+@@ -11,6 +11,7 @@ Public License along with this program.
+ #include "main.h"
+ 
+ char *EXDline, Me[64];
++struct matchspec rgxp;
+ 
+ int buflen (char *buffer) {
+ 	int blen = strlen(buffer), NofL=0, i;

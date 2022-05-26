@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit vdr-plugin-2
+inherit toolchain-funcs vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: Scan for channels on DVB-? and on PVR*-Cards"
 HOMEPAGE="https://github.com/CvH/vdr-plugin-wirbelscan"
@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND=">=media-video/vdr-2"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	# remove untranslated po files
@@ -23,6 +24,8 @@ src_prepare() {
 	cp "${FILESDIR}/wirbelscan.mk" "${S}/Makefile"
 
 	eapply "${FILESDIR}/receiver-api-fixes.patch"
+
+	tc-export PKG_CONFIG
 
 	vdr-plugin-2_src_prepare
 

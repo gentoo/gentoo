@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="A library for storing voxel data"
 HOMEPAGE="http://opensource.imageworks.com/?p=field3d"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/imageworks/Field3D/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="mpi"
 
 BDEPEND="virtual/pkgconfig"
@@ -26,6 +26,10 @@ DEPEND="${RDEPEND}"
 PATCHES=( "${FILESDIR}/${P}-Use-PkgConfig-for-IlmBase.patch" )
 
 src_configure() {
+	# Needed for now ("fix" compatibility with >=sci-libs/hdf5-1.12)
+	# bug #808731
+	append-cppflags -DH5_USE_110_API
+
 	local mycmakeargs=(
 		-DINSTALL_DOCS=OFF # Docs are not finished yet.
 		-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=ON

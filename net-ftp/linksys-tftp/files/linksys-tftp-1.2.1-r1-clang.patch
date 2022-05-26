@@ -1,0 +1,196 @@
+--- a/main.c
++++ b/main.c
+@@ -159,7 +159,7 @@ setpeer(argc, argv)
+ 
+ 	if (!argv[1]) {
+ 		printf("usage: %s host-name [port] (Default port is 69/udp)\n", argv[0]);
+-		return;
++		return 0;
+ 	}
+ 	host = gethostbyname(argv[1]);
+ 	if (host) {
+@@ -172,7 +172,7 @@ setpeer(argc, argv)
+ 		if (sin.sin_addr.s_addr == -1) {
+ 			connected = 0;
+ 			printf("%s: unknown host\n", argv[1]);
+-			return;
++			return 0;
+ 		}
+ 		strcpy(hostname, argv[1]);
+ 	}
+@@ -182,7 +182,7 @@ setpeer(argc, argv)
+ 		if (port < 0) {
+ 			printf("%s: bad port number\n", argv[2]);
+ 			connected = 0;
+-			return;
++			return 0;
+ 		}
+ 		port = htons(port);
+ 	}
+@@ -209,7 +209,7 @@ modecmd(argc, argv)
+ 
+ 	if (argc < 2) {
+ 		printf("Using %s mode to transfer files.\n", mode);
+-		return;
++		return 0;
+ 	}
+ 	if (argc == 2) {
+ 		for (p = modes; p->m_name; p++)
+@@ -217,7 +217,7 @@ modecmd(argc, argv)
+ 				break;
+ 		if (p->m_name) {
+ 			setmode(p->m_mode);
+-			return;
++			return 0;
+ 		}
+ 		printf("%s: unknown mode\n", argv[1]);
+ 		/* drop through and print usage message */
+@@ -231,7 +231,7 @@ modecmd(argc, argv)
+ 			sep = " | ";
+ 	}
+ 	printf(" ]\n");
+-	return;
++	return 0;
+ }
+ 
+ setbinary(argc, argv)
+@@ -265,31 +265,32 @@ put(argc, argv)
+ 
+ 	if (argc < 3) {
+ 		putusage(argv[0]);
+-		return;
++		return 0;
+ 	}
+ 	linkpass = argv[2];
+ 	if (!connected) {
+ 		fprintf(stderr,"No target machine specified.\n");
+-		return;
++		return 0;
+ 	}
+ 		cp = argv[1];
+ 		fd = open(cp, O_RDONLY);
+ 		if (fd < 0) {
+ 			fprintf(stderr, "tftp: "); perror(cp);
+-			return;
++			return 0;
+ 		}
+ 		if (verbose)
+ 			printf("putting %s to %s:%s [%s] AUTH %s\n",
+ 				cp, hostname, cp, mode, linkpass);
+ 		sin.sin_port = port;
+ 		sendfile(fd, cp, mode, linkpass);
+-		return;
++		return 0;
+ }
+ 
+ putusage(s)
+ 	char *s;
+ {
+ 	printf("usage: %s file [linksys pass] (you must be connected)\n", s);
++	return 0;
+ }
+ 
+ /*
+@@ -304,18 +305,18 @@ get(argc, argv)
+ 
+ 	if (argc < 3) {
+ 		getusage(argv[0]);
+-		return;
++		return 0;
+ 	}
+ 	linkpass = argv[2];
+ 	if (!connected) {
+ 		fprintf(stderr,"No target machine specified.\n");
+-		return;
++		return 0;
+ 	}
+ 		cp = argv[1];
+ 		fd = creat(cp, 0644);
+ 		if (fd < 0) {
+ 			fprintf(stderr, "tftp: "); perror(cp);
+-			return;
++			return 0;
+ 		}
+ 		if (verbose)
+ 			printf("getting from %s:%s to %s [%s] AUTH %s\n",
+@@ -323,7 +324,7 @@ get(argc, argv)
+ 		sin.sin_port = port;
+ 		recvfile(fd, cp, mode, linkpass);
+ 		
+-		return;
++		return 0;
+ }
+ 
+ getusage(s)
+@@ -349,7 +350,7 @@ setrexmt(argc, argv)
+ 	}
+ 	if (argc != 2) {
+ 		printf("usage: %s value\n", argv[0]);
+-		return;
++		return 0;
+ 	}
+ 	t = atoi(argv[1]);
+ 	if (t < 0)
+@@ -375,7 +376,7 @@ settimeout(argc, argv)
+ 	}
+ 	if (argc != 2) {
+ 		printf("usage: %s value\n", argv[0]);
+-		return;
++		return 0;
+ 	}
+ 	t = atoi(argv[1]);
+ 	if (t < 0)
+@@ -450,7 +451,7 @@ getcmd(name)
+ 	longest = 0;
+ 	nmatches = 0;
+ 	found = 0;
+-	if(!name) return;
++	if(!name) return 0;
+ 	for (c = cmdtab; p = c->name; c++) {
+ 		for (q = name; *q == *p++; q++)
+ 			if (*q == 0)		/* exact match? */
+@@ -513,7 +514,7 @@ help(argc, argv)
+ 		printf("Commands may be abbreviated.  Commands are:\n\n");
+ 		for (c = cmdtab; c->name; c++)
+ 			printf("%-*s\t%s\n", HELPINDENT, c->name, c->help);
+-		return;
++		return 0;
+ 	}
+ 	while (--argc > 0) {
+ 		register char *arg;
+@@ -557,7 +558,7 @@ setblocksize(argc, argv)
+ 	}
+ 	if (argc != 2) {
+ 		printf("usage: %s value\n", argv[0]);
+-		return;
++		return 0;
+ 	}
+ 	t = atoi(argv[1]);
+ 	if (t < 8 || t > 1432)
+@@ -570,5 +571,5 @@ banner() {
+ 	printf("Mike Lynn\tabaddon [at] 802.11ninja.net\n");
+ 	printf("Linksys TFTP Client for *BSD/Linux\tThe Firmware gets sexier\n");
+ 	printf("Modified Berkeley TFTP client Release: %s\n\n",svers);
+-	return;
++	return 0;
+ }
+--- a/tftpsubs.c
++++ b/tftpsubs.c
+@@ -116,7 +116,7 @@ read_ahead(file, convert)
+ 
+ 	b = &bfs[nextone];              /* look at "next" buffer */
+ 	if (b->counter != BF_FREE)      /* nop if not free */
+-		return;
++		return 0;
+ 	nextone = !nextone;             /* "incr" next buffer ptr */
+ 
+ 	dp = (struct tftphdr *)b->buf;
+@@ -131,7 +131,7 @@ read_ahead(file, convert)
+ 				b->counter += i;
+ 		} while (i != 0 && !(i < 0 && errno != EINTR) &&
+ 			 b->counter < segsize);
+-		return;
++		return 0;
+ 	}
+ 
+ 	p = dp->th_data;

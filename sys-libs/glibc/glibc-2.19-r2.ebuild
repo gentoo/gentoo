@@ -1,10 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit prefix eutils toolchain-funcs flag-o-matic gnuconfig \
-	multilib systemd multiprocessing
+TMPFILES_OPTIONAL=1
+
+inherit prefix toolchain-funcs flag-o-matic gnuconfig \
+	multilib systemd multiprocessing tmpfiles
 
 DESCRIPTION="GNU libc C library"
 HOMEPAGE="https://www.gnu.org/software/libc/"
@@ -590,7 +592,7 @@ sanity_prechecks() {
 	if [[ -e ${EROOT}/etc/nsswitch.conf ]] ; then
 		local entry
 		for entry in passwd group shadow; do
-			if ! egrep -q "^[ \t]*${entry}:.*files" "${EROOT}"/etc/nsswitch.conf; then
+			if ! grep -E -q "^[ \t]*${entry}:.*files" "${EROOT}"/etc/nsswitch.conf; then
 				eerror "Your ${EROOT}/etc/nsswitch.conf is out of date."
 				eerror "Please make sure you have 'files' entries for"
 				eerror "'passwd:', 'group:' and 'shadow:' databases."
@@ -717,6 +719,7 @@ src_prepare() {
 
 	eapply "${FILESDIR}"/2.19/glibc-2.19-kernel-2.6.16-compat.patch
 	eapply "${FILESDIR}"/2.19/glibc-2.19-kernel-2.6.16-hide-pipe2.patch
+	eapply "${FILESDIR}"/2.19/glibc-2.19-gcc-10.patch
 
 	cd "${WORKDIR}"
 	find . -name configure -exec touch {} +
@@ -1075,7 +1078,6 @@ glibc_do_src_install() {
 		n64     /lib64/ld.so.1
 		# powerpc
 		ppc     /lib/ld.so.1
-		ppc64   /lib64/ld64.so.1
 		# s390
 		s390    /lib/ld.so.1
 		s390x   /lib/ld64.so.1
@@ -1088,12 +1090,16 @@ glibc_do_src_install() {
 		ldso_abi_list+=(
 			# arm
 			arm64   /lib/ld-linux-aarch64.so.1
+			# ELFv2 (glibc does not support ELFv1 on LE)
+			ppc64   /lib64/ld64.so.2
 		)
 		;;
 	big)
 		ldso_abi_list+=(
 			# arm
 			arm64   /lib/ld-linux-aarch64_be.so.1
+			# ELFv1 (glibc does not support ELFv2 on BE)
+			ppc64   /lib64/ld64.so.1
 		)
 		;;
 	esac
@@ -1177,7 +1183,7 @@ glibc_do_src_install() {
 		sed -i "${nscd_args[@]}" "${ED}"/etc/init.d/nscd
 
 		systemd_dounit nscd/nscd.service
-		systemd_newtmpfilesd nscd/nscd.tmpfiles nscd.conf
+		newtmpfiles nscd/nscd.tmpfiles nscd.conf
 	else
 		# Do this since extra/etc/*.conf above might have nscd.conf.
 		rm -f "${ED}"/etc/nscd.conf
@@ -1296,7 +1302,7 @@ pkg_postinst() {
 	if [[ -e ${EROOT}/etc/nsswitch.conf ]] && ! has_version sys-auth/libnss-nis ; then
 		local entry
 		for entry in passwd group shadow; do
-			if egrep -q "^[ \t]*${entry}:.*nis" "${EROOT}"/etc/nsswitch.conf; then
+			if grep -E -q "^[ \t]*${entry}:.*nis" "${EROOT}"/etc/nsswitch.conf; then
 				ewarn ""
 				ewarn "Your ${EROOT}/etc/nsswitch.conf uses NIS. Support for that has been"
 				ewarn "removed from glibc and is now provided by the package"

@@ -1,12 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="xml"
+DISTUTILS_USE_SETUPTOOLS=no
 
-inherit eutils distutils-r1 git-r3 prefix
+inherit distutils-r1 git-r3 prefix
 
 EGIT_REPO_URI="git://anongit.gentoo.org/proj/mirrorselect.git"
 
@@ -16,15 +17,14 @@ SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
-
 KEYWORDS=""
+IUSE=""
 
 RDEPEND="
 	dev-util/dialog
 	>=net-analyzer/netselect-0.4[ipv6(+)]
 	~dev-python/ssl-fetch-9999[${PYTHON_USEDEP}]
-	"
+"
 
 python_prepare_all() {
 	python_setup

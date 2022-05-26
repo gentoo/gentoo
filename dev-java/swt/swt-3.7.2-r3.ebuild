@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,8 +15,7 @@ SRC_URI="
 	amd64? ( ${MY_DMF}/${MY_P}-gtk-linux-x86_64.zip )
 	ppc? ( ${MY_DMF}/${MY_P}-gtk-linux-x86.zip )
 	ppc64? ( ${MY_DMF}/${MY_P}-gtk-linux-ppc64.zip )
-	x86? ( ${MY_DMF}/${MY_P}-gtk-linux-x86.zip )
-	x86-fbsd? ( ${MY_DMF}/${MY_P}-gtk-linux-x86.zip )"
+	x86? ( ${MY_DMF}/${MY_P}-gtk-linux-x86.zip )"
 
 LICENSE="CPL-1.0 LGPL-2.1 MPL-1.1"
 SLOT="3.7"
@@ -108,11 +107,7 @@ src_compile() {
 	# Fix the pointer size for AMD64
 	[[ ${ARCH} == "amd64" || ${ARCH} == "ppc64" ]] && export SWT_PTR_CFLAGS=-DJNI64
 
-	local platform="linux"
-
-	use elibc_FreeBSD && platform="freebsd"
-
-	local make="emake -f make_${platform}.mak NO_STRIP=y CC=$(tc-getCC) CXX=$(tc-getCXX)"
+	local make="emake -f make_linux.mak NO_STRIP=y CC=$(tc-getCC) CXX=$(tc-getCXX)"
 
 	einfo "Building AWT library"
 	${make} make_awt
@@ -148,7 +143,6 @@ src_compile() {
 src_install() {
 	swtArch=${ARCH}
 	use amd64 && swtArch=x86_64
-	use x86-fbsd && swtArch=x86
 
 	sed "s/SWT_ARCH/${swtArch}/" "${FILESDIR}/${PN}-${SLOT}-manifest" > "MANIFEST_TMP.MF" || die
 	use cairo || sed -i -e "/ org.eclipse.swt.internal.cairo; x-internal:=true,/d" "MANIFEST_TMP.MF"

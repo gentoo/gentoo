@@ -7,6 +7,7 @@ app-arch
 app-backup
 app-benchmarks
 app-cdr
+app-containers
 app-crypt
 app-dicts
 app-doc
@@ -17,7 +18,6 @@ app-eselect
 app-forensics
 app-i18n
 app-laptop
-app-leechcraft
 app-metrics
 app-misc
 app-mobilephone
@@ -134,6 +134,7 @@ sci-mathematics
 sci-misc
 sci-physics
 sci-visualization
+sec-keys
 sec-policy
 sys-apps
 sys-auth

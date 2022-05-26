@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit qmake-utils toolchain-funcs xdg
 
 DESCRIPTION="Open source, multi-platform generator of the Mandelbrot family fractals"
-HOMEPAGE="https://fraqtive.mimec.org/"
+HOMEPAGE="https://fraqtive.mimec.org/ https://github.com/mimecorg/fraqtive"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

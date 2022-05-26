@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need display-manager
+	want vgl
+}
+
+PIDFILE="${PIDFILE:-/var/run/bumblebee.pid}"
+
+start() {
+	ebegin "Starting BumbleBee Daemon"
+		start-stop-daemon -S -p "${PIDFILE}" -x /usr/sbin/bumblebeed -- -D ${BUMBLEBEE_EXTRA_OPTS} --pidfile "${PIDFILE}"
+	eend $?
+}
+
+stop() {
+
+	ebegin "Stopping BumbleBee Daemon"
+		start-stop-daemon -K -p "${PIDFILE}" -R SIGTERM/10
+	eend $?
+}

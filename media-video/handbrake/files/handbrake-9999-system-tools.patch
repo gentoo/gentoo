@@ -1,0 +1,24 @@
+# https://bugs.gentoo.org/738110
+
+diff --git a/make/configure.py b/make/configure.py
+index 87118fcbe..df869856d 100644
+--- a/make/configure.py
++++ b/make/configure.py
+@@ -1626,14 +1626,14 @@ try:
+ 
+     ## create tools in a scope
+     class Tools:
+-        ar         = ToolProbe( 'AR.exe',         'ar',         'ar', abort=True )
++        ar         = ToolProbe( 'AR.exe',         'ar',         os.environ.get('AR', 'ar'), abort=True )
+         cp         = ToolProbe( 'CP.exe',         'cp',         'cp', abort=True )
+         m4         = ToolProbe( 'M4.exe',         'm4',         'gm4', 'm4', abort=True )
+         mkdir      = ToolProbe( 'MKDIR.exe',      'mkdir',      'mkdir', abort=True )
+         patch      = ToolProbe( 'PATCH.exe',      'patch',      'gpatch', 'patch', abort=True )
+         rm         = ToolProbe( 'RM.exe',         'rm',         'rm', abort=True )
+-        ranlib     = ToolProbe( 'RANLIB.exe',     'ranlib',     'ranlib', abort=True )
+-        strip      = ToolProbe( 'STRIP.exe',      'strip',      'strip', abort=True )
++        ranlib     = ToolProbe( 'RANLIB.exe',     'ranlib',     os.environ.get('RANLIB', 'ranlib'), abort=True )
++        strip      = ToolProbe( 'STRIP.exe',      'strip',      os.environ.get('STRIP', 'strip'), abort=True )
+         tar        = ToolProbe( 'TAR.exe',        'tar',        'gtar', 'tar', abort=True )
+         python     = ToolProbe( 'PYTHON.exe',     'python',     os.path.basename(sys.executable), abort=True )
+ 

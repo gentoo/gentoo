@@ -1,0 +1,140 @@
+--- a/build/openldap.m4
++++ b/build/openldap.m4
+@@ -243,6 +243,40 @@ OL_RESOLVER_TRY(ol_cv_resolver_none)
+ OL_RESOLVER_TRY(ol_cv_resolver_resolv,[-lresolv])
+ OL_RESOLVER_TRY(ol_cv_resolver_bind,[-lbind])
+ ])
++
++dnl --------------------------------------------------------------------
++dnl Check for version compatility with back-mdb
++AC_DEFUN([OL_MDB_COMPAT],
++[AC_CACHE_CHECK([if LMDB version supported by MDB backends], [ol_cv_mdb_compat],[
++	AC_EGREP_CPP(__mdb_version_compat,[
++#include <lmdb.h>
++
++/* require 0.9.18 or later */
++#if MDB_VERSION_FULL >= 0x000000090012
++	__mdb_version_compat
++#endif
++	], [ol_cv_mdb_compat=yes], [ol_cv_mdb_compat=no])])
++])
++
++dnl
++dnl --------------------------------------------------------------------
++dnl Find any MDB
++AC_DEFUN([OL_MDB],
++[ol_cv_mdb=no
++AC_CHECK_HEADERS(lmdb.h)
++if test $ac_cv_header_lmdb_h = yes; then
++	OL_MDB_COMPAT
++
++	if test $ol_cv_mdb_compat != yes ; then
++		AC_MSG_ERROR([LMDB version incompatible with MDB backends])
++	fi
++
++	ol_cv_lib_mdb=-llmdb
++	ol_cv_mdb=yes
++fi
++])
++
++
+ dnl
+ dnl ====================================================================
+ dnl Check POSIX Thread version 
+--- a/build/top.mk
++++ b/build/top.mk
+@@ -164,6 +164,7 @@ CLIENT_LIBS = @CLIENT_LIBS@
+ LUTIL_LIBS = @LUTIL_LIBS@
+ LTHREAD_LIBS = @LTHREAD_LIBS@
+ 
++MDB_LIBS = @MDB_LIBS@
+ SLAPD_NDB_LIBS = @SLAPD_NDB_LIBS@
+ WT_LIBS = @WT_LIBS@
+ 
+--- a/configure.ac
++++ b/configure.ac
+@@ -547,6 +547,7 @@ AC_MSG_RESULT(done)
+ dnl ----------------------------------------------------------------
+ dnl Initialize vars
+ LDAP_LIBS=
++MDB_LIBS=
+ SLAPD_NDB_LIBS=
+ SLAPD_NDB_INCS=
+ LTHREAD_LIBS=
+@@ -646,6 +647,32 @@ dnl Checks for programs
+ 
+ AC_DEFINE(HAVE_MKVERSION, 1, [define this if you have mkversion])
+ 
++dnl ----------------------------------------------------------------
++ol_link_mdb=no
++
++AS_IF([test x$ol_enable_mdb != xno], [
++	OL_MDB
++
++	if test $ol_cv_mdb = no ; then
++		AC_MSG_ERROR(MDB: LMDB not available)
++	fi
++
++	AC_DEFINE(HAVE_MDB,1,
++		[define this if LMDB is available])
++
++	dnl $ol_cv_lib_mdb should be yes or -llmdb
++	dnl (it could be no, but that would be an error
++	if test $ol_cv_lib_mdb != yes ; then
++		MDB_LIBS="$MDB_LIBS $ol_cv_lib_mdb"
++	fi
++
++	SLAPD_LIBS="$SLAPD_LIBS \$(MDB_LIBS)"
++
++	ol_link_mdb=yes
++])
++
++dnl ----------------------------------------------------------------
++
+ dnl ----------------------------------------------------------------
+ dnl
+ dnl Determine which C translator to use
+@@ -3150,6 +3177,7 @@ dnl pwmods
+ AC_SUBST(LDAP_LIBS)
+ AC_SUBST(CLIENT_LIBS)
+ AC_SUBST(SLAPD_LIBS)
++AC_SUBST(MDB_LIBS)
+ AC_SUBST(BALANCER_LIBS)
+ AC_SUBST(SLAPD_NDB_LIBS)
+ AC_SUBST(SLAPD_NDB_INCS)
+--- a/servers/slapd/back-mdb/Makefile.in
++++ b/servers/slapd/back-mdb/Makefile.in
+@@ -25,11 +25,10 @@ OBJS = init.lo tools.lo config.lo \
+ 	extended.lo operational.lo \
+ 	attr.lo index.lo key.lo filterindex.lo \
+ 	dn2entry.lo dn2id.lo id2entry.lo idl.lo \
+-	nextid.lo monitor.lo mdb.lo midl.lo
++	nextid.lo monitor.lo
+ 
+ LDAP_INCDIR= ../../../include       
+ LDAP_LIBDIR= ../../../libraries
+-MDB_SUBDIR = $(srcdir)/$(LDAP_LIBDIR)/liblmdb
+ 
+ BUILD_OPT = "--enable-mdb"
+ BUILD_MOD = @BUILD_MDB@
+@@ -44,7 +43,7 @@ UNIX_LINK_LIBS = $(@BUILD_LIBS_DYNAMIC@_LDAP_LIBS)
+ 
+ LIBBASE = back_mdb
+ 
+-XINCPATH = -I.. -I$(srcdir)/.. -I$(MDB_SUBDIR)
++XINCPATH = -I.. -I$(srcdir)/..
+ XDEFS = $(MODULES_CPPFLAGS)
+ 
+ all-local-lib:	../.backend
+@@ -52,11 +51,5 @@ all-local-lib:	../.backend
+ ../.backend: lib$(LIBBASE).a
+ 	@touch $@
+ 
+-mdb.lo:	$(MDB_SUBDIR)/mdb.c
+-	$(LTCOMPILE_MOD) $(MDB_SUBDIR)/mdb.c
+-
+-midl.lo:	$(MDB_SUBDIR)/midl.c
+-	$(LTCOMPILE_MOD) $(MDB_SUBDIR)/midl.c
+-
+ veryclean-local-lib: FORCE
+ 	$(RM) $(XXHEADERS) $(XXSRCS) .links

@@ -1,0 +1,54 @@
+diff -ur '--exclude=.*.un~' a/openssh-9.0p1+x509-13.3.2.diff b/openssh-9.0p1+x509-13.3.2.diff
+--- a/openssh-9.0p1+x509-13.3.2.diff	2022-04-11 10:32:02.364576985 -0700
++++ b/openssh-9.0p1+x509-13.3.2.diff	2022-04-11 10:38:29.267348410 -0700
+@@ -47526,8 +47526,8 @@
+  		gss_create_empty_oid_set(&status, &oidset);
+  		gss_add_oid_set_member(&status, ctx->oid, &oidset);
+  
+--		if (gethostname(lname, MAXHOSTNAMELEN)) {
+-+		if (gethostname(lname, MAXHOSTNAMELEN) == -1) {
++-		if (gethostname(lname, HOST_NAME_MAX)) {
+++		if (gethostname(lname, HOST_NAME_MAX) == -1) {
+  			gss_release_oid_set(&status, &oidset);
+  			return (-1);
+  		}
+@@ -55662,12 +55662,11 @@
+  
+  install-files:
+  	$(MKDIR_P) $(DESTDIR)$(bindir)
+-@@ -395,6 +372,8 @@
++@@ -395,6 +372,7 @@
+  	$(MKDIR_P) $(DESTDIR)$(mandir)/$(mansubdir)5
+  	$(MKDIR_P) $(DESTDIR)$(mandir)/$(mansubdir)8
+  	$(MKDIR_P) $(DESTDIR)$(libexecdir)
+ +	$(MKDIR_P) $(DESTDIR)$(sshcadir)
+-+	$(MKDIR_P) $(DESTDIR)$(piddir)
+  	$(MKDIR_P) -m 0755 $(DESTDIR)$(PRIVSEP_PATH)
+  	$(INSTALL) -m 0755 $(STRIP_OPT) ssh$(EXEEXT) $(DESTDIR)$(bindir)/ssh$(EXEEXT)
+  	$(INSTALL) -m 0755 $(STRIP_OPT) scp$(EXEEXT) $(DESTDIR)$(bindir)/scp$(EXEEXT)
+@@ -76764,7 +76763,7 @@
+ +if test "$sshd_type" = "pkix" ; then
+ +  unset_arg=''
+ +else
+-+  unset_arg=none
+++  unset_arg=''
+ +fi
+ +
+  cat > $OBJ/sshd_config.i << _EOF
+@@ -141144,16 +141143,6 @@
+ +int	 asnmprintf(char **, size_t, int *, const char *, ...)
+  	    __attribute__((format(printf, 4, 5)));
+  void	 msetlocale(void);
+-diff -ruN openssh-9.0p1/version.h openssh-9.0p1+x509-13.3.2/version.h
+---- openssh-9.0p1/version.h	2022-04-06 03:47:48.000000000 +0300
+-+++ openssh-9.0p1+x509-13.3.2/version.h	2022-04-11 09:07:00.000000000 +0300
+-@@ -2,5 +2,4 @@
+- 
+- #define SSH_VERSION	"OpenSSH_9.0"
+- 
+--#define SSH_PORTABLE	"p1"
+--#define SSH_RELEASE	SSH_VERSION SSH_PORTABLE
+-+#define SSH_RELEASE	PACKAGE_STRING ", " SSH_VERSION "p1"
+ diff -ruN openssh-9.0p1/version.m4 openssh-9.0p1+x509-13.3.2/version.m4
+ --- openssh-9.0p1/version.m4	1970-01-01 02:00:00.000000000 +0200
+ +++ openssh-9.0p1+x509-13.3.2/version.m4	2022-04-11 09:07:00.000000000 +0300

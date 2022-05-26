@@ -1,3 +1,6 @@
+# Copyright 2011-2016 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 # This is a ugly issue, see bug 289757 for origins
 # This mimics the check in gcc ebuilds, bug 362315
 #

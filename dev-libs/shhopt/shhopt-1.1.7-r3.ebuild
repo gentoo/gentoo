@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,11 +16,10 @@ KEYWORDS="amd64 ppc x86"
 PATCHES=( "${FILESDIR}"/${P}-build.patch )
 
 src_compile() {
-	emake CC=$(tc-getCC)
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
-	dolib.a libshhopt.a
 	ln -s libshhopt.so.${PV} libshhopt.so || die
 	ln -s libshhopt.so.${PV} libshhopt.so.${PV:0:1} || die
 	dolib.so libshhopt.so*

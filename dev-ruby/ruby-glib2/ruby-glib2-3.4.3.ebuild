@@ -1,13 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby24 ruby25 ruby26 ruby27"
+USE_RUBY="ruby26 ruby27 ruby30 ruby31"
 
 inherit ruby-ng-gnome2
 
 DESCRIPTION="Ruby Glib2 bindings"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~riscv x86"
 IUSE=""
 RDEPEND+=" >=dev-libs/glib-2"
 DEPEND+=" >=dev-libs/glib-2"

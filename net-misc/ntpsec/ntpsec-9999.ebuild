@@ -1,20 +1,20 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE='threads(+)'
+DISTUTILS_USE_SETUPTOOLS=no
 
-inherit flag-o-matic python-r1 waf-utils systemd
+inherit distutils-r1 flag-o-matic waf-utils systemd
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/NTPsec/ntpsec.git"
 else
-	SRC_URI="ftp://ftp.ntpsec.org/pub/releases/${PN}-${PV}.tar.gz"
-	RESTRICT="mirror"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	SRC_URI="ftp://ftp.ntpsec.org/pub/releases/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 DESCRIPTION="The NTP reference implementation, refactored"
@@ -22,49 +22,54 @@ HOMEPAGE="https://www.ntpsec.org/"
 
 NTPSEC_REFCLOCK=(
 	oncore trimble truetime gpsd jjy generic spectracom
-	shm pps hpgps zyfer arbiter nmea neoclock modem
-	local)
+	shm pps hpgps zyfer arbiter nmea modem local
+)
 
 IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
 
 LICENSE="HPND MIT BSD-2 BSD CC-BY-SA-4.0"
 SLOT="0"
-IUSE="${IUSE_NTPSEC_REFCLOCK} debug doc early gdb heat libbsd nist ntpviz samba seccomp smear tests" #ionice
+IUSE="${IUSE_NTPSEC_REFCLOCK} debug doc early gdb heat libbsd nist ntpviz samba seccomp smear" #ionice
 REQUIRED_USE="${PYTHON_REQUIRED_USE} nist? ( rclock_local )"
 
 # net-misc/pps-tools oncore,pps
-CDEPEND="${PYTHON_DEPS}
-	sys-libs/libcap
+DEPEND="${PYTHON_DEPS}
+	dev-libs/openssl:=
 	dev-python/psutil[${PYTHON_USEDEP}]
+	sys-libs/libcap
 	libbsd? ( dev-libs/libbsd:0= )
-	dev-libs/openssl:0=
 	seccomp? ( sys-libs/libseccomp )
-"
-RDEPEND="${CDEPEND}
-	ntpviz? ( sci-visualization/gnuplot media-fonts/liberation-fonts )
+	rclock_oncore? ( net-misc/pps-tools )
+	rclock_pps? ( net-misc/pps-tools )"
+RDEPEND="${DEPEND}
 	!net-misc/ntp
 	!net-misc/openntpd
 	acct-group/ntp
 	acct-user/ntp
-"
-DEPEND="${CDEPEND}
-	app-text/asciidoc
+	ntpviz? ( sci-visualization/gnuplot media-fonts/liberation-fonts )"
+BDEPEND=">=app-text/asciidoc-8.6.8
 	dev-libs/libxslt
 	app-text/docbook-xsl-stylesheets
-	sys-devel/bison
-	rclock_oncore? ( net-misc/pps-tools )
-	rclock_pps? ( net-misc/pps-tools )
-"
+	sys-devel/bison"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.1.9-remove-asciidoctor-from-config.patch"
+	"${FILESDIR}/${PN}-py3-test-clarify.patch"
+)
 
 WAF_BINARY="${S}/waf"
 
 src_prepare() {
 	default
+
 	# Remove autostripping of binaries
-	sed -i -e '/Strip binaries/d' wscript
+	sed -i -e '/Strip binaries/d' wscript || die
 	if ! use libbsd ; then
-		epatch "${FILESDIR}/${PN}-no-bsd.patch"
+		eapply "${FILESDIR}/${PN}-no-bsd.patch"
 	fi
+	# remove extra default pool servers
+	sed -i '/use-pool/s/^/#/' "${S}"/etc/ntp.d/default.conf || die
+
 	python_copy_sources
 }
 
@@ -83,17 +88,18 @@ src_configure() {
 	CLOCKSTRING="`echo ${string_127}|sed 's|,$||'`"
 
 	local myconf=(
+		--notests
 		--nopyc
 		--nopyo
+		--enable-pylib ext
 		--refclock="${CLOCKSTRING}"
-		--build-epoch="$(date +%s)"
-		$(use doc	&& echo "--enable-doc")
+		#--build-epoch="$(date +%s)"
+		$(use doc	|| echo "--disable-doc")
 		$(use early	&& echo "--enable-early-droproot")
 		$(use gdb	&& echo "--enable-debug-gdb")
 		$(use samba	&& echo "--enable-mssntp")
 		$(use seccomp	&& echo "--enable-seccomp")
 		$(use smear	&& echo "--enable-leap-smear")
-		$(use tests	&& echo "--alltests")
 		$(use debug	&& echo "--enable-debug")
 	)
 
@@ -106,14 +112,27 @@ src_configure() {
 src_compile() {
 	unset MAKEOPTS
 	python_compile() {
-		waf-utils_src_compile
+		waf-utils_src_compile --notests
 	}
 	python_foreach_impl run_in_build_dir python_compile
 }
 
+src_test() {
+	python_compile() {
+		waf-utils_src_compile check
+	}
+	python_foreach_impl run_in_build_dir python_compile
+}
+
+python_test() {
+	# Silence QA warning as we're running tests via src_test anyway.
+	:;
+}
+
 src_install() {
 	python_install() {
-		waf-utils_src_install
+		waf-utils_src_install --notests
+		python_fix_shebang "${ED}"
 	}
 	python_foreach_impl run_in_build_dir python_install
 	python_foreach_impl python_optimize

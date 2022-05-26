@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>gentoo@seichter.de</email>
-		<name>Ralph Seichter</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>mpagano@gentoo.org</email>
+		<name>Mike Pagano</name>
 	</maintainer>
 	<longdescription>
 		NGINX Unit is a dynamic web and application server, designed to run
@@ -17,7 +13,6 @@
 		engineering or operations.
 	</longdescription>
 	<use>
-		<flag name="php7-2">Support for PHP 7.2</flag>
 		<flag name="php7-3">Support for PHP 7.3</flag>
 		<flag name="php7-4">Support for PHP 7.4</flag>
 	</use>

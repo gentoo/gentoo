@@ -1,0 +1,26 @@
+diff --git a/configure.in b/configure.in
+index 0df0e76..d8ea587 100644
+--- a/configure.in
++++ b/configure.in
+@@ -56,13 +56,14 @@ fi
+ 
+ dnl Checks for libraries.
+ dnl Replace `main' with a function in -lncurses:
+-AC_CHECK_LIB(ncurses, initscr, [AC_DEFINE(USE_GCU, 1, [Allow -mGCU environment]) AC_DEFINE(USE_NCURSES, 1, [Use ncurses]) LIBS="$LIBS -lncurses"])
+-if test "$ac_cv_lib_ncurses_initscr" != yes; then
+-  AC_CHECK_LIB(curses, initscr, [AC_DEFINE(USE_GCU, 1, [Allow -mGCU environment]) LIBS="$LIBS -lcurses"])
+-  if test "$ac_cv_lib_curses_initscr" != yes; then
+-    AC_CHECK_LIB(termcap, tgetent, [AC_DEFINE(USE_CAP, 1, [Allow -mCAP environment]) LIBS="$LIBS -ltermcap"])
+-  fi
+-fi
++PKG_CHECK_MODULES(
++    [NCURSES],
++    [ncurses],
++    [AC_DEFINE(USE_GCU, 1, [Allow -mGCU environment])
++     AC_DEFINE(USE_NCURSES, 1, [Use ncurses])
++     [LIBS="${LIBS} ${NCURSES_LIBS}"]
++    ]
++)
+ 
+ dnl Checks for header files.
+ AC_PATH_XTRA

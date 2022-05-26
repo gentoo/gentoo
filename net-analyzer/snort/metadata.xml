@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>patrick@gentoo.org</email>
@@ -35,7 +35,7 @@
 		</flag>
 		<flag name="gre">
 			Enable support for inspecting and processing Generic Routing 
-			Encapsulation (GRE) packet headders. Only needed if you are
+			Encapsulation (GRE) packet headers. Only needed if you are
 			monitoring GRE tunnels.
 		</flag>
 		<flag name="high-availability">
@@ -50,7 +50,7 @@
 		</flag>
 		<flag name="linux-smp-stats">
 			Enable accurate statistics reporting through /proc on systems with
-			multipule processors.
+			multiple processors.
 		</flag>
 		<flag name="non-ether-decoders">
 			Enable decoding of non-ethernet protocols such as TokenRing, FDDI,
@@ -79,7 +79,7 @@
 			(Only available on Linux systems)
 		</flag>
 		<flag name="side-channel">
-			Enables Snort's the side channel.
+			Enables Snort's side channel.
 		</flag>
 		<flag name="sourcefire">
 			Enables Sourcefire specific build options, which include
@@ -87,7 +87,7 @@
 		</flag>
 		<flag name="reload-error-restart">
 			Enables support for completely restarting snort if an error is 
-			detected durring a reload.
+			detected during a reload.
 		</flag>
 		<flag name="active-response">
 			Enables support for automatically sending TCP resets and ICMP 

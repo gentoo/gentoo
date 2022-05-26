@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,8 +11,8 @@ SRC_URI="https://www.ginac.de/CLN/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="1"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples static-libs"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
+IUSE="doc examples"
 
 RDEPEND="dev-libs/gmp:0="
 DEPEND="${RDEPEND}
@@ -33,6 +33,10 @@ src_prepare() {
 		Makefile.in || die
 }
 
+src_configure() {
+	econf --disable-static
+}
+
 src_compile() {
 	default
 	if use doc; then
@@ -51,4 +55,6 @@ src_install() {
 		docinto examples
 		dodoc examples/*.cc
 	fi
+
+	find "${ED}" -name '*.la' -delete || die
 }

@@ -1,0 +1,214 @@
+- do not link to bundled
+  * dev-libs/json-c
+  * net-libs/libcrafter
+- allow different lua versions
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -14,6 +14,8 @@
+ AC_HEADER_STDC
+ AC_HEADER_ASSERT
+ 
++PKG_PROG_PKG_CONFIG
++
+ AX_CXX_COMPILE_STDCXX_11
+ 
+ # Checks for header files.
+@@ -32,40 +34,14 @@
+ AC_FUNC_FORK
+ AC_CHECK_FUNCS([gettimeofday memset select socket strtol])
+ 
+-AC_ARG_WITH(lua,
+-[  --with-lua=DIR      use lua in DIR],
+-[ case "$withval" in
+-  yes|no)
+-     AC_MSG_RESULT(no)
+-     ;;
+-  *)
+-     AC_MSG_RESULT($withval)
+-     if test -f $withval/lua.h -a -f $withval/liblua.a; then
+-        owd=`pwd`
+-        if cd $withval; then withval=`pwd`; cd $owd; fi
+-        LUA_INCLUDE="-I$withval"
+-        LUA_LIB="-L$withval -llua"
+-        LIBS="$LIBS -lm"
+-     elif test -f $withval/include/lua.h -a -f $withval/lib/liblua.a; then
+-        owd=`pwd`
+-        if cd $withval; then withval=`pwd`; cd $owd; fi
+-        LUA_INCLUDE="-I$withval/include"
+-        LUA_LIB="-L$withval/lib -llua"
+-        LIBS="$LIBS -lm"
+-     else
+-        AC_ERROR("lua.h or liblua.a not found in $withval")
+-     fi
+-     ;;
+-  esac ],
+-    [
+-        AX_PROG_LUA
+-        AX_LUA_HEADERS
+-        AX_LUA_LIBS
+-        if test x"$LUA_LIB" = x; then
+-            AC_MSG_ERROR([Lua library not found. You may try option --with-lua-suffix.])
+-        fi
+-    ]
+-)
++PKG_CHECK_MODULES([LUA53], [lua-5.3], [LUA_FOUND=5.3; LUA_INCLUDE="${LUA53_CFLAGS}"; LUA_LIB="${LUA53_LIBS}"],AC_MSG_WARN([lua 5.3 not found]))
++PKG_CHECK_MODULES([LUA52], [lua-5.2], [LUA_FOUND=5.2; LUA_INCLUDE="${LUA52_CFLAGS}"; LUA_LIB="${LUA52_LIBS}"],AC_MSG_WARN([lua 5.2 not found]))
++PKG_CHECK_MODULES([LUA51], [lua5.1], [LUA_FOUND=5.1; LUA_INCLUDE="${LUA51_CFLAGS}"; LUA_LIB="${LUA51_LIBS}"],AC_MSG_WARN([lua 5.1 not found]))
++PKG_CHECK_MODULES([LUA], [lua], [LUA_FOUND=5.1-noSLOT; LUA_INCLUDE="${LUA_CFLAGS}"; LUA_LIB="${LUA_LIBS}"],AC_MSG_WARN([lua 5.1 not found]))
++
++if test -z "$LUA_FOUND"; then
++     AC_MSG_ERROR([lua 5.3, 5.2 or 5.1 is required])
++fi
+ AC_SUBST(LUA_INCLUDE)
+ AC_SUBST(LUA_LIB)
+ 
+@@ -121,24 +97,12 @@
+ AC_ARG_WITH(json,
+ [  --with-json=DIR      use json-c in DIR],
+ [ case "$withval" in
+-  yes|no)
++  no)
+      AC_MSG_RESULT(no)
+      ;;
+   *)
+      AC_MSG_RESULT($withval)
+-     if test -f $withval/json.h -a -f $withval/libjson-c.a; then
+-        owd=`pwd`
+-        if cd $withval; then withval=`pwd`; cd $owd; fi
+-        JSON_INCLUDE="-I$withval"
+-        JSON_LIB="-L$withval -ljson-c"
+-     elif test -f $withval/include/json-c/json.h -a -f $withval/lib/libjson-c.a; then
+-        owd=`pwd`
+-        if cd $withval; then withval=`pwd`; cd $owd; fi
+-        JSON_INCLUDE="-I$withval/include"
+-        JSON_LIB="-L$withval/lib -ljson-c"
+-     else
+-        AC_ERROR("json.h or libjson-c.a not found in $withval")
+-     fi
++     PKG_CHECK_MODULES([JSON], [json-c], [JSON_INCLUDE="${JSON_CFLAGS}"; JSON_LIB="${JSON_LIBS}"],AC_MSG_ERROR([json-c was requested but not found]))
+      AC_SUBST(JSON_INCLUDE)
+      AC_SUBST(JSON_LIB)
+      AC_DEFINE([HAVE_JSONC], [1], [Using json-c])
+@@ -153,41 +117,7 @@
+     ]
+ )
+ 
+-AC_MSG_CHECKING(for libpcap)
+-AC_ARG_WITH(libpcap,
+-[  --with-libpcap=DIR      use libpcap in DIR],
+-[ case "$withval" in
+-  yes|no)
+-     AC_MSG_RESULT(no)
+-     ;;
+-  *)
+-     AC_MSG_RESULT($withval)
+-     if test -f $withval/pcap.h -a \
+-         -f $withval/libpcap.a -a \
+-         -d $withval/pcap; then
+-        owd=`pwd`
+-        if cd $withval; then withval=`pwd`; cd $owd; fi
+-        PCAPINC="-I$withval -I$withval/bpf"
+-        PCAPLIB="-L$withval -lpcap"
+-     else
+-        AC_ERROR(pcap.h, net/bpf.h, or libpcap.a not found in $withval)
+-     fi
+-     ;;
+-  esac ],
+-[ if test -f ${prefix}/include/pcap.h; then
+-     PCAPINC="-I${prefix}/include"
+-     PCAPLIB="-L${prefix}/lib -lpcap"
+-  elif test -f /usr/include/pcap/pcap.h; then
+-     PCAPINC="-I/usr/include/pcap"
+-     PCAPLIB="-lpcap"
+-  elif test -f /usr/include/pcap.h; then
+-     PCAPLIB="-lpcap"
+-  else
+-     AC_MSG_RESULT(no)
+-     AC_ERROR(libpcap not found)
+-  fi
+-  AC_MSG_RESULT(yes) ]
+-)
++PKG_CHECK_MODULES([PCAP], [libpcap], [PCAPINC="${PCAP_CFLAGS}"; PCAPLIB="${PCAP_LIBS}"],AC_MSG_ERROR([libpcap is required]))
+ AC_SUBST(PCAPINC)
+ AC_SUBST(PCAPLIB)
+ 
+@@ -234,17 +164,7 @@
+     AC_CHECK_LIB([pthread], [pthread_create])
+ ])
+ 
+-# Make sure libcrafter build a static library by adding the --disable-shared
+-# argument to the configure script.
+-ac_configure_args_pre="$ac_configure_args"
+-ac_configure_args_post="$ac_configure_args --disable-shared"
+-ac_configure_args="$ac_configure_args_post"
+-
+-AC_CONFIG_COMMANDS_PRE([ac_configure_args="$ac_configure_args_pre"])
+-AC_CONFIG_COMMANDS_POST([ac_configure_args="$ac_configure_args_post"])
+-AC_CONFIG_SUBDIRS(noinst/libcrafter/libcrafter)
+-
+-ac_configure_args="$ac_configure_args_pre"
++PKG_CHECK_MODULES([crafter], [crafter], [LIBS="$LIBS $crafter_LIBS"],AC_MSG_ERROR([libcrafter is required]))
+ 
+ # Enable click submodule
+ AS_IF([test "x$enable_tests" = "xyes"], [
+@@ -254,7 +174,6 @@
+ 
+     AC_CONFIG_COMMANDS_PRE([ac_configure_args="$ac_configure_args_pre"])
+     AC_CONFIG_COMMANDS_POST([ac_configure_args="$ac_configure_args_post"])
+-    AC_CONFIG_SUBDIRS(tests/tools/click)
+ 
+     ac_configure_args="$ac_configure_args_pre"
+ ])
+@@ -271,7 +190,6 @@
+ 
+ AC_CONFIG_FILES([
+ 	Makefile
+-	noinst/Makefile
+ 	src/Makefile
+ 	src/tracebox/Makefile
+ 	tests/Makefile
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -8,8 +8,8 @@
+ MAYBE_DOC = doc
+ endif
+ 
+-SUBDIRS = noinst src $(MAYBE_OPT) $(MAYBE_DOC)
+-DIST_SUBDIRS = noinst src tests doc
++SUBDIRS =  src $(MAYBE_OPT) $(MAYBE_DOC)
++DIST_SUBDIRS =  src tests doc
+ 
+ debian-package:
+ 	dpkg-buildpackage -rfakeroot -tc -us -uc
+--- a/noinst/Makefile.am
++++ b/noinst/Makefile.am
+@@ -1,4 +1,3 @@
+-DIST_SUBDIRS = libcrafter/libcrafter
+ 
+ all-local:
+ 	cd libcrafter/libcrafter && $(MAKE) $(AM_MAKEFLAGS) all
+--- a/src/tracebox/Makefile.am
++++ b/src/tracebox/Makefile.am
+@@ -4,7 +4,6 @@
+ 
+ dist_man_MANS = tracebox.1
+ 
+-dist_bin_SCRIPTS = luatracebox
+ 
+ SUBDIRS = examples
+ 
+@@ -78,13 +77,11 @@
+ 
+ tracebox_LDADD = \
+ 	$(EXTRALIBS) \
+-	$(abs_top_builddir)/noinst/libcrafter/libcrafter/libcrafter.la \
+ 	$(LUA_LIB) \
+ 	$(PCAPLIB) \
+ 	$(JSON_LIB)
+ 
+ tracebox_CPPFLAGS = \
+-	-I$(top_srcdir)/noinst/libcrafter/libcrafter \
+ 	$(LUA_INCLUDE) \
+ 	$(PCAPINC) \
+ 	$(JSON_INCLUDE) \

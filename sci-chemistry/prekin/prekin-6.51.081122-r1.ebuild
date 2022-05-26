@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,6 @@ EAPI=6
 inherit toolchain-funcs
 
 MY_P=${PN}.${PV}
-
 DESCRIPTION="Prepares molecular kinemages from PDB-format coordinate files"
 HOMEPAGE="http://kinemage.biochem.duke.edu/software/prekin.php"
 SRC_URI="http://kinemage.biochem.duke.edu/downloads/software/${PN}/${MY_P}.src.tgz"
@@ -19,15 +18,17 @@ IUSE="X"
 RDEPEND="
 	x11-libs/libXext
 	x11-libs/libXmu
-	x11-libs/libX11
 	x11-libs/libXt
+	x11-libs/libX11
 	X? ( >=x11-libs/motif-2.3:0= )"
 DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
+
 PATCHES=(
 	"${FILESDIR}"/${PV}-Makefile.patch
 	"${FILESDIR}"/${PV}-overflow.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 src_configure() {

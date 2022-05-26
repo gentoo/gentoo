@@ -15,7 +15,7 @@ SRC_URI="http://pear.symfony-project.com/get/${PEAR_P}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 hppa x86"
+KEYWORDS="amd64 ~hppa x86"
 IUSE=""
 
 src_install() {

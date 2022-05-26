@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils flag-o-matic fortran-2 java-pkg-opt-2 toolchain-funcs
+inherit flag-o-matic fortran-2 java-pkg-opt-2 toolchain-funcs
 
 DESCRIPTION="Molecular modeling package that includes force fields, such as AMBER and CHARMM"
 HOMEPAGE="http://dasher.wustl.edu/tinker/"
@@ -14,24 +14,32 @@ LICENSE="Tinker"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
 
-DEPEND="
-	>=virtual/jdk-1.6"
-
 RDEPEND="
 	>=sci-libs/fftw-3.2.2-r1[fortran,threads]
 	dev-libs/maloc
 	!sys-apps/bar
 	!dev-util/diffuse
-	>=virtual/jre-1.6"
+	>=virtual/jre-1.6
+"
+DEPEND="
+	${RDEPEND}
+	>=virtual/jdk-1.6
+	virtual/pkgconfig
+"
 
 RESTRICT="mirror"
 
 S="${WORKDIR}"/${PN}/source
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
+}
+
 pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
+
 	fortran-2_pkg_setup
 	java-pkg-opt-2_pkg_setup
-	tc-has-openmp || die "Please use an openmp capable compiler like gcc[openmp]"
 }
 
 src_prepare() {

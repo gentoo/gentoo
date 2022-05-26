@@ -1,0 +1,14 @@
+--- cxprolog-0.98.2.orig/src/Number.c	2016-01-23 22:07:48.000000000 +0100
++++ cxprolog-0.98.2/src/Number.c	2022-05-21 10:03:54.275367970 +0200
+@@ -282,9 +282,9 @@
+ {
+ #if HAS_LONG_DOUBLE_OPS
+ 	if( precision > 0 )
+-		return GStrFormat("%%.%dllg", precision) ;
++		return GStrFormat("%%.%dLg", precision) ;
+ 	else
+-		return GStrFormat("%%.%dllf", -precision) ;
++		return GStrFormat("%%.%dLf", -precision) ;
+ #else
+ 	if( precision > 0 )
+ 		return GStrFormat("%%.%dlg", precision) ;

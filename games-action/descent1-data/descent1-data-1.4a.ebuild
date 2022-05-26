@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 CDROM_OPTIONAL="yes"
-inherit cdrom estack eutils
+inherit cdrom estack
 
 # For GOG install
 MY_EXE="setup_descent_1.4a_(16596).exe"
@@ -15,7 +15,7 @@ SRC_URI="cdinstall? ( http://www.dxx-rebirth.com/download/dxx/misc/descent-game-
 	!cdinstall? ( ${MY_EXE} )"
 LICENSE="descent-data"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc"
 RESTRICT="bindist !cdinstall? ( fetch )"
 

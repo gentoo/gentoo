@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit fcaps multilib toolchain-funcs flag-o-matic gnuconfig
+inherit fcaps toolchain-funcs flag-o-matic gnuconfig
 
 MY_P="${P/_alpha/a}"
 
@@ -13,13 +13,12 @@ SRC_URI="mirror://sourceforge/${PN}/$([[ -z ${PV/*_alpha*} ]] && echo 'alpha')/$
 
 LICENSE="GPL-2 LGPL-2.1 CDDL-Schily"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 -riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="acl caps nls unicode"
 
 RDEPEND="acl? ( virtual/acl )
 	caps? ( sys-libs/libcap )
-	nls? ( virtual/libintl )
-	!app-cdr/cdrkit"
+	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	x11-misc/makedepend
 	nls? ( >=sys-devel/gettext-0.18.1.1 )"
@@ -35,7 +34,6 @@ FILECAPS=(
 cdrtools_os() {
 	local os="linux"
 	[[ ${CHOST} == *-darwin* ]] && os="mac-os10"
-	[[ ${CHOST} == *-freebsd* ]] && os="freebsd"
 	echo "${os}"
 }
 
@@ -43,12 +41,6 @@ src_prepare() {
 	default
 
 	gnuconfig_update
-
-	# This fixes a clash with clone() on uclibc.  Upstream isn't
-	# going to include this so let's try to carry it forward.
-	# Contact me if it needs updating.  Bug #486782.
-	# Anthony G. Basile <blueness@gentoo.org>.
-	use elibc_uclibc && epatch "${FILESDIR}"/${PN}-fix-clone-uclibc.patch
 
 	# Remove profiled make files.
 	find -name '*_p.mk' -delete || die "delete *_p.mk"
@@ -79,8 +71,8 @@ src_prepare() {
 
 	# Respect CC/CXX variables.
 	cd "${S}"/RULES || die
-	local tcCC=$(tc-getCC)
-	local tcCXX=$(tc-getCXX)
+	local tcCC="$(tc-getCC)"
+	local tcCXX="$(tc-getCXX)"
 	sed -i -e "/cc-config.sh/s|\$(C_ARCH:%64=%) \$(CCOM_DEF)|${tcCC} ${tcCC}|" \
 		rules1.top || die "sed rules1.top"
 	sed -i -e "/^CC_COM_DEF=/s|gcc|${tcCC}|" \

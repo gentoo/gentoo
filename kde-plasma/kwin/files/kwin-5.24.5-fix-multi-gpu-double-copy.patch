@@ -1,0 +1,59 @@
+From 3b58fe4bde0722b352e4114adb992a2ed2c96423 Mon Sep 17 00:00:00 2001
+From: Xaver Hugl <xaver.hugl@gmail.com>
+Date: Sat, 7 May 2022 21:23:17 +0200
+Subject: [PATCH] backends/drm: consider escaped separators KWIN_DRM_DEVICES
+
+':' conflicts with the file names in /dev/dri/by-path, so allow it to be
+escaped with '\'
+
+CCBUG: 453386
+
+
+(cherry picked from commit a110aabbccf56019bdc324b3c751112f35ec3f6c)
+---
+ src/backends/drm/drm_backend.cpp | 24 +++++++++++++++++++++++-
+ 1 file changed, 23 insertions(+), 1 deletion(-)
+
+diff --git a/src/backends/drm/drm_backend.cpp b/src/backends/drm/drm_backend.cpp
+index 272dba702c..567ea3f696 100644
+--- a/src/backends/drm/drm_backend.cpp
++++ b/src/backends/drm/drm_backend.cpp
+@@ -57,12 +57,34 @@
+ namespace KWin
+ {
+ 
++static QStringList splitPathList(const QString &input, const QChar delimiter)
++{
++    QStringList ret;
++    QString tmp;
++    for (int i = 0; i < input.size(); i++) {
++        if (input[i] == delimiter) {
++            if (i > 0 && input[i - 1] == '\\') {
++                tmp[tmp.size() - 1] = delimiter;
++            } else if (!tmp.isEmpty()) {
++                ret.append(tmp);
++                tmp = QString();
++            }
++        } else {
++            tmp.append(input[i]);
++        }
++    }
++    if (!tmp.isEmpty()) {
++        ret.append(tmp);
++    }
++    return ret;
++}
++
+ DrmBackend::DrmBackend(QObject *parent)
+     : Platform(parent)
+     , m_udev(new Udev)
+     , m_udevMonitor(m_udev->monitor())
+     , m_session(Session::create(this))
+-    , m_explicitGpus(qEnvironmentVariable("KWIN_DRM_DEVICES").split(':', Qt::SkipEmptyParts))
++    , m_explicitGpus(splitPathList(qEnvironmentVariable("KWIN_DRM_DEVICES"), ':'))
+     , m_dpmsFilter()
+ {
+     setSupportsPointerWarping(true);
+-- 
+GitLab
+

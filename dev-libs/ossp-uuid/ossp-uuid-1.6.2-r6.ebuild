@@ -1,21 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 MY_P="uuid-${PV}"
 
-PHP_EXT_NAME="uuid"
-PHP_EXT_INI="yes"
-PHP_EXT_ZENDEXT="no"
-PHP_EXT_S="${WORKDIR}/${MY_P}/php"
-PHP_EXT_OPTIONAL_USE="php"
-PHP_EXT_SKIP_PATCHES="yes"
-USE_PHP="php5-6 php7-0 php7-1"
-
 GENTOO_DEPEND_ON_PERL="no"
 
-inherit perl-module php-ext-source-r3
+inherit perl-module
 
 DESCRIPTION="An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID"
 HOMEPAGE="http://www.ossp.org/pkg/lib/uuid/"
@@ -23,11 +15,11 @@ SRC_URI="ftp://ftp.ossp.org/pkg/lib/uuid/${MY_P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
-IUSE="+cxx perl php static-libs"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+IUSE="+cxx perl static-libs"
 
 DEPEND="perl? ( dev-lang/perl:= )"
-RDEPEND="${DEPEND} php? ( !dev-php/pecl-uuid )"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -43,18 +35,6 @@ src_prepare() {
 		"${FILESDIR}/${P}-fix-data-uuid-from-string.patch"
 
 	eapply_user
-	if use php; then
-		pushd "${PHP_EXT_S}" > /dev/null || die
-		eapply -p2 \
-			"${FILESDIR}/${P}-gentoo-php.patch" \
-			"${FILESDIR}/uuid-${PV}-php54.patch" \
-			"${FILESDIR}/${P}-php70.patch"
-		popd > /dev/null || die
-		php-ext-source-r3_src_prepare
-
-		#Remove call by reference which is error
-		sed -i -e 's/\&\$/\$/' -e '/?>/d' "${S}/php/uuid.php5" || die
-	fi
 }
 
 src_configure() {
@@ -69,10 +49,6 @@ src_configure() {
 		--without-php \
 		$(use_with cxx) \
 		$(use_enable static-libs static)
-
-	if use php; then
-		php-ext-source-r3_src_configure
-	fi
 }
 
 src_compile() {
@@ -84,10 +60,6 @@ src_compile() {
 		perl-module_src_configure
 		perl-module_src_compile
 	fi
-
-	if use php; then
-		php-ext-source-r3_src_compile
-	fi
 }
 
 src_install() {
@@ -97,13 +69,6 @@ src_install() {
 	if use perl ; then
 		cd perl
 		perl-module_src_install
-	fi
-
-	if use php ; then
-		php-ext-source-r3_src_install
-		insinto /usr/share/php
-		cd "${S}/php" || die
-		newins uuid.php5 uuid.php
 	fi
 
 	use static-libs || rm -rf "${ED}"/usr/lib*/*.la

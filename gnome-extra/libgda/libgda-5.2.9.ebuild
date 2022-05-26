@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ GNOME2_LA_PUNT="yes"
 GNOME2_EAUTORECONF="yes"
 VALA_USE_DEPEND="vapigen"
 
-inherit db-use eutils flag-o-matic gnome2 java-pkg-opt-2 vala
+inherit db-use flag-o-matic gnome2 java-pkg-opt-2 vala
 
 DESCRIPTION="GNOME database access library"
 HOMEPAGE="https://www.gnome-db.org/"
@@ -22,7 +22,7 @@ REQUIRED_USE="
 # firebird license is not GPL compatible
 
 SLOT="5/4" # subslot = libgda-5.0 soname version
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	app-text/iso-codes
@@ -83,6 +83,11 @@ src_prepare() {
 	sed -e '/SUBDIRS =/ s/trml2html//' \
 		-e '/SUBDIRS =/ s/trml2pdf//' \
 		-i libgda-report/RML/Makefile.{am,in} || die
+
+	# replace my_bool with _Bool
+	eapply "${FILESDIR}/${PN}-5.2-my_bool-error.patch"
+	# ... and stop using bool elsewhere too
+	eapply "${FILESDIR}/${PN}-5.2.9-redefine-bool-error.patch"
 
 	# Prevent file collisions with libgda:4
 	eapply "${FILESDIR}/${PN}-4.99.1-gda-browser-doc-collision.patch"
@@ -146,5 +151,7 @@ pkg_preinst() {
 src_install() {
 	gnome2_src_install
 	# Use new location
-	mv "${ED}"/usr/share/appdata "${ED}"/usr/share/metainfo || die
+	if use gtk; then
+		mv "${ED}"/usr/share/appdata "${ED}"/usr/share/metainfo || die
+	fi
 }

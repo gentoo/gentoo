@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -46,10 +46,10 @@ src_install() {
 	einstalldocs
 	cd src
 	dobin pkcrack zipdecrypt findkey makekey
-	newbin extract "$PN-extract"
+	newbin extract "${PN}-extract"
 }
 
 pkg_postinst() {
-	ewarn "Due to file collision, extract utility was renamed to $PN-extract,"
+	ewarn "Due to file collision, extract utility was renamed to ${PN}-extract,"
 	ewarn "see bug#247394"
 }

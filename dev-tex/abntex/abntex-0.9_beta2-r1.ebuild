@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -37,8 +37,9 @@ src_install() {
 	dobin bin/geratss
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins -r texmf/doc/*
+		docinto examples
+		dodoc -r texmf/doc/.
+		docompress -x /usr/share/doc/${PF}/examples
 	fi
 
 	rm -rf texmf/doc || die
@@ -54,7 +55,8 @@ src_install() {
 	dodoc LEIAME
 
 	if use doc; then
-		insinto /usr/share/doc/${PF}/docs
-		doins -r compiled.docs/*
+		docinto docs
+		dodoc -r compiled.docs/.
+		docompress -x /usr/share/doc/${PF}/docs
 	fi
 }

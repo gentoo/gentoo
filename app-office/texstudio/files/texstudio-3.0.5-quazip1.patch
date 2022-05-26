@@ -1,0 +1,19 @@
+Fix build with QuaZip-1.0.
+
+--- a/texstudio.pro
++++ b/texstudio.pro
+@@ -369,11 +369,9 @@
+ isEmpty(USE_SYSTEM_QUAZIP) {
+     include(src/quazip/quazip/quazip.pri)
+ } else {
+-        message(System quazip5)
+-        isEmpty(QUAZIP_LIB): QUAZIP_LIB = -lquazip5
+-        isEmpty(QUAZIP_INCLUDE): QUAZIP_INCLUDE = $${PREFIX}/include/quazip5
+-        INCLUDEPATH += $${QUAZIP_INCLUDE}
+-        LIBS += $${QUAZIP_LIB}
++        message(System QuaZip)
++        CONFIG += link_pkgconfig
++        PKGCONFIG += quazip1-qt5
+ }
+ 
+ include(src/pdfviewer/pdfviewer.pri)

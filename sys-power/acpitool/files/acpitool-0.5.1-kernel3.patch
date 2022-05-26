@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/377355
 
---- src/acpitool.cpp
-+++ src/acpitool.cpp
+--- a/src/acpitool.cpp
++++ b/src/acpitool.cpp
 @@ -205,8 +205,7 @@
  	Kernel_24 = 1;           
  	Kernel_26 = 0;

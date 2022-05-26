@@ -1,0 +1,89 @@
+https://github.com/ntop/ntopng/pull/6288
+
+From 93b62eb0b48f9914fed5511dc2a4289a83a1ed34 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 8 Feb 2022 06:07:21 +0000
+Subject: [PATCH 1/3] build: fail configure if ZMQ can't be found
+
+We already "fail" (makefile won't be generated) when ZMQ can't be found but
+the exit code doesn't represent this until now.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ configure.ac.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac.in b/configure.ac.in
+index b032d7faa34..0b30e9480c7 100644
+--- a/configure.ac.in
++++ b/configure.ac.in
+@@ -132,7 +132,7 @@ if test "x$ac_cv_lib_zmq_zmq_socket_monitor" = xyes; then :
+   AC_DEFINE_UNQUOTED(HAVE_ZMQ, 1, [ZMQ is present])
+ else
+   echo "ZMQ not present or too old (< v. 3.x)"
+-  exit
++  exit 1
+ fi
+ 
+ AC_CHECK_LIB([sodium], [sodium_init], LIBS="${LIBS} -lsodium")
+
+From 75206e5a3fdc289a2229770595fbf588de79402b Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 8 Feb 2022 06:08:02 +0000
+Subject: [PATCH 2/3] build: avoid bashism in configure
+
+[[ ]] and == are both Bashisms and /bin/sh may be a POSIX compliant
+shell (Debian notably uses dash for /bin/sh which wouldn't be
+happy with this).
+
+This will continue to work on Bash.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ configure.ac.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac.in b/configure.ac.in
+index 0b30e9480c7..3dc6ef4a539 100644
+--- a/configure.ac.in
++++ b/configure.ac.in
+@@ -187,7 +187,7 @@ fi
+ 
+ if [ test -f /usr/bin/lsb_release ]; then
+   CODENAME=`/usr/bin/lsb_release -c|cut -f 2`
+-  if [[ $CODENAME == "wheezy" ]]; then :
++  if test $CODENAME = "wheezy" ; then
+     CPPFLAGS="${CPPFLAGS} -DOLD_NETFILTER_INTERFACE=1"
+   fi
+ fi
+
+From 6e355cb98078dbfc379ba178ec99b7e351afdfe9 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 8 Feb 2022 06:09:44 +0000
+Subject: [PATCH 3/3] build: use $(MAKE)
+
+This allows parallel builds to work properly as we'll be calling 'make ...'
+with any additional arguments it internally passes down rather than literally
+just make.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ configure.ac.in | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/configure.ac.in b/configure.ac.in
+index 3dc6ef4a539..3ff06c4efd4 100644
+--- a/configure.ac.in
++++ b/configure.ac.in
+@@ -720,10 +720,7 @@ fi
+ 
+ AC_DEFINE_UNQUOTED(_CRT_SECURE_NO_WARNINGS, 1, [Disable warning on windows])
+ 
+-GMAKE=`which gmake`
+-if test x$GMAKE = x; then
+-  GMAKE="make"
+-fi
++GMAKE='$(MAKE)'
+ 
+ GIT=`which git`
+ if test x$GIT = x; then

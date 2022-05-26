@@ -1,13 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 RUBY_OPTIONAL=no
-USE_RUBY="ruby26"
+USE_RUBY="ruby27"
 # note: define maximally ONE implementation here
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit toolchain-funcs python-single-r1 ruby-ng
 
@@ -57,12 +57,12 @@ each_ruby_configure() {
 	./build.sh \
 		-expert \
 		-dry-run \
-		-qmake "/usr/$(get_libdir)/qt5/bin/qmake" \
+		-qmake "$EPREFIX/usr/$(get_libdir)/qt5/bin/qmake" \
 		-ruby "${RUBY}" \
 		-python "${PYTHON}" \
 		-build . \
 		-bin "${T}/bin" \
-		-rpath "/usr/$(get_libdir)/klayout" \
+		-rpath "$EPREFIX/usr/$(get_libdir)/klayout" \
 		-option "${MAKEOPTS}" \
 		-with-qtbinding \
 		-without-64bit-coord \

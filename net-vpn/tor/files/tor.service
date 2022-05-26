@@ -1,0 +1,38 @@
+# tor.service -- this systemd configuration file for Tor sets up a
+# relatively conservative, hardened Tor service.  You may need to
+# edit it if you are making changes to your Tor configuration that it
+# does not allow.  Package maintainers: this should be a starting point
+# for your tor.service; it is not the last point.
+
+[Unit]
+Description=Anonymizing overlay network for TCP
+After=syslog.target network.target nss-lookup.target
+
+[Service]
+Type=notify
+NotifyAccess=all
+ExecStartPre=/usr/bin/tor -f /etc/tor/torrc --verify-config
+ExecStart=/usr/bin/tor -f /etc/tor/torrc
+ExecReload=/bin/kill -HUP ${MAINPID}
+KillSignal=SIGINT
+TimeoutSec=60
+Restart=on-failure
+WatchdogSec=1m
+LimitNOFILE=32768
+
+# Hardening
+Group=tor
+RuntimeDirectory=tor
+RuntimeDirectoryMode=0770
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectHome=yes
+ProtectSystem=full
+ReadOnlyDirectories=/
+ReadWriteDirectories=-/var/lib/tor
+ReadWriteDirectories=-/var/log/tor
+NoNewPrivileges=yes
+CapabilityBoundingSet=CAP_SETUID CAP_SETGID CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target

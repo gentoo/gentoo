@@ -1,13 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
 inherit multilib-minimal toolchain-funcs flag-o-matic usr-ldscript
 
 DESCRIPTION="Asynchronous input/output library that uses the kernels native interface"
 HOMEPAGE="https://pagure.io/libaio"
-if [[ "${PV}" == 9999 ]] ; then
+if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://pagure.io/libaio.git"
 else
@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.112-cppflags.patch
-	"${FILESDIR}"/${PN}-0.3.111-optional-werror.patch
+	"${FILESDIR}"/${PN}-0.3.113-respect-LDFLAGS.patch
 )
 
 src_prepare() {
@@ -30,13 +30,14 @@ src_prepare() {
 	local sed_args=(
 		-e "/^prefix=/s:/usr:${EPREFIX}/usr:"
 		-e '/^libdir=/s:lib$:$(ABI_LIBDIR):'
+		-e 's:-Werror ::'
 	)
 	if ! use static-libs; then
 		sed_args+=( -e '/\tinstall .*\/libaio.a/d' )
 		# Tests require the static library to be built.
 		use test || sed_args+=( -e '/^all_targets +=/s/ libaio.a//' )
 	fi
-	sed -i "${sed_args[@]}" src/Makefile Makefile || die
+	sed -i "${sed_args[@]}" src/Makefile harness/Makefile Makefile || die
 
 	multilib_copy_sources
 }
@@ -52,10 +53,10 @@ multilib_src_configure() {
 }
 
 _emake() {
-	CC=$(tc-getCC) \
-	AR=$(tc-getAR) \
-	RANLIB=$(tc-getRANLIB) \
-	ABI_LIBDIR=$(get_libdir) \
+	CC="$(tc-getCC)" \
+	AR="$(tc-getAR)" \
+	RANLIB="$(tc-getRANLIB)" \
+	ABI_LIBDIR="$(get_libdir)" \
 	CFLAGS_WERROR= \
 	emake "$@"
 }
@@ -66,6 +67,7 @@ multilib_src_compile() {
 
 multilib_src_test() {
 	mkdir -p testdir || die
+
 	# 'make check' breaks with sandbox, 'make partcheck' works
 	_emake partcheck prefix="${S}/src" libdir="${S}/src"
 }
@@ -78,7 +80,7 @@ multilib_src_install_all() {
 	doman man/*
 	dodoc ChangeLog TODO
 
-	# move crap to / for multipath-tools #325355
+	# move to / for multipath-tools, bug #325355
 	gen_usr_ldscript -a aio
 
 	# This lib is a bare minimal shim on top of kernel syscalls.

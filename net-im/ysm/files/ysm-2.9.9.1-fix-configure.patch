@@ -1,0 +1,163 @@
+From d86f720bf221d713243e60147c412c05696bae7a Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 21 Apr 2021 01:16:11 +0000
+Subject: [PATCH] Rewrite configure.ac
+
+First cut at rewriting the configure script to use standard macros. Couldn't
+find the macros referred to in the original and they were non-standard anyway.
+
+First noticed when fixing a Bashism.
+---
+ configure.in    | 74 +++++++++++++++++--------------------------------
+ src/YSM_Setup.c |  3 +-
+ 2 files changed, 26 insertions(+), 51 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index 767fb51..e9f4262 100644
+--- a/configure.in
++++ b/configure.in
+@@ -1,4 +1,5 @@
+ AC_INIT(src/YSM_Main.c)
++
+ # give welcome
+ echo ""
+ echo ""
+@@ -11,32 +12,20 @@ AC_PROG_CC
+ AC_PROG_INSTALL
+ AC_PROG_MAKE_SET
+ 
+-# check missing posix types 
+-CHECK_POSIX_TYPES
+-
+-# enable command line options.
+-ac_arg_threads="no"
+-ac_arg_readline="no"
++AC_ARG_ENABLE([threads],
++	AS_HELP_STRING([--disable-threads], [Disable threads]))
+ 
+-AC_ARG_ENABLE([threads], 
+-	AC_HELP_STRING([--disable-threads],
+-	[disable threads support]),
+-	ac_arg_threads=$enableval, ac_arg_threads=yes)
+-
+-AC_ARG_ENABLE([readline], 
+-	AC_HELP_STRING([--disable-readline],
+-	[do not try to use the readline library]),
+-	ac_arg_readline=$enableval, ac_arg_readline=yes)
++AC_ARG_ENABLE([readline],
++	AS_HELP_STRING([--disable-readline], [Disable readline]))
+ 
+ ##### fribidi #####
+ 
+ AC_ARG_WITH(fribidi,
+ 	[  --with-fribidi=[DIR]	  enable the fribidi library in [DIR] to enable Hebrew and Arabic support],
+-	[with_fribidi=$withval],
+-	[with_fribidi=no])
++	[with_fribidi=$withval])
+ 
+-if test "$with_fribidi" = "yes"; then
+-    for ac_dir in /usr/local /usr; do
++if test "x$with_fribidi" = "xyes"; then
++    for ac_dir in /usr /usr/local; do
+         if test -f "$ac_dir/include/fribidi/fribidi.h"; then
+             with_fribidi=$ac_dir
+             break;
+@@ -44,8 +33,8 @@ if test "$with_fribidi" = "yes"; then
+     done
+ fi
+ 
+-if test -n "$with_fribidi" -a "$with_fribidi" != "no"; then
+-    if test "$with_fribidi" = "yes"; then with_fribidi="/usr"; fi
++if test -n "$with_fribidi" -a "x$with_fribidi" != "xno"; then
++    if test "x$with_fribidi" = "xyes"; then with_fribidi="/usr"; fi
+ 
+     if test -r $with_fribidi/include/fribidi/fribidi.h; then
+         LIBS="$LIBS `$with_fribidi/bin/fribidi-config --libs`"
+@@ -53,36 +42,23 @@ if test -n "$with_fribidi" -a "$with_fribidi" != "no"; then
+     fi
+ fi
+ 
+-##### fribidi #####
+-
+-AC_CACHE_CHECK([whether to enable threads support],
+-	ac_arg_threads, ac_arg_threads)
+-
+-AC_CACHE_CHECK([whether to use the readline library],
+-	ac_arg_readline, ac_arg_readline)
+-
+-
+ # only check for readline if we have threads support
+-if test "x$ac_arg_threads" = "xyes"; then
+-	CHECK_POSIX_THREADS
++if test "x$enable_threads" != "xno"; then
++	AC_DEFINE([YSM_WITH_THREADS], [1], [Building with threads])
++
++	AX_PTHREAD
++	LIBS="$LIBS $PTHREAD_LIBS"
++	CFLAGS="$CFLAGS $PTHREAD_CFLAGS"
+ 
+ 	# check for readline if we have threads only
+-	if test "$pthread_libs" != "no" && test "x$ac_arg_readline" = "xyes";
+-	then
+-		CHECK_READLINE
+-	else
+-		vl_cv_lib_readline="no"
++	if test "x$PTHREAD_LIBS" != "xno" -a "x$enable_readline" != "xno"; then
++		AX_LIB_READLINE
++		LIBS="$LIBS $READLINE_LIBS"
++		CFLAGS="$CFLAGS $READLINE_CFLAGS"
+ 	fi
+-else
+-	vl_cv_lib_readline="no"
+ fi
+ 
+-
+-# check for iconv
+-CHECK_ICONV
+-
+-# check for setenv
+-CHECK_SETENV
++AM_ICONV
+ 
+ # check for sparc required libraries
+ AC_CHECK_LIB([socket],
+@@ -93,18 +69,18 @@ AC_CHECK_LIB([nsl],
+ 		LIBS="-lnsl $LIBS")
+ 
+ # final checks
+-
+-if test "$vl_cv_lib_readline" = "xno"; then
++if test "$enable_readline" = "xno"; then
+ 	# are we using getline instead? do we have threads?
+-	if test "$pthread_libs"; then
++	if test "$PTHREAD_LIBS"; then
+ 		CMDOBJS="cmdline/getline.o $CMDOBJS"
+ 	else
+ 		# no threads, use ysmreadline!.
+ 		CMDOBJS="cmdline/ysmline.o $CMDOBJS"
+ 	fi
++else
++	AC_DEFINE([USE_READLINE], [1], [Using GNU Readline])
+ fi
+ 
+-AC_SUBST(pthread_libs)
+ AC_SUBST(CMDOBJS)
+ AC_STDC_HEADERS
+ AC_OUTPUT([Makefile src/Makefile src/man/Makefile])
+diff --git a/src/YSM_Setup.c b/src/YSM_Setup.c
+index d91c143..8436549 100644
+--- a/src/YSM_Setup.c
++++ b/src/YSM_Setup.c
+@@ -743,8 +743,7 @@ int	tries = 0;
+ #define YSMOPENCONFIG(rwx)	(fd = YSM_fopen(YSM_cfgfile,rwx))
+ #define YSMCLOSECONFIG()	YSM_fclose(fd)
+ 
+-__inline void
+-CFGWRITE(FILE *fd, const u_int8_t *foo, ...)
++void CFGWRITE(FILE *fd, const u_int8_t *foo, ...)
+ {
+ va_list	args;
+ 	va_start(args, foo);
+-- 
+2.31.1
+

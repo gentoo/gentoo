@@ -9,8 +9,8 @@ we strip out all the components which ascend in the directory tree
 
 http://bugs.gentoo.org/93079
 
---- main.c
-+++ main.c
+--- a/main.c
++++ b/main.c
 @@ -77,6 +77,48 @@ int dzRead (int inlen)
  	return 1;
  }
@@ -68,8 +68,8 @@ http://bugs.gentoo.org/93079
  	if (de->pak && de->type != TYPE_PAK)
  		return 1;	/* dont mess with dirchar inside pakfiles */
  	do
---- v1code.c
-+++ v1code.c
+--- a/v1code.c
++++ b/v1code.c
 @@ -201,6 +201,7 @@ void demv1_dxentities(void)
  
  }

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -12,13 +12,12 @@ SRC_URI="https://dev.mysql.com/get/Downloads/${URI_DIR}/${P}.tar.gz"
 
 LICENSE="Artistic GPL-2"
 SLOT="0/7"
-KEYWORDS="amd64 arm ~arm64 ppc ppc64 sparc x86"
-IUSE="debug examples gcov libressl static-libs"
+KEYWORDS="amd64 arm ~arm64 ~ppc ppc64 sparc x86"
+IUSE="debug examples gcov static-libs"
 
 DEPEND="dev-db/mysql-connector-c:=
 	dev-libs/boost:=
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	!<dev-db/mysql-connector-c-6.1.8"
 RDEPEND="${DEPEND}"
 
@@ -57,7 +56,7 @@ src_install() {
 
 	# examples
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins "${S}"/examples/*
+		dodoc -r examples
+		docompress -x /usr/share/doc/${PF}/examples
 	fi
 }

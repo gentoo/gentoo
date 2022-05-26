@@ -3,9 +3,8 @@
 
 EAPI=7
 
-XORG_STATIC="no"
 inherit xorg-3
 
 DESCRIPTION="Elographics input driver"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 IUSE=""

@@ -1,5 +1,5 @@
---- Sources/Display/Providers/png_provider_generic.cpp
-+++ Sources/Display/Providers/png_provider_generic.cpp
+--- a/Sources/Display/Providers/png_provider_generic.cpp
++++ b/Sources/Display/Providers/png_provider_generic.cpp
 @@ -107,7 +107,7 @@
  		png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp) NULL);
  		cl_assert(false);

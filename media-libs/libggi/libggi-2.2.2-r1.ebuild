@@ -1,7 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit autotools
 
 DESCRIPTION="Provides an opaque interface to the display's acceleration function"
 HOMEPAGE="https://ibiblio.org/ggicore/packages/libggi.html"
@@ -9,7 +11,7 @@ SRC_URI="mirror://sourceforge/ggi/${P}.src.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="3dfx aalib cpu_flags_x86_mmx debug fbcon svga vis X"
 
 RDEPEND=">=media-libs/libgii-1.0.2
@@ -24,6 +26,20 @@ DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 
 DOCS=( ChangeLog ChangeLog.1999 FAQ NEWS README )
+
+PATCHES=(
+	"${FILESDIR}/${P}-slibtool.patch" # 775584
+)
+
+src_prepare() {
+	default
+
+	# We really don't want this
+	# https://sourceforge.net/p/ggi/patches/7/
+	rm -f acinclude.m4 || die
+
+	eautoreconf
+}
 
 src_configure() {
 	local myconf=""

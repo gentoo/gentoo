@@ -1,4 +1,4 @@
-# Copyright 2006-2020 Gentoo Authors
+# Copyright 2006-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ HOMEPAGE="https://transmissionbt.com/"
 # MIT is in several libtransmission/ headers
 LICENSE="|| ( GPL-2 GPL-3 Transmission-OpenSSL-exception ) GPL-2 MIT"
 SLOT="0"
-IUSE="appindicator gtk libressl lightweight nls mbedtls qt5 systemd test"
+IUSE="appindicator cli gtk lightweight nls mbedtls qt5 systemd test web"
 RESTRICT="!test? ( test )"
 
 ACCT_DEPEND="
@@ -32,7 +32,6 @@ BDEPEND="${ACCT_DEPEND}
 	virtual/pkgconfig
 	nls? (
 		gtk? (
-			dev-util/intltool
 			sys-devel/gettext
 		)
 		qt5? (
@@ -42,20 +41,17 @@ BDEPEND="${ACCT_DEPEND}
 "
 COMMON_DEPEND="
 	>=dev-libs/libevent-2.0.10:=
-	!mbedtls? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	!mbedtls? ( dev-libs/openssl:0= )
 	mbedtls? ( net-libs/mbedtls:0= )
 	net-libs/libnatpmp
+	>=net-libs/libpsl-0.21.1
 	>=net-libs/miniupnpc-1.7:=
 	>=net-misc/curl-7.16.3[ssl]
 	sys-libs/zlib:=
 	nls? ( virtual/libintl )
 	gtk? (
-		>=dev-libs/dbus-glib-0.100
-		>=dev-libs/glib-2.32:2
-		>=x11-libs/gtk+-3.4:3
+		>=dev-cpp/gtkmm-3.24.0:3.0
+		>=dev-cpp/glibmm-2.50.1:2
 		appindicator? ( >=dev-libs/libappindicator-0.4.30:3 )
 	)
 	qt5? (
@@ -71,7 +67,6 @@ DEPEND="${COMMON_DEPEND}
 	nls? (
 		virtual/libintl
 		gtk? (
-			dev-util/intltool
 			sys-devel/gettext
 		)
 		qt5? (
@@ -87,18 +82,25 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR=share/doc/${PF}
 
+		-DENABLE_CLI=$(usex cli ON OFF)
 		-DENABLE_GTK=$(usex gtk ON OFF)
 		-DENABLE_LIGHTWEIGHT=$(usex lightweight ON OFF)
 		-DENABLE_NLS=$(usex nls ON OFF)
 		-DENABLE_QT=$(usex qt5 ON OFF)
 		-DENABLE_TESTS=$(usex test ON OFF)
+		-DENABLE_WEB=$(usex web ON OFF)
 
 		-DUSE_SYSTEM_EVENT2=ON
+		-DUSE_SYSTEM_DEFLATE=OFF
 		-DUSE_SYSTEM_DHT=OFF
 		-DUSE_SYSTEM_MINIUPNPC=ON
 		-DUSE_SYSTEM_NATPMP=ON
 		-DUSE_SYSTEM_UTP=OFF
 		-DUSE_SYSTEM_B64=OFF
+		-DUSE_SYSTEM_PSL=ON
+		-DUSE_QT_VERSION=5
+
+		-DRUN_CLANG_TIDY=OFF
 
 		-DWITH_CRYPTO=$(usex mbedtls polarssl openssl)
 		-DWITH_INOTIFY=ON
@@ -114,8 +116,12 @@ src_install() {
 
 	newinitd "${FILESDIR}"/transmission-daemon.initd.10 transmission-daemon
 	newconfd "${FILESDIR}"/transmission-daemon.confd.4 transmission-daemon
-	systemd_dounit daemon/transmission-daemon.service
-	systemd_install_serviced "${FILESDIR}"/transmission-daemon.service.conf
+
+	if use systemd; then
+		# Service sets Type=notify
+		systemd_dounit daemon/transmission-daemon.service
+		systemd_install_serviced "${FILESDIR}"/transmission-daemon.service.conf
+	fi
 
 	insinto /usr/lib/sysctl.d
 	doins "${FILESDIR}"/60-transmission.conf

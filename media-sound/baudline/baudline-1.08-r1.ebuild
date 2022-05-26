@@ -1,24 +1,22 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils xdg
+inherit desktop xdg
 
 DESCRIPTION="A time-frequency browser designed for visualization of spectral domains"
-HOMEPAGE="http://www.baudline.com/"
-SRC_URI="amd64? ( http://www.baudline.com/${PN}_${PV}_linux_x86_64.tar.gz )
-	ppc? ( http://www.baudline.com/${PN}_${PV}_linux_ppc.tar.gz )
-	s390? ( http://www.baudline.com/${PN}_${PV}_linux_s390.tar.gz )
-	x86? ( http://www.baudline.com/baudline_1.08_linux_i686.tar.gz )"
+HOMEPAGE="https://www.baudline.com/"
+SRC_URI="amd64? ( https://www.baudline.com/${PN}_${PV}_linux_x86_64.tar.gz )
+	x86? ( https://www.baudline.com/${PN}_${PV}_linux_i686.tar.gz )"
 
-LICENSE="${PN}"
+LICENSE="baudline"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
 IUSE="jack"
 
 RESTRICT="mirror bindist"
-QA_PREBUILT="/opt/baudline/baudline*"
+QA_PREBUILT="opt/baudline/baudline*"
 
 RDEPEND="media-fonts/font-adobe-75dpi
 	media-fonts/font-misc-misc

@@ -1,0 +1,50 @@
+# Gentoo custom Makefile for Bitshuffle C library
+# Adapted from GNU Guix:
+# https://git.savannah.gnu.org/cgit/guix.git/tree/gnu/packages/python-compression.scm?h=v1.3.0#n346
+# Distributed under the terms of the GNU General Public License v3
+
+# To avoid bundled dependency, the copy of lz4 included
+# in Bitshuffle's source tree is not used
+
+PACKAGE_VERSION ?= 0.3.5
+
+# Upstream has never specified an soname, so we need to conduct downstream
+# soname versioning.  The format of soname is "lib${PN}.so.$(ver_cut 1)".
+# No incompatible ABI changes have been observed yet since version 0.2.4,
+# but just in case the upstream recklessly handles ABI compatibility,
+# please try to test ABI compatibility when updating to a new release,
+# using tools like 'abidiff' in dev-util/libabigail or alike.
+SONAME_VERSION := $(shell echo $(PACKAGE_VERSION) | cut -d. -f1)
+SONAME_BASE = libbitshuffle.so
+SONAME := $(SONAME_BASE).$(SONAME_VERSION)
+SOFILE := $(SONAME_BASE).$(PACKAGE_VERSION)
+
+CFLAGS := -O3 -ffast-math -std=c99 -fPIC $(CFLAGS)
+
+OBJS = \
+	src/bitshuffle.o \
+	src/bitshuffle_core.o \
+	src/iochain.o
+
+$(SOFILE): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ -shared $(LDFLAGS) -Wl,-soname,$(SONAME) $^
+
+%.o: %.c
+	$(CC) $(CFLAGS) -Isrc -c $< -o $@
+
+INSTALL = install
+LN_S = ln -s
+
+PREFIX = /usr/local
+LIBDIR = $(PREFIX)/lib
+INCLUDEDIR = $(PREFIX)/include
+
+install: $(SOFILE)
+	$(INSTALL) -dm755 $(DESTDIR)$(LIBDIR)
+	$(INSTALL) -dm755 $(DESTDIR)$(INCLUDEDIR)
+	$(INSTALL) -m755 $(SOFILE) $(DESTDIR)$(LIBDIR)
+	$(INSTALL) -m644 src/bitshuffle.h $(DESTDIR)$(INCLUDEDIR)
+	$(INSTALL) -m644 src/bitshuffle_core.h $(DESTDIR)$(INCLUDEDIR)
+	$(INSTALL) -m644 src/iochain.h $(DESTDIR)$(INCLUDEDIR)
+	$(LN_S) $(SOFILE) $(DESTDIR)$(LIBDIR)/$(SONAME_BASE)
+	$(LN_S) $(SOFILE) $(DESTDIR)$(LIBDIR)/$(SONAME)

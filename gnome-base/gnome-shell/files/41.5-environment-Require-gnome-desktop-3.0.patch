@@ -1,0 +1,30 @@
+From 795312b8d5634d3005679b3c1313114e41e538fd Mon Sep 17 00:00:00 2001
+From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
+Date: Thu, 11 Nov 2021 16:20:39 -0300
+Subject: [PATCH 2/2] environment: Require gnome-desktop 3.0
+
+Pretty much the exact same case of 9ce6756235.
+
+libgnome-desktop saw a major version bump, and we have to
+stick with 3.0 for a while.
+
+Part-of: <https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/2030>
+---
+ js/ui/environment.js | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/js/ui/environment.js b/js/ui/environment.js
+index e906fa6c6..cb254e319 100644
+--- a/js/ui/environment.js
++++ b/js/ui/environment.js
+@@ -7,6 +7,7 @@ imports.gi.versions.Clutter = Config.LIBMUTTER_API_VERSION;
+ imports.gi.versions.Gio = '2.0';
+ imports.gi.versions.GdkPixbuf = '2.0';
+ imports.gi.versions.GnomeBluetooth = '1.0';
++imports.gi.versions.GnomeDesktop = '3.0';
+ imports.gi.versions.Gtk = '3.0';
+ imports.gi.versions.Soup = '3.0';
+ imports.gi.versions.TelepathyGLib = '0.12';
+-- 
+2.34.1
+

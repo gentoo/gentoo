@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>nerdboy@gentoo.org</email>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		cccc provides source code metrics (line counts, complexity,
 		object-oriented, and structural metrics) for Java and C++

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit pam multilib libtool tmpfiles
+inherit pam libtool tmpfiles toolchain-funcs
 
 MY_P="${P/_/}"
 MY_P="${MY_P/beta/b}"
@@ -14,15 +14,23 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit mercurial
 	EHG_REPO_URI="https://www.sudo.ws/repos/sudo"
 else
+	inherit verify-sig
+	VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/sudo.ws.asc
+	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-sudo )"
+
 	uri_prefix=
 	case ${P} in
 		*_beta*|*_rc*) uri_prefix=beta/ ;;
 	esac
 
 	SRC_URI="https://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz
-		ftp://ftp.sudo.ws/pub/sudo/${uri_prefix}${MY_P}.tar.gz"
+		ftp://ftp.sudo.ws/pub/sudo/${uri_prefix}${MY_P}.tar.gz
+		verify-sig? (
+			https://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz.sig
+			ftp://ftp.sudo.ws/pub/sudo/${uri_prefix}${MY_P}.tar.gz.sig
+		)"
 	if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~sparc-solaris"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~sparc-solaris"
 	fi
 fi
 
@@ -30,26 +38,24 @@ fi
 # 3-clause BSD license
 LICENSE="ISC BSD"
 SLOT="0"
-IUSE="gcrypt ldap libressl nls offensive pam sasl +secure-path selinux +sendmail skey ssl sssd"
+IUSE="gcrypt ldap nls offensive pam sasl +secure-path selinux +sendmail skey ssl sssd"
 
 DEPEND="
 	sys-libs/zlib:=
+	virtual/libcrypt:=
 	gcrypt? ( dev-libs/libgcrypt:= )
 	ldap? (
-		>=net-nds/openldap-2.1.30-r1
+		>=net-nds/openldap-2.1.30-r1:=
 		sasl? (
 			dev-libs/cyrus-sasl
-			net-nds/openldap[sasl]
+			net-nds/openldap:=[sasl]
 		)
 	)
 	pam? ( sys-libs/pam )
 	sasl? ( dev-libs/cyrus-sasl )
 	skey? ( >=sys-auth/skey-1.1.5-r1 )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
-	sssd? ( sys-auth/sssd[sudo(+)] )
+	ssl? ( dev-libs/openssl:0= )
+	sssd? ( sys-auth/sssd[sudo] )
 "
 RDEPEND="
 	${DEPEND}
@@ -60,15 +66,16 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-sudo )
 	sendmail? ( virtual/mta )
 "
-BDEPEND="
+BDEPEND+="
 	sys-devel/bison
+	virtual/pkgconfig
 "
 
 S="${WORKDIR}/${MY_P}"
 
 REQUIRED_USE="
-	pam? ( !skey )
-	skey? ( !pam )
+	?? ( pam skey )
+	?? ( gcrypt ssl )
 "
 
 MAKEOPTS+=" SAMPLES="
@@ -79,11 +86,6 @@ src_prepare() {
 }
 
 set_secure_path() {
-	# FIXME: secure_path is a compile time setting. using PATH or
-	# ROOTPATH is not perfect, env-update may invalidate this, but until it
-	# is available as a sudoers setting this will have to do.
-	einfo "Setting secure_path ..."
-
 	# first extract the default ROOTPATH from build env
 	SECURE_PATH=$(unset ROOTPATH; . "${EPREFIX}"/etc/profile.env;
 		echo "${ROOTPATH}")
@@ -109,7 +111,7 @@ set_secure_path() {
 		done
 		SECURE_PATH=${newpath#:}
 	}
-	cleanpath /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/opt/bin${SECURE_PATH:+:${SECURE_PATH}}
+	cleanpath /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin${SECURE_PATH:+:${SECURE_PATH}}
 
 	# finally, strip gcc paths #136027
 	rmpath() {
@@ -121,13 +123,12 @@ set_secure_path() {
 		SECURE_PATH=${newpath#:}
 	}
 	rmpath '*/gcc-bin/*' '*/gnat-gcc-bin/*' '*/gnat-gcc/*'
-
-	einfo "... done"
 }
 
 src_configure() {
 	local SECURE_PATH
 	set_secure_path
+	tc-export PKG_CONFIG #767712
 
 	# audit: somebody got to explain me how I can test this before I
 	# enable it.. - Diego
@@ -170,10 +171,10 @@ src_install() {
 	default
 
 	if use ldap ; then
-		dodoc README.LDAP
+		dodoc README.LDAP.md
 
 		cat <<-EOF > "${T}"/ldap.conf.sudo
-		# See ldap.conf(5) and README.LDAP for details
+		# See ldap.conf(5) and README.LDAP.md for details
 		# This file should only be readable by root
 
 		# supported directives: host, port, ssl, ldap_version
@@ -194,10 +195,13 @@ src_install() {
 		fperms 0440 /etc/ldap.conf.sudo
 
 		insinto /etc/openldap/schema
-		newins doc/schema.OpenLDAP sudo.schema
+		newins docs/schema.OpenLDAP sudo.schema
 	fi
 
-	pamd_mimic system-auth sudo auth account session
+	if use pam; then
+		pamd_mimic system-auth sudo auth account session
+		pamd_mimic system-auth sudo-i auth account session
+	fi
 
 	keepdir /var/db/sudo/lectured
 	fperms 0700 /var/db/sudo/lectured

@@ -1,0 +1,2 @@
+private-etc alternatives,ld.so.cache,ld.so.conf,ld.so.conf.d,ld.so.preload
+private-lib gcc/*/*/libgcc_s.so.*,gcc/*/*/libstdc++.so.*

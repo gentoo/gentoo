@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>mysql-bugs@gentoo.org</email>
@@ -7,18 +7,13 @@
   </maintainer>
 <use>
   <flag name="cjk">Add CJK support for InnoDB fulltext search using <pkg>app-text/mecab</pkg></flag>
-  <flag name="client-libs">Build the libmysqlclient libraries</flag>
-  <flag name="experimental">Build experimental features aka "rapid" plugins</flag>
   <flag name="latin1">Use LATIN1 encoding instead of UTF8</flag>
-  <flag name="libressl">Enable SSL connections and crypto functions using <pkg>dev-libs/libressl</pkg></flag>
   <flag name="numa">Enable NUMA support using <pkg>sys-process/numactl</pkg> (NUMA kernel support is also required)</flag>
   <flag name="profiling">Add support for statement profiling (requires USE=community).</flag>
   <flag name="rocksdb">Add support for RocksDB; a key/value, LSM database optimized for flash storage</flag>
   <flag name="router">Build the MySQL router program</flag>
   <flag name="server">Build the server program</flag>
-  <flag name="systemtap">Build support for profiling and tracing using <pkg>dev-util/systemtap</pkg></flag>
   <flag name="tokudb">Add support for TokuDB storage engine</flag>
   <flag name="tokudb-backup-plugin">Builds the TokuDB backup plugin</flag>
-  <flag name="yassl">Enable SSL connections and crypto functions using the bundled yaSSL</flag>
 </use>
 </pkgmetadata>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
   <email>gienah@gentoo.org</email>
@@ -13,7 +13,4 @@ or the instability of qingy. Written in pure bash, CDM has no other
 dependencies, yet supports multiple users/sessions and can start
 virtually any DE/WM.
 </longdescription>
-<use> 
-  <flag name="consolekit">Enable native consolekit support</flag>
-</use>
 </pkgmetadata>

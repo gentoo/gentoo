@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <catmetadata>
 	<longdescription lang="en">
 		The net-misc category contains various miscellaneous networking tools
@@ -34,4 +34,3 @@
 		Kategoria net-misc zawiera różne dodatkowe narzędzia i programy sieciowe.
 	</longdescription>
 </catmetadata>
-

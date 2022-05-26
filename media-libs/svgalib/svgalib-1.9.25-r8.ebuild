@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic linux-mod toolchain-funcs
+inherit flag-o-matic linux-mod toolchain-funcs udev
 
 DESCRIPTION="A library for running svga graphics on the console"
 HOMEPAGE="http://www.svgalib.org/"
@@ -11,7 +11,7 @@ SRC_URI="http://www.arava.co.il/matan/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="-* ~x86"
+KEYWORDS="-* x86"
 IUSE="build +kernel-helper"
 
 MODULE_NAMES="svgalib_helper(misc:${S}/kernel/svgalib_helper)"
@@ -31,6 +31,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.25-linux_3.9.patch
 	"${FILESDIR}"/${PN}-1.9.25-no-man-compression.patch
 	"${FILESDIR}"/${PN}-1.9.25-wrapdemo-buf-overflow.patch
+	"${FILESDIR}"/${PN}-1.9.25-ar.patch
+	"${FILESDIR}"/${PN}-1.9.25-gl-asm-width.patch
 )
 
 pkg_setup() {
@@ -47,7 +49,7 @@ src_prepare() {
 src_compile() {
 	use kernel-helper || export NO_HELPER=y
 
-	export CC=$(tc-getCC)
+	export CC="$(tc-getCC)"
 	# C89 extern inlines are needed, see #576260
 	append-cflags -fgnu89-inline
 
@@ -87,8 +89,7 @@ src_install() {
 	doins src/vga.h gl/vgagl.h src/mouse/vgamouse.h src/joystick/vgajoystick.h
 	doins src/keyboard/vgakeyboard.h kernel/svgalib_helper/svgalib_helper.h
 
-	insinto /lib/udev/rules.d
-	newins "${FILESDIR}"/svgalib.udev.rules.d.2 30-svgalib.rules
+	udev_newrules "${FILESDIR}"/svgalib.udev.rules.d.2 30-svgalib.rules
 
 	exeinto /usr/lib/svgalib/demos
 	for x in "${S}"/demos/* ; do
@@ -120,5 +121,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
+
 	! use build && use kernel-helper && linux-mod_pkg_postinst
 }

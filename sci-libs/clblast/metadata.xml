@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>sci@gentoo.org</email>
@@ -17,6 +17,12 @@
   <use>
     <flag name="client">
       Enable compilation of the clients to test and compare performance with reference libraries
+    </flag>
+    <flag name="cuda">
+      Build with support for cuda instead of opencl (beta!)
+    </flag>
+    <flag name="opencl">
+      Build with support for opencl
     </flag>
   </use>
   <upstream>

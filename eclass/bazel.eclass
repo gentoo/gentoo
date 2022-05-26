@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: bazel.eclass
@@ -6,7 +6,7 @@
 # Jason Zaman <perfinion@gentoo.org>
 # @AUTHOR:
 # Jason Zaman <perfinion@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Utility functions for packages using Bazel Build
 # @DESCRIPTION:
 # A utility eclass providing functions to run the Bazel Build system.
@@ -17,7 +17,7 @@ case "${EAPI:-0}" in
 	0|1|2|3|4|5|6)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
-	7)
+	7|8)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -28,7 +28,9 @@ if [[ ! ${_BAZEL_ECLASS} ]]; then
 
 inherit multiprocessing toolchain-funcs
 
-BDEPEND=">=dev-util/bazel-0.20"
+if [[ ${CATEGORY}/${PN} != "dev-util/bazel" ]]; then
+	BDEPEND=">=dev-util/bazel-0.20"
+fi
 
 # @FUNCTION: bazel_get_flags
 # @DESCRIPTION:
@@ -113,9 +115,12 @@ bazel_setup_bazelrc() {
 
 		build --define=PREFIX=${EPREFIX%/}/usr
 		build --define=LIBDIR=\$(PREFIX)/$(get_libdir)
+		build --define=INCLUDEDIR=\$(PREFIX)/include
 		EOF
 
 	if tc-is-cross-compiler; then
+		echo "build --distinct_host_configuration" >> "${T}/bazelrc" || die
+	else
 		echo "build --nodistinct_host_configuration" >> "${T}/bazelrc" || die
 	fi
 }

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{5,6,7,8} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit desktop git-r3 python-r1 xdg
 
 DESCRIPTION="GTK image viewer for comic book archives"
@@ -17,10 +17,9 @@ IUSE=""
 
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
-	virtual/jpeg
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pygobject[${PYTHON_USEDEP}]
-	!media-gfx/comix"
+	media-libs/libjpeg-turbo:0"
 BDEPEND="sys-devel/gettext"
 
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
@@ -51,9 +50,6 @@ src_install() {
 
 	insinto /usr/share/metainfo
 	doins mime/mcomix.appdata.xml
-
-	insinto /usr/share/mime/packages
-	doins mime/mcomix.xml
 
 	dodoc README.rst TODO
 }

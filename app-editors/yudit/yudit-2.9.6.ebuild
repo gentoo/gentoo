@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 DESCRIPTION="Free (Y)unicode text editor for all unices"
 HOMEPAGE="http://www.yudit.org/"
@@ -12,10 +12,11 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 RDEPEND="x11-libs/libX11"
-DEPEND="${RDEPEND}
-	>=sys-devel/gettext-0.10"
+DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/gettext"
 
 src_prepare() {
+	default
 	#Don't strip binaries, let portage do that.
 	sed -i "/^INSTALL_PROGRAM/s: -s::" Makefile.conf.in || die "sed failed"
 }

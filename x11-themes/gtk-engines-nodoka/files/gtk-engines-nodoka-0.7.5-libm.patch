@@ -1,0 +1,40 @@
+From 6568ca0e84d19f4c7f67e9c5ac3f85931cffa61a Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sun, 28 Mar 2021 10:46:58 -0700
+Subject: [PATCH] gtk-nodoka-engine: Fix undefined libm references with
+ slibtool.
+
+Signed-off-by: orbea <orbea@riseup.net>
+---
+ Makefile.am  | 2 +-
+ configure.ac | 3 +++
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index d7b2a8b..c426a45 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -34,5 +34,5 @@ libnodoka_la_SOURCES =				\
+ 	./src/GTKEngine/config.h
+ 
+ libnodoka_la_LDFLAGS = -module -avoid-version -no-undefined
+-libnodoka_la_LIBADD =  $(GTK_LIBS)
++libnodoka_la_LIBADD =  $(GTK_LIBS) $(LIBM)
+ 
+diff --git a/configure.ac b/configure.ac
+index d771891..4ddbc87 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -17,6 +17,9 @@ AM_DISABLE_STATIC
+ AC_LIBTOOL_WIN32_DLL
+ AM_PROG_LIBTOOL
+ 
++AC_CHECK_LIBM
++AC_SUBST([LIBM])
++
+ AC_ARG_ENABLE(animation, [  --enable-animation      compile nodoka with animation support], [animation=$enableval], 	[animation="no"], )
+ AC_ARG_ENABLE(animationtoleft, [  --enable-animationtoleft        compile nodoka with progressbar animation from right to left], [animationtoleft=$enableval], 	[animationtoleft="no"], )
+ 
+-- 
+2.29.2
+

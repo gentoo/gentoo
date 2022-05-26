@@ -1,0 +1,26 @@
+See bug for rationale, gist is that this is still useful.
+
+Patch from Erik Wallin <erikw@sizeit.se>
+https://bugs.gentoo.org/769794
+--- a/java/CMakeLists.txt
++++ b/java/CMakeLists.txt
+@@ -7,6 +7,8 @@
+ 
+ find_package(Java)
+ 
++set(DATA_DIR "${CMAKE_INSTALL_PREFIX}/share")
++
+ set(DEFAULT_JAVACFLAGS "-source 8 -target 8 -encoding UTF-8 -Xlint:all,-serial,-cast,-unchecked,-fallthrough,-dep-ann,-deprecation,-rawtypes")
+ set(JAVACFLAGS ${DEFAULT_JAVACFLAGS} CACHE STRING
+   "Java compiler flags (Default: ${DEFAULT_JAVACFLAGS})")
+@@ -172,3 +174,10 @@
+     -P ${SRCDIR}/cmake/SignJar.cmake)
+ 
+ add_custom_target(java ALL DEPENDS VncViewer.jar)
++
++if(NOT WIN32)
++  install(FILES
++    ${BINDIR}/VncViewer.jar
++    ${SRCDIR}/${CLASSPATH}/README
++    DESTINATION ${DATA_DIR}/vnc/classes)
++endif()

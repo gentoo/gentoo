@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,8 +11,8 @@ DESCRIPTION="VDR Plugin: Xinelib PlugIn"
 HOMEPAGE="https://sourceforge.net/projects/xineliboutput/"
 SRC_URI="mirror://sourceforge/${PN#vdr-}/${P}.tgz"
 
-SLOT="0"
 LICENSE="GPL-2+"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="bluray caps cec dbus fbcon jpeg libextractor nls opengl +vdr vaapi vdpau +X +xine xinerama"
 
@@ -61,7 +61,7 @@ pkg_setup() {
 	vdr-plugin-2_pkg_setup
 
 	if use xine; then
-		XINE_PLUGIN_DIR=$(pkg-config --variable=plugindir libxine)
+		XINE_PLUGIN_DIR=$($(tc-getPKG_CONFIG) --variable=plugindir libxine)
 		[ -z "${XINE_PLUGIN_DIR}" ] && die "Could not find xine plugin dir"
 	fi
 }
@@ -83,8 +83,8 @@ src_configure() {
 
 	# No autotools based configure script
 	./configure \
-		--cc=$(tc-getCC) \
-		--cxx=$(tc-getCXX) \
+		--cc="$(tc-getCC)" \
+		--cxx="$(tc-getCXX)" \
 		$(use_enable X x11) \
 		$(use_enable X xshm) \
 		$(use_enable X xdpms) \

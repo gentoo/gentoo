@@ -32,10 +32,10 @@ index df7b114..3659c97 100644
 +  if test "${ac_cv_search_cmsOpenProfileFromFile}" != "no"; then
 +    AC_DEFINE(HAVE_LIBLCMS, 1, [Define if LCMS is to be used.])
 +  fi
-+  if test "${ac_cv_search_cmsOpenProfileFromFile}" == "-llcms2"; then
++  if test "${ac_cv_search_cmsOpenProfileFromFile}" = "-llcms2"; then
 +    AC_DEFINE(HAVE_LIBLCMS2, 1, [Define if you have liblcms2.])
 +  else
-+    if test "${ac_cv_search_cmsOpenProfileFromFile}" == "-llcms"; then
++    if test "${ac_cv_search_cmsOpenProfileFromFile}" = "-llcms"; then
 +      AC_DEFINE(HAVE_LIBLCMS1, 1, [Define if you have liblcms.])
 +    fi
 +  fi

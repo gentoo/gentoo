@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic libtool
 
@@ -12,7 +12,7 @@ if [[ ${PV} == *9999* ]]; then
 	NLS_DEPEND="sys-devel/gettext"
 	NLS_RDEPEND="virtual/libintl"
 else
-	KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
 	SRC_URI="mirror://sourceforge/xine/${P}.tar.xz"
 	NLS_IUSE="nls"
 	NLS_DEPEND="nls? ( sys-devel/gettext )"
@@ -24,9 +24,14 @@ HOMEPAGE="http://xine.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="1"
-IUSE="a52 aac aalib +alsa altivec bluray +css dts dvb dxr3 fbcon flac gtk imagemagick ipv6 jack jpeg libcaca mad +mmap mng modplug musepack opengl oss pulseaudio samba sdl speex theora truetype v4l vaapi vcd vdpau vdr vidix +vis vorbis vpx wavpack +X xinerama +xv xvmc ${NLS_IUSE}"
+IUSE="a52 aac aalib +alsa altivec bluray +css dav1d dts dvb dxr3 fbcon flac gtk imagemagick ipv6 jack jpeg libcaca mad +mmap mng modplug musepack nfs opengl oss pulseaudio samba sftp sdl speex theora truetype v4l vaapi vcd vdpau vdr vidix +vis vorbis vpx wavpack wayland +X xinerama +xv xvmc ${NLS_IUSE}"
 
-RDEPEND="${NLS_RDEPEND}
+BDEPEND="
+	app-arch/xz-utils
+	>=sys-devel/libtool-2.2.6b
+	virtual/pkgconfig
+"
+RDEPEND="
 	dev-libs/libxdg-basedir
 	media-libs/libdvdnav
 	media-video/ffmpeg:0=
@@ -38,24 +43,27 @@ RDEPEND="${NLS_RDEPEND}
 	alsa? ( media-libs/alsa-lib )
 	bluray? ( >=media-libs/libbluray-0.2.1:= )
 	css? ( >=media-libs/libdvdcss-1.2.10 )
+	dav1d? ( media-libs/dav1d:= )
 	dts? ( media-libs/libdca )
 	dxr3? ( media-libs/libfame )
 	flac? ( media-libs/flac )
 	gtk? ( x11-libs/gdk-pixbuf:2 )
 	imagemagick? ( virtual/imagemagick-tools )
 	jack? ( virtual/jack )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	libcaca? ( media-libs/libcaca )
 	mad? ( media-libs/libmad )
 	mng? ( media-libs/libmng:= )
 	modplug? ( >=media-libs/libmodplug-0.8.8.1 )
 	musepack? ( >=media-sound/musepack-tools-444 )
+	nfs? ( net-fs/libnfs:= )
 	opengl? (
 		virtual/glu
 		virtual/opengl
 	)
 	pulseaudio? ( media-sound/pulseaudio )
 	samba? ( net-fs/samba )
+	sftp? ( net-libs/libssh2 )
 	sdl? ( media-libs/libsdl )
 	speex? (
 		media-libs/libogg
@@ -82,6 +90,7 @@ RDEPEND="${NLS_RDEPEND}
 	)
 	vpx? ( media-libs/libvpx:0= )
 	wavpack? ( media-sound/wavpack )
+	wayland? ( dev-libs/wayland )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXext
@@ -92,10 +101,6 @@ RDEPEND="${NLS_RDEPEND}
 	xvmc? ( x11-libs/libXvMC )
 "
 DEPEND="${RDEPEND}
-	${NLS_DEPEND}
-	app-arch/xz-utils
-	>=sys-devel/libtool-2.2.6b
-	virtual/pkgconfig
 	oss? ( virtual/os-headers )
 	v4l? ( virtual/os-headers )
 	X? (
@@ -153,6 +158,8 @@ src_configure() {
 		--with-xv-path=/usr/$(get_libdir)
 		--without-esound
 		--without-fusionsound
+		# Added dav1d for now. Could support both? Does it need to be XOR?
+		--without-libaom
 		$(use_enable a52 a52dec)
 		$(use_enable aac faad)
 		$(use_enable aalib)
@@ -170,10 +177,12 @@ src_configure() {
 		$(use_enable mng)
 		$(use_enable modplug)
 		$(use_enable musepack)
+		$(use_enable nfs)
 		$(use_enable opengl)
 		$(use_enable opengl glu)
 		$(use_enable oss)
 		$(use_enable samba)
+		$(use_enable sftp)
 		$(use_enable v4l libv4l)
 		$(use_enable v4l v4l2)
 		$(use_enable vaapi)
@@ -185,7 +194,9 @@ src_configure() {
 		$(use_enable vcd)
 		$(use_enable vdr)
 		$(use_enable vpx)
+		$(use_enable wayland)
 		$(use_with alsa)
+		$(use_with dav1d)
 		$(use_with flac libflac)
 		$(use_with imagemagick)
 		$(use_with jack)
@@ -214,5 +225,5 @@ src_compile() {
 src_install() {
 	default
 	find "${D}" -name '*.la' -delete || die
-	rm -f "${ED}"usr/share/doc/${PF}/COPYING || die
+	rm "${ED}"/usr/share/doc/${PF}/COPYING || die
 }

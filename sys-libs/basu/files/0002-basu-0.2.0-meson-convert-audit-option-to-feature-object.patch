@@ -1,0 +1,49 @@
+From 34d1b77f1dd15d55cfc12ef2ee52fd3b6b1d76ce Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@aarsen.me>
+Date: Fri, 5 Nov 2021 18:39:56 +0100
+Subject: [PATCH 2/2] meson: convert audit option to feature object
+
+features are more idiomatic and ubiquitous
+---
+ meson.build       | 11 ++---------
+ meson_options.txt |  2 +-
+ 2 files changed, 3 insertions(+), 10 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 357b346..1f29690 100644
+--- a/meson.build
++++ b/meson.build
+@@ -235,15 +235,8 @@ libcap = dependency('libcap', required: get_option('libcap'))
+ have_libcap = libcap.found()
+ conf.set10('HAVE_LIBCAP', have_libcap)
+ 
+-want_audit = get_option('audit')
+-if want_audit != 'false'
+-        libaudit = dependency('audit', required : want_audit == 'true')
+-        have = libaudit.found()
+-else
+-        have = false
+-        libaudit = []
+-endif
+-conf.set10('HAVE_AUDIT', have)
++libaudit = dependency('audit', required : get_option('audit'))
++conf.set10('HAVE_AUDIT', libaudit.found())
+ 
+ tests = []
+ 
+diff --git a/meson_options.txt b/meson_options.txt
+index ae5c7b1..87adfc2 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -12,7 +12,7 @@ option('system-bus-address', type : 'string',
+        description : 'The address of the sytem bus (defined at dbus compilation)',
+        value : 'unix:path=/var/run/dbus/system_bus_socket')
+ 
+-option('audit', type : 'combo', choices : ['auto', 'true', 'false'],
++option('audit', type : 'feature',
+        description : 'libaudit support')
+ 
+ option('libcap', type : 'feature',
+-- 
+2.32.0
+

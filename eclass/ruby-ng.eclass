@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-ng.eclass
@@ -8,7 +8,7 @@
 # Author: Diego E. Pettenò <flameeyes@gentoo.org>
 # Author: Alex Legler <a3li@gentoo.org>
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: An eclass for installing Ruby packages with proper support for multiple Ruby slots.
 # @DESCRIPTION:
 # The Ruby eclass is designed to allow an easier installation of Ruby packages
@@ -25,7 +25,7 @@
 #  * each_ruby_configure
 #  * all_ruby_configure
 
-# @ECLASS-VARIABLE: USE_RUBY
+# @ECLASS_VARIABLE: USE_RUBY
 # @DEFAULT_UNSET
 # @REQUIRED
 # @DESCRIPTION:
@@ -33,19 +33,19 @@
 # is compatible to. It must be set before the `inherit' call. There is no
 # default. All ebuilds are expected to set this variable.
 
-# @ECLASS-VARIABLE: RUBY_PATCHES
+# @ECLASS_VARIABLE: RUBY_PATCHES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A String or Array of filenames of patches to apply to all implementations.
 
-# @ECLASS-VARIABLE: RUBY_OPTIONAL
+# @ECLASS_VARIABLE: RUBY_OPTIONAL
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set the value to "yes" to make the dependency on a Ruby interpreter
 # optional and then ruby_implementations_depend() to help populate
 # BDEPEND, DEPEND and RDEPEND.
 
-# @ECLASS-VARIABLE: RUBY_S
+# @ECLASS_VARIABLE: RUBY_S
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If defined this variable determines the source directory name after
@@ -53,7 +53,7 @@
 # variable supports a wildcard mechanism to help with github tarballs
 # that contain the commit hash as part of the directory name.
 
-# @ECLASS-VARIABLE: RUBY_QA_ALLOWED_LIBS
+# @ECLASS_VARIABLE: RUBY_QA_ALLOWED_LIBS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If defined this variable contains a whitelist of shared objects that
@@ -66,32 +66,28 @@
 # (e.g. selenium's firefox driver extension). When set this argument is
 # passed to "grep -E" to remove reporting of these shared objects.
 
-local inherits=""
 case ${EAPI} in
-	4|5)
-		inherits="eutils toolchain-funcs"
+	5)
+		inherit eutils toolchain-funcs
 		;;
 	6)
-		inherits="estack toolchain-funcs"
+		inherit estack toolchain-funcs
 		;;
 	*)
-		inherits="estack"
+		inherit estack
 		;;
 esac
 
-inherit ${inherits} multilib ruby-utils
+inherit multilib ruby-utils
 
 EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_test src_install pkg_setup
 
+# S is no longer automatically assigned when it doesn't exist.
+S="${WORKDIR}"
+
 case ${EAPI} in
-	0|1|2|3)
-		die "Unsupported EAPI=${EAPI} (too old) for ruby-ng.eclass" ;;
-	4|5|6|7)
-		# S is no longer automatically assigned when it doesn't exist.
-		S="${WORKDIR}"
-		;;
-	*)
-		die "Unknown EAPI=${EAPI} for ruby-ng.eclass"
+	5|6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # @FUNCTION: ruby_implementation_depend
@@ -105,12 +101,15 @@ esac
 # Set `comparator' and `version' to include a comparator (=, >=, etc.) and a
 # version string to the returned string
 ruby_implementation_depend() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	_ruby_implementation_depend $1
 }
 
 # @FUNCTION: _ruby_get_all_impls
 # @INTERNAL
 # @RETURN: list of valid values in USE_RUBY
+# @DESCRIPTION:
 # Return a list of valid implementations in USE_RUBY, skipping the old
 # implementations that are no longer supported.
 _ruby_get_all_impls() {
@@ -118,7 +117,7 @@ _ruby_get_all_impls() {
 	for i in ${USE_RUBY}; do
 		case ${i} in
 			# removed implementations
-			ruby19|ruby20|ruby21|ruby22|ruby23|ruby24|jruby)
+			ruby19|ruby20|ruby21|ruby22|ruby23|ruby24|ruby25|jruby)
 				;;
 			*)
 				echo ${i};;
@@ -134,6 +133,8 @@ _ruby_get_all_impls() {
 # ruby_add_bdepend(), but may also be useful in an ebuild to specify
 # more complex dependencies.
 ruby_samelib() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	local res=
 	for _ruby_implementation in $(_ruby_get_all_impls); do
 		has -${_ruby_implementation} $@ || \
@@ -166,6 +167,8 @@ _ruby_atoms_samelib_generic() {
 # Not all implementations have the same command basename as the
 # target; This function translate between the two
 ruby_implementation_command() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	local _ruby_name=$1
 
 	# Add all USE_RUBY values where the flag name diverts from the binary here
@@ -205,11 +208,13 @@ _ruby_wrap_conditions() {
 # Note: runtime dependencies are also added as build-time test
 # dependencies.
 ruby_add_rdepend() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	case $# in
 		1) ;;
 		2)
 			case ${EAPI} in
-				4|5|6)
+				5|6)
 					[[ "${GENTOO_DEV}" == "yes" ]] && eqawarn "You can now use the usual syntax in ruby_add_rdepend for $CATEGORY/$PF"
 					ruby_add_rdepend "$(_ruby_wrap_conditions "$1" "$2")"
 					return
@@ -231,7 +236,7 @@ ruby_add_rdepend() {
 	# Add the dependency as a test-dependency since we're going to
 	# execute the code during test phase.
 	case ${EAPI} in
-		4|5|6) DEPEND="${DEPEND} test? ( ${dependency} )" ;;
+		5|6) DEPEND="${DEPEND} test? ( ${dependency} )" ;;
 		*) BDEPEND="${BDEPEND} test? ( ${dependency} )" ;;
 	esac
 	if ! has test "$IUSE"; then
@@ -250,11 +255,13 @@ ruby_add_rdepend() {
 # dependencies instead of setting DEPEND or BDEPEND yourself. The list
 # of atoms uses the same syntax as normal dependencies.
 ruby_add_bdepend() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	case $# in
 		1) ;;
 		2)
 			case ${EAPI} in
-				4|5|6)
+				5|6)
 					[[ "${GENTOO_DEV}" == "yes" ]] && eqawarn "You can now use the usual syntax in ruby_add_bdepend for $CATEGORY/$PF"
 					ruby_add_bdepend "$(_ruby_wrap_conditions "$1" "$2")"
 					return
@@ -272,7 +279,7 @@ ruby_add_bdepend() {
 	local dependency=$(_ruby_atoms_samelib "$1")
 
 	case ${EAPI} in
-		4|5|6) DEPEND="${DEPEND} $dependency" ;;
+		5|6) DEPEND="${DEPEND} $dependency" ;;
 		*) BDEPEND="${BDEPEND} $dependency" ;;
 	esac
 	RDEPEND="${RDEPEND}"
@@ -284,8 +291,10 @@ ruby_add_bdepend() {
 # Adds the specified dependencies to DEPEND in EAPI7, similar to
 # ruby_add_bdepend.
 ruby_add_depend() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	case ${EAPI} in
-		4|5|6) die "only available in EAPI 7 and newer" ;;
+		5|6) die "only available in EAPI 7 and newer" ;;
 		*) ;;
 	esac
 
@@ -303,6 +312,8 @@ ruby_add_depend() {
 # @DESCRIPTION:
 # Gets an array of ruby use targets enabled by the user
 ruby_get_use_implementations() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	local i implementation
 	for implementation in $(_ruby_get_all_impls); do
 		use ruby_targets_${implementation} && i+=" ${implementation}"
@@ -314,6 +325,8 @@ ruby_get_use_implementations() {
 # @DESCRIPTION:
 # Gets an array of ruby use targets that the ebuild sets
 ruby_get_use_targets() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	local t implementation
 	for implementation in $(_ruby_get_all_impls); do
 		t+=" ruby_targets_${implementation}"
@@ -338,6 +351,8 @@ ruby_get_use_targets() {
 # DEPEND="ruby? ( $(ruby_implementations_depend) )"
 # RDEPEND="${DEPEND}"
 ruby_implementations_depend() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	local depend
 	for _ruby_implementation in $(_ruby_get_all_impls); do
 		depend="${depend}${depend+ }ruby_targets_${_ruby_implementation}? ( $(ruby_implementation_depend $_ruby_implementation) )"
@@ -353,7 +368,7 @@ if [[ ${RUBY_OPTIONAL} != yes ]]; then
 	RDEPEND="${RDEPEND} $(ruby_implementations_depend)"
 	REQUIRED_USE+=" || ( $(ruby_get_use_targets) )"
 	case ${EAPI} in
-		4|5|6) ;;
+		5|6) ;;
 		*) BDEPEND="${BDEPEND} $(ruby_implementations_depend)" ;;
 	esac
 fi
@@ -397,6 +412,7 @@ _ruby_invoke_environment() {
 
 	ebegin "Running ${_PHASE:-${EBUILD_PHASE}} phase for $environment"
 	"$@"
+	eend $?
 	popd &>/dev/null || die
 
 	S=${old_S}
@@ -432,6 +448,8 @@ _ruby_each_implementation() {
 # @DESCRIPTION:
 # Check whether at least one ruby target implementation is present.
 ruby-ng_pkg_setup() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	# This only checks that at least one implementation is present
 	# before doing anything; by leaving the parameters empty we know
 	# it's a special case.
@@ -442,6 +460,8 @@ ruby-ng_pkg_setup() {
 # @DESCRIPTION:
 # Unpack the source archive.
 ruby-ng_src_unpack() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	mkdir "${WORKDIR}"/all
 	pushd "${WORKDIR}"/all &>/dev/null || die
 
@@ -457,7 +477,7 @@ ruby-ng_src_unpack() {
 
 _ruby_apply_patches() {
 	case ${EAPI} in
-		4|5)
+		5)
 			for patch in "${RUBY_PATCHES[@]}"; do
 				if [ -f "${patch}" ]; then
 					epatch "${patch}"
@@ -498,6 +518,8 @@ _ruby_source_copy() {
 # Apply patches and prepare versions for each ruby target
 # implementation. Also carry out common clean up tasks.
 ruby-ng_src_prepare() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	# Way too many Ruby packages are prepared on OSX without removing
 	# the extra data forks, we do it here to avoid repeating it for
 	# almost every other ebuild.
@@ -505,7 +527,7 @@ ruby-ng_src_prepare() {
 
 	# Handle PATCHES and user supplied patches via the default phase
 	case ${EAPI} in
-		4|5)
+		5)
 			;;
 		*)
 			_ruby_invoke_environment all default
@@ -526,6 +548,8 @@ ruby-ng_src_prepare() {
 # @DESCRIPTION:
 # Configure the package.
 ruby-ng_src_configure() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	if type each_ruby_configure &>/dev/null; then
 		_ruby_each_implementation each_ruby_configure
 	fi
@@ -538,6 +562,8 @@ ruby-ng_src_configure() {
 # @DESCRIPTION:
 # Compile the package.
 ruby-ng_src_compile() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	if type each_ruby_compile &>/dev/null; then
 		_ruby_each_implementation each_ruby_compile
 	fi
@@ -550,6 +576,8 @@ ruby-ng_src_compile() {
 # @DESCRIPTION:
 # Run tests for the package.
 ruby-ng_src_test() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	if type each_ruby_test &>/dev/null; then
 		_ruby_each_implementation each_ruby_test
 	fi
@@ -576,7 +604,7 @@ _each_ruby_check_install() {
 	# that's what changes between two implementations (otherwise you'd get false
 	# positives now that Ruby 1.9.2 installs with the same sitedir as 1.8)
 	${scancmd} -qnR "${D}${sitelibdir}" "${D}${sitelibdir/site_ruby/gems}" \
-		| fgrep -v "${libruby_soname}" \
+		| grep -F -v "${libruby_soname}" \
 		| grep -E -v "${RUBY_QA_ALLOWED_LIBS}" \
 		> "${T}"/ruby-ng-${_ruby_implementation}-mislink.log
 
@@ -591,6 +619,8 @@ _each_ruby_check_install() {
 # @DESCRIPTION:
 # Install the package for each ruby target implementation.
 ruby-ng_src_install() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	if type each_ruby_install &>/dev/null; then
 		_ruby_each_implementation each_ruby_install
 	fi
@@ -606,7 +636,9 @@ ruby-ng_src_install() {
 # @USAGE: rbconfig item
 # @RETURN: Returns the value of the given rbconfig item of the Ruby interpreter in ${RUBY}.
 ruby_rbconfig_value() {
-	echo $(${RUBY} -rrbconfig -e "puts RbConfig::CONFIG['$1']")
+	debug-print-function ${FUNCNAME} "${@}"
+
+	echo $(${RUBY} --disable=did_you_mean -rrbconfig -e "puts RbConfig::CONFIG['$1']" || die "Could not read ruby configuration for '${1}'")
 }
 
 # @FUNCTION: doruby
@@ -614,6 +646,8 @@ ruby_rbconfig_value() {
 # @DESCRIPTION:
 # Installs the specified file(s) into the sitelibdir of the Ruby interpreter in ${RUBY}.
 doruby() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	[[ -z ${RUBY} ]] && die "\$RUBY is not set"
 	( # don't want to pollute calling env
 		sitelibdir=$(ruby_rbconfig_value 'sitelibdir')
@@ -626,12 +660,16 @@ doruby() {
 # @FUNCTION: ruby_get_libruby
 # @RETURN: The location of libruby*.so belonging to the Ruby interpreter in ${RUBY}.
 ruby_get_libruby() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	${RUBY} -rrbconfig -e 'puts File.join(RbConfig::CONFIG["libdir"], RbConfig::CONFIG["LIBRUBY"])'
 }
 
 # @FUNCTION: ruby_get_hdrdir
 # @RETURN: The location of the header files belonging to the Ruby interpreter in ${RUBY}.
 ruby_get_hdrdir() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	local rubyhdrdir=$(ruby_rbconfig_value 'rubyhdrdir')
 
 	if [[ "${rubyhdrdir}" = "nil" ]] ; then
@@ -644,6 +682,8 @@ ruby_get_hdrdir() {
 # @FUNCTION: ruby_get_version
 # @RETURN: The version of the Ruby interpreter in ${RUBY}, or what 'ruby' points to.
 ruby_get_version() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	local ruby=${RUBY:-$(type -p ruby 2>/dev/null)}
 
 	echo $(${ruby} -e 'puts RUBY_VERSION')
@@ -652,6 +692,8 @@ ruby_get_version() {
 # @FUNCTION: ruby_get_implementation
 # @RETURN: The implementation of the Ruby interpreter in ${RUBY}, or what 'ruby' points to.
 ruby_get_implementation() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	local ruby=${RUBY:-$(type -p ruby 2>/dev/null)}
 
 	case $(${ruby} --version) in
@@ -673,6 +715,8 @@ ruby_get_implementation() {
 # rspec version that must be executed. It defaults to 2 for historical
 # compatibility.
 ruby-ng_rspec() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	local version=${RSPEC_VERSION-2}
 	local files="$@"
 
@@ -713,6 +757,8 @@ ruby-ng_rspec() {
 # This is simply a wrapper around the cucumber command (executed by $RUBY})
 # which also respects TEST_VERBOSE and NOCOLOR environment variables.
 ruby-ng_cucumber() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	if [[ "${DEPEND}${BDEPEND}" != *"dev-util/cucumber"* ]]; then
 		ewarn "Missing test dependency dev-util/cucumber"
 	fi
@@ -736,7 +782,7 @@ ruby-ng_cucumber() {
 			;;
 	esac
 
-	${RUBY} -S cucumber ${cucumber_params} "$@" || die "cucumber failed"
+	CUCUMBER_PUBLISH_QUIET=true ${RUBY} -S cucumber ${cucumber_params} "$@" || die "cucumber failed"
 }
 
 # @FUNCTION: ruby-ng_testrb-2
@@ -747,6 +793,8 @@ ruby-ng_cucumber() {
 # their script and we installed a broken wrapper for a while.
 # This also respects TEST_VERBOSE and NOCOLOR environment variables.
 ruby-ng_testrb-2() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	if [[ "${DEPEND}${BDEPEND}" != *"dev-ruby/test-unit"* ]]; then
 		ewarn "Missing test dependency dev-ruby/test-unit"
 	fi

@@ -1,6 +1,6 @@
 # Copyright Seblu 2015
---- a/src/netlib.c	2015-08-04 20:30:43.449468815 +0200
-+++ b/src/netlib.c	2015-08-04 20:31:40.317792002 +0200
+--- a/src/netlib.c
++++ b/src/netlib.c
 @@ -3997,11 +3997,7 @@
    }
  }

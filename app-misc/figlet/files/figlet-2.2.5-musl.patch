@@ -1,0 +1,36 @@
+From 88428a728e1f99dcdc63d7c5ff0cd8b6cda37576 Mon Sep 17 00:00:00 2001
+From: Natanael Copa <ncopa@alpinelinux.org>
+Date: Tue, 3 Jun 2014 10:59:40 +0000
+Subject: [PATCH] Fix build with musl libc
+
+Avoid using the glibc internal macros __BEGIN/__END_DECLS.
+
+Signed-off-by: Natanael Copa <ncopa@alpinelinux.org>
+---
+ utf8.h | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/utf8.h b/utf8.h
+index 0631b8a..a3e09bd 100644
+--- a/utf8.h
++++ b/utf8.h
+@@ -27,13 +27,17 @@
+ #define UTF8_IGNORE_ERROR		0x01
+ #define UTF8_SKIP_BOM			0x02
+ 
+-__BEGIN_DECLS
++#ifdef   __cplusplus
++extern "C" {
++#endif
+ 
+ size_t		utf8_to_wchar(const char *in, size_t insize, wchar_t *out,
+ 		    size_t outsize, int flags);
+ size_t		wchar_to_utf8(const wchar_t *in, size_t insize, char *out,
+ 		    size_t outsize, int flags);
+ 
+-__END_DECLS
++#ifdef   __cplusplus
++}
++#endif
+ 
+ #endif /* !_UTF8_H_ */

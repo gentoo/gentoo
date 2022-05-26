@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="Passive per-connection tcp bandwidth monitor"
 HOMEPAGE="http://www.rhythm.cx/~steve/devel/tcptrack/"
@@ -12,17 +13,23 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
 
+BDEPEND="virtual/pkgconfig"
 DEPEND="
 	net-libs/libpcap
 	sys-libs/ncurses
 "
-RDEPEND="
-	${DEPEND}
-	virtual/pkgconfig
-"
+RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-tinfo.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-tinfo.patch
+	default
+
 	sed -i src/Makefile.am -e 's| -Werror||g' || die
+
+	mv configure.{in,ac} || die
+
 	eautoreconf
 }

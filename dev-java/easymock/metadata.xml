@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>java@gentoo.org</email>
@@ -7,5 +7,8 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">easymock</remote-id>
+		<remote-id type="github">easymock/easymock</remote-id>
+		<doc>https://easymock.org/user-guide.html</doc>
+		<bugs-to>https://github.com/easymock/easymock/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

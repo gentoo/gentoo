@@ -1,0 +1,39 @@
+From 5be5c93ed41d0136730477beccad7b9f21d47e86 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Tue, 26 May 2020 09:45:50 -0400
+Subject: [PATCH 1/1] tests: disable test_echelon.
+
+There are two reported failures of test_echelon on Gentoo and Conda
+that the Gentoo maintainers haven't been able to reproduce yet. Until
+upstream has a chance to look at the failures, this commit disables
+that particular test.
+
+Gentoo-bug: https://bugs.gentoo.org/724526
+Upstream-bug: https://github.com/linbox-team/fflas-ffpack/issues/282
+---
+ tests/Makefile.am | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index 4326820..62e92bc 100755
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -56,7 +56,6 @@ BASIC_TESTS =               \
+ 		test-rankprofiles   \
+ 		test-det            \
+ 		test-det-check     \
+-		test-echelon        \
+ 		test-charpoly       \
+ 		test-charpoly-check \
+ 		test-minpoly		\
+@@ -119,7 +118,6 @@ test_ftrsm_check_SOURCES = test-ftrsm-check.C
+ test_invert_check_SOURCES = test-invert-check.C
+ test_charpoly_check_SOURCES = test-charpoly-check.C
+ test_minpoly_SOURCES = test-minpoly.C
+-test_echelon_SOURCES           = test-echelon.C
+ test_rankprofiles_SOURCES           = test-rankprofiles.C
+ test_fgemm_SOURCES             = test-fgemm.C
+ test_fger_SOURCES             = test-fger.C
+-- 
+2.26.2
+

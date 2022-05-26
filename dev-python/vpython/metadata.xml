@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>sci@gentoo.org</email>
@@ -13,4 +13,8 @@
 		If the code is launched outside a notebook (e.g. from the command line),
 		a browser window will open displaying the scene.
 	</longdescription>
+	<upstream>
+		<remote-id type="pypi">vpython</remote-id>
+		<remote-id type="github">vpython/vpython-jupyter</remote-id>
+	</upstream>
 </pkgmetadata>

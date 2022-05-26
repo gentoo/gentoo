@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,8 +11,8 @@ SRC_URI="https://developers.yubico.com/${PN}/Releases/${P}.tar.xz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86"
-IUSE="kernel_linux static-libs systemd"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+IUSE="systemd"
 
 DEPEND="dev-libs/hidapi
 	dev-libs/json-c:="
@@ -27,13 +27,17 @@ CONFIG_CHECK="~HIDRAW"
 
 PATCHES=( "${FILESDIR}/${P}-json-boolean.patch" )
 
+src_configure() {
+	econf --disable-static
+}
+
 src_install() {
 	default
 	if use kernel_linux; then
 		udev_dorules 70-u2f.rules
 	fi
 
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {

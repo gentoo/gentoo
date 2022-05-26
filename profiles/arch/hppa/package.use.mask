@@ -1,16 +1,161 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2022-05-17)
+# sci-libs/sundials fails to build tests on HPPA
+# bug #845222
+sci-mathematics/octave sundials
+
+# Matt Turner <mattst88@gentoo.org> (2022-05-07)
+# app-crypt/gcr is not keyworded
+app-crypt/pinentry gtk
+dev-libs/libgdata crypt
+
+# Nickolas Raymond Kaczynski <nrk@disroot.org> (2022-04-24)
+# Dependencies are missing keywords
+media-libs/imlib2 svg heif jpegxl
+
+# Sam James <sam@gentoo.org> (2022-04-24)
+# Requires dev-util/pahole.
+sys-kernel/gentoo-kernel debug
+sys-kernel/vanilla-kernel debug
+
+# Matt Turner <mattst88@gentoo.org> (2022-04-18)
+# app-text/nuspell is not keyworded
+app-text/enchant nuspell
+
+# Lars Wendler <polynomial-c@gentoo.org> (2022-04-01)
+# gnome-base/librsvg missing keywords
+media-libs/freetype svg
+
+# Sam James <sam@gentoo.org> (2022-03-26)
+# media-libs/libjxl not keyworded here
+media-gfx/graphicsmagick jpegxl
+
+# Sam James <sam@gentoo.org> (2022-03-22)
+# media-libs/dav1d not keyworded here
+media-libs/xine-lib dav1d
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# Untested useflag on other arches, needs keywording
+media-video/ffmpeg vmaf
+
+# Sam James <sam@gentoo.org> (2022-03-06)
+# Unkeyworded dependencies
+net-mail/cyrus-imapd http
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
+# Mask AMF keyword on non-amd64 arches
+# It is unusable, for now, in other arches
+media-video/ffmpeg amf
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-02-08)
+# bash becomes corrupted and system breaks, bug #832946
+app-shells/bash mem-scramble
+
+# Sam James <sam@gentoo.org> (2022-01-29)
+# app-text/ronn-ng not keyworded here, bug #801103
+app-accessibility/espeak-ng man
+
+# Sam James <sam@gentoo.org> (2021-11-19)
+# Avoid dragging in doc/sphinx deps where we can help it
+dev-python/anyio doc
+
+# Sam James <sam@gentoo.org> (2021-11-17)
+# Avoid unnecessary dependencies
+dev-python/matplotlib gtk3
+
+# Sam James <sam@gentoo.org> (2021-11-05)
+# Avoid keywording unnecessary depenencies for now, bug #804115
+dev-python/scipy pythran
+
+# Sam James <sam@gentoo.org> (2021-11-05)
+# Test suite is very fragile and doesn't even run on amd64.
+# No real point in running it here right now, bug #804115.
+dev-cpp/eigen test
+
+# Sam James <sam@gentoo.org> (2021-11-05)
+# Avoid unkeyworded sci dependencies for bug #804115
+sci-libs/pastix starpu
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2021-10-24)
+# dev-ruby/furo isn't keyworded here
+dev-python/argon2-cffi doc
+
+# Sam James <sam@gentoo.org> (2021-10-24)
+# Avoid Pipewire for now because of new wireplumber dependency which lacks
+# keywords. Doubt anybody is using PW here anyway right now.
+# bug #807616
+media-libs/libsdl2 pipewire
+
+# Sam James <sam@gentoo.org> (2021-09-14)
+# fdk-aac, libfreeaptx not keyworded here
+# nor is jack2
+# bug #807616
+media-video/pipewire bluetooth jack-client
+
+# David Seifert <soap@gentoo.org> (2021-09-04)
+# dev-lang/go not keyworded here
+sys-libs/libcap tools
+
+# Michał Górny <mgorny@gentoo.org> (2021-07-25)
+# PyQt5 and wxpython are not keyworded.
+dev-python/ipython qt5
+dev-python/matplotlib qt5 wxwidgets
+
+# Matt Turner <mattst88@gentoo.org> (2021-07-23)
+# gui-libs/gtk is not keyworded
+net-libs/gssdp gtk
+
+# Matt Turner <mattst88@gentoo.org> (2021-06-10)
+# dev-python/django is not keyworded here
+dev-python/diskcache test
+
+# Rolf Eike Beer <eike@sf-mail.de> (2021-03-14)
+# dependencies not yet keyworded
+dev-ruby/globalid test
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-03-13)
+# virtual/jdk isn't keyworded here
+media-libs/rubberband jni
+
+# Sam James <sam@gentoo.org> (2021-03-11)
+# media-libs/libheif isn't keyworded here
+# media-libs/libavif isn't keyworded here
+media-libs/gd avif heif
+media-gfx/graphicsmagick heif
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-01-19)
+# uchardet not stable/keyworded yet on this arch
+# bug #750032
+sys-apps/groff uchardet
+
+# Joonas Niilola <juippis@gentoo.org> (2021-01-15)
+# Dependency not keyworded on this arch.
+app-text/enchant voikko
+
+# Matthias Maier <tamiko@gentoo.org> (2020-12-03)
+# Requires sci-mathematics/z3.
+dev-util/cppcheck z3
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
+# media-sound/lash not keyworded, bug #736725
+media-sound/fluidsynth lash
+
+# Cédric Krier <cedk@gentoo.org> (2020-11-10)
+# virtual/rust has no hppa keyword
+dev-vcs/mercurial rust
+
+# Joonas Niilola <juippis@gentoo.org> (2020-10-08)
+# Dependency not keyworded on this arch.
+dev-libs/efl avif heif lua_single_target_luajit physics
+
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan
 media-libs/mesa vulkan vulkan-overlay zink
-
-# Felix Janda <felix.janda@posteo.de> (2020-08-01)
-# Requires masked dev-lang/spidermonkey:17
->=www-client/elinks-0.13.3 javascript
 
 # Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
 # Mask io-uring & zbc pending keywording
@@ -19,10 +164,6 @@ sys-block/fio -io-uring -zbc
 # Michał Górny <mgorny@gentoo.org> (2020-06-14)
 # Requires dev-python/networkx.
 app-portage/nattka depgraph-order
-
-# Michał Górny <mgorny@gentoo.org> (2020-05-03)
-# Requires unsupported dev-python/gevent.
-dev-python/socketpool eventlet gevent
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-25)
 # dependencies not yet keyworded
@@ -35,16 +176,8 @@ dev-ruby/activesupport test
 dev-python/pyopengl test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-22)
-# dev-python/pip not keyworded yet, bug #700918
-dev-python/virtualenv test
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-22)
 # dev-libs/criterion not yet keyworded
 >=app-admin/syslog-ng-3.25 test
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-20)
-# Not keyworded on hppa
-net-misc/whois xcrypt
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-18)
 # nagios and icinga not stable on hppa
@@ -75,9 +208,8 @@ app-emacs/elscreen wanderlust
 net-im/pidgin gadu
 
 # Jeroen Roovers <jer@gentoo.org> (2020-01-28)
-# sys-apps/systemd is not stable
 # media-libs/libilbc has not been ported to HPPA
-net-analyzer/wireshark ilbc sdjournal
+net-analyzer/wireshark ilbc
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
 # media-libs/libheif is not keyworded
@@ -139,28 +271,6 @@ sys-libs/glibc systemtap
 # Requires java
 app-forensics/sleuthkit java
 
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Requires USE=redis that is masked in this profile.
-mail-filter/pyzor test
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Requires USE=systemd that is masked in this profile.
-net-wireless/bluez user-session
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Requires USE=seccomp that is masked in this profile.
-net-libs/gnutls test-full
-
-# Robin H. Johnson <robbat2@gentoo.org> (2017-08-05)
-# Upstream Git is switching to PCRE2 w/ JIT.
-# This is not available on some arches, where a fallback to PCRE1 without JIT is used.
-dev-vcs/git pcre-jit
-
-# Michał Górny <mgorny@gentoo.org> (2017-06-28)
-# app-misc/dtach is not keyworded, and tests are restricted anyway, so
-# no point in pursuing it right now.
-app-shells/bash-completion test
-
 # Jeroen Roovers <jer@gentoo.org> (2017-02-04)
 # media-libs/libilbc has not been ported to HPPA
 # media-libs/zimg triggers a toolchain issue (bug #597152)
@@ -195,10 +305,6 @@ net-analyzer/rrdtool rados
 # Contact us if you want or have an HPPA cluster with dev-db/mariadb
 # (bug #544378)
 dev-db/mariadb galera
-
-# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
-# Needs sci-physics/bullet tested #499974
-dev-libs/efl physics
 
 # Jeroen Roovers <jer@gentoo.org> (2015-02-02)
 # dev-python/gevent requires dev-python/greenlet which has not been ported to
@@ -245,7 +351,7 @@ sci-mathematics/octave hdf5 qhull
 
 # Jeroen Roovers <jer@gentoo.org> (2012-07-08)
 # media-libs/devil has not been fully tested on HPPA
-media-gfx/graphviz devil
+media-gfx/graphviz devil lefty
 
 # Jeroen Roovers <jer@gentoo.org> (2012-07-03)
 # Mask USE=connman for net-libs/gupnp (bug #424225)
@@ -261,6 +367,7 @@ dev-libs/libpcre jit
 # Jeroen Roovers <jer@gentoo.org> (2014-02-18)
 # OSS is the only kernel audio interface that works on HPPA
 media-sound/pulseaudio equalizer -oss
+media-sound/pulseaudio-daemon equalizer -oss
 
 # Jeroen Roovers <jer@gentoo.org> (2012-05-21)
 # media-sound/lilypond has problems running mpost (bug #416961)

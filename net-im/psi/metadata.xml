@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>rion4ik@gmail.com</email>
 		<name>Sergey Ilinykh</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -20,7 +20,6 @@
 		<flag name="iconsets">Install additional iconsets, some of them have no clear licensing</flag>
 		<flag name="keyring">Enable storing password in system keyring manager</flag>
 		<flag name="webengine">Enable themed, html-based chatlogs using <pkg>dev-qt/qtwebengine</pkg></flag>
-		<flag name="webkit">Enable themed, html-based chatlogs using <pkg>dev-qt/qtwebkit</pkg></flag>
 		<flag name="whiteboarding">Enable experimental interactive SVG drawing</flag>
 		<flag name="xscreensaver">Use X screensaver protocol extension to monitor idle/active status based on mouse/keyboard events</flag>
 	</use>

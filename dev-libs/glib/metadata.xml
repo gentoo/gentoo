@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>gnome@gentoo.org</email>
@@ -10,6 +10,10 @@
 			Enable dependencies required by glib libraries
 			using dbus service to manage settings saving
 		</flag>
+		<flag name="elf">
+			Enable support for listing and extracting from
+			ELF resource files with gresource tool
+		</flag>
 		<flag name="mime">
 			Pull in shared MIME database that many glib-based
 			applications require at runtime to detect or open files. Warning:
@@ -18,6 +22,10 @@
 		<flag name="systemtap">
 			Build support for profiling and tracing using
 			<pkg>dev-util/systemtap</pkg>
+		</flag>
+		<flag name="sysprof">
+			Enable profiling data capture support using
+			<pkg>dev-util/sysprof-capture</pkg>
 		</flag>
 		<flag name="utils">
 			Install gtester-report utility to generate test

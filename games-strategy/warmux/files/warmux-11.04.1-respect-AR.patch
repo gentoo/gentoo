@@ -1,0 +1,12 @@
+diff --git a/configure.ac b/configure.ac
+index a799477..d31e40c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -35,6 +35,7 @@ AC_PROG_CXX
+ AC_PROG_CPP
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
++AM_PROG_AR
+ AC_CHECK_TOOL(STRIP, strip)
+ AC_CHECK_TOOL(WINDRES, windres)
+ 

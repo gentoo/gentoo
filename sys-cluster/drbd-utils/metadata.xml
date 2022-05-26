@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>cluster@gentoo.org</email>
@@ -8,7 +8,6 @@
 	<use>
 		<flag name="xen">Enable Xen integration</flag>
 		<flag name="pacemaker">Enable Pacemaker integration</flag>
-		<flag name="heartbeat">Enable Heartbeat integration</flag>
 	</use>
 	<longdescription>
 		The user space tools to control, configure the DRBD driver, as well as integration programs and scripts

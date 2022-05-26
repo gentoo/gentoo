@@ -1,13 +1,13 @@
---- src/Makefile.am
-+++ src/Makefile.am
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -1,4 +1,4 @@
 -SUBDIRS = widgets @GUICHAN_EXTRADIRS@ hge openlayer contrib
 +SUBDIRS = widgets . @GUICHAN_EXTRADIRS@ hge openlayer contrib
  
  INCLUDES = -I$(top_srcdir)/include
  
---- src/sdl/Makefile.am
-+++ src/sdl/Makefile.am
+--- a/src/sdl/Makefile.am
++++ b/src/sdl/Makefile.am
 @@ -6,6 +6,8 @@
  
  libguichan_sdl_la_LDFLAGS = -no-undefined -release $(LT_RELEASE) -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)

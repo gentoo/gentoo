@@ -1,0 +1,22 @@
+--- rss-glx_0.9.1/src/hyperspace.cpp	2009-05-16 23:41:52.000000000 +0100
++++ rss-glx_0.9.1/src/hyperspace.cpp	2021-01-22 22:54:20.297572792 +0000
+@@ -376,7 +376,7 @@
+ 	double flarepos[3] = {0.0f, 2.0f, 0.0f};
+ 	glBindTexture(GL_TEXTURE_2D, flaretex[0]);
+ 	sunStar->draw(camPos);
+-	float diff[3] = {flarepos[0] - camPos[0], flarepos[1] - camPos[1], flarepos[2] - camPos[2]};
++	float diff[3] = {(float)flarepos[0] - camPos[0], (float)flarepos[1] - camPos[1], (float)flarepos[2] - camPos[2]};
+ 	float alpha = 0.5f - 0.005f * sqrtf(diff[0] * diff[0] + diff[1] * diff[1] + diff[2] * diff[2]);
+ 	if(alpha > 0.0f)
+ 		flare(flarepos, 1.0f, 1.0f, 1.0f, alpha);
+--- rss-glx_0.9.1/src/flare.cpp	2009-04-21 17:54:42.000000000 +0100
++++ rss-glx_0.9.1/src/flare.cpp	2021-01-22 22:54:57.808305771 +0000
+@@ -193,7 +193,7 @@
+ 		&winx, &winy, &winz);
+ 	x = (float(winx) / float(xsize)) * aspectRatio;
+ 	y = float(winy) / float(ysize);
+-	float diff[3] = {pos[0] - camPos[0], pos[1] - camPos[1], pos[2] - camPos[2]};
++	float diff[3] = {(float)pos[0] - camPos[0], (float)pos[1] - camPos[1], (float)pos[2] - camPos[2]};
+ 	if(diff[0] * billboardMat[8] + diff[1] * billboardMat[9] + diff[2] * billboardMat[10] > 0.0f)
+ 		return;
+ 

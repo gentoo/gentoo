@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<longdescription lang="en">
@@ -11,6 +11,7 @@
 		Preparation, Enforcement, and Comparison of Internationalized Strings Representing Usernames and Passwords (RFC 8265)
 		Preparation, Enforcement, and Comparison of Internationalized Strings Representing Nicknames (RFC 8266)
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<bugs-to>https://github.com/byllyfish/precis_i18n/issues</bugs-to>
 		<remote-id type="github">byllyfish/precis_i18n</remote-id>

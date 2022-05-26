@@ -1,0 +1,12 @@
+diff -ruN polyml-5.8.2.orig/configure.ac polyml-5.8.2/configure.ac
+--- polyml-5.8.2.orig/configure.ac	2021-05-02 13:53:42.000000000 +0200
++++ polyml-5.8.2/configure.ac	2021-09-10 19:29:27.370699622 +0200
+@@ -198,7 +198,7 @@
+     # Solaris needs -lsocket, -lnsl and -lrt
+     AC_SEARCH_LIBS([gethostbyname], [nsl])
+     AC_SEARCH_LIBS([getsockopt], [socket])
+-    AC_SEARCH_LIBS([sem_wait], [rt])
++    AC_SEARCH_LIBS([sem_wait], [rt] [pthread])
+ 
+     # Check for X and Motif headers and libraries
+     AC_PATH_X

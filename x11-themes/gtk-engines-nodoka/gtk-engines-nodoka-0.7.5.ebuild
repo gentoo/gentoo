@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit autotools
+
 MY_P="gtk-nodoka-engine-${PV}"
 
 DESCRIPTION="GTK+ engine and themes developed by the Fedora Project"
@@ -20,7 +22,16 @@ BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}"/${P}-glib2.32.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-glib2.32.patch
+	"${FILESDIR}"/${P}-autoreconf.patch
+	"${FILESDIR}"/${P}-libm.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \

@@ -1,0 +1,11 @@
+12 .wav files for an array with 11 elements invokes undefined behavior.
+
+--- a/src/audio.h
++++ b/src/audio.h
+@@ -50,5 +50,5 @@
+ 		int canal_musica;
+ 
+-		Mix_Chunk *sonidos[11];
++		Mix_Chunk *sonidos[12];
+ 		Mix_Music *musicas[2];
+ 		

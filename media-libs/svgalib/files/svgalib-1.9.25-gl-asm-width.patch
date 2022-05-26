@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/show_bug.cgi?id=789747
+--- svgalib-1.9.25/gl/driver.c.orig	2021-05-16 13:24:38.937410767 +0300
++++ svgalib-1.9.25/gl/driver.c	2021-05-16 13:24:47.263441562 +0300
+@@ -38,9 +38,9 @@
+ 	    ((c >> 8) & 0xff) << 8 |
+ 	    ((c >> 16) & 0xff) << 0;
+ #else
+-	asm("rorw  $8, %0\n"	/* 0RGB -> 0RBG */
++	asm("rorw  $8, %w0\n"	/* 0RGB -> 0RBG */
+ 	    "rorl $16, %0\n"	/* 0RBG -> BG0R */
+-	    "rorw  $8, %0\n"	/* BG0R -> BGR0 */
++	    "rorw  $8, %w0\n"	/* BG0R -> BGR0 */
+ 	    "shrl  $8, %0\n"	/* 0BGR -> 0BGR */
+       : "=q"(c):"0"(c));
+ #endif

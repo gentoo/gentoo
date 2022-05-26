@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ inherit systemd
 MY_PV="${PV/_rc/-rc.}"
 COMMIT=da364558
 
-DESCRIPTION="The plugin-driven server agent for collecting & reporting metrics."
+DESCRIPTION="The plugin-driven server agent for collecting & reporting metrics"
 HOMEPAGE="https://github.com/influxdata/telegraf"
 SRC_URI="https://github.com/influxdata/telegraf/archive/${MY_PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~williamh/dist/${P}-vendor.tar.gz"
@@ -48,7 +48,7 @@ src_install() {
 	insinto /etc/logrotate.d
 	doins etc/logrotate.d/telegraf
 
-systemd_dounit scripts/telegraf.service
+	systemd_dounit scripts/telegraf.service
 	newconfd "${FILESDIR}"/telegraf.confd telegraf
 	newinitd "${FILESDIR}"/telegraf.rc telegraf
 

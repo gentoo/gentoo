@@ -1,0 +1,44 @@
+--- /CMakeModules/FindGTestSrc.cmake
++++ /CMakeModules/FindGTestSrc.cmake
+@@ -1,30 +1,9 @@
+-
+-SET(GTEST_SEARCH_PATH
+-    "${GTEST_SOURCE_DIR}"
+-    "${CMAKE_CURRENT_LIST_DIR}/../thirdparty/gtest/googletest")
+-
+-IF(UNIX)
+-    IF(RAPIDJSON_BUILD_THIRDPARTY_GTEST)
+-        LIST(APPEND GTEST_SEARCH_PATH "/usr/src/gtest")
+-    ELSE()
+-        LIST(INSERT GTEST_SEARCH_PATH 1 "/usr/src/gtest")
+-    ENDIF()
+-ENDIF()
+-
+-FIND_PATH(GTEST_SOURCE_DIR
+-    NAMES CMakeLists.txt src/gtest_main.cc
+-    PATHS ${GTEST_SEARCH_PATH})
+-
+-
+ # Debian installs gtest include directory in /usr/include, thus need to look
+ # for include directory separately from source directory.
+ FIND_PATH(GTEST_INCLUDE_DIR
+     NAMES gtest/gtest.h
+-    PATH_SUFFIXES include
+-    HINTS ${GTEST_SOURCE_DIR}
+-    PATHS ${GTEST_SEARCH_PATH})
++    PATH_SUFFIXES include)
+ 
+ INCLUDE(FindPackageHandleStandardArgs)
+ find_package_handle_standard_args(GTestSrc DEFAULT_MSG
+-    GTEST_SOURCE_DIR
+     GTEST_INCLUDE_DIR)
+--- /test/CMakeLists.txt
++++ /test/CMakeLists.txt
+@@ -8,7 +8,6 @@
+         set(gtest_force_shared_crt ON)
+     endif()
+ 
+-    add_subdirectory(${GTEST_SOURCE_DIR} ${CMAKE_BINARY_DIR}/googletest)
+     include_directories(SYSTEM ${GTEST_INCLUDE_DIR})
+ 
+     set(TEST_LIBRARIES gtest gtest_main)

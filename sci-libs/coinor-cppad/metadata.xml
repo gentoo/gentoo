@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>sci@gentoo.org</email>
@@ -13,5 +13,13 @@
   function values, CppAD generates an algorithm that computes
   corresponding derivative values (of arbitrary order using either
   forward or reverse mode).
-</longdescription>
+  </longdescription>
+  <use>
+    <flag name="adolc">Add support for ADOL-C (<pkg>sci-libs/adolc</pkg>)</flag>
+    <flag name="eigen">Add support for Eigen (<pkg>dev-cpp/eigen</pkg>)</flag>
+    <flag name="ipopt">Add support for IPOPT (<pkg>sci-libs/ipopt</pkg>)</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">coin-or/CppAD</remote-id>
+  </upstream>
 </pkgmetadata>

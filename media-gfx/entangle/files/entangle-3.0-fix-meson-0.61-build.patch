@@ -1,0 +1,32 @@
+https://gitlab.com/entangle/entangle/-/commit/54795d275a93e94331a614c8712740fcedbdd4f0.patch
+https://bugs.gentoo.org/831581
+
+From: EorlBruder <eorl@bruder.space>
+Date: Wed, 12 Jan 2022 11:27:50 +0100
+Subject: [PATCH] meson: fix build for meson >=0.60.0
+
+Replaced the positional arguments in i18n.merge_files with the
+data_dirs-keyword
+
+Fixes #67
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -40,7 +40,7 @@ appname = 'org.entangle_photo.Manager'
+ desktop = appname + '.desktop'
+ 
+ i18n.merge_file (
+-  desktop,
++  data_dirs: desktop,
+   type: 'desktop',
+   input: desktop,
+   output: desktop,
+@@ -60,7 +60,7 @@ metainfotmp = custom_target('gen-metadata',
+ 		 '@INPUT@', '@OUTPUT@'])
+ 
+ i18n.merge_file(
+-  metainfo,
++  data_dirs: metainfo,
+   input: metainfotmp,
+   output: metainfo,
+   install: true,
+GitLab

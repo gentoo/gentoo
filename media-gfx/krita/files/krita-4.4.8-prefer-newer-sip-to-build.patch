@@ -1,0 +1,56 @@
+From d2f29d77db58b54a8bcabfb68df66e4dd44f0c27 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heiko.becker@kde.org>
+Date: Fri, 12 Nov 2021 12:27:07 +0100
+Subject: [PATCH] Try (and thus prefer) sip >=5 first
+
+If one has sip 4.x and sip 6.x installed sip 4 is picked up
+("Found SIP version: 4.19.24") just because it is searched first.
+
+This matters not only because it is nice to use the "latest and
+greatest", but also because software using the latest PyQt5 (including
+krita) can't be built with sip 4 at the moment and the maintainer is
+apparently in no hurry to fix it [1].
+
+[1] https://www.riverbankcomputing.com/pipermail/pyqt/2021-November/044345.html
+---
+ cmake/modules/FindSIP.py | 19 ++++++++++---------
+ 1 file changed, 10 insertions(+), 9 deletions(-)
+
+diff --git a/cmake/modules/FindSIP.py b/cmake/modules/FindSIP.py
+index 7b92abd36e..600805c329 100644
+--- a/cmake/modules/FindSIP.py
++++ b/cmake/modules/FindSIP.py
+@@ -15,6 +15,16 @@ def osAwareSuffix():
+     return os.path.join("lib", "python3.8", "site-packages","sipconfig.py") if os.name != 'nt' else os.path.join("lib","krita-python-libs","sipconfig.py")
+ 
+ try:
++    import sipbuild
++
++    print("sip_version:%06.0x" % sipbuild.version.SIP_VERSION)
++    print("sip_version_str:%s" % sipbuild.version.SIP_VERSION_STR)
++
++    import shutil
++
++    # sip v5 and higher need to invoke sip-build
++    print("sip_bin:%s" % shutil.which("sip-build"))
++except ImportError:  # Code for SIP <5
+     import sipconfig
+ 
+     sipcfg = sipconfig.Configuration()
+@@ -41,13 +51,4 @@ try:
+     print("sip_bin:%s" % sip_bin)
+     print("default_sip_dir:%s" % default_sip_dir)
+     print("sip_inc_dir:%s" % sip_inc_dir)
+-except ImportError:  # Code for SIP v5+
+-    import sipbuild
+-
+-    print("sip_version:%06.0x" % sipbuild.version.SIP_VERSION)
+-    print("sip_version_str:%s" % sipbuild.version.SIP_VERSION_STR)
+ 
+-    import shutil
+-
+-    # sip v5 and higher need to invoke sip-build
+-    print("sip_bin:%s" % shutil.which("sip-build"))
+-- 
+GitLab
+

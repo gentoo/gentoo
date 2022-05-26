@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>zlogene@gentoo.org</email>
@@ -14,7 +14,6 @@
 		<flag name="blowfish">Compile with blowfish encryption support</flag>
 		<flag name="chroot">Compile with chroot support</flag>
 		<flag name="http">Compile with HTTP server support</flag>
-		<flag name="kqueue">Compile with kqueue() support</flag>
 		<flag name="memsave">Compile with memory protection</flag>
 		<flag name="telnet">Compile with Telnet server support</flag>
 	</use>

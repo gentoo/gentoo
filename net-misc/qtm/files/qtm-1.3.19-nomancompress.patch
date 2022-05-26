@@ -1,0 +1,34 @@
+--- a/CMakeLists.txt	2017-06-12 12:28:32.739628202 +0200
++++ b/CMakeLists.txt	2021-02-28 12:43:44.143779118 +0100
+@@ -123,20 +123,17 @@
+     set( MANPAGE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/share/man/man1 )
+   endif( NOT MANPAGE_DIRECTORY)
+ 
+-  add_custom_command( OUTPUT qtm.1.gz
++  add_custom_command( OUTPUT qtm.1
+     COMMAND touch qtm.1
+     COMMAND sh ${QTM_SOURCE_DIR}/qtm-manpage.sh ${QTM_VERSION} >${QTM_BINARY_DIR}/qtm.1
+-    COMMAND gzip -9 ${QTM_BINARY_DIR}/qtm.1
+     DEPENDS qtm-manpage.sh
+     COMMENT "Generating manpage"
+     )
+   add_custom_target( MANPAGE_FILE ALL
+-    DEPENDS qtm.1.gz
++    DEPENDS qtm.1
+     )
+ 
+   set_directory_properties( ADDITIONAL_MAKE_CLEAN_FILES 
+-		qtm.1
+-		qtm.1.gz
+ 	  qtm_version.h
+ 	  qtmico.o )
+   
+@@ -367,7 +364,7 @@
+ if(UNIX AND NOT APPLE)
+   install(FILES ${QTM_BINARY_DIR}/${DESKTOP_ENTRY} DESTINATION ${DESKTOP_ENTRY_PATH})
+   install( FILES ${APP_ICON} DESTINATION share/icons )
+-  install( FILES ${QTM_BINARY_DIR}/qtm.1.gz DESTINATION ${MANPAGE_DIRECTORY} )
++  install( FILES ${QTM_BINARY_DIR}/qtm.1 DESTINATION ${MANPAGE_DIRECTORY} )
+   if( UNITY_LAUNCHER )
+     install( FILES ${QTM_SOURCE_DIR}/qtm-new.py DESTINATION bin RENAME qtm-new )
+     install( FILES ${QTM_SOURCE_DIR}/qtm-choose.py DESTINATION bin RENAME qtm-choose )

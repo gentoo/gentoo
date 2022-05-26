@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools multilib virtualx
+inherit autotools virtualx
 
 MY_PV=${PV/_beta/b}
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/project/incrtcl/%5Bincr%20Tcl_Tk%5D-4-source/itk%2
 IUSE=""
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 ~ia64 ppc sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ~ia64 ppc ~riscv sparc x86 ~amd64-linux ~x86-linux"
 RESTRICT="!test? ( test )"
 
 DEPEND="

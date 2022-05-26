@@ -1,5 +1,5 @@
---- trek/getpar.h.orig	2005-08-14 19:45:29.000000000 -0400
-+++ trek/getpar.h	2005-08-14 19:46:33.000000000 -0400
+--- a/trek/getpar.h
++++ b/trek/getpar.h
 @@ -31,6 +31,9 @@
   *	@(#)getpar.h	8.1 (Berkeley) 5/31/93
   */
@@ -16,8 +16,8 @@
  int readdelim(int);
 +
 +#endif /*__GETPAR_H_*/
---- trek/trek.h.orig	2005-08-14 19:45:37.000000000 -0400
-+++ trek/trek.h	2005-08-14 19:48:17.000000000 -0400
+--- a/trek/trek.h
++++ b/trek/trek.h
 @@ -31,6 +31,13 @@
   *	@(#)trek.h	8.1 (Berkeley) 5/31/93
   */

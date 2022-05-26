@@ -1,0 +1,20 @@
+diff --git a/deps/npm/lib/config/core.js b/deps/npm/lib/config/core.js
+index 36420b3450..0afb0b6792 100644
+--- a/deps/npm/lib/config/core.js
++++ b/deps/npm/lib/config/core.js
+@@ -151,11 +151,10 @@ function load_ (builtin, rc, cli, cb) {
+     // Eg, `npm config get globalconfig --prefix ~/local` should
+     // return `~/local/etc/npmrc`
+     // annoying humans and their expectations!
+-    if (conf.get('prefix')) {
+-      var etc = path.resolve(conf.get('prefix'), 'etc')
+-      defaults.globalconfig = path.resolve(etc, 'npmrc')
+-      defaults.globalignorefile = path.resolve(etc, 'npmignore')
+-    }
++    // gentoo deviates wrt global config; store in /etc/npm
++    var globalconfig = path.resolve('/etc', 'npm')
++    defaults.globalconfig = path.resolve(globalconfig, 'npmrc')
++    defaults.globalignorefile = path.resolve(globalconfig, 'npmignore')
+ 
+     conf.addFile(conf.get('globalconfig'), 'global')
+ 

@@ -1,16 +1,30 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Aaron Bauman <bman@gentoo.org> (2019-05-20)
-# Does not build on arm64
-ocamlopt
+# Ionen Wolkens <ionen@gentoo.org> (2022-02-17)
+# x11-drivers/nvidia-drivers is not stable yet
+video_cards_nvidia
+nvenc
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-04-20)
-# sys-auth/consolekit will not be stabilised anymore.
-consolekit
+# Sam James <sam@gentoo.org> (2020-10-08)
+# Not enough packages stable w/ PyPy3 support
+python_targets_pypy3
+python_single_target_pypy3
+
+# Sam James <sam@gentoo.org> (2020-10-07)
+# app-misc/lirc not stable yet
+# dev-db/tokyocabinet not stable yet
+# dev-libs/libtar not stable yet
+# net-libs/ldns not stable yet
+# sci-geosciences/gpsd not stable yet
+lirc
+tokyocabinet
+libtar
+ldns
+gps
 
 # Mart Raudsepp <leio@gentoo.org> (2019-02-07)
 # media-sound/musepack-tools not stable yet

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,13 +10,13 @@ HOMEPAGE="http://mcabber.com/"
 
 if [[ "${PV}" == 9999 ]]; then
 	inherit mercurial
-	EHG_REPO_URI="https://bitbucket.org/McKael/mcabber"
+	EHG_REPO_URI="https://mcabber.com/hg/"
 	EHG_CHECKOUT_DIR="${WORKDIR}"
 	EHG_BOOTSTRAP="autogen.sh"
 	S="${WORKDIR}/${PN}"
 else
 	SRC_URI="http://mcabber.com/files/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 LICENSE="GPL-2"
@@ -30,7 +30,7 @@ for i in ${LANGS}; do
 	IUSE="${IUSE} l10n_${i}"
 done;
 
-RDEPEND="crypt? ( >=app-crypt/gpgme-1.0.0 )
+RDEPEND="crypt? ( app-crypt/gpgme:= )
 	otr? ( >=net-libs/libotr-3.1.0 )
 	aspell? ( app-text/aspell )
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -44,5 +44,5 @@ src_install() {
 	java-pkg-simple_src_install
 	insinto /usr/share/java-config-2/compiler
 	doins "${FILESDIR}/ecj-${SLOT}"
-	eprefixify "${D}"/usr/share/java-config-2/compiler/ecj-${SLOT}
+	eprefixify "${ED}"/usr/share/java-config-2/compiler/ecj-${SLOT}
 }

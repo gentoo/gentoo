@@ -1,4 +1,4 @@
-# Copyright 2011-2014 Gentoo Foundation
+# Copyright 2011-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 MULTILIB_ABIS="n64 n32 o32"

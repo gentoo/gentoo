@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools linux-info
+inherit linux-info
 
 DESCRIPTION="SPICE VD Linux Guest Agent"
 HOMEPAGE="https://www.spice-space.org/"
@@ -12,19 +12,19 @@ SRC_URI="https://www.spice-space.org/download/releases/${P}.tar.bz2"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="consolekit gtk selinux systemd"
+IUSE="gtk selinux systemd"
 
 CDEPEND="
 	dev-libs/glib:2
 	>=app-emulation/spice-protocol-0.14.0
 	media-libs/alsa-lib
+	sys-apps/dbus
 	>=x11-libs/libpciaccess-0.10
 	x11-libs/libdrm
 	x11-libs/libXfixes
 	x11-libs/libXrandr
 	x11-libs/libX11
 	x11-libs/libXinerama
-	consolekit? ( sys-auth/consolekit sys-apps/dbus )
 	gtk? ( x11-libs/gtk+:3 )
 	systemd? ( sys-apps/systemd )"
 DEPEND="${CDEPEND}
@@ -38,9 +38,7 @@ ERROR_VIRTIO_CONSOLE="VirtIO console/serial device support (VIRTIO_CONSOLE) is r
 
 src_configure() {
 	local opt=()
-	if use consolekit; then
-		opt+=( --with-session-info=console-kit )
-	elif use systemd; then
+	if use systemd; then
 		opt+=( --with-session-info=systemd )
 	else
 		opt+=( --with-session-info=none )

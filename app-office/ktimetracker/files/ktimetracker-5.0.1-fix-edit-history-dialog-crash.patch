@@ -1,0 +1,31 @@
+From 065d7c154641f83c46e490cbb5d15b6cff92121b Mon Sep 17 00:00:00 2001
+From: Marc Orcau <budalokko@gmail.com>
+Date: Tue, 27 Apr 2021 17:17:18 +0200
+Subject: [PATCH] Fix edit history dialog crash when event has non existent
+ related entity
+
+Replaced qFatal() by qCWarning(). Faulty event does not appear on the list then.
+
+BUG: 424993
+---
+ src/dialogs/historydialog.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/dialogs/historydialog.cpp b/src/dialogs/historydialog.cpp
+index ca2f10a..458c147 100644
+--- a/src/dialogs/historydialog.cpp
++++ b/src/dialogs/historydialog.cpp
+@@ -131,7 +131,9 @@ QString HistoryDialog::listAllEvents()
+ 
+         const Task *parent = dynamic_cast<Task*>(m_projectModel->tasksModel()->taskByUID(event->relatedTo()));
+         if (!parent) {
+-            qFatal("orphan event");
++            qCWarning(KTT_LOG) << "Unable to load 'relatedTo' entry for " << event->summary();
++            err = "NoRelatedToForEvent";
++            continue;
+         }
+ 
+         auto *item = new QTableWidgetItem(parent->name());
+-- 
+GitLab
+

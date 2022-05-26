@@ -1,0 +1,48 @@
+From 7868b97507d0dd7d7721ad5c4539e22c67635f92 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Wed, 14 Nov 2018 15:58:30 +0100
+Subject: [PATCH 5/5] gentoo: add support for package_upgrade
+
+---
+diff --git a/cloudinit/distros/gentoo.py b/cloudinit/distros/gentoo.py
+index 4eb76da8..702cda8a 100644
+--- a/cloudinit/distros/gentoo.py
++++ b/cloudinit/distros/gentoo.py
+@@ -218,23 +218,26 @@ class Distro(distros.Distro):
+         distros.set_etc_timezone(tz=tz, tz_file=self._find_tz_file(tz))
+ 
+     def package_command(self, command, args=None, pkgs=None):
+-        if pkgs is None:
+-            pkgs = []
+-
+         cmd = list("emerge")
+         # Redirect output
+         cmd.append("--quiet")
+ 
+-        if args and isinstance(args, str):
+-            cmd.append(args)
+-        elif args and isinstance(args, list):
+-            cmd.extend(args)
++        if command == "upgrade":
++            cmd.extend(["--update", "world"])
++        else:
++            if pkgs is None:
++                pkgs = []
++
++            if args and isinstance(args, str):
++                cmd.append(args)
++            elif args and isinstance(args, list):
++                cmd.extend(args)
+ 
+-        if command:
+-            cmd.append(command)
++            if command:
++                cmd.append(command)
+ 
+-        pkglist = util.expand_package_list("%s-%s", pkgs)
+-        cmd.extend(pkglist)
++            pkglist = util.expand_package_list("%s-%s", pkgs)
++            cmd.extend(pkglist)
+ 
+         # Allow the output of this to flow outwards (ie not be captured)
+         subp.subp(cmd, capture=False)

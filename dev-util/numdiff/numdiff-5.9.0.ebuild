@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -21,6 +21,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.9.0-fix-build-system.patch
+	"${FILESDIR}"/${PN}-5.9.0-fix-autoconf-2.71.patch
 )
 
 src_prepare() {

@@ -1,3 +1,8 @@
+Initially added in https://gitweb.gentoo.org/repo/gentoo.git/commit/?id=cb196546c62e9894a46900e8078f753388d4cc1a.
+Commit mentions it being from Debian but not found any other references yet.
+
+We use -largp fairly extensively across the tree which this patch
+accommodates (easier than forcing includes?).
 --- a/Makefile.am	2009-05-28 15:19:50.000000000 +0200
 +++ b/Makefile.am	2009-05-28 15:30:57.000000000 +0200
 @@ -21,20 +21,20 @@

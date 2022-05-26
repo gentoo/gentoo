@@ -1,8 +1,6 @@
-diff --git a/src/c_make.gen b/src/c_make.gen
-index 414dead..84c3030 100644
 --- a/src/c_make.gen
 +++ b/src/c_make.gen
-@@ -200,45 +200,12 @@ LOCAL_SYS_INC=$(SEP_PATH)/../SYS/inc
+@@ -200,45 +200,11 @@
  #### Do not redefine if (a) passed in on command line, or (b)
  #### defined in an environment variable.
  
@@ -48,13 +46,12 @@ index 414dead..84c3030 100644
 +CC      ?= cc
 +CXX	?= g++
 +CXXFLAGS ?=
-+CXXDEFS = -D__cplusplus
 +AR      ?= ar
 +ARFLAGS ?= rvs
  
  #### Delete default suffix rules
  .SUFFIXES:
-@@ -359,13 +326,13 @@ $(PROGS):
+@@ -359,13 +325,13 @@
  	  cd $(LOCAL_OBJ); \
  	    if $(CC) -o $(LOCAL_BIN)/$(notdir $@) $(LDFLAGS) \
                 $(LD_DIRS) $(filter-out lib%.a, $+) \
@@ -70,11 +67,9 @@ index 414dead..84c3030 100644
  			true; else rm -f $(LOCAL_BIN)/$(notdir $@); fi; \
  	fi ;
  
-diff --git a/src/c_make.glm b/src/c_make.glm
-index 0decc17..b82131c 100644
 --- a/src/c_make.glm
 +++ b/src/c_make.glm
-@@ -8,10 +8,7 @@ include $(LOCAL_WORK)/src/c_make.gen
+@@ -8,18 +8,14 @@
  
  SUBDIRS = Common ICM Glimmer Util
  
@@ -86,3 +81,12 @@ index 0decc17..b82131c 100644
  
  
  #AS_BUILD_DIR =$(LOCAL_WORK)
+ INC_IMPORT_DIRS += \
+ 		$(patsubst %, $(LOCAL_WORK)/src/%, $(strip $(SUBDIRS))) \
+                 $(LOCAL_WORK)/inc
+-LIB_IMPORT_DIRS += $(LOCAL_WORK)/lib /usr/lib /usr/shlib /usr/X11R6/lib \
+-     $(SYBASE)/lib
++LIB_IMPORT_DIRS += $(LOCAL_WORK)/lib
+ 
+ OBJ_SEARCH_PATH = $(LOCAL_WORK)/obj
+ 

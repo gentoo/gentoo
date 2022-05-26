@@ -1,0 +1,64 @@
+https://gitlab.gnome.org/GNOME/shotwell/-/merge_requests/54
+
+From a8fc1328bcc4296045fece633330814fbfb40bcc Mon Sep 17 00:00:00 2001
+From: Jens Georg <mail@jensge.org>
+Date: Sun, 15 Mar 2020 11:19:18 +0100
+Subject: [PATCH] Fix compatibility with OpenCV 4
+
+Second try, much simpler version
+
+(cherry picked from commit f54094594016359bbafd0be44a53ea28c8968593)
+---
+ facedetect/meson.build             | 5 ++++-
+ facedetect/shotwell-facedetect.cpp | 6 +++---
+ 2 files changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/facedetect/meson.build b/facedetect/meson.build
+index 6724abcb..bd5f3c3b 100644
+--- a/facedetect/meson.build
++++ b/facedetect/meson.build
+@@ -1,6 +1,9 @@
+ subproject = ('facedetect')
+ add_languages('cpp')
+-facedetect_dep = dependency('opencv', version : ['>= 2.3.0'], required : true)
++facedetect_dep = dependency('opencv4', version : ['>= 4.0.0'], required : false)
++if not facedetect_dep.found()
++    facedetect_dep = dependency('opencv', version : ['>= 3.4.0'], required : true)
++endif
+ executable('shotwell-facedetect',
+            'shotwell-facedetect.cpp',
+            dependencies : facedetect_dep,
+diff --git a/facedetect/shotwell-facedetect.cpp b/facedetect/shotwell-facedetect.cpp
+index 1b093797..1c105806 100644
+--- a/facedetect/shotwell-facedetect.cpp
++++ b/facedetect/shotwell-facedetect.cpp
+@@ -34,7 +34,7 @@ void help() {
+ void detectFaces(Mat &img, CascadeClassifier &cascade, double scale) {
+ 
+ 	Mat gray;
+-	cvtColor(img, gray, CV_BGR2GRAY);
++	cvtColor(img, gray, cv::COLOR_BGR2GRAY);
+ 
+ 	Mat smallImg(cvRound(img.rows / scale), cvRound(img.cols / scale), CV_8UC1);
+ 	Size smallImgSize = smallImg.size();
+@@ -43,7 +43,7 @@ void detectFaces(Mat &img, CascadeClassifier &cascade, double scale) {
+ 	equalizeHist(smallImg, smallImg);
+ 
+ 	vector<Rect> faces;
+-	cascade.detectMultiScale(smallImg, faces, 1.1, 2, CV_HAAR_SCALE_IMAGE, Size(30, 30));
++	cascade.detectMultiScale(smallImg, faces, 1.1, 2, cv::CASCADE_SCALE_IMAGE, Size(30, 30));
+ 
+ 	int i = 0;
+ 	for (vector<Rect>::const_iterator r = faces.begin(); r != faces.end(); r++, i++) {
+@@ -117,7 +117,7 @@ int main(int argc, const char** argv) {
+ 
+ 	}
+ 
+-	Mat image = imread(inputName, 1);
++	Mat image = cv::imread(inputName, 1);
+ 
+ 	if (image.empty()) {
+ 
+-- 
+2.35.1
+

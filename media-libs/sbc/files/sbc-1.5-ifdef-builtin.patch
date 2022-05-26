@@ -1,0 +1,30 @@
+diff --git a/sbc/sbc_primitives.c b/sbc/sbc_primitives.c
+index 97a75be..ac79ca5 100644
+--- a/sbc/sbc_primitives.c
++++ b/sbc/sbc_primitives.c
+@@ -591,6 +591,7 @@ static int sbc_calc_scalefactors_j(
+ 	return joint;
+ }
+ 
++#if defined(__i386__) || defined(__x86_64__)
+ static void sbc_init_primitives_x86(struct sbc_encoder_state *state)
+ {
+ 	__builtin_cpu_init();
+@@ -605,6 +606,7 @@ static void sbc_init_primitives_x86(struct sbc_encoder_state *state)
+ 		sbc_init_primitives_sse(state);
+ #endif
+ }
++#endif
+ 
+ /*
+  * Detect CPU features and setup function pointers
+@@ -630,7 +632,9 @@ void sbc_init_primitives(struct sbc_encoder_state *state)
+ 	state->implementation_info = "Generic C";
+ 
+ 	/* X86/AMD64 optimizations */
++#if defined(__i386__) || defined(__x86_64__)
+ 	sbc_init_primitives_x86(state);
++#endif
+ 
+ 	/* ARM optimizations */
+ #ifdef SBC_BUILD_WITH_ARMV6_SUPPORT

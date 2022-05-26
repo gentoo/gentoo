@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>ejabberd@gentoo.org</email>
@@ -12,7 +12,6 @@
 		<flag name="captcha">Support for CAPTCHA Forms (XEP-158) on registration</flag>
 		<flag name="full-xml">Use XML features in XMPP stream (ex: CDATA),
 			requires XML compliant clients</flag>
-		<flag name="hipe">Compile natively with HiPE, not recommended</flag>
 		<flag name="mssql">Enable Microsoft SQL Server support (via ODBC) for
 			data storage</flag>
 		<flag name="mysql">Enable MySQL support for data storage</flag>
@@ -27,6 +26,7 @@
 		<!-- TODO Add later: flag name="tools">Build development tools</flag -->
 	</use>
 	<upstream>
+		<doc>https://docs.ejabberd.im</doc>
 		<remote-id type="github">processone/ejabberd</remote-id>
 	</upstream>
 </pkgmetadata>

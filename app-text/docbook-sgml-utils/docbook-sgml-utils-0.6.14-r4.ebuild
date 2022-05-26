@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="jadetex"
 
 DEPEND=">=dev-lang/perl-5
@@ -29,8 +29,8 @@ DEPEND=">=dev-lang/perl-5
 	~app-text/docbook-sgml-dtd-4.1
 	~app-text/docbook-sgml-dtd-4.2
 	~app-text/docbook-sgml-dtd-4.4
+	sys-apps/which
 	jadetex? ( dev-texlive/texlive-formatsextra )
-	userland_GNU? ( sys-apps/which )
 	|| (
 		www-client/lynx
 		www-client/links

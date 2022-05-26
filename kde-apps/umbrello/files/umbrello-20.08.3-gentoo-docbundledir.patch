@@ -1,0 +1,41 @@
+From 29186bb3c1c3e4de89d77340db966c660789cdab Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 5 Nov 2020 14:39:51 +0100
+Subject: [PATCH] Fix hardcoded docbook install paths for Gentoo
+
+Gentoo sets KDE_INSTALL_DOCBUNDLEDIR="${EPREFIX}/usr/share/help".
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ umbrello/umlappprivate.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/umbrello/umlappprivate.cpp b/umbrello/umlappprivate.cpp
+index d8bae2cfe..8c1c58a02 100644
+--- a/umbrello/umlappprivate.cpp
++++ b/umbrello/umlappprivate.cpp
+@@ -36,17 +36,17 @@ QString UMLAppPrivate::findWelcomeFile()
+ 
+     // from custom install
+     foreach(const QString &lang, langList) {
+-        dirList.append(QCoreApplication::applicationDirPath() + QString(QLatin1String("/../share/doc/HTML/%1/umbrello/apphelp")).arg(lang));
++        dirList.append(QCoreApplication::applicationDirPath() + QString(QLatin1String("/../share/help/%1/umbrello/apphelp")).arg(lang));
+     }
+-    dirList.append(QCoreApplication::applicationDirPath() + QLatin1String("/../share/doc/HTML/en/umbrello/apphelp"));
++    dirList.append(QCoreApplication::applicationDirPath() + QLatin1String("/../share/help/en/umbrello/apphelp"));
+ 
+     QStringList locations = QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
+     // from real installation
+     foreach(const QString &location, locations) {
+         foreach(const QString &lang, langList) {
+-            dirList.append(QString(QLatin1String("%1/doc/HTML/%2/umbrello/apphelp")).arg(location).arg(lang));
++            dirList.append(QString(QLatin1String("%1/help/%2/umbrello/apphelp")).arg(location).arg(lang));
+         }
+-        dirList.append(QString(QLatin1String("%1/doc/HTML/en/umbrello/apphelp")).arg(location));
++        dirList.append(QString(QLatin1String("%1/help/en/umbrello/apphelp")).arg(location));
+     }
+ #else
+     KLocale *local = KGlobal::locale();
+-- 
+2.29.2
+

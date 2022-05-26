@@ -1,0 +1,12 @@
+diff --git a/src/daemon/pipewire.conf.in b/src/daemon/pipewire.conf.in
+--- a/src/daemon/pipewire.conf.in
++++ b/src/daemon/pipewire.conf.in
+@@ -6,7 +6,7 @@ context.properties = {
+     #support.dbus                          = true
+     #link.max-buffers                      = 64
+     link.max-buffers                       = 16                       # version < 3 clients can't handle more
+-    #mem.warn-mlock                        = false
++    mem.warn-mlock                         = true                     # Gentoo should have good RLIMITs now
+     #mem.allow-mlock                       = true
+     #mem.mlock-all                         = false
+     #clock.power-of-two-quantum            = true

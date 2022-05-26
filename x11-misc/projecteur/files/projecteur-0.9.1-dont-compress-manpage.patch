@@ -1,0 +1,27 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -223,14 +223,7 @@
+ 
+ # Configure man page and gzip it.
+ configure_file("${TMPLDIR}/projecteur.1" "projecteur.1" @ONLY)
+-find_program(GZIP_EXECUTABLE gzip)
+-add_custom_command(
+-  OUTPUT ${OUTDIR}/projecteur.1.gz
+-  COMMAND ${GZIP_EXECUTABLE} -9f -n "${OUTDIR}/projecteur.1"
+-  WORKING_DIRECTORY ${OUTDIR}
+-)
+-add_custom_target(gzip-manpage ALL DEPENDS "${OUTDIR}/projecteur.1.gz")
+-install(FILES "${OUTDIR}/projecteur.1.gz" DESTINATION share/man/man1/)
++install(FILES "${OUTDIR}/projecteur.1" DESTINATION share/man/man1/)
+ 
+ configure_file("${TMPLDIR}/projecteur.metainfo.xml" "projecteur.metainfo.xml" @ONLY)
+ install(FILES "${OUTDIR}/projecteur.metainfo.xml" DESTINATION share/metainfo/)
+@@ -270,7 +263,7 @@
+     # PREINST_SCRIPT "${OUTDIR}/pkg/scripts/preinst"
+     POSTINST_SCRIPT "${OUTDIR}/pkg/scripts/postinst"
+   )
+-  add_dependencies(dist-package gzip-manpage projecteur)
++  add_dependencies(dist-package projecteur)
+ 
+   # Additional files for debian packages, adhering to some debian rules,
+   # see https://manpages.debian.org/buster/lintian/lintian.1.en.html

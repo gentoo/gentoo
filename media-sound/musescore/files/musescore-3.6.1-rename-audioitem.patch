@@ -1,0 +1,12 @@
+Fix misnamed variable causing build failure with USE=-mp3
+https://bugs.gentoo.org/767760
+Signed-off-by: Ionen Wolkens <sudinave@gmail.com>
+--- a/mscore/exportdialog.cpp
++++ b/mscore/exportdialog.cpp
+@@ -77,5 +77,5 @@
+       // Disable .mp3 option if unavailable
+       QStandardItem* mp3Item = fileTypeComboBoxModel->item(3);
+-      mp3Item->setFlags(audioItem->flags() & ~Qt::ItemIsEnabled);
++      mp3Item->setFlags(mp3Item->flags() & ~Qt::ItemIsEnabled);
+ # endif
+ # ifndef HAS_AUDIOFILE

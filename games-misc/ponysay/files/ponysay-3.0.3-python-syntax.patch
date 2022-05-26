@@ -1,0 +1,38 @@
+https://github.com/erkin/ponysay/commit/f9154fd806bbf31c79b1769b13d5aa1b67f9c06a.patch
+(and an additional fix)
+
+From f9154fd806bbf31c79b1769b13d5aa1b67f9c06a Mon Sep 17 00:00:00 2001
+From: adasiko <adasiko256@yandex.ru>
+Date: Sun, 22 Mar 2020 19:33:28 +0700
+Subject: [PATCH] fix: do not compare literal with "is not"
+
+---
+ src/ponysaytool.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ponysaytool.py b/src/ponysaytool.py
+index 7f9a4da5..574a2baa 100755
+--- a/src/ponysaytool.py
++++ b/src/ponysaytool.py
+@@ -1002,7 +1002,7 @@ def alert(text):
+                     for row in range(0, len(datalines)):
+                         current = leftlines[row]
+                         if len(datalines[row].strip()) == 0:
+-                            if current is not 'comment':
++                            if current != 'comment':
+                                 if current != last:
+                                     self.datamap[current] = None
+                                 continue
+diff --git a/src/backend.py b/src/backend.py
+index 2cc539a..82ff149 100755
+--- a/src/backend.py
++++ b/src/backend.py
+@@ -291,7 +291,7 @@ class Backend():
+                         props = dollar[7:]
+                         if len(props) > 0:
+                             if ',' in props:
+-                                if props[0] is not ',':
++                                if props[0] != ',':
+                                     w = props[:props.index(',')]
+                                 h = int(props[props.index(',') + 1:])
+                             else:

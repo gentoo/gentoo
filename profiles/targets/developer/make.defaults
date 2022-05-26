@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Remove "multilib-strict" for now wrt #424423
@@ -18,4 +18,4 @@ PORTAGE_ELOG_CLASSES="${PORTAGE_ELOG_CLASSES} qa"
 # USE="-perl -python snmp truetype xml"
 # perl and python are now disabled by default anyway, truetype and xml are enabled
 # by the also inherited desktop profile
-USE="snmp"
+USE="${USE} snmp"

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,6 @@ RDEPEND="virtual/cblas
 	sys-libs/zlib
 	sys-libs/ncurses:="
 DEPEND="${RDEPEND}"
-PDEPEND="dev-libs/rocr-runtime"
 
 S="${WORKDIR}/llvm-project-rocm-${PV}/llvm"
 

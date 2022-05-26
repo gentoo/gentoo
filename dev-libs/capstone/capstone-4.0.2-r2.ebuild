@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+PYTHON_COMPAT=( python{3_7,3_8,3_9,3_10} )
 
 inherit cmake distutils-r1 toolchain-funcs
 
@@ -14,9 +14,10 @@ SRC_URI="https://github.com/aquynh/${PN}/archive/${PV/_rc/-rc}.tar.gz -> ${P}.ta
 
 LICENSE="BSD"
 SLOT="0/4" # libcapstone.so.4
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 
-RESTRICT="!test? ( test )"
+# A few disassembly outputs need an update
+RESTRICT="test"
 
 IUSE="python static-libs test"
 RDEPEND="python? ( ${PYTHON_DEPS} )"
@@ -48,6 +49,7 @@ wrap_python() {
 }
 
 src_prepare() {
+	tc-export RANLIB
 	cmake_src_prepare
 
 	wrap_python ${FUNCNAME}

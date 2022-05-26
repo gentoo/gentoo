@@ -1,0 +1,53 @@
+From 693a2ea3926400b1482888a2df2c532852b8f971 Mon Sep 17 00:00:00 2001
+From: Alexander Lohnau <alexander.lohnau@gmx.de>
+Date: Sun, 20 Mar 2022 20:29:51 +0100
+Subject: [PATCH] Do not set user-visible name as additional agent information
+
+Instead we want the filename, which is more useful as an identifier anyways, because
+we would otherwise have to check which user-visible names originate from which knsrc file.
+
+BUG: 451165
+---
+ src/core/engine.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/core/engine.cpp b/src/core/engine.cpp
+index e7abfde8..72af9c83 100644
+--- a/src/core/engine.cpp
++++ b/src/core/engine.cpp
+@@ -145,6 +145,7 @@ public:
+     QString busyMessage;
+     QString useLabel;
+     bool uploadEnabled = false;
++    QString configFileName;
+ };
+ 
+ Engine::Engine(QObject *parent)
+@@ -224,6 +225,7 @@ bool Engine::init(const QString &configfile)
+         conf.reset(new KConfig(configfile));
+         qCWarning(KNEWSTUFFCORE) << "Using a deprecated location for the knsrc file" << configfile
+                                  << " - please contact the author of the software which provides this file to get it updated to use the new location";
++        configFileName = QFileInfo(configfile).baseName();
+     } else if (isRelativeConfig && actualConfig.isEmpty()) {
+         configFileName = QFileInfo(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("knsrcfiles/%1").arg(configfile))).baseName();
+         conf.reset(new KConfig(QStringLiteral("knsrcfiles/%1").arg(configfile), KConfig::FullConfig, QStandardPaths::GenericDataLocation));
+@@ -234,6 +236,7 @@ bool Engine::init(const QString &configfile)
+         configFileName = configFileInfo.baseName();
+         conf.reset(new KConfig(configfile));
+     }
++    d->configFileName = configFileName;
+ 
+     if (conf->accessMode() == KConfig::NoAccess) {
+         Q_EMIT signalErrorCode(KNSCore::ConfigFileError, i18n("Configuration file exists, but cannot be opened: \"%1\"", configfile), configfile);
+@@ -425,7 +428,7 @@ void Engine::slotProviderFileLoaded(const QDomDocument &doc)
+ 
+         QSharedPointer<KNSCore::Provider> provider;
+         if (isAtticaProviderFile || n.attribute(QStringLiteral("type")).toLower() == QLatin1String("rest")) {
+-            provider.reset(new AtticaProvider(m_categories, d->name));
++            provider.reset(new AtticaProvider(m_categories, d->configFileName));
+             connect(provider.data(), &Provider::categoriesMetadataLoded, this, [this](const QList<Provider::CategoryMetadata> &categories) {
+                 d->categoriesMetadata = categories;
+                 Q_EMIT signalCategoriesMetadataLoded(categories);
+-- 
+GitLab
+

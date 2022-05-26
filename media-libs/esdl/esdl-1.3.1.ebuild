@@ -1,8 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils fixheadtails multilib
+
+inherit fixheadtails
 
 DESCRIPTION="Erlang bindings for the SDL library"
 HOMEPAGE="http://esdl.sourceforge.net/"
@@ -22,7 +23,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	dev-util/rebar
+	dev-util/rebar:0
 "
 
 src_compile() {

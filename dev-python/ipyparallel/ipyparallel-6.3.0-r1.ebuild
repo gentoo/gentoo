@@ -1,12 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+)"
-DISTUTILS_USE_SETUPTOOLS=rdepend
-
 inherit distutils-r1 optfeature
 
 DESCRIPTION="Interactive Parallel Computing with IPython"
@@ -15,9 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm64 x86 ~amd64-linux ~x86-linux"
-IUSE="doc test"
-RESTRICT="!test? ( test )"
+KEYWORDS="amd64 ~arm arm64 hppa ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 
 # About tests and tornado
 # Upstreams claims to work fine with tornado 5, and it's indeed possible to
@@ -40,7 +36,6 @@ BDEPEND="${RDEPEND}
 	test? (
 		dev-python/ipython[test]
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/testpath[${PYTHON_USEDEP}]
 	)
 	"
@@ -48,13 +43,24 @@ BDEPEND="${RDEPEND}
 distutils_enable_sphinx docs/source
 distutils_enable_tests pytest
 
-src_prepare() {
-	# TODO: investigate
-	sed -e 's:test_unicode:_&:' \
-		-e 's:test_temp_flags:_&:' \
-		-i ipyparallel/tests/test_view.py || die
-
-	distutils-r1_src_prepare
+python_test() {
+	local deselect=(
+		# we don't run a mongo instance for tests
+		ipyparallel/tests/test_mongodb.py::TestMongoBackend
+		# TODO
+		ipyparallel/tests/test_util.py::test_disambiguate_ip
+		ipyparallel/tests/test_view.py::TestView::test_temp_flags
+		ipyparallel/tests/test_view.py::TestView::test_unicode_apply_arg
+		ipyparallel/tests/test_view.py::TestView::test_unicode_apply_result
+		ipyparallel/tests/test_view.py::TestView::test_unicode_execute
+		ipyparallel/tests/test_view.py::TestView::test_sync_imports_quiet
+	)
+	[[ ${EPYTHON} == python3.10 ]] && deselect+=(
+		# failing due to irrelevant warnings
+		ipyparallel/tests/test_client.py::TestClient::test_local_ip_true_doesnt_trigger_warning
+		ipyparallel/tests/test_client.py::TestClient::test_warning_on_hostname_match
+	)
+	epytest ${deselect[@]/#/--deselect }
 }
 
 pkg_postinst() {

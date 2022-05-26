@@ -1,0 +1,43 @@
+https://bugs.gentoo.org/707452
+--- a/sig2str.c
++++ b/sig2str.c
+@@ -63,7 +63,7 @@ extern const unsigned int sys_nsigname;	/* also from sys_signame.c */
+ #endif
+ 
+ #if !defined(SYS_SIGNAME_DECLARED)
+-const char *const sys_signame[];	/* defined in sys_signame.c */
++extern const char *const sys_signame[];	/* defined in sys_signame.c */
+ #endif
+ 
+ #if !defined(HAVE_DECL_SIG2STR)
+--- a/str2sig.c
++++ b/str2sig.c
+@@ -29,7 +29,7 @@ static const char rcsid[] =
+ #include "newsyslog.h"		/* generic portability definitions */
+ 
+ #if !defined(SYS_SIGNAME_DECLARED)
+-const char *const sys_signame[];		/* defined in signame.c */
++extern const char *const sys_signame[];		/* defined in signame.c */
+ #endif
+ 
+ /* NetBSD gained sys_nsig sometime just prior to 1.4 */
+@@ -65,7 +65,7 @@ extern const unsigned int sys_nsigname;	/* also from sys_signame.c */
+ #endif
+ 
+ #if !defined(SYS_SIGNAME_DECLARED)
+-const char *const sys_signame[];	/* defined in sys_signame.c */
++extern const char *const sys_signame[];	/* defined in sys_signame.c */
+ #endif
+ 
+ #if !defined(HAVE_DECL_STR2SIG)
+--- a/sys_signame.c
++++ b/sys_signame.c
+@@ -22,7 +22,7 @@
+ #include "config.h"
+ #include <sys/types.h>
+ 
+-const char *const sys_signame[] = {
++extern const char *const sys_signame[] = {
+ /*  0 */ "Signal 0",	/* Fake value for zero */
+ /*  1 */ "HUP",		/* Control TTY hangup */
+ /*  2 */ "INT",		/* Control TTY interrupt */

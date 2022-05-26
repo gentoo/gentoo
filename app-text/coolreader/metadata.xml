@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
     <email>grozin@gentoo.org</email>
@@ -12,6 +12,6 @@
     <flag name="wxwidgets">Use <pkg>x11-libs/wxGTK</pkg> instead of Qt5</flag>
   </use>
   <upstream>
-    <remote-id type="sourceforge">crengine</remote-id>
+    <remote-id type="github">buggins/coolreader</remote-id>
   </upstream>
 </pkgmetadata>

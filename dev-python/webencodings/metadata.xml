@@ -1,5 +1,5 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>python@gentoo.org</email>
@@ -9,10 +9,6 @@
   <upstream>
     <remote-id type="pypi">webencodings</remote-id>
     <doc>https://pythonhosted.org/webencodings/</doc>
-    <maintainer status="unknown">
-      <email>simon.sapin@exyr.org</email>
-      <name>Simon Sapin</name>
-    </maintainer>
-    <remote-id type="github">SimonSapin/python-webencodings</remote-id>
+    <remote-id type="github">gsnedders/python-webencodings</remote-id>
   </upstream>
 </pkgmetadata>

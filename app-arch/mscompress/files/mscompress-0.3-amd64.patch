@@ -1,5 +1,5 @@
---- mscompress.c.old	2006-11-27 23:58:51.000000000 +0100
-+++ mscompress.c	2006-11-27 23:59:50.000000000 +0100
+--- a/mscompress.c
++++ b/mscompress.c
 @@ -25,6 +25,7 @@
  #include <unistd.h>
  #include <fcntl.h>

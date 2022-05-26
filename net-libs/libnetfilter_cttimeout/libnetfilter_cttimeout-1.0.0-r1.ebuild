@@ -1,22 +1,24 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-inherit linux-info autotools-utils
+inherit linux-info verify-sig
 
-DESCRIPTION="netlink interface to the connection tracking timeout infrastructure in the kernel packet filter"
+DESCRIPTION="netlink interface for conntrack timeout infrastructure in kernel's packet filter"
 HOMEPAGE="https://www.netfilter.org/projects/libnetfilter_cttimeout/"
-SRC_URI="https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2"
+SRC_URI="https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2
+	verify-sig? ( https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2.sig )"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~x86"
-IUSE="static-libs"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ppc ppc64 ~riscv x86"
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/netfilter.org.asc
 
+BDEPEND="virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-netfilter )"
 RDEPEND="net-libs/libmnl:="
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-clang-export.patch

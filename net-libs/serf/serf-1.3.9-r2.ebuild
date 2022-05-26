@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit python-any-r1 scons-utils toolchain-funcs flag-o-matic
 
@@ -13,29 +13,32 @@ SRC_URI="mirror://apache/${PN}/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="1"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
-IUSE="kerberos static-libs libressl"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+IUSE="kerberos"
+# Many test failures.
 RESTRICT="test"
 
 RDEPEND="dev-libs/apr:1=
 	dev-libs/apr-util:1=
-	!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	sys-libs/zlib:0=
 	kerberos? ( virtual/krb5 )"
 DEPEND="${RDEPEND}
 	>=dev-util/scons-2.3.0"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.3.8-static-lib.patch
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.3.8-static-lib.patch
 	"${FILESDIR}"/${PN}-1.3.8-openssl.patch
 	"${FILESDIR}"/${PN}-1.3.9-python3.patch
 	"${FILESDIR}"/${PN}-1.3.9-python3_byte.patch
-	"${FILESDIR}"/${PN}-1.3.9-libressl.patch )
+	"${FILESDIR}"/${PN}-1.3.9-python3-check.patch
+)
 
 src_prepare() {
 	default
 
 	# https://code.google.com/p/serf/issues/detail?id=133
-	sed -e "/env.Append(CCFLAGS=\['-O2'\])/d" -i SConstruct
+	sed -e "/env.Append(CCFLAGS=\['-O2'\])/d" -i SConstruct || die
 
 	# need limits.h for PATH_MAX (only when EXTENSIONS is enabled)
 	[[ ${CHOST} == *-solaris* ]] && append-cppflags -D__EXTENSIONS__
@@ -43,14 +46,14 @@ src_prepare() {
 
 src_compile() {
 	myesconsargs=(
+		BUILD_STATIC=no
 		PREFIX="${EPREFIX}/usr"
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)"
 		# These config scripts are sent through a shell with an empty env
 		# which breaks the SYSROOT usage in them.  Set the vars inline to
 		# avoid that.
-		APR="SYSROOT='${SYSROOT}' ${SYSROOT}${EPREFIX}/usr/bin/apr-1-config"
-		APU="SYSROOT='${SYSROOT}' ${SYSROOT}${EPREFIX}/usr/bin/apu-1-config"
-		BUILD_STATIC=$(usex static-libs)
+		APR="SYSROOT='${SYSROOT}' ${ESYSROOT}/usr/bin/apr-1-config"
+		APU="SYSROOT='${SYSROOT}' ${ESYSROOT}/usr/bin/apu-1-config"
 		AR="$(tc-getAR)"
 		RANLIB="$(tc-getRANLIB)"
 		CC="$(tc-getCC)"
@@ -60,7 +63,7 @@ src_compile() {
 	)
 
 	if use kerberos; then
-		myesconsargs+=( GSSAPI="${SYSROOT}${EPREFIX}/usr/bin/krb5-config" )
+		myesconsargs+=( GSSAPI="${ESYSROOT}/usr/bin/krb5-config" )
 	fi
 
 	escons "${myesconsargs[@]}"

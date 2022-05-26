@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://www.linuxtv.org/hg/dvb-apps/archive/3d43b280298c.tar.bz2 -> ${P
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc x86"
+KEYWORDS="amd64 arm arm64 ppc x86"
 IUSE="alevt usb"
 
 RDEPEND="
@@ -38,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.1.20100223-perl526.patch
 	"${FILESDIR}"/${PN}-no-ca_set_pid.patch
 	"${FILESDIR}"/${PN}-glibc-2.31.patch
+	"${FILESDIR}"/${PN}-1.1.1.20140321-gcc10.patch
 )
 
 src_prepare() {
@@ -51,8 +52,8 @@ src_prepare() {
 }
 
 src_compile() {
-	emake V=1 CC=$(tc-getCC) $(usex usb "ttusb_dec_reset=1" "")
-	use alevt && emake -C util/alevt CC=$(tc-getCC) OPT="${CFLAGS}"
+	emake V=1 CC="$(tc-getCC)" $(usex usb "ttusb_dec_reset=1" "")
+	use alevt && emake -C util/alevt CC="$(tc-getCC)" OPT="${CFLAGS}"
 }
 
 src_install() {
@@ -89,5 +90,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "/usr/bin/scan has been installed as scan-dvb."
+	elog "${EPREFIX}/usr/bin/scan has been installed as scan-dvb."
 }

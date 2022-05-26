@@ -1,27 +1,30 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils linux-info ltprune multilib
+EAPI=7
 
-DESCRIPTION="library providing interface to extended accounting infrastructure"
+inherit linux-info verify-sig
+
+DESCRIPTION="Library providing interface to extended accounting infrastructure"
 HOMEPAGE="https://netfilter.org/projects/libnetfilter_acct/"
-SRC_URI="https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2"
+SRC_URI="https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2
+	verify-sig? ( https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2.sig )"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ppc ~ppc64 x86 ~amd64-linux"
 IUSE="examples"
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/netfilter.org.asc
 
 RDEPEND="
 	net-libs/libmnl
 "
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-netfilter )"
 
 DOCS=( README )
+
 CONFIG_CHECK="~NETFILTER_NETLINK_ACCT"
 
 pkg_setup() {
@@ -46,5 +49,5 @@ src_install() {
 		docompress -x /usr/share/doc/${P}/examples
 	fi
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

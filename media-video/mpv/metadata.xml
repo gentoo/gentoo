@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>zlogene@gentoo.org</email>
@@ -10,13 +10,11 @@
 		<flag name="bluray">Enable playback of Blu-ray filesystems</flag>
 		<flag name="cli">Build mpv CLI player</flag>
 		<flag name="cplugins">Enable C plugins support</flag>
-		<flag name="cuda">Enable hardware video decoding via Nvidia CUDA</flag>
 		<flag name="drm">Enable Kernel Mode Setting / Direct Rendering Manager based video output</flag>
 		<flag name="egl">Enable support for various EGL-based video outputs / backends</flag>
 		<flag name="gamepad">Enable gamepad input support</flag>
 		<flag name="gbm">Enable Graphics Buffer Manager based EGL video backend</flag>
 		<flag name="jpeg">Enable support for saving screenshots in JPEG format</flag>
-		<flag name="libass">Enable OSD (On Screen Display) and subtitles support via <pkg>media-libs/libass</pkg></flag>
 		<flag name="libmpv">Build mpv shared library</flag>
 		<flag name="lua">Enable Lua scripting, OSC (On Screen Controller) GUI and <pkg>net-misc/youtube-dl</pkg> hook-script</flag>
 		<flag name="opengl" restrict="&lt;media-video/mpv-0.28.0">Enable the recommended 'opengl' video output</flag>

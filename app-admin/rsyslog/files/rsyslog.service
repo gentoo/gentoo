@@ -1,0 +1,25 @@
+[Unit]
+Description=System Logging Service
+;Requires=syslog.socket
+Conflicts=syslog-ng.service syslogd.service
+Documentation=man:rsyslogd(8)
+Documentation=man:rsyslog.conf(5)
+Documentation=https://www.rsyslog.com/doc/
+
+[Service]
+Type=notify
+Environment=RSYSLOGD_PARAMS=
+EnvironmentFile=-/etc/default/rsyslog
+ExecStart=/usr/sbin/rsyslogd -n -iNONE $RSYSLOGD_PARAMS
+ExecReload=/bin/kill -HUP $MAINPID
+UMask=0066
+StandardOutput=null
+Restart=on-failure
+
+# Increase the default a bit in order to allow many simultaneous
+# files to be monitored, we might need a lot of fds.
+LimitNOFILE=16384
+
+[Install]
+WantedBy=multi-user.target
+Alias=syslog.service

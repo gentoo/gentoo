@@ -1,0 +1,4 @@
+MINIO_ACCESS_KEY="minio"
+MINIO_VOLUMES="/var/lib/minio"
+MINIO_OPTS="-C /etc/minio --address 127.0.0.1:9000"
+MINIO_SECRET_KEY="miniostorage"

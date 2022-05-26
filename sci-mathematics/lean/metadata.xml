@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    The Lean theorem prover is a proof assistant developed principally
+    by Leonardo de Moura at Microsoft Research.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/leanprover-community/lean/issues</bugs-to>
+    <remote-id type="github">leanprover-community/lean</remote-id>
+  </upstream>
+</pkgmetadata>

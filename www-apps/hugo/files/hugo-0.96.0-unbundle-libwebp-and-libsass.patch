@@ -1,0 +1,44 @@
+From 0a44245bf6cfe103bb163f51f230eeccd69ab8c7 Mon Sep 17 00:00:00 2001
+From: tastytea <tastytea@tastytea.de>
+Date: Tue, 29 Mar 2022 21:03:15 +0200
+Subject: [PATCH] Unbundle libwebp and libsass
+
+Use libwebp and libsass from the system instead of the bundled ones.
+---
+ .../github.com/bep/golibsass/internal/libsass/a__cgo.go   | 8 ++++----
+ vendor/github.com/bep/gowebp/internal/libwebp/a__cgo.go   | 3 ++-
+ 2 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/vendor/github.com/bep/golibsass/internal/libsass/a__cgo.go b/vendor/github.com/bep/golibsass/internal/libsass/a__cgo.go
+index af51b92..6b5e78b 100644
+--- a/vendor/github.com/bep/golibsass/internal/libsass/a__cgo.go
++++ b/vendor/github.com/bep/golibsass/internal/libsass/a__cgo.go
+@@ -5,9 +5,9 @@
+ //
+ package libsass
+ 
+-// #cgo CFLAGS: -O2 -fPIC
+-// #cgo CPPFLAGS: -I../../libsass_src/include
+-// #cgo CXXFLAGS: -g -std=c++0x -O2 -fPIC
+-// #cgo LDFLAGS: -lstdc++ -lm
++// #cgo CFLAGS: -fPIC
++// #cgo CPPFLAGS: -DUSE_LIBSASS_SRC
++// #cgo CXXFLAGS: -std=c++0x -fPIC
++// #cgo LDFLAGS: -lstdc++ -lm -lsass
+ // #cgo darwin linux LDFLAGS: -ldl
+ import "C"
+diff --git a/vendor/github.com/bep/gowebp/internal/libwebp/a__cgo.go b/vendor/github.com/bep/gowebp/internal/libwebp/a__cgo.go
+index 4b105ab..33f429e 100644
+--- a/vendor/github.com/bep/gowebp/internal/libwebp/a__cgo.go
++++ b/vendor/github.com/bep/gowebp/internal/libwebp/a__cgo.go
+@@ -2,5 +2,6 @@
+ 
+ package libwebp
+ 
+-// #cgo linux LDFLAGS: -lm
++// #cgo linux LDFLAGS: -lm -lwebp
++// #cgo CFLAGS: -DLIBWEBP_NO_SRC
+ import "C"
+-- 
+2.35.1
+

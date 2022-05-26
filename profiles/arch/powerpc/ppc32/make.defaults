@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # All extra USE/etc should be specified in sub-profiles.
@@ -15,11 +15,7 @@ FCFLAGS="${CFLAGS}"
 
 # Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
 # Defaults for video drivers
-VIDEO_CARDS="fbdev glint mga nv r128 radeon"
-
-# Diego Pettenò <flameeyes@gentoo.org> (2006-12-06)
-# Defaults for PowerPC sound driver
-ALSA_CARDS="aoa aoa-fabric-layout aoa-onyx aoa-soundbus aoa-soundbus-i2s aoa-tas aoa-toonie powermac usb-audio via82xx"
+VIDEO_CARDS="fbdev mga nv r128 radeon"
 
 # Michał Górny <mgorny@gentoo.org> (2014-06-27)
 # Multilib-related setup for compatibility with future multilib.

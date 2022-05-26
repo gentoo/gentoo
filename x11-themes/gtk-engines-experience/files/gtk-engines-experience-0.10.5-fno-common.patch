@@ -1,0 +1,131 @@
+--- a/src/experience.h
++++ b/src/experience.h
+@@ -39,17 +39,18 @@
+ 
+ #define CLAMP_COLOR(color) CLAMP(color, 0, GDK_COLOR_MAX)
+ 
+-enum {
++typedef enum {
+ 	NONE,
+ 	PARSING,
+ 	RUNNING
+-} experience_engine_state EXPERIENCE_INTERNAL;
++} experience_engine_state_type;
++extern experience_engine_state_type experience_engine_state EXPERIENCE_INTERNAL;
+ 
+-GQuark experience_g_quark EXPERIENCE_INTERNAL;
++extern GQuark experience_g_quark EXPERIENCE_INTERNAL;
+ 
+-gboolean experience_print_widget_path EXPERIENCE_INTERNAL;
++extern gboolean experience_print_widget_path EXPERIENCE_INTERNAL;
+ /* gboolean warn_invalid_gtype; */
+-gboolean experience_parser_error EXPERIENCE_INTERNAL;
++extern gboolean experience_parser_error EXPERIENCE_INTERNAL;
+ 
+ /* All GTK drawing functions: */
+ typedef enum {
+--- a/src/fill.c
++++ b/src/fill.c
+@@ -22,6 +22,8 @@
+ #include <string.h>
+ #include "fill.h"
+ 
++eXperienceDrawableClass * experience_fill_class EXPERIENCE_INTERNAL;
++
+ void
+ experience_fill_set_color (eXperienceFill * fill, eXperienceDynamicColor color)
+ {
+--- a/src/fill.h
++++ b/src/fill.h
+@@ -25,7 +25,7 @@
+ #include "drawable.h"
+ #include "dynamic_color.h"
+ 
+-eXperienceDrawableClass * experience_fill_class EXPERIENCE_INTERNAL;
++extern eXperienceDrawableClass * experience_fill_class EXPERIENCE_INTERNAL;
+ 
+ typedef struct {
+ 	eXperienceDrawable drawable;
+--- a/src/image.c
++++ b/src/image.c
+@@ -26,6 +26,8 @@
+ #include "filter.h"
+ #include "image_loading.h"
+ 
++eXperienceDrawableClass * experience_image_class EXPERIENCE_INTERNAL;
++
+ #define CHECK_AND_SET_OPTION(image, option, message) { \
+ 	if (image->options_set & option) { \
+ 			g_printerr ("Error in image #%i in group %s: %s\n", image->drawable.number, image->drawable.group_name, message); \
+--- a/src/image.h
++++ b/src/image.h
+@@ -25,7 +25,7 @@
+ #include <gdk/gdk.h>
+ #include "drawable.h"
+ 
+-eXperienceDrawableClass * experience_image_class EXPERIENCE_INTERNAL;
++extern eXperienceDrawableClass * experience_image_class EXPERIENCE_INTERNAL;
+ 
+ typedef enum
+ {
+--- a/src/main.c
++++ b/src/main.c
+@@ -29,6 +29,10 @@
+ #include "image.h"
+ #include "fill.h"
+ 
++GQuark experience_g_quark EXPERIENCE_INTERNAL;
++gboolean experience_parser_error EXPERIENCE_INTERNAL;
++gboolean experience_print_widget_path EXPERIENCE_INTERNAL;
++
+ G_MODULE_EXPORT void theme_init (GTypeModule *module);
+ G_MODULE_EXPORT void theme_exit (void);
+ G_MODULE_EXPORT GtkRcStyle * theme_create_rc_style (void);
+--- a/src/rcstyle.c
++++ b/src/rcstyle.c
+@@ -31,6 +31,9 @@
+ #include "image_loading.h"
+ #include "render.h"
+ 
++GType experience_type_rc_style EXPERIENCE_INTERNAL;
++experience_engine_state_type experience_engine_state EXPERIENCE_INTERNAL;
++
+ static void      experience_rc_style_init         (eXperienceRcStyle      *style);
+ static void      experience_rc_style_class_init   (eXperienceRcStyleClass *klass);
+ static GtkStyle *experience_rc_style_create_style (GtkRcStyle         *rc_style);
+--- a/src/rcstyle.h
++++ b/src/rcstyle.h
+@@ -29,7 +29,7 @@
+ typedef struct _eXperienceRcStyle eXperienceRcStyle;
+ typedef struct _eXperienceRcStyleClass eXperienceRcStyleClass;
+ 
+-GType experience_type_rc_style EXPERIENCE_INTERNAL;
++extern GType experience_type_rc_style EXPERIENCE_INTERNAL;
+ 
+ #define EXPERIENCE_TYPE_RC_STYLE              experience_type_rc_style
+ #define EXPERIENCE_RC_STYLE(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), EXPERIENCE_TYPE_RC_STYLE, eXperienceRcStyle))
+--- a/src/style.c
++++ b/src/style.c
+@@ -24,6 +24,9 @@
+ #include "style.h"
+ #include "drawing_functions.h"
+ 
++GType experience_type_style EXPERIENCE_INTERNAL;
++GtkStyleClass *experience_style_parent_class EXPERIENCE_INTERNAL;
++
+ static void
+ experience_style_class_init (eXperienceStyleClass * klass)
+ {
+--- a/src/style.h
++++ b/src/style.h
+@@ -25,8 +25,8 @@
+ typedef struct _eXperienceStyle eXperienceStyle;
+ typedef struct _eXperienceStyleClass eXperienceStyleClass;
+ 
+-GType experience_type_style EXPERIENCE_INTERNAL;
+-GtkStyleClass *experience_style_parent_class EXPERIENCE_INTERNAL;
++extern GType experience_type_style EXPERIENCE_INTERNAL;
++extern GtkStyleClass *experience_style_parent_class EXPERIENCE_INTERNAL;
+ 
+ #define EXPERIENCE_TYPE_STYLE              experience_type_style
+ #define EXPERIENCE_STYLE(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), EXPERIENCE_TYPE_STYLE, eXperienceStyle))

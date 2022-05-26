@@ -15,3 +15,5 @@ LICENSE="vim"
 KEYWORDS="~amd64 ~x86"
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"
+
+DOCS=( readme.md )

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>gnome@gentoo.org</email>
@@ -13,9 +13,10 @@
 	</longdescription>
 	<use>
 		<flag name="broadway">Enable the GDK Broadway backend.</flag>
-		<flag name="cloudprint">Enable printing via Google Cloud Print.</flag>
 		<flag name="colord">Use <pkg>x11-misc/colord</pkg> for color management
 			in printing</flag>
+		<flag name="sysprof">Enable profiling data capture support using
+			<pkg>dev-util/sysprof-capture</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:gtk:gtk%2B</remote-id>

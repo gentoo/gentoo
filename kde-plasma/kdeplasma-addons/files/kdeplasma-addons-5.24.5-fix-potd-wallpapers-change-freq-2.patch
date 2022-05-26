@@ -1,0 +1,44 @@
+From 326ae3a24ccb1f1b526f4742a84e4ce24046effd Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Thu, 5 May 2022 10:19:22 +0800
+Subject: [PATCH] wallpapers/potd: Give random chooser a seed in flickrprovider
+
+Make the seed depend on the current date.
+
+BUG: 453391
+FIXED-IN: 5.24.6
+---
+ dataengines/potd/flickrprovider.cpp | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/dataengines/potd/flickrprovider.cpp b/dataengines/potd/flickrprovider.cpp
+index fe542f2b5..3861bd700 100644
+--- a/dataengines/potd/flickrprovider.cpp
++++ b/dataengines/potd/flickrprovider.cpp
+@@ -7,8 +7,9 @@
+ 
+ #include "flickrprovider.h"
+ 
++#include <random>
++
+ #include <QDebug>
+-#include <QRandomGenerator>
+ #include <QRegularExpression>
+ #include <QUrlQuery>
+ 
+@@ -127,7 +128,11 @@ void FlickrProvider::xmlRequestFinished(KJob *_job)
+     }
+ 
+     if (m_photoList.begin() != m_photoList.end()) {
+-        QUrl url(m_photoList.at(QRandomGenerator::global()->bounded(m_photoList.size())));
++        // Plasma 5.24.0 release date
++        std::mt19937 randomEngine(QDate(2022, 2, 3).daysTo(QDate::currentDate()));
++        std::uniform_int_distribution<int> distrib(0, m_photoList.size() - 1);
++
++        QUrl url(m_photoList.at(distrib(randomEngine)));
+         KIO::StoredTransferJob *imageJob = KIO::storedGet(url, KIO::NoReload, KIO::HideProgressInfo);
+         connect(imageJob, &KIO::StoredTransferJob::finished, this, &FlickrProvider::imageRequestFinished);
+     } else {
+-- 
+GitLab
+

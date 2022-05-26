@@ -1,0 +1,13 @@
+diff --git a/ogg.m4 b/ogg.m4
+index 17235da..22956ef 100644
+--- a/ogg.m4
++++ b/ogg.m4
+@@ -21,7 +21,7 @@ AC_ARG_ENABLE(oggtest,AC_HELP_STRING([--disable-oggtest],[Do not try to compile
+   elif test "x$ogg_prefix" != "x" ; then
+     OGG_LIBS="-L$ogg_prefix/lib"
+   elif test "x$prefix" != "xNONE" ; then
+-    OGG_LIBS="-L$prefix/lib"
++    OGG_LIBS="-L${libdir}"
+   fi
+ 
+   if test "x$ogg_prefix" != "xno" ; then

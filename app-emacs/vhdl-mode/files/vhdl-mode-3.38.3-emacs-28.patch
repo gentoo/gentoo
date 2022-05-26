@@ -1,0 +1,11 @@
+--- vhdl-mode-3.38.3/vhdl-mode.el
++++ vhdl-mode-3.38.3/vhdl-mode.el
+@@ -2475,7 +2475,7 @@
+   (defalias 'speedbar-line-directory
+     'speedbar-line-path))
+ 
+-(define-obsolete-variable-alias 'speedbar-key-map 'speedbar-mode-map)
++(define-obsolete-variable-alias 'speedbar-key-map 'speedbar-mode-map "")
+ 
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;; Help functions / inline substitutions / macros

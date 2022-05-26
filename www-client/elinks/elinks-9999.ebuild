@@ -1,11 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
+LUA_COMPAT=( lua5-{1,2} )
 
-inherit autotools git-r3 python-any-r1
+inherit autotools git-r3 lua-single python-any-r1
 
 EGIT_REPO_URI="https://github.com/rkd77/felinks"
 
@@ -16,8 +17,9 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="bittorrent brotli bzip2 debug finger ftp gopher gpm gnutls guile idn ipv6
-	javascript libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib"
+	lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib zstd"
 
+REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	brotli? ( app-arch/brotli:= )
@@ -25,27 +27,29 @@ RDEPEND="
 	gpm? ( >=sys-libs/ncurses-5.2:0= >=sys-libs/gpm-1.20.0-r5 )
 	guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated] )
 	idn? ( net-dns/libidn:= )
-	lua? ( >=dev-lang/lua-5:0= )
+	lua? ( ${LUA_DEPS} )
 	perl? ( dev-lang/perl:= )
 	ruby? ( dev-lang/ruby:* dev-ruby/rubygems:* )
 	samba? ( net-fs/samba )
 	ssl? (
 		!gnutls? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
+			dev-libs/openssl:0=
 		)
 		gnutls? ( net-libs/gnutls:= )
 	)
 	tre? ( dev-libs/tre )
-	X? ( x11-libs/libX11 x11-libs/libXt )
+	X? (
+		x11-libs/libX11
+		x11-libs/libXt
+	)
 	xml? ( >=dev-libs/expat-1.95.4 )
-	zlib? ( >=sys-libs/zlib-1.1.4 )"
+	zlib? ( >=sys-libs/zlib-1.1.4 )
+	zstd? ( app-arch/zstd:= )"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-parallel-make.patch
-	"${FILESDIR}"/${PN}-0.13.4-ruby-gcc10.patch
 )
 
 src_unpack() {
@@ -75,12 +79,13 @@ src_configure() {
 		$(use_with bzip2 bzlib)
 		$(use_with guile)
 		$(use_with idn)
-		--with-luapkg=$(usev lua)
+		$(use_with lua luapkg lua)
 		$(use_with perl)
 		$(use_with ruby)
 		$(use_with tre)
 		$(use_with X x)
 		$(use_with zlib)
+		$(use_with zstd)
 		$(use_enable bittorrent)
 		$(use_enable finger)
 		$(use_enable ftp)

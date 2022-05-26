@@ -1,0 +1,13 @@
+Compiled Lua modules must not link against liblua.
+
+--- a/bindings/lua/Makefile.am
++++ b/bindings/lua/Makefile.am
+@@ -9,7 +9,7 @@
+ 
+ AM_CPPFLAGS = -I@top_srcdir@ -I@top_builddir@/src/include -I@top_srcdir@/src/include -I@top_builddir@/src/libprelude-error -I@top_srcdir@/bindings/c++/include @LUA_CFLAGS@ -I@top_srcdir@/libmissing -I@top_builddir@/libmissing
+ 
+-prelude_la_LDFLAGS = -module -avoid-version @LUA_LIBS@
++prelude_la_LDFLAGS = -module -avoid-version
+ prelude_la_LIBADD = $(top_builddir)/bindings/c++/.libs/libpreludecpp.la
+ prelude_la_SOURCES = prelude.cxx
+ preludedir = $(libdir)/lua/@LUA_VERSION@

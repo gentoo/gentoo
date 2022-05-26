@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>blueness@gentoo.org</email>
@@ -10,6 +10,9 @@
 		cryptographic library written in C and targeted at embedded systems.
 	</longdescription>
 	<use>
+		<flag name="cmac">Enable block cipher-based message authentication
+			code algorithm
+		</flag>
 		<flag name="havege">Enable the HAVEGE random generator.
 			Warning: the HAVEGE random generator is not suitable for
 			virtualized environments

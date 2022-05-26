@@ -1,0 +1,25 @@
+# Two patches to bring lagan up to speed with gcc-9
+Index: lagan/src/fchaos.c
+===================================================================
+--- lagan.orig/src/fchaos.c
++++ lagan/src/fchaos.c
+@@ -430,7 +430,7 @@ int chain(LList* second, int off2, LList
+ int tc =0;
+ int wc = 0;
+ 
+-inline void findPrev(LList* curr, int position, int offset, float baseval) {
++void findPrev(LList* curr, int position, int offset, float baseval) {
+   int j,k;
+   LList* temp;
+   sle* iterator;
+Index: lagan/src/filebuffer.c
+===================================================================
+--- lagan.orig/src/filebuffer.c
++++ lagan/src/filebuffer.c
+@@ -1,5 +1,6 @@
+ #include "filebuffer.h"
+ #include <stdlib.h>
++#include <ctype.h>
+ #include <string.h>
+ #include <stdio.h>
+ #include <assert.h>

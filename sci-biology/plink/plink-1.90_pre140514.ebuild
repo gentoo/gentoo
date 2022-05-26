@@ -1,34 +1,36 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Whole genome association analysis toolset"
 HOMEPAGE="http://pngu.mgh.harvard.edu/~purcell/plink/"
 SRC_URI="http://pngu.mgh.harvard.edu/~purcell/static/bin/plink140514/plink_src.zip -> ${P}.zip"
+S="${WORKDIR}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND="
-	app-arch/unzip
-	virtual/pkgconfig"
 RDEPEND="
 	sys-libs/zlib
 	virtual/cblas
 	virtual/lapack
-	"
-
-S="${WORKDIR}/"
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	app-arch/unzip
+	virtual/pkgconfig
+"
 
 # Package collides with net-misc/putty. Renamed to p-link following discussion with Debian.
 # Package contains bytecode-only jar gPLINK.jar. Ignored, notified upstream.
 
 src_prepare() {
+	default
+
 	sed \
 		-e 's:zlib-1.2.8/zlib.h:zlib.h:g' \
 		-i *.{c,h} || die
@@ -43,8 +45,9 @@ src_prepare() {
 
 src_compile() {
 	emake \
-		CXX=$(tc-getCXX) \
+		CXX="$(tc-getCXX)" \
 		CFLAGS="${CFLAGS}" \
+		LDFLAGS="${LDFLAGS}" \
 		ZLIB="$($(tc-getPKG_CONFIG) --libs zlib)" \
 		BLASFLAGS="$($(tc-getPKG_CONFIG) --libs lapack cblas)"
 }

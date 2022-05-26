@@ -1,0 +1,38 @@
+From 7b17dccec643ffbf9e51a011d2aa1547169e9686 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lubo=C5=A1=20Lu=C5=88=C3=A1k?= <l.lunak@centrum.cz>
+Date: Sat, 8 May 2021 13:05:34 +0200
+Subject: [PATCH] fix sorting of time columns
+
+Commit 910b2939a07ee241 changed QVariant types for sorting from qlonglong
+to int64_t, but QSortFilterProxyModel::lessThan() docs explicitly list
+types that are compared numerically, int64_t is not one of them, so it
+gets sorted as a string. This meant that '0:02' was sorted before '0:17'.
+---
+ src/model/task.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/model/task.cpp b/src/model/task.cpp
+index 106e719..ff68b24 100644
+--- a/src/model/task.cpp
++++ b/src/model/task.cpp
+@@ -509,13 +509,13 @@ QVariant Task::data(int column, int role) const
+                 case 0:
+                     return m_name;
+                 case 1:
+-                    return QVariant::fromValue<int64_t>(m_sessionTime);
++                    return QVariant::fromValue<qlonglong>(m_sessionTime);
+                 case 2:
+-                    return QVariant::fromValue<int64_t>(m_time);
++                    return QVariant::fromValue<qlonglong>(m_time);
+                 case 3:
+-                    return QVariant::fromValue<int64_t>(m_totalSessionTime);
++                    return QVariant::fromValue<qlonglong>(m_totalSessionTime);
+                 case 4:
+-                    return QVariant::fromValue<int64_t>(m_totalTime);
++                    return QVariant::fromValue<qlonglong>(m_totalTime);
+                 case 5:
+                     return QVariant::fromValue<int>(m_priority);
+                 case 6:
+-- 
+GitLab
+

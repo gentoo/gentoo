@@ -1,0 +1,13 @@
+Valgrind isn't supported on all arches (and indeed profiles for older types
+of some arches) so let's just skip the automagic Valgrind dependency entirely.
+--- a/tests/regression
++++ b/tests/regression
+@@ -876,7 +876,7 @@ function run_test() {
+ 		run_test_bpf_sim_fuzz "$1" $2 "$3"
+ 	elif [[ "$4" == "bpf-valgrind" ]]; then
+ 		# only run this test if valgrind is installed
+-		if check_deps valgrind; then
++		if false; then
+ 			run_test_bpf_valgrind "$testnumstr" "$3"
+ 		else
+ 			print_result $testnumstr "SKIPPED" \

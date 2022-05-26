@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,6 @@ EAPI=6
 if [[ ${PV} == 99999999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/wine-compholio/wine-staging"
-	KEYWORDS=""
 else
 	SHA="4ffcf184bb71c6c3512b3a8c144dcf4a3a76d23c"
 	SRC_URI="https://github.com/wine-compholio/wine-staging/archive/${SHA}.tar.gz -> ${P}.tar.gz"
@@ -19,7 +18,6 @@ HOMEPAGE="https://github.com/wine-compholio/wine-staging"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="userland_BSD userland_GNU"
 
 RDEPEND="
 	app-shells/bash

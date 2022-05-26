@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <catmetadata>
 	<longdescription lang="en">
 		The sci-biology category contains software that can be used
@@ -43,4 +43,3 @@
 		Kategoria sci-biology zawiera programy naukowe związane z biologią.
 	</longdescription>
 </catmetadata>
-

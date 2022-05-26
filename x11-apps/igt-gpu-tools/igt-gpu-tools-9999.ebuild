@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,8 @@ if [[ ${PV} = *9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-inherit ${GIT_ECLASS} meson
+PYTHON_COMPAT=( python3_{7..10} )
+inherit ${GIT_ECLASS} meson python-any-r1
 
 DESCRIPTION="Intel GPU userland tools"
 
@@ -35,7 +36,6 @@ RDEPEND="
 	dev-libs/elfutils
 	dev-libs/glib:2
 	sys-apps/kmod:=
-	sys-libs/libunwind:=
 	sys-libs/zlib:=
 	sys-process/procps:=
 	virtual/libudev:=
@@ -44,8 +44,8 @@ RDEPEND="
 	>=x11-libs/libpciaccess-0.10
 	x11-libs/pixman
 	chamelium? (
-		dev-libs/xmlrpc-c[curl]
-		sci-libs/gsl
+		dev-libs/xmlrpc-c:=[curl]
+		sci-libs/gsl:=
 		media-libs/alsa-lib:=
 	)
 	overlay? (
@@ -57,7 +57,7 @@ RDEPEND="
 		)
 	)
 	runner? ( dev-libs/json-c:= )
-	unwind? ( sys-libs/libunwind )
+	unwind? ( sys-libs/libunwind:= )
 	valgrind? ( dev-util/valgrind )
 	"
 DEPEND="${RDEPEND}
@@ -72,6 +72,7 @@ DEPEND="${RDEPEND}
 		sys-devel/flex
 	)
 "
+BDEPEND="${PYTHON_DEPS}"
 
 src_prepare() {
 	sed -e "s/find_program('rst2man-3'/find_program('rst2man.py', 'rst2man-3'/" -i man/meson.build

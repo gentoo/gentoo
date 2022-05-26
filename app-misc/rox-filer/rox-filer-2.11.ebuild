@@ -1,34 +1,39 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit desktop epatch virtualx
+inherit desktop virtualx
 
 DESCRIPTION="ROX-Filer a drag and drop spatial file manager"
-HOMEPAGE="http://rox.sourceforge.net/desktop"
-SRC_URI="mirror://sourceforge/rox/${P}.tar.bz2"
+HOMEPAGE="http://rox.sourceforge.net/desktop/ROX-Filer.html"
+SRC_URI="https://download.sourceforge.net/rox/${P}.tar.bz2"
 
-LICENSE="GPL-2 LGPL-2"
+LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
-IUSE=""
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 COMMON_DEPEND="dev-lang/perl
 	dev-libs/libxml2:2
 	gnome-base/libglade:2.0
-	x11-libs/gtk+:2"
+	x11-libs/gtk+:2
+	x11-libs/libSM"
 RDEPEND="${COMMON_DEPEND}
 	x11-misc/shared-mime-info"
 DEPEND="${COMMON_DEPEND}
 	dev-util/intltool
-	sys-devel/gettext
-	virtual/pkgconfig"
+	sys-devel/gettext"
+BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}/${P}"/ROX-Filer/src
+S="${WORKDIR}/${P}/ROX-Filer/src"
+
+PATCHES=(
+	"${FILESDIR}/${P}-in-source-build.patch"
+	"${FILESDIR}/${P}-gcc10.patch"
+)
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-in-source-build.patch"
+	default
 
 	sed -i -e 's:g_strdup(getenv("APP_DIR")):"/usr/share/rox":' \
 		main.c || die "sed failed"

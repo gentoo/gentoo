@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,12 +14,16 @@ KEYWORDS="amd64 arm ppc ppc64 x86 ~x64-solaris"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="png truetype"
+REQUIRED_USE="truetype? ( png )"
 
-RDEPEND="png? (	media-libs/gd[png,truetype?] )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+RDEPEND="
+	truetype? ( media-libs/freetype )
+	png? ( media-libs/gd[png,truetype?] )"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/bison
-	sys-devel/flex"
+	sys-devel/flex
+	virtual/pkgconfig"
 
 # Workaround for bug #379279
 RESTRICT="test"

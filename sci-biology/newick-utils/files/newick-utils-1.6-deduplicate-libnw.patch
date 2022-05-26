@@ -1,0 +1,153 @@
+Don't rebuild all of libnw.la pointlessly
+
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -8,6 +8,8 @@
+ showsrc:
+ 	@echo $(srcdir)
+ 
++LDADD = $(top_builddir)/src/libnw.la
++
+ TESTS = test_newick_scanner test_newick_parser test_rnode test_list \
+ 	test_link test_masprintf test_svg_graph_radial \
+ 	test_canvas test_concat test_hash test_lca test_enode \
+@@ -37,100 +39,57 @@
+ 
+ SRC = $(top_builddir)/src
+ 
+-test_newick_scanner_SOURCES = test_newick_scanner.c $(SRC)/newick_scanner.c \
+-	$(SRC)/newick_parser.c $(SRC)/rnode.c $(SRC)/rnode_iterator.c \
+-	$(SRC)/list.c $(SRC)/hash.c $(SRC)/masprintf.c $(SRC)/link.c
+-
+-test_newick_parser_SOURCES = test_newick_parser.c $(SRC)/parser.c \
+-	$(SRC)/newick_scanner.c $(SRC)/newick_parser.c $(SRC)/list.c \
+-	$(SRC)/rnode.c $(SRC)/link.c $(SRC)/hash.c $(SRC)/rnode_iterator.c \
+-	$(SRC)/masprintf.c $(SRC)/to_newick.c $(SRC)/concat.c
+-
+-test_rnode_SOURCES = test_rnode.c $(SRC)/rnode.c $(SRC)/list.c \
+-	$(SRC)/rnode_iterator.c $(SRC)/hash.c $(SRC)/masprintf.c \
+-	tree_stubs.c $(SRC)/nodemap.c $(SRC)/link.c
+-
+-test_list_SOURCES = test_list.c $(SRC)/list.c
+-
+-test_link_SOURCES = test_link.c $(SRC)/link.c $(SRC)/nodemap.c \
+-	$(SRC)/list.c $(SRC)/to_newick.c $(SRC)/rnode.c \
+-	$(SRC)/concat.c $(SRC)/hash.c tree_stubs.c \
+-	$(SRC)/rnode_iterator.c $(SRC)/masprintf.c
++test_newick_scanner_SOURCES = test_newick_scanner.c
++
++test_newick_parser_SOURCES = test_newick_parser.c
++
++test_rnode_SOURCES = test_rnode.c tree_stubs.c
++
++test_list_SOURCES = test_list.c
++
++test_link_SOURCES = test_link.c tree_stubs.c
+ 
+ test_canvas_SOURCES = test_canvas.c $(SRC)/canvas.c
+ 
+-test_concat_SOURCES = test_concat.c $(SRC)/concat.c
++test_concat_SOURCES = test_concat.c
++
++test_hash_SOURCES = test_hash.c
++
++test_lca_SOURCES = test_lca.c tree_stubs.c
++
++test_nodemap_SOURCES = test_nodemap.c tree_stubs.c
+ 
+-test_hash_SOURCES = test_hash.c $(SRC)/hash.c $(SRC)/list.c $(SRC)/masprintf.c
++test_to_newick_SOURCES = test_to_newick.c tree_stubs.c
+ 
+-test_lca_SOURCES = test_lca.c $(SRC)/lca.c $(SRC)/list.c $(SRC)/nodemap.c \
+-	$(SRC)/link.c $(SRC)/rnode.c $(SRC)/hash.c \
+-	$(SRC)/rnode_iterator.c tree_stubs.c $(SRC)/masprintf.c \
+-	$(SRC)/error.c
+-
+-test_nodemap_SOURCES = test_nodemap.c $(SRC)/nodemap.c \
+-	$(SRC)/rnode.c $(SRC)/list.c $(SRC)/hash.c $(SRC)/link.c \
+-	$(SRC)/rnode_iterator.c $(SRC)/masprintf.c tree_stubs.c
+-
+-test_to_newick_SOURCES = test_to_newick.c $(SRC)/to_newick.c \
+-	$(SRC)/rnode.c $(SRC)/link.c $(SRC)/concat.c \
+-	$(SRC)/list.c $(SRC)/rnode_iterator.c $(SRC)/hash.c \
+-	$(SRC)/masprintf.c $(SRC)/parser.c $(SRC)/newick_scanner.c \
+-	$(SRC)/newick_parser.c tree_stubs.c
+-
+-test_tree_SOURCES = test_tree.c $(SRC)/tree.c $(SRC)/rnode.c $(SRC)/list.c \
+-	$(SRC)/to_newick.c $(SRC)/nodemap.c $(SRC)/link.c $(SRC)/concat.c \
+-	$(SRC)/hash.c tree_stubs.c $(SRC)/rnode_iterator.c \
+-	$(SRC)/masprintf.c
+-
+-test_node_set_SOURCES = test_node_set.c tree_stubs.c $(SRC)/node_set.c \
+-	$(SRC)/hash.c $(SRC)/rnode.c $(SRC)/list.c $(SRC)/link.c \
+-	$(SRC)/rnode_iterator.c $(SRC)/masprintf.c
+-
+-test_enode_SOURCES = test_enode.c $(SRC)/enode.c $(SRC)/rnode.c \
+-	$(SRC)/link.c $(SRC)/list.c $(SRC)/rnode_iterator.c \
+-	$(SRC)/hash.c $(SRC)/masprintf.c
+-
+-test_rnode_iterator_SOURCES = test_rnode_iterator.c $(SRC)/rnode_iterator.c \
+-  	$(SRC)/list.c $(SRC)/link.c $(SRC)/rnode.c $(SRC)/to_newick.c \
+-       	$(SRC)/hash.c $(SRC)/nodemap.c tree_stubs.c $(SRC)/masprintf.c \
+-	$(SRC)/parser.c $(SRC)/newick_scanner.c $(SRC)/newick_parser.c \
+-	$(SRC)/concat.c
++test_tree_SOURCES = test_tree.c tree_stubs.c
++
++test_node_set_SOURCES = test_node_set.c tree_stubs.c $(SRC)/node_set.c
++
++test_enode_SOURCES = test_enode.c $(SRC)/enode.c
++
++test_rnode_iterator_SOURCES = test_rnode_iterator.c tree_stubs.c
+ 
+ test_readline_SOURCES = test_readline.c $(SRC)/readline.c
+ 
+-test_tree_models_SOURCES = test_tree_models.c $(SRC)/tree_models.c \
+-	$(SRC)/rnode.c $(SRC)/list.c $(SRC)/to_newick.c $(SRC)/link.c \
+-	$(SRC)/concat.c $(SRC)/rnode_iterator.c \
+-	$(SRC)/hash.c $(SRC)/masprintf.c
+-
+-test_xml_utils_SOURCES = test_xml_utils.c $(SRC)/xml_utils.c \
+-	$(SRC)/masprintf.c
+-
+-test_masprintf_SOURCES = test_masprintf.c $(SRC)/masprintf.c
+-
+-test_error_SOURCES = test_error.c $(SRC)/error.c
+-
+-test_order_tree_SOURCES = test_order_tree.c $(SRC)/order_tree.c tree_stubs.c \
+-	$(SRC)/link.c $(SRC)/to_newick.c $(SRC)/rnode.c $(SRC)/list.c \
+-	$(SRC)/masprintf.c $(SRC)/concat.c $(SRC)/hash.c $(SRC)/nodemap.c \
+-	$(SRC)/rnode_iterator.c
+-
+-test_graph_common_SOURCES = test_graph_common.c $(SRC)/graph_common.c \
+-	tree_stubs.c $(SRC)/link.c $(SRC)/list.c $(SRC)/tree.c \
+-	$(SRC)/rnode_iterator.c $(SRC)/hash.c $(SRC)/masprintf.c \
+-	$(SRC)/rnode.c $(SRC)/nodemap.c
++test_tree_models_SOURCES = test_tree_models.c $(SRC)/tree_models.c
++
++test_xml_utils_SOURCES = test_xml_utils.c $(SRC)/xml_utils.c
++
++test_masprintf_SOURCES = test_masprintf.c
++
++test_error_SOURCES = test_error.c
++
++test_order_tree_SOURCES = test_order_tree.c tree_stubs.c $(SRC)/order_tree.c
++
++test_graph_common_SOURCES = test_graph_common.c tree_stubs.c $(SRC)/graph_common.c
+ 
+ test_svg_graph_radial_SOURCES = test_svg_graph_radial.c \
+-	$(SRC)/svg_graph_radial.c $(SRC)/tree.c $(SRC)/svg_graph.c \
+-	$(SRC)/rnode.c $(SRC)/hash.c $(SRC)/list.c $(SRC)/masprintf.c \
+-	$(SRC)/rnode_iterator.c $(SRC)/svg_graph_ortho.c $(SRC)/error.c \
++	$(SRC)/svg_graph_radial.c $(SRC)/svg_graph.c \
++	$(SRC)/svg_graph_ortho.c \
+ 	$(SRC)/readline.c $(SRC)/xml_utils.c $(SRC)/graph_common.c \
+-	$(SRC)/node_pos_alloc.c $(SRC)/nodemap.c $(SRC)/lca.c $(SRC)/link.c
++	$(SRC)/node_pos_alloc.c
+ 
+-test_subtree_SOURCES = test_subtree.c $(SRC)/subtree.c $(SRC)/rnode.c \
+-	$(SRC)/list.c $(SRC)/hash.c $(SRC)/link.c $(SRC)/rnode_iterator.c \
+-	$(SRC)/masprintf.c $(SRC)/nodemap.c
++test_subtree_SOURCES = test_subtree.c $(SRC)/subtree.c
+ 
+ clean-local:
+ 	$(RM) *.out

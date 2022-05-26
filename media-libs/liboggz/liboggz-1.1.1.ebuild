@@ -1,17 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit autotools
 
-DESCRIPTION="Oggz provides a simple programming interface for reading and writing Ogg files and streams"
+DESCRIPTION="A simple programming interface for reading and writing Ogg files and streams"
 HOMEPAGE="https://www.xiph.org/oggz/"
 SRC_URI="https://downloads.xiph.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="doc static-libs test"
 RESTRICT="!test? ( test )"
 

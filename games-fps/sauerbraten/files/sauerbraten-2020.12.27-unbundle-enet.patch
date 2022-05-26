@@ -1,0 +1,113 @@
+From f269af0dc953ee79d95beabd2679e4c91992ac8d Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 22 Apr 2021 14:06:00 +0000
+Subject: [PATCH] Unbundle enet
+
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -4,7 +4,7 @@ override CXXFLAGS+= -Wall -fsigned-char -fno-exceptions -fno-rtti
+ PLATFORM= $(shell uname -s | tr '[:lower:]' '[:upper:]')
+ PLATFORM_PREFIX= native
+ 
+-INCLUDES= -Ishared -Iengine -Ifpsgame -Ienet/include
++INCLUDES= -Ishared -Iengine -Ifpsgame
+ 
+ STRIP=
+ MV=mv
+@@ -57,10 +57,10 @@ override CXX+= -arch x86_64 -mmacosx-version-min=$(OSXMIN)
+ CLIENT_INCLUDES= $(INCLUDES) -Iinclude
+ CLIENT_LIBS= -F../sauerbraten.app/Contents/Frameworks/ -framework SDL2 -framework SDL2_image
+ CLIENT_LIBS+= -framework SDL2_mixer -framework CoreAudio -framework AudioToolbox
+-CLIENT_LIBS+= -framework AudioUnit -framework OpenGL -framework Cocoa -lz -Lenet -lenet
++CLIENT_LIBS+= -framework AudioUnit -framework OpenGL -framework Cocoa -lz -lenet
+ else
+-CLIENT_INCLUDES= $(INCLUDES) `sdl2-config --cflags`
+-CLIENT_LIBS= -Lenet -lenet -lX11 `sdl2-config --libs` -lSDL2_image -lSDL2_mixer -lz -lGL
++CLIENT_INCLUDES= $(INCLUDES) `sdl2-config --cflags`
++CLIENT_LIBS= -lenet -lX11 `sdl2-config --libs` -lSDL2_image -lSDL2_mixer -lz -lGL
+ endif
+ endif
+ ifeq ($(PLATFORM),LINUX)
+@@ -135,7 +135,7 @@ SERVER_LIBS= -mwindows $(STD_LIBS) -L$(WINBIN) -L$(WINLIB) -lzlib1 -lenet -lws2_
+ MASTER_LIBS= $(STD_LIBS) -L$(WINBIN) -L$(WINLIB) -lzlib1 -lenet -lws2_32 -lwinmm
+ else
+ SERVER_INCLUDES= -DSTANDALONE $(INCLUDES)
+-SERVER_LIBS= -Lenet -lenet -lz
++SERVER_LIBS= -lenet -lz
+ MASTER_LIBS= $(SERVER_LIBS)
+ endif
+ SERVER_OBJS= \
+@@ -226,10 +226,6 @@ endif
+ endif
+ endif
+ 
+-enet/libenet.a:
+-	$(MAKE) -C enet CC='$(CC)' AR='$(AR)'
+-libenet: enet/libenet.a
+-
+ depend:
+ 	makedepend -Y -Ishared -Iengine -Ifpsgame $(CLIENT_OBJS:.o=.cpp)
+ 	makedepend -a -o.h.gch -Y -Ishared -Iengine -Ifpsgame $(CLIENT_PCH:.h.gch=.h)
+
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -193,16 +193,16 @@ master: $(MASTER_OBJS)
+ 
+ install: all
+ else
+-client:	libenet $(CLIENT_OBJS)
++client:	$(CLIENT_OBJS)
+ 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o sauer_client $(CLIENT_OBJS) $(CLIENT_LIBS)
+ ifneq (,$(findstring DARWIN,$(PLATFORM)))
+ 	install_name_tool -add_rpath @executable_path/../Frameworks sauer_client
+ endif
+ 
+-server:	libenet $(SERVER_OBJS)
++server: $(SERVER_OBJS)
+ 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o sauer_server $(SERVER_OBJS) $(SERVER_LIBS)
+ 
+-master: libenet $(MASTER_OBJS)
++master: $(MASTER_OBJS)
+ 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o sauer_master $(MASTER_OBJS) $(MASTER_LIBS)
+ 
+ shared/cube2font.o: shared/cube2font.c
+--- a/src/rpggame/Makefile
++++ b/src/rpggame/Makefile
+@@ -3,7 +3,7 @@ override CXXFLAGS+= -Wall -fsigned-char -fno-exceptions -fno-rtti
+ PLATFORM= $(shell uname -s)
+ PLATFORM_PREFIX= native
+ 
+-INCLUDES= -I../shared -I../engine -I../rpggame -I../enet/include
++INCLUDES= -I../shared -I../engine -I../rpggame
+ 
+ STRIP=
+ 
+@@ -41,7 +41,7 @@ STD_LIBS= -static-libgcc -static-libstdc++
+ CLIENT_LIBS= -mwindows $(STD_LIBS) -L../$(WINBIN) -L../$(WINLIB) -lSDL2 -lSDL2_image -lSDL2_mixer -lzlib1 -lopengl32 -lenet -lws2_32 -lwinmm
+ else	
+ CLIENT_INCLUDES= $(INCLUDES) -I/usr/X11R6/include `sdl2-config --cflags`
+-CLIENT_LIBS= -L../enet -lenet -L/usr/X11R6/lib -lX11 `sdl2-config --libs` -lSDL2_image -lSDL2_mixer -lz -lGL
++CLIENT_LIBS= -lenet -L/usr/X11R6/lib -lX11 `sdl2-config --libs` -lSDL2_image -lSDL2_mixer -lz -lGL
+ endif
+ ifeq ($(PLATFORM),Linux)
+ CLIENT_LIBS+= -lrt
+@@ -102,10 +102,6 @@ default: all
+ 
+ all: client
+ 
+-enet/libenet.a:
+-	$(MAKE)	-C ../enet/
+-libenet: enet/libenet.a
+-
+ clean:
+ 	-$(RM) $(CLIENT_PCH) $(CLIENT_OBJS) rpg_client
+ 
+@@ -128,7 +124,7 @@ ifneq (,$(STRIP))
+ 	$(STRIP) ../../bin/rpg.exe
+ endif
+ else
+-client:	libenet $(CLIENT_OBJS)
++client:	$(CLIENT_OBJS)
+ 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o rpg_client $(CLIENT_OBJS) $(CLIENT_LIBS)
+ endif
+ 

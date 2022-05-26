@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp-common.eclass
@@ -10,6 +10,7 @@
 # Mamoru Komachi <usata@gentoo.org>
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Müller <ulm@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Emacs-related installation utilities
 # @DESCRIPTION:
 #
@@ -164,50 +165,50 @@
 # Again, with optional Emacs support, you should prepend "use emacs &&"
 # to above calls of elisp-site-regen().
 
-case ${EAPI:-0} in
-	4|5|6) inherit eapi7-ver ;;
-	7) ;;
+case ${EAPI} in
+	6) inherit eapi7-ver ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-# @ECLASS-VARIABLE: SITELISP
+# @ECLASS_VARIABLE: SITELISP
 # @DESCRIPTION:
 # Directory where packages install Emacs Lisp files.
 SITELISP=/usr/share/emacs/site-lisp
 
-# @ECLASS-VARIABLE: SITEETC
+# @ECLASS_VARIABLE: SITEETC
 # @DESCRIPTION:
 # Directory where packages install miscellaneous (not Lisp) files.
 SITEETC=/usr/share/emacs/etc
 
-# @ECLASS-VARIABLE: EMACSMODULES
+# @ECLASS_VARIABLE: EMACSMODULES
 # @DESCRIPTION:
 # Directory where packages install dynamically loaded modules.
 # May contain a @libdir@ token which will be replaced by $(get_libdir).
 EMACSMODULES=/usr/@libdir@/emacs/modules
 
-# @ECLASS-VARIABLE: EMACS
+# @ECLASS_VARIABLE: EMACS
 # @DESCRIPTION:
 # Path of Emacs executable.
 EMACS=${EPREFIX}/usr/bin/emacs
 
-# @ECLASS-VARIABLE: EMACSFLAGS
+# @ECLASS_VARIABLE: EMACSFLAGS
 # @DESCRIPTION:
 # Flags for executing Emacs in batch mode.
 # These work for Emacs versions 18-24, so don't change them.
 EMACSFLAGS="-batch -q --no-site-file"
 
-# @ECLASS-VARIABLE: BYTECOMPFLAGS
+# @ECLASS_VARIABLE: BYTECOMPFLAGS
 # @DESCRIPTION:
 # Emacs flags used for byte-compilation in elisp-compile().
 BYTECOMPFLAGS="-L ."
 
-# @ECLASS-VARIABLE: NEED_EMACS
+# @ECLASS_VARIABLE: NEED_EMACS
 # @DESCRIPTION:
 # The minimum Emacs version required for the package.
 : ${NEED_EMACS:=23.1}
 
-# @ECLASS-VARIABLE: _ELISP_EMACS_VERSION
+# @ECLASS_VARIABLE: _ELISP_EMACS_VERSION
 # @INTERNAL
 # @DESCRIPTION:
 # Cached value of Emacs version detected in elisp-check-emacs-version().
@@ -219,7 +220,9 @@ _ELISP_EMACS_VERSION=""
 # Output version of currently active Emacs.
 
 elisp-emacs-version() {
-	local version ret
+	local version ret tmout="timeout -k 5 55"
+	# Run without timeout if the command is not available
+	${tmout} true &>/dev/null || tmout=""
 	# The following will work for at least versions 18-24.
 	echo "(princ emacs-version)" >"${T}"/emacs-version.el
 	version=$(
@@ -228,12 +231,14 @@ elisp-emacs-version() {
 		# Redirecting stdin and unsetting TERM and DISPLAY will cause
 		# most of them to exit with an error.
 		unset TERM DISPLAY
-		${EMACS} ${EMACSFLAGS} -l "${T}"/emacs-version.el </dev/null
+		${tmout} ${EMACS} ${EMACSFLAGS} -l "${T}"/emacs-version.el </dev/null
 	)
 	ret=$?
 	rm -f "${T}"/emacs-version.el
 	if [[ ${ret} -ne 0 ]]; then
 		eerror "elisp-emacs-version: Failed to run ${EMACS}"
+		[[ $(realpath ${EMACS} 2>/dev/null) == */emacs* ]] \
+			|| eerror "This package needs GNU Emacs"
 		return ${ret}
 	fi
 	if [[ -z ${version} ]]; then
@@ -270,27 +275,6 @@ elisp-check-emacs-version() {
 		eerror "Use \"eselect emacs\" to select the active version."
 		die "Emacs version too low"
 	fi
-}
-
-# Test if the eselected Emacs version is at least the major version
-# of GNU Emacs specified as argument.
-# Return 0 if true, 1 if false, 2 if trouble.
-# Deprecated, use elisp-check-emacs-version instead.
-
-elisp-need-emacs() {
-	local need_emacs=$1 have_emacs
-	have_emacs=$(elisp-emacs-version) || return 2
-	einfo "Emacs version: ${have_emacs}"
-	if [[ ${have_emacs} =~ XEmacs|Lucid ]]; then
-		eerror "This package needs GNU Emacs."
-		return 1
-	fi
-	if ! [[ ${have_emacs%%.*} -ge ${need_emacs%%.*} ]]; then
-		eerror "This package needs at least Emacs ${need_emacs%%.*}."
-		eerror "Use \"eselect emacs\" to select the active version."
-		return 1
-	fi
-	return 0
 }
 
 # @FUNCTION: elisp-compile
@@ -376,10 +360,6 @@ elisp-install() {
 elisp-modules-install() {
 	local subdir="$1"
 	shift
-	# Don't bother inheriting multilib.eclass for get_libdir(), but
-	# error out in old EAPIs that don't support it natively.
-	[[ ${EAPI} == [45] ]] \
-		&& die "${ECLASS}: Dynamic modules not supported in EAPI ${EAPI}"
 	ebegin "Installing dynamic modules for GNU Emacs support"
 	( # subshell to avoid pollution of calling environment
 		exeinto "${EMACSMODULES//@libdir@/$(get_libdir)}/${subdir}"
@@ -406,13 +386,8 @@ elisp-site-file-install() {
 	[[ ${sf%-gentoo*.el} != "${sf}" ]] && sf="${sf%-gentoo*.el}-gentoo.el"
 	sf="${T}/${sf}"
 	ebegin "Installing site initialisation file for GNU Emacs"
-	[[ $1 = "${sf}" ]] || cp "$1" "${sf}"
-	if [[ ${EAPI} == [45] ]]; then
-		grep -q "@EMACSMODULES@" "${sf}" \
-			&& die "${ECLASS}: Dynamic modules not supported in EAPI ${EAPI}"
-	else
-		modules=${EMACSMODULES//@libdir@/$(get_libdir)}
-	fi
+	[[ $1 == "${sf}" ]] || cp "$1" "${sf}"
+	modules=${EMACSMODULES//@libdir@/$(get_libdir)}
 	sed -i -e "1{:x;/^\$/{n;bx;};/^;.*${PN}/I!s:^:${header}\n\n:;1s:^:\n:;}" \
 		-e "s:@SITELISP@:${EPREFIX}${SITELISP}/${my_pn}:g" \
 		-e "s:@SITEETC@:${EPREFIX}${SITEETC}/${my_pn}:g" \
@@ -437,7 +412,7 @@ elisp-site-regen() {
 	local sf i ret=0 null="" page=$'\f'
 	local -a sflist
 
-	if [[ ${EBUILD_PHASE} = *rm && ! -e ${sitelisp}/site-gentoo.el ]]; then
+	if [[ ${EBUILD_PHASE} == *rm && ! -e ${sitelisp}/site-gentoo.el ]]; then
 		ewarn "Refusing to create site-gentoo.el in ${EBUILD_PHASE} phase."
 		return 0
 	fi
@@ -492,7 +467,7 @@ elisp-site-regen() {
 		mv "${T}"/site-gentoo.el "${sitelisp}"/site-gentoo.el
 		eend $? "elisp-site-regen: Replacing site-gentoo.el failed" || die
 		case ${#sflist[@]} in
-			0) [[ ${PN} = emacs-common-gentoo ]] \
+			0) [[ ${PN} == emacs-common ]] \
 				|| ewarn "... Huh? No site initialisation files found." ;;
 			1) einfo "... ${#sflist[@]} site initialisation file included." ;;
 			*) einfo "... ${#sflist[@]} site initialisation files included." ;;

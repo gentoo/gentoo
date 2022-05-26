@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,17 +8,15 @@ inherit linux-mod toolchain-funcs
 case ${PV} in
 9999)
 	inherit git-r3
-	KEYWORDS=""
 	EGIT_REPO_URI="https://github.com/umlaeute/v4l2loopback.git"
 	;;
 *)
-	inherit vcs-snapshot
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://github.com/umlaeute/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	;;
 esac
 
-DESCRIPTION="v4l2 loopback device which output is it's own input"
+DESCRIPTION="v4l2 loopback device whose output is its own input"
 HOMEPAGE="https://github.com/umlaeute/v4l2loopback"
 
 LICENSE="GPL-2"
@@ -42,7 +40,7 @@ src_prepare() {
 src_compile() {
 	linux-mod_src_compile
 	if use examples; then
-		emake CC=$(tc-getCC) -C examples
+		emake CC="$(tc-getCC)" -C examples
 	fi
 }
 

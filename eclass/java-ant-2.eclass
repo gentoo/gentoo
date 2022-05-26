@@ -1,11 +1,14 @@
-# Copyright 2004-2018 Gentoo Foundation
+# Copyright 2004-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-ant-2.eclass
 # @MAINTAINER:
 # java@gentoo.org
 # @AUTHOR:
-# kiorky (kiorky@cryptelium.net), Petteri Räty (betelgeuse@gentoo.org)
+# kiorky <kiorky@cryptelium.net>
+# Petteri Räty <betelgeuse@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7 8
+# @PROVIDES: java-utils-2
 # @BLURB: eclass for ant based Java packages
 # @DESCRIPTION:
 # Eclass for Ant-based Java packages. Provides support for both automatic and
@@ -14,11 +17,21 @@
 
 inherit java-utils-2 multilib
 
+case ${EAPI:-0} in
+	[5678]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+EXPORT_FUNCTIONS src_configure
+
+if [[ -z ${_JAVA_ANT_2_ECLASS} ]] ; then
+_JAVA_ANT_2_ECLASS=1
+
 # This eclass provides functionality for Java packages which use
 # ant to build. In particular, it will attempt to fix build.xml files, so that
 # they use the appropriate 'target' and 'source' attributes.
 
-# @ECLASS-VARIABLE: WANT_ANT_TASKS
+# @ECLASS_VARIABLE: WANT_ANT_TASKS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An $IFS separated list of ant tasks.
@@ -37,7 +50,7 @@ inherit java-utils-2 multilib
 #The implementation of dependencies is handled by java-utils-2.eclass
 #WANT_ANT_TASKS
 
-# @ECLASS-VARIABLE: JAVA_ANT_DISABLE_ANT_CORE_DEP
+# @ECLASS_VARIABLE: JAVA_ANT_DISABLE_ANT_CORE_DEP
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Setting this variable non-empty before inheriting java-ant-2 disables adding
@@ -60,7 +73,7 @@ fi
 # constructed above.
 JAVA_ANT_E_DEPEND="${JAVA_ANT_E_DEPEND}
 	   ${ANT_TASKS_DEPEND}
-	   >=dev-java/javatoolkit-0.3.0-r2"
+	   dev-java/javatoolkit"
 
 # this eclass must be inherited after java-pkg-2 or java-pkg-opt-2
 # if it's java-pkg-opt-2, ant dependencies are pulled based on USE flag
@@ -72,46 +85,41 @@ fi
 
 DEPEND="${JAVA_ANT_E_DEPEND}"
 
-# @ECLASS-VARIABLE: JAVA_PKG_BSFIX
+# @ECLASS_VARIABLE: JAVA_PKG_BSFIX
 # @DESCRIPTION:
 # Should we attempt to 'fix' ant build files to include the source/target
 # attributes when calling javac?
 JAVA_PKG_BSFIX=${JAVA_PKG_BSFIX:-"on"}
 
-# @ECLASS-VARIABLE: JAVA_PKG_BSFIX_ALL
+# @ECLASS_VARIABLE: JAVA_PKG_BSFIX_ALL
 # @DESCRIPTION:
 # If we're fixing build files, should we try to fix all the ones we can find?
 JAVA_PKG_BSFIX_ALL=${JAVA_PKG_BSFIX_ALL:-"yes"}
 
-# @ECLASS-VARIABLE: JAVA_PKG_BSFIX_NAME
+# @ECLASS_VARIABLE: JAVA_PKG_BSFIX_NAME
 # @DESCRIPTION:
 # Filename of build files to fix/search for
 JAVA_PKG_BSFIX_NAME=${JAVA_PKG_BSFIX_NAME:-"build.xml"}
 
-# @ECLASS-VARIABLE: JAVA_PKG_BSFIX_TARGET_TAGS
+# @ECLASS_VARIABLE: JAVA_PKG_BSFIX_TARGET_TAGS
 # @DESCRIPTION:
 # Targets to fix the 'source' attribute in
 JAVA_PKG_BSFIX_TARGET_TAGS=${JAVA_PKG_BSFIX_TARGET_TAGS:-"javac xjavac javac.preset"}
 
-# @ECLASS-VARIABLE: JAVA_PKG_BSFIX_SOURCE_TAGS
+# @ECLASS_VARIABLE: JAVA_PKG_BSFIX_SOURCE_TAGS
 # @DESCRIPTION:
 # Targets to fix the 'target' attribute in
 JAVA_PKG_BSFIX_SOURCE_TAGS=${JAVA_PKG_BSFIX_SOURCE_TAGS:-"javadoc javac xjavac javac.preset"}
 
-# @ECLASS-VARIABLE: JAVA_ANT_CLASSPATH_TAGS
+# @ECLASS_VARIABLE: JAVA_ANT_CLASSPATH_TAGS
 # @DESCRIPTION:
 # Targets to add the classpath attribute to
 JAVA_ANT_CLASSPATH_TAGS="javac xjavac"
 
-# @ECLASS-VARIABLE: JAVA_ANT_IGNORE_SYSTEM_CLASSES
+# @ECLASS_VARIABLE: JAVA_ANT_IGNORE_SYSTEM_CLASSES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # When set, <available> Ant tasks are rewritten to ignore Ant's runtime classpath.
-
-case "${EAPI:-0}" in
-	0|1) : ;;
-	*) EXPORT_FUNCTIONS src_configure ;;
-esac
 
 # @FUNCTION: java-ant-2_src_configure
 # @DESCRIPTION:
@@ -429,3 +437,5 @@ java-ant_rewrite-bootclasspath() {
 	java-ant_xml-rewrite -f "${file}" -c -e ${JAVA_PKG_BSFIX_TARGET_TAGS// / -e } \
 		-a bootclasspath -v "${bcp}"
 }
+
+fi

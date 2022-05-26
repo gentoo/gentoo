@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=(python{3_6,3_7,3_8})
+
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 if [[ ${PV} == 9999* ]]; then
@@ -22,17 +23,11 @@ HOMEPAGE="https://github.com/certbot/certbot https://letsencrypt.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-RDEPEND=">=app-crypt/acme-0.29.0[${PYTHON_USEDEP}]
-	>=app-crypt/certbot-1.6.0[${PYTHON_USEDEP}]
+RDEPEND=">=app-crypt/acme-${PV}[${PYTHON_USEDEP}]
+	>=app-crypt/certbot-${PV}[${PYTHON_USEDEP}]
 	dev-python/python-augeas[${PYTHON_USEDEP}]
 	dev-python/zope-component[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]"
-DEPEND="test? ( ${RDEPEND}
-	dev-python/pytest[${PYTHON_USEDEP}] )"
 
-python_test() {
-	esetup.py test || die
-}
+distutils_enable_tests pytest

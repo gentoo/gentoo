@@ -1,7 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
+
+PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_REQ_USE="xml"
+inherit python-any-r1
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="${SELINUX_GIT_REPO:-https://anongit.gentoo.org/git/proj/hardened-refpolicy.git}"
@@ -13,7 +17,7 @@ else
 	SRC_URI="https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${PV/./_}/refpolicy-${PV}.tar.bz2
 			https://dev.gentoo.org/~perfinion/patches/selinux-base-policy/patchbundle-selinux-base-policy-${PVR}.tar.bz2"
 
-	KEYWORDS="~amd64 -arm ~arm64 ~mips ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
 fi
 
 IUSE="doc +unknown-perms systemd +ubac +unconfined"
@@ -23,11 +27,12 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
 LICENSE="GPL-2"
 SLOT="0"
 
-RDEPEND=">=sys-apps/policycoreutils-2.8
-	virtual/udev"
-DEPEND="${RDEPEND}
-	sys-devel/m4
-	>=sys-apps/checkpolicy-2.8"
+RDEPEND=">=sys-apps/policycoreutils-2.8"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	${PYTHON_DEPS}
+	>=sys-apps/checkpolicy-2.8
+	sys-devel/m4"
 
 S=${WORKDIR}/
 
@@ -47,7 +52,6 @@ src_configure() {
 	[ -z "${POLICY_TYPES}" ] && local POLICY_TYPES="targeted strict mls mcs"
 
 	# Update the SELinux refpolicy capabilities based on the users' USE flags.
-
 	if use unknown-perms; then
 		sed -i -e '/^UNK_PERMS/s/deny/allow/' "${S}/refpolicy/build.conf" \
 			|| die "Failed to allow Unknown Permissions Handling"
@@ -77,7 +81,6 @@ src_configure() {
 		cp -a "${S}/refpolicy" "${S}/${i}" || die
 		cd "${S}/${i}" || die
 
-		#cp "${FILESDIR}/modules-2.20120215.conf" "${S}/${i}/policy/modules.conf"
 		sed -i -e "/= module/d" "${S}/${i}/policy/modules.conf" || die
 
 		sed -i -e '/^QUIET/s/n/y/' -e "/^NAME/s/refpolicy/$i/" \

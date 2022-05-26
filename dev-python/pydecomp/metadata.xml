@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>tools-portage@gentoo.org</email>
@@ -11,7 +11,9 @@
 		routines.  It can easily be extended with custom compression,
 		decompression, and contents definitions.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">dol-sen/pyDeComp</remote-id>
+		<bugs-to>https://github.com/dol-sen/pyDeComp/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

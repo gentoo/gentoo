@@ -1,0 +1,17 @@
+Description: install appdata to package directory
+ The CMAKE_INSTALL_PREFIX was not set to install path and set its correct
+ location.
+Author: Laszlo Boszormenyi (GCS) <gcs@debian.org>
+Last-Update: 2018-08-21
+
+--- a/converseen.pro
++++ b/converseen.pro
+@@ -122,7 +122,7 @@ loc/converseen_uk_UA.qm
+  desktopFile.files = res/converseen.desktop
+  kdeservicemenu.path = $${SHARE_DIR}/kservices5/ServiceMenus
+  kdeservicemenu.files = res/converseen_import.desktop
+- appdata.path = /usr/share/appdata/
++ appdata.path = /usr/share/metainfo/
+  appdata.files = converseen.appdata.xml
+ 
+  isEmpty(QMAKE_LRELEASE) {

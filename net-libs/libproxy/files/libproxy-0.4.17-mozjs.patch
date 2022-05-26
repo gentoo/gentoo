@@ -1,0 +1,15 @@
+Enable mozjs detection.
+Backported from https://github.com/libproxy/libproxy/commit/66b30ef388a45f66f9b118d51cc76b53fdb8bbf4
+Bug: https://bugs.gentoo.org/811858
+
+--- a/libproxy/cmake/modules.cmk
++++ b/libproxy/cmake/modules.cmk
+@@ -44,7 +44,7 @@ if(NM_FOUND)
+   set(NM_BUILD 1)
+ endif(NM_FOUND)
+ px_module(network_networkmanager   "${NM_BUILD}"     0       ${NM_LIBRARIES})
+-px_module(pacrunner_mozjs          0                 ${BIPR} ${MOZJS_LIBRARIES})
++px_module(pacrunner_mozjs          "${MOZJS_FOUND}"  ${BIPR} ${MOZJS_LIBRARIES})
+ px_module(pacrunner_natus          "${NATUS_FOUND}"  ${BIPR} ${NATUS_LIBRARIES})
+ px_module(pacrunner_webkit         "${WEBKIT_FOUND}" ${BIPR} ${WEBKIT_LIBRARIES})
+ px_module(wpad_dns_alias           1                 1)

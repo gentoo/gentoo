@@ -1,0 +1,33 @@
+diff --git a/nasl/CMakeLists.txt b/nasl/CMakeLists.txt
+index b594679c..81c5e4a9 100644
+--- a/nasl/CMakeLists.txt
++++ b/nasl/CMakeLists.txt
+@@ -100,14 +100,20 @@ execute_process (COMMAND gpgme-config --cflags
+   OUTPUT_VARIABLE GPGME_CFLAGS
+   OUTPUT_STRIP_TRAILING_WHITESPACE)
+ 
+-message (STATUS "Looking for netsnmp...")
+-find_library (SNMP netsnmp)
+-message (STATUS "Looking for netsnmp... ${SNMP}")
+-if (SNMP)
+-  execute_process (COMMAND net-snmp-config --libs
+-    OUTPUT_VARIABLE SNMP_LDFLAGS
+-    OUTPUT_STRIP_TRAILING_WHITESPACE)
+-endif (SNMP)
++option(BUILD_WITH_SNMP "Build with SNMP Support" ON)
++if (BUILD_WITH_SNMP)
++  message (STATUS "Looking for netsnmp...")
++  find_library (SNMP netsnmp)
++  message (STATUS "Looking for netsnmp... ${SNMP}")
++  if (SNMP)
++    execute_process (COMMAND net-snmp-config --libs
++      OUTPUT_VARIABLE SNMP_LDFLAGS
++      OUTPUT_STRIP_TRAILING_WHITESPACE)
++  endif (SNMP)
++  if (NOT SNMP)
++    message (SEND_ERROR " netsnmp not found")
++  endif(NOT SNMP)
++endif (BUILD_WITH_SNMP)
+ 
+ message (STATUS "Looking for libgcrypt...")
+ find_library (GCRYPT gcrypt)

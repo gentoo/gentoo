@@ -1,25 +1,23 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils fcaps git-r3
+inherit cmake fcaps git-r3
 
 DESCRIPTION="Fast network scanner designed for Internet-wide network surveys"
 HOMEPAGE="https://zmap.io/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
+EGIT_REPO_URI="https://github.com/zmap/zmap.git"
 
-SLOT="0"
 LICENSE="Apache-2.0"
-KEYWORDS=""
+SLOT="0"
 IUSE="redis"
 
 RDEPEND="
-	dev-libs/gmp:0
+	dev-libs/gmp:=
 	net-libs/libpcap
 	dev-libs/json-c:=
-	redis? ( dev-libs/hiredis )"
+	redis? ( dev-libs/hiredis:= )"
 DEPEND="${RDEPEND}
 	dev-util/gengetopt
 	sys-devel/flex
@@ -32,7 +30,7 @@ src_configure() {
 		-DWITH_WERROR=OFF
 		-DWITH_REDIS="$(usex redis)"
 		)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 FILECAPS=( cap_net_raw=ep usr/sbin/zmap )

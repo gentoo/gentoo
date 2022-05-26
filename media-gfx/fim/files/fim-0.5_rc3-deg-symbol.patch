@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/723462
+--- a/src/fim.cpp
++++ b/src/fim.cpp
+@@ -343,8 +343,8 @@
+  .P
+  .nf
+  Shift+D         delete image
+- R               rotate 90° clockwise
+- L               rotate 90° counter-clock wise
++ R               rotate 90 degree clockwise
++ L               rotate 90 degree counter-clock wise
+  .fi
+  .P
+  The delete function actually wants a capital letter 'D', thus you have

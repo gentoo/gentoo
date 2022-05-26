@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit qmake-utils git-r3
 
@@ -22,20 +22,32 @@ DEPEND="
 	dev-qt/qtsql:5
 	dev-qt/qtwidgets:5
 	media-libs/vitamtp:0
-	ffmpeg? ( media-video/ffmpeg:0 )
+	ffmpeg? ( media-video/ffmpeg:= )
 	x11-libs/libnotify:0
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	dev-qt/linguist-tools
+	dev-qt/linguist-tools:5
 "
 
 src_prepare() {
+	# http://ffmpeg.org/pipermail/ffmpeg-devel/2018-February/225051.html
+	sed -r \
+		-e '/av_register_all/d' \
+		-i "${S}"/common/avdecoder.h || die "Failed to fix ffmpeg stuff"
 	rm ChangeLog || die "Failed to rm changelog" # Triggers QA warn (symlink to nowhere)
 	default
 }
 
 src_configure() {
-	lrelease common/resources/translations/*.ts
-	eqmake5 PREFIX="${D}"/usr qcma.pro CONFIG+="QT5_SUFFIX" $(usex ffmpeg "" CONFIG+="DISABLE_FFMPEG")
+	$(qt5_get_bindir)/lrelease common/resources/translations/*.ts || die
+	eqmake5 PREFIX="${EPREFIX}"/usr qcma.pro CONFIG+="QT5_SUFFIX" $(usex ffmpeg "" CONFIG+="DISABLE_FFMPEG")
+}
+
+src_install() {
+	emake DESTDIR="${D}" INSTALL_ROOT="${ED}" install
+	einstalldocs
+
+	insinto /usr/share/${PN}/translations
+	doins common/resources/translations/${PN}_*.qm
 }

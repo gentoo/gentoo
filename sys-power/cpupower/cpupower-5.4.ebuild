@@ -1,4 +1,4 @@
-# Copyright 2013-2020 Gentoo Authors
+# Copyright 2013-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,13 +11,11 @@ SRC_URI="https://cdn.kernel.org/pub/linux/kernel/v${PV%%.*}.x/linux-${PV}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0/0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv x86"
 IUSE="nls"
 
 # File collision w/ headers of the deprecated cpufrequtils
-RDEPEND="sys-apps/pciutils
-	!<sys-apps/linux-misc-apps-3.6-r2
-	!sys-power/cpufrequtils"
+RDEPEND="sys-apps/pciutils"
 DEPEND="${RDEPEND}
 	virtual/os-headers
 	nls? ( sys-devel/gettext )"
@@ -38,6 +36,7 @@ src_configure() {
 	export localedir="${EPREFIX}/usr/share/locale"
 	export docdir="${EPREFIX}/usr/share/doc/${PF}"
 	export confdir="${EPREFIX}/etc"
+	export bash_completion_dir="${EPREFIX}/usr/share/bash-completion/completions"
 	export V=1
 	export NLS=$(usex nls true false)
 }

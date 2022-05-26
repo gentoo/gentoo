@@ -1,10 +1,9 @@
-# Copyright 2016-2020 Gentoo Authors
+# Copyright 2016-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -28,7 +27,7 @@ RDEPEND="app-text/poppler[utils]
 
 BDEPEND="test? ( ${RDEPEND} )"
 
-src_test() {
+python_test() {
 	cd test || die
 	./all || die
 }

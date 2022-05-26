@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
-
-inherit autotools linux-info python-r1 systemd
+PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_OPTIONAL=1
+inherit autotools linux-info distutils-r1 systemd verify-sig
 
 DESCRIPTION="Linux kernel (3.13+) firewall, NAT and packet mangling tools"
 HOMEPAGE="https://netfilter.org/projects/nftables/"
@@ -19,22 +19,25 @@ if [[ ${PV} =~ ^[9]{4,}$ ]]; then
 		sys-devel/flex
 	"
 else
-	SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc64 ~sparc ~x86"
+	SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.bz2
+		verify-sig? ( https://netfilter.org/projects/nftables/files/${P}.tar.bz2.sig )"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/netfilter.org.asc
+	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-netfilter )"
 fi
 
 LICENSE="GPL-2"
 SLOT="0/1"
-IUSE="debug doc +gmp json +modern-kernel python +readline static-libs xtables"
+IUSE="debug doc +gmp json libedit +modern-kernel python +readline static-libs xtables"
 
 RDEPEND="
 	>=net-libs/libmnl-1.0.4:0=
-	gmp? ( dev-libs/gmp:0= )
-	json? ( dev-libs/jansson )
+	>=net-libs/libnftnl-1.2.1:0=
+	gmp? ( dev-libs/gmp:= )
+	json? ( dev-libs/jansson:= )
 	python? ( ${PYTHON_DEPS} )
-	readline? ( sys-libs/readline:0= )
-	>=net-libs/libnftnl-1.1.8:0=
-	xtables? ( >=net-firewall/iptables-1.6.1 )
+	readline? ( sys-libs/readline:= )
+	xtables? ( >=net-firewall/iptables-1.6.1:= )
 "
 
 DEPEND="${RDEPEND}"
@@ -49,16 +52,8 @@ BDEPEND+="
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
+	libedit? ( !readline )
 "
-
-python_make() {
-	emake \
-		-C py \
-		abs_builddir="${S}" \
-		DESTDIR="${D}" \
-		PYTHON_BIN="${PYTHON}" \
-		"${@}"
-}
 
 pkg_setup() {
 	if kernel_is ge 3 13; then
@@ -82,29 +77,45 @@ src_prepare() {
 		-i files/osf/Makefile.am || die
 
 	eautoreconf
+
+	if use python; then
+		pushd py >/dev/null || die
+		distutils-r1_src_prepare
+		popd >/dev/null || die
+	fi
 }
 
 src_configure() {
 	local myeconfargs=(
 		# We handle python separately
 		--disable-python
+		--disable-static
 		--sbindir="${EPREFIX}"/sbin
 		$(use_enable debug)
 		$(use_enable doc man-doc)
 		$(use_with !gmp mini_gmp)
 		$(use_with json)
+		$(use_with libedit cli editline)
 		$(use_with readline cli readline)
 		$(use_enable static-libs static)
 		$(use_with xtables)
 	)
 	econf "${myeconfargs[@]}"
+
+	if use python; then
+		pushd py >/dev/null || die
+		distutils-r1_src_configure
+		popd >/dev/null || die
+	fi
 }
 
 src_compile() {
 	default
 
 	if use python; then
-		python_foreach_impl python_make
+		pushd py >/dev/null || die
+		distutils-r1_src_compile
+		popd >/dev/null || die
 	fi
 }
 
@@ -122,14 +133,15 @@ src_install() {
 	exeinto /usr/libexec/${PN}
 	newexe "${FILESDIR}"/libexec/${PN}${mksuffix}.sh ${PN}.sh
 	newconfd "${FILESDIR}"/${PN}${mksuffix}.confd ${PN}
-	newinitd "${FILESDIR}"/${PN}${mksuffix}.init ${PN}
+	newinitd "${FILESDIR}"/${PN}${mksuffix}.init-r1 ${PN}
 	keepdir /var/lib/nftables
 
 	systemd_dounit "${FILESDIR}"/systemd/${PN}-restore.service
 
 	if use python ; then
-		python_foreach_impl python_make install
-		python_foreach_impl python_optimize
+		pushd py >/dev/null || die
+		distutils-r1_src_install
+		popd >/dev/null || die
 	fi
 
 	find "${ED}" -type f -name "*.la" -delete || die

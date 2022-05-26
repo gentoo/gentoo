@@ -1,31 +1,32 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit fortran-2 toolchain-funcs
+inherit flag-o-matic fortran-2 toolchain-funcs
 
 DESCRIPTION="Neural network architecture for profacc"
 HOMEPAGE="https://rostlab.org/"
 SRC_URI="ftp://rostlab.org/profnet/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-3"
+SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
 
 RDEPEND="sys-libs/libunwind"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	default
 	sed \
 		-e '/$@/s:-o:$(LDFLAGS) -o:g' \
 		-i src-phd/Makefile || die
 }
 
 src_compile() {
+	append-fflags $(test-flags-FC -fallow-argument-mismatch)
 	emake \
-		F77=$(tc-getF77) \
+		F77="$(tc-getF77)" \
 		FFLAGS="${FFLAGS}"
 }
 
@@ -34,4 +35,7 @@ src_install() {
 		DESTDIR="${D}" \
 		prefix="${EPREFIX}/usr" \
 		install
+
+	# Don't install compressed man pages
+	find "${ED}"/usr/share/man -type f -name '*.gz' -exec gzip -d {} \; || die
 }

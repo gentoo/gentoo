@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ LICENSE="BSD GPL-2"
 SLOT="0"
 IUSE="X debug deprecated doc examples fftw openmp +readline +shared tcl"
 RESTRICT="!test? ( test )"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x64-macos"
+KEYWORDS="~amd64 ~arm64 ~ppc ~sparc ~x86 ~x64-macos"
 
 DEPEND="sys-libs/ncurses:0=
 	X? ( x11-libs/libXaw
@@ -40,11 +40,16 @@ DOCS=(
 	Stuarts_Poly_Notes
 )
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+
 	MULTIBUILD_VARIANTS=( "binaries" )
 	use shared && MULTIBUILD_VARIANTS+=( "shared" )
 	use tcl && MULTIBUILD_VARIANTS+=( "tcl" )
-	use openmp && tc-check-openmp
 }
 
 src_prepare() {

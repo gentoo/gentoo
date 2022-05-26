@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit depend.apache eutils multilib user
+inherit depend.apache multilib
 
 DESCRIPTION="Icinga Web 2 - Frontend for icinga2"
 HOMEPAGE="http://www.icinga.org/"
@@ -28,11 +28,14 @@ DEPEND=">=net-analyzer/icinga2-2.1.1
 		apache2-server? ( >=www-servers/apache-2.4.0 )
 		nginx? ( >=www-servers/nginx-1.7.0:* )
 		|| (
-			dev-lang/php:5.6[apache2?,cli,fpm?,gd,json,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
-			dev-lang/php:7.1[apache2?,cli,fpm?,gd,json,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
-			dev-lang/php:7.2[apache2?,cli,fpm?,gd,json,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
 			dev-lang/php:7.3[apache2?,cli,fpm?,gd,json,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
-		)"
+			dev-lang/php:7.4[apache2?,cli,fpm?,gd,json,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
+			dev-lang/php:8.0[apache2?,cli,fpm?,gd,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
+		)
+		dev-libs/icinga-php-library
+		dev-libs/icinga-php-thirdparty
+		acct-group/icingacmd
+		acct-group/icingaweb2"
 RDEPEND="${DEPEND}"
 
 want_apache2
@@ -40,8 +43,6 @@ want_apache2
 pkg_setup() {
 	depend.apache_pkg_setup
 
-	enewgroup icingaweb2
-	enewgroup icingacmd
 	use nginx && usermod -a -G icingacmd,icingaweb2 nginx
 	use apache2 && usermod -a -G icingacmd,icingaweb2 apache
 }
@@ -72,6 +73,7 @@ src_install() {
 	doins -r "${S}"/*
 	fperms -R a+rX "/usr/share/${PN}/public/"
 	fperms u+x,g+x "/usr/share/${PN}/bin/icingacli"
+	fowners root:icingaweb2 "/usr/share/${PN}/bin/icingacli"
 }
 
 pkg_postinst() {

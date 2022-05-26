@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>sound@gentoo.org</email>
@@ -10,6 +10,7 @@
     <flag name="digitalradio">Digital Radio Mondiale (warning: disables other decoders)</flag>
   </use>
   <upstream>
+    <remote-id type="github">knik0/faad2</remote-id>
     <remote-id type="sourceforge">faac</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,5 +1,5 @@
---- a/unix/Makefile
-+++ b/unix/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -10,16 +10,14 @@
  # debugging
  # DFLAGS = -DTEST -DDEBUG

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
     <email>prometheanfire@gentoo.org</email>
@@ -14,7 +14,7 @@
   </longdescription>
   <stabilize-allarches/>
   <upstream>
-    <remote-id type="pypi">semantic_version</remote-id>
+    <remote-id type="pypi">semantic-version</remote-id>
     <remote-id type="github">rbarrois/python-semanticversion</remote-id>
     <bugs-to>https://github.com/rbarrois/python-semanticversion/issues</bugs-to>
   </upstream>

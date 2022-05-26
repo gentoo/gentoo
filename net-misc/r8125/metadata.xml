@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>k2k@narod.ru</email>
+		<name>Evgeny Grin</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>Official Realtek r8125 vendor linux driver. The following cards are currently supported:
+RTL8125 RTL8125A RTL8125B(S)(G)</longdescription>
+	<use>
+		<flag name="multi-tx-q">Enable Multiple Tx Queue (&#34;RSS&#34; for sending)</flag>
+		<flag name="ptp">Enable Precision Time Protocol support</flag>
+		<flag name="rss">Enable Receive Side Scaling (RSS)</flag>
+		<flag name="use-firmware">Support automatic firmware loading</flag>
+	</use>
+</pkgmetadata>

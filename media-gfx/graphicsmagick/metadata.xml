@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
+  <maintainer type="person">
+      <email>sam@gentoo.org</email>
+      <name>Sam James</name>
+  </maintainer>
+  <maintainer type="project">
+      <email>codec@gentoo.org</email>
+      <name>Gentoo Codec Project</name>
+  </maintainer>
   <longdescription lang="en">
   This is a port of GraphicsMagick(TM), the "swiss army knife" of
   image processing. It provides a robust collection of tools and libraries
@@ -15,6 +22,8 @@
     <flag name="fpx">Enable FlashPix support with <pkg>media-libs/libfpx</pkg></flag>
     <flag name="dynamic-loading">Compile graphicsmagick with dynamically
     loadable modules</flag>
+    <flag name="heif">Add HEIF/HEIC image support</flag>
+    <flag name="jpegxl">Enable support for JPEG XL image format</flag>
     <flag name="q16">Set storage quantum size to 16 (~2*memory)</flag>
     <flag name="q32">Set storage quantum size to 32 (~5*memory)</flag>
   </use>

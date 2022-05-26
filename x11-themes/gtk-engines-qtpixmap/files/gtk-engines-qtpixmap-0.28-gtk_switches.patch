@@ -1,6 +1,5 @@
-diff -NurdB QtPixmap-0.28/configure.in QtPixmap-0.28-patched/configure.in
---- QtPixmap-0.28/configure.in	2004-02-03 06:26:07.000000000 -0500
-+++ QtPixmap-0.28-patched/configure.in	2005-08-02 21:59:35.000000000 -0500
+--- a/configure.ac
++++ b/configure.ac
 @@ -19,23 +19,28 @@
  FOUND_IMLIB=0
  FOUND_GTK2=0

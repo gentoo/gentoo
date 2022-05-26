@@ -1,0 +1,9 @@
+--- a/setup.cfg	2021-08-28 17:28:07.213901557 +0200
++++ b/setup.cfg	2021-08-28 17:29:34.009628777 +0200
+@@ -1,5 +1,5 @@
+ [metadata]
+-description-file = README.md
++description_file = README.md
+ 
+ [bdist_wheel]
+ universal=1

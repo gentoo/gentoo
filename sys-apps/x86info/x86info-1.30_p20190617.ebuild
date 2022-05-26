@@ -1,21 +1,23 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit flag-o-matic linux-info python-any-r1 toolchain-funcs
 
-DESCRIPTION="Dave Jones' handy, informative x86 CPU diagnostic utility"
-HOMEPAGE="http://www.codemonkey.org.uk/projects/x86info/"
 # Upstream stopped versioned releases entirely
 COMMIT="8ea5ed19fae1d209eba9257171a10f7afd474618"
+
+DESCRIPTION="Dave Jones' handy, informative x86 CPU diagnostic utility"
+HOMEPAGE="http://www.codemonkey.org.uk/projects/x86info/"
 SRC_URI="https://github.com/kernelslacker/x86info/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64 x86"
 
 RDEPEND="sys-apps/pciutils:="
 DEPEND="${RDEPEND}"
@@ -23,15 +25,13 @@ BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig"
 
-CONFIG_CHECK="~MTRR ~X86_CPUID"
-S="${WORKDIR}/${PN}-${COMMIT}"
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.30-pic.patch #270388
 	"${FILESDIR}"/${PN}-1.30-makefile.patch
 )
 
 pkg_setup() {
+	CONFIG_CHECK="~MTRR ~X86_CPUID"
 	linux-info_pkg_setup
 	python-any-r1_pkg_setup
 }

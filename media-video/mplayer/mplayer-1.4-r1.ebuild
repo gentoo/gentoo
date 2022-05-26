@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,8 +12,8 @@ inherit toolchain-funcs flag-o-matic ${SVN_ECLASS}
 IUSE="cpu_flags_x86_3dnow cpu_flags_x86_3dnowext a52 aalib +alsa altivec aqua bidi bl bluray
 bs2b cddb +cdio cdparanoia cpudetection debug dga
 doc dts dv dvb +dvd +dvdnav +enca +encode faac faad fbcon
-ftp ggi gsm +iconv ipv6 jack joystick jpeg kernel_linux ladspa
-+libass libcaca libmpeg2 lirc live lzo mad md5sum +cpu_flags_x86_mmx cpu_flags_x86_mmxext mng mp3 nas
+ftp ggi gsm +iconv ipv6 jack joystick jpeg ladspa
++libass libcaca libmpeg2 lirc live lzo mad md5sum cpu_flags_x86_mmx cpu_flags_x86_mmxext mng mp3 nas
 +network openal opengl +osdmenu oss png pnm pulseaudio pvr
 radio rar rtc rtmp samba selinux +shm sdl speex cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_ssse3
 tga theora tremor +truetype toolame twolame +unicode v4l vcd vdpau vidix
@@ -39,6 +39,7 @@ else
 	RELEASE_URI="mirror://gentoo/${P}.tar.xz"
 fi
 SRC_URI="${RELEASE_URI}
+	https://dev.gentoo.org/~aballier/distfiles/${P}-ffmpeg5.patch.bz2
 	!truetype? ( ${FONT_URI} )"
 
 DESCRIPTION="Media Player for Linux"
@@ -141,7 +142,6 @@ DEPEND="${RDEPEND}
 		app-text/docbook-xsl-stylesheets
 	)
 	x86? ( ${ASM_DEP} )
-	x86-fbsd? ( ${ASM_DEP} )
 "
 RDEPEND+="
 	selinux? ( sec-policy/selinux-mplayer )
@@ -150,7 +150,7 @@ RDEPEND+="
 SLOT="0"
 LICENSE="GPL-2"
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86"
 fi
 
 # faac codecs are nonfree
@@ -174,6 +174,8 @@ REQUIRED_USE="
 	xscreensaver? ( X )
 	xv? ( X )"
 RESTRICT="faac? ( bindist )"
+
+PATCHES=( "${FILESDIR}/${P}-riscv-support.patch" )
 
 pkg_setup() {
 	if [[ ${PV} == *9999* ]]; then
@@ -230,7 +232,10 @@ src_prepare() {
 		subversion_wc_info
 		printf "${ESVN_WC_REVISION}" > $svf
 	else
-		eapply "${FILESDIR}"/${PN}-1.3-CVE-2016-4352.patch
+		eapply "${FILESDIR}"/${PN}-1.3-CVE-2016-4352.patch \
+				"${FILESDIR}"/ffmpeg44.patch
+		has_version '>=media-video/ffmpeg-5' && eapply \
+				"${WORKDIR}"/${P}-ffmpeg5.patch
 	fi
 	if [ ! -f VERSION ] ; then
 		[ -f "$svf" ] || die "Missing ${svf}. Did you generate your snapshot with prepare_mplayer.sh?"

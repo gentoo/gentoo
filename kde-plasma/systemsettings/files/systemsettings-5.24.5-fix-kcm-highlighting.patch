@@ -1,0 +1,32 @@
+From 684004217fd28ba45f7ce61df5b3600398ee1108 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Thu, 12 May 2022 01:22:14 +0200
+Subject: [PATCH] Fix current index in subcategory list
+
+We bind currentIndex to activeSubCategoryRow, but when clicking on an item this binding is broken
+
+Manually set the current index when the backend index changes
+
+BUG: 453543
+
+Fixed-In: 5.24.6
+(cherry picked from commit 40b71c085f8ceddc9b3f44fa65d8bb48dad42b4a)
+---
+ sidebar/package/contents/ui/SubCategoryPage.qml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/sidebar/package/contents/ui/SubCategoryPage.qml b/sidebar/package/contents/ui/SubCategoryPage.qml
+index 756b2763..19b33142 100644
+--- a/sidebar/package/contents/ui/SubCategoryPage.qml
++++ b/sidebar/package/contents/ui/SubCategoryPage.qml
+@@ -140,6 +140,7 @@ Kirigami.ScrollablePage {
+         Connections {
+             target: systemsettings
+             function onActiveSubCategoryRowChanged() {
++                subCategoryView.currentIndex = systemsettings.activeSubCategoryRow
+                 if (systemsettings.activeSubCategoryRow >= 0) {
+                     if (subCategoryView.count > 1) {
+                         root.pageStack.push(subCategoryColumn);
+-- 
+GitLab
+

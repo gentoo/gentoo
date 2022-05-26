@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 JAVA_PKG_IUSE="source"
 
-inherit eutils java-pkg-2 java-ant-2
+inherit java-pkg-2 java-ant-2
 
 MY_A="apache-${P}-src"
 MY_P="${MY_A/-servlet-api/}"
@@ -14,7 +14,7 @@ SRC_URI="https://archive.apache.org/dist/tomcat/tomcat-6/v${PV}/src/${MY_P}.tar.
 
 LICENSE="Apache-2.0"
 SLOT="2.5"
-KEYWORDS="amd64 ~arm ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris ~x86-solaris"
 IUSE=""
 
 DEPEND=">=virtual/jdk-1.8"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>sci-geosciences@gentoo.org</email>
@@ -21,7 +21,9 @@
 		<flag name="mapserver">Determines whether mapserver should be built</flag>
 		<flag name="netcdf">Enable MDAL support for GRIB and XMDF formats</flag>
 		<flag name="opencl">Enable OpenCL support</flag>
+		<flag name="pdal">Enable support for PDAL for point clouds via <pkg>sci-libs/pdal</pkg></flag>
 		<flag name="polar">Enable support for the polar coordinate system via <pkg>x11-libs/qwtpolar</pkg></flag>
 		<flag name="qml">Enable support Qml-based plugins using <pkg>dev-qt/qtdeclarative</pkg></flag>
+		<flag name="serial">Enable support for serial GPS using <pkg>dev-qt/qtserialport</pkg></flag>
 	</use>
 </pkgmetadata>

@@ -1,0 +1,15 @@
+https://gitlab.gnome.org/GNOME/anjuta/-/merge_requests/14
+
+diff --git a/configure.ac b/configure.ac
+index c637f9cf3..b34e103b2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -338,7 +338,7 @@ if test "$user_disabled_vala" = 1; then
+ else
+         AC_MSG_RESULT(no)
+ 	AC_MSG_CHECKING(if libvala is available)
+-	m4_foreach_w([VERSION], [0.56 0.54 0.52 0.50 0.48 0.46 0.44 0.42 0.40 0.38 0.36 0.34 0.32],
++	m4_foreach_w([VERSION], [0.32 0.34 0.36 0.38 0.40 0.42 0.44 0.46 0.48 0.50 0.52 0.54 0.56],
+ 		[PKG_CHECK_EXISTS([ libvala-VERSION ],
+ 			 [ valaver="-VERSION" ])
+ 			 ])

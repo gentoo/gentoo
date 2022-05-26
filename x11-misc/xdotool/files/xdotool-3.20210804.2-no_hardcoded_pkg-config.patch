@@ -1,0 +1,16 @@
+diff -ur a/Makefile b/Makefile
+--- a/Makefile	2021-08-04 17:14:19.000000000 +0100
++++ b/Makefile	2021-08-05 22:13:20.509655072 +0100
+@@ -35,9 +35,9 @@
+ DEFAULT_LIBS=-L/usr/X11R6/lib -L/usr/local/lib -lX11 -lXtst -lXinerama -lxkbcommon
+ DEFAULT_INC=-I/usr/X11R6/include -I/usr/local/include
+ 
+-XDOTOOL_LIBS=$(shell pkg-config --libs x11 2> /dev/null || echo "$(DEFAULT_LIBS)")  $(shell sh platform.sh extralibs)
+-LIBXDO_LIBS=$(shell pkg-config --libs xi x11 xtst xinerama xkbcommon 2> /dev/null || echo "$(DEFAULT_LIBS)")
+-INC=$(shell pkg-config --cflags xi x11 xtst xinerama xkbcommon 2> /dev/null || echo "$(DEFAULT_INC)")
++XDOTOOL_LIBS=$(shell $(PKG_CONFIG) --libs x11 2> /dev/null || echo "$(DEFAULT_LIBS)")  $(shell sh platform.sh extralibs)
++LIBXDO_LIBS=$(shell $(PKG_CONFIG) --libs xi x11 xtst xinerama xkbcommon 2> /dev/null || echo "$(DEFAULT_LIBS)")
++INC=$(shell $(PKG_CONFIG) --cflags xi x11 xtst xinerama xkbcommon 2> /dev/null || echo "$(DEFAULT_INC)")
+ CFLAGS+=-std=c99 $(INC)
+ 
+ CMDOBJS= cmd_click.o cmd_mousemove.o cmd_mousemove_relative.o cmd_mousedown.o \

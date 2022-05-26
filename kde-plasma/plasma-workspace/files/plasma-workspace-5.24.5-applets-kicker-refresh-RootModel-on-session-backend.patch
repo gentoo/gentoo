@@ -1,0 +1,92 @@
+From d0340868619c26de5892f8bd095456dc5a32d0ce Mon Sep 17 00:00:00 2001
+From: Amy Rose <amy@fluff.tech>
+Date: Tue, 17 May 2022 07:38:03 +0000
+Subject: [PATCH 8/8] applets/kicker: refresh RootModel on session backend
+ state change
+
+BUG: 427530
+
+Hunting this one down since mid-March...
+
+In "native" Plasma containments like the panel, desktop, and plasmawindowed, the `LogindSessionBackend` in `libkworkspace` enters the "Ready" state nearly instantly, before any signals can even be attached. In other containments like Latte Dock and plasmoidviewer, however, the initialization takes some time to complete (unsure why). RootModel was not watching or waiting to check what the session backend's state was, resulting in validity checks being done too soon and never checked again.
+
+
+(cherry picked from commit 2cc819f39bcce9ca83ab3767c42beb1e500e55b1)
+---
+ applets/kicker/plugin/rootmodel.cpp   | 1 +
+ applets/kicker/plugin/systementry.cpp | 1 +
+ applets/kicker/plugin/systementry.h   | 1 +
+ applets/kicker/plugin/systemmodel.cpp | 2 ++
+ applets/kicker/plugin/systemmodel.h   | 3 +++
+ 5 files changed, 8 insertions(+)
+
+diff --git a/applets/kicker/plugin/rootmodel.cpp b/applets/kicker/plugin/rootmodel.cpp
+index 4ec323683..837108744 100644
+--- a/applets/kicker/plugin/rootmodel.cpp
++++ b/applets/kicker/plugin/rootmodel.cpp
+@@ -449,6 +449,7 @@ void RootModel::refresh()
+     }
+ 
+     m_systemModel = new SystemModel(this);
++    QObject::connect(m_systemModel, &SystemModel::sessionManagementStateChanged, this, &RootModel::refresh);
+ 
+     if (m_showPowerSession) {
+         m_entryList << new GroupEntry(this, i18n("Power / Session"), QStringLiteral("system-log-out"), m_systemModel);
+diff --git a/applets/kicker/plugin/systementry.cpp b/applets/kicker/plugin/systementry.cpp
+index fdd86ece3..939e2119e 100644
+--- a/applets/kicker/plugin/systementry.cpp
++++ b/applets/kicker/plugin/systementry.cpp
+@@ -79,6 +79,7 @@ void SystemEntry::refresh()
+ {
+     if (!s_sessionManagement) {
+         s_sessionManagement = new SessionManagement();
++        QObject::connect(s_sessionManagement, &SessionManagement::stateChanged, this, &SystemEntry::sessionManagementStateChanged);
+     }
+ 
+     bool valid = false;
+diff --git a/applets/kicker/plugin/systementry.h b/applets/kicker/plugin/systementry.h
+index a0a258024..981a3a5f5 100644
+--- a/applets/kicker/plugin/systementry.h
++++ b/applets/kicker/plugin/systementry.h
+@@ -54,6 +54,7 @@ public:
+ 
+ Q_SIGNALS:
+     void isValidChanged() const;
++    void sessionManagementStateChanged();
+ 
+ private Q_SLOTS:
+     void refresh();
+diff --git a/applets/kicker/plugin/systemmodel.cpp b/applets/kicker/plugin/systemmodel.cpp
+index 656bbdc4e..844f80d09 100644
+--- a/applets/kicker/plugin/systemmodel.cpp
++++ b/applets/kicker/plugin/systemmodel.cpp
+@@ -92,10 +92,12 @@ void SystemModel::populate()
+ 
+     auto addIfValid = [=](const SystemEntry::Action action) {
+         SystemEntry *entry = new SystemEntry(this, action);
++        QObject::connect(entry, &SystemEntry::sessionManagementStateChanged, this, &SystemModel::sessionManagementStateChanged);
+ 
+         if (entry->isValid()) {
+             m_entries << entry;
+         }
++
+         QObject::connect(entry, &SystemEntry::isValidChanged, this, &AbstractModel::refresh, Qt::UniqueConnection);
+     };
+ 
+diff --git a/applets/kicker/plugin/systemmodel.h b/applets/kicker/plugin/systemmodel.h
+index cd9048de1..29ae9e428 100644
+--- a/applets/kicker/plugin/systemmodel.h
++++ b/applets/kicker/plugin/systemmodel.h
+@@ -25,6 +25,9 @@ public:
+ 
+     Q_INVOKABLE bool trigger(int row, const QString &actionId, const QVariant &argument) override;
+ 
++Q_SIGNALS:
++    void sessionManagementStateChanged();
++
+ protected Q_SLOTS:
+     void refresh() override;
+ 
+-- 
+2.35.1
+

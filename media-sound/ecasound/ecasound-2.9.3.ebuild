@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit autotools eutils python-single-r1
+inherit autotools python-single-r1
 
 DESCRIPTION="a package for multitrack audio processing"
 HOMEPAGE="https://ecasound.seul.org/ecasound/"
@@ -12,7 +12,7 @@ SRC_URI="https://ecasound.seul.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="1"
-KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="alsa audiofile debug doc jack libsamplerate lv2 mikmod ncurses oil osc oss
 python ruby sndfile static-libs test"
 RESTRICT="!test? ( test )"
@@ -35,6 +35,7 @@ RDEPEND="sys-libs/readline:0=
 	sndfile? ( media-libs/libsndfile:= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+BDEPEND="sys-apps/ed"
 PATCHES=(
 	"${FILESDIR}"/${P}-ldflags.patch
 	"${FILESDIR}"/${PN}-2.9.1-tinfo.patch
@@ -47,10 +48,9 @@ pkg_setup() {
 src_prepare() {
 	default
 
-#	if use python ; then
-#		sed -i -e "s:\$(ecasoundc_libs):\0 $(python_get_library -l):" \
-#			pyecasound/Makefile.am || die "sed failed"
-#	fi
+	# https://bugs.gentoo.org/787620
+	printf '%s\n' H '/^EXTRACXXFLAGS="-std=c++98"$/s/98/11/' w q |
+		ed -s configure.ac || die "Couldn't patch EXTRACXXFLAGS in configure.ac"
 
 	eautoreconf
 }

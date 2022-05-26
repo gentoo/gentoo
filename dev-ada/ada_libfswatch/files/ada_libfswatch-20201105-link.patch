@@ -1,0 +1,10 @@
+--- a/ada_libfswatch.gpr	2021-12-30 13:24:40.561312372 +0100
++++ b/ada_libfswatch.gpr	2021-12-30 13:25:52.542192958 +0100
+@@ -11,4 +11,7 @@
+       for Default_Switches ("Ada") use ("-g", "-O0", "-gnatwa", "-gnaty");
+    end Compiler;
+ 
++   package Linker is
++      for Linker_Options use ("-lfswatch");
++   end Linker;
+ end Ada_Libfswatch;

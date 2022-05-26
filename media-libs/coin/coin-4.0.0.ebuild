@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/coin3d/coin/wiki"
 SRC_URI="https://github.com/coin3d/coin/releases/download/${MY_P}/${P}-src.tar.gz"
 
 LICENSE="|| ( GPL-2 PEL )"
-KEYWORDS="~amd64 ~arm ~hppa ppc ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="debug doc +exceptions javascript man openal qthelp test threads"
 RESTRICT="!test? ( test )"

@@ -1,9 +1,9 @@
-# Copyright 2002-2020 Gentoo Authors
+# Copyright 2002-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit autotools eutils flag-o-matic pax-utils toolchain-funcs
+inherit autotools flag-o-matic pax-utils toolchain-funcs
 
 P_FD="dosemu-freedos-1.0-bin"
 COMMIT="15cfb41ff20a052769d753c3262c57ecb050ad71"
@@ -13,7 +13,7 @@ COMMIT="15cfb41ff20a052769d753c3262c57ecb050ad71"
 DESCRIPTION="DOS Emulator"
 HOMEPAGE="http://www.dosemu.org/"
 SRC_URI="mirror://sourceforge/dosemu/${P_FD}.tgz
-	https://dev.gentoo.org/~slyfox/distfiles/${P}.zip"
+	https://dev.gentoo.org/~sam/distfiles/${P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -56,6 +56,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix-inline.patch
 	"${FILESDIR}"/${P}-lto.patch
 	"${FILESDIR}"/${P}-as.patch
+	"${FILESDIR}"/${P}-nm.patch
 )
 
 pkg_pretend() {
@@ -90,6 +91,8 @@ src_configure() {
 	fi
 
 	# sndfile support is unconditionally disabled in src/plugin/sndfile/snd_o_wav.c
+	# CPP has to be set explicitly to workaround autoconf-2.69
+	# CPP detection (fixed in 2.70). bug #762748.
 	econf $(use_with X x) \
 		$(use_with svga svgalib) \
 		$(use_enable debug) \
@@ -100,12 +103,13 @@ src_configure() {
 		--with-fdtarball="${DISTDIR}"/${P_FD}.tgz \
 		--sysconfdir="${EPREFIX}"/etc/dosemu/ \
 		--with-docdir="${EPREFIX}"/usr/share/doc/${PF} \
-		IA16_LDFLAGS_EXTRA=${nopie_flag}
+		IA16_LDFLAGS_EXTRA=${nopie_flag} \
+		CPP="$(tc-getCPP)"
 }
 
 src_compile() {
-	# src/makefile.common is fritten manually, uses AR=ar
-	emake AR=$(tc-getAR)
+	# src/makefile.common is written manually, uses AR=ar
+	emake AR="$(tc-getAR)"
 }
 
 src_install() {

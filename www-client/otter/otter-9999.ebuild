@@ -1,22 +1,29 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake desktop git-r3 xdg-utils
+
+inherit cmake desktop xdg
+
+if [[ ${PV} == 9999* ]] ; then
+	EGIT_REPO_URI="https://github.com/OtterBrowser/${PN}-browser"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/OtterBrowser/${PN}-browser/archive/v${PV/_p/-dev}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
+	S=${WORKDIR}/${PN}-browser-${PV/_p/-dev}
+fi
 
 DESCRIPTION="Project aiming to recreate classic Opera (12.x) UI using Qt5"
 HOMEPAGE="https://otter-browser.org/"
-EGIT_REPO_URI="https://github.com/OtterBrowser/${PN}-browser"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
-IUSE="spell"
+IUSE="+dbus +spell"
 
 DEPEND="
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
-	dev-qt/qtdbus:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
@@ -27,13 +34,14 @@ DEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxmlpatterns:5
-	spell? ( kde-frameworks/sonnet )
-	>=dev-qt/qtwebengine-5.9:5[widgets]
+	dev-qt/qtwebengine:5[widgets]
+	dbus? ( dev-qt/qtdbus:5 )
+	spell? ( app-text/hunspell:= )
 "
-RDEPEND="
-	${DEPEND}
-"
+RDEPEND="${DEPEND}"
+
 DOCS=( CHANGELOG CONTRIBUTING.md TODO )
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.01-webengine.patch
 )
@@ -52,16 +60,14 @@ src_prepare() {
 			fi
 		done
 	fi
-
-	if ! use spell; then
-		sed -i -e '/find_package(KF5Sonnet)/d' CMakeLists.txt || die
-	fi
 }
 
 src_configure() {
-	mycmakeargs=(
-		-DENABLE_QTWEBENGINE=true
-		-DENABLE_QTWEBKIT=false
+	local mycmakeargs=(
+		-DENABLE_DBUS=$(usex dbus)
+		-DENABLE_QTWEBENGINE=yes
+		-DENABLE_QTWEBKIT=no
+		-DENABLE_SPELLCHECK=$(usex spell)
 	)
 
 	cmake_src_configure
@@ -70,14 +76,4 @@ src_configure() {
 src_install() {
 	cmake_src_install
 	domenu ${PN}-browser.desktop
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
 }

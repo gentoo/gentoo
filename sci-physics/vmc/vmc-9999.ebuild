@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
@@ -15,26 +15,25 @@ else
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
-DESCRIPTION="The Virtual Monte Carlo core library."
-HOMEPAGE="https://vmc-project.github.io/"
+DESCRIPTION="The Virtual Monte Carlo core library"
+HOMEPAGE="https://vmc-project.github.io/ https://github.com/vmc-project/vmc"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+c++11 c++14 c++17 doc"
+IUSE="c++14 +c++17 doc"
 
-REQUIRED_USE="^^ ( c++11 c++14 c++17 )"
+REQUIRED_USE="^^ ( c++14 c++17 )"
 
-RDEPEND=">=sci-physics/root-6.18:=[c++11?,c++14?,c++17?,-vmc]"
-DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen[dot] )"
+RDEPEND="sci-physics/root:=[c++14?,c++17?,-vmc(-)]"
+DEPEND="${RDEPEND}"
+BDEPEND="doc? ( app-doc/doxygen[dot] )"
 
 DOCS=(README.md History)
 
 src_compile() {
 	cmake_src_compile
 	if use doc; then
-		# TRAVIS_BUILD_DIR hardcoded in Doxyfile by upstream.
-		TRAVIS_BUILD_DIR="${S}" doxygen doc/doxygen/Doxyfile || die
+		doxygen doc/doxygen/Doxyfile || die
 	fi
 }
 

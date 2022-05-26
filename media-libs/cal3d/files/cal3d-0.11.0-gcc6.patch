@@ -1,5 +1,5 @@
---- cal3d-0.11.0/src/cal3d/loader.cpp.old	2016-09-24 00:58:09.968689367 -0400
-+++ cal3d-0.11.0/src/cal3d/loader.cpp	2016-09-24 01:06:54.867068386 -0400
+--- a/src/cal3d/loader.cpp
++++ b/src/cal3d/loader.cpp
 @@ -886,7 +886,7 @@
    if(!dataSrc.ok())
    {

@@ -1,5 +1,5 @@
---- src/xatrix/g_local.h.old
-+++ src/xatrix/g_local.h
+--- a/src/xatrix/g_local.h
++++ b/src/xatrix/g_local.h
 @@ -446,11 +446,6 @@
  extern	int	sm_meat_index;
  extern	int	snd_fry;

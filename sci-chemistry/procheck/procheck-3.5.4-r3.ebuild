@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit fortran-2 multilib toolchain-funcs versionator
 
 DESCRIPTION="Checks the stereochemical quality of a protein structure"
-HOMEPAGE="http://www.biochem.ucl.ac.uk/~roman/procheck/procheck.html"
+HOMEPAGE="https://www.ebi.ac.uk/thornton-srv/software/PROCHECK"
 SRC_URI="
 	${P}.tar.gz ${P}-README
 	doc? ( ${P}-manual.tar.gz )"
@@ -24,7 +24,7 @@ RESTRICT="fetch"
 S="${WORKDIR}/${PN}"
 
 pkg_nofetch() {
-	elog "Please visit http://www.ebi.ac.uk/thornton-srv/software/PROCHECK/download.html"
+	elog "Please visit https://www.ebi.ac.uk/thornton-srv/software/PROCHECK/download.html"
 	elog "and follow the instruction for downloading."
 	elog "Files should be renamed in the following way before being copied to your"
 	elog "DISTDIR directory:"
@@ -40,8 +40,8 @@ PATCHES=(
 
 src_compile() {
 	emake \
-		F77=$(tc-getFC) \
-		CC=$(tc-getCC) \
+		F77="$(tc-getFC)" \
+		CC="$(tc-getCC)" \
 		COPTS="${CFLAGS}" \
 		FOPTS="${FFLAGS} -std=legacy"
 }

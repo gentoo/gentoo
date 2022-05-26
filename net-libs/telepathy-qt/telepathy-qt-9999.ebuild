@@ -1,16 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_REQ_USE="xml(+)"
 
-if [[ ${PV} = *9999* ]]; then
+if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI=( "https://gitlab.freedesktop.org/telepathy/${PN}" )
 	inherit git-r3
 else
 	SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 inherit python-any-r1 cmake virtualx
 
@@ -63,6 +64,7 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DPython3_EXECUTABLE="${PYTHON}"
 		-DENABLE_DEBUG_OUTPUT=$(usex debug)
 		-DENABLE_FARSTREAM=$(usex farstream)
 		-DENABLE_TESTS=$(usex test)

@@ -1,8 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+
+PYTHON_COMPAT=( python3_{8..10} )
+
 inherit python-any-r1 toolchain-funcs
 
 DESCRIPTION="light-weight X11 desktop panel"
@@ -16,7 +18,7 @@ IUSE="alsa"
 
 RDEPEND="
 	dev-libs/glib:2
-	x11-libs/gdk-pixbuf:2[X]
+	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:2
 	x11-libs/libX11
 	alsa? ( media-libs/alsa-lib )
@@ -36,6 +38,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.0-fno-common.patch
 	"${FILESDIR}"/${PN}-7.0-images.patch
 	"${FILESDIR}"/${PN}-7.0-python3-shebangs.patch
+	"${FILESDIR}"/${PN}-7.0-remove-gdk-pixbuf-xlib.h.patch
+	"${FILESDIR}"/${PN}-7.0-python3.10.patch
 )
 
 src_prepare() {

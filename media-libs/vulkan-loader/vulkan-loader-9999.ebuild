@@ -1,21 +1,20 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 MY_PN=Vulkan-Loader
 CMAKE_ECLASS="cmake"
-PYTHON_COMPAT=( python3_{6,7,8} )
-inherit flag-o-matic cmake-multilib python-any-r1 toolchain-funcs
+inherit flag-o-matic cmake-multilib toolchain-funcs
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/KhronosGroup/${MY_PN}.git"
 	EGIT_SUBMODULES=()
 	inherit git-r3
 else
-	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc64 ~x86"
-	S="${WORKDIR}"/${MY_PN}-${PV}
+	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/sdk-${PV}.0.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+	S="${WORKDIR}"/${MY_PN}-sdk-${PV}.0
 fi
 
 DESCRIPTION="Vulkan Installable Client Driver (ICD) Loader"
@@ -26,8 +25,8 @@ SLOT="0"
 IUSE="layers wayland X"
 
 BDEPEND=">=dev-util/cmake-3.10.2"
-DEPEND="${PYTHON_DEPS}
-	>=dev-util/vulkan-headers-${PV}
+DEPEND="
+	~dev-util/vulkan-headers-${PV}
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11:=[${MULTILIB_USEDEP}]
@@ -43,6 +42,8 @@ multilib_src_configure() {
 	fi
 
 	local mycmakeargs=(
+		-DCMAKE_C_FLAGS="${CFLAGS} -DNDEBUG"
+		-DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG"
 		-DCMAKE_SKIP_RPATH=ON
 		-DBUILD_TESTS=OFF
 		-DBUILD_LOADER=ON

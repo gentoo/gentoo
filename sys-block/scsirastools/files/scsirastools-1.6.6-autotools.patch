@@ -1,0 +1,71 @@
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -1,42 +1,2 @@
+-#!/bin/sh
+-# Makefile to build/install doc files
+-#
+-TOPDIR = ${top_srcdir}
+-fromd =	$(TOPDIR)/doc
+-MKDIR = sh $(TOPDIR)/mkinstalldirs 
+-INSTALL_SH = sh $(TOPDIR)/install-sh
+-INSTALL_DATA_CMD = ${INSTALL_SH} -c -m 644
+-INSTALL_SCRIPT_CMD =  ${INSTALL_SH} -c -m 755
+-prefix = /usr
+-exe_prefix = 
+-
+-datadir = ${prefix}/share
+-mandir = ${prefix}/share/man
+-sysconfdir = ${exe_prefix}/etc
+-sbindir = ${exe_prefix}/sbin
+-datato = ${DESTDIR}${datadir}/scsirastools
+-
+-sbin_PROGRAMS = 
+-	
+-all:
+-
+-clean:
+-
+-distclean:
+-
+-install:
+-	$(MKDIR) ${DESTDIR}${mandir}/man8
+-	$(MKDIR) ${datato}
+-	${INSTALL_DATA_CMD} $(fromd)/sgdefects.8   ${DESTDIR}${mandir}/man8
+-	${INSTALL_DATA_CMD} $(fromd)/sgdskfl.8     ${DESTDIR}${mandir}/man8
+-	${INSTALL_DATA_CMD} $(fromd)/sgdiag.8      ${DESTDIR}${mandir}/man8
+-	${INSTALL_DATA_CMD} $(fromd)/sgmode.8      ${DESTDIR}${mandir}/man8
+-	${INSTALL_DATA_CMD} $(fromd)/sgraidmon.8   ${DESTDIR}${mandir}/man8
+-	${INSTALL_DATA_CMD} $(fromd)/sgdiskmon.8   ${DESTDIR}${mandir}/man8
+-	${INSTALL_DATA_CMD} $(fromd)/sgsafte.8     ${DESTDIR}${mandir}/man8
+-	${INSTALL_DATA_CMD} $(fromd)/UserGuide     ${datato}
+-	${INSTALL_DATA_CMD} $(TOPDIR)/README       ${datato}
+-	${INSTALL_DATA_CMD} $(TOPDIR)/COPYING      ${datato}
+-	${INSTALL_DATA_CMD} $(TOPDIR)/kern/SCSIRAS ${datato}
+-	
+-EXTRA_DIST = 
++dist_man_MANS = sgdefects.8 sgdskfl.8 sgdiag.8 sgmode.8 sgraidmon.8 sgdiskmon.8 sgsafte.8
++dist_doc_DATA = UserGuide
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,20 +1,15 @@
+ 
+-SUBDIRS = mdadm.d src files doc 
++SUBDIRS = src doc
+ PKGDIR = /usr/src/redhat
+ SOURCEDIR = $(PKGDIR)/SOURCES
+ BUILDDIR = $(PKGDIR)/BUILD
+ RSPEC = doc/$(PACKAGE).spec
+ PNAME  = $(PACKAGE)-$(VERSION)
+ TMPDIR = /tmp/$(PNAME)
+-RPMB = rpmbuild
+ 
+ rpm:	$(RSPEC)
+ 	make tarball
+-	$(RPMB) -bs  $(RSPEC)
+-	$(RPMB) -bb  $(RSPEC)
+ 
+-# $(RPMB) --rebuild $(PKGDIR)/SRPMS/$(PNAME)-1.i386.rpm
+-# $(RPMB) -bb --buildroot $(BUILDDIR)/$(PNAME) $(RSPEC)
+ 
+ tarball:
+ 	rm -f $(SOURCEDIR)/$(PNAME).tar.gz 

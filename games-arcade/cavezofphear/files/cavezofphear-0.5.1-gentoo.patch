@@ -1,6 +1,5 @@
-diff -ru phear-0.5.1.orig/Makefile phear-0.5.1/Makefile
---- phear-0.5.1.orig/Makefile	2007-02-27 06:21:55.000000000 -0500
-+++ phear-0.5.1/Makefile	2013-01-18 02:09:56.403224104 -0500
+--- a/Makefile
++++ b/Makefile
 @@ -2,7 +2,7 @@
  DESTDIR_DATA = /usr/local/share
  
@@ -10,9 +9,8 @@ diff -ru phear-0.5.1.orig/Makefile phear-0.5.1/Makefile
  clean:
  	rm -f phear editor
  install:
-diff -ru phear-0.5.1.orig/src/Makefile phear-0.5.1/src/Makefile
---- phear-0.5.1.orig/src/Makefile	2011-12-12 07:26:03.000000000 -0500
-+++ phear-0.5.1/src/Makefile	2013-01-18 02:10:48.218423433 -0500
+--- a/src/Makefile
++++ b/src/Makefile
 @@ -2,10 +2,8 @@
  
  DESTDIR = ..
@@ -21,7 +19,7 @@ diff -ru phear-0.5.1.orig/src/Makefile phear-0.5.1/src/Makefile
  INSTALL = install
 -CFLAGS ?= -s -Wall -O2
 -LDFLAGS += -lncurses
-+LDLIBS = `pkg-config ncurses --libs`
++LDLIBS = `${PKG_CONFIG} ncurses --libs`
  
  all: phear install clean
  

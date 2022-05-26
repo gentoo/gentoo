@@ -1,15 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools fcaps toolchain-funcs
+
+inherit autotools fcaps
 
 DESCRIPTION="Watches network traffic and displays media from TCP streams observed"
 HOMEPAGE="http://www.ex-parrot.com/~chris/driftnet/"
 SRC_URI="https://github.com/deiv/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm64 -sparc ~x86"
+KEYWORDS="amd64 ~arm64 ppc -sparc x86"
 SLOT="0"
 IUSE="debug gtk suid test"
 
@@ -37,6 +38,7 @@ DOCS="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.0-CFLAGS.patch
 	"${FILESDIR}"/${PN}-1.3.0-gtk.patch
+	"${FILESDIR}"/${PN}-1.3.0-musl-stdint.patch
 )
 
 src_prepare() {

@@ -28,7 +28,6 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	=dev-libs/libplatform-2*
 	~media-tv/kodi-9999
 	virtual/opengl
 	"

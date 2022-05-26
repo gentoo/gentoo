@@ -1,0 +1,47 @@
+From 2f0f98aff51bad9474671e73aa29080c541ca055 Mon Sep 17 00:00:00 2001
+From: Thomas Bracht Laumann Jespersen <t@laumann.xyz>
+Date: Sat, 19 Feb 2022 07:19:34 +0100
+Subject: [PATCH] Ensure spaces between string literals
+
+---
+ config.C | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/config.C b/config.C
+index 61282e8..c4cf375 100644
+--- a/config.C
++++ b/config.C
+@@ -103,8 +103,8 @@ NEWLINE
+ "         Ignore instances of a particular function name." NEWLINE
+ "         This flag can be used as many times as you like." NEWLINE
+ "  -I, --ignore-file=filename" NEWLINE
+-"         Specify a file to read ignore info from, causing ITS4 to not"NEWLINE
+-"         report instances of those functions.  Each function to ignore"NEWLINE
++"         Specify a file to read ignore info from, causing ITS4 to not" NEWLINE
++"         report instances of those functions.  Each function to ignore" NEWLINE
+ "         should be on its own line." NEWLINE
+ "  -l, --limit=function" NEWLINE
+ "         Tells ITS4 not to scan for any functions, except those" NEWLINE
+@@ -112,7 +112,7 @@ NEWLINE
+ "         times as you want." NEWLINE
+ "  -m, --input-mode"
+ NEWLINE
+-"         Tells ITS4 to print out all non-argv spots at which input can"NEWLINE
++"         Tells ITS4 to print out all non-argv spots at which input can" NEWLINE
+ "         enter.  This option causes some other options to be ignored." NEWLINE
+ "         Most importantly, the regular scan does not happen, no" NEWLINE
+ "         severities are visibly reported, and the cutoff is ignored." NEWLINE
+@@ -347,8 +347,8 @@ void ParseOptions(int argc, char **argv, int &index)
+       case 'o':
+ 	if(!optarg)
+ 	  {
+-	    fprintf(stderr, "Warning: option 'o' needs an argument."NEWLINE);
+-	    fprintf(stderr, "Writing to stdout."NEWLINE);
++	    fprintf(stderr, "Warning: option 'o' needs an argument." NEWLINE);
++	    fprintf(stderr, "Writing to stdout." NEWLINE);
+ 	    continue;
+ 	  }
+ 	SetOutputFile(optarg);
+-- 
+2.34.1
+

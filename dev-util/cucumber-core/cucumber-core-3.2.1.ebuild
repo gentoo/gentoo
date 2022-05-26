@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,12 +13,12 @@ RUBY_FAKEGEM_GEMSPEC="cucumber-core.gemspec"
 inherit ruby-fakegem eapi7-ver
 
 DESCRIPTION="Executable feature scenarios"
-HOMEPAGE="https://github.com/aslakhellesoy/cucumber/wikis"
+HOMEPAGE="https://cucumber.io/"
 SRC_URI="https://github.com/cucumber/cucumber-ruby-core/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="cucumber-ruby-core-${PV}"
 LICENSE="Ruby"
 
-KEYWORDS="amd64 arm ~arm64 hppa ppc ppc64 s390 sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~s390 sparc x86"
 SLOT="$(ver_cut 1-2)"
 IUSE="test"
 
@@ -36,4 +36,6 @@ ruby_add_rdepend "
 all_ruby_prepare() {
 	# Avoid dependency on kramdown to keep dependency list manageable for all arches.
 	rm -f spec/readme_spec.rb || die
+
+	sed -i -e '1igem "gherkin"' $(find spec -name "*_spec.rb") || die
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors.
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (2011-11-16)
@@ -20,7 +20,7 @@ USE="${USE} -ptpax"
 
 # Default starting set of USE flags for all default/linux profiles.
 # We unset them so we get a clean use flag profile.
-USE="${USE} -berkdb -gdbm -tcpd"
+USE="${USE} -berkdb -gdbm"
 USE="${USE} -fortran"
 USE="${USE} -cli"
 USE="${USE} -dri"

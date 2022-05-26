@@ -1,0 +1,223 @@
+From a1371d8c81d5fc22cbc8ea2b1c9eb465e9a8e874 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Fri, 6 Nov 2020 07:40:06 -0500
+Subject: [PATCH] configure.ac: simplify the search for libmilter.
+
+This commit (temporarily?) reverts the --with-milter flag to a boolean,
+disallowing the user to pass it a path. This is done for several reasons:
+
+  * There's only one standard major version of libmilter, so people are
+    unlikely to have multiple copies of it installed side-by-side. And
+    When only one copy is present and usable with "-lmilter", the
+    ability to specify a path is redundant.
+
+  * The "milter path" was used for both the headers and the library
+    itself. As a result, the user was expected to specify something
+    like "/usr" as the milter path, whence OpenDKIM would infer that
+    the headers live in /usr/include and that the libraries live
+    in /usr/<somewhere>. If multiple libraries live in multiple
+    somewheres -- as is the case with "lib" and "lib64" on multilib
+    systems -- OpenDKIM is prone to guessing incorrectly. In other
+    words, the "milter path" mechanism was not fine-grained enough
+    to specify the correct library, and this led to link failures
+    in some not-too-uncommon cases.
+
+  * Headers and libraries in non-standard paths should be handled with
+    pkg-config, anyway.
+---
+ configure.ac         | 129 +++++++------------------------------------
+ opendkim/Makefile.am |   9 ++-
+ 2 files changed, 23 insertions(+), 115 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 828fe53f..8234e588 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -932,120 +932,29 @@ AC_SUBST(LIBCRYPTO_LIBS)
+ AC_MSG_CHECKING([for milter library and includes])
+ AC_ARG_WITH([milter],
+             AS_HELP_STRING([--with-milter],
+-                           [location of milter includes and library]),
+-            [milterpath="$withval"], [milterpath="auto"])
+-
+-if test x"$enable_filter" = x"no"
+-then
+-	milterpath="no"
+-fi
+-
+-if test "$milterpath" = "auto" -o "$milterpath" = "yes"
+-then
+-	milterdirs="/usr/local /opt/local /usr"
+-	for d in $milterdirs
+-	do
+-		if test -f $d/include/libmilter/mfapi.h
+-		then
+-			milterpath=$d
+-			break
+-		fi
+-	done
+-fi
+-case "$milterpath" in
+-	no)
+-		if test x"$enable_filter" = x"yes"
+-		then
+-			AC_MSG_ERROR([milter is required])
+-		fi
+-		AC_MSG_RESULT(disabled)
+-		;;
+-	auto)
+-		AC_MSG_ERROR([milter not found])
+-		;;
+-	*/*)
+-		if ! test -f $milterpath/include/libmilter/mfapi.h
+-		then
+-			AC_MSG_ERROR([milter includes not found at $milterpath])
+-		fi
+-		AC_MSG_RESULT([$milterpath])
+-		;;
+-	*)
+-		AC_MSG_ERROR([milter not found])
+-		;;
+-esac
+-
+-LIBMILTER_INCDIRS=""
+-LIBMILTER_LIBDIRS=""
+-LIBMILTER_LIBS=""
++                           [whether or not (yes or no) to use libmilter]),
++            [milterpath="$withval"], [milterpath="no"])
++
++AS_IF([test x"$enable_filter" = x"no"],[milterpath="no"])
++AS_IF([test x"$milterpath" = x"no"], [
++  AS_IF([test x"$enable_filter" = x"yes"],[
++    AC_MSG_ERROR([libmilter is required if filtering is enabled])
++  ])
++])
+ 
+-if test x"$milterpath" != x"no"
+-then
+-	LIBMILTER_INCDIRS="-I$milterpath/include"
++AS_IF([test x"$milterpath" = x"yes"], [
++  AC_CHECK_HEADER(libmilter/mfapi.h,
++                  [],
++		  AC_MSG_ERROR([libmilter/mfapi.h not found]))
+ 
+-	saved_CC="$CC"
+-	saved_CFLAGS="$CFLAGS"
+-	saved_CPPFLAGS="$CPPFLAGS"
+-	saved_LDFLAGS="$LDFLAGS"
+-	saved_LIBS="$LIBS"
++  AC_SEARCH_LIBS([smfi_register],
++                 [milter],
++		 [LIBMILTER_LIBS="-lmilter"],
++		 AC_MSG_ERROR([libmilter not found]))
+ 
+-	CC="$PTHREAD_CC"
+-	LIBS="$outer_LIBS $PTHREAD_LIBS $saved_LIBS"
+-	CPPFLAGS="$LIBMILTER_INCDIRS $saved_CPPFLAGS"
+-	CFLAGS="$PTHREAD_CFLAGS $saved_CFLAGS"
+-	LDFLAGS="$outer_LDFLAGS $PTHREAD_CFLAGS $saved_LDFLAGS"
+-
+-	breakloop="no"
+-	for d in lib lib64 lib/libmilter
+-	do
+-		unset ac_cv_search_smfi_register
+-		LDFLAGS="$outer_LDFLAGS $PTHREAD_CFLAGS -L$milterpath/$d $saved_LDFLAGS"
+-		AC_SEARCH_LIBS([smfi_register], [milter],
+-		               [
+-		               	LIBMILTER_LIBDIRS="-L$milterpath/$d"
+-		               	LIBMILTER_LIBS="-lmilter"
+-		               	breakloop="yes"
+-		               ])
+-
+-		AC_CHECK_FUNC([smfi_insheader],
+-			      AC_DEFINE([HAVE_SMFI_INSHEADER], 1,
+-					[Define if libmilter has smfi_insheader()]))
+-
+-		AC_CHECK_FUNC([smfi_opensocket],
+-			      AC_DEFINE([HAVE_SMFI_OPENSOCKET], 1,
+-					[Define if libmilter has smfi_opensocket()]))
+-
+-		AC_CHECK_FUNC([smfi_progress],
+-			      AC_DEFINE([HAVE_SMFI_PROGRESS], 1,
+-					[Define if libmilter has smfi_progress()]))
+-
+-		AC_CHECK_FUNC([smfi_setsymlist],
+-			      AC_DEFINE([HAVE_SMFI_SETSYMLIST], 1,
+-					[Define if libmilter has smfi_setsymlist()]))
+-
+-		AC_CHECK_FUNC([smfi_version],
+-			      AC_DEFINE([HAVE_SMFI_VERSION], 1,
+-					[Define if libmilter has smfi_version()]))
+-
+-		if test x"$breakloop" = x"yes"
+-		then
+-			break
+-		fi
+-	done
+-	if test x"$LIBMILTER_LIBDIRS" = x""
+-	then
+-		AC_MSG_ERROR([libmilter not found])
+-	fi
+-
+-	CC="$saved_CC"
+-	CPPFLAGS="$saved_CPPFLAGS"
+-	CFLAGS="$saved_CFLAGS"
+-	LDFLAGS="$saved_LDFLAGS"
+-	LIBS="$saved_LIBS"
+-fi
++  AC_CHECK_FUNCS([smfi_insheader smfi_opensocket smfi_progress smfi_setsymlist smfi_version])
++])
+ 
+-AC_SUBST(LIBMILTER_INCDIRS)
+-AC_SUBST(LIBMILTER_LIBDIRS)
+ AC_SUBST(LIBMILTER_LIBS)
+ 
+ #
+diff --git a/opendkim/Makefile.am b/opendkim/Makefile.am
+index 4aa615c1..e3d1d10e 100644
+--- a/opendkim/Makefile.am
++++ b/opendkim/Makefile.am
+@@ -26,7 +26,7 @@ opendkim_SOURCES = opendkim.c opendkim.h opendkim-ar.c opendkim-ar.h opendkim-ar
+ opendkim_CC = $(PTHREAD_CC)
+ opendkim_CFLAGS = $(PTHREAD_CFLAGS) $(LIBCRYPTO_CFLAGS) $(COV_CFLAGS)
+ opendkim_CPPFLAGS = -I$(srcdir)/../libopendkim $(LIBCRYPTO_CPPFLAGS)
+-opendkim_LDFLAGS = $(LIBCRYPTO_LIBDIRS) $(LIBMILTER_LIBDIRS) $(PTHREAD_CFLAGS) $(COV_LDFLAGS)
++opendkim_LDFLAGS = $(LIBCRYPTO_LIBDIRS) $(PTHREAD_CFLAGS) $(COV_LDFLAGS)
+ opendkim_LDADD = ../libopendkim/libopendkim.la $(LIBMILTER_LIBS) $(LIBCRYPTO_LIBS) $(PTHREAD_LIBS) $(COV_LIBADD) $(LIBRESOLV)
+ if USE_DB_OPENDKIM
+ opendkim_CPPFLAGS += $(LIBDB_INCDIRS)
+@@ -88,7 +88,6 @@ opendkim_CPPFLAGS += -I$(srcdir)/../reprrd
+ opendkim_LDADD += ../reprrd/libreprrd.la
+ endif
+ 
+-opendkim_CPPFLAGS += $(LIBMILTER_INCDIRS)
+ endif
+ 
+ if STATS
+@@ -108,7 +107,7 @@ opendkim_testkey_CFLAGS = $(LIBCRYPTO_CFLAGS) $(COV_CFLAGS) $(PTHREAD_CFLAGS)
+ opendkim_testkey_LDFLAGS = $(LIBCRYPTO_LIBDIRS) $(COV_LDFLAGS) $(PTHREAD_CFLAGS)
+ opendkim_testkey_LDADD = ../libopendkim/libopendkim.la $(LIBCRYPTO_LIBS) $(LIBRESOLV) $(COV_LIBADD) $(PTHREAD_LIBS)
+ if LUA
+-opendkim_testkey_CPPFLAGS += $(LIBLUA_INCDIRS) $(LIBMILTER_INCDIRS)
++opendkim_testkey_CPPFLAGS += $(LIBLUA_INCDIRS)
+ opendkim_testkey_LDFLAGS += $(LIBLUA_LIBDIRS)
+ opendkim_testkey_LDADD += $(LIBLUA_LIBS)
+ endif
+@@ -200,7 +199,7 @@ opendkim_genzone_CPPFLAGS += $(OPENLDAP_CPPFLAGS)
+ opendkim_genzone_LDADD += $(OPENLDAP_LIBS)
+ endif
+ if LUA
+-opendkim_genzone_CPPFLAGS += $(LIBLUA_INCDIRS) $(LIBMILTER_INCDIRS)
++opendkim_genzone_CPPFLAGS += $(LIBLUA_INCDIRS)
+ opendkim_genzone_LDFLAGS += $(LIBLUA_LIBDIRS)
+ opendkim_genzone_LDADD += $(LIBLUA_LIBS)
+ endif
+@@ -250,7 +249,7 @@ opendkim_atpszone_CPPFLAGS += $(OPENLDAP_CPPFLAGS)
+ opendkim_atpszone_LDADD += $(OPENLDAP_LIBS)
+ endif
+ if LUA
+-opendkim_atpszone_CPPFLAGS += $(LIBLUA_INCDIRS) $(LIBMILTER_INCDIRS)
++opendkim_atpszone_CPPFLAGS += $(LIBLUA_INCDIRS)
+ opendkim_atpszone_LDFLAGS += $(LIBLUA_LIBDIRS)
+ opendkim_atpszone_LDADD += $(LIBLUA_LIBS)
+ endif

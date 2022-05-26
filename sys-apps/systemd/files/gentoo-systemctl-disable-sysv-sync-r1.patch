@@ -1,0 +1,25 @@
+From d9059d2ef1b0d6034267cc8ff44871d0f82f840f Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sun, 8 Nov 2020 12:34:11 -0500
+Subject: [PATCH] systemctl: disable synchronizaion of sysv init scripts
+
+---
+ src/systemctl/systemctl-sysv-compat.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/systemctl/systemctl-sysv-compat.c b/src/systemctl/systemctl-sysv-compat.c
+index 2dca9e480f..5dcf13ba17 100644
+--- a/src/systemctl/systemctl-sysv-compat.c
++++ b/src/systemctl/systemctl-sysv-compat.c
+@@ -111,7 +111,7 @@ int parse_shutdown_time_spec(const char *t, usec_t *ret) {
+ int enable_sysv_units(const char *verb, char **args) {
+         int r = 0;
+ 
+-#if HAVE_SYSV_COMPAT
++#if 0
+         _cleanup_(lookup_paths_free) LookupPaths paths = {};
+         unsigned f = 0;
+ 
+-- 
+2.29.0
+

@@ -1,6 +1,5 @@
-diff -u -r a/doc/manual/en/manual-en.sgml b/doc/manual/en/manual-en.sgml
---- a/doc/manual/en/manual-en.sgml	2005-05-16 14:38:51.000000000 +0200
-+++ b/doc/manual/en/manual-en.sgml	2011-11-27 23:45:50.970890374 +0100
+--- a/doc/manual/en/manual-en.sgml
++++ b/doc/manual/en/manual-en.sgml
 @@ -191,6 +191,7 @@
  			<para>As mentioned above, there must be a small C program compiled. If you use Perl
  				5.8 and/or Linux, you could skip this step. For this, just execute 

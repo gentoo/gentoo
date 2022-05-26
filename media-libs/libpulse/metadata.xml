@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="glib">
+      Add support to <pkg>dev-libs/glib</pkg>-based mainloop for the
+      libpulse client library, to allow using libpulse on glib-based
+      programs.
+    </flag>
+    <flag name="asyncns">Use libasyncns for asynchronous name resolution.</flag>
+    <flag name="doc">Build the doxygen-described API documentation.</flag>
+  </use>
+</pkgmetadata>

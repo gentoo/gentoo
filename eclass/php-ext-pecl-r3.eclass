@@ -1,16 +1,27 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: php-ext-pecl-r3.eclass
 # @MAINTAINER:
 # Gentoo PHP team <php-bugs@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7 8
+# @PROVIDES: php-ext-source-r3
 # @BLURB: A uniform way to install PECL extensions
 # @DESCRIPTION:
 # This eclass should be used by all dev-php/pecl-* ebuilds as a uniform
 # way of installing PECL extensions. For more information about PECL,
 # see https://pecl.php.net/
 
-# @ECLASS-VARIABLE: PHP_EXT_PECL_PKG
+case ${EAPI:-0} in
+	6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ -z ${_PHP_EXT_PECL_R3_ECLASS} ]] ; then
+_PHP_EXT_PECL_R3_ECLASS=1
+
+# @ECLASS_VARIABLE: PHP_EXT_PECL_PKG
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Set in ebuild before inheriting this eclass if the tarball name
 # differs from ${PN/pecl-/} so that SRC_URI and HOMEPAGE get set
@@ -21,7 +32,8 @@
 # use PHP_EXT_PECL_FILENAME instead.
 [[ -z "${PHP_EXT_PECL_PKG}" ]] && PHP_EXT_PECL_PKG="${PN/pecl-/}"
 
-# @ECLASS-VARIABLE: PHP_EXT_PECL_FILENAME
+# @ECLASS_VARIABLE: PHP_EXT_PECL_FILENAME
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set in ebuild before inheriting this eclass if the tarball name
@@ -43,8 +55,6 @@ PHP_EXT_PECL_PKG_V="${PHP_EXT_PECL_PKG}-${PV/_/}"
 S="${WORKDIR}/${PHP_EXT_PECL_PKG_V}"
 
 inherit php-ext-source-r3
-
-EXPORT_FUNCTIONS src_install src_test
 
 if [[ -z "${PHP_EXT_PECL_FILENAME}" ]] ; then
 	SRC_URI="https://pecl.php.net/get/${PHP_EXT_PECL_PKG_V}.tgz"
@@ -83,3 +93,7 @@ php-ext-pecl-r3_src_test() {
 		NO_INTERACTION="yes" emake test
 	done
 }
+
+fi
+
+EXPORT_FUNCTIONS src_install src_test

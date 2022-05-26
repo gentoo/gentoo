@@ -1,0 +1,50 @@
+Fix FTBFS with clang
+
+diff --git a/src/construo.hpp b/src/construo.hpp
+index fb77e3e..41aa650 100644
+--- a/src/construo.hpp
++++ b/src/construo.hpp
+@@ -19,7 +19,7 @@
+ 
+ #include <config.h>
+ 
+-#define CONSTRUO_DATADIR DATADIR"/games/"PACKAGE
++#define CONSTRUO_DATADIR DATADIR "/games/" PACKAGE
+ 
+ class SystemContext;
+ class InputContext;
+diff --git a/src/command_line.cpp b/src/command_line.cpp
+index df4669b..824a947 100644
+--- a/src/command_line.cpp
++++ b/src/command_line.cpp
+@@ -118,7 +118,7 @@ CommandLine::parse (int argc, char** argv)
+ void
+ CommandLine::print_help ()
+ {
+-  std::cout << "Construo "VERSION"\n\n"
++  std::cout << "Construo " VERSION "\n\n"
+             << "Usage: construo [OPTIONS] [FILENAME]\n\n"
+             << "  -h, --help                  display this help text\n"
+             << "  -v,--version                Print version number of the programm\n"
+@@ -135,7 +135,7 @@ CommandLine::print_help ()
+ void
+ CommandLine::print_version ()
+ {
+-  std::cout << "Construo "VERSION"\n"
++  std::cout << "Construo " VERSION "\n"
+             << "Written by Ingo Ruhnke <grumbel@gmx.de>\n\n"
+             << "Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>\n"
+             << "This is free software; see the source for copying conditions.  There is NO\n"
+diff --git a/src/world_gui_manager.cpp b/src/world_gui_manager.cpp
+index 9c6a5f4..4a7cef0 100644
+--- a/src/world_gui_manager.cpp
++++ b/src/world_gui_manager.cpp
+@@ -273,7 +273,7 @@ WorldGUIManager::draw_overlay ()
+   graphic_context->draw_string (410, bottom_line, "Zoom: ");
+   graphic_context->draw_string (480, bottom_line, to_string(WorldViewComponent::instance()->get_zoom()));
+ 
+-  graphic_context->draw_string (610, bottom_line, "..:: Construo V"VERSION" ::..");
++  graphic_context->draw_string (610, bottom_line, "..:: Construo V" VERSION " ::..");
+   //graphic_context->draw_string (680, bottom_line, to_string(WorldViewComponent::instance()->get_zoom()));
+ }
+ 

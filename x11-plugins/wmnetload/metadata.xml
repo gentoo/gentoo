@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>voyageur@gentoo.org</email>
@@ -13,7 +13,4 @@ throughput, along with an auto-scaling graph of recent network activity (the
 graph separates upstream and downstream traffic load cleanly without resorting 
 to colors).
 </longdescription>
-	<upstream>
-		<remote-id type="freshmeat">wmnetload</remote-id>
-	</upstream>
 </pkgmetadata>

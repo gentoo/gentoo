@@ -1,15 +1,21 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Mart Raudsepp <leio@gentoo.org> (2020-05-08)
-# evolution-data-server requires libical[vala] by default
-dev-libs/libical vala
+# Mart Raudsepp <leio@gentoo.org> (2022-01-05)
+# gnome-boxes requires spice-gtk[vala]
+net-misc/spice-gtk vala
 
-# Mart Raudsepp <leio@gentoo.org> (2020-02-16)
-# GNOME requires systemd user-session functionality for launching some services.
-# GNOME-3.34 requires it for basic session launching with systemd.
-sys-apps/dbus user-session
-net-wireless/bluez user-session
+# Mart Raudsepp <leio@gentoo.org> (2021-08-13)
+# evolution-data-server requires libical[vala] and libgdata[vala] by default
+dev-libs/libical vala
+dev-libs/libgdata vala
+
+# Marek Szuba <marecki@gentoo.org> (2021-03-18)
+# FUSE cannot be built with multiple audio drivers, and desktop/gnome
+# profiles set both USE=pulseaudio (directly) and USE=alsa (inherited
+# from desktop). Default to the latter for now because PulseAudio support
+# in FUSE is currently considered experimental.
+app-emulation/fuse -pulseaudio
 
 # REQUIRED_USE constraint when pulseaudio is enabled
 dev-libs/efl sound
@@ -21,6 +27,7 @@ media-libs/gegl raw
 >=media-libs/cogl-1.18.2-r1 gles2
 >=media-libs/clutter-1.20 egl
 media-libs/cogl kms
+media-libs/libsdl2 gles2
 
 # Needed by mutter defaults and USE=wayland, bug #547300
 >=media-libs/mesa-10.3 gbm gles2
@@ -47,10 +54,5 @@ media-libs/grilo playlist
 # Pulled in by tracker and grilo-plugins, has REQUIRED_USE="?? ( gtk qt5 )"
 media-libs/libmediaart gtk -qt5
 
-# For net-misc/vinagre-3.4 and gnome-boxes
+# For gnome-boxes
 net-misc/spice-gtk gtk3
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2015-02-19)
-# Set reasonable default toolkit for gnome users to prevent emerge error
-# when USE=tools
-x11-drivers/nvidia-drivers gtk3

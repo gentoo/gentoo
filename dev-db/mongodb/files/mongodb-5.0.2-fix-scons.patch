@@ -1,0 +1,32 @@
+diff --git a/SConstruct b/SConstruct
+index 115de78a..613110b7 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -2366,7 +2366,6 @@ if env.TargetOSIs('posix'):
+ 
+     # -Winvalid-pch Warn if a precompiled header (see Precompiled Headers) is found in the search path but can't be used.
+     env.Append( CCFLAGS=["-fasynchronous-unwind-tables",
+-                         "-ggdb" if not env.TargetOSIs('emscripten') else "-g",
+                          "-Wall",
+                          "-Wsign-compare",
+                          "-Wno-unknown-pragmas",
+@@ -2422,6 +2421,8 @@ if env.TargetOSIs('posix'):
+ 
+     # env.Append( " -Wconversion" ) TODO: this doesn't really work yet
+     env.Append( CXXFLAGS=["-Woverloaded-virtual"] )
++    env.Append( CXXFLAGS=os.environ['CXXFLAGS'] )
++    env.Append( LINKFLAGS=os.environ['LDFLAGS'] )
+ 
+     # On OS X, clang doesn't want the pthread flag at link time, or it
+     # issues warnings which make it impossible for us to declare link
+@@ -2473,8 +2474,8 @@ if env.TargetOSIs('posix'):
+             ],
+         )
+ 
+-    #make scons colorgcc friendly
+-    for key in ('HOME', 'TERM'):
++    #make scons colorgcc, distcc, ccache friendly
++    for key in ('HOME', 'PATH', 'TERM'):
+         try:
+             env['ENV'][key] = os.environ[key]
+         except KeyError:

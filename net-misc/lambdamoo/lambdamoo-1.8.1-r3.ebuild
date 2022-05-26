@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -31,9 +31,8 @@ src_prepare() {
 
 src_compile() {
 	emake \
-		CC=$(tc-getCC) \
-		CFLAGS="${CFLAGS} \
-		-DHAVE_MKFIFO=1"
+		CC="$(tc-getCC)" \
+		CFLAGS="${CFLAGS} -DHAVE_MKFIFO=1"
 }
 
 src_install() {

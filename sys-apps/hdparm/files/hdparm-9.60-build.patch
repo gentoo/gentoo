@@ -1,0 +1,32 @@
+* drop hardcoded -O2 flag from CFLAGS
+* fix hardcoded `make` and hardcoded -j4 flags
+* respect CFLAGS when linking
+
+--- hdparm-9.60/Makefile
++++ hdparm-9.60/Makefile
+@@ -13,7 +13,7 @@
+ CC ?= gcc
+ STRIP ?= strip
+ 
+-CFLAGS := -O2 -W -Wall -Wbad-function-cast -Wcast-align -Wpointer-arith -Wcast-qual -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -fkeep-inline-functions -Wwrite-strings -Waggregate-return -Wnested-externs -Wtrigraphs $(CFLAGS)
++CFLAGS += -W -Wall -Wbad-function-cast -Wcast-align -Wpointer-arith -Wcast-qual -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -fkeep-inline-functions -Wwrite-strings -Waggregate-return -Wnested-externs -Wtrigraphs
+ 
+ INSTALL = install
+ INSTALL_DATA = $(INSTALL) -m 644
+@@ -22,14 +22,13 @@
+ 
+ OBJS = hdparm.o identify.o sgio.o sysfs.o geom.o fallocate.o fibmap.o fwdownload.o dvdspeed.o wdidle3.o apt.o
+ 
+-all:
+-	$(MAKE) -j4 hdparm
++all: hdparm
+ 
+ static:
+ 	LDFLAGS=-static $(MAKE)
+ 
+ hdparm: Makefile hdparm.h sgio.h $(OBJS)
+-	$(CC) $(LDFLAGS) -o hdparm $(OBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o hdparm $(OBJS)
+ 	$(STRIP) hdparm
+ 
+ hdparm.o:	hdparm.h sgio.h

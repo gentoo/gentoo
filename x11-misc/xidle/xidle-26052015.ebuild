@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,11 +13,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86"
 IUSE=""
 
-DEPEND="
+RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXScrnSaver
-	"
-RDEPEND="${DEPEND}"
+"
+DEPEND="
+	${DEPEND}
+	virtual/pkgconfig
+"
 
 PATCHES=( "${FILESDIR}/${P}-dead.patch" )
 

@@ -1,7 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="Early unlocking of encrypted systems via ssh for dracut"
 HOMEPAGE="https://github.com/dracut-crypt-ssh/dracut-crypt-ssh"
@@ -23,4 +25,18 @@ RDEPEND="${DEPEND}
 	)
 	net-misc/dropbear"
 
-DOCS=("README.md")
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
+
+src_prepare() {
+	default
+
+	# Fix libdir (hard-coded to "lib64")
+	sed "s@/lib64/@/$(get_libdir)/@" \
+		-i modules/60crypt-ssh/module-setup.sh \
+		|| die
+}
+
+src_configure() {
+	tc-export CC
+	default
+}

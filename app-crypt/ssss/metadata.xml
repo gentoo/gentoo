@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>conikost@gentoo.org</email>
@@ -10,4 +10,7 @@
 		The program suite does both: the generation of shares for a known secret,
 		and the reconstruction of a secret using user-pro‐vided shares.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">MrJoy/ssss</remote-id>
+	</upstream>
 </pkgmetadata>

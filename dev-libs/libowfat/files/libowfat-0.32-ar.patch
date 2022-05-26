@@ -1,0 +1,66 @@
+--- a/Makefile	2021-08-20 08:58:11.523401075 +0200
++++ b/Makefile	2021-08-20 08:58:38.122920942 +0200
+@@ -241,6 +242,8 @@
+ CROSS=
+ #CROSS=i686-mingw-
+ CC?=gcc
++AR?=ar
++RANLIB?=ranlib
+ CCC=$(CROSS)$(CC)
+ WERROR=
+ WARN=-W -Wall -Wextra $(WERROR)
+@@ -1092,8 +1296,8 @@
+ $(IO_OBJS) $(CDB_OBJS) $(CRITBIT_OBJS)
+ 
+ libowfat.a: $(ALL_OBJS)
+-	$(CROSS)ar cru $@ $(ALL_OBJS)
+-	-$(CROSS)ranlib $@
++	$(CROSS)$(AR) cru $@ $(ALL_OBJS)
++	-$(CROSS)$(RANLIB) $@
+ 
+ CFLAGS+=-I.
+ CFLAGS_OPT+=-I.
+@@ -1105,8 +1309,8 @@
+ 	$(DIET) $(CCC) -c $< $(CFLAGS)
+ 
+ %.a:
+-	$(CROSS)ar cru $@ $^
+-	-$(CROSS)ranlib $@
++	$(CROSS)$(AR) cru $@ $^
++	-$(CROSS)$(RANLIB) $@
+ 
+ t.o: t.c fmt.h scan.h str.h uint16.h uint32.h stralloc.h socket.h \
+   buffer.h ip4.h ip6.h byte.h mmap.h open.h textcode.h dns.h iopause.h \
+--- a/GNUmakefile	2021-08-20 08:58:11.523401075 +0200
++++ b/GNUmakefile	2021-08-20 08:58:38.122920942 +0200
+@@ -241,6 +242,8 @@
+ CROSS=
+ #CROSS=i686-mingw-
+ CC?=gcc
++AR?=ar
++RANLIB?=ranlib
+ CCC=$(CROSS)$(CC)
+ WERROR=
+ WARN=-W -Wall -Wextra $(WERROR)
+@@ -1092,8 +1296,8 @@
+ $(IO_OBJS) $(CDB_OBJS) $(CRITBIT_OBJS)
+ 
+ libowfat.a: $(ALL_OBJS)
+-	$(CROSS)ar cru $@ $(ALL_OBJS)
+-	-$(CROSS)ranlib $@
++	$(CROSS)$(AR) cru $@ $(ALL_OBJS)
++	-$(CROSS)$(RANLIB) $@
+ 
+ CFLAGS+=-I.
+ CFLAGS_OPT+=-I.
+@@ -1105,8 +1309,8 @@
+ 	$(DIET) $(CCC) -c $< $(CFLAGS)
+ 
+ %.a:
+-	$(CROSS)ar cru $@ $^
+-	-$(CROSS)ranlib $@
++	$(CROSS)$(AR) cru $@ $^
++	-$(CROSS)$(RANLIB) $@
+ 
+ t.o: t.c fmt.h scan.h str.h uint16.h uint32.h stralloc.h socket.h \
+   buffer.h ip4.h ip6.h byte.h mmap.h open.h textcode.h dns.h iopause.h \

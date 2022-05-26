@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>blueness@gentoo.org</email>
@@ -11,12 +11,12 @@
 		<flag name="ftp">Enable FTP support</flag>
 		<flag name="gnutls">Enable gnutls ssl backend</flag>
 		<flag name="gopher">Enable Gopher protocol support</flag>
+		<flag name="hsts">Enable HTTP Strict Transport Security</flag>
 		<flag name="http2">Enable HTTP/2.0 support</flag>
 		<flag name="imap">Enable Internet Message Access Protocol support</flag>
 		<flag name="mbedtls">Enable mbedtls ssl backend</flag>
 		<flag name="nghttp3">Enable HTTP/3.0 support using <pkg>net-libs/nghttp3</pkg> and <pkg>net-libs/ngtcp2</pkg></flag>
 		<flag name="quiche">Enable HTTP/3.0 support using <pkg>net-libs/quiche</pkg></flag>
-		<flag name="metalink">Enable metalink support</flag>
 		<flag name="nss">Enable nss ssl backend</flag>
 		<flag name="openssl">Enable openssl ssl backend</flag>
 		<flag name="pop3">Enable Post Office Protocol 3 support</flag>
@@ -25,9 +25,11 @@
 		<flag name="smtp">Enable Simple Mail Transfer Protocol support</flag>
 		<flag name="ssh">Enable SSH urls in curl using libssh2</flag>
 		<flag name="ssl">Enable crypto engine support (via openssl if USE='-gnutls -nss')</flag>
+		<flag name="sslv3">Support for the old/insecure SSLv3 protocol</flag>
 		<flag name="telnet">Enable Telnet protocol support</flag>
 		<flag name="tftp">Enable TFTP support</flag>
 		<flag name="winssl">Enable winssl ssl backend</flag>
+		<flag name="zstd">Enable zstd compression</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:curl:curl</remote-id>

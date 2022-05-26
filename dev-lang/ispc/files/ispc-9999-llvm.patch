@@ -1,0 +1,39 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 13e66268..27ff8364 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -218,7 +218,7 @@ if (WASM_ENABLED)
+     list(APPEND ISPC_TARGETS wasm-i32x4)
+ endif()
+
+-set(CLANG_LIBRARY_LIST clangFrontend clangDriver clangSerialization clangParse clangSema clangAnalysis clangAST clangBasic clangEdit clangLex)
++set(CLANG_LIBRARY_LIST clang clang-cpp)
+ set(LLVM_COMPONENTS engine ipo bitreader bitwriter instrumentation linker option frontendopenmp)
+
+ if (X86_ENABLED)
+@@ -402,11 +402,8 @@ if (ISPC_USE_ASAN)
+ endif()
+ 
+ # Link against Clang libraries
+-foreach(clangLib ${CLANG_LIBRARY_LIST})
+-    find_library(${clangLib}Path NAMES ${clangLib} HINTS ${LLVM_LIBRARY_DIRS})
+-    list(APPEND CLANG_LIBRARY_FULL_PATH_LIST ${${clangLib}Path})
+-endforeach()
+-target_link_libraries(${PROJECT_NAME} ${CLANG_LIBRARY_FULL_PATH_LIST})
++find_package(Clang REQUIRED)
++target_link_libraries(${PROJECT_NAME} ${CLANG_LIBRARY_LIST})
+ 
+ # Link against LLVM libraries
+ target_link_libraries(${PROJECT_NAME} ${LLVM_LIBRARY_LIST})
+diff --git a/src/llvmutil.cpp b/src/llvmutil.cpp
+index 06fab989..57a7130f 100644
+--- a/src/llvmutil.cpp
++++ b/src/llvmutil.cpp
+@@ -42,6 +42,7 @@
+ #include <llvm/IR/BasicBlock.h>
+ #include <llvm/IR/Instructions.h>
+ #include <llvm/IR/Module.h>
++#include <llvm/Support/raw_ostream.h>
+
+ #ifdef ISPC_GENX_ENABLED
+ #include <llvm/GenXIntrinsics/GenXIntrinsics.h>

@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/716584
+--- a/src/follow.c
++++ b/src/follow.c
+@@ -26,7 +26,6 @@
+  * many warnings, but seems to be necessary at times. works anyway.
+  */
+ #  include <termios.h>
+-#  include <termio.h>
+ # endif
+ /* #else USE_SGTTY */
+ #endif
+--- a/src/tty.c
++++ b/src/tty.c
+@@ -44,7 +44,6 @@
+  * many warnings, but seems to be necessary at times. works anyway.
+  */
+ #    include <termios.h>
+-#    include <termio.h>
+ #  endif
+ /* #else USE_SGTTY */
+ #endif

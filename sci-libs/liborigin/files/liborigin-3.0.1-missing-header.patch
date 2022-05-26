@@ -1,0 +1,24 @@
+diff --git a/OriginAnyParser.cpp b/OriginAnyParser.cpp
+index 05bfb95..dd5dd9b 100644
+--- a/OriginAnyParser.cpp
++++ b/OriginAnyParser.cpp
+@@ -22,6 +22,7 @@
+ #include "OriginAnyParser.h"
+ #include <sstream>
+ #include <cinttypes>
++#include <iostream>
+ 
+ /* define a macro to get an int (or uint) from a istringstream in binary mode */
+ #if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+diff --git a/opj2dat.cpp b/opj2dat.cpp
+index 4b8d57a..5a31b4e 100644
+--- a/opj2dat.cpp
++++ b/opj2dat.cpp
+@@ -31,6 +31,7 @@
+ #include <cmath>
+ #include <fstream>
+ #include <sstream>
++#include <iostream>
+ #include <string>
+ 
+ using namespace std;

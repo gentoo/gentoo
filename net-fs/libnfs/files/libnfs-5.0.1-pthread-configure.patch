@@ -1,0 +1,34 @@
+https://github.com/sahlberg/libnfs/pull/380
+
+From af37ac6d766755185dc023b940cfe78a176170a0 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 3 Apr 2022 04:22:04 +0100
+Subject: [PATCH] autotools: fix syntax error in configure when pthreads
+ disabled
+
+Avoids this warning/syntax error in configure when pthreads aren't
+enabled (default):
+```
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... no
+./configure: 14227: test: =: unexpected operator
+checking whether SO_BINDTODEVICE is available... yes
+checking whether getpwnam() is available... yes
+```
+
+The LHS of the test will be blank, so use an 'x' to give a dummy
+value, like we do elsewhere.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -88,7 +88,7 @@ if test x"$libnfs_cv_HAVE_PTHREAD" = x"yes"; then
+     AC_DEFINE(HAVE_MULTITHREADING,1,[Whether we have multithreading support])
+ fi
+ fi
+-AM_CONDITIONAL([HAVE_PTHREAD], [test $libnfs_cv_HAVE_PTHREAD = yes])
++AM_CONDITIONAL([HAVE_PTHREAD], [test x$libnfs_cv_HAVE_PTHREAD = xyes])
+ 
+ AC_MSG_CHECKING(whether SO_BINDTODEVICE is available)
+ AC_TRY_COMPILE([#include <net/if.h>], [
+

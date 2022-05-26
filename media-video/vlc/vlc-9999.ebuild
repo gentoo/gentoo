@@ -1,17 +1,18 @@
-# Copyright 2000-2020 Gentoo Authors
+# Copyright 2000-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+LUA_COMPAT=( lua5-{1..2} )
 
 MY_PV="${PV/_/-}"
 MY_PV="${MY_PV/-beta/-test}"
 MY_P="${PN}-${MY_PV}"
 if [[ ${PV} = *9999 ]] ; then
 	if [[ ${PV%.9999} != ${PV} ]] ; then
-		EGIT_REPO_URI="https://git.videolan.org/git/vlc/vlc-${PV%.9999}.git"
-	else
-		EGIT_REPO_URI="https://git.videolan.org/git/vlc.git"
+		EGIT_BRANCH="3.0.x"
 	fi
+	EGIT_REPO_URI="https://code.videolan.org/videolan/vlc.git"
 	inherit git-r3
 else
 	if [[ ${MY_P} = ${P} ]] ; then
@@ -21,7 +22,7 @@ else
 	fi
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc ~x86"
 fi
-inherit autotools flag-o-matic toolchain-funcs virtualx xdg
+inherit autotools flag-o-matic lua-single toolchain-funcs virtualx xdg
 
 DESCRIPTION="Media player and framework with support for most multimedia files and streaming"
 HOMEPAGE="https://www.videolan.org/vlc/"
@@ -36,7 +37,7 @@ IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast dav1d
 	loudness lua macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses
 	nfs ogg omxil optimisememory opus png projectm pulseaudio rdp run-as-root samba
 	sdl-image sftp shout sid skins soxr speex srt ssl svg taglib theora tremor truetype
-	twolame udev upnp vaapi v4l vdpau vnc vorbis vpx wayland +X x264 x265 xml zeroconf
+	twolame udev upnp vaapi v4l vdpau vnc vpx wayland +X x264 x265 xml zeroconf
 	zvbi cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse
 "
 REQUIRED_USE="
@@ -46,6 +47,7 @@ REQUIRED_USE="
 	libcaca? ( X )
 	libtar? ( skins )
 	libtiger? ( kate )
+	lua? ( ${LUA_REQUIRED_USE} )
 	skins? ( gui truetype X xml )
 	ssl? ( gcrypt )
 	vaapi? ( ffmpeg X )
@@ -54,10 +56,12 @@ REQUIRED_USE="
 BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
+	lua? ( ${LUA_DEPS} )
 	amd64? ( dev-lang/yasm )
 	x86? ( dev-lang/yasm )
 "
 RDEPEND="
+	media-libs/libvorbis
 	net-dns/libidn:=
 	sys-libs/zlib[minizip]
 	virtual/libintl
@@ -70,10 +74,10 @@ RDEPEND="
 	bidi? (
 		dev-libs/fribidi
 		media-libs/freetype:2[harfbuzz]
-		media-libs/harfbuzz
+		media-libs/harfbuzz:=
 		virtual/ttf-fonts
 	)
-	bluray? ( media-libs/libbluray:= )
+	bluray? ( >=media-libs/libbluray-1.3.0:= )
 	cddb? ( media-libs/libcddb )
 	chromaprint? ( media-libs/chromaprint:= )
 	chromecast? (
@@ -89,8 +93,8 @@ RDEPEND="
 	dts? ( media-libs/libdca )
 	dvbpsi? ( >=media-libs/libdvbpsi-1.2.0:= )
 	dvd? (
-		>=media-libs/libdvdnav-4.9:0=
-		>=media-libs/libdvdread-4.9:0=
+		>=media-libs/libdvdnav-6.1.1:0=
+		>=media-libs/libdvdread-6.1.2:0=
 	)
 	faad? ( media-libs/faad2 )
 	fdk? ( media-libs/fdk-aac:= )
@@ -123,7 +127,7 @@ RDEPEND="
 		sys-libs/libraw1394
 	)
 	jack? ( virtual/jack )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:0 )
 	kate? ( media-libs/libkate )
 	kms? ( x11-libs/libdrm )
 	libass? (
@@ -144,10 +148,10 @@ RDEPEND="
 	lirc? ( app-misc/lirc )
 	live? ( media-plugins/live:= )
 	loudness? ( >=media-libs/libebur128-1.2.4:= )
-	lua? ( >=dev-lang/lua-5.1:0= )
+	lua? ( ${LUA_DEPS} )
 	mad? ( media-libs/libmad )
 	matroska? (
-		>=dev-libs/libebml-1.3.6:=
+		>=dev-libs/libebml-1.4.2:=
 		media-libs/libmatroska:=
 	)
 	modplug? ( >=media-libs/libmodplug-0.8.9.0 )
@@ -155,14 +159,14 @@ RDEPEND="
 	mpeg? ( media-libs/libmpeg2 )
 	mtp? ( media-libs/libmtp:= )
 	musepack? ( media-sound/musepack-tools )
-	ncurses? ( sys-libs/ncurses:0=[unicode] )
+	ncurses? ( sys-libs/ncurses:=[unicode(+)] )
 	nfs? ( >=net-fs/libnfs-0.10.0:= )
 	ogg? ( media-libs/libogg )
 	opus? ( >=media-libs/opus-1.0.3 )
 	png? ( media-libs/libpng:0= )
 	projectm? (
 		media-fonts/dejavu
-		media-libs/libprojectm
+		>=media-libs/libprojectm-3.1.12:0=
 	)
 	pulseaudio? ( media-sound/pulseaudio )
 	rdp? ( >=net-misc/freerdp-2.0.0_rc0:=[client(+)] )
@@ -181,7 +185,7 @@ RDEPEND="
 		>=media-libs/speex-1.2.0
 		media-libs/speexdsp
 	)
-	srt? ( >=net-libs/srt-1.3.0 )
+	srt? ( >=net-libs/srt-1.4.2:= )
 	ssl? ( net-libs/gnutls:= )
 	svg? (
 		gnome-base/librsvg:2
@@ -197,12 +201,11 @@ RDEPEND="
 	)
 	twolame? ( media-sound/twolame )
 	udev? ( virtual/udev )
-	upnp? ( net-libs/libupnp:= )
+	upnp? ( net-libs/libupnp:=[ipv6] )
 	v4l? ( media-libs/libv4l:= )
-	vaapi? ( x11-libs/libva:=[drm,wayland?,X?] )
+	vaapi? ( x11-libs/libva:=[drm(+),wayland?,X?] )
 	vdpau? ( x11-libs/libvdpau )
 	vnc? ( net-libs/libvncserver )
-	vorbis? ( media-libs/libvorbis )
 	vpx? ( media-libs/libvpx:= )
 	wayland? (
 		>=dev-libs/wayland-1.15
@@ -229,11 +232,18 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch # build system
 	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
+	"${FILESDIR}"/${PN}-configure_lua_version.patch
 )
 
-DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
+DOCS=( AUTHORS THANKS NEWS README.md doc/fortunes.txt )
 
 S="${WORKDIR}/${MY_P}"
+
+pkg_setup() {
+	if use lua; then
+		lua-single_pkg_setup
+	fi
+}
 
 src_prepare() {
 	xdg_src_prepare # bug 608256
@@ -261,6 +271,9 @@ src_prepare() {
 	sed -e "/test.*build.*host/s/\$(host)/nothanks/" \
 		-i Makefile.am -i bin/Makefile.am || die "Failed to disable vlc-cache-gen"
 
+	# Fix gettext version mismatch errors.
+	sed -i -e s/GETTEXT_VERSION/GETTEXT_REQUIRE_VERSION/ configure.ac || die
+
 	eautoreconf
 
 	# Disable automatic running of tests.
@@ -268,7 +281,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local -x BUILDCC=$(tc-getBUILD_CC)
+	local -x BUILDCC="$(tc-getBUILD_CC)"
 
 	local myeconfargs=(
 		--disable-optimizations
@@ -278,6 +291,7 @@ src_configure() {
 		--enable-screen
 		--enable-vcd
 		--enable-vlc
+		--enable-vorbis
 		$(use_enable a52)
 		$(use_enable alsa)
 		$(use_enable aom)
@@ -380,7 +394,6 @@ src_configure() {
 		$(use_enable vaapi libva)
 		$(use_enable vdpau)
 		$(use_enable vnc)
-		$(use_enable vorbis)
 		$(use_enable vpx)
 		$(use_enable wayland)
 		$(use_with X x)
@@ -428,11 +441,19 @@ src_configure() {
 		replace-flags -Os -O2
 	fi
 
-	# VLC now requires C++11 after commit 4b1c9dcdda0bbff801e47505ff9dfd3f274eb0d8
-	append-cxxflags -std=c++11
+	if use omxil; then
+		# bug #723006
+		# https://trac.videolan.org/vlc/ticket/24617
+		append-cflags -fcommon
+	fi
 
 	# FIXME: Needs libresid-builder from libsidplay:2 which is in another directory...
-	append-ldflags "-L/usr/$(get_libdir)/sidplay/builders/"
+	append-ldflags "-L${ESYSROOT}/usr/$(get_libdir)/sidplay/builders/"
+
+	if use riscv; then
+		# bug #803473
+		append-libs -latomic
+	fi
 
 	if use truetype || use bidi; then
 		myeconfargs+=( --enable-freetype )
@@ -464,16 +485,16 @@ src_test() {
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
-	if [[ -z ${ROOT} ]] && [[ -x "/usr/libexec/vlc/vlc-cache-gen" ]] ; then
-		einfo "Running /usr/libexec/vlc/vlc-cache-gen on /usr/libexec/vlc/plugins/"
-		"/usr/libexec/vlc/vlc-cache-gen" "/usr/libexec/vlc/plugins/"
+	if [[ -z "${ROOT}" ]] && [[ -x "${EROOT}/usr/$(get_libdir)/vlc/vlc-cache-gen" ]] ; then
+		einfo "Running ${EPREFIX}/usr/$(get_libdir)/vlc/vlc-cache-gen on ${EROOT}/usr/$(get_libdir)/vlc/plugins/"
+		"${EPREFIX}/usr/$(get_libdir)/vlc/vlc-cache-gen" "${EROOT}/usr/$(get_libdir)/vlc/plugins/"
 	else
-		ewarn "We cannot run vlc-cache-gen (most likely ROOT!=/)"
-		ewarn "Please run /usr/libexec/vlc/vlc-cache-gen manually"
+		ewarn "We cannot run vlc-cache-gen (most likely ROOT != /)"
+		ewarn "Please run ${EPREFIX}/usr/$(get_libdir)/vlc/vlc-cache-gen manually"
 		ewarn "If you do not do it, vlc will take a long time to load."
 	fi
 
@@ -481,8 +502,8 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	if [[ -e /usr/libexec/vlc/plugins/plugins.dat ]]; then
-		rm /usr/libexec/vlc/plugins/plugins.dat || die "Failed to rm plugins.dat"
+	if [[ -e "${EROOT}"/usr/$(get_libdir)/vlc/plugins/plugins.dat ]]; then
+		rm "${EROOT}"/usr/$(get_libdir)/vlc/plugins/plugins.dat || die "Failed to rm plugins.dat"
 	fi
 
 	xdg_pkg_postrm

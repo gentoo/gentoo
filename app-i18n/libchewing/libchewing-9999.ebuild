@@ -1,4 +1,4 @@
-# Copyright 2004-2020 Gentoo Authors
+# Copyright 2004-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -15,9 +15,10 @@ fi
 DESCRIPTION="Intelligent phonetic (Zhuyin/Bopomofo) input method library"
 HOMEPAGE="http://chewing.im/ https://github.com/chewing/libchewing"
 if [[ "${PV}" == "9999" ]]; then
-	SRC_URI=""
+	SRC_URI="https://dev.gentoo.org/~juippis/distfiles/tmp/libchewing-0.5.1-autoconf-archive-2019.01.06.patch"
 else
-	SRC_URI="https://github.com/chewing/${PN}/releases/download/v${PV}/${P}.tar.bz2"
+	SRC_URI="https://github.com/chewing/${PN}/releases/download/v${PV}/${P}.tar.bz2
+	https://dev.gentoo.org/~juippis/distfiles/tmp/libchewing-0.5.1-autoconf-archive-2019.01.06.patch"
 fi
 
 LICENSE="LGPL-2.1"
@@ -30,10 +31,10 @@ RESTRICT="!test? ( test )"
 BDEPEND="virtual/pkgconfig"
 RDEPEND="dev-db/sqlite:3"
 DEPEND="${RDEPEND}
-	test? ( sys-libs/ncurses[unicode] )"
+	test? ( sys-libs/ncurses[unicode(+)] )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.5.1-autoconf-archive-2019.01.06.patch"
+	"${DISTDIR}/${PN}-0.5.1-autoconf-archive-2019.01.06.patch"
 )
 
 src_prepare() {

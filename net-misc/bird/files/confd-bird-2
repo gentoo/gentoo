@@ -1,0 +1,9 @@
+# /etc/init.d/bird
+
+# Options to pass to the bird process
+# See https://bird.network.cz/?get_doc&v=20&f=bird-1.html#ss1.3
+# BIRD_GROUP and BIRD_USER will be appended to BIRD_OPTS
+
+#BIRD_GROUP="bird"
+#BIRD_USER="bird"
+#BIRD_OPTS=""

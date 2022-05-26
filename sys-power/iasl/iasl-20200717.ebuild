@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils toolchain-funcs
+inherit edos2unix toolchain-funcs
 
 MY_PN=acpica-unix
 MY_P="${MY_PN}-${PV}"
@@ -53,7 +53,7 @@ src_configure() {
 	tc-export CC
 
 	# BITS is tied to ARCH - please set appropriately if you add new keywords
-	if [[ $ARCH == @(amd64|amd64-fbsd) ]] ; then
+	if [[ $ARCH == @(amd64) ]] ; then
 		export BITS=64
 	else
 		export BITS=32

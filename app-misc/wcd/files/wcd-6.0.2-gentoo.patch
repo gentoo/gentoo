@@ -1,5 +1,5 @@
---- wcd-6.0.2/src/Makefile
-+++ wcd-6.0.2/src/Makefile
+--- a/src/Makefile
++++ b/src/Makefile
 @@ -45,12 +45,12 @@
  
  CC              ?= gcc
@@ -20,10 +20,10 @@
  
  ifdef UCS
 -        CURSES = ncursesw
-+        CURSES = $(shell pkg-config --libs ncursesw)
++        CURSES = $(shell ${PKG_CONFIG} --libs ncursesw)
  else
 -        CURSES = ncurses
-+        CURSES = $(shell pkg-config --libs ncurses)
++        CURSES = $(shell ${PKG_CONFIG} --libs ncurses)
  endif
  
  

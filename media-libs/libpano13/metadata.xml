@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>maekke@gentoo.org</email>
@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="sourceforge">panotools</remote-id>
 	</upstream>
+	<use>
+		<flag name="suitesparse">Use Sparse Levenberg Marquardt algorithm instead of dense Levenberg Marquardt algorithm</flag>
+	</use>
 </pkgmetadata>

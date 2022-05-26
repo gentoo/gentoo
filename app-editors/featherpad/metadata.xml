@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>hansfn@gmail.com</email>
+		<name>Hans Fredrik Nordhaug</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		FeatherPad (by Pedram Pourang, a.k.a. Tsu Jan) is a lightweight Qt
+		plain-text editor for Linux. It is independent of any desktop
+		environment.
+	</longdescription>
+	<use>
+		<flag name="X">
+			Link application against X11 libraries which adds
+			support for virtual desktop awareness and tab DND
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">tsujan/FeatherPad</remote-id>
+	</upstream>
+</pkgmetadata>

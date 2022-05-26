@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit cmake-utils python-r1
+inherit cmake python-r1
 
 DESCRIPTION="vendor and platform neutral SDR support library"
 HOMEPAGE="https://github.com/pothosware/SoapySDR"
@@ -13,7 +13,6 @@ HOMEPAGE="https://github.com/pothosware/SoapySDR"
 if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/pothosware/SoapySDR.git"
 	EGIT_CLONE_TYPE="shallow"
-	KEYWORDS=""
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
@@ -49,5 +48,13 @@ src_configure() {
 		python_foreach_impl configuration
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
+}
+
+src_install() {
+	cmake_src_install
+
+	if use python; then
+		python_foreach_impl python_optimize
+	fi
 }

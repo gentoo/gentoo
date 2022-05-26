@@ -1,11 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-
-inherit systemd toolchain-funcs python-any-r1
+PYTHON_COMPAT=( python3_{7..9} )
+inherit python-any-r1 systemd toolchain-funcs
 
 DESCRIPTION="A security-aware DNS server"
 HOMEPAGE="http://www.maradns.org/"
@@ -17,12 +16,17 @@ SLOT="0"
 KEYWORDS="amd64 ~mips ~ppc x86"
 IUSE="examples ipv6"
 
-DEPEND="${PYTHON_DEPS}"
-RDEPEND="${DEPEND}
-	acct-user/maradns
+BDEPEND="${PYTHON_DEPS}
+	dev-lang/perl"
+DEPEND="
 	acct-group/maradns
 	acct-user/duende
-	dev-lang/perl"
+	acct-user/maradns"
+RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-flags.patch
+)
 
 src_prepare() {
 	default
@@ -36,7 +40,8 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC
-	./configure $(use ipv6 && echo "--ipv6") || die "Failed to configure ${PN}"
+	./configure \
+		$(usex ipv6 --ipv6 "") || die "Failed to configure ${PN}"
 }
 
 src_install() {

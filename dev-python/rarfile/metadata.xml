@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>thev00d00@gentoo.org</email>
-    <name>Ian Whyman</name>
+    <email>grozin@gentoo.org</email>
+    <name>Andrey Grozin</name>
   </maintainer>
   <use>
     <flag name="compressed">Enables the module to support compressed v3 archives by calling the <pkg>app-arch/unrar</pkg>.</flag>

@@ -1,16 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( pypy3 python3_{6..9} )
+PYTHON_COMPAT=( pypy3 python3_{8..10} )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
+TMPFILES_OPTIONAL=1
 
-inherit distutils-r1 git-r3 linux-info tmpfiles prefix
+inherit distutils-r1 git-r3 linux-info toolchain-funcs tmpfiles prefix
 
-DESCRIPTION="Portage is the package management and distribution system for Gentoo"
+DESCRIPTION="The package management and distribution system for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
+EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/portage.git
+	https://github.com/gentoo/portage.git"
 
 LICENSE="GPL-2"
 KEYWORDS=""
@@ -18,68 +20,65 @@ SLOT="0"
 IUSE="apidoc build doc gentoo-dev +ipc +native-extensions +rsync-verify selinux test xattr"
 RESTRICT="!test? ( test )"
 
-BDEPEND="test? ( dev-vcs/git )"
+BDEPEND="
+	test? ( dev-vcs/git )"
 DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 	>=app-arch/tar-1.27
 	dev-lang/python-exec:2
 	>=sys-apps/sed-4.0.5 sys-devel/patch
 	doc? ( app-text/xmlto ~app-text/docbook-xml-dtd-4.4 )
 	apidoc? (
-		dev-python/sphinx
-		dev-python/sphinx-epytext
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/sphinx-epytext[${PYTHON_USEDEP}]
 	)"
 # Require sandbox-2.2 for bug #288863.
 # For whirlpool hash, require python[ssl] (bug #425046).
 # For compgen, require bash[readline] (bug #445576).
+# app-portage/gemato goes without PYTHON_USEDEP since we're calling
+# the executable.
 RDEPEND="
+	acct-user/portage
 	app-arch/zstd
 	>=app-arch/tar-1.27
 	dev-lang/python-exec:2
 	>=sys-apps/findutils-4.4
 	!build? (
 		>=sys-apps/sed-4.0.5
-		app-shells/bash:0[readline]
+		>=app-shells/bash-5.0:0[readline]
 		>=app-admin/eselect-1.2
 		rsync-verify? (
 			>=app-portage/gemato-14.5[${PYTHON_USEDEP}]
-			>=app-crypt/openpgp-keys-gentoo-release-20180706
+			>=sec-keys/openpgp-keys-gentoo-release-20180706
 			>=app-crypt/gnupg-2.2.4-r2[ssl(-)]
 		)
 	)
 	elibc_glibc? ( >=sys-apps/sandbox-2.2 )
 	elibc_musl? ( >=sys-apps/sandbox-2.2 )
-	elibc_uclibc? ( >=sys-apps/sandbox-2.2 )
 	kernel_linux? ( sys-apps/util-linux )
 	>=app-misc/pax-utils-0.1.17
 	selinux? ( >=sys-libs/libselinux-2.0.94[python,${PYTHON_USEDEP}] )
 	xattr? ( kernel_linux? (
 		>=sys-apps/install-xattr-0.3
 	) )
-	!<app-admin/logrotate-3.8.0"
+	!<app-admin/logrotate-3.8.0
+	!<app-portage/gentoolkit-0.4.6
+	!<app-portage/repoman-2.3.10
+	!~app-portage/repoman-3.0.0"
 PDEPEND="
 	!build? (
 		>=net-misc/rsync-2.6.4
-		userland_GNU? ( >=sys-apps/coreutils-6.4 )
+		>=sys-apps/file-5.41
+		>=sys-apps/coreutils-6.4
 	)"
 # coreutils-6.4 rdep is for date format in emerge-webrsync #164532
 # NOTE: FEATURES=installsources requires debugedit and rsync
 
-SRC_ARCHIVES="https://dev.gentoo.org/~dolsen/releases/portage"
-
-prefix_src_archives() {
-	local x y
-	for x in ${@}; do
-		for y in ${SRC_ARCHIVES}; do
-			echo ${y}/${x}
-		done
-	done
-}
-
-EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/portage.git
-	https://github.com/gentoo/portage.git"
-
 pkg_pretend() {
 	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS ~UTS_NS"
+
+	if use native-extensions && tc-is-cross-compiler; then
+		einfo "Disabling USE=native-extensions for cross-compilation (bug #612158)"
+	fi
 
 	check_extra_config
 }
@@ -98,8 +97,8 @@ python_prepare_all() {
 			>> cnf/make.globals || die
 	fi
 
-	if use native-extensions; then
-		printf "[build_ext]\nportage-ext-modules=true\n" >> \
+	if use native-extensions && ! tc-is-cross-compiler; then
+		printf "[build_ext]\nportage_ext_modules=true\n" >> \
 			setup.cfg || die
 	fi
 
@@ -118,6 +117,7 @@ python_prepare_all() {
 
 	if use build || ! use rsync-verify; then
 		sed -e '/^sync-rsync-verify-metamanifest/s|yes|no|' \
+			-e '/^sync-webrsync-verify-signature/s|yes|no|' \
 			-i cnf/repos.conf || die "sed failed"
 	fi
 
@@ -127,18 +127,22 @@ python_prepare_all() {
 			-w "/_BINARY/" lib/portage/const.py
 
 		einfo "Prefixing shebangs ..."
+		> "${T}/shebangs" || die
 		while read -r -d $'\0' ; do
 			local shebang=$(head -n1 "$REPLY")
 			if [[ ${shebang} == "#!"* && ! ${shebang} == "#!${EPREFIX}/"* ]] ; then
-				sed -i -e "1s:.*:#!${EPREFIX}${shebang:2}:" "$REPLY" || \
-					die "sed failed"
+				echo "${REPLY}" >> "${T}/shebangs" || die
 			fi
-		done < <(find . -type f ! -name etc-update -print0)
+		done < <(find . -type f -executable ! -name etc-update -print0)
+
+		if [[ -s ${T}/shebangs ]]; then
+			xargs sed -i -e "1s:^#!:#!${EPREFIX}:" < "${T}/shebangs" || die "sed failed"
+		fi
 
 		einfo "Adjusting make.globals, repos.conf and etc-update ..."
 		hprefixify cnf/{make.globals,repos.conf} bin/etc-update
 
-		if prefix-guest ; then
+		if use prefix-guest ; then
 			sed -e "s|^\(main-repo = \).*|\\1gentoo_prefix|" \
 				-e "s|^\\[gentoo\\]|[gentoo_prefix]|" \
 				-e "s|^\(sync-uri = \).*|\\1rsync://rsync.prefix.bitzolder.nl/gentoo-portage-prefix|" \
@@ -211,7 +215,7 @@ python_install_all() {
 	dotmpfiles "${FILESDIR}"/portage-ccache.conf
 
 	# Due to distutils/python-exec limitations
-	# they must be installed to /usr/bin.
+	# these must be installed to /usr/bin.
 	local sbin_relocations='archive-conf dispatch-conf emaint env-update etc-update fixpackages regenworld'
 	einfo "Moving admin scripts to the correct directory"
 	dodir /usr/sbin
@@ -222,20 +226,26 @@ python_install_all() {
 }
 
 pkg_preinst() {
-	python_setup
-	local sitedir=$(python_get_sitedir)
-	[[ -d ${D}${sitedir} ]] || die "${D}${sitedir}: No such directory"
-	env -u DISTDIR \
-		-u PORTAGE_OVERRIDE_EPREFIX \
-		-u PORTAGE_REPOSITORIES \
-		-u PORTDIR \
-		-u PORTDIR_OVERLAY \
-		PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
-		"${PYTHON}" -m portage._compat_upgrade.default_locations || die
+	if ! use build; then
+		python_setup
+		local sitedir=$(python_get_sitedir)
+		[[ -d ${D}${sitedir} ]] || die "${D}${sitedir}: No such directory"
+		env -u DISTDIR \
+			-u PORTAGE_OVERRIDE_EPREFIX \
+			-u PORTAGE_REPOSITORIES \
+			-u PORTDIR \
+			-u PORTDIR_OVERLAY \
+			PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
+			"${PYTHON}" -m portage._compat_upgrade.default_locations || die
 
-	env -u BINPKG_COMPRESS \
-		PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
-		"${PYTHON}" -m portage._compat_upgrade.binpkg_compression || die
+		env -u BINPKG_COMPRESS -u PORTAGE_REPOSITORIES \
+			PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
+			"${PYTHON}" -m portage._compat_upgrade.binpkg_compression || die
+
+		env -u FEATURES -u PORTAGE_REPOSITORIES \
+			PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
+			"${PYTHON}" -m portage._compat_upgrade.binpkg_multi_instance || die
+	fi
 
 	# elog dir must exist to avoid logrotate error for bug #415911.
 	# This code runs in preinst in order to bypass the mapping of

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
     <email>prometheanfire@gentoo.org</email>
@@ -15,6 +15,7 @@
   and a command-line script (nova).
   Each implements 100% of the OpenStack Nova API.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">python-novaclient</remote-id>
     <remote-id type="github">openstack/python-novaclient</remote-id>

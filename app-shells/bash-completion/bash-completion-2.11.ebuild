@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 BASHCOMP_P=bashcomp-2.0.3
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit bash-completion-r1 python-any-r1 user-info
 
 DESCRIPTION="Programmable Completion for bash"
@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris"
 IUSE="+eselect test"
 RESTRICT="!test? ( test )"
 
@@ -89,7 +89,10 @@ src_prepare() {
 
 src_test() {
 	# portage's HOME override breaks tests
-	emake check HOME="$(egethome "${UID}")" PYTESTFLAGS="-vv" NETWORK=none
+	local myhome=$(unset HOME; echo ~)
+	local -x SANDBOX_PREDICT=${SANDBOX_PREDICT}
+	addpredict "${myhome}"
+	emake check HOME="${myhome}" PYTESTFLAGS="-vv" NETWORK=none
 }
 
 src_install() {

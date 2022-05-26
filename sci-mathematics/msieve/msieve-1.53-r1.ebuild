@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -14,43 +14,43 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="zlib +ecm mpi"
 
-DEPEND="
+RDEPEND="
 	ecm? ( sci-mathematics/gmp-ecm )
 	mpi? ( virtual/mpi )
-	zlib? ( sys-libs/zlib:= )"
-RDEPEND="${DEPEND}"
+	zlib? ( sys-libs/zlib )"
+DEPEND="${RDEPEND}"
 
-src_prepare() {
-	default
-
+PATCHES=(
 	# TODO: Integrate ggnfs properly
-	eapply \
-		"${FILESDIR}"/${PN}-1.51-reduce-printf.patch \
-		"${FILESDIR}"/${PN}-1.53-fix-version.patch
+	"${FILESDIR}"/${PN}-1.51-reduce-printf.patch
+	"${FILESDIR}"/${PN}-1.53-fix-version.patch
+	"${FILESDIR}"/${PN}-1.53-makefile.patch
+)
 
-	sed -i -e 's/-march=k8//' Makefile 		|| die
-	sed -i -e 's/CC =/#CC =/' Makefile 		|| die
-	sed -i -e 's/CFLAGS =/CFLAGS +=/' Makefile 	|| die
-	sed -i -e 's/LIBS += -lecm/LIBS += -lecm -lgomp/' Makefile || die
+src_configure() {
+	tc-export AR CC RANLIB
+
+	use ecm && export ECM=1
+
+	if use mpi; then
+		export MPI=1
+		export CC=mpicc
+	fi
+
+	use zlib && export ZLIB=1
 }
 
 src_compile() {
-	use ecm && export "ECM=1"
-	use mpi && export "MPI=1"
-	use zlib && export "ZLIB=1"
-	emake \
-		CC=$(tc-getCC) \
-		AR=$(tc-getAR) \
-		OPT_FLAGS="${CFLAGS}" \
-		all
+	emake all
 }
 
 src_install() {
-	mkdir -p "${ED}/usr/include/msieve"
-	mkdir -p "${ED}/usr/lib/"
-	mkdir -p "${ED}/usr/share/doc/${P}/"
-	cp include/* "${ED}/usr/include/msieve" || die "Failed to install"
-	cp libmsieve.a "${ED}/usr/lib/" || die "Failed to install"
 	dobin msieve
-	cp Readme* "${ED}/usr/share/doc/${P}/" || die "Failed to install"
+
+	insinto /usr/include/msieve
+	doins -r include/.
+
+	dolib.a libmsieve.a
+
+	dodoc Readme*
 }

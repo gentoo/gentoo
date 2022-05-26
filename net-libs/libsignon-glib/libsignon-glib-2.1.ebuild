@@ -1,21 +1,24 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 inherit meson python-r1 vala
 
 DESCRIPTION="GLib binding for the D-Bus API provided by signond"
-HOMEPAGE="https://01.org/gsso/"
+HOMEPAGE="https://accounts-sso.gitlab.io/"
 SRC_URI="https://gitlab.com/accounts-sso/${PN}/-/archive/VERSION_${PV}/${PN}-VERSION_${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-VERSION_${PV}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm64 x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 IUSE="debug doc +introspection python test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} introspection )"
+# needs more love
+RESTRICT="test"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -27,17 +30,19 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
-BDEPEND="$(vala_depend)
+BDEPEND="$(python_gen_any_dep)
+	$(vala_depend)
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	doc? ( dev-util/gtk-doc )
 	test? ( dev-libs/check )
 "
 
-# needs more love
-RESTRICT="test"
+python_check_deps() { return 0; }
 
-S="${WORKDIR}/${PN}-VERSION_${PV}"
+pkg_setup() {
+	python_setup
+}
 
 src_prepare() {
 	default

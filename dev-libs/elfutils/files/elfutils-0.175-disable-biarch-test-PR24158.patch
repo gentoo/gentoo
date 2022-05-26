@@ -1,9 +1,0 @@
-https://sourceware.org/PR24158
-
-Tets fails when 32-bit elfutils tries to dump 64-bit process.
---- a/tests/run-backtrace-native-biarch.sh
-+++ b/tests/run-backtrace-native-biarch.sh
-@@ -17,2 +17,3 @@
- 
-+ELFUTILS_DISABLE_BIARCH=yes # https://sourceware.org/PR24158
- if test -n "$ELFUTILS_DISABLE_BIARCH"; then

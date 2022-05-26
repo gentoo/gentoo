@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -40,7 +40,7 @@ BDEPEND="
 			dev-python/cheetah3[${PYTHON_USEDEP}]
 			dev-python/mock[${PYTHON_USEDEP}]
 		')
-		app-text/pdfjam
+		|| ( app-text/pdfjam >=app-text/texlive-core-2021 )
 		app-text/pdftk
 		dev-texlive/texlive-latex
 	)

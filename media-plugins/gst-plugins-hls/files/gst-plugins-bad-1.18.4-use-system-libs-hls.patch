@@ -1,0 +1,24 @@
+commit 761c367338adbd004f763c404e6e5d2aed90ecd7
+Author: Igor V. Kovalenko <igor.v.kovalenko@gmail.com>
+Date:   Sat Jul 3 19:10:06 2021 +0300
+
+    Patch gst-plugins-bad 1.18.4 to build hls plugin using installed libs
+    
+    Header gst/adaptivedemux/gstadaptivedemux.h is not installed by gst-plugins-bad,
+    fix include_directories to find it in gst-libs/gst/adaptivedemux via libsinc.
+    
+    Signed-off-by: Igor V. Kovalenko <igor.v.kovalenko@gmail.com>
+
+diff --git a/ext/hls/meson.build b/ext/hls/meson.build
+index 3ef45ee03..98205e4b8 100644
+--- a/ext/hls/meson.build
++++ b/ext/hls/meson.build
+@@ -55,7 +55,7 @@ gsthls = library('gsthls',
+   hls_sources,
+   c_args : gst_plugins_bad_args + hls_cargs,
+   link_args : noseh_link_args,
+-  include_directories : [configinc],
++  include_directories : [configinc, libsinc],
+   dependencies : [gstpbutils_dep, gsttag_dep, gstvideo_dep,
+                   gstadaptivedemux_dep, gsturidownloader_dep,
+                   hls_crypto_dep, gio_dep, libm],

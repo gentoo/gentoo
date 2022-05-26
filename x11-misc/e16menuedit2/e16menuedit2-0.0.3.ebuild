@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,17 +14,18 @@ KEYWORDS="~amd64 ~x86"
 LICENSE="MIT-with-advertising"
 SLOT="0"
 
-BDEPEND="
-	virtual/pkgconfig
-"
 DEPEND="
 	>=gnome-base/libglade-2.4
+	virtual/pkgconfig
 	x11-libs/gtk+:2
 	x11-wm/e16
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-no-default-docs.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-no-default-docs.patch"
+	"${FILESDIR}/${PN}-no-common.patch"
+)
 
 src_prepare() {
 	sed -i '1i#include <glib/gstdio.h>' src/e16menuedit2.c || die

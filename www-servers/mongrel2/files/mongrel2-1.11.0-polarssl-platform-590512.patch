@@ -1,6 +1,6 @@
 # Fix missing include for newer mbedtls
---- a/src/io.h       2016-08-04 15:55:53.124890328 -0700
-+++ b/src/io.h      2015-12-31 01:25:07.000000000 -0800
+--- a/src/io.h
++++ b/src/io.h
 @@ -6,6 +6,7 @@
  #endif
  
@@ -9,8 +9,8 @@
  #include <mbedtls/x509.h>
  #include <mbedtls/ssl.h>
  #include "server.h"
---- a/src/server.h   2016-08-04 15:54:49.539498093 -0700
-+++ b/src/server.h  2015-12-31 01:25:07.000000000 -0800
+--- a/src/server.h
++++ b/src/server.h
 @@ -39,6 +39,7 @@
  #include "adt/darray.h"
  #include "host.h"

@@ -23,16 +23,30 @@ DEPEND="
 	dev-perl/XML-TreePP
 	dev-perl/XML-XPath
 	virtual/perl-IO-Compress
+	virtual/perl-threads
 	dev-perl/HTTP-Daemon
 	dev-perl/IO-Socket-SSL
 	dev-perl/LWP-Protocol-https
 	dev-perl/Proc-Daemon
-	"
+"
 RDEPEND="${DEPEND}"
 BDEPEND="
 	dev-perl/Module-Install
-	"
+	dev-perl/File-Copy-Recursive
+	app-portage/gentoolkit
+"
+
 PATCHES=( "${FILESDIR}/${P}-dirs.patch" )
+
+src_prepare() {
+	# gentoo has ip under /bin/ip and ifconfig under /bin/ifconfig
+	sed \
+		-e "s:/sbin/ifconfig:/bin/ifconfig:g" \
+		-e "s:/sbin/ip:/bin/ip:g" \
+		-i lib/FusionInventory/Agent/Task/Inventory/Linux/Networks.pm \
+		-i lib/FusionInventory/Agent/Tools/Linux.pm || die
+	default
+}
 
 src_install() {
 	default

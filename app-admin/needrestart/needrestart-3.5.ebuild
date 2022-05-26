@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,10 +7,9 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/liske/${PN}.git"
 	inherit git-r3
 	SRC_URI=""
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/liske/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="Restart daemons after library updates"
@@ -29,7 +28,8 @@ RDEPEND="
 	dev-perl/Sort-Naturally
 	dev-perl/TermReadKey
 	sys-apps/init-system-helpers
-	sys-apps/iucode_tool
+	amd64? ( sys-apps/iucode_tool )
+	x86? ( sys-apps/iucode_tool )
 "
 DEPEND="${RDEPEND}
 	sys-devel/gettext

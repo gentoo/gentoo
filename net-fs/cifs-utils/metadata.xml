@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>samba@gentoo.org</email>
@@ -17,5 +17,6 @@
 		<flag name="ads">Enable Active Directory support and create cifs.idmap binary - idmap support</flag>
 		<flag name="caps">Enable <pkg>sys-libs/libcap-ng</pkg> support</flag>
 		<flag name="creds">cifs credentials support</flag>
+		<flag name="python">Enable support for python and install python tools</flag>
 	</use>
 </pkgmetadata>

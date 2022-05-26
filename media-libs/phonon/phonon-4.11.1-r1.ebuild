@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,11 +6,11 @@ EAPI=7
 inherit desktop ecm kde.org
 
 DESCRIPTION="KDE multimedia abstraction library"
-HOMEPAGE="https://phonon.kde.org/"
+HOMEPAGE="https://community.kde.org/Phonon"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/phonon/${PV}/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 x86"
+	KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
 fi
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 ) !pulseaudio? ( || ( GPL-2 GPL-3 ) )"

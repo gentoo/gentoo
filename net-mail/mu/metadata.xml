@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>matt@offtopica.uk</email>
-		<name>Matt Smith</name>
+		<email>matthew@gentoo.org</email>
+		<name>Matthew Smith</name>
 	</maintainer>
 	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>gnu-emacs@gentoo.org</email>
+		<name>Gentoo GNU Emacs project</name>
+		<description>
+			For mu4e (installed with USE=emacs).
+			Do not assign for anything else.
+		</description>
 	</maintainer>
 	<longdescription lang="en">
 		'mu' is a set of command-line tools for Linux/Unix that enable you to quickly find the e-mails you
@@ -15,10 +19,8 @@
 	</longdescription>
 	<use>
 		<flag name="emacs">Install the mu4e mail client</flag>
-		<flag name="mug">Install the mug toy client, not for normal use</flag>
 	</use>
 	<upstream>
-		<remote-id type="google-code">mu0</remote-id>
 		<remote-id type="github">djcb/mu</remote-id>
 	</upstream>
 </pkgmetadata>

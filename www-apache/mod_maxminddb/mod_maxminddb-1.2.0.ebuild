@@ -11,7 +11,7 @@ SRC_URI="https://github.com/maxmind/mod_maxminddb/releases/download/${PV}/${P}.t
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="dev-libs/libmaxminddb:="
 RDEPEND="${DEPEND}"

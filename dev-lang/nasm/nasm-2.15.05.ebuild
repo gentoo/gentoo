@@ -1,21 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic
-
 DESCRIPTION="groovy little assembler"
 HOMEPAGE="https://www.nasm.us/"
 SRC_URI="https://www.nasm.us/pub/nasm/releasebuilds/${PV/_}/${P/_}.tar.xz"
+S="${WORKDIR}"/${P/_}
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ia64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ~ia64 ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
-RDEPEND=""
-DEPEND=""
 # [fonts note] doc/psfonts.ph defines ordered list of font preference.
 # Currently 'media-fonts/source-pro' is most preferred and is able to
 # satisfy all 6 font flavours: tilt, chapter, head, etc.
@@ -29,8 +26,6 @@ BDEPEND="
 		virtual/perl-File-Spec
 	)
 "
-
-S=${WORKDIR}/${P/_}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.15-bsd-cp-doc.patch

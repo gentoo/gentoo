@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-inherit python-any-r1 toolchain-funcs git-r3
+PYTHON_COMPAT=( python3_{8..10} )
+inherit git-r3 python-any-r1 toolchain-funcs
 
 DESCRIPTION="Self-syncing tree-merging file system based on FUSE"
 HOMEPAGE="https://github.com/rpodgorny/unionfs-fuse"
@@ -41,6 +41,7 @@ src_install() {
 }
 
 src_test() {
+	[[ -e /dev/fuse ]] || return 0
 	addwrite /dev/fuse
 	pytest -vv || die "Tests fail with ${EPYTHON}"
 }

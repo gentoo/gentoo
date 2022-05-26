@@ -1,0 +1,14 @@
+--- a/test/test_request_invalid.rb.orig	2022-03-31 08:02:24.833118111 +0200
++++ b/test/test_request_invalid.rb	2022-03-31 08:02:41.897215442 +0200
+@@ -35,9 +35,8 @@
+       [200, {}, [body]]
+     }
+ 
+-    @log_writer = Puma::LogWriter.strings
+-    events = Puma::Events.new
+-    @server = Puma::Server.new app, @log_writer, events
++    events = Puma::Events.new($stdout, $stderr)
++    @server = Puma::Server.new app, events
+     @port = (@server.add_tcp_listener @host, 0).addr[1]
+     @server.run
+     sleep 0.15 if Puma.jruby?

@@ -1,10 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-PYTHON_COMPAT=( python3_{6,7,8} )
+EAPI=7
 
-inherit gnome2-utils python-single-r1 xdg
+PYTHON_COMPAT=( python3_{8..10} )
+
+inherit gnome2-utils python-single-r1 xdg virtualx
 
 DESCRIPTION="Korean Hangul engine for IBus"
 HOMEPAGE="https://github.com/libhangul/ibus-hangul/wiki"
@@ -12,14 +13,14 @@ SRC_URI="https://github.com/libhangul/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="nls"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		app-i18n/ibus[python(+),${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		app-i18n/ibus[python(+),${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	>=app-i18n/libhangul-0.1
 	nls? ( virtual/libintl )"
@@ -27,10 +28,20 @@ DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/gettext
 	virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${PN}-test.patch )
+
 src_configure() {
 	econf \
 		$(use_enable nls) \
 		--with-python=${EPYTHON}
+}
+
+src_test() {
+	"${BROOT}"${GLIB_COMPILE_SCHEMAS} --allow-any-name "${S}"/data || die
+
+	export GSETTINGS_BACKEND="memory"
+	export GSETTINGS_SCHEMA_DIR="${S}/data"
+	virtx default
 }
 
 pkg_preinst() {

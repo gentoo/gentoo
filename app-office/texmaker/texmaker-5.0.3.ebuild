@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit qmake-utils readme.gentoo-r1
+inherit qmake-utils readme.gentoo-r1 xdg
 
 DESCRIPTION="A nice LaTeX-IDE"
 HOMEPAGE="https://xm1math.net/texmaker/"

@@ -1,0 +1,59 @@
+From bc5ccea3b9d2c71929af6271bd8afe9b6cfab436 Mon Sep 17 00:00:00 2001
+From: Adrian Ratiu <adrian.ratiu@collabora.com>
+Date: Mon, 14 Feb 2022 15:00:07 +0200
+Subject: [PATCH] configure: move ranlib -D test after setting defaults
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Upstream-Status: Backport [from master bc5ccea3b9d2c7]
+
+In Gentoo and ChromeOS we want to allow pure LLVM builds without
+using GNU tools, so we block any unwanted mixed GNU/LLVM usages
+(GNU tools are still kept around in our chroots for projects
+like glibc which cannot yet be built otherwise).
+
+The default ${cross_prefix}${ranlib_default} points to GNU and
+fails, so move the test a bit later - after the defaults are
+set and the proper values get overriden - such that ffmpeg
+configure calls the llvm-ranlib we desire. [1]
+
+[1] https://gitweb.gentoo.org/repo/gentoo.git/tree/media-video/ffmpeg/ffmpeg-4.4.1-r1.ebuild?id=7a34377e3277a6a0e2eedd40e90452a44c55f1e6#n477
+
+Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
+Signed-off-by: Martin Storsjö <martin@martin.st>
+---
+ configure | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/configure b/configure
+index 7d22c2a345..82642deabe 100755
+--- a/configure
++++ b/configure
+@@ -4403,11 +4403,7 @@ cc_default="${cross_prefix}${cc_default}"
+ cxx_default="${cross_prefix}${cxx_default}"
+ nm_default="${cross_prefix}${nm_default}"
+ pkg_config_default="${cross_prefix}${pkg_config_default}"
+-if ${cross_prefix}${ranlib_default} 2>&1 | grep -q "\-D "; then
+-    ranlib_default="${cross_prefix}${ranlib_default} -D"
+-else
+-    ranlib_default="${cross_prefix}${ranlib_default}"
+-fi
++ranlib_default="${cross_prefix}${ranlib_default}"
+ strip_default="${cross_prefix}${strip_default}"
+ windres_default="${cross_prefix}${windres_default}"
+ 
+@@ -4440,6 +4436,10 @@ set_default arch cc cxx doxygen pkg_config ranlib strip sysinclude \
+ enabled cross_compile || host_cc_default=$cc
+ set_default host_cc
+ 
++if ${ranlib} 2>&1 | grep -q "\-D "; then
++    ranlib="${ranlib} -D"
++fi
++
+ pkg_config_fail_message=""
+ if ! $pkg_config --version >/dev/null 2>&1; then
+     warn "$pkg_config not found, library detection may fail."
+-- 
+2.35.1
+

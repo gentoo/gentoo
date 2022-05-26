@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,8 +12,18 @@ SRC_URI="https://fontconfig.org/release/${P}.tar.bz2"
 LICENSE="MIT"
 SLOT="1.0"
 [[ $(ver_cut 3) -ge 90 ]] || \
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 IUSE="doc static-libs"
+
+# Test test-bz106632 is known to be broken, see bug #751232
+# and would require several backports. It will be fixed in
+# next version.
+# check-missing-doc is known to be broken, see bug #733608
+# because fontconfig-2.13.1-static_build.patch introduces a
+# function FcStrBuildFilename which is lacking documentation.
+# However, backporting isn't worth it. Will be fixed in
+# next version.
+RESTRICT="test"
 
 BDEPEND="dev-util/gperf
 	>=sys-devel/gettext-0.19.8
@@ -43,8 +53,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-static_build.patch
 	"${FILESDIR}"/${P}-proper_homedir.patch
 )
-
-MULTILIB_CHOST_TOOLS=( /usr/bin/fc-cache$(get_exeext) )
 
 pkg_setup() {
 	DOC_CONTENTS="Please make fontconfig configuration changes using
@@ -92,6 +100,8 @@ multilib_src_configure() {
 }
 
 multilib_src_install() {
+	MULTILIB_CHOST_TOOLS=( /usr/bin/fc-cache$(get_exeext) )
+
 	default
 
 	# avoid calling this multiple times, bug #459210
@@ -160,7 +170,7 @@ pkg_postinst() {
 
 	readme.gentoo_print_elog
 
-	if [[ ${ROOT} == "" ]]; then
+	if [[ -z ${ROOT} ]]; then
 		multilib_pkg_postinst() {
 			ebegin "Creating global font cache for ${ABI}"
 			"${EPREFIX}"/usr/bin/${CHOST}-fc-cache -srf

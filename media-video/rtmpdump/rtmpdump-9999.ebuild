@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 inherit multilib toolchain-funcs multilib-minimal flag-o-matic
 
@@ -11,17 +11,14 @@ HOMEPAGE="https://rtmpdump.mplayerhq.hu/"
 # the library is LGPL-2.1, the command is GPL-2
 LICENSE="LGPL-2.1 tools? ( GPL-2 )"
 SLOT="0"
-IUSE="gnutls ssl static-libs +tools libressl"
-
-REQUIRED_USE="?? ( gnutls libressl )"
+IUSE="gnutls ssl static-libs +tools"
 
 DEPEND="ssl? (
 		gnutls? (
 			>=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP},nettle(+)]
 			dev-libs/nettle:0=[${MULTILIB_USEDEP}]
 		)
-		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
-		!gnutls? ( !libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] ) )
+		!gnutls? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
 		>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	)"
 RDEPEND="${DEPEND}"
@@ -29,6 +26,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}/${PN}-swf_vertification_type_2.patch"
 	"${FILESDIR}/${PN}-swf_vertification_type_2_part_2.patch"
+	"${FILESDIR}/${PN}-fix-chunk-size.patch"
 )
 
 if [[ ${PV} == *9999 ]] ; then
@@ -36,19 +34,15 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.ffmpeg.org/rtmpdump.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-	SRC_URI="http://git.ffmpeg.org/gitweb/rtmpdump.git/snapshot/c5f04a58fc2aeea6296ca7c44ee4734c18401aa3.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-c5f04a5"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+	SRC_URI="https://git.ffmpeg.org/gitweb/rtmpdump.git/snapshot/f1b83c10d8beb43fcc70a6e88cf4325499f25857.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-f1b83c1"
 fi
 
 pkg_setup() {
 	if ! use ssl; then
 		if use gnutls; then
 			ewarn "USE='gnutls' is ignored without USE='ssl'."
-			ewarn "Please review the local USE flags for this package."
-		fi
-		if use libressl; then
-			ewarn "USE='libressl' is ignored without USE='ssl'."
 			ewarn "Please review the local USE flags for this package."
 		fi
 	fi
@@ -64,7 +58,7 @@ src_prepare() {
 		-e 's:OPT:OPTS:' \
 		-e 's:CFLAGS=.*:& $(OPT):' librtmp/Makefile \
 		|| die "failed to fix Makefile"
-	use ssl && use !gnutls && use !libressl && eapply "${FILESDIR}/${PN}-openssl-1.1-v2.patch"
+	use ssl && use !gnutls && eapply "${FILESDIR}/${PN}-openssl-1.1-v2.patch"
 	default
 	multilib_copy_sources
 }

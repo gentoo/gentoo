@@ -1,0 +1,164 @@
+From 7709c8be97147e8d5c5d7fa42d076504931ba9e0 Mon Sep 17 00:00:00 2001
+From: Stephan Blecher <token_github@blecher.at>
+Date: Tue, 10 Aug 2021 14:39:21 +0200
+Subject: [PATCH] COMPRESS-582: update harmony to ASM >= 7.0
+
+---
+ pom.xml                                       |  5 +--
+ .../harmony/pack200/Pack200ClassReader.java   |  2 +-
+ .../compress/harmony/pack200/Segment.java     | 35 +++++++++++++++----
+ .../harmony/pack200/tests/ArchiveTest.java    |  0
+ 4 files changed, 32 insertions(+), 10 deletions(-)
+ mode change 100644 => 100755 src/test/java/org/apache/commons/compress/harmony/pack200/tests/ArchiveTest.java
+
+diff --git a/pom.xml b/pom.xml
+index 28f50f06a..1c6844d24 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -78,6 +78,7 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
+     <commons.jacoco.version>0.8.7</commons.jacoco.version>
+     <commons.japicmp.version>0.15.3</commons.japicmp.version>
+     <commons.javadoc.version>3.3.0</commons.javadoc.version>
++    <asm.version>7.0</asm.version>
+   </properties>
+ 
+   <issueManagement>
+@@ -119,9 +120,9 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
+ 
+     <!-- Pack200 -->
+     <dependency>
+-      <groupId>asm</groupId>
++      <groupId>org.ow2.asm</groupId>
+       <artifactId>asm</artifactId>
+-      <version>3.2</version>
++      <version>${asm.version}</version>
+       <optional>true</optional>
+     </dependency>
+ 
+diff --git a/src/main/java/org/apache/commons/compress/harmony/pack200/Pack200ClassReader.java b/src/main/java/org/apache/commons/compress/harmony/pack200/Pack200ClassReader.java
+index 2a017bc01..7022b7b30 100644
+--- a/src/main/java/org/apache/commons/compress/harmony/pack200/Pack200ClassReader.java
++++ b/src/main/java/org/apache/commons/compress/harmony/pack200/Pack200ClassReader.java
+@@ -40,7 +40,7 @@ public int readUnsignedShort(final int index) {
+         // Doing this to check whether last load-constant instruction was ldc (18) or ldc_w (19)
+         // TODO: Assess whether this impacts on performance
+         final int unsignedShort = super.readUnsignedShort(index);
+-        if (b[index - 1] == 19) {
++        if (index > 0 && b[index - 1] == 19) {
+             lastUnsignedShort = unsignedShort;
+         } else {
+             lastUnsignedShort = Short.MIN_VALUE;
+diff --git a/src/main/java/org/apache/commons/compress/harmony/pack200/Segment.java b/src/main/java/org/apache/commons/compress/harmony/pack200/Segment.java
+index 0609aa4c2..1bc73a018 100644
+--- a/src/main/java/org/apache/commons/compress/harmony/pack200/Segment.java
++++ b/src/main/java/org/apache/commons/compress/harmony/pack200/Segment.java
+@@ -32,12 +32,20 @@
+ import org.objectweb.asm.FieldVisitor;
+ import org.objectweb.asm.Label;
+ import org.objectweb.asm.MethodVisitor;
++import org.objectweb.asm.Opcodes;
+ import org.objectweb.asm.Type;
+ 
++
+ /**
+  * A Pack200 archive consists of one or more Segments.
+  */
+-public class Segment implements ClassVisitor {
++public class Segment extends ClassVisitor {
++
++     public static int ASM_API = Opcodes.ASM4; /* see https://asm.ow2.io/javadoc/org/objectweb/asm/Opcodes.html#ASM4 */
++     
++    public Segment() {
++        super(ASM_API);
++    }
+ 
+     private SegmentHeader segmentHeader;
+     private CpBands cpBands;
+@@ -255,8 +263,12 @@ public void visitEnd() {
+      *
+      * It delegates to BcBands for bytecode related visits and to ClassBands for everything else.
+      */
+-    public class SegmentMethodVisitor implements MethodVisitor {
+-
++    public class SegmentMethodVisitor extends MethodVisitor {
++        
++        public SegmentMethodVisitor() {
++            super(ASM_API);
++        }
++        
+         @Override
+         public AnnotationVisitor visitAnnotation(final String desc, final boolean visible) {
+             return new SegmentAnnotationVisitor(MetadataBandGroup.CONTEXT_METHOD, desc, visible);
+@@ -427,7 +439,7 @@ public ClassBands getClassBands() {
+     /**
+      * SegmentAnnotationVisitor implements <code>AnnotationVisitor</code> to visit Annotations found in a class file.
+      */
+-    public class SegmentAnnotationVisitor implements AnnotationVisitor {
++    public class SegmentAnnotationVisitor extends AnnotationVisitor {
+ 
+         private int context = -1;
+         private int parameter = -1;
+@@ -443,17 +455,20 @@ public ClassBands getClassBands() {
+         private final List nestPairN = new ArrayList();
+ 
+         public SegmentAnnotationVisitor(final int context, final String desc, final boolean visible) {
++            super(ASM_API);
+             this.context = context;
+             this.desc = desc;
+             this.visible = visible;
+         }
+ 
+         public SegmentAnnotationVisitor(final int context) {
++            super(ASM_API);
+             this.context = context;
+         }
+ 
+         public SegmentAnnotationVisitor(final int context, final int parameter, final String desc,
+             final boolean visible) {
++            super(ASM_API);
+             this.context = context;
+             this.parameter = parameter;
+             this.desc = desc;
+@@ -478,7 +493,7 @@ public AnnotationVisitor visitAnnotation(String name, final String desc) {
+             nameRU.add(name);
+             nestTypeRS.add(desc);
+             nestPairN.add(Integer.valueOf(0));
+-            return new AnnotationVisitor() {
++            return new AnnotationVisitor(context, av) {
+                 @Override
+                 public void visit(final String name, final Object value) {
+                     final Integer numPairs = (Integer) nestPairN.remove(nestPairN.size() - 1);
+@@ -552,7 +567,7 @@ public void visitEnum(String name, final String desc, final String value) {
+         }
+     }
+ 
+-    public class ArrayVisitor implements AnnotationVisitor {
++    public class ArrayVisitor extends AnnotationVisitor {
+ 
+         private final int indexInCaseArrayN;
+         private final List caseArrayN;
+@@ -561,6 +576,8 @@ public void visitEnum(String name, final String desc, final String value) {
+         private final List T;
+ 
+         public ArrayVisitor(final List caseArrayN, final List T, final List nameRU, final List values) {
++            super(ASM_API);
++
+             this.caseArrayN = caseArrayN;
+             this.T = T;
+             this.nameRU = nameRU;
+@@ -612,7 +629,11 @@ public void visitEnum(final String name, final String desc, final String value)
+      * SegmentFieldVisitor implements <code>FieldVisitor</code> to visit the metadata relating to fields in a class
+      * file.
+      */
+-    public class SegmentFieldVisitor implements FieldVisitor {
++    public class SegmentFieldVisitor extends FieldVisitor {
++
++        public SegmentFieldVisitor() {
++            super(ASM_API);
++        }
+ 
+         @Override
+         public AnnotationVisitor visitAnnotation(final String desc, final boolean visible) {
+diff --git a/src/test/java/org/apache/commons/compress/harmony/pack200/tests/ArchiveTest.java b/src/test/java/org/apache/commons/compress/harmony/pack200/tests/ArchiveTest.java
+old mode 100644
+new mode 100755

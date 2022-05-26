@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
     <email>chutzpah@gentoo.org</email>
@@ -16,6 +16,6 @@ Python (supporting 2.6+ including Python 3).
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">jsonschema</remote-id>
-    <remote-id type="github">Julian/jsonschema</remote-id>
+    <remote-id type="github">python-jsonschema/jsonschema</remote-id>
   </upstream>
 </pkgmetadata>

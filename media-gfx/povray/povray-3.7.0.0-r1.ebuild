@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,14 +15,14 @@ else
 fi
 
 DESCRIPTION="The Persistence of Vision Raytracer"
-HOMEPAGE="http://www.povray.org/"
+HOMEPAGE="https://www.povray.org/"
 SRC_URI="https://github.com/POV-Ray/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~soap/distfiles/${P}_p20160914-fix-c++14.patch.bz2"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="debug +io-restrictions openexr static-libs tiff X"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+IUSE="debug +io-restrictions openexr tiff X"
 
 DEPEND="
 	>=dev-libs/boost-1.50.0:=[threads(+)]
@@ -30,8 +30,8 @@ DEPEND="
 	sys-libs/zlib
 	virtual/jpeg:0
 	openexr? (
-		media-libs/ilmbase
-		media-libs/openexr )
+		media-libs/ilmbase:=
+		<media-libs/openexr-3.0.0:0= )
 	tiff? ( media-libs/tiff:0 )
 	X? ( media-libs/libsdl )"
 RDEPEND="${DEPEND}"
@@ -112,11 +112,11 @@ src_configure() {
 		$(use_with tiff libtiff "${EPREFIX}/usr/$(get_libdir)") \
 		$(use_with X libsdl "${EPREFIX}/usr/$(get_libdir)") \
 		$(use_with X x "${EPREFIX}/usr/$(get_libdir)") \
-		$(use_enable static-libs static) \
 		$(usex tiff "" "NON_REDISTRIBUTABLE_BUILD=yes") \
 		--with-boost-libdir="${EPREFIX}/usr/$(get_libdir)" \
 		--without-libmkl \
 		--disable-pipe \
+		--disable-static \
 		--disable-strip \
 		--disable-optimiz \
 		--disable-optimiz-arch

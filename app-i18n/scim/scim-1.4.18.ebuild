@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit autotools flag-o-matic gnome2-utils qmake-utils
+inherit autotools flag-o-matic gnome2-utils
 
 DESCRIPTION="Smart Common Input Method (SCIM) is an Input Method (IM) development platform"
 HOMEPAGE="https://github.com/scim-im/scim"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/scim-im/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86"
 IUSE="doc gtk3"
 
 RDEPEND="x11-libs/libX11
@@ -33,6 +33,10 @@ DOCS=(
 	ChangeLog
 	docs/developers
 	docs/scim.cfg
+)
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.18-slibtool.patch
 )
 
 src_prepare() {

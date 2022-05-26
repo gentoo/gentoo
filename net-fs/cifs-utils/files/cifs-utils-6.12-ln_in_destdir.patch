@@ -1,0 +1,22 @@
+Fixed an inverted race condition when installing with MAKEOPTS="-j1"
+
+jer found this:
+  install-root_sbinPROGRAMS is called from install-data-am but
+  install-exec-hook is called from install-exec-am
+
+So moving the failing ln call into install-data-hook for now...
+
+--- cifs-utils-6.12/Makefile.am
++++ cifs-utils-6.12/Makefile.am
+@@ -117,10 +117,8 @@
+ 
+ SUBDIRS = contrib
+ 
+-install-exec-hook: install-sbinPROGRAMS
++install-data-hook: install-sbinPROGRAMS
+ 	(cd $(DESTDIR)$(ROOTSBINDIR) && ln -sf mount.cifs mount.smb3)
+-
+-install-data-hook:
+ if CONFIG_MAN
+ 	( cd $(DESTDIR)$(man8dir) && ln -sf mount.cifs.8 mount.smb3.8)
+ endif

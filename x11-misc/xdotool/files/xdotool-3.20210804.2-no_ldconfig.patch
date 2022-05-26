@@ -1,0 +1,12 @@
+diff -ur a/Makefile b/Makefile
+--- a/Makefile	2021-08-04 17:14:19.000000000 +0100
++++ b/Makefile	2021-08-05 22:10:47.713611624 +0100
+@@ -71,7 +71,7 @@
+ 	$(CC) -o xdotool.static xdotool.o xdo.o xdo_search.o $(CMDOBJS) $(LDFLAGS)  -lm $(XDOTOOL_LIBS) $(LIBXDO_LIBS)
+ 
+ .PHONY: install
+-install: pre-install installlib installprog installman installheader installpc post-install
++install: pre-install installlib installprog installman installheader installpc
+ 
+ .PHONY: pre-install
+ pre-install:

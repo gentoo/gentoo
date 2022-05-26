@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="project">
   <email>mozilla@gentoo.org</email>
@@ -7,7 +7,7 @@
 </maintainer>
 <use>
   <flag name="cacert">
-    Include root/class3 certs from CAcert (http://www.cacert.org/)
+    Include root/class3 certs from CAcert (https://www.cacert.org/)
   </flag>
   <flag name="utils">Install utilities included with the library</flag>
 </use>

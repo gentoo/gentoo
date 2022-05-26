@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -39,10 +39,8 @@ src_install() {
 	default
 
 	# Solves file collision with dev-tcltk/tcllib, bug #574074
-	ebegin "Changing references from 'page' to 'pagewm'"
 	mv "${D}"usr/bin/page "${D}"usr/bin/pagewm || die "Could not rename binary!"
 	sed -i -e "s:/usr/bin/page:/usr/bin/pagewm:" "${D}"usr/share/applications/page.desktop || die "Could not change .desktop file!"
-	eend
 }
 
 pkg_postinst() {

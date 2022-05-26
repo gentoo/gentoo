@@ -1,0 +1,63 @@
+--- a/rexecd/rexecd.8
++++ b/rexecd/rexecd.8
+@@ -40,6 +40,16 @@
+ .Nd remote execution server
+ .Sh SYNOPSIS
+ .Nm rexecd
++[
++\fB\-D\fP
++]
++.Sh OPTIONS
++.Nm Rexec
++accepts one option:
++.Pp
++.Bl -tag -width Ds
++.It Sy -D
++Disable reverse DNS look up and in the log will be used client IP addresses.
+ .Sh DESCRIPTION
+ .Nm Rexecd
+ is the server for the 
+--- a/rexecd/rexecd.c
++++ b/rexecd/rexecd.c
+@@ -82,7 +82,9 @@
+ #include <string.h>
+ #include <paths.h>
+ #include <grp.h>
+-
++#include <arpa/inet.h>
++  
++  
+ #ifdef USE_SHADOW
+ #include <shadow.h>
+ #endif
+@@ -141,16 +143,22 @@
+ 		refuse(&from_host);
+ 	remote = hosts_info(&from_host);
+ #else
++	if (argc > 1 && argv[1] && strcmp(argv[1], "-D")==0)
+ 	{
+-	struct hostent *h = gethostbyaddr((const char *)&from.sin_addr,
+-					  sizeof(struct in_addr),
+-					  AF_INET);
+-	if (!h || !h->h_name) {
+-		write(0, "\1Where are you?\n", 16);
+-		return 1;
++		/* use IP in logs -- this is workaround */
++		remote = strdup(inet_ntoa(from.sin_addr));
+ 	}
+-	/* Be advised that this may be utter nonsense. */
+-	remote = strdup(h->h_name);
++	else
++	{
++		struct hostent *h = gethostbyaddr((const char *)&from.sin_addr,
++				  sizeof(struct in_addr),
++				  AF_INET);
++		if (!h || !h->h_name) {
++			write(0, "\1Where are you?\n", 16);
++			return 1;
++		}
++		/* Be advised that this may be utter nonsense. */
++		remote = strdup(h->h_name);
+ 	}
+ #endif
+ 	syslog(allow_severity, "connect from %.128s", remote);

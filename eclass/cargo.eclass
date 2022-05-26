@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cargo.eclass
@@ -6,30 +6,89 @@
 # rust@gentoo.org
 # @AUTHOR:
 # Doug Goldstein <cardoe@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# Georgy Yakovlev <gyakovlev@gentoo.org>
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: common functions and variables for cargo builds
 
 if [[ -z ${_CARGO_ECLASS} ]]; then
 _CARGO_ECLASS=1
 
-# we need this for 'cargo vendor' subcommand and net.offline config knob
-RUST_DEPEND=">=virtual/rust-1.37.0"
+# check and document RUST_DEPEND and options we need below in case conditions.
+# https://github.com/rust-lang/cargo/blob/master/CHANGELOG.md
+RUST_DEPEND="virtual/rust"
 
-case ${EAPI} in
-	7) BDEPEND="${RUST_DEPEND}";;
-	*) die "EAPI=${EAPI:-0} is not supported" ;;
+case "${EAPI:-0}" in
+	0|1|2|3|4|5|6)
+		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
+		;;
+	7)
+		# 1.37 added 'cargo vendor' subcommand and net.offline config knob
+		RUST_DEPEND=">=virtual/rust-1.37.0"
+		;;
+
+	8)
+		# 1.39 added --workspace
+		# 1.46 added --target dir
+		# 1.48 added term.progress config option
+		# 1.51 added split-debuginfo profile option
+		# 1.52 may need setting RUSTC_BOOTSTRAP envvar for some crates
+		# 1.53 added cargo update --offline, can be used to update vulnerable crates from pre-fetched registry without editing toml
+		RUST_DEPEND=">=virtual/rust-1.53"
+
+		if [[ -z ${CRATES} && "${PV}" != *9999* ]]; then
+			eerror "undefined CRATES variable in non-live EAPI=8 ebuild"
+			die "CRATES variable not defined"
+		fi
+		;;
+	*)
+		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
+		;;
 esac
 
 inherit multiprocessing toolchain-funcs
 
-EXPORT_FUNCTIONS src_unpack src_configure src_compile src_install src_test
+if [[ ! ${CARGO_OPTIONAL} ]]; then
+	BDEPEND="${RUST_DEPEND}"
+	EXPORT_FUNCTIONS src_unpack src_configure src_compile src_install src_test
+fi
 
 IUSE="${IUSE} debug"
 
 ECARGO_HOME="${WORKDIR}/cargo_home"
 ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 
-# @VARIABLE: myfeatures
+# @ECLASS_VARIABLE: CRATES
+# @DEFAULT_UNSET
+# @PRE_INHERIT
+# @DESCRIPTION:
+# bash string containing all crates package wants to download
+# used by cargo_crate_uris()
+# Example:
+# @CODE
+# CRATES="
+# metal-1.2.3
+# bar-4.5.6
+# iron_oxide-0.0.1
+# "
+# inherit cargo
+# ...
+# SRC_URI="$(cargo_crate_uris)"
+# @CODE
+
+# @ECLASS_VARIABLE: CARGO_OPTIONAL
+# @DEFAULT_UNSET
+# @PRE_INHERIT
+# @DESCRIPTION:
+# If set to a non-null value, before inherit cargo part of the ebuild will
+# be considered optional. No dependencies will be added and no phase
+# functions will be exported.
+#
+# If you enable CARGO_OPTIONAL, you have to set BDEPEND on virtual/rust
+# for your package and call at least cargo_gen_config manually before using
+# other src_ functions of this eclass.
+# note that cargo_gen_config is automatically called by cargo_src_unpack.
+
+# @ECLASS_VARIABLE: myfeatures
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Optional cargo features defined as bash array.
@@ -46,7 +105,7 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # }
 # @CODE
 
-# @ECLASS-VARIABLE: ECARGO_REGISTRY_DIR
+# @ECLASS_VARIABLE: ECARGO_REGISTRY_DIR
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -57,7 +116,7 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 #
 # Defaults to "${DISTDIR}/cargo-registry" it not set.
 
-# @ECLASS-VARIABLE: ECARGO_OFFLINE
+# @ECLASS_VARIABLE: ECARGO_OFFLINE
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -65,7 +124,7 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # cargo_live_src_unpack.
 # Inherits value of EVCS_OFFLINE if not set explicitly.
 
-# @ECLASS-VARIABLE: EVCS_UMASK
+# @ECLASS_VARIABLE: EVCS_UMASK
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -78,10 +137,22 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # @FUNCTION: cargo_crate_uris
 # @DESCRIPTION:
 # Generates the URIs to put in SRC_URI to help fetch dependencies.
+# Uses first argument as crate list.
+# If no argument provided, uses CRATES variable.
 cargo_crate_uris() {
 	local -r regex='^([a-zA-Z0-9_\-]+)-([0-9]+\.[0-9]+\.[0-9]+.*)$'
-	local crate
-	for crate in "$@"; do
+	local crate crates
+
+	if [[ -n ${@} ]]; then
+		crates="$@"
+	elif [[ -n ${CRATES} ]]; then
+		crates="${CRATES}"
+	else
+		eerror "CRATES variable is not defined and nothing passed as argument"
+		die "Can't generate SRC_URI from empty input"
+	fi
+
+	for crate in ${crates}; do
 		local name version url
 		[[ $crate =~ $regex ]] || die "Could not parse name and version from crate: $crate"
 		name="${BASH_REMATCH[1]}"
@@ -97,7 +168,7 @@ cargo_crate_uris() {
 # Cargo can also be configured through environment variables in addition to the TOML syntax below.
 # For each configuration key below of the form foo.bar the environment variable CARGO_FOO_BAR
 # can also be used to define the value.
-# Environment variables will take precedent over TOML configuration,
+# Environment variables will take precedence over TOML configuration,
 # and currently only integer, boolean, and string keys are supported.
 # For example the build.jobs key can also be defined by CARGO_BUILD_JOBS.
 # Or setting CARGO_TERM_VERBOSE=false in make.conf will make build quieter.
@@ -119,6 +190,7 @@ cargo_gen_config() {
 
 	[build]
 	jobs = $(makeopts_jobs)
+	incremental = false
 
 	[term]
 	verbose = true
@@ -160,15 +232,6 @@ cargo_src_unpack() {
 				fi
 				eend $?
 				;;
-			cargo-snapshot*)
-				ebegin "Unpacking ${archive}"
-				mkdir -p "${S}"/target/snapshot
-				tar -xzf "${DISTDIR}"/${archive} -C "${S}"/target/snapshot --strip-components 2 || die
-				# cargo's makefile needs this otherwise it will try to
-				# download it
-				touch "${S}"/target/snapshot/bin/cargo || die
-				eend $?
-				;;
 			*)
 				unpack ${archive}
 				;;
@@ -181,7 +244,6 @@ cargo_src_unpack() {
 # @FUNCTION: cargo_live_src_unpack
 # @DESCRIPTION:
 # Runs 'cargo fetch' and vendors downloaded crates for offline use, used in live ebuilds
-
 cargo_live_src_unpack() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -293,7 +355,6 @@ cargo_live_src_unpack() {
 # In some cases crates may need '--no-default-features' option,
 # as there is no way to disable single feature, except disabling all.
 # It can be passed directly to cargo_src_configure().
-
 cargo_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -325,7 +386,7 @@ cargo_src_compile() {
 	[[ ${_CARGO_GEN_CONFIG_HAS_RUN} ]] || \
 		die "FATAL: please call cargo_gen_config before using ${FUNCNAME}"
 
-	tc-export AR CC CXX
+	tc-export AR CC CXX PKG_CONFIG
 
 	set -- cargo build $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
@@ -338,7 +399,6 @@ cargo_src_compile() {
 # In come case workspaces need alternative --path parameter
 # default is '--path ./' if nothing specified.
 # '--path ./somedir' can be passed directly to cargo_src_install()
-
 cargo_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -355,7 +415,16 @@ cargo_src_install() {
 	rm -f "${ED}/usr/.crates.toml" || die
 	rm -f "${ED}/usr/.crates2.json" || die
 
-	[ -d "${S}/man" ] && doman "${S}/man" || return 0
+	# it turned out to be non-standard dir, so get rid of it future EAPI
+	# and only run for EAPI=7
+	# https://bugs.gentoo.org/715890
+	case ${EAPI:-0} in
+		7)
+		if [ -d "${S}/man" ]; then
+			doman "${S}/man" || return 0
+		fi
+		;;
+	esac
 }
 
 # @FUNCTION: cargo_src_test

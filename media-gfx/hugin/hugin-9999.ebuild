@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-WX_GTK_VER="3.0"
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+WX_GTK_VER="3.0-gtk3"
+PYTHON_COMPAT=( python3_{7..9} )
 
-inherit mercurial python-single-r1 wxwidgets cmake-utils eapi7-ver xdg
+inherit mercurial python-single-r1 wxwidgets cmake xdg
 
 DESCRIPTION="GUI for the creation & processing of panoramic images"
 HOMEPAGE="http://hugin.sf.net"
@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS=""
 
 LANGS=" ca ca-valencia cs da de en-GB es eu fi fr hu it ja nl pl pt-BR ro ru sk sv zh-CN zh-TW"
-IUSE="debug lapack python sift $(echo ${LANGS//\ /\ l10n_})"
+IUSE="debug lapack python raw sift $(echo ${LANGS//\ /\ l10n_})"
 
 CDEPEND="
 	!!dev-util/cocom
@@ -34,19 +34,20 @@ CDEPEND="
 	media-libs/libpng:0=
 	media-libs/openexr:=
 	media-libs/tiff:0
-	>=media-libs/vigra-1.11.0[openexr]
+	>=media-libs/vigra-1.11.1-r5[openexr]
 	sci-libs/fftw:3.0=
 	sci-libs/flann
 	sys-libs/zlib
 	virtual/glu
 	virtual/jpeg:0
 	virtual/opengl
-	x11-libs/wxGTK:3.0=[X,opengl]
+	x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl]
 	lapack? ( virtual/blas virtual/lapack )
 	python? ( ${PYTHON_DEPS} )
 	sift? ( media-gfx/autopano-sift-C )"
 RDEPEND="${CDEPEND}
-	media-libs/exiftool"
+	media-libs/exiftool
+	raw? ( media-gfx/dcraw )"
 DEPEND="${CDEPEND}
 	dev-cpp/tclap
 	sys-devel/gettext
@@ -65,7 +66,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -73,11 +74,11 @@ src_configure() {
 		-DBUILD_HSI=$(usex python)
 		-DENABLE_LAPACK=$(usex lapack)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	use python && python_optimize
 
 	local lang
@@ -89,7 +90,7 @@ src_install() {
 			*) dir=${lang/-/_};;
 		esac
 		if ! use l10n_${lang} ; then
-			rm -r "${ED%/}"/usr/share/locale/${dir} || die
+			rm -r "${ED}"/usr/share/locale/${dir} || die
 		fi
 	done
 }

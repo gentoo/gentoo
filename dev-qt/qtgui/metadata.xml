@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>qt@gentoo.org</email>
@@ -11,6 +11,7 @@
 		<flag name="evdev">Enable support for input devices via evdev</flag>
 		<flag name="ibus">Build the IBus input method plugin</flag>
 		<flag name="libinput">Enable support for input devices via <pkg>dev-libs/libinput</pkg></flag>
+		<flag name="linuxfb">Enable Linux framebuffer support for embedded devices</flag>
 		<flag name="tslib">Enable support for touchscreen devices via <pkg>x11-libs/tslib</pkg></flag>
 		<flag name="tuio">Build plugin to receive touch events over the TUIO protocol</flag>
 		<flag name="vulkan">Enable support for Vulkan</flag>

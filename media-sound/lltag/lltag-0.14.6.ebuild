@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,23 +27,20 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${PN}-${P}"
 
-pkg_setup() {
+src_compile() {
 	mylltagopts=(
-		DESTDIR="${D}"
 		PREFIX=/usr
 		SYSCONFDIR=/etc
 		MANDIR=/usr/share/man
 		PERL_INSTALLDIRS=vendor
 		DOCDIR=/usr/share/doc/${PF}
 	)
-}
 
-src_compile() {
 	emake "${mylltagopts[@]}"
 }
 
 src_install() {
-	emake "${mylltagopts[@]}" install{,-doc,-man}
+	emake DESTDIR="${D}" "${mylltagopts[@]}" install{,-doc,-man}
 	dodoc Changes
 	perl_delete_localpod
 	# Move config to recommended location

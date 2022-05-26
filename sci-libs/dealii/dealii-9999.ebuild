@@ -1,14 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
-inherit cmake-utils eutils multilib
 
 # deal.II uses its own FindLAPACK.cmake file that calls into the system
 # FindLAPACK.cmake module and does additional internal setup. Do not remove
 # any of these modules:
 CMAKE_REMOVE_MODULES_LIST=""
+
+inherit cmake flag-o-matic
 
 DESCRIPTION="Solving partial differential equations with the finite element method"
 HOMEPAGE="https://www.dealii.org/"
@@ -17,7 +17,6 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/dealii/dealii.git"
 	SRC_URI=""
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz
 		doc? (
@@ -41,29 +40,33 @@ REQUIRED_USE="
 	slepc? ( petsc )
 	trilinos? ( mpi )"
 
-RDEPEND="dev-libs/boost
+RDEPEND="dev-libs/boost:=
 	app-arch/bzip2
 	sys-libs/zlib
-	dev-cpp/cpp-taskflow
+	dev-cpp/taskflow
+	dev-cpp/tbb:=
 	adolc? ( sci-libs/adolc )
 	arpack? ( sci-libs/arpack[mpi=] )
 	assimp? ( media-libs/assimp )
-	cuda? ( dev-util/nvidia-cuda-sdk )
+	cuda? ( dev-util/nvidia-cuda-toolkit )
 	ginkgo? ( sci-libs/ginkgo )
 	gmsh? ( sci-libs/gmsh )
-	gsl? ( sci-libs/gsl )
+	gsl? ( sci-libs/gsl:= )
 	hdf5? ( sci-libs/hdf5[mpi=] )
 	lapack? ( virtual/lapack )
-	metis? ( >=sci-libs/parmetis-4 )
-	mpi? ( virtual/mpi )
+	metis? (
+		>=sci-libs/metis-5
+		mpi? ( >=sci-libs/parmetis-4 )
+	)
+	mpi? ( virtual/mpi[cxx] )
 	muparser? ( dev-cpp/muParser )
-	opencascade? ( sci-libs/opencascade:* )
+	opencascade? ( sci-libs/opencascade:= )
 	p4est? ( sci-libs/p4est[mpi] )
 	petsc? ( sci-mathematics/petsc[mpi=] )
 	scalapack? ( sci-libs/scalapack )
 	slepc? ( sci-mathematics/slepc[mpi=] )
 	sparse? ( sci-libs/umfpack )
-	sundials? ( <sci-libs/sundials-4:= )
+	sundials? ( sci-libs/sundials:= )
 	symengine? ( >=sci-libs/symengine-0.4:= )
 	trilinos? ( sci-libs/trilinos )"
 
@@ -106,7 +109,6 @@ src_configure() {
 		-DDEAL_II_WITH_METIS="$(usex metis)"
 		-DDEAL_II_WITH_MPI="$(usex mpi)"
 		-DDEAL_II_WITH_MUPARSER="$(usex muparser)"
-		-DOPENCASCADE_DIR="${CASROOT}"
 		-DDEAL_II_WITH_OPENCASCADE="$(usex opencascade)"
 		-DDEAL_II_WITH_P4EST="$(usex p4est)"
 		-DDEAL_II_WITH_PETSC="$(usex petsc)"
@@ -117,25 +119,30 @@ src_configure() {
 		-DDEAL_II_WITH_UMFPACK="$(usex sparse)"
 		-DBUILD_SHARED_LIBS="$(usex !static-libs)"
 		-DDEAL_II_PREFER_STATIC_LIBS="$(usex static-libs)"
+		-DDEAL_II_WITH_TBB=ON
 		-DDEAL_II_WITH_TASKFLOW=ON
 		-DDEAL_II_WITH_TRILINOS="$(usex trilinos)"
 	)
 
-	# Do a little dance for purely cosmetic "QA" reasons.
-	use opencascade && mycmakeargs+=( -DOPENCASCADE_DIR="${CASROOT}" )
+	use opencascade && mycmakeargs+=(
+		-DCMAKE_PREFIX_PATH="/usr/$(get_libdir)/opencascade"
+	)
 
-	# Do a little dance for purely cosmetic "QA" reasons. The build system
+	# Do a little dance for purely cosmetic QA reasons. The build system
 	# does query for the highest instruction set first and skips the other
 	# variables if a "higher" variant is set
 	if use cpu_flags_x86_avx512f; then
 		mycmakeargs+=( -DDEAL_II_HAVE_AVX512=yes )
+		append-cxxflags "-mavx512f"
 	elif use cpu_flags_x86_avx; then
 		mycmakeargs+=( -DDEAL_II_HAVE_AVX=yes )
+		append-cxxflags "-mavx2"
 	elif use cpu_flags_x86_avx; then
 		mycmakeargs+=( -DDEAL_II_HAVE_SSE2=yes )
+		append-cxxflags "-msse2"
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
@@ -148,7 +155,7 @@ src_install() {
 			's#"http://www.dealii.org/images/steps/developer/\(step-.*\)"#"images/\1"#g' \
 			"${BUILD_DIR}"/doc/doxygen/deal.II/step_*.html || die "sed failed"
 	fi
-	cmake-utils_src_install
+	cmake_src_install
 
 	# decompress the installed example sources:
 	use examples && docompress -x /usr/share/doc/${PF}/examples

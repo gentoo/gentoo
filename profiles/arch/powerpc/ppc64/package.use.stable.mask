@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,14 +17,28 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-03-07)
+# sys-cluster/torque not marked stable on ppc64
+sys-cluster/openmpi openmpi_rm_pbs
+
+# Marek Szuba <marecki@gentoo.org> (2021-12-31)
+# No stable dev-ruby/{thor,tty-editor} on this arch yet
+# and there are many dependencies to go through before there are
+app-text/htmltidy test
+
+# Georgy Yakovlev <gyakovlev@gentoo.org (2021-06-25)
+# ceph is not going to be stable on ppc64
+# https://bugs.gentoo.org/798744
+sys-block/tgt rbd
+
+# Sam James <sam@gentoo.org> (2021-02-06)
+# Drags in too much unstable GNOME for now
+# bug #727572
+mail-client/claws-mail gdata
+
 # Michał Górny <mgorny@gentoo.org> (2020-08-07)
 # Unstable test deps.
 dev-cpp/eigen test
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-06-04)
-# dev-python/pygtk is broken, bug #716294; Bugs #706500, #710160
-# Stable-mask all revdeps, all of them are pending cleanup already.
-media-gfx/gimp python
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-05-03)
 # media-libs/libheif not stable, bugs #717242, #720438
@@ -37,4 +51,3 @@ media-gfx/inkscape cdr visio wpg
 # Pacho Ramos <pacho@gentoo.org> (2014-07-02)
 # Mask due Gnome3 not going to be stabilized on this arch
 gnome-base/gvfs google
->=x11-libs/gtk+-3.12.2 cloudprint

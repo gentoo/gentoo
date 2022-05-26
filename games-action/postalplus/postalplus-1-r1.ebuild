@@ -1,20 +1,19 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils cdrom
+EAPI=7
+
+inherit cdrom desktop wrapper
 
 DESCRIPTION="Ultraviolent and controversial game featuring the Postal Dude"
-HOMEPAGE="http://www.lokigames.com/products/postal/"
-SRC_URI=""
+HOMEPAGE="https://www.lokigames.com/products/postal/"
 
 LICENSE="LOKI-EULA"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE=""
 RESTRICT="strip bindist"
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
 src_install() {
 	local dir=/opt/${PN}

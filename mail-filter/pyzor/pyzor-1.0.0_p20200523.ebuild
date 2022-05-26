@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit distutils-r1
 
 COMMIT="f46159bd6519cebcebf59e9334a7920371111d75"
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/SpamExperts/pyzor/archive/${COMMIT}.tar.gz -> ${P}.t
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 
 IUSE="doc gdbm gevent mysql pyzord redis test"
 RESTRICT="!test? ( test )"

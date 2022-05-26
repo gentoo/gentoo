@@ -1,9 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{7..9} )
+DISTUTILS_USE_SETUPTOOLS="rdepend"
 
 inherit distutils-r1
 
@@ -14,7 +15,7 @@ SRC_URI="https://github.com/audreyr/cookiecutter/archive/${PV}.tar.gz -> ${P}.ta
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -27,8 +28,7 @@ RDEPEND=">=dev-python/binaryornot-0.4.4[${PYTHON_USEDEP}]
 	>=dev-python/python-slugify-4.0.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.23.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10[${PYTHON_USEDEP}]
-	<dev-python/markupsafe-2.0.0[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+	<dev-python/markupsafe-2.0.0[${PYTHON_USEDEP}]"
 
 DEPEND="${RDEPEND}
 	test? (

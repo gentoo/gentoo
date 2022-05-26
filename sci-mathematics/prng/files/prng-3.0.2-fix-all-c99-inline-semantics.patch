@@ -1,0 +1,404 @@
+diff '--color=auto' -Naurd prng-3.0.2.orig/src/anti.c prng-3.0.2/src/anti.c
+--- prng-3.0.2.orig/src/anti.c	2001-11-06 22:31:36.000000000 +0300
++++ prng-3.0.2/src/anti.c	2021-05-19 00:41:03.400665843 +0300
+@@ -82,7 +82,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline double prng_anti_get_next(struct prng *gen)
++double prng_anti_get_next(struct prng *gen)
+ {
+   return (1. - prng_get_next(gen->data.anti_data.prng));
+ }
+@@ -114,7 +114,7 @@
+  *
+  */
+ /*
+-inline prng_num prng_anti_get_next_int(struct prng *gen)
++prng_num prng_anti_get_next_int(struct prng *gen)
+ ... undefined !!!
+ */
+ 
+diff '--color=auto' -Naurd prng-3.0.2.orig/src/compound.c prng-3.0.2/src/compound.c
+--- prng-3.0.2.orig/src/compound.c	2001-11-06 22:34:51.000000000 +0300
++++ prng-3.0.2/src/compound.c	2021-05-19 00:41:03.395665825 +0300
+@@ -105,7 +105,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline double prng_compound_get_next(struct prng *gen)
++double prng_compound_get_next(struct prng *gen)
+ {
+   int i;
+   double sum = 0.0;
+diff '--color=auto' -Naurd prng-3.0.2.orig/src/cons.c prng-3.0.2/src/cons.c
+--- prng-3.0.2.orig/src/cons.c	2001-11-06 22:35:29.000000000 +0300
++++ prng-3.0.2/src/cons.c	2021-05-19 00:41:03.392665813 +0300
+@@ -89,7 +89,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline double prng_con_get_next(struct prng *gen)
++double prng_con_get_next(struct prng *gen)
+ {
+   return(prng_get_next(gen->data.con_data.prng));
+ }
+@@ -119,7 +119,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline prng_num prng_con_get_next_int(struct prng *gen)
++prng_num prng_con_get_next_int(struct prng *gen)
+ {
+   return(prng_get_next_int(gen->data.con_data.prng));
+ }
+diff '--color=auto' -Naurd prng-3.0.2.orig/src/dicg.c prng-3.0.2/src/dicg.c
+--- prng-3.0.2.orig/src/dicg.c	2001-11-06 22:35:50.000000000 +0300
++++ prng-3.0.2/src/dicg.c	2021-05-19 00:41:03.398665836 +0300
+@@ -441,7 +441,7 @@
+  * Algorithm by Karin Schaber and Otmar Lendl.
+  *
+  */                                                  
+-inline prng_num prng_dicg_multiply(int k,prng_num c, prng_num d)
++prng_num prng_dicg_multiply(int k,prng_num c, prng_num d)
+ {
+   int i;
+   struct mtable *t;
+@@ -593,7 +593,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline prng_num prng_dicg_get_next_int(struct prng *gen) /* DUMMY !!!!*/
++prng_num prng_dicg_get_next_int(struct prng *gen) /* DUMMY !!!!*/
+ {
+   s_prng_num inv, current, prod;
+ 
+@@ -619,7 +619,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline double prng_dicg_get_next(struct prng *gen)
++double prng_dicg_get_next(struct prng *gen)
+ {
+   return(prng_dicg_get_next_int(gen) * gen->data.dicg_data.inv_p);
+ }
+diff '--color=auto' -Naurd prng-3.0.2.orig/src/eicg.c prng-3.0.2/src/eicg.c
+--- prng-3.0.2.orig/src/eicg.c	2001-11-06 22:36:04.000000000 +0300
++++ prng-3.0.2/src/eicg.c	2021-05-19 00:41:03.405665862 +0300
+@@ -120,7 +120,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline prng_num prng_eicg_get_next_int(struct prng *gen)
++prng_num prng_eicg_get_next_int(struct prng *gen)
+ {
+   prng_num old;
+ 
+@@ -138,7 +138,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline double prng_eicg_get_next(struct prng *gen)
++double prng_eicg_get_next(struct prng *gen)
+ {
+   return(prng_eicg_get_next_int(gen) * gen->data.eicg_data.inv_p);
+ }
+diff '--color=auto' -Naurd prng-3.0.2.orig/src/external.c prng-3.0.2/src/external.c
+--- prng-3.0.2.orig/src/external.c	2001-11-06 22:36:35.000000000 +0300
++++ prng-3.0.2/src/external.c	2021-05-19 00:41:03.391665810 +0300
+@@ -139,7 +139,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline prng_num prng_tt800_get_next_int(struct prng *gen)
++prng_num prng_tt800_get_next_int(struct prng *gen)
+ {
+ unsigned int y;
+ struct tt800_state *g;
+@@ -189,7 +189,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline double prng_tt800_get_next(struct prng *gen)
++double prng_tt800_get_next(struct prng *gen)
+ {
+ return(prng_tt800_get_next_int(gen) * TT800_INV_MOD);
+ }
+@@ -223,7 +223,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline prng_num prng_ctg_get_next_int(struct prng *gen)
++prng_num prng_ctg_get_next_int(struct prng *gen)
+ {
+ unsigned int b;
+ struct ctg_state *g;
+@@ -247,7 +247,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline double prng_ctg_get_next(struct prng *gen)
++double prng_ctg_get_next(struct prng *gen)
+ {
+ return(prng_ctg_get_next_int(gen) * 2.3283064365e-10);
+ }
+@@ -285,7 +285,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline prng_num prng_mrg_get_next_int(struct prng *gen)
++prng_num prng_mrg_get_next_int(struct prng *gen)
+ {
+ int h,p1,p5;
+ struct mrg_state *g;
+@@ -312,7 +312,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline double prng_mrg_get_next(struct prng *gen)
++double prng_mrg_get_next(struct prng *gen)
+ {
+ return(prng_mrg_get_next_int(gen) * 4.656612873077393e-10);
+ }
+@@ -350,7 +350,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline prng_num prng_cmrg_get_next_int(struct prng *gen)
++prng_num prng_cmrg_get_next_int(struct prng *gen)
+ {
+ int h, p12, p13, p21, p23;
+ struct cmrg_state *g;
+@@ -385,7 +385,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline double prng_cmrg_get_next(struct prng *gen)
++double prng_cmrg_get_next(struct prng *gen)
+ {
+ return(prng_cmrg_get_next_int(gen) * 4.656612873077393e-10);
+ }
+diff '--color=auto' -Naurd prng-3.0.2.orig/src/file.c prng-3.0.2/src/file.c
+--- prng-3.0.2.orig/src/file.c	2001-11-06 22:36:54.000000000 +0300
++++ prng-3.0.2/src/file.c	2021-05-19 00:41:03.404665858 +0300
+@@ -88,7 +88,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline double prng_afile_get_next(struct prng *gen)
++double prng_afile_get_next(struct prng *gen)
+ {
+   double d;
+   char line[64];
+@@ -135,7 +135,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline double prng_bfile_get_next(struct prng *gen)
++double prng_bfile_get_next(struct prng *gen)
+ {
+   prng_num n;
+ 
+diff '--color=auto' -Naurd prng-3.0.2.orig/src/icg.c prng-3.0.2/src/icg.c
+--- prng-3.0.2.orig/src/icg.c	2001-11-06 22:37:07.000000000 +0300
++++ prng-3.0.2/src/icg.c	2021-05-19 00:41:03.407665870 +0300
+@@ -110,7 +110,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline prng_num prng_icg_get_next_int(struct prng *gen)
++prng_num prng_icg_get_next_int(struct prng *gen)
+ {
+   s_prng_num inv, current, prod;
+   
+@@ -135,7 +135,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline double prng_icg_get_next(struct prng *gen)
++double prng_icg_get_next(struct prng *gen)
+ {
+   return(prng_icg_get_next_int(gen) * gen->data.icg_data.inv_p);
+ }
+diff '--color=auto' -Naurd prng-3.0.2.orig/src/lcg.c prng-3.0.2/src/lcg.c
+--- prng-3.0.2.orig/src/lcg.c	2001-11-06 22:37:29.000000000 +0300
++++ prng-3.0.2/src/lcg.c	2021-05-19 00:41:03.394665821 +0300
+@@ -111,7 +111,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline prng_num prng_lcg_get_next_int(struct prng *gen)
++prng_num prng_lcg_get_next_int(struct prng *gen)
+ {
+   s_prng_num ax, current;
+ 
+@@ -130,7 +130,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline double prng_lcg_get_next(struct prng *gen)
++double prng_lcg_get_next(struct prng *gen)
+ {
+   return(prng_lcg_get_next_int(gen) * gen->data.lcg_data.inv_p);
+ }
+diff '--color=auto' -Naurd prng-3.0.2.orig/src/meicg.c prng-3.0.2/src/meicg.c
+--- prng-3.0.2.orig/src/meicg.c	2001-11-06 22:37:40.000000000 +0300
++++ prng-3.0.2/src/meicg.c	2021-05-19 00:41:03.396665828 +0300
+@@ -106,7 +106,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline prng_num prng_meicg_get_next_int(struct prng *gen)
++prng_num prng_meicg_get_next_int(struct prng *gen)
+ {
+   s_prng_num an, sum, inv, n;
+ 
+@@ -144,7 +144,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline double prng_meicg_get_next(struct prng *gen)
++double prng_meicg_get_next(struct prng *gen)
+ {
+   return(prng_meicg_get_next_int(gen) * gen->data.meicg_data.inv_p);
+ }
+diff '--color=auto' -Naurd prng-3.0.2.orig/src/mt19937.c prng-3.0.2/src/mt19937.c
+--- prng-3.0.2.orig/src/mt19937.c	2001-11-06 22:38:08.000000000 +0300
++++ prng-3.0.2/src/mt19937.c	2021-05-19 00:45:22.720661481 +0300
+@@ -137,7 +137,7 @@
+  *	seed: used for initializing array
+  *
+  */
+-inline void prng_mt19937_seed( struct prng *gen, prng_num seed )
++void prng_mt19937_seed( struct prng *gen, prng_num seed )
+ {
+   int i;
+ 
+@@ -172,7 +172,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline prng_num prng_mt19937_get_next_int(struct prng *gen)
++prng_num prng_mt19937_get_next_int(struct prng *gen)
+ {
+ #define MT  gen->data.mt19937_data.mt
+ #define MTI gen->data.mt19937_data.mti
+@@ -220,7 +220,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline double prng_mt19937_get_next(struct prng *gen)
++double prng_mt19937_get_next(struct prng *gen)
+ {
+   /* reals: [0,1)-interval   */
+   /* multiply with 1. / 2^32 */
+diff '--color=auto' -Naurd prng-3.0.2.orig/src/prng.h prng-3.0.2/src/prng.h
+--- prng-3.0.2.orig/src/prng.h	2001-11-06 23:04:41.000000000 +0300
++++ prng-3.0.2/src/prng.h	2021-05-19 00:40:49.381612020 +0300
+@@ -406,7 +406,7 @@
+ /* INLINE fnk def. for mult_mod, I don't know if this works for non-GCC */
+ 
+ #ifdef __GNUC__
+-extern __inline__ prng_num mult_mod(prng_num s,struct mult_mod_struct *mm)
++static inline prng_num mult_mod(prng_num s,struct mult_mod_struct *mm)
+ {
+ s_prng_num s_tmp;
+ 
+diff '--color=auto' -Naurd prng-3.0.2.orig/src/qcg.c prng-3.0.2/src/qcg.c
+--- prng-3.0.2.orig/src/qcg.c	2001-11-06 22:39:13.000000000 +0300
++++ prng-3.0.2/src/qcg.c	2021-05-19 00:41:03.403665855 +0300
+@@ -107,7 +107,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline prng_num prng_qcg_get_next_int(struct prng *gen)
++prng_num prng_qcg_get_next_int(struct prng *gen)
+ {
+   s_prng_num current, sum, square, q_term, l_term;
+ 
+@@ -150,7 +150,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline double prng_qcg_get_next(struct prng *gen)
++double prng_qcg_get_next(struct prng *gen)
+ {
+   return(prng_qcg_get_next_int(gen) * gen->data.qcg_data.inv_p);
+ }
+diff '--color=auto' -Naurd prng-3.0.2.orig/src/sub.c prng-3.0.2/src/sub.c
+--- prng-3.0.2.orig/src/sub.c	2001-11-06 22:39:06.000000000 +0300
++++ prng-3.0.2/src/sub.c	2021-05-19 00:41:03.402665851 +0300
+@@ -89,7 +89,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline double prng_sub_get_next(struct prng *gen)
++double prng_sub_get_next(struct prng *gen)
+ {
+   prng_num j;
+   double tmp;
+@@ -127,7 +127,7 @@
+  *      gen:  Pointer to a struct prng.
+  *
+  */
+-inline prng_num prng_sub_get_next_int(struct prng *gen)
++prng_num prng_sub_get_next_int(struct prng *gen)
+ {
+   prng_num j,tmp;
+ 
+diff '--color=auto' -Naurd prng-3.0.2.orig/src/support.c prng-3.0.2/src/support.c
+--- prng-3.0.2.orig/src/support.c	2001-11-06 23:03:26.000000000 +0300
++++ prng-3.0.2/src/support.c	2021-05-19 00:40:49.381612020 +0300
+@@ -449,52 +449,6 @@
+ 		}
+ }
+ 
+-#ifndef __cplusplus
+-/* 
+- * Modular Multiplication. Uses the precalculated values from mult_mod_setup.
+- *
+- *
+- * Input: 
+- *	s	An prng_num. 
+- *	mm	pointer to a struct mult_mod_struct initialized 
+- *		by mult_mod_setup.
+- *
+- * Output:
+- *      (mm->a*s) mod mm->p
+- *
+- */
+-prng_num mult_mod(prng_num s,struct mult_mod_struct *mm)
+-{
+-s_prng_num s_tmp;
+-
+-switch(mm->algorithm)
+-	{
+-	case PRNG_MM_ZERO:	return(0);
+-			break;
+-	case PRNG_MM_ONE:	return(s);
+-			break;
+-	case PRNG_MM_SIMPLE: return((s * mm->a) % mm->p );
+-			break;
+-	case PRNG_MM_SCHRAGE:
+-			s_tmp = mm->a * ( s % mm->q ) - 
+-				mm->r * ( s / mm->q );
+-			if (s_tmp < 0) s_tmp += mm->p;
+-			return(s_tmp);
+-			break;
+-	case PRNG_MM_DECOMP: return(mult_mod_generic(s,mm->a,mm->p)); 
+-			break;
+-#ifdef HAVE_LONGLONG
+-	case PRNG_MM_LL:	return(mult_mod_ll(s,mm->a,mm->p));
+-			break;
+-#endif
+-	case PRNG_MM_POW2:	return((s*mm->a) & mm->mask);
+-			break;
+-	}
+-/* not reached */
+-return(0);
+-}
+-#endif
+-
+ 
+ /* 
+  * Modular Multiplication: Decomposition method (from L'Ecuyer & Cote)

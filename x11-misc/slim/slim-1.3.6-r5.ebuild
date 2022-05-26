@@ -1,19 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit cmake-utils pam eutils systemd versionator
+inherit cmake pam systemd
 
 DESCRIPTION="Simple Login Manager"
 HOMEPAGE="https://sourceforge.net/projects/slim.berlios/"
 SRC_URI="mirror://sourceforge/project/${PN}.berlios/${P}.tar.gz"
+KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 sparc x86"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 sparc x86"
-IUSE="branding pam consolekit"
-REQUIRED_USE="consolekit? ( pam )"
+IUSE="branding pam"
 
 RDEPEND="x11-libs/libXmu
 	x11-libs/libX11
@@ -23,13 +22,10 @@ RDEPEND="x11-libs/libXmu
 	media-libs/libpng:0=
 	virtual/jpeg:=
 	x11-apps/sessreg
-	consolekit? ( sys-auth/consolekit
-		sys-apps/dbus )
-	pam? (	sys-libs/pam
-		!x11-misc/slimlock )"
+	pam? ( sys-libs/pam )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	x11-base/xorg-proto"
+BDEPEND="virtual/pkgconfig"
 PDEPEND="branding? ( >=x11-themes/slim-themes-1.2.3a-r3 )"
 
 PATCHES=(
@@ -46,15 +42,12 @@ PATCHES=(
 	"${FILESDIR}"/${P}-drop-zlib.patch
 	"${FILESDIR}"/${P}-freetype.patch
 	"${FILESDIR}"/${P}-envcpy-bad-pointer-arithmetic.patch
+	"${FILESDIR}"/${PN}-1.3.6-add-missing-libgen_h.patch
+	"${FILESDIR}"/${PN}-1.3.6-gcc11.patch
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
-
-	if use elibc_FreeBSD; then
-		sed -i -e 's/"-DHAVE_SHADOW"/"-DNEEDS_BASENAME"/' CMakeLists.txt \
-			|| die
-	fi
+	cmake_src_prepare
 
 	if use branding; then
 		sed -i -e 's/  default/  slim-gentoo-simple/' slim.conf || die
@@ -63,15 +56,15 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use pam USE_PAM)
-		$(cmake-utils_use consolekit USE_CONSOLEKIT)
+		-DUSE_PAM=$(usex pam)
+		-DUSE_CONSOLEKIT=OFF
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use pam ; then
 		pamd_mimic system-local-login slim auth account session
@@ -97,11 +90,12 @@ pkg_postinst() {
 	# a previous emerge attempt failed in the middle of qmerge.
 	local rv=none
 	for rv in ${REPLACING_VERSIONS} ; do
-		if version_is_at_least "1.3.2-r7" "${rv}" ; then
+		if ver_test "1.3.2-r7" -le "${rv}" ; then
 			rv=newer
 			break;
 		fi
-		if version_is_at_least "1.0" "${rv}"  ; then
+
+		if ver_test "1.0" -le "${rv}"  ; then
 			rv=older
 			break;
 		fi
@@ -128,11 +122,8 @@ pkg_postinst() {
 		elog "/usr/share/doc/${PF} and change your login_cmd in /etc/slim.conf"
 		elog "accordingly."
 		elog
-		ewarn "Please note that slim supports consolekit directly.  Please do not use any "
-		ewarn "old work-arounds (including calls to 'ck-launch-session' in xinitrc scripts)"
-		ewarn "and enable USE=\"consolekit\" instead."
-		ewarn
 	fi
+
 	if ! use pam; then
 		elog "You have merged ${PN} without USE=\"pam\", this will cause ${PN} to fall back to"
 		elog "the console when restarting your window manager. If this is not desired, then"

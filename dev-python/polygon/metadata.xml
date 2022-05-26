@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
@@ -10,4 +10,8 @@
 		Python bindings for gpc, the General Polygon Clipping Library by
 		Alan Murta and some extensions written in C and pure Python.
 	</longdescription>
+	<upstream>
+		<remote-id type="pypi">polygon</remote-id>
+		<remote-id type="github">jraedler/Polygon3</remote-id>
+	</upstream>
 </pkgmetadata>

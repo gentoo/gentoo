@@ -1,0 +1,114 @@
+https://gitlab.gnome.org/GNOME/network-manager-sstp/-/merge_requests/44
+
+From abe1e3aa7e2cd71e979035168ffa54268bb26b9b Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 10 May 2022 19:29:26 +0000
+Subject: [PATCH] configure.ac: fix bashism, use x prefix
+
+configure scripts are expected to work with POSIX compliant shells providing
+/bin/sh so use = instead of == to work with both Bash and other shells.
+
+Also, throw in x"$var" == xvar guards (x) because it's a lot easier to just
+have them and avoid pitfalls when a variable ends up not defined and having
+a syntax error, even though it's not needed in every context depending
+on shell.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -59,7 +59,7 @@ AC_CACHE_CHECK([if pppd/mppe.h defines mppe_keys_xyz() functions], ac_cv_working
+             return 0;]])],
+     [ac_cv_working_mppe_h=yes],
+     [ac_cv_working_mppe_h=no])])
+-if test $ac_cv_working_mppe_h = yes; then
++if test $ac_cv_working_mppe_h = xyes; then
+     AC_DEFINE(HAVE_MPPE_KEYS_FUNCTIONS, 1,
+         [Define to 1 if you have <pppd/mppe.h> and it declares the mppe_keys_xyz() functions])
+ fi
+@@ -70,11 +70,11 @@ dnl  Support for the auth notify callback in pppd >= 2.4.9
+ AC_ARG_WITH([pppd-auth-notify-support],
+     [AS_HELP_STRING([--with-pppd-auth-notify-support], [is the auth-notifier supported by pppd])])
+ if test x"$with_pppd_auth_notify_support" != xyes; then
+-    if test x"$pppd_pkgconfig_support" == xyes; then        # pkgconfig implies pppd > 2.4.9
++    if test x"$pppd_pkgconfig_support" = xyes; then        # pkgconfig implies pppd > 2.4.9
+         AS_VAR_SET([with_pppd_auth_notify_support],[yes])
+     fi
+ fi
+-if test x"$with_pppd_auth_notify_support" == xyes; then
++if test x"$with_pppd_auth_notify_support" = xyes; then
+     AC_DEFINE(USE_PPPD_AUTH_HOOK,1,[Define if pppd has support for client side authentication complete notification])
+ else
+     AS_VAR_SET([with_pppd_auth_notify_support],[no])
+@@ -85,11 +85,11 @@ dnl Enable support for extended tls settings in pppd > 2.4.9
+ AC_ARG_WITH([pppd-ext-tls-settings-suppport],
+     [AS_HELP_STRING([--with-pppd-ext-tls-settings-support], [is settings such as pkcs12, tls-verify-method, tls-verify-key-usage and max-tls-version supported in by pppd])])
+ if test x"$with_pppd_ext_tls_settings_support" != xyes; then
+-    if test x"$pppd_pkgconfig_support" == xyes; then        # pkgconfig implies pppd > 2.4.9
++    if test x"$pppd_pkgconfig_support" = xyes; then        # pkgconfig implies pppd > 2.4.9
+         AS_VAR_SET([with_pppd_ext_tls_settings_support],[yes])
+     fi
+ fi
+-if test x"$with_pppd_ext_tls_settings_support" == xyes; then
++if test x"$with_pppd_ext_tls_settings_support" = xyes; then
+     AC_DEFINE(USE_PPP_EXT_TLS_SETTINGS,1,[Define if pppd has support for extended tls-settings like pkcs12, tls-verify-method, tls-verify-key-usage, max-tls-version])
+ else
+     AS_VAR_SET([with_pppd_ext_tls_settings_support],[no])
+@@ -102,7 +102,7 @@ AC_ARG_WITH([pppd-plugin-dir],
+ if test -n "$with_pppd_plugin_dir" ; then
+ 	PPPD_PLUGIN_DIR="$with_pppd_plugin_dir"
+ else
+-    if test x"$pppd_pkgconfig_support" == xyes; then
++    if test x"$pppd_pkgconfig_support" = xyes; then
+         PKG_CHECK_VAR(PPPD_PLUGIN_DIR, [pppd], [plugindir])
+     else
+ 	    PPPD_PLUGIN_DIR="${libdir}/pppd/2.4.7"
+@@ -134,29 +134,29 @@ dnl
+ AC_ARG_WITH(gnome, AS_HELP_STRING([--without-gnome], [Build NetworkManager-sstp without GNOME support, e.g. vpn service only]), [], [with_gnome_specified=no])
+ AC_ARG_WITH(gtk4, AS_HELP_STRING([--with-gtk4], [Build NetworkManager-sstp with libnma-gtk4 support]), [], [with_gtk4_specified=no])
+ AC_ARG_WITH(libnm-glib, AS_HELP_STRING([--with-libnm-glib], [Build NetworkManager-sstp with libnm-glib comatibility (deprecated)]), [], [with_libnm_glib_specified=no])
+-if test "$with_libnm_glib_specified" != no -a "$with_libnm_glib" != no; then
+-	if test "$with_gnome_specified" != no -a "$with_gnome" == no; then
++if test x"$with_libnm_glib_specified" != xno -a x"$with_libnm_glib" != xno; then
++	if test x"$with_gnome_specified" != xno -a x"$with_gnome" = xno; then
+ 		AC_MSG_ERROR(Building --with-libnm-glib conflicts with --without-gnome)
+ 	fi
+ fi
+-if test "$with_gnome" != no; then
++if test x"$with_gnome" != xno; then
+ 	with_gnome=yes
+ fi
+-if test "$with_gtk4_specified" == no; then
++if test x"$with_gtk4_specified" = xno; then
+ 	with_gtk4=no
+ fi
+-if test "$with_gtk4" != yes; then
++if test x"$with_gtk4" != xyes; then
+ 	with_gtk4=no
+ fi
+-if test "$with_libnm_glib_specified" == no; then
++if test x"$with_libnm_glib_specified" = xno; then
+ 	with_libnm_glib=no
+ fi
+-if test "$with_libnm_glib" != yes; then
++if test x"$with_libnm_glib" != xyes; then
+ 	with_libnm_glib=no
+ fi
+-AM_CONDITIONAL(WITH_GNOME, test "$with_gnome" != no)
+-AM_CONDITIONAL(WITH_GTK4, test "$with_gtk4" != no)
+-AM_CONDITIONAL(WITH_LIBNM_GLIB, test "$with_libnm_glib" != no)
++AM_CONDITIONAL(WITH_GNOME, test x"$with_gnome" != xno)
++AM_CONDITIONAL(WITH_GTK4, test x"$with_gtk4" != xno)
++AM_CONDITIONAL(WITH_LIBNM_GLIB, test x"$with_libnm_glib" != xno)
+ AC_ARG_ENABLE(absolute-paths, AS_HELP_STRING([--enable-absolute-paths], [Use absolute paths to in .name files. Useful for development. (default is no)]))
+ 
+ GETTEXT_PACKAGE=NetworkManager-sstp
+@@ -223,7 +223,7 @@ NM_COMPILER_WARNINGS([yes])
+ 
+ NM_PLUGIN_DIR="$libdir/NetworkManager"
+ AC_SUBST(NM_PLUGIN_DIR)
+-if test x"$enable_absolute_paths" == x"yes"; then
++if test x"$enable_absolute_paths" = x"yes"; then
+ 	NM_PLUGIN_DIR_NAME_FILE="$NM_PLUGIN_DIR/"
+ else
+ 	enable_absolute_paths=no
+GitLab

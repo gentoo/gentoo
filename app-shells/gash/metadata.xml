@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>scheme@gentoo.org</email>
+    <name>Gentoo Scheme Project</name>
+  </maintainer>
+  <longdescription>
+    Gash is a POSIX-compatible shell written in Guile Scheme. It provides both
+    the shell interface, as well as a Guile library for parsing shell scripts.
+    Gash is designed to bootstrap Bash as part of the Guix bootstrap process.
+  </longdescription>
+</pkgmetadata>

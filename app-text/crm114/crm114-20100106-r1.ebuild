@@ -1,12 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic toolchain-funcs
 
 MY_P="${P}-BlameMichelson.src"
-
 DESCRIPTION="A powerful text processing tool, mainly used for spam filtering"
 HOMEPAGE="http://crm114.sourceforge.net/"
 SRC_URI="http://crm114.sourceforge.net/tarballs/${MY_P}.tar.gz"
@@ -14,12 +13,11 @@ SRC_URI="http://crm114.sourceforge.net/tarballs/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="examples mew mimencode nls normalizemime static test"
+IUSE="examples mew mimencode nls normalizemime test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	static? ( dev-libs/tre[static-libs] )
-	!static? ( dev-libs/tre )
+	dev-libs/tre
 	mew? ( app-emacs/mew )
 	mimencode? ( net-mail/metamail )
 	normalizemime? ( mail-filter/normalizemime )"
@@ -49,9 +47,7 @@ src_prepare() {
 src_compile() {
 	# Restore GNU89 inline semantics to
 	# emit external symbols, bug 571062
-	append-cflags -std=gnu89
-
-	use static && append-ldflags -static -static-libgcc
+	append-cflags -std=gnu89 -fcommon
 
 	emake CC="$(tc-getCC)"
 }
@@ -77,5 +73,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "The spam-filter CRM files are installed in ${EROOT%/}/usr/share/${PN}."
+	elog "The spam-filter CRM files are installed in ${EROOT}/usr/share/${PN}."
 }

@@ -1,0 +1,92 @@
+Thanks-to: samuel.bauer
+https://bugs.gentoo.org/669598
+--- a/src/main.c
++++ b/src/main.c
+@@ -102,7 +102,7 @@
+ 
+ int immedstart;
+ int quit;
+-static int statx[6],staty[6];
++static int stat_x[6],stat_y[6];
+ int diffx,diffy;   /* coordinates of the difficulty level display box */
+ int ts_x0,ts_x1;   /* x-coordinates of the top-ten names(ts_x0) & scores(ts_x1) */
+ int no_of_sets;
+@@ -191,14 +191,14 @@
+ 
+ static void game_drawscore(player_t *p, int bgvcpy) {
+   if(bgvcpy) {
+-    v_drawscrarea(bmp_game[players-1].data,statx[1],staty[1],
++    v_drawscrarea(bmp_game[players-1].data,stat_x[1],stat_y[1],
+                 strpixlen("0000000",FONT_HIGHLIGHTED),font[FONT_HIGHLIGHTED].ch);
+   }
+   t_align=T_LEFT;
+-  v_printf(statx[1],staty[1],FONT_HIGHLIGHTED,"%07d",p->score);
++  v_printf(stat_x[1],stat_y[1],FONT_HIGHLIGHTED,"%07d",p->score);
+   
+   if(bgvcpy) {
+-    virt_cpyarea(statx[1],staty[1],
++    virt_cpyarea(stat_x[1],stat_y[1],
+                strpixlen("00000000",FONT_HIGHLIGHTED),font[FONT_HIGHLIGHTED].ch);
+   }
+ }
+@@ -206,28 +206,28 @@
+ static void game_drawlevelnum(int bgvcpy) {
+ 
+   if(bgvcpy) {
+-    v_drawscrarea(bmp_game[players-1].data,statx[3],staty[3],
++    v_drawscrarea(bmp_game[players-1].data,stat_x[3],stat_y[3],
+                 strpixlen("00",FONT_HIGHLIGHTED),font[FONT_HIGHLIGHTED].ch);
+   }
+   t_align=T_LEFT;
+-  v_printf(statx[3],staty[3],FONT_HIGHLIGHTED,"%02d",level);
++  v_printf(stat_x[3],stat_y[3],FONT_HIGHLIGHTED,"%02d",level);
+   
+   if(bgvcpy) {
+-    virt_cpyarea(statx[3],staty[3],
++    virt_cpyarea(stat_x[3],stat_y[3],
+                strpixlen("00",FONT_HIGHLIGHTED),font[FONT_HIGHLIGHTED].ch);
+   }
+ }
+ 
+ static void game_drawblocksleft(int bgvcpy) {
+   if(bgvcpy) {
+-    v_drawscrarea(bmp_game[players-1].data,statx[5],staty[5],
++    v_drawscrarea(bmp_game[players-1].data,stat_x[5],stat_y[5],
+                 strpixlen("00",FONT_HIGHLIGHTED),font[FONT_HIGHLIGHTED].ch);
+   }
+   t_align=T_LEFT;
+-  v_printf(statx[5],staty[5],FONT_HIGHLIGHTED,"%02d",blocksleft);
++  v_printf(stat_x[5],stat_y[5],FONT_HIGHLIGHTED,"%02d",blocksleft);
+   
+   if(bgvcpy) {
+-    virt_cpyarea(statx[5],staty[5],
++    virt_cpyarea(stat_x[5],stat_y[5],
+                strpixlen("00",FONT_HIGHLIGHTED),font[FONT_HIGHLIGHTED].ch);
+   }
+ }
+@@ -371,9 +371,9 @@
+ void game_statistics_draw(void) {
+   if(players==1) {
+     t_align=T_LEFT;
+-    v_print(statx[0],staty[0],FONT_NORMAL,"Score:");
+-    v_print(statx[2],staty[2],FONT_NORMAL,"Level:");
+-    v_print(statx[4],staty[4],FONT_NORMAL,"Blocks:");
++    v_print(stat_x[0],stat_y[0],FONT_NORMAL,"Score:");
++    v_print(stat_x[2],stat_y[2],FONT_NORMAL,"Level:");
++    v_print(stat_x[4],stat_y[4],FONT_NORMAL,"Blocks:");
+     game_drawlevelnum(0);
+     game_drawblocksleft(0);
+     game_drawscore(&(player[0]),0);
+@@ -1530,9 +1530,9 @@
+   fscanf(f,"%d %d %d %d %d %d",&nx_x0[0],&nx_y0[0],
+   &nx_x0[1],&nx_y0[1],&nx_x0[2],&nx_y0[2]);
+   
+-  fscanf(f,"%d %d %d %d",&statx[0],&staty[0],&statx[1],&staty[1]);
+-  fscanf(f,"%d %d %d %d",&statx[2],&staty[2],&statx[3],&staty[3]);
+-  fscanf(f,"%d %d %d %d",&statx[4],&staty[4],&statx[5],&staty[5]);
++  fscanf(f,"%d %d %d %d",&stat_x[0],&stat_y[0],&stat_x[1],&stat_y[1]);
++  fscanf(f,"%d %d %d %d",&stat_x[2],&stat_y[2],&stat_x[3],&stat_y[3]);
++  fscanf(f,"%d %d %d %d",&stat_x[4],&stat_y[4],&stat_x[5],&stat_y[5]);
+   
+   fscanf(f,"%d %d",&diffx,&diffy);
+   fscanf(f,"%d %d",&ts_x0,&ts_x1);

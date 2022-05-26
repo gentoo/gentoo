@@ -1,0 +1,25 @@
+https://git.alpinelinux.org/aports/tree/main/linux-headers/0003-remove-inclusion-of-sysinfo.h-in-kernel.h.patch
+https://bugs.gentoo.org/828726
+
+[Adapted to drop the const.h change as things may rely on it like btrfs.]
+
+From: rofl0r <retnyg@gmx.net>
+Date: Mon, 20 Jan 2014 21:31:34 +0100
+Subject: [PATCH 3/3] remove inclusion of sysinfo.h in kernel.h
+
+the declaration of struct sysinfo clashes with userspace.
+it's not quite clear why that header was included from kernel.h,
+as none of its functionality is needed.
+
+--- a/include/uapi/linux/kernel.h
++++ b/include/uapi/linux/kernel.h
+@@ -2,7 +2,9 @@
+ #ifndef _UAPI_LINUX_KERNEL_H
+ #define _UAPI_LINUX_KERNEL_H
+ 
++#ifdef __GLIBC__
+ #include <linux/sysinfo.h>
++#endif
+ #include <linux/const.h>
+ 
+ #endif /* _UAPI_LINUX_KERNEL_H */

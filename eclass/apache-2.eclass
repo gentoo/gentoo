@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: apache-2.eclass
@@ -10,14 +10,15 @@
 # This eclass handles apache-2.x ebuild functions such as LoadModule generation
 # and inter-module dependency checking.
 
-inherit autotools flag-o-matic multilib ssl-cert user toolchain-funcs eapi7-ver
+LUA_COMPAT=( lua5-{1..4} )
+inherit autotools flag-o-matic lua-single multilib ssl-cert user toolchain-funcs
 
 [[ ${CATEGORY}/${PN} != www-servers/apache ]] \
 	&& die "Do not use this eclass with anything else than www-servers/apache ebuilds!"
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5)
-		die "This eclass is banned for EAPI<6"
+	0|1|2|3|4|5|6)
+		die "This eclass is banned for EAPI<7"
 	;;
 esac
 
@@ -25,8 +26,6 @@ esac
 case $(ver_cut 1-2) in
 	2.4)
 		DEFAULT_MPM_THREADED="event" #509922
-		CDEPEND=">=dev-libs/apr-1.5.1:=
-			!www-apache/mod_macro" #492578 #477702
 	;;
 	*)
 		die "Unknown MAJOR.MINOR apache version."
@@ -37,7 +36,7 @@ esac
 # INTERNAL VARIABLES
 # ==============================================================================
 
-# @ECLASS-VARIABLE: GENTOO_PATCHNAME
+# @ECLASS_VARIABLE: GENTOO_PATCHNAME
 # @DESCRIPTION:
 # This internal variable contains the prefix for the patch tarball.
 # Defaults to the full name and version (including revision) of the package.
@@ -46,7 +45,7 @@ esac
 # GENTOO_PATCHNAME="gentoo-${PN}-${PV}${ORIG_PR:+-${ORIG_PR}}"
 [[ -n "${GENTOO_PATCHNAME}" ]] || GENTOO_PATCHNAME="gentoo-${PF}"
 
-# @ECLASS-VARIABLE: GENTOO_PATCHDIR
+# @ECLASS_VARIABLE: GENTOO_PATCHDIR
 # @DESCRIPTION:
 # This internal variable contains the working directory where patches and config
 # files are located.
@@ -88,10 +87,21 @@ SRC_URI="mirror://apache/httpd/httpd-${PV}.tar.bz2
 # built-in modules
 
 IUSE_MPMS="${IUSE_MPMS_FORK} ${IUSE_MPMS_THREAD}"
-IUSE="${IUSE} debug doc gdbm ldap libressl selinux ssl static suexec threads"
+IUSE="${IUSE} debug doc gdbm ldap selinux ssl static suexec +suexec-caps suexec-syslog split-usr threads"
 
 for module in ${IUSE_MODULES} ; do
-	IUSE="${IUSE} apache2_modules_${module}"
+	case ${module} in
+		# Enable http2 by default (bug #563452)
+		http2)
+			IUSE+=" +apache2_modules_${module}"
+		;;
+		systemd)
+			IUSE+=" systemd"
+		;;
+		*)
+			IUSE+=" apache2_modules_${module}"
+		;;
+	esac
 done
 
 _apache2_set_mpms() {
@@ -121,22 +131,51 @@ _apache2_set_mpms() {
 _apache2_set_mpms
 unset -f _apache2_set_mpms
 
-DEPEND="${CDEPEND}
+# Dependencies
+RDEPEND="
 	dev-lang/perl
+	>=dev-libs/apr-1.5.1:=
 	=dev-libs/apr-util-1*:=[gdbm=,ldap?]
 	dev-libs/libpcre
+	virtual/libcrypt:=
+	apache2_modules_brotli? ( >=app-arch/brotli-0.6.0:= )
 	apache2_modules_deflate? ( sys-libs/zlib )
+	apache2_modules_http2? (
+		>=net-libs/nghttp2-1.2.1
+		kernel_linux? ( sys-apps/util-linux )
+	)
+	apache2_modules_lua? ( ${LUA_DEPS} )
+	apache2_modules_md? ( >=dev-libs/jansson-2.10 )
 	apache2_modules_mime? ( app-misc/mime-types )
+	apache2_modules_proxy_http2? (
+		>=net-libs/nghttp2-1.2.1
+		kernel_linux? ( sys-apps/util-linux )
+	)
+	apache2_modules_session_crypto? (
+		dev-libs/apr-util[openssl]
+	)
 	gdbm? ( sys-libs/gdbm:= )
 	ldap? ( =net-nds/openldap-2* )
+	selinux? ( sec-policy/selinux-apache )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.0.2:0= )
-		libressl? ( dev-libs/libressl:0= )
+		>=dev-libs/openssl-1.0.2:0=
+		kernel_linux? ( sys-apps/util-linux )
 	)
-	!=www-servers/apache-1*"
-RDEPEND+=" ${DEPEND}
-	selinux? ( sec-policy/selinux-apache )"
+	systemd? ( sys-apps/systemd )
+"
+
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+	suexec? ( suexec-caps? ( sys-libs/libcap ) )
+"
 PDEPEND="~app-admin/apache-tools-${PV}"
+
+REQUIRED_USE+="
+	apache2_modules_http2? ( ssl )
+	apache2_modules_lua? ( ${LUA_REQUIRED_USE} )
+	apache2_modules_md? ( ssl )
+"
 
 S="${WORKDIR}/httpd-${PV}"
 
@@ -161,7 +200,7 @@ unset -f _apache2_set_module_depends
 # INTERNAL FUNCTIONS
 # ==============================================================================
 
-# @ECLASS-VARIABLE: MY_MPM
+# @ECLASS_VARIABLE: MY_MPM
 # @DESCRIPTION:
 # This internal variable contains the selected MPM after a call to setup_mpm()
 
@@ -227,12 +266,12 @@ check_module_critical() {
 	fi
 }
 
-# @ECLASS-VARIABLE: MY_CONF
+# @ECLASS_VARIABLE: MY_CONF
 # @DESCRIPTION:
 # This internal variable contains the econf options for the current module
 # selection after a call to setup_modules()
 
-# @ECLASS-VARIABLE: MY_MODS
+# @ECLASS_VARIABLE: MY_MODS
 # @DESCRIPTION:
 # This internal variable contains a sorted, space separated list of currently
 # selected modules after a call to setup_modules()
@@ -254,7 +293,10 @@ setup_modules() {
 	MY_MODS=()
 
 	if use ldap ; then
-		MY_CONF+=( --enable-authnz_ldap=${mod_type} --enable-ldap=${mod_type} )
+		MY_CONF+=(
+			--enable-authnz_ldap=${mod_type}
+			--enable-ldap=${mod_type}
+		)
 		MY_MODS+=( ldap authnz_ldap )
 	else
 		MY_CONF+=( --disable-authnz_ldap --disable-ldap )
@@ -302,7 +344,12 @@ setup_modules() {
 		MY_CONF+=( --disable-suexec )
 	fi
 
-	for x in ${IUSE_MODULES} ; do
+	if use systemd ; then
+		MY_CONF+=( --enable-systemd=${mod_type} )
+		MY_MODS+=( systemd )
+	fi
+
+	for x in ${IUSE_MODULES/ systemd} ; do
 		if use apache2_modules_${x} ; then
 			MY_CONF+=( --enable-${x}=${mod_type} )
 			MY_MODS+=( ${x} )
@@ -405,13 +452,8 @@ apache-2_pkg_setup() {
 	elog "Make sure CONFIG_SYSVIPC=y is set."
 	elog
 
-	if use userland_BSD; then
-		elog "On BSD systems you need to add the following line to /boot/loader.conf:"
-		elog "  accf_http_load=\"YES\""
-		if use ssl ; then
-			elog "  accf_data_load=\"YES\""
-		fi
-		elog
+	if use apache2_modules_lua ; then
+		lua-single_pkg_setup
 	fi
 }
 
@@ -457,7 +499,7 @@ apache-2_src_prepare() {
 
 	# Don't rename configure.in _before_ any possible user patches!
 	if [[ -f "configure.in" ]] ; then
-		elog "Renaming configure.in to configure.ac"
+		einfo "Renaming configure.in to configure.ac"
 		mv configure.{in,ac} || die
 	fi
 
@@ -608,7 +650,6 @@ apache-2_src_install() {
 	mv -f "${ED%/}/var/www/localhost/icons" \
 		"${ED%/}/usr/share/apache2/icons" || die
 	rm -rf "${ED%/}/var/www/localhost/" || die
-	eend $?
 
 	# set some sane permissions for suexec
 	if use suexec ; then

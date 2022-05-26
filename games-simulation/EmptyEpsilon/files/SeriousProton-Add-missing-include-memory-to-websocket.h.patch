@@ -1,0 +1,23 @@
+From 9fe127233eae44f14e37900c3f54e8a305d2f161 Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Sun, 22 May 2022 12:36:08 +0200
+Subject: [PATCH] Add missing #include <memory> to websocket.h
+
+std::unique_ptr, which is used for the 'socket' field, is defined in
+<memory> but currently not included. Starting with GCC 12, the missing
+include will cause a compilation error.
+
+The missing include was found by Gentoo's CI and reported as
+https://bugs.gentoo.org/846935
+--- a/src/io/http/websocket.h
++++ b/src/io/http/websocket.h
+@@ -5,6 +5,9 @@
+ #include <io/network/tcpSocket.h>
+ #include <unordered_map>
+ 
++#ifndef EMSCRIPTEN
++#include <memory>
++#endif
+ 
+ namespace sp {
+ namespace io {

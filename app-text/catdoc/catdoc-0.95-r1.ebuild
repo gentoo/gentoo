@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ SRC_URI="http://ftp.wagner.pp.ru/pub/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc x86 ~amd64-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ~ppc x86 ~amd64-linux ~ppc-macos ~x64-solaris ~x86-solaris"
 IUSE="tk"
 
 DEPEND="tk? ( >=dev-lang/tk-8.1 )"
@@ -31,7 +31,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --with-install-root="${D}" \
+	econf \
 		$(use_with tk wish "${EPREFIX}"/usr/bin/wish) \
 		$(use_enable tk wordview)
 }
@@ -41,7 +41,7 @@ src_compile() {
 }
 
 src_install() {
-	default
+	emake install installroot="${ED}"
 
 	# dev-libs/libxls and app-text/catdoc both provide xls2cvs
 	if [[ -e ${ED}/usr/bin/xls2csv ]]; then

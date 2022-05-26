@@ -1,0 +1,8 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2021-02-17)
+# Not ported to ppc32. See ALL_.*_SUPPORTED_ARCH
+# in compiler-rt/cmake/. Bug #708344
+sys-libs/compiler-rt
+sys-libs/compiler-rt-sanitizers

@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/708526
+Taken from: https://github.com/sahlberg/libiscsi/pull/307
+Author: wanghonghao <wanghonghao@bytedance.com>
+--- a/include/iser-private.h
++++ b/include/iser-private.h
+@@ -159,7 +159,7 @@ struct iser_tx_desc {
+ struct iser_cm_hdr {
+ 	uint8_t      flags;
+ 	uint8_t      rsvd[3];
+-} __packed;
++};
+ 
+ struct iser_pdu {
+ 	struct iscsi_pdu              iscsi_pdu;

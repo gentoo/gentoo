@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,6 @@ fi
 inherit ${SCM} cmake
 
 if [ "${PV#9999}" != "${PV}" ] ; then
-	KEYWORDS=""
 	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~arm"
@@ -22,16 +21,10 @@ fi
 DESCRIPTION="URDF (U-Robot Description Format) library"
 HOMEPAGE="http://ros.org/wiki/urdf"
 LICENSE="BSD"
-SLOT="0/1"
+SLOT="0/3"
 IUSE=""
 
 RDEPEND=">=dev-libs/urdfdom_headers-1.0.0
 	>=dev-libs/console_bridge-0.3:=
-	dev-libs/tinyxml[stl]
-	dev-libs/boost:=[threads]"
+	dev-libs/tinyxml[stl]"
 DEPEND="${RDEPEND}"
-
-src_prepare() {
-	sed -i -e 's/set(CMAKE_INSTALL_LIBDIR/#/' CMakeLists.txt || die
-	cmake_src_prepare
-}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription lang="en">
+    Provides queues can be used both as a first-in last-out (FILO) and
+    as a first-in first-out (FIFO) stack, i.e. elements can be added to
+    the front or back of the queue, and can be removed from the
+    front. (This type of data structure is sometimes called an
+    "output-restricted deque".)
+  </longdescription>
+  <stabilize-allarches/>
+</pkgmetadata>

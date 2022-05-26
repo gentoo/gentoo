@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,16 +9,15 @@ LICENSE="GPL-2"
 HOMEPAGE="http://www.elixar.com/"
 SRC_URI="http://www.elixar.com/${P}.tar.gz"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 RDEPEND="
 	net-libs/libpcap
 	sys-libs/ncurses:=
 "
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
 PATCHES=(
 	"${FILESDIR}"/${P}-sniffd.patch
 	"${FILESDIR}"/${P}-off-by-one.patch
@@ -41,8 +40,8 @@ src_prepare() {
 src_compile() {
 	# parallel make (bug #297331)
 	emake -C src -j1 \
-		CC=$(tc-getCC) \
-		CXX=$(tc-getCXX) \
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
 		CFLAGS="${CFLAGS}" \
 		CXXFLAGS="${CXXFLAGS}" \
 		LDFLAGS="${LDFLAGS}"

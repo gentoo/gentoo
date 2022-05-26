@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,16 +10,16 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://bitbucket.org/multicoreware/x265_git/"
 	S=${WORKDIR}/${P}/source
 else
-	SRC_URI="https://bitbucket.org/multicoreware/x265/downloads/${PN}_${PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+	SRC_URI="https://bitbucket.org/multicoreware/x265_git/downloads/${PN}_${PV}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Library for encoding video streams into the H.265/HEVC format"
-HOMEPAGE="http://x265.org/ https://bitbucket.org/multicoreware/x265/wiki/Home"
+HOMEPAGE="http://x265.org/ https://bitbucket.org/multicoreware/x265_git/"
 
 LICENSE="GPL-2"
 # subslot = libx265 soname
-SLOT="0/195"
+SLOT="0/199"
 IUSE="+10bit +12bit cpu_flags_arm_neon cpu_flags_ppc_vsx2 numa pic test"
 RESTRICT="!test? ( test )"
 
@@ -31,9 +31,9 @@ BDEPEND="
 	abi_x86_64? ( ${ASM_DEPEND} )"
 
 PATCHES=(
-	"${FILESDIR}/arm-r1.patch"
-	"${FILESDIR}/neon.patch"
-	"${FILESDIR}/x265-3.3-ppc64.patch"
+	"${FILESDIR}/${PN}-9999-arm.patch"
+	#"${FILESDIR}/neon.patch"
+	"${FILESDIR}/${PN}-9999-ppc64.patch"
 	"${FILESDIR}/tests.patch"
 	"${FILESDIR}/test-ns.patch"
 )
@@ -105,6 +105,7 @@ x265_variant_src_configure() {
 				-DEXPORT_C_API=OFF
 				-DENABLE_SHARED=OFF
 				-DENABLE_CLI=OFF
+				-DENABLE_HDR10_PLUS=ON
 			)
 			if [[ ${ABI} = x86 ]] ; then
 				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
@@ -161,6 +162,7 @@ multilib_src_configure() {
 		$(multilib_is_native_abi || echo "-DENABLE_CLI=OFF")
 		-DENABLE_PIC=ON
 		-DENABLE_LIBNUMA=$(usex numa ON OFF)
+		-DGIT_ARCHETYPE=1 #814116
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 	)
 

@@ -1,10 +1,99 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2022-05-17)
+# Force on jpeg & png for now until build system fixes are made
+# by upstream. The CMake port is new so it's fairly expected
+# to have a few bumps. bug #844751.
+=sci-libs/gdal-3.5.0-r3 jpeg png
+
+# Esteve Varela Colominas <esteve.varela@gmail.com> (2022-02-19)
+# Use the jemalloc allocator for telegram, as recommended by upstream,
+# to reduce memory usage, at least on glibc.
+# See the ebuild for more info.
+net-im/telegram-desktop jemalloc
+
+# Sam James <sam@gentoo.org> (2022-02-11)
+# Always build with PIE-default, just like GCC.
+sys-devel/clang pie
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-01-13)
+# Force to use installed openjdk{,-bin} for bootstrapping
+dev-java/openjdk:11 system-bootstrap
+dev-java/openjdk:17 system-bootstrap
+
+# Joonas Niilola <juippis@gentoo.org> (2022-01-08)
+# -xft broken, investigate in bug #830777
+~x11-misc/xscreensaver-6.02 xft
+
+# Michał Górny <mgorny@gentoo.org> (2021-11-04)
+# Enable all LLVM targets unconditionally.  Unfortunately, disabling
+# targets tend to break reverse dependencies (e.g. Rust) and we are yet
+# to find a clean way of resolving that.  Compared to the damage
+# potential, the increase of build time is a minor problem.  Users who
+# really insist of building a smaller system can un-force the flags
+# at their own responsibility.
+>=sys-devel/clang-13.0.1_rc llvm_targets_AArch64 llvm_targets_AMDGPU
+>=sys-devel/clang-13.0.1_rc llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
+>=sys-devel/clang-13.0.1_rc llvm_targets_Hexagon llvm_targets_Lanai
+>=sys-devel/clang-13.0.1_rc llvm_targets_MSP430 llvm_targets_Mips
+>=sys-devel/clang-13.0.1_rc llvm_targets_NVPTX llvm_targets_PowerPC
+>=sys-devel/clang-13.0.1_rc llvm_targets_RISCV llvm_targets_Sparc
+>=sys-devel/clang-13.0.1_rc llvm_targets_SystemZ llvm_targets_WebAssembly
+>=sys-devel/clang-13.0.1_rc llvm_targets_X86 llvm_targets_XCore
+>=sys-devel/clang-14 llvm_targets_VE
+>=sys-devel/llvm-13.0.1_rc llvm_targets_AArch64 llvm_targets_AMDGPU
+>=sys-devel/llvm-13.0.1_rc llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
+>=sys-devel/llvm-13.0.1_rc llvm_targets_Hexagon llvm_targets_Lanai
+>=sys-devel/llvm-13.0.1_rc llvm_targets_MSP430 llvm_targets_Mips
+>=sys-devel/llvm-13.0.1_rc llvm_targets_NVPTX llvm_targets_PowerPC
+>=sys-devel/llvm-13.0.1_rc llvm_targets_RISCV llvm_targets_Sparc
+>=sys-devel/llvm-13.0.1_rc llvm_targets_SystemZ llvm_targets_WebAssembly
+>=sys-devel/llvm-13.0.1_rc llvm_targets_X86 llvm_targets_XCore
+>=sys-devel/llvm-14 llvm_targets_VE
+
+# Sam James <sam@gentoo.org> (2021-03-08)
+# Broken without USE=unicode
+# Needs to link with libiconv, bug #774507
+app-text/vilistextum unicode
+
+# Sam James <sam@gentoo.org> (2021-03-03)
+# A large number of packages still need /usr/bin/python{,2,3}
+# including meson.eclass consumers.
+# This is largely a QA smoketesting flag, and as such, should
+# not be enabled by users.
+dev-lang/python-exec native-symlinks
+
+# Lars Wendler <polynomial-c@gentoo.org> (2020-12-31)
+# Force-enable unicode. We're in 2020 and this should really be available
+# everywhere.
+# See this mailing list thread:
+# https://archives.gentoo.org/gentoo-user/message/efc647eb07fb8c99b2619e3402281edd
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-01-01)
+# Add more packages
+#
+# a) no additional deps
+sys-libs/readline unicode
+app-editors/nano unicode
+app-admin/metalog unicode
+app-arch/unzip unicode
+app-arch/zip unicode
+sys-apps/util-linux unicode
+sys-process/procps unicode
+www-client/lynx unicode
+#
+# b) using libidn
+app-text/ghostscript-gpl unicode
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-01)
 # sys-boot/udk is being removed, and newest revision of refind does not
 # support it already.
 sys-boot/refind gnuefi
+
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2020-12-06)
+# Doesn't build without X. Not removing IUSE from ebuild yet in hope that
+# https://github.com/TomenetGame/tomenet/issues/14 will be fixed.
+>=games-roguelike/tomenet-4.7.3 X
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-08)
 # Ensure tools flag is enabled for @system set
@@ -22,6 +111,7 @@ sys-devel/gcc-config cc-wrappers
 #    https://wiki.gentoo.org/wiki/Project:Toolchain/use_native_symlinks
 sys-devel/binutils-config native-symlinks
 sys-devel/gcc-config      native-symlinks
+sys-devel/gcc-config      cc-wrappers
 
 # Michał Górny <mgorny@gentoo.org> (2017-12-30)
 # Require user configs unless we supply our own .config.
@@ -45,12 +135,12 @@ sys-libs/libcxx libcxxabi
 # the flag.
 sys-kernel/vanilla-kernel initramfs
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2019-11-06)
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-14)
 # Upstream plans to drop libcrypt.so.1/crypt.h from glibc
-# distribution and rely on external providers lke libxcrypt.
-# Gentoo will follow the suit but today we are not ready.
-# Unmask at your risk. Bug #699422 tracks the effort.
-sys-libs/glibc crypt
+# distribution and rely on external providers like libxcrypt.
+# Here we are following that path too.
+<sys-libs/glibc-2.33-r2 crypt
+>=sys-libs/libxcrypt-4.4.23-r1 system compat
 
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # <dev-scheme/guile-2 is package.mask'd, so force USE=guile2
@@ -82,10 +172,12 @@ gnome-base/gnome-desktop seccomp
 app-misc/tracker-miners seccomp
 net-libs/webkit-gtk seccomp
 
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2018-11-19)
+# iasl is not keyworded on many platforms yet
+sys-firmware/seabios binary
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-09-11)
 # All glibc versions that include RPC code are masked now.
-dev-perl/Lab-VXI11 libtirpc
-net-analyzer/argus libtirpc
 net-analyzer/snort libtirpc
 net-firewall/conntrack-tools libtirpc
 net-fs/autofs libtirpc
@@ -93,7 +185,7 @@ net-misc/netkit-bootparamd libtirpc
 sci-astronomy/esomidas libtirpc
 sys-cluster/glusterfs libtirpc
 
-# NP-Hardass <NP-Hardass@gentoo.org> (2017-04-10)
+# Adam Feldman <NP-Hardass@gentoo.org> (2017-04-10)
 # Always force patch on appropriate variant
 app-emulation/wine-staging staging
 
@@ -107,10 +199,6 @@ media-tv/kodi system-ffmpeg
 # UDK. Forcing use of gnu-efi until it's more stable
 # (probably after stabilization of refind-0.11.4).
 sys-boot/refind gnuefi
-
-# Mike Gilbert <floppym@gentoo.org> (2016-10-13)
-# Python without threads breaks in many ways.
-dev-lang/python threads
 
 # Maciej Mrozowski <reavertm@gentoo.org> (2016-09-01)
 # Workaround until resolved upstream (bug #586840)
@@ -134,11 +222,10 @@ app-shells/bash:0 readline
 # Michał Górny <mgorny@gentoo.org> (2012-10-14)
 # Force-enable all PYTHON_TARGETS for python-exec to avoid using private
 # API. Please remember to keep it in sync with python_targets.desc.
-dev-lang/python-exec python_targets_python2_7
-dev-lang/python-exec python_targets_python3_6
-dev-lang/python-exec python_targets_python3_7
 dev-lang/python-exec python_targets_python3_8
 dev-lang/python-exec python_targets_python3_9
+dev-lang/python-exec python_targets_python3_10
+dev-lang/python-exec python_targets_python3_11
 dev-lang/python-exec python_targets_pypy3
 
 # Zac Medico <zmedico@gentoo.org> (2010-10-20)
@@ -148,12 +235,6 @@ dev-lang/python-exec python_targets_pypy3
 # bug #315615, and makes subshell die support more robust
 # (so that repoman's ebuild.nesteddie check is irrelevant).
 sys-apps/portage ipc
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
-# Python should use wide Unicode implementation by default.
-# Switching of "wide-unicode" USE flag changes ABI of Python
-# and requires reinstallation of many Python modules.
-dev-lang/python wide-unicode
 
 # Peter Alfredsen <loki_val@gentoo.org> (2009-04-11)
 # Forcing w.r.t. bug 265336. When unicode use-flag is

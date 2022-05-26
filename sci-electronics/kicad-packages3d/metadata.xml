@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>zoltan@sinustrom.info</email>
 		<name>Zoltan Puskas</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -18,9 +18,6 @@
 	<use>
 		<flag name="occ">
 			Use <pkg>sci-libs/opencascade</pkg> for data exchange
-		</flag>
-		<flag name="oce">
-			Use <pkg>sci-libs/oce</pkg> for data exchange
 		</flag>
 	</use>
 	<upstream>

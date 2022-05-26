@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit distutils-r1
 
@@ -30,12 +30,14 @@ RDEPEND="dev-python/django[${PYTHON_USEDEP}]
 	dev-python/django-haystack[${PYTHON_USEDEP}]
 	dev-python/django-extensions[${PYTHON_USEDEP}]
 	dev-python/flufl-lock[${PYTHON_USEDEP}]
-	dev-python/django-q[${PYTHON_USEDEP}]"
+	dev-python/django-q[${PYTHON_USEDEP}]
+	dev-python/whoosh[${PYTHON_USEDEP}]
+	dev-lang/sassc"
 
-BDEPEND="test? (
+BDEPEND="dev-python/isort[${PYTHON_USEDEP}]
+	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/whoosh[${PYTHON_USEDEP}]
-		dev-python/beautifulsoup[${PYTHON_USEDEP}]
+		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/django-debug-toolbar[${PYTHON_USEDEP}]
 	)"
 

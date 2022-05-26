@@ -1,3 +1,6 @@
+# Copyright 2020-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 # This file specifies keyword level for profiles
 # https://www.gentoo.org/glep/glep-0072.html
 #
@@ -14,26 +17,25 @@ arm		stable
 arm64		stable
 hppa		stable
 ia64		testing
+loong		testing
 m68k		testing
 mips		testing
 ppc		stable
 ppc64		stable
 riscv		testing
-s390		stable
+s390		testing
 sparc		stable
 x86		stable
 
 # Prefix keywords
-ppc-aix		testing
 amd64-linux	testing
 arm-linux	testing
 arm64-linux	testing
 ppc64-linux	testing
 x86-linux	testing
+arm64-macos	testing
 ppc-macos	testing
-x86-macos	testing
 x64-macos	testing
-m68k-mint	testing
 sparc-solaris	testing
 sparc64-solaris	testing
 x64-solaris	testing
@@ -41,6 +43,11 @@ x86-solaris	testing
 x64-winnt	testing
 x86-winnt	testing
 x64-cygwin	testing
-x86-cygwin	testing
 
 # vim: set ts=8 noet ft=conf:
+
+# Local Variables:
+# mode: conf-space
+# tab-width: 8
+# indent-tabs-mode: t
+# End:

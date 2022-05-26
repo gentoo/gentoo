@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>gnome@gentoo.org</email>
@@ -17,6 +17,7 @@
       PulseAudio plugin enabled. This ensures that clients supporting
       ALSA only will use PulseAudio.
     </flag>
+    <flag name="daemon">Build the pulseaudio binary (not-needed for pipewire-pulse)</flag>
     <flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for giving each session a PA client</flag>
     <flag name="gconf">
       Ensure <pkg>gnome-base/gconf</pkg> is present for pulseaudio GConf
@@ -72,6 +73,16 @@
     </flag>
     <flag name="ofono-headset">
       Build with oFono HFP backend for bluez 5, requires <pkg>net-misc/ofono</pkg>.
+    </flag>
+    <flag name="gstreamer">
+      Build with support for gstreamer including ability to use bluetooth codecs.
+      For bluetooth codecs see USE ldac and aptx.
+    </flag>
+    <flag name="aptx">
+      aptX (HD) over Bluetooth (many Android compatible headphones), requires <pkg>media-plugins/gst-plugins-openaptx</pkg>.
+    </flag>
+    <flag name="ldac">
+      LDAC over Bluetooth (primarily Sony headphones), requires <pkg>media-plugins/gst-plugins-ldac</pkg>.
     </flag>
   </use>
 </pkgmetadata>

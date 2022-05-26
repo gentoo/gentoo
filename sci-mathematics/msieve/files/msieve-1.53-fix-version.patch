@@ -1,5 +1,3 @@
-diff --git a/common/driver.c b/common/driver.c
-index ffecfa9..3e1da78 100644
 --- a/common/driver.c
 +++ b/common/driver.c
 @@ -189,10 +189,9 @@ void msieve_run(msieve_obj *obj) {
@@ -15,8 +13,6 @@ index ffecfa9..3e1da78 100644
  	start_time = time(NULL);
  	if (obj->flags & MSIEVE_FLAG_LOG_TO_STDOUT) {
  		printf("%s", ctime(&start_time));
-diff --git a/demo.c b/demo.c
-index a882732..ec3e869 100644
 --- a/demo.c
 +++ b/demo.c
 @@ -81,9 +81,8 @@ void get_random_seeds(uint32 *seed1, uint32 *seed2) {

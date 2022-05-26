@@ -1,0 +1,28 @@
+--- a/lib/tre-parse.c
++++ b/lib/tre-parse.c
+@@ -582,16 +582,23 @@
+ tre_parse_int(const tre_char_t **regex, const tre_char_t *regex_end)
+ {
+   int num = -1;
++  int overflow = 0;
+   const tre_char_t *r = *regex;
+   while (r < regex_end && *r >= L'0' && *r <= L'9')
+     {
+       if (num < 0)
+ 	num = 0;
+-      num = num * 10 + *r - L'0';
++      if (num <= (INT_MAX - 9) / 10) {
++        num = num * 10 + *r - L'0';
++      } else {
++        /* This digit could cause an integer overflow. We do not return
++         * directly; instead, consume all remaining digits. */
++        overflow = 1;
++      }
+       r++;
+     }
+   *regex = r;
+-  return num;
++  return overflow ? -1 : num;
+ }
+ 
+ 

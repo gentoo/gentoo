@@ -1,0 +1,10 @@
+diff --git a/src/compress/compress.pro b/src/compress/compress.pro
+index 14ec502..3105a7f 100644
+--- a/src/compress/compress.pro
++++ b/src/compress/compress.pro
+@@ -11,5 +11,3 @@ HEADERS += \
+         qtcompressglobal.h
+ 
+ SOURCES += qzip.cpp
+-
+-include(../3rdparty/zlib.pri)

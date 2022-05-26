@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>scheme@gentoo.org</email>
+    <name>Gentoo Scheme Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    This is a library for GNU Guile to create language bindings via GObject
+    Introspection.
+    Guile GI has two primary components:
+    - The gi scheme modules: guile modules that provide functionality to
+    dynamically generate Scheme API from GObject typelib files.
+    - libguile-gi.so or libguile-gi.dll: a compiled module that contains glue
+    code to interface with GObject.
+    To create bindings, use the use-typelibs syntax found in the (gi) library.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/spk121/guile-gi/issues/</bugs-to>
+    <remote-id type="github">spk121/guile-gi</remote-id>
+  </upstream>
+</pkgmetadata>

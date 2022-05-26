@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>cluster@gentoo.org</email>
@@ -10,4 +10,7 @@
 		<flag name="json">compile with signal to dump configuration and stats as JSON.</flag>
 		<flag name="regex">compile with support for regex in health checks</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">acassen/keepalived</remote-id>
+	</upstream>
 </pkgmetadata>

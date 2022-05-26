@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://docbook.org/xml/${PV}/${MY_P}.zip"
 
 LICENSE="docbook"
 SLOT="${PV}"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 RDEPEND=">=app-text/docbook-xsl-stylesheets-1.65
@@ -52,14 +52,18 @@ pkg_preinst() {
 pkg_postinst() {
 	local backup=${T}/xml-docbook-${PV}.cat
 	local real=${EROOT}/etc/sgml/xml-docbook-${PV}.cat
+
 	if ! cmp -s "${backup}" "${real}"; then
 		cp "${backup}" "${real}" || die
 	fi
-	build-docbook-catalog
+
+	# See bug #816303 for rationale behind die
+	build-docbook-catalog || die "Failed to regenerate docbook catalog. Is /run mounted?"
 	sgml-catalog-r1_pkg_postinst
 }
 
 pkg_postrm() {
-	build-docbook-catalog
+	# See bug #816303 for rationale behind die
+	build-docbook-catalog || die "Failed to regenerate docbook catalog. Is /run mounted?"
 	sgml-catalog-r1_pkg_postrm
 }

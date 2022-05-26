@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>java@gentoo.org</email>
@@ -8,7 +8,11 @@
 	<longdescription>
 		The Apache PDFBox™ library is an open source Java tool for working with PDF documents. This project allows creation of new PDF documents, manipulation of existing documents and the ability to extract content from documents. Apache PDFBox also includes several command line utilities.
 	</longdescription>
+	<use>
+		<flag name="tools">Build and install pdfbox-tools</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">apache/pdfbox</remote-id>
+		<bugs-to>https://issues.apache.org/jira/browse/PDFBOX</bugs-to>
 	</upstream>
 </pkgmetadata>

@@ -1,0 +1,53 @@
+From bb00a649e0c1ac57718cd9971e7e6f933cb2dadd Mon Sep 17 00:00:00 2001
+From: Michael Wallner <mike@php.net>
+Date: Thu, 25 Nov 2021 07:43:14 +0100
+Subject: [PATCH] fix #81656: GCC-11 silently ignores -R
+
+---
+ build/php.m4 | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/build/php.m4 b/build/php.m4
+index 3af2b8b72d47..4697c5df9274 100644
+--- a/build/php.m4
++++ b/build/php.m4
+@@ -279,25 +279,25 @@ dnl
+ dnl Checks for -R, etc. switch.
+ dnl
+ AC_DEFUN([PHP_RUNPATH_SWITCH],[
+-AC_MSG_CHECKING([if compiler supports -R])
+-AC_CACHE_VAL(php_cv_cc_dashr,[
++AC_MSG_CHECKING([if compiler supports -Wl,-rpath,])
++AC_CACHE_VAL(php_cv_cc_rpath,[
+   SAVE_LIBS=$LIBS
+-  LIBS="-R /usr/$PHP_LIBDIR $LIBS"
+-  AC_LINK_IFELSE([AC_LANG_PROGRAM([], [])],[php_cv_cc_dashr=yes],[php_cv_cc_dashr=no])
++  LIBS="-Wl,-rpath,/usr/$PHP_LIBDIR $LIBS"
++  AC_LINK_IFELSE([AC_LANG_PROGRAM([], [])],[php_cv_cc_rpath=yes],[php_cv_cc_rpath=no])
+   LIBS=$SAVE_LIBS])
+-AC_MSG_RESULT([$php_cv_cc_dashr])
+-if test $php_cv_cc_dashr = "yes"; then
+-  ld_runpath_switch=-R
++AC_MSG_RESULT([$php_cv_cc_rpath])
++if test $php_cv_cc_rpath = "yes"; then
++  ld_runpath_switch=-Wl,-rpath,
+ else
+-  AC_MSG_CHECKING([if compiler supports -Wl,-rpath,])
+-  AC_CACHE_VAL(php_cv_cc_rpath,[
++  AC_MSG_CHECKING([if compiler supports -R])
++  AC_CACHE_VAL(php_cv_cc_dashr,[
+     SAVE_LIBS=$LIBS
+-    LIBS="-Wl,-rpath,/usr/$PHP_LIBDIR $LIBS"
+-    AC_LINK_IFELSE([AC_LANG_PROGRAM([], [])],[php_cv_cc_rpath=yes],[php_cv_cc_rpath=no])
++    LIBS="-R /usr/$PHP_LIBDIR $LIBS"
++    AC_LINK_IFELSE([AC_LANG_PROGRAM([], [])],[php_cv_cc_dashr=yes],[php_cv_cc_dashr=no])
+     LIBS=$SAVE_LIBS])
+-  AC_MSG_RESULT([$php_cv_cc_rpath])
+-  if test $php_cv_cc_rpath = "yes"; then
+-    ld_runpath_switch=-Wl,-rpath,
++  AC_MSG_RESULT([$php_cv_cc_dashr])
++  if test $php_cv_cc_dashr = "yes"; then
++    ld_runpath_switch=-R
+   else
+     dnl Something innocuous.
+     ld_runpath_switch=-L

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,9 +17,21 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-10-25)
+# Various unstable dependencies:
+# gnome-base/nautilus
+# app-misc/tracker
+# bug #758815
+app-cdr/brasero nautilus tracker
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
+# media-libs/libffado is not stable yet, which itself has unstable and
+# unmaintained/broken dependencies. bug #746722
+media-sound/jack2 ieee1394
+
 # Sam James <sam@gentoo.org> (2020-07-30)
-# glslang is not yet stable on ppc{,64}
-media-libs/mesa vulkan-overlay
+# vulkan-loader and glslang are not yet stable on ppc
+media-libs/mesa vulkan vulkan-overlay zink
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-12-12)
 # Needs stable net-libs/webkit-gtk, bug #684702
@@ -46,10 +58,7 @@ app-editors/emacs xwidgets
 dev-python/matplotlib qt5 test
 media-sound/pulseaudio qt5
 net-print/hplip qt5
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-03-15)
-# Requires media-libs/portmidi which is not stable
-media-sound/hydrogen portmidi
+dev-python/pyudev qt5
 
 # David Seifert <soap@gentoo.org> (2017-09-23)
 # MPI does not have stable keywords on ppc/ppc64
@@ -77,13 +86,6 @@ media-plugins/frei0r-plugins facedetect
 app-arch/p7zip kde
 dev-vcs/subversion kwallet
 x11-misc/xscreensaver new-login
-
-# Pacho Ramos <pacho@gentoo.org> (2015-09-06)
-# webkit-gtk is going to stay in ~all but amd64/x86
-# that are the only arches upstream is taking care
->=x11-libs/wxGTK-3.0.2.0-r1 webkit
-dev-util/glade webkit
-dev-python/wxpython webkit
 
 # Justin Lecher <jlec@gentoo.org> (2015-02-21)
 # Needs stable GNOME-3

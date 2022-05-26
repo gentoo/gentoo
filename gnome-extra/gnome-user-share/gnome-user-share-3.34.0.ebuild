@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,11 +6,11 @@ EAPI=7
 inherit gnome.org gnome2-utils meson multilib systemd xdg
 
 DESCRIPTION="Personal file sharing for the GNOME desktop"
-HOMEPAGE="https://git.gnome.org/browse/gnome-user-share"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-user-share"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 IUSE=""
 
 # FIXME: could libnotify be made optional ?
@@ -33,6 +33,7 @@ PATCHES=(
 	# that is problematic for us (bug #551012)
 	# https://bugzilla.gnome.org/show_bug.cgi?id=750525#c2
 	"${FILESDIR}"/${PN}-3.18.1-no-prefork.patch
+	"${FILESDIR}"/fix-build-with-meson-0.61.patch
 )
 
 src_configure() {

@@ -1,0 +1,34 @@
+From 7795e5fb4f7e2a79e15a9e5711149f71144e73c9 Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Fri, 13 May 2022 14:43:44 +0800
+Subject: [PATCH 5/8] applets/systemtray: disconnect KConfigLoader signal when
+ instance is about to be deleted
+
+When an applet is about to be deleted, it will save its config
+automatically, but in this case the system tray doesn't need to load the
+config again.
+
+BUG: 453726
+
+
+(cherry picked from commit 6da91d053b4f142277d60db4a1a17eded9249d11)
+---
+ applets/systemtray/systemtray.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/applets/systemtray/systemtray.cpp b/applets/systemtray/systemtray.cpp
+index 3b7f688a6..0d889b3f0 100644
+--- a/applets/systemtray/systemtray.cpp
++++ b/applets/systemtray/systemtray.cpp
+@@ -40,6 +40,8 @@ SystemTray::SystemTray(QObject *parent, const KPluginMetaData &data, const QVari
+ 
+ SystemTray::~SystemTray()
+ {
++    // When the applet is about to be deleted, delete now to avoid calling loadConfig()
++    delete m_settings;
+ }
+ 
+ void SystemTray::init()
+-- 
+2.35.1
+

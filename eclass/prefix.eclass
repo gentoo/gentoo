@@ -1,17 +1,26 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: prefix.eclass
 # @MAINTAINER:
 # Feel free to contact the Prefix team through <prefix@gentoo.org> if
 # you have problems, suggestions or questions.
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: Eclass to provide Prefix functionality
 # @DESCRIPTION:
 # Gentoo Prefix allows users to install into a self defined offset
 # located somewhere in the filesystem.  Prefix ebuilds require
 # additional functions and variables which are defined by this eclass.
 
-# @ECLASS-VARIABLE: EPREFIX
+case ${EAPI:-0} in
+	[5678]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ -z ${_PREFIX_ECLASS} ]]; then
+_PREFIX_ECLASS=1
+
+# @ECLASS_VARIABLE: EPREFIX
 # @DESCRIPTION:
 # The offset prefix of a Gentoo Prefix installation.  When Gentoo Prefix
 # is not used, ${EPREFIX} should be "".  Prefix Portage sets EPREFIX,
@@ -136,3 +145,5 @@ prefixify_ro() {
 	fi
 }
 # vim: tw=72:
+
+fi

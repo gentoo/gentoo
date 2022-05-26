@@ -1,0 +1,10 @@
+--- a/cmake/config.h.cmake.in
++++ b/cmake/config.h.cmake.in
+@@ -63,5 +63,7 @@
+ // strcasestr
+ #cmakedefine HAVE_STRCASESTR 1
+ 
++// glib-2.68.0+ compatibility
++#define GLIB_VERSION_MIN_REQUIRED (GLIB_VERSION_2_26)
+ 
+ #endif

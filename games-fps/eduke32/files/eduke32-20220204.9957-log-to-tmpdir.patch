@@ -1,0 +1,11 @@
+--- a/source/sw/src/game.cpp
++++ b/source/sw/src/game.cpp
+@@ -3467,7 +3467,7 @@
+     }
+     else
+ #endif
+-    OSD_SetLogFile(APPBASENAME ".log");
++    OSD_SetLogFile("/tmp/" APPBASENAME ".log");
+ 
+     wm_setapptitle(APPNAME);
+ 

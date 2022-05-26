@@ -1,13 +1,74 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Matt Turner <mattst88@gentoo.org> (2022-04-18)
+# app-text/nuspell is not keyworded
+app-text/enchant nuspell
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# Untested useflag on other arches, needs keywording
+media-video/ffmpeg vmaf
+
+# James Le Cuirot <chewi@gentoo.org> (2022-02-24)
+# These GRUB platforms are only for MIPS.
+sys-boot/grub -grub_platforms_loongson -grub_platforms_qemu-mips
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-01-17)
+# Mask AMF keyword on non-amd64 arches
+# It is unusable, for now, in other arches
+media-video/ffmpeg amf
+
+# Fabian Groffen <grobian@gentoo.org> (2022-02-13)
+# needs unkeyworded virtual/gsasl
+mail-client/mutt gsasl
+
+# Joshua Kinard <kumba@gentoo.org> (2022-01-17)
+# Mask USE 'doc' for dev-libs/libcbor to avoid dragging in
+# a massive set of texlive dependencies.  This copies m68k.
+# See Bug #709752.
+dev-libs/libcbor doc
+
+# Marek Szuba <marecki@gentoo.org> (2021-08-17)
+# net-wireless/rtl-sdr not keyworded here
+sys-apps/rng-tools rtlsdr
+
+# Joshua Kinard <kumba@gentoo.org> (2021-07-31)
+# Mask USE 'test' on MIPS for libgudev.  This requires dev-util/umockdev,
+# which has apparently never had a MIPS keyword.  Running the testsuite can be
+# revisited at a later date.  Bug #805083
+dev-libs/libgudev test
+
+# Matt Turner <mattst88@gentoo.org> (2021-06-10)
+# dev-python/django is not keyworded here
+dev-python/diskcache test
+
+# Joshua Kinard <kumba@gentoo.org> (2021-05-20)
+# mask USE 'test' on MIPS for setuptools  and jaraco-path due to
+# the very deep dependency chain that is enabled.  Will unmask
+# on a future date.
+# Bug #774216
+dev-python/jaraco-path test
+dev-python/setuptools test
+
+# Sam James <sam@gentoo.org> (2021-02-06)
+# media-sound/sndio is not yet keyworded here
+# bug #769098, bug #769122
+media-libs/openal sndio
+
+# Sam James <sam@gentoo.org> (2021-01-19)
+# Joonas Niilola <juippis@gentoo.org> (2021-01-10)
+# Test-dep needs keywording on multiple arches, best to just mask it
+# globally for now. Resolves issue by b5248bbb1b5
+# bug #766147
+app-text/enchant test
+
+# Joonas Niilola <juippis@gentoo.org> (2021-01-15)
+# Dependency not keyworded on this arch.
+app-text/enchant voikko
 
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan
 media-libs/mesa vulkan vulkan-overlay zink
-
-# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
-# Mask until dev-libs/libfido2 is keyworded
-net-misc/openssh security-key
 
 # Michał Górny <mgorny@gentoo.org> (2018-01-23)
 # USE=collab requires unkeyworded net-libs/loudmouth & dev-cpp/asio.
@@ -32,11 +93,6 @@ sys-kernel/mips-sources -ip27 -ip28 -ip30
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=opencl that is masked in this profile.
 net-misc/bfgminer adl lm-sensors
-
-# Michał Górny <mgorny@gentoo.org> (2017-06-28)
-# app-misc/dtach is not keyworded, and tests are restricted anyway, so
-# no point in pursuing it right now.
-app-shells/bash-completion test
 
 # Mart Raudsepp <leio@gentoo.org> (2017-05-27)
 # app-pda/libimobiledevice, app-pda/libplist and co not tested
@@ -96,11 +152,6 @@ dev-vcs/git mediawiki mediawiki-experimental
 media-libs/leptonica	webp
 app-text/tesseract	webp
 
-# Pacho Ramos <pacho@gentoo.org> (2013-09-01)
-# CONFIG_AUDITSYSCALL=y is not implemented, bug #438368
-sys-auth/consolekit pam
-sys-auth/pambase consolekit
-
 # Richard Brown <rbrown@gentoo.org> (2008-01-21)
 # Needs dev-ruby/builder, which isn't keyworded
 dev-ruby/rubygems server
@@ -145,10 +196,6 @@ net-fs/samba ads cluster
 # Matt Turner <mattst88@gentoo.org> (2010-12-06)
 # dev-db/tokyocabinet not keyworded
 mail-client/mutt tokyocabinet
-
-# Matt Turner <mattst88@gentoo.org> (2010-12-26)
-# dev-lang/spidermonkey not keyworded
-www-client/elinks javascript
 
 # Matt Turner <mattst88@gentoo.org> (2010-12-26)
 # media-gfx/ufraw not keyworded

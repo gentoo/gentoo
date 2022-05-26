@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 inherit autotools fortran-2 flag-o-matic toolchain-funcs
 
@@ -14,13 +14,15 @@ SRC_URI="
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux"
-IUSE="gmxmopac7 static-libs"
+KEYWORDS="amd64 ~ppc x86 ~amd64-linux"
+IUSE="gmxmopac7"
 
 DEPEND="dev-libs/libf2c"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
+
 	# Install the executable
 	sed -i \
 		-e "s:noinst_PROGRAMS = mopac7:bin_PROGRAMS = mopac7:g" \
@@ -36,17 +38,21 @@ src_prepare() {
 	append-fflags -std=legacy -fno-automatic
 }
 
+src_configure() {
+	econf --disable-static
+}
+
 src_compile() {
 	emake
 	if use gmxmopac7; then
 		einfo "Making mopac7 lib for gromacs"
-		mkdir "${S}"/fortran/libgmxmopac7 && cd "${S}"/fortran/libgmxmopac7
-		cp -f ../SIZES ../*.f "${FILESDIR}"/Makefile . || die
+		mkdir "${S}"/fortran/libgmxmopac7 || die
+		cd "${S}"/fortran/libgmxmopac7 || die
+		cp -n ../SIZES ../*.f "${FILESDIR}"/Makefile . || die
 		emake clean
-		cp -f "${DISTDIR}"/gmxmop.f "${DISTDIR}"/dcart.f . || die
-		sed "s:GENTOOVERSION:${PV}:g" -i Makefile
-		emake FC=$(tc-getFC)
-		use static-libs && emake static
+		cp -n "${DISTDIR}"/gmxmop.f "${DISTDIR}"/dcart.f . || die
+		sed "s:GENTOOVERSION:${PV}:g" -i Makefile || die
+		emake FC="$(tc-getFC)"
 	fi
 }
 
@@ -58,8 +64,9 @@ src_install() {
 	default
 
 	if use gmxmopac7; then
-		cd "${S}"/fortran/libgmxmopac7
+		cd "${S}"/fortran/libgmxmopac7 || die
 		dolib.so libgmxmopac7.so*
-		use static-libs && dolib.a libgmxmopac7.a
 	fi
+
+	find "${ED}" -name '*.la' -delete || die
 }

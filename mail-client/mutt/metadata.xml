@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>grobian@gentoo.org</email>
@@ -10,6 +10,8 @@
 			for header caching</flag>
 		<flag name="gdbm">Enable <pkg>sys-libs/gdbm</pkg> database backend
 			for header caching</flag>
+		<flag name="gsasl">Use GNU SASL via <pkg>virtual/gsasl</pkg> instead
+			of Cyrus SASL (requires USE=sasl)</flag>
 		<flag name="hcache">Enable header cache, one database backend needs
 			to be enabled</flag>
 		<flag name="lmdb">Enable <pkg>dev-db/lmdb</pkg> database backend for

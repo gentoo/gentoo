@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,10 +9,10 @@ DESCRIPTION="Library and tool for personalization of Yubico's YubiKey"
 SRC_URI="https://github.com/Yubico/yubikey-personalization/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="https://github.com/Yubico/yubikey-personalization"
 
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 SLOT="0"
 LICENSE="BSD-2"
-IUSE="consolekit static-libs"
+IUSE="static-libs"
 
 DEPEND="
 	dev-libs/json-c:=
@@ -21,9 +21,7 @@ DEPEND="
 BDEPEND="
 	app-text/asciidoc
 	virtual/pkgconfig"
-RDEPEND="${DEPEND}
-	consolekit? ( sys-auth/consolekit[acl] )
-"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/yubikey-personalization-${PV}"
 PATCHES=(
@@ -51,9 +49,6 @@ src_install() {
 	default
 
 	udev_dorules 69-yubikey.rules
-	if use consolekit ; then
-		udev_dorules 70-yubikey.rules
-	fi
 
 	find "${D}" -name '*.la' -delete || die
 }

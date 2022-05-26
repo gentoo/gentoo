@@ -1,8 +1,8 @@
-# Copyright 2009-2020 Gentoo Authors
+# Copyright 2009-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=(python{3_6,3_7,3_8})
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit python-single-r1 scons-utils toolchain-funcs
 
@@ -44,8 +44,8 @@ RDEPEND="${DEPEND}
 	gui? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			app-i18n/ibus[introspection,python,${PYTHON_MULTI_USEDEP}]
-			dev-python/pygobject[${PYTHON_MULTI_USEDEP}]
+			app-i18n/ibus[introspection,python,${PYTHON_USEDEP}]
+			dev-python/pygobject[${PYTHON_USEDEP}]
 		')
 		x11-libs/gtk+:3[introspection]
 	)"

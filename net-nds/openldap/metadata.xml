@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>zlogene@gentoo.org</email>
@@ -9,6 +9,9 @@
 		<email>ldap-bugs@gentoo.org</email>
 	</maintainer>
 	<use>
+		<flag name="argon2">Enable password hashing algorithm from <pkg>app-crypt/argon2</pkg></flag>
+		<flag name="autoca">Automatic Certificate Authority overlay</flag>
+		<flag name="cleartext">Enable use of cleartext passwords</flag>
 		<flag name="experimental">Enable experimental backend options</flag>
 		<flag name="kinit">Enable support for kerberos init</flag>
 		<flag name="odbc">Enable ODBC and SQL backend options</flag>
@@ -19,6 +22,8 @@
 		<flag name="sha2">Enable support for pw-sha2 password hashes</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://bugs.openldap.org/</bugs-to>
 		<remote-id type="cpe">cpe:/a:openldap:openldap</remote-id>
+		<remote-id type="gitlab">openldap/openldap</remote-id>
 	</upstream>
 </pkgmetadata>

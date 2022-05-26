@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit java-pkg-2 java-ant-2
 
@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/pdftk-java/pdftk/"
 else
 	SRC_URI="https://gitlab.com/pdftk-java/pdftk/-/archive/v${PV}/pdftk-v${PV}.tar.bz2"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 	S="${WORKDIR}/pdftk-v${PV}"
 fi
 
@@ -30,11 +30,11 @@ CDEPEND="
 
 RDEPEND="
 	${CDEPEND}
-	>=virtual/jre-1.7"
+	>=virtual/jre-1.8:*"
 
 DEPEND="
 	${CDEPEND}
-	>=virtual/jdk-1.7"
+	>=virtual/jdk-1.8:*"
 
 src_install() {
 	java-pkg_newjar "build/jar/pdftk.jar"

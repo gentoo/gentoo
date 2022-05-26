@@ -1,9 +1,9 @@
 # Copyright 2012-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
@@ -24,9 +24,14 @@ SLOT="4"
 KEYWORDS=""
 IUSE="+configuration_tool"
 
-RDEPEND=">=app-i18n/fcitx-4.2.9:4
+BDEPEND=">=app-i18n/fcitx-4.2.9:4
+	virtual/pkgconfig
+	configuration_tool? (
+		dev-qt/qtcore:5
+		dev-qt/qtwidgets:5
+	)"
+DEPEND=">=app-i18n/fcitx-4.2.9:4
 	>=app-i18n/librime-1.0.0:=
-	app-i18n/rime-data
 	virtual/libintl
 	configuration_tool? (
 		>=app-i18n/fcitx-qt5-1.1:4
@@ -34,8 +39,9 @@ RDEPEND=">=app-i18n/fcitx-4.2.9:4
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
 	)"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+RDEPEND="${DEPEND}
+	app-i18n/rime-data"
+DEPEND="${DEPEND}
 	configuration_tool? ( dev-qt/qtconcurrent:5 )"
 
 DOCS=()
@@ -46,7 +52,7 @@ src_configure() {
 		-DENABLE_QT5GUI=$(usex configuration_tool)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {

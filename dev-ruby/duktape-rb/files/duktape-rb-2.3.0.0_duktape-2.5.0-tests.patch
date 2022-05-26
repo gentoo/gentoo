@@ -1,0 +1,28 @@
+The parse-error message asserted by two of the tests has changed since
+duktape-2.3.0, it is now
+
+# encoding: ASCII-8BIT
+parse error (line 1, end of input)
+
+This should hopefully cover both cases.
+
+--- a/test/test_duktape.rb
++++ b/test/test_duktape.rb
+@@ -102,7 +102,7 @@
+         @ctx.eval_string('{')
+       end
+ 
+-      assert_equal "parse error (line 1)", err.message
++      assert_match /parse error [(]line 1/, err.message
+     end
+ 
+     def test_type_error
+@@ -160,7 +160,7 @@
+         @ctx.exec_string('{')
+       end
+ 
+-      assert_equal "parse error (line 1)", err.message
++      assert_match /parse error [(]line 1/, err.message
+     end
+ 
+     def test_type_error

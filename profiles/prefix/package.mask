@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # When you add an entry to the top of this file, add your name, the date, and
@@ -18,10 +18,6 @@ dev-lang/python:3.6
 # available in the Prefix tree has security issues.  If you still need
 # Python 2, you should really look into moving away from it.
 dev-lang/python:2.7
-
-# Fabian Groffen <grobian@gentoo.org> (2017-04-15)
-# reentrant patch breaks prefix option, bug #615560
-=sys-devel/flex-2.6.3-r1
 
 # Elias Pipping <pipping@gentoo.org> (2007-10-09)
 # darwin-miscutils are only available on darwin

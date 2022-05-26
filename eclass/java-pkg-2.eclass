@@ -1,4 +1,4 @@
-# Copyright 2004-2015 Gentoo Foundation
+# Copyright 2004-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-pkg-2.eclass
@@ -6,14 +6,25 @@
 # java@gentoo.org
 # @AUTHOR:
 # Thomas Matthijs <axxo@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7 8
+# @PROVIDES: java-utils-2
 # @BLURB: Eclass for Java Packages
 # @DESCRIPTION:
 # This eclass should be inherited for pure Java packages, or by packages which
 # need to use Java.
 
+case ${EAPI:-0} in
+	[5678]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ -z ${_JAVA_PKG_2_ECLASS} ]] ; then
+_JAVA_PKG_2_ECLASS=1
+
 inherit java-utils-2
 
-# @ECLASS-VARIABLE: JAVA_PKG_IUSE
+# @ECLASS_VARIABLE: JAVA_PKG_IUSE
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Use JAVA_PKG_IUSE instead of IUSE for doc, source and examples so that
@@ -34,15 +45,10 @@ if [[ ${CATEGORY} = dev-java && ${PN} = commons-* ]]; then
 	SRC_URI="mirror://apache/${PN/-///}/source/${P}-src.tar.gz"
 fi
 
-case "${EAPI:-0}" in
-	0|1) EXPORT_FUNCTIONS pkg_setup src_compile pkg_preinst ;;
-	*) EXPORT_FUNCTIONS pkg_setup src_prepare src_compile pkg_preinst ;;
-esac
 
 # @FUNCTION: java-pkg-2_pkg_setup
 # @DESCRIPTION:
 # pkg_setup initializes the Java environment
-
 java-pkg-2_pkg_setup() {
 	java-pkg_init
 }
@@ -51,7 +57,6 @@ java-pkg-2_pkg_setup() {
 # @FUNCTION: java-pkg-2_src_prepare
 # @DESCRIPTION:
 # wrapper for java-utils-2_src_prepare
-
 java-pkg-2_src_prepare() {
 	java-utils-2_src_prepare
 }
@@ -72,7 +77,6 @@ java-pkg-2_src_prepare() {
 #   EANT_EXTRA_ARGS - extra arguments to pass to eant
 #   EANT_ANT_TASKS - modifies the ANT_TASKS variable in the eant environment
 # @CODE
-
 java-pkg-2_src_compile() {
 	if [[ -e "${EANT_BUILD_XML:=build.xml}" ]]; then
 		# auto generate classpath
@@ -96,7 +100,6 @@ java-pkg-2_src_compile() {
 # @FUNCTION: java-pkg-2_src_test
 # @DESCRIPTION:
 # src_test, not exported.
-
 java-pkg-2_src_test() {
 	[[ -e "${EANT_BUILD_XML:=build.xml}" ]] || return
 
@@ -149,7 +152,10 @@ java-pkg-2_src_test() {
 # @FUNCTION: java-pkg-2_pkg_preinst
 # @DESCRIPTION:
 # wrapper for java-utils-2_pkg_preinst
-
 java-pkg-2_pkg_preinst() {
 	java-utils-2_pkg_preinst
 }
+
+fi
+
+EXPORT_FUNCTIONS pkg_setup src_prepare src_compile pkg_preinst

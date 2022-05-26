@@ -1,12 +1,14 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils unpacker cdrom games
+EAPI=7
+
+inherit cdrom desktop unpacker wrapper
 
 DESCRIPTION="Tribes 2 - Team Combat on an Epic Scale"
 HOMEPAGE="http://www.lokigames.com/products/tribes2/"
 SRC_URI="http://www.libsdl.org/projects/${PN}/release/${P}-cdrom-x86.run"
+S="${WORKDIR}"
 
 LICENSE="LOKI-EULA"
 SLOT="0"
@@ -14,21 +16,21 @@ SLOT="0"
 # time to try to figure it out but this definitely needs to stay -amd64 until
 # someone does fix the patching.
 KEYWORDS="-amd64 ~x86"
-IUSE=""
 RESTRICT="mirror bindist strip"
 
-DEPEND="sys-libs/glibc
-	games-util/loki_patch"
-RDEPEND="${DEPEND}
-	virtual/opengl"
+DEPEND="
+	sys-libs/glibc
+"
+RDEPEND="
+	${DEPEND}
+	virtual/opengl
+"
+BDEPEND="games-util/loki_patch"
 
-S=${WORKDIR}
-
-dir=${GAMES_PREFIX_OPT}/${PN}
-Ddir=${D}/${dir}
+dir=opt/${PN}
+Ddir="${ED}"/${dir}
 
 pkg_setup() {
-	games_pkg_setup
 	ewarn "The installed game takes about 507MB of space!"
 }
 
@@ -59,17 +61,14 @@ src_install() {
 	# now, since these files are coming off a cd, the times/sizes/md5sums wont
 	# be different ... that means portage will try to unmerge some files (!)
 	# we run touch on ${D} so as to make sure portage doesnt do any such thing
-	find "${Ddir}" -exec touch '{}' +
+	find "${Ddir}" -exec touch '{}' + || die
 
 	newicon "${CDROM_ROOT}"/icon.xpm tribes2.xpm
-	games_make_wrapper t2launch ./t2launch "${dir}" "${dir}"
+	make_wrapper t2launch ./t2launch "${dir}" "${dir}"
 	make_desktop_entry t2launch "Tribes 2" tribes2
-
-	prepgamesdirs
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	elog "To play the game run:"
 	elog " t2launch"
 }

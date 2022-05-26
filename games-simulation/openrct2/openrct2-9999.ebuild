@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake git-r3 readme.gentoo-r1 xdg-utils
 
@@ -12,9 +12,9 @@ MY_PN="OpenRCT2"
 MY_PN_OBJ="objects"
 MY_PN_RPL="replays"
 MY_PN_TS="title-sequences"
-MY_PV_OBJ="1.0.16"
-MY_PV_RPL="0.0.17"
-MY_PV_TS="0.1.2c"
+MY_PV_OBJ="1.2.7"
+MY_PV_RPL="0.0.67"
+MY_PV_TS="0.4.0"
 
 DESCRIPTION="An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2"
 HOMEPAGE="https://openrct2.org/"
@@ -27,11 +27,11 @@ SRC_URI="
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="dedicated libressl +lightfx +opengl scripting test +truetype"
+IUSE="dedicated +lightfx +opengl scripting test +truetype"
 
 COMMON_DEPEND="
 	dev-libs/icu:=
-	dev-libs/jansson
+	dev-libs/jansson:=
 	dev-libs/libzip:=
 	media-libs/libpng:0=
 	net-misc/curl[ssl]
@@ -41,9 +41,8 @@ COMMON_DEPEND="
 		media-libs/speexdsp
 		opengl? ( virtual/opengl )
 	)
-	libressl? ( dev-libs/libressl:0= )
-	!libressl? ( dev-libs/openssl:0= )
-	scripting? ( dev-lang/duktape )
+	dev-libs/openssl:0=
+	scripting? ( dev-lang/duktape:= )
 	truetype? (
 		media-libs/fontconfig:1.0
 		media-libs/freetype:2
@@ -60,6 +59,7 @@ RDEPEND="
 
 DEPEND="
 	${COMMON_DEPEND}
+	dev-cpp/nlohmann_json
 	test? ( dev-cpp/gtest )
 "
 
@@ -71,8 +71,8 @@ BDEPEND="
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.2.4-include-additional-paths.patch"
 	"${FILESDIR}/${PN}-0.2.6-gtest-1.10.patch"
+	"${FILESDIR}/${PN}-0.4.0-include-additional-paths.patch"
 )
 
 src_unpack() {
@@ -108,6 +108,7 @@ src_configure() {
 		-DDISABLE_GOOGLE_BENCHMARK=ON
 		-DDISABLE_GUI=$(usex dedicated)
 		-DDISABLE_HTTP=OFF
+		-DDISABLE_IPO=ON
 		-DDISABLE_NETWORK=OFF
 		$(usex !dedicated "-DDISABLE_OPENGL=$(usex !opengl)" "")
 		-DDISABLE_TTF=$(usex !truetype)

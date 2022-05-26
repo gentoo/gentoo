@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/730692
+
+From 8d5318ea079f53149ab87974a4ad9ed9c5c7fcf5 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 27 Aug 2021 03:58:34 +0100
+Subject: [PATCH] Drop flags Clang doesn't support
+
+In particular, -fno-crossjumping but the rest seem rather unnecessary.
+--- a/Makefile
++++ b/Makefile
+@@ -130,12 +130,10 @@ $(PROG): $(OBJS)
+ 
+ vm1.s: vm1.cpp
+ 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) \
+-	-fno-reorder-blocks -fno-crossjumping -fno-align-labels -fno-align-loops -fno-align-jumps \
+ 	-fverbose-asm -S src/vm1.cpp
+ 
+ vm1.o: vm1.cpp
+ 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) \
+-	-fno-reorder-blocks -fno-crossjumping -fno-align-labels -fno-align-loops -fno-align-jumps \
+ 	-c src/vm1.cpp
+ 
+ install: all stdlib sitelib

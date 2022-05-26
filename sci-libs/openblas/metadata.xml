@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>lumin@debian.org</email>
     <name>Mo Zhou</name>
   </maintainer>
@@ -32,6 +32,9 @@
     </flag>
     <flag name="pthread">
       Build with pthread threading model
+    </flag>
+    <flag name="relapack">
+      Build the ReLAPACK extension to OpenBLAS
     </flag>
   </use>
   <upstream>

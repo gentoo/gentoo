@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <upstream>
+    <doc>https://docs.microsoft.com/en-us/dotnet/</doc>
+  </upstream>
+  <use>
+    <flag name="dotnet-symlink">
+      Install a dotnet symlink that points to dotnet-bin.
+    </flag>
+  </use>
+</pkgmetadata>

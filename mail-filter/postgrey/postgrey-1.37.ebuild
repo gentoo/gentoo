@@ -1,38 +1,41 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils systemd user
+inherit systemd
 
 DESCRIPTION="Postgrey is a Postfix policy server implementing greylisting"
-HOMEPAGE="http://postgrey.schweikert.ch/"
+HOMEPAGE="https://postgrey.schweikert.ch/"
 SRC_URI="http://postgrey.schweikert.ch/pub/${P}.tar.gz
-http://postgrey.schweikert.ch/pub/old/${P}.tar.gz"
+	http://postgrey.schweikert.ch/pub/old/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
-IUSE=""
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ppc64 x86"
 
-DEPEND=""
-RDEPEND=">=dev-lang/perl-5.6.0
-		dev-perl/Net-Server
-		dev-perl/IO-Multiplex
-		dev-perl/BerkeleyDB
-		dev-perl/Net-DNS
-		dev-perl/NetAddr-IP
-		dev-perl/Net-RBLClient
-		dev-perl/Parse-Syslog
-		virtual/perl-Digest-SHA
-		>=sys-libs/db-4.1"
-
-pkg_setup() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /dev/null ${PN}
-}
+DEPEND="
+	acct-group/postgrey
+	acct-user/postgrey
+"
+# TODO: Use db.eclass?
+RDEPEND="
+	${DEPEND}
+	>=dev-lang/perl-5.6.0
+	dev-perl/Net-Server
+	dev-perl/IO-Multiplex
+	dev-perl/BerkeleyDB
+	dev-perl/Net-DNS
+	dev-perl/NetAddr-IP
+	dev-perl/Net-RBLClient
+	dev-perl/Parse-Syslog
+	virtual/perl-Digest-SHA
+	>=sys-libs/db-4.1
+"
 
 src_prepare() {
+	default
+
 	# bug 479400
 	sed -i 's@#!/usr/bin/perl -T -w@#!/usr/bin/perl -w@' postgrey || die "sed failed"
 }
@@ -63,7 +66,9 @@ src_install() {
 	# init.d + conf.d files
 	insopts -o root -g root -m 755
 	newinitd "${FILESDIR}"/${PN}-1.34-r3.rc.new ${PN}
+
 	insopts -o root -g root -m 640
 	newconfd "${FILESDIR}"/${PN}.conf.new ${PN}
+
 	systemd_dounit "${FILESDIR}"/postgrey.service
 }

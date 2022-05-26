@@ -1,5 +1,3 @@
-diff --git a/Makefile b/Makefile
-index 6e1fef9..d75ebfb 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -3,16 +3,16 @@ bindir = $(PREFIX)/bin
@@ -37,7 +35,7 @@ index 6e1fef9..d75ebfb 100644
  
  jack_capture_gui2: jack_capture_gui2.cpp
 -	$(CPP) $(CPPFLAGS) $(OPTIMIZE) jack_capture_gui2.cpp $(LDFLAGS) `pkg-config --libs --cflags gtk+-2.0` -o jack_capture_gui2
-+	$(CXX) $(CXXFLAGS) jack_capture_gui2.cpp $(LDFLAGS) `pkg-config --libs --cflags gtk+-2.0` -o jack_capture_gui2
++	$(CXX) $(CXXFLAGS) jack_capture_gui2.cpp $(LDFLAGS) `${PKG_CONFIG} --libs --cflags gtk+-2.0` -o jack_capture_gui2
  
  config_flags: Makefile das_config.h
  	cat das_config.h |grep COMPILEFLAGS|sed s/\\/\\/COMPILEFLAGS//|tr '\n' ' ' >config_flags

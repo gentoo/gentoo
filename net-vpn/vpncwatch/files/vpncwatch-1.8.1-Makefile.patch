@@ -1,8 +1,3 @@
- Makefile |    4 ++--
- 1 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/Makefile b/Makefile
-index 901e0ae..599499a 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -10,13 +10,13 @@ OBJS = vpncwatch.o proc.o net.o

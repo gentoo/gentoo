@@ -1,16 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit autotools flag-o-matic multilib multilib-minimal
 
 DESCRIPTION="ALSA extra plugins"
-HOMEPAGE="http://www.alsa-project.org/"
+HOMEPAGE="https://alsa-project.org/wiki/Main_Page"
 SRC_URI="https://www.alsa-project.org/files/pub/plugins/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-linux"
 IUSE="arcam_av debug ffmpeg jack libsamplerate +mix oss pulseaudio speex +usb_stream"
 
 RDEPEND="
@@ -78,11 +78,6 @@ multilib_src_install_all() {
 		doins "${FILESDIR}"/pulse-default.conf
 		insinto /usr/share/alsa/alsa.conf.d
 		doins "${FILESDIR}"/51-pulseaudio-probe.conf
-		# bug #410261, comment 5+
-		# seems to work fine without any path
-		sed \
-			-e "s:/usr/lib/alsa-lib/::" \
-			-i "${ED}"/usr/share/alsa/alsa.conf.d/51-pulseaudio-probe.conf || die #410261
 		dosym ../../../usr/share/alsa/alsa.conf.d/51-pulseaudio-probe.conf \
 			/etc/alsa/conf.d/51-pulseaudio-probe.conf #670960
 	fi

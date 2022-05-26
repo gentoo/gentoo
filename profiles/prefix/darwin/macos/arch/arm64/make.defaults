@@ -1,0 +1,11 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+ARCH="arm64-macos"
+ACCEPT_KEYWORDS="~x64-macos"  # this is a hack whilst we don't have full system
+
+# multilib build stuff, single ABI (no multilib)
+ABI="arm64"
+DEFAULT_ABI="arm64"
+MULTILIB_ABIS="arm64"
+LIBDIR_arm64="lib"

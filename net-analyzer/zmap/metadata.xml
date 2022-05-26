@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>jakov.smolic@sartura.hr</email>
-    <name>Jakov Smolic</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
+    <email>jsmolic@gentoo.org</email>
+    <name>Jakov Smolić</name>
   </maintainer>
   <longdescription>
 ZMap is an open-source network scanner that enables researchers to easily 
@@ -21,7 +17,6 @@ availability, and help us better understand large systems distributed
 across the Internet.
   </longdescription>
   <use>
-    <flag name="json">Add support to store results JSON based</flag>
     <flag name="mongo">
       Add support for storing in a mongo DB via <pkg>dev-db/mongodb</pkg>
     </flag>

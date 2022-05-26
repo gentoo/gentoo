@@ -4,7 +4,7 @@
     Reported-by: Attila Tóth <atoth@atoth.sote.hu>
     Co-developed-by: Attila Tóth <atoth@atoth.sote.hu>
     Signed-off-by: Magnus Granberg <zorry@gentoo.org>
-    
+
 --- a/node.gyp	2019-10-23 11:52:41.000000000 +0200
 +++ b/node.gyp	2019-11-12 20:58:43.957881862 +0100
 @@ -233,7 +233,9 @@

@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/musicpd/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 sparc x86"
+KEYWORDS="amd64 sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libXext

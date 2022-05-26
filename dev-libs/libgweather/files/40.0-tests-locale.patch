@@ -1,0 +1,55 @@
+From 6b2801a8195990fdf5166b62f62ddfbad55f11e4 Mon Sep 17 00:00:00 2001
+From: Emmanuele Bassi <ebassi@gnome.org>
+Date: Mon, 9 Mar 2020 12:21:57 +0000
+Subject: [PATCH 1/2] Do not run local-dependent tests with missing locales
+
+Not everyone has all the locales installed all the time, so let's check
+if a locale is available before using it.
+---
+ libgweather/test_libgweather.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/libgweather/test_libgweather.c b/libgweather/test_libgweather.c
+index b10c1f16..ee13dc7b 100644
+--- a/libgweather/test_libgweather.c
++++ b/libgweather/test_libgweather.c
+@@ -678,6 +678,7 @@ test_location_names (void)
+ {
+     g_autoptr(GWeatherLocation) world = NULL;
+     g_autoptr(GWeatherLocation) brussels = NULL;
++    char *old_locale;
+ 
+     world = gweather_location_get_world ();
+     g_assert_nonnull (world);
+@@ -689,10 +690,19 @@ test_location_names (void)
+     g_assert_cmpstr (gweather_location_get_english_name (brussels), ==, "Brussels");
+     gweather_location_unref (brussels);
+ 
++    old_locale = g_strdup (setlocale (LC_ALL, NULL));
+     setlocale (LC_ALL, "fr_FR.UTF-8");
+ 
+     g_clear_pointer (&world, gweather_location_unref);
+     g_clear_pointer (&brussels, gweather_location_unref);
++    if (strstr (setlocale (LC_ALL, NULL), "fr_FR.UTF-8") == NULL)
++      {
++        g_test_skip ("locale fr_FR.UTF-8 not available, skipping localization tests");
++        setlocale (LC_ALL, old_locale);
++        g_free (old_locale);
++        return;
++      }
++
+     _gweather_location_reset_world ();
+ 
+     world = gweather_location_get_world ();
+@@ -705,7 +715,7 @@ test_location_names (void)
+     g_assert_cmpstr (gweather_location_get_english_name (brussels), ==, "Brussels");
+     gweather_location_unref (brussels);
+ 
+-    setlocale (LC_ALL, "");
++    setlocale (LC_ALL, old_locale);
+     g_clear_pointer (&world, gweather_location_unref);
+     g_clear_pointer (&brussels, gweather_location_unref);
+     _gweather_location_reset_world ();
+-- 
+2.26.2
+

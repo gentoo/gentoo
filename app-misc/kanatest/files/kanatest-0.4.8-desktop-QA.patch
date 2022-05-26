@@ -1,0 +1,16 @@
+--- a/data/kanatest.desktop
++++ b/data/kanatest.desktop
+@@ -1,11 +1,10 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Name=Hiragana and Katakana Test
+ Comment=Hiragana and Katakana drill tool
+ Exec=kanatest
+-Icon=kanatest.png
++Icon=kanatest
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+ X-Desktop-File-Install-Version=0.10
+-Categories=Game;Application;X-Fedora;
++Categories=Game;X-Fedora;

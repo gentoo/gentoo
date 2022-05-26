@@ -1,0 +1,53 @@
+diff --git a/test.c b/test.c
+index c0eeca7..5d70471 100644
+--- a/test.c
++++ b/test.c
+@@ -641,6 +641,7 @@ static void test_blocking_connection_errors(void) {
+     struct addrinfo *ai_tmp = NULL;
+ 
+     int rv = getaddrinfo(HIREDIS_BAD_DOMAIN, "6379", &hints, &ai_tmp);
++    #if 0
+     if (rv != 0) {
+         // Address does *not* exist
+         test("Returns error when host cannot be resolved: ");
+@@ -662,6 +663,7 @@ static void test_blocking_connection_errors(void) {
+         printf("Skipping NXDOMAIN test. Found evil ISP!\n");
+         freeaddrinfo(ai_tmp);
+     }
++    #endif
+ 
+ #ifndef _WIN32
+     test("Returns error when the port is not open: ");
+@@ -670,10 +672,12 @@ static void test_blocking_connection_errors(void) {
+         strcmp(c->errstr,"Connection refused") == 0);
+     redisFree(c);
+ 
++    #if 0
+     test("Returns error when the unix_sock socket path doesn't accept connections: ");
+     c = redisConnectUnix((char*)"/tmp/idontexist.sock");
+     test_cond(c->err == REDIS_ERR_IO); /* Don't care about the message... */
+     redisFree(c);
++    #endif
+ #endif
+ }
+ 
+diff --git a/test.c b/test.c
+index 1e8fce1..91625ca 100644
+--- a/test.c
++++ b/test.c
+@@ -1324,6 +1324,7 @@ int main(int argc, char **argv) {
+     test_blocking_connection_errors();
+     test_free_null();
+ 
++    #if 0
+     printf("\nTesting against TCP connection (%s:%d):\n", cfg.tcp.host, cfg.tcp.port);
+     cfg.type = CONN_TCP;
+     test_blocking_connection(cfg);
+@@ -1332,6 +1333,7 @@ int main(int argc, char **argv) {
+     test_invalid_timeout_errors(cfg);
+     test_append_formatted_commands(cfg);
+     if (throughput) test_throughput(cfg);
++    #endif
+ 
+     printf("\nTesting against Unix socket connection (%s): ", cfg.unix_sock.path);
+     if (test_unix_socket) {

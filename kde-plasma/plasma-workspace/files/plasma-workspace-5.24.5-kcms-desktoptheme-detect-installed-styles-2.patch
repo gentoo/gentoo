@@ -1,0 +1,72 @@
+From c602c52578da1331d2466ff9803c7e0b9287c24c Mon Sep 17 00:00:00 2001
+From: Alexander Lohnau <alexander.lohnau@gmx.de>
+Date: Mon, 16 May 2022 14:49:46 +0200
+Subject: [PATCH 7/8] kcms/desktoptheme: Fix reading of metadata in ThemesModel
+
+We can not use KConfig to read the desktop file.
+
+CCBUG: 453830
+
+
+(cherry picked from commit 43ae993da35bb408b4fabb5c4514feff97628e0d)
+---
+ kcms/desktoptheme/themesmodel.cpp | 27 +++++++++++++++++++--------
+ 1 file changed, 19 insertions(+), 8 deletions(-)
+
+diff --git a/kcms/desktoptheme/themesmodel.cpp b/kcms/desktoptheme/themesmodel.cpp
+index 296951742..ce3cac14b 100644
+--- a/kcms/desktoptheme/themesmodel.cpp
++++ b/kcms/desktoptheme/themesmodel.cpp
+@@ -16,6 +16,7 @@
+ 
+ #include <KColorScheme>
+ #include <KDesktopFile>
++#include <KPluginMetaData>
+ 
+ #include <KConfigGroup>
+ #include <KSharedConfig>
+@@ -176,15 +177,25 @@ void ThemesModel::load()
+         int themeNameSepIndex = themeRoot.lastIndexOf(QLatin1Char('/'), -1);
+         const QString packageName = themeRoot.right(themeRoot.length() - themeNameSepIndex - 1);
+ 
+-        KDesktopFile df(theme);
++        QString name;
++        QString comment;
+ 
+-        if (df.noDisplay()) {
+-            continue;
+-        }
++        if (theme.endsWith(QLatin1String(".json"))) {
++            KPluginMetaData data = KPluginMetaData::fromJsonFile(theme);
++            name = data.name();
++            comment = data.description();
++        } else {
++            KDesktopFile df(theme);
+ 
+-        QString name = df.readName();
+-        if (name.isEmpty()) {
+-            name = packageName;
++            if (df.noDisplay()) {
++                continue;
++            }
++
++            name = df.readName();
++            if (name.isEmpty()) {
++                name = packageName;
++            }
++            comment = df.readComment();
+         }
+         const bool isLocal = QFileInfo(theme).isWritable();
+         bool hasPluginName = std::any_of(m_data.begin(), m_data.end(), [&](const ThemesModelData &item) {
+@@ -205,7 +216,7 @@ void ThemesModel::load()
+                     type = LightTheme;
+                 }
+             }
+-            ThemesModelData item{name, packageName, df.readComment(), type, isLocal, false};
++            ThemesModelData item{name, packageName, comment, type, isLocal, false};
+             m_data.append(item);
+         }
+     }
+-- 
+2.35.1
+

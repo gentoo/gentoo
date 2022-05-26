@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit multilib toolchain-funcs eutils
+inherit multilib toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.kernel.org/pub/scm/utils/dtc/dtc.git"
@@ -22,6 +22,7 @@ IUSE="static-libs"
 DEPEND="
 	sys-devel/bison
 	sys-devel/flex
+	virtual/pkgconfig
 "
 DOCS="
 	Documentation/dt-object-internal.txt

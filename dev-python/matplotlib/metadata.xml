@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>sci@gentoo.org</email>
@@ -18,9 +18,11 @@
 	<use>
 		<flag name="excel">Pull <pkg>dev-python/xlwt</pkg> for the exceltools toolkit</flag>
 		<flag name="gtk3">Enable <pkg>x11-libs/gtk+</pkg>:3 support</flag>
+		<flag name="webagg">Enable webagg backend that uses <pkg>www-servers/tornado</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="pypi">matplotlib</remote-id>
+		<remote-id type="github">matplotlib/matplotlib</remote-id>
 		<remote-id type="sourceforge">matplotlib</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>philipp.ammann@posteo.de</email>
     <name>Philipp Ammann</name>
   </maintainer>
-  <maintainer type="project">
+  <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
@@ -16,7 +16,6 @@
   </upstream>
   <use>
     <flag name="bmp">BMP bitmap image support (media-libs/libnsbmp)</flag>
-    <flag name="duktape">Use duktape.org javascript engine</flag>
     <flag name="gtk">Build GTK3 GUI</flag>
     <flag name="gtk2">Build GTK2 GUI</flag>
     <flag name="psl">Use public suffix list via media-libs/libnspsl</flag>

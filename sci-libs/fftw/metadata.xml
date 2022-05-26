@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
     <email>sci@gentoo.org</email>
@@ -15,12 +15,9 @@
   publicly available FFT software.
 </longdescription>
   <use>
-    <flag name="float">Link default library to single precision instead of
-    double (symlinks only and fftw-2.1)</flag>
-    <flag name="quad">Build quadruple precision lib</flag>
     <flag name="zbus">Adds support for ZBus cycle-counter of mips</flag>
   </use>
   <upstream>
-    <remote-id type="freecode">fftw</remote-id>
+    <remote-id type="github">FFTW/fftw3</remote-id>
   </upstream>
 </pkgmetadata>

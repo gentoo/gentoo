@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,9 +24,12 @@ RDEPEND="
 	dev-db/sqlite:3
 	dev-libs/glib:2
 	net-libs/gnutls:=
-	sys-libs/ncurses:0=[unicode]
+	sys-libs/ncurses:=[unicode(+)]
 	sys-libs/zlib:=
-	geoip? ( dev-libs/geoip )"
+	geoip? (
+		dev-libs/geoip
+		dev-libs/libmaxminddb
+	)"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/makeheaders

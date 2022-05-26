@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ DESCRIPTION="GStreamer integration library for Clutter"
 
 LICENSE="LGPL-2.1+"
 SLOT="3.0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="X debug examples +introspection udev"
 
 # >=cogl-1.18 provides cogl-2.0-experimental
@@ -49,7 +49,8 @@ src_install() {
 	gnome2_src_install
 
 	if use examples; then
-		insinto /usr/share/doc/"${PF}"/examples
-		doins examples/{*.c,*.png,README}
+		docinto examples
+		dodoc examples/{*.c,*.png,README}
+		docompress -x /usr/share/doc/${PF}/examples
 	fi
 }

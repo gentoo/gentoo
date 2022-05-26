@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Prefix does not need busybox for emergency recovery,
@@ -7,7 +7,6 @@
 
 # Man pages are not essential.
 -*sys-apps/man-pages
--*virtual/man
 
 # A service manager is not essential.
 -*virtual/service-manager

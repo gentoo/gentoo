@@ -1,0 +1,60 @@
+diff --git a/Makefile.am b/Makefile.am
+index 161083c..d54eded 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2,7 +2,7 @@ if ENABLE_GATTRIB
+ GATTRIB_DIR=gattrib
+ endif
+ SUBDIRS = libgeda libgedacairo gaf gschem ${GATTRIB_DIR} \
+-	gsymcheck gnetlist-legacy utils symbols docs examples contrib xorn
++	gsymcheck gnetlist-legacy utils symbols docs examples contrib
+ 
+ ACLOCAL_AMFLAGS = -I m4
+ 
+diff --git a/Makefile.in b/Makefile.in
+index 31778d8..59789e6 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -180,7 +180,7 @@ ETAGS = etags
+ CTAGS = ctags
+ CSCOPE = cscope
+ DIST_SUBDIRS = libgeda libgedacairo gaf gschem gattrib gsymcheck \
+-	gnetlist-legacy utils symbols docs examples contrib xorn
++	gnetlist-legacy utils symbols docs examples contrib
+ am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.h.in \
+ 	$(top_srcdir)/build-tools/ar-lib \
+ 	$(top_srcdir)/build-tools/compile \
+@@ -454,7 +454,7 @@ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ @ENABLE_GATTRIB_TRUE@GATTRIB_DIR = gattrib
+ SUBDIRS = libgeda libgedacairo gaf gschem ${GATTRIB_DIR} \
+-	gsymcheck gnetlist-legacy utils symbols docs examples contrib xorn
++	gsymcheck gnetlist-legacy utils symbols docs examples contrib
+ 
+ ACLOCAL_AMFLAGS = -I m4
+ 
+diff --git a/autogen.sh b/autogen.sh
+index 7b82f04..4d81174 100755
+--- a/autogen.sh
++++ b/autogen.sh
+@@ -225,4 +225,4 @@ fi
+   run_tool "$AUTOHEADER" &&
+   run_tool "$AUTOMAKE" -Wall --copy --add-missing --gnu &&
+   run_tool "$AUTOCONF" &&
+-  (cd xorn && autoreconf -if))
++  )
+ 
+ #####################################################################
+diff --git a/configure.ac b/configure.ac
+index 1f19064..257ee20 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -197,8 +197,6 @@ AX_LIBGEDACAIRO([1:3:0])
+ export GEDADATADIR
+ export GEDARCDIR
+ 
+-AC_CONFIG_SUBDIRS([xorn])
+-
+ #####################################################################
+ # Generate output
+ #####################################################################

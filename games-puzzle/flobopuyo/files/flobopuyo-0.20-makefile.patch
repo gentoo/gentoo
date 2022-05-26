@@ -1,0 +1,62 @@
+Set non-/games paths, respect FLAGS, add LIBS to pass them in right order,
+use pkg-config, don't strip, and show commands/errors directly.
+
+https://bugs.gentoo.org/125550
+https://bugs.gentoo.org/126835
+https://bugs.gentoo.org/234013
+--- a/Makefile
++++ b/Makefile
+@@ -15,4 +15,4 @@
+ PREFIX=/usr/local
+-DATADIR=$(PREFIX)/share/games/flobopuyo
+-INSTALL_BINDIR=$(DESTDIR)/$(PREFIX)/games
++DATADIR=$(PREFIX)/share/flobopuyo
++INSTALL_BINDIR=$(DESTDIR)/$(PREFIX)/bin
+ INSTALL_DATADIR=$(DESTDIR)/$(DATADIR)
+@@ -44,10 +44,10 @@
+ CC=g++
+-CXX=g++
+ 
+-CFLAGS= -DDATADIR=\"${DATADIR}\"
+-LDFLAGS=
++CFLAGS:=$(CXXFLAGS) $(CPPFLAGS) -DDATADIR=\"$(DATADIR)\"
+ 
+ ifneq ($(PLATFORM), $(CYGWIN_VERSION))
+-CFLAGS:=$(CFLAGS) `$(SDL_CONFIG) --cflags` -I/sw/include
+-LDFLAGS:=$(LDFLAGS) `$(SDL_CONFIG) --cflags --libs`
++OPENGL-false=
++OPENGL-$(ENABLE_OPENGL)=opengl
++CFLAGS:=$(CFLAGS) $(shell $(PKG_CONFIG) --cflags $(OPENGL-true) sdl SDL_image SDL_mixer)
++LIBS:=$(LIBS) $(shell $(PKG_CONFIG) --libs $(OPENGL-true) sdl SDL_image SDL_mixer)
+ endif
+@@ -92,3 +92,2 @@
+ ifeq ($(PLATFORM), Linux)
+-LDFLAGS:=$(LDFLAGS) -lGL
+ endif
+@@ -112,3 +111,3 @@
+ flobopuyo: ${OBJFILES}
+-	@echo "[flobopuyo]" && g++ $(CFLAGS) $(LDFLAGS) -o flobopuyo -lSDL_mixer -lSDL_image ${OBJFILES}
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o flobopuyo $(OBJFILES) $(LIBS)
+ 	@echo "--------------------------------------"
+@@ -127,6 +126,6 @@
+ %.o:%.c
+-	@echo "[$@]" && $(CC) $(CFLAGS) -c $< 2>> WARNINGS || (cat WARNINGS && false)
++	$(CXX) $(CXXFLAGS) -c $<
+ 
+ %.o:%.cpp
+-	@echo "[$@]" && $(CXX) $(CFLAGS) -c $< 2>> WARNINGS || (cat WARNINGS && false)
++	$(CXX) $(CXXFLAGS) -c $<
+ 
+@@ -157,6 +156,6 @@
+ glSDL.o:glSDL.c
+-	@echo "[$@]" && $(CC) $(CFLAGS) -c $< 2>> EXT_WARNINGS
++	$(CXX) $(CXXFLAGS) -c $<
+ 	@rm -f EXT_WARNINGS
+ SDL_prim.o:SDL_prim.c
+-	@echo "[$@]" && $(CC) $(CFLAGS) -c $< 2>> EXT_WARNINGS
++	$(CXX) $(CXXFLAGS) -c $<
+ 	@rm -f EXT_WARNINGS
+@@ -180,3 +179,2 @@
+ install: flobopuyo
+-	strip flobopuyo
+ 	mkdir -p ${INSTALL_BINDIR}

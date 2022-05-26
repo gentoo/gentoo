@@ -1,5 +1,5 @@
---- src/mmgr.cpp
-+++ src/mmgr.cpp
+--- a/src/mmgr.cpp
++++ b/src/mmgr.cpp
 @@ -228,9 +228,9 @@
  
  static	const char	*sourceFileStripper(const char *sourceFile)

@@ -1,0 +1,69 @@
+https://bugs.gentoo.org/372413
+Based on debian patch by: Barry deFreese <bdefreese@debian.org>
+
+While adding pkg-config for portaudio, also use it for the rest
+and remove unused X libraries.
+--- a/Transcend/Makefile.GnuLinuxX86
++++ b/Transcend/Makefile.GnuLinuxX86
+@@ -20,3 +20,3 @@
+ 
+-PLATFORM_COMPILE_FLAGS = -DLINUX
++PLATFORM_COMPILE_FLAGS = $(shell $(PKG_CONFIG) --cflags gl glut glu portaudio-2.0)
+ 
+@@ -24,3 +24,3 @@
+ # also need portaudio library (which in turn needs pthreads)
+-PLATFORM_LINK_FLAGS = -L/usr/X11R6/lib -lGL -lglut -lGLU -lX11 -lXi -lXext -lXmu ${ROOT_PATH}/Transcend/portaudio/lib/libportaudio.a -lpthread
++PLATFORM_LINK_FLAGS = $(shell $(PKG_CONFIG) --libs gl glut glu portaudio-2.0)
+ 
+--- a/Transcend/game/SoundPlayer.cpp
++++ b/Transcend/game/SoundPlayer.cpp
+@@ -49,5 +49,7 @@
+ // callback passed into portaudio
+-static int portaudioCallback( void *inputBuffer, void *outputBuffer,
++int portaudioCallback( const void *inputBuffer, void *outputBuffer,
+                               unsigned long framesPerBuffer,
+-                              PaTimestamp outTime, void *userData ) {
++                              const PaStreamCallbackTimeInfo *outTime,
++                              PaStreamCallbackFlags statusFlags,
++                              void *userData ) {
+ 
+@@ -149,17 +151,9 @@
+     
+-        error = Pa_OpenStream(
++        error = Pa_OpenDefaultStream(
+             &mAudioStream,
+-            paNoDevice,// default input device 
+             0,              // no input 
+-            paFloat32,  // 32 bit floating point input 
+-            NULL,
+-            Pa_GetDefaultOutputDeviceID(),
+             2,          // stereo output 
+             paFloat32,      // 32 bit floating point output 
+-            NULL,
+             mSampleRate,
+             1024,   // frames per buffer
+-            0,    // number of buffers, if zero then use default minimum 
+-            paClipOff, // we won't output out of range samples so
+-                       // don't bother clipping them 
+             portaudioCallback,
+--- a/Transcend/game/SoundPlayer.h
++++ b/Transcend/game/SoundPlayer.h
+@@ -48,4 +48,3 @@
+ 
+-#include "Transcend/portaudio/pa_common/portaudio.h"
+-#include "Transcend/portaudio/pablio/pablio.h"
++#include <portaudio.h>
+ 
+@@ -207,3 +206,3 @@
+         
+-        PortAudioStream *mAudioStream;
++        PaStream *mAudioStream;
+ 
+--- a/Transcend/game/SoundPlayerActive.h
++++ b/Transcend/game/SoundPlayerActive.h
+@@ -18,4 +18,3 @@
+ 
+-#include "Transcend/portaudio/pa_common/portaudio.h"
+-#include "Transcend/portaudio/pablio/pablio.h"
++#include <portaudio.h>
+ 

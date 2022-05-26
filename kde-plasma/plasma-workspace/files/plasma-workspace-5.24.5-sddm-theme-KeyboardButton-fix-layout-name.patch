@@ -1,0 +1,39 @@
+From e2b631d43528c3e41d53c8a359b6129c616bc271 Mon Sep 17 00:00:00 2001
+From: ivan tkachenko <me@ratijas.tk>
+Date: Sat, 30 Apr 2022 03:20:11 +0300
+Subject: [PATCH 1/8] [sddm-theme] KeyboardButton: Fix layout name not being
+ shown
+
+It used to cause an error like this:
+
+    [03:21:31.246] (WW) GREETER: file:///usr/share/sddm/themes/breeze/KeyboardButton.qml:19: TypeError: Cannot read property 'shortName' of null
+
+(cherry picked from commit 2e9020ca6c1d55842a4b014623f0d88697972000)
+---
+ sddm-theme/KeyboardButton.qml | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/sddm-theme/KeyboardButton.qml b/sddm-theme/KeyboardButton.qml
+index d5d5a446c..712096d87 100644
+--- a/sddm-theme/KeyboardButton.qml
++++ b/sddm-theme/KeyboardButton.qml
+@@ -10,7 +10,7 @@ PlasmaComponents.ToolButton {
+ 
+     property int currentIndex: -1
+ 
+-    text: i18nd("plasma_lookandfeel_org.kde.lookandfeel", "Keyboard Layout: %1", instantiator.objectAt(currentIndex).shortName)
++    text: i18nd("plasma_lookandfeel_org.kde.lookandfeel", "Keyboard Layout: %1", keyboard.layouts[currentIndex].shortName)
+     implicitWidth: minimumWidth
+ 
+     visible: menu.items.length > 1
+@@ -27,7 +27,6 @@ PlasmaComponents.ToolButton {
+             onObjectRemoved: keyboardMenu.removeItem( object )
+             delegate: QQC.MenuItem {
+                 text: modelData.longName
+-                property string shortName: modelData.shortName
+                 onTriggered: {
+                     keyboard.currentLayout = model.index
+                 }
+-- 
+2.35.1
+

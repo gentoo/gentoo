@@ -1,0 +1,29 @@
+https://invent.kde.org/qt/qt/qttools/-/merge_requests/2
+
+(Dropped first patch as it seems to be in 5.15.4.)
+
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 18 Mar 2022 12:43:18 +0100
+Subject: [PATCH 2/2] Drop superfluous network dependency from
+ assistant/{help,qhelpgenerator}.pro
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+--- a/src/assistant/help/help.pro
++++ b/src/assistant/help/help.pro
+@@ -1,7 +1,6 @@
+ TARGET = QtHelp
+ 
+ QT = core-private gui widgets sql
+-QT_PRIVATE = network
+ 
+ DEFINES += QHELP_LIB
+ 
+--- a/src/assistant/qhelpgenerator/qhelpgenerator.pro
++++ b/src/assistant/qhelpgenerator/qhelpgenerator.pro
+@@ -1,4 +1,4 @@
+-QT += network help-private
++QT += help-private
+ 
+ QTPLUGIN.platforms = qminimal
+ QTPLUGIN.sqldrivers = qsqlite
+GitLab

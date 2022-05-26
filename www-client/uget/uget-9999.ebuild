@@ -1,24 +1,23 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit gnome2-utils xdg-utils git-r3 autotools
+inherit autotools git-r3 xdg
 
 DESCRIPTION="Download manager using gtk+ and libcurl"
 HOMEPAGE="http://www.ugetdm.com"
-SRC_URI=""
 EGIT_REPO_URI="git://git.code.sf.net/p/urlget/uget2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
 IUSE="aria2 appindicator control-socket +gnutls gstreamer libnotify nls openssl rss"
+REQUIRED_USE="^^ ( gnutls openssl )"
 
 RDEPEND="
-	>=net-misc/curl-7.19.1
+	dev-libs/glib:2
 	dev-libs/libpcre
-	>=dev-libs/glib-2.32:2
+	net-misc/curl
 	>=x11-libs/gtk+-3.4:3
 	gnutls? (
 		net-libs/gnutls
@@ -27,16 +26,16 @@ RDEPEND="
 	aria2? ( net-misc/aria2[xmlrpc] )
 	appindicator? ( dev-libs/libappindicator:3 )
 	gstreamer? ( media-libs/gstreamer:1.0 )
-	libnotify? ( x11-libs/libnotify )
-	"
-DEPEND="${RDEPEND}
+	openssl? ( dev-libs/openssl:= )
+	libnotify? ( x11-libs/libnotify )"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/intltool
 	virtual/pkgconfig
-	sys-devel/gettext
-	"
+	sys-devel/gettext"
 
 src_prepare() {
-	eapply_user
+	default
 	eautoreconf
 }
 
@@ -54,14 +53,4 @@ src_configure() {
 	)
 
 	econf "${myconf[@]}"
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
 }

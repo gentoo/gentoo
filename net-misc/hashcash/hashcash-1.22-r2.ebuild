@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ src_install() {
 	dobin hashcash
 	doman hashcash.1
 	dodoc CHANGELOG
-	insinto /usr/share/doc/${PF}/examples
-	doins contrib/hashcash-{request,sendmail{,.txt}} \
-		contrib/hashfork.{c,py,txt}
+	docinto examples
+	dodoc contrib/hashcash-{request,sendmail{,.txt}} contrib/hashfork.{c,py,txt}
+	docompress -x /usr/share/doc/${PF}/examples
 }

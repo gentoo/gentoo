@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/706942
+--- a/peripherals/sim_5206.c
++++ b/peripherals/sim_5206.c
+@@ -23,7 +23,7 @@ static struct _sim_register *sim_register_lookup_by_offset(s32 offset);
+ static struct _sim_register *sim_register_lookup_by_name(char *name);
+ static void sim_interrupt_assert(s16 number, s16 vector);
+ static void sim_interrupt_withdraw(s16 number);
+-struct _sim sim_data;
++static struct _sim sim_data;
+ 
+ /* name, offset, width, read, write, resetvalue, description */
+ static struct _sim_register sim_reg[] = {
+--- a/peripherals/sim_5307.c
++++ b/peripherals/sim_5307.c
+@@ -59,7 +59,7 @@ static struct _sim_register *sim_register_lookup_by_offset(s32 offset);
+ static struct _sim_register *sim_register_lookup_by_name(char *name);
+ static void sim_interrupt_assert(s16 number, s16 vector);
+ static void sim_interrupt_withdraw(s16 number);
+-struct _sim sim_data;
++static struct _sim sim_data;
+ 
+ /* name, offset, width, read, write, resetvalue, description */
+ static struct _sim_register sim_reg[] = {

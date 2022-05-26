@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>zmedico@gentoo.org</email>
@@ -32,10 +32,12 @@
 	<use>
 		<flag name="archive">Use libarchive</flag>
 		<flag name="dracut">Install dracut module</flag>
+		<flag name="gpg">Enable GPG support</flag>
 		<flag name="grub">Enable grub configuration generator</flag>
 		<flag name="http2">Use http2</flag>
 		<flag name="httpd">Enable ostree trivial-httpd entrypoint</flag>
 		<flag name="libmount">Use libmount</flag>
+		<flag name="sodium">Use libsodium for ed25519</flag>
 		<flag name="soup">Use libsoup for networking</flag>
 	</use>
 	<upstream>

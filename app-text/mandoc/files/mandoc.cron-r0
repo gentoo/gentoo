@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# need MANPATH
+. /etc/profile.env
+
+exec nice makewhatis -T utf8 2>/dev/null

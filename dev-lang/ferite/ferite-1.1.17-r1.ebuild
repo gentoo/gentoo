@@ -1,17 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools
 
 DESCRIPTION="A clean, lightweight, object oriented scripting language"
 HOMEPAGE="http://ferite.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-slibtool.patch.bz2"
 
 LICENSE="BSD"
 SLOT="1"
 KEYWORDS="~alpha amd64 ppc -sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE=""
 
 RDEPEND="
 	dev-libs/boehm-gc[threads]
@@ -20,10 +21,14 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-pcre.patch
+	"${FILESDIR}"/${P}-bool.patch
+	"${WORKDIR}"/${P}-slibtool.patch
+)
+
 src_prepare() {
 	default
-
-	eapply "${FILESDIR}"/ferite-pcre.patch
 
 	# use docsdir variable, install to DESTDIR
 	sed \
@@ -38,23 +43,6 @@ src_prepare() {
 		scripts/test/Makefile.am \
 		scripts/test/rmi/Makefile.am || die
 
-	# Don't override the user's LDFLAGS
-	sed \
-		-e 's:_LDFLAGS = :&$(AM_LDFLAGS) :' \
-		-e '/^LDFLAGS/s:^:AM_:' \
-		-i modules/*/Makefile.am \
-		libs/{aphex,triton}/src/Makefile.am \
-		src/Makefile.am || die
-
-	# Only build/install shared libs for modules (can't use static anyway)
-	sed -i -e '/_LDFLAGS/s:-module:& -shared:' modules/*/Makefile.am || die
-
-	# use LIBADD to ensure proper deps (fix parallel build)
-	sed \
-		-e '/^stream_la_LDFLAGS/s:-L\. -lferitestream::' \
-		-e '/^stream_la_LIBADD/s:$:libferitestream.la:' \
-		-i modules/stream/Makefile.am || die
-
 	# Make sure we install in $(get_libdir), not lib
 	sed -i -e "s|\$prefix/lib|\$prefix/$(get_libdir)|g" configure.ac || die
 
@@ -67,7 +55,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --libdir="${EPREFIX}/usr/$(get_libdir)"
+	econf --libdir="${EPREFIX}/usr/$(get_libdir)" --disable-static
 }
 
 src_install() {

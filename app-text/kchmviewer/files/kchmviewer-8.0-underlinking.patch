@@ -1,0 +1,30 @@
+From e3b09edbbae17ad19661a7514afe5a9d84ca0ffa Mon Sep 17 00:00:00 2001
+From: George Yunaev <gyunaev@ulduzsoft.com>
+Date: Sun, 23 May 2021 15:03:06 -0700
+Subject: [PATCH] Adding support for old single-pass gcc linker which requires
+ a specific order of libraries. Thanks to @u-235 for reporting and patch.
+
+---
+ src/src.pro | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/src.pro b/src/src.pro
+index e75d6a9..14c31a1 100644
+--- a/src/src.pro
++++ b/src/src.pro
+@@ -40,7 +40,6 @@ SOURCES += config.cpp \
+     textencodings.cpp \
+     treeitem_toc.cpp \
+     treeitem_index.cpp
+-LIBS += -lchm -lzip
+ TARGET = ../bin/kchmviewer
+ CONFIG += threads \
+     warn_on \
+@@ -106,6 +105,7 @@ unix:!macx: {
+     LIBS += ../lib/libebook/libebook.a
+     POST_TARGETDEPS += ../lib/libebook/libebook.a
+ }
++LIBS += -lchm -lzip
+ 
+ greaterThan(QT_MAJOR_VERSION, 4) {
+     # Qt 5

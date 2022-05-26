@@ -1,0 +1,15 @@
+Switch from the non-standard upstream CMake Lua module to the one bundled
+with CMake, use only the Lua version requested by the ebuild, and do not
+semi-quietly ignore the absence of Lua.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -433,7 +433,7 @@
+ ENDIF(WANT_FONTCONFIG)
+ 
+ IF(NOT PODOFO_BUILD_LIB_ONLY)
+-FIND_PACKAGE(LUA)
++FIND_PACKAGE(Lua ${LUA_VERSION} EXACT REQUIRED)
+ IF(LUA_FOUND)
+ 	# If we have lua, we can build podofoimpose.
+ 	MESSAGE("Lua found - PoDoFoImpose and PoDoFoColor will be built with Lua support")

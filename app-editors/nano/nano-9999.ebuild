@@ -1,16 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit flag-o-matic
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://git.sv.gnu.org/nano.git"
+	EGIT_REPO_URI="https://git.savannah.gnu.org/git/nano.git"
 	inherit git-r3 autotools
 else
 	MY_P="${PN}-${PV/_}"
-	SRC_URI="https://www.nano-editor.org/dist/v${PV:0:1}/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	SRC_URI="https://www.nano-editor.org/dist/v${PV:0:1}/${MY_P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="GNU GPL'd Pico clone with more functionality"
@@ -18,13 +18,13 @@ HOMEPAGE="https://www.nano-editor.org/ https://wiki.gentoo.org/wiki/Nano/Basics_
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="debug justify +magic minimal ncurses nls slang +spell +split-usr static unicode"
+IUSE="debug justify magic minimal ncurses nls +spell +split-usr static unicode"
 
-LIB_DEPEND=">=sys-libs/ncurses-5.9-r1:0=[unicode?]
-	sys-libs/ncurses:0=[static-libs(+)]
+LIB_DEPEND="
+	>=sys-libs/ncurses-5.9-r1:=[unicode(+)?]
+	sys-libs/ncurses:=[static-libs(+)]
 	magic? ( sys-apps/file[static-libs(+)] )
-	nls? ( virtual/libintl )
-	!ncurses? ( slang? ( sys-libs/slang[static-libs(+)] ) )"
+	nls? ( virtual/libintl )"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
@@ -33,7 +33,9 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-REQUIRED_USE="!ncurses? ( slang? ( minimal ) )"
+REQUIRED_USE="
+	magic? ( !minimal )
+"
 
 src_prepare() {
 	default
@@ -57,7 +59,6 @@ src_configure() {
 		$(use_enable nls)
 		$(use_enable unicode utf8)
 		$(use_enable minimal tiny)
-		$(usex ncurses --without-slang $(use_with slang))
 	)
 	econf "${myconf[@]}"
 }
@@ -83,6 +84,9 @@ src_install() {
 		local rcdir="/usr/share/nano"
 		mv "${ED}"${rcdir}/extra/* "${ED}"/${rcdir}/ || die
 		rmdir "${ED}"${rcdir}/extra || die
+
+		insinto "${rcdir}"
+		doins "${FILESDIR}/gentoo.nanorc"
 	fi
 
 	use split-usr && dosym ../../bin/nano /usr/bin/nano

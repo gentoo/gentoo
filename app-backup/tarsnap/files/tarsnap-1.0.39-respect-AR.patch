@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/721914
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -124,7 +124,7 @@ CONFIG_HEADER = config.h
+ CONFIG_CLEAN_FILES =
+ CONFIG_CLEAN_VPATH_FILES =
+ LIBRARIES = $(noinst_LIBRARIES)
+-AR = ar
++AR := ar
+ ARFLAGS = cru
+ AM_V_AR = $(am__v_AR_@AM_V@)
+ am__v_AR_ = $(am__v_AR_@AM_DEFAULT_V@)
+ 

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,13 +7,13 @@ inherit fixheadtails
 
 MY_VER=$(ver_rs 1- "")
 
-DESCRIPTION="A checkpassword compatible authentication program that used CRAM-MD5 authentication mode"
+DESCRIPTION="A checkpassword compatible authentication program using CRAM-MD5"
 SRC_URI="https://www.fehcom.de/qmail/auth/${PN}-${MY_VER}_tgz.bin -> ${P}.tar.gz"
 HOMEPAGE="https://www.fehcom.de/qmail/smtpauth.html"
 
 LICENSE="public-domain RSA"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 IUSE=""
 
 DEPEND="acct-user/cmd5checkpw"

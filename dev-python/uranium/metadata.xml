@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>3dprint@gentoo.org</email>
@@ -13,15 +13,15 @@
 		<email>alexxy@gentoo.org</email>
 		<name>Alexey Shvetsov</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>mathy@vanvoorden.be</email>
 		<name>Mathy Vanvoorden</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>perlovka@gmail.com</email>
 		<name>Michael Perlov</name>
 	</maintainer>
@@ -29,6 +29,9 @@
 		<subslots>soname major version number</subslots>
 	</slots>
 	<upstream>
+		<bugs-to>https://github.com/Ultimaker/Uranium/issues</bugs-to>
+		<doc>https://github.com/Ultimaker/Uranium/blob/master/docs/mainpage.md</doc>
 		<remote-id type="github">Ultimaker/Uranium</remote-id>
+		<remote-id type="pypi">uranium</remote-id>
 	</upstream>
 </pkgmetadata>

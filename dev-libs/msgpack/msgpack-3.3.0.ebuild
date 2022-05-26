@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}-c.git"
 else
 	SRC_URI="https://github.com/${PN}/${PN}-c/releases/download/cpp-${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 ~arm ~arm64 ~riscv x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
 DESCRIPTION="MessagePack is a binary-based efficient data interchange format"
@@ -50,7 +50,7 @@ multilib_src_compile() {
 	cmake_src_compile
 
 	if multilib_is_native_abi && use doc; then
-		emake doxygen
+		cmake_build doxygen
 	fi
 }
 
@@ -62,7 +62,9 @@ multilib_src_install() {
 			mkdir docs || die
 			mv doc_c/html docs/c || die
 
-			use cxx && mv doc_cpp/html docs/cpp || die
+			if use cxx; then
+				mv doc_cpp/html docs/cpp || die
+			fi
 		fi
 
 		if use examples; then

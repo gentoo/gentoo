@@ -1,12 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-DESCRIPTION="A 32-level game designed for competitive deathmatch play."
+DESCRIPTION="A 32-level game designed for competitive deathmatch play"
 HOMEPAGE="https://freedoom.github.io"
 
-LICENSE="BSD"
+LICENSE="metapackage"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 
@@ -15,6 +15,7 @@ RDEPEND="
 	|| (
 		games-fps/gzdoom[nonfree(+)]
 		games-engines/odamex
+		games-fps/chocolate-doom
 		games-fps/doomsday
 		games-fps/prboom-plus
 	)

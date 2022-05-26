@@ -1,5 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2021-01-07)
+# Prebuilt kernels are not supported on all architectures.
+dist-kernel
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
 # sci-libs/mkl is only supported on specific architectures
@@ -23,8 +27,9 @@ oci8
 # cilk has been ported only to x86 systems
 cilk
 
-# cuda only works on amd64/x86
+# cuda/NVENC only works on amd64/arm64
 cuda
+nvenc
 
 # masking here, and unmasking in arch/x86/use.mask
 vidix
@@ -120,6 +125,7 @@ video_cards_geode
 # not needed on non-x86, non-amd64 systems
 input_devices_vmmouse
 video_cards_ast
+video_cards_crocus
 video_cards_i915
 video_cards_i965
 video_cards_intel
@@ -136,7 +142,6 @@ video_cards_siliconmotion
 # not needed on non-arm systems
 video_cards_exynos
 video_cards_freedreno
-video_cards_imx
 video_cards_lima
 video_cards_omap
 video_cards_panfrost
@@ -158,10 +163,6 @@ input_devices_wacom
 # Robert Buchholz <rbu@gentoo.org> (2007-06-03)
 # Only works on x86 or amd64
 lcd_devices_luise
-
-# Alex Legler <a3li@gentoo.org> (2009-12-07)
-# Rubinius is whitelisted on supported arches
-ruby_targets_rbx
 
 # Samuli Suominen <ssuominen@gentoo.org> (2011-10-03)
 # RealMagic Hollywood+/Creative DXR3 support
@@ -192,8 +193,6 @@ abi_x86_x32
 abi_mips_o32
 abi_mips_n32
 abi_mips_n64
-abi_ppc_32
-abi_ppc_64
 abi_s390_32
 abi_s390_64
 
@@ -218,11 +217,11 @@ apparmor
 # Mask flags that correspond to all possible ARCH values.
 alpha
 amd64
-amd64-fbsd
 arm
 arm64
 hppa
 ia64
+loong
 m68k
 mips
 ppc
@@ -231,4 +230,3 @@ riscv
 s390
 sparc
 x86
-x86-fbsd

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,14 +6,14 @@ EAPI=7
 inherit multilib toolchain-funcs
 
 DESCRIPTION="a fast key-value storage library written at Google"
-HOMEPAGE="http://leveldb.org/ https://github.com/google/leveldb"
+HOMEPAGE="https://github.com/google/leveldb"
 SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 # https://github.com/google/leveldb/issues/536
 SLOT="0/1"
-KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
-IUSE="+snappy static-libs kernel_FreeBSD +tcmalloc test"
+KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+IUSE="+snappy static-libs +tcmalloc test"
 RESTRICT="!test? ( test )"
 
 DEPEND="tcmalloc? ( dev-util/google-perftools )
@@ -34,7 +34,7 @@ src_configure() {
 	tc-export AR CC CXX
 	export OPT="-DNDEBUG ${CPPFLAGS}"
 
-	TARGET_OS=$(usex kernel_FreeBSD FreeBSD Linux) \
+	TARGET_OS=Linux \
 	USE_SNAPPY=$(usex snappy) \
 	USE_TCMALLOC=no \
 	TMPDIR=${T} \

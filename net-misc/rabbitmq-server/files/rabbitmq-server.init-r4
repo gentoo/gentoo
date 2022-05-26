@@ -3,7 +3,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 depend() {
-	need net epmd
+	need epmd
 	use dns
 }
 

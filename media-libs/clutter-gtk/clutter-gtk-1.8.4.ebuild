@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Clutter"
 LICENSE="LGPL-2.1+"
 
 SLOT="1.0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="X debug examples gtk +introspection wayland"
 
 RDEPEND="
@@ -38,7 +38,8 @@ src_install() {
 	gnome2_src_install
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins examples/{*.c,redhand.png}
+		docinto examples
+		dodoc examples/{*.c,redhand.png}
+		docompress -x /usr/share/doc/${PF}/examples
 	fi
 }

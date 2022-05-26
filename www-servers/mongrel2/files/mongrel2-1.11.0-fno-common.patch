@@ -1,0 +1,31 @@
+--- a/src/mongrel2.c
++++ b/src/mongrel2.c
+@@ -55,6 +55,7 @@
+ #include "logrotate.h"
+ #include "register.h"
+ 
++extern char *m2program;
+ extern int RUNNING;
+ extern uint32_t THE_CURRENT_TIME_IS;
+ int RELOAD = 0;
+--- a/src/unixy.h
++++ b/src/unixy.h
+@@ -38,7 +38,7 @@
+ #include <bstring.h>
+ #include <unistd.h>
+ 
+-char *m2program;
++extern char *m2program;
+ 
+ int Unixy_chroot(bstring path);
+ 
+--- a/tools/procer/procer.c
++++ b/tools/procer/procer.c
+@@ -9,6 +9,7 @@
+ #include <sys/wait.h>
+ #include <sys/stat.h>
+ 
++extern char *m2program;
+ extern char **environ;
+ 
+ static int RUNNING = 1;

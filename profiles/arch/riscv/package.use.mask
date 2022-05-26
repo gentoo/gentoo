@@ -1,126 +1,190 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Ulrich Müller <ulm@gentoo.org> (2020-01-12)
-# Dependencies not keyworded
-app-editors/emacs gui
+# Marek Szuba <marecki@gmail.com> (2022-04-30)
+# net-wireless/sdrplay contains prebuilt binaries, currently available
+# upstream only for amd64/x86 and arm
+net-wireless/gr-osmosdr sdrplay
 
-# Yixun Lan <dlan@gentoo.org> (2020-09-01)
-# Dependencies not keyworded
-dev-libs/jansson doc
-# Dependencies not keyworded, require by dev-perl/Net-LibIDN, #737594
-net-dns/libidn mono
+# Yixun Lan <dlan@gentoo.org> (2022-04-30)
+# net-misc/memcached has test failure (bug #811477)
+net-ftp/proftpd memcache
 
-# Jakov Smolic <jakov.smolic@sartura.hr> (2020-08-14)
-# Large amount of missing keywords
-# Bug #724358
->=dev-libs/json-c-0.15 doc
+# Jakov Smolić <jsmolic@gentoo.org> (2022-04-24)
+# sys-libs/db is being deprecated (bug #837629)
+# so avoid keywording 4.8 slot
+dev-lisp/clisp berkdb
 
-# Sam James <sam@gentoo.org> (2020-07-31)
-# Large amount of missing keywords for cmake and friends
-# bug #720296, bug #724358
-dev-util/cmake doc test
-dev-libs/jsoncpp doc
+# Jakov Smolić <jsmolic@gentoo.org> (2022-04-07)
+# Depends on sys-cluster/ceph which pulls in valgrind, which is
+# unavailable on riscv currently
+sys-block/fio rbd
 
-# Lars Wendler <polynomial-c@gentoo.org> (2020-05-10)
-# Missing keyword
-media-libs/freetype brotli
+# Marek Szuba <marecki@gentoo.org> (2022-03-30)
+# Indirectly depends on dev-python/pytest-testinfra, which is currently
+# blocked from being keyworded on this arch by several errors (Bug #835717)
+dev-python/subprocess-tee test-full
 
-# Patrick McLean <chutzpah@gentoo.org> (2020-04-16)
-# Lots of python dependencies, mask to facilitate keywording
-# keywording dev-libs/libfido2
-dev-libs/libcbor doc
+# Jakov Smolić <jsmolic@gentoo.org> (2022-03-25)
+# sys-process/criu doesn't support riscv (bug #835975)
+# Upstream bug for criu: https://github.com/checkpoint-restore/criu/issues/1702
+app-containers/crun criu
 
-# Joonas Niilola <juippis@gentoo.org> (2020-03-26)
-# Dependency not keyworded on ~riscv
-dev-libs/libpipeline test
-sys-apps/kbd test
+# Jakov Smolić <jsmolic@gentoo.org> (2022-03-24)
+# Depends on net-misc/memcached which has concerning test
+# failures on riscv (bug #811477)
+dev-python/pytest-services test
 
-# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
-# Mask until dev-libs/libfido2 is keyworded
-net-misc/openssh security-key
+# Alex Fan <alex.fan.q@gmail.com> (2022-02-28)
+# dev-libs/vc is a dummy implementation on this arch
+# krita fails to build with it
+media-gfx/krita vc
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
-# media-libs/gd is not keyworded on riscv
-sys-libs/glibc gd
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
+# Mask AMF keyword on non-amd64 arches
+# It is unusable, for now, in other arches
+media-video/ffmpeg amf
 
-# Dependency resolution is broken because
-# sys-fs/lvm2 has no riscv keyword
-sys-fs/e2fsprogs cron
+# Yongxinag Liang <tanekliang@gmail.com> (2022-01-09)
+# app-emulation/xen-tools doesn't support riscv yet
+app-emulation/qemu xen
+# unkeyworded depdendency - sys-cluster/ceph
+app-emulation/qemu rbd
+sys-fs/multipath-tools rbd
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-16)
+# requires sys-apps/dbus-broker, which is keyworded here.
+sys-apps/systemd -hostnamed-fallback
+
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2012-12-25)
+# Requires dev-qt/qtwebengine
+sci-astronomy/stellarium webengine
+
+# Alex Fan <alex.fan.q@gmail.com> (2021-12-12)
+# dev-python/uvloop fails test #806412
+# but with it installed, anyio passes all tests
+dev-python/anyio test
+
+# Marek Szuba <marecki@gentoo.org> (2021-09-23)
+# mkdocs ecosystem only partly keyworded on riscv, has rather messy
+# Python-target requirements.
+dev-python/backrefs doc
+dev-python/pyspelling doc
+dev-python/wcmatch doc
+
+# Alex Fan <alex.fan.q@gmail.com> (2022-05-16)
+# These depend on Haskell:
+#  - dev-vcs/darcs
+app-portage/layman darcs
+#  - app-text/pandoc
+sys-cluster/ceph pmdk
+app-text/nuspell doc
+
+# Alex Fan <alexfanqi@yahoo.com> (2021-09-15)
+# Marek Szuba <marecki@gentoo.org> (2021-09-07)
+# All of these require net-libs/nodejs, which now builds on riscv
+# but fails tests (Bug #782913).
+#  - www-client/firefox (bdepend)
+dev-ruby/capybara test
+#  - dev-qt/qtwebengine (bdepend)
+dev-python/ipython qt5
+kde-apps/marble webengine
+kde-plasma/kdeplasma-addons webengine
+kde-plasma/libksysguard webengine
+net-irc/quassel urlpreview
+
+# Marek Szuba <marecki@gentoo.org> (2021-09-07)
+# net-misc/memcached not keyworded yet due to failing tests (Bug #811477)
+dev-ruby/dalli test
+
+# Jonathan Davies <jpds@protonmail.com> (2021-09-03)
+# Requires CPU with SSSE3 support
+net-analyzer/suricata hyperscan
+
+# Yixun Lan <dlan@gentoo.org> (2021-08-29)
+#  sys-apps/fwupd not tested, USE=spi,uefi,dell
+#  sys-apps/flashrom no risc-v support, bug 810880
+#  sys-apps/flashrom USE=introspection fail to build, bug 811321
+sys-apps/fwupd flashrom introspection spi uefi
+
+# Marek Szuba <marecki@gentoo.org> (2021-08-23)
+# sys-cluster/ceph not keyworded here yet due to several dependencies
+# failing tests
+net-analyzer/rrdtool rados
+
+# Marek Szuba <marecki@gentoo.org> (2021-08-22)
+# net-fs/openafs does not support riscv
+app-crypt/heimdal afs
+# app-editors/xemacs reports arch as unknown, fails to build
+dev-lang/ruby xemacs
+
+# Yixun Lan <dlan@gentoo.org> (2021-08-20)
+# dependencies not keyworded/tested
+gnome-extra/sushi office
+gnome-base/gnome-shell browser-extension
+
+# Alex Fan <alexfanqi@yahoo.com> (2021-08-17)
+# dependencies not keyworded/tested
+kde-plasma/plasma-meta plymouth
+
+# Marek Szuba <marecki@gentoo.org> (2021-08-11)
+# Currently requires dev-lang/spidermonkey:68, which explicitly
+# does not support riscv. Hopefully temporary, see Bug #807772.
+net-libs/libproxy spidermonkey
+
+# Marek Szuba <marecki@gentoo.org> (2021-08-14)
+# Alex Fan <alexfanqi@yahoo.com> (2021-08-05)
+# These USE flags depend on java, not (sustainably) supported yet
+#  - dev-tex/pdfannotextractor
+app-text/texlive pdfannotextractor
+#  - JDK
+media-libs/rubberband jni
+#  - dev-java/jackcess
+sci-libs/gdal mdb
+
+# Yixun Lan <dlan@gentoo.org> (2021-08-05)
+# Boost.Context can be built on riscv
+dev-libs/boost -context
+
+# Marek Szuba <marecki@gentoo.org> (2021-07-27)
+# dev-libs/boxfort does not support riscv yet, meaning
+# dev-libs/criterion cannot be keyworded here
+app-admin/syslog-ng test
+
+# Marek Szuba <marecki@gentoo.org> (2021-07-27)
+# dev-db/mongodb does not support riscv, fails src_configure
+dev-libs/mongo-c-driver test
+dev-python/pymongo test
+
+# Alex Fan <alexfanqi@yahoo.com> (2021-07-20)
+# hdf5-1.10 always fails tests with these 2 use flags enabled, otherwise
+# passes all tests on at least some systems. No longer needed for 1.12,
+# though.
+<sci-libs/hdf5-1.12.1 fortran debug
+
+# Alex Fan <alexfanqi@yahoo.com> (2021-08-12)
+# Marek Szuba <marecki@gentoo.org> (2021-07-14)
+# LuaJIT does not support riscv
+app-text/texlive-core luajittex
+dev-texlive/texlive-basic luajittex
+media-gfx/gimp lua
+www-servers/nginx nginx_modules_http_lua
+
+# Marek Szuba <marecki@gentoo.org> (2021-07-11)
+# Causes 35 tests to fail with "fatal llvm error", bug #844946
+dev-db/postgresql llvm
+
+# Marek Szuba <marecki@gentoo.org> (2021-07-05)
+# sys-cluster/ucx fails to compile on this arch
+sys-cluster/slurm ucx
+
+# Marek Szuba <marecki@gentoo.org> (2021-07-05)
+# Dependencies not keyworded here yet:
+#  - sci-libs/vtk
+media-libs/opencv vtk
+sci-libs/opencascade vtk
 
 # This doesn't work for (any) riscv yet.
 dev-libs/libpcre2 jit
 dev-libs/libpcre jit
-dev-vcs/git pcre-jit
-
-# Not yet tested / unkeyworded dependencies
-# This includes also packages which do not support python-3 or
-# do not support python-3.7 yet.
-
-app-admin/syslog-ng amqp dbi geoip geoip2 json kafka mongodb python redis spoof-source smtp snmp test
-app-admin/sysstat lm-sensors
-app-arch/unzip natspec
-app-crypt/gnupg smartcard tofu wks-server
-app-crypt/mit-krb5 doc test xinetd
-app-crypt/pinentry fltk gnome-keyring
-app-doc/doxygen latex dot
-app-editors/emacs alsa json lcms mailutils
-app-misc/pax-utils python
-app-text/asciidoc test
-app-text/po4a test
-app-text/xmlto text
-dev-lang/python tk
-dev-libs/boost mpi numpy zstd
-dev-libs/check doc subunit
-dev-libs/glib gtk-doc test
-dev-libs/icu doc
-dev-libs/iniparser doc
-dev-libs/libgcrypt doc
-dev-libs/libnl python
-dev-libs/libusb doc
-dev-libs/libxslt python
-dev-libs/libyaml doc
-dev-python/argcomplete test
-dev-python/aiohttp doc test
-dev-python/cython doc test
-dev-python/jinja doc test
-dev-python/lxml test
-dev-python/markupsafe test
-dev-python/numpy lapack
-dev-python/pbr test
-dev-python/pypiserver test
-dev-python/pygments doc test
-dev-python/setuptools test
-dev-python/snakeoil test
-dev-python/sphinx doc test
-dev-python/sphinxcontrib-spelling test
-dev-python/twisted test
-dev-python/urllib3 test
-dev-util/catalyst iso
-dev-util/meson test
-dev-util/ninja doc test
-dev-util/patchutils test
-dev-util/pkgconf test
-dev-util/strace unwind
-dev-vcs/git cvs highlight gnome-keyring subversion tk xinetd
-dev-vcs/mercurial tk zsh-completion
-media-libs/freetype harfbuzz png
-media-libs/tiff jbig jpeg test webp
-net-fs/nfs-utils nfsv41
-net-libs/gnutls doc test-full
-net-libs/ldns doc python
-net-libs/libpcap rdma
-net-misc/curl brotli curl_ssl_libressl curl_ssl_mbedtls curl_ssl_nss rtmp ssh
-net-misc/ntp openntpd snmp vim-syntax zeroconf
-net-nds/openldap cxx kerberos sasl
-sys-apps/kmod doc
-sys-apps/portage apidoc
-sys-apps/rng-tools nistbeacon pkcs11
-sys-auth/pambase gnome-keyring pam_krb5 pam_ssh  mktemp
-sys-block/thin-provisioning-tools test
-sys-devel/automake test
-sys-devel/gdb source-highlight
-sys-devel/gettext cvs
-sys-fs/squashfs-tools lzma
-sys-libs/libcap-ng python
-sys-process/audit gssapi python
+www-servers/nginx pcre-jit

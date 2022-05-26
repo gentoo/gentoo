@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
     <email>mgorny@gentoo.org</email>
@@ -13,5 +13,6 @@
     </maintainer>
     <bugs-to>https://github.com/mgorny/gpyutils/issues/</bugs-to>
     <remote-id type="github">mgorny/gpyutils</remote-id>
+    <remote-id type="pypi">gpyutils</remote-id>
   </upstream>
 </pkgmetadata>

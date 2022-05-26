@@ -1,11 +1,13 @@
-# Copyright 2007-2015 Gentoo Foundation
+# Copyright 2007-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-osgi.eclass
 # @MAINTAINER:
 # java@gentoo.org
 # @AUTHOR:
-# Java maintainers (java@gentoo.org)
+# Java maintainers <java@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7 8
+# @PROVIDES: java-utils-2
 # @BLURB: Java OSGi eclass
 # @DESCRIPTION:
 # This eclass provides functionality which is used by packages that need to be
@@ -13,9 +15,17 @@
 # in their manifests. Currently this is used only by Eclipse-3.3 - later we
 # could extend this so that Gentoo Java system would be fully OSGi compliant.
 
+case ${EAPI:-0} in
+	[5678]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ -z ${_JAVA_OSGI_ECLASS} ]] ; then
+_JAVA_OSGI_ECLASS=1
+
 inherit java-utils-2
 
-# @ECLASS-VARIABLE: _OSGI_T
+# @ECLASS_VARIABLE: _OSGI_T
 # @INTERNAL
 # @DESCRIPTION:
 # We define _OSGI_T so that it does not contain a slash at the end.
@@ -275,3 +285,5 @@ java-osgi_dojar-fromfile() {
 	_java-osgi_makejar-fromfile "$@" "${versionRewriting}"
 	java-pkg_dojar "${_OSGI_T}/osgi/${jarName}"
 }
+
+fi

@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit versionator
 
-DESCRIPTION="Symlinks and syncs browser profile dirs to RAM."
+DESCRIPTION="Symlinks and syncs browser profile dirs to RAM"
 HOMEPAGE="https://wiki.archlinux.org/index.php/Profile-sync-daemon"
 
 SRC_URI="https://github.com/graysky2/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"

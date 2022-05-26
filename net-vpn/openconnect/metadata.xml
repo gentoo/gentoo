@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>floppym@gentoo.org</email>
@@ -12,6 +12,7 @@
 	<use>
 		<flag name="gssapi">Build GSSAPI support</flag>
 		<flag name="libproxy">Enable proxy support</flag>
+		<flag name="pskc">Enable PSKC file storage of HOTP/TOTP keys</flag>
 		<flag name="stoken">Enable stoken support</flag>
 	</use>
 </pkgmetadata>

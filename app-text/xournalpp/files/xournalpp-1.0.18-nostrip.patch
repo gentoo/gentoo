@@ -1,0 +1,15 @@
+diff --git a/src/xoj-preview-extractor/CMakeLists.txt b/src/xoj-preview-extractor/CMakeLists.txt
+index b2029d68..2e1d68ba 100644
+--- a/src/xoj-preview-extractor/CMakeLists.txt
++++ b/src/xoj-preview-extractor/CMakeLists.txt
+@@ -36,10 +36,6 @@ target_link_libraries (xournal-thumbnailer
+ 
+ set (THUMBNAILER_BIN "xournal-thumbnailer")
+ 
+-add_custom_command (TARGET xournal-thumbnailer POST_BUILD
+-  COMMAND ${CMAKE_STRIP} ${THUMBNAILER_BIN}
+-)
+-
+ ## Install ##
+ 
+ install (TARGETS xournal-thumbnailer

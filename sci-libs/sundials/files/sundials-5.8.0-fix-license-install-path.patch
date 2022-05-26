@@ -1,0 +1,29 @@
+From 554a760daeda3a04049bfa4cf882aae1207f833d Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Fri, 30 Apr 2021 11:58:25 +0200
+Subject: [PATCH] fix license install path
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 40a650e..d57ca7b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -231,10 +231,10 @@ endif()
+ 
+ # install license and notice files
+ install(FILES "${PROJECT_SOURCE_DIR}/LICENSE"
+-        DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/sundials"
++        DESTINATION "${CMAKE_INSTALL_DOCDIR}"
+ )
+ install(FILES "${PROJECT_SOURCE_DIR}/NOTICE"
+-        DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/sundials"
++        DESTINATION "${CMAKE_INSTALL_DOCDIR}"
+ )
+ 
+ # create package version file
+-- 
+2.31.1

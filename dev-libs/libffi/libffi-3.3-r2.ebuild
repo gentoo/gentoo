@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit multilib multilib-minimal toolchain-funcs
+inherit multilib-minimal
 
 MY_PV=${PV/_rc/-rc}
 MY_P=${PN}-${MY_PV}
@@ -13,8 +13,8 @@ SRC_URI="https://github.com/libffi/libffi/releases/download/v${MY_PV}/${MY_P}.ta
 
 LICENSE="MIT"
 SLOT="0/7" # SONAME=libffi.so.7
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="debug pax_kernel static-libs test"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="debug pax-kernel static-libs test"
 
 RESTRICT="!test? ( test )"
 
@@ -32,28 +32,23 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.3-power7-memcpy-2.patch
 	"${FILESDIR}"/${PN}-3.3-ppc-int128.patch
 	"${FILESDIR}"/${PN}-3.3-ppc-vector-offset.patch
+	"${FILESDIR}"/${PN}-3.3-compiler-vendor-quote.patch
 )
 
 S=${WORKDIR}/${MY_P}
 
 ECONF_SOURCE=${S}
 
-pkg_setup() {
-	# Check for orphaned libffi, see https://bugs.gentoo.org/354903 for example
-	if [[ ${ROOT} == "/" && ${EPREFIX} == "" ]] && ! has_version ${CATEGORY}/${PN}; then
-		local base="${T}"/conftest
-		echo 'int main() { }' > "${base}".c
-		$(tc-getCC) -o "${base}" "${base}".c -lffi >&/dev/null
-		if [ $? -eq 0 ]; then
-			eerror "The linker reported linking against -lffi to be working while it shouldn't have."
-			eerror "This is wrong and you should find and delete the old copy of libffi before continuing."
-			die "The system is in inconsistent state with unknown libffi installed."
-		fi
+src_prepare() {
+	default
+	if [[ ${CHOST} == arm64-*-darwin* ]] ; then
+		# ensure we use aarch64 asm, not x86 on arm64
+		sed -i -e 's/aarch64\*-\*-\*/arm64*-*-*|&/' \
+			configure configure.host || die
 	fi
 }
 
 multilib_src_configure() {
-	use userland_BSD && export HOST="${CHOST}"
 	# --includedir= path maintains a few properties:
 	# 1. have stable name across libffi versions: some packages like
 	#    dev-lang/ghc or kde-frameworks/networkmanager-qt embed
@@ -69,7 +64,7 @@ multilib_src_configure() {
 		--includedir="${EPREFIX}"/usr/$(get_libdir)/${PN}/include \
 		--disable-multi-os-directory \
 		$(use_enable static-libs static) \
-		$(use_enable pax_kernel pax_emutramp) \
+		$(use_enable pax-kernel pax_emutramp) \
 		$(use_enable debug)
 }
 

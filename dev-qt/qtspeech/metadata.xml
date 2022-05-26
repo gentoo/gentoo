@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>qt@gentoo.org</email>
@@ -9,6 +9,9 @@
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
 		<doc>https://doc.qt.io/</doc>
 	</upstream>
+	<use>
+		<flag name="flite">Enable text-to-speech synthesizer plugin using <pkg>app-accessibility/flite</pkg> engine</flag>
+	</use>
 	<slots>
 		<subslots>
 			Must only be used by packages that are known to use private parts of the Qt API.

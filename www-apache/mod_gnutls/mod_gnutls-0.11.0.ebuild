@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # WARNING! Don't switch to EAPI-6 without checking paths of installed files
 # carefully. The .so file might get installed into /
 EAPI=6
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit autotools apache-module python-any-r1
 
@@ -15,7 +15,7 @@ SRC_URI="https://mod.gnutls.org/downloads/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 CDEPEND=">=net-libs/gnutls-3.3.0:=[pkcs11]"

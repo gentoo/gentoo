@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI="http://ctp.di.fct.unl.pt/~amd/cxprolog/cxunix/${P}.src.tgz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="examples java +readline test wxwidgets"
 RESTRICT="!test? ( test )"
 
@@ -32,6 +32,7 @@ S="${WORKDIR}"/${P}
 
 src_prepare() {
 	eapply "${FILESDIR}"/${P}-portage.patch
+	eapply "${FILESDIR}"/${P}-printf-musl.patch
 	eapply "${FILESDIR}"/${P}-test-io.patch
 	eapply_user
 
@@ -74,9 +75,9 @@ src_compile() {
 	emake lib \
 		PREFIX=/usr \
 		TMP_DIR="${S}/tmp" \
-		CC=$(tc-getCC) \
-		CPP=$(tc-getCXX) \
-		LD=$(tc-getLD) \
+		CC="$(tc-getCC)" \
+		CPP="$(tc-getCXX)" \
+		LD="$(tc-getLD)" \
 		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
 		EXT_DEFINES="${CX_EXT_DEFINES}" \

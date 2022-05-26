@@ -1,9 +1,0 @@
---- a/config/scheme_handler/oidc-gen.desktop
-+++ b/config/scheme_handler/oidc-gen.desktop
-@@ -5,5 +5,5 @@
- Icon=utilities-terminal
- Terminal=true
- Type=Application
--Categories=Application;Network;
-+Categories=Network;
- MimeType=x-scheme-handler/edu.kit.data.oidc-agent;

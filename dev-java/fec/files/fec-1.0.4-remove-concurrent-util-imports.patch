@@ -1,5 +1,5 @@
---- src/com/onionnetworks/fec/io/FECFile.java.orig	2015-10-18 15:38:26.000000000 +0000
-+++ src/com/onionnetworks/fec/io/FECFile.java	2015-10-18 16:06:51.159486000 +0000
+--- a/src/com/onionnetworks/fec/io/FECFile.java.orig	2015-10-18 15:38:26.000000000 +0000
++++ b/src/com/onionnetworks/fec/io/FECFile.java	2015-10-18 16:06:51.159486000 +0000
 @@ -10,7 +10,9 @@
  import com.onionnetworks.fec.FECCodeFactory;
  import com.onionnetworks.io.RAF;

@@ -1,31 +1,22 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit toolchain-funcs
 
 DESCRIPTION="A rewrite and improvement upon sim4, a DNA-mRNA aligner"
 HOMEPAGE="http://sibsim4.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/SIBsim4-${PV}.tar.gz"
+S="${WORKDIR}/SIBsim4-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
 KEYWORDS="amd64 x86"
 
-DEPEND=""
-RDEPEND=""
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
-S="${WORKDIR}/SIBsim4-${PV}"
-
-src_prepare() {
-	sed \
-		-e 's/CFLAGS = /CFLAGS +=/' \
-		-e '/^CC/s:=:?=:' \
-		-e '/^OPT/d' \
-		-e "s:-o:${LDFLAGS} -o:g" \
-		-i "${S}/Makefile" || die
+src_configure() {
 	tc-export CC
 }
 

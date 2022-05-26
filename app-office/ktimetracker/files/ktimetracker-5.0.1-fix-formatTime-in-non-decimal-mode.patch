@@ -1,0 +1,33 @@
+From 310c0fee25f142c6f6a0e7a0b4445af2e8785c79 Mon Sep 17 00:00:00 2001
+From: Pino Toscano <pino@kde.org>
+Date: Wed, 21 Oct 2020 10:49:20 +0200
+Subject: [PATCH] Fix formatTime() in non-decimal mode on 32bit archs
+
+int64_t is not long int on 32bit architectures but long long int, thus
+the "%ld" printf modifer gets truncated/wrong values.
+
+As solution, do not use int64_t but long long int, so the "%lld" can be
+always used.
+---
+ src/ktimetrackerutility.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/ktimetrackerutility.cpp b/src/ktimetrackerutility.cpp
+index aca00e8..fe449ba 100644
+--- a/src/ktimetrackerutility.cpp
++++ b/src/ktimetrackerutility.cpp
+@@ -33,9 +33,9 @@ QString formatTime(double minutes, bool decimal)
+         time.sprintf("%.2f", minutes / 60.0);
+         time.replace('.', QLocale().decimalPoint());
+     } else {
+-        const auto absMinutes = static_cast<int64_t>(std::round(std::fabs(minutes)));
++        const auto absMinutes = static_cast<long long int>(std::round(std::fabs(minutes)));
+         time.sprintf(
+-            "%s%ld:%02ld",
++            "%s%lld:%02lld",
+             minutes < 0 ? QString(QLocale().negativeSign()).toUtf8().data() : "",
+             absMinutes / 60, absMinutes % 60);
+     }
+-- 
+GitLab
+

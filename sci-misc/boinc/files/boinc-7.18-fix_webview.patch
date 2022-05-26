@@ -1,0 +1,13 @@
+This patch is an update to the existing fix_webview.patch for 7.18
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -1262,7 +1262,7 @@ else
+     CLIENTGUIFLAGS="${CLIENTGUIFLAGS} -DNDEBUG"
+ fi
+ 
+-CLIENTGUILIBS="${WX_LIBS}"
++CLIENTGUILIBS="${WX_LIBS} $($WX_CONFIG_WITH_ARGS --libs webview)"
+ 
+ if test "${enable_client_release}" = "yes" ; then
+    if test "x${WX_LIBS_STATIC}" = "x" ; then

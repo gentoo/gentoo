@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>patrick@gentoo.org</email>
-    <name>Patrick Lauer</name>
-  </maintainer>
+	<maintainer type="person">
+		<email>patrick@gentoo.org</email>
+		<name>Patrick Lauer</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">requests-file</remote-id>
+		<remote-id type="github">dashea/requests-file</remote-id>
+		<bugs-to>https://github.com/dashea/requests-file/issues</bugs-to>
+	</upstream>
 </pkgmetadata>

@@ -1,54 +1,53 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-[[ ${PV} = 9999* ]] && inherit git-r3 autotools
-
+inherit autotools git-r3
 DESCRIPTION="Client library for accessing ISDS Soap services"
 HOMEPAGE="http://xpisar.wz.cz/libisds/"
-if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="git://repo.or.cz/${PN}.git"
-else
-	SRC_URI="http://xpisar.wz.cz/${PN}/dist/${P}.tar.xz"
-	KEYWORDS="~amd64 ~mips ~x86"
-fi
+EGIT_REPO_URI="https://repo.or.cz/${PN}.git"
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="+curl debug nls static-libs test"
+IUSE="+curl debug doc nls openssl test"
 RESTRICT="!test? ( test )"
 
-COMMON_DEPEND="
-	app-crypt/gpgme
+RDEPEND="
 	dev-libs/expat
-	dev-libs/libgcrypt:0=
 	dev-libs/libxml2
 	curl? ( net-misc/curl[ssl] )
-"
-DEPEND="${COMMON_DEPEND}
+	doc? (
+		app-text/docbook-xsl-stylesheets
+		dev-libs/libxslt
+	)
+	openssl? ( dev-libs/openssl:= )
+	!openssl? (
+		app-crypt/gnupg
+		app-crypt/gpgme:=
+		dev-libs/libgcrypt:=
+	)"
+DEPEND="${RDEPEND}
+	test? ( net-libs/gnutls )"
+BDEPEND="
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
-"
-RDEPEND="${COMMON_DEPEND}
-	>=app-crypt/gnupg-2
-"
-
-DOCS=( NEWS README AUTHORS ChangeLog )
+	nls? ( sys-devel/gettext )"
 
 src_prepare() {
 	default
-	[[ ${PV} = 9999* ]] && eautoreconf
+	eautoreconf
 }
 
 src_configure() {
 	local myeconfargs=(
 		--disable-fatalwarnings
+		--disable-static
 		$(use_with curl libcurl)
 		$(use_enable curl curlreauthorizationbug)
+		$(use_enable doc)
 		$(use_enable debug)
 		$(use_enable nls)
-		$(use_enable static-libs static)
+		$(use_enable openssl openssl-backend)
 		$(use_enable test)
 	)
 	econf "${myeconfargs[@]}"
@@ -57,5 +56,5 @@ src_configure() {
 src_install() {
 	default
 
-	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }

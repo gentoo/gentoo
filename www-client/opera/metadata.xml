@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-<email>jer@gentoo.org</email>
-<name>Jeroen Roovers</name>
-</maintainer>
-<longdescription>
-Opera is a graphical Web browser available on several platforms. The desktop
-version runs on GNU/Linux and FreeBSD. Versions for Macintosh and
-Windows are also available.
-</longdescription>
+	<maintainer type="project">
+		<email>chromium@gentoo.org</email>
+		<name>Chromium in Gentoo Project</name>
+	</maintainer>
+	<use>
+		<flag name="proprietary-codecs">Enable codecs for patent-encumbered audio and video formats.</flag>
+	</use>
 </pkgmetadata>

@@ -1,31 +1,29 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools eutils ltprune toolchain-funcs
+inherit autotools toolchain-funcs
 
 MYPN="ColPack"
 
 DESCRIPTION="C++ algorithms for specialized vertex coloring problems"
-LICENSE="GPL-3 LGPL-3"
-HOMEPAGE="http://cscapes.cs.purdue.edu/coloringpage/"
+HOMEPAGE="https://cscapes.cs.purdue.edu/coloringpage/"
 SRC_URI="https://github.com/CSCsw/${MYPN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
+LICENSE="GPL-3 LGPL-3"
 SLOT="0"
-IUSE="openmp static-libs"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
-
-RDEPEND=""
-DEPEND="${RDEPEND}"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+IUSE="openmp"
 
 S="${WORKDIR}/${MYPN}-${PV}"
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
-	if [[ ${MERGE_TYPE} != "binary" ]] && use openmp && [[ $(tc-getCC)$ == *gcc* ]] &&	! tc-has-openmp; then
-		ewarn "You are using gcc without OpenMP"
-		die "Need an OpenMP capable compiler"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_prepare() {
@@ -36,13 +34,12 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--enable-shared \
-		$(use_enable static-libs static) \
+		--disable-static \
 		$(use_enable openmp)
 }
 
 src_install() {
 	default
 	rm -rf "${ED}"/usr/examples
-	use static-libs || prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 }

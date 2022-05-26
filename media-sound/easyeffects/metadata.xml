@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<use>
+		<flag name="calf">Enable use of <pkg>media-plugins/calf</pkg> for adding various FX</flag>
+		<flag name="doc">Install packages needed to display built-in user documentation</flag>
+		<flag name="mda-lv2">Enable use of <pkg>media-plugins/mda-lv2</pkg> for the loudness FX</flag>
+		<flag name="zamaudio">Enable use of <pkg>media-plugins/zam-plugins</pkg> for the maximizer FX</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">wwmm/easyeffects</remote-id>
+	</upstream>
+</pkgmetadata>

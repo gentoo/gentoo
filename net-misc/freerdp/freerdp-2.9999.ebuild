@@ -1,7 +1,7 @@
-# Copyright 2011-2020 Gentoo Authors
+# Copyright 2011-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
@@ -15,7 +15,7 @@ else
 	MY_P=${P/_/-}
 	S="${WORKDIR}/${MY_P}"
 	SRC_URI="https://pub.freerdp.com/releases/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Free implementation of the Remote Desktop Protocol"
@@ -23,12 +23,11 @@ HOMEPAGE="http://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="0/2"
-IUSE="alsa cpu_flags_arm_neon cups debug doc +ffmpeg gstreamer jpeg libressl openh264 pulseaudio server smartcard systemd test usb wayland X xinerama xv"
+IUSE="alsa cpu_flags_arm_neon cups debug doc +ffmpeg gstreamer jpeg openh264 pulseaudio server smartcard systemd test usb wayland X xinerama xv"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	sys-libs/zlib:0
 	alsa? ( media-libs/alsa-lib )
 	cups? ( net-print/cups )
@@ -55,7 +54,7 @@ RDEPEND="
 		media-libs/gst-plugins-base:1.0
 		x11-libs/libXrandr
 	)
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:0= )
 	openh264? ( media-libs/openh264:0= )
 	pulseaudio? ( media-sound/pulseaudio )
 	server? (
@@ -116,4 +115,10 @@ src_configure() {
 		-DWITH_WAYLAND=$(usex wayland ON OFF)
 	)
 	cmake_src_configure
+}
+
+src_test() {
+	local myctestargs=()
+	use elibc_musl && myctestargs+=( -E TestBacktrace )
+	cmake_src_test
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>u.scholz83@gmx.de</email>
     <name>Uwe Scholz</name>
    </maintainer>
-  <maintainer type="project">
+  <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
@@ -14,12 +14,10 @@
       <email>u.scholz83@gmx.de</email>
       <name>Uwe Scholz</name>
     </maintainer>
-    <changelog>https://gitlab.gnome.org/GNOME/gnome-commander/blob/gcmd-1-4/NEWS</changelog>
+    <changelog>https://gitlab.gnome.org/GNOME/gnome-commander/-/blob/master/NEWS</changelog>
     <bugs-to>https://gitlab.gnome.org/GNOME/gnome-commander/issues</bugs-to>
-    <remote-id type="freecode">gnome-commander</remote-id>
   </upstream>
   <use>
-    <flag name="chm">Enable metadata support for Microsoft Compiled HTML Help files</flag>
     <flag name="gsf">Add metadata support for OLE, OLE2 and ODF</flag>
     <flag name="unique">Enable single instance support using dev-libs/libunique</flag>
     <flag name="pdf">Add metadata support for PDF</flag>

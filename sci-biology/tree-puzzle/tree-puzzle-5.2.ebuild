@@ -1,9 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
-inherit toolchain-funcs
+EAPI=8
 
 DESCRIPTION="Maximum likelihood analysis for nucleotide, amino acid, and two-state data"
 HOMEPAGE="http://www.tree-puzzle.de"
@@ -18,14 +16,10 @@ RESTRICT="test"
 DEPEND="mpi? ( virtual/mpi )"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-impl-dec.patch )
-
-pkg_setup() {
-	use mpi && [[ $(tc-getCC) == icc* ]] &&
-		die "The parallelized version of tree-puzzle cannot be compiled using icc.
-			Either disable the \"mpi\" USE flag to compile only the non-parallelized
-			version of the program, or use gcc as your compiler (CC=\"gcc\")."
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-impl-dec.patch
+	"${FILESDIR}"/${P}-MPI-3.0.patch
+)
 
 src_configure() {
 	default
@@ -38,9 +32,14 @@ src_configure() {
 	fi
 }
 
+src_compile() {
+	# hopelessly terrible build system, abuses Automake
+	emake -j1
+}
+
 src_install() {
-	dobin src/puzzle
-	use mpi && dobin src/ppuzzle
+	dobin src/puzzle $(usev mpi src/ppuzzle)
+
 	einstalldocs
 
 	# User manual

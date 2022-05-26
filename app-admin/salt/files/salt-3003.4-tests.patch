@@ -1,0 +1,52 @@
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 0fc1844bc8..32346da1f6 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -34,7 +34,6 @@ import salt.utils.files
+ import salt.utils.path
+ import salt.utils.platform
+ import salt.utils.win_functions
+-import saltfactories.utils.compat
+ from salt.serializers import yaml
+ from salt.utils.immutabletypes import freeze
+ from tests.support.helpers import (
+@@ -465,9 +464,7 @@ def pytest_runtest_setup(item):
+         item._skipped_by_mark = True
+         pytest.skip(PRE_PYTEST_SKIP_REASON)
+ 
+-    if saltfactories.utils.compat.has_unittest_attr(
+-        item, "__slow_test__"
+-    ) or item.get_closest_marker("slow_test"):
++    if item.get_closest_marker("slow_test"):
+         if item.config.getoption("--run-slow") is False:
+             item._skipped_by_mark = True
+             pytest.skip("Slow tests are disabled!")
+diff --git a/tests/unit/utils/test_schema.py b/tests/unit/utils/test_schema.py
+index ef7acdb7a3..22953556cb 100644
+--- a/tests/unit/utils/test_schema.py
++++ b/tests/unit/utils/test_schema.py
+@@ -1,6 +1,8 @@
+ # pylint: disable=function-redefined
+ import copy
+ 
++import pytest
++
+ import salt.utils.json
+ import salt.utils.schema as schema
+ import salt.utils.stringutils
+@@ -822,6 +824,7 @@ class ConfigTestCase(TestCase):
+             },
+         )
+ 
++    @pytest.mark.skip("broken with newer versions of jsonschema")
+     @skipIf(HAS_JSONSCHEMA is False, "The 'jsonschema' library is missing")
+     def test_hostname_config_validation(self):
+         class TestConf(schema.Schema):
+@@ -2048,6 +2051,7 @@ class ConfigTestCase(TestCase):
+         item = schema.NotItem(item=schema.BooleanItem())
+         self.assertEqual(item.serialize(), {"not": item.item.serialize()})
+ 
++    @pytest.mark.skip("broken with newer versions of jsonschema")
+     @skipIf(HAS_JSONSCHEMA is False, "The 'jsonschema' library is missing")
+     def test_not_config_validation(self):
+         class TestConf(schema.Schema):

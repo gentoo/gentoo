@@ -34,6 +34,8 @@ BDEPEND="
 	man? ( app-text/scdoc )
 "
 
+PATCHES=( "${FILESDIR}"/${PN}-0.6-r1-werror.patch )
+
 src_configure() {
 	local emesonargs=(
 		$(meson_feature man man-pages)

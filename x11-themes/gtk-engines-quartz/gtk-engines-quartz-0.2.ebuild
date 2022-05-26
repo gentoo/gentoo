@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="http://downloads.sourceforge.net/project/gtk-osx/GTK%20Quartz%20Engine/
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~ppc-macos ~x86-macos"
+KEYWORDS="~ppc-macos"
 IUSE=""
 
 RDEPEND=">=x11-libs/gtk+-2.10:2"

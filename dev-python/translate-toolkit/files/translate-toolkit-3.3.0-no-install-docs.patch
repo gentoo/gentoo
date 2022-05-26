@@ -1,0 +1,25 @@
+From 6271bfede35f22e8099261863d990eba3d26f989 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 4 Jan 2021 10:33:29 +0100
+Subject: [PATCH] Do not install docs tree into site-packages
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 5fc3abf..80ce25d 100755
+--- a/setup.py
++++ b/setup.py
+@@ -513,7 +513,7 @@ def getdatafiles():
+         )
+ 
+     docfiles = []
+-    for subdir in ["docs", "share"]:
++    for subdir in ["share"]:
+         docwalk = os.walk(subdir)
+         for docs in docwalk:
+             files = listfiles(docs[0])
+-- 
+2.30.0
+

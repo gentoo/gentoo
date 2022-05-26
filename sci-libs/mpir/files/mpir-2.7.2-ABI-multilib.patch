@@ -1,5 +1,5 @@
---- a/configure.ac	2009-11-28 10:48:59.196977657 +0000
-+++ b/configure.ac	2009-11-28 10:54:50.717976971 +0000
+--- a/configure.ac
++++ b/configure.ac
 @@ -361,7 +361,7 @@
  # hugely bloat the output.
  

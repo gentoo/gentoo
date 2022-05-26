@@ -1,0 +1,27 @@
+From a53a5621c278db74aaffa21bbf135be1d4a55ea2 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Fri, 7 May 2021 12:05:45 -0700
+Subject: [PATCH] build: Don't link the same object twice.
+
+---
+ Makefile.am | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index af5d0bf..9012a57 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -47,10 +47,8 @@ gtk_cflags = \
+ 	$(GTK_CFLAGS) \
+ 	$(GTK_DEPRECATION)
+ 
+-# The Fink port needs an explicit reference to driver.o
+ console_libs = \
+ 	libpioneers.a \
+-	$(top_builddir)/common/libpioneers_a-driver.o \
+ 	$(GLIB2_LIBS) \
+ 	$(GIO2_LIBS)
+ 
+-- 
+2.26.3
+

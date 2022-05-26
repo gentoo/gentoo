@@ -1,8 +1,8 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake-utils readme.gentoo-r1
+inherit cmake readme.gentoo-r1
 
 DESCRIPTION="PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth"
 HOMEPAGE="https://github.com/EHfive/pulseaudio-modules-bt"
@@ -26,7 +26,7 @@ DEPEND="
 	>=net-wireless/bluez-5
 	>=sys-apps/dbus-1.0.0
 	ofono-headset? ( >=net-misc/ofono-1.13 )
-	>=media-sound/pulseaudio-${PULSE_VER}[-bluetooth]
+	( >=media-sound/pulseaudio-${PULSE_VER}[-bluetooth(-)] <media-sound/pulseaudio-15.99.1 )
 "
 # Ordinarily media-libs/libldac should be in DEPEND too, but for now upstream repo is using a ldac submodule instead.
 RDEPEND="${DEPEND}"
@@ -51,6 +51,14 @@ load-module module-bluetooth-discover
 .endif
 "
 
+src_prepare() {
+	cmake_src_prepare
+
+	# pulseaudio headers needed to build
+	rmdir pa/ || die
+	ln -s ../pulseaudio-${PULSE_VER}/ pa || die
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DCODEC_AAC_FDK=$(usex fdk "ON" "OFF")
@@ -60,19 +68,11 @@ src_configure() {
 		-DNATIVE_HEADSET=$(usex native-headset "ON" "OFF")
 		-DOFONO_HEADSET=$(usex ofono-headset "ON" "OFF")
 	)
-	cmake-utils_src_configure
-}
-
-src_prepare() {
-	cmake-utils_src_prepare
-
-	# pulseaudio headers needed to build
-	rmdir pa/ || die
-	ln -s ../pulseaudio-${PULSE_VER}/ pa || die
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	readme.gentoo_create_doc
 }
 

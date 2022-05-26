@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,6 +27,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.13.0_alpha0_pre20200710-nousrlocal.patch
+	"${FILESDIR}"/${PN}-0.13.0-libcpp-undefined-symol-vtable-for-match_any_but_newline-exec.patch
 )
 
 S="${WORKDIR}/${MY_P}"
@@ -104,7 +105,6 @@ src_configure() {
 		config.bin.ar="$(tc-getAR)" \
 		config.bin.ranlib="$(tc-getRANLIB)" \
 		config.bin.lib=shared \
-		config.install.chroot="${D}" \
 		config.install.root="${EPREFIX}"/usr \
 		config.install.lib="${EPREFIX}"/usr/$(get_libdir) \
 		config.install.doc="${EPREFIX}"/usr/share/doc/${PF}
@@ -120,7 +120,8 @@ src_test() {
 }
 
 src_install() {
-	b install
+	b install \
+		config.install.chroot="${D}"
 	mkdir -p "${ED}"/usr/share/doc/${PF}/html || die
 	mv -f "${ED}"/usr/share/doc/${PF}/*.xhtml "${ED}"/usr/share/doc/${PF}/html || die
 }

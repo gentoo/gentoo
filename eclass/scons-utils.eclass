@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: scons-utils.eclass
@@ -59,7 +59,7 @@
 
 # -- public variables --
 
-# @ECLASS-VARIABLE: SCONS_MIN_VERSION
+# @ECLASS_VARIABLE: SCONS_MIN_VERSION
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The minimal version of SCons required for the build to work.
@@ -72,28 +72,30 @@
 # List of package-specific options to pass to all SCons calls. Supposed to be
 # set in src_configure().
 
-# @ECLASS-VARIABLE: SCONSOPTS
+# @ECLASS_VARIABLE: SCONSOPTS
+# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The default set of options to pass to scons. Similar to MAKEOPTS,
 # supposed to be set in make.conf. If unset, escons() will use cleaned
 # up MAKEOPTS instead.
 
-# @ECLASS-VARIABLE: EXTRA_ESCONS
+# @ECLASS_VARIABLE: EXTRA_ESCONS
+# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The additional parameters to pass to SCons whenever escons() is used.
 # Much like EXTRA_EMAKE, this is not supposed to be used in make.conf
 # and not in ebuilds!
 
-# @ECLASS-VARIABLE: USE_SCONS_TRUE
+# @ECLASS_VARIABLE: USE_SCONS_TRUE
 # @DESCRIPTION:
 # DEPRECATED: use usex instead
 #
 # The default value for truth in scons-use() (1 by default).
 : ${USE_SCONS_TRUE:=1}
 
-# @ECLASS-VARIABLE: USE_SCONS_FALSE
+# @ECLASS_VARIABLE: USE_SCONS_FALSE
 # @DESCRIPTION:
 # DEPRECATED: use usex instead
 #
@@ -126,9 +128,9 @@ if [[ ${_PYTHON_ANY_R1} ]]; then
 	}
 	python_check_deps() { scons-utils_python_check_deps; }
 elif [[ ${_PYTHON_SINGLE_R1} ]]; then
-	# when using python-single-r1, use PYTHON_MULTI_USEDEP API
+	# when using python-single-r1, use PYTHON_USEDEP API
 	BDEPEND="
-		$(python_gen_cond_dep "${SCONS_DEPEND}[\${PYTHON_MULTI_USEDEP}]")
+		$(python_gen_cond_dep "${SCONS_DEPEND}[\${PYTHON_USEDEP}]")
 		${PYTHON_DEPS}"
 elif [[ ${EAPI:-0} == [0123456] ]]; then
 	# in older EAPIs, just force Python 2.7

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -14,8 +14,8 @@ SRC_URI="http://pub.ks-and-ks.ne.jp/prog/pub/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="w3m"
-KEYWORDS="amd64 ppc x86"
-IUSE="gpm libressl nls ssl"
+KEYWORDS="amd64 ppc ~riscv x86"
+IUSE="gpm nls ssl"
 
 DEPEND=">=dev-libs/boehm-gc-7.2
 	dev-libs/libmoe
@@ -25,8 +25,7 @@ DEPEND=">=dev-libs/boehm-gc-7.2
 	gpm? ( sys-libs/gpm )
 	nls? ( sys-devel/gettext )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)"
 RDEPEND="${DEPEND}"
 S="${WORKDIR}/${MY_P}"
@@ -49,8 +48,8 @@ HTML_DOCS=( 00INCOMPATIBLE.html )
 src_prepare() {
 	default
 
-	sed -i "s:/lib\([^a-z$]\):/$(get_libdir)\1:g" configure
-	sed -i "/^AR=/s:ar:$(tc-getAR):" XMakefile
+	sed -i "s:/lib\([^a-z$]\):/$(get_libdir)\1:g" configure || die
+	sed -i "/^AR=/s:ar:$(tc-getAR):" XMakefile || die
 }
 
 src_configure() {
@@ -87,7 +86,7 @@ src_configure() {
 	accept_lang=en
 	EOF
 
-	env CC=$(tc-getCC) "${myuse[@]}" ./configure \
+	env CC="$(tc-getCC)" "${myuse[@]}" ./configure \
 		-nonstop \
 		-prefix="${EPREFIX}/usr" \
 		-suffix=mee \

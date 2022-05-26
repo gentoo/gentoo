@@ -1,0 +1,33 @@
+Use ifstream so it can read the system's config, and default to windowed
+mode (may crash depending on display, and is harder to exit from).
+--- a/options.cfg
++++ b/options.cfg
+@@ -36,7 +36,7 @@
+ VOLUME			255	# 255 is full volume
+ 
+ # --- video ---
+-FULLSCREEN		1	# run in fullscreen (1) or windowed mode (0)
++FULLSCREEN		0	# run in fullscreen (1) or windowed mode (0)
+ 
+ # --- smoke ---
+ TRANSLUCENT_SMOKE	1	# set to 0 if speed is an issue 
+--- a/settings.cpp
++++ b/settings.cpp
+@@ -4,7 +4,7 @@
+ 
+ int load_config(char* path) {
+ 
+-	fstream file(path);
++	ifstream file(path);
+ 	
+ 	string key;
+ 	char comment[255];
+@@ -82,7 +82,7 @@
+ 	CHANCE_OF_GEM = 25;
+ 	CHICKEN_SPEED = 5;
+ 	CHUNKS_PER_CHICKEN = 20;
+-	FULLSCREEN = 1;
++	FULLSCREEN = 0;
+ 	GAME_SPEED_OFFSET = 0;
+ 	GRAVITY = 0.7;
+ 	MAX_CHICKENS = 80;

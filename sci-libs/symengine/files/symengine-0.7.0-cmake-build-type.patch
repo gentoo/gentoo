@@ -1,0 +1,25 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cf1d213..3067481 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,11 +17,6 @@ if (NOT CMAKE_BUILD_TYPE)
+     set(CMAKE_BUILD_TYPE Release
+         CACHE STRING "Build type (Debug, Release)" FORCE)
+ endif ()
+-if (NOT (CMAKE_BUILD_TYPE STREQUAL "Debug" OR
+-        CMAKE_BUILD_TYPE STREQUAL "Release"))
+-    message("${CMAKE_BUILD_TYPE}")
+-    message(FATAL_ERROR "CMAKE_BUILD_TYPE must be one of: Debug, Release (current value: '${CMAKE_BUILD_TYPE}')")
+-endif ()
+ 
+ set(BUILD_FOR_DISTRIBUTION no
+     CACHE BOOL "Building SymEngine for a distribution")
+@@ -138,7 +133,7 @@ endif()
+ try_compile(HAVE_SYMENGINE_STD_TO_STRING "${CMAKE_CURRENT_BINARY_DIR}/cxx" "${CMAKE_CURRENT_SOURCE_DIR}/cmake/checkstdtostring.cpp"
+ 	CMAKE_FLAGS "-DCOMPILE_DEFINITIONS=${CMAKE_CXX_FLAGS}")
+ 
+-if ((CMAKE_CXX_COMPILER_ID MATCHES Clang) AND (CMAKE_BUILD_TYPE STREQUAL "Release"))
++if ((CMAKE_CXX_COMPILER_ID MATCHES Clang) AND (NOT(CMAKE_BUILD_TYPE STREQUAL "Debug")))
+     try_compile(CHECK_CLANG "${CMAKE_CURRENT_BINARY_DIR}/cxx" "${CMAKE_CURRENT_SOURCE_DIR}/cmake/checkclang.cpp")
+     if (NOT ${CHECK_CLANG})
+         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__extern_always_inline=inline" )

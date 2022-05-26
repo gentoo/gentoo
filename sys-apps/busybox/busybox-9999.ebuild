@@ -1,22 +1,22 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # See `man savedconfig.eclass` for info on how to use USE=savedconfig.
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic savedconfig toolchain-funcs
 
 DESCRIPTION="Utilities for rescue and embedded systems"
 HOMEPAGE="https://www.busybox.net/"
 if [[ ${PV} == "9999" ]] ; then
-	MY_P=${P}
+	MY_P="${P}"
 	EGIT_REPO_URI="https://git.busybox.net/busybox"
 	inherit git-r3
 else
-	MY_P=${PN}-${PV/_/-}
+	MY_P="${PN}-${PV/_/-}"
 	SRC_URI="https://www.busybox.net/downloads/${MY_P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-2" # GPL-2 only
@@ -25,15 +25,21 @@ IUSE="debug ipv6 livecd make-symlinks math mdev pam selinux sep-usr static syslo
 REQUIRED_USE="pam? ( !static )"
 RESTRICT="test"
 
-COMMON_DEPEND="!static? ( selinux? ( sys-libs/libselinux ) )
-	pam? ( sys-libs/pam )"
-DEPEND="${COMMON_DEPEND}
-	static? ( selinux? ( sys-libs/libselinux[static-libs(+)] ) )
-	>=sys-kernel/linux-headers-2.6.39"
-RDEPEND="${COMMON_DEPEND}
-	mdev? ( !<sys-apps/openrc-0.13 )"
+# TODO: Could make pkgconfig conditional on selinux? bug #782829
+RDEPEND="
+	virtual/libcrypt:=
+	!static? ( selinux? ( sys-libs/libselinux ) )
+	pam? ( sys-libs/pam )
+"
+DEPEND="${RDEPEND}
+	static? (
+		virtual/libcrypt[static-libs]
+		selinux? ( sys-libs/libselinux[static-libs(+)] )
+	)
+	sys-kernel/linux-headers"
+BDEPEND="virtual/pkgconfig"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 busybox_config_option() {
 	local flag=$1 ; shift
@@ -135,7 +141,15 @@ src_configure() {
 		busybox_config_option n FEATURE_VI_REGEX_SEARCH
 	fi
 
-	# If these are not set and we are using a uclibc/busybox setup
+	# Disable standalone shell mode when using make-symlinks, else Busybox calls its
+	# applets by default without looking up in PATH.
+	# This also enables users to disable a builtin by deleting the corresponding symlink.
+	if use make-symlinks; then
+		busybox_config_option n FEATURE_PREFER_APPLETS
+		busybox_config_option n FEATURE_SH_STANDALONE
+	fi
+
+	# If these are not set and we are using a busybox setup
 	# all calls to system() will fail.
 	busybox_config_option y ASH
 	busybox_config_option y SH_IS_ASH
@@ -158,12 +172,6 @@ src_configure() {
 	busybox_config_option syslog {K,SYS}LOGD LOGGER
 	busybox_config_option systemd FEATURE_SYSTEMD
 	busybox_config_option math FEATURE_AWK_LIBM
-
-	# disable features that uClibc doesn't (yet?) provide.
-	if use elibc_uclibc; then
-		busybox_config_option n FEATURE_SYNC_FANCY #567598
-		busybox_config_option n NSENTER
-	fi
 
 	# all the debug options are compiler related, so punt them
 	busybox_config_option n DEBUG_SANITIZE
@@ -213,6 +221,9 @@ src_compile() {
 	export SKIP_STRIP=y
 
 	emake V=1 busybox
+
+	# bug #701512
+	emake V=1 doc
 }
 
 src_install() {
@@ -247,20 +258,20 @@ src_install() {
 
 	# add busybox daemon's, bug #444718
 	if busybox_config_enabled FEATURE_NTPD_SERVER; then
-		newconfd "${FILESDIR}/ntpd.confd" "busybox-ntpd"
-		newinitd "${FILESDIR}/ntpd.initd" "busybox-ntpd"
+		newconfd "${FILESDIR}"/ntpd.confd busybox-ntpd
+		newinitd "${FILESDIR}"/ntpd.initd busybox-ntpd
 	fi
 	if busybox_config_enabled SYSLOGD; then
-		newconfd "${FILESDIR}/syslogd.confd" "busybox-syslogd"
-		newinitd "${FILESDIR}/syslogd.initd" "busybox-syslogd"
+		newconfd "${FILESDIR}"/syslogd.confd busybox-syslogd
+		newinitd "${FILESDIR}"/syslogd.initd busybox-syslogd
 	fi
 	if busybox_config_enabled KLOGD; then
-		newconfd "${FILESDIR}/klogd.confd" "busybox-klogd"
-		newinitd "${FILESDIR}/klogd.initd" "busybox-klogd"
+		newconfd "${FILESDIR}"/klogd.confd busybox-klogd
+		newinitd "${FILESDIR}"/klogd.initd busybox-klogd
 	fi
 	if busybox_config_enabled WATCHDOG; then
-		newconfd "${FILESDIR}/watchdog.confd" "busybox-watchdog"
-		newinitd "${FILESDIR}/watchdog.initd" "busybox-watchdog"
+		newconfd "${FILESDIR}"/watchdog.confd busybox-watchdog
+		newinitd "${FILESDIR}"/watchdog.initd busybox-watchdog
 	fi
 	if busybox_config_enabled UDHCPC; then
 		local path=$(busybox_config_enabled UDHCPC_DEFAULT_SCRIPT)
@@ -274,17 +285,18 @@ src_install() {
 
 	# bundle up the symlink files for use later
 	emake DESTDIR="${ED}" install
-	rm _install/bin/busybox
+	rm _install/bin/busybox || die
 	# for compatibility, provide /usr/bin/env
-	mkdir -p _install/usr/bin
-	ln -s /bin/env _install/usr/bin/env
+	mkdir -p _install/usr/bin || die
+	ln -s /bin/env _install/usr/bin/env || die
 	tar cf busybox-links.tar -C _install . || : #;die
 	insinto /usr/share/${PN}
 	use make-symlinks && doins busybox-links.tar
 
 	dodoc AUTHORS README TODO
 
-	cd docs
+	cd docs || die
+	doman busybox.1
 	docinto txt
 	dodoc *.txt
 	docinto pod
@@ -292,20 +304,12 @@ src_install() {
 	docinto html
 	dodoc *.html
 
-	cd ../examples
+	cd ../examples || die
 	docinto examples
 	dodoc inittab depmod.pl *.conf *.script undeb unrpm
 }
 
 pkg_preinst() {
-	if use make-symlinks && [[ ! ${VERY_BRAVE_OR_VERY_DUMB} == "yes" ]] && [[ ${ROOT} == "/" ]] ; then
-		ewarn "setting USE=make-symlinks and emerging to / is very dangerous."
-		ewarn "it WILL overwrite lots of system programs like: ls bash awk grep (bug 60805 for full list)."
-		ewarn "If you are creating a binary only and not merging this is probably ok."
-		ewarn "set env VERY_BRAVE_OR_VERY_DUMB=yes if this is really what you want."
-		die "silly options will destroy your system"
-	fi
-
 	if use make-symlinks ; then
 		mv "${ED}"/usr/share/${PN}/busybox-links.tar "${T}"/ || die
 	fi
@@ -318,7 +322,7 @@ pkg_postinst() {
 		cd "${T}" || die
 		mkdir _install
 		tar xf busybox-links.tar -C _install || die
-		cp -vpPR _install/* "${ROOT}"/ || die "copying links for ${x} failed"
+		echo n | cp -ivpPR _install/* "${ROOT}"/ || die "copying links for ${x} failed"
 	fi
 
 	if use sep-usr ; then

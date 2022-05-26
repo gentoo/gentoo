@@ -1,26 +1,25 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils ltprune
+EAPI=7
 
-DESCRIPTION="A fast C library for evaluating poker hands"
-HOMEPAGE="http://gna.org/projects/pokersource/"
+DESCRIPTION="Fast C library for evaluating poker hands"
+HOMEPAGE="http://pokersource.sourceforge.net/"
 SRC_URI="http://download.gna.org/pokersource/sources/${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="static-libs"
+
+DOCS=( AUTHORS ChangeLog NEWS README TODO WHATS-HERE )
 
 src_configure() {
 	econf \
 		--without-ccache \
-		$(use_enable static-libs static)
+		--disable-static
 }
 
 src_install() {
-	DOCS="AUTHORS ChangeLog NEWS README TODO WHATS-HERE" \
-		default
-	prune_libtool_files
+	default
+	find "${ED}" -name '*.la' -delete || die
 }

@@ -1,0 +1,67 @@
+From f3396d502d408c1b349c378060027905a2c2a9c3 Mon Sep 17 00:00:00 2001
+From: Huang Rui <vowstar@gmail.com>
+Date: Sat, 25 Jul 2020 12:50:49 +0800
+Subject: [PATCH 1/2] aclocal.m4: fix issue in cross-compiling
+
+The aclocal.m4 called nm directly.
+It can cause issue in cross-compiling and because is not possible
+use a different NM implementation (like llvm-nm).
+The compile error log:
+https://bugs.gentoo.org/attachment.cgi?id=648556
+
+Closes: https://bugs.gentoo.org/731906
+Signed-off-by: Huang Rui <vowstar@gmail.com>
+---
+ aclocal.m4 | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/aclocal.m4 b/aclocal.m4
+index a47eba42c..16ef69c85 100644
+--- a/aclocal.m4
++++ b/aclocal.m4
+@@ -25,9 +25,11 @@ AC_SUBST(install_suffix)
+ # Unwarranted assumptions:
+ #   - the object file produced by AC_COMPILE_IFELSE is called "conftest.$ac_objext"
+ #   - the nm(1) utility is available, and its name is "nm".
++# Here use $NM because they can cause issue in cross-compiling and because is
++# not possible use a different NM implementation (like llvm-nm)
+ AC_DEFUN([_AX_C_UNDERSCORES_MATCH_IF],
+ [AC_COMPILE_IFELSE([AC_LANG_SOURCE([void underscore(void){}])],
+-[AS_IF([nm conftest.$ac_objext|grep $1 >/dev/null 2>/dev/null],[$2],[$3])],
++[AS_IF([$NM conftest.$ac_objext|grep $1 >/dev/null 2>/dev/null],[$2],[$3])],
+ [AC_MSG_ERROR([underscore test crashed])]
+ )])
+ 
+
+From d827f674cc0a37d8150c18df6112a0a895f2a584 Mon Sep 17 00:00:00 2001
+From: Huang Rui <vowstar@gmail.com>
+Date: Tue, 28 Jul 2020 21:15:49 +0800
+Subject: [PATCH 2/2] aclocal.m4: fix the comment contradicts the previous line
+
+Changed to "the nm(1) utility or an equivalent is available,
+and its name is defined by the $NM variable.
+
+Signed-off-by: Huang Rui <vowstar@gmail.com>
+---
+ aclocal.m4 | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/aclocal.m4 b/aclocal.m4
+index 16ef69c85..1b2dd6a1e 100644
+--- a/aclocal.m4
++++ b/aclocal.m4
+@@ -23,10 +23,10 @@ AC_SUBST(install_suffix)
+ # ------------------------------
+ # Sub-macro for AX_C_UNDERSCORES_LEADING and AX_C_UNDERSCORES_TRAILING.
+ # Unwarranted assumptions:
+-#   - the object file produced by AC_COMPILE_IFELSE is called "conftest.$ac_objext"
+-#   - the nm(1) utility is available, and its name is "nm".
+-# Here use $NM because they can cause issue in cross-compiling and because is
+-# not possible use a different NM implementation (like llvm-nm)
++#   - the object file produced by AC_COMPILE_IFELSE is called
++#     "conftest.$ac_objext"
++#   - the nm(1) utility or an equivalent is available, and its name
++#     is defined by the $NM variable.
+ AC_DEFUN([_AX_C_UNDERSCORES_MATCH_IF],
+ [AC_COMPILE_IFELSE([AC_LANG_SOURCE([void underscore(void){}])],
+ [AS_IF([$NM conftest.$ac_objext|grep $1 >/dev/null 2>/dev/null],[$2],[$3])],

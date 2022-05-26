@@ -1,8 +1,25 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -arm64
+
+# David Seifert <soap@gentoo.org> (2022-03-13)
+# NVENC works here
+-nvenc
+
+# Ionen Wolkens <ionen@gentoo.org> (2022-02-17)
+# x11-drivers/nvidia-drivers' binary blob works here
+-video_cards_nvidia
+
+# Michał Górny <mgorny@gentoo.org> (2021-01-07)
+# Prebuilt kernels are supported here.
+-dist-kernel
+
+# Sam James <sam@gentoo.org> (2020-10-08)
+# PyPy3 works on arm64
+-python_targets_pypy3
+-python_single_target_pypy3
 
 # David Seifert <soap@gentoo.org (2020-05-17)
 # Mono is hopelessly broken on arm64
@@ -38,11 +55,6 @@ cpu_flags_arm_neon
 appindicator
 ayatana
 
-# Mart Raudsepp <leio@gentoo.org> (2019-01-07)
-# Does not work on arm64 until dev-lang/luajit-2.1
-# https://github.com/LuaJIT/LuaJIT/issues/26
-luajit
-
 # Michał Górny <mgorny@gentoo.org> (2018-07-09)
 # No OpenCL provider is available on arm64.
 opencl
@@ -50,10 +62,6 @@ opencl
 # Mart Raudsepp <leio@gentoo.org> (2018-02-13)
 # net-libs/libsmi not tested on arm64 yet
 smi
-
-# Michał Górny <mgorny@gentoo.org> (2018-01-23)
-# sci-geosciences/gpsd is not keyworded here.
-gps
 
 # Mart Raudsepp <leio@gentoo.org> (2017-02-01)
 # Unmask systemd since it is keyworded here.
@@ -68,16 +76,11 @@ valgrind
 # net-wireless/wimax not tested
 wimax
 
-# Kacper Kowalik <xarthisius@gentoo.org> (2010-08-09)
-# cblas-external as virtual/cblas is also masked
-cblas-external
-
 # Samuli Suominen <drac@gentoo.org>
 # media-libs/amrnb and media-libs/amrwb not tested.
 amr
 
 # No hardware to test by the team
-dvb
 ios
 ipod
 
@@ -86,10 +89,6 @@ ipod
 dmi
 
 # Stuff we don't want
-fuse
-R
-octave
-xindy
 mpi
 lasi
 hardened
@@ -98,42 +97,27 @@ prelude
 mssql
 
 # havent tested yet
-libproxy
 darcs
 afs
-lirc
-lm-sensors
 scanner
 zvbi
-fluidsynth
 sid
 mms
 ieee1394
-pm-utils
 darcs
 bs2b
-ladspa
-ldns
 ggi
-nut
 dvd
 fits
-tokyocabinet
-rtmp
-vpx
 lpsol
-quvi
-libtar
 zvbi
-devil
 gts
 anthy
-sdl
 
 # Unmask ARM-only video-cards
 -video_cards_exynos
 -video_cards_freedreno
--video_cards_imx
+-video_cards_lima
 -video_cards_nouveau
 -video_cards_panfrost
 -video_cards_tegra
@@ -160,8 +144,3 @@ video_cards_r200
 video_cards_r300
 video_cards_r600
 video_cards_radeonsi
-
-# USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
-# Bug #184563, (2007-09-18)
-# Robin H. Johnson <robbat2@gentoo.org>
-audit

@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit git-r3
 
@@ -30,7 +30,7 @@ pkg_setup() {
 src_install() {
 	if use minimal ; then
 		insinto /etc/apparmor.d
-		doins -r apparmor.d/{abstractions,tunables}
+		doins -r apparmor.d/{abi,abstractions,tunables}
 	else
 		default
 	fi

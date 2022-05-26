@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Some USE-flags that only die-hards don't want:
@@ -7,9 +7,3 @@
 # ncurses:   a nice working console drawing library
 # ssl:       encrypted connections are a nice feature
 USE="readline zlib ncurses ssl"
-
-
-# In Prefix, aim for Python 3 only, leaving out 2 to avoid unnecessary
-# builds
-# NOTE: Both are incremental variables: Need to drop obsolete base values.
-PYTHON_TARGETS="-python2_7"

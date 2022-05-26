@@ -4,13 +4,6 @@ Date: Fri, 17 Jun 2016 18:58:05 +0300
 Subject: [PATCH] build: use openct instead of embedded binary ctapi
 
 Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
----
- Makefile     | 4 ++--
- ifdhandler.c | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/Makefile b/Makefile
-index cdba2b6..319449a 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -16,7 +16,7 @@ clean:
@@ -18,13 +11,11 @@ index cdba2b6..319449a 100644
  
  lib:  $(OBJ)
 -	$(LD) -G ifdhandler.o lib/libctapi.a -o libslb_rf72.so
-+	$(CC) $(LDFLAGS) -shared `pkg-config --libs-only-L libopenct` -lopenctapi ifdhandler.o -o libslb_rf72.so
++	$(CC) $(LDFLAGS) -shared `${PKG_CONFIG} --libs-only-L libopenct` -lopenctapi ifdhandler.o -o libslb_rf72.so
  
  ifdhandler.o: ifdhandler.h ifdhandler.c
 -	$(CC) $(CFLAGS) -c ifdhandler.c $(INCLUDES)
-+	$(CC) $(CFLAGS) `pkg-config --cflags libopenct` -fPIC -DHAVE_PTHREAD_H -c ifdhandler.c $(INCLUDES)
-diff --git a/ifdhandler.c b/ifdhandler.c
-index cbb3a65..256605e 100644
++	$(CC) $(CFLAGS) `${PKG_CONFIG} --cflags libopenct` -fPIC -DHAVE_PTHREAD_H -c ifdhandler.c $(INCLUDES)
 --- a/ifdhandler.c
 +++ b/ifdhandler.c
 @@ -29,7 +29,7 @@

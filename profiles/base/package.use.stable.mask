@@ -1,24 +1,104 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-20)
-# Always build python-exec with all the targets.
-dev-lang/python-exec -python_targets_python3_9
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-05-08)
+# gentoo-vm useflag is not stable yet
+dev-java/openjdk-bin:17 gentoo-vm
+dev-java/openjdk:17 gentoo-vm
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-18)
-# openjfx:8 will never be stabilized
-dev-java/openjdk:8 javafx
+# Matt Turner <mattst88@gentoo.org> (2022-05-11)
+# app-text/pandoc is not stable
+app-text/nuspell doc
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-05-05)
+# fop[test] depends on mockito:4, which is not yet stable (bug #727504),
+# and itself blocked by libffi stabilization (bug #813756).
+dev-java/fop test
+
+# Sam James <sam@gentoo.org> (2022-02-11)
+# Needs glibc-2.35(?) (or <2.34) which is not yet even keyworded but
+# won't be stable for a while. Can be unmasked then.
+# bug #806079
+sys-apps/nvme-cli hugepages
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-12-24)
+# test deps are not stable
+>=sys-fs/zfs-2.0.7 test-suite
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-12-19)
+# test deps are not stable and tests do not work
+# due to network access issues #829430
+net-libs/grpc test
+
+# Ben Kohler <bkohler@gentoo.org> (2021-11-27)
+# net-misc/pyhoca-cli and several of its deps will need stable first
+net-misc/remmina x2go
+
+# Sergey Popov <pinkbyte@gentoo.org> (2021-10-14)
+# net-libs/grpc is not yet stabilized,
+# so mask optional use flag on net-misc/frr
+net-misc/frr grpc
+
+# Joonas Niilola <juippis@gentoo.org> (2021-08-13)
+# dev-libs/efl is only stabilized on two arches.
+app-crypt/pinentry efl
+
+# Conrad Kostecki <conikost@gentoo.org> (2021-07-18)
+# For docs, app-text/pandoc is needed, which is currently
+# not stabilized and probably will not be in near future.
+# Bug #737612
+x11-wm/xpra doc
+
+# Patrick McLean <chutzpah@gentoo.org> (2021-07-13)
+# Pulls in dev-libs/pmdk which has Haskell deps, a dep on rocr-runtime
+# all of which are not stable anywhere.
+sys-cluster/ceph pmdk rbd-rwl
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-05-30)
+# dev-perl/Net-Netmask-2.0.100 needs ... and ... which ends
+# up pulling in a Test-Simple version newer than 5.32.
+# Not something we want to add to all stable users' Perl.
+# Stable-masking the test useflag until Perl 5.34 goes stable too.
+# Bug 779163
+dev-perl/Net-Netmask test
+
+# Mart Raudsepp <leio@gentoo.org> (2021-02-21)
+# Enabling sysprof causes consumers to include sysprof-capture-4
+# headers, but we still have stable consumers that themselves want
+# to include sysprof-capture-3 headers, leading to issue.
+# Bug #771777
+dev-libs/glib sysprof
+
+# Sam James <sam@gentoo.org> (2021-02-10)
+# dev-embedded/libftd2xx is not marked stable
+# bug #769923
+dev-embedded/urjtag ftd2xx
+
+# Sam James <sam@gentoo.org> (2021-01-27)
+# Experimental feature which may not be as secure
+# as on OpenBSD (where proper kernel support exists).
+# bug #726994
+app-admin/doas persist
+
+# Sam James <sam@gentoo.org> (2021-01-09)
+# relapack is experimental, please be careful with use
+# bug #764206
+sci-libs/openblas relapack
+
+# Brian Evans <grknight@gentoo.org> (2021-01-07)
+# temporarily block tests so that bugs can be resolved
+dev-php/theseer-Autoload test
+
+# James Le Cuirot <sam@gentoo.org> (2020-11-23)
+# Cinnamon is not stable on any architecture.
+x11-themes/arc-theme cinnamon
 
 # Pacho Ramos <pacho@gentoo.org> (2020-08-21)
 # app-text/pandoc is hard to stabilize #737612
 sys-apps/earlyoom docs
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
-# dev-python/wxpython:4.0 w/ py3 is not stable, bug #714566
-dev-python/matplotlib wxwidgets
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
 # app-text/pandoc (dev-lang/ghc) has no stable keywords.
@@ -28,63 +108,29 @@ app-emulation/xen-tools doc
 # dev-util/shellcheck (dev-lang/ghc) has no stable keywords.
 app-emulation/winetricks test
 
-# Adam Feldman <NP-Hardass@gentoo.org> (2020-04-12)
-# Dependency (net-wireless/blueman) has no stable keywords
-mate-base/mate bluetooth
-
-# David Seifert <soap@gentoo.org> (2020-03-31)
-# Numpy support in Boost.Python is brittle and shouldn't be enabled
-# on stable systems or force a stable upgrade.
-dev-libs/boost numpy
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-21)
 # For bleeding edge features and testing, not generally suitable
 # for stable systems
-dev-lang/rust miri nightly parallel-compiler system-bootstrap
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-12-18)
-# Neither sys-apps/bolt nor kde-plasma/plasma-thunderbolt are stable
-<kde-plasma/plasma-meta-5.19 thunderbolt
+dev-lang/rust miri nightly profiler system-bootstrap
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-12-09)
 # Declared experimental, and dev-cpp/websocketpp not stable yet
 sci-libs/indilib websocket
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-28)
-# sci-libs/vtk is not stable anymore
-media-libs/opencv vtk
 
 # Kent Fredric <kentnl@gentoo.org> (2019-08-29)
 # Support for DBD-mysql to use mariadb is sketchy. Use DBD-MariaDB
 # instead if you can.
 dev-perl/DBD-mysql mariadb
 
-# Michał Górny <mgorny@gentoo.org> (2019-07-31)
-# Freshly added test dependency for a test-restricted package.  Mask
-# the flag to avoid stabilizing it for the time being.
-dev-python/aiohttp-socks test
-
 # Kent Fredric <kentnl@gentoo.org> (2019-07-30)
 # These features require dev-perl/GD, which currently can't be
 # considered stable due to serious defects upstream. Bug #661634
-app-misc/gcstar stats
 app-misc/g15daemon perl
 dev-lang/php coverage
-dev-util/lcov png
 dev-perl/Business-ISBN barcode
 dev-perl/Template-Toolkit gd
 media-fonts/unifont utils fontforge
 media-video/vdrsync dvdr
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-07-16)
-# sci-libs/dcmtk is not stable
-media-libs/openimageio dicom
-
-# Bernd Waibel <waebbl@gmail.com> (2019-05-22)
-# Marked experimental, needs build and runtime testing. Due to non-
-# available licenses for arnold and maya I can not test these addons.
-# Build and functional tests and reports on issues are appreciated!
-media-gfx/alembic arnold maya
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-05-10)
 # needs llvm slots which are not stable #678908
@@ -97,12 +143,6 @@ media-gfx/alembic arnold maya
 # anywhere yet.
 media-plugins/grilo-plugins chromaprint
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
-# media-libs/opencv[contrib,contribdnn], net-libs/libmediawiki,
-# net-libs/libkvkontakte all not stable anywhere.
-kde-apps/kipi-plugins mediawiki vkontakte
-media-gfx/digikam dnn vkontakte
-
 # Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
 # sssd is only stable for amd64 and x86
 app-admin/sudo sssd
@@ -114,10 +154,6 @@ kde-plasma/powerdevil brightness-control
 # Thomas Deutschmann <whissi@gentoo.org> (2018-06-01)
 # Needs dev-ruby/asciidoctor which has a lot of unstable deps
 net-analyzer/wireshark doc
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-05-21)
-# Depends on lots of unstable dependencies
-dev-python/s3fs test
 
 # Matthias Maier <tamiko@gentoo.org> (2018-03-18)
 # dev-libs/capstone hasn't been stabilized yet
@@ -172,10 +208,6 @@ kde-apps/cantor julia
 # This is stable masked as g-sorcery is being not actively developed.
 app-portage/layman g-sorcery
 
-# Michael Palimaka <kensington@gentoo.org (2017-01-26)
-# Requires testing version of media-libs/opencv
-media-libs/mlt opencv
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2017-01-15)
 # Has no stable reverse deps requiring this useflag
 # Stable-masking it so Boost 1.62 stabilization can go ahead
@@ -200,11 +232,6 @@ dev-db/mariadb sst-xtrabackup
 # bug #539212
 app-emulation/vice ffmpeg
 
-# Jeroen Roovers <jer@gentoo.org> (2015-04-26)
-# mongodb support is nice, but dev-libs/mongo-c-driver upstream is not ready
-# yet (bug #542210)
-net-analyzer/pmacct mongodb
-
 # Ben de Groot <yngwin@gentoo.org>
 # Mask experimental feature on stable. This also needs not yet stable mupdf.
 app-text/qpdfview fitz
@@ -222,13 +249,6 @@ media-libs/opencv vtk
 # Not yet stabilized dependency, need more testing
 >=dev-perl/PDL-2.4.11 pdl2 pgplot
 
-# Samuli Suominen <ssuominen@gentoo.org> (2014-08-01)
-# Optional (not required by anything in gentoo-x86) and fragile (based on
-# host system, like Java JRE version). Keep masked indefinately until
-# something starts requiring these.
-# https://bugs.gentoo.org/483372 and https://bugs.gentoo.org/508564
-media-libs/libcaca java mono
-
 # Alon Bar-Lev <alonbl@gentoo.org> (2014-07-21)
 # dev-libs/opencryptoki will not be stabile any time soon (bug#510204)
 app-crypt/tpm-tools pkcs11
@@ -243,7 +263,7 @@ app-emulation/xen-tools ocaml
 # Samuli Suominen <ssuominen@gentoo.org> (2014-03-19)
 # Some open source OpenCL providers cause sandbox violation while accessing /dev/dri/card*
 # from a command like eg. `/usr/bin/mogrify -version`, see bug #472766
-media-gfx/imagemagick opencl
+<media-gfx/imagemagick-7.0.10.34 opencl
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (2013-03-28)
 # Depends on unstable sci-libs/avogadrolibs

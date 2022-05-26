@@ -1,0 +1,37 @@
+From 477ef76901ae46d58202091060a763f9b4c4b57f Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sun, 28 Mar 2021 11:08:43 -0700
+Subject: [PATCH 2/2] build: Fix creating the libpam_thinkfinger library.
+
+---
+ pam/Makefile.am | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
+
+diff --git a/pam/Makefile.am b/pam/Makefile.am
+index d3bfcab..38c3cab 100644
+--- a/pam/Makefile.am
++++ b/pam/Makefile.am
+@@ -1,14 +1,13 @@
+-pam_PROGRAMS = pam_thinkfinger.so
++pam_LTLIBRARIES = libpam_thinkfinger.la
+ pamdir = $(SECUREDIR)
+ 
+ INCLUDES = -I$(top_srcdir)/libthinkfinger
+ 
+ if HAVE_OLD_PAM
+-pam_thinkfinger_so_SOURCES = pam_thinkfinger-compat.c pam_thinkfinger-compat.h pam_thinkfinger-uinput.c pam_thinkfinger-uinput.h pam_thinkfinger.c
++libpam_thinkfinger_la_SOURCES = pam_thinkfinger-compat.c pam_thinkfinger-compat.h pam_thinkfinger-uinput.c pam_thinkfinger-uinput.h pam_thinkfinger.c
+ else
+-pam_thinkfinger_so_SOURCES = pam_thinkfinger-uinput.c pam_thinkfinger-uinput.h pam_thinkfinger.c
++libpam_thinkfinger_la_SOURCES = pam_thinkfinger-uinput.c pam_thinkfinger-uinput.h pam_thinkfinger.c
+ endif
+-pam_thinkfinger_so_LDFLAGS = -shared -Wl,-soname,pam_thinkfinger.so -Wl,--as-needed
+-pam_thinkfinger_so_CFLAGS = $(CFLAGS)
+-pam_thinkfinger_so_LDADD = $(top_builddir)/libthinkfinger/libthinkfinger.la $(PAM_LIBS) $(PTHREAD_LIBS)
+-
++libpam_thinkfinger_la_LDFLAGS = -shared -Wl,-soname,pam_thinkfinger.so -Wl,--as-needed
++libpam_thinkfinger_la_CFLAGS = $(CFLAGS)
++libpam_thinkfinger_la_LIBADD = $(top_builddir)/libthinkfinger/libthinkfinger.la $(PAM_LIBS) $(PTHREAD_LIBS)
+-- 
+2.26.3
+

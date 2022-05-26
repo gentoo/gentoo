@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>desktop-misc@gentoo.org</email>
-		<name>Gentoo Desktop Miscellaneous Project</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="google-code">synergy</remote-id>
-		<remote-id type="github">synergy/synergy</remote-id>
+		<remote-id type="github">symless/synergy-core</remote-id>
 	</upstream>
 </pkgmetadata>

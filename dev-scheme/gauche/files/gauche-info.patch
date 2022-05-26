@@ -1,16 +1,16 @@
 --- a/configure.ac
 +++ b/configure.ac
-@@ -417,7 +417,6 @@
- AC_CHECK_PROGS(AR, ar gar)
- AC_CHECK_PROGS(AS, as gas)
+@@ -382,7 +382,6 @@
+ AC_PROG_LN_S
+ AC_CHECK_TOOLS(AR, ar gar)
  AC_CHECK_PROGS(MAKEINFO, makeinfo)
 -AC_CHECK_PROGS(GZIP_PROGRAM, gzip)
  
- dnl for cross build
- AC_CHECK_PROGS(BUILD_CC, ${build}-gcc ${build_alias}-gcc gcc cc)
+ if test -z "$MAKEINFO" -o -z "$GZIP_PROGRAM"; then
+   build_doc="No (requires makeinfo and gzip to build documents)"
 --- a/doc/Makefile.in
 +++ b/doc/Makefile.in
-@@ -16,7 +16,6 @@
+@@ -18,7 +18,6 @@
  INSTALL_DATA = @INSTALL_DATA@
  MKINSTDIR    = $(top_srcdir)/mkinstalldirs
  MAKEINFO     = @MAKEINFO@
@@ -18,7 +18,7 @@
  VERSION_INFO = @PACKAGE_STRING@
  
  MAKEDOC = $(GOSH) $(srcdir)/makedoc.scm
-@@ -58,7 +57,7 @@
+@@ -59,7 +58,7 @@
  	texi html htmls dvi pdf info \
  	clean distclean maintainer-clean
  
@@ -27,7 +27,7 @@
  
  all: info
  
-@@ -66,7 +65,7 @@
+@@ -67,7 +66,7 @@
  	if test ! -d "$(DESTDIR)$(mandir)/man1"; then $(MKINSTDIR) "$(DESTDIR)$(mandir)/man1"; fi
  	$(INSTALL_DATA) $(MANPAGES) "$(DESTDIR)$(mandir)/man1"
  	if test ! -d "$(DESTDIR)$(infodir)"; then $(MKINSTDIR) "$(DESTDIR)$(infodir)"; fi
@@ -36,9 +36,9 @@
  	  for info in *.info*; do \
  	    $(INSTALL_DATA) $$info "$(DESTDIR)$(infodir)/"; \
  	  done; \
-@@ -94,8 +93,8 @@
- %/index.html : %.texi
- 	$(MAKEDOC) htmls $< "$(MAKEINFO)" "$(VERSION_INFO)"
+@@ -98,8 +97,8 @@
+ %-draft/index.html : %.texi
+ 	$(MAKEDOC) htmls $< "$(MAKEINFO)" "Development HEAD DRAFT"
  
 -%.info.gz : %.texi
 -	$(MAKEDOC) info $< "$(MAKEINFO)" "$(GZIP_PROGRAM)"
@@ -47,8 +47,8 @@
  
  %.pdf : %.texi
  	$(MAKEDOC) pdf $< "$(MAKEINFO)"
-@@ -113,7 +112,7 @@
- htmls : gauche-refe/index.html gauche-refj/index.html
+@@ -118,7 +117,7 @@
+ htmls-draft : gauche-refe-draft/index.html gauche-refj-draft/index.html
  dvi : gauche-refe.dvi gauche-refj.dvi
  pdf : gauche-refe.pdf gauche-refj.pdf
 -info : gauche-refe.info.gz gauche-refj.info.gz
@@ -88,7 +88,7 @@
        (not (check-makeinfo-version makeinfo "5.0"))
 -      (and (do-process (make-cmd `(,makeinfo ,input)))
 -           (begin (remove-files (glob #"~|info|*.gz"))
--                  (do-process (make-cmd `(,gzip ,info ,@(glob #"~|info|-[0-9]*"))))))))
+-                  (do-process (make-cmd `(,gzip "-n" ,info ,@(glob #"~|info|-[0-9]*"))))))))
 +      (and (do-process (make-cmd `(,makeinfo ,input))))))
  
  (define (do-html input makeinfo)

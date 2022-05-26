@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils desktop unpacker xdg
+inherit desktop unpacker wrapper xdg
 
 MY_PN="SlimeRancher"
 MY_P="${P//[-.]/_}"
@@ -12,6 +12,8 @@ MY_P="${MY_P//_p/_}"
 DESCRIPTION="Cute game where you cultivate slimes on a distant planet"
 HOMEPAGE="http://www.slimerancher.com/"
 SRC_URI="${MY_P}.sh"
+S="${WORKDIR}/data/noarch/game"
+
 LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64"
@@ -21,13 +23,10 @@ RDEPEND="
 	sys-libs/glibc
 	virtual/opengl
 "
-
 BDEPEND="app-arch/unzip"
 
-S="${WORKDIR}/data/noarch/game"
-
 DIR="/opt/${PN}"
-QA_PREBUILT="${DIR}/*"
+QA_PREBUILT="${DIR#/}/*"
 
 pkg_nofetch() {
 	einfo "Please buy and download ${SRC_URI} from:"

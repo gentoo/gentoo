@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -56,6 +56,8 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-cmake_fix.patch
+	"${FILESDIR}"/${P}-libsdl2-2.0.14.patch #762208
+	"${FILESDIR}"/${P}-arm-asm.patch
 )
 
 src_configure() {
@@ -70,6 +72,7 @@ src_configure() {
 		-DENABLE_ASM_CORE=$(usex x86)
 		-DENABLE_ASM_SCALERS=$(usex x86)
 		-DCMAKE_SKIP_RPATH=ON
+		-DENABLE_LTO=OFF
 	)
 	if use wxwidgets; then
 		mycmakeargs+=( -DENABLE_OPENAL=$(usex openal) )

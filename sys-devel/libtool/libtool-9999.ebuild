@@ -1,9 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-LIBTOOLIZE="true" #225559
+# Please bump with dev-libs/libltdl.
+
+# bug #225559
+LIBTOOLIZE="true"
 WANT_LIBTOOL="none"
 inherit autotools prefix
 
@@ -12,7 +15,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 fi
 
 DESCRIPTION="A shared library tool for developers"
@@ -27,12 +30,16 @@ RDEPEND="
 	sys-devel/gnuconfig
 	>=sys-devel/autoconf-2.69:*
 	>=sys-devel/automake-1.13:*
-	dev-libs/libltdl:0"
+	>=dev-libs/libltdl-2.4.7"
 DEPEND="${RDEPEND}"
 [[ ${PV} == *9999 ]] && BDEPEND="sys-apps/help2man"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.4.3-use-linux-version-in-fbsd.patch #109105
+	# bug #109105
+	"${FILESDIR}"/${PN}-2.4.3-use-linux-version-in-fbsd.patch
+	# bug #581314
+	"${FILESDIR}"/${PN}-2.4.6-ppc64le.patch
+
 	"${FILESDIR}"/${PN}-2.4.6-mint.patch
 	"${FILESDIR}"/${PN}-2.2.6a-darwin-module-bundle.patch
 	"${FILESDIR}"/${PN}-2.4.6-darwin-use-linux-version.patch
@@ -40,11 +47,11 @@ PATCHES=(
 
 src_prepare() {
 	if [[ ${PV} == *9999 ]] ; then
-		eapply "${FILESDIR}"/${PN}-2.4.6-pthread.patch #650876
+		eapply "${FILESDIR}"/${PN}-2.4.6-pthread.patch # bug #650876
 		./bootstrap || die
 	else
 		PATCHES+=(
-			"${FILESDIR}"/${PN}-2.4.6-pthread_bootstrapped.patch #650876
+			"${FILESDIR}"/${PN}-2.4.6-pthread_bootstrapped.patch # bug #650876
 		)
 	fi
 
@@ -89,11 +96,13 @@ src_configure() {
 	# shells, so just force libtool to use /bin/bash all the time.
 	export CONFIG_SHELL="$(type -P bash)"
 
-	# Do not bother hardcoding the full path to sed.  Just rely on $PATH. #574550
+	# Do not bother hardcoding the full path to sed.
+	# Just rely on $PATH. bug #574550
 	export ac_cv_path_SED="$(basename "$(type -P sed)")"
 
 	[[ ${CHOST} == *-darwin* ]] && local myconf="--program-prefix=g"
-	ECONF_SOURCE=${S} econf ${myconf} --disable-ltdl-install
+
+	ECONF_SOURCE="${S}" econf ${myconf} --disable-ltdl-install
 }
 
 src_install() {

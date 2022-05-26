@@ -5,7 +5,7 @@ EAPI=7
 
 inherit meson
 
-DESCRIPTION="simple launcher for wayland"
+DESCRIPTION="Simple launcher for wayland"
 HOMEPAGE="https://git.sr.ht/~leon_plickat/lavalauncher"
 
 if [[ ${PV} == 9999 ]]; then

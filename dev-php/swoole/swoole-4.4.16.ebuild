@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -9,7 +9,7 @@ PHP_EXT_ZENDEXT="no"
 PHP_EXT_SAPIS="cli"
 DOCS=( README.md )
 
-USE_PHP="php7-1 php7-2 php7-3 php7-4"
+USE_PHP="php7-4"
 
 inherit php-ext-pecl-r3
 
@@ -30,34 +30,27 @@ DEPEND="
 	sys-libs/zlib:0=
 	http2? ( net-libs/nghttp2:0= )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
-	php_targets_php7-1? ( dev-lang/php:7.1[cli,sockets?] )
-	php_targets_php7-2? ( dev-lang/php:7.2[cli,sockets?] )
-	php_targets_php7-3? ( dev-lang/php:7.3[cli,sockets?] )
 	php_targets_php7-4? ( dev-lang/php:7.4[cli,sockets?] )
 	mysql? (
-		php_targets_php7-1? ( dev-lang/php:7.1[mysql,mysqli(+)] )
-		php_targets_php7-2? ( dev-lang/php:7.2[mysql,mysqli(+)] )
-		php_targets_php7-3? ( dev-lang/php:7.3[mysql,mysqli(+)] )
 		php_targets_php7-4? ( dev-lang/php:7.4[mysql,mysqli(+)] )
 	)
 "
 
 RDEPEND="${DEPEND}"
 
-IUSE="debug http2 libressl mysql sockets ssl"
+IUSE="debug http2 mysql sockets ssl"
 
 src_configure() {
-	# JEMalloc not included as it refuses to find a ${EROOT}/usr/includes/jemalloc subdirectory
+	# JEMalloc not included as it refuses to find a ${ESYSROOT}/usr/includes/jemalloc subdirectory
 	local PHP_EXT_ECONF_ARGS=(
 		--enable-swoole
 		$(use_enable debug)
 		$(use_enable http2)
 		$(use_enable mysql mysqlnd)
 		$(use_enable ssl openssl)
-		$(use_with ssl openssl-dir "${EROOT}/usr")
+		$(use_with ssl openssl-dir "${ESYSROOT}/usr")
 		$(use_enable sockets)
 	)
 

@@ -1,0 +1,74 @@
+https://github.com/systemd/systemd-stable/commit/ed46ff2bd6ca21d83cae4a94c3ed752ad1b64cce
+
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Date: Mon, 3 Jan 2022 18:11:32 +0100
+Subject: [PATCH] random-seed: hash together old seed and new seed before
+ writing out file
+
+If we're consuming an on-disk seed, we usually write out a new one after
+consuming it. In that case, we might be at early boot and the randomness
+could be rather poor, and the kernel doesn't guarantee that it'll use
+the new randomness right away for us. In order to prevent the new
+entropy from getting any worse, hash together the old seed and the new
+seed, and replace the final bytes of the new seed with the hash output.
+This way, entropy strictly increases and never regresses.
+
+(cherry picked from commit da2862ef06f22fc8d31dafced6d2d6dc14f2ee0b)
+--- a/src/random-seed/random-seed.c
++++ b/src/random-seed/random-seed.c
+@@ -26,6 +26,7 @@
+ #include "random-util.h"
+ #include "string-util.h"
+ #include "sync-util.h"
++#include "sha256.h"
+ #include "util.h"
+ #include "xattr-util.h"
+ 
+@@ -106,9 +107,11 @@ static int run(int argc, char *argv[]) {
+         _cleanup_close_ int seed_fd = -1, random_fd = -1;
+         bool read_seed_file, write_seed_file, synchronous;
+         _cleanup_free_ void* buf = NULL;
++        struct sha256_ctx hash_state;
++        uint8_t hash[32];
+         size_t buf_size;
+         struct stat st;
+-        ssize_t k;
++        ssize_t k, l;
+         int r;
+ 
+         log_setup();
+@@ -242,6 +245,16 @@ static int run(int argc, char *argv[]) {
+                         if (r < 0)
+                                 log_error_errno(r, "Failed to write seed to /dev/urandom: %m");
+                 }
++                /* If we're going to later write out a seed file, initialize a hash state with
++                 * the contents of the seed file we just read, so that the new one can't regress
++                 * in entropy. */
++                if (write_seed_file) {
++                        sha256_init_ctx(&hash_state);
++                        if (k < 0)
++                                k = 0;
++                        sha256_process_bytes(&k, sizeof(k), &hash_state);
++                        sha256_process_bytes(buf, k, &hash_state);
++                }
+         }
+ 
+         if (write_seed_file) {
+@@ -277,6 +290,17 @@ static int run(int argc, char *argv[]) {
+                                                        "Got EOF while reading from /dev/urandom.");
+                 }
+ 
++                /* If we previously read in a seed file, then hash the new seed into the old one,
++                 * and replace the last 32 bytes of the seed with the hash output, so that the
++                 * new seed file can't regress in entropy. */
++                if (read_seed_file) {
++                        sha256_process_bytes(&k, sizeof(k), &hash_state);
++                        sha256_process_bytes(buf, k, &hash_state);
++                        sha256_finish_ctx(&hash_state, hash);
++                        l = MIN(k, 32);
++                        memcpy((uint8_t *)buf + k - l, hash, l);
++                }
++
+                 r = loop_write(seed_fd, buf, (size_t) k, false);
+                 if (r < 0)
+                         return log_error_errno(r, "Failed to write new random seed file: %m");

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<name>Gavin D. Howard</name>
-		<email>yzena.tech@gmail.com</email>
+		<email>gavin@yzena.com</email>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
 		<maintainer>
 			<name>Gavin D. Howard</name>
-			<email>yzena.tech@gmail.com</email>
+			<email>gavin@yzena.com</email>
 		</maintainer>
-		<bugs-to>https://github.com/gavinhoward/bc</bugs-to>
-		<doc>https://github.com/gavinhoward/bc/tree/master/manuals</doc>
+		<bugs-to>https://git.yzena.com/gavin/bc</bugs-to>
+		<doc>https://git.yzena.com/gavin/bc/src/branch/master/manuals</doc>
 	</upstream>
 	<longdescription lang="en">
 	An implementation of POSIX bc and Unix dc with GNU extensions and some of

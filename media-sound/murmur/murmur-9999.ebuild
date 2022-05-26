@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit qmake-utils systemd readme.gentoo-r1
+inherit cmake systemd readme.gentoo-r1 tmpfiles
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
 HOMEPAGE="https://wiki.mumble.info"
@@ -22,14 +22,15 @@ else
 		MY_P="${MY_PN}-${MY_PV}"
 		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/${MY_PV}/${MY_P}.tar.gz
 			https://dl.mumble.info/${MY_P}.tar.gz"
-		S="${WORKDIR}/${MY_PN}-${PV/_*}"
+		S="${WORKDIR}/${MY_PN}-${PV/_*}.src"
 	fi
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="+dbus debug +ice pch zeroconf"
+IUSE="+dbus grpc +ice test zeroconf"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-group/murmur
@@ -46,12 +47,14 @@ RDEPEND="
 	sys-apps/lsb-release
 	>=sys-libs/libcap-2.15
 	dbus? ( dev-qt/qtdbus:5 )
+	grpc? ( net-libs/grpc )
 	ice? ( dev-libs/Ice:= )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 "
 
 DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.41.0
+	dev-qt/qttest:5
 "
 BDEPEND="
 	acct-group/murmur
@@ -77,8 +80,6 @@ DOC_CONTENTS="
 "
 
 src_prepare() {
-	default
-
 	if [[ "${PV}" == *9999 ]] ; then
 		pushd scripts &>/dev/null || die
 		./mkini.sh || die
@@ -88,11 +89,15 @@ src_prepare() {
 	sed \
 		-e 's:mumble-server:murmur:g' \
 		-e 's:/var/run:/run:g' \
-		-i "${S}"/scripts/murmur.{conf,ini.system} || die
+		-i "${S}"/scripts/murmur.{conf,ini} || die
 
 	# Adjust systemd service file to our config location #689208
-	sed "s@/etc/${PN}\.ini@/etc/${PN}/${PN}.ini@" \
+	sed \
+		-e "s@/etc/${PN}\.ini@/etc/${PN}/${PN}.ini@" \
+		-e "s@murmurd@mumble-server@" \
 		-i scripts/${PN}.service || die
+
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -100,32 +105,35 @@ src_configure() {
 		[[ -n "${1}" ]] || die "myconf: No use flag given."
 		use ${1} || echo "no-${1}"
 	}
-	local conf_add=(
-		no-client
-		$(myuse dbus)
-		$(usex debug 'symbols debug' release)
-		$(myuse ice)
-		$(myuse pch)
-		$(usex zeroconf '' no-bonjour)
+	local mycmakeargs=(
+		-DBUILD_TESTING="$(usex test)"
+		-Dclient="OFF"
+		-Ddbus="$(usex dbus)"
+		-Dg15="OFF"
+		-Dgrpc="$(usex grpc)"
+		-Dice="$(usex ice)"
+		-Doverlay="OFF"
+		-Dserver="ON"
+		-Dzeroconf="$(usex zeroconf)"
 	)
-
-	eqmake5 main.pro -recursive \
-		CONFIG+="${conf_add[*]}"
+	if [[ "${PV}" != 9999 ]] ; then
+		mycmakeargs+=( -DBUILD_NUMBER="$(ver_cut 3)" )
+	fi
+	cmake_src_configure
 }
 
 src_install() {
-	dodoc README CHANGES
+	cmake_src_install
+
+	dodoc README.md CHANGES
 
 	docinto scripts
 	dodoc -r scripts/server
 	docompress -x /usr/share/doc/${PF}/scripts
 
-	local dir="$(usex debug debug release)"
-	dobin "${dir}"/murmurd
-
 	local etcdir="/etc/murmur"
 	insinto ${etcdir}
-	newins scripts/${PN}.ini.system ${PN}.ini
+	doins scripts/${PN}.ini
 
 	insinto /etc/logrotate.d/
 	newins "${FILESDIR}"/murmur.logrotate murmur
@@ -136,11 +144,11 @@ src_install() {
 	insinto /usr/share/murmur/
 	doins src/murmur/Murmur.ice
 
-	newinitd "${FILESDIR}"/murmur.initd-r1 murmur
+	newinitd "${FILESDIR}"/murmur.initd-r2 murmur
 	newconfd "${FILESDIR}"/murmur.confd murmur
 
 	systemd_dounit scripts/${PN}.service
-	systemd_newtmpfilesd "${FILESDIR}"/murmurd-dbus.tmpfiles "${PN}".conf
+	newtmpfiles "${FILESDIR}"/murmurd-dbus.tmpfiles "${PN}".conf
 
 	keepdir /var/lib/murmur /var/log/murmur
 	fowners -R murmur /var/lib/murmur /var/log/murmur
@@ -157,5 +165,6 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process ${PN}.conf
 	readme.gentoo_print_elog
 }

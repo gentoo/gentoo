@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>tamiko@gentoo.org</email>
@@ -17,7 +17,6 @@ of large-scale, complex multi-physics engineering and scientific problems.
 	<use>
 		<flag name="adolc">Add support for adolc (<pkg>sci-libs/adolc</pkg>)</flag>
 		<flag name="arprec">Add support for arprec (<pkg>sci-libs/arprec</pkg>)</flag>
-		<flag name="boost">Add support for boost (<pkg>dev-libs/boost</pkg>)</flag>
 		<flag name="clp">Add support for clp (<pkg>sci-libs/coinor-clp</pkg>)</flag>
 		<flag name="cuda">Add support for cuda (<pkg>dev-util/nvidia-cuda-toolkit</pkg>)</flag>
 		<flag name="eigen">Add support for eigen (<pkg>dev-cpp/eigen</pkg>)</flag>

@@ -1,5 +1,5 @@
---- src/org/apache/bsf/engines/jython/JythonEngine.java.orig	2015-07-04 08:00:17.120000000 +0000
-+++ src/org/apache/bsf/engines/jython/JythonEngine.java	2015-07-04 08:04:55.230000000 +0000
+--- a/src/org/apache/bsf/engines/jython/JythonEngine.java.orig	2015-07-04 08:00:17.120000000 +0000
++++ b/src/org/apache/bsf/engines/jython/JythonEngine.java	2015-07-04 08:04:55.230000000 +0000
 @@ -26,7 +26,7 @@
  import org.apache.bsf.util.BSFFunctions;
  import org.python.core.Py;

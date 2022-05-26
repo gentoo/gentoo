@@ -1,9 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cdrom.eclass
 # @MAINTAINER:
 # games@gentoo.org
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Functions for CD-ROM handling
 # @DESCRIPTION:
 # Acquire CD(s) for those lovely CD-based emerges.  Yes, this violates
@@ -14,13 +15,19 @@
 # eclass will require RESTRICT="bindist" but the point still stands.
 # The functions are generally called in src_unpack.
 
+case ${EAPI:-0} in
+	6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
 if [[ -z ${_CDROM_ECLASS} ]]; then
 _CDROM_ECLASS=1
 
 inherit portability
 
-# @ECLASS-VARIABLE: CDROM_OPTIONAL
+# @ECLASS_VARIABLE: CDROM_OPTIONAL
 # @DEFAULT_UNSET
+# @PRE_INHERIT
 # @DESCRIPTION:
 # By default, the eclass sets PROPERTIES="interactive" on the assumption
 # that people will be using these.  If your package optionally supports
@@ -72,11 +79,11 @@ fi
 cdrom_get_cds() {
 	unset CDROM_SET
 	export CDROM_CURRENT_CD=0
-    export CDROM_NUM_CDS="${#}"
-    local i
-    for i in $(seq ${#}); do
-        export CDROM_CHECK_${i}="${!i}"
-    done
+	export CDROM_NUM_CDS="${#}"
+	local i
+	for i in $(seq ${#}); do
+		export CDROM_CHECK_${i}="${!i}"
+	done
 
 	# If the user has set CD_ROOT or CD_ROOT_1, don't bother informing
 	# them about which discs are needed as they presumably already know.
@@ -229,13 +236,13 @@ cdrom_load_next_cd() {
 
 		if [[ ${showedmsg} -eq 0 ]] ; then
 			if [[ ${CDROM_NUM_CDS} -eq 1 ]] ; then
-				einfo "Please insert+mount the ${CDROM_NAME:-CD for ${PN}} now !"
+				einfo "Please insert+mount the ${CDROM_NAME:-CD for ${PN}} now!"
 			else
 				local var="CDROM_NAME_${CDROM_CURRENT_CD}"
 				if [[ -z ${!var} ]] ; then
-					einfo "Please insert+mount CD #${CDROM_CURRENT_CD} for ${PN} now !"
+					einfo "Please insert+mount CD #${CDROM_CURRENT_CD} for ${PN} now!"
 				else
-					einfo "Please insert+mount the ${!var} now !"
+					einfo "Please insert+mount the ${!var} now!"
 				fi
 			fi
 			showedmsg=1

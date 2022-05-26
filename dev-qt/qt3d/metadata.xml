@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>qt@gentoo.org</email>
@@ -8,6 +8,7 @@
 	<use>
 		<flag name="gamepad">Add support for gamepad hardware via <pkg>dev-qt/qtgamepad</pkg></flag>
 		<flag name="qml">Build QML/QtQuick bindings</flag>
+		<flag name="vulkan">Enable support for Vulkan</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>

@@ -1,54 +1,67 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit readme.gentoo-r1 systemd
 
-DESCRIPTION="Scripts to support compressed swap devices or ramdisks with zram"
+inherit prefix readme.gentoo-r1
+
+DESCRIPTION="Scripts to support compressed swap devices or ramdisks with zRAM"
 HOMEPAGE="https://github.com/vaeth/zram-init/"
+
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/vaeth/${PN}.git"
+else
+	SRC_URI="https://github.com/vaeth/zram-init/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
 
-if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="https://github.com/vaeth/${PN}.git"
-	inherit git-r3
-else
-	SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
-fi
+BDEPEND="sys-devel/gettext"
 
-RDEPEND=">=app-shells/push-2.0
-	!<sys-apps/openrc-0.13"
+RDEPEND="
+	>=app-shells/push-2.0
+	virtual/libintl
+	|| ( sys-apps/openrc sys-apps/systemd )
+"
 
-DISABLE_AUTOFORMATTING="true"
-DOC_CONTENTS="To use zram, activate it in your kernel and add it to default runlevel:
-	rc-config add zram default
-If you use systemd enable zram_swap, tmp, and/or var_tmp with systemctl.
-You might need to modify /etc/modprobe.d/zram.conf"
+DISABLE_AUTOFORMATTING=true
+DOC_CONTENTS="\
+To use zram-init, activate it in your kernel and add it to the default
+runlevel: rc-update add zram-init default
+If you use systemd enable zram_swap, zram_tmp, and/or zram_var_tmp with
+systemctl. You might need to modify the following file depending on the number
+of devices that you want to create: /etc/modprobe.d/zram.conf.
+If you use the \$TMPDIR as zram device with OpenRC, you should add zram-init to
+the boot runlevel: rc-update add zram-init boot
+Still for the same case, you should add in the OpenRC configuration file for
+the services using \$TMPDIR the following line: rc_need=\"zram-init\""
 
 src_prepare() {
-	use prefix || sed -i \
-		-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
-		-e 's#PushA_=`push.sh 2>/dev/null`#PushA_=`cat '"${EPREFIX}"'/usr/share/push/push.sh`#' \
-		-- sbin/zram-init || die
 	default
+
+	hprefixify "${S}/man/${PN}.8"
+
+	hprefixify -e "s%(}|:)(/(usr/)?sbin)%\1${EPREFIX}\2%g" \
+		"${S}/sbin/${PN}.in"
+
+	hprefixify -e "s%( |=)(/tmp)%\1${EPREFIX}\2%g" \
+		"${S}/systemd/system"/* \
+		"${S}/openrc"/*/*
+}
+
+src_compile() {
+	emake PREFIX="${EPREFIX}/usr" MODIFY_SHEBANG=FALSE
 }
 
 src_install() {
-	doinitd openrc/init.d/*
-	doconfd openrc/conf.d/*
-	systemd_dounit systemd/system/*
-	insinto /etc/modprobe.d
-	doins modprobe.d/*
-	insinto /usr/share/zsh/site-functions
-	doins zsh/*
-	dodoc AUTHORS ChangeLog README.md
+	einstalldocs
 	readme.gentoo_create_doc
-	into /
-	dosbin sbin/*
-	doman man/${PN}.8
+
+	emake DESTDIR="${ED}" PREFIX="/usr" SYSCONFDIR="/etc" \
+		BINDIR="${ED}/sbin" SYSTEMDDIR="${ED}/lib/systemd/system" install
 }
 
 pkg_postinst() {

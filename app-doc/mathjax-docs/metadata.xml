@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
     <email>gienah@gentoo.org</email>
     <name>Mark Wright</name>
   </maintainer>
+  <stabilize-allarches/>
   <longdescription lang="en">
   MathJax is an open-source JavaScript display engine for LaTeX and
   MathML that works in all modern browsers. It was designed with the

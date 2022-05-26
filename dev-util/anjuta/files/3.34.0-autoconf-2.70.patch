@@ -1,0 +1,15 @@
+https://gitlab.gnome.org/GNOME/anjuta/-/merge_requests/13
+
+diff --git a/configure.ac b/configure.ac
+index c637f9cf3..4b101c35e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -85,8 +85,6 @@ case "$YACC" in
+     AC_MSG_ERROR(bison is required)
+     ;;
+ esac
+-AC_LANG([C])
+-AC_LANG([C++])
+ AC_PROG_CXX
+ AC_LINK_IFELSE([AC_LANG_PROGRAM([], [])],,
+    AC_MSG_ERROR([C++ Compiler required to compile Anjuta]))

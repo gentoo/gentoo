@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/835791
+https://sourceforge.net/p/xine/tickets/11/
+--- a/src/video_dec/dav1d.c
++++ b/src/video_dec/dav1d.c
+@@ -544,11 +544,17 @@
+
+   /* multithreading */
+   ncpu = xine_cpu_count();
++#if DAV1D_API_VERSION_MAJOR > 5
++  settings.n_threads = ncpu + 1;
++  xprintf(stream->xine, XINE_VERBOSITY_DEBUG, LOG_MODULE ": "
++            "Using %d threads\n", settings.n_threads);
++#else
+   settings.n_frame_threads = (ncpu > 8) ? 4 : (ncpu < 2) ? 1 : ncpu/2;
+   settings.n_tile_threads = MAX(1, ncpu - settings.n_frame_threads + 1);
+   xprintf(stream->xine, XINE_VERBOSITY_DEBUG, LOG_MODULE ": "
+             "Using %d frame threads, %d tile threads\n",
+             settings.n_frame_threads, settings.n_tile_threads);
++#endif
+
+   /* dri frame allocator */
+   settings.allocator.cookie = this;

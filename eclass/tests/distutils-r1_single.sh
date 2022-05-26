@@ -4,7 +4,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_8 )
-source tests-common.sh
+source tests-common.sh || exit
 
 test-distutils_enable_tests() {
 	local runner=${1}
@@ -77,7 +77,7 @@ inherit distutils-r1
 einfo distutils_enable_tests
 eindent
 BASE_IUSE="+python_single_target_python3_8"
-BASE_DEPS="python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] )"
+BASE_DEPS="python_single_target_python3_8? ( >=dev-lang/python-3.8.12_p1-r1:3.8 )"
 TEST_RESTRICT="!test? ( test )"
 
 einfo "empty RDEPEND"
@@ -88,7 +88,7 @@ test-distutils_enable_tests pytest \
 test-distutils_enable_tests nose \
 	"${BASE_IUSE} test" "${TEST_RESTRICT}" "${BASE_DEPS} test? ( python_single_target_python3_8? ( >=dev-python/nose-1.3.7-r4[python_targets_python3_8(-)] ) )"
 test-distutils_enable_tests unittest \
-	"${BASE_IUSE}" "" "${BASE_DEPS}"
+	"${BASE_IUSE} test" "${TEST_RESTRICT}" "${BASE_DEPS} test? ( python_single_target_python3_8? ( dev-python/unittest-or-fail[python_targets_python3_8(-)] ) )"
 test-distutils_enable_tests setup.py \
 	"${BASE_IUSE}" "" "${BASE_DEPS}"
 eoutdent
@@ -102,7 +102,7 @@ test-distutils_enable_tests pytest \
 test-distutils_enable_tests nose \
 	"${BASE_IUSE} test" "${TEST_RESTRICT}" "${BASE_DEPS} test? ( ${BASE_RDEPEND} python_single_target_python3_8? ( >=dev-python/nose-1.3.7-r4[python_targets_python3_8(-)] ) )"
 test-distutils_enable_tests unittest \
-	"${BASE_IUSE} test" "${TEST_RESTRICT}" "${BASE_DEPS} test? ( ${BASE_RDEPEND} )"
+	"${BASE_IUSE} test" "${TEST_RESTRICT}" "${BASE_DEPS} test? ( ${BASE_RDEPEND} python_single_target_python3_8? ( dev-python/unittest-or-fail[python_targets_python3_8(-)] ) )"
 test-distutils_enable_tests setup.py \
 	"${BASE_IUSE} test" "${TEST_RESTRICT}" "${BASE_DEPS} test? ( ${BASE_RDEPEND} )"
 eoutdent
@@ -115,7 +115,7 @@ SETUPTOOLS_DEP="python_single_target_python3_8? ( >=dev-python/setuptools-42.0.2
 test-DISTUTILS_USE_SETUPTOOLS no "${BASE_DEPS}" "${BASE_DEPS}"
 test-DISTUTILS_USE_SETUPTOOLS bdepend "${BASE_DEPS} ${SETUPTOOLS_DEP}" "${BASE_DEPS}"
 test-DISTUTILS_USE_SETUPTOOLS rdepend "${BASE_DEPS} ${SETUPTOOLS_DEP}" "${BASE_DEPS} ${SETUPTOOLS_DEP}"
-test-DISTUTILS_USE_SETUPTOOLS pyproject.toml "${BASE_DEPS} python_single_target_python3_8? ( dev-python/pyproject2setuppy[python_targets_python3_8(-)] )" "${BASE_DEPS}"
+test-DISTUTILS_USE_SETUPTOOLS pyproject.toml "${BASE_DEPS} python_single_target_python3_8? ( >=dev-python/pyproject2setuppy-22[python_targets_python3_8(-)] )" "${BASE_DEPS}"
 test-DISTUTILS_USE_SETUPTOOLS manual "${BASE_DEPS}" "${BASE_DEPS}"
 eoutdent
 

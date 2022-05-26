@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 inherit multibuild postgres
@@ -8,8 +8,10 @@ EXPORT_FUNCTIONS pkg_setup src_prepare src_compile src_install src_test
 # @ECLASS: postgres-multi.eclass
 # @MAINTAINER:
 # PostgreSQL <pgsql-bugs@gentoo.org>
-# @AUTHOR: Aaron W. Swenson <titanofold@gentoo.org>
+# @AUTHOR:
+# Aaron W. Swenson <titanofold@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
+# @PROVIDES: multibuild postgres
 # @BLURB: An eclass to build PostgreSQL-related packages against multiple slots
 # @DESCRIPTION:
 # postgres-multi enables ebuilds, particularly PostgreSQL extensions, to
@@ -23,7 +25,8 @@ case ${EAPI:-0} in
 esac
 
 
-# @ECLASS-VARIABLE: POSTGRES_COMPAT
+# @ECLASS_VARIABLE: POSTGRES_COMPAT
+# @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
 # A Bash array containing a list of compatible PostgreSQL slots as
@@ -37,7 +40,7 @@ if ! declare -p POSTGRES_COMPAT &>/dev/null; then
 	die 'Required variable POSTGRES_COMPAT not declared.'
 fi
 
-# @ECLASS-VARIABLE: _POSTGRES_INTERSECT_SLOTS
+# @ECLASS_VARIABLE: _POSTGRES_INTERSECT_SLOTS
 # @INTERNAL
 # @DESCRIPTION:
 # A Bash array containing the intersect of POSTGRES_TARGETS and

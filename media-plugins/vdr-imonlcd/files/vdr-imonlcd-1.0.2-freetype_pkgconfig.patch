@@ -19,8 +19,8 @@ index fc165e9..36fc681 100644
  
 -INCLUDES += $(shell freetype-config --cflags)
 -LIBS += $(shell freetype-config --libs)
-+INCLUDES += $(shell pkg-config --cflags freetype2)
-+LIBS += $(shell pkg-config --libs freetype2)
++INCLUDES += $(shell ${PKG_CONFIG} --cflags freetype2)
++LIBS += $(shell ${PKG_CONFIG} --libs freetype2)
  
  DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
  

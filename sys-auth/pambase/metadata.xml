@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>zlogene@gentoo.org</email>
@@ -10,23 +10,16 @@
 		<name>Sam James</name>
 	</maintainer>
 	<use>
-		<flag name="cracklib">
-			Enable pam_cracklib module on system authentication stack. This
-			produces warnings when changing password to something easily
-			crackable. It requires the same USE flag to be enabled on
-			<pkg>sys-libs/pam</pkg> or system login might be impossible.
-		</flag>
-		<flag name="consolekit">
-			Enable pam_ck_connector module on local system logins. This
-			allows for console logins to make use of ConsoleKit
-			authorization.
-		</flag>
 		<flag name="elogind">
 			Use pam_elogind module to register user sessions with elogind.
 		</flag>
 		<flag name="systemd">
 			Use pam_systemd module to register user sessions in the systemd
 			control group hierarchy.
+		</flag>
+		<flag name="homed">
+			Use pam_systemd_home module to manage home directories with
+			the systemd-homed service
 		</flag>
 		<flag name="debug">
 			Enable debug information logging on syslog(3) for all the
@@ -74,6 +67,9 @@
 			still be recognised if the USE flag is removed, the shadow file
 			will not be compatible with systems using an earlier glibc
 			version.
+		</flag>
+		<flag name="yescrypt">
+			Switch Linux-PAM's pam_unix module to use yescrypt for passwords hashes rather than MD5
 		</flag>
 		<flag name="pam_krb5">
 			Enable pam_krb5 module on system auth stack, as an alternative

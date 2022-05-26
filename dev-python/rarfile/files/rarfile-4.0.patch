@@ -1,0 +1,22 @@
+diff -r -U2 rarfile-4.0.orig/test/test_tool.py rarfile-4.0/test/test_tool.py
+--- rarfile-4.0.orig/test/test_tool.py	2020-08-01 01:25:50.000000000 +0700
++++ rarfile-4.0/test/test_tool.py	2021-10-03 22:35:22.329537879 +0700
+@@ -33,5 +33,5 @@
+ 
+ 
+-@pytest.mark.skipif(sys.platform == "win32", reason="unar not available on Windows")
++@pytest.mark.skip()
+ def test_unar_tool():
+     install_unar_tool()
+@@ -43,4 +43,5 @@
+ 
+ 
++@pytest.mark.skip()
+ def test_bsdtar_tool():
+     install_bsdtar_tool()
+@@ -114,4 +115,5 @@
+ 
+ 
++@pytest.mark.skip()
+ def test_cli_help(capsys):
+     assert cli("--help") == 0

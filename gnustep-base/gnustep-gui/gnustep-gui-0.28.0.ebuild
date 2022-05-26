@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit gnustep-base multilib
+inherit gnustep-base multilib virtualx
 
 DESCRIPTION="Library of GUI classes written in Obj-C"
 HOMEPAGE="http://www.gnustep.org/"
@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="cups gif icu jpeg png speech"
 
 DEPEND="${GNUSTEP_CORE_DEPEND}
@@ -26,6 +26,8 @@ DEPEND="${GNUSTEP_CORE_DEPEND}
 	png? ( >=media-libs/libpng-1.2:= )
 	speech? ( app-accessibility/flite )"
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}"/${P}-icu68.patch )
 
 src_prepare() {
 	gnustep-base_src_prepare
@@ -52,4 +54,8 @@ src_configure() {
 		--with-tiff-include="${EPREFIX}"/usr/include \
 		--with-tiff-library="${EPREFIX}"/usr/$(get_libdir) \
 		${myconf}
+}
+
+src_test() {
+	virtx default
 }

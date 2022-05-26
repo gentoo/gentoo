@@ -1,0 +1,41 @@
+diff --git a/m4/mydns.m4 b/m4/mydns.m4
+index a2e39c2..c174a18 100644
+--- a/m4/mydns.m4
++++ b/m4/mydns.m4
+@@ -446,7 +446,7 @@ AC_DEFUN([AC_ENABLE_STATUS],
+ ##
+ AC_DEFUN([AC_LIB_Z],
+ 	[
+-		ac_zlib_dirs="/lib /usr/lib /usr/local/lib"
++		ac_zlib_dirs="/lib /usr/lib /usr/lib64 /usr/local/lib"
+ 		AC_ARG_WITH(zlib,
+ 			AC_HELP_STRING([--with-zlib=DIR], [look for the zlib compression library in DIR]),
+ 			ac_zlib_dirs="$withval $ac_zlib_dirs")
+@@ -476,7 +476,7 @@ AC_DEFUN([AC_LIB_Z],
+ ##
+ AC_DEFUN([AC_LIB_Z_STATIC],
+         [
+-                ac_zlib_static_dirs="/lib /usr/lib /usr/local/lib"
++                ac_zlib_static_dirs="/lib /usr/lib /usr/lib64 /usr/local/lib"
+                 AC_ARG_WITH(zlib_static,
+                         AC_HELP_STRING([--with-zlib-static=DIR], [look for the static zlib compression library in DIR]),
+                         ac_zlib_static_dirs="$withval $ac_zlib_static_dirs")
+@@ -607,7 +607,7 @@ AC_DEFUN([AC_CHECK_MYSQL],
+ ##
+ AC_DEFUN([AC_LIB_PQ],
+ 	[
+-		ac_mydns_lib_dirs="/usr/local/pgsql/lib /lib /usr/lib /usr/local/lib"
++		ac_mydns_lib_dirs="/lib /usr/lib /usr/lib64 /usr/local/lib /usr/local/pgsql/lib"
+ 		AC_ARG_WITH(pgsql-lib,
+ 			AC_HELP_STRING([--with-pgsql-lib=DIR],
+ 								[look for the PostgreSQL client library in DIR]),
+@@ -635,8 +635,7 @@ AC_DEFUN([AC_LIB_PQ],
+ ##
+ AC_DEFUN([AC_HEADER_PQ],
+ 	[
+-		ac_mydns_header_dirs="/usr/local/pgsql/include /usr/include/postgresql \
+-									 /usr/include /usr/local/include"
++		ac_mydns_header_dirs="/usr/include/postgresql /usr/include /usr/local/include /usr/local/pgsql/include"
+ 		ac_mydns_header_found=no, ac_mydns_header_ok=no
+ 		AC_ARG_WITH(pgsql-include,
+ 			AC_HELP_STRING([--with-pgsql-include=DIR],

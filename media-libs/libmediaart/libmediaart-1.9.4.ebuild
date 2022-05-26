@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,14 +6,14 @@ EAPI="6"
 VALA_USE_DEPEND="vapigen"
 VALA_MIN_API_VERSION="0.16"
 
-inherit autotools flag-o-matic gnome2 vala virtualx
+inherit autotools gnome2 vala virtualx
 
 DESCRIPTION="Manages, extracts and handles media art caches"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/libmediaart"
 
 LICENSE="LGPL-2.1+"
 SLOT="2.0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="gtk +introspection qt5 vala"
 REQUIRED_USE="
 	?? ( gtk qt5 )
@@ -47,6 +47,7 @@ src_prepare() {
 	mv html/libmediaart{,-${SLOT}}.devhelp2 || die
 	cd "${S}" || die
 
+	eapply "${FILESDIR}"/${PN}-1.9.4-drop-bashisms-configure.patch
 	eautoreconf
 
 	use vala && vala_src_prepare
@@ -56,7 +57,6 @@ src_prepare() {
 src_configure() {
 	if use qt5 ; then
 		local myconf="--with-qt-version=5"
-		append-cxxflags -std=c++11
 	fi
 
 	gnome2_src_configure \

@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -11,11 +11,9 @@ SRC_URI="http://www.inter7.com/eps/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc x86"
-IUSE=""
+KEYWORDS="~amd64 ~ppc x86"
 
-DEPEND="sys-apps/sed"
-RDEPEND=""
+PATCHES=( "${FILESDIR}"/${P}-static-libs.patch )
 
 src_prepare() {
 	sed -i -e 's:/usr:$(DESTDIR)$(prefix):g' \

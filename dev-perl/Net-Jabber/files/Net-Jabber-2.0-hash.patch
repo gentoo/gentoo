@@ -1,0 +1,19 @@
+Description: feed hash to RPCEncode_Value() sorted
+Origin: vendor
+Bug: https://rt.cpan.org/Public/Bug/Display.html?id=87436
+Bug-Debian: https://bugs.debian.org/720271
+Forwarded: https://rt.cpan.org/Public/Bug/Display.html?id=87436
+Author: gregor herrmann <gregoa@debian.org>
+Last-Update: 2014-07-26
+
+--- a/lib/Net/Jabber/Protocol.pm
++++ b/lib/Net/Jabber/Protocol.pm
+@@ -2239,7 +2239,7 @@
+     elsif (ref($value) eq "HASH")
+     {
+         my $struct = $obj->AddValue()->AddStruct();
+-        foreach my $key (keys(%{$value}))
++        foreach my $key (sort keys(%{$value}))
+         {
+             $self->RPCEncode_Value($struct->AddMember(name=>$key),$value->{$key});
+         }

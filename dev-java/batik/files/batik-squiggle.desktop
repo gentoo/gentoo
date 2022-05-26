@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Squiggle
+Comment=SVG browser
+Exec=batik-squiggle-1.14
+Icon=init
+Terminal=false
+Type=Application
+Categories=Graphics;VectorGraphics;
+MimeType=image/svg+xml;

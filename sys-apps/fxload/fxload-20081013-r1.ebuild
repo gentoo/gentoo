@@ -1,26 +1,26 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 # source maintainers named it fxload-YYYY_MM_DD instead of fxload-YYYYMMDD
 MY_P="${PN}-${PV:0:4}_${PV:4:2}_${PV:6:2}"
 DESCRIPTION="USB firmware uploader"
 HOMEPAGE="http://linux-hotplug.sourceforge.net/"
 SRC_URI="mirror://sourceforge/linux-hotplug/${MY_P}.tar.gz"
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa ~ia64 ppc ppc64 sparc x86"
-IUSE=""
-
-S=${WORKDIR}/${MY_P}
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ppc ppc64 sparc x86"
 
 src_prepare() {
+	default
+
 	sed -i \
-		-e 's:$(CC) -o:$(CC) $(LDFLAGS) -o:' \
+		-e 's:$(CC) -o:$(CC) $(CPPFLAGS) $(LDFLAGS) -o:' \
 		Makefile || die
 }
 

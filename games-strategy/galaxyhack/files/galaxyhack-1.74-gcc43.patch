@@ -1,6 +1,5 @@
-diff -aur src.old/JSDL.cpp src/JSDL.cpp
---- src.old/JSDL.cpp	2008-07-17 18:31:38.000000000 +0200
-+++ src/JSDL.cpp	2008-07-17 19:19:39.000000000 +0200
+--- a/JSDL.cpp
++++ b/JSDL.cpp
 @@ -20,7 +20,7 @@
  #include <cstdlib>
  #include <fstream>

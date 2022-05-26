@@ -1,0 +1,38 @@
+From 715ce0a6459e418f92e74c7ce52df3244c18f383 Mon Sep 17 00:00:00 2001
+From: Sven Eden <sven.eden@prydeworx.com>
+Date: Mon, 8 Mar 2021 08:40:08 +0100
+Subject: [PATCH] Revert "Disable polkit support if libpolkit is not installed"
+
+This reverts commit 1194dec4f8f2d1b8bd14e1625f34418ecfce817e.
+
+Removing polkit support with -Dpolkit=auto when libpolkit is not
+installed, removes the whole interface. This makes it impossible to
+add polkit support as a runtime dependency.
+
+Bug: #167
+Closes: #206
+Signed-off-by: Sven Eden <sven.eden@prydeworx.com>
+---
+ meson.build | 9 ---------
+ 1 file changed, 9 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 2dd05db3c..f38551f55 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1157,15 +1157,6 @@ if want_polkit != 'false' and not skip_deps
+                 message('Old polkit detected, will install pkla files')
+                 install_polkit_pkla = true
+         endif
+-#if 1 /// Disable polkit completely if libpolkit is not there. See elogind issue #167
+-        if not libpolkit.found()
+-                if want_polkit != 'auto'
+-                        error('Polkit requested but libpolkit was not found.')
+-                endif
+-                install_polkit = false
+-                want_polkit    = false
+-        endif
+-#endif // 1
+ endif
+ conf.set10('ENABLE_POLKIT', install_polkit)
+ 

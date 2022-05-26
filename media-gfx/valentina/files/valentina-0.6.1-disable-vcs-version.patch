@@ -1,0 +1,75 @@
+diff --git a/common.pri b/common.pri
+index 523aa7c..33be789 100644
+--- a/common.pri
++++ b/common.pri
+@@ -212,37 +212,7 @@ defineReplace(enable_ccache){
+ }
+ 
+ defineReplace(FindBuildRevision){
+-CONFIG(debug, debug|release){
+-    # Debug mode
+-    return(\\\"unknown\\\")
+-}else{
+-    # Release mode
+-
+-    macx{
+-        HG = /usr/local/bin/hg # Can't defeat PATH variable on Mac OS.
+-    }else {
+-        HG = hg # All other platforms are OK.
+-    }
+-
+-    #build revision number for using in version
+-    unix {
+-        DVCS_HESH=$$system("$${HG} log -r. --template '{node|short}'")
+-    } else {
+-        # Use escape character before "|" on Windows
+-        DVCS_HESH=$$system($${HG} log -r. --template "{node^|short}")
+-    }
+-    isEmpty(DVCS_HESH){
+-        DVCS_HESH=$$system("git rev-parse --short HEAD")
+-        isEmpty(DVCS_HESH){
+-            DVCS_HESH = \\\"unknown\\\" # if we can't find build revision left unknown.
+-        } else {
+-            DVCS_HESH=\\\"Git:$${DVCS_HESH}\\\"
+-        }
+-    } else {
+-        DVCS_HESH=\\\"Hg:$${DVCS_HESH}\\\"
+-    }
+-    return($${DVCS_HESH})
+-}
++return(\\\"unknown\\\")
+ }
+ 
+ # Default prefix. Use for creation install path.
+diff --git a/src/libs/vmisc/vmisc.pro b/src/libs/vmisc/vmisc.pro
+index cf8db51..fff1c0e 100644
+--- a/src/libs/vmisc/vmisc.pro
++++ b/src/libs/vmisc/vmisc.pro
+@@ -98,10 +98,7 @@ CONFIG(debug, debug|release){
+         HG = hg # All other platforms all OK.
+     }
+     #latest tag distance number for using in version
+-    HG_DISTANCE=$$system($${HG} log -r. --template '{latesttagdistance}')
+-    isEmpty(HG_DISTANCE){
+-        HG_DISTANCE = 0 # if we can't find local revision left 0.
+-    }
++    HG_DISTANCE = 0 # if we can't find local revision left 0.
+     message("Latest tag distance:" $${HG_DISTANCE})
+     DEFINES += "LATEST_TAG_DISTANCE=$${HG_DISTANCE}" # Make available latest tag distance number in sources.
+ }
+diff --git a/src/libs/vtest/vtest.pro b/src/libs/vtest/vtest.pro
+index a336d48..c943fc5 100644
+--- a/src/libs/vtest/vtest.pro
++++ b/src/libs/vtest/vtest.pro
+@@ -92,10 +92,7 @@ CONFIG(debug, debug|release){
+         HG = hg # All other platforms all OK.
+     }
+     #latest tag distance number for using in version
+-    HG_DISTANCE=$$system($${HG} log -r. --template '{latesttagdistance}')
+-    isEmpty(HG_DISTANCE){
+-        HG_DISTANCE = 0 # if we can't find local revision left 0.
+-    }
++    HG_DISTANCE = 0 # if we can't find local revision left 0.
+     message("Latest tag distance:" $${HG_DISTANCE})
+     DEFINES += "LATEST_TAG_DISTANCE=$${HG_DISTANCE}" # Make available latest tag distance number in sources.
+ }

@@ -1,0 +1,13 @@
+--- a/Makefile
++++ b/Makefile
+@@ -12,8 +12,9 @@ DESTDIR =
+ # This should point to the GKrellM headers
+ GKRELLM_HDRS = /usr/include
+ 
++PKG_CONFIG ?= pkg-config
+ CC = $(CC)
+-GTKFLAGS := $(shell pkg-config gtk+-2.0 --cflags)
++GTKFLAGS := $(shell ${PKG_CONFIG} gtk+-2.0 --cflags)
+ CFLAGS := $(CFLAGS) -fPIC $(GTKFLAGS) -I$(GKRELLM_HDRS)
+ LFLAGS = -shared
+ INST_DIR := $(DESTDIR)/usr/lib/gkrellm2/plugins

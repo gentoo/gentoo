@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit multilib toolchain-funcs
+inherit toolchain-funcs
 
 MY_P="${P/1.0/9libs}"
 
@@ -12,7 +12,7 @@ SRC_URI="https://www.netlib.org/research/9libs/${MY_P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~riscv x86"
 
 DEPEND="
 	dev-libs/9libs

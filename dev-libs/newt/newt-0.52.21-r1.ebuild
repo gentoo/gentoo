@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit autotools python-r1 toolchain-funcs
 
@@ -13,7 +13,7 @@ SRC_URI="https://releases.pagure.org/newt/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="gpm nls tcl"
 RESTRICT="test"
 
@@ -23,18 +23,20 @@ RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-libs/popt-1.6
 	=sys-libs/slang-2*
-	elibc_uclibc? ( sys-libs/ncurses:0= )
 	gpm? ( sys-libs/gpm )
 	tcl? ( >=dev-lang/tcl-8.5:0 )
 	"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	# bug 73850
-	if use elibc_uclibc; then
-		sed -i -e 's:-lslang:-lslang -lncurses:g' Makefile.in || die
-	fi
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.52.13-gold.patch
+	"${FILESDIR}"/${PN}-0.52.14-tcl.patch
+	"${FILESDIR}"/${PN}-0.52.21-python-sitedir.patch
+	"${FILESDIR}"/${PN}-0.52.21-makefile-LDFLAGS-ordering.patch
+	"${FILESDIR}"/${PN}-0.52.21-fix-non-POSIX-backticks.patch
+)
 
+src_prepare() {
 	sed -i Makefile.in \
 		-e 's|$(SHCFLAGS) -o|$(LDFLAGS) &|g' \
 		-e 's|-g -o|$(CFLAGS) $(LDFLAGS) -o|g' \
@@ -54,11 +56,7 @@ src_prepare() {
 			|| die "sed po/Makefile"
 	fi
 
-	eapply \
-		"${FILESDIR}"/${PN}-0.52.13-gold.patch \
-		"${FILESDIR}"/${PN}-0.52.14-tcl.patch \
-		"${FILESDIR}"/${PN}-0.52.21-python-sitedir.patch
-	eapply_user
+	default
 	eautoreconf
 
 	# can't build out-of-source

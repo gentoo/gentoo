@@ -1,14 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
-inherit python-single-r1
+PYTHON_COMPAT=( python3_{8,9,10} )
+inherit autotools python-single-r1
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
-	inherit git-r3 autotools
+	inherit git-r3
 else
 	SRC_URI="https://sigrok.org/download/source/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
@@ -32,17 +32,15 @@ BDEPEND="
 
 src_prepare() {
 	default
-	[[ ${PV} == *9999* ]] && eautoreconf
 
-	# Only a test program (not installed, and not used by src_test)
-	# is used by libsigrok, so disable it to avoid the compile.
-	sed -i \
-		-e '/build_runtc=/s:yes:no:' \
-		configure || die
+	# bug #794592
+	sed -i -e "s/\[SRD_PKGLIBS\],\$/& [python-${EPYTHON#python}-embed], [python-${EPYTHON#python}],/" configure.ac || die
+
+	eautoreconf
 }
 
 src_configure() {
-	econf $(use_enable static-libs static)
+	econf $(use_enable static-libs static) PYTHON3="${PYTHON}"
 }
 
 src_test() {

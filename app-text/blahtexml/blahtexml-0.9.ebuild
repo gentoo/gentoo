@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="TeX-to-MathML converter"
 HOMEPAGE="http://gva.noekeon.org/blahtexml"
@@ -11,20 +11,28 @@ SRC_URI="http://gva.noekeon.org/${PN}/${P}-src.tar.gz"
 
 LICENSE="BSD CC-BY-3.0 ZLIB"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 x86"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~s390 x86"
 IUSE="doc"
 
 RDEPEND="dev-libs/xerces-c"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	doc? (
 		app-text/texlive-core
 		dev-libs/libxslt
-		dev-tex/latex2html )"
+		dev-tex/latex2html
+	)
+"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-{Makefile,gcc-4.7}.patch
+)
 
 src_prepare() {
-	tc-export CC CXX
-	epatch "${FILESDIR}"/${P}-{Makefile,gcc-4.7}.patch
+	default
+
+	tc-export CC CXX PKG_CONFIG
 }
 
 src_compile() {

@@ -1,0 +1,43 @@
+From 6a92664fe0cfacffb03e6f3312c1c5fb4d785297 Mon Sep 17 00:00:00 2001
+From: Maxim Baz <github@maximbaz.com>
+Date: Sat, 5 Oct 2019 23:52:17 +0200
+Subject: [PATCH] Fix typos (#132)
+
+---
+ pius | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/pius b/pius
+index 7cf09b5..cc2333b 100755
+--- a/pius
++++ b/pius
+@@ -25,7 +25,7 @@ from optparse import OptionParser
+ 
+ from libpius import mailer as pmailer
+ from libpius import signer as psigner
+-from libpius.util import PiusUtil, MyOption
++from libpius.util import PiusUtil, MyOption, check_email
+ from libpius.constants import (
+     DEFAULT_GPG_PATH,
+     DEFAULT_KEYRING,
+@@ -61,7 +61,7 @@ def check_options(parser, options, args):
+ 
+     if options.debug == True:
+         print("Setting debug")
+-        util.DEBUG_ON = True
++        PiusUtil.DEBUG_ON = True
+ 
+     if not os.path.exists(options.gpg_path):
+         parser.error("GnuPG binary not found at %s." % options.gpg_path)
+@@ -288,7 +288,7 @@ def main():
+         )
+         if ans in ("y", "Y", "yes", "YES", "Yes"):
+             ans = input("What email address should we send from? ")
+-            util.check_email(parser, "-m", ans)
++            check_email(parser, "-m", ans)
+             options.mail = ans
+             print()
+ 
+-- 
+2.29.2
+

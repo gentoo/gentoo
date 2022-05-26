@@ -1,17 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit flag-o-matic
-
 DESCRIPTION="C++ port of the Log for Java (log4j) logging library"
-HOMEPAGE="http://log4cplus.sourceforge.net/ https://github.com/log4cplus/log4cplus"
+HOMEPAGE="https://log4cplus.sourceforge.io/ https://github.com/log4cplus/log4cplus"
 SRC_URI="mirror://sourceforge/project/${PN}/${PN}-stable/${PV}/${P}.tar.bz2"
 
 LICENSE="|| ( Apache-2.0 BSD-2 )"
 SLOT="0/1.2-5"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="iconv qt5 threads working-locale working-c-locale"
 REQUIRED_USE="?? ( iconv working-locale working-c-locale )"
 
@@ -26,10 +24,6 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}/${PN}-1.2.0-fix-c++14.patch" )
 
 src_configure() {
-	# bug 648714
-	# Qt5 now requires C++11
-	append-cxxflags -std=c++11
-
 	econf \
 		--disable-static \
 		$(use_with iconv) \

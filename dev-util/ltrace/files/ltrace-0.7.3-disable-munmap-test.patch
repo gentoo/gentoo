@@ -1,0 +1,15 @@
+--- a/testsuite/ltrace.main/system_calls.exp
++++ b/testsuite/ltrace.main/system_calls.exp
+@@ -29,8 +29,10 @@ if [regexp {ELF from incompatible architecture} $exec_output] {
+ }
+ 
+ 
+-set pattern "SYS_munmap"
+-ltrace_verify_output ${objdir}/${subdir}/${testfile}.ltrace $pattern 2
++## disabled in Gentoo: libc's stdio tends to call (or not to call) munmap
++## depending on heuristics of stdio buffer sizes.
++##set pattern "SYS_munmap"
++##ltrace_verify_output ${objdir}/${subdir}/${testfile}.ltrace $pattern 2
+ set pattern "SYS_write"
+ ltrace_verify_output ${objdir}/${subdir}/${testfile}.ltrace $pattern 1
+ set pattern "SYS_unlink"

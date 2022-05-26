@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,10 +33,10 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
-	econf --bindir="${D}/usr/bin" --mandir="${D}/usr/share/man"
+src_compile() {
+	emake CC="$(tc-getCC)"
 }
 
-src_compile() {
-	emake CC=$(tc-getCC)
+src_install() {
+	emake bindir="${D}"/usr/bin mandir="${D}"/usr/share/man install
 }

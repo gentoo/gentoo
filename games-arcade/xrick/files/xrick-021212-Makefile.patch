@@ -1,0 +1,30 @@
+--- a/Makefile
++++ b/Makefile
+@@ -71,10 +71,8 @@
+ all:
+ 	@echo "ROOTDIR=$(ROOTDIR)" > Makefile.global
+ 	@echo "XOBJ=$(XOBJ)" >> Makefile.global
+-	@echo "CFLAGS=-g -ansi -pedantic -Wall -W -O2 -I $(ROOTDIR)/include $(shell sdl-config --cflags)" >> Makefile.global
+-	@echo "LDFLAGS=-lz $(shell sdl-config --libs)" >> Makefile.global
+-	@echo "CC=gcc" >> Makefile.global
+-	@echo "CPP=gcc -E" >> Makefile.global
++	@echo "CFLAGS+=-pedantic -Wall -I$(ROOTDIR)/include $(shell sdl-config --cflags)" >> Makefile.global
++	@echo "LIBS+=-lz $(shell sdl-config --libs)" >> Makefile.global
+ 	$(MAKE) -C src all
+ 
+ clean:
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -40,10 +40,10 @@
+ all: $(TARGET)
+ 
+ $(TARGET): $(OBJECTS) $(XOBJ)
+-	$(CC) $(OBJECTS) $(XOBJ) $(LDFLAGS) -o $(TARGET)
++	$(CC) $(LDFLAGS) $(OBJECTS) $(XOBJ) -o $(TARGET) $(LIBS)
+ 
+ %.o: %.c
+-	$(CC) $(CFLAGS) -c $< -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+ 
+ xrick.res: xrick.rc
+ 	windres $< -O coff -o $@

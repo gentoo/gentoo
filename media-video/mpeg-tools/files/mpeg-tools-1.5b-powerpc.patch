@@ -1,5 +1,5 @@
---- convert/mtv/archdep.h	2010-03-11 04:35:04.596642403 +0000
-+++ convert/mtv/archdep.h	2010-03-11 04:34:38.949974604 +0000
+--- a/convert/mtv/archdep.h
++++ b/convert/mtv/archdep.h
 @@ -17,7 +17,7 @@
   * Note that these macros *do not* work for in-place transformations.
   */

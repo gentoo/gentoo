@@ -1,0 +1,30 @@
+From dd8f1b5e302717c84f6a05af36c621122ead6d99 Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Fri, 6 May 2022 21:36:09 +0800
+Subject: [PATCH 4/8] wallpapers/image: Fix missing folder action buttons
+
+The width of the action area needs to be substracted in contentItem's
+width.
+
+Also use `Kirigami.Units.gridUnit * 4` because `overlayWidth` was
+introduced in Frameworks 5.94, and people using Plasma 5.24 may have an
+older Frameworks version.
+---
+ wallpapers/image/imagepackage/contents/ui/config.qml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/wallpapers/image/imagepackage/contents/ui/config.qml b/wallpapers/image/imagepackage/contents/ui/config.qml
+index 97f9f81a5..7bb675f23 100644
+--- a/wallpapers/image/imagepackage/contents/ui/config.qml
++++ b/wallpapers/image/imagepackage/contents/ui/config.qml
+@@ -331,6 +331,7 @@ ColumnLayout {
+                             // Don't need a highlight or hover effects
+                             hoverEnabled: false
+                             contentItem: Kirigami.BasicListItem {
++                                width: slidePathsView.width - (parent.hasOwnProperty("overlayWidth") ? overlayWidth : Kirigami.Units.gridUnit * 4)
+                                 // Don't need a highlight or hover effects
+                                 hoverEnabled: false
+                                 separatorVisible: false
+-- 
+2.35.1
+

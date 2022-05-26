@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,13 +10,12 @@ HOMEPAGE="https://cvsweb.openbsd.org/src/usr.bin/nc/
 	https://salsa.debian.org/debian/netcat-openbsd"
 SRC_URI="http://http.debian.net/debian/pool/main/n/netcat-openbsd/netcat-openbsd_${PV}.orig.tar.gz
 	http://http.debian.net/debian/pool/main/n/netcat-openbsd/netcat-openbsd_${PV}-2.debian.tar.xz"
+
 LICENSE="BSD"
 SLOT="0"
-IUSE="elibc_Darwin"
+KEYWORDS="amd64 arm64 ppc64 x86 ~amd64-linux ~x64-macos"
 
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x64-macos"
-
-DEPEND="virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 RDEPEND="!elibc_Darwin? ( dev-libs/libbsd )
 	!net-analyzer/netcat
 	!net-analyzer/netcat6
@@ -30,13 +29,13 @@ src_prepare() {
 	done
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# this undoes some of the Debian/Linux changes
-		eapply "${FILESDIR}"/${P}-darwin.patch
+		eapply "${FILESDIR}"/${PN}-1.190-darwin.patch
 	fi
 	default
 }
 
 src_compile() {
-	emake CC=$(tc-getCC) CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {

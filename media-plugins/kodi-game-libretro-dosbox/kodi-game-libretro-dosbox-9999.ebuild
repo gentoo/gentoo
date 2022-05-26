@@ -13,11 +13,17 @@ if [[ ${PV} == *9999 ]]; then
 	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/kodi-game/game.libretro.dosbox.git"
 	inherit git-r3
+	DEPEND="
+		${DEPEND}
+		~media-tv/kodi-9999"
 else
 	KEYWORDS="~amd64 ~x86"
-	CODENAME="Leia"
+	CODENAME="Matrix"
 	SRC_URI="https://github.com/kodi-game/game.libretro.dosbox/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/game.libretro.dosbox-${PV}-${CODENAME}"
+	DEPEND="
+		${DEPEND}
+		=media-tv/kodi-19*"
 fi
 
 LICENSE="GPL-2"
@@ -25,7 +31,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	~media-tv/kodi-9999
+	${DEPEND}
 	games-emulation/libretro-dosbox
 	"
 RDEPEND="

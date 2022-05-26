@@ -1,28 +1,32 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+LUA_COMPAT=( lua5-{1..4} luajit )
+PYTHON_COMPAT=( python3_{8..10} )
 
-inherit meson mono-env python-single-r1 xdg
+inherit lua-single meson mono-env python-single-r1 xdg
 
 DESCRIPTION="Graphical IRC client based on XChat"
 HOMEPAGE="https://hexchat.github.io/"
 
 if [[ "${PV}" == "9999" ]] ; then
 	inherit git-r3
+	# We need to empty SRC_URI or else mono-env breaks the live ebuild
 	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 else
 	SRC_URI="https://dl.hexchat.net/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux"
 fi
 
 LICENSE="GPL-2 plugin-fishlim? ( MIT )"
 SLOT="0"
-IUSE="dbus debug +gtk libcanberra libnotify libproxy libressl lua perl plugin-checksum plugin-fishlim plugin-sysinfo python ssl theme-manager"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+IUSE="dbus debug +gtk libcanberra lua perl plugin-checksum plugin-fishlim plugin-sysinfo python ssl theme-manager"
+REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
+	plugin-fishlim? ( ssl )
+	python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -34,19 +38,20 @@ RDEPEND="
 		x11-libs/pango
 	)
 	libcanberra? ( media-libs/libcanberra )
-	libproxy? ( net-libs/libproxy )
-	libnotify? ( x11-libs/libnotify )
-	lua? ( dev-lang/lua:= )
+	lua? ( ${LUA_DEPS} )
 	perl? ( dev-lang/perl:= )
 	plugin-sysinfo? ( sys-apps/pciutils )
-	python? ( ${PYTHON_DEPS} )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+	python? (
+		${PYTHON_DEPS}
+		virtual/python-cffi
 	)
+	ssl? ( dev-libs/openssl:0= )
 	theme-manager? (
 		|| (
-			( dev-lang/mono[minimal] dev-dotnet/libgdiplus )
+			(
+				dev-lang/mono[minimal]
+				dev-dotnet/libgdiplus
+			)
 			dev-lang/mono[-minimal]
 		)
 	)"
@@ -61,6 +66,7 @@ BDEPEND="
 "
 
 pkg_setup() {
+	use lua && lua-single_pkg_setup
 	use python && python-single-r1_pkg_setup
 	if use theme-manager ; then
 		mono-env_pkg_setup
@@ -70,23 +76,22 @@ pkg_setup() {
 
 src_configure() {
 	local emesonargs=(
-		-Dwith-gtk="$(usex gtk true false)"
-		-Dwith-text="$(usex gtk false true)"
-		-Dwith-ssl="$(usex ssl true false)"
-		-Dwith-plugin=true
-		-Dwith-dbus="$(usex dbus true false)"
-		-Dwith-libproxy="$(usex libproxy true false)"
-		-Dwith-libnotify="$(usex libnotify true false)"
-		-Dwith-libcanberra="$(usex libcanberra true false)"
-		-Dwith-theme-manager="$(usex theme-manager true false)"
 		-Ddbus-service-use-appid=false
-		-Dwith-checksum="$(usex plugin-checksum true false)"
-		-Dwith-fishlim="$(usex plugin-fishlim true false)"
-		-Dwith-lua="$(usex lua lua false)"
+		-Dinstall-appdata=false
+		-Dplugin=true
+		$(meson_feature dbus)
+		$(meson_feature libcanberra)
+		$(meson_feature ssl tls)
+		$(meson_use gtk gtk-frontend)
+		$(meson_use !gtk text-frontend)
+		$(meson_use theme-manager)
+
+		$(meson_use plugin-checksum with-checksum)
+		$(meson_use plugin-fishlim with-fishlim)
+		-Dwith-lua="$(usex lua "${ELUA}" false)"
 		-Dwith-perl="$(usex perl "${EPREFIX}"/usr/bin/perl false)"
 		-Dwith-python="$(usex python "${EPYTHON/.*}" false)"
-		-Dwith-sysinfo="$(usex plugin-sysinfo true false)"
-		-Dwith-appdata=false
+		$(meson_use plugin-sysinfo with-sysinfo)
 	)
 	meson_src_configure
 }
@@ -94,7 +99,7 @@ src_configure() {
 src_install() {
 	meson_src_install
 	dodoc readme.md
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -type f -name '*.la' -delete || die
 }
 
 pkg_preinst() {
@@ -120,7 +125,6 @@ pkg_postinst() {
 	elog "optional dependencies:"
 	elog "  media-sound/sox (sound playback if you don't have libcanberra"
 	elog "    enabled)"
-	elog "  x11-plugins/hexchat-javascript (javascript support)"
 	elog "  x11-themes/sound-theme-freedesktop (default BEEP sound,"
 	elog "    needs libcanberra enabled)"
 }

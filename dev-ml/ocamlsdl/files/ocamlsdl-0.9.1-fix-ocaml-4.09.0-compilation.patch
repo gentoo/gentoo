@@ -1,0 +1,28 @@
+https://sources.debian.org/patches/ocamlsdl/0.9.1-3/0002-Fix-compilation-with-OCaml-4.08.0.patch/
+From: Stephane Glondu <steph@glondu.net>
+Date: Fri, 6 Sep 2019 09:35:32 +0200
+Subject: Fix compilation with OCaml 4.08.0
+
+---
+ src/sdlmouse.ml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/sdlmouse.ml b/src/sdlmouse.ml
+index 5d3120b..39cc58d 100644
+--- a/src/sdlmouse.ml
++++ b/src/sdlmouse.ml
+@@ -49,12 +49,12 @@ external cursor_data : cursor -> cursor_data
+     = "ml_SDL_Cursor_data"
+ 
+ let string_of_bits x =
+-  let s = String.make 8 ' ' in
++  let s = Bytes.make 8 ' ' in
+   for i=0 to 7 do
+     if x land (1 lsl i) <> 0
+     then s.[7-i] <- '@'
+   done ;
+-  s
++  Bytes.to_string s
+ 
+ let pprint_cursor c =
+   let { data = data ; mask = mask } = cursor_data c in

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 KERN_VER="2.6.22"
 
@@ -48,7 +48,7 @@ src_prepare() {
 
 src_compile() {
 	# too many problems with parallel building
-	emake -j1 AR=$(tc-getAR) CC=$(tc-getCC) LD=$(tc-getLD)
+	emake -j1 AR="$(tc-getAR)" CC="$(tc-getCC)" LD="$(tc-getLD)"
 }
 
 src_install() {

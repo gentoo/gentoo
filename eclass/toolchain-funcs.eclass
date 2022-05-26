@@ -1,9 +1,10 @@
-# Copyright 2002-2019 Gentoo Authors
+# Copyright 2002-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: toolchain-funcs.eclass
 # @MAINTAINER:
 # Toolchain Ninjas <toolchain@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: functions to query common info about the toolchain
 # @DESCRIPTION:
 # The toolchain-funcs aims to provide a complete suite of functions
@@ -11,6 +12,12 @@
 # ugly things like cross-compiling and multilib.  All of this is done
 # in such a way that you can rely on the function always returning
 # something sane.
+
+case ${EAPI:-0} in
+	# EAPI=0 is still used by crossdev, bug #797367
+	0|5|6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 if [[ -z ${_TOOLCHAIN_FUNCS_ECLASS} ]]; then
 _TOOLCHAIN_FUNCS_ECLASS=1
@@ -505,12 +512,21 @@ tc-ld-is-lld() {
 # If the gold linker is currently selected, configure the compilation
 # settings so that we use the older bfd linker instead.
 tc-ld-disable-gold() {
-	if ! tc-ld-is-gold "$@" ; then
-		# They aren't using gold, so nothing to do!
+	tc-ld-is-gold "$@" && tc-ld-force-bfd "$@"
+}
+
+# @FUNCTION: tc-ld-force-bfd
+# @USAGE: [toolchain prefix]
+# @DESCRIPTION:
+# If the gold or lld linker is currently selected, configure the compilation
+# settings so that we use the bfd linker instead.
+tc-ld-force-bfd() {
+	if ! tc-ld-is-gold "$@" && ! tc-ld-is-lld "$@" ; then
+		# They aren't using gold or lld, so nothing to do!
 		return
 	fi
 
-	ewarn "Forcing usage of the BFD linker instead of GOLD"
+	ewarn "Forcing usage of the BFD linker"
 
 	# Set up LD to point directly to bfd if it's available.
 	# We need to extract the first word in case there are flags appended
@@ -520,7 +536,7 @@ tc-ld-disable-gold() {
 	local path_ld=$(which "${bfd_ld}" 2>/dev/null)
 	[[ -e ${path_ld} ]] && export LD=${bfd_ld}
 
-	# Set up LDFLAGS to select gold based on the gcc / clang version.
+	# Set up LDFLAGS to select bfd based on the gcc / clang version.
 	local fallback="true"
 	if tc-is-gcc; then
 		local major=$(gcc-major-version "$@")
@@ -548,16 +564,17 @@ tc-ld-disable-gold() {
 			ln -sf "${path_ld}" "${d}"/ld
 			export LDFLAGS="${LDFLAGS} -B${d}"
 		else
-			die "unable to locate a BFD linker to bypass gold"
+			die "unable to locate a BFD linker"
 		fi
 	fi
 }
 
-# @FUNCTION: tc-has-openmp
+# @FUNCTION: _tc-has-openmp
+# @INTERNAL
 # @USAGE: [toolchain prefix]
 # @DESCRIPTION:
 # See if the toolchain supports OpenMP.
-tc-has-openmp() {
+_tc-has-openmp() {
 	local base="${T}/test-tc-openmp"
 	cat <<-EOF > "${base}.c"
 	#include <omp.h>
@@ -577,6 +594,16 @@ tc-has-openmp() {
 	return ${ret}
 }
 
+# @FUNCTION: tc-has-openmp
+# @DEPRECATED: tc-check-openmp
+# @USAGE: [toolchain prefix]
+# @DESCRIPTION:
+# See if the toolchain supports OpenMP.  This function is deprecated and will be
+# removed on 2023-01-01.
+tc-has-openmp() {
+	_tc-has-openmp "$@"
+}
+
 # @FUNCTION: tc-check-openmp
 # @DESCRIPTION:
 # Test for OpenMP support with the current compiler and error out with
@@ -584,8 +611,21 @@ tc-has-openmp() {
 # OpenMP support that has been requested by the ebuild. Using this function
 # to test for OpenMP support should be preferred over tc-has-openmp and
 # printing a custom message, as it presents a uniform interface to the user.
+#
+# You should test for any necessary OpenMP support in pkg_pretend in order to
+# warn the user of required toolchain changes.  You must still check for OpenMP
+# support at build-time, e.g.
+# @CODE
+# pkg_pretend() {
+#	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+# }
+#
+# pkg_setup() {
+#	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+# }
+# @CODE
 tc-check-openmp() {
-	if ! tc-has-openmp; then
+	if ! _tc-has-openmp; then
 		eerror "Your current compiler does not support OpenMP!"
 
 		if tc-is-gcc; then
@@ -659,13 +699,14 @@ ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
 			fi
 			;;
 		ia64*)		echo ia64;;
+		loongarch*)	ninj loongarch loong;;
 		m68*)		echo m68k;;
 		metag*)		echo metag;;
 		microblaze*)	echo microblaze;;
 		mips*)		echo mips;;
 		nios2*)		echo nios2;;
 		nios*)		echo nios;;
-		or1k|or32*)	echo openrisc;;
+		or1k*|or32*)	echo openrisc;;
 		powerpc*)
 			# Starting with linux-2.6.15, the 'ppc' and 'ppc64' trees
 			# have been unified into simply 'powerpc', but until 2.6.16,
@@ -736,6 +777,7 @@ tc-endian() {
 		hppa*)		echo big;;
 		i?86*)		echo little;;
 		ia64*)		echo little;;
+		loongarch*)	echo little;;
 		m68*)		echo big;;
 		mips*l*)	echo little;;
 		mips*)		echo big;;

@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit bash-completion-r1 distutils-r1
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/mgorny/flaggie/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~hppa ~mips ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="sys-apps/portage[${PYTHON_USEDEP}]"

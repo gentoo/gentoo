@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>sci@gentoo.org</email>
@@ -13,8 +13,4 @@ functionality provided by METIS and includes routines that are
 especially suited for parallel AMR computations and large scale
 numerical simulations.
 </longdescription>
-	<use>
-		<flag name="int64">Build the 64 bits integer library (needed for &gt; 2^31 vertices)</flag>
-		<flag name="double-precision">Floating-point operation done as double precision</flag>
-	</use>
 </pkgmetadata>

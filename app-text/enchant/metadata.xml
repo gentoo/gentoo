@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>gnome@gentoo.org</email>
@@ -8,5 +8,7 @@
 	<use>
 		<flag name="aspell">Adds support for <pkg>app-text/aspell</pkg> spell checker</flag>
 		<flag name="hunspell">Adds support for <pkg>app-text/hunspell</pkg> spell checker</flag>
+		<flag name="nuspell">Adds support for <pkg>app-text/nuspell</pkg> spell checker</flag>
+		<flag name="voikko">Adds support for <pkg>dev-libs/libvoikko</pkg> spell checker</flag>
 	</use>
 </pkgmetadata>

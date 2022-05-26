@@ -1,0 +1,24 @@
+From 9d8586fe8b0f210b2a2d3f5e6f710993015945aa Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 16 Apr 2022 21:51:04 +0100
+Subject: [PATCH] Respect the AR environment variable when building
+
+---
+ configure.ac | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure.ac b/configure.ac
+index 14eedb5f..8d425dee 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -371,6 +371,7 @@ AC_PROG_MAKE_SET
+ AC_PROG_INSTALL
+ AC_PROG_MKDIR_P
+ AC_PROG_RANLIB
++AM_PROG_AR
+ AC_PATH_PROG(PERL, perl)
+ AC_CHECK_TOOLS(WINDRES, [windres], :)
+ PKG_PROG_PKG_CONFIG
+-- 
+2.34.1
+

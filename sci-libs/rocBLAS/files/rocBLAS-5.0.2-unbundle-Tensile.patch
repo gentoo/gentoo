@@ -1,0 +1,25 @@
+Index: rocBLAS-rocm-5.0.2/CMakeLists.txt
+===================================================================
+--- rocBLAS-rocm-5.0.2.orig/CMakeLists.txt
++++ rocBLAS-rocm-5.0.2/CMakeLists.txt
+@@ -271,20 +271,6 @@ if(NOT SKIP_LIBRARY)
+       set( Tensile_ROOT "${CMAKE_BINARY_DIR}/virtualenv/Lib/site-packages/Tensile" )
+     endif()
+ 
+-    include(virtualenv)
+-    if (Tensile_TEST_LOCAL_PATH)
+-      virtualenv_install(${Tensile_TEST_LOCAL_PATH})
+-      message (STATUS "using local Tensile from ${Tensile_TEST_LOCAL_PATH}, copied to ${Tensile_ROOT}")
+-    else()
+-      # Use the virtual-env setup and download package from specified repot:
+-      set( tensile_fork "ROCmSoftwarePlatform" CACHE STRING "Tensile fork to use" )
+-      file (STRINGS "tensile_tag.txt" read_tensile_tag)
+-      set( tensile_tag ${read_tensile_tag} CACHE STRING "Tensile tag to download" )
+-      virtualenv_install("git+https://github.com/${tensile_fork}/Tensile.git@${tensile_tag}")
+-      message (STATUS "using GIT Tensile fork=${tensile_fork} from branch=${tensile_tag}")
+-    endif()
+-    message(STATUS "Adding ${VIRTUALENV_HOME_DIR} to CMAKE_PREFIX_PATH")
+-    list(APPEND CMAKE_PREFIX_PATH ${VIRTUALENV_HOME_DIR})
+     if (TENSILE_VERSION)
+       find_package(Tensile ${TENSILE_VERSION} EXACT REQUIRED HIP LLVM OpenMP PATHS "${INSTALLED_TENSILE_PATH}")
+     else()

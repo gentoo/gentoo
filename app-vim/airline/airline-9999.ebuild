@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,6 +24,6 @@ VIM_PLUGIN_HELPFILES="${PN}.txt"
 src_prepare() {
 	default
 
-	# remove unwanted files
-	rm -r t Gemfile Rakefile LICENSE README* .travis.yml .gitignore || die
+	# remove unwanted test dir
+	rm -r t || die
 }

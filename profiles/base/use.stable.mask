@@ -1,13 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Michał Górny <mgorny@gentoo.org> (2020-05-25)
-# Python 3.9 is not yet stable.
-python_targets_python3_9
-python_single_target_python3_9
+# Michał Górny <mgorny@gentoo.org> (2022-05-08)
+# Mask until dev-lang/python:3.11 becomes stable.
+python_targets_python3_11
+python_single_target_python3_11
+
+# Brian Evans <grknight@gentoo.org> (2021-11-29)
+# Mask 8.1 as it is currently unstable only
+php_targets_php8-1
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
 # dev-vcs/darcs (dev-lang/ghc) has no stable keywords.
@@ -18,6 +22,7 @@ darcs
 python_targets_pypy3
 python_single_target_pypy3
 
-# Hans de Graaff <graaff@gentoo.org> (2019-12-26)
+# Hans de Graaff <graaff@gentoo.org> (2021-10-10)
 # Currently in testing and not ready to go stable yet.
-ruby_targets_ruby27
+ruby_targets_ruby30
+ruby_targets_ruby31

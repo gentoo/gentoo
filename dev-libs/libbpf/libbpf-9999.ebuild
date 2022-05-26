@@ -1,7 +1,7 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit flag-o-matic toolchain-funcs
 
@@ -10,43 +10,41 @@ if [[ ${PV} =~ [9]{4,} ]]; then
 	EGIT_REPO_URI="https://github.com/libbpf/libbpf.git"
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 S="${WORKDIR}/${P}/src"
 
-HOMEPAGE="https://github.com/libbpf/libbpf"
 DESCRIPTION="Stand-alone build of libbpf from the Linux kernel"
+HOMEPAGE="https://github.com/libbpf/libbpf"
 
 LICENSE="GPL-2 LGPL-2.1 BSD-2"
 SLOT="0/${PV}"
-IUSE="+static-libs"
+IUSE="static-libs"
 
-COMMON_DEPEND="virtual/libelf
-	!<=dev-util/bcc-0.7.0"
-DEPEND="${COMMON_DEPEND}
-	sys-kernel/linux-headers"
-RDEPEND="${COMMON_DEPEND}"
+DEPEND="
+	sys-kernel/linux-headers
+	virtual/libelf"
+RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/libbpf-9999-paths.patch"
+	"${FILESDIR}"/libbpf-9999-paths.patch
 )
 
-src_compile() {
+src_configure() {
 	append-cflags -fPIC
-	emake \
-		BUILD_SHARED=y \
-		LIBSUBDIR="$(get_libdir)" \
-		$(usex static-libs 'BUILD_STATIC=y' '' '' '') \
-		CC="$(tc-getCC)"
+	tc-export CC AR
+	export LIBSUBDIR="$(get_libdir)"
+	export V=1
 }
 
 src_install() {
 	emake \
-		BUILD_SHARED=y \
-		LIBSUBDIR="$(get_libdir)" \
 		DESTDIR="${D}" \
-		$(usex static-libs 'BUILD_STATIC=y' '' '' '') \
 		install install_uapi_headers
+
+	if ! use static-libs; then
+		find "${ED}" -name '*.a' -delete || die
+	fi
 
 	insinto /usr/$(get_libdir)/pkgconfig
 	doins ${PN}.pc

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>games@gentoo.org</email>
@@ -24,12 +24,16 @@
 		Perl, PHP, Pike, Python, and Ruby.
 	</longdescription>
 	<use>
+		<flag name="fcitx4">Enable support for <pkg>app-i18n/fcitx</pkg> 4</flag>
+		<flag name="gles1">include OpenGL ES 1.0 support</flag>
 		<flag name="gles2">include OpenGL ES 2.0 support</flag>
 		<flag name="haptic">Enable the haptic (force feedback) subsystem</flag>
+		<flag name="ibus">Enable support for <pkg>app-i18n/ibus</pkg></flag>
 		<flag name="joystick">Control joystick support (disable at your own risk)</flag>
 		<flag name="kms">Build the KMSDRM video driver</flag>
+		<flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
+		<flag name="pipewire">Enable support for the <pkg>media-video/pipewire</pkg> audio backend</flag>
 		<flag name="sound">Control audio support (disable at your own risk)</flag>
-		<flag name="tslib">Build with tslib support for touchscreen devices</flag>
 		<flag name="video">Control video support (disable at your own risk)</flag>
 		<flag name="vulkan">Enable Vulkan support</flag>
 	</use>

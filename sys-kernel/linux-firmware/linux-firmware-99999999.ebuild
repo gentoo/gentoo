@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ else
 		SRC_URI="https://mirrors.edge.kernel.org/pub/linux/kernel/firmware/${P}.tar.xz"
 	fi
 
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 DESCRIPTION="Linux firmware files"
@@ -30,10 +30,10 @@ LICENSE="GPL-2 GPL-2+ GPL-3 BSD MIT || ( MPL-1.1 GPL-2 )
 	unknown-license? ( all-rights-reserved )"
 SLOT="0"
 IUSE="initramfs +redistributable savedconfig unknown-license"
-RESTRICT="binchecks strip
-	unknown-license? ( bindist )"
-
 REQUIRED_USE="initramfs? ( redistributable )"
+
+RESTRICT="binchecks strip test
+	unknown-license? ( bindist )"
 
 BDEPEND="initramfs? ( app-arch/cpio )"
 
@@ -41,16 +41,14 @@ BDEPEND="initramfs? ( app-arch/cpio )"
 RDEPEND="!savedconfig? (
 		redistributable? (
 			!sys-firmware/alsa-firmware[alsa_cards_ca0132]
-			!net-dialup/ueagle-atm
-			!net-dialup/ueagle4-atm
 			!sys-block/qla-fc-firmware
 			!sys-firmware/iwl1000-ucode
 			!sys-firmware/iwl6005-ucode
 			!sys-firmware/iwl6030-ucode
-			!sys-firmware/iwl6050-ucode
 			!sys-firmware/iwl3160-ucode
 			!sys-firmware/iwl7260-ucode
 			!sys-firmware/iwl3160-7260-bt-ucode
+			!sys-firmware/raspberrypi-wifi-ucode
 		)
 		unknown-license? (
 			!sys-firmware/alsa-firmware[alsa_cards_korg1212]
@@ -59,6 +57,8 @@ RDEPEND="!savedconfig? (
 			!sys-firmware/alsa-firmware[alsa_cards_ymfpci]
 		)
 	)"
+
+QA_PREBUILT="*"
 
 pkg_pretend() {
 	use initramfs && mount-boot_pkg_pretend
@@ -77,30 +77,46 @@ src_unpack() {
 }
 
 src_prepare() {
-	# source and documentation files, not to be installed
-	local source_files=(
-		README
+	default
+
+	find . -type f -not -perm 0644 -print0 \
+		| xargs --null --no-run-if-empty chmod 0644 \
+		|| die
+
+	chmod +x copy-firmware.sh || die
+
+	if use initramfs; then
+		if [[ -d "${S}/amd-ucode" ]]; then
+			local UCODETMP="${T}/ucode_tmp"
+			local UCODEDIR="${UCODETMP}/kernel/x86/microcode"
+			mkdir -p "${UCODEDIR}" || die
+			echo 1 > "${UCODETMP}/early_cpio"
+
+			local amd_ucode_file="${UCODEDIR}/AuthenticAMD.bin"
+			cat "${S}"/amd-ucode/*.bin > "${amd_ucode_file}" || die "Failed to concat amd cpu ucode"
+
+			if [[ ! -s "${amd_ucode_file}" ]]; then
+				die "Sanity check failed: '${amd_ucode_file}' is empty!"
+			fi
+
+			pushd "${UCODETMP}" &>/dev/null || die
+			find . -print0 | cpio --quiet --null -o -H newc -R 0:0 > "${S}"/amd-uc.img
+			popd &>/dev/null || die
+			if [[ ! -s "${S}/amd-uc.img" ]]; then
+				die "Failed to create '${S}/amd-uc.img'!"
+			fi
+		else
+			# If this will ever happen something has changed which
+			# must be reviewed
+			die "'${S}/amd-ucode' not found!"
+		fi
+	fi
+
+	# whitelist of misc files
+	local misc_files=(
+		copy-firmware.sh
 		WHENCE
-		"LICEN[CS]E*"
-		"GPL*"
-		configure
-		Makefile
-		check_whence.py
-		atusb/ChangeLog
-		av7110/Boot.S
-		av7110/Makefile
-		carl9170fw/
-		cis/Makefile
-		cis/src/
-		dsp56k/bootstrap.asm
-		dsp56k/concat-bootstrap.pl
-		dsp56k/Makefile
-		"isci/*.[ch]"
-		isci/Makefile
-		isci/README
-		"keyspan_pda/*.S"
-		keyspan_pda/Makefile
-		usbdux/
+		README
 	)
 
 	# whitelist of images with a free software license
@@ -217,90 +233,84 @@ src_prepare() {
 		lgs8g75.fw
 	)
 
-	default
-
-	# remove sources and documentation (wildcards are expanded)
-	rm -r ${source_files[@]} || die
-	rm -rf .git
-
 	if use !unknown-license; then
-		# remove files in unknown_license
-		rm "${unknown_license[@]}" || die
+		einfo "Removing files with unknown license ..."
+		rm -v "${unknown_license[@]}" || die
 	fi
 
 	if use !redistributable; then
 		# remove files _not_ in the free_software or unknown_license lists
 		# everything else is confirmed (or assumed) to be redistributable
 		# based on upstream acceptance policy
+		einfo "Removing non-redistributable files ..."
+		local OLDIFS="${IFS}"
 		local IFS=$'\n'
+		set -o pipefail
 		find ! -type d -printf "%P\n" \
-			| grep -Fvx -e "${free_software[*]}" -e "${unknown_license[*]}" \
-			| xargs -d '\n' rm || die
-		IFS=$' \t\n'
+			| grep -Fvx -e "${misc_files[*]}" -e "${free_software[*]}" -e "${unknown_license[*]}" \
+			| xargs -d '\n' --no-run-if-empty rm -v
+
+		[[ ${?} -ne 0 ]] && die "Failed to remove non-redistributable files"
+
+		IFS="${OLDIFS}"
 	fi
 
-	if use initramfs; then
-		if [[ -d "${S}/amd-ucode" ]]; then
-			local UCODETMP="${T}/ucode_tmp"
-			local UCODEDIR="${UCODETMP}/kernel/x86/microcode"
-			mkdir -p "${UCODEDIR}" || die
-			echo 1 > "${UCODETMP}/early_cpio"
+	restore_config ${PN}.conf
+}
 
-			local amd_ucode_file="${UCODEDIR}/AuthenticAMD.bin"
-			cat "${S}"/amd-ucode/*.bin > "${amd_ucode_file}" || die "Failed to concat amd cpu ucode"
+src_install() {
+	./copy-firmware.sh -v "${ED}/lib/firmware" || die
 
-			if [[ ! -s "${amd_ucode_file}" ]]; then
-				die "Sanity check failed: '${amd_ucode_file}' is empty!"
-			fi
+	pushd "${ED}/lib/firmware" &>/dev/null || die
 
-			pushd "${UCODETMP}" &>/dev/null || die
-			find . -print0 | cpio --quiet --null -o -H newc -R 0:0 > "${S}"/amd-uc.img
-			popd &>/dev/null || die
-			if [[ ! -s "${S}/amd-uc.img" ]]; then
-				die "Failed to create '${S}/amd-uc.img'!"
-			fi
-		else
-			# If this will ever happen something has changed which
-			# must be reviewed
-			die "'${S}/amd-ucode' not found!"
-		fi
-	fi
-
-	echo "# Remove files that shall not be installed from this list." > ${PN}.conf
-	find * ! -type d ! \( -name ${PN}.conf -o -name amd-uc.img \) >> ${PN}.conf
+	# especially use !redistributable will cause some broken symlinks
+	einfo "Removing broken symlinks ..."
+	find * -xtype l -print -delete || die
 
 	if use savedconfig; then
-		restore_config ${PN}.conf
+		if [[ -s "${S}/${PN}.conf" ]]; then
+			local files_to_keep="${T}/files_to_keep.lst"
+			grep -v '^#' "${S}/${PN}.conf" 2>/dev/null > "${files_to_keep}" || die
+			[[ -s "${files_to_keep}" ]] || die "grep failed, empty config file?"
 
-		ebegin "Removing all files not listed in config"
-		find ! -type d ! \( -name ${PN}.conf -o -name amd-uc.img \) -printf "%P\n" \
-			| grep -Fvx -f <(grep -v '^#' ${PN}.conf \
-				|| die "grep failed, empty config file?") \
-			| xargs -d '\n' --no-run-if-empty rm
-		eend $? || die
+			einfo "Applying USE=savedconfig; Removing all files not listed in config ..."
+			find ! -type d -printf "%P\n" \
+				| grep -Fvx -f "${files_to_keep}" \
+				| xargs -d '\n' --no-run-if-empty rm -v
+
+			if [[ ${PIPESTATUS[0]} -ne 0 ]]; then
+				die "Find failed to print installed files"
+			elif [[ ${PIPESTATUS[1]} -eq 2 ]]; then
+				# grep returns exit status 1 if no lines were selected
+				# which is the case when we want to keep all files
+				die "Grep failed to select files to keep"
+			elif [[ ${PIPESTATUS[2]} -ne 0 ]]; then
+				die "Failed to remove files not listed in config"
+			fi
+		fi
 	fi
 
 	# remove empty directories, bug #396073
 	find -type d -empty -delete || die
-}
 
-src_install() {
-	save_config ${PN}.conf
-	rm ${PN}.conf || die
-
-	if use initramfs ; then
-		mkdir "${ED}/boot" || die
-		mv "${S}"/amd-uc.img "${ED}/boot" || die
-	fi
-
+	# sanity check
 	if ! ( shopt -s failglob; : * ) 2>/dev/null; then
 		eerror "No files to install. Check your USE flag settings"
 		eerror "and the list of files in your saved configuration."
 		die "Refusing to install an empty package"
 	fi
 
-	insinto /lib/firmware/
-	doins -r *
+	# create config file
+	echo "# Remove files that shall not be installed from this list." > "${S}"/${PN}.conf || die
+	find * ! -type d >> "${S}"/${PN}.conf || die
+	save_config "${S}"/${PN}.conf
+
+	popd &>/dev/null || die
+
+	if use initramfs ; then
+		insinto /boot
+		doins "${S}"/amd-uc.img
+	fi
 }
 
 pkg_preinst() {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>idl0r@gentoo.org</email>
@@ -26,7 +26,6 @@
 		<flag name="prometheus-exporter">Also build the prometheus exporter</flag>
 		<flag name="slz">Use <pkg>dev-libs/libslz</pkg> compression library</flag>
 		<flag name="tools">Install additional tools (halog, iprange)</flag>
-		<flag name="device-atlas">Use <pkg>dev-libs/device-atlas-api-c</pkg> library</flag>
 		<flag name="51degrees">Device Detection using 51 Degrees</flag>
 		<flag name="wurfl">Device Detection using WURFL</flag>
 	</use>

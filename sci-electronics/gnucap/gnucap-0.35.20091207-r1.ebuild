@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,10 +19,11 @@ HOMEPAGE="http://www.gnucap.org/"
 IUSE="examples"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 
-DEPEND=""
-RDEPEND=""
+# NOTE: readline could be made optional, but I don't see a point for now.
+RDEPEND="sys-libs/readline:="
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_PV}"
 
@@ -60,7 +61,7 @@ src_compile() {
 	emake
 	for PLUGIN_DIR in models-* ; do
 		cd "${S}/${PLUGIN_DIR}"
-		emake CC=$(tc-getCC) CCC=$(tc-getCXX)
+		emake CC="$(tc-getCC)" CCC="$(tc-getCXX)"
 	done
 }
 

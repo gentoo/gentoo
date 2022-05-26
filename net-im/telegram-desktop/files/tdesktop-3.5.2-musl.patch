@@ -1,0 +1,33 @@
+Stub out some glibc-specific functions
+
+This allows support for alternative libcs like musl
+
+--- tdesktop-3.5.2-full.orig/Telegram/lib_base/base/platform/linux/base_info_linux.cpp
++++ tdesktop-3.5.2-full/Telegram/lib_base/base/platform/linux/base_info_linux.cpp
+@@ -22,7 +22,7 @@
+ 
+ #include <sys/utsname.h>
+ 
+-#ifdef Q_OS_LINUX
++#if defined(Q_OS_LINUX) && defined(__GLIBC__)
+ #include <gnu/libc-version.h>
+ #endif // Q_OS_LINUX
+ 
+@@ -200,7 +200,7 @@
+ }
+ 
+ QString GetLibcName() {
+-#ifdef Q_OS_LINUX
++#if defined(Q_OS_LINUX) && defined(__GLIBC__)
+ 	return "glibc";
+ #endif // Q_OS_LINUX
+ 
+@@ -208,7 +208,7 @@
+ }
+ 
+ QString GetLibcVersion() {
+-#ifdef Q_OS_LINUX
++#if defined(Q_OS_LINUX) && defined(__GLIBC__)
+ 	static const auto result = [&] {
+ 		const auto version = QString::fromLatin1(gnu_get_libc_version());
+ 		return QVersionNumber::fromString(version).isNull() ? QString() : version;

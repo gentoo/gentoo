@@ -1,4 +1,4 @@
-# Copyright 2002-2020 Gentoo Authors
+# Copyright 2002-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp.eclass
@@ -9,7 +9,8 @@
 # Jeremy Maitin-Shepard <jbms@attbi.com>
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Müller <ulm@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 6 7 8
+# @PROVIDES: elisp-common
 # @BLURB: Eclass for Emacs Lisp packages
 # @DESCRIPTION:
 #
@@ -26,27 +27,28 @@
 # file with the file name ${P}.el, then this eclass will move ${P}.el to
 # ${PN}.el in src_unpack().
 
-# @ECLASS-VARIABLE: NEED_EMACS
+# @ECLASS_VARIABLE: NEED_EMACS
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If you need anything different from Emacs 23, use the NEED_EMACS
 # variable before inheriting elisp.eclass.  Set it to the version your
 # package uses and the dependency will be adjusted.
 
-# @ECLASS-VARIABLE: ELISP_PATCHES
+# @ECLASS_VARIABLE: ELISP_PATCHES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Space separated list of patches to apply after unpacking the sources.
 # Patch files are searched for in the current working dir, WORKDIR, and
 # FILESDIR.  This variable is semi-deprecated, preferably use the
-# PATCHES array instead if the EAPI supports it.
+# PATCHES array instead.
 
-# @ECLASS-VARIABLE: ELISP_REMOVE
+# @ECLASS_VARIABLE: ELISP_REMOVE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Space separated list of files to remove after unpacking the sources.
 
-# @ECLASS-VARIABLE: SITEFILE
+# @ECLASS_VARIABLE: SITEFILE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Name of package's site-init file.  The filename must match the shell
@@ -54,16 +56,16 @@
 # reserved for internal use.  "50${PN}-gentoo.el" is a reasonable choice
 # in most cases.
 
-# @ECLASS-VARIABLE: ELISP_TEXINFO
+# @ECLASS_VARIABLE: ELISP_TEXINFO
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Space separated list of Texinfo sources.  Respective GNU Info files
 # will be generated in src_compile() and installed in src_install().
 
 inherit elisp-common
-case ${EAPI:-0} in
-	4|5) inherit epatch ;;
-	6|7) ;;
+
+case ${EAPI} in
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -72,8 +74,7 @@ EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,install} \
 
 RDEPEND=">=app-editors/emacs-${NEED_EMACS}:*"
 case ${EAPI} in
-	4) RDEPEND="${RDEPEND%:*}"; DEPEND="${RDEPEND}" ;;
-	5|6) DEPEND="${RDEPEND}" ;;
+	6) DEPEND="${RDEPEND}" ;;
 	*) BDEPEND="${RDEPEND}" ;;
 esac
 
@@ -117,17 +118,11 @@ elisp_src_prepare() {
 		else
 			die "Cannot find ${patch}"
 		fi
-		case ${EAPI} in
-			4|5) epatch "${file}" ;;
-			*) eapply "${file}" ;;
-		esac
+		eapply "${file}"
 	done
 
-	# apply PATCHES (if supported in EAPI), and any user patches
-	case ${EAPI} in
-		4|5) epatch_user ;;
-		*) default ;;
-	esac
+	# apply PATCHES and any user patches
+	default
 
 	if [[ -n ${ELISP_REMOVE} ]]; then
 		rm ${ELISP_REMOVE} || die
@@ -171,10 +166,7 @@ elisp_src_install() {
 		doinfo ${@/%.*/.info*}
 	fi
 	# install documentation only when explicitly requested
-	case ${EAPI} in
-		4|5) [[ -n ${DOCS} ]] && dodoc ${DOCS} ;;
-		*) [[ $(declare -p DOCS 2>/dev/null) == *=* ]] && einstalldocs ;;
-	esac
+	[[ $(declare -p DOCS 2>/dev/null) == *=* ]] && einstalldocs
 	if declare -f readme.gentoo_create_doc >/dev/null; then
 		readme.gentoo_create_doc
 	fi

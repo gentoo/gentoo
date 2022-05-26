@@ -10,6 +10,7 @@ NVER	= 0.1
 
 CFLAGS		= @CFLAGS@ -I.
 LDFLAGS		= @LDFLAGS@
+AR		= @AR@
 CC		= @CC@
 
 prefix		= @prefix@
@@ -30,7 +31,7 @@ shared:		liblockfile.dylib dotlockfile
 nfslib:		nfslock.$(VER).dylib
 
 liblockfile.a:	lockfile.o
-		ar rv liblockfile.a lockfile.o
+		$(AR) rv liblockfile.a lockfile.o
 
 liblockfile.dylib: liblockfile.a
 		$(CC) $(LDFLAGS) -fPIC -dynamiclib -install_name @libdir@/liblockfile.1.0.dylib \
@@ -48,28 +49,36 @@ lockfile.o:	lockfile.c
 			-c lockfile.c
 
 xlockfile.o:	lockfile.c
-		$(CC) $(CFLAGS) -c lockfile.c -o xlockfile.o
+		$(CC) $(CFLAGS) -DLOCKPROG=\"$(bindir)/dotlockfile\" -c lockfile.c -o xlockfile.o
 
 install_static:	static install_common
-		install -m 644 liblockfile.a $(ROOT)$(libdir)
+		install -d $(DESTDIR)$(libdir)
+		install -m 644 liblockfile.a $(DESTDIR)$(libdir)
 
 install_shared:	shared install_common
+		install -d $(DESTDIR)$(libdir)
 		install -m 755 liblockfile.dylib \
-			$(ROOT)$(libdir)/liblockfile.$(VER).dylib
-		ln -s liblockfile.$(VER).dylib $(ROOT)$(libdir)/liblockfile.dylib
+			$(DESTDIR)$(libdir)/liblockfile.$(VER).dylib
+		ln -s liblockfile.$(VER).dylib $(DESTDIR)$(libdir)/liblockfile.dylib
 
 install_common:
-		install -m 644 lockfile.h maillock.h $(ROOT)$(includedir)
+		install -d $(DESTDIR)$(includedir)
+		install -d $(DESTDIR)$(bindir)
+		install -m 644 lockfile.h maillock.h $(DESTDIR)$(includedir)
 		if [ "$(MAILGROUP)" != "" ]; then\
-		  install -g $(MAILGROUP) -m 2755 dotlockfile $(ROOT)$(bindir);\
+		  install  -g $(MAILGROUP) -m 2755 dotlockfile $(DESTDIR)$(bindir);\
 		else \
-		  install -g root -m 755 dotlockfile $(ROOT)$(bindir); \
+		  install  -g root -m 755 dotlockfile $(DESTDIR)$(bindir); \
 		fi
-		install -m 644 *.1 $(ROOT)$(mandir)/man1
-		install -m 644 *.3 $(ROOT)$(mandir)/man3
+		install -d $(DESTDIR)$(mandir)
+		install -d $(DESTDIR)$(mandir)/man1
+		install -d $(DESTDIR)$(mandir)/man3
+		install -m 644 *.1 $(DESTDIR)$(mandir)/man1
+		install -m 644 *.3 $(DESTDIR)$(mandir)/man3
 
 install_nfslib:	nfslib
-		install -m 755 nfslock.$(VER).dylib $(ROOT)$(nfslockdir)
+		install -d $(DESTDIR)$(nfslockdir)
+		install -m 755 nfslock.$(VER).dylib $(DESTDIR)$(nfslockdir)
 
 clean:
 		rm -f *.a *.o *.dylib dotlockfile

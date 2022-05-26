@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
+EAPI=8
 
-inherit autotools eutils python-single-r1
+PYTHON_COMPAT=( python3_{8..10} )
+inherit autotools python-single-r1
 
 DESCRIPTION="Locate and modify variables in executing processes"
 HOMEPAGE="https://github.com/scanmem/scanmem"
@@ -12,10 +12,10 @@ SRC_URI="https://github.com/scanmem/scanmem/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="gui static-libs"
 
-DEPEND="sys-libs/readline:0="
+DEPEND="sys-libs/readline:="
 RDEPEND="${DEPEND}
 	gui? (
 		${PYTHON_DEPS}
@@ -24,6 +24,10 @@ RDEPEND="${DEPEND}
 	)"
 
 REQUIRED_USE="gui? ( ${PYTHON_REQUIRED_USE} )"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-musl-tests.patch
+)
 
 pkg_setup() {
 	use gui && python-single-r1_pkg_setup
@@ -43,6 +47,7 @@ src_configure() {
 		$(use_enable gui)
 		$(use_enable static-libs static)
 	)
+
 	econf "${myeconfargs[@]}"
 }
 
@@ -54,5 +59,6 @@ src_install() {
 		dodoc gui/{README,TODO}
 		python_fix_shebang "${ED}"
 	fi
+
 	find "${ED}" -type f -name "*.la" -delete || die
 }

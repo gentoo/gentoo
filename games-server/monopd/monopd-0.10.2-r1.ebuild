@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic systemd
+inherit autotools flag-o-matic systemd
 
 DESCRIPTION="server for atlantik games"
 HOMEPAGE="http://gtkatlantic.gradator.net/"

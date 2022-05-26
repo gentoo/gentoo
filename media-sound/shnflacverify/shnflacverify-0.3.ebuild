@@ -1,26 +1,26 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils
+inherit edos2unix
 
 DESCRIPTION="Manage the verification of checksums related to Shorten and FLAC files"
 HOMEPAGE="https://sourceforge.net/projects/shnflacverify/"
 SRC_URI="http://downloads.sourceforge.net/project/${PN}/${PN}/${P}/${P}.zip"
+S="${WORKDIR}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+BDEPEND="app-arch/unzip"
 RDEPEND="
-	app-arch/unzip
 	dev-lang/perl
 	media-libs/flac
 	media-sound/shntool
-	sys-apps/coreutils"
-
-S="${WORKDIR}"
+	sys-apps/coreutils
+"
 
 src_prepare() {
 	default

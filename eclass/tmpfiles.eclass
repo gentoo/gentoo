@@ -1,4 +1,4 @@
-# Copyright 2016-2019 Gentoo Authors
+# Copyright 2016-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: tmpfiles.eclass
@@ -8,7 +8,7 @@
 # @AUTHOR:
 # Mike Gilbert <floppym@gentoo.org>
 # William Hubbs <williamh@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: Functions related to tmpfiles.d files
 # @DESCRIPTION:
 # This eclass provides functionality related to installing and
@@ -52,15 +52,24 @@
 #
 # @CODE
 
-if [[ -z ${TMPFILES_ECLASS} ]]; then
-TMPFILES_ECLASS=1
+if [[ -z ${_TMPFILES_ECLASS} ]]; then
+_TMPFILES_ECLASS=1
 
 case "${EAPI}" in
-5|6|7) ;;
+5|6|7|8) ;;
 *) die "API is undefined for EAPI ${EAPI}" ;;
 esac
 
-RDEPEND="virtual/tmpfiles"
+# @ECLASS_VARIABLE: TMPFILES_OPTIONAL
+# @PRE_INHERIT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# When not empty, disables the dependency on virtual/tmpfiles.
+# Ebuilds that call tmpfiles_process conditionally should declare a
+# conditional dependency themselves.
+if [[ -z ${TMPFILES_OPTIONAL} ]]; then
+	RDEPEND="virtual/tmpfiles"
+fi
 
 # @FUNCTION: dotmpfiles
 # @USAGE: <tmpfiles.d_file> ...

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,6 @@ inherit autotools
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/zevv/duc.git"
-	KEYWORDS=""
 else
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://github.com/zevv/${PN}/releases/download/${PV}/${P}.tar.gz"
@@ -19,7 +18,7 @@ HOMEPAGE="https://github.com/zevv/duc"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="cairo gui -leveldb ncurses -sqlite +tokyocabinet X"
+IUSE="cairo gui leveldb ncurses sqlite +tokyocabinet X"
 
 REQUIRED_USE="
 	^^ ( tokyocabinet leveldb sqlite )

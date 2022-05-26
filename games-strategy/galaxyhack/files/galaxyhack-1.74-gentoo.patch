@@ -1,5 +1,5 @@
---- a/Makefile.old	2009-02-11 22:21:26.000000000 +0100
-+++ b/Makefile	2009-02-11 22:20:58.000000000 +0100
+--- a/Makefile
++++ b/Makefile
 @@ -6,12 +6,11 @@
  # James Gregory and Everton da Silva Marques <evertonsm@yahoo.com.br>
  #

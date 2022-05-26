@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="OpenGL Mathematics"
 HOMEPAGE="http://glm.g-truc.net/"
@@ -11,20 +11,23 @@ SRC_URI="https://github.com/g-truc/glm/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( HappyBunny MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv sparc x86"
 IUSE="test cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_avx cpu_flags_x86_avx2"
 RESTRICT="!test? ( test )"
-
-RDEPEND=""
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.9.6-simd.patch
 	"${FILESDIR}"/${P}-clang.patch
+	"${FILESDIR}"/${PN}-0.9.9.8-big-endian-tests.patch
 )
 
 src_configure() {
 	# Header-only library
 	if use test; then
+		# See https://github.com/g-truc/glm/pull/1087
+		# https://bugs.gentoo.org/818235
+		test-flag-CXX -fno-ipa-modref && append-cxxflags -fno-ipa-modref
+
 		local mycmakeargs=(
 			-DGLM_TEST_ENABLE=ON
 			-DGLM_TEST_ENABLE_SIMD_SSE2="$(usex cpu_flags_x86_sse2 ON OFF)"

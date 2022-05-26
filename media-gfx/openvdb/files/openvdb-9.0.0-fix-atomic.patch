@@ -1,0 +1,47 @@
+From 7ca53e00b5f85b8842a2a846f0026d63791498cc Mon Sep 17 00:00:00 2001
+From: Yixun Lan <dlan@gentoo.org>
+Date: Wed, 16 Feb 2022 22:24:16 +0800
+Subject: [PATCH] openvdb: fix missing atomic lib
+
+explicitly pass -pthread to work around pthread builtin since glibc-2.34,
+as we need -pthread to pull in libatomic for machines like riscv
+
+Bug: https://bugs.gentoo.org/833372
+Original-from: Alex Fan <alex.fan.q@gmail.com>
+Signed-off-by: Yixun Lan <dlan@gentoo.org>
+---
+ nanovdb/nanovdb/CMakeLists.txt | 3 +++
+ openvdb/openvdb/CMakeLists.txt | 3 +++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/nanovdb/nanovdb/CMakeLists.txt b/nanovdb/nanovdb/CMakeLists.txt
+index 296dbb0..afc4f0c 100644
+--- a/nanovdb/nanovdb/CMakeLists.txt
++++ b/nanovdb/nanovdb/CMakeLists.txt
+@@ -69,6 +69,9 @@ if(UNIX)
+   # forces the compiler -pthread flag vs -lpthread
+   set(THREADS_PREFER_PTHREAD_FLAG TRUE)
+   find_package(Threads REQUIRED)
++  if(CMAKE_USE_PTHREADS_INIT)
++    target_link_libraries(Threads::Threads INTERFACE -pthread)
++  endif()
+ endif()
+ 
+ if(NANOVDB_BUILD_UNITTESTS OR NANOVDB_BUILD_BENCHMARK)
+diff --git a/openvdb/openvdb/CMakeLists.txt b/openvdb/openvdb/CMakeLists.txt
+index 1d5b75f..22988b7 100644
+--- a/openvdb/openvdb/CMakeLists.txt
++++ b/openvdb/openvdb/CMakeLists.txt
+@@ -202,6 +202,9 @@ endif()
+ 
+ if(UNIX)
+   find_package(Threads REQUIRED)
++  if(CMAKE_USE_PTHREADS_INIT)
++    target_link_libraries(Threads::Threads INTERFACE -pthread)
++  endif()
+ endif()
+ 
+ # Set deps. Note that the order here is important. If we're building against
+-- 
+2.35.1
+

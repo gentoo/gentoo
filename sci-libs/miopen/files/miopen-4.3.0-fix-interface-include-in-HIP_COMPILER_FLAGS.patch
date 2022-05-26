@@ -1,0 +1,17 @@
+The interface inlude directories of hip::device should be included using -I, not -isystem;
+
+otherwise compilation at MIOpen runtime will fail due to cstdlib cannot find <stdlib.h> or similar errors.
+
+Suggested-by: Yuyi Wang <Strawberry_Str@hotmail.com>
+Signed-off-by: Yiyang Wu <xgreenlandforwyy@gmail.com>
+--- orig/cmake/TargetFlags.cmake
++++ MIOpen-rocm-4.3.0/cmake/TargetFlags.cmake
+@@ -41,7 +41,7 @@ function(target_flags FLAGS TARGET)
+     set(_flags)
+     append_flags(_flags ${TARGET} "INTERFACE_COMPILE_OPTIONS" "")
+     append_flags(_flags ${TARGET} "INTERFACE_COMPILE_DEFINITIONS" "-D")
+-    append_flags(_flags ${TARGET} "INTERFACE_INCLUDE_DIRECTORIES" "-isystem ")
++	append_flags(_flags ${TARGET} "INTERFACE_INCLUDE_DIRECTORIES" "-I ")
+     append_flags(_flags ${TARGET} "INTERFACE_LINK_DIRECTORIES" "-L ")
+     append_flags(_flags ${TARGET} "INTERFACE_LINK_OPTIONS" "")
+     append_link_flags(_flags ${TARGET} "INTERFACE_LINK_LIBRARIES" "")

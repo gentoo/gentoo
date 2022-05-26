@@ -1,0 +1,26 @@
+diff --git a/configure.ac b/configure.ac
+index 5fe1deb..9efe153 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -140,6 +140,8 @@ if test x"$libiscsi_cv_HAVE_SG_IO" = x"yes"; then
+     AC_DEFINE(HAVE_SG_IO,1,[Whether we have SG_IO support])
+ fi
+ 
++AC_ARG_WITH([rdma], AS_HELP_STRING([--with-rdma], [Build with rdma support]))
++
+ AC_CACHE_CHECK([for iSER support],libiscsi_cv_HAVE_LINUX_ISER,[
+ AC_TRY_COMPILE([
+ #include <infiniband/verbs.h>
+@@ -147,10 +149,10 @@ AC_TRY_COMPILE([
+ #include <rdma/rdma_verbs.h>],
+ [int ibv = IBV_WC_SEND;],
+ libiscsi_cv_HAVE_LINUX_ISER=yes,libiscsi_cv_HAVE_LINUX_ISER=no)])
+-if test x"$libiscsi_cv_HAVE_LINUX_ISER" = x"yes"; then
++if test x"$libiscsi_cv_HAVE_LINUX_ISER" = x"yes" && test "x$with_rdma" = "xyes"; then
+     AC_DEFINE(HAVE_LINUX_ISER,1,[Whether we have iSER support])
+ fi
+-AM_CONDITIONAL([HAVE_LINUX_ISER], [test $libiscsi_cv_HAVE_LINUX_ISER = yes])
++AM_CONDITIONAL([HAVE_LINUX_ISER], [test "x$with_rdma" = "xyes"])
+ 
+ AC_CACHE_CHECK([whether libcunit is available],
+                [ac_cv_have_cunit],

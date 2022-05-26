@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -6,6 +6,27 @@
 
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
+
+# Matt Turner <mattst88gentoo.org> (2022-02-21)
+# app-crypt/tpm2-tss is not keyworded here
+tpm
+
+# Sam James <sam@gentoo.org> (2021-10-16)
+# media-libs/openexr is not keyworded.
+openexr
+
+# James Le Cuirot <chewi@gentoo.org> (2021-08-10)
+# media-video/pipewire is not keyworded. Bug #807616.
+bluetooth
+pipewire
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
+# sys-libs/llvm-libunwind not supported on HPPA.
+llvm-libunwind
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
+# media-sound/jack-audio-connection-kit re-keywording timeout, bug #736725
+jack
 
 # Matt Turner <mattst88@gentoo.org> (2020-07-01)
 # Unlikely.
@@ -46,10 +67,6 @@ dmraid
 # Unmask as this profile is big endian.
 -big-endian
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-02-25)
-# kwallet integration split from kde to distinct flag
-kwallet
-
 # Jeroen Roovers <jer@gentoo.org> (2016-01-31)
 # USE=xwidgets requires net-libs/webkit-gtk
 xwidgets
@@ -77,6 +94,8 @@ clang
 
 # Jeroen Roovers <jer@gentoo.org> (2014-11-07)
 # dev-lang/luajit has not been ported to HPPA
+lua_single_target_luajit
+lua_targets_luajit
 luajit
 luajittex
 
@@ -112,10 +131,6 @@ vlc
 # app-i18n/ibus is not tested
 ibus
 
-# Jeroen Roovers <jer@gentoo.org> (2012-03-08)
-# The crash reporting facility in www-client/firefox does not compile
-crashreporter
-
 # Jeroen Roovers <jer@gentoo.org> (2012-01-04)
 # dvb is untested on HPPA
 dvb
@@ -131,10 +146,6 @@ prelude
 # Jeroen Roovers <jer@gentoo.org> (2011-06-09)
 # Lots of untested dependencies (bug #365451)
 facedetect
-
-# Jeroen Roovers <jer@gentoo.org> (2011-05-02)
-# No support for CUDA on HPPA
-cuda
 
 # Samuli Suominen <ssuominen@gentoo.org> (2010-12-25)
 # This will need stable gnome-base/gvfs.
@@ -170,14 +181,11 @@ darcs
 # Jeroen Roovers <jer@gentoo.org> (2010-04-05)
 # Mask USE=kde (bug #304363).
 kde
+kwallet
 
 # Jeroen Roovers <jer@gentoo.org> (2010-02-28)
 # app-accessibility/flite does not work (bug #307241)
 flite
-
-# Jeroen Roovers <jer@gentoo.org> (2009-08-04)
-# net-misc/wicd and sys-power/pm-utils are currently not supported (bug #280312)
-pm-utils
 
 # Jeroen Roovers <jer@gentoo.org> (2008-06-07)
 # dev-util/valgrind has not been ported to HPPA.
@@ -200,7 +208,7 @@ networkmanager
 gcj
 
 # Samuli Suominen <drac@gentoo.org> (2007-03-02)
-# See https://bugs.gentoo.org/show_bug.cgi?id=157881#c3
+# See bug #157881#c3
 battery
 
 # Saleem Abdulrasool <compnerd@gentoo.org> (2006-08-18)
@@ -247,10 +255,6 @@ ieee1394
 # Guy Martin <gmsoft@gentoo.org> (2005-06-25)
 # mono is not yet supported on hppa
 mono
-
-# Guy Martin <gmsoft@gentoo.org> (2005-02-18)
-# No emboss support on hppa for now
-emboss
 
 # Guy Martin <gmsoft@gentoo.org> (2004-08-08)
 # Wifi stuff not test yet because of lack of hardware

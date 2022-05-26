@@ -1,8 +1,9 @@
 #!/bin/bash
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-source tests-common.sh
+EAPI=7
+source tests-common.sh || exit
 
 inherit multiprocessing
 
@@ -15,14 +16,19 @@ test-makeopts_jobs() {
 		tend 1 "Mismatch between MAKEOPTS/cli: '${indirect}' != '${direct}'"
 	else
 		[[ ${direct} == "${exp}" ]]
-		tend $? "Got back: ${act}"
+		tend $? "Got back: ${direct}"
 	fi
 }
 
+# override to avoid relying on a specific value
+get_nproc() {
+	echo 41
+}
+
 tests=(
-	999 "-j"
-	999 "--jobs"
-	999 "-j -l9"
+	42 "-j"
+	42 "--jobs"
+	42 "-j -l9"
 	1 ""
 	1 "-l9 -w"
 	1 "-l9 -w-j4"
@@ -36,7 +42,7 @@ tests=(
 	7 "-l3 --jobs 7 -w"
 	4 "-j1 -j 2 --jobs 3 --jobs=4"
 	8 "     -j        			8     "
-	999 "-kj"
+	42 "-kj"
 	4 "-kj4"
 	5 "-kj 5"
 )

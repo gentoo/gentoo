@@ -1,0 +1,26 @@
+diff --git a/src/gspeakersobject.h b/src/gspeakersobject.h
+index 9824b8b..8b9188e 100644
+--- a/src/gspeakersobject.h
++++ b/src/gspeakersobject.h
+@@ -18,7 +18,7 @@
+ #ifndef __GSPEAKERSOBJECT_H
+ #define __GSPEAKERSOBJECT_H
+ 
+-#include <sigc++/object.h>
++#include <sigc++/trackable.h>
+ 
+ /*
+  * This is a base object for data-containers in this project
+diff --git a/src/speakereditor.h b/src/speakereditor.h
+index 44368a0..29a1152 100644
+--- a/src/speakereditor.h
++++ b/src/speakereditor.h
+@@ -20,7 +20,7 @@
+ #ifndef __GSPEAKERS_SPEAKEREDITOR
+ #define __GSPEAKERS_SPEAKEREDITOR
+ 
+-#include <sigc++/object.h>
++#include <sigc++/trackable.h>
+ #include <gtkmm/widget.h>
+ #include <gtkmm/filechooserdialog.h>
+ #include <glibmm/ustring.h>

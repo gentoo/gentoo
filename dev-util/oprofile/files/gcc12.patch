@@ -1,0 +1,27 @@
+`gcc-12` will forbid std::string(nullptr_t) constructors
+(as they never had a defined behaviour):
+
+    operf_stats.cpp:182:24: error: use of deleted function 'std::__cxx11::basic_string...; std::nullptr_t = std::nullptr_t]'
+      182 |                 return NULL;
+          |                        ^~~~
+
+Signed-off-by: Sergei Trofimovich <slyich@gmail.com>
+---
+ libperf_events/operf_stats.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libperf_events/operf_stats.cpp b/libperf_events/operf_stats.cpp
+index 3cc28a75..a7bd0aec 100644
+--- a/libperf_events/operf_stats.cpp
++++ b/libperf_events/operf_stats.cpp
+@@ -179,7 +179,7 @@ static string create_stats_dir(string const & cur_sampledir)
+ 	if (rc && (errno != EEXIST)) {
+ 		cerr << "Error trying to create stats dir. " << endl;
+ 		perror("mkdir failed with");
+-		return NULL;
++		return "";
+ 	}
+ 	return stats_dir;
+ }
+-- 
+2.33.1

@@ -1,0 +1,13 @@
+diff --git a/setup.cfg b/setup.cfg
+index 9cbc9b3..732d6a2 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -35,7 +35,7 @@ packages = find:
+ package_dir = 
+ 	=src
+ install_requires = 
+-	mccabe>=0.6.0,<0.7.0
++	mccabe>=0.7.0,<0.8.0
+ 	pycodestyle>=2.8.0,<2.9.0
+ 	pyflakes>=2.4.0,<2.5.0
+ 	importlib-metadata<4.3;python_version<"3.8"

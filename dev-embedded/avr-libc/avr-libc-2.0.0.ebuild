@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,7 +6,7 @@ EAPI="5"
 CHOST="avr"
 CTARGET="avr"
 
-inherit flag-o-matic eutils
+inherit flag-o-matic epatch
 
 DESCRIPTION="C library for Atmel AVR microcontrollers"
 HOMEPAGE="http://www.nongnu.org/avr-libc/"
@@ -68,8 +68,8 @@ src_install() {
 
 	# man pages can not go into standard locations
 	# as they would then overwrite libc man pages
-	insinto /usr/share/doc/${PF}/man/man3
-	doins "${WORKDIR}"/man/man3/*
+	docinto man/man3
+	dodoc -r "${WORKDIR}"/man/man3/.
 
 	use doc	&& dohtml "${WORKDIR}"/${PN}-user-manual-${PV}/*
 

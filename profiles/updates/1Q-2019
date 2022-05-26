@@ -14,4 +14,3 @@ move net-misc/networkmanager-sstp net-vpn/networkmanager-sstp
 move gnome-extra/gnome-tweak-tool gnome-extra/gnome-tweaks
 move app-portage/eclass-manpages app-doc/eclass-manpages
 move app-editors/latexila app-editors/gnome-latex
-move dev-libs/rttr dev-cpp/rttr

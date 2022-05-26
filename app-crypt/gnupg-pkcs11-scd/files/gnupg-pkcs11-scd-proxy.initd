@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 description="gnupg-pkcs11-scd proxy."
@@ -11,7 +11,8 @@ command_args="--scd-config='${SCD_CONFIG}' --socket-group=${GNUPG_PKCS11_GROUP} 
 pidfile=${PIDFILE:-/run/${SVCNAME}.pid}
 user=${USER:-gnupg-pkcs11-scd-proxy}
 group=${GROUP:-gnupg-pkcs11-scd-proxy}
-start_stop_daemon_args="--user ${user} --group ${group} --background --make-pidfile"
+command_user="${user}:${group}"
+command_background="yes"
 
 depend() {
 	need localmount

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="logo">Enable the ability to add a logo screen when creating AVIs</flag>
+		<flag name="ffmpeg">Use <pkg>media-video/ffmpeg</pkg> for video recording</flag>
+		<flag name="x265">Use <pkg>media-libs/x265</pkg> for video recording (HEVC)</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">TASVideos/fceux</remote-id>
 		<remote-id type="sourceforge">fceultra</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,8 +1,8 @@
 Fix check for GCC version beyond major version 4.
 Gentoo bug #569222
 
---- cdd+-077a/gmp_init.cc
-+++ cdd+-077a/gmp_init.cc
+--- a/gmp_init.cc
++++ b/gmp_init.cc
 @@ -31,7 +31,7 @@
  # define pm_gmp_reallocate std::__alloc::reallocate
  #endif // gcc 3.3

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 DISTUTILS_OPTIONAL=1
 inherit distutils-r1
 
@@ -38,7 +38,9 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --enable-ucs4
+	econf \
+		--enable-ucs4 \
+		--disable-static
 }
 
 src_compile() {
@@ -68,4 +70,6 @@ src_install() {
 	DOCS=( README AUTHORS NEWS ChangeLog doc/liblouis.txt )
 	HTML_DOCS=( doc/liblouis.html )
 	default
+
+	find "${ED}" -name '*.la' -delete || die
 }

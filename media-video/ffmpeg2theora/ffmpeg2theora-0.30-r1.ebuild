@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
-inherit python-any-r1 scons-utils toolchain-funcs
+PYTHON_COMPAT=( python3_{8..10} )
+inherit python-any-r1 scons-utils
 
 DESCRIPTION="A simple converter to create Ogg Theora files"
 HOMEPAGE="http://www.v2v.cc/~j/ffmpeg2theora/"
@@ -22,8 +22,7 @@ RDEPEND="
 	>=media-libs/libtheora-1.1[encode]
 	kate? ( >=media-libs/libkate-0.3.7 )"
 DEPEND="${RDEPEND}"
-BDEPEND="
-	virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.29-swr.patch
@@ -32,6 +31,7 @@ PATCHES=(
 
 src_prepare() {
 	default
+
 	2to3 -n -w --no-diffs SConstruct || die
 }
 

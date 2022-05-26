@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: llvm.org.eclass
@@ -6,6 +6,7 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Common bits for fetching & unpacking llvm.org projects
 # @DESCRIPTION:
 # The llvm.org eclass provides common code to fetch and unpack parts
@@ -29,7 +30,7 @@
 # @CODE
 
 case "${EAPI:-0}" in
-	7)
+	7|8)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} for ${ECLASS}"
@@ -39,14 +40,14 @@ esac
 
 # == internal control bits ==
 
-# @ECLASS-VARIABLE: _LLVM_MASTER_MAJOR
+# @ECLASS_VARIABLE: _LLVM_MASTER_MAJOR
 # @INTERNAL
 # @DESCRIPTION:
 # The major version of current LLVM trunk.  Used to determine
 # the correct branch to use.
-_LLVM_MASTER_MAJOR=12
+_LLVM_MASTER_MAJOR=15
 
-# @ECLASS-VARIABLE: _LLVM_SOURCE_TYPE
+# @ECLASS_VARIABLE: _LLVM_SOURCE_TYPE
 # @INTERNAL
 # @DESCRIPTION:
 # Source type to use: 'git' or 'tar'.
@@ -68,7 +69,7 @@ inherit multiprocessing
 
 # == control variables ==
 
-# @ECLASS-VARIABLE: LLVM_COMPONENTS
+# @ECLASS_VARIABLE: LLVM_COMPONENTS
 # @REQUIRED
 # @DESCRIPTION:
 # List of components needed unconditionally.  Specified as bash array
@@ -77,34 +78,93 @@ inherit multiprocessing
 #
 # The first path specified is used to construct default S.
 
-# @ECLASS-VARIABLE: LLVM_TEST_COMPONENTS
+# @ECLASS_VARIABLE: LLVM_TEST_COMPONENTS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # List of additional components needed for tests.
 
+# @ECLASS_VARIABLE: LLVM_MANPAGES
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Set to 'build', include the dependency on dev-python/sphinx to build
+# the manpages.  If set to 'pregenerated', fetch and install
+# pregenerated manpages from the archive.
+
+# @ECLASS_VARIABLE: LLVM_PATCHSET
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# LLVM patchset version.  No patchset is used if unset.
+
+# @ECLASS_VARIABLE: LLVM_USE_TARGETS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Add LLVM_TARGETS flags.  The following values are supported:
+#
+# - provide - this package provides LLVM targets.  USE flags
+#   and REQUIRED_USE will be added but no dependencies.
+#
+# - llvm - this package uses targets from LLVM.  RDEPEND+DEPEND
+#   on matching sys-devel/llvm versions with requested flags will
+#   be added.
+#
+# Note that you still need to pass enabled targets to the build system,
+# usually grabbing them from ${LLVM_TARGETS} (via USE_EXPAND).
+
+
+# == global data ==
+
+# @ECLASS_VARIABLE: ALL_LLVM_EXPERIMENTAL_TARGETS
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# The complete list of LLVM experimental targets available in this LLVM
+# version.  The value depends on ${PV}.
+
+# @ECLASS_VARIABLE: ALL_LLVM_PRODUCTION_TARGETS
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# The complete list of LLVM production-ready targets available in this
+# LLVM version.  The value depends on ${PV}.
+
+# @ECLASS_VARIABLE: ALL_LLVM_TARGET_FLAGS
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# The list of USE flags corresponding to all LLVM targets in this LLVM
+# version.  The value depends on ${PV}.
+
+case ${PV} in
+	10*|11*|12*)
+		# this API is not present for old LLVM versions
+		;;
+	13*)
+		ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY M68k VE )
+		ALL_LLVM_PRODUCTION_TARGETS=(
+			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430 NVPTX
+			PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
+		)
+		;;
+	14*)
+		ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY M68k )
+		ALL_LLVM_PRODUCTION_TARGETS=(
+			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430 NVPTX
+			PowerPC RISCV Sparc SystemZ VE WebAssembly X86 XCore
+		)
+		;;
+	*)
+		ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY LoongArch M68k )
+		ALL_LLVM_PRODUCTION_TARGETS=(
+			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430 NVPTX
+			PowerPC RISCV Sparc SystemZ VE WebAssembly X86 XCore
+		)
+		;;
+esac
+
+ALL_LLVM_TARGET_FLAGS=(
+	"${ALL_LLVM_PRODUCTION_TARGETS[@]/#/llvm_targets_}"
+	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]/#/llvm_targets_}"
+)
+
 
 # == global scope logic ==
-
-# @FUNCTION: _llvm.org_get_archives
-# @USAGE: <components>
-# @INTERNAL
-# @DESCRIPTION:
-# Set 'archives' array to list of unique archive filenames
-# for components passed as parameters.
-_llvm.org_get_archives() {
-	local c
-	archives=()
-
-	for c; do
-		local cn=${c%%/*}
-		case ${cn} in
-			clang) cn=cfe;;
-		esac
-
-		local a=${cn}-${PV}.src.tar.xz
-		has "${a}" "${archives[@]}" || archives+=( "${a}" )
-	done
-}
 
 # @FUNCTION: llvm.org_set_globals
 # @DESCRIPTION:
@@ -126,18 +186,8 @@ llvm.org_set_globals() {
 		[[ ${PV} != ${_LLVM_MASTER_MAJOR}.* ]] &&
 			EGIT_BRANCH="release/${PV%%.*}.x"
 	elif [[ ${_LLVM_SOURCE_TYPE} == tar ]]; then
-		if ver_test -ge 9.0.1_rc1; then
-			# 9.0.1 RCs as GitHub archive
-			SRC_URI+="
-				https://github.com/llvm/llvm-project/archive/llvmorg-${PV/_/-}.tar.gz"
-		else
-			local a archives=()
-			_llvm.org_get_archives "${LLVM_COMPONENTS[@]}"
-			for a in "${archives[@]}"; do
-				SRC_URI+="
-					https://releases.llvm.org/${PV}/${a}"
-			done
-		fi
+		SRC_URI+="
+			https://github.com/llvm/llvm-project/archive/llvmorg-${PV/_/-}.tar.gz"
 	else
 		die "Invalid _LLVM_SOURCE_TYPE: ${LLVM_SOURCE_TYPE}"
 	fi
@@ -147,27 +197,51 @@ llvm.org_set_globals() {
 	if [[ -n ${LLVM_TEST_COMPONENTS+1} ]]; then
 		IUSE+=" test"
 		RESTRICT+=" !test? ( test )"
-
-		if [[ ${_LLVM_SOURCE_TYPE} == tar ]]; then
-			if ver_test -ge 9.0.1_rc1; then
-				# everything already fetched
-				:
-			else
-				# split 9.0.0 release and older
-				SRC_URI+="
-					test? ("
-
-				_llvm.org_get_archives "${LLVM_TEST_COMPONENTS[@]}"
-				for a in "${archives[@]}"; do
-					SRC_URI+="
-						https://releases.llvm.org/${PV}/${a}"
-				done
-
-				SRC_URI+="
-					)"
-			fi
-		fi
 	fi
+
+	case ${LLVM_MANPAGES:-__unset__} in
+		__unset__)
+			# no manpage support
+			;;
+		build)
+			IUSE+=" doc"
+			# NB: this is not always the correct dep but it does no harm
+			BDEPEND+=" dev-python/sphinx"
+			;;
+		pregenerated)
+			IUSE+=" doc"
+			SRC_URI+="
+				!doc? (
+					https://dev.gentoo.org/~mgorny/dist/llvm/llvm-${PV}-manpages.tar.bz2
+				)"
+			;;
+		*)
+			die "Invalid LLVM_MANPAGES=${LLVM_MANPAGES}"
+	esac
+
+	if [[ -n ${LLVM_PATCHSET} ]]; then
+		SRC_URI+="
+			https://dev.gentoo.org/~mgorny/dist/llvm/llvm-gentoo-patchset-${LLVM_PATCHSET}.tar.xz"
+	fi
+
+	local x
+	case ${LLVM_USE_TARGETS:-__unset__} in
+		__unset__)
+			;;
+		provide|llvm)
+			IUSE+=" ${ALL_LLVM_TARGET_FLAGS[*]}"
+			REQUIRED_USE+=" || ( ${ALL_LLVM_TARGET_FLAGS[*]} )"
+			;;&
+		llvm)
+			local dep=
+			for x in "${ALL_LLVM_TARGET_FLAGS[@]}"; do
+				dep+="
+					${x}? ( ~sys-devel/llvm-${PV}[${x}] )"
+			done
+			RDEPEND+=" ${dep}"
+			DEPEND+=" ${dep}"
+			;;
+	esac
 
 	# === useful defaults for cmake-based packages ===
 
@@ -180,10 +254,7 @@ llvm.org_set_globals() {
 
 # == phase functions ==
 
-EXPORT_FUNCTIONS src_unpack
-if ver_test -ge 10.0.1_rc; then
-	EXPORT_FUNCTIONS src_prepare
-fi
+EXPORT_FUNCTIONS src_unpack src_prepare
 
 # @FUNCTION: llvm.org_src_unpack
 # @DESCRIPTION:
@@ -201,30 +272,38 @@ llvm.org_src_unpack() {
 	if [[ ${_LLVM_SOURCE_TYPE} == git ]]; then
 		git-r3_fetch
 		git-r3_checkout '' . '' "${components[@]}"
+		default_src_unpack
 	else
-		if ver_test -ge 9.0.1_rc1; then
-			local archive=llvmorg-${PV/_/-}.tar.gz
-			ebegin "Unpacking from ${archive}"
-			tar -x -z -o --strip-components 1 \
-				-f "${DISTDIR}/${archive}" \
-				"${components[@]/#/llvm-project-${archive%.tar*}/}" || die
-			eend ${?}
-		else
-			local c archives
-			# TODO: optimize this
-			for c in "${components[@]}"; do
-				local top_dir=${c%%/*}
-				_llvm.org_get_archives "${c}"
-				local sub_path=${archives[0]%.tar.xz}
-				[[ ${c} == */* ]] && sub_path+=/${c#*/}
+		local archive=llvmorg-${PV/_/-}.tar.gz
+		ebegin "Unpacking from ${archive}"
+		tar -x -z -o --strip-components 1 \
+			-f "${DISTDIR}/${archive}" \
+			"${components[@]/#/llvm-project-${archive%.tar*}/}" || die
+		eend ${?}
 
-				ebegin "Unpacking ${sub_path} from ${archives[0]}"
-				mkdir -p "${top_dir}" || die
-				tar -C "${top_dir}" -x -J -o --strip-components 1 \
-					-f "${DISTDIR}/${archives[0]}" "${sub_path}" || die
-				eend ${?}
-			done
+		# unpack all remaining distfiles
+		local x
+		for x in ${A}; do
+			[[ ${x} != ${archive} ]] && unpack "${x}"
+		done
+	fi
+
+	if [[ -n ${LLVM_PATCHSET} ]]; then
+		local nocomp=$(grep -r -L "^Gentoo-Component:" \
+			"${WORKDIR}/llvm-gentoo-patchset-${LLVM_PATCHSET}")
+		if [[ -n ${nocomp} ]]; then
+			die "Patches lacking Gentoo-Component found: ${nocomp}"
 		fi
+
+		# strip patches that don't match current components
+		local IFS='|'
+		grep -E -r -L "^Gentoo-Component:.*(${components[*]})" \
+			"${WORKDIR}/llvm-gentoo-patchset-${LLVM_PATCHSET}" |
+			xargs rm
+		local status=( "${PIPESTATUS[@]}" )
+		[[ ${status[1]} -ne 0 ]] && die "rm failed"
+		[[ ${status[0]} -ne 0 ]] &&
+			die "No patches in the patchset apply to the package"
 	fi
 }
 
@@ -235,23 +314,32 @@ llvm.org_src_unpack() {
 # ${WORKDIR}, so that patches straight from llvm-project repository
 # work correctly with -p1.
 llvm.org_src_prepare() {
+	if [[ -n ${LLVM_PATCHSET} ]]; then
+		local PATCHES=(
+			"${PATCHES[@]}"
+			"${WORKDIR}/llvm-gentoo-patchset-${LLVM_PATCHSET}"
+		)
+	fi
+
+	pushd "${WORKDIR}" >/dev/null || die
 	if declare -f cmake_src_prepare >/dev/null; then
-		# cmake eclasses force ${S} for default_src_prepare
-		# but use ${CMAKE_USE_DIR} for everything else
-		CMAKE_USE_DIR=${S} \
-		S=${WORKDIR} \
+		CMAKE_USE_DIR=${S}
+		if [[ ${EAPI} == 7 ]]; then
+			# cmake eclasses force ${S} for default_src_prepare in EAPI 7
+			# but use ${CMAKE_USE_DIR} for everything else
+			local S=${WORKDIR}
+		fi
 		cmake_src_prepare
 	else
-		pushd "${WORKDIR}" >/dev/null || die
 		default_src_prepare
-		popd >/dev/null || die
 	fi
+	popd >/dev/null || die
 }
 
 
 # == helper functions ==
 
-# @ECLASS-VARIABLE: LIT_JOBS
+# @ECLASS_VARIABLE: LIT_JOBS
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -263,5 +351,25 @@ llvm.org_src_prepare() {
 # Get the standard recommended lit flags for running tests, in CMake
 # list form (;-separated).
 get_lit_flags() {
-	echo "-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
+	echo "-vv;-j;${LIT_JOBS:-$(makeopts_jobs)}"
+}
+
+# @FUNCTION: llvm_are_manpages_built
+# @DESCRIPTION:
+# Return true (0) if manpages are going to be built from source,
+# false (1) if preinstalled manpages will be used.
+llvm_are_manpages_built() {
+	use doc || [[ ${LLVM_MANPAGES} == build ]]
+}
+
+# @FUNCTION: llvm_install_manpages
+# @DESCRIPTION:
+# Install pregenerated manpages if available.  No-op otherwise.
+llvm_install_manpages() {
+	# install pre-generated manpages
+	if ! llvm_are_manpages_built; then
+		# (doman does not support custom paths)
+		insinto "/usr/lib/llvm/${SLOT}/share/man/man1"
+		doins "${WORKDIR}/llvm-${PV}-manpages/${LLVM_COMPONENTS[0]}"/*.1
+	fi
 }

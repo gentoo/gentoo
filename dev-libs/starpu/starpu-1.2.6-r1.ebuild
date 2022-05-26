@@ -1,18 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 FORTRAN_STANDARD=90
 FORTRAN_NEEDED="fortran"
-inherit autotools cuda fortran-2 ltprune toolchain-funcs
+inherit autotools cuda fortran-2 toolchain-funcs
 
 DESCRIPTION="Unified runtime system for heterogeneous multicore architectures"
 HOMEPAGE="http://starpu.gforge.inria.fr/"
 SRC_URI="https://gforge.inria.fr/frs/download.php/file/37744/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
-SLOT="0/8"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+SLOT="0/5"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 
 IUSE="
 	blas cuda doc examples fftw fortran gcc-plugin mpi opencl opengl
@@ -33,12 +33,21 @@ RDEPEND="
 	valgrind? ( dev-util/valgrind )
 "
 
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen virtual/latex-base )
 	test? ( gcc-plugin? ( dev-scheme/guile ) )
 "
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+	fortran-2_pkg_setup
+}
 
 src_prepare() {
 	default
@@ -82,8 +91,8 @@ src_install() {
 	default
 	use doc && dodoc -r doc/doxygen/*.pdf doc/doxygen/html
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins -r examples/*
+		dodoc -r examples
+		docompress -x /usr/share/doc/${PF}/examples
 	fi
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 }

@@ -1,5 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Fabian Groffen <grobian@gentoo.org> (2022-02-13)
+# we have virtual/gsasl keyworded
+mail-client/mutt -gsasl
 
 # Fabian Groffen <grobian@gentoo.org> (2020-06-08)
 # Do NOT enable tinfo, it breaks ANYTHING existing, and it also breaks
@@ -17,11 +21,6 @@ media-video/ffmpeg -appkit
 # X and linux only
 media-video/mplayer xv dga X xinerama xscreensaver
 media-video/mplayer dvb lirc jack joystick
-
-# Fabian Groffen <grobian@gentoo.org> (2008-08-06)
-# runtime loading is horribly broken (it uses fixed .so.0, but when
-# that's fixed it still doesn't work)
-dev-vcs/subversion dso
 
 # Elias Pipping <pipping@gentoo.org> (2007-08-27)
 # elinks does not compile with USE=perl (tested with 0.11.{2,3})

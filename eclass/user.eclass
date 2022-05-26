@@ -1,31 +1,49 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: user.eclass
 # @MAINTAINER:
 # base-system@gentoo.org (Linux)
 # Michał Górny <mgorny@gentoo.org> (NetBSD)
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: user management in ebuilds
+# @DEPRECATED: acct-user/acct-group packages
 # @DESCRIPTION:
 # The user eclass contains a suite of functions that allow ebuilds
 # to quickly make sure users in the installed system are sane.
+
+case ${EAPI} in
+	6|7) ;;
+	8)
+		if [[ ${CATEGORY} != acct-* ]]; then
+			eerror "In EAPI ${EAPI}, packages must not inherit user.eclass"
+			eerror "unless they are in the acct-user or acct-group category."
+			eerror "Migrate your package to GLEP 81 user/group management,"
+			eerror "or inherit user-info if you need only the query functions."
+			die "Invalid \"inherit user\" in EAPI ${EAPI}"
+		fi
+		;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 if [[ -z ${_USER_ECLASS} ]]; then
 _USER_ECLASS=1
 
 inherit user-info
 
-# @FUNCTION: _assert_pkg_ebuild_phase
+# @FUNCTION: _user_assert_pkg_phase
 # @INTERNAL
 # @USAGE: <calling func name>
-_assert_pkg_ebuild_phase() {
+# @DESCRIPTION:
+# Raises an alert if the phase is not suitable for user.eclass usage.
+_user_assert_pkg_phase() {
 	case ${EBUILD_PHASE} in
 	setup|preinst|postinst|prerm|postrm) ;;
 	*)
 		eerror "'$1()' called from '${EBUILD_PHASE}' phase which is not OK:"
 		eerror "You may only call from pkg_{setup,{pre,post}{inst,rm}} functions."
-		eerror "Package fails at QA and at life.  Please file a bug."
-		die "Bad package!  $1 is only for use in some pkg_* functions!"
+		eerror "Package has serious QA issues.  Please file a bug."
+		die "Bad package!  ${1} is only for use in some pkg_* functions!"
 	esac
 }
 
@@ -67,15 +85,15 @@ user_get_nologin() {
 # If -M is passed, enewuser does not create the home directory if it does not
 # exist.
 enewuser() {
-	if [[ ${EUID} != 0 ]] ; then
+	if [[ ${EUID} -ne 0 ]] ; then
 		ewarn "Insufficient privileges to execute ${FUNCNAME[0]}"
 		return 0
 	fi
-	_assert_pkg_ebuild_phase ${FUNCNAME}
+	_user_assert_pkg_phase ${FUNCNAME}
 
 	local create_home=1 force_uid=
-	while [[ $1 == -* ]]; do
-		case $1 in
+	while [[ ${1} == -* ]]; do
+		case ${1} in
 			-F) force_uid=1;;
 			-M) create_home=;;
 			*) die "${FUNCNAME}: invalid option ${1}";;
@@ -84,9 +102,9 @@ enewuser() {
 	done
 
 	# get the username
-	local euser=$1; shift
+	local euser=${1}; shift
 	if [[ -z ${euser} ]] ; then
-		eerror "No username specified !"
+		eerror "No username specified!"
 		die "Cannot call enewuser without a username"
 	fi
 
@@ -99,8 +117,11 @@ enewuser() {
 	# options to pass to useradd
 	local opts=()
 
+	# handle for ROOT != /
+	[[ -n ${ROOT} ]] && opts+=( --prefix "${ROOT}" )
+
 	# handle uid
-	local euid=$1; shift
+	local euid=${1}; shift
 	if [[ -n ${euid} && ${euid} != -1 ]] ; then
 		if [[ ${euid} -gt 0 ]] ; then
 			if [[ -n $(egetent passwd ${euid}) ]] ; then
@@ -108,7 +129,7 @@ enewuser() {
 				euid="next"
 			fi
 		else
-			eerror "Userid given but is not greater than 0 !"
+			eerror "Userid given but is not greater than 0!"
 			die "${euid} is not a valid UID"
 		fi
 	else
@@ -125,10 +146,10 @@ enewuser() {
 	elog " - Userid: ${euid}"
 
 	# handle shell
-	local eshell=$1; shift
+	local eshell=${1}; shift
 	if [[ ! -z ${eshell} ]] && [[ ${eshell} != "-1" ]] ; then
 		if [[ ! -e ${ROOT}${eshell} ]] ; then
-			eerror "A shell was specified but it does not exist !"
+			eerror "A shell was specified but it does not exist!"
 			die "${eshell} does not exist in ${ROOT}"
 		fi
 		if [[ ${eshell} == */false || ${eshell} == */nologin ]] ; then
@@ -142,7 +163,7 @@ enewuser() {
 	opts+=( -s "${eshell}" )
 
 	# handle homedir
-	local ehome=$1; shift
+	local ehome=${1}; shift
 	if [[ -z ${ehome} ]] || [[ ${ehome} == "-1" ]] ; then
 		ehome="/dev/null"
 	fi
@@ -150,7 +171,7 @@ enewuser() {
 	opts+=( -d "${ehome}" )
 
 	# handle groups
-	local egroups=$1; shift
+	local egroups=${1}; shift
 	local g egroups_arr
 	IFS="," read -r -a egroups_arr <<<"${egroups}"
 	if [[ ${#egroups_arr[@]} -gt 0 ]] ; then
@@ -189,13 +210,24 @@ enewuser() {
 		;;
 
 	*-netbsd*)
-		useradd "${opts[@]}" "${euser}" || die
+		if [[ -n "${ROOT}" ]]; then
+			ewarn "NetBSD's usermod does not support --prefix option."
+			ewarn "Please use: \"useradd ${opts[@]} ${euser}\" in a chroot"
+		else
+			useradd "${opts[@]}" "${euser}" || die
+		fi
 		;;
 
 	*-openbsd*)
-		# all ops the same, except the -g vs -g/-G ...
-		useradd -u ${euid} -s "${eshell}" \
-			-d "${ehome}" -g "${egroups}" "${euser}" || die
+		if [[ -n "${ROOT}" ]]; then
+			ewarn "OpenBSD's usermod does not support --prefix option."
+			ewarn "Please use: \"useradd ${opts[@]} ${euser}\" in a chroot"
+		else
+			# all ops the same, except the -g vs -g/-G ...
+			useradd -u ${euid} -s "${eshell}" \
+				-d "${ehome}" -g "${egroups}" "${euser}" || die
+		fi
+
 		;;
 
 	*)
@@ -206,6 +238,10 @@ enewuser() {
 	if [[ -n ${create_home} && ! -e ${ROOT}/${ehome} ]] ; then
 		elog " - Creating ${ehome} in ${ROOT}"
 		mkdir -p "${ROOT}/${ehome}"
+		# Use UID if we are in another ROOT than /
+		if [[ -n "${ROOT}" ]]; then
+			euser=$(egetent passwd ${euser} | cut -d: -f3)
+		fi
 		chown "${euser}" "${ROOT}/${ehome}"
 		chmod 755 "${ROOT}/${ehome}"
 	fi
@@ -222,15 +258,15 @@ enewuser() {
 # If -F is passed, enewgroup will always enforce specified GID and fail if it
 # can not be assigned.
 enewgroup() {
-	if [[ ${EUID} != 0 ]] ; then
+	if [[ ${EUID} -ne 0 ]] ; then
 		ewarn "Insufficient privileges to execute ${FUNCNAME[0]}"
 		return 0
 	fi
-	_assert_pkg_ebuild_phase ${FUNCNAME}
+	_user_assert_pkg_phase ${FUNCNAME}
 
 	local force_gid=
-	while [[ $1 == -* ]]; do
-		case $1 in
+	while [[ ${1} == -* ]]; do
+		case ${1} in
 			-F) force_gid=1;;
 			*) die "${FUNCNAME}: invalid option ${1}";;
 		esac
@@ -238,9 +274,9 @@ enewgroup() {
 	done
 
 	# get the group
-	local egroup=$1; shift
+	local egroup=${1}; shift
 	if [[ -z ${egroup} ]] ; then
-		eerror "No group specified !"
+		eerror "No group specified!"
 		die "Cannot call enewgroup without a group"
 	fi
 
@@ -251,7 +287,7 @@ enewgroup() {
 	elog "Adding group '${egroup}' to your system ..."
 
 	# handle gid
-	local egid=$1; shift
+	local egid=${1}; shift
 	if [[ -n ${egid} && ${egid} != -1 ]] ; then
 		if [[ ${egid} -gt 0 ]] ; then
 			if [[ -n $(egetent group ${egid}) ]] ; then
@@ -259,7 +295,7 @@ enewgroup() {
 				egid="next available; requested gid taken"
 			fi
 		else
-			eerror "Groupid given but is not greater than 0 !"
+			eerror "Groupid given but is not greater than 0!"
 			die "${egid} is not a valid GID"
 		fi
 	else
@@ -267,6 +303,10 @@ enewgroup() {
 		egid="next available"
 	fi
 	elog " - Groupid: ${egid}"
+
+	# handle different ROOT
+	local opts
+	[[ -n ${ROOT} ]] && opts=( --prefix "${ROOT}" )
 
 	# handle extra
 	if [[ $# -gt 0 ]] ; then
@@ -288,24 +328,29 @@ enewgroup() {
 	case ${CHOST} in
 	*-freebsd*|*-dragonfly*)
 		_enewgroup_next_gid
-		pw groupadd "${egroup}" -g ${egid} || die
+		pw groupadd "${opts[@]}" "${egroup}" -g ${egid} || die
 		;;
 
 	*-netbsd*)
-		_enewgroup_next_gid
-		groupadd -g ${egid} "${egroup}" || die
+		if [[ -n "${ROOT}" ]]; then
+			ewarn "NetBSD's usermod does not support --prefix <dir> option."
+			ewarn "Please use: \"groupadd -g ${egid} ${opts[@]} ${egroup}\" in a chroot"
+		else
+			_enewgroup_next_gid
+			groupadd -g ${egid} "${opts[@]}" "${egroup}" || die
+		fi
 		;;
 
 	*)
-		local opts
 		if [[ ${egid} == *[!0-9]* ]] ; then
 			# Non numeric; let groupadd figure out a GID for us
-			opts=""
+			#
+			true # Do nothing but keep the previous comment.
 		else
-			opts="-g ${egid}"
+			opts+=( -g ${egid} )
 		fi
 		# We specify -r so that we get a GID in the system range from login.defs
-		groupadd -r ${opts} "${egroup}" || die
+		groupadd -r "${opts[@]}" "${egroup}" || die
 		;;
 	esac
 }
@@ -320,12 +365,12 @@ enewgroup() {
 # If the new home directory does not exist, it is created.
 # Any previously existing home directory is NOT moved.
 esethome() {
-	_assert_pkg_ebuild_phase ${FUNCNAME}
+	_user_assert_pkg_phase ${FUNCNAME}
 
 	# get the username
-	local euser=$1; shift
+	local euser=${1}; shift
 	if [[ -z ${euser} ]] ; then
-		eerror "No username specified !"
+		eerror "No username specified!"
 		die "Cannot call esethome without a username"
 	fi
 
@@ -335,10 +380,14 @@ esethome() {
 		return 1
 	fi
 
+	# Handle different ROOT
+	local opts
+	[[ -n ${ROOT} ]] && opts=( --prefix "${ROOT}" )
+
 	# handle homedir
-	local ehome=$1; shift
+	local ehome=${1}; shift
 	if [[ -z ${ehome} ]] ; then
-		eerror "No home directory specified !"
+		eerror "No home directory specified!"
 		die "Cannot call esethome without a home directory or '-1'"
 	fi
 
@@ -365,15 +414,28 @@ esethome() {
 	# update the home directory
 	case ${CHOST} in
 	*-freebsd*|*-dragonfly*)
-		pw usermod "${euser}" -d "${ehome}" && return 0
+		pw usermod "${opts[@]}" "${euser}" -d "${ehome}" && return 0
 		[[ $? == 8 ]] && eerror "${euser} is in use, cannot update home"
 		eerror "There was an error when attempting to update the home directory for ${euser}"
 		eerror "Please update it manually on your system:"
 		eerror "\t pw usermod \"${euser}\" -d \"${ehome}\""
 		;;
 
+	*-netbsd*)
+		if [[ -n "${ROOT}" ]]; then
+			ewarn "NetBSD's usermod does not support --prefix <dir> option."
+			ewarn "Please use: \"usermod ${opts[@]} -d ${ehome} ${euser}\" in a chroot"
+		else
+			usermod "${opts[@]}" -d "${ehome}" "${euser}" && return 0
+			[[ $? == 8 ]] && eerror "${euser} is in use, cannot update home"
+			eerror "There was an error when attempting to update the home directory for ${euser}"
+			eerror "Please update it manually on your system (as root):"
+			eerror "\t usermod -d \"${ehome}\" \"${euser}\""
+		fi
+		;;
+
 	*)
-		usermod -d "${ehome}" "${euser}" && return 0
+		usermod "${opts[@]}" -d "${ehome}" "${euser}" && return 0
 		[[ $? == 8 ]] && eerror "${euser} is in use, cannot update home"
 		eerror "There was an error when attempting to update the home directory for ${euser}"
 		eerror "Please update it manually on your system (as root):"
@@ -389,12 +451,12 @@ esethome() {
 # Required parameters is the username and the new shell.
 # Specify -1 if you want to set shell to platform-specific nologin.
 esetshell() {
-	_assert_pkg_ebuild_phase ${FUNCNAME}
+	_user_assert_pkg_phase ${FUNCNAME}
 
 	# get the username
-	local euser=$1; shift
+	local euser=${1}; shift
 	if [[ -z ${euser} ]] ; then
-		eerror "No username specified !"
+		eerror "No username specified!"
 		die "Cannot call esetshell without a username"
 	fi
 
@@ -404,10 +466,14 @@ esetshell() {
 		return 1
 	fi
 
+	# Handle different ROOT
+	local opts
+	[[ -n ${ROOT} ]] && opts=( --prefix "${ROOT}" )
+
 	# handle shell
-	local eshell=$1; shift
+	local eshell=${1}; shift
 	if [[ -z ${eshell} ]] ; then
-		eerror "No shell specified !"
+		eerror "No shell specified!"
 		die "Cannot call esetshell without a shell or '-1'"
 	fi
 
@@ -426,15 +492,28 @@ esetshell() {
 	# update the shell
 	case ${CHOST} in
 	*-freebsd*|*-dragonfly*)
-		pw usermod "${euser}" -s "${eshell}" && return 0
+		pw usermod "${opts[@]}" "${euser}" -s "${eshell}" && return 0
 		[[ $? == 8 ]] && eerror "${euser} is in use, cannot update shell"
 		eerror "There was an error when attempting to update the shell for ${euser}"
 		eerror "Please update it manually on your system:"
 		eerror "\t pw usermod \"${euser}\" -s \"${eshell}\""
 		;;
 
+	*-netbsd*)
+		if [[ -n "${ROOT}" ]]; then
+			ewarn "NetBSD's usermod does not support --prefix <dir> option."
+			ewarn "Please use: \"usermod ${opts[@]} -s ${eshell} ${euser}\" in a chroot"
+		else
+			usermod "${opts[@]}" -s "${eshell}" "${euser}" && return 0
+			[[ $? == 8 ]] && eerror "${euser} is in use, cannot update shell"
+			eerror "There was an error when attempting to update the shell for ${euser}"
+			eerror "Please update it manually on your system (as root):"
+			eerror "\t usermod -s \"${eshell}\" \"${euser}\""
+		fi
+		;;
+
 	*)
-		usermod -s "${eshell}" "${euser}" && return 0
+		usermod "${opts[@]}" -s "${eshell}" "${euser}" && return 0
 		[[ $? == 8 ]] && eerror "${euser} is in use, cannot update shell"
 		eerror "There was an error when attempting to update the shell for ${euser}"
 		eerror "Please update it manually on your system (as root):"
@@ -449,12 +528,12 @@ esetshell() {
 # Update the comment field in a platform-agnostic way.
 # Required parameters is the username and the new comment.
 esetcomment() {
-	_assert_pkg_ebuild_phase ${FUNCNAME}
+	_user_assert_pkg_phase ${FUNCNAME}
 
 	# get the username
-	local euser=$1; shift
+	local euser=${1}; shift
 	if [[ -z ${euser} ]] ; then
-		eerror "No username specified !"
+		eerror "No username specified!"
 		die "Cannot call esetcomment without a username"
 	fi
 
@@ -464,10 +543,14 @@ esetcomment() {
 		return 1
 	fi
 
+	# Handle different ROOT
+	local opts
+	[[ -n ${ROOT} ]] && opts=( --prefix "${ROOT}" )
+
 	# handle comment
-	local ecomment=$1; shift
+	local ecomment=${1}; shift
 	if [[ -z ${ecomment} ]] ; then
-		eerror "No comment specified !"
+		eerror "No comment specified!"
 		die "Cannot call esetcomment without a comment"
 	fi
 
@@ -482,15 +565,28 @@ esetcomment() {
 	# update the comment
 	case ${CHOST} in
 	*-freebsd*|*-dragonfly*)
-		pw usermod "${euser}" -c "${ecomment}" && return 0
+		pw usermod "${opts[@]}" "${euser}" -c "${ecomment}" && return 0
 		[[ $? == 8 ]] && eerror "${euser} is in use, cannot update comment"
 		eerror "There was an error when attempting to update the comment for ${euser}"
 		eerror "Please update it manually on your system:"
 		eerror "\t pw usermod \"${euser}\" -c \"${ecomment}\""
 		;;
 
+	*-netbsd*)
+		if [[ -n "${ROOT}" ]]; then
+			ewarn "NetBSD's usermod does not support --prefix <dir> option."
+			ewarn "Please use: \"usermod ${opts[@]} -c ${ecomment} ${euser}\" in a chroot"
+		else
+			usermod "${opts[@]}" -c "${ecomment}" "${euser}" && return 0
+			[[ $? == 8 ]] && eerror "${euser} is in use, cannot update shell"
+			eerror "There was an error when attempting to update the shell for ${euser}"
+			eerror "Please update it manually on your system (as root):"
+			eerror "\t usermod -s \"${eshell}\" \"${euser}\""
+		fi
+		;;
+
 	*)
-		usermod -c "${ecomment}" "${euser}" && return 0
+		usermod "${opts[@]}" -c "${ecomment}" "${euser}" && return 0
 		[[ $? == 8 ]] && eerror "${euser} is in use, cannot update comment"
 		eerror "There was an error when attempting to update the comment for ${euser}"
 		eerror "Please update it manually on your system (as root):"
@@ -506,12 +602,12 @@ esetcomment() {
 # Required parameters is the username and the new list of groups,
 # primary group first.
 esetgroups() {
-	_assert_pkg_ebuild_phase ${FUNCNAME}
+	_user_assert_pkg_phase ${FUNCNAME}
 
 	[[ ${#} -eq 2 ]] || die "Usage: ${FUNCNAME} <user> <groups>"
 
 	# get the username
-	local euser=$1; shift
+	local euser=${1}; shift
 
 	# lets see if the username already exists
 	if [[ -z $(egetent passwd "${euser}") ]] ; then
@@ -520,7 +616,7 @@ esetgroups() {
 	fi
 
 	# handle group
-	local egroups=$1; shift
+	local egroups=${1}; shift
 
 	local g egroups_arr=()
 	IFS="," read -r -a egroups_arr <<<"${egroups}"
@@ -549,6 +645,9 @@ esetgroups() {
 	elog "Updating groups for user '${euser}' ..."
 	elog " - Groups: ${egroups}"
 
+	# Handle different ROOT
+	[[ -n ${ROOT} ]] && opts+=( --prefix "${ROOT}" )
+
 	# update the group
 	case ${CHOST} in
 	*-freebsd*|*-dragonfly*)
@@ -557,6 +656,19 @@ esetgroups() {
 		eerror "There was an error when attempting to update the groups for ${euser}"
 		eerror "Please update it manually on your system:"
 		eerror "\t pw usermod \"${euser}\" ${opts[*]}"
+		;;
+
+	*-netbsd*)
+		if [[ -n "${ROOT}" ]]; then
+			ewarn "NetBSD's usermod does not support --prefix <dir> option."
+			ewarn "Please use: \"usermod ${opts[@]} ${euser}\" in a chroot"
+		else
+			usermod "${opts[@]}" "${euser}" && return 0
+			[[ $? == 8 ]] && eerror "${euser} is in use, cannot update shell"
+			eerror "There was an error when attempting to update the shell for ${euser}"
+			eerror "Please update it manually on your system (as root):"
+			eerror "\t usermod -s \"${eshell}\" \"${euser}\""
+		fi
 		;;
 
 	*)

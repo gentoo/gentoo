@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools flag-o-matic toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/strace/strace.git"
-	inherit git-r3 autotools
+	inherit git-r3
 else
 	SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
@@ -18,16 +18,14 @@ HOMEPAGE="https://strace.io/"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="aio perl static unwind elfutils"
-
+IUSE="aio perl selinux static unwind elfutils"
 REQUIRED_USE="?? ( unwind elfutils )"
 
-BDEPEND="
-	virtual/pkgconfig
-"
+BDEPEND="virtual/pkgconfig"
 LIB_DEPEND="
 	unwind? ( sys-libs/libunwind[static-libs(+)] )
 	elfutils? ( dev-libs/elfutils[static-libs(+)] )
+	selinux? ( sys-libs/libselinux[static-libs(+)] )
 "
 # strace only uses the header from libaio to decode structs
 DEPEND="
@@ -41,7 +39,7 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-5.5-static.patch"
+	"${FILESDIR}/${PN}-5.11-static.patch"
 )
 
 src_prepare() {
@@ -57,12 +55,7 @@ src_prepare() {
 		[[ ! -e CREDITS ]] && cp CREDITS{.in,}
 	fi
 
-	filter-lfs-flags # configure handles this sanely
-
-	export ac_cv_header_libaio_h=$(usex aio)
-	use elibc_musl && export ac_cv_header_stdc=no
-
-	# Stub out the -k test since it's known to be flaky. #545812
+	# Stub out the -k test since it's known to be flaky. bug #545812
 	sed -i '1iexit 77' tests*/strace-k.test || die
 }
 
@@ -75,20 +68,29 @@ src_configure() {
 		export "${v}_FOR_BUILD=${!bv}"
 	done
 
-	# Don't require mpers support on non-multilib systems. #649560
+	filter-lfs-flags # configure handles this sanely
+
+	export ac_cv_header_libaio_h=$(usex aio)
+	use elibc_musl && export ac_cv_header_stdc=no
+
 	local myeconfargs=(
 		--disable-gcc-Werror
+
+		# Don't require mpers support on non-multilib systems. #649560
 		--enable-mpers=check
+
 		$(use_enable static)
 		$(use_with unwind libunwind)
 		$(use_with elfutils libdw)
+		$(use_with selinux libselinux)
 	)
 	econf "${myeconfargs[@]}"
 }
 
 src_test() {
 	if has usersandbox ${FEATURES} ; then
-		ewarn "Test suite is known to fail with FEATURES=usersandbox -- skipping ..." #643044
+		# bug #643044
+		ewarn "Test suite is known to fail with FEATURES=usersandbox -- skipping ..."
 		return 0
 	fi
 
@@ -97,8 +99,10 @@ src_test() {
 
 src_install() {
 	default
-	if ! use perl ; then
-		rm "${ED}"/usr/bin/strace-graph || die
+
+	if use perl ; then
+		exeinto /usr/bin
+		doexe src/strace-graph
 	fi
 	dodoc CREDITS
 }

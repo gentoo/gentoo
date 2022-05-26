@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
-inherit flag-o-matic libtool perl-functions toolchain-funcs multilib
+inherit autotools flag-o-matic libtool perl-functions toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/ImageMagick/ImageMagick.git"
@@ -13,16 +13,15 @@ else
 	MY_PV="$(ver_rs 3 '-')"
 	MY_P="ImageMagick-${MY_PV}"
 	SRC_URI="mirror://imagemagick/${MY_P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="A collection of tools and libraries for many image formats"
 HOMEPAGE="https://www.imagemagick.org/"
 
 LICENSE="imagemagick"
-SLOT="0/7.0.10"
-IUSE="bzip2 corefonts +cxx djvu fftw fontconfig fpx graphviz hdri heif jbig jpeg jpeg2k lcms lqr lzma opencl openexr openmp pango perl png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zlib"
-RESTRICT="!test? ( test )"
+SLOT="0/7.1.0-0"
+IUSE="bzip2 corefonts +cxx djvu fftw fontconfig fpx graphviz hdri heif jbig jpeg jpeg2k lcms lqr lzma opencl openexr openmp pango perl +png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zip zlib"
 
 REQUIRED_USE="corefonts? ( truetype )
 	svg? ( xml )
@@ -41,7 +40,7 @@ RDEPEND="
 	fontconfig? ( media-libs/fontconfig )
 	fpx? ( >=media-libs/libfpx-1.3.0-r1 )
 	graphviz? ( media-gfx/graphviz )
-	heif? ( media-libs/libheif:= )
+	heif? ( media-libs/libheif:=[x265] )
 	jbig? ( >=media-libs/jbigkit-2:= )
 	jpeg? ( virtual/jpeg:0 )
 	jpeg2k? ( >=media-libs/openjpeg-2.1.0:2 )
@@ -73,16 +72,30 @@ RDEPEND="
 		)
 	xml? ( dev-libs/libxml2:= )
 	lzma? ( app-arch/xz-utils )
+	zip? ( dev-libs/libzip:= )
 	zlib? ( sys-libs/zlib:= )"
 
 DEPEND="${RDEPEND}
 	!media-gfx/graphicsmagick[imagemagick]
 	X? ( x11-base/xorg-proto )"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-9999-nocputuning.patch"
+)
+
 S="${WORKDIR}/${MY_P}"
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
 
 src_prepare() {
 	default
+	eautoreconf
 
 	# Apply hardening #664236
 	cp "${FILESDIR}"/policy-hardening.snippet "${S}" || die
@@ -124,9 +137,6 @@ src_configure() {
 	use q8 && depth=8
 	use q32 && depth=32
 
-	local openmp=disable
-	use openmp && { tc-has-openmp && openmp=enable; }
-
 	use perl && perl_check_env
 
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lnsl -lsocket
@@ -135,6 +145,7 @@ src_configure() {
 		$(use_enable static-libs static)
 		$(use_enable hdri)
 		$(use_enable opencl)
+		$(use_enable openmp)
 		--with-threads
 		--with-modules
 		--with-quantum-depth=${depth}
@@ -144,6 +155,7 @@ src_configure() {
 		--with-gs-font-dir="${EPREFIX}"/usr/share/fonts/urw-fonts
 		$(use_with bzip2 bzlib)
 		$(use_with X x)
+		$(use_with zip)
 		$(use_with zlib)
 		--without-autotrace
 		$(use_with postscript dps)
@@ -173,8 +185,6 @@ src_configure() {
 		$(use_with corefonts windows-font-dir "${EPREFIX}"/usr/share/fonts/corefonts)
 		$(use_with wmf)
 		$(use_with xml)
-		--${openmp}-openmp
-		--with-gcc-arch=no-automagic
 	)
 	CONFIG_SHELL=$(type -P bash) econf "${myeconfargs[@]}"
 }
@@ -220,11 +230,11 @@ src_install() {
 
 	find "${ED}" -name '*.la' -exec sed -i -e "/^dependency_libs/s:=.*:='':" {} +
 	# .la files in parent are not needed, keep plugin .la files
-	rm "${ED}"/usr/$(get_libdir)/*.la || die
+	find "${ED}"/usr/$(get_libdir)/ -maxdepth 1 -name "*.la" -delete || die
 
 	if use opencl; then
 		cat <<-EOF > "${T}"/99${PN}
-		SANDBOX_PREDICT="/dev/nvidiactl:/dev/nvidia-uvm:/dev/ati/card:/dev/dri/card:/dev/dri/renderD128"
+		SANDBOX_PREDICT="/dev/nvidiactl:/dev/nvidia-uvm:/dev/ati/card:/dev/dri/card:/dev/dri/card0:/dev/dri/renderD128"
 		EOF
 
 		insinto /etc/sandbox.d

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!--maintainer-needed-->
+	<use>
+		<flag name="gtk4">Use <pkg>gui-libs/gtk</pkg> for GUI support.</flag>
+	</use>
 	<upstream>
 		<remote-id type="sourceforge">sstp-client</remote-id>
 	</upstream>

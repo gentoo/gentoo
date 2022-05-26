@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+EAPI=8
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 CMAKE_BUILD_TYPE="None"
 inherit cmake python-single-r1 virtualx xdg-utils desktop
@@ -16,10 +16,9 @@ if [[ ${PV} =~ "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/gnuradio/gnuradio.git"
 	EGIT_BRANCH="maint-3.8"
 	inherit git-r3
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/gnuradio/gnuradio/releases/download/v${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~arm ~riscv ~x86"
 fi
 
 IUSE="+audio +alsa +analog +digital channels doc dtv examples fec +filter grc jack modtool oss performance-counters portaudio +qt5 sdl test trellis uhd vocoder +utils wavelet zeromq"
@@ -48,14 +47,14 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-libs/boost:0=[python,${PYTHON_USEDEP}]')
-	dev-libs/log4cpp
+	dev-libs/log4cpp:=
 	$(python_gen_cond_dep 'dev-python/six[${PYTHON_USEDEP}]')
 	sci-libs/fftw:3.0=
-	sci-libs/mpir
-	sci-libs/volk
+	sci-libs/mpir:=
+	sci-libs/volk:=
 	alsa? ( media-libs/alsa-lib:= )
 	fec? (
-		sci-libs/gsl
+		sci-libs/gsl:=
 		dev-python/scipy
 	)
 	filter? ( dev-python/scipy )
@@ -91,11 +90,12 @@ RDEPEND="${PYTHON_DEPS}
 		media-sound/gsm
 		>=media-libs/codec2-0.8.1
 	)
-	wavelet? ( sci-libs/gsl
-			dev-libs/gmp
-			sci-libs/lapack
-			)
-	zeromq? ( >=net-libs/zeromq-2.1.11 )
+	wavelet? (
+		sci-libs/gsl:=
+		dev-libs/gmp:=
+		sci-libs/lapack
+	)
+	zeromq? ( >=net-libs/zeromq-2.1.11:= )
 "
 
 #That's right, it can't build if gnuradio 3.7 is installed
@@ -199,13 +199,11 @@ src_install() {
 	python_optimize
 }
 
-src_test()
-{
+src_test() {
 	virtx cmake_src_test
 }
 
-pkg_postinst()
-{
+pkg_postinst() {
 	if use grc ; then
 		xdg_desktop_database_update
 		xdg_icon_cache_update
@@ -213,8 +211,7 @@ pkg_postinst()
 	fi
 }
 
-pkg_postrm()
-{
+pkg_postrm() {
 	if use grc ; then
 		xdg_desktop_database_update
 		xdg_icon_cache_update

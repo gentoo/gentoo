@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,15 +10,13 @@ SRC_URI="http://opti.recherche.enac.fr/facile/distrib/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 
-KEYWORDS="~alpha amd64 arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 arm64 ~hppa ~ia64 ~ppc ppc64 x86"
 IUSE="+ocamlopt"
 
 RDEPEND=">=dev-lang/ocaml-4:=[ocamlopt?]"
 DEPEND="${RDEPEND}
 	sys-apps/sed
 "
-
-DOCS=( README )
 
 PATCHES=( "${FILESDIR}/${PN}"-1.1-make.patch ) # Fix building on FreeBSD
 
@@ -35,11 +33,14 @@ src_prepare() {
 			-e 's:^.*facile\.cmxa::'\
 			-e 's:^.*facile\.a::' Makefile || die "failed to remove native code objects"
 	fi
+	sed -i \
+		-e 's|$(FACILE|$(DESTDIR)$(FACILE|g' \
+		Makefile || die
 }
 
 src_configure() {
 	# This is a custom configure script and it does not support standard options
-	./configure --faciledir "${D}"$(ocamlc -where)/facile/ || die
+	./configure || die
 }
 
 src_test() {
@@ -48,6 +49,5 @@ src_test() {
 
 src_install() {
 	dodir $(ocamlc -where)
-	emake install
-	einstalldocs
+	default
 }

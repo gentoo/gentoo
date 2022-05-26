@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PLOCALES="ar cs de en es et fr hr hu id_ID it ja nl pl pt_BR pt ru sk sv uk vi zh_CN zh_TW"
-inherit l10n qmake-utils xdg-utils
+PLOCALES="cs de en es fi fr hr hu id_ID it ja nl pl pt_BR ru sv uk zh_TW"
+inherit flag-o-matic plocale qmake-utils xdg-utils
 
 if [[ ${PV} != *9999 ]] ; then
 	SRC_URI="https://github.com/openstreetmap/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
@@ -59,8 +59,8 @@ src_prepare() {
 		rm "translations/${PN}_${1}.ts" || die
 	}
 
-	if [[ -n "$(l10n_get_locales)" ]]; then
-		l10n_for_each_disabled_locale_do my_rm_loc
+	if [[ -n "$(plocale_get_locales)" ]]; then
+		plocale_for_each_disabled_locale my_rm_loc
 		$(qt5_get_bindir)/lrelease src/src.pro || die
 	fi
 
@@ -71,6 +71,11 @@ src_prepare() {
 }
 
 src_configure() {
+	if has_version "<sci-libs/proj-8.0.0" ; then
+		# bug #685234
+		append-cppflags -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H
+	fi
+
 	# TRANSDIR_SYSTEM is for bug #385671
 	local myeqmakeargs=(
 		PREFIX="${ED}/usr"

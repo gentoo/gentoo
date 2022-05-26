@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~gyakovlev/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ppc64 x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ppc64 ~riscv x86 ~amd64-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 BDEPEND="
@@ -28,7 +28,7 @@ src_install() {
 	exeinto /etc/ca-certificates/update.d
 	newexe - java-cacerts <<-_EOF_
 		#!/bin/sh
-		exec trust extract --overwrite --format=java-cacerts --filter=ca-anchors --purpose server-auth "${EROOT}"/etc/ssl/certs/java/cacerts
+		exec trust extract --overwrite --format=java-cacerts --filter=ca-anchors --purpose server-auth "${EPREFIX}/etc/ssl/certs/java/cacerts"
 	_EOF_
 }
 
@@ -44,6 +44,6 @@ pkg_postinst() {
 	# so jdk ebuilds can create symlink to in into security directory
 	if [[ ! -f "${EROOT}"/etc/ssl/certs/java/cacerts ]]; then
 		einfo "Generating java cacerts file from system ca-certificates"
-		"${EROOT}"/etc/ca-certificates/update.d/java-cacerts || die
+		trust extract --overwrite --format=java-cacerts --filter=ca-anchors --purpose server-auth "${EROOT}/etc/ssl/certs/java/cacerts" || die
 	fi
 }

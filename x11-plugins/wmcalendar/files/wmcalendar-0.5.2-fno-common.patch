@@ -1,6 +1,5 @@
-diff -Naur Src.orig/calendar.c Src/calendar.c
---- Src.orig/calendar.c	2007-01-15 01:14:32.000000000 +0100
-+++ Src/calendar.c	2020-03-29 13:25:39.390760510 +0200
+--- a/calendar.c
++++ b/calendar.c
 @@ -1,5 +1,10 @@
  #include "calendar.h"
  
@@ -12,9 +11,8 @@ diff -Naur Src.orig/calendar.c Src/calendar.c
  int  get_datetype(int day){return datetype[day][0];}
  
  /*------------------------------------------------------
-diff -Naur Src.orig/calendarfunc.c Src/calendarfunc.c
---- Src.orig/calendarfunc.c	2003-07-13 16:41:02.000000000 +0200
-+++ Src/calendarfunc.c	2020-03-29 13:24:07.630789052 +0200
+--- a/calendarfunc.c
++++ b/calendarfunc.c
 @@ -24,6 +24,7 @@
  #include <stdio.h>
  
@@ -23,9 +21,8 @@ diff -Naur Src.orig/calendarfunc.c Src/calendarfunc.c
  
  long persian_jdn(struct icaltimetype dt)
  {
-diff -Naur Src.orig/calendarfunc.h Src/calendarfunc.h
---- Src.orig/calendarfunc.h	2003-07-15 17:19:43.000000000 +0200
-+++ Src/calendarfunc.h	2020-03-29 13:23:23.468802848 +0200
+--- a/calendarfunc.h
++++ b/calendarfunc.h
 @@ -70,5 +70,5 @@
  
  int Ceil(float number);
@@ -33,9 +30,8 @@ diff -Naur Src.orig/calendarfunc.h Src/calendarfunc.h
 -int     datemoon[200][2];   /* hashtable for moonphase.[jdn%32][0] stores moonphase of day jdn, 
 +extern int     datemoon[200][2];   /* hashtable for moonphase.[jdn%32][0] stores moonphase of day jdn, 
  			    [jdn%32][1] stores jdn. */
-diff -Naur Src.orig/calendar.h Src/calendar.h
---- Src.orig/calendar.h	2007-01-15 01:13:50.000000000 +0100
-+++ Src/calendar.h	2020-03-29 13:25:57.657754851 +0200
+--- a/calendar.h
++++ b/calendar.h
 @@ -5,10 +5,10 @@
  #include <sys/stat.h>
  
@@ -51,9 +47,8 @@ diff -Naur Src.orig/calendar.h Src/calendar.h
  				 [jdn%32][1] stores jdn. */
  struct calobj{
      struct icaltimetype start;
-diff -Naur Src.orig/settings.c Src/settings.c
---- Src.orig/settings.c	2003-07-15 17:22:51.000000000 +0200
-+++ Src/settings.c	2020-03-29 13:26:31.673744323 +0200
+--- a/settings.c
++++ b/settings.c
 @@ -1,4 +1,14 @@
  #include "settings.h"
 +
@@ -69,9 +64,8 @@ diff -Naur Src.orig/settings.c Src/settings.c
  void set_lang(int language){lang = language;}
  void setAppicon(int app){appicon = app;}
  void enter_callback( GtkWidget *widget, GtkWidget *entry ){ 
-diff -Naur Src.orig/settings.h Src/settings.h
---- Src.orig/settings.h	2006-09-15 11:56:12.000000000 +0200
-+++ Src/settings.h	2020-03-29 13:26:37.732742450 +0200
+--- a/settings.h
++++ b/settings.h
 @@ -7,14 +7,14 @@
  
  

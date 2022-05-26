@@ -1,0 +1,17 @@
+--- a/unsupported/test/forward_adolc.cpp
++++ b/unsupported/test/forward_adolc.cpp
+@@ -7,12 +7,13 @@
+ // Public License v. 2.0. If a copy of the MPL was not distributed
+ // with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+-#include "main.h"
+ #include <Eigen/Dense>
+ 
+ #define NUMBER_DIRECTIONS 16
+ #include <unsupported/Eigen/AdolcForward>
+ 
++#include "main.h"
++
+ template<typename Vector>
+ EIGEN_DONT_INLINE typename Vector::Scalar foo(const Vector& p)
+ {
