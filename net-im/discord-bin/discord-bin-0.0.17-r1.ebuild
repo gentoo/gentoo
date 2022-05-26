@@ -58,7 +58,7 @@ RESTRICT="bindist mirror strip test"
 DESTDIR="/opt/${MY_PN}"
 
 QA_PREBUILT="
-	${DESTDIR#/}/${MY_PN}
+	${DESTDIR#/}/${MY_PN^}
 	${DESTDIR#/}/chrome-sandbox
 	${DESTDIR#/}/libffmpeg.so
 	${DESTDIR#/}/libvk_swiftshader.so
