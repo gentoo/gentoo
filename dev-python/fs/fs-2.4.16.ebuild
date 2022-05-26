@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1 optfeature
 
 DESCRIPTION="Filesystem abstraction layer"
@@ -33,7 +33,7 @@ BDEPEND="
 	)
 "
 
-distutils_enable_sphinx docs/source dev-python/sphinx_rtd_theme
+distutils_enable_sphinx docs/source dev-python/sphinx_rtd_theme dev-python/recommonmark
 distutils_enable_tests pytest
 
 python_test() {
