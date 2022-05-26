@@ -9,6 +9,6 @@
 		<flag name="unac">Removing accents and ligatures before search</flag>
 	</use>
 	<upstream>
-		<remote-id type="gitlab">pdfgrep</remote-id>
+		<remote-id type="gitlab">pdfgrep/pdfgrep</remote-id>
 	</upstream>
 </pkgmetadata>
