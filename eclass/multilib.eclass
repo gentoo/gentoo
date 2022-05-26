@@ -4,14 +4,13 @@
 # @ECLASS: multilib.eclass
 # @MAINTAINER:
 # toolchain@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: This eclass is for all functions pertaining to handling multilib configurations.
 # @DESCRIPTION:
 # This eclass is for all functions pertaining to handling multilib configurations.
 
-case ${EAPI:-0} in
-	# EAPI=0 is still used by crossdev, bug #797367
-	0|5|6|7|8) ;;
+case ${EAPI} in
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -39,32 +38,6 @@ export KERNEL_ABI=${KERNEL_ABI:-${DEFAULT_ABI}}
 has_multilib_profile() {
 	[ -n "${MULTILIB_ABIS}" -a "${MULTILIB_ABIS}" != "${MULTILIB_ABIS/ /}" ]
 }
-
-# @FUNCTION: get_libdir
-# @RETURN: the libdir for the selected ABI
-# @DESCRIPTION:
-# This function simply returns the desired lib directory. With portage
-# 2.0.51, we now have support for installing libraries to lib32/lib64
-# to accomidate the needs of multilib systems. It's no longer a good idea
-# to assume all libraries will end up in lib. Replace any (sane) instances
-# where lib is named directly with $(get_libdir) if possible.
-#
-# Jeremy Huddleston <eradicator@gentoo.org> (23 Dec 2004):
-#   Added support for ${ABI} and ${DEFAULT_ABI}.  If they're both not set,
-#   fall back on old behavior.  Any profile that has these set should also
-#   depend on a newer version of portage (not yet released) which uses these
-#   over CONF_LIBDIR in econf, dolib, etc...
-if [[ ${EAPI} == [05] ]] ; then
-	get_libdir() {
-		local CONF_LIBDIR
-		if [ -n  "${CONF_LIBDIR_OVERRIDE}" ] ; then
-			# if there is an override, we want to use that... always.
-			echo ${CONF_LIBDIR_OVERRIDE}
-		else
-			get_abi_LIBDIR
-		fi
-	}
-fi
 
 # @FUNCTION: get_abi_var
 # @USAGE: <VAR> [ABI]
