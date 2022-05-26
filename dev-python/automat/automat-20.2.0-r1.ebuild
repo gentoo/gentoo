@@ -39,6 +39,12 @@ EPYTEST_IGNORE=(
 	benchmark
 )
 
+src_prepare() {
+	# strip m2r dep
+	sed -i -e "/'m2r'/d" setup.py || die
+	distutils-r1_src_prepare
+}
+
 python_install_all() {
 	if use examples; then
 		docinto examples

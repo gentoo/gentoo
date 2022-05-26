@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
 MY_PN="A${PN:1}"
@@ -40,6 +40,8 @@ python_prepare_all() {
 	# avoid a setuptools_scm dependency
 	sed -r -i "s:use_scm_version=True:version='${PV}': ;
 		s:[\"']setuptools[_-]scm[\"'](,|)::" setup.py || die
+	# strip m2r dep
+	sed -i -e "/'m2r'/d" setup.py || die
 
 	distutils-r1_python_prepare_all
 }
