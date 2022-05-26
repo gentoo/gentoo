@@ -30,41 +30,10 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-# @FUNCTION: emktemp
-# @USAGE: [temp dir]
-# @DESCRIPTION:
-# Cheap replacement for when coreutils (and thus mktemp) does not exist
-# on the user's system.
 emktemp() {
-	eqawarn "emktemp is deprecated. Create a temporary file in \${T} instead."
-
-	local exe="touch"
-	[[ $1 == -d ]] && exe="mkdir" && shift
-	local topdir=$1
-
-	if [[ -z ${topdir} ]] ; then
-		[[ -z ${T} ]] \
-			&& topdir="/tmp" \
-			|| topdir=${T}
-	fi
-
-	if ! type -P mktemp > /dev/null ; then
-		# system lacks `mktemp` so we have to fake it
-		local tmp=/
-		while [[ -e ${tmp} ]] ; do
-			tmp=${topdir}/tmp.${RANDOM}.${RANDOM}.${RANDOM}
-		done
-		${exe} "${tmp}" || ${exe} -p "${tmp}"
-		echo "${tmp}"
-	else
-		# the args here will give slightly wierd names on BSD,
-		# but should produce a usable file on all userlands
-		if [[ ${exe} == "touch" ]] ; then
-			TMPDIR="${topdir}" mktemp -t tmp.XXXXXXXXXX
-		else
-			TMPDIR="${topdir}" mktemp -dt tmp.XXXXXXXXXX
-		fi
-	fi
+	eerror "emktemp has been removed."
+	eerror "Create a temporary file in \${T} instead."
+	die "emktemp is banned"
 }
 
 path_exists() {
