@@ -46,3 +46,7 @@ src_install() {
 	udev_dorules heimdall/60-heimdall.rules
 	dodoc README.md Linux/README
 }
+
+pkg_postinst() {
+	udev_reload
+}
