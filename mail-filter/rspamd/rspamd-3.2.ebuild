@@ -53,9 +53,8 @@ RDEPEND="${LUA_DEPS}
 	jemalloc? ( dev-libs/jemalloc:= )
 	selinux? ( sec-policy/selinux-spamassassin )
 "
-# This version is also affected with bug #830624
 DEPEND="${RDEPEND}
-	<dev-cpp/doctest-2.4.7
+	dev-cpp/doctest
 "
 BDEPEND="
 	dev-util/ragel
