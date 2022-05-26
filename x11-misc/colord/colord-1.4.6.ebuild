@@ -4,7 +4,7 @@
 EAPI=7
 VALA_USE_DEPEND="vapigen"
 
-inherit bash-completion-r1 meson-multilib tmpfiles vala
+inherit bash-completion-r1 meson-multilib tmpfiles udev vala
 
 DESCRIPTION="System service to accurately color manage input and output devices"
 HOMEPAGE="https://www.freedesktop.org/software/colord/"
@@ -114,5 +114,6 @@ multilib_src_install_all() {
 }
 
 pkg_postinst() {
+	udev_reload
 	tmpfiles_process colord.conf
 }
