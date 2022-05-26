@@ -33,6 +33,7 @@ IUSE="debug deep-sky doc gps media nls stars telescope test webengine"
 # Python interpreter is used while building RemoteControl plugin
 BDEPEND="
 	${PYTHON_DEPS}
+	dev-lang/perl
 	doc? ( app-doc/doxygen[dot] )
 	nls? ( dev-qt/linguist-tools:5 )
 "
