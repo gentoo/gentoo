@@ -6,6 +6,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Miezhiko <miezhiko@gmail.org> (2022-05-26)
+# miri will fail to build with 1.61.0 release
+# it's not supported to work with releases but sometimes it works
+# could be patched or just ignored on this release
+=dev-lang/rust-1.61.0* miri
+
 # Michał Górny <mgorny@gentoo.org> (2022-05-25)
 # dev-python/sphinxcontrib-openapi is masked for removal.
 dev-python/jupyter_server doc
