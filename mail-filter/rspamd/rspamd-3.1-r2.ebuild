@@ -54,7 +54,7 @@ RDEPEND="${LUA_DEPS}
 	selinux? ( sec-policy/selinux-spamassassin )"
 DEPEND="
 	${RDEPEND}
-	<dev-cpp/doctest-2.4.7"
+	dev-cpp/doctest"
 BDEPEND="
 	dev-util/ragel
 	virtual/pkgconfig
