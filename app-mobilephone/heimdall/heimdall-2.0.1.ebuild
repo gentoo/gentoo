@@ -7,7 +7,7 @@ inherit cmake udev
 
 if [[ ${PV} != 9999 ]]; then
 	SRC_URI="https://git.sr.ht/~grimler/Heimdall/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm64"
+	KEYWORDS="~amd64 ~arm64"
 	S="${WORKDIR}/Heimdall-v${PV}"
 else
 	inherit git-r3
