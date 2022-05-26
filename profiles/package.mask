@@ -459,22 +459,9 @@ dev-ml/core_bench:0/0.15
 dev-ml/patience_diff:0/0.15
 dev-util/patdiff:0/0.15
 
-# Hans de Graaff <graaff@gentoo.org> (2022-04-23)
-# Obsolete slots that are no longer used by current
-# dev-ruby/rqrcode versions and has no use on its own.
-# Masked for removal in 30 days.
-dev-ruby/rqrcode_core:0
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-22)
 # Unused java library. Removal on 2022-05-24.
 dev-java/jgraph
-
-# Hans de Graaff <graaff@gentoo.org> (2022-04-22)
-# Obsolete slots that are no longer used by current
-# dev-ruby/simplecov versions and have no use on their own.
-# Masked for removal in 30 days.
-dev-ruby/simplecov-html:0.10
-dev-ruby/simplecov-html:0.11
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-19)
 # Release of the source-based ebuild is from 2014. At the moment
@@ -507,14 +494,6 @@ sys-cluster/singularity
 # Earlier versions are still safe as long as you do not use git commands
 # on a local repository controlled by a user you do not trust.
 >=dev-vcs/git-2.35.2
-
-# Hans de Graaff <graaff@gentoo.org> (2022-04-12)
-# dev-ruby/nokogumbo is now part of dev-ruby/nokogiri and nokogiri
-# versions still supporting a separate nokogumbo have known security
-# issues. nokogumbo's only reverse dependency is dev-ruby/sanitize:5,
-# but a newer slot is available.
-dev-ruby/nokogumbo
-dev-ruby/sanitize:5
 
 # David Seifert <soap@gentoo.org> (2022-04-06)
 # Unsupported branches, no consumers left, removal on 2023-01-01.
