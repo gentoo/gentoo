@@ -242,8 +242,22 @@ src_configure() {
 		--enable-install-libiberty
 		# Available from 2.35 on
 		--enable-textrel-check=warning
+
+		# Available from 2.39 on
+		--enable-warn-execstack
+		--enable-warn-rwx-segments
+		# TODO: Available from 2.39+ on but let's try the warning on for a bit
+		# first... (--enable-warn-execstack)
+		# Could put it under USE=hardened?
+		#--enable-default-execstack
+
+		# Things to think about
+		#--enable-deterministic-archives
+
 		# Works better than vapier's patch, bug #808787
 		--enable-new-dtags
+
+		--disable-jansson
 		--disable-werror
 		--with-bugurl="$(toolchain-binutils_bugurl)"
 		--with-pkgversion="$(toolchain-binutils_pkgversion)"
