@@ -8,7 +8,7 @@ EAPI=7
 # any of these modules:
 CMAKE_REMOVE_MODULES_LIST=""
 
-inherit cmake flag-o-matic multilib
+inherit cmake flag-o-matic
 
 DESCRIPTION="Solving partial differential equations with the finite element method"
 HOMEPAGE="https://www.dealii.org/"
@@ -59,7 +59,7 @@ RDEPEND="dev-libs/boost:=
 	)
 	mpi? ( virtual/mpi[cxx] )
 	muparser? ( dev-cpp/muParser )
-	opencascade? ( >=sci-libs/opencascade-7.6.0:= )
+	opencascade? ( sci-libs/opencascade:= )
 	p4est? ( sci-libs/p4est[mpi] )
 	petsc? ( sci-mathematics/petsc[mpi=] )
 	scalapack? ( sci-libs/scalapack )
@@ -123,9 +123,8 @@ src_configure() {
 		-DDEAL_II_WITH_TRILINOS="$(usex trilinos)"
 	)
 
-	# Do a little dance for purely cosmetic QA reasons.
 	use opencascade && mycmakeargs+=(
-		-DOPENCASCADE_DIR="${CASROOT}/$(get_libdir)/opencascade"
+		-DCMAKE_PREFIX_PATH="/usr/$(get_libdir)/opencascade"
 	)
 
 	# Do a little dance for purely cosmetic QA reasons. The build system
