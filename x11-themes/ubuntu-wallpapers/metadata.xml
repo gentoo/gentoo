@@ -6,6 +6,6 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="launchpad">ubuntu/+source/ubuntu-wallpapers</remote-id>
+		<remote-id type="launchpad">ubuntu-wallpapers</remote-id>
 	</upstream>
 </pkgmetadata>
