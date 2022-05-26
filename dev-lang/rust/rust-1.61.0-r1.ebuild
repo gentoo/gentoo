@@ -158,6 +158,7 @@ PATCHES=(
 	"${FILESDIR}"/1.61.0-gentoo-musl-target-specs.patch
 	"${FILESDIR}"/1.61.0-llvm_selectInterleaveCount.patch
 	"${FILESDIR}"/1.61.0-llvm_addrspacecast.patch
+	"${FILESDIR}"/1.61.0-miri-cow.patch
 )
 
 S="${WORKDIR}/${MY_P}-src"
