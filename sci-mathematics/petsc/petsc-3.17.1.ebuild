@@ -14,7 +14,7 @@ SRC_URI="http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${P}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="afterimage boost complex-scalars cxx debug fftw
+IUSE="afterimage boost complex-scalars debug fftw
 fortran hdf5 hypre int64 mpi metis mumps scotch superlu threads X"
 
 # readd sparse when suitesparse-5.6.0 is in tree
@@ -30,7 +30,7 @@ RDEPEND="
 	hdf5? ( sci-libs/hdf5[mpi?] )
 	hypre? ( >=sci-libs/hypre-2.18.0[int64?,mpi?] )
 	metis? ( >=sci-libs/parmetis-4 )
-	mpi? ( virtual/mpi[cxx?,fortran?] )
+	mpi? ( virtual/mpi[fortran?] )
 	mumps? ( sci-libs/mumps[mpi?] sci-libs/scalapack )
 	scotch? ( sci-libs/scotch[int64?,mpi?] )
 	superlu? ( >=sci-libs/superlu-5 )
@@ -52,7 +52,7 @@ REQUIRED_USE="
 	afterimage? ( X )
 	complex-scalars? ( !hypre !superlu )
 	hdf5? ( mpi )
-	hypre? ( cxx mpi !superlu )
+	hypre? ( mpi !superlu )
 	mumps? ( mpi scotch )
 	scotch? ( mpi )
 	superlu? ( !hypre )
@@ -112,16 +112,14 @@ src_configure() {
 	# bug 810841
 	addpredict /dev/kfd
 
-	local mylang
 	local myopt
 
-	use cxx && mylang="cxx" || mylang="c"
 	use debug && myopt="debug" || myopt="opt"
 
 	# environmental variables expected by petsc during build
 
 	export PETSC_DIR="${S}"
-	export PETSC_ARCH="linux-gnu-${mylang}-${myopt}"
+	export PETSC_ARCH="linux-gnu-c-${myopt}"
 
 	if use debug; then
 		strip-flags
@@ -147,7 +145,6 @@ src_configure() {
 		RANLIB="${RANLIB}" \
 		--prefix="${EPREFIX}/usr/$(get_libdir)/petsc" \
 		--with-blas-lapack-lib="$($(tc-getPKG_CONFIG) --libs blas lapack)" \
-		--with-clanguage="${mylang}" \
 		--with-cmake:BOOL=1 \
 		--with-gnu-compilers \
 		--with-imagemagick=0 \
@@ -171,7 +168,6 @@ src_configure() {
 		$(petsc_with superlu superlu /usr/include/superlu -lsuperlu) \
 		$(petsc_with scotch ptscotch /usr/include/scotch [-lptesmumps,-lptscotch,-lptscotcherr,-lscotch,-lscotcherr]) \
 		$(petsc_with mumps scalapack /usr/include/scalapack -lscalapack) \
-		$(use cxx && ! use complex-scalars && echo "--with-c-support=1") \
 		$(use fortran && echo "$(petsc_select mpi fc mpif77 $(tc-getF77))") \
 		$(use int64 && echo "--with-index-size=64") \
 		$(use_with boost) \
