@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit elisp
 
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/rejeep/f.el/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 RESTRICT="test"
 
 RDEPEND="app-emacs/dash app-emacs/s"
