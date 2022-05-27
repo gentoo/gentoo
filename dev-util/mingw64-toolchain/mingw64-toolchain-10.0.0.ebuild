@@ -203,8 +203,8 @@ src_compile() {
 		# mostly unused here, so use configure directly
 		eval '
 			local conf=( "${WORKDIR}/${1}"/configure "${conf[@]}" )
-			[[ ${conf_'${id}'@a} ]] && conf+=( "${conf_'${id}'[@]}" )
-			[[ ${2} && ${conf_'${id}_${2}'@a} ]] && conf+=( "${conf_'${id}_${2}'[@]}" )
+			[[ ${conf_'${id}'@a} =~ a ]] && conf+=( "${conf_'${id}'[@]}" )
+			[[ ${2} && ${conf_'${id}_${2}'@a} =~ a ]] && conf+=( "${conf_'${id}_${2}'[@]}" )
 			conf+=( ${EXTRA_ECONF} ${MWT_'${id^^}'_CONF} )
 			[[ ${2} ]] && conf+=( ${MWT_'${1^^}_${2^^}'_CONF} )'
 
