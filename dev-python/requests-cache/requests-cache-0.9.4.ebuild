@@ -11,11 +11,11 @@ inherit distutils-r1 optfeature
 
 HOMEPAGE="
 	https://pypi.org/project/requests-cache/
-	https://github.com/reclosedev/requests-cache/
+	https://github.com/requests-cache/requests-cache/
 "
 DESCRIPTION="Persistent cache for requests library"
 SRC_URI="
-	https://github.com/reclosedev/requests-cache/archive/v${PV}.tar.gz
+	https://github.com/requests-cache/requests-cache/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 
