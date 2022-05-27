@@ -493,6 +493,10 @@ toolchain_pkg_setup() {
 
 	# bug #265283
 	unset LANGUAGES
+
+	# See https://www.gnu.org/software/make/manual/html_node/Parallel-Output.html
+	# Avoid really confusing logs from subconfigure spam
+	MAKEOPTS+=" --output-sync=line"
 }
 
 #---->> src_unpack <<----
