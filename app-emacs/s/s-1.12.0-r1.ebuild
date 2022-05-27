@@ -8,11 +8,15 @@ inherit elisp
 DESCRIPTION="The long lost Emacs string manipulation library"
 HOMEPAGE="https://github.com/magnars/s.el"
 SRC_URI="https://github.com/magnars/s.el/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/s.el-${PV}
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 
-S="${WORKDIR}/s.el-${PV}"
+DOCS=( README.md )
 SITEFILE="50${PN}-gentoo.el"
-DOCS="README.md"
+
+src_test() {
+	sh run-tests.sh || die
+}
