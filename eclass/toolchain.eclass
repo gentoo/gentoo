@@ -1763,7 +1763,7 @@ toolchain_src_install() {
 	done < <(find gcc/include*/ -name '*.h')
 
 	# Do the 'make install' from the build directory
-	S="${WORKDIR}"/build emake -j1 DESTDIR="${D}" install || die
+	S="${WORKDIR}"/build emake DESTDIR="${D}" install || die
 
 	# Punt some tools which are really only useful while building gcc
 	find "${ED}" -name install-tools -prune -type d -exec rm -rf "{}" \;
