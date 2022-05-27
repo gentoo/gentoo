@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit linux-mod toolchain-funcs
 
@@ -30,6 +30,8 @@ DEPEND="
 RDEPEND=""
 
 MODULE_NAMES="bbswitch(acpi)"
+
+PATCHES=( "${FILESDIR}/${PN}-kernel-5.18.patch" )
 
 pkg_setup() {
 	linux-mod_pkg_setup
