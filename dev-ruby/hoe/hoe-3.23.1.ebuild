@@ -47,5 +47,6 @@ all_ruby_compile() {
 }
 
 each_ruby_test() {
-	A="" each_fakegem_test
+	export -n A
+	each_fakegem_test
 }
