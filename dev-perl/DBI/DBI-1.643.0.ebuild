@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=TIMB
 DIST_VERSION=1.643
@@ -19,6 +19,7 @@ RDEPEND="
 	>=dev-perl/PlRPC-0.200.0
 	>=virtual/perl-Sys-Syslog-0.170.0
 	virtual/perl-File-Spec
+	virtual/perl-Scalar-List-Utils
 	!<=dev-perl/SQL-Statement-1.330.0
 "
 BDEPEND="${RDEPEND}
