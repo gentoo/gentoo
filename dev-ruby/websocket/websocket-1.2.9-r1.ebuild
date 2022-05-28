@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/imanel/websocket-ruby"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/rspec-its )"
