@@ -19,6 +19,7 @@ RDEPEND="
 	>=dev-perl/PlRPC-0.200.0
 	>=virtual/perl-Sys-Syslog-0.170.0
 	virtual/perl-File-Spec
+	virtual/perl-File-Temp
 	virtual/perl-Scalar-List-Utils
 	!<=dev-perl/SQL-Statement-1.330.0
 "
