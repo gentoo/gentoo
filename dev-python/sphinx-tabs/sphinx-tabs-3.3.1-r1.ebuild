@@ -9,7 +9,10 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Tabbed views for Sphinx"
-HOMEPAGE="https://github.com/executablebooks/sphinx-tabs"
+HOMEPAGE="
+	https://github.com/executablebooks/sphinx-tabs/
+	https://pypi.org/project/sphinx-tabs/
+"
 SRC_URI="https://github.com/executablebooks/sphinx-tabs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
@@ -18,6 +21,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ppc ppc64 ~riscv ~s390 sparc x
 
 RDEPEND="
 	=dev-python/docutils-0.17*[${PYTHON_USEDEP}]
+	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
 "
 
