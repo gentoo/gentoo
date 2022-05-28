@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit edo toolchain-funcs
+inherit eapi8-dosym edo toolchain-funcs
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/shemminger/iproute2.git"
@@ -58,7 +58,7 @@ src_prepare() {
 
 	# Fix version if necessary
 	local versionfile="include/version.h"
-	if [[ "${PV}" != 9999 ]] && ! grep -Fq "${PV}" ${versionfile} ; then
+	if [[ ${PV} != 9999 ]] && ! grep -Fq "${PV}" ${versionfile} ; then
 		einfo "Fixing version string"
 		sed "s@\"[[:digit:]\.]\+\"@\"${PV}\"@" \
 			-i ${versionfile} || die
@@ -157,10 +157,11 @@ src_install() {
 	dolib.a lib/libnetlink.a
 	insinto /usr/include
 	doins include/libnetlink.h
-	# This local header pulls in a lot of linux headers it
-	# doesn't directly need.  Delete this header that requires
-	# linux-headers-3.8 until that goes stable. # bug #467716
-	sed -i '/linux\/netconf.h/d' "${ED}"/usr/include/libnetlink.h || die
+
+	# Can remove compatibility symlink in a year: 2023-05-28.
+	# bug #547264
+	mv "${ED}"/sbin/ss "${ED}"/bin/ss || die
+	dosym8 -r /bin/ss /sbin/ss
 
 	if use berkdb ; then
 		keepdir /var/lib/arpd
