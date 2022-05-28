@@ -23,13 +23,17 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 
-# TODO: upstream made pyopenssl optional
 RDEPEND="
+	>=dev-python/attrs-19.1.0[${PYTHON_USEDEP}]
+	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/pyasn1[${PYTHON_USEDEP}]
 	dev-python/pyasn1-modules[${PYTHON_USEDEP}]
-	>=dev-python/pyopenssl-0.14[${PYTHON_USEDEP}]
-	>=dev-python/attrs-19.1.0[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
+"
+BDEPEND="
+	test? (
+		dev-python/pyopenssl[${PYTHON_USEDEP}]
+	)
 "
 
 distutils_enable_tests pytest
