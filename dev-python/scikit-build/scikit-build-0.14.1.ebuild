@@ -8,7 +8,10 @@ DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1
 
 DESCRIPTION="Improved build system generator for Python C/C++/Fortran/Cython extensions"
-HOMEPAGE="https://github.com/scikit-build/scikit-build"
+HOMEPAGE="
+	https://github.com/scikit-build/scikit-build/
+	https://pypi.org/project/scikit-build/
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
@@ -18,7 +21,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc 
 RDEPEND="
 	dev-python/distro[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
-	dev-python/wheel[${PYTHON_USEDEP}]"
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/wheel[${PYTHON_USEDEP}]
+"
 
 DEPEND="
 	test? (
@@ -29,7 +34,8 @@ DEPEND="
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
-	)"
+	)
+"
 
 distutils_enable_sphinx docs \
 	dev-python/sphinx_rtd_theme \
