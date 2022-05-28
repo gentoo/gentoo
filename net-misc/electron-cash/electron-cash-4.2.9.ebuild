@@ -17,11 +17,10 @@ SRC_URI="https://github.com/Electron-Cash/Electron-Cash/archive/refs/tags/${PV}.
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="amodem audio_modem cli cosign digitalbitbox email ncurses qrcode +qt5 sync vkb
+IUSE="amodem cli cosign digitalbitbox email ncurses qrcode +qt5 sync vkb
 	l10n_es l10n_ja l10n_pt l10n_zh-CN"
 
 REQUIRED_USE="
-	!audio_modem
 	|| ( cli ncurses qt5 )
 	amodem? ( qt5 )
 	cosign? ( qt5 )
