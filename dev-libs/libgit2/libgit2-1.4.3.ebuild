@@ -35,6 +35,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-test.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
 	# relying on forked http-parser to support some obscure URI form
