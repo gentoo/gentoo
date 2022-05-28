@@ -10,6 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:apple:cups</remote-id>
-		<remote-id type="github">apple/cups</remote-id>
+		<remote-id type="github">OpenPrinting/cups</remote-id>
 	</upstream>
 </pkgmetadata>
