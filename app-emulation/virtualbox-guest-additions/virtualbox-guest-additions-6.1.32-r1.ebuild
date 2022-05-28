@@ -1,7 +1,7 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
 inherit linux-mod systemd toolchain-funcs udev
 
@@ -19,7 +19,7 @@ SRC_URI="https://download.virtualbox.org/virtualbox/${DIR_PV:-${MY_PV}}/${MY_P}.
 LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 [[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="X"
 
 # automount Error: VBoxServiceAutoMountWorker: Group "vboxsf" does not exist
@@ -154,6 +154,8 @@ src_install() {
 	if use X ; then
 		doins VBoxClient
 		fperms 0755 /usr/bin/VBoxClient
+		doins VBoxDRMClient
+		fperms 4755 /usr/bin/VBoxDRMClient
 
 		pushd "${S}"/src/VBox/Additions/x11/Installer &>/dev/null \
 			|| die
