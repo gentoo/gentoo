@@ -18,7 +18,7 @@ HOMEPAGE="https://wiki.linuxfoundation.org/networking/iproute2"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="atm berkdb bpf caps elf +iptables libbsd minimal nis selinux"
+IUSE="atm berkdb bpf caps elf +iptables libbsd minimal nfs selinux split-usr"
 
 # We could make libmnl optional, but it's tiny, so eh
 RDEPEND="
@@ -31,7 +31,7 @@ RDEPEND="
 	elf? ( virtual/libelf:= )
 	iptables? ( >=net-firewall/iptables-1.4.20:= )
 	libbsd? ( dev-libs/libbsd )
-	nis? ( net-libs/libnsl:= )
+	nfs? ( net-libs/libtirpc:= )
 	selinux? ( sys-libs/libselinux )
 "
 # We require newer linux-headers for ipset support (bug #549948) and some defines (bug #553876)
@@ -107,8 +107,42 @@ src_configure() {
 	# Using econf breaks since 5.14.0 (a9c3d70d902a0473ee5c13336317006a52ce8242)
 	edo ./configure --libbpf_force $(usex bpf on off)
 
-	# ...now switch on/off requested features via USE flags
+	# Remove the definitions made by configure and allow them to be overridden
+	# by USE flags below.
+	# We have to do the cheesy only-sed-if-disabled because otherwise
+	# the *_FLAGS etc stuff found by configure will be used but result
+	# in a broken build.
+	if ! use berkdb ; then
+		sed -i -e '/HAVE_BERKELEY_DB/d' config.mk || die
+	fi
+
+	if ! use caps ; then
+		sed -i -e '/HAVE_CAP/d' config.mk || die
+	fi
+
+	if use minimal ; then
+		sed -i -e '/HAVE_MNL/d' config.mk || die
+	fi
+
+	if ! use elf ; then
+		sed -i -e '/HAVE_ELF/d' config.mk || die
+	fi
+
+	if ! use nfs ; then
+		sed -i -e '/HAVE_RPC/d' config.mk || die
+	fi
+
+	if ! use selinux ; then
+		sed -i -e '/HAVE_SELINUX/d' config.mk || die
+	fi
+
+	if ! use libbsd ; then
+		sed -i -e '/HAVE_LIBBSD/d' config.mk || die
+	fi
+
+	# ...Now switch on/off requested features via USE flags
 	# this is only useful if the test did not set other things, per bug #643722
+	# Keep in sync with ifs above, or refactor to be unified.
 	cat <<-EOF >> config.mk
 	TC_CONFIG_ATM := $(usex atm y n)
 	TC_CONFIG_XT  := $(usex iptables y n)
@@ -119,7 +153,7 @@ src_configure() {
 	HAVE_CAP      := $(usex caps y n)
 	HAVE_MNL      := $(usex minimal n y)
 	HAVE_ELF      := $(usex elf y n)
-	HAVE_RPC      := $(usex nis y n)
+	HAVE_RPC      := $(usex nfs y n)
 	HAVE_SELINUX  := $(usex selinux y n)
 	IP_CONFIG_SETNS := ${setns}
 	# Use correct iptables dir, bug #144265, bug #293709
@@ -158,10 +192,12 @@ src_install() {
 	insinto /usr/include
 	doins include/libnetlink.h
 
-	# Can remove compatibility symlink in a year: 2023-05-28.
-	# bug #547264
-	mv "${ED}"/sbin/ss "${ED}"/bin/ss || die
-	dosym8 -r /bin/ss /sbin/ss
+	if use split-usr ; then
+		# Can remove compatibility symlink in a year: 2023-05-28.
+		# bug #547264
+		mv "${ED}"/sbin/ss "${ED}"/bin/ss || die
+		dosym8 -r /bin/ss /sbin/ss
+	fi
 
 	if use berkdb ; then
 		keepdir /var/lib/arpd
