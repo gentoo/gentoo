@@ -56,6 +56,7 @@ media-video/wireplumber system-service
 # runtime crashes. The effect of using USE=custom-cflags globally in make.conf
 # isn't the same as it is for just glibc specifically.
 sys-libs/glibc custom-cflags
+sys-devel/gcc custom-cflags
 
 # Sam James <sam@gentoo.org> (2022-01-12)
 # Unmask PCH for now for GCC to avoid unnecessary rebuilds
