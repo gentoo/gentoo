@@ -15,20 +15,20 @@ HOMEPAGE="https://julialang.org/"
 
 SRC_URI="
 	https://github.com/JuliaLang/julia/releases/download/v${PV}/${P}-full.tar.gz
-	https://github.com/JuliaLang/julia/commit/677ce6d3.patch -> ${PN}-1.7.2-llvm_13_compat_part_1.patch
-	https://github.com/JuliaLang/julia/commit/47f9139e.patch -> ${PN}-1.7.2-llvm_13_compat_part_2.patch
-	https://github.com/JuliaLang/julia/commit/1eb063f1.patch -> ${PN}-1.7.2-llvm_13_compat_part_3.patch
-	https://github.com/JuliaLang/julia/commit/99d4e655.patch -> ${PN}-1.7.2-llvm_13_compat_part_4.patch
-	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/f8c918b0.patch -> ${PN}-1.7.2-llvm_13_compat_part_5.patch
-	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/63303980.patch -> ${PN}-1.7.2-llvm_13_compat_part_6.patch
+	https://github.com/JuliaLang/julia/commit/677ce6d3.patch -> ${PN}-1.7.3-llvm_13_compat_part_1.patch
+	https://github.com/JuliaLang/julia/commit/47f9139e.patch -> ${PN}-1.7.3-llvm_13_compat_part_2.patch
+	https://github.com/JuliaLang/julia/commit/1eb063f1.patch -> ${PN}-1.7.3-llvm_13_compat_part_3.patch
+	https://github.com/JuliaLang/julia/commit/99d4e655.patch -> ${PN}-1.7.3-llvm_13_compat_part_4.patch
+	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/f8c918b0.patch -> ${PN}-1.7.3-llvm_13_compat_part_5.patch
+	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/63303980.patch -> ${PN}-1.7.3-llvm_13_compat_part_6.patch
 	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/julia-libgit-1.2.patch
 	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/julia-libgit-1.4.patch
 	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/julia-system-cblas.patch
 	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/julia-hardcoded-libs.patch
 	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/make-install-no-build.patch
-	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/julia-llvm-patchelf.patch
 	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/julia-libunwind-1.6.patch
 	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/julia-libblastrampoline-4.patch
+	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/julia-gcc-12.patch
 "
 
 LICENSE="MIT"
@@ -72,20 +72,20 @@ DEPEND="${RDEPEND}
 	!system-llvm? ( dev-util/cmake )"
 
 PATCHES=(
-	"${DISTDIR}/${PN}"-1.7.2-llvm_13_compat_part_1.patch
-	"${DISTDIR}/${PN}"-1.7.2-llvm_13_compat_part_2.patch
-	"${DISTDIR}/${PN}"-1.7.2-llvm_13_compat_part_3.patch
-	"${DISTDIR}/${PN}"-1.7.2-llvm_13_compat_part_4.patch
-	"${DISTDIR}/${PN}"-1.7.2-llvm_13_compat_part_5.patch
-	"${DISTDIR}/${PN}"-1.7.2-llvm_13_compat_part_6.patch
+	"${DISTDIR}/${PN}"-1.7.3-llvm_13_compat_part_1.patch
+	"${DISTDIR}/${PN}"-1.7.3-llvm_13_compat_part_2.patch
+	"${DISTDIR}/${PN}"-1.7.3-llvm_13_compat_part_3.patch
+	"${DISTDIR}/${PN}"-1.7.3-llvm_13_compat_part_4.patch
+	"${DISTDIR}/${PN}"-1.7.3-llvm_13_compat_part_5.patch
+	"${DISTDIR}/${PN}"-1.7.3-llvm_13_compat_part_6.patch
 	"${DISTDIR}"/julia-libgit-1.2.patch
 	"${DISTDIR}"/julia-libgit-1.4.patch
+	"${DISTDIR}"/julia-libunwind-1.6.patch
 	"${DISTDIR}"/julia-system-cblas.patch
 	"${DISTDIR}"/julia-hardcoded-libs.patch
 	"${DISTDIR}"/make-install-no-build.patch
-	"${DISTDIR}"/julia-llvm-patchelf.patch
-	"${DISTDIR}"/julia-libunwind-1.6.patch
 	"${DISTDIR}"/julia-libblastrampoline-4.patch
+	"${DISTDIR}"/julia-gcc-12.patch
 )
 
 pkg_setup() {
