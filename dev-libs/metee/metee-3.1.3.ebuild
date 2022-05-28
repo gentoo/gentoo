@@ -16,6 +16,14 @@ IUSE="doc"
 
 BDEPEND="doc? ( app-doc/doxygen )"
 
+src_prepare() {
+	default
+	cmake_src_prepare
+
+	# Respect users CFLAGS
+	sed -e 's/-D_FORTIFY_SOURCE=2 -O2//' -e 's/-Werror//' -i linux.cmake || die
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_DOCS="$(usex doc)"
