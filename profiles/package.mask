@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2022-05-28)
+# GCC 9 and older no longer receive upstream support or fixes for
+# bugs. Please switch to a newer GCC version using gcc-config.
+# The lowest supported version of GCC is GCC 10.
+<sys-devel/gcc-10
+
+# Sam James <sam@gentoo.org> (2022-05-28)
 # Masked for removal. Dead upstream, no releases in a long time, and superseded
 # by dev-python/python-pam. Fails tests in a few scary ways too. Removal
 # on 2022-06-28. Bugs #833297, #802927.
@@ -505,11 +511,6 @@ sys-cluster/singularity
 # Unsupported branches, no consumers left, removal on 2023-01-01.
 sys-devel/automake:1.13
 sys-devel/automake:1.15
-
-# David Seifert <soap@gentoo.org> (2022-03-20)
-# Mask gcc-8 branch (ended upstream support). Please switch
-# to a fresher gcc branch.
-<sys-devel/gcc-9
 
 # Michał Górny <mgorny@gentoo.org> (2022-03-18)
 # The new version breaks building docs w/o Internet access (because it
