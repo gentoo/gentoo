@@ -19,7 +19,7 @@ _TOOLCHAIN_ECLASS=1
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"
 
-inherit edo flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs prefix
+inherit flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs prefix
 
 tc_is_live() {
 	[[ ${PV} == *9999* ]]
@@ -851,6 +851,7 @@ toolchain_src_configure() {
 	is_d   && GCC_LANG+=",d"
 	is_gcj && GCC_LANG+=",java"
 	is_go  && GCC_LANG+=",go"
+	is_jit && GCC_LANG+=",jit"
 	if is_objc || is_objcxx ; then
 		GCC_LANG+=",objc"
 		use objc-gc && confgcc+=( --enable-objc-gc )
@@ -920,6 +921,10 @@ toolchain_src_configure() {
 	if tc_version_is_at_least 6.0 && ! _tc_use_if_iuse pch ; then
 		confgcc+=( --disable-libstdcxx-pch )
 	fi
+
+	# The JIT support requires this.
+	# But see bug #843341.
+	is_jit && confgcc+=( --enable-host-shared )
 
 	# build-id was disabled for file collisions: bug #526144
 	#
@@ -1332,35 +1337,17 @@ toolchain_src_configure() {
 	echo
 
 	# Build in a separate build tree
-	mkdir -p "${WORKDIR}"/build || die
+	mkdir -p "${WORKDIR}"/build
 	pushd "${WORKDIR}"/build > /dev/null
 
 	# ...and now to do the actual configuration
 	addwrite /dev/zero
 
-	if is_jit ; then
-		einfo "Configuring JIT gcc"
-
-		mkdir -p "${WORKDIR}"/build-jit || die
-		pushd "${WORKDIR}"/build-jit > /dev/null || die
-		CONFIG_SHELL="${BROOT}"/bin/bash edo "${S}"/configure \
-				"${confgcc[@]}" \
-				--disable-libada \
-				--disable-libsanitizer \
-				--disable-libvtv \
-				--disable-libgomp \
-				--disable-libquadmath \
-				--disable-libatomic \
-				--disable-lto \
-				--disable-bootstrap \
-				--enable-host-shared \
-				--enable-languages=jit
-		popd > /dev/null || die
-	fi
-
+	echo "${S}"/configure "${confgcc[@]}"
 	# Older gcc versions did not detect bash and re-exec itself, so force the
 	# use of bash. Newer ones will auto-detect, but this is not harmful.
-	CONFIG_SHELL="${BROOT}"/bin/bash edo "${S}"/configure "${confgcc[@]}"
+	CONFIG_SHELL="${BROOT}/bin/bash" \
+		"${BROOT}"/bin/bash "${S}"/configure "${confgcc[@]}" || die "failed to run configure"
 
 	# Return to whatever directory we were in before
 	popd > /dev/null
@@ -1653,8 +1640,8 @@ gcc_do_make() {
 
 	# default target
 	if is_crosscompile || tc-is-cross-compiler ; then
-		# 3 stage bootstrapping doesn't quite work when you can't run the
-		# resulting binaries natively
+		# 3 stage bootstrapping doesnt quite work when you cant run the
+		# resulting binaries natively ^^;
 		GCC_MAKE_TARGET=${GCC_MAKE_TARGET-all}
 	else
 		if _tc_use_if_iuse pgo; then
@@ -1732,19 +1719,6 @@ gcc_do_make() {
 		fi
 	fi
 
-	if is_jit ; then
-		# TODO: docs for jit?
-		pushd "${WORKDIR}"/build-jit > /dev/null || die
-
-		einfo "Building JIT"
-		emake \
-			LDFLAGS="${LDFLAGS}" \
-			STAGE1_CFLAGS="${STAGE1_CFLAGS}" \
-			LIBPATH="${LIBPATH}" \
-			BOOT_CFLAGS="${BOOT_CFLAGS}"
-		popd > /dev/null || die
-	fi
-
 	popd >/dev/null
 }
 
@@ -1788,32 +1762,8 @@ toolchain_src_install() {
 			&& rm -f "${x}"
 	done < <(find gcc/include*/ -name '*.h')
 
-	if is_jit ; then
-		# See https://gcc.gnu.org/onlinedocs/gcc-11.3.0/jit/internals/index.html#packaging-notes
-		# and bug #843341.
-		#
-		# Both of the non-JIT and JIT builds  are configured to install to $(DESTDIR)
-		# Install the configuration with --enable-host-shared first
-		# *then* the one without, so that the faster build
-		# of "cc1" et al overwrites the slower build.
-		#
-		# Do the 'make install' from the build directory
-		pushd "${WORKDIR}"/build-jit > /dev/null || die
-		S="${WORKDIR}"/build-jit emake DESTDIR="${D}" install
-
-		# Punt some tools which are really only useful while building gcc
-		find "${ED}" -name install-tools -prune -type d -exec rm -rf "{}" \;
-		# This one comes with binutils
-		find "${ED}" -name libiberty.a -delete
-
-		# Move the libraries to the proper location
-		gcc_movelibs
-
-		popd > /dev/null || die
-	fi
-
 	# Do the 'make install' from the build directory
-	S="${WORKDIR}"/build emake DESTDIR="${D}" install
+	S="${WORKDIR}"/build emake DESTDIR="${D}" install || die
 
 	# Punt some tools which are really only useful while building gcc
 	find "${ED}" -name install-tools -prune -type d -exec rm -rf "{}" \;
@@ -2006,10 +1956,9 @@ gcc_movelibs() {
 		dodir "${HOSTLIBPATH#${EPREFIX}}"
 		mv "${ED}"/usr/$(get_libdir)/libcc1* "${D}${HOSTLIBPATH}" || die
 	fi
-
 	# libgccjit gets installed to /usr/lib, not /usr/$(get_libdir). Probably
 	# due to a bug in gcc build system.
-	if [[ ${PWD} == "${WORKDIR}"/build-jit ]] && is_jit ; then
+	if is_jit ; then
 		dodir "${LIBPATH#${EPREFIX}}"
 		mv "${ED}"/usr/lib/libgccjit* "${D}${LIBPATH}" || die
 	fi
