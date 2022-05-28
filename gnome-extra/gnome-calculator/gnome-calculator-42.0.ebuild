@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Calculator"
 LICENSE="GPL-3+"
 SLOT="0"
 IUSE="+introspection test"
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc"
 
 # gtksourceview vapi definitions in dev-lang/vala itself are too old, and newer vala removes them
 # altogether, thus we need them installed by gtksourceview[vala]
