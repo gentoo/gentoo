@@ -22,6 +22,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 
 RDEPEND="
 	dev-python/testtools[${PYTHON_USEDEP}]
+	>=dev-python/pbr-0.11[${PYTHON_USEDEP}]
 "
 
 # using pytest for tests since unittest loader fails with py3.5+
