@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-05-28)
+# Masked for removal. Dead upstream, no releases in a long time, and superseded
+# by dev-python/python-pam. Fails tests in a few scary ways too. Removal
+# on 2022-06-28. Bugs #833297, #802927.
+dev-python/pypam
+
 # Andrey Grozin <grozin@gentoo.org> (2022-05-25)
 # Does not work with the current dev-python/pyx
 # Removal on 2022-06-24
