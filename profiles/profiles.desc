@@ -149,7 +149,8 @@ loong		default/linux/loong/22.0/la64v100/lp64d/systemd				exp
 
 # M68K Profiles
 # @MAINTAINER: m68k@gentoo.org
-m68k		default/linux/m68k/17.0				exp
+m68k		default/linux/m68k/17.0					exp
+m68k		default/linux/m68k/17.0/systemd				exp
 
 # MIPS Profiles
 # @MAINTAINER: mips@gentoo.org
