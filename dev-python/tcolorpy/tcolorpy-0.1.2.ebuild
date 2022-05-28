@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
-DESCRIPTION="tcolopy is a Python library to apply true color for terminal text"
+DESCRIPTION="tcolorpy is a Python library to apply true color for terminal text"
 HOMEPAGE="https://github.com/thombashi/tcolorpy"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
