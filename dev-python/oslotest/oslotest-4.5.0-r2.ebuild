@@ -30,3 +30,8 @@ RDEPEND="
 "
 
 distutils_enable_tests unittest
+
+src_prepare() {
+	sed -i -e '/subunit/d' requirements.txt || die
+	distutils-r1_src_prepare
+}
