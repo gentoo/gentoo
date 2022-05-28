@@ -52,6 +52,8 @@ PATCHES=(
 
 	"${FILESDIR}/${P}-format-security.patch"
 	"${FILESDIR}/${P}-uint-musl.patch"
+	"${FILESDIR}/${P}-musl-headers.patch"
+	"${FILESDIR}/${P}-out-of-tree-build.patch"
 )
 
 src_prepare() {
