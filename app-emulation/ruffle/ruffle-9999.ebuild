@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
-	>=virtual/rust-1.56"
+	>=virtual/rust-1.60"
 
 QA_FLAGS_IGNORED="
 	usr/bin/${PN}
