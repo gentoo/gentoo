@@ -67,6 +67,9 @@ src_prepare() {
 	echo bsd_games_cfg_usrlibdir=\"$(get_libdir)\" >> ./config.params || die
 	echo bsd_games_cfg_build_dirs=\"${GAMES_TO_BUILD}\" >> ./config.params || die
 	echo bsd_games_cfg_docdir=\"/usr/share/doc/${PF}\" >> ./config.params || die
+	if use riscv; then
+		sed -i 's/${CC} ${ldflags} -o $@ $^/${CC} ${ldflags} -o $@ $^ -latomic/' ./*/Module.mk || die
+	fi
 }
 
 src_configure() {
