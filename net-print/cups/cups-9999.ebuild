@@ -10,13 +10,11 @@ MY_PV="${MY_PV/_rc/rc}"
 MY_PV="${MY_PV/_p/op}"
 MY_P="${PN}-${MY_PV}"
 
-if [[ ${PV} == *9999 ]]; then
+if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
-	#EGIT_REPO_URI="https://github.com/apple/cups.git"
 	EGIT_REPO_URI="https://github.com/OpenPrinting/cups.git"
 	[[ ${PV} != 9999 ]] && EGIT_BRANCH=branch-${PV/.9999}
 else
-	#SRC_URI="https://github.com/apple/cups/releases/download/v${MY_PV}/${MY_P}-source.tar.gz"
 	SRC_URI="https://github.com/OpenPrinting/cups/releases/download/v${MY_PV}/cups-${MY_PV}-source.tar.gz"
 	if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
 		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
@@ -28,10 +26,11 @@ HOMEPAGE="https://www.cups.org/ https://github.com/OpenPrinting/cups"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="acl dbus debug kerberos pam selinux +ssl static-libs systemd usb X xinetd zeroconf"
+IUSE="acl dbus debug kerberos openssl pam selinux +ssl static-libs systemd test usb X xinetd zeroconf"
 
-# Upstream includes an interactive test which is a nono for Gentoo
-RESTRICT="test"
+# As of 2.4.2, they don't actually seem to be interactive (they pass some flags
+# by default to input for us), but they fail on some greyscale issue w/ poppler?
+RESTRICT="!test? ( test ) test"
 
 BDEPEND="
 	acct-group/lp
@@ -51,7 +50,10 @@ DEPEND="
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	pam? ( sys-libs/pam )
 	!pam? ( virtual/libcrypt:= )
-	ssl? ( >=net-libs/gnutls-2.12.23-r6:0=[${MULTILIB_USEDEP}] )
+	ssl? (
+		!openssl? ( >=net-libs/gnutls-2.12.23-r6:0=[${MULTILIB_USEDEP}] )
+		openssl? ( dev-libs/openssl:=[${MULTILIB_USEDEP}] )
+	)
 	systemd? ( sys-apps/systemd )
 	usb? ( virtual/libusb:1 )
 	X? ( x11-misc/xdg-utils )
@@ -145,6 +147,7 @@ multilib_src_configure() {
 		--enable-sync-on-close
 		#
 		--with-rundir="${EPREFIX}"/run/cups
+		--with-pkgconfpath="${EPREFIX}"/usr/$(get_libdir)/pkgconfig
 		--with-cups-user=lp
 		--with-cups-group=lp
 		--with-docdir="${EPREFIX}"/usr/share/cups/html
@@ -158,7 +161,10 @@ multilib_src_configure() {
 		$(use_enable kerberos gssapi)
 		$(multilib_native_use_enable pam)
 		$(use_enable static-libs static)
-		$(use_with ssl tls gnutls)
+		$(use_enable test unit-tests)
+		# USE="ssl" => gnutls
+		# USE="ssl openssl" => openssl
+		$(use_with ssl tls $(usex openssl openssl gnutls))
 		$(use_with systemd ondemand systemd)
 		$(multilib_native_use_enable usb libusb)
 		$(use_with zeroconf dnssd avahi)
@@ -206,6 +212,12 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
+	# Avoid using /tmp
+	export CUPS_TESTBASE="${T}"/cups-tests
+
+	mkdir "${T}"/cups-tests || die
+
+	# We only build some of CUPS for multilib, so can't run the tests.
 	multilib_is_native_abi && default
 }
 
