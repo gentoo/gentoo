@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 QA_PKGCONFIG_VERSION=$(ver_cut 1)
 
-inherit bash-completion-r1 flag-o-matic meson-multilib python-any-r1 toolchain-funcs usr-ldscript
+inherit bash-completion-r1 flag-o-matic meson-multilib python-any-r1 toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="Utilities taken from systemd"
 HOMEPAGE="https://systemd.io/"
@@ -492,5 +492,6 @@ pkg_postinst() {
 		ebegin "Updating hwdb"
 		systemd-hwdb --root="${ROOT}" update
 		eend $?
+		udev_reload
 	fi
 }
