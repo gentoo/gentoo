@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2022-05-29)
+# Old slots that are no longer used by dependencies. Upgrade to the
+# latest slot instead. Masked for removal in one month.
+dev-ruby/regexp_parser:0
+dev-ruby/regexp_parser:1
+
 # Sam James <sam@gentoo.org> (2022-05-28)
 # GCC 9 and older no longer receive upstream support or fixes for
 # bugs. Please switch to a newer GCC version using gcc-config.
