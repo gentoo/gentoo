@@ -395,7 +395,6 @@ net-im/jabber-base
 # Blocks removal of vulnerable dev-java/guava:20, bug #833309.
 # Removal on 2022-05-30
 dev-util/checkstyle
-app-emacs/jde
 
 # Mike Pagano <mpagano@gentoo.org> (2022-04-26)
 # These kernels contain a major regression that causes power button
