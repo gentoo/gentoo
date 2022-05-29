@@ -287,6 +287,7 @@ RDEPEND="${RDEPEND}
 "
 
 DEPEND="${RDEPEND}
+	amf? ( media-libs/amf-headers )
 	ladspa? ( >=media-libs/ladspa-sdk-1.13-r2[${MULTILIB_USEDEP}] )
 	v4l? ( sys-kernel/linux-headers )
 "
@@ -295,7 +296,6 @@ DEPEND="${RDEPEND}
 BDEPEND+="
 	>=sys-devel/make-3.81
 	virtual/pkgconfig
-	amf? ( media-libs/amf-headers )
 	cpu_flags_x86_mmx? ( || ( >=dev-lang/nasm-2.13 >=dev-lang/yasm-1.3 ) )
 	cuda? ( >=sys-devel/clang-7[llvm_targets_NVPTX] )
 	doc? ( sys-apps/texinfo )
