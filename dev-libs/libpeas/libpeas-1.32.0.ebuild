@@ -41,6 +41,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/glib-utils
 	gtk-doc? ( >=dev-util/gtk-doc-1.11
+		>=dev-util/gi-docgen-2021.7
 		app-text/docbook-xml-dtd:4.3 )
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
