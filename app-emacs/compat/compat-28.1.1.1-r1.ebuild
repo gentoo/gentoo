@@ -14,7 +14,11 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+BDEPEND="sys-apps/texinfo"
+
+ELISP_TEXINFO="compat.texi"
+
 src_prepare() {
 	default
-	rm compat-tests.el || die
+	rm Makefile compat-tests.el || die
 }
