@@ -67,7 +67,9 @@ src_compile() {
 
 pkg_preinst() {
 	# Needed until bug #834600 is solved
-	rm -r "${EROOT}"/usr/share/cursors/xorg-x11/Adwaita || die
+	if [[ -d "${EROOT}"/usr/share/cursors/xorg-x11/Adwaita ]] ; then
+		rm -r "${EROOT}"/usr/share/cursors/xorg-x11/Adwaita || die
+	fi
 }
 
 src_install() {
