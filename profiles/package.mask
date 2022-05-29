@@ -391,11 +391,6 @@ java-virtuals/jms
 # Removal in 30 days on 2022-05-27.
 net-im/jabber-base
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-22)
-# Blocks removal of vulnerable dev-java/guava:20, bug #833309.
-# Removal on 2022-05-30
-dev-util/checkstyle
-
 # Mike Pagano <mpagano@gentoo.org> (2022-04-26)
 # These kernels contain a major regression that causes power button
 # to stop working, apparently making it impossible to leave suspend
