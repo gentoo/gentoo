@@ -483,7 +483,6 @@ dev-java/jgraph
 app-text/jabref
 dev-java/glazedlists
 dev-java/jempbox
-dev-java/microba
 
 # David Seifert <soap@gentoo.org> (2022-04-17)
 # Dead library, part of >=sys-fs/e2fsprogs-1.46.5 now, bug #806875,
