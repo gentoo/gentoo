@@ -374,9 +374,7 @@ https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 	# MODULE:powerd extras
 	if use amd64; then
 		systemd_dounit systemd/system/nvidia-powerd.service
-
-		insinto /usr/share/dbus-1/system.d
-		doins nvidia-dbus.conf
+		dodoc nvidia-dbus.conf
 	fi
 
 	# symlink non-versioned so nvidia-settings can use it even if misdetected
