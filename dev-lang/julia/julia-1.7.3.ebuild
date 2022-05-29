@@ -29,7 +29,6 @@ SRC_URI="
 	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/julia-libunwind-1.6.patch
 	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/julia-libblastrampoline-4.patch
 	https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/julia-gcc-12.patch
-	https://github.com/JuliaLang/Downloads.jl/archive/refs/tags/v1.5.3.tar.gz -> ${P}_Downloads.jl_1.5.3.tar.gz
 "
 
 LICENSE="MIT"
@@ -86,7 +85,6 @@ PATCHES=(
 	"${DISTDIR}"/julia-hardcoded-libs.patch
 	"${DISTDIR}"/make-install-no-build.patch
 	"${DISTDIR}"/julia-libblastrampoline-4.patch
-	"${DISTDIR}"/julia-gcc-12.patch
 )
 
 pkg_setup() {
