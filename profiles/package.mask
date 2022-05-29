@@ -391,11 +391,6 @@ net-im/jabber-base
 dev-util/checkstyle
 app-emacs/jde
 
-# Matt Turner <mattst88@gentoo.org> (2022-04-26)
-# Dead package. No reverse dependencies.
-# Removal on 2022-05-26
-gnome-base/gnome-vfs
-
 # Mike Pagano <mpagano@gentoo.org> (2022-04-26)
 # These kernels contain a major regression that causes power button
 # to stop working, apparently making it impossible to leave suspend
