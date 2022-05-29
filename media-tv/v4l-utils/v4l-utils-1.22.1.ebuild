@@ -101,10 +101,16 @@ src_install() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
+	use udev && udev_reload
 
 	if [[ -n ${REPLACING_VERSIONS} ]] && ver_test 1.20.0 -ge ${REPLACING_VERSIONS%% *}; then
 		ewarn "WARNING! ir-keytable has changed significantly from version 1.20.0 so"
 		ewarn "you may need to take action to avoid breakage. See"
 		ewarn "https://bugs.gentoo.org/767175 for more details."
 	fi
+}
+
+pkg_postrm() {
+	xdg_pkg_postrm
+	use udev && udev_reload
 }
