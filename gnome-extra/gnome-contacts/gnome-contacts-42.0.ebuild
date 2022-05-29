@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Design/Apps/Contacts"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="telepathy"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv ~sparc"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv ~sparc ~x86"
 
 VALA_DEPEND="
 	$(vala_depend)
