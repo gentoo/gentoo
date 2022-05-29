@@ -16,7 +16,7 @@ S="${WORKDIR}/${CSV}"
 # Nanopass (MIT), stex (MIT), and zlib (ZLIB).
 LICENSE="Apache-2.0 BSD-2 MIT ZLIB"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="X examples ncurses threads"
 
 BDEPEND="virtual/pkgconfig"
