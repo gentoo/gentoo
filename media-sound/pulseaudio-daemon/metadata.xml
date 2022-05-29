@@ -56,6 +56,7 @@
       Build with <pkg>sys-apps/systemd</pkg> support to replace standalone
       ConsoleKit.
     </flag>
+    <flag name="valgrind">Compile in valgrind memory hints</flag>
     <flag name="native-headset">
       Build with native HSP backend for bluez 5.
     </flag>

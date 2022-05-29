@@ -33,7 +33,7 @@ SLOT="0"
 # TODO: Find out why webrtc-aec is + prefixed - there's already the always available speexdsp-aec
 # NOTE: The current ebuild sets +X almost certainly just for the pulseaudio.desktop file
 IUSE="+alsa +alsa-plugin aptx +asyncns bluetooth dbus elogind equalizer +gdbm gstreamer +glib gtk ipv6 jack ldac lirc
-native-headset ofono-headset +orc oss selinux sox ssl systemd system-wide tcpd test +udev +webrtc-aec +X zeroconf"
+native-headset ofono-headset +orc oss selinux sox ssl systemd system-wide tcpd test +udev valgrind +webrtc-aec +X zeroconf"
 
 RESTRICT="!test? ( test )"
 
@@ -56,7 +56,7 @@ REQUIRED_USE="
 # - media-libs/speexdsp is providing echo canceller implementation and used in resampler
 # TODO: libatomic_ops is only needed on some architectures and conditions, and then at runtime too
 COMMON_DEPEND="
-	>=media-libs/libpulse-${PV}[dbus?,glib?,systemd?,tcpd?,X?]
+	>=media-libs/libpulse-${PV}[dbus?,glib?,systemd?,tcpd?,valgrind?,X?]
 	dev-libs/libatomic_ops
 	>=media-libs/libsndfile-1.0.20
 	>=media-libs/speexdsp-1.2
@@ -95,6 +95,7 @@ COMMON_DEPEND="
 	systemd? ( sys-apps/systemd:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 	udev? ( >=virtual/udev-143[hwdb(+)] )
+	valgrind? ( dev-util/valgrind )
 	webrtc-aec? ( >=media-libs/webrtc-audio-processing-0.2:0 )
 	X? (
 		>=x11-libs/libxcb-1.6
@@ -211,7 +212,7 @@ src_configure() {
 		$(meson_feature systemd)
 		$(meson_feature tcpd tcpwrap) # TODO: This should technically be enabled for 32bit too, but at runtime it probably is never used without daemon?
 		$(meson_feature udev)
-		-Dvalgrind=auto
+		$(meson_feature valgrind)
 		$(meson_feature X x11)
 
 		# Echo cancellation
