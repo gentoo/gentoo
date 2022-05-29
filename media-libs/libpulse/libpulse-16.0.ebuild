@@ -24,7 +24,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="LGPL-2.1+"
 
 SLOT="0"
-IUSE="+asyncns dbus doc +glib gtk selinux systemd tcpd test X"
+IUSE="+asyncns dbus doc +glib gtk selinux systemd tcpd test valgrind X"
 RESTRICT="!test? ( test )"
 
 # NOTE: libpcre needed in some cases, bug #472228
@@ -40,6 +40,7 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-pulseaudio )
 	systemd? ( sys-apps/systemd:= )
 	tcpd? ( sys-apps/tcp-wrappers )
+	valgrind? ( dev-util/valgrind )
 	X? (
 		x11-libs/libX11[${MULTILIB_USEDEP}]
 		>=x11-libs/libxcb-1.6[${MULTILIB_USEDEP}]
@@ -131,7 +132,7 @@ multilib_src_configure() {
 		$(meson_native_use_feature systemd)
 		$(meson_native_use_feature tcpd tcpwrap)
 		-Dudev=disabled
-		-Dvalgrind=auto
+		$(meson_native_use_feature valgrind)
 		$(meson_feature X x11)
 
 		# Echo cancellation
