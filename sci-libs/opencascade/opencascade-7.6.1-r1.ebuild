@@ -84,6 +84,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_DOC_Overview=$(usex doc)
 		-DBUILD_Inspector=$(usex examples)
+		-DBUILD_RELEASE_DISABLE_EXCEPTIONS=OFF # bug #847916
 
 		-DINSTALL_DIR_BIN="$(get_libdir)/${PN}/bin"
 		-DINSTALL_DIR_CMAKE="$(get_libdir)/cmake/${PN}"
