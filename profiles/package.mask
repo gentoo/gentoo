@@ -472,10 +472,6 @@ dev-ml/core_bench:0/0.15
 dev-ml/patience_diff:0/0.15
 dev-util/patdiff:0/0.15
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-22)
-# Unused java library. Removal on 2022-05-24.
-dev-java/jgraph
-
 # David Seifert <soap@gentoo.org> (2022-04-17)
 # Dead library, part of >=sys-fs/e2fsprogs-1.46.5 now, bug #806875,
 # removal on 2022-05-17.
