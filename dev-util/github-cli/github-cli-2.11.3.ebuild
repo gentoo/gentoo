@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/cli/cli.git"
 else
 	SRC_URI="https://github.com/cli/cli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
+	SRC_URI+=" https://github.com/ran-dall/portage-deps/raw/master/${P}-deps.tar.xz"
 	KEYWORDS="~amd64 ~riscv"
 	S="${WORKDIR}/cli-${PV}"
 fi
