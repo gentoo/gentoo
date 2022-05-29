@@ -476,12 +476,6 @@ dev-util/patdiff:0/0.15
 # Unused java library. Removal on 2022-05-24.
 dev-java/jgraph
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-19)
-# Release of the source-based ebuild is from 2014. At the moment
-# impossible to provide source-based ebuild for the current version.
-# Up-to-date binary package exists. Removal on 2022-05-30
-app-text/jabref
-
 # David Seifert <soap@gentoo.org> (2022-04-17)
 # Dead library, part of >=sys-fs/e2fsprogs-1.46.5 now, bug #806875,
 # removal on 2022-05-17.
