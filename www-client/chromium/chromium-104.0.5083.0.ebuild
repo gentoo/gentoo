@@ -918,6 +918,11 @@ chromium_configure() {
 		myconf_gn+=" ozone_platform=$(usex wayland \"wayland\" \"x11\")"
 	fi
 
+	# Results in undefined references in chrome linking, may require CFI to work
+	if use arm64; then
+		myconf_gn+=" arm_control_flow_integrity=\"none\""
+	fi
+
 	# Enable official builds
 	myconf_gn+=" is_official_build=$(usex official true false)"
 	myconf_gn+=" use_thin_lto=$(usex lto true false)"
@@ -1016,21 +1021,21 @@ src_compile() {
 			chromium_compile
 			virtx chromium_profile "$profdata"
 
-			touch "${WORKDIR}/.pgo-profiled"
+			touch "${WORKDIR}/.pgo-profiled" || die
 		fi
 
 		if [[ ! -e "${WORKDIR}/.pgo-phase-2-configured" ]]; then
 			# Remove phase 1 output
-			rm -rf out/Release
+			rm -r out/Release || die
 
 			chromium_configure 2 "$profdata"
 
-			touch "${WORKDIR}/.pgo-phase-2-configured"
+			touch "${WORKDIR}/.pgo-phase-2-configured" || die
 		fi
 
 		if [[ ! -e "${WORKDIR}/.pgo-phase-2-compiled" ]]; then
 			chromium_compile
-			touch "${WORKDIR}/.pgo-phase-2-compiled"
+			touch "${WORKDIR}/.pgo-phase-2-compiled" || die
 		fi
 	else
 		chromium_compile
