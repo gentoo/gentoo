@@ -123,7 +123,8 @@ RDEPEND="${LUA_DEPS}
 	xpm? ( x11-libs/libXpm )
 	xpresent? ( x11-libs/libXpresent )
 	zeroconf? ( net-dns/avahi )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	wayland? ( dev-libs/wayland-protocols )"
 BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
