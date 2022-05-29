@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 	RESTRICT="fetch mirror test"
 else
 	SRC_URI="https://github.com/junegunn/fzf/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	SRC_URI+=" ${P}-deps.tar.xz"
+	SRC_URI+=" https://github.com/ran-dall/portage-deps/raw/master/${P}-deps.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 	RESTRICT="mirror test"
 	# For fancy versioning only. Bump on the next release!
