@@ -385,12 +385,6 @@ java-virtuals/jms
 # should update to that. #841437
 ~sci-physics/bullet-3.22b
 
-# Conrad Kostecki <conikost@gentoo.org> (2022-04-27)
-# Old base package for jabber services, which is not being used anymore,
-# as jabber services do now use their own user instead of generic jabber user.
-# Removal in 30 days on 2022-05-27.
-net-im/jabber-base
-
 # Mike Pagano <mpagano@gentoo.org> (2022-04-26)
 # These kernels contain a major regression that causes power button
 # to stop working, apparently making it impossible to leave suspend
