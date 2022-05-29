@@ -27,11 +27,11 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-python/pillow[${PYTHON_USEDEP}]
 	virtual/tex-base
+	virtual/latex-base
 	dev-texlive/texlive-basic"
 
 BDEPEND="${RDEPEND}
 	doc? (
-		virtual/latex-base
 		$(python_gen_any_dep '
 			dev-python/sphinx[latex,${PYTHON_USEDEP}]
 			dev-python/sphinx_selective_exclude[${PYTHON_USEDEP}]
