@@ -30,6 +30,10 @@ BDEPEND="virtual/pkgconfig"
 
 CONFIG_CHECK="~SQUASHFS"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.2-trim_upstream_cflags.patch
+)
+
 DOCS=( README.md CONTRIBUTORS.md CONTRIBUTING.md )
 
 src_configure() {
