@@ -481,7 +481,6 @@ dev-java/jgraph
 # impossible to provide source-based ebuild for the current version.
 # Up-to-date binary package exists. Removal on 2022-05-30
 app-text/jabref
-dev-java/glazedlists
 
 # David Seifert <soap@gentoo.org> (2022-04-17)
 # Dead library, part of >=sys-fs/e2fsprogs-1.46.5 now, bug #806875,
