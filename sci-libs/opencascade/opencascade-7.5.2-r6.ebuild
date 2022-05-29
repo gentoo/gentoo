@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
 inherit cmake flag-o-matic
 
@@ -15,7 +15,7 @@ S="${WORKDIR}/occt-V${MY_PV}"
 
 LICENSE="|| ( Open-CASCADE-LGPL-2.1-Exception-1.0 LGPL-2.1 )"
 SLOT="0/${PV_MAJ}"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="debug doc examples ffmpeg freeimage gles2-only json optimize tbb vtk"
 
 REQUIRED_USE="?? ( optimize tbb )"
@@ -89,6 +89,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_DOC_Overview=$(usex doc)
 		-DBUILD_Inspector=$(usex examples)
+		-DBUILD_RELEASE_DISABLE_EXCEPTIONS=OFF # bug #847916
 
 		-DINSTALL_DIR_BIN="$(get_libdir)/${PN}/bin"
 		-DINSTALL_DIR_CMAKE="$(get_libdir)/cmake/${PN}"
