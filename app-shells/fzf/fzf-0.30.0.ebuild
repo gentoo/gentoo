@@ -7,54 +7,31 @@ inherit bash-completion-r1 go-module
 
 DESCRIPTION="General-purpose command-line fuzzy finder, written in Golang"
 HOMEPAGE="https://github.com/junegunn/fzf"
-
-# For fancy versioning only. Bump on the next release!
-MY_GIT_REV=2093667
-
-EGO_SUM=(
-	"github.com/gdamore/encoding v1.0.0"
-	"github.com/gdamore/encoding v1.0.0/go.mod"
-	"github.com/gdamore/tcell v1.4.0"
-	"github.com/gdamore/tcell v1.4.0/go.mod"
-	"github.com/lucasb-eyer/go-colorful v1.0.3/go.mod"
-	"github.com/lucasb-eyer/go-colorful v1.2.0"
-	"github.com/lucasb-eyer/go-colorful v1.2.0/go.mod"
-	"github.com/mattn/go-isatty v0.0.14"
-	"github.com/mattn/go-isatty v0.0.14/go.mod"
-	"github.com/mattn/go-runewidth v0.0.7/go.mod"
-	"github.com/mattn/go-runewidth v0.0.13"
-	"github.com/mattn/go-runewidth v0.0.13/go.mod"
-	"github.com/mattn/go-shellwords v1.0.12"
-	"github.com/mattn/go-shellwords v1.0.12/go.mod"
-	"github.com/rivo/uniseg v0.2.0"
-	"github.com/rivo/uniseg v0.2.0/go.mod"
-	"github.com/saracen/walker v0.1.2"
-	"github.com/saracen/walker v0.1.2/go.mod"
-	"golang.org/x/sync v0.0.0-20200317015054-43a5402ce75a/go.mod"
-	"golang.org/x/sync v0.0.0-20210220032951-036812b2e83c"
-	"golang.org/x/sync v0.0.0-20210220032951-036812b2e83c/go.mod"
-	"golang.org/x/sys v0.0.0-20190626150813-e07cf5db2756/go.mod"
-	"golang.org/x/sys v0.0.0-20201119102817-f84b799fce68/go.mod"
-	"golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c"
-	"golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c/go.mod"
-	"golang.org/x/term v0.0.0-20210317153231-de623e64d2a6"
-	"golang.org/x/term v0.0.0-20210317153231-de623e64d2a6/go.mod"
-	"golang.org/x/text v0.3.0/go.mod"
-	"golang.org/x/text v0.3.6"
-	"golang.org/x/text v0.3.6/go.mod"
-	"golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e/go.mod"
-)
-
-go-module_set_globals
-
-SRC_URI="
-	https://github.com/junegunn/fzf/archive/${PV}.tar.gz -> ${P}.tar.gz
-	${EGO_SUM_SRC_URI}
-"
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/junegunn/fzf/.git"
+	RESTRICT="fetch mirror test"
+else
+	SRC_URI="https://github.com/junegunn/fzf/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI+=" ${P}-deps.tar.xz"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+	RESTRICT="mirror test"
+	# For fancy versioning only. Bump on the next release!
+	MY_GIT_REV=2093667
+fi
 
 LICENSE="MIT BSD-with-disclosure"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+
+src_unpack() {
+	default
+	if [[ ${PV} == *9999 ]]; then
+		git-r3_src_unpack
+		go-module_live_vendor
+	else
+		go-module_src_unpack
+	fi
+}
 
 src_prepare() {
 	default
