@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Stephan Hartmann <sultan@gentoo.org> (2022-05-29)
+# Not ready for general use.
+>=www-client/chromium-104 pgo
+
 # Michał Górny <mgorny@gentoo.org> (2022-05-25)
 # dev-python/sphinxcontrib-openapi is masked for removal.
 dev-python/jupyter_server doc
