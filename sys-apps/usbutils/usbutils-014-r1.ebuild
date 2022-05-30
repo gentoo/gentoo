@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{8,9,10} )
 
-inherit autotools python-single-r1
+inherit python-single-r1
 
 DESCRIPTION="USB enumeration utilities"
 HOMEPAGE="https://www.kernel.org/pub/linux/utils/usb/usbutils/
@@ -36,12 +36,13 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	eautoreconf
+
 	use python && python_fix_shebang lsusb.py.in
 }
 
 src_configure() {
 	local myeconfargs=(
+		--cache-file="${S}"/config.cache
 		--datarootdir="${EPREFIX}/usr/share"
 		--datadir="${EPREFIX}/usr/share/hwdata"
 	)
