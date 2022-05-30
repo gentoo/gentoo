@@ -37,6 +37,7 @@
 # libwacom-2 broke ABI compatibility; reverse dependencies need to be updated.
 # Bug #848501
 >=dev-libs/libwacom-2.0
+>=x11-drivers/xf86-input-wacom-1.0
 
 # Hans de Graaff <graaff@gentoo.org> (2022-05-29)
 # Old slots that are no longer used by dependencies. Upgrade to the
