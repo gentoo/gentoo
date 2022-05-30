@@ -32,7 +32,7 @@ EGIT_BRANCH=releases/gcc-$(ver_cut 1)
 # bug #830454
 RDEPEND="elibc_glibc? ( sys-libs/glibc[cet(-)?] )"
 DEPEND="${RDEPEND}"
-BDEPEND="${CATEGORY}/binutils[cet(-)?]"
+BDEPEND=">=${CATEGORY}/binutils-2.30[cet(-)?]"
 
 src_prepare() {
 	local p upstreamed_patches=(
