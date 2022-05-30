@@ -45,7 +45,10 @@ src_configure() {
 	local -x PERL_EXT_CC="$(tc-getCC)" PERL_EXT_CPPFLAGS="${CPPFLAGS}" PERL_EXT_CFLAGS="${CFLAGS}" PERL_EXT_LDFLAGS="${LDFLAGS}"
 
 	use static && append-ldflags -static
-	local myeconfargs=( $(use_enable nls) )
+	local myeconfargs=(
+		--cache-file="${S}"/config.cache
+		$(use_enable nls)
+	)
 
 	if use standalone ; then
 		myeconfargs+=(
