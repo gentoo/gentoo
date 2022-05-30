@@ -24,7 +24,7 @@ IUSE="jpeg jpeg2k mng openexr png raw static-libs tiff webp"
 # uses code from it to handle 16bit<->float conversions.
 RDEPEND="
 	sys-libs/zlib
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
 	mng? ( media-libs/libmng:= )
 	openexr? ( media-libs/openexr:= )
@@ -33,7 +33,7 @@ RDEPEND="
 	tiff? (
 		>=dev-libs/imath-3.1.4-r2:=
 		>=media-libs/openexr-3:0=
-		media-libs/tiff:0
+		<media-libs/tiff-4.4.0
 	)
 	webp? ( media-libs/libwebp:= )"
 DEPEND="${RDEPEND}"
