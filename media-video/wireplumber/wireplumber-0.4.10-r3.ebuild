@@ -68,6 +68,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-alsa.lua-fix-device-name-deduplication-when-reserva.patch
 	"${FILESDIR}"/${P}-m-default-nodes-don-t-check-if-all-device-nodes-are.patch
 	"${FILESDIR}"/${P}-m-lua-scripting-fix-object-refcounting.patch
+	"${FILESDIR}"/${P}-config-disable-sound-server-parts.patch # defer enabling sound server parts to media-video/pipewire
 )
 
 src_configure() {
