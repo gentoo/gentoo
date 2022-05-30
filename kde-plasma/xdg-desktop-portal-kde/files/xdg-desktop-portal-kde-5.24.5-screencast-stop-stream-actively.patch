@@ -1,0 +1,28 @@
+From d74e7dce1d333107760a8ae8d2bdd7521d31a09f Mon Sep 17 00:00:00 2001
+From: Aleix Pol <aleixpol@kde.org>
+Date: Sat, 28 May 2022 03:37:14 +0200
+Subject: [PATCH] screencast: When we stop a stream, do it actively
+
+We were just forgetting about it.
+
+
+(cherry picked from commit aa531bde14a13521f99ae8e44d6e83bc8749d761)
+---
+ src/waylandintegration.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/waylandintegration.cpp b/src/waylandintegration.cpp
+index b1b2d4d..44d862a 100644
+--- a/src/waylandintegration.cpp
++++ b/src/waylandintegration.cpp
+@@ -328,6 +328,7 @@ void WaylandIntegration::WaylandIntegrationPrivate::stopStreaming(uint32_t nodei
+ {
+     for (auto it = m_streams.begin(), itEnd = m_streams.end(); it != itEnd; ++it) {
+         if (it->nodeId == nodeid) {
++            it->close();
+             m_streams.erase(it);
+             break;
+         }
+-- 
+GitLab
+

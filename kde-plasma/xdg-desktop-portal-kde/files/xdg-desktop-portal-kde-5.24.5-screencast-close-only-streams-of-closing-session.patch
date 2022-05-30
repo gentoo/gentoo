@@ -1,0 +1,107 @@
+From cd8275c722aa25dd22353121131c914d3ab3b438 Mon Sep 17 00:00:00 2001
+From: Aleix Pol <aleixpol@kde.org>
+Date: Sat, 28 May 2022 03:36:14 +0200
+Subject: [PATCH] screencast: When closing a session, only close the streams
+ from that session
+
+---
+ src/screencast.cpp         | 11 ++++++++---
+ src/session.h              | 12 ++++++++++++
+ src/waylandintegration.cpp |  5 +++++
+ src/waylandintegration.h   |  1 +
+ 4 files changed, 26 insertions(+), 3 deletions(-)
+
+diff --git a/src/screencast.cpp b/src/screencast.cpp
+index 5be6210..84cc4bd 100644
+--- a/src/screencast.cpp
++++ b/src/screencast.cpp
+@@ -68,8 +68,12 @@ uint ScreenCastPortal::CreateSession(const QDBusObjectPath &handle,
+         return 2;
+     }
+ 
+-    connect(session, &Session::closed, []() {
+-        WaylandIntegration::stopAllStreaming();
++    connect(session, &Session::closed, [session] {
++        auto screencastSession = qobject_cast<ScreenCastSession *>(session);
++        const auto streams = screencastSession->streams();
++        for (const WaylandIntegration::Stream &stream : streams) {
++            WaylandIntegration::stopStreaming(stream.nodeId);
++        }
+     });
+ 
+     connect(WaylandIntegration::waylandIntegration(), &WaylandIntegration::WaylandIntegration::streamingStopped, session, &Session::close);
+@@ -169,7 +173,8 @@ uint ScreenCastPortal::Start(const QDBusObjectPath &handle,
+             return 2;
+         }
+ 
+-        results.insert(QStringLiteral("streams"), QVariant::fromValue(streams));
++        session->setStreams(streams);
++        results.insert(QStringLiteral("streams"), QVariant::fromValue<WaylandIntegration::Streams>(streams));
+ 
+         if (inhibitionsEnabled()) {
+             new NotificationInhibition(app_id, i18nc("Do not disturb mode is enabled because...", "Screen sharing in progress"), session);
+diff --git a/src/session.h b/src/session.h
+index a42222e..dd05680 100644
+--- a/src/session.h
++++ b/src/session.h
+@@ -14,6 +14,7 @@
+ 
+ #include "remotedesktop.h"
+ #include "screencast.h"
++#include "waylandintegration.h"
+ 
+ class Session : public QDBusVirtualObject
+ {
+@@ -62,10 +63,21 @@ public:
+         return SessionType::ScreenCast;
+     }
+ 
++    WaylandIntegration::Streams streams() const
++    {
++        return m_streams;
++    }
++    void setStreams(const WaylandIntegration::Streams &streams)
++    {
++        m_streams = streams;
++    }
++
+ private:
+     bool m_multipleSources;
+     ScreenCastPortal::CursorModes m_cursorMode;
+     ScreenCastPortal::SourceType m_types;
++
++    WaylandIntegration::Streams m_streams;
+ };
+ 
+ class RemoteDesktopSession : public ScreenCastSession
+diff --git a/src/waylandintegration.cpp b/src/waylandintegration.cpp
+index 9f5a177..e05f73a 100644
+--- a/src/waylandintegration.cpp
++++ b/src/waylandintegration.cpp
+@@ -89,6 +89,11 @@ void WaylandIntegration::stopAllStreaming()
+     globalWaylandIntegration->stopAllStreaming();
+ }
+ 
++void WaylandIntegration::stopStreaming(uint node)
++{
++    globalWaylandIntegration->stopStreaming(node);
++}
++
+ void WaylandIntegration::requestPointerButtonPress(quint32 linuxButton)
+ {
+     globalWaylandIntegration->requestPointerButtonPress(linuxButton);
+diff --git a/src/waylandintegration.h b/src/waylandintegration.h
+index b8e6a00..784ee12 100644
+--- a/src/waylandintegration.h
++++ b/src/waylandintegration.h
+@@ -131,6 +131,7 @@ void startStreamingInput();
+ Stream startStreamingOutput(quint32 outputName, Screencasting::CursorMode mode);
+ Stream startStreamingWindow(const QMap<int, QVariant> &win);
+ void stopAllStreaming();
++void stopStreaming(uint node);
+ 
+ void requestPointerButtonPress(quint32 linuxButton);
+ void requestPointerButtonRelease(quint32 linuxButton);
+-- 
+GitLab
+
