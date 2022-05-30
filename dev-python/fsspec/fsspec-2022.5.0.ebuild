@@ -22,7 +22,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
 BDEPEND="
-	dev-python/versioneer[${PYTHON_USEDEP}]
 	test? (
 		dev-python/aiohttp[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
