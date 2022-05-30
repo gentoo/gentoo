@@ -62,6 +62,7 @@ src_configure() {
 	export ac_cv_libsigsegv=no
 
 	local myeconfargs=(
+		--cache-file="${S}"/config.cache
 		--libexec='$(libdir)/misc'
 		$(use_with mpfr)
 		$(use_enable nls)
