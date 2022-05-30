@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2022-05-30)
+# No upstream activity since 2019, doesn't even support Python 3.9+ properly,
+# and doesn't support Python 3.10. Bugs #845819, #798384. Removal on 2022-06-30.
+dev-python/pypcap
+
+# Sam James <sam@gentoo.org> (2022-05-30)
 # Obsolete, no new releases since 2015, doesn't support Python 3.10.
 # Bugs #845681, #747982. Removal on 2022-06-30.
 dev-python/3to2
