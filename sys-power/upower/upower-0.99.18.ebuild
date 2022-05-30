@@ -54,6 +54,10 @@ S="${WORKDIR}/${PN}-v${PV}"
 
 QA_MULTILIB_PATHS="usr/lib/${PN}/.*"
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-meson-Allow-unittest-inspector-to-fail.patch
+)
+
 python_check_deps() {
 	python_has_version -b "dev-python/dbus-python[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/python-dbusmock[${PYTHON_USEDEP}]"
