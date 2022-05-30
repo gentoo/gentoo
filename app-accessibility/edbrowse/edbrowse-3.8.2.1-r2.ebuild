@@ -38,7 +38,7 @@ src_compile() {
 	# First build quickjs so we can link to its static library.
 	# Also, quickjs doesn't appear to tag releases.
 	tools/quickjobfixup "${QUICKJS_S}" || die
-	emake -C "${QUICKJS_S}"
+	emake -C "${QUICKJS_S}" libquickjs.a
 	emake -C src QUICKJS_DIR="${QUICKJS_S}" STRIP=
 }
 
