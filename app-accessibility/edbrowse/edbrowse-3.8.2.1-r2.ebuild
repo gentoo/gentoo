@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit edo toolchain-funcs
 
 QUICKJS_HASH=2788d71e823b522b178db3b3660ce93689534e6d
 QUICKJS_SHORT=2788d71
@@ -47,7 +47,7 @@ src_prepare() {
 src_compile() {
 	# First build quickjs so we can link to its static library.
 	# Also, quickjs doesn't appear to tag releases.
-	tools/quickjobfixup "${QUICKJS_S}" || die
+	edo tools/quickjobfixup "${QUICKJS_S}"
 	emake -C "${QUICKJS_S}" CC="$(tc-getCC)" AR="$(tc-getAR)" libquickjs.a
 
 	tc-export CC
