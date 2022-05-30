@@ -1,7 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
+inherit meson-multilib
 
 MY_PN="${PN/progs/demos}"
 MY_P="${MY_PN}-${PV}"
@@ -9,10 +11,8 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Mesa's OpenGL utility and demo programs (glxgears and glxinfo)"
 HOMEPAGE="https://www.mesa3d.org/ https://mesa.freedesktop.org/ https://gitlab.freedesktop.org/mesa/demos"
 if [[ ${PV} = 9999* ]]; then
-	inherit autotools git-r3
+	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/demos.git"
-	EGIT_CHECKOUT_DIR="${S}"
-	EXPERIMENTAL="true"
 else
 	SRC_URI="https://mesa.freedesktop.org/archive/demos/${MY_P}.tar.bz2
 		https://mesa.freedesktop.org/archive/demos/${PV}/${MY_P}.tar.bz2"
@@ -21,49 +21,58 @@ else
 fi
 LICENSE="LGPL-2"
 SLOT="0"
-IUSE="egl gles2"
+IUSE="gles2 wayland X"
 
 RDEPEND="
-	media-libs/mesa[egl(+)?,gles2?]
-	virtual/opengl
-	x11-libs/libX11"
+	media-libs/mesa[${MULTILIB_USEDEP},egl(+),gles2?,wayland?,X?]
+	wayland? ( dev-libs/wayland[${MULTILIB_USEDEP}] )
+	X? (
+		x11-libs/libX11[${MULTILIB_USEDEP}]
+		x11-libs/libXext[${MULTILIB_USEDEP}]
+	)
+"
 DEPEND="${RDEPEND}
-	virtual/glu
-	x11-base/xorg-proto"
-BDEPEND="sys-apps/grep
-	sys-apps/file"
+	wayland? ( >=dev-libs/wayland-protocols-1.12 )
+	X? ( x11-base/xorg-proto )
+"
+BDEPEND="
+	virtual/pkgconfig
+	wayland? ( dev-util/wayland-scanner )
+"
 
-src_prepare() {
-	default
-	[[ ${PV} = 9999* ]] && eautoreconf
+PATCHES=(
+	"${FILESDIR}"/8.5.0-Disable-things-we-don-t-want.patch
+)
+
+pkg_setup() {
+	MULTILIB_CHOST_TOOLS+=(
+		/usr/bin/eglinfo
+	)
+
+	use X && MULTILIB_CHOST_TOOLS+=(
+		/usr/bin/glxgears
+		/usr/bin/glxinfo
+	)
+
+	use gles2 && use X && MULTILIB_CHOST_TOOLS+=(
+		/usr/bin/es2_info
+		/usr/bin/es2gears_x11
+	)
+
+	use gles2 && use wayland && MULTILIB_CHOST_TOOLS+=(
+		/usr/bin/es2gears_wayland
+	)
 }
 
-src_compile() {
-	emake -C src/glad libglad.la
-	emake -C src/xdemos glxgears glxinfo
-
-	if use egl; then
-		emake LDLIBS="-lEGL" -C src/egl/opengl/ eglinfo
-		emake -C src/egl/eglut/ libeglut_x11.la
-		emake LDLIBS="-lGL -lEGL -lX11 -lm" -C src/egl/opengl/ eglgears_x11
-
-		if use gles2; then
-			emake LDLIBS="-lGLESv2 -lEGL -lX11" -C src/egl/opengles2/ es2_info
-			emake LDLIBS="-lGLESv2 -lEGL -lX11 -lm" -C src/egl/opengles2/ es2gears_x11
-		fi
-	fi
-}
-
-src_install() {
-	local demo='src/xdemos'
-	if use egl; then
-		demo="${demo} src/egl/opengl"
-
-		use gles2 && demo="${demo} src/egl/opengles2"
-	fi
-
-	# Ensure only the binaries are installed and not a similarly named wrapper script
-	find ${demo} -type f -print0 |
-		xargs -0 file | grep executable | grep ELF | cut -f 1 -d : |
-		xargs -I '{}' dobin '{}' || die
+multilib_src_configure() {
+	local emesonargs=(
+		-Dlibdrm=disabled
+		-Degl=enabled
+		-Dgles1=disabled
+		$(meson_feature gles2)
+		-Dosmesa=disabled
+		$(meson_feature wayland)
+		$(meson_feature X x11)
+	)
+	meson_src_configure
 }
