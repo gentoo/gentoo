@@ -29,8 +29,8 @@ IUSE="+X component-build cups cpu_flags_arm_neon debug gtk4 +hangouts headless +
 REQUIRED_USE="
 	component-build? ( !suid !libcxx )
 	screencast? ( wayland )
-	!headless ( || ( X wayland ) )
-	pgo ( X !wayland )
+	!headless? ( || ( X wayland ) )
+	pgo? ( X !wayland )
 "
 
 COMMON_X_DEPEND="
