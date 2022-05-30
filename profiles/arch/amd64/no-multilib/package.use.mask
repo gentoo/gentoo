@@ -1,9 +1,5 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Mike Gilbert <floppym@gentoo.org> (2022-05-30)
-# Requires sys-boot/gnu-efi[abi_x86_32]
-sys-boot/syslinux efi32
 
 # Sam James <sam@gentoo.org> (2020-12-27)
 # dev-embedded/libftd2xx unavailable here

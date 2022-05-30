@@ -1,10 +1,6 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Mike Gilbert <floppym@gentoo.org> (2022-05-30)
-# Requires sys-boot/gnu-efi[abi_x86_64]
-sys-boot/syslinux efi64
-
 # Jimi Huotari <chiitoo@gentoo.org> (2022-05-08)
 # Not keyworded here yet.
 lxqt-base/lxqt-meta desktop-portal
