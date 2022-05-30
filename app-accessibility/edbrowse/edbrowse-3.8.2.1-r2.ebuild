@@ -2,6 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit toolchain-funcs
+
 QUICKJS_HASH=2788d71e823b522b178db3b3660ce93689534e6d
 QUICKJS_SHORT=2788d71
 QUICKJS_S="${WORKDIR}/quickjs-${QUICKJS_HASH}"
@@ -34,11 +37,20 @@ PATCHES=(
 	"${FILESDIR}/${P}"-respect-ldflags.patch
 )
 
+src_prepare() {
+	default
+
+	cd "${QUICKJS_S}" || die
+	eapply "${FILESDIR}/${P}"-quickjs-respect-flags.patch
+}
+
 src_compile() {
 	# First build quickjs so we can link to its static library.
 	# Also, quickjs doesn't appear to tag releases.
 	tools/quickjobfixup "${QUICKJS_S}" || die
-	emake -C "${QUICKJS_S}" libquickjs.a
+	emake -C "${QUICKJS_S}" CC="$(tc-getCC)" AR="$(tc-getAR)" libquickjs.a
+
+	tc-export CC
 	emake -C src QUICKJS_DIR="${QUICKJS_S}" STRIP=
 }
 
