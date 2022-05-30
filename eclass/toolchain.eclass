@@ -1278,6 +1278,8 @@ toolchain_src_configure() {
 		confgcc+=( $(use_with zstd) )
 	fi
 
+	# This only controls whether the compiler *supports* LTO, not whether
+	# it's *built using* LTO. Hence we do it without a USE flag.
 	if tc_version_is_at_least 4.6 ; then
 		confgcc+=( --enable-lto )
 	elif tc_version_is_at_least 4.5 ; then
