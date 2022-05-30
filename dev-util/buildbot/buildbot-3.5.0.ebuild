@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_REQ_USE="sqlite"
 PYTHON_COMPAT=( python3_{8..10} )
 inherit readme.gentoo-r1 systemd distutils-r1
