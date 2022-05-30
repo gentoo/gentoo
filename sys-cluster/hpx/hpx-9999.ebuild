@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
@@ -15,11 +15,11 @@ fi
 inherit check-reqs cmake multiprocessing python-single-r1
 
 DESCRIPTION="C++ runtime system for parallel and distributed applications"
-HOMEPAGE="https://stellar.cct.lsu.edu/tag/hpx/"
+HOMEPAGE="https://hpx.stellar-group.org/"
 
 SLOT="0"
 LICENSE="Boost-1.0"
-IUSE="examples jemalloc mpi papi +perftools tbb"
+IUSE="examples jemalloc mpi papi +perftools tbb zlib"
 # tests fail to compile
 RESTRICT="test"
 
@@ -36,12 +36,12 @@ RDEPEND="
 	>=dev-cpp/asio-1.12.0
 	dev-libs/boost:=
 	sys-apps/hwloc:=
-	sys-libs/zlib
 	jemalloc? ( dev-libs/jemalloc:= )
 	mpi? ( virtual/mpi )
 	papi? ( dev-libs/papi )
 	perftools? ( dev-util/google-perftools:= )
 	tbb? ( dev-cpp/tbb:= )
+	zlib? ( sys-libs/zlib )
 "
 DEPEND="${RDEPEND}"
 
@@ -74,7 +74,8 @@ src_configure() {
 		-DHPX_WITH_PARCELPORT_MPI=$(usex mpi)
 		-DHPX_WITH_PAPI=$(usex papi)
 		-DHPX_WITH_GOOGLE_PERFTOOLS=$(usex perftools)
-		-DBUILD_TESTING=OFF
+		-DHPX_WITH_COMPRESSION_ZLIB=$(usex zlib)
+		-DHPX_WITH_TESTS=OFF
 	)
 	if use jemalloc; then
 		mycmakeargs+=( -DHPX_WITH_MALLOC=jemalloc )
