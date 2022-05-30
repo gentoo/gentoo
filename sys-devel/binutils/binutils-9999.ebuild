@@ -148,6 +148,11 @@ toolchain-binutils_pkgversion() {
 }
 
 src_configure() {
+	# See https://www.gnu.org/software/make/manual/html_node/Parallel-Output.html
+	# Avoid really confusing logs from subconfigure spam, makes logs far
+	# more legible.
+	MAKEOPTS="--output-sync=line ${MAKEOPTS}"
+
 	# Setup some paths
 	LIBPATH=/usr/$(get_libdir)/binutils/${CTARGET}/${PV}
 	INCPATH=${LIBPATH}/include
@@ -303,11 +308,11 @@ src_compile() {
 	cd "${MY_BUILDDIR}" || die
 
 	# see Note [tooldir hack for ldscripts]
-	emake tooldir="${EPREFIX}${TOOLPATH}" all
+	emake V=1 tooldir="${EPREFIX}${TOOLPATH}" all
 
 	# only build info pages if the user wants them
 	if use doc ; then
-		emake info
+		emake V=1 info
 	fi
 
 	# we nuke the manpages when we're left with junk
@@ -321,7 +326,7 @@ src_test() {
 	# bug #637066
 	filter-flags -Wall -Wreturn-type
 
-	emake -k check
+	emake -k V=1 check
 }
 
 src_install() {
@@ -330,7 +335,7 @@ src_install() {
 	cd "${MY_BUILDDIR}" || die
 
 	# see Note [tooldir hack for ldscripts]
-	emake DESTDIR="${D}" tooldir="${EPREFIX}${LIBPATH}" install
+	emake V=1 DESTDIR="${D}" tooldir="${EPREFIX}${LIBPATH}" install
 	rm -rf "${ED}"/${LIBPATH}/bin || die
 	use static-libs || find "${ED}" -name '*.la' -delete
 
