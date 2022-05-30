@@ -11,7 +11,7 @@ SRC_URI="https://github.com/editorconfig/${PN}/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 RESTRICT="test"		# make test requires a git repo
 
 SITEFILE="50${PN}-gentoo.el"
