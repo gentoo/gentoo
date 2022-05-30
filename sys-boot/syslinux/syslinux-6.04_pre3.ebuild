@@ -13,8 +13,9 @@ SRC_URI="https://git.zytor.com/syslinux/syslinux.git/snapshot/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="+bios efi32 efi64"
-REQUIRED_USE="|| ( bios efi32 efi64 )"
+IUSE="abi_x86_32 abi_x86_64 +bios +efi"
+REQUIRED_USE="|| ( bios efi )
+	efi? ( || ( abi_x86_32 abi_x86_64 ) )"
 
 BDEPEND="
 	dev-lang/perl
@@ -31,8 +32,7 @@ RDEPEND="
 	dev-perl/Digest-SHA1
 "
 DEPEND="${RDEPEND}
-	efi32? ( sys-boot/gnu-efi[abi_x86_32(-)] )
-	efi64? ( sys-boot/gnu-efi[abi_x86_64(-)] )
+	efi? ( sys-boot/gnu-efi[abi_x86_32(-)?,abi_x86_64(-)?] )
 	virtual/os-headers
 "
 
@@ -69,21 +69,26 @@ src_compile() {
 	if use bios; then
 		emake bios
 	fi
-	if use efi32; then
-		efimake x86 efi32
-	fi
-	if use efi64; then
-		efimake amd64 efi64
+	if use efi; then
+		if use abi_x86_32; then
+			efimake x86 efi32
+		fi
+		if use abi_x86_64; then
+			efimake amd64 efi64
+		fi
 	fi
 }
 
 src_install() {
+	local firmware=( $(usev bios) )
+	if use efi; then
+		use abi_x86_32 && firmware+=( efi32 )
+		use abi_x86_64 && firmware+=( efi64 )
+	fi
 	local args=(
 		INSTALLROOT="${ED}"
 		MANDIR='$(DATADIR)/man'
-		$(usev bios)
-		$(usev efi32)
-		$(usev efi64)
+		"${firmware[@]}"
 		install
 	)
 	emake -j1 "${args[@]}"
