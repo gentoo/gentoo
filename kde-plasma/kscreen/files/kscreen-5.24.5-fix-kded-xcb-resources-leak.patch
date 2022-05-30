@@ -1,0 +1,61 @@
+From 93cfd297506e4106a7b6e7bcc649442c5bf0f7d1 Mon Sep 17 00:00:00 2001
+From: Stefan Becker <chemobejk@gmail.com>
+Date: Sun, 29 May 2022 23:33:55 +0300
+Subject: [PATCH] X11: fix kded xcb resource leak
+
+This fixes commit 579358f501ae978aa527a25eb3ef9dd42557db46
+
+XOpenDisplay() internally calls xcb_connect(), creating a new XCB client
+connection. This means that on every KScreen configuration change event
+the kded5 process creates a new connection until XCB runs into the hard
+limit of 256 of clients, leading to the dreaded "Maximum number of
+clients reached" error.
+
+Re-use the display from QX11Info instead of calling XOpenDisplay().
+
+BUG: 453280
+
+
+(cherry picked from commit 0270a49328aa70b14dd08e2ed5a425ca3f8e4fd5)
+---
+ kded/daemon.cpp | 17 ++++++++---------
+ 1 file changed, 8 insertions(+), 9 deletions(-)
+
+diff --git a/kded/daemon.cpp b/kded/daemon.cpp
+index e8ed4ac..443d98d 100644
+--- a/kded/daemon.cpp
++++ b/kded/daemon.cpp
+@@ -361,6 +361,14 @@ void KScreenDaemon::alignX11TouchScreen()
+     if (qGuiApp->platformName() != QStringLiteral("xcb")) {
+         return;
+     }
++    auto *display = QX11Info::display();
++    if (!display) {
++        return;
++    }
++    auto *connection = QX11Info::connection();
++    if (!connection) {
++        return;
++    }
+ 
+     const QRect totalRect(QPoint(0, 0), m_monitoredConfig->data()->screen()->currentSize());
+     QRect internalOutputRect;
+@@ -411,15 +419,6 @@ void KScreenDaemon::alignX11TouchScreen()
+         break;
+     }
+ 
+-    auto *display = XOpenDisplay(nullptr);
+-    if (!display) {
+-        return;
+-    }
+-    auto *connection = QX11Info::connection();
+-    if (!connection) {
+-        return;
+-    }
+-
+     auto getAtom = [](xcb_connection_t *connection, const char *name) {
+         auto cookie = xcb_intern_atom(connection, true, strlen(name), name);
+         auto reply = xcb_intern_atom_reply(connection, cookie, nullptr);
+-- 
+GitLab
+
