@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
 inherit readme.gentoo-r1 distutils-r1
 
@@ -34,6 +35,7 @@ BDEPEND="
 	test? (
 		${RDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/parameterized[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 	)
 "
