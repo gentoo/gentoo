@@ -7,8 +7,11 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Python bindings for TSS"
-HOMEPAGE="https://pypi.org/project/tpm2-pytss/"
-SRC_URI="https://github.com/tpm2-software/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="
+	https://pypi.org/project/tpm2-pytss
+	https://github.com/tpm2-software/tpm2-pytss
+"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -29,12 +32,10 @@ DEPEND="${RDEPEND}
 BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	dev-python/pkgconfig[${PYTHON_USEDEP}]"
 
-distutils_enable_tests pytest
+PATCHES=(
+	"${FILESDIR}/${PN}-1.1.0-src-move-package-under-src-directory.patch"
+	)
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
-python_test() {
-	cd ${T}
-	PYTHONPATH="${BUILD_DIR}/install/$(python_get_sitedir):${S}:${PYTHONPATH}" \
-	epytest ${S}/test --import-mode=importlib
-}
+distutils_enable_tests pytest
