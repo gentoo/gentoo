@@ -8,7 +8,7 @@ QA_PKGCONFIG_VERSION=$(ver_cut 1)
 
 inherit bash-completion-r1 flag-o-matic meson-multilib python-any-r1 toolchain-funcs udev usr-ldscript
 
-DESCRIPTION="Utilities taken from systemd"
+DESCRIPTION="Utilities split out from systemd for OpenRC users"
 HOMEPAGE="https://systemd.io/"
 
 if [[ ${PV} == *.* ]]; then
