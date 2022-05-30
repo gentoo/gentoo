@@ -167,7 +167,7 @@ src_prepare() {
 }
 
 src_compile() {
-	tc-export AR CC LD OBJCOPY
+	tc-export AR CC CXX LD OBJCOPY
 
 	NV_ARGS=(
 		PREFIX="${EPREFIX}"/usr

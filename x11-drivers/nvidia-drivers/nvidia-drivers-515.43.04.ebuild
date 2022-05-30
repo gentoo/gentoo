@@ -191,7 +191,7 @@ options nvidia NVreg_OpenRmEnableUnsupportedGpus=1' "${T}"/nvidia.conf || die
 }
 
 src_compile() {
-	tc-export AR CC LD OBJCOPY
+	tc-export AR CC CXX LD OBJCOPY
 
 	NV_ARGS=(
 		PREFIX="${EPREFIX}"/usr
