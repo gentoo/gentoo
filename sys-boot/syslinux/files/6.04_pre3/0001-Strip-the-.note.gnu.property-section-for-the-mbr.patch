@@ -1,0 +1,47 @@
+From 60fef313164d1048cf11423656732953776e5e2f Mon Sep 17 00:00:00 2001
+From: Lukas Schwaighofer <lukas@schwaighofer.name>
+Date: Sat, 18 Aug 2018 12:48:21 +0200
+Subject: [PATCH 1/5] Strip the .note.gnu.property section for the mbr
+
+This section is added since binutils Debian version 2.31.1-2 and causes mbr.bin
+to grow in size beyond what can fit into the master boot record.
+
+Forwarded: https://www.syslinux.org/archives/2018-August/026168.html
+---
+ mbr/i386/mbr.ld   | 6 +++++-
+ mbr/x86_64/mbr.ld | 6 +++++-
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/mbr/i386/mbr.ld b/mbr/i386/mbr.ld
+index d14ba802..6d489904 100644
+--- a/mbr/i386/mbr.ld
++++ b/mbr/i386/mbr.ld
+@@ -69,5 +69,9 @@ SECTIONS
+   .debug_funcnames 0 : { *(.debug_funcnames) }
+   .debug_typenames 0 : { *(.debug_typenames) }
+   .debug_varnames  0 : { *(.debug_varnames) }
+-  /DISCARD/ : { *(.note.GNU-stack) }
++  /DISCARD/	  :
++  {
++    *(.note.GNU-stack)
++    *(.note.gnu.property)
++  }
+ }
+diff --git a/mbr/x86_64/mbr.ld b/mbr/x86_64/mbr.ld
+index ae27d49a..5b46db66 100644
+--- a/mbr/x86_64/mbr.ld
++++ b/mbr/x86_64/mbr.ld
+@@ -68,5 +68,9 @@ SECTIONS
+   .debug_funcnames 0 : { *(.debug_funcnames) }
+   .debug_typenames 0 : { *(.debug_typenames) }
+   .debug_varnames  0 : { *(.debug_varnames) }
+-  /DISCARD/ : { *(.note.GNU-stack) }
++  /DISCARD/	  :
++  {
++    *(.note.GNU-stack)
++    *(.note.gnu.property)
++  }
+ }
+-- 
+2.35.1
+
