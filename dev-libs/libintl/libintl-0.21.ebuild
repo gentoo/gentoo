@@ -38,6 +38,8 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myconf=(
+		--cache-file="${BUILD_DIR}"/config.cache
+
 		# Emacs support is now in a separate package.
 		--without-emacs
 		--without-lispdir
