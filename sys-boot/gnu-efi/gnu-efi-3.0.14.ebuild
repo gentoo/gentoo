@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Library for build EFI Applications"
 HOMEPAGE="https://sourceforge.net/projects/gnu-efi/"
