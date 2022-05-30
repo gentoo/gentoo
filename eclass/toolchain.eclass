@@ -1327,7 +1327,7 @@ toolchain_src_configure() {
 	# killing the 32bit builds which want /usr/lib.
 	export ac_cv_have_x='have_x=yes ac_x_includes= ac_x_libraries='
 
-	confgcc+=( "$@" )
+	confgcc+=( "$@" ${EXTRA_ECONF} )
 
 	if [[ -n ${build_config_targets} ]] ; then
 		# ./configure --with-build-config='bootstrap-lto bootstrap-cet'
