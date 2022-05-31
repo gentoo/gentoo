@@ -2,10 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{8..10} )
 VALA_MIN_API_VERSION="0.40"
 
-inherit gnome.org gnome2-utils meson python-any-r1 vala virtualx xdg
+inherit gnome.org gnome2-utils meson vala virtualx xdg
 
 DESCRIPTION="A calculator application for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Calculator"
@@ -31,7 +30,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	${PYTHON_DEPS}
 	dev-libs/appstream-glib
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
