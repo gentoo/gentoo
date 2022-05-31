@@ -64,17 +64,21 @@ efimake() {
 }
 
 src_compile() {
+	local DATE=$(date -u -r NEWS +%Y%m%d)
+	local HEXDATE=$(printf '0x%08x' "${DATE}")
+
 	tc-export AR CC LD OBJCOPY RANLIB
 	unset LDFLAGS
+
 	if use bios; then
-		emake bios
+		emake bios DATE="${DATE}" HEXDATE="${HEXDATE}"
 	fi
 	if use efi; then
 		if use abi_x86_32; then
-			efimake x86 efi32
+			efimake x86 efi32 DATE="${DATE}" HEXDATE="${HEXDATE}"
 		fi
 		if use abi_x86_64; then
-			efimake amd64 efi64
+			efimake amd64 efi64 DATE="${DATE}" HEXDATE="${HEXDATE}"
 		fi
 	fi
 }
