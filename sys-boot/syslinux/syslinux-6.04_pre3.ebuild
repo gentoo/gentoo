@@ -12,7 +12,7 @@ SRC_URI="https://git.zytor.com/syslinux/syslinux.git/snapshot/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+#KEYWORDS="-* ~amd64 ~x86"
 IUSE="abi_x86_32 abi_x86_64 +bios +efi"
 REQUIRED_USE="|| ( bios efi )
 	efi? ( || ( abi_x86_32 abi_x86_64 ) )"
