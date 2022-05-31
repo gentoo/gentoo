@@ -37,8 +37,10 @@ src_compile() {
 		CFLAGS="${CFLAGS}"
 		INSTALL="${INSTALL-install}"
 	)
+
 	if use fontforge || use utils; then
-		emake "${buildargs[@]}"
+		# -j1 for bug #843584
+		emake -j1 "${buildargs[@]}"
 	fi
 }
 
