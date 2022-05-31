@@ -327,7 +327,10 @@ src_configure() {
 		targets = "${LLVM_TARGETS// /;}"
 		experimental-targets = ""
 		link-shared = $(toml_usex system-llvm)
-		use-libcxx = ${use_libcxx}
+		$(if [[ ${use_libcxx} == true ]]; then
+			echo "use-libcxx = true"
+			echo "static-libstdcpp = false"
+		fi)
 		$(case "${rust_target}" in
 			i586-*-linux-*)
 				# https://github.com/rust-lang/rust/issues/93059
