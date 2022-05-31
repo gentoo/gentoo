@@ -33,7 +33,7 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
+			>=dev-python/PyQt5-5.15.6[gui,widgets,${PYTHON_USEDEP}]
 		')
 	)
 "
