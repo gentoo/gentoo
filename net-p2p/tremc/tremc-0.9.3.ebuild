@@ -11,8 +11,6 @@ inherit bash-completion-r1 optfeature python-single-r1
 DESCRIPTION="Ncurses interface for the Transmission BitTorrent client"
 HOMEPAGE="https://github.com/tremc/tremc"
 SRC_URI="https://github.com/tremc/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-COMMIT="8b6b29163295e5cf12d9d874e80203c5906619c8"
-S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-3"
 SLOT="0"
