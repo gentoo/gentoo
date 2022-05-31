@@ -1566,29 +1566,6 @@ distutils-r1_python_install() {
 		esetup.py "${args[@]}"
 	fi
 
-	local forbidden_package_names=(
-		examples test tests
-		.pytest_cache .hypothesis
-	)
-	local p
-	for p in "${forbidden_package_names[@]}"; do
-		if [[ -d ${root}$(python_get_sitedir)/${p} ]]; then
-			die "Package installs '${p}' package which is forbidden and likely a bug in the build system."
-		fi
-	done
-
-	local shopt_save=$(shopt -p nullglob)
-	shopt -s nullglob
-	local pypy_dirs=(
-		"${root}${EPREFIX}/usr/$(get_libdir)"/pypy*/share
-		"${root}${EPREFIX}/usr/lib"/pypy*/share
-	)
-	${shopt_save}
-
-	if [[ -n ${pypy_dirs} ]]; then
-		die "Package installs 'share' in PyPy prefix, see bug #465546."
-	fi
-
 	if [[ ! ${DISTUTILS_SINGLE_IMPL} || ${DISTUTILS_USE_PEP517} ]]; then
 		multibuild_merge_root "${root}" "${D%/}"
 		if [[ ${DISTUTILS_USE_PEP517} ]]; then
@@ -1843,6 +1820,37 @@ distutils-r1_src_test() {
 	fi
 
 	return ${ret}
+}
+
+# @FUNCTION: _distutils-r1_post_python_install
+# @INTERNAL
+# @DESCRIPTION:
+# Post-phase function called after python_install.
+_distutils-r1_post_python_install() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local forbidden_package_names=(
+		examples test tests
+		.pytest_cache .hypothesis
+	)
+	local p
+	for p in "${forbidden_package_names[@]}"; do
+		if [[ -d ${D}$(python_get_sitedir)/${p} ]]; then
+			die "Package installs '${p}' package which is forbidden and likely a bug in the build system."
+		fi
+	done
+
+	local shopt_save=$(shopt -p nullglob)
+	shopt -s nullglob
+	local pypy_dirs=(
+		"${D}${EPREFIX}/usr/$(get_libdir)"/pypy*/share
+		"${D}${EPREFIX}/usr/lib"/pypy*/share
+	)
+	${shopt_save}
+
+	if [[ -n ${pypy_dirs} ]]; then
+		die "Package installs 'share' in PyPy prefix, see bug #465546."
+	fi
 }
 
 # @FUNCTION: _distutils-r1_check_namespace_pth
