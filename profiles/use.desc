@@ -22,7 +22,6 @@ atm - Enable Asynchronous Transfer Mode protocol support
 appindicator - Build in support for notifications using the libindicate or libappindicator plugin
 audiofile - Add support for libaudiofile where applicable
 audit - Enable support for Linux audit subsystem using sys-process/audit
-ayatana - Build in support for Ayatana notification using the libindicate or libappindicator plugin
 bash-completion - Enable bash-completion support
 berkdb - Add support for sys-libs/db (Berkeley DB for MySQL)
 bidi - Enable bidirectional language support

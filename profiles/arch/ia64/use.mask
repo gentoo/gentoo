@@ -41,7 +41,6 @@ gnome-online-accounts
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
 # Dependency not keyworded (dev-libs/libindicate).
 appindicator
-ayatana
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-06-17)
 # There is no luajit support on ia64. Bug #554376

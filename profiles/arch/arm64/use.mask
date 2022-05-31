@@ -53,7 +53,6 @@ cpu_flags_arm_neon
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
 # Dependency not keyworded (dev-libs/libindicate).
 appindicator
-ayatana
 
 # Michał Górny <mgorny@gentoo.org> (2018-07-09)
 # No OpenCL provider is available on arm64.
