@@ -20,12 +20,6 @@
   <use>
     <flag name="babeltrace">Enable <pkg>dev-util/babeltrace</pkg> support</flag>
     <flag name="clang">Enable builtin clang and LLVM support</flag>
-    <flag name="demangle">
-      Enable C++ symbol name demangling, using libbfd from
-      <pkg>sys-devel/binutils</pkg>. When this flag is enabled, the
-      package will have to be rebuilt after every version bump of
-      binutils.
-    </flag>
     <flag name="doc">
       Build documentation and man pages. With this USE flag disabled,
       the --help parameter for perf and its sub-tools will not be
