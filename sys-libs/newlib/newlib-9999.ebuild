@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -143,9 +143,9 @@ src_install() {
 		done
 
 		# Move newlib-nano's version of newlib.h to newlib-nano/newlib.h
-		mkdir -p "${D}/usr/${CTARGET}/include/newlib-nano" || die
-		mv "${NEWLIBNANOTMPINSTALL}/usr/${CTARGET}/include/newlib.h" \
-			"${D}/usr/${CTARGET}/include/newlib-nano/newlib.h" || die
+		mkdir -p "${ED}/usr/${CTARGET}/include/newlib-nano" || die
+		mv "${NEWLIBNANOTMPINSTALL}/${EPREFIX}/usr/${CTARGET}/include/newlib.h" \
+			"${ED}/usr/${CTARGET}/include/newlib-nano/newlib.h" || die
 	fi
 
 	# minor hack to keep things clean
