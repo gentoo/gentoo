@@ -50,10 +50,6 @@ cpu_flags_arm_neon
 -cpu_flags_arm_vfpv4
 -cpu_flags_arm_vfp-d32
 
-# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
-# Dependency not keyworded (dev-libs/libindicate).
-appindicator
-
 # Michał Górny <mgorny@gentoo.org> (2018-07-09)
 # No OpenCL provider is available on arm64.
 opencl

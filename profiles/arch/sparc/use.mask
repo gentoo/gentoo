@@ -40,10 +40,6 @@ opencv
 # gimp dependencies unusable because of unaligned accesses, bug #638172
 gimp
 
-# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
-# Dependency not keyworded (dev-libs/libappindicator).
-appindicator
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2018-12-12)
 # mongodb is not keyworded on sparc
 mongodb
