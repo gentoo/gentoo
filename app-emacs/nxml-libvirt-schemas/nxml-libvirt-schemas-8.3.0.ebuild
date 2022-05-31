@@ -3,6 +3,13 @@
 
 EAPI=8
 
+# Packages which get releases together:
+# app-emacs/nxml-libvirt-schemas
+# dev-python/libvirt-python
+# dev-perl/Sys-Virt
+# app-emulation/libvirt
+# Please bump them together!
+
 inherit elisp
 
 MY_P="libvirt-${PV}"
