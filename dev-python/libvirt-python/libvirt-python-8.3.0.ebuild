@@ -3,7 +3,12 @@
 
 EAPI=7
 
-# Please bump with app-emulation/libvirt!
+# Packages which get releases together:
+# app-emacs/nxml-libvirt-schemas
+# dev-python/libvirt-python
+# dev-perl/Sys-Virt
+# app-emulation/libvirt
+# Please bump them together!
 
 PYTHON_COMPAT=( python3_{8..11} )
 DISTUTILS_USE_PEP517=setuptools
