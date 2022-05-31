@@ -28,6 +28,7 @@ RDEPEND="
 	>=virtual/jre-1.8:*
 "
 
+PATCHES=( "${FILESDIR}/commons-daemon-1.3.1-Make.patch" )
 DOCS=( {CONTRIBUTING,README}.md {HOWTO-RELEASE,NOTICE,RELEASE-NOTES}.txt )
 HTML_DOCS=( PROPOSAL.html )
 
@@ -41,6 +42,11 @@ JAVA_SRC_DIR="src/main/java"
 # which is not even run upstream ( mvn test ).
 # JAVA_TEST_GENTOO_CLASSPATH="junit-4"
 # JAVA_TEST_SRC_DIR="src/test/java"
+
+src_prepare() {
+	default
+	java-pkg-2_src_prepare
+}
 
 src_compile() {
 	java-pkg-simple_src_compile
