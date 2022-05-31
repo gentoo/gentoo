@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
@@ -18,7 +18,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="MIT Apache-2.0 CC0-1.0 public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
-IUSE="assets charts hyphenation ipython jinja server watchdog webmedia"
+IUSE="charts hyphenation ipython jinja server watchdog webmedia"
 REQUIRED_USE="server? ( watchdog )"
 RESTRICT="test" # needs coveralls
 
@@ -40,7 +40,6 @@ RDEPEND="${DEPEND}
 	>=dev-python/yapsy-1.11.223[${PYTHON_USEDEP}]
 	dev-python/pillow[jpeg,${PYTHON_USEDEP}]
 	dev-python/cloudpickle[${PYTHON_USEDEP}]
-	assets? ( >=dev-python/webassets-0.10.1[${PYTHON_USEDEP}] )
 	charts? ( >=dev-python/pygal-2.0.1[${PYTHON_USEDEP}] )
 	hyphenation? ( >=dev-python/pyphen-0.9.1[${PYTHON_USEDEP}] )
 	ipython? ( >=dev-python/ipython-2.0.0[notebook,${PYTHON_USEDEP}] )
