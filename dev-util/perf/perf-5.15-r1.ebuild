@@ -54,8 +54,8 @@ RDEPEND="audit? ( sys-process/audit )
 	babeltrace? ( dev-util/babeltrace )
 	crypt? ( virtual/libcrypt:= )
 	clang? (
-		sys-devel/clang:=
-		sys-devel/llvm:=
+		<sys-devel/clang-14:=
+		<sys-devel/llvm-14:=
 	)
 	gtk? ( x11-libs/gtk+:2 )
 	java? ( virtual/jre:* )
@@ -96,7 +96,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	use clang && llvm_pkg_setup
+	use clang && LLVM_MAX_SLOT=13 llvm_pkg_setup
 	# We enable python unconditionally as libbpf always generates
 	# API headers using python script
 	python_setup
