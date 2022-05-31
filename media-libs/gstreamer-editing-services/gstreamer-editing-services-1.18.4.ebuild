@@ -28,14 +28,12 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.9.6:= )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
-	>=dev-util/gtk-doc-am-1.3
-	virtual/pkgconfig
-"
+BDEPEND="virtual/pkgconfig"
+
 # Some tests are failing
 RESTRICT="test"
 
-S=${WORKDIR}/${P/gstreamer/gst}
+S="${WORKDIR}"/${P/gstreamer/gst}
 
 src_configure() {
 	local emesonargs=(
