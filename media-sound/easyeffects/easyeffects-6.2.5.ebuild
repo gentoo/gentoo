@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gnome2-utils flag-o-matic meson
+inherit gnome2-utils flag-o-matic meson toolchain-funcs
 
 DESCRIPTION="Limiter, auto volume and many other plugins for PipeWire applications"
 HOMEPAGE="https://github.com/wwmm/easyeffects"
@@ -62,6 +62,10 @@ pkg_pretend() {
 	if [[ ${MERGE_TYPE} != "binary" ]] ; then
 		if ! test-flag-CXX -std=c++20 ; then
 			die "${PN} requires degree of C++20 support only available since GCC 10 or Clang 10"
+		fi
+
+		if tc-is-gcc && [[ $(gcc-major-version) -lt 11 ]] ; then
+			die "Since version 6.2.5 ${PN} requires GCC 11 or newer to build (Bug #848072)"
 		fi
 	fi
 }
