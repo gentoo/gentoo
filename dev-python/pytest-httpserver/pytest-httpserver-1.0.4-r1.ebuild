@@ -16,6 +16,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
+RDEPEND="dev-python/werkzeug[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
 		dev-python/requests[${PYTHON_USEDEP}]
