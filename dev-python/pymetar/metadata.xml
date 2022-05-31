@@ -17,6 +17,7 @@ report. Documentation and a small example app are inside the tarball.
 ンはtarballファイルの中です。
 </longdescription>
 	<upstream>
+		<remote-id type="github">klausman/pymetar</remote-id>
 		<remote-id type="pypi">pymetar</remote-id>
 	</upstream>
 </pkgmetadata>
