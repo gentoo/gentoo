@@ -29,9 +29,11 @@ DEPEND="
 	$(python_gen_cond_dep '
 		>dev-python/requests-2.21.0[${PYTHON_USEDEP}]
 		dev-python/isodate[${PYTHON_USEDEP}]
+		>=dev-python/lxml-4.6.4[${PYTHON_USEDEP}]
 		dev-python/websocket-client[${PYTHON_USEDEP}]
 		dev-python/pycountry[${PYTHON_USEDEP}]
 		>=dev-python/pycryptodome-3.4.3[${PYTHON_USEDEP}]
+		>dev-python/PySocks-1.5.7[${PYTHON_USEDEP}]
 		>=dev-python/versioningit-1.1.1[${PYTHON_USEDEP}]
 	')
 "
