@@ -211,7 +211,8 @@ src_install() {
 
 	# install headers
 	insinto /usr/include/wireshark
-	doins "${BUILD_DIR}"/config.h
+	doins ws_diag_control.h ws_symbol_export.h \
+		"${BUILD_DIR}"/config.h
 
 	# If trying to remove this, try build e.g. libvirt first!
 	# At last check, Fedora is still doing this too.
@@ -236,12 +237,12 @@ src_install() {
 
 		for s in 16 32 48 64 128 256 512 1024 ; do
 			insinto /usr/share/icons/hicolor/${s}x${s}/apps
-			newins resources/icons/wsicon${s}.png wireshark.png
+			newins image/wsicon${s}.png wireshark.png
 		done
 
 		for s in 16 24 32 48 64 128 256 ; do
 			insinto /usr/share/icons/hicolor/${s}x${s}/mimetypes
-			newins resources/icons//WiresharkDoc-${s}.png application-vnd.tcpdump.pcap.png
+			newins image/WiresharkDoc-${s}.png application-vnd.tcpdump.pcap.png
 		done
 	fi
 
