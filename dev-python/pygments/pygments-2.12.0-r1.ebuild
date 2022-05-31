@@ -31,12 +31,6 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-2.11.2-fix-docs-relative.patch"
-)
-
-distutils_enable_sphinx doc \
-	dev-python/wcag-contrast-ratio
 distutils_enable_tests pytest
 
 python_install_all() {
