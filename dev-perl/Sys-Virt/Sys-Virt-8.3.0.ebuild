@@ -3,6 +3,13 @@
 
 EAPI=8
 
+# Packages which get releases together:
+# app-emacs/nxml-libvirt-schemas
+# dev-python/libvirt-python
+# dev-perl/Sys-Virt
+# app-emulation/libvirt
+# Please bump them together!
+
 DIST_AUTHOR=DANBERR
 DIST_VERSION=v${PV}
 DIST_EXAMPLES=("examples/*")
