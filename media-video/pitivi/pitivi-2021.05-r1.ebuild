@@ -8,7 +8,7 @@ PYTHON_REQ_USE="sqlite"
 inherit gnome.org meson python-single-r1 xdg
 
 DESCRIPTION="A non-linear video editor using the GStreamer multimedia framework"
-HOMEPAGE="http://www.pitivi.org"
+HOMEPAGE="https://www.pitivi.org"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -34,6 +34,9 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-libs/glib-2.30.0:2
 
 	>=dev-libs/gobject-introspection-1.34:=
+
+	dev-libs/libpeas[${PYTHON_SINGLE_USEDEP}]
+
 	$(python_gen_cond_dep '
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 		>=dev-python/gst-python-1.4:1.0[${PYTHON_USEDEP}]
@@ -59,7 +62,9 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/yelp-tools
-	dev-python/setuptools
+	$(python_gen_cond_dep '
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	')
 	>=dev-util/intltool-0.35.5
 	dev-util/itstool
 	sys-devel/gettext
@@ -69,6 +74,7 @@ BDEPEND="
 PATCHES=(
 	# https://gitlab.gnome.org/GNOME/pitivi/-/commit/ddf2369d1fc6fddd63f676cc905a8b8e96291a4c
 	"${FILESDIR}"/${P}-meson-compatibility.patch
+	"${FILESDIR}"/${P}-python-collections.patch
 )
 
 src_configure() {
