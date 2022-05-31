@@ -12,7 +12,7 @@ inherit gnome2-utils distutils-r1 virtualx xdg
 MY_PV="${PV/_/-}"
 DESCRIPTION="A simple audiofile converter application for the GNOME environment"
 HOMEPAGE="https://soundconverter.org/"
-SRC_URI="https://github.com/kassoulet/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/kassoulet/${PN}/archive/${MY_PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
