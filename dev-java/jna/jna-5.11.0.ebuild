@@ -46,7 +46,7 @@ RDEPEND="
 DOCS=( README.md CHANGES.md OTHERS TODO )
 PATCHES=(
 	"${FILESDIR}/5.10.0-build.xml.patch"
-	"${FILESDIR}/4.2.2-makefile-flags.patch"
+	"${FILESDIR}/5.11.0-makefile-flags.patch"
 )
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
@@ -65,7 +65,7 @@ pkg_setup() {
 	# Any spaces in paths returned by toolchain-funcs and options like MAKEOPTS
 	# could cause trouble in EANT_EXTRA_ARGS when Java eclasses process the
 	# variable's value, so define them in ANT_OPTS instead
-	ANT_OPTS="-DCC='$(tc-getCC)'"
+	ANT_OPTS="-DCC='$(tc-getCC)' -DSTRIP='$(tc-getSTRIP)'"
 	# Parallel build does not respect dependency relationships between objects
 	ANT_OPTS+=" -DEXTRA_MAKE_OPTS='${MAKEOPTS} -j1'"
 }
