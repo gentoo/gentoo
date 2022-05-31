@@ -1,15 +1,15 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="xml"
-DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1 git-r3 prefix
 
-EGIT_REPO_URI="git://anongit.gentoo.org/proj/mirrorselect.git"
+EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/mirrorselect.git"
 
 DESCRIPTION="Tool to help select distfiles mirrors for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Mirrorselect"
