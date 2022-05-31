@@ -1865,6 +1865,10 @@ _distutils-r1_check_namespace_pth() {
 		ewarn "the ebuild accordingly:"
 		ewarn
 		ewarn "  https://projects.gentoo.org/python/guide/concept.html#namespace-packages"
+
+		if ! has "${EAPI}" 6 7 8; then
+			die "*-nspkg.pth files are banned in EAPI ${EAPI}"
+		fi
 	fi
 }
 
