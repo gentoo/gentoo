@@ -438,6 +438,8 @@ src_configure() {
 		cat <<- _EOF_ >> "${S}"/config.toml
 			[target.wasm32-unknown-unknown]
 			linker = "$(usex system-llvm lld rust-lld)"
+			# wasm target does not have profiler_builtins https://bugs.gentoo.org/848483
+			profiler = false
 		_EOF_
 	fi
 
