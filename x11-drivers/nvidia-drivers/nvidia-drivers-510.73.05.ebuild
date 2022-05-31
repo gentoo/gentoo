@@ -5,7 +5,7 @@ EAPI=8
 
 MODULES_OPTIONAL_USE="driver"
 inherit desktop flag-o-matic linux-mod multilib readme.gentoo-r1 \
-	systemd toolchain-funcs udev unpacker user-info
+	systemd toolchain-funcs unpacker user-info
 
 NV_KERNEL_MAX="5.18"
 NV_URI="https://download.nvidia.com/XFree86/"
@@ -380,9 +380,6 @@ https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 	# symlink non-versioned so nvidia-settings can use it even if misdetected
 	dosym nvidia-application-profiles-${PV}-key-documentation \
 		${paths[APPLICATION_PROFILE]}/nvidia-application-profiles-key-documentation
-
-	# udev rules taken from nvidia's README.txt to help with power management
-	use driver && udev_newrules "${FILESDIR}"/nvidia-470.rules 60-nvidia.rules
 }
 
 pkg_preinst() {
@@ -414,7 +411,6 @@ pkg_preinst() {
 
 pkg_postinst() {
 	linux-mod_pkg_postinst
-	use driver && udev_reload
 
 	readme.gentoo_print_elog
 
@@ -462,9 +458,4 @@ pkg_postinst() {
 		elog "If you experience issues, either disable wayland or edit nvidia.conf."
 		elog "Of note, may possibly cause issues with SLI and Reverse PRIME."
 	fi
-}
-
-pkg_postrm() {
-	linux-mod_pkg_postrm
-	use driver && udev_reload
 }
