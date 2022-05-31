@@ -1818,15 +1818,24 @@ _distutils-r1_clean_egg_info() {
 	rm -rf "${BUILD_DIR}"/lib/*.egg-info || die
 }
 
+# @FUNCTION: _distutils-r1_post_python_test
+# @INTERNAL
+# @DESCRIPTION:
+# Post-phase function called after python_test.
+_distutils-r1_post_python_test() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	if [[ ! ${DISTUTILS_USE_PEP517} ]]; then
+		_distutils-r1_clean_egg_info
+	fi
+}
+
 distutils-r1_src_test() {
 	debug-print-function ${FUNCNAME} "${@}"
 	local ret=0
 
 	if declare -f python_test >/dev/null; then
 		_distutils-r1_run_foreach_impl python_test || ret=${?}
-		if [[ ! ${DISTUTILS_USE_PEP517} ]]; then
-			_distutils-r1_run_foreach_impl _distutils-r1_clean_egg_info
-		fi
 	fi
 
 	if declare -f python_test_all >/dev/null; then
