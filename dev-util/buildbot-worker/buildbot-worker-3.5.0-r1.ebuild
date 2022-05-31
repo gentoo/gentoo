@@ -26,12 +26,12 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	acct-user/buildbot
 	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
+	>=dev-python/msgpack-0.6.0[${PYTHON_USEDEP}]
 	>=dev-python/twisted-17.9.0[${PYTHON_USEDEP}]
 	dev-python/future[${PYTHON_USEDEP}]
 	!<dev-util/buildbot-1.0.0
 "
 BDEPEND="
-	>=dev-python/msgpack-0.6.0[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
