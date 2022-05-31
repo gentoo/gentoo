@@ -64,6 +64,10 @@ pkg_setup() {
 src_configure() {
 	use sparc && tc-is-gcc && append-flags -fno-tree-ccp # bug 686620
 	local mycmakeargs=(
+		# Workaround needed to allow build with USE=fortran when an older
+		# version is installed. See bug #808633 and
+		# https://github.com/HDFGroup/hdf5/issues/1027 upstream.
+		-DCMAKE_INCLUDE_DIRECTORIES_PROJECT_BEFORE=ON
 		-DBUILD_STATIC_LIBS=OFF
 		-DONLY_SHARED_LIBS=ON
 		-DFETCHCONTENT_FULLY_DISCONNECTED=ON
