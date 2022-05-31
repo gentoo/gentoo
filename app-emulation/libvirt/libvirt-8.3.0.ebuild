@@ -3,7 +3,12 @@
 
 EAPI=8
 
-# Please bump with dev-python/libvirt-python!
+# Packages which get releases together:
+# app-emacs/nxml-libvirt-schemas
+# dev-python/libvirt-python
+# dev-perl/Sys-Virt
+# app-emulation/libvirt
+# Please bump them together!
 
 PYTHON_COMPAT=( python3_{8..11} )
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/libvirt.org.asc
