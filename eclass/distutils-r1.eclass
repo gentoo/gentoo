@@ -1687,6 +1687,11 @@ distutils-r1_run_phase() {
 	fi
 
 	cd "${_DISTUTILS_INITIAL_CWD}" || die
+	if [[ ! ${_DISTUTILS_IN_COMMON_IMPL} ]] &&
+		declare -f "_distutils-r1_post_python_${EBUILD_PHASE}" >/dev/null
+	then
+		"_distutils-r1_post_python_${EBUILD_PHASE}"
+	fi
 	return "${ret}"
 }
 
@@ -1701,6 +1706,7 @@ distutils-r1_run_phase() {
 # of sources made for the selected Python interpreter.
 _distutils-r1_run_common_phase() {
 	local DISTUTILS_ORIG_BUILD_DIR=${BUILD_DIR}
+	local _DISTUTILS_IN_COMMON_IMPL=1
 
 	if [[ ${DISTUTILS_SINGLE_IMPL} ]]; then
 		# reuse the dedicated code branch
