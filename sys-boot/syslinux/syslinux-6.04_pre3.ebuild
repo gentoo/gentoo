@@ -17,6 +17,8 @@ IUSE="abi_x86_32 abi_x86_64 +bios +efi"
 REQUIRED_USE="|| ( bios efi )
 	efi? ( || ( abi_x86_32 abi_x86_64 ) )"
 
+RESTRICT="test"
+
 BDEPEND="
 	dev-lang/perl
 	bios? (
