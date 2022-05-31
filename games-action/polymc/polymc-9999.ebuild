@@ -79,6 +79,10 @@ RDEPEND="
 
 src_prepare() {
 	cmake_src_prepare
+
+	# Prevent conflicting with the user's flags
+	# See https://bugs.gentoo.org/848765 for more info
+	sed -i -e 's/-Werror//' -e 's/-D_FORTIFY_SOURCE=2//' CMakeLists.txt || die 'Failed to remove -Werror and -D_FORTIFY_SOURCE via sed'
 }
 
 src_configure(){
