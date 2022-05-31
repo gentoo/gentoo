@@ -1318,6 +1318,11 @@ epytest() {
 
 	# remove common temporary directories left over by pytest plugins
 	rm -rf .hypothesis .pytest_cache || die
+	# pytest plugins create additional .pyc files while testing
+	# see e.g. https://bugs.gentoo.org/847235
+	if [[ -n ${BUILD_DIR} && -d ${BUILD_DIR} ]]; then
+		find "${BUILD_DIR}" -name '*-pytest-*.pyc' -delete || die
+	fi
 
 	return ${ret}
 }
