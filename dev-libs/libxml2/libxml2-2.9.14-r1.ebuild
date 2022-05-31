@@ -5,8 +5,8 @@ EAPI=7
 
 # Note: Please bump in sync with dev-libs/libxslt
 
-PYTHON_COMPAT=( python3_{8..10} )
-PYTHON_REQ_USE="xml"
+PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_REQ_USE="xml(+)"
 inherit autotools flag-o-matic python-r1 multilib-minimal
 
 XSTS_HOME="http://www.w3.org/XML/2004/xml-schema-test-suite"
