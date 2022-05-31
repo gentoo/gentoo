@@ -38,6 +38,7 @@
 # revdeps.  If one of the pytest plugins using werkzeug is installed,
 # this mean that all pytest invocations suddenly fail.  Mask until
 # we resolve this.
+# https://github.com/pallets/werkzeug/issues/2425
 =dev-lang/python-3.11.0_beta2
 
 # Sam James <sam@gentoo.org> (2022-05-30)
