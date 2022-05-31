@@ -1839,18 +1839,6 @@ _distutils-r1_post_python_install() {
 			die "Package installs '${p}' package which is forbidden and likely a bug in the build system."
 		fi
 	done
-
-	local shopt_save=$(shopt -p nullglob)
-	shopt -s nullglob
-	local pypy_dirs=(
-		"${D}${EPREFIX}/usr/$(get_libdir)"/pypy*/share
-		"${D}${EPREFIX}/usr/lib"/pypy*/share
-	)
-	${shopt_save}
-
-	if [[ -n ${pypy_dirs} ]]; then
-		die "Package installs 'share' in PyPy prefix, see bug #465546."
-	fi
 }
 
 # @FUNCTION: _distutils-r1_check_namespace_pth
