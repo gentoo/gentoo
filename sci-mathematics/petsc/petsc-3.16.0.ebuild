@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -171,7 +171,7 @@ src_configure() {
 		[-lptesmumps,-lptscotch,-lptscotcherr,-lscotch,-lscotcherr]) \
 		$(petsc_with mumps scalapack \
 			/usr/include/scalapack -lscalapack) \
-		$(use_with mumps mumps \
+		$(petsc_with mumps mumps \
 			/usr/include \
 			[-lcmumps,-ldmumps,-lsmumps,-lzmumps,-lmumps_common,-lpord]) \
 		--with-imagemagick=0 \
