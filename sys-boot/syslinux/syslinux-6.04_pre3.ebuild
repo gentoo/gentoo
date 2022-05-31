@@ -45,7 +45,8 @@ QA_FLAGS_IGNORED=".*"
 
 src_prepare() {
 	local PATCHES=(
-		"${FILESDIR}/${PV}"
+		"${FILESDIR}/6.04_pre1"
+		"${FILESDIR}/6.04_pre3"
 	)
 	default
 }
