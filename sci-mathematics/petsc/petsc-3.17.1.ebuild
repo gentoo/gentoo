@@ -168,12 +168,12 @@ src_configure() {
 		$(petsc_with superlu superlu /usr/include/superlu -lsuperlu) \
 		$(petsc_with scotch ptscotch /usr/include/scotch [-lptesmumps,-lptscotch,-lptscotcherr,-lscotch,-lscotcherr]) \
 		$(petsc_with mumps scalapack /usr/include/scalapack -lscalapack) \
+		$(petsc_with mumps mumps /usr/include [-lcmumps,-ldmumps,-lsmumps,-lzmumps,-lmumps_common,-lpord]) \
 		$(use fortran && echo "$(petsc_select mpi fc mpif77 $(tc-getF77))") \
 		$(use int64 && echo "--with-index-size=64") \
 		$(use_with boost) \
 		$(use_with fftw) \
 		$(use_with hdf5) \
-		$(use_with mumps mumps /usr/include [-lcmumps,-ldmumps,-lsmumps,-lzmumps,-lmumps_common,-lpord]) \
 		$(use_with X x) \
 		$(use_with X x11)
 }
