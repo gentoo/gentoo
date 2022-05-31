@@ -9,7 +9,7 @@ VALA_MIN_API_VERSION="0.28"
 inherit gnome.org gnome2-utils meson python-single-r1 vala xdg
 
 DESCRIPTION="Collection of extra plugins for the gedit Text Editor"
-HOMEPAGE="https://wiki.gnome.org/Apps/Gedit/ShippedPlugins"
+HOMEPAGE="https://wiki.gnome.org/Apps/Gedit/ThirdPartyPlugins"
 
 LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
