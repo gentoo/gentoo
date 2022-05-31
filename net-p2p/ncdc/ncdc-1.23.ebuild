@@ -23,7 +23,7 @@ RDEPEND="
 	app-arch/bzip2
 	dev-db/sqlite:3
 	>=dev-libs/glib-2.32:2
-	net-libs/gnutls:=
+	>=net-libs/gnutls-3:=
 	sys-libs/ncurses:=[unicode(+)]
 	sys-libs/zlib:=
 	geoip? (
