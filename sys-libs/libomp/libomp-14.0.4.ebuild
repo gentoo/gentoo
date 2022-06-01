@@ -4,7 +4,7 @@
 EAPI=8
 
 CMAKE_ECLASS=cmake
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit cmake-multilib linux-info llvm llvm.org python-any-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
@@ -57,7 +57,7 @@ LLVM_COMPONENTS=( openmp llvm/include )
 llvm.org_set_globals
 
 python_check_deps() {
-	has_version "dev-python/lit[${PYTHON_USEDEP}]"
+	use test && python_has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
 kernel_pds_check() {
