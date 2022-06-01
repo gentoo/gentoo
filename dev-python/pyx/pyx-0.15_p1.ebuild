@@ -4,8 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-#DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
@@ -25,31 +24,27 @@ IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	dev-libs/kpathsea:=
 	dev-python/pillow[${PYTHON_USEDEP}]
-	virtual/tex-base
+	dev-texlive/texlive-basic
 	virtual/latex-base
-	dev-texlive/texlive-basic"
+	virtual/tex-base"
 
 BDEPEND="${RDEPEND}
 	doc? (
-		$(python_gen_any_dep '
-			dev-python/sphinx[latex,${PYTHON_USEDEP}]
-			dev-python/sphinx_selective_exclude[${PYTHON_USEDEP}]
-		')
+		dev-python/sphinx[latex,${PYTHON_USEDEP}]
+		dev-python/sphinx_selective_exclude[${PYTHON_USEDEP}]
+		dev-tex/latexmk
 	)
 	test? (
-		dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/sphinx_selective_exclude[${PYTHON_USEDEP}]
 		dev-python/testfixtures[${PYTHON_USEDEP}]
-	)"
+		dev-python/sphinx[latex,${PYTHON_USEDEP}]
+		dev-python/sphinx_selective_exclude[${PYTHON_USEDEP}]
+		~dev-python/pyx-${PV}[${PYTHON_USEDEP}]
+	)
+"
 
 PATCHES=( "${FILESDIR}"/pyx-0.14.1-unicode-latex.patch )
-
-python_check_deps() {
-	use doc || return 0
-	has_version "dev-python/sphinx[latex,${PYTHON_USEDEP}]" &&
-	has_version "dev-python/sphinx_selective_exclude[${PYTHON_USEDEP}]"
-}
 
 src_unpack() {
 	unpack "${P}.tar.bz2"
