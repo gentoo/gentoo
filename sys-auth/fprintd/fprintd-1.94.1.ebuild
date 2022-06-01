@@ -59,12 +59,12 @@ PATCHES=(
 S="${WORKDIR}/${MY_P}"
 
 python_check_deps() {
-	use test && python_has_version -d 
-	"dev-python/dbus-python[${PYTHON_USEDEP}]" \
-	"dev-python/pycairo[${PYTHON_USEDEP}]" \
-	"dev-python/python-dbusmock[${PYTHON_USEDEP}]" && \
-		(use pam || return 0) && \
-			"sys-libs/pam_wrapper[${PYTHON_USEDEP}]"
+	use test && python_has_version -d \
+		"dev-python/dbus-python[${PYTHON_USEDEP}]" \
+		"dev-python/pycairo[${PYTHON_USEDEP}]" \
+		"dev-python/python-dbusmock[${PYTHON_USEDEP}]" && \
+			(use pam || return 0) && \
+				"sys-libs/pam_wrapper[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
