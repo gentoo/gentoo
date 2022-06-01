@@ -12,7 +12,7 @@ S="${WORKDIR}/seqan3-${PV}-Source"
 
 LICENSE="BSD GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~amd64-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE="cpu_flags_x86_sse4_2"
 REQUIRED_USE="cpu_flags_x86_sse4_2"
 
