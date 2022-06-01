@@ -1,12 +1,12 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 VALA_MIN_API_VERSION="0.14"
 VALA_USE_DEPEND="vapigen"
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit desktop git-r3 meson python-any-r1 readme.gentoo-r1 vala xdg-utils
 
@@ -82,14 +82,15 @@ BDEPEND="
 "
 
 python_check_deps() {
-	has_version "dev-python/six[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/pyparsing[${PYTHON_USEDEP}]"
+	python_has_version \
+		"dev-python/six[${PYTHON_USEDEP}]" \
+		"dev-python/pyparsing[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {
 	default
 
-	use vala && vala_src_prepare
+	use vala && vala_setup
 }
 
 src_configure() {
