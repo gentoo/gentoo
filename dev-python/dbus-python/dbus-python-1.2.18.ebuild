@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="threads(+)"
@@ -28,17 +28,31 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( $(python_gen_any_dep '
+	doc? (
+		$(python_gen_any_dep '
 			dev-python/sphinx[${PYTHON_USEDEP}]
 			dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
-		') )
-	test? ( dev-python/pygobject:3[${PYTHON_USEDEP}]
-		dev-python/tappy[${PYTHON_USEDEP}] )
+		')
+	)
+	test? (
+		$(python_gen_any_dep '
+			dev-python/pygobject:3[${PYTHON_USEDEP}]
+			dev-python/tappy[${PYTHON_USEDEP}]
+		')
+	)
 "
 
 python_check_deps() {
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
-	has_version "dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]"
+	if use doc; then
+		python_has_version \
+			"dev-python/sphinx[${PYTHON_USEDEP}]" \
+			"dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]" || return 1
+	fi
+	if use test; then
+		python_has_version \
+			"dev-python/pygobject:3[${PYTHON_USEDEP}]" \
+			"dev-python/tappy[${PYTHON_USEDEP}]" || return 1
+	fi
 }
 
 src_prepare() {
