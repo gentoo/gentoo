@@ -20,7 +20,7 @@ SLOT="5"
 KEYWORDS="amd64 x86"
 
 RDEPEND="
-	>=dev-libs/libwacom-0.30
+	>=dev-libs/libwacom-0.30:=
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtdeclarative-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
