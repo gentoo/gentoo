@@ -805,10 +805,10 @@ python_newscript() {
 # site-packages directory.
 #
 # In the relative case, the exact path is determined directly
-# by each python_doscript/python_newscript function. Therefore,
-# python_moduleinto can be safely called before establishing the Python
-# interpreter and/or a single call can be used to set the path correctly
-# for multiple implementations, as can be seen in the following example.
+# by each python_domodule invocation. Therefore, python_moduleinto
+# can be safely called before establishing the Python interpreter and/or
+# a single call can be used to set the path correctly for multiple
+# implementations, as can be seen in the following example.
 #
 # Example:
 # @CODE
