@@ -696,6 +696,9 @@ python_scriptinto() {
 python_doexe() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EBUILD_PHASE} != install ]] &&
+		die "${FUNCNAME} can only be used in src_install"
+
 	local f
 	for f; do
 		python_newexe "${f}" "${f##*/}"
@@ -714,6 +717,8 @@ python_doexe() {
 python_newexe() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EBUILD_PHASE} != install ]] &&
+		die "${FUNCNAME} can only be used in src_install"
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
 	[[ ${#} -eq 2 ]] || die "Usage: ${FUNCNAME} <path> <new-name>"
 
@@ -762,6 +767,9 @@ python_newexe() {
 python_doscript() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EBUILD_PHASE} != install ]] &&
+		die "${FUNCNAME} can only be used in src_install"
+
 	local _PYTHON_REWRITE_SHEBANG=1
 	python_doexe "${@}"
 }
@@ -785,6 +793,9 @@ python_doscript() {
 # @CODE
 python_newscript() {
 	debug-print-function ${FUNCNAME} "${@}"
+
+	[[ ${EBUILD_PHASE} != install ]] &&
+		die "${FUNCNAME} can only be used in src_install"
 
 	local _PYTHON_REWRITE_SHEBANG=1
 	python_newexe "${@}"
@@ -894,6 +905,8 @@ python_domodule() {
 python_doheader() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EBUILD_PHASE} != install ]] &&
+		die "${FUNCNAME} can only be used in src_install"
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
 
 	local includedir=$(python_get_includedir)
