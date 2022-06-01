@@ -1,8 +1,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-PYTHON_COMPAT=( python3_{7..9} )
+EAPI=8
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit python-any-r1
 
@@ -18,3 +18,7 @@ RDEPEND=""
 BDEPEND="$(python_gen_any_dep 'dev-libs/marisa[python,${PYTHON_USEDEP}]')"
 
 PATCHES=( "${FILESDIR}"/${PN}-python3.patch )
+
+python_check_deps() {
+	python_has_version "dev-python/marisa[python,${PYTHON_USEDEP}]"
+}
