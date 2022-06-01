@@ -3,6 +3,9 @@
 
 EAPI=7
 
+# Can drop after 0.9.0, just for patch
+inherit autotools
+
 DESCRIPTION="Daemon to proxy GSSAPI context establishment and channel handling"
 HOMEPAGE="https://github.com/gssapi/gssproxy"
 SRC_URI="https://github.com/gssapi/${PN}/releases/download/v${PV}/${P}.tar.gz"
@@ -30,6 +33,10 @@ BDEPEND="
 # unfeasible.
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-configure-systemd.patch
+)
+
 # pkg_setup() {
 #	# Here instead of flag-logic in DEPEND, since virtual/krb5 does not
 #	# allow to specify the openldap use flag, which heimdal doesn't
@@ -55,6 +62,13 @@ RESTRICT="test"
 #		"${S}/tests/testlib.py" || die
 # }
 
+src_prepare() {
+	default
+
+	# Just for 0.9.0 systemd patch
+	eautoreconf
+}
+
 src_configure() {
 	local myeconfargs=(
 		# The build assumes localstatedir is /var and takes care of
@@ -65,7 +79,13 @@ src_configure() {
 		--with-initscript=$(usex systemd systemd none)
 		$(use_with selinux)
 		$(use_with debug gssidebug)
-		$(use_with hardened hardening)
+
+		# We already set FORTIFY_SOURCE by default along with the
+		# other bits. But setting it on each compile line interferes
+		# with efforts to try e.g. FORTIFY_SOURCE=3. So, disable it,
+		# but there's no actual difference to the safety of the binaries
+		# because of Gentoo's configuration/patches to the toolchain.
+		--without-hardening
 	)
 
 	econf "${myeconfargs[@]}"
