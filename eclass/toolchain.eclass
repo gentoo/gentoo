@@ -1655,7 +1655,7 @@ toolchain_src_compile() {
 	# use of bash.  Newer ones will auto-detect, but this is not harmful.
 	# This needs to be set for compile as well, as it's used in libtool
 	# generation, which will break install otherwise (at least in 3.3.6): bug #664486
-	CONFIG_SHELL="${EPREFIX}/bin/bash" \
+	CONFIG_SHELL="${BROOT}/bin/bash" \
 		gcc_do_make ${GCC_MAKE_TARGET}
 }
 
