@@ -42,6 +42,25 @@ RDEPEND="
 
 distutils_enable_tests pytest
 
+python_check_deps() {
+	python_has_version -r \
+		">=dev-python/Babel-2.9.0[${PYTHON_USEDEP}]" \
+		">=dev-python/click-3.3[${PYTHON_USEDEP}]" \
+		">=dev-python/jinja-2.10.2[${PYTHON_USEDEP}]" \
+		">=dev-python/markdown-3.2.1[${PYTHON_USEDEP}]" \
+		">=dev-python/pyyaml-3.10[${PYTHON_USEDEP}]" \
+		">=dev-python/watchdog-2.0[${PYTHON_USEDEP}]" \
+		">=dev-python/ghp-import-1.0[${PYTHON_USEDEP}]" \
+		">=dev-python/pyyaml_env_tag-0.1[${PYTHON_USEDEP}]" \
+		">=dev-python/importlib_metadata-3.10[${PYTHON_USEDEP}]" \
+		">=dev-python/packaging-20.5[${PYTHON_USEDEP}]" \
+		">=dev-python/mergedeep-1.3.4[${PYTHON_USEDEP}]" && \
+			(use doc || return 0 && \
+				python_has_version -b \
+					"dev-python/mdx_gh_links[${PYTHON_USEDEP}]" \
+					"dev-python/mkdocs-redirects[${PYTHON_USEDEP}]" )
+}
+
 python_prepare_all() {
 	# Tests fails if additional themes are installed
 	sed -i -e 's:test_get_themes:_&:' \
