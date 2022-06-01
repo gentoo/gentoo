@@ -1,10 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
-inherit autotools git-r3 python-any-r1 user-info
+PYTHON_COMPAT=( python3_{8..11} )
+inherit autotools git-r3 python-any-r1
 
 DESCRIPTION="Programmable Completion for bash"
 HOMEPAGE="https://github.com/scop/bash-completion"
@@ -64,8 +64,9 @@ strip_completions() {
 }
 
 python_check_deps() {
-	has_version "dev-python/pexpect[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/pytest[${PYTHON_USEDEP}]"
+	python_has_version -d \
+		"dev-python/pexpect[${PYTHON_USEDEP}]" \
+		"dev-python/pytest[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
