@@ -51,7 +51,7 @@ RDEPEND="
 	>=dev-python/pyxdg-0.26[${PYTHON_USEDEP}]
 	>=dev-python/pyzmq-22.1.0[${PYTHON_USEDEP}]
 	>=dev-python/qdarkstyle-3.0.2[${PYTHON_USEDEP}]
-	<dev-python/qdarkstyle-3.1.0[${PYTHON_USEDEP}]
+	<dev-python/qdarkstyle-3.1[${PYTHON_USEDEP}]
 	>=dev-python/qstylizer-0.1.10[${PYTHON_USEDEP}]
 	>=dev-python/qtawesome-1.0.2[${PYTHON_USEDEP}]
 	>=dev-python/qtconsole-5.3.0[${PYTHON_USEDEP}]
