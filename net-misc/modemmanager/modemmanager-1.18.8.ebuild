@@ -1,8 +1,8 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{8..10} )
+EAPI=8
+PYTHON_COMPAT=( python3_{8..11} )
 inherit gnome2 python-any-r1 readme.gentoo-r1 systemd udev vala
 
 DESCRIPTION="Modem and mobile broadband management libraries"
@@ -52,8 +52,9 @@ BDEPEND="
 S="${WORKDIR}/ModemManager-${PV}"
 
 python_check_deps() {
-	has_version "dev-python/dbus-python[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]"
+	use test && python_has_version \
+		"dev-python/dbus-python[${PYTHON_USEDEP}]" \
+		"dev-python/pygobject:3[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
@@ -71,7 +72,7 @@ src_prepare() {
 			add your user account to the 'plugdev' group."
 	fi
 
-	use vala && vala_src_prepare
+	use vala && vala_setup
 	gnome2_src_prepare
 }
 
