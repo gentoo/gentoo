@@ -1,9 +1,9 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit cmake python-r1
 
@@ -32,14 +32,19 @@ IUSE=""
 
 DEPEND="
 	dev-ros/ament_cmake_core
-		dev-python/ament_package[${PYTHON_USEDEP}]
-		dev-python/catkin_pkg[${PYTHON_USEDEP}]
+	$(python_gen_any_dep 'dev-python/ament_package[${PYTHON_USEDEP}] dev-python/catkin_pkg[${PYTHON_USEDEP}]')
 	dev-ros/ament_cmake_python
 	${PYTHON_DEPS}
 "
 RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+python_check_deps() {
+	python_has_version -d \
+		"dev-python/ament_package[${PYTHON_USEDEP}]" \
+		"dev-python/catkin_pkg[${PYTHON_USEDEP}]"
+}
 
 src_configure() {
 	python_foreach_impl cmake_src_configure
