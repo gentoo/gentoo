@@ -144,11 +144,12 @@ DEPEND="
 "
 python_check_deps() {
 	use python || return 0
-	has_version "dev-python/future[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/lxml[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/mysqlclient[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/requests-cache[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/simplejson[${PYTHON_USEDEP}]"
+	python_has_version -d "dev-python/python-dateutil[${PYTHON_USEDEP}]" \
+	"dev-python/future[${PYTHON_USEDEP}]" \
+	"dev-python/lxml[${PYTHON_USEDEP}]" \
+	"dev-python/mysqlclient[${PYTHON_USEDEP}]" \
+	"dev-python/requests-cache[${PYTHON_USEDEP}]" \
+	"dev-python/simplejson[${PYTHON_USEDEP}]"
 }
 
 PATCHES=(

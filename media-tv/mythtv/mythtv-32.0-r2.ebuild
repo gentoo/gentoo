@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit flag-o-matic java-pkg-opt-2 java-ant-2 python-any-r1 qmake-utils readme.gentoo-r1 systemd user-info
 
@@ -142,12 +142,12 @@ DEPEND="
 "
 python_check_deps() {
 	use python || return 0
-	has_version "dev-python/python-dateutil[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/future[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/lxml[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/mysqlclient[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/requests-cache[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/simplejson[${PYTHON_USEDEP}]"
+	python_has_version -d "dev-python/python-dateutil[${PYTHON_USEDEP}]" \
+	"dev-python/future[${PYTHON_USEDEP}]" \
+	"dev-python/lxml[${PYTHON_USEDEP}]" \
+	"dev-python/mysqlclient[${PYTHON_USEDEP}]" \
+	"dev-python/requests-cache[${PYTHON_USEDEP}]" \
+	"dev-python/simplejson[${PYTHON_USEDEP}]"
 }
 
 PATCHES=(
