@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MATE_LA_PUNT="yes"
 
@@ -79,7 +79,8 @@ RESTRICT="test"
 PATCHES=( "${FILESDIR}/${PN}-1.24.0-make-synctex-optional.patch" )
 
 python_check_deps() {
-	use test && has_version "dev-util/dogtail[${PYTHON_USEDEP}]"
+	(use test || return 0 ) && \
+		python_has_version -d "dev-util/dogtail[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
