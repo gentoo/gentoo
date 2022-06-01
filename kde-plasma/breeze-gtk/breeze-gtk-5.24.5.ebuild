@@ -4,7 +4,7 @@
 EAPI=8
 
 PVCUT=$(ver_cut 1-3)
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit ecm kde.org python-any-r1
 
 DESCRIPTION="Official GTK+ port of Plasma's Breeze widget style"
@@ -22,7 +22,7 @@ BDEPEND="${PYTHON_DEPS}
 "
 
 python_check_deps() {
-	has_version "dev-python/pycairo[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/pycairo[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
