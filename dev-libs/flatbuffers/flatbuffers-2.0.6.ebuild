@@ -16,7 +16,8 @@ SLOT="0/2"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="static-libs test"
 
-RESTRICT="!test? ( test )"
+# out-of-source build broken, bug #842060
+RESTRICT="test !test? ( test )"
 
 DOCS=( readme.md )
 
