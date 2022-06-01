@@ -4,14 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} pypy3 )
+PYTHON_TESTED=( python3_{8..10} )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_11 pypy3 )
 PYTHON_REQ_USE="ssl(+),threads(+)"
 
 inherit bash-completion-r1 distutils-r1 multiprocessing
 
 # setuptools & wheel .whl files are required for testing,
 # the exact version is not very important.
-SETUPTOOLS_WHL="setuptools-62.2.0-py3-none-any.whl"
+SETUPTOOLS_WHL="setuptools-62.3.2-py3-none-any.whl"
 WHEEL_WHL="wheel-0.36.2-py2.py3-none-any.whl"
 # upstream still requires virtualenv-16 for testing, we are now fetching
 # it directly to avoid blockers with virtualenv-20
@@ -24,7 +25,7 @@ HOMEPAGE="
 	https://github.com/pypa/pip/
 "
 SRC_URI="
-	https://github.com/pypa/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/pypa/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz
 	test? (
 		https://files.pythonhosted.org/packages/py3/s/setuptools/${SETUPTOOLS_WHL}
 		https://files.pythonhosted.org/packages/py2.py3/w/wheel/${WHEEL_WHL}
@@ -55,7 +56,7 @@ BDEPEND="
 			!alpha? ( !hppa? ( !ia64? (
 				dev-python/cryptography[${PYTHON_USEDEP}]
 			) ) )
-		' python3_{8..10})
+		' "${PYTHON_TESTED[@]}")
 	)
 "
 
@@ -63,7 +64,7 @@ distutils_enable_tests pytest
 
 python_prepare_all() {
 	local PATCHES=(
-		"${FILESDIR}/${PN}-21.3-no-coverage.patch"
+		"${FILESDIR}/pip-21.3-no-coverage.patch"
 	)
 	if ! use vanilla; then
 		PATCHES+=( "${FILESDIR}/pip-20.0.2-disable-system-install.patch" )
@@ -88,7 +89,7 @@ python_compile_all() {
 }
 
 python_test() {
-	if ! has "${EPYTHON}" python3.{8..10} ]]; then
+	if ! has "${EPYTHON}" "${PYTHON_TESTED[@]/_/.}"; then
 		einfo "Skipping tests on ${EPYTHON} since virtualenv-16 is broken"
 		return 0
 	fi
@@ -114,6 +115,7 @@ python_test() {
 	local -x GENTOO_PIP_TESTING=1
 	local -x PYTHONPATH="${WORKDIR}/virtualenv-${VENV_PV}"
 	local -x SETUPTOOLS_USE_DISTUTILS=stdlib
+	local -x PIP_DISABLE_PIP_VERSION_CHECK=1
 	epytest -m "not network" -n "$(makeopts_jobs)"
 }
 

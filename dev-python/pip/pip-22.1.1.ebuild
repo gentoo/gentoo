@@ -30,7 +30,7 @@ SRC_URI="
 		https://files.pythonhosted.org/packages/py3/s/setuptools/${SETUPTOOLS_WHL}
 		https://files.pythonhosted.org/packages/py2.py3/w/wheel/${WHEEL_WHL}
 		https://github.com/pypa/virtualenv/archive/${VENV_PV}.tar.gz
-			-> virtualenv-${VENV_PV}.tar.gz
+			-> virtualenv-${VENV_PV}.gh.tar.gz
 	)
 "
 
