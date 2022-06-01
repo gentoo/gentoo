@@ -832,6 +832,10 @@ python_moduleinto() {
 # and packages (directories). All listed files will be installed
 # for all enabled implementations, and compiled afterwards.
 #
+# The files are installed into ${D} when run in src_install() phase.
+# Otherwise, they are installed into ${BUILD_DIR}/install location
+# that is suitable for picking up by distutils-r1 in PEP517 mode.
+#
 # Example:
 # @CODE
 # src_install() {
@@ -854,13 +858,24 @@ python_domodule() {
 		d=${sitedir#${EPREFIX}}/${_PYTHON_MODULEROOT//.//}
 	fi
 
-	(
-		insopts -m 0644
-		insinto "${d}"
-		doins -r "${@}" || return ${?}
-	)
-
-	python_optimize "${ED%/}/${d}"
+	if [[ ${EBUILD_PHASE} == install ]]; then
+		(
+			insopts -m 0644
+			insinto "${d}"
+			doins -r "${@}" || return ${?}
+		)
+		python_optimize "${ED%/}/${d}"
+	elif [[ -n ${BUILD_DIR} ]]; then
+		local dest=${BUILD_DIR}/install${EPREFIX}/${d}
+		mkdir -p "${dest}" || die
+		cp -pR "${@}" "${dest}/" || die
+		(
+			cd "${dest}" &&
+			chmod -R a+rX "${@##*/}"
+		) || die
+	else
+		die "${FUNCNAME} can only be used in src_install or with BUILD_DIR set"
+	fi
 }
 
 # @FUNCTION: python_doheader
