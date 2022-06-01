@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 VALA_USE_DEPEND="vapigen"
 inherit cmake python-any-r1 vala
 
@@ -56,7 +56,7 @@ PATCHES=(
 )
 
 python_check_deps() {
-	has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]"
+	use test && python_has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
