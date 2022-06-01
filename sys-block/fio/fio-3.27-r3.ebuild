@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8,9,10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit python-r1 toolchain-funcs
 
@@ -61,7 +61,7 @@ PATCHES=(
 )
 
 python_check_deps() {
-	has_version "dev-python/pandas[${PYTHON_USEDEP}]"
+	use python && python_has_version -r "dev-python/pandas[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {
