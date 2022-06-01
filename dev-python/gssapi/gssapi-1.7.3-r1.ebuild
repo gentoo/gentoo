@@ -10,11 +10,14 @@ inherit distutils-r1
 
 DESCRIPTION="Low and high level wrappers around the GSSAPI C libraries"
 HOMEPAGE="https://github.com/pythongssapi/python-gssapi https://pypi.org/project/gssapi/"
-SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
+#SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
+# Needed to recythonise for Python 3.11
+SRC_URI="https://github.com/pythongssapi/python-gssapi/releases/download/v${PV}/python-${P}.tar.gz -> ${P}.gh.tar.gz"
+S="${WORKDIR}"/python-${P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 
 RDEPEND="
 	dev-python/decorator[${PYTHON_USEDEP}]
