@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 SCONS_MIN_VERSION="3.3.1"
 CHECKREQS_DISK_BUILD="2400M"
@@ -71,10 +71,11 @@ PATCHES=(
 S="${WORKDIR}/${MY_P}"
 
 python_check_deps() {
-	has_version ">=dev-util/scons-2.5.0[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/cheetah3[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/psutil[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
+	python_has_version -d \
+		">=dev-util/scons-2.5.0[${PYTHON_USEDEP}]" \
+		"dev-python/cheetah3[${PYTHON_USEDEP}]" \
+		"dev-python/psutil[${PYTHON_USEDEP}]" \
+		"dev-python/pyyaml[${PYTHON_USEDEP}]"
 }
 
 pkg_pretend() {

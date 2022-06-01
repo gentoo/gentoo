@@ -1,0 +1,24 @@
+dev-db/mongodb: fixups
+
+- enable py3.11
+- fix python dependency resolution
+
+Signed-off-by: Matt Jolly <Matt.Jolly@footclan.ninja>
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Wed Jun 1 18:42:12 2022 +1000
+#
+# interactive rebase in progress; onto 7cbc1d11bf4
+# Last commands done (11 commands done):
+#    reword a7e46667016 app-text/cherrytree:
+#    reword 06393526d01 dev-db/mongodb:
+# Next commands to do (24 remaining commands):
+#    reword 429afc3d4cb dev-libs/boxfort:
+#    reword 7ab3463d149 dev-libs/criterion:
+# You are currently editing a commit while rebasing branch 'fix-kde-cross-compile-python' on '7cbc1d11bf4'.
+#
+# Changes to be committed:
+#	modified:   dev-db/mongodb/mongodb-5.0.5-r2.ebuild
+#
