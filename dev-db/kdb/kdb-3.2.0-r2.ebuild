@@ -1,13 +1,13 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 ECM_QTHELP="true"
 ECM_TEST="true"
-PYTHON_COMPAT=( python3_{7,8,9} )
-KFMIN=5.60.0
-QTMIN=5.12.3
+PYTHON_COMPAT=( python3_{8..10} )
+KFMIN=5.82.0
+QTMIN=5.15.2
 inherit ecm kde.org python-any-r1
 
 DESCRIPTION="Database connectivity and creation framework for various vendors"
@@ -16,16 +16,13 @@ HOMEPAGE="https://community.kde.org/KDb"
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/src/${P}.tar.xz
 	https://dev.gentoo.org/~asturm/distfiles/${P}-patches.tar.xz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="LGPL-2+"
 SLOT="5/4"
 IUSE="debug mysql postgres sqlite"
 
-BDEPEND="${PYTHON_DEPS}
-	dev-qt/linguist-tools:5
-"
 DEPEND="
 	dev-libs/icu:=
 	>=dev-qt/qtgui-${QTMIN}:5
@@ -35,19 +32,23 @@ DEPEND="
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
 	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? (
-		>=dev-qt/qtnetwork-${QTMIN}:5
 		dev-db/postgresql:*
+		>=dev-qt/qtnetwork-${QTMIN}:5
 	)
 	sqlite? ( dev-db/sqlite:3 )
 "
 RDEPEND="${DEPEND}"
+BDEPEND="${PYTHON_DEPS}
+	dev-qt/linguist-tools:5
+"
 
 PATCHES=(
 	# 3.2 branch
-	"${FILESDIR}"/${P}-cmake-pg12.patch
 	"${WORKDIR}"/${P}-patches/${P}-build-w-pg12.patch
-	"${FILESDIR}"/${P}-cmake-pg13.patch
 	"${WORKDIR}"/${P}-patches/${P}-qt-5.15.patch
+	"${WORKDIR}"/${P}-patches/${P}-cmake-pg15.patch
+	"${WORKDIR}"/${P}-patches/${P}-Q_REQUIRED_RESULT-placing.patch
+	"${WORKDIR}"/${P}-patches/${P}-gcc12.patch
 	# master
 	"${WORKDIR}"/${P}-patches/${P}-KDEInstallDirs.patch
 )
