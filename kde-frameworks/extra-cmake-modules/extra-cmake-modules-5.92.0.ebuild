@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 QTMIN=5.15.2
 inherit cmake kde.org python-any-r1
 
@@ -38,7 +38,7 @@ PATCHES=(
 )
 
 python_check_deps() {
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+	use doc && python_has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
