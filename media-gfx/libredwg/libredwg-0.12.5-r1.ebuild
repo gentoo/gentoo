@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 DOCS_BUILDER="doxygen"
 # File is hardcoded to be run from ../ so we use this instead of DOCS_DIR
 DOCS_CONFIG_NAME="doc/Doxyfile"
@@ -103,4 +103,9 @@ src_install() {
 	perl_set_version
 	default
 	use python && python_optimize
+	# remove .la files if static-libs disabled
+	if ! use static-libs; then
+		rm "${ED}/usr/$(get_libdir)/libredwg.la" || die
+		use python && rm "${D}/$(python_get_sitedir)/_LibreDWG.la" || die
+	fi
 }
