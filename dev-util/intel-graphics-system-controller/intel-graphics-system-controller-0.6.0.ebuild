@@ -5,7 +5,7 @@ EAPI=8
 
 MY_PN="igsc"
 MY_P="${MY_PN}-${PV}"
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit cmake python-any-r1
 
@@ -28,6 +28,10 @@ BDEPEND="
 		$(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]')
 	)
 "
+
+python_check_deps() {
+	use doc && python_has_version dev-python/sphinx[${PYTHON_USEDEP}]
+}
 
 pkg_setup() {
 	use doc && python-any-r1_pkg_setup
