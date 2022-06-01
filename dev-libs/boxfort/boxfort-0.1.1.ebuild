@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit meson python-any-r1
 
@@ -25,7 +25,7 @@ BDEPEND="virtual/pkgconfig"
 S="${WORKDIR}/BoxFort-${PV}"
 
 python_check_deps() {
-	use test && has_version "dev-util/cram[${PYTHON_USEDEP}]"
+	use test && python_has_version -d "dev-util/cram[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {

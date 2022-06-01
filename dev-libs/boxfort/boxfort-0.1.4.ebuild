@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit meson python-any-r1
 
@@ -24,7 +24,7 @@ DEPEND="test? (
 BDEPEND="virtual/pkgconfig"
 
 python_check_deps() {
-	use test && has_version "dev-util/cram[${PYTHON_USEDEP}]"
+	use test && python_has_version -d "dev-util/cram[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
