@@ -1,9 +1,9 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit cmake python-any-r1
 
@@ -45,9 +45,10 @@ BDEPEND="
 "
 
 python_check_deps() {
-	has_version "dev-python/ament_package[${PYTHON_USEDEP}]" && \
-		has_version "dev-python/catkin_pkg[${PYTHON_USEDEP}]" && \
-		has_version "dev-ros/ament_xmllint[${PYTHON_USEDEP}]"
+	python_has_version \
+		"dev-python/ament_package[${PYTHON_USEDEP}]" \
+		"dev-python/catkin_pkg[${PYTHON_USEDEP}]" \
+		"dev-ros/ament_xmllint[${PYTHON_USEDEP}]"
 }
 
 src_configure() {
