@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit meson pam python-any-r1 systemd
 
@@ -59,13 +59,12 @@ PATCHES=(
 S="${WORKDIR}/${MY_P}"
 
 python_check_deps() {
-	if use test; then
-		has_version -d "sys-libs/pam_wrapper[${PYTHON_USEDEP}]"
-	fi
-
-	has_version -d "dev-python/python-dbusmock[${PYTHON_USEDEP}]" &&
-	has_version -d "dev-python/dbus-python[${PYTHON_USEDEP}]" &&
-	has_version -d "dev-python/pycairo[${PYTHON_USEDEP}]"
+	use test && python_has_version -d 
+	"dev-python/dbus-python[${PYTHON_USEDEP}]" \
+	"dev-python/pycairo[${PYTHON_USEDEP}]" \
+	"dev-python/python-dbusmock[${PYTHON_USEDEP}]" && \
+		(use pam || return 0) && \
+			"sys-libs/pam_wrapper[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
