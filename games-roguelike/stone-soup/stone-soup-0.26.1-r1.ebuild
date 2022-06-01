@@ -68,7 +68,7 @@ PATCHES=(
 )
 
 python_check_deps() {
-	has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
