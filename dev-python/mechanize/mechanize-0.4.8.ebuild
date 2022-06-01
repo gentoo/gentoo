@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1
 
 DESCRIPTION="Stateful programmatic web browsing in Python"
@@ -23,6 +23,10 @@ BDEPEND="
 		${RDEPEND}
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.4.8-python3.11-test-order.patch
+)
 
 python_test() {
 	"${EPYTHON}" run_tests.py || die
