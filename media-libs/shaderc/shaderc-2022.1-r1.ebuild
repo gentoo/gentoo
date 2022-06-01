@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 CMAKE_ECLASS=cmake
 
@@ -42,9 +42,7 @@ PATCHES=(
 RESTRICT=test
 
 python_check_deps() {
-	if use test; then
-		has_version --host-root "dev-python/nose[${PYTHON_USEDEP}]"
-	fi
+	use test python_has_version -d "dev-python/nose[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {
