@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit cmake python-any-r1 toolchain-funcs
 
@@ -62,9 +62,7 @@ PATCHES=( "${FILESDIR}/${PN}-5.0.2-remove-matrices-unpacking.patch"
 	"${FILESDIR}/${PN}-5.0.2-enable-gfx1031.patch" )
 
 python_check_deps() {
-	if use test; then
-		has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
-	fi
+	use test &&	python_has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {
