@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit cmake prefix python-any-r1
 
@@ -36,8 +36,9 @@ PATCHES=(
 )
 
 python_check_deps() {
-	has_version "dev-python/CppHeaderParser[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/ply[${PYTHON_USEDEP}]"
+	python_has_version \
+		"dev-python/CppHeaderParser[${PYTHON_USEDEP}]" \
+		"dev-python/ply[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {
