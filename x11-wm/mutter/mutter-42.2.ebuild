@@ -1,8 +1,8 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{8..10} )
+EAPI=8
+PYTHON_COMPAT=( python3_{8..11} )
 inherit gnome.org gnome2-utils meson python-any-r1 udev xdg
 
 DESCRIPTION="GNOME compositing window manager based on Clutter"
@@ -114,7 +114,7 @@ PATCHES=(
 
 python_check_deps() {
 	if use test; then
-		has_version "dev-python/python-dbusmock[${PYTHON_USEDEP}]"
+		python_has_version "dev-python/python-dbusmock[${PYTHON_USEDEP}]"
 	fi
 }
 
