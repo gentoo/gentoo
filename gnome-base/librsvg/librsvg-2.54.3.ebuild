@@ -50,6 +50,10 @@ QA_FLAGS_IGNORED="
 	usr/lib.*/librsvg.*
 "
 
+python_check_deps() {
+	python_has_version -d "dev-python/docutils[${PYTHON_USEDEP}]"
+}
+
 src_prepare() {
 	use vala && vala_src_prepare
 	gnome2_src_prepare
