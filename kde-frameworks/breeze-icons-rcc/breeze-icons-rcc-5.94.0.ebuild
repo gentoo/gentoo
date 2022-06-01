@@ -5,7 +5,7 @@ EAPI=8
 
 KDE_ORG_NAME="breeze-icons"
 PVCUT=$(ver_cut 1-2)
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit cmake kde.org python-any-r1
 
 DESCRIPTION="Breeze SVG icon theme binary resource"
@@ -24,7 +24,7 @@ BDEPEND="${PYTHON_DEPS}
 DEPEND="test? ( dev-qt/qttest:5 )"
 
 python_check_deps() {
-	has_version "dev-python/lxml[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/lxml[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {
