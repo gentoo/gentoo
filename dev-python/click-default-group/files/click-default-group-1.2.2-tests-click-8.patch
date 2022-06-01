@@ -1,0 +1,21 @@
+https://github.com/click-contrib/click-default-group/pull/18
+https://github.com/click-contrib/click-default-group/issues/16
+
+From 9415c77d05cf7d16876e7d70a49a41a6189983b4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Robert=20Sch=C3=BCtz?= <dev@schuetz-co.de>
+Date: Sun, 20 Jun 2021 16:11:42 +0200
+Subject: [PATCH] make tests compatible with click 8
+
+It now outputs "No such option".
+--- a/test.py
++++ b/test.py
+@@ -30,7 +30,7 @@ def bar():
+ 
+ def test_default_command_with_arguments():
+     assert r.invoke(cli, ['--foo', 'foooo']).output == 'foooo\n'
+-    assert 'no such option' in r.invoke(cli, ['-x']).output
++    assert 'no such option' in r.invoke(cli, ['-x']).output.lower()
+ 
+ 
+ def test_group_arguments():
+
