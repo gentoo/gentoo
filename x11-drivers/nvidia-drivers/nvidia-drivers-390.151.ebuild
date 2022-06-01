@@ -177,7 +177,22 @@ src_compile() {
 		NV_VERBOSE=1 DO_STRIP= MANPAGE_GZIP= OUTPUTDIR=out
 	)
 
-	use driver && linux-mod_src_compile
+	if use driver; then
+		if linux_chkconfig_present GCC_PLUGINS; then
+			mkdir "${T}"/plugin-test || die
+			echo "obj-m += test.o" > "${T}"/plugin-test/Kbuild || die
+			> "${T}"/plugin-test/test.c || die
+			if [[ $(LC_ALL=C make -C "${KV_OUT_DIR}" ARCH="$(tc-arch-kernel)" \
+					HOSTCC="$(tc-getBUILD_CC)" M="${T}"/plugin-test 2>&1) \
+				=~ "error: incompatible gcc/plugin version" ]]; then
+				ewarn "Warning: detected kernel was built with different gcc/plugin versions,"
+				ewarn "you may need to 'make clean' and rebuild your kernel with the current"
+				ewarn "gcc version (or re-emerge for distribution kernels, including kernel-bin)."
+			fi
+		fi
+
+		linux-mod_src_compile
+	fi
 
 	if use persistenced; then
 		# 390.xx persistenced does not auto-detect libtirpc
