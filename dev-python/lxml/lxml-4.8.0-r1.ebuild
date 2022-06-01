@@ -52,10 +52,11 @@ PATCHES=(
 
 python_check_deps() {
 	use doc || return 0
-	has_version "dev-python/docutils[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/pygments[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]"
+	python_has_version \
+		"dev-python/docutils[${PYTHON_USEDEP}]" \
+		"dev-python/pygments[${PYTHON_USEDEP}]" \
+		"dev-python/sphinx[${PYTHON_USEDEP}]" \
+		"dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]"
 }
 
 python_prepare_all() {
