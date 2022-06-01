@@ -96,10 +96,9 @@ PATCHES=(
 )
 
 python_check_deps() {
-	if use test; then
-		has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]" &&
-		has_version "dev-python/python-dbusmock[${PYTHON_USEDEP}]"
-	fi
+	use test && python_has_version \
+		"dev-python/pygobject:3[${PYTHON_USEDEP}]" \
+		"dev-python/python-dbusmock[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
