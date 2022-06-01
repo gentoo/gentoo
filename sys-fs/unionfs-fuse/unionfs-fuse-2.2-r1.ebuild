@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit python-any-r1 toolchain-funcs
 
 DESCRIPTION="Self-syncing tree-merging file system based on FUSE"
@@ -23,13 +23,13 @@ DEPEND="${RDEPEND}
 	)
 "
 
-pkg_setup() {
-	use test && python-any-r1_pkg_setup
-}
-
 python_check_deps() {
 	use test || return 0
-	has_version "dev-python/pytest[${PYTHON_USEDEP}]"
+	python_has_version -d "dev-python/pytest[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
 }
 
 src_compile() {
