@@ -50,14 +50,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.6.0-tests-pypy.patch
 )
 
-python_check_deps() {
-	use doc || return 0
-	has_version -b "dev-python/docutils[${PYTHON_USEDEP}]" &&
-	has_version -b "dev-python/pygments[${PYTHON_USEDEP}]" &&
-	has_version -b "dev-python/sphinx[${PYTHON_USEDEP}]" &&
-	has_version -b "dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]"
-}
-
 python_prepare_all() {
 	# avoid replacing PYTHONPATH in tests.
 	sed -i -e '/sys\.path/d' test.py || die
