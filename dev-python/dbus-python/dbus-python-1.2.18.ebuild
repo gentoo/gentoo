@@ -37,8 +37,13 @@ BDEPEND="
 "
 
 python_check_deps() {
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
-	has_version "dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]"
+	has_version -b \
+		"dev-python/sphinx[${PYTHON_USEDEP}]" \
+		"dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]" && \
+			(use test || return 0) && \
+				has_version -b \
+					"dev-python/pygobject:3[${PYTHON_USEDEP}]" \
+					"dev-python/tappy[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {
