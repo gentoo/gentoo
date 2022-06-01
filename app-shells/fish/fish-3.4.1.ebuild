@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit cmake python-any-r1 readme.gentoo-r1
 
@@ -56,7 +56,7 @@ PATCHES=(
 
 python_check_deps() {
 	use test || return 0
-	has_version -d "dev-python/pexpect[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/pexpect[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {
