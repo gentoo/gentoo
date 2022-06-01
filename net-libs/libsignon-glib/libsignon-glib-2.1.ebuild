@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8,9,10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit meson python-r1 vala
 
 DESCRIPTION="GLib binding for the D-Bus API provided by signond"
@@ -26,7 +26,7 @@ RDEPEND="
 	introspection? ( dev-libs/gobject-introspection:= )
 	python? (
 		${PYTHON_DEPS}
-		dev-python/pygobject:3[${PYTHON_USEDEP}]
+		$(python_gen_any_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]')
 	)
 "
 DEPEND="${RDEPEND}"
@@ -38,7 +38,9 @@ BDEPEND="$(python_gen_any_dep)
 	test? ( dev-libs/check )
 "
 
-python_check_deps() { return 0; }
+python_check_deps() {
+	use python && python_has_version -r "dev-python/pygobject:3[${PYTHON_USEDEP}]"
+}
 
 pkg_setup() {
 	python_setup
@@ -46,7 +48,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	vala_src_prepare
+	vala_setup
 
 	use doc || sed -e "/^subdir('docs')$/d" -i meson.build || die
 
