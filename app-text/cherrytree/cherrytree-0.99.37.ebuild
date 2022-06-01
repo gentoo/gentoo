@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{7..11} )
 
 inherit cmake python-any-r1 xdg
 
@@ -60,7 +60,7 @@ pkg_setup() {
 }
 
 python_check_deps() {
-	has_version "dev-python/lxml[${PYTHON_USEDEP}]"
+	python_has_version -d "dev-python/lxml[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {

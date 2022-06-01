@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit cmake python-any-r1 xdg
 
@@ -59,7 +59,7 @@ BDEPEND="${PYTHON_DEPS}
 	test? ( dev-util/cpputest )"
 
 python_check_deps() {
-	has_version "dev-python/lxml[${PYTHON_USEDEP}]"
+	python_has_version -d "dev-python/lxml[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {
