@@ -5,7 +5,7 @@
 # carefully. The .so file might get installed into /
 EAPI=6
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit autotools apache-module python-any-r1
 
@@ -50,7 +50,7 @@ DOCFILES="CHANGELOG NOTICE README"
 need_apache2_4
 
 python_check_deps() {
-	has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
+	python_has_version -d "dev-python/pyyaml[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
