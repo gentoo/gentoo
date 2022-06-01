@@ -1,8 +1,8 @@
 # Copyright 2011-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{8..10} )
+EAPI=8
+PYTHON_COMPAT=( python3_{8..11} )
 inherit meson python-any-r1 systemd
 
 DESCRIPTION="D-Bus interfaces for querying and manipulating user account information"
@@ -54,9 +54,7 @@ PATCHES=(
 )
 
 python_check_deps() {
-	if use test; then
-		has_version "dev-python/python-dbusmock[${PYTHON_USEDEP}]"
-	fi
+	use test && python_has_version "dev-python/python-dbusmock[${PYTHON_USEDEP}]"
 }
 
 src_configure() {
