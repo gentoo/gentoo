@@ -24,7 +24,7 @@ BDEPEND="${PYTHON_DEPS}
 "
 
 python_check_deps() {
-	has_version "dev-python/lxml[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/lxml[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {
