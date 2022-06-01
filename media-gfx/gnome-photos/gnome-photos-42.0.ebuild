@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit gnome.org gnome2-utils meson python-any-r1 virtualx xdg
 
@@ -62,7 +62,7 @@ BDEPEND="
 DOCS=() # meson installs docs itself
 
 python_check_deps() {
-	use test && has_version "dev-util/dogtail[${PYTHON_USEDEP}]"
+	use test && python_has_version "dev-util/dogtail[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
