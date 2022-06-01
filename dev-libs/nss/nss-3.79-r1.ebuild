@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.53-gentoo-fixups.patch"
 	"${FILESDIR}/${PN}-3.21-gentoo-fixup-warnings.patch"
 	"${FILESDIR}/${PN}-3.23-hppa-byte_order.patch"
+	"${FILESDIR}/${PN}-3.79-gcc-13.patch"
 )
 
 src_prepare() {
