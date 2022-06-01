@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit python-any-r1
 
 DESCRIPTION="GNU Image Manipulation Program help files"
@@ -27,7 +27,7 @@ BDEPEND="
 PATCHES=( "${FILESDIR}/${P}-python3.patch" )
 
 python_check_deps() {
-	has_version -b "dev-libs/libxml2[python,${PYTHON_USEDEP}]"
+	python_has_version "dev-libs/libxml2[python,${PYTHON_USEDEP}]"
 }
 
 src_configure() {
