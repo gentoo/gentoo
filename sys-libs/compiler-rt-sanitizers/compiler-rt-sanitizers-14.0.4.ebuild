@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit check-reqs cmake flag-o-matic llvm llvm.org python-any-r1
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
@@ -62,7 +62,7 @@ llvm.org_set_globals
 
 python_check_deps() {
 	use test || return 0
-	has_version "dev-python/lit[${PYTHON_USEDEP}]"
+	python_has_version ">=dev-python/lit-5[${PYTHON_USEDEP}]"
 }
 
 check_space() {
