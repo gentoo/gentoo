@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<upstream>
-		<changelog>https://github.com/PowerShell/PowerShell/blob/master/CHANGELOG/7.1.md</changelog>
-		<doc>https://powershell.org/free-resources/</doc>
-		<bugs-to>https://github.com/PowerShell/PowerShell/issues</bugs-to>
-		<remote-id type="github">PowerShell/PowerShell</remote-id>
-	</upstream>
-	<use>
-		<flag name="pwsh-symlink">
-			Install a pwsh symlink that points to pwsh-bin.
-		</flag>
-	</use>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    PowerShell Core is a cross-platform automation and configuration
+    tool/framework that works well with your existing tools and is optimized
+    for dealing with structured data (e.g. JSON, CSV, XML, etc.), REST APIs,
+    and object models. It includes a command-line shell, an associated
+    scripting language and a framework for processing cmdlets.
+  </longdescription>
+  <use>
+    <flag name="pwsh-symlink">Install a pwsh symlink that points to pwsh-bin.</flag>
+  </use>
+  <upstream>
+    <changelog>https://github.com/PowerShell/PowerShell/blob/master/CHANGELOG/7.1.md</changelog>
+    <doc>https://powershell.org/free-resources/</doc>
+    <bugs-to>https://github.com/PowerShell/PowerShell/issues</bugs-to>
+    <remote-id type="github">PowerShell/PowerShell</remote-id>
+  </upstream>
 </pkgmetadata>
