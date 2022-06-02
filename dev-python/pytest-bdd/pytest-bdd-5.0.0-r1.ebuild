@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="BDD library for the pytest runner"
 HOMEPAGE="https://pypi.org/project/pytest-bdd/"
-SRC_URI="https://github.com/pytest-dev/pytest-bdd/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pytest-dev/pytest-bdd/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
