@@ -3,8 +3,8 @@
 
 EAPI=8
 
-QTMIN="5.9.0"
-inherit flag-o-matic optfeature qmake-utils xdg
+QTMIN="5.10.0"
+inherit cmake optfeature xdg
 
 DESCRIPTION="Simple (yet powerful) feed reader"
 HOMEPAGE="https://github.com/martinrotter/rssguard"
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/martinrotter/${PN}/archive/${PV}.tar.gz -> ${P}.tar.
 LICENSE="|| ( LGPL-3 GPL-2+ ) AGPL-3+ BSD GPL-3+ MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="debug webengine"
+IUSE="webengine"
 
 BDEPEND=">=dev-qt/linguist-tools-${QTMIN}:5"
 DEPEND="
@@ -32,28 +32,12 @@ RDEPEND="${DEPEND}"
 
 DOCS=( README.md resources/docs/Documentation.md )
 
-src_prepare() {
-	default
-	sed -e 's:$$PREFIX/lib:$$PREFIX/'$(get_libdir)':' -i pri/install.pri || die
-}
-
 src_configure() {
-	eqmake5_args=(
-		CONFIG+=$(usex debug debug release)
-		USE_WEBENGINE=$(usex webengine true false)
-		PREFIX="${EPREFIX}"/usr
-		INSTALL_ROOT=.
+	local mycmakeargs=(
+		-DUSE_WEBENGINE=$(usex webengine)
 	)
 
-	# https://github.com/martinrotter/rssguard/issues/156
-	is-flagq "-flto*" && eqmake5_args+=( CONFIG+=ltcg )
-
-	eqmake5 "${eqmake5_args[@]}"
-}
-
-src_install() {
-	emake -j1 install INSTALL_ROOT="${D}"
-	einstalldocs
+	cmake_src_configure
 }
 
 pkg_postinst() {
