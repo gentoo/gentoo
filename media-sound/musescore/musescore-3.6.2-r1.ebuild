@@ -39,7 +39,6 @@ DEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qthelp:5
 	dev-qt/qtnetwork:5
-	dev-qt/qtnetworkauth:5
 	dev-qt/qtopengl:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtquickcontrols2:5
@@ -61,6 +60,11 @@ DEPEND="
 	webengine? ( dev-qt/qtwebengine:5[widgets] )
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-3.0.1-man-pages.patch"
+	"${FILESDIR}/${PN}-3.6.1-rename-audioitem.patch"
+)
 
 src_unpack() {
 	if [[ ${PV} == "9999" ]]; then
@@ -101,7 +105,6 @@ src_configure() {
 		-DOCR=OFF
 		-DOMR="$(usex omr)"
 		-DSOUNDFONT3=ON
-		-DTRY_USE_CCACHE=OFF
 		-DZERBERUS="$(usex sfz)"
 		-DUSE_PATH_WITH_EXPLICIT_QT_VERSION=ON
 		-DUSE_SYSTEM_FREETYPE=ON
