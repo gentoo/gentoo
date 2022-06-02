@@ -139,7 +139,7 @@ EXPORT_FUNCTIONS pkg_setup
 # Example use:
 # @CODE
 # python_check_deps() {
-# 	has_version "dev-python/foo[${PYTHON_USEDEP}]"
+# 	python_has_version "dev-python/foo[${PYTHON_USEDEP}]"
 # }
 # @CODE
 #
@@ -161,7 +161,7 @@ EXPORT_FUNCTIONS pkg_setup
 # Example use:
 # @CODE
 # python_check_deps() {
-# 	has_version "dev-python/bar[${PYTHON_SINGLE_USEDEP}]"
+# 	python_has_version "dev-python/bar[${PYTHON_SINGLE_USEDEP}]"
 # }
 # @CODE
 #
@@ -228,9 +228,9 @@ if [[ ! ${_PYTHON_ANY_R1} ]]; then
 #		dev-python/baz[${PYTHON_USEDEP}] )')"
 #
 # python_check_deps() {
-#	has_version "dev-python/foo[${PYTHON_SINGLE_USEDEP}]" \
-#		&& { has_version "dev-python/bar[${PYTHON_USEDEP}]" \
-#			|| has_version "dev-python/baz[${PYTHON_USEDEP}]"; }
+#	python_has_version "dev-python/foo[${PYTHON_SINGLE_USEDEP}]" \
+#		&& { python_has_version "dev-python/bar[${PYTHON_USEDEP}]" \
+#			|| python_has_version "dev-python/baz[${PYTHON_USEDEP}]"; }
 # }
 # @CODE
 #
