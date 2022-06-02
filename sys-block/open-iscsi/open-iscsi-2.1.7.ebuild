@@ -29,8 +29,9 @@ RDEPEND="${DEPEND}
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.1.7-NoWError.patch
-	"${FILESDIR}"/open-iscsi-2.1.6-Makefiles.patch
+	"${FILESDIR}"/${PN}-2.1.7-fix_bitwise.patch
+	"${FILESDIR}"/${PN}-2.1.7-fix_sed.patch
+	"${FILESDIR}"/${PN}-2.1.7-no_werror.patch
 )
 
 pkg_setup() {
