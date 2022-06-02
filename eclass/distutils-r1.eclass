@@ -106,6 +106,8 @@ esac
 #
 # - maturin - maturin backend
 #
+# - meson-python - meson-python (mesonpy) backend
+#
 # - no - no PEP517 build system (see below)
 #
 # - pbr - pbr backend
@@ -228,6 +230,10 @@ _distutils_set_globals() {
 			no)
 				# undo the generic deps added above
 				bdep=
+				;;
+			meson-python)
+				bdep+='
+					dev-python/meson-python[${PYTHON_USEDEP}]'
 				;;
 			pbr)
 				bdep+='
@@ -936,6 +942,11 @@ _distutils-r1_print_package_versions() {
 			no)
 				return
 				;;
+			meson-python)
+				packages+=(
+					dev-python/meson-python
+				)
+				;;
 			pbr)
 				packages+=(
 					dev-python/pbr
@@ -1137,6 +1148,9 @@ _distutils-r1_backend_to_key() {
 			;;
 		maturin)
 			echo maturin
+			;;
+		mesonpy)
+			echo meson-python
 			;;
 		pbr.build)
 			echo pbr
