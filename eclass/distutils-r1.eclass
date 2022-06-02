@@ -119,7 +119,7 @@ esac
 # - sip - sipbuild backend
 #
 # - standalone - standalone build systems without external deps
-#                (used for bootstrapping).
+#   (used for bootstrapping).
 #
 # The variable needs to be set before the inherit line.  The eclass
 # adds appropriate build-time dependencies and verifies the value.
@@ -149,10 +149,10 @@ esac
 # - rdepend -- add it to BDEPEND+RDEPEND (e.g. when using pkg_resources)
 #
 # - pyproject.toml -- use pyproject2setuptools to install a project
-#                     using pyproject.toml (flit, poetry...)
+#   using pyproject.toml (flit, poetry...)
 #
 # - manual -- do not add the dependency and suppress the checks
-#             (assumes you will take care of doing it correctly)
+#   (assumes you will take care of doing it correctly)
 #
 # This variable is effective only if DISTUTILS_OPTIONAL is disabled.
 # It is available only in non-PEP517 mode.  It needs to be set before
@@ -628,8 +628,11 @@ distutils_enable_tests() {
 # (if ${EPYTHON} is set; fallback 'python' otherwise).
 #
 # setup.py will be passed the following, in order:
+#
 # 1. ${DISTUTILS_ARGS[@]}
+#
 # 2. ${mydistutilsargs[@]} (deprecated)
+#
 # 3. additional arguments passed to the esetup.py function.
 #
 # Please note that setup.py will respect defaults (unless overridden
