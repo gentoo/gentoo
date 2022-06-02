@@ -16,7 +16,7 @@ HOMEPAGE="https://community.kde.org/KDb"
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/src/${P}.tar.xz
 	https://dev.gentoo.org/~asturm/distfiles/${P}-patches.tar.xz"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="LGPL-2+"
