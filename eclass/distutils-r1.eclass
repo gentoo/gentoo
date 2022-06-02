@@ -212,6 +212,10 @@ _distutils_set_globals() {
 				bdep+='
 					>=dev-util/maturin-0.12.7[${PYTHON_USEDEP}]'
 				;;
+			meson-python)
+				bdep+='
+					dev-python/meson-python[${PYTHON_USEDEP}]'
+				;;
 			pbr)
 				bdep+='
 					>=dev-python/pbr-5.8.0-r1[${PYTHON_USEDEP}]'
@@ -912,6 +916,11 @@ _distutils-r1_print_package_versions() {
 					dev-util/maturin
 				)
 				;;
+			meson-python)
+				packages+=(
+					dev-python/meson-python
+				)
+				;;
 			pbr)
 				packages+=(
 					dev-python/pbr
@@ -1113,6 +1122,9 @@ _distutils-r1_backend_to_key() {
 			;;
 		maturin)
 			echo maturin
+			;;
+		mesonpy)
+			echo meson-python
 			;;
 		pbr.build)
 			echo pbr
