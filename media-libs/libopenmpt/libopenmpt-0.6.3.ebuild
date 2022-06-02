@@ -11,7 +11,7 @@ HOMEPAGE="https://lib.openmpt.org/libopenmpt/"
 SRC_URI="https://lib.openmpt.org/files/libopenmpt/src/${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~x86"
 IUSE="examples mp3 ogg static-libs test vorbis zlib"
 RESTRICT="!test? ( test )"
 
