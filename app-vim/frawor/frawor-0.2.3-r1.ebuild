@@ -10,7 +10,7 @@ HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=3631 https://github.c
 SRC_URI="https://github.com/vim-scripts/frawor/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="vim"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # Tests rely on zsh. No.
 RESTRICT="test"
