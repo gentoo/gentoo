@@ -90,6 +90,11 @@ tc_version_is_between() {
 # for 13.0, we don't want to create new patchsets for every single 13.0 snapshot,
 # so just grab patches from git each time if this variable is set).
 
+# @ECLASS_VARIABLE: TOOLCHAIN_PATCH_DEV
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Indicate the developer who hosts the patchset for an ebuild.
+
 # @ECLASS_VARIABLE: GCC_PV
 # @INTERNAL
 # @DESCRIPTION:
@@ -286,6 +291,9 @@ DEPEND="${RDEPEND}"
 if tc_has_feature gcj ; then
 	DEPEND+="
 		gcj? (
+			app-arch/zip
+			app-arch/unzip
+			>=media-libs/libart_lgpl-2.1
 			awt? (
 				x11-base/xorg-proto
 				x11-libs/libXt
@@ -295,9 +303,6 @@ if tc_has_feature gcj ; then
 				x11-libs/pango
 				virtual/pkgconfig
 			)
-			>=media-libs/libart_lgpl-2.1
-			app-arch/zip
-			app-arch/unzip
 		)
 	"
 fi
@@ -359,6 +364,29 @@ if [[ ${TOOLCHAIN_SET_S} == yes ]] ; then
 fi
 
 gentoo_urls() {
+	# slyfox's distfiles are mirrored to sam's devspace
+	declare -A devspace_urls=(
+		[soap]=HTTP~soap/distfiles/URI
+		[sam]=HTTP~sam/distfiles/sys-devel/gcc/URI
+		[slyfox]=HTTP~sam/distfiles/URI
+		[tamiko]=HTTP~tamiko/distfiles/URI
+		[zorry]=HTTP~zorry/patches/gcc/URI
+		[vapier]=HTTP~vapier/dist/URI
+		[blueness]=HTTP~blueness/dist/URI
+	)
+
+	# Newer ebuilds should set TOOLCHAIN_PATCH_DEV and we'll just
+	# return the full URL from the array.
+	local devspace_url=${devspace_urls[${TOOLCHAIN_PATCH_DEV}]}
+	if [[ -n ${TOOLCHAIN_PATCH_DEV} && -n ${devspace_url} ]] ; then
+		local devspace_url_exp=${devspace_url//HTTP/https:\/\/dev.gentoo.org\/}
+		devspace_url_exp=${devspace_url_exp//URI/$1}
+		echo ${devspace_url_exp}
+		return
+	fi
+
+	# But we keep the old fallback list for compatibility with
+	# older ebuilds (overlays etc).
 	local devspace="
 		HTTP~soap/distfiles/URI
 		HTTP~sam/distfiles/URI
