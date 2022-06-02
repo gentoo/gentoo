@@ -11,7 +11,7 @@ SRC_URI="https://www.vim.org/scripts/download_script.php?src_id=24452 -> ${P}.zi
 S="${WORKDIR}"/${PN}
 
 LICENSE="public-domain"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="app-arch/unzip"
 
