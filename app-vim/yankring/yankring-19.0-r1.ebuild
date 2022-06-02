@@ -8,4 +8,4 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: maintains a history of previous yanks and deletes"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=1234"
 LICENSE="vim"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
