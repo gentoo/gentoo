@@ -20,7 +20,7 @@ SRC_URI="https://fastdl.mongodb.org/src/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0 SSPL-1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 -riscv"
+KEYWORDS="amd64 ~arm64 -riscv"
 IUSE="debug kerberos lto ssl test +tools"
 RESTRICT="!test? ( test )"
 
