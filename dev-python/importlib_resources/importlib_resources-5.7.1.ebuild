@@ -24,7 +24,6 @@ RDEPEND="
 	' 3.8 3.9)"
 
 distutils_enable_tests unittest
-distutils_enable_sphinx docs dev-python/rst-linker dev-python/jaraco-packaging
 
 src_configure() {
 	grep -q 'build-backend = "setuptools' pyproject.toml ||
