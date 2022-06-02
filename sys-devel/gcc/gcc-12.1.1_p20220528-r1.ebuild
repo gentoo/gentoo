@@ -10,8 +10,11 @@ MUSL_GCC_VER="12.1.0"
 
 inherit toolchain
 
-#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-KEYWORDS="~loong"
+# Don't keyword live ebuilds
+if ! tc_is_live && [[ -z ${TOOLCHAIN_USE_GIT_PATCHES} ]] ; then
+	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~loong"
+fi
 
 # Technically only if USE=hardened *too* right now, but no point in complicating it further.
 # If GCC is enabling CET by default, we need glibc to be built with support for it.
