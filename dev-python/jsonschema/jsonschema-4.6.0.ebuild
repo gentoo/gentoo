@@ -26,6 +26,9 @@ RDEPEND="
 		>=dev-python/importlib_resources-1.4.0[${PYTHON_USEDEP}]
 	' 3.8)
 "
+BDEPEND="
+	dev-python/hatch-vcs[${PYTHON_USEDEP}]
+"
 
 # formatter deps
 RDEPEND+="
