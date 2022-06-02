@@ -8,7 +8,7 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: gitolite syntax highlighting"
 HOMEPAGE="https://github.com/tmatilai/gitolite.vim"
 LICENSE="Apache-2.0"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 GIT_COMMITSH="990634e95f209ffca96970da1c117c0f67697d89"
