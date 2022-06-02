@@ -16,12 +16,14 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="
-	>=dev-scheme/guile-2.0.0
+BDEPEND="
 	app-emacs/flycheck
 	app-emacs/geiser-guile
 "
-BDEPEND="${RDEPEND}"
+RDEPEND="
+	${BDEPEND}
+	>=dev-scheme/guile-2.0.0
+"
 
 DOCS=( README.md )
 ELISP_REMOVE=".dir-locals.el"
