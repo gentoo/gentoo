@@ -14,7 +14,7 @@ if [[ ${PV} == *999 ]]; then
 	EGIT_BRANCH="develop"
 else
 	SRC_URI="https://pwmt.org/projects/girara/download/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm ~riscv x86"
+	KEYWORDS="amd64 arm ~riscv x86"
 fi
 
 LICENSE="ZLIB"
