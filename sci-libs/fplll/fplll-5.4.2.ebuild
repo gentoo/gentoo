@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="Implementations of the floating-point LLL reduction algorithm"
 HOMEPAGE="https://github.com/fplll/fplll"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz"
@@ -18,6 +20,13 @@ DEPEND="dev-libs/gmp:0
 	qd? ( sci-libs/qd )"
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-with-qd-fix.patch" )
+
+src_prepare() {
+	default
+	eautoreconf
+}
+
 src_configure() {
 	econf \
 		$(use_with qd) \
@@ -26,5 +35,5 @@ src_configure() {
 
 src_install() {
 	default
-	find "${ED}" -name '*.la' -delete || die
+	find "${ED}" -type f -name '*.la' -delete || die
 }
