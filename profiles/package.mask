@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-06-02)
+# No reverse dependencies, uses long-deprecated and abandoned nose for tests,
+# no upstream activity in years. Removal on 2022-07-02.
+dev-python/chai
+
 # Michał Górny <mgorny@gentoo.org> (2022-05-31)
 # Causes a regression in dev-python/werkzeug that breaks all its
 # revdeps.  If one of the pytest plugins using werkzeug is installed,
