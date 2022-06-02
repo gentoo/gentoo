@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,24 +9,30 @@ SRC_URI="ftp://ftp.invisible-island.net/vile/current/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ppc ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="perl"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+IUSE="perl iconv"
 
-RDEPEND=">=sys-libs/ncurses-5.2:0=
+RDEPEND="app-eselect/eselect-vi
+	>=sys-libs/ncurses-5.2:0=
 	virtual/libcrypt:=
-	perl? ( dev-lang/perl )"
-DEPEND="${RDEPEND}
-	sys-devel/flex
-	app-eselect/eselect-vi"
+	iconv? ( virtual/libiconv )
+	perl? ( dev-lang/perl:= )"
+DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/flex
+	virtual/pkgconfig"
 
 src_configure() {
 	econf \
+		--disable-stripping \
 		--with-ncurses \
-		$(use_with perl )
+		--with-pkg-config \
+		$(use_with iconv) \
+		$(use_with perl)
 }
 
 src_install() {
-	emake DESTDIR="${D}" INSTALL_OPT_S="" install
+	emake DESTDIR="${D}" install
+
 	dodoc CHANGES* README doc/*.doc
 	docinto html
 	dodoc doc/*.html
