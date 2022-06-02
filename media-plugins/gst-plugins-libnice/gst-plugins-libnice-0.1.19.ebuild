@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/gst-plugins-libnice-${PV}-use-installed-libnice.patch
+	"${FILESDIR}"/gst-plugins-libnice-0.1.18-use-installed-libnice.patch
 )
 
 S=${WORKDIR}/${MY_P}
