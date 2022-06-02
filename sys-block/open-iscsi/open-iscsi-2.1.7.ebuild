@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools linux-info flag-o-matic toolchain-funcs systemd
+inherit autotools linux-info flag-o-matic toolchain-funcs systemd udev
 
 DESCRIPTION="A performant, transport independent, multi-platform implementation of RFC3720"
 HOMEPAGE="https://www.open-iscsi.com/"
@@ -140,4 +140,6 @@ pkg_postinst() {
 		  echo "InitiatorName=$(${ROOT}/usr/sbin/iscsi-iname)"
 		} >> "${EROOT}${in}.tmp" && mv -f "${EROOT}${in}.tmp" "${EROOT}${in}"
 	fi
+
+	udev_reload
 }
