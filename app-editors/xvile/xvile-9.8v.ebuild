@@ -27,7 +27,7 @@ RDEPEND="~app-editors/vile-${PV}
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	sys-devel/flex"
-BDEPEND+"virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}"/${MY_P}
 
