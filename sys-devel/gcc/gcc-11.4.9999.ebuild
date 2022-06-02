@@ -4,9 +4,7 @@
 EAPI=7
 
 TOOLCHAIN_PATCH_SUFFIX="xz"
-PATCH_VER="0"
 PATCH_GCC_VER="11.4.0"
-MUSL_VER="0"
 MUSL_GCC_VER="11.4.0"
 
 if [[ $(ver_cut 3) == 9999 ]] ; then
