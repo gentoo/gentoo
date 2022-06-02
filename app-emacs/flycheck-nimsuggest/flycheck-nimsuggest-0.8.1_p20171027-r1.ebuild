@@ -18,8 +18,11 @@ LICENSE="GPL-3+"
 KEYWORDS="~amd64"
 SLOT="0"
 
-RDEPEND="app-emacs/flycheck"
-BDEPEND="${RDEPEND}"
+BDEPEND="app-emacs/flycheck"
+RDEPEND="
+	${BDEPEND}
+	dev-lang/nim
+"
 PDEPEND="app-emacs/nim-mode"
 
 DOCS=( README.md )
