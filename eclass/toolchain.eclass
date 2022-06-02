@@ -26,7 +26,7 @@ tc_is_live() {
 }
 
 if tc_is_live ; then
-	EGIT_REPO_URI="https://gcc.gnu.org/git/gcc.git"
+	EGIT_REPO_URI="https://gcc.gnu.org/git/gcc.git https://github.com/gcc-mirror/gcc"
 	# Naming style:
 	# gcc-10.1.0_pre9999 -> gcc-10-branch
 	#  Note that the micro version is required or lots of stuff will break.
@@ -505,6 +505,23 @@ toolchain_pkg_setup() {
 toolchain_src_unpack() {
 	if tc_is_live ; then
 		git-r3_src_unpack
+
+		if [[ -z ${PATCH_VER} ]] && ! use vanilla ; then
+			local gcc_patches_repo="https://anongit.gentoo.org/git/proj/gcc-patches.git https://github.com/gentoo/gcc-patches"
+			# If we weren't given a patchset number, pull it from git too.
+			einfo "Fetching patchset from git as PATCH_VER is unset"
+			EGIT_REPO_URI=${gcc_patches_repo} EGIT_BRANCH="master" \
+				EGIT_CHECKOUT_DIR="${WORKDIR}"/patch.tmp \
+				git-r3_src_unpack
+
+			mkdir "${WORKDIR}"/patch || die
+			mv "${WORKDIR}"/patch.tmp/${PATCH_GCC_VER}/gentoo/* "${WORKDIR}"/patch || die
+
+			if [[ -n ${MUSL_VER} || -d "${WORKDIR}"/musl ]] && [[ ${CTARGET} == *musl* ]] ; then
+				mkdir "${WORKDIR}"/musl || die
+				mv "${WORKDIR}"/patch.tmp/${PATCH_GCC_VER}/musl/* "${WORKDIR}"/musl || die
+			fi
+		fi
 	fi
 
 	default_src_unpack
@@ -596,13 +613,13 @@ toolchain_src_prepare() {
 
 do_gcc_gentoo_patches() {
 	if ! use vanilla ; then
-		if [[ -n ${PATCH_VER} ]] ; then
+		if [[ -n ${PATCH_VER} || -d "${WORKDIR}"/patch ]] ; then
 			einfo "Applying Gentoo patches ..."
 			eapply "${WORKDIR}"/patch/*.patch
 			BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION} p${PATCH_VER}"
 		fi
 
-		if [[ -n ${MUSL_VER} ]] && [[ ${CTARGET} == *musl* ]] ; then
+		if [[ -n ${MUSL_VER} || -d "${WORKDIR}"/musl ]] && [[ ${CTARGET} == *musl* ]] ; then
 			if [[ ${CATEGORY} == cross-* ]] ; then
 				# We don't want to apply some patches when cross-compiling.
 				if [[ -d "${WORKDIR}"/musl/nocross ]] ; then

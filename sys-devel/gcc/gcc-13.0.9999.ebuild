@@ -3,10 +3,8 @@
 
 EAPI=8
 
-PATCH_VER="5"
-PATCH_GCC_VER="12.0.0"
-MUSL_VER="4"
-MUSL_GCC_VER="12.0.0"
+PATCH_GCC_VER="13.1.0"
+MUSL_GCC_VER="13.1.0"
 
 if [[ $(ver_cut 3) == 9999 ]] ; then
 	MY_PV_2=$(ver_cut 2)
