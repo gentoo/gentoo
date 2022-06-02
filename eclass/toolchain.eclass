@@ -377,12 +377,14 @@ gentoo_urls() {
 
 	# Newer ebuilds should set TOOLCHAIN_PATCH_DEV and we'll just
 	# return the full URL from the array.
-	local devspace_url=${devspace_urls[${TOOLCHAIN_PATCH_DEV}]}
-	if [[ -n ${TOOLCHAIN_PATCH_DEV} && -n ${devspace_url} ]] ; then
-		local devspace_url_exp=${devspace_url//HTTP/https:\/\/dev.gentoo.org\/}
-		devspace_url_exp=${devspace_url_exp//URI/$1}
-		echo ${devspace_url_exp}
-		return
+	if [[ -n ${TOOLCHAIN_PATCH_DEV} ]] ; then
+		local devspace_url=${devspace_urls[${TOOLCHAIN_PATCH_DEV}]}
+		if [[ -n ${devspace_url} ]] ; then
+			local devspace_url_exp=${devspace_url//HTTP/https:\/\/dev.gentoo.org\/}
+			devspace_url_exp=${devspace_url_exp//URI/$1}
+			echo ${devspace_url_exp}
+			return
+		fi
 	fi
 
 	# But we keep the old fallback list for compatibility with
