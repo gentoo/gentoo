@@ -25,7 +25,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="nls pam test"
 #RESTRICT="!test? ( test )"
-# Upstream has strange assumptions how to run tests (see bug #732868)
+# Need to check autotest bit (see bug #732868)
 RESTRICT="test"
 
 RDEPEND="
