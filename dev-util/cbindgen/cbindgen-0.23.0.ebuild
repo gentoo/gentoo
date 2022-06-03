@@ -64,7 +64,7 @@ SRC_URI="https://github.com/eqrion/cbindgen/archive/refs/tags/v${PV}.tar.gz -> $
 # use cargo-license for a more accurate license picture
 LICENSE="Apache-2.0 BSD Boost-1.0 MIT MPL-2.0 Unlicense"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 
 QA_FLAGS_IGNORED="usr/bin/cbindgen"
 
