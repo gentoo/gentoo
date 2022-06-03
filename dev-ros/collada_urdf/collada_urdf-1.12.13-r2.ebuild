@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ RDEPEND="
 	dev-ros/rosconsole
 	dev-ros/urdf
 	dev-ros/geometric_shapes
-	media-libs/assimp
+	media-libs/assimp:=
 	dev-libs/collada-dom:=
 "
 DEPEND="${RDEPEND}
