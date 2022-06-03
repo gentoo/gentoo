@@ -46,12 +46,12 @@ RDEPEND="
 	x11-libs/libXfixes
 	x11-libs/libXi
 	x11-libs/libXrandr
+	x11-libs/libXrender
 	x11-libs/libXtst
 	x11-libs/libXxf86vm
 	x11-libs/libdrm
 	x11-libs/libxcb
-	x11-libs/libxkbcommon
-	x11-libs/libxshmfence"
+	x11-libs/libxkbcommon"
 
 QA_PREBUILT="opt/${P}/*"
 
