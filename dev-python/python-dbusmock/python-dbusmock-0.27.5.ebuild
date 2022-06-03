@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1
@@ -23,6 +23,12 @@ RDEPEND="
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 "
+
+python_check_version() {
+	python_has_version -r \
+		"dev-python/dbus-python[${PYTHON_USEDEP}]" \
+	    "dev-python/pygobject:3[${PYTHON_USEDEP}]"
+}
 
 distutils_enable_tests unittest
 
