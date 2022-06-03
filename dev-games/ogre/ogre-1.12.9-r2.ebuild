@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -50,7 +50,7 @@ RDEPEND="
 	x11-libs/libXaw
 	x11-libs/libXrandr
 	x11-libs/libXt
-	assimp? ( media-libs/assimp )
+	assimp? ( media-libs/assimp:= )
 	cg? ( media-gfx/nvidia-cg-toolkit )
 	egl? ( media-libs/mesa[egl(+)] )
 	freeimage? ( media-libs/freeimage )
