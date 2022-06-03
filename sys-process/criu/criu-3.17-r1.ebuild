@@ -17,7 +17,7 @@ SRC_URI="https://github.com/checkpoint-restore/${PN}/archive/v${PV}/${P}.tar.gz"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 -riscv"
-IUSE="bpf doc gnutls nftables selinux setproctitle static-libs test"
+IUSE="bpf doc gnutls nftables selinux setproctitle static-libs test video_cards_amdgpu"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -32,6 +32,7 @@ COMMON_DEPEND="
 	nftables? ( net-libs/gnutls:= )
 	selinux? ( sys-libs/libselinux:= )
 	setproctitle? ( dev-libs/libbsd:= )
+	video_cards_amdgpu? ( x11-libs/libdrm[video_cards_amdgpu] )
 "
 DEPEND="${COMMON_DEPEND}"
 BDEPEND="
@@ -103,6 +104,7 @@ src_configure() {
 	criu_use selinux
 	criu_use bpf
 	criu_use nftables
+	criu_use video_cards_amdgpu libdrm
 
 	emake_opts=(
 		SETPROCTITLE="$(usex setproctitle)"
