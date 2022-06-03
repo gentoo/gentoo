@@ -46,7 +46,7 @@ RDEPEND="dev-libs/boost:=
 	dev-cpp/tbb:=
 	adolc? ( sci-libs/adolc )
 	arpack? ( sci-libs/arpack[mpi=] )
-	assimp? ( media-libs/assimp )
+	assimp? ( media-libs/assimp:= )
 	cuda? ( dev-util/nvidia-cuda-toolkit )
 	ginkgo? ( sci-libs/ginkgo )
 	gmsh? ( sci-libs/gmsh )
@@ -75,7 +75,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.1.1-no-ld-flags.patch
-	"${FILESDIR}"/${P}-fix_p4est_detection.patch
+	"${FILESDIR}"/${PN}-9.1.1-fix_boost_177.patch
 )
 
 src_configure() {

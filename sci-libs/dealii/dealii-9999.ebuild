@@ -47,7 +47,7 @@ RDEPEND="dev-libs/boost:=
 	dev-cpp/tbb:=
 	adolc? ( sci-libs/adolc )
 	arpack? ( sci-libs/arpack[mpi=] )
-	assimp? ( media-libs/assimp )
+	assimp? ( media-libs/assimp:= )
 	cuda? ( dev-util/nvidia-cuda-toolkit )
 	ginkgo? ( sci-libs/ginkgo )
 	gmsh? ( sci-libs/gmsh )
