@@ -25,6 +25,7 @@ RDEPEND="
 "
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	!!dev-python/m2r
 "
 
 PATCHES=(
