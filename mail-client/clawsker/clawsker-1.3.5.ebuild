@@ -24,6 +24,11 @@ RDEPEND="
 "
 BDEPEND="test? ( dev-perl/Test-Exception )"
 
+PATCHES=(
+	# TODO: add Test::NeedsDisplay Perl package and remove this patch (bug #841707)
+	"${FILESDIR}/${PN}-remove-get_screen_height-test.patch"
+)
+
 src_install() {
 	emake install DESTDIR="${D}" PREFIX=/usr
 }
