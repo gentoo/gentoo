@@ -100,7 +100,7 @@ src_configure() {
 	# we'd like to avoid it. https://bugs.gentoo.org/744244
 	unset GCOV
 
-	# we have to sed the Makdfile.config to disable automagic deps
+	# we have to sed the Makefile.config to disable automagic deps
 	criu_use selinux
 	criu_use bpf
 	criu_use nftables
