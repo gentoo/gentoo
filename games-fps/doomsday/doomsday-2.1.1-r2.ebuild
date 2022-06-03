@@ -22,7 +22,7 @@ RDEPEND="
 	dev-qt/qtopengl:5=
 	dev-qt/qtwidgets:5=
 	dev-qt/qtx11extras:5=
-	media-libs/assimp
+	media-libs/assimp:=
 	net-misc/curl
 	sys-libs/zlib
 	fluidsynth? ( media-sound/fluidsynth:= )
