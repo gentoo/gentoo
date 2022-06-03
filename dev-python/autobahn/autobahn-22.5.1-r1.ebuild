@@ -83,15 +83,16 @@ python_prepare_all() {
 }
 
 python_test() {
+	rm -rf autobahn || die
+
 	einfo "Testing all, cryptosign using twisted"
 	local -x USE_TWISTED=true
-	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
 	"${EPYTHON}" -m twisted.trial autobahn || die "Tests failed with ${EPYTHON}"
 	unset USE_TWISTED
 
 	einfo "RE-testing cryptosign and component_aio using asyncio"
 	local -x USE_ASYNCIO=true
-	epytest autobahn/wamp/test/test_wamp_{cryptosign,component_aio}.py
+	epytest --pyargs autobahn.wamp.test.test_wamp_{cryptosign,component_aio}
 	unset USE_ASYNCIO
 
 	rm -f twisted/plugins/dropin.cache || die
