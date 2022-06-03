@@ -28,10 +28,6 @@ allegro
 # dev-python/mercurial does not work on sparc due to deps.
 mercurial
 
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-21)
-# ruby2.4 will go away soon, avoid keywording older packages
-ruby_targets_ruby24
-
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
 # media-libs/opencv not keyworded on sparc
 opencv
