@@ -4,13 +4,15 @@
 EAPI=7
 
 : ${CMAKE_MAKEFILE_GENERATOR=ninja}
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
+
 inherit cmake llvm python-single-r1
 
 DESCRIPTION="Super-parallel Python port of the C-Reduce"
 HOMEPAGE="https://github.com/marxin/cvise/"
 SRC_URI="
-	https://github.com/marxin/cvise/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	https://github.com/marxin/cvise/archive/v${PV}.tar.gz -> ${P}.tar.gz
+"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
@@ -19,9 +21,10 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
-LLVM_MAX_SLOT=13
+LLVM_MAX_SLOT=14
 DEPEND="
 	|| (
+		sys-devel/clang:14
 		sys-devel/clang:13
 		sys-devel/clang:12
 	)
