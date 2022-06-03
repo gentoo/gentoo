@@ -27,14 +27,14 @@ COMMON_DEPEND="
 	xine? (
 		( >=media-libs/xine-lib-1.2
 			media-video/ffmpeg )
-		fbcon? ( jpeg? ( virtual/jpeg:* ) )
+		fbcon? ( jpeg? ( media-libs/libjpeg-turbo:= ) )
 		X? (
 			x11-libs/libX11
 			x11-libs/libXext
 			x11-libs/libXrender
 			bluray? ( media-libs/libbluray )
 			dbus? ( dev-libs/dbus-glib dev-libs/glib:2 )
-			jpeg? ( virtual/jpeg:* )
+			jpeg? ( media-libs/libjpeg-turbo:= )
 			opengl? ( virtual/opengl )
 			vaapi? ( x11-libs/libva >=media-libs/xine-lib-1.2[vaapi] )
 			vdpau? ( x11-libs/libvdpau >=media-libs/xine-lib-1.2[vdpau] )
