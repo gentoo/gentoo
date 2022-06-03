@@ -1,4 +1,5 @@
 https://bugs.gentoo.org/841002
+https://github.com/plotly/plotly.py/pull/3757
 https://github.com/dandi/dandi-cli/pull/998
 https://github.com/mgorny/gpep517/issues/1
 --- a/setup.py
