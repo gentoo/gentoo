@@ -1,9 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit epatch
+EAPI=8
 
 DEB_PR="14"
 
@@ -18,6 +16,8 @@ LICENSE="LGPL-2"
 KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
 
+PATCHES=( "${WORKDIR}"/${PN}_${PV}-${DEB_PR}.diff )
+
 src_unpack() {
 	default
 	if use examples; then
@@ -28,10 +28,6 @@ src_unpack() {
 	fi
 }
 
-src_prepare() {
-	epatch "${WORKDIR}"/${PN}_${PV}-${DEB_PR}.diff
-}
-
 src_install() {
 	insinto /usr/include/cfortran
 	doins cfortran.h
@@ -40,7 +36,8 @@ src_install() {
 
 	dodoc cfortran.doc debian/{NEWS,changelog,copyright}
 
-	dohtml cfortran.html index.htm  cfortest.c cfortex.f
+	docinto html
+	dodoc cfortran.html index.htm # cfortest.c cfortex.f
 
 	if use examples; then
 		insinto /usr/share/${PN}
