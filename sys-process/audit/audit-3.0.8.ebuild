@@ -7,7 +7,7 @@ EAPI=7
 # check Fedora's packaging (https://src.fedoraproject.org/rpms/audit/tree/rawhide)
 # on bumps (or if hitting a bug) to see what they've done there.
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit autotools multilib-minimal toolchain-funcs python-r1 linux-info systemd usr-ldscript
 
