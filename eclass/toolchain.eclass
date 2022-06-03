@@ -1425,12 +1425,19 @@ toolchain_src_configure() {
 	# ...and now to do the actual configuration
 	addwrite /dev/zero
 
+	local gcc_shell="${BROOT}"/bin/bash
+	# Older gcc versions did not detect bash and re-exec itself, so force the
+	# use of bash for them.
+	if tc_version_is_at_least 11.2 ; then
+		gcc_shell="${BROOT}"/bin/sh
+	fi
+
 	if is_jit ; then
 		einfo "Configuring JIT gcc"
 
 		mkdir -p "${WORKDIR}"/build-jit || die
 		pushd "${WORKDIR}"/build-jit > /dev/null || die
-		CONFIG_SHELL="${BROOT}"/bin/bash edo "${BROOT}"/bin/bash "${S}"/configure \
+		CONFIG_SHELL="${gcc_shell}" edo "${gcc_shell}" "${S}"/configure \
 				"${confgcc[@]}" \
 				--disable-libada \
 				--disable-libsanitizer \
@@ -1445,9 +1452,7 @@ toolchain_src_configure() {
 		popd > /dev/null || die
 	fi
 
-	# Older gcc versions did not detect bash and re-exec itself, so force the
-	# use of bash. Newer ones will auto-detect, but this is not harmful.
-	CONFIG_SHELL="${BROOT}"/bin/bash edo "${BROOT}"/bin/bash "${S}"/configure "${confgcc[@]}"
+	CONFIG_SHELL="${gcc_shell}" edo "${gcc_shell}" "${S}"/configure "${confgcc[@]}"
 
 	# Return to whatever directory we were in before
 	popd > /dev/null || die
