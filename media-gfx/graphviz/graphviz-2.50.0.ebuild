@@ -188,7 +188,8 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		--disable-static
+		# Speeds up the libltdl configure
+		--cache-file="${S}"/config.cache
 		--enable-ltdl
 		$(use_with cairo pangocairo)
 		$(use_with devil)
