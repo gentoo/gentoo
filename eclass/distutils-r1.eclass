@@ -1884,7 +1884,7 @@ _distutils-r1_post_python_install() {
 
 	local forbidden_package_names=(
 		examples test tests
-		.pytest_cache .hypothesis
+		.pytest_cache .hypothesis _trial_temp
 	)
 	local p
 	for p in "${forbidden_package_names[@]}"; do
