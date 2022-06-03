@@ -1,25 +1,25 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-GENTOO_VDR_CONDITIONAL=yes
+inherit toolchain-funcs vdr-plugin-2
 
-inherit flag-o-matic git-r3 toolchain-funcs vdr-plugin-2
+GENTOO_VDR_CONDITIONAL=yes
 
 DESCRIPTION="VDR Plugin: Xinelib PlugIn"
 HOMEPAGE="https://sourceforge.net/projects/xineliboutput/"
-
-EGIT_REPO_URI="https://git.code.sf.net/p/xineliboutput/git"
+SRC_URI="mirror://sourceforge/${PN#vdr-}/${P}.tgz
+		http://vdr.websitec.de/download/${PN}/${P}_clang.patch.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
-IUSE="bluray caps cec dbus fbcon jpeg libextractor nls opengl +vdr vdpau +X +xine xinerama"
+KEYWORDS="~amd64 ~x86"
+IUSE="bluray caps cec dbus fbcon jpeg libextractor nls opengl +vdr vaapi vdpau +X +xine xinerama"
 
 COMMON_DEPEND="
 	vdr? (
-		>=media-video/vdr-1.6.0
+		media-video/vdr
 		libextractor? ( >=media-libs/libextractor-0.5.20 )
 		caps? ( sys-libs/libcap )
 	)
@@ -32,16 +32,15 @@ COMMON_DEPEND="
 			x11-libs/libX11
 			x11-libs/libXext
 			x11-libs/libXrender
-			xinerama? ( x11-libs/libXinerama )
-			dbus? ( dev-libs/dbus-glib dev-libs/glib:2 )
-			vdpau? ( x11-libs/libvdpau >=media-libs/xine-lib-1.2 )
-			jpeg? ( virtual/jpeg:* )
 			bluray? ( media-libs/libbluray )
+			dbus? ( dev-libs/dbus-glib dev-libs/glib:2 )
+			jpeg? ( virtual/jpeg:* )
 			opengl? ( virtual/opengl )
+			vaapi? ( x11-libs/libva >=media-libs/xine-lib-1.2[vaapi] )
+			vdpau? ( x11-libs/libvdpau >=media-libs/xine-lib-1.2[vdpau] )
+			xinerama? ( x11-libs/libXinerama )
 		)
-	)
-
-	cec? ( dev-libs/libcec )"
+	)"
 
 DEPEND="${COMMON_DEPEND}
 	sys-kernel/linux-headers
@@ -55,15 +54,11 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-S=${WORKDIR}/${P}
+REQUIRED_USE=" || ( vdr xine )"
 
 VDR_CONFD_FILE="${FILESDIR}/confd-2.0.0"
 
 pkg_setup() {
-	if ! use vdr && ! use xine; then
-		die "You either need at least one of these flags: vdr xine"
-	fi
-
 	vdr-plugin-2_pkg_setup
 
 	if use xine; then
@@ -73,13 +68,14 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Allow user patches to be applied without modifyfing the ebuild
-	eapply_user
-
 	vdr-plugin-2_src_prepare
 
-	# UINT64_C is needed by ffmpeg headers
-	append-cxxflags -D__STDC_CONSTANT_MACROS
+	# bug 711978
+	sed -e "s:X11  opengl:X11  OpenGl:" -i configure || die
+
+	# bug 771036,780462 do not call cc directly
+	eapply "${FILESDIR}/${P}_no-gcc.patch"
+	eapply "${WORKDIR}/${P}_clang.patch"
 }
 
 src_configure() {
@@ -99,22 +95,25 @@ src_configure() {
 		$(use_enable X xshm) \
 		$(use_enable X xdpms) \
 		$(use_enable X xshape) \
+		$(use_enable X xrandr) \
 		$(use_enable X xrender) \
 		$(use_enable fbcon fb) \
 		$(use_enable vdr) \
 		$(use_enable xine libxine) \
 		$(use_enable libextractor) \
 		$(use_enable caps libcap) \
+		$(use_enable cec libcec) \
 		$(use_enable jpeg libjpeg) \
 		$(use_enable xinerama) \
-		$(use_enable vdpau) \
 		$(use_enable dbus dbus-glib-1) \
 		$(use_enable nls i18n) \
 		$(use_enable bluray libbluray) \
 		$(use_enable opengl) \
-		$(use_enable cec libcec) \
 		${myconf} \
 		|| die
+
+	# UINT64_C is needed by ffmpeg headers
+	append-cxxflags -D__STDC_CONSTANT_MACROS
 }
 
 src_install() {
