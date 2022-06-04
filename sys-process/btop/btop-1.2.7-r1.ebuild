@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit xdg-utils
+
 DESCRIPTION="A monitor of resources"
 HOMEPAGE="https://github.com/aristocratos/btop"
 SRC_URI="https://github.com/aristocratos/btop/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -29,4 +31,14 @@ src_install() {
 		install
 
 	dodoc README.md CHANGELOG.md
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
