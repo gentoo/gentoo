@@ -4,7 +4,7 @@
 EAPI=7
 
 EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/drm.git"
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
