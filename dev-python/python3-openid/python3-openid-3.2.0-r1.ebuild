@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,11 +17,14 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-python/defusedxml[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/defusedxml[${PYTHON_USEDEP}]
+"
 BDEPEND="
-	test? ( ${RDEPEND}
+	test? (
+		${RDEPEND}
 		dev-python/django[${PYTHON_USEDEP}]
-		dev-python/psycopg[${PYTHON_USEDEP}]
+		dev-python/psycopg:2[${PYTHON_USEDEP}]
 	)
 "
 
