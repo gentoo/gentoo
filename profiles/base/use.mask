@@ -23,8 +23,9 @@ php7-3
 pch
 
 # Hans de Graaff <graaff@gentoo.org> (2021-07-09)
-# Mask Ruby 2.5 as EOL
+# Mask Ruby 2.5 and 2.6 as EOL
 ruby_targets_ruby25
+ruby_targets_ruby26
 
 # Brian Evans <grknight@gentoo.org> (2021-01-07)
 # PHP 7.2 is security vulnerable and end-of-life
