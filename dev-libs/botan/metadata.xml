@@ -6,7 +6,8 @@
 		<name>Sam James</name>
 	</maintainer>
 	<use>
-		<flag name="boost">use <pkg>dev-libs/boost</pkg></flag>
+		<flag name="boost">Use <pkg>dev-libs/boost</pkg></flag>
+		<flag name="tools">Install optional tools for e.g. hashing</flag>
 	</use>
 	<slots>
 		<subslots>botan soname version</subslots>
