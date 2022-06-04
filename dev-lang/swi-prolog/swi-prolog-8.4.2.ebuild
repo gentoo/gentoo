@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake desktop xdg-utils flag-o-matic toolchain-funcs
+inherit cmake desktop xdg-utils flag-o-matic toolchain-funcs java-pkg-opt-2
 
 PATCHSET_VER="0"
 
@@ -52,6 +52,10 @@ DEPEND="${RDEPEND}
 BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/swipl-${PV}"
+
+pkg_setup() {
+	java-pkg-opt-2_pkg_setup
+}
 
 src_prepare() {
 	if [[ -d "${WORKDIR}"/${PV} ]] ; then
