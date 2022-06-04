@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit distutils-r1
 MY_P=${P/_/}
@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}
 	tz? ( dev-python/pytz[$PYTHON_USEDEP] )
 	sqlite? ( $(python_gen_impl_dep sqlite) )
 	mysql? ( dev-python/mysqlclient[$PYTHON_USEDEP] )
-	postgres? ( >=dev-python/psycopg-2.8[$PYTHON_USEDEP] )
+	postgres? ( >=dev-python/psycopg-2.8:2[$PYTHON_USEDEP] )
 	xapian? ( >=dev-libs/xapian-bindings-1.0.0[python,$PYTHON_USEDEP] )
 	whoosh? ( >=dev-python/whoosh-2.5.7[$PYTHON_USEDEP] )
 	ssl? ( dev-python/pyopenssl[$PYTHON_USEDEP] )
