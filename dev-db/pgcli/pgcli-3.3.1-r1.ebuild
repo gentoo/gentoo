@@ -21,7 +21,7 @@ RDEPEND="
 	dev-python/pendulum[${PYTHON_USEDEP}]
 	dev-python/pgspecial[${PYTHON_USEDEP}]
 	dev-python/prompt_toolkit[${PYTHON_USEDEP}]
-	dev-python/psycopg[${PYTHON_USEDEP}]
+	dev-python/psycopg:2[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/setproctitle[${PYTHON_USEDEP}]
 	dev-python/sqlparse[${PYTHON_USEDEP}]"
