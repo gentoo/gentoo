@@ -19,6 +19,9 @@
 	available for the x86 and amd64 platforms using an NPTL enabled
 	GLIBC. SBCL 0.8.17 and later support Unicode.
 </longdescription>
+	<use>
+		<flag name="linkable-runtime">Install sbcl.o to allow linking the runtime with extra object files</flag>
+	</use>
 	<upstream>
 		<remote-id type="sourceforge">sbcl</remote-id>
 	</upstream>
