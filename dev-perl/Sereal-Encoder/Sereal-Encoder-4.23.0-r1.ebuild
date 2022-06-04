@@ -30,6 +30,7 @@ BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-7.0.0
 	>=virtual/perl-ExtUtils-ParseXS-2.210.0
 	virtual/perl-File-Path
+	virtual/pkgconfig
 	test? (
 		virtual/perl-Data-Dumper
 		virtual/perl-File-Spec
