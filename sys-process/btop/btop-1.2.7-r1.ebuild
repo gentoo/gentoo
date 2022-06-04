@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit xdg-utils
+inherit toolchain-funcs xdg-utils
 
 DESCRIPTION="A monitor of resources"
 HOMEPAGE="https://github.com/aristocratos/btop"
@@ -13,6 +13,10 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
+PATCHES=(
+	"${FILESDIR}/${P}-respect-cxx-var-839318.patch"
+)
+
 src_prepare() {
 	default
 	# btop installs README.md to /usr/share/btop by default
@@ -21,7 +25,7 @@ src_prepare() {
 
 src_compile() {
 	# Disable btop optimization flags, since we have our flags in CXXFLAGS
-	emake OPTFLAGS=""
+	emake OPTFLAGS="" CXX="$(tc-getCXX)"
 }
 
 src_install() {
