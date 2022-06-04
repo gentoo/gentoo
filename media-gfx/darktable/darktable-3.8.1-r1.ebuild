@@ -44,6 +44,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="dev-util/intltool
 	virtual/pkgconfig
+	openmp? ( || ( sys-devel/gcc:*[openmp] sys-devel/clang-runtime:*[openmp] ) )
 	nls? ( sys-devel/gettext )
 	test? ( >=dev-python/jsonschema-3.2.0 )"
 DEPEND="dev-db/sqlite:3
