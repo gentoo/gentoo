@@ -17,7 +17,7 @@ ESVN_REPO_URI="svn://svn.code.sf.net/p/${PN}/code/trunk"
 ESVN_FETCH_CMD="svn checkout --ignore-externals"
 ESVN_UPDATE_CMD="svn update --ignore-externals"
 
-IUSE="contrib debug pch"
+IUSE="contrib debug"
 
 BDEPEND="virtual/pkgconfig"
 
@@ -49,11 +49,16 @@ src_configure() {
 	setup-wxwidgets
 
 	econf \
+		--disable-pch \
 		--disable-static \
 		$(use_with contrib boost-libdir "${ESYSROOT}/usr/$(get_libdir)") \
 		$(use_enable debug) \
-		$(use_enable pch) \
 		$(use_with contrib contrib-plugins all)
+}
+
+src_install() {
+	default
+	find "${ED}" -type f -name '*.la' -delete || die
 }
 
 pkg_postinst() {
