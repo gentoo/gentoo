@@ -32,5 +32,10 @@ src_prepare() {
 	# linter tests, fragile to newer linter versions
 	rm tests/test_code.py || die
 
+	# Test is removed in master
+	# https://github.com/martinpitt/python-dbusmock/commit/424719793c0a8e15ee05451cd58e21fb09914453
+	# https://github.com/martinpitt/python-dbusmock/issues/75
+	rm tests/test_accounts_service.py dbusmock/templates/accounts_service.py || die
+
 	distutils-r1_src_prepare
 }
