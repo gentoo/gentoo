@@ -5,7 +5,7 @@ EAPI=8
 
 DIST_AUTHOR=YVES
 DIST_VERSION=4.023
-inherit edo perl-module flag-o-matic toolchain-funcs
+inherit edo perl-module flag-o-matic
 
 DESCRIPTION="Fast, compact, powerful binary serialization"
 SLOT="0"
