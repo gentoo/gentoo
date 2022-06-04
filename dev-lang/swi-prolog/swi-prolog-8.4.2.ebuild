@@ -35,7 +35,7 @@ RDEPEND="sys-libs/ncurses:=
 		dev-qt/qtgui:5
 	)
 	X? (
-		virtual/jpeg:0
+		media-libs/libjpeg-turbo:=
 		x11-libs/libX11
 		x11-libs/libXft
 		x11-libs/libXinerama
