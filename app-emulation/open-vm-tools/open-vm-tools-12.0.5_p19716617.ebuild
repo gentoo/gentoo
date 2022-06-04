@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools linux-info pam systemd
+inherit autotools linux-info pam systemd udev
 
 DESCRIPTION="Tools for VMware guests"
 HOMEPAGE="https://github.com/vmware/open-vm-tools"
@@ -104,6 +104,7 @@ src_configure() {
 		$(use_enable vgauth)
 		$(use_with dnet)
 		$(use_with icu)
+		--with-udev-rules-dir="$(get_udevdir)/rules.d"
 	)
 	# Avoid a bug in configure.ac
 	use ssl || myeconfargs+=( --without-ssl )
@@ -137,4 +138,12 @@ src_install() {
 		fperms 4711 /usr/bin/vmware-user-suid-wrapper
 		dobin scripts/common/vmware-xdg-detect-de
 	fi
+}
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
 }
