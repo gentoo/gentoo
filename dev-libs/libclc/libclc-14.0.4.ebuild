@@ -11,7 +11,7 @@ HOMEPAGE="https://libclc.llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( MIT BSD )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE_VIDEO_CARDS="video_cards_nvidia video_cards_r600 video_cards_radeonsi"
 IUSE="${IUSE_VIDEO_CARDS}"
 REQUIRED_USE="|| ( ${IUSE_VIDEO_CARDS} )"
