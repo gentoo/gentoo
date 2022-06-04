@@ -19,7 +19,7 @@ KEYWORDS="amd64 x86"
 RDEPEND="
 	>=dev-python/click-4.1[${PYTHON_USEDEP}]
 	>=dev-python/configobj-5.0.6[${PYTHON_USEDEP}]
-	>=dev-python/psycopg-2.7.4[${PYTHON_USEDEP}]
+	>=dev-python/psycopg-2.7.4:2[${PYTHON_USEDEP}]
 	>=dev-python/sqlparse-0.1.19[${PYTHON_USEDEP}]
 "
 BDEPEND="
