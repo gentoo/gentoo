@@ -21,7 +21,9 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
-	test? ( dev-python/psycopg[${PYTHON_USEDEP}] )
+	test? (
+		dev-python/psycopg:2[${PYTHON_USEDEP}]
+	)
 "
 
 distutils_enable_sphinx docs
