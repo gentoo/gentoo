@@ -279,6 +279,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.0-make.patch
 	"${FILESDIR}"/${PN}-6.1.0-strings.patch
 	"${FILESDIR}"/${PN}-7.0.0-also-build-virtfs-proxy-helper.patch
+	"${FILESDIR}"/${P}-virtio-scsi-fixes.patch
+	"${FILESDIR}"/${P}-pci-overflow-fortify-source-3.patch
 )
 
 QA_PREBUILT="
