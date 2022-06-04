@@ -19,8 +19,6 @@ else
 	KEYWORDS="~amd64"
 fi
 
-SRC_URI+=" https://gitlab.com/Matt.Jolly/fvwm3-go-deps/-/raw/${PV}/${P}-deps.tar.xz?inline=false -> ${P}-deps.tar.xz"
-
 LICENSE="GPL-2+ FVWM
 	go? (
 			Apache-2.0
@@ -30,7 +28,7 @@ LICENSE="GPL-2+ FVWM
 
 SLOT="0"
 
-IUSE="bidi debug doc go netpbm nls perl png readline rplay stroke svg tk truetype vanilla lock"
+IUSE="bidi debug doc go netpbm nls perl readline rplay stroke svg tk vanilla lock"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}"
 
@@ -51,9 +49,11 @@ BDEPEND="
 RDEPEND="${PYTHON_DEPS}
 	${COMMON_DEPEND}
 	!x11-wm/fvwm
+	dev-lang/perl
 	dev-libs/glib:2
 	dev-libs/libevent:=
-	dev-lang/perl
+	media-libs/fontconfig
+	media-libs/libpng:=
 	sys-libs/zlib
 	x11-libs/libICE
 	x11-libs/libSM
@@ -64,6 +64,7 @@ RDEPEND="${PYTHON_DEPS}
 	x11-libs/libXdmcp
 	x11-libs/libXext
 	x11-libs/libXfixes
+	x11-libs/libXft
 	x11-libs/libXpm
 	x11-libs/libXrandr
 	x11-libs/libXrender
@@ -76,7 +77,7 @@ RDEPEND="${PYTHON_DEPS}
 			>=dev-perl/X11-Protocol-0.56
 		)
 	)
-	png? ( media-libs/libpng:= )
+	media-libs/libpng:=
 	readline? (
 		sys-libs/ncurses:=
 		sys-libs/readline:=
@@ -86,10 +87,6 @@ RDEPEND="${PYTHON_DEPS}
 	svg? (
 		gnome-base/librsvg:2
 		x11-libs/cairo
-	)
-	truetype? (
-		media-libs/fontconfig
-		x11-libs/libXft
 	)
 	userland_GNU? ( sys-apps/debianutils )"
 
@@ -106,25 +103,11 @@ if [[ ${PV} == 9999 ]]; then
 	)
 fi
 
-src_unpack() {
-	if [[ ${PV} == 9999 ]]; then
-		einfo "The branch ${EGIT_BRANCH} will be installed."
-		git-r3_src_unpack
-	else
-		unpack "${P}".tar.gz
-	fi
-	unpack "${P}"-deps.tar.xz
-	mv go-mod ${P}/bin/FvwmPrompt/ || die
-}
-
 src_prepare() {
 	default
 	if use doc; then
 		eapply "${FILESDIR}/${P}-htmldoc.patch"
 	fi
-
-	sed -i '/^@FVWM_BUILD_GOLANG_TRUE@GOBUILD = $(GOCMD) build/s/$/ -mod=mod/' \
-		bin/FvwmPrompt/Makefile.in || die "Updating go build paramaters failed."
 
 	eautoreconf
 }
@@ -151,10 +134,9 @@ src_configure() {
 		$(use_enable nls)
 		$(use_enable nls iconv)
 		$(use_enable perl perllib)
-		$(use_enable png)
 		$(use_with readline readline-library)
 		$(use_enable svg rsvg)
-		$(use_enable truetype xft)
+		--enable-png
 		--docdir=/usr/share/doc/${P}
 	)
 
