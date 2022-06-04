@@ -19,7 +19,9 @@ RESTRICT="!test? ( test )"
 
 # moreutils parallel is now used for speedups in main code:
 # https://github.com/github/backup-utils/pull/635
-RDEPEND="net-misc/rsync
+RDEPEND="app-misc/jq
+	app-archive/pigz
+	net-misc/rsync
 	sys-apps/moreutils"
 
 # tests invoke parallel & rsync
