@@ -8,17 +8,13 @@ inherit systemd tmpfiles
 DESCRIPTION="Free and Open, Distributed, RESTful Search Engine"
 HOMEPAGE="https://www.elastic.co/elasticsearch/"
 SRC_URI="https://artifacts.elastic.co/downloads/${PN}/${P}-linux-x86_64.tar.gz"
+
 LICENSE="Apache-2.0 BSD-2 Elastic-2.0 LGPL-3 MIT public-domain"
 SLOT="0"
 KEYWORDS="~amd64"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-env.patch"
-)
-
 DEPEND="acct-group/elasticsearch
 	acct-user/elasticsearch"
-
 RDEPEND="acct-group/elasticsearch
 	acct-user/elasticsearch
 	sys-libs/zlib
@@ -27,8 +23,13 @@ RDEPEND="acct-group/elasticsearch
 QA_PREBUILT="usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/\(bin\|lib\)/.*"
 QA_PRESTRIPPED="usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/\(bin\|lib\)/.*"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-env.patch"
+)
+
 src_prepare() {
 	default
+
 	rm -rf jdk || die
 	sed -i -e "s:logs/:/var/log/${PN}/:g" config/jvm.options || die
 	rm LICENSE.txt NOTICE.txt || die
@@ -52,7 +53,7 @@ src_install() {
 	keepdir /usr/share/${PN}/plugins
 
 	exeinto /usr/share/${PN}/bin
-	doexe ${FILESDIR}/elasticsearch-systemd-pre-exec
+	doexe "${FILESDIR}"/elasticsearch-systemd-pre-exec
 
 	fperms -R +x /usr/share/${PN}/bin
 	fperms -R +x /usr/share/${PN}/modules/x-pack-ml/platform/linux-x86_64/bin
@@ -77,7 +78,7 @@ pkg_postinst() {
 	# Elasticsearch will choke on our keep file and dodir will not preserve the empty dir
 	rm /usr/share/${PN}/plugins/.keep* || die
 	tmpfiles_process /usr/lib/tmpfiles.d/${PN}.conf
-	if [ ! systemd_is_booted ]; then
+	if ! systemd_is_booted ; then
 		elog "You may create multiple instances of ${PN} by"
 		elog "symlinking the init script:"
 		elog "ln -sf /etc/init.d/${PN} /etc/init.d/${PN}.instance"
