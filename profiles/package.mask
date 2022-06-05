@@ -382,7 +382,6 @@ dev-python/django-picklefield
 dev-python/django-q
 dev-python/falcon
 dev-python/flufl-testing
-net-mail/django-mailman3
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
