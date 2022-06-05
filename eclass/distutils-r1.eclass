@@ -1588,6 +1588,8 @@ distutils-r1_run_phase() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	if [[ ${DISTUTILS_IN_SOURCE_BUILD} ]]; then
+		[[ ${DISTUTILS_USE_PEP517} ]] &&
+			die "DISTUTILS_IN_SOURCE_BUILD is not supported in PEP517 mode"
 		# only force BUILD_DIR if implementation is explicitly enabled
 		# for building; any-r1 API may select one that is not
 		# https://bugs.gentoo.org/701506
