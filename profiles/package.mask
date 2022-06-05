@@ -379,7 +379,6 @@ dev-python/django-extensions
 dev-python/django-gravatar2
 dev-python/django-haystack
 dev-python/django-picklefield
-dev-python/django-q
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
