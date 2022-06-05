@@ -358,7 +358,6 @@ dev-python/authheaders
 dev-python/django-allauth
 dev-python/django-appconf
 dev-python/django-debug-toolbar
-dev-python/flufl-bounce
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
