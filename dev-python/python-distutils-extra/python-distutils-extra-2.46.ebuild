@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
@@ -34,5 +35,6 @@ BDEPEND="
 "
 
 python_test() {
+	local -x SETUPTOOLS_USE_DISTUTILS=stdlib
 	"${EPYTHON}" test/auto.py -v || die "Tests fail with ${EPYTHON}"
 }
