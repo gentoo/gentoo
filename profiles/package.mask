@@ -468,11 +468,6 @@ sys-cluster/singularity
 sys-devel/automake:1.13
 sys-devel/automake:1.15
 
-# Michał Górny <mgorny@gentoo.org> (2022-03-18)
-# The new version breaks building docs w/o Internet access (because it
-# tries to fetch and install all dependencies locally).
-~dev-python/jaraco-packaging-9.0.0
-
 # John Helmert III <ajak@gentoo.org> (2022-03-13)
 # Arti is not a production-ready Tor client. According to upstream, "do
 # not use this program yet if you seriously need anonymity, privacy,
