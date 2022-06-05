@@ -3,7 +3,7 @@
 
 EAPI=8
 
-H=a4205749d20a09871f0951c34f919d4ee5fbdb55
+H=c1c68cc946eb31b6ba8faefdceffce1f77ca52df
 NEED_EMACS=24.3
 
 inherit elisp
@@ -17,14 +17,14 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND="
+BDEPEND="
 	>=app-emacs/dash-2.18.1
 	>=app-emacs/f-0.19.0
 	>=app-emacs/flycheck-32
 	>=app-emacs/s-1.10.0
 "
 RDEPEND="
-	${DEPEND}
+	${BDEPEND}
 	sci-mathematics/lean:0/3
 "
 
