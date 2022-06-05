@@ -81,16 +81,6 @@ pkg_pretend() {
 		elog "of receive order. To disable RBF, rebuild with USE=knots to get ${PN}"
 		elog "from Bitcoin Knots, and set mempoolreplacement=never in bitcoin.conf"
 	fi
-	if has_version "<${CATEGORY}/${PN}-0.21.1" ; then
-		ewarn "CAUTION: BITCOIN PROTOCOL CHANGE INCLUDED"
-		ewarn "This release adds enforcement of the Taproot protocol change to the Bitcoin"
-		ewarn "rules, beginning in November. Protocol changes require user consent to be"
-		ewarn "effective, and if enforced inconsistently within the community may compromise"
-		ewarn "your security or others! If you do not know what you are doing, learn more"
-		ewarn "before November. (You must make a decision either way - simply not upgrading"
-		ewarn "is insecure in all scenarios.)"
-		ewarn "To learn more, see https://bitcointaproot.cc"
-	fi
 }
 
 src_prepare() {
@@ -106,6 +96,8 @@ src_prepare() {
 		eapply "${knots_patchdir}/${KNOTS_P}_p4-branding.patch"
 		eapply "${knots_patchdir}/${KNOTS_P}_p5-ts.patch"
 	fi
+
+	eapply "${FILESDIR}/22-compat-libsecp256k1-secp256k1_schnorrsig_verify.patch"
 
 	default
 
