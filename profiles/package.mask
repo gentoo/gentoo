@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-06-05)
+# Ages old, abandoned upstream, and server installs now provide an
+# actually useful webmail interface. Removal in 30 days.
+mail-client/novell-groupwise-client
+
 # Michał Górny <mgorny@gentoo.org> (2022-06-05)
 # The current version in Gentoo is broken with modern pytest.  The new
 # version (from Dec 2021) fails tests with modern pyflakes.  No revdeps.
