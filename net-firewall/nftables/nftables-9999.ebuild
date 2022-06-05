@@ -144,6 +144,7 @@ src_install() {
 
 	# Do it here instead of in src_prepare to avoid eautoreconf
 	# rmdir lets us catch if more files end up installed in /etc/nftables
+	dodir /usr/share/doc/${PF}/skels/
 	mv "${ED}"/etc/nftables/osf "${ED}"/usr/share/doc/${PF}/skels/osf || die
 	rmdir "${ED}"/etc/nftables || die
 
