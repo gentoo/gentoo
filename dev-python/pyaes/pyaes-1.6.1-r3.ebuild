@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
@@ -18,7 +18,11 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="test? ( dev-python/pycryptodome[${PYTHON_USEDEP}] )"
+BDEPEND="
+	test? (
+		dev-python/pycryptodome[${PYTHON_USEDEP}]
+	)
+"
 
 python_test() {
 	local t fail=
