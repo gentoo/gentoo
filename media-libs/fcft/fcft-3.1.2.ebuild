@@ -32,7 +32,7 @@ RDEPEND="
 		dev-libs/wayland
 	)
 	harfbuzz? (
-		media-libs/harfbuzz:=
+		media-libs/harfbuzz:=[truetype]
 	)
 	libutf8proc? (
 		dev-libs/libutf8proc:=
