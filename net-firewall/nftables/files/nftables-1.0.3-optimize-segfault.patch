@@ -1,0 +1,64 @@
+https://git.netfilter.org/nftables/commit/?id=59bd944f6d75e99fe0c8d743e7fd482672640c2d
+
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+Date: Wed, 1 Jun 2022 10:14:22 +0200
+Subject: optimize: segfault when releasing unsupported statement
+
+Call xfree() instead since stmt_alloc() does not initialize the
+statement type fields.
+
+Closes: https://bugzilla.netfilter.org/show_bug.cgi?id=1609
+Fixes: ea1f1c9ff608 ("optimize: memleak in statement matrix")
+Signed-off-by: Pablo Neira Ayuso <pablo@netfilter.org>
+--- a/src/optimize.c
++++ b/src/optimize.c
+@@ -304,7 +304,7 @@ static int rule_collect_stmts(struct optimize_ctx *ctx, struct rule *rule)
+ 			clone->nat.type_flags = stmt->nat.type_flags;
+ 			break;
+ 		default:
+-			stmt_free(clone);
++			xfree(clone);
+ 			continue;
+ 		}
+ 
+--- a/tests/shell/testcases/optimizations/dumps/merge_vmaps.nft
++++ b/tests/shell/testcases/optimizations/dumps/merge_vmaps.nft
+@@ -1,4 +1,10 @@
+ table ip x {
++	set s {
++		type ipv4_addr
++		size 65535
++		flags dynamic
++	}
++
+ 	chain filter_in_tcp {
+ 	}
+ 
+@@ -6,6 +12,7 @@ table ip x {
+ 	}
+ 
+ 	chain y {
++		update @s { ip saddr limit rate 12/minute burst 30 packets } accept
+ 		tcp dport vmap { 80 : accept, 81 : accept, 443 : accept, 8000-8100 : accept, 24000-25000 : accept }
+ 		meta l4proto vmap { tcp : goto filter_in_tcp, udp : goto filter_in_udp }
+ 		log
+--- a/tests/shell/testcases/optimizations/merge_vmaps
++++ b/tests/shell/testcases/optimizations/merge_vmaps
+@@ -3,11 +3,16 @@
+ set -e
+ 
+ RULESET="table ip x {
++	set s {
++		type ipv4_addr
++		flags dynamic
++	}
+ 	chain filter_in_tcp {
+ 	}
+ 	chain filter_in_udp {
+ 	}
+ 	chain y {
++	        update @s { ip saddr limit rate 12/minute burst 30 packets } accept
+ 		tcp dport vmap {
+ 			80 : accept,
+ 			81 : accept,
+cgit v1.2.3

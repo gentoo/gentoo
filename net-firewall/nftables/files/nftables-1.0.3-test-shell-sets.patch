@@ -1,0 +1,21 @@
+https://git.netfilter.org/nftables/commit/?id=3835de19fe5773baac5b79f35484d0f0e99bcfe1
+
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+Date: Wed, 1 Jun 2022 18:17:02 +0200
+Subject: tests: shell: sets_with_ifnames release netns on exit
+
+Missing ip netns del call from cleanup()
+
+Fixes: d6fdb0d8d482 ("sets_with_ifnames: add test case for concatenated range")
+Signed-off-by: Pablo Neira Ayuso <pablo@netfilter.org>
+--- a/tests/shell/testcases/sets/sets_with_ifnames
++++ b/tests/shell/testcases/sets/sets_with_ifnames
+@@ -13,6 +13,7 @@ ns2="nft2ifname-$rnd"
+ cleanup()
+ {
+ 	ip netns del "$ns1"
++	ip netns del "$ns2"
+ }
+ 
+ trap cleanup EXIT
+cgit v1.2.3
