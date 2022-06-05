@@ -1,7 +1,9 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit cmake
 
 DESCRIPTION="A ZNC module which provides client specific buffers"
 HOMEPAGE="https://github.com/CyberShadow/znc-clientbuffer"
@@ -18,20 +20,18 @@ RDEPEND="${DEPEND}"
 
 DOCS=( README.md )
 
-_emake() {
-	emake \
-		-j1 \
-		PREFIX=${EPREFIX}/usr \
-		LIBDIR=/$(get_libdir) \
-		"$@"
+src_prepare() {
+	cp -v "${FILESDIR}/CMakeLists.txt" "${S}" || die
+	cmake_src_prepare
 }
 
 src_compile() {
-	_emake
+	cmake_src_compile
 }
 
 src_install() {
-	_emake DESTDIR=${ED} install
+	exeinto /usr/$(get_libdir)/znc
+	doexe "${BUILD_DIR}"/clientbuffer.so
 
 	einstalldocs
 }
