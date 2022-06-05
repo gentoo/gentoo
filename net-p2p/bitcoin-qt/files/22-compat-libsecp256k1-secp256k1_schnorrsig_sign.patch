@@ -1,0 +1,110 @@
+commit dea4e18d6e682d06c426924e7a989794a1fa7240
+Author: Luke Dashjr <luke-jr+git@utopios.org>
+Date:   Tue May 31 17:21:42 2022 +0000
+
+    Adapt to new secp256k1_schnorrsig_sign ABI at startup, when building against system libsecp256k1
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 623a1a726db..6969edd20eb 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -29,7 +29,7 @@ BITCOIN_INCLUDES=-I$(builddir) $(libsecp256k1_CFLAGS) $(BDB_CPPFLAGS) $(BOOST_CP
+ BITCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
+ 
+ LIBBITCOIN_SERVER=libbitcoin_server.a
+-LIBBITCOIN_COMMON=libbitcoin_common.a
++LIBBITCOIN_COMMON=libbitcoin_common.a $(libdl_LIBS)
+ LIBBITCOIN_CONSENSUS=libbitcoin_consensus.a $(libdl_LIBS)
+ LIBBITCOIN_CLI=libbitcoin_cli.a
+ LIBBITCOIN_UTIL=libbitcoin_util.a
+@@ -80,7 +80,7 @@ endif
+ EXTRA_LIBRARIES += \
+   $(LIBBITCOIN_CRYPTO) \
+   $(LIBBITCOIN_UTIL) \
+-  $(LIBBITCOIN_COMMON) \
++  libbitcoin_common.a \
+   libbitcoin_consensus.a \
+   $(LIBBITCOIN_SERVER) \
+   $(LIBBITCOIN_CLI) \
+diff --git a/src/Makefile.test_fuzz.include b/src/Makefile.test_fuzz.include
+index 2d772f2fca1..fa725fe00f4 100644
+--- a/src/Makefile.test_fuzz.include
++++ b/src/Makefile.test_fuzz.include
+@@ -20,6 +20,6 @@ libtest_fuzz_a_SOURCES = \
+   $(TEST_FUZZ_H)
+ 
+ LIBTEST_FUZZ += $(LIBBITCOIN_SERVER)
+-LIBTEST_FUZZ += $(LIBBITCOIN_COMMON)
++LIBTEST_FUZZ += libbitcoin_common.a
+ LIBTEST_FUZZ += $(LIBBITCOIN_UTIL)
+ LIBTEST_FUZZ += $(LIBBITCOIN_CRYPTO_BASE)
+diff --git a/src/Makefile.test_util.include b/src/Makefile.test_util.include
+index 85e50ebf705..90642906dd5 100644
+--- a/src/Makefile.test_util.include
++++ b/src/Makefile.test_util.include
+@@ -35,6 +35,6 @@ libtest_util_a_SOURCES = \
+   $(TEST_UTIL_H)
+ 
+ LIBTEST_UTIL += $(LIBBITCOIN_SERVER)
+-LIBTEST_UTIL += $(LIBBITCOIN_COMMON)
++LIBTEST_UTIL += libbitcoin_common.a
+ LIBTEST_UTIL += $(LIBBITCOIN_UTIL)
+ LIBTEST_UTIL += $(LIBBITCOIN_CRYPTO_BASE)
+diff --git a/src/key.cpp b/src/key.cpp
+index dcad386e771..a4b1d70ce97 100644
+--- a/src/key.cpp
++++ b/src/key.cpp
+@@ -3,6 +3,10 @@
+ // Distributed under the MIT software license, see the accompanying
+ // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+ 
++#if defined(HAVE_CONFIG_H)
++#include <config/bitcoin-config.h>
++#endif
++
+ #include <key.h>
+ 
+ #include <crypto/common.h>
+@@ -15,6 +19,30 @@
+ #include <secp256k1_recovery.h>
+ #include <secp256k1_schnorrsig.h>
+ 
++#if DYNAMIC_LIBSECP256K1
++
++#include <dlfcn.h>
++
++static void *real_secp256k1_schnorrsig_sign;
++
++typedef int (*old_secp256k1_schnorrsig_sign_type)(const secp256k1_context* ctx, unsigned char *sig64, const unsigned char *msg32, const secp256k1_keypair *keypair, secp256k1_nonce_function_hardened noncefp, void *ndata);
++typedef int (*new_secp256k1_schnorrsig_sign_type)(const secp256k1_context* ctx, unsigned char *sig64, const unsigned char *msg32, const secp256k1_keypair *keypair, const unsigned char *aux_rand32);
++
++static const auto my_secp256k1_schnorrsig_sign = []() -> new_secp256k1_schnorrsig_sign_type {
++    real_secp256k1_schnorrsig_sign = dlsym(NULL, "secp256k1_schnorrsig_sign");
++    assert(real_secp256k1_schnorrsig_sign);
++    if (dlsym(NULL, "secp256k1_schnorrsig_sign_custom")) {
++        return (new_secp256k1_schnorrsig_sign_type)real_secp256k1_schnorrsig_sign;
++    } else {
++        return [](const secp256k1_context* ctx, unsigned char *sig64, const unsigned char *msg32, const secp256k1_keypair *keypair, const unsigned char *aux_rand32) -> int {
++            const auto real_secp256k1_schnorrsig_sign_old = (old_secp256k1_schnorrsig_sign_type)real_secp256k1_schnorrsig_sign;
++            return real_secp256k1_schnorrsig_sign_old(ctx, sig64, msg32, keypair, secp256k1_nonce_function_bip340, (void*)aux_rand32);
++        };
++    }
++}();
++
++#endif
++
+ static secp256k1_context* secp256k1_context_sign = nullptr;
+ 
+ /** These functions are taken from the libsecp256k1 distribution and are very ugly. */
+@@ -274,7 +302,11 @@ bool CKey::SignSchnorr(const uint256& hash, Span<unsigned char> sig, const uint2
+         uint256 tweak = XOnlyPubKey(pubkey_bytes).ComputeTapTweakHash(merkle_root->IsNull() ? nullptr : merkle_root);
+         if (!secp256k1_keypair_xonly_tweak_add(GetVerifyContext(), &keypair, tweak.data())) return false;
+     }
++#if DYNAMIC_LIBSECP256K1
++    bool ret = my_secp256k1_schnorrsig_sign(secp256k1_context_sign, sig.data(), hash.data(), &keypair, aux ? aux->data() : nullptr);
++#else
+     bool ret = secp256k1_schnorrsig_sign(secp256k1_context_sign, sig.data(), hash.data(), &keypair, secp256k1_nonce_function_bip340, aux ? (void*)aux->data() : nullptr);
++#endif
+     memory_cleanse(&keypair, sizeof(keypair));
+     return ret;
+ }
