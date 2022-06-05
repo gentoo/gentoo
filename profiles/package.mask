@@ -364,7 +364,6 @@ dev-python/lazr-config
 dev-python/lazr-delegates
 dev-python/python3-openid
 dev-python/rcssmin
-dev-python/rjsmin
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
