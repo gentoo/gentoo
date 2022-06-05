@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -69,6 +69,9 @@ src_prepare() {
 		eapply "${knots_patchdir}/${KNOTS_P}_p4-branding.patch"
 		eapply "${knots_patchdir}/${KNOTS_P}_p5-ts.patch"
 	fi
+
+	eapply "${FILESDIR}/22-compat-libsecp256k1-secp256k1_schnorrsig_verify.patch"
+	eapply "${FILESDIR}/22-compat-libsecp256k1-secp256k1_schnorrsig_sign.patch"
 
 	default
 

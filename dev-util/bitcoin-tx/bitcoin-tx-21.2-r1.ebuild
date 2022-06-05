@@ -62,6 +62,8 @@ src_prepare() {
 		eapply "${knots_patchdir}/${KNOTS_P}_p5-ts.patch"
 	fi
 
+	eapply "${FILESDIR}/22-compat-libsecp256k1-secp256k1_schnorrsig_verify.patch"
+
 	eapply_user
 
 	eautoreconf
