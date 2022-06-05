@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-06-05)
+# Pending bump since January.  No Python 3.10 compat.  Tests restricted.
+# Uses PEP517-incompatible hacks to build.  Hard requires dev-db/mysql
+# (and blocks dev-db/mariad).  No revdeps in Gentoo.
+# Use dev-python/mysqlclient instead.
+# Removal on 2022-07-05.  Bug #845756.
+dev-python/mysql-connector-python
+
 # Joonas Niilola <juippis@gentoo.org> (2022-06-05)
 # Version which allows wayland-only build, still experimental. Weeding
 # out all bugs before unmasking. Please see bug #848858 and its
