@@ -389,10 +389,6 @@ net-mail/mailman-meta
 net-mail/hyperkitty
 net-mail/postorius
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-05-04)
-# Unused java libraries and useless java-virtual. Removal on 2022-06-04
-dev-java/glassfish-jms-api
-
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
 >=x11-libs/libX11-1.8
