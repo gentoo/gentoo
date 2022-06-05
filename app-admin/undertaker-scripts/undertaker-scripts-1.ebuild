@@ -6,11 +6,11 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 inherit python-single-r1
 
+MY_P=undertaker-scripts-${PV}
 DESCRIPTION="Scripts to help retiring Gentoo developers"
-HOMEPAGE="https://github.com/mgorny/undertaker-scripts"
-SRC_URI="
-	https://github.com/mgorny/undertaker-scripts/archive/v${PV}.tar.gz
-		-> ${P}.tar.gz"
+HOMEPAGE="https://github.com/mgorny/gentoo-retirement-scripts/"
+SRC_URI="mirror://gentoo/40/${MY_P}.tar.gz"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD-2"
 SLOT="0"
