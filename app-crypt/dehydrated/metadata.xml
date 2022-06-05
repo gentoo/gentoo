@@ -4,10 +4,6 @@
 	<maintainer type="person">
 		<email>mschiff@gentoo.org</email>
 	</maintainer>
-	<maintainer type="person">
-		<email>whissi@gentoo.org</email>
-		<name>Thomas Deutschmann</name>
-	</maintainer>
 	<stabilize-allarches/>
 	<use>
 		<flag name="cron">Install cron job to sign/renew non-existent/changed/expiring certificates</flag>

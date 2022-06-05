@@ -5,10 +5,6 @@
 		<email>gentoo@seichter.de</email>
 		<name>Ralph Seichter</name>
 	</maintainer>
-	<maintainer type="person" proxied="proxy">
-		<email>whissi@gentoo.org</email>
-		<name>Thomas Deutschmann</name>
-	</maintainer>
 	<longdescription>
 		A python extension module to enable python scripts to attach
 		to sendmail’s libmilter functionality. Additional python
