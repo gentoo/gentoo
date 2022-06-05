@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>jsmolic@gentoo.org</email>
+		<name>Jakov Smolić</name>
+	</maintainer>
 	<longdescription>
 		As the name already suggests, ncdu is an NCurses version of the famous old 'du'
 		unix command. It provides a fast and easy interface to your harddrive. Where is
