@@ -10,7 +10,7 @@ URI_amd64="https://mirror.whissi.de/distfiles/rar/rarlinux-x64-${PV}.tar.gz"
 URI_w64="https://mirror.whissi.de/distfiles/rar/winrar-x64-${PV}.exe"
 SRC_URI="x86? ( ${URI_x86} )
 	amd64? ( ${URI_amd64} )
-	all_sfx? (
+	all-sfx? (
 		${URI_x86}
 		${URI_amd64}
 		${URI_w64}
@@ -19,10 +19,10 @@ SRC_URI="x86? ( ${URI_x86} )
 LICENSE="RAR BSD BSD-2"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="all_sfx"
+IUSE="all-sfx"
 RESTRICT="mirror bindist"
 
-DEPEND="all_sfx? ( app-arch/unrar )"
+DEPEND="all-sfx? ( app-arch/unrar )"
 RDEPEND="sys-libs/glibc"
 
 S="${WORKDIR}/${PN}"
@@ -65,7 +65,7 @@ src_unpack() {
 
 	rm -f "${S}"/license.txt
 
-	if use all_sfx ; then
+	if use all-sfx ; then
 		mkdir sfx
 		cd sfx
 		for _file in ${A}; do
@@ -99,7 +99,7 @@ src_install() {
 	dosym ../rar/unrar /opt/bin/unrar
 
 	insinto /opt/rar
-	if use all_sfx ; then
+	if use all-sfx ; then
 		doins "${WORKDIR}"/sfx/*.{sfx,SFX}
 	else
 		doins default.sfx

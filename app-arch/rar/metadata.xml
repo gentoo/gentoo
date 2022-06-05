@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<use>
-		<flag name="all_sfx">
+		<flag name="all-sfx">
 			Install all SFX (Self-Extracting) files rather than just the native
 			format (allows creation of Windows EXEs on Linux ELF systems)
 		</flag>
