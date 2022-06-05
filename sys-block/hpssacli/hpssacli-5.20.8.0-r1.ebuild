@@ -17,6 +17,14 @@ KEYWORDS="-* ~amd64"
 
 S="${WORKDIR}"
 
+RDEPEND="sys-libs/glibc"
+
+QA_FLAGS_IGNORED="
+	usr/sbin/ssacli
+	usr/sbin/ssascripting
+	usr/sbin/rmstr
+"
+
 src_install() {
 	local -r ssacli_bindir="opt/smartstorageadmin/ssacli/bin"
 
