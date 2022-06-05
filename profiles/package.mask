@@ -384,7 +384,6 @@ dev-python/falcon
 dev-python/flufl-testing
 net-mail/django-mailman3
 net-mail/mailman
-net-mail/mailmanclient
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
