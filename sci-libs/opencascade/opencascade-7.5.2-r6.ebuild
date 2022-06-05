@@ -67,6 +67,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.5.1-0005-fix-write-permissions-on-scripts.patch
 	"${FILESDIR}"/${PN}-7.5.1-0006-fix-creation-of-custom.sh-script.patch
 	"${FILESDIR}"/${PN}-7.5.1-fix-AllValues-name-collision-with-vtk-9.0.patch
+	"${FILESDIR}"/${PN}-7.6.2-avoid-pre-stripping-binaries.patch
 )
 
 src_prepare() {
