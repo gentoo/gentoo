@@ -30,6 +30,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/GitPython[${PYTHON_USEDEP}]
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-util/patchelf
 	)
 "
