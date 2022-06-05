@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1
 
 DESCRIPTION="A python parser for the Coffeescript Object Notation (CSON)"
@@ -15,6 +15,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~riscv ~x86"
 
-RDEPEND="dev-python/speg"
+RDEPEND="dev-python/speg[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
