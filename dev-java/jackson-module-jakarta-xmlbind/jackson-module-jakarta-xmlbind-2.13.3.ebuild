@@ -36,7 +36,7 @@ CP_DEPEND="
 	~dev-java/jackson-core-${PV}:0
 	~dev-java/jackson-databind-${PV}:0
 	dev-java/jakarta-activation:1
-	dev-java/jaxb-api:3
+	>=dev-java/jaxb-api-3.0.1-r1:3
 "
 
 # Compile dependencies
