@@ -79,12 +79,12 @@ KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86"
 
 RDEPEND="
 	>=dev-libs/openssl-1.0.2o-r6:0=
-"
-DEPEND="
-	${RDEPEND}
 	$(python_gen_cond_dep '
 		>=dev-python/cffi-1.8:=[${PYTHON_USEDEP}]
 	' 'python*')
+"
+DEPEND="
+	${RDEPEND}
 "
 BDEPEND="
 	dev-python/setuptools-rust[${PYTHON_USEDEP}]
