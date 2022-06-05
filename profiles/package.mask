@@ -356,7 +356,6 @@ dev-ruby/c21e:1
 # Removal on 2022-06-05.  Bug #842888.
 dev-python/authheaders
 dev-python/django-allauth
-dev-python/django-appconf
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
