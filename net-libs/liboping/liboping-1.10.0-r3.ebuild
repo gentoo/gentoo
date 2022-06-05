@@ -14,7 +14,7 @@ SRC_URI="https://noping.cc/files/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/0.3"
-KEYWORDS="~alpha amd64 arm x86"
+KEYWORDS="~alpha amd64 arm ~arm64 x86"
 IUSE="+filecaps ncurses perl"
 
 DEPEND="ncurses? ( sys-libs/ncurses:0= )"
