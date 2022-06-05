@@ -1,0 +1,119 @@
+commit 7651dd850f6c9ab09ff3adb485761193c6e13216
+Author: Luke Dashjr <luke-jr+git@utopios.org>
+Date:   Tue May 31 13:33:24 2022 +0000
+
+    Adapt to new secp256k1_schnorrsig_verify ABI at startup, when building against system libsecp256k1
+
+diff --git a/configure.ac b/configure.ac
+index 1707bc46143..480bde51e64 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1443,8 +1443,19 @@ AC_ARG_WITH([system-libsecp256k1],
+   [system_libsecp256k1=$withval],
+   [system_libsecp256k1=no]
+ )
++libdl_LIBS=
+ if test x$system_libsecp256k1 != xno; then
+   PKG_CHECK_MODULES([libsecp256k1],[libsecp256k1],,[true])
++  AC_CHECK_FUNC([dlsym], [
++    true  # Found, no library needed
++  ], [
++    AC_CHECK_LIB([dl], [dlsym], [
++      libdl_LIBS='-ldl'
++    ], [
++      AC_MSG_ERROR([Using system libsecp256k1 requires dlsym])
++    ])
++  ])
++  AC_DEFINE([DYNAMIC_LIBSECP256K1], [1], [Define this symbol if libsecp256k1 is being dynamically linked])
+ else
+   libsecp256k1_CFLAGS='-I$(srcdir)/secp256k1/include'
+   libsecp256k1_LIBS='secp256k1/libsecp256k1.la'
+@@ -1452,6 +1463,7 @@ fi
+ AM_CONDITIONAL([EMBEDDED_LIBSECP256K1],[test x$system_libsecp256k1 = xno])
+ AC_SUBST(libsecp256k1_CFLAGS)
+ AC_SUBST(libsecp256k1_LIBS)
++AC_SUBST(libdl_LIBS)
+ 
+ if test x$enable_wallet != xno; then
+     dnl Check for libdb_cxx only if wallet enabled
+diff --git a/src/Makefile.am b/src/Makefile.am
+index b71ef778322..623a1a726db 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -30,7 +30,7 @@ BITCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
+ 
+ LIBBITCOIN_SERVER=libbitcoin_server.a
+ LIBBITCOIN_COMMON=libbitcoin_common.a
+-LIBBITCOIN_CONSENSUS=libbitcoin_consensus.a
++LIBBITCOIN_CONSENSUS=libbitcoin_consensus.a $(libdl_LIBS)
+ LIBBITCOIN_CLI=libbitcoin_cli.a
+ LIBBITCOIN_UTIL=libbitcoin_util.a
+ LIBBITCOIN_CRYPTO_BASE=crypto/libbitcoin_crypto_base.a
+@@ -81,7 +81,7 @@ EXTRA_LIBRARIES += \
+   $(LIBBITCOIN_CRYPTO) \
+   $(LIBBITCOIN_UTIL) \
+   $(LIBBITCOIN_COMMON) \
+-  $(LIBBITCOIN_CONSENSUS) \
++  libbitcoin_consensus.a \
+   $(LIBBITCOIN_SERVER) \
+   $(LIBBITCOIN_CLI) \
+   $(LIBBITCOIN_IPC) \
+diff --git a/src/pubkey.cpp b/src/pubkey.cpp
+index 3a3317c40d2..8fc93a1087a 100644
+--- a/src/pubkey.cpp
++++ b/src/pubkey.cpp
+@@ -3,6 +3,10 @@
+ // Distributed under the MIT software license, see the accompanying
+ // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+ 
++#if defined(HAVE_CONFIG_H)
++#include <config/bitcoin-config.h>
++#endif
++
+ #include <pubkey.h>
+ 
+ #include <hash.h>
+@@ -16,6 +20,31 @@
+ #include <algorithm>
+ #include <cassert>
+ 
++#if DYNAMIC_LIBSECP256K1
++
++#include <dlfcn.h>
++
++static void *real_secp256k1_schnorrsig_verify;
++
++typedef int (*old_secp256k1_schnorrsig_verify_type)(const secp256k1_context* ctx, const unsigned char *sig64, const unsigned char *msg32, const secp256k1_xonly_pubkey *pubkey);
++typedef int (*new_secp256k1_schnorrsig_verify_type)(const secp256k1_context* ctx, const unsigned char *sig64, const unsigned char *msg, size_t msglen, const secp256k1_xonly_pubkey *pubkey);
++
++static const auto my_secp256k1_schnorrsig_verify = []() -> new_secp256k1_schnorrsig_verify_type {
++    real_secp256k1_schnorrsig_verify = dlsym(NULL, "secp256k1_schnorrsig_verify");
++    assert(real_secp256k1_schnorrsig_verify);
++    if (dlsym(NULL, "secp256k1_schnorrsig_sign_custom")) {
++        return (new_secp256k1_schnorrsig_verify_type)real_secp256k1_schnorrsig_verify;
++    } else {
++        return [](const secp256k1_context* ctx, const unsigned char *sig64, const unsigned char *msg, size_t msglen, const secp256k1_xonly_pubkey *pubkey) -> int {
++            assert(msglen == 32);
++            const auto real_secp256k1_schnorrsig_verify_old = (old_secp256k1_schnorrsig_verify_type)real_secp256k1_schnorrsig_verify;
++            return real_secp256k1_schnorrsig_verify_old(ctx, sig64, msg, pubkey);
++        };
++    }
++}();
++
++#endif
++
+ namespace
+ {
+ /* Global secp256k1_context object used for verification. */
+@@ -191,7 +220,11 @@ bool XOnlyPubKey::VerifySchnorr(const uint256& msg, Span<const unsigned char> si
+     assert(sigbytes.size() == 64);
+     secp256k1_xonly_pubkey pubkey;
+     if (!secp256k1_xonly_pubkey_parse(secp256k1_context_verify, &pubkey, m_keydata.data())) return false;
++#if DYNAMIC_LIBSECP256K1
++    return my_secp256k1_schnorrsig_verify(secp256k1_context_verify, sigbytes.data(), msg.begin(), msg.size(), &pubkey);
++#else
+     return secp256k1_schnorrsig_verify(secp256k1_context_verify, sigbytes.data(), msg.begin(), &pubkey);
++#endif
+ }
+ 
+ static const CHashWriter HASHER_TAPTWEAK = TaggedHash("TapTweak");
