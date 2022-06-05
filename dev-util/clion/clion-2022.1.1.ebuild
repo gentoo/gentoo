@@ -96,6 +96,7 @@ src_install() {
 		# Fix #763582
 		fperms 755 "${dir}"/jbr/lib/{chrome-sandbox,jcef_helper,jexec,jspawnhelper}
 	fi
+	dosym "${EPREFIX}/usr/bin/ninja" "${dir}"/bin/ninja/linux/ninja
 
 	make_wrapper "${PN}" "${dir}/bin/${PN}.sh"
 	newicon "bin/${PN}.svg" "${PN}.svg"
