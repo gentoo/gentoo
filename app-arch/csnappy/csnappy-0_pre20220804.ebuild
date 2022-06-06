@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 MY_COMMIT="6c10c305e8dde193546e6b33cf8a785d5dc123e2"
 
-DESCRIPTION="Google snappy in C for Linux Kernel"
+DESCRIPTION="Google's snappy compression library for the Linux Kernel"
 HOMEPAGE="https://github.com/zeevt/csnappy"
 SRC_URI="https://github.com/zeevt/csnappy/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}-${MY_COMMIT}
