@@ -106,6 +106,8 @@ src_install() {
 	# remove .la files if static-libs disabled
 	if ! use static-libs; then
 		rm "${ED}/usr/$(get_libdir)/libredwg.la" || die
-		use python && rm "${D}/$(python_get_sitedir)/_LibreDWG.la" || die
+		if use python; then
+			rm "${D}/$(python_get_sitedir)/_LibreDWG.la" || die
+		fi
 	fi
 }
