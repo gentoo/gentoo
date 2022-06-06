@@ -1,0 +1,20 @@
+This is a port of the PR I submitted upstream to fix py311 tests.
+It's functional (i.e. the test is still valid) but may be revised to restore text output before
+it's merged for the next release.
+
+See: https://github.com/benji-york/manuel/pull/32
+
+--- a/src/manuel/index.txt
++++ b/src/manuel/index.txt
+@@ -211,10 +211,7 @@ When tests are run this way:
+ 
+     >>> sys.stdout.writeln = lambda s: sys.stdout.write(s+'\n')
+     >>> suite = loader.loadTestsFromTestCase(MyTest)
+-    >>> result = suite.run(unittest.TextTestResult(sys.stdout, True, 3))
+-    test1 (tests.MyTest) ... ok
+-    test2 (tests.MyTest) ... ok
+-    test3 (tests.MyTest) ... FAIL
++    >>> result = suite.run(unittest.TestResult(True, 3))
+ 
+     >>> for _, e in result.errors:
+     ...     print(e); print
