@@ -30,9 +30,9 @@ RDEPEND="
 	app-text/iso-codes
 	>=dev-python/chardet-3.0.4[${PYTHON_USEDEP}]
 	dev-python/cheroot[${PYTHON_USEDEP}]
+	>=dev-python/Levenshtein-0.12.0[${PYTHON_USEDEP}]
 	>=dev-python/lxml-4.3.1[${PYTHON_USEDEP}]
 	>=dev-python/pycountry-19.8.18[${PYTHON_USEDEP}]
-	>=dev-python/python-levenshtein-0.12.0[${PYTHON_USEDEP}]
 	>=dev-python/pyparsing-3[${PYTHON_USEDEP}]
 	dev-python/ruamel-yaml[${PYTHON_USEDEP}]
 	sys-devel/gettext

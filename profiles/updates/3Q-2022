@@ -15,3 +15,4 @@ move net-p2p/go-ipfs net-p2p/kubo
 move app-admin/ansible-base app-admin/ansible-core
 slotmove =dev-ruby/rack-test-2.0.2 1.0 2
 move app-office/gnome-todo app-office/endeavour
+move dev-python/python-levenshtein dev-python/Levenshtein
