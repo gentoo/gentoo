@@ -7,7 +7,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
-    <doc lang="en">https://pyxdg.readthedocs.org/en/latest/</doc>
+    <doc lang="en">https://pyxdg.readthedocs.io/en/latest/</doc>
     <bugs-to>https://bugs.freedesktop.org/</bugs-to>
     <remote-id type="pypi">pyxdg</remote-id>
     <remote-id type="launchpad">pyxdg</remote-id>
