@@ -17,7 +17,7 @@ IUSE="emacs +ocamlopt"
 
 RDEPEND="
 	dev-ml/csexp:=
-	dev-ml/yojson:=
+	<dev-ml/yojson-2:=
 	>=dev-lang/ocaml-4.09:=
 	<dev-lang/ocaml-4.12:=
 	emacs? (

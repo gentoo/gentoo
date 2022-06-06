@@ -8,9 +8,8 @@ inherit elisp-common dune
 
 DESCRIPTION="Context sensitive completion for OCaml in Vim and Emacs"
 HOMEPAGE="https://github.com/ocaml/merlin"
-SRC_URI="https://github.com/ocaml/merlin/releases/download/v${PV}-411/${P}-411.tbz
-	https://github.com/ocaml/merlin/releases/download/v${PV}-412/${P}-412.tbz
-	https://github.com/ocaml/merlin/releases/download/v${PV}-413/${P}-413.tbz"
+SRC_URI="https://github.com/ocaml/merlin/archive/v${PV}-411.tar.gz -> ${P}-411.tar.gz
+	https://dev.gentoo.org/~tupone/distfiles/${P}-ocaml-4.12.patch.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
@@ -20,13 +19,12 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-ml/csexp:=
-	dev-ml/yojson:=
+	<dev-ml/yojson-2:=
 	dev-ml/menhir:=
 	>=dev-ml/dune-2.9
 	|| (
 		dev-lang/ocaml:0/4.11
 		dev-lang/ocaml:0/4.12
-		dev-lang/ocaml:0/4.13
 	)
 	emacs? (
 		>=app-editors/emacs-23.1:*
@@ -39,18 +37,11 @@ DEPEND="${RDEPEND}
 
 SITEFILE="50${PN}-gentoo.el"
 
-src_unpack() {
-	default
-	if has_version "dev-lang/ocaml:0/4.11" ; then
-		mv merlin-4.4-411 "${S}" || die
-	elif has_version "dev-lang/ocaml:0/4.12" ; then
-		mv merlin-4.4-412 "${S}" || die
-	elif has_version "dev-lang/ocaml:0/4.13" ; then
-		mv merlin-4.4-413 "${S}" || die
-	fi
-}
+S="${WORKDIR}"/${P}-411
 
 src_prepare() {
+	has_version "dev-lang/ocaml:0/4.12" && \
+		eapply "${WORKDIR}"/${P}-ocaml-4.12.patch
 	default
 
 	# Handle installation via the eclass
