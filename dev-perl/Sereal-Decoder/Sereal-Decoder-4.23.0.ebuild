@@ -25,6 +25,7 @@ DEPEND="
 	dev-libs/miniz:=
 "
 BDEPEND="${RDEPEND}
+	dev-perl/Devel-CheckLib
 	>=virtual/perl-ExtUtils-MakeMaker-7.0
 	>=virtual/perl-ExtUtils-ParseXS-2.210.0
 	virtual/perl-File-Path
