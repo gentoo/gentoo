@@ -15,7 +15,7 @@ LICENSE="GPL-3 free-noncomm"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 ## cgns is not compiling ATM, maybe fix cgns lib first
-IUSE="+alglib blas cgns eigen examples +gmm jpeg med metis mpi mumps netgen opencascade petsc pdf png python shared slepc X voro zlib"
+IUSE="+alglib +blas cgns eigen examples +gmm jpeg med metis mpi mumps netgen opencascade petsc pdf png python shared slepc X voro zlib"
 
 REQUIRED_USE="
 	^^ ( blas eigen )
