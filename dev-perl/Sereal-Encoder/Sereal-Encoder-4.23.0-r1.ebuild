@@ -27,6 +27,7 @@ DEPEND="
 # as well, but we can't depend on it because it forms
 # a tight cycle if we do
 BDEPEND="${RDEPEND}
+	dev-perl/Devel-CheckLib
 	>=virtual/perl-ExtUtils-MakeMaker-7.0.0
 	>=virtual/perl-ExtUtils-ParseXS-2.210.0
 	virtual/perl-File-Path
