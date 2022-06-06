@@ -1860,12 +1860,21 @@ gcc_do_make() {
 #---->> src_test <<----
 
 toolchain_src_test() {
-	cd "${WORKDIR}"/build
+	cd "${WORKDIR}"/build || die
+
+	# From opensuse's spec file:
+	# "asan needs a whole shadow address space"
+	ulimit -v unlimited
 
 	# 'asan' wants to be preloaded first, so does 'sandbox'.
 	# To make asan tests work disable sandbox for all of test suite.
 	# 'backtrace' tests also does not like 'libsandbox.so' presence.
 	SANDBOX_ON=0 LD_PRELOAD= emake -k check
+
+	einfo "Testing complete."
+	einfo "Please ignore any 'mail' lines in the summary output below (no mail is sent)."
+	einfo "Summary:"
+	"${S}"/contrib/test_summary
 }
 
 #---->> src_install <<----
