@@ -1276,7 +1276,7 @@ toolchain_src_configure() {
 	if in_iuse openmp ; then
 		# Make sure target has pthreads support: bug #326757, bug #335883
 		# There shouldn't be a chicken & egg problem here as openmp won't
-		# build without a C library, and you can't build that w/ot
+		# build without a C library, and you can't build that w/o
 		# already having a compiler...
 		if ! is_crosscompile || \
 		   $(tc-getCPP ${CTARGET}) -E - <<<"#include <pthread.h>" >& /dev/null
