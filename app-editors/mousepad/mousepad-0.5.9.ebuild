@@ -34,6 +34,11 @@ src_configure() {
 	econf "${myconf[@]}"
 }
 
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
+}
+
 pkg_postinst() {
 	gnome2_schemas_update
 	xdg_desktop_database_update
