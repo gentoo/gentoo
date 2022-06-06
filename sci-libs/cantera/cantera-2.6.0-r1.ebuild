@@ -16,7 +16,7 @@ SRC_URI="https://github.com/Cantera/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+cti fortran lapack +python test"
 RESTRICT="!test? ( test )"
 
@@ -39,7 +39,8 @@ RDEPEND="
 		')
 	)
 	dev-cpp/yaml-cpp
-	<sci-libs/sundials-5.9.0:0=[lapack?]
+	!lapack? ( sci-libs/sundials:0= )
+	lapack? ( <sci-libs/sundials-5.3.0:0=[lapack?] )
 "
 
 DEPEND="
@@ -50,14 +51,17 @@ DEPEND="
 	python? (
 		$(python_gen_cond_dep '
 			dev-python/cython[${PYTHON_USEDEP}]
+			dev-python/pip[${PYTHON_USEDEP}]
 		')
 	)
 	test? (
-		>=dev-cpp/gtest-1.8.0
+		>=dev-cpp/gtest-1.11.0
 		python? (
 			$(python_gen_cond_dep '
 				dev-python/h5py[${PYTHON_USEDEP}]
 				dev-python/pandas[${PYTHON_USEDEP}]
+				dev-python/pytest[${PYTHON_USEDEP}]
+				dev-python/scipy[${PYTHON_USEDEP}]
 			')
 		)
 	)
@@ -117,7 +121,7 @@ src_test() {
 }
 
 src_install() {
-	escons install stage_dir="${D}" libdirname="$(get_libdir)" python_prefix="$(python_get_sitedir)"
+	escons install stage_dir="${D}" libdirname="$(get_libdir)"
 	if ! use cti ; then
 		rm -r "${D}/usr/share/man" || die "Can't remove man files."
 	else
