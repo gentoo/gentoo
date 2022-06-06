@@ -1166,7 +1166,7 @@ _distutils-r1_backend_to_key() {
 _distutils-r1_get_backend() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local build_backend
+	local build_backend legacy_fallback
 	if [[ -f pyproject.toml ]]; then
 		# if pyproject.toml exists, try getting the backend from it
 		# NB: this could fail if pyproject.toml doesn't list one
@@ -1177,6 +1177,7 @@ _distutils-r1_get_backend() {
 	then
 		# use the legacy setuptools backend as a fallback
 		build_backend=setuptools.build_meta:__legacy__
+		legacy_fallback=1
 	fi
 	if [[ -z ${build_backend} ]]; then
 		die "Unable to obtain build-backend from pyproject.toml"
@@ -1201,6 +1202,11 @@ _distutils-r1_get_backend() {
 				;;
 			poetry.masonry.api)
 				new_backend=poetry.core.masonry.api
+				;;
+			setuptools.build_meta:__legacy__)
+				# this backend should only be used as implicit fallback
+				[[ ! ${legacy_fallback} ]] &&
+					new_backend=setuptools.build_meta
 				;;
 		esac
 
