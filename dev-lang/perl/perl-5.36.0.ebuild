@@ -397,12 +397,6 @@ src_prepare() {
 	#		"Fix broken miniperl on hppa"\
 	#		"https://bugs.debian.org/869122" "https://bugs.gentoo.org/634162"
 
-	if use prefix ; then
-		add_patch "${FILESDIR}/${PN}"-5.34.0-fallback-getcwd-pwd.patch "0102-5.34.0-fallback-get-cwd-pwd.patch"\
-			"Fix installation during Prefix bootstrap (finding 'pwd' from coreutils)"\
-			"https://bugs.gentoo.org/818172"
-	fi
-
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# do NOT mess with nsl, on Solaris this is always necessary,
 		# when -lsocket is used e.g. to get h_errno
