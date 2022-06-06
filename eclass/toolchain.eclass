@@ -1731,10 +1731,15 @@ toolchain_src_compile() {
 	unset ADAFLAGS
 
 	# Older gcc versions did not detect bash and re-exec itself, so force the
-	# use of bash.  Newer ones will auto-detect, but this is not harmful.
+	# use of bash for them.
 	# This needs to be set for compile as well, as it's used in libtool
 	# generation, which will break install otherwise (at least in 3.3.6): bug #664486
-	CONFIG_SHELL="${BROOT}/bin/bash" \
+	local gcc_shell="${BROOT}"/bin/bash
+	if tc_version_is_at_least 11.2 ; then
+		gcc_shell="${BROOT}"/bin/sh
+	fi
+
+	CONFIG_SHELL="${gcc_shell}" \
 		gcc_do_make ${GCC_MAKE_TARGET}
 }
 
