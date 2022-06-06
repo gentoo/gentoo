@@ -8,7 +8,7 @@ HOMEPAGE="https://dev.yorhel.nl/ncdu/"
 SRC_URI="https://dev.yorhel.nl/download/${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="0"
+SLOT="2"
 KEYWORDS="~amd64"
 
 DEPEND="sys-libs/ncurses:=[unicode(+)]"
