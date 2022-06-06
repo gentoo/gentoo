@@ -19,3 +19,7 @@ LICENSE="MIT"
 KEYWORDS="~amd64 ~ppc ~riscv ~x86"
 
 distutils_enable_tests pytest
+
+RDEPEND="
+	dev-python/six[${PYTHON_USEDEP}]
+"
