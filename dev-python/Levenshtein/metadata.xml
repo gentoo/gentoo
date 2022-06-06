@@ -6,7 +6,7 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="pypi">python-Levenshtein</remote-id>
-		<remote-id type="github">ztane/python-Levenshtein</remote-id>
+		<remote-id type="pypi">Levenshtein</remote-id>
+		<remote-id type="github">maxbachmann/Levenshtein</remote-id>
 	</upstream>
 </pkgmetadata>
