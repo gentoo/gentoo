@@ -93,6 +93,8 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	# Keep eautoreconf until a new release to fix Python macros
+	# bug #849788
 	if [[ -d "${WORKDIR}"/debian/patches ]] ; then
 		eapply $(sed -e 's:^:../debian/patches/:' ../debian/patches/series || die)
 		eautoreconf
