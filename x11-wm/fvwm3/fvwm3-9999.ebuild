@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_BRANCH="master"
 else
 	SRC_URI="https://github.com/fvwmorg/fvwm3/releases/download/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~riscv"
 fi
 
 LICENSE="GPL-2+ FVWM
