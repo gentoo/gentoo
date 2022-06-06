@@ -16,7 +16,7 @@ if [[ ${PV} = 9999 ]] ; then
 	EGIT_BOOTSTRAP=""
 else
 	SRC_URI="https://github.com/MaartenBaert/${PKGNAME}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	S="${WORKDIR}/${PKGNAME}-${PV}"
 fi
 
