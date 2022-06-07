@@ -1370,33 +1370,7 @@ distutils-r1_python_compile() {
 		addpredict /usr/lib/portage/pym
 		addpredict /usr/local # bug 498232
 
-		local root=${BUILD_DIR}/install
-		distutils_pep517_install "${root}"
-
-		# copy executables to python-exec directory
-		# we do it early so that we can alter bindir recklessly
-		local bindir=${root}${EPREFIX}/usr/bin
-		local rscriptdir=${root}$(python_get_scriptdir)
-		[[ -d ${rscriptdir} ]] &&
-			die "${rscriptdir} should not exist!"
-		if [[ -d ${bindir} ]]; then
-			mkdir -p "${rscriptdir}" || die
-			cp -a --reflink=auto "${bindir}"/. "${rscriptdir}"/ || die
-		fi
-
-		# enable venv magic inside the install tree
-		mkdir -p "${bindir}" || die
-		ln -s "${PYTHON}" "${bindir}/${EPYTHON}" || die
-		ln -s "${EPYTHON}" "${bindir}/python3" || die
-		ln -s "${EPYTHON}" "${bindir}/python" || die
-		cat > "${bindir}"/pyvenv.cfg <<-EOF || die
-			include-system-site-packages = true
-		EOF
-
-		# we need to change shebangs to point to the venv-python
-		find "${bindir}" -type f -exec sed -i \
-			-e "1s@^#!\(${EPREFIX}/usr/bin/\(python\|pypy\)\)@#!${root}\1@" \
-			{} + || die
+		distutils_pep517_install "${BUILD_DIR}/install"
 	fi
 }
 
@@ -1773,6 +1747,43 @@ distutils-r1_src_configure() {
 	fi
 
 	return ${ret}
+}
+
+# @FUNCTION: _distutils-r1_post_python_compile
+# @INTERNAL
+# @DESCRIPTION:
+# Post-phase function called after python_compile.  In PEP517 mode,
+# it adjusts the install tree for venv-style usage.
+_distutils-r1_post_python_compile() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local root=${BUILD_DIR}/install
+	if [[ ${DISTUTILS_USE_PEP517} && -d ${root} ]]; then
+		# copy executables to python-exec directory
+		# we do it early so that we can alter bindir recklessly
+		local bindir=${root}${EPREFIX}/usr/bin
+		local rscriptdir=${root}$(python_get_scriptdir)
+		[[ -d ${rscriptdir} ]] &&
+			die "${rscriptdir} should not exist!"
+		if [[ -d ${bindir} ]]; then
+			mkdir -p "${rscriptdir}" || die
+			cp -a --reflink=auto "${bindir}"/. "${rscriptdir}"/ || die
+		fi
+
+		# enable venv magic inside the install tree
+		mkdir -p "${bindir}" || die
+		ln -s "${PYTHON}" "${bindir}/${EPYTHON}" || die
+		ln -s "${EPYTHON}" "${bindir}/python3" || die
+		ln -s "${EPYTHON}" "${bindir}/python" || die
+		cat > "${bindir}"/pyvenv.cfg <<-EOF || die
+			include-system-site-packages = true
+		EOF
+
+		# we need to change shebangs to point to the venv-python
+		find "${bindir}" -type f -exec sed -i \
+			-e "1s@^#!\(${EPREFIX}/usr/bin/\(python\|pypy\)\)@#!${root}\1@" \
+			{} + || die
+	fi
 }
 
 distutils-r1_src_compile() {
