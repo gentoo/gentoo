@@ -106,8 +106,6 @@ esac
 #
 # - maturin - maturin backend
 #
-# - no - no PEP517 build system (see below)
-#
 # - pbr - pbr backend
 #
 # - pdm - pdm.pep517 backend
@@ -123,17 +121,6 @@ esac
 #
 # The variable needs to be set before the inherit line.  The eclass
 # adds appropriate build-time dependencies and verifies the value.
-#
-# The special value "no" indicates that the package has no build system.
-# This is not equivalent to unset DISTUTILS_USE_PEP517 (legacy mode).
-# It causes the eclass not to include any build system dependencies
-# and to disable default python_compile() and python_install()
-# implementations.  Baseline Python deps and phase functions will still
-# be set (depending on the value of DISTUTILS_OPTIONAL).  Most of
-# the other eclass functions will work.  Testing venv will be provided
-# in ${BUILD_DIR}/install after python_compile(), and if any (other)
-# files are found in ${BUILD_DIR}/install after python_install(), they
-# will be merged into ${D}.
 
 # @ECLASS_VARIABLE: DISTUTILS_USE_SETUPTOOLS
 # @DEFAULT_UNSET
@@ -224,10 +211,6 @@ _distutils_set_globals() {
 			maturin)
 				bdep+='
 					>=dev-util/maturin-0.12.7[${PYTHON_USEDEP}]'
-				;;
-			no)
-				# undo the generic deps added above
-				bdep=
 				;;
 			pbr)
 				bdep+='
@@ -809,7 +792,7 @@ distutils_install_for_testing() {
 distutils_write_namespace() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	if [[ ! ${DISTUTILS_USE_PEP517:-no} != no ]]; then
+	if [[ ! ${DISTUTILS_USE_PEP517} ]]; then
 		die "${FUNCNAME} is available only in PEP517 mode"
 	fi
 	if [[ ${EBUILD_PHASE} != test || ! ${BUILD_DIR} ]]; then
@@ -931,9 +914,6 @@ _distutils-r1_print_package_versions() {
 				packages+=(
 					dev-util/maturin
 				)
-				;;
-			no)
-				return
 				;;
 			pbr)
 				packages+=(
@@ -1236,10 +1216,6 @@ distutils_pep517_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 	[[ ${#} -eq 1 ]] || die "${FUNCNAME} takes exactly one argument: root"
 
-	if [[ ! ${DISTUTILS_USE_PEP517:-no} != no ]]; then
-		die "${FUNCNAME} is available only in PEP517 mode"
-	fi
-
 	local root=${1}
 	local -x WHEEL_BUILD_DIR=${BUILD_DIR}/wheel
 	mkdir -p "${WHEEL_BUILD_DIR}" || die
@@ -1384,9 +1360,6 @@ distutils-r1_python_compile() {
 			in_iuse debug && use debug &&
 				MATURIN_PEP517_ARGS+=" --cargo-extra-args=--profile=dev"
 			;;
-		no)
-			return
-			;;
 	esac
 
 	if [[ ${DISTUTILS_USE_PEP517} ]]; then
@@ -1508,7 +1481,6 @@ distutils-r1_python_test() {
 distutils-r1_python_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	[[ ${DISTUTILS_USE_PEP517} == no ]] && return
 	_python_check_EPYTHON
 
 	local scriptdir=${EPREFIX}/usr/bin
