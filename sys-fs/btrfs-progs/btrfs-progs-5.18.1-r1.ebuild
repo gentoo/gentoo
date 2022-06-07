@@ -138,9 +138,6 @@ src_install() {
 	newbashcomp btrfs-completion btrfs
 
 	use python && python_optimize
-
-	# Install prebuilt subset of manuals (very few)
-	use man || doman Documentation/*.[58]
 }
 
 pkg_postinst() {
