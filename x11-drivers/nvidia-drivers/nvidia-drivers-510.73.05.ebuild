@@ -339,8 +339,8 @@ https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 	local m into
 	while IFS=' ' read -ra m; do
 		! [[ ${#m[@]} -ge 2 && ${m[-1]} =~ MODULE: ]] ||
-			eval '[[ " ${m[0]##*/}" =~ ^(\ '${skip_files[*]/%/.*|\\}' )$ ]]' ||
-			eval '[[ " ${m[2]}" =~ ^(\ '${skip_types[*]/%/|\\}' )$ ]]' ||
+			[[ " ${m[0]##*/}" =~ ^(\ ${skip_files[*]/%/.*|\\} )$ ]] ||
+			[[ " ${m[2]}" =~ ^(\ ${skip_types[*]/%/|\\} )$ ]] ||
 			has ${m[-1]#MODULE:} "${skip_modules[@]}" && continue
 
 		case ${m[2]} in
