@@ -17,6 +17,6 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.10.4-remove-osx-fix.patch )
