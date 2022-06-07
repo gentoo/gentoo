@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
-if [[ ${PV} == "9999" ]]; then
+if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/joalla/discogs_client.git"
 	inherit git-r3
 else
