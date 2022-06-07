@@ -18,6 +18,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+# see https://github.com/ziglang/zig/issues/3382
+# For now, Zig doesn't support CFLAGS/LDFLAGS/etc.
+QA_FLAGS_IGNORED="/usr/bin/ncdu"
+
 src_test() {
 	zig build test || die "Tests failed"
 }
