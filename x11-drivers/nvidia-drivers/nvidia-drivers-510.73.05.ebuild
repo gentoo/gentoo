@@ -94,12 +94,15 @@ pkg_setup() {
 		~SYSVIPC
 		~!LOCKDEP
 		~!SLUB_DEBUG_ON
+		~!X86_KERNEL_IBT
 		!DEBUG_MUTEXES"
 	local ERROR_DRM_KMS_HELPER="CONFIG_DRM_KMS_HELPER: is not set but needed for Xorg auto-detection
 	of drivers (no custom config), and for wayland / nvidia-drm.modeset=1.
 	Cannot be directly selected in the kernel's menuconfig, and may need
 	selection of a DRM device even if unused, e.g. CONFIG_DRM_AMDGPU=m or
 	DRM_I915=y, DRM_NOUVEAU=m also acceptable if a module and not built-in."
+	local ERROR_X86_KERNEL_IBT="X86_KERNEL_IBT: is set, be warned the modules may not load with it.
+	If run into problems, either unset or pass ibt=off to the kernel."
 
 	use amd64 && kernel_is -ge 5 8 && CONFIG_CHECK+=" X86_PAT" #817764
 
