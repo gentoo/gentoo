@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit distutils-r1 xdg-utils
 
@@ -26,6 +26,12 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/nicotine-plus-${PV}"
+
+EPYTEST_IGNORE=(
+	"test/integration/test_startup.py"
+)
+
+distutils_enable_tests pytest
 
 src_install() {
 	distutils-r1_src_install
