@@ -60,11 +60,8 @@
       ConsoleKit.
     </flag>
     <flag name="valgrind">Compile in valgrind memory hints</flag>
-    <flag name="native-headset">
-      Build with native HSP backend for bluez 5.
-    </flag>
     <flag name="ofono-headset">
-      Build with oFono HFP backend for bluez 5, requires <pkg>net-misc/ofono</pkg>.
+      Build with optional oFono HFP backend for bluez 5, requires <pkg>net-misc/ofono</pkg>.
     </flag>
     <flag name="gstreamer">
       Build GStreamer-based RTP protocol module which supports more advanced RTP features like OPUS payload encoding.

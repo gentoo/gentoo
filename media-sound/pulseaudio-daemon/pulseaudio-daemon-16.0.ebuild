@@ -33,7 +33,7 @@ SLOT="0"
 # TODO: Find out why webrtc-aec is + prefixed - there's already the always available speexdsp-aec
 # NOTE: The current ebuild sets +X almost certainly just for the pulseaudio.desktop file
 IUSE="+alsa +alsa-plugin aptx +asyncns bluetooth dbus elogind equalizer fftw +gdbm +glib gstreamer gtk ipv6 jack ldac lirc
-native-headset ofono-headset +orc oss selinux sox ssl systemd system-wide tcpd test +udev valgrind +webrtc-aec +X zeroconf"
+ofono-headset +orc oss selinux sox ssl systemd system-wide tcpd test +udev valgrind +webrtc-aec +X zeroconf"
 
 RESTRICT="!test? ( test )"
 
@@ -47,7 +47,6 @@ REQUIRED_USE="
 	bluetooth? ( dbus )
 	equalizer? ( dbus )
 	ldac? ( bluetooth )
-	native-headset? ( bluetooth )
 	ofono-headset? ( bluetooth )
 	udev? ( || ( alsa oss ) )
 	zeroconf? ( dbus )
@@ -207,7 +206,7 @@ src_configure() {
 		$(meson_feature zeroconf avahi)
 		$(meson_feature bluetooth bluez5)
 		-Dbluez5-gstreamer=${enable_bluez5_gstreamer}
-		$(meson_use native-headset bluez5-native-headset)
+		$(meson_use bluetooth bluez5-native-headset)
 		$(meson_use ofono-headset bluez5-ofono-headset)
 		$(meson_feature dbus)
 		$(meson_feature elogind)
@@ -329,7 +328,20 @@ pkg_postinst() {
 		elog ""
 	fi
 
-	if use native-headset && use ofono-headset; then
+	if use bluetooth; then
+		elog "You have enabled bluetooth USE flag for pulseaudio. Daemon will now handle"
+		elog "bluetooth Headset (HSP HS and HSP AG) and Handsfree (HFP HF) profiles using"
+		elog "native headset backend by default. This can be selectively disabled"
+		elog "via runtime configuration arguments to module-bluetooth-discover"
+		elog "in /etc/pulse/default.pa"
+		elog "To disable HFP HF append enable_native_hfp_hf=false"
+		elog "To disable HSP HS append enable_native_hsp_hs=false"
+		elog "To disable HSP AG append headset=auto or headset=ofono"
+		elog "(note this does NOT require enabling USE ofono)"
+		elog ""
+	fi
+
+	if use ofono-headset; then
 		elog "You have enabled both native and ofono headset profiles. The runtime decision"
 		elog "which to use is done via the 'headset' argument of module-bluetooth-discover."
 		elog ""
