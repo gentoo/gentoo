@@ -1484,6 +1484,7 @@ distutils-r1_python_install() {
 	_python_check_EPYTHON
 
 	local scriptdir=${EPREFIX}/usr/bin
+	local merge_root=
 	if [[ ${DISTUTILS_USE_PEP517} ]]; then
 		local root=${BUILD_DIR}/install
 		# remove the altered bindir, executables from the package
@@ -1495,6 +1496,10 @@ distutils-r1_python_install() {
 				mv "${wrapped_scriptdir}" "${root}${scriptdir}" || die
 			fi
 		fi
+		# prune empty directories to see if ${root} contains anything
+		# to merge
+		find "${BUILD_DIR}"/install -type d -empty -delete || die
+		[[ -d ${BUILD_DIR}/install ]] && merge_root=1
 	else
 		local root=${D%/}/_${EPYTHON}
 		[[ ${DISTUTILS_SINGLE_IMPL} ]] && root=${D%/}
@@ -1521,6 +1526,8 @@ distutils-r1_python_install() {
 		addpredict /usr/local # bug 498232
 
 		if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
+			merge_root=1
+
 			# user may override --install-scripts
 			# note: this is poor but distutils argv parsing is dumb
 
@@ -1549,7 +1556,7 @@ distutils-r1_python_install() {
 		esetup.py "${args[@]}"
 	fi
 
-	if [[ ! ${DISTUTILS_SINGLE_IMPL} || ${DISTUTILS_USE_PEP517} ]]; then
+	if [[ ${merge_root} ]]; then
 		multibuild_merge_root "${root}" "${D%/}"
 		if [[ ${DISTUTILS_USE_PEP517} ]]; then
 			# we need to recompile everything here in order to embed
