@@ -1558,11 +1558,6 @@ distutils-r1_python_install() {
 
 	if [[ ${merge_root} ]]; then
 		multibuild_merge_root "${root}" "${D%/}"
-		if [[ ${DISTUTILS_USE_PEP517} ]]; then
-			# we need to recompile everything here in order to embed
-			# the correct paths
-			python_optimize "${D%/}$(python_get_sitedir)"
-		fi
 	fi
 	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 		_distutils-r1_wrap_scripts "${scriptdir}"
@@ -1858,16 +1853,25 @@ distutils-r1_src_test() {
 _distutils-r1_post_python_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local forbidden_package_names=(
-		examples test tests
-		.pytest_cache .hypothesis _trial_temp
-	)
-	local p
-	for p in "${forbidden_package_names[@]}"; do
-		if [[ -d ${D}$(python_get_sitedir)/${p} ]]; then
-			die "Package installs '${p}' package which is forbidden and likely a bug in the build system."
+	local sitedir=${D%/}$(python_get_sitedir)
+	if [[ -d ${sitedir} ]]; then
+		local forbidden_package_names=(
+			examples test tests
+			.pytest_cache .hypothesis _trial_temp
+		)
+		local p
+		for p in "${forbidden_package_names[@]}"; do
+			if [[ -d ${sitedir}/${p} ]]; then
+				die "Package installs '${p}' package which is forbidden and likely a bug in the build system."
+			fi
+		done
+
+		if [[ ${DISTUTILS_USE_PEP517} ]]; then
+			# we need to recompile everything here in order to embed
+			# the correct paths
+			python_optimize "${sitedir}"
 		fi
-	done
+	fi
 }
 
 # @FUNCTION: _distutils-r1_check_namespace_pth
