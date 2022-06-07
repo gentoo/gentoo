@@ -17,9 +17,11 @@ IUSE=""
 
 BDEPEND="
 	${PYTHON_DEPS}
-	sys-devel/gettext
 	$(python_gen_any_dep 'dev-libs/libxml2[python,${PYTHON_USEDEP}]')
+	app-text/docbook-xml-dtd
+	dev-lang/perl
 	dev-libs/libxslt
+	sys-devel/gettext
 "
 
 # Adds python3 build support, bug 725940
