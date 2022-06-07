@@ -529,16 +529,6 @@ x11-misc/easystroke
 # Masking for tracker/tinderbox. Bug #831437
 >=media-video/ffmpeg-5.0
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-15)
-# Last branch update happened ~ 12 month ago.
-# Maximum kernel supported is 5.9, which we no longer package.
-# So 5.10 LTS users can't use it. only 4.x LTS and 5.4 LTS.
-# ebuild is effectively unmaintained/untested, so is upstream branch.
-# Removal date: sometime around June 2022
-# Bug: https://bugs.gentoo.org/830020
-~sys-fs/zfs-0.8.6
-~sys-fs/zfs-kmod-0.8.6
-
 # Brian Evans <grknight@gentoo.org> (2022-01-07)
 # The main consumer, phpunit, does not initiate the new timer correctly
 # This is likely to cause issues in tests; Unmask if using for other purposes
