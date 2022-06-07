@@ -35,12 +35,6 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-openssl )"
 PDEPEND="app-misc/ca-certificates"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.1.0j-parallel_install_fix.patch #671602
-	"${FILESDIR}"/${PN}-1.1.1i-riscv32.patch
-	"${FILESDIR}"/${P}-test-fixes-expiry.patch
-)
-
 S="${WORKDIR}/${MY_P}"
 
 # force upgrade to prevent broken login, bug 696950
@@ -51,6 +45,8 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.0j-parallel_install_fix.patch #671602
+	"${FILESDIR}"/${PN}-1.1.1i-riscv32.patch
 	"${WORKDIR}"/${P}-test-fixes-expiry.patch
 )
 
