@@ -19,13 +19,14 @@ REQUIRED_USE="
 "
 
 RDEPEND="
+	sys-fs/lvm2
+	virtual/libiconv
+	virtual/libintl
 	gcrypt? ( dev-libs/libgcrypt:0= )
 	luks? ( sys-fs/cryptsetup )
 	openssl? ( dev-libs/openssl:0= )
 	systemd? ( sys-apps/systemd )
 	udev? ( virtual/udev )
-	virtual/libiconv
-	virtual/libintl
 "
 
 DEPEND="
