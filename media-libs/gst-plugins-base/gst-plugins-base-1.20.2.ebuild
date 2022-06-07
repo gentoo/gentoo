@@ -52,7 +52,7 @@ GL_DEPS="
 		>=x11-libs/libdrm-2.4.55[${MULTILIB_USEDEP}]
 	)
 	wayland? (
-		dev-libs/wayland[${MULTILIB_USEDEP}]
+		>=dev-libs/wayland-1.20.0[${MULTILIB_USEDEP}]
 		>=dev-libs/wayland-protocols-1.15
 	)
 
