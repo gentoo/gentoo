@@ -17,7 +17,7 @@ SRC_URI="http://www.opencircuitdesign.com/${PN}/archive/${P}.tgz
 
 LICENSE="HPND GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="cairo debug opengl"
 
 RDEPEND="
@@ -33,11 +33,9 @@ RDEPEND="
 		virtual/opengl
 	)
 "
-DEPEND="
-	${RDEPEND}
-	${PYTHON_DEPS}
-"
-BDEPEND="app-shells/tcsh"
+DEPEND="${RDEPEND}"
+BDEPEND="app-shells/tcsh
+	${PYTHON_DEPS}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.3.232-libdir.patch
@@ -61,7 +59,7 @@ src_prepare() {
 
 src_configure() {
 	# Short-circuit top-level configure script to retain CFLAGS
-	# fix tcl/tk detection #447868
+	# Fix tcl/tk detection, bug #447868
 	cd scripts || die
 	econf \
 		--with-tcl="/usr/$(get_libdir)" \
