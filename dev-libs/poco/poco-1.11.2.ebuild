@@ -91,6 +91,7 @@ src_configure() {
 		-DPOCO_UNBUNDLED=ON
 		-DENABLE_APACHECONNECTOR=OFF
 		-DENABLE_ACTIVERECORD="$(usex activerecord)"
+		-DENABLE_ACTIVERECORD_COMPILER="$(usex activerecord)"
 		-DENABLE_CPPPARSER="$(usex cppparser)"
 		-DENABLE_CRYPTO="$(usex ssl)"
 		-DENABLE_DATA="$(usex data)"
