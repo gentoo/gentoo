@@ -80,6 +80,10 @@ REQUIRED_USE="
 
 MAKEOPTS+=" SAMPLES="
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-arm64-build.patch
+)
+
 src_prepare() {
 	default
 	elibtoolize
