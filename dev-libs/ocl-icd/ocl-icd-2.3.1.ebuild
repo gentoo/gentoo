@@ -33,7 +33,8 @@ src_prepare() {
 multilib_src_configure() {
 	# dev-util/opencl-headers ARE official Khronos Group headers, what this option
 	# does is disable the use of the bundled ones
-	ECONF_SOURCE="${S}" econf --enable-pthread-once --disable-official-khronos-headers
+	ECONF_SOURCE="${S}" econf --enable-pthread-once --disable-official-khronos-headers \
+		--enable-custom-vendordir="${EPREFIX}/etc/OpenCL/vendors"
 }
 
 multilib_src_compile() {
