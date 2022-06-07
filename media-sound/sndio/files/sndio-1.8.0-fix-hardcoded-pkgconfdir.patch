@@ -1,0 +1,12 @@
+diff -Naur a/configure b/configure
+--- a/configure	2021-05-07 10:49:58.000000000 +0300
++++ b/configure	2022-06-07 14:49:07.623069325 +0300
+@@ -205,7 +205,7 @@
+ datadir="${datadir:-$prefix/share}"
+ includedir="${includedir:-$prefix/include}"
+ libdir="${libdir:-$exec_prefix/lib}"
+-pkgconfdir="${pkgconfdir:-$prefix/lib/pkgconfig}"
++pkgconfdir="${pkgconfdir:-$libdir/pkgconfig}"
+ mandir="${mandir:-$prefix/share/man}"
+ 
+ #
