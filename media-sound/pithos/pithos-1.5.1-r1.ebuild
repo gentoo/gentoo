@@ -1,16 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+EAPI=8
+PYTHON_COMPAT=( python3_{8..11} )
 inherit xdg meson gnome2-utils virtualx python-r1
 
-if [[ ${PV} =~ [9]{4,} ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
-else
-	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-fi
+SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 DESCRIPTION="Pandora.com client for the GNOME desktop"
 HOMEPAGE="https://pithos.github.io/"
@@ -21,7 +16,8 @@ KEYWORDS="~amd64"
 IUSE="appindicator +keybinder libnotify test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEPS}
+RDEPEND="
+	${PYTHON_DEPS}
 	dev-python/pygobject[${PYTHON_USEDEP}]
 	app-crypt/libsecret[introspection]
 	dev-libs/appstream-glib[introspection]
