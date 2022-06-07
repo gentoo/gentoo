@@ -16,6 +16,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
+		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-test-fixes-expiry.patch.xz
 		verify-sig? ( mirror://openssl/source/${MY_P}.tar.gz.asc )"
 	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/openssl.org.asc
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x86-linux"
@@ -53,6 +54,7 @@ MULTILIB_WRAPPED_HEADERS=(
 PATCHES=(
 	# General patches which are suitable to always apply
 	# If they're Gentoo specific, add to USE=-vanilla logic in src_prepare!
+	"${WORKDIR}"/${P}-test-fixes-expiry.patch
 )
 
 pkg_setup() {
@@ -81,6 +83,15 @@ pkg_setup() {
 	fi
 }
 
+src_unpack() {
+	# Can delete this once test fix patch is dropped
+	if use verify-sig ; then
+		# Needed for downloaded patch (which is unsigned, which is fine)
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz{,.asc}
+	fi
+
+	default
+}
 src_prepare() {
 	# Allow openssl to be cross-compiled
 	cp "${FILESDIR}"/gentoo.config-1.0.2 gentoo.config || die
