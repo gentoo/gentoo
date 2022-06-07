@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit autotools bash-completion-r1 multilib-minimal systemd
 
 DESCRIPTION="Bluetooth Audio ALSA Backend"
@@ -17,13 +17,13 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="aac aptx debug hcitop lame ldac man mpg123 ofono static-libs test unwind upower"
+IUSE="aac aptx debug hcitop lame ldac man mpg123 ofono static-libs systemd test unwind upower"
 RESTRICT="!test? ( test )"
 
 # bluez-alsa does not directly link to upower but
 # is using the upower interface via dbus calls.
 RDEPEND="
-	>=dev-libs/glib-2.26[${MULTILIB_USEDEP}]
+	>=dev-libs/glib-2.32[${MULTILIB_USEDEP}]
 	>=media-libs/alsa-lib-1.1.2[${MULTILIB_USEDEP}]
 	>=media-libs/sbc-1.2[${MULTILIB_USEDEP}]
 	>=net-wireless/bluez-5.0[${MULTILIB_USEDEP}]
@@ -39,11 +39,15 @@ RDEPEND="
 	)
 	ldac? ( >=media-libs/libldac-2.0.0 )
 	ofono? ( net-misc/ofono )
+	systemd? ( sys-apps/systemd )
 	unwind? ( sys-libs/libunwind[${MULTILIB_USEDEP}] )
 	upower? ( sys-power/upower )
 "
 DEPEND="${RDEPEND}
-	test? ( dev-libs/check )"
+	test? (
+		dev-libs/check
+		media-libs/libsndfile
+	)"
 BDEPEND="
 	virtual/pkgconfig
 	man? ( app-text/pandoc )
@@ -57,6 +61,7 @@ src_prepare() {
 multilib_src_configure() {
 	local myeconfargs=(
 		--enable-cli
+		--enable-faststream
 		--enable-rfcomm
 		--with-bash-completion="$(get_bashcompdir)"
 		$(use_enable aac)
@@ -65,7 +70,9 @@ multilib_src_configure() {
 		$(use_enable man manpages)
 		$(use_enable mpg123)
 		$(use_enable static-libs static)
+		$(use_enable systemd)
 		$(use_enable test)
+		$(use_with systemd systemdsystemunitdir $(systemd_get_systemunitdir))
 		$(multilib_native_use_enable aptx)
 		$(multilib_native_use_enable hcitop)
 		$(multilib_native_use_enable ldac)
@@ -83,7 +90,7 @@ multilib_src_install_all() {
 
 	newinitd "${FILESDIR}"/bluealsa-init.d bluealsa
 	newconfd "${FILESDIR}"/bluealsa-conf.d-2 bluealsa
-	systemd_dounit "${FILESDIR}"/bluealsa.service
+	#systemd_dounit "${FILESDIR}"/bluealsa.service
 
 	# Add config file to alsa datadir as well to preserve changes in /etc
 	insinto "/usr/share/alsa/alsa.conf.d/"
