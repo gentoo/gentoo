@@ -144,7 +144,8 @@ src_configure() {
 	fi
 
 	# Export CXX so it ends up in /usr/lib/python3.X/config/Makefile.
-	tc-export CXX
+	# PKG_CONFIG needed for cross.
+	tc-export CXX PKG_CONFIG
 
 	# Fix implicit declarations on cross and prefix builds. Bug #674070.
 	use ncurses && append-cppflags -I"${ESYSROOT}"/usr/include/ncursesw
@@ -202,6 +203,54 @@ src_configure() {
 	local -x CFLAGS_NODIST=${CFLAGS}
 	local -x LDFLAGS_NODIST=${LDFLAGS}
 	local -x CFLAGS= LDFLAGS=
+
+	if tc-is-cross-compiler ; then
+		# We need to build our own Python on CBUILD first, and feed it in.
+		# bug #847910
+		local myeconfargs_cbuild=(
+			"${myeconfargs[@]}"
+
+			# As minimal as possible for the mini CBUILD Python
+			# we build just for cross, to satisfy --with-build-python.
+			--without-lto
+			--without-readline
+			--disable-optimizations
+		)
+
+		myeconfargs+=(
+			# Point the imminent CHOST build to the Python we just
+			# built for CBUILD.
+			--with-build-python="${WORKDIR}"/${P}-${CBUILD}/python
+		)
+
+		mkdir "${WORKDIR}"/${P}-${CBUILD} || die
+		pushd "${WORKDIR}"/${P}-${CBUILD} &> /dev/null || die
+		ECONF_SOURCE="${S}" econf_build "${myeconfargs_cbuild[@]}"
+
+		# Avoid as many dependencies as possible for the cross build.
+		cat >> Makefile <<-EOF || die
+		MODULE_NIS=disabled
+		MODULE__DBM=disabled
+		MODULE__GDBM=disabled
+		MODULE__DBM=disabled
+		MODULE__SQLITE3=disabled
+		MODULE__HASHLIB=disabled
+		MODULE__SSL=disabled
+		MODULE__CURSES=disabled
+		MODULE__CURSES_PANEL=disabled
+		MODULE_READLINE=disabled
+		MODULE__TKINTER=disabled
+		MODULE_PYEXPAT=disabled
+		MODULE_ZLIB=disabled
+		EOF
+
+		# Unfortunately, we do have to build this immediately, and
+		# not in src_compile, because CHOST configure for Python
+		# will check the existence of the --with-build-python value
+		# immediately.
+		emake
+		popd &> /dev/null || die
+	fi
 
 	econf "${myeconfargs[@]}"
 
