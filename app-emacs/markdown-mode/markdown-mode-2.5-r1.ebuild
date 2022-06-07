@@ -17,12 +17,12 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="|| (
-		app-text/pandoc
 		dev-python/markdown2
 		dev-python/markdown
+		virtual/pandoc
 	)"
 BDEPEND="test? (
-	app-text/pandoc
+	virtual/pandoc
 	|| ( app-text/aspell[l10n_en] app-text/hunspell[l10n_en] )
 )"
 
