@@ -3,26 +3,22 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/digitalocean/${PN}.git"
-
-inherit edo bash-completion-r1 git-r3 go-module
+inherit edo bash-completion-r1 go-module
 
 DESCRIPTION="A command line tool for DigitalOcean services"
 HOMEPAGE="https://github.com/digitalocean/doctl"
-SRC_URI=""
+SRC_URI="https://github.com/digitalocean/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0 MIT BSD BSD-2 ISC MPL-2.0"
 SLOT="0"
-KEYWORDS=""
-
-src_unpack() {
-	git-r3_src_unpack
-}
+KEYWORDS="~amd64 ~x86"
 
 src_compile() {
-	LDFLAGS="-X github.com/digitalocean/doctl.Build=$(git rev-parse --short HEAD)
-		-X github.com/digitalocean/doctl.Label=dev"
-	GOFLAGS="-v -x -mod=vendor" go build -ldflags "$LDFLAGS" ./cmd/...
+	LDFLAGS="-X github.com/digitalocean/doctl.Major=$(ver_cut 1)
+		-X github.com/digitalocean/doctl.Minor=$(ver_cut 2)
+		-X github.com/digitalocean/doctl.Patch=$(ver_cut 3-)
+		-X github.com/digitalocean/doctl.Label=release"
+	GOFLAGS="-v -x -mod=vendor" ego build -ldflags "${LDFLAGS}" ./cmd/...
 
 	local completion
 	for completion in bash zsh fish ; do
