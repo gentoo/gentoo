@@ -146,12 +146,6 @@ src_configure() {
 
 	filter-flags -malign-double
 
-	# https://bugs.gentoo.org/show_bug.cgi?id=50309
-	if is-flagq -O3; then
-		is-flagq -fstack-protector-all && replace-flags -O3 -O2
-		use hardened && replace-flags -O3 -O2
-	fi
-
 	# https://bugs.gentoo.org/700012
 	if is-flagq -flto || is-flagq '-flto=*'; then
 		append-cflags $(test-flags-CC -ffat-lto-objects)

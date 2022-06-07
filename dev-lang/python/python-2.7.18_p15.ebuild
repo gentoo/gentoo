@@ -146,12 +146,6 @@ src_configure() {
 
 	filter-flags -malign-double
 
-	# https://bugs.gentoo.org/show_bug.cgi?id=50309
-	if is-flagq -O3; then
-		is-flagq -fstack-protector-all && replace-flags -O3 -O2
-		use hardened && replace-flags -O3 -O2
-	fi
-
 	if tc-is-cross-compiler; then
 		# Force some tests that try to poke fs paths.
 		export ac_cv_file__dev_ptc=no
