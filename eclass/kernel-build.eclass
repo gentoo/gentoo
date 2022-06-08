@@ -199,7 +199,7 @@ kernel-build_src_install() {
 	# etc.  Use mv rather than doins for the same reason as above --
 	# space and time.
 	if use debug; then
-		mv build/vmlinux "/usr/src/linux-${ver}/" || die
+		mv build/vmlinux "${ED}/usr/src/linux-${ver}/" || die
 	fi
 
 	# building modules fails with 'vmlinux has no symtab?' if stripped
