@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	default
 	# ensure pkgconfig files go in /usr
-	sed -e 's:\(pkgconfigdir *=\).*:\1 '${EPREFIX}/usr/$(get_libdir)'/pkgconfig:' \
+	sed -e "s:\(pkgconfigdir *=\).*:\1 ${EPREFIX}/usr/$(get_libdir)/pkgconfig:" \
 		-i src/Makefile.{am,in} || die "sed failed"
 
 	if use python ; then
