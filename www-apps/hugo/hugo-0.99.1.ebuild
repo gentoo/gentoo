@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.96.0-unbundle-libwebp-and-libsass.patch"
 	"${FILESDIR}/${PN}-0.96.0-skip-some-tests.patch"
 	"${FILESDIR}/${PN}-0.99.1-fix-testdecodeconfig-basic.patch"
+	"${FILESDIR}/${PN}-0.99.1-test-timeout.patch"
 )
 
 src_configure() {
