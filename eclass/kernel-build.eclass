@@ -33,7 +33,7 @@ case "${EAPI:-0}" in
 		;;
 esac
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit python-any-r1 savedconfig toolchain-funcs kernel-install
 
@@ -43,7 +43,8 @@ BDEPEND="
 	sys-devel/bc
 	sys-devel/flex
 	virtual/libelf
-	virtual/yacc"
+	virtual/yacc
+"
 
 # @FUNCTION: kernel-build_src_configure
 # @DESCRIPTION:
