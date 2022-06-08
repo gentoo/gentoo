@@ -90,7 +90,7 @@ want_apache
 
 pkg_setup() {
 	if use berkdb ; then
-		local apu_bdb_version="$(${EPREFIX}/usr/bin/apu-1-config --includes \
+		local apu_bdb_version="$("${EPREFIX}"/usr/bin/apu-1-config --includes \
 			| grep -Eoe '-I${EPREFIX}/usr/include/db[[:digit:]]\.[[:digit:]]' \
 			| sed 's:.*b::')"
 		einfo
