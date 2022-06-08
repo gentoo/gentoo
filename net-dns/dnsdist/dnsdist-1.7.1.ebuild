@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit lua-single
+inherit flag-o-matic lua-single
 
 DESCRIPTION="A highly DNS-, DoS- and abuse-aware loadbalancer"
 HOMEPAGE="https://dnsdist.org"
@@ -46,6 +46,9 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 src_configure() {
+	# bug #822855
+	append-lfs-flags
+
 	econf \
 		--sysconfdir=/etc/dnsdist \
 		--with-lua="${ELUA}" \
