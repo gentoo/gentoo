@@ -17,6 +17,7 @@
   </longdescription>
   <stabilize-allarches/>
   <upstream>
+    <remote-id type="github">jupyter/jupyter_client</remote-id>
     <remote-id type="pypi">jupyter-client</remote-id>
   </upstream>
 </pkgmetadata>
