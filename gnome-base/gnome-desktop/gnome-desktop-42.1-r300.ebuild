@@ -74,7 +74,7 @@ src_install() {
 	meson_src_install
 
 	rm -r \
-		${ED}/usr/share/gnome/gnome-version.xml \
-		${ED}/usr/share/locale \
+		"${ED}"/usr/share/gnome/gnome-version.xml \
+		"${ED}"/usr/share/locale \
 		|| die
 }
