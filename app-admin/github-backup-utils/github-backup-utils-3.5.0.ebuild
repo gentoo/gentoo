@@ -34,6 +34,10 @@ DEPEND="test? (
 MY_PN="${PN/#github-/}"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
+
 src_compile() {
 	:;
 }
