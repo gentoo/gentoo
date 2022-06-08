@@ -24,6 +24,11 @@ RDEPEND="
 	app-eselect/eselect-java
 "
 DEPEND="${RDEPEND}"
+BDEPEND="app-arch/unzip"
+
+if [[ ${EAPI} == 6 ]]; then
+	DEPEND+=" ${BDEPEND}"
+fi
 
 export WANT_JAVA_CONFIG=2
 
