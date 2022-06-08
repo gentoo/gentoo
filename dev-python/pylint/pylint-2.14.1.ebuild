@@ -66,7 +66,6 @@ python_test() {
 		tests/checkers/unittest_typecheck.py::TestTypeChecker::test_nomember_on_c_extension_info_msg
 		tests/config/pylint_config/test_run_pylint_config.py::test_invocation_of_pylint_config
 	)
-	# Specify the test directory explicitly to avoid import file mismatches
 	epytest
 }
 
