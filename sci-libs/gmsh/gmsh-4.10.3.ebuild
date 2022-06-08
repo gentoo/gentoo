@@ -7,9 +7,9 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit cmake fortran-2 python-any-r1 toolchain-funcs
 
-DESCRIPTION="A three-dimensional finite element mesh generator"
-HOMEPAGE="http://www.geuz.org/gmsh/"
-SRC_URI="http://www.geuz.org/gmsh/src/${P}-source.tgz"
+DESCRIPTION="Three-dimensional finite element mesh generator"
+HOMEPAGE="https://gmsh.info"
+SRC_URI="https://gmsh.info/src/${P}-source.tgz"
 
 LICENSE="GPL-3 free-noncomm"
 SLOT="0"
@@ -61,7 +61,7 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"/${P}-source
 
-PATCHES=( "${FILESDIR}"/$PN-4.9.5-opencascade.patch )
+PATCHES=( "${FILESDIR}"/${PN}-4.9.5-opencascade.patch )
 
 pkg_setup() {
 	fortran-2_pkg_setup
