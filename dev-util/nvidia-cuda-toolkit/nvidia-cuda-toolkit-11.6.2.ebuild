@@ -232,7 +232,7 @@ src_install() {
 }
 
 pkg_postinst_check() {
-	local a="$(${EROOT}/opt/cuda/bin/cuda-config -s)"
+	local a="$("${EROOT}"/opt/cuda/bin/cuda-config -s)"
 	local b="0.0"
 	local v
 	for v in ${a}; do
