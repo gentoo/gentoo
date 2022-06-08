@@ -91,7 +91,7 @@ src_install() {
 	# If a reflinking CoW filesystem is used (e.g. Btrfs), then the files
 	# will not actually get stored twice until modified.
 	insinto /etc
-	doins -r ${ED}/usr/share/wireplumber
+	doins -r "${ED}"/usr/share/wireplumber
 }
 
 pkg_postinst() {
