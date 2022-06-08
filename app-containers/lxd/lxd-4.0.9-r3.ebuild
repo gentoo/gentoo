@@ -125,7 +125,7 @@ src_compile() {
 		go install -v -x "${S}/${k}" || die "failed compiling ${k}"
 	done
 
-	go install -v -x -tags libsqlite3 ${S}/lxd || die "Failed to build the daemon"
+	go install -v -x -tags libsqlite3 "${S}"/lxd || die "Failed to build the daemon"
 
 	# Needs to be built statically
 	CGO_ENABLED=0 go install -v -tags netgo "${S}"/lxd-p2c
