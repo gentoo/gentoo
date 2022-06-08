@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 # ninja does not work due to fortran
 CMAKE_MAKEFILE_GENERATOR=emake
@@ -209,7 +209,7 @@ src_configure() {
 		-Dcocoa=$(usex aqua)
 		-Dcuda=$(usex cuda)
 		-Dcudnn=$(usex cudnn)
-		-Dcxxmodules=OFF # requires clang, unstable
+		-Dcxxmodules=OFF
 		-Ddataframe=ON
 		-Ddavix=$(usex davix)
 		-Ddcache=OFF
@@ -280,12 +280,6 @@ src_configure() {
 
 	CMAKE_BUILD_TYPE=$(usex debug Debug Release) \
 	cmake_src_configure
-}
-
-src_compile() {
-	# needed for hsimple.root
-	addwrite /dev/random
-	cmake_src_compile
 }
 
 src_install() {
