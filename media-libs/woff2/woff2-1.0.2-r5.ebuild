@@ -29,9 +29,9 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	dobin ${BUILD_DIR}/woff2_compress
-	dobin ${BUILD_DIR}/woff2_decompress
-	dobin ${BUILD_DIR}/woff2_info
+	dobin "${BUILD_DIR}"/woff2_compress
+	dobin "${BUILD_DIR}"/woff2_decompress
+	dobin "${BUILD_DIR}"/woff2_info
 
 	einstalldocs
 }
