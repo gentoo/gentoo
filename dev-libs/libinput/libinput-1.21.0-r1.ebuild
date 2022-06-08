@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit meson python-any-r1 udev
 
@@ -32,7 +32,7 @@ BDEPEND="
 "
 #	test? ( dev-util/valgrind )
 RDEPEND="
-	input_devices_wacom? ( >=dev-libs/libwacom-0.27 )
+	input_devices_wacom? ( >=dev-libs/libwacom-0.27:= )
 	>=dev-libs/libevdev-1.9.902
 	>=sys-libs/mtdev-1.1
 	virtual/libudev:=
@@ -85,7 +85,6 @@ pkg_postinst() {
 	fi
 
 	udev_reload
-	udevadm hwdb --update --root="${ROOT}"
 }
 
 pkg_postrm() {
