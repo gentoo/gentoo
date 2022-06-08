@@ -29,6 +29,7 @@ RDEPEND="
 	>=dev-python/ipython-7.31.1[${PYTHON_USEDEP}]
 	<dev-python/jupyter_client-8[${PYTHON_USEDEP}]
 	>=dev-python/jupyter_client-7.3.1[${PYTHON_USEDEP}]
+	<dev-python/jupyter_client-7.3.2[${PYTHON_USEDEP}]
 	dev-python/matplotlib-inline[${PYTHON_USEDEP}]
 	>=dev-python/pyzmq-22.1.0[${PYTHON_USEDEP}]
 	>=dev-python/wurlitzer-1.0.3[${PYTHON_USEDEP}]
