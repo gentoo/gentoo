@@ -55,6 +55,11 @@ src_prepare() {
 			libctf/configure || die
 	fi
 
+	# See https://www.gnu.org/software/make/manual/html_node/Parallel-Output.html
+	# Avoid really confusing logs from subconfigure spam, makes logs far
+	# more legible.
+	MAKEOPTS="--output-sync=line ${MAKEOPTS}"
+
 	default
 }
 
@@ -132,8 +137,13 @@ multilib_src_configure() {
 		Makefile || die
 }
 
+multilib_src_compile() {
+	emake V=1
+}
+
 multilib_src_install() {
-	default
+	emake V=1 DESTDIR="${D}" install
+
 	# Provide libiberty.h directly.
 	dosym libiberty/libiberty.h /usr/include/libiberty.h
 }
