@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ src_install() {
 	doins "${S}"/release/ftd2xx.h "${S}"/release/WinTypes.h
 
 	dodir /etc/env.d
-	echo "LDPATH=\"/opt/$(get_libdir)\"" > ${ED}/etc/env.d/50libftd2xx || die
+	echo "LDPATH=\"/opt/$(get_libdir)\"" > "${ED}"/etc/env.d/50libftd2xx || die
 
 	if use examples ; then
 		docinto sample
