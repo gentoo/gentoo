@@ -70,7 +70,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/yamlcpp.patch"
-	"${FILESDIR}/assimp.patch"
 )
 
 src_test() {
