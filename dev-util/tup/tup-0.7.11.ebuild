@@ -5,8 +5,8 @@ EAPI=7
 
 inherit linux-info toolchain-funcs
 
-DESCRIPTION="A file-based build system"
-HOMEPAGE="https://gittup.org/tup https://github.com/gittup/tup"
+DESCRIPTION="File-based build system"
+HOMEPAGE="https://gittup.org/tup/ https://github.com/gittup/tup"
 # Tup itself is GPLv2, but it bundles differently licensed software:
 # - lua: MIT
 # - sqlite (unused in this ebuild): public domain
