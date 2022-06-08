@@ -24,5 +24,5 @@ DEPEND+=" test? ( media-sound/id3v2 )"
 ruby_add_bdepend "test? ( dev-ruby/hoe dev-ruby/test-unit:2 )"
 
 all_ruby_prepare() {
-	sed -i -e 's:/tmp/test.mp3:'${T}'/test.mp3:' test/test_ruby-mp3info.rb || die
+	sed -i -e "s:/tmp/test.mp3:${T}/test.mp3:" test/test_ruby-mp3info.rb || die
 }
