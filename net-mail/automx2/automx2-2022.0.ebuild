@@ -35,8 +35,8 @@ python_test() {
 }
 
 python_install_all() {
-	local DOCS=( ${S}/docs/*.adoc ${S}/contrib/*sample.conf )
-	local HTML_DOCS=( ${S}/docs/*.{html,svg} )
+	local DOCS=( "${S}"/docs/*.adoc "${S}"/contrib/*sample.conf )
+	local HTML_DOCS=( "${S}"/docs/*.{html,svg} )
 	newconfd "${FILESDIR}/confd" "${PN}"
 	newinitd "${FILESDIR}/init-r1" "${PN}"
 	insinto /etc
