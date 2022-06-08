@@ -52,7 +52,7 @@ src_install() {
 	dodoc README.{ascii,euc}
 
 	if use truetype; then
-		local DOCS=( ${WORKDIR}/README-ttf.txt )
+		local DOCS=( "${WORKDIR}"/README-ttf.txt )
 		font_src_install
 	fi
 }
