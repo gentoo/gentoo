@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,8 +15,8 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-3 GPL-3 Boost-1.0"
 SLOT="0/14"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples +gmp mpfi ntl qt5 shared"
+KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
+IUSE="doc examples +gmp mpfi ntl qt5"
 
 RDEPEND="
 	dev-cpp/eigen
@@ -55,7 +55,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DCGAL_INSTALL_LIB_DIR="$(get_libdir)"
 		-DCGAL_INSTALL_CMAKE_DIR="$(get_libdir)/cmake/CGAL"
-		-DCGAL_HEADER_ONLY=$(usex shared OFF ON)
+		-DCGAL_HEADER_ONLY=OFF
 		-DWITH_LEDA=OFF
 		-DWITH_Eigen3=ON
 		-DWITH_ZLIB=ON
