@@ -51,8 +51,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-LTO.patch
 )
 
-DOCS=( ${S}/README )
-HTML_DOCS=( ${BUILDDIR}/README.html )
+DOCS=( "${S}"/README )
+HTML_DOCS=( "${BUILDDIR}"/README.html )
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != "binary" ]]; then
