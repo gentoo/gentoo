@@ -36,7 +36,7 @@ src_prepare() {
 		export GNU_LIBTOOL=$LIBTOOL
 		# ./configure does not generate it, but slibtool assumes
 		# it's around
-		ln -s ${EPREFIX}/usr/bin/libtool libtool || die
+		ln -s "${EPREFIX}"/usr/bin/libtool libtool || die
 	fi
 
 	# We patches both configure and configure.ac.
