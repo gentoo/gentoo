@@ -77,7 +77,7 @@ src_prepare() {
 	# Shiboken2 assumes Vulkan headers live under either "$VULKAN_SDK/include"
 	# or "$VK_SDK_PATH/include" rather than "${EPREFIX}/usr/include/vulkan".
 	if use vulkan; then
-		sed -i -e 's~\bdetectVulkan(&headerPaths);~headerPaths.append(HeaderPath{QByteArrayLiteral("'${EPREFIX}'/usr/include/vulkan"), HeaderType::System});~' \
+		sed -i -e "s~\bdetectVulkan(&headerPaths);~headerPaths.append(HeaderPath{QByteArrayLiteral(\"${EPREFIX}/usr/include/vulkan\"), HeaderType::System});~" \
 			ApiExtractor/clangparser/compilersupport.cpp || die
 	fi
 
@@ -96,7 +96,7 @@ src_prepare() {
 	# PySide2 does *NOT* care whether the end user has done so or not, as
 	# PySide2 unconditionally requires Clang in either case. See also:
 	#     https://bugs.gentoo.org/619490
-	sed -i -e 's~(findClangBuiltInIncludesDir())~(QStringLiteral("'${EPREFIX}'/usr/lib/clang/'$(CPP=clang clang-fullversion)'/include"))~' \
+	sed -i -e 's~(findClangBuiltInIncludesDir())~(QStringLiteral("'"${EPREFIX}"'/usr/lib/clang/'$(CPP=clang clang-fullversion)'/include"))~' \
 		ApiExtractor/clangparser/compilersupport.cpp || die
 
 	cmake_src_prepare
