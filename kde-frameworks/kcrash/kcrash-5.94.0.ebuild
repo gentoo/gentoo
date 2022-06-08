@@ -3,6 +3,7 @@
 
 EAPI=8
 
+ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-2)
 QTMIN=5.15.3
 VIRTUALX_REQUIRED="test"
