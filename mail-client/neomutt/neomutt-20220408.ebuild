@@ -125,7 +125,7 @@ src_configure() {
 }
 
 src_test() {
-	local test_dir="$(readlink --canonicalize ${S}/../neomutt-test-files-${TEST_FILES_COMMIT})"
+	local test_dir="$(readlink --canonicalize "${S}"/../neomutt-test-files-${TEST_FILES_COMMIT})"
 	pushd ${test_dir} || die "Could not cd into test_dir"
 	NEOMUTT_TEST_DIR="${test_dir}" ./setup.sh \
 		|| die "Failed to run the setup.sh script"
