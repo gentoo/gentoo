@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -68,7 +68,7 @@ src_configure() {
 		myconf="${myconf} $(use_with swing)"
 	fi
 	if use xqtests; then
-		myconf="${myconf} $(use_with xqtests XQTS=${WORKDIR}/${xtestsuite})"
+		myconf="${myconf} $(use_with xqtests XQTS="${WORKDIR}"/${xtestsuite})"
 	fi
 	if use servlets; then
 		myconf="${myconf} --with-servlet=$(java-pkg_getjar servletapi-2.4 servlet-api.jar)"
