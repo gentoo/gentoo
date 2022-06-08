@@ -160,11 +160,5 @@ pkg_postinst() {
 				rc-update add seedrng boot
 		fi
 		fi
-		if ver_test $v -gt 0.45; then
-			if rc-update show boot | grep -q seedrng; then
-				rc-update del seedrng boot
-				rc-update add urandom boot
-		fi
-		fi
 	done
 }
