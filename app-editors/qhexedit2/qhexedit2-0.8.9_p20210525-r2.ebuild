@@ -68,7 +68,7 @@ src_compile() {
 	if use python; then
 		export PATH="$(qt5_get_bindir):${PATH}"
 		python_build() {
-			pushd ${S} || die
+			pushd "${S}" || die
 			sip-build || die
 			popd || die
 		}
@@ -90,7 +90,7 @@ src_install() {
 	dolib.so libqhexedit.so*
 	if use python; then
 		python_install() {
-			pushd ${S}/build || die
+			pushd "${S}"/build || die
 			emake INSTALL_ROOT="${D}" install
 			popd || die
 		}
