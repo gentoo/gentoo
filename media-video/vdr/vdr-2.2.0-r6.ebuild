@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -74,7 +74,7 @@ enable_patch() {
 		# codesnippet to bring the extpng defines into the vdr.pc CXXFLAGS CFLAGS
 		echo "-DUSE_${ARG_UPPER}" >> "${T}"/defines.tmp || die "cannot write to defines.tmp"
 		cat "${T}"/defines.tmp | tr \\\012 ' '  > "${T}"/defines.IUSE || die "cannot write to defines.tmp"
-		export DEFINES_IUSE=$( cat ${T}/defines.IUSE )
+		export DEFINES_IUSE=$( cat "${T}"/defines.IUSE )
 	done
 }
 
@@ -94,7 +94,7 @@ extensions_all_defines() {
 }
 
 lang_po() {
-	LING_PO=$( ls ${S}/po | sed -e "s:.po::g" | cut -d_ -f1 | tr \\\012 ' ' )
+	LING_PO=$( ls "${S}"/po | sed -e "s:.po::g" | cut -d_ -f1 | tr \\\012 ' ' )
 }
 
 src_configure() {
