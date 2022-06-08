@@ -72,6 +72,7 @@ src_configure() {
 		-DONLY_SHARED_LIBS=ON
 		-DFETCHCONTENT_FULLY_DISCONNECTED=ON
 		-DHDF5_BUILD_EXAMPLES=OFF
+		-DH5_DEFAULT_PLUGINDIR="${EPREFIX}/usr/$(get_libdir)/hdf5/plugin"
 		-DALLOW_UNSUPPORTED=$(usex unsupported)
 		-DBUILD_TESTING=$(usex test)
 		-DHDF5_BUILD_CPP_LIB=$(usex cxx)
