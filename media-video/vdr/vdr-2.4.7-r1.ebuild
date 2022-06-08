@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -65,7 +65,7 @@ add_cap() {
 }
 
 lang_po() {
-	LING_PO=$( ls ${S}/po | sed -e "s:.po::g" | cut -d_ -f1 | tr \\\012 ' ' )
+	LING_PO=$( ls "${S}"/po | sed -e "s:.po::g" | cut -d_ -f1 | tr \\\012 ' ' )
 }
 
 src_configure() {
