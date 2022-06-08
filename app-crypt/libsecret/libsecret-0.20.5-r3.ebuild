@@ -72,7 +72,7 @@ dbus_run() {
 
 tpm2_run_with_emulator() {
 	export XDG_CONFIG_HOME=${T}/.config/swtpm
-	${BROOT}/usr/share/swtpm/swtpm-create-user-config-files || die
+	"${BROOT}"/usr/share/swtpm/swtpm-create-user-config-files || die
 
 	mkdir -p ${XDG_CONFIG_HOME}/mytpm1 || die
 	swtpm_setup_args=(
