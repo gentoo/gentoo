@@ -31,7 +31,7 @@ pkg_setup() {
 
 src_unpack() {
 	if use verify-sig; then
-		verify-sig_verify_detached ${DISTDIR}/${P}.tar.gz{,.sign}
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz{,.sign}
 	fi
 
 	default
