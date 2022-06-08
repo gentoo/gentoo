@@ -298,7 +298,7 @@ src_test() {
 	cmake_src_test
 
 	# Clean up the image directory for src_install
-	rm -fr ${ED}/* || die
+	rm -fr "${ED}"/* || die
 }
 
 src_install() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -306,7 +306,7 @@ src_test() {
 	cmake_src_test
 
 	# Clean up the image directory for src_install
-	rm -fr ${ED}/* || die
+	rm -fr "${ED}"/* || die
 }
 
 src_install() {
