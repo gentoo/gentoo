@@ -73,8 +73,8 @@ src_prepare() {
 		-e 's:${povdatadir}/$PACKAGE-$VERSION_BASE:${povdatadir}/'${PN}':g' \
 		-e 's:${povdatadir}/doc/$PACKAGE-$VERSION_BASE:${povdatadir}/doc/'${PF}':g' \
 		-e 's:BOOST_THREAD_LIBS $LIBS:BOOST_THREAD_LIBS $LIBS -lboost_date_time:g' \
-		-e 's:"/usr/include":"'${EPREFIX}'/usr/include":' \
-		-e 's:"/usr/lib":"'${EPREFIX}'/usr/'$(get_libdir)'":' \
+		-e "s:\"/usr/include\":\"${EPREFIX}/usr/include\":" \
+		-e "s:\"/usr/lib\":\"${EPREFIX}/usr/$(get_libdir)\":" \
 		-i configure.ac || die
 
 	sed \
