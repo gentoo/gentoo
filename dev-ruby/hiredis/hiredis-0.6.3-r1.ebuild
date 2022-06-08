@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,7 +33,7 @@ RUBY_S="${MY_P}"
 PATCHES=( "${FILESDIR}/${PN}-0.6.1-unvendor-hiredis.patch" )
 
 all_ruby_prepare() {
-	sed -i -e 's:/tmp/:'${T}'/:' test/connection_test.rb || die
+	sed -i -e "s:/tmp/:${T}/:" test/connection_test.rb || die
 }
 
 each_ruby_test() {
