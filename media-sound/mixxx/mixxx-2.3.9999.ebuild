@@ -149,7 +149,7 @@ src_install() {
 	local locale
 	for locale in ${PLOCALES} ; do
 		if use l10n_${locale} ; then
-			dodoc ${DISTDIR}/${PN}-manual-$(ver_cut 1-2)-${locale/ja/ja-JP}.pdf
+			dodoc "${DISTDIR}"/${PN}-manual-$(ver_cut 1-2)-${locale/ja/ja-JP}.pdf
 		fi
 	done
 }
