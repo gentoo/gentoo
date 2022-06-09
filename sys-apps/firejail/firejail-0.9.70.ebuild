@@ -21,7 +21,7 @@ HOMEPAGE="https://firejail.wordpress.com/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="apparmor +chroot contrib +dbusproxy +file-transfer +globalcfg +network +private-home test +userns +whitelist X"
+IUSE="apparmor +chroot contrib +dbusproxy +file-transfer +globalcfg +network +private-home test +userns X"
 # Needs a lot of work to function within sandbox/portage
 # bug #769731
 RESTRICT="test"
@@ -36,6 +36,11 @@ DEPEND="${RDEPEND}
 	test? ( dev-tcltk/expect )"
 
 REQUIRED_USE="contrib? ( ${PYTHON_REQUIRED_USE} )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-envlimits.patch"
+	"${FILESDIR}/${P}-firecfg.config.patch"
+	)
 
 pkg_setup() {
 	CONFIG_CHECK="~SQUASHFS"
@@ -77,8 +82,11 @@ src_configure() {
 		$(use_enable network) \
 		$(use_enable private-home) \
 		$(use_enable userns) \
-		$(use_enable whitelist) \
 		$(use_enable X x11)
+
+	cat > 99firejail <<-EOF || die
+	SANDBOX_WRITE="/run/firejail"
+	EOF
 }
 
 src_compile() {
@@ -87,6 +95,17 @@ src_compile() {
 
 src_install() {
 	default
+
+	# Gentoo-specific profile customizations
+	insinto /etc/${PN}
+	local profile_local
+	for profile_local in "${FILESDIR}"/profile_*local ; do
+		newins "${profile_local}" "${profile_local/\/*profile_/}"
+	done
+
+	# Prevent sandbox violations when toolchain is firejailed
+	insinto /etc/sandbox.d
+	doins 99firejail
 
 	rm "${ED}"/usr/share/doc/${PF}/COPYING || die
 
