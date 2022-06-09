@@ -38,6 +38,9 @@ BDEPEND="
 EPYTEST_IGNORE=(
 	# TODO: package beartype?
 	tests/test_beartype.py
+	# test for... whether the release is on pypi?
+	# requires Internet + feedparser, meaningless for users
+	tests/test_package_info.py
 	# relies on Internet access to fetch packages for pip
 	tests/test_wheel.py
 )
