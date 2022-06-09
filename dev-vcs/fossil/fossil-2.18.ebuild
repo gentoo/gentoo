@@ -19,6 +19,8 @@ IUSE="debug fusefs json miniz system-sqlite +ssl static tcl tcl-stubs
 
 REQUIRED_USE="ssl? ( !miniz )"
 
+# Please check sqlite minimum version on every release.
+# This can be done with ./configure --print-minimum-sqlite-version.
 RDEPEND="
 	sys-libs/zlib
 	|| (
@@ -43,8 +45,12 @@ DEPEND="${RDEPEND}
 # Tests can't be run from the build directory
 RESTRICT="test"
 
-# fossil-2.10-check-lib64-for-tcl.patch: Bug 690828
-PATCHES=( "${FILESDIR}"/fossil-2.10-check-lib64-for-tcl.patch )
+PATCHES=(
+	# fossil-2.10-check-lib64-for-tcl.patch: Bug 690828
+	"${FILESDIR}"/fossil-2.10-check-lib64-for-tcl.patch
+	# sqlite-3.38 patch should be in next release
+	"${FILESDIR}"/${P}-fix-sqlite-3.38-json-check.patch
+)
 
 S="${WORKDIR}/fossil-src-${PV}"
 

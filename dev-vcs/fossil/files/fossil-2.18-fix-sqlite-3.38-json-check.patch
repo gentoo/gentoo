@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/835810
+https://fossil-scm.org/home/vpatch?from=d862cb71d6266449&to=8af827342f4c4a77
+https://fossil-scm.org/forum/info/549da79dd9
+
+--- a/tools/sqlcompattest.c
++++ b/tools/sqlcompattest.c
+@@ -62,11 +62,10 @@
+   version=(major*1000000)+(minor*1000)+release;
+ 
+   int i;
+   static const char *zRequiredOpts[] = {
+     "ENABLE_FTS4",        /* Required for repository search */
+-    "ENABLE_JSON1",       /* Required for the check-in locking protocol */
+     "ENABLE_DBSTAT_VTAB", /* Required by /repo-tabsize page */
+   };
+ 
+   /* Check minimum SQLite version number */
+   if( sqlite3_libversion_number()<version ){
+
+
