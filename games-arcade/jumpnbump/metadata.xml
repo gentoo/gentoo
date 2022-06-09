@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="gitlab">LibreGames/jumpnbump</remote-id>
-	</upstream>
+	<use>
+		<flag name="levels">Install extra level from debian pool</flag>
+	</use>
 </pkgmetadata>
