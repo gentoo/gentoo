@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="Provide libnotify interface to Pidgin and Finch"
-HOMEPAGE="http://purple-libnotify-plus.sardemff7.net/"
+HOMEPAGE="https://github.com/sardemff7/purple-libnotify-plus"
 SRC_URI="https://github.com/sardemff7/purple-libnotify-plus/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
