@@ -52,13 +52,10 @@ dev-python/editdistance-s
 dev-cpp/commoncpp2
 
 # Michał Górny <mgorny@gentoo.org> (2022-06-08)
-# pyroute2 is pending version bump for over 1.5 years already.
-# The tests are restricted.  pulseaudio-dlna is the only revdep.
 # pulseaudio-dlna has not seen any upstream activity since 2017,
 # and has had its last release in 2016.  It does not feature a non-live
 # ebuild.
 # Removal on 2022-07-08.  Bug #813990.
-dev-python/pyroute2
 net-misc/pulseaudio-dlna
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-06-05)
