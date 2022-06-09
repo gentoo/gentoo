@@ -21,8 +21,11 @@ DEPEND="${RDEPEND}"
 
 distutils_enable_tests unittest
 
-python_compile() {
-	distutils-r1_python_compile --dynamic-linking
+python_configure_all() {
+	cat >> setup.cfg <<-EOF
+	[build_ext]
+	dynamic-linking = True
+	EOF
 }
 
 python_test() {
