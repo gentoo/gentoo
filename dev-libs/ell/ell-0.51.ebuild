@@ -33,6 +33,10 @@ CONFIG_CHECK="
 	~KEY_DH_OPERATIONS
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-musl-build-time.patch
+)
+
 src_prepare() {
 	default
 	[[ "${PV}" == *9999 ]] && eautoreconf
