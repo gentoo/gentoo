@@ -1,21 +1,6 @@
-https://bugs.gentoo.org/789762
-
-From 18df3302b256bce6f61d83a58b2afbc8d788ad5c Mon Sep 17 00:00:00 2001
-From: Sam James <sam@gentoo.org>
-Date: Tue, 15 Jun 2021 01:40:48 +0000
-Subject: [PATCH] Drop -Werror
-
----
- bindings/java/src/main/native/Makefile.am | 2 +-
- examples/Makefile.am                      | 2 +-
- test/apps/sockaddr/Makefile.am            | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/bindings/java/src/main/native/Makefile.am b/bindings/java/src/main/native/Makefile.am
-index 73f9940..6616dae 100644
 --- a/bindings/java/src/main/native/Makefile.am
 +++ b/bindings/java/src/main/native/Makefile.am
-@@ -64,7 +64,7 @@ libjucx_la_SOURCES = context.cc \
+@@ -64,7 +64,7 @@
                       ucs_constants.cc \
                       worker.cc
  
@@ -24,11 +9,33 @@ index 73f9940..6616dae 100644
  
  libjucx_la_LIBADD = $(topdir)/src/ucs/libucs.la \
                      $(topdir)/src/uct/libuct.la \
-diff --git a/examples/Makefile.am b/examples/Makefile.am
-index 05cde27..76c3b18 100644
+--- a/config/m4/compiler.m4
++++ b/config/m4/compiler.m4
+@@ -9,7 +9,7 @@
+ #
+ # Initialize CFLAGS
+ #
+-BASE_CFLAGS="-g -Wall -Werror"
++BASE_CFLAGS="-g -Wall"
+ 
+ 
+ #
+@@ -516,11 +516,9 @@
+ # NOTE: This must be done after setting BASE_CXXFLAGS
+ #
+ ADD_COMPILER_FLAGS_IF_SUPPORTED([[-Wno-pointer-sign],
+-                                 [-Werror-implicit-function-declaration],
+                                  [-Wno-format-zero-length],
+                                  [-Wnested-externs],
+-                                 [-Wshadow],
+-                                 [-Werror=declaration-after-statement]],
++                                 [-Wshadow]],
+                                 [AC_LANG_SOURCE([[int main(int argc, char **argv){return 0;}]])])
+ 
+ 
 --- a/examples/Makefile.am
 +++ b/examples/Makefile.am
-@@ -23,7 +23,7 @@ EXAMPLE_CUDA_CFLAGS = $(CFLAGS_PEDANTIC)
+@@ -23,7 +23,7 @@
  EXAMPLE_CUDA_CPPFLAGS =
  endif
  
@@ -37,11 +44,9 @@ index 05cde27..76c3b18 100644
                       $(EXAMPLE_CUDA_LDFLAGS) $(EXAMPLE_CUDA_CPPFLAGS)
  
  installcheck-local:
-diff --git a/test/apps/sockaddr/Makefile.am b/test/apps/sockaddr/Makefile.am
-index 7ce7a01..2e4ad47 100644
 --- a/test/apps/sockaddr/Makefile.am
 +++ b/test/apps/sockaddr/Makefile.am
-@@ -12,7 +12,7 @@ noinst_HEADERS = \
+@@ -12,7 +12,7 @@
  	sa_util.h
  
  sa_CXXFLAGS = \
@@ -50,6 +55,3 @@ index 7ce7a01..2e4ad47 100644
  
  sa_CPPFLAGS = $(BASE_CPPFLAGS)
  
--- 
-2.32.0
-
