@@ -54,6 +54,9 @@ python_test() {
 		tests/test_main.py::test_build_package_via_sdist
 		'tests/test_util.py::test_wheel_metadata[True]'
 		tests/test_util.py::test_with_get_requires
+		# we don't really have to test that fallback
+		# (requires dev-python/toml that we'd like to lastrite eventually)
+		tests/test_projectbuilder.py::test_toml_instead_of_tomli
 	)
 	[[ ${EPYTHON} == python3.11 ]] && EPYTEST_DESELECT+=(
 		# fixed in git but the patch is large-ish
