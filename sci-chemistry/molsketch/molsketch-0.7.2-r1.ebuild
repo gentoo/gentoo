@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 DEPEND="
-	>=sci-chemistry/openbabel-3
+	>=sci-chemistry/openbabel-3:=
 	dev-qt/linguist-tools:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
