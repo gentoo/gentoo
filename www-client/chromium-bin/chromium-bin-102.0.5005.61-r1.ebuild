@@ -26,6 +26,11 @@ SRC_URI="https://dev.gentoo.org/~sultan/distfiles/www-client/chromium-bin/${MY_P
 		wayland? ( https://dev.gentoo.org/~sultan/distfiles/www-client/chromium-bin/${MY_P}-wayland-aarch64.tar.xz )
 		!wayland? ( https://dev.gentoo.org/~sultan/distfiles/www-client/chromium-bin/${MY_P}-x11-aarch64.tar.xz )
 	)
+	ppc64? (
+		https://dev.gentoo.org/~sultan/distfiles/www-client/chromium-bin/${MY_P}-common-ppc64.tar.xz
+		wayland? ( https://dev.gentoo.org/~sultan/distfiles/www-client/chromium-bin/${MY_P}-wayland-ppc64.tar.xz )
+		!wayland? ( https://dev.gentoo.org/~sultan/distfiles/www-client/chromium-bin/${MY_P}-x11-ppc64.tar.xz )
+	)
 	x86? (
 		https://dev.gentoo.org/~sultan/distfiles/www-client/chromium-bin/${MY_P}-common-i686.tar.xz
 		wayland? ( https://dev.gentoo.org/~sultan/distfiles/www-client/chromium-bin/${MY_P}-wayland-i686.tar.xz )
