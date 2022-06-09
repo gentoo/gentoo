@@ -1514,13 +1514,37 @@ distutils-r1_python_install() {
 	local merge_root=
 	if [[ ${DISTUTILS_USE_PEP517} ]]; then
 		local root=${BUILD_DIR}/install
+		local reg_scriptdir=${root}/${scriptdir}
+		local wrapped_scriptdir=${root}$(python_get_scriptdir)
+
+		# we are assuming that _distutils-r1_post_python_compile
+		# has been called and ${root} has not been altered since
+		# let's explicitly verify these assumptions
+
+		# remove files that we've created explicitly
+		rm "${reg_scriptdir}"/{"${EPYTHON}",python3,python,pyvenv.cfg} || die
+		# verify that scriptdir & wrapped_scriptdir both contain
+		# the same files
+		(
+			cd "${reg_scriptdir}" && find . -mindepth 1
+		) | sort > "${T}"/.distutils-files-bin
+		assert "listing ${reg_scriptdir} failed"
+		(
+			if [[ -d ${wrapped_scriptdir} ]]; then
+				cd "${wrapped_scriptdir}" && find . -mindepth 1
+			fi
+		) | sort > "${T}"/.distutils-files-wrapped
+		assert "listing ${wrapped_scriptdir} failed"
+		if ! diff -U 0 "${T}"/.distutils-files-{bin,wrapped}; then
+			die "File lists for ${reg_scriptdir} and ${wrapped_scriptdir} differ (see diff above)"
+		fi
+
 		# remove the altered bindir, executables from the package
 		# are already in scriptdir
-		rm -r "${root}${scriptdir}" || die
+		rm -r "${reg_scriptdir}" || die
 		if [[ ${DISTUTILS_SINGLE_IMPL} ]]; then
-			local wrapped_scriptdir=${root}$(python_get_scriptdir)
 			if [[ -d ${wrapped_scriptdir} ]]; then
-				mv "${wrapped_scriptdir}" "${root}${scriptdir}" || die
+				mv "${wrapped_scriptdir}" "${reg_scriptdir}" || die
 			fi
 		fi
 		# prune empty directories to see if ${root} contains anything
