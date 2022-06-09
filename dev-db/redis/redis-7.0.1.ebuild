@@ -6,7 +6,7 @@ EAPI=8
 # N.B.: It is no clue in porting to Lua eclasses, as upstream have deviated
 # too far from vanilla Lua, adding their own APIs like lua_enablereadonlytable
 
-inherit autotools edo flag-o-matic systemd tmpfiles toolchain-funcs
+inherit autotools edo flag-o-matic multiprocessing systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="A persistent caching system, key-value, and data structures database"
 HOMEPAGE="https://redis.io"
@@ -116,6 +116,10 @@ src_compile() {
 }
 
 src_test() {
+	local runtestargs=(
+		--clients "$(makeopts_jobs)" # see bug #649868
+	)
+
 	# Known to fail with FEATURES=usersandbox
 	if has usersandbox ${FEATURES}; then
 		ewarn "You are emerging ${P} with 'usersandbox' enabled." \
@@ -124,10 +128,10 @@ src_test() {
 
 	if use ssl; then
 		edo ./utils/gen-test-certs.sh
-		edo ./runtest --tls
-	else
-		edo ./runtest
+		runtestargs+=( --tls )
 	fi
+
+	edo ./runtest "${runtestargs[@]}"
 }
 
 src_install() {
