@@ -14,7 +14,7 @@ LUA_COMPAT=( lua5-1 luajit )
 # Upstream have deviated too far from vanilla Lua, adding their own APIs
 # like lua_enablereadonlytable, but we still need the eclass and such
 # for bug #841422.
-inherit autotools edo flag-o-matic lua-single systemd tmpfiles toolchain-funcs
+inherit autotools edo flag-o-matic lua-single multiprocessing systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="A persistent caching system, key-value, and data structures database"
 HOMEPAGE="https://redis.io"
@@ -135,6 +135,10 @@ src_compile() {
 }
 
 src_test() {
+	local runtestargs=(
+		--clients "$(makeopts_jobs)" # see bug #649868
+	)
+
 	# Known to fail with FEATURES=usersandbox
 	if has usersandbox ${FEATURES}; then
 		ewarn "You are emerging ${P} with 'usersandbox' enabled." \
@@ -143,10 +147,10 @@ src_test() {
 
 	if use ssl; then
 		edo ./utils/gen-test-certs.sh
-		edo ./runtest --tls
-	else
-		edo ./runtest
+		runtestargs+=( --tls )
 	fi
+
+	edo ./runtest "${runtestargs[@]}"
 }
 
 src_install() {
