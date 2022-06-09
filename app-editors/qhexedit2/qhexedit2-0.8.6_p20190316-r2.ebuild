@@ -3,10 +3,8 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=standalone
 PYTHON_COMPAT=( python3_{8..10} )
-
-inherit distutils-r1 qmake-utils
+inherit python-r1 qmake-utils
 
 EGIT_COMMIT="ba5af8616b3a6c916e718914225a483267c01356"
 DESCRIPTION="Hex editor library, Qt application written in C++ with Python bindings"
