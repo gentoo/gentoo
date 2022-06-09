@@ -16,6 +16,8 @@
 	</longdescription>
 	<use>
 		<flag name="cuda">Add support for cuda assimp (<pkg>dev-util/nvidia-cuda-sdk</pkg>)</flag>
+		<flag name="hip">Compile kernels for AMD GPUs</flag>
+		<flag name="mixed-precision">Compiles true mixed-precision kernels instead of converting data on the fly. Enabling this flag increases the library size, but improves performance of mixed-precision kernels.</flag>
 		<flag name="hwloc">Add support for hwloc (<pkg>sys-apps/hwloc</pkg>)</flag>
 	</use>
 	<upstream>
