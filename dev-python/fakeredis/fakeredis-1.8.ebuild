@@ -25,14 +25,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND="
-	dev-python/redis-py[${PYTHON_USEDEP}]
+	>=dev-python/redis-py-4.2[${PYTHON_USEDEP}]
 	>=dev-python/six-1.16.0[${PYTHON_USEDEP}]
 	>=dev-python/sortedcontainers-2.4.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
 		dev-db/redis
-		dev-python/aioredis[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 	)
