@@ -14,7 +14,7 @@ LUA_COMPAT=( lua5-1 luajit )
 # Upstream have deviated too far from vanilla Lua, adding their own APIs
 # like lua_enablereadonlytable, but we still need the eclass and such
 # for bug #841422.
-inherit autotools flag-o-matic systemd toolchain-funcs lua-single tmpfiles
+inherit autotools edo flag-o-matic lua-single systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="A persistent caching system, key-value, and data structures database"
 HOMEPAGE="https://redis.io"
@@ -142,10 +142,10 @@ src_test() {
 	fi
 
 	if use ssl; then
-		./utils/gen-test-certs.sh
-		./runtest --tls
+		edo ./utils/gen-test-certs.sh
+		edo ./runtest --tls
 	else
-		./runtest
+		edo ./runtest
 	fi
 }
 

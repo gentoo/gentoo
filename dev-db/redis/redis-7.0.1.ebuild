@@ -6,7 +6,7 @@ EAPI=8
 # N.B.: It is no clue in porting to Lua eclasses, as upstream have deviated
 # too far from vanilla Lua, adding their own APIs like lua_enablereadonlytable
 
-inherit autotools flag-o-matic systemd toolchain-funcs tmpfiles
+inherit autotools edo flag-o-matic systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="A persistent caching system, key-value, and data structures database"
 HOMEPAGE="https://redis.io"
@@ -123,10 +123,10 @@ src_test() {
 	fi
 
 	if use ssl; then
-		./utils/gen-test-certs.sh
-		./runtest --tls
+		edo ./utils/gen-test-certs.sh
+		edo ./runtest --tls
 	else
-		./runtest
+		edo ./runtest
 	fi
 }
 

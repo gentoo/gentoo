@@ -11,7 +11,7 @@ EAPI=7
 #    because lua_open became lua_newstate in 5.2
 LUA_COMPAT=( lua5-1 luajit )
 
-inherit autotools flag-o-matic lua-single systemd toolchain-funcs tmpfiles
+inherit autotools edo flag-o-matic lua-single systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="A persistent caching system, key-value and data structures database"
 HOMEPAGE="https://redis.io"
@@ -140,10 +140,10 @@ src_test() {
 	fi
 
 	if use ssl; then
-		./utils/gen-test-certs.sh
-		./runtest --tls
+		edo ./utils/gen-test-certs.sh
+		edo ./runtest --tls
 	else
-		./runtest
+		edo ./runtest
 	fi
 }
 
