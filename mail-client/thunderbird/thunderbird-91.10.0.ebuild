@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-FIREFOX_PATCHSET="firefox-91esr-patches-07j.tar.xz"
+FIREFOX_PATCHSET="firefox-91esr-patches-08j.tar.xz"
 
 LLVM_MAX_SLOT=14
 
@@ -74,8 +74,7 @@ REQUIRED_USE="debug? ( !system-av1 )
 BDEPEND="${PYTHON_DEPS}
 	app-arch/unzip
 	app-arch/zip
-	>=dev-util/cbindgen-0.19.0
-	<dev-util/cbindgen-0.24.0
+	>=dev-util/cbindgen-0.24.0
 	>=net-libs/nodejs-10.23.1
 	virtual/pkgconfig
 	>=virtual/rust-1.51.0
