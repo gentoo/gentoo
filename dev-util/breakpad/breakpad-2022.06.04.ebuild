@@ -7,7 +7,7 @@ inherit autotools
 
 CommitId=41a11409d6ba04e308adc66f5a33115e2d7c9174
 DESCRIPTION="implement a crash-reporting system."
-HOMEPAGE="https://https://chromium.googlesource.com/breakpad/breakpad/"
+HOMEPAGE="https://chromium.googlesource.com/breakpad/breakpad/"
 SRC_URI="https://github.com/google/${PN}/archive/${CommitId}.tar.gz
 	-> ${P}.tar.gz"
 
