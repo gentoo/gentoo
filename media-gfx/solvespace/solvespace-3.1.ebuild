@@ -44,7 +44,10 @@ RDEPEND="
 	x11-libs/cairo[X]
 	x11-libs/gtk+:3[X]
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	dev-cpp/eigen:3
+"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/${PN}-3.1-use-system-mimalloc.patch )
