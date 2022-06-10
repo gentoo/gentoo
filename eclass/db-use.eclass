@@ -9,10 +9,10 @@
 # @AUTHOR:
 # Paul de Vrieze <pauldv@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7 8
-# @BLURB: This is a common location for functions that aid the use of sys-libs/db
+# @BLURB: This is a common location for functions that aid the use of ``sys-libs/db``
 # @DESCRIPTION:
 # This eclass is designed to provide helpful functions for depending on
-# sys-libs/db.
+# ``sys-libs/db``.
 
 # multilib is used for get_libname in all EAPI
 case ${EAPI} in
@@ -21,7 +21,9 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-#Convert a version to a db slot
+# @FUNCTION: db_ver_to_slot
+# @DESCRIPTION:
+# Convert a version to a db slot
 db_ver_to_slot() {
 	if [ $# -ne 1 ]; then
 		eerror "Function db_ver_to_slot needs one argument" >&2
@@ -39,7 +41,9 @@ db_ver_to_slot() {
 	echo -n "$1"
 }
 
-#Find the version that correspond to the given atom
+# @FUNCTION: db_findver
+# @DESCRIPTION:
+# Find the version that correspond to the given atom
 db_findver() {
 	if [ $# -ne 1 ]; then
 		eerror "Function db_findver needs one argument" >&2
@@ -62,11 +66,12 @@ db_findver() {
 	fi
 }
 
+# @FUNCTION: db_includedir
+# @DESCRIPTION:
 # Get the include dir for berkeley db.
 # This function has two modes. Without any arguments it will give the best
 # version available. With arguments that form the versions of db packages
 # to test for, it will aim to find the library corresponding to it.
-
 db_includedir() {
 	if [ $# -eq 0 ]; then
 		VER="$(db_findver sys-libs/db)" || return 1
@@ -95,11 +100,12 @@ db_includedir() {
 }
 
 
-# Get the library name for berkeley db. Something like "db-4.2" will be the
+# @FUNCTION: db_libname
+# @DESCRIPTION:
+# Get the library name for berkeley db. Something like ``db-4.2`` will be the
 # outcome. This function has two modes. Without any arguments it will give
 # the best version available. With arguments that form the versions of db
 # packages to test for, it will aim to find the library corresponding to it.
-
 db_libname() {
 	if [ $# -eq 0 ]; then
 		VER="$(db_findver sys-libs/db)" || return 1
