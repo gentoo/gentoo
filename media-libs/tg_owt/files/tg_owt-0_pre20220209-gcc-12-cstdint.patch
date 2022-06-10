@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/840526
+https://github.com/desktop-app/tg_owt/pull/101
+
+From 86d2bcd7afb8706663d29e30f65863de5a626142 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sun, 15 May 2022 12:47:41 +0200
+Subject: [PATCH] fix(h265_pps_parser): fix missing cstdint include
+
+--- a/src/common_video/h265/h265_pps_parser.h
++++ b/src/common_video/h265/h265_pps_parser.h
+@@ -12,6 +12,7 @@
+ #define COMMON_VIDEO_H265_PPS_PARSER_H_
+ 
+ #include "absl/types/optional.h"
++#include <cstdint>
+ 
+ namespace rtc {
+ class BitBuffer;
+
