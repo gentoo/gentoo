@@ -1,4 +1,4 @@
-# Copyright 2007-2021 Gentoo Authors
+# Copyright 2007-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ant-tasks.eclass
@@ -8,10 +8,10 @@
 # Vlastimil Babka <caster@gentoo.org>
 # @SUPPORTED_EAPIS: 6 7
 # @PROVIDES: java-utils-2
-# @BLURB: Eclass for building dev-java/ant-* packages
+# @BLURB: Eclass for building ``dev-java/ant-*`` packages
 # @DESCRIPTION:
 # This eclass provides functionality and default ebuild variables for building
-# dev-java/ant-* packages easily.
+# ``dev-java/ant-*`` packages easily.
 
 case "${EAPI:-0}" in
 	0|1|2|3|4|5)
@@ -36,31 +36,31 @@ EXPORT_FUNCTIONS src_unpack src_compile src_install
 # @ECLASS_VARIABLE: ANT_TASK_JDKVER
 # @PRE_INHERIT
 # @DESCRIPTION:
-# Affects the >=virtual/jdk version set in DEPEND string. Defaults to 1.8, can
-# be overridden from ebuild BEFORE inheriting this eclass.
+# Affects the ``>=virtual/jdk`` version set in ``DEPEND`` string. Defaults to
+# 1.8, can be overridden from ebuild BEFORE inheriting this eclass.
 ANT_TASK_JDKVER=${ANT_TASK_JDKVER-1.8}
 
 # @ECLASS_VARIABLE: ANT_TASK_JREVER
 # @PRE_INHERIT
 # @DESCRIPTION:
-# Affects the >=virtual/jre version set in DEPEND string. Defaults to 1.8, can
-# be overridden from ebuild BEFORE inheriting this eclass.
+# Affects the ``>=virtual/jre`` version set in ``DEPEND`` string. Defaults to
+# 1.8, can be overridden from ebuild BEFORE inheriting this eclass.
 ANT_TASK_JREVER=${ANT_TASK_JREVER-1.8}
 
 # @ECLASS_VARIABLE: ANT_TASK_NAME
 # @DESCRIPTION:
-# The name of this ant task as recognized by ant's build.xml, derived from $PN
-# by removing the ant- prefix. Read-only.
+# The name of this ant task as recognized by ant's ``build.xml``, derived from
+# ``$PN`` by removing the ``ant-`` prefix. Read-only.
 ANT_TASK_NAME="${PN#ant-}"
 
 # @ECLASS_VARIABLE: ANT_TASK_DEPNAME
 # @PRE_INHERIT
 # @DESCRIPTION:
-# Specifies JAVA_PKG_NAME (PN{-SLOT} used with java-pkg_jar-from) of the package
-# that this one depends on. Defaults to the name of ant task, ebuild can
-# override it before inheriting this eclass. In case there is more than one
-# dependency, the variable can be specified as bash array with multiple strings,
-# one for each dependency.
+# Specifies ``JAVA_PKG_NAME`` (``PN{-SLOT}`` used with ``java-pkg_jar-from``)
+# of the package that this one depends on. Defaults to the name of ant task,
+# ebuild can override it before inheriting this eclass. In case there is more
+# than one dependency, the variable can be specified as bash array with
+# multiple strings, one for each dependency.
 ANT_TASK_DEPNAME=${ANT_TASK_DEPNAME-${ANT_TASK_NAME}}
 
 # @ECLASS_VARIABLE: ANT_TASK_DISABLE_VM_DEPS
@@ -106,14 +106,15 @@ RESTRICT="test"
 S="${WORKDIR}/${MY_P}"
 
 # @FUNCTION: ant-tasks_src_unpack
-# @USAGE: [ base ] [ jar-dep ] [ all ]
+# @USAGE: [ base | jar-dep | all ]
 # @DESCRIPTION:
 # The function Is split into two parts, defaults to both of them ('all').
 #
-# base: performs the unpack, build.xml replacement and symlinks ant.jar from
-#	ant-core
-#
-# jar-dep: symlinks the jar file(s) from dependency package(s)
+# base
+#   performs the unpack, ``build.xml`` replacement and symlinks ``ant.jar``
+#   from ant-core
+# jar-dep
+#   symlinks the jar file(s) from dependency package(s)
 ant-tasks_src_unpack() {
 	[[ -z "${1}" ]] && ant-tasks_src_unpack all
 
