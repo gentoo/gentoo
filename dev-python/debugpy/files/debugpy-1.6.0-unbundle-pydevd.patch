@@ -1,8 +1,20 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 15ea7e1..d3a2764 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -8,7 +8,6 @@ exclude = '''
+ ( __pycache__
+ | ^/.tox
+ | ^/versioneer.py
+-| ^/src/debugpy/_vendored
+ | ^/src/debugpy/_version.py
+ )
+ '''
 diff --git a/setup.py b/setup.py
-index ee5bbba..f69dc95 100644
+index 2c0a2d6..7c22c0c 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -21,12 +21,10 @@ del sys.path[0]
+@@ -18,12 +18,10 @@ del sys.path[0]
  
  sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "src"))
  import debugpy
@@ -15,7 +27,7 @@ index ee5bbba..f69dc95 100644
  DEBUGBY_ROOT = os.path.dirname(os.path.abspath(debugpy.__file__))
  
  
-@@ -36,27 +34,6 @@ def get_buildplatform():
+@@ -33,27 +31,6 @@ def get_buildplatform():
      return None
  
  
@@ -24,7 +36,7 @@ index ee5bbba..f69dc95 100644
 -    subprocess.call(
 -        [
 -            sys.executable,
--            os.path.join(PYDEVD_ROOT, "setup_cython.py"),
+-            os.path.join(PYDEVD_ROOT, "setup_pydevd_cython.py"),
 -            "build_ext",
 -            "-i",
 -        ]
@@ -43,7 +55,7 @@ index ee5bbba..f69dc95 100644
  # bdist_wheel determines whether the package is pure or not based on ext_modules.
  # However, all pydevd native modules are prebuilt and packaged as data, so they
  # should not be in the list.
-@@ -121,8 +98,6 @@ with open("DESCRIPTION.md", "r") as fh:
+@@ -133,8 +110,6 @@ with open("DESCRIPTION.md", "r") as fh:
  
  
  if __name__ == "__main__":
@@ -52,7 +64,7 @@ index ee5bbba..f69dc95 100644
  
      extras = {}
      platforms = get_buildplatform()
-@@ -165,11 +140,9 @@ if __name__ == "__main__":
+@@ -179,11 +154,9 @@ if __name__ == "__main__":
              "debugpy.common",
              "debugpy.launcher",
              "debugpy.server",
@@ -65,7 +77,7 @@ index ee5bbba..f69dc95 100644
          ext_modules=ExtModules(),
          has_ext_modules=lambda: True,
 diff --git a/src/debugpy/server/__init__.py b/src/debugpy/server/__init__.py
-index e6a1ad6..a79a86b 100644
+index 642c776..947cd7d 100644
 --- a/src/debugpy/server/__init__.py
 +++ b/src/debugpy/server/__init__.py
 @@ -3,7 +3,3 @@
@@ -76,3 +88,15 @@ index e6a1ad6..a79a86b 100644
 -# "force_pydevd" must be imported first to ensure (via side effects)
 -# that the debugpy-vendored copy of pydevd gets used.
 -import debugpy._vendored.force_pydevd  # noqa
+diff --git a/src/debugpy/server/attach_pid_injected.py b/src/debugpy/server/attach_pid_injected.py
+index 6016545..9bd2e2c 100644
+--- a/src/debugpy/server/attach_pid_injected.py
++++ b/src/debugpy/server/attach_pid_injected.py
+@@ -33,7 +33,6 @@ def attach(setup):
+                 pydevd_attach_to_process_path = os.path.join(
+                     _debugpy_dir,
+                     "debugpy",
+-                    "_vendored",
+                     "pydevd",
+                     "pydevd_attach_to_process",
+                 )
