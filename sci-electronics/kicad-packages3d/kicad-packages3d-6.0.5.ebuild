@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MY_PV="${PV/_rc/-rc}"
 	MY_P="${PN}-${MY_PV}"
-    # Source directory for this package always has the repository hash in the directory name
+	# Source directory for this package always has the repository hash in the directory name
 	MY_HASH="ac7189ed55d5a3bf5eaa87d31fb97a3e7b5ad80e"
 	SRC_URI="https://gitlab.com/kicad/libraries/${PN}/-/archive/${MY_PV}/${MY_P}.tar.gz -> ${P}.tar.gz"
 
