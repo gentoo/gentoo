@@ -11,12 +11,12 @@
 # @BLURB: Eclass used to create and maintain a single group entry
 # @DESCRIPTION:
 # This eclass represents and creates a single group entry.  The name
-# of the group is derived from ${PN}, while (preferred) GID needs to
-# be specified via ACCT_GROUP_ID.  Packages (and users) needing the group
+# of the group is derived from ``${PN}``, while (preferred) GID needs to
+# be specified via ``ACCT_GROUP_ID``.  Packages (and users) needing the group
 # in question should depend on the package providing it.
 #
 # Example:
-# If your package needs group 'foo', you create 'acct-group/foo' package
+# If your package needs group 'foo', you create ``acct-group/foo`` package
 # and add an ebuild with the following contents:
 #
 # @CODE
@@ -27,10 +27,10 @@
 #
 # Then you add appropriate dependencies to your package.  Note that
 # the build system might need to resolve names, too.  The dependency
-# type(s) should be: BDEPEND if the group must be resolvable at build
-# time (e.g. 'fowners' uses it in src_install), IDEPEND if it must be
-# resolvable at install time (e.g. 'fowners' uses it in pkg_preinst),
-# and RDEPEND in every case.
+# type(s) should be: ``BDEPEND`` if the group must be resolvable at build
+# time (e.g. ``fowners`` uses it in ``src_install``), ``IDEPEND`` if it must be
+# resolvable at install time (e.g. ``fowners`` uses it in ``pkg_preinst``),
+# and ``RDEPEND`` in every case.
 
 if [[ -z ${_ACCT_GROUP_ECLASS} ]]; then
 _ACCT_GROUP_ECLASS=1
@@ -51,7 +51,7 @@ inherit user
 # @ECLASS_VARIABLE: ACCT_GROUP_NAME
 # @INTERNAL
 # @DESCRIPTION:
-# The name of the group.  This is forced to ${PN} and the policy
+# The name of the group.  This is forced to ``${PN}`` and the policy
 # prohibits it from being changed.
 ACCT_GROUP_NAME=${PN}
 readonly ACCT_GROUP_NAME
@@ -61,7 +61,7 @@ readonly ACCT_GROUP_NAME
 # @DESCRIPTION:
 # Preferred GID for the new group.  This variable is obligatory, and its
 # value must be unique across all group packages.  This can be overriden
-# in make.conf through ACCT_GROUP_<UPPERCASE_USERNAME>_ID variable.
+# in ``make.conf`` through ``ACCT_GROUP_<UPPERCASE_USERNAME>_ID`` variable.
 #
 # Overlays should set this to -1 to dynamically allocate GID.  Using -1
 # in ::gentoo is prohibited by policy.
@@ -128,7 +128,7 @@ acct-group_pkg_pretend() {
 
 # @FUNCTION: acct-group_src_install
 # @DESCRIPTION:
-# Installs sysusers.d file for the group.
+# Installs ``sysusers.d`` file for the group.
 acct-group_src_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 
