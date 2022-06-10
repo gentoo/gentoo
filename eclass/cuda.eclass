@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 case "${EAPI:-0}" in
@@ -19,11 +19,13 @@ esac
 # @BLURB: Common functions for cuda packages
 # @DESCRIPTION:
 # This eclass contains functions to be used with cuda package. Currently it is
-# setting and/or sanitizing NVCCFLAGS, the compiler flags for nvcc. This is
-# automatically done and exported in src_prepare() or manually by calling
-# cuda_sanatize.
+# setting and/or sanitizing ``NVCCFLAGS``, the compiler flags for ``nvcc``.
+# This is automatically done and exported in ``src_prepare()`` or manually by
+# calling ``cuda_sanatize``.
 # @EXAMPLE:
+# @CODE
 # inherit cuda
+# @CODE
 
 if [[ -z ${_CUDA_ECLASS} ]]; then
 
@@ -32,8 +34,8 @@ inherit flag-o-matic toolchain-funcs
 
 # @ECLASS_VARIABLE: NVCCFLAGS
 # @DESCRIPTION:
-# nvcc compiler flags (see nvcc --help), which should be used like
-# CFLAGS for c compiler
+# ``nvcc`` compiler flags (see ``nvcc --help``), which should be used like
+# ``CFLAGS`` for C compiler
 : ${NVCCFLAGS:=-O2}
 
 # @ECLASS_VARIABLE: CUDA_VERBOSE
@@ -43,7 +45,7 @@ inherit flag-o-matic toolchain-funcs
 
 # @FUNCTION: cuda_gccdir
 # @USAGE: [-f]
-# @RETURN: gcc bindir compatible with current cuda, optionally (-f) prefixed with "--compiler-bindir "
+# @RETURN: gcc bindir compatible with current cuda, optionally (``-f``) prefixed with ``--compiler-bindir``
 # @DESCRIPTION:
 # Helper for determination of the latest gcc bindir supported by
 # then current nvidia cuda toolkit.
@@ -125,8 +127,8 @@ cuda_gccdir() {
 
 # @FUNCTION: cuda_sanitize
 # @DESCRIPTION:
-# Correct NVCCFLAGS by adding the necessary reference to gcc bindir and
-# passing CXXFLAGS to underlying compiler without disturbing nvcc.
+# Correct ``NVCCFLAGS`` by adding the necessary reference to gcc bindir and
+# passing ``CXXFLAGS`` to underlying compiler without disturbing ``nvcc``.
 cuda_sanitize() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -148,7 +150,7 @@ cuda_sanitize() {
 # @USAGE: [-w]
 # @DESCRIPTION:
 # Add nvidia dev nodes to the sandbox predict list.
-# with -w, add to the sandbox write list.
+# With ``-w``, add to the sandbox write list.
 cuda_add_sandbox() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -164,7 +166,7 @@ cuda_add_sandbox() {
 
 # @FUNCTION: cuda_toolkit_version
 # @DESCRIPTION:
-# echo the installed version of dev-util/nvidia-cuda-toolkit
+# echo the installed version of ``dev-util/nvidia-cuda-toolkit``
 cuda_toolkit_version() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -176,7 +178,7 @@ cuda_toolkit_version() {
 
 # @FUNCTION: cuda_cudnn_version
 # @DESCRIPTION:
-# echo the installed version of dev-libs/cudnn
+# echo the installed version of ``dev-libs/cudnn``
 cuda_cudnn_version() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -188,7 +190,7 @@ cuda_cudnn_version() {
 
 # @FUNCTION: cuda_src_prepare
 # @DESCRIPTION:
-# Sanitise and export NVCCFLAGS by default
+# Sanitise and export ``NVCCFLAGS`` by default
 cuda_src_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
 
