@@ -368,23 +368,23 @@ cvs_fetch() {
 			# Force SSH to use SSH_ASKPASS by creating python wrapper
 
 			export CVS_RSH="${T}/cvs_sshwrapper"
-			cat > "${CVS_RSH}"<<EOF
-#!${EPREFIX}/usr/bin/python
-import fcntl
-import os
-import sys
-try:
-	fd = os.open('/dev/tty', 2)
-	TIOCNOTTY=0x5422
-	try:
-		fcntl.ioctl(fd, TIOCNOTTY)
-	except:
-		pass
-	os.close(fd)
-except:
-	pass
-newarglist = sys.argv[:]
-EOF
+			cat > "${CVS_RSH}" <<-EOF
+				#!${EPREFIX}/usr/bin/python
+				import fcntl
+				import os
+				import sys
+				try:
+					fd = os.open('/dev/tty', 2)
+					TIOCNOTTY=0x5422
+					try:
+						fcntl.ioctl(fd, TIOCNOTTY)
+					except:
+						pass
+					os.close(fd)
+				except:
+					pass
+				newarglist = sys.argv[:]
+			EOF
 
 			# disable X11 forwarding which causes .xauth access violations
 			# - 20041205 Armando Di Cianno <fafhrd@gentoo.org>
