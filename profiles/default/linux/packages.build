@@ -1,11 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file describes the packages needed to build a stage1 based on this
 # profile.  Packages in this file are built in order.
-
-# While shadow could be in here, it breaks stage 1 and stage 2 building for the
-# releases.  PLEASE DO NOT ENABLE THIS UNLESS YOU HAVE THOROUGHLY TESTED IT!
 
 app-admin/eselect
 app-arch/bzip2
