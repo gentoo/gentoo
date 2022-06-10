@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cvs.eclass
@@ -9,8 +9,8 @@
 # @DESCRIPTION:
 # This eclass provides the generic cvs fetching functions. To use this from an
 # ebuild, set the ECLASS VARIABLES as specified below in your ebuild before
-# inheriting. Then either leave the default src_unpack or extend over
-# cvs_src_unpack. If you find that you need to call the cvs_* functions
+# inheriting. Then either leave the default ``src_unpack`` or extend over
+# ``cvs_src_unpack``. If you find that you need to call the ``cvs_*`` functions
 # directly, I'd be interested to hear about it.
 
 if [[ -z ${_CVS_ECLASS} ]]; then
@@ -35,13 +35,13 @@ esac
 
 # @ECLASS_VARIABLE: ECVS_CVS_COMPRESS
 # @DESCRIPTION:
-# Set the default compression level.  Has no effect when ECVS_CVS_COMMAND
+# Set the default compression level.  Has no effect when ``ECVS_CVS_COMMAND``
 # is defined by ebuild/user.
 : ${ECVS_CVS_COMPRESS:=-z1}
 
 # @ECLASS_VARIABLE: ECVS_CVS_OPTIONS
 # @DESCRIPTION:
-# Additional options to the cvs commands.  Has no effect when ECVS_CVS_COMMAND
+# Additional options to the cvs commands.  Has no effect when ``ECVS_CVS_COMMAND``
 # is defined by ebuild/user.
 : ${ECVS_CVS_OPTIONS:=-q -f}
 
@@ -49,15 +49,15 @@ esac
 # @DESCRIPTION:
 # CVS command to run
 #
-# You can set, for example, "cvs -t" for extensive debug information
-# on the cvs connection.  The default of "cvs -q -f -z4" means to be
-# quiet, to disregard the ~/.cvsrc config file and to use maximum
+# You can set, for example, ``cvs -t`` for extensive debug information
+# on the cvs connection.  The default of ``cvs -q -f -z4`` means to be
+# quiet, to disregard the ``~/.cvsrc`` config file and to use maximum
 # compression.
 : ${ECVS_CVS_COMMAND:=cvs ${ECVS_CVS_OPTIONS} ${ECVS_CVS_COMPRESS}}
 
 # @ECLASS_VARIABLE: ECVS_UP_OPTS
 # @DESCRIPTION:
-# CVS options given after the cvs update command. Don't remove "-dP" or things
+# CVS options given after the cvs update command. Don't remove ``-dP`` or things
 # won't work.
 : ${ECVS_UP_OPTS:=-dP}
 
@@ -78,8 +78,8 @@ esac
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If this is set, the CVS module will be fetched non-recursively.
-# Refer to the information in the CVS man page regarding the -l
-# command option (not the -l global option).
+# Refer to the information in the CVS man page regarding the ``-l``
+# command option (not the ``-l`` global option).
 
 # @ECLASS_VARIABLE: ECVS_LOCALNAME
 # @DEFAULT_UNSET
@@ -92,7 +92,7 @@ esac
 #
 # WARNING: Set this only from within ebuilds!  If set in your shell or
 # some such, things will break because the ebuild won't expect it and
-# have e.g. a wrong $S setting.
+# have e.g. a wrong ``$S`` setting.
 
 # @ECLASS_VARIABLE: ECVS_TOP_DIR
 # @DESCRIPTION:
@@ -103,13 +103,13 @@ esac
 # @DESCRIPTION:
 # CVS path
 #
-# The format is "server:/dir", e.g. "anoncvs.kde.org:/home/kde".
-# Remove the other parts of the full CVSROOT, which might look like
-# ":pserver:anonymous@anoncvs.kde.org:/home/kde"; this is generated
+# The format is ``server:/dir``, e.g. ``anoncvs.kde.org:/home/kde``.
+# Remove the other parts of the full ``CVSROOT``, which might look like
+# ``:pserver:anonymous@anoncvs.kde.org:/home/kde``; this is generated
 # using other settings also.
 #
-# Set this to "offline" to disable fetching (i.e. to assume the module
-# is already checked out in ECVS_TOP_DIR).
+# Set this to ``offline`` to disable fetching (i.e. to assume the module
+# is already checked out in ``ECVS_TOP_DIR``).
 : ${ECVS_SERVER:="offline"}
 
 # @ECLASS_VARIABLE: ECVS_MODULE
@@ -118,13 +118,14 @@ esac
 # The name of the CVS module to be fetched
 #
 # This must be set when cvs_src_unpack is called.  This can include
-# several directory levels, i.e. "foo/bar/baz"
+# several directory levels, i.e. ``foo/bar/baz``
+
 #[[ -z ${ECVS_MODULE} ]] && die "$ECLASS: error: ECVS_MODULE not set, cannot continue"
 
 # @ECLASS_VARIABLE: ECVS_DATE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# The date of the checkout.  See the -D date_spec option in the cvs
+# The date of the checkout.  See the ``-D date_spec`` option in the cvs
 # man page for more details.
 
 # @ECLASS_VARIABLE: ECVS_BRANCH
@@ -132,8 +133,9 @@ esac
 # @DESCRIPTION:
 # The name of the branch/tag to use
 #
-# The default is "HEAD".  The following default _will_ reset your
+# The default is ``HEAD``.  The following default *will* reset your
 # branch checkout to head if used.
+
 #: ${ECVS_BRANCH:="HEAD"}
 
 # @ECLASS_VARIABLE: ECVS_AUTH
@@ -141,17 +143,13 @@ esac
 # @DESCRIPTION:
 # Authentication method to use
 #
-# Possible values are "pserver" and "ext".  If `ext' authentication is
-# used, the remote shell to use can be specified in CVS_RSH (SSH is
-# used by default).  Currently, the only supported remote shell for
-# `ext' authentication is SSH.
+# Possible values are ``pserver``, ``ext`` and ``no``.  If ``ext``
+# authentication is used, the remote shell to use can be specified in
+# ``CVS_RSH`` (SSH is used by default).  Currently, the only supported remote
+# shell for ``ext`` authentication is SSH.
 #
-# Armando Di Cianno <fafhrd@gentoo.org> 2004/09/27
-# - Added "no" as a server type, which uses no AUTH method, nor
-#    does it login
-#  e.g.
-#   "cvs -danoncvs@savannah.gnu.org:/cvsroot/backbone co System"
-#   ( from gnustep-apps/textedit )
+# If ``no`` authentication is used, the remote shell uses no AUTH method, nor
+# does it login.
 : ${ECVS_AUTH:="pserver"}
 
 # @ECLASS_VARIABLE: ECVS_USER
@@ -167,18 +165,18 @@ esac
 # @ECLASS_VARIABLE: ECVS_SSH_HOST_KEY
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# If SSH is used for `ext' authentication, use this variable to
+# If SSH is used for ``ext`` authentication, use this variable to
 # specify the host key of the remote server.  The format of the value
 # should be the same format that is used for the SSH known hosts file.
 #
-# WARNING: If a SSH host key is not specified using this variable, the
+# *WARNING*: If a SSH host key is not specified using this variable, the
 # remote host key will not be verified.
 
 # @ECLASS_VARIABLE: ECVS_CLEAN
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set this to get a clean copy when updating (passes the
-# -C option to cvs update)
+# ``-C`` option to cvs update)
 
 PROPERTIES+=" live"
 
@@ -197,7 +195,7 @@ fi
 
 # @FUNCTION: cvs_fetch
 # @DESCRIPTION:
-# Fetch sources from a CVS repository.  Called from cvs_src_unpack.
+# Fetch sources from a CVS repository.  Called from ``cvs_src_unpack``.
 cvs_fetch() {
 	# Make these options local variables so that the global values are
 	# not affected by modifications in this function.
@@ -465,7 +463,7 @@ EOF
 
 # @FUNCTION: cvs_src_unpack
 # @DESCRIPTION:
-# The cvs src_unpack function, which will be exported
+# The cvs ``src_unpack`` function, which will be exported
 cvs_src_unpack() {
 
 	debug-print-function ${FUNCNAME} "$@"
