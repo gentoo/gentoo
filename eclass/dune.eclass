@@ -3,7 +3,7 @@
 
 # @ECLASS: dune.eclass
 # @MAINTAINER:
-# rkitover@gmail.com
+# Rafael Kitover <rkitover@gmail.com>
 # Mark Wright <gienah@gentoo.org>
 # ML <ml@gentoo.org>
 # @AUTHOR:
@@ -11,8 +11,8 @@
 # @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Provides functions for installing Dune packages.
 # @DESCRIPTION:
-# Provides dependencies on dDne and OCaml and default src_compile, src_test and
-# src_install for Dune-based packages.
+# Provides dependencies on ``dDne`` and ``OCaml`` and default ``src_compile``,
+# ``src_test`` and ``src_install`` for Dune-based packages.
 
 # @ECLASS_VARIABLE: DUNE_PKG_NAME
 # @PRE_INHERIT
@@ -59,8 +59,8 @@ dune_src_test() {
 # @FUNCTION: dune-install
 # @USAGE: <list of packages>
 # @DESCRIPTION:
-# Installs the dune packages given as arguments. For each "${pkg}" element in
-# that list, "${pkg}.install" must be readable from "${PWD}/_build/default"
+# Installs the dune packages given as arguments. For each ``${pkg}`` element in
+# that list, ``${pkg}.install`` must be readable from ``${PWD}/_build/default``
 #
 # Example use:
 # @CODE
