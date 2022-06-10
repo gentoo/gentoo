@@ -4,7 +4,7 @@
 # @ECLASS: apache-2.eclass
 # @MAINTAINER:
 # polynomial-c@gentoo.org
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Provides a common set of functions for ``apache-2.x`` ebuilds
 # @DESCRIPTION:
 # This eclass handles ``apache-2.x`` ebuild functions such as ``LoadModule``
@@ -16,10 +16,9 @@ inherit autotools flag-o-matic lua-single multilib ssl-cert toolchain-funcs
 [[ ${CATEGORY}/${PN} != www-servers/apache ]] \
 	&& die "Do not use this eclass with anything else than www-servers/apache ebuilds!"
 
-case ${EAPI:-0} in
-	0|1|2|3|4|5|6)
-		die "This eclass is banned for EAPI<7"
-	;;
+case ${EAPI} in
+	7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} is not supported" ;;
 esac
 
 # settings which are version specific go in here:
