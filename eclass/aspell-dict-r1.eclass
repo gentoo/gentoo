@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: aspell-dict-r1.eclass
@@ -10,21 +10,21 @@
 # @SUPPORTED_EAPIS: 7 8
 # @BLURB: An eclass to streamline the construction of ebuilds for new Aspell dictionaries.
 # @DESCRIPTION:
-# The aspell-dict-r1 eclass is designed to streamline the construction of ebuilds for
-# the new Aspell dictionaries (from gnu.org) which support aspell-0.60.
-# Support for aspell-0.60 has been added by Sergey Ulanov.
+# The ``aspell-dict-r1`` eclass is designed to streamline the construction of
+# ebuilds for the new Aspell dictionaries (from gnu.org) which support
+# aspell-0.60. Support for aspell-0.60 has been added by Sergey Ulanov.
 
 # @ECLASS_VARIABLE: ASPELL_LANG
 # @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
-# Pure cleartext string that is included into DESCRIPTION.
-# This is the name of the language, for instance "Hungarian".
+# Pure cleartext string that is included into ``DESCRIPTION``.
+# This is the name of the language, for instance ``"Hungarian"``.
 # Needs to be defined before inheriting the eclass.
 
 # @ECLASS_VARIABLE: ASPELL_SPELLANG
 # @DESCRIPTION:
-# Short (readonly) form of the language code, generated from ${PN}
+# Short (readonly) form of the language code, generated from ``${PN}``
 # For instance, 'aspell-hu' yields the value 'hu'.
 readonly ASPELL_SPELLANG=${PN/aspell-/}
 
@@ -32,9 +32,11 @@ readonly ASPELL_SPELLANG=${PN/aspell-/}
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# What major version of Aspell is this dictionary for? Valid values are 5, 6 or undefined.
-# This value is used to construct SRC_URI strings.
-# If the value needs to be overridden, it needs to be overridden before inheriting the eclass.
+# What major version of Aspell is this dictionary for? Valid values are 5, 6 or
+# undefined. This value is used to construct ``SRC_URI`` strings.
+#
+# If the value needs to be overridden, it needs to be overridden before
+# inheriting the eclass.
 
 case ${EAPI:-0} in
 	[7-8])
@@ -71,7 +73,7 @@ unset _ASPELL_MAJOR_VERSION
 
 # @FUNCTION: aspell-dict-r1_src_configure
 # @DESCRIPTION:
-# The aspell-dict-r1 src_configure function which is exported.
+# The ``aspell-dict-r1`` ``src_configure`` function which is exported.
 aspell-dict-r1_src_configure() {
 	# Since it's a non-autoconf based script, 'econf' cannot be used.
 	./configure || die
@@ -79,7 +81,7 @@ aspell-dict-r1_src_configure() {
 
 # @FUNCTION: aspell-dict-r1_src_install
 # @DESCRIPTION:
-# The aspell-dict-r1 src_install function which is exported.
+# The ``aspell-dict-r1`` ``src_install`` function which is exported.
 aspell-dict-r1_src_install() {
 	default
 	[[ -s info ]] && dodoc info
