@@ -52,7 +52,7 @@ inherit gnuconfig libtool
 # @ECLASS_VARIABLE: WANT_LIBTOOL
 # @PRE_INHERIT
 # @DESCRIPTION:
-# Do you want libtool?  Valid values here are "latest" and "none".
+# Do you want libtool?  Valid values here are ``latest`` and ``none``.
 : ${WANT_LIBTOOL:=latest}
 
 # @ECLASS_VARIABLE: _LATEST_AUTOMAKE
@@ -115,7 +115,7 @@ fi
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Contains the combination of requested automake/autoconf/libtool
-# versions in *DEPEND format.
+# versions in ``*DEPEND`` format.
 AUTOTOOLS_DEPEND="${_automake_atom}
 	${_autoconf_atom}
 	${_libtool_atom}"
@@ -124,9 +124,9 @@ RDEPEND=""
 # @ECLASS_VARIABLE: AUTOTOOLS_AUTO_DEPEND
 # @PRE_INHERIT
 # @DESCRIPTION:
-# Set to 'no' to disable automatically adding to DEPEND.  This lets
-# ebuilds form conditional depends by using ${AUTOTOOLS_DEPEND} in
-# their own DEPEND string.
+# Set to ``no``` to disable automatically adding to ``DEPEND``.  This lets
+# ebuilds form conditional depends by using ``${AUTOTOOLS_DEPEND}`` in
+# their own ``DEPEND`` string.
 : ${AUTOTOOLS_AUTO_DEPEND:=yes}
 if [[ ${AUTOTOOLS_AUTO_DEPEND} != "no" ]] ; then
 	case ${EAPI} in
@@ -142,55 +142,55 @@ unset _automake_atom _autoconf_atom
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Additional options to pass to automake during
-# eautoreconf call.
+# ``eautoreconf`` call.
 : ${AM_OPTS:=}
 
 # @ECLASS_VARIABLE: AT_NOEAUTOHEADER
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Don't run eautoheader command if set to 'yes'; only used to work around
+# Don't run ``eautoheader`` command if set to ``yes``; only used to work around
 # packages that don't want their headers being modified.
 : ${AT_NOEAUTOHEADER:=}
 
 # @ECLASS_VARIABLE: AT_NOEAUTOMAKE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Don't run eautomake command if set to 'yes'; only used to workaround
+# Don't run ``eautomake`` command if set to ``yes``; only used to workaround
 # broken packages.  Generally you should, instead, fix the package to
-# not call AM_INIT_AUTOMAKE if it doesn't actually use automake.
+# not call ``AM_INIT_AUTOMAKE`` if it doesn't actually use automake.
 : ${AT_NOEAUTOMAKE:=}
 
 # @ECLASS_VARIABLE: AT_NOELIBTOOLIZE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Don't run elibtoolize command if set to 'yes',
-# useful when elibtoolize needs to be ran with
+# Don't run ``elibtoolize`` command if set to ``yes``,
+# useful when ``elibtoolize`` needs to be ran with
 # particular options
 : ${AT_NOELIBTOOLIZE:=}
 
 # @ECLASS_VARIABLE: AT_M4DIR
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Additional director(y|ies) aclocal should search
+# Additional director(y|ies) ``aclocal`` should search
 : ${AT_M4DIR:=}
 
 # @ECLASS_VARIABLE: AT_SYS_M4DIR
 # @DEFAULT_UNSET
 # @INTERNAL
 # @DESCRIPTION:
-# For system integrators, a list of additional aclocal search paths.
+# For system integrators, a list of additional ``aclocal`` search paths.
 # This variable gets eval-ed, so you can use variables in the definition
-# that may not be valid until eautoreconf & friends are run.
+# that may not be valid until ``eautoreconf`` & friends are run.
 : ${AT_SYS_M4DIR:=}
 
 # @FUNCTION: eautoreconf
 # @DESCRIPTION:
-# This function mimes the behavior of autoreconf, but uses the different
-# eauto* functions to run the tools. It doesn't accept parameters, but
-# the directory with include files can be specified with AT_M4DIR variable.
+# This function mimes the behavior of ``autoreconf``, but uses the different
+# ``eauto*`` functions to run the tools. It doesn't accept parameters, but
+# the directory with include files can be specified with ``AT_M4DIR`` variable.
 #
-# Should do a full autoreconf - normally what most people will be interested in.
-# Also should handle additional directories specified by AC_CONFIG_SUBDIRS.
+# Should do a full ``autoreconf`` - normally what most people will be interested in.
+# Also should handle additional directories specified by ``AC_CONFIG_SUBDIRS``.
 eautoreconf() {
 	local x g
 
@@ -298,8 +298,8 @@ _at_uses_libltdl()     { _at_uses_pkg LT_CONFIG_LTDL_DIR; }
 
 # @FUNCTION: eaclocal_amflags
 # @DESCRIPTION:
-# Extract the ACLOCAL_AMFLAGS value from the Makefile.am and try to handle
-# (most) of the crazy crap that people throw at us.
+# Extract the ``ACLOCAL_AMFLAGS`` value from the ``Makefile.am`` and try to
+# handle (most) of the crazy crap that people throw at us.
 eaclocal_amflags() {
 	local aclocal_opts amflags_file
 
@@ -326,11 +326,11 @@ eaclocal_amflags() {
 
 # @FUNCTION: eaclocal
 # @DESCRIPTION:
-# These functions runs the autotools using autotools_run_tool with the
+# These functions runs the autotools using ``autotools_run_tool`` with the
 # specified parametes. The name of the tool run is the same of the function
-# without e prefix.
+# without ``e`` prefix.
 # They also force installing the support files for safety.
-# Respects AT_M4DIR for additional directories to search for macros.
+# Respects ``AT_M4DIR`` for additional directories to search for macros.
 eaclocal() {
 	# Feed in a list of paths:
 	# - ${BROOT}/usr/share/aclocal
@@ -356,9 +356,10 @@ eaclocal() {
 
 # @FUNCTION: _elibtoolize
 # @DESCRIPTION:
-# Runs libtoolize.
+# Runs ``libtoolize``.
 #
-# Note the '_' prefix: avoid collision with elibtoolize() from libtool.eclass.
+# Note the ``_`` prefix: avoid collision with ``elibtoolize`` from
+# ``libtool.eclass``.
 _elibtoolize() {
 	local LIBTOOLIZE=${LIBTOOLIZE:-$(type -P glibtoolize > /dev/null && echo glibtoolize || echo libtoolize)}
 
@@ -374,7 +375,7 @@ _elibtoolize() {
 
 # @FUNCTION: eautoheader
 # @DESCRIPTION:
-# Runs autoheader.
+# Runs ``autoheader``.
 eautoheader() {
 	_at_uses_autoheader || return 0
 	autotools_run_tool --at-no-fail --at-m4flags autoheader "$@"
@@ -382,7 +383,7 @@ eautoheader() {
 
 # @FUNCTION: eautoconf
 # @DESCRIPTION:
-# Runs autoconf.
+# Runs ``autoconf``.
 eautoconf() {
 	if [[ ! -f configure.ac && ! -f configure.in ]] ; then
 		echo
@@ -418,7 +419,7 @@ eautoconf() {
 
 # @FUNCTION: eautomake
 # @DESCRIPTION:
-# Runs automake.
+# Runs ``automake``.
 eautomake() {
 	local extra_opts=()
 	local makefile_name
@@ -470,7 +471,7 @@ eautomake() {
 
 # @FUNCTION: eautopoint
 # @DESCRIPTION:
-# Runs autopoint (from the gettext package).
+# Runs ``autopoint`` (from the ``sys-devel/gettext`` package).
 eautopoint() {
 	autotools_run_tool autopoint "$@"
 }
@@ -478,9 +479,9 @@ eautopoint() {
 # @FUNCTION: config_rpath_update
 # @USAGE: [destination]
 # @DESCRIPTION:
-# Some packages utilize the config.rpath helper script, but don't
-# use gettext directly.  So we have to copy it in manually since
-# we can't let `autopoint` do it for us.
+# Some packages utilize the ``config.rpath`` helper script, but don't
+# use ``gettext`` directly.  So we have to copy it in manually since
+# we can't let ``autopoint`` do it for us.
 config_rpath_update() {
 	local dst src
 
@@ -506,7 +507,7 @@ config_rpath_update() {
 # @FUNCTION: autotools_env_setup
 # @INTERNAL
 # @DESCRIPTION:
-# Process the WANT_AUTO{CONF,MAKE} flags.
+# Process the ``WANT_AUTO{CONF,MAKE}`` flags.
 autotools_env_setup() {
 	# We do the "latest" → version switch here because it solves
 	# possible order problems, see bug #270010 as an example.
