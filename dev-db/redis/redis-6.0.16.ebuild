@@ -140,10 +140,12 @@ src_test() {
 		--skiptest "Active defrag edge case"
 	)
 
-	# Known to fail with FEATURES=usersandbox
-	if has usersandbox ${FEATURES}; then
-		ewarn "You are emerging ${P} with 'usersandbox' enabled." \
-			"Expect some test failures or emerge with 'FEATURES=-usersandbox'!"
+	if has usersandbox ${FEATURES} || ! has userpriv ${FEATURES}; then
+		ewarn "unit/oom-score-adj test will be skipped." \
+			"It is known to fail with FEATURES usersandbox or -userpriv. See bug #756382."
+
+		# unit/oom-score-adj was introduced in version 6.2.0 and it was later backported to 6.0.7
+		runtestargs+=( --skipunit unit/oom-score-adj ) # see bug #756382
 	fi
 
 	if use ssl; then
