@@ -12,7 +12,7 @@
 # @DESCRIPTION:
 # This eclass provides a uniform way of handling ebuilds which have very high
 # build requirements in terms of memory or disk space. It provides a function
-# which should usually be called during pkg_setup().
+# which should usually be called ``during pkg_setup()``.
 #
 # The chosen action only happens when the system's resources are detected
 # correctly and only if they are below the threshold specified by the package.
@@ -32,8 +32,8 @@
 #
 # @CODE
 #
-# If you don't specify a value for, say, CHECKREQS_MEMORY, then the test is not
-# carried out.
+# If you don't specify a value for, say, ``CHECKREQS_MEMORY``, then the test is
+# not carried out.
 #
 # These checks should probably mostly work on non-Linux, and they should
 # probably degrade gracefully if they don't. Probably.
@@ -51,29 +51,29 @@ _CHECK_REQS_ECLASS=1
 # @ECLASS_VARIABLE: CHECKREQS_MEMORY
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# How much RAM is needed? Eg.: CHECKREQS_MEMORY=15M
+# How much RAM is needed? Eg.: ``CHECKREQS_MEMORY=15M``
 
 # @ECLASS_VARIABLE: CHECKREQS_DISK_BUILD
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# How much diskspace is needed to build the package? Eg.: CHECKREQS_DISK_BUILD=2T
+# How much diskspace is needed to build the package? Eg.: ``CHECKREQS_DISK_BUILD=2T``
 
 # @ECLASS_VARIABLE: CHECKREQS_DISK_USR
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# How much space in /usr is needed to install the package? Eg.: CHECKREQS_DISK_USR=15G
+# How much space in /usr is needed to install the package? Eg.: ``CHECKREQS_DISK_USR=15G``
 
 # @ECLASS_VARIABLE: CHECKREQS_DISK_VAR
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# How much space is needed in /var? Eg.: CHECKREQS_DISK_VAR=3000M
+# How much space is needed in /var? Eg.: ``CHECKREQS_DISK_VAR=3000M``
 
 # @ECLASS_VARIABLE: CHECKREQS_DONOTHING
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Do not error out in _check-reqs_output if requirements are not met.
-# This is a user flag and should under _no circumstances_ be set in the ebuild.
+# Do not error out in ``_check-reqs_output`` if requirements are not met.
+# This is a user flag and should under *no circumstances* be set in the ebuild.
 [[ -n ${I_KNOW_WHAT_I_AM_DOING} ]] && CHECKREQS_DONOTHING=1
 
 # @ECLASS_VARIABLE: CHECKREQS_FAILED
@@ -84,9 +84,9 @@ _CHECK_REQS_ECLASS=1
 
 # @FUNCTION: check-reqs_pkg_setup
 # @DESCRIPTION:
-# Exported function running the resources checks in pkg_setup phase.
+# Exported function running the resources checks in ``pkg_setup`` phase.
 # It should be run in both phases to ensure condition changes between
-# pkg_pretend and pkg_setup won't affect the build.
+# ``pkg_pretend`` and ``pkg_setup`` won't affect the build.
 check-reqs_pkg_setup() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -97,7 +97,7 @@ check-reqs_pkg_setup() {
 
 # @FUNCTION: check-reqs_pkg_pretend
 # @DESCRIPTION:
-# Exported function running the resources checks in pkg_pretend phase.
+# Exported function running the resources checks in ``pkg_pretend`` phase.
 check-reqs_pkg_pretend() {
 	debug-print-function ${FUNCNAME} "$@"
 
