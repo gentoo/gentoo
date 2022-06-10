@@ -39,7 +39,7 @@ BDEPEND="
 	>=sys-apps/gawk-4.1
 "
 if [[ ${EAPI} == 6 ]]; then
-	DEPEND+="${BDEPEND}"
+	DEPEND+=" ${BDEPEND}"
 fi
 
 # @ECLASS_VARIABLE: REBAR_APP_SRC
