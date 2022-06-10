@@ -34,7 +34,7 @@ fi
 
 # @FUNCTION: bazel_get_flags
 # @DESCRIPTION:
-# Obtain and print the bazel flags for target and host *FLAGS.
+# Obtain and print the bazel flags for target and host ``*FLAGS``.
 #
 # To add more flags to this, append the flags to the
 # appropriate variable before calling this function
@@ -69,8 +69,8 @@ bazel_get_flags() {
 
 # @FUNCTION: bazel_setup_bazelrc
 # @DESCRIPTION:
-# Creates the bazelrc with common options that will be passed
-# to bazel. This will be called by ebazel automatically so
+# Creates the ``bazelrc`` with common options that will be passed
+# to bazel. This will be called by ``ebazel`` automatically so
 # does not need to be called from the ebuild.
 bazel_setup_bazelrc() {
 	if [[ -f "${T}/bazelrc" ]]; then
@@ -128,10 +128,10 @@ bazel_setup_bazelrc() {
 # @FUNCTION: ebazel
 # @USAGE: [<args>...]
 # @DESCRIPTION:
-# Run bazel with the bazelrc and output_base.
+# Run bazel with the ``bazelrc`` and ``output_base``.
 #
-# output_base will be specific to $BUILD_DIR (if unset, $S).
-# bazel_setup_bazelrc will be called and the created bazelrc
+# ``output_base`` will be specific to ``$BUILD_DIR`` (if unset, ``$S``).
+# ``bazel_setup_bazelrc`` will be called and the created bazelrc
 # will be passed to bazel.
 #
 # Will automatically die if bazel does not exit cleanly.
@@ -154,8 +154,8 @@ ebazel() {
 # Populate the bazel distdir to fetch from since it cannot use
 # the network. Bazel looks in distdir but will only look for the
 # original filename, not the possibly renamed one that portage
-# downloaded. If the line has -> we to rename it back. This also
-# handles use-conditionals that SRC_URI does.
+# downloaded. If the line has ``->`` we to rename it back. This also
+# handles use-conditionals that ``SRC_URI`` does.
 #
 # Example:
 # @CODE
