@@ -39,11 +39,6 @@
 # w/ no hope of them being upstreamed. Bug #850958.
 dev-cpp/commoncpp2
 
-# William Hubbs <williamh@gentoo.org> (2022-06-10)
-# The sysvinit use flag is broken. If this is enabled and you are
-# depending on it your system will not boot. bug #850754
-=sys-apps/openrc-0.45
-
 # Michał Górny <mgorny@gentoo.org> (2022-06-08)
 # pyroute2 is pending version bump for over 1.5 years already.
 # The tests are restricted.  pulseaudio-dlna is the only revdep.
