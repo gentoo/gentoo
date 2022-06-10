@@ -65,9 +65,6 @@ PATCHES=(
 src_prepare() {
 	default
 
-	# unstable on jemalloc
-	> tests/unit/memefficiency.tcl || die
-
 	# Copy lua modules into build dir
 	cp "${S}"/deps/lua/src/{fpconv,lua_bit,lua_cjson,lua_cmsgpack,lua_struct,strbuf}.c "${S}"/src || die
 	cp "${S}"/deps/lua/src/{fpconv,strbuf}.h "${S}"/src || die
@@ -135,6 +132,12 @@ src_compile() {
 src_test() {
 	local runtestargs=(
 		--clients "$(makeopts_jobs)" # see bug #649868
+
+		# unstable on jemalloc, see https://github.com/gentoo/gentoo/pull/15924
+		--skiptest "Active defrag"
+		--skiptest "Active defrag big keys"
+		--skiptest "Active defrag big list"
+		--skiptest "Active defrag edge case"
 	)
 
 	# Known to fail with FEATURES=usersandbox
