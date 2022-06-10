@@ -117,10 +117,18 @@ src_test() {
 		--clients "$(makeopts_jobs)" # see bug #649868
 	)
 
-	# Known to fail with FEATURES=usersandbox
-	if has usersandbox ${FEATURES}; then
-		ewarn "You are emerging ${P} with 'usersandbox' enabled." \
-			"Expect some test failures or emerge with 'FEATURES=-usersandbox'!"
+	if has usersandbox ${FEATURES} || ! has userpriv ${FEATURES}; then
+		ewarn "oom-score-adj related tests will be skipped." \
+			"They are known to fail with FEATURES usersandbox or -userpriv. See bug #756382."
+
+		runtestargs+=(
+			# unit/oom-score-adj was introduced in version 6.2.0
+			--skipunit unit/oom-score-adj # see bug #756382
+
+			# Following test was added in version 7.0.0 to unit/introspection.
+			# It also tries to adjust OOM score.
+			--skiptest "CONFIG SET rollback on apply error"
+		)
 	fi
 
 	if use ssl; then
