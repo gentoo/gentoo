@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-06-10)
+# Masked for removal on 2022-07-10. No upstream activity in a long time,
+# no reverse dependencies, and Gentoo maintains a huge number of patches
+# w/ no hope of them being upstreamed. Bug #850958.
+dev-cpp/commoncpp2
+
 # William Hubbs <williamh@gentoo.org> (2022-06-10)
 # The sysvinit use flag is broken. If this is enabled and you are
 # depending on it your system will not boot. bug #850754
