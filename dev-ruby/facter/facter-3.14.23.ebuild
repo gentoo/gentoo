@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.14.6-fix-static-libcpp-hocon.patch
 	# be explicit about the version of rspec we test with
 	"${FILESDIR}"/${PN}-3.14.8-explicit-rspec-2.patch
+	"${FILESDIR}"/${PN}-3.14.23-gcc12.patch
 )
 
 pkg_setup() {
