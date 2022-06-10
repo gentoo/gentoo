@@ -6,6 +6,6 @@
 		<name>Java</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">jwsdltck</remote-id>
+		<remote-id type="sourceforge">wsdl4j</remote-id>
 	</upstream>
 </pkgmetadata>
