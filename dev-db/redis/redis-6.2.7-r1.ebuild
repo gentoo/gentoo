@@ -67,9 +67,6 @@ PATCHES=(
 src_prepare() {
 	default
 
-	# unstable on jemalloc
-	> tests/unit/memefficiency.tcl || die
-
 	# Copy lua modules into build dir
 	#cp "${S}"/deps/lua/src/{fpconv,lua_bit,lua_cjson,lua_cmsgpack,lua_struct,strbuf}.c "${S}"/src || die
 	#cp "${S}"/deps/lua/src/{fpconv,strbuf}.h "${S}"/src || die

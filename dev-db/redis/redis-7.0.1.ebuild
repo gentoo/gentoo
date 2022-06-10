@@ -55,9 +55,6 @@ PATCHES=(
 src_prepare() {
 	default
 
-	# unstable on jemalloc
-	> tests/unit/memefficiency.tcl || die
-
 	# Append cflag for lua_cjson
 	# https://github.com/antirez/redis/commit/4fdcd213#diff-3ba529ae517f6b57803af0502f52a40bL61
 	append-cflags "-DENABLE_CJSON_GLOBAL"
