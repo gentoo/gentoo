@@ -11,18 +11,18 @@
 # @BLURB: Eclass used to create and maintain a single user entry
 # @DESCRIPTION:
 # This eclass represents and creates a single user entry.  The name
-# of the user is derived from ${PN}, while (preferred) UID needs to
-# be specified via ACCT_USER_ID.  Additional variables are provided
+# of the user is derived from ``${PN}``, while (preferred) UID needs to
+# be specified via ``ACCT_USER_ID``.  Additional variables are provided
 # to override the default home directory, shell and add group
 # membership.  Packages needing the user in question should depend
 # on the package providing it.
 #
-# The ebuild needs to call acct-user_add_deps after specifying
-# ACCT_USER_GROUPS.
+# The ebuild needs to call ``acct-user_add_deps`` after specifying
+# ``ACCT_USER_GROUPS``.
 #
 # Example:
 # If your package needs user 'foo' belonging to same-named group, you
-# create 'acct-user/foo' package and add an ebuild with the following
+# create ``acct-user/foo`` package and add an ebuild with the following
 # contents:
 #
 # @CODE
@@ -35,10 +35,10 @@
 #
 # Then you add appropriate dependencies to your package.  Note that
 # the build system might need to resolve names, too.  The dependency
-# type(s) should be: BDEPEND if the user must be resolvable at build
-# time (e.g. 'fowners' uses it in src_install), IDEPEND if it must be
-# resolvable at install time (e.g. 'fowners' uses it in pkg_preinst),
-# and RDEPEND in every case.
+# type(s) should be: ``BDEPEND`` if the user must be resolvable at build
+# time (e.g. ``fowners`` uses it in ``src_install``), ``IDEPEND`` if it must
+# be resolvable at install time (e.g. ``fowners`` uses it in ``pkg_preinst``),
+# and ``RDEPEND`` in every case.
 
 if [[ -z ${_ACCT_USER_ECLASS} ]]; then
 _ACCT_USER_ECLASS=1
@@ -59,7 +59,7 @@ inherit user
 # @ECLASS_VARIABLE: ACCT_USER_NAME
 # @INTERNAL
 # @DESCRIPTION:
-# The name of the user.  This is forced to ${PN} and the policy prohibits
+# The name of the user.  This is forced to ``${PN}`` and the policy prohibits
 # it from being changed.
 ACCT_USER_NAME=${PN}
 readonly ACCT_USER_NAME
@@ -69,7 +69,7 @@ readonly ACCT_USER_NAME
 # @DESCRIPTION:
 # Preferred UID for the new user.  This variable is obligatory, and its
 # value must be unique across all user packages.  This can be overriden
-# in make.conf through ACCT_USER_<UPPERCASE_USERNAME>_ID variable.
+# in ``make.conf`` through ``ACCT_USER_<UPPERCASE_USERNAME>_ID`` variable.
 #
 # Overlays should set this to -1 to dynamically allocate UID.  Using -1
 # in ::gentoo is prohibited by policy.
@@ -95,33 +95,33 @@ readonly ACCT_USER_NAME
 
 # @ECLASS_VARIABLE: ACCT_USER_SHELL
 # @DESCRIPTION:
-# The shell to use for the user.  If not specified, a 'nologin' variant
-# for the system is used.  This can be overriden in make.conf through
-# ACCT_USER_<UPPERCASE_USERNAME>_SHELL variable.
+# The shell to use for the user.  If not specified, a ``nologin``` variant
+# for the system is used.  This can be overriden in ``make.conf`` through
+# ``ACCT_USER_<UPPERCASE_USERNAME>_SHELL`` variable.
 : ${ACCT_USER_SHELL:=-1}
 
 # @ECLASS_VARIABLE: ACCT_USER_HOME
 # @DESCRIPTION:
-# The home directory for the user.  If not specified, /dev/null is used.
+# The home directory for the user.  If not specified, ``/dev/null`` is used.
 # The directory will be created with appropriate permissions if it does
 # not exist.  When updating, existing home directory will not be moved.
-# This can be overriden in make.conf through
-# ACCT_USER_<UPPERCASE_USERNAME>_HOME variable.
+# This can be overriden in ``make.conf`` through
+# ``ACCT_USER_<UPPERCASE_USERNAME>_HOME`` variable.
 : ${ACCT_USER_HOME:=/dev/null}
 
 # @ECLASS_VARIABLE: ACCT_USER_HOME_OWNER
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# The ownership to use for the home directory, in chown ([user][:group])
+# The ownership to use for the home directory, in ``chown ([user][:group])``
 # syntax.  Defaults to the newly created user, and its primary group.
-# This can be overriden in make.conf through
-# ACCT_USER_<UPPERCASE_USERNAME>_HOME_OWNER variable.
+# This can be overriden in ``make.conf`` through
+# ``ACCT_USER_<UPPERCASE_USERNAME>_HOME_OWNER`` variable.
 
 # @ECLASS_VARIABLE: ACCT_USER_HOME_PERMS
 # @DESCRIPTION:
-# The permissions to use for the home directory, in chmod (octal
-# or verbose) form.  This can be overriden in make.conf through
-# ACCT_USER_<UPPERCASE_USERNAME>_HOME_PERMS variable.
+# The permissions to use for the home directory, in ``chmod`` (octal
+# or verbose) form.  This can be overriden in ``make.conf`` through
+# ``ACCT_USER_<UPPERCASE_USERNAME>_HOME_PERMS`` variable.
 : ${ACCT_USER_HOME_PERMS:=0755}
 
 # @ECLASS_VARIABLE: ACCT_USER_GROUPS
@@ -131,9 +131,9 @@ readonly ACCT_USER_NAME
 # array.  The first group specified is the user's primary group, while
 # the remaining groups (if any) become supplementary groups.
 #
-# This can be overriden in make.conf through
-# ACCT_USER_<UPPERCASE_USERNAME>_GROUPS variable, or appended to
-# via ACCT_USER_<UPPERCASE_USERNAME>_GROUPS_ADD.  Please note that
+# This can be overriden in ``make.conf`` through
+# ``ACCT_USER_<UPPERCASE_USERNAME>_GROUPS`` variable, or appended to
+# via ``ACCT_USER_<UPPERCASE_USERNAME>_GROUPS_ADD``.  Please note that
 # due to technical limitations, the override variables are not arrays
 # but space-separated lists.
 
@@ -149,8 +149,8 @@ S=${WORKDIR}
 
 # @FUNCTION: acct-user_add_deps
 # @DESCRIPTION:
-# Generate appropriate RDEPEND from ACCT_USER_GROUPS.  This must be
-# called if ACCT_USER_GROUPS are set.
+# Generate appropriate ``RDEPEND`` from ``ACCT_USER_GROUPS``.  This must be
+# called if ``ACCT_USER_GROUPS`` are set.
 acct-user_add_deps() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -215,7 +215,7 @@ eislocked() {
 # Lock the specified user account, using the available platform-specific
 # functions.  This should prevent any login to the account.
 #
-# Established lock can be reverted using eunlockuser.
+# Established lock can be reverted using ``eunlockuser``.
 #
 # This function returns 0 if locking succeeded, 2 if it is not supported
 # by the platform code or dies if it fails.
@@ -369,7 +369,7 @@ acct-user_pkg_pretend() {
 # @FUNCTION: acct-user_src_install
 # @DESCRIPTION:
 # Installs a keep-file into the user's home directory to ensure it is
-# owned by the package, and sysusers.d file.
+# owned by the package, and ``sysusers.d`` file.
 acct-user_src_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 
