@@ -55,8 +55,8 @@ chromium_suid_sandbox_check_kernel_config() {
 # @USAGE:
 # @INTERNAL
 # @DESCRIPTION:
-# Converts and adds CHROMIUM_LANGS to IUSE. Called automatically if
-# CHROMIUM_LANGS is defined.
+# Converts and adds ``CHROMIUM_LANGS`` to ``IUSE``. Called automatically if
+# ``CHROMIUM_LANGS`` is defined.
 _chromium_set_l10n_IUSE() {
 	local lang
 	for lang in ${CHROMIUM_LANGS}; do
@@ -75,8 +75,8 @@ fi
 # @USAGE:
 # @DESCRIPTION:
 # Removes pak files from the current directory for languages that the user has
-# not selected via the L10N variable.
-# Also performs QA checks to ensure CHROMIUM_LANGS has been set correctly.
+# not selected via the ``L10N`` variable.
+# Also performs QA checks to ensure ``CHROMIUM_LANGS`` has been set correctly.
 chromium_remove_language_paks() {
 	local lang pak
 
@@ -115,7 +115,7 @@ chromium_remove_language_paks() {
 # @FUNCTION: chromium_pkg_die
 # @USAGE:
 # @DESCRIPTION:
-# EBUILD_DEATH_HOOK function to display some warnings/information about build environment.
+# ``EBUILD_DEATH_HOOK`` function to display some warnings/information about build environment.
 chromium_pkg_die() {
 	if [[ "${EBUILD_PHASE}" != "compile" ]]; then
 		return
