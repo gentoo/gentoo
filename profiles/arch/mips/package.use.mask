@@ -134,10 +134,6 @@ dev-python/numpydoc test
 # sys-devel/clang is not keyworded
 app-doc/doxygen clang
 
-# Sergey Popov <pinkbyte@gentoo.org> (2014-02-02)
-# media-gfx/nvidia-texture-tools is not keyworded on mips
-media-libs/devil	nvtt
-
 # Ryan Hill <dirtyepic@gentoo.org> (2014-01-07)
 # req net-libs/webkit-gtk:2
 x11-libs/wxGTK webkit

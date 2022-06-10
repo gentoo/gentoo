@@ -159,7 +159,6 @@ dev-scheme/guile -jit
 
 # Sam James <sam@gentoo.org> (2020-09-05)
 # nvidia-texture-tools not useful here
-media-libs/devil nvtt
 games-strategy/0ad nvtt
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-08-20)

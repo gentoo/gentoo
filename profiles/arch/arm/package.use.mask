@@ -120,7 +120,6 @@ app-text/atril test
 
 # Sam James <sam@gentoo.org> (2020-09-05)
 # nvidia-texture-tools not useful here
-media-libs/devil nvtt
 games-strategy/0ad nvtt
 
 # James Le Cuirot <chewi@gentoo.org> (2020-08-19)
