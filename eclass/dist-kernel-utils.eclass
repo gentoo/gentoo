@@ -54,7 +54,7 @@ dist-kernel_build_initramfs() {
 
 # @FUNCTION: dist-kernel_get_image_path
 # @DESCRIPTION:
-# Get relative kernel image path specific to the current ${ARCH}.
+# Get relative kernel image path specific to the current ``${ARCH}``.
 dist-kernel_get_image_path() {
 	case ${ARCH} in
 		amd64|x86)
@@ -84,7 +84,7 @@ dist-kernel_get_image_path() {
 # @FUNCTION: dist-kernel_install_kernel
 # @USAGE: <version> <image> <system.map>
 # @DESCRIPTION:
-# Install kernel using installkernel tool.  <version> specifies
+# Install kernel using ``installkernel`` tool.  <version> specifies
 # the kernel version, <image> full path to the image, <system.map>
 # full path to System.map.
 dist-kernel_install_kernel() {
@@ -123,12 +123,12 @@ dist-kernel_install_kernel() {
 # @USAGE: <kv-dir> <kv-full>
 # @DESCRIPTION:
 # Rebuild and install initramfs for the specified dist-kernel.
-# <kv-dir> is the kernel source directory (${KV_DIR} from linux-info),
-# while <kv-full> is the full kernel version (${KV_FULL}).
+# <kv-dir> is the kernel source directory (``${KV_DIR}`` from ``linux-info``),
+# while <kv-full> is the full kernel version (``${KV_FULL}``).
 # The function will determine whether <kernel-dir> is actually
 # a dist-kernel, and whether initramfs was used.
 #
-# This function is to be used in pkg_postinst() of ebuilds installing
+# This function is to be used in ``pkg_postinst`` of ebuilds installing
 # kernel modules that are included in the initramfs.
 dist-kernel_reinstall_initramfs() {
 	debug-print-function ${FUNCNAME} "${@}"
