@@ -227,6 +227,11 @@ src_prepare() {
 		mkdir -vp source/config/linux/ppc64 || die
 		mkdir -p source/libvpx/test || die
 		touch source/libvpx/test/test.mk || die
+		# clang-format is used to re-format sources
+		# but we'd rather make it a no-op than introduce a clang dependency
+		# https://bugs.gentoo.org/849458
+		clang-format() { : ; }
+		export -f clang-format || die
 		./generate_gni.sh || die
 		popd >/dev/null || die
 	fi
