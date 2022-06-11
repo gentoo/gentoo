@@ -1,0 +1,95 @@
+#!/sbin/openrc-run
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License, v2
+
+command="/usr/bin/sddm"
+command_background="yes"
+pidfile="/run/sddm.pid"
+retry="TERM/5/TERM/5"
+
+depend() {
+    need localmount elogind
+
+    # start as early as possible, but we can't do 'before *' as that breaks it
+    # (#139824) Start after ypbind and autofs for network authentication
+    # (#145219 #180163) Could use lirc mouse as input device
+    # (#70689 comment #92) Start after consolefont to avoid display corruption
+    # (#291269) Start after quota, since some dm need readable home
+    # (#390609) Will fail when dbus is not running
+    # (#366753) starting keymaps after X causes problems
+    after bootmisc consolefont modules netmount
+    after readahead-list ypbind autofs openvpn gpm lircmd
+    after quota keymaps
+    before alsasound
+
+    # Start before SDDM
+    use dbus xfs
+}
+
+# Check to see if something is defined on our VT
+vtstatic() {
+    if [ -e /etc/ttys ] ; then
+        grep -q "^ttyv$(($1 - 1))" /etc/ttys
+    else
+        return 1
+    fi
+
+    return
+}
+
+start_pre() {
+    # need eerror
+    . /lib/gentoo/functions.sh
+
+    if get_bootparam "nogui" ; then
+        einfo "Skipping SDDM, 'nogui' bootparam passed."
+        return 1
+    fi
+
+    if vtstatic "${CHECKVT:-7}" ; then
+        if [ "${SOFTLEVEL}" != "BOOT" ] && [ "${RC_SOFTLEVEL}" != "BOOT" ]; then
+            ewarn "Something is already defined on VT ${CHECKVT:-7}, will start X later"
+            init a >/dev/null 2>&1
+            return 0
+        else
+            eerror "Something is already defined on VT ${CHECKVT:-7}, not starting"
+            return 1
+        fi
+    fi
+
+    # We need to source /etc/profile.env for stuff like $LANG to work, bug #10190.
+    . /etc/profile.env
+
+    return 0
+}
+
+stop_pre() {
+    if [ -t 0 ]; then
+        if type fgconsole >/dev/null 2>&1; then
+            curvt=$(fgconsole 2>/dev/null)
+        else
+            curvt=$(tty)
+            case "${curvt}" in
+                /dev/ttyv[0-9]*) curvt=${curvt#/dev/ttyv} ;;
+                *) curvt= ;;
+            esac
+        fi
+    fi
+
+    return
+}
+
+stop_post() {
+    # switch back to original vt
+    if [ -n "${curvt}" ]; then
+        if type chvt >/dev/null 2>&1; then
+            chvt "${curvt}"
+        else
+            vidcontrol -s "$((curvt + 1))"
+        fi
+    fi
+
+    return
+}
+
+# vim: set ts=4 :

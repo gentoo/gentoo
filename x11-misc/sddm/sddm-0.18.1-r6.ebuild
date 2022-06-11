@@ -47,8 +47,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${P}-respect-user-flags.patch"
-	"${FILESDIR}/${P}-Xsession.patch" # bug 611210
+	"${FILESDIR}/${PN}-respect-user-flags.patch"
+	"${FILESDIR}/${PN}-Xsession.patch" # bug 611210
 	"${FILESDIR}/${PN}-0.18.0-sddmconfdir.patch"
 	# fix for groups: https://github.com/sddm/sddm/issues/1159
 	"${FILESDIR}/${P}-revert-honor-PAM-supplemental-groups.patch"

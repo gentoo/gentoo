@@ -1,0 +1,4 @@
+# We always try and start SDDM on a static VT. We do this check to ensure
+# that you haven't accidentally configured something to run on the VT
+# in your /etc/inittab file so that you don't get a dead keyboard.
+CHECKVT=7

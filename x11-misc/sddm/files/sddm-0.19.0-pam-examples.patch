@@ -1,0 +1,64 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6936b31..5e8d02d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -32,6 +32,7 @@ add_custom_target(dist COMMAND ${CMAKE_MAKE_PROGRAM} package_source)
+ option(BUILD_MAN_PAGES "Build man pages" OFF)
+ option(ENABLE_JOURNALD "Enable logging to journald" ON)
+ option(ENABLE_PAM "Enable PAM support" ON)
++option(INSTALL_PAM_EXAMPLES "Install PAM configuration examples" ON)
+ option(NO_SYSTEMD "Disable systemd support" OFF)
+ option(USE_ELOGIND "Use elogind instead of logind" OFF)
+ 
+diff --git a/services/CMakeLists.txt b/services/CMakeLists.txt
+index 5032f33..413537b 100644
+--- a/services/CMakeLists.txt
++++ b/services/CMakeLists.txt
+@@ -4,10 +4,13 @@ if(SYSTEMD_FOUND)
+     install(FILES "${CMAKE_CURRENT_BINARY_DIR}/sddm.service" DESTINATION "${SYSTEMD_SYSTEM_UNIT_DIR}")
+ endif()
+ 
++set(LOGIND_PAM_MODULE "session		optional")
+ if(USE_ELOGIND)
+-    set(LOGIND_PAM_MODULE "pam_elogind.so")
++    set(LOGIND_PAM_MODULE "${LOGIND_PAM_MODULE}	pam_elogind.so")
++elseif(NOT NO_SYSTEMD)
++    set(LOGIND_PAM_MODULE "${LOGIND_PAM_MODULE}	pam_systemd.so")
+ else()
+-    set(LOGIND_PAM_MODULE "pam_systemd.so")
++    set(LOGIND_PAM_MODULE "")
+ endif()
+ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/sddm-greeter.pam.in" "${CMAKE_CURRENT_BINARY_DIR}/sddm-greeter.pam")
+ 
+@@ -16,12 +19,14 @@ if(EXISTS "/etc/debian_version")
+     install(FILES debian.sddm-greeter.pam DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/pam.d RENAME sddm-greeter)
+     install(FILES debian.sddm.pam DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/pam.d RENAME sddm)
+ else()
+-    if(HAVE_PAM_FAILLOCK)
+-        install(FILES sddm-autologin.pam DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/pam.d RENAME sddm-autologin)
+-    else()
+-        install(FILES sddm-autologin-tally2.pam DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/pam.d RENAME sddm-autologin)
+-    endif()
++    if(INSTALL_PAM_EXAMPLES)
++        if(HAVE_PAM_FAILLOCK)
++            install(FILES sddm-autologin.pam DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/pam.d RENAME sddm-autologin)
++        else()
++            install(FILES sddm-autologin-tally2.pam DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/pam.d RENAME sddm-autologin)
++        endif()
+ 
+-    install(FILES sddm.pam DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/pam.d RENAME sddm)
+-    install(FILES "${CMAKE_CURRENT_BINARY_DIR}/sddm-greeter.pam" DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/pam.d RENAME sddm-greeter)
++        install(FILES sddm.pam DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/pam.d RENAME sddm)
++        install(FILES "${CMAKE_CURRENT_BINARY_DIR}/sddm-greeter.pam" DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/pam.d RENAME sddm-greeter)
++    endif()
+ endif()
+diff --git a/services/sddm-greeter.pam.in b/services/sddm-greeter.pam.in
+index d41792d..35dcfd5 100644
+--- a/services/sddm-greeter.pam.in
++++ b/services/sddm-greeter.pam.in
+@@ -14,4 +14,4 @@ password	required pam_deny.so
+ 
+ # Setup session
+ session		required pam_unix.so
+-session		optional @LOGIND_PAM_MODULE@
++@LOGIND_PAM_MODULE@

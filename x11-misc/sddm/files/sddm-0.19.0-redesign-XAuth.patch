@@ -1,0 +1,558 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5c891c5..a7a0102 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -74,6 +74,9 @@ add_feature_info("PAM" PAM_FOUND "PAM support")
+ include(CheckFunctionExists)
+ check_function_exists(getspnam HAVE_GETSPNAM)
+ 
++# XAU
++pkg_check_modules(LIBXAU REQUIRED "xau")
++
+ # XCB
+ find_package(XCB REQUIRED)
+ 
+diff --git a/data/man/sddm.conf.rst.in b/data/man/sddm.conf.rst.in
+index 48395b2..c605ba1 100644
+--- a/data/man/sddm.conf.rst.in
++++ b/data/man/sddm.conf.rst.in
+@@ -122,10 +122,6 @@ OPTIONS
+ 	Path of the Xephyr.
+ 	Default value is "/usr/bin/Xephyr".
+ 
+-`XauthPath=`
+-	Path of the Xauth.
+-	Default value is "/usr/bin/xauth".
+-
+ `SessionDir=`
+ 	Path of the directory containing session files.
+ 	Default value is "/usr/share/xsessions".
+@@ -140,10 +136,6 @@ OPTIONS
+         Path to the user session log file, relative to the home directory.
+         Default value is ".local/share/sddm/xorg-session.log".
+ 
+-`UserAuthFile=`
+-        Path to the Xauthority file, relative to the home directory.
+-        Default value is ".Xauthority".
+-
+ `DisplayCommand=`
+ 	Path of script to execute when starting the display server.
+ 	The script will be executed as root when General.DisplayServer
+@@ -167,6 +159,11 @@ OPTIONS
+ 	Can be either "true" or "false".
+ 	Default value is "false".
+ 
++The `XauthPath=` option is no longer necessary, libxau is used instead.
++
++The `UserAuthFile=` option was removed, the file is always created as
++`/tmp/xauth_XXXXX`. This is necessary for to the use of `FamilyWild` entries.
++
+ [Wayland] section:
+ 
+ `CompositorCommand=`
+diff --git a/data/man/sddm.rst.in b/data/man/sddm.rst.in
+index 6403368..5d2669f 100644
+--- a/data/man/sddm.rst.in
++++ b/data/man/sddm.rst.in
+@@ -34,6 +34,10 @@ Distributions without pam and systemd will need to put the **sddm** user
+ into the **video** group, otherwise errors regarding GL and drm devices
+ might be experienced.
+ 
++For X11 sessions, the cookie for X authorization is written into a
++temporary file `/tmp/xauth_XXXXXX`, owned and only accessible by the
++user.
++
+ OPTIONS
+ =======
+ 
+diff --git a/src/auth/Auth.cpp b/src/auth/Auth.cpp
+index ae767d1..d0975f3 100644
+--- a/src/auth/Auth.cpp
++++ b/src/auth/Auth.cpp
+@@ -65,7 +65,7 @@ namespace SDDM {
+         QString displayServerCmd;
+         QString sessionPath { };
+         QString user { };
+-        QString cookie { };
++        QByteArray cookie { };
+         bool autologin { false };
+         bool greeter { false };
+         QProcessEnvironment environment { };
+@@ -279,7 +279,7 @@ namespace SDDM {
+         return d->greeter;
+     }
+ 
+-    const QString& Auth::cookie() const {
++    const QByteArray& Auth::cookie() const {
+         return d->cookie;
+     }
+ 
+@@ -311,7 +311,7 @@ namespace SDDM {
+         d->environment.insert(key, value);
+     }
+ 
+-    void Auth::setCookie(const QString& cookie) {
++    void Auth::setCookie(const QByteArray& cookie) {
+         if (cookie != d->cookie) {
+             d->cookie = cookie;
+             Q_EMIT cookieChanged();
+diff --git a/src/auth/Auth.h b/src/auth/Auth.h
+index 830b91e..a11c134 100644
+--- a/src/auth/Auth.h
++++ b/src/auth/Auth.h
+@@ -54,7 +54,7 @@ namespace SDDM {
+         Q_PROPERTY(bool autologin READ autologin WRITE setAutologin NOTIFY autologinChanged)
+         Q_PROPERTY(bool greeter READ isGreeter WRITE setGreeter NOTIFY greeterChanged)
+         Q_PROPERTY(bool verbose READ verbose WRITE setVerbose NOTIFY verboseChanged)
+-        Q_PROPERTY(QString cookie READ cookie WRITE setCookie NOTIFY cookieChanged)
++        Q_PROPERTY(QByteArray cookie READ cookie WRITE setCookie NOTIFY cookieChanged)
+         Q_PROPERTY(QString user READ user WRITE setUser NOTIFY userChanged)
+         Q_PROPERTY(QString session READ session WRITE setSession NOTIFY sessionChanged)
+         Q_PROPERTY(AuthRequest* request READ request NOTIFY requestChanged)
+@@ -93,7 +93,7 @@ namespace SDDM {
+         bool autologin() const;
+         bool isGreeter() const;
+         bool verbose() const;
+-        const QString &cookie() const;
++        const QByteArray &cookie() const;
+         const QString &user() const;
+         const QString &session() const;
+         AuthRequest *request();
+@@ -158,7 +158,7 @@ namespace SDDM {
+          * Set the display server cookie, to be inserted into the user's $XAUTHORITY
+          * @param cookie cookie data
+          */
+-        void setCookie(const QString &cookie);
++        void setCookie(const QByteArray &cookie);
+ 
+     public Q_SLOTS:
+         /**
+diff --git a/src/common/Configuration.h b/src/common/Configuration.h
+index cdffde3..82e6d06 100644
+--- a/src/common/Configuration.h
++++ b/src/common/Configuration.h
+@@ -68,11 +68,9 @@ namespace SDDM {
+             Entry(ServerPath,          QString,     _S("/usr/bin/X"),                           _S("Path to X server binary"));
+             Entry(ServerArguments,     QString,     _S("-nolisten tcp"),                        _S("Arguments passed to the X server invocation"));
+             Entry(XephyrPath,          QString,     _S("/usr/bin/Xephyr"),                      _S("Path to Xephyr binary"));
+-            Entry(XauthPath,           QString,     _S("/usr/bin/xauth"),                       _S("Path to xauth binary"));
+             Entry(SessionDir,          QString,     _S("/usr/share/xsessions"),                 _S("Directory containing available X sessions"));
+             Entry(SessionCommand,      QString,     _S(SESSION_COMMAND),                        _S("Path to a script to execute when starting the desktop session"));
+-	    Entry(SessionLogFile,      QString,     _S(".local/share/sddm/xorg-session.log"),   _S("Path to the user session log file"));
+-	    Entry(UserAuthFile,        QString,     _S(".Xauthority"),                          _S("Path to the Xauthority file"));
++        Entry(SessionLogFile,      QString,     _S(".local/share/sddm/xorg-session.log"),   _S("Path to the user session log file"));
+             Entry(DisplayCommand,      QString,     _S(DATA_INSTALL_DIR "/scripts/Xsetup"),     _S("Path to a script to execute when starting the display server"));
+             Entry(DisplayStopCommand,  QString,     _S(DATA_INSTALL_DIR "/scripts/Xstop"),      _S("Path to a script to execute when stopping the display server"));
+             Entry(EnableHiDPI,         bool,        false,                                      _S("Enable Qt's automatic high-DPI scaling"));
+diff --git a/src/common/XAuth.cpp b/src/common/XAuth.cpp
+index bc7b10c..1bc461b 100644
+--- a/src/common/XAuth.cpp
++++ b/src/common/XAuth.cpp
+@@ -18,16 +18,21 @@
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ ***************************************************************************/
+ 
++#include <limits.h>
+ #include <QDebug>
+ #include <QDir>
++#include <QString>
+ #include <QUuid>
++#include <random>
++#include <sys/stat.h>
++#include <sys/types.h>
++#include <unistd.h>
++#include <X11/Xauth.h>
+ 
+ #include "Configuration.h"
+ #include "Constants.h"
+ #include "XAuth.h"
+ 
+-#include <random>
+-
+ namespace SDDM {
+ 
+ XAuth::XAuth()
+@@ -55,7 +60,7 @@ QString XAuth::authPath() const
+     return m_authPath;
+ }
+ 
+-QString XAuth::cookie() const
++QByteArray XAuth::cookie() const
+ {
+     return m_cookie;
+ }
+@@ -77,15 +82,14 @@ void XAuth::setup()
+     // Generate cookie
+     std::random_device rd;
+     std::mt19937 gen(rd());
+-    std::uniform_int_distribution<> dis(0, 15);
++    std::uniform_int_distribution<> dis(0, 0xFF);
+ 
+-    // Reseve 32 bytes
+-    m_cookie.reserve(32);
++    QByteArray m_cookie;
++    m_cookie.reserve(16);
+ 
+     // Create a random hexadecimal number
+-    const char *digits = "0123456789abcdef";
+-    for (int i = 0; i < 32; ++i)
+-        m_cookie[i] = QLatin1Char(digits[dis(gen)]);
++    for(int i = 0; i < 16; i++)
++        m_cookie[i] = dis(gen);
+ }
+ 
+ bool XAuth::addCookie(const QString &display)
+@@ -99,29 +103,61 @@ bool XAuth::addCookie(const QString &display)
+ }
+ 
+ bool XAuth::addCookieToFile(const QString &display, const QString &fileName,
+-                            const QString &cookie)
++                            const QByteArray &m_cookie)
+ {
++
+     qDebug() << "Adding cookie to" << fileName;
+ 
+-    // Touch file
+-    QFile file_handler(fileName);
+-    file_handler.open(QIODevice::Append);
+-    file_handler.close();
++    if(display.size() < 2 || display[0] != QLatin1Char(':') || m_cookie.count() != 16)
++        return false;
++
++    // The file needs 0600 permissions
++    int oldumask = umask(077);
++
++    // Truncate the file. We don't support merging like the xauth tool does.
++    FILE * const authFp = fopen(qPrintable(fileName), "wb");
++    umask(oldumask);
++    if (authFp == nullptr)
++        return false;
++
++    char localhost[HOST_NAME_MAX + 1] = "";
++    if (gethostname(localhost, HOST_NAME_MAX) < 0)
++        strcpy(localhost, "localhost");
++
++    ::Xauth auth = {};
++    char cookieName[] = "MIT-MAGIC-COOKIE-1";
+ 
+-    QString cmd = QStringLiteral("%1 -f %2 -q").arg(mainConfig.X11.XauthPath.get()).arg(fileName);
++    // Skip the ':'
++    QByteArray displayNumberUtf8 = display.midRef(1).toUtf8();
+ 
+-    // Execute xauth
+-    FILE *fp = ::popen(qPrintable(cmd), "w");
++    auth.family = FamilyLocal;
++    auth.address = localhost;
++    auth.address_length = strlen(auth.address);
++    auth.number = displayNumberUtf8.data();
++    auth.number_length = displayNumberUtf8.size();
++    auth.name = cookieName;
++    auth.name_length = sizeof(cookieName) - 1;
++    auth.data = strdup(m_cookie.data());
++    auth.data_length = m_cookie.count();
++
++    if (XauWriteAuth(authFp, &auth) == 0) {
++        fclose(authFp);
++        return false;
++    }
+ 
+-    // Check file
+-    if (!fp)
++    // Write the same entry again, just with FamilyWild
++    auth.family = FamilyWild;
++    auth.address_length = 0;
++    if (XauWriteAuth(authFp, &auth) == 0) {
++        fclose(authFp);
+         return false;
+-    fprintf(fp, "remove %s\n", qPrintable(display));
+-    fprintf(fp, "add %s . %s\n", qPrintable(display), qPrintable(cookie));
+-    fprintf(fp, "exit\n");
++    }
++
++    bool success = fflush(authFp) != EOF;
++
++    fclose(authFp);
+ 
+-    // Close pipe
+-    return pclose(fp) == 0;
++    return success;
+ }
+ 
+ } // namespace SDDM
+diff --git a/src/common/XAuth.h b/src/common/XAuth.h
+index 3e80f4e..c981bc3 100644
+--- a/src/common/XAuth.h
++++ b/src/common/XAuth.h
+@@ -34,20 +34,20 @@ public:
+     void setAuthDirectory(const QString &path);
+ 
+     QString authPath() const;
+-    QString cookie() const;
++    QByteArray cookie() const;
+ 
+     void setup();
+     bool addCookie(const QString &display);
+ 
+     static bool addCookieToFile(const QString &display,
+                                 const QString &fileName,
+-                                const QString &cookie);
++                                const QByteArray &cookie);
+ 
+ private:
+     bool m_setup = false;
+     QString m_authDir;
+     QString m_authPath;
+-    QString m_cookie;
++    QByteArray m_cookie;
+ };
+ 
+ } // namespace SDDM
+diff --git a/src/daemon/CMakeLists.txt b/src/daemon/CMakeLists.txt
+index 678a92a..7077ac0 100644
+--- a/src/daemon/CMakeLists.txt
++++ b/src/daemon/CMakeLists.txt
+@@ -2,6 +2,7 @@ include_directories(
+     "${CMAKE_SOURCE_DIR}/src/common"
+     "${CMAKE_SOURCE_DIR}/src/auth"
+     "${CMAKE_BINARY_DIR}/src/common"
++    ${LIBXAU_INCLUDE_DIRS}
+     "${LIBXCB_INCLUDE_DIR}"
+ )
+ 
+@@ -69,6 +70,7 @@ target_link_libraries(sddm
+                       Qt5::DBus
+                       Qt5::Network
+                       Qt5::Qml
++                      ${LIBXAU_LIBRARIES}
+                       ${LIBXCB_LIBRARIES})
+ if(PAM_FOUND)
+     target_link_libraries(sddm ${PAM_LIBRARIES})
+diff --git a/src/daemon/XorgDisplayServer.cpp b/src/daemon/XorgDisplayServer.cpp
+index 8d5afb3..f823618 100644
+--- a/src/daemon/XorgDisplayServer.cpp
++++ b/src/daemon/XorgDisplayServer.cpp
+@@ -61,7 +61,7 @@ namespace SDDM {
+         return QStringLiteral("x11");
+     }
+ 
+-    QString XorgDisplayServer::cookie() const {
++    const QByteArray XorgDisplayServer::cookie() const {
+         return m_xauth.cookie();
+     }
+ 
+diff --git a/src/daemon/XorgDisplayServer.h b/src/daemon/XorgDisplayServer.h
+index ebf1899..de4d75a 100644
+--- a/src/daemon/XorgDisplayServer.h
++++ b/src/daemon/XorgDisplayServer.h
+@@ -39,7 +39,7 @@ namespace SDDM {
+ 
+         QString sessionType() const;
+ 
+-        QString cookie() const;
++        const QByteArray cookie() const;
+ 
+     public slots:
+         bool start();
+diff --git a/src/helper/Backend.cpp b/src/helper/Backend.cpp
+index f1fe51e..3d3925a 100644
+--- a/src/helper/Backend.cpp
++++ b/src/helper/Backend.cpp
+@@ -74,13 +74,6 @@ namespace SDDM {
+             env.insert(QStringLiteral("SHELL"), QString::fromLocal8Bit(pw->pw_shell));
+             env.insert(QStringLiteral("USER"), QString::fromLocal8Bit(pw->pw_name));
+             env.insert(QStringLiteral("LOGNAME"), QString::fromLocal8Bit(pw->pw_name));
+-            if (env.contains(QStringLiteral("DISPLAY")) && !env.contains(QStringLiteral("XAUTHORITY"))) {
+-                // determine Xauthority path
+-                QString value = QStringLiteral("%1/%2")
+-                        .arg(QString::fromLocal8Bit(pw->pw_dir))
+-                        .arg(mainConfig.X11.UserAuthFile.get());
+-                env.insert(QStringLiteral("XAUTHORITY"), value);
+-            }
+ #if defined(Q_OS_FREEBSD)
+         /* get additional environment variables via setclassenvironment();
+             this needs to be done here instead of in UserSession::setupChildProcess
+diff --git a/src/helper/CMakeLists.txt b/src/helper/CMakeLists.txt
+index bf06c78..07fd9ff 100644
+--- a/src/helper/CMakeLists.txt
++++ b/src/helper/CMakeLists.txt
+@@ -3,6 +3,7 @@ include(CheckLibraryExists)
+ include_directories(
+     "${CMAKE_SOURCE_DIR}/src/common"
+     "${CMAKE_SOURCE_DIR}/src/auth"
++    ${LIBXAU_INCLUDE_DIRS}
+ )
+ include_directories("${CMAKE_BINARY_DIR}/src/common")
+ 
+@@ -43,7 +44,11 @@ else()
+ endif()
+ 
+ add_executable(sddm-helper ${HELPER_SOURCES})
+-target_link_libraries(sddm-helper Qt5::Network Qt5::DBus Qt5::Qml)
++target_link_libraries(sddm-helper
++                      Qt5::Network
++                      Qt5::DBus
++                      Qt5::Qml
++                      ${LIBXAU_LIBRARIES})
+ if("${CMAKE_SYSTEM_NAME}" STREQUAL "FreeBSD")
+     # On FreeBSD (possibly other BSDs as well), we want to use
+     # setusercontext() to set up the login configuration from login.conf
+@@ -74,7 +79,8 @@ add_executable(sddm-helper-start-x11user HelperStartX11User.cpp xorguserhelper.c
+                                                 ${CMAKE_SOURCE_DIR}/src/common/XAuth.cpp
+                                                 ${CMAKE_SOURCE_DIR}/src/common/SignalHandler.cpp
+                                                 )
+-target_link_libraries(sddm-helper-start-x11user Qt5::Core)
++target_link_libraries(sddm-helper-start-x11user Qt5::Core
++                                                ${LIBXAU_LIBRARIES})
+ install(TARGETS sddm-helper-start-x11user RUNTIME DESTINATION "${CMAKE_INSTALL_LIBEXECDIR}")
+ 
+ if(JOURNALD_FOUND)
+diff --git a/src/helper/HelperApp.cpp b/src/helper/HelperApp.cpp
+index d07607a..3987e58 100644
+--- a/src/helper/HelperApp.cpp
++++ b/src/helper/HelperApp.cpp
+@@ -249,7 +249,7 @@ namespace SDDM {
+         str >> m >> env >> m_cookie;
+         if (m != AUTHENTICATED) {
+             env = QProcessEnvironment();
+-            m_cookie = QString();
++            m_cookie = {};
+             qCritical() << "Received a wrong opcode instead of AUTHENTICATED:" << m;
+         }
+         return env;
+@@ -292,7 +292,7 @@ namespace SDDM {
+         return m_user;
+     }
+ 
+-    const QString& HelperApp::cookie() const {
++    const QByteArray& HelperApp::cookie() const {
+         return m_cookie;
+     }
+ 
+diff --git a/src/helper/HelperApp.h b/src/helper/HelperApp.h
+index c19f12e..f1f4dee 100644
+--- a/src/helper/HelperApp.h
++++ b/src/helper/HelperApp.h
+@@ -41,7 +41,7 @@ namespace SDDM {
+         UserSession *session();
+         Backend *backend();
+         const QString &user() const;
+-        const QString &cookie() const;
++        const QByteArray &cookie() const;
+ 
+     public slots:
+         Request request(const Request &request);
+@@ -64,7 +64,7 @@ namespace SDDM {
+         QLocalSocket *m_socket { nullptr };
+         QString m_user { };
+         // TODO: get rid of this in a nice clean way along the way with moving to user session X server
+-        QString m_cookie { };
++        QByteArray m_cookie { };
+ 
+         /*!
+          \brief Write utmp/wtmp/btmp records when a user logs in
+diff --git a/src/helper/UserSession.cpp b/src/helper/UserSession.cpp
+index 3e8d228..29bcc6f 100644
+--- a/src/helper/UserSession.cpp
++++ b/src/helper/UserSession.cpp
+@@ -23,6 +23,7 @@
+ 
+ #include "Backend.h"
+ #include "Configuration.h"
++#include "Constants.h"
+ #include "UserSession.h"
+ #include "HelperApp.h"
+ #include "VirtualTerminal.h"
+@@ -51,11 +52,37 @@ namespace SDDM {
+ 
+     bool UserSession::start() {
+         auto helper = qobject_cast<HelperApp*>(parent());
+-        QProcessEnvironment env = helper->session()->processEnvironment();
++        QProcessEnvironment env = processEnvironment();
+ 
+         bool isWaylandGreeter = false;
+         if (env.value(QStringLiteral("XDG_SESSION_TYPE")) == QLatin1String("x11")) {
+             QString command;
++            // Create the Xauthority file
++            QByteArray cookie = qobject_cast<HelperApp*>(parent())->cookie();
++            if (cookie.isEmpty())
++                return false;
++
++            // Place it into /tmp, which is guaranteed to be read/writeable by
++            // everyone while having the sticky bit set to avoid messing with
++            // other's files.
++            m_xauthFile.setFileTemplate(QStringLiteral("/tmp/xauth_XXXXXX"));
++
++            if (!m_xauthFile.open()) {
++                qCritical() << "Could not create the Xauthority file";
++                return false;
++            }
++
++            QString display = processEnvironment().value(QStringLiteral("DISPLAY"));
++            qDebug() << "Adding cookie to" << m_xauthFile.fileName();
++
++            if (!XAuth::addCookieToFile(m_xauthFile.fileName(), display, cookie)) {
++                qCritical() << "Failed to write the Xauthority file";
++                m_xauthFile.close();
++                return false;
++            }
++
++            env.insert(QStringLiteral("XAUTHORITY"), m_xauthFile.fileName());
++            setProcessEnvironment(env);
+             if (env.value(QStringLiteral("XDG_SESSION_CLASS")) == QLatin1String("greeter")) {
+                 command = m_path;
+             } else {
+@@ -234,6 +261,12 @@ namespace SDDM {
+         }
+         qputenv("XDG_RUNTIME_DIR", QByteArrayLiteral("/run/user/") + QByteArray::number(pw.pw_uid));
+ 
++        const int xauthHandle = m_xauthFile.handle();
++        if (xauthHandle != -1 && fchown(xauthHandle, pw.pw_uid, pw.pw_gid) != 0) {
++            qCritical() << "fchown failed for" << m_xauthFile.fileName();
++            exit(Auth::HELPER_OTHER_ERROR);
++        }
++
+         if (setgid(pw.pw_gid) != 0) {
+             qCritical() << "setgid(" << pw.pw_gid << ") failed for user: " << username;
+             exit(Auth::HELPER_OTHER_ERROR);
+@@ -285,21 +318,6 @@ namespace SDDM {
+                 qWarning() << "Could not redirect stdout";
+             }
+         }
+-
+-        // set X authority for X11 sessions only
+-        if (x11UserSession) {
+-            QString cookie = qobject_cast<HelperApp*>(parent())->cookie();
+-            if (!cookie.isEmpty()) {
+-                QString file = processEnvironment().value(QStringLiteral("XAUTHORITY"));
+-                QString display = processEnvironment().value(QStringLiteral("DISPLAY"));
+-
+-                // Create the path
+-                QFileInfo finfo(file);
+-                QDir().mkpath(finfo.absolutePath());
+-
+-                XAuth::addCookieToFile(display, file, cookie);
+-            }
+-        }
+     }
+ 
+     qint64 UserSession::cachedProcessId() {
+diff --git a/src/helper/UserSession.h b/src/helper/UserSession.h
+index bcc286b..fa0a098 100644
+--- a/src/helper/UserSession.h
++++ b/src/helper/UserSession.h
+@@ -24,6 +24,7 @@
+ 
+ #include <QtCore/QObject>
+ #include <QtCore/QProcess>
++#include <QtCore/QTemporaryFile>
+ 
+ namespace SDDM {
+     class HelperApp;
+@@ -62,6 +63,7 @@ namespace SDDM {
+         void setup();
+ 
+         QString m_path { };
++        QTemporaryFile m_xauthFile;
+         QString m_displayServerCmd;
+ 
+         /*!

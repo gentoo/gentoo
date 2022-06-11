@@ -14,6 +14,9 @@
 		and beautiful. It uses modern technologies like QtQuick, which
 		gives the designer the ability to create smooth, animated UIs.
 	</longdescription>
+	<use>
+		<flag name="openrc-init">Install SDDM init.d and conf.d files for use with openrc-init</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">sddm/sddm</remote-id>
 	</upstream>
