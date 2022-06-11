@@ -67,6 +67,9 @@ src_prepare() {
 	# xfail_strict fails on py3.10
 	sed -i -e '/--cov/d' -e '/xfail_strict/d' setup.cfg || die
 
+	# which(1)...
+	sed -i -e 's:which:command -v:' Makefile || die
+
 	distutils-r1_src_prepare
 }
 
