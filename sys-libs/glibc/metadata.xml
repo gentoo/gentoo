@@ -17,6 +17,7 @@
  <flag name="multilib-bootstrap">Provide prebuilt libgcc.a and crt files if missing. Only needed for ABI switch.</flag>
  <flag name="nscd">Build, and enable support for, the Name Service Cache Daemon</flag>
  <flag name="ssp">protect stack of glibc internals</flag>
+ <flag name="stack-realign">Realign the stack in the 32-bit build for compatibility with older binaries at slight performance cost</flag>
  <flag name="static-pie">Enable static PIE support (runtime files for -static-pie gcc option).</flag>
  <flag name="suid">Make internal pt_chown helper setuid -- not needed if using Linux and have /dev/pts mounted with gid=5</flag>
  <flag name="systemtap">enable systemtap static probe points</flag>
