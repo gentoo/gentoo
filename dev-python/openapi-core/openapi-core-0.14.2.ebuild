@@ -39,6 +39,7 @@ BDEPEND="test? (
 	dev-python/django[${PYTHON_USEDEP}]
 	dev-python/djangorestframework[${PYTHON_USEDEP}]
 	dev-python/flask[${PYTHON_USEDEP}]
+	dev-python/mock[${PYTHON_USEDEP}]
 	dev-python/responses[${PYTHON_USEDEP}]
 	dev-python/webob[${PYTHON_USEDEP}]
 )"
