@@ -55,11 +55,6 @@ net-libs/ngtcp2 openssl
 # Needs masked version of ogre (>=1.12), bug #825330
 >=dev-games/mygui-3.4.1 ogre
 
-# Sam James <sam@gentoo.org> (2022-02-21)
-# Needs build system love to make LLVM support work.
-# bug #745915
-sci-libs/symengine llvm
-
 # Marek Szuba <marecki@gentoo.org> (2022-02-07)
 # Deprecated back-end with known stability and data-corruption issues,
 # likely to be removed in gramps-5.2.0.
