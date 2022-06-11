@@ -14,7 +14,6 @@
 	</slots>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:artifex:gpl_ghostscript</remote-id>
-		<remote-id type="sourceforge">djvu</remote-id>
 		<remote-id type="github">ArtifexSoftware/ghostpdl-downloads</remote-id>
 	</upstream>
 	<use>
