@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (2022-06-25)
+# Allow stack to be realigned for compatibility with older 32-bit binaries.
+sys-libs/glibc -stack-realign
+
 # Unmask media-libs/libxmp here
 media-sound/qmmp -xmp
 
