@@ -3,8 +3,9 @@
 
 EAPI=8
 
-CHROMIUM_VERSION="100"
+CHROMIUM_VERSION="102"
 CHROMIUM_LANGS="
+	af
 	am
 	ar
 	bg
@@ -55,6 +56,7 @@ CHROMIUM_LANGS="
 	th
 	tr
 	uk
+	ur
 	vi
 	zh-CN
 	zh-TW
