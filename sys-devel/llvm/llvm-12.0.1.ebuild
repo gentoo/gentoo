@@ -65,7 +65,7 @@ PDEPEND="sys-devel/llvm-common
 	gold? ( >=sys-devel/llvmgold-${SLOT} )"
 
 LLVM_COMPONENTS=( llvm )
-LLVM_MANPAGES=pregenerated
+LLVM_MANPAGES=1
 LLVM_PATCHSET=12.0.1
 llvm.org_set_globals
 
