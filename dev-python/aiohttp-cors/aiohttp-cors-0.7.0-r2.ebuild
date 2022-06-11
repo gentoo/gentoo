@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
@@ -28,10 +28,12 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-# https://github.com/aio-libs/aiohttp-cors/pull/278
 PATCHES=(
+	# https://github.com/aio-libs/aiohttp-cors/pull/278
 	"${FILESDIR}/${P}-tests.patch"
 	"${FILESDIR}/${P}-py3_7.patch"
+	# https://github.com/aio-libs/aiohttp-cors/pull/412
+	"${FILESDIR}/${P}-py3_11.patch"
 )
 
 src_prepare() {
