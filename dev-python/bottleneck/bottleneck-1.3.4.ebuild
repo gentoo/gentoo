@@ -26,9 +26,6 @@ RDEPEND="
 	>=dev-python/numpy-1.9.1[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
-	dev-python/versioneer[${PYTHON_USEDEP}]
-"
 
 distutils_enable_tests pytest
 
