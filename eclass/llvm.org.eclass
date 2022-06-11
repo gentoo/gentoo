@@ -193,8 +193,15 @@ llvm.org_set_globals() {
 		[[ ${PV} != ${_LLVM_MASTER_MAJOR}.* ]] &&
 			EGIT_BRANCH="release/${PV%%.*}.x"
 	elif [[ ${_LLVM_SOURCE_TYPE} == tar ]]; then
-		SRC_URI+="
-			https://github.com/llvm/llvm-project/archive/llvmorg-${PV/_/-}.tar.gz"
+		if ver_test -ge 14.0.5; then
+			SRC_URI+="
+				https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV}/llvm-project-${PV}.src.tar.xz
+			"
+		else
+			SRC_URI+="
+				https://github.com/llvm/llvm-project/archive/llvmorg-${PV/_/-}.tar.gz
+			"
+		fi
 	else
 		die "Invalid _LLVM_SOURCE_TYPE: ${LLVM_SOURCE_TYPE}"
 	fi
@@ -281,10 +288,20 @@ llvm.org_src_unpack() {
 		default_src_unpack
 	else
 		local archive=llvmorg-${PV/_/-}.tar.gz
+		if ver_test -ge 14.0.5; then
+			archive=llvm-project-${PV/_/-}.src.tar.xz
+		fi
+
 		ebegin "Unpacking from ${archive}"
-		tar -x -z -o --strip-components 1 \
-			-f "${DISTDIR}/${archive}" \
-			"${components[@]/#/llvm-project-${archive%.tar*}/}" || die
+		if ver_test -ge 14.0.5; then
+			tar -x -J -o --strip-components 1 \
+				-f "${DISTDIR}/${archive}" \
+				"${components[@]/#/${archive%.tar*}/}" || die
+		else
+			tar -x -z -o --strip-components 1 \
+				-f "${DISTDIR}/${archive}" \
+				"${components[@]/#/llvm-project-${archive%.tar*}/}" || die
+		fi
 		eend ${?}
 
 		# unpack all remaining distfiles
