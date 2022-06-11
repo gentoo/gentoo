@@ -1001,10 +1001,10 @@ chromium_profile() {
 	rm -rf "${1}" || return 1
 
 	if ! "${EPYTHON}" ./chromium_profiler.py \
-	     --chrome-executable "${S}/out/Release/chrome" \
-	     --chromedriver-executable "${S}/out/Release/chromedriver.unstripped" \
-	     --add-arg no-sandbox --add-arg disable-dev-shm-usage \
-	     --profile-output "${1}"; then
+		--chrome-executable "${S}/out/Release/chrome" \
+		--chromedriver-executable "${S}/out/Release/chromedriver.unstripped" \
+		--add-arg no-sandbox --add-arg disable-dev-shm-usage \
+		--profile-output "${1}"; then
 		eerror "Profiling failed"
 		return 1
 	fi
