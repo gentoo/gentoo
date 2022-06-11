@@ -132,7 +132,7 @@ src_prepare() {
 
 	append-flags $(test-flags-CC -Wa,--noexecstack)
 
-	# Prefixify Configure shebang (#141906)
+	# Prefixify Configure shebang (bug #141906)
 	sed \
 		-e "1s,/usr/bin/env,${EPREFIX}&," \
 		-i Configure || die
@@ -180,9 +180,10 @@ multilib_src_configure() {
 	local krb5=$(has_version app-crypt/mit-krb5 && echo "MIT" || echo "Heimdal")
 
 	# See if our toolchain supports __uint128_t.  If so, it's 64bit
-	# friendly and can use the nicely optimized code paths. #460790
+	# friendly and can use the nicely optimized code paths, bug #460790.
 	local ec_nistp_64_gcc_128
-	# Disable it for now though #469976
+
+	# Disable it for now though (bug #469976)
 	# echo "__uint128_t i;" > "${T}"/128.c
 	# if ${CC} ${CFLAGS} -c "${T}"/128.c -o /dev/null >&/dev/null ; then
 	# 	ec_nistp_64_gcc_128="enable-ec_nistp_64_gcc_128"
