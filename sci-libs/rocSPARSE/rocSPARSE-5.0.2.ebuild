@@ -59,7 +59,8 @@ RESTRICT="!test? ( test )"
 S="${WORKDIR}/rocSPARSE-rocm-${PV}"
 
 PATCHES=( "${FILESDIR}/${PN}-5.0.2-remove-matrices-unpacking.patch"
-	"${FILESDIR}/${PN}-5.0.2-enable-gfx1031.patch" )
+	"${FILESDIR}/${PN}-5.0.2-enable-gfx1031.patch"
+	"${FILESDIR}/${PN}-5.0.2-remove-incorrect-assert.patch" )
 
 python_check_deps() {
 	if use test; then
