@@ -30,8 +30,8 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.7.0-cmake-build-type.patch"
-	"${FILESDIR}/${PN}-0.8.1-fix_llvm.patch"
+	"${FILESDIR}"/${PN}-0.7.0-cmake-build-type.patch
+	"${FILESDIR}"/${PN}-0.8.1-fix_llvm.patch
 )
 
 pkg_pretend() {
