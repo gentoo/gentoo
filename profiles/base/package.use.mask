@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# James Le Cuirot <chewi@gentoo.org> (2022-06-11)
+# This flag concerns an x86-specific problem.
+sys-libs/glibc stack-realign
+
 # Michał Górny <mgorny@gentoo.org> (2022-06-02)
 # dev-python/jaraco-packaging is masked for removal.  Bug #834534.
 dev-python/jaraco-classes doc
