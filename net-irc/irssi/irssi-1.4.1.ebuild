@@ -70,7 +70,5 @@ src_install() {
 
 	use perl && perl_delete_localpod
 
-	rm -f "${ED}"/usr/$(get_libdir)/irssi/modules/*.{a,la} || die
-
 	dodoc AUTHORS ChangeLog README.md TODO NEWS
 }
