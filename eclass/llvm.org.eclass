@@ -72,6 +72,10 @@ fi
 
 inherit multiprocessing
 
+if ver_test -ge 14.0.5; then
+	inherit verify-sig
+fi
+
 
 # == control variables ==
 
@@ -196,7 +200,16 @@ llvm.org_set_globals() {
 		if ver_test -ge 14.0.5; then
 			SRC_URI+="
 				https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV}/llvm-project-${PV}.src.tar.xz
+				verify-sig? (
+					https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV}/llvm-project-${PV}.src.tar.xz.sig
+				)
 			"
+			BDEPEND+="
+				verify-sig? (
+					sec-keys/openpgp-keys-llvm
+				)
+			"
+			VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/llvm.asc
 		else
 			SRC_URI+="
 				https://github.com/llvm/llvm-project/archive/llvmorg-${PV/_/-}.tar.gz
@@ -290,6 +303,10 @@ llvm.org_src_unpack() {
 		local archive=llvmorg-${PV/_/-}.tar.gz
 		if ver_test -ge 14.0.5; then
 			archive=llvm-project-${PV/_/-}.src.tar.xz
+			if use verify-sig; then
+				verify-sig_verify_detached \
+					"${DISTDIR}/${archive}" "${DISTDIR}/${archive}.sig"
+			fi
 		fi
 
 		ebegin "Unpacking from ${archive}"
