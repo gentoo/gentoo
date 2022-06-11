@@ -711,7 +711,22 @@ linux-mod_src_install() {
 		einfo "Installing ${modulename} module"
 		cd "${objdir}" || die "${objdir} does not exist"
 		insinto "${INSTALL_MOD_PATH}"/lib/modules/${KV_FULL}/${libdir}
-		doins ${modulename}.${KV_OBJ} || die "doins ${modulename}.${KV_OBJ} failed"
+
+		# check here for CONFIG_MODULE_COMPRESS_<compression option> (NONE, GZIP, XZ, ZSTD) 
+		# and similarily compress the module being built if != NONE.
+
+		if linux_chkconfig_present MODULE_COMPRESS_XZ; then
+			xz ${modulename}.${KV_OBJ} 
+			doins ${modulename}.${KV_OBJ}.xz || die "doins ${modulename}.${KV_OBJ}.xz failed"
+		elif linux_chkconfig_present MODULE_COMPRESS_GZIP; then
+			gzip ${modulename}.${KV_OBJ}
+			doins ${modulename}.${KV_OBJ}.gz || die "doins ${modulename}.${KV_OBJ}.gz failed"
+		elif linux_chkconfig_present MODULE_COMPRESS_ZSTD; then
+			zstd ${modulename}.${KV_OBJ}
+			doins ${modulename}.${KV_OBJ}.zst || die "doins ${modulename}.${KV_OBJ}.zst failed"
+		else
+			doins ${modulename}.${KV_OBJ} || die "doins ${modulename}.${KV_OBJ} failed"
+		fi
 		cd "${OLDPWD}"
 
 		generate_modulesd "${objdir}/${modulename}"
