@@ -16,9 +16,10 @@ KEYWORDS="~amd64"
 IUSE="+compat test"
 
 DEPEND="app-arch/bzip2
-app-arch/zstd
-app-arch/xz-utils
-dev-libs/openssl:="
+	app-arch/zstd
+	app-arch/xz-utils
+	dev-libs/openssl:=
+	|| ( sys-libs/zlib sys-libs/zlib-ng )"
 RDEPEND="${DEPEND}"
 
 src_configure() {
