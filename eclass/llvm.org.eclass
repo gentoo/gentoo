@@ -229,9 +229,7 @@ llvm.org_set_globals() {
 	if [[ ${LLVM_MANPAGES} ]]; then
 		# use pregenerated tarball for releases
 		# up to _LLVM_NEWEST_MANPAGE_RELEASE
-		if [[ ${_LLVM_SOURCE_TYPE} == tar ]] &&
-			ver_test "${PV}" -le "${_LLVM_NEWEST_MANPAGE_RELEASE}"
-		then
+		if llvm_manpage_dist_available; then
 			IUSE+=" doc"
 			SRC_URI+="
 				!doc? (
@@ -394,12 +392,13 @@ get_lit_flags() {
 	echo "-vv;-j;${LIT_JOBS:-$(makeopts_jobs)}"
 }
 
-# @FUNCTION: llvm_are_manpages_built
+# @FUNCTION: llvm_manpage_dist_available
 # @DESCRIPTION:
-# Return true (0) if manpages are going to be built from source,
-# false (1) if preinstalled manpages will be used.
-llvm_are_manpages_built() {
-	use doc || [[ ${LLVM_MANPAGES} == build ]]
+# Return true (0) if this LLVM version features prebuilt manpage
+# tarball, false (1) otherwise.
+llvm_manpage_dist_available() {
+	[[ ${_LLVM_SOURCE_TYPE} == tar ]] &&
+		ver_test "${PV}" -le "${_LLVM_NEWEST_MANPAGE_RELEASE}"
 }
 
 # @FUNCTION: llvm_install_manpages
@@ -407,7 +406,7 @@ llvm_are_manpages_built() {
 # Install pregenerated manpages if available.  No-op otherwise.
 llvm_install_manpages() {
 	# install pre-generated manpages
-	if ! llvm_are_manpages_built; then
+	if ! use doc && llvm_manpage_dist_available; then
 		# (doman does not support custom paths)
 		insinto "/usr/lib/llvm/${SLOT}/share/man/man1"
 		doins "${WORKDIR}/llvm-${PV}-manpages/${LLVM_COMPONENTS[0]}"/*.1
