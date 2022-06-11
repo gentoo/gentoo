@@ -13,7 +13,7 @@ LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE="+compat"
+IUSE="+compat test"
 
 DEPEND="app-arch/bzip2
 app-arch/zstd

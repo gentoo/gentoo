@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="github">inikep/lz5</remote-id>
+	</upstream>
+	<use>
+		<flag name=compat>remain compatible with <pkg>sys-libs/zlib[minizip]</pkg></flag>
+	</use>
+</pkgmetadata>
