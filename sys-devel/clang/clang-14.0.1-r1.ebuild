@@ -51,7 +51,7 @@ LLVM_COMPONENTS=(
 	clang clang-tools-extra cmake
 	llvm/lib/Transforms/Hello
 )
-LLVM_MANPAGES=pregenerated
+LLVM_MANPAGES=1
 LLVM_TEST_COMPONENTS=(
 	llvm/lib/Testing/Support
 	llvm/utils/{lit,llvm-lit,unittest}
