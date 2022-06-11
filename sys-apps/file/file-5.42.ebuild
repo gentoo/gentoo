@@ -50,6 +50,7 @@ BDEPEND+="
 
 PATCHES=(
 	"${FILESDIR}/file-5.39-portage-sandbox.patch" #713710 #728978
+	"${FILESDIR}/file-5.40-seccomp-fstatat64-musl.patch" #789336, not upstream yet
 )
 
 src_prepare() {
@@ -145,7 +146,7 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	dodoc ChangeLog MAINT README
+	dodoc ChangeLog MAINT # README
 
 	# Required for `file -C`
 	insinto /usr/share/misc/magic
