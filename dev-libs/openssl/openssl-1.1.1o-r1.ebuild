@@ -4,80 +4,62 @@
 EAPI=7
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/openssl.org.asc
-inherit edo flag-o-matic linux-info toolchain-funcs multilib-minimal multiprocessing verify-sig
-
-DESCRIPTION="Robust, full-featured Open Source Toolkit for the Transport Layer Security (TLS)"
-HOMEPAGE="https://www.openssl.org/"
+inherit edo flag-o-matic toolchain-funcs multilib-minimal verify-sig
 
 MY_P=${P/_/-}
+DESCRIPTION="full-strength general purpose cryptography library (including SSL and TLS)"
+HOMEPAGE="https://www.openssl.org/"
+SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-test-fixes-expiry.patch.xz
+	verify-sig? ( mirror://openssl/source/${MY_P}.tar.gz.asc )"
+S="${WORKDIR}/${MY_P}"
 
-if [[ ${PV} == 9999 ]] ; then
-	EGIT_REPO_URI="https://github.com/openssl/openssl.git"
-
-	inherit git-r3
-else
-	SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
-		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-test-fixes-expiry.patch.xz
-		verify-sig? ( mirror://openssl/source/${MY_P}.tar.gz.asc )"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x86-linux"
+LICENSE="openssl"
+SLOT="0/1.1" # .so version of libssl/libcrypto
+if [[ ${PV} != *_pre* ]] ; then
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 fi
-
-S="${WORKDIR}"/${MY_P}
-
-LICENSE="Apache-2.0"
-SLOT="0/3" # .so version of libssl/libcrypto
-IUSE="+asm cpu_flags_x86_sse2 fips ktls rfc3779 sctp static-libs test tls-compression vanilla verify-sig weak-ssl-ciphers"
+IUSE="+asm rfc3779 sctp cpu_flags_x86_sse2 sslv3 static-libs test tls-compression tls-heartbeat vanilla verify-sig weak-ssl-ciphers"
 RESTRICT="!test? ( test )"
 
-COMMON_DEPEND="
-	>=app-misc/c_rehash-1.7-r1
-	tls-compression? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
-"
+RDEPEND=">=app-misc/c_rehash-1.7-r1
+	tls-compression? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-lang/perl-5
 	sctp? ( >=net-misc/lksctp-tools-1.0.12 )
 	test? (
 		sys-apps/diffutils
 		sys-devel/bc
-		sys-process/procps
+		kernel_linux? ( sys-process/procps )
 	)
 	verify-sig? ( sec-keys/openpgp-keys-openssl )"
-
-DEPEND="${COMMON_DEPEND}"
-RDEPEND="${COMMON_DEPEND}"
 PDEPEND="app-misc/ca-certificates"
 
+# force upgrade to prevent broken login, bug #696950
+RDEPEND+=" !<net-misc/openssh-8.0_p1-r3"
+
 MULTILIB_WRAPPED_HEADERS=(
-	/usr/include/openssl/configuration.h
+	usr/include/openssl/opensslconf.h
 )
 
 PATCHES=(
 	# General patches which are suitable to always apply
 	# If they're Gentoo specific, add to USE=-vanilla logic in src_prepare!
+	"${FILESDIR}"/${PN}-1.1.0j-parallel_install_fix.patch #671602
+	"${FILESDIR}"/${PN}-1.1.1i-riscv32.patch
 	"${WORKDIR}"/${P}-test-fixes-expiry.patch
 )
 
 pkg_setup() {
-	if use ktls ; then
-		if kernel_is -lt 4 18 ; then
-			ewarn "Kernel implementation of TLS (USE=ktls) requires kernel >=4.18!"
-		else
-			CONFIG_CHECK="~TLS ~TLS_DEVICE"
-			ERROR_TLS="You will be unable to offload TLS to kernel because CONFIG_TLS is not set!"
-			ERROR_TLS_DEVICE="You will be unable to offload TLS to kernel because CONFIG_TLS_DEVICE is not set!"
-
-			linux-info_pkg_setup
-		fi
-	fi
-
 	[[ ${MERGE_TYPE} == binary ]] && return
 
 	# must check in pkg_setup; sysctl doesn't work with userpriv!
-	if use test && use sctp ; then
+	if use test && use sctp; then
 		# test_ssl_new will fail with "Ensure SCTP AUTH chunks are enabled in kernel"
 		# if sctp.auth_enable is not enabled.
 		local sctp_auth_status=$(sysctl -n net.sctp.auth_enable 2>/dev/null)
-		if [[ -z "${sctp_auth_status}" ]] || [[ ${sctp_auth_status} != 1 ]] ; then
+		if [[ -z "${sctp_auth_status}" ]] || [[ ${sctp_auth_status} != 1 ]]; then
 			die "FEATURES=test with USE=sctp requires net.sctp.auth_enable=1!"
 		fi
 	fi
@@ -113,9 +95,10 @@ src_prepare() {
 
 	default
 
-	if use test && use sctp && has network-sandbox ${FEATURES} ; then
-		einfo "Disabling test '80-test_ssl_new.t' which is known to fail with FEATURES=network-sandbox ..."
+	if use test && use sctp && has network-sandbox ${FEATURES}; then
+		ebegin "Disabling test '80-test_ssl_new.t' which is known to fail with FEATURES=network-sandbox"
 		rm test/recipes/80-test_ssl_new.t || die
+		eend $?
 	fi
 
 	# - Make sure the man pages are suffixed (bug #302165)
@@ -146,11 +129,13 @@ src_prepare() {
 	filter-flags -fstrict-aliasing
 	append-flags -fno-strict-aliasing
 
+	append-cppflags -DOPENSSL_NO_BUF_FREELISTS
+
 	append-flags $(test-flags-CC -Wa,--noexecstack)
 
-	# Prefixify Configure shebang (bug #141906)
+	# Prefixify Configure shebang (#141906)
 	sed \
-		-e "1s,/usr/bin/env,${BROOT}&," \
+		-e "1s,/usr/bin/env,${EPREFIX}&," \
 		-i Configure || die
 
 	# Remove test target when FEATURES=test isn't set
@@ -160,7 +145,21 @@ src_prepare() {
 			-i Configure || die
 	fi
 
-	# The config script does stupid stuff to prompt the user. Kill it.
+	if use prefix && [[ ${CHOST} == *-solaris* ]] ; then
+		# use GNU ld full option, not to confuse it on Solaris
+		sed -i \
+			-e 's/-Wl,-M,/-Wl,--version-script=/' \
+			-e 's/-Wl,-h,/-Wl,--soname=/' \
+			Configurations/10-main.conf || die
+
+		# fix building on Solaris 10
+		# https://github.com/openssl/openssl/issues/6333
+		sed -i \
+			-e 's/-lsocket -lnsl -ldl/-lsocket -lnsl -ldl -lrt/' \
+			Configurations/10-main.conf || die
+	fi
+
+	# The config script does stupid stuff to prompt the user.  Kill it.
 	sed -i '/stty -icanon min 0 time 50; read waste/d' config || die
 	./config --test-sanity || die "I AM NOT SANE"
 
@@ -181,12 +180,24 @@ multilib_src_configure() {
 
 	local krb5=$(has_version app-crypt/mit-krb5 && echo "MIT" || echo "Heimdal")
 
+	# See if our toolchain supports __uint128_t.  If so, it's 64bit
+	# friendly and can use the nicely optimized code paths. #460790
+	local ec_nistp_64_gcc_128
+	# Disable it for now though #469976
+	# echo "__uint128_t i;" > "${T}"/128.c
+	# if ${CC} ${CFLAGS} -c "${T}"/128.c -o /dev/null >&/dev/null ; then
+	# 	ec_nistp_64_gcc_128="enable-ec_nistp_64_gcc_128"
+	# fi
+
 	local sslout=$(./gentoo.config)
-	einfo "Using configuration: ${sslout:-(openssl knows best)}"
+	einfo "Use configuration ${sslout:-(openssl knows best)}"
 	local config="Configure"
 	[[ -z ${sslout} ]] && config="config"
 
-	# https://github.com/openssl/openssl/blob/master/INSTALL.md#enable-and-disable-features
+	# "disable-deprecated" option breaks too many consumers.
+	# Don't set it without thorough revdeps testing.
+	# Make sure user flags don't get added *yet* to avoid duplicated
+	# flags.
 	local myeconfargs=(
 		${sslout}
 
@@ -197,16 +208,18 @@ multilib_src_configure() {
 		enable-sm2
 		enable-srp
 		$(use elibc_musl && echo "no-async")
+		${ec_nistp_64_gcc_128}
 		enable-idea
 		enable-mdc2
 		enable-rc5
-		$(use fips && echo "enable-fips")
+		$(use_ssl sslv3 ssl3)
+		$(use_ssl sslv3 ssl3-method)
 		$(use_ssl asm)
-		$(use_ssl ktls)
 		$(use_ssl rfc3779)
 		$(use_ssl sctp)
 		$(use test || echo "no-tests")
 		$(use_ssl tls-compression zlib)
+		$(use_ssl tls-heartbeat heartbeats)
 		$(use_ssl weak-ssl-ciphers)
 
 		--prefix="${EPREFIX}"/usr
@@ -237,8 +250,7 @@ multilib_src_configure() {
 	sed -i \
 		-e "/^CFLAGS=/s|=.*|=${DEFAULT_CFLAGS} ${CFLAGS}|" \
 		-e "/^LDFLAGS=/s|=[[:space:]]*$|=${LDFLAGS}|" \
-		Makefile \
-		|| die
+		Makefile || die
 }
 
 multilib_src_compile() {
@@ -250,9 +262,7 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	# VFP = show subtests verbosely and show failed tests verbosely
-	# Normal V=1 would show everything verbosely but this slows things down.
-	emake HARNESS_JOBS="$(makeopts_jobs)" VFP=1 test
+	emake -j1 test
 }
 
 multilib_src_install() {
@@ -266,7 +276,7 @@ multilib_src_install() {
 	# build system: the static archives are built as PIC all the time.
 	# Only way around this would be to manually configure+compile openssl
 	# twice; once with shared lib support enabled and once without.
-	if ! use static-libs ; then
+	if ! use static-libs; then
 		rm "${ED}"/usr/$(get_libdir)/lib{crypto,ssl}.a || die
 	fi
 }
@@ -276,7 +286,7 @@ multilib_src_install_all() {
 	# we provide a shell version via app-misc/c_rehash
 	rm "${ED}"/usr/bin/c_rehash || die
 
-	dodoc {AUTHORS,CHANGES,NEWS,README,README-PROVIDERS}.md doc/*.txt doc/${PN}-c-indent.el
+	dodoc CHANGES* FAQ NEWS README doc/*.txt doc/${PN}-c-indent.el
 
 	# Create the certs directory
 	keepdir ${SSL_CNF_DIR}/certs
@@ -297,7 +307,7 @@ multilib_src_install_all() {
 
 		# Fix up references to renamed man pages
 		sed -i '/^[.]SH "SEE ALSO"/,/^[.]/s:\([^(, ]*(1)\):ssl-\1:g' ${d}/ssl-${m} || die
-		ln -s ssl-${m} ${d}/openssl-${m} || die
+		ln -s ssl-${m} ${d}/openssl-${m}
 
 		# Locate any symlinks that point to this man page
 		# We assume that any broken links are due to the above renaming
