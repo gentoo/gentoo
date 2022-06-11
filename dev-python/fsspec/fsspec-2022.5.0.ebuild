@@ -4,17 +4,20 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
 MY_P=filesystem_spec-${PV}
 DESCRIPTION="A specification that python filesystems should adhere to"
-HOMEPAGE="https://github.com/fsspec/filesystem_spec/
-	https://pypi.org/project/fsspec/"
+HOMEPAGE="
+	https://github.com/fsspec/filesystem_spec/
+	https://pypi.org/project/fsspec/
+"
 SRC_URI="
 	https://github.com/fsspec/filesystem_spec/archive/${PV}.tar.gz
-		-> ${MY_P}.tar.gz"
+		-> ${MY_P}.tar.gz
+"
 S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
