@@ -590,10 +590,7 @@ net-libs/libsoup:3.0
 # Masked while being tested and reverse deps aren't fully compatible
 # bug #797325.
 =dev-libs/openssl-3.0*
-
-# Craig Andrews <candrews@gentoo.org> (2021-09-20)
-# Requires OpenSSL >= 3.0.0
-# Masked until dev-libs/openssl-3.0* is unmasked
+=dev-libs/openssl-compat-1.1.1*
 =dev-libs/gost-engine-3.0*
 
 # Joonas Niilola <juippis@gentoo.org> (2021-07-29)
