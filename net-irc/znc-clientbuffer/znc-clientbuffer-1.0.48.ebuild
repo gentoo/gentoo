@@ -18,8 +18,6 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
-DOCS=( README.md )
-
 src_prepare() {
 	cp -v "${FILESDIR}/CMakeLists.txt" "${S}" || die
 	cmake_src_prepare
