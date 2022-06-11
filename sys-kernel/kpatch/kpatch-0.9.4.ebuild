@@ -34,6 +34,10 @@ DEPEND="
 	test? ( dev-util/shellcheck-bin )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.4-no-werror.patch
+)
+
 pkg_setup() {
 	if use kmod; then
 		if kernel_is gt 3 9 0; then
