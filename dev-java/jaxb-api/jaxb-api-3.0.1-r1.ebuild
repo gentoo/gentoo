@@ -12,7 +12,7 @@ MAVEN_ID="jakarta.xml.bind:jakarta.xml.bind-api:3.0.1"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Jakarta XML Binding API"
-HOMEPAGE="https://github.com/eclipse-ee4j/jaxb-api/jakarta.xml.bind-api"
+HOMEPAGE="https://github.com/eclipse-ee4j/jaxb-api"
 SRC_URI="https://github.com/eclipse-ee4j/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="EPL-1.0"
