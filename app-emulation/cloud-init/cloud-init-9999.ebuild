@@ -5,6 +5,7 @@ EAPI=8
 
 # Disabled for now: bug #850628
 #DISTUTILS_USE_PEP517=setuptools
+# https://bugs.launchpad.net/cloud-init/+bug/1978328
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 udev
