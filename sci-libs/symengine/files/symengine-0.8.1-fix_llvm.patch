@@ -48,6 +48,21 @@ index cf5ab3b..dfa6605 100644
      include_directories(SYSTEM ${LLVM_INCLUDE_DIRS})
      set(HAVE_SYMENGINE_LLVM yes)
      set(PKGS ${PKGS} "LLVM")
+diff --git a/cmake/SymEngineConfig.cmake.in b/cmake/SymEngineConfig.cmake.in
+index b01ef9b..6d82c10 100644
+--- a/cmake/SymEngineConfig.cmake.in
++++ b/cmake/SymEngineConfig.cmake.in
+@@ -67,9 +67,7 @@ set(SYMENGINE_LLVM_COMPONENTS @SYMENGINE_LLVM_COMPONENTS@)
+ 
+ if (NOT "${SYMENGINE_LLVM_COMPONENTS}" STREQUAL "")
+     find_package(LLVM REQUIRED ${SYMENGINE_LLVM_COMPONENTS} HINTS @LLVM_DIR@)
+-    llvm_map_components_to_libnames(llvm_libs_direct ${SYMENGINE_LLVM_COMPONENTS})
+-    llvm_expand_dependencies(llvm_libs ${llvm_libs_direct})
+-    set(SYMENGINE_LIBRARIES ${SYMENGINE_LIBRARIES} ${llvm_libs})
++    set(SYMENGINE_LIBRARIES ${SYMENGINE_LIBRARIES} LLVM)
+ else()
+     set(SYMENGINE_LLVM_INCLUDE_DIRS)
+ endif()
 -- 
 2.35.1
 
