@@ -16,7 +16,7 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/fsspec/filesystem_spec/archive/${PV}.tar.gz
-		-> ${MY_P}.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}
 
