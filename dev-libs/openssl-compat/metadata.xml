@@ -13,6 +13,7 @@
  <flag name="sslv3">Support for the old/insecure SSLv3 protocol -- note: not required for TLS/https</flag>
  <flag name="tls-compression">Enable support for discouraged TLS compression</flag>
  <flag name="tls-heartbeat">Enable the Heartbeat Extension in TLS and DTLS</flag>
+ <flag name="weak-ssl-ciphers">Build support for SSL/TLS ciphers that are considered "weak"</flag>
 </use>
 <upstream>
  <remote-id type="cpe">cpe:/a:openssl:openssl</remote-id>
