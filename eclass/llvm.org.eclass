@@ -47,6 +47,12 @@ esac
 # the correct branch to use.
 _LLVM_MASTER_MAJOR=15
 
+# @ECLASS_VARIABLE: _LLVM_NEWEST_MANPAGE_RELEASE
+# @INTERNAL
+# @DESCRIPTION:
+# The newest release of LLVM for which manpages were generated.
+_LLVM_NEWEST_MANPAGE_RELEASE=14.0.4
+
 # @ECLASS_VARIABLE: _LLVM_SOURCE_TYPE
 # @INTERNAL
 # @DESCRIPTION:
@@ -86,9 +92,10 @@ inherit multiprocessing
 # @ECLASS_VARIABLE: LLVM_MANPAGES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Set to 'build', include the dependency on dev-python/sphinx to build
-# the manpages.  If set to 'pregenerated', fetch and install
-# pregenerated manpages from the archive.
+# Set to a non-empty value in ebuilds that build manpages via Sphinx.
+# The eclass will either include the dependency on dev-python/sphinx
+# or pull the pregenerated manpage tarball depending on the package
+# version.
 
 # @ECLASS_VARIABLE: LLVM_PATCHSET
 # @DEFAULT_UNSET
@@ -199,25 +206,24 @@ llvm.org_set_globals() {
 		RESTRICT+=" !test? ( test )"
 	fi
 
-	case ${LLVM_MANPAGES:-__unset__} in
-		__unset__)
-			# no manpage support
-			;;
-		build)
-			IUSE+=" doc"
-			# NB: this is not always the correct dep but it does no harm
-			BDEPEND+=" dev-python/sphinx"
-			;;
-		pregenerated)
+	if [[ ${LLVM_MANPAGES} ]]; then
+		# use pregenerated tarball for releases
+		# up to _LLVM_NEWEST_MANPAGE_RELEASE
+		if [[ ${_LLVM_SOURCE_TYPE} == tar ]] &&
+			ver_test "${PV}" -le "${_LLVM_NEWEST_MANPAGE_RELEASE}"
+		then
 			IUSE+=" doc"
 			SRC_URI+="
 				!doc? (
 					https://dev.gentoo.org/~mgorny/dist/llvm/llvm-${PV}-manpages.tar.bz2
-				)"
-			;;
-		*)
-			die "Invalid LLVM_MANPAGES=${LLVM_MANPAGES}"
-	esac
+				)
+			"
+		else
+			IUSE+=" doc"
+			# NB: this is not always the correct dep but it does no harm
+			BDEPEND+=" dev-python/sphinx"
+		fi
+	fi
 
 	if [[ -n ${LLVM_PATCHSET} ]]; then
 		SRC_URI+="
