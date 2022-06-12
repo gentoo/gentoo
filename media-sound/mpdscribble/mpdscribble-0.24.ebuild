@@ -30,6 +30,7 @@ DOCS=( AUTHORS COPYING NEWS README.rst )
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.23-Unconditionally-generate-systemd-unit-files.patch
 	"${FILESDIR}"/${PN}-0.23-Don-t-install-AUTHORS-COPYING-NEWS-README.rst.patch
+	"${FILESDIR}"/${PN}-0.23-gcc12-time.patch
 )
 
 src_install() {
