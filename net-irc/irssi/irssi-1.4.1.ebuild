@@ -39,6 +39,10 @@ BDEPEND="dev-lang/perl
 	virtual/pkgconfig"
 RDEPEND+=" selinux? ( sec-policy/selinux-irc )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.1-no-werror-decl.patch
+)
+
 src_configure() {
 	local emesonargs=(
 		-Ddocdir="${EPREFIX}"/usr/share/doc/${PF}
