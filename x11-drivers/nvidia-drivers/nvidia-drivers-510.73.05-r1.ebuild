@@ -401,7 +401,6 @@ https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 }
 
 pkg_preinst() {
-	has_version "${CATEGORY}/${PN}[abi_x86_32]" && NV_HAD_ABI32=
 	has_version "${CATEGORY}/${PN}[wayland]" && NV_HAD_WAYLAND=
 
 	use driver || return
@@ -458,13 +457,6 @@ pkg_postinst() {
 		fi
 		ewarn "...then downgrade to a legacy branch if possible. For details, see:"
 		ewarn "https://www.nvidia.com/object/IO_32667.html"
-	fi
-
-	if use !abi_x86_32 && [[ -v NV_HAD_ABI32 ]]; then
-		elog
-		elog "USE=abi_x86_32 is disabled, 32bit applications will not be able to"
-		elog "use nvidia-drivers for acceleration without it (e.g. commonly used"
-		elog "with app-emulation/wine-* or steam). Re-enable if needed."
 	fi
 
 	if use wayland && use driver && [[ ! -v NV_HAD_WAYLAND ]]; then

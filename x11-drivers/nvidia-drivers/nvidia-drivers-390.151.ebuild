@@ -414,8 +414,6 @@ https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 }
 
 pkg_preinst() {
-	has_version "${CATEGORY}/${PN}[abi_x86_32]" && NV_HAD_ABI32=
-
 	use driver || return
 	linux-mod_pkg_preinst
 
@@ -435,12 +433,5 @@ pkg_postinst() {
 		ewarn "Currently loaded NVIDIA modules do not match the newly installed"
 		ewarn "libraries and may prevent launching GPU-accelerated applications."
 		use driver && ewarn "The easiest way to fix this is usually to reboot."
-	fi
-
-	if use !abi_x86_32 && [[ -v NV_HAD_ABI32 ]]; then
-		elog
-		elog "USE=abi_x86_32 is disabled, 32bit applications will not be able to"
-		elog "use nvidia-drivers for acceleration without it (e.g. commonly used"
-		elog "with app-emulation/wine-* or steam). Re-enable if needed."
 	fi
 }
