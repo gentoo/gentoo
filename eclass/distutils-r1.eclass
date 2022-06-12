@@ -1319,7 +1319,7 @@ distutils_pep517_install() {
 	)
 	[[ -n ${wheel} ]] || die "No wheel name returned"
 
-	einfo "  Installing the wheel to ${root}"
+	einfo "  Installing ${wheel} to ${root}"
 	gpep517 install-wheel --destdir="${root}" --interpreter="${PYTHON}" \
 			--prefix="${EPREFIX}/usr" "${WHEEL_BUILD_DIR}/${wheel}" ||
 		die "Wheel install failed"
