@@ -332,7 +332,7 @@ if tc_version_is_at_least 12.0 ; then
 	# D in 12+ is self-hosting and needs D to bootstrap.
 	# TODO: package some binary we can use, like for Ada
 	# bug #840182
-	BDEPEND+=" d? ( || ( sys-devel/gcc[d] <sys-devel/gcc-12[d] ) )"
+	BDEPEND+=" d? ( || ( sys-devel/gcc[d(-)] <sys-devel/gcc-12[d(-)] ) )"
 fi
 
 PDEPEND=">=sys-devel/gcc-config-2.3"
