@@ -99,6 +99,7 @@ src_configure() {
 		-DBUILD_SHARED_LIBS=ON
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}"
 		-DCMAKE_SKIP_INSTALL_RPATH=ON
+		-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=OFF
 		-DTrilinos_INSTALL_CONFIG_DIR="${EPREFIX}/usr/$(get_libdir)/cmake"
 		-DTrilinos_INSTALL_INCLUDE_DIR="${EPREFIX}/usr/include/trilinos"
 		-DTrilinos_INSTALL_LIB_DIR="${EPREFIX}/usr/$(get_libdir)/trilinos"
