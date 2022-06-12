@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit linux-info tmpfiles
+inherit linux-info tmpfiles udev
 
 DESCRIPTION="SPICE VD Linux Guest Agent"
 HOMEPAGE="https://www.spice-space.org/"
@@ -62,5 +62,6 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
 	tmpfiles_process spice-vdagentd.conf
 }
