@@ -17,7 +17,7 @@ SRC_URI="https://github.com/janko/image_processing/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE=""
 
 DEPEND+=" test? ( media-gfx/imagemagick[jpeg,png,tiff] )"
