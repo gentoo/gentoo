@@ -16,7 +16,7 @@ src_install() {
 	insinto /usr/share/icons
 	doins -r cursors/*
 
-	# Add symlinks in Gentoo-specific location for backwards compatibility
+	# Add symlinks in Gentoo-specific location for backwards compatibility, #848606
 	mkdir -p ${ED}/usr/share/cursors/xorg-x11 || die
 	cd ${ED}/usr/share/cursors/xorg-x11 || die
 	for cursorset in ../../icons/*; do
