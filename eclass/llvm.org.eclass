@@ -401,12 +401,20 @@ llvm_manpage_dist_available() {
 		ver_test "${PV}" -le "${_LLVM_NEWEST_MANPAGE_RELEASE}"
 }
 
+# @FUNCTION: llvm_are_manpages_built
+# @DESCRIPTION:
+# Return true (0) if manpages are going to be built from source,
+# false (1) if preinstalled manpages will be used.
+llvm_are_manpages_built() {
+	use doc || ! llvm_manpage_dist_available
+}
+
 # @FUNCTION: llvm_install_manpages
 # @DESCRIPTION:
 # Install pregenerated manpages if available.  No-op otherwise.
 llvm_install_manpages() {
 	# install pre-generated manpages
-	if ! use doc && llvm_manpage_dist_available; then
+	if ! llvm_are_manpages_built; then
 		# (doman does not support custom paths)
 		insinto "/usr/lib/llvm/${SLOT}/share/man/man1"
 		doins "${WORKDIR}/llvm-${PV}-manpages/${LLVM_COMPONENTS[0]}"/*.1
