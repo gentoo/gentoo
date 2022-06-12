@@ -54,6 +54,11 @@ BDEPEND=">=app-text/asciidoc-8.6.8
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.9-remove-asciidoctor-from-config.patch"
+	"${FILESDIR}/${PN}-1.2.1-seccomp-rollup.patch"
+	"${FILESDIR}/${PN}-1.2.1-seccomp-rseq-glibc-2.35.patch"
+	"${FILESDIR}/${PN}-1.2.1-build-notests.patch"
+	"${FILESDIR}/${PN}-py3-test-clarify.patch"
+	"${FILESDIR}/${PN}-1.2.1-seccomp-nsd.patch"
 )
 
 WAF_BINARY="${S}/waf"
@@ -120,6 +125,7 @@ python_test() {
 
 src_install() {
 	distutils-r1_src_install
+	python_optimize
 
 	# Install heat generating scripts
 	use heat && dosbin "${S}"/contrib/ntpheat{,usb}
@@ -152,7 +158,6 @@ src_install() {
 python_install() {
 	waf-utils_src_install --notests
 	python_fix_shebang "${ED}"
-	python_optimize
 }
 
 pkg_postinst() {
