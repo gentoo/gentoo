@@ -6,7 +6,7 @@ EAPI=7
 WANT_AUTOMAKE="none"
 GENTOO_DEPEND_ON_PERL="no"
 PYTHON_COMPAT=( python3_{8..11} )
-USE_RUBY="ruby26"
+USE_RUBY="ruby27 ruby26"
 
 inherit autotools bash-completion-r1 db-use depend.apache flag-o-matic java-pkg-opt-2 libtool multilib perl-module python-any-r1 ruby-single xdg-utils
 
