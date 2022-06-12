@@ -94,7 +94,7 @@ python_check_deps() {
 src_prepare() {
 	default
 
-	use vala && vala_src_prepare
+	use vala && vala_setup
 }
 
 src_configure() {
