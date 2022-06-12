@@ -61,4 +61,6 @@ src_install() {
 	emake DESTDIR="${D}" install-plugin
 	docinto plugin/attachment_tool
 	dodoc README
+
+	find "${ED}" -name '*.la' -delete || die
 }
