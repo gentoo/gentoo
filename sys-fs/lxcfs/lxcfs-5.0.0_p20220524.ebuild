@@ -21,13 +21,19 @@ IUSE="doc test"
 DEPEND="sys-fs/fuse:3"
 RDEPEND="${DEPEND}"
 BDEPEND="${PYTHON_DEPS}
-	dev-python/jinja
+	$(python_gen_any_dep '
+		dev-python/jinja[${PYTHON_USEDEP}]
+	')
 	doc? ( sys-apps/help2man )"
 
 # Needs some black magic to work inside container/chroot.
 RESTRICT="test"
 
 S="${WORKDIR}/${PN}-${MY_COMMIT}"
+
+python_check_deps() {
+	python_has_version -b "dev-python/jinja[${PYTHON_USEDEP}]"
+}
 
 pkg_setup() {
 	python-any-r1_pkg_setup
