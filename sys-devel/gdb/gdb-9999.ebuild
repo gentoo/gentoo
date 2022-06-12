@@ -43,7 +43,7 @@ SRC_URI="${SRC_URI}
 	${PATCH_VER:+mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz}
 "
 
-LICENSE="GPL-2 LGPL-2"
+LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
 
 if [[ ${PV} != 9999* ]] ; then
