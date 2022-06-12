@@ -9,9 +9,9 @@ PYTHON_COMPAT=( python3_{8..11} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="PEP 621 metadata parsing"
-HOMEPAGE="https://pypi.org/project/pep621/ https://github.com/FFY00/python-pep621/"
-SRC_URI="https://github.com//FFY00/python-pep621/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
-S="${WORKDIR}"/python-pyproject-metadata-${PV}
+HOMEPAGE="https://pypi.org/project/pyproject-metadata/ https://github.com/FFY00/python-pyproject-metadata/"
+SRC_URI="https://github.com//FFY00/python-pyproject-metadata/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+S="${WORKDIR}"/python-${P}
 
 LICENSE="MIT"
 SLOT="0"
