@@ -1,0 +1,34 @@
+https://gitlab.com/NTPsec/ntpsec/-/commit/a49d53b7fe1d
+https://bugs.gentoo.org/851531
+
+From: "Maciej S. Szmigiero" <mail@maciej.szmigiero.name>
+Date: Sat, 11 Jun 2022 15:16:15 +0200
+Subject: [PATCH] ntpd/ntp_sandbox.c: allow readv() for glibc nscd
+ getaddrinfo() provider
+
+Otherwise, ntpd crashes from time to time with the following stack trace:
+#0  0x00007f5763bfac4d in readv () from /lib64/libc.so.6
+#1  0x00007f5763c48b4c in __readvall () from /lib64/libc.so.6
+#2  0x00007f5763c467ed in nscd_gethst_r () from /lib64/libc.so.6
+#3  0x00007f5763c46c0d in __nscd_gethostbyname2_r () from /lib64/libc.so.6
+#4  0x00007f5763c15a2a in gethostbyname2_r () from /lib64/libc.so.6
+#5  0x00007f5763bed3ca in gaih_inet.constprop () from /lib64/libc.so.6
+#6  0x00007f5763bee225 in getaddrinfo () from /lib64/libc.so.6
+#7  0x000055fcf0ad6544 in open_TCP_socket ()
+#8  0x000055fcf0ad79b4 in nts_probe ()
+#9  0x000055fcf0ac37c4 in dns_lookup ()
+#10 0x00007f5763b8205a in start_thread () from /lib64/libc.so.6
+#11 0x00007f5763c05d1c in clone3 () from /lib64/libc.so.6
+
+Signed-off-by: Maciej S. Szmigiero <mail@maciej.szmigiero.name>
+--- a/ntpd/ntp_sandbox.c
++++ b/ntpd/ntp_sandbox.c
+@@ -357,6 +357,7 @@ int scmp_sc[] = {
+ 	SCMP_SYS(poll),
+ 	SCMP_SYS(pselect6),
+ 	SCMP_SYS(read),
++	SCMP_SYS(readv),	/* nscd getaddrinfo() provider */
+ 	SCMP_SYS(recvfrom),    /* Comment this out for testing.
+ 				* It will die on the first reply.
+ 				* (Or maybe sooner if a request arrives.)
+GitLab
