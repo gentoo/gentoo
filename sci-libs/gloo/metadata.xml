@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">facebookincubator/gloo</remote-id>
+	</upstream>
+	<use>
+		<flag name="libuv">Enable libuv support</flag>
+		<flag name="redis">Enable Redis backend for storage via <pkg>dev-libs/hiredis</pkg></flag>
+	</use>
+</pkgmetadata>
