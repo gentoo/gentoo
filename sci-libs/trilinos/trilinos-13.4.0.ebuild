@@ -203,7 +203,6 @@ src_install() {
 	cmake_src_install
 
 	# Clean up the mess:
-	rm "${ED}"/TrilinosRepoVersion.txt || die "rm failed"
 	mv "${ED}"/bin "${ED}/usr/$(get_libdir)"/trilinos || die "mv failed"
 	mv "${ED}/usr/$(get_libdir)"/trilinos/cmake/* "${ED}/usr/$(get_libdir)"/cmake || die "mv failed"
 	rmdir "${ED}/usr/$(get_libdir)/trilinos/cmake" || die "rmdir failed"
