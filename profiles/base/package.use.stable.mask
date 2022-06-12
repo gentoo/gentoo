@@ -4,11 +4,6 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-05-08)
-# gentoo-vm useflag is not stable yet
-dev-java/openjdk-bin:17 gentoo-vm
-dev-java/openjdk:17 gentoo-vm
-
 # Matt Turner <mattst88@gentoo.org> (2022-05-11)
 # app-text/pandoc is not stable
 app-text/nuspell doc
