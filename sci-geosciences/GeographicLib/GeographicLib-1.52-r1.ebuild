@@ -80,6 +80,7 @@ src_install() {
 
 	# Remove python things added by the cmake_src_install function
 	rm -r "${ED}/usr/$(get_libdir)/python" || die
+
 	# If using Python, we re-add these python files for each implementation
 	if use python; then
 		pushd "python" || die
