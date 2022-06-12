@@ -101,6 +101,12 @@ src_install() {
 	use python && distutils-r1_src_install
 }
 
+python_install() {
+	pushd "python" || die
+	distutils-r1_python_install
+	popd || die
+}
+
 pkg_postinst() {
 	ewarn "app-misc/glimpse, app-text/agrep and this package all provide agrep."
 	ewarn "If this causes any unforeseen incompatibilities please file a bug"
