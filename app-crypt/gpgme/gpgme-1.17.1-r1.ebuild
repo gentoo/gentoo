@@ -102,15 +102,14 @@ src_compile() {
 src_test() {
 	default
 
-	if use python; then
-		test_python() {
-			emake -C lang/python/tests check \
-				PYTHON=${EPYTHON} \
-				PYTHONS=${EPYTHON} \
-				TESTFLAGS="--python-libdir=${BUILD_DIR}/lib"
-		}
-		python_foreach_impl test_python
-	fi
+	use python && distutils-r1_src_test
+}
+
+python_test() {
+	emake -C lang/python/tests check \
+		PYTHON=${EPYTHON} \
+		PYTHONS=${EPYTHON} \
+		TESTFLAGS="--python-libdir=${BUILD_DIR}/lib"
 }
 
 src_install() {
