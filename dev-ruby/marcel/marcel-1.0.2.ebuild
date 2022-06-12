@@ -16,7 +16,7 @@ SRC_URI="https://github.com/basecamp/marcel/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0 MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="test"
 
 ruby_add_bdepend "test? ( dev-ruby/rack )"
