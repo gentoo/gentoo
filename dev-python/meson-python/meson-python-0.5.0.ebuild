@@ -23,7 +23,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	>=dev-python/pep621-0.3.0[${PYTHON_USEDEP}]
+	>=dev-python/pyproject-metadata-0.3.0[${PYTHON_USEDEP}]
 	>=dev-python/tomli-1.0.0[${PYTHON_USEDEP}]
 	>=dev-util/meson-0.60.0[${PYTHON_USEDEP}]
 "
