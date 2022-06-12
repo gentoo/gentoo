@@ -79,7 +79,7 @@ src_prepare() {
 	hprefixify $(grep -rl --exclude-dir=build/ "/usr" "${S}")
 	hprefixify $(grep -rl --exclude-dir=build/ "/usr" "${HIP_S}")
 
-	cp "$(prefixify_ro "${FILESDIR}"/hipvars.pm)" bin/ || die "failed to replace hipvars.pm"
+	cp "$(prefixify_ro "${FILESDIR}"/hipvars-5.0.2.pm)" bin/hipvars.pm || die "failed to replace hipvars.pm"
 	sed -e "s,@HIP_BASE_VERSION_MAJOR@,$(ver_cut 1)," -e "s,@HIP_BASE_VERSION_MINOR@,$(ver_cut 2)," \
 		-e "s,@HIP_VERSION_PATCH@,$(ver_cut 3)," -i bin/hipvars.pm || die
 }
