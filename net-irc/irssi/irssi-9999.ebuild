@@ -8,9 +8,10 @@ inherit perl-module meson
 
 DESCRIPTION="A modular textUI IRC client with IPv6 support"
 HOMEPAGE="https://irssi.org/"
+
 if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
-	inherit meson git-r3
+	inherit git-r3
 else
 	# Keep for _rc compability
 	MY_P="${P/_/-}"
