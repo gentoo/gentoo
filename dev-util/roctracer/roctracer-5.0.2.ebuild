@@ -68,7 +68,7 @@ src_prepare() {
 }
 
 src_configure() {
-	export HIP_PATH="${EPREFIX}/usr"
+	export HIP_PATH="$(hipconfig -p)"
 
 	local mycmakeargs=(
 		-DCMAKE_PREFIX_PATH="${EPREFIX}/usr/include/hsa"

@@ -67,7 +67,7 @@ src_prepare() {
 }
 
 src_configure() {
-	export HIP_PATH="${EPREFIX}/usr/lib/hip"
+	export HIP_PATH="$(hipconfig -p)"
 
 	local mycmakeargs=(
 		-DHIP_VDI=1
