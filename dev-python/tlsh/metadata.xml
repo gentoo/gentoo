@@ -9,4 +9,8 @@
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">trendmicro/tlsh</remote-id>
+		<remote-id type="pypi">python-tlsh</remote-id>
+	</upstream>
 </pkgmetadata>
