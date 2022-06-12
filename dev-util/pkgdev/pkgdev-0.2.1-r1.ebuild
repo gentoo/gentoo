@@ -48,21 +48,18 @@ PATCHES=(
 distutils_enable_sphinx doc
 distutils_enable_tests setup.py
 
-python_install_all() {
+python_compile_all() {
 	# We'll generate man pages ourselves
 	# Revisit when a release is made
 	# to pregenerate them, making USE=doc
 	# for generating the real HTML docs only.
-	if use doc ; then
-		cd doc || die
-		emake man
-		doman _build/man/*
-	fi
-
-	cd .. || die
+	use doc && emake -C doc man
 
 	# HTML pages only
 	sphinx_compile_all
+}
 
+python_install_all() {
+	use doc && doman doc/_build/man/*
 	distutils-r1_python_install_all
 }
