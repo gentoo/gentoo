@@ -36,12 +36,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	virtual/pkgconfig
 	dev-lang/perl
-	|| (
-		www-client/lynx
-		www-client/elinks
-	)
+	virtual/pkgconfig
 "
 RDEPEND+=" selinux? ( sec-policy/selinux-irc )"
 

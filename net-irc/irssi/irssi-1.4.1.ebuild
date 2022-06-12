@@ -35,14 +35,8 @@ RDEPEND="
 	perl? ( dev-lang/perl:= )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
-	virtual/pkgconfig
-	dev-lang/perl
-	|| (
-		www-client/lynx
-		www-client/elinks
-	)
-"
+BDEPEND="dev-lang/perl
+	virtual/pkgconfig"
 RDEPEND+=" selinux? ( sec-policy/selinux-irc )"
 
 src_configure() {
