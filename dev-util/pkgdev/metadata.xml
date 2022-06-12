@@ -16,5 +16,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">pkgcore/pkgdev</remote-id>
+		<remote-id type="pypi">pkgdev</remote-id>
 	</upstream>
 </pkgmetadata>
