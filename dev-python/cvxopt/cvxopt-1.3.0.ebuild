@@ -4,12 +4,20 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
+
 inherit distutils-r1 toolchain-funcs
 
 DESCRIPTION="Python package for convex optimization"
-HOMEPAGE="https://cvxopt.org/ https://github.com/cvxopt/cvxopt"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="
+	https://cvxopt.org/
+	https://github.com/cvxopt/cvxopt/
+	https://pypi.org/project/cvxopt/
+"
+SRC_URI="
+	https://github.com/${PN}/${PN}/archive/${PV}.tar.gz
+		-> ${P}.tar.gz
+"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -27,9 +35,14 @@ DEPEND="
 	dsdp? ( sci-libs/dsdp:0= )
 	fftw? ( sci-libs/fftw:3.0= )
 	glpk? ( >=sci-mathematics/glpk-4.49:0= )
-	gsl? ( sci-libs/gsl:0= )"
-RDEPEND="${DEPEND}"
-BDEPEND="virtual/pkgconfig"
+	gsl? ( sci-libs/gsl:0= )
+"
+RDEPEND="
+	${DEPEND}
+"
+BDEPEND="
+	virtual/pkgconfig
+"
 
 PATCHES=( "${FILESDIR}/cvxopt-1.3.0-versioneer-buildfix.patch" )
 
