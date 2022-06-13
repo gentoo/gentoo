@@ -16,7 +16,7 @@ SRC_URI="https://www.hdfgroup.org/ftp/HDF5/releases/${MAJOR_P}/${MY_P}/src/${MY_
 
 LICENSE="NCSA-HDF"
 SLOT="0/${PV%%_p*}"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="cxx debug doc examples fortran +hl mpi szip test threads unsupported zlib"
 
 REQUIRED_USE="
