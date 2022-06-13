@@ -51,6 +51,8 @@ RDEPEND="${CDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-22.04.62-gentoo-system-users.patch
+	"${FILESDIR}"/${PN}-22.08.8-check-for-wtmp.patch
+	"${FILESDIR}"/${PN}-22.08.8-fgetspent_r-musl.patch
 )
 
 python_check_deps() {
@@ -64,6 +66,7 @@ src_configure() {
 		--localstatedir="${EPREFIX}/var"
 		-Dsystemdsystemunitdir="$(systemd_get_systemunitdir)"
 		-Dadmin_group="wheel"
+		-Dcheck_wtmp="$(usex !elibc_musl true false)"
 		$(meson_use elogind)
 		$(meson_use introspection)
 		$(meson_use doc docbook)

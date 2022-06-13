@@ -1,0 +1,41 @@
+Adds a meson build option to check if wtmp path is valid.
+wtmp is not used on musl and is implemented with stubs because it is harmful software, and because of that, checking whether the path is valid or not does not matter.
+
+See: https://wiki.musl-libc.org/faq.html#Q:_Why_is_the_utmp/wtmp_functionality_only_implemented_as_stubs?
+https://bugs.gentoo.org/762442
+
+---
+ meson.build       | 4 +++-
+ meson_options.txt | 1 +
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 075776f..0801659 100644
+--- a/meson.build
++++ b/meson.build
+@@ -102,7 +102,9 @@ elif cc.has_header_symbol('paths.h', '_PATH_WTMPX')
+   config_h.set('PATH_WTMP', '_PATH_WTMPX')
+ else
+   path_wtmp = '/var/log/utx.log'
+-  assert(run_command('test', '-e', path_wtmp).returncode() == 0, 'Do not know which filename to watch for wtmp changes')
++  if get_option('check_wtmp')
++    assert(run_command('test', '-e', path_wtmp).returncode() == 0, 'Do not know which filename to watch for wtmp changes')
++  endif
+   config_h.set_quoted('PATH_WTMP', path_wtmp)
+ endif
+ 
+diff --git a/meson_options.txt b/meson_options.txt
+index 93f384a..4fec12e 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -6,6 +6,7 @@ option('extra_admin_groups', type: 'array', value: [], description: 'Comma-separ
+ option('minimum_uid', type: 'integer', value: 1000, description: 'Set minimum uid for human users')
+ 
+ option('elogind', type: 'boolean', value: false, description: 'Use elogind')
++option('check_wtmp', type: 'boolean', value: true, description: 'Check if wtmp path is valid (musl workaround)')
+ 
+ option('introspection', type: 'boolean', value: true, description: 'Enable introspection for this build')
+ option('vapi', type: 'boolean', value: true, description : 'Enable Vala bindings for this build')
+-- 
+2.35.1
+
