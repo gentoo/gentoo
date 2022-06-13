@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~riscv ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-python/flit_core-3.5.0[${PYTHON_USEDEP}]
