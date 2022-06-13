@@ -27,10 +27,6 @@ java
 # media-gfx/gimp not yet stable
 gimp
 
-# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
-# Dependencies not yet stable.
-appindicator
-
 # Andrey Grozin <grozin@gentoo.org> (2014-05-16)
 # No stable gcl
 gcl
