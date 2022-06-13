@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit cmake fortran-2 python-any-r1 toolchain-funcs
 
@@ -11,7 +11,14 @@ DESCRIPTION="Three-dimensional finite element mesh generator"
 HOMEPAGE="https://gmsh.info"
 SRC_URI="https://gmsh.info/src/${P}-source.tgz"
 
-LICENSE="GPL-3 free-noncomm"
+LICENSE="
+	GPL-2+ free-noncomm
+	alglib? ( MIT )
+	gmm? ( LGPL-2.1+ )
+	metis? ( Apache-2.0 )
+	netgen? ( LGPL-2.1+ )
+	voro? ( BSD )
+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 ## cgns is not compiling ATM, maybe fix cgns lib first
