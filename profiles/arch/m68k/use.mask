@@ -97,10 +97,6 @@ qt5
 # valgrind has no m68k port.
 valgrind
 
-# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
-# Dependencies not keyworded.
-appindicator
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-03-31)
 # sys-auth/elogind is not keyworded here.
 elogind

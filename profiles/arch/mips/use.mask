@@ -45,10 +45,6 @@ gnome-online-accounts
 # Keywords lost on net-fs/samba over time, use.mask until re-keyworded
 samba
 
-# Mart Raudsepp <leio@gentoo.org> (2017-02-07)
-# dev-libs/libappindicator not tested
-appindicator
-
 # Anthony G. Basile <blueness@gentoo.org> (2015-08-01)
 # There is no luajit support on mips.  Bug #554376.
 luajittex
