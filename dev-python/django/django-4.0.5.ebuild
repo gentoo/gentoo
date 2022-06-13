@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE='sqlite?,threads(+)'
 
 inherit bash-completion-r1 distutils-r1 optfeature verify-sig
@@ -58,6 +58,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.0-bashcomp.patch
+	"${FILESDIR}"/django-4.0.5-py311.patch
 )
 
 distutils_enable_sphinx docs --no-autodoc

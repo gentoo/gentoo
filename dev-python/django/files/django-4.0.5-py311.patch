@@ -1,0 +1,218 @@
+From 3d022e13bcc1de5162ba7198c856bf27c03d4f37 Mon Sep 17 00:00:00 2001
+From: David Smith <39445562+smithdc1@users.noreply.github.com>
+Date: Sat, 19 Feb 2022 19:36:01 +0000
+Subject: [PATCH 1/3] Refs #33173 -- Fixed MailTests.test_backend_arg() on
+ Windows and Python 3.11+.
+
+---
+ django/utils/version.py | 1 +
+ tests/mail/tests.py     | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/django/utils/version.py b/django/utils/version.py
+index 77f13833cb..8f4ab2bcfa 100644
+--- a/django/utils/version.py
++++ b/django/utils/version.py
+@@ -15,6 +15,7 @@ PY37 = sys.version_info >= (3, 7)
+ PY38 = sys.version_info >= (3, 8)
+ PY39 = sys.version_info >= (3, 9)
+ PY310 = sys.version_info >= (3, 10)
++PY311 = sys.version_info >= (3, 11)
+ 
+ 
+ def get_version(version=None):
+diff --git a/tests/mail/tests.py b/tests/mail/tests.py
+index 51e26cc6be..183a0c0ab1 100644
+--- a/tests/mail/tests.py
++++ b/tests/mail/tests.py
+@@ -29,6 +29,7 @@ from django.core.mail.message import BadHeaderError, sanitize_address
+ from django.test import SimpleTestCase, override_settings
+ from django.test.utils import requires_tz_support
+ from django.utils.translation import gettext_lazy
++from django.utils.version import PY311
+ 
+ try:
+     from aiosmtpd.controller import Controller
+@@ -790,7 +791,7 @@ class MailTests(HeadersCheckMixin, SimpleTestCase):
+                 filebased.EmailBackend,
+             )
+ 
+-        if sys.platform == "win32":
++        if sys.platform == "win32" and not PY311:
+             msg = (
+                 "_getfullpathname: path should be string, bytes or os.PathLike, not "
+                 "object"
+-- 
+2.35.1
+
+From 4d548dce8fb280ed7be63e9818c316fe5f0ee154 Mon Sep 17 00:00:00 2001
+From: Mariusz Felisiak <felisiak.mariusz@gmail.com>
+Date: Thu, 7 Apr 2022 07:02:21 +0200
+Subject: [PATCH 2/3] Refs #33173 -- Fixed test_runner/test_utils tests on
+ Python 3.11+.
+
+Python 3.11 uses fully qualified test name in unittest output. See
+https://github.com/python/cpython/commit/755be9b1505af591b9f2ee424a6525b6c2b65ce9
+---
+ tests/test_runner/test_debug_sql.py | 14 +++++++++-----
+ tests/test_runner/test_parallel.py  |  5 ++++-
+ tests/test_utils/tests.py           | 13 +++++++++----
+ 3 files changed, 22 insertions(+), 10 deletions(-)
+
+diff --git a/tests/test_runner/test_debug_sql.py b/tests/test_runner/test_debug_sql.py
+index 9957295f01..d45d8cb4ba 100644
+--- a/tests/test_runner/test_debug_sql.py
++++ b/tests/test_runner/test_debug_sql.py
+@@ -4,6 +4,7 @@ from io import StringIO
+ from django.db import connection
+ from django.test import TestCase
+ from django.test.runner import DiscoverRunner
++from django.utils.version import PY311
+ 
+ from .models import Person
+ 
+@@ -109,14 +110,17 @@ class TestDebugSQL(unittest.TestCase):
+         ),
+     ]
+ 
++    # Python 3.11 uses fully qualified test name in the output.
++    method_name = ".runTest" if PY311 else ""
++    test_class_path = "test_runner.test_debug_sql.TestDebugSQL"
+     verbose_expected_outputs = [
+-        "runTest (test_runner.test_debug_sql.TestDebugSQL.FailingTest) ... FAIL",
+-        "runTest (test_runner.test_debug_sql.TestDebugSQL.ErrorTest) ... ERROR",
+-        "runTest (test_runner.test_debug_sql.TestDebugSQL.PassingTest) ... ok",
++        f"runTest ({test_class_path}.FailingTest{method_name}) ... FAIL",
++        f"runTest ({test_class_path}.ErrorTest{method_name}) ... ERROR",
++        f"runTest ({test_class_path}.PassingTest{method_name}) ... ok",
+         # If there are errors/failures in subtests but not in test itself,
+         # the status is not written. That behavior comes from Python.
+-        "runTest (test_runner.test_debug_sql.TestDebugSQL.FailingSubTest) ...",
+-        "runTest (test_runner.test_debug_sql.TestDebugSQL.ErrorSubTest) ...",
++        f"runTest ({test_class_path}.FailingSubTest{method_name}) ...",
++        f"runTest ({test_class_path}.ErrorSubTest{method_name}) ...",
+         (
+             """SELECT COUNT(*) AS "__count" """
+             """FROM "test_runner_person" WHERE """
+diff --git a/tests/test_runner/test_parallel.py b/tests/test_runner/test_parallel.py
+index ca208f6a48..a2f68d3512 100644
+--- a/tests/test_runner/test_parallel.py
++++ b/tests/test_runner/test_parallel.py
+@@ -4,6 +4,7 @@ import unittest
+ 
+ from django.test import SimpleTestCase
+ from django.test.runner import RemoteTestResult
++from django.utils.version import PY311
+ 
+ try:
+     import tblib.pickling_support
+@@ -125,7 +126,9 @@ class RemoteTestResultTest(SimpleTestCase):
+         self.assertEqual(event[0], "addSubTest")
+         self.assertEqual(
+             str(event[2]),
+-            "dummy_test (test_runner.test_parallel.SampleFailingSubtest) (index=0)",
++            "dummy_test (test_runner.test_parallel.SampleFailingSubtest%s) (index=0)"
++            # Python 3.11 uses fully qualified test name in the output.
++            % (".dummy_test" if PY311 else ""),
+         )
+         self.assertEqual(repr(event[3][1]), "AssertionError('0 != 1')")
+ 
+diff --git a/tests/test_utils/tests.py b/tests/test_utils/tests.py
+index b21c83585b..3b17da1c13 100644
+--- a/tests/test_utils/tests.py
++++ b/tests/test_utils/tests.py
+@@ -47,6 +47,7 @@ from django.test.utils import (
+ from django.urls import NoReverseMatch, path, reverse, reverse_lazy
+ from django.utils.deprecation import RemovedInDjango41Warning
+ from django.utils.log import DEFAULT_LOGGING
++from django.utils.version import PY311
+ 
+ from .models import Car, Person, PossessedCar
+ from .views import empty_response
+@@ -99,9 +100,11 @@ class SkippingTestCase(SimpleTestCase):
+             SkipTestCase("test_foo").test_foo,
+             ValueError,
+             "skipUnlessDBFeature cannot be used on test_foo (test_utils.tests."
+-            "SkippingTestCase.test_skip_unless_db_feature.<locals>.SkipTestCase) "
++            "SkippingTestCase.test_skip_unless_db_feature.<locals>.SkipTestCase%s) "
+             "as SkippingTestCase.test_skip_unless_db_feature.<locals>.SkipTestCase "
+-            "doesn't allow queries against the 'default' database.",
++            "doesn't allow queries against the 'default' database."
++            # Python 3.11 uses fully qualified test name in the output.
++            % (".test_foo" if PY311 else ""),
+         )
+ 
+     def test_skip_if_db_feature(self):
+@@ -144,9 +147,11 @@ class SkippingTestCase(SimpleTestCase):
+             SkipTestCase("test_foo").test_foo,
+             ValueError,
+             "skipIfDBFeature cannot be used on test_foo (test_utils.tests."
+-            "SkippingTestCase.test_skip_if_db_feature.<locals>.SkipTestCase) "
++            "SkippingTestCase.test_skip_if_db_feature.<locals>.SkipTestCase%s) "
+             "as SkippingTestCase.test_skip_if_db_feature.<locals>.SkipTestCase "
+-            "doesn't allow queries against the 'default' database.",
++            "doesn't allow queries against the 'default' database."
++            # Python 3.11 uses fully qualified test name in the output.
++            % (".test_foo" if PY311 else ""),
+         )
+ 
+ 
+-- 
+2.35.1
+
+From 2037b6b40a4250daaf3fa85f489fab34536c4f3a Mon Sep 17 00:00:00 2001
+From: Mariusz Felisiak <felisiak.mariusz@gmail.com>
+Date: Mon, 9 May 2022 10:38:11 +0200
+Subject: [PATCH 3/3] Refs #33173 -- Fixed test_dateparse tests on Python
+ 3.11+.
+
+date/datetime/time.fromisoformat() support any valid ISO 8601 format
+in Python 3.11+, see https://github.com/python/cpython/issues/80010.
+---
+ tests/utils_tests/test_dateparse.py | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/tests/utils_tests/test_dateparse.py b/tests/utils_tests/test_dateparse.py
+index 8683811636..3f04a8a49c 100644
+--- a/tests/utils_tests/test_dateparse.py
++++ b/tests/utils_tests/test_dateparse.py
+@@ -8,6 +8,7 @@ from django.utils.dateparse import (
+     parse_time,
+ )
+ from django.utils.timezone import get_fixed_timezone
++from django.utils.version import PY311
+ 
+ 
+ class DateParseTests(unittest.TestCase):
+@@ -15,14 +16,18 @@ class DateParseTests(unittest.TestCase):
+         # Valid inputs
+         self.assertEqual(parse_date("2012-04-23"), date(2012, 4, 23))
+         self.assertEqual(parse_date("2012-4-9"), date(2012, 4, 9))
++        if PY311:
++            self.assertEqual(parse_date("20120423"), date(2012, 4, 23))
+         # Invalid inputs
+-        self.assertIsNone(parse_date("20120423"))
++        self.assertIsNone(parse_date("2012423"))
+         with self.assertRaises(ValueError):
+             parse_date("2012-04-56")
+ 
+     def test_parse_time(self):
+         # Valid inputs
+         self.assertEqual(parse_time("09:15:00"), time(9, 15))
++        if PY311:
++            self.assertEqual(parse_time("091500"), time(9, 15))
+         self.assertEqual(parse_time("10:10"), time(10, 10))
+         self.assertEqual(parse_time("10:20:30.400"), time(10, 20, 30, 400000))
+         self.assertEqual(parse_time("10:20:30,400"), time(10, 20, 30, 400000))
+@@ -35,7 +40,7 @@ class DateParseTests(unittest.TestCase):
+         self.assertIsNone(parse_time("00:05:23+"))
+         self.assertIsNone(parse_time("00:05:23+25:00"))
+         self.assertIsNone(parse_time("4:18:101"))
+-        self.assertIsNone(parse_time("091500"))
++        self.assertIsNone(parse_time("91500"))
+         with self.assertRaises(ValueError):
+             parse_time("09:15:90")
+ 
+-- 
+2.35.1
+
