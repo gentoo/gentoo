@@ -36,6 +36,10 @@ BDEPEND="
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
+PATCHES=(
+	"${FILESDIR}"/${P}-test.patch
+)
+
 python_test() {
 	local -x DJANGO_SETTINGS_MODULE=tests.settings.main
 	local -x DJANGO_CONFIGURATION=Test
