@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit bash-completion-r1 linux-info meson python-single-r1 vala xdg
+inherit bash-completion-r1 linux-info meson python-single-r1 vala udev xdg
 
 DESCRIPTION="Aims to make updating firmware on Linux automatic, safe and reliable"
 HOMEPAGE="https://fwupd.org"
@@ -142,6 +142,7 @@ src_configure() {
 		-Ddocs="$(usex gtk-doc gtkdoc none)"
 		-Defi_binary="false"
 		-Dsupported_build="enabled"
+		-Dudevdir="${EPREFIX}$(get_udevdir)"
 		$(meson_feature archive libarchive)
 		$(meson_use bash-completion bash_completion)
 		$(meson_feature bluetooth bluez)
@@ -176,4 +177,12 @@ src_install() {
 				-i "${ED}"/etc/${PN}/daemon.conf || die
 		fi
 	fi
+}
+
+pkg_postinst() {
+	use minimal || udev_reload
+}
+
+pkg_postrm() {
+	use minimal || udev_reload
 }
