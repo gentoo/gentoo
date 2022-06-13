@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<upstream>
-		<remote-id type="sourceforge">asciidoc</remote-id>
-		<remote-id type="github">asciidoc-py/asciidoc-py</remote-id>
-		<bugs-to>https://github.com/asciidoc-py/asciidoc-py/issues</bugs-to>
-	</upstream>
+  <maintainer type="person" proxied="yes">
+    <name>Thamognya Kodi</name>
+    <email>contact@thamognya.com</email>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="sourceforge">asciidoc</remote-id>
+    <remote-id type="github">asciidoc-py/asciidoc-py</remote-id>
+    <bugs-to>https://github.com/asciidoc-py/asciidoc-py/issues</bugs-to>
+  </upstream>
 </pkgmetadata>
