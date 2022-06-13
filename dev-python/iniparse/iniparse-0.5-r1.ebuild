@@ -30,3 +30,8 @@ BDEPEND="
 python_test() {
 	"${EPYTHON}" runtests.py || die
 }
+
+python_install_all() {
+	rm -rf "${ED}/usr/share/doc/${P}" || die
+	distutils-r1_python_install_all
+}
