@@ -91,7 +91,7 @@ src_prepare() {
 
 	# Use the correct pkgconfig name for Lua.
 	# The upstream configure script handles luajit specially, and is not
-	# effected by these changes.
+	# affected by these changes.
 	sed -i	\
 		-e "/^AC_INIT/s|, [0-9].+, |, $PV, |" \
 		-e "s:AC_CONFIG_FILES(\[Makefile\]):AC_CONFIG_FILES([${makefiles}]):g" \

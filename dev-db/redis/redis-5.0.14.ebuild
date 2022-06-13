@@ -94,7 +94,7 @@ src_prepare() {
 		LUAPKGCONFIG=lua
 	fi
 	# The upstream configure script handles luajit specially, and is not
-	# effected by these changes.
+	# affected by these changes.
 	einfo "Selected LUAPKGCONFIG=${LUAPKGCONFIG}"
 	sed -i	\
 		-e "/^AC_INIT/s|, [0-9].+, |, $PV, |" \
