@@ -176,15 +176,12 @@ src_configure() {
 
 	#
 	# Make sure some critical configuration options are always set
-	# correctly independently of what configuration options have been
-	# chosen.
+	# correctly independently of what Trilinos dependency resolver thinks
+	# it should be doing.
 	#
 	local mycmakeargs+=(
 		-DAmesos2_ENABLE_LAPACK=ON
 		-DAmesos2_ENABLE_MUMPS=OFF
-		-DTpetra_INST_INT_INT=ON
-		-DTpetra_INST_INT_LONG=ON
-		-DTpetra_INST_INT_LONG_LONG=ON
 	)
 
 	use eigen && \
