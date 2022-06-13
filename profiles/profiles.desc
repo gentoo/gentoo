@@ -313,6 +313,7 @@ amd64-linux		prefix/linux/amd64				exp
 arm-linux		prefix/linux/arm				exp
 ppc64-linux		prefix/linux/ppc64				exp
 ppc64-linux		prefix/linux/ppc64le				exp
+riscv-linux		prefix/linux/riscv				exp
 x86-linux		prefix/linux/x86				exp
 
 # Linux Standalone Profiles
