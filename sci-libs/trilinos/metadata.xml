@@ -16,6 +16,7 @@ of large-scale, complex multi-physics engineering and scientific problems.
 </longdescription>
 	<use>
 		<flag name="adolc">Add support for adolc (<pkg>sci-libs/adolc</pkg>)</flag>
+		<flag name="all_packages">Enable all supported Trilinos packages (per default only a subset is built)</flag>
 		<flag name="arprec">Add support for arprec (<pkg>sci-libs/arprec</pkg>)</flag>
 		<flag name="clp">Add support for clp (<pkg>sci-libs/coinor-clp</pkg>)</flag>
 		<flag name="cuda">Add support for cuda (<pkg>dev-util/nvidia-cuda-toolkit</pkg>)</flag>

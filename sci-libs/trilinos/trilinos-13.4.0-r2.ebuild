@@ -18,7 +18,7 @@ LICENSE="BSD LGPL-2.1"
 SLOT="0"
 
 IUSE="
-	adolc arprec clp cuda eigen glpk gtest hdf5 hwloc hypre
+	adolc all_packages arprec clp cuda eigen glpk gtest hdf5 hwloc hypre
 	matio metis mkl mumps netcdf openmp petsc qd scalapack scotch sparse
 	superlu taucs tbb test threads tvmet yaml zlib X
 "
@@ -111,15 +111,26 @@ src_configure() {
 		-DTrilinos_INSTALL_CONFIG_DIR="${EPREFIX}/usr/$(get_libdir)/cmake"
 		-DTrilinos_INSTALL_INCLUDE_DIR="${EPREFIX}/usr/include/trilinos"
 		-DTrilinos_INSTALL_LIB_DIR="${EPREFIX}/usr/$(get_libdir)/trilinos"
-		-DTrilinos_ENABLE_ALL_PACKAGES=ON
-		-DTrilinos_ENABLE_OpenMP="$(usex openmp)"
-		-DTrilinos_ENABLE_PyTrilinos=OFF
+		-DTrilinos_ENABLE_ALL_PACKAGES="$(usex all_packages)"
 		-DTrilinos_ENABLE_Adelus=OFF
 		-DTrilinos_ENABLE_Moertel=OFF
+		-DTrilinos_ENABLE_PyTrilinos=OFF
 		-DTrilinos_ENABLE_SEACAS=OFF
-		-DTrilinos_ENABLE_SEACASChaco=OFF
-		-DTrilinos_ENABLE_SEACASExodiff="$(usex netcdf)"
-		-DTrilinos_ENABLE_SEACASExodus="$(usex netcdf)"
+		-DTrilinos_ENABLE_Amesos=ON
+		-DTrilinos_ENABLE_AztecOO=ON
+		-DTrilinos_ENABLE_COMPLEX_DOUBLE=ON
+		-DTrilinos_ENABLE_COMPLEX_FLOAT=ON
+		-DTrilinos_ENABLE_EpetraExt=ON
+		-DTrilinos_ENABLE_Epetra=ON
+		-DTrilinos_ENABLE_Ifpack=ON
+		-DTrilinos_ENABLE_ML=ON
+		-DTrilinos_ENABLE_MueLu=ON
+		-DTrilinos_ENABLE_OpenMP="$(usex openmp)"
+		-DTrilinos_ENABLE_ROL=ON
+		-DTrilinos_ENABLE_Sacado=ON
+		-DTrilinos_ENABLE_Teuchos=ON
+		-DTrilinos_ENABLE_Tpetra=ON
+		-DTrilinos_ENABLE_Zoltan=ON
 		-DTrilinos_ENABLE_TESTS="$(usex test)"
 		-DTPL_ENABLE_BinUtils=ON
 		-DTPL_ENABLE_BLAS=ON
@@ -161,7 +172,16 @@ src_configure() {
 		-DTPL_ENABLE_X11="$(usex X)"
 		-DTPL_ENABLE_yaml-cpp="$(usex yaml)"
 		-DTPL_ENABLE_Zlib="$(usex zlib)"
-		-DML_ENABLE_SuperLU:BOOL=OFF
+	)
+
+	#
+	# Make sure some critical configuration options are always set
+	# correctly independently of what Trilinos dependency resolver thinks
+	# it should be doing.
+	#
+	local mycmakeargs+=(
+		-DAmesos2_ENABLE_LAPACK=ON
+		-DAmesos2_ENABLE_MUMPS=OFF
 	)
 
 	use eigen && \
@@ -201,6 +221,8 @@ src_configure() {
 	#
 	# Make sure we use the compiler wrappers in order to build trilinos.
 	#
+	[ ! -z "${CC}"] && export OMPI_CC="${CC}" MPICH_CC="${CC}" && tc-export OMPI_CC MPICH_CC
+	[ ! -z "${CXX}"] && export OMPI_CXX="${CXX}" MPICH_CXX="${CXX}" && tc-export OMPI_CXX MPICH_CXX
 	export CC=mpicc CXX=mpicxx && tc-export CC CXX
 
 	# Trilinos needs a custom build type:
