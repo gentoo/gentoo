@@ -163,6 +163,7 @@ S="${WORKDIR}/${MY_P}"
 # patches merged upstream, to be removed with 16.1 or later bump
 PATCHES=(
 	"${FILESDIR}"/pulseaudio-16.0-fix-rtp-receiver-sdp-record.patch
+	"${FILESDIR}"/pulseaudio-16.0-optional-module-console-kit.patch
 )
 
 src_prepare() {
@@ -210,6 +211,7 @@ src_configure() {
 		-Dbluez5-gstreamer=${enable_bluez5_gstreamer}
 		$(meson_use bluetooth bluez5-native-headset)
 		$(meson_use ofono-headset bluez5-ofono-headset)
+		-Dconsolekit=disabled
 		$(meson_feature dbus)
 		$(meson_feature elogind)
 		-Dfftw=${enable_fftw}
