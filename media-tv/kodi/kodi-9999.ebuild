@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -130,7 +130,6 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	udev? ( virtual/udev )
 	vaapi? (
 		x11-libs/libva:=
-		!gles? ( x11-libs/libva[opengl] )
 		system-ffmpeg? ( media-video/ffmpeg[vaapi] )
 		vdpau? ( x11-libs/libva-vdpau-driver )
 		wayland? ( x11-libs/libva[wayland] )
