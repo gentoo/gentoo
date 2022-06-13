@@ -323,7 +323,7 @@ net-fs/samba addc addns ads cluster python test
 # Some more unkeyworded dependencies.
 dev-cpp/eigen test
 mate-base/mate help
-mate-base/mate-applets-meta appindicator sensors
+mate-base/mate-applets-meta sensors
 mate-extra/caja-extensions gajim
 sci-libs/gdal armadillo netcdf
 sys-fs/btrfs-progs reiserfs
@@ -410,7 +410,6 @@ net-libs/libpcap bluetooth
 # Mart Raudsepp <leio@gentoo.org> (2017-02-16)
 # Not yet tested features/dependencies
 app-text/evince dvi nautilus postscript t1lib xps
-net-wireless/blueman appindicator
 
 # Markus Meier <maekke@gentoo.org> (2013-12-26)
 # Unkeyworded deps, bug #488724
