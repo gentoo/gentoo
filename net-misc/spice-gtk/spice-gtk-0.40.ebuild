@@ -125,9 +125,11 @@ src_configure() {
 src_install() {
 	meson_src_install
 
-	# bug #775554
-	fowners root:root /usr/libexec/spice-client-glib-usb-acl-helper
-	fperms 4755 /usr/libexec/spice-client-glib-usb-acl-helper
+	if use usbredir; then
+		# bug #775554
+		fowners root:root /usr/libexec/spice-client-glib-usb-acl-helper
+		fperms 4755 /usr/libexec/spice-client-glib-usb-acl-helper
+	fi
 
 	make_desktop_entry spicy Spicy "utilities-terminal" "Network;RemoteAccess;"
 	readme.gentoo_create_doc
