@@ -1,0 +1,76 @@
+commit 823e46fba0742605f557b68cd591f61624b93966
+Author: Igor V. Kovalenko <igor.v.kovalenko@gmail.com>
+Date:   Sun Jun 12 21:49:32 2022 +0300
+
+    build-sys: meson: Make module-console-kit optional
+    
+    Default build configuration would fail to run on a system without systemd-logind
+    (or elogind) and without ConsoleKit daemon responding on dbus interface. Here,
+    module-console-kit would fail to initialize, preventing daemon from starting.
+    
+    Make module-console-kit an optional build feature to allow opt-out.
+    
+    Part-of: <https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/719>
+
+diff --git a/meson.build b/meson.build
+index d4cdbd6a5..c6db7e670 100644
+--- a/meson.build
++++ b/meson.build
+@@ -732,6 +732,10 @@ if get_option('daemon')
+     cdata.set('HAVE_SYSTEMD_LOGIN', 1)
+   endif
+ 
++  if get_option('consolekit').enabled()
++    assert(dbus_dep.found(), 'ConsoleKit requires D-Bus support')
++  endif
++
+   tcpwrap_dep = cc.find_library('wrap', required: get_option('tcpwrap'))
+   if cc.has_header('tcpd.h') and cc.has_function('hosts_access', dependencies : tcpwrap_dep)
+     cdata.set('HAVE_LIBWRAP', 1)
+@@ -1001,6 +1005,7 @@ summary += [
+   '  Enable HAL->udev compat:     @0@'.format(get_option('hal-compat')),
+   'Enable systemd units:          @0@'.format(systemd_dep.found()),
+   'Enable elogind:                @0@'.format(libelogind_dep.found()),
++  'Enable ConsoleKit:             @0@'.format(not get_option('consolekit').disabled() and dbus_dep.found()),
+   'Enable TCP Wrappers:           @0@'.format(tcpwrap_dep.found()),
+   'Enable OpenSSL (for Airtunes): @0@'.format(openssl_dep.found()),
+   'Database:                      @0@'.format(get_option('database')),
+diff --git a/meson_options.txt b/meson_options.txt
+index b23210072..e7160a3a7 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -99,6 +99,9 @@ option('bluez5-native-headset',
+ option('bluez5-ofono-headset',
+        type : 'boolean',
+        description : 'Optional oFono headset backend support (BlueZ 5)')
++option('consolekit',
++       type : 'feature', value : 'auto',
++       description : 'Optional ConsoleKit support')
+ option('dbus',
+        type : 'feature', value : 'auto',
+        description : 'Optional D-Bus support')
+diff --git a/src/modules/meson.build b/src/modules/meson.build
+index cdf372c8e..1d8004300 100644
+--- a/src/modules/meson.build
++++ b/src/modules/meson.build
+@@ -130,7 +130,6 @@ endif
+ 
+ if dbus_dep.found()
+   all_modules += [
+-    [ 'module-console-kit', 'module-console-kit.c', [], [], [dbus_dep] ],
+     [ 'module-dbus-protocol',
+       [ 'dbus/iface-card.c', 'dbus/iface-card.h',
+ 	'dbus/iface-card-profile.c', 'dbus/iface-card-profile.h',
+@@ -147,6 +146,12 @@ if dbus_dep.found()
+       [], [], [dbus_dep] ],
+     [ 'module-rygel-media-server', 'module-rygel-media-server.c', [], [], [dbus_dep], libprotocol_http ],
+   ]
++
++  if not get_option('consolekit').disabled()
++    all_modules += [
++      [ 'module-console-kit', 'module-console-kit.c', [], [], [dbus_dep] ],
++    ]
++  endif
+ endif
+ 
+ if fftw_dep.found()
