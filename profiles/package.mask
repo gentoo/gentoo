@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-06-13)
+# Upstream has discontinued the fork.  No revdeps.  They recommend using
+# the original editdistance (not packaged on Gentoo)
+# or dev-python/ukkonen.
+# Removal on 2022-07-13.  Bug #851678.
+dev-python/editdistance-s
+
 # Sam James <sam@gentoo.org> (2022-06-10)
 # Masked for removal on 2022-07-10. No upstream activity in a long time,
 # no reverse dependencies, and Gentoo maintains a huge number of patches
