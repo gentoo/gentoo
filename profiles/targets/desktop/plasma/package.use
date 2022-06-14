@@ -61,3 +61,6 @@ sys-libs/zlib minizip
 <app-office/calligra-3.3 phonon
 kde-apps/kio-extras phonon
 kde-apps/marble phonon
+
+# Required by kde-plasma/plasma-meta
+kde-plasma/kwin lock
