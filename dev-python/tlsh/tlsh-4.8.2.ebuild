@@ -14,7 +14,7 @@ S=${WORKDIR}/${P}/py_ext
 
 LICENSE="|| ( Apache-2.0 BSD )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~x86"
 
 DEPEND="dev-libs/tlsh"
 RDEPEND="${DEPEND}"
