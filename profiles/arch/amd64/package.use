@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ben Kohler <bkohler@gentoo.org> (2022-06-07)
+# Enable BIOS & UEFI targets by default
+sys-apps/memtest86+ bios64 efi64
+
 # Theo Anderson <telans@posteo.de> (2021-03-06)
 # Enable 32-bit clang runtime to ease -m32 builds with non-GCC runtime
 sys-devel/clang-runtime abi_x86_32

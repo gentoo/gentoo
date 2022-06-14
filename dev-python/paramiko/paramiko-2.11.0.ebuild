@@ -38,7 +38,6 @@ BDEPEND="
 	)
 "
 
-distutils_enable_sphinx sites/docs
 distutils_enable_tests pytest
 
 src_prepare() {

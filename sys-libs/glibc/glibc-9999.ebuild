@@ -6,7 +6,7 @@ EAPI=7
 # Bumping notes: https://wiki.gentoo.org/wiki/Project:Toolchain/sys-libs/glibc
 # Please read & adapt the page as necessary if obsolete.
 
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{8..11} )
 TMPFILES_OPTIONAL=1
 
 inherit python-any-r1 prefix preserve-libs toolchain-funcs flag-o-matic gnuconfig \
@@ -785,11 +785,19 @@ sanity_prechecks() {
 				fi
 			fi
 
-			ebegin "Checking linux-headers version (${build_kv} >= ${want_kv})"
-			if ! eend_KV ${build_kv} ${want_kv} ; then
-				echo
-				eerror "You need linux-headers of at least ${want_kv}!"
-				die "linux-headers version too low!"
+			# Do not run this check for pkg_pretend, just pkg_setup and friends (if we ever get used there).
+			# It's plausible (seen it in the wild) that Portage will (correctly) schedule a linux-headers
+			# upgrade before glibc, but because pkg_pretend gets run before any packages are merged at all (not
+			# just glibc), the whole emerge gets aborted without a good reason. We probably don't
+			# need to run this check at all given we have a dependency on the right headers,
+			# but let's leave it as-is for now.
+			if [[ ${EBUILD_PHASE_FUNC} != pkg_pretend ]] ; then
+				ebegin "Checking linux-headers version (${build_kv} >= ${want_kv})"
+				if ! eend_KV ${build_kv} ${want_kv} ; then
+					echo
+					eerror "You need linux-headers of at least ${want_kv}!"
+					die "linux-headers version too low!"
+				fi
 			fi
 		fi
 	fi
@@ -1181,7 +1189,10 @@ glibc_src_test() {
 	# sandbox does not understand unshare() and prevents
 	# writes to /proc/, which makes many tests fail
 
-	SANDBOX_ON=0 LD_PRELOAD= emake ${myxfailparams} check
+	# we give the tests a bit more time to avoid spurious
+	# bug reports on slow arches
+
+	SANDBOX_ON=0 LD_PRELOAD= TIMEOUTFACTOR=16 emake ${myxfailparams} check
 }
 
 do_src_test() {

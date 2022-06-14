@@ -11,7 +11,7 @@ SRC_URI="https://github.com/PDAL/PDAL/releases/download/${PV}/PDAL-${PV}-src.tar
 
 LICENSE="BSD"
 SLOT="0/14"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="postgres test"
 RESTRICT="!test? ( test )"
 

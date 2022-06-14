@@ -6,7 +6,6 @@
 		<name>Java</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="google-code">mockito</remote-id>
 		<remote-id type="github">mockito/mockito</remote-id>
 	</upstream>
 </pkgmetadata>

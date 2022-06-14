@@ -74,7 +74,7 @@ inherit cargo distutils-r1
 DESCRIPTION="Python wrapper for Brave's adblocking library, which is written in Rust"
 HOMEPAGE="https://github.com/ArniDagur/python-adblock"
 SRC_URI="
-	https://github.com/ArniDagur/python-adblock/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/ArniDagur/python-adblock/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz
 	$(cargo_crate_uris)"
 S="${WORKDIR}/python-${P}"
 

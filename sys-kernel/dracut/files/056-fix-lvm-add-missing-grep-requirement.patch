@@ -1,0 +1,36 @@
+From 79f9d9e1c29a9c8fc046ab20765e5bde2aaa3428 Mon Sep 17 00:00:00 2001
+From: Antonio Alvarez Feijoo <antonio.feijoo@suse.com>
+Date: Mon, 11 Apr 2022 08:33:17 +0200
+Subject: [PATCH] fix(lvm): add missing grep requirement
+
+Since commit https://github.com/dracutdevs/dracut/commit/7ffc5e38
+lvm_scan.sh needs grep.
+---
+ modules.d/90lvm/module-setup.sh | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/modules.d/90lvm/module-setup.sh b/modules.d/90lvm/module-setup.sh
+index 25be0133..aa8c6db8 100755
+--- a/modules.d/90lvm/module-setup.sh
++++ b/modules.d/90lvm/module-setup.sh
+@@ -3,7 +3,7 @@
+ # called by dracut
+ check() {
+     # No point trying to support lvm if the binaries are missing
+-    require_binaries lvm || return 1
++    require_binaries lvm grep || return 1
+ 
+     [[ $hostonly ]] || [[ $mount_needs ]] && {
+         for fs in "${host_fs_types[@]}"; do
+@@ -48,7 +48,7 @@ installkernel() {
+ 
+ # called by dracut
+ install() {
+-    inst lvm
++    inst_multiple lvm grep
+ 
+     if [[ $hostonly_cmdline == "yes" ]]; then
+         local _lvmconf
+-- 
+2.35.1
+

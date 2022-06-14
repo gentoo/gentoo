@@ -179,7 +179,7 @@ src_install() {
 
 	if use examples; then
 		docinto samples
-		dodoc samples/{*.m,README,Mmakefile}
+		dodoc samples/{*.m,README.md,Mmakefile}
 		dodoc -r samples/c_interface \
 			samples/diff \
 			samples/muz \

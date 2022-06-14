@@ -99,7 +99,9 @@ arm		default/linux/arm/17.0/armv7a/hardened		exp
 arm		default/linux/arm/17.0/armv7a/hardened/selinux	dev
 arm		default/linux/arm/17.0/armv7a/desktop		dev
 arm		default/linux/arm/17.0/armv7a/desktop/gnome	dev
+arm		default/linux/arm/17.0/armv7a/desktop/gnome/systemd	dev
 arm		default/linux/arm/17.0/armv7a/desktop/plasma	dev
+arm		default/linux/arm/17.0/armv7a/desktop/plasma/systemd	dev
 arm		default/linux/arm/17.0/armv7a/developer		exp
 arm		default/linux/arm/17.0/armv7a/systemd		dev
 

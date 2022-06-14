@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/classpathx/activation-${PV}.tar.gz"
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="1"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"

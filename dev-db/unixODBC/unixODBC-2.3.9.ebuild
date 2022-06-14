@@ -31,7 +31,8 @@ MULTILIB_WRAPPED_HEADERS=( /usr/include/unixodbc_conf.h )
 
 multilib_src_configure() {
 	# --enable-driver-conf is --enable-driverc as per configure.in
-	myeconfargs=(
+	local myeconfargs=(
+		--cache-file="${BUILD_DIR}"/config.cache
 		--sysconfdir="${EPREFIX}"/etc/${PN}
 		--disable-editline
 		--disable-static

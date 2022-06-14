@@ -1,4 +1,4 @@
-# Copyright 2012-2021 Gentoo Authors
+# Copyright 2012-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,9 +7,9 @@ inherit multilib multilib-minimal
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit autotools git-r3
-	EGIT_REPO_URI="https://github.com/pkgconf/pkgconf.git"
+	EGIT_REPO_URI="https://gitea.treehouse.systems/ariadne/pkgconf.git"
 else
-	SRC_URI="http://distfiles.dereferenced.org/${PN}/${P}.tar.xz"
+	SRC_URI="https://distfiles.dereferenced.org/${PN}/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~ppc-macos ~x64-macos"
 fi
 

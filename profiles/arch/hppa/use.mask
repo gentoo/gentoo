@@ -37,10 +37,6 @@ vulkan
 system-libvpx
 vpx
 
-# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
-# Dependency not keyworded (dev-libs/libappindicator).
-appindicator
-
 # Matt Turner <mattst88@gentoo.org> (2018-05-26)
 # Unmask systemd since it is keyworded here.
 -systemd

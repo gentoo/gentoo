@@ -3,6 +3,7 @@
 
 EAPI="7"
 
+TOOLCHAIN_PATCH_DEV="slyfox"
 PATCH_GCC_VER="9.4.0"
 PATCH_VER="1"
 
@@ -22,8 +23,7 @@ inherit toolchain
 # Needs to be after inherit (for now?), bug #830908
 EGIT_BRANCH=releases/gcc-$(ver_cut 1)
 
-# Don't keyword live ebuilds
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND=""
 BDEPEND="${CATEGORY}/binutils"

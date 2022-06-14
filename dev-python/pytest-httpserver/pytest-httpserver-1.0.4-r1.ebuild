@@ -14,7 +14,7 @@ SRC_URI="https://github.com/csernazs/pytest-httpserver/archive/refs/tags/${PV}.t
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64 x86"
 
 RDEPEND="dev-python/werkzeug[${PYTHON_USEDEP}]"
 BDEPEND="

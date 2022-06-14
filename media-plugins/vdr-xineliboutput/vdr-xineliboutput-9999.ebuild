@@ -27,7 +27,7 @@ COMMON_DEPEND="
 	xine? (
 		( >=media-libs/xine-lib-1.2
 			media-video/ffmpeg )
-		fbcon? ( jpeg? ( virtual/jpeg:* ) )
+		fbcon? ( jpeg? ( media-libs/libjpeg-turbo:= ) )
 		X? (
 			x11-libs/libX11
 			x11-libs/libXext
@@ -35,7 +35,7 @@ COMMON_DEPEND="
 			xinerama? ( x11-libs/libXinerama )
 			dbus? ( dev-libs/dbus-glib dev-libs/glib:2 )
 			vdpau? ( x11-libs/libvdpau >=media-libs/xine-lib-1.2 )
-			jpeg? ( virtual/jpeg:* )
+			jpeg? ( media-libs/libjpeg-turbo:= )
 			bluray? ( media-libs/libbluray )
 			opengl? ( virtual/opengl )
 		)
@@ -131,7 +131,7 @@ src_install() {
 		fi
 
 		if use xine; then
-			doinitd "${FILESDIR}"/vdr-frontend
+			newinitd "${FILESDIR}"/vdr-frontend-r1 vdr-frontend
 
 			insinto $XINE_PLUGIN_DIR
 			doins xineplug_inp_xvdr.so

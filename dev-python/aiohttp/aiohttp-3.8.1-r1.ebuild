@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1 multiprocessing
 
@@ -67,6 +67,9 @@ src_prepare() {
 	# xfail_strict fails on py3.10
 	sed -i -e '/--cov/d' -e '/xfail_strict/d' setup.cfg || die
 
+	# which(1)...
+	sed -i -e 's:which:command -v:' Makefile || die
+
 	distutils-r1_src_prepare
 }
 
@@ -96,10 +99,25 @@ python_test() {
 		tests/test_client_session.py::test_client_session_timeout_zero
 	)
 
-	[[ ${EPYTHON} == pypy3 ]] && EPYTEST_DESELECT+=(
-		# C extensions are not used on PyPy3
-		tests/test_http_parser.py::test_c_parser_loaded
-	)
+	case ${EPYTHON} in
+		pypy3)
+			EPYTEST_DESELECT+=(
+				# C extensions are not used on PyPy3
+				tests/test_http_parser.py::test_c_parser_loaded
+			)
+			;;
+		python3.11)
+			EPYTEST_DESELECT+=(
+				# known problem with tests, not code itself
+				'tests/test_client_functional.py::test_timeout_on_reading_headers[pyloop]'
+				'tests/test_client_functional.py::test_timeout_on_conn_reading_headers[pyloop]'
+				'tests/test_client_request.py::test_data_stream_exc_chain[pyloop]'
+				tests/test_test_utils.py::TestAioHTTPTestCase::test_example_with_loop
+				tests/test_test_utils.py::TestAioHTTPTestCase::test_example_without_explicit_loop
+				tests/test_test_utils.py::TestAioHTTPTestCase::test_inner_example_without_explicit_loop
+			)
+			;;
+	esac
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local -x PYTEST_PLUGINS=pytest_mock,xdist.plugin,pytest_forked

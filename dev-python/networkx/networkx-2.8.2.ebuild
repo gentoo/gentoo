@@ -4,8 +4,9 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
-
+PYTHON_TESTED=( python3_{8..10} )
+# networkx skips tests w/ missing deps and the available ones all pass w/ py3.11
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_11 )
 inherit distutils-r1 optfeature virtualx
 
 DESCRIPTION="Python tools to manipulate graphs and complex networks"
@@ -23,9 +24,11 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-mac
 BDEPEND="
 	test? (
 		>=dev-python/lxml-4.5[${PYTHON_USEDEP}]
-		>=dev-python/numpy-1.19[${PYTHON_USEDEP}]
 		>=dev-python/pyyaml-3.13[${PYTHON_USEDEP}]
-		>=dev-python/scipy-1.6.2[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/numpy-1.19[${PYTHON_USEDEP}]
+			>=dev-python/scipy-1.6.2[${PYTHON_USEDEP}]
+		' "${PYTHON_TESTED[@]}")
 	)
 "
 

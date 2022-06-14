@@ -20,6 +20,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-Wformat-security.patch
 	"${FILESDIR}"/${P}-gcc7.patch
 	"${FILESDIR}"/${P}-gcc11.patch
+	"${FILESDIR}"/${P}-gcc12-time.patch
 )
 
 src_configure() {

@@ -3,8 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
-PYTHON_REQ_USE="xml"
+PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_REQ_USE="xml(+)"
 
 inherit python-any-r1 verify-sig
 

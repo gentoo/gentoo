@@ -1,6 +1,16 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Conrad Kostecki <conikost@gentoo.org> (2022-06-05)
+# Unkeyworded deps, bug #687830
+app-metrics/collectd collectd_plugins_modbus
+app-metrics/collectd collectd_plugins_nut
+app-metrics/collectd collectd_plugins_oracle
+app-metrics/collectd collectd_plugins_ping
+app-metrics/collectd collectd_plugins_routeros
+app-metrics/collectd collectd_plugins_sigrok
+app-metrics/collectd collectd_plugins_varnish
+
 # Jimi Huotari <chiitoo@gentoo.org> (2022-05-08)
 # Not keyworded here yet.
 lxqt-base/lxqt-meta desktop-portal
@@ -149,7 +159,6 @@ dev-scheme/guile -jit
 
 # Sam James <sam@gentoo.org> (2020-09-05)
 # nvidia-texture-tools not useful here
-media-libs/devil nvtt
 games-strategy/0ad nvtt
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-08-20)
@@ -314,7 +323,7 @@ net-fs/samba addc addns ads cluster python test
 # Some more unkeyworded dependencies.
 dev-cpp/eigen test
 mate-base/mate help
-mate-base/mate-applets-meta appindicator sensors
+mate-base/mate-applets-meta sensors
 mate-extra/caja-extensions gajim
 sci-libs/gdal armadillo netcdf
 sys-fs/btrfs-progs reiserfs
@@ -401,7 +410,6 @@ net-libs/libpcap bluetooth
 # Mart Raudsepp <leio@gentoo.org> (2017-02-16)
 # Not yet tested features/dependencies
 app-text/evince dvi nautilus postscript t1lib xps
-net-wireless/blueman appindicator
 
 # Markus Meier <maekke@gentoo.org> (2013-12-26)
 # Unkeyworded deps, bug #488724

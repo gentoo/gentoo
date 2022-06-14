@@ -32,9 +32,6 @@ BDEPEND="
 	)
 "
 
-distutils_enable_sphinx docs \
-	dev-python/jaraco-packaging \
-	dev-python/rst-linker
 distutils_enable_tests unittest
 
 src_configure() {

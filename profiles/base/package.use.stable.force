@@ -1,16 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.force
-
-# Sam James <sam@gentoo.org> (2021-10-26)
-# Force USE=daemon for now because current versions of PA ebuilds need
-# complicated package.use changes to satisfy REQUIRED_USE with -daemon
-# We want users to be able to benefit from the other PA 15 fixes, so
-# force this on for now, to be revisited once libpulse split is complete
-# in Gentoo. bug #820332
-media-sound/pulseaudio daemon
 
 ## Kent Fredric <kentnl@gentoo.org> (2019-07-11)
 # The absense of these features require dev-perl/GD, which currently

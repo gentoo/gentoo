@@ -10,6 +10,10 @@ EAPI=7
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/chetramey.asc
 inherit flag-o-matic toolchain-funcs prefix verify-sig
 
+# Uncomment if we have a patchset
+#GENTOO_PATCH_DEV="sam"
+#GENTOO_PATCH_VER="${PV}"
+
 # Official patchlevel
 # See ftp://ftp.cwru.edu/pub/bash/bash-5.1-patches/
 PLEVEL="${PV##*_p}"
@@ -57,6 +61,10 @@ else
 	SRC_URI+=" verify-sig? ( ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz.sig )"
 fi
 
+if [[ -n ${GENTOO_PATCH_VER} ]] ; then
+	SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${GENTOO_PATCH_VER}-patches.tar.xz"
+fi
+
 LICENSE="GPL-3"
 SLOT="0"
 if is_release ; then
@@ -79,6 +87,8 @@ BDEPEND="verify-sig? ( sec-keys/openpgp-keys-chetramey )"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
+	#"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}/
+
 	# Patches from Chet sent to bashbug ml
 	"${FILESDIR}"/${PN}-5.0-syslog-history-extern.patch
 )
@@ -101,8 +111,15 @@ src_unpack() {
 	if [[ ${PV} == 9999 ]] ; then
 		git-r3_src_unpack
 	else
-		verify-sig_src_unpack
+		if use verify-sig ; then
+			verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.gz{,.sig}
+		fi
+
 		unpack ${MY_P}.tar.gz
+
+		if [[ -n ${GENTOO_PATCH_VER} ]] ; then
+			unpack ${PN}-${GENTOO_PATCH_VER}-patches.tar.xz
+		fi
 	fi
 }
 

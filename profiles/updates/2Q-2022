@@ -6,3 +6,5 @@ move dev-python/lark-parser dev-python/lark
 move dev-python/suds dev-python/suds-community
 move dev-cpp/cpp-taskflow dev-cpp/taskflow
 move app-dicts/sword-KtuVb app-dicts/sword-KtuVB
+move app-admin/undertaker-scripts app-admin/gentoo-retirement-scripts
+move dev-python/pep621 dev-python/pyproject-metadata

@@ -14,7 +14,7 @@ S="${WORKDIR}"/python-${P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv ~x86"
 
 BDEPEND="test? (
 		dev-python/pygobject[${PYTHON_USEDEP}]

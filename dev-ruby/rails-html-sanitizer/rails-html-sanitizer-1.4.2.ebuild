@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/rafaelfranca/rails-html-sanitizer"
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/loofah-2.3:0"

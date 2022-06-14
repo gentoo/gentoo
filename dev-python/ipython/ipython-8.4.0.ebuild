@@ -89,6 +89,14 @@ python_prepare_all() {
 	# https://github.com/ipython/ipython/issues/12892
 	mv IPython/extensions/{,ipython_}tests || die
 
+	if ! grep -q __legacy__ pyproject.toml; then
+		die "pyproject.toml changed, please recheck"
+	fi
+
+	# remove pyproject.toml that specifies incorrect backend; since
+	# the package actually requires the legacy backend, force it implicitly
+	rm pyproject.toml || die
+
 	distutils-r1_python_prepare_all
 }
 

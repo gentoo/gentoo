@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/840335
+--- a/client/logger.cc
++++ b/client/logger.cc
+@@ -27,6 +27,7 @@
+ #include <time.h>
+ #include <iostream>
+ #include <locale>
++#include <memory>
+ 
+ using namespace std;
+ 
+--- a/components/keyrings/common/component_helpers/src/keyring_log_builtins_definition.cc
++++ b/components/keyrings/common/component_helpers/src/keyring_log_builtins_definition.cc
+@@ -25,6 +25,7 @@
+ #include <cstring>
+ #include <iostream>
+ #include <locale>
++#include <memory>
+ #include <sstream>
+ 
+ #include <m_string.h>

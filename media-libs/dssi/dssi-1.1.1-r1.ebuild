@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,8 +23,13 @@ DEPEND="${RDEPEND}
 	sys-apps/sed
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.1-no-werror.patch
+)
+
 src_prepare() {
 	default
+
 	sed -i \
 		-e 's:libdir=.*:libdir=@libdir@:' \
 		dssi.pc.in || die

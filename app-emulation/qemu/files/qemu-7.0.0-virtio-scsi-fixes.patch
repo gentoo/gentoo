@@ -1,0 +1,182 @@
+https://bugs.gentoo.org/849500
+https://gitlab.com/qemu-project/qemu/-/commit/2f743ef6366c2df4ef51ef3ae318138cdc0125ab.patch
+https://gitlab.com/qemu-project/qemu/-/commit/38738f7dbbda90fbc161757b7f4be35b52205552.patch
+
+From: Stefan Hajnoczi <stefanha@redhat.com>
+Date: Wed, 27 Apr 2022 15:35:36 +0100
+Subject: [PATCH] virtio-scsi: fix ctrl and event handler functions in
+ dataplane mode
+
+Commit f34e8d8b8d48d73f36a67b6d5e492ef9784b5012 ("virtio-scsi: prepare
+virtio_scsi_handle_cmd for dataplane") prepared the virtio-scsi cmd
+virtqueue handler function to be used in both the dataplane and
+non-datpalane code paths.
+
+It failed to convert the ctrl and event virtqueue handler functions,
+which are not designed to be called from the dataplane code path but
+will be since the ioeventfd is set up for those virtqueues when
+dataplane starts.
+
+Convert the ctrl and event virtqueue handler functions now so they
+operate correctly when called from the dataplane code path. Avoid code
+duplication by extracting this code into a helper function.
+
+Fixes: f34e8d8b8d48d73f36a67b6d5e492ef9784b5012 ("virtio-scsi: prepare virtio_scsi_handle_cmd for dataplane")
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+Message-id: 20220427143541.119567-2-stefanha@redhat.com
+[Fixed s/by used/be used/ typo pointed out by Michael Tokarev
+<mjt@tls.msk.ru>.
+--Stefan]
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+--- a/hw/scsi/virtio-scsi.c
++++ b/hw/scsi/virtio-scsi.c
+@@ -472,16 +472,32 @@ bool virtio_scsi_handle_ctrl_vq(VirtIOSCSI *s, VirtQueue *vq)
+     return progress;
+ }
+ 
++/*
++ * If dataplane is configured but not yet started, do so now and return true on
++ * success.
++ *
++ * Dataplane is started by the core virtio code but virtqueue handler functions
++ * can also be invoked when a guest kicks before DRIVER_OK, so this helper
++ * function helps us deal with manually starting ioeventfd in that case.
++ */
++static bool virtio_scsi_defer_to_dataplane(VirtIOSCSI *s)
++{
++    if (!s->ctx || s->dataplane_started) {
++        return false;
++    }
++
++    virtio_device_start_ioeventfd(&s->parent_obj.parent_obj);
++    return !s->dataplane_fenced;
++}
++
+ static void virtio_scsi_handle_ctrl(VirtIODevice *vdev, VirtQueue *vq)
+ {
+     VirtIOSCSI *s = (VirtIOSCSI *)vdev;
+ 
+-    if (s->ctx) {
+-        virtio_device_start_ioeventfd(vdev);
+-        if (!s->dataplane_fenced) {
+-            return;
+-        }
++    if (virtio_scsi_defer_to_dataplane(s)) {
++        return;
+     }
++
+     virtio_scsi_acquire(s);
+     virtio_scsi_handle_ctrl_vq(s, vq);
+     virtio_scsi_release(s);
+@@ -720,12 +736,10 @@ static void virtio_scsi_handle_cmd(VirtIODevice *vdev, VirtQueue *vq)
+     /* use non-QOM casts in the data path */
+     VirtIOSCSI *s = (VirtIOSCSI *)vdev;
+ 
+-    if (s->ctx && !s->dataplane_started) {
+-        virtio_device_start_ioeventfd(vdev);
+-        if (!s->dataplane_fenced) {
+-            return;
+-        }
++    if (virtio_scsi_defer_to_dataplane(s)) {
++        return;
+     }
++
+     virtio_scsi_acquire(s);
+     virtio_scsi_handle_cmd_vq(s, vq);
+     virtio_scsi_release(s);
+@@ -855,12 +869,10 @@ static void virtio_scsi_handle_event(VirtIODevice *vdev, VirtQueue *vq)
+ {
+     VirtIOSCSI *s = VIRTIO_SCSI(vdev);
+ 
+-    if (s->ctx) {
+-        virtio_device_start_ioeventfd(vdev);
+-        if (!s->dataplane_fenced) {
+-            return;
+-        }
++    if (virtio_scsi_defer_to_dataplane(s)) {
++        return;
+     }
++
+     virtio_scsi_acquire(s);
+     virtio_scsi_handle_event_vq(s, vq);
+     virtio_scsi_release(s);
+GitLab
+
+From: Stefan Hajnoczi <stefanha@redhat.com>
+Date: Wed, 27 Apr 2022 15:35:37 +0100
+Subject: [PATCH] virtio-scsi: don't waste CPU polling the event virtqueue
+
+The virtio-scsi event virtqueue is not emptied by its handler function.
+This is typical for rx virtqueues where the device uses buffers when
+some event occurs (e.g. a packet is received, an error condition
+happens, etc).
+
+Polling non-empty virtqueues wastes CPU cycles. We are not waiting for
+new buffers to become available, we are waiting for an event to occur,
+so it's a misuse of CPU resources to poll for buffers.
+
+Introduce the new virtio_queue_aio_attach_host_notifier_no_poll() API,
+which is identical to virtio_queue_aio_attach_host_notifier() except
+that it does not poll the virtqueue.
+
+Before this patch the following command-line consumed 100% CPU in the
+IOThread polling and calling virtio_scsi_handle_event():
+
+  $ qemu-system-x86_64 -M accel=kvm -m 1G -cpu host \
+      --object iothread,id=iothread0 \
+      --device virtio-scsi-pci,iothread=iothread0 \
+      --blockdev file,filename=test.img,aio=native,cache.direct=on,node-name=drive0 \
+      --device scsi-hd,drive=drive0
+
+After this patch CPU is no longer wasted.
+
+Reported-by: Nir Soffer <nsoffer@redhat.com>
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+Tested-by: Nir Soffer <nsoffer@redhat.com>
+Message-id: 20220427143541.119567-3-stefanha@redhat.com
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+--- a/hw/scsi/virtio-scsi-dataplane.c
++++ b/hw/scsi/virtio-scsi-dataplane.c
+@@ -138,7 +138,7 @@ int virtio_scsi_dataplane_start(VirtIODevice *vdev)
+ 
+     aio_context_acquire(s->ctx);
+     virtio_queue_aio_attach_host_notifier(vs->ctrl_vq, s->ctx);
+-    virtio_queue_aio_attach_host_notifier(vs->event_vq, s->ctx);
++    virtio_queue_aio_attach_host_notifier_no_poll(vs->event_vq, s->ctx);
+ 
+     for (i = 0; i < vs->conf.num_queues; i++) {
+         virtio_queue_aio_attach_host_notifier(vs->cmd_vqs[i], s->ctx);
+--- a/hw/virtio/virtio.c
++++ b/hw/virtio/virtio.c
+@@ -3534,6 +3534,19 @@ void virtio_queue_aio_attach_host_notifier(VirtQueue *vq, AioContext *ctx)
+                                 virtio_queue_host_notifier_aio_poll_end);
+ }
+ 
++/*
++ * Same as virtio_queue_aio_attach_host_notifier() but without polling. Use
++ * this for rx virtqueues and similar cases where the virtqueue handler
++ * function does not pop all elements. When the virtqueue is left non-empty
++ * polling consumes CPU cycles and should not be used.
++ */
++void virtio_queue_aio_attach_host_notifier_no_poll(VirtQueue *vq, AioContext *ctx)
++{
++    aio_set_event_notifier(ctx, &vq->host_notifier, true,
++                           virtio_queue_host_notifier_read,
++                           NULL, NULL);
++}
++
+ void virtio_queue_aio_detach_host_notifier(VirtQueue *vq, AioContext *ctx)
+ {
+     aio_set_event_notifier(ctx, &vq->host_notifier, true, NULL, NULL, NULL);
+--- a/include/hw/virtio/virtio.h
++++ b/include/hw/virtio/virtio.h
+@@ -317,6 +317,7 @@ EventNotifier *virtio_queue_get_host_notifier(VirtQueue *vq);
+ void virtio_queue_set_host_notifier_enabled(VirtQueue *vq, bool enabled);
+ void virtio_queue_host_notifier_read(EventNotifier *n);
+ void virtio_queue_aio_attach_host_notifier(VirtQueue *vq, AioContext *ctx);
++void virtio_queue_aio_attach_host_notifier_no_poll(VirtQueue *vq, AioContext *ctx);
+ void virtio_queue_aio_detach_host_notifier(VirtQueue *vq, AioContext *ctx);
+ VirtQueue *virtio_vector_first_queue(VirtIODevice *vdev, uint16_t vector);
+ VirtQueue *virtio_vector_next_queue(VirtQueue *vq);
+GitLab

@@ -1,0 +1,30 @@
+--- a/setup.py
++++ b/setup.py
+@@ -21,26 +21,7 @@ with open(join(realpath('..'), 'CMakeLists.txt'), 'r') as f:
+     if m:
+       tlsh_3b = ''
+ 
+-if os.name == 'nt':
+-  tlsh_module = Extension('tlsh', \
+-    sources = ['tlshmodule.cpp', \
+-      join(realpath('..'), 'src', 'tlsh.cpp'), \
+-      join(realpath('..'), 'src', 'tlsh_impl.cpp'), \
+-      join(realpath('..'), 'src', 'tlsh_util.cpp') \
+-    ], \
+-    include_dirs = [join(realpath('..'), 'include'),
+-                    join(realpath('..'), 'Windows')],\
+-    define_macros = [('WINDOWS', None),], \
+-  )
+-else:
+-  tlsh_module = Extension('tlsh', \
+-    sources = ['tlshmodule.cpp', \
+-      join(realpath('..'), 'src', 'tlsh.cpp'), \
+-      join(realpath('..'), 'src', 'tlsh_impl.cpp'), \
+-      join(realpath('..'), 'src', 'tlsh_util.cpp') \
+-    ], \
+-    include_dirs = [join(realpath('..'), 'include')],
+-  )
++tlsh_module = Extension('tlsh', sources=['tlshmodule.cpp'], libraries=['tlsh'])
+ 
+ if tlsh_256 != '':
+   tlsh_module.extra_compile_args.append(tlsh_256)

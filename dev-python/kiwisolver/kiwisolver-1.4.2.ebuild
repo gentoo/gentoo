@@ -32,6 +32,10 @@ BDEPEND="
 	>=dev-python/setuptools_scm-3.4.3[${PYTHON_USEDEP}]
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.2-python311.patch
+)
+
 distutils_enable_tests pytest
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}

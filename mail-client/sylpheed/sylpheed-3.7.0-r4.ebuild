@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 inherit desktop xdg
 
@@ -24,9 +24,7 @@ CDEPEND="net-libs/liblockfile
 		app-text/gtkspell:2
 		dev-libs/dbus-glib
 	)
-	ssl? (
-		dev-libs/openssl:0=
-	)"
+	ssl? ( dev-libs/openssl:0= )"
 RDEPEND="${CDEPEND}
 	app-misc/mime-types
 	net-misc/curl"
@@ -63,4 +61,6 @@ src_install() {
 	emake DESTDIR="${D}" install-plugin
 	docinto plugin/attachment_tool
 	dodoc README
+
+	find "${ED}" -name '*.la' -delete || die
 }

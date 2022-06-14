@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,6 +21,7 @@ DEPEND="
 	dev-libs/nanomsg:=
 	dev-libs/openssl:=
 	net-libs/mbedtls:=
+	elibc_musl? ( sys-libs/queue-standalone )
 "
 
 RDEPEND="${DEPEND}"

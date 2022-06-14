@@ -14,7 +14,7 @@ SRC_URI="https://github.com/mgorny/flaggie/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~hppa ~mips ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	sys-apps/portage[${PYTHON_USEDEP}]

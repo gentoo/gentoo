@@ -23,9 +23,6 @@ BDEPEND="
 	)
 "
 
-distutils_enable_sphinx docs \
-	">=dev-python/jaraco-packaging-3.2" \
-	">=dev-python/rst-linker-1.9"
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(

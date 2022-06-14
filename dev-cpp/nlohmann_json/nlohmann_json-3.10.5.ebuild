@@ -21,7 +21,7 @@ S="${WORKDIR}/json-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ppc ppc64 ~riscv x86"
 IUSE="test"
 # Need to report failing tests upstream
 # Tests only just added, large test suite, majority pass

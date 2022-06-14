@@ -5,7 +5,7 @@ EAPI=7
 
 MY_PN=Vulkan-Tools
 CMAKE_ECLASS="cmake"
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit cmake-multilib python-any-r1
 
 if [[ ${PV} == *9999* ]]; then

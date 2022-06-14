@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	>=dev-python/packaging-19.0[${PYTHON_USEDEP}]
@@ -58,6 +58,9 @@ python_test() {
 		tests/test_self_packaging.py::test_build_wheel
 		'tests/test_util.py::test_wheel_metadata[True]'
 		tests/test_util.py::test_with_get_requires
+		# we don't really have to test that fallback
+		# (requires dev-python/toml that we'd like to lastrite eventually)
+		tests/test_projectbuilder.py::test_toml_instead_of_tomli
 	)
 
 	epytest -p no:flaky -n "$(makeopts_jobs)" \

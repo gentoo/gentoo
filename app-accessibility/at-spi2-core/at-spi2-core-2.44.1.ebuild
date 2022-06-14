@@ -16,7 +16,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 
 
 RDEPEND="
 	>=sys-apps/dbus-1.5[${MULTILIB_USEDEP}]
-	>=dev-libs/glib-2.62:2[${MULTILIB_USEDEP}]
+	>=dev-libs/glib-2.67.4:2[${MULTILIB_USEDEP}]
 	introspection? ( >=dev-libs/gobject-introspection-1.54.0:= )
 	X? (
 		x11-libs/libX11[${MULTILIB_USEDEP}]

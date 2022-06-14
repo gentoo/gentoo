@@ -26,6 +26,10 @@ DEPEND="${RDEPEND}
 	sys-libs/binutils-libs
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.4-no-werror.patch
+)
+
 src_prepare() {
 	mv "${WORKDIR}"/lib/ccan "${S}"/lib || die "mv failed"
 	rmdir "${WORKDIR}"/lib || die "rmdir failed"

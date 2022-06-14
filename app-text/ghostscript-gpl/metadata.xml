@@ -14,8 +14,8 @@
 	</slots>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:artifex:gpl_ghostscript</remote-id>
-		<remote-id type="sourceforge">djvu</remote-id>
 		<remote-id type="github">ArtifexSoftware/ghostpdl-downloads</remote-id>
+		<bugs-to>https://bugs.ghostscript.com/</bugs-to>
 	</upstream>
 	<use>
 		<flag name="unicode">Add support for unicode passwords via <pkg>net-dns/libidn</pkg></flag>

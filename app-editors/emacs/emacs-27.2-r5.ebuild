@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools elisp-common flag-o-matic readme.gentoo-r1 toolchain-funcs
+inherit elisp-common readme.gentoo-r1 toolchain-funcs #autotools
 
 if [[ ${PV##*.} = 9999 ]]; then
 	inherit git-r3
@@ -159,15 +159,6 @@ src_prepare() {
 }
 
 src_configure() {
-	strip-flags
-	filter-flags -pie					#526948
-
-	if use ia64; then
-		replace-flags "-O[2-9]" -O1		#325373
-	else
-		replace-flags "-O[3-9]" -O2
-	fi
-
 	local myconf
 
 	if use alsa; then

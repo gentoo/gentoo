@@ -5,10 +5,6 @@
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>whissi@gentoo.org</email>
-		<name>Thomas Deutschmann</name>
-	</maintainer>
 	<use>
 		<flag name="archive">Use <pkg>app-arch/libarchive</pkg> for archives support</flag>
 		<flag name="amt">Build and install Intel AMT plugin</flag>

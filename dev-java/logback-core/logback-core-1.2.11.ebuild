@@ -70,6 +70,13 @@ src_prepare() {
 	sed \
 		-e 's:org.mockito.Matchers:org.mockito.ArgumentMatchers:' \
 		-i 'src/test/java/ch/qos/logback/core/net/AbstractSocketAppenderIntegrationTest.java' || die
+
+	# Ignore test failing under Java 16
+	# See https://github.com/qos-ch/logback/commit/d6a8200cea6d960bf6832b9b95aed64e87474afb
+	local vm_version="$(java-config -g PROVIDES_VERSION)"
+	if [[ "${vm_version}" -ge "17" ]] ; then
+		eapply "${FILESDIR}/logback-core-1.2.11-Ignore-test-failing-under-Java-16.patch"
+	fi
 }
 
 src_test() {
@@ -84,10 +91,11 @@ src_test() {
 	pushd src/test/java || die
 		local JAVA_TEST_RUN_ONLY=$(find * \
 			-name "*Test.java" \
-			! -name "**/All*Test.java" \
-			! -name "**/PackageTest.java" \
+			! -wholename "**/All*Test.java" \
+			! -wholename "**/PackageTest.java" \
 			! -name "AbstractAppenderTest.java" \
 			! -name "AbstractPatternLayoutBaseTest.java" \
+			! -name "AbstractSocketAppenderIntegrationTest.java" \
 			)
 		JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//.java}"
 		JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//\//.}"
@@ -97,6 +105,7 @@ src_test() {
 	local vm_version="$(java-config -g PROVIDES_VERSION)"
 	if [[ "${vm_version}" -ge "17" ]] ; then
 		JAVA_TEST_EXTRA_ARGS+=( --add-opens=java.base/java.lang=ALL-UNNAMED )
+		JAVA_TEST_EXTRA_ARGS+=( --add-opens=java.base/java.io=ALL-UNNAMED )
 	fi
 	java-pkg-simple_src_test
 }

@@ -42,7 +42,7 @@ RDEPEND="${CDEPEND}
 	"
 DEPEND="${CDEPEND}
 	app-text/asciidoc
-	dev-cpp/catch:0
+	<dev-cpp/catch-3:0
 	dbus? (
 		dev-libs/libxml2
 		dev-libs/libxslt

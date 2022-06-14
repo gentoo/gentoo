@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/851621
+--- a/src/message.cpp
++++ b/src/message.cpp
+@@ -23,6 +23,7 @@
+ 
+ 
+ #include <cstdarg>
++#include <ctime>
+ #include <stdio.h>
+ #include "message.h"
+ 

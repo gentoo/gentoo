@@ -14,7 +14,7 @@ SRC_URI="https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-re
 
 LICENSE="CPL-1.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris"
+KEYWORDS="~alpha amd64 ~arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris"
 IUSE="+cairo devil doc examples gtk2 gts guile java lasi lefty nls pdf perl postscript python qt5 ruby svg tcl webp X"
 
 REQUIRED_USE="
@@ -188,7 +188,8 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		--disable-static
+		# Speeds up the libltdl configure
+		--cache-file="${S}"/config.cache
 		--enable-ltdl
 		$(use_with cairo pangocairo)
 		$(use_with devil)

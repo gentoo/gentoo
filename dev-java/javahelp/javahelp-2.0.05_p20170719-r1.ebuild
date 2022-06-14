@@ -14,7 +14,7 @@ SRC_URI="https://github.com/javaee/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 CDEPEND="java-virtuals/servlet-api:2.4"
 

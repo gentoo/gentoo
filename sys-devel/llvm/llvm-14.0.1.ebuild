@@ -56,7 +56,7 @@ PDEPEND="sys-devel/llvm-common
 	binutils-plugin? ( >=sys-devel/llvmgold-${SLOT} )"
 
 LLVM_COMPONENTS=( llvm cmake third-party )
-LLVM_MANPAGES=pregenerated
+LLVM_MANPAGES=1
 LLVM_PATCHSET=14.0.1
 LLVM_USE_TARGETS=provide
 llvm.org_set_globals

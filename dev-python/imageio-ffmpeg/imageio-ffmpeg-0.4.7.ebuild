@@ -4,11 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
+
 inherit distutils-r1
 
 DESCRIPTION="FFMPEG wrapper for Python"
-HOMEPAGE="https://pypi.org/project/imageio-ffmpeg/ https://github.com/imageio/imageio-ffmpeg"
+HOMEPAGE="
+	https://github.com/imageio/imageio-ffmpeg/
+	https://pypi.org/project/imageio-ffmpeg/
+"
 SRC_URI="
 	https://github.com/imageio/imageio-ffmpeg/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
@@ -20,8 +24,10 @@ KEYWORDS="~amd64 ~x86"
 PROPERTIES="test_network"
 RESTRICT="test"
 
-# ffmpeg is used as executable during runtime
-RDEPEND="media-video/ffmpeg:*"
+# ffmpeg is used as an executable during runtime
+RDEPEND="
+	media-video/ffmpeg:*
+"
 
 distutils_enable_tests pytest
 

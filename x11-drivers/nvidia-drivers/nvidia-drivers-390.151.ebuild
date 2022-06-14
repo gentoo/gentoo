@@ -89,6 +89,7 @@ pkg_setup() {
 		~SYSVIPC
 		~!AMD_MEM_ENCRYPT_ACTIVE_BY_DEFAULT
 		~!LOCKDEP
+		~!X86_KERNEL_IBT
 		!DEBUG_MUTEXES"
 	local ERROR_DRM_KMS_HELPER="CONFIG_DRM_KMS_HELPER: is not set but needed for Xorg auto-detection
 	of drivers (no custom config), and optional nvidia-drm.modeset=1.
@@ -96,6 +97,8 @@ pkg_setup() {
 	Cannot be directly selected in the kernel's menuconfig, and may need
 	selection of a DRM device even if unused, e.g. CONFIG_DRM_AMDGPU=m or
 	DRM_I915=y, DRM_NOUVEAU=m also acceptable if a module and not built-in."
+	local ERROR_X86_KERNEL_IBT="X86_KERNEL_IBT: is set, be warned the modules may not load with it.
+	If run into problems, either unset or pass ibt=off to the kernel."
 
 	kernel_is -ge 5 8 && CONFIG_CHECK+=" X86_PAT" #817764
 
@@ -167,7 +170,7 @@ src_prepare() {
 }
 
 src_compile() {
-	tc-export AR CC CXX LD OBJCOPY
+	tc-export AR CC CXX LD OBJCOPY OBJDUMP
 
 	NV_ARGS=(
 		PREFIX="${EPREFIX}"/usr
@@ -177,7 +180,22 @@ src_compile() {
 		NV_VERBOSE=1 DO_STRIP= MANPAGE_GZIP= OUTPUTDIR=out
 	)
 
-	use driver && linux-mod_src_compile
+	if use driver; then
+		if linux_chkconfig_present GCC_PLUGINS; then
+			mkdir "${T}"/plugin-test || die
+			echo "obj-m += test.o" > "${T}"/plugin-test/Kbuild || die
+			> "${T}"/plugin-test/test.c || die
+			if [[ $(LC_ALL=C make -C "${KV_OUT_DIR}" ARCH="$(tc-arch-kernel)" \
+					HOSTCC="$(tc-getBUILD_CC)" M="${T}"/plugin-test 2>&1) \
+				=~ "error: incompatible gcc/plugin version" ]]; then
+				ewarn "Warning: detected kernel was built with different gcc/plugin versions,"
+				ewarn "you may need to 'make clean' and rebuild your kernel with the current"
+				ewarn "gcc version (or re-emerge for distribution kernels, including kernel-bin)."
+			fi
+		fi
+
+		linux-mod_src_compile
+	fi
 
 	if use persistenced; then
 		# 390.xx persistenced does not auto-detect libtirpc
@@ -336,8 +354,8 @@ https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 	local m into
 	while IFS=' ' read -ra m; do
 		! [[ ${#m[@]} -ge 2 && ${m[-1]} =~ MODULE: ]] ||
-			eval '[[ " ${m[0]##*/}" =~ ^(\ '${skip_files[*]/%/.*|\\}' )$ ]]' ||
-			eval '[[ " ${m[2]}" =~ ^(\ '${skip_types[*]/%/|\\}' )$ ]]' ||
+			[[ " ${m[0]##*/}" =~ ^(\ ${skip_files[*]/%/.*|\\} )$ ]] ||
+			[[ " ${m[2]}" =~ ^(\ ${skip_types[*]/%/|\\} )$ ]] ||
 			has ${m[-1]#MODULE:} "${skip_modules[@]}" && continue
 
 		case ${m[2]} in
@@ -396,8 +414,6 @@ https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 }
 
 pkg_preinst() {
-	has_version "${CATEGORY}/${PN}[abi_x86_32]" && NV_HAD_ABI32=
-
 	use driver || return
 	linux-mod_pkg_preinst
 
@@ -417,12 +433,5 @@ pkg_postinst() {
 		ewarn "Currently loaded NVIDIA modules do not match the newly installed"
 		ewarn "libraries and may prevent launching GPU-accelerated applications."
 		use driver && ewarn "The easiest way to fix this is usually to reboot."
-	fi
-
-	if use !abi_x86_32 && [[ -v NV_HAD_ABI32 ]]; then
-		elog
-		elog "USE=abi_x86_32 is disabled, 32bit applications will not be able to"
-		elog "use nvidia-drivers for acceleration without it (e.g. commonly used"
-		elog "with app-emulation/wine-* or steam). Re-enable if needed."
 	fi
 }

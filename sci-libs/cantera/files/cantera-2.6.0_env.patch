@@ -43,6 +43,27 @@ diff -Naur old/SConstruct new/SConstruct
  
  # Print values of all build options:
  # the (updated) "cantera.conf" combines all options that were specified by the user
+diff -Naur old/interfaces/cython/SConscript new/interfaces/cython/SConscript
+--- old/interfaces/cython/SConscript
++++ new/interfaces/cython/SConscript
+@@ -107,7 +107,7 @@
+                               obj, LIBPREFIX="", SHLIBSUFFIX=module_ext,
+                               SHLIBPREFIX="", LIBSUFFIXES=[module_ext])
+ 
+-build_cmd = ("$python_cmd_esc -m pip wheel -v --no-build-isolation --use-feature=in-tree-build --no-deps "
++build_cmd = ("$python_cmd_esc -m pip wheel -v --no-build-isolation --no-deps "
+              "--wheel-dir=build/python/dist build/python")
+ plat = info['plat'].replace('-', '_').replace('.', '_')
+ wheel_name = (f"Cantera-{env['cantera_version']}-cp{py_version_nodot}"
+@@ -172,7 +172,7 @@
+ 
+     install_cmd.append(f"--root={stage_dir.resolve()}")
+ 
+-install_cmd.extend(("--no-build-isolation", "--use-feature=in-tree-build", "--no-deps", "-v", "--force-reinstall",
++install_cmd.extend(("--no-build-isolation", "--no-deps", "-v", "--force-reinstall",
+                     "build/python"))
+ if localenv['PYTHON_INSTALLER'] == 'direct':
+     mod_inst = install(localenv.Command, 'dummy', mod,
 diff -Naur old/test_problems/SConscript new/test_problems/SConscript
 --- old/test_problems/SConscript
 +++ new/test_problems/SConscript

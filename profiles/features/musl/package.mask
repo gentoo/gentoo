@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Florian Schmaus <flow@gentoo.org> (2022-06-05)
+# Binary package linked against glibc, bug #832932
+sys-block/hpssacli
+
 # Sam James <sam@gentoo.org> (2022-04-23)
 # Binary package linked against glibc, bug #832615
 net-print/cnijfilter2

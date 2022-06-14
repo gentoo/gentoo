@@ -696,6 +696,9 @@ python_scriptinto() {
 python_doexe() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EBUILD_PHASE} != install ]] &&
+		die "${FUNCNAME} can only be used in src_install"
+
 	local f
 	for f; do
 		python_newexe "${f}" "${f##*/}"
@@ -714,6 +717,8 @@ python_doexe() {
 python_newexe() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EBUILD_PHASE} != install ]] &&
+		die "${FUNCNAME} can only be used in src_install"
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
 	[[ ${#} -eq 2 ]] || die "Usage: ${FUNCNAME} <path> <new-name>"
 
@@ -762,6 +767,9 @@ python_newexe() {
 python_doscript() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EBUILD_PHASE} != install ]] &&
+		die "${FUNCNAME} can only be used in src_install"
+
 	local _PYTHON_REWRITE_SHEBANG=1
 	python_doexe "${@}"
 }
@@ -786,6 +794,9 @@ python_doscript() {
 python_newscript() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EBUILD_PHASE} != install ]] &&
+		die "${FUNCNAME} can only be used in src_install"
+
 	local _PYTHON_REWRITE_SHEBANG=1
 	python_newexe "${@}"
 }
@@ -805,10 +816,10 @@ python_newscript() {
 # site-packages directory.
 #
 # In the relative case, the exact path is determined directly
-# by each python_doscript/python_newscript function. Therefore,
-# python_moduleinto can be safely called before establishing the Python
-# interpreter and/or a single call can be used to set the path correctly
-# for multiple implementations, as can be seen in the following example.
+# by each python_domodule invocation. Therefore, python_moduleinto
+# can be safely called before establishing the Python interpreter and/or
+# a single call can be used to set the path correctly for multiple
+# implementations, as can be seen in the following example.
 #
 # Example:
 # @CODE
@@ -832,6 +843,10 @@ python_moduleinto() {
 # and packages (directories). All listed files will be installed
 # for all enabled implementations, and compiled afterwards.
 #
+# The files are installed into ${D} when run in src_install() phase.
+# Otherwise, they are installed into ${BUILD_DIR}/install location
+# that is suitable for picking up by distutils-r1 in PEP517 mode.
+#
 # Example:
 # @CODE
 # src_install() {
@@ -854,13 +869,24 @@ python_domodule() {
 		d=${sitedir#${EPREFIX}}/${_PYTHON_MODULEROOT//.//}
 	fi
 
-	(
-		insopts -m 0644
-		insinto "${d}"
-		doins -r "${@}" || return ${?}
-	)
-
-	python_optimize "${ED%/}/${d}"
+	if [[ ${EBUILD_PHASE} == install ]]; then
+		(
+			insopts -m 0644
+			insinto "${d}"
+			doins -r "${@}" || return ${?}
+		)
+		python_optimize "${ED%/}/${d}"
+	elif [[ -n ${BUILD_DIR} ]]; then
+		local dest=${BUILD_DIR}/install${EPREFIX}/${d}
+		mkdir -p "${dest}" || die
+		cp -pR "${@}" "${dest}/" || die
+		(
+			cd "${dest}" &&
+			chmod -R a+rX "${@##*/}"
+		) || die
+	else
+		die "${FUNCNAME} can only be used in src_install or with BUILD_DIR set"
+	fi
 }
 
 # @FUNCTION: python_doheader
@@ -879,6 +905,8 @@ python_domodule() {
 python_doheader() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EBUILD_PHASE} != install ]] &&
+		die "${FUNCNAME} can only be used in src_install"
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
 
 	local includedir=$(python_get_includedir)
@@ -1318,6 +1346,11 @@ epytest() {
 
 	# remove common temporary directories left over by pytest plugins
 	rm -rf .hypothesis .pytest_cache || die
+	# pytest plugins create additional .pyc files while testing
+	# see e.g. https://bugs.gentoo.org/847235
+	if [[ -n ${BUILD_DIR} && -d ${BUILD_DIR} ]]; then
+		find "${BUILD_DIR}" -name '*-pytest-*.pyc' -delete || die
+	fi
 
 	return ${ret}
 }

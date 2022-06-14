@@ -10,6 +10,7 @@ MY_P=${P/_/-}
 DESCRIPTION="full-strength general purpose cryptography library (including SSL and TLS)"
 HOMEPAGE="https://www.openssl.org/"
 SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-test-fixes-expiry.patch.xz
 	verify-sig? ( mirror://openssl/source/${MY_P}.tar.gz.asc )"
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/openssl.org.asc
 
@@ -34,11 +35,6 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-openssl )"
 PDEPEND="app-misc/ca-certificates"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.1.0j-parallel_install_fix.patch #671602
-	"${FILESDIR}"/${PN}-1.1.1i-riscv32.patch
-)
-
 S="${WORKDIR}/${MY_P}"
 
 # force upgrade to prevent broken login, bug 696950
@@ -46,6 +42,12 @@ RDEPEND+=" !<net-misc/openssh-8.0_p1-r3"
 
 MULTILIB_WRAPPED_HEADERS=(
 	usr/include/openssl/opensslconf.h
+)
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.0j-parallel_install_fix.patch #671602
+	"${FILESDIR}"/${PN}-1.1.1i-riscv32.patch
+	"${WORKDIR}"/${P}-test-fixes-expiry.patch
 )
 
 pkg_setup() {
@@ -60,6 +62,16 @@ pkg_setup() {
 			die "FEATURES=test with USE=sctp requires net.sctp.auth_enable=1!"
 		fi
 	fi
+}
+
+src_unpack() {
+	# Can delete this once test fix patch is dropped
+	if use verify-sig ; then
+		# Needed for downloaded patch (which is unsigned, which is fine)
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz{,.asc}
+	fi
+
+	default
 }
 
 src_prepare() {

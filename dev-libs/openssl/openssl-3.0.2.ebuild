@@ -128,7 +128,7 @@ src_prepare() {
 
 	# Prefixify Configure shebang (#141906)
 	sed \
-		-e "1s,/usr/bin/env,${EPREFIX}&," \
+		-e "1s,/usr/bin/env,${BROOT}&," \
 		-i Configure || die
 
 	# Remove test target when FEATURES=test isn't set

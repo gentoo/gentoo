@@ -193,7 +193,7 @@ media-video/ffmpeg dav1d libaribb24 libtesseract vidstab
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
 # media-gfx/nvidia-texture-tools, media-libs/allegro not keyworded on hppa
-media-libs/devil allegro nvtt
+media-libs/devil allegro
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-09)
 # dependencies not keyworded

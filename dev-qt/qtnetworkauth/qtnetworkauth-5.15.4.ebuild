@@ -9,7 +9,7 @@ DESCRIPTION="Network authorization library for the Qt5 framework"
 LICENSE="GPL-3"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 fi
 
 IUSE=""

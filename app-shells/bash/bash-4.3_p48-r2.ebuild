@@ -5,6 +5,10 @@ EAPI=7
 
 inherit flag-o-matic toolchain-funcs
 
+# Uncomment if we have a patchset
+GENTOO_PATCH_DEV="sam"
+GENTOO_PATCH_VER="${PV}-r2"
+
 # Official patchlevel
 # See ftp://ftp.cwru.edu/pub/bash/bash-4.3-patches/
 PLEVEL="${PV##*_p}"
@@ -35,6 +39,10 @@ HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html"
 SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
 [[ ${PV} == *_rc* ]] && SRC_URI+=" ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
 
+if [[ -n ${GENTOO_PATCH_VER} ]] ; then
+	SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${GENTOO_PATCH_VER}-patches.tar.xz"
+fi
+
 LICENSE="GPL-3"
 SLOT="${MY_PV}"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
@@ -49,10 +57,10 @@ RDEPEND="${DEPEND}
 BDEPEND="virtual/yacc"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.3-mapfile-improper-array-name-validation.patch
-	"${FILESDIR}"/${PN}-4.3-arrayfunc.patch
-	"${FILESDIR}"/${PN}-4.3-protos.patch
-	"${FILESDIR}"/${PN}-4.4-popd-offset-overflow.patch # bug #600174
+	"${WORKDIR}"/${P}-r2-patches/${PN}-4.3-mapfile-improper-array-name-validation.patch
+	"${WORKDIR}"/${P}-r2-patches/${PN}-4.3-arrayfunc.patch
+	"${WORKDIR}"/${P}-r2-patches/${PN}-4.3-protos.patch
+	"${WORKDIR}"/${P}-r2-patches/${PN}-4.4-popd-offset-overflow.patch # bug #600174
 )
 
 S="${WORKDIR}/${MY_P}"
@@ -73,6 +81,10 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${MY_P}.tar.gz
+
+	if [[ -n ${GENTOO_PATCH_VER} ]] ; then
+		unpack ${PN}-${GENTOO_PATCH_VER}-patches.tar.xz
+	fi
 }
 
 src_prepare() {

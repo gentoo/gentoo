@@ -5,6 +5,10 @@
 		<email>andrewammerlaan@gentoo.org</email>
 		<name>Andrew Ammerlaan</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="pypi">sphinxcontrib-bibtex</remote-id>
 		<remote-id type="github">mcmtroffaes/sphinxcontrib-bibtex</remote-id>

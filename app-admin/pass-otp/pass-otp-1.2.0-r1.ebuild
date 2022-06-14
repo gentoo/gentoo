@@ -11,7 +11,7 @@ SRC_URI="https://github.com/tadfisher/pass-otp/releases/download/v${PV}/${P}.tar
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

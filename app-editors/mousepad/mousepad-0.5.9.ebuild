@@ -10,7 +10,7 @@ SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.52
@@ -32,6 +32,11 @@ src_configure() {
 		--enable-gtksourceview4
 	)
 	econf "${myconf[@]}"
+}
+
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {

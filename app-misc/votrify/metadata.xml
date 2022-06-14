@@ -5,4 +5,8 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">mgorny/votrify</remote-id>
+	</upstream>
 </pkgmetadata>

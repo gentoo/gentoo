@@ -4,12 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
 DESCRIPTION="Fast NumPy array functions written in C"
-HOMEPAGE="https://pypi.org/project/Bottleneck/"
+HOMEPAGE="
+	https://github.com/pydata/bottleneck/
+	https://pypi.org/project/Bottleneck/
+"
 SRC_URI="
 	https://github.com/pydata/bottleneck/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
@@ -23,9 +26,6 @@ RDEPEND="
 	>=dev-python/numpy-1.9.1[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
-	dev-python/versioneer[${PYTHON_USEDEP}]
-"
 
 distutils_enable_tests pytest
 

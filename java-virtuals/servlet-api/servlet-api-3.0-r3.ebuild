@@ -10,7 +10,7 @@ HOMEPAGE="https://jcp.org/en/jsr/detail?id=340"
 
 LICENSE="public-domain"
 SLOT="${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux"
 
 RDEPEND="|| (
 		dev-java/tomcat-servlet-api:${SLOT}

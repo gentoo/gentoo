@@ -41,9 +41,15 @@ fi
 
 CONFIG_CHECK="MPTCP"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9-no-werror.patch
+)
+
 src_prepare() {
 	default
-	[[ ${PV} == 9999* ]] && eautoreconf
+
+	# For Werror patch
+	eautoreconf
 }
 
 src_configure() {

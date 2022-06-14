@@ -5,6 +5,7 @@ EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
+# py3.11: wait for https://github.com/python/cpython/issues/93252
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1 optfeature xdg
 

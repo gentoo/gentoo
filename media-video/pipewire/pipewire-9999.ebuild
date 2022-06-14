@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit flag-o-matic meson-multilib optfeature prefix python-any-r1 systemd udev
 
@@ -19,7 +19,7 @@ else
 		SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.gz"
 	fi
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 DESCRIPTION="Multimedia processing graphs"
@@ -85,7 +85,6 @@ RDEPEND="
 	lv2? ( media-libs/lilv )
 	pipewire-alsa? (
 		>=media-libs/alsa-lib-1.1.7[${MULTILIB_USEDEP}]
-		!media-plugins/alsa-plugins[${MULTILIB_USEDEP},pulseaudio]
 	)
 	!pipewire-alsa? ( media-plugins/alsa-plugins[${MULTILIB_USEDEP},pulseaudio] )
 	ssl? ( dev-libs/openssl:= )
@@ -190,6 +189,8 @@ multilib_src_configure() {
 		$(meson_native_use_feature bluetooth bluez5-codec-ldac)
 		$(meson_native_use_feature bluetooth libusb) # At least for now only used by bluez5 native (quirk detection of adapters)
 		$(meson_native_use_feature echo-cancel echo-cancel-webrtc) #807889
+		# Not yet packaged.
+		-Dbluez5-codec-lc3plus=disabled
 		-Dcontrol=enabled # Matches upstream
 		-Daudiotestsrc=enabled # Matches upstream
 		-Dffmpeg=disabled # Disabled by upstream and no major developments to spa/plugins/ffmpeg/ since May 2020
@@ -237,10 +238,16 @@ multilib_src_install_all() {
 
 	if use pipewire-alsa; then
 		dodir /etc/alsa/conf.d
+
+		# Install pipewire conf loader hook
+		insinto /usr/share/alsa/alsa.conf.d
+		doins "${FILESDIR}"/99-pipewire-default-hook.conf
+		eprefixify "${ED}"/usr/share/alsa/alsa.conf.d/99-pipewire-default-hook.conf
+
 		# These will break if someone has /etc that is a symbolic link to a subfolder! See #724222
 		# And the current dosym8 -r implementation is likely affected by the same issue, too.
 		dosym ../../../usr/share/alsa/alsa.conf.d/50-pipewire.conf /etc/alsa/conf.d/50-pipewire.conf
-		dosym ../../../usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d/99-pipewire-default.conf
+		dosym ../../../usr/share/alsa/alsa.conf.d/99-pipewire-default-hook.conf /etc/alsa/conf.d/99-pipewire-default-hook.conf
 	fi
 
 	if ! use systemd; then

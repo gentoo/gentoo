@@ -28,12 +28,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE} mapserver? ( python )"
 # Disabling test suite because upstream disallow running from install path
 RESTRICT="!test? ( test )"
 
-# 3.22.5+ *does* support GRASS 8 but we can't enable it yet because of
-# https://github.com/OSGeo/grass/pull/2269 (=> unresolved SONAME dependencies)
-# Keep an eye on that bug / a fixed GRASS release and readd support
-# by unrestricting the dep in ${COMMON_DEPEND} once it's fixed!
-# (No need to change the supported GRASS versions in src_configure b/c
-# it won't find GRASS 8 with this dependency set.)
+# See bug #850787 re sip-6.6.
 COMMON_DEPEND="
 	app-crypt/qca:2[qt5(+),ssl]
 	>=dev-db/spatialite-4.2.0
@@ -63,7 +58,7 @@ COMMON_DEPEND="
 	>=x11-libs/qwt-6.1.2:6=[qt5(+),svg]
 	3d? ( dev-qt/qt3d:5 )
 	georeferencer? ( sci-libs/gsl:= )
-	grass? ( =sci-geosciences/grass-7*:= )
+	grass? ( sci-geosciences/grass:= )
 	hdf5? ( sci-libs/hdf5:= )
 	mapserver? ( dev-libs/fcgi )
 	netcdf? ( sci-libs/netcdf:= )
@@ -77,6 +72,7 @@ COMMON_DEPEND="
 	postgres? ( dev-db/postgresql:= )
 	python? (
 		${PYTHON_DEPS}
+		>=sci-libs/gdal-2.2.3[python,${PYTHON_SINGLE_USEDEP}]
 		$(python_gen_cond_dep '
 			dev-python/future[${PYTHON_USEDEP}]
 			dev-python/httplib2[${PYTHON_USEDEP}]
@@ -91,9 +87,8 @@ COMMON_DEPEND="
 			dev-python/pyyaml[${PYTHON_USEDEP}]
 			>=dev-python/qscintilla-python-2.10.1[qt5(+),${PYTHON_USEDEP}]
 			dev-python/requests[${PYTHON_USEDEP}]
-			<dev-python/sip-5:=[${PYTHON_USEDEP}]
+			<dev-python/sip-6.6:=[${PYTHON_USEDEP}]
 			dev-python/six[${PYTHON_USEDEP}]
-			>=sci-libs/gdal-2.2.3[python,${PYTHON_USEDEP}]
 			postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 		')
 	)
@@ -217,8 +212,7 @@ src_configure() {
 src_test() {
 	local myctestargs=(
 		# test_core_gdalprovider - see https://github.com/qgis/QGIS/pull/47887
-		# test_core_offlineediting - see https://github.com/qgis/QGIS/pull/48059
-		-E '(ProcessingGuiTest|ProcessingQgisAlgorithmsTestPt1|ProcessingQgisAlgorithmsTestPt2|ProcessingQgisAlgorithmsTestPt3|ProcessingQgisAlgorithmsTestPt4|ProcessingGdalAlgorithmsRasterTest|ProcessingGdalAlgorithmsVectorTest|ProcessingGrass7AlgorithmsImageryTest|ProcessingGrass7AlgorithmsRasterTestPt1|ProcessingGrass7AlgorithmsRasterTestPt2|ProcessingGrass7AlgorithmsVectorTest|ProcessingOtbAlgorithmsTest|test_core_callout|test_core_compositionconverter|test_core_expression|test_core_gdalprovider|test_core_gdalutils|test_core_geonodeconnection|test_core_imagecache|test_core_labelingengine|test_core_layout|test_core_layoutcontext|test_core_layouthtml|test_core_layoutlabel|test_core_layoutmanualtable|test_core_layoutmap|test_core_layoutmapgrid|test_core_layoutmapoverview|test_core_layoutmultiframe|test_core_layoutpicture|test_core_linefillsymbol|test_core_mapdevicepixelratio|test_core_maprendererjob|test_core_meshlayer|test_core_meshlayerrenderer|test_core_networkaccessmanager|test_core_offlineediting|test_core_pointpatternfillsymbol|test_core_rastercontourrenderer|test_core_rasterlayer|test_core_simplemarker|test_core_style|test_core_svgmarker|test_core_tiledownloadmanager|test_core_ziplayer|test_core_coordinatereferencesystem|test_core_geometry|test_gui_dualview|test_gui_htmlwidgetwrapper|test_gui_processinggui|test_gui_filedownloader|test_gui_ogrprovidergui|test_gui_meshlayerpropertiesdialog|test_gui_queryresultwidget|test_gui_listwidget|test_3d_3drendering|test_3d_tessellator|test_analysis_processingalgspt1|test_analysis_processingalgspt2|test_analysis_meshcontours|test_analysis_triangulation|test_analysis_processing|test_provider_wcsprovider|test_provider_postgresconn|test_provider_virtualrasterprovider|qgis_grassprovidertest8|test_app_qgisappclipboard|test_app_fieldcalculator|test_app_maptoolcircularstring|test_app_vertextool|PyQgsLocalServer|PyQgsAFSProvider|PyQgsPythonProvider|PyQgsAnnotation|PyQgsAuthenticationSystem|PyQgsAuthBasicMethod|PyQgsDataItem|PyQgsDelimitedTextProvider|PyQgsEmbeddedSymbolRenderer|PyQgsExpressionBuilderWidget|PyQgsExternalStorageWebDAV|PyQgsGeometryTest|PyQgsGoogleMapsGeocoder|PyQgsImageCache|PyQgsLayout|PyQgsLayoutHtml|PyQgsLayoutLegend|PyQgsLayoutMap|PyQgsLayoutMapGrid|PyQgsLayoutMapOverview|PyQgsMapClippingUtils|PyQgsMapLayerComboBox|PyQgsMapLayerProxyModel|PyQgsMemoryProvider|PyQgsOGRProviderGpkg|PyQgsPalLabelingCanvas|PyQgsPalLabelingLayout|PyQgsPalLabelingPlacement|PyQgsPointCloudAttributeByRampRenderer|PyQgsPointCloudClassifiedRenderer|PyQgsPointCloudExtentRenderer|PyQgsPointCloudRgbRenderer|PyQgsProcessExecutable|PyQgsProcessingInPlace|TestQgsRandomMarkerSymbolLayer|PyQgsRasterLayer|PyQgsRasterLayerRenderer|PyQgsRasterResampler|PyQgsRulebasedRenderer|PyQgsShapefileProvider|PyQgsSvgCache|PyQgsOGRProvider|PyQgsSpatialiteProvider|PyQgsTaskManager|PyQgsVectorFileWriter|PyQgsVectorLayer|PyQgsVectorLayerCache|PyQgsVectorLayerEditBuffer|PyQgsVectorLayerSelectedFeatureSource|PyQgsVectorLayerShapefile|PyQgsVirtualLayerProvider|PyQgsWFSProvider|PyQgsOapifProvider|PyQgsDBManagerGpkg|PyQgsAuxiliaryStorage|PyQgsFieldValidator|PyQgsSelectiveMasking|PyQgsPalLabelingServer|PyQgsServerWMSGetMap|PyQgsServerWMSGetLegendGraphic|PyQgsServerWMSGetPrint|PyQgsServerWMSGetPrintExtra|PyQgsServerWMSGetPrintOutputs|PyQgsServerWMSGetPrintAtlas|PyQgsServerWMSDimension|PyQgsServerAccessControlWMS|PyQgsServerAccessControlWFSTransactional|PyQgsServerCacheManager|PyQgsServerWMTS|PyQgsServerWFS|qgis_sipify|qgis_sip_include|qgis_sip_uptodate)'
+		-E '(ProcessingGuiTest$|ProcessingQgisAlgorithmsTestPt1$|ProcessingQgisAlgorithmsTestPt2$|ProcessingQgisAlgorithmsTestPt3$|ProcessingQgisAlgorithmsTestPt4$|ProcessingGdalAlgorithmsRasterTest$|ProcessingGdalAlgorithmsVectorTest$|ProcessingGrass7AlgorithmsImageryTest$|ProcessingGrass7AlgorithmsRasterTestPt1$|ProcessingGrass7AlgorithmsRasterTestPt2$|ProcessingGrass7AlgorithmsVectorTest$|ProcessingOtbAlgorithmsTest$|test_core_callout$|test_core_compositionconverter$|test_core_expression$|test_core_gdalprovider$|test_core_gdalutils$|test_core_geonodeconnection$|test_core_imagecache$|test_core_labelingengine$|test_core_layout$|test_core_layoutcontext$|test_core_layouthtml$|test_core_layoutlabel$|test_core_layoutmanualtable$|test_core_layoutmap$|test_core_layoutmapgrid$|test_core_layoutmapoverview$|test_core_layoutmultiframe$|test_core_layoutpicture$|test_core_linefillsymbol$|test_core_mapdevicepixelratio$|test_core_maprendererjob$|test_core_meshlayer$|test_core_meshlayerrenderer$|test_core_networkaccessmanager$|test_core_pointpatternfillsymbol$|test_core_rastercontourrenderer$|test_core_rasterlayer$|test_core_simplemarker$|test_core_style$|test_core_svgmarker$|test_core_tiledownloadmanager$|test_core_ziplayer$|test_core_coordinatereferencesystem$|test_core_geometry$|test_gui_dualview$|test_gui_htmlwidgetwrapper$|test_gui_processinggui$|test_gui_filedownloader$|test_gui_ogrprovidergui$|test_gui_queryresultwidget$|test_gui_listwidget$|test_3d_3drendering$|test_3d_tessellator$|test_analysis_processingalgspt1$|test_analysis_processingalgspt2$|test_analysis_meshcontours$|test_analysis_triangulation$|test_analysis_processing$|test_provider_wcsprovider$|test_provider_postgresconn$|test_provider_virtualrasterprovider$|test_app_qgisappclipboard$|test_app_fieldcalculator$|test_app_maptoolcircularstring$|test_app_vertextool$|PyQgsLocalServer$|PyQgsAFSProvider$|PyQgsPythonProvider$|PyQgsAnnotation$|PyQgsAuthenticationSystem$|PyQgsAuthBasicMethod$|PyQgsDataItem$|PyQgsDelimitedTextProvider$|PyQgsEmbeddedSymbolRenderer$|PyQgsExpressionBuilderWidget$|PyQgsExternalStorageWebDAV$|PyQgsGeometryTest$|PyQgsGoogleMapsGeocoder$|PyQgsImageCache$|PyQgsLayout$|PyQgsLayoutHtml$|PyQgsLayoutLegend$|PyQgsLayoutMap$|PyQgsLayoutMapGrid$|PyQgsLayoutMapOverview$|PyQgsMapClippingUtils$|PyQgsMapLayerComboBox$|PyQgsMapLayerProxyModel$|PyQgsMemoryProvider$|PyQgsOGRProviderGpkg$|PyQgsPalLabelingCanvas$|PyQgsPalLabelingLayout$|PyQgsPalLabelingPlacement$|PyQgsPointCloudAttributeByRampRenderer$|PyQgsPointCloudClassifiedRenderer$|PyQgsPointCloudExtentRenderer$|PyQgsPointCloudRgbRenderer$|PyQgsProcessExecutable$|PyQgsProcessingInPlace$|TestQgsRandomMarkerSymbolLayer$|PyQgsRasterLayer$|PyQgsRasterLayerRenderer$|PyQgsRasterResampler$|PyQgsRulebasedRenderer$|PyQgsShapefileProvider$|PyQgsSvgCache$|PyQgsOGRProvider$|PyQgsSpatialiteProvider$|PyQgsTaskManager$|PyQgsVectorFileWriter$|PyQgsVectorLayer$|PyQgsVectorLayerCache$|PyQgsVectorLayerEditBuffer$|PyQgsVectorLayerEditBufferGroup$|PyQgsVectorLayerProfileGenerator$|PyQgsVectorLayerSelectedFeatureSource$|PyQgsVectorLayerShapefile$|PyQgsVirtualLayerProvider$|PyQgsWFSProvider$|PyQgsOapifProvider$|PyQgsDBManagerGpkg$|PyQgsAuxiliaryStorage$|PyQgsFieldValidator$|PyQgsSelectiveMasking$|PyQgsPalLabelingServer$|PyQgsServerWMSGetMap$|PyQgsServerWMSGetLegendGraphic$|PyQgsServerWMSGetPrint$|PyQgsServerWMSGetPrintExtra$|PyQgsServerWMSGetPrintOutputs$|PyQgsServerWMSGetPrintAtlas$|PyQgsServerWMSDimension$|PyQgsServerAccessControlWMS$|PyQgsServerAccessControlWFS$|PyQgsServerAccessControlWFSTransactional$|PyQgsServerCacheManager$|PyQgsServerWMS$|PyQgsServerWMTS$|PyQgsServerWFS$|qgis_sipify$|qgis_sip_include$|qgis_sip_uptodate$|qgis_doxygen_order$|test_core_authmanager$)'
 
 		--output-on-failure
 	)

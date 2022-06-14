@@ -13,8 +13,8 @@ case ${CHOST} in
 esac
 export CTARGET
 TOOLCHAIN_ALLOWED_LANGS="c"
+TOOLCHAIN_PATCH_DEV="sam"
 GCC_TARGET_NO_MULTILIB=true
-
 PATCH_VER="4"
 PATCH_GCC_VER="11.3.0"
 inherit toolchain

@@ -40,6 +40,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.2.2-no-werror.patch
+)
+
 pkg_pretend() {
 	# This program needs /dev/ic2-* devices to communicate with the monitor.
 	CONFIG_CHECK="~I2C_CHARDEV"

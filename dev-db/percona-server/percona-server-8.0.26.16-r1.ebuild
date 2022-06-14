@@ -176,6 +176,7 @@ src_unpack() {
 
 src_prepare() {
 	eapply "${WORKDIR}"/mysql-patches
+	eapply "${FILESDIR}"/${PN}-8.0.26.16-gcc-12.patch
 
 	# Avoid rpm call which would trigger sandbox, #692368
 	sed -i \

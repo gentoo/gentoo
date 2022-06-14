@@ -1,0 +1,14 @@
+diff --git a/evdev/eventio_async.py b/evdev/eventio_async.py
+index 77542a4..68225c3 100644
+--- a/evdev/eventio_async.py
++++ b/evdev/eventio_async.py
+@@ -85,8 +85,7 @@ class ReadIterator(object):
+     def __aiter__(self):
+         return self
+ 
+-    @asyncio.coroutine
+-    def __anext__(self):
++    async def __anext__(self):
+         future = asyncio.Future()
+         try:
+             # Read from the previous batch of events.

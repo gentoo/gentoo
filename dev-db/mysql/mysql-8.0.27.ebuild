@@ -12,12 +12,12 @@ MY_PV="${PV//_pre*}"
 MY_P="${PN}-${MY_PV}"
 
 # Patch version
-PATCH_SET="https://dev.gentoo.org/~whissi/dist/mysql/${PN}-8.0.27-patches-02.tar.xz"
+PATCH_SET=( https://dev.gentoo.org/~{whissi,dlan}/dist/mysql/${PN}-8.0.27-patches-03.tar.xz )
 
 SRC_URI="https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-boost-${MY_PV}.tar.gz
 	https://cdn.mysql.com/archives/mysql-8.0/mysql-boost-${MY_PV}.tar.gz
 	http://downloads.mysql.com/archives/MySQL-8.0/${PN}-boost-${MY_PV}.tar.gz
-	${PATCH_SET}"
+	${PATCH_SET[@]}"
 
 HOMEPAGE="https://www.mysql.com/"
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
@@ -37,7 +37,7 @@ REQUIRED_USE="?? ( tcmalloc jemalloc )
 	tcmalloc? ( server )"
 
 # -ppc, -riscv for bug #761715
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips -ppc ppc64 -riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips -ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -170,6 +170,7 @@ src_unpack() {
 
 src_prepare() {
 	eapply "${WORKDIR}"/mysql-patches
+	eapply "${FILESDIR}"/${PN}-8.0.27-gcc-12.patch
 
 	# Avoid rpm call which would trigger sandbox, #692368
 	sed -i \

@@ -12,7 +12,7 @@ SRC_URI="
 	mirror://debian/pool/main/m/${PN}/${PN}_${PV/_p*}-$(ver_cut 5).$(ver_cut 7).debian.tar.xz
 "
 LICENSE="GPL-2"
-KEYWORDS="amd64 arm ~arm64 ppc ~riscv sparc x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv sparc x86"
 SLOT="0"
 
 PATCHES=(

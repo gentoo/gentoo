@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( pypy3 python3_{9..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..10} )
 
 inherit distutils-r1 optfeature
 
@@ -25,14 +25,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND="
-	dev-python/redis-py[${PYTHON_USEDEP}]
+	>=dev-python/redis-py-4.2[${PYTHON_USEDEP}]
 	>=dev-python/six-1.16.0[${PYTHON_USEDEP}]
 	>=dev-python/sortedcontainers-2.4.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
 		dev-db/redis
-		dev-python/aioredis[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 	)

@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="UoI-NCSA"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test +tools"
 REQUIRED_USE="test? ( tools )"
 RESTRICT="!test? ( test )"

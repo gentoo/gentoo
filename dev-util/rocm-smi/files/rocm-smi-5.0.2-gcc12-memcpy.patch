@@ -1,0 +1,19 @@
+https://github.com/RadeonOpenCompute/rocm_smi_lib/pull/107
+https://bugs.gentoo.org/840149
+
+From 447bf22557c875ca7d26a72d20561feb607ed300 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Torsten=20Ke=C3=9Fler?= <t.kessler@posteo.de>
+Date: Fri, 13 May 2022 11:33:11 +0200
+Subject: [PATCH] Add missing string header for memcpy
+
+--- a/src/rocm_smi_gpu_metrics.cc
++++ b/src/rocm_smi_gpu_metrics.cc
+@@ -53,6 +53,7 @@
+ #include <regex>  // NOLINT
+ #include <vector>
+ #include <pthread.h>
++#include <string.h>
+ 
+ #include "rocm_smi/rocm_smi_common.h"  // Should go before rocm_smi.h
+ #include "rocm_smi/rocm_smi_main.h"
+

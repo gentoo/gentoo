@@ -12,6 +12,7 @@
     are stable we will release the first 1.0 version and attempt to
     keep up to date with changes in commonmark.js.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">commonmark</remote-id>
     <remote-id type="github">readthedocs/commonmark.py</remote-id>

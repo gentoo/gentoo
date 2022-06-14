@@ -1,0 +1,10 @@
+--- a/tests/Makefile	2022-06-02 15:18:22.086379688 +0200
++++ b/tests/Makefile	2022-06-02 15:18:39.975129783 +0200
+@@ -40,7 +40,6 @@
+ LDFLAGS += -static
+ 
+ TESTS = \
+-	fallocate \
+ 	getrandom \
+ 	lstat \
+ 	sigaction \

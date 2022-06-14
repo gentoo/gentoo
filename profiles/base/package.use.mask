@@ -6,6 +6,18 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2022-06-02)
+# dev-python/jaraco-packaging is masked for removal.  Bug #834534.
+dev-python/jaraco-classes doc
+dev-python/jaraco-collections doc
+dev-python/jaraco-functools doc
+dev-python/jaraco-logging doc
+dev-python/jaraco-stream doc
+dev-python/jaraco-text doc
+dev-python/jsonpickle doc
+dev-python/keyring doc
+dev-python/tempora doc
+
 # Maciej Barć <xgqt@gentoo.org> (2022-05-31)
 # "doc" require old version of dev-python/antlr4-python3-runtime (4.9.3)
 # and dev-python/sphinx (4.4.0), both already removed from the repository tree
@@ -21,10 +33,9 @@
 dev-python/jupyter_server doc
 
 # Joonas Niilola <juippis@gentoo.org> (2022-05-03)
-# sndio is currently broken in Gentoo, #842420.
 # system-python-libs is HIGHLY EXPERIMENTAL according to upstream, and
 # still being worked on in Gentoo.
->=www-client/firefox-100.0 sndio system-python-libs
+>=www-client/firefox-100.0 system-python-libs
 
 # Piotr Karbowski <slashbeast@gentoo.org> (2022-04-29)
 # There's a bug with gnutls support leading TLS certificates
@@ -43,11 +54,6 @@ net-libs/ngtcp2 openssl
 # Sam James <sam@gentoo.org> (2022-03-02)
 # Needs masked version of ogre (>=1.12), bug #825330
 >=dev-games/mygui-3.4.1 ogre
-
-# Sam James <sam@gentoo.org> (2022-02-21)
-# Needs build system love to make LLVM support work.
-# bug #745915
-sci-libs/symengine llvm
 
 # Marek Szuba <marecki@gentoo.org> (2022-02-07)
 # Deprecated back-end with known stability and data-corruption issues,

@@ -1,0 +1,31 @@
+https://github.com/nucleic/kiwi/commit/f14059f532d6b5c6b505d9803b36a77b75546b18.patch
+https://bugs.gentoo.org/849563
+
+From f14059f532d6b5c6b505d9803b36a77b75546b18 Mon Sep 17 00:00:00 2001
+From: Matthieu Dartiailh <m.dartiailh@gmail.com>
+Date: Fri, 3 Jun 2022 09:11:18 +0200
+Subject: [PATCH] py: use nullptr instead of 0 in PyTuple_SET_ITEM
+
+--- a/py/src/symbolics.h
++++ b/py/src/symbolics.h
+@@ -123,7 +123,7 @@ PyObject* BinaryMul::operator()( Expression* first, double second )
+ 		return 0;
+ 	Py_ssize_t end = PyTuple_GET_SIZE( first->terms );
+ 	for( Py_ssize_t i = 0; i < end; ++i )  // memset 0 for safe error return
+-		PyTuple_SET_ITEM( terms.get(), i, 0 );
++		PyTuple_SET_ITEM( terms.get(), i, nullptr );
+ 	for( Py_ssize_t i = 0; i < end; ++i )
+ 	{
+ 		PyObject* item = PyTuple_GET_ITEM( first->terms, i );
+--- a/py/src/util.h
++++ b/py/src/util.h
+@@ -117,7 +117,7 @@ make_terms( const std::map<PyObject*, double>& coeffs )
+         return 0;
+     Py_ssize_t size = PyTuple_GET_SIZE( terms.get() );
+     for( Py_ssize_t i = 0; i < size; ++i ) // zero tuple for safe early return
+-        PyTuple_SET_ITEM( terms.get(), i, 0 );
++        PyTuple_SET_ITEM( terms.get(), i, nullptr );
+     Py_ssize_t i = 0;
+     iter_t it = coeffs.begin();
+     iter_t end = coeffs.end();
+

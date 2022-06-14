@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit bash-completion-r1 distutils-r1 optfeature wrapper
 
 DESCRIPTION="youtube-dl fork with additional features and fixes"
@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${P::1}/${PN}/${P}.tar.gz"
 
 LICENSE="Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~x64-macos"
+KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 ~riscv x86 ~x64-macos"
 
 RDEPEND="
 	dev-python/pycryptodome[${PYTHON_USEDEP}]

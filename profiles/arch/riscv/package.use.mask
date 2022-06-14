@@ -1,7 +1,12 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Marek Szuba <marecki@gmail.com> (2022-04-30)
+# Jakov Smolić <jsmolic@gentoo.org> (2022-06-07)
+# riscv has no sanitizers unmasked for the time being, so
+# mask to prevent emerge from erroring out by default
+sys-devel/clang-runtime sanitize
+
+# Marek Szuba <marecki@gentoo.org> (2022-04-30)
 # net-wireless/sdrplay contains prebuilt binaries, currently available
 # upstream only for amd64/x86 and arm
 net-wireless/gr-osmosdr sdrplay

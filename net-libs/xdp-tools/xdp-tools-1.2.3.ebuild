@@ -25,6 +25,10 @@ QA_PREBUILT="usr/lib/bpf/*.o"
 
 MAKEOPTS+=" V=1"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.2.3-no-werror.patch
+)
+
 src_configure() {
 	export PRODUCTION=1
 	export DYNAMIC_LIBXDP=1

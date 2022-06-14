@@ -25,9 +25,6 @@ BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 "
 
-distutils_enable_sphinx docs \
-	">=dev-python/jaraco-packaging-8.2" \
-	">=dev-python/rst-linker-1.9"
 distutils_enable_tests pytest
 
 python_test() {

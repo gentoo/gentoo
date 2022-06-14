@@ -29,6 +29,10 @@ DEPEND=""
 RDEPEND="${PYTHON_DEPS}"
 BDEPEND=""
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.0.2-gcc12-memcpy.patch
+)
+
 src_prepare() {
 	sed -e "/DESTINATION/s,\${OAM_NAME}/lib,$(get_libdir)," \
 		-e "/DESTINATION/s,oam/include/oam,include/oam," -i oam/CMakeLists.txt || die

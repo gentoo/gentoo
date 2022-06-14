@@ -17,7 +17,7 @@ IUSE="examples"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ~riscv x86 ~amd64-linux ~x86-linux"
 
 # dev-lang/mercury: collision on 'mprof'
 # https://bugs.gentoo.org/571176

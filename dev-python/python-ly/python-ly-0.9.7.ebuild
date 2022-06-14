@@ -14,7 +14,7 @@ SRC_URI="https://github.com/frescobaldi/python-ly/archive/refs/tags/v${PV}.tar.g
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RESTRICT="test"
 

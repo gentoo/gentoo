@@ -1,0 +1,11 @@
+--- a/report/report-table.cpp
++++ b/report/report-table.cpp
+@@ -359,7 +359,7 @@ int Report::writeTable(Device::paragraphStruct *paragraph)
+ 				else if (config->reportFormat == Config::XML)
+ 					fprintf(outFile, ">");
+ 				if (cellPointer->cellData.empty())
+-					fprintf(outFile, config->emptyTableCell);
++					fprintf(outFile, "%s", config->emptyTableCell);
+ 				else
+ 					errorCode = writeText(cellPointer->cellData.c_str(), paragraph);
+ 				if (errorCode != 0)

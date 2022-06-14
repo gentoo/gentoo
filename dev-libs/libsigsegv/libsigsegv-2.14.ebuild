@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Library for handling page faults in user mode"
 HOMEPAGE="https://www.gnu.org/software/libsigsegv/"
@@ -20,6 +20,13 @@ src_prepare() {
 
 src_configure() {
 	econf --enable-shared --disable-static
+
+	if tc-is-cross-compiler && [[ ${CHOST} == sparc64* ]] ; then
+		# Tries to use fault-linux-sparc-old.h otherwise which is
+		# for non-POSIX systems.
+		# bug #833469
+		sed -i -e "s:fault-linux-sparc-old.h:fault-linux-sparc.h:" config.status config.h.in config.h || die
+	fi
 }
 
 src_install() {

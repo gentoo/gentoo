@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="sqlite"
 inherit distutils-r1 optfeature
 
@@ -26,6 +26,6 @@ distutils_enable_tests setup.py
 
 pkg_postinst() {
 	optfeature "Support for mongodb" dev-python/pymongo
-	optfeature "Support for postgresql" dev-python/psycopg
+	optfeature "Support for postgresql" dev-python/psycopg:2
 	optfeature "Support for mysql" dev-python/pymysql
 }

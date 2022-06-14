@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,13 +17,18 @@ IUSE=""
 DEPEND="sys-apps/help2man"
 RDEPEND="!dev-util/schroot[dchroot]"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.12.1-no-werror.patch
+)
+
 src_prepare() {
-	default
 	sed -i \
 		-e '/^all:/s:$: docs:' \
 		-e '/^CFLAGS/s:-O2:@CFLAGS@:' \
 		-e '/@CFLAGS@/ s:@CFLAGS@:@CFLAGS@ @LDFLAGS@:' \
 		Makefile.in || die "sed failed"
+
+	default
 }
 
 src_compile() {

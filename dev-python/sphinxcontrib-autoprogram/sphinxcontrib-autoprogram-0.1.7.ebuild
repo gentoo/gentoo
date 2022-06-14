@@ -20,7 +20,9 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 "
 
-distutils_enable_sphinx doc dev-python/sphinxcontrib-websupport
+distutils_enable_sphinx doc \
+	dev-python/sphinxcontrib-websupport \
+	dev-python/sphinxcontrib-serializinghtml
 
 python_install_all() {
 	distutils-r1_python_install_all

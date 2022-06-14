@@ -136,7 +136,7 @@ src_install() {
 		emake -j1 DESTDIR="${NEWLIBNANOTMPINSTALL}" install
 		# Rename nano lib* files to lib*_nano and move to the real ${D}
 		local nanolibfiles=""
-		nanolibfiles=$(find "${NEWLIBNANOTMPINSTALL}" -regex ".*/lib\(c\|g\|m\|rdimon\)\.a" -print)
+		nanolibfiles=$(find "${NEWLIBNANOTMPINSTALL}" -regex ".*/lib\(c\|g\|m\|rdimon\|gloss\)\.a" -print)
 		for f in ${nanolibfiles}; do
 			local l="${f##${NEWLIBNANOTMPINSTALL}}"
 			mv -v "${f}" "${D}/${l%%\.a}_nano.a" || die

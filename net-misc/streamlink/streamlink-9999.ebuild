@@ -38,7 +38,6 @@ DEPEND="
 	')
 "
 RDEPEND="${DEPEND}
-	media-video/rtmpdump
 	media-video/ffmpeg
 "
 BDEPEND="

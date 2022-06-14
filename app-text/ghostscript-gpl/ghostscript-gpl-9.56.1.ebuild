@@ -15,7 +15,7 @@ PVM_S=$(ver_rs 1-2 "")
 MY_PATCHSET="ghostscript-gpl-9.56.1-patchset-01.tar.xz"
 
 DESCRIPTION="Interpreter for the PostScript language and PDF"
-HOMEPAGE="https://ghostscript.com/"
+HOMEPAGE="https://ghostscript.com/ https://git.ghostscript.com/?p=ghostpdl.git;a=summary"
 SRC_URI="https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${PVM_S}/${MY_P}.tar.xz"
 if [[ -n "${MY_PATCHSET}" ]] ; then
 	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${MY_PATCHSET}"

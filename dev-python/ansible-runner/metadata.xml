@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>zmedico@gentoo.org</email>
-	<name>Zac Medico</name>
-</maintainer>
-<upstream>
-	<remote-id type="pypi">ansible-runner</remote-id>
-	<remote-id type="github">ansible/ansible-runner</remote-id>
-	<bugs-to>https://github.com/ansible/ansible-runner/issues</bugs-to>
-</upstream>
-<longdescription lang="en">
-A tool and python library that helps when interfacing with Ansible
-directly or as part of another system whether that be through a
-container image interface, as a standalone tool, or as a Python module
-that can be imported. The goal is to provide a stable and consistent
-interface abstraction to Ansible.
-</longdescription>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+		<name>Zac Medico</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">ansible-runner</remote-id>
+		<remote-id type="github">ansible/ansible-runner</remote-id>
+		<bugs-to>https://github.com/ansible/ansible-runner/issues</bugs-to>
+	</upstream>
+	<longdescription lang="en">
+		A tool and python library that helps when interfacing with Ansible
+		directly or as part of another system whether that be through a
+		container image interface, as a standalone tool, or as a Python module
+		that can be imported. The goal is to provide a stable and consistent
+		interface abstraction to Ansible.
+	</longdescription>
 </pkgmetadata>

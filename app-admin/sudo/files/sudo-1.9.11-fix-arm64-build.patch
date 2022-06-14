@@ -1,0 +1,23 @@
+https://github.com/sudo-project/sudo/commit/d549adf04bfde7936306203e2e8886ffd93d00ea
+https://bugs.gentoo.org/850454
+
+From: Pierre Bourdon <delroth@gmail.com>
+Date: Tue, 7 Jun 2022 17:14:39 +0200
+Subject: [PATCH] exec_ptrace: fix missing sudo_pt_regs on aarch64
+
+AArch64 already had an existing "user_pt_regs" struct and didn't need a
+struct alias before the renaming to "sudo_pt_regs". Make the code build
+again by adding the now missing alias.
+
+Fixes: 2eb8ff17
+--- a/src/exec_ptrace.h
++++ b/src/exec_ptrace.h
+@@ -76,6 +76,7 @@
+ # define reg_arg4(x)		(x).r10
+ #elif defined(__aarch64__)
+ # define SECCOMP_AUDIT_ARCH	AUDIT_ARCH_AARCH64
++# define sudo_pt_regs		struct user_pt_regs
+ # define reg_syscall(x)		(x).regs[8]	/* w8 */
+ # define reg_retval(x)		(x).regs[0]	/* x0 */
+ # define reg_sp(x)		(x).sp		/* sp */
+

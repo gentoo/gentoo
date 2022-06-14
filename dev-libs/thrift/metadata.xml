@@ -9,7 +9,7 @@
 		<flag name="libevent">Build support for <pkg>dev-libs/libevent</pkg></flag>
 	</use>
 	<upstream>
-		<remote-id type="github">apache/thrift/</remote-id>
+		<remote-id type="github">apache/thrift</remote-id>
 		<bugs-to>https://issues.apache.org/jira/projects/THRIFT</bugs-to>
 	</upstream>
 </pkgmetadata>

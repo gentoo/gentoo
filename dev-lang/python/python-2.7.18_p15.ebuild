@@ -146,12 +146,6 @@ src_configure() {
 
 	filter-flags -malign-double
 
-	# https://bugs.gentoo.org/show_bug.cgi?id=50309
-	if is-flagq -O3; then
-		is-flagq -fstack-protector-all && replace-flags -O3 -O2
-		use hardened && replace-flags -O3 -O2
-	fi
-
 	if tc-is-cross-compiler; then
 		# Force some tests that try to poke fs paths.
 		export ac_cv_file__dev_ptc=no
@@ -310,8 +304,13 @@ src_install() {
 	local -x EPYTHON=python${PYVER}
 	# if not using a cross-compiler, use the fresh binary
 	if ! tc-is-cross-compiler; then
-		local -x PYTHON=./python
-		local -x LD_LIBRARY_PATH=${LD_LIBRARY_PATH+${LD_LIBRARY_PATH}:}${PWD}
+		cat > python.wrap <<-EOF || die
+			#!/bin/sh
+			export LD_LIBRARY_PATH=\${PWD}\${LD_LIBRARY_PATH+:\${LD_LIBRARY_PATH}}
+			exec ./python "\${@}"
+		EOF
+		chmod +x python.wrap || die
+		local -x PYTHON=./python.wrap
 	else
 		local -x PYTHON=${EPREFIX}/usr/bin/${EPYTHON}
 	fi

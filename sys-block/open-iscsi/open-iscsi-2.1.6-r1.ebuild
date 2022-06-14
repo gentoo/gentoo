@@ -29,7 +29,7 @@ RDEPEND="${DEPEND}
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.1.1-Makefiles.patch
+	"${FILESDIR}"/${PN}-2.1.7-NoWError.patch
 	"${FILESDIR}"/open-iscsi-2.1.6-Makefiles.patch
 )
 

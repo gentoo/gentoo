@@ -1,0 +1,119 @@
+--- a/src/common/linux/libcurl_wrapper.h	2022-06-07 21:55:00.387396660 +0200
++++ b/src/common/linux/libcurl_wrapper.h	2022-06-07 21:55:18.450145751 +0200
+@@ -37,7 +37,7 @@
+ #include <map>
+ 
+ #include "common/using_std_string.h"
+-#include "third_party/curl/curl.h"
++#include <curl/curl.h>
+ 
+ namespace google_breakpad {
+ class LibcurlWrapper {
+--- a/src/common/linux/http_upload.cc	2022-06-07 21:53:55.505298529 +0200
++++ b/src/common/linux/http_upload.cc	2022-06-07 21:54:17.944986506 +0200
+@@ -31,7 +31,7 @@
+ 
+ #include <assert.h>
+ #include <dlfcn.h>
+-#include "third_party/curl/curl.h"
++#include <curl/curl.h>
+ 
+ namespace {
+ 
+--- a/src/processor/disassembler_x86.h	2022-06-08 08:41:45.569686249 +0200
++++ b/src/processor/disassembler_x86.h	2022-06-08 08:42:09.049377873 +0200
+@@ -42,7 +42,7 @@
+ #include "google_breakpad/common/breakpad_types.h"
+ 
+ namespace libdis {
+-#include "third_party/libdisasm/libdis.h"
++#include <libdis.h>
+ }
+ 
+ namespace google_breakpad {
+--- a/Makefile.am	2022-06-08 08:51:35.221948155 +0200
++++ b/Makefile.am	2022-06-08 08:53:21.679551745 +0200
+@@ -142,7 +142,6 @@
+ if !DISABLE_PROCESSOR
+ lib_LIBRARIES += src/libbreakpad.a
+ pkgconfig_DATA += breakpad.pc
+-noinst_LIBRARIES += src/third_party/libdisasm/libdisasm.a
+ endif
+ 
+ if LINUX_HOST
+@@ -885,7 +885,7 @@
+ 	src/processor/stackwalker_x86.o \
+ 	src/processor/symbolic_constants_win.o \
+ 	src/processor/tokenize.o \
+-	src/third_party/libdisasm/libdisasm.a \
++	-ldisasm \
+ 	$(TEST_LIBS) \
+ 	$(PTHREAD_CFLAGS) $(PTHREAD_LIBS)
+ 
+@@ -895,7 +895,7 @@
+ 	$(AM_CPPFLAGS) $(TEST_CFLAGS)
+ src_processor_disassembler_x86_unittest_LDADD = \
+ 	src/processor/disassembler_x86.o \
+-	src/third_party/libdisasm/libdisasm.a \
++	-ldisasm \
+ 	$(TEST_LIBS) \
+ 	$(PTHREAD_CFLAGS) $(PTHREAD_LIBS)
+ 
+@@ -997,7 +997,7 @@
+ 	src/processor/stackwalker_x86.o \
+ 	src/processor/symbolic_constants_win.o \
+ 	src/processor/tokenize.o \
+-	src/third_party/libdisasm/libdisasm.a \
++	-ldisasm \
+ 	$(TEST_LIBS) \
+ 	$(PTHREAD_CFLAGS) $(PTHREAD_LIBS)
+ 
+@@ -1027,7 +1027,7 @@
+ src_processor_proc_maps_linux_unittest_LDADD = \
+ 	src/processor/logging.o \
+ 	src/processor/pathname_stripper.o \
+-	src/third_party/libdisasm/libdisasm.a \
++	-ldisasm \
+ 	$(TEST_LIBS) \
+ 	$(PTHREAD_CFLAGS) $(PTHREAD_LIBS)
+ 
+@@ -1307,7 +1307,7 @@
+ 	src/processor/stackwalker_sparc.o \
+ 	src/processor/stackwalker_x86.o \
+ 	src/processor/tokenize.o \
+-	src/third_party/libdisasm/libdisasm.a
++	-ldisasm
+ 
+ src_processor_minidump_stackwalk_SOURCES = \
+ 	src/processor/minidump_stackwalk.cc
+@@ -1347,7 +1347,7 @@
+ 	src/processor/stackwalker_x86.o \
+ 	src/processor/symbolic_constants_win.o \
+ 	src/processor/tokenize.o \
+-	src/third_party/libdisasm/libdisasm.a
++	-ldisasm
+ 
+ endif !DISABLE_PROCESSOR
+ 
+--- a/src/processor/exploitability_win.cc	2022-06-08 08:59:44.437471336 +0200
++++ b/src/processor/exploitability_win.cc	2022-06-08 09:00:04.061210421 +0200
+@@ -44,7 +44,7 @@
+ #include "processor/disassembler_x86.h"
+ #include "processor/logging.h"
+ 
+-#include "third_party/libdisasm/libdis.h"
++#include <libdis.h>
+ 
+ namespace google_breakpad {
+ 
+--- a/src/processor/disassembler_x86_unittest.cc	2022-06-08 10:30:23.370615114 +0200
++++ b/src/processor/disassembler_x86_unittest.cc	2022-06-08 10:30:44.003341412 +0200
+@@ -31,7 +31,7 @@
+ 
+ #include "breakpad_googletest_includes.h"
+ #include "processor/disassembler_x86.h"
+-#include "third_party/libdisasm/libdis.h"
++#include <libdis.h>
+ 
+ namespace {
+ 

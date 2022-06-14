@@ -43,7 +43,10 @@ COMMON_DEPEND="
 	openssl? ( dev-libs/openssl:=[-bindist(-)] )
 	oracle? ( dev-db/oracle-instantclient[odbc,sdk] )
 	postgres? ( dev-db/postgresql:* )
-	proxy?  ( sys-libs/zlib )
+	proxy?  (
+		dev-libs/libevent:=
+		sys-libs/zlib
+	)
 	server? (
 		dev-libs/libevent:=
 		sys-libs/zlib
@@ -58,10 +61,13 @@ RDEPEND="${COMMON_DEPEND}
 	acct-user/zabbix
 	java? ( >=virtual/jre-1.8:* )
 	mysql? ( virtual/mysql )
-	proxy? ( net-analyzer/fping[suid] )
+	proxy? (
+		!pcre2? ( dev-libs/libpcre )
+		pcre2? ( dev-libs/libpcre2:= )
+		net-analyzer/fping[suid]
+	)
 	server? (
 		app-admin/webapp-config
-		dev-libs/libevent
 		!pcre2? ( dev-libs/libpcre )
 		pcre2? ( dev-libs/libpcre2:= )
 		net-analyzer/fping[suid]

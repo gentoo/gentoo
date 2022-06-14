@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="doc examples matplotlib notebook nbconvert qt5 +smp test"
 RESTRICT="!test? ( test )"
 
@@ -88,6 +88,10 @@ python_prepare_all() {
 	# Rename the test directory to reduce sys.path pollution
 	# https://github.com/ipython/ipython/issues/12892
 	mv IPython/extensions/{,ipython_}tests || die
+
+	# remove pyproject.toml that specifies incorrect backend; since
+	# the package actually requires the legacy backend, force it implicitly
+	rm pyproject.toml || die
 
 	distutils-r1_python_prepare_all
 }

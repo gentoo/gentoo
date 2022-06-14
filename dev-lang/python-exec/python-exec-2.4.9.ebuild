@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 inherit python-any-r1
 
 DESCRIPTION="Python script wrapper"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/mgorny/python-exec/releases/download/v${PV}/${P}.tar
 
 LICENSE="BSD-2"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # Internal Python project hack.  Do not copy it.  Ever.
 IUSE="${_PYTHON_ALL_IMPLS[@]/#/python_targets_} +native-symlinks test"
 RESTRICT="!test? ( test )"

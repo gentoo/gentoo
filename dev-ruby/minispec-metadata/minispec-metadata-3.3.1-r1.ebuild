@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/ordinaryzelig/minispec-metadata"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE=""
 
 ruby_add_rdepend "dev-ruby/minitest"

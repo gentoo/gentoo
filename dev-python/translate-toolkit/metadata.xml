@@ -14,7 +14,7 @@
 		<flag name="yaml">Support YAML format</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">translate</remote-id>
+		<remote-id type="github">translate/translate</remote-id>
 		<remote-id type="pypi">translate-toolkit</remote-id>
 	</upstream>
 </pkgmetadata>

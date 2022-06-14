@@ -47,7 +47,7 @@ RDEPEND="dev-libs/boost:=
 	dev-cpp/tbb:=
 	adolc? ( sci-libs/adolc )
 	arpack? ( sci-libs/arpack[mpi=] )
-	assimp? ( media-libs/assimp )
+	assimp? ( media-libs/assimp:= )
 	cuda? ( dev-util/nvidia-cuda-toolkit )
 	ginkgo? ( sci-libs/ginkgo )
 	gmsh? ( sci-libs/gmsh )
@@ -86,11 +86,11 @@ src_configure() {
 		-DDEAL_II_PACKAGE_VERSION="${PV}"
 		-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=OFF
 		-DDEAL_II_ALLOW_AUTODETECTION=OFF
+		-DDEAL_II_ALLOW_BUNDLED=OFF
 		-DDEAL_II_ALLOW_PLATFORM_INTROSPECTION=OFF
 		-DDEAL_II_COMPILE_EXAMPLES=OFF
 		-DDEAL_II_DOCHTML_RELDIR="share/doc/${P}/html"
 		-DDEAL_II_DOCREADME_RELDIR="share/doc/${P}"
-		-DDEAL_II_COMPILE_EXAMPLES=OFF
 		-DDEAL_II_EXAMPLES_RELDIR="share/doc/${P}/examples"
 		-DDEAL_II_LIBRARY_RELDIR="$(get_libdir)"
 		-DDEAL_II_SHARE_RELDIR="share/${PN}"
@@ -120,7 +120,7 @@ src_configure() {
 		-DBUILD_SHARED_LIBS="$(usex !static-libs)"
 		-DDEAL_II_PREFER_STATIC_LIBS="$(usex static-libs)"
 		-DDEAL_II_WITH_TBB=ON
-		-DDEAL_II_WITH_TASKFLOW=ON
+		-DDEAL_II_WITH_TASKFLOW=OFF
 		-DDEAL_II_WITH_TRILINOS="$(usex trilinos)"
 	)
 

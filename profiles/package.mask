@@ -33,6 +33,76 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-06-13)
+# Upstream has discontinued the fork.  No revdeps.  They recommend using
+# the original editdistance (not packaged on Gentoo)
+# or dev-python/ukkonen.
+# Removal on 2022-07-13.  Bug #851678.
+dev-python/editdistance-s
+
+# Sam James <sam@gentoo.org> (2022-06-10)
+# Masked for removal on 2022-07-10. No upstream activity in a long time,
+# no reverse dependencies, and Gentoo maintains a huge number of patches
+# w/ no hope of them being upstreamed. Bug #850958.
+dev-cpp/commoncpp2
+
+# Michał Górny <mgorny@gentoo.org> (2022-06-08)
+# pyroute2 is pending version bump for over 1.5 years already.
+# The tests are restricted.  pulseaudio-dlna is the only revdep.
+# pulseaudio-dlna has not seen any upstream activity since 2017,
+# and has had its last release in 2016.  It does not feature a non-live
+# ebuild.
+# Removal on 2022-07-08.  Bug #813990.
+dev-python/pyroute2
+net-misc/pulseaudio-dlna
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-06-05)
+# Ages old, abandoned upstream, and server installs now provide an
+# actually useful webmail interface. Removal in 30 days.
+mail-client/novell-groupwise-client
+
+# Michał Górny <mgorny@gentoo.org> (2022-06-05)
+# The current version in Gentoo is broken with modern pytest.  The new
+# version (from Dec 2021) fails tests with modern pyflakes.  No revdeps.
+# Removal on 2022-07-05.  Bug #834816.
+dev-python/pytest-flakes
+
+# Michał Górny <mgorny@gentoo.org> (2022-06-05)
+# Barely any upstream activity since 2017.  The LICENSE in ebuild
+# is incorrect and the package bundles sources with non-free license.
+# No revdeps.
+# Removal on 2022-07-05.  Bug #849824.
+dev-python/polygon
+
+# Michał Górny <mgorny@gentoo.org> (2022-06-05)
+# Pending bump since January.  No Python 3.10 compat.  Tests restricted.
+# Uses PEP517-incompatible hacks to build.  Hard requires dev-db/mysql
+# (and blocks dev-db/mariad).  No revdeps in Gentoo.
+# Use dev-python/mysqlclient instead.
+# Removal on 2022-07-05.  Bug #845756.
+dev-python/mysql-connector-python
+
+# Joonas Niilola <juippis@gentoo.org> (2022-06-05)
+# Version which allows wayland-only build, still experimental. Weeding
+# out all bugs before unmasking. Please see bug #848858 and its
+# blockers.
+=www-client/firefox-101.0-r10
+=www-client/firefox-101.0.1-r10
+
+# Michał Górny <mgorny@gentoo.org> (2022-06-02)
+# The current Gentoo version requires setup.py to exist which breaks
+# the new versions of its revdeps.  The new upstream release is broken
+# by design and requires installing setuptools in a virtualenv (enjoy
+# pep517) to get the package's version, so fails without Internet.
+# No reply on the bug for 3 months already.
+# Removal on 2022-07-02.  Bug #834534.
+dev-python/jaraco-packaging
+
+# Sam James <sam@gentoo.org> (2022-06-02)
+# No reverse dependencies, uses long-deprecated and abandoned nose for tests,
+# no upstream activity in years. Removal on 2022-07-02.
+dev-python/chai
+
 # Michał Górny <mgorny@gentoo.org> (2022-05-31)
 # Causes a regression in dev-python/werkzeug that breaks all its
 # revdeps.  If one of the pytest plugins using werkzeug is installed,
@@ -157,50 +227,6 @@ dev-python/drf-yasg
 # No tests.  No revdeps.
 # Removal on 2022-06-20.  Bug #846788.
 dev-python/dicttoxml
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-05-21)
-# Work in progress, do not use yet
-=dev-lang/perl-5.36*
-~virtual/perl-Archive-Tar-2.400.0
-~virtual/perl-Attribute-Handlers-1.20.0
-~virtual/perl-bignum-0.650.0
-~virtual/perl-Compress-Raw-Zlib-2.105.0
-~virtual/perl-CPAN-2.330.0
-~virtual/perl-Data-Dumper-2.184.0
-~virtual/perl-DB_File-1.857.0
-~virtual/perl-Devel-PPPort-3.680.0
-~virtual/perl-Digest-1.200.0
-~virtual/perl-Encode-3.170.0
-~virtual/perl-Exporter-5.770.0
-~virtual/perl-ExtUtils-MakeMaker-7.640.0
-~virtual/perl-ExtUtils-ParseXS-3.450.0
-~virtual/perl-File-Spec-3.840.0
-~virtual/perl-HTTP-Tiny-0.80.0
-~virtual/perl-if-0.61.0
-~virtual/perl-IO-1.500.0
-~virtual/perl-IO-Compress-2.106.0
-~virtual/perl-JSON-PP-4.70.0
-~virtual/perl-libnet-3.140.0
-~virtual/perl-Locale-Maketext-1.310.0
-~virtual/perl-Math-BigInt-1.999.830
-~virtual/perl-Math-BigInt-FastCalc-0.501.200
-~virtual/perl-Math-BigRat-0.262.100
-~virtual/perl-Module-CoreList-5.202.205.200
-~virtual/perl-Pod-Simple-3.430.0
-~virtual/perl-Scalar-List-Utils-1.620.0
-~virtual/perl-Socket-2.33.0
-~virtual/perl-Storable-3.260.0
-~virtual/perl-Test-Harness-3.440.0
-~virtual/perl-Test-Simple-1.302.190
-~virtual/perl-Text-ParseWords-3.310.0
-~virtual/perl-Text-Tabs+Wrap-2021.81.400
-~virtual/perl-threads-2.270.0
-~virtual/perl-threads-shared-1.640.0
-~virtual/perl-Time-HiRes-1.977.0
-~virtual/perl-Unicode-Collate-1.310.0
-~virtual/perl-Unicode-Normalize-1.310.0
-~virtual/perl-version-0.992.900
-~virtual/perl-XSLoader-0.310.0
 
 # Michał Górny <mgorny@gentoo.org> (2022-05-21)
 # dev-python/mongoengine has had repeated test regressions, and this
@@ -335,16 +361,6 @@ dev-python/django-rq
 # does not support Python 3.10+. Removal on 2022-06-15.
 dev-python/python-iptables
 
-# Michał Górny <mgorny@gentoo.org> (2022-05-11)
-# A backport with no revdeps left.
-# Removal on 2022-06-10.  Bug #843791.
-dev-python/backports-entry_points_selectable
-
-# David Seifert <soap@gentoo.org> (2022-05-11)
-# Declared EOL by upstream at the end of 2020, no revdeps, last version
-# has many issues. Removal on 2022-06-10. Bug #741846, #770760.
-media-gfx/nvidia-texture-tools
-
 # Florian Schmaus <flow@gentoo.org> (2022-05-10)
 # Was split by upstream (and us) into
 # net-analyzer/gsa and net-analyzer/gsad.
@@ -365,59 +381,6 @@ dev-java/commons-jxpath
 # of dependencies.  Packaging a new release poses serious problems.
 # Removal on 2022-06-06.  Bug #836282.
 dev-db/pgadmin4
-
-# Hans de Graaff <graaff@gentoo.org> (2022-05-07)
-# Old slot without reverse dependencies. Originally introduced for
-# dev-ruby/gherkin but no longer used there. Upgrade to the new slotted
-# version. Masked for removal in 30 days.
-dev-ruby/c21e:1
-
-# Michał Górny <mgorny@gentoo.org> (2022-05-06)
-# The "better quality" dependencies of Mailman.  These packages were
-# generally fixed by the Python team but they have no reverse
-# dependencies.  If you need them, please let us know and we'll keep
-# them.
-# Removal on 2022-06-05.  Bug #842888.
-dev-python/authheaders
-dev-python/django-allauth
-dev-python/django-appconf
-dev-python/django-debug-toolbar
-dev-python/flufl-bounce
-dev-python/flufl-i18n
-dev-python/lazr-config
-dev-python/lazr-delegates
-dev-python/python3-openid
-dev-python/rcssmin
-dev-python/rjsmin
-dev-python/robot-detection
-
-# Michał Górny <mgorny@gentoo.org> (2022-05-06)
-# Mailman along with a bunch of dependencies that are of bad quality.
-# At the very least, the Mailman packages need a dedicated maintainer.
-# Their Python dependencies can be maintained by the Python team
-# if someone takes care of getting the tests working.
-# Removal on 2022-06-05.  Bug #842888.
-dev-python/aiosmtpd
-dev-python/django-compressor
-dev-python/django-extensions
-dev-python/django-gravatar2
-dev-python/django-haystack
-dev-python/django-picklefield
-dev-python/django-q
-dev-python/falcon
-dev-python/flufl-testing
-net-mail/django-mailman3
-net-mail/mailman
-net-mail/mailmanclient
-net-mail/mailman-meta
-net-mail/hyperkitty
-net-mail/postorius
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-05-04)
-# Unused java libraries and useless java-virtual. Removal on 2022-06-04
-dev-java/glassfish-jms-api
-dev-java/sun-jms
-java-virtuals/jms
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
@@ -530,11 +493,6 @@ sys-cluster/singularity
 sys-devel/automake:1.13
 sys-devel/automake:1.15
 
-# Michał Górny <mgorny@gentoo.org> (2022-03-18)
-# The new version breaks building docs w/o Internet access (because it
-# tries to fetch and install all dependencies locally).
-~dev-python/jaraco-packaging-9.0.0
-
 # John Helmert III <ajak@gentoo.org> (2022-03-13)
 # Arti is not a production-ready Tor client. According to upstream, "do
 # not use this program yet if you seriously need anonymity, privacy,
@@ -584,16 +542,6 @@ x11-misc/easystroke
 # FFmpeg 5.0 ABI/API changes break many packages.
 # Masking for tracker/tinderbox. Bug #831437
 >=media-video/ffmpeg-5.0
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-15)
-# Last branch update happened ~ 12 month ago.
-# Maximum kernel supported is 5.9, which we no longer package.
-# So 5.10 LTS users can't use it. only 4.x LTS and 5.4 LTS.
-# ebuild is effectively unmaintained/untested, so is upstream branch.
-# Removal date: sometime around June 2022
-# Bug: https://bugs.gentoo.org/830020
-~sys-fs/zfs-0.8.6
-~sys-fs/zfs-kmod-0.8.6
 
 # Brian Evans <grknight@gentoo.org> (2022-01-07)
 # The main consumer, phpunit, does not initiate the new timer correctly
@@ -649,10 +597,7 @@ net-libs/libsoup:3.0
 # Masked while being tested and reverse deps aren't fully compatible
 # bug #797325.
 =dev-libs/openssl-3.0*
-
-# Craig Andrews <candrews@gentoo.org> (2021-09-20)
-# Requires OpenSSL >= 3.0.0
-# Masked until dev-libs/openssl-3.0* is unmasked
+=dev-libs/openssl-compat-1.1.1*
 =dev-libs/gost-engine-3.0*
 
 # Joonas Niilola <juippis@gentoo.org> (2021-07-29)

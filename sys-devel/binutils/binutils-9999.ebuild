@@ -157,12 +157,14 @@ src_configure() {
 	LIBPATH=/usr/$(get_libdir)/binutils/${CTARGET}/${PV}
 	INCPATH=${LIBPATH}/include
 	DATAPATH=/usr/share/binutils-data/${CTARGET}/${PV}
+
+	# see Note [tooldir hack for ldscripts]
 	if is_cross ; then
 		TOOLPATH=/usr/${CHOST}/${CTARGET}
+		BINPATH=${TOOLPATH}/binutils-bin/${PV}
 	else
-		TOOLPATH=/usr/${CTARGET}
+		BINPATH=/usr/${CTARGET}/binutils-bin/${PV}
 	fi
-	BINPATH=${TOOLPATH}/binutils-bin/${PV}
 
 	# Make sure we filter $LINGUAS so that only ones that
 	# actually work make it through, bug #42033
@@ -308,7 +310,11 @@ src_compile() {
 	cd "${MY_BUILDDIR}" || die
 
 	# see Note [tooldir hack for ldscripts]
-	emake V=1 tooldir="${EPREFIX}${TOOLPATH}" all
+	if is_cross ; then
+		emake V=1 tooldir="${EPREFIX}${TOOLPATH}" all
+	else
+		emake V=1 all
+	fi
 
 	# only build info pages if the user wants them
 	if use doc ; then
@@ -336,6 +342,7 @@ src_install() {
 
 	# see Note [tooldir hack for ldscripts]
 	emake V=1 DESTDIR="${D}" tooldir="${EPREFIX}${LIBPATH}" install
+
 	rm -rf "${ED}"/${LIBPATH}/bin || die
 	use static-libs || find "${ED}" -name '*.la' -delete
 
@@ -479,3 +486,11 @@ pkg_postrm() {
 #   ${TOOLPATH}: /usr/${CHOST} (or /usr/${CHOST}/${CTARGET} for cross-case)
 # - at install-time set scriptdir to point to slotted location:
 #   ${LIBPATH}: /usr/$(get_libdir)/binutils/${CTARGET}/${PV}
+#
+# Now, this would all be very nice except for the fact that the changed
+# directory makes libtool re-link libraries during the install phase.
+# It uses libraries from the system installation to do that (bad)
+# and fails if it cant handle these (e.g. newer LTO version than in
+# current gcc, see bugs 834720 and 838925).
+#
+# So, we apply this whole hack only for cross builds.

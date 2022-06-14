@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop toolchain-funcs
+inherit desktop toolchain-funcs qmake-utils
 
 DESCRIPTION="A time-memory-trade-off-cracker"
 HOMEPAGE="https://ophcrack.sourceforge.io/"
@@ -33,6 +33,9 @@ PATCHES=( "${FILESDIR}"/ophcrack-ar.patch )
 
 src_configure() {
 	tc-export AR
+
+	# bug #765229
+	export PATH="$(qt5_get_bindir):${PATH}"
 
 	econf \
 		$(use_enable debug) \

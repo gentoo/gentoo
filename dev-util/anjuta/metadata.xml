@@ -5,11 +5,6 @@
 		<email>chewi@gentoo.org</email>
 		<name>James Le Cuirot</name>
 	</maintainer>
-	<use>
-		<flag name="devhelp">Enable devhelp integration</flag>
-		<flag name="glade">Build glade plugin for anjuta</flag>
-		<flag name="terminal">Enable terminal plugin based on <pkg>x11-libs/vte</pkg></flag>
-	</use>
 	<longdescription lang="en">
 		This package used to build the entire Anjuta IDE for GNOME with all its
 		plugins. The project is now largely defunct, so the package has been

@@ -1,0 +1,21 @@
+https://git.netfilter.org/libnftnl/commit/?id=accee9a75e0e6678863d092d6a4f4afbadf0eed9
+
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+Date: Wed, 18 May 2022 23:54:03 +0200
+Subject: set_elem: missing export symbol
+
+nftnl_set_elem_nlmsg_build_payload() is already available through .map
+file and headers, add missing EXPORT_SYMBOL.
+
+Signed-off-by: Pablo Neira Ayuso <pablo@netfilter.org>
+--- a/src/set_elem.c
++++ b/src/set_elem.c
+@@ -300,6 +300,7 @@ err:
+ 	return NULL;
+ }
+ 
++EXPORT_SYMBOL(nftnl_set_elem_nlmsg_build_payload);
+ void nftnl_set_elem_nlmsg_build_payload(struct nlmsghdr *nlh,
+ 				      struct nftnl_set_elem *e)
+ {
+cgit v1.2.3

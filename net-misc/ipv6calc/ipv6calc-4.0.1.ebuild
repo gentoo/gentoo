@@ -31,6 +31,7 @@ src_configure() {
 	# --disable-db-as-registry
 	# --disable-db-cc-registry
 	local myeconfargs=(
+		--disable-compiler-warning-to-error
 		--disable-bundled-getopt
 		--disable-bundled-md5
 		--enable-shared

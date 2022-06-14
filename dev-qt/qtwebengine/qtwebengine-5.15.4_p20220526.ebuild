@@ -11,7 +11,7 @@ DESCRIPTION="Library for rendering dynamic web content in Qt5 C++ and QML applic
 HOMEPAGE="https://www.qt.io/"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 	if [[ ${PV} == ${QT5_PV}_p* ]]; then
 		SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
 		S="${WORKDIR}/${P}"
@@ -227,6 +227,11 @@ src_prepare() {
 		mkdir -vp source/config/linux/ppc64 || die
 		mkdir -p source/libvpx/test || die
 		touch source/libvpx/test/test.mk || die
+		# clang-format is used to re-format sources
+		# but we'd rather make it a no-op than introduce a clang dependency
+		# https://bugs.gentoo.org/849458
+		clang-format() { : ; }
+		export -f clang-format || die
 		./generate_gni.sh || die
 		popd >/dev/null || die
 	fi

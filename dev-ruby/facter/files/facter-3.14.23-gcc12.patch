@@ -1,0 +1,10 @@
+https://bugs.gentoo.org/840116
+--- a/lib/src/facts/glib/load_average_resolver.cc
++++ b/lib/src/facts/glib/load_average_resolver.cc
+@@ -1,5 +1,6 @@
+ #include <internal/facts/glib/load_average_resolver.hpp>
+ #include <leatherman/logging/logging.hpp>
++#include <array>
+ #include <cstdlib>
+ 
+ #ifdef __sun

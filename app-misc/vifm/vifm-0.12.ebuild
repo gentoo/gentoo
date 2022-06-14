@@ -31,6 +31,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
+		--disable-werror \
 		$(use_enable developer) \
 		$(use_enable extended-keys) \
 		$(use_with magic libmagic) \

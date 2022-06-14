@@ -14,7 +14,7 @@ SRC_URI="https://github.com/hashicorp/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0 BSD-2 BSD-4 MIT MPL-2.0 unicode"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 
 DOCS=( {README,CHANGELOG}.md )
 

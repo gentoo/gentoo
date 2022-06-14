@@ -26,7 +26,7 @@ tc_is_live() {
 }
 
 if tc_is_live ; then
-	EGIT_REPO_URI="https://gcc.gnu.org/git/gcc.git"
+	EGIT_REPO_URI="https://gcc.gnu.org/git/gcc.git https://github.com/gcc-mirror/gcc"
 	# Naming style:
 	# gcc-10.1.0_pre9999 -> gcc-10-branch
 	#  Note that the micro version is required or lots of stuff will break.
@@ -34,6 +34,8 @@ if tc_is_live ; then
 	#  inheriting this eclass.
 	EGIT_BRANCH="releases/${PN}-${PV%.?.?_pre9999}"
 	EGIT_BRANCH=${EGIT_BRANCH//./_}
+	inherit git-r3
+elif [[ -n ${TOOLCHAIN_USE_GIT_PATCHES} ]] ; then
 	inherit git-r3
 fi
 
@@ -78,6 +80,20 @@ tc_version_is_between() {
 # @DESCRIPTION:
 # Used to override GCC version. Useful for e.g. live ebuilds or snapshots.
 # Defaults to ${PV}.
+
+# @ECLASS_VARIABLE: TOOLCHAIN_USE_GIT_PATCHES
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Used to force fetching patches from git. Useful for non-released versions
+# of GCC where we don't want to keep creating patchset tarballs for a new
+# release series (e.g. suppose 12.0 just got released, then adding snapshots
+# for 13.0, we don't want to create new patchsets for every single 13.0 snapshot,
+# so just grab patches from git each time if this variable is set).
+
+# @ECLASS_VARIABLE: TOOLCHAIN_PATCH_DEV
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Indicate the developer who hosts the patchset for an ebuild.
 
 # @ECLASS_VARIABLE: GCC_PV
 # @INTERNAL
@@ -181,7 +197,7 @@ tc_has_feature() {
 	has "$1" "${TC_FEATURES[@]}"
 }
 
-if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
+if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
 	IUSE+=" debug +cxx +nptl" TC_FEATURES+=( nptl )
 	[[ -n ${PIE_VER} ]] && IUSE+=" nopie"
 	[[ -n ${SPECS_VER} ]] && IUSE+=" nossp"
@@ -275,6 +291,9 @@ DEPEND="${RDEPEND}"
 if tc_has_feature gcj ; then
 	DEPEND+="
 		gcj? (
+			app-arch/zip
+			app-arch/unzip
+			>=media-libs/libart_lgpl-2.1
 			awt? (
 				x11-base/xorg-proto
 				x11-libs/libXt
@@ -284,9 +303,6 @@ if tc_has_feature gcj ; then
 				x11-libs/pango
 				virtual/pkgconfig
 			)
-			>=media-libs/libart_lgpl-2.1
-			app-arch/zip
-			app-arch/unzip
 		)
 	"
 fi
@@ -310,6 +326,13 @@ fi
 
 if tc_has_feature valgrind; then
 	BDEPEND+=" valgrind? ( dev-util/valgrind )"
+fi
+
+if tc_version_is_at_least 12.0 ; then
+	# D in 12+ is self-hosting and needs D to bootstrap.
+	# TODO: package some binary we can use, like for Ada
+	# bug #840182
+	BDEPEND+=" d? ( || ( sys-devel/gcc[d(-)] <sys-devel/gcc-12[d(-)] ) )"
 fi
 
 PDEPEND=">=sys-devel/gcc-config-2.3"
@@ -348,6 +371,31 @@ if [[ ${TOOLCHAIN_SET_S} == yes ]] ; then
 fi
 
 gentoo_urls() {
+	# slyfox's distfiles are mirrored to sam's devspace
+	declare -A devspace_urls=(
+		[soap]=HTTP~soap/distfiles/URI
+		[sam]=HTTP~sam/distfiles/sys-devel/gcc/URI
+		[slyfox]=HTTP~sam/distfiles/URI
+		[tamiko]=HTTP~tamiko/distfiles/URI
+		[zorry]=HTTP~zorry/patches/gcc/URI
+		[vapier]=HTTP~vapier/dist/URI
+		[blueness]=HTTP~blueness/dist/URI
+	)
+
+	# Newer ebuilds should set TOOLCHAIN_PATCH_DEV and we'll just
+	# return the full URL from the array.
+	if [[ -n ${TOOLCHAIN_PATCH_DEV} ]] ; then
+		local devspace_url=${devspace_urls[${TOOLCHAIN_PATCH_DEV}]}
+		if [[ -n ${devspace_url} ]] ; then
+			local devspace_url_exp=${devspace_url//HTTP/https:\/\/dev.gentoo.org\/}
+			devspace_url_exp=${devspace_url_exp//URI/$1}
+			echo ${devspace_url_exp}
+			return
+		fi
+	fi
+
+	# But we keep the old fallback list for compatibility with
+	# older ebuilds (overlays etc).
 	local devspace="
 		HTTP~soap/distfiles/URI
 		HTTP~sam/distfiles/URI
@@ -502,12 +550,40 @@ toolchain_pkg_setup() {
 
 #---->> src_unpack <<----
 
+# @FUNCTION: toolchain_fetch_git_patches
+# @INTERNAL
+# @DESCRIPTION:
+# Fetch patches from Gentoo's gcc-patches repository.
+toolchain_fetch_git_patches() {
+	local gcc_patches_repo="https://anongit.gentoo.org/git/proj/gcc-patches.git https://github.com/gentoo/gcc-patches"
+
+	# If we weren't given a patchset number, pull it from git too.
+	einfo "Fetching patchset from git as PATCH_VER is unset"
+	EGIT_REPO_URI=${gcc_patches_repo} EGIT_BRANCH="master" \
+		EGIT_CHECKOUT_DIR="${WORKDIR}"/patch.tmp \
+		git-r3_src_unpack
+
+	mkdir "${WORKDIR}"/patch || die
+	mv "${WORKDIR}"/patch.tmp/${PATCH_GCC_VER}/gentoo/* "${WORKDIR}"/patch || die
+
+	if [[ -n ${MUSL_VER} || -d "${WORKDIR}"/musl ]] && [[ ${CTARGET} == *musl* ]] ; then
+		mkdir "${WORKDIR}"/musl || die
+		mv "${WORKDIR}"/patch.tmp/${PATCH_GCC_VER}/musl/* "${WORKDIR}"/musl || die
+	fi
+}
+
 toolchain_src_unpack() {
 	if tc_is_live ; then
 		git-r3_src_unpack
+
+		if [[ -z ${PATCH_VER} ]] && ! use vanilla ; then
+			toolchain_fetch_git_patches
+		fi
+	elif [[ -z ${PATCH_VER} && -n ${TOOLCHAIN_USE_GIT_PATCHES} ]] ; then
+		toolchain_fetch_git_patches
 	fi
 
-	default_src_unpack
+	default
 }
 
 #---->> src_prepare <<----
@@ -596,13 +672,13 @@ toolchain_src_prepare() {
 
 do_gcc_gentoo_patches() {
 	if ! use vanilla ; then
-		if [[ -n ${PATCH_VER} ]] ; then
+		if [[ -n ${PATCH_VER} || -d "${WORKDIR}"/patch ]] ; then
 			einfo "Applying Gentoo patches ..."
 			eapply "${WORKDIR}"/patch/*.patch
 			BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION} p${PATCH_VER}"
 		fi
 
-		if [[ -n ${MUSL_VER} ]] && [[ ${CTARGET} == *musl* ]] ; then
+		if [[ -n ${MUSL_VER} || -d "${WORKDIR}"/musl ]] && [[ ${CTARGET} == *musl* ]] ; then
 			if [[ ${CATEGORY} == cross-* ]] ; then
 				# We don't want to apply some patches when cross-compiling.
 				if [[ -d "${WORKDIR}"/musl/nocross ]] ; then
@@ -1092,7 +1168,7 @@ toolchain_src_configure() {
 	local with_abi_map=()
 	case $(tc-arch) in
 		arm)
-			# bug 264534, bug #414395
+			# bug #264534, bug #414395
 			local a arm_arch=${CTARGET%%-*}
 			# Remove trailing endian variations first: eb el be bl b l
 			for a in e{b,l} {b,l}e b l ; do
@@ -1113,7 +1189,7 @@ toolchain_src_configure() {
 				confgcc+=( --with-arch=${arm_arch} )
 			fi
 
-			# Make default mode thumb for microcontroller classes #418209
+			# Make default mode thumb for microcontroller classes, bug #418209
 			[[ ${arm_arch} == *-m ]] && confgcc+=( --with-mode=thumb )
 
 			# Enable hardvfp
@@ -1142,7 +1218,7 @@ toolchain_src_configure() {
 			fi
 			;;
 		x86)
-			# Default arch for x86 is normally i386, lets give it a bump
+			# Default arch for x86 is normally i386, let's give it a bump
 			# since glibc will do so based on CTARGET anyways
 			confgcc+=( --with-arch=${CTARGET%%-*} )
 			;;
@@ -1156,12 +1232,13 @@ toolchain_src_configure() {
 			[[ ${CTARGET//_/-} == *-e500v2-* ]] && confgcc+=( --enable-e500-double )
 			;;
 		ppc64)
-			# On ppc64 big endian target gcc assumes elfv1 by default,
-			# and elfv2 on little endian
-			# but musl does not support elfv1 at all on any endian ppc64
-			# see https://git.musl-libc.org/cgit/musl/tree/INSTALL
-			# bug #704784
-			# https://gcc.gnu.org/PR93157
+			# On ppc64, the big endian target gcc assumes elfv1 by default,
+			# and elfv2 on little endian.
+			# But musl does not support elfv1 at all on any endian ppc64.
+			# See:
+			# - https://git.musl-libc.org/cgit/musl/tree/INSTALL
+			# - bug #704784
+			# - https://gcc.gnu.org/PR93157
 			[[ ${CTARGET} == powerpc64-*-musl ]] && confgcc+=( --with-abi=elfv2 )
 			;;
 		riscv)
@@ -1170,7 +1247,7 @@ toolchain_src_configure() {
 			;;
 	esac
 
-	# if the target can do biarch (-m32/-m64), enable it.  overhead should
+	# If the target can do biarch (-m32/-m64), enable it.  overhead should
 	# be small, and should simplify building of 64bit kernels in a 32bit
 	# userland by not needing sys-devel/kgcc64. bug #349405
 	case $(tc-arch) in
@@ -1206,14 +1283,14 @@ toolchain_src_configure() {
 	if in_iuse openmp ; then
 		# Make sure target has pthreads support: bug #326757, bug #335883
 		# There shouldn't be a chicken & egg problem here as openmp won't
-		# build without a C library, and you can't build that w/out
-		# already having a compiler ...
+		# build without a C library, and you can't build that w/o
+		# already having a compiler...
 		if ! is_crosscompile || \
 		   $(tc-getCPP ${CTARGET}) -E - <<<"#include <pthread.h>" >& /dev/null
 		then
 			confgcc+=( $(use_enable openmp libgomp) )
 		else
-			# Force disable as the configure script can be dumb #359855
+			# Force disable as the configure script can be dumb, bug #359855
 			confgcc+=( --disable-libgomp )
 		fi
 	else
@@ -1227,9 +1304,10 @@ toolchain_src_configure() {
 		if hardened_gcc_is_stable ssp; then
 			export gcc_cv_libc_provides_ssp=yes
 		fi
+
 		if _tc_use_if_iuse ssp; then
 			# On some targets USE="ssp -libssp" is an invalid
-			# configuration as target libc does not provide
+			# configuration as the target libc does not provide
 			# stack_chk_* functions. Do not disable libssp there.
 			case ${CTARGET} in
 				mingw*|*-mingw*)
@@ -1345,23 +1423,29 @@ toolchain_src_configure() {
 	einfo "LIBPATH:         ${LIBPATH}"
 	einfo "DATAPATH:        ${DATAPATH}"
 	einfo "STDCXX_INCDIR:   ${STDCXX_INCDIR}"
-	echo
 	einfo "Languages:       ${GCC_LANG}"
 	echo
 
 	# Build in a separate build tree
 	mkdir -p "${WORKDIR}"/build || die
-	pushd "${WORKDIR}"/build > /dev/null
+	pushd "${WORKDIR}"/build > /dev/null || die
 
 	# ...and now to do the actual configuration
 	addwrite /dev/zero
+
+	local gcc_shell="${BROOT}"/bin/bash
+	# Older gcc versions did not detect bash and re-exec itself, so force the
+	# use of bash for them.
+	if tc_version_is_at_least 11.2 ; then
+		gcc_shell="${BROOT}"/bin/sh
+	fi
 
 	if is_jit ; then
 		einfo "Configuring JIT gcc"
 
 		mkdir -p "${WORKDIR}"/build-jit || die
 		pushd "${WORKDIR}"/build-jit > /dev/null || die
-		CONFIG_SHELL="${BROOT}"/bin/bash edo "${BROOT}"/bin/bash "${S}"/configure \
+		CONFIG_SHELL="${gcc_shell}" edo "${gcc_shell}" "${S}"/configure \
 				"${confgcc[@]}" \
 				--disable-libada \
 				--disable-libsanitizer \
@@ -1376,9 +1460,7 @@ toolchain_src_configure() {
 		popd > /dev/null || die
 	fi
 
-	# Older gcc versions did not detect bash and re-exec itself, so force the
-	# use of bash. Newer ones will auto-detect, but this is not harmful.
-	CONFIG_SHELL="${BROOT}"/bin/bash edo "${BROOT}"/bin/bash "${S}"/configure "${confgcc[@]}"
+	CONFIG_SHELL="${gcc_shell}" edo "${gcc_shell}" "${S}"/configure "${confgcc[@]}"
 
 	# Return to whatever directory we were in before
 	popd > /dev/null || die
@@ -1511,7 +1593,7 @@ gcc_do_filter_flags() {
 		append-flags -O2
 	fi
 
-	# Don't want to funk ourselves
+	# Avoid shooting self in foot
 	filter-flags '-mabi*' -m31 -m32 -m64
 
 	# bug #490738
@@ -1578,14 +1660,17 @@ setup_minispecs_gcc_build_specs() {
 	if hardened_gcc_works pie ; then
 		cat "${WORKDIR}"/specs/pie.specs >> "${WORKDIR}"/build.specs
 	fi
+
 	if hardened_gcc_works ssp ; then
 		for s in ssp sspall ; do
 			cat "${WORKDIR}"/specs/${s}.specs >> "${WORKDIR}"/build.specs
 		done
 	fi
+
 	for s in nostrict znow ; do
 		cat "${WORKDIR}"/specs/${s}.specs >> "${WORKDIR}"/build.specs
 	done
+
 	export GCC_SPECS="${WORKDIR}"/build.specs
 }
 
@@ -1606,10 +1691,11 @@ gcc-multilib-configure() {
 		local l=$(gcc-abi-map ${abi})
 		[[ -n ${l} ]] && list+=",${l}"
 	done
+
 	if [[ -n ${list} ]] ; then
 		case ${CTARGET} in
-		x86_64*)
-			tc_version_is_at_least 4.8 && confgcc+=( --with-multilib-list=${list:1} )
+			x86_64*)
+				tc_version_is_at_least 4.8 && confgcc+=( --with-multilib-list=${list:1} )
 			;;
 		esac
 	fi
@@ -1640,7 +1726,7 @@ gcc-abi-map() {
 #----> src_compile <----
 
 toolchain_src_compile() {
-	touch "${S}"/gcc/c-gperf.h
+	touch "${S}"/gcc/c-gperf.h || die
 
 	# Do not make manpages if we do not have perl ...
 	[[ ! -x /usr/bin/perl ]] \
@@ -1652,10 +1738,15 @@ toolchain_src_compile() {
 	unset ADAFLAGS
 
 	# Older gcc versions did not detect bash and re-exec itself, so force the
-	# use of bash.  Newer ones will auto-detect, but this is not harmful.
+	# use of bash for them.
 	# This needs to be set for compile as well, as it's used in libtool
 	# generation, which will break install otherwise (at least in 3.3.6): bug #664486
-	CONFIG_SHELL="${EPREFIX}/bin/bash" \
+	local gcc_shell="${BROOT}"/bin/bash
+	if tc_version_is_at_least 11.2 ; then
+		gcc_shell="${BROOT}"/bin/sh
+	fi
+
+	CONFIG_SHELL="${gcc_shell}" \
 		gcc_do_make ${GCC_MAKE_TARGET}
 }
 
@@ -1675,7 +1766,13 @@ gcc_do_make() {
 		# resulting binaries natively
 		GCC_MAKE_TARGET=${GCC_MAKE_TARGET-all}
 	else
-		if _tc_use_if_iuse pgo; then
+		if [[ ${EXTRA_ECONF} == *--disable-bootstrap* ]] ; then
+			GCC_MAKE_TARGET=${GCC_MAKE_TARGET-all}
+
+			ewarn "Disabling bootstrapping. ONLY recommended for development."
+			ewarn "This is NOT a safe configuration for endusers!"
+			ewarn "This compiler may not be safe or reliable for production use!"
+		elif _tc_use_if_iuse pgo; then
 			GCC_MAKE_TARGET=${GCC_MAKE_TARGET-profiledbootstrap}
 		else
 			GCC_MAKE_TARGET=${GCC_MAKE_TARGET-bootstrap-lean}
@@ -1684,7 +1781,7 @@ gcc_do_make() {
 
 	# Older versions of GCC could not do profiledbootstrap in parallel due to
 	# collisions with profiling info.
-	if [[ ${GCC_MAKE_TARGET} == "profiledbootstrap" ]]; then
+	if [[ ${GCC_MAKE_TARGET} == "profiledbootstrap" ]] ; then
 		! tc_version_is_at_least 4.6 && export MAKEOPTS="${MAKEOPTS} -j1"
 	fi
 
@@ -1721,7 +1818,7 @@ gcc_do_make() {
 
 	einfo "Compiling ${PN} (${GCC_MAKE_TARGET})..."
 
-	pushd "${WORKDIR}"/build >/dev/null
+	pushd "${WORKDIR}"/build >/dev/null || die
 
 	emake \
 		LDFLAGS="${LDFLAGS}" \
@@ -1731,10 +1828,11 @@ gcc_do_make() {
 		${GCC_MAKE_TARGET}
 
 	if is_ada; then
-		# Without these links it is not getting the good compiler
-		# Need to check why
+		# Without these links, it is not getting the good compiler
+		# TODO: Need to check why
 		ln -s gcc ../build/prev-gcc || die
 		ln -s ${CHOST} ../build/prev-${CHOST} || die
+
 		# Building standard ada library
 		emake -C gcc gnatlib-shared
 		# Building gnat toold
@@ -1763,31 +1861,40 @@ gcc_do_make() {
 		fi
 	fi
 
-	popd >/dev/null
+	popd >/dev/null || die
 }
 
 #---->> src_test <<----
 
 toolchain_src_test() {
-	cd "${WORKDIR}"/build
+	cd "${WORKDIR}"/build || die
+
+	# From opensuse's spec file:
+	# "asan needs a whole shadow address space"
+	ulimit -v unlimited
 
 	# 'asan' wants to be preloaded first, so does 'sandbox'.
 	# To make asan tests work disable sandbox for all of test suite.
 	# 'backtrace' tests also does not like 'libsandbox.so' presence.
 	SANDBOX_ON=0 LD_PRELOAD= emake -k check
+
+	einfo "Testing complete."
+	einfo "Please ignore any 'mail' lines in the summary output below (no mail is sent)."
+	einfo "Summary:"
+	"${S}"/contrib/test_summary
 }
 
 #---->> src_install <<----
 
 toolchain_src_install() {
-	cd "${WORKDIR}"/build
+	cd "${WORKDIR}"/build || die
 
 	# Don't allow symlinks in private gcc include dir as this can break the build
-	find gcc/include*/ -type l -delete
+	find gcc/include*/ -type l -delete || die
 
 	# Copy over the info pages.  We disabled their generation earlier, but the
 	# build system only expects to install out of the build dir, not the source. bug #464008
-	mkdir -p gcc/doc
+	mkdir -p gcc/doc || die
 	local x=
 	for x in "${S}"/gcc/doc/*.info* ; do
 		if [[ -f ${x} ]] ; then
@@ -1860,7 +1967,7 @@ toolchain_src_install() {
 	gcc_slot_java
 
 	dodir /usr/bin
-	cd "${D}"${BINPATH}
+	cd "${D}"${BINPATH} || die
 	# Ugh: we really need to auto-detect this list.
 	#      It's constantly out of date.
 	for x in cpp gcc g++ c++ gcov g77 gcj gcjh gfortran gccgo gnat* ; do
@@ -2001,14 +2108,14 @@ toolchain_src_install() {
 
 	# Disable RANDMMAP so PCH works, bug #301299
 	if tc_version_is_at_least 4.3 ; then
-		pax-mark -r "${D}${PREFIX}/libexec/gcc/${CTARGET}/${GCC_CONFIG_VER}/cc1"
-		pax-mark -r "${D}${PREFIX}/libexec/gcc/${CTARGET}/${GCC_CONFIG_VER}/cc1plus"
+		pax-mark -r "${ED}/libexec/gcc/${CTARGET}/${GCC_CONFIG_VER}/cc1"
+		pax-mark -r "${ED}/libexec/gcc/${CTARGET}/${GCC_CONFIG_VER}/cc1plus"
 	fi
 
 	# Disable MPROTECT so java works, bug #574808
 	if is_gcj ; then
-		pax-mark -m "${D}${PREFIX}/libexec/gcc/${CTARGET}/${GCC_CONFIG_VER}/ecj1"
-		pax-mark -m "${D}${PREFIX}/${CTARGET}/gcc-bin/${GCC_CONFIG_VER}/gij"
+		pax-mark -m "${ED}/libexec/gcc/${CTARGET}/${GCC_CONFIG_VER}/ecj1"
+		pax-mark -m "${ED}/${CTARGET}/gcc-bin/${GCC_CONFIG_VER}/gij"
 	fi
 }
 
@@ -2079,6 +2186,7 @@ gcc_movelibs() {
 	for FROMDIR in ${removedirs} ; do
 		rmdir "${D}"${FROMDIR} >& /dev/null
 	done
+
 	find -depth "${ED}" -type d -exec rmdir {} + >& /dev/null
 }
 
@@ -2088,13 +2196,13 @@ gcc_movelibs() {
 fix_libtool_libdir_paths() {
 	local libpath="$1"
 
-	pushd "${D}" >/dev/null
+	pushd "${D}" >/dev/null || die
 
-	pushd "./${libpath}" >/dev/null
+	pushd "./${libpath}" >/dev/null || die
 	local dir="${PWD#${D%/}}"
 	local allarchives=$(echo *.la)
 	allarchives="\(${allarchives// /\\|}\)"
-	popd >/dev/null
+	popd >/dev/null || die
 
 	# The libdir might not have any .la files. bug #548782
 	find "./${dir}" -maxdepth 1 -name '*.la' \
@@ -2106,13 +2214,13 @@ fix_libtool_libdir_paths() {
 	find "./${dir}/" -maxdepth 1 -name '*.la' \
 		-exec sed -i -e "/^dependency_libs=/s:/[^ ]*/${allarchives}:${libpath}/\1:g" {} + || die
 
-	popd >/dev/null
+	popd >/dev/null || die
 }
 
 create_gcc_env_entry() {
 	dodir /etc/env.d/gcc
-	local gcc_envd_base="/etc/env.d/gcc/${CTARGET}-${GCC_CONFIG_VER}"
 
+	local gcc_envd_base="/etc/env.d/gcc/${CTARGET}-${GCC_CONFIG_VER}"
 	local gcc_specs_file
 	local gcc_envd_file="${ED}${gcc_envd_base}"
 	if [[ -z $1 ]] ; then
@@ -2233,6 +2341,7 @@ gcc_slot_java() {
 
 toolchain_pkg_postinst() {
 	do_gcc_config
+
 	if [[ ! ${ROOT} && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
 		eselect compiler-shadow update all
 	fi

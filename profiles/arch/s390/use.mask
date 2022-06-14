@@ -58,10 +58,6 @@ libglvnd
 # Unmask ABI flags for this arch.
 -abi_s390_32
 
-# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
-# Dependencies not keyworded.
-appindicator
-
 # James Le Cuirot <chewi@gentoo.org> (2017-06-29)
 # Unmask as this profile is big endian.
 -big-endian

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1 virtualx
 
@@ -22,7 +22,9 @@ RDEPEND="dev-python/QtPy[gui,testlib,widgets(+),${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
 		dev-python/PyQt5[gui,testlib,widgets,${PYTHON_USEDEP}]
-		dev-python/pyside2[gui,testlib,widgets,${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pyside2[gui,testlib,widgets,${PYTHON_USEDEP}]
+		' python3_{8..10} )
 	)
 "
 
@@ -50,5 +52,8 @@ python_test() {
 	)
 
 	PYTEST_QT_API="pyqt5" epytest || die
-	PYTEST_QT_API="pyside2" epytest || die
+	# Pyside2 is not compatible with python3.11
+	if [[ "${EPYTHON}" != python3.11 ]]; then
+		PYTEST_QT_API="pyside2" epytest || die
+	fi
 }

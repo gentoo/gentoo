@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit multiprocessing optfeature perl-functions python-single-r1 toolchain-funcs
 
 DESCRIPTION="X(cross)platform Music Multiplexing System, next generation of the XMMS player"

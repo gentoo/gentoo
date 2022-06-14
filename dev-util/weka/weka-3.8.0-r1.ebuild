@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/project/weka/weka-3-8/${PV}/weka-${PV//./-}.zip"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="virtual/jdk:1.8
 	dev-java/javacup:0"

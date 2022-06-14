@@ -14,7 +14,7 @@ LUA_COMPAT=( lua5-1 luajit )
 # Upstream have deviated too far from vanilla Lua, adding their own APIs
 # like lua_enablereadonlytable, but we still need the eclass and such
 # for bug #841422.
-inherit autotools flag-o-matic systemd toolchain-funcs lua-single tmpfiles
+inherit autotools edo flag-o-matic lua-single multiprocessing systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="A persistent caching system, key-value, and data structures database"
 HOMEPAGE="https://redis.io"
@@ -66,9 +66,6 @@ PATCHES=(
 
 src_prepare() {
 	default
-
-	# unstable on jemalloc
-	> tests/unit/memefficiency.tcl || die
 
 	# Copy lua modules into build dir
 	#cp "${S}"/deps/lua/src/{fpconv,lua_bit,lua_cjson,lua_cmsgpack,lua_struct,strbuf}.c "${S}"/src || die
@@ -135,18 +132,24 @@ src_compile() {
 }
 
 src_test() {
-	# Known to fail with FEATURES=usersandbox
-	if has usersandbox ${FEATURES}; then
-		ewarn "You are emerging ${P} with 'usersandbox' enabled." \
-			"Expect some test failures or emerge with 'FEATURES=-usersandbox'!"
+	local runtestargs=(
+		--clients "$(makeopts_jobs)" # see bug #649868
+	)
+
+	if has usersandbox ${FEATURES} || ! has userpriv ${FEATURES}; then
+		ewarn "unit/oom-score-adj test will be skipped." \
+			"It is known to fail with FEATURES usersandbox or -userpriv. See bug #756382."
+
+		# unit/oom-score-adj was introduced in version 6.2.0
+		runtestargs+=( --skipunit unit/oom-score-adj ) # see bug #756382
 	fi
 
 	if use ssl; then
-		./utils/gen-test-certs.sh
-		./runtest --tls
-	else
-		./runtest
+		edo ./utils/gen-test-certs.sh
+		runtestargs+=( --tls )
 	fi
+
+	edo ./runtest "${runtestargs[@]}"
 }
 
 src_install() {

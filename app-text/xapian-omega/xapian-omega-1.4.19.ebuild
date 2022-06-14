@@ -13,14 +13,14 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
-DEPEND="~dev-libs/xapian-1.4.19:0/30
+DEPEND="~dev-libs/xapian-${PV}:0/30
 	dev-lang/perl
 	dev-libs/libpcre
 	sys-libs/zlib"
 RDEPEND="${DEPEND}"
 
 src_install() {
-	emake DESTDIR="${D}" install
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}" install
 
 	# Protect /etc/omega.conf
 	echo "CONFIG_PROTECT=\"/etc/omega.conf\"" > "${T}"/20xapian-omega
@@ -32,7 +32,7 @@ src_install() {
 
 	# Directory containing OmegaScript templates:
 	keepdir /var/lib/omega/templates
-	mv "${S}"/templates/* "${D}"/var/lib/omega/templates || die
+	mv "${S}"/templates/* "${ED}"/var/lib/omega/templates || die
 
 	# Directory to write Omega logs to:
 	keepdir /var/log/omega

@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org (2022-06-08)
+# Depends on www-plugins/chrome-binary-plugins which is masked here.
+www-client/qutebrowser widevine
+
 # Petr Vaněk <arkamar@atlas.cz> (2022-03-15)
 # musl package does not currently provide gencat binary, which is needed for
 # nls support, see bug #712828

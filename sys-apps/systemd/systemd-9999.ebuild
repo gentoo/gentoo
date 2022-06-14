@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 # Avoid QA warnings
 TMPFILES_OPTIONAL=1
@@ -119,7 +119,10 @@ RDEPEND="${COMMON_DEPEND}
 	>=acct-user/systemd-resolve-0-r1
 	>=acct-user/systemd-timesync-0-r1
 	>=sys-apps/baselayout-2.2
-	selinux? ( sec-policy/selinux-base-policy[systemd] )
+	selinux? (
+		sec-policy/selinux-base-policy[systemd]
+		sec-policy/selinux-ntp
+	)
 	sysv-utils? (
 		!sys-apps/openrc[sysv-utils(-)]
 		!sys-apps/sysvinit

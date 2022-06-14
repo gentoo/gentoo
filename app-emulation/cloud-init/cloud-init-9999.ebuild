@@ -3,12 +3,14 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=setuptools
+# Disabled for now: bug #850628
+#DISTUTILS_USE_PEP517=setuptools
+# https://bugs.launchpad.net/cloud-init/+bug/1978328
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit distutils-r1
+inherit distutils-r1 udev
 
-if [[ ${PV} == *9999 ]];then
+if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.launchpad.net/cloud-init"
 else
@@ -21,8 +23,6 @@ HOMEPAGE="https://launchpad.net/cloud-init"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 CDEPEND="
 	dev-python/jinja[${PYTHON_USEDEP}]
@@ -58,7 +58,11 @@ distutils_enable_tests pytest
 python_prepare_all() {
 	# Fix location of documentation installation
 	sed -i "s:USR + '/share/doc/cloud-init:USR + '/share/doc/${PF}:" setup.py || die
-	sed -i 's/version=get_version(),/version=9999,/g' setup.py || die
+
+	if [[ ${PV} == *9999 ]] ; then
+		sed -i 's/version=get_version(),/version=9999,/g' setup.py || die
+	fi
+
 	distutils-r1_python_prepare_all
 }
 
@@ -72,10 +76,16 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	# installs as non-executable
-	chmod +x "${D}"/etc/init.d/*
+	chmod +x "${D}"/etc/init.d/* || die
+}
+
+pkg_prerm() {
+	udev_reload
 }
 
 pkg_postinst() {
+	udev_reload
+
 	elog "cloud-init-local needs to be run in the boot runlevel because it"
 	elog "modifies services in the default runlevel.  When a runlevel is started"
 	elog "it is cached, so modifications that happen to the current runlevel"

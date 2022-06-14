@@ -16,7 +16,7 @@ SRC_URI="https://github.com/mkdocs/mkdocs-redirects/archive/refs/tags/v${PV}.tar
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 
 RDEPEND="
 	>=dev-python/mkdocs-1.0.4[${PYTHON_USEDEP}]

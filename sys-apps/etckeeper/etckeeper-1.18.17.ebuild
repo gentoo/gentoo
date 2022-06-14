@@ -41,7 +41,7 @@ src_prepare() {
 	default
 	hprefixify *.d/* etckeeper
 	local systemdunitdir="$(systemd_get_systemunitdir)"
-	systemdunitdir="${systemdunitdir#${EPREFIX%/}}"
+	systemdunitdir="${systemdunitdir#${EPREFIX}}"
 	sed -i \
 		-e s'@zsh/vendor-completions@zsh/site-functions@' \
 		-e s"@/lib/systemd/system@"${systemdunitdir}"@" \

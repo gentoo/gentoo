@@ -47,6 +47,12 @@ esac
 # the correct branch to use.
 _LLVM_MASTER_MAJOR=15
 
+# @ECLASS_VARIABLE: _LLVM_NEWEST_MANPAGE_RELEASE
+# @INTERNAL
+# @DESCRIPTION:
+# The newest release of LLVM for which manpages were generated.
+_LLVM_NEWEST_MANPAGE_RELEASE=14.0.5
+
 # @ECLASS_VARIABLE: _LLVM_SOURCE_TYPE
 # @INTERNAL
 # @DESCRIPTION:
@@ -65,6 +71,10 @@ fi
 	die "${ECLASS}: Release ebuild for master branch?!"
 
 inherit multiprocessing
+
+if ver_test -ge 14.0.5; then
+	inherit verify-sig
+fi
 
 
 # == control variables ==
@@ -86,9 +96,10 @@ inherit multiprocessing
 # @ECLASS_VARIABLE: LLVM_MANPAGES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Set to 'build', include the dependency on dev-python/sphinx to build
-# the manpages.  If set to 'pregenerated', fetch and install
-# pregenerated manpages from the archive.
+# Set to a non-empty value in ebuilds that build manpages via Sphinx.
+# The eclass will either include the dependency on dev-python/sphinx
+# or pull the pregenerated manpage tarball depending on the package
+# version.
 
 # @ECLASS_VARIABLE: LLVM_PATCHSET
 # @DEFAULT_UNSET
@@ -186,8 +197,24 @@ llvm.org_set_globals() {
 		[[ ${PV} != ${_LLVM_MASTER_MAJOR}.* ]] &&
 			EGIT_BRANCH="release/${PV%%.*}.x"
 	elif [[ ${_LLVM_SOURCE_TYPE} == tar ]]; then
-		SRC_URI+="
-			https://github.com/llvm/llvm-project/archive/llvmorg-${PV/_/-}.tar.gz"
+		if ver_test -ge 14.0.5; then
+			SRC_URI+="
+				https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV}/llvm-project-${PV}.src.tar.xz
+				verify-sig? (
+					https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV}/llvm-project-${PV}.src.tar.xz.sig
+				)
+			"
+			BDEPEND+="
+				verify-sig? (
+					sec-keys/openpgp-keys-llvm
+				)
+			"
+			VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/llvm.asc
+		else
+			SRC_URI+="
+				https://github.com/llvm/llvm-project/archive/llvmorg-${PV/_/-}.tar.gz
+			"
+		fi
 	else
 		die "Invalid _LLVM_SOURCE_TYPE: ${LLVM_SOURCE_TYPE}"
 	fi
@@ -199,25 +226,22 @@ llvm.org_set_globals() {
 		RESTRICT+=" !test? ( test )"
 	fi
 
-	case ${LLVM_MANPAGES:-__unset__} in
-		__unset__)
-			# no manpage support
-			;;
-		build)
-			IUSE+=" doc"
-			# NB: this is not always the correct dep but it does no harm
-			BDEPEND+=" dev-python/sphinx"
-			;;
-		pregenerated)
+	if [[ ${LLVM_MANPAGES} ]]; then
+		# use pregenerated tarball for releases
+		# up to _LLVM_NEWEST_MANPAGE_RELEASE
+		if llvm_manpage_dist_available; then
 			IUSE+=" doc"
 			SRC_URI+="
 				!doc? (
 					https://dev.gentoo.org/~mgorny/dist/llvm/llvm-${PV}-manpages.tar.bz2
-				)"
-			;;
-		*)
-			die "Invalid LLVM_MANPAGES=${LLVM_MANPAGES}"
-	esac
+				)
+			"
+		else
+			IUSE+=" doc"
+			# NB: this is not always the correct dep but it does no harm
+			BDEPEND+=" dev-python/sphinx"
+		fi
+	fi
 
 	if [[ -n ${LLVM_PATCHSET} ]]; then
 		SRC_URI+="
@@ -275,10 +299,24 @@ llvm.org_src_unpack() {
 		default_src_unpack
 	else
 		local archive=llvmorg-${PV/_/-}.tar.gz
+		if ver_test -ge 14.0.5; then
+			archive=llvm-project-${PV/_/-}.src.tar.xz
+			if use verify-sig; then
+				verify-sig_verify_detached \
+					"${DISTDIR}/${archive}" "${DISTDIR}/${archive}.sig"
+			fi
+		fi
+
 		ebegin "Unpacking from ${archive}"
-		tar -x -z -o --strip-components 1 \
-			-f "${DISTDIR}/${archive}" \
-			"${components[@]/#/llvm-project-${archive%.tar*}/}" || die
+		if ver_test -ge 14.0.5; then
+			tar -x -J -o --strip-components 1 \
+				-f "${DISTDIR}/${archive}" \
+				"${components[@]/#/${archive%.tar*}/}" || die
+		else
+			tar -x -z -o --strip-components 1 \
+				-f "${DISTDIR}/${archive}" \
+				"${components[@]/#/llvm-project-${archive%.tar*}/}" || die
+		fi
 		eend ${?}
 
 		# unpack all remaining distfiles
@@ -354,12 +392,21 @@ get_lit_flags() {
 	echo "-vv;-j;${LIT_JOBS:-$(makeopts_jobs)}"
 }
 
+# @FUNCTION: llvm_manpage_dist_available
+# @DESCRIPTION:
+# Return true (0) if this LLVM version features prebuilt manpage
+# tarball, false (1) otherwise.
+llvm_manpage_dist_available() {
+	[[ ${_LLVM_SOURCE_TYPE} == tar ]] &&
+		ver_test "${PV}" -le "${_LLVM_NEWEST_MANPAGE_RELEASE}"
+}
+
 # @FUNCTION: llvm_are_manpages_built
 # @DESCRIPTION:
 # Return true (0) if manpages are going to be built from source,
 # false (1) if preinstalled manpages will be used.
 llvm_are_manpages_built() {
-	use doc || [[ ${LLVM_MANPAGES} == build ]]
+	use doc || ! llvm_manpage_dist_available
 }
 
 # @FUNCTION: llvm_install_manpages

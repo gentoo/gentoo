@@ -155,4 +155,15 @@ pkg_postinst() {
 		ewarn "without networking."
 		ewarn
 	fi
+
+	# added to handle downgrading from 0.45 (2022-06-08)
+	for v in ${REPLACING_VERSIONS}; do
+		[[ -x $(type rc-update) ]] || continue
+		if ver_test $v -gt 0.44.10; then
+			if rc-update show boot | grep -q seedrng; then
+				rc-update del seedrng boot
+				rc-update add urandom boot
+		fi
+		fi
+	done
 }

@@ -18,7 +18,7 @@ SRC_URI="https://github.com/FasterXML/jackson-dataformats-text/archive/jackson-d
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 # Common dependencies
 # POM: pom.xml

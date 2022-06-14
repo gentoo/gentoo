@@ -1,0 +1,73 @@
+This patch enables html documentation output for fvwm3 1.0.4
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -1,40 +1,59 @@
+ docdir = @FVWM_DOCDIR@
+-MODULE_ADOCS = $(wildcard fvwm3/fvwm3.adoc bin/*.adoc modules/*.adoc)
++DOC_SRC = $(wildcard fvwm3/fvwm3.adoc bin/*.adoc modules/*.adoc)
+ 
+-EXTRA_DIST = $(MODULE_ADOCS)
++EXTRA_DIST = $(DOC_SRC)
+ 
+ if FVWM_BUILD_MANDOC
+-BUILD_MANS = $(patsubst %.adoc,%, $(MODULE_ADOCS))
++BUILD_MANS = $(DOC_SRC:.adoc=.1)
++BUILD_HTML = $(DOC_SRC:.adoc=.html)
+ else
+ BUILD_MANS =
+ endif
+ 
+-all: docs
+-docs: $(BUILD_MANS)
++all: man html
++
++man: $(BUILD_MANS)
++
++html: $(BUILD_HTML)
+ 
+ clean:
+ 	rm -fr man1/
++	rm -fr html/
+ 
+ distclean-local: clean
+ 
+ if FVWM_BUILD_MANDOC
+-QUIET_ASCIIDOC = @echo '  ' DOC '    ' $@'.1';
++QUIET_ASCIIDOC = @echo '  ' DOC '    ' $@;
+ 
+-%: %.adoc
++%.1: %.adoc
+ 	$(QUIET_ASCIIDOC) \
+ 	NAME=`basename "$@" | "$(SED)" -e "${transform}"`; \
+-	$(ASCIIDOC) -b manpage $< -o "man1/$$NAME.1"
++	$(ASCIIDOC) -b manpage $^ -o "man1/$$NAME"
++
++%.html: %.adoc
++	$(QUIET_ASCIIDOC:.1=.html) \
++	NAME=`basename "$@" | "$(SED)" -e "${transform}"`; \
++	$(ASCIIDOC) -b html5 $^ -o "html/$$NAME"
+ 
+ install-data-local:
+ 	install -d -m 755 $(DESTDIR)$(mandir)/man1/
+ 	@for i in $(notdir $(BUILD_MANS)); do \
+ 		NAME=`basename "$$i" | "$(SED)" -e "${transform}"`; \
+-		install -m 644 "man1/$$NAME.1" $(DESTDIR)$(mandir)/man1/; \
++		install -m 644 "man1/$$NAME" $(DESTDIR)$(mandir)/man1/; \
++	done
++	install -d -m 755 $(DESTDIR)$(mandir)/html/
++	@for i in $(notdir $(BUILD_HTML)); do \
++		NAME=`basename "$$i" | "$(SED)" -e "${transform}"`; \
++		install -m 644 "html/$$NAME" $(DESTDIR)$(mandir)/html/; \
+ 	done
+ 
+ uninstall-local:
+ 	@for i in $(notdir $(BUILD_MANS)); do \
+ 		NAME=`basename "$$i" | "$(SED)" -e "${transform}"`; \
+-		rm -f "$(DESTDIR)$(mandir)/man1/$$NAME.1"; \
++		rm -f "$(DESTDIR)$(mandir)/man1/$$NAME"; \
++	done
++	@for i in $(notdir $(BUILD_HTML)); do \
++		NAME=`basename "$$i" | "$(SED)" -e "${transform}"`; \
++		rm -f "$(DESTDIR)$(mandir)/html/$$NAME"; \
+ 	done
+ endif

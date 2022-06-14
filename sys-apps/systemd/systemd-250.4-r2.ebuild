@@ -122,7 +122,10 @@ RDEPEND="${COMMON_DEPEND}
 		acct-group/systemd-hostname
 		sys-apps/dbus-broker
 	)
-	selinux? ( sec-policy/selinux-base-policy[systemd] )
+	selinux? (
+		sec-policy/selinux-base-policy[systemd]
+		sec-policy/selinux-ntp
+	)
 	sysv-utils? (
 		!sys-apps/openrc[sysv-utils(-)]
 		!sys-apps/sysvinit

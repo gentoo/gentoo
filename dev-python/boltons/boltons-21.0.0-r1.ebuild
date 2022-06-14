@@ -9,11 +9,11 @@ inherit distutils-r1
 
 DESCRIPTION="Pure-python utilities in the same spirit as the standard library"
 HOMEPAGE="https://boltons.readthedocs.org/"
-SRC_URI="https://github.com/mahmoud/boltons/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mahmoud/boltons/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs \

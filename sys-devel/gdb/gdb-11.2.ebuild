@@ -43,7 +43,7 @@ SRC_URI="${SRC_URI}
 	${PATCH_VER:+mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz}
 "
 
-LICENSE="GPL-2 LGPL-2"
+LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
 
 if [[ ${PV} != 9999* ]] ; then
@@ -57,6 +57,9 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 # See e.g. https://sourceware.org/gdb/wiki/TestingGDB.
 # As of 11.2, on amd64: "# of unexpected failures    8600"
 # ia64 kernel crashes when gdb testsuite is running
+# in fact, gdb's test suite needs some work to get passing.
+# See e.g. https://sourceware.org/gdb/wiki/TestingGDB.
+# As of 11.2, on amd64: "# of unexpected failures    8600"
 RESTRICT="
 	ia64? ( test )
 	!test? ( test )
@@ -124,6 +127,11 @@ gdb_branding() {
 src_configure() {
 	strip-unsupported-flags
 
+	# See https://www.gnu.org/software/make/manual/html_node/Parallel-Output.html
+	# Avoid really confusing logs from subconfigure spam, makes logs far
+	# more legible.
+	MAKEOPTS="--output-sync=line ${MAKEOPTS}"
+
 	local myconf=(
 		# portage's econf() does not detect presence of --d-d-t
 		# because it greps only top-level ./configure. But not
@@ -139,6 +147,8 @@ src_configure() {
 		# avoid automagic dependency on (currently prefix) systems
 		# systems with debuginfod library, bug #754753
 		--without-debuginfod
+
+		$(use_enable test unit-tests)
 
 		# Allow user to opt into CET for host libraries.
 		# Ideally we would like automagic-or-disabled here.
@@ -204,8 +214,12 @@ src_configure() {
 	econf "${myconf[@]}"
 }
 
+src_compile() {
+	emake V=1
+}
+
 src_install() {
-	default
+	emake V=1 DESTDIR="${D}" install
 
 	find "${ED}"/usr -name libiberty.a -delete || die
 
