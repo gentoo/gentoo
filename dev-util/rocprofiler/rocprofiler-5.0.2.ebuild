@@ -26,7 +26,9 @@ BDEPEND="
 	')
 "
 
-PATCHES=( "${FILESDIR}/${PN}-5.0.2-gentoo-location.patch" )
+PATCHES=( "${FILESDIR}/${PN}-4.3.0-nostrip.patch"
+		"${FILESDIR}/${PN}-4.3.0-ldflag.patch"
+		"${FILESDIR}/${PN}-5.0.2-gentoo-location.patch" )
 
 python_check_deps() {
 	has_version "dev-python/CppHeaderParser[${PYTHON_USEDEP}]"
