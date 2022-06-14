@@ -25,12 +25,12 @@ RDEPEND="
 "
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
-	!!dev-python/m2r
 "
 
 PATCHES=(
 	"${FILESDIR}/test_visualize-twisted-import-errors.patch"
 	"${FILESDIR}/${P}-py311.patch"
+	"${FILESDIR}/${PN}-20.2.0-ignore-m2r.patch"
 )
 
 distutils_enable_tests pytest
