@@ -61,7 +61,7 @@ gstreamer_deps="
 	>=media-libs/gstreamer-1.14
 "
 COMMON_DEPEND="
-	>=media-libs/libpulse-${PV}[dbus?,glib?,systemd?,tcpd?,valgrind?,X?]
+	>=media-libs/libpulse-${PV}[dbus?,glib?,systemd?,valgrind?,X?]
 	dev-libs/libatomic_ops
 	>=media-libs/libsndfile-1.0.20
 	>=media-libs/speexdsp-1.2
@@ -229,7 +229,7 @@ src_configure() {
 		$(meson_feature sox soxr)
 		-Dspeex=enabled
 		$(meson_feature systemd)
-		$(meson_feature tcpd tcpwrap) # TODO: This should technically be enabled for 32bit too, but at runtime it probably is never used without daemon?
+		$(meson_feature tcpd tcpwrap)
 		$(meson_feature udev)
 		$(meson_feature valgrind)
 		$(meson_feature X x11)

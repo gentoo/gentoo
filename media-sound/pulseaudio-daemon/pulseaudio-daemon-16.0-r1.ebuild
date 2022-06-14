@@ -61,7 +61,7 @@ gstreamer_deps="
 	>=media-libs/gstreamer-1.14
 "
 COMMON_DEPEND="
-	>=media-libs/libpulse-${PV}[dbus?,glib?,systemd?,tcpd?,valgrind?,X?]
+	>=media-libs/libpulse-${PV}[dbus?,glib?,systemd?,tcpd(+)?,valgrind?,X?]
 	dev-libs/libatomic_ops
 	>=media-libs/libsndfile-1.0.20
 	>=media-libs/speexdsp-1.2
