@@ -54,6 +54,7 @@ DEPEND="
 	${RDEPEND}
 	eigen? ( dev-cpp/eigen )
 	json? ( dev-libs/rapidjson )
+	vtk? ( dev-libs/utfcpp )
 "
 BDEPEND="
 	doc? ( app-doc/doxygen[dot] )
