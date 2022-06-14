@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit mercurial
 	EHG_REPO_URI="https://www.sudo.ws/repos/sudo"
 else
-        VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/sudo.ws.asc
+	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/sudo.ws.asc
 	inherit verify-sig
 
 	uri_prefix=
