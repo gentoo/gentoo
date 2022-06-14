@@ -218,7 +218,7 @@ src_configure() {
 		$(meson_feature glib gsettings) # Supposedly correct?
 		$(meson_feature gstreamer)
 		-Dgtk=disabled
-		-Dhal-compat=true # Consider disabling on next revbump
+		-Dhal-compat=false
 		-Dipv6=true
 		$(meson_feature jack)
 		$(meson_feature lirc)
