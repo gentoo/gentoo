@@ -63,6 +63,13 @@ readonly QT5_PV
 # The upstream package name of the module this package belongs to.
 # Used for SRC_URI and S.
 
+# @ECLASS_VARIABLE: _QT5_GENTOOPATCHSET_REV
+# @DEFAULT_UNSET
+# @INTERNAL
+# @DESCRIPTION:
+# Gentoo downstream patchset version applied over qtbase. Used for SRC_URI and
+# applied in src_prepare.
+
 # @ECLASS_VARIABLE: QT5_TARGET_SUBDIRS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -113,6 +120,11 @@ if [[ ${PN} != qtwebengine ]]; then
 			S="${WORKDIR}"/${_QT5_P/opensource-}
 			;;
 	esac
+fi
+
+if [[ ${QT5_MODULE} == qtbase ]] && [[ ${PV} == 5.15.[5-9]* ]]; then
+	_QT5_GENTOOPATCHSET_REV=1
+	SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/qtbase-5.15-gentoo-patchset-${_QT5_GENTOOPATCHSET_REV}.tar.xz"
 fi
 
 # @ECLASS_VARIABLE: QT5_BUILD_DIR
@@ -189,6 +201,8 @@ qt5-build_src_prepare() {
 
 		# Respect build variables in configure tests (bug #639494)
 		sed -i -e "s|\"\$outpath/bin/qmake\" \"\$relpathMangled\" -- \"\$@\"|& $(qt5_qmake_args) |" configure || die
+
+		[[ -n ${_QT5_GENTOOPATCHSET_REV} ]] && eapply "${WORKDIR}/qtbase-5.15-gentoo-patchset-${_QT5_GENTOOPATCHSET_REV}"
 	fi
 
 	[[ -n ${QT5_KDEPATCHSET_REV} ]] && eapply "${WORKDIR}/${QT5_MODULE}-${PV}-gentoo-kde-${QT5_KDEPATCHSET_REV}"
