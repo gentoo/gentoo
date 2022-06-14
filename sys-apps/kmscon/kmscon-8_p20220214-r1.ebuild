@@ -137,6 +137,8 @@ src_install() {
 
 	insinto /usr/share/${PN}
 	doins -r fblog
+
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
