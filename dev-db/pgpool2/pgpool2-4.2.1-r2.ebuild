@@ -56,7 +56,7 @@ src_prepare() {
 src_configure() {
 	postgres-multi_foreach econf \
 		--disable-rpath \
-		--sysconfdir="${EROOT}/etc/${PN}" \
+		--sysconfdir="${EPREFIX}/etc/${PN}" \
 		--with-pgsql-includedir='/usr/include/postgresql-@PG_SLOT@' \
 		--with-pgsql-libdir="/usr/$(get_libdir)/postgresql-@PG_SLOT@/$(get_libdir)" \
 		$(use_enable static-libs static) \

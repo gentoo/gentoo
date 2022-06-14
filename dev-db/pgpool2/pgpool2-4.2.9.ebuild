@@ -3,7 +3,7 @@
 
 EAPI=7
 
-POSTGRES_COMPAT=( 9.6 {10..13} )
+POSTGRES_COMPAT=( {10..14} )
 
 inherit autotools postgres-multi
 
@@ -12,17 +12,15 @@ MY_P="${PN/2/-II}-${PV}"
 DESCRIPTION="Connection pool server for PostgreSQL"
 HOMEPAGE="https://www.pgpool.net/"
 SRC_URI="https://www.pgpool.net/download.php?f=${MY_P}.tar.gz -> ${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
-
 LICENSE="BSD"
 SLOT="0"
+
 KEYWORDS="~amd64 ~x86"
+
 IUSE="doc memcached pam ssl static-libs"
 
 RDEPEND="
 	${POSTGRES_DEP}
-	acct-group/postgres
-	acct-user/pgpool
 	net-libs/libnsl:0=
 	virtual/libcrypt:=
 	memcached? ( dev-libs/libmemcached )
@@ -36,7 +34,11 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
+S=${WORKDIR}/${MY_P}
+
 pkg_setup() {
+	postgres_new_user pgpool
+
 	postgres-multi_pkg_setup
 }
 
