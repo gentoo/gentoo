@@ -47,14 +47,14 @@ PATCHES=( "${FILESDIR}"/${P}-setup.cfg-version.patch )
 SITEFILE="50${PN}-gentoo.el"
 
 src_compile() {
-	python_foreach_impl distutils-r1_python_compile
+	distutils-r1_src_compile
 
 	use doc && emake -C ./recipes/sphinx latexpdf
 	use emacs && elisp-compile ./etc/elisp/alectryon.el
 }
 
 src_install() {
-	python_foreach_impl distutils-r1_python_install
+	distutils-r1_src_install
 	einstalldocs
 
 	if use doc ; then
