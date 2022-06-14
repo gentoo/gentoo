@@ -8,6 +8,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org udev
 
 DESCRIPTION="Qt wrapper for Bluez 5 DBus API"
+
 LICENSE="LGPL-2"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
@@ -35,4 +36,14 @@ src_test() {
 	)
 
 	ecm_src_test
+}
+
+pkg_postinst() {
+	ecm_pkg_postinst
+	udev_reload
+}
+
+pkg_postrm() {
+	ecm_pkg_postrm
+	udev_reload
 }
