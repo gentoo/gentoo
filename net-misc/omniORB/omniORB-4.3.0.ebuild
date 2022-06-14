@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit python-single-r1
 
@@ -14,12 +14,12 @@ SRC_URI="mirror://sourceforge/omniorb/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2 GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc ppc64 ~sparc x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc ipv6 ssl"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	ssl? ( dev-libs/openssl:0= )"
+	ssl? ( dev-libs/openssl:= )"
 DEPEND="${RDEPEND}"
 
 src_prepare() {

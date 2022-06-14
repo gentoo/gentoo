@@ -5,7 +5,11 @@
 		<email>aliens.satin0y@icloud.com</email>
 		<name>Thomas Juerges</name>
 	</maintainer>
-  <upstream>
-    <remote-id type="sourceforge">omniorb</remote-id>
-  </upstream>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">omniorb</remote-id>
+	</upstream>
 </pkgmetadata>
