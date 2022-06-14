@@ -21,7 +21,7 @@ else
 	COMMIT="ed0317e6a58c098874ac58b769cf2e609c18d9a5"
 	SRC_URI="https://github.com/osmocom/rtl-sdr/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
-	KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="GPL-2"
