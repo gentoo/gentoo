@@ -12,7 +12,7 @@ SRC_URI="https://linuxcontainers.org/downloads/lxd/${P}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="apparmor ipv6 nls verify-sig"
 
 DEPEND="acct-group/lxd
@@ -31,7 +31,7 @@ RDEPEND="${DEPEND}
 	net-firewall/iptables[ipv6(+)?]
 	sys-apps/iproute2[ipv6(+)?]
 	sys-fs/fuse:*
-	sys-fs/lxcfs
+	>=sys-fs/lxcfs-5.0.0
 	sys-fs/squashfs-tools[lzma]
 	virtual/acl"
 BDEPEND="dev-lang/go
