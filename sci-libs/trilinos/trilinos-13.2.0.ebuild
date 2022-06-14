@@ -182,6 +182,7 @@ src_configure() {
 	local mycmakeargs+=(
 		-DAmesos2_ENABLE_LAPACK=ON
 		-DAmesos2_ENABLE_MUMPS=OFF
+		-DTpetra_INST_SERIAL=ON
 	)
 
 	use eigen && \
