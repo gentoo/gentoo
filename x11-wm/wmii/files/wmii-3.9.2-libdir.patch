@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/832476
+--- a/config.mk
++++ b/config.mk
+@@ -11,7 +11,7 @@ PREFIX = /usr/local
+ 
+ # Includes and libs
+ INCLUDES = -I. -I$(ROOT)/include -I$(INCLUDE) -I/usr/include
+-LIBS = -L$(ROOT)/lib -L/usr/lib
++LIBS = -L$(LIBDIR)
+ 
+ TERMINAL = xterm
+ 
