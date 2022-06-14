@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN/-layoutex}/source"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="debug static-libs test"
 RESTRICT="!test? ( test )"
 
