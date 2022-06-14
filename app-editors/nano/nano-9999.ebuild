@@ -76,7 +76,7 @@ src_install() {
 	if ! use minimal ; then
 		# Enable colorization by default.
 		sed -i \
-			-e '/^# include /s:# *::' \
+			-e '0,/^# include /s:# *::' \
 			"${ED}"/etc/nanorc || die
 
 		# Since nano-5.0 these are no longer being "enabled" by default
