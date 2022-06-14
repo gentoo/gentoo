@@ -3,7 +3,7 @@
 
 EAPI=8
 CHROMIUM_LANGS="
-	be bg bn ca cs da de el en-GB en-US es-419 es fil fi fr-CA fr hi hr hu id
+	bg bn ca cs da de el en-GB en-US es-419 es fil fi fr hi hr hu id
 	it ja ko lt lv ms nb nl pl pt-BR pt-PT ro ru sk sr sv sw ta te th tr uk vi
 	zh-CN zh-TW
 "
@@ -42,7 +42,7 @@ fi
 
 KEYWORDS="-* amd64"
 
-FFMPEG_VERSION="100.0.4896.20"
+FFMPEG_VERSION="102.0.5005.61"
 
 SRC_URI="${SRC_URI_BASE[@]/%//${PV}/linux/${MY_PN}_${PV}_amd64.${OPERA_ARCHIVE_EXT}}
 	proprietary-codecs? (
