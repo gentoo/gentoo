@@ -1,0 +1,42 @@
+From dff1b034c1162062aa2292099d3d01fc53dafdf6 Mon Sep 17 00:00:00 2001
+From: Ahmad Samir <a.samirh78@gmail.com>
+Date: Tue, 14 Jun 2022 14:05:32 +0200
+Subject: [PATCH] Revert "Use QT_FEATURE_foo to detect opengl* support, and
+ TARGET for glesv2"
+
+This reverts commit 31884dc195c815054bfa6b15a90753d2d0ae1ea9.
+---
+ CMakeLists.txt                             | 3 ++-
+ src/declarativeimports/core/CMakeLists.txt | 2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6698a2091..63229cdfb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -118,7 +118,8 @@ set_package_properties(EGL PROPERTIES
+                        TYPE OPTIONAL
+                       )
+ 
+-if(OpenGL_GLX_FOUND AND X11_FOUND AND QT_FEATURE_opengl)
++get_target_property(QtGui_Enabled_Features Qt${QT_MAJOR_VERSION}::Gui QT_ENABLED_PUBLIC_FEATURES)
++if(OpenGL_GLX_FOUND AND X11_FOUND AND (QtGui_Enabled_Features MATCHES "opengl"))
+     add_feature_info(GLX OpenGL_GLX_FOUND "OpenGL GLX libraries.")
+     set(HAVE_GLX 1)
+ else()
+diff --git a/src/declarativeimports/core/CMakeLists.txt b/src/declarativeimports/core/CMakeLists.txt
+index d08b4c619..2136bb985 100644
+--- a/src/declarativeimports/core/CMakeLists.txt
++++ b/src/declarativeimports/core/CMakeLists.txt
+@@ -70,7 +70,7 @@ else()
+ 
+ endif()
+ 
+-if(TARGET Qt${QT_MAJOR_VERSION}::Gui_GLESv2)
++if(QtGui_Enabled_Features MATCHES "opengles2")
+     target_link_libraries(corebindingsplugin Qt${QT_MAJOR_VERSION}::Gui_GLESv2)
+ endif()
+ 
+-- 
+GitLab
+
