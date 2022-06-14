@@ -94,6 +94,9 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+TMPFILES_OPTIONAL=1
+UDEV_OPTIONAL=1
+
 python_check_deps() {
 	has_version -b "dev-python/jinja[${PYTHON_USEDEP}]"
 }
