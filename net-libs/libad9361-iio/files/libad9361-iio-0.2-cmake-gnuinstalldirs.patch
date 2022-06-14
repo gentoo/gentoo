@@ -1,0 +1,50 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -13,6 +13,8 @@
+ cmake_minimum_required(VERSION 2.8.7)
+ project(ad9361 C)
+ 
++include(GNUInstallDirs)
++
+ set(LIBAD9361_VERSION_MAJOR 0)
+ set(LIBAD9361_VERSION_MINOR 2)
+ set(VERSION ${LIBAD9361_VERSION_MAJOR}.${LIBAD9361_VERSION_MINOR})
+@@ -59,10 +61,6 @@ endif()
+ 
+ add_definitions(-D_POSIX_C_SOURCE=199309L -DLIBAD9361_EXPORTS=1)
+ 
+-set(INSTALL_LIB_DIR "${CMAKE_INSTALL_PREFIX}/lib"
+-	CACHE PATH "Installation directory for libraries")
+-mark_as_advanced(INSTALL_LIB_DIR)
+-
+ find_library(LIBIIO_LIBRARIES iio)
+ find_path(LIBIIO_INCLUDEDIR iio.h)
+ 
+@@ -98,21 +96,17 @@ configure_file(libad9361-iio.iss.cmakein ${CMAKE_CURRENT_BINARY_DIR}/libad9361-i
+ 
+ set(LIBAD9361_PC ${CMAKE_CURRENT_BINARY_DIR}/libad9361.pc)
+ configure_file(libad9361.pc.cmakein ${LIBAD9361_PC} @ONLY)
+-install(FILES ${LIBAD9361_PC} DESTINATION ${INSTALL_LIB_DIR}/pkgconfig)
++install(FILES ${LIBAD9361_PC} DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ 
+ if(NOT SKIP_INSTALL_ALL)
+ 	install(TARGETS ad9361
+-		ARCHIVE DESTINATION lib
+-		LIBRARY DESTINATION "${INSTALL_LIB_DIR}"
+-		RUNTIME DESTINATION bin
+-		FRAMEWORK DESTINATION lib
+-		PUBLIC_HEADER DESTINATION include)
++		ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
++		LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
++		RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
++		FRAMEWORK DESTINATION "${CMAKE_INSTALL_LIBDIR}"
++		PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+ endif()
+ 
+-set(CMAKE_INSTALL_DOCDIR "" CACHE PATH "documentation root (DATAROOTDIR/doc/${PROJECT_NAME}${LIBAD9361_VERSION_MAJOR}-doc)")
+-include(GNUInstallDirs)
+-set(CMAKE_INSTALL_DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/${PROJECT_NAME}${LIBAD9361_VERSION_MAJOR}-doc")
+-
+ find_package(Doxygen)
+ if(DOXYGEN_FOUND)
+ 	option(WITH_DOC "Generate documentation with Doxygen" ON)
