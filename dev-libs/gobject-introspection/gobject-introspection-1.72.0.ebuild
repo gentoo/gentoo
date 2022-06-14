@@ -32,8 +32,10 @@ RDEPEND="
 	${PYTHON_DEPS}
 "
 # Wants real bison, not virtual/yacc
-DEPEND="${RDEPEND}
-	gtk-doc? ( >=dev-util/gtk-doc-1.19
+DEPEND="${RDEPEND}"
+BDEPEND="
+	gtk-doc? (
+		>=dev-util/gtk-doc-1.19
 		app-text/docbook-xml-dtd:4.3
 		app-text/docbook-xml-dtd:4.5
 	)
