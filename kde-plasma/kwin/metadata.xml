@@ -9,6 +9,7 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 	<use>
+		<flag name="lock">Enable screen locking via <pkg>kde-plasma/kscreenlocker</pkg></flag>
 		<flag name="multimedia">Enable effect video button in desktop effects KCM</flag>
 		<flag name="screencast">Enable screencast portal using <pkg>media-video/pipewire</pkg></flag>
 	</use>
