@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org>
+# Only python 3.9 supported, bug #835921
+dev-util/kdevelop-python:5 python_single_target_python3_9
+
 # Patrick McLean <chutzpah@gentoo.org) (2022-05-04)
 # Default to lua 5.4 (upstream requires 5.3 or higher)
 >=sys-cluster/ceph-17.2.0 lua_single_target_lua5-4
