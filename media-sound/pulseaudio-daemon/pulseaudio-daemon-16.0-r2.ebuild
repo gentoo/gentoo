@@ -32,7 +32,7 @@ SLOT="0"
 # +alsa-plugin as discussed in bug #519530
 # TODO: Find out why webrtc-aec is + prefixed - there's already the always available speexdsp-aec
 # NOTE: The current ebuild sets +X almost certainly just for the pulseaudio.desktop file
-IUSE="+alsa +alsa-plugin aptx +asyncns bluetooth dbus elogind equalizer fftw +gdbm +glib gstreamer gtk ipv6 jack ldac lirc
+IUSE="+alsa +alsa-plugin aptx +asyncns bluetooth dbus elogind equalizer fftw +gdbm +glib gstreamer ipv6 jack ldac lirc
 ofono-headset +orc oss selinux sox ssl systemd system-wide tcpd test +udev valgrind +webrtc-aec +X zeroconf"
 
 RESTRICT="!test? ( test )"
@@ -90,7 +90,6 @@ COMMON_DEPEND="
 	gdbm? ( sys-libs/gdbm:= )
 	glib? ( >=dev-libs/glib-2.28.0:2 )
 	gstreamer? ( ${gstreamer_deps} )
-	gtk? ( x11-libs/gtk+:3 )
 	jack? ( virtual/jack )
 	ldac? ( ${gstreamer_deps} )
 	lirc? ( app-misc/lirc )
@@ -218,7 +217,7 @@ src_configure() {
 		$(meson_feature glib) # WARNING: toggling this likely changes ABI
 		$(meson_feature glib gsettings) # Supposedly correct?
 		$(meson_feature gstreamer)
-		$(meson_feature gtk)
+		-Dgtk=disabled
 		-Dhal-compat=true # Consider disabling on next revbump
 		$(meson_use ipv6)
 		$(meson_feature jack)
