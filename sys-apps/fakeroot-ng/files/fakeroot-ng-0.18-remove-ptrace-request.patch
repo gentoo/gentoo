@@ -1,0 +1,41 @@
+__ptrace_request is defined as an enum in glibc. This replaces
+__ptrace_request with int to make it portable.
+
+See: https://www.openwall.com/lists/musl/2015/10/01/3, https://www.openwall.com/lists/musl/2015/09/21/7
+
+
+---
+diff --git a/ptrace.cpp b/ptrace.cpp
+index 86ba483..9de7e39 100644
+--- a/ptrace.cpp
++++ b/ptrace.cpp
+@@ -79,7 +79,7 @@ static void real_handle_cont( pid_t pid, pid_state *state )
+ {
+     pid_t child=(pid_t)state->context_state[1];
+     pid_state *child_state=lookup_state( child );
+-    __ptrace_request req=(__ptrace_request)state->context_state[0];
++    int req=(int)state->context_state[0];
+     if( req==PTRACE_CONT ) {
+         child_state->trace_mode|=TRACE_CONT;
+         dlog("ptrace: %d PTRACE_CONT(" PID_F ")\n", pid, child );
+@@ -183,7 +183,7 @@ static void handle_peek_data( pid_t pid, pid_state *state )
+ 
+     if( verify_permission( pid, state ) ) {
+         errno=0;
+-        long data=ptrace( (__ptrace_request)state->context_state[0], child, state->context_state[2], 0 );
++        long data=ptrace( (int)state->context_state[0], child, state->context_state[2], 0 );
+         if( data!=-1 || errno==0 ) {
+             dlog("handle_peek_data: %d is peeking data from " PID_F " at address %p\n", pid, child, (void*)state->context_state[2] );
+ 
+@@ -208,7 +208,7 @@ static void handle_poke_data( pid_t pid, pid_state *state )
+     pid_t child=(pid_t)state->context_state[1];
+ 
+     if( verify_permission( pid, state ) &&
+-        ptrace( (__ptrace_request)state->context_state[0], child, state->context_state[2], state->context_state[3] )==0 )
++        ptrace( (int)state->context_state[0], child, state->context_state[2], state->context_state[3] )==0 )
+     {
+         dlog("handle_poke_data: %d is pokeing data in " PID_F " at address %p\n", pid, child, (void*)state->context_state[2] );
+         ptlib_set_retval( pid, 0 );
+-- 
+2.35.1
+

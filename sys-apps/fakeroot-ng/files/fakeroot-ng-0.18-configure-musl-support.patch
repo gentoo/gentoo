@@ -1,0 +1,19 @@
+Bug: https://bugs.gentoo.org/715252
+Add support for linux-musl
+
+Closes: https://bugs.gentoo.org/715252 
+---
+--- a/configure
++++ b/configure
+@@ -194,6 +194,11 @@ then
+     target_os=linux
+ fi
+ 
++if [ "$target_os" = "linux-musl" ]
++then
++    target_os=linux
++fi
++
+ case "$target_cpu" in
+ i686|i586|i486)
+     target_cpu=i386
