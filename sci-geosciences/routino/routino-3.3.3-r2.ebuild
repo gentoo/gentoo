@@ -13,7 +13,7 @@ SRC_URI="https://routino.org/download/${P}.tgz"
 
 LICENSE="AGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="python test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
