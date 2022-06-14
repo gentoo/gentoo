@@ -53,6 +53,7 @@ DEPEND="
 BDEPEND="
 	${PYTHON_DEPS}
 	app-text/scdoc
+	virtual/pkgconfig
 	examples? (
 		dev-util/wayland-scanner
 	)
