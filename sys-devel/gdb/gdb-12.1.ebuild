@@ -153,6 +153,15 @@ src_configure() {
 		# Ideally we would like automagic-or-disabled here.
 		# But the check does not quite work on i686: bug #760926.
 		$(use_enable cet)
+
+		# We need to set both configure options, --with-sysroot and --libdir,
+		# to fix cross build issues that happen when configuring gmp.
+		# We explicitly need --libdir. Having only --with-sysroot without
+		# --libdir would not fix the build issues.
+		# For some reason, it is not enough to set only --with-sysroot,
+		# also not enough to pass --with-gmp-xxx options.
+		--with-sysroot="${ESYSROOT}"
+		--libdir="${ESYSROOT}/usr/$(get_libdir)"
 	)
 
 	local sysroot="${EPREFIX}/usr/${CTARGET}"
