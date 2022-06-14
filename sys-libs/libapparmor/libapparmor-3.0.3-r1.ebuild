@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 GENTOO_DEPEND_ON_PERL="no"
 
 inherit autotools distutils-r1 perl-functions
