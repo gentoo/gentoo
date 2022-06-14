@@ -100,7 +100,7 @@ if [[ ${PN} != qtwebengine ]]; then
 		*9999 )
 			inherit kde.org # kde/5.15 branch
 			;;
-		5.15.[3-9]* )
+		5.15.[3-9]* | 5.15.??* )
 			# official stable release
 			_QT5_P=${QT5_MODULE}-everywhere-opensource-src-${PV}
 			HOMEPAGE="https://www.qt.io/"
