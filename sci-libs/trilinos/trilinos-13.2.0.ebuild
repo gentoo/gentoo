@@ -18,7 +18,7 @@ LICENSE="BSD LGPL-2.1"
 SLOT="0"
 
 IUSE="
-	adolc all_packages arprec clp cuda eigen glpk gtest hdf5 hwloc hypre
+	adolc all-packages arprec clp cuda eigen glpk gtest hdf5 hwloc hypre
 	matio metis mkl mumps netcdf openmp petsc qd scalapack scotch
 	sparse superlu taucs tbb test threads tvmet yaml zlib X
 "
@@ -111,7 +111,7 @@ src_configure() {
 		-DTrilinos_INSTALL_CONFIG_DIR="${EPREFIX}/usr/$(get_libdir)/cmake"
 		-DTrilinos_INSTALL_INCLUDE_DIR="${EPREFIX}/usr/include/trilinos"
 		-DTrilinos_INSTALL_LIB_DIR="${EPREFIX}/usr/$(get_libdir)/trilinos"
-		-DTrilinos_ENABLE_ALL_PACKAGES="$(usex all_packages)"
+		-DTrilinos_ENABLE_ALL_PACKAGES="$(usex all-packages)"
 		-DTrilinos_ENABLE_Adelus=OFF
 		-DTrilinos_ENABLE_Moertel=OFF
 		-DTrilinos_ENABLE_PyTrilinos=OFF
