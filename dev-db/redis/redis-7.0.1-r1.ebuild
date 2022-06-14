@@ -38,6 +38,7 @@ BDEPEND="
 
 # Tcl is only needed in the CHOST test env
 DEPEND="
+	${COMMON_DEPEND}
 	test? (
 		dev-lang/tcl:0=
 		ssl? ( dev-tcltk/tls )
