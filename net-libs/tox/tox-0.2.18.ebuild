@@ -1,44 +1,47 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake git-r3 systemd
+inherit cmake systemd
 
 DESCRIPTION="Encrypted P2P, messaging, and audio/video calling platform"
-HOMEPAGE="https://tox.chat"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/TokTok/c-toxcore.git"
+HOMEPAGE="https://tox.chat https://github.com/TokTok/c-toxcore"
+SRC_URI="https://github.com/TokTok/c-toxcore/releases/download/v${PV}/c-toxcore-${PV}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0/0.2"
-KEYWORDS=""
-IUSE="+av daemon dht-node ipv6 log-debug +log-error log-info log-trace log-warn test"
-RESTRICT="!test? ( test )"
+KEYWORDS="~amd64 ~arm ~x86"
+IUSE="+av debug daemon dht-node ipv6 key-utils log-debug +log-error log-info log-trace log-warn test"
 
 REQUIRED_USE="?? ( log-debug log-error log-info log-trace log-warn )
 		daemon? ( dht-node )"
+RESTRICT="!test? ( test )"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="dev-libs/libsodium:=[asm,urandom,-minimal]
+	dev-libs/msgpack
 	av? (
 		media-libs/libvpx:=
 		media-libs/opus
 	)
 	daemon? ( dev-libs/libconfig:= )"
-RDEPEND="
-	${DEPEND}
+
+RDEPEND="${DEPEND}
 	daemon? (
 		acct-group/tox
 		acct-user/tox
-	)"
+	)
+	key-utils? ( || ( sys-devel/gcc[openmp] sys-devel/clang-runtime[openmp] ) )"
+
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	cmake_src_prepare
 
-	#remove faulty tests
-	for testname in lan_discovery save_compatibility set_status_message; do
-		sed -i -e "/^auto_test(${testname})$/d" CMakeLists.txt || die
+	#Remove faulty tests
+	for testname in lan_discovery save_load; do
+		sed -i -e "/^auto_test(${testname})$/d" ./auto_tests/CMakeLists.txt || die
 	done
 }
 
@@ -46,16 +49,24 @@ src_configure() {
 	local mycmakeargs=(
 		-DAUTOTEST=$(usex test ON OFF)
 		-DBOOTSTRAP_DAEMON=$(usex daemon ON OFF)
+		-DBUILD_FUN_UTILS=$(usex key-utils ON OFF)
+		-DBUILD_FUZZ_TESTS=OFF #Upstream reports that this breaks all other tests
 		-DBUILD_MISC_TESTS=$(usex test ON OFF)
 		-DBUILD_TOXAV=$(usex av ON OFF)
+		-DCMAKE_BUILD_TYPE=$(usex debug Debug Release)
 		-DDHT_BOOTSTRAP=$(usex dht-node ON OFF)
 		-DENABLE_SHARED=ON
 		-DENABLE_STATIC=OFF
-		-DMUST_BUILD_TOXAV=$(usex av ON OFF))
+		-DFULLY_STATIC=OFF
+		-DMUST_BUILD_TOXAV=$(usex av ON OFF)
+	)
+
 	if use test; then
 		mycmakeargs+=(
-			-DTEST_TIMEOUT_SECONDS=120
-			-DUSE_IPV6=$(usex ipv6 ON OFF))
+			-DTEST_TIMEOUT_SECONDS=150
+			-DNON_HERMETIC_TESTS=OFF
+			-DUSE_IPV6=$(usex ipv6 ON OFF)
+		)
 	else
 		mycmakeargs+=(-DUSE_IPV6=OFF)
 	fi
@@ -72,8 +83,9 @@ src_configure() {
 		mycmakeargs+=(-DMIN_LOGGER_LEVEL="ERROR")
 	else
 		mycmakeargs+=(-DMIN_LOGGER_LEVEL="")
-		einfo "Logging Disabled"
+		einfo "Logging disabled"
 	fi
+
 	cmake_src_configure
 }
 
@@ -95,12 +107,13 @@ src_install() {
 
 pkg_postinst() {
 	if use dht-node; then
-		ewarn "There is currently an unresolved issuer with tox DHT"
-		ewarn "Bootstrap node that causes the program to be built"
-		ewarn "with a null libray reference. This causes an infinite"
-		ewarn "loop for certain revdep-rebuild commands. If you aren't"
-		ewarn "running a node, please consider disabling the dht node"
-		ewarn "use flag. For more information please refer to"
-		ewarn "https://github.com/toktok/c-toxcore/issues/1144"
+		ewarn "The QA notice regarding libmisc_tools.so is known by the upstream"
+		ewarn "developers and is on their TODO list. For more information,"
+		ewarn "please see 'https://github.com/toktok/c-toxcore/issues/1144'"
+		ewarn ""
+		ewarn "There is currently an unresolved issue with tox DHT Bootstrap node"
+		ewarn "that causes the program to be built with a null library reference."
+		ewarn "This causes an infinite loop for certain revdep-rebuild commands."
+		ewarn "If you aren't running a node, please consider disabling the dht-node use flag."
 	fi
 }
