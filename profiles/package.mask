@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# John Helmert III <ajak@gentoo.org> (2022-06-15)
+# Open security bug with patches for years. Upstream seems dead since
+# 2020. Removal on 2022-07-15.  Bug #718550.
+sys-cluster/csync2
+
 # Michał Górny <mgorny@gentoo.org> (2022-06-13)
 # Upstream has discontinued the fork.  No revdeps.  They recommend using
 # the original editdistance (not packaged on Gentoo)
