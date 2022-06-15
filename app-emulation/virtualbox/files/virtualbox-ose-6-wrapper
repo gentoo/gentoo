@@ -60,7 +60,7 @@ WARNING: The character device /dev/vboxdrv does not exist.
 EOF
 fi
 
-SERVER_PID=`ps -U \`whoami\` | grep VBoxSVC | awk '{ print $1 }'`
+SERVER_PID=$(ps -U ${LOGNAME:-$USER} | grep VBoxSVC | awk '{ print $1 }')
 if [ -z "$SERVER_PID" ]; then
     # Server not running yet/anymore, cleanup socket path.
     # See IPC_GetDefaultSocketPath()!
