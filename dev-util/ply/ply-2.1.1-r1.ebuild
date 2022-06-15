@@ -21,7 +21,7 @@ RDEPEND="!sys-boot/plymouth"
 
 pkg_pretend() {
 	local CONFIG_CHECK="~BPF ~BPF_SYSCALL ~NET_CLS_BPF ~NET_ACT_BPF
-		~BPF_JIT ~HAVE_BPF_JIT ~BPF_EVENTS"
+		~BPF_JIT ~HAVE_EBPF_JIT ~BPF_EVENTS"
 
 	check_extra_config
 }
