@@ -44,6 +44,14 @@ BDEPEND="
 distutils_enable_sphinx docs
 distutils_enable_tests pytest
 
+python_check_deps() {
+	if [[ ${EPYTHON} == python3.8 ]] ; then
+		python_has_version "dev-python/backports-zoneinfo[${PYTHON_USEDEP}]" || return 1
+	fi
+
+	python_has_version "dev-python/pytz[${PYTHON_USEDEP}]"
+}
+
 python_configure_all() {
 	rm babel/locale-data/*.dat || die
 	rm babel/global.dat || die
