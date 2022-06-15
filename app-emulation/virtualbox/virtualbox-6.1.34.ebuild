@@ -131,6 +131,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}/${P}-vboxr0.patch"
+	"${FILESDIR}/${PN}-6.1.34-python3.10.patch" #852152
 )
 
 pkg_pretend() {
