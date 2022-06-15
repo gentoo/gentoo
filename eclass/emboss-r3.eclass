@@ -9,17 +9,18 @@
 # Next gen author: Justin Lecher <jlec@gentoo.org>
 # Next gen author: Ted Tanberry <ted.tanberry@gmail.com>
 # @SUPPORTED_EAPIS: 8
-# @BLURB: Use this to easy install EMBOSS and EMBASSY programs (EMBOSS add-ons).
+# @BLURB: Use this to easy install ``EMBOSS`` and ``EMBASSY`` programs (``EMBOSS`` add-ons).
 # @DESCRIPTION:
-# The inheriting ebuild must provide EBO_DESCRIPTION before the inherit line.
+# The inheriting ebuild must provide ``EBO_DESCRIPTION`` before the inherit line.
 #
-# Example:
-#
+# @EXAMPLE:
+# @CODE
 # EAPI=8
 #
 # EBO_DESCRIPTION="applications from the CBS group"
 #
 # inherit emboss-r3
+# @CODE
 
 # @ECLASS_VARIABLE: EBO_DESCRIPTION
 # @PRE_INHERIT
@@ -27,7 +28,7 @@
 # @DESCRIPTION:
 # Completes the generic description of the embassy module as follows:
 #
-# EMBOSS integrated version of ${EBO_DESCRIPTION}, e.g.
+# ``EMBOSS`` integrated version of ``${EBO_DESCRIPTION}``, e.g.
 #
 # "EMBOSS integrated version of applications from the CBS group"
 #
@@ -81,20 +82,24 @@ DEPEND="${RDEPEND}"
 
 # @FUNCTION: emboss-r3_src_configure
 # @DESCRIPTION:
-# runs econf with following options.
+# runs ``econf`` with following options.
 #
-#  --enable-shared
-#  $(use_with X x)
-#  $(use_with png pngdriver)
-#  $(use_with pdf hpdf)
-#  $(use_with mysql mysql)
-#  $(use_with postgres postgresql)
-#  --enable-large
-#  --without-java
-#  --enable-systemlibs
+# @CODE
+# --enable-shared
+# $(use_with X x)
+# $(use_with png pngdriver)
+# $(use_with pdf hpdf)
+# $(use_with mysql mysql)
+# $(use_with postgres postgresql)
+# --enable-large
+# --without-java
+# --enable-systemlibs
+# @CODE
 #
-#  can be appended to like econf, e.g.
-#    emboss-r3_src_configure --enable-foo
+# can be appended to like ``econf``, e.g.
+# @CODE
+# emboss-r3_src_configure --enable-foo
+# @CODE
 
 emboss-r3_src_configure() {
 	local myconf=(
@@ -117,7 +122,8 @@ emboss-r3_src_configure() {
 
 # @FUNCTION: emboss-r3_src_install
 # @DESCRIPTION:
-# Installs the package into the staging area and removes unnecessary .la files.
+# Installs the package into the staging area and removes unnecessary ``.la``
+# files.
 
 emboss-r3_src_install() {
 	default
