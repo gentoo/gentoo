@@ -146,3 +146,7 @@ src_install() {
 pkg_postinst() {
 	udev_reload
 }
+
+pkg_postrm() {
+	[[ -n ${REPLACING_VERSIONS} ]] || udev_reload
+}
