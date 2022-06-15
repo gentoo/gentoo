@@ -138,7 +138,6 @@ RDEPEND="
 		ldac? ( media-plugins/gst-plugins-ldac )
 		aptx? ( media-plugins/gst-plugins-openaptx )
 	)
-	!media-video/pipewire[sound-server(+)]
 "
 unset gstreamer_deps
 
