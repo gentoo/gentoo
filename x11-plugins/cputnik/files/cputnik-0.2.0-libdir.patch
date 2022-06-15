@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/732444
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,7 @@
+ 
+ CFLAGS			+= -Wall
+ INCS			= -I/usr/include/X11
+-LIBS			= -L/usr/lib -lXpm -lXext -lX11
++LIBS			= -lXpm -lXext -lX11
+ INSTALL_PREFIX	= /usr
+ 
+ 
