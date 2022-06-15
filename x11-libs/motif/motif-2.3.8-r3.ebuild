@@ -20,7 +20,7 @@ RDEPEND=">=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libXmu-1.1.1-r1[${MULTILIB_USEDEP}]
 	>=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}]
-	jpeg? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
+	jpeg? ( >=media-libs/libjpeg-turbo-1.5.3-r2:0=[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.6.10:0=[${MULTILIB_USEDEP}] )
 	unicode? ( >=virtual/libiconv-0-r1[${MULTILIB_USEDEP}] )
 	xft? (
