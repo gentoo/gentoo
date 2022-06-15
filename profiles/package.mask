@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-06-17)
+# Unused java libraries. Removal on 2022-07-17
+dev-java/netty-transport
+dev-java/netty-buffer
+dev-java/netty-common
+
 # Ulrich Müller <ulm@gentoo.org> (2022-06-16)
 # Last release in 2002. The distfile cannot be redistributed
 # and is no longer available upstream. Use media-gfx/imagemagick
