@@ -89,7 +89,10 @@ COMMON_DEPEND="
 	)
 	gdbm? ( sys-libs/gdbm:= )
 	glib? ( >=dev-libs/glib-2.28.0:2 )
-	gstreamer? ( ${gstreamer_deps} )
+	gstreamer? (
+		${gstreamer_deps}
+		>=dev-libs/glib-2.26.0:2
+	)
 	jack? ( virtual/jack )
 	ldac? ( ${gstreamer_deps} )
 	lirc? ( app-misc/lirc )
