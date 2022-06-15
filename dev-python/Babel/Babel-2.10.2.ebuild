@@ -32,8 +32,10 @@ RDEPEND="
 		dev-python/backports-zoneinfo[${PYTHON_USEDEP}]
 	' 3.8)
 "
+# RDEPEND in BDEPEND for import_cldr.py usage, bug #852158
 BDEPEND="
 	app-arch/unzip
+	${RDEPEND}
 	test? (
 		dev-python/freezegun[${PYTHON_USEDEP}]
 	)
