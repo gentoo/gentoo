@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: estack.eclass
@@ -35,7 +35,7 @@ estack_push() {
 # @DESCRIPTION:
 # Pop a single item off the specified stack.  If a variable is specified,
 # the popped item is stored there.  If no more items are available, return
-# 1, else return 0.  See estack_push for more info.
+# 1, else return 0.  See ``estack_push`` for more info.
 estack_pop() {
 	[[ $# -eq 0 || $# -gt 2 ]] && die "estack_pop: incorrect # of arguments"
 
@@ -64,7 +64,7 @@ estack_pop() {
 # This let's you temporarily modify a variable and then restore it (including
 # set vs unset semantics).  Arrays are not supported at this time.
 #
-# This is meant for variables where using `local` does not work (such as
+# This is meant for variables where using ``local`` does not work (such as
 # exported variables, or only temporarily changing things in a func).
 #
 # For example:
@@ -110,7 +110,7 @@ evar_push_set() {
 # @USAGE: [number of vars to restore]
 # @DESCRIPTION:
 # Restore the variables to the state saved with the corresponding
-# evar_push call.  See that function for more details.
+# ``evar_push`` call.  See that function for more details.
 evar_pop() {
 	local cnt=${1:-bad}
 	case $# in
@@ -135,11 +135,11 @@ evar_pop() {
 # @DESCRIPTION:
 # Often times code will want to enable a shell option to change code behavior.
 # Since changing shell options can easily break other pieces of code (which
-# assume the default state), eshopts_push is used to (1) push the current shell
-# options onto a stack and (2) pass the specified arguments to set.
+# assume the default state), ``eshopts_push`` is used to (1) push the current
+# shell options onto a stack and (2) pass the specified arguments to set.
 #
-# If the first argument is '-s' or '-u', we assume you want to call `shopt`
-# rather than `set` as there are some options only available via that.
+# If the first argument is ``-s`` or ``-u``, we assume you want to call ``shopt``
+# rather than ``set`` as there are some options only available via that.
 #
 # A common example is to disable shell globbing so that special meaning/care
 # may be used with variables/arguments to custom functions.  That would be:
@@ -170,7 +170,7 @@ eshopts_push() {
 # @USAGE:
 # @DESCRIPTION:
 # Restore the shell options to the state saved with the corresponding
-# eshopts_push call.  See that function for more details.
+# ``eshopts_push`` call.  See that function for more details.
 eshopts_pop() {
 	local s
 	estack_pop eshopts s || die "${FUNCNAME}: unbalanced push"
