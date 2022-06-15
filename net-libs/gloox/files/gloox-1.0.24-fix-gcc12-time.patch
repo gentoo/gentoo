@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/852182
+--- a/src/tests/tag/tag_perf.cpp
++++ b/src/tests/tag/tag_perf.cpp
+@@ -20,6 +20,7 @@ using namespace gloox;
+ #include <cstdlib>
+ #include <string>
+ #include <cstdio> // [s]print[f]
++#include <ctime>
+ 
+ #include <sys/time.h>
+ 
+--- a/src/tests/zlib/zlib_perf.cpp
++++ b/src/tests/zlib/zlib_perf.cpp
+@@ -24,6 +24,7 @@ using namespace gloox;
+ #include <string>
+ #include <sys/time.h>
+ #include <cstdio> // [s]print[f]
++#include <ctime>
+ 
+ #ifdef HAVE_ZLIB
+ 
