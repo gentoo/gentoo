@@ -21,7 +21,7 @@ RUBY_S="cliver-${COMMIT}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~sparc"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/rspec-its )"
