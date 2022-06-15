@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Matt Turner <mattst88@gentoo.org> (2022-06-15)
+# GTK+2, known to be broken.
+dev-util/perf gtk
+
 # Michał Górny <mgorny@gentoo.org> (2022-06-02)
 # dev-python/jaraco-packaging is masked for removal.  Bug #834534.
 dev-python/jaraco-classes doc
