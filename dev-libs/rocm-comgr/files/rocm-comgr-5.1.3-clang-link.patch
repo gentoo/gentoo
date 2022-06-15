@@ -1,0 +1,17 @@
+Index: comgr/CMakeLists.txt
+===================================================================
+--- comgr.orig/CMakeLists.txt
++++ comgr/CMakeLists.txt
+@@ -283,11 +283,7 @@ install(FILES
+   DESTINATION "${AMD_COMGR_PACKAGE_PREFIX}")
+ 
+ set(CLANG_LIBS
+-  clangFrontendTool
+-  clangFrontend
+-  clangBasic
+-  clangDriver
+-  clangSerialization)
++  clang-cpp)
+ 
+ set(LLD_LIBS
+   lldELF
