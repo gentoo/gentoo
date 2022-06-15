@@ -6,10 +6,10 @@
 # base-system@gentoo.org
 # @SUPPORTED_EAPIS: 6
 # @BLURB: easy patch application functions
-# @DEPRECATED: eapply from EAPI 7
+# @DEPRECATED: ``eapply`` from EAPI 7
 # @DESCRIPTION:
-# An eclass providing epatch and epatch_user functions to easily apply
-# patches to ebuilds. Mostly superseded by eapply* in EAPI 6.
+# An eclass providing ``epatch`` and ``epatch_user`` functions to easily apply
+# patches to ebuilds. Mostly superseded by ``eapply*`` in EAPI 6.
 
 if [[ -z ${_EPATCH_ECLASS} ]]; then
 
@@ -31,12 +31,12 @@ EPATCH_SUFFIX="patch.bz2"
 # @VARIABLE: EPATCH_OPTS
 # @DESCRIPTION:
 # Options to pass to patch.  Meant for ebuild/package-specific tweaking
-# such as forcing the patch level (-p#) or fuzz (-F#) factor.  Note that
-# for single patch tweaking, you can also pass flags directly to epatch.
+# such as forcing the patch level (``-p#``) or fuzz (``-F#``) factor.  Note that
+# for single patch tweaking, you can also pass flags directly to ``epatch``.
 EPATCH_OPTS=""
 # @VARIABLE: EPATCH_COMMON_OPTS
 # @DESCRIPTION:
-# Common options to pass to `patch`.  You probably should never need to
+# Common options to pass to ``patch``.  You probably should never need to
 # change these.  If you do, please discuss it with base-system first to
 # be sure.
 # @CODE
@@ -56,7 +56,7 @@ EPATCH_EXCLUDE=""
 EPATCH_MULTI_MSG="Applying various patches (bugfixes/updates) ..."
 # @VARIABLE: EPATCH_FORCE
 # @DESCRIPTION:
-# Only require patches to match EPATCH_SUFFIX rather than the extended
+# Only require patches to match ``EPATCH_SUFFIX`` rather than the extended
 # arch naming style.
 EPATCH_FORCE="no"
 # @VARIABLE: EPATCH_USER_EXCLUDE
@@ -68,36 +68,36 @@ EPATCH_FORCE="no"
 # @FUNCTION: epatch
 # @USAGE: [options] [patches] [dirs of patches]
 # @DESCRIPTION:
-# epatch is designed to greatly simplify the application of patches.  It can
+# ``epatch`` is designed to greatly simplify the application of patches.  It can
 # process patch files directly, or directories of patches.  The patches may be
 # compressed (bzip/gzip/etc...) or plain text.  You generally need not specify
-# the -p option as epatch will automatically attempt -p0 to -p4 until things
-# apply successfully.
+# the ``-p`` option as ``epatch`` will automatically attempt ``-p0`` to ``-p4``
+# until things apply successfully.
 #
-# If you do not specify any patches/dirs, then epatch will default to the
-# directory specified by EPATCH_SOURCE.
+# If you do not specify any patches/dirs, then ``epatch`` will default to the
+# directory specified by ``EPATCH_SOURCE``.
 #
 # Any options specified that start with a dash will be passed down to patch
 # for this specific invocation.  As soon as an arg w/out a dash is found, then
 # arg processing stops.
 #
-# When processing directories, epatch will apply all patches that match:
+# When processing directories, ``epatch`` will apply all patches that match:
 # @CODE
 #	if ${EPATCH_FORCE} != "yes"
 #		??_${ARCH}_foo.${EPATCH_SUFFIX}
 #	else
 #		*.${EPATCH_SUFFIX}
 # @CODE
-# The leading ?? are typically numbers used to force consistent patch ordering.
+# The leading ``??`` are typically numbers used to force consistent patch ordering.
 # The arch field is used to apply patches only for the host architecture with
-# the special value of "all" means apply for everyone.  Note that using values
-# other than "all" is highly discouraged -- you should apply patches all the
+# the special value of ``all`` means apply for everyone.  Note that using values
+# other than ``all`` is highly discouraged -- you should apply patches all the
 # time and let architecture details be detected at configure/compile time.
 #
-# If EPATCH_SUFFIX is empty, then no period before it is implied when searching
+# If ``EPATCH_SUFFIX`` is empty, then no period before it is implied when searching
 # for patches to apply.
 #
-# Refer to the other EPATCH_xxx variables for more customization of behavior.
+# Refer to the other ``EPATCH_xxx`` variables for more customization of behavior.
 epatch() {
 	_epatch_draw_line() {
 		# create a line of same length as input string
