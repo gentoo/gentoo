@@ -144,7 +144,7 @@ src_prepare() {
 
 		$(use system-service && {
 			echo @pipewire - rtprio 95
-			echo @pipewire - priority -19
+			echo @pipewire - nice -19
 			echo @pipewire - memlock 4194304
 		})
 
