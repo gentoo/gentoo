@@ -14,7 +14,7 @@ SRC_URI="https://github.com/java-native-access/jna/archive/refs/tags/${PV}.tar.g
 
 LICENSE="|| ( Apache-2.0 LGPL-2.1+ )"
 SLOT="4"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~ppc64 ~x86"
 
 BDEPEND="
 	virtual/pkgconfig
