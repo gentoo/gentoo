@@ -27,15 +27,15 @@
 # 	emacs? ( >=app-editors/emacs-23.1:* )
 # @CODE
 #
-# to your DEPEND/RDEPEND line and use the functions provided here to
+# to your ``DEPEND``/``RDEPEND`` line and use the functions provided here to
 # bring the files to the correct locations.
 #
 # If your package requires a minimum Emacs version, e.g. Emacs 26.1,
-# then the dependency should be on >=app-editors/emacs-26.1:* instead.
-# Because the user can select the Emacs executable with eselect, you
+# then the dependency should be on ``>=app-editors/emacs-26.1:*`` instead.
+# Because the user can select the Emacs executable with ``eselect``, you
 # should also make sure that the active Emacs version is sufficient.
 # The eclass will automatically ensure this if you assign variable
-# NEED_EMACS with the Emacs version, as in the following example:
+# ``NEED_EMACS`` with the Emacs version, as in the following example:
 #
 # @CODE
 # 	NEED_EMACS=26.1
@@ -46,7 +46,7 @@
 #
 # @SUBSECTION src_compile() usage:
 #
-# An elisp file is compiled by the elisp-compile() function defined
+# An elisp file is compiled by the ``elisp-compile()`` function defined
 # here and simply takes the source files as arguments.  The case of
 # interdependent elisp files is also supported, since the current
 # directory is added to the load-path which makes sure that all files
@@ -56,29 +56,29 @@
 # 	elisp-compile *.el
 # @CODE
 #
-# Function elisp-make-autoload-file() can be used to generate a file
+# Function ``elisp-make-autoload-file()`` can be used to generate a file
 # with autoload definitions for the lisp functions.  It takes the output
-# file name (default: "${PN}-autoloads.el") and a list of directories
+# file name (default: ``${PN}-autoloads.el``) and a list of directories
 # (default: working directory) as its arguments.  Use of this function
-# requires that the elisp source files contain magic ";;;###autoload"
+# requires that the elisp source files contain magic ``;;;###autoload``
 # comments.  See the Emacs Lisp Reference Manual (node "Autoload") for
 # a detailed explanation.
 #
 # @SUBSECTION src_install() usage:
 #
 # The resulting compiled files (.elc) should be put in a subdirectory of
-# /usr/share/emacs/site-lisp/ which is named after the first argument
-# of elisp-install().  The following parameters are the files to be put
-# in that directory.  Usually the subdirectory should be ${PN}, you can
-# choose something else, but remember to tell elisp-site-file-install()
-# (see below) the change, as it defaults to ${PN}.
+# ``/usr/share/emacs/site-lisp/`` which is named after the first argument
+# of ``elisp-install()``.  The following parameters are the files to be put
+# in that directory.  Usually the subdirectory should be ``${PN}``, you can
+# choose something else, but remember to tell ``elisp-site-file-install()``
+# (see below) the change, as it defaults to ``${PN}``.
 #
 # @CODE
 # 	elisp-install ${PN} *.el *.elc
 # @CODE
 #
 # To let the Emacs support be activated by Emacs on startup, you need
-# to provide a site file (shipped in ${FILESDIR}) which contains the
+# to provide a site file (shipped in ``${FILESDIR}``) which contains the
 # startup code (have a look in the documentation of your software).
 # Normally this would look like this:
 #
@@ -89,31 +89,31 @@
 # @CODE
 #
 # If your Emacs support files are installed in a subdirectory of
-# /usr/share/emacs/site-lisp/ (which is strongly recommended), you need
+# ``/usr/share/emacs/site-lisp/`` (which is strongly recommended), you need
 # to extend Emacs' load-path as shown in the first non-comment line.
-# The elisp-site-file-install() function of this eclass will replace
-# "@SITELISP@" and "@SITEETC@" by the actual paths.
+# The ``elisp-site-file-install()`` function of this eclass will replace
+# ``@SITELISP@`` and ``@SITEETC@`` by the actual paths.
 #
 # The next line tells Emacs to load the mode opening a file ending
-# with ".csv" and load functions depending on the context and needed
-# features.  Be careful though.  Commands as "load-library" or "require"
+# with ``.csv`` and load functions depending on the context and needed
+# features.  Be careful though.  Commands as ``load-library`` or ``require``
 # bloat the editor as they are loaded on every startup.  When having
 # many Emacs support files, users may be annoyed by the start-up time.
 # Also avoid keybindings as they might interfere with the user's
-# settings.  Give a hint in pkg_postinst(), which should be enough.
+# settings.  Give a hint in ``pkg_postinst()``, which should be enough.
 # The guiding principle is that emerging your package should not by
 # itself cause a change of standard Emacs behaviour.
 #
 # The naming scheme for this site-init file matches the shell pattern
-# "[1-8][0-9]*-gentoo*.el", where the two digits at the beginning define
+# ``[1-8][0-9]*-gentoo*.el``, where the two digits at the beginning define
 # the loading order (numbers below 10 or above 89 are reserved for
 # internal use).  So if your initialisation depends on another Emacs
 # package, your site file's number must be higher!  If there are no such
 # interdependencies then the number should be 50.  Otherwise, numbers
 # divisible by 10 are preferred.
 #
-# Best practice is to define a SITEFILE variable in the global scope of
-# your ebuild (e.g., right after S or RDEPEND):
+# Best practice is to define a ``SITEFILE`` variable in the global scope of
+# your ebuild (e.g., right after ``S`` or ``RDEPEND``):
 #
 # @CODE
 # 	SITEFILE="50${PN}-gentoo.el"
@@ -125,27 +125,27 @@
 # 	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 # @CODE
 #
-# in src_install().  Any characters after the "-gentoo" part and before
+# in ``src_install()``.  Any characters after the ``-gentoo`` part and before
 # the extension will be stripped from the destination file's name.
-# For example, a file "50${PN}-gentoo-${PV}.el" will be installed as
-# "50${PN}-gentoo.el".  If your subdirectory is not named ${PN}, give
+# For example, a file ``50${PN}-gentoo-${PV}.el`` will be installed as
+# ``50${PN}-gentoo.el``.  If your subdirectory is not named ``${PN}``, give
 # the differing name as second argument.
 #
 # @SUBSECTION pkg_setup() usage:
 #
-# If your ebuild uses the elisp-compile eclass function to compile
-# its elisp files (see above), then you don't need a pkg_setup phase,
-# because elisp-compile and elisp-make-autoload-file do their own sanity
+# If your ebuild uses the ``elisp-compile`` eclass function to compile
+# its elisp files (see above), then you don't need a ``pkg_setup`` phase,
+# because ``elisp-compile`` and ``elisp-make-autoload-file`` do their own sanity
 # checks.  On the other hand, if the elisp files are compiled by the
 # package's build system, then there is often no check for the Emacs
-# version.  In this case, you can add an explicit check in pkg_setup:
+# version.  In this case, you can add an explicit check in ``pkg_setup``:
 #
 # @CODE
 # 	elisp-check-emacs-version
 # @CODE
 #
-# When having optional Emacs support, you should prepend "use emacs &&"
-# to above call of elisp-check-emacs-version().
+# When having optional Emacs support, you should prepend ``use emacs &&``
+# to above call of ``elisp-check-emacs-version()``.
 #
 # @SUBSECTION pkg_postinst() / pkg_postrm() usage:
 #
@@ -162,8 +162,8 @@
 # 	}
 # @CODE
 #
-# Again, with optional Emacs support, you should prepend "use emacs &&"
-# to above calls of elisp-site-regen().
+# Again, with optional Emacs support, you should prepend ``use emacs &&``
+# to above calls of ``elisp-site-regen()``.
 
 case ${EAPI} in
 	6) inherit eapi7-ver ;;
@@ -184,7 +184,7 @@ SITEETC=/usr/share/emacs/etc
 # @ECLASS_VARIABLE: EMACSMODULES
 # @DESCRIPTION:
 # Directory where packages install dynamically loaded modules.
-# May contain a @libdir@ token which will be replaced by $(get_libdir).
+# May contain a ``@libdir@`` token which will be replaced by ``$(get_libdir)``.
 EMACSMODULES=/usr/@libdir@/emacs/modules
 
 # @ECLASS_VARIABLE: EMACS
@@ -200,7 +200,7 @@ EMACSFLAGS="-batch -q --no-site-file"
 
 # @ECLASS_VARIABLE: BYTECOMPFLAGS
 # @DESCRIPTION:
-# Emacs flags used for byte-compilation in elisp-compile().
+# Emacs flags used for byte-compilation in ``elisp-compile()``.
 BYTECOMPFLAGS="-L ."
 
 # @ECLASS_VARIABLE: NEED_EMACS
@@ -211,7 +211,7 @@ BYTECOMPFLAGS="-L ."
 # @ECLASS_VARIABLE: _ELISP_EMACS_VERSION
 # @INTERNAL
 # @DESCRIPTION:
-# Cached value of Emacs version detected in elisp-check-emacs-version().
+# Cached value of Emacs version detected in ``elisp-check-emacs-version()``.
 _ELISP_EMACS_VERSION=""
 
 # @FUNCTION: elisp-emacs-version
@@ -252,7 +252,7 @@ elisp-emacs-version() {
 # @USAGE: [version]
 # @DESCRIPTION:
 # Test if the eselected Emacs version is at least the version of
-# GNU Emacs specified in the NEED_EMACS variable, or die otherwise.
+# GNU Emacs specified in the ``NEED_EMACS`` variable, or die otherwise.
 
 elisp-check-emacs-version() {
 	if [[ -z ${_ELISP_EMACS_VERSION} ]]; then
@@ -282,8 +282,8 @@ elisp-check-emacs-version() {
 # @DESCRIPTION:
 # Byte-compile Emacs Lisp files.
 #
-# This function uses GNU Emacs to byte-compile all ".el" specified by
-# its arguments.  The resulting byte-code (".elc") files are placed in
+# This function uses GNU Emacs to byte-compile all ``.el`` specified by
+# its arguments.  The resulting byte-code (``.elc``) files are placed in
 # the same directory as their corresponding source file.
 #
 # The current directory is added to the load-path.  This will ensure
@@ -340,7 +340,7 @@ elisp-make-autoload-file() {
 # @FUNCTION: elisp-install
 # @USAGE: <subdirectory> <list of files>
 # @DESCRIPTION:
-# Install files in SITELISP directory.
+# Install files in ``SITELISP`` directory.
 
 elisp-install() {
 	local subdir="$1"
@@ -356,7 +356,7 @@ elisp-install() {
 # @FUNCTION: elisp-modules-install
 # @USAGE: <subdirectory> <list of files>
 # @DESCRIPTION:
-# Install dynamic modules in EMACSMODULES directory.
+# Install dynamic modules in ``EMACSMODULES`` directory.
 
 elisp-modules-install() {
 	local subdir="$1"
@@ -372,11 +372,11 @@ elisp-modules-install() {
 # @FUNCTION: elisp-site-file-install
 # @USAGE: <site-init file> [subdirectory]
 # @DESCRIPTION:
-# Install Emacs site-init file in SITELISP directory.  Automatically
+# Install Emacs site-init file in ``SITELISP`` directory.  Automatically
 # inserts a standard comment header with the name of the package
-# (unless it is already present).  Tokens @SITELISP@, @SITEETC@,
-# and @EMACSMODULES@ are replaced by the path to the package's
-# subdirectory in SITELISP, SITEETC, and EMACSMODULES, respectively.
+# (unless it is already present).  Tokens ``@SITELISP@``, ``@SITEETC@``,
+# and ``@EMACSMODULES@`` are replaced by the path to the package's
+# subdirectory in ``SITELISP``, ``SITEETC``, and ``EMACSMODULES``, respectively.
 
 elisp-site-file-install() {
 	local sf="${1##*/}" my_pn="${2:-${PN}}" modules ret
@@ -404,8 +404,8 @@ elisp-site-file-install() {
 
 # @FUNCTION: elisp-site-regen
 # @DESCRIPTION:
-# Regenerate the site-gentoo.el file, based on packages' site
-# initialisation files in the /usr/share/emacs/site-lisp/site-gentoo.d/
+# Regenerate the ``site-gentoo.el`` file, based on packages' site
+# initialisation files in the ``/usr/share/emacs/site-lisp/site-gentoo.d/``
 # directory.
 
 elisp-site-regen() {
