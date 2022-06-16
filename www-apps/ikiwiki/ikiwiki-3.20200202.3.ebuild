@@ -107,5 +107,6 @@ src_install() {
 	#dodoc -r doc/examples
 	#docompress -x /usr/share/doc/${PF}/examples
 	dodoc -r html/.
-	dodoc debian/{NEWS,changelog}
+	dodoc CHANGELOG
+	dodoc debian/NEWS
 }
