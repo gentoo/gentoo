@@ -19,7 +19,7 @@ REQUIRED_USE="static? ( static-libs )
 
 RDEPEND=">=dev-lang/execline-2.8.1.0:=[static-libs?]
 	=dev-libs/skalibs-2.11*:=[static-libs?]
-	>=sys-apps/s6-2.11.0.0:=[execline,static-libs?]
+	>=sys-apps/s6-2.11.0.0:=[execline,static-libs(-)?]
 	ssl? ( dev-libs/libretls )
 	!static? (
 		>=net-dns/s6-dns-2.3.5.2:=
