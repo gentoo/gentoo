@@ -16,7 +16,7 @@ SRC_URI="https://codeload.github.com/mockito/mockito/tar.gz/v${PV} -> ${P}.tar.g
 
 LICENSE="MIT"
 SLOT="4"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 # Common dependencies
 # POM: ${PN}-core-${PV}.pom
