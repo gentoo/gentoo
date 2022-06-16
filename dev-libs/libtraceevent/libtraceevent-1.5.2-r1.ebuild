@@ -19,6 +19,10 @@ fi
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="doc"
+
+RDEPEND="
+	!<dev-util/trace-cmd-3.0
+"
 BDEPEND="
 	doc? ( app-text/xmlto app-text/asciidoc )
 "
