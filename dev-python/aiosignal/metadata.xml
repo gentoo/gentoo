@@ -4,6 +4,7 @@
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">aiosignal</remote-id>
 		<remote-id type="github">aio-libs/aiosignal</remote-id>
