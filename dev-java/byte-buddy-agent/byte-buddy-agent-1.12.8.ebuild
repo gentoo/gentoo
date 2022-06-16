@@ -19,7 +19,7 @@ SRC_URI="https://repo1.maven.org/maven2/net/bytebuddy/${PN}/${PV}/${P}-sources.j
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 
 # Compile dependencies
 # POM: ${P}.pom
