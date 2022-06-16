@@ -4,11 +4,11 @@
 EAPI=7
 
 PYTHON_REQ_USE="sqlite,ssl"
-LIBDVDCSS_VERSION="1.4.2-Leia-Beta-5"
-LIBDVDREAD_VERSION="6.0.0-Leia-Alpha-3"
-LIBDVDNAV_VERSION="6.0.0-Leia-Alpha-3"
-FFMPEG_VERSION="4.4"
-CODENAME="N"
+LIBDVDCSS_VERSION="1.4.3-Next-Nexus-Alpha2"
+LIBDVDREAD_VERSION="6.1.3-Next-Nexus-Alpha2"
+LIBDVDNAV_VERSION="6.1.1-Next-Nexus-Alpha2"
+FFMPEG_VERSION="4.4.1"
+CODENAME="Nexus"
 FFMPEG_KODI_VERSION="Alpha1"
 PYTHON_COMPAT=( python3_{8,9,10} )
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz -> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
