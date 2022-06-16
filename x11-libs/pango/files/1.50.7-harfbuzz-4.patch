@@ -1,0 +1,78 @@
+https://gitlab.gnome.org/GNOME/pango/-/commit/0226bdd9c223f5651b6657a14cebc900bbac4b19
+https://bugs.gentoo.org/836317
+
+Fixes tests with Harfbuzz 4.0.0 ish.
+
+From: Matthias Clasen <mclasen@redhat.com>
+Date: Fri, 10 Jun 2022 08:00:22 -0400
+Subject: [PATCH] Update tests to pass on F36
+
+Rounding differences are our downfall :(
+--- a/tests/layouts/valid-14.layout
++++ b/tests/layouts/valid-14.layout
+@@ -25,7 +25,7 @@
+     "is-ellipsized" : true,
+     "unknown-glyphs" : 1,
+     "width" : 161792,
+-    "height" : 20480,
++    "height" : 21047,
+     "log-attrs" : [
+       {
+         "char-break" : true,
+@@ -261,7 +261,7 @@
+               ]
+             },
+             "flags" : 0,
+-            "y-offset" : 0,
++            "y-offset" : 567,
+             "start-x-offset" : 0,
+             "end-x-offset" : 0,
+             "glyphs" : [
+@@ -360,7 +360,7 @@
+               ]
+             },
+             "flags" : 0,
+-            "y-offset" : 0,
++            "y-offset" : 337,
+             "start-x-offset" : 0,
+             "end-x-offset" : 0,
+             "glyphs" : [
+--- a/tests/layouts/valid-20.layout
++++ b/tests/layouts/valid-20.layout
+@@ -40,7 +40,7 @@
+     "is-wrapped" : false,
+     "is-ellipsized" : false,
+     "unknown-glyphs" : 0,
+-    "width" : 67584,
++    "width" : 76800,
+     "height" : 25600,
+     "log-attrs" : [
+       {
+@@ -138,7 +138,7 @@
+             "glyphs" : [
+               {
+                 "glyph" : 244,
+-                "width" : 15360,
++                "width" : 18432,
+                 "x-offset" : 14764,
+                 "y-offset" : 3845,
+                 "is-cluster-start" : true,
+@@ -146,7 +146,7 @@
+               },
+               {
+                 "glyph" : 272,
+-                "width" : 15360,
++                "width" : 18432,
+                 "x-offset" : 14764,
+                 "y-offset" : 4280,
+                 "is-cluster-start" : true,
+@@ -154,7 +154,7 @@
+               },
+               {
+                 "glyph" : 273,
+-                "width" : 15360,
++                "width" : 18432,
+                 "x-offset" : 14764,
+                 "y-offset" : 3507,
+                 "is-cluster-start" : true,
+GitLab

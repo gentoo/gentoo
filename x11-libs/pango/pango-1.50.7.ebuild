@@ -41,6 +41,10 @@ BDEPEND="
 	test? ( media-fonts/cantarell )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-harfbuzz-4.patch
+)
+
 src_prepare() {
 	xdg_src_prepare
 	gnome2_environment_reset
