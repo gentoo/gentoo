@@ -17,7 +17,7 @@ IUSE="+execline static static-libs"
 REQUIRED_USE="static? ( static-libs )"
 
 RDEPEND="execline? ( >=dev-lang/execline-2.8.3.0:=[static-libs(-)?] )
-	>=dev-libs/skalibs-2.11.2.0:=[static-libs?]
+	>=dev-libs/skalibs-2.11.2.0:=[static-libs(-)?]
 "
 DEPEND="${RDEPEND}"
 
