@@ -9,7 +9,7 @@
 # @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: This eclass helps with the Glasgow Haskell Compiler's package configuration utility.
 # @DESCRIPTION:
-# Helper eclass to handle ghc installation/upgrade/deinstallation process.
+# Helper eclass to handle ``ghc`` installation/upgrade/deinstallation process.
 
 inherit multiprocessing
 
@@ -30,7 +30,7 @@ QA_FLAGS_IGNORED='.*'
 
 # @FUNCTION: ghc-getghc
 # @DESCRIPTION:
-# returns the name of the ghc executable
+# returns the name of the ``ghc`` executable
 ghc-getghc() {
 	if ! type -P ${HC:-ghc}; then
 		ewarn "ghc not found"
@@ -51,10 +51,10 @@ ghc-getghcpkg() {
 
 # @FUNCTION: ghc-getghcpkgbin
 # @DESCRIPTION:
-# returns the name of the ghc-pkg binary (ghc-pkg
+# returns the name of the ``ghc-pkg`` binary (``ghc-pkg``
 # itself usually is a shell script, and we have to
 # bypass the script under certain circumstances);
-# for Cabal, we add an empty global package config file,
+# for ``Cabal``, we add an empty global package config file,
 # because for some reason the global package file
 # must be specified
 ghc-getghcpkgbin() {
@@ -67,9 +67,10 @@ ghc-getghcpkgbin() {
 
 # @FUNCTION: ghc-version
 # @DESCRIPTION:
-# returns upstream version of ghc
-# as reported by '--numeric-version'
-# Examples: "7.10.2", "7.9.20141222"
+# returns upstream version of ``ghc``
+# as reported by ``--numeric-version``.
+#
+# Examples: ``7.10.2``, ``7.9.20141222``
 _GHC_VERSION_CACHE=""
 ghc-version() {
 	if [[ -z "${_GHC_VERSION_CACHE}" ]]; then
@@ -80,9 +81,10 @@ ghc-version() {
 
 # @FUNCTION: ghc-pm-version
 # @DESCRIPTION:
-# returns package manager(PM) version of ghc
-# as reported by '$(best_version)'
-# Examples: "PM:7.10.2", "PM:7.10.2_rc1", "PM:7.8.4-r4"
+# returns package manager(PM) version of ``ghc``
+# as reported by ``$(best_version)``
+#
+# Examples: ``PM:7.10.2``, ``PM:7.10.2_rc1``, ``PM:7.8.4-r4``
 _GHC_PM_VERSION_CACHE=""
 ghc-pm-version() {
 	local pm_ghc_p
@@ -96,7 +98,7 @@ ghc-pm-version() {
 
 # @FUNCTION: ghc-cabal-version
 # @DESCRIPTION:
-# return version of the Cabal library bundled with ghc
+# return version of the ``Cabal`` library bundled with ``ghc``
 ghc-cabal-version() {
 	# outputs in format: 'version: 1.18.1.5'
 	set -- `$(ghc-getghcpkg) --package-db=$(ghc-libdir)/package.conf.d.initial field Cabal version`
@@ -105,49 +107,49 @@ ghc-cabal-version() {
 
 # @FUNCTION: ghc-is-dynamic
 # @DESCRIPTION:
-# checks if ghc is built against dynamic libraries
-# binaries linked against GHC library (and using plugin loading)
+# checks if ``ghc`` is built against dynamic libraries
+# binaries linked against ``GHC`` library (and using plugin loading)
 # have to be linked the same way:
-#    https://ghc.haskell.org/trac/ghc/ticket/10301
+# https://ghc.haskell.org/trac/ghc/ticket/10301
 ghc-is-dynamic() {
 	$(ghc-getghc) --info | grep "GHC Dynamic" | grep -q "YES"
 }
 
 # @FUNCTION: ghc-supports-shared-libraries
 # @DESCRIPTION:
-# checks if ghc is built with support for building
-# shared libraries (aka '-dynamic' option)
+# checks if ``ghc`` is built with support for building
+# shared libraries (aka ``-dynamic`` option)
 ghc-supports-shared-libraries() {
 	$(ghc-getghc) --info | grep "RTS ways" | grep -q "dyn"
 }
 
 # @FUNCTION: ghc-supports-threaded-runtime
 # @DESCRIPTION:
-# checks if ghc is built with support for threaded
-# runtime (aka '-threaded' option)
+# checks if ``ghc`` is built with support for threaded
+# runtime (aka ``-threaded`` option)
 ghc-supports-threaded-runtime() {
 	$(ghc-getghc) --info | grep "RTS ways" | grep -q "thr"
 }
 
 # @FUNCTION: ghc-supports-smp
 # @DESCRIPTION:
-# checks if ghc is built with support for multiple cores runtime
+# checks if ``ghc`` is built with support for multiple cores runtime
 ghc-supports-smp() {
 	$(ghc-getghc) --info | grep "Support SMP" | grep -q "YES"
 }
 
 # @FUNCTION: ghc-supports-interpreter
 # @DESCRIPTION:
-# checks if ghc has interpreter mode (aka GHCi)
-# It usually means that ghc supports for template haskell.
+# checks if ``ghc`` has interpreter mode (aka ``GHCi``).
+# It usually means that ``ghc`` supports for template haskell.
 ghc-supports-interpreter() {
 	$(ghc-getghc) --info | grep "Have interpreter" | grep -q "YES"
 }
 
 # @FUNCTION: ghc-supports-parallel-make
 # @DESCRIPTION:
-# checks if ghc has support for '--make -j' mode
-# The option was introduced in ghc-7.8-rc1.
+# checks if ``ghc`` has support for ``--make -j`` mode.
+# The option was introduced in ``ghc-7.8-rc1``.
 ghc-supports-parallel-make() {
 	$(ghc-getghc) --info | grep "Support parallel --make" | grep -q "YES"
 }
@@ -178,7 +180,7 @@ ghc-libdir() {
 
 # @FUNCTION: ghc-make-args
 # @DESCRIPTION:
-# Returns default arguments passed along 'ghc --make'
+# Returns default arguments passed along ``ghc --make``
 # build mode. Used mainly to enable parallel build mode.
 ghc-make-args() {
 	local ghc_make_args=()
@@ -198,8 +200,8 @@ ghc-make-args() {
 # @FUNCTION: ghc-confdir
 # @DESCRIPTION:
 # returns the (Gentoo) library configuration directory, we
-# store here a hint for 'haskell-updater' about packages
-# installed for old ghc versions and current ones.
+# store here a hint for ``haskell-updater`` about packages
+# installed for old ``ghc`` versions and current ones.
 ghc-confdir() {
 	echo "$(ghc-libdir)/gentoo"
 }
@@ -221,7 +223,7 @@ ghc-localpkgconfd() {
 
 # @FUNCTION: ghc-package-exists
 # @DESCRIPTION:
-# tests if a ghc package exists
+# tests if a ``ghc`` package exists
 ghc-package-exists() {
 	$(ghc-getghcpkg) describe "$1" > /dev/null 2>&1
 }
@@ -281,7 +283,7 @@ ghc-install-pkg() {
 
 # @FUNCTION: ghc-recache-db
 # @DESCRIPTION:
-# updates 'package.cache' binary cacne for registered '*.conf'
+# updates ``package.cache`` binary cacne for registered ``*.conf``
 # packages
 ghc-recache-db() {
 	einfo "Recaching GHC package DB"
@@ -298,8 +300,8 @@ ghc-register-pkg() {
 
 # @FUNCTION: ghc-reregister
 # @DESCRIPTION:
-# re-adds all available .conf files to the global
-# package conf file, to be used on a ghc reinstallation
+# re-adds all available ``.conf`` files to the global
+# package conf file, to be used on a ``ghc`` reinstallation
 ghc-reregister() {
 	ghc-recache-db
 }
@@ -314,7 +316,7 @@ ghc-unregister-pkg() {
 # @FUNCTION: ghc-pkgdeps
 # @DESCRIPTION:
 # exported function: loads a package dependency in a form
-# cabal_package version
+# ``cabal_package`` version
 ghc-pkgdeps() {
 	echo $($(ghc-getghcpkg) describe "${1}") \
 	| sed \
@@ -325,14 +327,14 @@ ghc-pkgdeps() {
 
 # @FUNCTION: ghc-package_pkg_postinst
 # @DESCRIPTION:
-# updates package.cache after package install
+# updates ``package.cache`` after package install
 ghc-package_pkg_postinst() {
 	ghc-recache-db
 }
 
 # @FUNCTION: ghc-package_pkg_prerm
 # @DESCRIPTION:
-# updates package.cache after package deinstall
+# updates ``package.cache`` after package deinstall
 ghc-package_pkg_prerm() {
 	ewarn "ghc-package.eclass: 'ghc-package_pkg_prerm()' is a noop"
 	ewarn "ghc-package.eclass: consider 'haskell-cabal_pkg_postrm()' instead"
@@ -340,7 +342,7 @@ ghc-package_pkg_prerm() {
 
 # @FUNCTION: ghc-package_pkg_postrm
 # @DESCRIPTION:
-# updates package.cache after package deinstall
+# updates ``package.cache`` after package deinstall
 ghc-package_pkg_postrm() {
 	ghc-recache-db
 }
