@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: git-r3.eclass
@@ -31,36 +31,36 @@ fi
 # @USER_VARIABLE
 # @DESCRIPTION:
 # Type of clone that should be used against the remote repository.
-# This can be either of: 'mirror', 'single', 'shallow'.
+# This can be either of: ``mirror``, ``single``, ``shallow``.
 #
-# This is intended to be set by user in make.conf. Ebuilds are supposed
-# to set EGIT_MIN_CLONE_TYPE if necessary instead.
+# This is intended to be set by user in ``make.conf``. Ebuilds are supposed
+# to set ``EGIT_MIN_CLONE_TYPE`` if necessary instead.
 #
-# The 'mirror' type clones all remote branches and tags with complete
-# history and all notes. EGIT_COMMIT can specify any commit hash.
+# The ``mirror`` type clones all remote branches and tags with complete
+# history and all notes. ``EGIT_COMMIT`` can specify any commit hash.
 # Upstream-removed branches and tags are purged from the local clone
 # while fetching. This mode is suitable for cloning the local copy
 # for development or hosting a local git mirror. However, clones
 # of repositories with large diverged branches may quickly grow large.
 #
-# The 'single+tags' type clones the requested branch and all tags
-# in the repository. All notes are fetched as well. EGIT_COMMIT
+# The ``single+tags`` type clones the requested branch and all tags
+# in the repository. All notes are fetched as well. ``EGIT_COMMIT``
 # can safely specify hashes throughout the current branch and all tags.
 # No purging of old references is done (if you often switch branches,
 # you may need to remove stale branches yourself). This mode is intended
 # mostly for use with broken git servers such as Google Code that fail
-# to fetch tags along with the branch in 'single' mode.
+# to fetch tags along with the branch in ``single`` mode.
 #
-# The 'single' type clones only the requested branch or tag. Tags
+# The ``single`` type clones only the requested branch or tag. Tags
 # referencing commits throughout the branch history are fetched as well,
-# and all notes. EGIT_COMMIT can safely specify only hashes
+# and all notes. ``EGIT_COMMIT`` can safely specify only hashes
 # in the current branch. No purging of old references is done (if you
 # often switch branches, you may need to remove stale branches
 # yourself). This mode is suitable for general use.
 #
-# The 'shallow' type clones only the newest commit on requested branch
-# or tag. EGIT_COMMIT can only specify tags, and since the history is
-# unavailable calls like 'git describe' will not reference prior tags.
+# The ``shallow`` type clones only the newest commit on requested branch
+# or tag. ``EGIT_COMMIT`` can only specify tags, and since the history is
+# unavailable calls like ``git describe`` will not reference prior tags.
 # No purging of old references is done. This mode is intended mostly for
 # embedded systems with limited disk space.
 : ${EGIT_CLONE_TYPE:=single}
@@ -68,15 +68,15 @@ fi
 # @ECLASS_VARIABLE: EGIT_MIN_CLONE_TYPE
 # @DESCRIPTION:
 # 'Minimum' clone type supported by the ebuild. Takes same values
-# as EGIT_CLONE_TYPE. When user sets a type that's 'lower' (that is,
-# later on the list) than EGIT_MIN_CLONE_TYPE, the eclass uses
-# EGIT_MIN_CLONE_TYPE instead.
+# as ``EGIT_CLONE_TYPE``. When user sets a type that's ``lower`` (that is,
+# later on the list) than ``EGIT_MIN_CLONE_TYPE``, the eclass uses
+# ``EGIT_MIN_CLONE_TYPE`` instead.
 #
 # This variable is intended to be used by ebuilds only. Users are
-# supposed to set EGIT_CLONE_TYPE instead.
+# supposed to set ``EGIT_CLONE_TYPE`` instead.
 #
-# A common case is to use 'single' whenever the build system requires
-# access to full branch history, or 'single+tags' when Google Code
+# A common case is to use ``single`` whenever the build system requires
+# access to full branch history, or ``single+tags`` when Google Code
 # or a similar remote is used that does not support shallow clones
 # and fetching tags along with commits. Please use sparingly, and to fix
 # fatal errors rather than 'non-pretty versions'.
@@ -88,10 +88,10 @@ fi
 # @DESCRIPTION:
 # Storage directory for git sources.
 #
-# This is intended to be set by user in make.conf. Ebuilds must not set
+# This is intended to be set by user in ``make.conf``. Ebuilds must not set
 # it.
 #
-# EGIT3_STORE_DIR=${DISTDIR}/git3-src
+# ``EGIT3_STORE_DIR=${DISTDIR}/git3-src``
 
 # @ECLASS_VARIABLE: EGIT_MIRROR_URI
 # @DEFAULT_UNSET
@@ -99,7 +99,7 @@ fi
 # 'Top' URI to a local git mirror. If specified, the eclass will try
 # to fetch from the local mirror instead of using the remote repository.
 #
-# The mirror needs to follow EGIT3_STORE_DIR structure. The directory
+# The mirror needs to follow ``EGIT3_STORE_DIR`` structure. The directory
 # created by eclass can be used for that purpose.
 #
 # Example:
@@ -110,13 +110,13 @@ fi
 # @ECLASS_VARIABLE: EGIT_REPO_URI
 # @REQUIRED
 # @DESCRIPTION:
-# URIs to the repository, e.g. https://foo. If multiple URIs are
+# URIs to the repository, e.g. ``https://foo``. If multiple URIs are
 # provided, the eclass will consider the remaining URIs as fallbacks
 # to try if the first URI does not work. For supported URI syntaxes,
 # read the manpage for git-clone(1).
 #
-# URIs should be using https:// whenever possible. http:// and git://
-# URIs are completely unsecured and their use (even if only as
+# URIs should be using ``https://`` whenever possible. ``http://`` and
+# ``git://`` URIs are completely unsecured and their use (even if only as
 # a fallback) renders the ebuild completely vulnerable to MITM attacks.
 #
 # Can be a whitespace-separated list or an array.
@@ -137,7 +137,7 @@ fi
 # Set this variable to a custom umask. This is intended to be set by
 # users. By setting this to something like 002, it can make life easier
 # for people who do development as non-root (but are in the portage
-# group), and then switch over to building with FEATURES=userpriv.
+# group), and then switch over to building with ``FEATURES=userpriv``.
 # Or vice-versa. Shouldn't be a security issue here as anyone who has
 # portage group write access already can screw the system over in more
 # creative ways.
@@ -145,7 +145,7 @@ fi
 # @ECLASS_VARIABLE: EGIT_BRANCH
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# The branch name to check out. If unset, the upstream default (HEAD)
+# The branch name to check out. If unset, the upstream default (``HEAD``)
 # will be used.
 
 # @ECLASS_VARIABLE: EGIT_COMMIT
@@ -153,15 +153,15 @@ fi
 # @DESCRIPTION:
 # The tag name or commit identifier to check out. If unset, newest
 # commit from the branch will be used. Note that if set to a commit
-# not on HEAD branch, EGIT_BRANCH needs to be set to a branch on which
+# not on ``HEAD`` branch, ``EGIT_BRANCH`` needs to be set to a branch on which
 # the commit is available.
 
 # @ECLASS_VARIABLE: EGIT_COMMIT_DATE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Attempt to check out the repository state for the specified timestamp.
-# The date should be in format understood by 'git rev-list'. The commits
-# on EGIT_BRANCH will be considered.
+# The date should be in format understood by ``git rev-list``. The commits
+# on ``EGIT_BRANCH`` will be considered.
 #
 # The eclass will select the last commit with commit date preceding
 # the specified date. When merge commits are found, only first parents
@@ -175,18 +175,18 @@ fi
 # @DESCRIPTION:
 # The directory to check the git sources out to.
 #
-# EGIT_CHECKOUT_DIR=${WORKDIR}/${P}
+# ``EGIT_CHECKOUT_DIR=${WORKDIR}/${P}``
 
 # @ECLASS_VARIABLE: EGIT_SUBMODULES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array of inclusive and exclusive wildcards on submodule names,
 # stating which submodules are fetched and checked out. Exclusions
-# start with '-', and exclude previously matched submodules.
+# start with ``-``, and exclude previously matched submodules.
 #
 # If unset, all submodules are enabled. Empty list disables all
 # submodules. In order to use an exclude-only list, start the array
-# with '*'.
+# with ``*``.
 #
 # Remember that wildcards need to be quoted in order to prevent filename
 # expansion.
@@ -487,29 +487,29 @@ _git-r3_is_local_repo() {
 # @DESCRIPTION:
 # Fetch new commits to the local clone of repository.
 #
-# <repo-uri> specifies the repository URIs to fetch from, as a space-
-# -separated list. The first URI will be used as repository group
+# ``<repo-uri>`` specifies the repository URIs to fetch from, as a
+# space-separated list. The first URI will be used as repository group
 # identifier and therefore must be used consistently. When not
-# specified, defaults to ${EGIT_REPO_URI}.
+# specified, defaults to ``${EGIT_REPO_URI}``.
 #
-# <remote-ref> specifies the remote ref or commit id to fetch.
-# It is preferred to use 'refs/heads/<branch-name>' for branches
-# and 'refs/tags/<tag-name>' for tags. Other options are 'HEAD'
+# ``<remote-ref>`` specifies the remote ref or commit id to fetch.
+# It is preferred to use ``refs/heads/<branch-name>`` for branches
+# and ``refs/tags/<tag-name>`` for tags. Other options are ``HEAD``
 # for upstream default branch and hexadecimal commit SHA1. Defaults
-# to the first of EGIT_COMMIT, EGIT_BRANCH or literal 'HEAD' that
+# to the first of ``EGIT_COMMIT``, ``EGIT_BRANCH`` or literal ``HEAD`` that
 # is set to a non-null value.
 #
-# <local-id> specifies the local branch identifier that will be used to
+# ``<local-id>`` specifies the local branch identifier that will be used to
 # locally store the fetch result. It should be unique to multiple
 # fetches within the repository that can be performed at the same time
-# (including parallel merges). It defaults to ${CATEGORY}/${PN}/${SLOT%/*}.
+# (including parallel merges). It defaults to ``${CATEGORY}/${PN}/${SLOT%/*}``.
 # This default should be fine unless you are fetching multiple trees
 # from the same repository in the same ebuild.
 #
-# <commit-date> requests attempting to use repository state as of specific
-# date. For more details, see EGIT_COMMIT_DATE.
+# ``<commit-date>`` requests attempting to use repository state as of specific
+# date. For more details, see ``EGIT_COMMIT_DATE``.
 #
-# The fetch operation will affect the EGIT_STORE only. It will not touch
+# The fetch operation will affect the ``EGIT_STORE`` only. It will not touch
 # the working copy, nor export any environment variables.
 # If the repository contains submodules, they will be fetched
 # recursively.
@@ -816,20 +816,20 @@ git-r3_fetch() {
 # @DESCRIPTION:
 # Check the previously fetched tree to the working copy.
 #
-# <repo-uri> specifies the repository URIs, as a space-separated list.
+# ``<repo-uri>`` specifies the repository URIs, as a space-separated list.
 # The first URI will be used as repository group identifier
 # and therefore must be used consistently with git-r3_fetch.
 # The remaining URIs are not used and therefore may be omitted.
-# When not specified, defaults to ${EGIT_REPO_URI}.
+# When not specified, defaults to ``${EGIT_REPO_URI}``.
 #
-# <checkout-path> specifies the path to place the checkout. It defaults
-# to ${EGIT_CHECKOUT_DIR} if set, otherwise to ${WORKDIR}/${P}.
+# ``<checkout-path>`` specifies the path to place the checkout. It defaults
+# to ``${EGIT_CHECKOUT_DIR}`` if set, otherwise to ``${WORKDIR}/${P}``.
 #
-# <local-id> needs to specify the local identifier that was used
-# for respective git-r3_fetch.
+# ``<local-id>`` needs to specify the local identifier that was used
+# for respective ``git-r3_fetch``.
 #
-# If <checkout-paths> are specified, then the specified paths are passed
-# to 'git checkout' to effect a partial checkout. Please note that such
+# If ``<checkout-paths>`` are specified, then the specified paths are passed
+# to ``git checkout`` to effect a partial checkout. Please note that such
 # checkout will not cause the repository to switch branches,
 # and submodules will be skipped at the moment. The submodules matching
 # those paths might be checked out in a future version of the eclass.
@@ -973,17 +973,17 @@ git-r3_checkout() {
 # Peek the reference in the remote repository and print the matching
 # (newest) commit SHA1.
 #
-# <repo-uri> specifies the repository URIs to fetch from, as a space-
-# -separated list. When not specified, defaults to ${EGIT_REPO_URI}.
+# ``<repo-uri>`` specifies the repository URIs to fetch from, as a space-
+# -separated list. When not specified, defaults to ``${EGIT_REPO_URI}``.
 #
-# <remote-ref> specifies the remote ref to peek.  It is preferred to use
-# 'refs/heads/<branch-name>' for branches and 'refs/tags/<tag-name>'
-# for tags. Alternatively, 'HEAD' may be used for upstream default
-# branch. Defaults to the first of EGIT_COMMIT, EGIT_BRANCH or literal
-# 'HEAD' that is set to a non-null value.
+# ``<remote-ref>`` specifies the remote ref to peek.  It is preferred to use
+# ``refs/heads/<branch-name>`` for branches and ``refs/tags/<tag-name>``
+# for tags. Alternatively, ``HEAD`` may be used for upstream default
+# branch. Defaults to the first of ``EGIT_COMMIT``, ``EGIT_BRANCH`` or literal
+# ``HEAD`` that is set to a non-null value.
 #
 # The operation will be done purely on the remote, without using local
-# storage. If commit SHA1 is provided as <remote-ref>, the function will
+# storage. If commit SHA1 is provided as ``<remote-ref>``, the function will
 # fail due to limitations of git protocol.
 #
 # On success, the function returns 0 and writes hexadecimal commit SHA1
