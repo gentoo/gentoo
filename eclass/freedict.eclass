@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: freedict.eclass
@@ -7,9 +7,9 @@
 # @AUTHOR:
 # Original author: Seemant Kulleen <seemant@gentoo.org>
 # @SUPPORTED_EAPIS: 7
-# @BLURB: Ease the installation of freedict translation dictionaries
+# @BLURB: Ease the installation of ``freedict`` translation dictionaries
 # @DESCRIPTION:
-# This eclass exists to ease the installation of freedict translation
+# This eclass exists to ease the installation of ``freedict`` translation
 # dictionaries.
 
 if [[ -z ${_FREEDICT_ECLASS} ]]; then
@@ -17,7 +17,7 @@ _FREEDICT_ECLASS=1
 
 # @ECLASS_VARIABLE: FREEDICT_P
 # @DESCRIPTION:
-# Strips PN of 'freedict' prefix, to be used in SRC_URI and doins
+# Strips ``PN`` of ``freedict-`` prefix, to be used in ``SRC_URI`` and ``doins``
 FREEDICT_P=${PN/freedict-/}
 
 case ${EAPI:-0} in
@@ -40,7 +40,7 @@ S="${WORKDIR}"
 
 # @FUNCTION: freedict_src_install
 # @DESCRIPTION:
-# Installs translation-specific dict.dz and index files.
+# Installs translation-specific ``dict.dz`` and index files.
 freedict_src_install() {
 	insinto /usr/$(get_libdir)/dict
 	doins ${FREEDICT_P}.dict.dz
