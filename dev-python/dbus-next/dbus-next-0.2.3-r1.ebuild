@@ -4,23 +4,33 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
+
 inherit distutils-r1 virtualx
 
 DESCRIPTION="The next great DBus library for Python with asyncio support"
-HOMEPAGE="https://python-dbus-next.readthedocs.io/en/latest/"
-SRC_URI="https://github.com/altdesktop/python-dbus-next/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="
+	https://python-dbus-next.readthedocs.io/en/latest/
+	https://github.com/altdesktop/python-dbus-next/
+	https://pypi.org/project/dbus-next/
+"
+SRC_URI="
+	https://github.com/altdesktop/python-dbus-next/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 S="${WORKDIR}"/python-${P}
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
 
-BDEPEND="test? (
+BDEPEND="
+	test? (
 		dev-python/pygobject[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
-	)"
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.3-glib-crash.patch
