@@ -3,7 +3,7 @@
 
 EAPI=7
 
-LLVM_MAX_SLOT=12
+LLVM_MAX_SLOT=14
 inherit llvm toolchain-funcs
 
 DESCRIPTION="C semantic parser"
