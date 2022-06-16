@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/712336
+https://bugs.gentoo.org/549506
+
+Adds fcntl.h into daemon-server.c to define fcntl and some constants.
+
+---
+ libdaemon/server/daemon-server.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libdaemon/server/daemon-server.c b/libdaemon/server/daemon-server.c
+index 88905a7..771b021 100644
+--- a/libdaemon/server/daemon-server.c
++++ b/libdaemon/server/daemon-server.c
+@@ -28,6 +28,7 @@
+ #include <sys/un.h>
+ #include <unistd.h>
+ #include <signal.h>
++#include <fcntl.h>
+ 
+ #include <syslog.h> /* FIXME. For the global closelog(). */
+ 
+-- 
+2.35.1
+
