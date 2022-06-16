@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A non-intrusive real-time ANSI color wrapper for common unix-based commands"
 HOMEPAGE="http://cwrapper.sourceforge.net"
@@ -23,11 +23,15 @@ PATCHES=(
 
 src_unpack() {
 	default
+
 	gunzip "${S}"/man/*.gz || die
 }
 
 src_configure() {
 	tc-export CC
+
+	append-flags -D_XOPEN_SOURCE=500 -D_GNU_SOURCE
+
 	econf
 }
 
@@ -56,7 +60,7 @@ src_install() {
 
 pkg_postinst() {
 	ebegin "Updating definition files"
-	cwu /usr/libexec/cw /usr/bin/color-wrapper || die # >/dev/null
+	cwu /usr/libexec/cw /usr/bin/color-wrapper # >/dev/null
 	eend $?
 
 	elog "To enable color-wrapper, as your user, run:"
