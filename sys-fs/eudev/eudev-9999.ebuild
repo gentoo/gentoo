@@ -5,14 +5,14 @@ EAPI=8
 
 KV_MIN=2.6.39
 
-inherit autotools linux-info multilib-minimal toolchain-funcs udev
+inherit linux-info multilib-minimal toolchain-funcs udev
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/eudev-project/eudev.git"
-	inherit git-r3
+	inherit autotools git-r3
 else
 	MY_PV=${PV/_pre/-pre}
-	SRC_URI="https://github.com/eudev-project/eudev/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/eudev-project/eudev/releases/download/v${MY_PV}/${PN}-${MY_PV}.tar.gz"
 	S="${WORKDIR}"/${PN}-${MY_PV}
 
 	if [[ ${PV} != *_pre* ]] ; then
@@ -91,7 +91,9 @@ src_prepare() {
 	sed -e 's/GROUP="dialout"/GROUP="uucp"/' -i rules/*.rules \
 		|| die "failed to change group dialout to uucp"
 
-	eautoreconf
+	if [[ ${PV} == 9999* ]] ; then
+		eautoreconf
+	fi
 }
 
 multilib_src_configure() {
