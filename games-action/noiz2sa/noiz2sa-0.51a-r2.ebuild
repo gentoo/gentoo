@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,6 +16,7 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	>=dev-libs/libbulletml-0.0.3
+	media-libs/libsdl[joystick]
 	media-libs/sdl-mixer[vorbis]
 	virtual/opengl"
 RDEPEND="${DEPEND}"
