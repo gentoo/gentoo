@@ -10,16 +10,16 @@
 # EAPI 8 author: Thomas Bracht Laumann Jespersen <t@laumann.xyz>
 # @SUPPORTED_EAPIS: 6 8
 # @PROVIDES: multilib
-# @BLURB: Provides src_install used by (almost) all gkrellm plugins
+# @BLURB: Provides ``src_install`` used by (almost) all ``gkrellm`` plugins
 # @DESCRIPTION:
 # - Sets up default dependencies
-# - Provides a common src_install method to avoid code duplication
+# - Provides a common ``src_install`` method to avoid code duplication
 #
 # Changelog:
 #   17 March 2022: Thomas Bracht Laumann Jespersen <t@laumann.xyz>
 #     - Port to EAPI 8
 #   03 January 2018: David Seifert <soap@gentoo.org>
-#     - Port to EAPI 6, remove built_with_use, simplify a lot
+#     - Port to EAPI 6, remove ``built_with_use``, simplify a lot
 #   12 March 2007: Jim Ramsay <lack@gentoo.org>
 #     - Added server plugin support
 #   09 March 2007: Jim Ramsay <lack@gentoo.org>
@@ -28,20 +28,20 @@
 
 # @ECLASS_VARIABLE: PLUGIN_SO
 # @DESCRIPTION:
-# The name of the plugin's .so file which will be installed in
-# the plugin dir. Defaults to "${PN}$(get_modname)". Has to be a bash array.
+# The name of the plugin's ``.so`` file which will be installed in
+# the plugin dir. Defaults to ``${PN}$(get_modname)``. Has to be a bash array.
 
 # @ECLASS_VARIABLE: PLUGIN_SERVER_SO
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# The name of the plugin's server plugin $(get_modname) portion.
+# The name of the plugin's server plugin ``$(get_modname)`` portion.
 # Unset by default. Has to be a bash array.
 
 # @ECLASS_VARIABLE: PLUGIN_DOCS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An optional list of docs to be installed, in addition to the default
-# DOCS variable which is respected too. Has to be a bash array.
+# ``DOCS`` variable which is respected too. Has to be a bash array.
 
 case ${EAPI} in
 	6|8) ;;
@@ -62,7 +62,7 @@ fi
 # @FUNCTION: gkrellm-plugin_src_install
 # @USAGE:
 # @DESCRIPTION:
-# Install the plugins and call einstalldocs
+# Install the plugins and call ``einstalldocs``
 gkrellm-plugin_src_install() {
 	exeinto /usr/$(get_libdir)/gkrellm2/plugins
 
