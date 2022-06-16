@@ -393,6 +393,13 @@ src_configure() {
 	# use startup-cache for faster startup time
 	mozconfig_annotate '' --enable-startupcache
 
+	# Elfhack is known to be broken on x86.
+	# https://bugs.gentoo.org/851933
+	# https://bugzilla.mozilla.org/show_bug.cgi?id=1706264
+	if use x86 ; then
+		mozconfig_annotate 'elf-hack is broken on x86' --disable-elf-hack
+	fi
+
 	# Elf hack should be enabled by default on architectures that support it.
 	# On archs that don't support it, it should not be enabled by default.
 	# www-client/firefox says building with clang breaks elf hack on archs that
@@ -404,8 +411,6 @@ src_configure() {
 		# toolkit/moz.configure Elfhack section: target.cpu in ('arm', 'x86', 'x86_64')
 		local disable_elf_hack=
 		if use amd64 ; then
-			disable_elf_hack=yes
-		elif use x86 ; then
 			disable_elf_hack=yes
 		elif use arm ; then
 			disable_elf_hack=yes
