@@ -70,6 +70,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.03.05-dmeventd-no-idle-exit.patch
 	#"${FILESDIR}"/${PN}-2.02.184-allow-reading-metadata-with-invalid-creation_time.patch #682380 # merged upstream
 	"${FILESDIR}"/${PN}-2.02.184-mksh_build.patch #686652
+	"${FILESDIR}"/${PN}-2.03.14-r1-add-fcntl.patch
+	"${FILESDIR}"/${PN}-2.03.14-r1-fopen-to-freopen.patch
+	"${FILESDIR}"/${PN}-2.03.14-r1-mallinfo.patch
 )
 
 pkg_setup() {
