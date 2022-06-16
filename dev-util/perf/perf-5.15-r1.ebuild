@@ -150,10 +150,10 @@ src_prepare() {
 	# Drop some upstream too-developer-oriented flags and fix the
 	# Makefile in general
 	sed -i \
-		-e "s:\$(sysconfdir_SQ)/bash_completion.d:$(get_bashcompdir):" \
+		-e "s@\$(sysconfdir_SQ)/bash_completion.d@$(get_bashcompdir)@" \
 		"${S}"/Makefile.perf || die
 	# A few places still use -Werror w/out $(WERROR) protection.
-	sed -i -e 's:-Werror::' \
+	sed -i -e 's@-Werror@@' \
 		"${S}"/Makefile.perf "${S_K}"/tools/lib/bpf/Makefile || die
 
 	# Avoid the call to make kernelversion
