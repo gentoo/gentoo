@@ -26,7 +26,7 @@ RDEPEND=">=dev-lang/execline-2.8.1.0:=[static-libs?]
 	)
 "
 DEPEND="${RDEPEND}
-	>=net-dns/s6-dns-2.3.5.2[static-libs?]
+	>=net-dns/s6-dns-2.3.5.2[static-libs(-)?]
 "
 
 HTML_DOCS=( doc/. )
