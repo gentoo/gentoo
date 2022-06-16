@@ -1,14 +1,14 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Pure python approach of Apache Thrift"
 HOMEPAGE="https://github.com/Thriftpy/thriftpy2"
-SRC_URI="https://github.com/Thriftpy/thriftpy2/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Thriftpy/thriftpy2/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -27,7 +27,8 @@ BDEPEND="
 distutils_enable_tests --install pytest
 
 python_prepare_all() {
-	rm tests/test_tornado.py || die
+	# tests that need network access
+	rm tests/test_{tornado,rpc,sslsocket}.py || die
 	distutils-r1_python_prepare_all
 }
 
