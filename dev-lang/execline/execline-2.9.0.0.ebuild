@@ -12,11 +12,8 @@ SRC_URI="https://www.skarnet.org/software/${PN}/${P}.tar.gz"
 LICENSE="ISC"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="static static-libs"
 
-REQUIRED_USE="static? ( static-libs )"
-
-RDEPEND=">=dev-libs/skalibs-2.12.0.0:=[static-libs?]"
+RDEPEND=">=dev-libs/skalibs-2.12.0.0:="
 DEPEND="${RDEPEND}"
 
 HTML_DOCS=( doc/. )
@@ -41,9 +38,8 @@ src_configure() {
 		--with-lib=/usr/$(get_libdir)/skalibs
 		--with-sysdeps=/usr/$(get_libdir)/skalibs
 		--enable-shared
-		$(use_enable static allstatic)
-		$(use_enable static static-libc)
-		$(use_enable static-libs static)
+		--disable-allstatic
+		--disable-static-libc
 	)
 
 	econf "${myconf[@]}"
