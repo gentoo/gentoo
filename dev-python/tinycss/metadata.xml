@@ -7,7 +7,7 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">tinycss</remote-id>
-    <remote-id type="github">SimonSapin/tinycss</remote-id>
+    <remote-id type="github">Kozea/tinycss</remote-id>
   </upstream>
   <stabilize-allarches/>
 </pkgmetadata>

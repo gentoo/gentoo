@@ -9,15 +9,20 @@ PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1
 
 DESCRIPTION="A complete yet simple CSS parser for Python"
-HOMEPAGE="https://github.com/SimonSapin/tinycss/
-	https://tinycss.readthedocs.io/en/latest/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+HOMEPAGE="
+	https://github.com/Kozea/tinycss/
+	https://pypi.org/project/tinycss/
+	https://tinycss.readthedocs.io/en/latest/
+"
+SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-RDEPEND="dev-python/lxml[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/lxml[${PYTHON_USEDEP}]
+"
 
 DOCS=( CHANGES README.rst )
 
