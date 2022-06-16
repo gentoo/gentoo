@@ -16,7 +16,8 @@ SRC_URI="https://archive.mozilla.org/pub/security/nss/releases/${RTM_NAME}/src/$
 LICENSE="|| ( MPL-2.0 GPL-2 LGPL-2.1 )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
-IUSE="cacert utils cpu_flags_ppc_altivec cpu_flags_ppc_vsx"
+IUSE="cacert test utils cpu_flags_ppc_altivec cpu_flags_ppc_vsx"
+RESTRICT="!test? ( test )"
 # pkg-config called by nss-config -> virtual/pkgconfig in RDEPEND
 RDEPEND="
 	>=dev-libs/nspr-${NSPR_VER}[${MULTILIB_USEDEP}]
@@ -26,8 +27,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="dev-lang/perl"
-
-RESTRICT="test"
 
 S="${WORKDIR}/${P}/${PN}"
 
@@ -170,6 +169,8 @@ multilib_src_compile() {
 		export CC_IS_CLANG=1
 	fi
 
+	export NSS_DISABLE_GTESTS=$(usex !test 1 0)
+
 	# explicitly disable altivec/vsx if not requested
 	# https://bugs.gentoo.org/789114
 	case ${ARCH} in
@@ -197,6 +198,28 @@ multilib_src_compile() {
 		NSPR_LIB_DIR="${T}/fakedir" \
 		emake -j1 "${makeargs[@]}" -C ${d} OS_TEST="$(nssarch)"
 	done
+}
+
+multilib_src_test() {
+	# https://www.linuxfromscratch.org/blfs/view/svn/postlfs/nss.html
+	# https://firefox-source-docs.mozilla.org/security/nss/legacy/nss_sources_building_testing/index.html#running_the_nss_test_suite
+	# https://www-archive.mozilla.org/projects/security/pki/nss/testnss_32.html (older)
+	export BUILD_OPT=1
+	export HOST="localhost"
+	export DOMSUF="localdomain"
+	export USE_IP=TRUE
+	export IP_ADDRESS="127.0.0.1"
+
+	NSINSTALL="${PWD}/$(find -type f -name nsinstall)"
+
+	cd "${BUILD_DIR}"/tests || die
+	# Hack to get current objdir (prefixed dir where built binaries are)
+	# Without this, at least multilib tests go wrong when building the amd64 variant
+	# after x86.
+	local objdir=$(find "${BUILD_DIR}"/dist -maxdepth 1 -iname Linux* | rev | cut -d/ -f1 | rev)
+
+        # Can tweak to a subset of tests in future if we need to, but would prefer not
+	OBJDIR="${objdir}" DIST="${BUILD_DIR}/dist" MOZILLA_ROOT="${BUILD_DIR}" ./all.sh || die
 }
 
 # Altering these 3 libraries breaks the CHK verification.
