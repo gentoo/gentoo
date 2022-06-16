@@ -5,9 +5,10 @@ EAPI=8
 
 inherit cmake systemd
 
+MY_P=c-toxcore-${PV}
 DESCRIPTION="Encrypted P2P, messaging, and audio/video calling platform"
 HOMEPAGE="https://tox.chat https://github.com/TokTok/c-toxcore"
-SRC_URI="https://github.com/TokTok/c-toxcore/releases/download/v${PV}/c-toxcore-${PV}.tar.gz"
+SRC_URI="https://github.com/TokTok/c-toxcore/releases/download/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0/0.2"
@@ -34,7 +35,7 @@ RDEPEND="${DEPEND}
 	)
 	key-utils? ( || ( sys-devel/gcc[openmp] sys-devel/clang-runtime[openmp] ) )"
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}"/${MY_P}
 
 src_prepare() {
 	cmake_src_prepare
