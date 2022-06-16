@@ -17,7 +17,7 @@ IUSE="static static-libs +sysv-utils"
 REQUIRED_USE="static? ( static-libs )"
 
 RDEPEND=">=dev-lang/execline-2.8.3.0:=[static-libs(-)?]
-	>=dev-libs/skalibs-2.11.2.0:=[static-libs?]
+	>=dev-libs/skalibs-2.11.2.0:=[static-libs(-)?]
 	>=sys-apps/s6-2.11.1.0:=[execline,static-libs(-)?]
 	sysv-utils? (
 		!sys-apps/systemd[sysv-utils]
