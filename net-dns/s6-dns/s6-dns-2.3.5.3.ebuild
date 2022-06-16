@@ -16,7 +16,7 @@ IUSE="static static-libs"
 
 REQUIRED_USE="static? ( static-libs )"
 
-RDEPEND=">=dev-libs/skalibs-2.11.1.0:=[static-libs?]"
+RDEPEND="=dev-libs/skalibs-2.11*:=[static-libs?]"
 DEPEND="${RDEPEND}"
 
 HTML_DOCS=( doc/. )
