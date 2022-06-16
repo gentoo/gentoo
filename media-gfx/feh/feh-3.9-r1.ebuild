@@ -54,7 +54,7 @@ src_compile() {
 }
 
 src_install() {
-	emake "${fehopts[@]}" DESTDIR="${ED}" install
+	emake "${fehopts[@]}" DESTDIR="${D}" install
 }
 
 pkg_postinst() {
