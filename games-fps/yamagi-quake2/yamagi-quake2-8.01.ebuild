@@ -23,7 +23,7 @@ S="${WORKDIR}/quake2-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="+client ctf dedicated openal +opengl rogue softrender vulkan xatrix"
 REQUIRED_USE="
 	|| ( client dedicated )
