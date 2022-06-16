@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Python @deprecated decorator to deprecate old API"
 HOMEPAGE="
 	https://github.com/tantale/deprecated/
-	https://pypi.org/project/deprecated/
+	https://pypi.org/project/Deprecated/
 "
 SRC_URI="
 	https://github.com/tantale/deprecated/archive/v${PV}.tar.gz
