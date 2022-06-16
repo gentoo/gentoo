@@ -149,3 +149,7 @@ pkg_postinst() {
 		elog "in /dev/apcups/by-id directory."
 	fi
 }
+
+pkg_postrm() {
+	use kernel_linux && udev_reload
+}
