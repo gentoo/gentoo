@@ -118,6 +118,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	use kernel_linux && udev_reload
+
 	tmpfiles_process ${PN}-tmpfiles.conf
 
 	if use cgi ; then
