@@ -103,6 +103,37 @@ multilib_src_configure() {
 	econf "${myconf[@]}"
 }
 
+multilib_src_test() {
+	# https://firefox-source-docs.mozilla.org/nspr/running_nspr_tests.html
+	cd "${BUILD_DIR}/pr/tests" || die
+	einfo "Building tests"
+	emake
+
+	einfo "Running test suite"
+	../../../${P}/${PN}/pr/tests/runtests.pl | tee "${T}"/${ABI}-tests.log
+
+	# Needed to check if runtests.pl itself or the tee (somehow) failed
+	# (can't use die with pipes to check each component)
+	[[ ${PIPESTATUS[@]} == "0 0" ]] || die "Tests failed to run!"
+
+	local known_failures=(
+		# network-sandbox related?
+		cltsrv
+		# network-sandbox related?
+		gethost
+	)
+
+	local known_failure
+	for known_failure in "${known_failures[@]}" ; do
+		sed -i -e "/${known_failure}.*FAILED/d" "${T}"/${ABI}-tests.log || die
+	done
+
+	# But to actually check the test results, we examine the log.
+	if grep -q "FAILED" "${T}"/${ABI}-tests.log ; then
+		die "Test failure for ${ABI}!"
+	fi
+}
+
 multilib_src_install() {
 	# Their build system is royally confusing, as usual
 	MINOR_VERSION=${MIN_PV} # Used for .so version
