@@ -186,7 +186,7 @@ multilib_src_compile() {
 	LDFLAGS="${BUILD_LDFLAGS}" \
 	XCFLAGS="${BUILD_CFLAGS}" \
 	NSPR_LIB_DIR="${T}/fakedir" \
-	emake -j1 -C coreconf \
+	emake -C coreconf \
 		CC="$(tc-getBUILD_CC)" \
 		${buildbits-${mybits}}
 	makeargs+=( NSINSTALL="${PWD}/$(find -type f -name nsinstall)" )
@@ -196,7 +196,7 @@ multilib_src_compile() {
 		CPPFLAGS="${myCPPFLAGS}" \
 		XCFLAGS="${CFLAGS} ${CPPFLAGS}" \
 		NSPR_LIB_DIR="${T}/fakedir" \
-		emake -j1 "${makeargs[@]}" -C ${d} OS_TEST="$(nssarch)"
+		emake "${makeargs[@]}" -C ${d} OS_TEST="$(nssarch)"
 	done
 }
 
