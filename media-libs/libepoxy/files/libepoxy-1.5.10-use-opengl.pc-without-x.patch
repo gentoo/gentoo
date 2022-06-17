@@ -1,0 +1,15 @@
+diff -Naur a/src/meson.build b/src/meson.build
+--- a/src/meson.build	2022-02-17 14:56:12.000000000 +0200
++++ b/src/meson.build	2022-06-17 15:17:20.388423154 +0300
+@@ -98,8 +98,10 @@
+ # not needed when building Epoxy; we do want to add them to the generated
+ # pkg-config file, for consumers of Epoxy
+ gl_reqs = []
+-if gl_dep.found() and gl_dep.type_name() == 'pkgconfig'
++if build_glx and gl_dep.found() and gl_dep.type_name() == 'pkgconfig'
+   gl_reqs += 'gl'
++else
++  gl_reqs += 'opengl'
+ endif
+ if build_egl and egl_dep.found() and egl_dep.type_name() == 'pkgconfig'
+   gl_reqs += 'egl'
