@@ -83,7 +83,6 @@ dev-perl/Mail-Sender
 dev-perl/Gtk2
 dev-perl/Gtk2-Notify
 dev-perl/Gtk2-SourceView2
-dev-perl/Gtk2-Unique
 dev-perl/gnome2-wnck
 
 # Mart Raudsepp <leio@gentoo.org> (2020-07-04)
