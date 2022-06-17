@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# William Hubbs <williamh@gentoo.org> (2022-06-17)
+# Dead upstream, please use dev-util/github-cli
+# Bug #845921
+# Removal: 2022-07-17
+dev-util/cligh
+
 # Ulrich Müller <ulm@gentoo.org> (2022-06-16)
 # Last release in 2002. The distfile cannot be redistributed
 # and is no longer available upstream. Use media-gfx/imagemagick
