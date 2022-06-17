@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~riscv x86"
 
 RDEPEND=">=sys-apps/util-linux-2.20"
 DEPEND="${RDEPEND}"
