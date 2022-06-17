@@ -256,6 +256,11 @@ src_install() {
 	rm "${D}/$(get_bashcompdir)"/pacmd || die
 	rm "${D}/$(get_bashcompdir)"/pasuspender || die
 
+	# Daemon configuration scripts will try to load snippets from corresponding '.d' dirs.
+	# Install these dirs to silence a warning if they are missing.
+	keepdir /etc/pulse/default.pa.d
+	keepdir /etc/pulse/system.pa.d
+
 	if use system-wide; then
 		newconfd "${FILESDIR}"/pulseaudio.conf.d pulseaudio
 
