@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit python-single-r1 unpacker
 
@@ -61,10 +61,12 @@ RDEPEND="${DEPEND}
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	!prefix? ( sys-libs/glibc )
+	!app-emulation/crossover-office-pro-bin
+	!app-emulation/crossover-office-bin
 	capi? ( net-libs/libcapi[abi_x86_32(-)] )
 	cups? ( net-print/cups[abi_x86_32(-)] )
 	gsm? ( media-sound/gsm[abi_x86_32(-)] )
-	jpeg? ( media-libs/libjpeg-turbo:0[abi_x86_32(-)] )
+	jpeg? ( virtual/jpeg:0[abi_x86_32(-)] )
 	lcms? ( media-libs/lcms:2 )
 	ldap? ( net-nds/openldap[abi_x86_32(-)] )
 	gphoto2? ( media-libs/libgphoto2[abi_x86_32(-)] )
@@ -84,7 +86,12 @@ RDEPEND="${DEPEND}
 	pcap? ( net-libs/libpcap[abi_x86_32(-)] )
 	png? ( media-libs/libpng:0[abi_x86_32(-)] )
 	scanner? ( media-gfx/sane-backends[abi_x86_32(-)] )
-	ssl? ( net-libs/gnutls:0/30[abi_x86_32(-)] )
+	ssl? (
+		|| (
+			net-libs/gnutls:0/30.30[abi_x86_32(-)]
+			net-libs/gnutls:0/30[abi_x86_32(-)]
+		)
+	)
 	v4l? ( media-libs/libv4l[abi_x86_32(-)] )
 	vulkan? ( media-libs/vulkan-loader[abi_x86_32(-)] )
 	dev-libs/glib:2
@@ -129,6 +136,12 @@ src_unpack() {
 src_prepare() {
 	default
 
+	sed -i \
+		-e "s:xdg_install_icons(:&\"${ED}\".:" \
+		-e "s:\"\(.*\)/applications:\"${ED}\1/applications:" \
+		-e "s:\"\(.*\)/desktop-directories:\"${ED}\1/desktop-directories:" \
+		"${S}/lib/perl/CXMenuXDG.pm"
+
 	# Remove unnecessary files, license.txt file kept as it's used by
 	# multiple files (apart of the menu to show the license)
 	rm -r guis/ || die "Could not remove files"
@@ -136,12 +149,6 @@ src_prepare() {
 }
 
 src_install() {
-	sed -i \
-		-e "s:xdg_install_icons(:&\"${ED}\".:" \
-		-e "s:\"\(.*\)/applications:\"${ED}\1/applications:" \
-		-e "s:\"\(.*\)/desktop-directories:\"${ED}\1/desktop-directories:" \
-		"${S}/lib/perl/CXMenuXDG.pm"
-
 	# Install crossover symlink, bug #476314
 	dosym ../cxoffice/bin/crossover /opt/bin/crossover
 
