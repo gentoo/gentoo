@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit estack
+inherit estack linux-info
 
 DESCRIPTION="Bootconfig tools for kernel command line to support key-value"
 HOMEPAGE="https://kernel.org/"
@@ -45,6 +45,10 @@ DEPEND="${RDEPEND}
 
 S_K="${WORKDIR}/linux-${LINUX_VER}"
 S="${S_K}/tools/bootconfig"
+
+CONFIG_CHECK="~BOOT_CONFIG"
+
+PATCHES=( "${FILESDIR}"/${P}-cflags.patch )
 
 src_unpack() {
 	local paths=(

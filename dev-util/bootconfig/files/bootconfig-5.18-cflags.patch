@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 566c3e0..21818c7 100644
+--- a/Makefile
++++ b/Makefile
+@@ -10,7 +10,7 @@ srctree := $(patsubst %/,%,$(dir $(srctree)))
+ endif
+ 
+ LIBSRC = $(srctree)/lib/bootconfig.c $(srctree)/include/linux/bootconfig.h
+-CFLAGS = -Wall -g -I$(CURDIR)/include
++CFLAGS += -Wall -I$(CURDIR)/include
+ 
+ ALL_TARGETS := bootconfig
+ ALL_PROGRAMS := $(patsubst %,$(OUTPUT)%,$(ALL_TARGETS))
