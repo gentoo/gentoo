@@ -75,8 +75,10 @@ IUSE="afs bashlogger examples mem-scramble +net nls plugins +readline"
 DEPEND="
 	>=sys-libs/ncurses-5.2-r2:0=
 	nls? ( virtual/libintl )
-	readline? ( >=sys-libs/readline-${READLINE_VER}:0= )
 "
+if is_release ; then
+	DEPEND+=" readline? ( >=sys-libs/readline-${READLINE_VER}:= )"
+fi
 RDEPEND="
 	${DEPEND}
 "
@@ -85,6 +87,9 @@ RDEPEND="
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-chetramey )"
 
 S="${WORKDIR}/${MY_P}"
+
+# EAPI 8 tries to append it but it doesn't exist here
+QA_CONFIGURE_OPTIONS+="--disable-static"
 
 PATCHES=(
 	#"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}/
