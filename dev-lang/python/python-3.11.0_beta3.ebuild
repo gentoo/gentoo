@@ -211,7 +211,7 @@ src_configure() {
 			"${myeconfargs[@]}"
 
 			# As minimal as possible for the mini CBUILD Python
-			# we build just for cross, to satisfy --with-build-python.
+			# we build just for cross to satisfy --with-build-python.
 			--without-lto
 			--without-readline
 			--disable-optimizations
