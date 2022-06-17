@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -63,27 +63,31 @@ src_configure() {
 }
 
 src_compile() {
+	# -j1 for bug #743292
+
 	if use minimal; then
-		emake dictfmt dictzip dictzip
+		emake -j1 dictfmt dictzip dictzip
 	else
-		emake
+		emake -j1
 	fi
 }
 
 src_test() {
 	use minimal && return 0 # All tests are for dictd which we don't build...
+
 	if [[ ${EUID} -eq 0 ]]; then
 		# If dictd is run as root user (-userpriv) it drops its privileges to
 		# dictd user and group. Give dictd group write access to test directory.
 		chown :dictd "${WORKDIR}" "${S}/test" || die
 		chmod 770 "${WORKDIR}" "${S}/test" || die
 	fi
-	emake test
+
+	emake -j1 test
 }
 
 src_install() {
 	if use minimal; then
-		emake DESTDIR="${ED}" install.dictzip install.dict install.dictfmt
+		emake -j1 DESTDIR="${ED}" install.dictzip install.dict install.dictfmt
 	else
 		default
 
