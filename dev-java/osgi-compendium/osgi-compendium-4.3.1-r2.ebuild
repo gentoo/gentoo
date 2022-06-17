@@ -11,7 +11,7 @@ DESCRIPTION="OSGi Service Platform Compendium API (Companion Code)"
 HOMEPAGE="http://wiki.osgi.org/wiki/Release_4.3"
 SRC_URI="https://osgi.org/download/r4v43/osgi.cmpn-${PV}.jar"
 
-LICENSE="Apache-2.0 OSGi-Specification-2.0"
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
