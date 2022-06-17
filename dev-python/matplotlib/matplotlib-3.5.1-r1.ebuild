@@ -39,7 +39,6 @@ RDEPEND="
 	>=dev-python/python-dateutil-2.7[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2019.3[${PYTHON_USEDEP}]
 	>=dev-python/six-1.14.0[${PYTHON_USEDEP}]
-	dev-python/versioneer[${PYTHON_USEDEP}]
 	media-fonts/dejavu
 	media-fonts/stix-fonts
 	media-libs/freetype:2
