@@ -187,7 +187,7 @@ S="${WORKDIR}/${P/git-/}"
 
 LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions Boost-1.0 LGPL-3+ MIT Unlicense ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="
