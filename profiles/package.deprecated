@@ -17,6 +17,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-06-17)
+# So far not a single dependency on dev-python/versioneer was correct.
+# This package is a generator for "versioneer.py" file that is included
+# in the sdist tarball.  Your package most likely only imports that file
+# and does not need dev-python/versioneer.  If it really does, please
+# ping me.
+dev-python/versioneer
+
 # Michał Górny <mgorny@gentoo.org> (2022-05-18)
 # pp2sp is no longer maintained.  Its build system support is limited
 # and buggy.  Packages need to migrate to using DISTUTILS_USE_PEP517
