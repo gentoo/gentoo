@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit readme.gentoo-r1 systemd
+inherit autotools readme.gentoo-r1 systemd
 
 DESCRIPTION="Dictionary Client/Server for the DICT protocol"
 HOMEPAGE="http://www.dict.org/ https://sourceforge.net/projects/dict/"
@@ -45,14 +45,13 @@ DOC_CONTENTS="
 PATCHES=(
 	"${FILESDIR}"/dictd-1.10.11-colorit-nopp-fix.patch
 	"${FILESDIR}"/dictd-1.12.0-build.patch
+	"${FILESDIR}"/dictd-1.13.0-libtool.patch # 818535
 )
 
 src_prepare() {
 	default
 
-	if [[ ${CHOST} == *-darwin* ]]; then
-		sed -i -e 's:libtool:glibtool:g' Makefile.in || die
-	fi
+	eautoreconf
 }
 
 src_configure() {

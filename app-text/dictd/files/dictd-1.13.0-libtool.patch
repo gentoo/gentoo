@@ -1,0 +1,69 @@
+From ab4c1542d8103ef2a8dcfd8cc1ad624890258090 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Fri, 17 Jun 2022 16:18:40 -0700
+Subject: [PATCH] configure: Add missing LT_INIT
+
+---
+ Makefile.in     | 1 +
+ configure.in    | 6 +++---
+ doc/Makefile.in | 1 +
+ 3 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index ea1cb3f..aff9db3 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -28,6 +28,7 @@ endif
+ 
+ .SUFFIXES:	
+ 
++top_builddir=	@top_builddir@
+ srcdir=		@srcdir@
+ VPATH=		@srcdir@:.
+ prefix=		@prefix@
+diff --git a/configure.in b/configure.in
+index 495df83..ec157f3 100644
+--- a/configure.in
++++ b/configure.in
+@@ -35,6 +35,8 @@ AC_INIT([dict],[VERSION],[dict-beta@dict.org])
+ AC_CONFIG_SRCDIR([dictd.c])
+ AC_CONFIG_HEADER(config.h)
+ 
++LT_INIT
++
+ echo Configuring for dict
+ echo .
+ 
+@@ -45,7 +47,7 @@ AC_CANONICAL_HOST
+ AC_PROG_CC
+ AC_PROG_CPP
+ AC_PROG_CXX
+-
++AC_PROG_LIBTOOL
+ AC_ISC_POSIX
+ 
+ REALCC="$CC"
+@@ -75,8 +77,6 @@ AC_PROG_MAKE_SET
+ AC_PROG_YACC
+ AC_PROG_LEX
+ 
+-AC_CHECK_PROG(LIBTOOL,libtool,libtool)
+-
+ AC_CHECK_PROGS(NROFF,gnroff nroff)
+ AC_CHECK_PROGS(TROFF,groff troff)
+ AC_CHECK_PROGS(COL,col cat)
+diff --git a/doc/Makefile.in b/doc/Makefile.in
+index 233cc9f..3ee0853 100644
+--- a/doc/Makefile.in
++++ b/doc/Makefile.in
+@@ -28,6 +28,7 @@ endif
+ 
+ .SUFFIXES:	
+ 
++top_builddir=	@top_builddir@
+ srcdir=		@srcdir@
+ VPATH=		@srcdir@
+ prefix=		@prefix@
+-- 
+2.35.1
+
