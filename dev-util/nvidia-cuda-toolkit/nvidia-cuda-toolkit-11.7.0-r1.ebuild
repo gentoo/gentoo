@@ -25,16 +25,15 @@ RESTRICT="bindist mirror"
 RDEPEND="
 	<sys-devel/gcc-12_pre[cxx]
 	>=x11-drivers/nvidia-drivers-450.80.02
-	debugger? (
-		dev-libs/openssl
-	)
 	nsight? (
 		dev-libs/libpfm
-		dev-libs/openssl
+		|| (
+			dev-libs/openssl-compat:1.1.1
+			=dev-libs/openssl-1.1.1*
+		)
 		sys-libs/zlib
 	)
 	vis-profiler? (
-		dev-libs/openssl
 		>=virtual/jre-1.8:*
 	)"
 
