@@ -407,3 +407,7 @@ pkg_postinst() {
 		ewarn "the main.dhcp configuration option to use one of them instead of internal."
 	fi
 }
+
+pkg_postrm() {
+	udev_reload
+}
