@@ -70,6 +70,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/nftables-1.0.4-revert-scanner-flags-move-to-own-scope.patch"
+	)
 	default
 
 	if [[ ${PV} =~ ^[9]{4,}$ ]] ; then
