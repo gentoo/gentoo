@@ -59,6 +59,10 @@ DOCS=()
 
 RESTRICT="!test? ( test )"
 
+# EAPI 8 tries to append it but it doesn't exist here
+# bug #831311 etc
+QA_CONFIGURE_OPTIONS="--disable-static"
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
