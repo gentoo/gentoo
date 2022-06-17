@@ -89,7 +89,7 @@ BDEPEND="verify-sig? ( sec-keys/openpgp-keys-chetramey )"
 S="${WORKDIR}/${MY_P}"
 
 # EAPI 8 tries to append it but it doesn't exist here
-QA_CONFIGURE_OPTIONS+="--disable-static"
+QA_CONFIGURE_OPTIONS="--disable-static"
 
 PATCHES=(
 	#"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}/
