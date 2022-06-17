@@ -65,7 +65,10 @@ python_test() {
 		return
 	fi
 
-	local EPYTEST_DESELECT=()
+	local EPYTEST_DESELECT=(
+		# unstable (relies on warning count)
+		test/with_dummyserver/test_proxy_poolmanager.py::TestHTTPProxyManager::test_proxy_verified_warning
+	)
 	has "${EPYTHON}" python3.{8..10} && EPYTEST_DESELECT+=(
 		test/contrib/test_pyopenssl.py::TestPyOpenSSLHelpers::test_get_subj_alt_name
 	)
