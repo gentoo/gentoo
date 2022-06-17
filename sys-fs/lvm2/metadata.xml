@@ -19,6 +19,7 @@
 		<flag name="thin">Support for thin volumes</flag>
 		<flag name="device-mapper-only">Build only device-mapper and not the rest of LVM2 (UNSUPPORTED)</flag>
 		<flag name="sanlock">Enable lvmlockd with support for sanlock</flag>
+		<flag name="vdo">Enable Virtual Data Optimizer support</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:heinz_mauelshagen:lvm2</remote-id>
