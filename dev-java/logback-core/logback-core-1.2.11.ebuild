@@ -18,7 +18,7 @@ SRC_URI="https://github.com/qos-ch/logback/archive/v_${PV}.tar.gz -> logback-${P
 
 LICENSE="EPL-1.0 LGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 # Common dependencies
 # POM: pom.xml
