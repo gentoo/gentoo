@@ -17,15 +17,17 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
 
-# As of 6.0.2, access to Ansible Galaxy (i.e. the Internet) is required even to get
-# the test suite started (Bug #836582). TODO: Talk to upstream about how to bypass this.
+# Since 6.2.0 ansible-lint once again does not need access to Ansible Galaxy
+# even to get the test suite started, however quite a large fraction of tests
+# fails without network access. Needs more work.
 PROPERTIES="test_network"
 RESTRICT="test"
 
 RDEPEND="
 	>=app-admin/ansible-base-2.12.0[${PYTHON_USEDEP}]
-	>=dev-python/ansible-compat-2.0.2[${PYTHON_USEDEP}]
+	>=dev-python/ansible-compat-2.1.0[${PYTHON_USEDEP}]
 	>=dev-python/enrich-1.2.6[${PYTHON_USEDEP}]
+	>=dev-python/jsonschema-4.6.0[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	>=dev-python/rich-9.5.1[${PYTHON_USEDEP}]
@@ -37,6 +39,7 @@ BDEPEND="
 	>=dev-python/setuptools_scm_git_archive-1.0[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/flaky-3.7.0[${PYTHON_USEDEP}]
+		>=dev-python/pytest-plus-0.2[${PYTHON_USEDEP}]
 		>=dev-python/pytest-xdist-2.5.0[${PYTHON_USEDEP}]
 	)"
 
@@ -44,7 +47,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.2_test-module-check.patch
 )
 
-# Skip problematic tests:
+# Skip problematic tests (TODO: update this list for ansible-lint-6.2.0+):
 #  - test_call_from_outside_venv doesn't play nicely with the sandbox
 #  - all test_eco and some test_prerun tests require Internet access
 #  - as of 5.4.0, test_cli_auto_detect fails even when run manually with tox
@@ -61,7 +64,7 @@ EPYTEST_DESELECT=(
 distutils_enable_tests pytest
 
 python_test() {
-	# As of 6.0.2, without this the test suite gets confused by the presence of ansible-lint modules
+	# As of 6.2.1, without this the test suite still gets confused by the presence of ansible-lint modules
 	# in both ${ED} and ${S}.
 	cd "${S}" || die
 
