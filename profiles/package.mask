@@ -157,13 +157,6 @@ dev-python/polygon
 # Removal on 2022-07-05.  Bug #845756.
 dev-python/mysql-connector-python
 
-# Joonas Niilola <juippis@gentoo.org> (2022-06-05)
-# Version which allows wayland-only build, still experimental. Weeding
-# out all bugs before unmasking. Please see bug #848858 and its
-# blockers.
-=www-client/firefox-101.0-r10
-=www-client/firefox-101.0.1-r10
-
 # Michał Górny <mgorny@gentoo.org> (2022-06-02)
 # The current Gentoo version requires setup.py to exist which breaks
 # the new versions of its revdeps.  The new upstream release is broken
