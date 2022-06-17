@@ -20,6 +20,7 @@ SLOT="0"
 IUSE="static-libs"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-2.0.14-latomic.patch
 	"${FILESDIR}"/${PN}-2.0.14-numademo-cflags.patch # bug #540856
 )
 
