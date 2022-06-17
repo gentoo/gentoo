@@ -54,11 +54,9 @@ python_test() {
 		return
 	fi
 
-	local EPYTEST_DESELECT=(
-		# TODO?
-		test/contrib/test_pyopenssl.py::TestHTTPS_TLSv1_3::test_verified
-		test/with_dummyserver/test_socketlevel.py::TestSocketClosing::test_timeout_errors_cause_retries
-		test/with_dummyserver/test_proxy_poolmanager.py::TestHTTPProxyManager::test_proxy_verified_warning
+	local EPYTEST_DESELECT=()
+	has "${EPYTHON}" python3.{8..10} && EPYTEST_DESELECT+=(
+		test/contrib/test_pyopenssl.py::TestPyOpenSSLHelpers::test_get_subj_alt_name
 	)
 
 	epytest
