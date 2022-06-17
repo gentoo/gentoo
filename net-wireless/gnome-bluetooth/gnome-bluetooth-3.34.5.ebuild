@@ -78,3 +78,7 @@ pkg_postinst() {
 		elog "if you want to be able to control bluetooth transmitter."
 	fi
 }
+
+pkg_postrm() {
+	udev_reload
+}
