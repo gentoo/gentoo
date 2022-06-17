@@ -24,7 +24,7 @@ else
 	SRC_URI="https://github.com/python-ldap/python-ldap/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/${PN}-${MY_COMMIT}
 
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv ~sparc x86 ~x86-solaris"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv sparc x86 ~x86-solaris"
 fi
 
 LICENSE="MIT PSF-2"
