@@ -167,6 +167,7 @@ PATCHES=(
 	"${FILESDIR}"/pulseaudio-16.0-optional-module-console-kit.patch
 	"${FILESDIR}"/pulseaudio-16.0-fix-combine-sink-underrun-crash.patch
 	"${FILESDIR}"/pulseaudio-16.0-fix-gstreamer-bluetooth-arm-crash.patch
+	"${FILESDIR}"/pulseaudio-16.0-fix-pacmd-play-file-crash.patch
 )
 
 src_prepare() {
