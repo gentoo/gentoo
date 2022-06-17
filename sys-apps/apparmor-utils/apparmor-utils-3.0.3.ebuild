@@ -73,7 +73,7 @@ src_install() {
 	install_python() {
 		local -x PYTHONDONTWRITEBYTECODE=
 		"${PYTHON}" "${S}"/utils/python-tools-setup.py install --prefix=/usr \
-			--root="${D}" --optimize 2
+			--root="${D}" --optimize 2 --version=${PV}
 	}
 
 	python_foreach_impl install_python
