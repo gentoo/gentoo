@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-10.0.0-unbundle-fltk.patch
 	"${FILESDIR}"/${PN}-10.0.0-musl.patch
 	"${FILESDIR}"/${PN}-10.0.0-master-std.patch
+	"${FILESDIR}"/${PN}-10.0.0-gcc12.patch
 )
 
 src_prepare() {
