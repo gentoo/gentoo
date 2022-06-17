@@ -9,9 +9,9 @@ inherit distutils-r1
 
 DESCRIPTION="A fast and thorough lazy object proxy"
 HOMEPAGE="
-	https://github.com/ionelmc/python-lazy-object-proxy
+	https://github.com/ionelmc/python-lazy-object-proxy/
 	https://pypi.org/project/lazy-object-proxy/
-	https://python-lazy-object-proxy.readthedocs.org/"
+	https://python-lazy-object-proxy.readthedocs.io/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
