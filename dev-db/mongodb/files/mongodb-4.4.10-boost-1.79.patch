@@ -1,5 +1,4 @@
-diff --git a/src/mongo/db/auth/security_key_test.cpp b/src/mongo/db/auth/security_key_test.cpp
-index fc1787b5..70b977c1 100644
+https://bugs.gentoo.org/844235
 --- a/src/mongo/db/auth/security_key_test.cpp
 +++ b/src/mongo/db/auth/security_key_test.cpp
 @@ -30,6 +30,7 @@
@@ -10,8 +9,6 @@ index fc1787b5..70b977c1 100644
  
  #include "mongo/base/string_data.h"
  #include "mongo/db/auth/authorization_manager.h"
-diff --git a/src/mongo/db/storage/storage_repair_observer.cpp b/src/mongo/db/storage/storage_repair_observer.cpp
-index 22b76a6a..ec5bcece 100644
 --- a/src/mongo/db/storage/storage_repair_observer.cpp
 +++ b/src/mongo/db/storage/storage_repair_observer.cpp
 @@ -41,6 +41,7 @@
@@ -22,8 +19,6 @@ index 22b76a6a..ec5bcece 100644
  #include <boost/filesystem/path.hpp>
  
  #include "mongo/db/dbhelpers.h"
-diff --git a/src/mongo/db/storage/wiredtiger/wiredtiger_kv_engine_test.cpp b/src/mongo/db/storage/wiredtiger/wiredtiger_kv_engine_test.cpp
-index 01bb7806..78c15609 100644
 --- a/src/mongo/db/storage/wiredtiger/wiredtiger_kv_engine_test.cpp
 +++ b/src/mongo/db/storage/wiredtiger/wiredtiger_kv_engine_test.cpp
 @@ -34,6 +34,7 @@
@@ -34,8 +29,6 @@ index 01bb7806..78c15609 100644
  #include <boost/filesystem/path.hpp>
  #include <memory>
  
-diff --git a/src/mongo/db/storage/wiredtiger/wiredtiger_util.cpp b/src/mongo/db/storage/wiredtiger/wiredtiger_util.cpp
-index 58e85385..0f8a5148 100644
 --- a/src/mongo/db/storage/wiredtiger/wiredtiger_util.cpp
 +++ b/src/mongo/db/storage/wiredtiger/wiredtiger_util.cpp
 @@ -36,6 +36,7 @@
@@ -46,8 +39,6 @@ index 58e85385..0f8a5148 100644
  #include <boost/filesystem/path.hpp>
  
  #include "mongo/base/simple_string_data_comparator.h"
-diff --git a/src/mongo/shell/shell_utils_extended.cpp b/src/mongo/shell/shell_utils_extended.cpp
-index 8cd7f035..cd672eb5 100644
 --- a/src/mongo/shell/shell_utils_extended.cpp
 +++ b/src/mongo/shell/shell_utils_extended.cpp
 @@ -37,6 +37,7 @@
@@ -58,8 +49,6 @@ index 8cd7f035..cd672eb5 100644
  #include <fstream>
  
  #include "mongo/bson/bson_validate.h"
-diff --git a/src/mongo/util/processinfo_linux.cpp b/src/mongo/util/processinfo_linux.cpp
-index de4b84bc..b01fa7a2 100644
 --- a/src/mongo/util/processinfo_linux.cpp
 +++ b/src/mongo/util/processinfo_linux.cpp
 @@ -36,6 +36,7 @@
@@ -70,8 +59,6 @@ index de4b84bc..b01fa7a2 100644
  #include <sched.h>
  #include <stdio.h>
  #include <sys/mman.h>
-diff --git a/src/mongo/util/stacktrace_threads.cpp b/src/mongo/util/stacktrace_threads.cpp
-index 4667a261..73a36015 100644
 --- a/src/mongo/util/stacktrace_threads.cpp
 +++ b/src/mongo/util/stacktrace_threads.cpp
 @@ -36,6 +36,7 @@
