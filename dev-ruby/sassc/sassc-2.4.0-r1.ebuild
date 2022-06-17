@@ -34,7 +34,7 @@ all_ruby_prepare() {
 	# Use unbundled libsass
 	rm -rf ext || die
 
-	sed -i -e "/ffi_lib/ s:__dir__:${ESYSROOT}/usr/$(get_libdir):" \
+	sed -i -e "/ffi_lib/ s:__dir__:\"${ESYSROOT}/usr/$(get_libdir)\":" \
 		lib/sassc/native.rb || die
 
 	# Avoid version-specific test so newer libsass versions can be used.
