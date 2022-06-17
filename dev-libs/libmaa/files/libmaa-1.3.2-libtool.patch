@@ -1,0 +1,68 @@
+From 16a315083a52510b331562faff8b4d9503036ed4 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Fri, 17 Jun 2022 15:59:49 -0700
+Subject: [PATCH] configure: Add missing LT_INIT
+
+---
+ Makefile.in     | 1 +
+ configure.in    | 6 +++---
+ doc/Makefile.in | 1 +
+ 3 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index a7c9513..78f1fe7 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -27,6 +27,7 @@ VERSION=$(MAA_MAJOR).$(MAA_MINOR).$(MAA_TEENY)
+ .SUFFIXES:
+ .SUFFIXES: .c .o
+ 
++top_builddir=	@top_builddir@
+ srcdir=		@srcdir@
+ VPATH=		@srcdir@
+ prefix=		@prefix@
+diff --git a/configure.in b/configure.in
+index 7ae00c1..3f474ef 100644
+--- a/configure.in
++++ b/configure.in
+@@ -28,6 +28,8 @@ AC_INIT
+ AC_CONFIG_SRCDIR([maa.h])
+ AC_CONFIG_HEADER(config.h)
+ 
++LT_INIT
++
+ MAA_MAJOR=1
+ MAA_MINOR=3
+ MAA_TEENY=2
+@@ -38,7 +40,7 @@ echo .
+ AC_CANONICAL_HOST
+ AC_PROG_AWK
+ AC_PROG_CC
+-#AC_PROG_LIBTOOL
++AC_PROG_LIBTOOL
+ AC_ISC_POSIX
+ 
+ if test "$CC" = gcc; then
+@@ -57,8 +59,6 @@ AC_CHECK_PROGS(DVIPS,dvips)
+ AC_CHECK_PROGS(REFBIBTEX,refbibtex)
+ AC_CHECK_PROGS(BIBTEX,bibtex)
+ 
+-AC_CHECK_PROG(LIBTOOL,libtool,libtool)
+-
+ echo .
+ echo Checking for header file support
+ 
+diff --git a/doc/Makefile.in b/doc/Makefile.in
+index 4be867d..d534075 100644
+--- a/doc/Makefile.in
++++ b/doc/Makefile.in
+@@ -22,6 +22,7 @@
+ 
+ .SUFFIXES:
+ 
++top_builddir=	@top_builddir@
+ srcdir=		@srcdir@
+ VPATH=		@srcdir@
+ prefix=		@prefix@
+-- 
+2.35.1
