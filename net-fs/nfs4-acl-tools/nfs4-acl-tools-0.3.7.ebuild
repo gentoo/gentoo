@@ -17,7 +17,10 @@ IUSE=""
 DEPEND="sys-apps/attr"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.3.5-jobserver-unavailable.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-libtool.patch # 731162
+	"${FILESDIR}"/${PN}-0.3.5-jobserver-unavailable.patch
+)
 
 src_prepare() {
 	default
