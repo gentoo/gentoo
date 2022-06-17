@@ -20,7 +20,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="Apache-2.0 BSD MIT BSD-2 FSFAP unicode"
 SLOT="0"
 if [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 IUSE="apache2 berkdb debug doc extras gnome-keyring java kwallet nls perl plaintext-password-storage ruby sasl test"
 RESTRICT="!test? ( test )"
