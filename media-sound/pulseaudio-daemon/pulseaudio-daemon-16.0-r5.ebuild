@@ -165,6 +165,7 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}"/pulseaudio-16.0-fix-rtp-receiver-sdp-record.patch
 	"${FILESDIR}"/pulseaudio-16.0-optional-module-console-kit.patch
+	"${FILESDIR}"/pulseaudio-16.0-fix-combine-sink-underrun-crash.patch
 )
 
 src_prepare() {
