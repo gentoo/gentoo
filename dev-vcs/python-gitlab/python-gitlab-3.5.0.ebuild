@@ -18,16 +18,17 @@ fi
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="test"
 
 BDEPEND="test? (
 		dev-python/httmock[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}] )"
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/responses[${PYTHON_USEDEP}]
+	)"
 
 RDEPEND=">=dev-python/requests-2.25.1[${PYTHON_USEDEP}]
 	>=dev-python/requests-toolbelt-0.9.1[${PYTHON_USEDEP}]"
 
-distutils_enable_tests unittest
+distutils_enable_tests pytest
 
 python_install_all() {
 	distutils-r1_python_install_all
