@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 JAVA_PKG_IUSE="source"
 
@@ -25,7 +25,7 @@ COMMON_DEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
-	>=virtual/jdk-1.8
+	|| ( virtual/jdk:11 virtual/jdk:8 )
 "
 RDEPEND="
 	${COMMON_DEPEND}
