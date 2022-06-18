@@ -76,6 +76,8 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="x11-misc/shared-mime-info"
 
+PATCHES=( "${FILESDIR}/${P}-fix-includes.patch" )
+
 pkg_setup() {
 	use lua && lua-single_pkg_setup
 	use python && python-single-r1_pkg_setup
