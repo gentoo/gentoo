@@ -16,7 +16,7 @@ SRC_URI="https://github.com/whitequark/ast/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~sparc"
 IUSE=""
 
 ruby_add_bdepend "test? (
