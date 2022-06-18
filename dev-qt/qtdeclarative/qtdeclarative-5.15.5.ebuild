@@ -5,7 +5,7 @@ EAPI=8
 
 QT5_KDEPATCHSET_REV=1
 PYTHON_COMPAT=( python3_{8..10} )
-inherit python-any-r1 qt5-build
+inherit flag-o-matic python-any-r1 qt5-build
 
 DESCRIPTION="The QML and Quick modules for the Qt5 framework"
 
@@ -48,6 +48,8 @@ src_prepare() {
 }
 
 src_configure() {
+	replace-flags "-Os" "-O2" # bug 840861
+
 	local myqmakeargs=(
 		--
 		-qml-debug
