@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]]; then
 
 	inherit git-r3
 else
-	KEYWORDS="amd64 arm arm64 ~hppa x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
 
 	SRC_URI="
 		https://www.rsyslog.com/files/download/${PN}/${P}.tar.gz
@@ -42,7 +42,6 @@ REQUIRED_USE="
 
 BDEPEND=">=sys-devel/autoconf-archive-2015.02.24
 	virtual/pkgconfig
-	elibc_musl? ( sys-libs/queue-standalone )
 	test? (
 		jemalloc? ( <sys-libs/libfaketime-0.9.7 )
 		!jemalloc? ( sys-libs/libfaketime )
@@ -78,7 +77,10 @@ RDEPEND="
 	omudpspoof? ( >=net-libs/libnet-1.1.6 )
 	postgres? ( >=dev-db/postgresql-8.4.20:= )
 	rabbitmq? ( >=net-libs/rabbitmq-c-0.3.0:= )
-	redis? ( >=dev-libs/hiredis-0.11.0:= )
+	redis? (
+		>=dev-libs/hiredis-0.11.0:=
+		dev-libs/libevent[threads]
+	)
 	relp? ( >=dev-libs/librelp-1.2.17:= )
 	rfc3195? ( >=dev-libs/liblogging-1.0.1:=[rfc3195] )
 	rfc5424hmac? (
@@ -98,7 +100,10 @@ RDEPEND="
 		>=net-libs/czmq-4:=[drafts]
 	)"
 
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	elibc_musl? ( sys-libs/queue-standalone )
+"
 
 if [[ ${PV} == "9999" ]]; then
 	BDEPEND+=" doc? ( >=dev-python/sphinx-1.1.3-r7 )"

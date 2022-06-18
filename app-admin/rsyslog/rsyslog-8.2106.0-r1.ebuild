@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit autotools linux-info python-any-r1 systemd
 
@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]]; then
 
 	inherit git-r3
 else
-	KEYWORDS="amd64 arm arm64 ~hppa x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
 
 	SRC_URI="
 		https://www.rsyslog.com/files/download/${PN}/${P}.tar.gz
@@ -74,7 +74,10 @@ RDEPEND="
 	omudpspoof? ( >=net-libs/libnet-1.1.6 )
 	postgres? ( >=dev-db/postgresql-8.4.20:= )
 	rabbitmq? ( >=net-libs/rabbitmq-c-0.3.0:= )
-	redis? ( >=dev-libs/hiredis-0.11.0:= )
+	redis? (
+		>=dev-libs/hiredis-0.11.0:=
+		dev-libs/libevent[threads]
+	)
 	relp? ( >=dev-libs/librelp-1.2.17:= )
 	rfc3195? ( >=dev-libs/liblogging-1.0.1:=[rfc3195] )
 	rfc5424hmac? (
@@ -94,6 +97,7 @@ RDEPEND="
 		>=net-libs/czmq-4:=[drafts]
 	)"
 DEPEND="${RDEPEND}
+	elibc_musl? ( sys-libs/queue-standalone )
 	test? (
 		>=dev-libs/liblogging-1.0.1[stdlog]
 	)"
@@ -207,6 +211,7 @@ src_configure() {
 		--enable-omuxsock
 		# Misc
 		--enable-fmhash
+		--enable-fmunflatten
 		$(use_enable xxhash fmhash-xxhash)
 		--enable-pmaixforwardedfrom
 		--enable-pmciscoios
@@ -222,6 +227,7 @@ src_configure() {
 		$(use_enable mongodb ommongodb)
 		$(use_enable mysql)
 		$(use_enable postgres pgsql)
+		$(use_enable redis imhiredis)
 		$(use_enable redis omhiredis)
 		# Debug
 		$(use_enable debug)
