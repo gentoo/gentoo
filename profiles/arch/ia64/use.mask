@@ -12,10 +12,6 @@ tpm
 # media-video/pipewire is not keyworded. Bug #807616.
 pipewire
 
-# Matt Turner <mattst88@gentoo.org> (2021-07-25)
-# gnome-shell requires rustified librsvg.
-gnome-shell
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
 # sys-libs/llvm-libunwind not supported on IA64.
 llvm-libunwind

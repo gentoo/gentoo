@@ -3,7 +3,3 @@
 
 # Unmask ABI flags for this arch.
 -abi_s390_64
-
-# Sam James <sam@gentoo.org> (2022-05-02)
-# Rust is available for s390x (but not s390)
--rust

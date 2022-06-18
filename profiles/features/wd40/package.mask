@@ -1,0 +1,36 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Various packages requiring Rust.
+app-eselect/eselect-rust
+app-text/mdbook
+dev-lang/rust
+dev-lang/rust-bin
+>=dev-lang/spidermonkey-78
+>=dev-libs/gjs-1.66
+>=dev-python/cryptography-36
+>=dev-python/pyopenssl-22
+dev-python/setuptools-rust
+dev-python/watchfiles
+dev-util/cargo-c
+dev-util/cbindgen
+dev-util/git-delta
+dev-util/maturin
+gnome-base/gdm
+>=gnome-base/gnome-core-apps-3.36.5
+>=gnome-base/gnome-core-libs-3.36.5
+>=gnome-base/gnome-light-3.36.5
+>=gnome-base/gnome-shell-3.38
+>=gnome-base/librsvg-2.41
+gnome-extra/chrome-gnome-shell
+gnome-extra/gnome-tweaks
+media-libs/libavif
+media-video/rav1e
+>=net-irc/polari-3.37
+net-libs/quiche
+net-news/newsboat
+net-p2p/deluge
+sci-geosciences/gnome-maps
+>=sys-apps/bat-0.18.1
+virtual/rust
+>=x11-themes/adwaita-icon-theme-3.36

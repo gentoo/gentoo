@@ -4,8 +4,3 @@
 # WANG Xuerui <xen0n@gentoo.org> (2022-05-13)
 # Fails to build due to bug 843212
 >=dev-libs/boost-1.79.0
-
-# WANG Xuerui <xen0n@gentoo.org> (2022-05-04)
-# We have no Rust at the moment
->=dev-python/cryptography-37
->=gnome-base/librsvg-2.41

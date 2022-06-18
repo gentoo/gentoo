@@ -145,10 +145,6 @@ dev-util/cppcheck z3
 # media-sound/lash not keyworded, bug #736725
 media-sound/fluidsynth lash
 
-# Cédric Krier <cedk@gentoo.org> (2020-11-10)
-# virtual/rust has no hppa keyword
-dev-vcs/mercurial rust
-
 # Joonas Niilola <juippis@gentoo.org> (2020-10-08)
 # Dependency not keyworded on this arch.
 dev-libs/efl avif heif lua_single_target_luajit physics

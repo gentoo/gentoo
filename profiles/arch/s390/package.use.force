@@ -1,10 +1,6 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2022-04-26)
-# Spidermonkey needs Rust and LLVM, not available for s390
-sys-auth/polkit duktape
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-04-20)
 # s390-tools (in @system) needs this for building some bootloader code
 sys-devel/binutils multitarget

@@ -74,10 +74,6 @@ dev-lang/php -jit
 # No SELinux on ARM
 net-im/prosody selinux
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-01-23)
-# Depends on media-video/rav1e which needs Rust
->=media-libs/libheif-1.10.0 rav1e
-
 # Sam James <sam@gentoo.org> (2020-01-17)
 # gnuefi + systemd-boot works on arm
 # bug #729720
@@ -106,14 +102,6 @@ net-wireless/gnuradio ctrlport
 # app-i18n/fcitx:4 not keyworded.
 media-libs/libsdl2 fcitx4
 
-# Joonas Niilola <juippis@gentoo.org> (2020-10-02)
-# Sam James <sam@gentoo.org> (2021-03-11)
-# Dependency only keyworded on specific arm profiles.
-dev-libs/efl avif
-kde-frameworks/kimageformats avif
-media-libs/gd avif
-net-libs/webkit-gtk avif
-
 # Adam Feldman <NP-Hardass@gentoo.org> (2020-09-05)
 # dev-util/dogtail is not keyworded for arm
 app-text/atril test
@@ -125,11 +113,6 @@ games-strategy/0ad nvtt
 # James Le Cuirot <chewi@gentoo.org> (2020-08-19)
 # Cinnamon is not keyworded on this architecture.
 x11-themes/arc-theme cinnamon
-
-# Mart Raudsepp <leio@gentoo.org> (2020-08-02)
-# armv5 and older has no virtual/rust support yet, needed by newer
-# gnome-base/librsvg, et al
->=media-gfx/eog-3.33.1 svg
 
 # Sam James <sam@gentoo.org> (2020-07-11)
 # Don't drag in qtwebengine for Plasma right now
@@ -194,7 +177,6 @@ sys-apps/fwupd dell thunderbolt
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-10-12)
 # Requires www-client/firefox which isn't available on ARM yet
-# due to dev-lang/rust requirement
 dev-ruby/capybara test
 
 # Christian Ruppert <idl0r@gentoo.org> (2018-08-25)
