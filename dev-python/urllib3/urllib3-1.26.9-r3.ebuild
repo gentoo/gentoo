@@ -29,6 +29,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-python/PySocks-1.5.8[${PYTHON_USEDEP}]
 	<dev-python/PySocks-2.0[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 	brotli? ( dev-python/brotlicffi[${PYTHON_USEDEP}] )
 "
 BDEPEND="
