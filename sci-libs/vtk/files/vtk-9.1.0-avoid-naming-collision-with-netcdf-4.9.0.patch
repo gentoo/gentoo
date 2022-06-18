@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/851594
+
+From b155e9716a1cf4a03948c01f49c4097e466da4f0 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Mon, 20 Jun 2022 07:07:19 +0200
+Subject: [PATCH] avoid naming collision with netcdf-4.9.0
+
+The identifier has already been #defined with netcdf-4.9.0. To avoid
+conflicts guard the declaration.
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/ThirdParty/exodusII/vtkexodusII/src/ex_utils.c
++++ b/ThirdParty/exodusII/vtkexodusII/src/ex_utils.c
+@@ -1770,7 +1770,9 @@ void ex__compress_variable(int exoid, int varid, int type)
+         */
+ 
+         /* const int NC_SZIP_EC = 4; */ /* Selects entropy coding method for szip. */
++#ifndef NC_SZIP_NN
+         const int NC_SZIP_NN = 32;      /* Selects nearest neighbor coding method for szip. */
++#endif
+         /* Even and between 4 and 32; typical values are 8, 10, 16, 32 */
+         const int SZIP_PIXELS_PER_BLOCK =
+             file->compression_level == 0 ? 32 : file->compression_level;
+-- 
+2.35.1
+

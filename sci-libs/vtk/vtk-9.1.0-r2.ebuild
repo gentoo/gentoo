@@ -144,6 +144,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-8.2.0-freetype-2.10.3-provide-FT_CALLBACK_DEF.patch
 	"${FILESDIR}"/${PN}-9.0.3-IO-FFMPEG-support-FFmpeg-5.0-API-changes.patch
 	"${FILESDIR}"/${P}-adjust-to-find-binaries.patch
+	"${FILESDIR}"/${P}-avoid-naming-collision-with-netcdf-4.9.0.patch
 )
 
 DOCS=( CONTRIBUTING.md README.md )
