@@ -1,14 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ARCH="s390"
 ACCEPT_KEYWORDS="s390 ~s390"
 
-MULTILIB_ABIS="s390"
-DEFAULT_ABI="s390"
-ABI="${DEFAULT_ABI}"
-
-CHOST="s390-ibm-linux-gnu"
 CFLAGS="-O2 -pipe"
 CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"
@@ -19,14 +14,6 @@ LIBDIR_s390="lib"
 
 INPUT_DEVICES="void"
 VIDEO_CARDS="dummy"
-
-# Michał Górny <mgorny@gentoo.org> (2014-07-01)
-# Make the native ABI implicit so that MULTILIB_USEDEP can be satisfied
-# by non-multilib ebuilds when non-native ABIs are disabled.
-IUSE_IMPLICIT="abi_s390_32"
-
-# Enable abi_s390_32 for packages that don't have it forced.
-ABI_S390="32"
 
 # While multilib is available, we don't default it to on.
 BOOTSTRAP_USE="${BOOTSTRAP_USE} -multilib"
