@@ -1,6 +1,5 @@
 https://bugs.gentoo.org/818535
 
-From ab4c1542d8103ef2a8dcfd8cc1ad624890258090 Mon Sep 17 00:00:00 2001
 From: orbea <orbea@riseup.net>
 Date: Fri, 17 Jun 2022 16:18:40 -0700
 Subject: [PATCH] configure: Add missing LT_INIT
@@ -26,16 +25,12 @@ Subject: [PATCH] configure: Add missing LT_INIT
  echo Configuring for dict
  echo .
  
-@@ -45,7 +47,7 @@ AC_CANONICAL_HOST
- AC_PROG_CC
- AC_PROG_CPP
- AC_PROG_CXX
--
-+AC_PROG_LIBTOOL
- AC_ISC_POSIX
+@@ -70,13 +72,10 @@ echo Checking for programs
  
- REALCC="$CC"
-@@ -75,8 +77,6 @@ AC_PROG_MAKE_SET
+ AC_PROG_AWK
+ AC_PROG_INSTALL
+-AC_PROG_RANLIB
+ AC_PROG_MAKE_SET
  AC_PROG_YACC
  AC_PROG_LEX
  
@@ -44,6 +39,14 @@ Subject: [PATCH] configure: Add missing LT_INIT
  AC_CHECK_PROGS(NROFF,gnroff nroff)
  AC_CHECK_PROGS(TROFF,groff troff)
  AC_CHECK_PROGS(COL,col cat)
+@@ -188,7 +187,6 @@ AC_SUBST(DICT_VERSION)
+ AC_SUBST(USE_PLUGIN)
+ AC_SUBST(EXEEXT)
+ AC_SUBST(allsubdirs)
+-AC_SUBST(LIBTOOL)
+ 
+ AC_SUBST(PLUGINS)
+ 
 --- a/doc/Makefile.in
 +++ b/doc/Makefile.in
 @@ -28,6 +28,7 @@ endif

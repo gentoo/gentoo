@@ -45,7 +45,9 @@ DOC_CONTENTS="
 PATCHES=(
 	"${FILESDIR}"/dictd-1.10.11-colorit-nopp-fix.patch
 	"${FILESDIR}"/dictd-1.12.0-build.patch
+	"${FILESDIR}"/dictd-1.13.0-lex.patch
 	"${FILESDIR}"/dictd-1.13.0-libtool.patch # 818535
+	"${FILESDIR}"/dictd-1.13.0-version.patch # 852884
 )
 
 src_prepare() {
