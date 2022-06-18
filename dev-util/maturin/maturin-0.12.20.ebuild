@@ -348,7 +348,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/tomli[${PYTHON_USEDEP}]
-	' 3.{8..10})"
+	' 3.{8..10} pypy3)"
 BDEPEND="
 	dev-python/setuptools-rust[${PYTHON_USEDEP}]
 	doc? ( app-text/mdbook )
