@@ -11,6 +11,7 @@ dev-lang/rust-bin
 >=dev-python/pyopenssl-22
 dev-python/setuptools-rust
 dev-python/watchfiles
+dev-util/maturin
 virtual/rust
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-03-20)

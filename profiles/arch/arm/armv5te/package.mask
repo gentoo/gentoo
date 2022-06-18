@@ -30,3 +30,4 @@ gnome-extra/gnome-tweaks
 >=dev-python/pyopenssl-22
 dev-python/setuptools-rust
 dev-python/watchfiles
+dev-util/maturin
