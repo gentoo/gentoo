@@ -55,9 +55,6 @@ luajittex
 # media-libs/libglvnd is not keyworded
 libglvnd
 
-# Unmask ABI flags for this arch.
--abi_s390_32
-
 # James Le Cuirot <chewi@gentoo.org> (2017-06-29)
 # Unmask as this profile is big endian.
 -big-endian
@@ -152,7 +149,3 @@ video_cards_radeonsi
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-08-22)
 # virtual/opencl is not keyworded
 opencl
-
-# sys-libs/libunwind is masked on s390, but enabled on s390x
-unwind
-libunwind

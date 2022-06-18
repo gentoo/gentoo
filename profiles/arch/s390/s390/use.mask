@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask ABI flags for this arch.
--abi_s390_64
+-abi_s390_32
 
-# Sam James <sam@gentoo.org> (2022-05-02)
-# Rust is available for s390x (but not s390)
--rust
+# sys-libs/libunwind is masked on s390, but enabled on s390x
+unwind
+libunwind
