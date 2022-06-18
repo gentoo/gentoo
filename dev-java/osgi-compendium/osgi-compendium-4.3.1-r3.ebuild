@@ -9,12 +9,11 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="OSGi Service Platform Compendium API (Companion Code)"
 HOMEPAGE="https://docs.osgi.org"
-#	SRC_URI="https://osgi.org/download/r4v43/osgi.cmpn-${PV}.jar"
 SRC_URI="https://docs.osgi.org/download/r4v43/osgi.cmpn-${PV}.jar"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 CP_DEPEND="
 	dev-java/glassfish-persistence:0
