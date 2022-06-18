@@ -66,6 +66,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.0.2-skip-no-exceptions.patch"
 	"${FILESDIR}/${PN}-5.0.2-skip-reqs-check.patch"
 	"${FILESDIR}/${PN}-5.0.2-boost-1.79.patch"
+	"${FILESDIR}/${PN}-5.0.5-no-force-lld.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
