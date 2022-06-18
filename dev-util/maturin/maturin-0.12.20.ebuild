@@ -303,7 +303,8 @@ CRATES="
 	zbus_macros-1.9.1
 	zip-0.6.2
 	zvariant-2.10.0
-	zvariant_derive-2.10.0"
+	zvariant_derive-2.10.0
+"
 CRATES_TEST="
 	libc-0.2.119
 	libc-0.2.125
@@ -325,9 +326,12 @@ CRATES_TEST="
 	target-lexicon-0.12.3
 	unicode-ident-1.0.0
 	unicode-xid-0.2.3
-	unindent-0.1.9"
+	unindent-0.1.9
+"
+
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( pypy3 python3_{8..11} )
+
 inherit cargo distutils-r1 flag-o-matic
 
 DESCRIPTION="Build and publish crates with pyo3, rust-cpython and cffi bindings"
@@ -335,11 +339,13 @@ HOMEPAGE="https://maturin.rs/"
 SRC_URI="
 	https://github.com/PyO3/maturin/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris)
-	test? ( $(cargo_crate_uris ${CRATES_TEST}) )"
+	test? ( $(cargo_crate_uris ${CRATES_TEST}) )
+"
 
 LICENSE="
 	0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD CC0-1.0 ISC MIT MPL-2.0 openssl
-	doc? ( CC-BY-4.0 OFL-1.1 )"
+	doc? ( CC-BY-4.0 OFL-1.1 )
+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc test"
@@ -348,15 +354,19 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/tomli[${PYTHON_USEDEP}]
-	' 3.{8..10})"
+	' 3.{8..10})
+"
 BDEPEND="
 	dev-python/setuptools-rust[${PYTHON_USEDEP}]
 	doc? ( app-text/mdbook )
 	test? (
-		dev-python/cffi[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/cffi[${PYTHON_USEDEP}]
+		' 'python*')
 		dev-python/boltons[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
-	)"
+	)
+"
 
 QA_FLAGS_IGNORED=".*/${PN}"
 
@@ -389,14 +399,28 @@ python_compile_all() {
 	use !doc || mdbook build -d html guide || die
 }
 
+src_test() {
+	mv test-crates{,.orig} || die
+	distutils-r1_src_test
+}
+
 python_test() {
 	local -x PIP_CONFIG_FILE=${T}/pip.conf
 	local -x VIRTUALENV_SYSTEM_SITE_PACKAGES=1
 
-	# pyo3_no_extension_module is xfail but passes with >=rust-1.60, still
-	# need looking into but is not known to cause issues, disable for now.
-	cargo_src_test -- --skip locked_doesnt_build_without_cargo_lock \
+	local skips=(
+		# pyo3_no_extension_module is xfail but passes with >=rust-1.60, still
+		# need looking into but is not known to cause issues, disable for now.
+		--skip locked_doesnt_build_without_cargo_lock
 		--skip pyo3_no_extension_module
+	)
+	[[ ${EPYTHON} == pypy3 ]] && skips+=(
+		--skip integration_pyo3_bin
+	)
+
+	cp -r test-crates{.orig,} || die
+	cargo_src_test -- "${skips[@]}"
+	rm -r test-crates || die
 }
 
 python_install_all() {
