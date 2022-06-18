@@ -19,6 +19,9 @@
 		<flag name="plugins">
 		Add support for loading builtins at runtime via 'enable'
 		</flag>
+		<flag name="pgo">
+		Optimize the build using Profile Guided Optimization (PGO)
+		</flag>
 	</use>
 	<upstream>
 		<bugs-to>mailto:bug-bash@gnu.org</bugs-to>
