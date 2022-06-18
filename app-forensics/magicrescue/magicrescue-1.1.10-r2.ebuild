@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jbj/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 
 # - File collision with net-mail/safecat, bug #702004
 # - BDEPEND on perl for pod2man, bug #852671
