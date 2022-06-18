@@ -141,7 +141,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	# bug #350330 - automagic CVS when we don't want it is bad.
-	"${FILESDIR}"/git-2.37.0_rc0-optional-cvs.patch
+	"${FILESDIR}"/git-2.37.0_rc1-optional-cvs.patch
 
 	# Make submodule output quiet
 	"${FILESDIR}"/git-2.21.0-quiet-submodules-testcase.patch

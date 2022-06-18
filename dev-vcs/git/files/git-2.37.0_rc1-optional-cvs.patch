@@ -1,4 +1,4 @@
-From 199996fa5119b39f85489058e9e1c3335aa5342c Mon Sep 17 00:00:00 2001
+From 35038d89fbd952e72023152478aa3cb070a907d8 Mon Sep 17 00:00:00 2001
 From: Robin Johnson <robbat2@gentoo.org>
 Date: Tue, 14 May 2019 08:53:06 +0200
 Subject: [PATCH] Makefile: Add NO_CVS define to disable all CVS interface
@@ -19,6 +19,7 @@ Forward-ported from v2.18.0-rc1 to v2.22.0-rc0
 Forward-ported from v2.22.0-rc0 to v2.31.0-rc0
 Forward-ported from v2.31.0-rc0 to v2.33.0-rc0
 Forward-ported from v2.33.0-rc0 to v2.37.0-rc0
+Forward-ported from v2.37.0-rc0 to v2.37.0-rc1
 
 Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
 ---
@@ -442,17 +443,17 @@ index 19f38f78f2..bd5727e8bf 100755
  
  test_expect_failure PERL 'import with criss cross times on revisions' '
 diff --git a/t/test-lib.sh b/t/test-lib.sh
-index 736c6447ec..b9871d7d35 100644
+index 55857af601..791aa324a9 100644
 --- a/t/test-lib.sh
 +++ b/t/test-lib.sh
-@@ -1572,6 +1572,7 @@ esac
- test_set_prereq REFFILES
+@@ -1573,6 +1573,7 @@ test_set_prereq REFFILES
  
  ( COLUMNS=1 && test $COLUMNS = 1 ) && test_set_prereq COLUMNS_CAN_BE_1
+ test -z "$NO_CURL" && test_set_prereq LIBCURL
 +test -z "$NO_CVS" && test_set_prereq CVS
  test -z "$NO_PERL" && test_set_prereq PERL
  test -z "$NO_PTHREADS" && test_set_prereq PTHREADS
  test -z "$NO_PYTHON" && test_set_prereq PYTHON
 -- 
-2.36.1
+2.37.0.rc0
 
