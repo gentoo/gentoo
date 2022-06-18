@@ -5,6 +5,7 @@
 # Rust is available for s390x, but not s390.
 # bug #769446
 -app-eselect/eselect-rust
+-app-text/mdbook
 -dev-lang/rust
 -dev-lang/rust-bin
 ->=dev-python/cryptography-36
