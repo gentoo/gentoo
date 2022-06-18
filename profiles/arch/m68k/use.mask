@@ -86,10 +86,6 @@ ruby
 zstd
 
 # James Le Cuirot <chewi@gentoo.org> (2021-08-20)
-# There is a community effort to bring Rust to m68k but it's not ready yet.
-rust
-
-# James Le Cuirot <chewi@gentoo.org> (2021-08-20)
 # Qt is not keyworded or tested.
 qt5
 

@@ -135,10 +135,6 @@ media-libs/libsdl2 fcitx4
 # No drivers on this architecture support Vulkan
 media-libs/mesa vulkan vulkan-overlay zink
 
-# Mart Raudsepp <leio@gentoo.org> (2020-08-02)
-# sparc has no virtual/rust support, needed by newer gnome-base/librsvg, et al
->=media-gfx/eog-3.33.1 svg
-
 # Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
 # Mask io-uring & zbc pending keywording
 sys-block/fio -io-uring -zbc

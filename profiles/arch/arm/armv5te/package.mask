@@ -8,27 +8,3 @@ dev-lang/nim
 # Marco Scardovi <marco@scardovi.com> (2021-06-17)
 # This package requires dev-libs/gjs to be unmasked
 sci-geosciences/gnome-maps
-
-# There is no prebuilt rustc for armv5 by upstream
-dev-lang/rust-bin
-dev-lang/rust
-virtual/rust
->=dev-lang/spidermonkey-78
->=gnome-base/librsvg-2.41
->=gnome-base/gnome-core-libs-3.36.5
->=gnome-base/gnome-core-apps-3.36.5
->=gnome-base/gnome-light-3.36.5
->=dev-libs/gjs-1.66
->=gnome-base/gnome-shell-3.38
->=x11-themes/adwaita-icon-theme-3.36
->=net-irc/polari-3.37
->=sys-apps/bat-0.18.1
-gnome-base/gdm
-gnome-extra/chrome-gnome-shell
-gnome-extra/gnome-tweaks
->=dev-python/cryptography-36
->=dev-python/pyopenssl-22
-dev-python/setuptools-rust
-dev-python/watchfiles
-app-text/mdbook
-dev-util/maturin

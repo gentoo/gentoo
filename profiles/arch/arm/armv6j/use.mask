@@ -6,7 +6,3 @@
 -cpu_flags_arm_edsp
 -cpu_flags_arm_thumb
 -cpu_flags_arm_vfp
-
-# Sam James <sam@gentoo.org> (2020-11-10)
-# Rust is available here
--rust

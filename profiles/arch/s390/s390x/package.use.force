@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2022-06-18)
+# dev-lang/spidermonkey not keyworded yet.
+sys-auth/polkit duktape
+
 # Michał Górny <mgorny@gentoo.org> (2016-11-11)
 # Force the host target to avoid dependency hell
 dev-ml/llvm-ocaml llvm_targets_SystemZ

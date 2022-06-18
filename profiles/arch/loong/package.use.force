@@ -11,7 +11,3 @@ sys-libs/libseccomp experimental-loong
 # WANG Xuerui <xen0n@gentoo.org> (2022-04-18)
 # gcc-12 is live ebuild for now, hence requiring this
 dev-vcs/git curl
-
-# WANG Xuerui <xen0n@gentoo.org> (2022-04-18)
-# Newer spidermonkey not available yet (due to absence of rust)
-sys-auth/polkit duktape
