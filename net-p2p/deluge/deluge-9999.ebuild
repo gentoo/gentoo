@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://git.deluge-torrent.org/${PN}"
 else
 	SRC_URI="http://download.deluge-torrent.org/source/2.0/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~ppc ~x86"
 fi
 
 LICENSE="GPL-2"
