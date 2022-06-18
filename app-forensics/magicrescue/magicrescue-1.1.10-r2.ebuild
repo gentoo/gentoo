@@ -13,10 +13,12 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
+# - File collision with net-mail/safecat, bug #702004
+# - BDEPEND on perl for pod2man, bug #852671
 DEPEND="sys-libs/gdbm:="
 RDEPEND="${DEPEND}
 	!net-mail/safecat"
-# File collision with net-mail/safecat, bug #702004
+BDEPEND="dev-lang/perl"
 
 PATCHES=(
 	"${FILESDIR}/${P}-ldflags.patch"
