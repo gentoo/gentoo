@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 # NEED_BOOTSTRAP is for developers to quickly generate a tarball
 # for publishing to the tree.
 NEED_BOOTSTRAP="no"
-inherit eapi8-dosym multibuild multilib python-any-r1 toolchain-funcs multilib-minimal
+inherit eapi8-dosym multibuild multilib python-any-r1 flag-o-matic toolchain-funcs multilib-minimal
 
 DESCRIPTION="Extended crypt library for descrypt, md5crypt, bcrypt, and others"
 HOMEPAGE="https://github.com/besser82/libxcrypt"
@@ -122,6 +122,10 @@ src_configure() {
 	# Avoid possible "illegal instruction" errors with gold
 	# bug #821496
 	tc-ld-disable-gold
+
+	# Doesn't work with LTO: bug #852917.
+	# https://github.com/besser82/libxcrypt/issues/24
+	filter-flags -flto=* -flto
 
 	multibuild_foreach_variant multilib-minimal_src_configure
 }
