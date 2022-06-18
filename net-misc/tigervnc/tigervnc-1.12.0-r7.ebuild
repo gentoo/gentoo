@@ -4,18 +4,21 @@
 EAPI=7
 
 CMAKE_IN_SOURCE_BUILD=1
-inherit autotools cmake flag-o-matic git-r3 java-pkg-opt-2 optfeature systemd xdg
+inherit autotools cmake flag-o-matic java-pkg-opt-2 optfeature systemd xdg
 
 XSERVER_VERSION="21.1.1"
 
 DESCRIPTION="Remote desktop viewer display system"
 HOMEPAGE="https://tigervnc.org"
-SRC_URI="server? ( ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-${XSERVER_VERSION}.tar.xz )"
-EGIT_REPO_URI="https://github.com/TigerVNC/tigervnc/"
+SRC_URI="https://github.com/TigerVNC/tigervnc/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	server? (
+		ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-${XSERVER_VERSION}.tar.xz
+		https://github.com/TigerVNC/tigervnc/commit/0c5a2b2e7759c2829c07186cfce4d24aa9b5274e.patch -> ${P}-xserver-21.patch
+	)"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="dri3 +drm gnutls java nls +opengl +server xinerama"
 REQUIRED_USE="
 	dri3? ( drm )
@@ -82,17 +85,14 @@ PATCHES=(
 	# Restore Java viewer
 	"${FILESDIR}"/${PN}-1.11.0-install-java-viewer.patch
 	"${FILESDIR}"/${PN}-1.12.0-xsession-path.patch
-	"${FILESDIR}"/${PN}-1.12.80-disable-server-and-pam.patch
+	"${FILESDIR}"/${PN}-1.12.0-disable-server-and-pam.patch
 )
-
-src_unpack() {
-	git-r3_src_unpack
-	use server && unpack xorg-server-${XSERVER_VERSION}.tar.xz
-}
 
 src_prepare() {
 	if use server; then
 		cp -r "${WORKDIR}"/xorg-server-${XSERVER_VERSION}/. unix/xserver || die
+		eapply "${FILESDIR}"/${P}-xorg-1.21.patch
+		eapply "${DISTDIR}"/${P}-xserver-21.patch
 	fi
 
 	cmake_src_prepare
@@ -103,8 +103,6 @@ src_prepare() {
 		eautoreconf
 		sed -i 's:\(present.h\):../present/\1:' os/utils.c || die
 		sed -i '/strcmp.*-fakescreenfps/,/^        \}/d' os/utils.c || die
-
-		cd "${WORKDIR}" && sed -i 's:\(drm_fourcc.h\):libdrm/\1:' $(grep drm_fourcc.h -rl .) || die
 	fi
 }
 
@@ -176,8 +174,8 @@ src_install() {
 		emake -C unix/xserver/hw/vnc DESTDIR="${D}" install
 		rm -v "${ED}"/usr/$(get_libdir)/xorg/modules/extensions/libvnc.la || die
 
-		newconfd "${FILESDIR}"/${PN}-1.12.0.confd ${PN}
-		newinitd "${FILESDIR}"/${PN}-1.12.0.initd ${PN}
+		newconfd "${FILESDIR}"/${PN}-${PV}.confd ${PN}
+		newinitd "${FILESDIR}"/${PN}-${PV}.initd ${PN}
 
 		systemd_douserunit unix/vncserver/vncserver@.service
 
