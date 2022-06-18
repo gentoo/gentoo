@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
 GO_OPTIONAL=1
-inherit autotools desktop flag-o-matic go-module python-single-r1
+inherit autotools desktop flag-o-matic go-module python-single-r1 toolchain-funcs
 
 DESCRIPTION="A multiple large virtual desktop window manager derived from fvwm"
 HOMEPAGE="http://www.fvwm.org/"
@@ -138,7 +138,7 @@ src_configure() {
 }
 
 src_compile() {
-	PREFIX="/usr" emake
+	PREFIX="${EPREFIX}/usr" emake AR="$(tc-getAR)"
 	if [[ ${PV} == *9999 ]]; then
 		use doc && emake -C doc html
 	fi
