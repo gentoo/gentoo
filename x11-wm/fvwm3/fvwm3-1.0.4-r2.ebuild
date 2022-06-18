@@ -20,14 +20,8 @@ else
 fi
 
 LICENSE="GPL-2+ FVWM
-	go? (
-			Apache-2.0
-			BSD
-			MIT
-		)"
-
+	go? ( Apache-2.0 BSD MIT )"
 SLOT="0"
-
 IUSE="bidi debug doc go netpbm nls perl readline rplay stroke svg tk vanilla lock"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}"
@@ -54,6 +48,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/libevent:=
 	media-libs/fontconfig
 	media-libs/libpng:=
+	sys-apps/debianutils
 	sys-libs/zlib
 	x11-libs/libICE
 	x11-libs/libSM
@@ -86,8 +81,7 @@ RDEPEND="${PYTHON_DEPS}
 	svg? (
 		gnome-base/librsvg:2
 		x11-libs/cairo
-	)
-	userland_GNU? ( sys-apps/debianutils )"
+	)"
 
 DEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto"
@@ -124,7 +118,6 @@ src_configure() {
 	done
 
 	local myconf=(
-		--prefix=/usr
 		--with-imagepath=/usr/include/X11/bitmaps:/usr/include/X11/pixmaps:/usr/share/icons/fvwm
 		--enable-package-subdirs
 		$(use_enable bidi)
@@ -137,7 +130,6 @@ src_configure() {
 		$(use_enable svg rsvg)
 		--enable-png
 		--enable-xft
-		--docdir=/usr/share/doc/${P}
 	)
 
 	use readline && myconf+=( --without-termcap-library )
