@@ -75,9 +75,4 @@ src_install() {
 	insinto /etc
 	doins whois.conf
 	dodoc README debian/changelog
-
-	if ! use userland_GNU ; then
-		mv "${ED}"/usr/share/man/man1/{whois,mdwhois}.1 || die
-		mv "${ED}"/usr/bin/{whois,mdwhois} || die
-	fi
 }
