@@ -18,7 +18,7 @@ if [[ ${PV} = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/fvwm-crystal/fvwm-crystal.git"
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 RDEPEND="${PYTHON_DEPS}
