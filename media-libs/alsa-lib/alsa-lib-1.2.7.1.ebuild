@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
-inherit autotools multilib-minimal python-single-r1
+inherit autotools multilib-minimal flag-o-matic python-single-r1
 
 DESCRIPTION="Advanced Linux Sound Architecture Library"
 HOMEPAGE="https://alsa-project.org/wiki/Main_Page"
@@ -51,6 +51,11 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# Broken upstream. Could in theory work with -flto-partitions=none
+	# but it's a hack to workaround the real problem and not strictly safe.
+	# bug #616108, bug #669086, and https://github.com/alsa-project/alsa-lib/issues/6.
+	filter-flags -flto=* -flto
+
 	local myeconfargs=(
 		--disable-maintainer-mode
 		--disable-resmgr
