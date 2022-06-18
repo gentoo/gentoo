@@ -30,7 +30,7 @@ RESTRICT="test"
 
 # - >=zlib-1.2.6 required because of bug #427130
 # - Block systemd below 217 for -static-nodes-indicate-that-creation-of-static-nodes-.patch
-# - >=zstd-1.5.1-r3 required for bug #771078
+# - >=zstd-1.5.2-r1 required for bug #771078
 RDEPEND="!sys-apps/module-init-tools
 	!sys-apps/modutils
 	!<sys-apps/openrc-0.13.8
@@ -39,7 +39,7 @@ RDEPEND="!sys-apps/module-init-tools
 	python? ( ${PYTHON_DEPS} )
 	pkcs7? ( >=dev-libs/openssl-1.1.0:= )
 	zlib? ( >=sys-libs/zlib-1.2.6 )
-	zstd? ( >=app-arch/zstd-1.5.1-r3:= )"
+	zstd? ( >=app-arch/zstd-1.5.2-r1:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	doc? (
