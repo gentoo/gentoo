@@ -12,7 +12,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ~x86"
+KEYWORDS="amd64 arm ppc x86"
 
 # pod2man
 BDEPEND="dev-lang/perl"
