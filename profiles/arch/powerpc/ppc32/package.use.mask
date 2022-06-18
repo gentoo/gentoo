@@ -109,18 +109,9 @@ sys-devel/clang default-compiler-rt
 # bug #766150
 dev-tex/rubber test
 
-# Cédric Krier <cedk@gentoo.org> (2020-11-10)
-# virtual/rust has no ppc keyword
-dev-vcs/mercurial rust
-
 # Mark Wright <gienah@gentoo.org> (2020-10-11)
 # dev-ml/ounit2 is not keyworded
 dev-ml/cudf test
-
-# Mart Raudsepp <leio@gentoo.org> (2020-08-02)
-# ppc32 has no virtual/rust support yet, needed by newer
-# gnome-base/librsvg, et al
->=media-gfx/eog-3.33.1 svg
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # clisp is keyworded on ppc
