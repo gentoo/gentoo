@@ -1,32 +1,32 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-MY_PV=${PV#1}
+MY_PV="${PV#1}"
 
 DESCRIPTION="A restriction enzyme database"
 HOMEPAGE="http://rebase.neb.com"
 SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
-SLOT="0"
 LICENSE="public-domain"
+SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="emboss minimal"
-
-RDEPEND="emboss? ( >=sci-biology/emboss-5.0.0 )"
-DEPEND="${RDEPEND}"
-
 RESTRICT="binchecks strip"
+
+BDEPEND="emboss? ( sci-biology/emboss )"
+REPEND="${BDEPEND}"
 
 src_compile() {
 	if use emboss; then
-		echo; einfo "Indexing Rebase for usage with EMBOSS."
+		einfo
+		einfo "Indexing Rebase for usage with EMBOSS"
 		mkdir REBASE || die
 		EMBOSS_DATA="." rebaseextract -auto -infile withrefm.${MY_PV} \
 				-protofile proto.${MY_PV} -equivalences \
-				|| die "Indexing Rebase failed."
-		echo
+				|| die "Indexing Rebase failed"
+		einfo
 	fi
 }
 
