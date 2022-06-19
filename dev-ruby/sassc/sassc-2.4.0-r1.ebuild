@@ -15,7 +15,7 @@ DESCRIPTION="Use libsass with Ruby"
 HOMEPAGE="https://github.com/sass/sassc-ruby"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 arm arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
 SLOT="2"
 IUSE=""
 
