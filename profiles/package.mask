@@ -433,12 +433,6 @@ net-analyzer/ospd
 # Unused java library. Removal on 2022-06-06
 dev-java/commons-jxpath
 
-# Michał Górny <mgorny@gentoo.org> (2022-05-07)
-# The current version is severely outdated and blocks upgrade
-# of dependencies.  Packaging a new release poses serious problems.
-# Removal on 2022-06-06.  Bug #836282.
-dev-db/pgadmin4
-
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
 >=x11-libs/libX11-1.8
