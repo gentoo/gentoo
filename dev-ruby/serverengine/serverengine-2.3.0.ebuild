@@ -20,7 +20,7 @@ IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/sigdump-0.2.2:0"
 
-ruby_add_bdepend "test? ( dev-ruby/bundler )"
+ruby_add_bdepend "test? ( dev-ruby/bundler dev-ruby/timecop )"
 
 all_ruby_prepare() {
 	sed -i -e '/rake/ s/~>/>=/' \
