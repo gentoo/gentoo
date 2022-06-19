@@ -361,12 +361,6 @@ games-board/ascal
 # Removal on 2022-06-19. Bug #845231
 app-pda/barry
 
-# Matt Turner <mattst88@gentoo.org> (2022-05-19)
-# Last release in 2010. Only one commit upstream since 2010 (in 2015). Only
-# remaining reverse dependency of dev-cpp/gconfmm, which is dead.
-# Removal on 2022-06-19. Bug #845234
-games-board/ccgo
-
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
 >=x11-libs/libX11-1.8
