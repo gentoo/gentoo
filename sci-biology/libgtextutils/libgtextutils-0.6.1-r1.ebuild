@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -12,7 +12,6 @@ SRC_URI="http://hannonlab.cshl.edu/fastx_toolkit/${P}.tar.bz2"
 LICENSE="AGPL-3"
 SLOT="0/0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-build-system.patch
@@ -24,13 +23,8 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
-	econf --disable-static
-}
-
 src_install() {
 	default
 
-	# package installs .pc files
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
