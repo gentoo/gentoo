@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 inherit flag-o-matic toolchain-funcs
 
@@ -17,25 +17,21 @@ IUSE="libedit readline static"
 RDEPEND="
 	!readline? ( libedit? ( dev-libs/libedit:= ) )
 	readline? (
-		>=sys-libs/readline-4.1:0=
-		>=sys-libs/ncurses-5.2:=
-	)
-"
-DEPEND="
-	${RDEPEND}
+		sys-libs/readline:=
+		sys-libs/ncurses:=
+	)"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/flex
-	virtual/yacc
-"
+	virtual/yacc"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-1.07.1-no-ed-its-sed.patch"
-)
+PATCHES=( "${FILESDIR}"/${PN}-1.07.1-no-ed-its-sed.patch )
 
 src_prepare() {
 	default
 
-	# Avoid bad build tool usage when cross-compiling.  #627126
-	tc-is-cross-compiler && eapply "${FILESDIR}/${PN}-1.07.1-use-system-bc.patch"
+	# Avoid bad build tool usage when cross-compiling. Bug #627126
+	tc-is-cross-compiler && eapply "${FILESDIR}"/${PN}-1.07.1-use-system-bc.patch
 }
 
 src_configure() {
@@ -52,8 +48,8 @@ src_configure() {
 	econf "${myconf[@]}"
 
 	# Do not regen docs -- configure produces a small fragment that includes
-	# the version info which causes all pages to regen (newer file). #554774
-	touch -r doc doc/*
+	# the version info which causes all pages to regen (newer file). Bug #554774
+	touch -r doc doc/* || die
 }
 
 src_compile() {
