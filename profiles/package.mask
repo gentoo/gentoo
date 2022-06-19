@@ -333,11 +333,6 @@ dev-util/cucumber-wire:5
 # (EGO_SUM). bug #700846, bug #844445. Removal on 2022-06-20.
 dev-util/kubebuilder
 
-# Matt Turner <mattst88@gentoo.org> (2022-05-19)
-# Dead package upstream for more than 7 years.
-# Removal on 2022-06-19.
-dev-cpp/gconfmm
-
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
 >=x11-libs/libX11-1.8
