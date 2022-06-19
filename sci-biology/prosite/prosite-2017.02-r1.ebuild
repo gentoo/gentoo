@@ -1,11 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="A protein families and domains database"
 HOMEPAGE="https://prosite.expasy.org/"
 SRC_URI="ftp://ftp.expasy.org/databases/prosite/old_releases/prosite${PV//./_}.tar.bz2"
+S="${WORKDIR}"
 
 LICENSE="swiss-prot"
 SLOT="0"
@@ -14,10 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="emboss minimal"
 
-DEPEND="emboss? ( sci-biology/emboss )"
-RDEPEND="${DEPEND}"
-
-S=${WORKDIR}
+BDEPEND="emboss? ( sci-biology/emboss )"
+RDEPEND="${BDEPEND}"
 
 src_compile() {
 	if use emboss; then
