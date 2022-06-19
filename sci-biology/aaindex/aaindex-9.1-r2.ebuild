@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="Amino acid indices and similarity matrices"
 HOMEPAGE="https://www.genome.jp/aaindex/"
@@ -14,14 +14,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="emboss minimal"
 
-DEPEND="emboss? ( sci-biology/emboss )"
-RDEPEND="${DEPEND}"
+BDEPEND="emboss? ( sci-biology/emboss )"
+RDEPEND="${BDEPEND}"
 
 src_compile() {
 	if use emboss; then
 		mkdir AAINDEX || die
 		einfo
-		einfo "Indexing AAindex for usage with EMBOSS."
+		einfo "Indexing AAindex for usage with EMBOSS"
 		EMBOSS_DATA="." aaindexextract -auto -infile ${PN}1 || die "Indexing AAindex failed"
 		einfo
 	fi
