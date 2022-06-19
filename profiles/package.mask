@@ -397,13 +397,6 @@ net-im/whatsapp-desktop-bin
 # Removal on 2022-06-15.  Bug #837299.
 dev-python/typish
 
-# Jakov Smolić <jsmolic@gentoo.org> (2022-05-15)
-# Outdated, stuck on deprecated EAPI 5. Recent versions
-# require nvidia developer account to obtain source files.
-# No other major distro is packaging this.
-# Removal on 2022-06-14. Bug #819429.
-media-video/nvidia_video_sdk
-
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
 >=x11-libs/libX11-1.8
