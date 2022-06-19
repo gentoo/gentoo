@@ -27,14 +27,14 @@ RDEPEND="
 	app-arch/lz4
 	virtual/acl
 	dev-python/pyfuse3[${PYTHON_USEDEP}]
-	=dev-python/msgpack-1.0.3[${PYTHON_USEDEP}]
+	=dev-python/msgpack-1.0.4[${PYTHON_USEDEP}]
 	dev-libs/openssl:0=
 "
 
 DEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
-	dev-python/cython[${PYTHON_USEDEP}]
+	>=dev-python/cython-0.29.29[${PYTHON_USEDEP}]
 	dev-python/pkgconfig[${PYTHON_USEDEP}]
 	${RDEPEND}
 "
