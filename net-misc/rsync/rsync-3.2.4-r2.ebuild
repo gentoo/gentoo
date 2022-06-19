@@ -68,6 +68,8 @@ fi
 
 PATCHES=(
 	"${FILESDIR}"/${P}-unsigned-char-checksum.patch
+	# https://github.com/WayneD/rsync/issues/324
+	"${FILESDIR}"/${P}-strlcpy.patch
 )
 
 pkg_setup() {
@@ -82,7 +84,7 @@ src_prepare() {
 	default
 
 	eautoconf -o configure.sh
-	touch config.h.in || die
+	eautoheader && touch config.h.in
 }
 
 src_configure() {
