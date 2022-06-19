@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2022-06-19)
+# Obsolete slot. Use the "3" slot instead which provides a single slot
+# for all compatible versions. Removal in 30 days.
+dev-ruby/xdr:3.0.1
+
+# Hans de Graaff <graaff@gentoo.org> (2022-06-19)
 # Obsolete slot. Slot 2 provides support for all rails versions
 # currently available. Removal in 30 days.
 dev-util/cucumber-rails:1
