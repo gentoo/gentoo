@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -54,7 +54,7 @@ src_compile() {
 }
 
 src_install() {
-	default
+	emake DESTDIR="${D}" LIBDIR=/usr/$(get_libdir) install
 	rm "${ED}"/usr/$(get_libdir)/*.a || die
 }
 
