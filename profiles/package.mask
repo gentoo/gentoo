@@ -36,6 +36,11 @@
 # Hans de Graaff <graaff@gentoo.org> (2022-06-19)
 # Obsolete slot. Use a newer slot instead.
 # Removal in 30 days.
+dev-ruby/tomlrb:1
+
+# Hans de Graaff <graaff@gentoo.org> (2022-06-19)
+# Obsolete slot. Use a newer slot instead.
+# Removal in 30 days.
 dev-ruby/ttfunk:1.6
 
 # Hans de Graaff <graaff@gentoo.org> (2022-06-19)
