@@ -10,8 +10,7 @@ GENPATCHES_P=genpatches-${PV%.*}-$(( ${PV##*.} + 3 ))
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
 # forked to https://github.com/mgorny/fedora-kernel-config-for-gentoo
 CONFIG_VER=5.18.4-gentoo
-# update to g2 on bump!
-GENTOO_CONFIG_VER=g1
+GENTOO_CONFIG_VER=g2
 
 DESCRIPTION="Linux kernel built with Gentoo patches"
 HOMEPAGE="https://www.kernel.org/"
@@ -41,7 +40,7 @@ SRC_URI+="
 S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64"
 IUSE="debug hardened"
 REQUIRED_USE="arm? ( savedconfig )
 	hppa? ( savedconfig )
