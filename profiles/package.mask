@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# John Helmert III <ajak@gentoo.org> (2022-06-19)
+# Untouched by maintainer since Git transition. No reverse dependencies,
+# unused by upstream, vulnerable. Removal in 30 days. Bug #678705
+dev-libs/libvterm-neovim
+
 # Hans de Graaff <graaff@gentoo.org> (2020-06-18)
 # Obsolete ruby26-only slots. Please use a newer slot instead.
 # Masked for removal in 30 days.
