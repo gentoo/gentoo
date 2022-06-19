@@ -10,7 +10,7 @@ inherit qt5-build
 DESCRIPTION="Set of components for creating classic desktop-style UIs for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 fi
 
 # keep IUSE defaults in sync with qtgui
