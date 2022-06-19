@@ -19,6 +19,7 @@ RDEPEND="
 	app-misc/pax-utils
 	app-portage/portage-utils
 	>=app-shells/bash-5.1
+	dev-libs/libxml2:2
 	sys-apps/diffutils
 	sys-apps/file
 	sys-apps/portage
