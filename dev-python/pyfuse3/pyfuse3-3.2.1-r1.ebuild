@@ -30,3 +30,10 @@ BDEPEND="test? (
 )"
 
 distutils_enable_tests pytest
+
+python_prepare_all() {
+	python_setup
+	# Shipped pre-generated .pyx do not work with Python 3.10.
+	esetup.py build_cython
+	distutils-r1_python_prepare_all
+}
