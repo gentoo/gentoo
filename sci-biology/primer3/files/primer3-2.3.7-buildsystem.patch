@@ -1,11 +1,6 @@
- src/Makefile | 61 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 31 insertions(+), 30 deletions(-)
-
-diff --git a/src/Makefile b/src/Makefile
-index 607ab45..a88adf4 100644
 --- a/src/Makefile
 +++ b/src/Makefile
-@@ -52,15 +52,16 @@ TESTOPTS=
+@@ -52,15 +52,13 @@
  WINMAKE=mingw32-make
  
  LDLIBS     = -lm
@@ -15,56 +10,66 @@ index 607ab45..a88adf4 100644
 -O_OPTS     = -O2
 -CC_OPTS    = -g -Wall -D__USE_FIXED_PROTOTYPES__
 -P_DEFINES  =
-+AR         ?= ar
-+CC         ?= gcc
-+CXX        ?= g++
+-
+-CFLAGS  = $(CC_OPTS) $(O_OPTS)
+-LDFLAGS = -g
 +O_OPTS     ?= 
 +CC_OPTS    ?= -Wall -D__USE_FIXED_PROTOTYPES__
 +P_DEFINES  ?=
- 
--CFLAGS  = $(CC_OPTS) $(O_OPTS)
--LDFLAGS = -g
++
 +CFLAGS    += $(CC_OPTS) $(O_OPTS)
 +CXXFLAGS  += $(CC_OPTS) $(O_OPTS)
 +LDFLAGS   +=
  # Note, for profiling, use
  # make O_OPTS='-pg -O0' LDFLAGS='-g -pg'
  
-@@ -92,7 +93,7 @@ LIBPRIMER3      = libprimer3.a
+@@ -92,7 +90,6 @@
  LIBPRIMER3_DYN  = libprimer3.so.1.0.0
  LIBRARIES       = $(LIBPRIMER3) $(LIBDPAL) $(LIBTHAL) $(LIBOLIGOTM) 
  DYNLIBS         = $(LIBPRIMER3_DYN) $(LIBDPAL_DYN) $(LIBTHAL_DYN) $(LIBOLIGOTM_DYN)
 -RANLIB          = ranlib
-+RANLIB          ?= ranlib
  
  PRIMER_OBJECTS1=primer3_boulder_main.o\
                  format_output.o\
-@@ -127,85 +128,85 @@ $(LIBOLIGOTM): oligotm.o
- 	$(RANLIB) $@
+@@ -119,93 +116,89 @@
+ ifeq ($(TESTOPTS),--windows)
+ 	cd ..\test & $(WINMAKE) clean TESTOPTS=$(TESTOPTS)
+ else
+-	cd ../test/; make clean
++	cd ../test/ && $(MAKE) clean
+ endif
+ 
+ $(LIBOLIGOTM): oligotm.o
+-	$(AR) rv $@ oligotm.o
+-	$(RANLIB) $@
++	$(AR) rcs $@ oligotm.o
  
  $(LIBOLIGOTM_LIB): oligotm.o
 -	$(CC) -shared -W1,-soname,liboligotm.so.1 -o $(LIBOLIGOTM_DYN) oligotm.o
 +	$(CC) $(LDFLAGS) -shared -W1,-soname,liboligotm.so.1 -o $(LIBOLIGOTM_DYN) oligotm.o
  
  $(LIBDPAL): dpal_primer.o
- 	$(AR) rv $@ dpal_primer.o
- 	$(RANLIB) $@
+-	$(AR) rv $@ dpal_primer.o
+-	$(RANLIB) $@
++	$(AR) rcs $@ dpal_primer.o
  
  $(LIBDPAL_DYN): dpal_primer.o
 -	$(CC) -shared -W1,-soname,libdpal.so.1 -o $(LIBDPAL_DYN_LIB) dpal_primer.o
 +	$(CC) $(LDFLAGS) -shared -W1,-soname,libdpal.so.1 -o $(LIBDPAL_DYN_LIB) dpal_primer.o
  
  $(LIBTHAL): thal_primer.o
- 	$(AR) rv $@ thal_primer.o
- 	$(RANLIB) $@
+-	$(AR) rv $@ thal_primer.o
+-	$(RANLIB) $@
++	$(AR) rcs $@ thal_primer.o
  
  $(LIBTHAL_DYN): thal_primer.o
 -	$(CC) -shared -W1,-soname,libthal.so.1 -o $(LIBTHAL_DYN_LIB) thal_primer.o
 +	$(CC) $(LDFLAGS) -shared -W1,-soname,libthal.so.1 -o $(LIBTHAL_DYN_LIB) thal_primer.o
  
  $(LIBPRIMER3): libprimer3.o p3_seq_lib.o
- 	$(AR) rv $@ libprimer3.o p3_seq_lib.o
- 	$(RANLIB) $@
+-	$(AR) rv $@ libprimer3.o p3_seq_lib.o
+-	$(RANLIB) $@
++	$(AR) rcs $@ libprimer3.o p3_seq_lib.o
  
  $(LIBPRIMER3_DYN): libprimer3.o p3_seq_lib.o
 -	$(CC) -shared -W1,-soname,liprimer3.so.1 -o $(LIBPRIMER3_DYN) libprimer3.o p3_seq_lib.o
@@ -146,3 +151,23 @@ index 607ab45..a88adf4 100644
  
  primer_test: test
  
+@@ -213,7 +206,7 @@
+ ifeq ($(TESTOPTS),--windows)
+ 	cd ..\test & $(WINMAKE) TESTOPTS=$(TESTOPTS)
+ else
+-	cd ../test; make test
++	cd ../test && $(MAKE) test
+ endif
+ 
+ # ======================================================================
+--- a/test/Makefile
++++ b/test/Makefile
+@@ -86,7 +86,7 @@
+ ifeq ($(TESTOPTS),--windows)
+ 	cd ..\src & $(WINMAKE)
+ else
+-	cd ../src; make
++	cd ../src && $(MAKE)
+ endif
+ 
+ clean:

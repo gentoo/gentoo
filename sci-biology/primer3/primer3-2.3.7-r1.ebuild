@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -13,12 +13,11 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 
-DEPEND="dev-lang/perl"
-RDEPEND=""
+BDEPEND="dev-lang/perl"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.3.4-buildsystem.patch
-	"${FILESDIR}"/${PN}-2.3.7-gcc7.patch
+	"${FILESDIR}"/${P}-buildsystem.patch
+	"${FILESDIR}"/${P}-gcc7.patch
 )
 
 src_prepare() {
@@ -29,7 +28,7 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-export CC CXX AR RANLIB
+	tc-export AR CC CXX
 }
 
 src_compile() {
@@ -38,7 +37,7 @@ src_compile() {
 
 src_test() {
 	emake -C test | tee "${T}"/test.log
-	grep -q "\[FAILED\]" && die "test failed. See "${T}"/test.log"
+	grep -q "\[FAILED\]" && die "test failed. See ${T}/test.log"
 }
 
 src_install() {
