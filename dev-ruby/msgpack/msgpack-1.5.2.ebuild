@@ -18,7 +18,7 @@ HOMEPAGE="https://msgpack.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ppc64 ~sparc ~x86"
 IUSE="doc"
 
 all_ruby_prepare() {
