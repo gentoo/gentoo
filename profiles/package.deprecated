@@ -17,6 +17,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-06-19)
+# dev-python/tox is a wrapper to run test suite in a virtual
+# environment, possibly for multiple Python versions.  It cannot really
+# work inside network sandbox, and your package probably does not use
+# it anyway.
+dev-python/tox
+
 # Michał Górny <mgorny@gentoo.org> (2022-06-17)
 # So far not a single dependency on dev-python/versioneer was correct.
 # This package is a generator for "versioneer.py" file that is included
