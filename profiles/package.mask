@@ -391,12 +391,6 @@ dev-python/unicodecsv
 # Masked for removal in 30 days
 net-im/whatsapp-desktop-bin
 
-# Michał Górny <mgorny@gentoo.org> (2022-05-16)
-# This was only added for dev-python/nptyping, and nptyping-2.0.0
-# no longer uses it.  No activity since Aug 2021.
-# Removal on 2022-06-15.  Bug #837299.
-dev-python/typish
-
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
 >=x11-libs/libX11-1.8
