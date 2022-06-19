@@ -44,7 +44,7 @@ RDEPEND="
 		app-admin/system-config-printer
 		net-print/cups-pk-helper )
 	input_devices_wacom? (
-		>=dev-libs/libwacom-0.7
+		>=dev-libs/libwacom-0.7:=
 		>=gnome-base/librsvg-2.36.2
 		x11-drivers/xf86-input-wacom
 		x11-libs/libXtst )
