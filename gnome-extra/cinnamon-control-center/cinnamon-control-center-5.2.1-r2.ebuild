@@ -33,7 +33,7 @@ COMMON_DEPEND="
 
 	colord? ( >=x11-misc/colord-0.1.14:0= )
 	input_devices_wacom? (
-		>=dev-libs/libwacom-0.7
+		>=dev-libs/libwacom-0.7:=
 		>=gnome-extra/cinnamon-settings-daemon-5.2:0=
 		>=x11-libs/libXi-1.2 )
 	networkmanager? (
