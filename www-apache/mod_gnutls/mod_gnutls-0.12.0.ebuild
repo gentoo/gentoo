@@ -16,12 +16,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-CDEPEND=">=net-libs/gnutls-3.3.0:=[pkcs11]"
-
 TEST_REQUIRED_APACHE_MODULES="apache2_modules_proxy,apache2_modules_proxy_http"
 
-DEPEND="${CDEPEND}
-	virtual/pkgconfig
+COMMON_DEPEND=">=net-libs/gnutls-3.3.0:=[pkcs11]"
+
+DEPEND="${COMMON_DEPEND}
 	$(python_gen_any_dep '
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	')
@@ -36,7 +35,10 @@ DEPEND="${CDEPEND}
 		)
 	)"
 
-RDEPEND="${CDEPEND}"
+RDEPEND="${COMMON_DEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+"
 
 RESTRICT="!test? ( test )"
 
