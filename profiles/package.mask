@@ -424,11 +424,6 @@ dev-python/python-iptables
 # Removal on 2022-06-10.
 net-analyzer/greenbone-security-assistant
 
-# Florian Schmaus <flow@gentoo.org> (2022-05-10)
-# Functionality now in net-analyzer/ospd-openvas.
-# Removal on 2022-06-10.
-net-analyzer/ospd
-
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
 >=x11-libs/libX11-1.8
