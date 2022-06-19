@@ -63,7 +63,6 @@ dev-ruby/packetfu
 dev-java/netty-transport
 dev-java/netty-buffer
 dev-java/netty-common
-)
 
 # John Helmert III <ajak@gentoo.org> (2022-06-19)
 # Untouched by maintainer since Git transition. No reverse dependencies,
