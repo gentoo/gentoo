@@ -383,14 +383,6 @@ dev-python/nose_fixes
 # Removal on 2022-06-18.  Bug #846449.
 dev-python/unicodecsv
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-05-19)
-# Unfortunately this has completely stopped working due to
-# upstream changes in WhatsApp. Bug 844985. As an alternative
-# try: *net-im/wazzapp-bin* which still works and also
-# offers additional features over whatsapp-desktop-bin
-# Masked for removal in 30 days
-net-im/whatsapp-desktop-bin
-
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
 >=x11-libs/libX11-1.8
