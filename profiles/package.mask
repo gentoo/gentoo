@@ -413,11 +413,6 @@ dev-python/django-taggit-serializer
 # Unmaintained, does not support Python 3.10+. Removal on 2022-06-15.
 dev-python/django-rq
 
-# Sam James <sam@gentoo.org> (2022-05-15)
-# Masked for removal. No reverse dependencies, no releases in 2 years,
-# does not support Python 3.10+. Removal on 2022-06-15.
-dev-python/python-iptables
-
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
 >=x11-libs/libX11-1.8
