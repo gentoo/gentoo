@@ -55,7 +55,6 @@ app-text/rarian
 app-text/scrollkeeper-dtd
 dev-cpp/gconfmm
 dev-cpp/gtkmm:2.4
-dev-cpp/libglademm
 dev-libs/libcroco
 dev-libs/libIDL
 dev-libs/libunique:1
