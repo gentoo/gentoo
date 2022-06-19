@@ -418,12 +418,6 @@ dev-python/django-rq
 # does not support Python 3.10+. Removal on 2022-06-15.
 dev-python/python-iptables
 
-# Florian Schmaus <flow@gentoo.org> (2022-05-10)
-# Was split by upstream (and us) into
-# net-analyzer/gsa and net-analyzer/gsad.
-# Removal on 2022-06-10.
-net-analyzer/greenbone-security-assistant
-
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
 >=x11-libs/libX11-1.8
