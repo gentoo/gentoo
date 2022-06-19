@@ -55,7 +55,7 @@ DEPEND="
 		x11-libs/pango:=
 	)
 	icu? ( dev-libs/icu:= )
-	jpeg? ( virtual/jpeg )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	lapack? ( virtual/lapack )
 	perl? ( dev-lang/perl )
 	png? ( media-libs/libpng:= )
