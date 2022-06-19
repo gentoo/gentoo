@@ -23,7 +23,10 @@ RDEPEND="
 	${CDEPEND}
 "
 
-DEPEND="${CDEPEND}"
+DEPEND="
+	${CDEPEND}
+	dev-python/cython[${PYTHON_USEDEP}]
+"
 
 BDEPEND="test? (
 	dev-python/pytest-trio[${PYTHON_USEDEP}]
