@@ -33,18 +33,44 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2022-06-19)
+# ruby26-only, fails tests, no longer maintained upstream,
+# no reverse dependencies. Removal in 30 days.
+dev-ruby/best_in_place
+
+# Hans de Graaff <graaff@gentoo.org> (2022-06-19)
+# ruby26-only, no tests, no reverse dependencies
+# Removal in 30 days.
+dev-ruby/cinch
+
+# Hans de Graaff <graaff@gentoo.org> (2022-06-19)
+# ruby26-only, fails tests, last upstream release in 2020,
+# no reverse dependencies. Removal in 30 days.
+dev-ruby/dotenv
+
+# Hans de Graaff <graaff@gentoo.org> (2022-06-19)
+# ruby26-only, no longer maintained upstream,
+# no reverse dependencies. Removal in 30 days.
+dev-ruby/origin
+
+# Hans de Graaff <graaff@gentoo.org> (2022-06-19)
+# ruby26-only, fails tests, no longer maintained upstream,
+# no reverse dependencies. Removal in 30 days.
+dev-ruby/packetfu
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-06-19)
 # Unused java libraries. Removal on 2022-07-19
 dev-java/netty-transport
 dev-java/netty-buffer
 dev-java/netty-common
+)
 
 # John Helmert III <ajak@gentoo.org> (2022-06-19)
 # Untouched by maintainer since Git transition. No reverse dependencies,
 # unused by upstream, vulnerable. Removal in 30 days. Bug #678705
 dev-libs/libvterm-neovim
 
-# Hans de Graaff <graaff@gentoo.org> (2020-06-18)
+# Hans de Graaff <graaff@gentoo.org> (2022-06-18)
 # Obsolete ruby26-only slots. Please use a newer slot instead.
 # Masked for removal in 30 days.
 dev-ruby/autoprefixer-rails:9
