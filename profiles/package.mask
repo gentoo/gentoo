@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-06-19)
+# Unsupported by upstream, no updates in a long time,
+# vulnerable to issues fixed in the main firejail package.
+# bug #834601.
+# Please migrate to sys-apps/firejail. Removal on 2022-07-19.
+sys-apps/firejail-lts
+
 # Hans de Graaff <graaff@gentoo.org> (2022-06-19)
 # ruby26-only, fails tests, no longer maintained upstream,
 # no reverse dependencies. Removal in 30 days.
