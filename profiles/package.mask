@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2022-06-19)
+# Obsolete slot. Slot 2 provides support for all rails versions
+# currently available. Removal in 30 days.
+dev-util/cucumber-rails:1
+
 # Sam James <sam@gentoo.org> (2022-06-19)
 # Unsupported by upstream, no updates in a long time,
 # vulnerable to issues fixed in the main firejail package.
