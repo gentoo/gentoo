@@ -23,6 +23,10 @@ DEPEND="
 "
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-libtool.patch # 778371
+)
+
 src_prepare() {
 	default
 	eautoreconf

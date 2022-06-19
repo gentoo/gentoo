@@ -1,0 +1,81 @@
+https://bugs.gentoo.org/778371
+
+From: orbea <orbea@riseup.net>
+Date: Sat, 18 Jun 2022 20:49:52 -0700
+Subject: [PATCH] configure: Use LT_INIT to find libtool
+
+LT_INIT will generate libtool for the build which is required by
+rlibtool to determine if building shared or static libraries.
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -37,6 +37,11 @@
+ srcdir = @srcdir@
+ VPATH = @srcdir@
+ 
++#
++# directory containing the build
++#
++top_builddir = @top_builddir@
++
+ #
+ # the name of the install program to use
+ #
+--- a/configure.ac
++++ b/configure.ac
+@@ -22,7 +22,7 @@ AC_PROG_CC
+ AC_CANONICAL_HOST
+ AC_GNU_SOURCE
+ AC_PROG_INSTALL
+-AC_PROG_RANLIB
++LT_INIT
+ AC_CHECK_PROGS(AR, ar)
+ 
+ AC_USE_SYSTEM_EXTENSIONS
+@@ -32,6 +32,8 @@ AC_ISC_POSIX
+ AC_OBJEXT
+ AC_EXEEXT
+ 
++AC_SUBST([top_builddir], [$abs_builddir])
++
+ dnl @synopsis AC_ADD_CFLAGS
+ dnl
+ dnl Add the given option to CFLAGS, if it doesn't break the compiler
+@@ -53,37 +55,6 @@ AC_ADD_CFLAGS(-Wshadow)
+ dnl! AC_ADD_CFLAGS(-Werror)
+ dnl! AC_ADD_CFLAGS([-Wl,--as-needed])
+ 
+-AC_CHECK_PROGS(LIBTOOL, libtool)
+-
+-if test -z "$LIBTOOL"
+-then
+-  AC_MSG_RESULT([
+-        You must have GNU Libtool installed to build fstrcmp.
+-        Homepage: http://www.gnu.org/software/libtool/])
+-  OK=no
+-  if apt-get --version > /dev/null 2> /dev/null; then
+-    AC_MSG_RESULT([
+-        The following command may be used to install it:
+-        sudo apt-get install libtool
+-    ])
+-    OK=yes
+-  fi
+-  if yum --version > /dev/null 2> /dev/null; then
+-    AC_MSG_RESULT([
+-        The following command may be used to install it:
+-        sudo yum install libtool
+-    ])
+-    OK=yes
+-  fi
+-  if test "$OK" != "yes"; then
+-    AC_MSG_RESULT([
+-        If you are using a package based install, you will need the
+-        libtool package.
+-    ])
+-  fi
+-  exit 1
+-fi
+-
+ AC_CHECK_PROGS(GROFF, groff roff)
+ AC_CHECK_PROGS(SOELIM, gsoelim soelim)
+ AC_CHECK_PROGS(REFER, refer grefer)
