@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -12,16 +12,14 @@ SRC_URI="https://github.com/agordon/fastx_toolkit/releases/download/${PV}/${P}.t
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND="
-	sci-biology/libgtextutils
-	virtual/pkgconfig"
+DEPEND="sci-biology/libgtextutils:="
 RDEPEND="
+	${DEPEND}
 	dev-perl/PerlIO-gzip
 	dev-perl/GDGraph
-	sci-biology/libgtextutils:=
 	sci-visualization/gnuplot"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-build-system.patch
