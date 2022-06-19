@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby26"
+USE_RUBY="ruby26 ruby27"
 
 RUBY_FAKEGEM_TASK_TEST="MT_NO_PLUGINS=true"
 
