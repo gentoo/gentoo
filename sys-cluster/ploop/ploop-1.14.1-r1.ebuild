@@ -24,6 +24,7 @@ RDEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/disable_create_run_dir.patch
+	"${FILESDIR}"/${PN}-1.14-musl.patch
 )
 
 DOCS=( tools/README )
