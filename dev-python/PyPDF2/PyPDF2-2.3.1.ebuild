@@ -34,6 +34,9 @@ RDEPEND="
 "
 BDEPEND="
 	dev-python/pillow[${PYTHON_USEDEP}]
+	test? (
+		dev-python/pycryptodome[${PYTHON_USEDEP}]
+	)
 "
 
 distutils_enable_tests pytest
