@@ -7,7 +7,9 @@
 	</maintainer>
 	<use>
 		<flag name="localstorage">Build the LocalStorage import for QtQuick (requires QtSql)</flag>
+		<flag name="opengl">Enable OpenGL support</flag>
 		<flag name="vulkan">Enable support for Vulkan</flag>
+		<flag name="sql">Enable QtSQL support</flag>
 		<flag name="widgets">Enable QtWidgets support</flag>
 	</use>
 	<upstream>
