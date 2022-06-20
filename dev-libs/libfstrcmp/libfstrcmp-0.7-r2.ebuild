@@ -25,6 +25,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-libtool.patch # 778371
+	"${FILESDIR}"/${P}-docdir.patch # 853133
 )
 
 src_prepare() {
