@@ -14,7 +14,7 @@ LICENSE="ZPL BSD BSD-2 ISC LGPL-2+ LGPL-2.1+ MIT public-domain tools? ( GPL-3+ )
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 # USE=libraries needs working stage2 compiler: bug #665512
-IUSE="headers-only idl libraries tools"
+IUSE="default-ucrt headers-only idl libraries tools"
 RESTRICT="strip"
 
 PATCHES=(
@@ -76,6 +76,7 @@ src_configure() {
 	local conf=(
 		--prefix="${prefix}"
 		--libdir="${prefix}"/lib
+		$(usex default-ucrt "--with-default-msvcrt=ucrt" "")
 		$(use_with !headers-only crt)
 
 		# By default configure tries to set --sysroot=${prefix}. We disable
