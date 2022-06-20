@@ -17,12 +17,9 @@ SRC_URI="https://github.com/LuaJIT/LuaJIT/archive/${GIT_COMMIT}.tar.gz -> ${P}.t
 
 LICENSE="MIT"
 # this should probably be pkgmoved to 2.0 for sake of consistency.
-SLOT="2"
+SLOT="2/${PV}"
 KEYWORDS="amd64 arm arm64 -hppa ppc -riscv -sparc x86 ~amd64-linux ~x86-linux"
 IUSE="lua52compat static-libs"
-
-PATCHES=(
-)
 
 S="${WORKDIR}/LuaJIT-${GIT_COMMIT}"
 
