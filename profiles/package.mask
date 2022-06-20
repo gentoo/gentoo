@@ -553,10 +553,6 @@ net-libs/libsoup:3.0
 # bug #772998
 ~net-misc/openntpd-6.8_p1
 
-# Lars Wendler <polynomial-c@gentoo.org> (2021-02-15)
-# Mask development versions now that they were bumped...
-=net-misc/kea-1.9*
-
 # Michał Górny <mgorny@gentoo.org> (2020-11-10)
 # This old Kodi version requires vulnerable dev-python/pillow
 # and prevents users from upgrading.  Masked for the time being.
