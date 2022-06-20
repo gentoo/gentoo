@@ -50,7 +50,7 @@ else
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/grub.git"
 fi
 
-SRC_URI+=" https://dev.gentoo.org/~floppym/dist/${P}-backports.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~floppym/dist/grub-2.06-backports-r1.tar.xz"
 
 PATCHES=(
 	"${WORKDIR}/${P}-backports"
