@@ -533,10 +533,6 @@ net-libs/libsoup:3.0
 # is resolved.  Bug #791259.
 >=media-libs/libopenaptx-0.2.1
 
-# Michał Górny <mgorny@gentoo.org> (2021-05-31)
-# Requires removed media-libs/opencv version.
-<media-plugins/gst-plugins-opencv-1.18
-
 # Ulrich Müller <ulm@gentoo.org> (2021-04-20)
 # Version 3.15 is broken with Emacs 27.2.
 =app-emacs/mic-paren-3.15-r0
