@@ -73,14 +73,14 @@ RDEPEND="
 	nvenc? ( media-libs/nv-codec-headers )
 	x265? ( >=media-libs/x265-3.2:0=[10bit,12bit,numa?] )
 "
-DEPEND="
+DEPEND="${RDEPEND}"
+# cmake needed for custom script: bug #852701
+BDEPEND="
 	${PYTHON_DEPS}
-	${RDEPEND}
 	dev-lang/nasm
+	dev-util/cmake
 	dev-util/intltool
 "
-# Needed for custom script: bug #852701
-BDEPEND="dev-util/cmake"
 
 PATCHES=(
 	# Remove libdvdnav duplication and call it on the original instead.
