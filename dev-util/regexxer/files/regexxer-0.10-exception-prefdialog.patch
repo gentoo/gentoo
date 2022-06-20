@@ -1,0 +1,26 @@
+
+Downloaded from https://sources.debian.org/patches/regexxer/0.10-5/50_exception-prefdialog.patch/
+for bug 853067.
+
+Description: Fix unhandled exception when opening the preferences dialog.
+ (regexxer:22047): glibmm-CRITICAL **: 19:10:28.070: 
+ unhandled exception (type Glib::Error) in signal handler:
+ domain: gtk-builder-error-quark
+ code  : 11
+ what  : /usr/share/regexxer/prefdialog.ui:28:37 Invalid property:
+         gtkmm__GtkDialog.has_separator
+Author: Yavor Doganov <yavor@gnu.org>
+Forwarded: not-needed
+Last-Update: 2018-10-13
+---
+
+--- regexxer-0.10.orig/ui/prefdialog.ui
++++ regexxer-0.10/ui/prefdialog.ui
+@@ -25,7 +25,6 @@
+   <object class="GtkDialog" id="prefdialog">
+     <property name="title" translatable="yes">Preferences</property>
+     <property name="type_hint">dialog</property>
+-    <property name="has_separator">False</property>
+     <child internal-child="vbox">
+       <object class="GtkVBox" id="dialog-vbox1">
+         <property name="visible">True</property>

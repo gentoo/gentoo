@@ -26,6 +26,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-glib-2.32.patch
 	"${FILESDIR}"/${P}-sandbox.patch
+	"${FILESDIR}"/${P}-exception-prefdialog.patch
 )
 
 src_prepare() {
