@@ -79,6 +79,8 @@ DEPEND="
 	dev-lang/nasm
 	dev-util/intltool
 "
+# Needed for custom script: bug #852701
+BDEPEND="dev-util/cmake"
 
 PATCHES=(
 	# Remove libdvdnav duplication and call it on the original instead.
