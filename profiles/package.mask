@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Marc Schiffbauer <mschiff@gentoo.org> (2022-06-20)
+# Deprecated package. Removal in 30 days.
+# see bug #843746
+sys-power/tuxedo-cc-wmi
+
 # Hans de Graaff <graaff@gentoo.org> (2022-06-19)
 # Obsolete slot. Use a newer slot instead.
 # Removal in 30 days.
