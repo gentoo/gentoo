@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -sparc
 
+# Sam James <sam@gentoo.org> (2022-07-21)
+# Untested.
+ieee1394
+
 # Matt Turner <mattst88@gentoo.org> (2022-02-21)
 # app-crypt/tpm2-tss is not keyworded here
 tpm
