@@ -21,7 +21,7 @@ if [[ ${PV} == 9999  ]]; then
 fi
 
 GRUB_AUTORECONF=1
-PYTHON_COMPAT=( python{2_7,3_{6,7,8,9}} )
+PYTHON_COMPAT=( python3_{8..11} )
 WANT_LIBTOOL=none
 
 if [[ -n ${GRUB_AUTOGEN} || -n ${GRUB_BOOTSTRAP} ]]; then
