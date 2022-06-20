@@ -1,6 +1,5 @@
-
-Downloaded from https://sources.debian.org/patches/regexxer/0.10-5/50_exception-prefdialog.patch/
-for bug 853067.
+Source: https://sources.debian.org/patches/regexxer/0.10-5/50_exception-prefdialog.patch/
+Fixes: https://bugs.gentoo.org/853067
 
 Description: Fix unhandled exception when opening the preferences dialog.
  (regexxer:22047): glibmm-CRITICAL **: 19:10:28.070: 
@@ -10,10 +9,7 @@ Description: Fix unhandled exception when opening the preferences dialog.
  what  : /usr/share/regexxer/prefdialog.ui:28:37 Invalid property:
          gtkmm__GtkDialog.has_separator
 Author: Yavor Doganov <yavor@gnu.org>
-Forwarded: not-needed
 Last-Update: 2018-10-13
----
-
 --- regexxer-0.10.orig/ui/prefdialog.ui
 +++ regexxer-0.10/ui/prefdialog.ui
 @@ -25,7 +25,6 @@
