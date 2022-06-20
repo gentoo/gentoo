@@ -15,7 +15,7 @@ SRC_URI="mirror://ubuntu/pool/main/liba/${PN}/${PN}_${MY_PV}+20.10.${PATCH_VERSI
 
 LICENSE="LGPL-2.1 LGPL-3"
 SLOT="3"
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc64 ~riscv x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc64 ~riscv ~sparc x86"
 IUSE="+introspection test"
 
 RDEPEND="
