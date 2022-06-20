@@ -14,7 +14,7 @@ SRC_URI="https://github.com/AdoptOpenJDK/${PN}/archive/${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 LICENSE="GPL-2 GPL-2-with-linking-exception LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64 x86"
 IUSE="doc"
 
 # tests require ton of java deps we don't have packaged/working
