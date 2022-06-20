@@ -307,7 +307,6 @@ dev-python/dicttoxml
 # Gentoo version is over a year old.  There are no revdeps to the two
 # packages remaining.
 # Removal on 2022-06-20.  Bug #846656.
-dev-python/flask-mongoengine
 dev-python/mongoengine
 
 # Till Schäfer <till2.schaefer@uni-dortmund.de> (2022-05-20)
