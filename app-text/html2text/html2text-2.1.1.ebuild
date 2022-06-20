@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,9 +19,10 @@ HOMEPAGE="https://github.com/grobian/html2text"
 LICENSE="GPL-2"
 SLOT="0"
 
-src_prepare() {
-	default
+src_configure() {
+	# non-autoconf configure
 	tc-export CXX
+	default
 }
 
 src_compile() {

@@ -22,7 +22,7 @@ SLOT="0"
 src_configure() {
 	# non-autoconf configure
 	tc-export CXX
-	./configure || die
+	default
 }
 
 src_compile() {
