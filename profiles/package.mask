@@ -301,14 +301,6 @@ dev-python/drf-yasg
 # Removal on 2022-06-20.  Bug #846788.
 dev-python/dicttoxml
 
-# Michał Górny <mgorny@gentoo.org> (2022-05-21)
-# dev-python/mongoengine has had repeated test regressions, and this
-# time I am unable to get them anywhere close to passing.  The current
-# Gentoo version is over a year old.  There are no revdeps to the two
-# packages remaining.
-# Removal on 2022-06-20.  Bug #846656.
-dev-python/mongoengine
-
 # Till Schäfer <till2.schaefer@uni-dortmund.de> (2022-05-20)
 # Upstream unmaintained for a long time.
 # Has known bugs.
