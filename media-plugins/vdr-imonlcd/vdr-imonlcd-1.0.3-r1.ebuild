@@ -1,12 +1,12 @@
 # Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit linux-info toolchain-funcs udev vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: shows information about the current state of VDR on iMON LCD"
-HOMEPAGE="https://projects.vdr-developer.org/projects/plg-imonlcd/wiki"
+HOMEPAGE="https://github.com/vdr-projects/vdr-plugin-imonlcd/wiki"
 SRC_URI="https://github.com/vdr-projects/vdr-plugin-imonlcd/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/vdr-plugin-imonlcd-${PV}"
 
@@ -47,5 +47,9 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
 	udev_reload
 }
