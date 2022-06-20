@@ -396,14 +396,6 @@ dev-ml/core_bench:0/0.15
 dev-ml/patience_diff:0/0.15
 dev-util/patdiff:0/0.15
 
-# David Seifert <soap@gentoo.org> (2022-04-17)
-# Dead library, part of >=sys-fs/e2fsprogs-1.46.5 now, bug #806875,
-# removal on 2022-05-17.
-# (If you hit blockers, please run:
-# $ emerge --deselect sys-libs/e2fsprogs-libs
-# This is necessary as your world file should not contain dependencies.)
-sys-libs/e2fsprogs-libs
-
 # Marek Szuba <marecki@gentoo.org> (2022-04-14)
 # Singularity has been renamed upstream to Apptainer. Therefore, up-to-date
 # versions of this software are now available as app-containers/apptainer.
