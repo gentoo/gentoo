@@ -32,6 +32,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-5.44.1.15-ldflags.patch
 	eapply "${FILESDIR}"/${PN}-5.45-headers.patch #337943
 	eapply "${FILESDIR}"/${PN}-5.45-format-security.patch
+	eapply "${FILESDIR}"/${PN}-5.45.4-configure-in.patch
 	sed -i 's:ifdef HAVE_SYS_WAIT_H:ifndef NO_SYS_WAIT_H:' *.c
 
 	# fix install_name on darwin
