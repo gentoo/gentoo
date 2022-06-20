@@ -112,6 +112,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.15.3_p20220406-gcc12-includes.patch" # by openSUSE, bug 840326
 	"${WORKDIR}/${PN}-5.15.2_p20211019-jumbo-build.patch" # bug 813957
 	"${WORKDIR}/${PN}-5.15.3_p20220406-patchset" # bug 698988 (py2--), pipewire-3
+	"${FILESDIR}/${P}-fixup-CVE-2022-0796.patch" # bug 853097
 )
 
 qtwebengine_check-reqs() {
