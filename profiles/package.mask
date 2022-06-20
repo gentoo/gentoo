@@ -301,12 +301,6 @@ dev-python/drf-yasg
 # Removal on 2022-06-20.  Bug #846788.
 dev-python/dicttoxml
 
-# Till Schäfer <till2.schaefer@uni-dortmund.de> (2022-05-20)
-# Upstream unmaintained for a long time.
-# Has known bugs.
-# Removal in 30 days, bug #837092
-kde-misc/playbar2
-
 # Hans de Graaff <graaff@gentoo.org> (2022-05-20)
 # Unused slots of cucumber components that are no longer or were never
 # used by current cucumber versions. Masked for removal in 30 days.
