@@ -9,7 +9,7 @@ inherit edo perl-module toolchain-funcs
 
 DESCRIPTION="Fast, compact, powerful binary deserialization"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
