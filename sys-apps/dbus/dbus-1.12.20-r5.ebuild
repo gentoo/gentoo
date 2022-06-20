@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
 PYTHON_COMPAT=( python3_{8..10} )
 TMPFILES_OPTIONAL=1
 
@@ -49,6 +48,7 @@ RDEPEND="${COMMON_DEPEND}
 	acct-user/messagebus
 	selinux? ( sec-policy/selinux-dbus )
 	systemd? ( virtual/tmpfiles )
+	X? ( sys-apps/which )
 "
 
 DOC_CONTENTS="
@@ -60,13 +60,8 @@ DOC_CONTENTS="
 TBD="${WORKDIR}/${P}-tests-build"
 
 PATCHES=(
-	"${FILESDIR}/dbus-enable-elogind.patch"
-	"${FILESDIR}/dbus-daemon-optional.patch" # bug #653136
-
-	"${FILESDIR}/dbus-1.12.22-check-fd.patch"
-
-	# https://bugs.gentoo.org/836560
-	"${FILESDIR}/dbus-1.14.0-oom_score_adj.patch"
+	"${FILESDIR}/${PN}-enable-elogind.patch"
+	"${FILESDIR}/${PN}-daemon-optional.patch" # bug #653136
 )
 
 pkg_setup() {
