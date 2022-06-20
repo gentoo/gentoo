@@ -295,12 +295,6 @@ dev-python/fusepy
 # does not yet support Python 3.10+. Removal on 2022-06-21. bugs #845720, #797850.
 dev-python/drf-yasg
 
-# Michał Górny <mgorny@gentoo.org> (2022-05-21)
-# No commit activity since 2016.  Requires patching for Python 3.10.
-# No tests.  No revdeps.
-# Removal on 2022-06-20.  Bug #846788.
-dev-python/dicttoxml
-
 # Hans de Graaff <graaff@gentoo.org> (2022-05-20)
 # Unused slots of cucumber components that are no longer or were never
 # used by current cucumber versions. Masked for removal in 30 days.
