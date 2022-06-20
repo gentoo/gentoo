@@ -1,0 +1,447 @@
+original vdr-pinplugin_vdr-2.3.1.diff
+rebased for media-video/vdr-2.6.1
+
+Signed-off-by: Christian Kunkel <ch.kunkel@gmx.de> ( 2021 Feb 12 )
+Reviewed-by: Martin Dummer <martin.dummer@gmx.net> ( 2022-06-22 )
+diff -Naur a/Makefile b/Makefile
+--- a/Makefile	2022-02-02 10:56:43.000000000 +0100
++++ b/Makefile	2022-06-20 08:08:11.346956148 +0200
+@@ -351,7 +351,7 @@
+ clean:
+ 	@$(MAKE) --no-print-directory -C $(LSIDIR) clean
+ 	@-rm -f $(OBJS) $(DEPFILE) vdr vdr.pc core* *~
+-	@-rm -rf $(LOCALEDIR) $(PODIR)/*.mo $(PODIR)/*.pot
++	@-rm -rf $(LOCALEDIR) $(PODIR)/*~ $(PODIR)/*.mo $(PODIR)/*.pot
+ 	@-rm -rf include
+ 	@-rm -rf srcdoc
+ CLEAN: clean
+diff -Naur a/device.c b/device.c
+--- a/device.c	2022-02-02 10:56:43.000000000 +0100
++++ b/device.c	2022-06-20 08:08:11.346956148 +0200
+@@ -839,6 +839,7 @@
+      const cChannel *Channel;
+      while ((Channel = Channels->GetByNumber(n, Direction)) != NULL) {
+            // try only channels which are currently available
++           if (!cStatus::MsgChannelProtected(0, Channel))      // PIN PATCH
+            if (GetDevice(Channel, LIVEPRIORITY, true, true))
+               break;
+            n = Channel->Number() + Direction;
+@@ -860,6 +861,12 @@
+ 
+ eSetChannelResult cDevice::SetChannel(const cChannel *Channel, bool LiveView)
+ {
++  // I hope 'LiveView = false' indicates a channel switch for recording, // PIN PATCH
++  // I really don't know, but it works ...                               // PIN PATCH
++
++  if (LiveView && cStatus::MsgChannelProtected(this, Channel))           // PIN PATCH
++     return scrNotAvailable;                                             // PIN PATCH
++
+   cMutexLock MutexLock(&mutexChannel); // to avoid a race between SVDRP CHAN and HasProgramme()
+   cStatus::MsgChannelSwitch(this, 0, LiveView);
+ 
+diff -Naur a/menu.c b/menu.c
+--- a/menu.c	2022-02-02 10:56:43.000000000 +0100
++++ b/menu.c	2022-06-20 08:08:11.346956148 +0200
+@@ -1035,6 +1035,18 @@
+      Add(new cMenuEditBitItem( tr("VPS"),          &data.flags, tfVps));
+      Add(new cMenuEditIntItem( tr("Priority"),     &data.priority, 0, MAXPRIORITY));
+      Add(new cMenuEditIntItem( tr("Lifetime"),     &data.lifetime, 0, MAXLIFETIME));
++
++     // PIN PATCH
++     if (cOsd::pinValid || !data.fskProtection) Add(new cMenuEditBoolItem(tr("Childlock"),&data.fskProtection));
++     else {
++        char* buf = 0;
++        int res = 0;
++        res = asprintf(&buf, "%s\t%s", tr("Childlock"), data.fskProtection ? tr("yes") : tr("no"));
++        if (res < 0) ; // memory problems :o
++        Add(new cOsdItem(buf));
++        free(buf);
++        }
++
+      Add(file = new cMenuEditStrItem( tr("File"),   data.file, sizeof(data.file)));
+      SetFirstDayItem();
+      SetPatternItem(true);
+@@ -3130,7 +3142,8 @@
+                       }
+                    }
+                }
+-            if (*Item->Text() && !LastDir) {
++            if (*Item->Text() && !LastDir
++                && (!cStatus::MsgReplayProtected(Item->Recording(), Item->Name(), base, Item->IsDirectory(), true))) { // PIN PATCH
+                Add(Item);
+                LastItem = Item;
+                if (Item->IsDirectory())
+@@ -3201,6 +3214,9 @@
+ {
+   cMenuRecordingItem *ri = (cMenuRecordingItem *)Get(Current());
+   if (ri) {
++     if (cStatus::MsgReplayProtected(ri->Recording(), ri->Name(), base,
++                                     ri->IsDirectory()) == true)    // PIN PATCH
++        return osContinue;
+      if (ri->IsDirectory())
+         Open();
+      else {
+@@ -4506,28 +4522,32 @@
+ 
+   // Basic menu items:
+ 
+-  Add(new cOsdItem(hk(tr("Schedule")),   osSchedule));
+-  Add(new cOsdItem(hk(tr("Channels")),   osChannels));
+-  Add(new cOsdItem(hk(tr("Timers")),     osTimers));
+-  Add(new cOsdItem(hk(tr("Recordings")), osRecordings));
++  // PIN PATCH
++  if (!cStatus::MsgMenuItemProtected("Schedule", true))   Add(new cOsdItem(hk(tr("Schedule")),   osSchedule));
++  if (!cStatus::MsgMenuItemProtected("Channels", true))   Add(new cOsdItem(hk(tr("Channels")),   osChannels));
++  if (!cStatus::MsgMenuItemProtected("Timers", true))     Add(new cOsdItem(hk(tr("Timers")),     osTimers));
++  if (!cStatus::MsgMenuItemProtected("Recordings", true)) Add(new cOsdItem(hk(tr("Recordings")), osRecordings));
+ 
+   // Plugins:
+ 
+   for (int i = 0; ; i++) {
+       cPlugin *p = cPluginManager::GetPlugin(i);
+       if (p) {
++         if (!cStatus::MsgPluginProtected(p, true)) {          // PIN PATCH
+          const char *item = p->MainMenuEntry();
+          if (item)
+             Add(new cMenuPluginItem(hk(item), i));
+          }
++      }
+       else
+          break;
+       }
+ 
+   // More basic menu items:
+ 
+-  Add(new cOsdItem(hk(tr("Setup")),      osSetup));
++  if (!cStatus::MsgMenuItemProtected("Setup", true)) Add(new cOsdItem(hk(tr("Setup")), osSetup));  // PIN PATCH
+   if (Commands.Count())
++     if (!cStatus::MsgMenuItemProtected("Commands", true))     // PIN PATCH
+      Add(new cOsdItem(hk(tr("Commands")),  osCommands));
+ 
+   Update(true);
+@@ -4600,6 +4620,14 @@
+   eOSState state = cOsdMenu::ProcessKey(Key);
+   HadSubMenu |= HasSubMenu();
+ 
++  // > PIN PATCH
++  cOsdItem* item = Get(Current());
++
++  if (item && item->Text() && state != osContinue && state != osUnknown && state != osBack)
++     if (cStatus::MsgMenuItemProtected(item->Text()))
++        return osContinue;
++  // PIN PATCH <
++
+   switch (state) {
+     case osSchedule:   return AddSubMenu(new cMenuSchedule);
+     case osChannels:   return AddSubMenu(new cMenuChannels);
+@@ -4624,6 +4652,7 @@
+                          if (item) {
+                             cPlugin *p = cPluginManager::GetPlugin(item->PluginIndex());
+                             if (p) {
++                            if (!cStatus::MsgPluginProtected(p)) {  // PIN PATCH
+                                cOsdObject *menu = p->MainMenuAction();
+                                if (menu) {
+                                   if (menu->IsMenu())
+@@ -4635,6 +4664,7 @@
+                                   }
+                                }
+                             }
++                         }
+                          state = osEnd;
+                        }
+                        break;
+@@ -4814,6 +4844,7 @@
+            Channel = Direction > 0 ? Channels->Next(Channel) : Channels->Prev(Channel);
+            if (!Channel && Setup.ChannelsWrap)
+               Channel = Direction > 0 ? Channels->First() : Channels->Last();
++           if (!cStatus::MsgChannelProtected(0, Channel))                   // PIN PATCH
+            if (Channel && !Channel->GroupSep() && cDevice::GetDevice(Channel, LIVEPRIORITY, true, true))
+               return Channel;
+            }
+@@ -5491,6 +5522,7 @@
+            for (int i = 0; i < MAXRECORDCONTROLS; i++) {
+                if (!RecordControls[i]) {
+                   RecordControls[i] = new cRecordControl(device, Timers, Timer, Pause);
++                  cStatus::MsgRecordingFile(RecordControls[i]->FileName());  // PIN PATCH
+                   return RecordControls[i]->Process(time(NULL));
+                   }
+                }
+diff -Naur a/osd.c b/osd.c
+--- a/osd.c	2022-02-02 10:56:43.000000000 +0100
++++ b/osd.c	2022-06-20 08:08:11.346956148 +0200
+@@ -1844,6 +1844,7 @@
+ cSize cOsd::maxPixmapSize(INT_MAX, INT_MAX);
+ cVector<cOsd *> cOsd::Osds;
+ cMutex cOsd::mutex;
++bool cOsd::pinValid = false;   // PIN PATCH
+ 
+ cOsd::cOsd(int Left, int Top, uint Level)
+ {
+diff -Naur a/osd.h b/osd.h
+--- a/osd.h	2022-02-02 10:56:43.000000000 +0100
++++ b/osd.h	2022-06-20 08:08:11.346956148 +0200
+@@ -957,6 +957,7 @@
+        ///<
+        ///< If a plugin uses a derived cPixmap implementation, it needs to use that
+        ///< type instead of cPixmapMemory.
++  static bool pinValid;   // PIN PATCH
+   };
+ 
+ #define MAXOSDIMAGES 64
+diff -Naur a/status.c b/status.c
+--- a/status.c	2022-02-02 10:56:43.000000000 +0100
++++ b/status.c	2022-06-20 08:08:11.346956148 +0200
+@@ -136,3 +136,55 @@
+   for (cStatus *sm = statusMonitors.First(); sm; sm = statusMonitors.Next(sm))
+       sm->OsdProgramme(PresentTime, PresentTitle, PresentSubtitle, FollowingTime, FollowingTitle, FollowingSubtitle);
+ }
++
++bool cStatus::MsgChannelProtected(const cDevice* Device, const cChannel* Channel)     // PIN PATCH
++{
++  for (cStatus *sm = statusMonitors.First(); sm; sm = statusMonitors.Next(sm))
++      if (sm->ChannelProtected(Device, Channel) == true)
++ 	 return true;
++
++  return false;
++}
++
++bool cStatus::MsgReplayProtected(const cRecording* Recording, const char* Name,
++                                 const char* Base, bool isDirectory, int menuView)    // PIN PATCH
++{
++  for (cStatus *sm = statusMonitors.First(); sm; sm = statusMonitors.Next(sm))
++     if (sm->ReplayProtected(Recording, Name, Base, isDirectory, menuView) == true)
++         return true;
++      return false;
++}
++
++void cStatus::MsgRecordingFile(const char* FileName)
++{
++  for (cStatus *sm = statusMonitors.First(); sm; sm = statusMonitors.Next(sm))   // PIN PATCH
++      sm->RecordingFile(FileName);
++}
++
++void cStatus::MsgTimerCreation(cTimer* Timer, const cEvent *Event)
++{
++  for (cStatus *sm = statusMonitors.First(); sm; sm = statusMonitors.Next(sm))   // PIN PATCH
++     sm->TimerCreation(Timer, Event);
++}
++
++bool cStatus::MsgPluginProtected(cPlugin* Plugin, int menuView)                  // PIN PATCH
++{
++  for (cStatus *sm = statusMonitors.First(); sm; sm = statusMonitors.Next(sm))
++     if (sm->PluginProtected(Plugin, menuView) == true)
++         return true;
++      return false;
++}
++
++void cStatus::MsgUserAction(const eKeys key)                                     // PIN PATCH
++{
++  for (cStatus *sm = statusMonitors.First(); sm; sm = statusMonitors.Next(sm))
++     sm->UserAction(key);
++}
++
++bool cStatus::MsgMenuItemProtected(const char* Name, int menuView)               // PIN PATCH
++{
++  for (cStatus *sm = statusMonitors.First(); sm; sm = statusMonitors.Next(sm))
++     if (sm->MenuItemProtected(Name, menuView) == true)
++         return true;
++      return false;
++}
+diff -Naur a/status.h b/status.h
+--- a/status.h	2022-02-02 10:56:43.000000000 +0100
++++ b/status.h	2022-06-20 08:08:11.350956230 +0200
+@@ -14,6 +14,7 @@
+ #include "device.h"
+ #include "player.h"
+ #include "tools.h"
++#include "plugin.h"
+ 
+ // Several member functions of the following classes are called with a pointer to
+ // an object from a global list (cTimer, cChannel, cRecording or cEvent). In these
+@@ -99,6 +100,22 @@
+                // The OSD displays the single line Text with the current channel information.
+   virtual void OsdProgramme(time_t PresentTime, const char *PresentTitle, const char *PresentSubtitle, time_t FollowingTime, const char *FollowingTitle, const char *FollowingSubtitle) {}
+                // The OSD displays the given programme information.
++  virtual bool ChannelProtected(const cDevice *Device, const cChannel* Channel)  { return false; }         // PIN PATCH
++               // Checks if a channel is protected.
++  virtual bool ReplayProtected(const cRecording* Recording, const char* Name,
++                               const char* Base, bool isDirectory, int menuView = false) { return false; } // PIN PATCH
++               // Checks if a recording is protected.
++  virtual void RecordingFile(const char* FileName) {}                                                      // PIN PATCH
++               // The given DVB device has started recording to FileName. FileName is the name of the
++               // recording directory
++  virtual void TimerCreation(cTimer* Timer, const cEvent *Event) {}                                        // PIN PATCH
++               // The given timer is created
++  virtual bool PluginProtected(cPlugin* Plugin, int menuView = false)  { return false; }                   // PIN PATCH
++               // Checks if a plugin is protected.
++  virtual void UserAction(const eKeys key) {}                                                              // PIN PATCH
++               // report user action
++  virtual bool MenuItemProtected(const char* Name, int menuView = false)  { return false; }                // PIN PATCH
++
+ public:
+   cStatus(void);
+   virtual ~cStatus();
+@@ -122,6 +139,14 @@
+   static void MsgOsdTextItem(const char *Text,  bool Scroll = false);
+   static void MsgOsdChannel(const char *Text);
+   static void MsgOsdProgramme(time_t PresentTime, const char *PresentTitle, const char *PresentSubtitle, time_t FollowingTime, const char *FollowingTitle, const char *FollowingSubtitle);
++  static bool MsgChannelProtected(const cDevice* Device, const cChannel* Channel);                 // PIN PATCH
++  static bool MsgReplayProtected(const cRecording* Recording, const char* Name,
++                                 const char* Base, bool isDirectory, int menuView = false);        // PIN PATCH
++  static void MsgRecordingFile(const char* FileName);                                              // PIN PATCH
++  static void MsgTimerCreation(cTimer* Timer, const cEvent *Event);                                // PIN PATCH
++  static bool MsgPluginProtected(cPlugin* Plugin, int menuView = false);                           // PIN PATCH
++  static void MsgUserAction(const eKeys key);                                                      // PIN PATCH
++  static bool MsgMenuItemProtected(const char* Name, int menuView = false);                        // PIN PATCH
+   };
+ 
+ #endif //__STATUS_H
+diff -Naur a/timers.c b/timers.c
+--- a/timers.c	2022-02-02 10:56:43.000000000 +0100
++++ b/timers.c	2022-06-20 08:14:07.898392829 +0200
+@@ -81,6 +81,7 @@
+      stop -= 2400;
+   priority = Pause ? Setup.PausePriority : Setup.DefaultPriority;
+   lifetime = Pause ? Setup.PauseLifetime : Setup.DefaultLifetime;
++  fskProtection = 0;                                        // PIN PATCH
+   if (Instant && channel)
+      snprintf(file, sizeof(file), "%s%s", Setup.MarkInstantRecord ? "@" : "", *Setup.NameInstantRecord ? Setup.NameInstantRecord : channel->Name());
+ }
+@@ -212,11 +213,13 @@
+      stop -= 2400;
+   priority = PatternTimer ? PatternTimer->Priority() : Setup.DefaultPriority;
+   lifetime = PatternTimer ? PatternTimer->Lifetime() : Setup.DefaultLifetime;
++  fskProtection = 0;                                        // PIN PATCH
+   if (!FileName)
+      FileName = Event->Title();
+   if (!isempty(FileName))
+      Utf8Strn0Cpy(file, FileName, sizeof(file));
+   SetEvent(Event);
++  cStatus::MsgTimerCreation(this, Event);                   // PIN PATCH
+ }
+ 
+ cTimer::cTimer(const cTimer &Timer)
+@@ -255,6 +258,7 @@
+      stop         = Timer.stop;
+      priority     = Timer.priority;
+      lifetime     = Timer.lifetime;
++     fskProtection = Timer.fskProtection;    // PIN PATCH
+      strncpy(pattern, Timer.pattern, sizeof(pattern));
+      strncpy(file, Timer.file, sizeof(file));
+      free(aux);
+@@ -484,6 +488,7 @@
+         result = false;
+         }
+      }
++  fskProtection = aux && strstr(aux, "<pin-plugin><protected>yes</protected></pin-plugin>");  // PIN PATCH
+   free(channelbuffer);
+   free(daybuffer);
+   free(filebuffer);
+@@ -1037,6 +1042,36 @@
+   Matches(); // refresh start and end time
+ }
+ 
++void cTimer::SetFskProtection(int aFlag)      // PIN PATCH
++{
++   char* p;
++   char* tmp = 0;
++   int res = 0;
++
++   fskProtection = aFlag;
++
++   if (fskProtection && (!aux || !strstr(aux, "<pin-plugin><protected>yes</protected></pin-plugin>")))
++   {
++      // add protection info to aux
++
++      if (aux) { tmp = strdup(aux); free(aux); }
++      res = asprintf(&aux, "%s<pin-plugin><protected>yes</protected></pin-plugin>", tmp ? tmp : "");
++   }
++   else if (!fskProtection && aux && (p = strstr(aux, "<pin-plugin><protected>yes</protected></pin-plugin>")))
++   {
++      // remove protection info from aux
++
++      res = asprintf(&tmp, "%.*s%s", (int)(p-aux), aux, p+strlen("<pin-plugin><protected>yes</protected></pin-plugin>"));
++      free(aux);
++      aux = strdup(tmp);
++   }
++
++   if (res < 0) ; // memory problems :o
++
++   if (tmp)
++      free(tmp);
++}
++
+ // --- cTimers ---------------------------------------------------------------
+ 
+ cTimers cTimers::timers;
+diff -Naur a/timers.h b/timers.h
+--- a/timers.h	2022-02-02 10:56:43.000000000 +0100
++++ b/timers.h	2022-06-20 08:08:11.350956230 +0200
+@@ -45,6 +45,7 @@
+   int start;          ///< the start and stop time of this timer as given by the user,
+   int stop;           ///< in the form hhmm, with hh (00..23) and mm (00..59) added as hh*100+mm
+   int priority;
++  int fskProtection;                                               // PIN PATCH
+   int lifetime;
+   mutable char pattern[NAME_MAX * 2 + 1]; // same size as 'file', to be able to initially fill 'pattern' with 'file' in the 'Edit timer' menu
+   mutable char file[NAME_MAX * 2 + 1]; // *2 to be able to hold 'title' and 'episode', which can each be up to 255 characters long
+@@ -70,6 +71,7 @@
+   int Start(void) const { return start; }
+   int Stop(void) const { return stop; }
+   int Priority(void) const { return priority; }
++  int FskProtection(void) const { return fskProtection; }          // PIN PATCH
+   int Lifetime(void) const { return lifetime; }
+   const char *Pattern(void) const { return pattern; }
+   const char *File(void) const { return file; }
+@@ -120,6 +122,7 @@
+   void SetRemote(const char *Remote);
+   void SetDeferred(int Seconds);
+   void SetFlags(uint Flags);
++  void SetFskProtection(int aFlag);                                // PIN PATCH
+   void ClrFlags(uint Flags);
+   void InvFlags(uint Flags);
+   bool HasFlags(uint Flags) const;
+diff -Naur a/vdr.c b/vdr.c
+--- a/vdr.c	2022-02-02 10:56:43.000000000 +0100
++++ b/vdr.c	2022-06-20 08:08:11.350956230 +0200
+@@ -71,6 +71,7 @@
+ #include "tools.h"
+ #include "transfer.h"
+ #include "videodir.h"
++#include "status.h"     // PIN PATCH
+ 
+ #define MINCHANNELWAIT        10 // seconds to wait between failed channel switchings
+ #define ACTIVITYTIMEOUT       60 // seconds before starting housekeeping
+@@ -1210,6 +1211,7 @@
+         if (!Menu)
+            Interact = Control = cControl::Control(ControlMutexLock);
+         if (ISREALKEY(key)) {
++           cStatus::MsgUserAction(key);           // PIN PATCH
+            EITScanner.Activity();
+            // Cancel shutdown countdown:
+            if (ShutdownHandler.countdown)
+@@ -1282,10 +1284,12 @@
+                      Control->Hide();
+                   cPlugin *plugin = cPluginManager::GetPlugin(PluginName);
+                   if (plugin) {
++                     if (!cStatus::MsgPluginProtected(plugin)) {  // PIN PATCH
+                      Menu = plugin->MainMenuAction();
+                      if (Menu)
+                         Menu->Show();
+                      }
++                  }
+                   else
+                      esyslog("ERROR: unknown plugin '%s'", PluginName);
+                   }
+@@ -1505,9 +1509,11 @@
+              case kPlay:
+                   if (cReplayControl::LastReplayed()) {
+                      Control = NULL;
++                     if (cStatus::MsgReplayProtected(0, cReplayControl::LastReplayed(), 0, false) == false) {  // PIN PATCH
+                      cControl::Shutdown();
+                      cControl::Launch(new cReplayControl);
+                      }
++                  }
+                   else
+                      DirectMainFunction(osRecordings); // no last viewed recording, so enter the Recordings menu
+                   break;
