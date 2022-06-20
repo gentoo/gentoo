@@ -17,9 +17,8 @@ IUSE="doc"
 BDEPEND="doc? ( app-doc/doxygen )"
 
 PATCHES=(
-	"${FILESDIR}/${PV}-x32.diff"
-	"${FILESDIR}/${PN}-${PV}-gnu_source.patch"
-
+	"${FILESDIR}/${PV}-x32.patch"
+	"${FILESDIR}/${PV}-gnu_source.patch"
 )
 
 
