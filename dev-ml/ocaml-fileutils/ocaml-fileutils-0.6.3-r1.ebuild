@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,6 +18,7 @@ IUSE="+ocamlopt"
 
 DEPEND=">=dev-ml/ounit2-2.0.0
 	>=dev-ml/stdlib-shims-0.2.0"
+RDEPEND="${DEPEND}"
 
 DOCS=( "README.md" "CHANGES.md" "LICENSE.txt" )
 
