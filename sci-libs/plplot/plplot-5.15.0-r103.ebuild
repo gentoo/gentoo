@@ -45,8 +45,8 @@ RDEPEND="
 	)
 	lua? ( ${LUA_DEPS} )
 	ocaml? (
-		dev-lang/ocaml
-		dev-ml/camlidl
+		dev-lang/ocaml:=
+		dev-ml/camlidl:=
 	)
 	octave? ( sci-mathematics/octave:0= )
 	pdf? ( media-libs/libharu:0= )
