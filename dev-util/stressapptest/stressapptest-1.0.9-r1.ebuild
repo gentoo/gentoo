@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=8
 
 inherit flag-o-matic
 
@@ -18,10 +18,7 @@ RDEPEND="dev-libs/libaio"
 DEPEND="${RDEPEND}"
 
 src_configure() {
-	# Uses uintptr_t, which is C++11, #651842
-	append-cxxflags -std=c++11
-
-	# Matches the configure & sat.cc logic.
+	# Matches the configure & sat.cc logic
 	use debug || append-cppflags -DNDEBUG -DCHECKOPTS
 	econf --disable-default-optimizations
 }
