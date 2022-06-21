@@ -11,7 +11,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">geventhttpclient</remote-id>
-		<remote-id type="github">gwik/geventhttpclient</remote-id>
-		<bugs-to>https://github.com/gwik/geventhttpclient/issues</bugs-to>
+		<remote-id type="github">geventhttpclient/geventhttpclient</remote-id>
+		<bugs-to>https://github.com/geventhttpclient/geventhttpclient/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
