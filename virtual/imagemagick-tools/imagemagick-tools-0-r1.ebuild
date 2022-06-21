@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Virtual for imagemagick command line tools"
 SLOT="0"
@@ -13,7 +13,7 @@ IUSE="jpeg perl png svg tiff"
 # for linking against, as subslots are not transitively passed on.
 # For linking, you will need to depend on the respective libraries
 # in all consuming ebuilds and use appropriate sub-slot operators.
-# See also: https://bugs.gentoo.org/show_bug.cgi?id=314431
+# See also: https://bugs.gentoo.org/314431
 RDEPEND="
 	|| (
 		media-gfx/imagemagick[jpeg?,perl?,png?,svg?,tiff?]
