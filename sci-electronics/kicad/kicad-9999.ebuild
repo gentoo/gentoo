@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 WX_GTK_VER="3.0-gtk3"
 
 inherit check-reqs cmake optfeature python-single-r1 toolchain-funcs wxwidgets xdg-utils
@@ -21,7 +21,7 @@ else
 	S="${WORKDIR}/${PN}-${MY_PV}"
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~amd64 ~arm64 ~x86"
+		KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 	fi
 fi
 
@@ -74,10 +74,6 @@ fi
 
 CHECKREQS_DISK_BUILD="900M"
 
-pkg_pretend() {
-	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
-}
-
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
@@ -98,7 +94,7 @@ src_configure() {
 	xdg_environment_reset
 
 	local mycmakeargs=(
-		-DKICAD_DOCS="${EPREFIX}/usr/share/doc/${PF}"
+		-DKICAD_DOCS="${EPREFIX}/usr/share/doc/${PN}-doc-${PV}"
 
 		-DKICAD_SCRIPTING_WXPYTHON=ON
 
