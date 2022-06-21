@@ -285,11 +285,6 @@ dev-python/pypeg2
 # Removal on 2022-06-22. bug #700944, bug #845834
 dev-python/pytest-cache
 
-# Sam James <sam@gentoo.org> (2022-05-21)
-# No activity upstream since 2018, unmaintained upstream, does not support
-# Python 3.10+. Removal on 2022-06-21. bug #845726.
-dev-python/fusepy
-
 # Hans de Graaff <graaff@gentoo.org> (2022-05-20)
 # Unused slots of cucumber components that are no longer or were never
 # used by current cucumber versions. Masked for removal in 30 days.
