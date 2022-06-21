@@ -1,0 +1,254 @@
+From caa6f31f1032f21756ab327429702feb4381045e Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Mon, 30 May 2022 12:16:24 -0400
+Subject: [PATCH] Disable things we don't want
+
+---
+ meson.build                   | 11 +++--------
+ src/egl/opengl/meson.build    | 29 ----------------------------
+ src/egl/opengles2/meson.build |  5 -----
+ src/glad/meson.build          | 17 -----------------
+ src/meson.build               |  2 --
+ src/util/gl_wrap.h            |  2 --
+ src/util/meson.build          | 20 -------------------
+ src/xdemos/meson.build        | 36 -----------------------------------
+ 8 files changed, 3 insertions(+), 119 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index e1968fab..9d59c1ec 100644
+--- a/meson.build
++++ b/meson.build
+@@ -75,14 +75,7 @@ endif
+ 
+ dep_threads = dependency('threads')
+ 
+-dep_glu = dependency('glu', required : dep_x11.found())
+-if not dep_glu.found()
+-  _glu_name = 'GLU'
+-  if host_machine.system() == 'windows'
+-    _glu_name = 'glu32'
+-  endif
+-  dep_glu = cc.find_library(_glu_name, has_headers: 'GL/glu.h')
+-endif
++dep_glu = disabler()
+ 
+ # GBM is needed for EGL on KMS
+ dep_gbm = dependency('gbm', required : false, disabler : true)
+@@ -117,6 +110,8 @@ else
+   )
+ endif
+ 
++dep_glut = disabler()
++
+ if dep_glut.found() and cc.has_function('glutInitContextProfile',
+                                         include_directories: glut_incdir,
+                                         prefix : '#include <GL/freeglut.h>')
+diff --git a/src/egl/opengl/meson.build b/src/egl/opengl/meson.build
+index ba7cadc3..789b25a5 100644
+--- a/src/egl/opengl/meson.build
++++ b/src/egl/opengl/meson.build
+@@ -4,41 +4,12 @@ executable(
+   'eglgears_x11', files('eglgears.c'),
+   dependencies: [_deps, idep_eglut_x11]
+ )
+-executable(
+-  'egltri_x11', files('egltri.c'),
+-  dependencies: [_deps, dep_glu, idep_eglut_x11]
+-)
+-executable(
+-  'xeglgears', files('xeglgears.c'),
+-  dependencies: [_deps, dep_glu, dep_egl, dep_x11]
+-)
+-executable(
+-  'xeglthreads', files('xeglthreads.c'),
+-  dependencies: [_deps, dep_x11]
+-)
+-
+ executable(
+   'eglgears_wayland', files('eglgears.c'),
+   dependencies: [_deps, dep_glu, idep_eglut_wayland]
+ )
+-executable(
+-  'egltri_wayland', files('egltri.c'),
+-  dependencies: [_deps, dep_glu, idep_eglut_wayland]
+-)
+-
+-executable(
+-  'eglkms', 'eglkms.c',
+-  dependencies: [_deps, dep_drm, dep_gbm, dep_egl]
+-)
+-
+ executable(
+   'eglinfo', 'eglinfo.c',
+   dependencies: [dep_egl],
+   install: true
+ )
+-
+-executable(
+-  'peglgears', 'peglgears.c',
+-  dependencies: [dep_gl, dep_glu, dep_egl, dep_m, idep_util]
+-)
+-
+diff --git a/src/egl/opengles2/meson.build b/src/egl/opengles2/meson.build
+index 59f69ed7..7137a961 100644
+--- a/src/egl/opengles2/meson.build
++++ b/src/egl/opengles2/meson.build
+@@ -9,11 +9,6 @@ executable(
+   dependencies: [dep_gles2, idep_eglut_x11, dep_m],
+   install: true
+ )
+-executable(
+-  'es2tri', files('es2tri.c'),
+-  dependencies: [_deps_x11, dep_m],
+-  install: true
+-)
+ executable(
+   'es2gears_wayland', files('es2gears.c'),
+   dependencies: [dep_gles2, idep_eglut_wayland, dep_m],
+diff --git a/src/glad/meson.build b/src/glad/meson.build
+index 2d107609..23dacd45 100644
+--- a/src/glad/meson.build
++++ b/src/glad/meson.build
+@@ -19,20 +19,3 @@
+ # SOFTWARE.
+ 
+ inc_glad = include_directories('include')
+-
+-_libglad_files = files('src/glad.c')
+-if host_machine.system() == 'windows'
+-  _libglad_files += files('src/glad_wgl.c')
+-endif
+-
+-_libglad = static_library(
+-  'glad',
+-  _libglad_files,
+-  include_directories: inc_glad
+-)
+-
+-idep_glad = declare_dependency(
+-  link_with: _libglad,
+-  dependencies: dep_dl,
+-  include_directories: inc_glad,
+-)
+diff --git a/src/meson.build b/src/meson.build
+index 39cac78d..4d4abbf8 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -55,5 +55,3 @@ endif
+ if host_machine.system() == 'windows'
+   subdir('wgl')
+ endif
+-
+-subdir('data')
+diff --git a/src/util/gl_wrap.h b/src/util/gl_wrap.h
+index b2ff9c8f..f482df5e 100644
+--- a/src/util/gl_wrap.h
++++ b/src/util/gl_wrap.h
+@@ -7,10 +7,8 @@
+ 
+ #ifdef __APPLE__
+ #  include <OpenGL/gl.h>
+-#  include <OpenGL/glu.h>
+ #else
+ #  include <GL/gl.h>
+-#  include <GL/glu.h>
+ #endif
+ 
+ #ifndef GLAPIENTRY
+diff --git a/src/util/meson.build b/src/util/meson.build
+index 9168aecf..066073cc 100644
+--- a/src/util/meson.build
++++ b/src/util/meson.build
+@@ -20,26 +20,6 @@
+ 
+ inc_util = include_directories('.')
+ 
+-files_libutil = files(
+-  'readtex.c',
+-  'showbuffer.c',
+-  'trackball.c',
+-)
+-
+-_deps = [dep_glu]
+-if dep_glut.found()
+-  files_libutil += files('shaderutil.c')
+-  _deps += dep_glut
+-endif
+-
+-_libutil = static_library(
+-  'util',
+-  files_libutil,
+-  include_directories: inc_glad,
+-  dependencies: _deps,
+-)
+-
+ idep_util = declare_dependency(
+-  link_with: _libutil,
+   include_directories: inc_util,
+ )
+diff --git a/src/xdemos/meson.build b/src/xdemos/meson.build
+index d6d5d5d5..ce26699f 100644
+--- a/src/xdemos/meson.build
++++ b/src/xdemos/meson.build
+@@ -21,25 +21,7 @@
+ glx_deps = [dep_gl, dep_x11, dep_m]
+ 
+ progs = [
+-  'glsync',
+-  'glxdemo',
+   'glxgears',
+-  'glxgears_pixmap',
+-  'glxcontexts',
+-  'glxheads',
+-  'glxpixmap',
+-  'glxpbdemo',
+-  'glxsnoop',
+-  'glxswapcontrol',
+-  'manywin',
+-  'multictx',
+-  'offset',
+-  'overlay',
+-  'shape',
+-  'sharedtex',
+-  'texture_from_pixmap',
+-  'wincopy',
+-  'xfont',
+ ]
+ foreach p : progs
+   executable(
+@@ -56,23 +38,7 @@ executable(
+   install: true
+ )
+ 
+-executable(
+-  'xrotfontdemo',
+-  files('xrotfontdemo.c', 'xuserotfont.c'),
+-  dependencies: glx_deps,
+-  install: true
+-)
+-
+-_libpbutil = static_library(
+-  'pbutil',
+-  files('pbutil.c'),
+-  dependencies: glx_deps
+-)
+-
+ pbutil_progs = [
+-  'glxgears_fbconfig',
+-  'pbinfo',
+-  'pbdemo',
+ ]
+ foreach p : pbutil_progs
+   executable(
+@@ -84,8 +50,6 @@ foreach p : pbutil_progs
+ endforeach
+ 
+ thread_progs = [
+-  'glthreads',
+-  'sharedtex_mt',
+ ]
+ foreach p : thread_progs
+   executable(
+-- 
+2.35.1
+
