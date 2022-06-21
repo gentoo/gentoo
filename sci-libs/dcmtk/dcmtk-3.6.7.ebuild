@@ -24,7 +24,10 @@ RDEPEND="
 	zlib? ( sys-libs/zlib )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="doc? (
+	app-doc/doxygen
+	virtual/latex-base
+)"
 
 src_prepare() {
 	cmake_src_prepare
