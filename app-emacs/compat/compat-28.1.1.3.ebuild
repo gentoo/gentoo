@@ -34,9 +34,9 @@ src_test() {
 		done <<-EOF
 		Your current Emacs version does not support native JSON parsing,
 		which is required for running tests of ${CATEGORY}/${PN}.
-		Use "eselect emacs" to select an Emacs version with such feature.
+		Emerge >=app-editors/emacs-27 with USE="json" and use "eselect emacs"
+		to select that version.
 		EOF
-		die "Unable to run tests, missing \">=app-editors/emacs-27.2[json]\"."
 	else
 		emake test
 	fi
