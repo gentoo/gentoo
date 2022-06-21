@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools toolchain-funcs
 
@@ -10,13 +10,13 @@ MY_P="${PN}_${PV}"
 
 DESCRIPTION="Utility for opening arj archives"
 HOMEPAGE="http://arj.sourceforge.net/"
-SRC_URI="mirror://debian/pool/main/a/arj/${MY_P}.orig.tar.gz
+SRC_URI="
+	mirror://debian/pool/main/a/arj/${MY_P}.orig.tar.gz
 	mirror://debian/pool/main/a/arj/${MY_P}-${PATCH_LEVEL}.debian.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
-IUSE=""
 
 PATCHES=(
 	"${FILESDIR}/${P}-implicit-declarations.patch"
@@ -26,21 +26,12 @@ PATCHES=(
 	"${FILESDIR}/${P}-interix.patch"
 )
 
-DOCS=(
-	doc/compile.txt
-	doc/debug.txt
-	doc/glossary.txt
-	doc/rev_hist.txt
-	doc/xlation.txt
-)
+DOCS=( doc/compile.txt doc/debug.txt doc/glossary.txt doc/rev_hist.txt doc/xlation.txt )
 
 src_prepare() {
 	default
 	cd gnu || die 'failed to change to the "gnu" directory'
 	echo -n "" > stripgcc.lnk || die "failed to disable stripgcc.lnk"
-
-	# This gets rid of the QA warning, but should be fixed upstream...
-	mv configure.{in,ac} || die 'failed to move configure.in to configure.ac'
 
 	eautoreconf
 }
