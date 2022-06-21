@@ -17,7 +17,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 RDEPEND="
-	>=dev-vcs/mercurial-4.7[${PYTHON_USEDEP}]"
+	>=dev-vcs/mercurial-4.7[${PYTHON_USEDEP}]
+	$(python_gen_impl_dep sqlite)"
 DEPEND="${RDEPEND}
 	doc? (
 		dev-python/sphinx
