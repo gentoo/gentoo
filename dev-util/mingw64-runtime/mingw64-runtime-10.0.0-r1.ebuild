@@ -76,8 +76,8 @@ src_configure() {
 	local conf=(
 		--prefix="${prefix}"
 		--libdir="${prefix}"/lib
-		$(usex default-ucrt "--with-default-msvcrt=ucrt" "")
 		$(use_with !headers-only crt)
+		$(usev default-ucrt --with-default-msvcrt=ucrt)
 
 		# By default configure tries to set --sysroot=${prefix}. We disable
 		# this behaviour with --with-sysroot=no to use gcc's sysroot default.
