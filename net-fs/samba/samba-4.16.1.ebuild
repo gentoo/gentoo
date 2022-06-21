@@ -141,6 +141,7 @@ BDEPEND="${PYTHON_DEPS}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-pam.patch"
+	"${FILESDIR}/${PN}-4.16.1-netdb-defines.patch"
 )
 
 #CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
