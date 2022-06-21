@@ -60,7 +60,6 @@ haproxy_use() {
 }
 
 pkg_setup() {
-	echo $SLOT
 	use lua && lua-single_pkg_setup
 	if use net_ns; then
 		CONFIG_CHECK="~NET_NS"
