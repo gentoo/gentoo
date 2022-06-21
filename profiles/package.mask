@@ -290,11 +290,6 @@ dev-python/pytest-cache
 # Python 3.10+. Removal on 2022-06-21. bug #845726.
 dev-python/fusepy
 
-# Sam James <sam@gentoo.org> (2022-05-21)
-# Unmaintained in Gentoo, no recent activity upstream, and most importantly
-# does not yet support Python 3.10+. Removal on 2022-06-21. bugs #845720, #797850.
-dev-python/drf-yasg
-
 # Hans de Graaff <graaff@gentoo.org> (2022-05-20)
 # Unused slots of cucumber components that are no longer or were never
 # used by current cucumber versions. Masked for removal in 30 days.
