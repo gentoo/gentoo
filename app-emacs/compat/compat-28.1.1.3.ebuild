@@ -29,3 +29,19 @@ ELISP_TEXINFO="${PN}.texi"
 src_compile() {
 	emake compile ${PN}.info
 }
+
+src_test() {
+	local has_json="$("${EMACS}" ${EMACSFLAGS} --eval "(princ (fboundp 'json-parse-string))")"
+	if [[ "${has_json}" != t ]] ; then
+		local line
+		while read line ; do
+			ewarn "${line}"
+		done <<-EOF
+		Your current Emacs version does not support native JSON parsing,
+		which is required for running tests of ${CATEGORY}/${PN}.
+		Use "eselect emacs" to select an Emacs version with such feature.
+		EOF
+	else
+		emake test
+	fi
+}
