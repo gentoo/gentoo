@@ -2,12 +2,15 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-<use>
-<flag name="gcrypt">
-	Use <pkg>dev-libs/libgcrypt</pkg> for low-level crypto
-</flag>
-<flag name="ntlm">
-	Add support for Microsoft's NTLM mechanism using <pkg>net-libs/libntlm</pkg>
-</flag>
-</use>
+	<use>
+		<flag name="gcrypt">
+			Use <pkg>dev-libs/libgcrypt</pkg> for low-level crypto
+		</flag>
+		<flag name="ntlm">
+			Add support for Microsoft's NTLM mechanism using <pkg>net-libs/libntlm</pkg>
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="gitlab">gsasl/gsasl</remote-id>
+	</upstream>
 </pkgmetadata>
