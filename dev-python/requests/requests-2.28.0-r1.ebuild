@@ -42,6 +42,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.28.0-unpin-charset-normalizer.patch
+)
+
 distutils_enable_tests pytest
 
 python_test() {

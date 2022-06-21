@@ -1,0 +1,33 @@
+https://github.com/psf/requests/pull/6169
+https://bugs.gentoo.org/853247
+
+From 9e9cd2a257392988e6fa417361c3085e5b85af85 Mon Sep 17 00:00:00 2001
+From: Lumir Balhar <lbalhar@redhat.com>
+Date: Mon, 20 Jun 2022 09:32:16 +0200
+Subject: [PATCH] Allow charset normalizer >=2 and <3
+
+--- a/setup.py
++++ b/setup.py
+@@ -59,7 +59,7 @@ def run_tests(self):
+     sys.exit()
+ 
+ requires = [
+-    "charset_normalizer~=2.0.0",
++    "charset_normalizer~=2.0",
+     "idna>=2.5,<4",
+     "urllib3>=1.21.1,<1.27",
+     "certifi>=2017.4.17",
+
+diff --git a/setup.cfg b/setup.cfg
+index 751c171..99166ef 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -5,7 +5,7 @@ provides-extra =
+ 	use_chardet_on_py3
+ requires-dist = 
+ 	certifi>=2017.4.17
+-	charset_normalizer~=2.0.0
++	charset_normalizer~=2.0
+ 	idna>=2.5,<4
+ 	urllib3>=1.21.1,<1.27
+ 
