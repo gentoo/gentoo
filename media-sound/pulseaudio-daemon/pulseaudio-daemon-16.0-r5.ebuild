@@ -7,7 +7,7 @@ MY_PV="${PV/_pre*}"
 MY_P="pulseaudio-${MY_PV}"
 inherit bash-completion-r1 gnome2-utils meson optfeature systemd tmpfiles udev
 
-DESCRIPTION="A networked sound server with an advanced plugin system"
+DESCRIPTION="Daemon component of PulseAudio (networked sound server)"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 
 if [[ ${PV} = 9999 ]]; then
