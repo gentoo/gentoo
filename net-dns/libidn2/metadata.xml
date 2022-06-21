@@ -15,5 +15,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:libidn2_project:libidn2</remote-id>
+		<remote-id type="gitlab">libidn/libidn2</remote-id>
 	</upstream>
 </pkgmetadata>
