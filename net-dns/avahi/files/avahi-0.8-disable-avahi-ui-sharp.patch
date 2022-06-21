@@ -4,13 +4,6 @@ Date: Sat, 27 Mar 2021 22:49:08 +0100
 Subject: [PATCH] Disable avahi-ui-sharp
 
 Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
----
- Makefile.am  | 6 ++----
- configure.ac | 1 -
- 2 files changed, 2 insertions(+), 5 deletions(-)
-
-diff --git a/Makefile.am b/Makefile.am
-index 33c51f5..0e12120 100644
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -46,7 +46,6 @@ EXTRA_DIST = \
@@ -40,8 +33,6 @@ index 33c51f5..0e12120 100644
  endif
  
  endif
-diff --git a/configure.ac b/configure.ac
-index 58db8c7..844360f 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -1166,7 +1166,6 @@ man/Makefile
@@ -52,6 +43,3 @@ index 58db8c7..844360f 100644
  avahi-compat-libdns_sd/Makefile
  avahi-compat-howl/Makefile
  avahi-compat-howl/samples/Makefile
--- 
-2.31.1
-
