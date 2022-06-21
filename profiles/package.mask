@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-06-21)
+# Obsolete, no reverse dependencies, does not run test suite, and doesn't
+# support Python 3.10+. Use app-crypt/gpgme[python] instead.
+# Bugs #845807, #798372, #748531. Removal on 2022-07-21.
+dev-python/pygpgme
+
 # Hans de Graaff <graaff@gentoo.org> (2022-06-19)
 # Obsolete slot. Use a newer slot instead.
 # Removal in 30 days.
