@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="sqlite,xml"
 DISTUTILS_SINGLE_IMPL=1
 
@@ -11,13 +11,13 @@ inherit distutils-r1 xdg-utils
 
 DESCRIPTION="Jabber client written in PyGTK"
 HOMEPAGE="https://gajim.org/"
-SRC_URI="https://gajim.org/downloads/$(ver_cut 1-2)/${P}.tar.gz"
+SRC_URI="https://gajim.org/downloads/$(ver_cut 1-2)/${P/_p/-}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~riscv x86"
 IUSE="+crypt geolocation jingle omemo remote rst +spell upnp +webp"
-S="${WORKDIR}/${PN}-${P}"
+S="${WORKDIR}/${P%_p2}"
 
 COMMON_DEPEND="
 	dev-libs/gobject-introspection[cairo(+)]
@@ -35,6 +35,7 @@ RDEPEND="${COMMON_DEPEND}
 		dev-python/pycurl[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
+		<dev-python/python-nbxmpp-3[${PYTHON_USEDEP}]
 		>=dev-python/python-nbxmpp-2.0.4[${PYTHON_USEDEP}]
 		x11-libs/libXScrnSaver
 		app-crypt/libsecret[crypt,introspection]
@@ -90,3 +91,7 @@ pkg_postrm() {
 	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
+
+# tests in this release don't work, see also:
+# https://dev.gajim.org/gajim/gajim/-/issues/10755
+RESTRICT="test"
