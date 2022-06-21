@@ -42,7 +42,7 @@ DEPEND="
 		sci-chemistry/openbabel:=
 		>=sci-libs/avogadrolibs-1.93[qt5]
 	)
-	solver? ( dev-ml/facile[ocamlopt] )
+	solver? ( dev-ml/facile:=[ocamlopt] )
 "
 RDEPEND="${DEPEND}
 	sci-chemistry/chemical-mime-data
