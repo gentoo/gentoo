@@ -14,6 +14,6 @@ SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 IUSE="+ocamlopt"
 
-DEPEND=">=dev-ml/ppxlib-0.23.0"
+DEPEND=">=dev-ml/ppxlib-0.23.0:="
 RDEPEND="${DEPEND}"
 BDEPEND=""
