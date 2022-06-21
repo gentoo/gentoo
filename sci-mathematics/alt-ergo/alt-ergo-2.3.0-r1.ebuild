@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ IUSE="examples gtk +ocamlopt"
 DEPEND=">=dev-lang/ocaml-4.09.0:=[ocamlopt=]
 	dev-ml/zarith:=
 	dev-ml/lablgtk:2=[sourceview,ocamlopt=]
-	dev-ml/camlzip
+	dev-ml/camlzip:=
 	sci-mathematics/psmt2-frontend
 	>=dev-ml/ocplib-simplex-0.4:=
 	>=dev-ml/menhir-20181006:=
