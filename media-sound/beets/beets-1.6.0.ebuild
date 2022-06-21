@@ -62,6 +62,7 @@ BDEPEND="
 			dev-python/pygobject:3[${PYTHON_USEDEP}]
 			dev-python/python-mpd[${PYTHON_USEDEP}]
 			dev-python/pyxdg[${PYTHON_USEDEP}]
+			dev-python/reflink[${PYTHON_USEDEP}]
 			|| (
 				dev-python/pillow[${PYTHON_USEDEP}]
 				media-gfx/imagemagick
