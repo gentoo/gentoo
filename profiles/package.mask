@@ -33,6 +33,26 @@
 
 #--- END OF EXAMPLES ---
 
+# Jimi Huotari <chiitoo@gentoo.org> (2022-08-02)
+# Masked for testing. The split of some packages may still
+# change. bug #838970.
+dev-qt/qt5compat:6
+dev-qt/qtbase:6
+dev-qt/qtdeclarative:6
+dev-qt/qtlocation:6
+dev-qt/qtmultimedia:6
+dev-qt/qtpositioning:6
+dev-qt/qtquick3d:6
+dev-qt/qtquicktimeline:6
+dev-qt/qtserialport:6
+dev-qt/qtshadertools:6
+dev-qt/qtsvg:6
+dev-qt/qttools:6
+dev-qt/qtwayland:6
+dev-qt/qtwebchannel:6
+dev-qt/qtwebengine:6
+dev-qt/qtwebsockets:6
+
 # Sam James <sam@gentoo.org> (2022-08-02)
 # Multiple rendering/font issues reported: bug #844115, bug #851141.
 =app-text/ghostscript-gpl-9.56.1
