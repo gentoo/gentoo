@@ -1,0 +1,75 @@
+https://invent.kde.org/utilities/filelight/-/merge_requests/42
+https://invent.kde.org/utilities/filelight/-/commit/861afa5fb0d2a839d7e83f7df644952219b84a3c
+
+Instead of hardcoding knowledege about glibc versions, check for the
+presence of sincos with CMake.
+
+Commit 93577e2a4927cf1640e8ac7153cd22ff54180bba wrongly added a
+SINCOS_H_IMPLEMENTATION macro instead of making it a static inline
+function or similar, so remove that as well.
+---
+ src/CMakeLists.txt     |  6 ++++++
+ src/radialMap/map.cpp  |  1 -
+ src/radialMap/sincos.h | 10 ++--------
+ 3 files changed, 8 insertions(+), 9 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 5634ff9..7007297 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -9,6 +9,12 @@ ecm_setup_version(${PROJECT_VERSION}
+     VARIABLE_PREFIX FILELIGHT
+     VERSION_HEADER version.h)
+ 
++include(CheckCXXSymbolExists)
++check_cxx_symbol_exists(sincos "math.h" HAVE_SINCOS)
++if (HAVE_SINCOS)
++    add_definitions(-DHAVE_SINCOS)
++endif()
++
+ add_library(filelightInternal STATIC fileTree.cpp directoryIterator.cpp)
+ if (WIN32)
+     target_sources(filelightInternal PRIVATE windowsWalker.cpp)
+diff --git a/src/radialMap/map.cpp b/src/radialMap/map.cpp
+index b60d1da..b6bb55b 100644
+--- a/src/radialMap/map.cpp
++++ b/src/radialMap/map.cpp
+@@ -20,7 +20,6 @@
+ #include "radialMap.h" // defines
+ 
+ #include "Config.h"
+-#define SINCOS_H_IMPLEMENTATION (1)
+ #include "sincos.h"
+ #include "widget.h"
+ 
+diff --git a/src/radialMap/sincos.h b/src/radialMap/sincos.h
+index 142504b..986a899 100644
+--- a/src/radialMap/sincos.h
++++ b/src/radialMap/sincos.h
+@@ -10,21 +10,15 @@
+ 
+ #include <math.h>
+ 
+-#if !defined(__GLIBC__) || (__GLIBC__ < 2) ||  (__GLIBC__ == 2 && __GLIBC_MINOR__ < 1)
++#ifndef HAVE_SINCOS
+ 
+ #include <qmath.h>
+ 
+-void
+-sincos(double angleRadians, double *Sin, double *Cos);
+-
+-#ifdef SINCOS_H_IMPLEMENTATION
+-void
+-sincos(double angleRadians, double *Sin, double *Cos)
++static inline void sincos(double angleRadians, double *Sin, double *Cos)
+ {
+     *Sin = qSin(angleRadians);
+     *Cos = qCos(angleRadians);
+ }
+-#endif
+ 
+ #endif
+ 
+-- 
+2.35.1
+
