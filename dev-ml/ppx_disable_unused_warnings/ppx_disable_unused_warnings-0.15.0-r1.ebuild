@@ -17,5 +17,5 @@ IUSE="+ocamlopt"
 
 DEPEND="
 	dev-ml/base:${SLOT}
-	>=dev-ml/ppxlib-0.23.0"
+	>=dev-ml/ppxlib-0.23.0:="
 RDEPEND="${DEPEND}"
