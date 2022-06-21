@@ -1,4 +1,5 @@
 https://bugs.gentoo.org/842168
+https://bugs.gentoo.org/853085
 --- a/client/logger.cc
 +++ b/client/logger.cc
 @@ -27,6 +27,7 @@
@@ -19,3 +20,13 @@ https://bugs.gentoo.org/842168
  #include <sstream>
  
  #include <m_string.h>
+--- a/plugin/auth_ldap/src/connection.cc
++++ b/plugin/auth_ldap/src/connection.cc
+@@ -1,6 +1,7 @@
+ #include "plugin/auth_ldap/include/connection.h"
+ 
+ #include <iostream>
++#include <iterator>
+ #include <regex>
+ 
+ #include "plugin/auth_ldap/include/plugin_log.h"
