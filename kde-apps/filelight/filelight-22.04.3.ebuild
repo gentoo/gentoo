@@ -18,6 +18,11 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-22.04.3-fix_musl_dev_bsize.patch
+	"${FILESDIR}"/${PN}-22.04.3-fix_sincos_impl.patch
+)
+
 DEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtsvg-${QTMIN}:5
