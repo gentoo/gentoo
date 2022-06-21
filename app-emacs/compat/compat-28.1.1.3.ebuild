@@ -16,13 +16,8 @@ S="${WORKDIR}"/${PN}-${H}
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-BDEPEND="
-	sys-apps/texinfo
-	test? ( >=app-editors/emacs-27.2[json] )
-"
+BDEPEND="sys-apps/texinfo"
 
 ELISP_TEXINFO="${PN}.texi"
 
