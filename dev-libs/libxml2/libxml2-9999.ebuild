@@ -58,10 +58,6 @@ MULTILIB_CHOST_TOOLS=(
 
 DOCS=( NEWS README.md TODO TODO_SCHEMAS python/TODO )
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.9.8-out-of-tree-test.patch
-)
-
 src_unpack() {
 	if [[ ${PV} == 9999 ]] ; then
 		git-r3_src_unpack
