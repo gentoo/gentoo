@@ -24,7 +24,7 @@ else
 fi
 
 LICENSE="GPL-2 LGPL-2.1"
-SLOT="0/${PV}"
+SLOT="0/$(ver_cut 1-2)"
 IUSE="+crypt doc examples +slz +net_ns +pcre pcre-jit prometheus-exporter
 ssl systemd +threads tools vim-syntax zlib lua 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
