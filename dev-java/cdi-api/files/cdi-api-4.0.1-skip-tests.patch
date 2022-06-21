@@ -1,0 +1,72 @@
+--- a/api/src/test/java/org/jboss/cdi/api/test/se/SeContainerInitializerTest.java
++++ b/api/src/test/java/org/jboss/cdi/api/test/se/SeContainerInitializerTest.java
+@@ -48,7 +48,7 @@ public class SeContainerInitializerTest {
+         SeContainerInitializer.newInstance();
+     }
+ 
+-    @Test
++    @Test(enabled = false)
+     public void testWithOneGoodSeContainerInitializer() throws Exception {
+ 
+         FileWriter fw = new FileWriter(SERVICE_FILE_NAME);
+@@ -79,4 +79,4 @@ public class SeContainerInitializerTest {
+         Assert.assertTrue(SeContainerInitializer.newInstance().getClass().equals(DummySeContainerInitializer.class) ||
+                 SeContainerInitializer.newInstance().getClass().equals(DummySeContainerInitializer2.class));
+     }
+-}
+\ No newline at end of file
++}
+--- a/api/src/test/java/org/jboss/cdi/api/test/CDITest.java
++++ b/api/src/test/java/org/jboss/cdi/api/test/CDITest.java
+@@ -59,7 +59,7 @@ public class CDITest {
+     }
+ 
+ 
+-    @Test
++    @Test(enabled = false)
+     public void testWithOneGoodCDIProvider() throws Exception {
+ 
+         FileWriter fw = new FileWriter(SERVICE_FILE_NAME);
+@@ -90,7 +90,7 @@ public class CDITest {
+ 
+     }
+ 
+-    @Test
++    @Test(enabled = false)
+     public void testWithTwoGoodCDIProvider() throws Exception {
+         FileWriter fw = new FileWriter(SERVICE_FILE_NAME);
+         fw.write(DummyCDIProvider2.class.getName());
+@@ -101,7 +101,7 @@ public class CDITest {
+     }
+ 
+ 
+-    @Test
++    @Test(enabled = false)
+     public void testWithTwoGoodCDIProviderReverse() throws Exception {
+         FileWriter fw = new FileWriter(SERVICE_FILE_NAME);
+         fw.write(DummyCDIProvider.class.getName());
+@@ -111,7 +111,7 @@ public class CDITest {
+         Assert.assertTrue(CDI.current().getClass().equals(DummyCDIProvider.DummyCDI.class));
+     }
+ 
+-    @Test
++    @Test(enabled = false)
+     public void testWithTwoCDIProviderOneWithNullCDIAndOneGood() throws Exception {
+         FileWriter fw = new FileWriter(SERVICE_FILE_NAME);
+         fw.write(DummyCDIProviderWithNullCDI.class.getName());
+@@ -122,7 +122,7 @@ public class CDITest {
+     }
+ 
+ 
+-    @Test
++    @Test(enabled = false)
+     public void testWithThreeCDIProviderOneWithNullCDIAndOthersGood() throws Exception {
+         FileWriter fw = new FileWriter(SERVICE_FILE_NAME);
+         fw.write(DummyCDIProviderWithNullCDI.class.getName());
+@@ -163,4 +163,4 @@ public class CDITest {
+         ClosableCDIProvider.closeContainer();
+         CDI.current();
+     }
+-}
+\ No newline at end of file
++}
