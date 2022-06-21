@@ -6,8 +6,8 @@ EAPI=7
 inherit autotools toolchain-funcs
 
 DESCRIPTION="Library for arbitrary precision integer arithmetic (fork of gmp)"
-HOMEPAGE="http://www.mpir.org/"
-SRC_URI="http://www.mpir.org/${P}.tar.bz2"
+HOMEPAGE="https://www.mpir.org/"
+SRC_URI="https://www.mpir.org/${P}.tar.bz2"
 
 LICENSE="LGPL-3"
 SLOT="0/23"
