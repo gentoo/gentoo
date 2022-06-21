@@ -128,7 +128,10 @@ DEPEND="${RDEPEND}"
 
 BDEPEND="sys-devel/autoconf-archive"
 
-PATCHES="${FILESDIR}/${P}-python3.patch"
+PATCHES=(
+	"${FILESDIR}/${P}-libtool.patch" # 783492
+	"${FILESDIR}/${P}-python3.patch"
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup

@@ -1,0 +1,46 @@
+Upstream-PR: https://github.com/jmccrohan/lcd4linux/pull/3
+
+From cffb509a8471b26177de0887e5461a408fdb8e35 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Mon, 20 Jun 2022 17:43:23 -0700
+Subject: [PATCH] configure: Use macros earlier
+
+When building with slibtool using the rlibtool symlink the build will
+fail because it doesn't find the generated libtool. This is required so
+rlibtool can determine if its a shared or static build.
+
+This can be fixed easily by using LT_INIT earlier before AC_OUTPUT.
+Generally these should be used near the top of configure.ac.
+
+Gentoo Bug: https://bugs.gentoo.org/783492
+---
+ configure.ac | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 3806892..d65e567 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -29,6 +29,7 @@
+ 
+ AC_PREREQ(2.59)
+ AC_INIT([LCD4Linux],[0.11.0-SVN],[lcd4linux-users@lists.sourceforge.net])
++AC_CONFIG_MACRO_DIR([m4])
+ AC_CONFIG_SRCDIR([lcd4linux.c])
+ AM_INIT_AUTOMAKE
+ AM_CONFIG_HEADER(config.h)
+@@ -40,6 +41,7 @@ AC_PROG_INSTALL
+ AC_PROG_LN_S
+ AC_PROG_MAKE_SET
+ PKG_PROG_PKG_CONFIG
++LT_INIT
+ 
+ # dmalloc
+ AM_WITH_DMALLOC
+@@ -171,6 +173,3 @@ AC_MSG_RESULT(
+ [  $PLUGINS]
+ [-----------------------------------------]
+ )
+-
+-AC_CONFIG_MACRO_DIR([m4])
+-LT_INIT
