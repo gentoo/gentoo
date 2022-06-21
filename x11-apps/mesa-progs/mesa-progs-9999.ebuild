@@ -41,7 +41,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/8.5.0-Disable-things-we-don-t-want.patch
+	"${FILESDIR}"/9999-Disable-things-we-don-t-want.patch
 )
 
 pkg_setup() {
