@@ -14,7 +14,7 @@ LICENSE="GPL-3 LGPL-3"
 SLOT="0/2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~x86"
 
-IUSE="aalib alsa aqua debug doc gnome heif jpeg2k mng openexr postscript udev unwind vector-icons webp wmf xpm cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse"
+IUSE="aalib alsa aqua debug doc gnome heif jpeg2k jpegxl mng openexr postscript udev unwind vector-icons webp wmf xpm cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse"
 
 RESTRICT="!test? ( test )"
 
@@ -51,6 +51,7 @@ COMMON_DEPEND="
 	aqua? ( >=x11-libs/gtk-mac-integration-2.0.0 )
 	heif? ( >=media-libs/libheif-1.9.1:= )
 	jpeg2k? ( >=media-libs/openjpeg-2.1.0:2= )
+	jpegxl? ( >=media-libs/libjxl-0.6.1:= )
 	mng? ( media-libs/libmng:= )
 	openexr? ( >=media-libs/openexr-1.6.1:= )
 	postscript? ( app-text/ghostscript-gpl )
@@ -140,6 +141,7 @@ src_configure() {
 		$(use_with !aqua x)
 		$(use_with heif libheif)
 		$(use_with jpeg2k jpeg2000)
+		$(use_with jpegxl)
 		$(use_with mng libmng)
 		$(use_with openexr)
 		$(use_with postscript gs)
