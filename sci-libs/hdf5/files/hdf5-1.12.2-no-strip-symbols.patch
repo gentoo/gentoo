@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/665378
+--- a/configure.ac
++++ b/configure.ac
+@@ -2368,9 +2368,9 @@ case "X-$SYMBOLS" in
+     AC_MSG_RESULT([yes])
+     ;;
+   X-no)
+-    H5_CFLAGS="$H5_CFLAGS $NO_SYMBOLS_CFLAGS"
+-    H5_CXXFLAGS="$H5_CXXFLAGS $NO_SYMBOLS_CXXFLAGS"
+-    H5_FCFLAGS="$H5_FCFLAGS $NO_SYMBOLS_FCFLAGS"
++    H5_CFLAGS="$H5_CFLAGS"
++    H5_CXXFLAGS="$H5_CXXFLAGS"
++    H5_FCFLAGS="$H5_FCFLAGS"
+     AC_MSG_RESULT([no])
+     ;;
+   *)
