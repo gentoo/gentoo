@@ -120,6 +120,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Needed to get e.g. test failure details
+	MAKEOPTS+=" VERBOSE=1"
+
 	if has_basic_bindings ; then
 		local conf=(
 			--disable-documentation
