@@ -33,6 +33,25 @@
 
 #--- END OF EXAMPLES ---
 
+# Jimi Huotari <chiitoo@gentoo.org> (2022-06-20)
+# Masked for testing.
+~dev-qt/qt5compat-6.3.1
+~dev-qt/qtbase-6.3.1
+~dev-qt/qtdeclarative-6.3.1
+~dev-qt/qtlocation-6.3.1
+~dev-qt/qtmultimedia-6.3.1
+~dev-qt/qtpositioning-6.3.1
+~dev-qt/qtquick3d-6.3.1
+~dev-qt/qtquicktimeline-6.3.1
+~dev-qt/qtserialport-6.3.1
+~dev-qt/qtshadertools-6.3.1
+~dev-qt/qtsvg-6.3.1
+~dev-qt/qttools-6.3.1
+~dev-qt/qtwayland-6.3.1
+~dev-qt/qtwebchannel-6.3.1
+~dev-qt/qtwebengine-6.3.1
+~dev-qt/qtwebsockets-6.3.1
+
 # Hans de Graaff <graaff@gentoo.org> (2022-07-20)
 # Obsolete ruby26-only slot without reverse dependencies. Use a newer
 # slot instead. Masked for removal in 30 days.
