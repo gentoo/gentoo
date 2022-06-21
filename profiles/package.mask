@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2022-06-21)
+# Fails to build with GCC 12, upstream location is gone, no sign of activity,
+# and very few other distributions packaging this. Bug #841824.
+# Removal on 2022-07-21.
+app-backup/kfoldersync
+
+# Sam James <sam@gentoo.org> (2022-06-21)
 # Obsolete, no reverse dependencies, does not run test suite, and doesn't
 # support Python 3.10+. Use app-crypt/gpgme[python] instead.
 # Bugs #845807, #798372, #748531. Removal on 2022-07-21.
