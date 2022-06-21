@@ -5,7 +5,7 @@ EAPI="7"
 
 inherit multilib-minimal
 
-DESCRIPTION="A networked sound server with an advanced plugin system"
+DESCRIPTION="A meta package for PulseAudio (networked sound server)"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 SRC_URI=""
 
