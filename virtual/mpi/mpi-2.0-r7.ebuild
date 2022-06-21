@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit multilib-build
 
@@ -12,8 +12,8 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv sparc x86 ~amd64-
 IUSE="cxx fortran romio threads nullmpi"
 
 RDEPEND="|| (
-	>=sys-cluster/openmpi-1.10.2-r1[${MULTILIB_USEDEP},cxx?,fortran?,romio?,threads(+)?]
-	>=sys-cluster/mpich-3.2-r1[${MULTILIB_USEDEP},cxx?,fortran?,romio?,threads?]
-	sys-cluster/nullmpi[${MULTILIB_USEDEP},cxx(-)?,fortran(-)?,romio(-)?,threads(-)?]
-	nullmpi? ( sys-cluster/native-mpi )
+	>=sys-cluster/openmpi-4.1.2[${MULTILIB_USEDEP},cxx?,fortran?,romio?,threads(+)?]
+	>=sys-cluster/mpich-3.4.3[${MULTILIB_USEDEP},cxx?,fortran?,romio?,threads?]
+	sys-cluster/native-mpi
+	nullmpi? ( sys-cluster/nullmpi[${MULTILIB_USEDEP},cxx(-)?,fortran(-)?,romio(-)?,threads(-)?] )
 )"
