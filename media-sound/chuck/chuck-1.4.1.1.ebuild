@@ -25,14 +25,14 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.0.0-hid-smc.patch
-	"${FILESDIR}"/${PN}-1.4.0.0-makefile.patch
+	"${FILESDIR}"/${P}-makefile.patch
 )
 
 compile_backend() {
 	backend=$1
 	pushd "${S}/src" &>/dev/null || die
 	einfo "Compiling against ${backend}"
-	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" linux-${backend}
+	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" LD="$(tc-getCXX)" linux-${backend}
 	mv chuck{,-${backend}} || die
 	emake clean
 	popd &>/dev/null || die

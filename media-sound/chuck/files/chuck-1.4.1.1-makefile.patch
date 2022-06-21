@@ -1,0 +1,50 @@
+diff --git a/src/core/makefile.x/makefile.alsa b/src/core/makefile.x/makefile.alsa
+index 5694257..577dd91 100644
+--- a/src/core/makefile.x/makefile.alsa
++++ b/src/core/makefile.x/makefile.alsa
+@@ -1,4 +1,4 @@
+ 
+-CFLAGS+= -D__LINUX_ALSA__ -D__PLATFORM_LINUX__ -O3 -fno-strict-aliasing -D__CK_SNDFILE_NATIVE__
++CFLAGS+= -D__LINUX_ALSA__ -D__PLATFORM_LINUX__ -fno-strict-aliasing -D__CK_SNDFILE_NATIVE__ -fPIC
+ LDFLAGS+= -lasound -lstdc++ -ldl -lm -lsndfile -lpthread
+ 
+diff --git a/src/core/makefile.x/makefile.jack b/src/core/makefile.x/makefile.jack
+index 86b2511..442708b 100644
+--- a/src/core/makefile.x/makefile.jack
++++ b/src/core/makefile.x/makefile.jack
+@@ -1,4 +1,4 @@
+ 
+-CFLAGS+= -D__UNIX_JACK__ -D__PLATFORM_LINUX__ -O3 -fno-strict-aliasing -D__CK_SNDFILE_NATIVE__
++CFLAGS+= -D__UNIX_JACK__ -D__PLATFORM_LINUX__ -fno-strict-aliasing -D__CK_SNDFILE_NATIVE__ -fPIC
+ LDFLAGS+= -lasound -ljack -lstdc++ -ldl -lm -lsndfile -lpthread
+ 
+diff --git a/src/makefile b/src/makefile
+index f52f0c2..310991a 100644
+--- a/src/makefile
++++ b/src/makefile
+@@ -76,11 +76,11 @@ CK_VERSION=1.4.1.1
+ 
+ 
+ ########################### COMPILATION TOOLS ##################################
+-LEX=flex
+-YACC=bison
+-CC=gcc
+-CXX=g++
+-LD=g++
++LEX?=flex
++YACC?=bison
++CC?=gcc
++CXX?=g++
++LD?=g++
+ 
+ 
+ ############################# COMPILER FLAGS ###################################
+@@ -92,8 +92,6 @@ endif
+ 
+ ifneq ($(CHUCK_DEBUG),)
+ CFLAGS+= -g
+-else
+-CFLAGS+= -O3
+ endif
+ 
+ ifneq ($(USE_64_BIT_SAMPLE),)
