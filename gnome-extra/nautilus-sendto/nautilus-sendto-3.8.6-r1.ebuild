@@ -1,7 +1,8 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit gnome.org meson
 
 DESCRIPTION="A nautilus extension for sending files to locations"
@@ -13,15 +14,13 @@ KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="debug"
 
 RDEPEND=">=dev-libs/glib-2.25.9:2"
-DEPEND="${RDEPEND}
-	>=sys-devel/gettext-0.19.8
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-libs/appstream-glib
-	virtual/pkgconfig
-"
+	sys-devel/gettext
+	virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}"/fix-build-with-meson-0.61.patch
-)
+PATCHES=( "${FILESDIR}"/fix-build-with-meson-0.61.patch )
 
 pkg_postinst() {
 	if ! has_version "gnome-base/nautilus[sendto]"; then
