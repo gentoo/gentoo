@@ -4,6 +4,11 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sergey Torokhov <torokhov-s-a@yandex.ru> (2022-06-22)
+# media-libs/libjxl is not keyworded
+# bug https://bugs.gentoo.org/853628
+media-gfx/gimp jpegxl
+
 # Sam James <sam@gentoo.org> (2022-05-17)
 # sci-libs/sundials fails to build tests on HPPA
 # bug #845222
