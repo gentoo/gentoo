@@ -1,17 +1,33 @@
-Index: psutils/Makefile.unix
-===================================================================
---- psutils.orig/Makefile.unix
-+++ psutils/Makefile.unix
-@@ -39,7 +39,7 @@ MANEXT = 1
- MANDIR = /usr/local/share/man/man$(MANEXT)
+--- a/Makefile.unix
++++ b/Makefile.unix
+@@ -25,10 +25,10 @@
  
- CC = gcc
+ OS = UNIX
+ 
+-BINDIR = /usr/local/bin
++BINDIR = $(DESTDIR)$(EPREFIX)/usr/bin
+ SCRIPTDIR = $(BINDIR)
+-INCLUDEDIR = /usr/local/share/psutils
+-PERL = /usr/local/bin/perl
++INCLUDEDIR = $(DESTDIR)$(EPREFIX)/usr/share/psutils
++PERL = perl
+ 
+ BINMODE = 0755
+ MANMODE = 0644
+@@ -36,10 +36,9 @@
+ INSTALL = install -c -m $(BINMODE)
+ INSTALLMAN = install -c -m $(MANMODE)
+ MANEXT = 1
+-MANDIR = /usr/local/share/man/man$(MANEXT)
++MANDIR = $(DESTDIR)$(EPREFIX)/usr/share/man/man$(MANEXT)
+ 
+-CC = gcc
 -CFLAGS = -DPAPER=\"$(PAPER)\" -DUNIX -O -Wall
 +CFLAGS += -DPAPER=\"$(PAPER)\" -DUNIX -Wall
  
  BIN = psbook psselect pstops epsffit psnup \
  	psresize
-@@ -65,30 +65,24 @@ pserror.o: psutil.h patchlev.h pserror.h
+@@ -65,30 +64,24 @@
  epsffit.o: epsffit.c pserror.h patchlev.h
  
  epsffit: epsffit.o pserror.o
