@@ -41,6 +41,7 @@ src_test() {
 		which is required for running tests of ${CATEGORY}/${PN}.
 		Use "eselect emacs" to select an Emacs version with such feature.
 		EOF
+		die "Unable to run tests, missing \">=app-editors/emacs-27.2[json]\"."
 	else
 		emake test
 	fi
