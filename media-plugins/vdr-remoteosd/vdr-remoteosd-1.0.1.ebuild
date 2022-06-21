@@ -12,6 +12,6 @@ S="${WORKDIR}/vdr-plugin-remoteosd-${PV}"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm x86"
+KEYWORDS="amd64 ~arm x86"
 
 DEPEND=">=media-video/vdr-2.4"
