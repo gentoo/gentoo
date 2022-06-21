@@ -24,6 +24,11 @@ BDEPEND="dev-go/gox"
 
 DOCS=( docs CHANGELOG.md README.md config.toml.example )
 
+PATCHES=(
+	# https://gitlab.com/gitlab-org/gitlab-runner/-/merge_requests/3498
+	"${FILESDIR}"/build-for-arm64.patch
+	)
+
 S="${WORKDIR}/${PN}-v${PV}"
 
 src_compile() {
