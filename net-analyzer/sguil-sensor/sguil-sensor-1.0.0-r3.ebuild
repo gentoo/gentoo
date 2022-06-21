@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,7 @@ RDEPEND="
 	dev-tcltk/tls
 	>=net-analyzer/barnyard-0.2.0-r1
 	>=net-analyzer/snort-2.4.1-r1
-	dev-ml/pcre-ocaml
+	dev-ml/pcre-ocaml:=
 	net-analyzer/sancp
 "
 
