@@ -1,0 +1,24 @@
+QtCore only links with -lexecinfo on *bsd and
+incorrectly assumes it's already linked on Linux
+if execinfo.h exists.
+
+---
+ src/corelib/global/qlogging.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/corelib/global/qlogging.cpp b/src/corelib/global/qlogging.cpp
+index 89f49324..1c34a1af 100644
+--- a/src/corelib/global/qlogging.cpp
++++ b/src/corelib/global/qlogging.cpp
+@@ -106,7 +106,7 @@
+ #    if __UCLIBC_HAS_BACKTRACE__
+ #      define QLOGGING_HAVE_BACKTRACE
+ #    endif
+-#  elif (defined(__GLIBC__) && defined(__GLIBCXX__)) || (__has_include(<cxxabi.h>) && __has_include(<execinfo.h>))
++#  elif (defined(__GLIBC__) && defined(__GLIBCXX__))
+ #    define QLOGGING_HAVE_BACKTRACE
+ #  endif
+ #endif
+-- 
+2.35.1
+
