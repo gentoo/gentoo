@@ -3,11 +3,17 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<use>
+		<flag name="client">
+			Build client component
+		</flag>
 		<flag name="gcrypt">
 			Use <pkg>dev-libs/libgcrypt</pkg> for low-level crypto
 		</flag>
 		<flag name="ntlm">
 			Add support for Microsoft's NTLM mechanism using <pkg>net-libs/libntlm</pkg>
+		</flag>
+		<flag name="server">
+			Build server component
 		</flag>
 	</use>
 	<upstream>
