@@ -17,6 +17,6 @@ RESTRICT="test"  # tests fail  > unused-open
 
 DEPEND="
 	dev-ml/dune-configurator:=
-	dev-ml/seq"
+	dev-ml/seq:="
 RDEPEND="${DEPEND}"
 # BDEPEND="test? ( dev-ml/qtest )"
