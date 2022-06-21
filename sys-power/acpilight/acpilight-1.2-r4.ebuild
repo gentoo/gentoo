@@ -55,3 +55,8 @@ pkg_postinst() {
 	elog "# rc-update add acpilight boot"
 	einfo
 }
+
+pkg_postrm() {
+	# Triggers a QA warning if missing
+	udev_reload
+}
