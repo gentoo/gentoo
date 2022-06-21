@@ -1,0 +1,13 @@
+https://github.com/mjs/imapclient/issues/466
+https://bugs.gentoo.org/835498
+--- a/imapclient/tls.py
++++ b/imapclient/tls.py
+@@ -27,7 +27,7 @@ def wrap_socket(sock, ssl_context, host):
+         return ssl.wrap_socket(sock)
+ 
+     if ssl_context is None:
+-        ssl_context = ssl.create_default_context()
++        ssl_context = ssl.create_default_context(purpose=ssl.Purpose.SERVER_AUTH)
+ 
+     return ssl_context.wrap_socket(sock, server_hostname=host)
+ 
