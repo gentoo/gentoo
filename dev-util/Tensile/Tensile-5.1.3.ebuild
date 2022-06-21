@@ -5,12 +5,14 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
 DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1 prefix
+inherit distutils-r1 llvm prefix
+
+LLVM_MAX_SLOT=14
 
 DESCRIPTION="Stretching GPU performance for GEMMs and tensor contractions"
 HOMEPAGE="https://github.com/ROCmSoftwarePlatform/Tensile"
 SRC_URI="https://github.com/ROCmSoftwarePlatform/Tensile/archive/rocm-${PV}.tar.gz -> rocm-Tensile-${PV}.tar.gz
-		https://github.com/littlewu2508/littlewu2508.github.io/raw/main/gentoo-distfiles/${P}-PR1419.patch.gz"
+		https://github.com/littlewu2508/littlewu2508.github.io/raw/main/gentoo-distfiles/${PN}-5.0.2-PR1419.patch.gz"
 S="${WORKDIR}/${PN}-rocm-${PV}"
 
 LICENSE="MIT"
@@ -24,24 +26,24 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/msgpack[${PYTHON_USEDEP}]
 	>=dev-util/rocm-smi-4.3.0
+	>=sys-devel/clang-14.0.6-r1:${LLVM_MAX_SLOT}=
 "
 DEPEND="${RDEPEND}
-	dev-util/hip:=
+	dev-util/hip
 "
 
 PATCHES=( "${FILESDIR}"/${PN}-4.3.0-output-commands.patch
 		  "${FILESDIR}"/${PN}-5.0.2-gfx1031.patch
 		  "${FILESDIR}"/${PN}-5.0.2-fix-arch-parse.patch
 		  "${FILESDIR}"/${PN}-5.0.2-use-ninja.patch
-		  "${FILESDIR}"/${PN}-5.0.2-adjust-parallel.patch
-		  "${WORKDIR}"/${PN}-5.0.2-PR1419.patch
 	  )
 
 CMAKE_USE_DIR="${WORKDIR}/Source"
 
 src_prepare() {
 	distutils-r1_src_prepare
-	eapply $(prefixify_ro "${FILESDIR}"/${PN}-5.0.2-gentoopath.patch)
+	sed -e "s,\@LLVM_PATH\@,$(get_llvm_prefix ${LLVM_MAX_SLOT}),g" "${FILESDIR}"/${PN}-5.1.3-gentoopath.patch > "${S}"/gentoopath.patch || die
+	eapply $(prefixify_ro "${S}"/gentoopath.patch)
 
 	pushd ${PN} || die
 
