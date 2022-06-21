@@ -16,16 +16,16 @@ OPAM_INSTALLER="${S}/opam-installer"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="amd64 arm arm64 ~ppc ppc64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 # Cherry-picked from https://deb.debian.org/debian/pool/main/o/opam/opam_2.0.8-1.debian.tar.xz
 PATCHES=( "${FILESDIR}/debian-Port-to-Dose3-6.0.1.patch" )
 
 RDEPEND="
-	>=dev-lang/ocaml-4.02.3
+	>=dev-lang/ocaml-4.02.3:=
 	dev-ml/cmdliner:=
-	~dev-ml/opam-format-${PV}
-	>=dev-ml/dose3-6
+	~dev-ml/opam-format-${PV}:=
+	>=dev-ml/dose3-6:=
 "
 DEPEND="${RDEPEND}
 	dev-ml/findlib"
