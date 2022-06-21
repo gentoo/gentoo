@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="
-	>=dev-ml/dune-2.8
+	>=dev-ml/dune-2.8:=
 	dev-ml/astring:=
 	dev-ml/async_unix:=
 	dev-ml/cmdliner:=
