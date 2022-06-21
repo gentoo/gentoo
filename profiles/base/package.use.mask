@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Matt Turner <mattst88@gentoo.org> (2022-06-21)
+# Depends on old spidermonkey:68. Upstream recommends using Duktape or Webkit
+# for PAC parsing. See https://github.com/libproxy/libproxy/pull/139
+>=net-libs/libproxy-0.4.18 spidermonkey
+
 # Michał Górny <mgorny@gentoo.org> (2022-06-02)
 # dev-python/jaraco-packaging is masked for removal.  Bug #834534.
 dev-python/jaraco-classes doc
