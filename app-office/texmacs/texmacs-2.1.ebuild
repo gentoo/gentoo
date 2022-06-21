@@ -8,8 +8,8 @@ inherit cmake xdg-utils
 MY_P=${P/tex/TeX}-src
 
 DESCRIPTION="Wysiwyg text processor with high-quality maths"
-HOMEPAGE="http://www.texmacs.org/"
-SRC_URI="http://www.texmacs.org/Download/ftp/tmftp/source/${MY_P}.tar.gz"
+HOMEPAGE="https://www.texmacs.org/"
+SRC_URI="https://www.texmacs.org/Download/ftp/tmftp/source/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
