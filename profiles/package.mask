@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2022-06-21)
+# Dead slot. No reverse dependencies.
+# Removal on 2022-07-21. Bug #846617
+app-misc/tracker:0
+app-misc/tracker-miners:0
+
 # Sam James <sam@gentoo.org> (2022-06-21)
 # Fails to build with GCC 12, upstream location is gone, no sign of activity,
 # and very few other distributions packaging this. Bug #841824.
