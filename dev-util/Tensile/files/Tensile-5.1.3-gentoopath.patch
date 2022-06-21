@@ -1,0 +1,75 @@
+Fix incorrect path in scripts and CMakeLists, in order to build tensile_client 
+===================================================================
+--- Tensile-rocm-5.0.2.orig/Tensile/Source/client/CMakeLists.txt
++++ Tensile-rocm-5.0.2/Tensile/Source/client/CMakeLists.txt
+@@ -56,3 +56,5 @@ endif()
+ foreach(arch IN LISTS TENSILE_GPU_ARCHS)
+     target_link_libraries(tensile_client PRIVATE "--amdgpu-target=${arch}")
+ endforeach(arch)
++
++target_link_libraries(tensile_client PRIVATE LLVMSupport)
+Index: Tensile-rocm-5.0.2/Tensile/Source/lib/CMakeLists.txt
+===================================================================
+--- Tensile-rocm-5.0.2.orig/Tensile/Source/lib/CMakeLists.txt
++++ Tensile-rocm-5.0.2/Tensile/Source/lib/CMakeLists.txt
+@@ -47,7 +47,7 @@ set(tensile_sources  ${tensile_sources}
+     )
+ 
+ if(TENSILE_USE_LLVM)
+-    find_package(LLVM 13.0 QUIET CONFIG)
++    find_package(LLVM PATHS @LLVM_PATH@ QUIET CONFIG)
+     if(NOT LLVM_FOUND)
+         find_package(LLVM 12.0 QUIET CONFIG)
+         if(NOT LLVM_FOUND)
+Index: Tensile-rocm-5.0.2/Tensile/Common.py
+===================================================================
+--- Tensile-rocm-5.0.2.orig/Tensile/Common.py
++++ Tensile-rocm-5.0.2/Tensile/Common.py
+@@ -1873,7 +1873,7 @@ def assignGlobalParameters( config ):
+     else:
+       print2(" %24s: %8s (unspecified)" % (key, defaultValue))
+ 
+-  globalParameters["ROCmPath"] = "/opt/rocm"
++  globalParameters["ROCmPath"] = "@GENTOO_PORTAGE_EPREFIX@/usr"
+   if "ROCM_PATH" in os.environ:
+     globalParameters["ROCmPath"] = os.environ.get("ROCM_PATH")
+   if "TENSILE_ROCM_PATH" in os.environ:
+Index: Tensile-rocm-5.0.2/Tensile/ClientWriter.py
+===================================================================
+--- Tensile-rocm-5.0.2.orig/Tensile/ClientWriter.py
++++ Tensile-rocm-5.0.2/Tensile/ClientWriter.py
+@@ -205,7 +205,7 @@ def getBuildClientLibraryScript(buildPat
+   import io
+   runScriptFile = io.StringIO()
+ 
+-  callCreateLibraryCmd = globalParameters["ScriptPath"] + "/bin/TensileCreateLibrary"
++  callCreateLibraryCmd = "TensileCreateLibrary"
+ 
+ 
+   if globalParameters["MergeFiles"]:
+Index: Tensile-rocm-5.0.2/Tensile/GenerateSummations.py
+===================================================================
+--- Tensile-rocm-5.0.2.orig/Tensile/GenerateSummations.py
++++ Tensile-rocm-5.0.2/Tensile/GenerateSummations.py
+@@ -57,7 +57,7 @@ def createLibraryForBenchmark(logicPath,
+     Selection.
+     """
+ 
+-    pythonExePath = os.path.join(os.path.dirname(os.path.realpath(__file__)), "bin", "TensileCreateLibrary")
++    pythonExePath = "TensileCreateLibrary"
+     args = [pythonExePath, \
+         "--merge-files", "--new-client-only", "--no-short-file-names", "--no-library-print-debug", \
+         "--architecture=all", "--code-object-version=V3", "--cxx-compiler=hipcc", "--library-format=yaml", \
+Index: Tensile-rocm-5.0.2/HostLibraryTests/CMakeLists.txt
+===================================================================
+--- Tensile-rocm-5.0.2.orig/HostLibraryTests/CMakeLists.txt
++++ Tensile-rocm-5.0.2/HostLibraryTests/CMakeLists.txt
+@@ -135,7 +135,7 @@ set(test_sources ${test_sources}
+ )
+ 
+ if(TENSILE_USE_LLVM)
+-    find_package(LLVM 13.0 QUIET CONFIG)
++    find_package(LLVM PATHS @LLVM_PATH@ QUIET CONFIG)
+     if(NOT LLVM_FOUND)
+         find_package(LLVM 12.0 QUIET CONFIG)
+         if(NOT LLVM_FOUND)
