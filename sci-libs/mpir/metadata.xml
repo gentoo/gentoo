@@ -16,7 +16,7 @@ professional and amateur mathematicians, computer scientists and
 hobbyists.
 	</longdescription>
 	<use>
-		<flag name="cpudetection">Enables runtime cpudetection (useful for bindist, compatability on other CPUs)</flag>
+		<flag name="cpudetection">Enables runtime cpudetection (useful for bindist, compatibility on other CPUs)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">wbhart/mpir</remote-id>
