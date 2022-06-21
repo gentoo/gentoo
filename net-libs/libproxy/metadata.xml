@@ -5,6 +5,7 @@
 		<email>freedesktop-bugs@gentoo.org</email>
 	</maintainer>
 	<use>
+		<flag name="duktape">Use <pkg>dev-lang/duktape</pkg> for PAC parsing</flag>
 		<flag name="gnome">Enable support for reading proxy settings from GNOME</flag>
 		<flag name="kde">Enable support for reading proxy settings from KDE</flag>
 		<flag name="spidermonkey">Use libmozjs from <pkg>dev-lang/spidermonkey</pkg> for PAC parsing</flag>
