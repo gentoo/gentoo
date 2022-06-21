@@ -36,8 +36,13 @@ pkg_setup() {
 mingw-foreach_tool() {
 	use !tools || use headers-only && return
 
-	local tool
-	for tool in gendef genidl widl; do
+	local tool=widl
+	if use !amd64 && use !x86 && use !arm64 && use !arm; then
+		einfo "Skipping widl due to unsupported platform"
+		tool=
+	fi
+
+	for tool in gendef genidl ${tool}; do
 		# not using top-level --with-tools given it skips widl
 		pushd mingw-w64-tools/${tool} >/dev/null || die
 		"${@}"
@@ -47,9 +52,7 @@ mingw-foreach_tool() {
 
 src_configure() {
 	# native tools, see #644556
-	local toolsconf=(
-		--prefix="${EPREFIX}"/usr
-	)
+	local toolsconf=()
 	# normally only widl is prefixed, but avoids clash with other targets
 	${MW_CROSS} && toolsconf+=( --program-prefix=${CTARGET}- )
 
