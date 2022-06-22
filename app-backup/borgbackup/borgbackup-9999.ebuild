@@ -22,19 +22,21 @@ LICENSE="BSD"
 SLOT="0"
 
 # Unfortunately we have a file conflict with app-office/borg, bug #580402
+# borgbackup is *very* picky about which msgpack it work with,
+# check setup.py on bumps.
 RDEPEND="
 	!!app-office/borg
 	app-arch/lz4
 	virtual/acl
 	dev-python/pyfuse3[${PYTHON_USEDEP}]
-	=dev-python/msgpack-1.0.3[${PYTHON_USEDEP}]
+	~dev-python/msgpack-1.0.4[${PYTHON_USEDEP}]
 	dev-libs/openssl:0=
 "
 
 DEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
-	dev-python/cython[${PYTHON_USEDEP}]
+	>=dev-python/cython-0.29.29[${PYTHON_USEDEP}]
 	dev-python/pkgconfig[${PYTHON_USEDEP}]
 	${RDEPEND}
 "
