@@ -21,6 +21,10 @@ RESTRICT="test !test? ( test )"
 
 DOCS=( readme.md )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.0.6-locales-detection-fixup.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DFLATBUFFERS_BUILD_FLATLIB=$(usex static-libs)
@@ -28,8 +32,6 @@ src_configure() {
 		-DFLATBUFFERS_BUILD_TESTS=$(usex test)
 		-DFLATBUFFERS_BUILD_BENCHMARKS=OFF
 	)
-
-	use elibc_musl && mycmakeargs+=( -DFLATBUFFERS_LOCALE_INDEPENDENT=0 )
 
 	cmake_src_configure
 }
