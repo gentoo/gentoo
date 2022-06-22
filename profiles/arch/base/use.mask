@@ -24,9 +24,6 @@ libvirt
 firebird
 oci8
 
-# cilk has been ported only to x86 systems
-cilk
-
 # cuda/NVENC only works on amd64/arm64
 cuda
 nvenc

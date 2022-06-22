@@ -198,10 +198,6 @@ d
 # Lack of user/dev support for WiFi (bug #176517)
 networkmanager
 
-# Jeroen Roovers <jer@gentoo.org> (2007-04-07)
-# libffi has not been ported to hppa, therefore gcc fails to build with USE=gcj
-gcj
-
 # Samuli Suominen <drac@gentoo.org> (2007-03-02)
 # See bug #157881#c3
 battery

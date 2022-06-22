@@ -39,9 +39,6 @@
 # dev-db/firebird is keyworded ~amd64
 -firebird
 
-# cilk has been ported to this arch.
--cilk
-
 # Mike Gilbert <floppym@gentoo.org> (2014-10-19)
 # sys-libs/libapparmor
 -apparmor
