@@ -13,7 +13,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Jakarta Mail API 2.1 Specification API"
-HOMEPAGE="https://projects.eclipse.org/projects/ee4j/jakarta.mail-api"
+HOMEPAGE="https://eclipse-ee4j.github.io/mail/"
 SRC_URI="https://github.com/eclipse-ee4j/mail/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="EPL-1.0 EPL-2.0 GPL-2-with-classpath-exception"
