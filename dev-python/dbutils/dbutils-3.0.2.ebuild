@@ -18,7 +18,7 @@ HOMEPAGE="
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
-LICENSE="OSL-2.0"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
