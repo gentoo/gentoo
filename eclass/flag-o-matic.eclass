@@ -218,6 +218,14 @@ filter-lfs-flags() {
 	filter-flags -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_TIME_BITS=64
 }
 
+# @FUNCTION: filter-lto
+# @DESCRIPTION:
+# Remove flags that enable LTO and those that depend on it
+filter-lto() {
+	[[ $# -ne 0 ]] && die "filter-lto takes no arguments"
+	filter-flags '-flto*' -fwhole-program-vtables '-fsanitize=cfi*'
+}
+
 # @FUNCTION: filter-ldflags
 # @USAGE: <flags>
 # @DESCRIPTION:
