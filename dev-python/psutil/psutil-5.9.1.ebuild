@@ -8,10 +8,13 @@ PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
+TEST_PATCH=psutil-5.9.1-tests-r2.patch
 DESCRIPTION="Retrieve information on running processes and system utilization"
 HOMEPAGE="https://github.com/giampaolo/psutil https://pypi.org/project/psutil/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-5.9.1-tests.patch.xz"
+SRC_URI="
+	mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
+	https://dev.gentoo.org/~mgorny/dist/${TEST_PATCH}.xz
+"
 
 LICENSE="BSD"
 SLOT="0"
@@ -20,7 +23,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${WORKDIR}"/${PN}-5.9.1-tests.patch
+	"${WORKDIR}/${TEST_PATCH}"
 )
 
 python_test() {
