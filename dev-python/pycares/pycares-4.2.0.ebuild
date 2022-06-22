@@ -17,6 +17,7 @@ SRC_URI="
 	https://github.com/saghul/pycares/archive/${P}.tar.gz
 		-> ${P}.gh.tar.gz
 "
+S=${WORKDIR}/pycares-${P}
 
 LICENSE="MIT"
 SLOT="0"
