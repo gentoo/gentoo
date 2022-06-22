@@ -9,7 +9,7 @@
 		A Mozilla Gecko based version of Internet Explorer for Wine
 	</longdescription>
 	<upstream>
-		<remote-id type="sourceforge">wine/wine-gecko</remote-id>
+		<remote-id type="sourceforge">wine</remote-id>
 	</upstream>
 	<use>
 		<flag name="shared">Install pre-unpacked files which do not need to be copied into the Wine prefix</flag>
