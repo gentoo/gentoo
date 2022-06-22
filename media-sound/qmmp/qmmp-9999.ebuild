@@ -129,7 +129,6 @@ src_configure() {
 		-DUSE_FLAC="$(usex flac)"
 		-DUSE_GME="$(usex game)"
 		-DUSE_GNOMEHOTKEY="$(usex gnome)"
-		-DUSE_HAL=OFF
 		-DUSE_JACK="$(usex jack)"
 		-DUSE_LADSPA="$(usex ladspa)"
 		-DUSE_LYRICS="$(usex lyrics)"
@@ -153,7 +152,7 @@ src_configure() {
 		-DUSE_SOXR="$(usex soxr)"
 		-DUSE_STEREO="$(usex stereo)"
 		-DUSE_STATICON="$(usex tray)"
-		-DUSE_UDISKS2="$(usex udisks)"
+		-DUSE_UDISKS="$(usex udisks)"
 		-DUSE_VORBIS="$(usex vorbis)"
 		-DUSE_WAVPACK="$(usex wavpack)"
 		-DUSE_XMP="$(usex xmp)"
