@@ -14,7 +14,7 @@ SRC_URI="mirror://gnu/libidn/${P}.tar.gz
 LICENSE="GPL-2 GPL-3 LGPL-3"
 SLOT="0/12"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc emacs nls"
+IUSE="emacs nls"
 
 DEPEND="nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}"
@@ -39,6 +39,10 @@ multilib_src_configure() {
 
 	local args=(
 		$(use_enable nls)
+		--disable-doc
+		--disable-gtk-doc
+		--disable-gtk-doc-html
+		--disable-gtk-doc-pdf
 		--disable-csharp
 		--disable-java
 		--disable-valgrind-tests
@@ -74,8 +78,6 @@ multilib_src_install_all() {
 	fi
 
 	einstalldocs
-
-	use doc && dodoc -r doc/reference/html
 
 	find "${ED}" -name '*.la' -delete || die
 }
