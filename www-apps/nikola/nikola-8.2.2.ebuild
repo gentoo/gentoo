@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT Apache-2.0 CC0-1.0 public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 IUSE="charts hyphenation ipython jinja server watchdog webmedia"
 REQUIRED_USE="server? ( watchdog )"
 RESTRICT="test" # needs coveralls
