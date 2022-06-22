@@ -5,7 +5,7 @@ EAPI=7
 
 MY_PN=SPIRV-Tools
 CMAKE_ECLASS="cmake"
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="xml(+)"
 inherit cmake-multilib python-any-r1
 
@@ -27,7 +27,7 @@ SLOT="0"
 # Tests fail upon finding symbols that do not match a regular expression
 # in the generated library. Easily hit with non-standard compiler flags
 RESTRICT="test"
-COMMON_DEPEND="~dev-util/spirv-headers-1.3.216"
+COMMON_DEPEND="~dev-util/spirv-headers-${PV}"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND=""
 BDEPEND="${PYTHON_DEPS}
