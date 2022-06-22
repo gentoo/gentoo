@@ -18,7 +18,7 @@ SRC_URI="
 		-> ${P}.gh.tar.gz
 "
 
-LICENSE="EUPL-1.2"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
