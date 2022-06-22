@@ -124,7 +124,7 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 #	)
 # @CODE
 
-# @ECLASS-VARIABLE: JAVA_TEST_RUNNER_EXTRA_ARGS
+# @ECLASS_VARIABLE: JAVA_TEST_RUNNER_EXTRA_ARGS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array of extra arguments that should be passed to the test runner when running tests.
