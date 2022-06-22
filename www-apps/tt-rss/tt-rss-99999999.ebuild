@@ -51,7 +51,7 @@ DEPEND="
 need_httpd_cgi # From webapp.eclass
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-no-chmod.patch
+	"${FILESDIR}"/${PN}-no-chmod-r2.patch
 )
 
 src_install() {
