@@ -5,9 +5,6 @@
 		<email>wine@gentoo.org</email>
 		<name>Wine</name>
 	</maintainer>
-	<longdescription>
-		A Mozilla Gecko based version of Internet Explorer for Wine
-	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">wine</remote-id>
 	</upstream>
