@@ -199,14 +199,6 @@ dev-python/jaraco-packaging
 # no upstream activity in years. Removal on 2022-07-02.
 dev-python/chai
 
-# Michał Górny <mgorny@gentoo.org> (2022-05-31)
-# Causes a regression in dev-python/werkzeug that breaks all its
-# revdeps.  If one of the pytest plugins using werkzeug is installed,
-# this mean that all pytest invocations suddenly fail.  Mask until
-# we resolve this.
-# https://github.com/pallets/werkzeug/issues/2425
-=dev-lang/python-3.11.0_beta2
-
 # Sam James <sam@gentoo.org> (2022-05-30)
 # Doesn't support Python 3.10+, maintainer-needed, and out of date.
 # Bugs #818847, #845936, #786585.

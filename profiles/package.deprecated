@@ -100,10 +100,6 @@ x11-libs/wxGTK:3.0
 # Bug #650320
 dev-perl/Net-SMTP-SSL
 
-# Matt Turner <mattst88@gentoo.org> (2020-03-17)
-# Deprecated GNOME 2 era packages, bug #751001
-gnome-base/gnome-vfs
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-08)
 # x11-libs/gtkglext is in the process of being removed, tracker bug #698950
 x11-libs/gtkglext

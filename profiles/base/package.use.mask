@@ -86,8 +86,6 @@ sys-devel/gcc custom-cflags
 <sys-devel/gcc-10.4:10 -pch
 =sys-devel/gcc-9* -pch
 =sys-devel/gcc-8* -pch
-=sys-devel/gcc-7* -pch
-=sys-devel/gcc-6* -pch
 
 # John Helmert III <ajak@gentoo.org> (2021-12-31)
 # Rizin tests require a tarball of binaries of ambiguous license.
@@ -217,10 +215,6 @@ net-analyzer/wireshark lto
 # Fails to build right now
 # bug #651740
 net-misc/openssh debug
-
-# Michał Górny <mgorny@gentoo.org> (2021-03-06)
-# LLVM 9 has been removed.
-<dev-util/perf-5.15 clang
 
 # Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)
 # PCRE JIT support via dev-libs/libpcre2[jit] is only available for certain architectures
@@ -504,11 +498,6 @@ net-fs/samba ceph
 # Jan Ziak <0xe2.0x9a.0x9b@gmail.com> (2018-03-14)
 # media-libs/svgalib is not keyworded everywhere
 app-emulation/fuse backend-svga
-
-# Patrick McLean <chutzpah@gentoo.org> (2018-03-06)
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2020-12-25)
-# Requires dev-libs/boost-1.72 that is gone
-<sys-cluster/ceph-15 system-boost
 
 # Brian Evans <grknight@gentoo.org> (2018-03-05)
 # Mask embedded USE on virtual/mysql and friends to transition it to be obsolete

@@ -51,7 +51,6 @@ x11-base/xwayland unwind
 # These aren't ported to LoongArch yet
 dev-libs/libpcre2 jit
 dev-libs/libpcre jit
-<dev-vcs/git-2.31.0 pcre-jit
 www-servers/nginx pcre-jit
 
 # End snippets taken from riscv

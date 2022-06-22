@@ -71,8 +71,6 @@
 # Temurin ppc64 build is little-endian only
 # so we can use bins.
 -dev-java/openjdk-bin
--=dev-java/openjdk-11.0.13_p8
--=dev-java/openjdk-17.0.1_p12
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2018-04-11)
 # ltrace is not ported to powerpc64le yet.

@@ -1,11 +1,6 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Andrey Grozin <grozin@gentoo.org> (2021-05-06)
-# Upstream bug: old versions fail to compile
-# bug #782688
-<media-gfx/asymptote-2.74 offscreen
-
 # Peter Levine <plevine457@gmail.com> (2019-10-01)
 # Native inotify support is preferred on linux.
 # bug #697476

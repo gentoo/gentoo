@@ -129,7 +129,6 @@ net-libs/xrootd-ceph
 
 # Hasan ÇALIŞIR <hasan.calisir@psauxit.com> (2019-10-28)
 # requires net-libs/nodejs | sys-apps/yarn
->=net-analyzer/greenbone-security-assistant-8.0.1
 net-analyzer/gvm
 
 # Marek Szuba <marecki@gentoo.org> (2019-07-26)

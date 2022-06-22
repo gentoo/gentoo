@@ -6,7 +6,3 @@
 # https://github.com/vim/vim/commit/f78b52ba24d8d294869cd013dcc4cd5d4a65cea7
 =app-editors/vim-8.2.5066
 =app-editors/vim-core-8.2.5066
-
-# Fabian Groffen <grobian@gentoo.org> (2022-01-08)
-# malloc crash during install on >=11.0, bug #830425
-=dev-util/cmake-3.22.1

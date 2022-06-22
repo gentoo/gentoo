@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # When you add an entry to the top of this file, add your name, the date, and
@@ -7,10 +7,6 @@
 #
 # NOTE: Please add your entry at the top!
 #
-
-# Fabian Groffen <grobian@gentoo.org> (2020-08-02)
-# Python 3.6 is soon going away and won't be updated for Prefix anymore.
-dev-lang/python:3.6
 
 # Fabian Groffen <grobian@gentoo.org> (2020-08-02)
 # Python 2 is no longer supported

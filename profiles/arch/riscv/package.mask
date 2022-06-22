@@ -4,6 +4,3 @@
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-04-30)
 # Bootstrapping was created only for lp64d
 dev-java/openjdk
-
-# Doesnt work properly with the one-level libdirs
-<sys-apps/baselayout-2.7-r3
