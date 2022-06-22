@@ -20,7 +20,7 @@ SRC_URI="
 		https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/${L_PN}/${PV}/${L_PN}.jar -> ${L_P}.jar
 	)
 	binary? (
-		https://dev.gentoo.org/~gienah/files/dist/${P}-gentoo-binary.tar.xz
+		https://dev.gentoo.org/~gienah/distfiles/${P}-gentoo-binary.tar.xz
 	)"
 LICENSE="BSD"
 SLOT="0"
@@ -43,7 +43,7 @@ RESTRICT="test"
 # Note: to bump sbt, some things to try are:
 # 1. remove the https://dev.gentoo.org/~gienah/snapshots/${P}-ivy2-deps.tar.xz
 # https://dev.gentoo.org/~gienah/snapshots/${P}-sbt-deps.tar.xz and
-# binary? ( https://dev.gentoo.org/~gienah/files/dist/${P}-gentoo-binary.tar.xz )
+# binary? ( https://dev.gentoo.org/~gienah/distfiles/${P}-gentoo-binary.tar.xz )
 # from SRC_URI
 # 2. Comment the sbt publishLocal line in src_compile.
 # 3. try:
