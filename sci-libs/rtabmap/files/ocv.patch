@@ -1,0 +1,30 @@
+From cf64b20e1fd5b7aca6f5f708e9b790aa41e799db Mon Sep 17 00:00:00 2001
+From: matlabbe <matlabbe@gmail.com>
+Date: Tue, 10 May 2022 22:47:15 -0400
+Subject: [PATCH] =?UTF-8?q?Fixed=20error:=20=E2=80=98drawAxis=E2=80=99=20i?=
+ =?UTF-8?q?s=20not=20a=20member=20of=20=E2=80=98cv::aruco=E2=80=99=20(open?=
+ =?UTF-8?q?cv=204.5.5)?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ corelib/src/MarkerDetector.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/corelib/src/MarkerDetector.cpp b/corelib/src/MarkerDetector.cpp
+index b59cb9468..2a3957f90 100644
+--- a/corelib/src/MarkerDetector.cpp
++++ b/corelib/src/MarkerDetector.cpp
+@@ -304,7 +304,11 @@ std::map<int, MarkerInfo> MarkerDetector::detect(const cv::Mat & image,
+                 std::map<int, MarkerInfo>::iterator iter = detections.find(ids[i]);
+                 if(iter!=detections.end())
+                 {
++#if CV_MAJOR_VERSION > 4 || (CV_MAJOR_VERSION == 4 && (CV_MINOR_VERSION >1 || (CV_MINOR_VERSION==1 && CV_PATCH_VERSION>=1)))
++                    cv::drawFrameAxes(*imageWithDetections, model.K(), model.D(), rvecs[i], tvecs[i], iter->second.length() * 0.5f);
++#else
+                     cv::aruco::drawAxis(*imageWithDetections, model.K(), model.D(), rvecs[i], tvecs[i], iter->second.length() * 0.5f);
++#endif
+                 }
+ 			}
+ 		}
