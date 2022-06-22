@@ -35,6 +35,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.2.0-config-cmake-in.patch"
 	"${FILESDIR}/${PN}-5.0.1-hip_vector_types.patch"
 	"${FILESDIR}/${PN}-4.2.0-cancel-hcc-header-removal.patch"
+	"${FILESDIR}/${PN}-5.0.2-set-build-id.patch"
 )
 
 S="${WORKDIR}/hipamd-rocm-${PV}"
