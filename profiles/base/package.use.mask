@@ -608,13 +608,6 @@ dev-java/icedtea cacao jamvm
 # forward porting this patch is non-trivial, mask for now
 >=net-wireless/wpa_supplicant-2.5 wimax
 
-# James Le Cuirot <chewi@gentoo.org> (2015-08-18)
-# gcc[awt] is only used by gcj-jdk[awt] and that isn't needed by
-# anything in the tree. The toolchain folks aren't keen to support it
-# and it should probably only be used if you really know what you're
-# doing *and* your name is gnu_andrew. ;) See bug #531900.
-sys-devel/gcc awt
-
 # Mike Gilbert <floppym@gentoo.org> (2015-05-16)
 # dev-lang/python[berkdb] fails with recent multilib sys-libs/db (bug 519584).
 dev-lang/python berkdb

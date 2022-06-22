@@ -139,10 +139,6 @@ sys-libs/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
 sys-libs/compiler-rt-sanitizers -gwp-asan -shadowcallstack
 sys-libs/compiler-rt-sanitizers -libfuzzer -profile -xray
 
-# Sam James <sam@gentoo.org> (2020-12-13)
-# Requires unkeyworded, fetch-restricted deps
-net-proxy/haproxy device-atlas
-
 # Roy Bamford <neddyseagoon@gentoo.org< (2020-12-07)
 # media-libs/liblastfm fails to build with tests Bug #758896
 media-sound/clementine lastfm
@@ -383,10 +379,6 @@ media-gfx/pstoedit emf
 app-emulation/libvirt openvz
 
 # Alexis Ballier <aballier@gentoo.org> (2017-07-10)
-# media-gfx/nvidia-texture-tools does not support arm64
-media-libs/devil nvtt
-
-# Alexis Ballier <aballier@gentoo.org> (2017-07-10)
 # Virtualbox is x86 only
 app-emulation/libvirt virtualbox
 
@@ -409,7 +401,7 @@ net-libs/libpcap bluetooth
 
 # Mart Raudsepp <leio@gentoo.org> (2017-02-16)
 # Not yet tested features/dependencies
-app-text/evince dvi nautilus postscript t1lib xps
+app-text/evince dvi nautilus postscript xps
 
 # Markus Meier <maekke@gentoo.org> (2013-12-26)
 # Unkeyworded deps, bug #488724
@@ -429,7 +421,7 @@ app-admin/conky lua-cairo xmms2 moc
 
 # Sergey Popov <pinkbyte@gentoo.org> (2013-07-30)
 # Not tested
-media-libs/devil allegro nvtt
+media-libs/devil allegro
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (2013-05-27)
 # Firmware loader not keyworded yet

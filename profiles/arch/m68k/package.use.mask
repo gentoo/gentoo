@@ -109,4 +109,4 @@ dev-libs/libpcre2 jit
 # Ryan Hill <dirtyepic@gentoo.org> (2011-07-20)
 # graphite requires dev-libs/ppl & dev-libs/cloog-ppl
 # (bugs #269087 and #269088)
-sys-devel/gcc graphite awt
+sys-devel/gcc graphite

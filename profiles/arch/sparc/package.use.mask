@@ -298,7 +298,6 @@ app-office/scribus osg
 # Sergei Trofimovich <slyfox@gentoo.org> (2018-06-17)
 # Mask broken HIPE support on sparc32 (bug #656618)
 dev-lang/erlang hipe
-net-im/ejabberd hipe
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2018-05-08)
 # Mask USE=games to avoid unkeyworded games-util/qstat.
@@ -333,7 +332,7 @@ net-libs/gnutls test-full
 # Michał Górny <mgorny@gentoo.org> (2017-08-07)
 # Requires USE=bluetooth that is masked in this profile.
 media-sound/pulseaudio native-headset ofono-headset
-media-sound/pulseaudio-daemon native-headset ofono-headset
+media-sound/pulseaudio-daemon ofono-headset
 net-misc/ofono dundee
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-07)

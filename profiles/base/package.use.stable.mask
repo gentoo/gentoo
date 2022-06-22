@@ -165,11 +165,6 @@ dev-perl/DBD-SQLite system-sqlite
 # Bug #643840.
 dev-python/matplotlib doc
 
-# Michał Górny <mgorny@gentoo.org> (2018-01-20)
-# Requires proprietary fetch-restricted package that is not suitable
-# for stabilization. Bug #645092.
-net-proxy/haproxy device-atlas
-
 # Bernard Cafarelli <voyageur@gentoo.org> (2017-11-27)
 # Dependencies have no stable keyword
 app-backup/backup-manager s3

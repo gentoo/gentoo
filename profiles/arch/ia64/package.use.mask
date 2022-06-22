@@ -171,7 +171,6 @@ gnome-extra/evolution-data-server oauth
 # - gnome-extra/sushi: depends on webkit-gtk
 gnome-base/nautilus previewer
 # - net-libs/gnome-online-accounts: depends on webkit-gtk
-gnome-base/gnome-control-center flickr
 gnome-base/gvfs google
 # app-text/libgepub depends on webkit-gtk.
 xfce-extra/tumbler epub
@@ -280,7 +279,6 @@ media-video/ffmpeg libv4l
 # Michał Górny <mgorny@gentoo.org> (2017-08-07)
 # Requires USE=bluetooth that is masked in this profile.
 media-sound/pulseaudio native-headset
-media-sound/pulseaudio-daemon native-headset
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-07-20)
 # pulls in unkeyworded java
@@ -504,7 +502,7 @@ x11-wm/fvwm lock
 dev-lisp/clisp hyperspec svm
 
 # missing keywords
-media-plugins/gst-plugins-meta dts dv lame libvisual modplug mms taglib vcd wavpack
+media-plugins/gst-plugins-meta dts dv lame libvisual modplug taglib vcd wavpack
 
 # Marius Brehler <marfbre@linux.sungazer.de> (2015-08-13)
 # missing keyword

@@ -171,7 +171,7 @@ x11-themes/qtcurve plasma
 
 # Jonathan Scruggs <j.scruggs@gmail.com> (2017-09-23)
 # dependencies not keyworded yet
-media-libs/openimageio field3d ptex
+media-libs/openimageio ptex
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2017-08-22)
 # Dictionary Manager requires unkeyworded dev-qt/qtwebengine.

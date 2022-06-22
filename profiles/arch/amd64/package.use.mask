@@ -215,7 +215,7 @@ media-video/mpv -vulkan
 
 # Nick Sarnie <sarnex@gentoo.org> (2018-04-29)
 # media-libs/vulkan-loader and app-emulation/vkd3d are keyworded on amd64
-app-emulation/wine-staging -vkd3d -vulkan
+app-emulation/wine-staging -vulkan
 app-emulation/wine-vanilla -vkd3d -vulkan
 
 # Richard Yao <ryao@gentoo.org> (2018-04-16)

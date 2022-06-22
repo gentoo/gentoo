@@ -52,11 +52,8 @@ app-office/planner eds
 gnome-base/nautilus previewer
 # needs libgdata[gnome-online-accounts], depends on net-libs/webkit-gtk
 gnome-base/gvfs google
-gnome-base/gnome-control-center flickr
 # needs mail-client/evolution, depends on net-libs/webkit-gtk
 net-mail/lbdb evo
-# needs dev-util/devhelp, depends on net-libs/webkit-gtk
-dev-util/anjuta devhelp
 
 # Daniel Pielmeier <billie@gentoo.org> (2021-11-07)
 # gnome-base/librsvg has no stable keywords here, bug #807130
@@ -176,10 +173,6 @@ net-vpn/tor seccomp
 # Michał Górny <mgorny@gentoo.org> (2017-03-23)
 # Most of clang runtimes are not supported here
 sys-devel/clang-runtime openmp sanitize
-
-# Michael Weber <xmw@gentoo.org> (2017-03-15)
-# Cannot test non-free dependency dev-libs/device-atlas-api-c
-net-proxy/haproxy device-atlas
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2016-12-13)
 # Dropping ppc from sci-libs/armadillo, bug 555896

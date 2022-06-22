@@ -169,7 +169,6 @@ www-servers/uwsgi uwsgi_plugins_rados
 # Anthony G. Basile <blueness@gentoo.org> (2019-03-08)
 # hipe code is missing in erlang for arm
 dev-lang/erlang hipe
-net-im/ejabberd hipe
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-25)
 # (SM)BIOS/Thunderbolt outside of amd64/x86? - citation needed
@@ -227,10 +226,6 @@ net-misc/bfgminer adl lm-sensors
 # Patrice Clement <monsieurp@gentoo.org> (2017-04-09)
 # Enable MQTT support on supported architectures
 app-metrics/collectd -collectd_plugins_mqtt
-
-# Michael Weber <xmw@gentoo.org> (2017-03-15)
-# Cannot test non-free dependency dev-libs/device-atlas-api-c
-net-proxy/haproxy device-atlas
 
 # Christoph Junghans <junghans@gentoo.org> (2017-02-05)
 # Mask some fabrics
@@ -392,7 +387,7 @@ app-admin/conky cmus irc lua-cairo lua-imlib lua-rsvg moc xmms2
 
 # Sergey Popov <pinkbyte@gentoo.org> (2013-07-30)
 # Not tested
-media-libs/devil allegro nvtt
+media-libs/devil allegro
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (2013-05-27)
 # Firmware loader not keyworded yet
@@ -414,7 +409,6 @@ media-gfx/pstoedit emf
 # Rick Farina <zerochaos@gentoo.org> (2013-02-05)
 # masking all stable packages with java use flag
 dev-util/oprofile java
-dev-libs/cyrus-sasl java
 dev-tex/tex4ht java
 dev-vcs/subversion java
 media-libs/libjpeg-turbo java
