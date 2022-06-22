@@ -15,7 +15,7 @@ SRC_URI="https://github.com/hunterhacker/jdom/archive/${PN^^}-${PV}.tar.gz"
 
 LICENSE="Apache-1.1"
 SLOT="2"
-KEYWORDS="amd64 ~arm arm64 ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 # FAILURES!!!
 # Tests run: 1887,  Failures: 23
