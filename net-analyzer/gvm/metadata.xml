@@ -19,7 +19,4 @@
 	with associated tools like a graphical user front-end.
 	The core component is a server with a set of network vulnerability tests (NVTs) to detect security problems in remote systems and applications.
 	</longdescription>
-	<upstream>
-		<remote-id type="github">greenbone</remote-id>
-	</upstream>
 </pkgmetadata>
