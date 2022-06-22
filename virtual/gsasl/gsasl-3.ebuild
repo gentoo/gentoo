@@ -6,6 +6,6 @@ EAPI=8
 DESCRIPTION="Virtual for the GNU SASL library"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND=">=net-misc/gsasl-2.0.0"
