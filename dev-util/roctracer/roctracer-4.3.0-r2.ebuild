@@ -11,7 +11,7 @@ DESCRIPTION="Callback/Activity Library for Performance tracing AMD GPU's"
 HOMEPAGE="https://github.com/ROCm-Developer-Tools/roctracer.git"
 SRC_URI="https://github.com/ROCm-Developer-Tools/roctracer/archive/rocm-${PV}.tar.gz -> rocm-tracer-${PV}.tar.gz
 		https://github.com/ROCm-Developer-Tools/rocprofiler/archive/rocm-${PV}.tar.gz -> rocprofiler-${PV}.tar.gz
-		https://github.com/ROCmSoftwarePlatform/hsa-class/archive/master.tar.gz -> hsa-class-${PV}.tar.gz"
+		https://github.com/ROCmSoftwarePlatform/hsa-class/archive/f8b387043b9f510afdf2e72e38a011900360d6ab.tar.gz -> hsa-class-f8b3870.tar.gz"
 S="${WORKDIR}/roctracer-rocm-${PV}"
 
 LICENSE="MIT"
@@ -41,7 +41,7 @@ python_check_deps() {
 
 src_prepare() {
 	mv "${WORKDIR}"/rocprofiler-rocm-${PV} "${WORKDIR}"/rocprofiler || die
-	mv "${WORKDIR}"/ROCmSoftwarePlatform-hsa-class*/test/util "${S}"/inc/ || die
+	mv "${WORKDIR}"/hsa-class-*/test/util "${S}"/inc/ || die
 	rm "${S}"/inc/util/hsa* || die
 	cp -a "${S}"/src/util/hsa* "${S}"/inc/util/ || die
 
