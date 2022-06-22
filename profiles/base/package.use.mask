@@ -21,7 +21,6 @@ dev-python/jaraco-stream doc
 dev-python/jaraco-text doc
 dev-python/jsonpickle doc
 dev-python/keyring doc
-dev-python/tempora doc
 
 # Maciej Barć <xgqt@gentoo.org> (2022-05-31)
 # "doc" require old version of dev-python/antlr4-python3-runtime (4.9.3)
@@ -452,10 +451,6 @@ app-admin/conserver freeipmi
 # is being removed
 # (bug #674364)
 sys-apps/memtest86+ floppy
-
-# Michał Górny <mgorny@gentoo.org> (2018-11-28)
-# Requires last-rited games-server/ut2003-ded.
-games-fps/ut2003 dedicated
 
 # Alfredo Tupone <tupone@gentoo.org> (2018-11-18)
 # go brokes build of gnat-gpl

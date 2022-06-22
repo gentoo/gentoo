@@ -159,7 +159,6 @@ dev-vcs/subversion kwallet
 # Patrice Clement <monsieurp@gentoo.org> (2016-02-08)
 # I would need to keyword an awful lot of packages on ppc64
 # that would need Java 7 otherwise.
-dev-java/batik python
 dev-java/bsf python
 dev-java/ant-apache-bsf python
 

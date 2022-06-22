@@ -49,8 +49,6 @@ media-libs/mlt ffmpeg frei0r rubberband
 media-libs/opencv contrib contribdnn
 
 # Required by kde-plasma/plasma-firewall
-# Required by net-firewall/firewalld[iptables] (default enabled)
-net-firewall/iptables ipv6
 # Required by net-firewall/firewalld[nftables] (default enabled)
 net-firewall/nftables json python xtables
 

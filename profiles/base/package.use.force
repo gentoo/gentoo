@@ -85,11 +85,6 @@ www-client/lynx unicode
 # b) using libidn
 app-text/ghostscript-gpl unicode
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-01)
-# sys-boot/udk is being removed, and newest revision of refind does not
-# support it already.
-sys-boot/refind gnuefi
-
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2020-12-06)
 # Doesn't build without X. Not removing IUSE from ebuild yet in hope that
 # https://github.com/TomenetGame/tomenet/issues/14 will be fixed.

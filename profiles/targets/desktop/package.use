@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-04-18)
@@ -37,9 +37,6 @@ app-arch/unzip natspec
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-11-30)
 # Required by kde-frameworks/kwayland
 dev-qt/qtgui:5 egl libinput
-
-# Required by dev-qt/qtwebengine
-media-libs/libvpx svc
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-11-30)
 # Avoid circular dependency when installing from scratch
