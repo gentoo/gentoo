@@ -14,7 +14,7 @@ SLOT="0"
 # Before giving keywords (or ideally even bumping), please check https://www.gnu.org/software/gsasl/ to see
 # if it's a stable release or not!
 KEYWORDS="~amd64 ~ppc ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="+client doc gcrypt gnutls idn kerberos nls ntlm +server static-libs"
+IUSE="+client gcrypt gnutls idn kerberos nls ntlm +server static-libs"
 REQUIRED_USE="|| ( client server )"
 
 DEPEND="
@@ -87,12 +87,4 @@ src_install() {
 	fi
 
 	doman doc/gsasl.1 doc/man/*.3
-
-	if use doc; then
-		dodoc doc/*.{eps,ps,pdf}
-		docinto html
-		dodoc doc/*.html
-		docinto examples
-		dodoc examples/*.c
-	fi
 }
