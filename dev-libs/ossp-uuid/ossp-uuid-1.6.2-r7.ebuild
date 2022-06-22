@@ -12,6 +12,7 @@ inherit perl-module
 DESCRIPTION="An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID"
 HOMEPAGE="http://www.ossp.org/pkg/lib/uuid/"
 SRC_URI="ftp://ftp.ossp.org/pkg/lib/uuid/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="ISC"
 SLOT="0"
@@ -21,9 +22,7 @@ IUSE="+cxx perl static-libs test"
 DEPEND="perl? ( dev-lang/perl test? ( virtual/perl-Test-Simple ) )"
 RDEPEND="perl? ( dev-lang/perl:= )"
 BDEPEND="perl? ( dev-lang/perl )"
-RESTRICT="perl? ( !test? ( test ) )"
-
-S="${WORKDIR}/${MY_P}"
+RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${P}-gentoo-r1.patch"
