@@ -93,6 +93,8 @@ python_test() {
 		tests/unit/misc/test_checkpyver.py::test_old_python
 		# bug 819393
 		tests/unit/commands/test_userscripts.py::test_custom_env[_POSIXUserscriptRunner]
+		# not worth running dbus over
+		tests/unit/browser/test_notification.py::TestDBus
 	)
 	use widevine && EPYTEST_DESELECT+=( tests/unit/config/test_qtargs.py )
 
