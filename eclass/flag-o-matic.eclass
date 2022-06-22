@@ -372,19 +372,30 @@ replace-cpu-flags() {
 # @USAGE: <variable> <flag>
 # @INTERNAL
 # @DESCRIPTION:
-# Returns shell true if <flag> is in a given <variable>, else returns shell false.
+# Returns shell true if <flag> is in a given <variable> and not surpassed by e.g. -fno-<flag>,
+# else returns shell false.
 _is_flagq() {
-	local x var="$1[*]"
+	local x var="$1[*]" equal_str equal_pos flag_no active=1
+	equal_str=${2%%=*}
+	equal_pos=${#equal_str}
+	# This results in -fno-flag for -fflag=*
+	flag_no="${2:0:2}no-${2:2:(equal_pos - 2)}"
+
 	for x in ${!var} ; do
-		[[ ${x} == $2 ]] && return 0
+		case ${x} in
+			$2) active=0 ;;
+			$flag_no) active=1 ;;
+			*) ;;
+		esac
 	done
-	return 1
+	return $active
 }
 
 # @FUNCTION: is-flagq
 # @USAGE: <flag>
 # @DESCRIPTION:
-# Returns shell true if <flag> is in {C,CXX,F,FC}FLAGS, else returns shell false.  Accepts shell globs.
+# Returns shell true if <flag> is in {C,CXX,F,FC}FLAGS and not surpassed by e.g. -fno-<flag>,
+# else returns shell false. Accepts shell globs.
 is-flagq() {
 	[[ -n $2 ]] && die "Usage: is-flag <flag>"
 
