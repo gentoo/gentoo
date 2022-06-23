@@ -288,11 +288,6 @@ dev-python/gevent-websocket
 # bug #625800, bug #796974, bug #796977, bug #831916, bug #845888.
 dev-python/sqlalchemy-migrate
 
-# Sam James <sam@gentoo.org> (2022-05-22)
-# No upstream activity since 2015, no reverse dependencies,
-# no Python 3.10 support. Removal on 2022-06-22. bug #845822.
-dev-python/pypeg2
-
 # Hans de Graaff <graaff@gentoo.org> (2022-05-20)
 # Unused slots of cucumber components that are no longer or were never
 # used by current cucumber versions. Masked for removal in 30 days.
