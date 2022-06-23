@@ -21,8 +21,8 @@ fi
 LICENSE="ISC"
 SLOT="0"
 
-DEPEND="x11-libs/libXft
-	x11-libs/libXinerama
+DEPEND="x11-libs/libX11
+	x11-libs/libXft
 	x11-libs/libXrandr
 "
 RDEPEND="${DEPEND}"
