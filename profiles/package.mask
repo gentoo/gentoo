@@ -293,13 +293,6 @@ dev-python/sqlalchemy-migrate
 # no Python 3.10 support. Removal on 2022-06-22. bug #845822.
 dev-python/pypeg2
 
-# Sam James <sam@gentoo.org> (2022-05-22)
-# Unmaintained, no upstream activity since 2013, upstream repository disappeared.
-# Long obsolete with no reverse dependencies, as now integrated within pytest.
-# Doesn't support Python 3.10+.
-# Removal on 2022-06-22. bug #700944, bug #845834
-dev-python/pytest-cache
-
 # Hans de Graaff <graaff@gentoo.org> (2022-05-20)
 # Unused slots of cucumber components that are no longer or were never
 # used by current cucumber versions. Masked for removal in 30 days.
