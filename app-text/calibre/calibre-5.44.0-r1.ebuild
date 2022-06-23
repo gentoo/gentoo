@@ -68,7 +68,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-python/mechanize-0.3.5[${PYTHON_USEDEP}]
 		>=dev-python/msgpack-0.6.2[${PYTHON_USEDEP}]
 		>=dev-python/netifaces-0.10.5[${PYTHON_USEDEP}]
-		>=dev-python/pillow-3.2.0[${PYTHON_USEDEP}]
+		>=dev-python/pillow-3.2.0[truetype,${PYTHON_USEDEP}]
 		>=dev-python/psutil-4.3.0[${PYTHON_USEDEP}]
 		>=dev-python/pychm-0.8.6[${PYTHON_USEDEP}]
 		dev-python/pycryptodome[${PYTHON_USEDEP}]
