@@ -1,8 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-GNOME2_LA_PUNT="yes"
+EAPI=8
 
 inherit gnome2 multilib-minimal virtualx
 
@@ -11,9 +10,9 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Librest"
 
 LICENSE="LGPL-2.1"
 SLOT="0.7"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 sparc x86"
 IUSE="+introspection test"
 RESTRICT="!test? ( test )"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 sparc x86"
 
 # Coverage testing should not be enabled
 RDEPEND="
@@ -23,7 +22,8 @@ RDEPEND="
 	net-libs/libsoup:2.4[${MULTILIB_USEDEP}]
 	introspection? ( >=dev-libs/gobject-introspection-0.6.7:= )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.13
 	>=dev-util/intltool-0.40
@@ -36,7 +36,6 @@ multilib_src_configure() {
 	# https://bugzilla.gnome.org/show_bug.cgi?id=758166
 	ECONF_SOURCE="${S}" \
 	gnome2_src_configure \
-		--disable-static \
 		--disable-gcov \
 		--without-gnome \
 		--with-ca-certificates="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt \
