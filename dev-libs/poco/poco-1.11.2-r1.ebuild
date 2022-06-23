@@ -34,9 +34,11 @@ RDEPEND="
 	>=dev-libs/libpcre-8.42
 	activerecord? ( !app-arch/arc )
 	mysql? ( !mariadb? ( dev-db/mysql-connector-c:0= )
-		 mariadb? ( dev-db/mariadb-connector-c:0= ) )
-	odbc? ( iodbc? ( dev-db/libiodbc )
-		!iodbc? ( dev-db/unixODBC ) )
+	mariadb? ( dev-db/mariadb-connector-c:0= ) )
+	odbc? (
+		iodbc? ( dev-db/libiodbc )
+		!iodbc? ( dev-db/unixODBC )
+	)
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? (
 		dev-libs/openssl:0=
