@@ -272,11 +272,6 @@ dev-python/pyfeyn
 dev-python/m2r
 dev-python/sphinxcontrib-openapi
 
-# Matt Turner <mattst88@gentoo.org> (2022-05-23)
-# Dead package upstream. Depends on dead app-misc/tracker:0.
-# Removal on 2022-06-23. Bug #846605
-gnome-extra/gnome-documents
-
 # Hans de Graaff <graaff@gentoo.org> (2022-05-20)
 # Unused slots of cucumber components that are no longer or were never
 # used by current cucumber versions. Masked for removal in 30 days.
