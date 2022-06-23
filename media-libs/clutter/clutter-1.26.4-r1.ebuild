@@ -1,8 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-GNOME2_LA_PUNT="yes"
+EAPI=8
 
 inherit gnome2 virtualx
 
@@ -11,15 +10,13 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Clutter"
 
 LICENSE="LGPL-2.1+ FDL-1.1+"
 SLOT="1.0"
-
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="aqua debug doc egl gtk +introspection test wayland X"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	|| ( aqua wayland X )
 	wayland? ( egl )
 "
-
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
 
 # NOTE: glx flavour uses libdrm + >=mesa-7.3
 # >=libX11-1.3.1 needed for X Generic Event support
@@ -49,12 +46,18 @@ RDEPEND="
 		x11-libs/libXext
 		x11-libs/libXdamage
 		>=x11-libs/libXi-1.3
-		>=x11-libs/libXcomposite-0.4 )
+		>=x11-libs/libXcomposite-0.4
+	)
 	wayland? (
 		dev-libs/wayland
-		x11-libs/gdk-pixbuf:2 )
+		x11-libs/gdk-pixbuf:2
+	)
 "
 DEPEND="${RDEPEND}
+	X? ( x11-base/xorg-proto )
+	test? ( x11-libs/gdk-pixbuf )
+"
+BDEPEND="
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.20
 	>=sys-devel/gettext-0.17
@@ -62,9 +65,8 @@ DEPEND="${RDEPEND}
 	doc? (
 		>=dev-util/gtk-doc-1.20
 		>=app-text/docbook-sgml-utils-0.6.14[jadetex]
-		dev-libs/libxslt )
-	X? ( x11-base/xorg-proto )
-	test? ( x11-libs/gdk-pixbuf )
+		dev-libs/libxslt
+	)
 "
 
 src_prepare() {
@@ -89,8 +91,8 @@ src_configure() {
 		--disable-cex100-backend \
 		--disable-win32-backend \
 		--disable-tslib-input \
+		--enable-debug=$(usex debug yes minimum) \
 		$(use_enable aqua quartz-backend) \
-		$(usex debug --enable-debug=yes --enable-debug=minimum) \
 		$(use_enable doc docs) \
 		$(use_enable egl egl-backend) \
 		$(use_enable egl evdev-input) \
