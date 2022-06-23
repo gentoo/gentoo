@@ -277,11 +277,6 @@ dev-python/sphinxcontrib-openapi
 # Removal on 2022-06-23. Bug #846605
 gnome-extra/gnome-documents
 
-# Sam James <sam@gentoo.org> (2022-05-22)
-# No upstream activity since 2017. Doesn't support Python 3.10.
-# Removal on 2022-06-22. bug #845732.
-dev-python/gevent-websocket
-
 # Hans de Graaff <graaff@gentoo.org> (2022-05-20)
 # Unused slots of cucumber components that are no longer or were never
 # used by current cucumber versions. Masked for removal in 30 days.
