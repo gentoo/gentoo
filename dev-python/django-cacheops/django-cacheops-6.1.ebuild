@@ -35,6 +35,7 @@ BDEPEND="
 		${RDEPEND}
 		dev-db/redis
 		dev-python/dill[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
 	)
 "
 
