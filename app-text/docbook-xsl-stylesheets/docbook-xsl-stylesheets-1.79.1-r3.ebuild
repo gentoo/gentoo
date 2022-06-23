@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-USE_RUBY="ruby25 ruby26 ruby27"
+EAPI=8
 
+USE_RUBY="ruby26 ruby27"
 inherit ruby-single
 
 DOCBOOKDIR="/usr/share/sgml/${PN/-//}"
@@ -13,21 +13,19 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="XSL Stylesheets for Docbook"
 HOMEPAGE="https://github.com/docbook/wiki/wiki"
 SRC_URI="mirror://sourceforge/docbook/${MY_P}.tar.bz2"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="ruby"
+# Makefile is broken since 1.76.0
+RESTRICT="test"
 
 RDEPEND="
 	>=app-text/build-docbook-catalog-1.1
 	ruby? ( ${RUBY_DEPS} )
 "
-
-S="${WORKDIR}/${MY_P}"
-
-# Makefile is broken since 1.76.0
-RESTRICT=test
 
 PATCHES=(
 	"${FILESDIR}"/nonrecursive-string-subst.patch
@@ -66,30 +64,25 @@ src_install() {
 	for i in */; do
 		i=${i%/}
 
-		cd "${S}"/${i}
 		for doc in ChangeLog README; do
-			if [ -e "$doc" ]; then
-				mv ${doc} ${doc}.${i}
-				dodoc ${doc}.${i}
-				rm ${doc}.${i}
+			if [[ -e ${i}/${doc} ]]; then
+				newdoc ${i}/${doc} ${doc}.${i}
+				rm ${i}/${doc} || die
 			fi
 		done
 
-		doins -r "${S}"/${i}
+		doins -r ${i}
 	done
 
 	if use ruby; then
 		local cmd="dbtoepub${MY_PN#docbook-xsl}"
 
-		# we can't use a symlink or it'll look for the library in the
-		# wrong path.
-		dodir /usr/bin
-		cat - > "${ED%/}"/usr/bin/${cmd} <<EOF
-#!/usr/bin/env ruby
+		# we can't use a symlink or it'll look for the library in the wrong path
+		newbin - ${cmd} <<-EOF
+			#!/usr/bin/env ruby
 
-load "${EPREFIX}${DOCBOOKDIR}/epub/bin/dbtoepub"
-EOF
-		fperms 0755 /usr/bin/${cmd}
+			load "${EPREFIX}${DOCBOOKDIR}/epub/bin/dbtoepub"
+		EOF
 	fi
 }
 
