@@ -40,11 +40,7 @@ src_prepare() {
 		# Technically this doesn't disable anything, it just gives this test time to complete.
 		# Could probably be applied unconditionally but will leave this to the maintainers.
 		if use riscv; then
-			eapply "${FILESDIR}/${P}-0002-increase-IlmImfTest-timeout.patch"
-		fi
-
-		if use sparc; then
-			eapply "${FILESDIR}/${P}-0001-disable-testRgba-on-sparc.patch"
+			eapply "${FILESDIR}/${PN}-2.5.7-0002-increase-IlmImfTest-timeout.patch"
 		fi
 	fi
 
