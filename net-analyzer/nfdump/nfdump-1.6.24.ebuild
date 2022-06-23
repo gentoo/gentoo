@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="A set of tools to collect and process netflow data"
 HOMEPAGE="https://github.com/phaag/nfdump"
@@ -19,6 +19,7 @@ REQUIRED_USE="?? ( jnat nsel )"
 RDEPEND="
 	app-arch/bzip2
 	sys-libs/zlib
+	elibc_musl? ( sys-libs/fts-standalone )
 	ftconv? ( net-analyzer/flow-tools )
 	nfpcapd? ( net-libs/libpcap )
 	nfprofile? ( net-analyzer/rrdtool )
@@ -53,6 +54,9 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC
+
+	# bug #853763
+	use elibc_musl && append-libs "-lfts"
 
 	# --without-ftconf is not handled well, bug #322201
 	econf \
