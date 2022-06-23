@@ -1,29 +1,31 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 # Temporarily needed for slibtool patch
 # It's upstreamed so should be able to drop in future
 # bug #778041
 GNOME2_EAUTORECONF="yes"
-inherit gnome2 multilib
+inherit gnome2
 
 DESCRIPTION="A library for using 3D graphics hardware to draw pretty pictures"
 HOMEPAGE="https://www.cogl3d.org/"
 
 LICENSE="MIT BSD"
 SLOT="1.0/20" # subslot = .so version
-
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
 # doc and profile disable for now due to bugs #484750 and #483332
 IUSE="debug examples gles2 gstreamer +introspection +kms +opengl +pango wayland" # doc profile
 REQUIRED_USE="
 	wayland? ( gles2 )
 	|| ( gles2 opengl )
 "
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
+# Need classic mesa swrast for tests, llvmpipe causes a test failure
+# For some reason GL3 conformance test all fails again...
+RESTRICT="test"
 
-COMMON_DEPEND="
+DEPEND="
 	>=dev-libs/glib-2.32:2
 	x11-libs/cairo:=
 	>=x11-libs/gdk-pixbuf-2:2
@@ -37,29 +39,25 @@ COMMON_DEPEND="
 	gles2? ( media-libs/mesa[gles2] )
 	gstreamer? (
 		media-libs/gstreamer:1.0
-		media-libs/gst-plugins-base:1.0 )
+		media-libs/gst-plugins-base:1.0
+	)
 	introspection? ( >=dev-libs/gobject-introspection-1.34.2:= )
 	kms? (
 		media-libs/mesa[egl(+),gbm(+)]
-		x11-libs/libdrm:= )
+		x11-libs/libdrm:=
+	)
 	pango? ( >=x11-libs/pango-1.20.0[introspection?] )
 	wayland? (
 		>=dev-libs/wayland-1.1.90
-		media-libs/mesa[egl(+),wayland] )
+		media-libs/mesa[egl(+),wayland]
+	)
 "
-# before clutter-1.7, cogl was part of clutter
-RDEPEND="${COMMON_DEPEND}
-	!<media-libs/clutter-1.7
-"
-DEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}"
+BDEPEND="
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19
 	virtual/pkgconfig
 "
-
-# Need classic mesa swrast for tests, llvmpipe causes a test failure
-# For some reason GL3 conformance test all fails again...
-RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-slibtool.patch
@@ -100,7 +98,7 @@ src_configure() {
 		$(use_enable gles2)        \
 		$(use_enable gles2 cogl-gles2) \
 		$(use_enable gles2 xlib-egl-platform) \
-		$(usex gles2 --with-default-driver=$(usex opengl gl gles2)) \
+		$(usev gles2 --with-default-driver=$(usex opengl gl gles2)) \
 		$(use_enable gstreamer cogl-gst)    \
 		$(use_enable introspection) \
 		$(use_enable kms kms-egl-platform) \
@@ -109,7 +107,6 @@ src_configure() {
 		$(use_enable wayland wayland-egl-platform) \
 		$(use_enable wayland wayland-egl-server) \
 		--disable-profile
-#		$(use_enable profile)
 }
 
 src_install() {
@@ -122,5 +119,5 @@ src_install() {
 	gnome2_src_install
 
 	# Remove silly examples-data directory
-	rm -rvf "${ED}/usr/share/cogl/examples-data/" || die
+	rm -rvf "${ED}"/usr/share/cogl/examples-data/ || die
 }
