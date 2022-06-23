@@ -196,15 +196,16 @@ kernel-build_src_install() {
 	local image_path=$(dist-kernel_get_image_path)
 	cp -p "build/${image_path}" "${ED}/usr/src/linux-${ver}/${image_path}" || die
 
-	# Install the unstripped uncompressed vmlinux for use with systemtap
-	# etc.  Use mv rather than doins for the same reason as above --
-	# space and time.
-	if use debug; then
-		mv build/vmlinux "${ED}/usr/src/linux-${ver}/" || die
-	fi
-
 	# building modules fails with 'vmlinux has no symtab?' if stripped
 	use ppc64 && dostrip -x "/usr/src/linux-${ver}/${image_path}"
+
+	# Install vmlinux with debuginfo when requested
+	if use debug; then
+		if [[ "${image_path}" != "vmlinux" ]]; then
+			mv "build/vmlinux" "${ED}/usr/src/linux-${ver}/vmlinux" || die
+		fi
+		dostrip -x "/usr/src/linux-${ver}/vmlinux"
+	fi
 
 	# strip empty directories
 	find "${D}" -type d -empty -exec rmdir {} + || die
