@@ -6,10 +6,10 @@ EAPI=8
 inherit flag-o-matic toolchain-funcs
 
 MY_P="lmon${PV}"
-
-DESCRIPTION="Nigel's performance MONitor for CPU, memory, network, disks, etc..."
+DESCRIPTION="Nigel's performance MONitor for CPU, memory, network, disks, etc"
 HOMEPAGE="http://nmon.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.c"
+S="${WORKDIR}"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -19,7 +19,9 @@ RDEPEND="sys-libs/ncurses:="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}"
+PATCHES=(
+	"${FILESDIR}"/${PN}-16n-musl.patch
+)
 
 src_unpack() {
 	cp "${DISTDIR}"/${MY_P}.c "${S}"/${PN}.c || die
@@ -27,13 +29,13 @@ src_unpack() {
 
 src_configure() {
 	local cflags=(
-		## recommended by upstream to be always on
+		# Recommended by upstream to be always on
 		-DGETUSER
 		-DJFS
 		-DLARGEMEM
 		-DKERNEL_2_6_18
 
-		## archs
+		# Arches
 		$(usex amd64 -DX86 '')
 		$(usex x86 -DX86 '')
 		$(usex arm -DARM '')
