@@ -10,7 +10,7 @@
 -INCLUDEDIR = /usr/local/share/psutils
 -PERL = /usr/local/bin/perl
 +INCLUDEDIR = $(DESTDIR)$(EPREFIX)/usr/share/psutils
-+PERL = perl
++PERL = "/usr/bin/env perl"
  
  BINMODE = 0755
  MANMODE = 0644
@@ -58,3 +58,153 @@
  
  pstops.o: psutil.h patchlev.h psspec.h pserror.h pstops.c
  
+@@ -99,116 +92,116 @@
+ 	cp $? $@
+ 
+ psmerge: psmerge.pl
+-	$(PERL) maketext OS=$(OS) PERL=$(PERL) $? > $@
++	perl maketext OS=$(OS) PERL=$(PERL) $? > $@
+ 	$(CHMOD) $(BINMODE) $@
+ 
+ fixfmps: fixfmps.pl
+-	$(PERL) maketext OS=$(OS) PERL=$(PERL) $? > $@
++	perl maketext OS=$(OS) PERL=$(PERL) $? > $@
+ 	$(CHMOD) $(BINMODE) $@
+ 
+ fixmacps: fixmacps.pl
+-	$(PERL) maketext OS=$(OS) PERL=$(PERL) INCLUDE=$(INCLUDEDIR) $? > $@
++	perl maketext OS=$(OS) PERL=$(PERL) INCLUDE=$(INCLUDEDIR) $? > $@
+ 	$(CHMOD) $(BINMODE) $@
+ 
+ fixpsditps: fixpsditps.pl
+-	$(PERL) maketext OS=$(OS) PERL=$(PERL) $? > $@
++	perl maketext OS=$(OS) PERL=$(PERL) $? > $@
+ 	$(CHMOD) $(BINMODE) $@
+ 
+ fixpspps: fixpspps.pl
+-	$(PERL) maketext OS=$(OS) PERL=$(PERL) $? > $@
++	perl maketext OS=$(OS) PERL=$(PERL) $? > $@
+ 	$(CHMOD) $(BINMODE) $@
+ 
+ fixscribeps: fixscribeps.pl
+-	$(PERL) maketext OS=$(OS) PERL=$(PERL) $? > $@
++	perl maketext OS=$(OS) PERL=$(PERL) $? > $@
+ 	$(CHMOD) $(BINMODE) $@
+ 
+ fixtpps: fixtpps.pl
+-	$(PERL) maketext OS=$(OS) PERL=$(PERL) $? > $@
++	perl maketext OS=$(OS) PERL=$(PERL) $? > $@
+ 	$(CHMOD) $(BINMODE) $@
+ 
+ fixwfwps: fixwfwps.pl
+-	$(PERL) maketext OS=$(OS) PERL=$(PERL) $? > $@
++	perl maketext OS=$(OS) PERL=$(PERL) $? > $@
+ 	$(CHMOD) $(BINMODE) $@
+ 
+ fixwpps: fixwpps.pl
+-	$(PERL) maketext OS=$(OS) PERL=$(PERL) $? > $@
++	perl maketext OS=$(OS) PERL=$(PERL) $? > $@
+ 	$(CHMOD) $(BINMODE) $@
+ 
+ fixwwps: fixwwps.pl
+-	$(PERL) maketext OS=$(OS) PERL=$(PERL) $? > $@
++	perl maketext OS=$(OS) PERL=$(PERL) $? > $@
+ 	$(CHMOD) $(BINMODE) $@
+ 
+ fixdlsrps: fixdlsrps.pl
+-	$(PERL) maketext OS=$(OS) PERL=$(PERL) $? > $@
++	perl maketext OS=$(OS) PERL=$(PERL) $? > $@
+ 	$(CHMOD) $(BINMODE) $@
+ 
+ extractres: extractres.pl
+-	$(PERL) maketext OS=$(OS) PERL=$(PERL) $? > $@
++	perl maketext OS=$(OS) PERL=$(PERL) $? > $@
+ 	$(CHMOD) $(BINMODE) $@
+ 
+ includeres: includeres.pl
+-	$(PERL) maketext OS=$(OS) PERL=$(PERL) INCLUDE=$(INCLUDEDIR) $? > $@
++	perl maketext OS=$(OS) PERL=$(PERL) INCLUDE=$(INCLUDEDIR) $? > $@
+ 	$(CHMOD) $(BINMODE) $@
+ 
+ epsffit.$(MANEXT): epsffit.man
+-	$(PERL) maketext MAN="$(MANPAGES)" $? > $@
++	perl maketext MAN="$(MANPAGES)" $? > $@
+ 
+ psnup.$(MANEXT): psnup.man
+-	$(PERL) maketext MAN="$(MANPAGES)" PAPER=$(PAPER) $? > $@
++	perl maketext MAN="$(MANPAGES)" PAPER=$(PAPER) $? > $@
+ 
+ psresize.$(MANEXT): psresize.man
+-	$(PERL) maketext MAN="$(MANPAGES)" PAPER=$(PAPER) $? > $@
++	perl maketext MAN="$(MANPAGES)" PAPER=$(PAPER) $? > $@
+ 
+ psbook.$(MANEXT): psbook.man
+-	$(PERL) maketext "MAN=$(MANPAGES)" $? > $@
++	perl maketext "MAN=$(MANPAGES)" $? > $@
+ 
+ psselect.$(MANEXT): psselect.man
+-	$(PERL) maketext "MAN=$(MANPAGES)" $? > $@
++	perl maketext "MAN=$(MANPAGES)" $? > $@
+ 
+ pstops.$(MANEXT): pstops.man
+-	$(PERL) maketext "MAN=$(MANPAGES)" PAPER=$(PAPER) $? > $@
++	perl maketext "MAN=$(MANPAGES)" PAPER=$(PAPER) $? > $@
+ 
+ psmerge.$(MANEXT): psmerge.man
+-	$(PERL) maketext "MAN=$(MANPAGES)" $? > $@
++	perl maketext "MAN=$(MANPAGES)" $? > $@
+ 
+ fixfmps.$(MANEXT): fixfmps.man
+-	$(PERL) maketext "MAN=$(MANPAGES)" $? > $@
++	perl maketext "MAN=$(MANPAGES)" $? > $@
+ 
+ fixmacps.$(MANEXT): fixmacps.man
+-	$(PERL) maketext "MAN=$(MANPAGES)" INCLUDE=$(INCLUDEDIR) $? > $@
++	perl maketext "MAN=$(MANPAGES)" INCLUDE=$(INCLUDEDIR) $? > $@
+ 
+ fixpsditps.$(MANEXT): fixpsditps.man
+-	$(PERL) maketext "MAN=$(MANPAGES)" $? > $@
++	perl maketext "MAN=$(MANPAGES)" $? > $@
+ 
+ fixpspps.$(MANEXT): fixpspps.man
+-	$(PERL) maketext "MAN=$(MANPAGES)" $? > $@
++	perl maketext "MAN=$(MANPAGES)" $? > $@
+ 
+ fixscribeps.$(MANEXT): fixscribeps.man
+-	$(PERL) maketext "MAN=$(MANPAGES)" $? > $@
++	perl maketext "MAN=$(MANPAGES)" $? > $@
+ 
+ fixtpps.$(MANEXT): fixtpps.man
+-	$(PERL) maketext "MAN=$(MANPAGES)" $? > $@
++	perl maketext "MAN=$(MANPAGES)" $? > $@
+ 
+ fixwfwps.$(MANEXT): fixwfwps.man
+-	$(PERL) maketext "MAN=$(MANPAGES)" $? > $@
++	perl maketext "MAN=$(MANPAGES)" $? > $@
+ 
+ fixwpps.$(MANEXT): fixwpps.man
+-	$(PERL) maketext "MAN=$(MANPAGES)" $? > $@
++	perl maketext "MAN=$(MANPAGES)" $? > $@
+ 
+ fixwwps.$(MANEXT): fixwwps.man
+-	$(PERL) maketext "MAN=$(MANPAGES)" $? > $@
++	perl maketext "MAN=$(MANPAGES)" $? > $@
+ 
+ fixdlsrps.$(MANEXT): fixdlsrps.man
+-	$(PERL) maketext "MAN=$(MANPAGES)" $? > $@
++	perl maketext "MAN=$(MANPAGES)" $? > $@
+ 
+ extractres.$(MANEXT): extractres.man
+-	$(PERL) maketext "MAN=$(MANPAGES)" $? > $@
++	perl maketext "MAN=$(MANPAGES)" $? > $@
+ 
+ includeres.$(MANEXT): includeres.man
+-	$(PERL) maketext "MAN=$(MANPAGES)" INCLUDE=$(INCLUDEDIR) $? > $@
++	perl maketext "MAN=$(MANPAGES)" INCLUDE=$(INCLUDEDIR) $? > $@
+ 
+ getafm.$(MANEXT): getafm.man
+-	$(PERL) maketext "MAN=$(MANPAGES)" $? > $@
++	perl maketext "MAN=$(MANPAGES)" $? > $@
+ 
+ clean:
+ 	rm -f *.o
