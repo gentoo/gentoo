@@ -41,6 +41,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.94.1-test-timeout.patch
+	"${FILESDIR}"/${PN}-1.94.4-stderr-redefinition.patch
 )
 
 src_configure() {
