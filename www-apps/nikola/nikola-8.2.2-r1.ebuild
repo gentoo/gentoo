@@ -5,7 +5,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8,9,10} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1
+inherit distutils-r1 optfeature
 
 MY_PN="Nikola"
 MY_P="${MY_PN}-${PV}"
@@ -18,8 +18,6 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="MIT Apache-2.0 CC0-1.0 public-domain"
 SLOT="0"
 KEYWORDS="amd64 ~riscv"
-IUSE="charts hyphenation ipython jinja server watchdog webmedia"
-REQUIRED_USE="server? ( watchdog )"
 RESTRICT="test" # needs coveralls
 
 DEPEND=">=dev-python/docutils-0.13[${PYTHON_USEDEP}]" # needs rst2man to build manpage
@@ -39,14 +37,7 @@ RDEPEND="${DEPEND}
 	>=dev-python/unidecode-0.04.16[${PYTHON_USEDEP}]
 	>=dev-python/yapsy-1.11.223[${PYTHON_USEDEP}]
 	dev-python/pillow[jpeg,${PYTHON_USEDEP}]
-	dev-python/cloudpickle[${PYTHON_USEDEP}]
-	charts? ( >=dev-python/pygal-2.0.1[${PYTHON_USEDEP}] )
-	hyphenation? ( >=dev-python/pyphen-0.9.1[${PYTHON_USEDEP}] )
-	ipython? ( >=dev-python/ipython-2.0.0[notebook,${PYTHON_USEDEP}] )
-	jinja? ( >=dev-python/jinja-2.7.2[${PYTHON_USEDEP}] )
-	server? ( dev-python/aiohttp[${PYTHON_USEDEP}] )
-	watchdog? ( >=dev-python/watchdog-0.8.3[${PYTHON_USEDEP}] )
-	webmedia? ( >=dev-python/micawber-0.3.0[${PYTHON_USEDEP}] )"
+	dev-python/cloudpickle[${PYTHON_USEDEP}]"
 
 src_install() {
 	distutils-r1_src_install
@@ -56,4 +47,14 @@ src_install() {
 
 	dodoc AUTHORS.txt CHANGES.txt README.rst docs/*.rst
 	gunzip "${ED}/usr/share/man/man1/${PN}.1.gz" || die
+}
+
+pkg_postinst() {
+	optfeature "chart generation" dev-python/pygal
+	optfeature "hyphenation support" dev-python/pyphen
+	optfeature "notebook compilation and LESS support" dev-python/ipython
+	optfeature "alternative templating engine to Mako" dev-python/jinja
+	optfeature "built-in web server support" dev-python/aiohttp
+	optfeature "monitoring file system events" dev-python/watchdog
+	optfeature "extracting metadata from web media links" dev-python/micawber
 }
