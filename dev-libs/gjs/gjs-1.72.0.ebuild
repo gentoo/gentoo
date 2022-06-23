@@ -34,6 +34,19 @@ BDEPEND="
 src_configure() {
 	append-cppflags -DG_DISABLE_CAST_CHECKS
 
+	# On musl it required that either gjs, pixman or gnome-shell to be built
+	# with a larger stack otherwise librsvg fails to render a particular SVG, as
+	# a result we fail to get gdm or gnome-shell running (greeted with a fail
+	# whale screen). The bug has been reported to librsvg. For now this is just
+	# a temporary fix and will be removed later once an actual fix is found.
+	#
+	# Please refer
+	# https://gitlab.gnome.org/GNOME/librsvg/-/issues/686
+	# https://gitlab.gnome.org/GNOME/librsvg/-/issues/874
+	#
+	# TODO: Find an actual fix instead of increasing the stack
+	use elibc_musl && append-ldflags -Wl,--as-needed -Wl,-z,stack-size=2097152
+
 	# FIXME: add systemtap/dtrace support, like in glib:2
 	local emesonargs=(
 		$(meson_feature cairo)
