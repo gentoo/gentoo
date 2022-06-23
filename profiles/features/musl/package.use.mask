@@ -37,11 +37,12 @@ sys-apps/sysvinit nls
 # Sam James <sam@gentoo.org> (2021-11-07)
 # Disable some sanitizers for LLVM, see bug #753935
 # Needs libexecinfo on musl, not yet packaged
-sys-libs/compiler-rt-sanitizers gwp-asan libfuzzer
+sys-libs/compiler-rt-sanitizers gwp-asan
+<sys-libs/compiler-rt-sanitizers-13 libfuzzer
 
 # Sam James <sam@gentoo.org> (2021-11-07)
 # Broken as "error: unknown type name '_Unwind_Word'"
-sys-libs/compiler-rt-sanitizers hwasan
+<sys-libs/compiler-rt-sanitizers-14 hwasan
 
 # Andreas K. Hüttel <dilfridge@gentoo.org>
 # Restore mask here that is gone elsewhere
