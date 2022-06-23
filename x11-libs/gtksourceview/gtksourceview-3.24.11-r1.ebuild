@@ -1,10 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-VALA_MIN_API_VERSION="0.24"
-VALA_USE_DEPEND="vapigen"
+EAPI=8
 
+VALA_USE_DEPEND="vapigen"
 inherit gnome2 vala virtualx
 
 DESCRIPTION="A text widget implementing syntax highlighting and other features"
@@ -12,11 +11,9 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GtkSourceView"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="3.0/3"
-
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 IUSE="glade +introspection +vala"
 REQUIRED_USE="vala? ( introspection )"
-
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 
 RDEPEND="
 	>=dev-libs/glib-2.48:2
@@ -25,7 +22,8 @@ RDEPEND="
 	glade? ( >=dev-util/glade-3.9:3.10 )
 	introspection? ( >=dev-libs/gobject-introspection-1.42:= )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.25
 	>=sys-devel/gettext-0.19.4
@@ -33,12 +31,9 @@ DEPEND="${RDEPEND}
 	vala? ( $(vala_depend) )
 "
 
-src_prepare() {
-	use vala && vala_src_prepare
-	gnome2_src_prepare
-}
-
 src_configure() {
+	use vala && vala_setup
+
 	gnome2_src_configure \
 		$(use_enable glade glade-catalog) \
 		$(use_enable introspection) \
