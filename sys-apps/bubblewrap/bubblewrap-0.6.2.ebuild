@@ -12,7 +12,7 @@ SRC_URI="https://github.com/containers/${PN}/releases/download/v${PV}/${P}.tar.x
 LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
-IUSE="selinux +suid"
+IUSE="selinux -suid test"
 
 RDEPEND="
 	sys-libs/libseccomp
@@ -39,10 +39,8 @@ pkg_setup() {
 
 src_configure() {
 	local emesonargs=(
-		-Dbash_completion=enabled
-		-Dman=enabled
-		-Dtests=false
-		-Dzsh_completion=enabled
+		$(meson_feature man)
+		$(meson_use test tests)
 		$(meson_feature selinux)
 	)
 
@@ -52,7 +50,5 @@ src_configure() {
 src_install() {
 	meson_src_install
 
-	if use suid; then
-		chmod u+s "${ED}"/usr/bin/bwrap
-	fi
+	use suid && fperms u+s /usr/bin/bwrap
 }
