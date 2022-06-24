@@ -123,13 +123,13 @@ enewuser() {
 	# handle uid
 	local euid=${1}; shift
 	if [[ -n ${euid} && ${euid} != -1 ]] ; then
-		if [[ ${euid} -gt 0 ]] ; then
+		if [[ ${euid} -ge 0 ]] ; then
 			if [[ -n $(egetent passwd ${euid}) ]] ; then
 				[[ -n ${force_uid} ]] && die "${FUNCNAME}: UID ${euid} already taken"
 				euid="next"
 			fi
 		else
-			eerror "Userid given but is not greater than 0!"
+			eerror "Userid given but is not greater than or equal to 0!"
 			die "${euid} is not a valid UID"
 		fi
 	else
@@ -289,13 +289,13 @@ enewgroup() {
 	# handle gid
 	local egid=${1}; shift
 	if [[ -n ${egid} && ${egid} != -1 ]] ; then
-		if [[ ${egid} -gt 0 ]] ; then
+		if [[ ${egid} -ge 0 ]] ; then
 			if [[ -n $(egetent group ${egid}) ]] ; then
 				[[ -n ${force_gid} ]] && die "${FUNCNAME}: GID ${egid} already taken"
 				egid="next available; requested gid taken"
 			fi
 		else
-			eerror "Groupid given but is not greater than 0!"
+			eerror "Groupid given but is not greater than or equal to 0!"
 			die "${egid} is not a valid GID"
 		fi
 	else
