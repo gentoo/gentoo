@@ -4,12 +4,9 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
-# Version based on value in (java/)core/pom.xml from main branch
-# Please update me when new release
-# Maybe find a way to automatically change it?
-MAVEN_ID="com.google.protobuf:${PN}:3.21.7"
+MAVEN_ID="com.google.protobuf:${PN}:${PV}"
 # Tests not enabled, depend on com.google.truth which is not packaged
-# https://github.com/protocolbuffers/protobuf/blob/v21.7/java/core/pom.xml#L35-L40
+# https://github.com/protocolbuffers/protobuf/blob/v3.20.3/java/core/pom.xml#L35-L40
 # JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
@@ -38,7 +35,7 @@ HOMEPAGE="
 "
 
 LICENSE="BSD"
-SLOT="0/32"
+SLOT="0/31"
 
 S="${WORKDIR}/${PARENT_P}/java"
 
@@ -90,14 +87,14 @@ src_prepare() {
 	core_protos=( any api descriptor duration empty field_mask source_context struct timestamp type wrappers )
 
 	# Copy resources from ../src/google/protobuf according to
-	# https://github.com/protocolbuffers/protobuf/blob/v21.7/java/core/pom.xml#L45-L61
+	# https://github.com/protocolbuffers/protobuf/blob/v3.20.2/java/core/pom.xml#L45-L61
 	mkdir -p "${JAVA_RESOURCE_DIRS}/google/protobuf/compiler" || die
 	cp "../src/google/protobuf/${core_protos[@]}.proto" \
 		"${JAVA_RESOURCE_DIRS}/google/protobuf" || die
 	cp {../src,"${JAVA_RESOURCE_DIRS}"}/google/protobuf/compiler/plugin.proto || die
 
 	# Generate 146 .java files according to
-	# https://github.com/protocolbuffers/protobuf/blob/v21.7/java/core/generate-sources-build.xml
+	# https://github.com/protocolbuffers/protobuf/blob/v3.20.3/java/core/generate-sources-build.xml
 	for proto in "${core_protos[@]}" compiler/plugin; do
 		"${BROOT}/usr/bin/protoc" \
 			--java_out="${JAVA_SRC_DIR}" -I../src ../src/google/protobuf/"${proto}".proto || die
