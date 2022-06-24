@@ -67,6 +67,13 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
+PDEPEND="
+	|| (
+		media-video/pipewire[sound-server(+)]
+		media-sound/pulseaudio-daemon
+		media-sound/pulseaudio[daemon(+)]
+	)
+"
 
 DOCS=( NEWS README )
 
