@@ -18,14 +18,14 @@ SRC_URI="
 LICENSE="Apache-2.0 BSD BSD-2 MIT Unlicense"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc +sass test test-full"
+IUSE="doc +sass test"
 
 BDEPEND="
 	>=dev-lang/go-1.18
 	test? (
 		dev-python/docutils
 		dev-ruby/asciidoctor
-		test-full? ( app-text/pandoc )
+		virtual/pandoc
 	)
 "
 RDEPEND="
