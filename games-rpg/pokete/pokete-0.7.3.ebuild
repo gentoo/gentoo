@@ -18,7 +18,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		>=games-engines/scrap-engine-1.2.0[${PYTHON_USEDEP}]
-		dev-python/pygobject[${PYTHON_USEDEP}]
 		!kernel_linux? ( >=dev-python/pynput-1.7.6[${PYTHON_USEDEP}] )
 	')
 "
