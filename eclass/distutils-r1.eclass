@@ -1258,9 +1258,15 @@ distutils_wheel_install() {
 	local wheel=${2}
 
 	einfo "  Installing ${wheel##*/} to ${root}"
-	gpep517 install-wheel --destdir="${root}" --interpreter="${PYTHON}" \
-			--prefix="${EPREFIX}/usr" "${wheel}" ||
-		die "Wheel install failed"
+	local cmd=(
+		gpep517 install-wheel
+			--destdir="${root}"
+			--interpreter="${PYTHON}"
+			--prefix="${EPREFIX}/usr"
+			"${wheel}"
+	)
+	printf '%s\n' "${cmd[*]}"
+	"${cmd[@]}" || die "Wheel install failed"
 
 	# remove installed licenses
 	find "${root}$(python_get_sitedir)" -depth \
@@ -1342,12 +1348,16 @@ distutils_pep517_install() {
 	local config_args=()
 	[[ -n ${config_settings} ]] &&
 		config_args+=( --config-json "${config_settings}" )
+	local cmd=(
+		gpep517 build-wheel
+			--backend "${build_backend}"
+			--output-fd 3
+			--wheel-dir "${WHEEL_BUILD_DIR}"
+			"${config_args[@]}"
+	)
+	printf '%s\n' "${cmd[*]}"
 	local wheel=$(
-		gpep517 build-wheel --backend "${build_backend}" \
-				--output-fd 3 \
-				--wheel-dir "${WHEEL_BUILD_DIR}" \
-				"${config_args[@]}" 3>&1 >&2 ||
-			die "Wheel build failed"
+		"${cmd[@]}" 3>&1 >&2 || die "Wheel build failed"
 	)
 	[[ -n ${wheel} ]] || die "No wheel name returned"
 
