@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -300,10 +300,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
 IUSE="fix"
 
-RDEPEND="
-	dev-libs/openssl:0=
-	dev-libs/libgit2:=
-"
+RDEPEND="dev-libs/openssl:0="
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/rustsec-${PN}-v${PV}"
@@ -315,7 +312,11 @@ PROPERTIES="test_network"
 RESTRICT="test"
 
 src_configure() {
-	local myfeatures=( $(usev fix) )
+	local myfeatures=(
+		$(usev fix)
+		vendored-libgit2
+	)
+
 	cargo_src_configure
 }
 
