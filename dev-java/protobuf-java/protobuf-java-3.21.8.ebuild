@@ -4,10 +4,7 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
-# Version based on value in (java/)core/pom.xml from main branch
-# Please update me when new release
-# Maybe find a way to automatically change it?
-MAVEN_ID="com.google.protobuf:${PN}:3.21.7"
+MAVEN_ID="com.google.protobuf:${PN}:${PV}"
 # Tests not enabled, depend on com.google.truth which is not packaged
 # https://github.com/protocolbuffers/protobuf/blob/v21.7/java/core/pom.xml#L35-L40
 # JAVA_TESTING_FRAMEWORKS="junit-4"
@@ -15,7 +12,7 @@ MAVEN_ID="com.google.protobuf:${PN}:3.21.7"
 inherit java-pkg-2 java-pkg-simple
 
 PARENT_PN="${PN/-java/}"
-PARENT_PV="${PV}"
+PARENT_PV="$(ver_cut 2-)"
 PARENT_P="${PARENT_PN}-${PARENT_PV}"
 
 if [[ "${PV}" == *9999 ]]; then
