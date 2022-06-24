@@ -453,6 +453,9 @@ econf_build() {
 tc-ld-is-gold() {
 	local out
 
+	# Ensure ld output is in English.
+	local -x LC_ALL=C
+
 	# First check the linker directly.
 	out=$($(tc-getLD "$@") --version 2>&1)
 	if [[ ${out} == *"GNU gold"* ]] ; then
@@ -482,6 +485,9 @@ tc-ld-is-gold() {
 # Return true if the current linker is set to lld.
 tc-ld-is-lld() {
 	local out
+
+	# Ensure ld output is in English.
+	local -x LC_ALL=C
 
 	# First check the linker directly.
 	out=$($(tc-getLD "$@") --version 2>&1)
