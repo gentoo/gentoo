@@ -1239,6 +1239,38 @@ _distutils-r1_get_backend() {
 	echo "${build_backend}"
 }
 
+# @FUNCTION: distutils_wheel_install
+# @USAGE: <root> <wheel>
+# @DESCRIPTION:
+# Install the specified wheel into <root>.
+#
+# This function is intended for expert use only.
+distutils_wheel_install() {
+	debug-print-function ${FUNCNAME} "${@}"
+	if [[ ${#} -ne 2 ]]; then
+		die "${FUNCNAME} takes exactly two arguments: <root> <wheel>"
+	fi
+	if [[ -z ${PYTHON} ]]; then
+		die "PYTHON unset, invalid call context"
+	fi
+
+	local root=${1}
+	local wheel=${2}
+
+	einfo "  Installing ${wheel##*/} to ${root}"
+	gpep517 install-wheel --destdir="${root}" --interpreter="${PYTHON}" \
+			--prefix="${EPREFIX}/usr" "${wheel}" ||
+		die "Wheel install failed"
+
+	# remove installed licenses
+	find "${root}$(python_get_sitedir)" -depth \
+		\( -path '*.dist-info/COPYING*' \
+		-o -path '*.dist-info/LICENSE*' \
+		-o -path '*.dist-info/license_files/*' \
+		-o -path '*.dist-info/license_files' \
+		\) -delete || die
+}
+
 # @FUNCTION: distutils_pep517_install
 # @USAGE: <root>
 # @DESCRIPTION:
@@ -1319,18 +1351,7 @@ distutils_pep517_install() {
 	)
 	[[ -n ${wheel} ]] || die "No wheel name returned"
 
-	einfo "  Installing ${wheel} to ${root}"
-	gpep517 install-wheel --destdir="${root}" --interpreter="${PYTHON}" \
-			--prefix="${EPREFIX}/usr" "${WHEEL_BUILD_DIR}/${wheel}" ||
-		die "Wheel install failed"
-
-	# remove installed licenses
-	find "${root}$(python_get_sitedir)" -depth \
-		\( -path '*.dist-info/COPYING*' \
-		-o -path '*.dist-info/LICENSE*' \
-		-o -path '*.dist-info/license_files/*' \
-		-o -path '*.dist-info/license_files' \
-		\) -delete || die
+	distutils_wheel_install "${root}" "${WHEEL_BUILD_DIR}/${wheel}"
 
 	# clean the build tree; otherwise we may end up with PyPy3
 	# extensions duplicated into CPython dists
