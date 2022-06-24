@@ -39,10 +39,12 @@ BDEPEND="
 distutils_enable_tests pytest
 
 src_prepare() {
-	# increase timeout
-	sed -e '/sleep/s/0.01/1.0/' -i tests/test_watch.py || die
-
 	distutils-r1_src_prepare
+
+	# increase timeout
+	sed -i -e '/sleep/s/0.01/1.0/' tests/test_watch.py || die
+	# fix version number in metadata
+	sed -i -e "s:0\.0\.dev0:${PV}:" watchgod/version.py || die
 }
 
 python_test() {
