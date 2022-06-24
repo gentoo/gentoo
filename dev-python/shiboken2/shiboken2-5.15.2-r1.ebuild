@@ -60,7 +60,11 @@ DEPEND="${RDEPEND}
 "
 
 DOCS=( AUTHORS )
-PATCHES=( "${FILESDIR}/${P}-python310.patch" )
+
+PATCHES=(
+	"${FILESDIR}/${P}-python310.patch"
+	"${FILESDIR}/${P}-numpy-1.23.patch"
+)
 
 # Ensure the path returned by get_llvm_prefix() contains clang as well.
 llvm_check_deps() {
