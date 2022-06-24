@@ -3,13 +3,16 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
 DISTUTILS_USE_PEP517=flit
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
+
 inherit distutils-r1
 
 DESCRIPTION="Python port of markdown-it, Markdown parser"
-HOMEPAGE="https://pypi.org/project/markdown-it-py/
-	https://github.com/executablebooks/markdown-it-py"
+HOMEPAGE="
+	https://pypi.org/project/markdown-it-py/
+	https://github.com/executablebooks/markdown-it-py/
+"
 SRC_URI="
 	https://github.com/executablebooks/markdown-it-py/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
