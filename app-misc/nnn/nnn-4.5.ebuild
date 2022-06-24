@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit bash-completion-r1 toolchain-funcs xdg-utils
+inherit bash-completion-r1 flag-o-matic toolchain-funcs xdg-utils
 
 DESCRIPTION="The missing terminal file browser for X"
 HOMEPAGE="https://github.com/jarun/nnn"
@@ -13,13 +13,15 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 
-DEPEND="sys-libs/ncurses:0=
-	sys-libs/readline:0="
+DEPEND="sys-libs/ncurses:=
+	sys-libs/readline:=
+	elibc_musl? ( sys-libs/fts-standalone )"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default
 	tc-export CC
+	use elibc_musl && append-flags "-lfts"
 	sed -i -e '/install: all/install:/' Makefile || die "sed failed"
 }
 
