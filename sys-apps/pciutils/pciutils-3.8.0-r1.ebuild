@@ -81,6 +81,7 @@ check_binutils_version() {
 			eerror "Old version of binutils activated! ${P} cannot be built with an old version."
 			eerror "Please follow these steps:"
 			eerror "1. Select a newer binutils (>= 2.37) using binutils-config"
+			eerror " (If no such version is installed, run emerge -v1 sys-devel/binutils)"
 			eerror "2. Run: . /etc/profile"
 			eerror "3. Try emerging again with: emerge -v1 ${CATEGORY}/${P}"
 			eerror "4. Complete your world upgrade if you were performing one."
