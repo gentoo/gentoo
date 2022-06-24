@@ -37,18 +37,25 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
-	# too long path for unix socket
-	tests/test_config.py::test_bind_unix_socket_works_with_reload_or_workers
-	# need unpackaged httptools
-	"tests/middleware/test_logging.py::test_trace_logging_on_http_protocol[httptools]"
-	tests/protocols/test_http.py::test_fragmentation
-)
+python_test() {
+	local EPYTEST_DESELECT=(
+		# too long path for unix socket
+		tests/test_config.py::test_bind_unix_socket_works_with_reload_or_workers
+		# need unpackaged httptools
+		"tests/middleware/test_logging.py::test_trace_logging_on_http_protocol[httptools]"
+		tests/protocols/test_http.py::test_fragmentation
+	)
 
-EPYTEST_IGNORE=(
-	# needs watchfiles, which in turn needs maturin, which needs rust
-	tests/supervisors/test_reload.py
-)
+	local EPYTEST_IGNORE=()
+	# love from Rust world
+	if ! has_version "dev-python/watchfiles[${PYTHON_USEDEP}]"; then
+		EPYTEST_IGNORE+=(
+			tests/supervisors/test_reload.py
+		)
+	fi
+
+	epytest
+}
 
 pkg_postinst() {
 	optfeature "auto reload on file changes" dev-python/watchfiles
