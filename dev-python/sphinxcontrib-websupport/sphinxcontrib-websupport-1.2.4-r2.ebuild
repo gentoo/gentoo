@@ -45,6 +45,8 @@ src_prepare() {
 	# breaks tests
 	sed -i -e '/pkg_resources/d' \
 		sphinxcontrib/websupport/__init__.py || die
+	# strip the .dev tag from version number
+	sed -i -e '/tag/d' setup.cfg || die
 	distutils-r1_src_prepare
 }
 
