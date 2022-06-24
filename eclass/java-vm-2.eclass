@@ -25,6 +25,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/unzip"
+IDEPEND="app-eselect/eselect-java"
 
 if [[ ${EAPI} == 6 ]]; then
 	DEPEND+=" ${BDEPEND}"
@@ -88,14 +89,35 @@ java-vm-2_pkg_postinst() {
 	xdg_desktop_database_update
 }
 
+# @FUNCTION: has_eselect_java-vm_update
+# @INTERNAL
+# @DESCRIPTION:
+# Checks if an eselect-java version providing "eselect java-vm update"
+# is available.
+# @RETURN: 0 if >=app-eselect/eselect-java-0.5 is installed, 1 otherwise.
+has_eselect_java-vm_update() {
+	local has_version_args="-b"
+	if [[ ${EAPI} == 6 ]]; then
+		has_version_args="--host-root"
+	fi
+
+	has_version "${has_version_args}" ">=app-eselect/eselect-java-0.5"
+}
 
 # @FUNCTION: java-vm-2_pkg_prerm
 # @DESCRIPTION:
 # default pkg_prerm
 #
-# Warn user if removing system-vm.
+# Does nothing if eselect-java-0.5 or newer is available.  Otherwise,
+# warn user if removing system-vm.
 
 java-vm-2_pkg_prerm() {
+	if has_eselect_java-vm_update; then
+		# We will potentially switch to a new Java system VM in
+		# pkg_postrm().
+		return
+	fi
+
 	if [[ $(GENTOO_VM= java-config -f 2>/dev/null) == ${VMHANDLE} && -z ${REPLACED_BY_VERSION} ]]; then
 		ewarn "It appears you are removing your system-vm! Please run"
 		ewarn "\"eselect java-vm list\" to list available VMs, then use"
@@ -108,10 +130,14 @@ java-vm-2_pkg_prerm() {
 # @DESCRIPTION:
 # default pkg_postrm
 #
-# Update mime database.
+# Invoke "eselect java-vm update" if eselect-java 0.5, or newer, is
+# available.  Also update the mime database.
 
 java-vm-2_pkg_postrm() {
 	xdg_desktop_database_update
+	if has_eselect_java-vm_update; then
+		eselect java-vm update
+	fi
 }
 
 
