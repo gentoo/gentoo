@@ -1,3 +1,5 @@
+https://gitlab.com/samba-team/samba/-/merge_requests/1025
+
 # Define NETDB_INTERNAL and NETDB_SUCCESS if they are not defined
 #
 # Gentoo bug 832629 and 835017
