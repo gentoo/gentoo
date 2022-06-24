@@ -6,7 +6,7 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="Irssi plugin providing Jabber/XMPP support"
-HOMEPAGE="https://github.com/cdidier/~irssi-xmpp"
+HOMEPAGE="https://github.com/cdidier/irssi-xmpp"
 SRC_URI="https://github.com/cdidier/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-musl-build.patch"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-irssi.patch.xz"
