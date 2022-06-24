@@ -212,7 +212,7 @@ src_install() {
 	local inst
 	local INSTALL_TARGETS=( install install_tmpfiles_configuration )
 	# install systemd related files only when requested, bug #522430
-	use systemd && INSTALL_TARGETS+=( systemdutildir="$(systemd_get_utildir)" install_systemd_units install_systemd_generators )
+	use systemd && INSTALL_TARGETS+=( SYSTEMD_GENERATOR_DIR="$(systemd_get_systemgeneratordir)" install_systemd_units install_systemd_generators )
 	use device-mapper-only && INSTALL_TARGETS=( install_device-mapper )
 	emake V=1 DESTDIR="${D}" "${INSTALL_TARGETS[@]}"
 
