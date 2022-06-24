@@ -42,6 +42,7 @@ DOCS="doc/linux-cifs-client-guide.odt"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-6.12-ln_in_destdir.patch" #766594
+	"${FILESDIR}/${PN}-6.15-musl.patch"
 )
 
 pkg_setup() {
