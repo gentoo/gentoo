@@ -93,6 +93,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-3.18
 	net-libs/libndp[${MULTILIB_USEDEP}]
+	ppp? ( elibc_musl? ( net-libs/ppp-defs ) )
 "
 BDEPEND="
 	dev-util/gdbus-codegen
