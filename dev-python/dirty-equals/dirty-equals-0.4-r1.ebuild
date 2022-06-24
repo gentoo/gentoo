@@ -34,6 +34,11 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	sed -i -e "/version/s:0:${PV}:" pyproject.toml || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	local -x TZ=UTC
 	epytest
