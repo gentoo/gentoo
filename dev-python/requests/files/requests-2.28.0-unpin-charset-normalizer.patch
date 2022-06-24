@@ -18,8 +18,6 @@ Subject: [PATCH] Allow charset normalizer >=2 and <3
      "urllib3>=1.21.1,<1.27",
      "certifi>=2017.4.17",
 
-diff --git a/setup.cfg b/setup.cfg
-index 751c171..99166ef 100644
 --- a/setup.cfg
 +++ b/setup.cfg
 @@ -5,7 +5,7 @@ provides-extra =
