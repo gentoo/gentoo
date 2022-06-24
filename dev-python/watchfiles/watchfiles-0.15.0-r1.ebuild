@@ -96,6 +96,13 @@ QA_FLAGS_IGNORED=".*/_rust_notify.*"
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# fix version number
+	sed -i -e "/^version/s:0\.0\.0:${PV}:" Cargo.toml || die
+}
+
 python_test() {
 	rm -rf watchfiles || die
 	epytest
