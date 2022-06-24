@@ -24,6 +24,10 @@ RDEPEND="${DEPEND}
 	dev-python/packaging[${PYTHON_USEDEP}]
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-numpy-1.23.0.patch
+)
+
 python_test() {
 	pushd "${BUILD_DIR}/install/usr/lib/${EPYTHON}/site-packages" >/dev/null || die
 	"${EPYTHON}" - <<-EOF || die "Tests failed with ${EPYTHON}"
