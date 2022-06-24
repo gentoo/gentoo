@@ -454,21 +454,21 @@ _python_export() {
 				local d
 				case ${impl} in
 					python2.7)
-						PYTHON_PKG_DEP='>=dev-lang/python-2.7.5-r2:2.7';;
+						PYTHON_PKG_DEP='>=dev-lang/python-2.7.10_p15:2.7';;
 					python3.8)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.8.12_p1-r1:3.8";;
+						PYTHON_PKG_DEP=">=dev-lang/python-3.8.13:3.8";;
 					python3.9)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.9.9-r1:3.9";;
+						PYTHON_PKG_DEP=">=dev-lang/python-3.9.12:3.9";;
 					python3.10)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.10.0_p1-r1:3.10";;
+						PYTHON_PKG_DEP=">=dev-lang/python-3.10.4:3.10";;
 					python3.11)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.11.0_beta1-r1:3.11";;
+						PYTHON_PKG_DEP=">=dev-lang/python-3.11.0_beta3:3.11";;
 					python*)
 						PYTHON_PKG_DEP="dev-lang/python:${impl#python}";;
 					pypy)
-						PYTHON_PKG_DEP='>=dev-python/pypy-7.3.0:0=';;
+						PYTHON_PKG_DEP='>=dev-python/pypy-7.3.9:0=';;
 					pypy3)
-						PYTHON_PKG_DEP='>=dev-python/pypy3-7.3.7-r1:0=';;
+						PYTHON_PKG_DEP='>=dev-python/pypy3-7.3.9_p1:0=';;
 					*)
 						die "Invalid implementation: ${impl}"
 				esac
