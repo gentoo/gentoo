@@ -1,11 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
 
-inherit autotools bash-completion-r1 linux-info multilib pam python-single-r1
+inherit autotools bash-completion-r1 linux-info pam python-single-r1
 
 DESCRIPTION="Tools for Managing Linux CIFS Client Filesystems"
 HOMEPAGE="https://wiki.samba.org/index.php/LinuxCIFS_utils"
@@ -17,7 +17,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~
 IUSE="+acl +ads +caps creds pam +python systemd"
 
 RDEPEND="
-	!net-fs/mount-cifs
 	sys-apps/keyutils:=
 	ads? (
 		sys-libs/talloc
