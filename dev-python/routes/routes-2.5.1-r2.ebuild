@@ -45,5 +45,7 @@ PATCHES=(
 
 src_prepare() {
 	distutils-r1_src_prepare
+	# fix the version number
+	sed -i -e '/tag/d' setup.cfg || die
 	find tests -name '__init__.py' -delete || die
 }
