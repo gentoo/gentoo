@@ -5,4 +5,5 @@
 		<email>slashbeast@gentoo.org</email>
 		<name>Piotr Karbowski</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>
