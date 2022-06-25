@@ -5,7 +5,6 @@ ARCH="sparc"
 ACCEPT_KEYWORDS="${ARCH}"
 
 # 64bit kernel, 32bit userland
-CHOST="sparc-unknown-linux-gnu"
 PROFILE_ARCH="sparc64"
 
 # We need sparc64 binutils for linux-headers
@@ -17,9 +16,6 @@ CHOST_sparc64="sparc64-unknown-linux-gnu"
 LDFLAGS_sparc64="-m elf64_sparc"
 
 # Multilib stuff
-MULTILIB_ABIS="sparc32"
-DEFAULT_ABI="sparc32"
-ABI="${DEFAULT_ABI}"
 CFLAGS_sparc32=""  # 32 bit is the default, so no need to set it.
 LDFLAGS_sparc32="" # setting it would make gcc use -m32 and -m64 at the same time
 CHOST_sparc32="sparc-unknown-linux-gnu"
