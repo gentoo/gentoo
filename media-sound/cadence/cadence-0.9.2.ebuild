@@ -14,7 +14,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/falkTX/Cadence.git"
 else
 	SRC_URI="https://github.com/falkTX/Cadence/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	S="${WORKDIR}/Cadence-${PV}"
 fi
 
