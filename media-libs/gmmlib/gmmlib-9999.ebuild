@@ -3,6 +3,8 @@
 
 EAPI=8
 
+CMAKE_BUILD_TYPE="Release"
+
 inherit cmake
 
 if [[ ${PV} == *9999 ]] ; then
