@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-06-25)
+# sys-devel/lld lacks sparc support right now
+dev-lang/rust wasm
+
+# Sam James <sam@gentoo.org> (2022-06-25)
 # We're not (yet?) providing our own tarballs for these and
 # upstream don't offer them for this arch (see bug #769467).
 dev-lang/rust-bin clippy doc rls rustfmt
