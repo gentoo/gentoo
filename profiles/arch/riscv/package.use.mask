@@ -25,11 +25,6 @@ dev-lisp/clisp berkdb
 # unavailable on riscv currently
 sys-block/fio rbd
 
-# Marek Szuba <marecki@gentoo.org> (2022-03-30)
-# Indirectly depends on dev-python/pytest-testinfra, which is currently
-# blocked from being keyworded on this arch by several errors (Bug #835717)
-dev-python/subprocess-tee test-full
-
 # Jakov Smolić <jsmolic@gentoo.org> (2022-03-25)
 # sys-process/criu doesn't support riscv (bug #835975)
 # Upstream bug for criu: https://github.com/checkpoint-restore/criu/issues/1702
