@@ -109,5 +109,5 @@ src_install() {
 	# Remove "perf" executable due to file collisions with dev-util/perf.
 	# Previously with the CMake build system we only installed h5perf, so
 	# let's simply remove the file for now.
-	rm "${ED}"/usr/bin/perf || die "rm failed"
+	use mpi && { rm "${ED}"/usr/bin/perf || die "rm failed" ; }
 }
