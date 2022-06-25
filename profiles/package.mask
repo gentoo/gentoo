@@ -274,7 +274,6 @@ dev-python/pyfeyn
 # is dev-python/jupyter_server[doc], so let's mask the flag and remove
 # them.
 # Removal on 2022-06-24.  Bug #843881.
-dev-python/m2r
 dev-python/sphinxcontrib-openapi
 
 # Hans de Graaff <graaff@gentoo.org> (2022-05-20)
