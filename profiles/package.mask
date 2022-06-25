@@ -267,15 +267,6 @@ dev-python/pypam
 # Removal on 2022-06-24
 dev-python/pyfeyn
 
-# Michał Górny <mgorny@gentoo.org> (2022-05-25)
-# dev-python/m2r has not seen any activity since Jun 2019 and requires
-# old version of dev-python/mistune.  dev-python/sphinxcontrib-openapi
-# has not seen any activity since Oct 2020.  Their only revdep
-# is dev-python/jupyter_server[doc], so let's mask the flag and remove
-# them.
-# Removal on 2022-06-24.  Bug #843881.
-dev-python/sphinxcontrib-openapi
-
 # Hans de Graaff <graaff@gentoo.org> (2022-05-20)
 # Unused slots of cucumber components that are no longer or were never
 # used by current cucumber versions. Masked for removal in 30 days.
