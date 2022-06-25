@@ -155,3 +155,13 @@ src_install() {
 		fi
 	done
 }
+
+pkg_postinst() {
+	xdg_pkg_postinst
+	udev_reload
+}
+
+pkg_postrm() {
+	xdg_pkg_postrm
+	udev_reload
+}
