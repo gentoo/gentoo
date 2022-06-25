@@ -86,8 +86,10 @@ BDEPEND="virtual/pkgconfig
 	dev-qt/qtxmlpatterns:5"
 
 PATCHES=(
-	"${FILESDIR}"/mixxx-9999-docs.patch
-	)
+	"${FILESDIR}"/${PN}-2.3.0-docs.patch
+	"${FILESDIR}"/${PN}-2.3.0-cmake.patch
+	"${FILESDIR}"/${PN}-2.3.1-benchmark_compile_fix.patch
+)
 
 PLOCALES="
 	ca cs de en es fi fr gl id it ja kn nl pl pt ro ru sl sq sr tr zh-CN zh-TW
