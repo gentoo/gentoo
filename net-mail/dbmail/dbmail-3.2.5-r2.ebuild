@@ -18,6 +18,7 @@ DEPEND="dev-db/libzdb
 	sieve? ( >=mail-filter/libsieve-2.2.1 )
 	ldap? ( >=net-nds/openldap-2.3.33:= )
 	jemalloc? ( dev-libs/jemalloc:= )
+	elibc_musl? ( sys-libs/queue-standalone )
 	app-text/asciidoc
 	app-text/xmlto
 	app-crypt/mhash
@@ -32,6 +33,7 @@ DEPEND="dev-db/libzdb
 RDEPEND="${DEPEND}
 	acct-group/dbmail
 	acct-user/dbmail"
+DEPEND+=" elibc_musl? ( sys-libs/queue-standalone )"
 DOCS=( AUTHORS README.md INSTALL THANKS UPGRADING )
 
 README_GENTOO_SUFFIX=""
