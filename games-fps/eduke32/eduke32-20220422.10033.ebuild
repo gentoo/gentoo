@@ -31,7 +31,7 @@ S="${WORKDIR}/${PN}_${MY_DATE}-${MY_BUILD}-${EGIT_COMMIT}"
 
 LICENSE="BUILDLIC GPL-2 HRP"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="duke3d fluidsynth gtk hrp offensive opengl opl png psx sc-55 server sdk timidity tools voidsw voxels vpx xmp"
 REQUIRED_USE="
 	hrp? ( duke3d !voxels )
