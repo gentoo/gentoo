@@ -262,11 +262,6 @@ dev-ruby/regexp_parser:1
 # on 2022-06-28. Bugs #833297, #802927.
 dev-python/pypam
 
-# Andrey Grozin <grozin@gentoo.org> (2022-05-25)
-# Does not work with the current dev-python/pyx
-# Removal on 2022-06-24
-dev-python/pyfeyn
-
 # Hans de Graaff <graaff@gentoo.org> (2022-05-20)
 # Unused slots of cucumber components that are no longer or were never
 # used by current cucumber versions. Masked for removal in 30 days.
