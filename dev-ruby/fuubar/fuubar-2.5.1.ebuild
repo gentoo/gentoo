@@ -20,7 +20,7 @@ SRC_URI="https://github.com/thekompanee/fuubar/archive/releases/v${PV}.tar.gz ->
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 RUBY_S="${PN}-releases-v${PV}"
