@@ -16,3 +16,4 @@ sys-auth/polkit duktape
 dev-ml/llvm-ocaml llvm_targets_Sparc
 sys-devel/clang llvm_targets_Sparc
 sys-devel/llvm llvm_targets_Sparc
+dev-lang/rust llvm_targets_Sparc
