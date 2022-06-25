@@ -3,10 +3,10 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic
+inherit cmake
 
 MY_PV="$(ver_rs 1- '_')"
-PV_MAJ="$(ver_cut 1-2)"
+MY_SLOT="$(ver_cut 1-2)"
 
 DESCRIPTION="Development platform for CAD/CAE, 3D surface/solid modeling and data exchange"
 HOMEPAGE="https://www.opencascade.com"
@@ -14,9 +14,9 @@ SRC_URI="https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/ta
 S="${WORKDIR}/occt-V${MY_PV}"
 
 LICENSE="|| ( Open-CASCADE-LGPL-2.1-Exception-1.0 LGPL-2.1 )"
-SLOT="0/${PV_MAJ}"
-KEYWORDS="amd64 ~arm64 ~x86"
-IUSE="debug doc examples ffmpeg freeimage gles2-only json optimize tbb vtk"
+SLOT="0/${MY_SLOT}"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+IUSE="doc eigen examples ffmpeg freeimage gles2 json optimize tbb vtk"
 
 REQUIRED_USE="?? ( optimize tbb )"
 
@@ -45,35 +45,31 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 		dev-qt/qtxml:5
 	)
-	ffmpeg? ( media-video/ffmpeg:= )
+	ffmpeg? ( <media-video/ffmpeg-5:= )
 	freeimage? ( media-libs/freeimage )
-	tbb? ( <dev-cpp/tbb-2021.4.0 )
+	tbb? ( dev-cpp/tbb:= )
 	vtk? ( sci-libs/vtk:=[rendering] )
 "
-DEPEND="${RDEPEND}"
-
+DEPEND="
+	${RDEPEND}
+	eigen? ( dev-cpp/eigen )
+	json? ( dev-libs/rapidjson )
+"
 BDEPEND="
-	dev-cpp/eigen
-	dev-libs/rapidjson
-	doc? ( app-doc/doxygen )
+	doc? ( app-doc/doxygen[dot] )
 	examples? ( dev-qt/linguist-tools:5 )
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-7.5.1-0001-allow-default-search-path-for-Qt5.patch
-	"${FILESDIR}"/${PN}-7.5.1-0002-remove-unnecessary-Qt5-check.patch
-	"${FILESDIR}"/${PN}-7.5.1-0003-add-Gentoo-configuration-type.patch
 	"${FILESDIR}"/${PN}-7.5.1-0004-fix-installation-of-cmake-config-files.patch
 	"${FILESDIR}"/${PN}-7.5.1-0005-fix-write-permissions-on-scripts.patch
 	"${FILESDIR}"/${PN}-7.5.1-0006-fix-creation-of-custom.sh-script.patch
-	"${FILESDIR}"/${PN}-7.5.1-fix-AllValues-name-collision-with-vtk-9.0.patch
 	"${FILESDIR}"/${PN}-7.6.2-avoid-pre-stripping-binaries.patch
+	"${FILESDIR}"/${PN}-7.5.3-tbb-2021.patch
 )
 
 src_prepare() {
 	cmake_src_prepare
-
-	use debug && append-cppflags -DDEBUG
 
 	sed -e 's|/lib\$|/'$(get_libdir)'\$|' \
 		-i adm/templates/OpenCASCADEConfig.cmake.in || die
@@ -106,13 +102,19 @@ src_configure() {
 		-DINSTALL_TEST_CASES=NO
 
 		-DUSE_D3D=NO
+		# no package yet in tree
+		-DUSE_DRACO=OFF
+		-DUSE_EIGEN=$(usex eigen)
 		-DUSE_FFMPEG=$(usex ffmpeg)
 		-DUSE_FREEIMAGE=$(usex freeimage)
 		-DUSE_FREETYPE=ON
-		-DUSE_GLES2=$(usex gles2-only)
+		-DUSE_GLES2=$(usex gles2)
+		# no package in tree
+		-DUSE_OPENVR=OFF
 		-DUSE_RAPIDJSON=$(usex json)
 		-DUSE_TBB=$(usex tbb)
 		-DUSE_VTK=$(usex vtk)
+		-DUSE_XLIB=ON
 	)
 
 	use doc && mycmakeargs+=( -DINSTALL_DOC_Overview=ON )
@@ -142,7 +144,6 @@ src_configure() {
 
 	cmake_src_configure
 
-	# prepare /etc/env.d file
 	sed -e "s|lib/|$(get_libdir)/|" \
 		-e "s|VAR_CASROOT|${EPREFIX}/usr|" \
 		< "${FILESDIR}"/${PN}.env.in > "${T}"/99${PN} || die
@@ -165,11 +166,6 @@ src_install() {
 	cmake_src_install
 
 	doenvd "${T}/99${PN}"
-
-	# remove examples
-	if use !examples; then
-		rm -r "${ED}/usr/share/${PN}/samples" || die
-	fi
 
 	docompress -x /usr/share/doc/${PF}/overview/html
 }

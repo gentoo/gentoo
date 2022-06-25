@@ -47,13 +47,14 @@ RDEPEND="
 	)
 	ffmpeg? ( <media-video/ffmpeg-5:= )
 	freeimage? ( media-libs/freeimage )
-	tbb? ( <dev-cpp/tbb-2021.4 )
+	tbb? ( dev-cpp/tbb:= )
 	vtk? ( sci-libs/vtk:=[rendering] )
 "
 DEPEND="
 	${RDEPEND}
 	eigen? ( dev-cpp/eigen )
 	json? ( dev-libs/rapidjson )
+	vtk? ( dev-libs/utfcpp )
 "
 BDEPEND="
 	doc? ( app-doc/doxygen[dot] )
@@ -64,7 +65,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.5.1-0004-fix-installation-of-cmake-config-files.patch
 	"${FILESDIR}"/${PN}-7.5.1-0005-fix-write-permissions-on-scripts.patch
 	"${FILESDIR}"/${PN}-7.5.1-0006-fix-creation-of-custom.sh-script.patch
-	"${FILESDIR}"/${PN}-7.6.2-avoid-pre-stripping-binaries.patch
+	"${FILESDIR}"/${P}-avoid-pre-stripping-binaries.patch
+	"${FILESDIR}"/${PN}-7.5.3-tbb-2021.patch
 )
 
 src_prepare() {
