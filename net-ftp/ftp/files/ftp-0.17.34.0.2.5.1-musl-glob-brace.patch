@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/832430
+
+See e.g. https://patchwork.kernel.org/project/selinux/patch/20180517051117.48454-5-jason@perfinion.com/ too.
+--- a/ftp/cmds.h
++++ b/ftp/cmds.h
+@@ -61,3 +61,7 @@
+ void do_umask(int argc, char *argv[]);
+ void idle_cmd(int argc, char *argv[]);
+ void setpassive(void);
++
++#ifndef GLOB_BRACE
++#define GLOB_BRACE 0
++#endif
+
