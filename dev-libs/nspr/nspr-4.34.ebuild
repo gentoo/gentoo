@@ -31,6 +31,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.33-loong.patch
 )
 
+QA_CONFIGURE_OPTIONS="--disable-static"
+
 src_prepare() {
 	cd "${S}"/nspr || die
 
