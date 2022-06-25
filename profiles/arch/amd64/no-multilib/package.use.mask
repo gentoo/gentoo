@@ -4,6 +4,7 @@
 # James Le Cuirot <chewi@gentoo.org> (2022-06-25)
 # This flag concerns a 32-bit x86-specific problem.
 sys-libs/glibc stack-realign
+sys-libs/ncurses stack-realign
 
 # Ben Kohler <bkohler@gentoo.org> (2022-06-07)
 # Disable 32bit builds on no-multilib

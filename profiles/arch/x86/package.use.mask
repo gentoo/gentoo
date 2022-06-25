@@ -4,6 +4,7 @@
 # James Le Cuirot <chewi@gentoo.org> (2022-06-25)
 # Allow stack to be realigned for compatibility with older 32-bit binaries.
 sys-libs/glibc -stack-realign
+sys-libs/ncurses -stack-realign
 
 # Anna Vyalkova <cyber+gentoo@sysrq.in> (2022-06-25)
 # Unkeyworded test dep
