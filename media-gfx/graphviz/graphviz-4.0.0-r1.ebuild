@@ -138,6 +138,11 @@ BDEPEND="
 #   sci-libs/gts, x11-libs/gtk.  Also needs 'gtk','glade','glut','gts' and 'png'
 #   with flags enabled at configure time
 
+PATCHES=(
+	# backport, remove on bump (bug #853175)
+	"${FILESDIR}"/${P}-clang-printf-alike.patch
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
