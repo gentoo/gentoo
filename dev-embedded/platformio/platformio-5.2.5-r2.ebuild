@@ -68,6 +68,10 @@ EPYTEST_IGNORE=(
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.2.5-fix-semantic-version-dep.patch
+)
+
 src_prepare() {
 	# Allow newer versions of zeroconf, Bug #831181.
 	# Also wsproto.
