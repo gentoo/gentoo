@@ -26,12 +26,12 @@ RDEPEND="
 	>=dev-python/pyproject-metadata-0.5.0[${PYTHON_USEDEP}]
 	>=dev-python/tomli-1.0.0[${PYTHON_USEDEP}]
 	>=dev-util/meson-0.60.0[${PYTHON_USEDEP}]
+	dev-util/patchelf
 "
 BDEPEND="
 	test? (
 		dev-python/GitPython[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
-		dev-util/patchelf
 	)
 "
 
