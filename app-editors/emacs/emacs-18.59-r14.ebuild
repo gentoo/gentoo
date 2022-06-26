@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -80,7 +80,7 @@ src_configure() {
 	# adding all those missing prototypes.
 	strip-flags
 	filter-flags -finline-functions -fpie
-	append-flags -Wno-implicit
+	append-flags -Wno-implicit -fno-strict-aliasing
 	append-ldflags $(test-flags -no-pie)	#639562
 	replace-flags -O[3-9] -O2
 }
