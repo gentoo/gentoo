@@ -152,7 +152,15 @@ pkg_setup() {
 			return
 		fi
 	done
+}
 
+src_prepare() {
+	use riscv && eapply "${WORKDIR}"/openjdk-17.0.3-riscv.patch
+	default
+	chmod +x configure || die
+}
+
+src_configure() {
 	if has_version dev-java/openjdk:${SLOT}; then
 		export JDK_HOME=${EPREFIX}/usr/$(get_libdir)/openjdk-${SLOT}
 	elif use !system-bootstrap ; then
@@ -165,15 +173,7 @@ pkg_setup() {
 		JDK_HOME=${EPREFIX}/opt/${JDK_HOME%-r*}
 		export JDK_HOME
 	fi
-}
 
-src_prepare() {
-	use riscv && eapply "${WORKDIR}"/openjdk-17.0.3-riscv.patch
-	default
-	chmod +x configure || die
-}
-
-src_configure() {
 	# Work around stack alignment issue, bug #647954. in case we ever have x86
 	use x86 && append-flags -mincoming-stack-boundary=2
 

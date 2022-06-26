@@ -143,9 +143,6 @@ pkg_setup() {
 				return
 			fi
 		done
-	else
-		local xpakvar="${ARCH^^}_XPAK"
-		export JDK_HOME="${WORKDIR}/openjdk-bootstrap-${!xpakvar}"
 	fi
 }
 
@@ -156,6 +153,11 @@ src_prepare() {
 }
 
 src_configure() {
+	if ! use system-bootstrap; then
+		local xpakvar="${ARCH^^}_XPAK"
+		export JDK_HOME="${WORKDIR}/openjdk-bootstrap-${!xpakvar}"
+	fi
+
 	# Work around stack alignment issue, bug #647954.
 	use x86 && append-flags -mincoming-stack-boundary=2
 
