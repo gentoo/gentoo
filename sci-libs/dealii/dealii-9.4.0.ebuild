@@ -103,7 +103,6 @@ src_configure() {
 		-DDEAL_II_WITH_ARPACK="$(usex arpack)"
 		-DDEAL_II_WITH_CGAL="$(usex cgal)"
 		-DDEAL_II_WITH_CUDA="$(usex cuda)"
-		-DDEAL_II_WITH_CXX17=ON
 		-DDEAL_II_WITH_GINKGO="$(usex ginkgo)"
 		-DDEAL_II_COMPONENT_DOCUMENTATION="$(usex doc)"
 		-DDEAL_II_COMPONENT_EXAMPLES="$(usex examples)"
@@ -147,6 +146,11 @@ src_configure() {
 		mycmakeargs+=( -DDEAL_II_HAVE_SSE2=yes )
 		append-cxxflags "-msse2"
 	fi
+
+	# Unconditionally enable strict C++17 standard. This is necessary for
+	# USE=cgal and USE=kokkos and safe to set for all presently supported
+	# compilers
+	append-cxxflags "-std=c++17"
 
 	cmake_src_configure
 }
