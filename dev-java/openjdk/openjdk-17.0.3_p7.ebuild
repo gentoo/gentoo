@@ -283,7 +283,7 @@ src_install() {
 	dodir "${dest}"
 	cp -pPR * "${ddest}" || die
 
-	dosym -r /etc/ssl/certs/java/cacerts "${dest}"/lib/security/cacerts
+	dosym8 -r /etc/ssl/certs/java/cacerts "${dest}"/lib/security/cacerts
 
 	# must be done before running itself
 	java-vm_set-pax-markings "${ddest}"
