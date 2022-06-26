@@ -7,7 +7,7 @@ EAPI="7"
 FIREFOX_PATCHSET="firefox-78esr-patches-19.tar.xz"
 SPIDERMONKEY_PATCHSET="spidermonkey-78-patches-04.tar.xz"
 
-LLVM_MAX_SLOT=13
+LLVM_MAX_SLOT=14
 
 PYTHON_COMPAT=( python3_{7..10} )
 PYTHON_REQ_USE="ssl"
@@ -74,6 +74,13 @@ BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 	|| (
 		(
+			sys-devel/llvm:14
+			clang? (
+				sys-devel/clang:14
+				lto? ( =sys-devel/lld-14* )
+			)
+		)
+		(
 			sys-devel/llvm:13
 			clang? (
 				sys-devel/clang:13
@@ -85,20 +92,6 @@ BDEPEND="${PYTHON_DEPS}
 			clang? (
 				sys-devel/clang:12
 				lto? ( =sys-devel/lld-12* )
-			)
-		)
-		(
-			sys-devel/llvm:11
-			clang? (
-				sys-devel/clang:11
-				lto? ( =sys-devel/lld-11* )
-			)
-		)
-		(
-			sys-devel/llvm:10
-			clang? (
-				sys-devel/clang:10
-				lto? ( =sys-devel/lld-10* )
 			)
 		)
 	)
