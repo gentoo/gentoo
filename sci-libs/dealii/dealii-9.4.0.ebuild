@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 # deal.II uses its own FindLAPACK.cmake file that calls into the system
 # FindLAPACK.cmake module and does additional internal setup. Do not remove
@@ -125,6 +125,7 @@ src_configure() {
 		-DBUILD_SHARED_LIBS="$(usex !static-libs)"
 		-DDEAL_II_PREFER_STATIC_LIBS="$(usex static-libs)"
 		-DDEAL_II_WITH_TBB=ON
+		-DDEAL_II_WITH_TASKFLOW=OFF
 		-DDEAL_II_WITH_TRILINOS="$(usex trilinos)"
 	)
 

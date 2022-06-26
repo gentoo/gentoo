@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 # deal.II uses its own FindLAPACK.cmake file that calls into the system
 # FindLAPACK.cmake module and does additional internal setup. Do not remove
@@ -28,14 +28,15 @@ fi
 LICENSE="LGPL-2.1+"
 SLOT="0"
 IUSE="
-	adolc assimp arpack cpu_flags_x86_avx cpu_flags_x86_avx512f
+	adolc arborx assimp arpack cgal cpu_flags_x86_avx cpu_flags_x86_avx512f
 	cpu_flags_x86_sse2 cuda +debug doc +examples ginkgo gmsh +gsl hdf5
-	+lapack metis mpi muparser opencascade p4est petsc
-	scalapack slepc +sparse static-libs sundials symengine trilinos
+	+lapack metis mpi muparser opencascade p4est petsc scalapack slepc
+	+sparse static-libs sundials symengine trilinos
 "
 
 # TODO: add slepc use flag once slepc is packaged for gentoo-science
 REQUIRED_USE="
+	arborx? ( trilinos )
 	p4est? ( mpi )
 	slepc? ( petsc )
 	trilinos? ( mpi )"
@@ -43,8 +44,8 @@ REQUIRED_USE="
 RDEPEND="dev-libs/boost:=
 	app-arch/bzip2
 	sys-libs/zlib
-	dev-cpp/taskflow
 	dev-cpp/tbb:=
+	arborx? ( sci-libs/arborx[mpi=] )
 	adolc? ( sci-libs/adolc )
 	arpack? ( sci-libs/arpack[mpi=] )
 	assimp? ( media-libs/assimp:= )
@@ -91,13 +92,16 @@ src_configure() {
 		-DDEAL_II_COMPILE_EXAMPLES=OFF
 		-DDEAL_II_DOCHTML_RELDIR="share/doc/${P}/html"
 		-DDEAL_II_DOCREADME_RELDIR="share/doc/${P}"
+		-DDEAL_II_COMPILE_EXAMPLES=OFF
 		-DDEAL_II_EXAMPLES_RELDIR="share/doc/${P}/examples"
 		-DDEAL_II_LIBRARY_RELDIR="$(get_libdir)"
 		-DDEAL_II_SHARE_RELDIR="share/${PN}"
 		-DDEAL_II_WITH_ZLIB=ON
 		-DDEAL_II_WITH_ADOLC="$(usex adolc)"
+		-DDEAL_II_WITH_ARBORX="$(usex arborx)"
 		-DDEAL_II_WITH_ASSIMP="$(usex assimp)"
 		-DDEAL_II_WITH_ARPACK="$(usex arpack)"
+		-DDEAL_II_WITH_CGAL="$(usex cgal)"
 		-DDEAL_II_WITH_CUDA="$(usex cuda)"
 		-DDEAL_II_WITH_GINKGO="$(usex ginkgo)"
 		-DDEAL_II_COMPONENT_DOCUMENTATION="$(usex doc)"
@@ -105,6 +109,7 @@ src_configure() {
 		-DDEAL_II_WITH_GMSH="$(usex gmsh)"
 		-DDEAL_II_WITH_GSL="$(usex gsl)"
 		-DDEAL_II_WITH_HDF5="$(usex hdf5)"
+		-DDEAL_II_WITH_KOKKOS="$(usex trilinos)"
 		-DDEAL_II_WITH_LAPACK="$(usex lapack)"
 		-DDEAL_II_WITH_METIS="$(usex metis)"
 		-DDEAL_II_WITH_MPI="$(usex mpi)"
