@@ -249,7 +249,7 @@ _distutils_set_globals() {
 				;;
 			pdm)
 				bdep+='
-					>=dev-python/pdm-pep517-0.12.7[${PYTHON_USEDEP}]
+					>=dev-python/pdm-pep517-1.0.0[${PYTHON_USEDEP}]
 				'
 				;;
 			poetry)
