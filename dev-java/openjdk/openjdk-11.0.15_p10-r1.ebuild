@@ -3,13 +3,17 @@
 
 EAPI=7
 
-inherit check-reqs eapi8-dosym flag-o-matic java-pkg-2 java-vm-2 multiprocessing toolchain-funcs
+inherit eapi8-dosym check-reqs flag-o-matic java-pkg-2 java-vm-2 multiprocessing toolchain-funcs
+
+# we need -ga tag to fetch tarball and unpack it, but exact number everywhere else to
+# set build version properly
+MY_PV="${PV%_p*}-ga"
+SLOT="${MY_PV%%[.+]*}"
 
 # variable name format: <UPPERCASE_KEYWORD>_XPAK
-ARM64_XPAK="17.0.2_p8" # musl bootstrap install
-PPC64_XPAK="17.0.1_p12" # big-endian bootstrap tarball
-RISCV_XPAK="17.0.3_p7"
-X86_XPAK="17.0.1_p12"
+PPC64_XPAK="11.0.13_p8" # big-endian bootstrap tarball
+RISCV_XPAK="11.0.14_p9" # lp64d bootstrap tarball
+X86_XPAK="11.0.13_p8"
 
 # Usage: bootstrap_uri <keyword> <version> [extracond]
 # Example: $(bootstrap_uri ppc64 17.0.1_p12 big-endian)
@@ -20,14 +24,10 @@ bootstrap_uri() {
 	local kw="${1:?${FUNCNAME[0]}: keyword not specified}"
 	local ver="${2:?${FUNCNAME[0]}: version not specified}"
 	local cond="${3-}"
-	[[ ${cond} == elibc_musl* ]] && local musl=yes
 
 	# here be dragons
-	echo "${kw}? ( ${cond:+${cond}? (} ${baseuri}-${ver}-${kw}${musl:+-musl}.${suff} ${cond:+) })"
+	echo "${kw}? ( ${cond:+${cond}? (} ${baseuri}-${ver}-${kw}.${suff} ${cond:+) })"
 }
-
-MY_PV="${PV//_p/+}"
-SLOT="$(ver_cut 1)"
 
 DESCRIPTION="Open source implementation of the Java programming language"
 HOMEPAGE="https://openjdk.java.net"
@@ -35,18 +35,17 @@ SRC_URI="
 	https://github.com/${PN}/jdk${SLOT}u/archive/refs/tags/jdk-${MY_PV}.tar.gz
 		-> ${P}.tar.gz
 	!system-bootstrap? (
-		$(bootstrap_uri arm64 ${ARM64_XPAK} elibc_musl)
 		$(bootstrap_uri ppc64 ${PPC64_XPAK} big-endian)
-		$(bootstrap_uri x86 ${X86_XPAK})
 		$(bootstrap_uri riscv ${RISCV_XPAK})
+		$(bootstrap_uri x86 ${X86_XPAK})
 	)
-	riscv? ( https://dev.gentoo.org/~arthurzam/distfiles/dev-java/openjdk/openjdk-17.0.3-riscv.patch.xz )
+	riscv? ( https://dev.gentoo.org/~arthurzam/distfiles/dev-java/openjdk/openjdk-11.0.14-riscv.patch.xz )
 "
 
 LICENSE="GPL-2"
 KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv x86"
 
-IUSE="alsa big-endian cups debug doc examples +gentoo-vm headless-awt javafx +jbootstrap selinux source system-bootstrap systemtap"
+IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap selinux source system-bootstrap systemtap"
 
 REQUIRED_USE="
 	javafx? ( alsa !headless-awt )
@@ -60,7 +59,7 @@ COMMON_DEPEND="
 	media-libs/libpng:0=
 	media-libs/lcms:2=
 	sys-libs/zlib
-	virtual/jpeg:0=
+	media-libs/libjpeg-turbo:0=
 	systemtap? ( dev-util/systemtap )
 "
 
@@ -99,13 +98,13 @@ DEPEND="
 	javafx? ( dev-java/openjfx:${SLOT}= )
 	system-bootstrap? (
 		|| (
-			dev-java/openjdk-bin:${SLOT}
-			dev-java/openjdk:${SLOT}
+			dev-java/openjdk-bin:${SLOT}[gentoo-vm(+)]
+			dev-java/openjdk:${SLOT}[gentoo-vm(+)]
 		)
 	)
 "
 
-S="${WORKDIR}/jdk${SLOT}u-jdk-${MY_PV//+/-}"
+S="${WORKDIR}/jdk${SLOT}u-jdk-${MY_PV}"
 
 # The space required to build varies wildly depending on USE flags,
 # ranging from 2GB to 16GB. This function is certainly not exact but
@@ -137,44 +136,29 @@ pkg_setup() {
 	JAVA_PKG_WANT_SOURCE="${SLOT}"
 	JAVA_PKG_WANT_TARGET="${SLOT}"
 
-	# The nastiness below is necessary while the gentoo-vm USE flag is
-	# masked. First we call java-pkg-2_pkg_setup if it looks like the
-	# flag was unmasked against one of the possible build VMs. If not,
-	# we try finding one of them in their expected locations. This would
-	# have been slightly less messy if openjdk-bin had been installed to
-	# /opt/${PN}-${SLOT} or if there was a mechanism to install a VM env
-	# file but disable it so that it would not normally be selectable.
-
-	local vm
-	for vm in ${JAVA_PKG_WANT_BUILD_VM}; do
-		if [[ -d ${BROOT}/usr/lib/jvm/${vm} ]]; then
-			java-pkg-2_pkg_setup
-			return
-		fi
-	done
+	if use system-bootstrap; then
+		for vm in ${JAVA_PKG_WANT_BUILD_VM}; do
+			if [[ -d ${BROOT}/usr/lib/jvm/${vm} ]]; then
+				java-pkg-2_pkg_setup
+				return
+			fi
+		done
+	fi
 }
 
 src_prepare() {
-	use riscv && eapply "${WORKDIR}"/openjdk-17.0.3-riscv.patch
+	use riscv && eapply "${WORKDIR}"/openjdk-11.0.14-riscv.patch
 	default
 	chmod +x configure || die
 }
 
 src_configure() {
-	if has_version dev-java/openjdk:${SLOT}; then
-		export JDK_HOME=${BROOT}/usr/$(get_libdir)/openjdk-${SLOT}
-	elif use !system-bootstrap ; then
+	if ! use system-bootstrap; then
 		local xpakvar="${ARCH^^}_XPAK"
 		export JDK_HOME="${WORKDIR}/openjdk-bootstrap-${!xpakvar}"
-	else
-		JDK_HOME=$(best_version -b dev-java/openjdk-bin:${SLOT})
-		[[ -n ${JDK_HOME} ]] || die "Build VM not found!"
-		JDK_HOME=${JDK_HOME#*/}
-		JDK_HOME=${BROOT}/opt/${JDK_HOME%-r*}
-		export JDK_HOME
 	fi
 
-	# Work around stack alignment issue, bug #647954. in case we ever have x86
+	# Work around stack alignment issue, bug #647954.
 	use x86 && append-flags -mincoming-stack-boundary=2
 
 	# Work around -fno-common ( GCC10 default ), bug #713180
@@ -190,7 +174,6 @@ src_configure() {
 	local myconf=(
 		--disable-ccache
 		--disable-precompiled-headers
-		--disable-warnings-as-errors
 		--enable-full-docs=no
 		--with-boot-jdk="${JDK_HOME}"
 		--with-extra-cflags="${CFLAGS}"
@@ -216,10 +199,14 @@ src_configure() {
 		--enable-headless-only=$(usex headless-awt yes no)
 		$(tc-is-clang && echo "--with-toolchain-type=clang")
 	)
-
-	use riscv && myconf+=( --with-boot-jdk-jvmargs="-Djdk.lang.Process.launchMechanism=vfork" )
+	! use riscv && myconf+=( --with-jvm-features=shenandoahgc )
 
 	if use javafx; then
+		# this is not useful for users, just for upstream developers
+		# build system compares mesa version in md file
+		# https://bugs.gentoo.org/822612
+		export LEGAL_EXCLUDES=mesa3d.md
+
 		local zip="${EPREFIX}/usr/$(get_libdir)/openjfx-${SLOT}/javafx-exports.zip"
 		if [[ -r ${zip} ]]; then
 			myconf+=( --with-import-modules="${zip}" )
@@ -291,14 +278,14 @@ src_install() {
 	einfo "Creating the Class Data Sharing archives and disabling usage tracking"
 	"${ddest}/bin/java" -server -Xshare:dump -Djdk.disableLastUsageTracking || die
 
-	use gentoo-vm && java-vm_install-env "${FILESDIR}"/${PN}-${SLOT}.env.sh
+	java-vm_install-env "${FILESDIR}"/${PN}-${SLOT}.env.sh
 	java-vm_revdep-mask
 	java-vm_sandbox-predict /dev/random /proc/self/coredump_filter
 
 	if use doc ; then
 		docinto html
 		dodoc -r "${S}"/build/*-release/images/docs/*
-		dosym ../../../usr/share/doc/"${PF}" /usr/share/doc/"${PN}-${SLOT}"
+		dosym8 -r /usr/share/doc/"${PF}" /usr/share/doc/"${PN}-${SLOT}"
 	fi
 }
 
