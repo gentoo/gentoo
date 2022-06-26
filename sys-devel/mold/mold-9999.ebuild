@@ -31,6 +31,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	# Bug #841575
 	"${FILESDIR}"/${PN}-1.2.1-install-nopython.patch
+	"${FILESDIR}"/${PN}-1.3.0-openssl-pkgconfig.patch
 )
 
 pkg_pretend() {
