@@ -53,10 +53,11 @@ src_prepare() {
 
 	# Heavy tests, need qemu
 	rm test/elf/gdb-index-{compress-output,dwarf{2,3,4,5}}.sh || die
+	rm test/elf/lto-{archive,dso,gcc,llvm,version-script}.sh || die
 
 	# Sandbox sadness
 	rm test/elf/run.sh || die
-	sed -i 's|$mold-wrapper.so|"& ${LD_PRELOAD}"|' \
+	sed -i 's|`pwd`/mold-wrapper.so|"& ${LD_PRELOAD}"|' \
 		test/elf/mold-wrapper{,2}.sh || die
 
 	# static-pie tests require glibc built with static-pie support
