@@ -13,7 +13,10 @@ HOMEPAGE="
 	https://github.com/executablebooks/sphinx-tabs/
 	https://pypi.org/project/sphinx-tabs/
 "
-SRC_URI="https://github.com/executablebooks/sphinx-tabs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/executablebooks/sphinx-tabs/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
