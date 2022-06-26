@@ -111,3 +111,11 @@ multilib_src_install_all() {
 		newmenu "support/xdg/ffado.org-ffadomixer.desktop" "ffado-mixer.desktop"
 	fi
 }
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
+}
