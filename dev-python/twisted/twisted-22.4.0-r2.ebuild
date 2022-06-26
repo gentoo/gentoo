@@ -20,7 +20,7 @@ S=${WORKDIR}/${PN}-${P}
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="conch crypt http2 serial test"
+IUSE="conch http2 serial ssl test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -38,17 +38,17 @@ RDEPEND="
 		>=dev-python/cryptography-1.5.0[${PYTHON_USEDEP}]
 		dev-python/pyasn1[${PYTHON_USEDEP}]
 	)
-	crypt? (
-		>=dev-python/pyopenssl-16.0.0[${PYTHON_USEDEP}]
-		dev-python/service_identity[${PYTHON_USEDEP}]
-		>=dev-python/idna-0.6[${PYTHON_USEDEP}]
-	)
-	serial? ( >=dev-python/pyserial-3.0[${PYTHON_USEDEP}] )
 	http2? (
 		>=dev-python/h2-3.0.0[${PYTHON_USEDEP}]
 		<dev-python/h2-5.0.0[${PYTHON_USEDEP}]
 		>=dev-python/priority-1.1.0[${PYTHON_USEDEP}]
 		<dev-python/priority-2.0[${PYTHON_USEDEP}]
+	)
+	serial? ( >=dev-python/pyserial-3.0[${PYTHON_USEDEP}] )
+	ssl? (
+		>=dev-python/pyopenssl-16.0.0[${PYTHON_USEDEP}]
+		dev-python/service_identity[${PYTHON_USEDEP}]
+		>=dev-python/idna-0.6[${PYTHON_USEDEP}]
 	)
 "
 BDEPEND="
