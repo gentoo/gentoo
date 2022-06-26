@@ -4,7 +4,9 @@
 # Sam James <sam@gentoo.org> (2022-06-26)
 # Avoid dragging in "heavy"  parts of dev-qt/* unless/until
 # somebody needs them. bug #816981, bug #854261.
+# Unfortunately, tests demand qtwebengine too.
 dev-python/QtPy pyside2 webengine
+dev-python/QtPy test
 
 # Jakov Smolić <jsmolic@gentoo.org> (2022-06-07)
 # riscv has no sanitizers unmasked for the time being, so
