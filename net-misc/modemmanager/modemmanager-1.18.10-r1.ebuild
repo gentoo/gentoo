@@ -72,7 +72,7 @@ src_prepare() {
 			add your user account to the 'plugdev' group."
 	fi
 
-	use vala && vala_src_prepare
+	use vala && vala_setup
 	gnome2_src_prepare
 }
 
