@@ -9,7 +9,10 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="A requests-like API built on top of twisted.web's Agent"
-HOMEPAGE="https://github.com/twisted/treq https://pypi.org/project/treq/"
+HOMEPAGE="
+	https://github.com/twisted/treq/
+	https://pypi.org/project/treq/
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
@@ -23,12 +26,16 @@ RDEPEND="
 	>=dev-python/hyperlink-21.0.0[${PYTHON_USEDEP}]
 	dev-python/incremental[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.1.0[${PYTHON_USEDEP}]
-	>=dev-python/twisted-18.7.0[crypt,${PYTHON_USEDEP}]
+	|| (
+		>=dev-python/twisted-18.7.0[ssl(-),${PYTHON_USEDEP}]
+		>=dev-python/twisted-18.7.0[crypt(-),${PYTHON_USEDEP}]
+	)
 "
 BDEPEND="
 	test? (
 		dev-python/httpbin[${PYTHON_USEDEP}]
-	)"
+	)
+"
 
 distutils_enable_sphinx docs
 
