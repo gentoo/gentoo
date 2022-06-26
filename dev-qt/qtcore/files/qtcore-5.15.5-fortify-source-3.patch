@@ -1,0 +1,61 @@
+https://invent.kde.org/qt/qt/qtbase/-/commit/6d3d164bec17876f5b24ae9102767ef1236aa37b
+
+From 6d3d164bec17876f5b24ae9102767ef1236aa37b Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 20 Jun 2022 20:35:12 +0100
+Subject: [PATCH] QArrayData: fix UB via reinterpret_cast (crash with
+ FORTIFY_SOURCE=3)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+FORTIFY_SOURCE=3 is a new level of FORTIFY_SOURCE available with GCC 12+.
+
+With Qt 5.15, it ends up triggering UB in the pointer arithmetic
+in QArrayData which breaks various FOSS applications using qtcore.
+
+Qt upstream fixed this independently for 6.x (in at least
+eab6eb64d2fab21c4791738323ca7d670a907de1) but did so at the same time as
+various internal changes and hence is not appropriate for cherry-picking to 5.15.x.
+
+I reported the issue to Qt (QTBUG-103782) and they've created a fix for 5.15 which
+is not yet public but based on the description in the bug, should be functionally
+the same as this. They have not backported the intrusive internal changes
+from 6.x.
+
+Originally grabbed from https://build.opensuse.org/package/view_file/KDE:Qt:5.15/libqt5-qtbase/mitigate-FORTIFY_SOURCE-3.patch.
+
+Bug: https://bugs.gentoo.org/847145
+Bug: https://bugs.gentoo.org/852974
+Bug: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=104964
+Bug: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105709
+Task-number: QTBUG-103782
+Thanks-to: Martin LiÅ¡ka <mliska@suse.cz>
+--- a/src/corelib/tools/qarraydata.h
++++ b/src/corelib/tools/qarraydata.h
+@@ -42,6 +42,7 @@
+ 
+ #include <QtCore/qrefcount.h>
+ #include <string.h>
++#include <cstdint>
+ 
+ QT_BEGIN_NAMESPACE
+ 
+@@ -58,14 +59,14 @@ struct Q_CORE_EXPORT QArrayData
+     {
+         Q_ASSERT(size == 0
+                 || offset < 0 || size_t(offset) >= sizeof(QArrayData));
+-        return reinterpret_cast<char *>(this) + offset;
++        return reinterpret_cast<void *> (reinterpret_cast<uintptr_t>(this) + offset);
+     }
+ 
+     const void *data() const
+     {
+         Q_ASSERT(size == 0
+                 || offset < 0 || size_t(offset) >= sizeof(QArrayData));
+-        return reinterpret_cast<const char *>(this) + offset;
++        return reinterpret_cast<void *> (reinterpret_cast<uintptr_t>(this) + offset);
+     }
+ 
+     // This refers to array data mutability, not "header data" represented by
+GitLab
