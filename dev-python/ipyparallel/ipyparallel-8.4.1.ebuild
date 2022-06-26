@@ -52,6 +52,7 @@ distutils_enable_tests pytest
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.1.0-test-timeouts.patch
+	"${FILESDIR}"/${PN}-8.3.0-additional-test-timeouts.patch
 )
 
 src_configure() {
