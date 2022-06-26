@@ -103,6 +103,7 @@ src_configure() {
 		-DDEAL_II_WITH_ARPACK="$(usex arpack)"
 		-DDEAL_II_WITH_CGAL="$(usex cgal)"
 		-DDEAL_II_WITH_CUDA="$(usex cuda)"
+		-DDEAL_II_WITH_CXX17=ON
 		-DDEAL_II_WITH_GINKGO="$(usex ginkgo)"
 		-DDEAL_II_COMPONENT_DOCUMENTATION="$(usex doc)"
 		-DDEAL_II_COMPONENT_EXAMPLES="$(usex examples)"
