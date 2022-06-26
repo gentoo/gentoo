@@ -1,6 +1,13 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2022-06-26)
+# dev-python/trustme requires dev-python/cryptography.
+dev-python/anyio test
+dev-python/httpcore test
+dev-python/httpx test
+dev-python/uvicorn test
+
 # WANG Xuerui <xen0n@gentoo.org> (2022-05-13)
 # dev-lang/rust is not available on ${arch} yet.
 media-gfx/imv svg
@@ -14,7 +21,8 @@ media-libs/imlib2 svg
 # Michał Górny <mgorny@gentoo.org> (2021-11-26)
 # These package flags require dev-python/cryptography which -- due
 # to the dependency on Rust -- is no longer portable to ${arch}.
-dev-python/twisted conch crypt
+dev-python/dnspython dnssec
+dev-python/twisted conch crypt ssl
 dev-python/urllib3 test
 net-fs/samba addc addns ads
 
