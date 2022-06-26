@@ -50,6 +50,7 @@ src_prepare() {
 }
 
 src_configure() {
+	python_setup
 	local mycmakeargs=(
 		-DUSE_KINETO=OFF
 		-DUSE_XNNPACK=OFF
