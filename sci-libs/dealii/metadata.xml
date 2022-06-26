@@ -17,7 +17,9 @@ to the complex data structures and algorithms required.
 </longdescription>
 	<use>
 		<flag name="adolc">Adds support for ADOL-C (<pkg>sci-libs/adolc</pkg>)</flag>
+		<flag name="arborx">Adds support for ARBORX (<pkg>sci-libs/arborx</pkg>)</flag>
 		<flag name="arpack">Adds support for ARPACK (<pkg>sci-libs/arpack</pkg>)</flag>
+		<flag name="cgal">Adds support for CGAL (<pkg>sci-mathematics/cgal</pkg>)</flag>
 		<flag name="debug">
 Build an additional debug library with extra debug codepaths, like asserts
 and extra output. If you want to get meaningful backtraces see
