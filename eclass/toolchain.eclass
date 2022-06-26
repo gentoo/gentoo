@@ -877,6 +877,12 @@ toolchain_src_configure() {
 	downgrade_arch_flags
 	gcc_do_filter_flags
 
+	if tc_version_is_between 10 11 && [[ $(gcc-major-version) -ge 12 ]] ; then
+		# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105695
+		# bug #849359
+		export ac_cv_std_swap_in_utility=no
+	fi
+
 	einfo "CFLAGS=\"${CFLAGS}\""
 	einfo "CXXFLAGS=\"${CXXFLAGS}\""
 	einfo "LDFLAGS=\"${LDFLAGS}\""
