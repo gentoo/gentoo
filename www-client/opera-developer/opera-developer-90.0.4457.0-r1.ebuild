@@ -42,7 +42,7 @@ fi
 
 KEYWORDS="-* ~amd64"
 
-FFMPEG_VERSION="102.0.5005.61"
+FFMPEG_VERSION="104.0.5083.0"
 
 SRC_URI="${SRC_URI_BASE[@]/%//${PV}/linux/${MY_PN}_${PV}_amd64.${OPERA_ARCHIVE_EXT}}
 	proprietary-codecs? (
