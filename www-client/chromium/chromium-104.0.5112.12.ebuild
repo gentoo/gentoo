@@ -256,6 +256,9 @@ pre_build_checks() {
 				die "At least clang 12 is required"
 			fi
 		fi
+		if use js-type-check; then
+			"${EPREFIX}"/usr/bin/java --version 2>1 > /dev/null || die "Java VM not setup correctly"
+		fi
 	fi
 
 	# Check build requirements, bug #541816 and bug #471810 .
