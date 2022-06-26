@@ -1,9 +1,5 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Sam James <sam@gentoo.org> (2022-06-25)
-# Mask until newer librsvg is keyworded, bug #854201
-media-gfx/eog svg
 
 # Sam James <sam@gentoo.org> (2021-03-20)
 # jit isn't supported on sparc64 and causes a bus error
