@@ -62,6 +62,8 @@ python_test() {
 		tests/test_app.py::test_root_count
 		tests/test_server.py::test_pip_install_open_succeeds
 		tests/test_server.py::test_pip_install_authed_succeeds
+		# seems to rely on internal bottle details
+		tests/test_main.py::test_auto_servers
 	)
 
 	epytest tests
