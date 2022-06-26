@@ -84,6 +84,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.10.0-swig-underlinking.patch
 	"${FILESDIR}"/${PN}-6.22.1-no_lua_bdepend.patch
 	"${FILESDIR}"/${PN}-7.0.1-cmake-symlink.patch
+	"${FILESDIR}"/${PN}-7.8.0-linux_locale_h.patch
 )
 
 pkg_setup() {
