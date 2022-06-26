@@ -6,7 +6,7 @@ EAPI=8
 TOOLCHAIN_PATCH_DEV="sam"
 PATCH_VER="7"
 PATCH_GCC_VER="12.1.0"
-MUSL_VER="4"
+MUSL_VER="5"
 MUSL_GCC_VER="12.1.0"
 
 inherit toolchain
