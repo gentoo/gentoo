@@ -161,7 +161,7 @@ src_configure() {
 		unset _JAVA_OPTIONS JAVA JAVA_TOOL_OPTIONS JAVAC MAKE XARGS
 		CFLAGS= CXXFLAGS= LDFLAGS= \
 		CONFIG_SITE=/dev/null \
-		CONFIG_SHELL="${EPREFIX}/bin/bash"
+		CONFIG_SHELL="${BROOT}/bin/bash"
 		econf "${myconf[@]}"
 	)
 }

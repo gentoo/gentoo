@@ -147,7 +147,7 @@ pkg_setup() {
 
 	local vm
 	for vm in ${JAVA_PKG_WANT_BUILD_VM}; do
-		if [[ -d ${EPREFIX}/usr/lib/jvm/${vm} ]]; then
+		if [[ -d ${BROOT}/usr/lib/jvm/${vm} ]]; then
 			java-pkg-2_pkg_setup
 			return
 		fi
@@ -162,15 +162,15 @@ src_prepare() {
 
 src_configure() {
 	if has_version dev-java/openjdk:${SLOT}; then
-		export JDK_HOME=${EPREFIX}/usr/$(get_libdir)/openjdk-${SLOT}
+		export JDK_HOME=${BROOT}/usr/$(get_libdir)/openjdk-${SLOT}
 	elif use !system-bootstrap ; then
 		local xpakvar="${ARCH^^}_XPAK"
 		export JDK_HOME="${WORKDIR}/openjdk-bootstrap-${!xpakvar}"
 	else
-		JDK_HOME=$(best_version dev-java/openjdk-bin:${SLOT})
+		JDK_HOME=$(best_version -b dev-java/openjdk-bin:${SLOT})
 		[[ -n ${JDK_HOME} ]] || die "Build VM not found!"
 		JDK_HOME=${JDK_HOME#*/}
-		JDK_HOME=${EPREFIX}/opt/${JDK_HOME%-r*}
+		JDK_HOME=${BROOT}/opt/${JDK_HOME%-r*}
 		export JDK_HOME
 	fi
 
