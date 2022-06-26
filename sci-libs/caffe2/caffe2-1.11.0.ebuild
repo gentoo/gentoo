@@ -35,6 +35,7 @@ DEPEND="${RDEPEND}
 	dev-libs/pocketfft
 	dev-libs/flatbuffers
 	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/pybind11[${PYTHON_USEDEP}]
 "
 
 S="${WORKDIR}"/${MYP}
