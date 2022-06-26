@@ -1,6 +1,3 @@
-# Copyright 1999-2022 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
 VERSION="Eclipse Temurin JRE ${PV}"
 JAVA_HOME="${EPREFIX}/opt/${PN}-${SLOT}"
 PATH="\${JAVA_HOME}/bin"
