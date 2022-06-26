@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Piotr Karbowski <slashbeast@gentoo.org> (2022-06-26)
+# Abandoned upstream, depends on API that no longer exists.
+# Removal on 2022-07-26.
+dev-python/jikanpy
+
 # Hans de Graaff <graaff@gentoo.org> (2022-06-25)
 # Obsolete slot. Use a newer slot instead.
 # Removal in 30 days.
