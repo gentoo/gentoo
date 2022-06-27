@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit linux-info linux-mod
 
@@ -24,6 +24,9 @@ IUSE="use-firmware"
 CONFIG_CHECK="~!R8169"
 WARNING_R8169="CONFIG_R8169 is enabled. ${P} will not be loaded unless kernel driver Realtek 8169 PCI Gigabit Ethernet (CONFIG_R8169) is DISABLED."
 
+PATCHES=(
+	"${FILESDIR}/r8168-8.049.02-5.17-fix.patch"
+)
 pkg_setup() {
 	linux-mod_pkg_setup
 	BUILD_PARAMS="KERNELDIR=${KV_DIR}"

@@ -1,0 +1,37 @@
+From 19bbdcf391ea51c4798c770e87c7eada24f252b8 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 21 Feb 2022 12:24:56 +0100
+Subject: [PATCH] libkworkspace: Allow standalone build
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3ec5f0893..b022a20b3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -78,6 +78,7 @@ set_package_properties(Qalculate PROPERTIES DESCRIPTION "Qalculate Library"
+                       )
+ 
+ find_package(KWinDBusInterface CONFIG REQUIRED)
++find_package(LibKWorkspace 5.21.5)
+ 
+ find_package(KF5Screen CONFIG REQUIRED)
+ find_package(KScreenLocker 5.13.80 REQUIRED)
+@@ -233,7 +234,10 @@ option(PLASMA_WAYLAND_DEFAULT_SESSION "Use Wayland session by default for Plasma
+ if(KF5DocTools_FOUND)
+   add_subdirectory(doc)
+ endif()
+-add_subdirectory(libkworkspace)
++if(NOT LibKWorkspace_FOUND)
++    message(STATUS "System LibKWorkspace not found, using bundled.")
++    add_subdirectory(libkworkspace)
++endif()
+ add_subdirectory(libdbusmenuqt)
+ add_subdirectory(appmenu)
+ 
+-- 
+2.35.1
+

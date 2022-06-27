@@ -3,15 +3,21 @@
 
 EAPI=7
 
-inherit gnome.org libtool multilib-minimal
+inherit libtool multilib-minimal
 
 # Note: Please bump this in sync with dev-libs/libxml2.
 DESCRIPTION="XSLT libraries and tools"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/libxslt"
+if [[ ${PV} == 9999 ]] ; then
+	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/libxslt"
+	inherit autotools git-r3
+else
+	inherit gnome.org
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="crypt debug examples static-libs"
 
 BDEPEND=">=virtual/pkgconfig-1"
@@ -29,13 +35,17 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libxslt/xsltconfig.h
 )
 
+DOCS=( AUTHORS ChangeLog FEATURES NEWS README TODO )
+
 src_prepare() {
 	default
 
-	DOCS=( AUTHORS ChangeLog FEATURES NEWS README TODO )
-
-	# Prefix always needs elibtoolize if not eautoreconf'd.
-	elibtoolize
+	if [[ ${PV} == 9999 ]] ; then
+		eautoreconf
+	else
+		# Prefix always needs elibtoolize if not eautoreconf'd.
+		elibtoolize
+	fi
 }
 
 multilib_src_configure() {

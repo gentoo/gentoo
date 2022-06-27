@@ -10,21 +10,15 @@
 # This eclass handles apache-2.x ebuild functions such as LoadModule generation
 # and inter-module dependency checking.
 
-inherit autotools flag-o-matic multilib ssl-cert user toolchain-funcs
+LUA_COMPAT=( lua5-{1..4} )
+inherit autotools flag-o-matic lua-single multilib ssl-cert user toolchain-funcs
 
 [[ ${CATEGORY}/${PN} != www-servers/apache ]] \
 	&& die "Do not use this eclass with anything else than www-servers/apache ebuilds!"
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5)
-		die "This eclass is banned for EAPI<6"
-	;;
-	6)
-		inherit eapi7-ver
-	;;
-	*)
-		LUA_COMPAT=( lua5-{1..4} )
-		inherit lua-single
+	0|1|2|3|4|5|6)
+		die "This eclass is banned for EAPI<7"
 	;;
 esac
 
@@ -42,7 +36,7 @@ esac
 # INTERNAL VARIABLES
 # ==============================================================================
 
-# @ECLASS-VARIABLE: GENTOO_PATCHNAME
+# @ECLASS_VARIABLE: GENTOO_PATCHNAME
 # @DESCRIPTION:
 # This internal variable contains the prefix for the patch tarball.
 # Defaults to the full name and version (including revision) of the package.
@@ -51,7 +45,7 @@ esac
 # GENTOO_PATCHNAME="gentoo-${PN}-${PV}${ORIG_PR:+-${ORIG_PR}}"
 [[ -n "${GENTOO_PATCHNAME}" ]] || GENTOO_PATCHNAME="gentoo-${PF}"
 
-# @ECLASS-VARIABLE: GENTOO_PATCHDIR
+# @ECLASS_VARIABLE: GENTOO_PATCHDIR
 # @DESCRIPTION:
 # This internal variable contains the working directory where patches and config
 # files are located.
@@ -101,6 +95,9 @@ for module in ${IUSE_MODULES} ; do
 		http2)
 			IUSE+=" +apache2_modules_${module}"
 		;;
+		systemd)
+			IUSE+=" systemd"
+		;;
 		*)
 			IUSE+=" apache2_modules_${module}"
 		;;
@@ -147,6 +144,7 @@ RDEPEND="
 		>=net-libs/nghttp2-1.2.1
 		kernel_linux? ( sys-apps/util-linux )
 	)
+	apache2_modules_lua? ( ${LUA_DEPS} )
 	apache2_modules_md? ( >=dev-libs/jansson-2.10 )
 	apache2_modules_mime? ( app-misc/mime-types )
 	apache2_modules_proxy_http2? (
@@ -163,6 +161,7 @@ RDEPEND="
 		>=dev-libs/openssl-1.0.2:0=
 		kernel_linux? ( sys-apps/util-linux )
 	)
+	systemd? ( sys-apps/systemd )
 "
 
 DEPEND="${RDEPEND}"
@@ -170,13 +169,11 @@ BDEPEND="
 	virtual/pkgconfig
 	suexec? ( suexec-caps? ( sys-libs/libcap ) )
 "
-if [[ ${EAPI} == 6 ]] ; then
-	DEPEND+=" ${BDEPEND}"
-fi
 PDEPEND="~app-admin/apache-tools-${PV}"
 
 REQUIRED_USE+="
 	apache2_modules_http2? ( ssl )
+	apache2_modules_lua? ( ${LUA_REQUIRED_USE} )
 	apache2_modules_md? ( ssl )
 "
 
@@ -203,7 +200,7 @@ unset -f _apache2_set_module_depends
 # INTERNAL FUNCTIONS
 # ==============================================================================
 
-# @ECLASS-VARIABLE: MY_MPM
+# @ECLASS_VARIABLE: MY_MPM
 # @DESCRIPTION:
 # This internal variable contains the selected MPM after a call to setup_mpm()
 
@@ -269,12 +266,12 @@ check_module_critical() {
 	fi
 }
 
-# @ECLASS-VARIABLE: MY_CONF
+# @ECLASS_VARIABLE: MY_CONF
 # @DESCRIPTION:
 # This internal variable contains the econf options for the current module
 # selection after a call to setup_modules()
 
-# @ECLASS-VARIABLE: MY_MODS
+# @ECLASS_VARIABLE: MY_MODS
 # @DESCRIPTION:
 # This internal variable contains a sorted, space separated list of currently
 # selected modules after a call to setup_modules()
@@ -347,7 +344,12 @@ setup_modules() {
 		MY_CONF+=( --disable-suexec )
 	fi
 
-	for x in ${IUSE_MODULES} ; do
+	if use systemd ; then
+		MY_CONF+=( --enable-systemd=${mod_type} )
+		MY_MODS+=( systemd )
+	fi
+
+	for x in ${IUSE_MODULES/ systemd} ; do
 		if use apache2_modules_${x} ; then
 			MY_CONF+=( --enable-${x}=${mod_type} )
 			MY_MODS+=( ${x} )
@@ -450,7 +452,7 @@ apache-2_pkg_setup() {
 	elog "Make sure CONFIG_SYSVIPC=y is set."
 	elog
 
-	if [[ ${EAPI} != 6 ]] && use apache2_modules_lua ; then
+	if use apache2_modules_lua ; then
 		lua-single_pkg_setup
 	fi
 }
@@ -648,7 +650,6 @@ apache-2_src_install() {
 	mv -f "${ED%/}/var/www/localhost/icons" \
 		"${ED%/}/usr/share/apache2/icons" || die
 	rm -rf "${ED%/}/var/www/localhost/" || die
-	eend $?
 
 	# set some sane permissions for suexec
 	if use suexec ; then

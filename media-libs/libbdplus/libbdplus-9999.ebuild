@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit multilib-minimal
 
@@ -21,7 +21,7 @@ SLOT="0"
 IUSE="aacs"
 
 RDEPEND="
-	dev-libs/libgcrypt:0=[${MULTILIB_USEDEP}]
+	dev-libs/libgcrypt:=[${MULTILIB_USEDEP}]
 	dev-libs/libgpg-error[${MULTILIB_USEDEP}]
 	aacs? ( >=media-libs/libaacs-0.7.0[${MULTILIB_USEDEP}] )
 "
@@ -29,19 +29,21 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
+
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
 multilib_src_configure() {
 	local myeconfargs=(
 		--disable-optimizations
-		--disable-static
 		$(use_with aacs libaacs)
 	)
-	ECONF_SOURCE=${S} econf "${myeconfargs[@]}"
+
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_install_all() {
 	einstalldocs
+
 	find "${ED}" -type f -name "*.la" -delete || die
 }

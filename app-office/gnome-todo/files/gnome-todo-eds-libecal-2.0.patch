@@ -1,8 +1,6 @@
 Taken from Fedora from
 https://src.fedoraproject.org/rpms/gnome-todo/raw/master/f/gnome-todo-eds-libecal-2.0.patch
 
-diff --git a/plugins/eds/gtd-eds-autoptr.h b/plugins/eds/gtd-eds-autoptr.h
-index eb9b011..78bd944 100644
 --- a/plugins/eds/gtd-eds-autoptr.h
 +++ b/plugins/eds/gtd-eds-autoptr.h
 @@ -23,6 +23,5 @@
@@ -13,8 +11,6 @@ index eb9b011..78bd944 100644
 +G_DEFINE_AUTOPTR_CLEANUP_FUNC (ECalComponentId, e_cal_component_id_free);
  G_DEFINE_AUTOPTR_CLEANUP_FUNC (ECalClient, g_object_unref);
 -G_DEFINE_AUTOPTR_CLEANUP_FUNC (ESource, g_object_unref);
-diff --git a/plugins/eds/gtd-provider-eds.c b/plugins/eds/gtd-provider-eds.c
-index a403226..def4235 100644
 --- a/plugins/eds/gtd-provider-eds.c
 +++ b/plugins/eds/gtd-provider-eds.c
 @@ -554,6 +554,7 @@ gtd_provider_eds_create_task (GtdProvider *provider,
@@ -46,8 +42,6 @@ index a403226..def4235 100644
                                NULL,
                                (GAsyncReadyCallback) on_task_removed_cb,
                                provider);
-diff --git a/plugins/eds/gtd-task-eds.c b/plugins/eds/gtd-task-eds.c
-index 2c8cd8e..bd8f7ac 100644
 --- a/plugins/eds/gtd-task-eds.c
 +++ b/plugins/eds/gtd-task-eds.c
 @@ -46,19 +46,19 @@ static GParamSpec *properties [N_PROPS];
@@ -484,8 +478,6 @@ index 2c8cd8e..bd8f7ac 100644
  }
  
  
-diff --git a/plugins/eds/gtd-task-list-eds.c b/plugins/eds/gtd-task-list-eds.c
-index eb48a73..5b71718 100644
 --- a/plugins/eds/gtd-task-list-eds.c
 +++ b/plugins/eds/gtd-task-list-eds.c
 @@ -85,19 +85,19 @@ setup_parent_task (GtdTaskListEds *self,
@@ -552,8 +544,6 @@ index eb48a73..5b71718 100644
  
        if (!task)
          continue;
-diff --git a/plugins/eds/meson.build b/plugins/eds/meson.build
-index ea84426..b37f0c6 100644
 --- a/plugins/eds/meson.build
 +++ b/plugins/eds/meson.build
 @@ -8,10 +8,9 @@ plugins_ldflags += ['-Wl,--undefined=gtd_plugin_eds_register_types']

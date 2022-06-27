@@ -16,7 +16,7 @@ SRC_URI="https://search.maven.org/remotecontent?filepath=net/java/dev/${PN}/${PN
 
 LICENSE="BSD Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 CP_DEPEND="
 	dev-java/iso-relax:0

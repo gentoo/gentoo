@@ -15,15 +15,14 @@ SRC_URI="https://github.com/multiSnow/mcomix3/archive/${GIT_PV}.tar.gz -> ${P}.t
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 IUSE=""
 
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
-	virtual/jpeg
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pygobject[${PYTHON_USEDEP}]
-	!media-gfx/comix"
+	media-libs/libjpeg-turbo:0"
 BDEPEND="sys-devel/gettext"
 
 REQUIRED_USE=${PYTHON_REQUIRED_USE}

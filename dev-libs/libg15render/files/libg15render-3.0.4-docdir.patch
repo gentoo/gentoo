@@ -1,0 +1,25 @@
+From 2900f3f8a90915f59a25c8b3fb27912492e7b044 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Sat, 14 May 2022 18:20:24 +0200
+Subject: [PATCH] Makefile.am: Make docdir selectable
+
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 2fdacd7..cf00f1c 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -7,7 +7,7 @@ libg15render_la_LDFLAGS = -version-info 3:0
+ include_HEADERS= libg15render.h
+ EXTRA_DIST = debian libg15render.3
+ man3_MANS = $(top_srcdir)/libg15render.3
+-docdir = $(prefix)/share/doc/$(PACKAGE)-$(VERSION)
++docdir = @docdir@
+ doc_DATA = AUTHORS ChangeLog COPYING NEWS README
+ ACLOCAL_AMFLAGS = -I m4
+ 
+-- 
+2.36.1
+

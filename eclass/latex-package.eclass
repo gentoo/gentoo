@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: latex-package.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Matthew Turk <satai@gentoo.org>
 # Martin Ehmsen <ehmsen@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: An eclass for easy installation of LaTeX packages
 # @DESCRIPTION:
 # This eClass is designed to be easy to use and implement.  The vast majority of
@@ -51,30 +51,33 @@
 # you must either grab each file individually, or find a place to mirror an
 # archive of them.  (iBiblio)
 
+case ${EAPI} in
+	7) inherit eapi8-dosym ;;
+	8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
 if [[ -z ${_LATEX_PACKAGE_ECLASS} ]]; then
 _LATEX_PACKAGE_ECLASS=1
 
 RDEPEND="virtual/latex-base"
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=sys-apps/texinfo-4.2-r5"
 
-case ${EAPI:-0} in
-	[0-6])
-		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
-	7)	;;
-	*)	die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
-esac
-
 HOMEPAGE="http://www.tug.org/"
+
+# @ECLASS_VARIABLE: TEXMF
+# @DESCRIPTION:
+# Top-level installation path.
 TEXMF="/usr/share/texmf-site"
 
-# @ECLASS-VARIABLE: SUPPLIER
+# @ECLASS_VARIABLE: SUPPLIER
 # @DESCRIPTION:
 # This refers to the font supplier; it should be overridden (see eclass
 # DESCRIPTION above)
 SUPPLIER="misc"
 
-# @ECLASS-VARIABLE: LATEX_DOC_ARGUMENTS
+# @ECLASS_VARIABLE: LATEX_DOC_ARGUMENTS
 # @DESCRIPTION:
 # When compiling documentation (.tex/.dtx), this variable will be passed
 # to pdflatex as additional argument (e.g. -shell-escape). This variable
@@ -90,7 +93,7 @@ LATEX_DOC_ARGUMENTS=""
 # It installs the files found in the current directory to the standard locations
 # for a TeX installation
 latex-package_src_doinstall() {
-	debug-print function $FUNCNAME $*
+	debug-print-function "${FUNCNAME}" "$@"
 
 	# Avoid generating font cache outside of the sandbox
 	export VARTEXFONTS="${T}/fonts"
@@ -103,23 +106,26 @@ latex-package_src_doinstall() {
 		case ${1} in
 			"sh")
 				while IFS= read -r -d '' i; do
-					dobin ${i}
+					dobin "${i}"
 				done < <(find -maxdepth 1 -type f -name "*.${1}" -print0)
 				;;
 
 			"sty" | "cls" | "fd" | "clo" | "def" | "cfg")
 				while IFS= read -r -d '' i; do
-					insinto ${TEXMF}/tex/latex/${PN}
-					doins ${i}
+					insinto "${TEXMF}/tex/latex/${PN}"
+					doins "${i}"
 				done < <(find -maxdepth 1 -type f -name "*.${1}" -print0)
 				;;
 
 			"dvi" | "ps" | "pdf")
 				while IFS= read -r -d '' i; do
 					insinto /usr/share/doc/${PF}
-					doins ${i}
-					dosym /usr/share/doc/${PF}/$(basename ${i}) ${TEXMF}/doc/latex/${PN}/${i}
-					docompress -x /usr/share/doc/${PF}/$(basename ${i})
+					doins "${i}"
+					local dosym=dosym
+					[[ ${EAPI} == 7 ]] && dosym=dosym8
+					${dosym} -r "/usr/share/doc/${PF}/$(basename "${i}")" \
+						"${TEXMF}/doc/latex/${PN}/${i}"
+					docompress -x "/usr/share/doc/${PF}/$(basename "${i}")"
 				done < <(find -maxdepth 1 -type f -name "*.${1}" -print0)
 				;;
 
@@ -127,17 +133,18 @@ latex-package_src_doinstall() {
 				if ! in_iuse doc || use doc ; then
 					while IFS= read -r -d '' i; do
 						[[ -n ${LATEX_PACKAGE_SKIP} ]] &&
-						has ${i##*/} ${LATEX_PACKAGE_SKIP} &&
+						has "${i##*/}" ${LATEX_PACKAGE_SKIP} &&
 						continue
 
 						einfo "Making documentation: ${i}"
 						# some macros need compiler called twice, do it here.
-						set -- pdflatex ${LATEX_DOC_ARGUMENTS} --halt-on-error --interaction=nonstopmode ${i}
+						set -- pdflatex ${LATEX_DOC_ARGUMENTS} \
+							--halt-on-error --interaction=nonstopmode "${i}"
 						if "${@}"; then
 							"${@}"
 						else
 							einfo "pdflatex failed, trying texi2dvi"
-							texi2dvi -q -c --language=latex ${i} || die
+							texi2dvi -q -c --language=latex "${i}" || die
 						fi
 					done < <(find -maxdepth 1 -type f -name "*.${1}" -print0)
 				fi
@@ -145,27 +152,27 @@ latex-package_src_doinstall() {
 
 			"tfm" | "vf" | "afm")
 				while IFS= read -r -d '' i; do
-					insinto ${TEXMF}/fonts/${1}/${SUPPLIER}/${PN}
-					doins ${i}
+					insinto "${TEXMF}/fonts/${1}/${SUPPLIER}/${PN}"
+					doins "${i}"
 				done < <(find -maxdepth 1 -type f -name "*.${1}" -print0)
 				;;
 
 			"pfb")
 				while IFS= read -r -d '' i; do
-					insinto ${TEXMF}/fonts/type1/${SUPPLIER}/${PN}
-					doins ${i}
+					insinto "${TEXMF}/fonts/type1/${SUPPLIER}/${PN}"
+					doins "${i}"
 				done < <(find -maxdepth 1 -type f -name "*.pfb" -print0)
 				;;
 			"ttf")
 				while IFS= read -r -d '' i; do
-					insinto ${TEXMF}/fonts/truetype/${SUPPLIER}/${PN}
-					doins ${i}
+					insinto "${TEXMF}/fonts/truetype/${SUPPLIER}/${PN}"
+					doins "${i}"
 				done < <(find -maxdepth 1 -type f -name "*.ttf" -print0)
 				;;
 			"bst")
 				while IFS= read -r -d '' i; do
-					insinto ${TEXMF}/bibtex/bst/${PN}
-					doins ${i}
+					insinto "${TEXMF}/bibtex/bst/${PN}"
+					doins "${i}"
 				done < <(find -maxdepth 1 -type f -name "*.bst" -print0)
 				;;
 
@@ -198,10 +205,10 @@ latex-package_src_doinstall() {
 # Calls latex for each *.ins in the current directory in order to generate the
 # relevant files that will be installed
 latex-package_src_compile() {
-	debug-print function $FUNCNAME $*
+	debug-print-function "${FUNCNAME}" "$@"
 	while IFS= read -r -d '' i; do
 		einfo "Extracting from ${i}"
-		latex --halt-on-error --interaction=nonstopmode ${i} || die
+		latex --halt-on-error --interaction=nonstopmode "${i}" || die
 	done < <(find -maxdepth 1 -type f -name "*.ins" -print0)
 }
 
@@ -209,7 +216,7 @@ latex-package_src_compile() {
 # @DESCRIPTION:
 # Installs the package
 latex-package_src_install() {
-	debug-print function $FUNCNAME $*
+	debug-print-function "${FUNCNAME}" "$@"
 	latex-package_src_doinstall all
 	einstalldocs
 }
@@ -219,7 +226,7 @@ latex-package_src_install() {
 # Calls latex-package_rehash to ensure the TeX installation is consistent with
 # the kpathsea database
 latex-package_pkg_postinst() {
-	debug-print function $FUNCNAME $*
+	debug-print-function "${FUNCNAME}" "$@"
 	latex-package_rehash
 }
 
@@ -228,7 +235,7 @@ latex-package_pkg_postinst() {
 # Calls latex-package_rehash to ensure the TeX installation is consistent with
 # the kpathsea database
 latex-package_pkg_postrm() {
-	debug-print function $FUNCNAME $*
+	debug-print-function "${FUNCNAME}" "$@"
 	latex-package_rehash
 }
 
@@ -236,10 +243,10 @@ latex-package_pkg_postrm() {
 # @DESCRIPTION:
 # Rehashes the kpathsea database, according to the current TeX installation
 latex-package_rehash() {
-	debug-print function $FUNCNAME $*
+	debug-print-function "${FUNCNAME}" "$@"
 	texmf-update
 }
 
-EXPORT_FUNCTIONS src_compile src_install pkg_postinst pkg_postrm
-
 fi
+
+EXPORT_FUNCTIONS src_compile src_install pkg_postinst pkg_postrm

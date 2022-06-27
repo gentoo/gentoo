@@ -24,26 +24,26 @@ fi
 
 [[ ${EAPI:-0} -eq 6 ]] && inherit eapi7-ver
 
-# @ECLASS-VARIABLE: MATE_TARBALL_SUFFIX
+# @ECLASS_VARIABLE: MATE_TARBALL_SUFFIX
 # @INTERNAL
 # @DESCRIPTION:
 # All projects hosted on mate-desktop.org provide tarballs as tar.xz.
 # Undefined in live ebuilds.
 [[ ${PV} != 9999 ]] && : ${MATE_TARBALL_SUFFIX:="xz"}
 
-# @ECLASS-VARIABLE: MATE_DESKTOP_ORG_PN
+# @ECLASS_VARIABLE: MATE_DESKTOP_ORG_PN
 # @DESCRIPTION:
 # Name of the package as hosted on mate-desktop.org.
 # Leave unset if package name matches PN.
 : ${MATE_DESKTOP_ORG_PN:=${PN}}
 
-# @ECLASS-VARIABLE: MATE_DESKTOP_ORG_PV
+# @ECLASS_VARIABLE: MATE_DESKTOP_ORG_PV
 # @DESCRIPTION:
 # Package version string as listed on mate-desktop.org.
 # Leave unset if package version string matches PV.
 : ${MATE_DESKTOP_ORG_PV:=${PV}}
 
-# @ECLASS-VARIABLE: MATE_BRANCH
+# @ECLASS_VARIABLE: MATE_BRANCH
 # @DESCRIPTION:
 # Major and minor numbers of the version number, unless live.
 # If live ebuild, will be set to '9999'.

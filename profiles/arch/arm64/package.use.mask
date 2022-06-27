@@ -1,6 +1,36 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Anna Vyalkova <cyber+gentoo@sysrq.in> (2022-06-25)
+# Unkeyworded test dep
+app-vim/jedi test
+
+# Conrad Kostecki <conikost@gentoo.org> (2022-06-05)
+# Unkeyworded deps, bug #687830
+app-metrics/collectd collectd_plugins_modbus
+app-metrics/collectd collectd_plugins_nut
+app-metrics/collectd collectd_plugins_oracle
+app-metrics/collectd collectd_plugins_ping
+app-metrics/collectd collectd_plugins_routeros
+app-metrics/collectd collectd_plugins_sigrok
+app-metrics/collectd collectd_plugins_varnish
+
+# Jimi Huotari <chiitoo@gentoo.org> (2022-05-08)
+# Not keyworded here yet.
+lxqt-base/lxqt-meta desktop-portal
+
+# Matt Turner <mattst88@gentoo.org> (2022-04-18)
+# app-text/nuspell is not keyworded
+app-text/enchant nuspell
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# Untested useflag on other arches, needs keywording
+media-video/ffmpeg vmaf
+
+# Sam James <sam@gentoo.org> (2022-02-26)
+# Supports 64-bit NEON
+>=media-libs/libjpeg-turbo-2.1.3 -cpu_flags_arm_neon
+
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-01-11)
 # Mask AMF keyword on non-amd64 arches
 # It is unusable, for now, in other arches
@@ -64,10 +94,6 @@ media-sound/easyeffects zamaudio
 # Note: libpng-compat 1.5.30 does NOT seem to.
 media-libs/libpng -cpu_flags_arm_neon
 
-# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
-# Unmask TPM on supported archs.
-sys-apps/systemd -tpm
-
 # Sam James <sam@gentoo.org> (2021-03-20)
 # Supports both 'neon32' and 'neon64'
 sys-libs/zlib-ng -cpu_flags_arm_neon
@@ -104,6 +130,7 @@ media-sound/bluez-alsa man
 # gnuefi + systemd-boot works on arm64
 # bug #729720
 sys-apps/systemd -gnuefi
+sys-apps/systemd-utils -boot
 
 # Joonas Niilola <juippis@gentoo.org> (2021-01-15)
 # Dependency not keyworded on this arch.
@@ -116,17 +143,9 @@ sys-libs/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
 sys-libs/compiler-rt-sanitizers -gwp-asan -shadowcallstack
 sys-libs/compiler-rt-sanitizers -libfuzzer -profile -xray
 
-# Sam James <sam@gentoo.org> (2020-12-13)
-# Requires unkeyworded, fetch-restricted deps
-net-proxy/haproxy device-atlas
-
 # Roy Bamford <neddyseagoon@gentoo.org< (2020-12-07)
 # media-libs/liblastfm fails to build with tests Bug #758896
 media-sound/clementine lastfm
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-08)
-# dev-util/kdevelop-php is not keyworded, bug #751337
->=kde-apps/umbrello-20.08.3 php
 
 # Sam James <sam@gentoo.org> (2020-10-03)
 # Builds & tests pass on arm64.
@@ -140,7 +159,6 @@ dev-scheme/guile -jit
 
 # Sam James <sam@gentoo.org> (2020-09-05)
 # nvidia-texture-tools not useful here
-media-libs/devil nvtt
 games-strategy/0ad nvtt
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-08-20)
@@ -305,9 +323,8 @@ net-fs/samba addc addns ads cluster python test
 # Some more unkeyworded dependencies.
 dev-cpp/eigen test
 mate-base/mate help
-mate-base/mate-applets-meta appindicator sensors
+mate-base/mate-applets-meta sensors
 mate-extra/caja-extensions gajim
-net-fs/samba dmapi
 sci-libs/gdal armadillo netcdf
 sys-fs/btrfs-progs reiserfs
 www-client/chromium widevine
@@ -366,10 +383,6 @@ media-gfx/pstoedit emf
 app-emulation/libvirt openvz
 
 # Alexis Ballier <aballier@gentoo.org> (2017-07-10)
-# media-gfx/nvidia-texture-tools does not support arm64
-media-libs/devil nvtt
-
-# Alexis Ballier <aballier@gentoo.org> (2017-07-10)
 # Virtualbox is x86 only
 app-emulation/libvirt virtualbox
 
@@ -392,8 +405,7 @@ net-libs/libpcap bluetooth
 
 # Mart Raudsepp <leio@gentoo.org> (2017-02-16)
 # Not yet tested features/dependencies
-app-text/evince dvi nautilus postscript t1lib xps
-net-wireless/blueman appindicator
+app-text/evince dvi nautilus postscript xps
 
 # Markus Meier <maekke@gentoo.org> (2013-12-26)
 # Unkeyworded deps, bug #488724
@@ -413,7 +425,7 @@ app-admin/conky lua-cairo xmms2 moc
 
 # Sergey Popov <pinkbyte@gentoo.org> (2013-07-30)
 # Not tested
-media-libs/devil allegro nvtt
+media-libs/devil allegro
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (2013-05-27)
 # Firmware loader not keyworded yet

@@ -4,12 +4,6 @@ Date: Mon, 12 Jul 2021 15:08:30 +0200
 Subject: [PATCH] Do not install man pages and files in /usr/share/poezio
 
 Signed-off-by: Florian Schmaus <flo@geekplace.eu>
----
- setup.py | 4 ----
- 1 file changed, 4 deletions(-)
-
-diff --git a/setup.py b/setup.py
-index d1dde4d2f02f..bee8e4834b81 100755
 --- a/setup.py
 +++ b/setup.py
 @@ -156,13 +156,9 @@ setup(
@@ -26,6 +20,3 @@ index d1dde4d2f02f..bee8e4834b81 100755
          + sphinx_files_found
      ),
      install_requires=['slixmpp>=1.6.0', 'aiodns', 'pyasn1_modules', 'pyasn1', 'typing_extensions', 'setuptools'],
--- 
-2.31.1
-

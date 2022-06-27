@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86"
 IUSE="cdr dbus dia exif graphicsmagick imagemagick inkjar jemalloc jpeg
 openmp postscript readline spell static-libs svg2 visio wpg"
 
@@ -101,15 +101,21 @@ RESTRICT="test"
 S="${WORKDIR}/${P}_2021-05-24_c4e8f9ed74"
 
 pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
-		tc-has-openmp || die "Please switch to an openmp compatible compiler"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+	python-single-r1_pkg_setup
 }
 
 src_prepare() {
 	# Backport from master
 	eapply "${WORKDIR}/inkscape-1.1-musl/"*.patch
 	eapply "${FILESDIR}"/${P}-poppler-21.11.0.patch
+
+	# Not yet accepted upstream but rather trivial
+	eapply "${FILESDIR}/${PN}-1.1.2-poppler-22.03.0.patch"  # bug 835424
 
 	cmake_src_prepare
 	sed -i "/install.*COPYING/d" CMakeScripts/ConfigCPack.cmake || die
@@ -125,6 +131,7 @@ src_configure() {
 		-DENABLE_POPPLER=ON
 		-DENABLE_POPPLER_CAIRO=ON
 		-DWITH_PROFILING=OFF
+		-DWITH_INTERNAL_2GEOM=ON
 		-DBUILD_TESTING=OFF
 		-DWITH_LIBCDR=$(usex cdr)
 		-DWITH_DBUS=$(usex dbus)

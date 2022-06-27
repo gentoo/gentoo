@@ -1,6 +1,18 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-05-17)
+# Force on jpeg & png for now until build system fixes are made
+# by upstream. The CMake port is new so it's fairly expected
+# to have a few bumps. bug #844751.
+=sci-libs/gdal-3.5.0-r3 jpeg png
+
+# Esteve Varela Colominas <esteve.varela@gmail.com> (2022-02-19)
+# Use the jemalloc allocator for telegram, as recommended by upstream,
+# to reduce memory usage, at least on glibc.
+# See the ebuild for more info.
+net-im/telegram-desktop jemalloc
+
 # Sam James <sam@gentoo.org> (2022-02-11)
 # Always build with PIE-default, just like GCC.
 sys-devel/clang pie
@@ -72,11 +84,6 @@ www-client/lynx unicode
 #
 # b) using libidn
 app-text/ghostscript-gpl unicode
-
-# Michał Górny <mgorny@gentoo.org> (2020-09-01)
-# sys-boot/udk is being removed, and newest revision of refind does not
-# support it already.
-sys-boot/refind gnuefi
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2020-12-06)
 # Doesn't build without X. Not removing IUSE from ebuild yet in hope that
@@ -213,6 +220,7 @@ app-shells/bash:0 readline
 dev-lang/python-exec python_targets_python3_8
 dev-lang/python-exec python_targets_python3_9
 dev-lang/python-exec python_targets_python3_10
+dev-lang/python-exec python_targets_python3_11
 dev-lang/python-exec python_targets_pypy3
 
 # Zac Medico <zmedico@gentoo.org> (2010-10-20)

@@ -1,4 +1,4 @@
-# Copyright 2004-2021 Gentoo Authors
+# Copyright 2004-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: check-reqs.eclass
@@ -48,33 +48,39 @@ EXPORT_FUNCTIONS pkg_pretend pkg_setup
 if [[ ! ${_CHECK_REQS_ECLASS} ]]; then
 _CHECK_REQS_ECLASS=1
 
-# @ECLASS-VARIABLE: CHECKREQS_MEMORY
+# @ECLASS_VARIABLE: CHECKREQS_MEMORY
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # How much RAM is needed? Eg.: CHECKREQS_MEMORY=15M
 
-# @ECLASS-VARIABLE: CHECKREQS_DISK_BUILD
+# @ECLASS_VARIABLE: CHECKREQS_DISK_BUILD
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # How much diskspace is needed to build the package? Eg.: CHECKREQS_DISK_BUILD=2T
 
-# @ECLASS-VARIABLE: CHECKREQS_DISK_USR
+# @ECLASS_VARIABLE: CHECKREQS_DISK_USR
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # How much space in /usr is needed to install the package? Eg.: CHECKREQS_DISK_USR=15G
 
-# @ECLASS-VARIABLE: CHECKREQS_DISK_VAR
+# @ECLASS_VARIABLE: CHECKREQS_DISK_VAR
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # How much space is needed in /var? Eg.: CHECKREQS_DISK_VAR=3000M
 
-# @ECLASS-VARIABLE: CHECKREQS_DONOTHING
+# @ECLASS_VARIABLE: CHECKREQS_DONOTHING
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Do not error out in _check-reqs_output if requirements are not met.
 # This is a user flag and should under _no circumstances_ be set in the ebuild.
 [[ -n ${I_KNOW_WHAT_I_AM_DOING} ]] && CHECKREQS_DONOTHING=1
+
+# @ECLASS_VARIABLE: CHECKREQS_FAILED
+# @INTERNAL
+# @DESCRIPTION:
+# If set the checks failed and eclass should abort the build.
+# Internal, do not set yourself.
 
 # @FUNCTION: check-reqs_pkg_setup
 # @DESCRIPTION:
@@ -457,11 +463,6 @@ _check-reqs_unsatisfied() {
 	[[ ${EBUILD_PHASE} == "pretend" && -z ${CHECKREQS_DONOTHING} ]] && msg="eerror"
 	${msg} "There is NOT at least ${sizeunit} ${location}"
 
-	# @ECLASS-VARIABLE: CHECKREQS_FAILED
-	# @INTERNAL
-	# @DESCRIPTION:
-	# If set the checks failed and eclass should abort the build.
-	# Internal, do not set yourself.
 	CHECKREQS_FAILED="true"
 }
 

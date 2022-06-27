@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 VALA_USE_DEPEND=vapigen
 
@@ -37,10 +37,11 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	default
 	gnome2_environment_reset
-	use vala && vala_src_prepare
 }
 
 src_configure() {
+	use vala && vala_setup
+
 	# Automagic rsvg support is just for website generation we do not call,
 	#     so we don't need to fix it
 	# w3m is used for dist target thus no issue for us that it is automagically

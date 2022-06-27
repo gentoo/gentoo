@@ -1,5 +1,15 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# James Le Cuirot <chewi@gentoo.org> (2022-06-25)
+# Realign the stack in the 32-bit build for compatibility with older binaries by
+# default. This is not the default on x86 because it has a performance cost.
+sys-libs/glibc stack-realign
+sys-libs/ncurses stack-realign
+
+# Ben Kohler <bkohler@gentoo.org> (2022-06-07)
+# Enable BIOS & UEFI targets by default
+sys-apps/memtest86+ bios64 efi64
 
 # Theo Anderson <telans@posteo.de> (2021-03-06)
 # Enable 32-bit clang runtime to ease -m32 builds with non-GCC runtime

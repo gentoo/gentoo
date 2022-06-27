@@ -5,6 +5,9 @@
     <email>candrews@gentoo.org</email>
     <name>Craig Andrews</name>
   </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+  </maintainer>
   <longdescription>
     Brotli is a generic-purpose lossless compression algorithm that
     compresses data using a combination of a modern variant of the

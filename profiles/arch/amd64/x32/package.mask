@@ -1,6 +1,15 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-26)
+# intel-hybrid-codec-driver does not work on x32
+x11-libs/intel-hybrid-codec-driver
+
+# Jonas Licht <jonas.licht@gmail.com> (2022-05-01)
+# Requires net-libs/nodejs, plus mask all reverse-dependecies.
+net-analyzer/gsa
+net-analyzer/gsad
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-02-13)
 # Requires qtwebengine
 sci-electronics/eagle
@@ -10,6 +19,11 @@ sci-electronics/eagle
 dev-python/jupyterlab
 dev-python/jupyterlab-lsp
 sci-misc/jupyterlab-desktop-bin
+dev-python/plotly
+dev-python/plotly-geo
+dev-python/chart-studio
+sci-visualization/dash
+sci-visualization/jupyter-dash
 
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2021-02-13)
 # Is reverse-dependency of dev-qt/qtwebengine
@@ -26,6 +40,7 @@ app-editors/ghostwriter
 app-editors/notepadqq
 app-editors/retext
 app-misc/anki
+app-office/kalendar:5
 app-office/kmymoney:5
 app-office/skrooge:5
 app-office/texmaker
@@ -114,7 +129,6 @@ net-libs/xrootd-ceph
 
 # Hasan ÇALIŞIR <hasan.calisir@psauxit.com> (2019-10-28)
 # requires net-libs/nodejs | sys-apps/yarn
->=net-analyzer/greenbone-security-assistant-8.0.1
 net-analyzer/gvm
 
 # Marek Szuba <marecki@gentoo.org> (2019-07-26)

@@ -8,5 +8,3 @@ net-im/telegram-desktop
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-02-01)
 # Temurin ppc64 builds are little-endiain only
 dev-java/openjdk-bin
-=dev-java/openjdk-11.0.13_p8
-=dev-java/openjdk-17.0.1_p12

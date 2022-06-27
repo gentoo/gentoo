@@ -1,0 +1,23 @@
+https://github.com/phaag/nfdump/pull/336
+
+From e882722e4e006d0440fb5a37fb051d4747e4f225 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 24 Mar 2022 22:50:13 +0000
+Subject: [PATCH] Makefile.am: add ACLOCAL_AMFLAGS
+
+Per autoconf docs [0], if using automake and AC_CONFIG_MACRO_DIR,
+we need to include ACLOCAL_AMFLAGS in Makefile.am.
+
+So, let's set ACLOCAL_AMFLAGS = -I m4.
+
+This sorts out an automake warning.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,3 +1,4 @@
++ACLOCAL_AMFLAGS = -I m4
+ 
+ SUBDIRS = . bin man doc
+ 
+

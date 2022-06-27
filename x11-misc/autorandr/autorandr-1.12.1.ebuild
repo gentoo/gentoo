@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit bash-completion-r1 distutils-r1 systemd udev
 
@@ -12,7 +12,7 @@ if [[ "${PV}" = "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/phillipberndt/${PN}.git"
 else
 	SRC_URI="https://github.com/phillipberndt/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Automatically select a display configuration based on connected devices"

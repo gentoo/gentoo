@@ -1,0 +1,191 @@
+--- a/python/example.py
++++ b/python/example.py
+@@ -1,7 +1,7 @@
+ import tre
+ 
+ fz = tre.Fuzzyness(maxerr = 3)
+-print fz
++print (fz)
+ 
+ pt = tre.compile("Don(ald( Ervin)?)? Knuth", tre.EXTENDED)
+ data = """
+@@ -16,5 +16,5 @@ typefaces.
+ m = pt.search(data, fz)
+ 
+ if m:
+-    print m.groups()
+-    print m[0]
++    print (m.groups())
++    print (m[0])
+--- a/python/tre-python.c
++++ b/python/tre-python.c
+@@ -86,9 +86,9 @@ TreFuzzyness_repr(PyObject *obj)
+   TreFuzzynessObject *self = (TreFuzzynessObject*)obj;
+   PyObject *o;
+ 
+-  o = PyString_FromFormat("%s(delcost=%d,inscost=%d,maxcost=%d,subcost=%d,"
++  o = PyUnicode_FromFormat("%s(delcost=%d,inscost=%d,maxcost=%d,subcost=%d,"
+ 			  "maxdel=%d,maxerr=%d,maxins=%d,maxsub=%d)",
+-			  self->ob_type->tp_name, self->ap.cost_del,
++			  Py_TYPE(self)->tp_name, self->ap.cost_del,
+ 			  self->ap.cost_ins, self->ap.max_cost,
+ 			  self->ap.cost_subst, self->ap.max_del,
+ 			  self->ap.max_err, self->ap.max_ins,
+@@ -118,8 +118,7 @@ static PyMemberDef TreFuzzyness_members[
+ };
+ 
+ static PyTypeObject TreFuzzynessType = {
+-  PyObject_HEAD_INIT(NULL)
+-  0,			        /* ob_size */
++  PyVarObject_HEAD_INIT(NULL, 0)
+   TRE_MODULE ".Fuzzyness",	/* tp_name */
+   sizeof(TreFuzzynessObject),	/* tp_basicsize */
+   0,			        /* tp_itemsize */
+@@ -193,7 +192,7 @@ PyTreMatch_groups(TreMatchObject *self,
+ }
+ 
+ static PyObject *
+-PyTreMatch_groupi(PyObject *obj, int gn)
++PyTreMatch_groupi(PyObject *obj, Py_ssize_t gn)
+ {
+   TreMatchObject *self = (TreMatchObject*)obj;
+   PyObject *result;
+@@ -220,7 +219,7 @@ PyTreMatch_group(TreMatchObject *self, P
+   PyObject *result;
+   long gn;
+ 
+-  gn = PyInt_AsLong(grpno);
++  gn = PyLong_AsLong(grpno);
+ 
+   if (PyErr_Occurred())
+     return NULL;
+@@ -277,8 +276,7 @@ static PySequenceMethods TreMatch_as_seq
+ };
+ 
+ static PyTypeObject TreMatchType = {
+-  PyObject_HEAD_INIT(NULL)
+-  0,			        /* ob_size */
++  PyVarObject_HEAD_INIT(NULL, 0)
+   TRE_MODULE ".Match",		/* tp_name */
+   sizeof(TreMatchObject),	/* tp_basicsize */
+   0,			        /* tp_itemsize */
+@@ -380,8 +378,8 @@ PyTrePattern_search(TrePatternObject *se
+     }
+   else
+     {
+-      targ = PyString_AsString(pstring);
+-      tlen = PyString_Size(pstring);
++      targ = PyBytes_AsString(pstring);
++      tlen = PyBytes_Size(pstring);
+ 
+       rc = tre_reganexec(&self->rgx, targ, tlen, &mo->am, fz->ap, eflags);
+     }
+@@ -433,8 +431,7 @@ PyTrePattern_dealloc(TrePatternObject *s
+ }
+ 
+ static PyTypeObject TrePatternType = {
+-  PyObject_HEAD_INIT(NULL)
+-  0,			        /* ob_size */
++  PyVarObject_HEAD_INIT(NULL, 0)
+   TRE_MODULE ".Pattern",	/* tp_name */
+   sizeof(TrePatternObject),	/* tp_basicsize */
+   0,			        /* tp_itemsize */
+@@ -467,7 +464,7 @@ static PyTypeObject TrePatternType = {
+ };
+ 
+ static TrePatternObject *
+-newTrePatternObject()
++newTrePatternObject(void)
+ {
+   TrePatternObject *self;
+ 
+@@ -482,7 +479,7 @@ static PyObject *
+ PyTre_ncompile(PyObject *self, PyObject *args)
+ {
+   TrePatternObject *rv;
+-  PyUnicodeObject *upattern = NULL;
++  PyObject *upattern = NULL;
+   char *pattern = NULL;
+   int pattlen;
+   int cflags = 0;
+@@ -537,9 +534,8 @@ static PyMethodDef tre_methods[] = {
+   { NULL, NULL }
+ };
+ 
+-static char *tre_doc =
+-"Python module for TRE library\n\nModule exports "
+-"the only function: compile";
++
++#define tre_doc "Python module for TRE library\n\nModule exports the only function: compile"
+ 
+ static struct _tre_flags {
+   char *name;
+@@ -556,40 +552,57 @@ static struct _tre_flags {
+   { NULL, 0 }
+ };
+ 
++
++static struct PyModuleDef moduledef = {
++  PyModuleDef_HEAD_INIT,
++  TRE_MODULE ".Module",   /* m_name */
++  tre_doc,             /* m_doc */
++  -1,                  /* m_size */
++  tre_methods,         /* m_methods */
++  NULL,                /* m_reload */
++  NULL,                /* m_traverse */
++  NULL,                /* m_clear */
++  NULL,                /* m_free */
++};
++
++
+ PyMODINIT_FUNC
+-inittre(void)
++PyInit_tre(void)
+ {
+   PyObject *m;
+   struct _tre_flags *fp;
+ 
+   if (PyType_Ready(&TreFuzzynessType) < 0)
+-    return;
++    return NULL;
+   if (PyType_Ready(&TreMatchType) < 0)
+-    return;
++    return NULL;
+   if (PyType_Ready(&TrePatternType) < 0)
+-    return;
++    return NULL;
+ 
+   /* Create the module and add the functions */
+-  m = Py_InitModule3(TRE_MODULE, tre_methods, tre_doc);
++
++  m = PyModule_Create (&moduledef);
++
+   if (m == NULL)
+-    return;
++    return NULL;
+ 
+   Py_INCREF(&TreFuzzynessType);
+   if (PyModule_AddObject(m, "Fuzzyness", (PyObject*)&TreFuzzynessType) < 0)
+-    return;
++    return NULL;
+   Py_INCREF(&TreMatchType);
+   if (PyModule_AddObject(m, "Match", (PyObject*)&TreMatchType) < 0)
+-    return;
++    return NULL;
+   Py_INCREF(&TrePatternType);
+   if (PyModule_AddObject(m, "Pattern", (PyObject*)&TrePatternType) < 0)
+-    return;
++    return NULL;
+   ErrorObject = PyErr_NewException(TRE_MODULE ".Error", NULL, NULL);
+   Py_INCREF(ErrorObject);
+   if (PyModule_AddObject(m, "Error", ErrorObject) < 0)
+-    return;
++    return NULL;
+ 
+   /* Insert the flags */
+   for (fp = tre_flags; fp->name != NULL; fp++)
+     if (PyModule_AddIntConstant(m, fp->name, fp->val) < 0)
+-      return;
++      return NULL;
++  return m;
+ }

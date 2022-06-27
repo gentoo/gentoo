@@ -24,11 +24,9 @@ libvirt
 firebird
 oci8
 
-# cilk has been ported only to x86 systems
-cilk
-
-# cuda only works on amd64/x86
+# cuda/NVENC only works on amd64/arm64
 cuda
+nvenc
 
 # masking here, and unmasking in arch/x86/use.mask
 vidix
@@ -141,7 +139,6 @@ video_cards_siliconmotion
 # not needed on non-arm systems
 video_cards_exynos
 video_cards_freedreno
-video_cards_imx
 video_cards_lima
 video_cards_omap
 video_cards_panfrost
@@ -163,10 +160,6 @@ input_devices_wacom
 # Robert Buchholz <rbu@gentoo.org> (2007-06-03)
 # Only works on x86 or amd64
 lcd_devices_luise
-
-# Alex Legler <a3li@gentoo.org> (2009-12-07)
-# Rubinius is whitelisted on supported arches
-ruby_targets_rbx
 
 # Samuli Suominen <ssuominen@gentoo.org> (2011-10-03)
 # RealMagic Hollywood+/Creative DXR3 support
@@ -197,8 +190,6 @@ abi_x86_x32
 abi_mips_o32
 abi_mips_n32
 abi_mips_n64
-abi_ppc_32
-abi_ppc_64
 abi_s390_32
 abi_s390_64
 
@@ -227,6 +218,7 @@ arm
 arm64
 hppa
 ia64
+loong
 m68k
 mips
 ppc

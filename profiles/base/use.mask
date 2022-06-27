@@ -4,10 +4,15 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-01-22)
-# Prelink support is being removed from glibc, and has been
-# somewhat broken for a while already
-prelink
+# Matt Turner <mattst88@gentoo.org> (2022-04-16)
+# dev-util/sysprof not keyworded on most arches yet
+sysprof
+
+# Brian Evans <grknight@gentoo.org> (2022-01-21)
+# PHP 7.3 is end-of-life
+# Please upgrade to a newer slot
+php_targets_php7-3
+php7-3
 
 # Sam James <sam@gentoo.org> (2022-01-12)
 # PCH has proven itself to be unreliable and lead to spurious build
@@ -37,25 +42,9 @@ ros_messages_eus
 # Mask Ruby 2.4 as EOL
 ruby_targets_ruby24
 
-# Brian Evans <grknight@gentoo.org> (2019-12-19)
-# PHP 7.1 is end of life and has security issues Bug 703326
-php_targets_php7-1
-
-# Brian Evans <grknight@gentoo.org> (2019-10-01)
-# Mask PHP 5.6 target for EOL
-php_targets_php5-6
-
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # app-office/texmacs is package.mask'd. Bug #436400
 texmacs
-
-# Hans de Graaff <graaff@gentoo.org> (2019-04-07)
-# Mask Ruby 2.3 as EOL
-ruby_targets_ruby23
-
-# Brian Evans <grknight@gentoo.org> (2019-01-11)
-# Mask PHP 7.0 target as EOL
-php_targets_php7-0
 
 # Matt Turner <mattst88@gentoo.org> (2018-11-11)
 # d3d9 only works on amd64/x86.

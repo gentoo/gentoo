@@ -1,0 +1,35 @@
+https://git.gnupg.org/cgi-bin/gitweb.cgi?p=libgcrypt.git;a=commitdiff;h=c0692324fe8b3806eefc5017767917dca9cd94d0
+https://dev.gnupg.org/T5976
+https://bugs.gentoo.org/832871
+
+From c0692324fe8b3806eefc5017767917dca9cd94d0 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Tue, 17 May 2022 10:44:55 +0900
+Subject: [PATCH] mpi: Allow building with --disable-asm for HPPA.
+
+* mpi/longlong.h [__hppa] (udiv_qrnnd): Only define
+when assembler is enabled.
+
+--
+
+GnuPG-bug-id: 5976
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+--- a/mpi/longlong.h
++++ b/mpi/longlong.h
+@@ -430,14 +430,14 @@ extern UDItype __udiv_qrnnd ();
+ #  define UMUL_TIME 40
+ #  define UDIV_TIME 80
+ # endif
+-# ifndef LONGLONG_STANDALONE
++# if !defined(LONGLONG_STANDALONE) && !defined(ASM_DISABLED)
+ #  define udiv_qrnnd(q, r, n1, n0, d) \
+   do { USItype __r;							\
+     (q) = __udiv_qrnnd (&__r, (n1), (n0), (d)); 			\
+     (r) = __r;								\
+   } while (0)
+ extern USItype __udiv_qrnnd ();
+-# endif /* !LONGLONG_STANDALONE */
++# endif /* !LONGLONG_STANDALONE && !ASM_DISABLED */
+ # define count_leading_zeros(count, x) \
+   do {								       \
+     USItype __tmp;						       \

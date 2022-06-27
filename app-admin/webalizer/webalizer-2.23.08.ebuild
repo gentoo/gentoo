@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # uses webapp.eclass to create directories with right permissions
@@ -6,7 +6,7 @@
 
 EAPI="5"
 
-inherit versionator epatch webapp db-use
+inherit flag-o-matic versionator epatch webapp db-use
 
 WEBAPP_MANUAL_SLOT="yes"
 XTENDED_VER="RB30"
@@ -70,6 +70,9 @@ src_configure() {
 	else
 		local myconf="${myconf} --with-language=english"
 	fi
+
+	# bug #779016 and bug #737694
+	append-flags -fcommon
 
 	econf --enable-dns \
 		--with-db=$(db_includedir) \

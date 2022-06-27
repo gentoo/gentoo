@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit elisp-common autotools python-single-r1 toolchain-funcs xdg-utils
 
@@ -12,7 +12,7 @@ if [[ "${PV}" = "9999" ]]; then
 else
 	MAIN_VER=$(ver_cut 1-2)
 	SRC_URI="http://lilypond.org/download/sources/v${MAIN_VER}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~riscv ~x86"
 fi
 
 DESCRIPTION="GNU Music Typesetter"
@@ -59,9 +59,10 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.23.0-fix-font-size.patch
+	"${FILESDIR}"/${PN}-2.22.1-free_font.patch
 )
 
-DOCS=( DEDICATION HACKING README.md ROADMAP )
+DOCS=( DEDICATION README.md ROADMAP )
 
 src_prepare() {
 	default

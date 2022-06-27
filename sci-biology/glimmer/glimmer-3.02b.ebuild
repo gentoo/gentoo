@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -46,9 +46,9 @@ src_prepare() {
 src_compile() {
 	emake \
 		-C src \
-		CC=$(tc-getCC) \
-		CXX=$(tc-getCXX) \
-		AR=$(tc-getAR) \
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
+		AR="$(tc-getAR)" \
 		CXXFLAGS="${CXXFLAGS}" \
 		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}"

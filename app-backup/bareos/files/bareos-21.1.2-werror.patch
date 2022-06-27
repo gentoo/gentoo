@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/841734
+--- a/core/CMakeLists.txt
++++ b/core/CMakeLists.txt
+@@ -96,7 +96,7 @@ if(NOT ${CMAKE_SYSTEM_NAME} MATCHES "SunOS")
+     -Werror=format-security compiler_error_format_security
+   )
+   if(${compiler_error_format_security})
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=format-security")
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wformat-security")
+   endif()
+ endif()
+ 
+@@ -353,8 +353,8 @@ if(developer)
+   add_definitions("-DDEVELOPER=1")
+ endif()
+ 
+-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror -Wall")
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wall")
++set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+ 
+ include(BareosSetVariableDefaults)
+ option(ENABLE_BCONSOLE "Build bconsole binary" ON)

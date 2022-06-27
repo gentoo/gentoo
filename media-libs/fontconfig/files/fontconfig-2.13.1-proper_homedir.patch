@@ -7,8 +7,6 @@ Subject: [PATCH] Fix the issue that '~' wasn't extracted to the proper homedir
 this behavior was broken by d1f48f11. this change fixes it back to the correct behavior.
 
 https://gitlab.freedesktop.org/fontconfig/fontconfig/issues/110
-diff --git a/src/fccfg.c b/src/fccfg.c
-index d7c48e8..4a53581 100644
 --- a/src/fccfg.c
 +++ b/src/fccfg.c
 @@ -2207,17 +2207,19 @@ FcConfigFilename (const FcChar8 *url)
@@ -40,8 +38,6 @@ index d7c48e8..4a53581 100644
      return file;
  }
  
-diff --git a/test/Makefile.am b/test/Makefile.am
-index 79bcede..9f4d48a 100644
 --- a/test/Makefile.am
 +++ b/test/Makefile.am
 @@ -91,6 +91,22 @@ test_bz106632_CFLAGS =					\
@@ -67,9 +63,6 @@ index 79bcede..9f4d48a 100644
  EXTRA_DIST=run-test.sh run-test-conf.sh $(TESTDATA) out.expected-long-family-names out.expected-no-long-family-names
  
  CLEANFILES=out out1 out2 fonts.conf out.expected
-diff --git a/test/test-issue110.c b/test/test-issue110.c
-new file mode 100644
-index 0000000..28a3bd2
 --- /dev/null
 +++ b/test/test-issue110.c
 @@ -0,0 +1,245 @@
@@ -318,6 +311,3 @@ index 0000000..28a3bd2
 +    return retval;
 +}
 +
--- 
-2.18.0
-

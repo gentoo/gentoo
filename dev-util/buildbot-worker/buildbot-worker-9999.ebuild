@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
 inherit readme.gentoo-r1 git-r3 distutils-r1
@@ -20,14 +21,18 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-user/buildbot
+	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
 	>=dev-python/twisted-17.9.0[${PYTHON_USEDEP}]
 	dev-python/future[${PYTHON_USEDEP}]
 	!<dev-util/buildbot-1.0.0
 "
 BDEPEND="
+	>=dev-python/msgpack-0.6.0[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/parameterized[${PYTHON_USEDEP}]
+		dev-python/psutil[${PYTHON_USEDEP}]
 	)
 "
 

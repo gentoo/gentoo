@@ -78,6 +78,9 @@ dist-kernel_get_image_path() {
 			# substitutions in the code
 			echo ./vmlinux
 			;;
+		riscv)
+			echo arch/riscv/boot/Image.gz
+			;;
 		*)
 			die "${FUNCNAME}: unsupported ARCH=${ARCH}"
 			;;

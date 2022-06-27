@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
 	<longdescription>
 		eatmydata: library and utilities designed to disable fsync and friends.
 		Used as LD_PRELOAD hack to hijack fsync() and open(O_SYNC) calls.
 	</longdescription>
 	<upstream>
-		<remote-id type="launchpad">libeatmydata</remote-id>
+		<remote-id type="github">stewartsmith/libeatmydata</remote-id>
 	</upstream>
 </pkgmetadata>

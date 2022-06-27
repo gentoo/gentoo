@@ -11,7 +11,7 @@ SRC_URI="http://common-lisp.net/project/${PN}/archives/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PVR}"
-KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
@@ -21,6 +21,11 @@ DEPEND="!dev-lisp/cl-${PN}
 	test? ( virtual/commonlisp )"
 PDEPEND="virtual/commonlisp
 	~dev-lisp/uiop-${PV}"
+
+PATCHES=(
+	# bug 841335, drop on next version bump
+	"${FILESDIR}"/${PN}-3.3.5-test-utilities.patch
+)
 
 install_docs() {
 	(

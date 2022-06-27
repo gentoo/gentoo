@@ -23,6 +23,8 @@ The change drops `--fatal-warnings` option from gcc.spec entirely.
 
 Rejected upstream in https://github.com/rhboot/efivar/pull/164.
 
+[sam: add extra hunk to fix 38 build.]
+
 Reported-by: Émeric Maschino
 Bug: https://bugs.gentoo.org/749963
 Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
@@ -43,3 +45,16 @@ index ef28e2b..4deead5 100644
 -- 
 2.34.1
 
+diff --git a/src/include/defaults.mk b/src/include/defaults.mk
+index 9024a3a..f5515fa 100644
+--- a/src/include/defaults.mk
++++ b/src/include/defaults.mk
+@@ -58,7 +58,7 @@ override LDFLAGS = $(CFLAGS) -L. $(_LDFLAGS) $(_CCLDFLAGS) \
+ 		   -Wl,-z,now \
+ 		   -Wl,-z,muldefs \
+ 		   -Wl,-z,relro \
+-		   -Wl,--fatal-warnings \
++		   -Wl,--no-fatal-warnings \
+ 		   $(call family,LDFLAGS) $(call family,CCLDFLAGS) \
+ 		   $(call pkg-config-ccldflags)
+ override CCLDFLAGS = $(LDFLAGS)

@@ -18,27 +18,27 @@
 # Also, it supports for bundling patches to make the whole thing just a bit more
 # manageable.
 
-# @ECLASS-VARIABLE: MODS
+# @ECLASS_VARIABLE: MODS
 # @DESCRIPTION:
 # This variable contains the (upstream) module name for the SELinux module.
 # This name is only the module name, not the category!
 : ${MODS:="_illegal"}
 
-# @ECLASS-VARIABLE: BASEPOL
+# @ECLASS_VARIABLE: BASEPOL
 # @DESCRIPTION:
 # This variable contains the version string of the selinux-base-policy package
 # that this module build depends on. It is used to patch with the appropriate
 # patch bundle(s) that are part of selinux-base-policy.
 : ${BASEPOL:=${PVR}}
 
-# @ECLASS-VARIABLE: POLICY_PATCH
+# @ECLASS_VARIABLE: POLICY_PATCH
 # @DESCRIPTION:
 # This variable contains the additional patch(es) that need to be applied on top
 # of the patchset already contained within the BASEPOL variable. The variable
 # can be both a simple string (space-separated) or a bash array.
 : ${POLICY_PATCH:=""}
 
-# @ECLASS-VARIABLE: POLICY_FILES
+# @ECLASS_VARIABLE: POLICY_FILES
 # @DESCRIPTION:
 # When defined, this contains the files (located in the ebuilds' files/
 # directory) which should be copied as policy module files into the store.
@@ -47,7 +47,7 @@
 # (space-separated) or a bash array.
 : ${POLICY_FILES:=""}
 
-# @ECLASS-VARIABLE: POLICY_TYPES
+# @ECLASS_VARIABLE: POLICY_TYPES
 # @DESCRIPTION:
 # This variable informs the eclass for which SELinux policies the module should
 # be built. Currently, Gentoo supports targeted, strict, mcs and mls.
@@ -56,7 +56,7 @@
 # override it, but the user.
 : ${POLICY_TYPES:="targeted strict mcs mls"}
 
-# @ECLASS-VARIABLE: SELINUX_GIT_REPO
+# @ECLASS_VARIABLE: SELINUX_GIT_REPO
 # @DESCRIPTION:
 # When defined, this variable overrides the default repository URL as used by
 # this eclass. It allows end users to point to a different policy repository
@@ -65,7 +65,7 @@
 # The default value is Gentoo's hardened-refpolicy repository.
 : ${SELINUX_GIT_REPO:="https://anongit.gentoo.org/git/proj/hardened-refpolicy.git"};
 
-# @ECLASS-VARIABLE: SELINUX_GIT_BRANCH
+# @ECLASS_VARIABLE: SELINUX_GIT_BRANCH
 # @DESCRIPTION:
 # When defined, this variable sets the Git branch to use of the repository. This
 # allows for users and developers to use a different branch for the entire set of

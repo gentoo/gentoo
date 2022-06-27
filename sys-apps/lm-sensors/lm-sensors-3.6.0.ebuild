@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -22,7 +22,7 @@ LICENSE="GPL-2+ LGPL-2.1"
 # SUBSLOT based on SONAME of libsensors.so
 SLOT="0/5.0.0"
 
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 IUSE="contrib sensord static-libs"
 
 COMMON_DEPS="
@@ -44,7 +44,10 @@ WARNING_HWMON="${PN} requires CONFIG_HWMON to be enabled for use."
 WARNING_I2C_CHARDEV="sensors-detect requires CONFIG_I2C_CHARDEV to be enabled."
 WARNING_I2C="${PN} requires CONFIG_I2C to be enabled for most sensors."
 
-PATCHES=( "${FILESDIR}"/${PN}-3.5.0-sensors-detect-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.5.0-sensors-detect-gentoo.patch
+	"${FILESDIR}"/${PN}-3.6.0-no-which.patch
+)
 
 DOCS=( CHANGES CONTRIBUTORS INSTALL README )
 DOCS+=( doc/{donations,fancontrol.txt,fan-divisors,libsensors-API.txt,progs,temperature-sensors,vid} )

@@ -20,5 +20,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">power-ras/lsvpd</remote-id>
+		<changelog>https://github.com/power-ras/lsvpd/blob/master/ChangeLog</changelog>
 	</upstream>
 </pkgmetadata>

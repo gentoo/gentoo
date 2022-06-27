@@ -37,17 +37,17 @@ if [[ ! ${_PYTHON_UTILS_R1} ]]; then
 [[ ${EAPI} == [67] ]] && inherit eapi8-dosym
 inherit multiprocessing toolchain-funcs
 
-# @ECLASS-VARIABLE: _PYTHON_ALL_IMPLS
+# @ECLASS_VARIABLE: _PYTHON_ALL_IMPLS
 # @INTERNAL
 # @DESCRIPTION:
 # All supported Python implementations, most preferred last.
 _PYTHON_ALL_IMPLS=(
 	pypy3
-	python3_{8..10}
+	python3_{8..11}
 )
 readonly _PYTHON_ALL_IMPLS
 
-# @ECLASS-VARIABLE: _PYTHON_HISTORICAL_IMPLS
+# @ECLASS_VARIABLE: _PYTHON_HISTORICAL_IMPLS
 # @INTERNAL
 # @DESCRIPTION:
 # All historical Python implementations that are no longer supported.
@@ -59,7 +59,7 @@ _PYTHON_HISTORICAL_IMPLS=(
 )
 readonly _PYTHON_HISTORICAL_IMPLS
 
-# @ECLASS-VARIABLE: PYTHON_COMPAT_NO_STRICT
+# @ECLASS_VARIABLE: PYTHON_COMPAT_NO_STRICT
 # @INTERNAL
 # @DESCRIPTION:
 # Set to a non-empty value in order to make eclass tolerate (ignore)
@@ -83,7 +83,7 @@ _python_verify_patterns() {
 	local impl pattern
 	for pattern; do
 		case ${pattern} in
-			-[23]|3.[89]|3.10)
+			-[23]|3.[89]|3.1[01])
 				continue
 				;;
 		esac
@@ -132,7 +132,7 @@ _python_set_impls() {
 			# please keep them in sync with _PYTHON_ALL_IMPLS
 			# and _PYTHON_HISTORICAL_IMPLS
 			case ${i} in
-				pypy3|python2_7|python3_[89]|python3_10)
+				pypy3|python2_7|python3_[89]|python3_1[01])
 					;;
 				jython2_7|pypy|pypy1_[89]|pypy2_0|python2_[5-6]|python3_[1-7])
 					obsolete+=( "${i}" )
@@ -240,12 +240,12 @@ _python_impl_matches() {
 				fi
 				return 0
 				;;
-			3.8)
-				# the only unmasked pypy3 version is pypy3.8 atm
+			3.9)
+				# the only unmasked pypy3 version is pypy3.9 atm
 				[[ ${impl} == python${pattern/./_} || ${impl} == pypy3 ]] &&
 					return 0
 				;;
-			3.9|3.10)
+			3.8|3.1[01])
 				[[ ${impl} == python${pattern/./_} ]] && return 0
 				;;
 			*)
@@ -258,7 +258,7 @@ _python_impl_matches() {
 	return 1
 }
 
-# @ECLASS-VARIABLE: PYTHON
+# @ECLASS_VARIABLE: PYTHON
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The absolute path to the current Python interpreter.
@@ -277,7 +277,7 @@ _python_impl_matches() {
 # /usr/bin/python2.7
 # @CODE
 
-# @ECLASS-VARIABLE: EPYTHON
+# @ECLASS_VARIABLE: EPYTHON
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The executable name of the current Python interpreter.
@@ -461,6 +461,8 @@ _python_export() {
 						PYTHON_PKG_DEP=">=dev-lang/python-3.9.9-r1:3.9";;
 					python3.10)
 						PYTHON_PKG_DEP=">=dev-lang/python-3.10.0_p1-r1:3.10";;
+					python3.11)
+						PYTHON_PKG_DEP=">=dev-lang/python-3.11.0_beta1-r1:3.11";;
 					python*)
 						PYTHON_PKG_DEP="dev-lang/python:${impl#python}";;
 					pypy)
@@ -631,9 +633,7 @@ python_optimize() {
 		debug-print "${FUNCNAME}: using sys.path: ${*/%/;}"
 	fi
 
-	local jobs=$(makeopts_jobs "${MAKEOPTS}" INF)
-	[[ ${jobs} == INF ]] && jobs=$(get_nproc)
-
+	local jobs=$(makeopts_jobs)
 	local d
 	for d; do
 		# make sure to get a nice path without //
@@ -696,6 +696,9 @@ python_scriptinto() {
 python_doexe() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EBUILD_PHASE} != install ]] &&
+		die "${FUNCNAME} can only be used in src_install"
+
 	local f
 	for f; do
 		python_newexe "${f}" "${f##*/}"
@@ -714,6 +717,8 @@ python_doexe() {
 python_newexe() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EBUILD_PHASE} != install ]] &&
+		die "${FUNCNAME} can only be used in src_install"
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
 	[[ ${#} -eq 2 ]] || die "Usage: ${FUNCNAME} <path> <new-name>"
 
@@ -762,6 +767,9 @@ python_newexe() {
 python_doscript() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EBUILD_PHASE} != install ]] &&
+		die "${FUNCNAME} can only be used in src_install"
+
 	local _PYTHON_REWRITE_SHEBANG=1
 	python_doexe "${@}"
 }
@@ -786,6 +794,9 @@ python_doscript() {
 python_newscript() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EBUILD_PHASE} != install ]] &&
+		die "${FUNCNAME} can only be used in src_install"
+
 	local _PYTHON_REWRITE_SHEBANG=1
 	python_newexe "${@}"
 }
@@ -805,10 +816,10 @@ python_newscript() {
 # site-packages directory.
 #
 # In the relative case, the exact path is determined directly
-# by each python_doscript/python_newscript function. Therefore,
-# python_moduleinto can be safely called before establishing the Python
-# interpreter and/or a single call can be used to set the path correctly
-# for multiple implementations, as can be seen in the following example.
+# by each python_domodule invocation. Therefore, python_moduleinto
+# can be safely called before establishing the Python interpreter and/or
+# a single call can be used to set the path correctly for multiple
+# implementations, as can be seen in the following example.
 #
 # Example:
 # @CODE
@@ -832,6 +843,10 @@ python_moduleinto() {
 # and packages (directories). All listed files will be installed
 # for all enabled implementations, and compiled afterwards.
 #
+# The files are installed into ${D} when run in src_install() phase.
+# Otherwise, they are installed into ${BUILD_DIR}/install location
+# that is suitable for picking up by distutils-r1 in PEP517 mode.
+#
 # Example:
 # @CODE
 # src_install() {
@@ -854,13 +869,24 @@ python_domodule() {
 		d=${sitedir#${EPREFIX}}/${_PYTHON_MODULEROOT//.//}
 	fi
 
-	(
-		insopts -m 0644
-		insinto "${d}"
-		doins -r "${@}" || return ${?}
-	)
-
-	python_optimize "${ED%/}/${d}"
+	if [[ ${EBUILD_PHASE} == install ]]; then
+		(
+			insopts -m 0644
+			insinto "${d}"
+			doins -r "${@}" || return ${?}
+		)
+		python_optimize "${ED%/}/${d}"
+	elif [[ -n ${BUILD_DIR} ]]; then
+		local dest=${BUILD_DIR}/install${EPREFIX}/${d}
+		mkdir -p "${dest}" || die
+		cp -pR "${@}" "${dest}/" || die
+		(
+			cd "${dest}" &&
+			chmod -R a+rX "${@##*/}"
+		) || die
+	else
+		die "${FUNCNAME} can only be used in src_install or with BUILD_DIR set"
+	fi
 }
 
 # @FUNCTION: python_doheader
@@ -879,6 +905,8 @@ python_domodule() {
 python_doheader() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EBUILD_PHASE} != install ]] &&
+		die "${FUNCNAME} can only be used in src_install"
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
 
 	local includedir=$(python_get_includedir)
@@ -1001,25 +1029,30 @@ _python_wrapper_setup() {
 # @FUNCTION: python_fix_shebang
 # @USAGE: [-f|--force] [-q|--quiet] <path>...
 # @DESCRIPTION:
-# Replace the shebang in Python scripts with the current Python
-# implementation (EPYTHON). If a directory is passed, works recursively
-# on all Python scripts.
+# Replace the shebang in Python scripts with the full path
+# to the current Python implementation (PYTHON, including EPREFIX).
+# If a directory is passed, works recursively on all Python scripts
+# found inside the directory tree.
 #
-# Only files having a 'python*' shebang will be modified. Files with
-# other shebang will either be skipped when working recursively
-# on a directory or treated as error when specified explicitly.
+# Only files having a Python shebang (a path to any known Python
+# interpreter, optionally preceded by env(1) invocation) will
+# be processed.  Files with any other shebang will either be skipped
+# silently when a directory was passed, or an error will be reported
+# for any files without Python shebangs specified explicitly.
 #
-# Shebangs matching explicitly current Python version will be left
-# unmodified. Shebangs requesting another Python version will be treated
-# as fatal error, unless --force is given.
+# Shebangs that are compatible with the current Python version will be
+# mangled unconditionally.  Incompatible shebangs will cause a fatal
+# error, unless --force is specified.
 #
-# --force causes the function to replace even shebangs that require
-# incompatible Python version. --quiet causes the function not to list
-# modified files verbosely.
+# --force causes the function to replace shebangs with incompatible
+# Python version (but not non-Python shebangs).  --quiet causes
+# the function not to list modified files verbosely.
 python_fix_shebang() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	[[ ${EPYTHON} ]] || die "${FUNCNAME}: EPYTHON unset (pkg_setup not called?)"
+	local PYTHON
+	_python_export "${EPYTHON}" PYTHON
 
 	local force quiet
 	while [[ ${@} ]]; do
@@ -1035,13 +1068,13 @@ python_fix_shebang() {
 
 	local path f
 	for path; do
-		local any_correct any_fixed is_recursive
+		local any_fixed is_recursive
 
 		[[ -d ${path} ]] && is_recursive=1
 
 		while IFS= read -r -d '' f; do
 			local shebang i
-			local error= from=
+			local error= match=
 
 			# note: we can't ||die here since read will fail if file
 			# has no newline characters
@@ -1050,64 +1083,36 @@ python_fix_shebang() {
 			# First, check if it's shebang at all...
 			if [[ ${shebang} == '#!'* ]]; then
 				local split_shebang=()
-				read -r -a split_shebang <<<${shebang} || die
+				read -r -a split_shebang <<<${shebang#"#!"} || die
 
-				# Match left-to-right in a loop, to avoid matching random
-				# repetitions like 'python2.7 python2'.
-				for i in "${split_shebang[@]}"; do
-					case "${i}" in
-						*"${EPYTHON}")
-							debug-print "${FUNCNAME}: in file ${f#${D%/}}"
-							debug-print "${FUNCNAME}: shebang matches EPYTHON: ${shebang}"
+				local in_path=${split_shebang[0]}
+				local from='^#! *[^ ]*'
+				# if the first component is env(1), skip it
+				if [[ ${in_path} == */env ]]; then
+					in_path=${split_shebang[1]}
+					from+=' *[^ ]*'
+				fi
 
-							# Nothing to do, move along.
-							any_correct=1
-							from=${EPYTHON}
-							break
-							;;
-						*python|*python[23])
-							debug-print "${FUNCNAME}: in file ${f#${D%/}}"
-							debug-print "${FUNCNAME}: rewriting shebang: ${shebang}"
-
-							if [[ ${i} == *python2 ]]; then
-								from=python2
-								if [[ ! ${force} ]]; then
-									error=1
-								fi
-							elif [[ ${i} == *python3 ]]; then
-								from=python3
-							else
-								from=python
-							fi
-							break
-							;;
-						*python[23].[0-9]|*python3.[1-9][0-9]|*pypy|*pypy3|*jython[23].[0-9])
-							# Explicit mismatch.
-							if [[ ! ${force} ]]; then
-								error=1
-							else
-								case "${i}" in
-									*python[23].[0-9])
-										from="python[23].[0-9]";;
-									*python3.[1-9][0-9])
-										from="python3.[1-9][0-9]";;
-									*pypy)
-										from="pypy";;
-									*pypy3)
-										from="pypy3";;
-									*jython[23].[0-9])
-										from="jython[23].[0-9]";;
-									*)
-										die "${FUNCNAME}: internal error in 2nd pattern match";;
-								esac
-							fi
-							break
-							;;
-					esac
-				done
+				case ${in_path##*/} in
+					"${EPYTHON}")
+						match=1
+						;;
+					python|python[23])
+						match=1
+						[[ ${in_path##*/} == python2 ]] && error=1
+						;;
+					python[23].[0-9]|python3.[1-9][0-9]|pypy|pypy3|jython[23].[0-9])
+						# Explicit mismatch.
+						match=1
+						error=1
+						;;
+				esac
 			fi
 
-			if [[ ! ${error} && ! ${from} ]]; then
+			# disregard mismatches in force mode
+			[[ ${force} ]] && error=
+
+			if [[ ! ${match} ]]; then
 				# Non-Python shebang. Allowed in recursive mode,
 				# disallowed when specifying file explicitly.
 				[[ ${is_recursive} ]] && continue
@@ -1119,13 +1124,9 @@ python_fix_shebang() {
 			fi
 
 			if [[ ! ${error} ]]; then
-				# We either want to match ${from} followed by space
-				# or at end-of-string.
-				if [[ ${shebang} == *${from}" "* ]]; then
-					sed -i -e "1s:${from} :${EPYTHON} :" "${f}" || die
-				else
-					sed -i -e "1s:${from}$:${EPYTHON}:" "${f}" || die
-				fi
+				debug-print "${FUNCNAME}: in file ${f#${D%/}}"
+				debug-print "${FUNCNAME}: rewriting shebang: ${shebang}"
+				sed -i -e "1s@${from}@#!${PYTHON}@" "${f}" || die
 				any_fixed=1
 			else
 				eerror "The file has incompatible shebang:"
@@ -1138,12 +1139,7 @@ python_fix_shebang() {
 
 		if [[ ! ${any_fixed} ]]; then
 			eerror "QA error: ${FUNCNAME}, ${path#${D%/}} did not match any fixable files."
-			if [[ ${any_correct} ]]; then
-				eerror "All files have ${EPYTHON} shebang already."
-			else
-				eerror "There are no Python files in specified directory."
-			fi
-
+			eerror "There are no Python files in specified directory."
 			die "${FUNCNAME} did not match any fixable files"
 		fi
 	done
@@ -1320,6 +1316,9 @@ epytest() {
 		-Wdefault
 		# override color output
 		"--color=${color}"
+		# count is more precise when we're dealing with a large number
+		# of tests
+		-o console_output_style=count
 		# disable the undesirable-dependency plugins by default to
 		# trigger missing argument strips.  strip options that require
 		# them from config files.  enable them explicitly via "-p ..."
@@ -1328,6 +1327,9 @@ epytest() {
 		-p no:flake8
 		-p no:flakes
 		-p no:pylint
+		# sterilize pytest-markdown as it runs code snippets from all
+		# *.md files found without any warning
+		-p no:markdown
 	)
 	local x
 	for x in "${EPYTEST_DESELECT[@]}"; do
@@ -1344,6 +1346,11 @@ epytest() {
 
 	# remove common temporary directories left over by pytest plugins
 	rm -rf .hypothesis .pytest_cache || die
+	# pytest plugins create additional .pyc files while testing
+	# see e.g. https://bugs.gentoo.org/847235
+	if [[ -n ${BUILD_DIR} && -d ${BUILD_DIR} ]]; then
+		find "${BUILD_DIR}" -name '*-pytest-*.pyc' -delete || die
+	fi
 
 	return ${ret}
 }

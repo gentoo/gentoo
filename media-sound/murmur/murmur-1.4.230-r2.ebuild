@@ -27,6 +27,8 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
+SRC_URI+=" https://dev.gentoo.org/~polynomial-c/mumble-1.4-openssl3.patch.xz"
+
 LICENSE="BSD"
 SLOT="0"
 IUSE="+dbus grpc +ice test zeroconf"
@@ -79,9 +81,11 @@ DOC_CONTENTS="
 	registration will fail.
 "
 
-src_prepare() {
-	default
+PATCHES=(
+	"${WORKDIR}/mumble-1.4-openssl3.patch"
+)
 
+src_prepare() {
 	if [[ "${PV}" == *9999 ]] ; then
 		pushd scripts &>/dev/null || die
 		./mkini.sh || die

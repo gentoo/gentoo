@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.19-testsuite-missing-dir.patch
 	"${FILESDIR}"/${P}-locale-regex.patch
 	"${FILESDIR}"/${P}-exfat-support.patch
-
+	"${FILESDIR}"/${P}-limits-musl.patch
 )
 
 src_prepare() {

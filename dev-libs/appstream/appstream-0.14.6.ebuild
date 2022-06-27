@@ -11,7 +11,7 @@ if [[ ${PV} = *9999* ]]; then
 else
 	SRC_URI="https://www.freedesktop.org/software/appstream/releases/AppStream-${PV}.tar.xz"
 	S="${WORKDIR}/AppStream-${PV}"
-	KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Cross-distro effort for providing metadata for software in the Linux ecosystem"

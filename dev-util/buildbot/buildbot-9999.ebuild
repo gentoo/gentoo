@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_REQ_USE="sqlite"
 PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://github.com/buildbot/${PN}.git"
@@ -24,7 +25,7 @@ RDEPEND="
 	>=dev-python/twisted-17.9.0[${PYTHON_USEDEP},crypt?]
 	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]
 	>=dev-python/zope-interface-4.1.1[${PYTHON_USEDEP}]
-	>=dev-python/sqlalchemy-1.2.0[${PYTHON_USEDEP}]
+	>=dev-python/sqlalchemy-1.3.0[${PYTHON_USEDEP}]
 	<dev-python/sqlalchemy-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/alembic-1.6.0[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
@@ -55,12 +56,12 @@ BDEPEND="
 		>=dev-python/boto3-1.12.48[${PYTHON_USEDEP}]
 		dev-python/moto[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
-		dev-python/parameterized[${PYTHON_USEDEP}]
+		>=dev-python/msgpack-0.6.0[${PYTHON_USEDEP}]
 		dev-python/lz4[${PYTHON_USEDEP}]
 		dev-python/ldap3[${PYTHON_USEDEP}]
-		~dev-util/buildbot-pkg-${PV}[${PYTHON_USEDEP}]
-		~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
-		~dev-util/buildbot-www-${PV}[${PYTHON_USEDEP}]
+		dev-util/buildbot-pkg[${PYTHON_USEDEP}]
+		dev-util/buildbot-worker[${PYTHON_USEDEP}]
+		dev-util/buildbot-www[${PYTHON_USEDEP}]
 	)"
 
 DOC_CONTENTS="The \"buildbot\" user and the \"buildmaster\" init script has been added

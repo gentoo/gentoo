@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://gmic.eu/files/source/${PN}_${PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="GREYC's Magic Image Converter"
@@ -68,11 +68,11 @@ PATCHES=(
 )
 
 pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if use openmp; then
-			tc-has-openmp || die "Please switch to an openmp compatible compiler"
-		fi
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_prepare() {
@@ -168,7 +168,7 @@ pkg_postinst() {
 		for v in ${REPLACING_VERSIONS}; do
 			if ver_test "${v}" -le "3.0.0"; then
 				einfo "Note that starting with version 3.0.1 ${CATEGORY}/${PN} no longer provides a Krita interface."
-				einfo "Please use the built-in G'MIC plugin provided with Krita 5, or use an older version."
+				einfo "Please use the built-in G'MIC plugin provided with Krita 5 instead."
 				break
 			fi
 		done

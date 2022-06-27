@@ -9,6 +9,10 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
 	<use>
 		<flag name="tools">
 			Install the command-line translator llvm-spirv

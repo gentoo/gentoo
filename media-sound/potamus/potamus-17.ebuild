@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit xdg
 
-DESCRIPTION="A lightweight audio player with a simple interface and an emphasis on high audio quality"
+DESCRIPTION="A lightweight audio player with an emphasis on high audio quality"
 HOMEPAGE="http://offog.org/code/potamus/"
 SRC_URI="http://offog.org/files/${P}.tar.gz"
 

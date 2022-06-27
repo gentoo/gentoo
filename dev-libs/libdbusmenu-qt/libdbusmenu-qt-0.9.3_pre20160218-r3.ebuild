@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://launchpad.net/ubuntu/+archive/primary/+files/${PN}_${MY_PV}.ori
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 DEPEND="

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -15,40 +15,35 @@ HOMEPAGE="http://www.haproxy.org"
 if [[ ${PV} != *9999 ]]; then
 	SRC_URI="http://haproxy.1wt.eu/download/$(ver_cut 1-2)/src/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+elif [[ ${PV} == 9999 ]]; then
+	EGIT_REPO_URI="https://git.haproxy.org/git/haproxy.git/"
+	EGIT_BRANCH=master
 else
-	EGIT_REPO_URI="http://git.haproxy.org/git/haproxy-$(ver_cut 1-2).git/"
+	EGIT_REPO_URI="https://git.haproxy.org/git/haproxy-$(ver_cut 1-2).git/"
 	EGIT_BRANCH=master
 fi
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="+crypt doc examples +slz +net_ns +pcre pcre-jit pcre2 pcre2-jit prometheus-exporter
-ssl systemd +threads tools vim-syntax zlib lua device-atlas 51degrees wurfl"
+IUSE="+crypt doc examples +slz +net_ns +pcre pcre-jit prometheus-exporter
+ssl systemd +threads tools vim-syntax zlib lua 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
-	pcre2-jit? ( pcre2 )
-	pcre? ( !pcre2 )
 	lua? ( ${LUA_REQUIRED_USE} )
-	device-atlas? ( pcre )
 	?? ( slz zlib )"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="
 	crypt? ( virtual/libcrypt:= )
 	pcre? (
-		dev-libs/libpcre
-		pcre-jit? ( dev-libs/libpcre[jit] )
-	)
-	pcre2? (
 		dev-libs/libpcre2:=
-		pcre2-jit? ( dev-libs/libpcre2:=[jit] )
+		pcre-jit? ( dev-libs/libpcre2:=[jit] )
 	)
 	ssl? (
 		dev-libs/openssl:0=
 	)
 	systemd? ( sys-apps/systemd )
 	zlib? ( sys-libs/zlib )
-	lua? ( ${LUA_DEPS} )
-	device-atlas? ( dev-libs/device-atlas-api-c )"
+	lua? ( ${LUA_DEPS} )"
 RDEPEND="${DEPEND}
 	acct-group/haproxy
 	acct-user/haproxy"
@@ -76,22 +71,22 @@ src_compile() {
 	local -a args=(
 		V=1
 		TARGET=linux-glibc
+		# Switching to PCRE2 by default, bug 838013
+		PCRE=
+		PCRE_JIT=
 	)
 
 	# TODO: PCRE2_WIDTH?
 	args+=( $(haproxy_use threads THREAD) )
 	args+=( $(haproxy_use crypt LIBCRYPT) )
 	args+=( $(haproxy_use net_ns NS) )
-	args+=( $(haproxy_use pcre PCRE) )
-	args+=( $(haproxy_use pcre-jit PCRE_JIT) )
-	args+=( $(haproxy_use pcre2 PCRE2) )
-	args+=( $(haproxy_use pcre2-jit PCRE2_JIT) )
+	args+=( $(haproxy_use pcre PCRE2) )
+	args+=( $(haproxy_use pcre-jit PCRE2_JIT) )
 	args+=( $(haproxy_use ssl OPENSSL) )
 	args+=( $(haproxy_use slz SLZ) )
 	args+=( $(haproxy_use zlib ZLIB) )
 	args+=( $(haproxy_use lua LUA) )
 	args+=( $(haproxy_use 51degrees 51DEGREES) )
-	args+=( $(haproxy_use device-atlas DEVICEATLAS) )
 	args+=( $(haproxy_use wurfl WURFL) )
 	args+=( $(haproxy_use systemd SYSTEMD) )
 	args+=( $(haproxy_use prometheus-exporter PROMEX) )
@@ -102,19 +97,19 @@ src_compile() {
 	fi
 
 	# HAProxy really needs some of those "SPEC_CFLAGS", like -fno-strict-aliasing
-	emake CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) EXTRA_OBJS="${EXTRA_OBJS}"	TARGET_LDFLAGS="${TARGET_LDFLAGS}" PCRE_LIB=${ERROT}/usr/$(get_libdir) ${args[@]}
-	emake -C admin/systemd CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) EXTRA_OBJS="${EXTRA_OBJS}" TARGET_LDFLAGS="${TARGET_LDFLAGS}" PCRE_LIB=${ERROT}/usr/$(get_libdir) SBINDIR=/usr/sbin
+	emake CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" EXTRA_OBJS="${EXTRA_OBJS}" TARGET_LDFLAGS="${TARGET_LDFLAGS}" PCRE_LIB="${ESYSROOT}"/usr/$(get_libdir) ${args[@]}
+	emake -C admin/systemd CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" EXTRA_OBJS="${EXTRA_OBJS}" TARGET_LDFLAGS="${TARGET_LDFLAGS}" PCRE_LIB="${ESYSROOT}"/usr/$(get_libdir) SBINDIR=/usr/sbin
 
 	if use tools ; then
 		for extra in ${EXTRAS[@]} ; do
 			if [ "${extra}" = "admin/halog" ]; then
-				emake CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) EXTRA_OBJS="${EXTRA_OBJS}" TARGET_LDFLAGS="${TARGET_LDFLAGS}" PCRE_LIB=${ERROT}/usr/$(get_libdir) ${args[@]} admin/halog/halog
+				emake CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" EXTRA_OBJS="${EXTRA_OBJS}" TARGET_LDFLAGS="${TARGET_LDFLAGS}" PCRE_LIB="${ESYSROOT}"/usr/$(get_libdir) ${args[@]} admin/halog/halog
 			elif [ "${extra}" = "dev/hpack" ]; then
-				emake CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) EXTRA_OBJS="${EXTRA_OBJS}" TARGET_LDFLAGS="${TARGET_LDFLAGS}" PCRE_LIB=${ERROT}/usr/$(get_libdir) ${args[@]} dev/hpack/{decode,gen-enc,gen-rht}
+				emake CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" EXTRA_OBJS="${EXTRA_OBJS}" TARGET_LDFLAGS="${TARGET_LDFLAGS}" PCRE_LIB="${ESYSROOT}"/usr/$(get_libdir) ${args[@]} dev/hpack/{decode,gen-enc,gen-rht}
 			else
 				# Those two includes are a workaround for hpack Makefile missing those
 				emake -C ${extra} \
-					CFLAGS="${CFLAGS} -I../../include/ -I../../ebtree/" OPTIMIZE="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args[@]}
+					CFLAGS="${CFLAGS} -I../../include/ -I../../ebtree/" OPTIMIZE="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" ${args[@]}
 			fi
 		done
 	fi
@@ -125,7 +120,7 @@ src_install() {
 	dosym ../sbin/haproxy /usr/bin/haproxy
 
 	newconfd "${FILESDIR}/${PN}.confd" ${PN}
-	newinitd "${FILESDIR}/${PN}.initd-r6" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd-r7" ${PN}
 
 	doman doc/haproxy.1
 

@@ -1,5 +1,21 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org>
+# Only python 3.9 supported, bug #835921
+dev-util/kdevelop-python:5 python_single_target_python3_9
+
+# Patrick McLean <chutzpah@gentoo.org) (2022-05-04)
+# Default to lua 5.4 (upstream requires 5.3 or higher)
+>=sys-cluster/ceph-17.2.0 lua_single_target_lua5-4
+
+# Matt Turner <mattst88@gentoo.org> (2022-03-31)
+# Default to luajit, since that is what upstream recommends. Bug #795768.
+# See https://github.com/neovim/neovim/wiki/Building-Neovim#third-party-dependencies
+app-editors/neovim lua_single_target_luajit -lua_single_target_lua5-1
+dev-lua/luv        lua_single_target_luajit -lua_single_target_lua5-1
+dev-lua/lpeg       lua_targets_luajit
+dev-lua/mpack      lua_targets_luajit
 
 # Sam James <sam@gentoo.org> (2021-10-14)
 # Unconditional dependency on >= Lua 5.3, so let's just pick 5.4

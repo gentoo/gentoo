@@ -16,7 +16,7 @@ LICENSE="BSD"
 # TODO: drop .1 on next SONAME bump (2.1 -> 2.2?) as we needed to nudge it
 # to force rebuild of consumers due to changing to openexr 3 changing API.
 SLOT="0/$(ver_cut 1-2).1"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
 IUSE="cpu_flags_x86_sse2 doc opengl python static-libs test"
 REQUIRED_USE="
 	doc? ( python )
@@ -55,6 +55,10 @@ RESTRICT="test"
 
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc12.patch
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
@@ -64,6 +68,10 @@ src_prepare() {
 
 	sed -i -e "s|LIBRARY DESTINATION lib|LIBRARY DESTINATION $(get_libdir)|g" {,src/bindings/python/,src/OpenColorIO/,src/libutils/oiiohelpers/,src/libutils/oglapphelpers/}CMakeLists.txt || die
 	sed -i -e "s|ARCHIVE DESTINATION lib|ARCHIVE DESTINATION $(get_libdir)|g" {,src/bindings/python/,src/OpenColorIO/,src/libutils/oiiohelpers/,src/libutils/oglapphelpers/}CMakeLists.txt || die
+
+	# Avoid automagic test dependency on OSL, bug #833933
+	# Can cause problems during e.g. OpenEXR unsplitting migration
+	cmake_run_in tests cmake_comment_add_subdirectory osl
 }
 
 src_configure() {

@@ -9,7 +9,6 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 	<use>
-		<flag name="chm">Enable support for Microsoft Compiled HTML Help files</flag>
 		<flag name="crypt">Enable support for password-encrypted documents via <pkg>kde-frameworks/kwallet</pkg></flag>
 		<flag name="epub">Enable E-Book support via <pkg>app-text/ebook-tools</pkg></flag>
 		<flag name="image-backend">Enable image viewing support</flag>

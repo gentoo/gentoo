@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit flag-o-matic
 
 DESCRIPTION="Network access framework for IPv4/IPv6 written in C++"
-HOMEPAGE="http://gobby.0x539.de/"
-SRC_URI="http://releases.0x539.de/${PN}/${P}.tar.gz"
+HOMEPAGE="https://gobby.github.io/"
+SRC_URI="https://github.com/gobby/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

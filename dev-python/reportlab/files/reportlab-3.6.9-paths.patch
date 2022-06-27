@@ -1,0 +1,21 @@
+Disable broken logic for finding freetype2 that hits symlink loops.
+
+diff -dupr reportlab-3.6.9.orig/setup.py reportlab-3.6.9/setup.py
+--- reportlab-3.6.9.orig/setup.py	2022-03-28 10:13:33.892516135 +0200
++++ reportlab-3.6.9/setup.py	2022-03-28 10:49:11.048573739 +0200
+@@ -737,13 +737,10 @@ def main():
+             else:
+                 FT_LIB=FT_LIB_DIR=FT_INC_DIR=FT_MACROS=[]
+         else:
+-            ftv, I, L = inc_lib_dirs('freetype')
+             FT_LIB=['freetype']
+-            FT_LIB_DIR=L
+-            FT_INC_DIR=I
++            FT_LIB_DIR=[]
++            FT_INC_DIR=['/usr/include/freetype2']
+             FT_MACROS = [('RENDERPM_FT',None)]
+-            infoline('installing with freetype version %s' % ftv)
+-            infoline('FT_LIB_DIR=%r FT_INC_DIR=%r' % (FT_LIB_DIR,FT_INC_DIR))
+         if not FT_LIB:
+             infoline('# installing without freetype no ttf, sorry!')
+             infoline('# You need to install a static library version of the freetype2 software')

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,8 +40,8 @@ src_prepare() {
 src_compile() {
 	# parallel make (bug #297331)
 	emake -C src -j1 \
-		CC=$(tc-getCC) \
-		CXX=$(tc-getCXX) \
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
 		CFLAGS="${CFLAGS}" \
 		CXXFLAGS="${CXXFLAGS}" \
 		LDFLAGS="${LDFLAGS}"

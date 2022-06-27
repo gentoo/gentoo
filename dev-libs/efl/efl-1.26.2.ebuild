@@ -10,7 +10,7 @@ DOCS_DIR="${S}/doc"
 LUA_REQ_USE="deprecated(+)"
 LUA_COMPAT=( lua5-{1,2} luajit )
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit docs lua-single meson python-any-r1 xdg
 
@@ -20,7 +20,7 @@ SRC_URI="https://download.enlightenment.org/rel/libs/${PN}/${P}.tar.xz"
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv x86"
 IUSE="+X avif bmp connman cpu_flags_arm_neon dds debug drm +eet efl-one elogind examples fbcon
 	+fontconfig fribidi gif gnutls glib +gstreamer harfbuzz heif hyphen ibus ico
 	jpeg2k json nls mono opengl +pdf physics pmaps postscript psd pulseaudio raw scim
@@ -123,7 +123,8 @@ RDEPEND="${LUA_DEPS}
 	xpm? ( x11-libs/libXpm )
 	xpresent? ( x11-libs/libXpresent )
 	zeroconf? ( net-dns/avahi )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	wayland? ( dev-libs/wayland-protocols )"
 BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )

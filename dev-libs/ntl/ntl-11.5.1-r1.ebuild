@@ -11,7 +11,7 @@ SRC_URI="https://www.shoup.net/ntl/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/44"
-KEYWORDS="~amd64 ~arm64 ~ppc ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm64 ppc ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="bindist doc static-libs threads cpu_flags_x86_avx2"
 
 BDEPEND="dev-lang/perl"
@@ -34,8 +34,8 @@ src_unpack() {
 src_configure() {
 	# The DoConfig script builds its own libtool, but doesn't
 	# really try to set up the build environment (bug 718892).
-	export CC=$(tc-getCC)
-	export CXX=$(tc-getCXX)
+	export CC="$(tc-getCC)"
+	export CXX="$(tc-getCXX)"
 
 	# Currently the build system can build a static library or both
 	# static and shared libraries, but not only shared libraries. The

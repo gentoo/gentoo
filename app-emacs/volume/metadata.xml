@@ -7,6 +7,6 @@
 </maintainer>
 <stabilize-allarches/>
 <upstream>
-  <remote-id type="github">dbrock/volume-el</remote-id>
+  <remote-id type="github">dbrock/volume.el</remote-id>
 </upstream>
 </pkgmetadata>

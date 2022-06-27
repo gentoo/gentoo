@@ -1,14 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7..11} )
 PYTHON_REQ_USE='threads(+)'
 inherit python-any-r1 qmake-utils waf-utils
 
 DESCRIPTION="Simple but fully featured LV2 host for Jack"
-HOMEPAGE="http://drobilla.net/software/jalv/"
+HOMEPAGE="https://drobilla.net/software/jalv.html"
 SRC_URI="http://download.drobilla.net/${P}.tar.bz2"
 
 LICENSE="ISC"

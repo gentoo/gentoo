@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <upstream>
+    <bugs-to>https://github.com/rolandwalker/anaphora/issues/</bugs-to>
+    <remote-id type="github">rolandwalker/anaphora</remote-id>
+  </upstream>
+  <longdescription>
+    Anaphoric expressions implicitly create one or more temporary variables
+    which can be referred to during the expression. This technique can improve
+    clarity in certain cases. It also enables recursion for anonymous
+    functions.
+  </longdescription>
+</pkgmetadata>

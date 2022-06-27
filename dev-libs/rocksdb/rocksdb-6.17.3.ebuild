@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/facebook/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 -riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_sse4_2 jemalloc static-libs"
 
 DEPEND="
@@ -26,7 +26,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-6.14.6-libatomic.patch
+	"${FILESDIR}"/${PN}-6.17.3-add_timer_for_riscv.patch
+	"${FILESDIR}"/${PN}-6.17.3-libatomic.patch
 )
 
 src_configure() {

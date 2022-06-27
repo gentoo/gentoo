@@ -1,0 +1,29 @@
+--- a/prosody.cfg.lua.dist
++++ b/prosody.cfg.lua.dist
+@@ -17,6 +17,15 @@
+ -- Settings in this section apply to the whole server and are the default settings
+ -- for any virtual hosts
+ 
++-- Prosody will use this user and group for launching the service.
++-- Gentoo uses by default prosody:prosody (uid:gid) for all Jabber related services.
++prosody_user = "prosody"
++prosody_group = "prosody"
++
++-- Prosody will create this pid file after it has been successfully started.
++-- Please don't change that path, as it's being used by the Gentoo init scripts.
++pidfile = "/run/prosody/prosody.pid"
++
+ -- This is a (by default, empty) list of accounts that are admins
+ -- for the server. Note that you must create the accounts separately
+ -- (see https://prosody.im/doc/creating_accounts for info)
+@@ -26,7 +35,9 @@
+ -- This option allows you to specify additional locations where Prosody
+ -- will search first for modules. For additional modules you can install, see
+ -- the community module repository at https://modules.prosody.im/
+---plugin_paths = {}
++-- The default included path is for the optional net-im/prosody-modules package,
++-- which provides additional community maintained modules.
++plugin_paths = { "/usr/GENTOO_LIBDIR/prosody/modules", "/usr/GENTOO_LIBDIR/prosody/community-modules" };
+ 
+ -- This is the list of modules Prosody will load on startup.
+ -- Documentation for bundled modules can be found at: https://prosody.im/doc/modules

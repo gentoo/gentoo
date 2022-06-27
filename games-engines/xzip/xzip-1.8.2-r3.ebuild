@@ -1,16 +1,17 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
+inherit toolchain-funcs
 
 DESCRIPTION="X interface to Z-code based text games"
-HOMEPAGE="http://www.eblong.com/zarf/xzip.html"
-SRC_URI="http://www.eblong.com/zarf/ftp/xzip182.tar.Z"
+HOMEPAGE="https://www.eblong.com/zarf/xzip.html"
+SRC_URI="https://www.eblong.com/zarf/ftp/xzip182.tar.Z"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 RESTRICT="test"
 
 DEPEND="x11-libs/libX11"
@@ -19,6 +20,7 @@ RDEPEND=${DEPEND}
 S="${WORKDIR}/xzip"
 
 src_compile() {
+	tc-export CC
 	emake \
 		CFLAGS="${CFLAGS} -DAUTO_END_MODE" \
 		LDFLAGS="${LDFLAGS}"

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <upstream>
+    <bugs-to>https://github.com/polymode/polymode/issues/</bugs-to>
+    <remote-id type="github">polymode/polymode</remote-id>
+  </upstream>
+  <longdescription>
+    Polymode is a framework for multiple major modes (MMM) inside a single
+    Emacs buffer. It is fast and has a simple but flexible object oriented
+    design. Creating new polymodes normally takes a few lines of code.
+  </longdescription>
+</pkgmetadata>

@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+X bidi brltty cairo debug fbcon fcitx freewnn gtk harfbuzz ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter wayland xft"
 REQUIRED_USE="|| ( X fbcon wayland )"
 

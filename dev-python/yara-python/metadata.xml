@@ -16,5 +16,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">VirusTotal/yara-python</remote-id>
+		<remote-id type="pypi">yara-python</remote-id>
 	</upstream>
 </pkgmetadata>

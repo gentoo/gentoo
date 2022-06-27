@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PLOCALES="ar cs de en es et fr hr hu id_ID it ja nl pl pt_BR pt ru sk sv uk vi zh_CN zh_TW"
+PLOCALES="cs de en es fi fr hr hu id_ID it ja nl pl pt_BR ru sv uk zh_TW"
 inherit flag-o-matic plocale qmake-utils xdg-utils
 
 if [[ ${PV} != *9999 ]] ; then

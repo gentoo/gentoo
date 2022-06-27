@@ -1,0 +1,28 @@
+From 6ecb832923612820c721f58d1d12dd176e10528a Mon Sep 17 00:00:00 2001
+From: Xaver Hugl <xaver.hugl@gmail.com>
+Date: Thu, 5 May 2022 18:27:38 +0200
+Subject: [PATCH] kcm: fix choosing the refresh rate
+
+It always chose the last one, and not the highest one
+
+
+(cherry picked from commit 5e1be88dbe6e5160dcc232631df81d9bdc9d179e)
+---
+ kcm/output_model.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/kcm/output_model.cpp b/kcm/output_model.cpp
+index 92e4ea3..3672b49 100644
+--- a/kcm/output_model.cpp
++++ b/kcm/output_model.cpp
+@@ -394,6 +394,7 @@ bool OutputModel::setResolution(int outputIndex, int resIndex)
+         auto it = modes.begin();
+         while (it != modes.end()) {
+             if ((*it)->size() == size && (*it)->refreshRate() > bestRefreshRate) {
++                bestRefreshRate = (*it)->refreshRate();
+                 modeIt = it;
+             }
+             it++;
+-- 
+GitLab
+

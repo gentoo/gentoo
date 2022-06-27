@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1
 
 DESCRIPTION="A locking API for expiring values while a single thread generates a new value"
@@ -14,7 +14,7 @@ S="${WORKDIR}/dogpile.cache-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 
 RDEPEND="
 	>=dev-python/decorator-4.0.0[${PYTHON_USEDEP}]

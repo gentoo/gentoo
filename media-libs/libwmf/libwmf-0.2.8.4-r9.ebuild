@@ -9,7 +9,7 @@ DESCRIPTION="A library for reading vector images in Microsoft's Windows Metafile
 HOMEPAGE="http://wvware.sourceforge.net/"
 SRC_URI="mirror://sourceforge/project/wvware/${PN}/${PV}/${P}.tar.gz"
 
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 LICENSE="LGPL-2"
 SLOT="0"
 IUSE="debug doc expat X"

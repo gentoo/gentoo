@@ -6,6 +6,6 @@
 		<name>Akinori Hattori</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge-jp">gauche</remote-id>
+		<remote-id type="osdn">gauche</remote-id>
 	</upstream>
 </pkgmetadata>

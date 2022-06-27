@@ -1,0 +1,32 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f9d6e93..4e05976 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -28,12 +28,24 @@ add_subdirectory(src)
+ install(TARGETS joycond DESTINATION /usr/bin/
+         PERMISSIONS OWNER_WRITE OWNER_READ OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
+         )
+-install(FILES udev/89-joycond.rules udev/72-joycond.rules DESTINATION /lib/udev/rules.d/
++
++pkg_get_variable(UDEV_RULES_PATH udev udevdir)
++install(FILES udev/89-joycond.rules udev/72-joycond.rules DESTINATION ${UDEV_RULES_PATH}/rules.d/
+         PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ 
+         )
+-install(FILES systemd/joycond.service DESTINATION /etc/systemd/system
++
++execute_process(COMMAND systemd-path systemd-system-unit OUTPUT_VARIABLE SYSTEMD_SYSTEM_UNIT_PATH OUTPUT_STRIP_TRAILING_WHITESPACE RESULT_VARIABLE UNIT_RETVAL)
++if(NOT "${UNIT_RETVAL}" EQUAL 0)
++    set(SYSTEMD_SYSTEM_UNIT_PATH "/usr/lib/systemd/system")
++endif()
++install(FILES systemd/joycond.service DESTINATION ${SYSTEMD_SYSTEM_UNIT_PATH}
+         PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
+         )
+-install(FILES systemd/joycond.conf DESTINATION /etc/modules-load.d
++
++execute_process(COMMAND systemd-path modules-load OUTPUT_VARIABLE SYSTEMD_MODULES_LOAD_PATH OUTPUT_STRIP_TRAILING_WHITESPACE RESULT_VARIABLE MODULES_RETVAL)
++if(NOT "${MODULES_RETVAL}" EQUAL 0)
++    set(SYSTEMD_MODULES_LOAD_PATH "/usr/lib/modules-load.d")
++endif()
++install(FILES systemd/joycond.conf DESTINATION ${SYSTEMD_MODULES_LOAD_PATH}
+         PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
+         )

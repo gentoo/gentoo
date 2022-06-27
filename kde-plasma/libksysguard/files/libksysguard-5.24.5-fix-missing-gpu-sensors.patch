@@ -1,0 +1,32 @@
+From 88722b18c92f3a688a69abef9022cbcdcb5163bb Mon Sep 17 00:00:00 2001
+From: David Redondo <kde@david-redondo.de>
+Date: Fri, 29 Apr 2022 13:59:38 +0200
+Subject: [PATCH] Fall back to power average if input is not available
+
+Some power sensors don't expose a current value most notably amdgpu.
+For those fall back to the average reading if available.
+BUG:445920
+
+
+(cherry picked from commit 7758d202eed28169c031e099e408ea258469e408)
+---
+ systemstats/SensorsFeatureSensor.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/systemstats/SensorsFeatureSensor.cpp b/systemstats/SensorsFeatureSensor.cpp
+index 6c8bdb34..3555115f 100644
+--- a/systemstats/SensorsFeatureSensor.cpp
++++ b/systemstats/SensorsFeatureSensor.cpp
+@@ -95,6 +95,9 @@ makeSensorsFeatureSensor(const QString &id, const sensors_chip_name *const chipN
+         break;
+     case SENSORS_FEATURE_POWER:
+         valueFeature = sensors_get_subfeature(chipName, feature, SENSORS_SUBFEATURE_POWER_INPUT);
++        if (!valueFeature) {
++            valueFeature = sensors_get_subfeature(chipName, feature, SENSORS_SUBFEATURE_POWER_AVERAGE);
++        }
+         unit = UnitWatt;
+         maximum = getValueOfFirstExisting({SENSORS_SUBFEATURE_POWER_CRIT, SENSORS_SUBFEATURE_POWER_MAX});
+         break;
+-- 
+GitLab
+

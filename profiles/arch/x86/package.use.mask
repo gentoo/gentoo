@@ -1,6 +1,31 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (2022-06-25)
+# Allow stack to be realigned for compatibility with older 32-bit binaries.
+sys-libs/glibc -stack-realign
+sys-libs/ncurses -stack-realign
+
+# Anna Vyalkova <cyber+gentoo@sysrq.in> (2022-06-25)
+# Unkeyworded test dep
+app-vim/jedi test
+
+# Ben Kohler <bkohler@gentoo.org> (2022-06-07)
+# Disable 64bit builds on x86
+sys-apps/memtest86+ bios64 efi64 iso64
+
+# Jimi Huotari <chiitoo@gentoo.org> (2022-05-08)
+# Not keyworded here yet.
+lxqt-base/lxqt-meta desktop-portal
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# Untested useflag on other arches, needs keywording
+media-video/ffmpeg vmaf
+
+# Sam James <sam@gentoo.org> (2022-03-10)
+# dev-util/hip and its rocm dependencies not keyworded here
+sci-physics/lammps hip
+
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2021-02-17)
 # Mask AMF keyword on non-amd64 arches
 # It is unusable, for now, in other arches
@@ -63,10 +88,6 @@ x11-wm/mutter video_cards_nvidia
 >=app-office/libreoffice-bin-7 java
 >=app-office/libreoffice-bin-debug-7 java
 
-# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
-# Unmask TPM on supported archs.
-sys-apps/systemd -tpm
-
 # Daniel Novomesky <dnovomesky@gmail.com> (2021-02-24)
 # Depends on media-libs/svt-av1, which is unavailable on x86
 media-libs/libavif svt-av1
@@ -111,10 +132,6 @@ media-video/ffmpeg -rav1e
 # Mask io-uring & zbc pending keywording
 sys-block/fio -io-uring -zbc
 
-# Thomas Deutschmann <whissi@gentoo.org> (2020-06-20)
-# media-libs/nv-codec-headers is not available for x86
->=media-video/ffmpeg-4.3 video_cards_nvidia
-
 # Marek Szuba <marecki@gentoo.org> (2020-06-17)
 # Unmask globally-masked flashrom drivers and tools which do work on x86
 sys-apps/flashrom -atahpt -atapromise -atavia -drkaiser -gfxnvidia -internal -it8212 -nic3com -nicintel -nicintel-eeprom -nicintel-spi -nicnatsemi -nicrealtek -ogp-spi -rayer-spi -satamv -satasii -tools
@@ -126,11 +143,6 @@ dev-python/influxdb test
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # clisp is keyworded on x86
 app-text/texlive-core -xindy
-
-# Christoph Junghans <junghans@gentoo.org> (2020-05-16)
-# restrict USE=kokkos for x86 as kokkos doesn't support 32-bit archs
-# https://github.com/kokkos/kokkos/issues/2312
-sci-physics/lammps kokkos
 
 # Joonas Niilola <juippis@gentoo.org> (2020-05-14)
 # sys-apps/apparmor not keyworded on x86.
@@ -149,17 +161,6 @@ sys-libs/glibc -static-pie
 # Encrypted Media Extensions (eme-free) can be disabled on x86
 mail-client/thunderbird -eme-free
 www-client/firefox -eme-free
-
-# Mart Raudsepp <leio@gentoo.org> (2020-03-01)
-# dev-util/sysprof-capture is keyworded on x86
-x11-wm/mutter -sysprof
-dev-libs/gjs -sysprof
-dev-libs/glib -sysprof
-gnome-extra/cjs -sysprof
-x11-libs/gtk+ -sysprof
-net-libs/libsoup -sysprof
-x11-libs/pango -sysprof
-gui-libs/gtk -sysprof
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
 # Vulkan is available on x86.
@@ -331,6 +332,7 @@ app-emulation/libvirt xen
 # Mike Gilbert <floppym@gentoo.org> (2015-09-05)
 # sys-boot/gnu-efi is not supported on all archs.
 sys-apps/systemd -gnuefi
+sys-apps/systemd-utils -boot
 
 # Ben de Groot <yngwin@gentoo.org> (2015-03-15)
 # media-libs/libbdplus is keyworded on x86, so unmask the useflag
@@ -375,6 +377,7 @@ app-arch/zpaq -jit
 # webrtc-audio-processing is only supported on x86/amd64. Possibly arm can be
 # added.
 media-sound/pulseaudio -webrtc-aec
+media-sound/pulseaudio-daemon -webrtc-aec
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2012-02-27)
 # Masked in base profile, supported on this arch

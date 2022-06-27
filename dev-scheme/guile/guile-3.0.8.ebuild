@@ -6,7 +6,7 @@ EAPI=8
 MAJOR="3.0"
 DESCRIPTION="GNU Ubiquitous Intelligent Language for Extensions"
 HOMEPAGE="https://www.gnu.org/software/guile/"
-SRC_URI="mirror://gnu/guile/${P}.tar.gz"
+SRC_URI="mirror://gnu/guile/${P}.tar.xz"
 
 LICENSE="LGPL-3+"
 SLOT="12/3.0-1" # libguile-2.2.so.1 => 2.2-1

@@ -23,5 +23,6 @@ and libpcap).
 </longdescription>
 	<upstream>
 		<remote-id type="sourceforge">libnet-dev</remote-id>
+		<remote-id type="cpe">cpe:/a:libnet_project:libnet</remote-id>
 	</upstream>
 </pkgmetadata>

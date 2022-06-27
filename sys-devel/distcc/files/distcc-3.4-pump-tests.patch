@@ -1,0 +1,153 @@
+https://github.com/distcc/distcc/pull/460
+
+From 45d9c4a1ef66451ed45a6afdec7098ed02082390 Mon Sep 17 00:00:00 2001
+From: Rosen Matev <rosen.matev@cern.ch>
+Date: Fri, 29 Apr 2022 15:42:28 +0200
+Subject: [PATCH] Fix tests in pump mode
+
+`make check` is also running tests for the pump mode
+(`pump-maintainer-check` target) but they were all falling back to
+the usual preprocessor mode as the include server was not started.
+
+This is solved by prepending `pump` to the distcc invocations and
+also some trivially failing tests are fixed or disabled when they
+make no sense in pump mode.
+---
+ Makefile.in        |  2 +-
+ pump.in            | 13 +++++++++++--
+ test/testdistcc.py | 28 ++++++++++++++++++++++++----
+ 3 files changed, 36 insertions(+), 7 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index f240ca6f..79e28380 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -583,7 +583,7 @@ distccmon-gnome@EXEEXT@: $(mon_obj) $(gnome_obj)
+ # the distcc version, the source location, the CPP flags (for location of the
+ # includes), and the build location.
+ include-server:
+-	if test -z "$(PYTHON)"; then	\
++	@if test -z "$(PYTHON)"; then	\
+ 	  echo "Not building $@: No suitable python found"; \
+ 	else						\
+ 	  mkdir -p "$(include_server_builddir)" &&      \
+diff --git a/pump.in b/pump.in
+index 8e46f458..08a32c0e 100755
+--- a/pump.in
++++ b/pump.in
+@@ -218,7 +218,9 @@ PrintIncludeServerStatusMessage() {
+ }
+ 
+ Announce() {
+-  echo "__________Using distcc-pump from $DISTCC_LOCATION"
++  if [ "$verbose" = 1 ]; then
++    echo "__________Using distcc-pump from $DISTCC_LOCATION"
++  fi
+ }
+ 
+ # Starts up the include server.  Sets $socket, $socket_dir, and
+@@ -359,7 +361,9 @@ ShutDown() {
+   # Always -- at exit -- shut down include_server and remove $socket_dir
+   if [ -n "$include_server_pid" ] && \
+     ps -p "$include_server_pid" > /dev/null; then
+-    echo '__________Shutting down distcc-pump include server'
++    if [ "$verbose" = 1 ]; then
++      echo '__________Shutting down distcc-pump include server'
++    fi
+     kill $include_server_pid
+     # Wait until it's really dead.  We need to do this because the
+     # include server may produce output after receiving SIGTERM.
+@@ -508,6 +512,11 @@ Main() {
+ 
+   Initialize
+ 
++  # Do not write on stdout if we're testing pump mode
++  if [ "0$DISTCC_TESTING_INCLUDE_SERVER" -ne "0" ]; then
++    verbose=0
++  fi
++
+   case "$*" in
+     --startup)
+       # Don't put ordinary progress messages on stdout,
+diff --git a/test/testdistcc.py b/test/testdistcc.py
+index dfdf2f13..6377d0b6 100755
+--- a/test/testdistcc.py
++++ b/test/testdistcc.py
+@@ -258,7 +258,11 @@ def valgrind(self):
+         return _valgrind_command;
+ 
+     def distcc(self):
+-        return self.valgrind() + "distcc "
++        if "cpp" not in _server_options:
++            return self.valgrind() + "distcc "
++        else:
++            return "DISTCC_TESTING_INCLUDE_SERVER=1 " + self.valgrind() + "pump distcc "
++
+ 
+     def distccd(self):
+         return self.valgrind() + "distccd "
+@@ -422,6 +426,11 @@ class BogusOption_Case(SimpleDistCC_Case):
+     Now that we support implicit compilers, this is passed to gcc,
+     which returns a non-zero status."""
+     def runtest(self):
++        # Disable the test in pump mode since the pump wrapper fails
++        # before we can run distcc.
++        if "cpp" in _server_options:
++            raise comfychair.NotRunError('pump wrapper expects DISTCC_HOSTS')
++
+         error_rc, _, _ = self.runcmd_unchecked(self._cc + " --bogus-option")
+         assert error_rc != 0
+         self.runcmd(self.distcc() + self._cc + " --bogus-option", error_rc)
+@@ -432,7 +441,7 @@ def runtest(self):
+ class CompilerOptionsPassed_Case(SimpleDistCC_Case):
+     """Test that options following the compiler name are passed to the compiler."""
+     def runtest(self):
+-        out, err = self.runcmd("DISTCC_HOSTS=localhost "
++        out, err = self.runcmd("DISTCC_HOSTS=localhost%s " % _server_options
+                                + self.distcc()
+                                + self._cc + " --help")
+         if re.search('distcc', out):
+@@ -1422,7 +1431,8 @@ def source(self):
+ 
+     def setupEnv(self):
+         Compilation_Case.setupEnv(self)
+-        os.environ['DISTCC_HOSTS'] = '127.0.0.1:%d,lzo' % self.server_port
++        os.environ['DISTCC_HOSTS'] = (
++            '127.0.0.1:%d,lzo' % self.server_port + _server_options)
+ 
+ class DashONoSpace_Case(CompileHello_Case):
+     def compileCmd(self):
+@@ -1525,6 +1535,11 @@ def source(self):
+ """
+ 
+     def runtest(self):
++        # Disable the test in pump mode since the pump wrapper fails
++        # before we can run distcc.
++        if "cpp" in _server_options:
++            raise comfychair.NotRunError('pump wrapper expects DISTCC_HOSTS')
++
+         # -P means not to emit linemarkers
+         self.runcmd(self.distcc()
+                     + self._cc + " -E testtmp.c -o testtmp.out")
+@@ -1828,7 +1843,7 @@ class NoServer_Case(CompileHello_Case):
+     """Invalid server name"""
+     def setup(self):
+         self.stripEnvironment()
+-        os.environ['DISTCC_HOSTS'] = 'no.such.host.here'
++        os.environ['DISTCC_HOSTS'] = 'no.such.host.here' + _server_options
+         self.distcc_log = 'distcc.log'
+         os.environ['DISTCC_LOG'] = self.distcc_log
+         self.createSource()
+@@ -1874,6 +1889,11 @@ class NoHosts_Case(CompileHello_Case):
+     We expect compilation to succeed, but with a warning that it was
+     run locally."""
+     def runtest(self):
++        # Disable the test in pump mode since the pump wrapper fails
++        # before we can run distcc.
++        if "cpp" in _server_options:
++            raise comfychair.NotRunError('pump wrapper expects DISTCC_HOSTS')
++
+         # WithDaemon_Case sets this to point to the local host, but we
+         # don't want that.  Note that you cannot delete environment
+         # keys in Python1.5, so we need to just set them to the empty
+

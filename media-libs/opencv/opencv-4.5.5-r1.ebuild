@@ -5,12 +5,13 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
 CMAKE_ECLASS=cmake
-inherit java-pkg-opt-2 java-ant-2 cmake-multilib python-r1 toolchain-funcs
+inherit flag-o-matic java-pkg-opt-2 java-ant-2 cmake-multilib python-r1 toolchain-funcs
 
 DESCRIPTION="A collection of algorithms and sample code for various computer vision problems"
 HOMEPAGE="https://opencv.org"
 TINY_DNN_PV="1.0.0a3"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/opencv/opencv/commit/5440fd6cb43ea65a056c46b691fcdab1a425e92d.patch -> ${PN}-4.5.5-fix-build-with-ffmpeg5.patch
 	dnnsamples? ( https://dev.gentoo.org/~amynka/snap/${PN}-3.4.0-res10_300x300-caffeemodel.tar.gz )
 	download? ( https://github.com/rossbridger/opencv-extdep/archive/4.4.0.tar.gz -> ${PN}-4.4.0_extdep.tar.gz )
 	contrib? (
@@ -21,7 +22,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}" # subslot = libopencv* soname version
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
 IUSE="contrib contribcvv contribdnn contribfreetype contribhdf contribovis contribsfm contribxfeatures2d cuda debug dnnsamples download +eigen examples +features2d ffmpeg gdal gflags glog gphoto2 gstreamer gtk3 ieee1394 jpeg jpeg2k lapack lto opencl openexr opengl openmp opencvapps png +python qt5 tesseract testprograms threads tiff vaapi v4l vtk webp xine"
 
 # The following lines are shamelessly stolen from ffmpeg-9999.ebuild with modifications
@@ -291,6 +292,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.1.2-opencl-license.patch
 	"${FILESDIR}"/${PN}-4.4.0-disable-native-cpuflag-detect.patch
 	"${FILESDIR}"/${PN}-4.5.0-link-with-cblas-for-lapack.patch
+	"${DISTDIR}"/${PN}-4.5.5-fix-build-with-ffmpeg5.patch
 )
 
 pkg_pretend() {
@@ -303,6 +305,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# https://bugs.gentoo.org/838274
+	replace-flags -O3 -O2
+
 	cmake_src_prepare
 
 	# remove bundled stuff

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multilib.eclass
@@ -299,8 +299,13 @@ get_modname() {
 	echo ".${modname}"
 }
 
+# @FUNCTION: multilib_env
+# @USAGE:
+# @DESCRIPTION:
 # This is for the toolchain to setup profile variables when pulling in
 # a crosscompiler (and thus they aren't set in the profile).
+#
+# This must only be used by toolchain packages.
 multilib_env() {
 	local CTARGET=${1:-${CTARGET}}
 	local cpu=${CTARGET%%*-}
@@ -417,9 +422,9 @@ multilib_env() {
 
 			# the default abi is set to the 1-level libdir default
 
-			local __libdir_riscvdefaultabi_variable="LIBDIR_${DEFAULT_ABI}"
-			local __libdir_riscvdefaultabi=${!__libdir_riscvdefaultabi_variable}
-			export ${__libdir_riscvdefaultabi_variable}=${__libdir_riscvdefaultabi:-lib64}
+			local _libdir_riscvdefaultabi_variable="LIBDIR_${DEFAULT_ABI}"
+			local _libdir_riscvdefaultabi=${!_libdir_riscvdefaultabi_variable}
+			export ${_libdir_riscvdefaultabi_variable}=${_libdir_riscvdefaultabi:-lib64}
 
 			# all other abi are set to the 2-level libdir default
 
@@ -449,9 +454,9 @@ multilib_env() {
 
 			# the default abi is set to the 1-level libdir default
 
-			local __libdir_riscvdefaultabi_variable="LIBDIR_${DEFAULT_ABI}"
-			local __libdir_riscvdefaultabi=${!__libdir_riscvdefaultabi_variable}
-			export ${__libdir_riscvdefaultabi_variable}=${__libdir_riscvdefaultabi:-lib}
+			local _libdir_riscvdefaultabi_variable="LIBDIR_${DEFAULT_ABI}"
+			local _libdir_riscvdefaultabi=${!_libdir_riscvdefaultabi_variable}
+			export ${_libdir_riscvdefaultabi_variable}=${_libdir_riscvdefaultabi:-lib}
 
 			# all other abi are set to the 2-level libdir default
 

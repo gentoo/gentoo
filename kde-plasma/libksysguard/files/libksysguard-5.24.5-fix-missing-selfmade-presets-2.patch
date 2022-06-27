@@ -1,0 +1,43 @@
+From 0d06f3fdda71e87d70a4ca8d45af6badb3ab4ee1 Mon Sep 17 00:00:00 2001
+From: Arjen Hiemstra <ahiemstra@heimr.nl>
+Date: Mon, 9 May 2022 19:08:10 +0200
+Subject: [PATCH] Faces: Do not write resolved sensors to preset file
+
+The three sensor properties of FaceController contain the resolved
+sensors. This means we are not writing group regular expressions to face
+presets but are wiriting only the local sensors that were found for that
+group, pretty much bypassing why we have the groups in the first place.
+The unresolved sensors are only contained in the sensor configuration,
+so read them from there and write that to the preset faceproperties.
+
+
+(cherry picked from commit 1ea0671de11ea51aa2e181deafb70d8da588a2af)
+---
+ faces/SensorFaceController.cpp | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/faces/SensorFaceController.cpp b/faces/SensorFaceController.cpp
+index 21fb2954..632b7dd4 100644
+--- a/faces/SensorFaceController.cpp
++++ b/faces/SensorFaceController.cpp
+@@ -942,9 +942,14 @@ void SensorFaceController::savePreset()
+     KConfig faceConfig(subDir.path() % QStringLiteral("/contents/config/faceproperties"));
+ 
+     KConfigGroup configGroup(&faceConfig, "Config");
+-    configGroup.writeEntry(QStringLiteral("totalSensors"), QJsonDocument(totalSensors()).toJson(QJsonDocument::Compact));
+-    configGroup.writeEntry(QStringLiteral("highPrioritySensorIds"), QJsonDocument(highPrioritySensorIds()).toJson(QJsonDocument::Compact));
+-    configGroup.writeEntry(QStringLiteral("lowPrioritySensorIds"), QJsonDocument(lowPrioritySensorIds()).toJson(QJsonDocument::Compact));
++
++    auto sensors = d->readAndUpdateSensors(d->sensorsGroup, QStringLiteral("totalSensors"));
++    configGroup.writeEntry(QStringLiteral("totalSensors"), QJsonDocument(sensors).toJson(QJsonDocument::Compact));
++    sensors = d->readAndUpdateSensors(d->sensorsGroup, QStringLiteral("highPrioritySensorIds"));
++    configGroup.writeEntry(QStringLiteral("highPrioritySensorIds"), QJsonDocument(sensors).toJson(QJsonDocument::Compact));
++    sensors = d->readAndUpdateSensors(d->sensorsGroup, QStringLiteral("lowPrioritySensorIds"));
++    configGroup.writeEntry(QStringLiteral("lowPrioritySensorIds"), QJsonDocument(sensors).toJson(QJsonDocument::Compact));
++    configGroup.writeEntry(QStringLiteral("chartFace"), faceId());
+ 
+     KConfigGroup colorsGroup(&faceConfig, "SensorColors");
+     d->colorsGroup.copyTo(&colorsGroup);
+-- 
+GitLab
+

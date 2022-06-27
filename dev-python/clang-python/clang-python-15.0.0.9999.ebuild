@@ -13,17 +13,23 @@ LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # The module is opening libclang.so directly, and doing some blasphemy
 # on top of it.
-RDEPEND="
+DEPEND="
 	>=sys-devel/clang-${PV}:*
 	!sys-devel/llvm:0[clang(-),python(-)]
 	!sys-devel/clang:0[python(-)]
-	${PYTHON_DEPS}"
-DEPEND="${RDEPEND}"
+"
+RDEPEND="
+	${DEPEND}
+	${PYTHON_DEPS}
+"
+BDEPEND="
+	${PYTHON_DEPS}
+"
 
 LLVM_COMPONENTS=( clang/bindings/python )
 llvm.org_set_globals

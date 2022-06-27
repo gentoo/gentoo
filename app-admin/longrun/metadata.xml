@@ -7,7 +7,4 @@
 		thermal and power save functionalities found in the processors made
 		by Transmeta.
 	</longdescription>
-	<upstream>
-		<remote-id type="freshmeat">longrun</remote-id>
-	</upstream>
 </pkgmetadata>

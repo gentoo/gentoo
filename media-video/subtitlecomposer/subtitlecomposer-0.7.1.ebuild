@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,7 +43,11 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}/${P}-tests-optional.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-tests-optional.patch"
+	"${FILESDIR}/${P}-gles-support.patch" # bug 820035
+	"${FILESDIR}/${P}-ffmpeg-5.patch" # bug 834416
+)
 
 src_configure() {
 	local mycmakeargs=(

@@ -5,6 +5,10 @@
 	<email>java@gentoo.org</email>
 	<name>Java</name>
 </maintainer>
+<upstream>
+	<bugs-to>https://issues.apache.org/jira/projects/BATIK/issues/</bugs-to>
+	<remote-id type="github">apache/xmlgraphics-batik</remote-id>
+</upstream>
 <longdescription>
 	Java toolkit for applications or applets that want to use
 	images in the Scalable Vector Graphics (SVG) format for various

@@ -1,0 +1,14 @@
+[Unit]
+Description=UniFi Controller
+After=network.target
+
+[Service]
+Type=simple
+User=unifi
+Group=unifi
+WorkingDirectory=/usr/lib/unifi
+ExecStart=/usr/bin/unifi start
+ExecStop=/usr/bin/unifi stop
+
+[Install]
+WantedBy=multi-user.target

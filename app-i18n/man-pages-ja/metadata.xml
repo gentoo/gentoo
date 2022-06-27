@@ -14,6 +14,6 @@
   </longdescription>
   <stabilize-allarches/>
   <upstream>
-    <remote-id type="sourceforge-jp">linuxjm</remote-id>
+    <remote-id type="osdn">linuxjm</remote-id>
   </upstream>
 </pkgmetadata>

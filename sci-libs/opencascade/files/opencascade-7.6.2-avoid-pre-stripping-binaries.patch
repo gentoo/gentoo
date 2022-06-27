@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/831800
+https://dev.opencascade.org/content/dont-pre-strip-binaries
+
+From 88e59e0199daaf66184833e366e9deb1299078a9 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sun, 5 Jun 2022 09:48:09 +0200
+Subject: [PATCH] avoid pre-stripping binaries
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/adm/cmake/occt_defs_flags.cmake
++++ b/adm/cmake/occt_defs_flags.cmake
+@@ -133,8 +133,6 @@ if ("x${CMAKE_CXX_COMPILER_ID}" STREQUAL "xClang")
+     # does not support option "-std=c++0x"
+     set (CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
+   endif()
+-  # Optimize size of binaries
+-  set (CMAKE_SHARED_LINKER_FLAGS "-Wl,-s ${CMAKE_SHARED_LINKER_FLAGS}")
+ elseif(MINGW)
+   add_definitions(-D_WIN32_WINNT=0x0601)
+   # _WIN32_WINNT=0x0601 (use Windows 7 SDK)
+@@ -150,9 +148,6 @@ elseif(MINGW)
+ elseif (DEFINED CMAKE_COMPILER_IS_GNUCXX)
+   # Require C++11
+   set (CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
+-  # Optimize size of binaries
+-  set (CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")
+-  set (CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -s")
+ endif()
+ 
+ if (BUILD_RELEASE_DISABLE_EXCEPTIONS)
+-- 
+2.35.1
+

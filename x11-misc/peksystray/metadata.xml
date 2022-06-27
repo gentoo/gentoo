@@ -4,6 +4,5 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">peksystray</remote-id>
-		<remote-id type="freshmeat">peksystray</remote-id>
 	</upstream>
 </pkgmetadata>

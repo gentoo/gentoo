@@ -12,9 +12,6 @@
 		<flag name="apparmor">
 			Enable AppArmor support.
 		</flag>
-		<flag name="cgroup-hybrid">
-			Default to hybrid (legacy) cgroup hierarchy instead of unified (modern).
-		</flag>
 		<flag name="forced-devmode">
 			Automatically disable application confinement if feature detection fails.
 		</flag>

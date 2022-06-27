@@ -12,7 +12,9 @@
   </longdescription>
   <use>
     <flag name="emoji">Enable support for Emoji</flag>
-    <flag name="gtk2">Enable support for <pkg>x11-libs/gtk+</pkg>:2</flag>
+    <flag name="gtk2">Enable the GTK-2 input method module</flag>
+    <flag name="gtk3">Enable the GTK-3 input method module</flag>
+    <flag name="gtk4">Enable the GTK-4 input method module</flag>
     <flag name="unicode">Enable support for Unicode choice</flag>
   </use>
   <upstream>

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ltprune.eclass
@@ -12,7 +12,7 @@
 #
 # Discouraged. Whenever possible, please use much simpler:
 # @CODE
-# find "${ED}" -name '*.la' -delete || die
+# find "${ED}" -type f -name '*.la' -delete || die
 # @CODE
 
 if [[ -z ${_LTPRUNE_ECLASS} ]]; then

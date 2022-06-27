@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="forceoptional"
@@ -11,7 +11,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Stopwatch application"
-HOMEPAGE="https://apps.kde.org/en/kronometer https://userbase.kde.org/Kronometer"
+HOMEPAGE="https://apps.kde.org/kronometer https://userbase.kde.org/Kronometer"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-2+"
@@ -31,3 +31,8 @@ DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-missing-dep.patch"
+	"${FILESDIR}/${P}-missing-link.patch"
+)

@@ -1,0 +1,10 @@
+--- a/src/core/gn_run.pro
++++ b/src/core/gn_run.pro
+@@ -64,6 +64,7 @@
+         }
+     } else {
+         gn_args+= "qtwebengine_target=\"$$system_path($$OUT_PWD/$$getConfigDir()):QtWebEngineCore\""
++        gn_args += $$(EXTRA_GN)
+         gn_args = $$system_quote($$gn_args)
+         gn_build_root = $$system_quote($$system_path($$OUT_PWD/$$getConfigDir()))
+         gn_run = $$gn_binary gen $$gn_build_root $$gn_python --args=$$gn_args --root=$$gn_src_root

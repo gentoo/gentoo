@@ -1,0 +1,18 @@
+Don't strip for release. Let portage handle stripping.
+Index: MIOpen-rocm-5.0.2/CMakeLists.txt
+===================================================================
+--- MIOpen-rocm-5.0.2.orig/CMakeLists.txt
++++ MIOpen-rocm-5.0.2/CMakeLists.txt
+@@ -78,12 +78,6 @@ option( BUILD_DEV "Build for development
+ option(MIOPEN_ENABLE_FIN "Enable the fin driver for MIOpen"  OFF)
+ 
+ 
+-# Strip symbols for release
+-if(NOT WIN32 AND NOT APPLE)
+-    set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -s")
+-    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")
+-endif()
+-
+ rocm_setup_version(VERSION 2.15.0)
+ 
+ list( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake )

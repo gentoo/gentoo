@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( pypy3 python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..11} )
 inherit distutils-r1
 
 MY_PN="Flask-SQLAlchemy"
@@ -22,6 +22,10 @@ RDEPEND="
 	>=dev-python/flask-0.10[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-0.8.0[${PYTHON_USEDEP}]
 "
+
+BDEPEND="test? (
+	dev-python/mock[${PYTHON_USEDEP}]
+)"
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs dev-python/pallets-sphinx-themes \

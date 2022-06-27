@@ -6,6 +6,7 @@
 		<name>Gentoo Linux PowerPC Development</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">linux-diag</remote-id>
+		<remote-id type="github">power-ras/libvpd</remote-id>
+		<changelog>https://github.com/power-ras/libvpd/blob/master/ChangeLog</changelog>
 	</upstream>
 </pkgmetadata>

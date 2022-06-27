@@ -1,19 +1,18 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools flag-o-matic multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="Utilities and libraries for NUMA systems"
 HOMEPAGE="https://github.com/numactl/numactl"
-if [[ "${PV}" == 9999 ]] ; then
+if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/numactl/numactl.git"
 else
 	SRC_URI="https://github.com/numactl/numactl/releases/download/v${PV}/${P}.tar.gz"
-	# ARM lacks the __NR_migrate_pages syscall.
-	KEYWORDS="~amd64 -arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux"
+	KEYWORDS="~alpha ~amd64 ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux"
 fi
 
 LICENSE="GPL-2"
@@ -21,17 +20,14 @@ SLOT="0"
 IUSE="static-libs"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.0.10-numademo-cflags.patch #540856
+	"${FILESDIR}"/${PN}-2.0.14-numademo-cflags.patch # bug #540856
 )
 
 src_prepare() {
 	default
 
-	# lto not supported yet
-	# gcc-9 with -flto leads to link failures: #692254
-	filter-flags -flto*
-
 	eautoreconf
+
 	# We need to copy the sources or else tests will fail
 	multilib_copy_sources
 }
@@ -65,6 +61,7 @@ multilib_src_install() {
 multilib_src_install_all() {
 	local DOCS=( README.md )
 	einstalldocs
-	# delete man pages provided by the man-pages package #238805
+
+	# Delete man pages provided by the man-pages package, bug #238805
 	rm -r "${ED}"/usr/share/man/man[25] || die
 }

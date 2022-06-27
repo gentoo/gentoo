@@ -3,8 +3,7 @@
 
 EAPI=8
 
-# TODO: py3.10 support (currently blocked by media-libs/gexiv2)
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="sqlite"
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=no
@@ -18,7 +17,7 @@ SRC_URI="https://github.com/gramps-project/${PN}/archive/v${PV}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="berkdb exif geo postscript +rcs +reports spell test"
 
 RESTRICT="!test? ( test )

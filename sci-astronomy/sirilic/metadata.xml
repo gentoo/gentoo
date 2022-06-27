@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>mario.haustein@hrz.tu-chemnitz.de</email>
+		<name>Mario Haustein</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		SiriLic (SiriL's Interactif Companion) is a software for preparing
+		acquisition files (RAW, Offset, Flat and Dark) for processing with
+		SiriL software.
+	</longdescription>
+	<upstream>
+		<remote-id type="gitlab">free-astro/sirilic</remote-id>
+	</upstream>
+</pkgmetadata>

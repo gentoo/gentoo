@@ -1,0 +1,88 @@
+https://github.com/eteran/edb-debugger/commit/da04c339559f82257ff54ea62b1d403ee98c1ba0
+https://bugs.gentoo.org/841839
+
+From da04c339559f82257ff54ea62b1d403ee98c1ba0 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Sat, 2 Apr 2022 22:36:50 +0000
+Subject: [PATCH] Gcc 12 includes fix (#815)
+
+* RegisterViewModelBase.h: add <memory> for unique_ptr
+
+Without the change gcc-12 fails to build edb-debugger as:
+
+    [ 20%] Building CXX object src/CMakeFiles/edb.dir/RegisterViewModelBase.cpp.o
+    In file included from edb-debugger/src/RegisterViewModelBase.cpp:18:
+    edb-debugger/include/RegisterViewModelBase.h:162:14: error:
+      'unique_ptr' in namespace 'std' does not name a template type
+      162 |         std::unique_ptr<CategoriesHolder> rootItem;
+          |              ^~~~~~~~~~
+    edb-debugger/include/RegisterViewModelBase.h:9:1: note:
+      'std::unique_ptr' is defined in header '<memory>';
+        did you forget to '#include <memory>'?
+        8 | #include <deque>
+      +++ |+#include <memory>
+
+* State.h: add <memory> for unique_ptr
+
+Without the change gcc-12 fails to build edb-debugger as:
+
+    [ 21%] Building CXX object src/CMakeFiles/edb.dir/State.cpp.o
+    In file included from edb-debugger/src/State.cpp:19:
+    edb-debugger/include/State.h:93:14:
+      error: 'unique_ptr' in namespace 'std' does not name a template type
+       93 |         std::unique_ptr<IState> impl_;
+          |              ^~~~~~~~~~
+    edb-debugger/include/State.h:24:1:
+      note: 'std::unique_ptr' is defined in header '<memory>';
+        did you forget to '#include <memory>'?
+       23 | #include "Types.h"
+      +++ |+#include <memory>
+       24 |
+
+* IState.h: add <memory> for unique_ptr
+
+Without the change gcc-12 fails to build edb-debugger as:
+
+    [ 69%] Building CXX object plugins/DebuggerCore/CMakeFiles/DebuggerCore.dir/unix/linux/arch/x86-generic/PlatformState.cpp.o
+    In file included from edb-debugger/plugins/DebuggerCore/unix/linux/arch/x86-generic/PlatformState.h:22,
+                     from edb-debugger/plugins/DebuggerCore/unix/linux/arch/x86-generic/PlatformState.cpp:19:
+    edb-debugger/include/IState.h:33:22:
+      error: 'unique_ptr' in namespace 'std' does not name a template type
+       33 |         virtual std::unique_ptr<IState> clone() const = 0;
+          |                      ^~~~~~~~~~
+    edb-debugger/include/IState.h:23:1:
+      note: 'std::unique_ptr' is defined in header '<memory>';
+        did you forget to '#include <memory>'?
+       22 | #include "Register.h"
+      +++ |+#include <memory>
+       23 | #include "Types.h"
+--- a/include/IState.h
++++ b/include/IState.h
+@@ -19,6 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #ifndef ISTATE_H_20110315_
+ #define ISTATE_H_20110315_
+ 
++#include <memory>
+ #include "Register.h"
+ #include "Types.h"
+ 
+--- a/include/RegisterViewModelBase.h
++++ b/include/RegisterViewModelBase.h
+@@ -6,6 +6,7 @@
+ #include "util/Integer.h"
+ #include <QAbstractItemModel>
+ #include <deque>
++#include <memory>
+ #include <vector>
+ 
+ Q_DECLARE_METATYPE(std::vector<NumberDisplayMode>)
+--- a/include/State.h
++++ b/include/State.h
+@@ -19,6 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #ifndef STATE_H_20060715_
+ #define STATE_H_20060715_
+ 
++#include <memory>
+ #include "API.h"
+ #include "Types.h"
+ 

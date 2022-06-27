@@ -1,7 +1,7 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit meson
 
 DESCRIPTION="D-Bus service to check the availability of dual-GPU"
@@ -10,7 +10,7 @@ SRC_URI="https://gitlab.freedesktop.org/hadess/switcheroo-control/uploads/accd4a
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="gtk-doc"
+IUSE="gtk-doc test"
 
 KEYWORDS="amd64"
 
@@ -22,7 +22,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	gtk-doc? ( dev-util/gtk-doc )
+	test? ( dev-util/umockdev )
 "
+
+RESTRICT="!test? ( test )"
 
 src_configure() {
 	local emesonargs=(

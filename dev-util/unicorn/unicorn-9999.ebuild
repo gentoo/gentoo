@@ -23,7 +23,7 @@ fi
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
-LICENSE="GPL-2"
+LICENSE="BSD-2 GPL-2 LGPL-2.1"
 SLOT="0/2"
 IUSE="python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -34,7 +34,7 @@ RDEPEND="python? ( ${PYTHON_DEPS} )"
 BDEPEND="virtual/pkgconfig
 	python? ( ${DISTUTILS_DEPS} )"
 
-UNICORN_TARGETS="x86 arm aarch64 riscv mips sparc m68k ppc"
+UNICORN_TARGETS="x86 arm aarch64 riscv mips sparc m68k ppc s390x"
 
 wrap_python() {
 	if use python; then
@@ -58,9 +58,8 @@ src_prepare() {
 
 src_configure(){
 	local mycmakeargs=(
-		-DBUILD_SHARED_LIBS=OFF
-		-DUNICORN_BUILD_SHARED=$(usex !static-libs)
-		-DUNICORN_ARCH="${UNICORN_TARGETS}"
+		-DBUILD_SHARED_LIBS=$(usex !static-libs)
+		-DUNICORN_ARCH="${UNICORN_TARGETS// /;}"
 	)
 
 	cmake_src_configure

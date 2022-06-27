@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 
 inherit cmake python-single-r1
 
@@ -17,7 +17,7 @@ else
 	COMMIT="733c8a05e74b7d10fbaef502cc82d025ae35a1fb"
 	SRC_URI="https://github.com/analogdevicesinc/gr-iio/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~riscv ~x86"
 fi
 LICENSE="GPL-3+"
 SLOT="0"

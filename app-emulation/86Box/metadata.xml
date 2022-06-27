@@ -12,12 +12,11 @@
 	</longdescription>
 	<use>
 		<flag name="dinput">Enable legacy Dinput mode instead of Xinput for older controllers.</flag>
+		<flag name="dynarec">Enable dynamic recompiler, which should provide a better emulation speed.</flag>
 		<flag name="experimental">Enable hardware from devbranch, which may be unstable or unusable.</flag>
 		<flag name="fluidsynth">Enable MIDI support through <pkg>media-sound/fluidsynth</pkg>.</flag>
 		<flag name="munt">Enable MIDI MT-32 support through <pkg>media-libs/munt-mt32emu</pkg>.</flag>
-		<flag name="dynarec">Enable dynamic recompiler, which should provide a better emulation speed.</flag>
 		<flag name="new-dynarec">Enable new dynamic recompiler from PCem 15, which should provide an even better emulation speed.</flag>
-		<flag name="vramdump">Enable the posibility to dump the virtual Video RAM.</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/86Box/86Box/issues</bugs-to>

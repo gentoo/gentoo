@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,8 +27,9 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fixinfo.patch
 )
 
-PLUGIN_SO=( vaiobright$(get_modname) )
-
 src_configure() {
-	tc-export PKG_CONFIG
+	tc-export CC PKG_CONFIG
+
+	PLUGIN_SO=( vaiobright$(get_modname) )
+	default
 }

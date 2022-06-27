@@ -1,0 +1,14 @@
+Add .note.GNU-stack to mitigate QA notice according to 
+https://wiki.gentoo.org/wiki/Hardened/GNU_stack_quickstart
+===================================================================
+--- llvm-project-rocm-5.0.0.orig/compiler-rt/lib/orc/elfnix_tls.x86-64.S
++++ llvm-project-rocm-5.0.0/compiler-rt/lib/orc/elfnix_tls.x86-64.S
+@@ -61,4 +61,8 @@ ___orc_rt_elfnix_tls_get_addr:
+         popq            %rbp
+         ret
+ 
++#if defined(__linux__) && defined(__ELF__)
++	.section .note.GNU-stack,"",%progbits
++#endif
++
+ #endif // defined(__x86_64__)

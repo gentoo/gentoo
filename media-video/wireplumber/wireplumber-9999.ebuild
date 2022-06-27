@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://gitlab.freedesktop.org/pipewire/${PN}/-/archive/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 DESCRIPTION="Replacement for pipewire-media-session"
@@ -36,13 +36,15 @@ BDEPEND="
 	dev-libs/glib
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
+	sys-devel/gettext
 "
 
 DEPEND="
 	${LUA_DEPS}
 	>=dev-libs/glib-2.62
-	>=media-video/pipewire-0.3.45:=
+	>=media-video/pipewire-0.3.48:=
 	virtual/libc
+	virtual/libintl
 	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd )
 "
@@ -86,7 +88,7 @@ src_install() {
 	# If a reflinking CoW filesystem is used (e.g. Btrfs), then the files
 	# will not actually get stored twice until modified.
 	insinto /etc
-	doins -r ${ED}/usr/share/wireplumber
+	doins -r "${ED}"/usr/share/wireplumber
 }
 
 pkg_postinst() {

@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 DESCRIPTION="A simple, lightweight C library for writing XMPP clients"
 HOMEPAGE="http://strophe.im/libstrophe/"
-SRC_URI="https://github.com/strophe/${PN}/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/strophe/${PN}/releases/download/${PV}/${P}.tar.xz"
 LICENSE="|| ( MIT GPL-3 )"
 SLOT="0"
 KEYWORDS="amd64"
@@ -15,7 +15,9 @@ RDEPEND="
 	!expat? ( dev-libs/libxml2:2 )
 	dev-libs/openssl:0=
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
 
@@ -40,7 +42,7 @@ src_compile() {
 src_install() {
 	default
 	use doc && dodoc -r examples
-	find "${D}" -name '*.la' -o -name '*.a' -delete || die
+	find "${D}" -type f \( -name '*.la' -o -name '*.a' \) -delete || die
 }
 
 # Explicit src_test is there to document that the test suite is integrated and

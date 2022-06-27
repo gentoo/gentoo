@@ -8,6 +8,7 @@ inherit cmake toolchain-funcs
 DESCRIPTION="Highly optimized CLI and library to count primes"
 HOMEPAGE="https://github.com/kimwalisch/primecount"
 SRC_URI="https://github.com/kimwalisch/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="BSD-2"
 SLOT="0/7"  # subslot is first component of libprimecount.so version
 KEYWORDS="amd64"
@@ -32,7 +33,11 @@ DOCS=(
 )
 
 pkg_pretend() {
-	use openmp && tc-check-openmp
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_configure() {

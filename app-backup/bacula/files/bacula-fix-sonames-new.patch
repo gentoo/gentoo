@@ -1,0 +1,37 @@
+# Fix soname in libbaccat.so, see bugs #602952, #790140 and #845126
+# 
+# Actual libtool needs a patch to accept '-soname' command line switch, 
+# otherwise it will ignored.
+# slibtool in contrast responds with error and is not easy to patch.
+#
+# Solution here drops the '-soname' switch and uses patchelf program to 
+# fix the SONAME after the library is build.
+diff --git a/src/cats/Makefile.in b/src/cats/Makefile.in
+index d30cc75..9f87798 100644
+--- a/src/cats/Makefile.in
++++ b/src/cats/Makefile.in
+@@ -135,17 +135,21 @@ libbaccats.la: Makefile cats_null.lo
+ libbaccats-mysql.la: Makefile $(MYSQL_LOBJS)
+ 	@echo "Making $@ ..."
+ 	$(LIBTOOL_LINK) $(CXX) $(DEFS) $(DEBUG) $(LDFLAGS) -o $@ $(MYSQL_LOBJS) -export-dynamic -rpath $(libdir) -release $(LIBBACCATS_LT_RELEASE) \
+-							   -soname libbaccats-$(LIBBACCATS_LT_RELEASE).so $(MYSQL_LIBS)
++							   $(MYSQL_LIBS)
++	patchelf --set-soname libbaccats-$(LIBBACCATS_LT_RELEASE).so .libs/libbaccats-mysql-$(LIBBACCATS_LT_RELEASE).so
+ 
+ libbaccats-postgresql.la: Makefile $(POSTGRESQL_LOBJS)
+ 	@echo "Making $@ ..."
+ 	$(LIBTOOL_LINK) $(CXX) $(DEFS) $(DEBUG) $(LDFLAGS) -o $@ $(POSTGRESQL_LOBJS) -export-dynamic -rpath $(libdir) -release $(LIBBACCATS_LT_RELEASE) \
+-							   -soname libbaccats-$(LIBBACCATS_LT_RELEASE).so $(POSTGRESQL_LIBS)
++							   $(POSTGRESQL_LIBS)
++	patchelf --set-soname libbaccats-$(LIBBACCATS_LT_RELEASE).so .libs/libbaccats-postgresql-$(LIBBACCATS_LT_RELEASE).so
+ 
+ libbaccats-sqlite3.la: Makefile $(SQLITE_LOBJS)
+ 	@echo "Making $@ ..."
+ 	$(LIBTOOL_LINK) $(CXX) $(DEFS) $(DEBUG) $(LDFLAGS) -o $@ $(SQLITE_LOBJS) -export-dynamic -rpath $(libdir) -release $(LIBBACCATS_LT_RELEASE) \
+-							   -soname libbaccats-$(LIBBACCATS_LT_RELEASE).so $(SQLITE_LIBS)
++							   $(SQLITE_LIBS)
++	patchelf --set-soname libbaccats-$(LIBBACCATS_LT_RELEASE).so .libs/libbaccats-sqlite3-$(LIBBACCATS_LT_RELEASE).so
++
+ #libbaccats-dbi.la: Makefile $(DBI_LOBJS)
+ #	 @echo "Making $@ ..."
+ #	 $(LIBTOOL_LINK) $(CXX) $(DEFS) $(DEBUG) $(LDFLAGS) -o $@ $(DBI_LOBJS) -export-dynamic -rpath $(libdir) -release $(LIBBACCATS_LT_RELEASE) \

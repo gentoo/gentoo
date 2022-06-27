@@ -1,4 +1,0 @@
-# /etc/conf.d/simplevirtd: config file for simplevirtd
-
-# See `simplevirtd --help`
-SIMPLEVIRTD_OPTS=""

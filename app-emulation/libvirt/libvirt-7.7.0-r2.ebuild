@@ -48,6 +48,7 @@ BDEPEND="
 	dev-perl/XML-XPath
 	dev-python/docutils
 	virtual/pkgconfig
+	net-libs/rpcsvc-proto
 	bash-completion? ( >=app-shells/bash-completion-2.0 )
 	verify-sig? ( sec-keys/openpgp-keys-libvirt )"
 
@@ -67,12 +68,10 @@ RDEPEND="
 	>=net-libs/gnutls-1.0.25:0=
 	net-libs/libssh2
 	net-libs/libtirpc
-	net-libs/rpcsvc-proto
 	>=net-misc/curl-7.18.0
 	sys-apps/dbus
 	sys-apps/dmidecode
 	sys-devel/gettext
-	sys-libs/ncurses:0=
 	sys-libs/readline:=
 	virtual/acl
 	apparmor? ( sys-libs/libapparmor )
@@ -134,6 +133,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.0-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-6.7.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-6.7.0-fix-paths-for-apparmor.patch
+	"${FILESDIR}"/${PN}-8.1.0-docs-Fix-template-matching-in-page.xsl.patch
 )
 
 pkg_setup() {

@@ -6,11 +6,11 @@ EAPI=8
 inherit java-virtuals-2
 
 DESCRIPTION="Virtual for servlet api"
-HOMEPAGE="http://java.sun.com/products/servlet/"
+HOMEPAGE="https://jcp.org/en/jsr/detail?id=340"
 
 LICENSE="public-domain"
 SLOT="${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86 ~amd64-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~ppc-macos ~x64-macos"
 
 RDEPEND="|| (
 		dev-java/tomcat-servlet-api:${SLOT}

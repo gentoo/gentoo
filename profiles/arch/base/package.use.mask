@@ -1,6 +1,28 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# media-libs/libxmp requires keywording
+media-sound/qmmp xmp
+
+# Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-23)
+# Need intel-hybrid-codec-driver, which only works on amd64
+x11-libs/libva-intel-driver hybrid
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-04-24)
+# This is only for bringing in the not-upstreamed-yet LoongArch patchset;
+# masked everywhere in order to minimize impact on other arches.
+# In the meantime, force-enable on loong only.
+# This is not inside use.mask, because crossdev toolchain packages would
+# want to have the flag enabled without hassle.
+dev-libs/libffi experimental-loong
+sys-kernel/linux-headers experimental-loong
+sys-libs/glibc experimental-loong
+sys-libs/libseccomp experimental-loong
+
+# James Le Cuirot <chewi@gentoo.org> (2022-02-24)
+# These GRUB platforms are only for MIPS.
+sys-boot/grub grub_platforms_loongson grub_platforms_qemu-mips
+
 # Sam James <sam@gentoo.org> (2021-11-15)
 # Only available on PPC*.
 sys-apps/util-linux rtas
@@ -38,10 +60,6 @@ x11-wm/mutter video_cards_nvidia
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2021-06-11)
 # Has unpackaged depdencies, bug #795459
 >=media-libs/opencolorio-2.0.0 doc
-
-# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
-# TPM only exists on some archs.
-sys-apps/systemd tpm
 
 # Michael Orlitzky <mjo@gentoo.org> (2021-03-27)
 # The clozurecl and clozurecl64 flags are now arch-specific in maxima,
@@ -111,17 +129,6 @@ app-metrics/collectd collectd_plugins_slurm
 # static-pie is not implemented on all arches, #719444
 # https://sourceware.org/glibc/wiki/PortStatus
 sys-libs/glibc static-pie
-
-# Mart Raudsepp <leio@gentoo.org> (2020-03-01)
-# dev-util/sysprof not keyworded on most arches yet
-x11-wm/mutter sysprof
-dev-libs/gjs sysprof
-dev-libs/glib sysprof
-gnome-extra/cjs sysprof
-x11-libs/gtk+ sysprof
-net-libs/libsoup sysprof
-x11-libs/pango sysprof
-gui-libs/gtk sysprof
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
 # Vulkan support is only available on few selected arches atm.
@@ -203,7 +210,7 @@ media-video/mpv vulkan
 
 # Nick Sarnie <sarnex@gentoo.org> (2018-04-29)
 # media-libs/vulkan-loader and app-emulation/vkd3d are not available everywhere
-app-emulation/wine-staging vkd3d vulkan
+app-emulation/wine-staging vulkan
 app-emulation/wine-vanilla vkd3d vulkan
 
 # Richard Yao <ryao@gentoo.org> (2018-04-16)
@@ -286,6 +293,7 @@ media-video/ffmpeg-chromium mmal
 # Mike Gilbert <floppym@gentoo.org> (2015-09-05)
 # sys-boot/gnu-efi is not supported on all archs.
 sys-apps/systemd gnuefi
+sys-apps/systemd-utils boot
 
 # Ben de Groot <yngwin@gentoo.org> (2015-03-15)
 # Mask bdplus support and unmask on arches where libbdplus is keyworded.
@@ -337,6 +345,7 @@ app-arch/zpaq jit
 # webrtc-audio-processing is only supported on x86/amd64. Possibly arm can be
 # added.
 media-sound/pulseaudio webrtc-aec
+media-sound/pulseaudio-daemon webrtc-aec
 
 # Christoph Junghans <junghans@gentoo.org> (2012-02-04)
 # mips only use flags

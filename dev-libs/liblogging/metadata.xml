@@ -5,10 +5,6 @@
 		<email>ultrabug@gentoo.org</email>
 		<name>Ultrabug</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>whissi@gentoo.org</email>
-		<name>Thomas Deutschmann</name>
-	</maintainer>
 	<use>
 		<flag name="rfc3195">
 			Enables RFC 3195 protocol (aka syslog-reliable) support.

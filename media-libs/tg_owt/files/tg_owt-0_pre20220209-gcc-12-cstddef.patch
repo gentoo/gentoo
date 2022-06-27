@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/840526
+--- a/src/modules/rtp_rtcp/source/rtp_packetizer_av1_test_helper.cc
++++ b/src/modules/rtp_rtcp/source/rtp_packetizer_av1_test_helper.cc
+@@ -10,6 +10,7 @@
+ 
+ #include "modules/rtp_rtcp/source/rtp_packetizer_av1_test_helper.h"
+ 
++#include <cstddef>
+ #include <stdint.h>
+ 
+ #include <initializer_list>
+@@ -42,7 +43,7 @@ std::vector<uint8_t> BuildAv1Frame(std::initializer_list<Av1Obu> obus) {
+     }
+     if (obu.header_ & kAv1ObuSizePresentBit) {
+       // write size in leb128 format.
+-      size_t payload_size = obu.payload_.size();
++      std::size_t payload_size = obu.payload_.size();
+       while (payload_size >= 0x80) {
+         raw.push_back(0x80 | (payload_size & 0x7F));
+         payload_size >>= 7;

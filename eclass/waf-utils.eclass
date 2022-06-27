@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: waf-utils.eclass
@@ -22,12 +22,17 @@ case ${EAPI:-0} in
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
-# @ECLASS-VARIABLE: WAF_VERBOSE
+# @ECLASS_VARIABLE: WAF_VERBOSE
 # @USER_VARIABLE
 # @DESCRIPTION:
 # Set to OFF to disable verbose messages during compilation
 # this is _not_ meant to be set in ebuilds
 : ${WAF_VERBOSE:=ON}
+
+# @ECLASS_VARIABLE: WAF_BINARY
+# @DESCRIPTION:
+# Eclass can use different waf executable.  Usually it is located
+# in "${S}/waf".
 
 # @FUNCTION: waf-utils_src_configure
 # @DESCRIPTION:
@@ -69,9 +74,6 @@ waf-utils_src_configure() {
 
 	[[ ${fail} ]] && die "Invalid use of waf-utils.eclass"
 
-	# @ECLASS-VARIABLE: WAF_BINARY
-	# @DESCRIPTION:
-	# Eclass can use different waf executable. Usually it is located in "${S}/waf".
 	: ${WAF_BINARY:="${S}/waf"}
 
 	local conf_args=()

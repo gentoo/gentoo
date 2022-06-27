@@ -40,14 +40,20 @@ esac
 
 # == internal control bits ==
 
-# @ECLASS-VARIABLE: _LLVM_MASTER_MAJOR
+# @ECLASS_VARIABLE: _LLVM_MASTER_MAJOR
 # @INTERNAL
 # @DESCRIPTION:
 # The major version of current LLVM trunk.  Used to determine
 # the correct branch to use.
 _LLVM_MASTER_MAJOR=15
 
-# @ECLASS-VARIABLE: _LLVM_SOURCE_TYPE
+# @ECLASS_VARIABLE: _LLVM_NEWEST_MANPAGE_RELEASE
+# @INTERNAL
+# @DESCRIPTION:
+# The newest release of LLVM for which manpages were generated.
+_LLVM_NEWEST_MANPAGE_RELEASE=14.0.6
+
+# @ECLASS_VARIABLE: _LLVM_SOURCE_TYPE
 # @INTERNAL
 # @DESCRIPTION:
 # Source type to use: 'git' or 'tar'.
@@ -66,10 +72,14 @@ fi
 
 inherit multiprocessing
 
+if ver_test -ge 14.0.5; then
+	inherit verify-sig
+fi
+
 
 # == control variables ==
 
-# @ECLASS-VARIABLE: LLVM_COMPONENTS
+# @ECLASS_VARIABLE: LLVM_COMPONENTS
 # @REQUIRED
 # @DESCRIPTION:
 # List of components needed unconditionally.  Specified as bash array
@@ -78,24 +88,25 @@ inherit multiprocessing
 #
 # The first path specified is used to construct default S.
 
-# @ECLASS-VARIABLE: LLVM_TEST_COMPONENTS
+# @ECLASS_VARIABLE: LLVM_TEST_COMPONENTS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # List of additional components needed for tests.
 
-# @ECLASS-VARIABLE: LLVM_MANPAGES
+# @ECLASS_VARIABLE: LLVM_MANPAGES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Set to 'build', include the dependency on dev-python/sphinx to build
-# the manpages.  If set to 'pregenerated', fetch and install
-# pregenerated manpages from the archive.
+# Set to a non-empty value in ebuilds that build manpages via Sphinx.
+# The eclass will either include the dependency on dev-python/sphinx
+# or pull the pregenerated manpage tarball depending on the package
+# version.
 
-# @ECLASS-VARIABLE: LLVM_PATCHSET
+# @ECLASS_VARIABLE: LLVM_PATCHSET
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # LLVM patchset version.  No patchset is used if unset.
 
-# @ECLASS-VARIABLE: LLVM_USE_TARGETS
+# @ECLASS_VARIABLE: LLVM_USE_TARGETS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Add LLVM_TARGETS flags.  The following values are supported:
@@ -113,19 +124,19 @@ inherit multiprocessing
 
 # == global data ==
 
-# @ECLASS-VARIABLE: ALL_LLVM_EXPERIMENTAL_TARGETS
+# @ECLASS_VARIABLE: ALL_LLVM_EXPERIMENTAL_TARGETS
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The complete list of LLVM experimental targets available in this LLVM
 # version.  The value depends on ${PV}.
 
-# @ECLASS-VARIABLE: ALL_LLVM_PRODUCTION_TARGETS
+# @ECLASS_VARIABLE: ALL_LLVM_PRODUCTION_TARGETS
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The complete list of LLVM production-ready targets available in this
 # LLVM version.  The value depends on ${PV}.
 
-# @ECLASS-VARIABLE: ALL_LLVM_TARGET_FLAGS
+# @ECLASS_VARIABLE: ALL_LLVM_TARGET_FLAGS
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The list of USE flags corresponding to all LLVM targets in this LLVM
@@ -150,7 +161,9 @@ case ${PV} in
 		)
 		;;
 	*)
-		ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY LoongArch M68k )
+		ALL_LLVM_EXPERIMENTAL_TARGETS=(
+			ARC CSKY DirectX LoongArch M68k SPIRV
+		)
 		ALL_LLVM_PRODUCTION_TARGETS=(
 			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430 NVPTX
 			PowerPC RISCV Sparc SystemZ VE WebAssembly X86 XCore
@@ -186,8 +199,24 @@ llvm.org_set_globals() {
 		[[ ${PV} != ${_LLVM_MASTER_MAJOR}.* ]] &&
 			EGIT_BRANCH="release/${PV%%.*}.x"
 	elif [[ ${_LLVM_SOURCE_TYPE} == tar ]]; then
-		SRC_URI+="
-			https://github.com/llvm/llvm-project/archive/llvmorg-${PV/_/-}.tar.gz"
+		if ver_test -ge 14.0.5; then
+			SRC_URI+="
+				https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV}/llvm-project-${PV}.src.tar.xz
+				verify-sig? (
+					https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV}/llvm-project-${PV}.src.tar.xz.sig
+				)
+			"
+			BDEPEND+="
+				verify-sig? (
+					sec-keys/openpgp-keys-llvm
+				)
+			"
+			VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/llvm.asc
+		else
+			SRC_URI+="
+				https://github.com/llvm/llvm-project/archive/llvmorg-${PV/_/-}.tar.gz
+			"
+		fi
 	else
 		die "Invalid _LLVM_SOURCE_TYPE: ${LLVM_SOURCE_TYPE}"
 	fi
@@ -199,25 +228,22 @@ llvm.org_set_globals() {
 		RESTRICT+=" !test? ( test )"
 	fi
 
-	case ${LLVM_MANPAGES:-__unset__} in
-		__unset__)
-			# no manpage support
-			;;
-		build)
-			IUSE+=" doc"
-			# NB: this is not always the correct dep but it does no harm
-			BDEPEND+=" dev-python/sphinx"
-			;;
-		pregenerated)
+	if [[ ${LLVM_MANPAGES} ]]; then
+		# use pregenerated tarball for releases
+		# up to _LLVM_NEWEST_MANPAGE_RELEASE
+		if llvm_manpage_dist_available; then
 			IUSE+=" doc"
 			SRC_URI+="
 				!doc? (
 					https://dev.gentoo.org/~mgorny/dist/llvm/llvm-${PV}-manpages.tar.bz2
-				)"
-			;;
-		*)
-			die "Invalid LLVM_MANPAGES=${LLVM_MANPAGES}"
-	esac
+				)
+			"
+		else
+			IUSE+=" doc"
+			# NB: this is not always the correct dep but it does no harm
+			BDEPEND+=" dev-python/sphinx"
+		fi
+	fi
 
 	if [[ -n ${LLVM_PATCHSET} ]]; then
 		SRC_URI+="
@@ -275,10 +301,24 @@ llvm.org_src_unpack() {
 		default_src_unpack
 	else
 		local archive=llvmorg-${PV/_/-}.tar.gz
+		if ver_test -ge 14.0.5; then
+			archive=llvm-project-${PV/_/-}.src.tar.xz
+			if use verify-sig; then
+				verify-sig_verify_detached \
+					"${DISTDIR}/${archive}" "${DISTDIR}/${archive}.sig"
+			fi
+		fi
+
 		ebegin "Unpacking from ${archive}"
-		tar -x -z -o --strip-components 1 \
-			-f "${DISTDIR}/${archive}" \
-			"${components[@]/#/llvm-project-${archive%.tar*}/}" || die
+		if ver_test -ge 14.0.5; then
+			tar -x -J -o --strip-components 1 \
+				-f "${DISTDIR}/${archive}" \
+				"${components[@]/#/${archive%.tar*}/}" || die
+		else
+			tar -x -z -o --strip-components 1 \
+				-f "${DISTDIR}/${archive}" \
+				"${components[@]/#/llvm-project-${archive%.tar*}/}" || die
+		fi
 		eend ${?}
 
 		# unpack all remaining distfiles
@@ -300,15 +340,10 @@ llvm.org_src_unpack() {
 		grep -E -r -L "^Gentoo-Component:.*(${components[*]})" \
 			"${WORKDIR}/llvm-gentoo-patchset-${LLVM_PATCHSET}" |
 			xargs rm
-		assert
-
-		if ver_test -ge 13.0.1_rc3; then
-			# fail if no patches remain
-			if [[ ! -s ${WORKDIR}/llvm-gentoo-patchset-${LLVM_PATCHSET} ]]
-			then
-				die "No patches in the patchset apply to the package"
-			fi
-		fi
+		local status=( "${PIPESTATUS[@]}" )
+		[[ ${status[1]} -ne 0 ]] && die "rm failed"
+		[[ ${status[0]} -ne 0 ]] &&
+			die "No patches in the patchset apply to the package"
 	fi
 }
 
@@ -326,23 +361,25 @@ llvm.org_src_prepare() {
 		)
 	fi
 
+	pushd "${WORKDIR}" >/dev/null || die
 	if declare -f cmake_src_prepare >/dev/null; then
-		# cmake eclasses force ${S} for default_src_prepare
-		# but use ${CMAKE_USE_DIR} for everything else
-		CMAKE_USE_DIR=${S} \
-		S=${WORKDIR} \
+		CMAKE_USE_DIR=${S}
+		if [[ ${EAPI} == 7 ]]; then
+			# cmake eclasses force ${S} for default_src_prepare in EAPI 7
+			# but use ${CMAKE_USE_DIR} for everything else
+			local S=${WORKDIR}
+		fi
 		cmake_src_prepare
 	else
-		pushd "${WORKDIR}" >/dev/null || die
 		default_src_prepare
-		popd >/dev/null || die
 	fi
+	popd >/dev/null || die
 }
 
 
 # == helper functions ==
 
-# @ECLASS-VARIABLE: LIT_JOBS
+# @ECLASS_VARIABLE: LIT_JOBS
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -354,7 +391,16 @@ llvm.org_src_prepare() {
 # Get the standard recommended lit flags for running tests, in CMake
 # list form (;-separated).
 get_lit_flags() {
-	echo "-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
+	echo "-vv;-j;${LIT_JOBS:-$(makeopts_jobs)}"
+}
+
+# @FUNCTION: llvm_manpage_dist_available
+# @DESCRIPTION:
+# Return true (0) if this LLVM version features prebuilt manpage
+# tarball, false (1) otherwise.
+llvm_manpage_dist_available() {
+	[[ ${_LLVM_SOURCE_TYPE} == tar ]] &&
+		ver_test "${PV}" -le "${_LLVM_NEWEST_MANPAGE_RELEASE}"
 }
 
 # @FUNCTION: llvm_are_manpages_built
@@ -362,7 +408,7 @@ get_lit_flags() {
 # Return true (0) if manpages are going to be built from source,
 # false (1) if preinstalled manpages will be used.
 llvm_are_manpages_built() {
-	use doc || [[ ${LLVM_MANPAGES} == build ]]
+	use doc || ! llvm_manpage_dist_available
 }
 
 # @FUNCTION: llvm_install_manpages

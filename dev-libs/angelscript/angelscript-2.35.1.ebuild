@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ HOMEPAGE="http://www.angelcode.com/angelscript/"
 SRC_URI="http://www.angelcode.com/angelscript/sdk/files/angelscript_${PV}.zip"
 LICENSE="ZLIB"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="~amd64 ~ppc64 ~riscv ~x86"
 IUSE="doc static-libs"
 
 BDEPEND="app-arch/unzip"

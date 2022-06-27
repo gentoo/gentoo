@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,16 +22,6 @@ BDEPEND="
 		dev-texlive/texlive-plaingeneric
 	)
 "
-
-pkg_pretend() {
-	if [[ ${MERGE_TYPE} != "binary" ]]; then
-		if tc-is-gcc && [[ $(gcc-major-version) -lt 8 ]]; then
-			die "Your compiler doesn't fully support C++17. Use GCC 8 or newer."
-		elif tc-is-clang && [[ $(clang-major-version) -lt 6 ]]; then
-			die "Your compiler doesn't fully support C++17. Use Clang 6 or newer."
-		fi
-	fi
-}
 
 src_prepare() {
 	sed -e "/DOC.* =/s/yodl\(-doc\)\?/${PF}/" \

@@ -35,8 +35,10 @@ module Gem
       path << gentoo_gems_dir
     end
 
+    undef :operating_system_defaults
     def operating_system_defaults
       options = "--install-dir #{gentoo_install_dir} --bindir #{gentoo_bindir}"
+
       {
         'install' => options,
         'uninstall' => options,

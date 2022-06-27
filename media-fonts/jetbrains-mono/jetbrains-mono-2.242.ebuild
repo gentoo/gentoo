@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/JetBrains/JetBrainsMono/releases/download/v${PV}/Jet
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~riscv x86"
+KEYWORDS="amd64 ~loong ~riscv x86"
 
 BDEPEND="app-arch/unzip"
 

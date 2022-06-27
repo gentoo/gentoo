@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>gentoo@tastytea.de</email>
+		<name>Ronny (tastytea) Gutbrod</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">simutrans</remote-id>
+		<remote-id type="github">simutrans/pak128</remote-id>
+		<remote-id type="github">Varkalandar/pak48.Excentrique</remote-id>
+		<remote-id type="github">Flemmbrav/Pak192.Comic</remote-id>
+		<remote-id type="github">wa-st/pak-nippon</remote-id>
+	</upstream>
+	<use>
+		<flag name="128">Install higher resolution scenario data (128 px graphics)</flag>
+		<flag name="comic192">Install comic-like scenario data (192 px graphics)</flag>
+		<flag name="cs128">Install Czech-Slovak scenario data (128 px graphics)</flag>
+		<flag name="excentrique48">Install eccentric scenario data (48 px graphics)</flag>
+		<flag name="german128">Install German scenario data (128 px graphics)</flag>
+		<flag name="nippon64">Install Nippon scenario data (64 px graphics)</flag>
+	</use>
+</pkgmetadata>

@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">ebuildtester</remote-id>
+		<remote-id type="github">nicolasbock/ebuildtester</remote-id>
 	</upstream>
 </pkgmetadata>

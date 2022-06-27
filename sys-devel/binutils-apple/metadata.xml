@@ -9,6 +9,5 @@
 		<flag name="lto">Add support for Link-Time Optimization with LLVM</flag>
 		<flag name="classic">Use nm, otool, etc. from this ebuild
 			instead of llvm-based tools</flag>
-		<flag name="tapi">Build against <pkg>sys-libs/tapi</pkg></flag>
 	</use>
 </pkgmetadata>

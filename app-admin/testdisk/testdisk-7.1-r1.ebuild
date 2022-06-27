@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools flag-o-matic qmake-utils xdg-utils
+inherit flag-o-matic qmake-utils xdg-utils
 
 DESCRIPTION="Checks and undeletes partitions + PhotoRec, signature based recovery tool"
 HOMEPAGE="https://www.cgsecurity.org/wiki/TestDisk"
@@ -11,7 +11,7 @@ SRC_URI="https://www.cgsecurity.org/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~riscv x86"
 IUSE="ewf jpeg ntfs qt5 reiserfs static zlib"
 
 REQUIRED_USE="static? ( !qt5 )"
@@ -73,13 +73,13 @@ src_configure() {
 	econf "${myconf[@]}"
 
 	# perform safety checks for NTFS, REISERFS and JPEG
-	if use ntfs && ! egrep -q '^#define HAVE_LIBNTFS(3G)? 1$' "${S}"/config.h ; then
+	if use ntfs && ! grep -E -q '^#define HAVE_LIBNTFS(3G)? 1$' "${S}"/config.h ; then
 		die "Failed to find either NTFS or NTFS-3G library."
 	fi
-	if use reiserfs && egrep -q 'undef HAVE_LIBREISERFS\>' "${S}"/config.h ; then
+	if use reiserfs && grep -E -q 'undef HAVE_LIBREISERFS\>' "${S}"/config.h ; then
 		die "Failed to find reiserfs library."
 	fi
-	if use jpeg && egrep -q 'undef HAVE_LIBJPEG\>' "${S}"/config.h ; then
+	if use jpeg && grep -E -q 'undef HAVE_LIBJPEG\>' "${S}"/config.h ; then
 		die "Failed to find jpeg library."
 	fi
 }

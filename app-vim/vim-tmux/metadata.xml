@@ -12,6 +12,7 @@
   <maintainer type="person">
     <email>monsieurp@gentoo.org</email>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="github">tmux-plugins/vim-tmux</remote-id>
   </upstream>

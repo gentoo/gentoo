@@ -1,0 +1,27 @@
+Respect user's pkg-config
+--- a/Makefile
++++ b/Makefile
+@@ -6,13 +6,13 @@ LOCALEDIR ?= /usr/local/share/locale
+ CFLAGS += -DPACKAGE="\"$(PACKAGE)\"" 
+ export PACKAGE LOCALEDIR
+ 
+-GTK_CONFIG = pkg-config gtk+-2.0
++PKG_CONFIG ?= pkg-config
+ 
+ PLUGIN_DIR ?= /usr/local/lib/gkrellm2/plugins
+ GKRELLM_INCLUDE = -I/usr/local/include
+ 
+-GTK_CFLAGS = `$(GTK_CONFIG) --cflags` 
+-GTK_LIB = `$(GTK_CONFIG) --libs`
++GTK_CFLAGS = $(shell ${PKG_CONFIG} gtk+-2.0 --cflags)
++GTK_LIB = $(shell ${PKG_CONFIG} gtk+-2.0 --libs)
+ 
+ CFLAGS := $(CFLAGS) -fPIC $(GTK_CFLAGS) $(GKRELLM_INCLUDE)
+ LIBS = $(GTK_LIB)
+@@ -51,4 +51,4 @@ install:
+ 	(cd po && ${MAKE} install)
+ 	$(INSTALL_PROGRAM) volume.so $(PLUGIN_DIR)
+ 
+-%.c.o: %.c
+\ No newline at end of file
++%.c.o: %.c

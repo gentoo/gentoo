@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -51,7 +51,7 @@ src_prepare() {
 src_compile() {
 	tc-export PKG_CONFIG
 
-	emake CC=$(tc-getCC) CXX="$(tc-getCXX)" -f Makefile.linux
+	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" -f Makefile.linux
 }
 
 src_install() {

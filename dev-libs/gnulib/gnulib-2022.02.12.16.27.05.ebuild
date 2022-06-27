@@ -7,7 +7,7 @@ GIT_TAG="9f48fb992a3d7e96610c4ce8be969cff2d61a01b"
 
 DESCRIPTION="Library of common routines intended to be shared"
 HOMEPAGE="https://www.gnu.org/software/gnulib"
-SRC_URI="https://git.savannah.gnu.org/cgit/${PN}.git/snapshot/${PN}-${GIT_TAG}.tar.gz"
+SRC_URI="https://git.savannah.gnu.org/cgit/${PN}.git/snapshot/${PN}-${GIT_TAG}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

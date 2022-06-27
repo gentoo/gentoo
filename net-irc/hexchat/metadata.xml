@@ -8,7 +8,6 @@
 	<use>
 		<flag name="libcanberra">Enable sound event support using
 			<pkg>media-libs/libcanberra</pkg></flag>
-		<flag name="libproxy">Enable proxy support.</flag>
 		<flag name="plugin-checksum">Build Checksum plugin
 			(needs plugins)</flag>
 		<flag name="plugin-fishlim">Build FiSHLiM plugin (needs plugins

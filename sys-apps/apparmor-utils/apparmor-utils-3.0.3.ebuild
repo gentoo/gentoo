@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python{3_7,3_8,3_9} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit perl-module python-r1 toolchain-funcs
 
 MY_PV="$(ver_cut 1-2)"
@@ -14,7 +14,7 @@ SRC_URI="https://launchpad.net/apparmor/${MY_PV}/${PV}/+download/apparmor-${PV}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RESTRICT="test"
@@ -73,7 +73,7 @@ src_install() {
 	install_python() {
 		local -x PYTHONDONTWRITEBYTECODE=
 		"${PYTHON}" "${S}"/utils/python-tools-setup.py install --prefix=/usr \
-			--root="${D}" --optimize 2
+			--root="${D}" --optimize 2 --version=${PV}
 	}
 
 	python_foreach_impl install_python

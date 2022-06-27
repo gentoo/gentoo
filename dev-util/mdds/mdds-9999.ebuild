@@ -8,7 +8,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://kohei.us/files/${PN}/src/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
 inherit autotools toolchain-funcs
 
@@ -48,13 +48,9 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		$(use_enable doc docs)
+		$(use_enable openmp)
 		$(use_enable valgrind memory_tests)
 	)
-	if use openmp && tc-has-openmp; then
-		myeconfargs+=( --enable-openmp )
-	else
-		myeconfargs+=( --disable-openmp )
-	fi
 	econf "${myeconfargs[@]}"
 }
 

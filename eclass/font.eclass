@@ -1,14 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: font.eclass
 # @MAINTAINER:
 # fonts@gentoo.org
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Eclass to make font installation uniform
 
 case ${EAPI:-0} in
-	7) ;;
+	[7-8]) ;;
 	*) die "EAPI ${EAPI} is not supported by font.eclass." ;;
 esac
 
@@ -17,30 +17,30 @@ _FONT_ECLASS=1
 
 EXPORT_FUNCTIONS pkg_setup src_install pkg_postinst pkg_postrm
 
-# @ECLASS-VARIABLE: FONT_SUFFIX
+# @ECLASS_VARIABLE: FONT_SUFFIX
 # @DEFAULT_UNSET
 # @REQUIRED
 # @DESCRIPTION:
 # Space delimited list of font suffixes to install.
 FONT_SUFFIX=${FONT_SUFFIX:-}
 
-# @ECLASS-VARIABLE: FONT_S
+# @ECLASS_VARIABLE: FONT_S
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Directory containing the fonts.  If unset, ${S} is used instead.
 # Can also be an array of several directories.
 
-# @ECLASS-VARIABLE: FONT_PN
+# @ECLASS_VARIABLE: FONT_PN
 # @DESCRIPTION:
 # Font name (ie. last part of FONTDIR).
 FONT_PN=${FONT_PN:-${PN}}
 
-# @ECLASS-VARIABLE: FONTDIR
+# @ECLASS_VARIABLE: FONTDIR
 # @DESCRIPTION:
 # Full path to installation directory.
 FONTDIR=${FONTDIR:-/usr/share/fonts/${FONT_PN}}
 
-# @ECLASS-VARIABLE: FONT_CONF
+# @ECLASS_VARIABLE: FONT_CONF
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array containing fontconfig conf files to install.

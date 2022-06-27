@@ -5,6 +5,7 @@
 		<email>java@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">https://github.com/FasterXML/jackson-dataformats-text/issues</remote-id>
+		<remote-id type="github">FasterXML/jackson-dataformats-text</remote-id>
+		<bugs-to>https://github.com/FasterXML/jackson-dataformats-text/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

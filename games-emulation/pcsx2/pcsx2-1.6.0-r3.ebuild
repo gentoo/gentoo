@@ -14,7 +14,7 @@ SRC_URI="https://github.com/PCSX2/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 
 RDEPEND="
 	app-arch/bzip2[abi_x86_32(-)]
@@ -53,9 +53,7 @@ pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary && $(tc-getCC) == *gcc* ]]; then
 		# -mxsave flag is needed when GCC >= 8.2 is used
 		# https://bugs.gentoo.org/685156
-		if [[ $(gcc-major-version) -gt 8 || $(gcc-major-version) == 8 && $(gcc-minor-version) -ge 2 ]]; then
-			append-flags -mxsave
-		fi
+		append-flags -mxsave
 	fi
 }
 

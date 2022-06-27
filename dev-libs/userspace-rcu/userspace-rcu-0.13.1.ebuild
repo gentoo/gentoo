@@ -11,7 +11,7 @@ SRC_URI="https://lttng.org/files/urcu/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0/8" # subslot = soname version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
@@ -19,6 +19,7 @@ BDEPEND="test? ( sys-process/time )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.13.1-tests-no-benchmark.patch
+	"${FILESDIR}"/${PN}-0.13.1-loong.patch
 )
 
 src_prepare() {
@@ -26,6 +27,7 @@ src_prepare() {
 
 	# Needed for tests patch
 	# ... and refresh libtool (see https://github.com/gentoo/gentoo/pull/23973)
+	# ... and for build on loong (see https://github.com/gentoo/gentoo/pull/25189)
 	eautoreconf
 }
 

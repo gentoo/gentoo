@@ -12,6 +12,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">setuptools-git</remote-id>
-    <remote-id type="github">wichert/setuptools-git</remote-id>
+    <remote-id type="github">msabramo/setuptools-git</remote-id>
   </upstream>
 </pkgmetadata>

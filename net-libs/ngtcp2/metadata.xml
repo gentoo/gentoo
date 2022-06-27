@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="github">ngtcp2/ngtcp2</remote-id>
 	</upstream>
+	<use>
+		<flag name="openssl">Provide SSL support using OpenSSL (requires <pkg>dev-libs/openssl</pkg>)</flag>
+	</use>
 </pkgmetadata>

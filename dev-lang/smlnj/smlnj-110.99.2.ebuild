@@ -78,6 +78,9 @@ src_unpack() {
 
 	mkdir base || die  # without this unpacking runtime will fail
 	./config/unpack "${S}" runtime || die
+
+	# Unpack asdl to fix autoconf linker check
+	unpack "${S}"/asdl.tgz
 }
 
 src_prepare() {
@@ -89,8 +92,15 @@ src_prepare() {
 		-e "/^CPP/s|gcc|$(tc-getCC)|" \
 		-e "/^CFLAGS/{s|-O[0123s]|| ; s|=|= ${CFLAGS}|}" \
 		-i base/runtime/objs/mk.* || die
+	sed -e "/^AS/s|as|$(tc-getAS)|" \
+		-e "/^AR/s|ar|$(tc-getAR)|" \
+		-e "/^CC/s|cc|$(tc-getCC)|" \
+		-e "/^CPP/s|/lib/cpp|$(tc-getCPP)|" \
+		-e "/^RANLIB/s|ranlib|$(tc-getRANLIB)|" \
+		-i base/runtime/objs/makefile || die
 
 	sed -i "s|nm |$(tc-getNM) |g" config/chk-global-names.sh || die
+	sed -i "/^AC_PATH_PROG/s|\[ld\]|\[$(tc-getLD)\]|" asdl/configure.ac || die
 }
 
 src_compile() {

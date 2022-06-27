@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/426262
+--- a/Makefile.in	2022-04-25 18:06:16.529673077 +0800
++++ b/Makefile.in	2022-04-25 18:13:12.134356482 +0800
+@@ -200,7 +200,7 @@
+ 	./config.status _pli_types.h
+ _pli_types.h: stamp-_pli_types-h
+ 
+-$(srcdir)/configure: $(srcdir)/configure.in $(srcdir)/aclocal.m4
++$(srcdir)/configure: $(srcdir)/configure.ac $(srcdir)/aclocal.m4
+ 	cd $(srcdir) && autoconf
+ 
+ config.status: $(srcdir)/configure

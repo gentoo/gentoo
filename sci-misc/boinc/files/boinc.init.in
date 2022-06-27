@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 extra_started_commands="attach resume suspend"
@@ -91,12 +91,12 @@ opencl_check() {
 env_check() {
 	# Make sure the configuration is sane
 	: ${USER:="boinc"}
-	: ${GROUP:="boinc"}
+	: ${GROUP:="$(id -ng ${USER})"}
 	: ${RUNTIMEDIR:="/var/lib/boinc"}
 	: ${BOINCBIN:="$(which boinc_client)"}
 	: ${BOINC_PIDFILE:="/var/run/boinc_client.pid"}
 	: ${BOINCCMD:="$(which /usr/bin/boinccmd)"}
-	: ${ALLOW_REMOTE_RPC:="yes"}
+	: ${ALLOW_REMOTE_RPC:="no"}
 	: ${NICELEVEL:="19"}
 	# ARGS is not checked, it could have been explicitly set
 	# to be empty by the user.

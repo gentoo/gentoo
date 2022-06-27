@@ -1,0 +1,13 @@
+Index: rocprofiler-rocm-4.3.0/test/ctrl/test_kernel.h
+===================================================================
+--- rocprofiler-rocm-4.3.0.orig/test/ctrl/test_kernel.h
++++ rocprofiler-rocm-4.3.0/test/ctrl/test_kernel.h
+@@ -23,7 +23,7 @@ THE SOFTWARE.
+ #ifndef TEST_CTRL_TEST_KERNEL_H_
+ #define TEST_CTRL_TEST_KERNEL_H_
+ 
+-#include <string.h>
++#include <string>
+ #include <stdint.h>
+ #include <map>
+ 

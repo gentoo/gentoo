@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools flag-o-matic toolchain-funcs
+inherit autotools toolchain-funcs
 
 MY_PN="ecm"
 MY_P="${MY_PN}-${PV}"
@@ -27,7 +27,11 @@ PATCHES=(
 S="${WORKDIR}/${MY_P}"
 
 pkg_pretend() {
-	use openmp && tc-check-openmp
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_prepare(){
@@ -37,7 +41,7 @@ src_prepare(){
 	# create a sample with the assembly code needed
 	# Quote around # are needed because the files will be processed by M4.
 	cat <<-EOF > "${T}/sample.asm"
-	
+
 	\`#'if defined(__linux__) && defined(__ELF__)
 	.section .note.GNU-stack,"",%progbits
 	\`#'endif
@@ -64,6 +68,7 @@ src_compile() {
 		emake ecm-params && emake clean && emake
 	fi
 }
+
 src_configure() {
 	econf \
 		--enable-shared \

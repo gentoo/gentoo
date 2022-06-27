@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -11,11 +11,6 @@
 # Unmask arm arch specific flags
 -cpu_flags_arm_iwmmxt
 -cpu_flags_arm_iwmmxt2
-
-# Sam James <sam@gentoo.org> (2020-11-10)
-# Rust isn't available for generic ARM,
-# just armv6, armv7
-rust
 
 # Sam James <sam@gentoo.org> (2020-06-24)
 # Valgrind lacks support for < ARMv7
@@ -85,7 +80,6 @@ anthy
 # Unmask ARM-only video-cards
 -video_cards_exynos
 -video_cards_freedreno
--video_cards_imx
 -video_cards_lima
 -video_cards_omap
 -video_cards_panfrost

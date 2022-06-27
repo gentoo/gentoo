@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,8 +25,10 @@ PATCHES=(
 	"${FILESDIR}"/2.4.3-0004-Do-not-force-O2-in-CFLAGS.patch
 )
 
-PLUGIN_SO=( mailwatch$(get_modname) )
-
 src_configure() {
 	tc-export CC
+
+	PLUGIN_SO=( mailwatch$(get_modname) )
+
+	default
 }

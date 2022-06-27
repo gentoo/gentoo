@@ -1,16 +1,16 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # QA check: ensure that gtk-doc files are installed in /usr/share/gtk-doc
 # Maintainer: GNOME team <gnome@gentoo.org>
 
 gtk_doc_path_check() {
-	[[ -d ${ED}usr/share/doc ]] || return
+	[[ -d ${ED%/}/usr/share/doc ]] || return
 
 	local found=() f
 	while read -d '' -r f; do
 		found+=( "${f%/*}" )
-	done < <(find "${ED}"usr/share/doc -name '*.devhelp*' -print0 || die)
+	done < <(find "${ED%/}"/usr/share/doc -name '*.devhelp*' -print0 || die)
 
 	if [[ ${found[@]} ]]; then
 		eqawarn
@@ -19,9 +19,9 @@ gtk_doc_path_check() {
 		eqawarn
 		eqatag -v gtk-doc-paths.invalid-path "${found[@]#${D%/}}"
 		eqawarn
-		eqawarn "gtk-doc documentation must always be installed into /usr/share/gtk-doc."
+		eqawarn "gtk-doc documentation must always be installed into ${EPREFIX}/usr/share/gtk-doc."
 		eqawarn "For more details, please see the GNOME team policy page:"
-		eqawarn "https://wiki.gentoo.org/wiki/Project:GNOME/Gnome_Team_Ebuild_Policies#gtk-doc"
+		eqawarn "https://wiki.gentoo.org/wiki/Project:GNOME/Gnome_Team_Ebuild_Policies#Handling_gtk-doc_documentation"
 		eqawarn
 	fi
 }

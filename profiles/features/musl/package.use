@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 
+# Esteve Varela Colominas <esteve.varela@gmail.com> (2022-02-19)
+# The musl allocator works well with telegram
+net-im/telegram-desktop -jemalloc
+
 # Anthony G. Basile <blueness@gentoo.org> (2016-07-14)
 # We need this to break a circular dependency with
 # 'sys-libs/libcap pam' in stage3 catalyst builds

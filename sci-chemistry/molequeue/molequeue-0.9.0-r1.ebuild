@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit cmake python-r1 virtualx
 
@@ -66,9 +66,14 @@ src_configure() {
 
 src_compile() {
 	if use zeromq; then
-		python_foreach_impl run_in_build_dir cmake_src_compile all $(usex doc documentation "")
+		my_src_compile() {
+			run_in_build_dir cmake_src_compile all $(usex doc documentation "")
+			use doc && export HTML_DOCS=( "${BUILD_DIR}"/docs/html/. )
+		}
+		python_foreach_impl my_src_compile
 	else
 		cmake_src_compile all $(usex doc documentation "")
+		use doc && export HTML_DOCS=( "${BUILD_DIR}"/docs/html/. )
 	fi
 }
 
@@ -81,7 +86,6 @@ src_test() {
 }
 
 src_install() {
-	use doc && local HTML_DOCS=( "${BUILD_DIR}"/docs/html/. )
 	if use zeromq; then
 		python_foreach_impl run_in_build_dir cmake_src_install
 		python_foreach_impl run_in_build_dir python_optimize

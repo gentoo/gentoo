@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ HOMEPAGE="https://gpac.wp.imt.fr/"
 
 LICENSE="GPL-2"
 # subslot == libgpac major
-SLOT="0/10"
+SLOT="0/11"
 IUSE="a52 aac alsa cpu_flags_x86_sse2 debug dvb ffmpeg ipv6 jack jpeg jpeg2k mad opengl oss png
 	pulseaudio sdl ssl static-libs theora truetype vorbis xml xvid X"
 
@@ -63,7 +63,7 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.0.1-configure.patch"
+	"${FILESDIR}/${PN}-2.0.0-configure.patch"
 	"${FILESDIR}/${PN}-1.0.0-zlib-compile.patch"
 )
 

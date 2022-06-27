@@ -3,8 +3,8 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>williamh@gentoo.org</email>
-			<name>William Hubbs</name>
-				</maintainer>
+		<name>William Hubbs</name>
+	</maintainer>
 	<use>
 		<flag name="notmuch">Enable support for <pkg>net-mail/notmuch</pkg></flag>
 	</use>

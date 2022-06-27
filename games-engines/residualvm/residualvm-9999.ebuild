@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -73,7 +73,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake AR="$(tc-getAR) cru" RANLIB=$(tc-getRANLIB)
+	emake AR="$(tc-getAR) cru" RANLIB="$(tc-getRANLIB)"
 }
 
 src_install() {

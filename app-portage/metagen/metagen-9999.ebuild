@@ -1,9 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-PYTHON_COMPAT=( python3_{7..9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+EAPI="8"
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 git-r3
 
@@ -23,10 +22,6 @@ RDEPEND="${DEPEND}"
 python_install_all() {
 	distutils-r1_python_install_all
 	doman docs/metagen.1
-}
-
-src_install() {
-	distutils-r1_src_install
 
 	# Address expected path warning for /usr/share/doc/metagen-<not-9999>
 	mv "${ED}"/usr/share/doc/metagen-{*.*.*/*,${PV}/} || die

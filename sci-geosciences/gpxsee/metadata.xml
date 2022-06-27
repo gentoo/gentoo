@@ -11,5 +11,6 @@
   </maintainer>
   <upstream>
     <remote-id type="sourceforge">gpxsee</remote-id>
+    <remote-id type="github">tumic0/GPXSee</remote-id>
   </upstream>
 </pkgmetadata>

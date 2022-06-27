@@ -1,0 +1,30 @@
+# Database binding MIME types to programs that can process them.
+# This file is generally used by mail clients to view attachments.
+#
+# Users should add their own rules to their ~/.mailcap file.  That file will be
+# processed first before falling back to this one.
+#
+# For more information, see the mailcap(5) man page.
+
+# NB: Do not quote %s.  Clients will handle expanding it with proper quoting,
+# so adding quotes ourselves just confuses things.
+
+application/pdf; xdg-open %s; needsterminal
+application/postscript; xdg-open %s; needsterminal
+application/x-info; info --subnodes -o /dev/stdout -f %s 2>/dev/null; copiousoutput; description=GNU Info document
+application/x-gtar; tar tvzf -; print=tar tvzf - | print text/plain:-; copiousoutput
+application/x-tar; tar tvf -; print=tar tvf - | print text/plain:-; copiousoutput
+application/x-troff-man; nroff -mandoc -Tutf8; copiousoutput; print=nroff -mandoc -Tutf8 | print text/plain:-
+# It'd be nice to limit this to compressed formats (e.g. x-*), but the file
+# format doesn't support that, and less has good fallbacks already.
+application/*; less %s; needsterminal
+
+audio/*; xdg-open %s; needsterminal
+image/*; xdg-open %s; needsterminal
+
+text/html; lynx -dump -assume_charset=%{charset} %s; copiousoutput; description=HTML Text; nametemplate=%s.html
+text/troff; man -l %s; needsterminal; description=Man page
+text/*; less %s; needsterminal
+text/*; gview %s; edit=gvim -f %s; compose=gvim -f %s; test=test "$DISPLAY" != ""
+text/*; view %s; edit=vim %s; compose=vim %s; needsterminal
+text/*; more %s; needsterminal

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,8 +25,12 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fno-common.patch
 )
 
-PLUGIN_SO=( src/gkrellmss$(get_modname) )
 PLUGIN_DOCS=( Themes )
+
+src_configure() {
+	PLUGIN_SO=( src/gkrellmss$(get_modname) )
+	default
+}
 
 src_compile() {
 	addpredict /dev/snd

@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit linux-info udev xdg distutils-r1
 
@@ -28,6 +28,7 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
+		dev-python/python-evdev[${PYTHON_USEDEP}]
 		dev-python/python-xlib[${PYTHON_USEDEP}]
 		>=dev-python/pyudev-0.13[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
@@ -59,11 +60,15 @@ python_prepare_all() {
 python_install_all() {
 	distutils-r1_python_install_all
 
-	dodoc docs/devices.md
+	dodoc docs/devices.md ChangeLog.md
 	if use doc; then
 		dodoc -r docs/*
 	else
 		newdoc docs/index.md README.md
 	fi
 	udev_dorules "${S}"/rules.d/42-logitech-unify-permissions.rules
+}
+
+pkg_postinst() {
+	udev_reload
 }

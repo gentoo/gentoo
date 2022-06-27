@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -11,7 +11,7 @@ MAVEN_ID="org.bitstrings.test:junit-clptr:1.2.2"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="ClassLoader per Test runner for JUnit 4.12+ based on myfaces-test \"TestPerClassLoaderRunner\""
+DESCRIPTION="ClassLoader per Test runner for JUnit 4.12+"
 HOMEPAGE="http://nexus.sonatype.org/oss-repository-hosting.html/junit-clptr"
 SRC_URI="https://github.com/bitstrings/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}-sources.tar.gz"
 LICENSE="Apache-2.0"

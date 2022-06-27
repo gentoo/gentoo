@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>nicolasbock@gentoo.org</email>
-		<name>Nicolas Bock</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>gnome@gentoo.org</email>
 		<name>Gentoo GNOME Project</name>

@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="sqlite,threads(+)"
 DISTUTILS_SINGLE_IMPL="1"
 
@@ -22,7 +22,6 @@ else
 	else
 		SRC_URI="https://lutris.net/releases/${P/-/_}.tar.xz"
 		S="${WORKDIR}/${PN}"
-
 		KEYWORDS="~amd64 ~x86"
 	fi
 fi

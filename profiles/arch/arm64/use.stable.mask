@@ -7,12 +7,7 @@
 # Ionen Wolkens <ionen@gentoo.org> (2022-02-17)
 # x11-drivers/nvidia-drivers is not stable yet
 video_cards_nvidia
-
-# Sam James <sam@gentoo.org> (2020-12-23)
-# dev-lang/luajit is not yet stable
-lua_single_target_luajit
-lua_targets_luajit
-luajit
+nvenc
 
 # Sam James <sam@gentoo.org> (2020-10-08)
 # Not enough packages stable w/ PyPy3 support

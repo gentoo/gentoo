@@ -159,7 +159,7 @@ src_prepare() {
 	sed \
 		-e "s/def GypMain(options, unused_args):/def GypMain(options, gyp_args):/" \
 		-e "s/RunOrDie(gyp_command + gyp_options)/RunOrDie(gyp_command + gyp_options + gyp_args)/" \
-		-e "s/RunOrDie(\[ninja/&, '-j$(makeopts_jobs)', '-l$(makeopts_loadavg "${MAKEOPTS}" 0)', '-v'/" \
+		-e "s/RunOrDie(\[ninja/&, '-j$(makeopts_jobs "${MAKEOPTS}" 999)', '-l$(makeopts_loadavg "${MAKEOPTS}" 0)', '-v'/" \
 		-i build_mozc.py || die
 
 	local ar=($(tc-getAR))

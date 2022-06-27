@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<doc lang="en">https://github.com/google/googletest/tree/master/googletest/docs</doc>
+		<doc lang="en">https://github.com/google/googletest/tree/HEAD/docs</doc>
 		<remote-id type="github">google/googletest</remote-id>
 	</upstream>
 </pkgmetadata>

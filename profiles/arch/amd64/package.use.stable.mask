@@ -17,6 +17,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-23)
+# Dependency x11-libs/intel-hybrid-codec-driver is only available on unstable
+# branch
+x11-libs/libva-intel-driver hybrid
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# needs stabilizing
+media-video/ffmpeg vmaf
+
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
 # needs stabilizing
 media-video/ffmpeg amf
@@ -48,11 +57,6 @@ app-office/libreoffice base
 # sys-cluster/slurm has no stable keywords
 # dev-util/nvidia-cuda-toolkit has no stable keywords
 app-metrics/collectd collectd_plugins_slurm collectd_plugins_gpu_nvidia
-
-# Joonas Niilola <juippis@gentoo.org> (2020-06-21)
-# sys-apps/apparmor doesn't have stable keywords.
-app-containers/lxc apparmor
-app-containers/lxd apparmor
 
 # Thomas Deutschmann <whissi@gentoo.org> (2019-10-28)
 # net-libs/quiche is an early HTTP/3 implementation

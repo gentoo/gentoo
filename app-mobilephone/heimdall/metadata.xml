@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<upstream>
-		<remote-id type="github">Benjamin-Dobell/Heimdall</remote-id>
-	</upstream>
+	<maintainer type="person" proxied="yes">
+		<email>duje.mihanovic@skole.hr</email>
+		<name>Duje Mihanović</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 </pkgmetadata>

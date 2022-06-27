@@ -1,0 +1,27 @@
+From c48ecf5efb941cb3056da8f2c074005cb87417aa Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Thu, 12 May 2022 16:49:55 +0200
+Subject: [PATCH] Fix activating running instance on Wayland
+
+(cherry picked from commit 16c1ee0c517164867d004c561d403e3aebebc7e3)
+---
+ app/main.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/app/main.cpp b/app/main.cpp
+index 13a803cd..e3f7b004 100644
+--- a/app/main.cpp
++++ b/app/main.cpp
+@@ -172,7 +172,8 @@ int main(int argc, char *argv[])
+             mainWindow->reloadStartupModule();
+         }
+ 
+-        KWindowSystem::forceActiveWindow(mainWindow->winId());
++        KWindowSystem::updateStartupId(mainWindow->windowHandle());
++        KWindowSystem::activateWindow(mainWindow->windowHandle());
+     });
+ 
+     if (!startupModule.isEmpty()) {
+-- 
+GitLab
+

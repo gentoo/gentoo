@@ -9,13 +9,16 @@ SRC_URI="https://github.com/flatpak/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
-IUSE=""
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.40:2
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( sys-apps/dbus )
+"
 BDEPEND="
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt

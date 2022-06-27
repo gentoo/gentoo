@@ -11,7 +11,4 @@
 		"brightness" of your screen jibes with what others see... (the Internet sRGB
 		standard gamma of 2.2) 
 	</longdescription>
-	<upstream>
-		<remote-id type="freecode">monica</remote-id>
-	</upstream>
 </pkgmetadata>

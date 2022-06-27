@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python3_{8,9} )
-USE_RUBY="ruby26 ruby25 ruby24"
+USE_RUBY="ruby27 ruby26"
 DISTUTILS_OPTIONAL=1
 WANT_AUTOMAKE="none"
 GENTOO_DEPEND_ON_PERL="no"
@@ -21,7 +21,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="Apache-2.0 BSD MIT BSD-2 FSFAP unicode"
 SLOT="0"
 [[ "${PV}" = *_rc* ]] || \
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 IUSE="apache2 berkdb debug doc extras gnome-keyring java kwallet nls perl plaintext-password-storage ruby sasl test"
 RESTRICT="!test? ( test )"
 
@@ -90,7 +90,7 @@ want_apache
 
 pkg_setup() {
 	if use berkdb ; then
-		local apu_bdb_version="$(${EPREFIX}/usr/bin/apu-1-config --includes \
+		local apu_bdb_version="$("${EPREFIX}"/usr/bin/apu-1-config --includes \
 			| grep -Eoe '-I${EPREFIX}/usr/include/db[[:digit:]]\.[[:digit:]]' \
 			| sed 's:.*b::')"
 		einfo

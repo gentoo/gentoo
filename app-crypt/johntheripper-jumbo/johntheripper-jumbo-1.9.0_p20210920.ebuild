@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -45,10 +45,12 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.0-fix-bashism.patch
 )
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
-	if use openmp && [[ ${MERGE_TYPE} != binary ]]; then
-		tc-has-openmp || die "Please switch to an OpenMP compatible compiler"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_prepare() {

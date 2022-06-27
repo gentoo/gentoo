@@ -1,0 +1,49 @@
+diff --git a/leechcore/Makefile b/leechcore/Makefile
+index 4f4ff0f..bb04781 100755
+--- a/leechcore/Makefile
++++ b/leechcore/Makefile
+@@ -1,7 +1,8 @@
+-CC=gcc
+-CFLAGS  += -I. -D LINUX -D _GNU_SOURCE -shared -fPIC -fvisibility=hidden -pthread `pkg-config libusb-1.0 --libs --cflags`
++CC?=gcc
++PKG_CONFIG ?= pkg-config
++CFLAGS  += -I. -D LINUX -D _GNU_SOURCE -shared -fPIC -fvisibility=hidden -pthread `$(PKG_CONFIG) libusb-1.0 --libs --cflags`
+ #CFLAGS  += -g -O0
+-CFLAGS  += -fPIE -fPIC -pie -fstack-protector -D_FORTIFY_SOURCE=2 -O1 -Wl,-z,noexecstack
++CFLAGS  += -fPIE -fPIC -pie -D_FORTIFY_SOURCE=2 -Wl,-z,noexecstack
+ CFLAGS  += -Wall -Wno-unused-result -Wno-unused-variable -Wno-unused-value -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast
+ LDFLAGS += -g -ldl -shared
+ DEPS = leechcore.h
+diff --git a/leechcore_device_rawtcp/Makefile b/leechcore_device_rawtcp/Makefile
+index 6ce9a8b..b3e7990 100755
+--- a/leechcore_device_rawtcp/Makefile
++++ b/leechcore_device_rawtcp/Makefile
+@@ -1,4 +1,4 @@
+-CC=gcc
++CC?=gcc
+ CFLAGS  += -I. -I../includes -D LINUX -shared -fPIC -fvisibility=hidden
+ LDFLAGS += -g -shared
+ DEPS = 
+diff --git a/leechcore_device_sp605tcp/Makefile b/leechcore_device_sp605tcp/Makefile
+index b3e4db4..f727c04 100755
+--- a/leechcore_device_sp605tcp/Makefile
++++ b/leechcore_device_sp605tcp/Makefile
+@@ -1,4 +1,4 @@
+-CC=gcc
++CC?=gcc
+ CFLAGS  += -I. -I../includes -D LINUX -shared -fPIC -fvisibility=hidden
+ LDFLAGS += -g -shared
+ DEPS = 
+diff --git a/leechcore_ft601_driver_linux/Makefile b/leechcore_ft601_driver_linux/Makefile
+index 7afbf33..6b62aa8 100755
+--- a/leechcore_ft601_driver_linux/Makefile
++++ b/leechcore_ft601_driver_linux/Makefile
+@@ -1,5 +1,6 @@
+-CC=gcc
+-CFLAGS  += -I. -D LINUX -shared -fPIC -fvisibility=hidden `pkg-config libusb-1.0 --libs --cflags`
++CC?=gcc
++PKG_CONFIG ?= pkg-config
++CFLAGS  += -I. -D LINUX -shared -fPIC -fvisibility=hidden `$(PKG_CONFIG) libusb-1.0 --libs --cflags`
+ LDFLAGS += -g -shared
+ DEPS = leechcore_ft601_driver_linux.h
+ OBJ = fpga_libusb.o leechcore_ft601_driver_linux.o

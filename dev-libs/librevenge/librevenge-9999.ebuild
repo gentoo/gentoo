@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic multilib-minimal
+inherit multilib-minimal
 
-if [[ ${PV} == *9999* ]] ; then
+if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.code.sf.net/p/libwpd/librevenge"
 	inherit git-r3 autotools
 else
@@ -19,19 +19,17 @@ HOMEPAGE="https://sf.net/p/libwpd/librevenge"
 LICENSE="|| ( MPL-2.0 LGPL-2.1 )"
 SLOT="0"
 IUSE="doc test"
-
 RESTRICT="!test? ( test )"
 
 RDEPEND="sys-libs/zlib[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-libs/boost
-	test? ( dev-util/cppunit[${MULTILIB_USEDEP}] )
-"
+	test? ( dev-util/cppunit[${MULTILIB_USEDEP}] )"
 BDEPEND="doc? ( app-doc/doxygen )"
 
 src_prepare() {
 	default
-	[[ ${PV} == *9999* ]] && eautoreconf
+	[[ ${PV} == *9999 ]] && eautoreconf
 }
 
 multilib_src_configure() {
@@ -45,5 +43,5 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	find "${D}" -name '*.la' -type f -delete || die
+	find "${ED}" -name '*.la' -type f -delete || die
 }

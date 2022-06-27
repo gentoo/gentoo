@@ -1,0 +1,12 @@
+fix compilation issue: error: use of undeclared identifier 'ceil' 'floor'
+===================================================================
+--- rocFFT-rocm-5.0.2.orig/library/src/device/generator/stockham_gen_base.h
++++ rocFFT-rocm-5.0.2/library/src/device/generator/stockham_gen_base.h
+@@ -20,6 +20,7 @@
+ 
+ #pragma once
+ #include "stockham_gen.h"
++#include <math.h>
+ 
+ // Base class for stockham kernels.  Subclasses are responsible for
+ // different tiling types.

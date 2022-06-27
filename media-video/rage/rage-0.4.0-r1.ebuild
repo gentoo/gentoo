@@ -11,7 +11,7 @@ SRC_URI="https://download.enlightenment.org/rel/apps/rage/${P}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="|| ( dev-libs/efl[X] dev-libs/efl[wayland] )
 	>=dev-libs/efl-1.26.1[gstreamer]

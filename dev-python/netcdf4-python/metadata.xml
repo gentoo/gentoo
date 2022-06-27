@@ -5,6 +5,10 @@
 		<email>sci@gentoo.org</email>
 		<name>Gentoo Science Project</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
 	<longdescription>
 		netcdf4-python is a Python interface to the netCDF C library.
 		netCDF version 4 can read and write files in both the new netCDF 4

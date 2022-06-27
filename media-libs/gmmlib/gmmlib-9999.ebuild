@@ -1,7 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+CMAKE_BUILD_TYPE="Release"
 
 inherit cmake
 
@@ -18,14 +20,14 @@ HOMEPAGE="https://github.com/intel/gmmlib"
 SRC_URI=""
 
 LICENSE="MIT"
-SLOT="0/12"
+SLOT="0/12.1"
 IUSE="test +custom-cflags"
 RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-20.2.2_conditional_testing.patch
-	"${FILESDIR}"/${PN}-20.4.1_custom_cflags.patch
 	"${FILESDIR}"/${PN}-20.3.2_cmake_project.patch
+	"${FILESDIR}"/${PN}-22.1.1_custom_cflags.patch
 )
 
 src_configure() {

@@ -9,7 +9,7 @@
 
 if [[ ! ${_MOZEXTENSION} ]]; then
 
-# @ECLASS-VARIABLE: MOZEXTENSION_TARGET
+# @ECLASS_VARIABLE: MOZEXTENSION_TARGET
 # @DESCRIPTION:
 # This variable allows the installation path for xpi_install
 # to be overridden from the default app-global extensions path.

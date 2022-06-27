@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-ng-gnome2.eclass
@@ -25,7 +25,7 @@ RUBY_FAKEGEM_NAME="${RUBY_FAKEGEM_NAME:-${PN#ruby-}}"
 RUBY_FAKEGEM_TASK_TEST=""
 RUBY_FAKEGEM_TASK_DOC=""
 
-# @ECLASS-VARIABLE: RUBY_GNOME2_NEED_VIRTX
+# @ECLASS_VARIABLE: RUBY_GNOME2_NEED_VIRTX
 # @PRE_INHERIT
 # @DESCRIPTION:
 # If set to 'yes', the test is run with virtx. Set before inheriting this
@@ -82,6 +82,8 @@ all_ruby_prepare() {
 # @DESCRIPTION:
 # Run the configure script in the subbinding for each specific ruby target.
 each_ruby_configure() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	[[ -e extconf.rb ]] || return
 
 	${RUBY} extconf.rb || die "extconf.rb failed"
@@ -91,6 +93,8 @@ each_ruby_configure() {
 # @DESCRIPTION:
 # Compile the C bindings in the subbinding for each specific ruby target.
 each_ruby_compile() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	[[ -e Makefile ]] || return
 
 	# We have injected --no-undefined in Ruby as a safety precaution
@@ -109,6 +113,8 @@ each_ruby_compile() {
 # @DESCRIPTION:
 # Install the files in the subbinding for each specific ruby target.
 each_ruby_install() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	if [[ -e Makefile ]]; then
 		# Create the directories, or the package will create them as files.
 		local archdir=$(ruby_rbconfig_value "sitearchdir")
@@ -124,6 +130,8 @@ each_ruby_install() {
 # @DESCRIPTION:
 # Install the files common to all ruby targets.
 all_ruby_install() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	for doc in ../AUTHORS ../NEWS ChangeLog README; do
 		[[ -s ${doc} ]] && dodoc $doc
 	done
@@ -139,6 +147,8 @@ all_ruby_install() {
 # @DESCRIPTION:
 # Run the tests for this package.
 each_ruby_test() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	[[ -e test/run-test.rb ]] || return
 
 	if [[ ${RUBY_GNOME2_NEED_VIRTX} == yes ]]; then

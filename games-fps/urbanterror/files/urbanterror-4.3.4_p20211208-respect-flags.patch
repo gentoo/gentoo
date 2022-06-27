@@ -1,0 +1,79 @@
+--- a/Makefile
++++ b/Makefile
+@@ -322,30 +322,30 @@ ifneq (,$(findstring "$(PLATFORM)", "linux" "gnu_kfreebsd" "kfreebsd-gnu" "gnu")
+     -pipe -DUSE_ICON -DARCH_STRING=\\\"$(ARCH)\\\"
+   CLIENT_CFLAGS += $(SDL_CFLAGS)
+ 
+-  OPTIMIZEVM = -O3
+-  OPTIMIZE = $(OPTIMIZEVM) -ffast-math
++  OPTIMIZEVM =
++  OPTIMIZE = $(OPTIMIZEVM)
+ 
+   ifeq ($(ARCH),x86_64)
+-    OPTIMIZEVM = -O3
+-    OPTIMIZE = $(OPTIMIZEVM) -ffast-math
++    OPTIMIZEVM =
++    OPTIMIZE = $(OPTIMIZEVM)
+     HAVE_VM_COMPILED = true
+   else
+   ifeq ($(ARCH),x86)
+-    OPTIMIZEVM = -O3 -march=i586
+-    OPTIMIZE = $(OPTIMIZEVM) -ffast-math
++    OPTIMIZEVM =
++    OPTIMIZE = $(OPTIMIZEVM)
+     HAVE_VM_COMPILED=true
+   else
+   ifeq ($(ARCH),ppc)
+-    ALTIVEC_CFLAGS = -maltivec
++    ALTIVEC_CFLAGS =
+     HAVE_VM_COMPILED=true
+   endif
+   ifeq ($(ARCH),ppc64)
+-    ALTIVEC_CFLAGS = -maltivec
++    ALTIVEC_CFLAGS =
+     HAVE_VM_COMPILED=true
+   endif
+   ifeq ($(ARCH),sparc)
+-    OPTIMIZE += -mtune=ultrasparc3 -mv8plus
+-    OPTIMIZEVM += -mtune=ultrasparc3 -mv8plus
++    OPTIMIZE +=
++    OPTIMIZEVM +=
+     HAVE_VM_COMPILED=true
+   endif
+   ifeq ($(ARCH),armv7l)
+@@ -1153,7 +1153,7 @@ endif
+ 
+ define DO_CC
+ $(echo_cmd) "CC $<"
+-$(Q)$(CC) $(NOTSHLIBCFLAGS) $(CFLAGS) $(CLIENT_CFLAGS) $(OPTIMIZE) -o $@ -c $<
++$(Q)$(CC) $(NOTSHLIBCFLAGS) $(CFLAGS) $(CPPFLAGS) $(CLIENT_CFLAGS) $(OPTIMIZE) -o $@ -c $<
+ endef
+ 
+ define DO_CC_ALTIVEC
+@@ -1163,7 +1163,7 @@ endef
+ 
+ define DO_REF_CC
+ $(echo_cmd) "REF_CC $<"
+-$(Q)$(CC) $(SHLIBCFLAGS) $(CFLAGS) $(CLIENT_CFLAGS) $(OPTIMIZE) -o $@ -c $<
++$(Q)$(CC) $(SHLIBCFLAGS) $(CFLAGS) $(CPPFLAGS) $(CLIENT_CFLAGS) $(OPTIMIZE) -o $@ -c $<
+ endef
+ 
+ define DO_REF_CC_ALTIVEC
+@@ -1181,7 +1181,7 @@ endef
+ 
+ define DO_BOT_CC
+ $(echo_cmd) "BOT_CC $<"
+-$(Q)$(CC) $(NOTSHLIBCFLAGS) $(CFLAGS) $(BOTCFLAGS) $(OPTIMIZE) -DBOTLIB -o $@ -c $<
++$(Q)$(CC) $(NOTSHLIBCFLAGS) $(CFLAGS) $(CPPFLAGS) $(BOTCFLAGS) $(OPTIMIZE) -DBOTLIB -o $@ -c $<
+ endef
+ 
+ ifeq ($(GENERATE_DEPENDENCIES),1)
+@@ -1195,7 +1195,7 @@ endef
+ 
+ define DO_DED_CC
+ $(echo_cmd) "DED_CC $<"
+-$(Q)$(CC) $(NOTSHLIBCFLAGS) -DDEDICATED $(CFLAGS) $(SERVER_CFLAGS) $(OPTIMIZE) -o $@ -c $<
++$(Q)$(CC) $(NOTSHLIBCFLAGS) -DDEDICATED $(CFLAGS) $(CPPFLAGS) $(SERVER_CFLAGS) $(OPTIMIZE) -o $@ -c $<
+ endef
+ 
+ define DO_WINDRES

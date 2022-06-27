@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit cmake-utils
+EAPI=8
+inherit cmake
 
 DATE=20150311
 MY_PV="${PV/.${DATE}_p/+${DATE}-}"
@@ -22,19 +22,21 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-debian-${MY_PX}"
 
-src_prepare() {
-	rm -f "${S}"/debian/patches/0001*.patch || die
-	eapply "${S}"/debian/patches/*.patch
+PATCHES=( "${S}"/debian/patches/ )
 
+src_prepare() {
+	cmake_src_prepare
+
+	sed -i -e "/^version=/s/=.*$/=${MY_PX}/" version.sh || die
 	sed -e 's%#include <ipset%#include <libcorkipset%' \
 		-e 's%#include "ipset%#include "libcorkipset%' \
 		-i include/ipset/*.h \
 			*/*/*/*.c \
 			*/*/*/*.c.in \
 			*/*/*.c */*.c || die
-	sed -i -e "s/-Werror/-Wextra/" CMakeLists.txt || die
+	sed -e "s/-Werror/-Wextra/" \
+		-e "/^add_subdirectory(docs)/d" \
+		-i CMakeLists.txt || die
 
 	mv include/{,libcork}ipset || die
-
-	cmake-utils_src_prepare
 }

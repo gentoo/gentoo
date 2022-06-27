@@ -9,7 +9,7 @@ DESCRIPTION="Contains the lowlevel lcd drivers for GraphLCD"
 HOMEPAGE="https://projects.vdr-developer.org/projects/graphlcd-base"
 SRC_URI="https://projects.vdr-developer.org/git/${PN}.git/snapshot/${P}.tar.bz2"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE="fontconfig freetype graphicsmagick imagemagick lcd_devices_ax206dpf lcd_devices_picolcd_256x64 lcd_devices_vnc"
@@ -73,7 +73,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" UDEVRULESDIR="/lib/udev/rules.d" install
+	emake DESTDIR="${D}" UDEVRULESDIR="$(get_udevdir)/rules.d" install
 
 	einstalldocs
 }

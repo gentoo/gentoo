@@ -1,0 +1,20 @@
+--- ./CMakeLists.txt	2022-05-24 12:36:43.084752081 +0200
++++ ./CMakeLists.txt.new	2022-05-24 12:44:08.895710126 +0200
+@@ -1282,7 +1282,7 @@
+     else()
+       set(OCC_LIBS)
+       foreach(OCC ${OCC_LIBS_REQUIRED})
+-        find_library(OCC_LIB ${OCC} HINTS ENV CASROOT PATH_SUFFIXES
++        find_library(OCC_LIB ${OCC} HINTS ENV CASROOT PATH_SUFFIXES opencascade
+                      lib ${OCC_SYS_NAME}/vc8/lib  ${OCC_SYS_NAME}/vc9/lib
+                          ${OCC_SYS_NAME}/vc10/lib ${OCC_SYS_NAME}/vc11/lib
+                          ${OCC_SYS_NAME}/vc12/lib ${OCC_SYS_NAME}/vc14/lib
+@@ -1308,7 +1308,7 @@
+       list(LENGTH OCC_CAF_LIBS_REQUIRED NUM_OCC_CAF_LIBS_REQUIRED)
+       set(OCC_CAF_LIBS)
+       foreach(OCC ${OCC_CAF_LIBS_REQUIRED})
+-        find_library(OCC_CAF_LIB ${OCC} HINTS ENV CASROOT PATH_SUFFIXES
++        find_library(OCC_CAF_LIB ${OCC} HINTS ENV CASROOT PATH_SUFFIXES opencascade
+                      lib ${OCC_SYS_NAME}/vc8/lib  ${OCC_SYS_NAME}/vc9/lib
+                          ${OCC_SYS_NAME}/vc10/lib ${OCC_SYS_NAME}/vc11/lib
+                          ${OCC_SYS_NAME}/vc12/lib ${OCC_SYS_NAME}/vc14/lib

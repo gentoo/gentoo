@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit gnome2 pam python-any-r1 virtualx
 
@@ -13,7 +13,7 @@ LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 IUSE="pam selinux +ssh-agent test"
 RESTRICT="!test? ( test )"
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 
 # Replace gkd gpg-agent with pinentry[gnome-keyring] one, bug #547456
 RDEPEND="

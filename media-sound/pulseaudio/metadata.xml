@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>gnome@gentoo.org</email>
-    <name>Gentoo GNOME Desktop</name>
+  <maintainer type="person" proxied="yes">
+    <email>igor.v.kovalenko@gmail.com</email>
+    <name>Igor V. Kovalenko</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>sam@gentoo.org</email>
+    <name>Sam James</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>leio@gentoo.org</email>
+    <name>Mart Raudsepp</name>
   </maintainer>
   <use>
     <flag name="X">
@@ -73,6 +81,16 @@
     </flag>
     <flag name="ofono-headset">
       Build with oFono HFP backend for bluez 5, requires <pkg>net-misc/ofono</pkg>.
+    </flag>
+    <flag name="gstreamer">
+      Build with support for gstreamer including ability to use bluetooth codecs.
+      For bluetooth codecs see USE ldac and aptx.
+    </flag>
+    <flag name="aptx">
+      aptX (HD) over Bluetooth (many Android compatible headphones), requires <pkg>media-plugins/gst-plugins-openaptx</pkg>.
+    </flag>
+    <flag name="ldac">
+      LDAC over Bluetooth (primarily Sony headphones), requires <pkg>media-plugins/gst-plugins-ldac</pkg>.
     </flag>
   </use>
 </pkgmetadata>

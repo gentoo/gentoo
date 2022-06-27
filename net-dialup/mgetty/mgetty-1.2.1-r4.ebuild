@@ -29,7 +29,7 @@ RDEPEND="
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 -riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="+fax fidonet split-usr"
 
 PATCHES=(
@@ -39,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.1-Lucent.c.patch
 	"${FILESDIR}"/${PN}-1.2.1-gentoo.patch
 	"${FILESDIR}"/${PN}-1.2.1-aarch64.patch
+	"${FILESDIR}"/${PN}-1.2.1-riscv64.patch
 )
 
 src_prepare() {

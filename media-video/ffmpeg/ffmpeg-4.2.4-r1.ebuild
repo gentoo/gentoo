@@ -83,7 +83,7 @@ FFMPEG_FLAG_MAP=(
 		amr:libopencore-amrwb amr:libopencore-amrnb codec2:libcodec2 dav1d:libdav1d fdk:libfdk-aac
 		jpeg2k:libopenjpeg bluray:libbluray gme:libgme gsm:libgsm
 		libaribb24 mmal modplug:libmodplug opus:libopus libilbc librtmp ssh:libssh
-		speex:libspeex srt:libsrt svg:librsvg video_cards_nvidia:ffnvcodec
+		speex:libspeex srt:libsrt svg:librsvg nvenc:ffnvcodec
 		vorbis:libvorbis vpx:libvpx zvbi:libzvbi
 		# libavfilter options
 		appkit
@@ -250,7 +250,7 @@ RDEPEND="
 	svg? ( gnome-base/librsvg:2=[${MULTILIB_USEDEP}] )
 	truetype? ( >=media-libs/freetype-2.5.0.1:2[${MULTILIB_USEDEP}] )
 	vaapi? ( >=x11-libs/libva-1.2.1-r1:0=[${MULTILIB_USEDEP}] )
-	video_cards_nvidia? ( >=media-libs/nv-codec-headers-9.0.18.0[${MULTILIB_USEDEP}] )
+	nvenc? ( >=media-libs/nv-codec-headers-9.0.18.0[${MULTILIB_USEDEP}] )
 	vdpau? ( >=x11-libs/libvdpau-0.7[${MULTILIB_USEDEP}] )
 	vidstab? ( >=media-libs/vidstab-1.1.0[${MULTILIB_USEDEP}] )
 	vorbis? (
@@ -303,7 +303,7 @@ GPL_REQUIRED_USE="
 	)
 "
 REQUIRED_USE="
-	cuda? ( video_cards_nvidia )
+	cuda? ( nvenc )
 	libv4l? ( v4l )
 	fftools_cws2fws? ( zlib )
 	test? ( encode )
@@ -320,7 +320,7 @@ PATCHES=(
 	"${FILESDIR}"/chromium-r1.patch
 	"${WORKDIR}/${PN}"-4.2.2-ppc64-gcc.patch     # both ppc patches from
 	"${WORKDIR}/${PN}"-4.2.2-ppc64-altivec.patch # https://trac.ffmpeg.org/ticket/7861
-
+	"${FILESDIR}"/ffmpeg-5.0-backport-ranlib-build-fix.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -341,6 +341,15 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myconf=( ${EXTRA_FFMPEG_CONF} )
+
+	# bug 842201
+	use ia64 && tc-is-gcc && append-flags \
+		-fno-tree-ccp \
+		-fno-tree-dominator-opts \
+		-fno-tree-fre \
+		-fno-code-hoisting \
+		-fno-tree-pre \
+		-fno-tree-vrp
 
 	local ffuse=( "${FFMPEG_FLAG_MAP[@]}" )
 	use openssl && myconf+=( --enable-nonfree )

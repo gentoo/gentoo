@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xorg-3.eclass
@@ -8,7 +8,7 @@
 # Author: Tomáš Chvátal <scarabeus@gentoo.org>
 # Author: Donnie Berkholz <dberkholz@gentoo.org>
 # Author: Matt Turner <mattst88@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: multilib-minimal
 # @BLURB: Reduces code duplication in the modularized X11 ebuilds.
 # @DESCRIPTION:
@@ -42,7 +42,7 @@ if [[ ${CATEGORY} = media-fonts ]]; then
 	esac
 fi
 
-# @ECLASS-VARIABLE: XORG_MULTILIB
+# @ECLASS_VARIABLE: XORG_MULTILIB
 # @PRE_INHERIT
 # @DESCRIPTION:
 # If set to 'yes', the multilib support for package will be enabled. Set
@@ -52,37 +52,37 @@ fi
 # we need to inherit autotools first to get the deps
 inherit autotools libtool multilib toolchain-funcs flag-o-matic \
 	${FONT_ECLASS} ${GIT_ECLASS}
+unset FONT_ECLASS GIT_ECLASS
 
 if [[ ${XORG_MULTILIB} == yes ]]; then
 	inherit multilib-minimal
 fi
 
-EXPORTED_FUNCTIONS="src_prepare src_configure src_unpack src_compile src_install pkg_postinst pkg_postrm"
 case "${EAPI:-0}" in
-	7) ;;
+	[7-8]) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
 # exports must be ALWAYS after inherit
-EXPORT_FUNCTIONS ${EXPORTED_FUNCTIONS}
+EXPORT_FUNCTIONS src_prepare src_configure src_unpack src_compile src_install pkg_postinst pkg_postrm
 
 IUSE=""
 
-# @ECLASS-VARIABLE: XORG_EAUTORECONF
+# @ECLASS_VARIABLE: XORG_EAUTORECONF
 # @PRE_INHERIT
 # @DESCRIPTION:
 # If set to 'yes' and configure.ac exists, eautoreconf will run. Set
 # before inheriting this eclass.
 : ${XORG_EAUTORECONF:="no"}
 
-# @ECLASS-VARIABLE: XORG_BASE_INDIVIDUAL_URI
+# @ECLASS_VARIABLE: XORG_BASE_INDIVIDUAL_URI
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Set up SRC_URI for individual modular releases. If set to an empty
 # string, no SRC_URI will be provided by the eclass.
 : ${XORG_BASE_INDIVIDUAL_URI="https://www.x.org/releases/individual"}
 
-# @ECLASS-VARIABLE: XORG_MODULE
+# @ECLASS_VARIABLE: XORG_MODULE
 # @PRE_INHERIT
 # @DESCRIPTION:
 # The subdirectory to download source from. Possible settings are app,
@@ -103,7 +103,7 @@ if [[ ${XORG_MODULE} == auto ]]; then
 	esac
 fi
 
-# @ECLASS-VARIABLE: XORG_PACKAGE_NAME
+# @ECLASS_VARIABLE: XORG_PACKAGE_NAME
 # @PRE_INHERIT
 # @DESCRIPTION:
 # For git checkout the git repository might differ from package name.
@@ -112,14 +112,14 @@ fi
 
 HOMEPAGE="https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/${XORG_MODULE}${XORG_PACKAGE_NAME}"
 
-# @ECLASS-VARIABLE: XORG_TARBALL_SUFFIX
+# @ECLASS_VARIABLE: XORG_TARBALL_SUFFIX
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Most X11 projects provide tarballs as tar.bz2 or tar.xz. This eclass defaults
 # to bz2.
 : ${XORG_TARBALL_SUFFIX:="bz2"}
 
-if [[ -n ${GIT_ECLASS} ]]; then
+if [[ ${PV} == *9999* ]]; then
 	: ${EGIT_REPO_URI:="https://gitlab.freedesktop.org/xorg/${XORG_MODULE}${XORG_PACKAGE_NAME}.git"}
 elif [[ -n ${XORG_BASE_INDIVIDUAL_URI} ]]; then
 	SRC_URI="${XORG_BASE_INDIVIDUAL_URI}/${XORG_MODULE}${P}.tar.${XORG_TARBALL_SUFFIX}"
@@ -143,16 +143,22 @@ if [[ ${PN} != util-macros ]] ; then
 	# Required even by xorg-server
 	[[ ${PN} == "font-util" ]] || EAUTORECONF_DEPEND+=" >=media-fonts/font-util-1.2.0"
 fi
-WANT_AUTOCONF="latest"
-WANT_AUTOMAKE="latest"
 for arch in ${XORG_EAUTORECONF_ARCHES}; do
 	EAUTORECONF_DEPENDS+=" ${arch}? ( ${EAUTORECONF_DEPEND} )"
 done
-unset arch
+unset arch XORG_EAUTORECONF_ARCHES
 BDEPEND+=" ${EAUTORECONF_DEPENDS}"
 [[ ${XORG_EAUTORECONF} != no ]] && BDEPEND+=" ${EAUTORECONF_DEPEND}"
 unset EAUTORECONF_DEPENDS
 unset EAUTORECONF_DEPEND
+
+# @ECLASS_VARIABLE: FONT_DIR
+# @PRE_INHERIT
+# @DESCRIPTION:
+# If you're creating a font package and the suffix of PN is not equal to
+# the subdirectory of /usr/share/fonts/ it should install into, set
+# FONT_DIR to that directory or directories.  Set before inheriting this
+# eclass.
 
 if [[ ${FONT} == yes ]]; then
 	RDEPEND+=" media-fonts/encodings
@@ -162,13 +168,6 @@ if [[ ${FONT} == yes ]]; then
 		>=x11-apps/mkfontscale-1.2.0"
 	BDEPEND+=" x11-apps/bdftopcf"
 
-	# @ECLASS-VARIABLE: FONT_DIR
-	# @PRE_INHERIT
-	# @DESCRIPTION:
-	# If you're creating a font package and the suffix of PN is not equal to
-	# the subdirectory of /usr/share/fonts/ it should install into, set
-	# FONT_DIR to that directory or directories. Set before inheriting this
-	# eclass.
 	[[ -z ${FONT_DIR} ]] && FONT_DIR=${PN##*-}
 
 	# Fix case of font directories
@@ -179,7 +178,7 @@ if [[ ${FONT} == yes ]]; then
 fi
 BDEPEND+=" virtual/pkgconfig"
 
-# @ECLASS-VARIABLE: XORG_DRI
+# @ECLASS_VARIABLE: XORG_DRI
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Possible values are "always" or the value of the useflag DRI capabilities
@@ -213,7 +212,7 @@ if [[ ${PN} == xf86-video-* || ${PN} == xf86-input-* ]]; then
 fi
 
 
-# @ECLASS-VARIABLE: XORG_DOC
+# @ECLASS_VARIABLE: XORG_DOC
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Possible values are "always" or the value of the useflag doc packages
@@ -226,7 +225,6 @@ DOC_DEPEND="
 	doc? (
 		|| ( app-text/asciidoc dev-ruby/asciidoctor )
 		app-text/xmlto
-		app-doc/doxygen
 		app-text/docbook-xml-dtd:4.1.2
 		app-text/docbook-xml-dtd:4.2
 		app-text/docbook-xml-dtd:4.3
@@ -269,7 +267,7 @@ xorg-3_pkg_setup() {
 xorg-3_src_unpack() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	if [[ -n ${GIT_ECLASS} ]]; then
+	if [[ ${PV} == *9999* ]]; then
 		git-r3_src_unpack
 	else
 		unpack ${A}
@@ -339,9 +337,12 @@ xorg-3_flags_setup() {
 
 	# Win32 require special define
 	[[ ${CHOST} == *-winnt* ]] && append-cppflags -DWIN32 -D__STDC__
-	# hardened ldflags
-	[[ ${PN} == xorg-server || ${PN} == xf86-video-* || ${PN} == xf86-input-* ]] \
-		&& append-ldflags -Wl,-z,lazy
+
+	# Hardened flags break module autoloading et al (also fixes #778494)
+	if [[ ${PN} == xorg-server || ${PN} == xf86-video-* || ${PN} == xf86-input-* ]]; then
+		filter-flags -fno-plt
+		append-ldflags -Wl,-z,lazy
+	fi
 
 	# Quite few libraries fail on runtime without these:
 	if has static-libs ${IUSE//+}; then
@@ -355,6 +356,11 @@ multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf "${econfargs[@]}"
 }
 
+# @VARIABLE: XORG_CONFIGURE_OPTIONS
+# @DESCRIPTION:
+# Array of an additional options to pass to configure.
+# @DEFAULT_UNSET
+
 # @FUNCTION: xorg-3_src_configure
 # @DESCRIPTION:
 # Perform any necessary pre-configuration steps, then run configure
@@ -363,10 +369,6 @@ xorg-3_src_configure() {
 
 	xorg-3_flags_setup
 
-	# @VARIABLE: XORG_CONFIGURE_OPTIONS
-	# @DESCRIPTION:
-	# Array of an additional options to pass to configure.
-	# @DEFAULT_UNSET
 	local xorgconfadd=("${XORG_CONFIGURE_OPTIONS[@]}")
 
 	local FONT_OPTIONS=()

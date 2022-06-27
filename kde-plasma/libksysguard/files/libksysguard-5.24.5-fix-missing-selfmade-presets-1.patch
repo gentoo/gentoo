@@ -1,0 +1,35 @@
+From b94b0e11f9c0f718f109f37dad8a889301f3a59a Mon Sep 17 00:00:00 2001
+From: Arjen Hiemstra <ahiemstra@heimr.nl>
+Date: Mon, 9 May 2022 19:05:06 +0200
+Subject: [PATCH] Faces: Write preset faceproperties to the right location
+
+When loading presets we expect the faceproperties file to be located in
+"contents/config/" but when writing we are placing it in "contents/"
+which means that custom presets are not loaded properly.
+
+BUG: 450745
+
+
+(cherry picked from commit 05866a594198d8c76814d8cd4eb3e83cc9123c8d)
+---
+ faces/SensorFaceController.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/faces/SensorFaceController.cpp b/faces/SensorFaceController.cpp
+index d3daa87d..21fb2954 100644
+--- a/faces/SensorFaceController.cpp
++++ b/faces/SensorFaceController.cpp
+@@ -938,8 +938,8 @@ void SensorFaceController::savePreset()
+     cg.sync();
+ 
+     QDir subDir(dir.path());
+-    subDir.mkdir(QStringLiteral("contents"));
+-    KConfig faceConfig(subDir.path() % QStringLiteral("/contents/faceproperties"));
++    subDir.mkpath(QStringLiteral("contents/config"));
++    KConfig faceConfig(subDir.path() % QStringLiteral("/contents/config/faceproperties"));
+ 
+     KConfigGroup configGroup(&faceConfig, "Config");
+     configGroup.writeEntry(QStringLiteral("totalSensors"), QJsonDocument(totalSensors()).toJson(QJsonDocument::Compact));
+-- 
+GitLab
+

@@ -296,11 +296,11 @@ src_configure() {
 	fi
 
 	# These are enabled by default in all mozilla applications
-	mozconfig_annotate '' --with-system-nspr --with-nspr-prefix="${SYSROOT}${EPREFIX}"/usr
-	mozconfig_annotate '' --with-system-nss --with-nss-prefix="${SYSROOT}${EPREFIX}"/usr
-	mozconfig_annotate '' --x-includes="${SYSROOT}${EPREFIX}"/usr/include --x-libraries="${SYSROOT}${EPREFIX}"/usr/$(get_libdir)
+	mozconfig_annotate '' --with-system-nspr --with-nspr-prefix="${ESYSROOT}"/usr
+	mozconfig_annotate '' --with-system-nss --with-nss-prefix="${ESYSROOT}"/usr
+	mozconfig_annotate '' --x-includes="${ESYSROOT}"/usr/include --x-libraries="${ESYSROOT}"/usr/$(get_libdir)
 	if use system-libevent ; then
-		mozconfig_annotate '' --with-system-libevent="${SYSROOT}${EPREFIX}"/usr
+		mozconfig_annotate '' --with-system-libevent="${ESYSROOT}"/usr
 	fi
 	mozconfig_annotate '' --prefix="${EPREFIX}"/usr
 	mozconfig_annotate '' --libdir="${EPREFIX}"/usr/$(get_libdir)
@@ -417,12 +417,8 @@ src_configure() {
 	# Work around breakage in makeopts with --no-print-directory
 	MAKEOPTS="${MAKEOPTS/--no-print-directory/}"
 
-	if [[ $(gcc-major-version) -lt 4 ]] ; then
-		append-cxxflags -fno-stack-protector
-	elif [[ $(gcc-major-version) -gt 4 || $(gcc-minor-version) -gt 3 ]] ; then
-		if use amd64 || use x86 ; then
-			append-flags -mno-avx
-		fi
+	if use amd64 || use x86 ; then
+		append-flags -mno-avx
 	fi
 
 	# Pass $MAKEOPTS to build system

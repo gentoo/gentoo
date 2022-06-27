@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_REQ_USE="sqlite"
 PYTHON_COMPAT=( python3_{8..10} )
 inherit readme.gentoo-r1 systemd distutils-r1
@@ -19,7 +20,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~riscv ~amd64-linux ~x86-linux"
 
 IUSE="crypt docker examples irc test"
 RESTRICT="!test? ( test )"

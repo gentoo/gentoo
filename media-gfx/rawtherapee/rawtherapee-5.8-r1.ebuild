@@ -42,14 +42,16 @@ BDEPEND="virtual/pkgconfig"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-    "${FILESDIR}/RT_5.8_fix_crop.patch"
-    "${FILESDIR}/RT_5.8_glibc234.patch"
+	"${FILESDIR}/RT_5.8_fix_crop.patch"
+	"${FILESDIR}/RT_5.8_glibc234.patch"
 )
 
 pkg_pretend() {
-	if use openmp ; then
-		tc-has-openmp || die "Please switch to an openmp compatible compiler"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_configure() {

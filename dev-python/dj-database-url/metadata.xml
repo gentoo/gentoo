@@ -8,6 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">dj-database-url</remote-id>
-		<remote-id type="github">jacobian/dj-database-url</remote-id>
+		<remote-id type="github">jazzband/dj-database-url</remote-id>
 	</upstream>
 </pkgmetadata>

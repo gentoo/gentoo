@@ -9,9 +9,5 @@ elibc_glibc
 # Pulls dev-db/oracle-instantclient which doesn't work on musl
 oracle
 
-# Musl doesn't have support for utmp/wtmp by design
-utmp
-wtmp
-
 # sys-apps/systemd is masked
 systemd

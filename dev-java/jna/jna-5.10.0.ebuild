@@ -14,7 +14,7 @@ SRC_URI="https://github.com/java-native-access/jna/archive/refs/tags/${PV}.tar.g
 
 LICENSE="|| ( Apache-2.0 LGPL-2.1+ )"
 SLOT="4"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -30,7 +30,7 @@ DEPEND="
 	dev-java/ant-core:0
 	dev-java/asm:9
 	test? (
-		dev-java/ant-junit:0
+		dev-java/ant-junit4:0
 		dev-java/junit:4
 		dev-java/reflections:0
 	)
@@ -46,7 +46,6 @@ RDEPEND="
 DOCS=( README.md CHANGES.md OTHERS TODO )
 PATCHES=(
 	"${FILESDIR}/${PV}-build.xml.patch"
-	"${FILESDIR}/${PV}-tests-exclude.patch"
 	"${FILESDIR}/4.2.2-makefile-flags.patch"
 )
 
@@ -54,7 +53,7 @@ JAVA_ANT_REWRITE_CLASSPATH="true"
 JAVA_PKG_BSFIX_NAME="build.xml build-ant-tools.xml"
 EANT_BUILD_TARGET="jar contrib-jars"
 EANT_EXTRA_ARGS="-Dbuild-native=true -Dcompatibility=1.8 -Ddynlink.native=true"
-EANT_TEST_EXTRA_ARGS="-Djava.io.tmpdir=${T}"
+EANT_TEST_EXTRA_ARGS="-Djava.io.tmpdir=\"${T}\""
 EANT_TEST_GENTOO_CLASSPATH="animal-sniffer-annotations,reflections"
 
 pkg_setup() {

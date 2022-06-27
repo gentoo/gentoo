@@ -1,6 +1,5 @@
-diff -up evo-openldap-2.4.14/include/ldap.h.evolution-ntlm evo-openldap-2.4.14/include/ldap.h
---- evo-openldap-2.4.14/include/ldap.h.evolution-ntlm	2009-01-27 00:29:53.000000000 +0100
-+++ evo-openldap-2.4.14/include/ldap.h	2009-02-17 10:10:00.000000000 +0100
+--- a/include/ldap.h
++++ b/include/ldap.h
 @@ -2461,5 +2461,26 @@ ldap_parse_deref_control LDAP_P((
  	LDAPControl	**ctrls,
  	LDAPDerefRes	**drp ));
@@ -28,9 +27,8 @@ diff -up evo-openldap-2.4.14/include/ldap.h.evolution-ntlm evo-openldap-2.4.14/i
 +
  LDAP_END_DECL
  #endif /* _LDAP_H */
-diff -up evo-openldap-2.4.14/libraries/libldap/Makefile.in.evolution-ntlm evo-openldap-2.4.14/libraries/libldap/Makefile.in
---- evo-openldap-2.4.14/libraries/libldap/Makefile.in.evolution-ntlm	2009-01-27 00:29:53.000000000 +0100
-+++ evo-openldap-2.4.14/libraries/libldap/Makefile.in	2009-02-17 10:10:00.000000000 +0100
+--- a/libraries/libldap/Makefile.in
++++ b/libraries/libldap/Makefile.in
 @@ -20,7 +20,7 @@ PROGRAMS = apitest dntest ftest ltest ur
  SRCS	= bind.c open.c result.c error.c compare.c search.c \
  	controls.c messages.c references.c extended.c cyrus.c \
@@ -49,9 +47,8 @@ diff -up evo-openldap-2.4.14/libraries/libldap/Makefile.in.evolution-ntlm evo-op
  	filter.lo free.lo sort.lo passwd.lo whoami.lo \
  	getdn.lo getentry.lo getattr.lo getvalues.lo addentry.lo \
  	request.lo os-ip.lo url.lo pagectrl.lo sortctrl.lo vlvctrl.lo \
-diff -up /dev/null evo-openldap-2.4.14/libraries/libldap/ntlm.c
---- /dev/null	2009-02-17 09:19:52.829004420 +0100
-+++ evo-openldap-2.4.14/libraries/libldap/ntlm.c	2009-02-17 10:10:00.000000000 +0100
+--- /dev/null
++++ b/libraries/libldap/ntlm.c
 @@ -0,0 +1,137 @@
 +/* $OpenLDAP: pkg/ldap/libraries/libldap/ntlm.c,v 1.1.4.10 2002/01/04 20:38:21 kurt Exp $ */
 +/*

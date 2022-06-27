@@ -13,7 +13,4 @@
 	<upstream>
 		<remote-id type="github">Kozea/Radicale</remote-id>
 	</upstream>
-	<use>
-		<flag name="bcrypt">Enable bcrypt</flag>
-	</use>
 </pkgmetadata>

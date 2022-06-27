@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,7 +35,7 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		--libdir="${EPREFIX}"/usr/$(get_libdir)/uftrace
+		--libdir="${EPREFIX}/usr/$(get_libdir)/uftrace"
 		$(use_with capstone)
 		--without-libpython
 	)
@@ -48,7 +48,7 @@ src_configure() {
 			--without-libluajit
 		)
 	fi
-	CC=$(tc-getCC) LD=$(tc-getLD) econf "${myconf[@]}"
+	CC="$(tc-getCC)" LD="$(tc-getLD)" econf "${myconf[@]}"
 }
 
 src_compile() {

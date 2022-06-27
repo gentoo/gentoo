@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/joblib/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 ~riscv x86"
 
 BDEPEND="dev-python/cython[${PYTHON_USEDEP}]"
 

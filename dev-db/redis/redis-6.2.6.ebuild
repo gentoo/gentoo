@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ EAPI=7
 #    because lua_open became lua_newstate in 5.2
 LUA_COMPAT=( lua5-1 luajit )
 
-inherit autotools flag-o-matic lua-single systemd toolchain-funcs tmpfiles
+inherit autotools edo flag-o-matic lua-single multiprocessing systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="A persistent caching system, key-value and data structures database"
 HOMEPAGE="https://redis.io"
@@ -19,8 +19,8 @@ SRC_URI="https://download.redis.io/releases/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="+jemalloc ssl systemd tcmalloc test"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
+IUSE="+jemalloc selinux ssl systemd tcmalloc test"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -35,6 +35,7 @@ RDEPEND="
 	${COMMON_DEPEND}
 	acct-group/redis
 	acct-user/redis
+	selinux? ( sec-policy/selinux-redis )
 "
 
 BDEPEND="
@@ -64,9 +65,6 @@ PATCHES=(
 src_prepare() {
 	default
 
-	# unstable on jemalloc
-	> tests/unit/memefficiency.tcl || die
-
 	# Copy lua modules into build dir
 	cp "${S}"/deps/lua/src/{fpconv,lua_bit,lua_cjson,lua_cmsgpack,lua_struct,strbuf}.c "${S}"/src || die
 	cp "${S}"/deps/lua/src/{fpconv,strbuf}.h "${S}"/src || die
@@ -93,7 +91,7 @@ src_prepare() {
 
 	# Use the correct pkgconfig name for Lua.
 	# The upstream configure script handles luajit specially, and is not
-	# effected by these changes.
+	# affected by these changes.
 	sed -i	\
 		-e "/^AC_INIT/s|, [0-9].+, |, $PV, |" \
 		-e "s:AC_CONFIG_FILES(\[Makefile\]):AC_CONFIG_FILES([${makefiles}]):g" \
@@ -132,18 +130,24 @@ src_compile() {
 }
 
 src_test() {
-	# Known to fail with FEATURES=usersandbox
-	if has usersandbox ${FEATURES}; then
-		ewarn "You are emerging ${P} with 'usersandbox' enabled." \
-			"Expect some test failures or emerge with 'FEATURES=-usersandbox'!"
+	local runtestargs=(
+		--clients "$(makeopts_jobs)" # see bug #649868
+	)
+
+	if has usersandbox ${FEATURES} || ! has userpriv ${FEATURES}; then
+		ewarn "unit/oom-score-adj test will be skipped." \
+			"It is known to fail with FEATURES usersandbox or -userpriv. See bug #756382."
+
+		# unit/oom-score-adj was introduced in version 6.2.0
+		runtestargs+=( --skipunit unit/oom-score-adj ) # see bug #756382
 	fi
 
 	if use ssl; then
-		./utils/gen-test-certs.sh
-		./runtest --tls
-	else
-		./runtest
+		edo ./utils/gen-test-certs.sh
+		runtestargs+=( --tls )
 	fi
+
+	edo ./runtest "${runtestargs[@]}"
 }
 
 src_install() {

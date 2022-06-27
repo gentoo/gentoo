@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,8 +22,8 @@ src_compile() {
 	if use emboss; then
 		mkdir CODONS || die
 		ebegin "Indexing CUTG for usage with EMBOSS."
-		EMBOSS_DATA="." cutgextract -auto -directory "${S}" || die "Indexing CUTG failed"
-		eend
+		EMBOSS_DATA="." cutgextract -auto -directory "${S}"
+		eend $? "Indexing CUTG failed" || die
 	fi
 }
 

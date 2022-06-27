@@ -8,7 +8,7 @@ CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
 PYTHON_COMPAT=( python3_{8,9} )
 
-inherit cmake cuda elisp-common fortran-2 prefix python-single-r1 toolchain-funcs
+inherit cmake cuda elisp-common fortran-2 python-single-r1 toolchain-funcs
 
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
@@ -152,12 +152,12 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_C_COMPILER=$(tc-getCC)
-		-DCMAKE_CXX_COMPILER=$(tc-getCXX)
-		-DCMAKE_CUDA_HOST_COMPILER=$(tc-getCXX)
+		-DCMAKE_C_COMPILER="$(tc-getCC)"
+		-DCMAKE_CXX_COMPILER="$(tc-getCXX)"
+		-DCMAKE_CUDA_HOST_COMPILER="$(tc-getCXX)"
 		-DCMAKE_C_FLAGS="${CFLAGS}"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
-		-DCMAKE_CXX_STANDARD=$((usev c++11 || usev c++14 || usev c++17) | cut -c4-)
+		-DCMAKE_CXX_STANDARD=$( (usev c++11 || usev c++14 || usev c++17) | cut -c4-)
 		-DPYTHON_EXECUTABLE="${EPREFIX}/usr/bin/${EPYTHON}"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)"
 		-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)/share/man"

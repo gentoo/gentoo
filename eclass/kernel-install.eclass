@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-install.eclass
@@ -21,7 +21,7 @@
 # Additionally, the inherited mount-boot eclass exports pkg_pretend.
 # It also stubs out pkg_preinst and pkg_prerm defined by mount-boot.
 
-# @ECLASS-VARIABLE: KV_LOCALVERSION
+# @ECLASS_VARIABLE: KV_LOCALVERSION
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A string containing the kernel LOCALVERSION, e.g. '-gentoo'.
@@ -167,6 +167,9 @@ kernel-install_get_qemu_arch() {
 			;;
 		ppc64)
 			echo ppc64
+			;;
+		riscv)
+			echo riscv
 			;;
 		*)
 			die "${FUNCNAME}: unsupported ARCH=${ARCH}"

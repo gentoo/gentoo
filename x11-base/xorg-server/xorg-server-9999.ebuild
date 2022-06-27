@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://gitlab.freedesktop.org/xorg/xserver.git"
 DESCRIPTION="X.Org X servers"
 SLOT="0/${PV}"
 if [[ ${PV} != 9999* ]]; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 IUSE_SERVERS="xephyr xnest xorg xvfb"
@@ -54,8 +54,11 @@ CDEPEND="
 		>=media-libs/libepoxy-1.5.4[X,egl(+)]
 	)
 	udev? ( virtual/libudev:= )
-	unwind? ( sys-libs/libunwind )
-	selinux? ( sys-libs/libselinux )
+	unwind? ( sys-libs/libunwind:= )
+	selinux? (
+		sys-process/audit
+		sys-libs/libselinux:=
+	)
 	systemd? (
 		sys-apps/dbus
 		sys-apps/systemd
@@ -118,6 +121,7 @@ src_configure() {
 		$(meson_use udev udev_kms)
 		$(meson_use unwind libunwind)
 		$(meson_use xcsecurity)
+		$(meson_use selinux xselinux)
 		$(meson_use xephyr)
 		$(meson_use xnest)
 		$(meson_use xorg)

@@ -20,7 +20,7 @@ else
 		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/v${MY_PV}/${MY_P}.tar.gz"
 		S="${WORKDIR}/${P/_*}.src"
 	fi
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 LICENSE="BSD MIT"
@@ -30,7 +30,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/openssl-1.0.0b:0=
-	dev-libs/poco
+	dev-libs/poco[util,xml,zip]
 	>=dev-libs/protobuf-2.2.0:=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -48,7 +48,7 @@ RDEPEND="
 	x11-libs/libXi
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( dev-qt/qtdbus:5 )
-	g15? ( app-misc/g15daemon )
+	g15? ( app-misc/g15daemon:= )
 	jack? ( virtual/jack )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-sound/pulseaudio )
@@ -57,6 +57,7 @@ RDEPEND="
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 "
 DEPEND="${RDEPEND}
+	dev-cpp/nlohmann_json
 	dev-qt/qtconcurrent:5
 	dev-qt/qttest:5
 	>=dev-libs/boost-1.41.0
@@ -79,6 +80,7 @@ src_configure() {
 	local mycmakeargs=(
 		-Dalsa="$(usex alsa)"
 		-Dbundled-celt="ON"
+		-Dbundled-json="OFF"
 		-Dbundled-opus="OFF"
 		-Dbundled-speex="OFF"
 		-Ddbus="$(usex dbus)"

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-info
+inherit linux-info verify-sig
 
 PATCH_BLOB=04aef8a4dedf267dd5744afb134ef8046e77f613
 PATCH_FN=${PATCH_BLOB}-musl-fix-includes.patch
@@ -12,11 +12,15 @@ DESCRIPTION="the low-level library for netfilter related kernel/userspace commun
 HOMEPAGE="http://www.netfilter.org/projects/libnfnetlink/"
 SRC_URI="
 	http://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2
-	https://git.alpinelinux.org/cgit/aports/plain/main/libnfnetlink/musl-fix-includes.patch -> ${PATCH_FN}"
+	https://git.alpinelinux.org/cgit/aports/plain/main/libnfnetlink/musl-fix-includes.patch -> ${PATCH_FN}
+	verify-sig? ( http://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2.sig )"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/netfilter.org.asc
+
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-netfilter )"
 
 PATCHES=( "${DISTDIR}/${PATCH_FN}" )
 
@@ -38,6 +42,12 @@ pkg_setup() {
 	fi
 
 	check_extra_config
+}
+
+src_unpack() {
+	default
+
+	use verify-sig && verify-sig_verify_detached "${DISTDIR}"/${P}.tar.bz2{,.sig}
 }
 
 src_configure() {

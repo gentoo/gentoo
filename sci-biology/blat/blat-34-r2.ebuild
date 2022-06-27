@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,7 +30,7 @@ src_compile() {
 	tc-export AR CC
 
 	export HOME="${S}"
-	export MACHTYPE=$(tc-arch)
+	export MACHTYPE="$(tc-arch)"
 	[[ ${MACHTYPE} == "x86" ]] && MACHTYPE="i386"
 
 	mkdir -p bin/${MACHTYPE} || die
@@ -38,7 +38,7 @@ src_compile() {
 }
 
 src_install() {
-	export MACHTYPE=$(tc-arch)
+	export MACHTYPE="$(tc-arch)"
 	[[ ${MACHTYPE} == "x86" ]] && MACHTYPE="i386"
 
 	dobin bin/${MACHTYPE}/*

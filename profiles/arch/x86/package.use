@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ben Kohler <bkohler@gentoo.org> (2022-06-07)
+# Enable BIOS target by default
+sys-apps/memtest86+ bios32
+
 # Michał Górny <mgorny@gentoo.org> (2016-09-24)
 # Enable the GPU targets matching the default VIDEO_CARDS
 dev-ml/llvm-ocaml llvm_targets_AMDGPU llvm_targets_NVPTX

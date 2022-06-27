@@ -1,0 +1,101 @@
+diff --git a/parameterized/test.py b/parameterized/test.py
+index f98d865..ede7689 100644
+--- a/parameterized/test.py
++++ b/parameterized/test.py
+@@ -2,8 +2,8 @@
+ 
+ import inspect
+ import mock
++import pytest
+ from unittest import TestCase
+-from nose.tools import assert_equal, assert_raises
+ 
+ from .parameterized import (
+     PY3, PY2, parameterized, param, parameterized_argument_value_pairs,
+@@ -91,7 +91,7 @@ if not PYTEST:
+ 
+         @parameterized([(1, ), (2, )])
+         def test_setup(self, count, *a):
+-            assert_equal(self.actual_order, "setup %s" %(count, ))
++            assert self.actual_order == "setup %s" %(count, )
+             missing_tests.remove("test_setup(%s)" %(self.actual_order, ))
+ 
+ 
+@@ -235,9 +235,9 @@ class TestParamerizedOnTestCase(TestCase):
+         frame_locals = frame[0].f_locals
+         nose_test_method_name = frame_locals['a'][0]._testMethodName
+         expected_name = "test_on_TestCase2_custom_name_" + str(foo)
+-        assert_equal(nose_test_method_name, expected_name,
+-                     "Test Method name '%s' did not get customized to expected: '%s'" %
+-                     (nose_test_method_name, expected_name))
++        assert nose_test_method_name == expected_name, \
++                     "Test Method name '%s' did not get customized to expected: '%s'" % \
++                     (nose_test_method_name, expected_name)
+         missing_tests.remove("%s(%r, bar=%r)" %(expected_name, foo, bar))
+ 
+ 
+@@ -259,7 +259,7 @@ class TestParameterizedExpandDocstring(TestCase):
+         actual_docstring = test_method.__doc__
+         if rstrip:
+             actual_docstring = actual_docstring.rstrip()
+-        assert_equal(actual_docstring, expected_docstring)
++        assert actual_docstring == expected_docstring
+ 
+     @parameterized.expand([param("foo")],
+                           doc_func=lambda f, n, p: "stuff")
+@@ -335,7 +335,7 @@ def test_helpful_error_on_empty_iterable_input():
+ 
+ def test_skip_test_on_empty_iterable():
+     func = parameterized([], skip_on_empty=True)(lambda: None)
+-    assert_raises(SkipTest, func)
++    pytest.raises(SkipTest, func)
+ 
+ 
+ def test_helpful_error_on_empty_iterable_input_expand():
+@@ -366,10 +366,6 @@ def test_helpful_error_on_non_iterable_input():
+         raise AssertionError("Expected exception not raised")
+ 
+ 
+-def tearDownModule():
+-    missing = sorted(list(missing_tests))
+-    assert_equal(missing, [])
+-
+ def test_old_style_classes():
+     if PY3:
+         raise SkipTest("Py3 doesn't have old-style classes")
+@@ -418,7 +414,7 @@ class TestOldStyleClass:
+ def test_parameterized_argument_value_pairs(func_params, p, expected):
+     helper = eval("lambda %s: None" %(func_params, ))
+     actual = parameterized_argument_value_pairs(helper, p)
+-    assert_equal(actual, expected)
++    assert actual == expected
+ 
+ 
+ @parameterized([
+@@ -428,7 +424,7 @@ def test_parameterized_argument_value_pairs(func_params, p, expected):
+     (123456789, "12...89", 4),
+ ])
+ def test_short_repr(input, expected, n=6):
+-    assert_equal(short_repr(input, n=n), expected)
++    assert short_repr(input, n=n) == expected
+ 
+ @parameterized([
+     ("foo", ),
+@@ -442,7 +438,7 @@ cases_over_10 = [(i, i+1) for i in range(11)]
+ 
+ @parameterized(cases_over_10)
+ def test_cases_over_10(input, expected):
+-    assert_equal(input, expected-1)
++    assert input == expected-1
+ 
+ 
+ @parameterized_class(("a", "b", "c"), [
+@@ -461,7 +457,7 @@ class TestParameterizedClass(TestCase):
+ 
+     def _assertions(self, test_name):
+         assert hasattr(self, "a")
+-        assert_equal(self.b + self.c, 3)
++        assert self.b + self.c == 3
+         missing_tests.remove("%s:%s(%r, %r, %r)" %(
+             self.__class__.__name__,
+             test_name,

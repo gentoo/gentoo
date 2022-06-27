@@ -16,4 +16,8 @@
   <upstream>
     <remote-id type="github">ROCmSoftwarePlatform/rocFFT</remote-id>
   </upstream>
+    <use>
+        <flag name="benchmark">Build and install [dyna-]rocfft-rider.</flag>
+        <flag name="perfscripts">Install rocfft-perf performance visualization suite.</flag>
+    </use>
 </pkgmetadata>

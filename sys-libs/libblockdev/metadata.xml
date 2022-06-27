@@ -13,6 +13,7 @@
     <flag name="escrow">Support for building crypto plugin with escrow device support</flag>
     <flag name="kbd">Enable kernel block device support.</flag>
     <flag name="lvm">Enable support for Logical Volume Management via <pkg>sys-fs/lvm2</pkg>.</flag>
+    <flag name="nvme">Add nvme support via <pkg>sys-libs/libnvme</pkg></flag>
     <flag name="tools">Build tools</flag>
     <flag name="vdo">Enable Virtual Data Optimizer support.</flag>
   </use>

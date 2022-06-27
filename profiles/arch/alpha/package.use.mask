@@ -1,14 +1,47 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergey Torokhov <torokhov-s-a@yandex.ru> (2022-06-22)
+# media-libs/libjxl is not keyworded
+# bug https://bugs.gentoo.org/853628
+media-gfx/gimp jpegxl
+
+# Sam James <sam@gentoo.org> (2022-04-29)
+# Needs unkeyworded dev-util/umockdev
+sys-power/upower test
+
+# Michał Górny <mgorny@gentoo.org> (2022-04-26)
+# Unkeyworded dependencies.
+dev-python/click doc
+
+# Nickolas Raymond Kaczynski <nrk@disroot.org> (2022-04-24)
+# Dependencies are missing keywords
+media-libs/imlib2 svg heif jpegxl
+
+# Matt Turner <mattst88@gentoo.org> (2022-04-18)
+# app-text/nuspell is not keyworded
+app-text/enchant nuspell
+
+# Matt Turner <mattst88@gentoo.org> (2022-04-16)
+# sys-auth/seatd is not keyworded
+dev-libs/weston seatd
+
+# Lars Wendler <polynomial-c@gentoo.org> (2022-04-01)
+# gnome-base/librsvg missing keywords
+media-libs/freetype svg
+
+# Sam James <sam@gentoo.org> (2022-03-26)
+# media-libs/libjxl not keyworded here
+media-gfx/graphicsmagick jpegxl
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# Untested useflag on other arches, needs keywording
+media-video/ffmpeg vmaf
+
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
 # Mask AMF keyword on non-amd64 arches
 # It is unusable, for now, in other arches
 media-video/ffmpeg amf
-
-# Sam James <sam@gentoo.org> (2022-02-10)
-# app-crypt/tpm2-tss is not keyworded here
-app-crypt/gnupg tpm
 
 # Sam James <sam@gentoo.org> (2022-01-29)
 # app-text/ronn-ng not keyworded here, bug #801103
@@ -17,15 +50,6 @@ app-accessibility/espeak-ng man
 # James Beddek <telans@posteo.de> (2022-01-15)
 # media-libs/svt-av1 is not keyworded here
 media-video/ffmpeg svt-av1
-
-# Michał Górny <mgorny@gentoo.org> (2021-12-30)
-# Don't apply stable masks to python-exec since we're forcing every
-# impl there anyway. Please keep this in sync with use.mask.
-dev-lang/python-exec -python_targets_python3_10
-
-# Vadim Misbakh-Soloviov <mva@gentoo.org> (2021-12-09)
-# ts-cli requires rust to be built, and rust is unavailable here ATM.
-dev-libs/tree-sitter ts-cli
 
 # Sam James <sam@gentoo.org> (2021-11-05)
 # Avoid keywording unnecessary depenencies for now, bug #804115
@@ -76,6 +100,7 @@ media-libs/rubberband jni
 # media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
 media-libs/gd avif heif
+media-gfx/graphicsmagick heif
 
 # Sam James <sam@gentoo.org> (2021-02-26)
 # dev-libs/efl not keyworded here
@@ -120,10 +145,6 @@ x11-misc/synergy gui
 # media-sound/lash not keyworded, bug #736725
 media-sound/fluidsynth lash
 
-# Cédric Krier <cedk@gentoo.org> (2020-11-10)
-# virtual/rust has no alpha keyword
-dev-vcs/mercurial rust
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
 # app-i18n/fcitx:4 not keyworded.
 media-libs/libsdl2 fcitx4
@@ -139,10 +160,6 @@ mail-filter/pyzor mysql
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan
 media-libs/mesa vulkan vulkan-overlay zink
-
-# Mart Raudsepp <leio@gentoo.org> (2020-08-02)
-# alpha has no virtual/rust support, needed by newer gnome-base/librsvg, et al
->=media-gfx/eog-3.33.1 svg
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-07-18)
 # net-libs/webkit-gtk has no alpha keywords
@@ -160,10 +177,6 @@ xfce-extra/tumbler epub
 # Michał Górny <mgorny@gentoo.org> (2020-06-14)
 # Requires dev-python/networkx.
 app-portage/nattka depgraph-order
-
-# Matt Turner <mattst88@gentoo.org> (2020-06-09)
-# Requires unsupported dev-python/eventlet and fails tests with gevent
-dev-python/socketpool eventlet gevent
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # clisp is keyworded on alpha
@@ -377,6 +390,7 @@ net-misc/networkmanager wext
 # Tobias Klausmann <klausman@gentoo.org> (2015-08-10)
 # Opting out of the net-misc/ofono dep tree until we have a user request
 >=media-sound/pulseaudio-6.0 ofono-headset
+media-sound/pulseaudio-daemon ofono-headset
 
 # Gilles Dartiguelongue <eva@gentoo.org> (2015-06-09)
 # dev-lua/lgi lacks alpha keyword, bug #551540

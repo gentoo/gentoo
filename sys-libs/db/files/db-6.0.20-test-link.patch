@@ -1,6 +1,5 @@
-diff -Nuar db-6.0.20.orig/test/tcl/parallel.tcl db-6.0.20/test/tcl/parallel.tcl
---- db-6.0.20.orig/test/tcl/parallel.tcl	2013-07-04 15:49:43.408348040 +0000
-+++ db-6.0.20/test/tcl/parallel.tcl	2013-07-04 17:40:07.147943377 +0000
+--- a/test/tcl/parallel.tcl
++++ b/test/tcl/parallel.tcl
 @@ -289,16 +289,26 @@
  			    [eval glob -nocomplain {$dir/$buildpath/db_{reptest,repsite,replicate}$EXE}] \
  			    $destdir/$buildpath}

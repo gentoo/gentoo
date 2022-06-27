@@ -98,10 +98,6 @@ sys-apps/iproute2 atm bpf iptables
 # dev-libs/libzip does not have stable keywords on hppa
 >=media-gfx/imagemagick-7 zip
 
-# Sam James <sam@gentoo.org> (2021-06-01)
-# sys-apps/systemd is not stable on hppa
-sys-auth/pambase homed
-
 # Sam James <sam@gentoo.org> (2021-02-18)
 # Requires dev-lang/vala to be stable
 gnome-base/librsvg vala
@@ -173,10 +169,6 @@ x11-base/xorg-server xorg
 # Rolf Eike Beer <eike@sf-mail.de> (2020-12-11)
 # not all needed sphinx modules are stable on hppa.
 dev-python/aiohttp doc
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-11-14)
-# sys-apps/systemd has no stable keywords on hppa.
-sys-apps/ipmitool openbmc
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
 # app-i18n/fcitx:4 not stable.

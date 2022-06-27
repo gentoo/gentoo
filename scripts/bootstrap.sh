@@ -2,6 +2,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Maintainer: releng@gentoo.org
+
 file_version="2021.0"		# update manually: <year>.<counter>
 
 # people who were here:
@@ -172,7 +174,7 @@ pycmd() {
 }
 
 # TSTP messes ^Z of bootstrap up, so we don't trap it anymore.
-trap "cleanup" TERM KILL INT QUIT ABRT
+trap "cleanup" TERM INT QUIT ABRT
 
 # Bug #50158 (don't use `which` in a bootstrap).
 if ! type -path portageq &>/dev/null ; then

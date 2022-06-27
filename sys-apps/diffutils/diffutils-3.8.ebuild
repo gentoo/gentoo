@@ -1,23 +1,42 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/diffutils.asc
+inherit flag-o-matic verify-sig
 
 DESCRIPTION="Tools to make diffs and compare files"
 HOMEPAGE="https://www.gnu.org/software/diffutils/"
 SRC_URI="mirror://gnu/diffutils/${P}.tar.xz
-	https://alpha.gnu.org/gnu/diffutils/${P}.tar.xz"
+	https://alpha.gnu.org/gnu/diffutils/${P}.tar.xz
+	verify-sig? (
+		mirror://gnu/diffutils/${P}.tar.xz.sig
+		https://alpha.gnu.org/gnu/diffutils/${P}.tar.xz.sig
+	)"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="nls static"
 
-BDEPEND="nls? ( sys-devel/gettext )"
+BDEPEND="nls? ( sys-devel/gettext )
+	verify-sig? ( sec-keys/openpgp-keys-diffutils )"
 
-PATCHES=( "${FILESDIR}/ppc-musl.patch" )
+PATCHES=(
+	"${FILESDIR}/ppc-musl.patch"
+	"${FILESDIR}/loong-fix-build.patch"
+)
+
+src_prepare() {
+	default
+
+	# touch generated files after patching m4, to avoid activating maintainer
+	# mode
+	# remove when loong-fix-build.patch is no longer necessary
+	touch ./aclocal.m4 lib/config.hin ./configure || die
+	find . -name Makefile.in -exec touch {} + || die
+}
 
 src_configure() {
 	use static && append-ldflags -static

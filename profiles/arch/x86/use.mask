@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -x86
 
+# Matt Turner <mattst88@gentoo.org> (2022-04-16)
+# dev-util/sysprof-capture is keyworded on x86
+-sysprof
+
 # Michał Górny <mgorny@gentoo.org> (2021-01-07)
 # Prebuilt kernels are supported here.
 -dist-kernel
@@ -29,9 +33,6 @@
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2017-05-26)
 # dev-db/firebird is keyworded ~x86
 -firebird
-
-# cilk has been ported to this arch.
--cilk
 
 # Mike Gilbert <floppym@gentoo.org (2014-10-19)
 # sys-libs/libapparmor

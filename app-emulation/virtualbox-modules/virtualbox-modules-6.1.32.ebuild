@@ -16,7 +16,7 @@ SRC_URI="https://dev.gentoo.org/~polynomial-c/virtualbox/${MY_P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 [[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="pax-kernel"
 
 RDEPEND="!=app-emulation/virtualbox-9999"
@@ -31,7 +31,7 @@ MODULESD_VBOXNETFLT_ENABLED="no"
 
 pkg_setup() {
 	linux-mod_pkg_setup
-	BUILD_PARAMS="CC=$(tc-getBUILD_CC) KERN_DIR=${KV_DIR} KERN_VER=${KV_FULL} O=${KV_OUT_DIR} V=1 KBUILD_VERBOSE=1"
+	BUILD_PARAMS="CC=\"$(tc-getBUILD_CC)\" KERN_DIR=${KV_DIR} KERN_VER=${KV_FULL} O=${KV_OUT_DIR} V=1 KBUILD_VERBOSE=1"
 	if linux_chkconfig_present CC_IS_CLANG; then
 		ewarn "Warning: building ${PN} with a clang-built kernel is experimental."
 

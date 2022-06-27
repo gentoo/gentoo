@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">qtile/qtile</remote-id>
+		<remote-id type="pypi">qtile</remote-id>
 	</upstream>
 </pkgmetadata>

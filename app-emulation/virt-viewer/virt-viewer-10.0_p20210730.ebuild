@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${GIT_HASH}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+libvirt sasl +spice +vnc"
 
 RDEPEND="dev-libs/glib:2
@@ -33,7 +33,6 @@ DEPEND="${RDEPEND}
 	spice? ( >=app-emulation/spice-protocol-0.12.10 )"
 BDEPEND="${PYTHON_DEPS}
 	dev-lang/perl
-	>=dev-util/intltool-0.35.0
 	virtual/pkgconfig"
 
 REQUIRED_USE="|| ( spice vnc )"

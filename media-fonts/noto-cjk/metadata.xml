@@ -5,4 +5,5 @@
 		<email>fonts@gentoo.org</email>
 		<name>Fonts</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

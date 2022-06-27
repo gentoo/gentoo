@@ -1,0 +1,15 @@
+[Unit]
+Description=UniFi Controller
+After=mongodb.service network.target
+Requires=mongodb.service
+
+[Service]
+Type=simple
+User=unifi
+Group=unifi
+WorkingDirectory=/usr/lib/unifi
+ExecStart=/usr/bin/unifi start
+ExecStop=/usr/bin/unifi stop
+
+[Install]
+WantedBy=multi-user.target

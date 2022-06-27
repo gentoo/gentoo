@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -62,7 +62,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	[[ -e /etc/hotplug/usb.usermap ]] && egrep -q " 0x06[bB]9 +0x4061 " /etc/hotplug/usb.usermap && \
+	[[ -e /etc/hotplug/usb.usermap ]] && grep -E -q " 0x06[bB]9 +0x4061 " /etc/hotplug/usb.usermap && \
 		ewarn "Please remove the SpeedTouch line from /etc/hotplug/usb.usermap"
 
 	# Check kernel configuration

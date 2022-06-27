@@ -5,5 +5,14 @@
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
+<longdescription>
+  Proof General is a generic Emacs interface for proof assistants. The aim of
+  the Proof General project is to provide a powerful, generic environment for
+  using interactive proof assistants.
+</longdescription>
 <stabilize-allarches/>
+<upstream>
+  <bugs-to>https://github.com/ProofGeneral/PG/issues/</bugs-to>
+  <remote-id type="github">ProofGeneral/PG</remote-id>
+</upstream>
 </pkgmetadata>

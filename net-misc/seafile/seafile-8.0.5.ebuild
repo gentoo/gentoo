@@ -15,7 +15,7 @@ SRC_URI="https://github.com/haiwen/${PN}/archive/${RELEASE_COMMIT}.tar.gz -> ${P
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
@@ -30,7 +30,8 @@ RDEPEND="${PYTHON_DEPS}
 	net-libs/libsearpc[${PYTHON_SINGLE_USEDEP}]
 	net-misc/curl
 	sys-apps/util-linux
-	sys-libs/zlib"
+	sys-libs/zlib
+	elibc_musl? ( sys-libs/fts-standalone )"
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}
 	$(vala_depend)"

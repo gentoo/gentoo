@@ -6,13 +6,13 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8,9,10} )
 PYTHON_REQ_USE="ncurses,readline"
 
-FIRMWARE_ABI_VERSION="6.2.0"
+FIRMWARE_ABI_VERSION="7.0.0"
 
 inherit linux-info toolchain-funcs python-r1 udev fcaps readme.gentoo-r1 \
 		pax-utils xdg-utils
 
-if [[ ${PV} = *9999* ]]; then
-	EGIT_REPO_URI="https://git.qemu.org/git/qemu.git"
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="https://gitlab.com/qemu-project/qemu.git/"
 	EGIT_SUBMODULES=(
 		meson
 		tests/fp/berkeley-softfloat-3
@@ -22,8 +22,10 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	SRC_URI=""
 else
-	SRC_URI="https://download.qemu.org/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+	MY_P="${PN}-${PV/_rc/-rc}"
+	SRC_URI="https://download.qemu.org/${MY_P}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+	S="${WORKDIR}/${MY_P}"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -41,7 +43,7 @@ IUSE="accessibility +aio alsa bpf bzip2 capstone +caps +curl debug +doc
 	+slirp
 	smartcard snappy spice ssh static static-user systemtap test udev usb
 	usbredir vde +vhost-net vhost-user-fs virgl virtfs +vnc vte xattr xen
-	xfs zstd"
+	zstd"
 
 COMMON_TARGETS="
 	aarch64
@@ -85,7 +87,6 @@ IUSE_USER_TARGETS="
 	hexagon
 	mipsn32
 	mipsn32el
-	ppc64abi32
 	ppc64le
 	sparc32plus
 "
@@ -136,7 +137,6 @@ ALL_DEPEND="
 # Dependencies required for qemu tools (qemu-nbd, qemu-img, qemu-io, ...)
 # softmmu targets (qemu-system-*).
 SOFTMMU_TOOLS_DEPEND="
-	dev-libs/libxml2[static-libs(+)]
 	>=x11-libs/pixman-0.28.0[static-libs(+)]
 	accessibility? (
 		app-accessibility/brltty[api]
@@ -149,7 +149,7 @@ SOFTMMU_TOOLS_DEPEND="
 	capstone? ( dev-libs/capstone:= )
 	caps? ( sys-libs/libcap-ng[static-libs(+)] )
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
-	fdt? ( >=sys-apps/dtc-1.5.0[static-libs(+)] )
+	fdt? ( >=sys-apps/dtc-1.5.1[static-libs(+)] )
 	fuse? ( >=sys-fs/fuse-3.1:3[static-libs(+)] )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.0[static-libs(+)] )
 	gnutls? (
@@ -165,7 +165,7 @@ SOFTMMU_TOOLS_DEPEND="
 	io-uring? ( sys-libs/liburing:=[static-libs(+)] )
 	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc )
-	jpeg? ( virtual/jpeg:0=[static-libs(+)] )
+	jpeg? ( media-libs/libjpeg-turbo:=[static-libs(+)] )
 	lzo? ( dev-libs/lzo:2[static-libs(+)] )
 	multipath? ( sys-fs/multipath-tools )
 	ncurses? (
@@ -206,7 +206,6 @@ SOFTMMU_TOOLS_DEPEND="
 	virgl? ( media-libs/virglrenderer[static-libs(+)] )
 	virtfs? ( sys-libs/libcap )
 	xen? ( app-emulation/xen-tools:= )
-	xfs? ( sys-fs/xfsprogs[static-libs(+)] )
 	zstd? ( >=app-arch/zstd-1.4.0[static-libs(+)] )
 "
 
@@ -279,7 +278,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.2.0-disable-keymap.patch
 	"${FILESDIR}"/${PN}-6.0.0-make.patch
 	"${FILESDIR}"/${PN}-6.1.0-strings.patch
-	"${FILESDIR}"/${PN}-6.2.0-also-build-virtfs-proxy-helper.patch
+	"${FILESDIR}"/${PN}-7.0.0-also-build-virtfs-proxy-helper.patch
 )
 
 QA_PREBUILT="
@@ -308,7 +307,6 @@ QA_WX_LOAD="usr/bin/qemu-i386
 	usr/bin/qemu-or1k
 	usr/bin/qemu-ppc
 	usr/bin/qemu-ppc64
-	usr/bin/qemu-ppc64abi32
 	usr/bin/qemu-sh4
 	usr/bin/qemu-sh4eb
 	usr/bin/qemu-sparc
@@ -420,6 +418,11 @@ src_prepare() {
 	# Verbose builds
 	MAKEOPTS+=" V=1"
 
+	# We already force -D_FORTIFY_SOURCE=2 (or 3) in our toolchain, but
+	# this setting (-U then -D..=2) will prevent us from trying out 3, so
+	# drop it. No change to level of protection b/c we patch our toolchain.
+	sed -i -e 's/-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2//' configure || die
+
 	# Remove bundled copy of libfdt
 	rm -r dtc || die
 }
@@ -434,7 +437,7 @@ qemu_src_configure() {
 	local buildtype=$1
 	local builddir="${S}/${buildtype}-build"
 
-	mkdir "${builddir}"
+	mkdir "${builddir}" || die
 
 	local conf_opts=(
 		--prefix=/usr
@@ -470,6 +473,7 @@ qemu_src_configure() {
 		--cc="$(tc-getCC)"
 		--cxx="$(tc-getCXX)"
 		--host-cc="$(tc-getBUILD_CC)"
+
 		$(use_enable alsa)
 		$(use_enable debug debug-info)
 		$(use_enable debug debug-tcg)
@@ -566,17 +570,10 @@ qemu_src_configure() {
 		$(conf_notuser vte)
 		$(conf_notuser xen)
 		$(conf_notuser xen xen-pci-passthrough)
-		$(conf_notuser xfs xfsctl)
 		# use prebuilt keymaps, bug #759604
 		--disable-xkbcommon
 		$(conf_notuser zstd)
 	)
-
-	if [[ ${buildtype} == "user" ]] ; then
-		conf_opts+=( --disable-libxml2 )
-	else
-		conf_opts+=( --enable-libxml2 )
-	fi
 
 	if [[ ! ${buildtype} == "user" ]] ; then
 		# audio options
@@ -682,22 +679,22 @@ src_configure() {
 
 src_compile() {
 	if [[ -n ${user_targets} ]]; then
-		cd "${S}/user-build"
+		cd "${S}/user-build" || die
 		default
 	fi
 
 	if [[ -n ${softmmu_targets} ]]; then
-		cd "${S}/softmmu-build"
+		cd "${S}/softmmu-build" || die
 		default
 	fi
 
-	cd "${S}/tools-build"
+	cd "${S}/tools-build" || die
 	default
 }
 
 src_test() {
 	if [[ -n ${softmmu_targets} ]]; then
-		cd "${S}/softmmu-build"
+		cd "${S}/softmmu-build" || die
 		pax-mark m */qemu-system-* #515550
 		emake check
 	fi
@@ -794,19 +791,19 @@ src_install() {
 		fi
 	fi
 
-	cd "${S}/tools-build"
+	cd "${S}/tools-build" || die
 	emake DESTDIR="${ED}" install
 
 	# Disable mprotect on the qemu binaries as they use JITs to be fast #459348
-	pushd "${ED}"/usr/bin >/dev/null
+	pushd "${ED}"/usr/bin >/dev/null || die
 	pax-mark mr "${softmmu_bins[@]}" "${user_bins[@]}" # bug 575594
-	popd >/dev/null
+	popd >/dev/null || die
 
 	# Install config file example for qemu-bridge-helper
 	insinto "/etc/qemu"
 	doins "${FILESDIR}/bridge.conf"
 
-	cd "${S}"
+	cd "${S}" || die
 	dodoc MAINTAINERS docs/specs/pci-ids.txt
 	newdoc pc-bios/README README.pc-bios
 
@@ -879,7 +876,7 @@ pkg_postinst() {
 	xdg_icon_cache_update
 
 	[[ -z ${EPREFIX} ]] && [[ -f ${EROOT}/usr/libexec/qemu-bridge-helper ]] && \
-		fcaps cap_net_admin ${EROOT}/usr/libexec/qemu-bridge-helper
+		fcaps cap_net_admin "${EROOT}"/usr/libexec/qemu-bridge-helper
 
 	DISABLE_AUTOFORMATTING=true
 	readme.gentoo_print_elog

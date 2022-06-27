@@ -1,0 +1,31 @@
+From bd477f59560f3dea86f0cf43dabd814ac459d2ee Mon Sep 17 00:00:00 2001
+From: Tomohiko Mimura <mito.5525@gmail.com>
+Date: Mon, 2 Aug 2021 13:26:22 +0900
+Subject: [PATCH] Support Psych v4.0.0
+
+Ruby master ships with Psych 4.0.0 which makes `YAML.load`
+defaults to safe mode (https://github.com/ruby/psych/pull/487).
+
+Keep compatibility by using `unsafe_load`.
+---
+ lib/settingslogic.rb | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/lib/settingslogic.rb b/lib/settingslogic.rb
+index a99acaf..e7ea37e 100644
+--- a/lib/settingslogic.rb
++++ b/lib/settingslogic.rb
+@@ -100,7 +100,12 @@ def initialize(hash_or_file = self.class.source, section = nil)
+       self.replace hash_or_file
+     else
+       file_contents = open(hash_or_file).read
+-      hash = file_contents.empty? ? {} : YAML.load(ERB.new(file_contents).result).to_hash
++      hash = if file_contents.empty?
++               {}
++             else
++               payload = ERB.new(file_contents).result
++               (YAML.respond_to?(:unsafe_load) ? YAML.unsafe_load(payload) : YAML.load(payload)).to_hash
++             end
+       if self.class.namespace
+         hash = hash[self.class.namespace] or return missing_key("Missing setting '#{self.class.namespace}' in #{hash_or_file}")
+       end

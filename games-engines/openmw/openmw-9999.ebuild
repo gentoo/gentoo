@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,6 +18,11 @@ else
 	S="${WORKDIR}/${PN}-${P}"
 fi
 
+MY_TEMPLATE_COMMIT="8966dab24692555eec720c854fb0f73d108070cd"
+SRC_URI+="
+	test? ( https://gitlab.com/OpenMW/example-suite/-/raw/${MY_TEMPLATE_COMMIT}/data/template.omwgame -> openmw-template-${MY_TEMPLATE_COMMIT}.omwgame )
+"
+
 LICENSE="GPL-3 MIT BitstreamVera ZLIB"
 SLOT="0"
 IUSE="doc devtools +osg-fork test +qt5"
@@ -30,8 +35,11 @@ RESTRICT="!test? ( test )"
 RDEPEND="${LUA_DEPS}
 	app-arch/lz4:=
 	>=dev-games/mygui-3.4.1
+	dev-cpp/yaml-cpp:=
+	dev-db/sqlite:3
 	dev-games/recastnavigation:=
 	dev-libs/boost:=[threads(+),zlib]
+	dev-libs/icu:=
 	dev-libs/tinyxml[stl]
 	media-libs/libsdl2[joystick,opengl,video]
 	media-libs/openal
@@ -74,7 +82,7 @@ src_prepare() {
 
 	# Use the system tinyxml headers
 	rm -v extern/oics/tiny{str,xml}* || die
-	rm -rv extern/sol3.2.2 || die
+	rm -rv extern/sol3 || die
 }
 
 src_configure() {
@@ -92,7 +100,6 @@ src_configure() {
 		-DBUILD_UNITTESTS=$(usex test)
 		-DGLOBAL_DATA_PATH="${EPREFIX}/usr/share"
 		-DICONDIR="${EPREFIX}/usr/share/icons/hicolor/256x256/apps"
-		-DMORROWIND_DATA_FILES="${EPREFIX}/usr/share/morrowind-data"
 		-DUSE_SYSTEM_TINYXML=ON
 		-DOPENMW_USE_SYSTEM_RECASTNAVIGATION=ON
 	)
@@ -109,6 +116,11 @@ src_configure() {
 			-DLua_FIND_VERSION_COUNT=2
 			-DLua_FIND_VERSION_EXACT=ON
 		)
+	fi
+
+	if use test ; then
+		mkdir -p "${BUILD_DIR}"/apps/openmw_test_suite/data || die
+		cp "${DISTDIR}"/openmw-template-${MY_TEMPLATE_COMMIT}.omwgame "${BUILD_DIR}"/apps/openmw_test_suite/data/template.omwgame || die
 	fi
 
 	cmake_src_configure

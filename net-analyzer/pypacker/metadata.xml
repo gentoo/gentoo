@@ -6,7 +6,7 @@
 		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">mike01/pypacker</remote-id>
+		<remote-id type="gitlab">mike01/pypacker</remote-id>
 		<maintainer>
 			<email>michael.stahn.42@googlemail.com</email>
 			<name>Michael Stahn</name>

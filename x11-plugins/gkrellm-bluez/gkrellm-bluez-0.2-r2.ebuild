@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,6 @@ DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${P}-notheme.patch )
 
-PLUGIN_SO=( src/.libs/gkrellmbluez$(get_modname) )
 PLUGIN_DOCS=( THEMING NEWS )
 
 src_prepare() {
@@ -30,5 +29,7 @@ src_prepare() {
 }
 
 src_configure() {
+	PLUGIN_SO=( src/.libs/gkrellmbluez$(get_modname) )
+
 	econf --disable-static
 }

@@ -8,12 +8,13 @@ DISTUTILS_USE_SETUPTOOLS=bdepend
 inherit distutils-r1
 
 DESCRIPTION="Pure-Python implementation of the AMQP"
-HOMEPAGE="https://pika.readthedocs.org/ https://github.com/pika/pika"
+HOMEPAGE="
+	https://pika.readthedocs.io/
+	https://github.com/pika/pika/
+	https://pypi.org/project/pika/
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-
-DEPEND=""
-RDEPEND=""

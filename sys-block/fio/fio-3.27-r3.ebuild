@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 
 inherit python-r1 toolchain-funcs
 
@@ -16,7 +16,7 @@ SRC_URI="https://brick.kernel.dk/snaps/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~ia64 ppc ppc64 x86"
+KEYWORDS="amd64 arm ~arm64 ~ia64 ~ppc ppc64 ~riscv x86"
 IUSE="aio curl glusterfs gnuplot gtk io-uring numa python rbd rdma static tcmalloc test zbc zlib"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 	gnuplot? ( python )

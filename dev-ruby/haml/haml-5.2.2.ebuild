@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby26 ruby27"
+USE_RUBY="ruby26 ruby27 ruby30"
 
 RUBY_FAKEGEM_TASK_TEST="MT_NO_PLUGINS=true RUBYLIB=lib test"
 RUBY_FAKEGEM_TASK_DOC="-Ilib doc"
@@ -25,17 +25,15 @@ KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~pp
 
 IUSE="doc test"
 
-RDEPEND="${RDEPEND} !!<dev-ruby/haml-4.0.7-r2"
-
 ruby_add_rdepend ">=dev-ruby/temple-0.8.0 dev-ruby/tilt:*"
 
 ruby_add_bdepend "
 	test? (
 		dev-ruby/minitest:5
 		dev-ruby/nokogiri
-		dev-ruby/railties:6.0
-		dev-ruby/activemodel:6.0
-		dev-ruby/actionpack:6.0
+		>=dev-ruby/railties-6.0
+		>=dev-ruby/activemodel-6.0
+		>=dev-ruby/actionpack-6.0
 	)
 	doc? (
 		dev-ruby/yard
@@ -48,9 +46,6 @@ all_ruby_prepare() {
 	sed -i -e '/bundler/ s:^:#: ; /Bundler/,/end/ s:^:#:' Rakefile || die
 	sed -i -e '/bundler/I s:^:#:' \
 		-e '/simplecov/I s:^:#:' \
-		-e '1igem "actionpack", "~>6.0.0"'\
-		-e '1igem "activesupport", "~>6.0.0"; gem "activemodel", "~>6.0.0"'\
-		-e '1igem "railties", "~>6.0.0"'\
 		test/test_helper.rb || die
 	# Remove test that fails when RedCloth is available
 	sed -i -e "/should raise error when a Tilt filters dependencies are unavailable for extension/,/^  end/ s/^/#/"\

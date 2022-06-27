@@ -1,0 +1,41 @@
+From 41e262b51968359074faac21fa80d2f1237c57cf Mon Sep 17 00:00:00 2001
+From: Matthew Smith <matthew@gentoo.org>
+Date: Sat, 2 Apr 2022 10:06:21 +0100
+Subject: [PATCH] build: add emacs option
+
+Without this option, mu4e will always be installed when Emacs is
+installed.
+---
+ meson.build       | 2 +-
+ meson_options.txt | 5 +++++
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 58ac9002..5f71d766 100644
+--- a/meson.build
++++ b/meson.build
+@@ -174,7 +174,7 @@ subdir('lib')
+ subdir('mu')
+ subdir('man')
+ 
+-if emacs.found()
++if get_option('emacs').enabled() and emacs.found()
+    subdir('mu4e')
+ endif
+ 
+diff --git a/meson_options.txt b/meson_options.txt
+index 0c70826e..34cb0c02 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -29,3 +29,8 @@ option('readline',
+        type: 'feature',
+        value: 'auto',
+        description: 'enable readline support for the mu4e repl')
++
++option('emacs',
++       type : 'feature',
++       value: 'disabled',
++       description: 'build mu4e')
+-- 
+2.35.1
+

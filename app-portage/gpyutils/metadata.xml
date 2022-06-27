@@ -13,5 +13,6 @@
     </maintainer>
     <bugs-to>https://github.com/mgorny/gpyutils/issues/</bugs-to>
     <remote-id type="github">mgorny/gpyutils</remote-id>
+    <remote-id type="pypi">gpyutils</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,0 +1,12 @@
+index b228597..aa5fd12 100644
+--- a/elpy-rpc.el
++++ b/elpy-rpc.el
+@@ -100,7 +100,7 @@ for example), set this to the full interpreter path."
+            (elpy-rpc-restart)))
+   :group 'elpy)
+ 
+-(defcustom elpy-rpc-pythonpath (file-name-directory load-file-name)
++(defcustom elpy-rpc-pythonpath "@PYTHONLIB@/site-packages/"
+   "A directory to add to the PYTHONPATH for the RPC process.
+ 
+ This should be a directory where the elpy module can be found. If

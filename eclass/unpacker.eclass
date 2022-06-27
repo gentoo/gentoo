@@ -25,7 +25,7 @@ _UNPACKER_ECLASS=1
 
 inherit toolchain-funcs
 
-# @ECLASS-VARIABLE: UNPACKER_BZ2
+# @ECLASS_VARIABLE: UNPACKER_BZ2
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -33,7 +33,7 @@ inherit toolchain-funcs
 # `pbzip2` and `bzip2`.  Make sure your choice accepts the "-dc" options.
 # Note: this is meant for users to set, not ebuilds.
 
-# @ECLASS-VARIABLE: UNPACKER_LZIP
+# @ECLASS_VARIABLE: UNPACKER_LZIP
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -212,7 +212,7 @@ unpack_makeself() {
 				skip=`grep -a ^offset= "${src}" | awk '{print $3}'`
 				(( skip++ ))
 				;;
-			2.1.4|2.1.5|2.1.6|2.2.0|2.4.0)
+			2.1.4|2.1.5|2.1.6|2.2.0|2.3.0|2.4.0)
 				skip=$(grep -a offset=.*head.*wc "${src}" | awk '{print $3}' | head -n 1)
 				skip=$(head -n ${skip} "${src}" | wc -c)
 				exe="dd"

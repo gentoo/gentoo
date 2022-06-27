@@ -31,6 +31,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-underlink.patch
 	"${FILESDIR}"/${P}-freetype_pkgconfig.patch
+	"${FILESDIR}"/${P}-clang.patch
 )
 
 src_prepare() {

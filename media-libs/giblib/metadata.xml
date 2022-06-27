@@ -10,7 +10,4 @@ fontstyles, which can be loaded from files, saved to files or defined
 dynamically through the API. It also, and more importantly, wraps 
 imlib2's context API changing.
 </longdescription>
-	<upstream>
-		<remote-id type="freecode">giblib</remote-id>
-	</upstream>
 </pkgmetadata>

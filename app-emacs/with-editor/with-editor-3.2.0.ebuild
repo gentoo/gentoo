@@ -13,10 +13,10 @@ S="${WORKDIR}/${P}/lisp"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 
 SITEFILE="50${PN}-gentoo.el"
 ELISP_TEXINFO="../docs/*.texi"
 DOCS="../README.md ../docs/with-editor.org"
 
-DEPEND="sys-apps/texinfo"
+BDEPEND="sys-apps/texinfo"

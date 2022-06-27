@@ -71,8 +71,8 @@ src_prepare() {
 
 	# Respect CC/CXX variables.
 	cd "${S}"/RULES || die
-	local tcCC=$(tc-getCC)
-	local tcCXX=$(tc-getCXX)
+	local tcCC="$(tc-getCC)"
+	local tcCXX="$(tc-getCXX)"
 	sed -i -e "/cc-config.sh/s|\$(C_ARCH:%64=%) \$(CCOM_DEF)|${tcCC} ${tcCC}|" \
 		rules1.top || die "sed rules1.top"
 	sed -i -e "/^CC_COM_DEF=/s|gcc|${tcCC}|" \

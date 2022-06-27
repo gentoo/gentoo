@@ -1,0 +1,13 @@
+diff --git a/entrypoint2/__init__.py b/entrypoint2/__init__.py
+index 63ab78b..a99a298 100644
+--- a/entrypoint2/__init__.py
++++ b/entrypoint2/__init__.py
+@@ -345,7 +345,7 @@ def _correct_args(func, kwargs):
+     Convert a dictionary of arguments including __argv into a list
+     for passing to the function.
+     """
+-    args = inspect.getargspec(func)[0]
++    args = inspect.getfullargspec(func)[0]
+     return [kwargs[arg] for arg in args] + kwargs["__args"]
+ 
+ 

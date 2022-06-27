@@ -66,10 +66,12 @@ get_target() {
 	fi
 }
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
-	if use openmp && [[ ${MERGE_TYPE} != binary ]]; then
-		tc-has-openmp || die "Please switch to an openmp compatible compiler"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_prepare() {

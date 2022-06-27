@@ -16,6 +16,6 @@ Python (supporting 2.6+ including Python 3).
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">jsonschema</remote-id>
-    <remote-id type="github">Julian/jsonschema</remote-id>
+    <remote-id type="github">python-jsonschema/jsonschema</remote-id>
   </upstream>
 </pkgmetadata>

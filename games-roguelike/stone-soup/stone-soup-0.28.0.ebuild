@@ -37,7 +37,7 @@ fi
 # Public Domain|CC0: most of tiles
 # MIT: json.cc/json.h, some .js files in webserver/static/scripts/contrib/
 LICENSE="GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug ncurses sound test +tiles"
 RESTRICT="!test? ( test )"
 
@@ -77,7 +77,7 @@ DEPEND="${RDEPEND}
 	"
 
 PATCHES=(
-	"${FILESDIR}"/make.patch
+	"${FILESDIR}"/make-no-png-dep-fix.patch
 	"${FILESDIR}"/rltiles-make.patch
 )
 

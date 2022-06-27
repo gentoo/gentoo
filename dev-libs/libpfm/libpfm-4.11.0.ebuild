@@ -25,7 +25,7 @@ src_prepare() {
 
 src_compile() {
 	# 'DBG=' unsets '-Werror' and other optional flags, bug #664294
-	emake AR=$(tc-getAR) CC=$(tc-getCC) DBG=
+	emake AR="$(tc-getAR)" CC="$(tc-getCC)" DBG=
 }
 
 src_install() {

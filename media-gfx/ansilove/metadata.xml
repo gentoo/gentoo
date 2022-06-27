@@ -6,7 +6,7 @@
     <email>xgqt@gentoo.org</email>
     <name>Maciej Barć</name>
   </maintainer>
-  <longdescription lang="en">
+  <longdescription>
     AnsiLove is an ANSI and ASCII art to PNG converter, allowing to convert
     ANSI and artscene-related file formats into PNG images, supporting ANSI
     (.ANS), PCBoard (.PCB), Binary (.BIN), Artworx (.ADF), iCE Draw (.IDF),

@@ -88,14 +88,14 @@ src_prepare() {
 	if use kde || use wxwidgets; then
 		setup-wxwidgets unicode
 		einfo "Preparing dependency list"
-		emake CC=$(tc-getCC) CXX=$(tc-getCXX) depend
+		emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" depend
 	fi
 }
 
 src_compile() {
-	emake CC=$(tc-getCC) CXX=$(tc-getCXX) all3
+	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" all3
 	if use kde || use wxwidgets; then
-		emake CC=$(tc-getCC) CXX=$(tc-getCXX) -- 7zG
+		emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" -- 7zG
 	fi
 }
 

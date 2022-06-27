@@ -1,0 +1,241 @@
+Index: MIOpen-rocm-5.0.2/src/include/miopen/solver/implicitgemm_util.hpp
+===================================================================
+--- MIOpen-rocm-5.0.2.orig/src/include/miopen/solver/implicitgemm_util.hpp
++++ MIOpen-rocm-5.0.2/src/include/miopen/solver/implicitgemm_util.hpp
+@@ -478,7 +478,7 @@ static inline bool is_use_amd_buffer_loa
+ {
+ #if WORKAROUND_MIOPEN_ISSUE_557
+     const auto device_name = ctx.GetStream().GetDeviceName();
+-    return !StartsWith(device_name, "gfx1030");
++    return !StartsWith(device_name, "gfx1030") && !StartsWith(device_name, "gfx1031");
+ #else
+     return true;
+ #endif
+@@ -487,7 +487,7 @@ static inline bool is_use_amd_buffer_loa
+ static inline bool is_use_v_fmac_f32(const ConvolutionContext& ctx)
+ {
+     const auto device_name = ctx.GetStream().GetDeviceName();
+-    return StartsWith(device_name, "gfx1030");
++    return StartsWith(device_name, "gfx1030") || StartsWith(device_name, "gfx1031");
+ }
+ 
+ static inline bool support_amd_buffer_atomic_fadd(const std::string& device_name)
+@@ -608,7 +608,8 @@ static inline bool IsComposableKernelSup
+            StartsWith(c.GetStream().GetDeviceName(), "gfx906") ||
+            StartsWith(c.GetStream().GetDeviceName(), "gfx908") ||
+            StartsWith(c.GetStream().GetDeviceName(), "gfx90a") ||
+-           StartsWith(c.GetStream().GetDeviceName(), "gfx1030");
++           StartsWith(c.GetStream().GetDeviceName(), "gfx1030")||
++           StartsWith(c.GetStream().GetDeviceName(), "gfx1031");
+ }
+ 
+ // greatest common divisor, aka highest common factor
+Index: MIOpen-rocm-5.0.2/src/kernels/batchnorm_functions.h
+===================================================================
+--- MIOpen-rocm-5.0.2.orig/src/kernels/batchnorm_functions.h
++++ MIOpen-rocm-5.0.2/src/kernels/batchnorm_functions.h
+@@ -159,6 +159,10 @@
+ #define MIO_BN_GFX1030 0
+ #endif
+ 
++#ifndef MIO_BN_GFX1031
++#define MIO_BN_GFX1031 0
++#endif
++
+ #define UNUSED __attribute__((__unused__))
+ 
+ #if(MIO_BN_VARIANT != 4)
+Index: MIOpen-rocm-5.0.2/src/kernels/MIOpenBatchNormActivBwdPerAct.cl
+===================================================================
+--- MIOpen-rocm-5.0.2.orig/src/kernels/MIOpenBatchNormActivBwdPerAct.cl
++++ MIOpen-rocm-5.0.2/src/kernels/MIOpenBatchNormActivBwdPerAct.cl
+@@ -34,7 +34,7 @@
+ #endif
+ 
+ #define MIOPEN_USE_AMDGCN 0
+-#if defined(__AMDGCN__) && MIO_BN_GFX1030 != 1
++#if defined(__AMDGCN__) && MIO_BN_GFX1030 != 1 && MIO_BN_GFX1031 != 1
+ #undef MIOPEN_USE_AMDGCN
+ #define MIOPEN_USE_AMDGCN 1
+ #endif
+Index: MIOpen-rocm-5.0.2/src/kernels/MIOpenBatchNormActivBwdSpatial.cl
+===================================================================
+--- MIOpen-rocm-5.0.2.orig/src/kernels/MIOpenBatchNormActivBwdSpatial.cl
++++ MIOpen-rocm-5.0.2/src/kernels/MIOpenBatchNormActivBwdSpatial.cl
+@@ -32,7 +32,7 @@
+ #endif
+ 
+ #define MIOPEN_USE_AMDGCN 0
+-#if defined(__AMDGCN__) && MIO_BN_GFX1030 != 1
++#if defined(__AMDGCN__) && MIO_BN_GFX1030 != 1 && MIO_BN_GFX1031 != 1
+ #undef MIOPEN_USE_AMDGCN
+ #define MIOPEN_USE_AMDGCN 1
+ #endif
+Index: MIOpen-rocm-5.0.2/src/kernels/MIOpenBatchNormActivFwdTrainSpatial.cl
+===================================================================
+--- MIOpen-rocm-5.0.2.orig/src/kernels/MIOpenBatchNormActivFwdTrainSpatial.cl
++++ MIOpen-rocm-5.0.2/src/kernels/MIOpenBatchNormActivFwdTrainSpatial.cl
+@@ -33,7 +33,7 @@
+ #endif
+ 
+ #define MIOPEN_USE_AMDGCN 0
+-#if defined(__AMDGCN__) && MIO_BN_GFX1030 != 1
++#if defined(__AMDGCN__) && MIO_BN_GFX1030 != 1 && MIO_BN_GFX1031 != 1
+ #undef MIOPEN_USE_AMDGCN
+ #define MIOPEN_USE_AMDGCN 1
+ #endif
+Index: MIOpen-rocm-5.0.2/src/kernels/MIOpenBatchNormBwdSpatial.cl
+===================================================================
+--- MIOpen-rocm-5.0.2.orig/src/kernels/MIOpenBatchNormBwdSpatial.cl
++++ MIOpen-rocm-5.0.2/src/kernels/MIOpenBatchNormBwdSpatial.cl
+@@ -33,7 +33,7 @@
+ #endif
+ 
+ #define MIOPEN_USE_AMDGCN 0
+-#if defined(__AMDGCN__) && MIO_BN_GFX1030 != 1
++#if defined(__AMDGCN__) && MIO_BN_GFX1030 != 1 && MIO_BN_GFX1031 != 1
+ #undef MIOPEN_USE_AMDGCN
+ #define MIOPEN_USE_AMDGCN 1
+ #endif
+Index: MIOpen-rocm-5.0.2/src/kernels/MIOpenBatchNormFwdTrainSpatial.cl
+===================================================================
+--- MIOpen-rocm-5.0.2.orig/src/kernels/MIOpenBatchNormFwdTrainSpatial.cl
++++ MIOpen-rocm-5.0.2/src/kernels/MIOpenBatchNormFwdTrainSpatial.cl
+@@ -33,7 +33,7 @@
+ #endif
+ 
+ #define MIOPEN_USE_AMDGCN 0
+-#if defined(__AMDGCN__) && MIO_BN_GFX1030 != 1
++#if defined(__AMDGCN__) && MIO_BN_GFX1030 != 1 && MIO_BN_GFX1031 != 1
+ #undef MIOPEN_USE_AMDGCN
+ #define MIOPEN_USE_AMDGCN 1
+ #endif
+Index: MIOpen-rocm-5.0.2/src/md_graph.cpp
+===================================================================
+--- MIOpen-rocm-5.0.2.orig/src/md_graph.cpp
++++ MIOpen-rocm-5.0.2/src/md_graph.cpp
+@@ -738,8 +738,8 @@ void FusionMDGraph::InitConv(FusionMDGra
+ 
+             add_v21_wino("gfx9", {"gfx900", "gfx906", "gfx908", "gfx90a"}, 1);
+             add_v21_wino("gfx9", {"gfx900", "gfx906", "gfx908", "gfx90a"}, 2);
+-            add_v21_wino("gfx10", {"gfx1011", "gfx1012", "gfx1030"}, 1);
+-            add_v21_wino("gfx10", {"gfx1011", "gfx1012", "gfx1030"}, 2);
++            add_v21_wino("gfx10", {"gfx1011", "gfx1012", "gfx1030", "gfx1031"}, 1);
++            add_v21_wino("gfx10", {"gfx1011", "gfx1012", "gfx1030", "gfx1031"}, 2);
+         }
+     }
+ 
+Index: MIOpen-rocm-5.0.2/src/ocl/fusionopbiasbnactivocl.cpp
+===================================================================
+--- MIOpen-rocm-5.0.2.orig/src/ocl/fusionopbiasbnactivocl.cpp
++++ MIOpen-rocm-5.0.2/src/ocl/fusionopbiasbnactivocl.cpp
+@@ -392,7 +392,8 @@ miopenStatus_t BatchNormBwdTrainFusionOp
+            " -DMIO_BN_USESAVED=" + std::to_string(static_cast<int>(true)) +
+            " -DMIO_BN_VARIANT=" + std::to_string(variant) +
+            " -DMIO_BN_CBA_WRITE_INTERMEDIATE=" + std::to_string(0) +
+-           " -DMIO_BN_GFX1030=" + ((handle.GetDeviceName() == "gfx1030") ? "1" : "0");
++           " -DMIO_BN_GFX1030=" + ((handle.GetDeviceName() == "gfx1030") ? "1" : "0") +
++           " -DMIO_BN_GFX1031=" + ((handle.GetDeviceName() == "gfx1031") ? "1" : "0");
+ 
+     compile_config += add;
+     MIOPEN_LOG_I2(add);
+@@ -607,7 +608,8 @@ miopenStatus_t BatchNormFwdTrainFusionOp
+            " -DMIO_SAVE_MEAN_VARIANCE=" + (saveBatchStats ? "1" : "0") +
+            " -DMIO_RUNNING_RESULT=" + ((savePopStats) ? "1" : "0") +
+            " -DMIO_BN_VARIANT=" + std::to_string(variant) +
+-           " -DMIO_BN_GFX1030=" + ((handle.GetDeviceName() == "gfx1030") ? "1" : "0");
++           " -DMIO_BN_GFX1030=" + ((handle.GetDeviceName() == "gfx1030") ? "1" : "0") +
++           " -DMIO_BN_GFX1031=" + ((handle.GetDeviceName() == "gfx1031") ? "1" : "0");
+ 
+     compile_config += add;
+     MIOPEN_LOG_I2(add);
+Index: MIOpen-rocm-5.0.2/src/target_properties.cpp
+===================================================================
+--- MIOpen-rocm-5.0.2.orig/src/target_properties.cpp
++++ MIOpen-rocm-5.0.2/src/target_properties.cpp
+@@ -54,6 +54,7 @@ static std::string GetDeviceNameFromMap(
+         {"Vega10", "gfx900"},
+         {"gfx901", "gfx900"},
+         {"10.3.0 Sienna_Cichlid 18", "gfx1030"},
++        {"10.3.1 Navi_flounder 18", "gfx1031"},
+     };
+ 
+     const char* const p_asciz = miopen::GetStringEnv(MIOPEN_DEBUG_ENFORCE_DEVICE{});
+Index: MIOpen-rocm-5.0.2/test/CMakeLists.txt
+===================================================================
+--- MIOpen-rocm-5.0.2.orig/test/CMakeLists.txt
++++ MIOpen-rocm-5.0.2/test/CMakeLists.txt
+@@ -37,6 +37,7 @@ option( MIOPEN_TEST_GFX908 "Test on MI10
+ option( MIOPEN_TEST_GFX90A "Test on gfx90a" OFF )
+ option( MIOPEN_TEST_VEGA "Test on Vega10/20 (gfx900, gfx906)" OFF )
+ option( MIOPEN_TEST_GFX1030 "Test on Navi21 (gfx1030)" OFF )
++option( MIOPEN_TEST_GFX1031 "Test on Navi21 (gfx1031)" OFF )
+ option( MIOPEN_TEST_GPU_XNACK_ENABLED "Test as if XNACK mode is enabled" OFF )
+ option( MIOPEN_TEST_CONV Off)
+ option( MIOPEN_TEST_DEEPBENCH Off)
+@@ -74,7 +75,7 @@ endif()
+ # Also we do not detect GPU when target GPU for testing is specified explicitly.
+ set(MIOPEN_TEST_GPU_DETECTION_FAILED FALSE)
+ set(MIOPEN_NO_GPU FALSE)
+-if(NOT (MIOPEN_TEST_VEGA OR MIOPEN_TEST_GFX908 OR MIOPEN_TEST_GFX90A OR MIOPEN_TEST_GFX1030 OR MIOPEN_TEST_HIP_NOGPU))
++if(NOT (MIOPEN_TEST_VEGA OR MIOPEN_TEST_GFX908 OR MIOPEN_TEST_GFX90A OR MIOPEN_TEST_GFX1030 OR MIOPEN_TEST_GFX1031 OR MIOPEN_TEST_HIP_NOGPU))
+     find_program(ROCMINFO
+         NAMES rocminfo
+         PATHS
+@@ -96,6 +97,8 @@ if(NOT (MIOPEN_TEST_VEGA OR MIOPEN_TEST_
+         elseif (NOT ROCMINFO_EXIT_STATUS EQUAL 0)
+             message(WARNING "ROCMINFO FAILED, GPU TYPE UNKNOWN. Manually set respective MIOPEN_TEST_GFX* CMake variable to specify target GPU for testing.")
+             set(MIOPEN_TEST_GPU_DETECTION_FAILED TRUE)
++        elseif(ROCMINFO_OUTPUT MATCHES "gfx1031")
++            set(MIOPEN_TEST_GFX1031 ON)
+         elseif(ROCMINFO_OUTPUT MATCHES "gfx1030")
+             set(MIOPEN_TEST_GFX1030 ON)
+         elseif(ROCMINFO_OUTPUT MATCHES "gfx900|gfx906")
+@@ -122,6 +125,7 @@ message(STATUS "MIOPEN_TEST_VEGA ${MIOPE
+ message(STATUS "MIOPEN_TEST_GFX908 ${MIOPEN_TEST_GFX908}")
+ message(STATUS "MIOPEN_TEST_GFX90A ${MIOPEN_TEST_GFX90A}")
+ message(STATUS "MIOPEN_TEST_GFX1030 ${MIOPEN_TEST_GFX1030}")
++message(STATUS "MIOPEN_TEST_GFX1031 ${MIOPEN_TEST_GFX1031}")
+ message(STATUS "MIOPEN_TEST_GPU_XNACK_ENABLED ${MIOPEN_TEST_GPU_XNACK_ENABLED}")
+ message(STATUS "MIOPEN_TEST_GPU_DETECTION_FAILED ${MIOPEN_TEST_GPU_DETECTION_FAILED}")
+ 
+@@ -164,10 +168,10 @@ endmacro()
+ set_var_to_condition(WORKAROUND_ISSUE_1187_DEFAULT MIOPEN_TEST_GFX90A AND MIOPEN_TEST_FLOAT)
+ option( WORKAROUND_ISSUE_1187 "" ${WORKAROUND_ISSUE_1187_DEFAULT})
+ 
+-set_var_to_condition(WORKAROUND_ISSUE_1148_DEFAULT MIOPEN_TEST_GFX1030 AND MIOPEN_TEST_FLOAT)
++set_var_to_condition(WORKAROUND_ISSUE_1148_DEFAULT MIOPEN_TEST_GFX1030 OR MIOPEN_TEST_GFX1031 AND MIOPEN_TEST_FLOAT)
+ option( WORKAROUND_ISSUE_1148 "" ${WORKAROUND_ISSUE_1148_DEFAULT})
+ 
+-set_var_to_condition(WORKAROUND_ISSUE_1334_DEFAULT MIOPEN_TEST_GFX1030 AND MIOPEN_TEST_FLOAT)
++set_var_to_condition(WORKAROUND_ISSUE_1334_DEFAULT MIOPEN_TEST_GFX1030 OR MIOPEN_TEST_GFX1031 AND MIOPEN_TEST_FLOAT)
+ option( WORKAROUND_ISSUE_1334 "" ${WORKAROUND_ISSUE_1334_DEFAULT})
+ 
+ set_var_to_condition(WORKAROUND_ISSUE_1317_DEFAULT MIOPEN_TEST_OPENCL)
+@@ -216,7 +220,7 @@ if (MIOPEN_NO_GPU)
+             test_pooling3d test_perfdb)
+ endif()
+ 
+-if(MIOPEN_TEST_GFX1030)
++if(MIOPEN_TEST_GFX1030 OR MIOPEN_TEST_GFX1031)
+     if(WORKAROUND_ISSUE_1053 AND MIOPEN_TEST_ALL)
+         list(APPEND SKIP_TESTS test_lrn_test)
+     endif()
+@@ -443,7 +447,7 @@ endfunction()
+ #   If nothing is specified, the default value is taken.
+ #   Default: FLOAT_ENABLED HALF_DISABLED BF16_DISABLED INT8_DISABLED
+ #
+-# GPU types: VEGA, GFX908, GFX90A, GFX1030
++# GPU types: VEGA, GFX908, GFX90A, GFX1030, GFX1031
+ #   VEGA tests are intended to be run on gfx900 or gfx906.
+ #   The option can be enabled or disabled by using '_ENABLED' and '_DISABLED' suffix.
+ #   If nothing is specified, the default value is taken.
+@@ -574,7 +578,7 @@ function(add_custom_test NAME)
+         set_tests_properties(${NAME} PROPERTIES RUN_SERIAL On)
+     endif()
+ 
+-    if(  (is_vega_check OR is_gfx908_check OR is_gfx1030_check OR is_gfx90a_check)
++	if(  (is_vega_check OR is_gfx908_check OR is_gfx1030_check OR is_gfx1031_check OR is_gfx90a_check)
+      AND is_full_check
+      AND is_xnack_on_check
+      AND (is_miotensile_check AND is_mlir_check)

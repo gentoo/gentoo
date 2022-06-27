@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 #: ${CMAKE_MAKEFILE_GENERATOR:=emake}
-inherit cmake flag-o-matic
+inherit cmake
 
 MY_PV="${PV/_rc/-rc.}"
 MY_P="SuperTux-v${MY_PV}-Source"
@@ -12,6 +12,7 @@ MY_P="SuperTux-v${MY_PV}-Source"
 DESCRIPTION="A game similar to Super Mario Bros"
 HOMEPAGE="https://supertux.org/"
 SRC_URI="https://github.com/SuperTux/${PN}/releases/download/v${MY_PV}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2+ GPL-3+ ZLIB MIT CC-BY-SA-2.0 CC-BY-SA-3.0"
 SLOT="0"
@@ -41,16 +42,13 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-S="${WORKDIR}/${MY_P}"
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.5.0-tinygettext.patch
 	"${FILESDIR}"/${PN}-0.6.0-{license,icon,obstack}.patch
+	"${FILESDIR}"/${PN}-0.6.3-missing-include.patch
 )
 
 src_configure() {
-	append-cxxflags -std=c++11
-
 	local mycmakeargs=(
 		-DWERROR=OFF
 		-DINSTALL_SUBDIR_BIN=bin

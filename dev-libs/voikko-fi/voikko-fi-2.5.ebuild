@@ -3,8 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
-PYTHON_REQ_USE="xml"
+PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_REQ_USE="xml(+)"
 
 inherit python-any-r1 verify-sig
 
@@ -15,7 +15,7 @@ SRC_URI="https://www.puimula.org/voikko-sources/${PN}/${P}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="dev-libs/foma
 	dev-libs/libvoikko"

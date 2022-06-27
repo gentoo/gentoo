@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,6 +20,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-Wformat-security.patch
 	"${FILESDIR}"/${P}-gcc7.patch
 	"${FILESDIR}"/${P}-gcc11.patch
+	"${FILESDIR}"/${P}-gcc12-time.patch
 )
 
 src_configure() {
@@ -31,8 +32,8 @@ src_configure() {
 
 src_compile() {
 	emake \
-		CC=$(tc-getCC) \
-		CXX=$(tc-getCXX) \
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
 		CFLAGS="${CFLAGS}" \
 		CXXFLAGS="${CXXFLAGS}" \
 		CPPFLAGS="${CPPFLAGS}" \

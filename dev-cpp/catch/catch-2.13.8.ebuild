@@ -15,7 +15,7 @@ else
 	SRC_URI="https://github.com/catchorg/Catch2/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 	S="${WORKDIR}/${MY_P}"
 
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 ~sparc x86"
 fi
 
 DESCRIPTION="Modern C++ header-only framework for unit-tests"
@@ -27,6 +27,8 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( ${PYTHON_DEPS} )"
+
+PATCHES=( "${FILESDIR}"/${P}-musl-tests.patch )
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup

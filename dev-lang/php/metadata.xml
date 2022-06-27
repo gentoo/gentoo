@@ -27,7 +27,6 @@
     <flag name="flatfile">Add dbm support for flat files</flag>
     <flag name="fpm">Enable the FastCGI Process Manager SAPI</flag>
     <flag name="gd">Adds support for gd (bundled with PHP)</flag>
-    <flag name="hash">Enable the hash extension</flag>
     <flag name="inifile">Add dbm support for .ini files</flag>
     <flag name="jit">Enable PCRE JIT support</flag>
     <flag name="json">Enable JSON support</flag>
@@ -64,8 +63,6 @@
     <flag name="xmlreader">Enable XMLReader support</flag>
     <flag name="xmlwriter">Enable XMLWriter support</flag>
     <flag name="xslt">Enable the XSL extension</flag>
-    <flag name="wddx">Add support for Web Distributed Data eXchange</flag>
     <flag name="webp">Enable webp support for GD in php-7.x</flag>
-    <flag name="zip-encryption">Enable ZIP file encryption from <pkg>dev-libs/libzip</pkg></flag>
   </use>
 </pkgmetadata>

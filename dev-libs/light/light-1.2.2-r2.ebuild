@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,25 +12,27 @@ SRC_URI="https://github.com/haikarainen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-
 IUSE="udev"
 
 RDEPEND="
 	acct-group/video
 	!sys-power/acpilight
+	udev? ( virtual/libudev:= )
 "
-DEPEND="udev? ( virtual/libudev:= )
-	${RDEPEND}"
+DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-fcommon.patch"
+)
 
 src_prepare() {
-	eapply "${FILESDIR}/${P}-fcommon.patch"
-	eapply_user
+	default
 	eautoreconf
 }
 
 src_configure() {
 	local myeconfargs=(
-	$(usex udev --with-udev="/lib/udev/rules.d" "")
+		$(usex udev --with-udev="$(get_udevdir)/rules.d" "")
 	)
 
 	econf "${myeconfargs[@]}"

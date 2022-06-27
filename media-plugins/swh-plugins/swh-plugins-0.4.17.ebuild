@@ -1,16 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools flag-o-matic multilib-minimal
+inherit autotools flag-o-matic toolchain-funcs multilib-minimal
 
 DESCRIPTION="Large collection of LADSPA audio plugins/effects"
 HOMEPAGE="http://plugin.org.uk"
 SRC_URI="https://github.com/swh/ladspa/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 IUSE="nls cpu_flags_x86_3dnow cpu_flags_x86_sse"
 
@@ -40,9 +40,7 @@ src_prepare() {
 	# Use system libgsm, also patch above, bug #252890
 	rm -rf gsm
 
-	NOCONFIGURE=1 ./autogen.sh
-
-	elibtoolize
+	eautoreconf
 
 	multilib_copy_sources
 }

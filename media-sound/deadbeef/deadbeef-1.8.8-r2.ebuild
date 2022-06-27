@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools xdg flag-o-matic plocale
+inherit autotools xdg flag-o-matic toolchain-funcs plocale
 
 DESCRIPTION="DeaDBeeF is a modular audio player similar to foobar2000"
 HOMEPAGE="https://deadbeef.sourceforge.io/"
@@ -15,7 +15,7 @@ LICENSE="
 	wavpack? ( BSD )
 "
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="aac alsa cdda converter cover dts ffmpeg flac +hotkeys lastfm mp3 musepack nls notify nullout opus oss pulseaudio sc68 shellexec +supereq threads vorbis wavpack"
 
 REQUIRED_USE="

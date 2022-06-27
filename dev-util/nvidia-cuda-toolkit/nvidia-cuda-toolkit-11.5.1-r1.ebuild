@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -221,7 +221,7 @@ src_install() {
 }
 
 pkg_postinst_check() {
-	local a="$(${EROOT}/opt/cuda/bin/cuda-config -s)"
+	local a="$("${EROOT}"/opt/cuda/bin/cuda-config -s)"
 	local b="0.0"
 	local v
 	for v in ${a}; do

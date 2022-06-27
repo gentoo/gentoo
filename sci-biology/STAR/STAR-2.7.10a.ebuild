@@ -17,7 +17,10 @@ RDEPEND="sci-libs/htslib:="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.7.10a-fix-build-system.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.7.10a-fix-build-system.patch
+	"${FILESDIR}"/${PN}-2.7.10a-missing-include.patch
+)
 DOCS=( README.md CHANGES.md RELEASEnotes.md doc/STARmanual.pdf )
 
 pkg_pretend() {

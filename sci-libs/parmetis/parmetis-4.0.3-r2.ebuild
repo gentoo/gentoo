@@ -11,7 +11,7 @@ SRC_URI="http://glaros.dtc.umn.edu/gkhome/fetch/sw/${PN}/${P}.tar.gz"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples openmp pcre"
 RESTRICT="mirror bindist"
 
@@ -26,10 +26,12 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.3-02-unbundle-metis.patch
 )
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		use openmp && tc-check-openmp
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_prepare() {

@@ -1,17 +1,18 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..10} )
 DISTUTILS_OPTIONAL=1
-inherit autotools linux-info distutils-r1 systemd
+PYTHON_COMPAT=( python3_{8..11} )
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/netfilter.org.asc
+inherit edo linux-info distutils-r1 systemd verify-sig
 
 DESCRIPTION="Linux kernel (3.13+) firewall, NAT and packet mangling tools"
 HOMEPAGE="https://netfilter.org/projects/nftables/"
 
 if [[ ${PV} =~ ^[9]{4,}$ ]]; then
-	inherit git-r3
+	inherit autotools git-r3
 	EGIT_REPO_URI="https://git.netfilter.org/${PN}"
 
 	BDEPEND="
@@ -19,17 +20,20 @@ if [[ ${PV} =~ ^[9]{4,}$ ]]; then
 		sys-devel/flex
 	"
 else
-	SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.bz2
+		verify-sig? ( https://netfilter.org/projects/nftables/files/${P}.tar.bz2.sig )"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-netfilter )"
 fi
 
 LICENSE="GPL-2"
 SLOT="0/1"
-IUSE="debug doc +gmp json libedit +modern-kernel python +readline static-libs xtables"
+IUSE="debug doc +gmp json libedit +modern-kernel python +readline static-libs test xtables"
+RESTRICT="test? ( userpriv ) !test? ( test )"
 
 RDEPEND="
 	>=net-libs/libmnl-1.0.4:0=
-	>=net-libs/libnftnl-1.2.1:0=
+	>=net-libs/libnftnl-1.2.2:0=
 	gmp? ( dev-libs/gmp:= )
 	json? ( dev-libs/jansson:= )
 	python? ( ${PYTHON_DEPS} )
@@ -40,21 +44,18 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 BDEPEND+="
+	virtual/pkgconfig
 	doc? (
 		app-text/asciidoc
 		>=app-text/docbook2X-0.8.8-r4
 	)
-	virtual/pkgconfig
+	python? ( ${PYTHON_DEPS} )
 "
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	libedit? ( !readline )
 "
-
-PATCHES=(
-	"${FILESDIR}/${PN}-0.9.8-slibtool.patch"
-)
 
 pkg_setup() {
 	if kernel_is ge 3 13; then
@@ -71,13 +72,9 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# fix installation path for doc stuff
-	sed '/^pkgsysconfdir/s@${sysconfdir}.*$@${docdir}/skels@' \
-		-i files/nftables/Makefile.am || die
-	sed '/^pkgsysconfdir/s@${sysconfdir}.*$@${docdir}/skels/osf@' \
-		-i files/osf/Makefile.am || die
-
-	eautoreconf
+	if [[ ${PV} =~ ^[9]{4,}$ ]] ; then
+		eautoreconf
+	fi
 
 	if use python; then
 		pushd py >/dev/null || die
@@ -90,6 +87,7 @@ src_configure() {
 	local myeconfargs=(
 		# We handle python separately
 		--disable-python
+		--disable-static
 		--sbindir="${EPREFIX}"/sbin
 		$(use_enable debug)
 		$(use_enable doc man-doc)
@@ -119,6 +117,17 @@ src_compile() {
 	fi
 }
 
+src_test() {
+	emake check
+
+	edo tests/shell/run-tests.sh -v
+
+	# Need to rig up Python eclass if using this, but it doesn't seem to work
+	# for me anyway.
+	#cd tests/py || die
+	#"${EPYTHON}" nft-test.py || die
+}
+
 src_install() {
 	default
 
@@ -127,6 +136,12 @@ src_install() {
 		doman *.?
 		popd >/dev/null || die
 	fi
+
+	# Do it here instead of in src_prepare to avoid eautoreconf
+	# rmdir lets us catch if more files end up installed in /etc/nftables
+	dodir /usr/share/doc/${PF}/skels/
+	mv "${ED}"/etc/nftables/osf "${ED}"/usr/share/doc/${PF}/skels/osf || die
+	rmdir "${ED}"/etc/nftables || die
 
 	local mksuffix="$(usex modern-kernel '-mk' '')"
 
@@ -147,9 +162,23 @@ src_install() {
 	find "${ED}" -type f -name "*.la" -delete || die
 }
 
+pkg_preinst() {
+	if [[ -d /sys/module/nf_tables ]] && [[ -x /sbin/nft ]] && [[ -z ${ROOT} ]]; then
+		if ! /sbin/nft -t list ruleset | "${ED}"/sbin/nft -c -f -; then
+			eerror "Your currently loaded ruleset cannot be parsed by the newly built instance of"
+			eerror "nft. This probably means that there is a regression introduced by v${PV}."
+			eerror "(To make the ebuild fail instead of warning, set NFTABLES_ABORT_ON_RELOAD_FAILURE=1.)"
+
+			if [[ -n ${NFTABLES_ABORT_ON_RELOAD_FAILURE} ]] ; then
+				die "Aborting because of failed nft reload!"
+			fi
+		fi
+	fi
+}
+
 pkg_postinst() {
 	local save_file
-	save_file="${EROOT}/var/lib/nftables/rules-save"
+	save_file="${EROOT}"/var/lib/nftables/rules-save
 
 	# In order for the nftables-restore systemd service to start
 	# the save_file must exist.
@@ -172,6 +201,7 @@ pkg_postinst() {
 		elog "the nftables-restore service must be manually started in order to"
 		elog "save those rules on shutdown."
 	fi
+
 	if has_version 'sys-apps/openrc'; then
 		elog "If you wish to enable the firewall rules on boot (on openrc) you"
 		elog "will need to enable the nftables service."

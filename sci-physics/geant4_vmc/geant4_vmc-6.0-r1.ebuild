@@ -24,7 +24,7 @@ IUSE="doc examples geant3 +g4root vgm test"
 
 RDEPEND="
 	>=sci-physics/geant-4.11[c++17,opengl,geant3?]
-	sci-physics/root:=[c++17,-vmc]
+	sci-physics/root:=[c++17,-vmc(-)]
 	>=sci-physics/vmc-2.0:=[c++17]
 	vgm? ( sci-physics/vgm:= )"
 DEPEND="${RDEPEND}
@@ -40,8 +40,8 @@ RESTRICT="
 DOCS=(history README.md)
 
 PATCHES=(
-	# https://github.com/vmc-project/geant4_vmc/pull/28
 	"${FILESDIR}"/${PN}-6.0-cmake-g4root-tests.patch
+	"${FILESDIR}"/${PN}-6.0-geant-4.11.0.1-fix.patch
 )
 
 src_configure() {

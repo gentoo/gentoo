@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-inherit bash-completion-r1 cmake cuda python-utils-r1 readme.gentoo-r1 toolchain-funcs xdg-utils
+inherit bash-completion-r1 cmake cuda readme.gentoo-r1 toolchain-funcs xdg-utils
 
 SRC_URI="
 	http://ftp.gromacs.org/gromacs/${PN}-${PV/_/-}.tar.gz
@@ -63,9 +63,11 @@ S="${WORKDIR}/${PN}-${PV/_/-}"
 PATCHES=( "${FILESDIR}/${P}-missing-include.patch" )
 
 pkg_pretend() {
-	[[ $(gcc-version) == "4.1" ]] && die "gcc 4.1 is not supported by gromacs"
-	use openmp && ! tc-has-openmp && \
-		die "Please switch to an openmp compatible compiler"
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_prepare() {

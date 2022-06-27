@@ -5,8 +5,4 @@
 		<email>mschiff@gentoo.org</email>
 		<name>Marc Schiffbauer</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>whissi@gentoo.org</email>
-		<name>Thomas Deutschmann</name>
-	</maintainer>
 </pkgmetadata>

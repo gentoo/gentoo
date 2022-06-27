@@ -19,5 +19,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">sashs/Ropper</remote-id>
+		<remote-id type="pypi">ropper</remote-id>
 	</upstream>
 </pkgmetadata>

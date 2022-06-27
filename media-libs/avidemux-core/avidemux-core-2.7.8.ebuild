@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,12 +15,11 @@ SRC_URI="https://github.com/mean00/avidemux2/archive/${PV}.tar.gz -> avidemux-${
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
 SLOT="2.7"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug nls nvenc sdl system-ffmpeg vaapi vdpau xv"
+IUSE="debug nls sdl system-ffmpeg vaapi vdpau xv"
 
 # Trying to use virtual; ffmpeg misses aac,cpudetection USE flags now though, are they needed?
 DEPEND="
 	dev-db/sqlite:3
-	nvenc? ( media-video/nvidia_video_sdk )
 	sdl? ( media-libs/libsdl:0 )
 	system-ffmpeg? ( >=media-video/ffmpeg-9:0[mp3,theora] )
 	vaapi? ( x11-libs/libva:0= )
@@ -78,7 +77,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DAVIDEMUX_SOURCE_DIR='${S}'
 		-DGETTEXT="$(usex nls)"
-		-DNVENC="$(usex nvenc)"
+		-DNVENC=no
 		-DSDL="$(usex sdl)"
 		-DLIBVA="$(usex vaapi)"
 		-DVDPAU="$(usex vdpau)"

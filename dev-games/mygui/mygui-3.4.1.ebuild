@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_REMOVE_MODULES_LIST="FindFreetype"
-inherit cmake flag-o-matic multilib
+inherit cmake flag-o-matic
 
 MY_PN=MyGUI
 MY_P=${MY_PN}${PV}
@@ -24,7 +24,7 @@ REQUIRED_USE="ogre? ( !opengl )
 RDEPEND="media-libs/freetype:2
 	sys-libs/zlib
 	ogre? (
-		dev-games/ogre:0=[freeimage,opengl]
+		>=dev-games/ogre-1.12:0=[freeimage,opengl]
 		samples? ( dev-games/ois )
 	)
 	opengl? (

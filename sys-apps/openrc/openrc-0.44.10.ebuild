@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ if [[ ${PV} =~ ^9{4,}$ ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/OpenRC/openrc/archive/${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 LICENSE="BSD-2"
@@ -155,4 +155,15 @@ pkg_postinst() {
 		ewarn "without networking."
 		ewarn
 	fi
+
+	# added to handle downgrading from 0.45 (2022-06-08)
+	for v in ${REPLACING_VERSIONS}; do
+		[[ -x $(type rc-update) ]] || continue
+		if ver_test $v -gt 0.44.10; then
+			if rc-update show boot | grep -q seedrng; then
+				rc-update del seedrng boot
+				rc-update add urandom boot
+		fi
+		fi
+	done
 }

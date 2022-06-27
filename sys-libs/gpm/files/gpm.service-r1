@@ -1,0 +1,11 @@
+[Unit]
+Description=Console Mouse manager
+After=syslog.target
+
+[Service]
+ExecStart=/usr/sbin/gpm -m /dev/input/mice -t exps2
+Type=forking
+PIDFile=/run/gpm.pid
+
+[Install]
+WantedBy=multi-user.target

@@ -4,14 +4,58 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sergey Torokhov <torokhov-s-a@yandex.ru> (2022-06-22)
+# media-libs/libjxl is not keyworded
+# bug https://bugs.gentoo.org/853628
+media-gfx/gimp jpegxl
+
+# Sam James <sam@gentoo.org> (2022-05-17)
+# sci-libs/sundials fails to build tests on HPPA
+# bug #845222
+sci-mathematics/octave sundials
+
+# Matt Turner <mattst88@gentoo.org> (2022-05-07)
+# app-crypt/gcr is not keyworded
+app-crypt/pinentry gtk
+dev-libs/libgdata crypt
+
+# Nickolas Raymond Kaczynski <nrk@disroot.org> (2022-04-24)
+# Dependencies are missing keywords
+media-libs/imlib2 svg heif jpegxl
+
+# Sam James <sam@gentoo.org> (2022-04-24)
+# Requires dev-util/pahole.
+sys-kernel/gentoo-kernel debug
+sys-kernel/vanilla-kernel debug
+
+# Matt Turner <mattst88@gentoo.org> (2022-04-18)
+# app-text/nuspell is not keyworded
+app-text/enchant nuspell
+
+# Lars Wendler <polynomial-c@gentoo.org> (2022-04-01)
+# gnome-base/librsvg missing keywords
+media-libs/freetype svg
+
+# Sam James <sam@gentoo.org> (2022-03-26)
+# media-libs/libjxl not keyworded here
+media-gfx/graphicsmagick jpegxl
+
+# Sam James <sam@gentoo.org> (2022-03-22)
+# media-libs/dav1d not keyworded here
+media-libs/xine-lib dav1d
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# Untested useflag on other arches, needs keywording
+media-video/ffmpeg vmaf
+
+# Sam James <sam@gentoo.org> (2022-03-06)
+# Unkeyworded dependencies
+net-mail/cyrus-imapd http
+
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
 # Mask AMF keyword on non-amd64 arches
 # It is unusable, for now, in other arches
 media-video/ffmpeg amf
-
-# Sam James <sam@gentoo.org> (2022-02-10)
-# app-crypt/tpm2-tss is not keyworded here
-app-crypt/gnupg tpm
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-02-08)
 # bash becomes corrupted and system breaks, bug #832946
@@ -20,10 +64,6 @@ app-shells/bash mem-scramble
 # Sam James <sam@gentoo.org> (2022-01-29)
 # app-text/ronn-ng not keyworded here, bug #801103
 app-accessibility/espeak-ng man
-
-# Vadim Misbakh-Soloviov <mva@gentoo.org> (2021-12-09)
-# ts-cli requires rust to be built, and rust is unavailable here ATM.
-dev-libs/tree-sitter ts-cli
 
 # Sam James <sam@gentoo.org> (2021-11-19)
 # Avoid dragging in doc/sphinx deps where we can help it
@@ -91,6 +131,7 @@ media-libs/rubberband jni
 # media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
 media-libs/gd avif heif
+media-gfx/graphicsmagick heif
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-01-19)
 # uchardet not stable/keyworded yet on this arch
@@ -109,10 +150,6 @@ dev-util/cppcheck z3
 # media-sound/lash not keyworded, bug #736725
 media-sound/fluidsynth lash
 
-# Cédric Krier <cedk@gentoo.org> (2020-11-10)
-# virtual/rust has no hppa keyword
-dev-vcs/mercurial rust
-
 # Joonas Niilola <juippis@gentoo.org> (2020-10-08)
 # Dependency not keyworded on this arch.
 dev-libs/efl avif heif lua_single_target_luajit physics
@@ -128,10 +165,6 @@ sys-block/fio -io-uring -zbc
 # Michał Górny <mgorny@gentoo.org> (2020-06-14)
 # Requires dev-python/networkx.
 app-portage/nattka depgraph-order
-
-# Michał Górny <mgorny@gentoo.org> (2020-05-03)
-# Requires unsupported dev-python/gevent.
-dev-python/socketpool eventlet gevent
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-25)
 # dependencies not yet keyworded
@@ -161,7 +194,7 @@ media-video/ffmpeg dav1d libaribb24 libtesseract vidstab
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
 # media-gfx/nvidia-texture-tools, media-libs/allegro not keyworded on hppa
-media-libs/devil allegro nvtt
+media-libs/devil allegro
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-09)
 # dependencies not keyworded
@@ -176,9 +209,8 @@ app-emacs/elscreen wanderlust
 net-im/pidgin gadu
 
 # Jeroen Roovers <jer@gentoo.org> (2020-01-28)
-# sys-apps/systemd is not stable
 # media-libs/libilbc has not been ported to HPPA
-net-analyzer/wireshark ilbc sdjournal
+net-analyzer/wireshark ilbc
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
 # media-libs/libheif is not keyworded
@@ -239,10 +271,6 @@ sys-libs/glibc systemtap
 # Göktürk Yüksek <gokturk@gentoo.org> (2017-08-15)
 # Requires java
 app-forensics/sleuthkit java
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Requires USE=seccomp that is masked in this profile.
-net-libs/gnutls test-full
 
 # Jeroen Roovers <jer@gentoo.org> (2017-02-04)
 # media-libs/libilbc has not been ported to HPPA
@@ -340,6 +368,7 @@ dev-libs/libpcre jit
 # Jeroen Roovers <jer@gentoo.org> (2014-02-18)
 # OSS is the only kernel audio interface that works on HPPA
 media-sound/pulseaudio equalizer -oss
+media-sound/pulseaudio-daemon equalizer -oss
 
 # Jeroen Roovers <jer@gentoo.org> (2012-05-21)
 # media-sound/lilypond has problems running mpost (bug #416961)

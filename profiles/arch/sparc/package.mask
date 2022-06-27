@@ -1,12 +1,6 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2022-01-13)
-# Unaligned access causes SIGBUS on sparc in NSS module.
-# Newer versions fixed. Please upgrade ASAP!
-# bug #830275
-<sys-apps/systemd-249.9
-
 # Raúl Porcel <armin76@gentoo.org> (2014-11-17)
 # Mask sys-devel/kgcc64 since >=gcc-4.4 can build 64bit kernels
 sys-devel/kgcc64

@@ -29,7 +29,7 @@ PATCH_DEV=dilfridge
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 	SRC_URI="mirror://gnu/glibc/${P}.tar.xz"
 	SRC_URI+=" https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
 fi
@@ -1573,7 +1573,7 @@ pkg_postinst() {
 	if [[ -e ${EROOT}/etc/nsswitch.conf ]] && ! has_version sys-auth/libnss-nis ; then
 		local entry
 		for entry in passwd group shadow; do
-			if egrep -q "^[ \t]*${entry}:.*nis" "${EROOT}"/etc/nsswitch.conf; then
+			if grep -E -q "^[ \t]*${entry}:.*nis" "${EROOT}"/etc/nsswitch.conf; then
 				ewarn ""
 				ewarn "Your ${EROOT}/etc/nsswitch.conf uses NIS. Support for that has been"
 				ewarn "removed from glibc and is now provided by the package"

@@ -8,7 +8,7 @@ GENTOO_DEPEND_ON_PERL=no
 # bug #329479: git-remote-testgit is not multiple-version aware
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit toolchain-funcs elisp-common perl-module bash-completion-r1 plocale python-single-r1 systemd
+inherit toolchain-funcs perl-module bash-completion-r1 plocale python-single-r1 systemd
 
 PLOCALES="bg ca de es fr is it ko pt_PT ru sv vi zh_CN"
 if [[ ${PV} == *9999 ]]; then
@@ -46,12 +46,12 @@ if [[ ${PV} != *9999 ]]; then
 			${SRC_URI_KORG}/${PN}-htmldocs-${DOC_VER}.tar.${SRC_URI_SUFFIX}
 			)"
 	[[ "${PV}" == *_rc* ]] || \
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+blksha1 +curl cgi doc emacs gnome-keyring +gpg highlight +iconv mediawiki mediawiki-experimental +nls +pcre perforce +perl +ppcsha1 subversion tk +threads +webdav xinetd cvs test"
+IUSE="+blksha1 +curl cgi doc gnome-keyring +gpg highlight +iconv mediawiki mediawiki-experimental +nls +pcre perforce +perl +ppcsha1 selinux subversion tk +threads +webdav xinetd cvs test"
 
 # Common to both DEPEND and RDEPEND
 DEPEND="
@@ -99,6 +99,7 @@ RDEPEND="${DEPEND}
 		)
 	)
 	perforce? ( ${PYTHON_DEPS} )
+	selinux? ( sec-policy/selinux-git )
 "
 
 # This is how info docs are created with Git:
@@ -112,7 +113,6 @@ BDEPEND="
 		app-text/xmlto
 		sys-apps/texinfo
 	)
-	emacs? ( >=app-editors/emacs-23.1:* )
 	gnome-keyring? ( virtual/pkgconfig )
 	nls? ( sys-devel/gettext )
 	test? (	app-crypt/gnupg	)
@@ -303,10 +303,6 @@ src_configure() {
 src_compile() {
 	git_emake || die "emake failed"
 
-	if use emacs ; then
-		elisp-compile contrib/emacs/git{,-blame}.el
-	fi
-
 	if use perl && use cgi ; then
 		git_emake gitweb || die "emake gitweb (cgi) failed"
 	fi
@@ -388,16 +384,6 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins contrib/completion/git-prompt.sh
 
-	if use emacs ; then
-		elisp-install ${PN} contrib/emacs/git.{el,elc}
-		elisp-install ${PN} contrib/emacs/git-blame.{el,elc}
-		#elisp-install ${PN}/compat contrib/emacs/vc-git.{el,elc}
-		# don't add automatically to the load-path, so the sitefile
-		# can do a conditional loading
-		touch "${ED}${SITELISP}/${PN}/compat/.nosearch"
-		elisp-site-file-install "${FILESDIR}"/${SITEFILE}
-	fi
-
 	#dobin contrib/fast-import/git-p4 # Moved upstream
 	#dodoc contrib/fast-import/git-p4.txt # Moved upstream
 	newbin contrib/fast-import/import-tars.perl import-tars
@@ -445,7 +431,7 @@ src_install() {
 	# The following are excluded:
 	# completion - installed above
 	# diff-highlight - done above
-	# emacs - installed above
+	# emacs - removed upstream
 	# examples - these are stuff that is not used in Git anymore actually
 	# git-jump - done above
 	# gitview - installed above
@@ -641,7 +627,6 @@ showpkgdeps() {
 }
 
 pkg_postinst() {
-	use emacs && elisp-site-regen
 	elog "Please read /usr/share/bash-completion/completions/git for Git bash command"
 	elog "completion."
 	elog "Please read /usr/share/git/git-prompt.sh for Git bash prompt"
@@ -653,8 +638,4 @@ pkg_postinst() {
 		"|| ( www-servers/lighttpd www-servers/apache www-servers/nginx )"
 	echo
 	use mediawiki-experimental && ewarn "Using experimental git-mediawiki patches. The stability of cloned wiki filesystems is not guaranteed."
-}
-
-pkg_postrm() {
-	use emacs && elisp-site-regen
 }

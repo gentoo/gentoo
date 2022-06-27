@@ -1,0 +1,216 @@
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index ff928e1..029f2ff 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -1,7 +1,7 @@
+ check_SCRIPTS =
+ TESTS = $(check_SCRIPTS)
+ 
+-check_SCRIPTS += ima_hash.test sign_verify.test boot_aggregate.test
++check_SCRIPTS += ima_hash.test sign_verify.test
+ 
+ clean-local:
+ 	-rm -f *.txt *.out *.sig *.sig2
+diff --git a/tests/boot_aggregate.test b/tests/boot_aggregate.test
+deleted file mode 100755
+index d711566..0000000
+--- a/tests/boot_aggregate.test
++++ /dev/null
+@@ -1,197 +0,0 @@
+-#!/bin/bash
+-
+-#
+-# Calculate the boot_aggregate for each TPM bank, verifying that the
+-# boot_aggregate in the IMA measurement list matches one of them.
+-#
+-# A software TPM may be used to verify the boot_aggregate.  If a
+-# software TPM is not already running on the system, this test
+-# starts one and initializes the TPM PCR banks by walking the sample
+-# binary_bios_measurements event log, included in this directory, and
+-# extending the TPM PCRs.  The associated ascii_runtime_measurements
+-# for verifying the calculated boot_aggregate is included in this
+-# directory as well.
+-
+-trap cleanup SIGINT SIGTERM EXIT
+-
+-# Base VERBOSE on the environment variable, if set.
+-VERBOSE="${VERBOSE:-0}"
+-
+-cd "$(dirname "$0")"
+-export PATH=../src:$PATH
+-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH
+-. ./functions.sh
+-_require evmctl
+-TSSDIR="$(dirname -- "$(which tssstartup)")"
+-PCRFILE="/sys/class/tpm/tpm0/device/pcrs"
+-MISC_PCRFILE="/sys/class/misc/tpm0/device/pcrs"
+-
+-# Only stop this test's software TPM
+-cleanup() {
+-	if [ -n "${SWTPM_PID}" ]; then
+-		kill -SIGTERM "${SWTPM_PID}"
+-	elif [ -n "${TPMSERVER_PID}" ]; then
+-		"${TSSDIR}/tsstpmcmd" -stop
+-	fi
+-}
+-
+-# Try to start a software TPM if needed.
+-swtpm_start() {
+-	local tpm_server swtpm
+-
+-	tpm_server="$(which tpm_server)"
+-	swtpm="$(which swtpm)"
+-	if [ -z "${tpm_server}" ] && [ -z "${swtpm}" ]; then
+-		echo "${CYAN}SKIP: Software TPM (tpm_server and swtpm) not found${NORM}"
+-		return "$SKIP"
+-	fi
+-
+-	if [ -n "${swtpm}" ]; then
+-		pgrep swtpm
+-		if [ $? -eq 0 ]; then
+-			echo "INFO: Software TPM (swtpm) already running"
+-			return 114
+-		else
+-			echo "INFO: Starting software TPM: ${swtpm}"
+-			mkdir -p ./myvtpm
+-			${swtpm} socket --tpmstate dir=./myvtpm --tpm2 --ctrl type=tcp,port=2322 --server type=tcp,port=2321 --flags not-need-init > /dev/null 2>&1 &
+-			SWTPM_PID=$!
+-		fi
+-	elif [ -n "${tpm_server}" ]; then
+-		# tpm_server uses the Microsoft simulator encapsulated packet format
+-		export TPM_SERVER_TYPE="mssim"
+-		pgrep tpm_server
+-		if [ $? -eq 0 ]; then
+-			echo "INFO: Software TPM (tpm_server) already running"
+-			return 114
+-		else
+-			echo "INFO: Starting software TPM: ${tpm_server}"
+-			${tpm_server} > /dev/null 2>&1 &
+-			TPMSERVER_PID=$!
+-		fi
+-	fi
+-	return 0
+-}
+-
+-# Initialize the software TPM using the sample binary_bios_measurements log.
+-swtpm_init() {
+-	if [ ! -f "${TSSDIR}/tssstartup" ] || [ ! -f "${TSSDIR}/tsseventextend" ]; then
+-		echo "${CYAN}SKIP: tssstartup and tsseventextend needed for test${NORM}"
+-		return "$SKIP"
+-	fi
+-
+-	echo "INFO: Sending software TPM startup"
+-	"${TSSDIR}/tssstartup"
+-	if [ $? -ne 0 ]; then
+-		echo "INFO: Retry sending software TPM startup"
+-		sleep 1
+-		"${TSSDIR}/tssstartup"
+-	fi
+-
+-	if [ $? -ne 0 ]; then
+-		echo "INFO: Software TPM startup failed"
+-		return "$SKIP"
+-	fi
+-
+-	echo "INFO: Walking ${BINARY_BIOS_MEASUREMENTS} initializing the software TPM"
+-#	$(${TSSDIR}/tsseventextend -tpm -if "${BINARY_BIOS_MEASUREMENTS}" -v) 2>&1 > /dev/null
+-	"${TSSDIR}/tsseventextend" -tpm -if "${BINARY_BIOS_MEASUREMENTS}" -v > /dev/null 2>&1
+-}
+-
+-# In VERBOSE mode, display the calculated TPM PCRs for the different banks.
+-display_pcrs() {
+-	local PCRMAX=9
+-	local banks=("sha1" "sha256")
+-	local i;
+-
+-	for bank in "${banks[@]}"; do
+-		echo "INFO: Displaying ${bank} TPM bank (PCRs 0 - 9)"
+-		for i in $(seq 0 $PCRMAX); do
+-			rc=0
+-			pcr=$("${TSSDIR}/tsspcrread" -halg "${bank}" -ha "${i}" -ns)
+-			if [ $rc -ne 0 ]; then
+-				echo "INFO: tsspcrread failed: $pcr"
+-				break
+-			fi
+-			echo "$i: $pcr"
+-		done
+-	done
+-}
+-
+-# The first entry in the IMA measurement list is the "boot_aggregate".
+-# For each kexec, an additional "boot_aggregate" will appear in the
+-# measurement list, assuming the previous measurement list is carried
+-# across the kexec.
+-#
+-# Verify that the last "boot_aggregate" record in the IMA measurement
+-# list matches.
+-check() {
+-	echo "INFO: Calculating the boot_aggregate (PCRs 0 - 9) for multiple banks"
+-	bootaggr=$(evmctl ima_boot_aggregate)
+-	if [ $? -ne 0 ]; then
+-		echo "${CYAN}SKIP: evmctl ima_boot_aggregate: $bootaggr${NORM}"
+-		exit "$SKIP"
+-	fi
+-
+-	boot_aggr=( $bootaggr )
+-
+-	echo "INFO: Searching for the boot_aggregate in ${ASCII_RUNTIME_MEASUREMENTS}"
+-	for hash in "${boot_aggr[@]}"; do
+-		if [ "$VERBOSE" != "0" ]; then
+-			echo "$hash"
+-		fi
+-		if grep -e " boot_aggregate$" -e " boot_aggregate.$" "${ASCII_RUNTIME_MEASUREMENTS}" | tail -n 1 | grep -q "${hash}"; then
+-			echo "${GREEN}SUCCESS: boot_aggregate ${hash} found${NORM}"
+-			return "$OK"
+-		fi
+-	done
+-	echo "${RED}FAILURE: boot_aggregate not found${NORM}"
+-	echo "$bootaggr"
+-	return "$FAIL"
+-}
+-
+-if [ "$(id -u)" = 0 ] && [ -c "/dev/tpm0" ]; then
+-	ASCII_RUNTIME_MEASUREMENTS="/sys/kernel/security/ima/ascii_runtime_measurements"
+-	if [ ! -d "/sys/kernel/security/ima" ]; then
+-		echo "${CYAN}SKIP: CONFIG_IMA not enabled${NORM}"
+-		exit "$SKIP"
+-	fi
+-else
+-	BINARY_BIOS_MEASUREMENTS="./sample-binary_bios_measurements-pcrs-8-9"
+-	ASCII_RUNTIME_MEASUREMENTS="./sample-ascii_runtime_measurements-pcrs-8-9"
+-	export TPM_INTERFACE_TYPE="socsim"
+-	export TPM_COMMAND_PORT=2321
+-	export TPM_PLATFORM_PORT=2322
+-	export TPM_SERVER_NAME="localhost"
+-
+-	# swtpm uses the raw, unencapsulated packet format
+-	export TPM_SERVER_TYPE="raw"
+-fi
+-
+-# Start and initialize a software TPM as needed
+-if [ "$(id -u)" != 0 ] || [ ! -c "/dev/tpm0" ]; then
+-	if [ -f "$PCRFILE" ] || [ -f "$MISC_PCRFILE" ]; then
+-		echo "${CYAN}SKIP: system has discrete TPM 1.2, sample TPM 2.0 event log test not supported.${NORM}"
+-		exit "$SKIP"
+-	fi
+-
+-	swtpm_start
+-	error=$?
+-	if [ $error -eq "$SKIP" ]; then
+-		echo "skip: swtpm not installed"
+-		exit "$SKIP"
+-	fi
+-
+-	if [ $error -eq 0 ]; then
+-		swtpm_init
+-		if [ $? -eq "$SKIP" ]; then
+-			echo "testing boot_aggregate without entries"
+-			exit "$SKIP"
+-		fi
+-	fi
+-	if [ "$VERBOSE" != "0" ]; then
+-		display_pcrs
+-	fi
+-fi
+-
+-expect_pass check

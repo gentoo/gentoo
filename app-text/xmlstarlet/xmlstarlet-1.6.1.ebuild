@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools multilib flag-o-matic toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="A set of tools to transform, query, validate, and edit XML documents"
 HOMEPAGE="http://xmlstar.sourceforge.net/"

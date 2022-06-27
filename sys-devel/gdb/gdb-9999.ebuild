@@ -43,7 +43,7 @@ SRC_URI="${SRC_URI}
 	${PATCH_VER:+mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz}
 "
 
-LICENSE="GPL-2 LGPL-2"
+LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
 
 if [[ ${PV} != 9999* ]] ; then
@@ -53,10 +53,17 @@ fi
 IUSE="cet guile lzma multitarget nls +python +server source-highlight test vanilla xml xxhash"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
+# In fact, gdb's test suite needs some work to get passing.
+# See e.g. https://sourceware.org/gdb/wiki/TestingGDB.
+# As of 11.2, on amd64: "# of unexpected failures    8600"
 # ia64 kernel crashes when gdb testsuite is running
+# in fact, gdb's test suite needs some work to get passing.
+# See e.g. https://sourceware.org/gdb/wiki/TestingGDB.
+# As of 11.2, on amd64: "# of unexpected failures    8600"
 RESTRICT="
 	ia64? ( test )
 	!test? ( test )
+	test
 "
 
 RDEPEND="
@@ -65,6 +72,7 @@ RDEPEND="
 	>=sys-libs/ncurses-5.2-r2:0=
 	>=sys-libs/readline-7:0=
 	sys-libs/zlib
+	elibc_glibc? ( net-libs/libnsl:= )
 	lzma? ( app-arch/xz-utils )
 	python? ( ${PYTHON_DEPS} )
 	guile? ( >=dev-scheme/guile-2.0 )
@@ -98,9 +106,8 @@ src_prepare() {
 	default
 
 	strip-linguas -u bfd/po opcodes/po
-	export CC_FOR_BUILD=$(tc-getBUILD_CC)
 
-	# avoid using ancient termcap from host on Prefix systems
+	# Avoid using ancient termcap from host on Prefix systems
 	sed -i -e 's/termcap tinfow/tinfow/g' \
 		gdb/configure{.ac,} || die
 }
@@ -120,6 +127,11 @@ gdb_branding() {
 src_configure() {
 	strip-unsupported-flags
 
+	# See https://www.gnu.org/software/make/manual/html_node/Parallel-Output.html
+	# Avoid really confusing logs from subconfigure spam, makes logs far
+	# more legible.
+	MAKEOPTS="--output-sync=line ${MAKEOPTS}"
+
 	local myconf=(
 		# portage's econf() does not detect presence of --d-d-t
 		# because it greps only top-level ./configure. But not
@@ -129,17 +141,28 @@ src_configure() {
 		--with-pkgversion="$(gdb_branding)"
 		--with-bugurl='https://bugs.gentoo.org/'
 		--disable-werror
-		# Disable modules that are in a combined binutils/gdb tree. #490566
+		# Disable modules that are in a combined binutils/gdb tree. bug #490566
 		--disable-{binutils,etc,gas,gold,gprof,ld}
 
 		# avoid automagic dependency on (currently prefix) systems
 		# systems with debuginfod library, bug #754753
 		--without-debuginfod
 
+		$(use_enable test unit-tests)
+
 		# Allow user to opt into CET for host libraries.
 		# Ideally we would like automagic-or-disabled here.
 		# But the check does not quite work on i686: bug #760926.
 		$(use_enable cet)
+
+		# We need to set both configure options, --with-sysroot and --libdir,
+		# to fix cross build issues that happen when configuring gmp.
+		# We explicitly need --libdir. Having only --with-sysroot without
+		# --libdir would not fix the build issues.
+		# For some reason, it is not enough to set only --with-sysroot,
+		# also not enough to pass --with-gmp-xxx options.
+		--with-sysroot="${ESYSROOT}"
+		--libdir="${ESYSROOT}/usr/$(get_libdir)"
 	)
 
 	local sysroot="${EPREFIX}/usr/${CTARGET}"
@@ -192,18 +215,24 @@ src_configure() {
 	# source-highlight is detected with pkg-config: bug #716558
 	export ac_cv_path_pkg_config_prog_path="$(tc-getPKG_CONFIG)"
 
+	export CC_FOR_BUILD="$(tc-getBUILD_CC)"
+
 	# ensure proper compiler is detected for Clang builds: bug #831202
 	export GCC_FOR_TARGET="${CC_FOR_TARGET:-$(tc-getCC)}"
 
 	econf "${myconf[@]}"
 }
 
+src_compile() {
+	emake V=1
+}
+
 src_install() {
-	default
+	emake V=1 DESTDIR="${D}" install
 
 	find "${ED}"/usr -name libiberty.a -delete || die
 
-	# Delete translations that conflict with binutils-libs. #528088
+	# Delete translations that conflict with binutils-libs. bug #528088
 	# Note: Should figure out how to store these in an internal gdb dir.
 	if use nls ; then
 		find "${ED}" \
@@ -231,13 +260,13 @@ src_install() {
 
 	docinto gdb
 	dodoc gdb/CONTRIBUTE gdb/README gdb/MAINTAINERS \
-		gdb/NEWS gdb/ChangeLog gdb/PROBLEMS
+		gdb/NEWS gdb/PROBLEMS
 	docinto sim
-	dodoc sim/{ChangeLog,MAINTAINERS,README-HACKING}
+	dodoc sim/{MAINTAINERS,README-HACKING}
 
 	if use server ; then
 		docinto gdbserver
-		dodoc gdbserver/{ChangeLog,README}
+		dodoc gdbserver/README
 	fi
 
 	if [[ -n ${PATCH_VER} ]] ; then
@@ -245,9 +274,9 @@ src_install() {
 	fi
 
 	# Remove shared info pages
-	rm -f "${ED}"/usr/share/info/{annotate,bfd,configure,standards}.info*
+	rm -f "${ED}"/usr/share/info/{annotate,bfd,configure,ctf-spec,standards}.info*
 
-	if use python; then
+	if use python ; then
 		python_optimize "${ED}"/usr/share/gdb/python/gdb
 	fi
 }

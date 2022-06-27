@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,7 +28,7 @@ RDEPEND="
 	>=dev-cpp/eigen-3.3
 	dev-lang/perl
 	~sci-libs/votca-tools-${PV}
-	gromacs? ( sci-chemistry/gromacs:= )
+	gromacs? ( sci-chemistry/gromacs:=[gmxapi-legacy(+)] )
 	hdf5? ( sci-libs/hdf5 )
 "
 DEPEND="${RDEPEND}"

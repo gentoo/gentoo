@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -54,6 +54,8 @@ src_prepare() {
 	eapply "${DISTDIR}/${PN}-31.0.3-disable-werror-boringssl.patch"
 	cd "${S}/vendor/boringssl" || die
 	eapply "${S}/patches/boringssl/0011-Disable-Werror.patch"
+	cd "${S}/vendor/adb" || die
+	eapply "${FILESDIR}/${PN}-31.0.3_p1-gcc12.patch"
 	cd "${S}"
 	eapply "${DISTDIR}/${PN}-31.0.3_p1-install-e2fsdroid-ext2simg.patch"
 	rm -r patches || die

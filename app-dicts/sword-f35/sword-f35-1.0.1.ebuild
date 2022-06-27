@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="Wilbur Pickering's Greek New Testament According to Family 35"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=f35"
 LICENSE="CC-BY-NC-SA-4.0"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="~amd64 ~loong ~ppc ~riscv ~x86"

@@ -9,5 +9,6 @@
 		<flag name="mbim">Enable MBIM modem protocol</flag>
 		<flag name="qmi">Enable support for the QMI modem protocol used by
 			devices with Qualcomm chipsets</flag>
+		<flag name="qrtr">Enable support for the QMI over IPC Router bus (QRTR) protocol</flag>
 	</use>
 </pkgmetadata>

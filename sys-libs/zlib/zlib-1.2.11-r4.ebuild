@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,6 +14,7 @@ CYGWINPATCHES=(
 DESCRIPTION="Standard (de)compression library"
 HOMEPAGE="https://zlib.net/"
 SRC_URI="https://zlib.net/${P}.tar.gz
+	https://zlib.net/fossils/${P}.tar.gz
 	http://www.gzip.org/zlib/${P}.tar.gz
 	http://www.zlib.net/current/beta/${P}.tar.gz
 	elibc_Cygwin? ( ${CYGWINPATCHES[*]} )"

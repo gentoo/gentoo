@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -22,7 +22,7 @@ SRC_URI="https://www.percona.com/downloads/${MY_PN}-${MY_MAJOR_PV}/${MY_PN}-${MY
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="
 	app-arch/lz4:0=
@@ -49,6 +49,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.0.26-remove-rpm.patch
+	"${FILESDIR}"/${PN}-8.0.26.18-gcc-12.patch
 )
 
 S="${WORKDIR}/percona-xtrabackup-${MY_PV}"

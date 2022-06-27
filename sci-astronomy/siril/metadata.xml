@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>mario.haustein@hrz.tu-chemnitz.de</email>
+		<name>Mario Haustein</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		SIRIL is an astronomical image processing tool.
+
+		It is specially tailored for noise reduction and improving the
+		signal/noise ratio of an image from multiple captures, as required in
+		astronomy. SIRIL can align automatically or manually, stack and enhance
+		pictures from various file formats, even image sequence files (films
+		and SER files). It works well with limited system resources, like in
+		embedded platforms, but is also very fast when run on more powerful
+		computers.
+	</longdescription>
+	<use>
+		<flag name="heif">Add support for the HEIF image format</flag>
+		<flag name="wcs">Add supprt astrometry features using <pkg>sci-astronomy/wcslib</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="gitlab">free-astro/siril</remote-id>
+	</upstream>
+</pkgmetadata>

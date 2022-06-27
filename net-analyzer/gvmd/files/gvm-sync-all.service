@@ -1,0 +1,7 @@
+[Unit]
+Description=Update all feeds of the Greenbone Vulerability Management (GMV) suite
+After=network-online.target
+
+[Service]
+ExecStart=/usr/sbin/gvm-sync-all
+User=gvm

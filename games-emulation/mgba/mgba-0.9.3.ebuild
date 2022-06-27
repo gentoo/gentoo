@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -94,7 +94,7 @@ src_compile() {
 
 src_install() {
 	if use qt5 ; then
-		dobin ${BUILD_DIR}/qt/${PN}-qt
+		dobin "${BUILD_DIR}"/qt/${PN}-qt
 		doman doc/${PN}-qt.6
 		domenu res/${PN}-qt.desktop
 		for size in 16 24 32 48 64 96 128 256 ; do
@@ -103,10 +103,10 @@ src_install() {
 	fi
 	if use sdl ; then
 		doman doc/${PN}.6
-		newbin ${BUILD_DIR}/sdl/${PN} ${PN}-sdl
+		newbin "${BUILD_DIR}"/sdl/${PN} ${PN}-sdl
 	fi
 
-	dolib.so ${BUILD_DIR}/lib${PN}.so*
+	dolib.so "${BUILD_DIR}"/lib${PN}.so*
 }
 
 pkg_preinst() {

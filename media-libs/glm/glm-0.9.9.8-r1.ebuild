@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ src_configure() {
 	if use test; then
 		# See https://github.com/g-truc/glm/pull/1087
 		# https://bugs.gentoo.org/818235
-		append-cxxflags -fno-ipa-modref
+		test-flag-CXX -fno-ipa-modref && append-cxxflags -fno-ipa-modref
 
 		local mycmakeargs=(
 			-DGLM_TEST_ENABLE=ON

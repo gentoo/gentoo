@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cron.eclass
@@ -44,12 +44,12 @@ done
 #	Both arguments are optional.  Everything after 'dir' is considered
 #   the permissions (same format as insopts).
 #
-# ex: docrondir /some/dir -m 0770 -o root -g cron
+# ex: docrondir /some/dir -m 0770 -o 0 -g cron
 #     docrondir /some/dir (uses default perms)
 #     docrondir -m0700 (uses default dir)
 docrondir() {
 	# defaults
-	local perms="-m0750 -o root -g cron" dir="/var/spool/cron/crontabs"
+	local perms="-m0750 -o 0 -g cron" dir="/var/spool/cron/crontabs"
 
 	if [[ -n $1 ]] ; then
 		case "$1" in
@@ -78,10 +78,10 @@ docrondir() {
 #
 #    Both arguments are optional.
 #
-# ex: docron -m 0700 -o root -g root ('exe' defaults to "cron")
+# ex: docron -m 0700 -o 0 -g root ('exe' defaults to "cron")
 #     docron crond -m 0110
 docron() {
-	local cron="cron" perms="-m 0750 -o root -g wheel"
+	local cron="cron" perms="-m 0750 -o 0 -g wheel"
 
 	if [[ -n $1 ]] ; then
 		case "$1" in
@@ -111,7 +111,7 @@ docron() {
 #
 #   Uses same semantics as docron.
 docrontab() {
-	local crontab="crontab" perms="-m 4750 -o root -g cron"
+	local crontab="crontab" perms="-m 4750 -o 0 -g cron"
 
 	if [[ -n $1 ]] ; then
 		case "$1" in

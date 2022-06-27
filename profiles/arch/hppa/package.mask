@@ -1,5 +1,10 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2022-06-10)
+# Broken on HPPA. Segfaults during last-minute check.
+# bug #850691
+=sys-libs/glibc-2.35-r7
 
 # Quote from <eike@s...l.de>:
 # "Compilation fails with: #error You need to define CycleTimer for 

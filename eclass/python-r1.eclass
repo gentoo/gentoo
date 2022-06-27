@@ -53,7 +53,7 @@ inherit multibuild python-utils-r1
 
 fi
 
-# @ECLASS-VARIABLE: PYTHON_COMPAT
+# @ECLASS_VARIABLE: PYTHON_COMPAT
 # @REQUIRED
 # @DESCRIPTION:
 # This variable contains a list of Python implementations the package
@@ -70,7 +70,7 @@ fi
 # PYTHON_COMPAT=( python2_7 python3_{3,4} )
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_COMPAT_OVERRIDE
+# @ECLASS_VARIABLE: PYTHON_COMPAT_OVERRIDE
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -90,7 +90,7 @@ fi
 # PYTHON_COMPAT_OVERRIDE='pypy python3_3' emerge -1v dev-python/foo
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_REQ_USE
+# @ECLASS_VARIABLE: PYTHON_REQ_USE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The list of USEflags required to be enabled on the chosen Python
@@ -110,7 +110,7 @@ fi
 # python_targets_pythonX_Y? ( dev-lang/python:X.Y[gdbm,ncurses(-)?] )
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_DEPS
+# @ECLASS_VARIABLE: PYTHON_DEPS
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated Python dependency string for all
@@ -129,7 +129,7 @@ fi
 # python_targets_pypy? ( dev-python/pypy[gdbm] )
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_USEDEP
+# @ECLASS_VARIABLE: PYTHON_USEDEP
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated USE-dependency string which can be used to
@@ -150,7 +150,7 @@ fi
 # python_targets_python2_7(-)?,python_targets_python3_4(-)?
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_SINGLE_USEDEP
+# @ECLASS_VARIABLE: PYTHON_SINGLE_USEDEP
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # An eclass-generated USE-dependency string for the currently tested
@@ -172,7 +172,7 @@ fi
 # python_single_target_python3_7(-)
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_REQUIRED_USE
+# @ECLASS_VARIABLE: PYTHON_REQUIRED_USE
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated required-use expression which ensures at
@@ -537,7 +537,7 @@ python_gen_any_dep() {
 	echo "|| ( ${out})"
 }
 
-# @ECLASS-VARIABLE: BUILD_DIR
+# @ECLASS_VARIABLE: BUILD_DIR
 # @OUTPUT_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -624,6 +624,24 @@ _python_multibuild_wrapper() {
 # locally, and the former two are exported to the command environment.
 python_foreach_impl() {
 	debug-print-function ${FUNCNAME} "${@}"
+
+	if [[ ${_DISTUTILS_R1} ]]; then
+		if has "${EBUILD_PHASE}" prepare configure compile test install &&
+			[[ ! ${_DISTUTILS_CALLING_FOREACH_IMPL} &&
+				! ${_DISTUTILS_FOREACH_IMPL_WARNED} ]]
+		then
+			eqawarn "python_foreach_impl has been called directly while using distutils-r1."
+			eqawarn "Please redefine python_*() phase functions to meet your expectations"
+			eqawarn "instead."
+			_DISTUTILS_FOREACH_IMPL_WARNED=1
+
+			if ! has "${EAPI}" 6 7 8; then
+				die "Calling python_foreach_impl from distutils-r1 is banned in EAPI ${EAPI}"
+			fi
+		fi
+		# undo the eclass-set value to catch nested calls
+		local _DISTUTILS_CALLING_FOREACH_IMPL=
+	fi
 
 	local MULTIBUILD_VARIANTS
 	_python_obtain_impls

@@ -11,6 +11,3 @@ sys-devel/clang-runtime compiler-rt libcxx -sanitize
 
 sys-libs/libcxx libunwind libcxxabi
 sys-libs/libcxxabi libunwind
-
-# libgcrypt doesn't like optimizations
-dev-libs/libgcrypt o-flag-munging

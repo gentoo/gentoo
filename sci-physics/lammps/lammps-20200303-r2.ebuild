@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,7 @@ SRC_URI="https://github.com/lammps/lammps/archive/${MY_PV}.tar.gz -> ${MY_P}.tar
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="cuda examples gzip kokkos lammps-memalign mpi netcdf python test"
+IUSE="cuda examples gzip lammps-memalign mpi netcdf python test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -42,7 +42,6 @@ DEPEND="
 	sci-libs/fftw:3.0=
 	netcdf? ( sci-libs/netcdf:= )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 )
-	kokkos? ( =dev-cpp/kokkos-3.0* )
 	dev-cpp/eigen:3
 	"
 RDEPEND="${DEPEND}"
@@ -71,8 +70,8 @@ src_configure() {
 		-DPKG_GRANULAR=ON
 		-DPKG_KSPACE=ON
 		-DFFT=FFTW3
-		-DPKG_KOKKOS=$(usex kokkos)
-		$(use kokkos && echo -DEXTERNAL_KOKKOS=ON)
+		# requires kokkos 3.0
+		-DPKG_KOKKOS=OFF
 		-DPKG_MANYBODY=ON
 		-DPKG_MC=ON
 		-DPKG_MEAM=ON

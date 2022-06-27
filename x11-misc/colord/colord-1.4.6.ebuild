@@ -4,7 +4,7 @@
 EAPI=7
 VALA_USE_DEPEND="vapigen"
 
-inherit bash-completion-r1 meson-multilib tmpfiles vala
+inherit bash-completion-r1 meson-multilib tmpfiles udev vala
 
 DESCRIPTION="System service to accurately color manage input and output devices"
 HOMEPAGE="https://www.freedesktop.org/software/colord/"
@@ -12,9 +12,9 @@ SRC_URI="https://www.freedesktop.org/software/colord/releases/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0/2" # subslot = libcolord soname version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
-IUSE="gtk-doc argyllcms examples extra-print-profiles +introspection scanner systemd test vala"
+IUSE="gtk-doc argyllcms examples extra-print-profiles +introspection scanner selinux systemd test vala"
 RESTRICT="!test? ( test ) test" # Tests try to read and write files in /tmp
 REQUIRED_USE="vala? ( introspection )"
 
@@ -40,13 +40,13 @@ DEPEND="
 RDEPEND="${DEPEND}
 	acct-group/colord
 	acct-user/colord
+	selinux? ( sec-policy/selinux-colord )
 "
 BDEPEND="
 	acct-group/colord
 	acct-user/colord
 	app-text/docbook-xsl-ns-stylesheets
 	dev-libs/libxslt
-	>=dev-util/intltool-0.35
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
 	extra-print-profiles? ( media-gfx/argyllcms )
@@ -114,5 +114,10 @@ multilib_src_install_all() {
 }
 
 pkg_postinst() {
+	udev_reload
 	tmpfiles_process colord.conf
+}
+
+pkg_postrm() {
+	udev_reload
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,7 +35,7 @@ PATCHES=(
 )
 
 src_compile() {
-	emake CC=$(tc-getCC) PKG_CONFIG=$(tc-getPKG_CONFIG) \
+	emake CC="$(tc-getCC)" PKG_CONFIG=$(tc-getPKG_CONFIG) \
 		WITH_ICONS=$(usex icons '1' '0') \
 		WITH_SVG=$(usex svg '1' '0')
 }

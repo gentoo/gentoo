@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 
 CMAKE_BUILD_TYPE="None"
 inherit cmake python-single-r1 virtualx xdg-utils
@@ -18,7 +18,7 @@ if [[ ${PV} =~ "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/gnuradio/gnuradio/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~arm ~riscv ~x86"
 fi
 
 IUSE="+audio +alsa +analog +digital channels ctrlport doc dtv examples fec +filter grc jack modtool oss performance-counters portaudio +qt5 sdl test trellis uhd vocoder +utils wavelet zeromq"

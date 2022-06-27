@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-	<!--maintainer-needed-->
-	<upstream>
-		<remote-id type="pypi">python3-openid</remote-id>
-		<remote-id type="github">necaris/python3-openid</remote-id>
-	</upstream>
-</pkgmetadata>

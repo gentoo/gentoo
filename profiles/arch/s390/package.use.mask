@@ -1,6 +1,106 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-04-26)
+# Unkeyworded dependencies
+app-text/htmltidy test
+dev-ruby/activerecord mysql postgres sqlite test
+dev-ruby/stringex test
+
+# Sam James <sam@gentoo.org> (2022-04-26)
+# eps: app-text/libspectre not keyworded here
+# heif: media-libs/libheif not keyworded here
+# jpegxl: libjxl not keyworded here
+media-libs/imlib2 eps heif jpegxl
+
+# Sam James <sam@gentoo.org> (2022-04-26)
+# Avoid unkeyworded dependencies
+app-text/enchant hunspell nuspell voikko
+
+# Sam James <sam@gentoo.org> (2022-04-26)
+# Needs unkeyworded virtual/szip provider
+sci-libs/hdf5 szip
+
+# Sam James <sam@gentoo.org> (2022-04-26)
+# Needs unkeyworded dev-libs/librdkafka
+# dev-libs/boxfort does not support s390 either
+app-admin/syslog-ng kafka test
+
+# Sam James <sam@gentoo.org> (2022-04-26)
+# Large number of unkeyworded sci testdeps
+dev-cpp/eigen test
+
+# Sam James <sam@gentoo.org> (2022-04-26)
+# Avoid unkeyworded sci-libs/umfpack
+dev-python/scipy sparse
+
+# Sam James <sam@gentoo.org> (2022-04-26)
+# Avoid unkeyworded media-gfx/libimagequant
+dev-python/pillow imagequant
+
+# Sam James <sam@gentoo.org> (2022-04-26)
+# Avoid unkeyworded media-gfx/inkscape
+app-text/dblatex inkscape
+
+# Sam James <sam@gentoo.org> (2022-04-25)
+# Needs unkeyworded dev-python/commonmark, dev-python/recommonmark
+dev-libs/libinput doc
+
+# Sam James <sam@gentoo.org> (2022-04-25)
+# Needs unkeyworded dev-python/markdown
+dev-libs/gobject-introspection doctool
+
+# Sam James <sam@gentoo.org> (2022-04-24)
+# dev-libs/efl not keyworded here and is a desktop application mainly
+app-crypt/pinentry efl
+
+# Sam James <sam@gentoo.org> (2022-04-24)
+# sssd not keyworded here
+app-admin/sudo sssd
+
+# Sam James <sam@gentoo.org> (2022-04-24)
+# app-crypt/dieharder and dev-libs/softhsm:2 unkeyworded here
+net-libs/gnutls test-full
+
+# Sam James <sam@gentoo.org> (2022-04-24)
+# net-fs/samba unkeyworded here
+net-fs/cifs-utils acl
+
+# Sam James <sam@gentoo.org> (2022-04-20)
+# x11-themes/sound-theme-freedesktop unkeyworded here
+media-libs/libcanberra sound
+
+# Sam James <sam@gentoo.org> (2022-04-24)
+# media-libs/libheif isn't keyworded here
+# media-libs/libavif isn't keyworded here
+media-libs/gd avif heif
+media-gfx/graphicsmagick heif
+
+# Sam James <sam@gentoo.org> (2022-04-24)
+# Unkeyworded dev-tcltk/* dependencies
+dev-libs/libisoburn launch-frontend launch-frontend-setuid frontend-optional
+
+# Sam James <sam@gentoo.org> (2022-04-24)
+# dev-libs/libzip not keyworded on s390
+media-gfx/imagemagick zip
+dev-lang/php zip
+
+# Sam James <sam@gentoo.org> (2022-04-20)
+# sys-apps/hwloc is not keyworded on s390
+sys-process/htop hwloc
+
+# Sam James <sam@gentoo.org> (2022-04-20)
+# Needs Ruby (dev-ruby/asciidoctor)
+dev-util/ccache doc
+
+# Sam James <sam@gentoo.org> (2022-04-20)
+# Requires dev-python/networkx.
+app-portage/nattka depgraph-order
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# Untested useflag on other arches, needs keywording
+media-video/ffmpeg vmaf
+
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2021-12-11)
 # Mask AMF keyword on non-amd64 arches
 # It is unusable, for now, in other arches
@@ -26,8 +126,8 @@ dev-vcs/subversion ruby
 # Not tested
 dev-python/cssselect doc
 # not really interested in supporting alternative
-# VCS for overlays yet.
-app-portage/layman darcs mercurial
+# VCS for overlays yet. Layman needs SVN for tests too.
+app-portage/layman darcs mercurial test
 dev-python/setuptools_scm test
 # no lua support for vim
 app-editors/vim lua

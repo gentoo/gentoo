@@ -1,0 +1,65 @@
+From 7fcf36d636f62f101397d88ad6c448f54da79e46 Mon Sep 17 00:00:00 2001
+From: Marco Martin <notmart@gmail.com>
+Date: Fri, 13 May 2022 15:37:13 +0000
+Subject: [PATCH] effects/overview: hide panels
+
+This makes it consistent with WindowView (and the panel window doesn't respond
+to input anyways even if shown, which is misleading).
+
+BUG: 444274
+FIXED-IN: 5.24.6
+
+
+(cherry picked from commit db2af5500f964f3eefde60183b69f21125aeb194)
+---
+ src/effects/overview/qml/ScreenView.qml | 20 ++++++++------------
+ 1 file changed, 8 insertions(+), 12 deletions(-)
+
+diff --git a/src/effects/overview/qml/ScreenView.qml b/src/effects/overview/qml/ScreenView.qml
+index 40cc29f4c7..39119e40b9 100644
+--- a/src/effects/overview/qml/ScreenView.qml
++++ b/src/effects/overview/qml/ScreenView.qml
+@@ -70,16 +70,8 @@ FocusScope {
+         }
+     }
+ 
+-    ExpoArea {
+-        id: heapArea
+-        screen: targetScreen
+-    }
+-
+     Column {
+-        x: heapArea.x
+-        y: heapArea.y
+-        width: heapArea.width
+-        height: heapArea.height
++        anchors.fill: parent
+ 
+         Item {
+             id: topBar
+@@ -176,15 +168,19 @@ FocusScope {
+ 
+         KWinComponents.WindowThumbnailItem {
+             id: windowThumbnail
+-            visible: !model.client.hidden
++            visible: !model.client.hidden && opacity > 0
+             wId: model.client.internalId
+             x: model.client.x - targetScreen.geometry.x
+             y: model.client.y - targetScreen.geometry.y
+             width: model.client.width
+             height: model.client.height
++            opacity: container.effect.gestureInProgress
++                ? 1 - container.effect.partialActivationFactor
++                : (model.client.hidden || container.organized) ? 0 : 1
+ 
+-            TapHandler {
+-                onTapped: effect.deactivate();
++            Behavior on opacity {
++                enabled: !container.effect.gestureInProgress
++                NumberAnimation { duration: animationDuration; easing.type: Easing.OutCubic }
+             }
+         }
+     }
+-- 
+GitLab
+

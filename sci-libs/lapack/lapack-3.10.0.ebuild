@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,10 +26,6 @@ RDEPEND="
 	)
 	doc? ( app-doc/blas-docs )"
 DEPEND="${RDEPEND}"
-
-PATCHES=(
-	#"${FILESDIR}"/${PN}-3.9.0-build-tests.patch
-)
 
 src_prepare() {
 	cmake_src_prepare

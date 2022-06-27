@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools multilib-minimal optfeature
+inherit meson-multilib optfeature
 
 DESCRIPTION="Video Acceleration (VA) API for Linux"
 HOMEPAGE="https://01.org/linuxmedia/vaapi"
@@ -13,25 +13,22 @@ if [[ ${PV} = *9999 ]] ; then
 	EGIT_BRANCH=master
 	EGIT_REPO_URI="https://github.com/intel/libva"
 else
-	SRC_URI="https://github.com/intel/libva/releases/download/${PV}/${P}.tar.bz2"
-	# The upstream provides periodically tarball with pre-built 'configure'.
-	# To simplify updates, portage use tarballs without pre-build 'configure'
-	# which are always available.
-	# SRC_URI="https://github.com/intel/libva/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+	SRC_URI="https://github.com/intel/libva/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1)"
-IUSE="+drm opengl utils wayland X"
+IUSE="+drm opengl wayland X"
+REQUIRED_USE="opengl? ( X )"
 
 RDEPEND="
 	>=x11-libs/libdrm-2.4.60[${MULTILIB_USEDEP}]
-	opengl? ( >=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}] )
 	wayland? (
 		>=dev-libs/wayland-1.11[${MULTILIB_USEDEP}]
 	)
 	X? (
+		>=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}]
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXfixes-5.0.1[${MULTILIB_USEDEP}]
@@ -42,12 +39,6 @@ BDEPEND="
 	wayland? ( dev-util/wayland-scanner )
 	virtual/pkgconfig
 "
-PDEPEND="utils? ( media-video/libva-utils )"
-
-REQUIRED_USE="|| ( drm wayland X )
-	opengl? ( X )"
-
-DOCS=( NEWS )
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/va/va_backend_glx.h
@@ -57,26 +48,17 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/va/va_glx.h
 )
 
-src_prepare() {
-	default
-	eautoreconf
-}
-
 multilib_src_configure() {
-	local myeconfargs=(
-		--with-drivers-path="${EPREFIX}/usr/$(get_libdir)/va/drivers"
-		$(use_enable opengl glx)
-		$(use_enable X x11)
-		$(use_enable wayland)
-		$(use_enable drm)
-		--enable-va-messaging
+	local emesonargs=(
+		-Ddriverdir="${EPREFIX}/usr/$(get_libdir)/va/drivers"
+		-Ddisable_drm=false
+		-Dwith_x11=$(usex X)
+		-Dwith_glx=$(usex X)
+		-Dwith_wayland=$(usex wayland)
+		-Denable_docs=false
+		-Denable_va_messaging=true
 	)
-	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
-}
-
-multilib_src_install_all() {
-	default
-	find "${ED}" -type f -name "*.la" -delete || die
+	meson_src_configure
 }
 
 pkg_postinst() {

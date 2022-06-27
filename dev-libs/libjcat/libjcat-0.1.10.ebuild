@@ -8,13 +8,13 @@ PYTHON_REQ_USE="xml"
 
 inherit meson python-any-r1 vala xdg-utils
 
-DESCRIPTION="Library and tool for reading and writing Jcat files "
+DESCRIPTION="Library and tool for reading and writing Jcat files"
 HOMEPAGE="https://github.com/hughsie/libjcat"
 SRC_URI="https://github.com/hughsie/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
 IUSE="+gpg gtk-doc +introspection +man +pkcs7 test vala"
 
 RDEPEND="dev-libs/glib:2

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ src_unpack() {
 }
 
 src_compile() {
-	emake CC=$(tc-getCC) ${PN}
+	emake CC="$(tc-getCC)" ${PN}
 	sed -i README -e '60q;s|^ \*||g' || die
 }
 

@@ -1,0 +1,79 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 99e6ff1..d80dcc8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ PROJECT(ponyprog)
+ 
+ # Configure CMake ...
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8 FATAL_ERROR)
++CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12 FATAL_ERROR)
+ # CMAKE_POLICY(SET CMP0003 OLD)
+ # CMAKE_POLICY(SET CMP0015 OLD)
+ 
+@@ -46,14 +46,7 @@ OPTION (USE_DEBUGGER "Include in binary file debug information" OFF)
+ OPTION (USE_PROFILER "Include in binary file profiling information" OFF)
+ 
+ 
+-IF(${USE_DEBUGGER})
+-  SET(CMAKE_BUILD_TYPE Debug)
+-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
+-ELSE()
+-  SET(CMAKE_BUILD_TYPE Release)
+-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS_RELEASE} -Wall")
+-ENDIF()
+-
++ADD_COMPILE_OPTIONS("-Wall")
+ MESSAGE(STATUS "CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS}")
+ 
+ INCLUDE(CheckIncludeFile)
+@@ -239,11 +232,12 @@ SET ( MOC_DIR temp )
+ SET ( UI_HEADERS_DIR temp )
+ SET ( UI_SOURCES_DIR temp )
+ 
+-ADD_SUBDIRECTORY(qhexedit2/src)
+ ADD_SUBDIRECTORY(SrcPony)
+ 
+-INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_SOURCE_DIR}/qhexedit2/src/ ${CMAKE_CURRENT_SOURCE_DIR}/SrcPony/ )
++find_library(QHexEdit_LIBRARY NAMES qhexedit)
++set(QHexEdit_LIBRARIES "${QHexEdit_LIBRARY}")
+ 
++INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_SOURCE_DIR}/SrcPony/ )
+ 
+ IF(${USE_QT_VERSION} MATCHES "4")
+ #     QT4_ADD_TRANSLATION(APP_TRANSLATIONS ${TRANSLATION})
+@@ -312,7 +306,7 @@ ELSE()
+ ENDIF()
+ 
+ #TARGET_LINK_LIBRARIES(${CMAKE_PROJECT_NAME} ${LIBFTDI_LIBRARIES} )
+-TARGET_LINK_LIBRARIES(${CMAKE_PROJECT_NAME} ${LIBFTDIPP_LIBRARY} ${LIBFTDI_LIBRARY} ${LIBUSB_LIBRARIES})
++TARGET_LINK_LIBRARIES(${CMAKE_PROJECT_NAME} ${LIBFTDIPP_LIBRARY} ${LIBFTDI_LIBRARY} ${LIBUSB_LIBRARIES} ${QHexEdit_LIBRARIES})
+ 
+ ADD_CUSTOM_TARGET (tags
+     COMMAND  ctags -R -f tags ${CMAKE_SOURCE_DIR}/SrcPony
+diff --git a/SrcPony/e2cmdw.cpp b/SrcPony/e2cmdw.cpp
+index 252c730..cec93cc 100644
+--- a/SrcPony/e2cmdw.cpp
++++ b/SrcPony/e2cmdw.cpp
+@@ -44,7 +44,7 @@
+ #include <QMessageBox>
+ #include <QDesktopServices>
+ 
+-#include "qhexedit.h"
++#include <qhexedit.h>
+ 
+ #include "version.h"
+ #include "e2profil.h"
+diff --git a/SrcPony/e2cmdw.h b/SrcPony/e2cmdw.h
+index c349bf3..df47206 100644
+--- a/SrcPony/e2cmdw.h
++++ b/SrcPony/e2cmdw.h
+@@ -57,7 +57,7 @@
+ 
+ 
+ #include "ui_mainwindow.h"
+-#include "qhexedit.h"
++#include <qhexedit.h>
+ 
+ 
+ 

@@ -27,7 +27,7 @@ else
 	DEPEND=">=dev-vcs/git-1.8.2.1[curl]"
 fi
 
-# @ECLASS-VARIABLE: EGIT_CLONE_TYPE
+# @ECLASS_VARIABLE: EGIT_CLONE_TYPE
 # @USER_VARIABLE
 # @DESCRIPTION:
 # Type of clone that should be used against the remote repository.
@@ -65,7 +65,7 @@ fi
 # embedded systems with limited disk space.
 : ${EGIT_CLONE_TYPE:=single}
 
-# @ECLASS-VARIABLE: EGIT_MIN_CLONE_TYPE
+# @ECLASS_VARIABLE: EGIT_MIN_CLONE_TYPE
 # @DESCRIPTION:
 # 'Minimum' clone type supported by the ebuild. Takes same values
 # as EGIT_CLONE_TYPE. When user sets a type that's 'lower' (that is,
@@ -82,7 +82,7 @@ fi
 # fatal errors rather than 'non-pretty versions'.
 : ${EGIT_MIN_CLONE_TYPE:=shallow}
 
-# @ECLASS-VARIABLE: EGIT3_STORE_DIR
+# @ECLASS_VARIABLE: EGIT3_STORE_DIR
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -93,7 +93,7 @@ fi
 #
 # EGIT3_STORE_DIR=${DISTDIR}/git3-src
 
-# @ECLASS-VARIABLE: EGIT_MIRROR_URI
+# @ECLASS_VARIABLE: EGIT_MIRROR_URI
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # 'Top' URI to a local git mirror. If specified, the eclass will try
@@ -107,7 +107,7 @@ fi
 # EGIT_MIRROR_URI="git://mirror.lan/"
 # @CODE
 
-# @ECLASS-VARIABLE: EGIT_REPO_URI
+# @ECLASS_VARIABLE: EGIT_REPO_URI
 # @REQUIRED
 # @DESCRIPTION:
 # URIs to the repository, e.g. https://foo. If multiple URIs are
@@ -126,12 +126,12 @@ fi
 # EGIT_REPO_URI="https://a/b.git https://c/d.git"
 # @CODE
 
-# @ECLASS-VARIABLE: EVCS_OFFLINE
+# @ECLASS_VARIABLE: EVCS_OFFLINE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If non-empty, this variable prevents any online operations.
 
-# @ECLASS-VARIABLE: EVCS_UMASK
+# @ECLASS_VARIABLE: EVCS_UMASK
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set this variable to a custom umask. This is intended to be set by
@@ -142,13 +142,13 @@ fi
 # portage group write access already can screw the system over in more
 # creative ways.
 
-# @ECLASS-VARIABLE: EGIT_BRANCH
+# @ECLASS_VARIABLE: EGIT_BRANCH
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The branch name to check out. If unset, the upstream default (HEAD)
 # will be used.
 
-# @ECLASS-VARIABLE: EGIT_COMMIT
+# @ECLASS_VARIABLE: EGIT_COMMIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The tag name or commit identifier to check out. If unset, newest
@@ -156,7 +156,7 @@ fi
 # not on HEAD branch, EGIT_BRANCH needs to be set to a branch on which
 # the commit is available.
 
-# @ECLASS-VARIABLE: EGIT_COMMIT_DATE
+# @ECLASS_VARIABLE: EGIT_COMMIT_DATE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Attempt to check out the repository state for the specified timestamp.
@@ -170,14 +170,14 @@ fi
 # will be considered alike a single commit with date corresponding
 # to the merge commit date.
 
-# @ECLASS-VARIABLE: EGIT_CHECKOUT_DIR
+# @ECLASS_VARIABLE: EGIT_CHECKOUT_DIR
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The directory to check the git sources out to.
 #
 # EGIT_CHECKOUT_DIR=${WORKDIR}/${P}
 
-# @ECLASS-VARIABLE: EGIT_SUBMODULES
+# @ECLASS_VARIABLE: EGIT_SUBMODULES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array of inclusive and exclusive wildcards on submodule names,

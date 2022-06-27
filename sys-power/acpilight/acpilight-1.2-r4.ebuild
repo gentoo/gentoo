@@ -14,7 +14,7 @@ HOMEPAGE="https://gitlab.com/wavexx/acpilight/"
 SRC_URI="https://gitlab.com/wavexx/acpilight/-/archive/v${PV}/${MY_P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 S="${WORKDIR}/${MY_P}"
@@ -54,4 +54,9 @@ pkg_postinst() {
 	elog "to the boot runlevel. You can do this as root like so:"
 	elog "# rc-update add acpilight boot"
 	einfo
+}
+
+pkg_postrm() {
+	# Triggers a QA warning if missing
+	udev_reload
 }

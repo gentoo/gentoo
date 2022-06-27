@@ -10,7 +10,7 @@ HOMEPAGE="https://www.kryoflux.com/"
 SRC_URI="https://www.kryoflux.com/download/${PN}_${PV}_source.zip"
 S="${WORKDIR}/capsimg_source_linux_macosx/CAPSImg"
 
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 LICENSE="Kryoflux-MAME"
 SLOT="0"
 

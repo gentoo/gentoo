@@ -6,7 +6,7 @@ EAPI=7
 # Bumping notes: https://wiki.gentoo.org/wiki/Project:Toolchain/sys-libs/glibc
 # Please read & adapt the page as necessary if obsolete.
 
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{8..11} )
 TMPFILES_OPTIONAL=1
 
 inherit python-any-r1 prefix preserve-libs toolchain-funcs flag-o-matic gnuconfig \
@@ -44,7 +44,7 @@ SRC_URI+=" https://gitweb.gentoo.org/proj/locale-gen.git/snapshot/locale-gen-${L
 SRC_URI+=" multilib-bootstrap? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 SRC_URI+=" systemd? ( https://gitweb.gentoo.org/proj/toolchain/glibc-systemd.git/snapshot/glibc-systemd-${GLIBC_SYSTEMD_VER}.tar.gz )"
 
-IUSE="audit caps cet +clone3 compile-locales +crypt custom-cflags doc gd headers-only +multiarch multilib multilib-bootstrap nscd profile selinux +ssp +static-libs suid systemd systemtap test vanilla"
+IUSE="audit caps cet compile-locales +crypt custom-cflags doc gd headers-only +multiarch multilib multilib-bootstrap nscd profile selinux +ssp stack-realign +static-libs suid systemd systemtap test vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
@@ -167,18 +167,10 @@ GENTOO_GLIBC_XFAIL_TESTS="${GENTOO_GLIBC_XFAIL_TESTS:-yes}"
 # The following tests fail due to the Gentoo build system and are thus
 # executed but ignored:
 XFAIL_TEST_LIST=(
-	# 9) Failures of unknown origin
-	tst-latepthread
-
 	# buggy test, assumes /dev/ and /dev/null on a single filesystem
 	# 'mount --bind /dev/null /chroot/dev/null' breaks it.
 	# https://sourceware.org/PR25909
 	tst-support_descriptors
-
-	# Flaky test, known to fail occasionally:
-	# https://sourceware.org/PR19329
-	# https://bugs.gentoo.org/719674#c12
-	tst-stack4
 
 	# The following tests fail only inside portage
 	# https://bugs.gentoo.org/831267
@@ -313,22 +305,27 @@ setup_target_flags() {
 				export CFLAGS="-march=${t} ${CFLAGS}"
 				einfo "Auto adding -march=${t} to CFLAGS #185404"
 			fi
+			# For compatibility with older binaries at slight performance cost.
+			use stack-realign && export CFLAGS+=" -mstackrealign"
 		;;
 		amd64)
 			# -march needed for #185404 #199334
 			# TODO: See cross-compile issues listed above for x86.
-			[[ ${ABI} == x86 ]] &&
-			if ! do_compile_test "${CFLAGS_x86}" 'void f(int i, void *p) {if (__sync_fetch_and_add(&i, 1)) f(i, p);}\nint main(){return 0;}\n'; then
-				local t=${CTARGET_OPT:-${CTARGET}}
-				t=${t%%-*}
-				# Normally the target is x86_64-xxx, so turn that into the -march that
-				# gcc actually accepts. #528708
-				[[ ${t} == "x86_64" ]] && t="x86-64"
-				filter-flags '-march=*'
-				# ugly, ugly, ugly.  ugly.
-				CFLAGS_x86=$(CFLAGS=${CFLAGS_x86} filter-flags '-march=*'; echo "${CFLAGS}")
-				export CFLAGS_x86="${CFLAGS_x86} -march=${t}"
-				einfo "Auto adding -march=${t} to CFLAGS_x86 #185404 (ABI=${ABI})"
+			if [[ ${ABI} == x86 ]]; then
+				if ! do_compile_test "${CFLAGS_x86}" 'void f(int i, void *p) {if (__sync_fetch_and_add(&i, 1)) f(i, p);}\nint main(){return 0;}\n'; then
+					local t=${CTARGET_OPT:-${CTARGET}}
+					t=${t%%-*}
+					# Normally the target is x86_64-xxx, so turn that into the -march that
+					# gcc actually accepts. #528708
+					[[ ${t} == "x86_64" ]] && t="x86-64"
+					filter-flags '-march=*'
+					# ugly, ugly, ugly.  ugly.
+					CFLAGS_x86=$(CFLAGS=${CFLAGS_x86} filter-flags '-march=*'; echo "${CFLAGS}")
+					export CFLAGS_x86="${CFLAGS_x86} -march=${t}"
+					einfo "Auto adding -march=${t} to CFLAGS_x86 #185404 (ABI=${ABI})"
+				fi
+				# For compatibility with older binaries at slight performance cost.
+				use stack-realign && export CFLAGS_x86+=" -mstackrealign"
 			fi
 		;;
 		mips)
@@ -437,7 +434,15 @@ setup_flags() {
 	#  include/libc-symbols.h:75:3: #error "glibc cannot be compiled without optimization"
 	replace-flags -O0 -O1
 
+	# glibc handles this internally already where it's appropriate;
+	# can't always have SSP when we're the ones setting it up, etc
 	filter-flags '-fstack-protector*'
+
+	# Similar issues as with SSP. Can't inject yourself that early.
+	filter-flags '-fsanitize=*'
+
+	# See end of bug #830454; we handle this via USE=cet
+	filter-flags '-fcf-protection='
 }
 
 use_multiarch() {
@@ -523,9 +528,11 @@ setup_env() {
 		# a good start into that direction.
 		# Also, if you're crosscompiling, let's assume you know what you are doing.
 		# Hopefully.
+		# Last, we need the settings of the *build* environment, not of the
+		# target environment...
 
-		local current_binutils_path=$(binutils-config -B)
-		local current_gcc_path=$(gcc-config -B)
+		local current_binutils_path=$(env ROOT="${BROOT}" binutils-config -B)
+		local current_gcc_path=$(env ROOT="${BROOT}" gcc-config -B)
 		einfo "Overriding clang configuration, since it won't work here"
 
 		export CC="${current_gcc_path}/gcc"
@@ -758,6 +765,14 @@ sanity_prechecks() {
 
 	# When we actually have to compile something...
 	if ! just_headers && [[ ${MERGE_TYPE} != "binary" ]] ; then
+		if [[ -d "${ESYSROOT}"/usr/lib/include ]] ; then
+			# bug #833620, bug #643302
+			eerror "Found ${ESYSROOT}/usr/lib/include directory!"
+			eerror "This is known to break glibc's build."
+			eerror "Please backup its contents then remove the directory."
+			die "Found directory (${ESYSROOT}/usr/lib/include) which will break build (bug #833620)!"
+		fi
+
 		if [[ ${CTARGET} == *-linux* ]] ; then
 			local run_kv build_kv want_kv
 
@@ -775,11 +790,19 @@ sanity_prechecks() {
 				fi
 			fi
 
-			ebegin "Checking linux-headers version (${build_kv} >= ${want_kv})"
-			if ! eend_KV ${build_kv} ${want_kv} ; then
-				echo
-				eerror "You need linux-headers of at least ${want_kv}!"
-				die "linux-headers version too low!"
+			# Do not run this check for pkg_pretend, just pkg_setup and friends (if we ever get used there).
+			# It's plausible (seen it in the wild) that Portage will (correctly) schedule a linux-headers
+			# upgrade before glibc, but because pkg_pretend gets run before any packages are merged at all (not
+			# just glibc), the whole emerge gets aborted without a good reason. We probably don't
+			# need to run this check at all given we have a dependency on the right headers,
+			# but let's leave it as-is for now.
+			if [[ ${EBUILD_PHASE_FUNC} != pkg_pretend ]] ; then
+				ebegin "Checking linux-headers version (${build_kv} >= ${want_kv})"
+				if ! eend_KV ${build_kv} ${want_kv} ; then
+					echo
+					eerror "You need linux-headers of at least ${want_kv}!"
+					die "linux-headers version too low!"
+				fi
 			fi
 		fi
 	fi
@@ -793,6 +816,7 @@ upgrade_warning() {
 				ewarn "After upgrading glibc, please restart all running processes."
 				ewarn "Be sure to include init (telinit u) or systemd (systemctl daemon-reexec)."
 				ewarn "Alternatively, reboot your system."
+				ewarn "(See bug #660556, bug #741116, bug #823756, etc)"
 				break
 			fi
 		done
@@ -856,14 +880,6 @@ src_prepare() {
 		einfo "Applying Gentoo Glibc Patchset ${patchsetname}"
 		eapply "${WORKDIR}"/patches
 		einfo "Done."
-	fi
-
-	if use clone3 ; then
-		append-cppflags -DGENTOO_USE_CLONE3
-	else
-		# See e.g. bug #827386, bug #819045.
-		elog "Disabling the clone3 syscall for compatibility with older Electron apps."
-		elog "Please re-enable this flag before filing bugs!"
 	fi
 
 	default
@@ -995,11 +1011,6 @@ glibc_do_configure() {
 	# since the glibc build will re-run configure on itself
 	export libc_cv_rootsbindir="$(host_eprefix)/sbin"
 	export libc_cv_slibdir="$(host_eprefix)/$(get_libdir)"
-
-	# We take care of patching our binutils to use both hash styles,
-	# and many people like to force gnu hash style only, so disable
-	# this overriding check.  #347761
-	export libc_cv_hashstyle=no
 
 	local builddir=$(builddir nptl)
 	mkdir -p "${builddir}"
@@ -1183,7 +1194,10 @@ glibc_src_test() {
 	# sandbox does not understand unshare() and prevents
 	# writes to /proc/, which makes many tests fail
 
-	SANDBOX_ON=0 LD_PRELOAD= emake ${myxfailparams} check
+	# we give the tests a bit more time to avoid spurious
+	# bug reports on slow arches
+
+	SANDBOX_ON=0 LD_PRELOAD= TIMEOUTFACTOR=16 emake ${myxfailparams} check
 }
 
 do_src_test() {
@@ -1565,7 +1579,7 @@ pkg_postinst() {
 	if [[ -e ${EROOT}/etc/nsswitch.conf ]] && ! has_version sys-auth/libnss-nis ; then
 		local entry
 		for entry in passwd group shadow; do
-			if egrep -q "^[ \t]*${entry}:.*nis" "${EROOT}"/etc/nsswitch.conf; then
+			if grep -E -q "^[ \t]*${entry}:.*nis" "${EROOT}"/etc/nsswitch.conf; then
 				ewarn ""
 				ewarn "Your ${EROOT}/etc/nsswitch.conf uses NIS. Support for that has been"
 				ewarn "removed from glibc and is now provided by the package"

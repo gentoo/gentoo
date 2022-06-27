@@ -6,7 +6,7 @@
     <email>xgqt@gentoo.org</email>
     <name>Maciej Barć</name>
   </maintainer>
-  <longdescription lang="en">
+  <longdescription>
     This package is a pure C implementation of CLIPS.
     CLIPS is a forward-chaining rule-based programming language written in C
     that also provides procedural and object-oriented programming facilities.

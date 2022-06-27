@@ -1,0 +1,44 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Unmask the flag which corresponds to ARCH.
+-loong
+
+# Unmask systemd
+-systemd
+
+# Things we actually can support
+-input_devices_synaptics
+
+# Things without support yet
+java
+llvm
+luajittex
+lua_single_target_luajit
+lua_targets_luajit
+mono
+opencl
+valgrind
+
+# Temporarily masked during initial keywording
+audit
+bluetooth
+doc
+efl
+elogind
+emacs
+fam
+gtk4
+gtk-doc
+kde
+latex
+ldap
+mpi
+sctp
+systemtap
+tk
+tpm
+xemacs
+
+# Things not supposed to ever get support
+video_cards_glint

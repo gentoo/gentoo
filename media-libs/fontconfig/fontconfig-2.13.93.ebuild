@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,8 +41,11 @@ RDEPEND=">=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
 	elibc_SunOS? ( sys-libs/libuuid )
 	virtual/libintl[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
-PDEPEND="!x86-winnt? ( app-eselect/eselect-fontconfig )
-	virtual/ttf-fonts"
+PDEPEND="virtual/ttf-fonts"
+# Put the eselect module in BDEPEND until EAPI 8 is ready for IDEPEND, so that
+# it is natively usable in BROOT to update ROOT when cross-compiling.
+BDEPEND+=" !x86-winnt? ( app-eselect/eselect-fontconfig )"
+RDEPEND+=" !x86-winnt? ( app-eselect/eselect-fontconfig )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.10.2-docbook.patch # 310157
@@ -50,8 +53,6 @@ PATCHES=(
 
 	# Patches from upstream (can usually be removed with next version bump)
 )
-
-MULTILIB_CHOST_TOOLS=( /usr/bin/fc-cache$(get_exeext) )
 
 pkg_setup() {
 	DOC_CONTENTS="Please make fontconfig configuration changes using
@@ -110,6 +111,8 @@ multilib_src_configure() {
 }
 
 multilib_src_install() {
+	MULTILIB_CHOST_TOOLS=( /usr/bin/fc-cache$(get_exeext) )
+
 	default
 
 	# avoid calling this multiple times, bug #459210
@@ -183,7 +186,7 @@ pkg_postinst() {
 
 	readme.gentoo_print_elog
 
-	if [[ ${ROOT} == "" ]] ; then
+	if [[ -z ${ROOT} ]] ; then
 		multilib_pkg_postinst() {
 			ebegin "Creating global font cache for ${ABI}"
 			"${EPREFIX}"/usr/bin/${CHOST}-fc-cache -srf

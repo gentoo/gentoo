@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -61,7 +61,7 @@ src_compile() {
 	emake
 	for PLUGIN_DIR in models-* ; do
 		cd "${S}/${PLUGIN_DIR}"
-		emake CC=$(tc-getCC) CCC=$(tc-getCXX)
+		emake CC="$(tc-getCC)" CCC="$(tc-getCXX)"
 	done
 }
 

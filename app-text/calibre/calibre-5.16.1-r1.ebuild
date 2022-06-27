@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE="ipv6(+),sqlite,ssl"
 
-inherit bash-completion-r1 desktop toolchain-funcs python-single-r1 xdg-utils
+inherit bash-completion-r1 desktop toolchain-funcs python-single-r1 qmake-utils xdg-utils
 
 DESCRIPTION="Ebook management application"
 HOMEPAGE="https://calibre-ebook.com/"
@@ -77,7 +77,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-qt/qtcore:5=
 	dev-qt/qtdbus:5=
 	dev-qt/qtgui:5=[jpeg]
-	>=dev-qt/qtwebengine-5.12
 	dev-qt/qtwidgets:5=
 	dev-util/desktop-file-utils
 	dev-util/gtk-update-icon-cache
@@ -109,14 +108,6 @@ DEPEND="${COMMON_DEPEND}
 	')
 	>=virtual/podofo-build-0.9.6_pre20171027
 	virtual/pkgconfig"
-
-pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]] && tc-is-gcc && [[ $(gcc-major-version) -lt 6 ]]; then
-		eerror "Calibre cannot be built with this version of gcc."
-		eerror "You need at least gcc-6.0"
-		die "Your C compiler is too old for this package."
-	fi
-}
 
 src_prepare() {
 	# no_updates: do not annoy user with "new version is availible all the time
@@ -176,7 +167,7 @@ src_install() {
 	cp "${T}"/bin/{kbuildsycoca,update-mime-database} || die
 	chmod +x "${T}"/bin/{kbuildsycoca,update-mime-database} || die
 
-	export QMAKE="${EPREFIX}/usr/$(get_libdir)/qt5/bin/qmake"
+	export QMAKE="$(qt5_get_bindir)/qmake"
 
 	# Unset DISPLAY in order to prevent xdg-mime from triggering a sandbox
 	# violation with kbuildsycoca as in bug #287067, comment #13.
@@ -207,7 +198,7 @@ src_install() {
 
 	addpredict /dev/dri #665310
 
-	PATH=${T}/bin:${PATH} PYTHONPATH=${S}/src${PYTHONPATH:+:}${PYTHONPATH} \
+	PATH=${T}/bin:$(qt5_get_bindir):${PATH} PYTHONPATH=${S}/src${PYTHONPATH:+:}${PYTHONPATH} \
 	"${PYTHON}" setup.py install \
 		--root="${D}" \
 		--prefix="${EPREFIX}/usr" \

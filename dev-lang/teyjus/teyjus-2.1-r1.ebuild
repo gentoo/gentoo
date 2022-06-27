@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit elisp-common multilib
+inherit elisp-common
 
 DESCRIPTION="Higher-order logic programming language Lambda Prolog"
 HOMEPAGE="http://teyjus.cs.umn.edu/"
@@ -85,7 +85,7 @@ src_install() {
 	if use emacs ; then
 		elisp-install ${PN} emacs/*.{el,elc}
 		cp "${FILESDIR}"/${SITEFILE} "${S}"
-		sed -e 's@/usr/bin/tjcc@'${EPREFIX}/usr/bin/tjcc'@' -i ${SITEFILE} \
+		sed -e "s@/usr/bin/tjcc@${EPREFIX}/usr/bin/tjcc@" -i ${SITEFILE} \
 			|| die "Could not set tjcc executable path in emacs site file"
 		elisp-site-file-install ${SITEFILE}
 	fi

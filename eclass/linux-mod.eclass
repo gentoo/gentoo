@@ -19,14 +19,14 @@
 # A Couple of env vars are available to effect usage of this eclass
 # These are as follows:
 
-# @ECLASS-VARIABLE: MODULES_OPTIONAL_USE
+# @ECLASS_VARIABLE: MODULES_OPTIONAL_USE
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A string containing the USE flag to use for making this eclass optional
 # The recommended non-empty value is 'modules'
 
-# @ECLASS-VARIABLE: MODULES_OPTIONAL_USE_IUSE_DEFAULT
+# @ECLASS_VARIABLE: MODULES_OPTIONAL_USE_IUSE_DEFAULT
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -34,29 +34,29 @@
 # flag. Default value is unset (false). True represented by 1 or 'on', other
 # values including unset treated as false.
 
-# @ECLASS-VARIABLE: KERNEL_DIR
+# @ECLASS_VARIABLE: KERNEL_DIR
 # @DESCRIPTION:
 # A string containing the directory of the target kernel sources. The default value is
 # "/usr/src/linux"
 : ${KERNEL_DIR:=/usr/src/linux}
 
-# @ECLASS-VARIABLE: ECONF_PARAMS
+# @ECLASS_VARIABLE: ECONF_PARAMS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # It's a string containing the parameters to pass to econf.
 # If this is not set, then econf isn't run.
 
-# @ECLASS-VARIABLE: BUILD_PARAMS
+# @ECLASS_VARIABLE: BUILD_PARAMS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # It's a string with the parameters to pass to emake.
 
-# @ECLASS-VARIABLE: BUILD_TARGETS
+# @ECLASS_VARIABLE: BUILD_TARGETS
 # @DESCRIPTION:
 # It's a string with the build targets to pass to make. The default value is "clean module"
 : ${BUILD_TARGETS:=clean module}
 
-# @ECLASS-VARIABLE: MODULE_NAMES
+# @ECLASS_VARIABLE: MODULE_NAMES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # It's a string containing the modules to be built automatically using the default
@@ -101,14 +101,14 @@
 # There is also support for automated modprobe.d file generation.
 # This can be explicitly enabled by setting any of the following variables.
 
-# @ECLASS-VARIABLE: MODULESD_<modulename>_ENABLED
+# @ECLASS_VARIABLE: MODULESD_<modulename>_ENABLED
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # This is used to disable the modprobe.d file generation otherwise the file will be
 # always generated (unless no MODULESD_<modulename>_* variable is provided). Set to "no" to disable
 # the generation of the file and the installation of the documentation.
 
-# @ECLASS-VARIABLE: MODULESD_<modulename>_EXAMPLES
+# @ECLASS_VARIABLE: MODULESD_<modulename>_EXAMPLES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # This is a bash array containing a list of examples which should
@@ -120,7 +120,7 @@
 #
 # where array_component is "<modulename> options" (see modprobe.conf(5))
 
-# @ECLASS-VARIABLE: MODULESD_<modulename>_ALIASES
+# @ECLASS_VARIABLE: MODULESD_<modulename>_ALIASES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # This is a bash array containing a list of associated aliases.
@@ -131,20 +131,20 @@
 #
 # where array_component is "wildcard <modulename>" (see modprobe.conf(5))
 
-# @ECLASS-VARIABLE: MODULESD_<modulename>_ADDITIONS
+# @ECLASS_VARIABLE: MODULESD_<modulename>_ADDITIONS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # This is a bash array containing a list of additional things to
 # add to the bottom of the file. This can be absolutely anything.
 # Each entry is a new line.
 
-# @ECLASS-VARIABLE: MODULESD_<modulename>_DOCS
+# @ECLASS_VARIABLE: MODULESD_<modulename>_DOCS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # This is a string list which contains the full path to any associated
 # documents for <modulename>. These files are installed in the live tree.
 
-# @ECLASS-VARIABLE: KV_OBJ
+# @ECLASS_VARIABLE: KV_OBJ
 # @INTERNAL
 # @DESCRIPTION:
 # It's a read-only variable. It contains the extension of the kernel modules.
@@ -193,46 +193,6 @@ DEPEND="${RDEPEND}
 # eclass utilities
 # ----------------------------------
 
-check_vermagic() {
-	debug-print-function ${FUNCNAME} $*
-
-	local curr_gcc_ver=$(gcc -dumpversion)
-	local tmpfile old_chost old_gcc_ver result=0
-	[ -n "${MODULES_OPTIONAL_USE}" ] && use !${MODULES_OPTIONAL_USE} && return
-
-	tmpfile=`find "${KV_DIR}/" -iname "*.o.cmd" -exec grep usr/lib/gcc {} \; -quit`
-	tmpfile=${tmpfile//*usr/lib}
-	tmpfile=${tmpfile//\/include*}
-	old_chost=${tmpfile//*gcc\/}
-	old_chost=${old_chost//\/*}
-	old_gcc_ver=${tmpfile//*\/}
-
-	if [[ -z ${old_gcc_ver} || -z ${old_chost} ]]; then
-		ewarn ""
-		ewarn "Unable to detect what version of GCC was used to compile"
-		ewarn "the kernel. Build will continue, but you may experience problems."
-	elif [[ ${curr_gcc_ver} != ${old_gcc_ver} ]]; then
-		ewarn ""
-		ewarn "The version of GCC you are using (${curr_gcc_ver}) does"
-		ewarn "not match the version of GCC used to compile the"
-		ewarn "kernel (${old_gcc_ver})."
-		result=1
-	elif [[ ${CHOST} != ${old_chost} ]]; then
-		ewarn ""
-		ewarn "The current CHOST (${CHOST}) does not match the chost"
-		ewarn "used when compiling the kernel (${old_chost})."
-		result=1
-	fi
-
-	if [[ ${result} -gt 0 ]]; then
-		ewarn ""
-		ewarn "Build will not continue, because you will experience problems."
-		ewarn "To fix this either change the version of GCC you wish to use"
-		ewarn "to match the kernel, or recompile the kernel first."
-		die "GCC Version Mismatch."
-	fi
-}
-
 # @FUNCTION: use_m
 # @RETURN: true or false
 # @DESCRIPTION:
@@ -267,11 +227,10 @@ convert_to_m() {
 	fi
 }
 
-# internal function
-#
-# FUNCTION: update_depmod
-# DESCRIPTION:
-# It updates the modules.dep file for the current kernel.
+# @FUNCTION: update_depmod
+# @INTERNAL
+# @DESCRIPTION:
+# Updates the modules.dep file for the current kernel.
 update_depmod() {
 	debug-print-function ${FUNCNAME} $*
 
@@ -292,11 +251,10 @@ update_depmod() {
 	fi
 }
 
-# internal function
-#
-# FUNCTION: move_old_moduledb
-# DESCRIPTION:
-# It updates the location of the database used by the module-rebuild utility.
+# @FUNCTION: move_old_moduledb
+# @INTERNAL
+# @DESCRIPTION:
+# Updates the location of the database used by the module-rebuild utility.
 move_old_moduledb() {
 	debug-print-function ${FUNCNAME} $*
 
@@ -312,11 +270,9 @@ move_old_moduledb() {
 	fi
 }
 
-# internal function
-#
-# FUNCTION: update_moduledb
-# DESCRIPTION:
-# It adds the package to the /var/lib/module-rebuild/moduledb database used by the module-rebuild utility.
+# @FUNCTION: update_moduledb
+# @DESCRIPTION:
+# Adds the package to the /var/lib/module-rebuild/moduledb database used by the module-rebuild utility.
 update_moduledb() {
 	debug-print-function ${FUNCNAME} $*
 
@@ -334,12 +290,9 @@ update_moduledb() {
 	fi
 }
 
-# internal function
-#
-# FUNCTION: remove_moduledb
-# DESCRIPTION:
-# It removes the package from the /var/lib/module-rebuild/moduledb database used by
-# the module-rebuild utility.
+# @FUNCTION: remove_moduledb
+# @DESCRIPTION:
+# Removes the package from the /var/lib/module-rebuild/moduledb database used by
 remove_moduledb() {
 	debug-print-function ${FUNCNAME} $*
 
@@ -369,6 +322,10 @@ set_kvobj() {
 	# einfo "Using KV_OBJ=${KV_OBJ}"
 }
 
+# @FUNCTION: get-KERNEL_CC
+# @RETURN: Name of the C compiler.
+# @DESCRIPTION:
+# Return name of the C compiler while honoring variables defined in ebuilds.
 get-KERNEL_CC() {
 	debug-print-function ${FUNCNAME} $*
 
@@ -389,12 +346,11 @@ get-KERNEL_CC() {
 	echo "${kernel_cc}"
 }
 
-# internal function
-#
-# FUNCTION:
-# USAGE: /path/to/the/modulename_without_extension
-# RETURN: A file in /etc/modprobe.d
-# DESCRIPTION:
+# @FUNCTION: generate_modulesd
+# @INTERNAL
+# @USAGE: /path/to/the/modulename_without_extension
+# @RETURN: A file in /etc/modprobe.d
+# @DESCRIPTION:
 # This function will generate and install the neccessary modprobe.d file from the
 # information contained in the modules exported parms.
 # (see the variables MODULESD_<modulename>_ENABLED, MODULESD_<modulename>_EXAMPLES,
@@ -543,12 +499,11 @@ generate_modulesd() {
 	return 0
 }
 
-# internal function
-#
-# FUNCTION: find_module_params
-# USAGE: A string "NAME(LIBDIR:SRCDIR:OBJDIR)"
-# RETURN: The string "modulename:NAME libdir:LIBDIR srcdir:SRCDIR objdir:OBJDIR"
-# DESCRIPTION:
+# @FUNCTION: find_module_params
+# @USAGE: A string "NAME(LIBDIR:SRCDIR:OBJDIR)"
+# @INTERNAL
+# @RETURN: The string "modulename:NAME libdir:LIBDIR srcdir:SRCDIR objdir:OBJDIR"
+# @DESCRIPTION:
 # Analyze the specification NAME(LIBDIR:SRCDIR:OBJDIR) of one module as described in MODULE_NAMES.
 find_module_params() {
 	debug-print-function ${FUNCNAME} $*
@@ -621,10 +576,6 @@ linux-mod_pkg_setup() {
 	strip_modulenames;
 	[[ -n ${MODULE_NAMES} ]] && check_modules_supported
 	set_kvobj;
-	# Commented out with permission from johnm until a fixed version for arches
-	# who intentionally use different kernel and userland compilers can be
-	# introduced - Jason Wever <weeve@gentoo.org>, 23 Oct 2005
-	#check_vermagic;
 }
 
 # @FUNCTION: linux-mod_pkg_setup_binary
@@ -645,6 +596,9 @@ linux-mod_pkg_setup_binary() {
 	linux-info_pkg_setup;
 }
 
+# @FUNCTION: strip_modulenames
+# @DESCRIPTION:
+# Remove modules from being built automatically using the default src_compile/src_install
 strip_modulenames() {
 	debug-print-function ${FUNCNAME} $*
 
@@ -719,7 +673,7 @@ linux-mod_src_compile() {
 		fi
 	done
 
-	set_arch_to_portage
+	set_arch_to_pkgmgr
 	ABI="${myABI}"
 }
 
@@ -757,7 +711,22 @@ linux-mod_src_install() {
 		einfo "Installing ${modulename} module"
 		cd "${objdir}" || die "${objdir} does not exist"
 		insinto "${INSTALL_MOD_PATH}"/lib/modules/${KV_FULL}/${libdir}
-		doins ${modulename}.${KV_OBJ} || die "doins ${modulename}.${KV_OBJ} failed"
+
+		# check here for CONFIG_MODULE_COMPRESS_<compression option> (NONE, GZIP, XZ, ZSTD) 
+		# and similarily compress the module being built if != NONE.
+
+		if linux_chkconfig_present MODULE_COMPRESS_XZ; then
+			xz ${modulename}.${KV_OBJ} 
+			doins ${modulename}.${KV_OBJ}.xz || die "doins ${modulename}.${KV_OBJ}.xz failed"
+		elif linux_chkconfig_present MODULE_COMPRESS_GZIP; then
+			gzip ${modulename}.${KV_OBJ}
+			doins ${modulename}.${KV_OBJ}.gz || die "doins ${modulename}.${KV_OBJ}.gz failed"
+		elif linux_chkconfig_present MODULE_COMPRESS_ZSTD; then
+			zstd ${modulename}.${KV_OBJ}
+			doins ${modulename}.${KV_OBJ}.zst || die "doins ${modulename}.${KV_OBJ}.zst failed"
+		else
+			doins ${modulename}.${KV_OBJ} || die "doins ${modulename}.${KV_OBJ} failed"
+		fi
 		cd "${OLDPWD}"
 
 		generate_modulesd "${objdir}/${modulename}"

@@ -1,0 +1,25 @@
+From 62b77bb807aa2ac2c1df8eec372df771da8d2203 Mon Sep 17 00:00:00 2001
+From: Dmitry Shachnev <mitya57@users.noreply.github.com>
+Date: Tue, 29 Mar 2022 00:29:49 +0300
+Subject: [PATCH] Replace gunixconnection.h file in gio-unix include dir check
+ (#74)
+
+That file was moved from gio-unix to gio in GLib 2.71.1:
+https://gitlab.gnome.org/GNOME/glib/-/commit/83d45c4f35dc87ba
+---
+ cmake/find-modules/FindGLIB.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/find-modules/FindGLIB.cmake b/cmake/find-modules/FindGLIB.cmake
+index 0564b8d..bb2336a 100644
+--- a/cmake/find-modules/FindGLIB.cmake
++++ b/cmake/find-modules/FindGLIB.cmake
+@@ -101,7 +101,7 @@ foreach (_component ${GLIB_FIND_COMPONENTS})
+     elseif (${_component} STREQUAL "gio-unix")
+         pkg_check_modules(GIO_UNIX gio-unix-2.0)
+         find_path(GLIB_GIO_UNIX_INCLUDE_DIR
+-                  NAMES gio/gunixconnection.h
++                  NAMES gio/gunixfdlist.h
+                   HINTS ${GIO_UNIX_INCLUDEDIR}
+                   PATH_SUFFIXES gio-unix-2.0)
+ 

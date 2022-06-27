@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ src_configure() {
 src_compile() {
 	local target
 	for target in . tpserv; do
-		emake CC=$(tc-getCC) LDFLAGS="${CFLAGS} ${LDFLAGS}" -C "${target}"
+		emake CC="$(tc-getCC)" LDFLAGS="${CFLAGS} ${LDFLAGS}" -C "${target}"
 	done
 }
 

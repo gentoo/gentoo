@@ -10,12 +10,12 @@ inherit lua toolchain-funcs
 
 DESCRIPTION="Lua utility libraries loosely based on the Python standard libraries"
 HOMEPAGE="https://github.com/lunarmodules/Penlight"
-SRC_URI="https://github.com/Tieske/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lunarmodules/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86"
 IUSE="test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"

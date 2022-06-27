@@ -1,0 +1,10 @@
+https://bugs.gentoo.org/775752
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -6,5 +6,5 @@ check_PROGRAMS = controller
+ 
+ controller_SOURCES = controller.c ../dssi/dssi.h
+ 
+-controller_CFLAGS = -Wall -Werror -I$(top_srcdir)/dssi $(ALSA_CFLAGS)
++controller_CFLAGS = -Wall -I$(top_srcdir)/dssi $(ALSA_CFLAGS)
+ 

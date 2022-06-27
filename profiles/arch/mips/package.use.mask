@@ -1,6 +1,18 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <mattst88@gentoo.org> (2022-04-18)
+# app-text/nuspell is not keyworded
+app-text/enchant nuspell
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# Untested useflag on other arches, needs keywording
+media-video/ffmpeg vmaf
+
+# James Le Cuirot <chewi@gentoo.org> (2022-02-24)
+# These GRUB platforms are only for MIPS.
+sys-boot/grub -grub_platforms_loongson -grub_platforms_qemu-mips
+
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-01-17)
 # Mask AMF keyword on non-amd64 arches
 # It is unusable, for now, in other arches
@@ -121,10 +133,6 @@ dev-python/numpydoc test
 # Matthias Maier <tamiko@gentoo.org> (2014-12-24)
 # sys-devel/clang is not keyworded
 app-doc/doxygen clang
-
-# Sergey Popov <pinkbyte@gentoo.org> (2014-02-02)
-# media-gfx/nvidia-texture-tools is not keyworded on mips
-media-libs/devil	nvtt
 
 # Ryan Hill <dirtyepic@gentoo.org> (2014-01-07)
 # req net-libs/webkit-gtk:2

@@ -1,0 +1,40 @@
+From 7352045b388f4b0ef553706bd219457e5018ce4e Mon Sep 17 00:00:00 2001
+From: Marco Martin <notmart@gmail.com>
+Date: Mon, 28 Mar 2022 21:20:16 +0000
+Subject: [PATCH] Don't install the heading SVG in breeze-light and breeze-dark
+ Plasma themes
+
+Installing that file there was an acky workaround that got broken by 2cccf230.
+---
+ src/desktoptheme/breeze-dark/CMakeLists.txt  | 5 +----
+ src/desktoptheme/breeze-light/CMakeLists.txt | 4 ----
+ 2 files changed, 1 insertion(+), 8 deletions(-)
+
+diff --git a/src/desktoptheme/breeze-dark/CMakeLists.txt b/src/desktoptheme/breeze-dark/CMakeLists.txt
+index 8f2078e4d..7f8f99062 100644
+--- a/src/desktoptheme/breeze-dark/CMakeLists.txt
++++ b/src/desktoptheme/breeze-dark/CMakeLists.txt
+@@ -8,7 +8,4 @@ install(
+     FILES colors "${CMAKE_CURRENT_BINARY_DIR}/metadata.desktop"
+     DESTINATION ${PLASMA_DATA_INSTALL_DIR}/desktoptheme/breeze-dark
+ )
+-install(
+-    FILES ${PROJECT_BINARY_DIR}/src/desktoptheme/breeze/default.gzipped/widgets/plasmoidheading.svgz
+-    DESTINATION ${PLASMA_DATA_INSTALL_DIR}/desktoptheme/breeze-dark/widgets
+-)
++
+diff --git a/src/desktoptheme/breeze-light/CMakeLists.txt b/src/desktoptheme/breeze-light/CMakeLists.txt
+index 678033cec..6688a603b 100644
+--- a/src/desktoptheme/breeze-light/CMakeLists.txt
++++ b/src/desktoptheme/breeze-light/CMakeLists.txt
+@@ -8,7 +8,3 @@ install(
+     FILES colors "${CMAKE_CURRENT_BINARY_DIR}/metadata.desktop"
+     DESTINATION ${PLASMA_DATA_INSTALL_DIR}/desktoptheme/breeze-light
+ )
+-install(
+-    FILES ${PROJECT_BINARY_DIR}/src/desktoptheme/breeze/default.gzipped/widgets/plasmoidheading.svgz
+-    DESTINATION ${PLASMA_DATA_INSTALL_DIR}/desktoptheme/breeze-light/widgets
+-)
+-- 
+GitLab
+

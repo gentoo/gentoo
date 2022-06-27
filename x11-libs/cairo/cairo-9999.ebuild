@@ -11,7 +11,7 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://www.cairographics.org/releases/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="A vector graphics library with cross-device output support"
@@ -65,10 +65,6 @@ PATCHES=(
 src_prepare() {
 	default
 
-	if has_version ">=sys-libs/binutils-libs-2.34"; then
-		eapply "${FILESDIR}"/${PN}-1.16.0-binutils-2.34.patch
-	fi
-
 	# tests and perf tools require X, bug #483574
 	if ! use X; then
 		sed -e '/^SUBDIRS/ s#boilerplate test perf# #' -i Makefile.am || die
@@ -115,11 +111,6 @@ multilib_src_configure() {
 		--enable-png \
 		--enable-ps \
 		--enable-script \
-		--disable-drm \
-		--disable-directfb \
-		--disable-gallium \
-		--disable-qt \
-		--disable-vg \
 		--disable-xlib-xcb \
 		${myopts}
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -80,6 +80,14 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 src_prepare() {
 	default
 
@@ -123,9 +131,6 @@ src_configure() {
 	use q8 && depth=8
 	use q32 && depth=32
 
-	local openmp=disable
-	use openmp && { tc-has-openmp && openmp=enable; }
-
 	use perl && perl_check_env
 
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lnsl -lsocket
@@ -134,6 +139,7 @@ src_configure() {
 		$(use_enable static-libs static)
 		$(use_enable hdri)
 		$(use_enable opencl)
+		$(use_enable openmp)
 		--with-threads
 		--with-modules
 		--with-quantum-depth=${depth}
@@ -171,7 +177,6 @@ src_configure() {
 		$(use_with corefonts windows-font-dir "${EPREFIX}"/usr/share/fonts/corefonts)
 		$(use_with wmf)
 		$(use_with xml)
-		--${openmp}-openmp
 		--with-gcc-arch=no-automagic
 	)
 	CONFIG_SHELL=$(type -P bash) econf "${myeconfargs[@]}"

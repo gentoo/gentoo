@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby26 ruby27"
+USE_RUBY="ruby26 ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_EXTRADOC="NEWS.md README.md"
 
@@ -32,5 +32,5 @@ each_ruby_prepare() {
 }
 
 each_ruby_test() {
-	RUBYOPT="-Ilib -Itest/lib -rhelper" ${RUBY} run-test.rb || die
+	${RUBY} -Ilib:test/lib -rhelper run-test.rb || die
 }

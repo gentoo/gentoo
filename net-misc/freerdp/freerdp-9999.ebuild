@@ -1,7 +1,7 @@
 # Copyright 2011-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
@@ -54,7 +54,7 @@ RDEPEND="
 		media-libs/gst-plugins-base:1.0
 		x11-libs/libXrandr
 	)
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:0= )
 	openh264? ( media-libs/openh264:0= )
 	pulseaudio? ( media-sound/pulseaudio )
 	server? (
@@ -115,4 +115,10 @@ src_configure() {
 		-DWITH_WAYLAND=$(usex wayland ON OFF)
 	)
 	cmake_src_configure
+}
+
+src_test() {
+	local myctestargs=()
+	use elibc_musl && myctestargs+=( -E TestBacktrace )
+	cmake_src_test
 }

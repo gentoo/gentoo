@@ -16,6 +16,6 @@
     this package with emacs USE flag).
   </longdescription>
   <upstream>
-    <remote-id type="sourceforge-jp">anthy</remote-id>
+    <remote-id type="osdn">anthy</remote-id>
   </upstream>
 </pkgmetadata>

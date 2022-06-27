@@ -1,0 +1,20 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,8 @@
+ # Sample Makefile for a GKrellM plugin
+ 
+-GTK_INCLUDE = `pkg-config gtk+-2.0 --cflags`
+-GTK_LIB = `pkg-config gtk+-2.0 --libs`
++PKG_CONFIG ?= pkg-config
++GTK_INCLUDE = $(shell ${PKG_CONFIG} gtk+-2.0 --cflags)
++GTK_LIB = $(shell ${PKG_CONFIG} gtk+-2.0 --libs)
+ 
+ 
+ FLAGS = -fPIC $(GTK_INCLUDE)
+@@ -25,4 +26,4 @@ gkrellmlaunch.so: $(OBJS)
+ clean:
+ 	rm -f *.o core *.so* *.bak *~
+ 
+-gkrellmlaunch.o: gkrellmlaunch.c
+\ No newline at end of file
++gkrellmlaunch.o: gkrellmlaunch.c

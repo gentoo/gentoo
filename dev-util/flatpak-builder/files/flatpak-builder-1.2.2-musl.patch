@@ -1,0 +1,69 @@
+diff --git a/subprojects/debugedit/tools/debugedit.c b/subprojects/debugedit/tools/debugedit.c
+index 668777a..b3ba5cb 100644
+--- a/subprojects/debugedit/tools/debugedit.c
++++ b/subprojects/debugedit/tools/debugedit.c
+@@ -25,7 +25,11 @@
+ #include <byteswap.h>
+ #include <endian.h>
+ #include <errno.h>
++#ifdef __GLIBC__
+ #include <error.h>
++#else
++#include "error.h"
++#endif
+ #include <limits.h>
+ #include <string.h>
+ #include <stdlib.h>
+diff --git a/subprojects/debugedit/tools/error.h b/subprojects/debugedit/tools/error.h
+new file mode 100644
+index 0000000..c330dc3
+--- /dev/null
++++ b/subprojects/debugedit/tools/error.h
+@@ -0,0 +1,26 @@
++#ifndef _ERROR_H
++#define _ERROR_H
++#include <stdarg.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <errno.h>
++
++static unsigned int error_message_count = 0;
++
++static inline void error(int status, int errnum, const char* format, ...)
++{
++  va_list ap;
++  fprintf(stderr, "%s: ", program_invocation_name);
++  va_start(ap, format);
++  vfprintf(stderr, format, ap);
++  va_end(ap);
++  if (errnum)
++    fprintf(stderr, ": %s", strerror(errnum));
++  fprintf(stderr, "\n");
++  error_message_count++;
++  if (status)
++    exit(status);
++}
++
++#endif
+diff --git a/subprojects/libglnx/glnx-macros.h b/subprojects/libglnx/glnx-macros.h
+index 6d8aca9..e3e4e33 100644
+--- a/subprojects/libglnx/glnx-macros.h
++++ b/subprojects/libglnx/glnx-macros.h
+@@ -28,6 +28,16 @@
+ 
+ G_BEGIN_DECLS
+ 
++/* taken from glibc unistd.h and fixes musl */
++#ifndef TEMP_FAILURE_RETRY
++#define TEMP_FAILURE_RETRY(expression) \
++  (__extension__                                                              \
++    ({ long int __result;                                                     \
++       do __result = (long int) (expression);                                 \
++       while (__result == -1L && errno == EINTR);                             \
++       __result; }))
++#endif
++
+ /* All of these are for C only. */
+ #ifndef __GI_SCANNER__
+ 

@@ -14,6 +14,7 @@
 <use>
   <flag name="tex">Install plain TeX support files</flag>
   <flag name="vm">Add support for <pkg>app-emacs/vm</pkg></flag>
+  <flag name="wanderlust">Add support for <pkg>app-emacs/wanderlust</pkg></flag>
 </use>
 <upstream>
   <remote-id type="sourceforge">bbdb</remote-id>

@@ -10,9 +10,13 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://anongit.freedesktop.org/git/poppler/poppler.git"
 	SLOT="0/9999"
 else
+	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/aacid.asc
+	inherit verify-sig
+
 	SRC_URI="https://poppler.freedesktop.org/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-	SLOT="0/118"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
+	SRC_URI+=" verify-sig? ( https://poppler.freedesktop.org/${P}.tar.xz.sig )"
+	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	SLOT="0/122"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
 fi
 
 DESCRIPTION="PDF rendering library based on the xpdf-3.0 code base"
@@ -26,7 +30,7 @@ RESTRICT="test"
 
 DEPEND="
 	media-libs/fontconfig
-	media-libs/freetype
+	>=media-libs/freetype-2.8
 	sys-libs/zlib
 	cairo? (
 		dev-libs/glib:2
@@ -34,7 +38,7 @@ DEPEND="
 		introspection? ( dev-libs/gobject-introspection:= )
 	)
 	curl? ( net-misc/curl )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	jpeg2k? ( >=media-libs/openjpeg-2.3.0-r1:2= )
 	lcms? ( media-libs/lcms:2 )
 	nss? ( >=dev-libs/nss-3.19:0 )
@@ -56,6 +60,10 @@ BDEPEND="
 	dev-util/glib-utils
 	virtual/pkgconfig
 "
+
+if [[ ${PV} != *9999* ]] ; then
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-aacid )"
+fi
 
 DOCS=( AUTHORS NEWS README.md README-XPDF )
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -122,9 +122,11 @@ src_install() {
 	dodoc NEWS PROBLEMS README
 	docinto html
 	dodoc html/*.html
-	for f in `ls "${ED}"/usr/share/man/mann` ; do
-		mv "${ED}"/usr/share/man/mann/${f} "${ED}"/usr/share/man/mann/${f/.n/.nblt} || die
+	pushd "${ED}"/usr/share/man/mann
+	for f in * ; do
+		mv ${f} ${f/.n/.nblt} || die
 	done
+	popd
 
 	# fix for linking against shared lib with -lBLT or -lBLTlite
 	dosym libBLT${SHVER}$(get_libname) /usr/$(get_libdir)/libBLT$(get_libname)

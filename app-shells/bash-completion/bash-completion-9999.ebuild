@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit autotools git-r3 python-any-r1 user-info
 
 DESCRIPTION="Programmable Completion for bash"
@@ -99,7 +99,10 @@ src_prepare() {
 
 src_test() {
 	# portage's HOME override breaks tests
-	emake check HOME="$(egethome "${UID}")" PYTESTFLAGS="-vv" NETWORK=none
+	local myhome=$(unset HOME; echo ~)
+	local -x SANDBOX_PREDICT=${SANDBOX_PREDICT}
+	addpredict "${myhome}"
+	emake check HOME="${myhome}" PYTESTFLAGS="-vv" NETWORK=none
 }
 
 src_install() {

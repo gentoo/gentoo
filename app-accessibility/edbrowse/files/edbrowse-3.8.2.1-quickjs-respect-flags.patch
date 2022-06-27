@@ -1,0 +1,41 @@
+* Don't overwrite CFLAGS
+* Respect CPPFLAGS
+
+--- a/Makefile
++++ b/Makefile
+@@ -66,7 +66,7 @@
+ ifdef CONFIG_CLANG
+   HOST_CC=clang
+   CC=$(CROSS_PREFIX)clang
+-  CFLAGS=-g -Wall -MMD -MF $(OBJDIR)/$(@F).d
++  CFLAGS += -Wall -MMD -MF $(OBJDIR)/$(@F).d
+   CFLAGS += -Wextra
+   CFLAGS += -Wno-sign-compare
+   CFLAGS += -Wno-missing-field-initializers
+@@ -87,7 +87,7 @@
+ else
+   HOST_CC=gcc
+   CC=$(CROSS_PREFIX)gcc
+-  CFLAGS=-g -Wall -MMD -MF $(OBJDIR)/$(@F).d
++  CFLAGS += -Wall -MMD -MF $(OBJDIR)/$(@F).d
+   CFLAGS += -Wno-array-bounds -Wno-format-truncation
+   ifdef CONFIG_LTO
+     AR=$(CROSS_PREFIX)gcc-ar
+@@ -110,7 +110,7 @@
+ CFLAGS+=$(DEFINES)
+ CFLAGS_DEBUG=$(CFLAGS) -O0
+ CFLAGS_SMALL=$(CFLAGS) -Os
+-CFLAGS_OPT=$(CFLAGS) -O2
++CFLAGS_OPT=$(CFLAGS)
+ CFLAGS_NOLTO:=$(CFLAGS_OPT)
+ LDFLAGS=-g
+ ifdef CONFIG_LTO
+@@ -269,7 +269,7 @@
+ 	$(CC) $(CFLAGS_OPT) -fPIC -DJS_SHARED_LIBRARY -c -o $@ $<
+ 
+ $(OBJDIR)/%.nolto.o: %.c | $(OBJDIR)
+-	$(CC) $(CFLAGS_NOLTO) -c -o $@ $<
++	$(CC) $(CFLAGS_NOLTO) $(CPPFLAGS) -c -o $@ $<
+ 
+ $(OBJDIR)/%.m32.o: %.c | $(OBJDIR)
+ 	$(CC) -m32 $(CFLAGS_OPT) -c -o $@ $<

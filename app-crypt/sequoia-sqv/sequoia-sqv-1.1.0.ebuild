@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -166,7 +166,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 CC0-1.0 GPL-2 GPL-2+ GPL-3 ISC LGPL-3 LGPL-3+ MIT MPL-2.0 ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ~ppc64"
 
 QA_FLAGS_IGNORED="usr/bin/sqv"
 

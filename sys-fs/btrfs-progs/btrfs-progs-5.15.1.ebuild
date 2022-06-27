@@ -1,4 +1,4 @@
-# Copyright 2008-2021 Gentoo Authors
+# Copyright 2008-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -125,4 +125,8 @@ src_install() {
 
 	# install prebuilt subset of manuals
 	use doc || doman Documentation/*.[58]
+}
+
+pkg_postrm() {
+	[[ -n ${REPLACING_VERSIONS} ]] || udev_reload
 }

@@ -39,7 +39,7 @@ _LIBRETRO_CORE_ECLASS=1
 
 IUSE="debug"
 
-# @ECLASS-VARIABLE: LIBRETRO_CORE_NAME
+# @ECLASS_VARIABLE: LIBRETRO_CORE_NAME
 # @REQUIRED
 # @DESCRIPTION:
 # Name of this Libretro core. The libretro-core_src_install() phase function
@@ -52,13 +52,13 @@ if [[ -z "${LIBRETRO_CORE_NAME}" ]]; then
 	LIBRETRO_CORE_NAME=${LIBRETRO_CORE_NAME//-/_}
 fi
 
-# @ECLASS-VARIABLE: LIBRETRO_COMMIT_SHA
+# @ECLASS_VARIABLE: LIBRETRO_COMMIT_SHA
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Commit SHA used for SRC_URI will die if not set in <9999 ebuilds.
 # Needs to be set before inherit.
 
-# @ECLASS-VARIABLE: LIBRETRO_REPO_NAME
+# @ECLASS_VARIABLE: LIBRETRO_REPO_NAME
 # @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:

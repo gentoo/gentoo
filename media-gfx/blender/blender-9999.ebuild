@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_9 )
+PYTHON_COMPAT=( python3_10 )
 
 inherit check-reqs cmake flag-o-matic pax-utils python-single-r1 toolchain-funcs xdg-utils
 
@@ -17,18 +17,18 @@ if [[ ${PV} = *9999* ]] ; then
 else
 	SRC_URI="https://download.blender.org/source/${P}.tar.xz"
 	# Update these between major releases.
-	#TEST_TARBALL_VERSION="3.0.0"
-	#SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-${TEST_TARBALL_VERSION}-tests.tar.bz2 )"
+	TEST_TARBALL_VERSION="$(ver_cut 1-2).0"
+	SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-${TEST_TARBALL_VERSION}-tests.tar.xz )"
 	KEYWORDS="~amd64 ~arm ~arm64"
 fi
 
 SLOT="${PV%.*}"
 LICENSE="|| ( GPL-3 BL )"
-IUSE="+bullet +dds +fluid +openexr +system-python +system-numpy +tbb \
+IUSE="+bullet +dds +fluid +openexr +tbb \
 	alembic collada +color-management cuda +cycles \
 	debug doc +embree +ffmpeg +fftw +gmp headless jack jemalloc jpeg2k \
-	man ndof nls openal +oidn +openimageio +openmp +opensubdiv \
-	+openvdb +osl +pdf +potrace +pugixml pulseaudio sdl +sndfile standalone test +tiff valgrind"
+	man +nanovdb ndof nls openal +oidn +openimageio +openmp +opensubdiv \
+	+openvdb +osl +pdf +potrace +pugixml pulseaudio sdl +sndfile test +tiff valgrind"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -38,7 +38,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	fluid? ( tbb )
 	openvdb? ( tbb )
 	osl? ( cycles )
-	standalone? ( cycles )
 	test? ( color-management )"
 
 # Library versions for official builds can be found in the blender source directory in:
@@ -47,17 +46,18 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=[nls?,threads(+)]
 	dev-libs/lzo:2=
 	$(python_gen_cond_dep '
+		dev-python/cython[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/zstandard[${PYTHON_USEDEP}]
 	')
 	media-libs/freetype:=
 	media-libs/glew:*
+	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/libsamplerate
 	sys-libs/zlib:=
 	virtual/glu
-	virtual/jpeg
 	virtual/libintl
 	virtual/opengl
 	alembic? ( >=media-gfx/alembic-1.8.3-r2[boost(+),hdf(+)] )
@@ -65,7 +65,7 @@ RDEPEND="${PYTHON_DEPS}
 	color-management? ( >=media-libs/opencolorio-2.1.1-r7:= )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	embree? ( >=media-libs/embree-3.10.0[raymask] )
-	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k,vpx,vorbis,opus,xvid] )
+	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?,vpx,vorbis,opus,xvid] )
 	fftw? ( sci-libs/fftw:3.0= )
 	gmp? ( dev-libs/gmp )
 	!headless? (
@@ -90,7 +90,7 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	opensubdiv? ( >=media-libs/opensubdiv-3.4.0[cuda=] )
 	openvdb? (
-		>=media-gfx/openvdb-8.2.0-r2:=
+		>=media-gfx/openvdb-9.0.0:=[nanovdb?]
 		dev-libs/c-blosc:=
 	)
 	osl? ( >=media-libs/osl-1.11.16.0-r3:= )
@@ -122,11 +122,6 @@ BDEPEND="
 	)
 	nls? ( sys-devel/gettext )
 "
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.0.1-openexr.patch
-	"${FILESDIR}"/${PN}-3.0.1-openimageio-2.3.patch
-)
 
 blender_check_requirements() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -224,8 +219,8 @@ src_configure() {
 		-DWITH_CYCLES_DEVICE_CUDA=$(usex cuda TRUE FALSE)
 		-DWITH_CYCLES_EMBREE=$(usex embree)
 		-DWITH_CYCLES_OSL=$(usex osl)
-		-DWITH_CYCLES_STANDALONE=$(usex standalone)
-		-DWITH_CYCLES_STANDALONE_GUI=$(usex standalone)
+		-DWITH_CYCLES_STANDALONE=OFF
+		-DWITH_CYCLES_STANDALONE_GUI=OFF
 		-DWITH_DOC_MANPAGE=$(usex man)
 		-DWITH_FFTW3=$(usex fftw)
 		-DWITH_GMP=$(usex gmp)
@@ -234,7 +229,6 @@ src_configure() {
 		-DWITH_HEADLESS=$(usex headless)
 		-DWITH_INSTALL_PORTABLE=OFF
 		-DWITH_IMAGE_DDS=$(usex dds)
-		-DOPENEXR_ROOT_DIR="${ESYSROOT}/usr/$(get_libdir)/OpenEXR-3"
 		-DWITH_IMAGE_OPENEXR=$(usex openexr)
 		-DWITH_IMAGE_OPENJPEG=$(usex jpeg2k)
 		-DWITH_IMAGE_TIFF=$(usex tiff)
@@ -245,7 +239,7 @@ src_configure() {
 		-DWITH_MEM_VALGRIND=$(usex valgrind)
 		-DWITH_MOD_FLUID=$(usex fluid)
 		-DWITH_MOD_OCEANSIM=$(usex fftw)
-		-DWITH_NANOVDB=OFF
+		-DWITH_NANOVDB=$(usex nanovdb)
 		-DWITH_OPENAL=$(usex openal)
 		-DWITH_OPENCOLLADA=$(usex collada)
 		-DWITH_OPENCOLORIO=$(usex color-management)
@@ -258,11 +252,11 @@ src_configure() {
 		-DWITH_POTRACE=$(usex potrace)
 		-DWITH_PUGIXML=$(usex pugixml)
 		-DWITH_PULSEAUDIO=$(usex pulseaudio)
-		-DWITH_PYTHON_INSTALL=$(usex system-python OFF ON)
-		-DWITH_PYTHON_INSTALL_NUMPY=$(usex system-numpy OFF ON)
+		-DWITH_PYTHON_INSTALL=OFF
 		-DWITH_SDL=$(usex sdl)
 		-DWITH_STATIC_LIBS=OFF
 		-DWITH_SYSTEM_EIGEN3=ON
+		-DWITH_SYSTEM_FREETYPE=ON
 		-DWITH_SYSTEM_GLEW=ON
 		-DWITH_SYSTEM_LZO=ON
 		-DWITH_TBB=$(usex tbb)
@@ -303,7 +297,7 @@ src_test() {
 	cmake_src_test
 
 	# Clean up the image directory for src_install
-	rm -fr ${ED}/* || die
+	rm -fr "${ED}"/* || die
 }
 
 src_install() {
@@ -311,10 +305,6 @@ src_install() {
 
 	# Pax mark blender for hardened support.
 	pax-mark m "${BUILD_DIR}"/bin/blender
-
-	if use standalone; then
-		dobin "${BUILD_DIR}"/bin/cycles
-	fi
 
 	cmake_src_install
 
@@ -382,11 +372,11 @@ pkg_postinst() {
 	ewarn "  https://developer.blender.org/"
 	ewarn
 
-	if ! use python_single_target_python3_9; then
+	if ! use python_single_target_python3_10; then
 		elog "You are building Blender with a newer python version than"
 		elog "supported by this version upstream."
 		elog "If you experience breakages with e.g. plugins, please switch to"
-		elog "python_single_target_python3_9 instead."
+		elog "python_single_target_python3_10 instead."
 		elog "Bug: https://bugs.gentoo.org/737388"
 		elog
 	fi

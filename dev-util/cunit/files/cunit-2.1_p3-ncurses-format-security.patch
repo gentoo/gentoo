@@ -1,0 +1,51 @@
+https://sources.debian.org/patches/cunit/2.1-3-dfsg-2.4/fix-string-format-errors-with-recent-ncu.patch/
+
+From: Sven Joachim <svenjoac@gmx.de>
+Date: Wed, 13 Oct 2021 19:23:18 +0200
+X-Dgit-Generated: 2.1-3-dfsg-3 74c029a14c5195c79122d44c3777a169d8cc535f
+Subject: Fix string format errors with recent ncurses
+
+
+--- a/CUnit/Sources/Curses/Curses.c
++++ b/CUnit/Sources/Curses/Curses.c
+@@ -952,11 +952,11 @@ static void show_suite_level_help(CU_pSu
+ 
+   snprintf(szTemp, STRING_LENGTH,   _("Commands:  R - run all tests in suite %s"),
+                                     pSuite->pName);
+-  mvwprintw(details_pad.pPad, 0, 0, szTemp);
++  mvwprintw(details_pad.pPad, 0, 0, "%s", szTemp);
+   mvwprintw(details_pad.pPad, 1, 0, _("           S - Select and run a test"));
+   snprintf(szTemp, STRING_LENGTH,   _("           L - List all tests registered in suite %s"),
+                                     pSuite->pName);
+-  mvwprintw(details_pad.pPad, 2, 0, szTemp);
++  mvwprintw(details_pad.pPad, 2, 0, "%s", szTemp);
+   mvwprintw(details_pad.pPad, 3, 0, _("           A - Activate or deactivate a test (toggle)"));
+   mvwprintw(details_pad.pPad, 4, 0, _("           F - Show failures from last test run"));
+   mvwprintw(details_pad.pPad, 5, 0, _("           M - Move up to main menu"));
+@@ -1068,14 +1068,14 @@ static void list_tests(CU_pSuite pSuite)
+   }
+ 
+   snprintf(szTemp, STRING_LENGTH, "%s: %s", _("Suite"), pSuite->pName);
+-  mvwprintw(details_pad.pPad, 0, 0, szTemp);
++  mvwprintw(details_pad.pPad, 0, 0, "%s", szTemp);
+ 
+   snprintf(szTemp, STRING_LENGTH,
+            "%*s  %-*s%*s",
+            width[0], _("#"),
+            width[1], _("Test Name"),
+            width[2], _("Active?"));
+-  mvwprintw(details_pad.pPad, 1, 0, szTemp);
++  mvwprintw(details_pad.pPad, 1, 0, "%s", szTemp);
+ 
+   for (i = 0, pCurTest = pSuite->pTest ;
+        NULL != pCurTest ;
+@@ -1158,7 +1158,7 @@ static STATUS curses_set_options_run(voi
+ 
+     snprintf(szTemp, STRING_LENGTH,   _("   1 - Inactive suites/tests treated as runtime failures     %s"),
+                                       (CU_FALSE != CU_get_fail_on_inactive()) ? _("Yes") : _("No "));
+-    mvwprintw(details_pad.pPad, 2, 0, szTemp);
++    mvwprintw(details_pad.pPad, 2, 0, "%s", szTemp);
+     refresh_details_window();
+     read_input_string(_("Enter number of option to change : "), szTemp, STRING_LENGTH);
+     option_num = atol(szTemp);
+

@@ -6,6 +6,6 @@
 		<name>Cjk</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge-jp">unidic</remote-id>
+		<remote-id type="osdn">unidic</remote-id>
 	</upstream>
 </pkgmetadata>

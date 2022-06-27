@@ -5,10 +5,6 @@
 		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>andrey_utkin@gentoo.org</email>
-		<name>Andrey Utkin</name>
-	</maintainer>
 	<longdescription>
 		Spectrum is an open source instant messaging transport.
 		It allows users to chat together even when they are using

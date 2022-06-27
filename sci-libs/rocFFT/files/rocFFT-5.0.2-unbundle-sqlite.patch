@@ -1,0 +1,54 @@
+Disable rocFFT fetching SQLite3 and link to system libsqlite.so
+--- rocFFT-rocm-5.0.2/library/src/CMakeLists.txt
++++ rocFFT-rocm-5.0.2/library/src/CMakeLists.txt
+@@ -134,31 +134,7 @@ set( rocfft_source
+   rtcsubprocess.cpp
+   )
+ 
+-# SQLite 3.36.0 enabled the backup API by default, which we need
+-# for cache serialization.  We also want to use a static SQLite,
+-# and distro static libraries aren't typically built
+-# position-independent.
+-include( FetchContent )
+-
+-# embed SQLite
+-FetchContent_Declare(sqlite_local
+-  URL https://sqlite.org/2021/sqlite-amalgamation-3360000.zip
+-  URL_HASH SHA256=999826fe4c871f18919fdb8ed7ec9dd8217180854dd1fe21eea96aed36186729
+-)
+-FetchContent_MakeAvailable(sqlite_local)
+-add_library( sqlite3 STATIC ${sqlite_local_SOURCE_DIR}/sqlite3.c )
+-set_target_properties( sqlite3 PROPERTIES
+-  C_VISIBILITY_PRESET "hidden"
+-  VISIBILITY_INLINES_HIDDEN ON
+-  POSITION_INDEPENDENT_CODE ON
+-  )
+-
+-# we don't need extensions, and omitting them from SQLite removes the
+-# need for dlopen/dlclose from within rocFFT
+-target_compile_options(
+-  sqlite3
+-  PRIVATE -DSQLITE_OMIT_LOAD_EXTENSION
+-)
++find_package( SQLite3 REQUIRED )
+ 
+ set_property(
+   SOURCE rtc.cpp
+@@ -170,7 +146,7 @@ prepend_path( ".." rocfft_headers_public
+ add_library( rocfft ${rocfft_source} ${relative_rocfft_headers_public} )
+ add_library( roc::rocfft ALIAS rocfft )
+ 
+-target_link_libraries( rocfft PRIVATE stockham_gen sqlite3 )
++target_link_libraries( rocfft PRIVATE stockham_gen ${SQLite3_LIBRARIES} )
+ if( NOT WIN32 )
+   target_link_libraries( rocfft PRIVATE -lstdc++fs )
+ endif()
+@@ -203,7 +179,7 @@ endif()
+ target_include_directories( rocfft
+   PRIVATE $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/library/src/include>
+   $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/library/src/device>
+-  ${sqlite_local_SOURCE_DIR}
++  ${SQLite3_LIBRARIES}
+   PUBLIC  $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/library/include>
+   $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/include>
+   $<INSTALL_INTERFACE:include/rocFFT>

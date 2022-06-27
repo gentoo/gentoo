@@ -1,0 +1,25 @@
+From e59b8ff7b83cd6a58c226cb4f5d9661bcb29002b Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Thu, 31 Mar 2022 08:05:17 +0200
+Subject: [PATCH] adjust to find binaries
+
+Add compatibility for qt-5.15.3 with no qtchooser installed. QtCore exports
+Qt5::{qmake,moc,rcc} which we use to get the path for binaries.
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/GUISupport/QtQuick/qml/CMakeLists.txt
++++ b/GUISupport/QtQuick/qml/CMakeLists.txt
+@@ -60,8 +60,8 @@ file(GENERATE
+ # Generate the qmltypes file for the VTK QML plugin
+ 
+ # First, find the qmlplugindump executable
+-get_target_property(qt_core_location "Qt${vtk_qt_major_version}::Core" LOCATION)
+-get_filename_component(qt_bin_dir "${qt_core_location}" PATH)
++get_target_property(qt_qmake_location "Qt${vtk_qt_major_version}::qmake" LOCATION)
++get_filename_component(qt_bin_dir "${qt_qmake_location}" PATH)
+ if (APPLE)
+   get_filename_component(qt_bin_dir "${qt_bin_dir}" PATH)
+ endif ()
+-- 
+2.35.1
+

@@ -59,7 +59,7 @@ RDEPEND="
 	dev-libs/libxml2
 	sys-fs/fuse:0
 	acl? ( sys-apps/acl )
-	java? ( >=virtual/jre-1.7 )
+	java? ( virtual/jre:1.8 )
 	|| (
 		sys-libs/libxcrypt[compat]
 		sys-libs/glibc[crypt(+)]
@@ -181,13 +181,13 @@ src_install() {
 	keepdir /etc/tivoli
 
 	cp -a "${S}/opt/tivoli/tsm/client/ba/bin/dsm.sys.smp" "${D}/etc/tivoli/dsm.sys" || die
-	echo '	 PasswordDir "/etc/tivoli/"' >> ${D}/etc/tivoli/dsm.sys
-	echo '	 PasswordAccess generate' >> ${D}/etc/tivoli/dsm.sys
+	echo '	 PasswordDir "/etc/tivoli/"' >> "${D}"/etc/tivoli/dsm.sys
+	echo '	 PasswordAccess generate' >> "${D}"/etc/tivoli/dsm.sys
 
 	# Added the hostname to be more friendly, the admin will need to edit this file anyway
-	echo '	 NodeName' `hostname` >> ${D}/etc/tivoli/dsm.sys
-	echo '	 ErrorLogName "/var/log/tsm/dsmerror.log"' >> ${D}/etc/tivoli/dsm.sys
-	echo '	 SchedLogName "/var/log/tsm/dsmsched.log"' >> ${D}/etc/tivoli/dsm.sys
+	echo '	 NodeName' `hostname` >> "${D}"/etc/tivoli/dsm.sys
+	echo '	 ErrorLogName "/var/log/tsm/dsmerror.log"' >> "${D}"/etc/tivoli/dsm.sys
+	echo '	 SchedLogName "/var/log/tsm/dsmsched.log"' >> "${D}"/etc/tivoli/dsm.sys
 	dosym ../../../../../../etc/tivoli/dsm.sys /opt/tivoli/tsm/client/ba/bin/dsm.sys
 
 	cp -a "${S}/opt/tivoli/tsm/client/ba/bin/dsm.opt.smp" "${D}/etc/tivoli/dsm.opt"

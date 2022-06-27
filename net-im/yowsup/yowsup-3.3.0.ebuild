@@ -15,7 +15,7 @@ SRC_URI="https://github.com/tgalal/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # This package contains no-op tests, so they actually cannot be run
 RESTRICT="test"

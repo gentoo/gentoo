@@ -1,0 +1,147 @@
+https://gitlab.freedesktop.org/dbus/dbus/-/commit/7d462fe93844df711ff8433ad798b54e57f8609d.patch
+(dropped NEWS to avoid conflicts with more patches in future)
+
+From fdbb32bd1f3c972d3d5fd3998930749206a1095a Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Tue, 1 Mar 2022 15:56:30 +0100
+Subject: [PATCH 1/6] build: Treat --with-x[=yes] the same as --with-x=auto
+
+Previously, --with-x would disable the check for X11 libraries, which
+was not intended.
+
+(cherry picked from commit 99cc28e0eb1a37233c0f7d3595175d1f331550e7)
+--- a/configure.ac
++++ b/configure.ac
+@@ -1115,7 +1115,7 @@ if test "x$dbus_win" = xyes; then
+ 
+     enable_x11_autolaunch=no
+     have_x11=no
+-else if test "x$with_x" = xauto; then
++else if test "x$with_x" != xno; then
+     PKG_CHECK_MODULES([X], [x11],
+             [AC_DEFINE([HAVE_X11], [1], [Define to 1 if you have X11 library])],
+             [ have_x11=no ])
+GitLab
+From 5f2577aea3c5291dbb97e77c7384924851b30102 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Tue, 1 Mar 2022 16:01:29 +0100
+Subject: [PATCH 2/6] Move DBUS_X_* definitions into PKG_CHECK_MODULES block
+
+(cherry picked from commit 51e468d828785cbc7060678f6f257723ba11cd10)
+--- a/configure.ac
++++ b/configure.ac
+@@ -1117,15 +1117,15 @@ if test "x$dbus_win" = xyes; then
+     have_x11=no
+ else if test "x$with_x" != xno; then
+     PKG_CHECK_MODULES([X], [x11],
+-            [AC_DEFINE([HAVE_X11], [1], [Define to 1 if you have X11 library])],
++            [AC_DEFINE([HAVE_X11], [1], [Define to 1 if you have X11 library])
++	     have_x11=yes
++	     DBUS_X_LIBS="$X_LIBS"
++	     DBUS_X_CFLAGS="$X_CFLAGS"
++            ],
+             [ have_x11=no ])
+ 
+     if test "x$have_x11" = xno; then
+         AC_MSG_WARN([Couldn't found X11, tried with pkg-config.])
+-    else
+-        have_x11=yes
+-        DBUS_X_LIBS="$X_LIBS"
+-        DBUS_X_CFLAGS="$X_CFLAGS"
+     fi
+ else
+     AS_IF([test "x$enable_x11_autolaunch" = "xyes"], [
+GitLab
+From 5dad12f34c54e2359adfe8e7f122681df1d24bcb Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Tue, 1 Mar 2022 16:05:52 +0100
+Subject: [PATCH 3/6] Emit an error when --with-x was given but no X11 libs
+ were found
+
+(cherry picked from commit 17c88a894499da64460a0ef76db1d8b88ceb9eeb)
+--- a/configure.ac
++++ b/configure.ac
+@@ -1121,12 +1121,13 @@ else if test "x$with_x" != xno; then
+ 	     have_x11=yes
+ 	     DBUS_X_LIBS="$X_LIBS"
+ 	     DBUS_X_CFLAGS="$X_CFLAGS"
+-            ],
+-            [ have_x11=no ])
+-
+-    if test "x$have_x11" = xno; then
+-        AC_MSG_WARN([Couldn't found X11, tried with pkg-config.])
+-    fi
++            ], [
++             AS_IF([test "x$with_x" = xyes],
++                [AC_MSG_ERROR([Couldn't find X11, tried with pkg-config.])],
++                [AC_MSG_WARN([Couldn't find X11, tried with pkg-config.])]
++             )
++             have_x11=no
++            ])
+ else
+     AS_IF([test "x$enable_x11_autolaunch" = "xyes"], [
+       AC_MSG_ERROR([--enable-x11-autolaunch and --without-x are not compatible])
+GitLab
+From e03554eb0bf2731e39c06191403f7544df9bb307 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Tue, 1 Mar 2022 16:08:06 +0100
+Subject: [PATCH 4/6] Add have_x11=no if --without-x was given to make later
+ checks happy
+
+(cherry picked from commit bf3cb42c6db1f4479467d66a111b08a98afef31b)
+--- a/configure.ac
++++ b/configure.ac
+@@ -1129,6 +1129,7 @@ else if test "x$with_x" != xno; then
+              have_x11=no
+             ])
+ else
++    have_x11=no
+     AS_IF([test "x$enable_x11_autolaunch" = "xyes"], [
+       AC_MSG_ERROR([--enable-x11-autolaunch and --without-x are not compatible])
+     ])
+GitLab
+From 62361f47f9da2346a9ff9a8c4b4bd4a288dc44d5 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Tue, 1 Mar 2022 16:11:05 +0100
+Subject: [PATCH 5/6] Convert "if" calls to AS_IF macro for the block that
+ handles X11
+
+(cherry picked from commit c71f013a64cd7f6de4c9cf3cf3b236239d713eb1)
+--- a/configure.ac
++++ b/configure.ac
+@@ -1108,14 +1108,14 @@ AC_ARG_ENABLE([x11-autolaunch],
+   AS_HELP_STRING([--enable-x11-autolaunch], [build with X11 auto-launch support]),
+   [], [enable_x11_autolaunch=auto])
+ 
+-if test "x$dbus_win" = xyes; then
+-    if test "x$enable_x11_autolaunch" = xyes; then
++AS_IF([test "x$dbus_win" = xyes], [
++    AS_IF([test "x$enable_x11_autolaunch" = xyes], [
+         AC_MSG_ERROR([X11 auto-launch is not supported on Windows])
+-    fi
++    ])
+ 
+     enable_x11_autolaunch=no
+     have_x11=no
+-else if test "x$with_x" != xno; then
++], [test "x$with_x" != xno], [
+     PKG_CHECK_MODULES([X], [x11],
+             [AC_DEFINE([HAVE_X11], [1], [Define to 1 if you have X11 library])
+ 	     have_x11=yes
+@@ -1128,13 +1128,12 @@ else if test "x$with_x" != xno; then
+              )
+              have_x11=no
+             ])
+-else
++], [
+     have_x11=no
+     AS_IF([test "x$enable_x11_autolaunch" = "xyes"], [
+       AC_MSG_ERROR([--enable-x11-autolaunch and --without-x are not compatible])
+     ])
+-fi
+-fi
++])
+ 
+ if test "x$enable_x11_autolaunch,$have_x11" = xyes,no; then
+     AC_MSG_ERROR([X11 auto-launch requires X headers/libraries])
+GitLab

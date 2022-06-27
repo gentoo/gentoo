@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit cmake python-single-r1 toolchain-funcs
 
@@ -38,21 +38,12 @@ BDEPEND="doc? ( app-doc/doxygen )
 		dev-libs/unittest++
 	)"
 
-check_compiler() {
-	if [[ ${MERGE_TYPE} != binary ]] && ! tc-has-openmp; then
-		eerror "${P} requires a compiler with OpenMP support. Your current"
-		eerror "compiler does not support it. If you use gcc, you can"
-		eerror "re-emerge it with the 'openmp' use flag enabled."
-		die "The current compiler does not support OpenMP"
-	fi
-}
-
 pkg_pretend() {
-	check_compiler
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
 }
 
 pkg_setup() {
-	check_compiler
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
 	use python && python-single-r1_pkg_setup
 }
 

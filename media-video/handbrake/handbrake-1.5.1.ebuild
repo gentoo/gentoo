@@ -14,7 +14,7 @@ else
 	MY_P="HandBrake-${PV}"
 	SRC_URI="https://github.com/HandBrake/HandBrake/releases/download/${PV}/${MY_P}-source.tar.bz2 -> ${P}.tar.bz2"
 	S="${WORKDIR}/${MY_P}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 DESCRIPTION="Open-source, GPL-licensed, multiplatform, multithreaded video transcoder"
@@ -73,10 +73,12 @@ RDEPEND="
 	nvenc? ( media-libs/nv-codec-headers )
 	x265? ( >=media-libs/x265-3.2:0=[10bit,12bit,numa?] )
 "
-DEPEND="
+DEPEND="${RDEPEND}"
+# cmake needed for custom script: bug #852701
+BDEPEND="
 	${PYTHON_DEPS}
-	${RDEPEND}
 	dev-lang/nasm
+	dev-util/cmake
 	dev-util/intltool
 "
 

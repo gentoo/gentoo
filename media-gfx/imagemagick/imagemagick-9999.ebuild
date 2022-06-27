@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
 
-inherit flag-o-matic libtool perl-functions toolchain-funcs
+inherit autotools flag-o-matic libtool perl-functions toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/ImageMagick/ImageMagick.git"
@@ -13,7 +13,7 @@ else
 	MY_PV="$(ver_rs 3 '-')"
 	MY_P="ImageMagick-${MY_PV}"
 	SRC_URI="mirror://imagemagick/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="A collection of tools and libraries for many image formats"
@@ -79,10 +79,23 @@ DEPEND="${RDEPEND}
 	!media-gfx/graphicsmagick[imagemagick]
 	X? ( x11-base/xorg-proto )"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-9999-nocputuning.patch"
+)
+
 S="${WORKDIR}/${MY_P}"
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
 
 src_prepare() {
 	default
+	eautoreconf
 
 	# Apply hardening #664236
 	cp "${FILESDIR}"/policy-hardening.snippet "${S}" || die
@@ -124,9 +137,6 @@ src_configure() {
 	use q8 && depth=8
 	use q32 && depth=32
 
-	local openmp=disable
-	use openmp && { tc-has-openmp && openmp=enable; }
-
 	use perl && perl_check_env
 
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lnsl -lsocket
@@ -135,6 +145,7 @@ src_configure() {
 		$(use_enable static-libs static)
 		$(use_enable hdri)
 		$(use_enable opencl)
+		$(use_enable openmp)
 		--with-threads
 		--with-modules
 		--with-quantum-depth=${depth}
@@ -174,8 +185,6 @@ src_configure() {
 		$(use_with corefonts windows-font-dir "${EPREFIX}"/usr/share/fonts/corefonts)
 		$(use_with wmf)
 		$(use_with xml)
-		--${openmp}-openmp
-		--with-gcc-arch=no-automagic
 	)
 	CONFIG_SHELL=$(type -P bash) econf "${myeconfargs[@]}"
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,6 +23,10 @@ RDEPEND="virtual/libusb:1
 	x11-libs/gtk+:3"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.7.0-no-werror.patch
+)
 
 src_configure() {
 	local mycmakeargs=(

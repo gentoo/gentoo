@@ -1,0 +1,13 @@
+diff --git a/doc/user-manual/conf.py b/doc/user-manual/conf.py
+index 899f5d6..9475d85 100644
+--- a/doc/user-manual/conf.py
++++ b/doc/user-manual/conf.py
+@@ -25,7 +25,7 @@ import sys, os
+ 
+ # Add any Sphinx extension module names here, as strings. They can be extensions
+ # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
+-extensions = ['sphinx.ext.intersphinx', 'sphinx.ext.pngmath']
++extensions = ['sphinx.ext.intersphinx', 'sphinx.ext.imgmath']
+ 
+ # Add any paths that contain templates here, relative to this directory.
+ templates_path = ['_templates']

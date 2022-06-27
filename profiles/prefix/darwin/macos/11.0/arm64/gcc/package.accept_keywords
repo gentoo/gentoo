@@ -1,5 +1,0 @@
-# Copyright 1999-2021 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Apple SI support only exists in Ians' WIP
-=sys-devel/gcc-11* **

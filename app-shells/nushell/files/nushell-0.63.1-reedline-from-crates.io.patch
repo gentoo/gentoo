@@ -1,0 +1,73 @@
+From f17582e6e7ce4fbed13a3b490f06041b56882cf4 Mon Sep 17 00:00:00 2001
+From: Randy Barlow <randy@electronsweatshop.com>
+Date: Mon, 30 May 2022 14:59:44 -0400
+Subject: [PATCH] Use reedline from crates.io instead of git
+
+I believe reedline was left on a git URL for a nushell release by
+mistake. For Gentoo, we need it to use a version from crates.io, so this
+patch makes that adjustment.
+
+Signed-off-by: Randy Barlow <randy@electronsweatshop.com>
+---
+ Cargo.lock                   | 3 ++-
+ Cargo.toml                   | 2 +-
+ crates/nu-cli/Cargo.toml     | 2 +-
+ crates/nu-command/Cargo.toml | 2 +-
+ 4 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index bed0c1c50..578c55b74 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -3794,7 +3794,8 @@ dependencies = [
+ [[package]]
+ name = "reedline"
+ version = "0.6.0"
+-source = "git+https://github.com/nushell/reedline?branch=main#fe795caabc5401d811006b93d5a6d4f220a049ff"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "422f144c06f679da4ab4f082a6d1d43e28bfabb68d009100e6e5520728f99fec"
+ dependencies = [
+  "chrono",
+  "crossterm",
+diff --git a/Cargo.toml b/Cargo.toml
+index 26df23417..cbfb290b8 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -54,7 +54,7 @@ nu-term-grid = { path = "./crates/nu-term-grid", version = "0.63.1"  }
+ nu-utils = { path = "./crates/nu-utils", version = "0.63.1"  }
+ pretty_env_logger = "0.4.0"
+ rayon = "1.5.1"
+-reedline = { git = "https://github.com/nushell/reedline", branch = "main", features = ["bashisms"]}
++reedline = { version = "0.6.0", features = ["bashisms"]}
+ is_executable = "1.0.1"
+ 
+ [target.'cfg(not(target_os = "windows"))'.dependencies]
+diff --git a/crates/nu-cli/Cargo.toml b/crates/nu-cli/Cargo.toml
+index 9c5dcb00c..fe4d5c263 100644
+--- a/crates/nu-cli/Cargo.toml
++++ b/crates/nu-cli/Cargo.toml
+@@ -17,7 +17,7 @@ nu-parser = { path = "../nu-parser", version = "0.63.1"  }
+ nu-protocol = { path = "../nu-protocol", version = "0.63.1"  }
+ nu-utils = { path = "../nu-utils", version = "0.63.1"  }
+ nu-ansi-term = "0.45.1"
+-reedline = { git = "https://github.com/nushell/reedline", branch = "main", features = ["bashisms"]}
++reedline = { version = "0.6.0", features = ["bashisms"]}
+ nu-color-config = { path = "../nu-color-config", version = "0.63.1"  }
+ crossterm = "0.23.0"
+ miette = { version = "4.5.0", features = ["fancy"] }
+diff --git a/crates/nu-command/Cargo.toml b/crates/nu-command/Cargo.toml
+index 806772156..ac1283ab3 100644
+--- a/crates/nu-command/Cargo.toml
++++ b/crates/nu-command/Cargo.toml
+@@ -82,7 +82,7 @@ unicode-segmentation = "1.8.0"
+ url = "2.2.1"
+ uuid = { version = "0.8.2", features = ["v4"] }
+ which = { version = "4.2.2", optional = true }
+-reedline = { git = "https://github.com/nushell/reedline", branch = "main", features = ["bashisms"]}
++reedline = { version = "0.6.0", features = ["bashisms"]}
+ wax = { version =  "0.4.0", features = ["diagnostics"] }
+ rusqlite = { version = "0.27.0", features = ["bundled"], optional = true }
+ sqlparser = { version = "0.16.0", features = ["serde"], optional = true }
+-- 
+2.35.3
+

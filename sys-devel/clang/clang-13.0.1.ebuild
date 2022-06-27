@@ -15,7 +15,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x64-macos"
 IUSE="debug default-compiler-rt default-libcxx default-lld
 	doc llvm-libunwind +static-analyzer test xml"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -45,7 +45,7 @@ PDEPEND="
 	default-lld? ( sys-devel/lld )"
 
 LLVM_COMPONENTS=( clang clang-tools-extra )
-LLVM_MANPAGES=pregenerated
+LLVM_MANPAGES=1
 LLVM_TEST_COMPONENTS=(
 	llvm/lib/Testing/Support
 	llvm/utils/{lit,llvm-lit,unittest}
@@ -118,7 +118,7 @@ check_distribution_components() {
 
 				all_targets+=( "${l}" )
 			fi
-		done < <(ninja -t targets all)
+		done < <(${NINJA} -t targets all)
 
 		while read -r l; do
 			my_targets+=( "${l}" )

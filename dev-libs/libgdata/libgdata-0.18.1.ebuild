@@ -1,10 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-VALA_USE_DEPEND="vapigen"
 
-inherit gnome.org meson vala xdg
+inherit gnome.org gnome2-utils meson vala xdg
 
 DESCRIPTION="GLib-based library for accessing online service APIs using the GData protocol"
 HOMEPAGE="https://wiki.gnome.org/Projects/libgdata"
@@ -16,7 +15,7 @@ IUSE="+crypt gnome-online-accounts gtk-doc +introspection test vala"
 REQUIRED_USE="vala? ( introspection )"
 RESTRICT="!test? ( test )"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.44.0:2
@@ -41,8 +40,9 @@ BDEPEND="
 "
 
 src_prepare() {
+	default
 	use vala && vala_src_prepare
-	xdg_src_prepare
+	gnome2_environment_reset
 	# Don't waste time building a couple small demos that aren't installed
 	sed -i -e '/subdir.*demos/d' meson.build || die
 }

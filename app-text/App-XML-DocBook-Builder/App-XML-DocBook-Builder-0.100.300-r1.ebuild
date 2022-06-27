@@ -12,7 +12,7 @@ HOMEPAGE="https://www.shlomifish.org/open-source/projects/docmake/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~m68k ~mips ppc64 ~riscv ~sparc x86"
 
 RDEPEND="dev-perl/Class-XSAccessor
 	virtual/perl-Getopt-Long

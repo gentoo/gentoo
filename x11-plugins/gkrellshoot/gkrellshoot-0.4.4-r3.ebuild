@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/gkrellshoot/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~alpha amd64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ~ppc sparc x86"
 IUSE=""
 
 DEPEND="app-admin/gkrellm:2[X]"

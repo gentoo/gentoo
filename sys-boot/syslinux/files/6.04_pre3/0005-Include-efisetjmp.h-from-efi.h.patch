@@ -1,0 +1,24 @@
+From 9889f441d006d11d0fb0b726b9f81396ce6fcfbd Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Mon, 30 May 2022 14:22:28 -0400
+Subject: [PATCH 5/5] Include efisetjmp.h from efi.h
+
+---
+ efi/efi.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/efi/efi.h b/efi/efi.h
+index c266532f..250c511e 100644
+--- a/efi/efi.h
++++ b/efi/efi.h
+@@ -22,6 +22,7 @@
+ 
+ #include <efi.h>
+ #include <efilib.h>
++#include <efisetjmp.h>
+ #include <efistdarg.h>
+ 
+ /* Delay for 100 ms */
+-- 
+2.35.1
+

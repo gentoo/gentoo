@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/rcs/${P}.tar.lz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
 IUSE="doc"
 
 RDEPEND="sys-apps/diffutils
@@ -30,6 +30,14 @@ src_configure() {
 	append-flags -std=gnu99
 
 	econf
+}
+
+src_test() {
+	# Tests attempt to call rcs commands on /dev/null and /tmp.
+	# https://bugs.gentoo.org/840173
+	local -x SANDBOX_PREDICT=${SANDBOX_PREDICT}
+	addpredict /
+	default
 }
 
 src_install() {

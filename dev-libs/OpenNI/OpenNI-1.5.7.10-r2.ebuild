@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ inherit ${SCM} toolchain-funcs multilib java-pkg-opt-2
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 else
-	KEYWORDS="~amd64 ~arm"
+	KEYWORDS="amd64 ~arm"
 	SRC_URI="https://github.com/OpenNI/OpenNI/archive/Stable-${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-Stable-${PV}"
 fi

@@ -9,4 +9,7 @@
 <use>
   <flag name="html">Install PMS as .html as well</flag>
 </use>
+<upstream>
+  <remote-id type="gentoo">proj/pms</remote-id>
+</upstream>
 </pkgmetadata>

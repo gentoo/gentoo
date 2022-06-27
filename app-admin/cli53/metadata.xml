@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>whissi@gentoo.org</email>
-		<name>Thomas Deutschmann</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<upstream>
 		<bugs-to>https://github.com/barnybug/cli53/issues</bugs-to>
 		<remote-id type="github">barnybug/cli53</remote-id>

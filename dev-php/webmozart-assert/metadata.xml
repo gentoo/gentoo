@@ -6,6 +6,6 @@
 		<name>PHP</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">webmozart/</remote-id>
+		<remote-id type="github">webmozart/assert</remote-id>
 	</upstream>
 </pkgmetadata>

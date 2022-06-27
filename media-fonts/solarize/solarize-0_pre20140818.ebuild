@@ -1,4 +1,4 @@
-# Copyright 2018-2021 Gentoo Authors
+# Copyright 2018-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ if [ ${PV} == "9999" ] ; then
 else
 	EGIT_COMMIT="8a856fdb22bc633fdba490b339ea97ef16b700ac"
 	SRC_URI="https://github.com/talamus/${MY_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${MY_PN}-${EGIT_COMMIT}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 	S="${WORKDIR}/${MY_PN}-${EGIT_COMMIT}"
 fi
 

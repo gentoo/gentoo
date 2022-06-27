@@ -6,7 +6,7 @@ EAPI=8
 inherit java-virtuals-2
 
 DESCRIPTION="Virtual for servlet api"
-HOMEPAGE="http://java.sun.com/products/servlet/"
+HOMEPAGE="https://jcp.org/en/jsr/detail?id=340"
 SRC_URI=""
 
 LICENSE="public-domain"

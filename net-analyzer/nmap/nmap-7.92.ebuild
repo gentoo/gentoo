@@ -116,8 +116,8 @@ src_compile() {
 	done
 
 	emake \
-		AR=$(tc-getAR) \
-		RANLIB=$(tc-getRANLIB)
+		AR="$(tc-getAR)" \
+		RANLIB="$(tc-getRANLIB)"
 }
 
 src_install() {

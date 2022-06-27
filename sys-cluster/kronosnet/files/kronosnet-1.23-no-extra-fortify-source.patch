@@ -1,0 +1,18 @@
+We already set this via GCC (patched in) and setting it individually per-package
+like this causes redefinition errors if folks try to use the new =3 level.
+
+So, protection is the same without this, and this patch removes
+the trouble of upgrading to =3 which we're working on.
+
+https://bugs.gentoo.org/847790
+--- a/configure.ac
++++ b/configure.ac
+@@ -324,7 +324,7 @@ if test "x${enable_debug}" = xyes; then
+ 	FORTIFY_CFLAGS=""
+ else
+ 	OPT_CFLAGS="-O3"
+-	FORTIFY_CFLAGS="-D_FORTIFY_SOURCE=2"
++	FORTIFY_CFLAGS=""
+ fi
+ 
+ # Check for availablility of hardening options

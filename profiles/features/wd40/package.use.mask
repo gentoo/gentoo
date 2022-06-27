@@ -1,0 +1,48 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-05-13)
+# dev-lang/rust is not available on ${arch} yet.
+media-gfx/imv svg
+media-libs/libavif rav1e
+
+# Sam James <sam@gentoo.org> (2022-04-22)
+# Needs Rustified librsvg
+>=media-libs/freetype-2.12.0 svg
+media-libs/imlib2 svg
+
+# Michał Górny <mgorny@gentoo.org> (2021-11-26)
+# These package flags require dev-python/cryptography which -- due
+# to the dependency on Rust -- is no longer portable to ${arch}.
+dev-python/twisted conch crypt
+dev-python/urllib3 test
+net-fs/samba addc addns ads
+
+# Matt Turner <mattst88@gentoo.org> (2021-07-25)
+# gdm requires gnome-shell requires rustified librsvg.
+x11-misc/xscreensaver gdm
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-01-23)
+# Depends on media-video/rav1e which needs Rust
+>=media-libs/libheif-1.10.0 rav1e
+
+# Cédric Krier <cedk@gentoo.org> (2020-11-10)
+# virtual/rust has no ${arch} keyword
+dev-vcs/mercurial rust
+
+# Joonas Niilola <juippis@gentoo.org> (2020-10-02)
+# Sam James <sam@gentoo.org> (2021-03-11)
+# Dependency only keyworded on specific ${arch} profiles.
+dev-libs/efl avif
+kde-frameworks/kimageformats avif
+media-libs/gd avif
+net-libs/webkit-gtk avif
+
+# Mart Raudsepp <leio@gentoo.org> (2020-08-02)
+# ${arch} has no virtual/rust support, needed by newer gnome-base/librsvg, et al
+>=media-gfx/eog-3.33.1 svg
+
+# Thomas Deutschmann <whissi@gentoo.org> (2018-10-12)
+# Requires www-client/firefox which isn't available on ${arch} yet
+# due to dev-lang/rust requirement
+dev-ruby/capybara test

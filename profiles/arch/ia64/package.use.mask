@@ -1,29 +1,52 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <mattst88@gentoo.org> (2022-06-25)
+# net-libs/libqrtr-glib not keyworded
+net-misc/modemmanager qrtr
+
+# Sergey Torokhov <torokhov-s-a@yandex.ru> (2022-06-22)
+# media-libs/libjxl is not keyworded
+# bug https://bugs.gentoo.org/853628
+media-gfx/gimp jpegxl
+
+# Nickolas Raymond Kaczynski <nrk@disroot.org> (2022-04-24)
+# Dependencies are missing keywords
+media-libs/imlib2 svg heif jpegxl
+media-gfx/graphicsmagick jpegxl
+
+# Matt Turner <mattst88@gentoo.org> (2022-04-18)
+# app-text/nuspell is not keyworded
+app-text/enchant nuspell
+
+# Matt Turner <mattst88@gentoo.org> (2022-04-16)
+# net-misc/freerdp is not keyworded
+dev-libs/weston rdp
+
+# Matt Turner <mattst88@gentoo.org> (2022-04-16)
+# sys-auth/seatd is not keyworded
+dev-libs/weston seatd
+
+# Lars Wendler <polynomial-c@gentoo.org> (2022-04-01)
+# gnome-base/librsvg missing keywords
+media-libs/freetype svg
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# Untested useflag on other arches, needs keywording
+media-video/ffmpeg vmaf
+
+# Sam James <sam@gentoo.org> (2022-03-06)
+# Unkeyworded dependencies
+net-mail/cyrus-imapd http
+
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-01-11)
 # Mask AMF keyword on non-amd64 arches
 # It is unusable, for now, in other arches
 media-video/ffmpeg amf
 
-# Sam James <sam@gentoo.org> (2022-02-10)
-# app-crypt/tpm2-tss is not keyworded here
-app-crypt/gnupg tpm
-
 # Sam James <sam@gentoo.org> (2022-01-29)
 # app-text/ronn-ng not keyworded here, bug #801103
 app-accessibility/espeak-ng man
-
-# Vadim Misbakh-Soloviov <mva@gentoo.org> (2021-12-09)
-# ts-cli requires rust to be built, and rust is unavailable here ATM.
-dev-libs/tree-sitter ts-cli
-
-# Michał Górny <mgorny@gentoo.org> (2021-11-26)
-# These package flags require dev-python/cryptography which -- due
-# to the dependency on Rust -- is no longer portable to ia64.
-dev-python/twisted conch crypt
-dev-python/urllib3 test
-net-fs/samba addc addns ads
 
 # Sam James <sam@gentoo.org> (2021-11-05)
 # Avoid keywording unnecessary depenencies for now, bug #804115
@@ -47,6 +70,7 @@ media-libs/libsdl2 pipewire
 # Sam James <sam@gentoo.org> (2021-10-17)
 # media-libs/libheif not keyworded here
 sci-libs/gdal heif
+media-gfx/graphicsmagick heif
 
 # Sam James <sam@gentoo.org> (2021-09-14)
 # JACK2 isn't keyworded here
@@ -85,6 +109,7 @@ media-libs/rubberband jni
 # media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
 media-libs/gd avif heif
+media-gfx/graphicsmagick heif
 
 # Akinori Hattori <hattya@gentoo.org> (2021-03-03)
 # dev-lang/ruby is not keyworded
@@ -100,10 +125,6 @@ app-crypt/pinentry efl
 # Dependency not keyworded on this arch.
 app-text/enchant voikko
 
-# Cédric Krier <cedk@gentoo.org> (2020-11-10)
-# virtual/rust has no ia64 keyword
-dev-vcs/mercurial rust
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
 # app-i18n/fcitx:4 not keyworded.
 media-libs/libsdl2 fcitx4
@@ -115,10 +136,6 @@ net-analyzer/wireshark ilbc
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan
 media-libs/mesa vulkan vulkan-overlay zink
-
-# Mart Raudsepp <leio@gentoo.org> (2020-08-02)
-# ia64 has no virtual/rust support, needed by newer gnome-base/librsvg, et al
->=media-gfx/eog-3.33.1 svg
 
 # Michał Górny <mgorny@gentoo.org> (2020-06-14)
 # Requires dev-python/networkx.
@@ -141,10 +158,6 @@ dev-python/pyopengl test
 # dev-lang/ruby is not keyworded (a dep)
 app-text/texlive context l10n_ja
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-13)
-# Requires unsupported dev-python/gevent.
-dev-python/socketpool eventlet gevent
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-12)
 # ruby-2.7 dropped ia64 support, mask dependencies requiring ruby.
 # These pull in:
@@ -162,7 +175,6 @@ gnome-extra/evolution-data-server oauth
 # - gnome-extra/sushi: depends on webkit-gtk
 gnome-base/nautilus previewer
 # - net-libs/gnome-online-accounts: depends on webkit-gtk
-gnome-base/gnome-control-center flickr
 gnome-base/gvfs google
 # app-text/libgepub depends on webkit-gtk.
 xfce-extra/tumbler epub
@@ -367,10 +379,12 @@ net-misc/networkmanager wext
 # Pacho Ramos <pacho@gentoo.org> (2015-09-06)
 # Missing keywords
 media-sound/pulseaudio ofono-headset
+media-sound/pulseaudio-daemon ofono-headset
 
 # Mike Gilbert <floppym@gentoo.org> (2015-09-05)
 # sys-boot/gnu-efi is not supported on all archs.
 sys-apps/systemd -gnuefi
+sys-apps/systemd-utils -boot
 
 # Pacho Ramos <pacho@gentoo.org> (2015-06-13)
 # Missing keywords, bug #513108
@@ -399,10 +413,6 @@ net-misc/modemmanager mbim
 # Mike Frysinger <vapier@gentoo.org> (2014-03-15)
 # Various deps not ported to ia64.
 dev-python/ipython nbconvert notebook
-
-# Pacho Ramos <pacho@gentoo.org> (2014-03-15)
-# Missing keywords, bug #504672
->=net-misc/vinagre-3.10 rdp
 
 # Pacho Ramos <pacho@gentoo.org> (2014-02-23)
 # Needed dependencies cannot be installed on ia64, bug #498638
@@ -496,7 +506,7 @@ x11-wm/fvwm lock
 dev-lisp/clisp hyperspec svm
 
 # missing keywords
-media-plugins/gst-plugins-meta dts dv lame libvisual modplug mms taglib vcd wavpack
+media-plugins/gst-plugins-meta dts dv lame libvisual modplug taglib vcd wavpack
 
 # Marius Brehler <marfbre@linux.sungazer.de> (2015-08-13)
 # missing keyword

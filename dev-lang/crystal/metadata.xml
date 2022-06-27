@@ -18,17 +18,6 @@
 		<flag name="debug">
 			Build each module as a separate object file. Speeds build up.
 		</flag>
-		<flag name="blocking-stdio-hack">
-			Keep STDIO file descriptors in blocking mode.
-		</flag>
-		<flag name="yaml">
-			Use the <pkg>dev-libs/libyaml</pkg> library to enable Crystal yaml
-			module
-		</flag>
-		<flag name="xml">
-			Use the <pkg>dev-libs/libxml2</pkg> library to enable Crystal xml
-			module
-		</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">crystal-lang/crystal</remote-id>

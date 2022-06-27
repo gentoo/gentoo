@@ -1,0 +1,26 @@
+From 506a2cb13ce90439331b8e4e710524a040c7d0c6 Mon Sep 17 00:00:00 2001
+From: Thomas Bracht Laumann Jespersen <t@laumann.xyz>
+Date: Wed, 2 Mar 2022 12:19:35 +0100
+Subject: [PATCH] Make fdrawcmd depend on libfdutils.a
+
+This allows parallel compilation to complete successfully.
+---
+ src/Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile.in b/src/Makefile.in
+index b094501..5959ddf 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -96,7 +96,7 @@ superformat: superformat.o libfdutils.a
+ floppymeter: floppymeter.o libfdutils.a
+ 	${CC} ${LDFLAGS} -o $@ $< $(LIBS)
+ 
+-fdrawcmd: fdrawcmd.o
++fdrawcmd: fdrawcmd.o libfdutils.a
+ 	${CC} $(LDFLAGS) -o $@ $< $(LIBS)
+ 
+ getfdprm: getfdprm.o libfdutils.a
+-- 
+2.34.1
+

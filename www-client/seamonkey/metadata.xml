@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person">
+		<email>gentoo-bugs@habets-dobben.nl</email>
+		<name>Myckel Habets</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>mozilla@gentoo.org</email>
 		<name>Gentoo Mozilla Team</name>
@@ -21,5 +25,6 @@
 		<flag name="system-libvpx">Use the system-wide <pkg>media-libs/libvpx</pkg> instead of bundled</flag>
 		<flag name="system-png">Use the system-wide <pkg>media-libs/libpng</pkg> instead of bundled (requires APNG patches)</flag>
 		<flag name="system-sqlite">Use the system-wide <pkg>dev-db/sqlite</pkg> installation with secure-delete enabled</flag>
+		<flag name="webrtc">Enable WebRTC support. Disabled by default due to privacy concerns.</flag>
 	</use>
 </pkgmetadata>

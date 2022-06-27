@@ -6,9 +6,9 @@ EAPI=7
 # ninja does not work due to fortran
 CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 
-inherit cmake cuda elisp-common fortran-2 prefix python-single-r1 toolchain-funcs
+inherit cmake cuda elisp-common fortran-2 python-single-r1 toolchain-funcs
 
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
@@ -163,12 +163,12 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_C_COMPILER=$(tc-getCC)
-		-DCMAKE_CXX_COMPILER=$(tc-getCXX)
-		-DCMAKE_CUDA_HOST_COMPILER=$(tc-getCXX)
+		-DCMAKE_C_COMPILER="$(tc-getCC)"
+		-DCMAKE_CXX_COMPILER="$(tc-getCXX)"
+		-DCMAKE_CUDA_HOST_COMPILER="$(tc-getCXX)"
 		-DCMAKE_C_FLAGS="${CFLAGS}"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
-		-DCMAKE_CXX_STANDARD=$((usev c++11 || usev c++14 || usev c++17) | cut -c4-)
+		-DCMAKE_CXX_STANDARD=$( (usev c++11 || usev c++14 || usev c++17) | cut -c4-)
 		-DPYTHON_EXECUTABLE="${EPREFIX}/usr/bin/${EPYTHON}"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)"
 		-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)/share/man"
@@ -188,6 +188,7 @@ src_configure() {
 		-Dbuiltin_openui5=ON
 		-Dbuiltin_afterimage=OFF
 		-Dbuiltin_cfitsio=OFF
+		-Dbuiltin_cppzmq=OFF
 		-Dbuiltin_davix=OFF
 		-Dbuiltin_fftw3=OFF
 		-Dbuiltin_freetype=OFF
@@ -207,6 +208,7 @@ src_configure() {
 		-Dbuiltin_veccore=OFF
 		-Dbuiltin_xrootd=OFF
 		-Dbuiltin_xxhash=OFF
+		-Dbuiltin_zeromq=OFF
 		-Dbuiltin_zlib=OFF
 		-Dbuiltin_zstd=OFF
 		-Dalien=OFF
@@ -254,8 +256,10 @@ src_configure() {
 		#-Dpyroot_experimental=OFF # set to ON to use new PyROOT (6.20 and earlier)
 		-Dpythia8=$(usex pythia8)
 		-Dqt5web=$(usex qt5)
+		-Dqt6web=OFF
 		-Dr=$(usex R)
 		-Droofit=$(usex roofit)
+		-Droofit_multiprocess=OFF
 		-Droot7=$(usex root7)
 		-Drootbench=OFF
 		-Droottest=OFF
@@ -266,6 +270,7 @@ src_configure() {
 		-Dsqlite=$(usex sqlite)
 		-Dssl=$(usex ssl)
 		-Dtcmalloc=OFF
+		-Dtest_distrdf_dask=OFF
 		-Dtest_distrdf_pyspark=OFF
 		-Dtesting=$(usex test)
 		-Dtmva=$(usex tmva)
@@ -273,6 +278,7 @@ src_configure() {
 		-Dtmva-gpu=$(usex cuda)
 		-Dtmva-pymva=$(usex tmva)
 		-Dtmva-rmva=$(usex R)
+		-Dtmva-sofie=OFF
 		-Dunuran=$(usex unuran)
 		-During=$(usex uring)
 		-Dvc=$(usex vc)

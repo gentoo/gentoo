@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
 CMAKE_ECLASS=cmake
 inherit cmake-multilib git-r3
@@ -27,6 +27,7 @@ src_prepare() {
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DDISABLE_WERROR=ON
+		-DDISABLE_EXTRA_LIBS=ON
 		-DENABLE_THREADING=$(usex threads)
 		-DENABLE_RDRAND=$(usex cpu_flags_x86_rdrand)
 		-DBUILD_STATIC_LIBS=$(usex static-libs)

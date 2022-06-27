@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ S="${WORKDIR}/${MY_P}/sources/shiboken2"
 # arbitrarily relicensed. (TODO)
 LICENSE="|| ( GPL-2 GPL-3+ LGPL-3 ) GPL-3"
 SLOT="0"
-KEYWORDS="amd64 arm64 x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 IUSE="+docstrings numpy test vulkan"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -60,7 +60,11 @@ DEPEND="${RDEPEND}
 "
 
 DOCS=( AUTHORS )
-PATCHES=( "${FILESDIR}/${P}-python310.patch" )
+
+PATCHES=(
+	"${FILESDIR}/${P}-python310.patch"
+	"${FILESDIR}/${P}-numpy-1.23.patch"
+)
 
 # Ensure the path returned by get_llvm_prefix() contains clang as well.
 llvm_check_deps() {
@@ -77,7 +81,7 @@ src_prepare() {
 	# Shiboken2 assumes Vulkan headers live under either "$VULKAN_SDK/include"
 	# or "$VK_SDK_PATH/include" rather than "${EPREFIX}/usr/include/vulkan".
 	if use vulkan; then
-		sed -i -e 's~\bdetectVulkan(&headerPaths);~headerPaths.append(HeaderPath{QByteArrayLiteral("'${EPREFIX}'/usr/include/vulkan"), HeaderType::System});~' \
+		sed -i -e "s~\bdetectVulkan(&headerPaths);~headerPaths.append(HeaderPath{QByteArrayLiteral(\"${EPREFIX}/usr/include/vulkan\"), HeaderType::System});~" \
 			ApiExtractor/clangparser/compilersupport.cpp || die
 	fi
 
@@ -96,7 +100,7 @@ src_prepare() {
 	# PySide2 does *NOT* care whether the end user has done so or not, as
 	# PySide2 unconditionally requires Clang in either case. See also:
 	#     https://bugs.gentoo.org/619490
-	sed -i -e 's~(findClangBuiltInIncludesDir())~(QStringLiteral("'${EPREFIX}'/usr/lib/clang/'$(CPP=clang clang-fullversion)'/include"))~' \
+	sed -i -e 's~(findClangBuiltInIncludesDir())~(QStringLiteral("'"${EPREFIX}"'/usr/lib/clang/'$(CPP=clang clang-fullversion)'/include"))~' \
 		ApiExtractor/clangparser/compilersupport.cpp || die
 
 	cmake_src_prepare

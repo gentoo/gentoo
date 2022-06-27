@@ -8,12 +8,15 @@ non262/Intl/Date/toLocaleDateString_timeZone.js
 non262/Intl/Date/toLocaleString_timeZone.js
 non262/Intl/Date/toLocaleTimeString_timeZone.js
 non262/Intl/DateTimeFormat/day-period-hour-cycle.js
+non262/Intl/DateTimeFormat/extended-time-zone-names.js
 non262/Intl/DateTimeFormat/format.js
 non262/Intl/DateTimeFormat/format_timeZone.js
 non262/Intl/DateTimeFormat/fractional-second-digits-append-item.js
+non262/Intl/DateTimeFormat/implied-script-has-consistent-output.js
 non262/Intl/DateTimeFormat/japanese-gannen-year.js
 non262/Intl/DateTimeFormat/related-year.js
 non262/Intl/DateTimeFormat/timeZone_backward_links.js
+non262/Intl/DateTimeFormat/timeZone_version.js
 non262/Intl/DateTimeFormat/tz-environment-variable.js
 non262/Intl/DisplayNames/language.js
 non262/Intl/DisplayNames/region.js

@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{9..10} )
 
 inherit autotools systemd python-r1
 
@@ -13,7 +13,7 @@ SRC_URI="http://varnish-cache.org/_downloads/${P}.tgz"
 
 LICENSE="BSD-2 GPL-2"
 SLOT="0/2"
-KEYWORDS="~amd64 ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="jemalloc jit static-libs"
 
 CDEPEND="

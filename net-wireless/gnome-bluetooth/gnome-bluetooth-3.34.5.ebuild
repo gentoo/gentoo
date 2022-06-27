@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit gnome.org gnome2-utils meson python-any-r1 udev xdg
 
 DESCRIPTION="Bluetooth graphical utilities integrated with GNOME"
@@ -71,9 +71,14 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
 	xdg_pkg_postinst
 	if ! has_version 'sys-apps/systemd[acl]' ; then
 		elog "Don't forget to add yourself to the plugdev group "
 		elog "if you want to be able to control bluetooth transmitter."
 	fi
+}
+
+pkg_postrm() {
+	udev_reload
 }

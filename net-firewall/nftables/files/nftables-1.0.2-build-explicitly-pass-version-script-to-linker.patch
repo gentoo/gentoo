@@ -1,0 +1,27 @@
+https://git.netfilter.org/nftables/commit/src?id=1d507ce7f1d3c12481ee24bd1dcac2fc1984ee9f
+
+From: Sam James <sam@gentoo.org>
+Date: Thu, 24 Feb 2022 19:45:43 +0000
+Subject: build: explicitly pass --version-script to linker
+
+--version-script is a linker option, so let's use -Wl, so that
+libtool handles it properly. It seems like the previous method gets silently
+ignored with GNU libtool in some cases(?) and downstream in Gentoo,
+we had to apply this change to make the build work with slibtool anyway.
+
+But it's indeed correct in any case, so let's swap.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+Signed-off-by: Pablo Neira Ayuso <pablo@netfilter.org>
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -91,7 +91,7 @@ libparser_la_CFLAGS = ${AM_CFLAGS} \
+ 
+ libnftables_la_LIBADD = ${LIBMNL_LIBS} ${LIBNFTNL_LIBS} libparser.la
+ libnftables_la_LDFLAGS = -version-info ${libnftables_LIBVERSION} \
+-			 --version-script=$(srcdir)/libnftables.map
++			 -Wl,--version-script=$(srcdir)/libnftables.map
+ 
+ if BUILD_MINIGMP
+ noinst_LTLIBRARIES += libminigmp.la
+cgit v1.2.3

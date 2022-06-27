@@ -1,0 +1,126 @@
+#!/bin/sh
+
+. /usr/share/grub/grub-mkconfig_lib
+
+mtbios32=/boot/memtest86plus/memtest32.bios
+mtbios64=/boot/memtest86plus/memtest64.bios
+mtefi32=/boot/memtest86plus/memtest.efi32
+mtefi64=/boot/memtest86plus/memtest.efi64
+
+if [ $(ls /boot/memtest86plus | wc -l) -gt 1 ]; then
+	multiple_memtest=true
+fi
+
+submenu_indentation=""
+if [ "${multiple_memtest}" = "true" ] && [ "${GRUB_DISABLE_SUBMENU}" != "y" ]; then
+	submenu_indentation="${grub_tab}"
+	cat <<EOF
+submenu 'Memtest86+' {
+EOF
+fi
+
+# Start bios32
+if [ -f "${mtbios32}" ]; then
+	gettext_printf "Found memtest image: %s\n" "${mtbios32}" >&2
+
+	device="$("${grub_probe}" --target=device "${mtbios32}")"
+	path="$(make_system_path_relative_to_its_root "${mtbios32}")"
+	cat <<EOF
+${submenu_indentation}if [ "x\$grub_platform" = xpc ]; then
+${submenu_indentation}menuentry 'Memtest86+ 32bit' {
+EOF
+
+	if [ -n "{submenu_indentation}" ]; then
+		prepare_grub_to_access_device "${device}" | grub_add_tab | grub_add_tab
+	else
+		prepare_grub_to_access_device "${device}" | grub_add_tab
+	fi
+
+	cat <<EOF
+	${submenu_indentation}linux "${path}"
+${submenu_indentation}}
+${submenu_indentation}fi
+EOF
+fi
+# End bios32
+
+# Start bios64
+if [ -f "${mtbios64}" ]; then
+        gettext_printf "Found memtest image: %s\n" "${mtbios64}" >&2
+
+        device="$("${grub_probe}" --target=device "${mtbios64}")"
+        path="$(make_system_path_relative_to_its_root "${mtbios64}")"
+        cat <<EOF
+${submenu_indentation}if [ "x\$grub_platform" = xpc ]; then
+${submenu_indentation}menuentry 'Memtest86+ 64bit' {
+EOF
+
+        if [ -n "{submenu_indentation}" ]; then
+                prepare_grub_to_access_device "${device}" | grub_add_tab | grub_add_tab
+        else
+                prepare_grub_to_access_device "${device}" | grub_add_tab
+        fi
+
+        cat <<EOF
+        ${submenu_indentation}linux "${path}"
+${submenu_indentation}}
+${submenu_indentation}fi
+EOF
+fi
+# End bios64
+
+# Start efi32
+if [ -f "${mtefi32}" ]; then
+        gettext_printf "Found memtest image: %s\n" "${mtefi32}" >&2
+
+        device="$("${grub_probe}" --target=device "${mtefi32}")"
+        path="$(make_system_path_relative_to_its_root "${mtefi32}")"
+        cat <<EOF
+${submenu_indentation}if [ "x\$grub_platform" = xefi ]; then
+${submenu_indentation}menuentry 'Memtest86+ 32bit UEFI' {
+EOF
+
+        if [ -n "{submenu_indentation}" ]; then
+                prepare_grub_to_access_device "${device}" | grub_add_tab | grub_add_tab
+        else
+                prepare_grub_to_access_device "${device}" | grub_add_tab
+        fi
+
+        cat <<EOF
+        ${submenu_indentation}chainloader "${path}"
+${submenu_indentation}}
+${submenu_indentation}fi
+EOF
+fi
+# End efi32
+
+# Start efi64
+if [ -f "${mtefi64}" ]; then
+        gettext_printf "Found memtest image: %s\n" "${mtefi64}" >&2
+
+        device="$("${grub_probe}" --target=device "${mtefi64}")"
+        path="$(make_system_path_relative_to_its_root "${mtefi64}")"
+        cat <<EOF
+${submenu_indentation}if [ "x\$grub_platform" = xefi ]; then
+${submenu_indentation}menuentry 'Memtest86+ 64bit UEFI' {
+EOF
+
+        if [ -n "{submenu_indentation}" ]; then
+                prepare_grub_to_access_device "${device}" | grub_add_tab | grub_add_tab
+        else
+                prepare_grub_to_access_device "${device}" | grub_add_tab
+        fi
+
+        cat <<EOF
+        ${submenu_indentation}chainloader "${path}"
+${submenu_indentation}}
+${submenu_indentation}fi
+EOF
+fi
+#End efi64
+
+if [ "${multiple_memtest}" = "true" ] && [ "${GRUB_DISABLE_SUBMENU}" != "y" ]; then
+	cat <<EOF
+}
+EOF
+fi

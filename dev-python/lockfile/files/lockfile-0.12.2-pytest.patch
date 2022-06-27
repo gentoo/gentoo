@@ -1,0 +1,20 @@
+diff -dup -r lockfile-0.12.2/test/compliancetest.py lockfile-0.12.2.new/test/compliancetest.py
+--- lockfile-0.12.2/test/compliancetest.py	2015-11-25 19:29:13.000000000 +0100
++++ lockfile-0.12.2.new/test/compliancetest.py	2022-05-27 07:55:43.720523461 +0200
+@@ -6,15 +6,13 @@ import lockfile
+ 
+ 
+ class ComplianceTest(object):
+-    def __init__(self):
+-        self.saved_class = lockfile.LockFile
+-
+     def _testfile(self):
+         """Return platform-appropriate file.  Helper for tests."""
+         import tempfile
+         return os.path.join(tempfile.gettempdir(), 'trash-%s' % os.getpid())
+ 
+     def setup(self):
++        self.saved_class = lockfile.LockFile
+         lockfile.LockFile = self.class_to_test
+ 
+     def teardown(self):

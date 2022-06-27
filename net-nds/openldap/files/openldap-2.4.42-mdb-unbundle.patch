@@ -1,5 +1,5 @@
---- ./build/top.mk.orig	2014-10-24 14:34:59.260827298 +0200
-+++ ./build/top.mk	2014-10-24 14:35:25.281168893 +0200
+--- a/build/top.mk
++++ b/build/top.mk
 @@ -160,6 +160,7 @@
  LTHREAD_LIBS = @LTHREAD_LIBS@
  
@@ -8,8 +8,8 @@
  SLAPD_NDB_LIBS = @SLAPD_NDB_LIBS@
  
  LDAP_LIBLBER_LA = $(LDAP_LIBDIR)/liblber/liblber.la
---- ./build/openldap.m4.orig	2014-10-24 10:52:02.837221734 +0200
-+++ ./build/openldap.m4	2014-10-24 11:31:02.748087966 +0200
+--- ./build/openldap.m4.orig
++++ ./build/openldap.m4
 @@ -563,6 +563,38 @@
  	], [ol_cv_bdb_compat=yes], [ol_cv_bdb_compat=no])])
  ])
@@ -49,8 +49,8 @@
  dnl
  dnl ====================================================================
  dnl Check POSIX Thread version 
---- ./servers/slapd/back-mdb/Makefile.in.orig	2014-10-24 10:31:30.860931076 +0200
-+++ ./servers/slapd/back-mdb/Makefile.in	2014-10-24 14:33:33.803705424 +0200
+--- a/servers/slapd/back-mdb/Makefile.in
++++ b/servers/slapd/back-mdb/Makefile.in
 @@ -25,11 +25,10 @@
  	extended.lo operational.lo \
  	attr.lo index.lo key.lo filterindex.lo \
@@ -85,8 +85,8 @@
 -
  veryclean-local-lib: FORCE
  	$(RM) $(XXHEADERS) $(XXSRCS) .links
---- ./configure.in.orig	2014-10-24 10:46:53.289139847 +0200
-+++ ./configure.in	2014-10-24 10:51:34.372846374 +0200
+--- a/configure.in
++++ b/configure.in
 @@ -519,6 +519,7 @@
  dnl Initialize vars
  LDAP_LIBS=

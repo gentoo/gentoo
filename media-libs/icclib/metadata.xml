@@ -5,7 +5,4 @@
 		<email>printing@gentoo.org</email>
 		<name>Gentoo Printing Project</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="freecode">icclib</remote-id>
-	</upstream>
 </pkgmetadata>

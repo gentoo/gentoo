@@ -19,6 +19,6 @@
   </maintainer>
 
   <upstream>
-    <remote-id type="gitlab">https://gitlab.com/sagemath/symmetrica</remote-id>
+    <remote-id type="gitlab">sagemath/symmetrica</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,0 +1,11 @@
+--- a/dune	2022-03-21 21:07:36.326440959 +0100
++++ b/dune	2022-03-21 21:07:46.650295407 +0100
+@@ -45,7 +45,7 @@
+    %{workspace_root}
+    (with-stdout-to
+     %{target}
+-    (system "%{bin:gcc} -x c -E _curses.ml")))))
++    (system "%{cc} -x c -E _curses.ml")))))
+ 
+ (rule
+  (targets c_flags.sexp c_library_flags.sexp config.ml _config.h)

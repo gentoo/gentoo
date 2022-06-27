@@ -1,4 +1,4 @@
-# Copyright 2011-2020 Gentoo Authors
+# Copyright 2011-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask armv7 specific USE flags
@@ -17,10 +17,6 @@
 -cpu_flags_arm_vfpv3
 -cpu_flags_arm_vfpv4
 -cpu_flags_arm_vfp-d32
-
-# Sam James <sam@gentoo.org> (2020-11-10)
-# Rust is available here
--rust
 
 # Sam James <sam@gentoo.org> (2020-06-24)
 # Valgrind works on ARMv7

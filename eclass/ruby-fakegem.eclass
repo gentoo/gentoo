@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-fakegem.eclass
@@ -8,7 +8,7 @@
 # Author: Diego E. Pettenò <flameeyes@gentoo.org>
 # Author: Alex Legler <a3li@gentoo.org>
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7 8
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @PROVIDES: ruby-ng
 # @BLURB: An eclass for installing Ruby packages to behave like RubyGems.
 # @DESCRIPTION:
@@ -17,26 +17,26 @@
 
 inherit ruby-ng
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_NAME
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_NAME
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Sets the Gem name for the generated fake gemspec.
 # This variable MUST be set before inheriting the eclass.
 RUBY_FAKEGEM_NAME="${RUBY_FAKEGEM_NAME:-${PN}}"
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_VERSION
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_VERSION
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Sets the Gem version for the generated fake gemspec.
 # This variable MUST be set before inheriting the eclass.
 RUBY_FAKEGEM_VERSION="${RUBY_FAKEGEM_VERSION:-${PV/_pre/.pre}}"
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_TASK_DOC
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_TASK_DOC
 # @DESCRIPTION:
 # Specify the rake(1) task to run to generate documentation.
 RUBY_FAKEGEM_TASK_DOC="${RUBY_FAKEGEM_TASK_DOC-rdoc}"
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_RECIPE_TEST
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_RECIPE_TEST
 # @DESCRIPTION:
 # Specify one of the default testing function for ruby-fakegem:
 #  - rake (default; see also RUBY_FAKEGEM_TASK_TEST)
@@ -47,13 +47,13 @@ RUBY_FAKEGEM_TASK_DOC="${RUBY_FAKEGEM_TASK_DOC-rdoc}"
 #  - none
 RUBY_FAKEGEM_RECIPE_TEST="${RUBY_FAKEGEM_RECIPE_TEST-rake}"
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_TASK_TEST
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_TASK_TEST
 # @DESCRIPTION:
 # Specify the rake(1) task used for executing tests. Only valid
 # if RUBY_FAKEGEM_RECIPE_TEST is set to "rake" (the default).
 RUBY_FAKEGEM_TASK_TEST="${RUBY_FAKEGEM_TASK_TEST-test}"
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_RECIPE_DOC
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_RECIPE_DOC
 # @DESCRIPTION:
 # Specify one of the default API doc building function for ruby-fakegem:
 #  - rake (default; see also RUBY_FAKEGEM_TASK_DOC)
@@ -69,7 +69,7 @@ case ${EAPI} in
 		;;
 esac
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_DOCDIR
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_DOCDIR
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Specify the directory under which the documentation is built;
@@ -77,60 +77,60 @@ esac
 # Note: if RUBY_FAKEGEM_RECIPE_DOC is set to `rdoc`, this variable is
 # hardwired to `doc`.
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_EXTRADOC
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_EXTRADOC
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Extra documentation to install (readme, changelogs, …).
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_DOC_SOURCES
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_DOC_SOURCES
 # @DESCRIPTION:
 # Allow settings defined sources to scan for documentation.
 # This only applies if RUBY_FAKEGEM_DOC_TASK is set to `rdoc`.
 RUBY_FAKEGEM_DOC_SOURCES="${RUBY_FAKEGEM_DOC_SOURCES-lib}"
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_BINWRAP
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_BINWRAP
 # @DESCRIPTION:
 # Binaries to wrap around (relative to the RUBY_FAKEGEM_BINDIR directory)
 RUBY_FAKEGEM_BINWRAP="${RUBY_FAKEGEM_BINWRAP-*}"
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_BINDIR
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_BINDIR
 # @DESCRIPTION:
 # Path that contains binaries to be binwrapped. Equivalent to the
 # gemspec bindir option.
 RUBY_FAKEGEM_BINDIR="${RUBY_FAKEGEM_BINDIR-bin}"
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_REQUIRE_PATHS
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_REQUIRE_PATHS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Extra require paths (beside lib) to add to the specification
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_GEMSPEC
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_GEMSPEC
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Filename of .gemspec file to install instead of generating a generic one.
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_EXTRAINSTALL
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_EXTRAINSTALL
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # List of files and directories relative to the top directory that also
 # get installed. Some gems provide extra files such as version information,
 # Rails generators, or data that needs to be installed as well.
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_EXTENSIONS
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_EXTENSIONS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # List of extensions supported by this gem. Each extension is listed as
 # the configuration script that needs to be run to generate the
 # extension.
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_EXTENSION_OPTIONS
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_EXTENSION_OPTIONS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Additional options that are passed when configuring the
 # extension. Some extensions use this to locate paths or turn specific
 # parts of the extionsion on or off.
 
-# @ECLASS-VARIABLE: RUBY_FAKEGEM_EXTENSION_LIBDIR
+# @ECLASS_VARIABLE: RUBY_FAKEGEM_EXTENSION_LIBDIR
 # @DESCRIPTION:
 # The lib directory where extensions are copied directly after they have
 # been compiled. This is needed to run tests on the code and was the
@@ -200,9 +200,7 @@ esac
 
 SRC_URI="https://rubygems.org/gems/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}${RUBY_FAKEGEM_SUFFIX:+-${RUBY_FAKEGEM_SUFFIX}}.gem"
 
-# dev-ruby/psych is no longer installed and is incompatible with modern
-# ruby versions.
-ruby_add_bdepend "virtual/rubygems !!dev-ruby/psych"
+ruby_add_bdepend "virtual/rubygems"
 ruby_add_rdepend virtual/rubygems
 case ${EAPI} in
 	5|6)
@@ -212,12 +210,19 @@ case ${EAPI} in
 		;;
 esac
 
+# Many (but not all) extensions use pkgconfig in src_configure.
+if [[ ${#RUBY_FAKEGEM_EXTENSIONS[@]} -gt 0 ]]; then
+	BDEPEND+=" virtual/pkgconfig "
+fi
+
 # @FUNCTION: ruby_fakegem_gemsdir
 # @RETURN: Returns the gem data directory
 # @DESCRIPTION:
 # This function returns the gems data directory for the ruby
 # implementation in question.
 ruby_fakegem_gemsdir() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	local _gemsitedir=$(ruby_rbconfig_value 'sitelibdir')
 	_gemsitedir=${_gemsitedir//site_ruby/gems}
 	_gemsitedir=${_gemsitedir#${EPREFIX}}
@@ -235,6 +240,8 @@ ruby_fakegem_gemsdir() {
 # @DESCRIPTION:
 # Installs the specified file(s) into the gems directory.
 ruby_fakegem_doins() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	(
 		insinto $(ruby_fakegem_gemsdir)/gems/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}
 		doins "$@"
@@ -246,6 +253,8 @@ ruby_fakegem_doins() {
 # @DESCRIPTION:
 # Installs the specified file into the gems directory using the provided filename.
 ruby_fakegem_newins() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	(
 		# Since newins does not accept full paths but just basenames
 		# for the target file, we want to extend it here.
@@ -265,6 +274,8 @@ ruby_fakegem_newins() {
 # by the RUBY_FAKEGEM_GEMSPEC variable, or generate one using
 # ruby_fakegem_genspec.
 ruby_fakegem_install_gemspec() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	local gemspec="${T}"/${RUBY_FAKEGEM_NAME}-${_ruby_implementation}
 
 	(
@@ -292,6 +303,8 @@ ruby_fakegem_install_gemspec() {
 # RUBY_FAKEGEM_GEMSPEC. This file is eval'ed to produce a final specification
 # in a way similar to packaging the gemspec file.
 ruby_fakegem_gemspec_gemspec() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	${RUBY} --disable=did_you_mean -e "puts eval(File::open('$1').read).to_ruby" > $2
 }
 
@@ -302,6 +315,8 @@ ruby_fakegem_gemspec_gemspec() {
 # the metadata distributed by the gem itself. This is similar to how
 # rubygems creates an installation from a .gem file.
 ruby_fakegem_metadata_gemspec() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	${RUBY} --disable=did_you_mean -r yaml -e "puts Gem::Specification.from_yaml(File::open('$1', :encoding => 'UTF-8').read).to_ruby" > $2
 }
 
@@ -319,6 +334,8 @@ ruby_fakegem_metadata_gemspec() {
 # See RUBY_FAKEGEM_NAME and RUBY_FAKEGEM_VERSION for setting name and version.
 # See RUBY_FAKEGEM_REQUIRE_PATHS for setting extra require paths.
 ruby_fakegem_genspec() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	case ${EAPI} in
 		5|6) ;;
 		*)
@@ -358,6 +375,8 @@ EOF
 # to inject additional ruby code into the wrapper. This may be useful to
 # e.g. force a specific version using the gem command.
 ruby_fakegem_binwrapper() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	(
 		local gembinary=$1
 		local newbinary=${2:-/usr/bin/$gembinary}
@@ -382,7 +401,7 @@ ruby_fakegem_binwrapper() {
 				# if another implementation already arrived, then make
 				# it generic and break out of the loop. This ensures
 				# that we do at most two iterations.
-				rubycmd="/usr/bin/env ruby"
+				rubycmd="${EPREFIX}/usr/bin/env ruby"
 				break
 			fi
 		done
@@ -409,6 +428,8 @@ EOF
 # @DESCRIPTION:
 # Configure extensions defined in RUBY_FAKEGEM_EXTENSIONS, if any.
 each_fakegem_configure() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	tc-export PKG_CONFIG
 	for extension in "${RUBY_FAKEGEM_EXTENSIONS[@]}" ; do
 		CC=$(tc-getCC) ${RUBY} --disable=did_you_mean -C ${extension%/*} ${extension##*/} --with-cflags="${CFLAGS}" --with-ldflags="${LDFLAGS}" ${RUBY_FAKEGM_EXTENSION_OPTIONS} || die
@@ -419,6 +440,8 @@ each_fakegem_configure() {
 # @DESCRIPTION:
 # Run each_fakegem_configure for each ruby target
 each_ruby_configure() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	each_fakegem_configure
 }
 
@@ -427,6 +450,8 @@ each_ruby_configure() {
 # Build documentation for the package if indicated by the doc USE flag
 # and if there is a documetation task defined.
 all_fakegem_compile() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	if [[ -n ${RUBY_FAKEGEM_DOCDIR} ]] && use doc; then
 		case ${RUBY_FAKEGEM_RECIPE_DOC} in
 			rake)
@@ -447,6 +472,8 @@ all_fakegem_compile() {
 # @DESCRIPTION:
 # Compile extensions defined in RUBY_FAKEGEM_EXTENSIONS, if any.
 each_fakegem_compile() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	for extension in "${RUBY_FAKEGEM_EXTENSIONS[@]}" ; do
 		emake V=1 -C ${extension%/*}
 		mkdir -p "${RUBY_FAKEGEM_EXTENSION_LIBDIR%/}"
@@ -458,6 +485,8 @@ each_fakegem_compile() {
 # @DESCRIPTION:
 # Run each_fakegem_compile for each ruby target
 each_ruby_compile() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	each_fakegem_compile
 }
 
@@ -465,6 +494,8 @@ each_ruby_compile() {
 # @DESCRIPTION:
 # Unpack the source archive, including support for unpacking gems.
 all_ruby_unpack() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	# Special support for extracting .gem files; the file need to be
 	# extracted twice and the mtime from the archive _has_ to be
 	# ignored (it's always set to epoch 0).
@@ -475,20 +506,17 @@ all_ruby_unpack() {
 				# one .gem file, since we won't support that at all.
 				[[ -d "${S}" ]] && die "Unable to unpack ${archive}, ${S} exists"
 
-				ebegin "Unpacking .gem file..."
+				einfo "Unpacking .gem file..."
 				tar -mxf "${DISTDIR}"/${archive} || die
-				eend $?
 
-				ebegin "Uncompressing metadata"
+				einfo "Uncompressing metadata"
 				gunzip metadata.gz || die
-				eend $?
 
 				mkdir "${S}"
 				pushd "${S}" &>/dev/null || die
 
-				ebegin "Unpacking data.tar.gz"
+				einfo "Unpacking data.tar.gz"
 				tar -mxf "${my_WORKDIR}"/data.tar.gz || die
-				eend $?
 
 				popd &>/dev/null || die
 				;;
@@ -511,6 +539,8 @@ all_ruby_unpack() {
 # @DESCRIPTION:
 # Compile the package.
 all_ruby_compile() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	all_fakegem_compile
 }
 
@@ -518,6 +548,8 @@ all_ruby_compile() {
 # @DESCRIPTION:
 # Run tests for the package for each ruby target if the test task is defined.
 each_fakegem_test() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	case ${RUBY_FAKEGEM_RECIPE_TEST} in
 		rake)
 			${RUBY} --disable=did_you_mean -S rake ${RUBY_FAKEGEM_TASK_TEST} || die "tests failed"
@@ -537,10 +569,10 @@ each_fakegem_test() {
 	esac
 }
 
+# @FUNCTION: each_ruby_test
+# @DESCRIPTION:
+# Run the tests for this package.
 if [[ ${RUBY_FAKEGEM_RECIPE_TEST} != none ]]; then
-		# @FUNCTION: each_ruby_test
-		# @DESCRIPTION:
-		# Run the tests for this package.
 		each_ruby_test() {
 			each_fakegem_test
 		}
@@ -552,6 +584,8 @@ fi
 # installed. This is normally done as part of the extension
 # installation, but may be useful when we handle extensions manually.
 ruby_fakegem_extensions_installed() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	mkdir -p "${ED}$(ruby_fakegem_extensionsdir)" || die
 	touch "${ED}$(ruby_fakegem_extensionsdir)/gem.build_complete" || die
 }
@@ -561,6 +595,8 @@ ruby_fakegem_extensions_installed() {
 # The directory where rubygems expects extensions for this package
 # version.
 ruby_fakegem_extensionsdir() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	# Using formula from ruby src/lib/rubygems/basic_specification.
 	extensions_dir=$(${RUBY} --disable=did_you_mean -e "puts File.join('extensions', Gem::Platform.local.to_s, Gem.extension_api_version)")
 
@@ -571,6 +607,8 @@ ruby_fakegem_extensionsdir() {
 # @DESCRIPTION:
 # Install the package for each ruby target.
 each_fakegem_install() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	ruby_fakegem_install_gemspec
 
 	local _gemlibdirs="${RUBY_FAKEGEM_EXTRAINSTALL}"
@@ -596,6 +634,8 @@ each_fakegem_install() {
 # @DESCRIPTION:
 # Install the package for each target.
 each_ruby_install() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	each_fakegem_install
 }
 
@@ -603,6 +643,8 @@ each_ruby_install() {
 # @DESCRIPTION:
 # Install files common to all ruby targets.
 all_fakegem_install() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	if [[ -n ${RUBY_FAKEGEM_DOCDIR} ]] && use doc; then
 		for dir in ${RUBY_FAKEGEM_DOCDIR}; do
 			[[ -d ${dir} ]] || continue
@@ -636,5 +678,7 @@ all_fakegem_install() {
 # @DESCRIPTION:
 # Install files common to all ruby targets.
 all_ruby_install() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	all_fakegem_install
 }

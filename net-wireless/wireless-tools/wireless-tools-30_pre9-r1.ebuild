@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
-inherit toolchain-funcs multilib
+inherit toolchain-funcs
 
 # The following works with both pre-releases and releases
 MY_P=${PN/-/_}.${PV/_/.}
@@ -18,7 +18,8 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="multicall"
 
-DEPEND="sys-apps/sed"
+BDEPEND="sys-apps/sed"
+DEPEND=""
 RDEPEND=""
 
 PATCHES=("${FILESDIR}"/${PN}-29-asneeded.patch)

@@ -15,7 +15,7 @@ HOMEPAGE="https://rtree.readthedocs.io"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 SLOT="0"
 
 S="${WORKDIR}/${MY_P}"

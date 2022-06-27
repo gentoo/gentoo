@@ -8,6 +8,9 @@
 		<flag name="bluray">
 			Enable playback of Blu-ray filesystems using <pkg>media-libs/libbluray</pkg>
 		</flag>
+		<flag name="dav1d">
+			Enable support for <pkg>media-libs/dav1d</pkg> AV1 decoder
+		</flag>
 		<flag name="dxr3">
 			Enable support for DXR3 mpeg acceleration cards.
 		</flag>

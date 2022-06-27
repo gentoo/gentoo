@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ if [[ ${PV} == *9999* ]]; then
 	NLS_DEPEND="sys-devel/gettext"
 	NLS_RDEPEND="virtual/libintl"
 else
-	KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
 	SRC_URI="mirror://sourceforge/xine/${P}.tar.xz"
 	NLS_IUSE="nls"
 	NLS_DEPEND="nls? ( sys-devel/gettext )"
@@ -24,14 +24,14 @@ HOMEPAGE="http://xine.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="1"
-IUSE="a52 aac aalib +alsa altivec bluray +css dts dvb dxr3 fbcon flac gtk imagemagick ipv6 jack jpeg libcaca mad +mmap mng modplug musepack nfs opengl oss pulseaudio samba sftp sdl speex theora truetype v4l vaapi vcd vdpau vdr vidix +vis vorbis vpx wavpack wayland +X xinerama +xv xvmc ${NLS_IUSE}"
+IUSE="a52 aac aalib +alsa altivec bluray +css dav1d dts dvb dxr3 fbcon flac gtk imagemagick ipv6 jack jpeg libcaca mad +mmap mng modplug musepack nfs opengl oss pulseaudio samba sftp sdl speex theora truetype v4l vaapi vcd vdpau vdr vidix +vis vorbis vpx wavpack wayland +X xinerama +xv xvmc ${NLS_IUSE}"
 
 BDEPEND="
 	app-arch/xz-utils
 	>=sys-devel/libtool-2.2.6b
 	virtual/pkgconfig
 "
-RDEPEND="${NLS_RDEPEND}
+RDEPEND="
 	dev-libs/libxdg-basedir
 	media-libs/libdvdnav
 	media-video/ffmpeg:0=
@@ -43,13 +43,14 @@ RDEPEND="${NLS_RDEPEND}
 	alsa? ( media-libs/alsa-lib )
 	bluray? ( >=media-libs/libbluray-0.2.1:= )
 	css? ( >=media-libs/libdvdcss-1.2.10 )
+	dav1d? ( media-libs/dav1d:= )
 	dts? ( media-libs/libdca )
 	dxr3? ( media-libs/libfame )
 	flac? ( media-libs/flac )
 	gtk? ( x11-libs/gdk-pixbuf:2 )
 	imagemagick? ( virtual/imagemagick-tools )
 	jack? ( virtual/jack )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	libcaca? ( media-libs/libcaca )
 	mad? ( media-libs/libmad )
 	mng? ( media-libs/libmng:= )
@@ -100,7 +101,6 @@ RDEPEND="${NLS_RDEPEND}
 	xvmc? ( x11-libs/libXvMC )
 "
 DEPEND="${RDEPEND}
-	${NLS_DEPEND}
 	oss? ( virtual/os-headers )
 	v4l? ( virtual/os-headers )
 	X? (
@@ -158,6 +158,8 @@ src_configure() {
 		--with-xv-path=/usr/$(get_libdir)
 		--without-esound
 		--without-fusionsound
+		# Added dav1d for now. Could support both? Does it need to be XOR?
+		--without-libaom
 		$(use_enable a52 a52dec)
 		$(use_enable aac faad)
 		$(use_enable aalib)
@@ -194,6 +196,7 @@ src_configure() {
 		$(use_enable vpx)
 		$(use_enable wayland)
 		$(use_with alsa)
+		$(use_with dav1d)
 		$(use_with flac libflac)
 		$(use_with imagemagick)
 		$(use_with jack)

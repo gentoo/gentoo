@@ -68,7 +68,7 @@ case "${EAPI:-0}" in
 		;;
 esac
 
-# @ECLASS-VARIABLE: DOCS_BUILDER
+# @ECLASS_VARIABLE: DOCS_BUILDER
 # @REQUIRED
 # @PRE_INHERIT
 # @DESCRIPTION:
@@ -77,7 +77,7 @@ esac
 # PYTHON_COMPAT should be set for python based
 # doc builders: sphinx and mkdocs
 
-# @ECLASS-VARIABLE: DOCS_DIR
+# @ECLASS_VARIABLE: DOCS_DIR
 # @DESCRIPTION:
 # Path containing the doc builder config file(s).
 #
@@ -94,7 +94,7 @@ esac
 #
 # Defaults to ${S}
 
-# @ECLASS-VARIABLE: DOCS_DEPEND
+# @ECLASS_VARIABLE: DOCS_DEPEND
 # @DEFAULT_UNSET
 # @PRE_INHERIT
 # @DESCRIPTION:
@@ -112,14 +112,14 @@ esac
 # possible to call it later in your ebuild again if
 # necessary.
 
-# @ECLASS-VARIABLE: DOCS_AUTODOC
+# @ECLASS_VARIABLE: DOCS_AUTODOC
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Sets whether to use sphinx.ext.autodoc/mkautodoc
 # Defaults to 1 (True) for sphinx, and 0 (False) for mkdocs.
 # Not relevant for doxygen.
 
-# @ECLASS-VARIABLE: DOCS_OUTDIR
+# @ECLASS_VARIABLE: DOCS_OUTDIR
 # @DESCRIPTION:
 # Sets the directory where the documentation should
 # be built into. There is no real reason to change this.
@@ -133,7 +133,7 @@ esac
 #
 # Defaults to ${S}/_build/html
 
-# @ECLASS-VARIABLE: DOCS_CONFIG_NAME
+# @ECLASS_VARIABLE: DOCS_CONFIG_NAME
 # @DESCRIPTION:
 # Name of the doc builder config file.
 #

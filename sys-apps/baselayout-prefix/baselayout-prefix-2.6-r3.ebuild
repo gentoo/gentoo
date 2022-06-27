@@ -17,7 +17,7 @@ if [[ ${PV} = 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://gitweb.gentoo.org/proj/${MY_PN}.git/snapshot/${MY_P}.tar.bz2"
-	KEYWORDS="~arm ~arm64 ~ppc64 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+	KEYWORDS="~arm ~arm64 ~ppc64 ~riscv ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 fi
 
 LICENSE="GPL-2"

@@ -1,12 +1,13 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PN="PyLaTeX"
 MY_P="${MY_PN}-${PV}"
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1 optfeature
 
@@ -34,6 +35,12 @@ BDEPEND+="
 		app-text/texlive
 		dev-texlive/texlive-latexextra
 	)"
+
+python_prepare_all() {
+	sed -i -e 's:description-file:description_file:' setup.cfg || die # bug 798381
+
+	distutils-r1_python_prepare_all
+}
 
 python_install_all() {
 	if use examples ; then

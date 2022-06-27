@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,9 +23,9 @@ IUSE="+edit gpm nls sftp +slang spell test unicode X"
 
 REQUIRED_USE="spell? ( edit )"
 
-RDEPEND=">=dev-libs/glib-2.26.0:2
+RDEPEND=">=dev-libs/glib-2.30.0:2
 	gpm? ( sys-libs/gpm )
-	kernel_linux? ( sys-fs/e2fsprogs )
+	kernel_linux? ( sys-fs/e2fsprogs[tools(+)] )
 	sftp? ( net-libs/libssh2 )
 	slang? ( >=sys-libs/slang-2 )
 	!slang? ( sys-libs/ncurses:=[unicode(+)?] )
@@ -63,7 +63,7 @@ src_prepare() {
 			$(find . -name '*.[ch]') | sed -ne '/^#:/{s/#://;s/:[0-9]*/\
 			  /g;s/ //g;p;}' | grep -v '^$' | sort | uniq > po/POTFILES.in \
 			  || die
-		./version.sh ${S} || die
+		./version.sh "${S}" || die
 	fi
 }
 

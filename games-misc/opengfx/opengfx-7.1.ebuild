@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,6 +23,10 @@ DEPEND="
 "
 
 DOCS=( "README.md" "changelog.txt" )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.1-no-which.patch
+)
 
 src_prepare() {
 	default

@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
+		<remote-id type="gitlab">eivnaes/sstp-client</remote-id>
 		<remote-id type="sourceforge">sstp-client</remote-id>
 	</upstream>
 </pkgmetadata>

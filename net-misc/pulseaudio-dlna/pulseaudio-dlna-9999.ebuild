@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -56,7 +56,7 @@ RDEPEND=">=dev-python/protobuf-python-2.5.0[${PYTHON_USEDEP}]
 
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	media-sound/pulseaudio"
+	|| ( media-sound/pulseaudio-daemon media-sound/pulseaudio[daemon(+)] )"
 
 python_prepare_all() {
 	sed -i '/dbus-python/d' setup.py || die

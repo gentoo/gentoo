@@ -13,6 +13,6 @@
 		linux/ppc.
 	</longdescription>
 	<upstream>
-		<remote-id type="sourceforge-jp">jfbterm</remote-id>
+		<remote-id type="osdn">jfbterm</remote-id>
 	</upstream>
 </pkgmetadata>

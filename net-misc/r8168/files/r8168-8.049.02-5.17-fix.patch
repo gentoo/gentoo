@@ -1,0 +1,70 @@
+PDE_DATA has been replaced with pde_data
+netdev->dev_addr is now const and uses assignment helpers like eth_hw_addr_set
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=359745d
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=48eab83
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=adeef3e
+
+--- a/src/r8168_n.c
++++ b/src/r8168_n.c
+@@ -95,6 +95,10 @@
+ #include <linux/seq_file.h>
+ #endif
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0)
++#define PDE_DATA pde_data
++#endif
++
+ #define FIRMWARE_8168D_1    "rtl_nic/rtl8168d-1.fw"
+ #define FIRMWARE_8168D_2    "rtl_nic/rtl8168d-2.fw"
+ #define FIRMWARE_8168E_1    "rtl_nic/rtl8168e-1.fw"
+@@ -563,7 +567,7 @@
+ static void rtl8168_down(struct net_device *dev);
+ 
+ static int rtl8168_set_mac_address(struct net_device *dev, void *p);
+-void rtl8168_rar_set(struct rtl8168_private *tp, uint8_t *addr);
++void rtl8168_rar_set(struct rtl8168_private *tp, const uint8_t *addr);
+ static void rtl8168_desc_addr_fill(struct rtl8168_private *);
+ static void rtl8168_tx_desc_init(struct rtl8168_private *tp);
+ static void rtl8168_rx_desc_init(struct rtl8168_private *tp);
+@@ -24129,9 +24133,17 @@
+         rtl8168_rar_set(tp, mac_addr);
+ 
+         for (i = 0; i < MAC_ADDR_LEN; i++) {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,17,0)
+                 dev->dev_addr[i] = RTL_R8(tp, MAC0 + i);
+                 tp->org_mac_addr[i] = dev->dev_addr[i]; /* keep the original MAC address */
++#else
++                mac_addr[i] = RTL_R8(tp, MAC0 + i);
++                tp->org_mac_addr[i] = mac_addr[i]; /* keep the original MAC address */
++#endif
+         }
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0)
++        eth_hw_addr_set(dev, mac_addr);
++#endif
+ #if LINUX_VERSION_CODE > KERNEL_VERSION(2,6,13)
+         memcpy(dev->perm_addr, dev->dev_addr, dev->addr_len);
+ #endif
+@@ -24159,9 +24171,11 @@
+                 return -EADDRNOTAVAIL;
+ 
+         spin_lock_irqsave(&tp->lock, flags);
+-
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,17,0)
+         memcpy(dev->dev_addr, addr->sa_data, dev->addr_len);
+-
++#else
++        eth_hw_addr_set(dev, addr->sa_data);
++#endif
+         rtl8168_rar_set(tp, dev->dev_addr);
+ 
+         spin_unlock_irqrestore(&tp->lock, flags);
+@@ -24177,7 +24191,7 @@
+  *****************************************************************************/
+ void
+ rtl8168_rar_set(struct rtl8168_private *tp,
+-                uint8_t *addr)
++                const uint8_t *addr)
+ {
+         uint32_t rar_low = 0;
+         uint32_t rar_high = 0;

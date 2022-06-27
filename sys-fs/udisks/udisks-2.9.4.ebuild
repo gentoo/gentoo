@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit bash-completion-r1 linux-info systemd tmpfiles udev xdg-utils
+inherit autotools bash-completion-r1 linux-info systemd tmpfiles udev xdg-utils
 
 DESCRIPTION="Daemon providing interfaces to work with storage devices"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/udisks"
@@ -10,7 +10,7 @@ SRC_URI="https://github.com/storaged-project/udisks/releases/download/${P}/${P}.
 
 LICENSE="LGPL-2+ GPL-2+"
 SLOT="2"
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="acl +daemon debug elogind +introspection lvm nls selinux systemd vdo zram"
 
 REQUIRED_USE="
@@ -61,6 +61,10 @@ BDEPEND="
 
 DOCS=( AUTHORS HACKING NEWS README.md )
 
+PATCHES=(
+	"${FILESDIR}/${P}-undefined.patch" # 782061
+)
+
 pkg_setup() {
 	# Listing only major arch's here to avoid tracking kernel's defconfig
 	if use amd64 || use arm || use ppc || use ppc64 || use x86; then
@@ -79,6 +83,9 @@ src_prepare() {
 	if ! use systemd ; then
 		sed -i -e 's:libsystemd-login:&disable:' configure || die
 	fi
+
+	# Added for bug # 782061
+	eautoreconf
 }
 
 src_configure() {
@@ -122,6 +129,8 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	udev_reload
+
 	# TODO: obsolete with tmpfiles_process?
 	# mkdir -p "${EROOT}"/run #415987
 

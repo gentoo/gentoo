@@ -11,7 +11,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">denonavr</remote-id>
-		<remote-id type="github">scarface-4711/denonavr</remote-id>
-		<bugs-to>https://github.com/scarface-4711/denonavr/issues</bugs-to>
+		<remote-id type="github">ol-iver/denonavr</remote-id>
+		<bugs-to>https://github.com/ol-iver/denonavr/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

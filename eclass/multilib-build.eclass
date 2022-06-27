@@ -28,7 +28,7 @@ _MULTILIB_BUILD_ECLASS=1
 
 inherit multibuild multilib
 
-# @ECLASS-VARIABLE: _MULTILIB_FLAGS
+# @ECLASS_VARIABLE: _MULTILIB_FLAGS
 # @INTERNAL
 # @DESCRIPTION:
 # The list of multilib flags and corresponding ABI values. If the same
@@ -52,7 +52,7 @@ _MULTILIB_FLAGS=(
 )
 readonly _MULTILIB_FLAGS
 
-# @ECLASS-VARIABLE: MULTILIB_COMPAT
+# @ECLASS_VARIABLE: MULTILIB_COMPAT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # List of multilib ABIs supported by the ebuild. If unset, defaults to
@@ -76,7 +76,7 @@ readonly _MULTILIB_FLAGS
 # MULTILIB_COMPAT=( abi_x86_{32,64} )
 # @CODE
 
-# @ECLASS-VARIABLE: MULTILIB_USEDEP
+# @ECLASS_VARIABLE: MULTILIB_USEDEP
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The USE-dependency to be used on dependencies (libraries) needing
@@ -88,7 +88,7 @@ readonly _MULTILIB_FLAGS
 #	net-libs/libbar[ssl,${MULTILIB_USEDEP}]"
 # @CODE
 
-# @ECLASS-VARIABLE: MULTILIB_ABI_FLAG
+# @ECLASS_VARIABLE: MULTILIB_ABI_FLAG
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The complete ABI name. Resembles the USE flag name.
@@ -301,7 +301,7 @@ multilib_copy_sources() {
 	multibuild_copy_sources
 }
 
-# @ECLASS-VARIABLE: MULTILIB_WRAPPED_HEADERS
+# @ECLASS_VARIABLE: MULTILIB_WRAPPED_HEADERS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A list of headers to wrap for multilib support. The listed headers
@@ -324,7 +324,7 @@ multilib_copy_sources() {
 # )
 # @CODE
 
-# @ECLASS-VARIABLE: MULTILIB_CHOST_TOOLS
+# @ECLASS_VARIABLE: MULTILIB_CHOST_TOOLS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A list of tool executables to preserve for each multilib ABI.

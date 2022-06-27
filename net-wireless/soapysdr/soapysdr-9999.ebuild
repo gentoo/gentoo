@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 
 inherit cmake python-r1
 
@@ -15,7 +15,7 @@ if [ "${PV}" = "9999" ]; then
 	EGIT_CLONE_TYPE="shallow"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~riscv ~x86"
 	SRC_URI="https://github.com/pothosware/SoapySDR/archive/soapy-sdr-${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/SoapySDR-soapy-sdr-"${PV}"
 fi

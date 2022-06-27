@@ -9,10 +9,6 @@
   <upstream>
     <remote-id type="pypi">webencodings</remote-id>
     <doc>https://pythonhosted.org/webencodings/</doc>
-    <maintainer status="unknown">
-      <email>simon.sapin@exyr.org</email>
-      <name>Simon Sapin</name>
-    </maintainer>
-    <remote-id type="github">SimonSapin/python-webencodings</remote-id>
+    <remote-id type="github">gsnedders/python-webencodings</remote-id>
   </upstream>
 </pkgmetadata>

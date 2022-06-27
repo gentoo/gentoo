@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Perl binding for GooCanvas2 widget using Glib::Object::Introspection"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

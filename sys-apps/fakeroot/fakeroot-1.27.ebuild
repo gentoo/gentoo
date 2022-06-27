@@ -11,7 +11,7 @@ SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${P/-/_}.orig.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="acl debug nls test"
 RESTRICT="!test? ( test )"
 
@@ -46,6 +46,10 @@ src_configure() {
 	export ac_cv_header_sys_acl_h=$(usex acl)
 	use acl || export ac_cv_search_acl_get_fd=no # bug 759568
 	use debug && append-cppflags -DLIBFAKEROOT_DEBUGGING
+
+	# https://bugs.gentoo.org/834445
+	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=101270
+	filter-flags -fno-semantic-interposition
 
 	econf --disable-static
 }

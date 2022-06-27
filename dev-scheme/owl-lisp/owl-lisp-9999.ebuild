@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTICE: Because it is "purely functional" it is not scheme-compatible ootb
@@ -23,7 +23,7 @@ LICENSE="MIT"
 SLOT="0"
 
 src_compile(){
-	emake CC=$(tc-getCC) CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" owl
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" owl
 }
 
 src_install() {

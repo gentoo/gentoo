@@ -1,0 +1,28 @@
+diff --git a/meson_options.txt b/meson_options.txt
+index 5935bb8..f8c14ce 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,6 +1,6 @@
+-option('blas', type: 'string', value: 'openblas',
++option('blas', type: 'string', value: 'blas',
+         description: 'option for BLAS library switching')
+-option('lapack', type: 'string', value: 'openblas',
++option('lapack', type: 'string', value: 'lapack',
+         description: 'option for LAPACK library switching')
+ option('use-g77-abi', type: 'boolean', value: 'false',
+         description: 'If set to true, forces using g77 compatibility wrappers ' +
+diff --git a/meson.build b/meson.build
+index d80ebc93e..c0c92c00f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -16,8 +16,8 @@ project(
+     'c_args=-Wno-unused-function -Wno-conversion -Wno-misleading-indentation -Wno-incompatible-pointer-types',
+     'fortran_args=-Wno-conversion',
+     'fortran_std=legacy',
+-    'blas=openblas',
+-    'lapack=openblas'
++    'blas=blas',
++    'lapack=lapack'
+   ],
+ )
+ 

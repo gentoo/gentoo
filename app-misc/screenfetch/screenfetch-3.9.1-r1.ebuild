@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/KittyKatt/screenFetch.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~arm ~riscv ~x86 ~x64-macos"
+	KEYWORDS="~amd64 ~arm ~loong ~riscv ~x86 ~x64-macos"
 	SRC_URI="https://github.com/KittyKatt/screenFetch/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${MY_PN}-${PV}"
 fi

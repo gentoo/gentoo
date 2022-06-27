@@ -2,8 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>djc@gentoo.org</email>
-		<name>Dirkjan Ochtman</name>
+		<email>ulm@gentoo.org</email>
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>

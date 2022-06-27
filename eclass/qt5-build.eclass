@@ -20,7 +20,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-# @ECLASS-VARIABLE: QT5_BUILD_TYPE
+# @ECLASS_VARIABLE: QT5_BUILD_TYPE
 # @DESCRIPTION:
 # Default value is "release".
 # If PV matches "*9999*", this is automatically set to "live".
@@ -30,33 +30,53 @@ if [[ ${PV} == *9999* ]]; then
 fi
 readonly QT5_BUILD_TYPE
 
-# @ECLASS-VARIABLE: QT5_MODULE
+# @ECLASS_VARIABLE: QT5_KDEPATCHSET_REV
+# @DEFAULT_UNSET
+# @PRE_INHERIT
+# @DESCRIPTION:
+# Downstream generated patchset revision pulled from KDE's Qt5PatchCollection,
+# with the patchset having been generated in the following way from upstream's
+# qt module git repository:
+# @CODE
+# git format-patch v${PV}-lts-lgpl..origin/gentoo-kde/${PV} \
+#	-o ${QT5_MODULE}-${PV}-gentoo-kde-${QT5_KDEPATCHSET_REV}
+# @CODE
+# Used for SRC_URI and applied in src_prepare.
+# Must be set before inheriting the eclass.
+
+# @ECLASS_VARIABLE: QT5_MODULE
 # @PRE_INHERIT
 # @DESCRIPTION:
 # The upstream name of the module this package belongs to. Used for
 # SRC_URI and EGIT_REPO_URI. Must be set before inheriting the eclass.
 : ${QT5_MODULE:=${PN}}
 
-# @ECLASS-VARIABLE: QT5_PV
+# @ECLASS_VARIABLE: QT5_PV
 # @DESCRIPTION:
 # 3-component version for use in dependency declarations on other dev-qt/ pkgs.
 QT5_PV=$(ver_cut 1-3)
 readonly QT5_PV
 
-# @ECLASS-VARIABLE: _QT5_P
+# @ECLASS_VARIABLE: _QT5_P
 # @INTERNAL
 # @DESCRIPTION:
 # The upstream package name of the module this package belongs to.
 # Used for SRC_URI and S.
-_QT5_P=${QT5_MODULE}-everywhere-src-${PV}
 
-# @ECLASS-VARIABLE: QT5_TARGET_SUBDIRS
+# @ECLASS_VARIABLE: _QT5_GENTOOPATCHSET_REV
+# @DEFAULT_UNSET
+# @INTERNAL
+# @DESCRIPTION:
+# Gentoo downstream patchset version applied over qtbase. Used for SRC_URI and
+# applied in src_prepare.
+
+# @ECLASS_VARIABLE: QT5_TARGET_SUBDIRS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array variable containing the source directories that should be built.
 # All paths must be relative to ${S}.
 
-# @ECLASS-VARIABLE: QT5_GENTOO_CONFIG
+# @ECLASS_VARIABLE: QT5_GENTOO_CONFIG
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array of <useflag:feature:macro> triplets that are evaluated in src_install
@@ -64,7 +84,7 @@ _QT5_P=${QT5_MODULE}-everywhere-src-${PV}
 # definitions, which are then merged together with all other Qt5 packages
 # installed on the system to obtain the global qconfig.{h,pri} files.
 
-# @ECLASS-VARIABLE: QT5_GENTOO_PRIVATE_CONFIG
+# @ECLASS_VARIABLE: QT5_GENTOO_PRIVATE_CONFIG
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array of <useflag:feature> pairs that are evaluated in src_install
@@ -72,7 +92,7 @@ _QT5_P=${QT5_MODULE}-everywhere-src-${PV}
 # which are then merged together with all other Qt5 packages installed on the
 # system to obtain the global qmodule.pri file.
 
-# @ECLASS-VARIABLE: VIRTUALX_REQUIRED
+# @ECLASS_VARIABLE: VIRTUALX_REQUIRED
 # @PRE_INHERIT
 # @DESCRIPTION:
 # For proper description see virtualx.eclass man page.
@@ -83,25 +103,49 @@ _QT5_P=${QT5_MODULE}-everywhere-src-${PV}
 inherit estack flag-o-matic toolchain-funcs virtualx
 
 if [[ ${PN} != qtwebengine ]]; then
-	if [[ ${QT5_BUILD_TYPE} == live ]] || [[ -n ${KDE_ORG_COMMIT} ]]; then
-		# KDE Qt5PatchCollection
-		inherit kde.org
-	else
-		# official stable release
-		HOMEPAGE="https://www.qt.io/"
-		SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}/submodules/${_QT5_P}.tar.xz"
-		S=${WORKDIR}/${_QT5_P}
-	fi
+	case ${PV} in
+		*9999 )
+			inherit kde.org # kde/5.15 branch
+			;;
+		5.15.[3-9]* | 5.15.??* )
+			# official stable release
+			_QT5_P=${QT5_MODULE}-everywhere-opensource-src-${PV}
+			HOMEPAGE="https://www.qt.io/"
+			SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}/submodules/${_QT5_P}.tar.xz"
+			# KDE Qt5PatchCollection on top of tag v${PV}-lts-lgpl
+			if [[ -n ${QT5_KDEPATCHSET_REV} ]]; then
+				HOMEPAGE+=" https://invent.kde.org/qt/qt/${QT5_MODULE} https://community.kde.org/Qt5PatchCollection"
+				SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${QT5_MODULE}-${PV}-gentoo-kde-${QT5_KDEPATCHSET_REV}.tar.xz"
+			fi
+			S="${WORKDIR}"/${_QT5_P/opensource-}
+			;;
+	esac
 fi
 
-# @ECLASS-VARIABLE: QT5_BUILD_DIR
+if [[ ${QT5_MODULE} == qtbase ]] && [[ ${PV} == 5.15.[5-9]* ]]; then
+	_QT5_GENTOOPATCHSET_REV=1
+	SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/qtbase-5.15-gentoo-patchset-${_QT5_GENTOOPATCHSET_REV}.tar.xz"
+fi
+
+# @ECLASS_VARIABLE: QT5_BUILD_DIR
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Build directory for out-of-source builds.
 : ${QT5_BUILD_DIR:=${S}_build}
 
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
-SLOT=5/$(ver_cut 1-2)
+
+case ${PN} in
+	assistant|linguist|qdbus|qdbusviewer|pixeltool)
+		SLOT=0 ;;
+	linguist-tools|qdoc|qtdiag|qtgraphicaleffects|qtimageformats| \
+	qtpaths|qtplugininfo|qtquickcontrols|qtquicktimeline| \
+	qttranslations|qtwaylandscanner|qtxmlpatterns)
+		SLOT=5 ;;
+	*)
+		SLOT=5/$(ver_cut 1-2) ;;
+esac
+
 IUSE="debug test"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
@@ -129,14 +173,10 @@ qt5-build_src_prepare() {
 	qt5_prepare_env
 
 	if [[ ${QT5_BUILD_TYPE} == live ]] || [[ -n ${KDE_ORG_COMMIT} ]]; then
-		# Upstream bumped version in 5.15 branch after 5.15.2 release but their
-		# 5.15.3 release is closed and this will never be more than a Qt 5.15.2
-		# with patches on top.
 		if [[ -n ${KDE_ORG_COMMIT} ]]; then
 			einfo "Preparing KDE Qt5PatchCollection snapshot at ${KDE_ORG_COMMIT}"
 			mkdir -p .git || die # need to fake a git repository for configure
 		fi
-		sed -e "/^MODULE_VERSION/s/5\.15\.[3456789]/${QT5_PV}/" -i .qmake.conf || die
 	fi
 
 	if [[ ${QT5_MODULE} == qtbase ]]; then
@@ -161,7 +201,11 @@ qt5-build_src_prepare() {
 
 		# Respect build variables in configure tests (bug #639494)
 		sed -i -e "s|\"\$outpath/bin/qmake\" \"\$relpathMangled\" -- \"\$@\"|& $(qt5_qmake_args) |" configure || die
+
+		[[ -n ${_QT5_GENTOOPATCHSET_REV} ]] && eapply "${WORKDIR}/qtbase-5.15-gentoo-patchset-${_QT5_GENTOOPATCHSET_REV}"
 	fi
+
+	[[ -n ${QT5_KDEPATCHSET_REV} ]] && eapply "${WORKDIR}/${QT5_MODULE}-${PV}-gentoo-kde-${QT5_KDEPATCHSET_REV}"
 
 	default
 }
@@ -246,24 +290,6 @@ qt5-build_src_install() {
 		sed -i -e '1i #include <Gentoo/gentoo-qconfig.h>\n' \
 			"${D}${QT5_HEADERDIR}"/QtCore/qconfig.h \
 			|| die "sed failed (qconfig.h)"
-
-		if ver_test -lt 5.15.2-r10; then
-			# install qtchooser configuration file
-			cat > "${T}/qt5-${CHOST}.conf" <<-_EOF_ || die
-				${QT5_BINDIR}
-				${QT5_LIBDIR}
-			_EOF_
-
-			(
-				insinto /etc/xdg/qtchooser
-				doins "${T}/qt5-${CHOST}.conf"
-			)
-
-			# convenience symlinks
-			dosym qt5-"${CHOST}".conf /etc/xdg/qtchooser/5.conf
-			dosym qt5-"${CHOST}".conf /etc/xdg/qtchooser/qt5.conf
-			dosym qt5.conf /etc/xdg/qtchooser/default.conf
-		fi
 	fi
 
 	qt5_install_module_config
@@ -290,6 +316,16 @@ qt5-build_pkg_postrm() {
 
 
 ######  Public helpers  ######
+
+# @FUNCTION: qt5_symlink_binary_to_path
+# @USAGE: <target binary name> [suffix]
+# @DESCRIPTION:
+# Symlink a given binary from QT5_BINDIR to QT5_PREFIX/bin, with optional suffix
+qt5_symlink_binary_to_path() {
+	[[ $# -ge 1 ]] || die "${FUNCNAME}() requires at least one argument"
+
+	dosym -r "${QT5_BINDIR}"/${1} /usr/bin/${1}${2}
+}
 
 # @FUNCTION: qt_use
 # @USAGE: <flag> [feature] [enableval]

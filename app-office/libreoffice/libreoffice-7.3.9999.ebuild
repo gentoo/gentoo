@@ -104,13 +104,13 @@ RESTRICT="!test? ( test )"
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 
-#[[ ${MY_PV} == *9999* ]] || \
-#KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux"
+[[ ${MY_PV} == *9999* ]] || \
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
 	app-arch/zip
-	app-crypt/gpgme[cxx]
+	app-crypt/gpgme:=[cxx]
 	app-text/hunspell:=
 	>=app-text/libabw-0.1.0
 	>=app-text/libebook-0.1
@@ -157,6 +157,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=media-libs/libcdr-0.1.0
 	>=media-libs/libepoxy-1.3.1[X]
 	>=media-libs/libfreehand-0.1.0
+	media-libs/libjpeg-turbo:=
 	media-libs/libpagemaker
 	>=media-libs/libpng-1.4:0=
 	>=media-libs/libvisio-0.1.0
@@ -167,7 +168,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	net-misc/curl
 	sci-mathematics/lpsolve
 	sys-libs/zlib
-	virtual/jpeg:0
 	virtual/opengl
 	x11-libs/cairo[X]
 	x11-libs/libXinerama
@@ -212,11 +212,11 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		kde-frameworks/kio:5
 		kde-frameworks/kwindowsystem:5
 	)
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap:= )
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
-	libreoffice_extensions_scripting-javascript? ( dev-java/rhino:1.6 )
-	mariadb? ( dev-db/mariadb-connector-c )
-	!mariadb? ( dev-db/mysql-connector-c )
+	libreoffice_extensions_scripting-javascript? ( >=dev-java/rhino-1.7.14:1.6 )
+	mariadb? ( dev-db/mariadb-connector-c:= )
+	!mariadb? ( dev-db/mysql-connector-c:= )
 	pdfimport? ( app-text/poppler:=[cxx] )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
 "
@@ -250,6 +250,8 @@ DEPEND="${COMMON_DEPEND}
 	)
 "
 RDEPEND="${COMMON_DEPEND}
+	acct-group/libreoffice
+	acct-user/libreoffice
 	!app-office/libreoffice-bin
 	!app-office/libreoffice-bin-debug
 	media-fonts/liberation-fonts
@@ -269,15 +271,16 @@ BDEPEND="
 	virtual/pkgconfig
 	clang? (
 		|| (
+			(
+				sys-devel/clang:14
+				sys-devel/llvm:14
+				=sys-devel/lld-14*	)
 			(	sys-devel/clang:13
 				sys-devel/llvm:13
 				=sys-devel/lld-13*	)
 			(	sys-devel/clang:12
 				sys-devel/llvm:12
 				=sys-devel/lld-12*	)
-			(	sys-devel/clang:11
-				sys-devel/llvm:11
-				=sys-devel/lld-11*	)
 		)
 	)
 	odk? ( >=app-doc/doxygen-1.8.4 )
@@ -297,9 +300,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 	"${FILESDIR}/${PN}-7.2.0.4-qt5detect.patch"
-
-	# master branch
-	"${FILESDIR}/${PN}-7.2.5.2-kf591.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
@@ -423,6 +423,10 @@ src_configure() {
 		CXX=${CHOST}-g++
 		NM=gcc-nm
 		RANLIB=gcc-ranlib
+
+		# Apparently the Clang flags get used even for GCC builds sometimes.
+		# bug #838115
+		sed -i -e "s/-flto=thin/-flto/" solenv/gbuild/platform/com_GCC_defs.mk || die
 	fi
 
 	if use custom-cflags ; then
@@ -507,7 +511,7 @@ src_configure() {
 		--with-system-ucpp
 		--with-tls=nss
 		--with-vendor="Gentoo Foundation"
-		--with-webdav
+		--with-webdav="neon"
 		--with-x
 		--without-fonts
 		--without-myspell-dicts
@@ -566,16 +570,16 @@ src_configure() {
 			--with-ant-home="${ANT_HOME}"
 		)
 		if has_version "dev-java/openjdk:11"; then
-			myeconfargs+=( -with-jdk-home="${EPREFIX}/usr/$(get_libdir)/openjdk-11" )
+			myeconfargs+=( --with-jdk-home="${EPREFIX}/usr/$(get_libdir)/openjdk-11" )
 		elif has_version "dev-java/openjdk-bin:11"; then
-			myeconfargs+=( --with-jdk-home="/opt/openjdk-bin-11" )
+			myeconfargs+=( --with-jdk-home="${EPREFIX}/opt/openjdk-bin-11" )
 		fi
 
 		use libreoffice_extensions_scripting-beanshell && \
 			myeconfargs+=( --with-beanshell-jar=$(java-pkg_getjar bsh bsh.jar) )
 
 		use libreoffice_extensions_scripting-javascript && \
-			myeconfargs+=( --with-rhino-jar=$(java-pkg_getjar rhino-1.6 js.jar) )
+			myeconfargs+=( --with-rhino-jar=$(java-pkg_getjar rhino-1.6 rhino.jar) )
 	fi
 
 	is-flagq "-flto*" && myeconfargs+=( --enable-lto )
@@ -651,6 +655,9 @@ EOF
 			dosym -r ${loprogdir}/__pycache__/${pyc} $(python_get_sitedir)/__pycache__/${pyc}
 		done < <(find "${D}"${lodir}/program -type f -name ${py/.py/*.pyc} -print0)
 	done
+
+	newinitd "${FILESDIR}/libreoffice.initd" libreoffice
+	newconfd "${FILESDIR}/libreoffice.confd" libreoffice
 }
 
 pkg_postinst() {

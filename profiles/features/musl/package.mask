@@ -1,6 +1,50 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Florian Schmaus <flow@gentoo.org> (2022-06-05)
+# Binary package linked against glibc, bug #832932
+sys-block/hpssacli
+
+# Sam James <sam@gentoo.org> (2022-04-23)
+# Binary package linked against glibc, bug #832615
+net-print/cnijfilter2
+
+# Sam James <sam@gentoo.org> (2022-04-23)
+# Compatibility packages for binary/pre-built software shouldn't
+# be needed on musl (and these fail to build anyway).
+sys-libs/libtermcap-compat
+sys-libs/libstdc++-v3
+
+# Sam James <sam@gentoo.org> (2022-04-22)
+# Needs strndupa, upstream not interested in supporting musl
+# bug #713542
+net-misc/casync
+
+# Martin Dummer <martin.dummer@gmx.net> (2022-03-26)
+# Binary package linked to glibc. Bug #832558
+net-misc/teamviewer
+
+# Mike Pagano <mpagano@gentoo.org> (2022-03-21)
+# Binary package linked to glibc
+dev-util/idea-community
+
+# Pacho Ramos <pacho@gentoo.org> (2022-03-13)
+# Binary package linked to glibc
+sys-power/dptfxtract
+
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2022-03-14)
+# Doesn't build with musl, bug #832742
+sci-libs/opencascade
+
+# Adel KARA SLIMANE <adel.ks@zegrapher.com> (2022-03-09)
+# Binary packages linked to glibc
+app-editors/vscode
+app-editors/vscodium
+
+# João Santos <joaompssantos@gmail.com> (2022-02-22)
+# Binary package linked to glibc
+app-text/master-pdf-editor
+
 # Sam James <sam@gentoo.org> (2022-02-20)
 # Binary package linked to glibc
 app-admin/bitwarden-desktop-bin
@@ -145,6 +189,7 @@ app-text/zotero-bin
 media-video/popcorntime-bin
 net-im/rocketchat-desktop-bin
 net-im/whatsapp-desktop-bin
+net-im/wazzapp-bin
 sci-misc/jupyterlab-desktop-bin
 sci-misc/netlogo-bin
 sci-electronics/eagle
@@ -187,10 +232,6 @@ net-misc/netkit-rsh
 # David Seifert <soap@gentoo.org> (2021-02-08)
 # nvidia-drivers only works against glibc.
 x11-drivers/nvidia-drivers
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-04-11)
-# musl has no support for prelinked sections, bug #717020
-sys-devel/prelink
 
 # Ulrich Müller (2020-03-31)
 # Not ported to musl, bug #715642.

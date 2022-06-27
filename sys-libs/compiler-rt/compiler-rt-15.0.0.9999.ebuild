@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 inherit cmake flag-o-matic llvm llvm.org python-any-r1 toolchain-funcs
@@ -18,17 +18,19 @@ RESTRICT="!test? ( test ) !clang? ( test )"
 CLANG_SLOT=${SLOT%%.*}
 # llvm-6 for new lit options
 DEPEND="
-	>=sys-devel/llvm-6"
+	>=sys-devel/llvm-6
+"
 BDEPEND="
 	>=dev-util/cmake-3.16
 	clang? ( sys-devel/clang )
 	test? (
-		$(python_gen_any_dep ">=dev-python/lit-9.0.1[\${PYTHON_USEDEP}]")
+		$(python_gen_any_dep ">=dev-python/lit-15[\${PYTHON_USEDEP}]")
 		=sys-devel/clang-${PV%_*}*:${CLANG_SLOT}
 	)
 	!test? (
 		${PYTHON_DEPS}
-	)"
+	)
+"
 
 LLVM_COMPONENTS=( compiler-rt cmake )
 LLVM_PATCHSET=9999-1
@@ -70,8 +72,12 @@ src_configure() {
 
 	local nolib_flags=( -nodefaultlibs -lc )
 	if use clang; then
-		local -x CC=${CHOST}-clang
-		local -x CXX=${CHOST}-clang++
+		# Only do this conditionally to allow overriding with
+		# e.g. CC=clang-13 in case of breakage
+		if ! tc-is-clang ; then
+			local -x CC=${CHOST}-clang
+			local -x CXX=${CHOST}-clang++
+		fi
 		strip-unsupported-flags
 		# ensure we can use clang before installing compiler-rt
 		local -x LDFLAGS="${LDFLAGS} ${nolib_flags[*]}"

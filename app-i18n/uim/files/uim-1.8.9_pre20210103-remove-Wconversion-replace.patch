@@ -1,0 +1,13 @@
+--- a/qt4/common.pro.in
++++ b/qt4/common.pro.in
+@@ -20,10 +20,6 @@
+ QMAKE_CXX               = @CXX@
+ QMAKE_CXXFLAGS_DEBUG   += @CXXFLAGS@ @CPPFLAGS@ @X_CFLAGS@
+ QMAKE_CXXFLAGS_RELEASE += @CXXFLAGS@ @CPPFLAGS@ @X_CFLAGS@
+-# Remove "-Wconversion" from CXXFLAGS to avoid lots of warnings
+-# from Qt4 header files
+-QMAKE_CXXFLAGS_DEBUG    = $$replace(QMAKE_CXXFLAGS_DEBUG, "-Wconversion", "")
+-QMAKE_CXXFLAGS_RELEASE  = $$replace(QMAKE_CXXFLAGS_RELEASE, "-Wconversion", "")
+ QMAKE_LINK              = @CXX@
+ QMAKE_LFLAGS            = @LDFLAGS@
+ QMAKE_STRIP             =

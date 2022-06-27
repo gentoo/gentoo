@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Log parsing and notification program"
-HOMEPAGE="https://inversepath.com/tenshi.html https://github.com/inversepath/tenshi"
-SRC_URI="https://github.com/inversepath/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://inversepath.com/tenshi.html https://github.com/f-secure-foundry/tenshi"
+SRC_URI="https://github.com/f-secure-foundry/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"

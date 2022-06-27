@@ -11,7 +11,7 @@ SRC_URI="https://github.com/valr/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv ~x86"
 IUSE="libnotify"
 
 RDEPEND="dev-libs/glib:2

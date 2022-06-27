@@ -1,14 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby26 ruby27 ruby30"
+USE_RUBY="ruby26 ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_RECIPE_TEST=""
 RUBY_FAKEGEM_EXTRADOC="README"
 RUBY_FAKEGEM_EXTENSIONS=(bindings/ruby/extconf.rb)
 
-inherit multilib ruby-fakegem
+inherit ruby-fakegem
 
 DESCRIPTION="System Information Gatherer And Reporter"
 HOMEPAGE="http://sigar.hyperic.com/"

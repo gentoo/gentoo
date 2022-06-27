@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools toolchain-funcs
 
@@ -9,36 +9,43 @@ MY_P=${P/graphicsm/GraphicsM}
 DESCRIPTION="Collection of tools and libraries for many image formats"
 HOMEPAGE="http://www.graphicsmagick.org/ http://hg.code.sf.net/p/graphicsmagick/code/"
 
-if [[ ${PV} == "9999" ]] ; then
+if [[ ${PV} == 9999 ]] ; then
 	inherit mercurial
 	EHG_REPO_URI="http://hg.code.sf.net/p/${PN}/code"
 else
+	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/bobfriesenhahn.asc
+	inherit verify-sig
 	SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.xz"
+	SRC_URI+=" verify-sig? ( mirror://sourceforge/${PN}/${MY_P}.tar.xz.sig )"
 	S="${WORKDIR}/${MY_P}"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-bobfriesenhahn )"
 fi
 
 LICENSE="MIT"
 SLOT="0/${PV%.*}"
 
-IUSE="bzip2 +cxx debug dynamic-loading fpx imagemagick jbig jpeg lcms lzma"
+IUSE="bzip2 +cxx debug dynamic-loading fpx heif imagemagick jbig jpeg jpegxl lcms lzma"
 IUSE+=" openmp perl png postscript q16 q32 static-libs svg threads tiff truetype"
 IUSE+=" webp wmf X zlib"
 
-RDEPEND="dev-libs/libltdl:0
+RDEPEND="dev-libs/libltdl
 	bzip2? ( app-arch/bzip2 )
 	fpx? ( media-libs/libfpx )
+	heif? ( media-libs/libheif:= )
 	imagemagick? ( !media-gfx/imagemagick )
 	jbig? ( media-libs/jbigkit )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( virtual/jpeg )
+	jpegxl? ( media-libs/libjxl:= )
 	lcms? ( media-libs/lcms:2 )
 	lzma? ( app-arch/xz-utils )
 	perl? ( dev-lang/perl:= )
-	png? ( media-libs/libpng:0= )
+	png? ( media-libs/libpng:= )
 	postscript? ( app-text/ghostscript-gpl )
 	svg? ( dev-libs/libxml2 )
-	tiff? ( media-libs/tiff:0 )
+	tiff? ( media-libs/tiff )
 	truetype? (
 		media-fonts/urw-fonts
 		>=media-libs/freetype-2
@@ -57,6 +64,14 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.19-perl.patch
 )
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 src_prepare() {
 	default
 
@@ -65,27 +80,25 @@ src_prepare() {
 
 src_configure() {
 	local depth=8
+
 	use q16 && depth=16
 	use q32 && depth=32
 
-	local openmp=disable
-	if use openmp && tc-has-openmp ; then
-		openmp=enable
-	fi
-
 	local myeconfargs=(
-		--${openmp}-openmp
 		--enable-largefile
 		--enable-shared
 		$(use_enable static-libs static)
 		$(use_enable debug prof)
 		$(use_enable debug gcov)
 		$(use_enable imagemagick magick-compat)
+		$(use_enable openmp)
 		$(use_with threads)
 		$(use_with dynamic-loading modules)
 		--with-quantum-depth=${depth}
 		--without-frozenpaths
 		$(use_with cxx magick-plus-plus)
+		$(use_with heif)
+		$(use_with jpegxl jxl)
 		$(use_with perl)
 		--with-perl-options=INSTALLDIRS=vendor
 		$(use_with bzip2 bzlib)
@@ -129,6 +142,7 @@ src_install() {
 
 	if use perl ; then
 		emake -C PerlMagick DESTDIR="${D}" install
+
 		find "${ED}" -type f -name perllocal.pod -exec rm -f {} + || die
 		find "${ED}" -depth -mindepth 1 -type d -empty -exec rm -rf {} + || die
 	fi

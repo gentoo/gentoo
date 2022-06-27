@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-26)
+# Dependency x11-libs/intel-hybrid-codec-driver does not work on x32
+x11-libs/libva-intel-driver hybrid
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-02-09)
 # Requires net-libs/nodejs, plus mask all reverse-dependencies.
 app-i18n/fcitx-libpinyin dictionary-manager
@@ -11,7 +15,6 @@ kde-apps/kde-apps-meta:5 pim
 kde-apps/kdenetwork-meta:5 bittorrent
 kde-apps/umbrello:5 php
 kde-misc/kio-gdrive kaccounts
-media-gfx/gmic krita
 net-irc/quassel urlpreview
 net-misc/fatrat bittorrent
 net-misc/seafile-client shibboleth
@@ -22,7 +25,7 @@ sci-physics/root qt5
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-05)
 # sys-cluster/ceph no longer supports x86, versions that support
 # it no longer build thanks to python2 removals
-app-backup/bareos ceph cephfs rados rados-striper
+app-backup/bareos ceph
 app-emulation/libvirt rbd
 app-emulation/qemu rbd
 net-analyzer/rrdtool rados

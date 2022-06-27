@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools
+inherit meson
 
 DESCRIPTION="Collection of utilities and tests for VA-API"
 HOMEPAGE="https://01.org/linuxmedia/vaapi"
@@ -11,31 +11,26 @@ if [[ ${PV} = *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/intel/libva-utils"
 else
-	# Tarball with pre-built 'configure' not always available, portage use tarballs
-	# without pre-built 'configure' as they are always available upstream.
-	# SRC_URI="https://github.com/intel/libva-utils/releases/download/${PV}/${P}.tar.bz2"
 	SRC_URI="https://github.com/intel/libva-utils/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+drm examples putsurface test test-va-api +vainfo wayland X"
-RESTRICT="!test? ( test )"
+IUSE="examples putsurface test +vainfo wayland X"
+RESTRICT="test" # Tests must be run manually
 
 REQUIRED_USE="
-	|| ( drm wayland X )
 	putsurface? ( || ( wayland X ) )
-	putsurface? ( drm )
-	|| ( examples putsurface test-va-api vainfo )
+	|| ( examples putsurface test vainfo )
 "
 
 BDEPEND="virtual/pkgconfig"
 
 if [[ ${PV} = *9999 ]] ; then
-	DEPEND="~x11-libs/libva-${PV}:=[drm?,wayland?,X?]"
+	DEPEND="~x11-libs/libva-${PV}:=[drm(+),wayland?,X?]"
 else
-	DEPEND=">=x11-libs/libva-$(ver_cut 1-2).0:=[drm?,wayland?,X?]"
+	DEPEND=">=x11-libs/libva-$(ver_cut 1-2).0:=[drm(+),wayland?,X?]"
 fi
 
 DEPEND+="
@@ -44,54 +39,58 @@ DEPEND+="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-2.10.0_test_in_sandbox.patch" )
-
-# CONTRIBUTING.md and README.md are avaialbe only in .tar.gz tarballs and in git
-DOCS=( NEWS CONTRIBUTING.md README.md )
-
 src_prepare() {
 	default
 
-	sed -e 's/-Werror//' -i test/Makefile.am || die
+	local sed_args=()
+
+	# Fix broken dependency check
+	# https://github.com/intel/libva-utils/pull/260
+	sed_args+=(-e "s/dependency('drm'/dependency('libdrm'/")
 
 	if ! use examples ; then
-		sed -E -e '/^SUBDIRS \+?=/s!( decode\>| encode\>| videoprocess\>| vendor/intel\>| vendor/intel/sfcsample\>)!!g' -i Makefile.am || die
+		sed_args+=(
+			-e "/^subdir('decode')$/d"
+			-e "/^subdir('encode')$/d"
+			-e "/^subdir('videoprocess')$/d"
+			-e "/^subdir('vendor\/intel')$/d"
+			-e "/^subdir('vendor\/intel\/sfcsample')$/d"
+		)
 	fi
 
 	if ! use putsurface ; then
-		sed -E -e '/^SUBDIRS \+?=/s! putsurface\>!!g' -i Makefile.am || die
+		sed_args+=(-e "/^subdir('putsurface')$/d")
 	fi
 
 	if ! use vainfo ; then
-		sed -E -e '/^SUBDIRS \+?=/s! vainfo\>!!g' -i Makefile.am || die
+		sed_args+=(-e "/^subdir('vainfo')$/d")
 	fi
 
-	eautoreconf
+	if [[ ${#sed_args[@]} -gt 0 ]] ; then
+		sed "${sed_args[@]}" -i meson.build || die
+	fi
 }
 
 src_configure() {
-	local myeconfargs=(
-		$(use_enable drm)
-		$(use_enable test tests)
-		$(use_enable wayland)
-		$(use_enable X x11)
+	local emesonargs=(
+		-Ddrm=true
+		$(meson_use X x11)
+		$(meson_use wayland)
+		$(meson_use test tests)
 	)
-
-	if use test || use test-va-api ; then
-		myeconfargs+=( --enable-tests )
-	else
-		myeconfargs+=( --disable-tests )
-	fi
-
-	econf "${myeconfargs[@]}"
+	meson_src_configure
 }
 
 src_install() {
-	default
+	meson_src_install
 
-	if ! use test-va-api ; then
-		if [[ -e "${ED}"/usr/bin/test_va_api ]] ; then
-			rm -f "${ED}"/usr/bin/test_va_api || die
-		fi
+	if ! use test ; then
+		rm -f "${ED}"/usr/bin/test_va_api || die
+	fi
+}
+
+pkg_postinst() {
+	if use test ; then
+		elog "Tests must be run manually with the test_va_api binary"
 	fi
 }

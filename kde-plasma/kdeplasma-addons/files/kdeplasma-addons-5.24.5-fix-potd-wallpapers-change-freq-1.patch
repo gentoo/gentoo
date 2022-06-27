@@ -1,0 +1,47 @@
+From d3bb3dc1d96ef7d734503e6d78dc3ce35106a628 Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Thu, 5 May 2022 10:16:45 +0800
+Subject: [PATCH] wallpapers/potd: Give random chooser a seed in
+ simonstalenhagprovider
+
+Make the seed depend on the current date.
+
+CCBUG: 453391
+---
+ dataengines/potd/simonstalenhagprovider.cpp | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/dataengines/potd/simonstalenhagprovider.cpp b/dataengines/potd/simonstalenhagprovider.cpp
+index ebcb3423f..fe273ec79 100644
+--- a/dataengines/potd/simonstalenhagprovider.cpp
++++ b/dataengines/potd/simonstalenhagprovider.cpp
+@@ -6,10 +6,11 @@
+ 
+ #include "simonstalenhagprovider.h"
+ 
++#include <random>
++
+ #include <QDebug>
+ #include <QJsonArray>
+ #include <QJsonDocument>
+-#include <QRandomGenerator>
+ 
+ #include <KIO/Job>
+ #include <KPluginFactory>
+@@ -28,8 +29,11 @@ static QJsonValue randomArrayValueByKey(const QJsonObject &object, QLatin1String
+         return result;
+     }
+ 
+-    auto arraySize = array.size();
+-    return array.at(QRandomGenerator::global()->bounded(arraySize));
++    // Plasma 5.24.0 release date
++    std::mt19937 randomEngine(QDate(2022, 2, 3).daysTo(QDate::currentDate()));
++    std::uniform_int_distribution<int> distrib(0, array.size() - 1);
++
++    return array.at(distrib(randomEngine));
+ }
+ 
+ SimonStalenhagProvider::SimonStalenhagProvider(QObject *parent, const QVariantList &args)
+-- 
+GitLab
+

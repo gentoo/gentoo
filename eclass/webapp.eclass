@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: webapp.eclass
@@ -20,20 +20,20 @@ EXPORT_FUNCTIONS pkg_postinst pkg_setup src_install pkg_prerm
 if [[ -z ${_WEBAPP_ECLASS} ]]; then
 _WEBAPP_ECLASS=1
 
-# @ECLASS-VARIABLE: WEBAPP_DEPEND
+# @ECLASS_VARIABLE: WEBAPP_DEPEND
 # @DESCRIPTION:
 # An ebuild should use WEBAPP_DEPEND if a custom DEPEND needs to be built, most
 # notably in combination with WEBAPP_OPTIONAL.
 WEBAPP_DEPEND="app-admin/webapp-config"
 
-# @ECLASS-VARIABLE: WEBAPP_NO_AUTO_INSTALL
+# @ECLASS_VARIABLE: WEBAPP_NO_AUTO_INSTALL
 # @PRE_INHERIT
 # @DESCRIPTION:
 # An ebuild sets this to `yes' if an automatic installation and/or upgrade is
 # not possible. The ebuild should overwrite pkg_postinst() and explain the
 # reason for this BEFORE calling webapp_pkg_postinst().
 
-# @ECLASS-VARIABLE: WEBAPP_OPTIONAL
+# @ECLASS_VARIABLE: WEBAPP_OPTIONAL
 # @PRE_INHERIT
 # @DESCRIPTION:
 # An ebuild sets this to `yes' to make webapp support optional, in which case
@@ -457,7 +457,7 @@ webapp_src_install() {
 	chmod -R g-s "${D}/"
 
 	keepdir "${MY_PERSISTDIR}"
-	fowners "root:0" "${MY_PERSISTDIR}"
+	fowners "0:0" "${MY_PERSISTDIR}"
 	fperms 755 "${MY_PERSISTDIR}"
 }
 

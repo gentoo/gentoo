@@ -1,0 +1,31 @@
+https://gitlab.gnome.org/GNOME/libpeas/-/merge_requests/34
+
+From 1be9b5a51ca4200d9cff69642368c24225b58dd5 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Mon, 21 Mar 2022 19:13:04 -0700
+Subject: [PATCH] meson: Fix disabling gtk_doc
+
+Without this, even passing -Dgtk_doc=false will cause documentation to
+be built if gi-docgen is available.
+
+Fixes: 82119a6 ("gi-docgen: Initial commit")
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index c77b352..91b8ca8 100644
+--- a/meson.build
++++ b/meson.build
+@@ -251,7 +251,7 @@ configure_file(
+ )
+ 
+ # Options
+-build_gtk_doc = gi_docgen_dep.found()
++build_gtk_doc = get_option('gtk_doc') and gi_docgen_dep.found()
+ 
+ install_glade_catalog = get_option('glade_catalog')
+ if install_glade_catalog and not gladeui_dep.found()
+-- 
+2.34.1
+

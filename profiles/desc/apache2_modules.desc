@@ -11,7 +11,6 @@ asis - Sends files that contain their own HTTP headers
 auth_basic - Basic authentication
 auth_digest - User authentication using MD5 Digest Authentication
 auth_form - Allows the use of an HTML login form to restrict access by looking up users in the given providers
-authn_alias - Provides the ability to create extended authentication providers based on actual providers
 authn_anon - Allows "anonymous" user access to authenticated areas
 authn_core - Provides core authentication capabilities common to all authentication providers (functionality provided by authn_alias in previous versions)
 authn_dbd - User authentication using an SQL database
@@ -71,6 +70,7 @@ proxy_balancer - mod_proxy extension for load balancing
 proxy_connect - mod_proxy extension for CONNECT request handling
 proxy_fcgi - FastCGI support module for mod_proxy
 proxy_ftp - FTP support module for mod_proxy
+proxy_hcheck - Dynamic health check of Balancer members (workers) for mod_proxy
 proxy_html - Module to rewrite links in html pages behind a reverse proxy
 proxy_http - HTTP support module for mod_proxy
 proxy_http2 - HTTP2 support module for mod_proxy

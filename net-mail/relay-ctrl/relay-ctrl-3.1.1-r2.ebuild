@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -52,9 +52,9 @@ src_install() {
 
 	# tell it our storage dir
 	echo "${RELAYCTRL_BASE}/${RELAYCTRL_STORAGE}" \
-		> ${D}${RELAYCTRL_CONFDIR}/RELAY_CTRL_DIR || die
+		> "${D}"${RELAYCTRL_CONFDIR}/RELAY_CTRL_DIR || die
 	# default to 30 minutes
-	echo "1800" > ${D}${RELAYCTRL_CONFDIR}/RELAY_CTRL_EXPIRY || die
+	echo "1800" > "${D}"${RELAYCTRL_CONFDIR}/RELAY_CTRL_EXPIRY || die
 
 	dodir /etc/cron.hourly
 	echo "/usr/bin/envdir ${RELAYCTRL_CONFDIR} ${RELAYCTRL_BINDIR}/relay-ctrl-age" \

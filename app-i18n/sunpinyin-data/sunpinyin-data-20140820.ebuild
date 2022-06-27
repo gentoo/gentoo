@@ -1,7 +1,9 @@
-# Copyright 2013-2021 Gentoo Authors
+# Copyright 2013-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
+
+inherit edo
 
 DICT_VERSION="20131214"
 LM_VERSION="${PV}"
@@ -30,16 +32,11 @@ src_unpack() {
 
 src_compile() {
 	# lm_sc.t3g
-	echoit slmpack lm_sc.3gm.arpa dict.utf8 lm_sc.3gm
-	echoit slmthread lm_sc.3gm lm_sc.t3g.orig
-	echoit tslmendian -i lm_sc.t3g.orig -o lm_sc.t3g
+	edo slmpack lm_sc.3gm.arpa dict.utf8 lm_sc.3gm
+	edo slmthread lm_sc.3gm lm_sc.t3g.orig
+	edo tslmendian -i lm_sc.t3g.orig -o lm_sc.t3g
 	# lexicon3
-	echoit genpyt -i dict.utf8 -s lm_sc.t3g.orig -l pydict_sc.log -o pydict_sc.bin
-}
-
-echoit() {
-	echo "${@}"
-	"${@}"
+	edo genpyt -i dict.utf8 -s lm_sc.t3g.orig -l pydict_sc.log -o pydict_sc.bin
 }
 
 src_install() {

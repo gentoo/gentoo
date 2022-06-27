@@ -8,13 +8,13 @@ JAVA_PKG_IUSE="doc examples source test"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Java Compiler Compiler - The Java Parser Generator"
-HOMEPAGE="https://javacc.java.net/"
+HOMEPAGE="https://javacc.github.io/javacc/"
 SRC_URI="http://java.net/projects/${PN}/downloads/download/${P}src.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 CDEPEND="dev-java/junit:0"
 

@@ -10,7 +10,7 @@ if [[ ${PV} = *9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://dev-www.libreoffice.org/src/libmspub/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm arm64 ~hppa ppc ppc64 ~sparc x86"
+	KEYWORDS="amd64 ~arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 fi
 DESCRIPTION="Library parsing Microsoft Publisher documents"
 HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libmspub"

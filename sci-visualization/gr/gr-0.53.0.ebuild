@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,6 +33,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
+
+PATCHES=(
+	"${FILESDIR}/${P}-musl.patch"
+)
 
 src_configure() {
 	use cairo || mycmakeargs+=( -DCAIRO_LIBRARY= )

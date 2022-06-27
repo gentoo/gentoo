@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-LUA_COMPAT=( lua5-{1..3} luajit )
+LUA_COMPAT=( lua5-{1..4} luajit )
 
 inherit cmake desktop lua-single pax-utils
 
@@ -24,7 +24,8 @@ IUSE="dbus doc gnome test"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
-RESTRICT="test" # https://bugs.gentoo.org/654084
+# Doesn't play nicely with the sandbox + requires an active D-BUS session
+RESTRICT="test"
 
 RDEPEND="${LUA_DEPS}
 	dev-libs/glib:2
@@ -44,11 +45,6 @@ RDEPEND="${LUA_DEPS}
 	x11-libs/libxkbcommon[X]
 	x11-libs/libX11
 	dbus? ( sys-apps/dbus )"
-# ldoc is used by invoking its executable, hence no need for LUA_SINGLE_USEDEP.
-# On the other hand, it means that we should explicitly depend on a version
-# migrated to Lua eclasses so that during the upgrade from unslotted
-# to slotted dev-lang/lua, the package manager knows to emerge migrated
-# ldoc before migrated awesome.
 DEPEND="${RDEPEND}
 	x11-base/xcb-proto
 	x11-base/xorg-proto
@@ -60,11 +56,19 @@ DEPEND="${RDEPEND}
 		')
 	)"
 # graphicsmagick's 'convert -channel' has no Alpha support, bug #352282
+# ldoc is used by invoking its executable, hence no need for LUA_SINGLE_USEDEP.
+# On the other hand, it means that we should explicitly depend on a version
+# migrated to Lua eclasses so that during the upgrade from unslotted
+# to slotted dev-lang/lua, the package manager knows to emerge migrated
+# ldoc before migrated awesome.
 BDEPEND="app-text/asciidoc
 	media-gfx/imagemagick[png]
 	virtual/pkgconfig
 	doc? ( >=dev-lua/ldoc-1.4.6-r100 )
-	test? ( app-shells/zsh )"
+	test? (
+		app-shells/zsh
+		x11-apps/xeyes
+	)"
 
 # Skip installation of README.md by einstalldocs, which leads to broken symlink
 DOCS=()

@@ -58,7 +58,7 @@ fi
 
 EXPORT_FUNCTIONS pkg_setup
 
-# @ECLASS-VARIABLE: PYTHON_COMPAT
+# @ECLASS_VARIABLE: PYTHON_COMPAT
 # @REQUIRED
 # @DESCRIPTION:
 # This variable contains a list of Python implementations the package
@@ -70,7 +70,7 @@ EXPORT_FUNCTIONS pkg_setup
 # PYTHON_COMPAT=( python{2_5,2_6,2_7} )
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_COMPAT_OVERRIDE
+# @ECLASS_VARIABLE: PYTHON_COMPAT_OVERRIDE
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -89,7 +89,7 @@ EXPORT_FUNCTIONS pkg_setup
 # PYTHON_COMPAT_OVERRIDE='pypy' emerge -1v dev-python/bar
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_REQ_USE
+# @ECLASS_VARIABLE: PYTHON_REQ_USE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The list of USEflags required to be enabled on the Python
@@ -107,7 +107,7 @@ EXPORT_FUNCTIONS pkg_setup
 # || ( dev-lang/python:X.Y[gdbm,ncurses(-)?] ... )
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_DEPS
+# @ECLASS_VARIABLE: PYTHON_DEPS
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated Python dependency string for all
@@ -126,7 +126,7 @@ EXPORT_FUNCTIONS pkg_setup
 # 	dev-lang/python:2.6[gdbm] )
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_USEDEP
+# @ECLASS_VARIABLE: PYTHON_USEDEP
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # An eclass-generated USE-dependency string for the currently tested
@@ -139,7 +139,7 @@ EXPORT_FUNCTIONS pkg_setup
 # Example use:
 # @CODE
 # python_check_deps() {
-# 	has_version "dev-python/foo[${PYTHON_USEDEP}]"
+# 	python_has_version "dev-python/foo[${PYTHON_USEDEP}]"
 # }
 # @CODE
 #
@@ -148,7 +148,7 @@ EXPORT_FUNCTIONS pkg_setup
 # python_targets_python3_7(-)
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_SINGLE_USEDEP
+# @ECLASS_VARIABLE: PYTHON_SINGLE_USEDEP
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # An eclass-generated USE-dependency string for the currently tested
@@ -161,7 +161,7 @@ EXPORT_FUNCTIONS pkg_setup
 # Example use:
 # @CODE
 # python_check_deps() {
-# 	has_version "dev-python/bar[${PYTHON_SINGLE_USEDEP}]"
+# 	python_has_version "dev-python/bar[${PYTHON_SINGLE_USEDEP}]"
 # }
 # @CODE
 #
@@ -228,9 +228,9 @@ if [[ ! ${_PYTHON_ANY_R1} ]]; then
 #		dev-python/baz[${PYTHON_USEDEP}] )')"
 #
 # python_check_deps() {
-#	has_version "dev-python/foo[${PYTHON_SINGLE_USEDEP}]" \
-#		&& { has_version "dev-python/bar[${PYTHON_USEDEP}]" \
-#			|| has_version "dev-python/baz[${PYTHON_USEDEP}]"; }
+#	python_has_version "dev-python/foo[${PYTHON_SINGLE_USEDEP}]" \
+#		&& { python_has_version "dev-python/bar[${PYTHON_USEDEP}]" \
+#			|| python_has_version "dev-python/baz[${PYTHON_USEDEP}]"; }
 # }
 # @CODE
 #
@@ -302,9 +302,11 @@ python_setup() {
 	local epython_impl=${EPYTHON/./_}
 	if [[ ${epython_impl} ]]; then
 		if ! has "${epython_impl}" "${_PYTHON_SUPPORTED_IMPLS[@]}"; then
-			einfo "EPYTHON (${EPYTHON}) not supported by the package"
-		elif ! has "${epython_impl}" "${_PYTHON_ALL_IMPLS[@]}"; then
-			ewarn "Invalid EPYTHON: ${EPYTHON}"
+			if ! has "${epython_impl}" "${_PYTHON_ALL_IMPLS[@]}"; then
+				ewarn "Invalid EPYTHON: ${EPYTHON}"
+			else
+				einfo "EPYTHON (${EPYTHON}) not supported by the package"
+			fi
 		elif _python_run_check_deps "${epython_impl}"; then
 			_python_export EPYTHON PYTHON
 			_python_wrapper_setup

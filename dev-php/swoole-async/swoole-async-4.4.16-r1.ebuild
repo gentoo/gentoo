@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -9,7 +9,7 @@ PHP_EXT_ZENDEXT="no"
 PHP_EXT_SAPIS="cli"
 DOCS=( README.md )
 
-USE_PHP="php7-1 php7-2 php7-3 php7-4"
+USE_PHP="php7-4"
 
 inherit php-ext-pecl-r3
 
@@ -27,7 +27,7 @@ SLOT="0"
 RESTRICT="test"
 
 # This will only compile with the same version of dev-php/swoole
-DEPEND="~dev-php/swoole-${PV}[php_targets_php7-1(-)?,php_targets_php7-2(-)?,php_targets_php7-3(-)?,php_targets_php7-4(-)?]"
+DEPEND="~dev-php/swoole-${PV}[php_targets_php7-4(-)?]"
 
 RDEPEND="${DEPEND}"
 

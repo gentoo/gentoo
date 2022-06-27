@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -53,10 +53,10 @@ multilib_src_configure() {
 }
 
 _emake() {
-	CC=$(tc-getCC) \
-	AR=$(tc-getAR) \
-	RANLIB=$(tc-getRANLIB) \
-	ABI_LIBDIR=$(get_libdir) \
+	CC="$(tc-getCC)" \
+	AR="$(tc-getAR)" \
+	RANLIB="$(tc-getRANLIB)" \
+	ABI_LIBDIR="$(get_libdir)" \
 	CFLAGS_WERROR= \
 	emake "$@"
 }

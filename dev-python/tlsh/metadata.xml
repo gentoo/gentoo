@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>t@laumann.xyz</email>
+		<name>Thomas Bracht Laumann Jespersen</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">trendmicro/tlsh</remote-id>
+		<remote-id type="pypi">python-tlsh</remote-id>
+	</upstream>
+</pkgmetadata>

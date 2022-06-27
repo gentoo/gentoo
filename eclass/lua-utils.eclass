@@ -27,7 +27,7 @@ if [[ ! ${_LUA_UTILS_R0} ]]; then
 
 inherit toolchain-funcs
 
-# @ECLASS-VARIABLE: _LUA_ALL_IMPLS
+# @ECLASS_VARIABLE: _LUA_ALL_IMPLS
 # @INTERNAL
 # @DESCRIPTION:
 # All supported Lua implementations, most preferred last
@@ -39,7 +39,7 @@ _LUA_ALL_IMPLS=(
 )
 readonly _LUA_ALL_IMPLS
 
-# @ECLASS-VARIABLE: _LUA_HISTORICAL_IMPLS
+# @ECLASS_VARIABLE: _LUA_HISTORICAL_IMPLS
 # @INTERNAL
 # @DESCRIPTION:
 # All historical Lua implementations that are no longer supported.
@@ -171,7 +171,7 @@ _lua_wrapper_setup() {
 	export PATH PKG_CONFIG_PATH
 }
 
-# @ECLASS-VARIABLE: ELUA
+# @ECLASS_VARIABLE: ELUA
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The executable name of the current Lua interpreter. This variable is set
@@ -182,7 +182,7 @@ _lua_wrapper_setup() {
 # lua5.1
 # @CODE
 
-# @ECLASS-VARIABLE: LUA
+# @ECLASS_VARIABLE: LUA
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The absolute path to the current Lua interpreter. This variable is set

@@ -1,6 +1,14 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <mattst88@gentoo.org> (2022-04-18)
+# app-text/nuspell is not keyworded
+app-text/enchant nuspell
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# Untested useflag on other arches, needs keywording
+media-video/ffmpeg vmaf
+
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2021-12-11)
 # Mask AMF keyword on non-amd64 arches
 # It is unusable, for now, in other arches
@@ -163,7 +171,7 @@ x11-themes/qtcurve plasma
 
 # Jonathan Scruggs <j.scruggs@gmail.com> (2017-09-23)
 # dependencies not keyworded yet
-media-libs/openimageio field3d ptex
+media-libs/openimageio ptex
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2017-08-22)
 # Dictionary Manager requires unkeyworded dev-qt/qtwebengine.
@@ -342,10 +350,6 @@ sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_slurm o
 # Patrick McLean <chutzpah@gentoo.org> (2011-09-07)
 # missing keywords on dependencies
 media-video/x264-encoder ffmpegsource
-
-# Kacper Kowalik <xarthisius@gentoo.org> (2011-08-10)
-# mask cuda dep for opencv bug 365451
-media-libs/opencv cuda
 
 # Doug Goldstein <cardoe@gentoo.org> (2011-05-27)
 # app-emulation/spice, app-emulation/xen, and sys-cluster/ceph

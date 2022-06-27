@@ -4,6 +4,15 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Matt Turner <mattst88@gentoo.org> (2022-05-11)
+# app-text/pandoc is not stable
+app-text/nuspell doc
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-05-05)
+# fop[test] depends on mockito:4, which is not yet stable (bug #727504),
+# and itself blocked by libffi stabilization (bug #813756).
+dev-java/fop test
+
 # Sam James <sam@gentoo.org> (2022-02-11)
 # Needs glibc-2.35(?) (or <2.34) which is not yet even keyworded but
 # won't be stable for a while. Can be unmasked then.
@@ -94,14 +103,10 @@ app-emulation/xen-tools doc
 # dev-util/shellcheck (dev-lang/ghc) has no stable keywords.
 app-emulation/winetricks test
 
-# Adam Feldman <NP-Hardass@gentoo.org> (2020-04-12)
-# Dependency (net-wireless/blueman) has no stable keywords
-mate-base/mate bluetooth
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-21)
 # For bleeding edge features and testing, not generally suitable
 # for stable systems
-dev-lang/rust miri nightly system-bootstrap
+dev-lang/rust miri nightly profiler system-bootstrap
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-12-09)
 # Declared experimental, and dev-cpp/websocketpp not stable yet
@@ -133,10 +138,6 @@ media-video/vdrsync dvdr
 # anywhere yet.
 media-plugins/grilo-plugins chromaprint
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
-# net-libs/libmediawiki not stable anywhere.
-kde-apps/kipi-plugins mediawiki
-
 # Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
 # sssd is only stable for amd64 and x86
 app-admin/sudo sssd
@@ -163,11 +164,6 @@ dev-perl/DBD-SQLite system-sqlite
 # Depends on unstable dev-python/sphinx-gallery.
 # Bug #643840.
 dev-python/matplotlib doc
-
-# Michał Górny <mgorny@gentoo.org> (2018-01-20)
-# Requires proprietary fetch-restricted package that is not suitable
-# for stabilization. Bug #645092.
-net-proxy/haproxy device-atlas
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2017-11-27)
 # Dependencies have no stable keyword

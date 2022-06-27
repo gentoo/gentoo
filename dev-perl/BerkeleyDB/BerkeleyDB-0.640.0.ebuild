@@ -5,12 +5,12 @@ EAPI=7
 
 DIST_AUTHOR=PMQS
 DIST_VERSION=0.64
-inherit perl-module db-use multilib
+inherit perl-module db-use
 
 DESCRIPTION="This module provides Berkeley DB interface for Perl"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 
 # Install DB_File if you want older support. BerkleyDB no longer
 # supports less than 2.0.
@@ -35,6 +35,7 @@ PERL_RM_FILES=(
 )
 # parallel really broken
 DIST_TEST="do"
+
 src_prepare() {
 	local DB_SUPPORTED=(
 		6 5 4 3 2
@@ -57,6 +58,7 @@ src_prepare() {
 
 	perl-module_src_prepare
 }
+
 src_compile() {
 	mymake=(
 		"OPTIMIZE=${CFLAGS}"

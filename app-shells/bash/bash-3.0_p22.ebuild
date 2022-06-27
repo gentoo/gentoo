@@ -1,9 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit flag-o-matic toolchain-funcs
+
+# Uncomment if we have a patchset
+GENTOO_PATCH_DEV="sam"
+GENTOO_PATCH_VER="${PV}"
 
 # Official patchlevel
 # See ftp://ftp.cwru.edu/pub/bash/bash-3.0-patches/
@@ -28,8 +32,12 @@ patches() {
 }
 
 DESCRIPTION="The standard GNU Bourne again shell"
-HOMEPAGE="http://tiswww.case.edu/php/chet/bash/bashtop.html"
+HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html"
 SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
+
+if [[ -n ${GENTOO_PATCH_VER} ]] ; then
+	SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${GENTOO_PATCH_VER}-patches.tar.xz"
+fi
 
 LICENSE="GPL-2"
 SLOT="${MY_PV}"
@@ -46,20 +54,20 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}"/autoconf-mktime-2.53.patch
-	"${FILESDIR}"/${PN}-3.0-protos.patch
-	"${FILESDIR}"/${PN}-3.0-rbash.patch # bug #26854
-	"${FILESDIR}"/${PN}-2.05b-parallel-build.patch # bug #41002
-	"${FILESDIR}"/${PN}-3.0-darwin-conn.patch # bug #79124
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/autoconf-mktime-2.53.patch
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-3.0-protos.patch
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-3.0-rbash.patch # bug #26854
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-2.05b-parallel-build.patch # bug #41002
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-3.0-darwin-conn.patch # bug #79124
 
 	# Read patch headers for more info ... many ripped from Fedora/Debian[17]/SuSe/upstream
-	"${FILESDIR}"/${PN}-3.0-{afs,crash,jobs,manpage,pwd,ulimit,histtimeformat,locale,multibyteifs,subshell,volatile-command}.patch
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-3.0-{afs,crash,jobs,manpage,pwd,ulimit,histtimeformat,locale,multibyteifs,subshell,volatile-command}.patch
 
-	"${FILESDIR}"/${PN}-3.0-read-builtin-pipe.patch # bug #87093
-	"${FILESDIR}"/${PN}-3.0-trap-fg-signals.patch
-	"${FILESDIR}"/${PN}-3.0-pgrp-pipe-fix.patch # bug #92349
-	"${FILESDIR}"/${PN}-3.0-strnlen.patch
-	"${FILESDIR}"/${PN}-3.1-dev-fd-buffer-overflow.patch # bug #431850
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-3.0-read-builtin-pipe.patch # bug #87093
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-3.0-trap-fg-signals.patch
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-3.0-pgrp-pipe-fix.patch # bug #92349
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-3.0-strnlen.patch
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-3.1-dev-fd-buffer-overflow.patch # bug #431850
 )
 
 pkg_setup() {
@@ -73,6 +81,10 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${MY_P}.tar.gz
+
+	if [[ -n ${GENTOO_PATCH_VER} ]] ; then
+		unpack ${PN}-${GENTOO_PATCH_VER}-patches.tar.xz
+	fi
 }
 
 src_prepare() {

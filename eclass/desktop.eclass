@@ -308,7 +308,7 @@ _iconins() {
 			case ${size} in
 			16|22|24|32|36|48|64|72|96|128|192|256|512)
 				size=${size}x${size};;
-			scalable)
+			symbolic|scalable)
 				;;
 			*)
 				eerror "${size} is an unsupported icon size!"

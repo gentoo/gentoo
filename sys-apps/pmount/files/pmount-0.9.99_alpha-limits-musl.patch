@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/713422
+--- a/src/utils.c
++++ b/src/utils.c
+@@ -25,6 +25,7 @@
+ #include <libintl.h>
+ 
+ #include <unistd.h>
++#include <limits.h>
+ 
+ #include "utils.h"
+ 
+

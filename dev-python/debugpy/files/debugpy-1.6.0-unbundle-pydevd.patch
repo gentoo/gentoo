@@ -1,0 +1,102 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 15ea7e1..d3a2764 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -8,7 +8,6 @@ exclude = '''
+ ( __pycache__
+ | ^/.tox
+ | ^/versioneer.py
+-| ^/src/debugpy/_vendored
+ | ^/src/debugpy/_version.py
+ )
+ '''
+diff --git a/setup.py b/setup.py
+index 2c0a2d6..7c22c0c 100644
+--- a/setup.py
++++ b/setup.py
+@@ -18,12 +18,10 @@ del sys.path[0]
+ 
+ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "src"))
+ import debugpy
+-import debugpy._vendored
+ 
+ del sys.path[0]
+ 
+ 
+-PYDEVD_ROOT = debugpy._vendored.project_root("pydevd")
+ DEBUGBY_ROOT = os.path.dirname(os.path.abspath(debugpy.__file__))
+ 
+ 
+@@ -33,27 +31,6 @@ def get_buildplatform():
+     return None
+ 
+ 
+-def cython_build():
+-    print("Compiling extension modules (set SKIP_CYTHON_BUILD=1 to omit)")
+-    subprocess.call(
+-        [
+-            sys.executable,
+-            os.path.join(PYDEVD_ROOT, "setup_pydevd_cython.py"),
+-            "build_ext",
+-            "-i",
+-        ]
+-    )
+-
+-
+-def iter_vendored_files():
+-    # Add pydevd files as data files for this package. They are not
+-    # treated as a package of their own, because we don't actually
+-    # want to provide pydevd - just use our own copy internally.
+-    for project in debugpy._vendored.list_all():
+-        for filename in debugpy._vendored.iter_packaging_files(project):
+-            yield filename
+-
+-
+ # bdist_wheel determines whether the package is pure or not based on ext_modules.
+ # However, all pydevd native modules are prebuilt and packaged as data, so they
+ # should not be in the list.
+@@ -133,8 +110,6 @@ with open("DESCRIPTION.md", "r") as fh:
+ 
+ 
+ if __name__ == "__main__":
+-    if not os.getenv("SKIP_CYTHON_BUILD"):
+-        cython_build()
+ 
+     extras = {}
+     platforms = get_buildplatform()
+@@ -179,11 +154,9 @@ if __name__ == "__main__":
+             "debugpy.common",
+             "debugpy.launcher",
+             "debugpy.server",
+-            "debugpy._vendored",
+         ],
+         package_data={
+             "debugpy": ["ThirdPartyNotices.txt"],
+-            "debugpy._vendored": list(iter_vendored_files()),
+         },
+         ext_modules=ExtModules(),
+         has_ext_modules=lambda: True,
+diff --git a/src/debugpy/server/__init__.py b/src/debugpy/server/__init__.py
+index 642c776..947cd7d 100644
+--- a/src/debugpy/server/__init__.py
++++ b/src/debugpy/server/__init__.py
+@@ -3,7 +3,3 @@
+ # for license information.
+ 
+ from __future__ import absolute_import, division, print_function, unicode_literals
+-
+-# "force_pydevd" must be imported first to ensure (via side effects)
+-# that the debugpy-vendored copy of pydevd gets used.
+-import debugpy._vendored.force_pydevd  # noqa
+diff --git a/src/debugpy/server/attach_pid_injected.py b/src/debugpy/server/attach_pid_injected.py
+index 6016545..9bd2e2c 100644
+--- a/src/debugpy/server/attach_pid_injected.py
++++ b/src/debugpy/server/attach_pid_injected.py
+@@ -33,7 +33,6 @@ def attach(setup):
+                 pydevd_attach_to_process_path = os.path.join(
+                     _debugpy_dir,
+                     "debugpy",
+-                    "_vendored",
+                     "pydevd",
+                     "pydevd_attach_to_process",
+                 )

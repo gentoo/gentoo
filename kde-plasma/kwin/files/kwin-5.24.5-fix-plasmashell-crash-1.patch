@@ -1,0 +1,307 @@
+From 4c3195270d6c8e1da8c3e2e3abe5aae75d5bf3c2 Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Fri, 26 Nov 2021 12:03:14 +0200
+Subject: [PATCH] Ensure that Toplevel::output() stays always in sync with
+ geometry
+
+Currently, if geometry updates are blocked, the Toplevel.output property
+won't be updated. On the other hand, it's reasonable to use the output
+property instead of manually looking up the output in window management
+code, e.g. Workspace::clientArea().
+
+In other words, using the Toplevel.output property is like walking on a
+mine field, things can blow up. You can't use Toplevel.output even if it
+makes perfect sense.
+
+This change ensures that Toplevel.output property is always kept in sync
+with the frame geometry. Unfortunately, this means that the output
+property no longer can be updated when the frameGeometryChanged() signal
+is emitted. It has to be done in moveResizeInternal() method.
+
+BUG: 448064
+
+(cherry picked from 510a41eeb89f51843405fa0258c852ab06d05bb8)
+
+Part-of: <https://invent.kde.org/plasma/kwin/-/merge_requests/2448>
+---
+ src/abstract_client.cpp |  3 ---
+ src/events.cpp          |  1 +
+ src/internal_client.cpp |  6 ++++++
+ src/toplevel.cpp        | 17 -----------------
+ src/toplevel.h          | 10 ++--------
+ src/unmanaged.cpp       |  6 ++++++
+ src/unmanaged.h         |  1 +
+ src/waylandclient.cpp   |  6 ++++++
+ src/x11client.cpp       |  7 +++++++
+ src/x11client.h         |  1 +
+ 10 files changed, 30 insertions(+), 28 deletions(-)
+
+diff --git a/src/abstract_client.cpp b/src/abstract_client.cpp
+index 0714b9ac3f..ddff11e53c 100644
+--- a/src/abstract_client.cpp
++++ b/src/abstract_client.cpp
+@@ -63,8 +63,6 @@ AbstractClient::AbstractClient()
+ {
+     connect(this, &AbstractClient::clientStartUserMovedResized,  this, &AbstractClient::moveResizedChanged);
+     connect(this, &AbstractClient::clientFinishUserMovedResized, this, &AbstractClient::moveResizedChanged);
+-    connect(this, &AbstractClient::clientStartUserMovedResized,  this, &AbstractClient::removeCheckOutputConnection);
+-    connect(this, &AbstractClient::clientFinishUserMovedResized, this, &AbstractClient::setupCheckOutputConnection);
+ 
+     connect(this, &AbstractClient::windowShown, this, &AbstractClient::hiddenChanged);
+     connect(this, &AbstractClient::windowHidden, this, &AbstractClient::hiddenChanged);
+@@ -1011,7 +1009,6 @@ void AbstractClient::finishInteractiveMoveResize(bool cancel)
+     if (cancel) {
+         moveResize(initialInteractiveMoveResizeGeometry());
+     }
+-    checkOutput(); // needs to be done because clientFinishUserMovedResized has not yet re-activated online alignment
+     if (output() != interactiveMoveResizeStartOutput()) {
+         workspace()->sendClientToOutput(this, output()); // checks rule validity
+         if (isFullScreen() || maximizeMode() != MaximizeRestore) {
+diff --git a/src/events.cpp b/src/events.cpp
+index b9bb9bbd36..a22960f0d0 100644
+--- a/src/events.cpp
++++ b/src/events.cpp
+@@ -1261,6 +1261,7 @@ void Unmanaged::configureNotifyEvent(xcb_configure_notify_event_t *e)
+         m_clientGeometry = newgeom;
+         m_frameGeometry = newgeom;
+         m_bufferGeometry = newgeom;
++        checkOutput();
+         Q_EMIT bufferGeometryChanged(this, old);
+         Q_EMIT clientGeometryChanged(this, old);
+         Q_EMIT frameGeometryChanged(this, old);
+diff --git a/src/internal_client.cpp b/src/internal_client.cpp
+index 3be51ff27b..b4c9250fd3 100644
+--- a/src/internal_client.cpp
++++ b/src/internal_client.cpp
+@@ -10,6 +10,7 @@
+ #include "internal_client.h"
+ #include "decorations/decorationbridge.h"
+ #include "deleted.h"
++#include "platform.h"
+ #include "surfaceitem.h"
+ #include "workspace.h"
+ 
+@@ -477,6 +478,7 @@ void InternalClient::commitGeometry(const QRect &rect)
+     // The client geometry and the buffer geometry are the same.
+     const QRect oldClientGeometry = m_clientGeometry;
+     const QRect oldFrameGeometry = m_frameGeometry;
++    const AbstractOutput *oldOutput = m_output;
+ 
+     m_clientGeometry = frameRectToClientRect(rect);
+     m_frameGeometry = rect;
+@@ -486,6 +488,7 @@ void InternalClient::commitGeometry(const QRect &rect)
+         return;
+     }
+ 
++    m_output = kwinApp()->platform()->outputAt(rect.center());
+     syncGeometryToInternalWindow();
+ 
+     if (oldClientGeometry != m_clientGeometry) {
+@@ -495,6 +498,9 @@ void InternalClient::commitGeometry(const QRect &rect)
+     if (oldFrameGeometry != m_frameGeometry) {
+         Q_EMIT frameGeometryChanged(this, oldFrameGeometry);
+     }
++    if (oldOutput != m_output) {
++        Q_EMIT screenChanged();
++    }
+     Q_EMIT geometryShapeChanged(this, oldFrameGeometry);
+ }
+ 
+diff --git a/src/toplevel.cpp b/src/toplevel.cpp
+index 698f6998e5..ff216835c4 100644
+--- a/src/toplevel.cpp
++++ b/src/toplevel.cpp
+@@ -47,7 +47,6 @@ Toplevel::Toplevel()
+     , m_skipCloseAnimation(false)
+ {
+     connect(screens(), &Screens::changed, this, &Toplevel::screenChanged);
+-    setupCheckOutputConnection();
+     connect(this, &Toplevel::bufferGeometryChanged, this, &Toplevel::inputTransformationChanged);
+ 
+     // Only for compatibility reasons, drop in the next major release.
+@@ -379,22 +378,6 @@ void Toplevel::deleteEffectWindow()
+     effect_window = nullptr;
+ }
+ 
+-void Toplevel::checkOutput()
+-{
+-    setOutput(kwinApp()->platform()->outputAt(frameGeometry().center()));
+-}
+-
+-void Toplevel::setupCheckOutputConnection()
+-{
+-    connect(this, &Toplevel::frameGeometryChanged, this, &Toplevel::checkOutput);
+-    checkOutput();
+-}
+-
+-void Toplevel::removeCheckOutputConnection()
+-{
+-    disconnect(this, &Toplevel::frameGeometryChanged, this, &Toplevel::checkOutput);
+-}
+-
+ int Toplevel::screen() const
+ {
+     return kwinApp()->platform()->enabledOutputs().indexOf(m_output);
+diff --git a/src/toplevel.h b/src/toplevel.h
+index f6b5dd4e61..3309647eb4 100644
+--- a/src/toplevel.h
++++ b/src/toplevel.h
+@@ -636,13 +636,6 @@ Q_SIGNALS:
+     void visibleGeometryChanged();
+ 
+ protected Q_SLOTS:
+-    /**
+-     * Checks whether the screen number for this Toplevel changed and updates if needed.
+-     * Any method changing the geometry of the Toplevel should call this method.
+-     */
+-    void checkOutput();
+-    void setupCheckOutputConnection();
+-    void removeCheckOutputConnection();
+     void setReadyForPainting();
+ 
+ protected:
+@@ -673,6 +666,8 @@ protected:
+     void deleteShadow();
+     void deleteEffectWindow();
+     void setDepth(int depth);
++
++    AbstractOutput *m_output = nullptr;
+     QRect m_frameGeometry;
+     QRect m_clientGeometry;
+     QRect m_bufferGeometry;
+@@ -700,7 +695,6 @@ private:
+     QRegion opaque_region;
+     mutable QRegion m_shapeRegion;
+     mutable bool m_shapeRegionIsValid = false;
+-    AbstractOutput *m_output = nullptr;
+     bool m_skipCloseAnimation;
+     quint32 m_pendingSurfaceId = 0;
+     QPointer<KWaylandServer::SurfaceInterface> m_surface;
+diff --git a/src/unmanaged.cpp b/src/unmanaged.cpp
+index de3caa303d..3164813a75 100644
+--- a/src/unmanaged.cpp
++++ b/src/unmanaged.cpp
+@@ -12,6 +12,7 @@
+ #include "workspace.h"
+ #include "effects.h"
+ #include "deleted.h"
++#include "platform.h"
+ #include "surfaceitem_x11.h"
+ #include "utils/common.h"
+ 
+@@ -206,6 +207,11 @@ QWindow *Unmanaged::findInternalWindow() const
+     return nullptr;
+ }
+ 
++void Unmanaged::checkOutput()
++{
++    setOutput(kwinApp()->platform()->outputAt(frameGeometry().center()));
++}
++
+ void Unmanaged::damageNotifyEvent()
+ {
+     Q_ASSERT(kwinApp()->operationMode() == Application::OperationModeX11);
+diff --git a/src/unmanaged.h b/src/unmanaged.h
+index e874fc1724..fa543eb0b8 100644
+--- a/src/unmanaged.h
++++ b/src/unmanaged.h
+@@ -45,6 +45,7 @@ private:
+     void configureNotifyEvent(xcb_configure_notify_event_t *e);
+     void damageNotifyEvent();
+     QWindow *findInternalWindow() const;
++    void checkOutput();
+     void associate();
+     void initialize();
+     bool m_outline = false;
+diff --git a/src/waylandclient.cpp b/src/waylandclient.cpp
+index 39d6ea22bc..9d8070c7f8 100644
+--- a/src/waylandclient.cpp
++++ b/src/waylandclient.cpp
+@@ -7,6 +7,7 @@
+ */
+ 
+ #include "waylandclient.h"
++#include "platform.h"
+ #include "screens.h"
+ #include "wayland_server.h"
+ #include "workspace.h"
+@@ -289,6 +290,7 @@ void WaylandClient::updateGeometry(const QRect &rect)
+     const QRect oldClientGeometry = m_clientGeometry;
+     const QRect oldFrameGeometry = m_frameGeometry;
+     const QRect oldBufferGeometry = m_bufferGeometry;
++    const AbstractOutput *oldOutput = m_output;
+ 
+     m_clientGeometry = frameRectToClientRect(rect);
+     m_frameGeometry = rect;
+@@ -310,6 +312,7 @@ void WaylandClient::updateGeometry(const QRect &rect)
+         return;
+     }
+ 
++    m_output = kwinApp()->platform()->outputAt(rect.center());
+     updateWindowRules(Rules::Position | Rules::Size);
+ 
+     if (changedGeometries & WaylandGeometryBuffer) {
+@@ -321,6 +324,9 @@ void WaylandClient::updateGeometry(const QRect &rect)
+     if (changedGeometries & WaylandGeometryFrame) {
+         Q_EMIT frameGeometryChanged(this, oldFrameGeometry);
+     }
++    if (oldOutput != m_output) {
++        Q_EMIT screenChanged();
++    }
+     Q_EMIT geometryShapeChanged(this, oldFrameGeometry);
+ }
+ 
+diff --git a/src/x11client.cpp b/src/x11client.cpp
+index ce275fff1b..d7ed823128 100644
+--- a/src/x11client.cpp
++++ b/src/x11client.cpp
+@@ -4062,6 +4062,8 @@ void X11Client::moveResizeInternal(const QRect &rect, MoveResizeMode mode)
+             m_lastClientGeometry == m_clientGeometry) {
+         return;
+     }
++
++    m_output = kwinApp()->platform()->outputAt(frameGeometry.center());
+     if (areGeometryUpdatesBlocked()) {
+         setPendingMoveResizeMode(mode);
+         return;
+@@ -4070,6 +4072,7 @@ void X11Client::moveResizeInternal(const QRect &rect, MoveResizeMode mode)
+     const QRect oldBufferGeometry = m_lastBufferGeometry;
+     const QRect oldFrameGeometry = m_lastFrameGeometry;
+     const QRect oldClientGeometry = m_lastClientGeometry;
++    const AbstractOutput *oldOutput = m_lastOutput;
+ 
+     updateServerGeometry();
+     updateWindowRules(Rules::Position|Rules::Size);
+@@ -4077,6 +4080,7 @@ void X11Client::moveResizeInternal(const QRect &rect, MoveResizeMode mode)
+     m_lastBufferGeometry = m_bufferGeometry;
+     m_lastFrameGeometry = m_frameGeometry;
+     m_lastClientGeometry = m_clientGeometry;
++    m_lastOutput = m_output;
+ 
+     if (isActive()) {
+         workspace()->setActiveOutput(output());
+@@ -4092,6 +4096,9 @@ void X11Client::moveResizeInternal(const QRect &rect, MoveResizeMode mode)
+     if (oldFrameGeometry != m_frameGeometry) {
+         Q_EMIT frameGeometryChanged(this, oldFrameGeometry);
+     }
++    if (oldOutput != m_output) {
++        Q_EMIT screenChanged();
++    }
+     Q_EMIT geometryShapeChanged(this, oldFrameGeometry);
+ }
+ 
+diff --git a/src/x11client.h b/src/x11client.h
+index b523044d3d..adb8b0e8df 100644
+--- a/src/x11client.h
++++ b/src/x11client.h
+@@ -524,6 +524,7 @@ private:
+     QMetaObject::Connection m_edgeGeometryTrackingConnection;
+ 
+     QMargins m_clientFrameExtents;
++    AbstractOutput *m_lastOutput = nullptr;
+     QRect m_lastBufferGeometry;
+     QRect m_lastFrameGeometry;
+     QRect m_lastClientGeometry;
+-- 
+GitLab
+

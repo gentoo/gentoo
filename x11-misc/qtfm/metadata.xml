@@ -5,10 +5,6 @@
 	<email>qt@gentoo.org</email>
 	<name>Gentoo Qt Project</name>
 </maintainer>
-<maintainer type="project">
-	<email>desktop-misc@gentoo.org</email>
-	<name>Gentoo Desktop Miscellaneous Project</name>
-</maintainer>
 <use>
 <flag name="dbus">Install the qtfm-tray removable device manager</flag>
 <flag name="shared">Install the libQtFM shared library and headers</flag>

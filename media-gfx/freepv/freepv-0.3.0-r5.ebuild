@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit cmake-utils flag-o-matic xdg
+EAPI=8
+inherit cmake flag-o-matic xdg
 
 DESCRIPTION="Panorama viewer (Quicktime, PangeaVR, GLPanoView formats)"
 HOMEPAGE="http://freepv.sourceforge.net/"
@@ -33,7 +33,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -e 's:jpeg_mem_src:freepv_jpeg_mem_src:g' \
 		-i src/libfreepv/JpegReader.cpp || die
@@ -46,5 +46,5 @@ src_configure() {
 	# bug 618856
 	append-cxxflags -std=c++14
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

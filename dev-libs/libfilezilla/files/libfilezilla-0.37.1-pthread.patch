@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 14bb5d0..da45769 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -120,7 +120,7 @@ AC_CHECK_DECLS([pthread_condattr_setclock], [], [], [[#include <pthread.h>]])
+ if test "$windows" = "1"; then
+   libdeps="-lws2_32"
+ else
+-  libdeps=-lpthread
++  libdeps=-pthread
+   CHECK_ICONV([libdeps="$libdeps -liconv"])
+ 
+   CHECK_RANDOM

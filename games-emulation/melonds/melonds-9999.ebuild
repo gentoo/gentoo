@@ -1,15 +1,12 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# NOTICE:
-# melonds bundles teakra, its upstream haven't had a release since 2020
 
 EAPI=8
 
 MY_PN="melonDS"
 MY_P="${MY_PN}-${PV}"
 
-inherit cmake flag-o-matic readme.gentoo-r1 toolchain-funcs xdg
+inherit cmake readme.gentoo-r1 toolchain-funcs xdg
 
 DESCRIPTION="Nintendo DS emulator, sorta"
 HOMEPAGE="
@@ -32,6 +29,7 @@ SLOT="0"
 
 DEPEND="
 	app-arch/libarchive
+	dev-libs/teakra
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
@@ -55,10 +53,6 @@ DOC_CONTENTS="You need the following files in order to run melonDS:
 Place them in ~/.config/melonDS
 Those files can be found somewhere on the Internet ;-)"
 
-src_prepare() {
-	cmake_src_prepare
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_JIT=$(usex jit)
@@ -73,16 +67,11 @@ src_compile() {
 }
 
 src_install() {
-	# install teakra
-	dolib.so "${BUILD_DIR}/src/teakra/src/libteakra.so"
-
 	cmake_src_install
-
 	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
 	xdg_pkg_postinst
-
 	readme.gentoo_print_elog
 }

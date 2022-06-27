@@ -1,0 +1,9 @@
+index 41df3f1..7d983f8 100644
+--- a/julia-repl.el
++++ b/julia-repl.el
+@@ -1,4 +1,4 @@
+-;;; julia-repl.el --- A minor mode for a Julia REPL -*- lexical-binding:t; no-byte-compile:t -*-
++;;; julia-repl.el --- A minor mode for a Julia REPL -*- lexical-binding:t; -*-
+ 
+ ;; Copyright (C) 2016  Tamas K. Papp
+ ;; Author: Tamas Papp <tkpapp@gmail.com>

@@ -34,14 +34,6 @@ PATCHES=(
 	"${FILESDIR}/frogr-1.5-meson-0.61-build.patch"
 )
 
-src_configure() {
-	local emesonargs=(
-		# bug #714132
-		-Dwerror=false
-	)
-	meson_src_configure
-}
-
 pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_icon_cache_update

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,7 @@ RDEPEND="acct-group/mail
 		x11-misc/xbitmaps
 		gconf? ( >=gnome-base/gconf-2.26.2 )
 		gif? ( media-libs/giflib:0= )
-		jpeg? ( virtual/jpeg:0= )
+		jpeg? ( media-libs/libjpeg-turbo:0= )
 		png? ( >=media-libs/libpng-1.4:0= )
 		svg? ( >=gnome-base/librsvg-2.0 )
 		tiff? ( media-libs/tiff:0 )
@@ -112,7 +112,6 @@ src_prepare() {
 			|| die "unable to sed configure.in"
 	fi
 
-	mv configure.in configure.ac || die
 	eautoreconf
 	touch src/stamp-h.in || die
 }

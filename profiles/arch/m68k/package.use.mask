@@ -1,6 +1,14 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-05-29)
+# No TMP here, no xkb here
+sys-apps/systemd tpm xkb
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# Untested useflag on other arches, needs keywording
+media-video/ffmpeg vmaf
+
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-01-11)
 # Mask AMF keyword on non-amd64 arches
 # It is unusable, for now, in other arches
@@ -55,8 +63,8 @@ media-libs/libcaca doc
 dev-python/argcomplete test
 dev-python/distlib test
 dev-python/fonttools test
+dev-python/hatchling test
 dev-python/isort test
-dev-python/jsonschema test
 dev-python/nose test
 dev-python/numpydoc test
 dev-python/pytest-regressions test
@@ -101,4 +109,4 @@ dev-libs/libpcre2 jit
 # Ryan Hill <dirtyepic@gentoo.org> (2011-07-20)
 # graphite requires dev-libs/ppl & dev-libs/cloog-ppl
 # (bugs #269087 and #269088)
-sys-devel/gcc graphite awt
+sys-devel/gcc graphite

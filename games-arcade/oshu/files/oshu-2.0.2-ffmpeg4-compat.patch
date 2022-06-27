@@ -1,0 +1,16 @@
+diff --git a/./lib/audio/stream.cc.old b/./lib/audio/stream.cc
+index 808851f..09eb4fb 100644
+--- a/./lib/audio/stream.cc.old
++++ b/./lib/audio/stream.cc
+@@ -193,7 +193,11 @@ static int open_demuxer(const char *url, oshu::stream *stream)
+ 		stream->demuxer,
+ 		AVMEDIA_TYPE_AUDIO,
+ 		-1, -1,
++#if LIBAVCODEC_VERSION_MAJOR < 59
++		&stream->codec,
++#else
+ 		(const AVCodec**)&stream->codec,
++#endif
+ 		0
+ 	);
+ 	if (rc < 0 || stream->codec == NULL) {

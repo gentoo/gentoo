@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit python-any-r1
 
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
@@ -16,8 +16,8 @@ SLOT="0"
 IUSE="doc static-libs"
 
 RDEPEND="dev-db/postgresql:="
-DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
+DEPEND="${RDEPEND}"
+BDEPEND="${PYTHON_DEPS}
 	doc? (
 		app-doc/doxygen
 		app-text/xmlto

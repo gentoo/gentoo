@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/hamlib/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2 GPL-2"
 SLOT="0/4.2"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 IUSE="doc perl python tcl"
 
 RESTRICT="test"
@@ -38,6 +38,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DOCS=(AUTHORS NEWS PLAN README README.betatester README.developer)
 
+PATCHES=(
+	"${FILESDIR}/${P}-slibtool.patch" # 798273
+)
+
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
@@ -45,6 +49,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+
 	# fix hardcoded libdir paths
 	sed -i -e "s#fix}/lib#fix}/$(get_libdir)/hamlib#" \
 		-e "s#fix}/include#fix}/include/hamlib#" \
@@ -60,8 +66,6 @@ src_prepare() {
 	sed -i -e "s/doc:/html:/g" doc/Makefile.am || die "sed failed"
 
 	eautoreconf
-
-	eapply_user
 }
 
 src_configure() {
@@ -92,4 +96,6 @@ src_install() {
 
 	echo "LDPATH=/usr/$(get_libdir)/hamlib" > "${T}"/73hamlib
 	doenvd "${T}"/73hamlib
+
+	find "${ED}" -name '*.la' -delete || die
 }

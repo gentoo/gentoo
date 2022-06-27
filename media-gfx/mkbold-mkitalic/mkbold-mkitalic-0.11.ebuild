@@ -11,7 +11,7 @@ SRC_URI="https://hp.vector.co.jp/authors/VA013651/lib/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~ia64 ppc ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~ia64 ~loong ppc ~riscv ~s390 sparc x86"
 
 DEPEND=""
 RDEPEND=""

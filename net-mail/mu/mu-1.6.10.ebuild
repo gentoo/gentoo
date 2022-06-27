@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,6 +36,12 @@ src_configure() {
 	)
 
 	econf "${myeconfargs[@]}"
+}
+
+src_test() {
+	# On some systems make -n errors out so the default src_test
+	# implementation does not call the tests.  Bug #836782
+	emake test
 }
 
 src_install() {

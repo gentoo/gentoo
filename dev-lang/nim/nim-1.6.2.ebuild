@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ IUSE="debug +readline"
 RESTRICT="test"  # need to sort out depends and numerous failures
 
 RDEPEND="readline? ( sys-libs/readline:0= )"
-DEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 #	test? ( net-libs/nodejs )
 
 PATCHES=( "${FILESDIR}"/${PN}-0.20.0-paths.patch )

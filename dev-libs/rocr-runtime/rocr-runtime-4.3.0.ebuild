@@ -19,6 +19,7 @@ DESCRIPTION="Radeon Open Compute Runtime"
 HOMEPAGE="https://github.com/RadeonOpenCompute/ROCR-Runtime"
 PATCHES=(
 	"${FILESDIR}/${PN}-4.1.0-cmake-install-paths.patch"
+	"${FILESDIR}/${PN}-4.3.0_no-aqlprofiler.patch"
 )
 
 LICENSE="MIT"
@@ -32,8 +33,6 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-libs/rocm-device-libs-${PV}"
 BDEPEND="app-editors/vim-core"
 	# vim-core is needed for "xxd"
-
-PATCHES=( "${FILESDIR}"/${PN}-4.3.0_no-sqlprofiler.patch )
 
 src_prepare() {
 	# ... otherwise system llvm/clang is used ...

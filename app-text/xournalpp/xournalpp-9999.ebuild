@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake xdg
 
@@ -10,8 +10,8 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/xournalpp/xournalpp.git"
 	unset SRC_URI
 else
-	KEYWORDS="~amd64"
-	SRC_URI="https://github.com/xournalpp/xournalpp/archive/${PV}.tar.gz -> ${P}.tgz"
+	KEYWORDS="~amd64 ~ppc64"
+	SRC_URI="https://github.com/xournalpp/xournalpp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tgz"
 fi
 
 DESCRIPTION="Handwriting notetaking software with PDF annotation support"
@@ -26,6 +26,7 @@ COMMONDEPEND="
 	dev-libs/glib
 	dev-libs/libxml2
 	dev-libs/libzip:=
+	gnome-base/librsvg
 	media-libs/portaudio[cxx]
 	media-libs/libsndfile
 	sys-libs/zlib:=
@@ -38,7 +39,13 @@ DEPEND="${COMMONDEPEND}
 BDEPEND="
 	virtual/pkgconfig
 	sys-apps/lsb-release
+	elibc_musl? ( sys-libs/libbacktrace )
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.1.1-nostrip.patch"
+	"${FILESDIR}/${PN}-1.1.1-nocompress.patch"
+)
 
 src_prepare() {
 	cmake_src_prepare

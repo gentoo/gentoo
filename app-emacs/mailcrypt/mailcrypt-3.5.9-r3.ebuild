@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit elisp readme.gentoo-r1
 
@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
 RESTRICT="test"
 
+BDEPEND="sys-apps/texinfo"
 RDEPEND="app-crypt/gnupg"
 
 ELISP_PATCHES="${P}-backquotes.patch"

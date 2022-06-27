@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake flag-o-matic toolchain-funcs
+inherit cmake toolchain-funcs
 
 DESCRIPTION="Scalable Algorithms for Parallel Adaptive Mesh Refinement on Forests of Octrees"
 HOMEPAGE="http://www.p4est.org/"

@@ -1,0 +1,45 @@
+From ddf2369d1fc6fddd63f676cc905a8b8e96291a4c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Tue, 25 Jan 2022 15:37:34 +0200
+Subject: [PATCH] Fix compatibility with meson 0.61
+
+Previously positional arguments to i18n.merge_files() were just ignored
+but this became an error.
+---
+ data/meson.build | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/data/meson.build b/data/meson.build
+index 2ea82cf12..60d23169b 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -6,7 +6,7 @@ install_subdir('audiopresets', install_dir: pkgdatadir)
+ install_subdir('videopresets', install_dir: pkgdatadir)
+ install_subdir('gstpresets', install_dir: pkgdatadir)
+ 
+-desktop_file = i18n.merge_file('org.pitivi.Pitivi.desktop',
++desktop_file = i18n.merge_file(
+     type: 'desktop',
+     output : 'org.pitivi.Pitivi.desktop',
+     input : 'org.pitivi.Pitivi.desktop.in',
+@@ -25,7 +25,7 @@ if desktop_file_validate.found()
+   )
+ endif
+ 
+-appdata_file = i18n.merge_file('org.pitivi.Pitivi.appdata.xml',
++appdata_file = i18n.merge_file(
+     type: 'xml',
+     output : 'org.pitivi.Pitivi.appdata.xml',
+     input : 'org.pitivi.Pitivi.appdata.xml.in',
+@@ -43,7 +43,7 @@ if appstream_util.found()
+   )
+ endif
+ 
+-i18n.merge_file('org.pitivi.Pitivi-mime.xml',
++i18n.merge_file(
+     output : 'org.pitivi.Pitivi-mime.xml',
+     input : 'org.pitivi.Pitivi-mime.xml.in',
+     po_dir: podir,
+-- 
+GitLab
+

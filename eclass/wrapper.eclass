@@ -1,10 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: wrapper.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: create a shell wrapper script
+
+case ${EAPI} in
+	5|6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 if [[ -z ${_WRAPPER_ECLASS} ]]; then
 _WRAPPER_ECLASS=1
@@ -19,7 +25,6 @@ _WRAPPER_ECLASS=1
 make_wrapper() {
 	local wrapper=$1 bin=$2 chdir=$3 libdir=$4 path=$5
 	local tmpwrapper="${T}/tmp.wrapper.${wrapper##*/}"
-	has "${EAPI:-0}" 0 1 2 && local EPREFIX=""
 
 	(
 	echo '#!/bin/sh'
@@ -30,11 +35,11 @@ make_wrapper() {
 		else
 			var=LD_LIBRARY_PATH
 		fi
-		cat <<-EOF
+		sed 's/^X//' <<-EOF || die
 			if [ "\${${var}+set}" = "set" ] ; then
-				export ${var}="\${${var}}:${EPREFIX}${libdir}"
+			X	export ${var}="\${${var}}:${EPREFIX}${libdir}"
 			else
-				export ${var}="${EPREFIX}${libdir}"
+			X	export ${var}="${EPREFIX}${libdir}"
 			fi
 		EOF
 	fi
@@ -52,7 +57,7 @@ make_wrapper() {
 		newexe "${tmpwrapper}" "${wrapper}"
 		) || die
 	else
-		newbin "${tmpwrapper}" "${wrapper}" || die
+		newbin "${tmpwrapper}" "${wrapper}"
 	fi
 }
 

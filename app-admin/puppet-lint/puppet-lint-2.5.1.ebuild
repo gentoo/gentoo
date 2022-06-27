@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ HOMEPAGE="http://puppet-lint.com/"
 LICENSE="MIT"
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 ruby_add_bdepend "test? (
 	dev-ruby/rspec-its:1

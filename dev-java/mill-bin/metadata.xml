@@ -5,4 +5,9 @@
 		<email>flow@gentoo.org</email>
 		<name>Florian Schmaus</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">com-lihaoyi/mill</remote-id>
+		<bugs-to>https://github.com/com-lihaoyi/mill/issues</bugs-to>
+		<changelog>https://github.com/paul-j-lucas/cdecl/releases</changelog>
+	</upstream>
 </pkgmetadata>

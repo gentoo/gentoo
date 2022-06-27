@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 
@@ -60,7 +60,7 @@ COMMONDEPEND="
 	)
 	gtk2? ( >=x11-libs/gtk+-2.24:2 )
 	imap? ( >=net-libs/libetpan-0.57 )
-	ldap? ( >=net-nds/openldap-2.0.7 )
+	ldap? ( >=net-nds/openldap-2.0.7:= )
 	litehtml? (
 		>=dev-libs/glib-2.36:2
 		>=dev-libs/gumbo-0.10
@@ -74,7 +74,7 @@ COMMONDEPEND="
 		appindicator? ( dev-libs/libindicate:3[gtk] )
 		libcanberra? (
 			!gtk2? ( media-libs/libcanberra[gtk3] )
-			gtk2? ( media-libs/libcanberra[gtk] )
+			gtk2? ( media-libs/libcanberra[gtk2] )
 		)
 		libnotify? ( x11-libs/libnotify )
 	)
@@ -124,7 +124,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	xdg_src_prepare
+	default
 	eautoreconf
 }
 
@@ -223,8 +223,8 @@ src_install() {
 	doexe tb2claws-mail update-po uudec uuooffice
 
 	# kill useless files
-	find "${ED}"/usr/lib*/claws-mail/plugins/ \
-		\( -name "*.a" -o -name ".la" \) -delete || die
+	find "${ED}"/usr/$(get_libdir)/${PN}/plugins/ \
+		\( -name "*.a" -o -name "*.la" \) -delete || die
 }
 
 pkg_postinst() {

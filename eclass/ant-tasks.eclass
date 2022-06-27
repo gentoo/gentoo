@@ -33,27 +33,27 @@ inherit java-pkg-2 java-ant-2
 
 EXPORT_FUNCTIONS src_unpack src_compile src_install
 
-# @ECLASS-VARIABLE: ANT_TASK_JDKVER
+# @ECLASS_VARIABLE: ANT_TASK_JDKVER
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Affects the >=virtual/jdk version set in DEPEND string. Defaults to 1.8, can
 # be overridden from ebuild BEFORE inheriting this eclass.
 ANT_TASK_JDKVER=${ANT_TASK_JDKVER-1.8}
 
-# @ECLASS-VARIABLE: ANT_TASK_JREVER
+# @ECLASS_VARIABLE: ANT_TASK_JREVER
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Affects the >=virtual/jre version set in DEPEND string. Defaults to 1.8, can
 # be overridden from ebuild BEFORE inheriting this eclass.
 ANT_TASK_JREVER=${ANT_TASK_JREVER-1.8}
 
-# @ECLASS-VARIABLE: ANT_TASK_NAME
+# @ECLASS_VARIABLE: ANT_TASK_NAME
 # @DESCRIPTION:
 # The name of this ant task as recognized by ant's build.xml, derived from $PN
 # by removing the ant- prefix. Read-only.
 ANT_TASK_NAME="${PN#ant-}"
 
-# @ECLASS-VARIABLE: ANT_TASK_DEPNAME
+# @ECLASS_VARIABLE: ANT_TASK_DEPNAME
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Specifies JAVA_PKG_NAME (PN{-SLOT} used with java-pkg_jar-from) of the package
@@ -63,7 +63,7 @@ ANT_TASK_NAME="${PN#ant-}"
 # one for each dependency.
 ANT_TASK_DEPNAME=${ANT_TASK_DEPNAME-${ANT_TASK_NAME}}
 
-# @ECLASS-VARIABLE: ANT_TASK_DISABLE_VM_DEPS
+# @ECLASS_VARIABLE: ANT_TASK_DISABLE_VM_DEPS
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:

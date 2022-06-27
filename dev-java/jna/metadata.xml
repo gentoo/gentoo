@@ -5,10 +5,6 @@
     <email>java@gentoo.org</email>
     <name>Java</name>
   </maintainer>
-  <use>
-    <flag name="awt">Enables support for Java AWT</flag>
-    <flag name="nio-buffers">Enables support for NIO buffers</flag>
-  </use>
   <upstream>
     <remote-id type="github">twall/jna</remote-id>
   </upstream>

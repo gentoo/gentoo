@@ -1,0 +1,84 @@
+From 5be7797f96db606c16701b6cb7e218a487c4cf4a Mon Sep 17 00:00:00 2001
+From: Christopher Byrne <salah.coronya@gmail.com>
+Date: Sat, 6 Nov 2021 15:36:48 -0500
+Subject: [PATCH] test: Rename bash variable WORKDIR to MYWORKDIR
+
+Gentoo Portage ALSO uses the variable WORKDIR, and this results in
+Portage deleting the entire tree if the tests are run under it
+
+Signed-off-by: Christopher Byrne <salah.coronya@gmail.com>
+---
+ tests/functions.sh     | 12 ++++++------
+ tests/sign_verify.test |  6 +++---
+ 2 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/tests/functions.sh b/tests/functions.sh
+index 8f6f02d..eb6b34a 100755
+--- a/tests/functions.sh
++++ b/tests/functions.sh
+@@ -250,8 +250,8 @@ _enable_gost_engine() {
+ # Show test stats and exit into automake test system
+ # with proper exit code (same as ours). Do cleanups.
+ _report_exit_and_cleanup() {
+-  if [ -n "${WORKDIR}" ]; then
+-    rm -rf "${WORKDIR}"
++  if [ -n "${MYWORKDIR}" ]; then
++    rm -rf "${MYWORKDIR}"
+   fi
+ 
+   if [ $testsfail -gt 0 ]; then
+@@ -277,19 +277,19 @@ _report_exit_and_cleanup() {
+ }
+ 
+ # Setup SoftHSM for local testing by calling the softhsm_setup script.
+-# Use the provided workdir as the directory where SoftHSM will store its state
++# Use the provided myworkdir as the directory where SoftHSM will store its state
+ # into.
+ # Upon successfully setting up SoftHSM, this function sets the global variables
+ # OPENSSL_ENGINE and OPENSSL_KEYFORM so that the openssl command line tool can
+ # use SoftHSM. Also the PKCS11_KEYURI global variable is set to the test key's
+ # pkcs11 URI.
+ _softhsm_setup() {
+-  local workdir="$1"
++  local myworkdir="$1"
+ 
+   local msg
+ 
+-  export SOFTHSM_SETUP_CONFIGDIR="${workdir}/softhsm"
+-  export SOFTHSM2_CONF="${workdir}/softhsm/softhsm2.conf"
++  export SOFTHSM_SETUP_CONFIGDIR="${myworkdir}/softhsm"
++  export SOFTHSM2_CONF="${myworkdir}/softhsm/softhsm2.conf"
+ 
+   mkdir -p "${SOFTHSM_SETUP_CONFIGDIR}"
+ 
+diff --git a/tests/sign_verify.test b/tests/sign_verify.test
+index c56290a..b619c22 100755
+--- a/tests/sign_verify.test
++++ b/tests/sign_verify.test
+@@ -29,7 +29,7 @@ fi
+ ./gen-keys.sh >/dev/null 2>&1
+ 
+ trap _report_exit_and_cleanup EXIT
+-WORKDIR=$(mktemp -d)
++MYWORKDIR=$(mktemp -d)
+ set -f # disable globbing
+ 
+ # Determine keyid from a cert
+@@ -426,7 +426,7 @@ expect_fail \
+   check_sign TYPE=ima KEY=gost2012_256-B ALG=md_gost12_512 PREFIX=0x0302 OPTS=
+ 
+ # Test signing with key described by pkcs11 URI
+-_softhsm_setup "${WORKDIR}"
++_softhsm_setup "${MYWORKDIR}"
+ if [ -n "${PKCS11_KEYURI}" ]; then
+   expect_pass check_sign FILE=pkcs11test TYPE=ima KEY=${PKCS11_KEYURI} ALG=sha256 PREFIX=0x030204aabbccdd0100 OPTS=--keyid=aabbccdd
+   expect_pass check_sign FILE=pkcs11test TYPE=ima KEY=${PKCS11_KEYURI} ALG=sha1   PREFIX=0x030202aabbccdd0100 OPTS=--keyid=aabbccdd
+@@ -436,4 +436,4 @@ else
+   expect_pass __skip
+   expect_pass __skip
+ fi
+-_softhsm_teardown "${WORKDIR}"
++_softhsm_teardown "${MYWORKDIR}"
+-- 
+2.32.0
+

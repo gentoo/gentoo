@@ -4,19 +4,23 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
+
 inherit distutils-r1
 
 DESCRIPTION="Install packages and run Python with them"
-HOMEPAGE="https://pypi.org/project/pip-run/
-	https://github.com/jaraco/pip-run"
+HOMEPAGE="
+	https://github.com/jaraco/pip-run/
+	https://pypi.org/project/pip-run/
+"
 SRC_URI="
 	https://github.com/jaraco/pip-run/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz"
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	dev-python/autocommand[${PYTHON_USEDEP}]

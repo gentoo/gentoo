@@ -32,7 +32,7 @@ REQUIRED_USE="jdbc? ( extraengine server !static )
 	?? ( tcmalloc jemalloc )
 	static? ( yassl !pam )"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -81,9 +81,7 @@ COMMON_DEPEND="
 	>=dev-libs/libpcre-8.41-r1:3=
 	virtual/libcrypt:=
 "
-BDEPEND="virtual/yacc
-	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
-"
+BDEPEND="virtual/yacc"
 DEPEND="static? ( sys-libs/ncurses[static-libs] )
 	server? (
 		extraengine? ( jdbc? ( >=virtual/jdk-1.8 ) )
@@ -185,25 +183,6 @@ mysql_init_vars() {
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]] ; then
-		local GCC_MAJOR_SET=$(gcc-major-version)
-		local GCC_MINOR_SET=$(gcc-minor-version)
-
-		if use tokudb && [[ ${GCC_MAJOR_SET} -lt 4 || \
-			${GCC_MAJOR_SET} -eq 4 && ${GCC_MINOR_SET} -lt 7 ]] ; then
-			eerror "${PN} with tokudb needs to be built with gcc-4.7 or later."
-			eerror "Please use gcc-config to switch to gcc-4.7 or later version."
-			die
-		fi
-
-		# Bug 565584.  InnoDB now requires atomic functions introduced with gcc-4.7 on
-		# non x86{,_64} arches
-		if ! use amd64 && ! use x86 && [[ ${GCC_MAJOR_SET} -lt 4 || \
-			${GCC_MAJOR_SET} -eq 4 && ${GCC_MINOR_SET} -lt 7 ]] ; then
-			eerror "${PN} needs to be built with gcc-4.7 or later."
-			eerror "Please use gcc-config to switch to gcc-4.7 or later version."
-			die
-		fi
-
 		if has test ${FEATURES} ; then
 			# Bug #213475 - MySQL _will_ object strenuously if your machine is named
 			# localhost. Also causes weird failures.
@@ -1172,7 +1151,7 @@ pkg_config() {
 		log-slave-updates \
 	; do
 		optexp="--(skip-)?${opt}" optfull="--loose-skip-${opt}"
-		egrep -sq -- "${optexp}" "${helpfile}" && mysqld_options+=( "${optfull}" )
+		grep -E -sq -- "${optexp}" "${helpfile}" && mysqld_options+=( "${optfull}" )
 	done
 
 	# Prepare timezones, see

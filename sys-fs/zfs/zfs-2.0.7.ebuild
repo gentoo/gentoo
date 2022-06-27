@@ -256,6 +256,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
+
 	# we always need userspace utils in sync with zfs-kmod
 	# so force initrd update for userspace as well, to avoid
 	# situation when zfs-kmod trigger initrd rebuild before
@@ -296,6 +298,8 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
+	udev_reload
+
 	if ! use kernel-builtin && [[ ${PV} == "9999" ]]; then
 		remove_moduledb
 	fi

@@ -1,0 +1,42 @@
+Don't let cmake handle test data download, unpack and convert
+
+Index: rocSPARSE-rocm-5.0.2/clients/tests/CMakeLists.txt
+===================================================================
+--- rocSPARSE-rocm-5.0.2.orig/clients/tests/CMakeLists.txt
++++ rocSPARSE-rocm-5.0.2/clients/tests/CMakeLists.txt
+@@ -23,35 +23,6 @@
+ 
+ find_package(GTest 1.10.0 REQUIRED)
+ 
+-#
+-# Client matrices.
+-#
+-
+-if(NOT EXISTS "${CMAKE_MATRICES_DIR}")
+-  #
+-  # Download.
+-  #
+-  set(CMAKE_MATRICES_DIR ${PROJECT_BINARY_DIR}/matrices CACHE STRING "Matrices directory.")
+-
+-  if(NOT TARGET rocsparse)
+-    set(CONVERT_SOURCE ${CMAKE_SOURCE_DIR}/../deps/convert.cpp CACHE STRING "Convert tool mtx2csr.")
+-    include(${CMAKE_SOURCE_DIR}/../cmake/ClientMatrices.cmake)
+-  else()
+-   set(CONVERT_SOURCE ${CMAKE_SOURCE_DIR}/deps/convert.cpp CACHE STRING "Convert tool mtx2csr.")
+-    include(${CMAKE_SOURCE_DIR}/cmake/ClientMatrices.cmake)
+-  endif()
+-
+-else()
+-
+-  #
+-  # Copy.
+-  #
+-  if(NOT CMAKE_MATRICES_DIR STREQUAL "${PROJECT_BINARY_DIR}/matrices")
+-    execute_process(COMMAND cp -r ${CMAKE_MATRICES_DIR} ${PROJECT_BINARY_DIR}/matrices)
+-  endif()
+-
+-endif()
+-
+ set(ROCSPARSE_TEST_SOURCES
+   test_axpby.cpp
+   test_axpyi.cpp

@@ -17,6 +17,18 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (2022-06-25)
+# Allow stack to be realigned for compatibility with older 32-bit binaries.
+sys-libs/glibc -stack-realign
+sys-libs/ncurses -stack-realign
+
+# Unmask media-libs/libxmp here
+media-sound/qmmp -xmp
+
+# Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-23)
+# Need intel-hybrid-codec-driver, which only works on amd64
+x11-libs/libva-intel-driver -hybrid
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-01)
 # requires sys-apps/dbus-broker, which is keyworded here.
 sys-apps/systemd -hostnamed-fallback
@@ -46,10 +58,6 @@ dev-util/diffoscope -haskell
 # gui-libs/egl-wayland with nvidia-drivers is supported on this arch.
 x11-base/xwayland -video_cards_nvidia
 x11-wm/mutter -video_cards_nvidia
-
-# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
-# Unmask TPM on supported archs.
-sys-apps/systemd -tpm
 
 # Michael Orlitzky <mjo@gentoo.org> (2021-03-27)
 # Unmask the use of 64-bit dev-lisp/clozurecl on 64-bit arches.
@@ -126,17 +134,6 @@ sci-physics/root -cudnn
 # Encrypted Media Extensions (eme-free) can be disabled on amd64
 mail-client/thunderbird -eme-free
 www-client/firefox -eme-free
-
-# Mart Raudsepp <leio@gentoo.org> (2020-03-01)
-# dev-util/sysprof-capture is keyworded on amd64
-x11-wm/mutter -sysprof
-dev-libs/gjs -sysprof
-dev-libs/glib -sysprof
-gnome-extra/cjs -sysprof
-x11-libs/gtk+ -sysprof
-net-libs/libsoup -sysprof
-x11-libs/pango -sysprof
-gui-libs/gtk -sysprof
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
 # Vulkan is available on amd64.
@@ -223,7 +220,7 @@ media-video/mpv -vulkan
 
 # Nick Sarnie <sarnex@gentoo.org> (2018-04-29)
 # media-libs/vulkan-loader and app-emulation/vkd3d are keyworded on amd64
-app-emulation/wine-staging -vkd3d -vulkan
+app-emulation/wine-staging -vulkan
 app-emulation/wine-vanilla -vkd3d -vulkan
 
 # Richard Yao <ryao@gentoo.org> (2018-04-16)
@@ -295,6 +292,7 @@ sys-boot/grub:2 -grub_platforms_xen-32
 # Mike Gilbert <floppym@gentoo.org> (2015-09-05)
 # sys-boot/gnu-efi is not supported on all archs.
 sys-apps/systemd -gnuefi
+sys-apps/systemd-utils -boot
 
 # Ben de Groot <yngwin@gentoo.org> (2015-03-15)
 # media-libs/libbdplus is keyworded on amd64, so unmask the useflag
@@ -315,7 +313,7 @@ dev-vcs/git -mediawiki -mediawiki-experimental
 
 # Sergey Popov <pinkbyte@gentoo.org> (2013-12-27)
 # Boost.Context can be built on amd64
-dev-libs/boost	-context
+dev-libs/boost -context
 
 # Michał Górny <mgorny@gentoo.org> (2013-12-15)
 # mupen64plus' 2.0 new dynamic recompiler is supported on x86 and arm
@@ -354,6 +352,7 @@ app-arch/zpaq -jit
 # webrtc-audio-processing is only supported on x86/amd64. Possibly arm can be
 # added.
 media-sound/pulseaudio -webrtc-aec
+media-sound/pulseaudio-daemon -webrtc-aec
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2012-02-27)
 # Masked in base profile, supported on this arch
@@ -413,11 +412,6 @@ media-libs/smpeg cpu_flags_x86_mmx
 
 # x86_64 opts are enabled with USE sse. so masking the rest
 media-sound/mpg123 cpu_flags_x86_mmx cpu_flags_x86_3dnow cpu_flags_x86_3dnowext
-
-# Alistair Bush <ali_bush@gentoo.org> (2007-05-08)
-# Mask doc flag for fop as nearly impossible to
-# run javadoc target.  see #177585
->=dev-java/fop-0.93 doc
 
 # Alexis Ballier <aballier@gentoo.org> (2008-08-08)
 # x86 asm only, it won't be built on amd64 if mmx useflag is enabled but that

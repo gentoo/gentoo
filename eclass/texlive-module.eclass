@@ -23,7 +23,7 @@
 # It inherits texlive-common.  Patching is supported via the PATCHES
 # bash array.
 
-# @ECLASS-VARIABLE: TEXLIVE_MODULE_CONTENTS
+# @ECLASS_VARIABLE: TEXLIVE_MODULE_CONTENTS
 # @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
@@ -31,41 +31,41 @@
 # SRC_URI:
 # foo -> texlive-module-foo-${PV}.tar.xz
 
-# @ECLASS-VARIABLE: TEXLIVE_MODULE_DOC_CONTENTS
+# @ECLASS_VARIABLE: TEXLIVE_MODULE_DOC_CONTENTS
 # @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
 # The list of packages that will be installed if the doc useflag is enabled.
 # Expansion to SRC_URI is the same as for TEXLIVE_MODULE_CONTENTS.
 
-# @ECLASS-VARIABLE: TEXLIVE_MODULE_SRC_CONTENTS
+# @ECLASS_VARIABLE: TEXLIVE_MODULE_SRC_CONTENTS
 # @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
 # The list of packages that will be installed if the source useflag is enabled.
 # Expansion to SRC_URI is the same as for TEXLIVE_MODULE_CONTENTS.
 
-# @ECLASS-VARIABLE: TEXLIVE_MODULE_BINSCRIPTS
+# @ECLASS_VARIABLE: TEXLIVE_MODULE_BINSCRIPTS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A space separated list of files that are in fact scripts installed in the
 # texmf tree and that we want to be available directly. They will be installed in
 # /usr/bin.
 
-# @ECLASS-VARIABLE: TEXLIVE_MODULE_BINLINKS
+# @ECLASS_VARIABLE: TEXLIVE_MODULE_BINLINKS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A space separated list of links to add for BINSCRIPTS.
 # The systax is: foo:bar to create a symlink bar -> foo.
 
-# @ECLASS-VARIABLE: TL_PV
+# @ECLASS_VARIABLE: TL_PV
 # @INTERNAL
 # @DESCRIPTION:
 # Normally the module's PV reflects the TeXLive release it belongs to.
 # If this is not the case, TL_PV takes the version number for the
 # needed app-text/texlive-core.
 
-# @ECLASS-VARIABLE: TL_MODULE_INFORMATION
+# @ECLASS_VARIABLE: TL_MODULE_INFORMATION
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Information to display about the package.
@@ -128,7 +128,7 @@ RDEPEND="${COMMON_DEPEND}"
 
 IUSE="${IUSE} doc"
 
-# @ECLASS-VARIABLE: TEXLIVE_MODULE_OPTIONAL_ENGINE
+# @ECLASS_VARIABLE: TEXLIVE_MODULE_OPTIONAL_ENGINE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A space separated list of Tex engines that can be made optional.

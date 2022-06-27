@@ -8,4 +8,7 @@
 		This package contains the Gentoo network interface management
 		scripts, which were separated from OpenRC.
 	</longdescription>
+	<use>
+		<flag name="dhcp">Allow interfaces to configure via DHCP</flag>
+	</use>
 </pkgmetadata>

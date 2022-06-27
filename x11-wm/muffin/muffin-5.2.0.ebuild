@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/linuxmint/muffin/archive/${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="+introspection test xinerama"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.37.3:2[dbus]

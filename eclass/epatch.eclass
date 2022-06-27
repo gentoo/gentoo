@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: epatch.eclass
@@ -285,13 +285,13 @@ epatch() {
 		# people could (accidently) patch files in the root filesystem.
 		# Or trigger other unpleasantries #237667.  So disallow -p0 on
 		# such patches.
-		local abs_paths=$(egrep -n '^[-+]{3} /' "${PATCH_TARGET}" | awk '$2 != "/dev/null" { print }')
+		local abs_paths=$(grep -E -n '^[-+]{3} /' "${PATCH_TARGET}" | awk '$2 != "/dev/null" { print }')
 		if [[ -n ${abs_paths} ]] ; then
 			count=1
 			printf "NOTE: skipping -p0 due to absolute paths in patch:\n%s\n" "${abs_paths}" >> "${STDERR_TARGET}"
 		fi
 		# Similar reason, but with relative paths.
-		local rel_paths=$(egrep -n '^[-+]{3} [^	]*[.][.]/' "${PATCH_TARGET}")
+		local rel_paths=$(grep -E -n '^[-+]{3} [^	]*[.][.]/' "${PATCH_TARGET}")
 		if [[ -n ${rel_paths} ]] ; then
 			echo
 			eerror "Rejected Patch: ${patchname}!"

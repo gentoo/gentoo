@@ -1,0 +1,19 @@
+diff -u -r bbswitch-0.8/bbswitch.c bbswitch-0.8-5.18/bbswitch.c
+--- bbswitch-0.8/bbswitch.c	2022-05-24 20:26:22.184553495 +0000
++++ bbswitch-0.8-5.18/bbswitch.c	2022-05-24 20:29:00.797008130 +0000
+@@ -264,10 +264,15 @@
+     pci_disable_device(dis_dev);
+     do {
+         struct acpi_device *ad = NULL;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 18, 0)
++        ad = acpi_fetch_acpi_dev(dis_handle);
++        if (!ad) {
++#else
+         int r;
+ 
+         r = acpi_bus_get_device(dis_handle, &ad);
+         if (r || !ad) {
++#endif
+             pr_warn("Cannot get ACPI device for PCI device\n");
+             break;
+         }

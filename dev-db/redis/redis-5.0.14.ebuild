@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools flag-o-matic systemd toolchain-funcs tmpfiles
+inherit autotools edo flag-o-matic multiprocessing systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="A persistent caching system, key-value and data structures database"
 HOMEPAGE="https://redis.io"
@@ -12,7 +12,7 @@ SRC_URI="http://download.redis.io/releases/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 x86 ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="+jemalloc tcmalloc luajit test"
+IUSE="+jemalloc tcmalloc luajit selinux test"
 RESTRICT="!test? ( test )"
 
 # Redis does NOT build with Lua 5.2 or newer at this time.
@@ -25,7 +25,8 @@ COMMON_DEPEND="
 RDEPEND="
 	${COMMON_DEPEND}
 	acct-group/redis
-	acct-user/redis"
+	acct-user/redis
+	selinux? ( sec-policy/selinux-redis )"
 
 BDEPEND="
 	${COMMON_DEPEND}
@@ -93,7 +94,7 @@ src_prepare() {
 		LUAPKGCONFIG=lua
 	fi
 	# The upstream configure script handles luajit specially, and is not
-	# effected by these changes.
+	# affected by these changes.
 	einfo "Selected LUAPKGCONFIG=${LUAPKGCONFIG}"
 	sed -i	\
 		-e "/^AC_INIT/s|, [0-9].+, |, $PV, |" \
@@ -124,6 +125,10 @@ src_compile() {
 
 	tc-export AR CC RANLIB
 	emake V=1 ${myconf} AR="${AR}" CC="${CC}" RANLIB="${RANLIB}"
+}
+
+src_test() {
+	edo ./runtest --clients "$(makeopts_jobs)"
 }
 
 src_install() {

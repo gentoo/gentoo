@@ -5,6 +5,6 @@
     <email>zmedico@gentoo.org</email>
   </maintainer>
   <upstream>
-    <remote-id type="github">coreos/flannel</remote-id>
+    <remote-id type="github">flannel-io/flannel</remote-id>
   </upstream>
 </pkgmetadata>

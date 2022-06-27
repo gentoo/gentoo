@@ -1,0 +1,27 @@
+From 94010a8c4c93c6ba9520b7c26bb6cb36344a4bf9 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 1 Jun 2022 22:11:48 -0400
+Subject: [PATCH 1/1] configure.ac: fix bashism in --with-qd test.
+
+There's a double-equals test here that doesn't work properly when
+/bin/sh is not bash. We simply change it to single-equals.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 0ccc4c4..ed0cd59 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -104,7 +104,7 @@ AS_IF([test -z "$with_qd"], [with_qd=yes])
+ # and libraries if that didn't work for some reason.
+ #
+ # We only show a warning if we cannot find libqd, it is optional but recommended
+-AS_IF([test "x$with_qd" == "xyes"], [
++AS_IF([test "x$with_qd" = "xyes"], [
+   PKG_CHECK_MODULES([LIBQD], [qd], [have_libqd="yes"], [
+     # fall back to manual search.
+     AC_SEARCH_LIBS(c_dd_add,
+-- 
+2.35.1
+

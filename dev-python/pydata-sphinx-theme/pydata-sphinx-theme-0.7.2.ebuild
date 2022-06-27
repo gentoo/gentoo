@@ -3,7 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
+DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1
 
 DESCRIPTION="Bootstrap-based Sphinx theme from the PyData community"
@@ -12,7 +13,7 @@ SRC_URI="https://github.com/pydata/pydata-sphinx-theme/archive/v${PV}.tar.gz -> 
 
 LICENSE="BSD-with-disclosure"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 
 BDEPEND="
 	test? (

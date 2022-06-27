@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,9 +12,9 @@ MY_PN="OpenRCT2"
 MY_PN_OBJ="objects"
 MY_PN_RPL="replays"
 MY_PN_TS="title-sequences"
-MY_PV_OBJ="1.2.4"
-MY_PV_RPL="0.0.62"
-MY_PV_TS="0.1.2c"
+MY_PV_OBJ="1.2.7"
+MY_PV_RPL="0.0.67"
+MY_PV_TS="0.4.0"
 
 DESCRIPTION="An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2"
 HOMEPAGE="https://openrct2.org/"
@@ -71,8 +71,8 @@ BDEPEND="
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.2.4-include-additional-paths.patch"
 	"${FILESDIR}/${PN}-0.2.6-gtest-1.10.patch"
+	"${FILESDIR}/${PN}-0.4.0-include-additional-paths.patch"
 )
 
 src_unpack() {
@@ -108,6 +108,7 @@ src_configure() {
 		-DDISABLE_GOOGLE_BENCHMARK=ON
 		-DDISABLE_GUI=$(usex dedicated)
 		-DDISABLE_HTTP=OFF
+		-DDISABLE_IPO=ON
 		-DDISABLE_NETWORK=OFF
 		$(usex !dedicated "-DDISABLE_OPENGL=$(usex !opengl)" "")
 		-DDISABLE_TTF=$(usex !truetype)

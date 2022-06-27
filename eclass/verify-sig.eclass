@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: verify-sig.eclass
@@ -22,6 +22,10 @@
 #
 # If you need to use signify, you may want to copy distfiles into WORKDIR to
 # work around "Too many levels of symbolic links" error.
+#
+# A more complete guide can be found at:
+# https://mgorny.pl/articles/verify-sig-by-example.html
+#
 # @EXAMPLE:
 # Example use:
 #
@@ -47,7 +51,7 @@ if [[ ! ${_VERIFY_SIG_ECLASS} ]]; then
 
 IUSE="verify-sig"
 
-# @ECLASS-VARIABLE: VERIFY_SIG_METHOD
+# @ECLASS_VARIABLE: VERIFY_SIG_METHOD
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Signature verification method to use.  The allowed value are:
@@ -72,7 +76,7 @@ case ${VERIFY_SIG_METHOD} in
 		;;
 esac
 
-# @ECLASS-VARIABLE: VERIFY_SIG_OPENPGP_KEY_PATH
+# @ECLASS_VARIABLE: VERIFY_SIG_OPENPGP_KEY_PATH
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Path to key bundle used to perform the verification.  This is required
@@ -82,7 +86,7 @@ esac
 # NB: this variable is also used for non-OpenPGP signatures.  The name
 # contains "OPENPGP" for historical reasons.
 
-# @ECLASS-VARIABLE: VERIFY_SIG_OPENPGP_KEYSERVER
+# @ECLASS_VARIABLE: VERIFY_SIG_OPENPGP_KEYSERVER
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Keyserver used to refresh keys.  If not specified, the keyserver
@@ -91,7 +95,7 @@ esac
 #
 # Supported for OpenPGP only.
 
-# @ECLASS-VARIABLE: VERIFY_SIG_OPENPGP_KEY_REFRESH
+# @ECLASS_VARIABLE: VERIFY_SIG_OPENPGP_KEY_REFRESH
 # @USER_VARIABLE
 # @DESCRIPTION:
 # Attempt to refresh keys via WKD/keyserver.  Set it to "yes"

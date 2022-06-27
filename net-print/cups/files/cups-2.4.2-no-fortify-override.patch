@@ -1,0 +1,18 @@
+Gentoo already sets -D_FORTIFY_SOURCE=2 by default in GCC (patched in), so
+we need to avoid doing this in packages to avoid redefinition errors if
+we try to upgrade to e.g. =3.
+
+So, no effect on users, but important to stop issues w/ F_S=3.
+--- a/config-scripts/cups-compiler.m4
++++ b/config-scripts/cups-compiler.m4
+@@ -106,8 +106,8 @@ AS_IF([test -n "$GCC"], [
+     ], [
+ 	# Otherwise use the Fortify enhancements to catch any unbounded
+ 	# string operations...
+-	CFLAGS="$CFLAGS -D_FORTIFY_SOURCE=2"
+-	CXXFLAGS="$CXXFLAGS -D_FORTIFY_SOURCE=2"
++	CFLAGS="$CFLAGS"
++	CXXFLAGS="$CXXFLAGS"
+     ])
+ 
+     # Default optimization options...

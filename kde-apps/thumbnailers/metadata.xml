@@ -8,4 +8,7 @@
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
+	<use>
+		<flag name="mobi">Enable mobipocket thumbnail generation using <pkg>kde-apps/kdegraphics-mobipocket</pkg></flag>
+	</use>
 </pkgmetadata>

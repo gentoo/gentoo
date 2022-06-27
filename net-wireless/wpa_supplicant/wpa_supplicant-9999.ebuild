@@ -13,17 +13,16 @@ if [ "${PV}" = "9999" ]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://w1.fi/hostap.git"
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	SRC_URI="https://w1.fi/releases/${P}.tar.gz"
-	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-2.9-r3-patches.tar.bz2"
 fi
 
 SLOT="0"
-IUSE="ap +crda broadcom-sta dbus eap-sim eapol-test fasteap +fils +hs2-0 macsec +mbo +mesh p2p privsep ps3 qt5 readline selinux smartcard tdls uncommon-eap-types wimax wps"
+IUSE="ap +crda broadcom-sta dbus eap-sim eapol-test fasteap +fils +hs2-0 macsec +mbo +mesh p2p privsep ps3 qt5 readline selinux smartcard tdls tkip uncommon-eap-types wep wimax wps"
 
 # CONFIG_PRIVSEP=y does not have sufficient support for the new driver
 # interface functions used for MACsec, so this combination cannot be used
-# at least for now.
+# at least for now. bug #684442
 REQUIRED_USE="
 	macsec? ( !privsep )
 	privsep? ( !macsec )
@@ -271,8 +270,22 @@ src_configure() {
 	Kconfig_style_config OWE
 	Kconfig_style_config SAE
 	Kconfig_style_config DPP
+	Kconfig_style_config DPP2
 	Kconfig_style_config SUITEB192
 	Kconfig_style_config SUITEB
+
+	if use wep ; then
+		Kconfig_style_config WEP
+	else
+		Kconfig_style_config WEP n
+	fi
+
+	# Watch out, reversed logic
+	if use tkip ; then
+		Kconfig_style_config NO_TKIP n
+	else
+		Kconfig_style_config NO_TKIP
+	fi
 
 	if use smartcard ; then
 		Kconfig_style_config SMARTCARD
@@ -299,6 +312,10 @@ src_configure() {
 			#Kconfig_style_config DRIVER_MACSEC_QCA
 			Kconfig_style_config DRIVER_MACSEC_LINUX
 			Kconfig_style_config MACSEC
+		else
+			# bug #831369 and bug #684442
+			Kconfig_style_config DRIVER_MACSEC_LINUX n
+			Kconfig_style_config MACSEC n
 		fi
 
 		if use ps3 ; then

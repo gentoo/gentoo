@@ -1,0 +1,110 @@
+https://github.com/FFY00/meson-python/commit/678a586427088a58dfac15bb3fe89b3d7ff0178e
+https://github.com/FFY00/meson-python/commit/c01645aa3617ccd424ef3ec052d13ac25e7df433
+
+From 678a586427088a58dfac15bb3fe89b3d7ff0178e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Filipe=20La=C3=ADns?= <lains@riseup.net>
+Date: Thu, 9 Jun 2022 20:24:32 +0100
+Subject: [PATCH] mesonpy: replace pep621 dependency with pyproject-metadata
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fixes #33
+
+Signed-off-by: Filipe Laíns <lains@riseup.net>
+--- a/mesonpy/__init__.py
++++ b/mesonpy/__init__.py
+@@ -46,7 +46,7 @@
+ 
+ 
+ if typing.TYPE_CHECKING:  # pragma: no cover
+-    import pep621 as _pep621  # noqa: F401
++    import pyproject_metadata  # noqa: F401
+     import wheel.wheelfile  # noqa: F401
+ 
+ 
+@@ -353,7 +353,7 @@ class Project():
+     _ALLOWED_DYNAMIC_FIELDS: ClassVar[List[str]] = [
+         'version',
+     ]
+-    _metadata: Optional[_pep621.StandardMetadata]
++    _metadata: Optional[pyproject_metadata.StandardMetadata]
+ 
+     def __init__(
+         self,
+@@ -372,11 +372,11 @@ def __init__(
+         self._pep621 = 'project' in self._config
+         if self.pep621:
+             try:
+-                import pep621  # noqa: F811
++                import pyproject_metadata  # noqa: F811
+             except ModuleNotFoundError:  # pragma: no cover
+                 self._metadata = None
+             else:
+-                self._metadata = pep621.StandardMetadata.from_pyproject(self._config, self._source_dir)
++                self._metadata = pyproject_metadata.StandardMetadata.from_pyproject(self._config, self._source_dir)
+         else:
+             print(
+                 '{yellow}{bold}! Using Meson to generate the project metadata '
+@@ -550,8 +550,8 @@ def metadata(self) -> bytes:  # noqa: C901
+                 Name: {self.name}
+                 Version: {self.version}
+             ''').strip().encode()
+-        # re-import pep621 to raise ModuleNotFoundError if it is really missing
+-        import pep621  # noqa: F401, F811
++        # re-import pyproject_metadata to raise ModuleNotFoundError if it is really missing
++        import pyproject_metadata  # noqa: F401, F811
+         assert self._metadata
+         # use self.version as the version may be dynamic -- fetched from Meson
+         core_metadata = self._metadata.as_rfc822()
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -4,7 +4,7 @@ backend-path = ['.']
+ requires = [
+   'meson>=0.62.0',
+   'ninja',
+-  'pep621>=0.3.0',
++  'pyproject-metadata>=0.5.0',
+   'tomli>=1.0.0',
+   'typing-extensions>=3.7.4; python_version<"3.8"',
+ ]
+@@ -29,7 +29,7 @@ dependencies = [
+   'colorama; os_name == "nt"',
+   'meson>=0.60.0',
+   'ninja',
+-  'pep621>=0.3.0', # not a hard dependency, only needed for projects that use PEP 621 metadata
++  'pyproject-metadata>=0.5.0', # not a hard dependency, only needed for projects that use PEP 621 metadata
+   'tomli>=1.0.0',
+   'typing-extensions>=3.7.4; python_version<"3.8"',
+ ]
+@@ -41,7 +41,6 @@ test = [
+   'pytest-mock',
+   'GitPython',
+   'auditwheel',
+-  'pep621 >= 0.4.0',
+ ]
+ docs = [
+   'furo>=2021.08.31',
+
+From c01645aa3617ccd424ef3ec052d13ac25e7df433 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Filipe=20La=C3=ADns?= <lains@riseup.net>
+Date: Thu, 9 Jun 2022 20:27:49 +0100
+Subject: [PATCH] mesonpy: update code to pyproject-metadata 0.5.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Filipe Laíns <lains@riseup.net>
+--- a/mesonpy/__init__.py
++++ b/mesonpy/__init__.py
+@@ -424,9 +424,6 @@ def __init__(
+         # set version if dynamic (this fetches it from Meson)
+         if self._metadata and 'version' in self._metadata.dynamic:
+             self._metadata.version = self.version
+-            # version is no longer dynamic
+-            # XXX: Should this be automatically handled by pep621/pyproject-metadata?
+-            self._metadata.dynamic.remove('version')
+ 
+     def _proc(self, *args: str) -> None:
+         print('{cyan}{bold}+ {}{reset}'.format(' '.join(args), **_STYLES))
+

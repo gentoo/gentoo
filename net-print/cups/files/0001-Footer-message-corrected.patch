@@ -1,0 +1,89 @@
+diff --git a/templates/da/trailer.tmpl b/templates/da/trailer.tmpl
+index aede375..d448d7e 100644
+--- a/templates/da/trailer.tmpl
++++ b/templates/da/trailer.tmpl
+@@ -1,5 +1,5 @@
+       </div>
+     </div>
+-    <div class="footer">CUPS og CUPS-logoet er varemærker som tilhører <a href="http://www.apple.com">Apple Inc.</a> Ophavsret &copy; 2007-2019 Apple Inc. Alle rettigheder forbeholdt.</div>
++    <div class="footer">Ophavsret &copy; 2021-2022 OpenPrinting. Alle rettigheder forbeholdt.</div>
+   </body>
+ </html>
+diff --git a/templates/de/trailer.tmpl b/templates/de/trailer.tmpl
+index c1f5d38..cf3caca 100644
+--- a/templates/de/trailer.tmpl
++++ b/templates/de/trailer.tmpl
+@@ -1,5 +1,5 @@
+       </div>
+     </div>
+-    <div class="footer">CUPS und das CUPS-Logo sind Warenzeichen der <a href="https://www.apple.com/">Apple Inc.</a> Copyright &copy; 2007-2019 Apple Inc. Alle Rechte vorbehalten.</div>
++    <div class="footer">Copyright &copy; 2021-2022 OpenPrinting. Alle Rechte vorbehalten.</div>
+   </body>
+ </html>
+diff --git a/templates/es/trailer.tmpl b/templates/es/trailer.tmpl
+index c1cb58f..9b9047e 100644
+--- a/templates/es/trailer.tmpl
++++ b/templates/es/trailer.tmpl
+@@ -1,5 +1,5 @@
+       </div>
+     </div>
+-    <div class="footer">CUPS y el logo de CUPS son marcas registradas de <a href="http://www.apple.com">Apple Inc.</a> Derechos de autor &copy; 2007-2019 Apple Inc. Todos los derechos reservados.</div>
++    <div class="footer">Derechos de autor &copy; 2021-2022 OpenPrinting. Todos los derechos reservados.</div>
+   </body>
+ </html>
+diff --git a/templates/fr/trailer.tmpl b/templates/fr/trailer.tmpl
+index 6e9b8b1..9628176 100644
+--- a/templates/fr/trailer.tmpl
++++ b/templates/fr/trailer.tmpl
+@@ -1,5 +1,5 @@
+       </div>
+     </div>
+-    <div class="footer">CUPS et le logo CUPS sont des marques d&eacute;pos&eacute;es de <a href="http://www.apple.com">Apple Inc.</a> CUPS est sous copyright 2007-2019 Apple Inc. Tous droits r&eacute;serv&eacute;s.</div>
++    <div class="footer">Copyright &copy; 2021-2022 OpenPrinting. Tous droits r&eacute;serv&eacute;s.</div>
+   </body>
+ </html>
+diff --git a/templates/ja/trailer.tmpl b/templates/ja/trailer.tmpl
+index a4f86b1..240c56b 100644
+--- a/templates/ja/trailer.tmpl
++++ b/templates/ja/trailer.tmpl
+@@ -1,5 +1,5 @@
+       </div>
+     </div>
+-    <div class="footer">CUPS and the CUPS logo are trademarks of <a href="http://www.apple.com">Apple Inc.</a> Copyright &copy; 2007-2019 Apple Inc. All rights reserved.</div>
++    <div class="footer">Copyright &copy; 2021-2022 OpenPrinting. All rights reserved.</div>
+   </body>
+ </html>
+diff --git a/templates/pt_BR/trailer.tmpl b/templates/pt_BR/trailer.tmpl
+index 673a555..774bc1d 100644
+--- a/templates/pt_BR/trailer.tmpl
++++ b/templates/pt_BR/trailer.tmpl
+@@ -1,5 +1,5 @@
+       </div>
+     </div>
+-    <div class="footer">CUPS e sua logo s&atilde;o marcas registradas da <a href="http://www.apple.com">Apple Inc.</a> Copyright &copy; 2007-2019 Apple Inc. Todos os direitos reservados.</div>
++    <div class="footer">Copyright &copy; 2021-2022 OpenPrinting. Todos os direitos reservados.</div>
+   </body>
+ </html>
+diff --git a/templates/ru/trailer.tmpl b/templates/ru/trailer.tmpl
+index 260d0e9..c6ec6e4 100644
+--- a/templates/ru/trailer.tmpl
++++ b/templates/ru/trailer.tmpl
+@@ -1,6 +1,5 @@
+       </div>
+     </div>
+-    <div class="footer">CUPS, а так же логотип CUPS являются зарегистрированными торговыми марками
+-<A HREF="http://www.apple.com">Apple Inc.</A> Авторские права на CUPS принадлежат (2007-2019) компании Apple Inc. Все права защищены.</div>
++    <div class="footer">Copyright &copy; 2021-2022 OpenPrinting. Все права защищены.</div>
+   </body>
+ </html>
+diff --git a/templates/trailer.tmpl b/templates/trailer.tmpl
+index a4f86b1..240c56b 100644
+--- a/templates/trailer.tmpl
++++ b/templates/trailer.tmpl
+@@ -1,5 +1,5 @@
+       </div>
+     </div>
+-    <div class="footer">CUPS and the CUPS logo are trademarks of <a href="http://www.apple.com">Apple Inc.</a> Copyright &copy; 2007-2019 Apple Inc. All rights reserved.</div>
++    <div class="footer">Copyright &copy; 2021-2022 OpenPrinting. All rights reserved.</div>
+   </body>
+ </html>

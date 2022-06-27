@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>vapier@gentoo.org</email>
-	<description>Primary maintainer</description>
-</maintainer>
+	<maintainer type="person">
+		<name>Mike Frysinger</name>
+		<email>vapier@gentoo.org</email>
+		<description>Primary maintainer</description>
+	</maintainer>
 </pkgmetadata>

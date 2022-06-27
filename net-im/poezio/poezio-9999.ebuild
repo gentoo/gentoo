@@ -1,16 +1,16 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{7..10} )
 
 inherit distutils-r1 optfeature xdg
 
 DESCRIPTION="Console XMPP client that looks like most famous IRC clients"
 HOMEPAGE="https://poez.io/"
-LICENSE="ZLIB"
+LICENSE="GPL-3+"
 SLOT="0"
 
 if [[ "${PV}" == "9999" ]]; then
@@ -28,7 +28,7 @@ RDEPEND="
 	dev-python/aiodns[${PYTHON_USEDEP}]
 	dev-python/pyasn1-modules[${PYTHON_USEDEP}]
 	dev-python/pyasn1[${PYTHON_USEDEP}]
-	>=dev-python/slixmpp-1.7.1[${PYTHON_USEDEP}]
+	>=dev-python/slixmpp-1.8.2[${PYTHON_USEDEP}]
 "
 
 PATCHES=(
@@ -49,6 +49,14 @@ src_compile() {
 	if [[ -n "${EGIT_REPO_URI}" ]]; then
 		emake -C doc html
 	fi
+}
+
+# Poezio provides its own Python C extension 'poopt', which needs to be
+# correctly discovered to run the tests. See
+# https://projects.gentoo.org/python/guide/test.html#importerrors-for-c-extensions
+python_test() {
+	cd "${T}" || die
+	epytest "${S}"/test
 }
 
 src_install() {

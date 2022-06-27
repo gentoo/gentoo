@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{8..10} )
@@ -18,7 +18,7 @@ SRC_URI=""
 LICENSE="GPL-3 LGPL-3"
 SLOT="0/3"
 
-IUSE="aalib alsa aqua doc gnome heif javascript jpeg2k lua mng openexr postscript python udev unwind vala vector-icons webp wmf xpm cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse"
+IUSE="aalib alsa aqua doc gnome heif javascript jpeg2k jpegxl lua mng openexr postscript python udev unwind vala vector-icons webp wmf xpm cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse"
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -39,19 +39,19 @@ COMMON_DEPEND="
 	dev-libs/libxslt
 	>=gnome-base/librsvg-2.40.21:2
 	>=media-gfx/mypaint-brushes-2.0.2:=
-	>=media-libs/babl-0.1.88[introspection,lcms,vala?]
+	>=media-libs/babl-0.1.90[introspection,lcms,vala?]
 	>=media-libs/fontconfig-2.12.6
 	>=media-libs/freetype-2.10.2
-	>=media-libs/gegl-0.4.34:0.4[cairo,introspection,lcms,vala?]
-	>=media-libs/gexiv2-0.10.10
+	>=media-libs/gegl-0.4.36:0.4[cairo,introspection,lcms,vala?]
+	>=media-libs/gexiv2-0.14.0
 	>=media-libs/harfbuzz-2.6.5:=
 	>=media-libs/lcms-2.9:2
+	media-libs/libjpeg-turbo
 	>=media-libs/libmypaint-1.6.1:=
 	>=media-libs/libpng-1.6.37:0=
 	>=media-libs/tiff-4.1.0:0
 	net-libs/glib-networking[ssl]
 	sys-libs/zlib
-	virtual/jpeg
 	>=x11-libs/cairo-1.16.0
 	>=x11-libs/gdk-pixbuf-2.40.0:2[introspection]
 	>=x11-libs/gtk+-3.24.16:3[introspection]
@@ -63,6 +63,7 @@ COMMON_DEPEND="
 	heif? ( >=media-libs/libheif-1.9.1:= )
 	javascript? ( dev-libs/gjs )
 	jpeg2k? ( >=media-libs/openjpeg-2.3.1:2= )
+	jpegxl? ( >=media-libs/libjxl-0.6.1:= )
 	lua? (
 		${LUA_DEPS}
 		$(lua_gen_cond_dep '
@@ -131,10 +132,8 @@ src_prepare() {
 
 	gnome2_src_prepare  # calls eautoreconf
 
-	use vala && vala_src_prepare
-
 	sed 's:-DGIMP_protect_DISABLE_DEPRECATED:-DGIMP_DISABLE_DEPRECATED:g' -i configure || die #615144
-	fgrep -q GIMP_DISABLE_DEPRECATED configure || die #615144, self-test
+	grep -F -q GIMP_DISABLE_DEPRECATED configure || die #615144, self-test
 
 	export CC_FOR_BUILD="$(tc-getBUILD_CC)"
 }
@@ -156,6 +155,8 @@ _adjust_sandbox() {
 src_configure() {
 	_adjust_sandbox
 
+	use vala && vala_setup
+
 	local myconf=(
 		GEGL="${EPREFIX}"/usr/bin/gegl-0.4
 		GDBUS_CODEGEN="${EPREFIX}"/usr/bin/gdbus-codegen
@@ -166,6 +167,7 @@ src_configure() {
 		--enable-mp
 		--with-appdata-test
 		--with-bug-report-url=https://bugs.gentoo.org/
+		--with-pdbgen
 		--with-xmc
 		--without-libbacktrace
 		--without-webkit
@@ -181,6 +183,7 @@ src_configure() {
 		$(use_with heif libheif)
 		$(use_with javascript)
 		$(use_with jpeg2k jpeg2000)
+		$(use_with jpegxl)
 		$(use_with lua)
 		$(use_with mng libmng)
 		$(use_with openexr)

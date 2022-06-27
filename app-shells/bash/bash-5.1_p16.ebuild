@@ -3,7 +3,12 @@
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs prefix
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/chetramey.asc
+inherit flag-o-matic toolchain-funcs prefix verify-sig
+
+# Uncomment if we have a patchset
+GENTOO_PATCH_DEV="sam"
+GENTOO_PATCH_VER="${PV}"
 
 # Official patchlevel
 # See ftp://ftp.cwru.edu/pub/bash/bash-5.1-patches/
@@ -29,6 +34,7 @@ patches() {
 		local u
 		for u in mirror://gnu/${pn} ftp://ftp.cwru.edu/pub/bash ; do
 			printf "${u}/${pn}-${pv}-patches/%s " "$@"
+			printf "${u}/${pn}-${pv}-patches/%s.sig " "$@"
 		done
 	fi
 }
@@ -37,17 +43,23 @@ patches() {
 READLINE_VER="8.1"
 
 DESCRIPTION="The standard GNU Bourne again shell"
-HOMEPAGE="http://tiswww.case.edu/php/chet/bash/bashtop.html"
+HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html"
 if is_release ; then
 	SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
+	SRC_URI+=" verify-sig? ( mirror://gnu/bash/${MY_P}.tar.gz.sig )"
 else
 	SRC_URI="ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
+	SRC_URI+=" verify-sig? ( ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz.sig )"
+fi
+
+if [[ -n ${GENTOO_PATCH_VER} ]] ; then
+	SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${GENTOO_PATCH_VER}-patches.tar.xz"
 fi
 
 LICENSE="GPL-3"
 SLOT="0"
 [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="afs bashlogger examples mem-scramble +net nls plugins +readline"
 
 DEPEND="
@@ -59,13 +71,14 @@ RDEPEND="
 	${DEPEND}
 "
 # We only need yacc when the .y files get patched (bash42-005, bash51-011)
-BDEPEND="virtual/yacc"
+BDEPEND="virtual/yacc
+	verify-sig? ( sec-keys/openpgp-keys-chetramey )"
 
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	# Patches from Chet sent to bashbug ml
-	"${FILESDIR}"/${PN}-5.0-syslog-history-extern.patch
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-5.0-syslog-history-extern.patch
 )
 
 pkg_setup() {
@@ -83,7 +96,19 @@ pkg_setup() {
 }
 
 src_unpack() {
-	unpack ${MY_P}.tar.gz
+	if [[ ${PV} == 9999 ]] ; then
+		git-r3_src_unpack
+	else
+		if use verify-sig ; then
+			verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.gz{,.sig}
+		fi
+
+		unpack ${MY_P}.tar.gz
+
+		if [[ -n ${GENTOO_PATCH_VER} ]] ; then
+			unpack ${PN}-${GENTOO_PATCH_VER}-patches.tar.xz
+		fi
+	fi
 }
 
 src_prepare() {

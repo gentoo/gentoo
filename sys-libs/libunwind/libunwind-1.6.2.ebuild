@@ -5,7 +5,7 @@ EAPI=7
 
 MY_PV=${PV/_/-}
 MY_P=${PN}-${MY_PV}
-inherit autotools multilib-minimal
+inherit multilib-minimal
 
 DESCRIPTION="Portable and efficient API to determine the call-chain of a program"
 HOMEPAGE="https://savannah.nongnu.org/projects/libunwind"
@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0/8" # libunwind.so.8
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv -sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 -sparc x86 ~amd64-linux ~x86-linux"
 IUSE="debug debug-frame doc libatomic lzma static-libs test zlib"
 
 RESTRICT="test !test? ( test )" # some tests are broken (toolchain version dependent, rely on external binaries)
@@ -49,8 +49,6 @@ src_prepare() {
 	default
 
 	chmod +x src/ia64/mk_cursor_i || die
-
-	eautoreconf
 }
 
 multilib_src_configure() {

@@ -27,6 +27,15 @@
  ARCH_CFLAGS:=$($(OS)_ARCH_CFLAGS)
  
  windows_ARCH_LDFLAGS:=
+@@ -176,7 +176,7 @@ windows_ARCH_LDFLAGS:=
+ macos_ARCH_LDFLAGS:=-isysroot $(SDKROOT) -L$(HOSTROOT)/lib -mmacosx-version-min=$(MINVER) -arch $(subst $() $(), -arch ,$(ARCHS))
+ ios_ARCH_LDFLAGS:=-isysroot $(SDKROOT) -L$(HOSTROOT)/lib $(MINVEROPT) -arch $(subst $() $(), -arch ,$(ARCHS))
+ beos_ARCH_LDFLAGS:=
+-linux_ARCH_LDFLAGS:=
++linux_ARCH_LDFLAGS:=${LDFLAGS}
+ ARCH_LDFLAGS:=$($(OS)_ARCH_LDFLAGS)
+ LDFLAGS:=$(ARCH_LDFLAGS)
+ 
 @@ -205,7 +205,7 @@ ARCH_HEADERS:=$($(OS)_ARCH_HEADERS)
  windows_PREFIX:=/usr/local
  macos_PREFIX:=Resources

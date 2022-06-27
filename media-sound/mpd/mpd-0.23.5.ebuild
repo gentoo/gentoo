@@ -139,17 +139,17 @@ pkg_setup() {
 
 src_prepare() {
 	 sed -i \
-                -e 's:^#filesystem_charset.*$:filesystem_charset "UTF-8":' \
-                -e 's:^#user.*$:user "mpd":' \
-                -e 's:^#bind_to_address.*any.*$:bind_to_address "localhost":' \
-                -e 's:^#bind_to_address.*$:bind_to_address "/var/lib/mpd/socket":' \
-                -e 's:^#music_directory.*$:music_directory "/var/lib/mpd/music":' \
-                -e 's:^#playlist_directory.*$:playlist_directory "/var/lib/mpd/playlists":' \
-                -e 's:^#db_file.*$:db_file "/var/lib/mpd/database":' \
-                -e 's:^#log_file.*$:log_file "/var/lib/mpd/log":' \
-                -e 's:^#pid_file.*$:pid_file "/var/lib/mpd/pid":' \
-                -e 's:^#state_file.*$:state_file "/var/lib/mpd/state":' \
-                doc/mpdconf.example || die
+		-e 's:^#filesystem_charset.*$:filesystem_charset "UTF-8":' \
+		-e 's:^#user.*$:user "mpd":' \
+		-e 's:^#bind_to_address.*any.*$:bind_to_address "localhost":' \
+		-e 's:^#bind_to_address.*$:bind_to_address "/var/lib/mpd/socket":' \
+		-e 's:^#music_directory.*$:music_directory "/var/lib/mpd/music":' \
+		-e 's:^#playlist_directory.*$:playlist_directory "/var/lib/mpd/playlists":' \
+		-e 's:^#db_file.*$:db_file "/var/lib/mpd/database":' \
+		-e 's:^#log_file.*$:log_file "/var/lib/mpd/log":' \
+		-e 's:^#pid_file.*$:pid_file "/var/lib/mpd/pid":' \
+		-e 's:^#state_file.*$:state_file "/var/lib/mpd/state":' \
+		doc/mpdconf.example || die
 	default
 }
 

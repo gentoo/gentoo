@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 ECM_HANDBOOK="forceoptional"
 KFMIN=5.60.0
@@ -12,14 +12,15 @@ inherit ecm kde.org
 DESCRIPTION="System settings module for Wacom tablets"
 HOMEPAGE="https://apps.kde.org/wacomtablet/
 https://userbase.kde.org/Wacomtablet"
+SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz
+https://dev.gentoo.org/~asturm/distfiles/${P}-patchset-1.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="5"
 KEYWORDS="amd64 x86"
 
-BDEPEND="sys-devel/gettext"
 RDEPEND="
-	>=dev-libs/libwacom-0.30
+	>=dev-libs/libwacom-0.30:=
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtdeclarative-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
@@ -44,8 +45,9 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	x11-libs/libX11
 "
+BDEPEND="sys-devel/gettext"
 
-PATCHES=( "${FILESDIR}/${P}-qt-5.15.patch" )
+PATCHES=( "${WORKDIR}/${P}-qt-5.15.patch" )
 
 src_test() {
 	# test needs DBus, bug 675548

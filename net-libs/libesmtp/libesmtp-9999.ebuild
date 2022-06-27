@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,11 +14,16 @@ else
 	SRC_URI="https://github.com/libesmtp/libESMTP/archive/v${PV/_}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/libESMTP-${PV}"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="LGPL-2.1 GPL-2"
-SLOT="0/7"
+# 0/7 was a snapshot before 1.1.0
+# The SONAME was fixed just before the 1.1.0 release was made
+# ... but a patch was needed to get it exactly right too
+# so, we're on 0/8 now, even though ABI compatibility actually remained
+# in terms of symbols with the original <1.1.0.
+SLOT="0/8"
 IUSE="ssl static-libs threads"
 
 RDEPEND="ssl? ( >=dev-libs/openssl-1.1.0:0= )"

@@ -1,0 +1,9 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Unmask ABI flags for this arch.
+-abi_s390_32
+
+# sys-libs/libunwind is masked on s390, but enabled on s390x
+unwind
+libunwind

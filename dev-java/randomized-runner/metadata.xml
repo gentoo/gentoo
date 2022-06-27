@@ -4,4 +4,7 @@
 	<maintainer type="project">
 		<email>java@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">randomizedtesting/randomizedtesting</remote-id>
+	</upstream>
 </pkgmetadata>

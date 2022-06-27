@@ -13,7 +13,7 @@ SRC_URI="https://github.com/lathiat/avahi/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="autoipd bookmarks +dbus doc gdbm gtk howl-compat +introspection ipv6 mdnsresponder-compat mono nls python qt5 selinux systemd test"
 
 REQUIRED_USE="

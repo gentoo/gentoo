@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -35,16 +35,16 @@ src_prepare() {
 src_compile() {
 	tc-export CC CXX LD AS AR NM RANLIB STRIP OBJCOPY
 	if use debug ; then
-		DEBUG="true" emake -j1 CCC=$(tc-getCXX) CC=$(tc-getCC) cccc
+		DEBUG="true" emake -j1 CCC="$(tc-getCXX)" CC="$(tc-getCC)" cccc
 	else
-		emake -j1 CCC=$(tc-getCXX) CC=$(tc-getCC) cccc
+		emake -j1 CCC="$(tc-getCXX)" CC="$(tc-getCC)" cccc
 	fi
 
-	use apidoc && emake -j1 CCC=$(tc-getCXX) metrics docs
+	use apidoc && emake -j1 CCC="$(tc-getCXX)" metrics docs
 }
 
 src_test() {
-	emake -j1 CCC=$(tc-getCXX) test
+	emake -j1 CCC="$(tc-getCXX)" test
 }
 
 src_install() {

@@ -13,7 +13,7 @@
 		Luacheck itself is written in Lua and runs on all of mentioned Lua versions.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">luarocks/luacheck</remote-id>
+		<remote-id type="github">lunarmodules/luacheck</remote-id>
 		<remote-id type="github">mpeterv/luacheck</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,11 +31,13 @@ DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${P}-fix-license-install-path.patch )
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
-	if [[ ${MERGE_TYPE} != binary ]] && use openmp && [[ $(tc-getCC) == *gcc ]] && ! tc-has-openmp; then
-		ewarn "OpenMP is not available in your current selected gcc"
-		die "need openmp capable gcc"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+	use fortran && fortran-2_pkg_setup
 }
 
 src_prepare() {

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    Cadabra is a symbolic computer algebra system (CAS) designed specifically
+    for the solution of problems encountered in field theory. It has extensive
+    functionality for tensor computer algebra, tensor polynomial simplification
+    including multi-term symmetries, fermions and anti-commuting variables,
+    Clifford algebras and Fierz transformations, component computations,
+    implicit coordinate dependence, multiple index types and many more.
+    The input format is a subset of TeX.
+    Both a command-line and a graphical notebook interface are available, and
+    you can also use Cadabra from Jupyter by using the Cadabra Jupyter kernel.
+  </longdescription>
+  <upstream>
+    <changelog>https://github.com/kpeeters/cadabra2/releases/</changelog>
+    <bugs-to>https://github.com/kpeeters/cadabra2/issues/</bugs-to>
+    <remote-id type="github">kpeeters/cadabra2</remote-id>
+    <doc lang="en">https://cadabra.science/man.html</doc>
+  </upstream>
+  <use>
+    <flag name="jupyter">Build the Cadabra Jupyter kernel</flag>
+  </use>
+</pkgmetadata>

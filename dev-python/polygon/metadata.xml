@@ -11,7 +11,7 @@
 		Alan Murta and some extensions written in C and pure Python.
 	</longdescription>
 	<upstream>
-		<remote-id type="pypi">Polygon</remote-id>
+		<remote-id type="pypi">polygon</remote-id>
 		<remote-id type="github">jraedler/Polygon3</remote-id>
 	</upstream>
 </pkgmetadata>

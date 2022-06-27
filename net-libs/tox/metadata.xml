@@ -12,6 +12,7 @@
 	<use>
 		<flag name="av">Adds support for audio and video.</flag>
 		<flag name="dht-node">Enables DHT Bootstrap Node.</flag> 
+		<flag name="key-utils">Builds utilities to create custom keys and profiles</flag>
 		<flag name="log-error">Log level: 1</flag>
 		<flag name="log-warn">Log level: 2</flag>
 		<flag name="log-info">Log level: 3</flag>

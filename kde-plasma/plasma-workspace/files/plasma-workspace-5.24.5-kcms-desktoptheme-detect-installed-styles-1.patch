@@ -1,0 +1,41 @@
+From 1a966d3fb979cf0f0080c805aed248ee77978800 Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Mon, 16 May 2022 16:18:00 +0800
+Subject: [PATCH 6/8] kcms/desktoptheme: find metadata.json when loading
+ ThemesModel
+
+Before this commit ThemesModel only finds metadata.desktop, but after
+KF5.94, the default theme metadata files have been ported to json format.
+
+BUG: 453830
+
+
+(cherry picked from commit 10aa9bb8dca91e92e3009ed57613d43d610da63e)
+---
+ kcms/desktoptheme/themesmodel.cpp | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/kcms/desktoptheme/themesmodel.cpp b/kcms/desktoptheme/themesmodel.cpp
+index 6f0ecf4e3..296951742 100644
+--- a/kcms/desktoptheme/themesmodel.cpp
++++ b/kcms/desktoptheme/themesmodel.cpp
+@@ -155,7 +155,15 @@ void ThemesModel::load()
+         const QDir cd(ppath);
+         const QStringList &entries = cd.entryList(QDir::Dirs | QDir::Hidden | QDir::NoDotAndDotDot);
+         for (const QString &pack : entries) {
+-            const QString _metadata = ppath + QLatin1Char('/') + pack + QStringLiteral("/metadata.desktop");
++            const QString prefix = QStringLiteral("%1%2%3%4metadata.").arg(ppath, QDir::separator(), pack, QDir::separator());
++
++            QString _metadata = QStringLiteral("%1json").arg(prefix);
++            if (QFile::exists(_metadata)) {
++                themes << _metadata;
++                continue;
++            }
++
++            _metadata = QStringLiteral("%1desktop").arg(prefix);
+             if (QFile::exists(_metadata)) {
+                 themes << _metadata;
+             }
+-- 
+2.35.1
+

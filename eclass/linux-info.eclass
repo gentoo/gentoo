@@ -29,13 +29,13 @@
 # A Couple of env vars are available to effect usage of this eclass
 # These are as follows:
 
-# @ECLASS-VARIABLE: KERNEL_DIR
+# @ECLASS_VARIABLE: KERNEL_DIR
 # @DESCRIPTION:
 # A string containing the directory of the target kernel sources. The default value is
 # "/usr/src/linux"
 KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 
-# @ECLASS-VARIABLE: CONFIG_CHECK
+# @ECLASS_VARIABLE: CONFIG_CHECK
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A string containing a list of .config options to check for before
@@ -58,7 +58,7 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # This is to allow usage of binary kernels, and minimal systems without kernel
 # sources.
 
-# @ECLASS-VARIABLE: ERROR_<CFG>
+# @ECLASS_VARIABLE: ERROR_<CFG>
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A string containing the error message to display when the check against CONFIG_CHECK
@@ -71,7 +71,7 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # CONFIG_CHECK="~CFG" with WARNING_<CFG>="Warning Message" calls ewarn without dieing
 
 
-# @ECLASS-VARIABLE: KBUILD_OUTPUT
+# @ECLASS_VARIABLE: KBUILD_OUTPUT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A string passed on commandline, or set from the kernel makefile. It contains the directory
@@ -80,7 +80,7 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # There are also a couple of variables which are set by this, and shouldn't be
 # set by hand. These are as follows:
 
-# @ECLASS-VARIABLE: KERNEL_MAKEFILE
+# @ECLASS_VARIABLE: KERNEL_MAKEFILE
 # @INTERNAL
 # @DESCRIPTION:
 # According to upstream documentation, by default, when make looks for the makefile, it tries
@@ -89,43 +89,43 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # See https://www.gnu.org/software/make/manual/make.html
 : ${KERNEL_MAKEFILE:=""}
 
-# @ECLASS-VARIABLE: KV_FULL
+# @ECLASS_VARIABLE: KV_FULL
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's a string containing the full kernel version. ie: 2.6.9-gentoo-johnm-r1
 
-# @ECLASS-VARIABLE: KV_MAJOR
+# @ECLASS_VARIABLE: KV_MAJOR
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's an integer containing the kernel major version. ie: 2
 
-# @ECLASS-VARIABLE: KV_MINOR
+# @ECLASS_VARIABLE: KV_MINOR
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's an integer containing the kernel minor version. ie: 6
 
-# @ECLASS-VARIABLE: KV_PATCH
+# @ECLASS_VARIABLE: KV_PATCH
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's an integer containing the kernel patch version. ie: 9
 
-# @ECLASS-VARIABLE: KV_EXTRA
+# @ECLASS_VARIABLE: KV_EXTRA
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's a string containing the kernel EXTRAVERSION. ie: -gentoo
 
-# @ECLASS-VARIABLE: KV_LOCAL
+# @ECLASS_VARIABLE: KV_LOCAL
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's a string containing the kernel LOCALVERSION concatenation. ie: -johnm
 
-# @ECLASS-VARIABLE: KV_DIR
+# @ECLASS_VARIABLE: KV_DIR
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's a string containing the kernel source directory, will be null if
 # KERNEL_DIR is invalid.
 
-# @ECLASS-VARIABLE: KV_OUT_DIR
+# @ECLASS_VARIABLE: KV_OUT_DIR
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # A read-only variable. It's a string containing the kernel object directory, will be KV_DIR unless
@@ -148,15 +148,30 @@ esac
 # @DESCRIPTION:
 # Set the env ARCH to match what the kernel expects.
 set_arch_to_kernel() { export ARCH=$(tc-arch-kernel); }
+
 # @FUNCTION: set_arch_to_portage
 # @DESCRIPTION:
 # Set the env ARCH to match what portage expects.
-set_arch_to_portage() { export ARCH=$(tc-arch); }
+set_arch_to_portage() { 
 
-# qeinfo "Message"
-# -------------------
-# qeinfo is a quiet einfo call when EBUILD_PHASE
-# should not have visible output.
+	ewarn "The function name: set_arch_to_portage is being deprecated and"
+	ewarn "being changed to:  set_arch_to_pkgmgr to comply with pms policy."
+	ewarn "See bug #843686"
+	ewarn "The old function name will be removed on or about July 1st, 2022."
+	ewarn "Please update your ebuild or eclass before this date."
+	ewarn ""
+
+	export ARCH=$(tc-arch); 
+}
+
+# @FUNCTION: set_arch_to_pkgmgr
+# @DESCRIPTION:
+# Set the env ARCH to match what the package manager expects.
+set_arch_to_pkgmgr() { export ARCH=$(tc-arch); }
+
+# @FUNCTION: qout
+# @DESCRIPTION:
+# qout <einfo | ewarn | eerror>  is a quiet call when EBUILD_PHASE should not have visible output.
 qout() {
 	local outputmsg type
 	type=${1}
@@ -170,8 +185,21 @@ qout() {
 	[ -n "${outputmsg}" ] && ${type} "${outputmsg}"
 }
 
+# @FUNCTION: qeinfo
+# @DESCRIPTION:
+# qeinfo is a quiet einfo call when EBUILD_PHASE should not have visible output.
 qeinfo() { qout einfo "${@}" ; }
+
+# @FUNCTION: qewarn
+# @DESCRIPTION:
+# qewarn is a quiet ewarn call when EBUILD_PHASE
+# should not have visible output.
 qewarn() { qout ewarn "${@}" ; }
+
+# @FUNCTION: qeerror
+# @DESCRIPTION:
+# qeerror is a quiet error call when EBUILD_PHASE
+# should not have visible output.
 qeerror() { qout eerror "${@}" ; }
 
 # File Functions
@@ -244,7 +272,7 @@ getfilevar_noexec() {
 	fi
 }
 
-# @ECLASS-VARIABLE: _LINUX_CONFIG_EXISTS_DONE
+# @ECLASS_VARIABLE: _LINUX_CONFIG_EXISTS_DONE
 # @INTERNAL
 # @DESCRIPTION:
 # This is only set if one of the linux_config_*exists functions has been called.
@@ -253,6 +281,10 @@ getfilevar_noexec() {
 # config is available at all.
 _LINUX_CONFIG_EXISTS_DONE=
 
+# @FUNCTION: linux_config_qa_check
+# @INTERNAL
+# @DESCRIPTION:
+# Helper funciton which returns an error before the function argument is run if no config exists
 linux_config_qa_check() {
 	local f="$1"
 	if [ -z "${_LINUX_CONFIG_EXISTS_DONE}" ]; then
@@ -422,26 +454,9 @@ kernel_is() {
 		"${1:-${KV_MAJOR:-0}}.${2:-${KV_MINOR:-0}}.${3:-${KV_PATCH:-0}}"
 }
 
-get_localversion() {
-	local lv_list i x
-
-	local shopt_save=$(shopt -p nullglob)
-	shopt -s nullglob
-	local files=( ${1}/localversion* )
-	${shopt_save}
-
-	# ignore files with ~ in it.
-	for i in "${files[@]}"; do
-		[[ -n ${i//*~*} ]] && lv_list="${lv_list} ${i}"
-	done
-
-	for i in ${lv_list}; do
-		x="${x}$(<${i})"
-	done
-	x=${x/ /}
-	echo ${x}
-}
-
+# @FUNCTION: get_makefile_extract_function
+# @INTERNAL
+# @DESCRIPTION:
 # Check if the Makefile is valid for direct parsing.
 # Check status results:
 # - PASS, use 'getfilevar' to extract values
@@ -457,7 +472,10 @@ get_makefile_extract_function() {
 	echo "${mkfunc}"
 }
 
-# internal variable, so we know to only print the warning once
+# @ECLASS_VARIABLE: get_version_warning_done
+# @INTERNAL
+# @DESCRIPTION: 
+# Internal variable, so we know to only print the warning once.
 get_version_warning_done=
 
 # @FUNCTION: get_version
@@ -781,7 +799,7 @@ check_extra_config() {
 		require_configured_kernel
 	fi
 
-	einfo "Checking for suitable kernel configuration options..."
+	ebegin "Checking for suitable kernel configuration options"
 
 	for config in ${CONFIG_CHECK}
 	do
@@ -857,6 +875,7 @@ check_extra_config() {
 	done
 
 	if [[ ${hard_errors_count} -gt 0 ]]; then
+		eend 1
 		eerror "Please check to make sure these options are set correctly."
 		eerror "Failure to do so may cause unexpected problems."
 		eerror "Once you have satisfied these options, please try merging"
@@ -864,6 +883,7 @@ check_extra_config() {
 		export LINUX_CONFIG_EXISTS_DONE="${old_LINUX_CONFIG_EXISTS_DONE}"
 		die "Incorrect kernel configuration options"
 	elif [[ ${soft_errors_count} -gt 0 ]]; then
+		eend 1
 		ewarn "Please check to make sure these options are set correctly."
 		ewarn "Failure to do so may cause unexpected problems."
 	else
@@ -872,6 +892,9 @@ check_extra_config() {
 	export LINUX_CONFIG_EXISTS_DONE="${old_LINUX_CONFIG_EXISTS_DONE}"
 }
 
+# @FUNCTION: check_zlibinflate
+# @DESCRIPTION:
+# Function to make sure a ZLIB_INFLATE configuration has the required symbols.
 check_zlibinflate() {
 	if ! use kernel_linux; then
 		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"

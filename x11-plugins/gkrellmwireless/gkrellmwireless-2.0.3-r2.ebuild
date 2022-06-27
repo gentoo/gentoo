@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,8 +20,9 @@ DEPEND="${RDEPEND}"
 S=${WORKDIR}/${PN}
 PATCHES=( "${FILESDIR}"/${PN}-2.0.3-fix-build-system.patch )
 
-PLUGIN_SO=( wireless$(get_modname) )
-
 src_configure() {
 	tc-export CC
+
+	PLUGIN_SO=( wireless$(get_modname) )
+	default
 }

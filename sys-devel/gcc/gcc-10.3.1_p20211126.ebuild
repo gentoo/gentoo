@@ -3,6 +3,7 @@
 
 EAPI=7
 
+TOOLCHAIN_PATCH_DEV="sam"
 PATCH_VER="0"
 PATCH_GCC_VER="10.4.0"
 MUSL_VER="1"
@@ -10,7 +11,7 @@ MUSL_GCC_VER="10.3.0"
 
 inherit toolchain
 
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ~ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND=""
 BDEPEND="${CATEGORY}/binutils"

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ MY_PN="hamcrest"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Library of matchers for building test expressions"
-HOMEPAGE="https://github.com/hamcrest"
+HOMEPAGE="http://hamcrest.org/JavaHamcrest/"
 SRC_URI="https://github.com/${MY_PN}/JavaHamcrest/archive/${MY_PN}-java-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"

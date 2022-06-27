@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools toolchain-funcs
+inherit autotools
 
 MY_PN=${PN/-a/.A}
 MY_PN=${MY_PN/xs/XS}

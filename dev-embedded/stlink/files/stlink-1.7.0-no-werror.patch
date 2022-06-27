@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/746770
+--- a/cmake/modules/c_flags.cmake
++++ b/cmake/modules/c_flags.cmake
+@@ -50,5 +50,4 @@ if (${CMAKE_BUILD_TYPE} MATCHES "Debug")
+     add_cflag_if_supported("-O0")
+ else ()
+     add_cflag_if_supported("-O2")
+-    add_cflag_if_supported("-Werror")
+ endif ()
+--- a/doc/dev/app-example/CMakeLists.txt
++++ b/doc/dev/app-example/CMakeLists.txt
+@@ -14,7 +14,7 @@ include_directories(${STLINK_INCLUDE_DIRS})
+ find_package(PkgConfig)
+ pkg_check_modules(STLINK REQUIRED stlink)
+ 
+-set(CMAKE_C_FLAGS " ${STLINK_CFLAGS_OTHER} -Wall -Werror")
++set(CMAKE_C_FLAGS " ${STLINK_CFLAGS_OTHER} -Wall")
+ 
+ add_executable(${PROJECT_NAME} ${SRCS})
+ 

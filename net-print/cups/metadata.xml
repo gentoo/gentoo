@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>printing@gentoo.org</email>
-    <name>Gentoo Printing Project</name>
-  </maintainer>
-  <use>
-    <flag name="lprng-compat">
-      Do not install lp... binaries so cups and lprng can coexist.
-    </flag>
-  </use>
-  <upstream>
-    <remote-id type="cpe">cpe:/a:apple:cups</remote-id>
-    <remote-id type="github">apple/cups</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>printing@gentoo.org</email>
+		<name>Gentoo Printing Project</name>
+	</maintainer>
+	<use>
+		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> instead of <pkg>net-libs/gnutls</pkg> for TLS support</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:apple:cups</remote-id>
+		<remote-id type="github">OpenPrinting/cups</remote-id>
+	</upstream>
 </pkgmetadata>

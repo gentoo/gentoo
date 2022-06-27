@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ else
 		SRC_URI="https://github.com/${PN}/${PN}/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
 		S="${WORKDIR}/${PN}-${MY_P}"
 	fi
-	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 
 SRC_URI="${SRC_URI}
@@ -80,8 +80,16 @@ RDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/openbabel-3.1.1-fix-time-check-cmake.patch
+)
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
-	use openmp && tc-check-openmp
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 prepare_python_bindings() {
@@ -181,7 +189,7 @@ src_configure() {
 	)
 
 	if use test; then
-		# Help cmake find the python interpreter when dev-lang/python-exec is built 
+		# Help cmake find the python interpreter when dev-lang/python-exec is built
 		# without native-symlinks support.
 		python_setup
 		mycmakeargs+=( -DPYTHON_EXECUTABLE="${PYTHON}" )

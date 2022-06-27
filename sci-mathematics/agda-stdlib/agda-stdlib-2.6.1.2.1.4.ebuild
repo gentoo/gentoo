@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -50,7 +50,7 @@ src_compile() {
 	# datadir    = "/usr/share/agda-9999/ghc-7.6.1"
 	# it fails without the --css option like:
 	# /usr/share/agda-9999/ghc-7.4.1/Agda.css: copyFile: does not exist
-	local cssdir=$(egrep 'datadir *=' "${S}/dist/build/autogen/Paths_lib.hs" | sed -e 's@datadir    = \(.*\)@\1@')
+	local cssdir=$(grep -E 'datadir *=' "${S}/dist/build/autogen/Paths_lib.hs" | sed -e 's@datadir    = \(.*\)@\1@')
 	agda --html -i "${S}" -i "${S}"/src --css="${cssdir}/Agda.css" "${S}"/README.agda || die
 }
 

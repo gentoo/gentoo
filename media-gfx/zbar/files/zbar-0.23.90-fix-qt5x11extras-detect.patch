@@ -1,0 +1,18 @@
+diff -ur a/configure.ac b/configure.ac
+--- a/configure.ac	2019-05-23 23:37:12.000000000 +0300
++++ b/configure.ac	2020-01-22 12:27:14.190755156 +0300
+@@ -638,13 +638,9 @@
+ 
+ AC_ARG_VAR([MOC], [full path to Qt moc program])
+ 
+-AS_IF([test "x$have_x" = "xyes"],
+-      [qt_extra="Qt5X11Extras >= 5.0"],
+-      [qt_extra=""])
+-
+ AS_IF([test "x$with_qt" != "xno"],
+       [PKG_CHECK_MODULES([QT],
+-		         [Qt5Core >= 5 Qt5Gui >= 5 Qt5Widgets >= 5.0 $qt_extra],,
++		         [Qt5Core >= 5 Qt5Gui >= 5 Qt5Widgets >= 5.0 Qt5X11Extras >= 5.0],,
+ 		         [with_qt5="no"
+ 		          PKG_CHECK_MODULES([QT],
+ 					    [QtCore >= 4 QtGui >= 4],,

@@ -14,7 +14,7 @@ LICENSE="BSD"
 # Subslot indicates the fork / new version
 # 3 doesn't include the same games as the classic variant, etc
 SLOT="0/3"
-KEYWORDS="~alpha ~amd64 ~hppa ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~mips ~riscv ~x86"
 
 # 'check' target doesn't exist, nor do any actual tests
 # bug #779649
@@ -31,6 +31,7 @@ RDEPEND="
 	acct-group/gamestat
 "
 BDEPEND="
+	sys-apps/which
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
@@ -67,6 +68,9 @@ src_prepare() {
 	echo bsd_games_cfg_usrlibdir=\"$(get_libdir)\" >> ./config.params || die
 	echo bsd_games_cfg_build_dirs=\"${GAMES_TO_BUILD}\" >> ./config.params || die
 	echo bsd_games_cfg_docdir=\"/usr/share/doc/${PF}\" >> ./config.params || die
+	if use riscv; then
+		sed -i 's/${CC} ${ldflags} -o $@ $^/${CC} ${ldflags} -o $@ $^ -latomic/' ./*/Module.mk || die
+	fi
 }
 
 src_configure() {

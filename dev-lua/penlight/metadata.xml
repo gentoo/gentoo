@@ -17,6 +17,6 @@
 		on tables and sequences.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">Tieske/Penlight</remote-id>
+		<remote-id type="github">lunarmodules/Penlight</remote-id>
 	</upstream>
 </pkgmetadata>

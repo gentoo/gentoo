@@ -1,0 +1,15 @@
+--- a/libs/basis_universal/CMakeLists.txt
++++ b/libs/basis_universal/CMakeLists.txt
+@@ -29,9 +29,9 @@ else()
+ endif()
+ 
+ if(NOT basis_POPULATED)
+-    if(COMMAND FetchContent_Populate)
+-        FetchContent_Populate(basis)
+-    endif()
++    set(basis_SOURCE_DIR "${EXTERNALS_DIR}/basis")
++    set(basis_BINARY_DIR "${PROJECT_BINARY_DIR}/externals/basis")
++
+     if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+         set(BUILD_X64 FALSE CACHE BOOL "")
+     endif()

@@ -134,3 +134,7 @@ src_install() {
 	# install prebuilt subset of manuals
 	use doc || doman Documentation/*.[58]
 }
+
+pkg_postrm() {
+	[[ -n ${REPLACING_VERSIONS} ]] || udev_reload
+}

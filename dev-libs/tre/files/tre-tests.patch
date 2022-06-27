@@ -1,0 +1,10 @@
+--- tre-0.7.6/tests/agrep/run-tests.sh.tests
++++ tre-0.7.6/tests/agrep/run-tests.sh
+@@ -2,6 +2,7 @@
+ 
+ set -e
+ 
++export LD_LIBRARY_PATH=$top_builddir/lib/.libs
+ agrep="$top_builddir/src/agrep"
+ 
+ echo "$builddir $top_builddir $srcdir"

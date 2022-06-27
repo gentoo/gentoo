@@ -3,8 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{8..11} )
+DISTUTILS_USE_PEP517=setuptools
 
 MY_PN="python-Levenshtein"
 MY_P="${MY_PN}-${PV}"
@@ -18,4 +18,4 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"

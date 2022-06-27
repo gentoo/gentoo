@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit llvm meson-multilib python-any-r1 linux-info
 
@@ -17,14 +17,12 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://archive.mesa3d.org/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-RESTRICT="
-	!test? ( test )
-"
+RESTRICT="!test? ( test )"
 
 RADEON_CARDS="r300 r600 radeon radeonsi"
 VIDEO_CARDS="${RADEON_CARDS} freedreno intel lima nouveau panfrost v3d vc4 virgl vivante vmware"
@@ -34,7 +32,8 @@ done
 
 IUSE="${IUSE_VIDEO_CARDS}
 	cpu_flags_x86_sse2 d3d9 debug gles1 +gles2 +llvm
-	lm-sensors opencl osmesa selinux test unwind vaapi valgrind vdpau vulkan
+	lm-sensors opencl osmesa +proprietary-codecs selinux
+	test unwind vaapi valgrind vdpau vulkan
 	vulkan-overlay wayland +X xa xvmc zink +zstd"
 
 REQUIRED_USE="
@@ -49,7 +48,7 @@ REQUIRED_USE="
 	zink? ( vulkan )
 "
 
-LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.109"
+LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.110"
 RDEPEND="
 	>=dev-libs/expat-2.1.0-r3:=[${MULTILIB_USEDEP}]
 	>=media-libs/libglvnd-1.3.2[X?,${MULTILIB_USEDEP}]
@@ -111,12 +110,12 @@ RDEPEND="${RDEPEND}
 # 1. List all the working slots (with min versions) in ||, newest first.
 # 2. Update the := to specify *max* version, e.g. < 10.
 # 3. Specify LLVM_MAX_SLOT, e.g. 9.
-LLVM_MAX_SLOT="13"
+LLVM_MAX_SLOT="14"
 LLVM_DEPSTR="
 	|| (
+		sys-devel/llvm:14[${MULTILIB_USEDEP}]
 		sys-devel/llvm:13[${MULTILIB_USEDEP}]
 		sys-devel/llvm:12[${MULTILIB_USEDEP}]
-		sys-devel/llvm:11[${MULTILIB_USEDEP}]
 	)
 	<sys-devel/llvm-$((LLVM_MAX_SLOT + 1)):=[${MULTILIB_USEDEP}]
 "
@@ -282,7 +281,7 @@ pkg_pretend() {
 }
 
 python_check_deps() {
-	has_version -b ">=dev-python/mako-0.8.0[${PYTHON_USEDEP}]"
+	python_has_version -b ">=dev-python/mako-0.8.0[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
@@ -434,6 +433,7 @@ multilib_src_configure() {
 		$(meson_feature zstd)
 		$(meson_use cpu_flags_x86_sse2 sse2)
 		-Dvalgrind=$(usex valgrind auto disabled)
+		-Dvideo-codecs=$(usex proprietary-codecs "h264dec,h264enc,h265dec,h265enc,vc1dec" "")
 		-Dgallium-drivers=$(driver_list "${GALLIUM_DRIVERS[*]}")
 		-Dvulkan-drivers=$(driver_list "${VULKAN_DRIVERS[*]}")
 		--buildtype $(usex debug debug plain)

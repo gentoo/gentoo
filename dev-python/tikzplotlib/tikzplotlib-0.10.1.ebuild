@@ -9,8 +9,11 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1 virtualx
 
 DESCRIPTION="Convert matplotlib figures into TikZ/PGFPlots"
-HOMEPAGE="https://github.com/nschloe/tikzplotlib"
-SRC_URI="https://github.com/nschloe/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="
+	https://github.com/texworld/tikzplotlib/
+	https://pypi.org/project/tikzplotlib/
+"
+SRC_URI="https://github.com/texworld/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

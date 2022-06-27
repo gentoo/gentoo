@@ -5,7 +5,4 @@
 		<email>shell-tools@gentoo.org</email>
 		<name>Gentoo Shell Tools Project</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="freshmeat">bsd-jot</remote-id>
-	</upstream>
 </pkgmetadata>

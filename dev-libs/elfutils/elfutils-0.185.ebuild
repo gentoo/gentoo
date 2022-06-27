@@ -1,4 +1,4 @@
-# Copyright 2003-2021 Gentoo Authors
+# Copyright 2003-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit flag-o-matic multilib-minimal
 
 DESCRIPTION="Libraries/utilities to handle ELF objects (drop in replacement for libelf)"
-HOMEPAGE="http://elfutils.org/"
+HOMEPAGE="https://sourceware.org/elfutils/"
 SRC_URI="https://sourceware.org/elfutils/ftp/${PV}/${P}.tar.bz2"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-0.185-patches.tar.gz"
 

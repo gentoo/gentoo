@@ -4,10 +4,6 @@
 	<maintainer type="project">
 		<email>wine@gentoo.org</email>
 		<name>Wine</name>
-		<description>
-			This package must be kept in sync with repo/proj/wine repository.
-			Any changes need to be run past the maintainer to ensure the two repositories are kept in sync.
-		</description>
 	</maintainer>
 	<longdescription>
 Wine is an Open Source implementation of the Windows API on top of X and Unix.
@@ -18,6 +14,10 @@ This variant of the Wine packaging includes the Wine-Staging patchset.
 	</longdescription>
 	<use>
 		<flag name="capi">Enable ISDN support via CAPI</flag>
+		<flag name="crossdev-mingw">
+			Use <pkg>sys-devel/crossdev</pkg> for the toolchain rather than
+			<pkg>dev-util/mingw64-toolchain</pkg> (requires manual setting up)
+		</flag>
 		<flag name="custom-cflags">Bypass strip-flags; use at your own peril</flag>
 		<flag name="dos">Pull in <pkg>games-emulation/dosbox</pkg> to run DOS applications</flag>
 		<flag name="gecko">Add support for the Gecko engine when using iexplore</flag>
@@ -31,8 +31,6 @@ This variant of the Wine packaging includes the Wine-Staging patchset.
 		<flag name="pcap">Support packet capture software (e.g. wireshark)</flag>
 		<flag name="perl">Install helpers written in perl (winedump/winemaker)</flag>
 		<flag name="pipelight">Apply Wine-Staging patches for Pipelight/Silverlight support</flag>
-		<flag name="prelink">Run prelink on DLLs during build;
-			For Gentoo hardened, do not disable if you do not know what this means as it can break things at runtime</flag>
 		<flag name="realtime">Pull in <pkg>sys-auth/rtkit</pkg> for low-latency pulseaudio support</flag>
 		<flag name="run-exes">Use Wine to open and run .EXE and .MSI files</flag>
 		<flag name="samba">Add support for NTLM auth. See:
@@ -44,7 +42,6 @@ This variant of the Wine packaging includes the Wine-Staging patchset.
 		<flag name="udev">Use <pkg>virtual/libudev</pkg> to provide plug and play support</flag>
 		<flag name="unwind">Use <pkg>sys-libs/libunwind</pkg> to unwind the stack</flag>
 		<flag name="usb">Use <pkg>virtual/libusb</pkg> to provide USB support</flag>
-		<flag name="vkd3d">Use <pkg>app-emulation/vkd3d</pkg> to provide Direct3D 12 support</flag>
 		<flag name="vulkan">Enable Vulkan drivers</flag>
 	</use>
 	<upstream>

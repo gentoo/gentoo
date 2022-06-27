@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
 <pkgmetadata>
-	<maintainer type="person">
-		<email>whissi@gentoo.org</email>
-		<name>Thomas Deutschmann</name>
-	</maintainer>
-	<slots>
-		<subslots>Reflect ABI of libfastjson.so.</subslots>
-	</slots>
-	<upstream>
-		<bugs-to>https://github.com/rsyslog/libfastjson/issues</bugs-to>
-		<remote-id type="github">rsyslog/libfastjson</remote-id>
-		<remote-id type="cpe">cpe:/a:rsyslog:libfastjson</remote-id>
-	</upstream>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    libfastjson project's aim is: to provide a small library with essential
+    JSON handling functions, sufficiently good json support and be very fast in
+    JSON processing.
+  </longdescription>
+  <slots>
+    <subslots>Reflect ABI of libfastjson.so.</subslots>
+  </slots>
+  <upstream>
+    <bugs-to>https://github.com/rsyslog/libfastjson/issues/</bugs-to>
+    <remote-id type="github">rsyslog/libfastjson</remote-id>
+    <remote-id type="cpe">cpe:/a:rsyslog:libfastjson</remote-id>
+  </upstream>
 </pkgmetadata>

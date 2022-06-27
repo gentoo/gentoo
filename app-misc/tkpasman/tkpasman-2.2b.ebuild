@@ -1,15 +1,15 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 MY_P="TkPasMan-${PV}"
 
-DESCRIPTION="A useful and reliable personal password manager, written in Tcl/Tk"
-HOMEPAGE="http://www.xs4all.nl/~wbsoft/linux/tkpasman.html"
-SRC_URI="http://www.xs4all.nl/~wbsoft/linux/projects/${MY_P}.tar.gz"
+DESCRIPTION="Useful and reliable personal password manager, written in Tcl/Tk"
+HOMEPAGE="https://wbsoft.home.xs4all.nl/linux/tkpasman.html"
+SRC_URI="https://wbsoft.home.xs4all.nl/linux/projects/${MY_P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="ssl"

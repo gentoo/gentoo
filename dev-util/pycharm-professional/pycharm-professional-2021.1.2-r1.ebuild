@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit desktop readme.gentoo-r1 wrapper xdg-utils
 
 DESCRIPTION="Intelligent Python IDE with unique code assistance and analysis"
-HOMEPAGE="http://www.jetbrains.com/pycharm/"
-SRC_URI="http://download.jetbrains.com/python/${P}.tar.gz"
+HOMEPAGE="https://www.jetbrains.com/pycharm/"
+SRC_URI="https://download.jetbrains.com/python/${P}.tar.gz"
 
 LICENSE="PyCharm_Academic PyCharm_Classroom PyCharm PyCharm_OpenSource PyCharm_Preview"
 SLOT="0"

@@ -1,9 +1,0 @@
---- a/src/CMakeLists.txt
-+++ b/src/CMakeLists.txt
-@@ -120,5 +120,5 @@
- 
-   install(
-     DIRECTORY "${PROJECT_SOURCE_DIR}/docs/"
--    DESTINATION "${CMAKE_INSTALL_PREFIX}/share/doc/${PROJECT_NAME}")
-+    DESTINATION "${CMAKE_INSTALL_PREFIX}/share/doc/${PROJECT_NAME}-${CMAKE_PROJECT_VERSION}")
- endif()

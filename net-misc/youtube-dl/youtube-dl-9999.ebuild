@@ -63,4 +63,12 @@ pkg_postinst() {
 	ewarn "latest features and site support. youtube-dl is only kept maintained for"
 	ewarn "compatibility with older software (notably its python module, yt-dlp has"
 	ewarn "a 'bin/youtube-dl' compatibility wrapper but not for the module)."
+
+	if use yt-dlp; then
+		ewarn
+		ewarn "USE=yt-dlp is enabled, so said compatibility wrapper will be used. Man pages"
+		ewarn "and completions for youtube-dl were still installed but may have slight usage"
+		ewarn "differences and does not read the same configuration files. It is recommended"
+		ewarn "to use the yt-dlp command directly instead."
+	fi
 }

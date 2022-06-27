@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit autotools flag-o-matic toolchain-funcs
 MY_P=${PN/x/X}-Release-${PV}
 
 DESCRIPTION="X Amateur Station Tracking and Information Reporting"
-HOMEPAGE="http://xastir.org/"
+HOMEPAGE="https://xastir.org/"
 SRC_URI="https://github.com/Xastir/Xastir/archive/Release-${PV}.tar.gz
 			-> ${P}.tar.gz"
 

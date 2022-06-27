@@ -1,0 +1,38 @@
+--- build2-toolchain-0.13.0-orig/build2/libbuild2/script/regex.cxx	2020-06-10 19:25:37.000000000 +1000
++++ build2-toolchain-0.13.0/build2/libbuild2/script/regex.cxx	2020-08-10 14:00:05.698012838 +1000
+@@ -5,6 +5,35 @@
+ 
+ #include <libbuild2/script/regex.hxx>
+ 
++#if defined(_LIBCPP_VERSION)
++template <>
++void
++std::__1::__match_any_but_newline<build2::script::regex::line_char>::__exec(__state& __s) const
++{
++  if (__s.__current_ != __s.__last_)
++  {
++    switch (*__s.__current_)
++    {
++      case '\r':
++      case '\n':
++        __s.__do_ = __state::__reject;
++        __s.__node_ = nullptr;
++        break;
++      default:
++        __s.__do_ = __state::__accept_and_consume;
++        ++__s.__current_;
++        __s.__node_ = this->first();
++        break;
++    }
++  }
++  else
++  {
++    __s.__do_ = __state::__reject;
++    __s.__node_ = nullptr;
++  }
++}
++#endif
++
+ using namespace std;
+ 
+ namespace build2

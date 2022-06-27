@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,11 +21,16 @@ BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 src_prepare() {
 	default
-	if use openmp ; then
-		tc-has-openmp || die "Please switch to an openmp compatible compiler"
-	fi
 	sed -i "s:^\(dist_doc_DATA=\)COPYING.TXT :\1:" Makefile.am || die
 	sed -i 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:g' configure.ac || die
 	eautoreconf

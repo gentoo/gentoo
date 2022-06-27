@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="pypi">pmw</remote-id>
+		<remote-id type="pypi">Pmw</remote-id>
 		<remote-id type="sourceforge">pmw</remote-id>
 	</upstream>
 </pkgmetadata>

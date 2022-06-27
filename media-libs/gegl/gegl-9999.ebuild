@@ -1,9 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
+# vala and introspection support is broken, bug #468208
 VALA_USE_DEPEND=vapigen
 
 inherit meson optfeature python-any-r1 vala
@@ -38,7 +39,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/glib-2.68.2:2
 	>=dev-libs/json-glib-1.2.6
-	>media-libs/babl-0.1.88[introspection?,lcms?,vala?]
+	>=media-libs/babl-0.1.90[introspection?,lcms?,vala?]
 	media-libs/libnsgif
 	>=media-libs/libpng-1.6.0:0=
 	>=sys-libs/zlib-1.2.0
@@ -93,16 +94,11 @@ src_prepare() {
 	if [[ ${CHOST} == *-darwin* && ${CHOST#*-darwin} -le 9 ]] ; then
 		sed -i -e 's/#ifdef __APPLE__/#if 0/' gegl/opencl/* || die
 	fi
-
-	# commit 7c78497b : tests that use gegl.png are broken on non-amd64
-	sed -e '/clones.xml/d' \
-		-e '/composite-transform.xml/d' \
-		-i tests/compositions/meson.build || die
-
-	use vala && vala_src_prepare
 }
 
 src_configure() {
+	use vala && vala_setup
+
 	local emesonargs=(
 		#  - Disable documentation as the generating is bit automagic
 		#    if anyone wants to work on it just create bug with patch

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,8 +17,12 @@ IUSE="examples tools"
 # strip corrupts the bazel binary
 # test fails with network-sandbox: An error occurred during the fetch of repository 'io_bazel_skydoc' (bug 690794)
 RESTRICT="strip test"
-RDEPEND=">=virtual/jdk-1.8:*"
-DEPEND="${RDEPEND}
+RDEPEND=">=virtual/jre-1.8:*"
+DEPEND="
+	|| (
+	   virtual/jdk:1.8
+	   virtual/jdk:11
+	)
 	app-arch/unzip
 	app-arch/zip"
 

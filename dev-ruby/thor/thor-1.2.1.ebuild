@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby26 ruby27 ruby30"
+USE_RUBY="ruby26 ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_DOCDIR="rdoc"
@@ -20,7 +20,7 @@ SRC_URI="https://github.com/erikhuda/${PN}/archive/v${PV}.tar.gz -> ${PN}-git-${
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux"
 IUSE="doc"
 
 USE_RUBY="ruby26 ruby27" ruby_add_bdepend "
@@ -53,11 +53,14 @@ all_ruby_prepare() {
 
 	# Avoid currently broken readline specs (already fixed upstream)
 	#rm -f spec/line_editor/readline_spec.rb spec/line_editor_spec.rb || die
+
+	# Avoid spec failing on whitespace difference in error message
+	sed -i -e '/raises an error for unknown switches/askip "whitespace differences"' spec/parser/options_spec.rb || die
 }
 
 each_ruby_test() {
 	case ${RUBY} in
-		*ruby30)
+		*ruby30|*ruby31)
 			einfo "Skipping tests due to circular dependencies"
 			;;
 		*)

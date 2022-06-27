@@ -13,7 +13,7 @@ libbtrfs_soname=0
 if [[ ${PV} != 9999 ]]; then
 	MY_PV="v${PV/_/-}"
 	[[ "${PV}" = *_rc* ]] || \
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	SRC_URI="https://www.kernel.org/pub/linux/kernel/people/kdave/${PN}/${PN}-${MY_PV}.tar.xz"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 else
@@ -130,4 +130,8 @@ src_install() {
 
 	# install prebuilt subset of manuals
 	use doc || doman Documentation/*.[58]
+}
+
+pkg_postrm() {
+	[[ -n ${REPLACING_VERSIONS} ]] || udev_reload
 }

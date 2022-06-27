@@ -1,0 +1,25 @@
+--- a/core/CMakeLists.txt
++++ b/core/CMakeLists.txt
+@@ -44,12 +44,6 @@ set(CMAKE_INSTALL_DEFAULT_COMPONENT_NAME common)
+ 
+ include(GNUInstallDirs)
+ 
+-find_program(CCACHE_FOUND ccache)
+-if(CCACHE_FOUND)
+-  set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
+-  set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
+-endif(CCACHE_FOUND)
+-
+ # switch on CXX 17 Support
+ #
+ set(CMAKE_CXX_STANDARD 17)
+@@ -584,9 +578,6 @@ message(STATUS "CMAKE_SUPPRESS_REGENERATION: " ${CMAKE_SUPPRESS_REGENERATION})
+ # A simple way to get switches to the compiler is to use ADD_DEFINITIONS(). But
+ # there are also two variables exactly for this purpose:
+ 
+-# wheter or not
+-message(STATUS "CCACHE_FOUND: " ${CCACHE_FOUND})
+-
+ # Choose the type of build.  Example: SET(CMAKE_BUILD_TYPE Debug)
+ message(STATUS "CMAKE_BUILD_TYPE: " ${CMAKE_BUILD_TYPE})
+ 

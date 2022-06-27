@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file specifies packages that are considered deprecated (but not
@@ -17,14 +17,76 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-06-19)
+# dev-python/tox is a wrapper to run test suite in a virtual
+# environment, possibly for multiple Python versions.  It cannot really
+# work inside network sandbox, and your package probably does not use
+# it anyway.
+dev-python/tox
+
+# Michał Górny <mgorny@gentoo.org> (2022-06-17)
+# So far not a single dependency on dev-python/versioneer was correct.
+# This package is a generator for "versioneer.py" file that is included
+# in the sdist tarball.  Your package most likely only imports that file
+# and does not need dev-python/versioneer.  If it really does, please
+# ping me.
+dev-python/versioneer
+
+# Michał Górny <mgorny@gentoo.org> (2022-05-18)
+# pp2sp is no longer maintained.  Its build system support is limited
+# and buggy.  Packages need to migrate to using DISTUTILS_USE_PEP517
+# instead.
+dev-python/pyproject2setuppy
+
+# Sam James <sam@gentoo.org> (2022-04-22)
+# Obsolete virtual.
+# Only one provider is left (media-libs/libjpeg-turbo), please change
+# dependency to that instead.
+virtual/jpeg
+
+# Matt Turner <mattst88@gentoo.org> (2022-03-27)
+# Deprecated GNOME 2 era packages
+app-misc/tracker:0
+app-misc/tracker-miners:0
+app-text/enchant:0
+app-text/gnome-doc-utils
+app-text/gtkspell:2
+app-text/rarian
+app-text/scrollkeeper-dtd
+dev-cpp/gtkmm:2.4
+dev-libs/libcroco
+dev-libs/libIDL
+dev-libs/libunique:1
+gnome-base/gconf
+gnome-base/libgnomecanvas
+gnome-extra/gconf-editor
+gnome-extra/gtkhtml
+x11-libs/gtk+extra
+x11-libs/gtksourceview:2.0
+x11-libs/libwnck:1
+x11-themes/gnome-icon-theme-extras
+x11-themes/gnome-icon-theme-symbolic
+x11-themes/gtk-chtheme
+x11-themes/gtk-engines
+x11-themes/gtk-engines-adwaita
+x11-themes/gtk-engines-candido
+x11-themes/gtk-engines-experience
+x11-themes/gtk-engines-murrine
+x11-themes/gtk-engines-nodoka
+x11-themes/gtk-engines-qtpixmap
+x11-themes/gtk-engines-quartz
+x11-themes/gtk-engines-rezlooks
+x11-themes/gtk-engines-ubuntulooks
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-06-30)
 # Deprecated upstream, see HOMEPAGE
 dev-perl/Mail-Sender
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-06-11)
 # gtk2. Nuff said. See HOMEPAGE, too.
-dev-perl/Gtk2-SourceView2
-dev-perl/Gtk2-Unique
+dev-perl/Gtk2
+dev-perl/Gtk2-Notify
+dev-perl/gnome2-wnck
 
 # Mart Raudsepp <leio@gentoo.org> (2020-07-04)
 # Port to gtk+:3 using wxGTK:3.0-gtk3 SLOT
@@ -38,15 +100,6 @@ x11-libs/wxGTK:3.0
 # Bug #650320
 dev-perl/Net-SMTP-SSL
 
-# Matt Turner <mattst88@gentoo.org> (2020-03-17)
-# Deprecated GNOME 2 era packages, bug #751001
-gnome-base/gnome-vfs
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-08)
 # x11-libs/gtkglext is in the process of being removed, tracker bug #698950
 x11-libs/gtkglext
-
-# Zac Medico <zmedico@gentoo.org> (2019-12-06)
-# These golang libraries should be vendored either by upstream or via
-# the EGO_VENDOR variable.
-dev-go/go-sqlite3

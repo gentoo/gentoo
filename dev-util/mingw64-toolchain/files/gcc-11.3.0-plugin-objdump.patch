@@ -1,0 +1,22 @@
+https://gcc.gnu.org/PR95648
+--- a/gcc/config/gcc-plugin.m4
++++ b/gcc/config/gcc-plugin.m4
+@@ -47,3 +47,3 @@
+        if test x$build = x$host; then
+-	 export_sym_check="objdump${exeext} -T"
++	 export_sym_check="$ac_cv_prog_OBJDUMP -T"
+        elif test x$host = x$target; then
+--- a/gcc/gcc/configure
++++ b/gcc/gcc/configure
+@@ -32069,3 +32069,3 @@
+        if test x$build = x$host; then
+-	 export_sym_check="objdump${exeext} -T"
++	 export_sym_check="$ac_cv_prog_OBJDUMP -T"
+        elif test x$host = x$target; then
+--- a/gcc/libcc1/configure
++++ b/gcc/libcc1/configure
+@@ -15017,3 +15017,3 @@
+        if test x$build = x$host; then
+-	 export_sym_check="objdump${exeext} -T"
++	 export_sym_check="$ac_cv_prog_OBJDUMP -T"
+        elif test x$host = x$target; then

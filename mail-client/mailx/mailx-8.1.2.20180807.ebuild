@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,11 +33,12 @@ src_prepare() {
 	eapply "${WORKDIR}/debian/patches"
 	eapply "${FILESDIR}/${PN}-8.1.2.20050715-offsetof.patch"
 	eapply "${FILESDIR}/${PN}-8.1.2.20180807-fno-common.patch"
+	eapply "${FILESDIR}/${PN}-8.1.2-20180807-musl-CCEQ.patch"
 	eapply_user
 }
 
 src_compile() {
-	emake CC=$(tc-getCC) EXTRAFLAGS="${CFLAGS}"
+	emake CC="$(tc-getCC)" EXTRAFLAGS="${CFLAGS}"
 }
 
 src_install() {

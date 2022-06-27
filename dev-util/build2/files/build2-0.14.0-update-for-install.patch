@@ -1,0 +1,12 @@
+--- build2-toolchain-0.14.0-orig/buildfile	2021-10-19 20:44:33.000000000 +1100
++++ build2-toolchain-0.14.0/buildfile	2022-03-26 20:47:10.191006537 +1100
+@@ -6,9 +6,6 @@
+ #       installation instructions in the BOOTSTRAP-* file corresponding to
+ #       your platform/compiler.
+ #
+-assert ($build.meta_operation == 'dist'      || \
+-        $build.meta_operation == 'configure' || \
+-        $build.meta_operation == 'disfigure') 'only dist and configure supported'
+ 
+ # Package repository URL (or path).
+ #

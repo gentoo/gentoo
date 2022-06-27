@@ -1,15 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-MY_PV=7.16
+# For live ebuilds this should be set to the latest available patch in ${FILESDIR}
+# It does not need to reflect the actual internal version reported by BOINC unless that patch is broken.
+MY_PV=7.18
 WX_GTK_VER=3.0-gtk3
 
-inherit autotools desktop flag-o-matic linux-info systemd wxwidgets xdg-utils
+inherit autotools desktop flag-o-matic linux-info wxwidgets xdg-utils
 
 DESCRIPTION="The Berkeley Open Infrastructure for Network Computing"
-HOMEPAGE="https://boinc.ssl.berkeley.edu/"
+HOMEPAGE="https://boinc.berkeley.edu/"
 
 SRC_URI="X? ( https://boinc.berkeley.edu/logo/boinc_glossy2_512_F.tif -> ${PN}.tif )"
 if [[ ${PV} == *9999 ]] ; then
@@ -29,38 +31,38 @@ REQUIRED_USE="^^ ( curl_ssl_gnutls curl_ssl_openssl ) "
 
 # libcurl must not be using an ssl backend boinc does not support.
 # If the libcurl ssl backend changes, boinc should be recompiled.
-COMMON_DEPEND="
-	acct-group/boinc
+DEPEND="
 	acct-user/boinc
 	>=app-misc/ca-certificates-20080809
 	cuda? (
 		>=dev-util/nvidia-cuda-toolkit-2.1
 		>=x11-drivers/nvidia-drivers-180.22
 	)
+	dev-libs/openssl:=
 	net-misc/curl[curl_ssl_gnutls(-)=,-curl_ssl_nss(-),curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-)]
 	sys-apps/util-linux
 	sys-libs/zlib
 	X? (
-		dev-db/sqlite:3
+		dev-libs/glib:2
 		media-libs/freeglut
-		virtual/jpeg:0=
+		media-libs/libjpeg-turbo:=
 		x11-libs/gtk+:3
-		x11-libs/libICE
 		>=x11-libs/libnotify-0.7
-		x11-libs/libSM
-		x11-libs/libXi
-		x11-libs/libXmu
+		x11-libs/libX11
+		x11-libs/libXScrnSaver
+		x11-libs/libxcb:=
 		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,webkit]
-		virtual/jpeg
+		x11-libs/xcb-util
 	)
 "
-DEPEND="${RDEPEND}
-	app-text/docbook-xml-dtd:4.4
+BDEPEND="app-text/docbook-xml-dtd:4.4
 	app-text/docbook2X
 	sys-devel/gettext
 	X? ( virtual/imagemagick-tools[png,tiff] )
 "
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="
+	${DEPEND}
+	sys-apps/util-linux
 	!app-admin/quickswitch
 "
 
@@ -93,22 +95,12 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# bug #732024
-	if test "x$(get_libdir)" = "xlib64"; then
-	    sed -i -e 's,/:/lib:/usr/lib:,:/lib64:/usr/lib64:,g' m4/sah_check_lib.m4 || die
-	fi
-
 	default
 
 	# prevent bad changes in compile flags, bug 286701
 	sed -i -e "s:BOINC_SET_COMPILE_FLAGS::" configure.ac || die "sed failed"
 
 	eautoreconf
-
-	# bug #732024
-	if test "x$(get_libdir)" = "xlib64"; then
-	    sed -i -e 's,/lib\([ /;:"]\),/lib64\1,g' configure || die
-	fi
 }
 
 src_configure() {

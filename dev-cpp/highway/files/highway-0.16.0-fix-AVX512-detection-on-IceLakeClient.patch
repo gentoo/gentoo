@@ -1,0 +1,17 @@
+https://github.com/google/highway/commit/daf441c78191b3433410498d27a5bfdfdf93a142
+
+diff --git a/hwy/targets.cc b/hwy/targets.cc
+index 2a0ab4ef..7e7e2d79 100644
+--- a/hwy/targets.cc
++++ b/hwy/targets.cc
+@@ -328,8 +328,8 @@ uint32_t SupportedTargets() {
+     if (!IsBitSet(xcr0, 2)) {
+       bits &= ~uint32_t(HWY_AVX2 | HWY_AVX3 | HWY_AVX3_DL);
+     }
+-    // ZMM + opmask
+-    if ((xcr0 & 0x70) != 0x70) {
++    // opmask, ZMM lo/hi
++    if (!IsBitSet(xcr0, 5) || !IsBitSet(xcr0, 6) || !IsBitSet(xcr0, 7)) {
+       bits &= ~uint32_t(HWY_AVX3 | HWY_AVX3_DL);
+     }
+   }

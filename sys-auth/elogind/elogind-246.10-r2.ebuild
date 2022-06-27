@@ -19,7 +19,8 @@ HOMEPAGE="https://github.com/elogind/elogind"
 
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
 SLOT="0"
-IUSE="+acl audit +cgroup-hybrid debug doc +pam +policykit selinux"
+IUSE="+acl audit +cgroup-hybrid debug doc +pam +policykit selinux test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	app-text/docbook-xml-dtd:4.2
@@ -94,6 +95,7 @@ src_configure() {
 		-Dhtml=$(usex doc auto false)
 		-Dpam=$(usex pam true false)
 		-Dselinux=$(usex selinux true false)
+		-Dtests=$(usex test true false)
 		-Dutmp=$(usex elibc_musl false true)
 	)
 

@@ -1,14 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_REQ_USE="sqlite,ssl"
-LIBDVDCSS_VERSION="1.4.2-Leia-Beta-5"
-LIBDVDREAD_VERSION="6.0.0-Leia-Alpha-3"
-LIBDVDNAV_VERSION="6.0.0-Leia-Alpha-3"
-FFMPEG_VERSION="4.4"
-CODENAME="N"
+LIBDVDCSS_VERSION="1.4.3-Next-Nexus-Alpha2"
+LIBDVDREAD_VERSION="6.1.3-Next-Nexus-Alpha2"
+LIBDVDNAV_VERSION="6.1.1-Next-Nexus-Alpha2"
+FFMPEG_VERSION="4.4.1"
+CODENAME="Nexus"
 FFMPEG_KODI_VERSION="Alpha1"
 PYTHON_COMPAT=( python3_{8,9,10} )
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz -> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
@@ -130,7 +130,6 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	udev? ( virtual/udev )
 	vaapi? (
 		x11-libs/libva:=
-		!gles? ( x11-libs/libva[opengl] )
 		system-ffmpeg? ( media-video/ffmpeg[vaapi] )
 		vdpau? ( x11-libs/libva-vdpau-driver )
 		wayland? ( x11-libs/libva[wayland] )

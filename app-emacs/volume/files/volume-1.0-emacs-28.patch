@@ -1,0 +1,40 @@
+https://bugs.gentoo.org/836904
+
+--- a/volume.el
++++ b/volume.el
+@@ -448,7 +448,7 @@
+ 
+ (when (fboundp 'define-obsolete-variable-alias)
+   (define-obsolete-variable-alias 'volume-amixer-control
+-    'volume-amixer-default-channel))
++    'volume-amixer-default-channel ""))
+ 
+ (defvar volume-amixer-current-channel volume-amixer-default-channel
+   "The name of the ALSA mixer channel to manipulate.")
+@@ -562,7 +562,7 @@
+ 
+ (when (fboundp 'define-obsolete-function-alias)
+   (define-obsolete-function-alias 'volume-channel-name
+-    'volume-channel-label))
++    'volume-channel-label ""))
+ 
+ (defun volume-channels ()
+   "Return the list of available channels."
+@@ -775,7 +775,7 @@
+   (volume-lower (* n 10)))
+ 
+ (defalias 'volume-lower-more 'volume-lower-10)
+-(make-obsolete 'volume-lower-more 'volume-lower-10)
++(make-obsolete 'volume-lower-more 'volume-lower-10 "")
+ 
+ (defun volume-raise-10 (&optional n)
+   "Raise the volume by 10 N percentage units."
+@@ -783,7 +783,7 @@
+   (volume-raise (* n 10)))
+ 
+ (defalias 'volume-raise-more 'volume-raise-10)
+-(make-obsolete 'volume-raise-more 'volume-raise-10)
++(make-obsolete 'volume-raise-more 'volume-raise-10 "")
+ 
+ (defun volume-lower-50 (&optional n)
+   "Lower the volume by 50 N percentage units."

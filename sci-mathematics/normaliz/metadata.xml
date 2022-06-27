@@ -6,7 +6,13 @@
     <name>Gentoo Mathematics Project</name>
   </maintainer>
   <use>
-    <flag name="extras"> Install Macaulay2 and <pkg>sci-mathematics/singular</pkg>packages as shipped by upstream</flag>
+    <flag name="extras">
+      Install Macaulay2 and <pkg>sci-mathematics/singular</pkg>packages
+      as shipped by upstream
+    </flag>
+    <flag name="nauty">
+      Use <pkg>sci-mathematics/nauty</pkg> to compute automorphism groups.
+    </flag>
   </use>
   <longdescription lang="en">
     Normaliz is a (command line) tool for computations in affine

@@ -15,7 +15,7 @@
 	</longdescription>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">guyhughes/fqdn</remote-id>
+		<remote-id type="github">ypcrts/fqdn</remote-id>
 		<remote-id type="pypi">fqdn</remote-id>
 	</upstream>
 </pkgmetadata>

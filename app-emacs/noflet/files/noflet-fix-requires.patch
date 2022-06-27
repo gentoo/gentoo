@@ -1,0 +1,28 @@
+index 58d3b8d..c003987 100644
+--- a/noflet.el
++++ b/noflet.el
+@@ -28,10 +28,8 @@
+ 
+ ;;; Code:
+ 
+-(eval-when-compile (require 'cl))
+-(if (version< emacs-version "24.4.1")
+-    (load-library "cl-indent")
+-    (require 'cl-indent))
++(require 'dash)
++(require 'cl-lib)
+ 
+ (defun noflet|base ()
+   "A base function."
+index 58d3b8d..73f0719 100644
+--- a/noflet.el
++++ b/noflet.el
+@@ -155,7 +155,7 @@ maintainers refuse to add the correct indentation spec to
+            (indent noflet-indent-func))
+   `(cl-flet ,bindings ,@body))
+ 
+-(defmacro* letn (tag bindings &rest body)
++(cl-defmacro letn (tag bindings &rest body)
+   (declare (debug (sexp sexp &rest form))
+            (indent 2))
+   `(cl-labels ((,tag ,(-map 'car bindings) ,@body))

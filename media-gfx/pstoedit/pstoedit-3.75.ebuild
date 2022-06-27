@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,10 @@ DEPEND="${RDEPEND}"
 DOCS=( doc/readme.txt )
 HTML_DOCS=( doc/{changelog,pstoedit}.htm )
 
-PATCHES=( "${FILESDIR}"/${P}-libdl.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-libdl.patch
+	"${FILESDIR}"/${P}-gcc12.patch
+)
 
 src_prepare() {
 	default

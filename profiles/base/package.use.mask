@@ -6,6 +6,64 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# James Le Cuirot <chewi@gentoo.org> (2022-06-25)
+# This flag concerns an x86-specific problem.
+sys-libs/glibc stack-realign
+sys-libs/ncurses stack-realign
+
+# Matt Turner <mattst88@gentoo.org> (2022-06-21)
+# Depends on old spidermonkey:68. Upstream recommends using Duktape or Webkit
+# for PAC parsing. See https://github.com/libproxy/libproxy/pull/139
+>=net-libs/libproxy-0.4.18 spidermonkey
+
+# Michał Górny <mgorny@gentoo.org> (2022-06-02)
+# dev-python/jaraco-packaging is masked for removal.  Bug #834534.
+dev-python/jaraco-classes doc
+dev-python/jaraco-collections doc
+dev-python/jaraco-functools doc
+dev-python/jaraco-logging doc
+dev-python/jaraco-stream doc
+dev-python/jaraco-text doc
+dev-python/jsonpickle doc
+dev-python/keyring doc
+
+# Maciej Barć <xgqt@gentoo.org> (2022-05-31)
+# "doc" require old version of dev-python/antlr4-python3-runtime (4.9.3)
+# and dev-python/sphinx (4.4.0), both already removed from the repository tree
+# Upstream bug: https://github.com/coq/coq/issues/15956
+>=sci-mathematics/coq-8.15.0 doc
+
+# Stephan Hartmann <sultan@gentoo.org> (2022-05-29)
+# Not ready for general use.
+>=www-client/chromium-104 pgo
+
+# Michał Górny <mgorny@gentoo.org> (2022-05-25)
+# dev-python/sphinxcontrib-openapi is masked for removal.
+dev-python/jupyter_server doc
+
+# Joonas Niilola <juippis@gentoo.org> (2022-05-03)
+# system-python-libs is HIGHLY EXPERIMENTAL according to upstream, and
+# still being worked on in Gentoo.
+>=www-client/firefox-100.0 system-python-libs
+
+# Piotr Karbowski <slashbeast@gentoo.org> (2022-04-29)
+# There's a bug with gnutls support leading TLS certificates
+# validation failures on some certificates that are otherwise valid.
+# https://github.com/aria2/aria2/issues/1636
+net-misc/aria2 gnutls
+
+# Matt Turner <mattst88@gentoo.org> (2022-03-25)
+# Depends on libsoup:3.0
+>=gnome-base/gvfs-1.50 http
+
+# Craig Andrews <candrews@gentoo.org> (2022-03-25)
+# Requires as of yet unreleased QUIC support in OpenSSL
+net-libs/ngtcp2 openssl
+
+# Sam James <sam@gentoo.org> (2022-03-02)
+# Needs masked version of ogre (>=1.12), bug #825330
+>=dev-games/mygui-3.4.1 ogre
+
 # Marek Szuba <marecki@gentoo.org> (2022-02-07)
 # Deprecated back-end with known stability and data-corruption issues,
 # likely to be removed in gramps-5.2.0.
@@ -23,13 +81,7 @@ media-video/wireplumber system-service
 # runtime crashes. The effect of using USE=custom-cflags globally in make.conf
 # isn't the same as it is for just glibc specifically.
 sys-libs/glibc custom-cflags
-
-# Sam James <sam@gentoo.org> (2022-01-23)
-# Java bindings are broken with OpenJDK 11+ and we're not
-# aware of any consumers. bug #713866
-# The bindings will be removed on 2022-02-23 due to their state
-# of disrepair.
-sys-libs/db java
+sys-devel/gcc custom-cflags
 
 # Sam James <sam@gentoo.org> (2022-01-12)
 # Unmask PCH for now for GCC to avoid unnecessary rebuilds
@@ -38,8 +90,6 @@ sys-libs/db java
 <sys-devel/gcc-10.4:10 -pch
 =sys-devel/gcc-9* -pch
 =sys-devel/gcc-8* -pch
-=sys-devel/gcc-7* -pch
-=sys-devel/gcc-6* -pch
 
 # John Helmert III <ajak@gentoo.org> (2021-12-31)
 # Rizin tests require a tarball of binaries of ambiguous license.
@@ -57,17 +107,6 @@ sci-libs/flann doc
 # Gentoo bug #821253
 media-video/mjpg-streamer http-management
 
-# David Seifert <soap@gentoo.org> (2021-12-19)
-# Requires GCC 8, security vulnerabilities, switch to CUDA 11,
-# consider using clang+NVPTX backend for sm_30 cards.
-# Removal in 90 days, bug #721808, #760708.
-dev-libs/cudnn cuda10-2
-
-# Thomas Deutschmann <whissi@gentoo.org> (2021-12-03)
-# Requires newer media-libs/dav1d which isn't available yet,
-# see https://bugzilla.mozilla.org/1734058
->=www-client/firefox-95.0 system-av1
-
 # Wolfgang E. Sanyer <ezzieyguywuf@gmail.com> (2021-12-01)
 # Requires pandoc, which is unstable due to various haskell dependencies
 # (including ghc)
@@ -82,11 +121,6 @@ dev-libs/cudnn cuda10-2
 # pdfannotextractor gets masked as it does not support
 # updated dev-java/pdfbox-2.0.24, Bug #803488
 app-text/texlive pdfannotextractor
-
-# Conrad Kostecki <conikost@gentoo.org> (2021-10-23)
-# Build tools is currently broken, so masking until upstream fixes
-# See https://voidpoint.io/terminx/eduke32/-/issues/206
-games-fps/eduke32 tools
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-10-16)
 # openjfx for openjdk17 is not yet available
@@ -124,8 +158,7 @@ dev-lang/rust parallel-compiler
 # rspamd-3.0 segfaults a lot with jemalloc enabled (Bug #810337)
 # It is caused by -Wl,--as-needed linker flag,
 # see also: https://github.com/rspamd/rspamd/issues/3871
-~mail-filter/rspamd-3.0 jemalloc
-~mail-filter/rspamd-3.1 jemalloc
+>=mail-filter/rspamd-3.0 jemalloc
 
 # Matt Turner <mattst88@gentoo.org> (2021-08-28)
 # Mask experimental options.
@@ -186,10 +219,6 @@ net-analyzer/wireshark lto
 # Fails to build right now
 # bug #651740
 net-misc/openssh debug
-
-# Michał Górny <mgorny@gentoo.org> (2021-03-06)
-# LLVM 9 has been removed.
-<dev-util/perf-5.15 clang
 
 # Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)
 # PCRE JIT support via dev-libs/libpcre2[jit] is only available for certain architectures
@@ -345,11 +374,6 @@ dev-python/pyzmq doc
 # Gromacs python module install br0ken
 sci-chemistry/gromacs python
 
-# Brian Evans <grknight@gentoo.org> (2019-12-19)
-# PHP 7.1 is end of life and has security issues, bug #703326
-# Associated packages are not ready for new versions tracked in bug #702110
-dev-libs/ossp-uuid php
-
 # Michał Górny <mgorny@gentoo.org> (2019-12-16)
 # Requires old x11-libs/fox:1.6 slot.
 dev-games/openscenegraph fox
@@ -423,10 +447,6 @@ dev-python/pandas doc
 # solution is found, e.g., transition to a free font package.
 app-text/ghostscript-gpl l10n_ja
 
-# Michał Górny <mgorny@gentoo.org> (2019-03-21)
-# x11-wm/afterstep is slated for removal.
-x11-terms/aterm background
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-03-05)
 # Not keyworded on non-x86 arches
 app-admin/conserver freeipmi
@@ -436,10 +456,6 @@ app-admin/conserver freeipmi
 # is being removed
 # (bug #674364)
 sys-apps/memtest86+ floppy
-
-# Michał Górny <mgorny@gentoo.org> (2018-11-28)
-# Requires last-rited games-server/ut2003-ded.
-games-fps/ut2003 dedicated
 
 # Alfredo Tupone <tupone@gentoo.org> (2018-11-18)
 # go brokes build of gnat-gpl
@@ -476,19 +492,12 @@ sys-block/fio static
 sci-libs/ipopt hsl
 
 # Lars Wendler <polynomial-c@gentoo.org> (2018-03-14)
-# Broken on all 32bit arches. Globally masked because of sys-apps/dmapi having
-# no active upstream anymore.
 # sys-cluster/ceph is only available on amd64 & x86, unmask per arch
-net-fs/samba dmapi ceph
+net-fs/samba ceph
 
 # Jan Ziak <0xe2.0x9a.0x9b@gmail.com> (2018-03-14)
-# Mask local USE flag to satisfy repoman
+# media-libs/svgalib is not keyworded everywhere
 app-emulation/fuse backend-svga
-
-# Patrick McLean <chutzpah@gentoo.org> (2018-03-06)
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2020-12-25)
-# Requires dev-libs/boost-1.72 that is gone
-<sys-cluster/ceph-15 system-boost
 
 # Brian Evans <grknight@gentoo.org> (2018-03-05)
 # Mask embedded USE on virtual/mysql and friends to transition it to be obsolete
@@ -511,16 +520,6 @@ dev-db/mysql client-libs
 # This flag can be sensibly enabled only on macos.
 # Can be unmasked in prefix/darwin/macos profiles. Bug #637482
 media-video/ffmpeg appkit
-
-# James Le Cuirot <chewi@gentoo.org> (2017-12-17)
-# Georgy Yakovlev <gyakovlev@gentoo.org (2021-10-08)
-# Java 9+ is not yet fully supported on Gentoo. Having a masked
-# gentoo-vm flag allows us to provide it without it breaking Gentoo
-# packages. Those who wish to experiment with it as a fully recognised
-# Gentoo JVM can unmask the flag.
-dev-java/openjdk-jre-bin:17 gentoo-vm
-dev-java/openjdk-bin:17 gentoo-vm
-dev-java/openjdk:17 gentoo-vm
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (2017-09-09)
 # Potentially destructive. Use it only if you know what you're doing.
@@ -608,21 +607,6 @@ dev-java/icedtea cacao jamvm
 # Rick Farina <zerochaos@gentoo.org> (2015-10-06)
 # forward porting this patch is non-trivial, mask for now
 >=net-wireless/wpa_supplicant-2.5 wimax
-
-# Justin Lecher <jlec@gentoo.org> (2015-09-22)
-# Downloads files during installation
-# https://bugs.gentoo.org/show_bug.cgi?id=533876
-# Bernd Waibel <waebbl-gentoo@posteo.net> (2021-03-26)
-# Fixed in vtk-9
-<sci-libs/vtk-9 examples
-
-# James Le Cuirot <chewi@gentoo.org> (2015-08-18)
-# gcc[awt] is only used by gcj-jdk[awt] and that isn't needed by
-# anything in the tree. The toolchain folks aren't keen to support it
-# and it should probably only be used if you really know what you're
-# doing *and* your name is gnu_andrew. ;) See bug #531900.
-sys-devel/gcc awt
-dev-java/gcj-jdk awt
 
 # Mike Gilbert <floppym@gentoo.org> (2015-05-16)
 # dev-lang/python[berkdb] fails with recent multilib sys-libs/db (bug 519584).
@@ -721,10 +705,6 @@ sci-libs/mathgl octave
 # Mask pdnsd's Linux-specific USE flags.
 net-dns/pdnsd urandom
 
-# Raúl Porcel <armin76@gentoo.org> (2011-02-13)
-# Masked until devs know how to use repoman
-<media-video/mplayer-9999 bluray
-
 # Tomas Touceda <chiiph@gentoo.org> (2010-04-13)
 # Masked because libsvm module is broken with this release on every arch.
 dev-lisp/clisp svm
@@ -733,14 +713,14 @@ dev-lisp/clisp svm
 # Don't use system-wide mode unless you *really* know what you're doing.
 # Keep it masked here so that I don't need to manage two versions every time.
 media-sound/pulseaudio system-wide
+media-sound/pulseaudio-daemon system-wide
 
 # Alexis Ballier <aballier@gentoo.org> (2011-02-16)
 # Win32 specific useflag for vlc. Can be used for cross-compiling.
 media-video/vlc directx
 
 # Ross Charles Campbell <rossbridger.cc@gmail.com> (2020-09-21)
-# Since >=dev-games/ogre-1.11.2 is masked, mask contribovis USE to
-# make repoman happy
+# Since >=dev-games/ogre-1.11.2 is masked, mask contribovis USE.
 media-libs/opencv contribovis
 
 # Tobias Klausmann <klausman@gentoo.org> (2021-04-16)

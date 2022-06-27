@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kde.org.eclass
@@ -23,7 +23,7 @@ esac
 if [[ -z ${_KDE_ORG_ECLASS} ]]; then
 _KDE_ORG_ECLASS=1
 
-# @ECLASS-VARIABLE: KDE_BUILD_TYPE
+# @ECLASS_VARIABLE: KDE_BUILD_TYPE
 # @DESCRIPTION:
 # If PV matches "*9999*", this is automatically set to "live".
 # Otherwise, this is automatically set to "release".
@@ -37,7 +37,7 @@ if [[ ${KDE_BUILD_TYPE} == live ]]; then
 	inherit git-r3
 fi
 
-# @ECLASS-VARIABLE: KDE_ORG_CATEGORIES
+# @ECLASS_VARIABLE: KDE_ORG_CATEGORIES
 # @INTERNAL
 # @DESCRIPTION:
 # Map of ${CATEGORY}=<upstream category> key-value pairs.
@@ -79,14 +79,14 @@ declare -A KDE_ORG_CATEGORIES=(
 )
 readonly KDE_ORG_CATEGORIES
 
-# @ECLASS-VARIABLE: KDE_ORG_CATEGORY
+# @ECLASS_VARIABLE: KDE_ORG_CATEGORY
 # @PRE_INHERIT
 # @DESCRIPTION:
 # If unset, default value is mapped from ${CATEGORY} to corresponding upstream
 # category on invent.kde.org, with "kde" as fallback value.
 : ${KDE_ORG_CATEGORY:=${KDE_ORG_CATEGORIES[${CATEGORY}]:-kde}}
 
-# @ECLASS-VARIABLE: KDE_ORG_COMMIT
+# @ECLASS_VARIABLE: KDE_ORG_COMMIT
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -94,14 +94,14 @@ readonly KDE_ORG_CATEGORIES
 # invent.kde.org repository identified by KDE_ORG_CATEGORY and KDE_ORG_NAME
 # at the desired COMMIT ID.
 
-# @ECLASS-VARIABLE: KDE_ORG_NAME
+# @ECLASS_VARIABLE: KDE_ORG_NAME
 # @PRE_INHERIT
 # @DESCRIPTION:
 # If unset, default value is set to ${PN}.
 # Name of the package as hosted on kde.org mirrors.
 : ${KDE_ORG_NAME:=$PN}
 
-# @ECLASS-VARIABLE: KDE_GEAR
+# @ECLASS_VARIABLE: KDE_GEAR
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Mark package is being part of KDE Gear release schedule.
@@ -113,7 +113,7 @@ if [[ ${CATEGORY} == kde-apps ]]; then
 	KDE_GEAR=true
 fi
 
-# @ECLASS-VARIABLE: KDE_SELINUX_MODULE
+# @ECLASS_VARIABLE: KDE_SELINUX_MODULE
 # @PRE_INHERIT
 # @DESCRIPTION:
 # If set to "none", do nothing.
@@ -129,13 +129,23 @@ case ${KDE_SELINUX_MODULE} in
 		;;
 esac
 
-# @ECLASS-VARIABLE: KDE_UNRELEASED
+# @ECLASS_VARIABLE: KDE_UNRELEASED
 # @INTERNAL
 # @DESCRIPTION:
 # An array of $CATEGORY-$PV pairs of packages that are unreleased upstream.
 # Any package matching this will have fetch restriction enabled, and receive
 # a proper error message via pkg_nofetch.
 KDE_UNRELEASED=( )
+
+# @ECLASS_VARIABLE: EGIT_MIRROR
+# @DESCRIPTION:
+# This variable allows easy overriding of default kde mirror service
+# (anongit) with anything else you might want to use.
+
+# @ECLASS_VARIABLE: EGIT_REPONAME
+# @DESCRIPTION:
+# This variable allows overriding of default repository name.
+# Specify only if this differs from PN and KDE_ORG_NAME.
 
 HOMEPAGE="https://kde.org/"
 
@@ -249,10 +259,6 @@ _kde.org_calculate_live_repo() {
 
 	SRC_URI=""
 
-	# @ECLASS-VARIABLE: EGIT_MIRROR
-	# @DESCRIPTION:
-	# This variable allows easy overriding of default kde mirror service
-	# (anongit) with anything else you might want to use.
 	EGIT_MIRROR=${EGIT_MIRROR:=https://invent.kde.org/${KDE_ORG_CATEGORY}}
 
 	if [[ ${PV} == 5.??(.?)*.9999 && ${CATEGORY} == dev-qt ]]; then
@@ -267,10 +273,6 @@ _kde.org_calculate_live_repo() {
 		EGIT_BRANCH="Plasma/$(ver_cut 1-2)"
 	fi
 
-	# @ECLASS-VARIABLE: EGIT_REPONAME
-	# @DESCRIPTION:
-	# This variable allows overriding of default repository
-	# name. Specify only if this differs from PN and KDE_ORG_NAME.
 	EGIT_REPO_URI="${EGIT_MIRROR}/${EGIT_REPONAME:=$KDE_ORG_NAME}.git"
 }
 

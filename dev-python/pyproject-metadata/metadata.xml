@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">FFY00/python-pyproject-metadata</remote-id>
+		<remote-id type="pypi">python-pyproject-metadata</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,24 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,7 @@
+-CC=g++
+-CFLAGS=-c -Wall
+-LDFLAGS=-lhidapi-libusb
++CXX?=g++
++COMMON_FLAGS=-Wall
++CXXFLAGS+=$(COMMON_FLAGS)
++LIBS=-lhidapi-libusb
+ SOURCES=main.cpp Keyboard.cpp Color.cpp
+ OBJECTS=$(SOURCES:.cpp=.o)
+ EXECUTABLE=msi-keyboard
+@@ -11,8 +12,8 @@ clean:
+ 	rm $(OBJECTS) $(EXECUTABLE)
+ 
+ $(EXECUTABLE): $(OBJECTS)
+-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) $(OBJECTS) $(LIBS) -o $@
+ 
+ .cpp.o:
+-	$(CC) $(CFLAGS) $< -o $@
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+ 

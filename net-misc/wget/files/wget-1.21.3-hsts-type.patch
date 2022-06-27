@@ -1,0 +1,211 @@
+https://bugs.gentoo.org/850676
+https://git.savannah.gnu.org/cgit/wget.git/commit/?id=cb114fbbf73eb687d28b01341c8d4266ffa96c9d
+
+From: =?UTF-8?q?Tim=20R=C3=BChsen?= <tim.ruehsen@gmx.de>
+Date: Sun, 20 Mar 2022 12:18:20 +0100
+Subject: Fix HSTS portability by using int64_t instead of time_t.
+
+* src/hsts.c: Use int64_t instead of time_t.
+* src/http.c: Use int64_t for parsing Strict-Transport-Security.
+--- a/src/hsts.c
++++ b/src/hsts.c
+@@ -61,8 +61,8 @@ struct hsts_kh {
+ };
+ 
+ struct hsts_kh_info {
+-  time_t created;
+-  time_t max_age;
++  int64_t created;
++  int64_t max_age;
+   bool include_subdomains;
+ };
+ 
+@@ -166,7 +166,7 @@ end:
+ static bool
+ hsts_new_entry_internal (hsts_store_t store,
+                          const char *host, int port,
+-                         time_t created, time_t max_age,
++                         int64_t created, int64_t max_age,
+                          bool include_subdomains,
+                          bool check_validity,
+                          bool check_expired,
+@@ -216,21 +216,21 @@ bail:
+ static bool
+ hsts_add_entry (hsts_store_t store,
+                 const char *host, int port,
+-                time_t max_age, bool include_subdomains)
++                int64_t max_age, bool include_subdomains)
+ {
+-  time_t t = time (NULL);
++  int64_t t = (int64_t) time (NULL);
+ 
+   /* It might happen time() returned -1 */
+-  return (t == (time_t)(-1) ?
++  return (t == -1) ?
+       false :
+-      hsts_new_entry_internal (store, host, port, t, max_age, include_subdomains, false, true, false));
++      hsts_new_entry_internal (store, host, port, t, max_age, include_subdomains, false, true, false);
+ }
+ 
+ /* Creates a new entry, unless an identical one already exists. */
+ static bool
+ hsts_new_entry (hsts_store_t store,
+                 const char *host, int port,
+-                time_t created, time_t max_age,
++                int64_t created, int64_t max_age,
+                 bool include_subdomains)
+ {
+   return hsts_new_entry_internal (store, host, port, created, max_age, include_subdomains, true, true, true);
+@@ -245,7 +245,7 @@ hsts_remove_entry (hsts_store_t store, struct hsts_kh *kh)
+ static bool
+ hsts_store_merge (hsts_store_t store,
+                   const char *host, int port,
+-                  time_t created, time_t max_age,
++                  int64_t created, int64_t max_age,
+                   bool include_subdomains)
+ {
+   enum hsts_kh_match match_type = NO_MATCH;
+@@ -276,11 +276,11 @@ hsts_read_database (hsts_store_t store, FILE *fp, bool merge_with_existing_entri
+   size_t len = 0;
+   int items_read;
+   bool result = false;
+-  bool (*func)(hsts_store_t, const char *, int, time_t, time_t, bool);
++  bool (*func)(hsts_store_t, const char *, int, int64_t, int64_t, bool);
+ 
+   char host[256];
+   int port;
+-  time_t created, max_age;
++  int64_t created, max_age;
+   int include_subdomains;
+ 
+   func = (merge_with_existing_entries ? hsts_store_merge : hsts_new_entry);
+@@ -326,10 +326,9 @@ hsts_store_dump (hsts_store_t store, FILE *fp)
+       struct hsts_kh *kh = (struct hsts_kh *) it.key;
+       struct hsts_kh_info *khi = (struct hsts_kh_info *) it.value;
+ 
+-      if (fprintf (fp, "%s\t%d\t%d\t%lu\t%lu\n",
++      if (fprintf (fp, "%s\t%d\t%d\t%" PRId64 "\t%" PRId64 "\n",
+                    kh->host, kh->explicit_port, khi->include_subdomains,
+-                   (unsigned long) khi->created,
+-                   (unsigned long) khi->max_age) < 0)
++                   khi->created, khi->max_age) < 0)
+         {
+           logprintf (LOG_ALWAYS, "Could not write the HSTS database correctly.\n");
+           break;
+@@ -439,7 +438,7 @@ hsts_match (hsts_store_t store, struct url *u)
+ bool
+ hsts_store_entry (hsts_store_t store,
+                   enum url_scheme scheme, const char *host, int port,
+-                  time_t max_age, bool include_subdomains)
++                  int64_t max_age, bool include_subdomains)
+ {
+   bool result = false;
+   enum hsts_kh_match match = NO_MATCH;
+@@ -464,9 +463,9 @@ hsts_store_entry (hsts_store_t store,
+                * 'created' field too. The RFC also states that we have to
+                * update the entry each time we see HSTS header.
+                * See also Section 11.2. */
+-              time_t t = time (NULL);
++              int64_t t = (int64_t) time (NULL);
+ 
+-              if (t != (time_t)(-1) && t != entry->created)
++              if (t != -1 && t != entry->created)
+                 {
+                   entry->created = t;
+                   entry->max_age = max_age;
+@@ -792,7 +791,7 @@ test_hsts_read_database (void)
+   hsts_store_t table;
+   char *file = NULL;
+   FILE *fp = NULL;
+-  time_t created = time(NULL) - 10;
++  int64_t created = time(NULL) - 10;
+ 
+   if (opt.homedir)
+     {
+@@ -801,9 +800,9 @@ test_hsts_read_database (void)
+       if (fp)
+         {
+           fputs ("# dummy comment\n", fp);
+-          fprintf (fp, "foo.example.com\t0\t1\t%lu\t123\n",(unsigned long) created);
+-          fprintf (fp, "bar.example.com\t0\t0\t%lu\t456\n", (unsigned long) created);
+-          fprintf (fp, "test.example.com\t8080\t0\t%lu\t789\n", (unsigned long) created);
++          fprintf (fp, "foo.example.com\t0\t1\t%" PRId64 "\t123\n", created);
++          fprintf (fp, "bar.example.com\t0\t0\t%" PRId64 "\t456\n", created);
++          fprintf (fp, "test.example.com\t8080\t0\t%" PRId64 "\t789\n", created);
+           fclose (fp);
+ 
+           table = hsts_store_open (file);
+--- a/src/hsts.h
++++ b/src/hsts.h
+@@ -46,7 +46,7 @@ bool hsts_store_has_changed (hsts_store_t);
+ 
+ bool hsts_store_entry (hsts_store_t,
+                        enum url_scheme, const char *, int,
+-                       time_t, bool);
++                       int64_t, bool);
+ bool hsts_match (hsts_store_t, struct url *);
+ 
+ #endif /* HAVE_HSTS */
+--- a/src/http.c
++++ b/src/http.c
+@@ -1300,7 +1300,7 @@ parse_content_disposition (const char *hdr, char **filename)
+ 
+ #ifdef HAVE_HSTS
+ static bool
+-parse_strict_transport_security (const char *header, time_t *max_age, bool *include_subdomains)
++parse_strict_transport_security (const char *header, int64_t *max_age, bool *include_subdomains)
+ {
+   param_token name, value;
+   const char *c_max_age = NULL;
+@@ -1330,7 +1330,7 @@ parse_strict_transport_security (const char *header, time_t *max_age, bool *incl
+            * Also, time_t is normally defined as a long, so this should not break.
+            */
+           if (max_age)
+-            *max_age = (time_t) strtol (c_max_age, NULL, 10);
++            *max_age = (int64_t) strtoll (c_max_age, NULL, 10);
+           if (include_subdomains)
+             *include_subdomains = is;
+ 
+@@ -3184,9 +3184,6 @@ gethttp (const struct url *u, struct url *original_url, struct http_stat *hs,
+ #else
+   extern hsts_store_t hsts_store;
+ #endif
+-  const char *hsts_params;
+-  time_t max_age;
+-  bool include_subdomains;
+ #endif
+ 
+   int sock = -1;
+@@ -3674,21 +3671,24 @@ gethttp (const struct url *u, struct url *original_url, struct http_stat *hs,
+ #ifdef HAVE_HSTS
+   if (opt.hsts && hsts_store)
+     {
+-      hsts_params = resp_header_strdup (resp, "Strict-Transport-Security");
++      int64_t max_age;
++      const char *hsts_params = resp_header_strdup (resp, "Strict-Transport-Security");
++      bool include_subdomains;
++
+       if (parse_strict_transport_security (hsts_params, &max_age, &include_subdomains))
+         {
+           /* process strict transport security */
+           if (hsts_store_entry (hsts_store, u->scheme, u->host, u->port, max_age, include_subdomains))
+-            DEBUGP(("Added new HSTS host: %s:%u (max-age: %lu, includeSubdomains: %s)\n",
++            DEBUGP(("Added new HSTS host: %s:%" PRIu32 " (max-age: %" PRId64 ", includeSubdomains: %s)\n",
+                    u->host,
+-                   (unsigned) u->port,
+-                   (unsigned long) max_age,
++                   (uint32_t) u->port,
++                   max_age,
+                    (include_subdomains ? "true" : "false")));
+           else
+-            DEBUGP(("Updated HSTS host: %s:%u (max-age: %lu, includeSubdomains: %s)\n",
++            DEBUGP(("Updated HSTS host: %s:%" PRIu32 " (max-age: %" PRId64 ", includeSubdomains: %s)\n",
+                    u->host,
+-                   (unsigned) u->port,
+-                   (unsigned long) max_age,
++                   (uint32_t) u->port,
++                   max_age,
+                    (include_subdomains ? "true" : "false")));
+         }
+       xfree (hsts_params);
+cgit v1.1
