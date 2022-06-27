@@ -8,7 +8,7 @@ inherit toolchain-funcs flag-o-matic multilib
 DESCRIPTION="The extensible self-documenting text editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 SRC_URI="ftp://ftp.gnu.org/old-gnu/emacs/${P}.tar.gz
-	https://dev.gentoo.org/~ulm/emacs/${P}-patches-13.tar.xz"
+	https://dev.gentoo.org/~ulm/emacs/${P}-patches-14.tar.xz"
 
 LICENSE="GPL-1+ GPL-2+ BSD HPND"
 SLOT="18"
@@ -76,11 +76,11 @@ src_configure() {
 		src/s-linux.h || die
 
 	# -O3 and -finline-functions cause segmentation faults at run time.
-	# -Wno-implicit will quieten GCC 5; feel free to submit a patch
-	# adding all those missing prototypes.
+	# -Wno-implicit and -Wno-return-type will quieten newer versions of GCC;
+	# feel free to submit a patch adding all those missing prototypes.
 	strip-flags
 	filter-flags -finline-functions -fpie
-	append-flags -Wno-implicit -fno-strict-aliasing
+	append-flags -fno-strict-aliasing -Wno-implicit -Wno-return-type
 	append-ldflags $(test-flags -no-pie)	#639562
 	replace-flags -O[3-9] -O2
 }
