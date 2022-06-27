@@ -1,0 +1,30 @@
+This patch taken from Debian:
+https://salsa.debian.org/yangfl-guest/angelscript/-/blob/master/debian/patches/0004-Add-as_callfunc_arm64.cpp-to-gnuc-makefile.patch
+
+Gentoo bug:
+https://bugs.gentoo.org/818868
+
+From 53841747c668abe3ff2cac280354703bef5dd395 Mon Sep 17 00:00:00 2001
+From: yangfl <yangfl@users.noreply.github.com>
+Date: Thu, 14 Oct 2021 18:29:25 +0800
+Subject: [PATCH 4/6] Add as_callfunc_arm64.cpp to gnuc makefile
+
+---
+ angelscript/projects/gnuc/Makefile | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/angelscript/projects/gnuc/Makefile b/angelscript/projects/gnuc/Makefile
+index 5274f05e..276baa9e 100644
+--- a/angelscript/projects/gnuc/Makefile
++++ b/angelscript/projects/gnuc/Makefile
+@@ -107,6 +107,7 @@ SRCNAMES = \
+   as_bytecode.cpp \
+   as_callfunc.cpp \
+   as_callfunc_arm.cpp \
++  as_callfunc_arm64.cpp \
+   as_callfunc_mips.cpp \
+   as_callfunc_ppc.cpp \
+   as_callfunc_ppc_64.cpp \
+-- 
+2.33.0
+
