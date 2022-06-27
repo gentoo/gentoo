@@ -13,7 +13,7 @@ SLOT="0/${PV}"
 IUSE="debug doc"
 
 RDEPEND="
-	>=dev-libs/ell-0.30.0
+	>=dev-libs/ell-0.45.0
 	elibc_musl? ( sys-libs/argp-standalone )
 	"
 DEPEND="
@@ -27,9 +27,6 @@ BDEPEND="
 	)
 	virtual/pkgconfig
 	"
-PATCHES=(
-	"${FILESDIR}/${P}-loopback-monitoring.patch"
-)
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
@@ -40,10 +37,6 @@ else
 fi
 
 CONFIG_CHECK="MPTCP"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.9-no-werror.patch
-)
 
 src_prepare() {
 	default
