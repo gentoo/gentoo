@@ -24,6 +24,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 BDEPEND="
 	test? (
+		dev-db/redis
 		dev-python/pylibmc[${PYTHON_USEDEP}]
 		dev-python/pytest-xprocess[${PYTHON_USEDEP}]
 		dev-python/redis-py[${PYTHON_USEDEP}]
