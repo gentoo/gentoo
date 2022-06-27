@@ -61,5 +61,12 @@ src_install() {
 	udev_dorules "${FILESDIR}"/61-trousers.rules
 	fowners tss:tss /var/lib/tpm
 	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
 	udev_reload
 }
