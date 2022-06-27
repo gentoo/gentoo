@@ -14,7 +14,7 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.libssh.org/projects/libssh.git"
 else
 	SRC_URI="https://www.libssh.org/files/$(ver_cut 1-2)/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="LGPL-2.1"
@@ -39,7 +39,9 @@ RDEPEND="
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
-	test? ( >=dev-util/cmocka-0.3.1[${MULTILIB_USEDEP}] )
+	test? (
+		>=dev-util/cmocka-0.3.1[${MULTILIB_USEDEP}]
+		elibc_musl? ( sys-libs/argp-standalone ) )
 "
 
 DOCS=( AUTHORS README ChangeLog )
@@ -66,6 +68,11 @@ src_prepare() {
 
 	sed -e "/^check_include_file.*HAVE_VALGRIND_VALGRIND_H/s/^/#DONT /" \
 		-i ConfigureChecks.cmake || die
+
+	if use test && use elibc_musl; then
+		sed -e "/SOLARIS/d" \
+			-i tests/CMakeLists.txt || die
+	fi
 }
 
 multilib_src_configure() {

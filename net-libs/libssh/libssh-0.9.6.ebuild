@@ -39,7 +39,9 @@ RDEPEND="
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
-	test? ( >=dev-util/cmocka-0.3.1[${MULTILIB_USEDEP}] )
+	test? (
+		>=dev-util/cmocka-0.3.1[${MULTILIB_USEDEP}]
+		elibc_musl? ( sys-libs/argp-standalone ) )
 "
 
 DOCS=( AUTHORS README ChangeLog )
@@ -66,6 +68,11 @@ src_prepare() {
 
 	sed -e "/^check_include_file.*HAVE_VALGRIND_VALGRIND_H/s/^/#DONT /" \
 		-i ConfigureChecks.cmake || die
+
+	if use test && use elibc_musl; then
+		sed -e "/SOLARIS/d" \
+			-i tests/CMakeLists.txt || die
+	fi
 }
 
 multilib_src_configure() {
