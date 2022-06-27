@@ -48,7 +48,7 @@ BDEPEND="
 "
 
 distutils_enable_sphinx docs/source \
-	dev-python/sphinx_rtd_theme
+	dev-python/furo
 distutils_enable_tests pytest
 
 # this requires packaging a lot of type stubs
