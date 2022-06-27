@@ -17,3 +17,28 @@ Subject: [PATCH] fix(h265_pps_parser): fix missing cstdint include
  namespace rtc {
  class BitBuffer;
 
+From c358917ff8deac2015586356113dae75d076d1e3 Mon Sep 17 00:00:00 2001
+From: peeweep <peeweep@0x0.ee>
+Date: Mon, 27 Jun 2022 15:07:04 +0000
+Subject: [PATCH] fix(module_common_types_public): fix missing cstdint include
+
+Signed-off-by: peeweep <peeweep@0x0.ee>
+---
+ src/modules/include/module_common_types_public.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/modules/include/module_common_types_public.h b/src/modules/include/module_common_types_public.h
+index 345e45ce..8338a514 100644
+--- a/src/modules/include/module_common_types_public.h
++++ b/src/modules/include/module_common_types_public.h
+@@ -11,6 +11,7 @@
+ #ifndef MODULES_INCLUDE_MODULE_COMMON_TYPES_PUBLIC_H_
+ #define MODULES_INCLUDE_MODULE_COMMON_TYPES_PUBLIC_H_
+ 
++#include <cstdint>
+ #include <limits>
+ 
+ #include "absl/types/optional.h"
+-- 
+2.35.1
+
