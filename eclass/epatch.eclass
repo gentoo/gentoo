@@ -236,12 +236,12 @@ epatch() {
 
 		if [[ ${SINGLE_PATCH} == "yes" ]] ; then
 			if [[ -n ${EPATCH_SINGLE_MSG} ]] ; then
-				einfo "${EPATCH_SINGLE_MSG}"
+				ebegin "${EPATCH_SINGLE_MSG}"
 			else
-				einfo "Applying ${patchname} ..."
+				ebegin "Applying ${patchname}"
 			fi
 		else
-			einfo "  ${patchname} ..."
+			ebegin "  ${patchname}"
 		fi
 
 		# Handle aliased patch command #404447 #461568
