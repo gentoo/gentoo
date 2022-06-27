@@ -47,6 +47,7 @@ DOC_CONTENTS="To get previous working directory inherited in new opened tab, or
 	. /etc/profile.d/vte-2.91.sh"
 
 src_prepare() {
+	eapply "${FILESDIR}"/${P}-fix-missing-wexitcode.patch
 	if ! use vanilla; then
 		# https://bugzilla.gnome.org/show_bug.cgi?id=695371
 		# Fedora patches:
