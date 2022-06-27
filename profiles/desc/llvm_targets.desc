@@ -8,6 +8,7 @@ ARM - ARM CPU target
 AVR - 8-bit Atmel AVR microcontroller target
 BPF - Berkeley Packet Filter target
 CSKY - C-SKY CPU target [EXPERIMENTAL]
+DirectX - DirectX target [EXPERIMENTAL]
 Hexagon - Qualcomm Hexagon DSP target
 Lanai - Lanai CPU target
 LoongArch - LoongArch CPU support [EXPERIMENTAL]
