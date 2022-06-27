@@ -1,7 +1,5 @@
-# Copyright 2014-2022 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
--abi_mips_n32
-
 # bug 850151
-python_targets_python3_11
+dev-lang/python:3.11
