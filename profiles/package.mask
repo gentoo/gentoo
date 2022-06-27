@@ -472,11 +472,6 @@ dev-tex/pdfannotextractor
 # and may be buggier or less secure. Only unmask if really wanted.
 x11-drivers/nvidia-drivers:0/vulkan
 
-# Fabian Groffen <grobian@gentoo.org> (2021-10-03)
-# Masked for erratic behaviour
-# https://bugs.exim.org/show_bug.cgi?id=2813
-=mail-mta/exim-4.95-r1
-
 # Mart Raudsepp <leio@gentoo.org> (2021-09-23)
 # Incompatible with c++17 abseil-cpp, no in-tree consumers yet
 media-libs/webrtc-audio-processing:1
