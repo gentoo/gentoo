@@ -2,7 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit cmake prefix
+
+PYTHON_COMPAT=( python3_{8..11} )
+
+inherit cmake prefix python-any-r1
 
 DESCRIPTION="C++ Heterogeneous-Compute Interface for Portability"
 HOMEPAGE="https://github.com/ROCm-Developer-Tools/hipamd"
@@ -29,6 +32,10 @@ DEPEND="
 RDEPEND="${DEPEND}
 	dev-perl/URI-Encode
 	dev-libs/roct-thunk-interface:${SLOT}"
+BDEPEND="profile? ( $(python_gen_any_dep '
+	dev-python/CppHeaderParser[${PYTHON_USEDEP}]
+	') )
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.0.1-DisableTest.patch"
@@ -37,6 +44,12 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.2.0-cancel-hcc-header-removal.patch"
 	"${FILESDIR}/${PN}-5.0.2-set-build-id.patch"
 )
+
+python_check_deps() {
+	if use profile; then
+		has_version "dev-python/CppHeaderParser[${PYTHON_USEDEP}]"
+	fi
+}
 
 S="${WORKDIR}/hipamd-rocm-${PV}"
 HIP_S="${WORKDIR}"/HIP-rocm-${PV}
@@ -65,11 +78,13 @@ src_prepare() {
 	sed -e "/LIBRARY DESTINATION/s:lib:$(get_libdir):" -i src/CMakeLists.txt || die
 
 	cd ${HIP_S} || die
+	eapply "${FILESDIR}/${PN}-5.0.2-correct-ldflag.patch"
 	# Setting HSA_PATH to "/usr" results in setting "-isystem /usr/include"
 	# which makes "stdlib.h" not found when using "#include_next" in header files;
 	sed -e "/FLAGS .= \" -isystem \$HSA_PATH/d" \
 		-e "/HIP.*FLAGS.*isystem.*HIP_INCLUDE_PATH/d" \
 		-e "s:\$ENV{'DEVICE_LIB_PATH'}:'/usr/lib/amdgcn/bitcode':" \
+		-e "s:\$ENV{'HIP_LIB_PATH'}:'/usr/$(get_libdir)':" \
 		-e "/rpath/s,--rpath=[^ ]*,," \
 		-i bin/hipcc.pl || die
 
