@@ -44,7 +44,10 @@ WARNING_HWMON="${PN} requires CONFIG_HWMON to be enabled for use."
 WARNING_I2C_CHARDEV="sensors-detect requires CONFIG_I2C_CHARDEV to be enabled."
 WARNING_I2C="${PN} requires CONFIG_I2C to be enabled for most sensors."
 
-PATCHES=( "${FILESDIR}"/${PN}-3.5.0-sensors-detect-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.5.0-sensors-detect-gentoo.patch
+	"${FILESDIR}"/${PN}-3.6.0-no-which.patch
+)
 
 DOCS=( CHANGES CONTRIBUTORS INSTALL README )
 DOCS+=( doc/{donations,fancontrol.txt,fan-divisors,libsensors-API.txt,progs,temperature-sensors,vid} )
