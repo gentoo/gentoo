@@ -56,19 +56,9 @@ PATCHES=(
 )
 
 QA_FLAGS_IGNORED=(
-	/usr/lib64/why3/commands/why3shell.cmxs
-	/usr/lib64/why3/commands/why3extract.cmxs
-	/usr/lib64/why3/commands/why3execute.cmxs
-	/usr/lib64/why3/commands/why3prove.cmxs
-	/usr/lib64/why3/commands/why3wc.cmxs
-	/usr/lib64/why3/commands/why3doc.cmxs
-	/usr/lib64/why3/commands/why3replay.cmxs
-	/usr/lib64/why3/commands/why3webserver.cmxs
-	/usr/lib64/why3/commands/why3pp.cmxs
-	/usr/lib64/why3/commands/why3show.cmxs
-	/usr/lib64/why3/plugins/'.*'.cmxs
-	/usr/lib64/ocaml/why3/why3.cmxs
-	/usr/lib64/ocaml/why3/why3extract.cmxs
+	'/usr/lib*/why3/commands/*.cmxs'
+	'/usr/lib*/why3/plugins/*.cmxs'
+	'/usr/lib*/ocaml/why3/why3*.cmxs'
 	/usr/bin/why3
 	/usr/bin/why3config.cmxs
 	/usr/bin/why3session.cmxs
