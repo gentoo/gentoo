@@ -1,6 +1,6 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
+# TODO: Figure out a way to disable SRTP from pjproject entirely.
 EAPI=8
 
 inherit autotools flag-o-matic toolchain-funcs
@@ -8,7 +8,7 @@ inherit autotools flag-o-matic toolchain-funcs
 DESCRIPTION="Open source SIP, Media, and NAT Traversal Library"
 HOMEPAGE="https://www.pjsip.org/"
 SRC_URI="https://github.com/pjsip/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
@@ -17,7 +17,7 @@ SLOT="0/${PV}"
 CODEC_FLAGS="g711 g722 g7221 gsm ilbc speex l16"
 VIDEO_FLAGS="sdl ffmpeg v4l2 openh264 libyuv vpx"
 SOUND_FLAGS="alsa portaudio"
-IUSE="amr debug epoll examples ipv6 opus resample silk ssl static-libs webrtc
+IUSE="amr debug epoll examples opus resample silk ssl static-libs webrtc
 	${CODEC_FLAGS} g729
 	${VIDEO_FLAGS}
 	${SOUND_FLAGS}"
@@ -55,11 +55,28 @@ src_prepare() {
 	mv aconfigure.ac configure.ac || die "Unable to rename configure script source"
 	eautoreconf
 
-	cp "${FILESDIR}/pjproject-2.9-config_site.h" "${S}/pjlib/include/pj/config_site.h" || die "Unable to create config_site.h"
+	cp "${FILESDIR}/pjproject-2.12.1-config_site.h" "${S}/pjlib/include/pj/config_site.h" || die "Unable to create config_site.h"
 }
 
 _pj_enable() {
 	usex "$1" '' "--disable-${2:-$1}"
+}
+
+_pj_get_define() {
+	local r="$(sed -nre "s/^#define[[:space:]]+$1[[:space:]]+//p" "${S}/pjlib/include/pj/config_site.h")"
+	[[ -z "${r}" ]] && die "Unable to fine #define $1 in config_site.h"
+	echo "$r"
+}
+
+_pj_set_define() {
+	local c=$(_pj_get_define "$1")
+	[[ "$c" = "$2" ]] && return 0
+	sed -re "s/^#define[[:space:]]+$1[[:space:]].*/#define $1 $2/" -i "${S}/pjlib/include/pj/config_site.h" || die "sed failed updating $1 to $2."
+	[[ "$(_pj_get_define "$1")" != "$2" ]] && die "sed failed to perform update for $1 to $2."
+}
+
+_pj_use_set_define() {
+	_pj_set_define "$2" $(usex "$1" 1 0)
 }
 
 src_configure() {
@@ -68,8 +85,6 @@ src_configure() {
 	local t
 
 	use debug || append-cflags -DNDEBUG=1
-	use ipv6 && append-cflags -DPJ_HAS_IPV6=1
-	append-cflags -DPJMEDIA_HAS_SRTP=1
 
 	for t in ${CODEC_FLAGS}; do
 		myconf+=( $(_pj_enable ${t} ${t}-codec) )
@@ -81,7 +96,7 @@ src_configure() {
 		use "${t}" && videnable="--enable-video"
 	done
 
-	[ "${videnable}" = "--enable-video" ] && append-cflags -DPJMEDIA_HAS_VIDEO=1
+	[ "${videnable}" = "--enable-video" ] && _pj_set_define PJMEDIA_HAS_VIDEO 1 || _pj_set_define PJMEDIA_HAS_VIDEO 0
 
 	LD="$(tc-getCC)" econf \
 		--enable-shared \
