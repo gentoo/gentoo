@@ -26,7 +26,7 @@ RDEPEND="
 	>=dev-python/colorama-0.4.4[${PYTHON_USEDEP}]
 	>=dev-python/idna-3.2[${PYTHON_USEDEP}]
 	dev-python/importlib_metadata[${PYTHON_USEDEP}]
-	dev-python/importlib_resources[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' 3.8)
 	dev-python/iso8601[${PYTHON_USEDEP}]
 	>=dev-python/pexpect-4.8.0[${PYTHON_USEDEP}]
 	dev-python/pip[${PYTHON_USEDEP}]
