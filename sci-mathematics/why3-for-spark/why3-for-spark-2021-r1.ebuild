@@ -56,9 +56,9 @@ PATCHES=(
 )
 
 QA_FLAGS_IGNORED=(
-	'/usr/lib*/why3/commands/*.cmxs'
-	'/usr/lib*/why3/plugins/*.cmxs'
-	'/usr/lib*/ocaml/why3/why3*.cmxs'
+	'/usr/lib.*/why3/commands/.*cmxs'
+	'/usr/lib.*/why3/plugins/.*cmxs'
+	'/usr/lib.*/ocaml/why3/.*cmxs'
 	/usr/bin/why3
 	/usr/bin/why3config.cmxs
 	/usr/bin/why3session.cmxs
