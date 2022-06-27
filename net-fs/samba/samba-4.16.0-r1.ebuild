@@ -24,7 +24,7 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="acl addc ads ceph client cluster cpu_flags_x86_aes cups debug fam
 glusterfs gpg iprint json ldap pam profiling-data python quota +regedit selinux
-snapper spotlight syslog system-heimdal +system-mitkrb5 systemd test unwind winbind
+snapper spotlight syslog system-heimdal +system-mitkrb5 systemd test winbind
 zeroconf"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -87,7 +87,7 @@ COMMON_DEPEND="
 			net-dns/bind-tools[gssapi]
 		)
 	")
-	!alpha? ( !sparc? ( unwind? ( sys-libs/libunwind:= ) ) )
+	!alpha? ( !sparc? ( sys-libs/libunwind:= ) )
 	acl? ( virtual/acl )
 	ceph? ( sys-cluster/ceph )
 	cluster? ( net-libs/rpcsvc-proto )
@@ -141,7 +141,6 @@ BDEPEND="${PYTHON_DEPS}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-pam.patch"
-	"${FILESDIR}/optional-unwind.patch"
 )
 
 #CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
@@ -229,7 +228,6 @@ multilib_src_configure() {
 		$(multilib_native_use_with syslog)
 		$(multilib_native_use_with systemd)
 		--systemd-install-services
-		$(multilib_native_use_with unwind)
 		--with-systemddir="$(systemd_get_systemunitdir)"
 		$(multilib_native_use_with winbind)
 		$(multilib_native_usex python '' '--disable-python')

@@ -16,7 +16,7 @@ if [[ ${PV} = *_rc* ]]; then
 	SRC_URI="mirror://samba/rc/${MY_P}.tar.gz"
 else
 	SRC_URI="mirror://samba/stable/${MY_P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 S="${WORKDIR}/${MY_P}"
 
@@ -24,7 +24,7 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="acl addc ads ceph client cluster cpu_flags_x86_aes cups debug fam
 glusterfs gpg iprint json ldap pam profiling-data python quota +regedit selinux
-snapper spotlight syslog system-heimdal +system-mitkrb5 systemd test winbind
+snapper spotlight syslog system-heimdal +system-mitkrb5 systemd test unwind winbind
 zeroconf"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -65,14 +65,14 @@ COMMON_DEPEND="
 	dev-perl/Parse-Yapp
 	>=net-libs/gnutls-3.4.7[${MULTILIB_USEDEP}]
 	>=sys-fs/e2fsprogs-1.46.4-r51[${MULTILIB_USEDEP}]
-	>=sys-libs/ldb-2.4.1[ldap(+)?,${MULTILIB_USEDEP}]
-	<sys-libs/ldb-2.5.0[ldap(+)?,${MULTILIB_USEDEP}]
+	>=sys-libs/ldb-2.5.1[ldap(+)?,${MULTILIB_USEDEP}]
+	<sys-libs/ldb-2.6.0[ldap(+)?,${MULTILIB_USEDEP}]
 	sys-libs/libcap[${MULTILIB_USEDEP}]
 	sys-libs/liburing:=[${MULTILIB_USEDEP}]
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
 	>=sys-libs/talloc-2.3.3[${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.4.4[${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-1.4.6[${MULTILIB_USEDEP}]
 	>=sys-libs/tevent-0.11.0[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/libcrypt:=[${MULTILIB_USEDEP}]
@@ -87,7 +87,7 @@ COMMON_DEPEND="
 			net-dns/bind-tools[gssapi]
 		)
 	")
-	!alpha? ( !sparc? ( sys-libs/libunwind:= ) )
+	!alpha? ( !sparc? ( unwind? ( sys-libs/libunwind:= ) ) )
 	acl? ( virtual/acl )
 	ceph? ( sys-cluster/ceph )
 	cluster? ( net-libs/rpcsvc-proto )
@@ -112,6 +112,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-util/cmocka-1.1.3[${MULTILIB_USEDEP}]
+	dev-perl/JSON
 	net-libs/libtirpc[${MULTILIB_USEDEP}]
 	|| (
 		net-libs/rpcsvc-proto
@@ -140,6 +141,7 @@ BDEPEND="${PYTHON_DEPS}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-pam.patch"
+	"${FILESDIR}/${PN}-4.16.1-netdb-defines.patch"
 )
 
 #CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
@@ -152,6 +154,7 @@ SHAREDMODS=""
 pkg_setup() {
 	# Package fails to build with distcc
 	export DISTCC_DISABLE=1
+	export PYTHONHASHSEED=1
 
 	python-single-r1_pkg_setup
 
@@ -227,6 +230,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with syslog)
 		$(multilib_native_use_with systemd)
 		--systemd-install-services
+		$(multilib_native_use_with unwind)
 		--with-systemddir="$(systemd_get_systemunitdir)"
 		$(multilib_native_use_with winbind)
 		$(multilib_native_usex python '' '--disable-python')
@@ -247,7 +251,7 @@ multilib_src_configure() {
 	fi
 
 	CPPFLAGS="-I${ESYSROOT}/usr/include/et ${CPPFLAGS}" \
-		waf-utils_src_configure ${myconf[@]}
+	waf-utils_src_configure ${myconf[@]}
 }
 
 multilib_src_compile() {

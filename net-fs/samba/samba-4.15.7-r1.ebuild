@@ -16,7 +16,7 @@ if [[ ${PV} = *_rc* ]]; then
 	SRC_URI="mirror://samba/rc/${MY_P}.tar.gz"
 else
 	SRC_URI="mirror://samba/stable/${MY_P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 S="${WORKDIR}/${MY_P}"
 
@@ -24,7 +24,7 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="acl addc ads ceph client cluster cpu_flags_x86_aes cups debug fam
 glusterfs gpg iprint json ldap pam profiling-data python quota +regedit selinux
-snapper spotlight syslog system-heimdal +system-mitkrb5 systemd test winbind
+snapper spotlight syslog system-heimdal +system-mitkrb5 systemd test unwind winbind
 zeroconf"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -65,7 +65,7 @@ COMMON_DEPEND="
 	dev-perl/Parse-Yapp
 	>=net-libs/gnutls-3.4.7[${MULTILIB_USEDEP}]
 	>=sys-fs/e2fsprogs-1.46.4-r51[${MULTILIB_USEDEP}]
-	>=sys-libs/ldb-2.4.1[ldap(+)?,${MULTILIB_USEDEP}]
+	>=sys-libs/ldb-2.4.2[ldap(+)?,${MULTILIB_USEDEP}]
 	<sys-libs/ldb-2.5.0[ldap(+)?,${MULTILIB_USEDEP}]
 	sys-libs/libcap[${MULTILIB_USEDEP}]
 	sys-libs/liburing:=[${MULTILIB_USEDEP}]
@@ -87,7 +87,7 @@ COMMON_DEPEND="
 			net-dns/bind-tools[gssapi]
 		)
 	")
-	!alpha? ( !sparc? ( sys-libs/libunwind:= ) )
+	!alpha? ( !sparc? ( unwind? ( sys-libs/libunwind:= ) ) )
 	acl? ( virtual/acl )
 	ceph? ( sys-cluster/ceph )
 	cluster? ( net-libs/rpcsvc-proto )
@@ -227,6 +227,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with syslog)
 		$(multilib_native_use_with systemd)
 		--systemd-install-services
+		$(multilib_native_use_with unwind)
 		--with-systemddir="$(systemd_get_systemunitdir)"
 		$(multilib_native_use_with winbind)
 		$(multilib_native_usex python '' '--disable-python')
@@ -246,16 +247,16 @@ multilib_src_configure() {
 		myconf+=( --with-shared-modules=DEFAULT,!vfs_snapper )
 	fi
 
-	CPPFLAGS="-I${ESYSROOT}/usr/include/et ${CPPFLAGS}" \
+	PYTHONHASHSEED=1 CPPFLAGS="-I${ESYSROOT}/usr/include/et ${CPPFLAGS}" \
 		waf-utils_src_configure ${myconf[@]}
 }
 
 multilib_src_compile() {
-	waf-utils_src_compile
+	PYTHONHASHSEED=1 waf-utils_src_compile
 }
 
 multilib_src_install() {
-	waf-utils_src_install
+	PYTHONHASHSEED=1 waf-utils_src_install
 
 	# Make all .so files executable
 	find "${ED}" -type f -name "*.so" -exec chmod +x {} + || die

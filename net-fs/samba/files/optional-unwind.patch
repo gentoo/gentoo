@@ -1,6 +1,62 @@
---- samba/lib/util/wscript_configure	2021-08-09 15:38:36.191379000 +0200
-+++ samba/lib/util/wscript_configure	2022-02-21 19:46:20.807244847 +0100
-@@ -11,13 +11,14 @@
+diff --git a/lib/util/fault.c b/lib/util/fault.c
+index bfe4220afe95fed80499745e321a521305804e74..3b1d10dce89285c9d17c5768ebd30b1514723551 100644
+--- a/lib/util/fault.c
++++ b/lib/util/fault.c
+@@ -222,9 +222,13 @@ _PUBLIC_ void smb_panic(const char *why)
+ void log_stack_trace(void)
+ {
+ #ifdef HAVE_LIBUNWIND
+-	/* Try to use libunwind before any other technique since on ia64
+-	 * libunwind correctly walks the stack in more circumstances than
+-	 * backtrace.
++	/*
++	 * --with-libunwind is required to use libunwind, the
++	 * backtrace_symbols() code below is the default.
++	 *
++	 * This code is available because a previous version of this
++	 * comment asserted that on ia64 libunwind correctly walks the
++	 * stack in more circumstances than backtrace.
+ 	 */
+ 	unw_cursor_t cursor;
+ 	unw_context_t uc;
+diff --git a/lib/util/wscript b/lib/util/wscript
+index 6f711adcd0c7499557b1845528392367e0362d53..425f659a2edb0c25a55062739cf8d4a3bf24779d 100644
+--- a/lib/util/wscript
++++ b/lib/util/wscript
+@@ -2,6 +2,15 @@ def options(opt):
+     ''' This is a bit strange, but disable is the flag, not enable. '''
+     opt.add_option('--disable-fault-handling', action='store_true', dest='disable_fault_handling', help=('disable the fault handlers'), default=False)
+ 
++    # We do not want libunwind by default (backtrace_symbols() in
++    # glibc is better) but allow (eg) IA-64 to build with it where it
++    # might be better (per old comment in fault.c)
++    opt.samba_add_onoff_option('libunwind',
++                               default=None,
++                               help='''Use libunwind instead of the default backtrace_symbols()
++                               from libc, for example on IA-64 where it might give a better
++                               backtrace.''')
++
+     opt.add_option('--with-systemd',
+                    help=("Enable systemd integration"),
+                    action='store_true', dest='enable_systemd')
+diff --git a/lib/util/wscript_configure b/lib/util/wscript_configure
+index d4450d25b9851aabed356bbaa9a85e5fcb61cc22..fbaeb095dd4daafe330059bb62d5907760e0c814 100644
+--- a/lib/util/wscript_configure
++++ b/lib/util/wscript_configure
+@@ -1,23 +1,35 @@
+ #!/usr/bin/env python
+-from waflib import Logs, Options
++from waflib import Logs, Options, Errors
+ 
+ import os, sys
+ 
+ if Options.options.disable_fault_handling:
+     conf.DEFINE('HAVE_DISABLE_FAULT_HANDLING',1)
+ 
+-# backtrace could be in libexecinfo or in libc
++# backtrace could be in libexecinfo or in libc.
++# This is our preferred backtrace handler (more useful output than libunwind as at Ubuntu 20.04 x86_64)
+ conf.CHECK_FUNCS_IN('backtrace backtrace_symbols', 'execinfo', checklibc=True, headers='execinfo.h')
  conf.CHECK_HEADERS('execinfo.h')
  
  conf.SET_TARGET_TYPE('LIBUNWIND', 'EMPTY')
@@ -11,7 +67,7 @@
 -                  mandatory=False):
 -    if conf.CHECK_HEADERS('libunwind.h'):
 -        conf.SET_TARGET_TYPE('LIBUNWIND', 'SYSLIB')
-+if Options.options.enable_unwind != False:
++if Options.options.with_libunwind:
 +    if conf.check_cfg(package='libunwind-generic',
 +                      args='--cflags --libs',
 +                      msg='Checking for libunwind',
@@ -19,23 +75,33 @@
 +                      mandatory=False):
 +        if conf.CHECK_HEADERS('libunwind.h'):
 +            conf.SET_TARGET_TYPE('LIBUNWIND', 'SYSLIB')
++    else:
++        raise Errors.WafError('--with-libunwind specified but libunwind not found')
++elif Options.options.with_libunwind == None:
++    if not conf.CONFIG_SET('HAVE_BACKTRACE_SYMBOLS') \
++       and not Options.options.disable_fault_handling:
++        raise Errors.WafError(
++'''backtrace_symbols() not found but
++--with-libunwind not specified.
++Use --without-libunwind to build without internal backtrace support or
++--disable-fault-handling to totally defer fault handling to the OS.''')
  
  conf.CHECK_STRUCTURE_MEMBER('struct statvfs', 'f_frsize', define='HAVE_FRSIZE', headers='sys/statvfs.h')
  
---- samba/lib/util/wscript	2021-08-09 15:38:36.191379000 +0200
-+++ samba/lib/util/wscript	2022-02-21 20:24:01.279613074 +0100
-@@ -10,6 +10,14 @@
-                    help=("Disable systemd integration"),
-                    action='store_false', dest='enable_systemd')
+diff --git a/script/autobuild.py b/script/autobuild.py
+index 9f790d8a53e07ffa431a1c7d223659c0ba013a7b..43e0bd4e681c604df62e8c1c3f6c2a6ede3ddec1 100755
+--- a/script/autobuild.py
++++ b/script/autobuild.py
+@@ -480,10 +480,11 @@ tasks = {
+     # MIT Kerberos from the current system.  Runtime behaviour is
+     # confirmed via the ktest (static ccache and keytab) environment
  
-+    opt.add_option('--with-unwind',
-+                   help=("Enable libunwind usage for backtraces"),
-+                   action='store_true', dest='enable_unwind')
-+
-+    opt.add_option('--without-unwind',
-+                   help=("Disable libunwind usage for backtraces"),
-+                   action='store_false', dest='enable_unwind')
-+
-     opt.add_option('--with-lttng',
-                    help=("Enable lttng integration"),
-                    action='store_true', dest='enable_lttng')
++    # This environment also used to confirm we can still build with --with-libunwind
+     "samba-ktest-mit": {
+         "sequence": [
+             ("random-sleep", random_sleep(300, 900)),
+-            ("configure", "./configure.developer --without-ad-dc --with-system-mitkrb5 " + samba_configure_params),
++            ("configure", "./configure.developer --without-ad-dc --with-libunwind --with-system-mitkrb5 " + samba_configure_params),
+             ("make", "make -j"),
+             ("test", make_test(include_envs=[
+             "ktest", # ktest is also tested in fileserver, samba and
