@@ -93,3 +93,7 @@ pkg_postinst() {
 	tmpfiles_process tpm2-tss-fapi.conf
 	udev_reload
 }
+
+pkg_postrm() {
+	udev_reload
+}
