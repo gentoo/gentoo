@@ -126,6 +126,13 @@ src_prepare() {
 	eapply     "${FILESDIR}"/exim-4.69-r1.27021.patch
 	eapply     "${FILESDIR}"/exim-4.95-localscan_dlopen.patch
 
+	# oddity, they disable berkdb as hack, and then throw an error when
+	# berkdb isn't enabled
+	sed -i \
+		-e 's/_DB_/_DONTMESS_/' \
+		-e 's/define DB void/define DONTMESS void/' \
+		src/auths/call_radius.c || die
+
 	# for this reason we have a := dep on opendmarc, they changed their
 	# API in a minor release
 	if use dmarc && has_version ">=mail-filter/opendmarc-1.4" ; then
@@ -192,7 +199,14 @@ src_configure() {
 		EOC
 		sed -i -e 's:^USE_DB=yes:# USE_DB=yes:' Makefile || die
 		sed -i -e 's:^USE_GDBM=yes:# USE_GDBM=yes:' Makefile || die
-	elif use berkdb ; then
+	elif use gdbm ; then
+		cat >> Makefile <<- EOC
+			USE_GDBM=yes
+			DBMLIB = -lgdbm
+		EOC
+		sed -i -e 's:^USE_DB=yes:# USE_DB=yes:' Makefile || die
+		sed -i -e 's:^USE_TDB=yes:# USE_TDB=yes:' Makefile || die
+	else # must be berkdb via required_use
 		# use the "native" interfaces to the DBM and CDB libraries, support
 		# passwd and directory lookups by default
 		local DB_VERS="5.3 5.1 4.8 4.7 4.6 4.5 4.4 4.3 4.2 3.2"
@@ -203,13 +217,6 @@ src_configure() {
 			DBMLIB = -l$(db_libname ${DB_VERS})
 		EOC
 		sed -i -e 's:^USE_GDBM=yes:# USE_GDBM=yes:' Makefile || die
-		sed -i -e 's:^USE_TDB=yes:# USE_TDB=yes:' Makefile || die
-	else # must be gdbm via required_use
-		cat >> Makefile <<- EOC
-			USE_GDBM=yes
-			DBMLIB = -lgdbm
-		EOC
-		sed -i -e 's:^USE_DB=yes:# USE_DB=yes:' Makefile || die
 		sed -i -e 's:^USE_TDB=yes:# USE_TDB=yes:' Makefile || die
 	fi
 
@@ -634,6 +641,9 @@ pkg_postinst() {
 		einfo "for using smtp auth."
 		einfo "Please create ${EROOT}/etc/exim/exim.conf from"
 		einfo "  ${EROOT}/etc/exim/exim.conf.dist."
+	fi
+	if use berkdb && ( use gdbm || use tdb ) ; then
+		ewarn "USE=berkdb is ignored because USE=gdbm or USE=tdb is enabled!"
 	fi
 	if use dmarc ; then
 		einfo "DMARC support requires ${EROOT}/etc/exim/opendmarc.tlds"
