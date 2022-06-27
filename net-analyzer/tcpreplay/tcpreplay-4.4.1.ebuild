@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Utilities for editing and replaying previously captured network traffic"
 HOMEPAGE="http://tcpreplay.appneta.com/ https://github.com/appneta/tcpreplay"
@@ -29,6 +29,7 @@ BDEPEND="
 DEPEND="
 	dev-libs/libdnet
 	>=net-libs/libpcap-0.9
+	elibc_musl? ( sys-libs/fts-standalone )
 	pcapnav? ( net-libs/libpcapnav )
 	tcpdump? ( net-analyzer/tcpdump )
 "
@@ -57,6 +58,7 @@ src_prepare() {
 }
 
 src_configure() {
+	use elibc_musl && append-flags "-lfts"
 	# By default it uses static linking. Avoid that, bug #252940
 	econf \
 		$(use_enable debug) \
