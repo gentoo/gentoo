@@ -31,6 +31,7 @@ RDEPEND="
 	acct-group/gamestat
 "
 BDEPEND="
+	sys-apps/which
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
