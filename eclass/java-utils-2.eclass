@@ -1901,7 +1901,12 @@ etestng() {
 		${JAVA_TEST_RUNNER_EXTRA_ARGS[@]}
 	)
 
-	[[ ! "${JAVA_TEST_RUNNER_EXTRA_ARGS[@]}" =~ "-usedefaultlisteners" ]] && args+=( -usedefaultlisteners false )
+	if [[ ! "${JAVA_TEST_RUNNER_EXTRA_ARGS[@]}" =~ "-usedefaultlisteners" ]]; then
+		args+=(
+			-verbose 3
+			-usedefaultlisteners true
+		)
+	fi
 
 	args+=( -testclass ${tests} )
 
