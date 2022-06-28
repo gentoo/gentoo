@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit vala meson
 
@@ -12,19 +12,19 @@ SRC_URI="https://github.com/equeim/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
-IUSE=""
 
 RDEPEND="
 	media-libs/alsa-lib
 	>=xfce-base/xfce4-panel-4.13
 	x11-libs/gtk+:3[introspection]
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	$(vala_depend)
 	sys-devel/gettext
 "
 
-src_prepare() {
-	vala_src_prepare
-	eapply_user
+src_configure() {
+	vala_setup
+	meson_src_configure
 }
