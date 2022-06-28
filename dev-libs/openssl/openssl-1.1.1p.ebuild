@@ -38,6 +38,8 @@ PDEPEND="app-misc/ca-certificates"
 # force upgrade to prevent broken login, bug #696950
 RDEPEND+=" !<net-misc/openssh-8.0_p1-r3"
 
+REQUIRED_USE="test? ( rfc3779 )"
+
 MULTILIB_WRAPPED_HEADERS=(
 	usr/include/openssl/opensslconf.h
 )
