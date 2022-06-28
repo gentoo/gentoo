@@ -21,7 +21,7 @@ RUBY_S="listen-${PV}"
 
 LICENSE="MIT"
 SLOT="4"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 ~riscv x86"
 IUSE="test"
 
 PATCHES=( "${FILESDIR}/listen-3.1.5-ruby26.patch" )
