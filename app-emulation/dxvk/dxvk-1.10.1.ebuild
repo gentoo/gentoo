@@ -83,7 +83,7 @@ multilib_src_configure() {
 
 	local emesonargs=(
 		--prefix="${EPREFIX}"/usr/lib/${PN}
-		--{bin,lib}dir=x$((${ABI#x}==86?32:64))
+		--{bin,lib}dir=x${MULTILIB_ABI_FLAG: -2}
 		$(meson_use {,enable_}d3d9)
 		$(meson_use {,enable_}d3d10)
 		$(meson_use {,enable_}d3d11)
