@@ -41,11 +41,11 @@ BDEPEND="virtual/pkgconfig"
 
 DOCS=( "README.md" "FAQ.md" )
 
-src_prepare() {
-	default
+PATCHES=( "${FILESDIR}/${PN}-22.24.23453-remove-fortify-sources.patch" )
 
+src_prepare() {
 	# Remove '-Werror' from default
-	set -e '/Werror/d' -i CMakeLists.txt || die
+	sed -e '/Werror/d' -i CMakeLists.txt || die
 
 	cmake_src_prepare
 }
