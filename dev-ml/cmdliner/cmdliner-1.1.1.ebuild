@@ -26,7 +26,8 @@ DEPEND="${RDEPEND}
 src_compile() {
 	emake build-byte
 	if use ocamlopt ; then
-		emake build-native build-native-dynlink
+		emake build-native-dynlink
+		emake build-native
 	fi
 }
 
