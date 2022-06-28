@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,17 +20,21 @@ RESTRICT="test"
 RDEPEND="
 	acct-group/rabbitmq
 	acct-user/rabbitmq
-	>=dev-lang/erlang-22[ssl]
+	>=dev-lang/erlang-22[ssl] <dev-lang/erlang-25.0
 "
 DEPEND="${RDEPEND}
 	app-arch/zip
 	app-arch/unzip
 	app-text/docbook-xml-dtd:4.5
 	app-text/xmlto
-	>=dev-lang/elixir-1.10.0 <dev-lang/elixir-1.12.0
+	>=dev-lang/elixir-1.10.4 <dev-lang/elixir-1.13.0
 	dev-libs/libxslt
 	$(python_gen_any_dep 'dev-python/simplejson[${PYTHON_USEDEP}]')
 "
+
+python_check_deps() {
+	has_version -d "dev-python/simplejson[${PYTHON_USEDEP}]"
+}
 
 pkg_setup() {
 	python-any-r1_pkg_setup
