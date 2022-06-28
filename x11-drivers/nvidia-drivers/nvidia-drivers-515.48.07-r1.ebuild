@@ -57,7 +57,7 @@ RDEPEND="
 	)
 	wayland? (
 		gui-libs/egl-gbm
-		>=gui-libs/egl-wayland-1.1.7-r1
+		=gui-libs/egl-wayland-1.1.9*
 		media-libs/libglvnd
 	)"
 DEPEND="
