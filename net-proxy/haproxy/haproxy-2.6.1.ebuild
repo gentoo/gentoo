@@ -133,7 +133,7 @@ src_install() {
 	doins examples/errorfiles/*
 
 	if use doc; then
-		dodoc ROADMAP doc/*.txt
+		dodoc doc/*.txt
 		#if use lua; then
 		# TODO: doc/lua-api/
 		#fi
