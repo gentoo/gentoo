@@ -123,7 +123,7 @@ multilib_src_configure() {
 
 	local emesonargs=(
 		--prefix="${EPREFIX}"/usr/lib/${PN}
-		--{bin,lib}dir=x$((${ABI#x}==86?86:64))
+		--{bin,lib}dir=x${ABI: -2}
 		--{cross,native}-file="${T}"/widl.${ABI}.ini
 		$(meson_use {,enable_}extras)
 		$(meson_use debug enable_trace)
