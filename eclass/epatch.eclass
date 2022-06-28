@@ -52,10 +52,6 @@ EPATCH_COMMON_OPTS="-g0 -E --no-backup-if-mismatch"
 # List of patches not to apply.	 Note this is only file names,
 # and not the full path.  Globs accepted.
 EPATCH_EXCLUDE=""
-# @VARIABLE: EPATCH_SINGLE_MSG
-# @DESCRIPTION:
-# Change the printed message for a single patch.
-EPATCH_SINGLE_MSG=""
 # @VARIABLE: EPATCH_MULTI_MSG
 # @DESCRIPTION:
 # Change the printed message for multiple patches.
@@ -235,11 +231,7 @@ epatch() {
 		fi
 
 		if [[ ${SINGLE_PATCH} == "yes" ]] ; then
-			if [[ -n ${EPATCH_SINGLE_MSG} ]] ; then
-				ebegin "${EPATCH_SINGLE_MSG}"
-			else
-				ebegin "Applying ${patchname}"
-			fi
+			ebegin "Applying ${patchname}"
 		else
 			ebegin "  ${patchname}"
 		fi
