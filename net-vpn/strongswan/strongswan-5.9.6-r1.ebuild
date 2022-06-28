@@ -14,11 +14,16 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="+caps curl +constraints debug dhcp eap farp gcrypt +gmp ldap mysql networkmanager +non-root +openssl selinux sqlite systemd pam pkcs11"
 
 STRONGSWAN_PLUGINS_STD="led lookip systime-fix unity vici"
+STRONGSWAN_PLUGINS_OPT_DISABLE="kdf"
 STRONGSWAN_PLUGINS_OPT="addrblock aesni blowfish bypass-lan ccm chapoly ctr error-notify forecast gcm
-ha ipseckey kdf newhope ntru padlock prf-plus rdrand save-keys unbound whitelist
+ha ipseckey newhope ntru padlock rdrand save-keys unbound whitelist
 xauth-noauth"
 for mod in $STRONGSWAN_PLUGINS_STD; do
 	IUSE="${IUSE} +strongswan_plugins_${mod}"
+done
+
+for mod in $STRONGSWAN_PLUGINS_OPT_DISABLE; do
+	IUSE="${IUSE} strongswan_plugins_${mod}"
 done
 
 for mod in $STRONGSWAN_PLUGINS_OPT; do
@@ -130,6 +135,12 @@ src_configure() {
 	for mod in $STRONGSWAN_PLUGINS_STD; do
 		if use strongswan_plugins_${mod}; then
 			myconf+=" --enable-${mod}"
+		fi
+	done
+
+	for mod in $STRONGSWAN_PLUGINS_OPT_DISABLE; do
+		if ! use strongswan_plugins_${mod}; then
+			myconf+=" --disable-${mod}"
 		fi
 	done
 

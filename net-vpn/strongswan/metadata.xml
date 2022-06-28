@@ -51,7 +51,6 @@
 		<flag name="strongswan_plugins_newhope">Enable plugin that allows key exchange based on post-quantum computer New Hope algorithm</flag>
 		<flag name="strongswan_plugins_ntru">Enable support for the ntru plugin</flag>
 		<flag name="strongswan_plugins_padlock">Enable support for the padlock plugin</flag>
-		<flag name="strongswan_plugins_prf-plus">Enable support for the prf-plus plugin</flag>
 		<flag name="strongswan_plugins_rdrand">Enable support for the rdrand plugin</flag>
 		<flag name="strongswan_plugins_save-keys">Enable plugin that saves IKE and/or ESP keys to files compatible with Wireshark (for debugging)</flag>
 		<flag name="strongswan_plugins_unbound">Enable support for the unbound plugin</flag>
