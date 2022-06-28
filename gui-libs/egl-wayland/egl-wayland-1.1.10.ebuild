@@ -11,9 +11,7 @@ SRC_URI="https://github.com/NVIDIA/egl-wayland/archive/refs/tags/${PV}.tar.gz ->
 
 LICENSE="MIT"
 SLOT="0"
-# unkeyworded for now as non-xwayland wayland vulkan seems to miss a symbol
-# that is likely from a yet unreleased libnvidia-vulkan-producer.so
-#KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
 	dev-libs/wayland
