@@ -7,7 +7,7 @@ MODULES_OPTIONAL_USE="driver"
 inherit desktop flag-o-matic linux-mod multilib readme.gentoo-r1 \
 	systemd toolchain-funcs unpacker user-info
 
-NV_KERNEL_MAX="5.15"
+NV_KERNEL_MAX="5.18"
 NV_PIN="515.48.07"
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
