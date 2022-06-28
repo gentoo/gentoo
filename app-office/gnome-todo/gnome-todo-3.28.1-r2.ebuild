@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit gnome.org gnome2-utils meson xdg
 
@@ -23,11 +23,14 @@ RDEPEND="
 	dev-libs/json-glib
 	introspection? ( >=dev-libs/gobject-introspection-1.42:= )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-libs/libxml2:2
 	dev-util/glib-utils
-	gtk-doc? ( dev-util/gtk-doc
-		app-text/docbook-xml-dtd:4.3 )
+	gtk-doc? (
+		dev-util/gtk-doc
+		app-text/docbook-xml-dtd:4.3
+	)
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
