@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-LUA_COMPAT=( lua5-3 )
+LUA_COMPAT=( lua5-4 lua5-3 )
 
 [[ ${PV} == *9999 ]] && SCM="git-r3"
 inherit toolchain-funcs flag-o-matic lua-single systemd linux-info ${SCM}
@@ -52,6 +52,10 @@ S="${WORKDIR}/${MY_P}"
 
 DOCS=( CHANGELOG CONTRIBUTING MAINTAINERS README )
 EXTRAS=( admin/halog admin/iprange dev/tcploop dev/hpack )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-lua54.patch
+)
 
 haproxy_use() {
 	(( $# != 2 )) && die "${FUNCNAME} <USE flag> <make option>"

@@ -1,0 +1,63 @@
+From 4634eb54a7dbfb38b0d2db8282ce281aa9ff5296 Mon Sep 17 00:00:00 2001
+From: Christian Ruppert <idl0r@qasl.de>
+Date: Tue, 28 Jun 2022 10:03:00 +0200
+Subject: [PATCH] Add Lua 5.4 autodetect
+
+This patch is based on:
+https://www.mail-archive.com/haproxy@formilux.org/msg39689.html
+Thanks to Callum Farmer!
+
+Signed-off-by: Christian Ruppert <idl0r@qasl.de>
+---
+ INSTALL  | 6 +++---
+ Makefile | 8 ++++----
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/INSTALL b/INSTALL
+index 96936ea46..9269051af 100644
+--- a/INSTALL
++++ b/INSTALL
+@@ -324,9 +324,9 @@ Lua is an embedded programming language supported by HAProxy to provide more
+ advanced scripting capabilities. Only versions 5.3 and above are supported.
+ In order to enable Lua support, please specify "USE_LUA=1" on the command line.
+ Some systems provide this library under various names to avoid conflicts with
+-previous versions. By default, HAProxy looks for "lua5.3", "lua53", "lua". If
+-your system uses a different naming, you may need to set the library name in
+-the "LUA_LIB_NAME" variable.
++previous versions. By default, HAProxy looks for "lua5.4", "lua54", "lua5.3",
++"lua53", "lua". If your system uses a different naming, you may need to set the
++library name in the "LUA_LIB_NAME" variable.
+ 
+ If Lua is not provided on your system, it can be very simply built locally. It
+ can be downloaded from https://www.lua.org/, extracted and built, for example :
+diff --git a/Makefile b/Makefile
+index 814837133..85f6c632d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -104,7 +104,7 @@
+ #   LUA_LIB        : force the lib path to lua
+ #   LUA_INC        : force the include path to lua
+ #   LUA_LIB_NAME   : force the lib name (or automatically evaluated, by order of
+-#                                        priority : lua5.3, lua53, lua).
++#                                        priority : lua5.4, lua54, lua5.3, lua53, lua).
+ #   OT_DEBUG       : compile the OpenTracing filter in debug mode
+ #   OT_INC         : force the include path to libopentracing-c-wrapper
+ #   OT_LIB         : force the lib path to libopentracing-c-wrapper
+@@ -648,11 +648,11 @@ OPTIONS_CFLAGS  += $(if $(LUA_INC),-I$(LUA_INC))
+ LUA_LD_FLAGS := -Wl,$(if $(EXPORT_SYMBOL),$(EXPORT_SYMBOL),--export-dynamic) $(if $(LUA_LIB),-L$(LUA_LIB))
+ ifeq ($(LUA_LIB_NAME),)
+ # Try to automatically detect the Lua library
+-LUA_LIB_NAME := $(firstword $(foreach lib,lua5.3 lua53 lua,$(call check_lua_lib,$(lib),$(LUA_LD_FLAGS))))
++LUA_LIB_NAME := $(firstword $(foreach lib,lua5.4 lua54 lua5.3 lua53 lua,$(call check_lua_lib,$(lib),$(LUA_LD_FLAGS))))
+ ifeq ($(LUA_LIB_NAME),)
+-$(error unable to automatically detect the Lua library name, you can enforce its name with LUA_LIB_NAME=<name> (where <name> can be lua5.3, lua53, lua, ...))
++$(error unable to automatically detect the Lua library name, you can enforce its name with LUA_LIB_NAME=<name> (where <name> can be lua5.4, lua54, lua, ...))
+ endif
+-LUA_INC := $(firstword $(foreach lib,lua5.3 lua53 lua,$(call check_lua_inc,$(lib),"/usr/include/")))
++LUA_INC := $(firstword $(foreach lib,lua5.4 lua54 lua5.3 lua53 lua,$(call check_lua_inc,$(lib),"/usr/include/")))
+ ifneq ($(LUA_INC),)
+ OPTIONS_CFLAGS  += -I$(LUA_INC)
+ endif
+-- 
+2.35.1
+
