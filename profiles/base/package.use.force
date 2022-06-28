@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Patrick McLean <chutzpah@gentoo.org> (2022-06-27)
+# Doesn't build with boost installed on the system, some deps require boost
+# so force the flag on until problem fixed upstream
+>=sys-cluster/ceph-17.2.1 system-boost
+
 # Sam James <sam@gentoo.org> (2022-05-17)
 # Force on jpeg & png for now until build system fixes are made
 # by upstream. The CMake port is new so it's fairly expected
