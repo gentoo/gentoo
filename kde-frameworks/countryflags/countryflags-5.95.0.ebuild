@@ -11,7 +11,7 @@ inherit ecm kde.org
 DESCRIPTION="Icons of flags for various countries"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 
 CMAKE_USE_DIR="${S}/src/l10n"
 
