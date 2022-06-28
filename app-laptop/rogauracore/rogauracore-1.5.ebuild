@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools udev
 
 if [[ ${PV} = "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/wroberts/rogauracore.git"
@@ -32,4 +32,12 @@ src_configure() {
 
 src_compile() {
 	emake
+}
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
 }
