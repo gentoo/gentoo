@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit depend.apache apache-module perl-module eutils
+inherit depend.apache apache-module perl-module
 
 DESCRIPTION="An embedded Perl interpreter for Apache2"
 HOMEPAGE="https://perl.apache.org/ https://projects.apache.org/project.html?perl-mod_perl"
@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~arm ppc ppc64 x86"
 IUSE="debug ithreads test"
 RESTRICT="!test? ( test )"
 
-SRC_TEST=do
+DIST_TEST=do
 
 # Apache::Reload, Apache::SizeLimit, and Apache::Test are force-unbundled.
 # The minimum versions requested here are the bundled versions.
@@ -73,6 +73,8 @@ src_prepare() {
 }
 
 src_configure() {
+	_init_apache2_late
+
 	local debug=$(usex debug 1 0)
 	local nothreads=$(usex ithreads 0 1)
 	myconf=(
@@ -108,7 +110,8 @@ src_install() {
 	default
 
 	perl_delete_localpod
-	perl_delete_packlist
+	perl_fix_packlist
+	perl_delete_emptybsdir
 
 	insinto "${APACHE_MODULES_CONFDIR}"
 	doins "${FILESDIR}"/2.0.3/apache2-mod_perl-startup.pl

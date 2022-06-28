@@ -4,8 +4,8 @@ Fix build for perl >= 5.33.7
 Patch by Leon Timmermans <fawaka@gmail.com> from https://github.com/Perl/perl5/issues/18617
 
 
---- perl/modperl/trunk/src/modules/perl/modperl_perl.c	2021/04/20 13:48:02	1889013
-+++ perl/modperl/trunk/src/modules/perl/modperl_perl.c	2021/04/20 13:55:29	1889014
+--- a/src/modules/perl/modperl_perl.c
++++ b/src/modules/perl/modperl_perl.c
 @@ -268,7 +268,7 @@
  #ifdef MP_NEED_HASH_SEED_FIXUP
      if (MP_init_hash_seed_set) {
