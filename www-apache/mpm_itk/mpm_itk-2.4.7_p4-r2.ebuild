@@ -1,7 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 inherit apache-module linux-info
 
 MY_PN=${PN/_/-}
@@ -11,13 +12,11 @@ MY_P=${MY_PN}-${MY_PV}
 DESCRIPTION="Run virtual hosts under separate users/groups"
 HOMEPAGE="http://mpm-itk.sesse.net/"
 SRC_URI="http://mpm-itk.sesse.net/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
-
-S="${WORKDIR}/${MY_P}"
 
 # The libcap dependency is automagic, so we require it
 # unconditionally. Reported upstream at,
@@ -35,6 +34,7 @@ RDEPEND="${DEPEND}"
 APACHE2_MOD_CONF="00_${PN}"
 APACHE2_MOD_DEFINE="MPM_ITK"
 APXS2_ARGS="-c ${PN}.c seccomp.c -lcap"
+
 need_apache2_4
 
 pkg_setup() {
@@ -47,4 +47,8 @@ pkg_setup() {
 		ewarn "for LimitUIDRange and LimitGIDRange which we include by"
 		ewarn "default in ${APACHE2_MOD_CONF}.conf."
 	fi
+
+	# Work around bug #616612
+	_init_apache2
+	_init_apache2_late
 }
