@@ -164,11 +164,6 @@ dev-lang/rust parallel-compiler
 # Mask experimental options.
 gui-libs/gtk ffmpeg vulkan
 
-# Marek Szuba <marecki@gentoo.org> (2021-07-14)
-# Even on a clean install, 8 phdf5 tests fail (Bug #808612)
-# Mask for further study.
->=sci-libs/hdf5-1.12.1 mpi
-
 # Sam James <sam@gentoo.org> (2021-07-24)
 # USE=exec-static-trampoline can break consumers due to
 # faulty assumptions. Masked for now due to the possibility
