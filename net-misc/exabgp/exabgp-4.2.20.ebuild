@@ -24,7 +24,6 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/psutil[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 	)
 "
