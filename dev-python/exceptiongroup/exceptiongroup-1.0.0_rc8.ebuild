@@ -22,7 +22,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT PSF-2.4"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~m68k ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~riscv ~sparc x86"
 
 distutils_enable_tests pytest
 
