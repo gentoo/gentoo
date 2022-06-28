@@ -374,7 +374,7 @@ src_prepare() {
 	# TODO: package-agnostic way to handle IUSE=debug with setuptools-rust?
 	use !debug || sed -i "s/^cargo_args = \[/&'--profile','dev',/" setup.py || die
 
-	filter-flags '-flto*' # undefined references with ring crate
+	filter-lto # undefined references with ring crate
 }
 
 python_compile_all() {
