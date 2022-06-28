@@ -14,7 +14,6 @@ inherit linux-info toolchain-funcs python-r1 udev fcaps readme.gentoo-r1 \
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.com/qemu-project/qemu.git/"
 	EGIT_SUBMODULES=(
-		meson
 		tests/fp/berkeley-softfloat-3
 		tests/fp/berkeley-testfloat-3
 		ui/keycodemapdb
@@ -237,6 +236,7 @@ PPC_FIRMWARE_DEPEND="
 BDEPEND="
 	$(python_gen_impl_dep)
 	dev-lang/perl
+	dev-util/meson
 	sys-apps/texinfo
 	virtual/pkgconfig
 	doc? (
@@ -423,8 +423,8 @@ src_prepare() {
 	# drop it. No change to level of protection b/c we patch our toolchain.
 	sed -i -e 's/-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2//' configure || die
 
-	# Remove bundled copy of libfdt
-	rm -r dtc || die
+	# Remove bundled modules
+	rm -r dtc meson roms/*/ slirp || die
 }
 
 ##
@@ -469,7 +469,6 @@ qemu_src_configure() {
 		# are enabled), but it's not really worth the hassle.  Disable it
 		# all the time to avoid automatically detecting it. #568856
 		--disable-gcrypt
-		--python="${PYTHON}"
 		--cc="$(tc-getCC)"
 		--cxx="$(tc-getCXX)"
 		--host-cc="$(tc-getBUILD_CC)"
