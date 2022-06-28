@@ -37,7 +37,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake -j1
+	emake -j1 all
 	use ocamlopt && emake -j1 opt
 }
 
