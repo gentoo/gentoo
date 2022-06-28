@@ -566,8 +566,6 @@ net-fs/samba system-heimdal
 # Robin H. Johnson <robbat2@gentoo.org> (2016-12-04)
 # Additional HAProxy functionality waiting for related stuff to land in the
 # tree.
-# bug #541042 - lua 5.3
-net-proxy/haproxy lua
 # bug (none) - 51Degrees
 net-proxy/haproxy 51degrees
 # bug (none) - WURFL
