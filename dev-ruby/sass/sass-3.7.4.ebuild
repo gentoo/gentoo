@@ -20,7 +20,7 @@ RUBY_S="ruby-sass-${PV}"
 
 LICENSE="MIT"
 
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 ~riscv x86 ~amd64-linux"
+KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 ~riscv x86 ~amd64-linux"
 SLOT="$(ver_cut 1-2)"
 IUSE=""
 
