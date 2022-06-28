@@ -14,7 +14,7 @@ SRC_URI="https://github.com/rholder/retrying/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ~ppc64 ~s390 ~sparc ~x86"
 
 RDEPEND=">=dev-python/six-1.7.0[${PYTHON_USEDEP}]"
 
