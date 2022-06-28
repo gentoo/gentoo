@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit gnome.org gnome2-utils meson virtualx xdg
 
 DESCRIPTION="GNOME power statistics"
@@ -9,9 +10,9 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-power-manager"
 
 LICENSE="GPL-2+"
 SLOT="0"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.45.8:2
@@ -23,10 +24,12 @@ RDEPEND="${COMMON_DEPEND}
 	x11-themes/adwaita-icon-theme
 "
 DEPEND="${COMMON_DEPEND}
+	x11-base/xorg-proto
+"
+BDEPEND="
 	app-text/docbook-sgml-dtd:4.1
 	app-text/docbook-sgml-utils
 	>=sys-devel/gettext-0.19.7
-	x11-base/xorg-proto
 	virtual/pkgconfig
 	test? ( sys-apps/dbus )
 "
