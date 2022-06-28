@@ -291,7 +291,7 @@ src_install() {
 	einfo "Creating the Class Data Sharing archives and disabling usage tracking"
 	"${ddest}/bin/java" -server -Xshare:dump -Djdk.disableLastUsageTracking || die
 
-	use gentoo-vm && java-vm_install-env "${FILESDIR}"/${PN}-${SLOT}.env.sh
+	use gentoo-vm && java-vm_install-env "${FILESDIR}"/${PN}.env.sh
 	java-vm_revdep-mask
 	java-vm_sandbox-predict /dev/random /proc/self/coredump_filter
 
