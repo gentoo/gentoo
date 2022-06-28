@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit udev
 
@@ -23,10 +23,10 @@ IUSE="+crypt doc examples static-libs"
 RDEPEND="
 	acct-group/plugdev
 	virtual/libusb:1
-	crypt? ( >=dev-libs/libgcrypt-1.5.4:0= )"
+	crypt? ( dev-libs/libgcrypt:0= )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	>sys-devel/gettext-0.18.3
+	sys-devel/gettext
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
@@ -68,4 +68,12 @@ src_install() {
 		docinto examples
 		dodoc examples/*.{c,h,sh}
 	fi
+}
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
 }
