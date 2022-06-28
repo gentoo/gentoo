@@ -1,12 +1,13 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit edos2unix
 
 DESCRIPTION="RATS - Rough Auditing Tool for Security"
-HOMEPAGE="https://code.google.com/p/rough-auditing-tool-for-security/"
+HOMEPAGE="https://github.com/andrew-d/rough-auditing-tool-for-security"
+# No tags available in the GitHub port
 SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/rough-auditing-tool-for-security/${P}.tgz"
 
 LICENSE="GPL-2"
