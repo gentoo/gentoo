@@ -4,7 +4,7 @@
 # @ECLASS: epatch.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
+# @SUPPORTED_EAPIS: 5 6
 # @BLURB: easy patch application functions
 # @DEPRECATED: eapply from EAPI 7
 # @DESCRIPTION:
@@ -13,11 +13,11 @@
 
 if [[ -z ${_EPATCH_ECLASS} ]]; then
 
-case ${EAPI:-0} in
-	0|1|2|3|4|5|6)
+case ${EAPI} in
+	5|6)
 		;;
 	*)
-		die "${ECLASS}: banned in EAPI=${EAPI}; use eapply* instead";;
+		die "${ECLASS}: EAPI ${EAPI:-0} not supported";;
 esac
 
 inherit estack
