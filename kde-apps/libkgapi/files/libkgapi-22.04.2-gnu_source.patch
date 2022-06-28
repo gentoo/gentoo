@@ -1,0 +1,23 @@
+https://invent.kde.org/pim/libkgapi/-/merge_requests/29
+https://invent.kde.org/pim/libkgapi/-/merge_requests/29/diffs?commit_id=1e6a54a9f2d818aa4046e5291702e236a53ba987
+
+---
+ src/saslplugin/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/saslplugin/CMakeLists.txt b/src/saslplugin/CMakeLists.txt
+index 61edd04..e8823fb 100644
+--- a/src/saslplugin/CMakeLists.txt
++++ b/src/saslplugin/CMakeLists.txt
+@@ -2,7 +2,7 @@ include(CheckIncludeFile)
+ include(CheckStructHasMember)
+ 
+ if (NOT CMAKE_SYSTEM_NAME MATCHES "FreeBSD")
+-   add_definitions(-D_POSIX_SOURCE)
++	add_definitions(-D_GNU_SOURCE)
+ endif()
+ 
+ if (WIN32)
+-- 
+2.35.1
+
