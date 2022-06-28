@@ -104,6 +104,11 @@ src_compile() {
 			ln -sf {../${CTARGET}/bin/,"${sysroot}"/bin/${CTARGET}-}${bin##*/} || die
 		done
 		ln -sf ld.bfd "${sysroot}"/${CTARGET}/bin/ld || die
+
+		# symlink gcc's lto plugin for AR (bug #854516)
+		mkdir "${sysroot}"/${CTARGET}/lib/bfd-plugins || die
+		ln -s ../../../libexec/gcc/${CTARGET}/${GCC_PV}/liblto_plugin.so \
+			"${sysroot}"/${CTARGET}/lib/bfd-plugins || die
 	}
 
 	# gcc (minimal -- if need more, disable only in stage1 / enable in stage3)
