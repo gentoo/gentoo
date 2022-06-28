@@ -4,15 +4,15 @@
 # uses webapp.eclass to create directories with right permissions
 # probably slight overkill but works well
 
-EAPI="5"
+EAPI=8
 
-inherit flag-o-matic versionator epatch webapp db-use
+inherit flag-o-matic webapp db-use
 
 WEBAPP_MANUAL_SLOT="yes"
 XTENDED_VER="RB30"
 XTENDED_URL="rb30"
 
-MY_PV="$(get_version_component_range 1-2)-$(get_version_component_range 3)"
+MY_PV="$(ver_cut 1-2)-$(ver_cut 3)"
 MY_P="${PN}-${MY_PV}"
 
 GEODB_DATE="20140201"
@@ -21,25 +21,26 @@ GEODB_DIR="/usr/share/webalizer/geodb"
 
 DESCRIPTION="Webserver log file analyzer"
 HOMEPAGE="http://www.webalizer.org/"
-SRC_URI="ftp://ftp.mrunix.net/pub/webalizer/${MY_P}-src.tar.bz2
+SRC_URI="
+	ftp://ftp.mrunix.net/pub/webalizer/${MY_P}-src.tar.bz2
 	xtended? ( http://patrickfrei.ch/webalizer/${XTENDED_URL}/${PN}-${MY_PV}-${XTENDED_VER}-patch.tar.gz )
 	https://dev.gentoo.org/~blueness/webalizer/webalizer.conf.gz
 	${GEODB_URL}/webalizer-geodb-${GEODB_DATE}.tgz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 ~sparc x86"
 IUSE="bzip2 xtended geoip nls"
-SLOT="0"
 
-DEPEND=">=sys-libs/db-4.2:*
+DEPEND="
+	>=sys-libs/db-4.2:*
 	>=sys-libs/zlib-1.1.4
 	>=media-libs/libpng-1.2:0=
 	>=media-libs/gd-1.8.3[png]
 	dev-libs/geoip
 	bzip2? ( app-arch/bzip2 )"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}"/${MY_P}
 
 pkg_setup() {
 	webapp_pkg_setup
@@ -53,10 +54,13 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.23.08-gcc-10.patch
+	eapply "${FILESDIR}"/${PN}-2.23.08-broken-disable-static.patch
+	eapply "${FILESDIR}"/${PN}-2.23.08-gcc-10.patch
 	if use xtended; then
-		epatch "${WORKDIR}"/${PN}-${MY_PV}-${XTENDED_VER}-patch
+		eapply "${WORKDIR}"/${PN}-${MY_PV}-${XTENDED_VER}-patch
 	fi
+
+	eapply_user
 }
 
 src_configure() {
