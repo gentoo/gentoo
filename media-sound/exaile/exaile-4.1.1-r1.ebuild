@@ -49,7 +49,7 @@ RDEPEND="${PYTHON_DEPS}
 RESTRICT="test" #315589
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.1.1-metainfo.patch"
+	"${FILESDIR}/${P}-metainfo.patch"
 )
 
 pkg_setup() {
