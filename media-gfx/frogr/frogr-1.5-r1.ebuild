@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=8
 
 inherit gnome.org gnome2-utils meson xdg
 
@@ -11,7 +11,6 @@ HOMEPAGE="https://live.gnome.org/Frogr"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 RDEPEND="
 	>=dev-libs/glib-2.44:2
@@ -23,7 +22,8 @@ RDEPEND="
 	>=net-libs/libsoup-2.34:2.4
 	>=dev-libs/libgcrypt-1.5:*
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	>=sys-devel/gettext-0.19.7
 	virtual/pkgconfig
 "
@@ -41,7 +41,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
 	xdg_pkg_postrm
+	gnome2_icon_cache_update
 	gnome2_schemas_update
 }
