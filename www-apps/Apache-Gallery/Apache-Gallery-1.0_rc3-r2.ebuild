@@ -1,26 +1,24 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 inherit depend.apache perl-module webapp
 
 MY_P=${P/_rc/RC}
 
 DESCRIPTION="Apache gallery for mod_perl"
-SRC_URI="http://apachegallery.dk/download/${MY_P}.tar.gz"
 HOMEPAGE="http://apachegallery.dk/"
+SRC_URI="http://apachegallery.dk/download/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="|| ( Artistic GPL-2 )"
+SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE=""
 
 WEBAPP_MANUAL_SLOT="yes"
-SLOT="0"
 
-S=${WORKDIR}/${MY_P}
-
-DEPEND="${DEPEND}
+RDEPEND="
 	=dev-lang/perl-5*
 	=www-apache/libapreq2-2*[perl]
 	>=media-libs/imlib2-1.0.6-r1
@@ -29,8 +27,7 @@ DEPEND="${DEPEND}
 	>=dev-perl/Image-Size-2.990.0
 	dev-perl/Text-Template
 	>=dev-perl/CGI-3.08
-	dev-perl/Image-Imlib2
-"
+	dev-perl/Image-Imlib2"
 
 need_apache2
 
