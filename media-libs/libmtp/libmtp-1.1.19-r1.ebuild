@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit udev
 
@@ -10,7 +10,7 @@ if [[ ${PV} == 9999* ]]; then
 	inherit autotools git-r3
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-	KEYWORDS="amd64 ~arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Implementation of Microsoft's Media Transfer Protocol (MTP)"
@@ -24,10 +24,10 @@ RDEPEND="
 	acct-group/plugdev
 	virtual/libiconv
 	virtual/libusb:1
-	crypt? ( >=dev-libs/libgcrypt-1.5.4:0= )"
+	crypt? ( dev-libs/libgcrypt:0= )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	>sys-devel/gettext-0.18.3
+	sys-devel/gettext
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
