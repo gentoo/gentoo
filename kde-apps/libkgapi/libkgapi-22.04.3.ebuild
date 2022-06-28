@@ -32,6 +32,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}"/${PN}-22.04.2-gnu_source.patch )
+
 src_test() {
 	local myctestargs=(
 		# Both fail for multiple distros, see bug #832709 for more discussion
