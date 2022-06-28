@@ -39,7 +39,7 @@ src_unpack() {
 }
 
 src_compile() {
-	filter-flags '-flto*' # undefined references with ring crate and more
+	filter-lto # undefined references with ring crate and more
 
 	cargo_src_compile --bins # note: configure --bins would skip tests
 }
