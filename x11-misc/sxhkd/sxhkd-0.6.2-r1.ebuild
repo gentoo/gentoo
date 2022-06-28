@@ -1,7 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit toolchain-funcs systemd
 
 DESCRIPTION="Simple X hotkey daemon"
@@ -12,9 +13,11 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 ~riscv ~x86"
 
-RDEPEND="x11-libs/libxcb
+RDEPEND="
+	x11-libs/libxcb:=
 	x11-libs/xcb-util-keysyms"
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	x11-libs/xcb-util"
 
 src_compile() {
@@ -22,6 +25,12 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" DOCPREFIX="${EPREFIX}/usr/share/doc/${PF}" install
+	local emakeargs=(
+		DESTDIR="${D}"
+		PREFIX="${EPREFIX}"/usr
+		DOCPREFIX="${EPREFIX}"/usr/share/doc/${PF}
+	)
+	emake "${emakeargs[@]}" install
+
 	systemd_dounit contrib/systemd/${PN}.service
 }
