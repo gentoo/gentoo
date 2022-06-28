@@ -10,3 +10,7 @@ media-libs/imlib2 svg
 # libpcre2 has JIT support for s390x (not s390)
 # but it doesn't seem to build right now?
 dev-libs/libpcre2 jit
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-06-28)
+# Fails to build
+=dev-libs/nettle-3.8* asm
