@@ -26,7 +26,7 @@ if [[ ${CATEGORY}/${PN} == sys-devel/gcc && ${EBUILD_PHASE} == configure ]]; the
     EXTRA_ECONF="${EXTRA_ECONF} --with-sysroot=${EPREFIX}"
 
     ebegin "remove --sysroot call on ld for native toolchain"
-    sed -i 's/--sysroot=%R//' gcc/gcc.c
+    sed -i 's/--sysroot=%R//' gcc/gcc.c*
     eend $?
 elif [[ ${CATEGORY}/${PN} == sys-devel/clang && ${EBUILD_PHASE} == configure ]]; then
     ebegin "Use ${EPREFIX} as default sysroot"
