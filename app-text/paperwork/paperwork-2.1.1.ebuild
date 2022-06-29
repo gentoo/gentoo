@@ -33,9 +33,10 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	# This queries tesseract languages and will fail sandbox with
-	# USE=opencl, bugs #793446 #830012
-	addpredict /dev/nvidiactl
+	# USE=opencl, bugs #793446 #830012 #852134
+	addpredict /dev/dri/renderD128
 	addpredict /dev/kfd
+	addpredict /dev/nvidiactl
 
 	PYTHONPATH="src" "${EPYTHON}" src/paperwork_gtk/main.py install \
 		--icon_base_dir="${ED}"/usr/share/icons \
