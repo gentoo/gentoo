@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools xdg
+inherit autotools flag-o-matic xdg
 
 DESCRIPTION="Free Unix Spectrum Emulator by Philip Kendall"
 HOMEPAGE="http://fuse-emulator.sourceforge.net"
@@ -66,6 +66,9 @@ _fuse_audio_driver() {
 src_prepare() {
 	xdg_src_prepare
 	eautoreconf
+
+	# Bug #854522
+	filter-lto
 }
 
 src_configure() {
