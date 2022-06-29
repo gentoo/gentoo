@@ -17,11 +17,14 @@ DESCRIPTION="Game Boy Advance Emulator"
 HOMEPAGE="https://mgba.io/"
 
 LICENSE="MPL-2.0 BSD LGPL-2.1+ public-domain discord? ( MIT )"
-SLOT="0/10"
+SLOT="0/9"
 IUSE="debug discord elf ffmpeg gles2 gles3 gui libretro opengl +sdl sqlite test"
+# gles2/gles3 opengl require can be lifted in next version (bug #835039)
 REQUIRED_USE="
 	|| ( gui sdl )
-	gui? ( || ( gles2 gles3 opengl ) )"
+	gles2? ( opengl )
+	gles3? ( opengl )
+	gui? ( || ( gles2 opengl ) )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -45,6 +48,10 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	test? ( dev-util/cmocka )"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-ffmpeg5.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
@@ -74,13 +81,6 @@ src_configure() {
 	)
 
 	cmake_src_configure
-}
-
-src_test() {
-	# CMakeLists.txt forces SKIP_RPATH=ON when PREFIX=/usr
-	local -x LD_LIBRARY_PATH=${BUILD_DIR}:${LD_LIBRARY_PATH}
-
-	cmake_src_test
 }
 
 src_install() {
