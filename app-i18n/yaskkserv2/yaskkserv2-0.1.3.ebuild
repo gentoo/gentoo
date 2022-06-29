@@ -187,6 +187,8 @@ src_prepare() {
 
 	sed -i "/^dictionary =/s|= .*|= ${EPREFIX}/usr/lib/${PN}/default.euc|" etc/${PN}.conf
 	export OPENSSL_NO_VENDOR=true
+	# skip network tests
+	sed -i "s/^fn ${PN}.*_google_/#[ignore]\n&/" src/skk/test_unix/${PN}.rs
 }
 
 src_test() {
