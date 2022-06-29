@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,19 +7,18 @@ inherit autotools systemd readme.gentoo-r1
 
 DESCRIPTION="Minimalistic Murmur (Mumble server)"
 HOMEPAGE="https://github.com/umurmur/umurmur"
-if [[ "${PV}" == 9999 ]] ; then
+if [[ "${PV}" == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/umurmur/umurmur.git"
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV/_}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm x86"
+	KEYWORDS="~amd64 ~arm ~x86"
 fi
 LICENSE="BSD"
 SLOT="0"
 IUSE="gnutls mbedtls shm"
 
-# ssl-provider precendence: gnutls, mbedtls
-# and openssl if none specified
+# ssl-provider precendence: gnutls, mbedtls and openssl if none specified
 DEPEND=">=dev-libs/protobuf-c-1.0.0_rc2:=
 	dev-libs/libconfig:=
 	gnutls? (
@@ -39,7 +38,7 @@ RDEPEND="${DEPEND}
 
 DOC_CONTENTS="
 	A configuration file has been installed at /etc/umurmur/umurmur.conf - you
-	may	want to review it. See also\n
+	may want to review it. See also\n
 	https://github.com/umurmur/umurmur/wiki/Configuration "
 
 S="${WORKDIR}/${P/_}"
@@ -50,7 +49,7 @@ get_ssl_impl() {
 	use gnutls && ssl_provider+=( gnutls )
 	use mbedtls && ssl_provider+=( mbedtls )
 
-	if ! use gnutls && ! use mbedtls; then
+	if ! use gnutls && ! use mbedtls ; then
 		ssl_provider+=( openssl )
 	fi
 	echo ${ssl_provider[@]}
@@ -74,7 +73,7 @@ src_configure() {
 	local ssl_provider=( $(get_ssl_impl) )
 
 	local myeconfargs=(
-		--with-ssl="${ssl_provider[@]}"
+		--with-ssl="${ssl_provider[0]}"
 		$(use_enable shm shmapi)
 	)
 	econf "${myeconfargs[@]}"
