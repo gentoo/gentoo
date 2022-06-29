@@ -1,0 +1,21 @@
+From c4e0bdcf0fc694c9f0f3b01908a5fd1bc6909e39 Mon Sep 17 00:00:00 2001
+From: Henning Schild <henning@hennsch.de>
+Date: Mon, 18 Jul 2022 08:45:21 +0200
+Subject: [PATCH] setup: specify "build-backend" in pyproject.toml
+
+Fixes: 9714df3404b5 ("setup: remove setup.py")
+---
+ pyproject.toml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index d1e6ae6e5647..9787c3bdf008 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,2 +1,3 @@
+ [build-system]
+ requires = ["setuptools", "wheel"]
++build-backend = "setuptools.build_meta"
+-- 
+2.35.1
+
