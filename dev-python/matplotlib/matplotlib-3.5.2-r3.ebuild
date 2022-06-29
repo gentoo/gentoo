@@ -143,6 +143,9 @@ python_prepare_all() {
 #	from six import *
 #	EOF
 
+	# Affects installed _version.py, bug #854600
+	export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
+
 	local PATCHES=(
 		"${FILESDIR}"/matplotlib-3.3.3-disable-lto.patch
 		"${FILESDIR}"/matplotlib-3.5.2-test.patch
