@@ -19,6 +19,7 @@ RDEPEND="
 src_prepare() {
 	default
 
+	sed -i -e "1s@#!@#!${EPREFIX}@" build-docbook-catalog || die
 	sed -i -e "/^EPREFIX=/s:=.*:='${EPREFIX}':" build-docbook-catalog || die
 	has_version sys-apps/util-linux || sed -i -e '/^GETOPT=/s/getopt/&-long/' build-docbook-catalog || die
 }
