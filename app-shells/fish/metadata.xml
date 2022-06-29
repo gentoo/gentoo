@@ -5,10 +5,6 @@
 		<email>gyakovlev@gentoo.org</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>polynomial-c@gentoo.org</email>
-		<name>Lars Wendler</name>
-	</maintainer>
 	<longdescription lang="en">
 		Smart and user-friendly command line shell for macOS, Linux, and the rest of the family.
 		It includes features like syntax highlighting, autosuggest-as-you-type,

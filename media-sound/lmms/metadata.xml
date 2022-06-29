@@ -5,10 +5,6 @@
 		<email>aballier@gentoo.org</email>
 		<name>Alexis Ballier</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>polynomial-c@gentoo.org</email>
-		<name>Lars Wendler</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>proaudio@gentoo.org</email>
 		<name>Gentoo ProAudio Project</name>

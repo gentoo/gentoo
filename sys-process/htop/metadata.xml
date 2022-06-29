@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>polynomial-c@gentoo.org</email>
-		<name>Lars Wendler</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="delayacct">Enable Linux delay accounting support via <pkg>dev-libs/libnl</pkg></flag>
 		<flag name="hwloc">Use <pkg>sys-apps/hwloc</pkg> for CPU affinity support</flag>

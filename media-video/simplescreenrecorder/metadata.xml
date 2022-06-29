@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>polynomial-c@gentoo.org</email>
-    <name>Lars Wendler</name>
-  </maintainer>
+  <!-- maintainer-needed -->
   <use>
     <flag name="asm">Enable x86 assembly optimisation.</flag>
     <flag name="vpx">Enable VP8 codec support via <pkg>media-libs/libvpx</pkg>.</flag>

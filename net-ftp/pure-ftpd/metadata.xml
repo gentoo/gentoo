@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>polynomial-c@gentoo.org</email>
-	<name>Lars Wendler</name>
-</maintainer>
+<!-- maintainer-needed -->
 <longdescription>Free (BSD), secure, production-quality and standard-conformant FTP server based upon Troll-FTPd. It doesn't provide useless bells and whistles, but focuses on efficiency and ease of use.</longdescription>
 <use>
 	<flag name="anondel">Permit anonymous to delete files</flag>
