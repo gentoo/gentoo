@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="A mouse friendly tiling window manager"
-HOMEPAGE="https://www.hzog.net/index.php/Main_Page"
+HOMEPAGE="https://github.com/gschwind/page"
 SRC_URI="http://www.hzog.net/pub/${PN}-1.9.9-r1.tar.gz"
 
 LICENSE="GPL-3"
