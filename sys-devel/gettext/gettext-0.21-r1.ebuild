@@ -108,7 +108,7 @@ multilib_src_configure() {
 		$(use_enable cxx libasprintf)
 		$(use_with git)
 		$(usex git --without-cvs $(use_with cvs))
-		$(use_enable java)
+		$(multilib_native_use_enable java)
 		$(use_enable ncurses curses)
 		$(use_enable nls)
 		$(use_enable openmp)
@@ -120,6 +120,11 @@ multilib_src_configure() {
 		# for non-native ABIs, we build runtime only
 		ECONF_SOURCE+=/gettext-runtime
 	fi
+
+	# Ensure javacomp.sh uses our desired source and target versions.
+	# https://bugs.gentoo.org/855134
+	local -x JAVAC="${JAVAC} ${JAVACFLAGS}"
+	export JAVA_VERBOSE=1
 
 	econf "${myconf[@]}"
 }
