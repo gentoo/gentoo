@@ -1,0 +1,88 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+JAVA_PKG_IUSE="doc source test"
+inherit java-pkg-2 java-pkg-simple toolchain-funcs java-ant-2
+JAVA_TESTING_FRAMEWORKS="junit-4"
+
+MY_P="wrapper_${PV}_src"
+DESCRIPTION="A wrapper that makes it possible to install a Java Application as daemon"
+HOMEPAGE="https://wrapper.tanukisoftware.org/"
+SRC_URI="https://download.tanukisoftware.com/wrapper/${PV}/wrapper_${PV}_src.tar.gz"
+
+LICENSE="tanuki-community"
+SLOT="0"
+KEYWORDS="~amd64 ~arm ~x86"
+RESTRICT="!test? ( test )"
+
+RDEPEND="
+	>=virtual/jre-1.8:*"
+DEPEND="
+	>=virtual/jdk-1.8:*
+	test? (
+		dev-java/junit:4
+		dev-util/cunit
+	)"
+BDEPEND="virtual/jdk"
+
+S="${WORKDIR}/${MY_P}"
+
+JAVA_SRC_DIR="src/java/"
+JAVA_JAR_FILENAME="wrapper.jar"
+JAVA_TEST_SRC_DIR="src/test"
+JAVA_TEST_GENTOO_CLASSPATH="junit-4"
+
+src_prepare() {
+	default
+
+	# replaces as-needed.patch
+	sed -i \
+		-e 's/gcc/$(CC)/g' \
+		-e 's/$(COMPILE) -pthread/$(COMPILE) $(CFLAGS) $(LDFLAGS) -pthread/g' \
+		-e 's/${COMPILE} -shared/${COMPILE} $(LDFLAGS) -shared/g' \
+		-e 's/$(COMPILE) -c/$(COMPILE) $(CFLAGS) -c/g' \
+		-e 's/$(COMPILE) $(DEFS)/$(COMPILE) $(CFLAGS) $(DEFS)/g' \
+		-e 's/$(COMPILE) -DCUNIT/$(COMPILE) $(CFLAGS) $(LDFLAGS) -DCUNIT/g' \
+		-e 's/$(TEST)\/testsuite/testsuite/g' \
+		src/c/Makefile-*.make || die
+
+	cp "${S}/src/c/Makefile-linux-armel-32.make" "${S}/src/c/Makefile-linux-arm-32.make"
+	java-pkg-2_src_prepare
+
+	# enable tests on all platforms
+	grep "testsuite_SOURCE" "src/c/Makefile-linux-x86-64.make" | tee -a src/c/Makefile-*.make || die
+	if use test; then
+		echo 'all: testsuite' | tee -a src/c/Makefile-*.make
+		assert
+	fi
+}
+
+src_compile() {
+	tc-export CC
+	pushd "${T}" || die
+	echo 'public class GetArchDataModel{public static void main(String[] args){System.out.println(System.getProperty("sun.arch.data.model"));}}' \
+		> GetArchDataModel.java || die
+	ejavac GetArchDataModel.java
+	local BITS
+	BITS="$(java GetArchDataModel)"
+	[[ "${?}" == "0" ]] || die "Failed to identify sun.arch.data.model property"
+	popd || die
+	eant -Dbits="${BITS}" compile-c
+	java-pkg-simple_src_compile
+}
+
+src_test() {
+	src/c/testsuite --basic || die
+	java-pkg-simple_src_test
+}
+
+src_install() {
+	java-pkg-simple_src_install
+	java-pkg_doso lib/libwrapper.so
+
+	dobin bin/wrapper
+	dodoc README*.txt
+	dodoc doc/revisions.txt
+}
