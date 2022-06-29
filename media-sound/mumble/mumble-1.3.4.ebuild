@@ -1,9 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop multilib-build qmake-utils xdg
+PYTHON_COMPAT=( python3_{8..10} )
+inherit desktop multilib-build python-any-r1 qmake-utils xdg
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
 HOMEPAGE="https://wiki.mumble.info"
@@ -55,6 +56,7 @@ RDEPEND="
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 "
 DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
 	>=dev-libs/boost-1.41.0
 	x11-base/xorg-proto
 "
@@ -62,6 +64,10 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 "
+
+pkg_setup() {
+	python-any-r1_pkg_setup
+}
 
 # NB: qmake does not support multilib but it's fine to configure
 # for the native ABI here
