@@ -1,0 +1,105 @@
+diff --git a/aha.c b/aha.c
+index 46e43c0..2bfebb7 100644
+--- a/aha.c
++++ b/aha.c
+@@ -138,6 +138,15 @@ pelem parseInsert(char* s)
+ 	return firstelem;
+ }
+ 
++int parseDepthAtLeast(pelem elem, unsigned int wanted) {
++	while (elem != NULL) {
++		if (wanted == 0) return 1;
++		elem = elem->next;
++		--wanted;
++	}
++	return 0;
++}
++
+ void deleteParse(pelem elem)
+ {
+ 	while (elem!=NULL)
+@@ -831,27 +840,20 @@ int main(int argc,char* args[])
+ 										}
+ 										else
+ 										if (momelem->value == 38 &&
+-											momelem->next &&
+-											momelem->next->value == 2 &&
+-											momelem->next->next)// 38;2;<n> -> 24 Bit
++											parseDepthAtLeast(momelem, 4) &&
++											momelem->next->value == 2)// 38;2;<r>;<g>;<b> -> 24 Bit
+ 										{
+-											momelem = momelem->next->next;
+-											pelem r,g,b;
+-											r = momelem;
+-											momelem = momelem->next;
+-											g = momelem;
+-											if ( momelem )
+-												momelem = momelem->next;
+-											b = momelem;
+-											if ( r && g && b )
+-											{
+-												state.highlighted = 0;
+-												state.fc_colormode = MODE_24BIT;
+-												*dest =
+-													(r->value & 255) * 65536 +
+-													(g->value & 255) * 256 +
+-													(b->value & 255);
+-											}
++											pelem r = momelem->next->next;
++											pelem g = r->next;
++											pelem b = g->next;
++											momelem = b;
++
++											state.highlighted = 0;
++											state.fc_colormode = MODE_24BIT;
++											*dest =
++												(r->value & 255) * 65536 +
++												(g->value & 255) * 256 +
++												(b->value & 255);
+ 										}
+ 										else
+ 										{
+@@ -899,27 +901,20 @@ int main(int argc,char* args[])
+ 										}
+ 										else
+ 										if (momelem->value == 48 &&
+-											momelem->next &&
+-											momelem->next->value == 2 &&
+-											momelem->next->next)// 48;2;<n> -> 24 Bit
++											parseDepthAtLeast(momelem, 4) &&
++											momelem->next->value == 2)// 48;2;<r>;<g>;<b> -> 24 Bit
+ 										{
+-											momelem = momelem->next->next;
+-											pelem r,g,b;
+-											r = momelem;
+-											momelem = momelem->next;
+-											g = momelem;
+-											if ( momelem )
+-												momelem = momelem->next;
+-											b = momelem;
+-											if ( r && g && b )
+-											{
+-												state.bc_colormode = MODE_24BIT;
+-												state.highlighted = 0;
+-												*dest =
+-													(r->value & 255) * 65536 +
+-													(g->value & 255) * 256 +
+-													(b->value & 255);
+-											}
++											pelem r = momelem->next->next;
++											pelem g = r->next;
++											pelem b = g->next;
++											momelem = b;
++
++											state.bc_colormode = MODE_24BIT;
++											state.highlighted = 0;
++											*dest =
++												(r->value & 255) * 65536 +
++												(g->value & 255) * 256 +
++												(b->value & 255);
+ 										}
+ 										else
+ 										{
+-- 
+2.35.1
+
