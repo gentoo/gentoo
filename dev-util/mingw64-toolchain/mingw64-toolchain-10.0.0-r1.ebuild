@@ -44,6 +44,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/mingw64-runtime-10.0.0-tmp-files-clash.patch
 	"${FILESDIR}"/gcc-11.3.0-plugin-objdump.patch
+	"${FILESDIR}"/gcc-11.3.0-musl-calloc.patch
 )
 
 pkg_pretend() {
