@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,9 +34,10 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	# This queries tesseract languages and will fail sandbox with
-	# USE=opencl, bugs #793446 #830012
-	addpredict /dev/nvidiactl
+	# USE=opencl, bugs #793446 #830012 #852134
+	addpredict /dev/dri/renderD128
 	addpredict /dev/kfd
+	addpredict /dev/nvidiactl
 
 	PYTHONPATH="src" "${EPYTHON}" src/paperwork_gtk/main.py install \
 		--icon_base_dir="${ED}"/usr/share/icons \
