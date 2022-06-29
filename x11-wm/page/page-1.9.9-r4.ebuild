@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -25,7 +25,6 @@ RDEPEND="
 	>=x11-libs/cairo-1.14.6[X,xcb(+)]
 	>=x11-libs/pango-1.40.5
 	>=dev-libs/glib-2.50.3-r1:2"
-
 DEPEND="${RDEPEND}
 	>=x11-base/xcb-proto-1.12-r2
 	x11-base/xorg-proto"
@@ -40,8 +39,8 @@ src_install() {
 
 	# Solves file collision with dev-tcltk/tcllib, bug #574074
 	ebegin "Changing references from 'page' to 'pagewm'"
-	mv "${D}"usr/bin/page "${D}"usr/bin/pagewm || die "Could not rename binary!"
-	sed -i -e "s:/usr/bin/page:/usr/bin/pagewm:" "${D}"usr/share/applications/page.desktop || die "Could not change .desktop file!"
+	mv "${ED}"/usr/bin/page "${ED}"/usr/bin/pagewm || die "Could not rename binary!"
+	sed -i -e "s:/usr/bin/page:/usr/bin/pagewm:" "${ED}"/usr/share/applications/page.desktop || die "Could not change .desktop file!"
 	eend $?
 }
 
