@@ -51,6 +51,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.15-openssl-x11.patch
 	# General cross fixes from Debian (refreshed)
 	"${FILESDIR}"/${PN}-1.19.0-cross-fixes.patch
+	"${FILESDIR}"/${P}-lcms2.patch
 )
 
 src_prepare() {
