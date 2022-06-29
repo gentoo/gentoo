@@ -76,10 +76,13 @@ pkg_setup() {
 
 src_prepare() {
 	java-pkg-opt-2_src_prepare
-
 	default
-
 	elibtoolize
+	if use java; then
+		# Update the target version for libintl
+		sed -i -e "s/target_version=1.6/target_version=$(java-pkg_get-target)/" \
+			gettext-runtime/configure || die
+	fi
 }
 
 multilib_src_configure() {
