@@ -525,8 +525,18 @@ autotools_env_setup() {
 			esac
 			has_version ${hv_args} "=sys-devel/automake-${pv}*" && export WANT_AUTOMAKE="${pv}" && break
 		done
-		[[ ${WANT_AUTOMAKE} == "latest" ]] && \
-			die "Cannot find the latest automake! Tried ${_LATEST_AUTOMAKE[*]}"
+
+		# During bootstrap in prefix there might be no automake merged yet
+		# due to --nodeps, but still available somewhere in PATH.
+		# For example, ncurses needs local libtool on aix and hpux.
+		# So, make the check non-fatal where automake doesn't yet
+		# exist within BROOT. (We could possibly do better here
+		# and inspect PATH, but I'm not sure there's much point.)
+		if use prefix && [[ ! -x "${BROOT}"/usr/bin/automake ]] ; then
+			[[ ${WANT_AUTOMAKE} == "latest" ]] && ewarn "Ignoring missing automake during Prefix bootstrap! Tried ${_LATEST_AUTOMAKE[*]}"
+		else
+			[[ ${WANT_AUTOMAKE} == "latest" ]] && die "Cannot find the latest automake! Tried ${_LATEST_AUTOMAKE[*]}"
+		fi
 	fi
 	[[ ${WANT_AUTOCONF} == "latest" ]] && export WANT_AUTOCONF=2.71
 }
