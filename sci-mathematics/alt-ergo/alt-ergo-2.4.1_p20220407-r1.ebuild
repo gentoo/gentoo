@@ -32,6 +32,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="dev-ml/dune-configurator"
+REQUIRED_USE="ocamlopt"
 
 src_prepare() {
 	default
