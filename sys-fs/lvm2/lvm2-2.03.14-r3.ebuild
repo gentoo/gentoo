@@ -73,6 +73,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.03.14-r1-add-fcntl.patch
 	"${FILESDIR}"/${PN}-2.03.14-r1-fopen-to-freopen.patch
 	"${FILESDIR}"/${PN}-2.03.14-r1-mallinfo.patch
+	"${FILESDIR}"/${PN}-2.03.14-freopen_n2.patch
 )
 
 pkg_setup() {
