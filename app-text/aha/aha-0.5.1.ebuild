@@ -11,6 +11,10 @@ LICENSE="LGPL-2+ MPL-1.1"
 SLOT="0"
 KEYWORDS="~amd64"
 
+PATCHES=(
+	"${FILESDIR}/${P}-null-ptr-dereference-fix.patch"
+)
+
 src_install() {
 	emake PREFIX="${D}/usr" install
 }
