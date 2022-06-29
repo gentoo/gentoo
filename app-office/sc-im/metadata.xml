@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>cantcuckthis@danwin1210.de</email>
+		<name>Dex Conner</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name='plots'>Add <pkg>sci-visualization/gnuplot</pkg> for plotting support</flag>
+		<flag name='xls'>Add xls support</flag>
+		<flag name='xlsx'>Add xlsx support</flag>
+		<flag name='ods'>Add ods import support</flag>
+		<flag name='X'>Use <pkg>x11-misc/xclip</pkg> for clipboard copy/paste</flag>
+		<flag name='tmux'>Use <pkg>app-misc/tmux</pkg> for clipboard copy/paste</flag>
+		<flag name='wayland'>Use <pkg>gui-apps/wl-clipboard</pkg> for clipboard copy/paste</flag>
+	</use>
+</pkgmetadata>
