@@ -5,10 +5,10 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
-  <use>
-    <flag name="stemmer">Enable language stemming support</flag>
-  </use>
-  <upstream>
-    <remote-id type="github">hughsie/libxmlb</remote-id>
-  </upstream>
+	<use>
+		<flag name="stemmer">Enable language stemming support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">hughsie/libxmlb</remote-id>
+	</upstream>
 </pkgmetadata>
