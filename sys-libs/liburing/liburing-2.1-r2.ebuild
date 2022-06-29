@@ -54,7 +54,7 @@ multilib_src_configure() {
 		--cxx="$(tc-getCXX)"
 	)
 	# No autotools configure! "econf" will fail.
-	TMPDIR="${T}" ./configure "${myconf[@]}"
+	TMPDIR="${T}" ./configure "${myconf[@]}" || die
 }
 
 multilib_src_compile() {
