@@ -62,7 +62,7 @@ src_prepare() {
 
 	# static-pie tests require glibc built with static-pie support
 	if ! has_version -d 'sys-libs/glibc[static-pie(+)]'; then
-		rm test/elf/{hello,ifunc}-static-pie.sh || die
+		rm test/elf/{,ifunc-}static-pie.sh || die
 	fi
 }
 
