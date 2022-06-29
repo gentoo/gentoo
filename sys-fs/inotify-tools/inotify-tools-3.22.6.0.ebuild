@@ -16,6 +16,10 @@ IUSE="doc"
 
 BDEPEND="doc? ( app-doc/doxygen )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-musl.patch
+)
+
 src_prepare() {
 	default
 
