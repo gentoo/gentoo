@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-      <email>polynomial-c@gentoo.org</email>
-      <name>Lars Wendler</name>
-    </maintainer>
+  <!-- maintainer-needed -->
   <longdescription>
     A proxy DNS server with permanent caching (the cache contents are
     written to hard disk on exit) that is designed to cope with

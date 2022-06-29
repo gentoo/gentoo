@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>polynomial-c@gentoo.org</email>
-		<name>Lars Wendler</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		uMurmur is a minimalistic Mumble server primarily targeted to
 		run on routers with an open OS like OpenWRT. The server part
