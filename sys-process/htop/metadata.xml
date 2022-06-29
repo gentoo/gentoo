@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
 	<use>
 		<flag name="delayacct">Enable Linux delay accounting support via <pkg>dev-libs/libnl</pkg></flag>
 		<flag name="hwloc">Use <pkg>sys-apps/hwloc</pkg> for CPU affinity support</flag>
