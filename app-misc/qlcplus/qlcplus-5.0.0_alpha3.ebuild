@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -68,10 +68,16 @@ src_test() {
 }
 
 pkg_postinst() {
+	udev_reload
+
 	elog "Some configurations of KDE Plasma break the layout of"
 	elog "QLC+ 5's QML UI."
 	elog "As a workaround, try those environment variables:"
 	elog "	export XDG_CURRENT_DESKTOP=GNOME"
 	elog "OR"
 	elog "	export QT_QPA_PLATFORMTHEME=gtk3"
+}
+
+pkg_postrm() {
+	udev_reload
 }
