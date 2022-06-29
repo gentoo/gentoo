@@ -9,6 +9,10 @@
 python_targets_python3_11
 python_single_target_python3_11
 
+# Brian Evans <grknight@gentoo.org> (2021-11-29)
+# Mask 8.1 as it is currently unstable only
+php_targets_php8-1
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
 # dev-vcs/darcs (dev-lang/ghc) has no stable keywords.
 darcs
