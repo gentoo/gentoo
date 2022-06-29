@@ -91,3 +91,12 @@ src_install() {
 
 	use split-usr && dosym ../../bin/nano /usr/bin/nano
 }
+
+pkg_postrm() {
+	local e
+	e=$(unset EDITOR; . "${EROOT}"/etc/profile &>/dev/null; echo "${EDITOR}")
+	if [[ ${e##*/} == nano ]]; then
+		ewarn "The EDITOR variable is still set to ${e}."
+		ewarn "You can update it with \"eselect editor\"."
+	fi
+}
