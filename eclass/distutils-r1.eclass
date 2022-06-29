@@ -1590,20 +1590,25 @@ distutils-r1_python_install() {
 
 		# remove files that we've created explicitly
 		rm "${reg_scriptdir}"/{"${EPYTHON}",python3,python,pyvenv.cfg} || die
-		# verify that scriptdir & wrapped_scriptdir both contain
-		# the same files
-		(
-			cd "${reg_scriptdir}" && find . -mindepth 1
-		) | sort > "${T}"/.distutils-files-bin
-		assert "listing ${reg_scriptdir} failed"
-		(
-			if [[ -d ${wrapped_scriptdir} ]]; then
-				cd "${wrapped_scriptdir}" && find . -mindepth 1
+
+		# Automagically do the QA check to avoid issues when bootstrapping
+		# prefix.
+		if type diff &>/dev/null ; then
+			# verify that scriptdir & wrapped_scriptdir both contain
+			# the same files
+			(
+				cd "${reg_scriptdir}" && find . -mindepth 1
+			) | sort > "${T}"/.distutils-files-bin
+			assert "listing ${reg_scriptdir} failed"
+			(
+				if [[ -d ${wrapped_scriptdir} ]]; then
+					cd "${wrapped_scriptdir}" && find . -mindepth 1
+				fi
+			) | sort > "${T}"/.distutils-files-wrapped
+			assert "listing ${wrapped_scriptdir} failed"
+			if ! diff -U 0 "${T}"/.distutils-files-{bin,wrapped}; then
+				die "File lists for ${reg_scriptdir} and ${wrapped_scriptdir} differ (see diff above)"
 			fi
-		) | sort > "${T}"/.distutils-files-wrapped
-		assert "listing ${wrapped_scriptdir} failed"
-		if ! diff -U 0 "${T}"/.distutils-files-{bin,wrapped}; then
-			die "File lists for ${reg_scriptdir} and ${wrapped_scriptdir} differ (see diff above)"
 		fi
 
 		# remove the altered bindir, executables from the package
