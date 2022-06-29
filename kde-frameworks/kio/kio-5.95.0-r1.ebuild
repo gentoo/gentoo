@@ -70,7 +70,10 @@ DEPEND="${RDEPEND}
 "
 PDEPEND=">=kde-frameworks/kded-${PVCUT}:5"
 
-PATCHES=( "${FILESDIR}/${P}-filewidgets-update-filename-after-rename.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-filewidgets-update-filename-after-rename.patch"
+	"${FILESDIR}/${P}-fix-recent-files-in-gtk-apps.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
