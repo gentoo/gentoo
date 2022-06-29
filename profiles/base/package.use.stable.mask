@@ -4,10 +4,6 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
-# Brian Evans <grknight@gentoo.org> (2022-06-28)
-# Needs newer igbinary stable with target
-dev-php/pecl-redis php_targets_php8-1
-
 # Matt Turner <mattst88@gentoo.org> (2022-05-11)
 # app-text/pandoc is not stable
 app-text/nuspell doc
