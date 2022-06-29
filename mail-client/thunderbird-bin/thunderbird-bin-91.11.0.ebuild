@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MOZ_ESR=
 
@@ -67,7 +67,7 @@ RDEPEND="${CDEPEND}
 	sys-apps/dbus
 	virtual/freedesktop-icon-theme
 	>=x11-libs/cairo-1.10[X]
-	x11-libs/gdk-pixbuf
+	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-3.11:3[wayland?]
 	x11-libs/libxcb
 	x11-libs/libX11
