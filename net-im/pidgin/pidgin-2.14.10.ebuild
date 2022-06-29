@@ -19,7 +19,8 @@ SLOT="0/2" # libpurple version
 KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="aqua dbus debug doc eds gadu gnutls groupwise +gstreamer +gtk idn
 meanwhile ncurses networkmanager nls perl pie prediction python sasl spell tcl
-tk v4l +xscreensaver zephyr zeroconf"
+test tk v4l +xscreensaver zephyr zeroconf"
+RESTRICT="!test? ( test )"
 
 # dbus requires python to generate C code for dbus bindings (thus DEPEND only).
 # finch uses libgnt that links with libpython - {R,}DEPEND. But still there is
@@ -90,6 +91,7 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	!gtk? ( nls? ( ${NLS_DEPEND} ) )
+	test? ( >=dev-libs/check-0.9.4 )
 "
 
 DOCS=( AUTHORS HACKING NEWS README ChangeLog )
