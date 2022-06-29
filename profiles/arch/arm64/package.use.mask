@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-07-20)
+# dev-java/assertj-core:3 not keyworded
+>=dev-java/randomized-runner-2.8.0 test
+
 # Matthew Smith <matthew@gentoo.org> (2022-07-10)
 # Needs unkeyworded app-doc/halibut
 >=net-misc/putty-0.77 doc
@@ -8,7 +12,6 @@
 # Sam James <sam@gentoo.org> (2022-07-08)
 # Unmask galera for dev-db/mariadb
 >=dev-db/mariadb-10.1.0 -galera
-
 # Anna Vyalkova <cyber+gentoo@sysrq.in> (2022-06-25)
 # Unkeyworded test dep
 app-vim/jedi test
