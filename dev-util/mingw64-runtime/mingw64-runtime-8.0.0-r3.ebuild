@@ -40,7 +40,7 @@ mingw-foreach_tool() {
 
 	local tool=widl
 	if use !amd64 && use !x86 && use !arm64 && use !arm; then
-		einfo "Skipping widl due to unsupported platform"
+		einfo "Skipping widl due to unsupported platform" #853250
 		tool=
 	fi
 
