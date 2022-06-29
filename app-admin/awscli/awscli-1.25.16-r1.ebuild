@@ -33,6 +33,7 @@ RDEPEND="
 	dev-python/rsa[${PYTHON_USEDEP}]
 	>=dev-python/s3transfer-0.6.0[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
+	!app-admin/awscli-bin
 "
 BDEPEND="
 	test? (
