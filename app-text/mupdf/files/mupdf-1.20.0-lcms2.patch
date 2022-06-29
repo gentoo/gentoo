@@ -1,0 +1,69 @@
+From d98de0bb0b627772625c1acf050ba0dd4b5ac9df Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Tue, 5 Jul 2022 11:35:28 +0200
+Subject: [PATCH] Perform type punning via union without undefined behavior
+
+* The previous code from c3d7f491e2daebda2413fb3d2935c51df1c50ac7
+  still contains undefined behavior, since it just creates
+  temporary pointer variables.
+---
+ src/cmsplugin.c | 31 +++++++++++++++----------------
+ 1 file changed, 15 insertions(+), 16 deletions(-)
+
+This patch slightly differs from the upstream commit, because
+the lcms2 version used in mupdf is slightly behind the upstream
+version.
+
+See: https://github.com/mm2/Little-CMS/commit/d98de0bb0b627772625c1acf050ba0dd4b5ac9df.patch
+
+diff --git a/src/cmsplugin.c b/src/cmsplugin.c
+index 556fbc28..b34e3aab 100644
+--- a/thirdparty/lcms2/src/cmsplugin.c
++++ b/thirdparty/lcms2/src/cmsplugin.c
+@@ -167,17 +167,20 @@ cmsBool CMSEXPORT  _cmsReadUInt32Number(cmsContext ContextID, cmsIOHANDLER* io,
+ 
+ cmsBool CMSEXPORT  _cmsReadFloat32Number(cmsContext ContextID, cmsIOHANDLER* io, cmsFloat32Number* n)
+ {
+-    cmsUInt32Number tmp;
++    union typeConverter {
++        cmsUInt32Number integer;
++        cmsFloat32Number floating_point;
++    } tmp;
+ 
+     _cmsAssert(io != NULL);
+ 
+-    if (io->Read(ContextID, io, &tmp, sizeof(cmsUInt32Number), 1) != 1)
++    if (io->Read(ContextID, io, &tmp.integer, sizeof(cmsUInt32Number), 1) != 1)
+         return FALSE;
+ 
+     if (n != NULL) {
+ 
+-        tmp = _cmsAdjustEndianess32(tmp);
+-        *n = *(cmsFloat32Number*)(void*)&tmp;
++        tmp.integer = _cmsAdjustEndianess32(tmp.integer);
++        *n = tmp.floating_point;
+ 
+         // Safeguard which covers against absurd values
+         if (*n > 1E+20 || *n < -1E+20) return FALSE;
+@@ -304,13 +307,14 @@ cmsBool CMSEXPORT  _cmsWriteUInt32Number(cmsContext ContextID, cmsIOHANDLER* io,
+ 
+ cmsBool CMSEXPORT  _cmsWriteFloat32Number(cmsContext ContextID, cmsIOHANDLER* io, cmsFloat32Number n)
+ {
+-    cmsUInt32Number tmp;
+-
+-    _cmsAssert(io != NULL);
+-
+-    tmp = *(cmsUInt32Number*) (void*) &n;
+-    tmp = _cmsAdjustEndianess32(tmp);
+-    if (io -> Write(ContextID, io, sizeof(cmsUInt32Number), &tmp) != 1)
++    union typeConverter {
++        cmsUInt32Number integer;
++        cmsFloat32Number floating_point;
++    } tmp;
++
++    tmp.floating_point = n;
++    tmp.integer = _cmsAdjustEndianess32(tmp.integer);
++    if (io -> Write(ContextID, io, sizeof(cmsUInt32Number), &tmp.integer) != 1)
+             return FALSE;
+ 
+     return TRUE;
