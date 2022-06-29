@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>concord@gentoo.org</email>
+		<name>Kenton Groombridge</name>
+	</maintainer>
 	<use>
 		<flag name="g15">Enable support for the Logitech G15 LCD (and compatible devices).</flag>
 		<flag name="pipewire">Enable pipewire support for audio output.</flag>
