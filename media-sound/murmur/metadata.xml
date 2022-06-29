@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>concord@gentoo.org</email>
+		<name>Kenton Groombridge</name>
+	</maintainer>
 	<use>
 		<flag name="grpc">Use <pkg>net-libs/grpc</pkg> to enable remote control capabilities.</flag>
 		<flag name="ice">Use <pkg>dev-libs/Ice</pkg> to enable remote control capabilities.</flag>
