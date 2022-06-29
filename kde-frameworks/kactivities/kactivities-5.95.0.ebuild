@@ -10,7 +10,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Framework for working with KDE activities"
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
 COMMON_DEPEND="
