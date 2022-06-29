@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
   <use>
     <flag name="autotype">Add support to autotype the passwords into other applications</flag>
     <flag name="browser">Enables browser plugin support</flag>
@@ -16,6 +19,7 @@
     file, compatible with a PDA and Windows version.
   </longdescription>
   <upstream>
+    <bugs-to>https://github.com/keepassxreboot/keepassxc/issues/</bugs-to>
     <remote-id type="github">keepassxreboot/keepassxc</remote-id>
   </upstream>
 </pkgmetadata>
