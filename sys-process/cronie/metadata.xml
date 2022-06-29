@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
+   <maintainer type="project">
+    <email>base-system@gentoo.org</email>
+    <name>Gentoo Base System</name>
+  </maintainer>
   <longdescription lang="en">
   Cronie contains the standard UNIX daemon crond that runs specified programs at
   scheduled times and related tools. It is based on the original cron and
