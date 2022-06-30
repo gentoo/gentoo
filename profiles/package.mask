@@ -250,7 +250,6 @@ dev-python/chai
 # Bugs #818847, #845936, #786585.
 # Removal on 2022-06-30.
 dev-util/dput-ng
-dev-util/distro-info
 
 # Matt Turner <mattst88@gentoo.org> (2022-05-30)
 # libwacom-2 broke ABI compatibility; reverse dependencies need to be updated.
