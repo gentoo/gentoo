@@ -263,11 +263,6 @@ dev-python/pypcap
 # Bugs #845681, #747982. Removal on 2022-06-30.
 dev-python/3to2
 
-# Sam James <sam@gentoo.org> (2022-05-30)
-# No upstream development since 2017, doesn't support Python 3.10. Bug #845678.
-# Removal on 2022-06-30.
-dev-perl/Inline-Python
-
 # Matt Turner <mattst88@gentoo.org> (2022-05-30)
 # libwacom-2 broke ABI compatibility; reverse dependencies need to be updated.
 # Bug #848501
