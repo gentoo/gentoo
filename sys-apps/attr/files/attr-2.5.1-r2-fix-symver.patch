@@ -1,0 +1,206 @@
+https://lists.nongnu.org/archive/html/acl-devel/2022-05/msg00000.html
+Bug: https://bugs.gentoo.org/644048
+Bug: https://bugs.gentoo.org/700116
+
+From a9ca51afd2b9f68f57de3a4c3d962d1d763572ca Mon Sep 17 00:00:00 2001
+From: Alexander Miller <alex.miller@gmx.de>
+Date: Thu, 28 Nov 2019 22:17:24 +0100
+Subject: [PATCH] Better supported way to set symbol versions for legacy
+ syscalls
+
+Using a linker script to set a symbol versions is an undocumented
+hack and doesn't work reliably in many cases. It works (to some
+degree) with the bfd linker, but fails with gold or lld. And even
+with bfd it can break when using --gc-sections or LTO.
+
+The result may be a library where the code has been discarded and
+the versioned symbols are unusable, e.g.
+    23: 00000000     0 NOTYPE  GLOBAL DEFAULT  ABS getxattr@ATTR_1.0
+instead of
+    23: 000033c0     0 FUNC    GLOBAL DEFAULT   11 getxattr@ATTR_1.0
+
+Remove the linker script entirely and set symbol versions with the
+symver attribute if available (in gcc >= 10, but not in clang),
+otherwise use the traditional global asm solution with a .symver
+directive.
+Those are the documented ways to do it and well supported by (almost)
+all configurations. (The exception is old gcc with LTO; a workaround
+is included, but some versions may still need -flto-partition=none).
+
+Signed-off-by: Alexander Miller <alex.miller@gmx.de>
+
+--- a/libattr/Makemodule.am
++++ b/libattr/Makemodule.am
+@@ -8,7 +8,7 @@ LT_CURRENT = 2
+ LT_AGE = 1
+ LTVERSION = $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+ 
+-libattr_la_DEPENDENCIES = exports libattr/libattr.lds
++libattr_la_DEPENDENCIES = exports
+ libattr_la_SOURCES = \
+ 	libattr/attr_copy_action.c \
+ 	libattr/attr_copy_check.c \
+@@ -20,7 +20,4 @@ libattr_la_SOURCES = \
+ libattr_la_CFLAGS = -include libattr/libattr.h
+ libattr_la_LDFLAGS = \
+ 	-Wl,--version-script,$(top_srcdir)/exports \
+-	-Wl,$(top_srcdir)/libattr/libattr.lds \
+ 	-version-info $(LTVERSION)
+-
+-EXTRA_DIST += libattr/libattr.lds
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -647,9 +647,8 @@ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ ACLOCAL_AMFLAGS = -I m4
+-EXTRA_DIST = exports examples/copyattr.c examples/Makefile \
+-	libattr/libattr.lds test/README test/run \
+-	test/sort-getfattr-output $(TESTS)
++EXTRA_DIST = exports examples/copyattr.c examples/Makefile test/README \
++	test/run test/sort-getfattr-output $(TESTS)
+ SUBDIRS = po
+ AM_CPPFLAGS = \
+ 	-I$(top_builddir)/include \
+@@ -689,7 +688,7 @@ LT_CURRENT = 2
+ #LT_REVISION =
+ LT_AGE = 1
+ LTVERSION = $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+-libattr_la_DEPENDENCIES = exports libattr/libattr.lds
++libattr_la_DEPENDENCIES = exports
+ libattr_la_SOURCES = \
+ 	libattr/attr_copy_action.c \
+ 	libattr/attr_copy_check.c \
+@@ -702,7 +701,6 @@ libattr_la_SOURCES = \
+ libattr_la_CFLAGS = -include libattr/libattr.h
+ libattr_la_LDFLAGS = \
+ 	-Wl,--version-script,$(top_srcdir)/exports \
+-	-Wl,$(top_srcdir)/libattr/libattr.lds \
+ 	-version-info $(LTVERSION)
+ 
+ libmisc_la_SOURCES = \
+--- a/libattr/libattr.lds
++++ /dev/null
+@@ -1,12 +0,0 @@
+-"fgetxattr@ATTR_1.0" = libattr_fgetxattr;
+-"flistxattr@ATTR_1.0" = libattr_flistxattr;
+-"fremovexattr@ATTR_1.0" = libattr_fremovexattr;
+-"fsetxattr@ATTR_1.0" = libattr_fsetxattr;
+-"getxattr@ATTR_1.0" = libattr_getxattr;
+-"lgetxattr@ATTR_1.0" = libattr_lgetxattr;
+-"listxattr@ATTR_1.0" = libattr_listxattr;
+-"llistxattr@ATTR_1.0" = libattr_llistxattr;
+-"lremovexattr@ATTR_1.0" = libattr_lremovexattr;
+-"lsetxattr@ATTR_1.0" = libattr_lsetxattr;
+-"removexattr@ATTR_1.0" = libattr_removexattr;
+-"setxattr@ATTR_1.0" = libattr_setxattr;
+--- a/libattr/syscalls.c
++++ b/libattr/syscalls.c
+@@ -26,6 +26,27 @@
+ #include <sys/syscall.h>
+ #include <sys/xattr.h>
+ 
++/*
++ * Versioning of compat symbols:
++ * prefer symver attribute if available (since gcc 10),
++ * fall back to traditional .symver asm directive otherwise.
++ */
++#ifdef __has_attribute
++# if __has_attribute(symver)
++#  define SYMVER(cn, vn) __typeof(cn) cn __attribute__((symver(vn)))
++# elif __has_attribute(no_reorder)
++   /*
++    * Avoid wrong partitioning with older gcc and LTO. May not work reliably
++    * with all versions; use -flto-partition=none if you encounter problems.
++    */
++#  define SYMVER(cn, vn) __typeof(cn) cn __attribute__((noreorder)); \
++			 __asm__(".symver " #cn "," vn)
++# endif
++#endif
++#ifndef SYMVER
++#  define SYMVER(cn, vn) __asm__(".symver " #cn "," vn)
++#endif
++
+ #ifdef HAVE_VISIBILITY_ATTRIBUTE
+ # pragma GCC visibility push(default)
+ #endif
+@@ -35,66 +56,78 @@ int libattr_setxattr(const char *path, const char *name,
+ {
+ 	return syscall(__NR_setxattr, path, name, value, size, flags);
+ }
++SYMVER(libattr_setxattr, "setxattr@ATTR_1.0");
+ 
+ int libattr_lsetxattr(const char *path, const char *name,
+ 		      void *value, size_t size, int flags)
+ {
+ 	return syscall(__NR_lsetxattr, path, name, value, size, flags);
+ }
++SYMVER(libattr_lsetxattr, "lsetxattr@ATTR_1.0");
+ 
+ int libattr_fsetxattr(int filedes, const char *name,
+ 		      void *value, size_t size, int flags)
+ {
+ 	return syscall(__NR_fsetxattr, filedes, name, value, size, flags);
+ }
++SYMVER(libattr_fsetxattr, "fsetxattr@ATTR_1.0");
+ 
+ ssize_t libattr_getxattr(const char *path, const char *name,
+ 			 void *value, size_t size)
+ {
+ 	return syscall(__NR_getxattr, path, name, value, size);
+ }
++SYMVER(libattr_getxattr, "getxattr@ATTR_1.0");
+ 
+ ssize_t libattr_lgetxattr(const char *path, const char *name,
+ 			  void *value, size_t size)
+ {
+ 	return syscall(__NR_lgetxattr, path, name, value, size);
+ }
++SYMVER(libattr_lgetxattr, "lgetxattr@ATTR_1.0");
+ 
+ ssize_t libattr_fgetxattr(int filedes, const char *name,
+ 			  void *value, size_t size)
+ {
+ 	return syscall(__NR_fgetxattr, filedes, name, value, size);
+ }
++SYMVER(libattr_fgetxattr, "fgetxattr@ATTR_1.0");
+ 
+ ssize_t libattr_listxattr(const char *path, char *list, size_t size)
+ {
+ 	return syscall(__NR_listxattr, path, list, size);
+ }
++SYMVER(libattr_listxattr, "listxattr@ATTR_1.0");
+ 
+ ssize_t libattr_llistxattr(const char *path, char *list, size_t size)
+ {
+ 	return syscall(__NR_llistxattr, path, list, size);
+ }
++SYMVER(libattr_llistxattr, "llistxattr@ATTR_1.0");
+ 
+ ssize_t libattr_flistxattr(int filedes, char *list, size_t size)
+ {
+ 	return syscall(__NR_flistxattr, filedes, list, size);
+ }
++SYMVER(libattr_flistxattr, "flistxattr@ATTR_1.0");
+ 
+ int libattr_removexattr(const char *path, const char *name)
+ {
+ 	return syscall(__NR_removexattr, path, name);
+ }
++SYMVER(libattr_removexattr, "removexattr@ATTR_1.0");
+ 
+ int libattr_lremovexattr(const char *path, const char *name)
+ {
+ 	return syscall(__NR_lremovexattr, path, name);
+ }
++SYMVER(libattr_lremovexattr, "lremovexattr@ATTR_1.0");
+ 
+ int libattr_fremovexattr(int filedes, const char *name)
+ {
+ 	return syscall(__NR_fremovexattr, filedes, name);
+ }
++SYMVER(libattr_fremovexattr, "fremovexattr@ATTR_1.0");
+ 
+ #ifdef HAVE_VISIBILITY_ATTRIBUTE
+ # pragma GCC visibility pop
