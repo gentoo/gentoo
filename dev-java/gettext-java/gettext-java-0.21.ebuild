@@ -28,6 +28,7 @@ src_prepare() {
 	mkdir "${WORKDIR}/gettext-java" || die
 	mv gettext-"${PV}"/gettext-runtime/intl-java gettext-java || die
 	mv gettext-"${PV}"/gettext-tools/src gettext-java || die
+	mv gettext-"${PV}"/gettext-tools/tests gettext-java || die
 	java-pkg-2_src_prepare
 }
 
@@ -56,9 +57,12 @@ src_compile() {
 	fi
 }
 
-src_install() {
-	einstalldocs # https://bugs.gentoo.org/789582
+#	src_test() {
+#		JAVA_TEST_SRC_DIR="gettext-java/tests"
+#		# need to find out how to run those tests
+#	}
 
+src_install() {
 	java-pkg_dojar "libintl.jar"
 	java-pkg_dojar "gettext.jar"
 
