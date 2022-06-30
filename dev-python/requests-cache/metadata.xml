@@ -11,6 +11,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
+    <remote-id type="github">requests-cache/requests-cache</remote-id>
     <remote-id type="pypi">requests-cache</remote-id>
   </upstream>
 </pkgmetadata>
