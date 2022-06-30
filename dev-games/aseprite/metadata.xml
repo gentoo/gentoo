@@ -9,10 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="bundled-libs">Use the upstream provided bundled version of allegro 4.4.2</flag>
-		<flag name="gtk3">Enable support for the experimental native GTK File Dialog</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">aseprite/aseprite</remote-id>
 	</upstream>
