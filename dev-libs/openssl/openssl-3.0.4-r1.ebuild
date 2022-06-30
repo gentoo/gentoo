@@ -46,10 +46,13 @@ DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 PDEPEND="app-misc/ca-certificates"
 
-REQUIRED_USE="test? ( rfc3779 )"
-
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/openssl/configuration.h
+)
+
+PATCHES=(
+	"${FILESDIR}"/${P}-avx512-buffer-overflow.patch
+	"${FILESDIR}"/${P}-fix-test-build.patch
 )
 
 pkg_setup() {
