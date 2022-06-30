@@ -94,6 +94,7 @@ src_install() {
 
 pkg_postrm() {
 	local e
+	[[ -n ${REPLACED_BY_VERSION} ]] && return
 	e=$(unset EDITOR; . "${EROOT}"/etc/profile &>/dev/null; echo "${EDITOR}")
 	if [[ ${e##*/} == nano ]]; then
 		ewarn "The EDITOR variable is still set to ${e}."
