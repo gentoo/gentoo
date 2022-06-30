@@ -292,12 +292,6 @@ dev-ruby/regexp_parser:1
 # The lowest supported version of GCC is GCC 10.
 <sys-devel/gcc-10
 
-# Sam James <sam@gentoo.org> (2022-05-28)
-# Masked for removal. Dead upstream, no releases in a long time, and superseded
-# by dev-python/python-pam. Fails tests in a few scary ways too. Removal
-# on 2022-06-28. Bugs #833297, #802927.
-dev-python/pypam
-
 # Hans de Graaff <graaff@gentoo.org> (2022-05-20)
 # Unused slots of cucumber components that are no longer or were never
 # used by current cucumber versions. Masked for removal in 30 days.
