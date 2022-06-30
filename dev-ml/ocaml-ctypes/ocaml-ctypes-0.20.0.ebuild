@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+DEPEND="dev-ml/findlib[ocamlopt]"
 RDEPEND="
 	>=dev-lang/ocaml-4.02:=[ocamlopt]
 	>=dev-libs/libffi-3.3_rc0:=
