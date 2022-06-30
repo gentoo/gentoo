@@ -11,7 +11,7 @@ DESCRIPTION="OSGi Enterprise Release 5 Companion Code"
 HOMEPAGE="http://www.osgi.org/Main/HomePage"
 SRC_URI="https://docs.osgi.org/download/r5/osgi.enterprise-${PV}.jar"
 
-LICENSE="Apache-2.0 OSGi-Specification-2.0"
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
