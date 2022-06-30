@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit vdr-plugin-2
+inherit toolchain-funcs vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: Client/Server and http streaming plugin"
 HOMEPAGE="https://github.com/vdr-projects/vdr-plugin-streamdev"
@@ -24,6 +24,7 @@ RDEPEND="${DEPEND}"
 QA_FLAGS_IGNORED="
 	usr/lib/vdr/plugins/libvdr-streamdev-.*
 	usr/lib64/vdr/plugins/libvdr-streamdev-.*"
+PATCHES=( "${FILESDIR}/${P}-Makefile.patch" )
 
 # vdr-plugin-2.eclass changes
 PO_SUBDIR="client server"
@@ -49,6 +50,10 @@ src_prepare() {
 	done
 
 	fix_vdr_libsi_include server/livestreamer.c
+}
+
+src_compile() {
+	emake AR="$(tc-getAR)"
 }
 
 src_install() {
