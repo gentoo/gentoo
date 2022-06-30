@@ -44,7 +44,8 @@ RDEPEND="${COMMON_DEPEND}
 	media-fonts/corefonts
 	bidi? ( dev-libs/fribidi )
 	systemd? ( sys-apps/systemd )"
-BDEPEND="sys-devel/gettext"
+BDEPEND="sys-devel/gettext
+	virtual/pkgconfig"
 
 CONF_DIR="/etc/vdr"
 CAP_FILE="${S}/capabilities.sh"
