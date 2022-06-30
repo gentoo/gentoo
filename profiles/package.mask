@@ -44,13 +44,6 @@
 # as deprecated since March 2022. Removal in 30 days (Bug #855299).
 gnome-extra/gtkhtml
 
-# Sam James <sam@gentoo.org> (2022-06-29)
-# Pre-emptively mask broken upstream versions.
-# openssl 3.0.4 has a buffer overflow w/ AVX512 (https://github.com/openssl/openssl/issues/18625)
-# Gentoo isn't vulnerable to the original CVE which caused these releases
-# (CVE-2022-2068) as we have our own rehash script.
-=dev-libs/openssl-3.0.4
-
 # Piotr Karbowski <slashbeast@gentoo.org> (2022-06-26)
 # Abandoned upstream, depends on API that no longer exists.
 # Removal on 2022-07-26.

@@ -16,12 +16,6 @@ Reviewed-by: Paul Dale <pauli@openssl.org>
 (Merged from https://github.com/openssl/openssl/pull/18634)
 
 (cherry picked from commit b76efe61ea9710a8f69e1cb8caf1aeb2ba6f1ebe)
----
- test/v3ext.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/test/v3ext.c b/test/v3ext.c
-index e96b6f79b58f..a2adb1a9f0ef 100644
 --- a/test/v3ext.c
 +++ b/test/v3ext.c
 @@ -37,6 +37,7 @@ static int test_pathlen(void)
