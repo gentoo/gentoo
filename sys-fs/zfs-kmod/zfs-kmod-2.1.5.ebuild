@@ -62,6 +62,11 @@ RESTRICT="debug? ( strip ) test"
 
 DOCS=( AUTHORS COPYRIGHT META README.md )
 
+PATCHES=(
+	# bug #855182
+	"${FILESDIR}"/${PV}-build-issues.patch
+)
+
 pkg_pretend() {
 	use rootfs || return 0
 
