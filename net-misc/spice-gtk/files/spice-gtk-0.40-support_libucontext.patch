@@ -1,0 +1,88 @@
+https://github.com/freedesktop/spice-gtk/commit/fa812c88492641005a768c72502a8953bd1223b2
+
+From fa812c88492641005a768c72502a8953bd1223b2 Mon Sep 17 00:00:00 2001
+From: osy <osy@turing.llc>
+Date: Fri, 4 Mar 2022 15:52:48 -0800
+Subject: [PATCH] coroutine: add support for libucontext
+
+libucontext is a lightweight implementation of ucontext for platforms
+that do not have a built-in implementation. This allows us to use the
+same code to support libucontext as ucontext.
+---
+ meson.build        |  7 +++++++
+ meson_options.txt  |  2 +-
+ src/continuation.c | 12 +++++++++++-
+ src/meson.build    |  2 +-
+ 4 files changed, 20 insertions(+), 3 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 11173fda..ec13ac3f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -317,6 +317,13 @@ if spice_gtk_coroutine == 'ucontext'
+   endif
+   endif
+ 
++if spice_gtk_coroutine == 'libucontext'
++  d = dependency('libucontext')
++  spice_glib_deps += d
++  spice_gtk_config_data.set('WITH_UCONTEXT', '1')
++  spice_gtk_config_data.set('HAVE_LIBUCONTEXT', '1')
++endif
++
+ if spice_gtk_coroutine == 'gthread'
+   spice_gtk_config_data.set('WITH_GTHREAD', '1')
+ endif
+diff --git a/meson_options.txt b/meson_options.txt
+index 3cbc7c64..5acfc9a2 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -45,7 +45,7 @@ option('usb-ids-path',
+ option('coroutine',
+     type : 'combo',
+     value : 'auto',
+-    choices : ['auto', 'ucontext', 'gthread', 'winfiber'],
++    choices : ['auto', 'ucontext', 'libucontext', 'gthread', 'winfiber'],
+     description : 'Use ucontext or GThread for coroutines')
+ 
+ option('introspection',
+diff --git a/src/continuation.c b/src/continuation.c
+index 65527acc..400169a8 100644
+--- a/src/continuation.c
++++ b/src/continuation.c
+@@ -25,11 +25,21 @@
+ #endif
+ 
+ #include <errno.h>
+-#include <ucontext.h>
+ #include <glib.h>
+ 
+ #include "continuation.h"
+ 
++#ifdef HAVE_LIBUCONTEXT
++#include <libucontext/libucontext.h>
++#define ucontext_t libucontext_ucontext_t
++#define getcontext libucontext_getcontext
++#define setcontext libucontext_setcontext
++#define swapcontext libucontext_swapcontext
++#define makecontext libucontext_makecontext
++#else
++#include <ucontext.h>
++#endif
++
+ /*
+  * va_args to makecontext() must be type 'int', so passing
+  * the pointer we need may require several int args. This
+diff --git a/src/meson.build b/src/meson.build
+index a9dfc577..961779fc 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -146,7 +146,7 @@ endif
+ 
+ if spice_gtk_coroutine == 'gthread'
+   spice_client_glib_sources += 'coroutine_gthread.c'
+-elif spice_gtk_coroutine == 'ucontext'
++elif spice_gtk_coroutine in ['ucontext', 'libucontext']
+   spice_client_glib_sources += ['continuation.c',
+                                 'continuation.h',
+                                 'coroutine_ucontext.c']

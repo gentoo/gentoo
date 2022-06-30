@@ -84,7 +84,12 @@ BDEPEND="
 		dev-python/six[${PYTHON_USEDEP}]
 		dev-python/pyparsing[${PYTHON_USEDEP}]
 	')
+	elibc_musl? (
+		sys-libs/libucontext
+	)
 "
+
+PATCHES=( "${FILESDIR}"/${PN}-0.40-support_libucontext.patch )
 
 python_check_deps() {
 	python_has_version "dev-python/six[${PYTHON_USEDEP}]" &&
@@ -124,6 +129,8 @@ src_configure() {
 			-Dusb-ids-path="${EPREFIX}"/usr/share/hwdata/usb.ids
 		)
 	fi
+
+	use elibc_musl && emesonargs+=( -Dcoroutine=libucontext )
 
 	meson_src_configure
 }
