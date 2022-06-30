@@ -1,0 +1,106 @@
+From 9bdd96d6f90630ecca8068141600507a5d9493e4 Mon Sep 17 00:00:00 2001
+From: Jesse Lentz <jesse@twosheds.org>
+Date: Tue, 28 Jun 2022 11:02:22 -0400
+Subject: [PATCH] Check if required icons are available
+
+On startup, check whether all required icons are available. If any are missing,
+override the icon theme to Adwaita.
+---
+ src/icon.c | 34 +++++++++++++++++++++++++++++++++-
+ src/icon.h |  1 +
+ src/main.c |  2 ++
+ src/main.h |  1 +
+ 4 files changed, 37 insertions(+), 1 deletion(-)
+
+diff --git a/src/icon.c b/src/icon.c
+index 25aec69b179a..e8ab6db06c33 100644
+--- a/src/icon.c
++++ b/src/icon.c
+@@ -45,6 +45,38 @@ const GdkRGBA *color_status[] = {
+     &color_gray
+ };
+ 
++void icon_theme_set() {
++    GdkDisplay *display;
++
++    const gchar* icons[] = {
++	ICON_STATION_0,
++	ICON_STATION_1,
++	ICON_STATION_2,
++	ICON_STATION_3,
++	ICON_STATION_4,
++	ICON_STATION_OFFLINE,
++	ICON_AP,
++	ICON_ADHOC,
++	ICON_DEVICE_DISABLED,
++	ICON_ADAPTER_DISABLED,
++	NULL
++    };
++
++    display = gdk_display_get_default();
++    global.theme = gtk_icon_theme_get_for_display(display);
++
++    for (int i = 0; icons[i] != NULL; i ++) {
++	if (!gtk_icon_theme_has_icon(global.theme, icons[i])) {
++	    g_printerr("Icon theme '%s' is missing icon '%s': Overriding theme to Adwaita\n",
++		    gtk_icon_theme_get_theme_name(global.theme), icons[i]);
++
++	    global.theme = gtk_icon_theme_new();
++	    gtk_icon_theme_set_theme_name(global.theme, "Adwaita");
++	    break;
++	}
++    }
++}
++
+ gint8 get_signal_level(gint16 signal_strength) {
+     gint8 i;
+ 
+@@ -62,7 +94,7 @@ GtkSnapshot* symbolic_icon_get_snapshot(const gchar *icon_name, const GdkRGBA *i
+     GtkSnapshot *snapshot;
+ 
+     icon = gtk_icon_theme_lookup_icon(
+-	gtk_icon_theme_get_for_display(gdk_display_get_default()),
++	global.theme,
+ 	icon_name,
+ 	NULL,
+ 	32,
+diff --git a/src/icon.h b/src/icon.h
+index b63d6fb14787..ddb8d4ea7955 100644
+--- a/src/icon.h
++++ b/src/icon.h
+@@ -48,6 +48,7 @@ extern const GdkRGBA color_gray;
+ 
+ extern const GdkRGBA *color_status[];
+ 
++void icon_theme_set();
+ gint8 get_signal_level(gint16 signal_strength);
+ 
+ GtkSnapshot* symbolic_icon_get_snapshot(const gchar *icon_name, const GdkRGBA *icon_color);
+diff --git a/src/main.c b/src/main.c
+index 981423b2a242..e21fae2a69b0 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -168,6 +168,8 @@ void startup(GtkApplication *app) {
+ 	global.iwd_error_domain = (GQuark) error_domain_volatile;
+     }
+ 
++    icon_theme_set();
++
+     g_bus_watch_name(
+ 	G_BUS_TYPE_SYSTEM,
+ 	IWD_BUS_NAME,
+diff --git a/src/main.h b/src/main.h
+index 8470748e4a53..930df0cadb48 100644
+--- a/src/main.h
++++ b/src/main.h
+@@ -29,6 +29,7 @@ typedef struct GlobalData_s GlobalData;
+ 
+ struct GlobalData_s {
+     GtkApplication *application;
++    GtkIconTheme *theme;
+     GDBusObjectManager *manager;
+     GQuark iwd_error_domain;
+     Window *window;
+-- 
+2.35.1
+

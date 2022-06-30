@@ -27,6 +27,10 @@ RDEPEND="
 	>=net-wireless/iwd-1.28
 "
 
+PATCHES=(
+	"${FILESDIR}"/0001-Check-if-required-icons-are-available.patch
+)
+
 src_prepare() {
 	default
 	sed -i \
