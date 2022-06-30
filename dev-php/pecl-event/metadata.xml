@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person" proxied="yes">
-<email>rrosmanov@gmail.com</email>
-<name>Ruslan Osmanov</name>
-</maintainer>
-<maintainer type="project" proxied="proxy">
-<email>proxy-maint@gentoo.org</email>
-<name>Proxy Maintainers</name>
-</maintainer>
-<use>
-<flag name="extra">Add support of the Libevent extra API</flag>
-</use>
+	<maintainer type="person" proxied="yes">
+		<email>rrosmanov@gmail.com</email>
+		<name>Ruslan Osmanov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>php-bugs@gentoo.org</email>
+		<name>PHP</name>
+	</maintainer>
+	<use>
+		<flag name="extra">Add support of the Libevent extra API</flag>
+	</use>
+	<upstream>
+		<remote-id type="bitbucket">osmanov/pecl-event</remote-id>
+	</upstream>
 </pkgmetadata>
