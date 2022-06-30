@@ -12,7 +12,11 @@ SLOT="0"
 KEYWORDS="-* ~amd64"  # Binaries are compiled only for x86_64.
 REQUIRED_USE="elibc_glibc"
 
-RDEPEND="sci-mathematics/z3"
+RDEPEND="
+	dev-libs/userspace-rcu
+	dev-util/lttng-ust
+	sci-mathematics/z3
+"
 BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"/dafny
@@ -33,8 +37,8 @@ src_install() {
 
 	insinto ${dest}
 	doins "${S}"/*
+	fperms 755 ${dest}/*.so
 
-	# CONSIDER: Just the entry-point binaries need executable permissions?
 	local bin
 	for bin in DafnyServer dafny ; do
 		fperms 755 ${dest}/${bin}
