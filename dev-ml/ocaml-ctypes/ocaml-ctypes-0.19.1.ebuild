@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+DEPEND="dev-ml/findlib[ocamlopt]"
 RDEPEND="
 	>=dev-lang/ocaml-4.02:=[ocamlopt]
 	>=dev-libs/libffi-3.3_rc0:=
