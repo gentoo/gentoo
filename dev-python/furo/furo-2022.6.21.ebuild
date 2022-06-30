@@ -24,7 +24,7 @@ S=${WORKDIR}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~s390 ~x86"
+KEYWORDS="~amd64 ~ia64 ~riscv ~s390 ~x86"
 
 RDEPEND="
 	dev-python/beautifulsoup4[${PYTHON_USEDEP}]
