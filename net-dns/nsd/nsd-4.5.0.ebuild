@@ -19,7 +19,7 @@ else
 	MY_P="${PN}-${MY_PV}"
 
 	[[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	SRC_URI="http://www.nlnetlabs.nl/downloads/${PN}/${MY_P}.tar.gz"
 	S="${WORKDIR}/${MY_P}"
 fi
