@@ -36,12 +36,12 @@ src_install() {
 	local dest=/opt/dafny
 
 	insinto ${dest}
+	# Maybe too general, but this installation mode matched how it arrives.
+	insopts -m0755
 	doins "${S}"/*
-	fperms 755 ${dest}/*.so
 
 	local bin
 	for bin in DafnyServer dafny ; do
-		fperms 755 ${dest}/${bin}
 		dosym ../../${dest}/${bin} /usr/bin/${bin}
 	done
 
