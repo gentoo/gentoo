@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/openssl.org.asc
 inherit edo flag-o-matic toolchain-funcs multilib-minimal verify-sig
@@ -47,6 +47,7 @@ PATCHES=(
 	# If they're Gentoo specific, add to USE=-vanilla logic in src_prepare!
 	"${FILESDIR}"/${PN}-1.1.0j-parallel_install_fix.patch #671602
 	"${FILESDIR}"/${PN}-1.1.1i-riscv32.patch
+	"${FILESDIR}"/${P}-fix-test-build.patch
 )
 
 pkg_setup() {
