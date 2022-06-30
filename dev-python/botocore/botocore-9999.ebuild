@@ -37,10 +37,6 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}/botocore-1.26.0-py311.patch"
-)
-
 distutils_enable_sphinx docs/source \
 	'dev-python/guzzle_sphinx_theme'
 distutils_enable_tests pytest
