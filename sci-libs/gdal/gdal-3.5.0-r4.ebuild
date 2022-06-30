@@ -63,7 +63,7 @@ DEPEND="dev-libs/expat
 	mysql? ( virtual/mysql )
 	netcdf? ( sci-libs/netcdf:= )
 	odbc? ( dev-db/unixODBC )
-	ogdi? ( sci-libs/ogdi )
+	ogdi? ( >=sci-libs/ogdi-4.1.0-r1 )
 	opencl? ( virtual/opencl )
 	oracle? ( dev-db/oracle-instantclient:= )
 	pdf? ( app-text/poppler:= )
