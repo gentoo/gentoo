@@ -1,0 +1,22 @@
+--- a/scmail/mail.scm
++++ b/scmail/mail.scm
+@@ -202,7 +202,7 @@
+ 	  (send-command "DATA" 354)
+ 	  (port-for-each (lambda (line)
+                            (format out "~a~a\r\n"
+-                                   (if (string-prefix? "." line) "." "")
++                                   (if (and (not (string-incomplete? line)) (string-prefix? "." line)) "." "")
+                                    line))
+ 			 (lambda () (read-line iport #t)))
+ 	  (send-command "." 250)
+--- a/tests/mailbox.scm
++++ b/tests/mailbox.scm
+@@ -9,7 +9,7 @@
+ (test-module 'scmail.mailbox)
+ 
+ (define mailbox-table
+-  '((mh      #f "Mail"    "inbox")
++  `((mh      #f "Mail"    "inbox")
+     (maildir #f "Maildir" "")))
+ 
+ (define (mailbox-list)

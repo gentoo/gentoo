@@ -20,6 +20,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-doc-encoding.patch
 	"${FILESDIR}"/${PN}-gauche-0.9.patch
+	"${FILESDIR}"/${PN}-gauche-0.9.10.patch
 	"${FILESDIR}"/${PN}-undefined-reference.patch
 )
 HTML_DOCS=( doc/{${PN},scbayes}{,-ja}.html )
