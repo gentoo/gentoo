@@ -37,6 +37,10 @@ BDEPEND="
 
 S="${WORKDIR}/pwsafe-${MY_PV}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.15.0-gcc12-time.patch
+)
+
 pkg_pretend() {
 	einfo "Checking for -std=c++11 support in compiler"
 	test-flags-CXX -std=c++11 > /dev/null || die
