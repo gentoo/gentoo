@@ -1,0 +1,18 @@
+Short version of upstreamed:
+https://github.com/diasurgical/devilutionX/pull/4464
+--- a/CMake/Dependencies.cmake
++++ b/CMake/Dependencies.cmake
+@@ -118,9 +118,11 @@
+ endif()
+ 
+ if(NOT NOSOUND)
+-  dependency_options("SDL_audiolib" DEVILUTIONX_SYSTEM_SDL_AUDIOLIB OFF DEVILUTIONX_STATIC_SDL_AUDIOLIB)
++  dependency_options("SDL_audiolib" DEVILUTIONX_SYSTEM_SDL_AUDIOLIB ON DEVILUTIONX_STATIC_SDL_AUDIOLIB)
+   if(DEVILUTIONX_SYSTEM_SDL_AUDIOLIB)
+-    find_package(SDL_audiolib REQUIRED)
++    find_package(PkgConfig REQUIRED)
++    pkg_check_modules(SDL_audiolib REQUIRED IMPORTED_TARGET SDL_audiolib)
++    add_library(SDL_audiolib ALIAS PkgConfig::SDL_audiolib)
+   else()
+     add_subdirectory(3rdParty/SDL_audiolib)
+   endif()
