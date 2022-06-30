@@ -50,8 +50,8 @@ src_configure() {
 		-DDISABLE_ZERO_TIER=$(usex !zerotier)
 		-DPACKET_ENCRYPTION=$(usex sodium)
 		-DPIE=ON
+		-DVERSION_NUM=${PV}
 	)
-	[[ ${PV} == 9999 ]] || mycmakeargs+=( -DVERSION_NUM=${PV} )
 
 	cmake_src_configure
 }
