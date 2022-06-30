@@ -38,7 +38,7 @@ BDEPEND="virtual/pkgconfig
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.1.1-disable_installed_tests.patch
+	"${FILESDIR}"/${PN}-0.1.11-disable_installed_tests.patch
 )
 
 python_check_deps() {

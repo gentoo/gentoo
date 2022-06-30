@@ -33,9 +33,23 @@
    install_dir: installed_test_datadir,
  )
  
+--- a/data/tests/pki/meson.build
++++ b/data/tests/pki/meson.build
+@@ -1,9 +1,11 @@
++if false
+ install_data([
+     'GPG-KEY-Linux-Vendor-Firmware-Service',
+     'LVFS-CA.pem',
+   ],
+   install_dir: join_paths(installed_test_bindir, 'pki'),
+ )
++endif
+ 
+ # generate certificate
+ pkcs7_config = join_paths(meson.current_source_dir(), 'test.cfg')
 --- a/libjcat/meson.build
 +++ b/libjcat/meson.build
-@@ -235,7 +235,7 @@
+@@ -248,7 +248,7 @@
      dependencies : [
        libjcat_deps,
      ],
