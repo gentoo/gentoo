@@ -26,8 +26,6 @@ RDEPEND="
 	dev-perl/URI
 "
 
-PATCHES=( "${FILESDIR}/${PN}-1.8-musl.patch" )
-
 src_prepare() {
 	default
 
