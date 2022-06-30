@@ -245,12 +245,6 @@ dev-python/jaraco-packaging
 # no upstream activity in years. Removal on 2022-07-02.
 dev-python/chai
 
-# Sam James <sam@gentoo.org> (2022-05-30)
-# Doesn't support Python 3.10+, maintainer-needed, and out of date.
-# Bugs #818847, #845936, #786585.
-# Removal on 2022-06-30.
-dev-util/dput-ng
-
 # Matt Turner <mattst88@gentoo.org> (2022-05-30)
 # libwacom-2 broke ABI compatibility; reverse dependencies need to be updated.
 # Bug #848501
