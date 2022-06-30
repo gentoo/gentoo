@@ -268,12 +268,6 @@ dev-python/3to2
 # Removal on 2022-06-30.
 dev-perl/Inline-Python
 
-# Sam James <sam@gentoo.org> (2022-05-30)
-# Out of date, no tests, and most importantly, doesn't yet support Python 3.10
-# which will soon be the default. Bugs #845783, #822540, #798204.
-# Removal on 2022-06-30.
-dev-python/pycapnp
-
 # Matt Turner <mattst88@gentoo.org> (2022-05-30)
 # libwacom-2 broke ABI compatibility; reverse dependencies need to be updated.
 # Bug #848501
