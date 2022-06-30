@@ -24,7 +24,7 @@ DEPEND="
 
 RDEPEND="
 	${DEPEND}
-	net-wireless/iwd
+	>=net-wireless/iwd-1.28
 "
 
 src_prepare() {
