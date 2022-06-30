@@ -183,6 +183,7 @@ multilib_src_test() {
 	export XDG_DATA_DIRS=/usr/local/share:/usr/share
 	export G_DBUS_COOKIE_SHA1_KEYRING_DIR="${T}/temp"
 	export LC_TIME=C # bug #411967
+	export TZ=UTC
 	unset GSETTINGS_BACKEND # bug #596380
 	python_setup
 
