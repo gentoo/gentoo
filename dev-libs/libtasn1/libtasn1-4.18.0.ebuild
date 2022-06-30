@@ -34,10 +34,16 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# -fanalyzer substantially slows down the build and isn't useful for
+	# us. It's useful for upstream as it's static analysis, but it's not
+	# useful when just getting something built.
+	export gl_cv_warn_c__fanalyzer=no
+
 	local myeconfargs=(
 		$(use_enable static-libs static)
 		$(multilib_native_use_enable valgrind valgrind-tests)
 	)
+
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
