@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -53,8 +53,16 @@ src_compile() {
 src_install() {
 	mv "${S}"/bin/${TARGET}/*.so* "${S}"/lib/Linux/. || die "lib move failed"
 	dobin "${S}"/bin/${TARGET}/*
+
 	insinto /usr/include
 	doins ogdi/include/ecs.h ogdi/include/ecs_util.h
+
 	dolib.so lib/${TARGET}/lib*
+
+	insinto "/usr/$(get_libdir)/pkgconfig"
+	doins ogdi.pc
+
+	dobin ogdi-config
+
 	einstalldocs
 }
