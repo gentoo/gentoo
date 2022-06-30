@@ -5,7 +5,7 @@
 
 EAPI=7
 
-inherit flag-o-matic savedconfig toolchain-funcs
+inherit eapi8-dosym flag-o-matic savedconfig toolchain-funcs
 
 DESCRIPTION="Utilities for rescue and embedded systems"
 HOMEPAGE="https://www.busybox.net/"
@@ -294,7 +294,7 @@ src_install() {
 		doins examples/udhcp/udhcpd.conf
 	fi
 	if busybox_config_enabled ASH && ! use make-symlinks; then
-		dosym -r /bin/busybox /bin/ash
+		dosym8 -r /bin/busybox /bin/ash
 	fi
 	if busybox_config_enabled CROND; then
 		newconfd "${FILESDIR}"/crond.confd busybox-crond
