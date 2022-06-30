@@ -19,7 +19,7 @@ IUSE="doc"
 
 BDEPEND="doc? ( dev-python/sphinx )"
 
-distutils_enable_tests unittest
+distutils_enable_tests pytest
 
 src_prepare() {
 	# Don't install rst files by default
