@@ -251,7 +251,6 @@ dev-python/chai
 # Removal on 2022-06-30.
 dev-util/dput-ng
 dev-util/distro-info
-dev-util/distro-info-data
 
 # Matt Turner <mattst88@gentoo.org> (2022-05-30)
 # libwacom-2 broke ABI compatibility; reverse dependencies need to be updated.
