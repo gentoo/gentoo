@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/855212
+--- a/src/resources/wallpaper.cpp
++++ b/src/resources/wallpaper.cpp
+@@ -38,9 +38,7 @@
+ #include <sys/time.h>
+ #endif  // WIN32
+ 
+-#ifdef __clang__
+ #include <ctime>
+-#endif  // __clang__
+ 
+ #include "debug.h"
+ 

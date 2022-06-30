@@ -55,6 +55,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.9.3.23-gcc12-time.patch
+)
+
 src_prepare() {
 	default
 
