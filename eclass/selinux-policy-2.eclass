@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Eclass for installing SELinux policy, and optionally
@@ -368,4 +368,3 @@ selinux-policy-2_pkg_postrm() {
 		done
 	fi
 }
-
