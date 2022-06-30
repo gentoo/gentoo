@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2022-06-30)
+# A GNOME 2-era library with no consumers left in the tree, marked
+# as deprecated since March 2022. Removal in 30 days (Bug #855299).
+gnome-extra/gtkhtml
+
 # Sam James <sam@gentoo.org> (2022-06-29)
 # Pre-emptively mask broken upstream versions.
 # 1. openssl 1.1.1o fails tests (https://github.com/openssl/openssl/issues/18619)
