@@ -253,11 +253,6 @@ dev-util/dput-ng
 dev-util/distro-info
 dev-util/distro-info-data
 
-# Sam James <sam@gentoo.org> (2022-05-30)
-# No upstream activity since 2019, doesn't even support Python 3.9+ properly,
-# and doesn't support Python 3.10. Bugs #845819, #798384. Removal on 2022-06-30.
-dev-python/pypcap
-
 # Matt Turner <mattst88@gentoo.org> (2022-05-30)
 # libwacom-2 broke ABI compatibility; reverse dependencies need to be updated.
 # Bug #848501
