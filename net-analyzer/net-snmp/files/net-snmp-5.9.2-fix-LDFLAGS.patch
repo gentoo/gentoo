@@ -1,0 +1,18 @@
+diff --git a/Makefile.top b/Makefile.top
+index d6394ca..f5119b5 100644
+--- a/Makefile.top
++++ b/Makefile.top
+@@ -86,11 +86,11 @@ LIBCURRENT  = 41
+ LIBAGE      = 2
+ LIBREVISION = 0
+ 
+-LIB_LD_CMD      = $(LIBTOOL) --mode=link $(LINKCC) $(CFLAGS) -rpath $(libdir) -version-info $(LIBCURRENT):$(LIBREVISION):$(LIBAGE) @LD_NO_UNDEFINED@ -o
++LIB_LD_CMD      = $(LIBTOOL) --mode=link $(LINKCC) $(CFLAGS) $(LDFLAGS) -rpath $(libdir) -version-info $(LIBCURRENT):$(LIBREVISION):$(LIBAGE) @LD_NO_UNDEFINED@ -o
+ LIB_EXTENSION   = la
+ LIB_VERSION     =
+ LIB_LDCONFIG_CMD = $(LIBTOOL) --mode=finish $(INSTALL_PREFIX)$(libdir)
+-LINK		= $(LIBTOOL) --mode=link $(LINKCC)
++LINK		= $(LIBTOOL) --mode=link $(LINKCC) $(LDFLAGS)
+ # RANLIB 	= @RANLIB@
+ RANLIB		= :
+ 

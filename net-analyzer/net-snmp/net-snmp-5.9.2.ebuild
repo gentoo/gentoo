@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DISTUTILS_OPTIONAL=yes
 DISTUTILS_SINGLE_IMPL=yes
@@ -9,12 +9,21 @@ GENTOO_DEPEND_ON_PERL=no
 PYTHON_COMPAT=( python3_{8..10} )
 WANT_AUTOMAKE=none
 
-inherit autotools distutils-r1 git-r3 perl-module systemd
+inherit autotools distutils-r1 perl-module systemd
 
 DESCRIPTION="Software for generating and retrieving SNMP data"
-HOMEPAGE="http://www.net-snmp.org/"
-EGIT_REPO_URI="https://github.com/net-snmp/net-snmp"
-SRC_URI="https://dev.gentoo.org/~jsmolic/distfiles/${PN}-5.7.3-patches-3.tar.xz"
+HOMEPAGE="https://www.net-snmp.org/"
+if [[ ${PV} == 9999 ]] ; then
+	EGIT_REPO_URI="https://github.com/net-snmp/net-snmp"
+	inherit git-r3
+else
+	# https://github.com/net-snmp/net-snmp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+	SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
+
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+fi
+
+SRC_URI+=" https://dev.gentoo.org/~jsmolic/distfiles/${PN}-5.7.3-patches-3.tar.xz"
 
 # GPL-2 for the init scripts
 LICENSE="HPND BSD GPL-2"
@@ -67,13 +76,13 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.7.3-include-limits.patch
 	"${FILESDIR}"/${PN}-5.8-do-not-conflate-LDFLAGS-and-LIBS.patch
 	"${FILESDIR}"/${PN}-5.8-pcap.patch
 	"${FILESDIR}"/${PN}-5.8.1-pkg-config.patch
 	"${FILESDIR}"/${PN}-5.8.1-net-snmp-config-libdir.patch
 	"${FILESDIR}"/${PN}-5.8.1-mysqlclient.patch
 	"${FILESDIR}"/${PN}-5.9-MakeMaker.patch
+	"${FILESDIR}"/${PN}-5.9.2-fix-LDFLAGS.patch
 	"${FILESDIR}"/${PN}-99999999-tinfo.patch
 )
 
@@ -83,15 +92,18 @@ pkg_setup() {
 
 src_unpack() {
 	default
-	git-r3_src_unpack
+
+	[[ ${PV} == 9999 ]] && git-r3_src_unpack
 }
 
 src_prepare() {
 	# snmpconf generates config files with proper selinux context
 	use selinux && eapply "${FILESDIR}"/${PN}-5.1.2-snmpconf-selinux.patch
 
+	mv "${WORKDIR}"/patches/0001-Fix-toolchain-quadruplet-detection-Gentoo-bug-432004.patch{,.disabled} || die
 	mv "${WORKDIR}"/patches/0002-Respect-DESTDIR-for-pythoninstall.patch{,.disabled} || die
 	mv "${WORKDIR}"/patches/0004-Don-t-report-CFLAGS-and-LDFLAGS-in-net-snmp-config.patch{,.disabled} || die
+	mv "${WORKDIR}"/patches/0005-Respect-LDFLAGS-properly.patch{,.disabled} || die
 	eapply "${WORKDIR}"/patches/*.patch
 
 	default
@@ -127,7 +139,6 @@ src_configure() {
 		$(use_with ssl openssl) \
 		$(use_with tcpd libwrap) \
 		$(use_with zlib) \
-		--disable-static \
 		--enable-shared \
 		--with-default-snmp-version="3" \
 		--with-ldflags="${LDFLAGS}" \
