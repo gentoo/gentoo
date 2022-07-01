@@ -1,0 +1,13 @@
+diff --git a/CorsixTH/CMakeLists.txt b/CorsixTH/CMakeLists.txt
+index 1544810..d9d3332 100644
+--- a/CorsixTH/CMakeLists.txt
++++ b/CorsixTH/CMakeLists.txt
+@@ -129,7 +129,7 @@ endif()
+ 
+ # Find Lua
+ if(MSVC AND USE_VCPKG_DEPS)
+-  find_package(Lua CONFIG REQUIRED)
++  find_package(Lua ${LUA_VERSION} EXACT REQUIRED)
+   target_link_libraries(CorsixTH_lib lua)
+   target_link_libraries(CorsixTH lua)
+ else()
