@@ -30,3 +30,7 @@ src_prepare() {
 
 	cp "${BROOT}"/usr/share/gnuconfig/config.{guess,sub} src/c/vendor/configure/ || die
 }
+
+src_compile() {
+	LUV_USE_SYSTEM_LIBUV=yes dune_src_compile
+}
