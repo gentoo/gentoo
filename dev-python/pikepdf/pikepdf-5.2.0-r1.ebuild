@@ -29,6 +29,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
+	dev-python/deprecation[${PYTHON_USEDEP}]
 	>=dev-python/lxml-4.0[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	>=dev-python/pillow-9[${PYTHON_USEDEP}]
