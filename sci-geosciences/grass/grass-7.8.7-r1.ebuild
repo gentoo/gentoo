@@ -9,31 +9,18 @@ WX_GTK_VER="3.0-gtk3"
 
 inherit autotools desktop python-single-r1 toolchain-funcs wxwidgets xdg
 
+MY_PM=${PN}$(ver_cut 1-2 ${PV})
+MY_PM=${MY_PM/.}
+MY_P=${P/_rc/RC}
+
 DESCRIPTION="A free GIS with raster and vector functionality, as well as 3D vizualization"
 HOMEPAGE="https://grass.osgeo.org/"
+SRC_URI="https://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
-
-GVERSION=${SLOT#*/}
-MY_PM="${PN}${GVERSION}"
-MY_PM="${MY_PM/.}"
-
-if [[ ${PV} =~ "9999" ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/OSGeo/grass.git"
-	SLOT="0/8.3"
-else
-	MY_P="${P/_rc/RC}"
-	SLOT="0/$(ver_cut 1-2 ${PV})"
-	SRC_URI="https://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
-	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~amd64 ~ppc ~x86"
-	fi
-
-	S="${WORKDIR}/${MY_P}"
-fi
-
-IUSE="blas cxx fftw geos lapack las mysql netcdf nls odbc opencl opengl openmp pdal png postgres readline sqlite threads tiff truetype X zstd"
+SLOT="0/7.8.0"
+KEYWORDS="~amd64 ~x86"
+IUSE="blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl opengl openmp pdal png postgres readline sqlite threads tiff truetype X zstd"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	opengl? ( X )"
@@ -51,8 +38,6 @@ RDEPEND="
 	sci-libs/proj:=
 	sci-libs/xdrfile
 	sys-libs/zlib
-	media-libs/libglvnd
-	media-libs/glu
 	blas? (
 		virtual/cblas[eselect-ldso(+)]
 		virtual/blas[eselect-ldso(+)]
@@ -60,13 +45,13 @@ RDEPEND="
 	fftw? ( sci-libs/fftw:3.0= )
 	geos? ( sci-libs/geos:= )
 	lapack? ( virtual/lapack[eselect-ldso(+)] )
-	las? ( sci-geosciences/liblas )
+	liblas? ( sci-geosciences/liblas )
 	mysql? ( dev-db/mysql-connector-c:= )
 	netcdf? ( sci-libs/netcdf:= )
 	odbc? ( dev-db/unixODBC )
 	opencl? ( virtual/opencl )
 	opengl? ( virtual/opengl )
-	pdal? ( >=sci-libs/pdal-2.0.0:0= )
+	pdal? ( <sci-libs/pdal-2.4.0:0= )
 	png? ( media-libs/libpng:0= )
 	postgres? ( >=dev-db/postgresql-8.4:= )
 	readline? ( sys-libs/readline:0= )
@@ -91,6 +76,13 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 	X? ( dev-lang/swig )"
+
+S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	# bug 746590
+	"${FILESDIR}/${PN}-flock.patch"
+)
 
 pkg_setup() {
 	if use lapack; then
@@ -182,7 +174,7 @@ src_configure() {
 		$(use_with openmp)
 		$(use_with opencl)
 		$(use_with pdal pdal "${EPREFIX}"/usr/bin/pdal-config)
-		$(use_with las liblas "${EPREFIX}"/usr/bin/liblas-config)
+		$(use_with liblas liblas "${EPREFIX}"/usr/bin/liblas-config)
 		$(use_with X wxwidgets "${WX_CONFIG}")
 		$(use_with netcdf netcdf "${EPREFIX}"/usr/bin/nc-config)
 		$(use_with geos geos "${EPREFIX}"/usr/bin/geos-config)
@@ -239,7 +231,7 @@ src_install() {
 	local gisbase=/usr/$(get_libdir)/${MY_PM}
 	sed -e "s:GISBASE = os.path.normpath(\"${D}/usr/$(get_libdir)/${MY_PM}\"):\
 GISBASE = os.path.normpath(\"${gisbase}\"):" \
-		-i "${ED}"/usr/bin/grass || die
+		-i "${ED}"/usr/bin/${MY_PM} || die
 
 	# get proper fonts path for fontcap
 	sed -i \
@@ -249,16 +241,16 @@ GISBASE = os.path.normpath(\"${gisbase}\"):" \
 	# set proper python interpreter
 	sed -e "s:os.environ\[\"GRASS_PYTHON\"\] = \"python3\":\
 os.environ\[\"GRASS_PYTHON\"\] = \"${EPYTHON}\":" \
-		-i "${ED}"/usr/bin/grass || die
+		-i "${ED}"/usr/bin/${MY_PM} || die
 
-	# set proper GISDBASE directory path in the demolocation .grassrc${GVERSION//.} file
+	# set proper GISDBASE directory path in the demolocation .grassrc78 file
 	sed -e "s:GISDBASE\:.*$:GISDBASE\: ${gisbase}:" \
-		-i "${ED}"${gisbase}/demolocation/.grassrc${GVERSION//.} || die
+		-i "${ED}"${gisbase}/demolocation/.grassrc78 || die
 
 	if use X; then
 		local GUI="-gui"
 		[[ ${WX_BUILD} == yes ]] && GUI="-wxpython"
-		make_desktop_entry "/usr/bin/grass ${GUI}" "${PN}" "${PN}-48x48" "Science;Education"
+		make_desktop_entry "/usr/bin/${MY_PM} ${GUI}" "${PN}" "${PN}-48x48" "Science;Education"
 		doicon -s 48 gui/icons/${PN}-48x48.png
 	fi
 
@@ -272,8 +264,6 @@ os.environ\[\"GRASS_PYTHON\"\] = \"${EPYTHON}\":" \
 
 pkg_postinst() {
 	use X && xdg_pkg_postinst
-	ewarn 'Starting with version 8.0.2 the "liblas" USE flag has been renamed'
-	ewarn 'to "las" in order to match dev-games/openscenegraph (Bug 680854)'
 }
 
 pkg_postrm() {
