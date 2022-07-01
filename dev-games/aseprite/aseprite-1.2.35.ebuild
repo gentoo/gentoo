@@ -16,7 +16,7 @@ SRC_URI="https://github.com/aseprite/aseprite/releases/download/v${PV}/Aseprite-
 # gtest duktape modp_b64 simpleini
 LICENSE="Aseprite-EULA"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="-* ~amd64 ~x86"
 
 IUSE="debug kde lua test webp"
 RESTRICT="bindist mirror !test? ( test )"
@@ -70,7 +70,7 @@ src_prepare() {
 }
 
 src_configure() {
-	use debug && append-cppflags -DDEBUGMODE -D_DEBU
+	use debug && append-cppflags -DDEBUGMODE -D_DEBUG
 
 	local CC=clang
 	local CXX=clang++
