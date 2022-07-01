@@ -60,7 +60,7 @@ fi
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-DOCS=( NEWS README TODO )
+DOCS=( NEWS README.md TODO )
 
 src_prepare() {
 	default
