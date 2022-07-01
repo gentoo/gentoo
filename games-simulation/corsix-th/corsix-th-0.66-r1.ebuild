@@ -56,6 +56,7 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
+		-DLUA_VERSION=$(lua_get_version)
 		-DWITH_AUDIO=$(usex sound)
 		-DWITH_FREETYPE2=$(usex truetype)
 		-DWITH_MOVIES=$(usex videos)
