@@ -8,7 +8,7 @@ HOMEPAGE="https://wiki.xenproject.org/wiki/PvGrub2"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="pvh"
 
 DEPEND="
