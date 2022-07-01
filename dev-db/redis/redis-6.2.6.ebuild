@@ -60,6 +60,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.2.1-sharedlua.patch
 	"${FILESDIR}"/${PN}-6.2.3-ppc-atomic.patch
 	"${FILESDIR}"/${PN}-sentinel-5.0-config.patch
+	"${FILESDIR}"/${PN}-5.0-luajit-2.1-fix.patch
 )
 
 src_prepare() {
