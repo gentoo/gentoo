@@ -1,0 +1,74 @@
+ * QA Notice: The following files contain writable and executable sections
+ *  Files with such sections will not work properly (or at all!) on some
+ *  architectures/operating systems.  A bug should be filed at
+ *  https://bugs.gentoo.org/ to make sure the issue is fixed.
+ *  For more information, see:
+ *
+ *    https://wiki.gentoo.org/wiki/Hardened/GNU_stack_quickstart
+ *
+ *  Please include the following list of files in your report:
+ *  Note: Bugs should be filed for the respective maintainers
+ *  of the package in question and not hardened@gentoo.org.
+ * RWX --- --- bin/busybox
+
+$ scanelf -qeR .
+RWX --- ---  ./busybox
+RWX --- ---  ./busybox_unstripped
+!WX --- ---  ./libbb/hash_md5_sha_x86-64_shaNI.o
+!WX --- ---  ./libbb/hash_md5_sha_x86-64.o
+!WX --- ---  ./libbb/hash_md5_sha_x86-32_shaNI.o
+!WX --- ---  ./libbb/hash_md5_sha256_x86-64_shaNI.o
+!WX --- ---  ./libbb/hash_md5_sha256_x86-32_shaNI.o
+
+Try to fix this QA issue
+
+--- a/libbb/hash_md5_sha256_x86-32_shaNI.S
++++ b/libbb/hash_md5_sha256_x86-32_shaNI.S
+@@ -278,4 +278,7 @@
+ PSHUFFLE_BSWAP32_FLIP_MASK:
+ 	.octa	0x0c0d0e0f08090a0b0405060700010203
+ 
++#if defined(__linux__) && defined(__ELF__)
++	.section	.note.GNU-stack, "", %progbits
++#endif
+ #endif
+--- a/libbb/hash_md5_sha256_x86-64_shaNI.S
++++ b/libbb/hash_md5_sha256_x86-64_shaNI.S
+@@ -284,4 +284,7 @@
+ PSHUFFLE_BSWAP32_FLIP_MASK:
+ 	.octa	0x0c0d0e0f08090a0b0405060700010203
+ 
++#if defined(__linux__) && defined(__ELF__)
++	.section	.note.GNU-stack, "", %progbits
++#endif
+ #endif
+--- a/libbb/hash_md5_sha_x86-32_shaNI.S
++++ b/libbb/hash_md5_sha_x86-32_shaNI.S
+@@ -228,4 +228,7 @@
+ PSHUFFLE_BYTE_FLIP_MASK:
+ 	.octa	0x000102030405060708090a0b0c0d0e0f
+ 
++#if defined(__linux__) && defined(__ELF__)
++	.section	.note.GNU-stack, "", %progbits
++#endif
+ #endif
+--- a/libbb/hash_md5_sha_x86-64.S
++++ b/libbb/hash_md5_sha_x86-64.S
+@@ -1483,4 +1483,7 @@
+ 	.long	0x8F1BBCDC
+ 	.long	0xCA62C1D6
+ 
++#if defined(__linux__) && defined(__ELF__)
++	.section	.note.GNU-stack, "", %progbits
++#endif
+ #endif
+--- a/libbb/hash_md5_sha_x86-64_shaNI.S
++++ b/libbb/hash_md5_sha_x86-64_shaNI.S
+@@ -226,4 +226,7 @@
+ PSHUFFLE_BYTE_FLIP_MASK:
+ 	.octa	0x000102030405060708090a0b0c0d0e0f
+ 
++#if defined(__linux__) && defined(__ELF__)
++	.section	.note.GNU-stack, "", %progbits
++#endif
+ #endif
