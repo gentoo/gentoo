@@ -134,7 +134,7 @@ python_install_all() {
 	systemd_dounit "${FILESDIR}/ufw.service"
 
 	pushd "${ED}" || die
-	fperms -R 0644 etc/ufw/*.rules
+	chmod -R 0644 etc/ufw/*.rules || die
 	popd || die
 
 	exeinto /usr/share/${PN}
