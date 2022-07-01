@@ -3,7 +3,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 MJPG_STREAMER_PIDFILE="${MJPG_STREAMER_PIDFILE:-/var/run/${SVCNAME}.pid}"
-MY_NAME=${SVCNAME//-/_}
+MY_NAME=$(printf %s "${SVCNAME}" | tr - _)
 
 depend() {
 	use logger
@@ -11,17 +11,16 @@ depend() {
 }
 
 checkconfig() {
-	local vars
+	set --
 
-	[[ ${INPUT_PLUGIN} ]] || vars+=\ INPUT_PLUGIN
-	[[ ${OUTPUT_PLUGIN} ]] || vars+=\ OUTPUT_PLUGIN
-	[[ ${MJPG_STREAMER_USER} ]] || vars+=\ MJPG_STREAMER_USER
-	[[ ${MJPG_STREAMER_GROUP} ]] || vars+=\ MJPG_STREAMER_GROUP
-	vars="${vars# }"
+	[ "${INPUT_PLUGIN}" ] || set -- "$@" INPUT_PLUGIN
+	[ "${OUTPUT_PLUGIN}" ] || set -- "$@" OUTPUT_PLUGIN
+	[ "${MJPG_STREAMER_USER}" ] || set -- "$@" MJPG_STREAMER_USER
+	[ "${MJPG_STREAMER_GROUP}" ] || set -- "$@" MJPG_STREAMER_GROUP
 
-	if [[ ${vars} ]]; then
+	if [ $# -gt 0 ]; then
 		eerror "Required variables in /etc/conf.d/${SVCNAME} are not set:"
-		eerror "  ${vars// /, }"
+		eerror " $(IFS=,; printf %s "$*")"
 		return 1
 	fi
 
@@ -31,7 +30,7 @@ checkconfig() {
 start() {
 	checkconfig || return $?
 	ebegin "Starting ${SVCNAME}"
-	start-stop-daemon --start --exec /usr/bin/${MY_NAME} \
+	start-stop-daemon --start --exec "/usr/bin/${MY_NAME}" \
 		--user "${MJPG_STREAMER_USER}" \
 		--group "${MJPG_STREAMER_GROUP}" -w 100 -b -m \
 		--pidfile "${MJPG_STREAMER_PIDFILE}" \
@@ -42,7 +41,7 @@ start() {
 
 stop() {
 	ebegin "Stopping ${SVCNAME}"
-	start-stop-daemon --stop --exec /usr/bin/${MY_NAME} \
+	start-stop-daemon --stop --exec "/usr/bin/${MY_NAME}" \
 		--pidfile "${MJPG_STREAMER_PIDFILE}"
 	eend $?
 }
