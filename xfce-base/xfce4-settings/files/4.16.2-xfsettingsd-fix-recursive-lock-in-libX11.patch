@@ -1,0 +1,76 @@
+From 55a823abae8827eb33718eb59b3d3fee1de4f901 Mon Sep 17 00:00:00 2001
+From: Matthieu Herrb <matthieu@herrb.eu>
+Date: Mon, 4 Jul 2022 18:44:34 +0200
+Subject: [PATCH] Fix a recursive lock in libX11.
+
+The XIfEvent() predicate function is not allowed to take the X
+display lock, because it is already taken in XIfEvent() itself.
+
+With libX11 1.8.1 this causes a dead-lock because libX11 now
+unconditionnally calls XInitThreads(), making the X display lock
+always active.
+
+Signed-off-by: Matthieu Herrb <matthieu@herrb.eu>
+---
+ xfsettingsd/xsettings.c | 23 +++++++++++++++--------
+ 1 file changed, 15 insertions(+), 8 deletions(-)
+
+diff --git a/xfsettingsd/xsettings.c b/xfsettingsd/xsettings.c
+index 681b83e9..11f6f93d 100644
+--- a/xfsettingsd/xsettings.c
++++ b/xfsettingsd/xsettings.c
+@@ -144,6 +144,12 @@ struct _XfceXSettingsScreen
+     gint     screen_num;
+ };
+ 
++struct _XfceTimestamp
++{
++    Window window;
++    Atom   atom;
++};
++
+ 
+ 
+ G_DEFINE_TYPE (XfceXSettingsHelper, xfce_xsettings_helper, G_TYPE_OBJECT);
+@@ -1033,11 +1039,11 @@ xfce_xsettings_helper_timestamp_predicate (Display  *xdisplay,
+                                            XEvent   *xevent,
+                                            XPointer  arg)
+ {
+-    Window window = GPOINTER_TO_UINT (arg);
++    struct _XfceTimestamp *ts = (struct _XfceTimestamp *)arg;
+ 
+     return (xevent->type == PropertyNotify
+-            && xevent->xproperty.window == window
+-            && xevent->xproperty.atom == XInternAtom (xdisplay, "_TIMESTAMP_PROP", False));
++            && xevent->xproperty.window == ts->window
++            && xevent->xproperty.atom == ts->atom);
+ }
+ 
+ 
+@@ -1046,17 +1052,18 @@ Time
+ xfce_xsettings_get_server_time (Display *xdisplay,
+                                 Window   window)
+ {
+-    Atom   timestamp_atom;
++    struct _XfceTimestamp *ts = g_malloc(sizeof(struct _XfceTimestamp));
+     guchar c = 'a';
+     XEvent xevent;
+ 
+     /* get the current xserver timestamp */
+-    timestamp_atom = XInternAtom (xdisplay, "_TIMESTAMP_PROP", False);
+-    XChangeProperty (xdisplay, window, timestamp_atom, timestamp_atom,
++    ts->atom = XInternAtom (xdisplay, "_TIMESTAMP_PROP", False);
++    ts->window = window;
++    XChangeProperty (xdisplay, window, ts->atom, ts->atom,
+                      8, PropModeReplace, &c, 1);
+     XIfEvent (xdisplay, &xevent, xfce_xsettings_helper_timestamp_predicate,
+-              GUINT_TO_POINTER (window));
+-
++              (XPointer)ts);
++    g_free(ts);
+     return xevent.xproperty.time;
+ }
+ 
+-- 
+GitLab
+

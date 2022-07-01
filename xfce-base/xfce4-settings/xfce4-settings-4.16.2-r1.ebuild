@@ -45,6 +45,10 @@ BDEPEND="
 	sys-devel/gettext
 	x11-base/xorg-proto"
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-xfsettingsd-fix-recursive-lock-in-libX11.patch
+)
+
 src_configure() {
 	local myconf=(
 		$(use_enable upower upower-glib)
