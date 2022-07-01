@@ -6,13 +6,13 @@
 # ML <ml@gentoo.org>
 # @AUTHOR:
 # Original author: Matthieu Sozeau <mattam@gentoo.org> (retired)
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: ocamlfind (a.k.a. findlib) eclass
 # @DESCRIPTION:
 # ocamlfind (a.k.a. findlib) eclass
 
 case ${EAPI:-0} in
-	[67]) ;;
+	[678]) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -26,11 +26,14 @@ QA_FLAGS_IGNORED='.*'
 IUSE="+ocamlopt"
 
 # From this findlib version, there is proper stublibs support.
-DEPEND=">=dev-ml/findlib-1.0.4-r1"
+DEPEND=">=dev-ml/findlib-1.0.4-r1[ocamlopt?]"
 [[ ${FINDLIB_USE} ]] && DEPEND="${FINDLIB_USE}? ( ${DEPEND} )"
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]"
 [[ ${FINDLIB_USE} ]] && RDEPEND="${FINDLIB_USE}? ( ${RDEPEND} )"
 
+# @FUNCTION: check_ocamlfind
+# @DESCRIPTION:
+# Die if ocamlfind is not found
 check_ocamlfind() {
 	if [ ! -x "${EPREFIX}"/usr/bin/ocamlfind ] ; then
 		eerror "In ${ECLASS}: could not find the ocamlfind executable"
