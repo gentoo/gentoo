@@ -342,7 +342,7 @@ src_configure() {
 			*)
 				;;
 		esac)
-		build-config = { CMAKE_C_FLAGS_${cm_btype} = "${CFLAGS}", CMAKE_CXX_FLAGS_${cm_btype} = "${CXXFLAGS}", CMAKE_EXE_LINKER_FLAGS_${cm_btype} = "${LDFLAGS}", CMAKE_MODULE_LINKER_FLAGS_${cm_btype} = "${LDFLAGS}", CMAKE_SHARED_LINKER_FLAGS_${cm_btype} = "${LDFLAGS}", CMAKE_STATIC_LINKER_FLAGS_${cm_btype} = "${ARFLAGS}" }
+		build-config = { CMAKE_VERBOSE_MAKEFILE = "ON", CMAKE_C_FLAGS_${cm_btype} = "${CFLAGS}", CMAKE_CXX_FLAGS_${cm_btype} = "${CXXFLAGS}", CMAKE_EXE_LINKER_FLAGS_${cm_btype} = "${LDFLAGS}", CMAKE_MODULE_LINKER_FLAGS_${cm_btype} = "${LDFLAGS}", CMAKE_SHARED_LINKER_FLAGS_${cm_btype} = "${LDFLAGS}", CMAKE_STATIC_LINKER_FLAGS_${cm_btype} = "${ARFLAGS}" }
 		[build]
 		build-stage = 2
 		test-stage = 2
