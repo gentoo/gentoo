@@ -29,7 +29,7 @@ PATCHES=(
 	# Remove shebang modification.
 	"${FILESDIR}/${P}-shebang.patch"
 	# Fix bash completions, bug #526300
-	"${FILESDIR}/${P}-bash-completion.patch"
+	"${FILESDIR}/${PN}-0.36-bash-completion.patch"
 )
 
 pkg_pretend() {
