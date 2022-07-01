@@ -91,3 +91,22 @@
  install(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
          DESTINATION include
          FILES_MATCHING PATTERN "*.h")
+--- a/caffe2/CMakeLists.txt	2022-07-01 21:56:49.643490049 +0200
++++ b/caffe2/CMakeLists.txt	2022-07-01 21:57:17.091489479 +0200
+@@ -109,7 +109,7 @@
+ # Note: the folders that are being commented out have not been properly
+ # addressed yet.
+ 
+-if(NOT MSVC AND USE_XNNPACK)
++if(FALSE)
+   if(NOT TARGET fxdiv)
+     set(FXDIV_BUILD_TESTS OFF CACHE BOOL "")
+     set(FXDIV_BUILD_BENCHMARKS OFF CACHE BOOL "")
+@@ -967,7 +967,6 @@
+ endif()
+ 
+ if(NOT MSVC AND USE_XNNPACK)
+-  TARGET_LINK_LIBRARIES(torch_cpu PRIVATE fxdiv)
+ endif()
+ 
+ # ==========================================================

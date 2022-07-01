@@ -18,6 +18,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 RESTRICT="test"
+IUSE="xnnpack"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
@@ -29,6 +30,7 @@ RDEPEND="
 	sci-libs/lapack
 	sci-libs/onnx
 	sci-libs/foxi
+	xnnpack? ( sci-libs/XNNPACK )
 "
 DEPEND="${RDEPEND}
 	dev-libs/FP16
@@ -53,7 +55,7 @@ src_configure() {
 	python_setup
 	local mycmakeargs=(
 		-DUSE_KINETO=OFF
-		-DUSE_XNNPACK=OFF
+		-DUSE_XNNPACK=$(usex xnnpack ON OFF)
 		-DUSE_SYSTEM_SLEEF=ON
 		-DUSE_BREAKPAD=OFF
 		-DUSE_SYSTEM_ONNX=ON
@@ -76,6 +78,9 @@ src_configure() {
 		-DTORCH_INSTALL_LIB_DIR=/usr/$(get_libdir)
 		-DLIBSHM_INSTALL_LIB_SUBDIR=/usr/$(get_libdir)
 		-DUSE_CCACHE=OFF
+		-DUSE_SYSTEM_PTHREADPOOL=ON
+		-DUSE_SYSTEM_XNNPACK=ON
+		-DUSE_SYSTEM_FXDIV=ON
 	)
 	cmake_src_configure
 }
