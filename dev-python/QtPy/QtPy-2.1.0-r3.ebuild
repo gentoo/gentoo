@@ -29,7 +29,6 @@ unset _IUSE_QT_MODULES
 
 REQUIRED_USE="
 	|| ( pyqt5 pyside2 )
-	python_targets_python3_11? ( pyqt5 !pyside2 )
 "
 
 # These flags are currently *not* common to both the PySide2 and PyQt5 ebuild
