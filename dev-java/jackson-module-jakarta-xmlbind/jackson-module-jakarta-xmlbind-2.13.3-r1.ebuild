@@ -62,7 +62,7 @@ JAVA_TEST_GENTOO_CLASSPATH="jaxb-runtime-4,junit-4"
 JAVA_TEST_SRC_DIR="src/test/java"
 
 JAVA_TEST_EXCLUDES=(
-	# Upstream does not run these 
+	# Upstream does not run these
 	com.fasterxml.jackson.module.jakarta.xmlbind.failing.TestUnwrapping
 	com.fasterxml.jackson.module.jakarta.xmlbind.failing.TestXmlID3
 )
