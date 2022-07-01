@@ -104,6 +104,13 @@ src_prepare() {
 	sed -e '/set(PLUGIN_INSTALL_DIR/s/-${APIVERSION}//' \
 		-e '/-O3/d' \
 		-i CMakeLists.txt || die
+
+	if use doc; then
+		local png="${WORKDIR}/html/images/delayk.png"
+		pngfix -q --out=${png/.png/fixed.png} ${png} # see pngfix help for exit codes
+		[[ $? -gt 15 ]] && die "Failed to fix ${png}"
+		mv -f ${png/.png/fixed.png} ${png} || die
+	fi
 }
 
 src_configure() {
