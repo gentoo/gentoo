@@ -38,11 +38,11 @@ DEPEND=">=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
 	dev-libs/expat
 	acl? ( virtual/acl )
 	ncurses? ( sys-libs/ncurses:0= )
-	java? ( >=virtual/jdk-1.8:* )"
+	java? ( virtual/jdk:1.8 )"
 RDEPEND="${DEPEND}
 	!git? ( cvs? ( dev-vcs/cvs ) )
 	git? ( dev-vcs/git )
-	java? ( >=virtual/jre-1.8:* )"
+	java? ( virtual/jre:1.8 )"
 BDEPEND="
 	!git? ( cvs? ( dev-vcs/cvs ) )
 	git? ( dev-vcs/git )
@@ -78,11 +78,6 @@ src_prepare() {
 	java-pkg-opt-2_src_prepare
 	default
 	elibtoolize
-	if use java; then
-		# Update the target version for libintl
-		sed -i -e "s/target_version=1.6/target_version=$(java-pkg_get-target)/" \
-			gettext-runtime/configure || die
-	fi
 }
 
 multilib_src_configure() {
@@ -123,11 +118,6 @@ multilib_src_configure() {
 		# for non-native ABIs, we build runtime only
 		ECONF_SOURCE+=/gettext-runtime
 	fi
-
-	# Ensure javacomp.sh uses our desired source and target versions.
-	# https://bugs.gentoo.org/855134
-	local -x JAVAC="${JAVAC} ${JAVACFLAGS}"
-	export JAVA_VERBOSE=1
 
 	econf "${myconf[@]}"
 }
