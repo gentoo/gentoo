@@ -25,6 +25,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
+	virtual/jre:*
 	virtual/pkgconfig
 	>=virtual/rust-1.61"
 
