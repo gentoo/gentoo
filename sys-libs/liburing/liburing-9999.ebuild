@@ -21,6 +21,10 @@ IUSE="static-libs"
 # fsync test hangs forever
 RESTRICT="test"
 
+# At least installed headers need <linux/*>, bug #802516
+DEPEND=">=sys-kernel/linux-headers-5.1"
+RDEPEND="${DEPEND}"
+
 src_prepare() {
 	default
 
