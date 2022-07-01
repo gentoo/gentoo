@@ -18,7 +18,10 @@ RDEPEND="virtual/libusb:0"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
-PATCHES=( "${FILESDIR}"/${P}-exclude-samples.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-exclude-samples.patch
+	"${FILESDIR}"/${P}-fix-docdir.patch
+)
 
 src_prepare() {
 	default

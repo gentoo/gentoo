@@ -1,0 +1,13 @@
+diff --git a/doc/Makefile.in b/doc/Makefile.in
+index 5a9b1bb..3e25fb5 100644
+--- a/doc/Makefile.in
++++ b/doc/Makefile.in
+@@ -169,7 +169,7 @@ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ EXTRA_DIST = Doxyfile.in examples.h mainpage.h
+-@HAVE_DOXYGEN_TRUE@pkgdocdir = $(datadir)/doc/$(PACKAGE)-$(VERSION)
++@HAVE_DOXYGEN_TRUE@pkgdocdir = $(docdir)
+ @HAVE_DOXYGEN_TRUE@htmldocdir = $(pkgdocdir)/html
+ all: all-am
+ 
