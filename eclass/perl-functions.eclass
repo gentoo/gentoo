@@ -161,7 +161,7 @@ perl_fix_packlist() {
 
 			# remove files that dont exist
 			cat "${f}" | while read -r entry; do
-				if [ ! -e "${D}/${entry}" ]; then
+				if [[ ! -e ${D}/${entry} ]]; then
 					einfo "Pruning surplus packlist entry ${entry}"
 					grep -v -x -F "${entry}" "${f}" > "${packlist_temp}"
 					mv "${packlist_temp}" "${f}"
@@ -276,12 +276,12 @@ perl_check_env() {
 
 	for i in PERL_MM_OPT PERL5LIB PERL5OPT PERL_MB_OPT PERL_CORE PERLPREFIX; do
 		# Next unless match
-		[ -v $i ] || continue;
+		[[ -v $i ]] || continue;
 
 		# Warn only once, and warn only when one of the bad values are set.
 		# record failure here.
-		if [ ${errored:-0} == 0 ]; then
-			if [ -n "${I_KNOW_WHAT_I_AM_DOING}" ]; then
+		if [[ ${errored:-0} == 0 ]]; then
+			if [[ -n ${I_KNOW_WHAT_I_AM_DOING} ]]; then
 				elog "perl-module.eclass: Suspicious environment values found.";
 			else
 				eerror "perl-module.eclass: Suspicious environment values found.";
@@ -293,7 +293,7 @@ perl_check_env() {
 		value=${!i};
 
 		# Print ENV name/value pair
-		if [ -n "${I_KNOW_WHAT_I_AM_DOING}" ]; then
+		if [[ -n ${I_KNOW_WHAT_I_AM_DOING} ]]; then
 			elog "    $i=\"$value\"";
 		else
 			eerror "    $i=\"$value\"";
@@ -301,10 +301,10 @@ perl_check_env() {
 	done
 
 	# Return if there were no failures
-	[ ${errored:-0} == 0 ] && return;
+	[[ ${errored:-0} == 0 ]] && return;
 
 	# Return if user knows what they're doing
-	if [ -n "${I_KNOW_WHAT_I_AM_DOING}" ]; then
+	if [[ -n ${I_KNOW_WHAT_I_AM_DOING} ]]; then
 		elog "Continuing anyway, seems you know what you're doing."
 		return
 	fi
