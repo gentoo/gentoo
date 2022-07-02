@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 DESCRIPTION="COmputer Language Manipulation"
 HOMEPAGE="https://www.colm.net/open-source/colm/"
