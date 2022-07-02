@@ -20,7 +20,7 @@ DEPEND="
 	dev-libs/cyrus-sasl
 	dev-libs/glib:2
 	dev-libs/libgcrypt:=
-	dev-python/ipy
+	dev-python/IPy
 	net-firewall/iptables
 	net-libs/gnutls:=
 	ldap? ( >=net-nds/openldap-2:= )
