@@ -40,11 +40,11 @@ BDEPEND="
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}]
+		dev-python/shapely[${PYTHON_USEDEP}]
 		dev-python/statsmodels[${PYTHON_USEDEP}]
 		dev-python/xarray[${PYTHON_USEDEP}]
 		sci-libs/pyshp[${PYTHON_USEDEP}]
 		sci-libs/scikit-image[${PYTHON_USEDEP}]
-		sci-libs/shapely[${PYTHON_USEDEP}]
 	)
 "
 

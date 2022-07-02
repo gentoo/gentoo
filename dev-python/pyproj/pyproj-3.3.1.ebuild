@@ -33,8 +33,8 @@ BDEPEND="
 	test? (
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
+		dev-python/shapely[${PYTHON_USEDEP}]
 		dev-python/xarray[${PYTHON_USEDEP}]
-		sci-libs/shapely[${PYTHON_USEDEP}]
 	)
 "
 

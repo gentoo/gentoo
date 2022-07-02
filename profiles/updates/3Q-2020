@@ -143,4 +143,4 @@ slotmove dev-haskell/network 3 0
 move sci-libs/scipy dev-python/scipy
 move dev-perl/frontier-rpc dev-perl/Frontier-RPC
 move sci-libs/Rtree sci-libs/rtree
-move sci-libs/Shapely sci-libs/shapely
+move sci-libs/Shapely dev-python/shapely

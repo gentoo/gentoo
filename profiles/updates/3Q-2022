@@ -3,3 +3,4 @@ move dev-python/configargparse dev-python/ConfigArgParse
 move dev-python/dbutils dev-python/DBUtils
 move dev-python/frozen-flask dev-python/Frozen-Flask
 move dev-python/ipy dev-python/IPy
+move sci-libs/shapely dev-python/shapely
