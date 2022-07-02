@@ -6,6 +6,7 @@
 		<name>Tupone Alfredo</name>
 	</maintainer>
 	<use>
+		<flag name="nnpack">Use NNPACK</flag>
 		<flag name="xnnpack">Use XNNPACK</flag>
 	</use>
 	<upstream>
