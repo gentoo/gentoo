@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit autotools python-single-r1
 
@@ -39,13 +39,11 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.3.12-find_python3.patch" #764230
 )
 
-pkg_setup() {
-	python-single-r1_pkg_setup
-}
-
 src_prepare() {
 	default
-	eautoreconf #764230
+
+	# bug #764230
+	eautoreconf
 }
 
 src_configure() {
