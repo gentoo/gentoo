@@ -1,7 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
+DIST_TEST="do parallel"
 inherit perl-module readme.gentoo-r1
 
 MY_PN="razor-agents"
@@ -10,6 +12,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Distributed, collaborative spam detection and filtering network"
 HOMEPAGE="http://razor.sourceforge.net/"
 SRC_URI="mirror://sourceforge/razor/${MY_P}.tar.bz2"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="Artistic"
 SLOT="0"
@@ -23,17 +26,12 @@ RDEPEND="
 	dev-perl/Digest-Nilsimsa
 	|| ( virtual/perl-Digest-SHA dev-perl/Digest-SHA1 )
 "
-DEPEND=""
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.85-use-sha-not-sha1.patch"
 	"${FILESDIR}/${PN}-2.85-cosmetic-pv-fix.patch"
 	"${FILESDIR}/${PN}-2.85-makefile-quoting-fix.patch"
 )
-
-S="${WORKDIR}/${MY_P}"
-
-SRC_TEST="do parallel"
 
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="
