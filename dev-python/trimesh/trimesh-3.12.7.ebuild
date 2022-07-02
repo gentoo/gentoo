@@ -37,11 +37,11 @@ RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/scipy[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	>=dev-python/shapely-1.8.2[${PYTHON_USEDEP}]
 	dev-python/svg-path[${PYTHON_USEDEP}]
 	dev-python/sympy[${PYTHON_USEDEP}]
 	dev-python/xxhash[${PYTHON_USEDEP}]
 	sci-libs/rtree[${PYTHON_USEDEP}]
-	>=sci-libs/shapely-1.8.2[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
