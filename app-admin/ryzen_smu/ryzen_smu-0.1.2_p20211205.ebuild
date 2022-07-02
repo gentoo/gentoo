@@ -6,7 +6,7 @@ EAPI=7
 inherit linux-mod linux-info toolchain-funcs
 
 SRC_URI="https://dev.gentoo.org/~slashbeast/distfiles/${PN}/${P}.tar.xz"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DESCRIPTION="Kernel driver for AMD Ryzen's System Management Unit"
 HOMEPAGE="https://github.com/leogx9r/ryzen_smu"
