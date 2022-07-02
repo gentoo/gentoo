@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-07-02)
+# Deprecated dependencies, no activity upstream. Bugs #845615, #796326.
+# Removal on 2022-08-02.
+app-vim/pyclewn
+
 # Michał Górny <mgorny@gentoo.org> (2022-07-02)
 # Last release in 2014.  Archived upstream, and superseded by GeoIP2
 # (not packaged).  There is only one revdep (net-p2p/deluge) for which
