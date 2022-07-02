@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DIST_TEST="do"
 inherit desktop optfeature perl-module git-r3 xdg-utils
 
 DESCRIPTION="A command line utility for viewing youtube-videos in Mplayer"
@@ -40,8 +41,6 @@ RDEPEND="
 	|| ( media-video/mpv media-video/mplayer media-video/vlc gtk? ( media-video/smplayer ) )"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-perl/Module-Build"
-
-SRC_TEST="do"
 
 src_configure() {
 	local myconf
