@@ -89,6 +89,10 @@ RDEPEND="
 		>=media-libs/alsa-lib-1.1.7[${MULTILIB_USEDEP}]
 	)
 	!pipewire-alsa? ( media-plugins/alsa-plugins[${MULTILIB_USEDEP},pulseaudio] )
+	sound-server? (
+		!media-sound/pulseaudio[daemon(+)]
+		!media-sound/pulseaudio-daemon
+	)
 	ssl? ( dev-libs/openssl:= )
 	systemd? ( sys-apps/systemd )
 	system-service? (
