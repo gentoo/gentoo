@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit autotools python-single-r1 xdg-utils
 
@@ -15,17 +15,15 @@ LICENSE="GPL-3 CC-BY-ND-3.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
-
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEPS}
+RDEPEND="
+	${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]' )
 	dev-libs/glib:2
 	gnome-base/nautilus
 	net-misc/dropbox"
-
 DEPEND="${RDEPEND}"
-
 BDEPEND="
 	$(python_gen_cond_dep 'dev-python/docutils[${PYTHON_USEDEP}]' )
 	virtual/pkgconfig"
@@ -54,8 +52,8 @@ src_install() {
 	default
 
 	# removes files which conflicts with system dropbox
-	rm -r "${D}/usr/share/applications" || die
-	rm -r "${D}/usr/bin" || die
+	rm -r "${ED}"/usr/share/applications || die
+	rm -r "${ED}"/usr/bin || die
 }
 
 pkg_postinst() {
