@@ -34,12 +34,14 @@ src_prepare() {
 		-e 's/^AS = as/AS +=/' \
 		-e '/^CC/d' \
 		-e 's/objcopy/$(OBJCOPY)/' \
+		-e 's/shell size/shell $(SIZE)/' \
 		build{32,64}/Makefile || die
 	default
 }
 
 src_compile() {
 	tc-export OBJCOPY
+	export SIZE=$(tc-getPROG SIZE size)
 	pushd build32
 		use bios32 && emake memtest.bin
 		use efi32 && emake memtest.efi
