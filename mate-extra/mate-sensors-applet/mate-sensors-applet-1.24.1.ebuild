@@ -43,6 +43,10 @@ DEPEND="${COMMON_DEPEND}
 
 PDEPEND="hddtemp? ( dbus? ( sys-fs/udisks:2 ) )"
 
+PATCHES=(
+    "${FILESDIR}/${PN}-1.24.1-dont-check-for-headers.patch"
+)
+
 src_configure() {
 	local udisks
 
