@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,6 +7,7 @@ EAPI=7
 # Ideally don't bump to non-production at all, but certainly don't stable.
 
 DIST_NAME=Image-ExifTool
+DIST_TEST="do"
 inherit perl-module
 
 DESCRIPTION="Read and write meta information in image, audio and video files"
@@ -16,8 +17,6 @@ SRC_URI="https://exiftool.org/${DIST_P}.tar.gz"
 SLOT="0"
 KEYWORDS="amd64 arm64 ppc ppc64 x86 ~x64-macos"
 IUSE="doc"
-
-SRC_TEST="do"
 
 src_install() {
 	perl-module_src_install
