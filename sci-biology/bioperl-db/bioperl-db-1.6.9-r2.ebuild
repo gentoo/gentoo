@@ -1,13 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 BIOPERL_RELEASE=1.6.9
 
 DIST_NAME=BioPerl-DB
 DIST_AUTHOR=CJFIELDS
 DIST_VERSION=1.006900
+DIST_TEST="do" # Parallelism probably bad
 inherit perl-module
 
 DESCRIPTION="Perl tools for bioinformatics - Perl API that accesses the BioSQL schema"
@@ -15,34 +16,32 @@ HOMEPAGE="http://www.bioperl.org/"
 
 SLOT="0"
 KEYWORDS="amd64 x86"
-RESTRICT="test"
 IUSE="test"
+RESTRICT="test"
 
-DIST_TEST="do" # Parallelism probably bad
-PATCHES=( "${FILESDIR}/${PN}-1.6.9-db.patch" )
 RDEPEND="
 	>=sci-biology/bioperl-${PV}
 	dev-perl/DBD-mysql
 	dev-perl/DBI
 	sci-biology/biosql"
-DEPEND="${RDEPEND}
-	dev-perl/Module-Build
+DEPEND="
+	${RDEPEND}
 	test? (
 		dev-perl/Data-Stag
 		dev-perl/Sub-Uplevel
 		dev-perl/Test-Warn
 		dev-perl/Test-Exception
 		virtual/perl-Test-Simple
-	)
-"
+	)"
+BDEPEND="dev-perl/Module-Build"
+
+PATCHES=( "${FILESDIR}"/${PN}-1.6.9-db.patch )
+
 src_prepare() {
 	export GENTOO_DB_HOSTNAME=localhost
 	perl-module_src_prepare
 }
-src_install() {
-	mydoc="AUTHORS BUGS FAQ"
-	perl-module_src_install
-}
+
 src_test() {
 	einfo "Removing bundled test libraries t/lib"
 	rm -r "${S}/t/lib" || die "Cannot remove t/lib"
@@ -96,4 +95,9 @@ src_test() {
 	ebegin "Shutting down mysql test database"
 	pkill -F "${pidfile}"
 	eend $?
+}
+
+src_install() {
+	mydoc="AUTHORS BUGS FAQ"
+	perl-module_src_install
 }
