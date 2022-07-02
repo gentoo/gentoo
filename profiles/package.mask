@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Fabian Groffen <grobian@gentoo.org> (2022-07-02)
+# Segfaults handling SPF validations (warn on permerror), like the
+# previous release, better not to trust your important mail to
+~mail-mta/exim-4.96
+
 # Ulrich Müller <ulm@gentoo.org> (2022-06-30)
 # Pretest versions, masked for testing.
 ~app-editors/emacs-28.1.90
