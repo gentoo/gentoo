@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2022-07-02)
+# dev-python/geoip-python is masked for removal.
+net-p2p/deluge geoip
+
 # James Le Cuirot <chewi@gentoo.org> (2022-06-25)
 # This flag concerns an x86-specific problem.
 sys-libs/glibc stack-realign

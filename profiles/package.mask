@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-07-02)
+# Last release in 2014.  Archived upstream, and superseded by GeoIP2
+# (not packaged).  There is only one revdep (net-p2p/deluge) for which
+# it is optional.
+# Removal on 2022-08-01.  Bug #855737.
+dev-python/geoip-python
+
 # Matthew Smith <matthew@gentoo.org> (2022-07-02)
 # Superseded by dev-util/rebar:3.
 # Removal in 30 days. Bug #855728.
