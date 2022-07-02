@@ -292,7 +292,6 @@ dev-util/cucumber-html-formatter:16
 dev-util/cucumber-messages:13
 dev-util/cucumber-messages:14
 dev-util/cucumber-messages:15
-dev-util/cucumber-tag-expressions:2
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
