@@ -22,14 +22,14 @@ KEYWORDS="amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 # curio is not packaged
 # asyncio is the only backend we have, so dep on its deps unconditionally
 # TODO: revisit
-RDEPEND="dev-python/async_timeout[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/async-timeout[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
 		$(python_gen_cond_dep '
 			>=dev-python/anyio-3.4.0[${PYTHON_USEDEP}]
 			dev-python/trio[${PYTHON_USEDEP}]
 		' 'python*')
-		dev-python/async_timeout[${PYTHON_USEDEP}]
+		dev-python/async-timeout[${PYTHON_USEDEP}]
 		dev-python/flask[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/yarl[${PYTHON_USEDEP}]

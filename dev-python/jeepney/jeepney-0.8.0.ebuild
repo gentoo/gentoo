@@ -19,7 +19,7 @@ IUSE="examples"
 
 BDEPEND="
 	test? (
-		dev-python/async_timeout[${PYTHON_USEDEP}]
+		dev-python/async-timeout[${PYTHON_USEDEP}]
 		>=dev-python/pytest-asyncio-0.7.1[${PYTHON_USEDEP}]
 		dev-python/testpath[${PYTHON_USEDEP}]
 		sys-apps/dbus

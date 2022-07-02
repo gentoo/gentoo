@@ -24,7 +24,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 
 RDEPEND="
 	app-arch/brotli[python,${PYTHON_USEDEP}]
 	>=dev-python/aiosignal-1.1.2[${PYTHON_USEDEP}]
-	>=dev-python/async_timeout-4.0.0_alpha3[${PYTHON_USEDEP}]
+	>=dev-python/async-timeout-4.0.0_alpha3[${PYTHON_USEDEP}]
 	>=dev-python/attrs-17.3.0[${PYTHON_USEDEP}]
 	>=dev-python/charset_normalizer-2.0[${PYTHON_USEDEP}]
 	>=dev-python/frozenlist-1.1.1[${PYTHON_USEDEP}]
