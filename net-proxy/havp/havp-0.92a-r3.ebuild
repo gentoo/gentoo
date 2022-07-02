@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools toolchain-funcs
 
 DESCRIPTION="HTTP AntiVirus Proxy"
-HOMEPAGE="http://www.server-side.de/"
+HOMEPAGE="http://www.havp.org/"
 SRC_URI="http://www.server-side.de/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
