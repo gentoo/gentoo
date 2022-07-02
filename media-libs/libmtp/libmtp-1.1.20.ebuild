@@ -33,6 +33,10 @@ BDEPEND="
 
 DOCS=( AUTHORS README TODO )
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.1.19-fix-docdir.patch"
+)
+
 src_prepare() {
 	default
 
