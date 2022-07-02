@@ -27,7 +27,7 @@ IUSE="selinux"
 
 RDEPEND="
 	>=app-crypt/acme-${PV}[${PYTHON_USEDEP}]
-	>=dev-python/configargparse-0.9.3[${PYTHON_USEDEP}]
+	>=dev-python/ConfigArgParse-0.9.3[${PYTHON_USEDEP}]
 	>=dev-python/configobj-5.0.6[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-2.5.0[${PYTHON_USEDEP}]
 	>=dev-python/distro-1.0.1[${PYTHON_USEDEP}]
