@@ -55,7 +55,6 @@ src_configure() {
 	python_setup
 	local mycmakeargs=(
 		-DUSE_KINETO=OFF
-		-DUSE_XNNPACK=$(usex xnnpack ON OFF)
 		-DUSE_SYSTEM_SLEEF=ON
 		-DUSE_BREAKPAD=OFF
 		-DUSE_SYSTEM_ONNX=ON
@@ -79,8 +78,9 @@ src_configure() {
 		-DLIBSHM_INSTALL_LIB_SUBDIR=/usr/$(get_libdir)
 		-DUSE_CCACHE=OFF
 		-DUSE_SYSTEM_PTHREADPOOL=ON
-		-DUSE_SYSTEM_XNNPACK=ON
 		-DUSE_SYSTEM_FXDIV=ON
+		-DUSE_XNNPACK=$(usex xnnpack ON OFF)
+		-DUSE_SYSTEM_XNNPACK=$(usex xnnpack ON OFF)
 	)
 	cmake_src_configure
 }
