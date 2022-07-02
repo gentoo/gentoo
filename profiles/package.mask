@@ -33,6 +33,20 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2022-07-02)
+# Unmaintained, no response on bugs, stuck on python 3.9. If you
+# want to unmask these, you have to at least port them to python 3.10.
+# Bugs #809524, #809527, #809530, #809533, #809833, #845729, #845816,
+# #846017, #846200, #846203, #846206, #853844, removal on 2022-08-01.
+app-misc/siglo
+dev-python/gatt-python
+dev-python/pynput
+media-libs/elgato-streamdeck
+media-video/streamdeck-ui
+net-wireless/jackit
+net-wireless/kismet-rest
+net-wireless/kismetdb
+
 # Sam James <sam@gentoo.org> (2022-07-02)
 # Deprecated dependencies, no activity upstream. Bugs #845615, #796326.
 # Removal on 2022-08-02.
