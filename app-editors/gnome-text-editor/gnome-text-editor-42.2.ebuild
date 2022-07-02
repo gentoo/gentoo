@@ -15,7 +15,7 @@ SLOT="0"
 
 IUSE="spell"
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="
 	>=dev-libs/glib-2.69:2
