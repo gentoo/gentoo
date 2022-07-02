@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DIST_TEST="do"
 inherit perl-module
 
 DESCRIPTION="A wiki compiler"
@@ -81,8 +82,6 @@ RDEPEND="${DEPEND}
 "
 
 BDEPEND="test? ( ${TEST_DEPEND} )"
-
-SRC_TEST=do
 
 src_prepare() {
 	default
