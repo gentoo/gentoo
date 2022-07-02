@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>ss23@ss23.geek.nz</email>
-		<name>Stephen Shkardoon</name>
-	</maintainer>
 	<maintainer type="person">
 		<email>perfinion@gentoo.org</email>
 		<name>Jason Zaman</name>
 	</maintainer>
-
 	<upstream>
 		<remote-id type="github">rakshasa/libtorrent</remote-id>
 	</upstream>
