@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/pillow[${PYTHON_USEDEP}]"
 
-distutils_enable_tests nose
+distutils_enable_tests pytest
 
 python_prepare_all() {
 	ln -s "${S}"/tests "${T}"/tests || die
