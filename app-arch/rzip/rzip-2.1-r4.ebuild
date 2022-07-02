@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -12,7 +12,6 @@ SRC_URI="https://rzip.samba.org/ftp/rzip/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE=""
 
 RDEPEND="app-arch/bzip2:="
 DEPEND="${RDEPEND}"
@@ -24,7 +23,6 @@ PATCHES=(
 
 src_prepare() {
 	default
-	mv configure.{in,ac} || die
 	eautoreconf
 }
 
@@ -33,7 +31,7 @@ pkg_postinst() {
 	ewarn "compression of large files it didn't set the right file size, so"
 	ewarn "if you have any reason to believe that your archive was compressed "
 	ewarn "with an old Gentoo rzip, please refer to "
-	ewarn "     https://bugs.gentoo.org/show_bug.cgi?id=217552 "
+	ewarn "     https://bugs.gentoo.org/217552"
 	ewarn "for the rzip-handle-broken-archive.patch patch to rescue your"
 	ewarn "data."
 	ewarn
