@@ -283,7 +283,6 @@ dev-python/mysql-connector-python
 # Unused slots of cucumber components that are no longer or were never
 # used by current cucumber versions. Masked for removal in 30 days.
 dev-util/cucumber-core:9
-dev-util/cucumber-create-meta:4
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
