@@ -6,11 +6,6 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Sam James <sam@gentoo.org> (2022-07-02)
-# dev-libs/collada-dom is masked for removal
-dev-games/openscenegraph collada
-dev-games/openscenegraph-openmw collada
-
 # Michał Górny <mgorny@gentoo.org> (2022-07-02)
 # dev-python/geoip-python is masked for removal.
 net-p2p/deluge geoip
