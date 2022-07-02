@@ -22,8 +22,9 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/havp-0.92a-run.patch
+	"${FILESDIR}"/${P}-run.patch
 	"${FILESDIR}"/${P}-pkg-config-libclamav.patch
+	"${FILESDIR}"/${P}-gcc12-time.patch
 )
 
 src_prepare() {
