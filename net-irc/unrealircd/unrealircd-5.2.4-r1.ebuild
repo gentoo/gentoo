@@ -12,7 +12,7 @@ HOMEPAGE="https://www.unrealircd.org/"
 SRC_URI="https://www.unrealircd.org/downloads/${P}.tar.gz"
 SRC_URI+=" verify-sig? ( https://www.unrealircd.org/downloads/${P}.tar.gz.asc )"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ppc ~ppc64 x86 ~amd64-linux"
 IUSE="class-nofakelag curl +operoverride operoverride-verify +prefixaq showlistmodes"
