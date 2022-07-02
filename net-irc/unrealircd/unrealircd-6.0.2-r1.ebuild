@@ -10,7 +10,7 @@ DESCRIPTION="An advanced Internet Relay Chat daemon"
 HOMEPAGE="https://www.unrealircd.org/"
 SRC_URI="https://www.unrealircd.org/downloads/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
 IUSE="class-nofakelag curl geoip +operoverride operoverride-verify"
