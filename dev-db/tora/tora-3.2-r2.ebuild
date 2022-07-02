@@ -43,10 +43,7 @@ BDEPEND="
 	doc? ( app-doc/doxygen )
 "
 
-PATCHES=(
-	"${FILESDIR}"/${P}-missing-header.patch
-	"${FILESDIR}"/${P}-qt-5.11.0.patch
-)
+PATCHES=( "${FILESDIR}"/${P}-qt-includes.patch )
 
 src_prepare() {
 	cmake_src_prepare
