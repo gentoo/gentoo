@@ -40,6 +40,7 @@ LICENSE="GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT"
 KEYWORDS="amd64 x86"
 IUSE="advpng debug ncurses sound test +tiles"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 S=${WORKDIR}/${MY_P}/source
 RDEPEND="
