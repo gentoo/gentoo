@@ -33,14 +33,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Sam James <sam@gentoo.org> (2022-07-02)
-# Stuck on cmake-utils.eclass (one of very few remaining consumers).
-# Removal on 2022-07-02.
-# bug #834316, bug #737112, bug #829768
-dev-ros/collada_urdf
-dev-ros/collada_parser
-dev-libs/collada-dom
-
 # David Seifert <soap@gentoo.org> (2022-07-02)
 # Unmaintained, no response on bugs, stuck on python 3.9. If you
 # want to unmask these, you have to at least port them to python 3.10.
