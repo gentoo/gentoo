@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit cmake-utils desktop xdg-utils
+inherit cmake desktop toolchain-funcs xdg
 
-if [[ ${PV} == 9999 ]]; then
+if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/tora-tool/tora"
 	inherit git-r3
 else
@@ -15,11 +15,11 @@ fi
 
 DESCRIPTION="SQL IDE for Oracle, MySQL and PostgreSQL dbs"
 HOMEPAGE="https://github.com/tora-tool/tora/wiki"
-IUSE="doc mysql oracle pch +postgres"
-REQUIRED_USE="|| ( mysql oracle postgres )"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
+IUSE="doc mysql oracle +postgres"
+REQUIRED_USE="|| ( mysql oracle postgres )"
 
 RDEPEND="
 	dev-libs/ferrisloki
@@ -33,14 +33,18 @@ RDEPEND="
 	oracle? ( dev-db/oracle-instantclient )
 	postgres? ( dev-db/postgresql:* )
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
+	dev-libs/boost
+"
+BDEPEND="
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# fixed in master, only care about recent qscintilla lib name:
 	sed -e "/FIND_LIBRARY(QSCINTILLA_LIBRARY/s/qt5scintilla2/qscintilla2_qt5/" \
@@ -59,33 +63,22 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_DB2=OFF
-		-DQT5_BUILD=ON
 		-DWANT_INTERNAL_LOKI=OFF
 		-DWANT_INTERNAL_QSCINTILLA=OFF
 		-DWANT_RPM=OFF
-		-DLOKI_LIBRARY="$($(tc-getPKG_CONFIG) --variable=libdir ferrisloki)/libferrisloki.so"
-		-DLOKI_INCLUDE_DIR="$($(tc-getPKG_CONFIG) --variable=includedir ferrisloki)/FerrisLoki"
-		$(cmake-utils_use_find_package doc Doxygen)
+		-DLOKI_LIBRARY="$($(tc-getPKG_CONFIG) --variable=libdir ferrisloki || die)/libferrisloki.so"
+		-DLOKI_INCLUDE_DIR="$($(tc-getPKG_CONFIG) --variable=includedir ferrisloki || die)/FerrisLoki"
+		$(cmake_use_find_package doc Doxygen)
 		-DENABLE_ORACLE=$(usex oracle)
-		-DUSE_PCH=$(usex pch)
+		-DUSE_PCH=OFF
 		-DENABLE_PGSQL=$(usex postgres)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
-	doicon src/icons/${PN}.xpm || die
-	domenu src/${PN}.desktop || die
-}
-
-pkg_postinst() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
+	doicon src/icons/tora.xpm || die
+	domenu src/tora.desktop || die
 }
