@@ -287,8 +287,6 @@ dev-util/cucumber-create-meta:4
 dev-util/cucumber-cucumber-expressions:10
 dev-util/cucumber-gherkin:18
 dev-util/cucumber-gherkin:20
-dev-util/cucumber-html-formatter:13
-dev-util/cucumber-html-formatter:16
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
