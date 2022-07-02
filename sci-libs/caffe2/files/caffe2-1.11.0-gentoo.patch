@@ -110,3 +110,14 @@
  endif()
  
  # ==========================================================
+--- a/cmake/External/nnpack.cmake	2022-07-02 21:56:54.905696921 +0200
++++ b/cmake/External/nnpack.cmake	2022-07-02 21:57:03.665696739 +0200
+@@ -58,7 +58,7 @@
+   set(PTHREADPOOL_SOURCE_DIR "${CAFFE2_THIRD_PARTY_ROOT}/pthreadpool" CACHE STRING "pthreadpool source directory")
+   set(GOOGLETEST_SOURCE_DIR "${CAFFE2_THIRD_PARTY_ROOT}/googletest" CACHE STRING "Google Test source directory")
+ 
+-  if(NOT TARGET nnpack)
++  if(FALSE)
+     if(NOT USE_SYSTEM_PTHREADPOOL AND USE_INTERNAL_PTHREADPOOL_IMPL)
+       set(NNPACK_CUSTOM_THREADPOOL ON CACHE BOOL "")
+     endif()

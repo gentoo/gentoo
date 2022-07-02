@@ -18,7 +18,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 RESTRICT="test"
-IUSE="xnnpack"
+IUSE="nnpack xnnpack"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
@@ -30,6 +30,7 @@ RDEPEND="
 	sci-libs/lapack
 	sci-libs/onnx
 	sci-libs/foxi
+	nnpack? ( sci-libs/NNPACK )
 	xnnpack? ( sci-libs/XNNPACK )
 "
 DEPEND="${RDEPEND}
@@ -62,7 +63,6 @@ src_configure() {
 		-DUSE_GLOO=OFF
 		-DUSE_SYSTEM_FP16=ON
 		-DUSE_FBGEMM=OFF
-		-DUSE_NNPACK=OFF
 		-DUSE_PYTORCH_QNNPACK=OFF
 		-DUSE_QNNPACK=OFF
 		-DUSE_SYSTEM_CPUINFO=ON
@@ -81,6 +81,7 @@ src_configure() {
 		-DUSE_SYSTEM_FXDIV=ON
 		-DUSE_XNNPACK=$(usex xnnpack ON OFF)
 		-DUSE_SYSTEM_XNNPACK=$(usex xnnpack ON OFF)
+		-DUSE_NNPACK=$(usex nnpack ON OFF)
 	)
 	cmake_src_configure
 }
