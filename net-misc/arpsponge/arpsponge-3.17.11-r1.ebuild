@@ -1,15 +1,19 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit perl-module
 
 DESCRIPTION="Sweeps up stray ARP queries from a peering LAN"
 HOMEPAGE="https://github.com/AMS-IX/arpsponge"
 SRC_URI="https://github.com/AMS-IX/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="|| ( GPL-1+ Artistic )"
 SLOT="0"
 KEYWORDS="~amd64"
+# bug #692912
+RESTRICT="test"
 
 RDEPEND="
 	dev-lang/perl
@@ -27,13 +31,11 @@ RDEPEND="
 	virtual/perl-Sys-Syslog
 	virtual/perl-Time-HiRes
 "
-
-DEPEND="${RDEPEND}
-	sys-devel/make
-"
+DEPEND="${RDEPEND}"
 
 src_install() {
 	perl_set_version
+
 	insinto ${VENDOR_LIB}/M6
 	doins lib/M6/ReadLine.pm
 
@@ -56,6 +58,7 @@ src_install() {
 
 	newinitd "${FILESDIR}/arpsponge.initd" arpsponge
 	newconfd "${FILESDIR}/arpsponge.confd" arpsponge
+
 	dosbin sbin/asctl sbin/arpsponge sbin/aslogtail
 	doman man/asctl.8 man/arpsponge.8 man/aslogtail.8
 	dodoc doc/command_mapping.txt doc/arpsponge_architecture.txt
