@@ -7,8 +7,8 @@ BASE_PACKAGENAME="bin"
 BASE_AMD64_URI="https://tamiko.43-1.org/distfiles/amd64-${BASE_PACKAGENAME}-"
 BASE_X86_URI="https://tamiko.43-1.org/distfiles/x86-${BASE_PACKAGENAME}-"
 
-PYTHON_COMPAT=( python3_9 )
-PYTHON_REQ_USE="xml"
+PYTHON_COMPAT=( python3_10 )
+PYTHON_REQ_USE="xml(+)"
 
 inherit java-pkg-opt-2 python-single-r1 prefix toolchain-funcs xdg-utils
 
