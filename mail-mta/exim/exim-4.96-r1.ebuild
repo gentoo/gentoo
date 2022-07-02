@@ -8,7 +8,7 @@ inherit db-use toolchain-funcs multilib pam systemd
 IUSE="arc berkdb +dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl
 dsn exiscan-acl gdbm gnutls idn ipv6 ldap lmtp maildir mbx
 mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux
-socks5 spf sqlite srs srs-alt +srs-native +ssl syslog tdb tcpd +tpda X"
+socks5 spf sqlite srs +ssl syslog tdb tcpd +tpda X"
 REQUIRED_USE="
 	arc? ( dkim spf )
 	dane? ( ssl !gnutls )
@@ -17,10 +17,7 @@ REQUIRED_USE="
 	gnutls? ( ssl )
 	pkcs11? ( ssl )
 	spf? ( exiscan-acl )
-	srs? (
-		exiscan-acl
-		^^ ( srs-alt srs-native )
-	)
+	srs? ( exiscan-acl )
 	|| ( berkdb gdbm tdb )
 "
 # NOTE on USE="gnutls dane", gnutls[dane] is masked in base, unmasked
@@ -79,7 +76,6 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	redis? ( dev-libs/hiredis:= )
 	spf? ( >=mail-filter/libspf2-1.2.5-r1 )
 	dmarc? ( mail-filter/opendmarc:= )
-	srs? ( srs-alt? ( mail-filter/libsrs_alt ) )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXmu
@@ -491,22 +487,11 @@ src_configure() {
 
 	# Sender Rewriting Scheme
 	if use srs; then
-		# NOTE: we currently USE-default to srs-alt, because this is
-		# what USE=srs used to be.  Eventually we want to rid ourselves
-		# of this external implementation.
-		if use srs-alt; then
-			# historical default, until 4.95
-			cat >> Makefile <<- EOC
-				EXPERIMENTAL_SRS_ALT=yes
-				EXTRALIBS_EXIM += -lsrs_alt
-			EOC
-		fi
-		if use srs-native; then
-			# this one is the default/supported variant since 4.95
-			cat >> Makefile <<- EOC
-				SUPPORT_SRS=yes
-			EOC
-		fi
+		# this one is the default/supported variant since 4.95, and the
+		# only variant available since 4.96
+		cat >> Makefile <<- EOC
+			SUPPORT_SRS=yes
+		EOC
 	fi
 
 	# Delivery Sender Notifications extra information in fail message
@@ -655,13 +640,9 @@ pkg_postinst() {
 		einfo "documentation at the bottom of this prerelease message:"
 		einfo "  http://article.gmane.org/gmane.mail.exim.devel/3579"
 	fi
-	if use srs-alt; then
-		einfo "SRS support using libsrs_alt is experimental in this"
-		einfo "release of Exim"
-		elog "You are using libsrs_alt to implement SRS support."
-		elog "The native SRS implementation (USE=srs-native) is the"
-		elog "default implementation, which means libsrs_alt may go"
-		elog "away in a future release."
+	if use srs; then
+		einfo "SRS support using libsrs_alt was dropped in this"
+		einfo "release of Exim, you are now using the native SRS implementation"
 	fi
 	use dsn && einfo "extra information in fail DSN message is experimental"
 	einfo
