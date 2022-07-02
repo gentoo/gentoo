@@ -279,11 +279,6 @@ dev-python/mysql-connector-python
 # The lowest supported version of GCC is GCC 10.
 <sys-devel/gcc-10
 
-# Hans de Graaff <graaff@gentoo.org> (2022-05-20)
-# Unused slots of cucumber components that are no longer or were never
-# used by current cucumber versions. Masked for removal in 30 days.
-dev-util/cucumber-core:9
-
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
 >=x11-libs/libX11-1.8
