@@ -1,19 +1,18 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-#PERL_EXPORT_PHASE_FUNCTIONS=no
+EAPI=8
+
 inherit perl-module toolchain-funcs
 
 DESCRIPTION="Port Scanning Attack Detection daemon"
-SRC_URI="https://www.cipherdyne.org/psad/download/${P}.tar.bz2"
 HOMEPAGE="https://www.cipherdyne.org/psad/"
+SRC_URI="https://www.cipherdyne.org/psad/download/${P}.tar.bz2"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="~alpha amd64 ~arm64 ppc ~sparc x86"
 
-DEPEND="virtual/perl-ExtUtils-MakeMaker"
 RDEPEND="
 	dev-perl/Bit-Vector
 	dev-perl/Date-Calc
@@ -23,11 +22,10 @@ RDEPEND="
 	net-misc/whois
 	virtual/logger
 	virtual/mailx
-	virtual/perl-Storable
-"
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.2.4-var-run.patch
-)
+	virtual/perl-Storable"
+BDEPEND="virtual/perl-ExtUtils-MakeMaker"
+
+PATCHES=( "${FILESDIR}"/${PN}-2.2.4-var-run.patch )
 
 src_prepare() {
 	default
@@ -45,10 +43,10 @@ src_prepare() {
 src_configure() {
 	default
 
-	local deps_subdir
-	for deps_subdir in IPTables-Parse IPTables-ChainMgr; do
-		cd "${S}"/deps/${deps_subdir} || die
-		SRC_PREP="no" perl-module_src_configure
+	local d
+	for d in IPTables-Parse IPTables-ChainMgr; do
+		cd "${S}"/deps/${d} || die
+		perl-module_src_configure
 	done
 }
 
@@ -56,9 +54,9 @@ src_compile() {
 	tc-export CC
 	default
 
-	local deps_subdir
-	for deps_subdir in IPTables-Parse IPTables-ChainMgr; do
-		cd "${S}"/deps/${deps_subdir} || die
+	local d
+	for d in IPTables-Parse IPTables-ChainMgr; do
+		cd "${S}"/deps/${d} || die
 		perl-module_src_compile
 	done
 }
@@ -66,7 +64,6 @@ src_compile() {
 src_install() {
 	newbin misc/pscan psad-pscan
 
-	insinto /usr
 	dosbin kmsgsd psad psadwatchd
 	newsbin fwcheck_psad.pl fwcheck_psad
 
@@ -85,9 +82,9 @@ src_install() {
 	insinto /etc/psad/snort_rules
 	doins deps/snort_rules/*
 
-	local deps_subdir
-	for deps_subdir in IPTables-Parse IPTables-ChainMgr; do
-		cd "${S}"/deps/${deps_subdir} || die
+	local d
+	for d in IPTables-Parse IPTables-ChainMgr; do
+		cd "${S}"/deps/${d} || die
 		perl-module_src_install
 	done
 }
