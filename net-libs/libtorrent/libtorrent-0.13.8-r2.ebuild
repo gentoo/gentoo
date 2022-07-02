@@ -1,35 +1,37 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="BitTorrent library written in C++ for *nix"
 HOMEPAGE="https://rakshasa.github.io/rtorrent/"
 SRC_URI="http://rtorrent.net/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
-
 # The README says that the library ABI is not yet stable and dependencies on
 # the library should be an explicit, syncronized version until the library
 # has had more time to mature. Until it matures we should not include a soname
 # subslot.
 SLOT="0"
-
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris"
-IUSE="debug ssl test"
-RESTRICT="!test? ( test )"
+IUSE="debug ssl"
 
 # cppunit dependency - https://github.com/rakshasa/libtorrent/issues/182
 RDEPEND="
 	dev-util/cppunit:=
 	sys-libs/zlib
-	ssl? (
-		dev-libs/openssl:0=
-	)"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	ssl? ( dev-libs/openssl:= )"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${PN}-0.13.8-sysroot.patch )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	# bug 518582
@@ -37,6 +39,7 @@ src_configure() {
 	echo -e "#include <inttypes.h>\nint main(){ int64_t var = 7; __sync_add_and_fetch(&var, 1); return 0;}" > "${T}/sync_add_and_fetch.c" || die
 	$(tc-getCC) ${CFLAGS} -o /dev/null -x c "${T}/sync_add_and_fetch.c" >/dev/null 2>&1
 	if [[ $? -ne 0 ]]; then
+		einfo "Disabling instrumentation"
 		disable_instrumentation="--disable-instrumentation"
 	fi
 
@@ -46,12 +49,11 @@ src_configure() {
 		$(use_enable debug) \
 		$(use_enable ssl openssl) \
 		${disable_instrumentation} \
-		--with-posix-fallocate \
-		--with-zlib="${EROOT%/}/usr/"
+		--with-posix-fallocate
 }
 
 src_install() {
 	default
 
-	find "${D}" -name '*.la' -delete
+	find "${ED}" -type f -name '*.la' -delete || die
 }
