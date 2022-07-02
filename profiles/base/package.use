@@ -1,7 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas Sturmlechner <asturm@gentoo.org>
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-07-02)
+# Only python 3.9 supported, bug #845546
+~app-office/libreoffice-bin-7.3.3.2 python_single_target_python3_9
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-06-14)
 # Only python 3.9 supported, bug #835921
 dev-util/kdevelop-python:5 python_single_target_python3_9
 
