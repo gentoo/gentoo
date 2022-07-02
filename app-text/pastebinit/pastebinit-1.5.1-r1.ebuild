@@ -25,6 +25,7 @@ RDEPEND="
 	')
 "
 BDEPEND="
+	sys-devel/gettext
 	man? (
 		app-text/docbook-xsl-stylesheets
 		dev-libs/libxslt
