@@ -38,9 +38,14 @@ sound-server ssl system-service systemd test udev v4l X zeroconf"
 # cycles consuming loop (and may even cause GUI crashes)!
 
 # TODO: There should be "sound-server? ( || ( alsa bluetooth ) )" here, but ALSA is always enabled
+# TODO: Pulseaudio alsa plugin performs runtime check that pulseaudio server connection will work
+# which provides adequate guarantee that alsa-lib will be able to provide audio services.
+# If that works, pulseaudio defaults are loaded into alsa-lib runtime replacing default PCM and CTL.
+# When pipewire-alsa will be able to perform similar check, pipewire-alsa can be enabled unconditionally.
 REQUIRED_USE="
 	jack-sdk? ( !jack-client )
 	system-service? ( systemd )
+	!sound-server? ( !pipewire-alsa )
 "
 
 RESTRICT="!test? ( test )"
