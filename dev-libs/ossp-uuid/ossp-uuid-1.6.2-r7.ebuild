@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI=8
 
 MY_P="uuid-${PV}"
 
@@ -18,11 +18,15 @@ LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="+cxx perl static-libs test"
+RESTRICT="!test? ( test )"
 
-DEPEND="perl? ( dev-lang/perl test? ( virtual/perl-Test-Simple ) )"
+DEPEND="
+	perl? (
+		dev-lang/perl
+		test? ( virtual/perl-Test-Simple )
+	)"
 RDEPEND="perl? ( dev-lang/perl:= )"
 BDEPEND="perl? ( dev-lang/perl )"
-RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${P}-gentoo-r1.patch"
@@ -67,18 +71,17 @@ src_test() {
 }
 
 src_install() {
-	local DOCS=( AUTHORS BINDINGS ChangeLog HISTORY NEWS OVERVIEW PORTING README SEEALSO THANKS TODO USERS )
 	default
-	unset DOCS #unset so that other eclasses don't try to install them and possibly fail
+	dodoc BINDINGS HISTORY OVERVIEW PORTING SEEALSO USERS
 
 	if use perl ; then
 		cd perl || die
 		perl-module_src_install
 	fi
 
-	use static-libs || rm -rf "${ED}"/usr/lib*/*.la
+	find "${ED}" -name '*.la' -delete || die
 
-	mv "${ED}/usr/$(get_libdir)/pkgconfig"/{,ossp-}uuid.pc
-	mv "${ED}/usr/share/man/man3"/uuid.3{,ossp}
-	mv "${ED}/usr/share/man/man3"/uuid++.3{,ossp}
+	mv "${ED}"/usr/$(get_libdir)/pkgconfig/{,ossp-}uuid.pc || die
+	mv "${ED}"/usr/share/man/man3/uuid.3{,ossp} || die
+	mv "${ED}"/usr/share/man/man3/uuid++.3{,ossp} || die
 }
