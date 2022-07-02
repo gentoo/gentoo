@@ -28,6 +28,21 @@ RDEPEND="
 	thirdparty? ( dev-python/requests )
 "
 
+src_configure() {
+
+	./configure \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--localstatedir=/var/lib \
+		--disable-dependency-tracking \
+		--disable-silent-rules \
+		"--docdir=/usr/share/doc/${P}" \
+		"--htmldir=/usr/share/doc/${P}/html" \
+		--libdir=/usr/lib64 \
+		|| die "Configure failed"
+
+}
+
 src_install() {
 	default
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
