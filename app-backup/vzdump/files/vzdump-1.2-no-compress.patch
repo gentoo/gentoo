@@ -1,0 +1,45 @@
+--- a/Makefile
++++ b/Makefile
+@@ -55,9 +55,9 @@ DISTFILES=			\
+ 
+ PKGSOURCE= 			\
+ 	vzdump 			\
+-	vzdump.1.gz 		\
++	vzdump.1 		\
+ 	vzrestore 		\
+-	vzrestore.1.gz 		\
++	vzrestore.1 		\
+ 	VZDump.pm 		\
+ 	Plugin.pm 		\
+ 	OpenVZ.pm		\
+@@ -77,8 +77,8 @@ install: ${PKGSOURCE}
+ 	install -m 0755 vzdump ${DESTDIR}${SBINDIR}
+ 	install -m 0755 vzrestore ${DESTDIR}${SBINDIR}
+ 	install -d ${DESTDIR}${MAN1DIR}
+-	install -m 0644 vzdump.1.gz ${DESTDIR}${MAN1DIR}
+-	install -m 0644 vzrestore.1.gz ${DESTDIR}${MAN1DIR}
++	install -m 0644 vzdump.1 ${DESTDIR}${MAN1DIR}
++	install -m 0644 vzrestore.1 ${DESTDIR}${MAN1DIR}
+ 	install -d ${DESTDIR}${PERLLIBDIR}
+ 	install -m 0644 VZDump.pm ${DESTDIR}${PERLLIBDIR}
+ 	install -d ${DESTDIR}${PERLLIBDIR}/VZDump
+@@ -104,9 +104,9 @@ deb ${DEB}: ${PKGSOURCE} ${DISTFILES}
+ 	rm -rf debian
+ 	lintian ${DEB}
+ 
+-%.1.gz: %
+-	rm -f $*.1.gz
+-	pod2man -n $* -s 1 -r ${VERSION} -c "Proxmox Documentation"  <$* |gzip -c9 >$*.1.gz
++%.1: %
++	rm -f $*.1
++	pod2man -n $* -s 1 -r ${VERSION} -c "Proxmox Documentation"  <$* >$*.1
+ 
+ .PHONY: rpm
+ rpm ${RPM}: ${TGZ} ${PACKAGE}.spec
+@@ -134,4 +134,4 @@ ${TGZ}: ${DISTFILES}
+ 
+ .PHONY: clean
+ clean: 	
+-	rm -rf debian *~ *.deb *.tar.gz *.rpm *.1.gz vzdump.spec control ${DISTDIR}
+\ No newline at end of file
++	rm -rf debian *~ *.deb *.tar.gz *.rpm *.1.gz vzdump.spec control ${DISTDIR}
