@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,19 +17,21 @@ KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc sparc x86"
 #From the module:
 # If you run 'make test', you must make sure that nothing is plugged
 # into '/dev/ttyS1'!
-# Doesn't sound wise to enable SRC_TEST="do" - mcummings
+# Doesn't sound wise to enable DIST_TEST="do" - mcummings
 
 src_configure() {
 	myconf=()
 	[[ -n "${DEVICE_SERIALPORT_PORT}" ]] && myconf+=( "TESTPORT=${DEVICE_SERIALPORT_PORT}" )
 	perl-module_src_configure
 }
+
 src_compile() {
 	mymake=(
 		"OPTIMIZE=${CFLAGS}"
 	)
 	perl-module_src_compile
 }
+
 src_test() {
 	local MODULES=(
 		"Device::SerialPort ${DIST_VERSION}"
