@@ -1,6 +1,5 @@
-diff -Nuar a/lib/mhamain.pl b/lib/mhamain.pl
---- a/lib/mhamain.pl	2006-06-10 02:42:58.000000000 +0000
-+++ b/lib/mhamain.pl	2008-01-27 14:12:48.000000000 +0000
+--- a/lib/mhamain.pl
++++ b/lib/mhamain.pl
 @@ -73,6 +73,8 @@
      TERM TRAP USR1 USR2 VTALRM XCPU XFSZ
  );
@@ -10,7 +9,7 @@ diff -Nuar a/lib/mhamain.pl b/lib/mhamain.pl
  ###############################################################################
  ##	Public routines
  ###############################################################################
-@@ -934,6 +936,16 @@
+@@ -936,6 +938,16 @@
      } else {
  	$ctype = 'text/plain';
      }
@@ -26,8 +25,8 @@ diff -Nuar a/lib/mhamain.pl b/lib/mhamain.pl
 +    }
  
      ## Insure uniqueness of index
-     $index .= $X . sprintf('%d',(defined($msgnum)?$msgnum:($LastMsgNum+1)));
-@@ -955,6 +967,7 @@
+     my $t = $index;
+@@ -961,6 +973,7 @@
      $Subject{$index} = $sub;
      $MsgHead{$index} = htmlize_header($fields);
      $ContentType{$index} = $ctype;
@@ -35,7 +34,7 @@ diff -Nuar a/lib/mhamain.pl b/lib/mhamain.pl
      if ($msgid) {
  	$MsgId{$msgid} = $index;
  	$NewMsgId{$msgid} = $index;	# Track new message-ids
-@@ -966,6 +979,7 @@
+@@ -972,6 +985,7 @@
      } else {
  	$IndexNum{$index} = getNewMsgNum();
      }
@@ -43,7 +42,7 @@ diff -Nuar a/lib/mhamain.pl b/lib/mhamain.pl
  
      $Refs{$index} = [ @refs ]  if (@refs);
  
-@@ -1102,7 +1116,7 @@
+@@ -1121,7 +1135,7 @@
  
      my $adding	     = ($ADD && !$force && !$SINGLE);
      my $i_p0 	     = fmt_msgnum($msgnum);
@@ -52,7 +51,7 @@ diff -Nuar a/lib/mhamain.pl b/lib/mhamain.pl
      my $filepathname = join($DIRSEP, $OUTDIR, $filename);
      my $tmppathname;
  
-@@ -1160,7 +1174,9 @@
+@@ -1179,7 +1193,9 @@
  		"<!--X-Message-Id: ",
  		    commentize($Index2MsgId{$index}), " -->\n",
  		"<!--X-Content-Type: ",
@@ -63,7 +62,7 @@ diff -Nuar a/lib/mhamain.pl b/lib/mhamain.pl
  
  	    if (defined($Refs{$index})) {
  		foreach (@{$Refs{$index}}) {
-@@ -1456,8 +1472,9 @@
+@@ -1475,8 +1491,9 @@
      #&defineIndex2MsgId();
      my $msgnum = $IndexNum{$key};
      return (undef, undef)  if ($msgnum eq '');
@@ -74,9 +73,8 @@ diff -Nuar a/lib/mhamain.pl b/lib/mhamain.pl
      delete $ContentType{$key};
      delete $Date{$key};
      delete $From{$key};
-diff -Nuar a/lib/mhdb.pl b/lib/mhdb.pl
---- a/lib/mhdb.pl	2005-12-20 21:28:15.000000000 +0000
-+++ b/lib/mhdb.pl	2008-01-27 13:25:52.000000000 +0000
+--- a/lib/mhdb.pl
++++ b/lib/mhdb.pl
 @@ -61,6 +61,7 @@
  
  ## Meta-data
@@ -85,10 +83,9 @@ diff -Nuar a/lib/mhdb.pl b/lib/mhdb.pl
  print_var($db,'Date',        \%Date);
  print_var($db,'Derived',     \%Derived);
  print_var($db,'FollowOld',   \%Follow);
-diff -Nuar a/lib/mhinit.pl b/lib/mhinit.pl
---- a/lib/mhinit.pl	2005-07-08 06:34:03.000000000 +0000
-+++ b/lib/mhinit.pl	2008-01-27 13:25:52.000000000 +0000
-@@ -247,6 +247,7 @@
+--- a/lib/mhinit.pl
++++ b/lib/mhinit.pl
+@@ -248,6 +248,7 @@
  %Follow  	= ();	# Index key to follow-ups
  %FolCnt   	= ();	# Index key to number of follow-ups
  %ContentType	= ();	# Index key to base content-type of message
@@ -96,9 +93,8 @@ diff -Nuar a/lib/mhinit.pl b/lib/mhinit.pl
  %Icons    	= ();	# Index key to icon URL for content-type
  %AddIndex 	= ();	# Flags for messages that must be written
  
-diff -Nuar a/lib/mhmsgfile.pl b/lib/mhmsgfile.pl
---- a/lib/mhmsgfile.pl	2001-09-17 16:10:28.000000000 +0000
-+++ b/lib/mhmsgfile.pl	2008-01-27 14:12:16.000000000 +0000
+--- a/lib/mhmsgfile.pl
++++ b/lib/mhmsgfile.pl
 @@ -123,6 +123,10 @@
      if (defined($href->{'derived'})) {
  	$Derived{$index} = $href->{'derived'};
@@ -110,10 +106,9 @@ diff -Nuar a/lib/mhmsgfile.pl b/lib/mhmsgfile.pl
  
      $IndexNum{$index} = int($msgnum);
  
-diff -Nuar a/lib/mhopt.pl b/lib/mhopt.pl
---- a/lib/mhopt.pl	2005-07-08 06:34:03.000000000 +0000
-+++ b/lib/mhopt.pl	2008-01-27 13:25:52.000000000 +0000
-@@ -764,6 +764,7 @@
+--- a/lib/mhopt.pl
++++ b/lib/mhopt.pl
+@@ -798,6 +798,7 @@
      delete($MsgId{''});
      delete($FollowOld{''});
      delete($ContentType{''});
@@ -121,10 +116,9 @@ diff -Nuar a/lib/mhopt.pl b/lib/mhopt.pl
      delete($Refs{''});
  
      # update DOCURL if default old value
-diff -Nuar a/lib/mhrcvars.pl b/lib/mhrcvars.pl
---- a/lib/mhrcvars.pl	2005-07-08 05:27:52.000000000 +0000
-+++ b/lib/mhrcvars.pl	2008-01-27 14:11:19.000000000 +0000
-@@ -195,7 +195,7 @@
+--- a/lib/mhrcvars.pl
++++ b/lib/mhrcvars.pl
+@@ -225,7 +225,7 @@
  	}
      	if ($var eq 'MSG') {		## Filename of message page
  	    ($lref, $key, $pos) = compute_msg_pos($index, $var, $arg);
@@ -133,7 +127,7 @@ diff -Nuar a/lib/mhrcvars.pl b/lib/mhrcvars.pl
  	    last REPLACESW;
  	}
  	if ($var eq 'MSGHFIELD') {	## Message header field
-@@ -417,7 +417,7 @@
+@@ -447,7 +447,7 @@
  	    if (!defined($key)) { $tmp = ""; last REPLACESW; }
  	    $tmp = qq/name="/ . &fmt_msgnum($IndexNum{$key}) .
  		   qq/" href="/ .
@@ -142,7 +136,7 @@ diff -Nuar a/lib/mhrcvars.pl b/lib/mhrcvars.pl
  		   qq/"/;
  	    last REPLACESW;
  	}
-@@ -432,7 +432,7 @@
+@@ -462,7 +462,7 @@
  	    $isurl = 0;
  	    ($lref, $key, $pos) = compute_msg_pos($index, $var, $arg);
  	    if (!defined($key)) { $tmp = ""; last REPLACESW; }
@@ -151,7 +145,7 @@ diff -Nuar a/lib/mhrcvars.pl b/lib/mhrcvars.pl
  	    last REPLACESW;
  	}
      	if ($var eq 'IDXFNAME') {	## Filename of index page
-@@ -730,7 +730,7 @@
+@@ -760,7 +760,7 @@
      $ret = qq|<a name="| .
  	   &fmt_msgnum($IndexNum{$index}) .
  	   qq|" href="| .
@@ -160,9 +154,8 @@ diff -Nuar a/lib/mhrcvars.pl b/lib/mhrcvars.pl
  	   qq|">$ret</a>|
  	if $var eq 'SUBJECT' && $arg eq "" && !$mailto;
  
-diff -Nuar a/lib/mhutil.pl b/lib/mhutil.pl
---- a/lib/mhutil.pl	2005-07-08 05:27:53.000000000 +0000
-+++ b/lib/mhutil.pl	2008-01-27 14:11:50.000000000 +0000
+--- a/lib/mhutil.pl
++++ b/lib/mhutil.pl
 @@ -28,6 +28,7 @@
  package mhonarc;
  
@@ -171,7 +164,7 @@ diff -Nuar a/lib/mhutil.pl b/lib/mhutil.pl
  
  ## RFC 2369 header fields to check for URLs
  %HFieldsList = (
-@@ -304,16 +305,20 @@
+@@ -313,16 +314,20 @@
  ##	Routine to get filename of a message number.
  ##
  sub msgnum_filename {
