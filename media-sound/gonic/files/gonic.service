@@ -1,0 +1,19 @@
+[Unit]
+Description=gonic service
+After=network.target
+
+[Service]
+Type=simple
+User=gonic
+Group=gonic
+
+StateDirectory=gonic
+CacheDirectory=gonic
+
+Restart=on-failure
+RestartSec=10
+
+ExecStart=/usr/bin/gonic -config-path /etc/gonic/gonic.conf
+
+[Install]
+WantedBy=multi-user.target
