@@ -1,0 +1,21 @@
+--- a/rp2gen/Makefile.in
++++ b/rp2gen/Makefile.in
+@@ -198,7 +198,8 @@
+ CCDEPMODE = @CCDEPMODE@
+ 
+ # override any cross compilation target flags
+-CFLAGS = -Wall
++AM_CFLAGS = -Wall
++CFLAGS = @CFLAGS@
+ CONFIG_DATE = @CONFIG_DATE@
+ CP = @CP@
+ CPP = @CPP@
+@@ -225,7 +226,7 @@
+ INSTALL_SCRIPT = @INSTALL_SCRIPT@
+ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+ LD = @LD@
+-LDFLAGS = 
++LDFLAGS = @LDFLAGS@
+ LEX = @LEX@
+ LEXLIB = @LEXLIB@
+ LEX_OUTPUT_ROOT = @LEX_OUTPUT_ROOT@
