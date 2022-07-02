@@ -1,13 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit apache-module perl-module
 
 DESCRIPTION="A library for manipulating client request data via the Apache API"
-SRC_URI="mirror://apache/httpd/libapreq/${P}.tar.gz"
 HOMEPAGE="https://httpd.apache.org/apreq/"
+SRC_URI="mirror://apache/httpd/libapreq/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="2"
@@ -25,23 +25,17 @@ RDEPEND="
 		virtual/perl-version
 		>=www-apache/mod_perl-2
 	)
-"
-# sys-apps/file should be BDEPEND when we can use EAPI 7
-# bug #778173
+	virtual/libcrypt:="
 DEPEND="
 	${RDEPEND}
-	sys-apps/file
-	test? ( dev-perl/Apache-Test )
-"
+	test? ( dev-perl/Apache-Test )"
+BDEPEND="sys-apps/file"
 
-PATCHES=(
-	"${FILESDIR}"/libapreq2-2.08-doc.patch
-)
+PATCHES=( "${FILESDIR}"/libapreq2-2.08-doc.patch )
 
 APACHE2_MOD_FILE="module/apache2/.libs/mod_apreq2.so"
 APACHE2_MOD_CONF="76_mod_apreq"
 APACHE2_MOD_DEFINE="APREQ"
-DOCFILES="docs/html/*.html CHANGES README INSTALL MANIFEST"
 
 need_apache2
 
@@ -52,13 +46,12 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	sed -i -e "s/PERL \$PERL_OPTS/PERL/" "${S}"/acinclude.m4 || die
-	sed -i -e "s/PERL \$PERL_OPTS/PERL/" "${S}"/aclocal.m4 || die
-	sed -i -e "s/PERL \$PERL_OPTS/PERL/" "${S}"/configure  || die
+	sed -i -e "s/PERL \$PERL_OPTS/PERL/" acinclude.m4 aclocal.m4 configure || die
 }
 
 src_configure() {
 	econf \
+		--disable-static \
 		--with-apache2-apxs=${APXS} \
 		$(use_enable perl perl-glue)
 }
@@ -72,9 +65,16 @@ src_install() {
 
 	perl_delete_localpod
 
-	for i in $(find "${D}" -type f -not -name '*.so'); do
-		if file ${i} | grep -i " text"; then
-			sed -i -e "s:${D}:/:g" ${i} || die
+	HTML_DOCS=( docs/html/. )
+	einstalldocs
+	dodoc INSTALL MANIFEST
+
+	local f
+	while IFS="" read -d $'\0' -r f ; do
+		if file "${f}" | grep -i " text"; then
+			sed -i -e "s:${ED}:/:g" "${f}" || die
 		fi
-	done
+	done < <(find "${ED}" -type f -not -name '*.so' -print0)
+
+	find "${ED}" -name '*.la' -delete || die
 }
