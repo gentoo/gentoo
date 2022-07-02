@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matthew Smith <matthew@gentoo.org> (2022-07-02)
+# Superseded by dev-util/rebar:3.
+# Removal in 30 days. Bug #855728.
+dev-util/rebar-bin
+
 # Fabian Groffen <grobian@gentoo.org> (2022-07-02)
 # Segfaults handling SPF validations (warn on permerror), like the
 # previous release, better not to trust your important mail to
