@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -12,7 +12,9 @@ SRC_URI="mirror://sourceforge/funzix/${P}.tar.bz2"
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
+
+RDEPEND="sys-libs/zlib"
+DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${PN}-1.0-fix-build-system.patch )
 
