@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -12,7 +12,6 @@ SRC_URI="https://github.com/inikep/lz5/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2 BSD-2"
 SLOT="0/2"
 KEYWORDS="~amd64"
-IUSE="static-libs"
 
 src_prepare() {
 	default
@@ -21,13 +20,13 @@ src_prepare() {
 }
 
 src_compile() {
-	emake -Clib CC="$(tc-getCC)" lib liblz5.pc
-	emake -Cprograms CC="$(tc-getCC)" lz5
+	emake -C lib CC="$(tc-getCC)" lib liblz5.pc
+	emake -C programs CC="$(tc-getCC)" lz5
 }
 
 src_install() {
-	emake install DESTDIR="${D}" PREFIX="/usr" LIBDIR="/usr/$(get_libdir)"
-	if ! use static-libs; then
-		rm "${D}"/usr/$(get_libdir)/liblz5.a || die
-	fi
+	emake install DESTDIR="${ED}" PREFIX="/usr" LIBDIR="/usr/$(get_libdir)"
+	rm "${ED}"/usr/$(get_libdir)/liblz5.a || die
+
+	einstalldocs
 }
