@@ -8,14 +8,12 @@ PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
-MY_P=${PN/_/-}-${PV}
 DESCRIPTION="Timeout context manager for asyncio programs"
 HOMEPAGE="
 	https://github.com/aio-libs/async-timeout/
 	https://pypi.org/project/async-timeout/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
