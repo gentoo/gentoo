@@ -5,25 +5,27 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..11} )
+
 inherit distutils-r1
 
-MY_PN="ConfigArgParse"
-MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Drop-in replacement for argparse supporting config files and env variables"
 HOMEPAGE="
 	https://github.com/bw2/ConfigArgParse/
 	https://pypi.org/project/ConfigArgParse/"
 SRC_URI="
 	https://github.com/bw2/ConfigArgParse/archive/v${PV}.tar.gz
-		-> ${MY_P}.gh.tar.gz"
-S="${WORKDIR}/${MY_P}"
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
 
 BDEPEND="
-	test? ( dev-python/pyyaml[${PYTHON_USEDEP}] )"
+	test? (
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests unittest
 
