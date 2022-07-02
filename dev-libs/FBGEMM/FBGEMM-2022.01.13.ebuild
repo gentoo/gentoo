@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
-inherit python-any-r1 cmake
+inherit python-any-r1 flag-o-matic cmake
 
 CommitId=135412d2646f3bd753c8f1cfd33616110bbccd27
 
@@ -36,6 +36,9 @@ PATCHES=(
 )
 
 src_prepare() {
+	# Bug #855668
+	filter-lto
+
 	rm test/RowWiseSparseAdagradFusedTest.cc || die
 	rm test/SparseAdagradTest.cc || die
 	cmake_src_prepare
