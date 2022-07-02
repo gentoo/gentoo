@@ -26,6 +26,8 @@ IUSE=""
 ruby_add_rdepend ">=dev-ruby/descendants_tracker-0.0.1
 	<dev-ruby/descendants_tracker-0.1"
 
+ruby_add_bdepend "test? ( dev-ruby/rspec-its )"
+
 all_ruby_prepare() {
 	sed -i -e 's/git ls-files/find * -print/' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
