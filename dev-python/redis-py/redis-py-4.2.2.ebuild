@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86"
 
 RDEPEND="
-	>=dev-python/async_timeout-4.0.2[${PYTHON_USEDEP}]
+	>=dev-python/async-timeout-4.0.2[${PYTHON_USEDEP}]
 	>=dev-python/deprecated-1.2.3[${PYTHON_USEDEP}]
 	>=dev-python/packaging-20.4[${PYTHON_USEDEP}]
 "
