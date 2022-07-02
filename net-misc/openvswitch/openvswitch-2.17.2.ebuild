@@ -3,6 +3,7 @@
 
 EAPI=8
 
+MODULES_OPTIONAL_USE="modules"
 PYTHON_COMPAT=( python3_{8..11} )
 
 inherit autotools linux-info linux-mod python-r1 systemd tmpfiles
@@ -34,7 +35,6 @@ PATCHES=(
 
 CONFIG_CHECK="~NET_CLS_ACT ~NET_CLS_U32 ~NET_SCH_INGRESS ~NET_ACT_POLICE ~IPV6 ~TUN"
 MODULE_NAMES="openvswitch(net:${S}/datapath/linux)"
-MODULES_OPTIONAL_USE="modules"
 BUILD_TARGETS="all"
 
 pkg_setup() {
