@@ -284,7 +284,6 @@ dev-python/mysql-connector-python
 # used by current cucumber versions. Masked for removal in 30 days.
 dev-util/cucumber-core:9
 dev-util/cucumber-create-meta:4
-dev-util/cucumber-cucumber-expressions:10
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-30)
 # Masked for testing. Apparently causes crashes. Bug #841857.
