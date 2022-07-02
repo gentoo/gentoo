@@ -257,11 +257,6 @@ dev-python/mysql-connector-python
 # Removal on 2022-07-02.  Bug #834534.
 dev-python/jaraco-packaging
 
-# Sam James <sam@gentoo.org> (2022-06-02)
-# No reverse dependencies, uses long-deprecated and abandoned nose for tests,
-# no upstream activity in years. Removal on 2022-07-02.
-dev-python/chai
-
 # Matt Turner <mattst88@gentoo.org> (2022-05-30)
 # libwacom-2 broke ABI compatibility; reverse dependencies need to be updated.
 # Bug #848501
