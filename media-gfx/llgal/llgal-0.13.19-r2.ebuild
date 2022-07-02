@@ -1,13 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit perl-module
 
 DESCRIPTION="Command-line static web gallery generator"
 HOMEPAGE="http://bgoglin.free.fr/llgal/"
 SRC_URI="https://github.com/bgoglin/llgal/archive/${P}.tar.gz"
+S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -16,14 +17,11 @@ KEYWORDS="amd64 ~ppc x86"
 IUSE="exif"
 
 RDEPEND="
-	 dev-perl/Image-Size
-	 dev-perl/URI
-	 dev-perl/Locale-gettext
-	 exif? ( media-libs/exiftool )
-	 virtual/imagemagick-tools
-"
-
-S="${WORKDIR}/${PN}-${P}"
+	dev-perl/Image-Size
+	dev-perl/URI
+	dev-perl/Locale-gettext
+	virtual/imagemagick-tools
+	exif? ( media-libs/exiftool )"
 
 src_compile() {
 	emake \
