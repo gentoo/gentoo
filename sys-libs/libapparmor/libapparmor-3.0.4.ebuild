@@ -31,7 +31,10 @@ BDEPEND="
 	sys-devel/flex
 	doc? ( dev-lang/perl )
 	perl? ( dev-lang/swig )
-	python? ( dev-lang/swig	)"
+	python? (
+		dev-lang/swig
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	)"
 
 S=${WORKDIR}/apparmor-${PV}/libraries/${PN}
 
