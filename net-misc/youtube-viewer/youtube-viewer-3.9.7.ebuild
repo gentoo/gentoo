@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DIST_TEST="do"
 inherit desktop optfeature perl-module xdg-utils
 
 DESCRIPTION="A command line utility for viewing youtube-videos in Mplayer"
