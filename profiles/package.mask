@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2022-07-02)
+# Unmaintained, broken configure script, upstream disappeared, EAPI 6,
+# Bugs #744046, #750203, removal on 2022-08-01.
+app-pda/jpilot
+app-pda/pilot-link
+
+# David Seifert <soap@gentoo.org> (2022-07-02)
 # Unmaintained, no response on bugs, stuck on python 3.9. If you
 # want to unmask these, you have to at least port them to python 3.10.
 # Bugs #809524, #809527, #809530, #809533, #809833, #845729, #845816,
