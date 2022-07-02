@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1 virtualx
@@ -27,6 +27,10 @@ BDEPEND="${RDEPEND}
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-py3.11-tests.patch
+)
 
 python_prepare_all() {
 	# When dev-python/pytest-shutil is installed, we get weird import errors.
