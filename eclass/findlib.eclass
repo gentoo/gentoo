@@ -48,8 +48,6 @@ check_ocamlfind() {
 # We use the stublibs style, so no ld.conf needs to be
 # updated when a package installs C shared libraries.
 findlib_src_preinst() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
-	has "${EAPI:-0}" 0 1 2 && use !prefix && ED="${D}"
 	check_ocamlfind
 
 	# destdir is the ocaml sitelib
