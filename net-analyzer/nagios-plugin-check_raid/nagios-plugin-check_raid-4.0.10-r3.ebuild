@@ -1,52 +1,53 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit perl-module
 
-DESCRIPTION="Nagios/Icinga plugin to check current server's RAID status"
-HOMEPAGE="https://github.com/glensc/nagios-plugin-check_raid"
 #COMMIT=""
 MY_PV="${COMMIT:-${PV}}"
 MY_P="${PN}-${MY_PV}"
+
+DESCRIPTION="Nagios/Icinga plugin to check current server's RAID status"
+HOMEPAGE="https://github.com/glensc/nagios-plugin-check_raid"
 SRC_URI="https://github.com/glensc/nagios-plugin-check_raid/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86"
 IUSE="3ware aacraid dmraid hpa hpsa megaraid-sas mpt mpt-sas2"
 
-DEPEND="dev-perl/Monitoring-Plugin
-		dev-perl/Module-Pluggable"
+DEPEND="
+	dev-perl/Monitoring-Plugin
+	dev-perl/Module-Pluggable"
 RDEPEND="${DEPEND}
-		sys-apps/smartmontools
-		sys-fs/lsscsi
-		3ware? ( sys-block/tw_cli )
-		aacraid? ( sys-block/arcconf )
-		dmraid? ( sys-fs/dmraid )
-		hpa? ( sys-block/hpacucli )
-		hpsa? ( sys-apps/cciss_vol_status )
-		megaraid-sas? ( sys-block/megacli )
-		mpt-sas2? ( sys-block/sas2ircu )
-		mpt? ( sys-block/mpt-status )
-"
-
-S="${WORKDIR}/${MY_P}"
+	sys-apps/smartmontools
+	sys-fs/lsscsi
+	3ware? ( sys-block/tw_cli )
+	aacraid? ( sys-block/arcconf )
+	dmraid? ( sys-fs/dmraid )
+	hpa? ( sys-block/hpacucli )
+	hpsa? ( sys-apps/cciss_vol_status )
+	megaraid-sas? ( sys-block/megacli )
+	mpt-sas2? ( sys-block/sas2ircu )
+	mpt? ( sys-block/mpt-status )"
 
 src_prepare() {
-	# Upstream has a custom Makefile that is meant to build bundles.
-	#mv -f Makefile Makefile.upstream || die
-	sed -i '/CPANfile/d' Makefile.PL || die
 	default
+
+	# Upstream has a custom Makefile that is meant to build bundles
+	sed -i '/CPANfile/d' Makefile.PL || die
 }
 
 src_install() {
 	default
-	plugindir="/usr/$(get_libdir)/nagios/plugins"
-	dodir "${plugindir}"
-	mv -f "${ED}"/usr/bin/check_raid.pl "${ED}"/"${plugindir}" || die
 	dodoc README.md CHANGELOG.md CONTRIBUTING.md check_raid.cfg
+
+	local plugindir="/usr/$(get_libdir)/nagios/plugins"
+	dodir "${plugindir}"
+	mv -f "${ED}"/usr/bin/check_raid.pl "${ED}/${plugindir}" || die
 }
 
 pkg_postinst() {
