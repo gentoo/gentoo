@@ -83,8 +83,11 @@ pkg_setup() {
 			eerror "Given architecture is not supported by Citrix."
 		;;
 	esac
+}
 
-	S="${WORKDIR}/${ICAARCH}/${ICAARCH}.cor"
+src_unpack() {
+	default
+	mv "${WORKDIR}/${ICAARCH}/${ICAARCH}.cor" "${S}"
 }
 
 src_prepare() {
@@ -250,7 +253,7 @@ src_install() {
 pkg_postinst() {
 	xdg_desktop_database_update
 
-	local inidest="${BROOT}${ICAROOT}/config"
+	local inidest="${ROOT}${ICAROOT}/config"
 	if [[ ! -e "${inidest}"/module.ini ]] ; then
 		mv "${T}"/module.ini "${inidest}/" \
 			|| ewarn 'Failed to install plugin.ini file'
