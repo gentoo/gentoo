@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: perl-module.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Seemant Kulleen <seemant@gentoo.org>
 # Andreas K. Hüttel <dilfridge@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @PROVIDES: perl-functions
 # @BLURB: eclass for installing Perl module distributions
 # @DESCRIPTION:
@@ -19,11 +19,7 @@
 # ExtUtils::MakeMaker or Module::Build), we recommend to use perl-functions.eclass
 # instead.
 
-case ${EAPI:-0} in
-	5)
-		inherit eutils multiprocessing unpacker perl-functions
-		PERL_EXPF="src_unpack src_prepare src_configure src_compile src_test src_install"
-		;;
+case ${EAPI} in
 	6|7)
 		inherit multiprocessing perl-functions
 		PERL_EXPF="src_prepare src_configure src_compile src_test src_install"
@@ -33,7 +29,7 @@ case ${EAPI:-0} in
 		PERL_EXPF="src_prepare src_configure src_compile src_test src_install"
 		;;
 	*)
-		die "EAPI=${EAPI} is not supported by perl-module.eclass"
+		die "${ECLASS}: EAPI ${EAPI:-0} not supported"
 		;;
 esac
 
@@ -48,37 +44,7 @@ esac
 # a use-conditional build time dependency on virtual/perl-Test-Simple, and
 # the required RESTRICT setting.
 
-case ${EAPI:-0} in
-	5)
-		[[ ${CATEGORY} == perl-core ]] && \
-			PERL_EXPF+=" pkg_postinst pkg_postrm"
-
-		case "${GENTOO_DEPEND_ON_PERL:-yes}" in
-		yes)
-			case "${GENTOO_DEPEND_ON_PERL_SUBSLOT:-yes}" in
-			yes)
-				DEPEND="dev-lang/perl:=[-build(-)]"
-				;;
-			*)
-				DEPEND="dev-lang/perl[-build(-)]"
-				;;
-			esac
-			RDEPEND="${DEPEND}"
-			;;
-		esac
-
-		case "${PERL_EXPORT_PHASE_FUNCTIONS:-yes}" in
-			yes)
-				EXPORT_FUNCTIONS ${PERL_EXPF}
-				;;
-			no)
-				debug-print "PERL_EXPORT_PHASE_FUNCTIONS=no"
-				;;
-			*)
-				die "PERL_EXPORT_PHASE_FUNCTIONS=${PERL_EXPORT_PHASE_FUNCTIONS} is not supported by perl-module.eclass"
-				;;
-		esac
-		;;
+case ${EAPI} in
 	6)
 		[[ ${CATEGORY} == perl-core ]] && \
 			PERL_EXPF+=" pkg_postinst pkg_postrm"
@@ -170,46 +136,43 @@ LICENSE="${LICENSE:-|| ( Artistic GPL-1+ )}"
 # @ECLASS_VARIABLE: DIST_NAME
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# (EAPI=6 and later) This variable provides a way to override PN for the calculation of S,
+# This variable provides a way to override PN for the calculation of S,
 # SRC_URI, and HOMEPAGE. If unset, defaults to PN.
 
 # @ECLASS_VARIABLE: DIST_VERSION
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# (EAPI=6 and later) This variable provides a way to override PV for the calculation of S and SRC_URI.
+# This variable provides a way to override PV for the calculation of S and SRC_URI.
 # Use it to provide the non-normalized, upstream version number. If unset, defaults to PV.
-# Named MODULE_VERSION in EAPI=5.
 
 # @ECLASS_VARIABLE: DIST_A_EXT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# (EAPI=6 and later) This variable provides a way to override the distfile extension for the calculation of
-# SRC_URI. If unset, defaults to tar.gz. Named MODULE_A_EXT in EAPI=5.
+# This variable provides a way to override the distfile extension for the calculation of
+# SRC_URI. If unset, defaults to tar.gz.
 
 # @ECLASS_VARIABLE: DIST_A
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# (EAPI=6 and later) This variable provides a way to override the distfile name for the calculation of
-# SRC_URI. If unset, defaults to ${DIST_NAME}-${DIST_VERSION}.${DIST_A_EXT} Named MODULE_A in EAPI=5.
+# This variable provides a way to override the distfile name for the calculation of
+# SRC_URI. If unset, defaults to ${DIST_NAME}-${DIST_VERSION}.${DIST_A_EXT}.
 
 # @ECLASS_VARIABLE: DIST_AUTHOR
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# (EAPI=6 and later) This variable sets the module author name for the calculation of
-# SRC_URI. Named MODULE_AUTHOR in EAPI=5.
+# This variable sets the module author name for the calculation of SRC_URI.
 
 # @ECLASS_VARIABLE: DIST_SECTION
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# (EAPI=6 and later) This variable sets the module section for the calculation of
+# This variable sets the module section for the calculation of
 # SRC_URI. Only required in rare cases for very special snowflakes.
-# Named MODULE_SECTION in EAPI=5.
 
 # @ECLASS_VARIABLE: DIST_EXAMPLES
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# (EAPI=6 and later) This Bash array allows passing a list of example files to be installed
+# This Bash array allows passing a list of example files to be installed
 # in /usr/share/doc/${PF}/examples. If set before inherit, automatically adds
 # a use-flag examples, if not you'll have to add the useflag in your ebuild.
 # Examples are installed only if the useflag examples exists and is activated.
@@ -233,52 +196,22 @@ if [[ $(declare -p DIST_MAKE 2>&-) != "declare -a DIST_MAKE="* ]]; then
 	DIST_MAKE=( OPTIMIZE="${CFLAGS}" )
 fi
 
+DIST_NAME=${DIST_NAME:-${PN}}
+DIST_P=${DIST_NAME}-${DIST_VERSION:-${PV}}
+S=${WORKDIR}/${DIST_P}
 
-if [[ ${EAPI:-0} == 5 ]]; then
-	if [[ -n ${MY_PN} || -n ${MY_PV} || -n ${MODULE_VERSION} ]] ; then
-		: ${MY_P:=${MY_PN:-${PN}}-${MY_PV:-${MODULE_VERSION:-${PV}}}}
-		S=${MY_S:-${WORKDIR}/${MY_P}}
-	fi
-	MODULE_NAME=${MY_PN:-${PN}}
-	MODULE_P=${MY_P:-${P}}
+[[ -z "${SRC_URI}" && -z "${DIST_A}" ]] &&
+	DIST_A="${DIST_P}.${DIST_A_EXT:-tar.gz}"
+[[ -z "${SRC_URI}" && -n "${DIST_AUTHOR}" ]] &&
+	SRC_URI="mirror://cpan/authors/id/${DIST_AUTHOR:0:1}/${DIST_AUTHOR:0:2}/${DIST_AUTHOR}/${DIST_SECTION:+${DIST_SECTION}/}${DIST_A}"
+[[ -z "${HOMEPAGE}" ]] &&
+	HOMEPAGE="https://metacpan.org/release/${DIST_NAME}"
 
-	[[ -z "${SRC_URI}" && -z "${MODULE_A}" ]] && \
-		MODULE_A="${MODULE_P}.${MODULE_A_EXT:-tar.gz}"
-	[[ -z "${SRC_URI}" && -n "${MODULE_AUTHOR}" ]] && \
-		SRC_URI="mirror://cpan/authors/id/${MODULE_AUTHOR:0:1}/${MODULE_AUTHOR:0:2}/${MODULE_AUTHOR}/${MODULE_SECTION:+${MODULE_SECTION}/}${MODULE_A}"
-	[[ -z "${HOMEPAGE}" ]] && \
-		HOMEPAGE="https://metacpan.org/release/${MODULE_NAME}"
+[[ -z "${DIST_EXAMPLES}" ]] || IUSE+=" examples"
 
-	SRC_TEST="skip"
-else
-	DIST_NAME=${DIST_NAME:-${PN}}
-	DIST_P=${DIST_NAME}-${DIST_VERSION:-${PV}}
-	S=${WORKDIR}/${DIST_P}
-
-	[[ -z "${SRC_URI}" && -z "${DIST_A}" ]] && \
-		DIST_A="${DIST_P}.${DIST_A_EXT:-tar.gz}"
-	[[ -z "${SRC_URI}" && -n "${DIST_AUTHOR}" ]] && \
-		SRC_URI="mirror://cpan/authors/id/${DIST_AUTHOR:0:1}/${DIST_AUTHOR:0:2}/${DIST_AUTHOR}/${DIST_SECTION:+${DIST_SECTION}/}${DIST_A}"
-	[[ -z "${HOMEPAGE}" ]] && \
-		HOMEPAGE="https://metacpan.org/release/${DIST_NAME}"
-
-	[[ -z "${DIST_EXAMPLES}" ]] || IUSE+=" examples"
-fi
-
-SRC_PREP="no"
 PREFER_BUILDPL="yes"
 
 pm_echovar=""
-
-# @FUNCTION: perl-module_src_unpack
-# @DESCRIPTION:
-# Unpack the ebuild tarball(s).
-# This function is to be called during the ebuild src_unpack() phase.
-perl-module_src_unpack() {
-	debug-print-function $FUNCNAME "$@"
-	[[ ${EAPI:-0} == 5 ]] || die "perl-module_src_unpack is banned in EAPI=6 or later"
-	unpacker_src_unpack
-}
 
 # @FUNCTION: perl-module_src_prepare
 # @DESCRIPTION:
@@ -287,13 +220,7 @@ perl-module_src_unpack() {
 perl-module_src_prepare() {
 	debug-print-function $FUNCNAME "$@"
 
-	if [[ ${EAPI:-0} == 5 ]] ; then
-		[[ ${PATCHES[@]} ]] && epatch "${PATCHES[@]}"
-		debug-print "$FUNCNAME: applying user patches"
-		epatch_user
-	else
-		default
-	fi
+	default
 
 	if [[ ${PERL_RM_FILES[@]} ]]; then
 		debug-print "$FUNCNAME: stripping unneeded files"
@@ -308,11 +235,6 @@ perl-module_src_prepare() {
 # This function is to be called during the ebuild src_configure() phase.
 perl-module_src_configure() {
 	debug-print-function $FUNCNAME "$@"
-
-	if [[ ${EAPI:-0} == 5 && ${SRC_PREP} == yes ]]; then
-		return 0
-	fi
-	SRC_PREP="yes"
 
 	perl_check_env
 
@@ -329,8 +251,8 @@ perl-module_src_configure() {
 	fi
 
 	if [[ ( ${PREFER_BUILDPL} == yes || ! -f Makefile.PL ) && -f Build.PL ]] ; then
-		case ${EAPI:-0} in
-			5|6)
+		case ${EAPI} in
+			6)
 				if grep -q '\(use\|require\)\s*Module::Build::Tiny' Build.PL ; then
 					einfo "Using Module::Build::Tiny"
 					if [[ ${DEPEND} != *dev-perl/Module-Build-Tiny* && ${PN} != Module-Build-Tiny ]]; then
@@ -397,7 +319,7 @@ perl-module_src_compile() {
 	perl_set_version
 
 	case ${EAPI} in
-		5|6|7)
+		6|7)
 			if [[ $(declare -p mymake 2>&-) != "declare -a mymake="* ]]; then
 				local mymake_local=(${mymake})
 			else
@@ -426,11 +348,9 @@ perl-module_src_compile() {
 # @ECLASS_VARIABLE: DIST_TEST
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# (EAPI=6 and later) Variable that controls if tests are run in the test phase
+# Variable that controls if tests are run in the test phase
 # at all, and if yes under which conditions. If unset, defaults to "do parallel"
 # If neither "do" nor "parallel" is recognized, tests are skipped.
-# (In EAPI=5 the variable is called SRC_TEST, defaults to "skip", and
-# recognizes fewer options.)
 # The following space-separated keywords are recognized:
 #   do       : run tests
 #   parallel : run tests in parallel
@@ -441,7 +361,7 @@ perl-module_src_compile() {
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# (EAPI=6 and later) Variable that controls if tests are run in the test phase
+# Variable that controls if tests are run in the test phase
 # at all, and if yes under which conditions. It is intended for use in
 # make.conf or the environment by ebuild authors during testing, and
 # accepts the same values as DIST_TEST. If set, it overrides DIST_TEST
@@ -456,46 +376,32 @@ perl-module_src_test() {
 	local my_test_control
 	local my_test_verbose
 
-	if [[ ${EAPI} == 5 ]] ; then
-		my_test_control=${SRC_TEST}
-		my_test_verbose=${TEST_VERBOSE:-0}
-		if has 'do' ${my_test_control} || has 'parallel' ${my_test_control} ; then
-			if has "${my_test_verbose}" 0 && has 'parallel' ${my_test_control} ; then
-				export HARNESS_OPTIONS=j$(makeopts_jobs)
-				einfo "Test::Harness Jobs=$(makeopts_jobs)"
-			fi
-		else
-			einfo Skipping tests due to SRC_TEST=${SRC_TEST}
-			return 0
-		fi
+	[[ -n "${DIST_TEST_OVERRIDE}" ]] && ewarn "DIST_TEST_OVERRIDE is set to ${DIST_TEST_OVERRIDE}"
+	my_test_control=${DIST_TEST_OVERRIDE:-${DIST_TEST:-do parallel}}
+
+	if ! has 'do' ${my_test_control} && ! has 'parallel' ${my_test_control} ; then
+		einfo Skipping tests due to DIST_TEST=${my_test_control}
+		return 0
+	fi
+
+	if has verbose ${my_test_control} ; then
+		my_test_verbose=1
 	else
-		[[ -n "${DIST_TEST_OVERRIDE}" ]] && ewarn DIST_TEST_OVERRIDE is set to ${DIST_TEST_OVERRIDE}
-		my_test_control=${DIST_TEST_OVERRIDE:-${DIST_TEST:-do parallel}}
+		my_test_verbose=0
+	fi
 
-		if ! has 'do' ${my_test_control} && ! has 'parallel' ${my_test_control} ; then
-			einfo Skipping tests due to DIST_TEST=${my_test_control}
-			return 0
-		fi
+	if has parallel ${my_test_control} ; then
+		export HARNESS_OPTIONS=j$(makeopts_jobs)
+		einfo "Test::Harness Jobs=$(makeopts_jobs)"
+	fi
 
-		if has verbose ${my_test_control} ; then
-			my_test_verbose=1
-		else
-			my_test_verbose=0
-		fi
-
-		if has parallel ${my_test_control} ; then
-			export HARNESS_OPTIONS=j$(makeopts_jobs)
-			einfo "Test::Harness Jobs=$(makeopts_jobs)"
-		fi
-
-		# this might sometimes work...
-		if ! has network ${my_test_control} ; then
-			export NO_NETWORK_TESTING=1
-		fi
+	# this might sometimes work...
+	if ! has network ${my_test_control} ; then
+		export NO_NETWORK_TESTING=1
 	fi
 
 	case ${EAPI} in
-		5|6|7)
+		6|7)
 			;;
 		*)
 			if has 'tests' ${DIST_WIKI} ; then
@@ -546,7 +452,7 @@ perl-module_src_install() {
 	fi
 
 	case ${EAPI} in
-		5|6|7)
+		6|7)
 			;;
 		*)
 			perl_fix_permissions
@@ -555,28 +461,22 @@ perl-module_src_install() {
 
 	perl_delete_module_manpages
 	perl_delete_localpod
-	if [[ ${EAPI} == 5 ]] ; then
-		perl_delete_packlist
-	else
-		perl_fix_packlist
-		perl_delete_emptybsdir
-	fi
+	perl_fix_packlist
+	perl_delete_emptybsdir
 	perl_remove_temppath
 
 	for f in Change* CHANGES README* TODO FAQ ${mydoc}; do
 		[[ -s ${f} ]] && dodoc ${f}
 	done
 
-	if [[ ${EAPI} != 5 ]] ; then
-		if in_iuse examples && use examples ; then
-                        [[ ${#DIST_EXAMPLES[@]} -eq 0 ]] || perl_doexamples "${DIST_EXAMPLES[@]}"
-		fi
+	if in_iuse examples && use examples ; then
+		[[ ${#DIST_EXAMPLES[@]} -eq 0 ]] || perl_doexamples "${DIST_EXAMPLES[@]}"
 	fi
 
 	perl_link_duallife_scripts
 
 	case ${EAPI} in
-		5|6|7)
+		6|7)
 			;;
 		*)
 			if has 'features' ${DIST_WIKI} ; then
