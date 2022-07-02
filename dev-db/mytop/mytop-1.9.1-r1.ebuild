@@ -3,7 +3,7 @@
 
 EAPI=8
 
-SRC_TEST="do"
+DIST_TEST="do"
 inherit perl-module
 
 DESCRIPTION="mytop - a top clone for mysql"
