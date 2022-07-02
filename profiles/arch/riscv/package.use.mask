@@ -1,6 +1,10 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-07-02)
+# The required sys-libs/db slot is not keyworded on riscv
+dev-libs/cyrus-sasl berkdb
+
 # Sam James <sam@gentoo.org> (2022-06-26)
 # Avoid dragging in "heavy"  parts of dev-qt/* unless/until
 # somebody needs them. bug #816981, bug #854261.
