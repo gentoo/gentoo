@@ -121,6 +121,9 @@ src_install() {
 		mv "${ED}"/${libdir_64}/libmumbleoverlay.x86.so* \
 			"${ED}"/${libdir_32}/ || die
 	fi
+
+	insinto /usr/share/mumble
+	doins -r samples
 }
 
 pkg_postinst() {
