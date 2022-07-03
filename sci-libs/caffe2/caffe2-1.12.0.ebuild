@@ -52,6 +52,7 @@ DEPEND="
 	dev-cpp/eigen
 	dev-libs/psimd
 	dev-libs/FP16
+	dev-libs/FXdiv
 	dev-libs/pocketfft
 	dev-libs/flatbuffers
 	dev-python/pyyaml[${PYTHON_USEDEP}]
