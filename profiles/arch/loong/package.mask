@@ -1,6 +1,2 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# WANG Xuerui <xen0n@gentoo.org> (2022-05-13)
-# Fails to build due to bug 843212
->=dev-libs/boost-1.79.0
