@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 flag-o-matic multiprocessing prefix toolchain-funcs \
@@ -80,7 +80,9 @@ RDEPEND="
 		>=www-servers/tornado-6.0.4[${PYTHON_USEDEP}]
 	)
 	wxwidgets? (
-		dev-python/wxpython:*[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/wxpython:*[${PYTHON_USEDEP}]
+		' python3_{8..10})
 	)
 "
 
@@ -246,6 +248,11 @@ python_test() {
 		"tests/test_rcparams.py::test_validator_invalid[validate_strlist-arg6-MatplotlibDeprecationWarning]"
 		"tests/test_rcparams.py::test_validator_invalid[validate_strlist-arg7-MatplotlibDeprecationWarning]"
 		tests/test_testing.py::test_warn_to_fail
+	)
+	[[ ${EPYTHON} == python3.11 ]] && EPYTEST_DESELECT+=(
+		# https://github.com/matplotlib/matplotlib/issues/23384
+		"tests/test_backends_interactive.py::test_figure_leak_20490[time_mem1-{'MPLBACKEND': 'qtagg', 'QT_API': 'PyQt5'}]"
+		"tests/test_backends_interactive.py::test_figure_leak_20490[time_mem1-{'MPLBACKEND': 'qtcairo', 'QT_API': 'PyQt5'}]"
 	)
 
 	# we need to rebuild mpl against bundled freetype, otherwise
