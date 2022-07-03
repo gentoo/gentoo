@@ -14,12 +14,12 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="
-	media-libs/freetype
+RDEPEND="media-libs/freetype
 	virtual/udev"
 DEPEND="${RDEPEND}
 	media-video/vdr"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="sys-devel/gettext
+	virtual/pkgconfig"
 QA_FLAGS_IGNORED="
 	usr/lib/vdr/plugins/libvdr-.*
 	usr/lib64/vdr/plugins/libvdr-.*"
