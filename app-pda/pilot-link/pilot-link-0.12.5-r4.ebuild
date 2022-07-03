@@ -12,7 +12,7 @@ DESCRIPTION="Suite of tools for moving data between a Palm device and a desktop"
 HOMEPAGE="https://github.com/jichu4n/pilot-link"
 SRC_URI="
 	mirror://gentoo/${P}.tar.bz2
-	https://dev.gentoo.org/~soap/distfiles/${P}-gentoo-patchset-r1.tar.xz"
+	https://dev.gentoo.org/~soap/distfiles/${P}-gentoo-patchset-r2.tar.xz"
 
 LICENSE="|| ( GPL-2 LGPL-2 )"
 SLOT="0"
