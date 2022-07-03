@@ -410,9 +410,8 @@ _ruby_invoke_environment() {
 		pushd "${WORKDIR}" &>/dev/null || die
 	fi
 
-	ebegin "Running ${_PHASE:-${EBUILD_PHASE}} phase for $environment"
+	einfo "Running ${_PHASE:-${EBUILD_PHASE}} phase for $environment"
 	"$@"
-	eend $?
 	popd &>/dev/null || die
 
 	S=${old_S}
