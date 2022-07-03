@@ -20,11 +20,6 @@ HOMEPAGE="https://github.com/scsitape/stenc/"
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE=""
-
-DEPEND=""
-RDEPEND="${DEPEND}"
-
 src_prepare() {
 	default
 	eautoreconf
