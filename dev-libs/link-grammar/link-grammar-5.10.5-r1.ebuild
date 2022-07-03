@@ -14,14 +14,14 @@ SRC_URI="https://www.abisource.com/downloads/${PN}/${PV}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0/5"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="aspell +hunspell python" # pcre
+IUSE="aspell +hunspell python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # XXX: sqlite is automagic
 # Does not build with >=sci-mathematics/minisat-2, bug #593662
-# add pcre support: pcre? ( dev-libs/libpcre )
 RDEPEND="
 	dev-db/sqlite:3
+	dev-libs/libpcre2:=
 	aspell? ( app-text/aspell )
 	hunspell? ( app-text/hunspell )
 	python? ( ${PYTHON_DEPS} )
@@ -54,13 +54,11 @@ my_src_configure() {
 		# java is hopelessly broken, invokes maven at build time (bug #806157)
 		--disable-java-bindings
 		--disable-perl-bindings
-		--disable-static
 		--enable-sat-solver=bundled
+		--with-regexlib=pcre2
 		$(use_enable aspell)
 		$(use_enable hunspell)
 		$(usev hunspell --with-hunspell-dictdir="${EPREFIX}"/usr/share/myspell)
-		# $(use_enable pcre regex-tokenizer)
-		# $(use_with pcre)
 	)
 
 	econf \
