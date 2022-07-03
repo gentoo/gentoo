@@ -26,6 +26,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	${PYTHON_DEPS}
+	dev-cpp/gflags:=
 	dev-libs/cpuinfo
 	dev-libs/libfmt
 	dev-libs/protobuf
@@ -101,7 +102,7 @@ src_configure() {
 		-DUSE_FAKELOWP=OFF
 		-DUSE_FBGEMM=OFF # TODO
 		-DUSE_FFMPEG=$(usex ffmpeg)
-		-DUSE_GFLAGS=OFF # TODO
+		-DUSE_GFLAGS=ON
 		-DUSE_GLOG=OFF # TODO
 		-DUSE_GLOO=OFF
 		-DUSE_KINETO=OFF # TODO
