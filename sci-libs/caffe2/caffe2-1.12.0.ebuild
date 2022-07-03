@@ -27,6 +27,7 @@ REQUIRED_USE="
 RDEPEND="
 	${PYTHON_DEPS}
 	dev-cpp/gflags:=
+	<dev-cpp/glog-0.5.0
 	dev-libs/cpuinfo
 	dev-libs/libfmt
 	dev-libs/protobuf
@@ -103,7 +104,7 @@ src_configure() {
 		-DUSE_FBGEMM=OFF # TODO
 		-DUSE_FFMPEG=$(usex ffmpeg)
 		-DUSE_GFLAGS=ON
-		-DUSE_GLOG=OFF # TODO
+		-DUSE_GLOG=ON
 		-DUSE_GLOO=OFF
 		-DUSE_KINETO=OFF # TODO
 		-DUSE_LEVELDB=OFF
