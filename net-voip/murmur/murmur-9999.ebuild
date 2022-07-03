@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.mumble.info"
 if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mumble-voip/mumble.git"
-	EGIT_SUBMODULES=( '-*' )
+	EGIT_SUBMODULES=( '-*' 3rdparty/FindPythonInterpreter 3rdparty/gsl 3rdparty/tracy )
 else
 	MY_PN="mumble"
 	if [[ "${PV}" == *_pre* ]] ; then
@@ -130,7 +130,7 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	dodoc README.md CHANGES
+	dodoc README.md
 
 	docinto scripts
 	dodoc -r scripts/server
@@ -164,7 +164,7 @@ src_install() {
 	fowners root:murmur ${etcdir}/murmur.ini
 	fperms 640 ${etcdir}/murmur.ini
 
-	doman man/murmurd.1
+	newman man/mumble-server.1 murmurd.1
 
 	readme.gentoo_create_doc
 }
