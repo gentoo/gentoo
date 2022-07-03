@@ -39,12 +39,10 @@ src_prepare() {
 	default
 
 	# Rely on systemd eclass for systemd service install
-	sed -i -e "/^SYSTEMDSYSTEMUNITDIR/d" Makefile \
-		|| die "sed failed"
+	sed -e "/^SYSTEMDSYSTEMUNITDIR/d" -i Makefile || die "sed failed"
 
 	# Prefix support
-	sed -i -e "/^ExecStart=/ s:=/:=${EPREFIX}/:" irkerd.service \
-		|| die "sed failed"
+	sed -e "s|@EPREFIX@|${EPREFIX}|" "${FILESDIR}"/irkerd.service > "${WORKDIR}"/irkerd.service || die "sed failed"
 }
 
 src_install() {
@@ -57,7 +55,7 @@ src_install() {
 	newinitd "${FILESDIR}"/irkerd.initd irkerd
 	newconfd "${FILESDIR}"/irkerd.confd irkerd
 
-	systemd_dounit irkerd.service
+	systemd_dounit "${WORKDIR}"/irkerd.service
 
 	docinto examples
 	dodoc filter-example.py filter-test.py
