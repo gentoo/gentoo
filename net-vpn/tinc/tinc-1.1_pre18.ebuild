@@ -9,9 +9,9 @@ MY_P=${PN}-${MY_PV}
 inherit autotools systemd
 
 DESCRIPTION="tinc is an easy to configure VPN implementation"
-HOMEPAGE="http://www.tinc-vpn.org/"
+HOMEPAGE="https://www.tinc-vpn.org/"
 
-SRC_URI="http://www.tinc-vpn.org/packages/${MY_P}.tar.gz"
+SRC_URI="https://www.tinc-vpn.org/packages/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
