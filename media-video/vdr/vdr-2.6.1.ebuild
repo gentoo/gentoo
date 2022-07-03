@@ -17,6 +17,8 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="bidi debug demoplugins html keyboard mainmenuhooks menuorg naludump permashift pinplugin systemd ttxtsubs verbose"
 
 COMMON_DEPEND="
+	acct-group/vdr
+	acct-user/vdr
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/libjpeg-turbo
@@ -30,8 +32,8 @@ RDEPEND="${COMMON_DEPEND}
 	bidi? ( dev-libs/fribidi )
 	systemd? ( sys-apps/systemd )"
 BDEPEND="
-	acct-user/vdr
-	sys-devel/gettext"
+	sys-devel/gettext
+	virtual/pkgconfig"
 
 REQUIRED_USE="permashift? ( !naludump !pinplugin )"
 
