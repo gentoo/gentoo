@@ -80,17 +80,6 @@
      if("${CMAKE_BUILD_TYPE}" MATCHES "Debug")
        set(OPT_FLAG " ")
      endif()
---- a/c10/CMakeLists.txt	2022-06-19 09:57:16.776536871 +0200
-+++ b/c10/CMakeLists.txt	2022-06-19 09:58:51.663356075 +0200
-@@ -107,7 +107,7 @@
- # Note: for now, we will put all export path into one single Caffe2Targets group
- # to deal with the cmake deployment need. Inside the Caffe2Targets set, the
- # individual libraries like libc10.so and libcaffe2.so are still self-contained.
--install(TARGETS c10 EXPORT Caffe2Targets DESTINATION lib)
-+install(TARGETS c10 EXPORT Caffe2Targets DESTINATION ${CMAKE_INSTALL_LIBDIR})
- install(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
-         DESTINATION include
-         FILES_MATCHING PATTERN "*.h")
 --- a/caffe2/CMakeLists.txt	2022-07-01 21:56:49.643490049 +0200
 +++ b/caffe2/CMakeLists.txt	2022-07-01 21:57:17.091489479 +0200
 @@ -109,7 +109,7 @@
@@ -121,3 +110,23 @@
      if(NOT USE_SYSTEM_PTHREADPOOL AND USE_INTERNAL_PTHREADPOOL_IMPL)
        set(NNPACK_CUSTOM_THREADPOOL ON CACHE BOOL "")
      endif()
+--- a/cmake/Dependencies.cmake
++++ b/cmake/Dependencies.cmake
+@@ -481,7 +481,7 @@ endif()
+ list(APPEND Caffe2_DEPENDENCY_LIBS cpuinfo)
+ 
+ # ---[ QNNPACK
+-if(USE_QNNPACK)
++if(FALSE)
+   set(CAFFE2_THIRD_PARTY_ROOT "${PROJECT_SOURCE_DIR}/third_party")
+ 
+   if(NOT DEFINED QNNPACK_SOURCE_DIR)
+@@ -537,7 +537,7 @@ if(USE_QNNPACK)
+ endif()
+ 
+ # ---[ Caffe2 Int8 operators (enabled by USE_QNNPACK) depend on gemmlowp and neon2sse headers
+-if(USE_QNNPACK)
++if(FALSE)
+   set(CAFFE2_THIRD_PARTY_ROOT "${PROJECT_SOURCE_DIR}/third_party")
+   include_directories(SYSTEM "${CAFFE2_THIRD_PARTY_ROOT}/gemmlowp")
+   include_directories(SYSTEM "${CAFFE2_THIRD_PARTY_ROOT}/neon2sse")
