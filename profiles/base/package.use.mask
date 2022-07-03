@@ -10,7 +10,7 @@
 # miri is known to be broken on release builds from time to time
 # most of the time it requires nightly (real nightly) compiler.
 # please unmask as needed, may require patching
-dev-lang/rust miri
+>=dev-lang/rust-1.62.0 miri
 
 # Michał Górny <mgorny@gentoo.org> (2022-07-02)
 # dev-python/geoip-python is masked for removal.
