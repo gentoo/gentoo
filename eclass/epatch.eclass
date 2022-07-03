@@ -4,7 +4,7 @@
 # @ECLASS: epatch.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 5 6
+# @SUPPORTED_EAPIS: 6
 # @BLURB: easy patch application functions
 # @DEPRECATED: eapply from EAPI 7
 # @DESCRIPTION:
@@ -14,10 +14,8 @@
 if [[ -z ${_EPATCH_ECLASS} ]]; then
 
 case ${EAPI} in
-	5|6)
-		;;
-	*)
-		die "${ECLASS}: EAPI ${EAPI:-0} not supported";;
+	6) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 inherit estack
@@ -377,86 +375,6 @@ epatch() {
 	[[ ${SINGLE_PATCH} == "no" ]] && einfo "Done with patching"
 	: # everything worked
 }
-
-case ${EAPI:-0} in
-0|1|2|3|4|5)
-
-# @ECLASS_VARIABLE: EPATCH_USER_SOURCE
-# @USER_VARIABLE
-# @DESCRIPTION:
-# Location for user patches, see the epatch_user function.
-# Should be set by the user. Don't set this in ebuilds.
-: ${EPATCH_USER_SOURCE:=${PORTAGE_CONFIGROOT%/}/etc/portage/patches}
-
-# @FUNCTION: epatch_user
-# @USAGE:
-# @DESCRIPTION:
-# Applies user-provided patches to the source tree. The patches are
-# taken from /etc/portage/patches/<CATEGORY>/<P-PR|P|PN>[:SLOT]/, where the first
-# of these three directories to exist will be the one to use, ignoring
-# any more general directories which might exist as well. They must end
-# in ".patch" to be applied.
-#
-# User patches are intended for quick testing of patches without ebuild
-# modifications, as well as for permanent customizations a user might
-# desire. Obviously, there can be no official support for arbitrarily
-# patched ebuilds. So whenever a build log in a bug report mentions that
-# user patches were applied, the user should be asked to reproduce the
-# problem without these.
-#
-# Not all ebuilds do call this function, so placing patches in the
-# stated directory might or might not work, depending on the package and
-# the eclasses it inherits and uses. It is safe to call the function
-# repeatedly, so it is always possible to add a call at the ebuild
-# level. The first call is the time when the patches will be
-# applied.
-#
-# Ideally, this function should be called after gentoo-specific patches
-# have been applied, so that their code can be modified as well, but
-# before calls to e.g. eautoreconf, as the user patches might affect
-# autotool input files as well.
-epatch_user() {
-	[[ $# -ne 0 ]] && die "epatch_user takes no options"
-
-	# Allow multiple calls to this function; ignore all but the first
-	local applied="${T}/epatch_user.log"
-	[[ -e ${applied} ]] && return 2
-
-	# don't clobber any EPATCH vars that the parent might want
-	local EPATCH_SOURCE check
-	for check in ${CATEGORY}/{${P}-${PR},${P},${PN}}{,:${SLOT%/*}}; do
-		EPATCH_SOURCE=${EPATCH_USER_SOURCE}/${CTARGET}/${check}
-		[[ -r ${EPATCH_SOURCE} ]] || EPATCH_SOURCE=${EPATCH_USER_SOURCE}/${CHOST}/${check}
-		[[ -r ${EPATCH_SOURCE} ]] || EPATCH_SOURCE=${EPATCH_USER_SOURCE}/${check}
-		if [[ -d ${EPATCH_SOURCE} ]] ; then
-			local old_n_applied_patches=${EPATCH_N_APPLIED_PATCHES:-0}
-			EPATCH_SOURCE=${EPATCH_SOURCE} \
-			EPATCH_SUFFIX="patch" \
-			EPATCH_FORCE="yes" \
-			EPATCH_MULTI_MSG="Applying user patches from ${EPATCH_SOURCE} ..." \
-			epatch
-			echo "${EPATCH_SOURCE}" > "${applied}"
-			if [[ ${old_n_applied_patches} -lt ${EPATCH_N_APPLIED_PATCHES} ]]; then
-				has epatch_user_death_notice ${EBUILD_DEATH_HOOKS} || \
-					EBUILD_DEATH_HOOKS+=" epatch_user_death_notice"
-			fi
-			return 0
-		fi
-	done
-	echo "none" > "${applied}"
-	return 1
-}
-
-# @FUNCTION: epatch_user_death_notice
-# @INTERNAL
-# @DESCRIPTION:
-# Include an explicit notice in the die message itself that user patches were
-# applied to this build.
-epatch_user_death_notice() {
-	ewarn "!!! User patches were applied to this build!"
-}
-
-esac
 
 _EPATCH_ECLASS=1
 fi #_EPATCH_ECLASS
