@@ -33,7 +33,7 @@ src_test() {
 
 src_install() {
 	default
-
+	find "${ED}" -name '*.la' -delete || die
 	newbashcomp "${ED}"/etc/bash_completion.d/yoda-completion yoda
 	rm "${ED}"/etc/bash_completion.d/yoda-completion || die
 }
