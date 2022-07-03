@@ -16,6 +16,12 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 
+BDEPEND="
+	test? (
+		dev-python/redis-py[${PYTHON_USEDEP}]
+	)
+"
+
 distutils_enable_tests unittest
 
 python_test() {
