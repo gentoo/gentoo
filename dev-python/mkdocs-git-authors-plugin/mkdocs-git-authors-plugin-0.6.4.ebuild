@@ -20,7 +20,7 @@ SRC_URI="https://github.com/timvink/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 
 RDEPEND="
 	dev-python/GitPython[${PYTHON_USEDEP}]
