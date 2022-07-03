@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake systemd readme.gentoo-r1 tmpfiles
+inherit cmake flag-o-matic systemd readme.gentoo-r1 tmpfiles
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
 HOMEPAGE="https://wiki.mumble.info"
@@ -125,6 +125,11 @@ src_configure() {
 	if [[ "${PV}" != 9999 ]] ; then
 		mycmakeargs+=( -DBUILD_NUMBER="$(ver_cut 3)" )
 	fi
+
+	# https://bugs.gentoo.org/832978
+	# fix tests (and possibly runtime issues) on arches with unsigned chars
+	append-cxxflags -fsigned-char
+
 	cmake_src_configure
 }
 
