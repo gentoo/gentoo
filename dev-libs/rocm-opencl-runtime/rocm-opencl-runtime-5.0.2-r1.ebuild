@@ -45,7 +45,8 @@ src_prepare() {
 	local S="${S1}"
 	local CMAKE_USE_DIR="${S1}"
 	# Bug #753377
-	local PATCHES=()
+	# patch re-enables accidentally disabled gfx8000 family
+	local PATCHES=("${FILESDIR}/${PN}-5.0.2-enable-gfx800.patch")
 	BUILD_DIR="${S1}_build" cmake_src_prepare
 }
 
