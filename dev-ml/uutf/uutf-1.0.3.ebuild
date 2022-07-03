@@ -18,11 +18,11 @@ REQUIRED_USE="utftrip? ( ocamlopt )"
 
 RDEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]
 	dev-ml/uchar:=
-	utftrip? ( dev-ml/cmdliner:= )"
+	utftrip? ( dev-ml/cmdliner:=[ocamlopt?] )"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-ml/ocamlbuild
 	dev-ml/topkg
-	test? ( dev-ml/cmdliner )"
+	test? ( dev-ml/cmdliner[ocamlopt?] )"
 
 DOCS=( CHANGES.md README.md )
 
