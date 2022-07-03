@@ -3,7 +3,8 @@
 
 EAPI=7
 
-inherit cmake flag-o-matic xdg
+PYTHON_COMPAT=( python3_{8..10} )
+inherit cmake flag-o-matic python-any-r1 xdg
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
 HOMEPAGE="https://wiki.mumble.info"
@@ -57,6 +58,7 @@ RDEPEND="
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 "
 DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
 	dev-cpp/nlohmann_json
 	dev-qt/qtconcurrent:5
 	dev-qt/qttest:5
@@ -67,6 +69,10 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 "
+
+pkg_setup() {
+	python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	sed '/TRACY_ON_DEMAND/s@ ON @ OFF @' -i src/CMakeLists.txt || die

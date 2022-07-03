@@ -3,7 +3,8 @@
 
 EAPI=7
 
-inherit cmake flag-o-matic xdg
+PYTHON_COMPAT=( python3_{8..10} )
+inherit cmake flag-o-matic python-any-r1 xdg
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
 HOMEPAGE="https://wiki.mumble.info"
@@ -59,6 +60,7 @@ RDEPEND="
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 "
 DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
 	dev-qt/qtconcurrent:5
 	dev-qt/qttest:5
 	>=dev-libs/boost-1.41.0
@@ -75,6 +77,10 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.4.230-gcc12-include-memory.patch"
 	"${FILESDIR}/${PN}-1.4.230-poco-link-cmake.patch"
 )
+
+pkg_setup() {
+	python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	# required because of xdg.eclass also providing src_prepare
