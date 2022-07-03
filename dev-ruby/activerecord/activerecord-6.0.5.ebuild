@@ -37,6 +37,7 @@ ruby_add_bdepend "
 	test? (
 		dev-ruby/bundler
 		~dev-ruby/actionpack-${PV}
+		~dev-ruby/railties-${PV}
 		>=dev-ruby/sqlite3-1.4.0
 		dev-ruby/mocha
 		dev-ruby/minitest:5
