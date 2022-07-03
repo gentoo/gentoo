@@ -16,7 +16,7 @@ HOMEPAGE="https://kramdown.gettalong.org/"
 LICENSE="MIT"
 
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv ~s390 ~sparc ~x86"
 IUSE="latex"
 
 LATEX_DEPS="latex? ( dev-texlive/texlive-latex dev-texlive/texlive-latexextra )"
