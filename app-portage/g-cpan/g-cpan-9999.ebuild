@@ -57,7 +57,19 @@ src_install() {
 	keepdir /var/log/g-cpan
 }
 
+pkg_preinst() {
+	has_version "<app-portage/g-cpan-0.18.0-r1" && HAD_EAPI5_GCPAN=1
+}
+
 pkg_postinst() {
+	if [[ ${HAD_EAPI5_GCPAN:-0} -eq 1 ]] ; then
+		ewarn "Please re-create your overlay with generated g-cpan ebuilds!"
+		ewarn "The old ebuilds will use EAPI 5 and be incompatible with newer"
+		ewarn "Perl eclass changes. This newer version of g-cpan (0.18.0+)"
+		ewarn "generates EAPI 8 ebuilds without this problem, but it cannot"
+		ewarn "change existing ebuilds. See bug #819513."
+	fi
+
 	elog "If you want to use g-cpan as non root user you may wish to adjust"
 	elog "the permissions on /var/tmp/g-cpan or add users to the portage group."
 	elog "Please note that some CPAN packages need additional manual"
