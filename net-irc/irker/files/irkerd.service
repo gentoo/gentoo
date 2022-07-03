@@ -1,0 +1,21 @@
+# Copyright 2012 Wulf C. Krueger <philantrop@exherbo.org>
+# Copyright 2022 Arthur Zamarin <arthurzam@gentoo.org>
+# Distributed under the terms of the BSD LICENSE
+
+[Unit]
+Description=Internet Relay Chat (IRC) notification daemon
+Requires=network.target
+Documentation=man:irkerd(8) man:irkerhook(1) man:irk(1)
+
+[Service]
+ExecStart=@EPREFIX@/usr/bin/irkerd
+User=irker
+DynamicUser=yes
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+PrivateDevices=yes
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target
+Alias=irker.service
