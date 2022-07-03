@@ -17,15 +17,17 @@ SRC_URI="https://github.com/pytorch/${MYPN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="ffmpeg nnpack +numpy opencl opencv openmp qnnpack xnnpack"
+IUSE="cuda ffmpeg nnpack +numpy opencl opencv openmp qnnpack xnnpack"
 RESTRICT="test"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	ffmpeg? ( opencv )
-"
+" # ?? ( cuda rocm )
 
 RDEPEND="
 	${PYTHON_DEPS}
+	dev-cpp/gflags:=
+	<dev-cpp/glog-0.5.0
 	dev-libs/cpuinfo
 	dev-libs/libfmt
 	dev-libs/protobuf
@@ -34,6 +36,11 @@ RDEPEND="
 	sci-libs/lapack
 	sci-libs/onnx
 	sci-libs/foxi
+	cuda? (
+		=dev-libs/cudnn-8*
+		dev-libs/cudnn-frontend:0/8
+		dev-util/nvidia-cuda-toolkit:=[profiler]
+	)
 	ffmpeg? ( media-video/ffmpeg:= )
 	nnpack? ( sci-libs/NNPACK )
 	numpy? ( dev-python/numpy[${PYTHON_USEDEP}] )
@@ -47,6 +54,7 @@ DEPEND="
 	dev-cpp/eigen
 	dev-libs/psimd
 	dev-libs/FP16
+	dev-libs/FXdiv
 	dev-libs/pocketfft
 	dev-libs/flatbuffers
 	dev-python/pyyaml[${PYTHON_USEDEP}]
@@ -68,22 +76,35 @@ src_prepare() {
 }
 
 src_configure() {
+	if use cuda && [[ -z ${TORCH_CUDA_ARCH_LIST} ]]; then
+		ewarn "WARNING: caffe2 is being built with its default CUDA compute capabilities: 3.5 and 7.0."
+		ewarn "These may not be optimal for your GPU."
+		ewarn ""
+		ewarn "To configure caffe2 with the CUDA compute capability that is optimal for your GPU,"
+		ewarn "set TORCH_CUDA_ARCH_LIST in your make.conf, and re-emerge caffe2."
+		ewarn "For example, to use CUDA capability 7.5 & 3.5, add: TORCH_CUDA_ARCH_LIST=7.5,3.5"
+		ewarn "For a Maxwell model GPU, an example value would be: TORCH_CUDA_ARCH_LIST=Maxwell"
+		ewarn ""
+		ewarn "You can look up your GPU's CUDA compute capability at https://developer.nvidia.com/cuda-gpus"
+		ewarn "or by running /opt/cuda/extras/demo_suite/deviceQuery | grep 'CUDA Capability'"
+	fi
+
 	python_setup
 	local mycmakeargs=(
 		-DBUILD_CUSTOM_PROTOBUF=OFF
 		-DBUILD_SHARED_LIBS=ON
 
 		-DUSE_CCACHE=OFF
-		-DUSE_CUDA=OFF # TODO
-		-DUSE_CUDNN=OFF # TODO
-		-DUSE_FAST_NVCC=OFF # TODO
-		#-DCUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST:-Auto}"
+		-DUSE_CUDA=$(usex cuda)
+		-DUSE_CUDNN=$(usex cuda)
+		-DUSE_FAST_NVCC=$(usex cuda)
+		-DTORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST:-3.5 7.0}"
 		-DUSE_DISTRIBUTED=OFF
 		-DUSE_FAKELOWP=OFF
 		-DUSE_FBGEMM=OFF # TODO
 		-DUSE_FFMPEG=$(usex ffmpeg)
-		-DUSE_GFLAGS=OFF # TODO
-		-DUSE_GLOG=OFF # TODO
+		-DUSE_GFLAGS=ON
+		-DUSE_GLOG=ON
 		-DUSE_GLOO=OFF
 		-DUSE_KINETO=OFF # TODO
 		-DUSE_LEVELDB=OFF
