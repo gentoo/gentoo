@@ -57,7 +57,7 @@ RDEPEND="
 	)
 	wayland? (
 		gui-libs/egl-gbm
-		=gui-libs/egl-wayland-1.1.9*
+		>=gui-libs/egl-wayland-1.1.10
 		media-libs/libglvnd
 	)"
 DEPEND="
@@ -417,8 +417,7 @@ https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 		dodoc nvidia-dbus.conf
 	fi
 
-	# symlink non-versioned profile for nvidia-settings in case
-	# fails to detect version (i.e. mismatch, or with kernel-open)
+	# symlink non-versioned so nvidia-settings can use it even if misdetected
 	dosym nvidia-application-profiles-${PV}-key-documentation \
 		${paths[APPLICATION_PROFILE]}/nvidia-application-profiles-key-documentation
 }
