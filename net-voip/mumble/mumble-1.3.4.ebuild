@@ -147,6 +147,9 @@ src_install() {
 
 	doman man/mumble-overlay.1
 	doman man/mumble.1
+
+	insinto /usr/share/mumble
+	doins -r samples
 }
 
 pkg_preinst() {
