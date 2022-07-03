@@ -39,10 +39,12 @@ LICENSE="Apache-2.0 Boost-1.0 BSD BSD-2 GPL-2+ GPL-3 LGPL-3 OFL-1.1 MIT"
 
 SLOT="0"
 
-IUSE="debug lto"
+IUSE="debug lto test"
 REQUIRED_USE="
 	lto? ( !debug )
 "
+
+RESTRICT="!test? ( test )"
 
 MIN_QT="5.12.0"
 
@@ -92,6 +94,7 @@ src_configure(){
 		-DLauncher_APP_BINARY_NAME="${PN}"
 
 		-DENABLE_LTO=$(usex lto)
+		-DBUILD_TESTING=$(usex test)
 	)
 
 	if use debug; then
