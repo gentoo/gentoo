@@ -43,6 +43,8 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		# TODO: unbundle simpleini next version (will use system by default),
+		# and try to for at least zerotier too
 		-DBUILD_TESTING=$(usex test)
 		-DCCACHE_PROGRAM=OFF #813768
 		-DDEBUG=$(usex debug)
