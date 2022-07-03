@@ -26,7 +26,7 @@ SRC_URI="https://dl.xpdfreader.com/${P}.tar.gz
 
 LICENSE="|| ( GPL-2 GPL-3 ) i18n? ( BSD )"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cmyk cups +fontconfig i18n icons +libpaper metric opi png +textselect utils"
 
 BDEPEND="
