@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit autotools flag-o-matic apache-module python-any-r1
+inherit autotools apache-module flag-o-matic python-any-r1
 
 DESCRIPTION="mod_gnutls uses GnuTLS for SSL/TLS encryption in Apache2 (compare to mod_ssl)"
 HOMEPAGE="https://mod.gnutls.org/"
