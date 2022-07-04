@@ -25,12 +25,11 @@ RESTRICT="test"
 
 # It turns out we need Clang too
 RDEPEND="${PYTHON_DEPS}
-	>=sys-devel/llvm-11:=
+	>=sys-devel/llvm-12:=
 	|| (
-		sys-devel/clang:11
 		sys-devel/clang:12
 		sys-devel/clang:13
-		sys-devel/clang:14
+		sys-devel/clang:${LLVM_MAX_SLOT}
 	)
 	!app-forensics/afl"
 DEPEND="${RDEPEND}
