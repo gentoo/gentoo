@@ -419,14 +419,19 @@ multilib_src_install() {
 			into /
 			dobin udevadm systemd-hwdb
 			dosym ../../bin/udevadm /lib/systemd/systemd-udevd
+
 			exeinto /lib/udev
 			doexe src/udev/{ata_id,cdrom_id,fido_id,mtd_probe,scsi_id,v4l_id}
+
 			insinto /lib/udev/rules.d
 			doins rules.d/*.rules
+
 			insinto /lib/udev/hwdb.d
 			doins hwdb.d/*.hwdb
+
 			insinto /usr/share/pkgconfig
 			doins src/udev/udev.pc
+
 			doman man/{udev.conf.5,systemd.link.5,hwdb.7,systemd-hwdb.8,udev.7,udevadm.8}
 			newman man/systemd-udevd.service.8 systemd-udevd.8
 		fi
@@ -457,17 +462,26 @@ multilib_src_install_all() {
 	fi
 	if use udev; then
 		doheader src/libudev/libudev.h
+
 		insinto /etc/udev
 		doins src/udev/udev.conf
 		keepdir /etc/udev/{hwdb.d,rules.d}
+
 		insinto /lib/systemd/network
 		doins network/99-default.link
+
+		# Remove to avoid conflict with elogind
+		# https://bugs.gentoo.org/856433
+		rm rules.d/70-power-switch.rules || die
 		insinto /lib/udev/rules.d
 		doins rules.d/*.rules
 		doins "${FILESDIR}"/40-gentoo.rules
+
 		insinto /lib/udev/hwdb.d
 		doins hwdb.d/*.hwdb
+
 		dobashcomp shell-completion/bash/udevadm
+
 		insinto /usr/share/zsh/site-functions
 		doins shell-completion/zsh/_udevadm
 	fi
