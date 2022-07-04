@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson toolchain-funcs xdg
+inherit meson optfeature toolchain-funcs xdg
 
 DESCRIPTION="A free astronomical image processing software"
 HOMEPAGE="https://www.siril.org/"
@@ -17,14 +17,13 @@ else
 	S="${WORKDIR}/${PN}-${PV/_/-}"
 fi
 
-LICENSE="GPL-3+"
+LICENSE="GPL-3+ Boost-1.0"
 SLOT="0"
-IUSE="curl ffmpeg gnuplot heif jpeg openmp png raw tiff wcs"
+IUSE="curl ffmpeg heif jpeg libconfig openmp png raw tiff wcs"
 
 DEPEND="
 	>=dev-libs/glib-2.56.0:2
 	>=dev-libs/json-glib-1.2.6
-	>=dev-libs/libconfig-1.4[cxx]
 	>=media-gfx/exiv2-0.25
 	media-libs/librtprocess:=
 	>=media-libs/opencv-4.4.0:=
@@ -36,6 +35,7 @@ DEPEND="
 	curl? ( net-misc/curl )
 	ffmpeg? ( media-video/ffmpeg:= )
 	heif? ( media-libs/libheif )
+	libconfig? ( >=dev-libs/libconfig-1.4[cxx] )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? ( >=media-libs/libpng-1.6.0 )
 	raw? ( media-libs/libraw )
@@ -44,14 +44,14 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	gnuplot? ( sci-visualization/gnuplot )
 "
 
 PATCHES=(
 	"${FILESDIR}/${PN}-docfiles.patch"
+	"${FILESDIR}/${PN}-dependencies.patch"
 )
 
-DOCS=( README.md NEWS ChangeLog LICENSE.md LICENSE_sleef.txt AUTHORS )
+DOCS=( README.md NEWS ChangeLog AUTHORS )
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -63,8 +63,22 @@ pkg_setup() {
 
 src_configure() {
 	local emesonargs=(
+		-Dffms2=false
+		-Dcriterion=false
+		$(meson_use ffmpeg)
+		$(meson_use heif libheif)
+		$(meson_use jpeg libjpeg)
+		$(meson_use libconfig)
 		$(meson_use openmp)
+		$(meson_use png libpng)
+		$(meson_use raw libraw)
+		$(meson_use tiff libtiff)
+		$(meson_use wcs wcslib)
 		$(usex curl -Denable-libcurl=yes -Denable-libcurl=no)
 	)
 	meson_src_configure
+}
+
+pkg_postinst() {
+	optfeature "gnuplot support" sci-visualization/gnuplot
 }
