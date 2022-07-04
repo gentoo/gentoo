@@ -424,7 +424,7 @@ java-pkg-simple_src_compile() {
 # @DESCRIPTION:
 # src_install for simple single jar java packages. Simply installs
 # ${JAVA_JAR_FILENAME}. It will also install a launcher if
-# ${JAVA_MAIN_CLASS} is set.
+# ${JAVA_MAIN_CLASS} is set. Also invokes einstalldocs.
 java-pkg-simple_src_install() {
 	local sources=sources.lst classes=target/classes apidoc=target/api
 
@@ -455,6 +455,12 @@ java-pkg-simple_src_install() {
 		fi
 		java-pkg_dosrc ${srcdirs}
 	fi
+
+	if [[ ${EAPI} == 5 ]]; then
+		# einstalldocs is only available on EAPI >= 6.
+		return
+	fi
+	einstalldocs
 }
 
 # @FUNCTION: java-pkg-simple_src_test
