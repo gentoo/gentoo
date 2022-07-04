@@ -40,6 +40,7 @@ QA_PREBUILT="usr/share/afl/testcases/others/elf/small_exec.elf"
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.01c-respect-flags.patch
 	"${FILESDIR}"/${PN}-4.01c-no-ignore-errors-makefile.patch
+	"${FILESDIR}"/${PN}-4.01c-lld-detect.patch
 )
 
 llvm_check_deps() {
