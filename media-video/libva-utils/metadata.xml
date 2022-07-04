@@ -6,10 +6,8 @@
     <name>Alexis Ballier</name>
   </maintainer>
   <use>
-    <flag name="drm">Enables VA/DRM API support.</flag>
     <flag name="examples">Build and install decode, encode, videoprocess and other VA-API examples.</flag>
     <flag name="putsurface">Build and install putsurface tool.</flag>
-    <flag name="test-va-api">Install test_va_api tool for thorough testing of the installed VA-API.</flag>
     <flag name="vainfo">Build and install vainfo tool.</flag>
   </use>
   <upstream>
