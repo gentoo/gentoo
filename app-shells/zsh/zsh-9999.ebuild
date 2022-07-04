@@ -127,7 +127,7 @@ src_compile() {
 	default
 
 	if [[ ${PV} == *9999 ]] && use doc ; then
-		emake -C Doc everything
+		emake -C Doc everything pdf dvi
 	fi
 }
 
