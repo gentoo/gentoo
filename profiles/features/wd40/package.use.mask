@@ -22,7 +22,7 @@ media-libs/imlib2 svg
 # These package flags require dev-python/cryptography which -- due
 # to the dependency on Rust -- is no longer portable to ${arch}.
 dev-python/dnspython dnssec
-dev-python/twisted conch crypt ssl
+dev-python/twisted conch ssl
 dev-python/urllib3 test
 net-fs/samba addc addns ads
 
