@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
@@ -20,7 +20,7 @@ else
 	fi
 fi
 
-DESCRIPTION="Intel Media Driver for VAAPI (iHD)"
+DESCRIPTION="Intel Media Driver for VA-API (iHD)"
 HOMEPAGE="https://github.com/intel/media-driver"
 
 LICENSE="MIT BSD redistributable? ( no-source-code )"
