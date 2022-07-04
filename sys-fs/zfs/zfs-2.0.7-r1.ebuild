@@ -191,6 +191,13 @@ src_configure() {
 	use custom-cflags || strip-flags
 	use minimal || python_setup
 
+	# All the same issue:
+	# Segfaults w/ GCC 12 and 'zfs send'
+	# bug #856373
+	# https://github.com/openzfs/zfs/issues/13620
+	# https://github.com/openzfs/zfs/issues/13605
+	append-flags -fno-tree-vectorize
+
 	local myconf=(
 		--bindir="${EPREFIX}/bin"
 		--enable-shared
