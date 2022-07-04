@@ -147,7 +147,7 @@ https://bugs.gentoo.org/800941
 @@ -463,6 +463,7 @@ document:
  test_build: $(PROGS)
  	@echo "[*] Testing the CC wrapper and instrumentation output..."
- 	unset AFL_USE_ASAN AFL_USE_MSAN AFL_INST_RATIO; ASAN_OPTIONS=detect_leaks=0 AFL_QUIET=1 AFL_PATH=. AFL_LLVM_LAF_ALL=1 ./afl-cc $(CFLAGS) $(CPPFLAGS) ./test-instr.c -o test-instr $(LDFLAGS)
+ 	unset AFL_USE_ASAN AFL_USE_MSAN AFL_INST_RATIO; ASAN_OPTIONS=detect_leaks=0 AFL_QUIET=1 AFL_PATH=. AFL_LLVM_LAF_ALL=1 ./afl-cc ./test-instr.c -o test-instr
 +	@test -e test-instr || { echo "[-] Testing CC wrapper failed. You seem not to have a working compiler." ; exit 1; }
  	ASAN_OPTIONS=detect_leaks=0 ./afl-showmap -m none -q -o .test-instr0 ./test-instr < /dev/null
  	echo 1 | ASAN_OPTIONS=detect_leaks=0 ./afl-showmap -m none -q -o .test-instr1 ./test-instr

@@ -1,3 +1,7 @@
+* Respect CFLAGS everywhere when building.
+* Ignore build flags then when testing the CC wrappers (could contain
+  incompatible flags).
+
 --- a/GNUmakefile
 +++ b/GNUmakefile
 @@ -423,7 +423,7 @@ afl-as: src/afl-as.c include/afl-as.h $(COMM_HDR) | test_x86
@@ -9,6 +13,15 @@
  
  src/afl-common.o : $(COMM_HDR) src/afl-common.c include/common.h
  	$(CC) $(CFLAGS) $(CFLAGS_FLTO) -c src/afl-common.c -o src/afl-common.o
+@@ -531,7 +531,7 @@ .PHONY: test_build
+ ifndef AFL_NO_X86
+ test_build: afl-cc afl-gcc afl-as afl-showmap
+ 	@echo "[*] Testing the CC wrapper afl-cc and its instrumentation output..."
+-	@unset AFL_MAP_SIZE AFL_USE_UBSAN AFL_USE_CFISAN AFL_USE_LSAN AFL_USE_ASAN AFL_USE_MSAN; ASAN_OPTIONS=detect_leaks=0 AFL_INST_RATIO=100 AFL_PATH=. ./afl-cc test-instr.c $(LDFLAGS) -o test-instr 2>&1 || (echo "Oops, afl-cc failed"; exit 1 )
++	@unset AFL_MAP_SIZE AFL_USE_UBSAN AFL_USE_CFISAN AFL_USE_LSAN AFL_USE_ASAN AFL_USE_MSAN; ASAN_OPTIONS=detect_leaks=0 AFL_INST_RATIO=100 AFL_PATH=. ./afl-cc test-instr.c -o test-instr 2>&1 || (echo "Oops, afl-cc failed"; exit 1 )
+ 	ASAN_OPTIONS=detect_leaks=0 ./afl-showmap -m none -q -o .test-instr0 ./test-instr < /dev/null
+ 	echo 1 | ASAN_OPTIONS=detect_leaks=0 ./afl-showmap -m none -q -o .test-instr1 ./test-instr
+ 	@rm -f test-instr
 --- a/GNUmakefile.gcc_plugin
 +++ b/GNUmakefile.gcc_plugin
 @@ -131,18 +131,18 @@ afl-common.o: ./src/afl-common.c
@@ -36,7 +49,7 @@
  	ln -sf afl-cc.8 afl-gcc-fast.8
 --- a/GNUmakefile.llvm
 +++ b/GNUmakefile.llvm
-@@ -444,20 +444,20 @@ afl-llvm-dict2file.so:	instrumentation/afl-llvm-dict2file.so.cc instrumentation/
+@@ -444,25 +444,25 @@ afl-llvm-dict2file.so:	instrumentation/afl-llvm-dict2file.so.cc instrumentation/
  
  .PHONY: document
  document:
@@ -63,6 +76,12 @@
  
  .PHONY: test_build
  test_build: $(PROGS)
+ 	@echo "[*] Testing the CC wrapper and instrumentation output..."
+-	unset AFL_USE_ASAN AFL_USE_MSAN AFL_INST_RATIO; ASAN_OPTIONS=detect_leaks=0 AFL_QUIET=1 AFL_PATH=. AFL_LLVM_LAF_ALL=1 ./afl-cc $(CFLAGS) $(CPPFLAGS) ./test-instr.c -o test-instr $(LDFLAGS)
++	unset AFL_USE_ASAN AFL_USE_MSAN AFL_INST_RATIO; ASAN_OPTIONS=detect_leaks=0 AFL_QUIET=1 AFL_PATH=. AFL_LLVM_LAF_ALL=1 ./afl-cc ./test-instr.c -o test-instr
+ 	ASAN_OPTIONS=detect_leaks=0 ./afl-showmap -m none -q -o .test-instr0 ./test-instr < /dev/null
+ 	echo 1 | ASAN_OPTIONS=detect_leaks=0 ./afl-showmap -m none -q -o .test-instr1 ./test-instr
+ 	@rm -f test-instr
 --- a/custom_mutators/honggfuzz/Makefile
 +++ b/custom_mutators/honggfuzz/Makefile
 @@ -1,5 +1,6 @@
