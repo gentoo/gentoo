@@ -295,6 +295,18 @@ pkg_postinst() {
 	elog "  usermod -aG audio <youruser>"
 	elog
 
+	local ver
+	for ver in ${REPLACING_VERSIONS} ; do
+		if ver_test ${ver} -le 0.3.53-r1 && ! use sound-server ; then
+			ewarn "USE=sound-server is disabled! If you want PipeWire to provide"
+			ewarn "your sound, please enable it. See the wiki at"
+			ewarn "https://wiki.gentoo.org/wiki/PipeWire#Replacing_PulseAudio"
+			ewarn "for more details."
+
+			break
+		fi
+	done
+
 	if ! use jack-sdk; then
 		elog "JACK emulation is incomplete and not all programs will work. PipeWire's"
 		elog "alternative libraries have been installed to a non-default location."
