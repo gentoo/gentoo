@@ -13,7 +13,7 @@ SRC_URI="https://mod.gnutls.org/downloads/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 TEST_REQUIRED_APACHE_MODULES="apache2_modules_proxy,apache2_modules_proxy_http"
