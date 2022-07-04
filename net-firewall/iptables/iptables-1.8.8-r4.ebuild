@@ -43,7 +43,7 @@ RDEPEND="
 	!<net-firewall/ebtables-2.0.11-r1
 	!<net-firewall/arptables-0.0.5-r1
 "
-IDEPEND=">=app-eselect/eselect-pinentry-0.7.2"
+IDEPEND=">=app-eselect/eselect-iptables-20220320"
 
 PATCHES=(
 	"${FILESDIR}/iptables-1.8.4-no-symlinks.patch"
