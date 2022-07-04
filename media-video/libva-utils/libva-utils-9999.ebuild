@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson
 
@@ -25,28 +25,23 @@ REQUIRED_USE="
 	|| ( examples putsurface test vainfo )
 "
 
-BDEPEND="virtual/pkgconfig"
-
-if [[ ${PV} = *9999 ]] ; then
-	DEPEND="~x11-libs/libva-${PV}:=[drm(+),wayland?,X?]"
-else
-	DEPEND=">=x11-libs/libva-$(ver_cut 1-2).0:=[drm(+),wayland?,X?]"
-fi
-
-DEPEND+="
+DEPEND="
+	x11-libs/libdrm
 	wayland? ( >=dev-libs/wayland-1.0.6 )
 	X? ( >=x11-libs/libX11-1.6.2 )
 "
+if [[ ${PV} = *9999 ]] ; then
+	DEPEND+="~x11-libs/libva-${PV}:=[drm(+),wayland?,X?]"
+else
+	DEPEND+=">=x11-libs/libva-$(ver_cut 1-2).0:=[drm(+),wayland?,X?]"
+fi
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
 
 	local sed_args=()
-
-	# Fix broken dependency check
-	# https://github.com/intel/libva-utils/pull/260
-	sed_args+=(-e "s/dependency('drm'/dependency('libdrm'/")
 
 	if ! use examples ; then
 		sed_args+=(
