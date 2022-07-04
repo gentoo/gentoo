@@ -1,4 +1,5 @@
 https://bugs.gentoo.org/800941
+(also don't override jobs for sub-makes)
 
 --- a/GNUmakefile
 +++ b/GNUmakefile
@@ -12,7 +13,7 @@ https://bugs.gentoo.org/800941
  .PHONY: llvm
  llvm:
 -	-$(MAKE) -j4 -f GNUmakefile.llvm
-+	$(MAKE) -j4 -f GNUmakefile.llvm
++	$(MAKE) -f GNUmakefile.llvm
  	@test -e afl-cc || { echo "[-] Compiling afl-cc failed. You seem not to have a working compiler." ; exit 1; }
  
  .PHONY: gcc_plugin
@@ -60,7 +61,7 @@ https://bugs.gentoo.org/800941
  .PHONY: distrib
  distrib: all
 -	-$(MAKE) -j4 -f GNUmakefile.llvm
-+	$(MAKE) -j4 -f GNUmakefile.llvm
++	$(MAKE) -f GNUmakefile.llvm
  ifneq "$(SYS)" "Darwin"
 -	-$(MAKE) -f GNUmakefile.gcc_plugin
 +	$(MAKE) -f GNUmakefile.gcc_plugin
@@ -116,7 +117,7 @@ https://bugs.gentoo.org/800941
  .PHONY: source-only
  source-only: all
 -	-$(MAKE) -j4 -f GNUmakefile.llvm
-+	$(MAKE) -j4 -f GNUmakefile.llvm
++	$(MAKE) -f GNUmakefile.llvm
  ifneq "$(SYS)" "Darwin"
 -	-$(MAKE) -f GNUmakefile.gcc_plugin
 +	$(MAKE) -f GNUmakefile.gcc_plugin
