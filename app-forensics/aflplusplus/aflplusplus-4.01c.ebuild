@@ -81,6 +81,7 @@ src_install() {
 		DOC_PATH="${EPREFIX}/usr/share/doc/${PF}" \
 		MAN_PATH="${EPREFIX}/usr/share/man/man8" \
 		install
+	dostrip -x /usr/share/afl/testcases/
 }
 
 pkg_postinst() {
