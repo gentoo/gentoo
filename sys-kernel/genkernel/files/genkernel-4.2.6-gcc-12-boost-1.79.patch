@@ -1,0 +1,28 @@
+From 8b7422293dcf9cc62518dcbc49239b6e637b6b74 Mon Sep 17 00:00:00 2001
+From: "Robin H. Johnson" <robbat2@gentoo.org>
+Date: Sun, 3 Jul 2022 21:46:21 -0700
+Subject: [PATCH] gkbuilds/boost-build.gkbuild: upstream boost flags changed
+
+Upstream boost changed the flags to use 'off' instead of 'none'.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+Closes: https://bugs.gentoo.org/854480
+---
+ gkbuilds/boost-build.gkbuild | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gkbuilds/boost-build.gkbuild b/gkbuilds/boost-build.gkbuild
+index 03d1f88..0e06ba7 100644
+--- a/gkbuilds/boost-build.gkbuild
++++ b/gkbuilds/boost-build.gkbuild
+@@ -53,6 +53,6 @@ src_install() {
+ 	find "${D}/usr/share/boost-build" -iname "*.py" -delete \
+ 		|| die "Failed to remove python files"
+ 
+-	echo 'variant gentoorelease : release : <optimization>none <debug-symbols>none <runtime-link>shared ;' > "${D}/usr/share/boost-build/site-config.jam" \
++	echo 'variant gentoorelease : release : <optimization>off <debug-symbols>off <runtime-link>shared ;' > "${D}/usr/share/boost-build/site-config.jam" \
+ 		|| die "Failed to create '${D}/usr/share/boost-build/site-config.jam'!"
+ }
+-- 
+2.35.1
+
