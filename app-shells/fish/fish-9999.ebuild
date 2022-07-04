@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit cmake python-any-r1 readme.gentoo-r1
 
@@ -94,7 +94,13 @@ src_test() {
 		rm -v tests/pexpects/terminal.py || die
 	fi
 
+	# zfs completion test will fail with "Permission denied the ZFS utilities must be run as root."
+	mv "${S}"/share/completions/zfs.{fish,disabled} || die
+
 	cmake_build test
+
+	# now restore zfs completions
+	mv "${S}"/share/completions/zfs.{disabled,fish} || die
 }
 
 pkg_postinst() {
