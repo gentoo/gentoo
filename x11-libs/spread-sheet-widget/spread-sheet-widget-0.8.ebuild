@@ -14,6 +14,7 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="dev-libs/glib
 	x11-libs/gtk+:3"
 RDEPEND="${DEPEND}"
+BDEPEND="dev-util/glib-utils"
 
 src_install() {
 	default
