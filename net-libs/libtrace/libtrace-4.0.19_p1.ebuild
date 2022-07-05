@@ -1,48 +1,35 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools git-r3
-
 DESCRIPTION="A library and tools for trace processing"
 HOMEPAGE="https://research.wand.net.nz/software/libtrace.php"
-S="${WORKDIR}/${P/_beta/}"
-EGIT_REPO_URI="https://github.com/LibtraceTeam/libtrace"
-EGIT_SUBMODULES=()
+SRC_URI="https://research.wand.net.nz/software/libtrace/${PN}-$(ver_cut 1-3).tar.bz2"
+S="${WORKDIR}"/${PN}-$(ver_cut 1-3)
 
 LICENSE="LGPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
+# doxygen is always needed for man pages, but USE=doc controls installing docs themselves
+# (not man pages)
 IUSE="doc ncurses numa"
 
-BDEPEND="
-	app-doc/doxygen[dot]
+RDEPEND=">=net-libs/libpcap-0.8
+	dev-libs/libyaml
+	dev-libs/openssl:=
+	net-libs/wandio
+	ncurses? ( sys-libs/ncurses:= )
+	numa? ( sys-process/numactl )"
+DEPEND="${RDEPEND}"
+BDEPEND="app-doc/doxygen[dot]
 	sys-devel/flex
 	virtual/os-headers
 	virtual/pkgconfig
-	virtual/yacc
-"
-RDEPEND="
-	>=net-libs/libpcap-0.8
-	dev-libs/libyaml
-	dev-libs/openssl:0=
-	net-libs/wandio
-	ncurses? ( sys-libs/ncurses:0= )
-	numa? ( sys-process/numactl )
-"
-DEPEND="${RDEPEND}"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.0.20-autoconf-1.13.patch
-	"${FILESDIR}"/${PN}-4.0.0-no-examples.patch
-	"${FILESDIR}"/${PN}-4.0.0-with-numa.patch
-	"${FILESDIR}"/${PN}-4.0.9_p1-tinfo.patch
-)
+	virtual/yacc"
 
 src_prepare() {
 	default
-
-	eautoreconf
 
 	# Comment out FILE_PATTERNS definition (bug #706230)
 	if has_version ~app-doc/doxygen-1.8.16; then
@@ -57,7 +44,8 @@ src_configure() {
 	econf \
 		$(use_with ncurses) \
 		$(use_with numa) \
-		--with-man
+		--with-man \
+		--without-dpdk
 }
 
 src_install() {
