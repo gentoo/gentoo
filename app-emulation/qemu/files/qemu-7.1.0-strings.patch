@@ -1,0 +1,26 @@
+Forward-ported from original patch for 5.2.0.
+
+diff --git a/configure b/configure
+index da2501489f..4660ee3ee5 100755
+--- a/configure
++++ b/configure
+@@ -400,6 +400,7 @@ ld="${LD-${cross_prefix}ld}"
+ nm="${NM-${cross_prefix}nm}"
+ smbd="$SMBD"
+ strip="${STRIP-${cross_prefix}strip}"
++strings="${STRINGS-${cross_prefix}strings}"
+ widl="${WIDL-${cross_prefix}widl}"
+ windres="${WINDRES-${cross_prefix}windres}"
+ pkg_config_exe="${PKG_CONFIG-${cross_prefix}pkg-config}"
+@@ -1466,9 +1467,9 @@ int main(int argc, char *argv[])
+ EOF
+ 
+ if compile_prog ; then
+-    if strings -a $TMPE | grep -q BiGeNdIaN ; then
++    if $strings -a $TMPE | grep -q BiGeNdIaN ; then
+         bigendian="yes"
+-    elif strings -a $TMPE | grep -q LiTtLeEnDiAn ; then
++    elif $strings -a $TMPE | grep -q LiTtLeEnDiAn ; then
+         bigendian="no"
+     else
+         echo big/little test failed
