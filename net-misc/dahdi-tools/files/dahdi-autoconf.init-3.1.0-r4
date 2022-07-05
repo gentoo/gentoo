@@ -150,20 +150,20 @@ dahdi_conf_span() {
 
 	case "${type}" in
 		digital-TE)
-			cfunc+="bri_te"
+			cfunc="${cfunc}bri_te"
 		;;
 		digital-NT)
-			cfunc+="bri_nt"
+			cfunc="${cfunc}bri_nt"
 		;;
 		digital-[TE]1)
-			cfunc+="$(echo "${type##*-}" | tr 'TE' 'te')"
+			cfunc="${cfunc}$(echo "${type##*-}" | tr 'TE' 'te')"
 			# Use CPE by default.  Unfortunately there is no easy
 			# way to detect CPE vs NET as far as I know and specifying
 			# in a config that you want NET mode seems the sanest way.
 			if yesno "${vname}"; then
-				cfunc+="_net"
+				cfunc="${cfunc}_net"
 			else
-				cfunc+="_cpe"
+				cfunc="${cfunc}_cpe"
 			fi
 		;;
 		*)
