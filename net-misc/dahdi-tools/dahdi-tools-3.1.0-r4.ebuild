@@ -54,7 +54,7 @@ src_install() {
 
 	# install init scripts
 	newinitd "${FILESDIR}"/dahdi.init2 dahdi
-	newinitd "${FILESDIR}"/dahdi-autoconf.init-3.1.0-r3 dahdi-autoconf
+	newinitd "${FILESDIR}"/dahdi-autoconf.init-3.1.0-r4 dahdi-autoconf
 	newconfd "${FILESDIR}"/dahdi-autoconf.conf2 dahdi-autoconf
 
 	bashcomp_alias dahdi $(sed -nre 's/^complete -F .* //p' "${ED}${bashcompdir}/dahdi" ||
@@ -66,5 +66,9 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
 	udev_reload
 }
