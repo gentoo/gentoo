@@ -26,15 +26,20 @@ if [[ ${PV} == *9999* ]] ; then
 else
 	# Upstream is often behind with doc updates
 	DOC_PV=1.8.1
+	MY_PV=${PV/_rc/rc}
+	MY_P=${PN}-${MY_PV}
 
 	SRC_URI="
-		mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
+		mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz
 		doc? (
 			https://docs.scipy.org/doc/${PN}-${DOC_PV}/${PN}-html-${DOC_PV}.zip
 			https://docs.scipy.org/doc/${PN}-${DOC_PV}/${PN}-ref-${DOC_PV}.pdf
 		)"
+	S="${WORKDIR}"/${MY_P}
 
-	KEYWORDS="~amd64 ~arm ~arm64 -hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	if [[ ${PV} != *rc* ]] ; then
+		KEYWORDS="~amd64 ~arm ~arm64 -hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	fi
 fi
 
 LICENSE="BSD LGPL-2"
@@ -42,10 +47,10 @@ SLOT="0"
 IUSE="doc +sparse"
 
 DEPEND="
-	>=dev-python/numpy-1.17.3[lapack,${PYTHON_USEDEP}]
+	>=dev-python/numpy-1.18.5[lapack,${PYTHON_USEDEP}]
 	sci-libs/arpack:0=
 	virtual/cblas
-	virtual/lapack
+	>=virtual/lapack-3.8
 	sparse? ( sci-libs/umfpack:0= )"
 RDEPEND="${DEPEND}
 	dev-python/pillow[${PYTHON_USEDEP}]"

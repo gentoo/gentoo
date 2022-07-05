@@ -47,10 +47,10 @@ SLOT="0"
 IUSE="doc +sparse"
 
 DEPEND="
-	>=dev-python/numpy-1.17.3[lapack,${PYTHON_USEDEP}]
+	>=dev-python/numpy-1.18.5[lapack,${PYTHON_USEDEP}]
 	sci-libs/arpack:0=
 	virtual/cblas
-	virtual/lapack
+	>=virtual/lapack-3.8
 	sparse? ( sci-libs/umfpack:0= )"
 RDEPEND="${DEPEND}
 	dev-python/pillow[${PYTHON_USEDEP}]"
