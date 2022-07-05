@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit autotools bash-completion-r1
 
 DESCRIPTION="JSON output from a shell"
@@ -16,6 +17,8 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
+
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
