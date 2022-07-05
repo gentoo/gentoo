@@ -7,9 +7,8 @@ JAVA_PKG_IUSE="doc source test"
 inherit java-pkg-2 java-pkg-simple toolchain-funcs java-ant-2
 JAVA_TESTING_FRAMEWORKS="junit-4"
 
-MY_P="wrapper_${PV}_src"
 DESCRIPTION="A wrapper that makes it possible to install a Java Application as daemon"
-HOMEPAGE="https://wrapper.tanukisoftware.org/"
+HOMEPAGE="https://wrapper.tanukisoftware.com"
 SRC_URI="https://download.tanukisoftware.com/wrapper/${PV}/wrapper_${PV}_src.tar.gz"
 
 LICENSE="tanuki-community"
@@ -17,17 +16,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	>=virtual/jre-1.8:*"
+RDEPEND=">=virtual/jre-1.8:*"
 DEPEND="
 	>=virtual/jdk-1.8:*
 	test? (
 		dev-java/junit:4
 		dev-util/cunit
-	)"
+	)
+"
 BDEPEND="virtual/jdk"
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/wrapper_${PV}_src"
 
 JAVA_SRC_DIR="src/java/"
 JAVA_JAR_FILENAME="wrapper.jar"
@@ -39,12 +38,9 @@ src_prepare() {
 
 	# replaces as-needed.patch
 	sed -i \
-		-e 's/gcc/$(CC)/g' \
-		-e 's/$(COMPILE) -pthread/$(COMPILE) $(CFLAGS) $(LDFLAGS) -pthread/g' \
-		-e 's/${COMPILE} -shared/${COMPILE} $(LDFLAGS) -shared/g' \
-		-e 's/$(COMPILE) -c/$(COMPILE) $(CFLAGS) -c/g' \
-		-e 's/$(COMPILE) $(DEFS)/$(COMPILE) $(CFLAGS) $(DEFS)/g' \
-		-e 's/$(COMPILE) -DCUNIT/$(COMPILE) $(CFLAGS) $(LDFLAGS) -DCUNIT/g' \
+		-e 's/gcc -O3/$(CC)/g' \
+		-e 's/ -pthread/ $(CFLAGS) $(LDFLAGS) -pthread/g' \
+		-e 's/ -shared/ $(LDFLAGS) -shared/g' \
 		-e 's/$(TEST)\/testsuite/testsuite/g' \
 		src/c/Makefile-*.make || die
 
@@ -61,15 +57,16 @@ src_prepare() {
 
 src_compile() {
 	tc-export CC
+
 	pushd "${T}" || die
 	echo 'public class GetArchDataModel{public static void main(String[] args){System.out.println(System.getProperty("sun.arch.data.model"));}}' \
 		> GetArchDataModel.java || die
 	ejavac GetArchDataModel.java
 	local BITS
-	BITS="$(java GetArchDataModel)"
-	[[ "${?}" == "0" ]] || die "Failed to identify sun.arch.data.model property"
+	BITS="$(java GetArchDataModel)" || die "Failed to identify sun.arch.data.model property"
 	popd || die
 	eant -Dbits="${BITS}" compile-c
+
 	java-pkg-simple_src_compile
 }
 
