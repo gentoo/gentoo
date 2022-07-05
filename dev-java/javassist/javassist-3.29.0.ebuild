@@ -20,9 +20,10 @@ LICENSE="Apache-2.0 LGPL-2.1 MPL-1.1"
 SLOT="3"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
-#	Tests run: 431,  Failures: 6
+# Tests run: 431,  Failures: 6
 # Cannot solve those test failures. Using "mvn test" they all pass.
-RESTRICT="test" # https://bugs.gentoo.org/856364
+# https://bugs.gentoo.org/856364
+RESTRICT="test"
 
 # Compile dependencies
 # POM: pom.xml
@@ -30,16 +31,17 @@ RESTRICT="test" # https://bugs.gentoo.org/856364
 # test? org.hamcrest:hamcrest-all:1.3 -> !!!artifactId-not-found!!!
 
 DEPEND="
-	>=virtual/jdk-11:*
+	!test? (
+		>=virtual/jdk-8:*
+	)
 	test? (
+		>=virtual/jdk-11:*
 		dev-java/hamcrest-library:1.3
 	)
 "
 
 # https://github.com/jboss-javassist/javassist/blob/rel_3_29_0_ga/pom.xml#L156-L157
-RDEPEND="
-	>=virtual/jre-11:*
-"
+RDEPEND=">=virtual/jre-8:*"
 
 S="${WORKDIR}/${PN}-rel_${PV//./_}_ga"
 
