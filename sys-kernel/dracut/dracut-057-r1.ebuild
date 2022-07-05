@@ -63,6 +63,7 @@ QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 PATCHES=(
 	"${FILESDIR}"/gentoo-ldconfig-paths-r1.patch
 	"${FILESDIR}"/057-virtiofs-split-usr.patch
+	"${FILESDIR}"/057-i18n-keymaps.patch
 )
 
 src_configure() {
