@@ -42,6 +42,8 @@ DOCS=(
 	example/gamemode.ini
 )
 
+PATCHES=( "${FILESDIR}/${PN}-1.6.1-signal_h-musl.patch" )
+
 pkg_pretend() {
 	elog
 	elog "GameMode needs a kernel capable of SCHED_ISO to use its soft realtime"
