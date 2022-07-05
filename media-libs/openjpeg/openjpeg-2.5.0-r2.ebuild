@@ -120,7 +120,7 @@ multilib_src_test() {
 	local FAILEDTEST=
 	local HAS_UNKNOWN_TEST_FAILURES=0
 
-	awk -F: '{ print $2 }' "${FAILEDTEST_LOG}" | while read FAILEDTEST; do
+	while read FAILEDTEST; do
 		# is this failure known?
 		if grep -xq "${FAILEDTEST}" "${KNOWN_FAILURES_LIST}" ; then
 			elog "Test '${FAILEDTEST}' is known to fail, ignoring ..."
@@ -128,7 +128,7 @@ multilib_src_test() {
 			eerror "New/unknown test failure found: '${FAILEDTEST}'"
 			HAS_UNKNOWN_TEST_FAILURES=1
 		fi
-	done
+	done < <(awk -F: '{ print $2 }' "${FAILEDTEST_LOG}")
 
 	[[ ${HAS_UNKNOWN_TEST_FAILURES} -eq 0 ]] || die "Test suite failed. New/unknown test failure(s) found!"
 
