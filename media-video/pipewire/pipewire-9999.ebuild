@@ -93,7 +93,6 @@ RDEPEND="
 	pipewire-alsa? (
 		>=media-libs/alsa-lib-1.1.7[${MULTILIB_USEDEP}]
 	)
-	!pipewire-alsa? ( media-plugins/alsa-plugins[${MULTILIB_USEDEP},pulseaudio] )
 	sound-server? (
 		!media-sound/pulseaudio[daemon(+)]
 		!media-sound/pulseaudio-daemon
@@ -380,6 +379,10 @@ pkg_postinst() {
 
 	optfeature_header "The following can be installed for optional runtime features:"
 	optfeature "restricted realtime capabilities via D-Bus" sys-auth/rtkit
+
+	if use sound-server && ! use pipewire-alsa; then
+		optfeature "ALSA plugin to use PulseAudio interface for output" "media-plugins/alsa-plugins[pulseaudio]"
+	fi
 
 	if has_version 'net-misc/ofono' ; then
 		ewarn "Native backend has become default. Please disable oFono via:"
