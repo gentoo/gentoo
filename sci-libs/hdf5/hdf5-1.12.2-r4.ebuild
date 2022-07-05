@@ -22,7 +22,7 @@ SLOT="0/${PV%%_p*}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="cxx debug examples fortran +hl mpi szip threads unsupported zlib"
 REQUIRED_USE="
-	!unsupported (
+	!unsupported? (
 		cxx? ( !mpi ) mpi? ( !cxx )
 		threads? ( !cxx !mpi !fortran !hl )
 	)
