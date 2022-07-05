@@ -90,11 +90,11 @@ RDEPEND="
 		!media-sound/jack2
 	)
 	lv2? ( media-libs/lilv )
-	pipewire-alsa? (
-		>=media-libs/alsa-lib-1.1.7[${MULTILIB_USEDEP}]
-	)
-	!pipewire-alsa? ( media-plugins/alsa-plugins[${MULTILIB_USEDEP},pulseaudio] )
 	sound-server? (
+		pipewire-alsa? (
+			>=media-libs/alsa-lib-1.1.7[${MULTILIB_USEDEP}]
+		)
+		!pipewire-alsa? ( media-plugins/alsa-plugins[${MULTILIB_USEDEP},pulseaudio] )
 		!media-sound/pulseaudio[daemon(+)]
 		!media-sound/pulseaudio-daemon
 	)
