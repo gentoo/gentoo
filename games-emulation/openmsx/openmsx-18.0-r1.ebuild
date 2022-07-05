@@ -18,6 +18,7 @@ IUSE="+joystick"
 
 RDEPEND="dev-lang/tcl:0=
 	media-libs/alsa-lib
+	media-libs/harfbuzz:=
 	media-libs/libogg
 	media-libs/libpng:0=
 	media-libs/libsdl2[joystick=,sound,video]
