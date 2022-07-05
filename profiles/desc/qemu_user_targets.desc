@@ -14,6 +14,7 @@ cris - userspace emulation target
 hexagon - Qualcomm hexagon userspace emulation target
 hppa - userspace emulation target
 i386 - userspace emulation target
+loongarch64 - userspace emulation target
 m68k - userspace emulation target
 microblazeel - userspace emulation target
 microblaze - userspace emulation target
