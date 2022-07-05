@@ -16,11 +16,13 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 RESTRICT="test"
+IUSE="cuda ffmpeg nnpack +numpy opencl opencv openmp qnnpack xnnpack"
 
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 RDEPEND="
 	${PYTHON_DEPS}
 	~sci-libs/caffe2-${PV}[${PYTHON_USEDEP}]
+	sci-libs/caffe2[cuda?,ffmpeg?,nnpack?,numpy?,opencl?,opencv?,openmp?,qnnpack?,xnnpack?]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
