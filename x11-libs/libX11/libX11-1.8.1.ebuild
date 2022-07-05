@@ -17,10 +17,14 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=x11-libs/libxcb-1.11.1[${MULTILIB_USEDEP}]
-	x11-misc/compose-tables"
+	x11-misc/compose-tables
+
+	!<xfce-base/xfce4-settings-4.16.3
+"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
-	x11-libs/xtrans"
+	x11-libs/xtrans
+"
 BDEPEND="test? ( dev-lang/perl )"
 
 src_configure() {
