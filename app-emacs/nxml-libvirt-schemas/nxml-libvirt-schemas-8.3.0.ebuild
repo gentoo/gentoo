@@ -14,8 +14,8 @@ inherit elisp
 
 MY_P="libvirt-${PV}"
 DESCRIPTION="Extension for nxml-mode with libvirt schemas"
-HOMEPAGE="http://www.libvirt.org/"
-SRC_URI="http://libvirt.org/sources/${MY_P}.tar.xz"
+HOMEPAGE="https://libvirt.org/"
+SRC_URI="https://libvirt.org/sources/${MY_P}.tar.xz"
 S="${WORKDIR}/${MY_P%-rc*}/src/conf/schemas"
 
 # This is the license of the package, but the schema files are
