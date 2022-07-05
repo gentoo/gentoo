@@ -1,18 +1,18 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit perl-functions
 
 PATCHVER=0.2
 MY_PN=${PN/b/B}
 MY_P=${MY_PN}-${PV}
-S=${WORKDIR}/${MY_PN}
 DESCRIPTION="Bastille-Linux is a security hardening tool"
 HOMEPAGE="http://bastille-linux.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}-linux/${MY_P}.tar.bz2
 	mirror://gentoo/${P}-gentoo-${PATCHVER}.patch.bz2"
+S="${WORKDIR}"/${MY_PN}
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -21,7 +21,7 @@ IUSE="X"
 
 RDEPEND="
 	app-admin/logrotate
-	dev-lang/perl:=
+	dev-lang/perl
 	dev-perl/Curses
 	net-firewall/iptables
 	net-firewall/psad
@@ -61,6 +61,11 @@ src_install() {
 	doins *.config
 
 	newinitd ${PN}-firewall.gentoo-init ${PN}-firewall
+
+	# See bug #455542
+	keepdir /var/lock/subsys
+	keepdir /var/lock/bastille
+	keepdir /var/lock/subsys/bastille
 
 	# Documentation
 	cd "${S}" || die
