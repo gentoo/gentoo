@@ -1,0 +1,79 @@
+https://github.com/irontec/sngrep/pull/404
+--- a/configure.ac
++++ b/configure.ac
+@@ -51,7 +51,7 @@ AC_ARG_ENABLE([unicode],
+ 	[AC_SUBST(UNICODE, no)]
+ )
+ 
+-AS_IF([test "x$enable_unicode" == "xyes"], [
++AS_IF([test "x$enable_unicode" = "xyes"], [
+ 	# Ncurses with wide-character support
+ 	AC_DEFINE([WITH_UNICODE], [], [Compile With Unicode compatibility])
+ 
+@@ -123,7 +123,7 @@ AC_ARG_WITH([gnutls],
+     [AC_SUBST(WITH_GNUTLS, no)]
+ )
+ 
+-AS_IF([test "x$WITH_GNUTLS" == "xyes"], [
++AS_IF([test "x$WITH_GNUTLS" = "xyes"], [
+ 
+     m4_ifdef([PKG_CHECK_MODULES], [
+         PKG_CHECK_MODULES([LIBGNUTLS], [gnutls])
+@@ -160,8 +160,8 @@ AC_ARG_WITH([openssl],
+     [AC_SUBST(WITH_OPENSSL, no)]
+ )
+ 
+-AS_IF([test "x$WITH_OPENSSL" == "xyes"], [
+-	AS_IF([test "x$WITH_GNUTLS" == "xyes"], [
++AS_IF([test "x$WITH_OPENSSL" = "xyes"], [
++	AS_IF([test "x$WITH_GNUTLS" = "xyes"], [
+ 	    AC_MSG_ERROR([ GnuTLS and OpenSSL can not be enabled at the same time ])
+ 	], [])
+     m4_ifdef([PKG_CHECK_MODULES], [
+@@ -187,7 +187,7 @@ AC_ARG_WITH([pcre],
+     [AC_SUBST(WITH_PCRE, no)]
+ )
+ 
+-AS_IF([test "x$WITH_PCRE" == "xyes"], [
++AS_IF([test "x$WITH_PCRE" = "xyes"], [
+ 	AC_CHECK_HEADER([pcre.h], [], [
+ 	    AC_MSG_ERROR([ You need libpcre development files installed to compile with pcre support.])
+ 	])
+@@ -206,7 +206,7 @@ AC_ARG_ENABLE([ipv6],
+     [AC_SUBST(USE_IPV6, no)]
+ )
+ 
+-AS_IF([test "x$USE_IPV6" == "xyes"], [
++AS_IF([test "x$USE_IPV6" = "xyes"], [
+ 	AC_CHECK_HEADERS([netinet/in.h netinet/ip6.h], [], [
+ 	    AC_MSG_ERROR([ You dont seem to have ipv6 support (no ip6.h found).])
+ 	], [
+@@ -231,15 +231,15 @@ AC_ARG_ENABLE([eep],
+     [AC_SUBST(USE_EEP, no)]
+ )
+ 
+-AS_IF([test "x$USE_EEP" == "xyes"], [
++AS_IF([test "x$USE_EEP" = "xyes"], [
+ 	AC_DEFINE([USE_EEP],[],[Compile With EEP support])
+ ], [])
+ 
+ 
+ # Conditional Source inclusion 
+-AM_CONDITIONAL([WITH_GNUTLS], [test "x$WITH_GNUTLS" == "xyes"])
+-AM_CONDITIONAL([WITH_OPENSSL], [test "x$WITH_OPENSSL" == "xyes"])
+-AM_CONDITIONAL([USE_EEP], [test "x$USE_EEP" == "xyes"])
++AM_CONDITIONAL([WITH_GNUTLS], [test "x$WITH_GNUTLS" = "xyes"])
++AM_CONDITIONAL([WITH_OPENSSL], [test "x$WITH_OPENSSL" = "xyes"])
++AM_CONDITIONAL([USE_EEP], [test "x$USE_EEP" = "xyes"])
+ 
+ 
+ ######################################################################
+@@ -249,7 +249,7 @@ AC_ARG_ENABLE(logo,
+     [ enable_logo=$enableval],
+     [ enable_logo=yes])
+ 
+-AS_IF([test "x$enable_logo" == "xyes"], [
++AS_IF([test "x$enable_logo" = "xyes"], [
+     echo ''
+     echo ' ██╗██████╗  ██████╗ ███╗   ██╗████████╗███████╗ ██████╗'
+     echo ' ██║██╔══██╗██╔═══██╗████╗  ██║╚══██╔══╝██╔════╝██╔════╝'
