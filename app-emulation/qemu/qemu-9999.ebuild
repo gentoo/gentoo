@@ -52,6 +52,7 @@ COMMON_TARGETS="
 	cris
 	hppa
 	i386
+	loongarch64
 	m68k
 	microblaze
 	microblazeel
