@@ -279,10 +279,6 @@ dev-python/mysql-connector-python
 # The lowest supported version of GCC is GCC 10.
 <sys-devel/gcc-10
 
-# Matt Turner <mattst88@gentoo.org> (2022-04-30)
-# Masked for testing. Apparently causes crashes. Bug #841857.
->=x11-libs/libX11-1.8
-
 # Joonas Niilola <juippis@gentoo.org> (2022-04-29)
 # Apparently the "b" in version means "beta". 3.24 is available, we
 # should update to that. #841437
