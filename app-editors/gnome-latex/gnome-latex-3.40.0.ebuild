@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/GNOME-LaTeX https://gitlab.gnome.org/swilm
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="+introspection +latexmk rubber"
 
 DEPEND="
