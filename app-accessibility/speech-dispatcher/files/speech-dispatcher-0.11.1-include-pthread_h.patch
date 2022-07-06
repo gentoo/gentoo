@@ -1,0 +1,22 @@
+This fixes pthread_mutex_t being undefined on musl libc.
+
+https://bugs.gentoo.org/833347
+---
+ src/modules/module_main.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/modules/module_main.h b/src/modules/module_main.h
+index 7d9ed6d..f1d4c65 100644
+--- a/src/modules/module_main.h
++++ b/src/modules/module_main.h
+@@ -31,6 +31,7 @@
+ 
+ #include <speechd_types.h>
+ #include <spd_audio.h>
++#include <pthread.h>
+ 
+ #ifdef __cplusplus
+ extern "C" {
+-- 
+2.35.1
+

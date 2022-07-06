@@ -35,6 +35,11 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.11.1-include-pthread_h.patch
+	"${FILESDIR}"/${PN}-0.11.1-remove-unused-variable-musl.patch
+)
+
 src_configure() {
 	# bug 573732
 	export GIT_CEILING_DIRECTORIES="${WORKDIR}"
