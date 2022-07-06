@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-07-06)
+# sci-libs/sundials is not marked stable on x86
+sci-mathematics/octave sundials
+
 # Sam James <sam@gentoo.org> (2022-02-02)
 # sys-cluster/ucx is not marked stable on x86
 sys-cluster/slurm ucx
