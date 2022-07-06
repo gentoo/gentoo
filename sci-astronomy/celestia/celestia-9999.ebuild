@@ -39,7 +39,7 @@ BDEPEND="
 	)
 "
 DEPEND="
-	dev-libs/libfmt:=
+	<dev-libs/libfmt-9.0.0:=
 	media-libs/freetype
 	media-libs/glew:0=
 	media-libs/libepoxy
