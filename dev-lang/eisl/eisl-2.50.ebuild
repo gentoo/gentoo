@@ -5,7 +5,7 @@ EAPI=8
 
 inherit toolchain-funcs
 
-DESCRIPTION="Interpreter and compiler compatible for the ISLisp standard"
+DESCRIPTION="Interpreter and compiler compatible with the ISLisp standard"
 HOMEPAGE="https://github.com/sasagawa888/eisl/"
 SRC_URI="https://github.com/sasagawa888/eisl/archive/v${PV}.tar.gz
 			-> ${P}.tar.gz"
