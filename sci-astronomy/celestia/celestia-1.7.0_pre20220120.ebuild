@@ -40,7 +40,7 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 "
 DEPEND="
-	dev-libs/libfmt:=
+	<dev-libs/libfmt-9.0.0:=
 	media-libs/glew:0=
 	media-libs/libepoxy
 	media-libs/libpng:0=
