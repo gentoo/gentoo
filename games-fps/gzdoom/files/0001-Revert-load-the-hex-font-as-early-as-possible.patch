@@ -1,0 +1,129 @@
+From 2d00bc6b9f25ae045eecba6e198eaceee9046647 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Wed, 6 Jul 2022 23:37:30 +0100
+Subject: [PATCH] Revert "- load the hex font as early as possible."
+
+This reverts commit 010f41a3aad3719b1e5d4d8ce157a5d9b0077b44.
+
+Bug: https://github.com/coelckers/gzdoom/issues/1615
+---
+ src/common/fonts/hexfont.cpp | 24 +++++++-----------------
+ src/d_main.cpp               | 17 +++++++----------
+ 2 files changed, 14 insertions(+), 27 deletions(-)
+
+diff --git a/src/common/fonts/hexfont.cpp b/src/common/fonts/hexfont.cpp
+index 8b50427f4..e2bdbff7a 100644
+--- a/src/common/fonts/hexfont.cpp
++++ b/src/common/fonts/hexfont.cpp
+@@ -58,12 +58,11 @@ struct HexDataSource
+ 	//
+ 	//==========================================================================
+ 
+-	void ParseDefinition(FResourceLump* font)
++	void ParseDefinition(int lumpnum)
+ 	{
+ 		FScanner sc;
+ 
+-		auto data = font->Lock();
+-		sc.OpenMem("newconsolefont.hex", (const char*)data, font->Size());
++		sc.OpenLumpNum(lumpnum);
+ 		sc.SetCMode(true);
+ 		glyphdata.Push(0);	// ensure that index 0 can be used as 'not present'.
+ 		while (sc.GetString())
+@@ -97,7 +96,6 @@ struct HexDataSource
+ 			lumb = i * 255 / 17;
+ 			SmallPal[i] = PalEntry(255, lumb, lumb, lumb);
+ 		}
+-		font->Unlock();
+ 	}
+ };
+ 
+@@ -402,7 +400,7 @@ public:
+ 
+ FFont *CreateHexLumpFont (const char *fontname, int lump)
+ {
+-	assert(hexdata.FirstChar != INT_MAX);
++	if (hexdata.FirstChar == INT_MAX) hexdata.ParseDefinition(lump);
+ 	return new FHexFont(fontname, lump);
+ }
+ 
+@@ -414,7 +412,7 @@ FFont *CreateHexLumpFont (const char *fontname, int lump)
+ 
+ FFont *CreateHexLumpFont2(const char *fontname, int lump)
+ {
+-	assert(hexdata.FirstChar != INT_MAX);
++	if (hexdata.FirstChar == INT_MAX) hexdata.ParseDefinition(lump);
+ 	return new FHexFont2(fontname, lump);
+ }
+ 
+@@ -426,7 +424,8 @@ FFont *CreateHexLumpFont2(const char *fontname, int lump)
+ 
+ uint8_t* GetHexChar(int codepoint)
+ {
+-	assert(hexdata.FirstChar != INT_MAX);
++	auto lump = fileSystem.CheckNumForFullName("newconsolefont.hex", 0);	// This is always loaded from gzdoom.pk3 to prevent overriding it with incomplete replacements.
++	if (hexdata.FirstChar == INT_MAX) hexdata.ParseDefinition(lump);
+ 
+ 	if (hexdata.glyphmap[codepoint] > 0)
+ 	{
+@@ -434,13 +433,4 @@ uint8_t* GetHexChar(int codepoint)
+ 		return &hexdata.glyphdata[offset];
+ 	}
+ 	return nullptr;
+-}
+-
+-void LoadHexFont(const char* filename)
+-{
+-	auto resf = FResourceFile::OpenResourceFile(filename);
+-	if (resf == nullptr) I_FatalError("Unable to open %s", filename);
+-	auto hexfont = resf->FindLump("newconsolefont.hex");
+-	if (hexfont == nullptr) I_FatalError("Unable to find newconsolefont.hex in %s", filename);
+-	hexdata.ParseDefinition(hexfont);
+-}
++}
+\ No newline at end of file
+diff --git a/src/d_main.cpp b/src/d_main.cpp
+index b64142c07..d61807012 100644
+--- a/src/d_main.cpp
++++ b/src/d_main.cpp
+@@ -175,7 +175,6 @@ void FreeSBarInfoScript();
+ void I_UpdateWindowTitle();
+ void S_ParseMusInfo();
+ void D_GrabCVarDefaults();
+-void LoadHexFont(const char* filename);
+ 
+ // PRIVATE FUNCTION PROTOTYPES ---------------------------------------------
+ 
+@@ -3535,15 +3534,6 @@ static int D_DoomMain_Internal (void)
+ 	std::set_new_handler(NewFailure);
+ 	const char *batchout = Args->CheckValue("-errorlog");
+ 	
+-	// [RH] Make sure zdoom.pk3 is always loaded,
+-	// as it contains magic stuff we need.
+-	wad = BaseFileSearch(BASEWAD, NULL, true, GameConfig);
+-	if (wad == NULL)
+-	{
+-		I_FatalError("Cannot find " BASEWAD);
+-	}
+-	LoadHexFont(wad);	// load hex font early so we have it during startup.
+-
+ 	C_InitConsole(80*8, 25*8, false);
+ 	I_DetectOS();
+ 
+@@ -3573,6 +3563,13 @@ static int D_DoomMain_Internal (void)
+ 	extern void D_ConfirmSendStats();
+ 	D_ConfirmSendStats();
+ 
++	// [RH] Make sure zdoom.pk3 is always loaded,
++	// as it contains magic stuff we need.
++	wad = BaseFileSearch (BASEWAD, NULL, true, GameConfig);
++	if (wad == NULL)
++	{
++		I_FatalError ("Cannot find " BASEWAD);
++	}
+ 	FString basewad = wad;
+ 
+ 	FString optionalwad = BaseFileSearch(OPTIONALWAD, NULL, true, GameConfig);
+-- 
+2.35.1
+
