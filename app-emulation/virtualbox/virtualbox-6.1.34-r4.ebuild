@@ -128,6 +128,11 @@ RDEPEND="
 	java? ( virtual/jre:1.8 )
 "
 
+QA_FLAGS_IGNORED="
+	usr/lib64/virtualbox/VBoxDDR0.r0
+	usr/lib64/virtualbox/VMMR0.r0
+"
+
 QA_TEXTRELS="
 	usr/lib64/virtualbox/VMMR0.r0
 "
