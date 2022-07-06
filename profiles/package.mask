@@ -241,11 +241,6 @@ dev-cpp/commoncpp2
 # Removal on 2022-07-08.  Bug #813990.
 net-misc/pulseaudio-dlna
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-06-05)
-# Ages old, abandoned upstream, and server installs now provide an
-# actually useful webmail interface. Removal in 30 days.
-mail-client/novell-groupwise-client
-
 # Matt Turner <mattst88@gentoo.org> (2022-05-30)
 # libwacom-2 broke ABI compatibility; reverse dependencies need to be updated.
 # Bug #848501
