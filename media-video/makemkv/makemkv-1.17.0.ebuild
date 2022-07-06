@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -100,6 +100,9 @@ src_install() {
 	# install profiles and locales
 	insinto /usr/share/MakeMKV
 	doins src/share/*
+
+	# install unofficial man page
+	doman "${FILESDIR}"/makemkvcon.1
 }
 
 pkg_postinst() {
