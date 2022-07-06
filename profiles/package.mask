@@ -246,12 +246,6 @@ net-misc/pulseaudio-dlna
 # actually useful webmail interface. Removal in 30 days.
 mail-client/novell-groupwise-client
 
-# Michał Górny <mgorny@gentoo.org> (2022-06-05)
-# The current version in Gentoo is broken with modern pytest.  The new
-# version (from Dec 2021) fails tests with modern pyflakes.  No revdeps.
-# Removal on 2022-07-05.  Bug #834816.
-dev-python/pytest-flakes
-
 # Matt Turner <mattst88@gentoo.org> (2022-05-30)
 # libwacom-2 broke ABI compatibility; reverse dependencies need to be updated.
 # Bug #848501
