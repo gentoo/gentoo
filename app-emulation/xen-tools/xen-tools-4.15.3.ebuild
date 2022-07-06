@@ -24,7 +24,7 @@ else
 	IPXE_COMMIT="3c040ad387099483102708bb1839110bc788cefb"
 
 	XEN_PRE_PATCHSET_NUM=
-	XEN_GENTOO_PATCHSET_NUM=0
+	XEN_GENTOO_PATCHSET_NUM=2
 	XEN_PRE_VERSION_BASE=
 
 	XEN_BASE_PV="${PV}"
@@ -46,13 +46,13 @@ else
 	if [[ -n "${XEN_PRE_PATCHSET_NUM}" ]]; then
 		XEN_UPSTREAM_PATCHES_TAG="$(ver_cut 1-3)-pre-patchset-${XEN_PRE_PATCHSET_NUM}"
 		XEN_UPSTREAM_PATCHES_NAME="xen-upstream-patches-${XEN_UPSTREAM_PATCHES_TAG}"
-		SRC_URI+=" https://github.com/Flowdalic/xen-upstream-patches/archive/refs/tags/${XEN_UPSTREAM_PATCHES_TAG}.tar.gz -> ${XEN_UPSTREAM_PATCHES_NAME}.tar.gz"
+		SRC_URI+=" https://gitweb.gentoo.org/proj/xen-upstream-patches.git/snapshot/${XEN_UPSTREAM_PATCHES_NAME}.tar.bz2"
 		XEN_UPSTREAM_PATCHES_DIR="${WORKDIR}/${XEN_UPSTREAM_PATCHES_NAME}"
 	fi
 	if [[ -n "${XEN_GENTOO_PATCHSET_NUM}" ]]; then
-		XEN_GENTOO_PATCHES_TAG="4.16.1-gentoo-patchset-${XEN_GENTOO_PATCHSET_NUM}"
+		XEN_GENTOO_PATCHES_TAG="${PV}-gentoo-patchset-${XEN_GENTOO_PATCHSET_NUM}"
 		XEN_GENTOO_PATCHES_NAME="xen-gentoo-patches-${XEN_GENTOO_PATCHES_TAG}"
-		SRC_URI+=" https://github.com/Flowdalic/xen-gentoo-patches/archive/refs/tags/${XEN_GENTOO_PATCHES_TAG}.tar.gz -> ${XEN_GENTOO_PATCHES_NAME}.tar.gz"
+		SRC_URI+=" https://gitweb.gentoo.org/proj/xen-gentoo-patches.git/snapshot/${XEN_GENTOO_PATCHES_NAME}.tar.bz2"
 		XEN_GENTOO_PATCHES_DIR="${WORKDIR}/${XEN_GENTOO_PATCHES_NAME}"
 	fi
 fi
@@ -236,15 +236,17 @@ src_prepare() {
 	fi
 
 	if [[ -v XEN_GENTOO_PATCHES_DIR ]]; then
-		rm "${XEN_GENTOO_PATCHES_DIR}"/xen-tools-4.16.0-qemu-bridge.patch || die
-		sed -i 's/qemu-bridge-helper/xen-bridge-helper/' \
-			tools/qemu-xen/include/net/net.h \
-			tools/qemu-xen/meson.build \
-			tools/qemu-xen/qemu-bridge-helper.c \
-			tools/qemu-xen/qemu-options.hx
-
 		eapply "${XEN_GENTOO_PATCHES_DIR}"
 	fi
+
+	# Rename qemu-bridge-helper to xen-bridge-helper to avoid file
+	# collisions with app-emulation/qemu.
+	sed -i 's/qemu-bridge-helper/xen-bridge-helper/g' \
+		tools/qemu-xen/include/net/net.h \
+		tools/qemu-xen/Makefile \
+		tools/qemu-xen/qemu-bridge-helper.c \
+		tools/qemu-xen/qemu-options.hx \
+		|| die
 
 	if use ovmf; then
 		mv ../edk2-${EDK2_COMMIT} tools/firmware/ovmf-dir-remote || die
