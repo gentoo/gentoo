@@ -28,6 +28,7 @@ RDEPEND="
 	>=dev-libs/boost-1.66:=
 	>=dev-libs/libebml-1.4.0:=
 	>=dev-libs/libfmt-6.1.0:=
+	<dev-libs/libfmt-9.0.0:=
 	dev-libs/libpcre2:=
 	dev-libs/pugixml:=
 	media-libs/flac:=

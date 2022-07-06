@@ -29,6 +29,7 @@ RDEPEND="
 	dev-libs/gmp:=
 	>=dev-libs/libebml-1.4.2:=
 	>=dev-libs/libfmt-8.0.1:=
+	<dev-libs/libfmt-9.0.0:=
 	>=dev-libs/pugixml-1.11:=
 	media-libs/flac:=
 	>=media-libs/libmatroska-1.6.3:=
