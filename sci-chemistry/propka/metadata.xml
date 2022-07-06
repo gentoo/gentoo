@@ -9,4 +9,5 @@
 		<remote-id type="pypi">propka</remote-id>
 		<remote-id type="github">jensengroup/propka</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
