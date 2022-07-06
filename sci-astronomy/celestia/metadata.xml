@@ -16,6 +16,7 @@
   want to visit.
 </longdescription>
   <upstream>
+    <remote-id type="github">CelestiaProject/Celestia</remote-id>
     <remote-id type="sourceforge">celestia</remote-id>
   </upstream>
 </pkgmetadata>
