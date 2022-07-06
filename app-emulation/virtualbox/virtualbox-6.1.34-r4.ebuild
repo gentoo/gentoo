@@ -256,7 +256,8 @@ src_prepare() {
 
 src_configure() {
 	tc-ld-disable-gold # bug #488176
-	tc-export CC CXX LD AR RANLIB
+
+	tc-export AR CC CXX LD RANLIB
 	export HOST_CC="$(tc-getBUILD_CC)"
 
 	local myconf=(
@@ -345,16 +346,59 @@ src_compile() {
 	MAKELOAD=$(grep -Eo '(\-l|\-\-load-average)(=?|[[:space:]]*)[[:digit:]]+' <<< ${MAKEOPTS})
 	MAKEOPTS="${MAKEJOBS} ${MAKELOAD}"
 
-	MAKE="kmk" emake \
-		VBOX_BUILD_PUBLISHER=_Gentoo \
-		TOOL_GXX3_CC="$(tc-getCC)" \
-		TOOL_GXX3_CXX="$(tc-getCXX)" \
-		TOOL_GXX3_LD="$(tc-getCXX)" \
-		VBOX_GCC_OPT="${CXXFLAGS}" \
-		TOOL_YASM_AS=yasm \
-		KBUILD_VERBOSE=2 \
-		VBOX_WITH_VBOXIMGMOUNT=1 \
-		all
+	local myemakeargs=(
+		VBOX_BUILD_PUBLISHER=_Gentoo
+		VBOX_WITH_VBOXIMGMOUNT=1
+
+		KBUILD_VERBOSE=2
+
+		AS="$(tc-getCC)"
+		CC="$(tc-getCC)"
+		CXX="$(tc-getCXX)"
+
+		TOOL_GCC3_CC="$(tc-getCC)"
+		TOOL_GCC3_LD="$(tc-getCC)"
+		TOOL_GCC3_AS="$(tc-getCC)"
+		TOOL_GCC3_AR="$(tc-getAR)"
+		TOOL_GCC3_OBJCOPY="$(tc-getOBJCOPY)"
+
+		TOOL_GXX3_CC="$(tc-getCC)"
+		TOOL_GXX3_CXX="$(tc-getCXX)"
+		TOOL_GXX3_LD="$(tc-getCXX)"
+		TOOL_GXX3_AS="$(tc-getCXX)"
+		TOOL_GXX3_AR="$(tc-getAR)"
+		TOOL_GXX3_OBJCOPY="$(tc-getOBJCOPY)"
+
+		TOOL_GCC3_CFLAGS="${CFLAGS}"
+		TOOL_GCC3_CXXFLAGS="${CXXFLAGS}"
+		VBOX_GCC_OPT="${CXXFLAGS}"
+		VBOX_NM="$(tc-getNM)"
+
+		TOOL_YASM_AS=yasm
+	)
+
+	if use amd64 && has_multilib_profile ; then
+		myemakeargs+=(
+			CC32="$(tc-getCC) -m32"
+			CXX32="$(tc-getCXX) -m32"
+
+			TOOL_GCC32_CC="$(tc-getCC) -m32"
+			TOOL_GCC32_CXX="$(tc-getCXX) -m32"
+			TOOL_GCC32_LD="$(tc-getCC) -m32"
+			TOOL_GCC32_AS="$(tc-getCC) -m32"
+			TOOL_GCC32_AR="$(tc-getAR)"
+			TOOL_GCC32_OBJCOPY="$(tc-getOBJCOPY)"
+
+			TOOL_GXX32_CC="$(tc-getCC) -m32"
+			TOOL_GXX32_CXX="$(tc-getCXX) -m32"
+			TOOL_GXX32_LD="$(tc-getCXX) -m32"
+			TOOL_GXX32_AS="$(tc-getCXX) -m32"
+			TOOL_GXX32_AR="$(tc-getAR)"
+			TOOL_GXX32_OBJCOPY="$(tc-getOBJCOPY)"
+		)
+	fi
+
+	MAKE="kmk" emake "${myemakeargs[@]}" all
 }
 
 src_install() {
