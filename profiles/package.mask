@@ -252,13 +252,6 @@ mail-client/novell-groupwise-client
 # Removal on 2022-07-05.  Bug #834816.
 dev-python/pytest-flakes
 
-# Michał Górny <mgorny@gentoo.org> (2022-06-05)
-# Barely any upstream activity since 2017.  The LICENSE in ebuild
-# is incorrect and the package bundles sources with non-free license.
-# No revdeps.
-# Removal on 2022-07-05.  Bug #849824.
-dev-python/polygon
-
 # Matt Turner <mattst88@gentoo.org> (2022-05-30)
 # libwacom-2 broke ABI compatibility; reverse dependencies need to be updated.
 # Bug #848501
