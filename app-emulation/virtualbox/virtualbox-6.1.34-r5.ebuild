@@ -318,7 +318,7 @@ src_configure() {
 		AutoConfig.kmk || die
 
 	cat >> AutoConfig.kmk <<-EOF || die
-		VBOX_WITH_PYTHON=$(usex python 1 0)
+		VBOX_WITH_PYTHON=$(usev python 1)
 		VBOX_PATH_PYTHON_INC=$(python_get_includedir)
 		VBOX_LIB_PYTHON=$(python_get_library_path)
 	EOF
