@@ -5,7 +5,7 @@ EAPI=8
 
 WX_GTK_VER="3.0-gtk3"
 
-inherit cmake wxwidgets xdg
+inherit cmake desktop wxwidgets xdg
 
 DESCRIPTION="A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)"
 HOMEPAGE="https://www.prusa3d.com/prusaslicer/"
@@ -13,7 +13,7 @@ SRC_URI="https://dev.gentoo.org/~slashbeast/distfiles/${PN}/${P}.tar.xz"
 
 LICENSE="AGPL-3 Boost-1.0 GPL-2 LGPL-3 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="test"
 
 RESTRICT="test"
@@ -29,7 +29,7 @@ RDEPEND="
 	dev-libs/mpfr:=
 	dev-libs/imath:=
 	>=media-gfx/openvdb-8.2:=
-	net-misc/curl
+	net-misc/curl[adns]
 	media-libs/glew:0=
 	media-libs/libpng:0=
 	media-libs/qhull:=
