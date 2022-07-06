@@ -280,20 +280,18 @@ src_configure() {
 	edo ./configure "${myconf[@]}"
 
 	# Try to force usage of chosen Python implementation
-	# Commented out for now as it's insufficient (see comment above
-	# PYTHON_COMPAT).
 	# bug #856121, bug #785835
-	#sed -i \
-	#	-e '/VBOX_WITH_PYTHON.*=/d' \
-	#	-e '/VBOX_PATH_PYTHON_INC.*=/d' \
-	#	-e '/VBOX_LIB_PYTHON.*=/d' \
-	#	AutoConfig.kmk || die
-	#
-	#cat >> AutoConfig.kmk <<-EOF || die
-	#	VBOX_WITH_PYTHON=$(usex python 1 0)
-	#	VBOX_PATH_PYTHON_INC=$(python_get_includedir)
-	#	VBOX_LIB_PYTHON=$(python_get_library_path)
-	#EOF
+	sed -i \
+		-e '/VBOX_WITH_PYTHON.*=/d' \
+		-e '/VBOX_PATH_PYTHON_INC.*=/d' \
+		-e '/VBOX_LIB_PYTHON.*=/d' \
+		AutoConfig.kmk || die
+
+	cat >> AutoConfig.kmk <<-EOF || die
+		VBOX_WITH_PYTHON=$(usex python 1 0)
+		VBOX_PATH_PYTHON_INC=$(python_get_includedir)
+		VBOX_LIB_PYTHON=$(python_get_library_path)
+	EOF
 }
 
 src_compile() {
