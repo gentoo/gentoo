@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD-2"
 SLOT="0/9"
-KEYWORDS="amd64 arm x86"
+KEYWORDS="amd64 arm ~arm64 x86"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-cmake.patch
