@@ -36,13 +36,14 @@ DEPEND="
 	${RDEPEND}
 	media-libs/libsndfile
 	media-libs/openal
-	sys-libs/ncurses-compat:5[unicode]"
+	sys-libs/ncurses"
 BDEPEND="virtual/pkgconfig"
 
 QA_PREBUILT="opt/${PN}/libs/Dwarf_Fortress"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-missing-cmath.patch
+	"${FILESDIR}"/${P}-ncurses6.patch
 	"${FILESDIR}"/${P}-segfault-fixes.patch
 )
 
@@ -87,6 +88,6 @@ src_install() {
 pkg_postinst() {
 	readme.gentoo_print_elog
 
-	optfeature "text PRINT_MODE" sys-libs/ncurses-compat:5[unicode]
+	optfeature "text PRINT_MODE" sys-libs/ncurses
 	optfeature "audio output" "media-libs/openal media-libs/libsndfile[-minimal]"
 }
