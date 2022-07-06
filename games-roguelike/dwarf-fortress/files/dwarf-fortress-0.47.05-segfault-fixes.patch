@@ -1,0 +1,38 @@
+Fixes segfault / infinite loop with OpenAL and anything higher
+than -O1 mostly due to missing return values.
+
+https://bugs.gentoo.org/703384
+https://bugs.gentoo.org/703386
+https://bugs.gentoo.org/729002
+https://www.bay12games.com/dwarves/mantisbt/view.php?id=11564
+--- a/g_src/enabler.cpp
++++ b/g_src/enabler.cpp
+@@ -591,4 +591,6 @@
+   // Clean up graphical resources
+   delete renderer;
++
++  return 0;
+ }
+ 
+--- a/g_src/music_and_sound_openal.cpp
++++ b/g_src/music_and_sound_openal.cpp
+@@ -251,5 +251,4 @@
+   }
+   // Deinit OpenAL
+-  alcMakeContextCurrent(NULL);
+   alcDestroyContext(context);
+   alcCloseDevice(device);
+@@ -481,5 +480,5 @@
+ void alEnable( ALenum capability ) { _alEnable(capability); }
+ void alDisable( ALenum capability ) { _alDisable(capability); }
+-ALboolean alIsEnabled( ALenum capability ) { _alIsEnabled(capability); }
++ALboolean alIsEnabled( ALenum capability ) { return _alIsEnabled(capability); }
+ const ALchar* alGetString( ALenum param ) { return _alGetString(param); }
+ void alGetBooleanv( ALenum param, ALboolean* data ) { _alGetBooleanv(param, data); }
+@@ -491,5 +490,5 @@
+ ALfloat alGetFloat( ALenum param ) { return _alGetFloat(param); }
+ ALdouble alGetDouble( ALenum param ) { return _alGetDouble(param); }
+-ALenum alGetError( void ) { _alGetError(); }
++ALenum alGetError( void ) { return _alGetError(); }
+ ALboolean alIsExtensionPresent( const ALchar* extname ) { return _alIsExtensionPresent(extname); }
+ void* alGetProcAddress( const ALchar* fname ) { return _alGetProcAddress(fname); }
