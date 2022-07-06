@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit desktop edo flag-o-matic java-pkg-opt-2 linux-info pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg
+inherit desktop edo java-pkg-opt-2 linux-info multilib pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg
 
 MY_PN="VirtualBox"
 MY_PV="${PV/beta/BETA}"
@@ -161,17 +161,13 @@ pkg_pretend() {
 pkg_setup() {
 	java-pkg-opt-2_pkg_setup
 	python-single-r1_pkg_setup
-
-	tc-ld-disable-gold #bug 488176
-	tc-export CC CXX LD AR RANLIB
-	export HOST_CC="$(tc-getBUILD_CC)"
 }
 
 src_prepare() {
 	# Remove shipped binaries (kBuild,yasm), see bug #232775
 	rm -r kBuild/bin tools || die
 
-	# Replace pointless GCC version check with something less stupid.
+	# Replace pointless GCC version check with something more sensible.
 	# This is needed for the qt5 version check.
 	sed -e 's@^check_gcc$@cc_maj="$(${CC} -dumpversion | cut -d. -f1)" ; cc_min="$(${CC} -dumpversion | cut -d. -f2)"@' \
 		-i configure || die
@@ -227,11 +223,17 @@ src_prepare() {
 }
 
 src_configure() {
+	tc-ld-disable-gold # bug #488176
+	tc-export CC CXX LD AR RANLIB
+	export HOST_CC="$(tc-getBUILD_CC)"
+
 	local myconf=(
 		--with-gcc="$(tc-getCC)"
 		--with-g++="$(tc-getCXX)"
+
 		--disable-dbus
 		--disable-kmods
+
 		$(usex alsa '' --disable-alsa)
 		$(usex debug --build-debug '')
 		$(usex doc '' --disable-docs)
@@ -243,6 +245,7 @@ src_configure() {
 		$(usex vboxwebsrv --enable-webservice '')
 		$(usex vnc --enable-vnc '')
 	)
+
 	if ! use headless ; then
 		myconf+=(
 			$(usex opengl '' --disable-opengl)
@@ -254,10 +257,12 @@ src_configure() {
 			--disable-opengl
 		)
 	fi
+
 	if use amd64 && ! has_multilib_profile ; then
 		myconf+=( --disable-vmmraw )
 	fi
 
+	# bug #843437
 	cat >> LocalConfig.kmk <<-EOF || die
 		CFLAGS=${CFLAGS}
 		CXXFLAGS=${CXXFLAGS}
@@ -271,14 +276,18 @@ src_compile() {
 	source ./env.sh || die
 
 	# Force kBuild to respect C[XX]FLAGS and MAKEOPTS (bug #178529)
-	MAKEJOBS=$(grep -Eo '(\-j|\-\-jobs)(=?|[[:space:]]*)[[:digit:]]+' <<< ${MAKEOPTS}) #'
-	MAKELOAD=$(grep -Eo '(\-l|\-\-load-average)(=?|[[:space:]]*)[[:digit:]]+' <<< ${MAKEOPTS}) #'
+	MAKEJOBS=$(grep -Eo '(\-j|\-\-jobs)(=?|[[:space:]]*)[[:digit:]]+' <<< ${MAKEOPTS})
+	MAKELOAD=$(grep -Eo '(\-l|\-\-load-average)(=?|[[:space:]]*)[[:digit:]]+' <<< ${MAKEOPTS})
 	MAKEOPTS="${MAKEJOBS} ${MAKELOAD}"
+
 	MAKE="kmk" emake \
 		VBOX_BUILD_PUBLISHER=_Gentoo \
-		TOOL_GXX3_CC="$(tc-getCC)" TOOL_GXX3_CXX="$(tc-getCXX)" \
-		TOOL_GXX3_LD="$(tc-getCXX)" VBOX_GCC_OPT="${CXXFLAGS}" \
-		TOOL_YASM_AS=yasm KBUILD_VERBOSE=2 \
+		TOOL_GXX3_CC="$(tc-getCC)" \
+		TOOL_GXX3_CXX="$(tc-getCXX)" \
+		TOOL_GXX3_LD="$(tc-getCXX)" \
+		VBOX_GCC_OPT="${CXXFLAGS}" \
+		TOOL_YASM_AS=yasm \
+		KBUILD_VERBOSE=2 \
 		VBOX_WITH_VBOXIMGMOUNT=1 \
 		all
 }
