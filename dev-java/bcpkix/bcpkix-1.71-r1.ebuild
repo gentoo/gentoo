@@ -15,7 +15,7 @@ SRC_URI="https://github.com/bcgit/bc-java/archive/r${PV/./rv}.tar.gz -> bc-java-
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 arm64 ~ppc64 ~x86"
 
 # 1) testSANMismatchIP(org.bouncycastle.est.test.TestHostNameAuthorizer)
 # org.bouncycastle.est.ESTException: localhost.me: Temporary failure in name resolution HTTP Status Code: 0
