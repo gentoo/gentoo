@@ -186,14 +186,12 @@ src_prepare() {
 
 	# blacklist of images with unknown license
 	local unknown_license=(
-		atmsar11.fw
 		korg/k1212.dsp
 		ess/maestro3_assp_kernel.fw
 		ess/maestro3_assp_minisrc.fw
 		yamaha/ds1_ctrl.fw
 		yamaha/ds1_dsp.fw
 		yamaha/ds1e_ctrl.fw
-		tr_smctr.bin
 		ttusb-budget/dspbootcode.bin
 		emi62/bitstream.fw
 		emi62/loader.fw
@@ -205,7 +203,6 @@ src_prepare() {
 		mts_mt9234zba.fw
 		whiteheat.fw
 		whiteheat_loader.fw
-		intelliport2.bin
 		cpia2/stv0672_vp4.bin
 		vicam/firmware.fw
 		edgeport/boot.fw
@@ -225,7 +222,6 @@ src_prepare() {
 		adaptec/starfire_tx.bin
 		yam/1200.bin
 		yam/9600.bin
-		3com/3C359.bin
 		ositech/Xilinx7OD.bin
 		qlogic/isp1000.bin
 		myricom/lanai.bin
