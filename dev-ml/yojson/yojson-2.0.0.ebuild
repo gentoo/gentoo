@@ -16,8 +16,8 @@ IUSE="examples +ocamlopt test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-lang/ocaml-4.02.3:=[ocamlopt=]
-	>=dev-ml/seq-0.2.2:=[ocamlopt=]
+	>=dev-lang/ocaml-4.02.3:=[ocamlopt?]
+	>=dev-ml/seq-0.2.2:=[ocamlopt?]
 "
 DEPEND="${RDEPEND}"
 BDEPEND=">=dev-ml/cppo-1.6.1

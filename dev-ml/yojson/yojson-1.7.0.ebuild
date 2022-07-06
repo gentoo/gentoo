@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,9 +16,9 @@ IUSE="examples +ocamlopt test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-lang/ocaml-4.02.3:=[ocamlopt=]
-	dev-ml/easy-format:=[ocamlopt=]
-	>=dev-ml/biniou-1.2:=[ocamlopt=]
+	>=dev-lang/ocaml-4.02.3:=[ocamlopt?]
+	dev-ml/easy-format:=[ocamlopt?]
+	>=dev-ml/biniou-1.2:=[ocamlopt?]
 "
 DEPEND="
 	${RDEPEND}
