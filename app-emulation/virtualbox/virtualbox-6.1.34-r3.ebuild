@@ -4,23 +4,25 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit desktop flag-o-matic java-pkg-opt-2 linux-info pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg
+inherit desktop edo flag-o-matic java-pkg-opt-2 linux-info pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg
 
 MY_PN="VirtualBox"
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
 MY_P=${MY_PN}-${MY_PV}
-[[ "${PV}" == *a ]] && DIR_PV="$(ver_cut 1-3)"
+[[ ${PV} == *a ]] && DIR_PV="$(ver_cut 1-3)"
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${DIR_PV:-${MY_PV}}/${MY_P}.tar.bz2
 	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-6.1.12-patches-01.tar.xz"
+S="${WORKDIR}/${MY_PN}-${DIR_PV:-${MY_PV}}"
 
 LICENSE="GPL-2 dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
-[[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~amd64"
+if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
+	KEYWORDS="~amd64"
+fi
 IUSE="alsa debug doc dtrace headless java lvm +opus pam pax-kernel pch pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
 
 COMMON_DEPEND="
@@ -121,11 +123,9 @@ QA_WX_LOAD="
 "
 
 QA_PRESTRIPPED="
-	/usr/lib64/virtualbox/VMMR0.r0
-	/usr/lib64/virtualbox/VBoxDDR0.r0
+	usr/lib64/virtualbox/VMMR0.r0
+	usr/lib64/virtualbox/VBoxDDR0.r0
 "
-
-S="${WORKDIR}/${MY_PN}-${DIR_PV:-${MY_PV}}"
 
 REQUIRED_USE="
 	java? ( sdk )
@@ -136,7 +136,8 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}/${P}-vboxr0.patch"
-	"${FILESDIR}/${PN}-6.1.34-python3.10.patch" #852152
+	"${FILESDIR}/${PN}-6.1.34-python3.10.patch" # bug #852152
+	"${FILESDIR}/${PN}-6.1.34-no-pam.patch" # bug #843437
 )
 
 pkg_pretend() {
@@ -225,11 +226,6 @@ src_prepare() {
 	default
 }
 
-doecho() {
-	echo "$@"
-	"$@" || die
-}
-
 src_configure() {
 	local myconf=(
 		--with-gcc="$(tc-getCC)"
@@ -261,8 +257,14 @@ src_configure() {
 	if use amd64 && ! has_multilib_profile ; then
 		myconf+=( --disable-vmmraw )
 	fi
+
+	cat >> LocalConfig.kmk <<-EOF || die
+		CFLAGS=${CFLAGS}
+		CXXFLAGS=${CXXFLAGS}
+	EOF
+
 	# not an autoconf script
-	doecho ./configure "${myconf[@]}"
+	edo ./configure "${myconf[@]}"
 }
 
 src_compile() {
