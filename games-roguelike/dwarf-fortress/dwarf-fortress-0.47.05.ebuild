@@ -3,95 +3,90 @@
 
 EAPI=8
 
-inherit prefix optfeature toolchain-funcs desktop readme.gentoo-r1
+inherit desktop flag-o-matic optfeature prefix readme.gentoo-r1 toolchain-funcs
 
-MY_PV=$(ver_rs 1- _ "$(ver_cut 2-)")
-MY_P=df_${MY_PV}
+MY_P="df_$(ver_rs 1- _ $(ver_cut 2-))"
 
-DESCRIPTION="A single-player fantasy game"
-HOMEPAGE="https://www.bay12games.com/dwarves"
-SRC_URI="amd64? ( https://www.bay12games.com/dwarves/${MY_P}_linux.tar.bz2 )
-	x86? ( https://www.bay12games.com/dwarves/${MY_P}_linux32.tar.bz2 )"
-S="${WORKDIR}"/df_linux
-
-PATCHES=(
-	"${FILESDIR}/${P}-fix-cmath.patch"
-	"${FILESDIR}/${P}-segfault-fix-729002.patch"
-)
+DESCRIPTION="Single-player fantasy game"
+HOMEPAGE="https://www.bay12games.com/dwarves/"
+SRC_URI="
+	amd64? ( https://www.bay12games.com/dwarves/${MY_P}_linux.tar.bz2 )
+	x86? ( https://www.bay12games.com/dwarves/${MY_P}_linux32.tar.bz2 )
+	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
+S="${WORKDIR}/df_linux"
 
 LICENSE="free-noncomm BSD BitstreamVera"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="debug"
 
-RDEPEND="media-libs/glew:0=
-	media-libs/libsdl[joystick,video]
+RDEPEND="
+	dev-libs/glib:2
+	media-libs/glew:0=
+	media-libs/libglvnd[X]
+	media-libs/libsdl[joystick,opengl,video]
 	media-libs/sdl-image[png]
 	media-libs/sdl-ttf
 	sys-libs/zlib:=
 	virtual/glu
 	x11-libs/gtk+:2"
-# Yup, libsndfile, openal and ncurses are only needed at compile-time; the code
-# dlopens them at runtime if requested.
-DEPEND="${RDEPEND}
+# libsndfile, openal and ncurses are only needed at compile-time,
+# optfeature through dlopen() at runtime if requested
+DEPEND="
+	${RDEPEND}
 	media-libs/libsndfile
 	media-libs/openal
-	sys-libs/ncurses-compat:5[unicode]
-	virtual/pkgconfig"
+	sys-libs/ncurses-compat:5[unicode]"
 BDEPEND="virtual/pkgconfig"
 
-QA_PREBUILT="/opt/${PN}/libs/Dwarf_Fortress"
+QA_PREBUILT="opt/${PN}/libs/Dwarf_Fortress"
 
-DOC_CONTENTS="Dwarf Fortress has been installed to /opt/${PN}. This is
-	symlinked to ~/.dwarf-fortress when dwarf-fortress is run.
-	For more information on what exactly is replaced, see ${EROOT}/usr/bin/dwarf-fortress.
-	Note: This means that the primary entry point is ${EROOT}/usr/bin/dwarf-fortress.
-	Do not run /opt/${PN}/libs/Dwarf_Fortress."
+PATCHES=(
+	"${FILESDIR}"/${P}-missing-cmath.patch
+	"${FILESDIR}"/${P}-segfault-fixes.patch
+)
 
 src_prepare() {
-	# fix line endings so the patches can apply properly
-	sed -i \
-		-e 's/\r$//' \
-		g_src/ttf_manager.cpp \
-		g_src/music_and_sound_openal.cpp \
-		|| die
-
 	default
 
-	# dwarf fortress includes prebuilt libraries such as libstdc++ we won't use
-	rm -f libs/*.so* || die
-}
-
-src_configure() {
-	hprefixify "${WORKDIR}/dwarf-fortress"
-
-	CXXFLAGS+=" -D$(use debug || echo N)DEBUG"
+	# remove prebuilt libraries that are provided by the system
+	rm libs/*.so* || die
 }
 
 src_compile() {
 	tc-export CXX PKG_CONFIG
 
-	emake -f "${FILESDIR}/Makefile.native"
+	# -DDEBUG is recognized to give additional debug output
+	append-cppflags -D$(usev !debug N)DEBUG
+
+	emake -f "${FILESDIR}"/Makefile.native
 }
 
 src_install() {
 	insinto /opt/${PN}
-	doins -r raw data libs
+	doins -r data libs raw
 
-	dobin ${FILESDIR}/dwarf-fortress
+	fperms +x /opt/${PN}/libs/Dwarf_Fortress
 
-	readme.gentoo_create_doc
+	dobin "$(prefixify_ro "${FILESDIR}"/dwarf-fortress)"
+
+	doicon "${DISTDIR}"/${PN}.png
+	make_desktop_entry dwarf-fortress "Dwarf Fortress"
+
 	dodoc README.linux *.txt
 
-	fperms 755 /opt/${PN}/libs/Dwarf_Fortress
-
-	make_desktop_entry dwarf-fortress "Dwarf Fortress" "dwarf-fortress" Game
+	local DOC_CONTENTS="
+		Dwarf Fortress has been installed to ${EPREFIX}/opt/${PN}. This is
+		symlinked to ~/.${PN} when ${PN} is run. For more information on what
+		exactly is replaced, see ${EPREFIX}/usr/bin/${PN}. Note: This means
+		that the primary entry point is ${EPREFIX}/usr/bin/${PN}, do not run
+		${EPREFIX}/opt/${PN}/libs/Dwarf_Fortress."
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
 	readme.gentoo_print_elog
 
 	optfeature "text PRINT_MODE" sys-libs/ncurses-compat:5[unicode]
-	optfeature "audio output" "media-libs/openal media-libs/libsndfile"
-	optfeature "OpenGL PRINT_MODE" media-libs/libsdl[opengl]
+	optfeature "audio output" "media-libs/openal media-libs/libsndfile[-minimal]"
 }
