@@ -82,7 +82,13 @@ COMMON_DEPEND="
 # We're stuck on JDK (and JRE, I guess?) 1.8 because of need for wsimport
 # with USE="vboxwebsrv java". Note that we have to put things in DEPEND,
 # not (only, anyway) BDEPEND, as the eclass magic to set the environment variables
-# based on *DEPEND doesn't work for BDEPEND at least right now. See bug #832166.
+# based on *DEPEND doesn't work for BDEPEND at least right now.
+#
+# There's a comment in Config.kmk about it
+# ("With Java 11 wsimport was removed, usually part of a separate install now.")
+# but it needs more investigation.
+#
+# See bug #832166.
 DEPEND="
 	${COMMON_DEPEND}
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
@@ -550,7 +556,7 @@ src_install() {
 			eerror "(listed in PYTHON_COMPAT in the ebuild) is incomplete within the Makefiles."
 			die "Incomplete installation of Python bindings! File a bug with Gentoo!"
 		fi
-        fi
+	fi
 
 	newtmpfiles "${FILESDIR}"/${PN}-vboxusb_tmpfilesd ${PN}-vboxusb.conf
 }
