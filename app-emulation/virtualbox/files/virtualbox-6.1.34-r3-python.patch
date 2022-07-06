@@ -1,0 +1,14 @@
+diff --git a/configure b/configure
+index fd2e296..695f6a7 100755
+--- a/configure
++++ b/configure
+@@ -1987,6 +1987,9 @@ check_python()
+ {
+   test_header "Python support"
+ 
++  # We force the right implementation in the ebuild instead
++  return
++
+   # On darwin this is a on/off decision only
+   if [ "$OS" = "darwin" ]; then
+     echo "enabled"

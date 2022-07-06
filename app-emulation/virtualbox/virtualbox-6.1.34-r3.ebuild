@@ -3,7 +3,16 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+# This absolutely doesn't work with Python 3.10 yet as of 6.1.34.
+# Two problems:
+# 1. The build system (not just in configure, but in src/libs/xpcom18a4/python/Makefile.kmk)
+# insists on trying to detect various Python paths without giving choice of which is used;
+#
+# 2. None of that machinery mentioned in #1. is rigged up for Python 3.10+, and
+# the homebrew Makefile/kbuild stuff is a pain to understand.
+#
+# bug #785835, bug #856121
+PYTHON_COMPAT=( python3_{8,9} )
 inherit desktop edo java-pkg-opt-2 linux-info multilib optfeature pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg
 
 MY_PN="VirtualBox"
@@ -135,9 +144,12 @@ REQUIRED_USE="
 "
 
 PATCHES=(
-	"${FILESDIR}/${P}-vboxr0.patch"
-	"${FILESDIR}/${PN}-6.1.34-python3.10.patch" # bug #852152
-	"${FILESDIR}/${PN}-6.1.34-no-pam.patch" # bug #843437
+	"${FILESDIR}"/${P}-vboxr0.patch
+	"${FILESDIR}"/${PN}-6.1.34-python3.10.patch # bug #852152
+	"${FILESDIR}"/${PN}-6.1.34-no-pam.patch # bug #843437
+	"${FILESDIR}"/${PN}-6.1.26-configure-include-qt5-path.patch # bug #805365
+	"${FILESDIR}"/${PN}-6.1.34-r3-python.patch
+	"${WORKDIR}"/patches
 )
 
 pkg_pretend() {
@@ -164,6 +176,18 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+
+	# Only add nopie patch when we're on hardened
+	if gcc-specs-pie ; then
+		eapply "${FILESDIR}"/050_virtualbox-5.2.8-nopie.patch
+	fi
+
+	# Only add paxmark patch when we're on pax-kernel
+	if use pax-kernel ; then
+		eapply "${FILESDIR}"/virtualbox-5.2.8-paxmark-bldprogs.patch
+	fi
+
 	# Remove shipped binaries (kBuild,yasm), see bug #232775
 	rm -r kBuild/bin tools || die
 
@@ -204,22 +228,6 @@ src_prepare() {
 			-i "${S}"/Config.kmk || die
 		java-pkg-opt-2_src_prepare
 	fi
-
-	# Only add nopie patch when we're on hardened
-	if gcc-specs-pie ; then
-		eapply "${FILESDIR}/050_virtualbox-5.2.8-nopie.patch"
-	fi
-
-	# Only add paxmark patch when we're on pax-kernel
-	if use pax-kernel ; then
-		eapply "${FILESDIR}"/virtualbox-5.2.8-paxmark-bldprogs.patch
-	fi
-
-	eapply "${FILESDIR}/${PN}-6.1.26-configure-include-qt5-path.patch" #805365
-
-	eapply "${WORKDIR}/patches"
-
-	default
 }
 
 src_configure() {
@@ -270,6 +278,22 @@ src_configure() {
 
 	# not an autoconf script
 	edo ./configure "${myconf[@]}"
+
+	# Try to force usage of chosen Python implementation
+	# Commented out for now as it's insufficient (see comment above
+	# PYTHON_COMPAT).
+	# bug #856121, bug #785835
+	#sed -i \
+	#	-e '/VBOX_WITH_PYTHON.*=/d' \
+	#	-e '/VBOX_PATH_PYTHON_INC.*=/d' \
+	#	-e '/VBOX_LIB_PYTHON.*=/d' \
+	#	AutoConfig.kmk || die
+	#
+	#cat >> AutoConfig.kmk <<-EOF || die
+	#	VBOX_WITH_PYTHON=$(usex python 1 0)
+	#	VBOX_PATH_PYTHON_INC=$(python_get_includedir)
+	#	VBOX_LIB_PYTHON=$(python_get_library_path)
+	#EOF
 }
 
 src_compile() {
