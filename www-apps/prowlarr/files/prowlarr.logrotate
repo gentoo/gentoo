@@ -1,0 +1,4 @@
+/var/lib/prowlarr/.config/prowlarr/logs/*.log{
+    missingok
+    su prowlarr prowlarr
+}
