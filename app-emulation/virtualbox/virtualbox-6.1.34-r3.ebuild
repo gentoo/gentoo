@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit desktop edo java-pkg-opt-2 linux-info multilib pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg
+inherit desktop edo java-pkg-opt-2 linux-info multilib optfeature pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg
 
 MY_PN="VirtualBox"
 MY_PV="${PV/beta/BETA}"
@@ -487,8 +487,8 @@ pkg_postinst() {
 	xdg_pkg_postinst
 
 	if use udev ; then
-		udevadm control --reload-rules \
-			&& udevadm trigger --subsystem-match=usb
+		udevadm control --reload-rules
+		udevadm trigger --subsystem-match=usb
 	fi
 
 	tmpfiles_process virtualbox-vboxusb.conf
@@ -496,27 +496,18 @@ pkg_postinst() {
 	if ! use headless && use qt5 ; then
 		elog "To launch VirtualBox just type: \"virtualbox\"."
 	fi
+
 	elog "You must be in the vboxusers group to use VirtualBox."
 	elog ""
 	elog "The latest user manual is available for download at:"
-	elog "http://download.virtualbox.org/virtualbox/${DIR_PV:-${PV}}/UserManual.pdf"
+	elog "https://download.virtualbox.org/virtualbox/${DIR_PV:-${PV}}/UserManual.pdf"
 	elog ""
-	elog "For advanced networking setups you should emerge:"
-	elog "net-misc/bridge-utils and sys-apps/usermode-utilities"
-	elog ""
-	elog "Starting with version 4.0.0, ${PN} has USB-1 support."
-	elog "For USB-2 support, PXE-boot ability and VRDP support please emerge"
-	elog "  app-emulation/virtualbox-extpack-oracle"
-	elog "package."
-	elog "Starting with version 5.0.0, ${PN} no longer has the \"additions\" and"
-	elog "the \"extension\" USE flag. For installation of the guest additions ISO"
-	elog "image, please emerge"
-	elog "  app-emulation/virtualbox-additions"
-	elog "and for the USB2, USB3, VRDP and PXE boot ROM modules, please emerge"
-	elog "  app-emulation/virtualbox-extpack-oracle"
+
+	optfeature "Advanced networking setups" net-misc/bridge-utils sys-apps/usermode-utilities
+	optfeature "USB2, USB3, PXE boot, and VRDP support" app-emulation/virtualbox-extpack-oracle
+	optfeature "Guest additions ISO" app-emulation/virtualbox-additions
+
 	if ! use udev ; then
-		elog ""
-		elog "WARNING!"
-		elog "Without USE=udev, USB devices will likely not work in ${PN}."
+		ewarn "Without USE=udev, USB devices will likely not work in ${PN}."
 	fi
 }
