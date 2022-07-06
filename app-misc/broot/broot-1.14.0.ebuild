@@ -301,6 +301,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	local v
 	for v in ${REPLACING_VERSIONS}; do
 		if ver_test "$v" "-lt" "1.14.0"; then
 			elog "The default configuration changed substantially in 1.14.0."
