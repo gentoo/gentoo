@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Easy-ISLisp(EISL) is an interpreter and compiler compatible with the ISLisp
+    standard. EISL was written by Kenichi Sasagawa
+    https://qiita.com/sym_num/items/793adfe118514668e5b0
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/sasagawa888/eisl/issues</bugs-to>
+    <remote-id type="github">sasagawa888/eisl</remote-id>
+  </upstream>
+</pkgmetadata>
