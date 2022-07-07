@@ -1,20 +1,21 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
+inherit toolchain-funcs
 
 DESCRIPTION="Sequence analysis using profile hidden Markov models"
-LICENSE="GPL-2"
 HOMEPAGE="http://hmmer.org/"
 SRC_URI="http://eddylab.org/software/${PN}/${PV}/${P}.tar.gz"
 
+LICENSE="GPL-2"
 SLOT="2"
-IUSE="altivec test threads"
-RESTRICT="!test? ( test )"
 KEYWORDS="~amd64 ~x86"
+IUSE="cpu_flags_ppc_altivec test"
+RESTRICT="!test? ( test )"
 
-DEPEND="test? ( dev-lang/perl )"
-RDEPEND=""
+BDEPEND="test? ( dev-lang/perl )"
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-perl-shebangs.patch"
@@ -28,8 +29,12 @@ src_configure() {
 
 	econf \
 		--enable-lfs \
-		$(use_enable altivec) \
-		$(use_enable threads)
+		--enable-threads \
+		$(use_enable cpu_flags_ppc_altivec altivec)
+}
+
+src_compile() {
+	emake AR="$(tc-getAR) rcs"
 }
 
 src_install() {
@@ -52,14 +57,14 @@ src_install() {
 	local i
 
 	# first rename man pages...
-	pushd "${ED%/}"/usr/share/man/man1/ >/dev/null || die
+	pushd "${ED}"/usr/share/man/man1/ >/dev/null || die
 	for i in hmm*.1; do
 		mv ${i%.1}{,2}.1 || die
 	done
 	popd >/dev/null || die
 
 	# ... then rename binaries
-	pushd "${ED%/}"/usr/bin/ >/dev/null || die
+	pushd "${ED}"/usr/bin/ >/dev/null || die
 	for i in hmm*; do
 		mv ${i}{,2} || die
 	done
