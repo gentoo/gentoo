@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/Z3Prover/z3/"
 SRC_URI="https://github.com/Z3Prover/z3/archive/${P}.tar.gz"
 S=${WORKDIR}/z3-${P}
 
-SLOT="0/4.8"
+SLOT="0/$(ver_cut 1-2)"
 LICENSE="MIT"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="doc examples gmp isabelle java python"
