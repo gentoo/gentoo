@@ -1,4 +1,4 @@
-* Respect CC, CFLAGS, CPPFLAGS, LDFLAGS everywhere when building.
+* Respect AR, CC, CFLAGS, CPPFLAGS, LDFLAGS everywhere when building.
 * Ignore build flags then when testing the CC wrappers (could contain
   incompatible flags).
 * Disable LTO for runtime objects, these shouldn't contain IR.
@@ -50,6 +50,15 @@
  	ln -sf afl-cc.8 afl-gcc-fast.8
 --- a/GNUmakefile.llvm
 +++ b/GNUmakefile.llvm
+@@ -410,7 +410,7 @@ endif
+ 
+ ./afl-ld-lto: src/afl-ld-lto.c
+ ifeq "$(LLVM_LTO)" "1"
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $< -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $< -o $@
+ endif
+ 
+ ./SanitizerCoverageLTO.so: instrumentation/SanitizerCoverageLTO.so.cc instrumentation/afl-llvm-common.o
 @@ -444,25 +444,25 @@ afl-llvm-dict2file.so:	instrumentation/afl-llvm-dict2file.so.cc instrumentation/
  
  .PHONY: document
@@ -131,11 +140,12 @@
  
 --- a/utils/aflpp_driver/GNUmakefile
 +++ b/utils/aflpp_driver/GNUmakefile
-@@ -13,40 +13,41 @@ ifneq "" "$(LLVM_BINDIR)"
+@@ -13,40 +13,42 @@ ifneq "" "$(LLVM_BINDIR)"
    LLVM_BINDIR := $(LLVM_BINDIR)/
  endif
  
 -CFLAGS := -O3 -funroll-loops -g -fPIC
++AR ?= ar
 +CFLAGS ?= -O3 -funroll-loops -g
 +CFLAGS += -fPIC -fno-lto
  
@@ -147,7 +157,7 @@
  
  libAFLDriver.a:	aflpp_driver.o
 -	@ar rc libAFLDriver.a aflpp_driver.o
-+	ar rc libAFLDriver.a aflpp_driver.o
++	$(AR) rc libAFLDriver.a aflpp_driver.o
  	@cp -vf libAFLDriver.a ../../
  
  debug:
@@ -157,7 +167,8 @@
 +	$(CC) $(CPPFLAGS) -I../../include -D_DEBUG=\"1\" $(CFLAGS) -g -funroll-loops -c aflpp_driver.c
  	#$(LLVM_BINDIR)clang -S -emit-llvm -Wno-deprecated -I../../include $(CFLAGS) -D_DEBUG=\"1\" -c -o afl-performance.ll ../../src/afl-performance.c
  	#$(LLVM_BINDIR)clang -S -emit-llvm -I../../include -D_DEBUG=\"1\" -g -funroll-loops -c aflpp_driver.c
- 	ar rc libAFLDriver.a afl-performance.o aflpp_driver.o
+-	ar rc libAFLDriver.a afl-performance.o aflpp_driver.o
++	$(AR) rc libAFLDriver.a afl-performance.o aflpp_driver.o
  
  aflpp_qemu_driver.o:	aflpp_qemu_driver.c
 -	-$(LLVM_BINDIR)clang $(CFLAGS) -O0 -funroll-loops -c aflpp_qemu_driver.c
@@ -166,7 +177,7 @@
  libAFLQemuDriver.a:	aflpp_qemu_driver.o
 -	@-ar rc libAFLQemuDriver.a aflpp_qemu_driver.o
 -	@-cp -vf libAFLQemuDriver.a ../../
-+	ar rc libAFLQemuDriver.a aflpp_qemu_driver.o
++	$(AR) rc libAFLQemuDriver.a aflpp_qemu_driver.o
 +	@cp -vf libAFLQemuDriver.a ../../
  
  aflpp_qemu_driver_hook.so:	aflpp_qemu_driver_hook.o
