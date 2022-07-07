@@ -24,7 +24,7 @@ else
 	IPXE_COMMIT="3c040ad387099483102708bb1839110bc788cefb"
 
 	XEN_PRE_PATCHSET_NUM=0
-	XEN_GENTOO_PATCHSET_NUM=0
+	XEN_GENTOO_PATCHSET_NUM=1
 	XEN_PRE_VERSION_BASE=4.16.1
 
 	XEN_BASE_PV="${PV}"
@@ -46,13 +46,13 @@ else
 	if [[ -n "${XEN_PRE_PATCHSET_NUM}" ]]; then
 		XEN_UPSTREAM_PATCHES_TAG="$(ver_cut 1-3)-pre-patchset-${XEN_PRE_PATCHSET_NUM}"
 		XEN_UPSTREAM_PATCHES_NAME="xen-upstream-patches-${XEN_UPSTREAM_PATCHES_TAG}"
-		SRC_URI+=" https://github.com/Flowdalic/xen-upstream-patches/archive/refs/tags/${XEN_UPSTREAM_PATCHES_TAG}.tar.gz -> ${XEN_UPSTREAM_PATCHES_NAME}.tar.gz"
+		SRC_URI+=" https://gitweb.gentoo.org/proj/xen-upstream-patches.git/snapshot/${XEN_UPSTREAM_PATCHES_NAME}.tar.bz2"
 		XEN_UPSTREAM_PATCHES_DIR="${WORKDIR}/${XEN_UPSTREAM_PATCHES_NAME}"
 	fi
 	if [[ -n "${XEN_GENTOO_PATCHSET_NUM}" ]]; then
 		XEN_GENTOO_PATCHES_TAG="$(ver_cut 1-3 ${XEN_BASE_PV})-gentoo-patchset-${XEN_GENTOO_PATCHSET_NUM}"
 		XEN_GENTOO_PATCHES_NAME="xen-gentoo-patches-${XEN_GENTOO_PATCHES_TAG}"
-		SRC_URI+=" https://github.com/Flowdalic/xen-gentoo-patches/archive/refs/tags/${XEN_GENTOO_PATCHES_TAG}.tar.gz -> ${XEN_GENTOO_PATCHES_NAME}.tar.gz"
+		SRC_URI+=" https://gitweb.gentoo.org/proj/xen-gentoo-patches.git/snapshot/${XEN_GENTOO_PATCHES_NAME}.tar.bz2"
 		XEN_GENTOO_PATCHES_DIR="${WORKDIR}/${XEN_GENTOO_PATCHES_NAME}"
 	fi
 fi
@@ -241,6 +241,16 @@ src_prepare() {
 		eapply "${XEN_GENTOO_PATCHES_DIR}"
 	fi
 
+	# Rename qemu-bridge-helper to xen-bridge-helper to avoid file
+	# collisions with app-emulation/qemu.
+	sed -i 's/qemu-bridge-helper/xen-bridge-helper/g' \
+		tools/qemu-xen/include/net/net.h \
+		tools/qemu-xen/meson.build \
+		tools/qemu-xen/qemu-bridge-helper.c \
+		tools/qemu-xen/qemu-options.hx \
+		|| die
+	mv tools/qemu-xen/qemu-bridge-helper.c tools/qemu-xen/xen-bridge-helper.c || die
+
 	if use ovmf; then
 		mv ../edk2-${EDK2_COMMIT} tools/firmware/ovmf-dir-remote || die
 		rm -r tools/firmware/ovmf-dir-remote/CryptoPkg/Library/OpensslLib/openssl || die
@@ -271,8 +281,6 @@ src_prepare() {
 		cp "${XEN_GENTOO_PATCHES_DIR}/ipxe/${PN}-4.15.0-ipxe-gcc11.patch" tools/firmware/etherboot/patches/ipxe-gcc11.patch || die
 		echo ipxe-gcc11.patch >> tools/firmware/etherboot/patches/series || die
 	fi
-
-	mv tools/qemu-xen/qemu-bridge-helper.c tools/qemu-xen/xen-bridge-helper.c || die
 
 	# Fix texi2html build error with new texi2html, qemu.doc.html
 	sed -i -e "/texi2html -monolithic/s/-number//" tools/qemu-xen-traditional/Makefile || die
