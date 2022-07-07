@@ -4,3 +4,4 @@ move dev-python/dbutils dev-python/DBUtils
 move dev-python/frozen-flask dev-python/Frozen-Flask
 move dev-python/ipy dev-python/IPy
 move sci-libs/shapely dev-python/shapely
+move net-misc/cni-plugins app-containers/cni-plugins
