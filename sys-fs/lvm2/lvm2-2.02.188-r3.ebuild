@@ -206,6 +206,11 @@ src_compile() {
 	fi
 }
 
+src_test() {
+	einfo "Tests are disabled because of device-node mucking, if you want to"
+	einfo "run tests, compile the package and see ${S}/tests"
+}
+
 src_install() {
 	local inst
 	local INSTALL_TARGETS=( install install_tmpfiles_configuration )
@@ -300,9 +305,4 @@ pkg_postrm() {
 	if use udev && [[ -z ${REPLACING_VERSIONS} ]]; then
 		udev_reload
 	fi
-}
-
-src_test() {
-	einfo "Tests are disabled because of device-node mucking, if you want to"
-	einfo "run tests, compile the package and see ${S}/tests"
 }
