@@ -26,6 +26,8 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.15-meson-use-feature-option-for-libiouring.patch
+	"${FILESDIR}"/${PN}-1.1.16-error-to-fprintf-exit-musl.patch
+	"${FILESDIR}"/${PN}-1.1.16-include-linux-stat_h-musl.patch
 )
 
 pkg_setup() {
