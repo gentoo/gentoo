@@ -144,5 +144,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	[[ -n ${REPLACING_VERSIONS} ]] || udev_reload
+	[[ -n ${REPLACED_BY_VERSION} ]] || udev_reload
 }
