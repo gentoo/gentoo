@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_IN_SOURCE_BUILD=1
-inherit autotools cmake flag-o-matic git-r3 java-pkg-opt-2 optfeature systemd xdg
+inherit autotools cmake eapi8-dosym flag-o-matic git-r3 java-pkg-opt-2 optfeature systemd xdg
 
 XSERVER_VERSION="21.1.1"
 
@@ -186,7 +186,7 @@ src_install() {
 		sed -i -e '/pam_selinux/s/^/#/' "${ED}"/etc/pam.d/tigervnc || die
 
 		# install vncserver to /usr/bin too, see bug #836620
-		dosym -r /usr/libexec/vncserver /usr/bin/vncserver
+		dosym8 -r /usr/libexec/vncserver /usr/bin/vncserver
 	fi
 }
 
