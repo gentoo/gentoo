@@ -36,7 +36,6 @@ DEPEND="${RDEPEND}"
 if [ "${PV#9999}" = "${PV}" ] ; then
 	S="${WORKDIR}/vision_visp-noetic-${PV}/${ROS_SUBDIR}"
 fi
-PATCHES=( "${FILESDIR}/gcc6.patch" )
 
 src_compile() {
 	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
