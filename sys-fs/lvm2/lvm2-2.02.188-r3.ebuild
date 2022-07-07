@@ -302,7 +302,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	if use udev && [[ -z ${REPLACING_VERSIONS} ]]; then
+	if use udev && [[ -z ${REPLACED_BY_VERSION} ]]; then
 		udev_reload
 	fi
 }
