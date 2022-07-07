@@ -34,6 +34,7 @@ src_prepare() {
 
 src_configure() {
 	tc-export AR BUILD_CC CC PKG_CONFIG
+	tc-export_build_env
 }
 
 src_compile() {
@@ -45,8 +46,8 @@ src_compile() {
 		AR="${AR}"
 		CC="${CC}"
 		HOSTCC="${BUILD_CC}"
-		HOSTCFLAGS="${CFLAGS} ${CPPFLAGS}"' $(HOSTCPPFLAGS)'
-		HOSTLDFLAGS="${LDFLAGS}"
+		HOSTCFLAGS="${BUILD_CFLAGS} ${BUILD_CPPFLAGS}"' $(HOSTCPPFLAGS)'
+		HOSTLDFLAGS="${BUILD_LDFLAGS}"
 	)
 
 	emake "${myemakeargs[@]}" tools-only_defconfig
