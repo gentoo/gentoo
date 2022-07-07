@@ -22,6 +22,7 @@ IUSE="elogind +icons systemd"
 
 DEPEND="
 	dev-libs/wayland
+	dev-util/wayland-scanner
 	x11-libs/pango
 	x11-libs/cairo
 	|| (
