@@ -1,0 +1,337 @@
+https://bugs.gentoo.org/829580
+https://git.sesse.net/?p=plocate;a=commit;h=fd6198891d6fd9642effc0843fef6f23b991af3e
+
+From fd6198891d6fd9642effc0843fef6f23b991af3e Mon Sep 17 00:00:00 2001
+From: "Steinar H. Gunderson" <steinar+git@gunderson.no>
+Date: Wed, 13 Jul 2022 22:31:54 +0200
+Subject: [PATCH 2/2] Remove dependency on non-POSIX header error.h.
+
+This helps compatibility with certain configurations of musl libc.
+Note that the output format on updatedb.conf errors will change somewhat,
+and only the first one will be reported followed by immediate exit
+(unlike earlier, where all updatedb.conf errors would be output before exit).
+
+Based on a patch by Alfred Persson Forsberg.
+---
+ conf.cpp | 178 +++++++++++++++++++++++++++++--------------------------
+ 1 file changed, 94 insertions(+), 84 deletions(-)
+
+diff --git a/conf.cpp b/conf.cpp
+index 1055fd7..60dd93f 100644
+--- a/conf.cpp
++++ b/conf.cpp
+@@ -22,7 +22,6 @@ any later version.
+ 
+ #include "conf.h"
+ 
+-#include "error.h"
+ #include "lib.h"
+ 
+ #include <algorithm>
+@@ -167,11 +166,6 @@ uc_lex(void)
+ 		/* Fall through */
+ 	case '\n':
+ 		uc_current_line++;
+-		if (uc_current_line == 0) {
+-			error_at_line(0, 0, UPDATEDB_CONF, uc_current_line - 1,
+-			              _("warning: Line number overflow"));
+-			error_message_count--; /* Don't count as an error */
+-		}
+ 		return UCT_EOL;
+ 
+ 	case '=':
+@@ -180,10 +174,9 @@ uc_lex(void)
+ 	case '"': {
+ 		while ((c = getc_unlocked(uc_file)) != '"') {
+ 			if (c == EOF || c == '\n') {
+-				error_at_line(0, 0, UPDATEDB_CONF, uc_line,
+-				              _("missing closing `\"'"));
+-				ungetc(c, uc_file);
+-				break;
++				fprintf(stderr, "%s:%u: missing closing `\"'\n",
++					UPDATEDB_CONF, uc_line);
++				exit(EXIT_FAILURE);
+ 			}
+ 			uc_lex_buf.push_back(c);
+ 		}
+@@ -215,21 +208,18 @@ uc_lex(void)
+ static void
+ parse_updatedb_conf(void)
+ {
+-	int old_error_one_per_line;
+-	unsigned old_error_message_count;
+ 	bool had_prune_bind_mounts, had_prunefs, had_prunenames, had_prunepaths;
+ 
+ 	uc_file = fopen(UPDATEDB_CONF, "r");
+ 	if (uc_file == NULL) {
+-		if (errno != ENOENT)
+-			error(EXIT_FAILURE, errno, _("can not open `%s'"), UPDATEDB_CONF);
+-		goto err;
++	        if (errno != ENOENT) {
++		        perror(UPDATEDB_CONF);
++			exit(EXIT_FAILURE);
++	        }
++		return;
+ 	}
+ 	flockfile(uc_file);
+ 	uc_current_line = 1;
+-	old_error_message_count = error_message_count;
+-	old_error_one_per_line = error_one_per_line;
+-	error_one_per_line = 1;
+ 	had_prune_bind_mounts = false;
+ 	had_prunefs = false;
+ 	had_prunenames = false;
+@@ -263,40 +253,39 @@ parse_updatedb_conf(void)
+ 			break;
+ 
+ 		case UCT_IDENTIFIER:
+-			error_at_line(0, 0, UPDATEDB_CONF, uc_line,
+-			              _("unknown variable `%s'"), uc_lex_buf.c_str());
+-			goto skip_to_eol;
++			fprintf(stderr, "%s:%u: unknown variable: `%s'\n",
++				UPDATEDB_CONF, uc_line, uc_lex_buf.c_str());
++			exit(EXIT_FAILURE);
+ 
+ 		default:
+-			error_at_line(0, 0, UPDATEDB_CONF, uc_line,
+-			              _("variable name expected"));
+-			goto skip_to_eol;
++			fprintf(stderr, "%s:%u: variable name expected\n",
++				UPDATEDB_CONF, uc_line);
++			exit(EXIT_FAILURE);
+ 		}
+ 		if (*had_var != false) {
+-			error_at_line(0, 0, UPDATEDB_CONF, uc_line,
+-			              _("variable `%s' was already defined"), uc_lex_buf.c_str());
+-			goto skip_to_eol;
++			fprintf(stderr, "%s:%u: variable `%s' was already defined\n",
++				UPDATEDB_CONF, uc_line, uc_lex_buf.c_str());
++			exit(EXIT_FAILURE);
+ 		}
+ 		*had_var = true;
+ 		var_token = token;
+ 		token = uc_lex();
+ 		if (token != UCT_EQUAL) {
+-			error_at_line(0, 0, UPDATEDB_CONF, uc_line,
+-			              _("`=' expected after variable name"));
+-			goto skip_to_eol;
++			fprintf(stderr, "%s:%u: `=' expected after variable name\n",
++				UPDATEDB_CONF, uc_line);
++			exit(EXIT_FAILURE);
+ 		}
+ 		token = uc_lex();
+ 		if (token != UCT_QUOTED) {
+-			error_at_line(0, 0, UPDATEDB_CONF, uc_line,
+-			              _("value in quotes expected after `='"));
+-			goto skip_to_eol;
++			fprintf(stderr, "%s:%u: value in quotes expected after `='\n",
++				UPDATEDB_CONF, uc_line);
++			exit(EXIT_FAILURE);
+ 		}
+ 		if (var_token == UCT_PRUNE_BIND_MOUNTS) {
+ 			if (parse_bool(&conf_prune_bind_mounts, uc_lex_buf.c_str()) != 0) {
+-				error_at_line(0, 0, UPDATEDB_CONF, uc_line,
+-				              _("invalid value `%s' of PRUNE_BIND_MOUNTS"),
+-				              uc_lex_buf.c_str());
+-				goto skip_to_eol;
++				fprintf(stderr, "%s:%u: invalid value `%s' of PRUNE_BIND_MOUNTS\n",
++					UPDATEDB_CONF, uc_line, uc_lex_buf.c_str());
++				exit(EXIT_FAILURE);
+ 			}
+ 		} else if (var_token == UCT_PRUNEFS)
+ 			var_add_values(&conf_prunefs, uc_lex_buf.c_str());
+@@ -308,12 +297,11 @@ parse_updatedb_conf(void)
+ 			abort();
+ 		token = uc_lex();
+ 		if (token != UCT_EOL && token != UCT_EOF) {
+-			error_at_line(0, 0, UPDATEDB_CONF, uc_line,
+-			              _("unexpected data after variable value"));
+-			goto skip_to_eol;
++			fprintf(stderr, "%s:%u: unexpected data after variable value\n",
++				UPDATEDB_CONF, uc_line);
++			exit(EXIT_FAILURE);
+ 		}
+ 		/* Fall through */
+-	skip_to_eol:
+ 		while (token != UCT_EOL) {
+ 			if (token == UCT_EOF)
+ 				goto eof;
+@@ -321,14 +309,12 @@ parse_updatedb_conf(void)
+ 		}
+ 	}
+ eof:
+-	if (ferror(uc_file))
+-		error(EXIT_FAILURE, 0, _("I/O error reading `%s'"), UPDATEDB_CONF);
+-	error_one_per_line = old_error_one_per_line;
++	if (ferror(uc_file)) {
++		perror(UPDATEDB_CONF);
++		exit(EXIT_FAILURE);
++	}
+ 	funlockfile(uc_file);
+ 	fclose(uc_file);
+-	if (error_message_count != old_error_message_count)
+-		exit(EXIT_FAILURE);
+-err:;
+ }
+ 
+ /* Command-line argument parsing */
+@@ -384,8 +370,11 @@ prepend_cwd(const string &path)
+ 	do
+ 		buf.resize(buf.size() * 1.5);
+ 	while ((res = getcwd(buf.data(), buf.size())) == NULL && errno == ERANGE);
+-	if (res == NULL)
+-		error(EXIT_FAILURE, errno, _("can not get current working directory"));
++	if (res == NULL) {
++	        fprintf(stderr, "%s: %s: can not get current working directory\n",
++			program_invocation_name, strerror(errno));
++	        exit(EXIT_FAILURE);
++	}
+ 	buf.resize(strlen(buf.data()));
+ 	return buf + '/' + path;
+ }
+@@ -438,54 +427,64 @@ parse_arguments(int argc, char *argv[])
+ 			exit(EXIT_FAILURE);
+ 
+ 		case 'B':
+-			if (got_prune_bind_mounts != false)
+-				error(EXIT_FAILURE, 0,
+-				      _("--%s would override earlier command-line argument"),
+-				      "prune-bind-mounts");
++		        if (got_prune_bind_mounts != false) {
++				fprintf(stderr, "%s: --%s would override earlier command-line argument\n",
++				        program_invocation_name, "prune-bind-mounts");
++				exit(EXIT_FAILURE);
++			}
+ 			got_prune_bind_mounts = true;
+-			if (parse_bool(&conf_prune_bind_mounts, optarg) != 0)
+-				error(EXIT_FAILURE, 0, _("invalid value `%s' of --%s"), optarg,
+-				      "prune-bind-mounts");
++			if (parse_bool(&conf_prune_bind_mounts, optarg) != 0) {
++				fprintf(stderr, "%s: invalid value %s of --%s\n",
++				        program_invocation_name, optarg, "prune-bind-mounts");
++				exit(EXIT_FAILURE);
++			}
+ 			break;
+ 
+ 		case 'F':
+-			if (prunefs_changed != false)
+-				error(EXIT_FAILURE, 0,
+-				      _("--%s would override earlier command-line argument"),
+-				      "prunefs");
++			if (prunefs_changed != false) {
++				fprintf(stderr, "%s: --%s would override earlier command-line argument\n",
++				        program_invocation_name, "prunefs");
++				exit(EXIT_FAILURE);
++			}
+ 			prunefs_changed = true;
+ 			conf_prunefs.clear();
+ 			var_add_values(&conf_prunefs, optarg);
+ 			break;
+ 
+ 		case 'N':
+-			if (prunenames_changed != false)
+-				error(EXIT_FAILURE, 0,
+-				      _("--%s would override earlier command-line argument"),
+-				      "prunenames");
++			if (prunenames_changed != false) {
++				fprintf(stderr, "%s: --%s would override earlier command-line argument\n",
++                                        program_invocation_name, "prunenames");
++                                exit(EXIT_FAILURE);
++			}
+ 			prunenames_changed = true;
+ 			conf_prunenames.clear();
+ 			var_add_values(&conf_prunenames, optarg);
+ 			break;
+ 
+ 		case 'P':
+-			if (prunepaths_changed != false)
+-				error(EXIT_FAILURE, 0,
+-				      _("--%s would override earlier command-line argument"),
+-				      "prunepaths");
++			if (prunepaths_changed != false) {
++				fprintf(stderr, "%s: --%s would override earlier command-line argument\n",
++                                        program_invocation_name, "prunepaths");
++                                exit(EXIT_FAILURE);
++			}
+ 			prunepaths_changed = true;
+ 			conf_prunepaths.clear();
+ 			var_add_values(&conf_prunepaths, optarg);
+ 			break;
+ 
+ 		case 'U':
+-			if (conf_scan_root != NULL)
+-				error(EXIT_FAILURE, 0, _("--%s specified twice"),
+-				      "database-root");
++			if (conf_scan_root != NULL) {
++				fprintf(stderr, "%s: --%s specified twice\n",
++					program_invocation_name, "database-root");
++				exit(EXIT_FAILURE);
++			}
+ 			conf_scan_root = realpath(optarg, nullptr);
+-			if (conf_scan_root == NULL)
+-				error(EXIT_FAILURE, errno, _("invalid value `%s' of --%s"), optarg,
+-				      "database-root");
++			if (conf_scan_root == NULL) {
++				fprintf(stderr, "%s: %s: invalid value `%s' of --%s\n",
++					program_invocation_name, strerror(errno), optarg, "database-root");
++				exit(EXIT_FAILURE);
++			}
+ 			break;
+ 
+ 		case 'V':
+@@ -517,13 +516,18 @@ parse_arguments(int argc, char *argv[])
+ 			exit(EXIT_SUCCESS);
+ 
+ 		case 'l':
+-			if (got_visibility != false)
+-				error(EXIT_FAILURE, 0, _("--%s specified twice"),
+-				      "require-visibility");
++			if (got_visibility != false) {
++				fprintf(stderr, "%s: --%s specified twice\n",
++                                        program_invocation_name, "require-visibility");
++                                exit(EXIT_FAILURE);
++			}
++
+ 			got_visibility = true;
+-			if (parse_bool(&conf_check_visibility, optarg) != 0)
+-				error(EXIT_FAILURE, 0, _("invalid value `%s' of --%s"), optarg,
+-				      "require-visibility");
++			if (parse_bool(&conf_check_visibility, optarg) != 0) {
++				fprintf(stderr, "%s: invalid value `%s' of --%s",
++					program_invocation_name, optarg, "require-visibility");
++				exit(EXIT_FAILURE);
++			}
+ 			break;
+ 
+ 		case 'n':
+@@ -532,8 +536,11 @@ parse_arguments(int argc, char *argv[])
+ 			break;
+ 
+ 		case 'o':
+-			if (!conf_output.empty())
+-				error(EXIT_FAILURE, 0, _("--%s specified twice"), "output");
++			if (!conf_output.empty()) {
++				fprintf(stderr, "%s: --%s specified twice",
++					program_invocation_name, "output");
++				exit(EXIT_FAILURE);
++			}
+ 			conf_output = optarg;
+ 			break;
+ 
+@@ -558,8 +565,11 @@ parse_arguments(int argc, char *argv[])
+ 		}
+ 	}
+ options_done:
+-	if (optind != argc)
+-		error(EXIT_FAILURE, 0, _("unexpected operand on command line"));
++	if (optind != argc) {
++		fprintf(stderr, "%s: unexpected operand on command line",
++			program_invocation_name);
++		exit(EXIT_FAILURE);
++	}
+ 	if (conf_scan_root == NULL) {
+ 		static char root[] = "/";
+ 
+-- 
+2.35.1
+
