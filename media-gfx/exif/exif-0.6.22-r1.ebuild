@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,6 +21,11 @@ DEPEND="
 	>=media-libs/libexif-${PV}
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/empty-string-check.patch
+	"${FILESDIR}"/fix-empty-string-check.patch
+)
 
 src_configure() {
 	econf $(use_enable nls)
