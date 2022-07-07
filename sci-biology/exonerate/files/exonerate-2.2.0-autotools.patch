@@ -1,0 +1,43 @@
+Fix build with --as-needed
+
+https://bugs.gentoo.org/268094
+
+--- a/configure.in
++++ b/configure.in
+@@ -144,11 +145,6 @@
+ elif test "$enable_assert" = no; then
+     CFLAGS="$CFLAGS -DG_DISABLE_ASSERT"
+     echo "Turning assertions off"
+-    if test "$GCC" = "yes"; then
+-        # Not currently using -fomit-frame-pointer as clashes with -pg
+-        # CFLAGS="$CFLAGS -O3 -fomit-frame-pointer -finline-functions"
+-        CFLAGS="$CFLAGS -O3 -finline-functions"
+-    fi
+ else
+     echo "error: must be yes or no: --enable-assert:[$enable_assert]"
+     exit 1
+@@ -289,7 +285,7 @@
+ if test "$enable_pthreads" = yes; then
+     echo "Using PTHREADS"
+     CFLAGS="$CFLAGS -DUSE_PTHREADS"
+-    LDFLAGS="$LDFLAGS -lpthread"
++    LIBS="$LIBS -lpthread"
+ elif test "$enable_pthreads" = no; then
+     echo "Not using pthreads"
+ else
+--- a/src/model/bootstrapper.c
++++ b/src/model/bootstrapper.c
+@@ -146,8 +146,12 @@
+ 
+ static void Bootstrapper_index_archive(Bootstrapper *bs){
+     register gchar *command;
++    register gchar *ranlib = "ranlib";
++    register gchar *tmp = (gchar*)g_getenv("RANLIB");
++    if(tmp)
++        ranlib = tmp;
+     register gint ret_val;
+-    command = g_strdup_printf("ranlib %s", bs->archive_path);
++    command = g_strdup_printf("%s %s", ranlib, bs->archive_path);
+     g_message("Indexing archive [%s]", bs->archive_path);
+     g_print("%s\n", command);
+     ret_val = system(command);
