@@ -6,6 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">FFY00/python-pyproject-metadata</remote-id>
-		<remote-id type="pypi">python-pyproject-metadata</remote-id>
+		<remote-id type="pypi">pyproject-metadata</remote-id>
 	</upstream>
 </pkgmetadata>
