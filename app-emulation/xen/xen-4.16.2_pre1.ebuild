@@ -15,7 +15,7 @@ else
 	KEYWORDS="~amd64 ~arm -x86"
 
 	XEN_PRE_PATCHSET_NUM=0
-	XEN_GENTOO_PATCHSET_NUM=0
+	XEN_GENTOO_PATCHSET_NUM=1
 	XEN_PRE_VERSION_BASE=4.16.1
 
 	XEN_BASE_PV="${PV}"
@@ -28,13 +28,13 @@ else
 	if [[ -n "${XEN_PRE_PATCHSET_NUM}" ]]; then
 		XEN_UPSTREAM_PATCHES_TAG="$(ver_cut 1-3)-pre-patchset-${XEN_PRE_PATCHSET_NUM}"
 		XEN_UPSTREAM_PATCHES_NAME="xen-upstream-patches-${XEN_UPSTREAM_PATCHES_TAG}"
-		SRC_URI+=" https://github.com/Flowdalic/xen-upstream-patches/archive/refs/tags/${XEN_UPSTREAM_PATCHES_TAG}.tar.gz -> ${XEN_UPSTREAM_PATCHES_NAME}.tar.gz"
+		SRC_URI+=" https://gitweb.gentoo.org/proj/xen-upstream-patches.git/snapshot/${XEN_UPSTREAM_PATCHES_NAME}.tar.bz2"
 		XEN_UPSTREAM_PATCHES_DIR="${WORKDIR}/${XEN_UPSTREAM_PATCHES_NAME}"
 	fi
 	if [[ -n "${XEN_GENTOO_PATCHSET_NUM}" ]]; then
 		XEN_GENTOO_PATCHES_TAG="$(ver_cut 1-3 ${XEN_BASE_PV})-gentoo-patchset-${XEN_GENTOO_PATCHSET_NUM}"
 		XEN_GENTOO_PATCHES_NAME="xen-gentoo-patches-${XEN_GENTOO_PATCHES_TAG}"
-		SRC_URI+=" https://github.com/Flowdalic/xen-gentoo-patches/archive/refs/tags/${XEN_GENTOO_PATCHES_TAG}.tar.gz -> ${XEN_GENTOO_PATCHES_NAME}.tar.gz"
+		SRC_URI+=" https://gitweb.gentoo.org/proj/xen-gentoo-patches.git/snapshot/${XEN_GENTOO_PATCHES_NAME}.tar.bz2"
 		XEN_GENTOO_PATCHES_DIR="${WORKDIR}/${XEN_GENTOO_PATCHES_NAME}"
 	fi
 fi
