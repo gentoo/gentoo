@@ -1,4 +1,5 @@
-Install headers into 'hmmer3' subdir and not into global includedir.
+* Install headers into 'hmmer3' subdir and not into global includedir
+* Respect AR
 
 --- a/easel/Makefile.in
 +++ b/easel/Makefile.in
@@ -17,6 +18,26 @@ Install headers into 'hmmer3' subdir and not into global includedir.
  	${QUIET_SUBDIR0}miniapps      ${QUIET_SUBDIR1} install
  
  # "make uninstall" reverses the steps of "make install"
+--- a/libdivsufsort/Makefile.in
++++ b/libdivsufsort/Makefile.in
+@@ -16,7 +16,7 @@
+ CFLAGS    = @CFLAGS@ @PTHREAD_CFLAGS@ @PIC_FLAGS@
+ CPPFLAGS  = @CPPFLAGS@
+ MPILIBS   = @MPILIBS@
+-AR        = @AR@ rc
++AR        = @AR@
+ RANLIB    = @RANLIB@
+ INSTALL   = @INSTALL@
+ 
+@@ -43,7 +43,7 @@
+ 
+ 
+ libdivsufsort.a: $(OBJS)
+-	${QUIET_AR}${AR} libdivsufsort.a $(OBJS)
++	${QUIET_AR}${AR} rc libdivsufsort.a $(OBJS)
+ 	@${RANLIB} libdivsufsort.a
+ 	@chmod 644 libdivsufsort.a
+ 
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -143,6 +143,7 @@
