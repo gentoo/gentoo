@@ -1,0 +1,28 @@
+--- a/Makefile
++++ b/Makefile
+@@ -4,14 +4,8 @@
+ 
+ ####### Compiler, tools and options
+ 
+-CC            = gcc
+-CXX           = g++
+-DEFINES       = 
+-CFLAGS        = -m64 -pipe -O3 $(DEFINES)
+-CXXFLAGS      = -m64 -pipe -O3 $(DEFINES)
+-INCPATH       = -I. -I/usr/include
+-LINK          = g++
+-LFLAGS        = -m64
++INCPATH       = $(CPPFLAGS) -I.
++LINK          = $(CXX)
+ LIBS          = $(SUBLIBS)    
+ AR            = ar cqs
+ RANLIB        = 
+@@ -136,7 +130,7 @@
+ all: Makefile $(TARGET) $(MANPAGES)
+ 
+ $(TARGET):  $(OBJECTS)  
+-	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
++	$(LINK) $(LDFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
+ 
+ 
+ clean:compiler_clean 
