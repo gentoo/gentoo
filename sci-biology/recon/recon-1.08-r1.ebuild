@@ -1,31 +1,31 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
 DESCRIPTION="Automated de novo identification of repeat families from genomic sequences"
 HOMEPAGE="http://www.repeatmasker.org/RepeatModeler.html"
 SRC_URI="http://www.repeatmasker.org/${P^^}.tar.gz"
+S="${WORKDIR}/${P^^}"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="examples"
 KEYWORDS="~amd64 ~x86"
+IUSE="examples"
 
 RDEPEND="dev-lang/perl"
-
-S=${WORKDIR}/${P^^}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.08-buffer-overflow.patch
 	"${FILESDIR}"/${PN}-1.08-perl-shebangs.patch
+	"${FILESDIR}"/${PN}-1.08-Wimplicit-function-declaration.patch
 )
 
 src_prepare() {
 	default
-	sed -i "s|$path = \"\";|$path = \"${EPREFIX}/usr/libexec/${PN}\";|" scripts/recon.pl || die
+	sed -i "s|$path = \"\";|$path = \"${EPREFIX}/usr/libexec/recon\";|" scripts/recon.pl || die
 }
 
 src_compile() {
@@ -35,13 +35,13 @@ src_compile() {
 src_install() {
 	dobin scripts/*
 
-	exeinto /usr/libexec/${PN}
+	exeinto /usr/libexec/recon
 	doexe src/{edgeredef,eledef,eleredef,famdef,imagespread}
 
 	newdoc {00,}README
 
 	if use examples; then
-		insinto /usr/share/${PN}
+		insinto /usr/share/recon
 		doins -r Demos
 	fi
 }
