@@ -1,0 +1,74 @@
+--- a/src/Param.h
++++ b/src/Param.h
+@@ -28,26 +28,14 @@
+ #include <vector>
+ #include <string>
+ #include <string.h>
++#include <unistd.h>
+ #ifdef HAVE_STRINGS_H
+ #include <strings.h>
+ #endif
+-// MacOS-X has getopt() defined is stdlib and the library in the libSystem
+-#ifndef __APPLE__
+-#ifdef HAVE_GETOPT_H
+-#include <getopt.h>
+-#else
+-#ifndef HAVE_GETOPT
+-#include "getopt.h"
+-#endif
+-#endif
+-#endif
+ 
+ #include "Const.h"
+ #include "System.h"
+ 
+-extern char   *optarg;   
+-extern int     optind;
+-
+ 
+ class ltstr
+ {
+--- a/src/SensorPlugins/MarkovIMM/GetData/CEM.cc
++++ b/src/SensorPlugins/MarkovIMM/GetData/CEM.cc
+@@ -22,18 +22,11 @@
+ #include "../../../../config.h"
+ #endif
+ 
+-#ifdef HAVE_GETOPT_H
+-#include <getopt.h>
+-#else
+-#ifndef HAVE_GETOPT
+-#include "../../../getopt.h"
+-#endif
+-#endif
+-
+ #include "../../../System.cc"
+ #include "../../../Const.h"
+ #include "../../0_SensorTk/EndianConv.h"
+ #include "strarray.h"
++#include "unistd.h"
+ #include <vector>
+ 
+ // Constantes
+--- a/src/SensorPlugins/MarkovIMM/GetData/TrainIMM.cc
++++ b/src/SensorPlugins/MarkovIMM/GetData/TrainIMM.cc
+@@ -22,18 +22,11 @@
+ #include "../../../../config.h"
+ #endif
+ 
+-#ifdef HAVE_GETOPT_H
+-#include <getopt.h>
+-#else
+-#ifndef HAVE_GETOPT
+-#include "../../../getopt.h"
+-#endif
+-#endif
+-
+ #include "../../../System.cc"
+ #include "../../../Const.h"
+ #include "../../0_SensorTk/EndianConv.h"
+ #include "strarray.h"
++#include "unistd.h"
+ 
+ 
+ // Constantes

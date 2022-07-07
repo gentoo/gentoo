@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -12,15 +12,12 @@ SRC_URI="https://mulcyber.toulouse.inra.fr/frs/download.php/1359/${P}.tar.gz"
 LICENSE="Artistic"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
+RESTRICT="test"
 
 DEPEND="
 	media-libs/gd[png]
-	media-libs/libpng:0=
-	"
+	media-libs/libpng:="
 RDEPEND="${DEPEND}"
-
-RESTRICT="test"
 
 PATCHES=(
 	# https://mulcyber.toulouse.inra.fr/tracker/index.php?func=detail&aid=1170
@@ -29,6 +26,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.1-format-security.patch
 	"${FILESDIR}"/${PN}-4.1d-fix-c++14.patch
 	"${FILESDIR}"/${PN}-4.1d-Wformat.patch
+	"${FILESDIR}"/${PN}-4.1d-portable-getopt.patch
 )
 
 src_prepare() {
@@ -37,5 +35,6 @@ src_prepare() {
 		-e '/SUBDIRS/ s/doc//' \
 		-e '/INSTALL.*doc/ s/\(.*\)//' \
 		-i Makefile.am || die
+	rm src/getopt.h || die
 	eautoreconf
 }

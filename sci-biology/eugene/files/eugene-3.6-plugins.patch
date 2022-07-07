@@ -1,7 +1,36 @@
-http://bugs.gentoo.org/show_bug.cgi?id=297536
+https://bugs.gentoo.org/297536
 
---- eugene-3.6/src/Makefile.am
-+++ eugene-3.6/src/Makefile.am
+--- a/configure.ac
++++ b/configure.ac
+@@ -28,6 +28,7 @@
+ AC_PROG_CC
+ AC_PROG_AWK
+ AC_PROG_LN_S 
++AM_PROG_AR
+ AC_PROG_RANLIB
+ 
+ 
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -137,7 +137,7 @@
+ 	$(INSTALL) -d $(DESTDIR)/$(pkgdatadir)/web/Style
+ 	$(INSTALL) -d $(DESTDIR)/$(pkgdatadir)/web/Javascripts
+ 	$(INSTALL) -d $(DESTDIR)/$(pkgdatadir)/web/Images
+-	$(INSTALL) -d $(DESTDIR)/$(pkgdatadir)/plugins
++	$(INSTALL) -d $(DESTDIR)/$(libdir)/eugene/plugins
+ 	$(INSTALL) -d $(DESTDIR)/$(pkgdatadir)/cfg
+ 	$(INSTALL) -d $(DESTDIR)/$(pkgdatadir)/models
+ 	$(INSTALL) -d $(DESTDIR)/$(pkgdatadir)/models/WAM
+@@ -160,6 +160,6 @@
+ 	$(INSTALL) -m 644 $(srcdir)/web/Images/*jpg $(DESTDIR)/$(pkgdatadir)/web/Images
+ 	$(INSTALL) -m 644 $(srcdir)/cfg/*.obo $(DESTDIR)/$(pkgdatadir)/cfg
+ 	$(INSTALL) -m 644 $(srcdir)/cfg/*.par $(DESTDIR)/$(pkgdatadir)/cfg
+-	$(INSTALL) src/SensorPlugins/*/*.so  $(DESTDIR)/$(pkgdatadir)/plugins
++	$(INSTALL) src/SensorPlugins/*/*.so  $(DESTDIR)/$(libdir)/eugene/plugins
+ 	$(INSTALL) $(srcdir)/Procedures/Eval/egn_* $(DESTDIR)/$(pkgdatadir)/Procedures/Eval
+ 	$(INSTALL) $(srcdir)/Procedures/Get/egn_* $(DESTDIR)/$(pkgdatadir)/Procedures/Get
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -20,7 +20,7 @@
  
  SUBDIRS = Parametrization GDIF . SensorPlugins
@@ -11,8 +40,8 @@ http://bugs.gentoo.org/show_bug.cgi?id=297536
  AM_CFLAGS = 
  
  bin_PROGRAMS = eugene
---- eugene-3.6/src/MSensor.cc
-+++ eugene-3.6/src/MSensor.cc
+--- a/src/MSensor.cc
++++ b/src/MSensor.cc
 @@ -97,7 +97,7 @@
    std::string use_name;
  
@@ -22,22 +51,3 @@ http://bugs.gentoo.org/show_bug.cgi?id=297536
  
      // On récupère les couples nom de sensor/priorité du .par
      PAR.ResetIter();
---- eugene-3.6/Makefile.am
-+++ eugene-3.6/Makefile.am
-@@ -125,7 +125,7 @@
- 	$(INSTALL) -d $(DESTDIR)/$(pkgdatadir)/web/Style
- 	$(INSTALL) -d $(DESTDIR)/$(pkgdatadir)/web/Javascripts
- 	$(INSTALL) -d $(DESTDIR)/$(pkgdatadir)/web/Images
--	$(INSTALL) -d $(DESTDIR)/$(pkgdatadir)/plugins
-+	$(INSTALL) -d $(DESTDIR)/$(libdir)/eugene/plugins
- 	$(INSTALL) -d $(DESTDIR)/$(pkgdatadir)/cfg
- 	$(INSTALL) -d $(DESTDIR)/$(pkgdatadir)/models
- 	$(INSTALL) -d $(DESTDIR)/$(pkgdatadir)/models/WAM
-@@ -144,6 +144,6 @@
- 	$(INSTALL) -m 644 $(srcdir)/web/Images/*jpg $(DESTDIR)/$(pkgdatadir)/web/Images
- 	$(INSTALL) -m 644 $(srcdir)/cfg/*.obo $(DESTDIR)/$(pkgdatadir)/cfg
- 	$(INSTALL) -m 644 $(srcdir)/cfg/*.par $(DESTDIR)/$(pkgdatadir)/cfg
--	$(INSTALL) src/SensorPlugins/*/*.so  $(DESTDIR)/$(pkgdatadir)/plugins
-+	$(INSTALL) src/SensorPlugins/*/*.so  $(DESTDIR)/$(libdir)/eugene/plugins
- 	$(INSTALL) $(srcdir)/Procedures/Eval/egn_* $(DESTDIR)/$(pkgdatadir)/Procedures/Eval
- 	$(INSTALL) $(srcdir)/Procedures/Get/egn_* $(DESTDIR)/$(pkgdatadir)/Procedures/Get
