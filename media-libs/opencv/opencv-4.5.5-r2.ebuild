@@ -99,8 +99,8 @@ RDEPEND="
 	contribovis? ( dev-games/ogre:0/1.12 )
 	ffmpeg? ( media-video/ffmpeg:0=[${MULTILIB_USEDEP}] )
 	gdal? ( sci-libs/gdal:= )
-	gflags? ( dev-cpp/gflags[${MULTILIB_USEDEP}] )
-	glog? ( dev-cpp/glog[${MULTILIB_USEDEP}] )
+	gflags? ( dev-cpp/gflags:=[${MULTILIB_USEDEP}] )
+	glog? ( dev-cpp/glog:=[${MULTILIB_USEDEP}] )
 	gphoto2? ( media-libs/libgphoto2:=[${MULTILIB_USEDEP}] )
 	gstreamer? (
 		media-libs/gstreamer:1.0[${MULTILIB_USEDEP}]
