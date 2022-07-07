@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2022-07-07)
+# Broken by recent fix attempts, bug #856811.
+>app-emulation/virtualbox-6.1.34-r1
+
 # David Seifert <soap@gentoo.org> (2022-07-02)
 # Unmaintained, no response on bugs, stuck on python 3.9. If you
 # want to unmask these, you have to at least port them to python 3.10.
