@@ -43,7 +43,6 @@ DEPEND="
 	${LUA_DEPS}
 	>=dev-libs/glib-2.62
 	>=media-video/pipewire-0.3.48:=
-	virtual/libc
 	virtual/libintl
 	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd )
