@@ -80,7 +80,7 @@ src_prepare() {
 	# which isn't even in the source file being invalid, we'll do some trickery
 	# to make the error never occur. bug 66162 (02 October 2004 ciaranm)
 	find "${S}" -name '*.c' | while read c; do
-	    echo >> "$c" || die "echo failed"
+		echo >> "$c" || die "echo failed"
 	done
 
 	# Try to avoid sandbox problems. Bug #114475.
