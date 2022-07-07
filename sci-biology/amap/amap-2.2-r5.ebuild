@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit java-pkg-opt-2 java-ant-2 toolchain-funcs
 
@@ -10,6 +10,7 @@ MY_P=${PN}.${PV}
 DESCRIPTION="Protein multiple-alignment-based sequence annealing"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="http://baboon.math.berkeley.edu/${PN}/download/${MY_P}.tar.gz"
+S="${WORKDIR}/${PN}-align"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -17,9 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="java"
 
 RDEPEND="java? ( >=virtual/jre-1.8:* )"
-DEPEND="java? ( >=virtual/jdk-1.8:* )"
-
-S=${WORKDIR}/${PN}-align
+BDEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-makefile.patch
@@ -31,8 +30,12 @@ src_prepare() {
 	java-pkg-opt-2_src_prepare
 }
 
+src_configure() {
+	tc-export CXX
+}
+
 src_compile() {
-	emake -C align CXX="$(tc-getCXX)" OPT_CXXFLAGS="${CXXFLAGS}"
+	emake -C align
 
 	if use java; then
 		pushd display >/dev/null || die
@@ -46,8 +49,8 @@ src_install() {
 
 	dodoc align/{README,PROBCONS.README}
 
-	insinto /usr/share/${PN}/examples
-	doins -r examples/.
+	insinto /usr/share/${PN}
+	doins -r examples
 
 	if use java; then
 		java-pkg_newjar display/AmapDisplay.jar amapdisplay.jar
