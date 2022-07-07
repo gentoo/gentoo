@@ -74,67 +74,28 @@ multilib_src_test() {
 		return 0
 	fi
 
-	local myctestargs=
-
 	pushd "${BUILD_DIR}" > /dev/null || die
 	[[ -e CTestTestfile.cmake ]] || die "Test suite not available! Check source!"
 
+	elog "Note: Upstream maintains a list of known test failures."
+	elog "We collect all the known failures and skip them."
+	elog
+
+	local toskip=( "${S}"/tools/travis-ci/knownfailures-all.txt )
+	if use amd64 ; then
+		toskip+=( "${S}"/tools/travis-ci/knownfailures-*x86_64*.txt )
+	elif use x86 || use arm || use arm64; then
+		toskip+=( "${S}"/tools/travis-ci/knownfailures-*i386*.txt )
+	fi
+
+	local exp=$(sort "${toskip[@]}" | uniq | tr '\n' '|'; assert)
+	popd > /dev/null || die
+
+	local myctestargs=()
 	if [[ -n ${TEST_VERBOSE} ]]; then
 		myctestargs+=( --extra-verbose --output-on-failure )
 	fi
+	myctestargs+=( -E "(${exp::-1})" )
 
-	echo ctest "${myctestargs[@]}"
-	if ctest "${myctestargs[@]}" ; then
-		popd > /dev/null || die
-		einfo "Tests succeeded."
-		return 0
-	fi
-
-	local FAILEDTEST_LOG="${BUILD_DIR}/Testing/Temporary/LastTestsFailed.log"
-
-	# Should never happen
-	[[ -f "${FAILEDTEST_LOG}" ]] || die "Cannot analyze test failures: LastTestsFailed.log is missing!"
-
-	elog
-	elog "Note: Upstream maintains a list of known test failures."
-	elog "We will now compare our test results against this list and remove any known failures."
-	elog
-
-	local KNOWN_FAILURES_LIST="${T}/known_failures_compiled.txt"
-	cp "${S}/tools/travis-ci/knownfailures-all.txt" "${KNOWN_FAILURES_LIST}" || die
-
-	local ARCH_SPECIFIC_FAILURES=
-	if use amd64 ; then
-		ARCH_SPECIFIC_FAILURES="$(find "${S}/tools/travis-ci/" -name 'knownfailures-*x86_64*.txt' -print0 | sort -z | tail -z -n 1 | tr -d '\0')"
-	elif use x86 || use arm || use arm64; then
-		ARCH_SPECIFIC_FAILURES="$(find "${S}/tools/travis-ci/" -name 'knownfailures-*i386*.txt' -print0 | sort -z | tail -z -n 1 | tr -d '\0')"
-	fi
-
-	if [[ -f "${ARCH_SPECIFIC_FAILURES}" ]]; then
-		elog "Adding architecture specific failures (${ARCH_SPECIFIC_FAILURES}) to known failures list ..."
-		elog
-		<"${ARCH_SPECIFIC_FAILURES}" >> "${KNOWN_FAILURES_LIST}" || die
-	fi
-
-	# Logic copied from $S/tools/travis-ci/run.sh
-	local FAILEDTEST=
-	local HAS_UNKNOWN_TEST_FAILURES=0
-
-	while read FAILEDTEST; do
-		# is this failure known?
-		if grep -xq "${FAILEDTEST}" "${KNOWN_FAILURES_LIST}" ; then
-			elog "Test '${FAILEDTEST}' is known to fail, ignoring ..."
-		else
-			eerror "New/unknown test failure found: '${FAILEDTEST}'"
-			HAS_UNKNOWN_TEST_FAILURES=1
-		fi
-	done < <(awk -F: '{ print $2 }' "${FAILEDTEST_LOG}")
-
-	[[ ${HAS_UNKNOWN_TEST_FAILURES} -eq 0 ]] || die "Test suite failed. New/unknown test failure(s) found!"
-
-	elog
-	elog "Test suite passed. No new/unknown test failure(s) found!"
-
-	popd > /dev/null || die
-	return 0
+	cmake_src_test
 }
