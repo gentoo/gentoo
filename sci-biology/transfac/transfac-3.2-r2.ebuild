@@ -1,11 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="A database of eucaryotic transcription factors"
 HOMEPAGE="http://www.gene-regulation.com/pub/databases.html"
 SRC_URI="ftp://ftp.ebi.ac.uk/pub/databases/${PN}/${PN}32.tar.Z"
+S="${WORKDIR}"
 
 LICENSE="public-domain"
 SLOT="3"
@@ -14,10 +15,8 @@ SLOT="3"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="emboss minimal"
 
-DEPEND="emboss? ( sci-biology/emboss )"
-RDEPEND="${DEPEND}"
-
-S=${WORKDIR}
+BDEPEND="emboss? ( sci-biology/emboss )"
+RDEPEND="${BDEPEND}"
 
 src_compile() {
 	if use emboss; then
@@ -32,7 +31,7 @@ src_install() {
 	newdoc readme.txt README
 
 	if ! use minimal; then
-		insinto /usr/share/${PN}-${SLOT}
+		insinto /usr/share/transfac-${SLOT}
 		doins *.dat
 	fi
 
