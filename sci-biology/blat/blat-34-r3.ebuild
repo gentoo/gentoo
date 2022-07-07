@@ -1,25 +1,22 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
-MY_PN=${PN}Src
+MY_PN="${PN}Src"
 
 DESCRIPTION="The BLAST-Like Alignment Tool, a fast genomic sequence aligner"
 HOMEPAGE="http://www.cse.ucsc.edu/~kent/"
 SRC_URI="http://www.soe.ucsc.edu/~kent/src/${MY_PN}${PV}.zip"
+S="${WORKDIR}/${MY_PN}"
 
 LICENSE="blat"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND=""
-DEPEND="app-arch/unzip"
-
-S=${WORKDIR}/${MY_PN}
+BDEPEND="app-arch/unzip"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-34-fix-build-system.patch
