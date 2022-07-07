@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="A generic bioinformatics relational database model"
 HOMEPAGE="http://www.biosql.org/"
@@ -22,7 +22,7 @@ RDEPEND="
 	dev-lang/perl"
 
 src_install() {
-	insinto /usr/share/${PN}
+	insinto /usr/share/biosql
 	doins -r sql scripts/.
 
 	dodoc Changes README Release.txt doc/*.pdf
@@ -38,6 +38,6 @@ src_install() {
 pkg_postinst() {
 	elog
 	elog "Please read the BioSQL schema installation instructions in"
-	elog "${EROOT%/}/usr/share/doc/${PF} to begin using the schema."
+	elog "${EROOT}/usr/share/doc/${PF} to begin using the schema."
 	elog
 }
