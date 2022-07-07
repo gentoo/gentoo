@@ -1,0 +1,19 @@
+--- a/t_coffee_source/makefile
++++ b/t_coffee_source/makefile
+@@ -1,14 +1,12 @@
+-CC=g++
+-CFLAGS=-O3 -Wno-write-strings
+ SOURCES := $(shell find . -type f -name *.c)
+ OBJECTS := $(SOURCES:.c=.o)
+ DEPS := $(OBJECTS:.o=.deps)
+  
+ t_coffee: $(OBJECTS)
+-	@echo " Linking..."; $(CC) $^ -o t_coffee -lm
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -o t_coffee -lm $(LIBS)
+  
+ %.o: %.c
+-	@echo " CC $<"; $(CC) $(CFLAGS) -I. -MD -MF $(@:.o=.deps) -c -o $@ $<
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -I. -MD -MF $(@:.o=.deps) -c -o $@ $<
+  
+ -include $(DEPS)
+  
