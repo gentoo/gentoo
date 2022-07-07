@@ -1,25 +1,23 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A rapid whole genome aligner"
 HOMEPAGE="http://mummer.sourceforge.net/"
 SRC_URI="mirror://sourceforge/mummer/MUMmer${PV}.tar.gz"
+S="${WORKDIR}/MUMmer${PV}"
 
 LICENSE="Artistic"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
-DEPEND=""
 RDEPEND="
 	app-shells/tcsh
 	dev-lang/perl"
-
-S=${WORKDIR}/MUMmer${PV}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.23-fix-build-system.patch
@@ -38,7 +36,7 @@ src_install() {
 	dobin scripts/{exact-tandems,mapview,mummerplot,dnadiff,nucmer,promer,run-mummer1,run-mummer3,nucmer2xfig}
 	newbin src/tigr/annotate mummer-annotate
 
-	insinto /usr/share/${PN}/lib
+	insinto /usr/share/mummer/lib
 	doins scripts/Foundation.pm
 
 	einstalldocs
