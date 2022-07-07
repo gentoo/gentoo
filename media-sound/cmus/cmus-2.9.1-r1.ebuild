@@ -46,7 +46,7 @@ DEPEND="
 	mp4? ( >=media-libs/libmp4v2-1.9:0 )
 	musepack? ( >=media-sound/musepack-tools-444 )
 	opus? ( media-libs/opusfile )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	systemd? ( sys-apps/systemd )
 	tremor? ( media-libs/tremor )
 	!tremor? ( vorbis? ( >=media-libs/libvorbis-1.0 ) )

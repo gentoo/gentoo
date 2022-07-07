@@ -53,7 +53,7 @@ RDEPEND="!games-engines/zoom
 	x11-libs/xcb-util-image
 	x11-libs/xcb-util-keysyms
 	opencl? ( virtual/opencl )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	wayland? ( dev-libs/wayland )
 	!bundled-libjpeg-turbo? ( >=media-libs/libjpeg-turbo-2.0.5 )
 	!bundled-qt? (

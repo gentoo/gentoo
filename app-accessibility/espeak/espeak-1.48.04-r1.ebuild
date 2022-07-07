@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-l
 IUSE="portaudio pulseaudio"
 
 COMMON_DEPEND="portaudio? ( >=media-libs/portaudio-19_pre20071207 )
-	pulseaudio? ( media-sound/pulseaudio )"
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )"
 
 DEPEND="${COMMON_DEPEND}
 	app-arch/unzip"

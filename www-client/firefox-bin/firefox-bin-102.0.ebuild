@@ -88,7 +88,7 @@ RDEPEND="${COMMON_DEPEND}
 		!pulseaudio? ( media-sound/apulse )
 	)
 	ffmpeg? ( media-video/ffmpeg )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	selinux? ( sec-policy/selinux-mozilla )
 "
 

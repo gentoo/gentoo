@@ -20,7 +20,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="pulseaudio X"
 
-DEPEND="pulseaudio? ( media-sound/pulseaudio )
+DEPEND="pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 		X? ( x11-libs/libX11 )"
 RDEPEND="${DEPEND}"
 PDEPEND="media-sound/sox"

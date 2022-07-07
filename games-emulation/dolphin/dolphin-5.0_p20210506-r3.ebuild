@@ -57,7 +57,7 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 	)
 	profile? ( dev-util/oprofile )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	systemd? ( sys-apps/systemd:0= )
 	upnp? ( net-libs/miniupnpc )
 "

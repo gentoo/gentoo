@@ -54,7 +54,7 @@ RDEPEND="
 	x11-libs/gtk+:2
 	x11-libs/pango
 	jack? ( virtual/jack )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	media-libs/lilv
 	media-libs/sratom
 	dev-libs/sord

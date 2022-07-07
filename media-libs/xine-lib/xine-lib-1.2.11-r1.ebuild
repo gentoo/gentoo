@@ -60,7 +60,7 @@ RDEPEND="${NLS_RDEPEND}
 		virtual/glu
 		virtual/opengl
 	)
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	samba? ( net-fs/samba )
 	sftp? ( net-libs/libssh2 )
 	sdl? ( media-libs/libsdl )

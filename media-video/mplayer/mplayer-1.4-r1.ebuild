@@ -106,7 +106,7 @@ RDEPEND+="
 	opengl? ( virtual/opengl )
 	png? ( media-libs/libpng:0= )
 	pnm? ( media-libs/netpbm )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	rar? (
 		|| (
 			app-arch/unrar

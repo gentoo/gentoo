@@ -21,7 +21,7 @@ RDEPEND="aac? ( media-libs/faac )
 	libsamplerate? ( media-libs/libsamplerate )
 	mp3? ( media-sound/lame )
 	opus? ( media-libs/opus )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	twolame? ( media-sound/twolame )
 	vorbis? ( media-libs/libvorbis )"
 DEPEND="${RDEPEND}"

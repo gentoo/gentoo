@@ -26,7 +26,7 @@ DEPEND="
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/plasma-${KFMIN}:5
 	media-libs/libcanberra
-	media-sound/pulseaudio
+	|| ( media-libs/libpulse media-sound/pulseaudio )
 "
 RDEPEND="${DEPEND}
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5

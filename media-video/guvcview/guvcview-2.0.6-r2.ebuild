@@ -31,7 +31,7 @@ RDEPEND="
 	virtual/libusb:1
 	virtual/udev
 	gsl? ( >=sci-libs/gsl-1.15:= )
-	pulseaudio? ( >=media-sound/pulseaudio-0.9.15 )
+	pulseaudio? ( || ( media-libs/libpulse >=media-sound/pulseaudio-0.9.15 ) )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5

@@ -80,7 +80,7 @@ CDEPEND="
 	osc? ( media-libs/liblo )
 	portaudio? ( media-libs/portaudio )
 	portmidi? ( media-libs/portmidi )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	python? ( ${PYTHON_DEPS} )
 	stk? ( media-libs/stk )
 	utils? ( !media-sound/snd )

@@ -35,7 +35,7 @@ RDEPEND="
 	cdio? ( dev-libs/libcdio:= )
 	ccdda? ( >=media-video/ffmpeg-3:= )
 	openal? ( media-libs/openal:= )
-	pulseaudio? ( media-sound/pulseaudio:= )
+	pulseaudio? ( || ( media-libs/libpulse:= media-sound/pulseaudio:= ) )
 	sdl? ( media-libs/libsdl2:=[sound] )"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"

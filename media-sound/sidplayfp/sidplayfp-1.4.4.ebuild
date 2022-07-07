@@ -16,7 +16,7 @@ BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	>=media-libs/libsidplayfp-1.8.0
 	alsa? ( media-libs/alsa-lib )
-	pulseaudio? ( media-sound/pulseaudio )"
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )"
 DEPEND="${RDEPEND}
 	oss? ( virtual/os-headers )"
 

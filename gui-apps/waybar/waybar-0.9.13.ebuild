@@ -46,7 +46,7 @@ DEPEND="
 	mpd? ( media-libs/libmpdclient )
 	network? ( dev-libs/libnl:3 )
 	popups? ( gui-libs/gtk-layer-shell )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	sndio? ( media-sound/sndio:= )
 	tray? (
 		dev-libs/libdbusmenu[gtk3]

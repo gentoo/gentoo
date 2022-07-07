@@ -17,7 +17,7 @@ IUSE="alsa coreaudio examples jack pulseaudio static-libs"
 
 DEPEND="alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
 	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
-	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )"
+	pulseaudio? ( || ( media-libs/libpulse[${MULTILIB_USEDEP}] media-sound/pulseaudio[${MULTILIB_USEDEP}] ) )"
 RDEPEND="${DEPEND}"
 
 multilib_src_configure() {

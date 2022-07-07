@@ -32,7 +32,7 @@ RDEPEND="
 	gstreamer? ( >=media-libs/gstreamer-1.6.0 )
 	jack? ( virtual/jack )
 	libuvc? ( media-libs/libuvc )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	qtaudio? ( dev-qt/qtmultimedia:5 )
 	v4l? ( media-libs/libv4l )
 "

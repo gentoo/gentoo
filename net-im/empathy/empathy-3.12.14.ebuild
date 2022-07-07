@@ -47,7 +47,7 @@ COMMON_DEPEND="
 	app-crypt/gcr[gtk]
 	dev-libs/libxml2:2
 	gnome-base/gsettings-desktop-schemas
-	media-sound/pulseaudio[glib]
+	|| ( media-libs/libpulse media-sound/pulseaudio[glib] )
 	net-libs/libsoup:2.4
 	x11-libs/libX11
 

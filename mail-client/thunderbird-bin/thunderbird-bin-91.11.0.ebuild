@@ -81,7 +81,7 @@ RDEPEND="${CDEPEND}
 	x11-libs/libXt
 	>=x11-libs/pango-1.22.0
 	ffmpeg? ( media-video/ffmpeg )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	selinux? ( sec-policy/selinux-mozilla )
 "
 

@@ -14,7 +14,7 @@ KEYWORDS="amd64 ~sparc x86"
 RDEPEND="
 	dev-cpp/gtkmm:2.4
 	dev-libs/libsigc++:2
-	>=media-sound/pulseaudio-0.9.7[glib]
+	|| ( media-libs/libpulse[glib] >=media-sound/pulseaudio-0.9.7[glib] )
 	x11-themes/tango-icon-theme"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"

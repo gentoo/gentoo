@@ -27,6 +27,7 @@ CDEPEND="dev-qt/qtcore:5
 	media-libs/libv4l
 	sci-libs/fftw:3.0=
 	|| (
+		media-libs/libpulse
 		media-sound/pulseaudio
 		media-sound/apulse[sdk]
 	)"

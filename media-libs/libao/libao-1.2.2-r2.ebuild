@@ -19,7 +19,7 @@ IUSE="alsa nas mmap pulseaudio sndio"
 RDEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
 	nas? ( >=media-libs/nas-1.9.4[${MULTILIB_USEDEP}] )
-	pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] )
+	pulseaudio? ( || ( media-libs/libpulse[${MULTILIB_USEDEP}] >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] ) )
 	sndio? ( media-sound/sndio:= )
 "
 DEPEND="${RDEPEND}"

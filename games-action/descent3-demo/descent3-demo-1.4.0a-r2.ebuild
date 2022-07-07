@@ -24,7 +24,7 @@ RDEPEND="
 	>=x11-libs/libX11-1.6.2[abi_x86_32(-)]
 	>=x11-libs/libXext-1.3.2[abi_x86_32(-)]
 	alsa? ( media-libs/alsa-oss[abi_x86_32(-)] )
-	pulseaudio? ( media-sound/pulseaudio[abi_x86_32(-)] )
+	pulseaudio? ( || ( media-libs/libpulse[abi_x86_32(-)] media-sound/pulseaudio[abi_x86_32(-)] ) )
 "
 BDEPEND="games-util/loki_patch"
 

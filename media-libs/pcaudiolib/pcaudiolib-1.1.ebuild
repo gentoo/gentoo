@@ -18,7 +18,7 @@ REQUIRED_USE="|| ( alsa oss pulseaudio )"
 
 RDEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.18 )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"

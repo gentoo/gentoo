@@ -56,7 +56,7 @@ RDEPEND="
 	)
 	jpeg? ( media-libs/libjpeg-turbo:0= )
 	openh264? ( media-libs/openh264:0= )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	server? (
 		X? (
 			x11-libs/libXcursor

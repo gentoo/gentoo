@@ -73,7 +73,7 @@ DEPEND="
 	)
 	pam? ( sys-libs/pam )
 	pax-kernel? ( sys-apps/elfix )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	qt5? ( dev-qt/linguist-tools:5 )
 	vboxwebsrv? ( net-libs/gsoap[-gnutls(-)] )
 "

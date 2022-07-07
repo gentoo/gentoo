@@ -71,7 +71,7 @@ DEPEND="
 		alsa? ( media-libs/alsa-lib )
 		pulseaudio? (
 			media-sound/pavucontrol-qt
-			media-sound/pulseaudio
+			|| ( media-libs/libpulse media-sound/pulseaudio )
 		)
 	)
 "

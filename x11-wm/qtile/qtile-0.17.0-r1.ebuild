@@ -33,7 +33,7 @@ RDEPEND="
 	dev-python/pygobject[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.1[${PYTHON_USEDEP}]
 	>=dev-python/xcffib-0.8.1[${PYTHON_USEDEP}]
-	media-sound/pulseaudio
+	|| ( media-libs/libpulse media-sound/pulseaudio )
 "
 
 python_install_all() {

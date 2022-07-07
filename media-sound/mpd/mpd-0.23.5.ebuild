@@ -80,7 +80,7 @@ RDEPEND="
 	openal? ( media-libs/openal )
 	openmpt? ( media-libs/libopenmpt )
 	opus? ( media-libs/opus )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	pipewire? ( media-video/pipewire:= )
 	qobuz? ( dev-libs/libgcrypt:0 )
 	samba? ( net-fs/samba )

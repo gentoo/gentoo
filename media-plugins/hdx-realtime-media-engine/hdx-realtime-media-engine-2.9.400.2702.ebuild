@@ -22,7 +22,7 @@ RDEPEND="
 	>=net-misc/icaclient-20.12.0.12-r1
 	|| (
 		media-video/pipewire
-		media-sound/pulseaudio
+		|| ( media-libs/libpulse media-sound/pulseaudio )
 		media-sound/apulse
 	)
 "

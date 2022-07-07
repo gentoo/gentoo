@@ -37,7 +37,7 @@ DEPEND="
 	plasma? ( >=kde-frameworks/plasma-${KFMIN}:5 )
 	pulseaudio? (
 		media-libs/libcanberra
-		>=media-sound/pulseaudio-0.9.12
+		|| ( media-libs/libpulse >=media-sound/pulseaudio-0.9.12 )
 	)
 "
 RDEPEND="${DEPEND}

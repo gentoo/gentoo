@@ -162,7 +162,7 @@ RDEPEND="
 		media-fonts/dejavu
 		>=media-libs/libprojectm-3.1.12:0=
 	)
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5

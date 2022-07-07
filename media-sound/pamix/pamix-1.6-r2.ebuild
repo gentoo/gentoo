@@ -22,7 +22,7 @@ SLOT="0"
 IUSE="+unicode"
 
 RDEPEND="
-	media-sound/pulseaudio
+	|| ( media-libs/libpulse media-sound/pulseaudio )
 	sys-libs/ncurses:=[unicode(+)?]
 "
 DEPEND="${RDEPEND}"

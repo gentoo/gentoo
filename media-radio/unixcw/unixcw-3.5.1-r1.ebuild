@@ -20,7 +20,7 @@ RDEPEND="ncurses? ( sys-libs/ncurses:= )
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5 )
 	alsa? ( media-libs/alsa-lib )
-	pulseaudio? ( media-sound/pulseaudio )"
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/libtool"

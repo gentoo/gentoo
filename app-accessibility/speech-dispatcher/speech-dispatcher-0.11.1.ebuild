@@ -28,7 +28,7 @@ DEPEND="python? ( ${PYTHON_DEPS} )
 	espeak-ng? ( app-accessibility/espeak-ng )
 	flite? ( app-accessibility/flite )
 	nas? ( media-libs/nas )
-	pulseaudio? ( media-sound/pulseaudio )"
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )"
 RDEPEND="${DEPEND}
 	python? ( dev-python/pyxdg[${PYTHON_USEDEP}] )"
 BDEPEND="

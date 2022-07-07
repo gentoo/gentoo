@@ -18,7 +18,7 @@ IUSE="alsa pulseaudio"
 RDEPEND="
 	media-libs/libsdl2[joystick,video]
 	alsa? ( media-libs/alsa-lib )
-	pulseaudio? ( media-sound/pulseaudio )"
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 

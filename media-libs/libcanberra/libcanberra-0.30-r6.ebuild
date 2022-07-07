@@ -28,7 +28,7 @@ DEPEND="
 		>=dev-libs/glib-2.32:2[${MULTILIB_USEDEP}]
 		x11-libs/gtk+:3[X,${MULTILIB_USEDEP}]
 		x11-libs/libX11[${MULTILIB_USEDEP}] )
-	pulseaudio? ( >=media-sound/pulseaudio-0.9.11[${MULTILIB_USEDEP}] )
+	pulseaudio? ( || ( media-libs/libpulse[${MULTILIB_USEDEP}] >=media-sound/pulseaudio-0.9.11[${MULTILIB_USEDEP}] ) )
 	tdb? ( sys-libs/tdb:=[${MULTILIB_USEDEP}] )
 "
 RDEPEND="${DEPEND}

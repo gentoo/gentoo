@@ -25,7 +25,7 @@ RDEPEND="
 	ao? ( media-libs/libao )
 	openal? ( media-libs/openal )
 	opengl? ( virtual/opengl )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	sdl? ( media-libs/libsdl2[joystick] )
 	udev? ( virtual/libudev:= )
 	xv? ( x11-libs/libXv )

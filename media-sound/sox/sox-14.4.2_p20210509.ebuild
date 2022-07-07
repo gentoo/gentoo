@@ -50,7 +50,7 @@ RDEPEND="
 		media-libs/libpng:0=
 		sys-libs/zlib
 	)
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	sndfile? ( >=media-libs/libsndfile-1.0.11 )
 	sndio? ( media-sound/sndio:= )
 	twolame? ( media-sound/twolame )

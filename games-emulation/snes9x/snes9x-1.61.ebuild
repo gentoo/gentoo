@@ -45,7 +45,7 @@ RDEPEND="
 		x11-misc/xdg-utils
 		opengl? ( media-libs/libepoxy )
 		portaudio? ( media-libs/portaudio )
-		pulseaudio? ( media-sound/pulseaudio )
+		pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 		wayland? ( dev-libs/wayland )
 	)
 	libretro? ( !games-emulation/libretro-snes9x )

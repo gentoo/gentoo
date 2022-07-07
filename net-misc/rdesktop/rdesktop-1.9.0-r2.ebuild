@@ -38,7 +38,7 @@ RDEPEND="
 	oss? ( media-libs/libsamplerate )
 	pulseaudio? (
 		media-libs/libsamplerate
-		media-sound/pulseaudio
+		|| ( media-libs/libpulse media-sound/pulseaudio )
 	)
 	xrandr? ( x11-libs/libXrandr )"
 DEPEND="${RDEPEND}

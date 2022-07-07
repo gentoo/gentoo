@@ -21,7 +21,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	virtual/opengl
 	x11-libs/gtk+:2
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	sdl? ( media-libs/libsdl[sound] )"
 DEPEND="${RDEPEND}
 	!!gnustep-base/gnustep-gui" #377635

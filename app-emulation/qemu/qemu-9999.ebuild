@@ -183,7 +183,7 @@ SOFTMMU_TOOLS_DEPEND="
 	)
 	pam? ( sys-libs/pam )
 	png? ( media-libs/libpng:0=[static-libs(+)] )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	rbd? ( sys-cluster/ceph )
 	sasl? ( dev-libs/cyrus-sasl[static-libs(+)] )
 	sdl? (

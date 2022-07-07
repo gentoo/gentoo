@@ -80,7 +80,7 @@ RDEPEND="
 	designer? ( =dev-qt/designer-${QT5_PV}* )
 	geolocation? ( =dev-qt/qtpositioning-${QT5_PV}* )
 	kerberos? ( virtual/krb5 )
-	pulseaudio? ( media-sound/pulseaudio:= )
+	pulseaudio? ( || ( media-libs/libpulse:= media-sound/pulseaudio:= ) )
 	screencast? ( media-video/pipewire:= )
 	system-ffmpeg? ( media-video/ffmpeg:0= )
 	system-icu? ( >=dev-libs/icu-69.1:= )

@@ -50,7 +50,7 @@ RDEPEND="
 		media-libs/libogg
 		media-libs/opus
 	)
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	vorbis? (
 		media-libs/libogg
 		media-libs/libvorbis

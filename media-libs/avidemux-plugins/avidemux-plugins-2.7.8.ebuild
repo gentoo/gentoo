@@ -51,7 +51,7 @@ COMMON_DEPEND="
 	)
 	lame? ( media-sound/lame )
 	opus? ( media-libs/opus )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5

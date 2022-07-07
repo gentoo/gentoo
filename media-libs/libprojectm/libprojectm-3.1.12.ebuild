@@ -40,7 +40,7 @@ RDEPEND="gles2? ( media-libs/mesa[gles2] )
 		dev-qt/qtopengl:5
 	)
 	pulseaudio? (
-		media-sound/pulseaudio
+		|| ( media-libs/libpulse media-sound/pulseaudio )
 	)
 	sdl? ( >=media-libs/libsdl2-2.0.5 )
 	sys-libs/zlib"

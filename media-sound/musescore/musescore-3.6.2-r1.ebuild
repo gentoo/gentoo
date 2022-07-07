@@ -55,7 +55,7 @@ DEPEND="
 	omr? ( app-text/poppler )
 	portaudio? ( media-libs/portaudio )
 	portmidi? ( media-libs/portmidi )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	sf3? ( media-libs/libvorbis )
 	webengine? ( dev-qt/qtwebengine:5[widgets] )
 "

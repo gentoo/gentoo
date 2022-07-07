@@ -23,7 +23,7 @@ RDEPEND="sys-libs/ncurses:=[unicode(+)?]
 	modplug? ( media-libs/libmodplug )
 	mp3? ( media-libs/libmad
 		media-libs/libid3tag:= )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	sndfile? ( media-libs/libsndfile )
 	vorbis? ( media-libs/libvorbis )
 	xspf? ( >=media-libs/libxspf-1.2 )"

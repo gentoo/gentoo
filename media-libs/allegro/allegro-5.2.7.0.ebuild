@@ -41,7 +41,7 @@ RDEPEND="
 	opus? ( media-libs/opus[${MULTILIB_USEDEP}] )
 	physfs? ( >=dev-games/physfs-2.0.3-r1[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.5.18:0=[${MULTILIB_USEDEP}] )
-	pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] )
+	pulseaudio? ( || ( media-libs/libpulse[${MULTILIB_USEDEP}] >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] ) )
 	truetype? ( >=media-libs/freetype-2.5.0.1[${MULTILIB_USEDEP}] )
 	vorbis? ( >=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}] )
 	webp? ( media-libs/libwebp:0=[${MULTILIB_USEDEP}] )

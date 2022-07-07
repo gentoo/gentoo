@@ -27,7 +27,7 @@ RDEPEND="
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
 	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
 	portaudio? ( media-libs/portaudio[${MULTILIB_USEDEP}] )
-	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )
+	pulseaudio? ( || ( media-libs/libpulse[${MULTILIB_USEDEP}] media-sound/pulseaudio[${MULTILIB_USEDEP}] ) )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5

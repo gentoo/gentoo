@@ -55,7 +55,7 @@ DEPEND="
 	dev-libs/libxml2:2
 	x11-libs/libX11
 
-	>=media-sound/pulseaudio-2[glib]
+	|| ( media-libs/libpulse[glib] >=media-sound/pulseaudio-2[glib] )
 	>=dev-libs/atk-2[introspection]
 	dev-libs/libical:=
 	>=x11-libs/libXfixes-5.0

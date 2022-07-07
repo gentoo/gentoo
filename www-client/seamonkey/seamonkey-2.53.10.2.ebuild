@@ -104,6 +104,7 @@ COMMON_DEPEND="
 	crypt? ( <x11-plugins/enigmail-2.1.0 )
 	kernel_linux? ( !pulseaudio? ( media-libs/alsa-lib ) )
 	pulseaudio? ( || (
+		media-libs/libpulse
 		media-sound/pulseaudio
 		>=media-sound/apulse-0.1.9
 	) )

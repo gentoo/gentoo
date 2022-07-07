@@ -18,7 +18,7 @@ REQUIRED_USE="|| ( alsa coreaudio nas openal oss pulseaudio )"
 RDEPEND="alsa? ( >=media-libs/alsa-lib-1.0.27.2:=[${MULTILIB_USEDEP}] )
 	nas? ( >=media-libs/nas-1.9.4:=[${MULTILIB_USEDEP}] )
 	openal? ( >=media-libs/openal-1.15.1-r1[${MULTILIB_USEDEP}] )
-	pulseaudio? ( >=media-sound/pulseaudio-5.0[${MULTILIB_USEDEP}] )
+	pulseaudio? ( || ( media-libs/libpulse[${MULTILIB_USEDEP}] >=media-sound/pulseaudio-5.0[${MULTILIB_USEDEP}] ) )
 	!${CATEGORY}/${PN}:2"
 DEPEND="${RDEPEND}
 	sys-apps/texinfo

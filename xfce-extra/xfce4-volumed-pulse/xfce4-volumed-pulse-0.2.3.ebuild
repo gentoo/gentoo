@@ -14,7 +14,7 @@ IUSE="libnotify"
 
 RDEPEND=">=dev-libs/glib-2.16:2=
 	dev-libs/keybinder:3=
-	>=media-sound/pulseaudio-0.9.19:=[glib]
+	|| ( media-libs/libpulse:=[glib] >=media-sound/pulseaudio-0.9.19:=[glib] )
 	>=x11-libs/gtk+-3.20:3=
 	>=xfce-base/xfconf-4.8:=
 	libnotify? ( x11-libs/libnotify:= )"

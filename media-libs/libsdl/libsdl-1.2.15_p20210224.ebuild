@@ -33,7 +33,7 @@ RDEPEND="
 		>=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}]
 	)
 	tslib? ( >=x11-libs/tslib-1.0-r3[${MULTILIB_USEDEP}] )
-	pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] )
+	pulseaudio? ( || ( media-libs/libpulse[${MULTILIB_USEDEP}] >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] ) )
 	sound? ( >=media-libs/audiofile-0.3.5[${MULTILIB_USEDEP}] )
 	X? (
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]

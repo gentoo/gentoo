@@ -34,7 +34,7 @@ DEPEND="
 	media-libs/libcanberra[gtk3]
 	>=app-misc/geoclue-2.3.1:2.0
 	>=x11-libs/libnotify-0.7.3
-	>=media-sound/pulseaudio-12.99.3[glib]
+	|| ( media-libs/libpulse[glib] >=media-sound/pulseaudio-12.99.3[glib] )
 	>=sys-auth/polkit-0.114
 	>=sys-power/upower-0.99.12:=
 	x11-libs/libX11

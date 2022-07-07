@@ -44,7 +44,7 @@ COMMON_DEPEND="
 	)
 	pulseaudio? (
 		media-libs/libsndfile
-		media-sound/pulseaudio
+		|| ( media-libs/libpulse media-sound/pulseaudio )
 	)
 	purple? ( net-im/pidgin )
 	speech? ( app-accessibility/speech-dispatcher )

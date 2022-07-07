@@ -34,7 +34,7 @@ RDEPEND="
 	motif? ( >=x11-libs/motif-2.3:0 )
 	opengl? ( virtual/opengl )
 	portaudio? ( media-libs/portaudio )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	readline? ( sys-libs/readline:= )
 	ruby? ( dev-lang/ruby:* )"
 DEPEND="${RDEPEND}"

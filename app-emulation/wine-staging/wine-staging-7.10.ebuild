@@ -100,7 +100,7 @@ COMMON_DEPEND="
 	)
 	osmesa? ( >=media-libs/mesa-13[osmesa,${MULTILIB_USEDEP}] )
 	pcap? ( net-libs/libpcap[${MULTILIB_USEDEP}] )
-	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )
+	pulseaudio? ( || ( media-libs/libpulse[${MULTILIB_USEDEP}] media-sound/pulseaudio[${MULTILIB_USEDEP}] ) )
 	scanner? ( media-gfx/sane-backends:=[${MULTILIB_USEDEP}] )
 	sdl? ( media-libs/libsdl2:=[haptic,joystick,${MULTILIB_USEDEP}] )
 	ssl? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )

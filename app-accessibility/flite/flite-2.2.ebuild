@@ -47,7 +47,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
 IUSE="alsa oss pulseaudio voices"
 
 DEPEND="
-	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )
+	pulseaudio? ( || ( media-libs/libpulse[${MULTILIB_USEDEP}] media-sound/pulseaudio[${MULTILIB_USEDEP}] ) )
 	!pulseaudio? ( alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] ) )
 "
 RDEPEND="${DEPEND}"

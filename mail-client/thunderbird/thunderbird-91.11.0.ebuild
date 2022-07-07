@@ -168,6 +168,7 @@ RDEPEND="${COMMON_DEPEND}
 	openh264? ( media-libs/openh264:*[plugin] )
 	pulseaudio? (
 		|| (
+			media-libs/libpulse
 			media-sound/pulseaudio
 			>=media-sound/apulse-0.1.12-r4
 		)

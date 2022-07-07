@@ -38,7 +38,7 @@ RDEPEND="
 	x11-libs/libxkbfile
 	x11-misc/xkeyboard-config
 	x11-libs/libXfixes
-	media-sound/pulseaudio[glib]
+	|| ( media-libs/libpulse[glib] media-sound/pulseaudio[glib] )
 	sys-libs/pam
 "
 DEPEND="${RDEPEND}

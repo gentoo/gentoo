@@ -19,7 +19,7 @@ RDEPEND="
 	>=dev-libs/glib-2.37.3:2[dbus]
 	>=dev-libs/gobject-introspection-0.10.2:=
 	>=gnome-base/gsettings-desktop-schemas-3.5.91
-	media-sound/pulseaudio[glib]
+	|| ( media-libs/libpulse[glib] media-sound/pulseaudio[glib] )
 	sys-apps/accountsservice
 	x11-libs/cairo:=[X]
 	>=x11-libs/gdk-pixbuf-2.22:2[introspection]

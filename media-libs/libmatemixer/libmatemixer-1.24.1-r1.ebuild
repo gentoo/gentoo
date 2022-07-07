@@ -19,7 +19,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.50:2
 	>=sys-devel/gettext-0.19.8:*
 	alsa? ( >=media-libs/alsa-lib-1.0.5 )
-	pulseaudio? ( >=media-sound/pulseaudio-5.0.0:0[glib] )
+	pulseaudio? ( || ( media-libs/libpulse[glib] >=media-sound/pulseaudio-5.0.0:0[glib] ) )
 "
 
 RDEPEND="${COMMON_DEPEND}

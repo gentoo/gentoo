@@ -27,7 +27,7 @@ RDEPEND="
 	espeak? ( app-accessibility/espeak )
 	g15? ( app-misc/g15daemon )
 	gsm? ( media-sound/gsm )
-	pulseaudio? ( >=media-sound/pulseaudio-0.9.14 )
+	pulseaudio? ( || ( media-libs/libpulse >=media-sound/pulseaudio-0.9.14 ) )
 	speex? ( >=media-libs/speex-1.2_rc1 )
 	xosd? ( x11-libs/xosd )"
 DEPEND="${RDEPEND}"

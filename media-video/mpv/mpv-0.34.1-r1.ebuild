@@ -86,7 +86,7 @@ COMMON_DEPEND="
 	libcaca? ( >=media-libs/libcaca-0.99_beta18 )
 	lua? ( ${LUA_DEPS} )
 	openal? ( >=media-libs/openal-1.13 )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	raspberry-pi? ( >=media-libs/raspberrypi-userland-0_pre20160305-r1 )
 	rubberband? ( >=media-libs/rubberband-1.8.0 )
 	sdl? ( media-libs/libsdl2[sound,threads,video] )

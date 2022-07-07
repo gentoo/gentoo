@@ -49,7 +49,7 @@ RDEPEND="
 	opus? ( media-libs/opusfile )
 	osc? ( media-libs/liblo )
 	portaudio? ( media-libs/portaudio )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 "
 DEPEND="${RDEPEND}"
 

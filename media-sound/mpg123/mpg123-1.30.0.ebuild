@@ -24,7 +24,7 @@ RDEPEND="
 	jack? ( virtual/jack )
 	nas? ( media-libs/nas )
 	portaudio? ( media-libs/portaudio )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	sdl? ( media-libs/libsdl2 )"
 DEPEND="${RDEPEND}"
 BDEPEND="

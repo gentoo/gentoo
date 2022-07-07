@@ -25,7 +25,7 @@ DEPEND="
 	dev-libs/gobject-introspection
 	gui-libs/gtk-layer-shell
 	>=gui-wm/wayfire-${PV%.*}
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 "
 RDEPEND="${DEPEND}
 	gui-apps/wayland-logout

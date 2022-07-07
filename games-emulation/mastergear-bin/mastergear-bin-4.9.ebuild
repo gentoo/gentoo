@@ -15,6 +15,7 @@ RESTRICT="bindist mirror"
 
 RDEPEND="
 	|| (
+		media-libs/libpulse
 		media-sound/pulseaudio
 		media-sound/apulse[sdk]
 	)

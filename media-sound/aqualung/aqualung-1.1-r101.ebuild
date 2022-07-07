@@ -44,7 +44,7 @@ RDEPEND="
 	modplug? ( media-libs/libmodplug )
 	mp3? ( media-libs/libmad )
 	musepack? ( >=media-sound/musepack-tools-444 )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	sndfile? ( media-libs/libsndfile )
 	speex? ( media-libs/speex media-libs/liboggz media-libs/libogg )
 	vorbis? ( media-libs/libvorbis media-libs/libogg )

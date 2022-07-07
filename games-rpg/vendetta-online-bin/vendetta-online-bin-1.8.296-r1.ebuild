@@ -26,7 +26,7 @@ RESTRICT="mirror strip"
 
 RDEPEND="
 	media-libs/alsa-lib
-	media-sound/pulseaudio
+	|| ( media-libs/libpulse media-sound/pulseaudio )
 	virtual/glu
 	virtual/opengl
 	x11-libs/gtk+:2

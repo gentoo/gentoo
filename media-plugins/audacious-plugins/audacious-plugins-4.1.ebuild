@@ -84,7 +84,7 @@ DEPEND="
 	modplug? ( media-libs/libmodplug )
 	mp3? ( >=media-sound/mpg123-1.12.1 )
 	opengl? ( dev-qt/qtopengl:5 )
-	pulseaudio? ( >=media-sound/pulseaudio-0.9.3 )
+	pulseaudio? ( || ( media-libs/libpulse >=media-sound/pulseaudio-0.9.3 ) )
 	scrobbler? ( net-misc/curl )
 	sdl? ( media-libs/libsdl2[sound] )
 	sid? ( >=media-libs/libsidplayfp-1.0.0 )

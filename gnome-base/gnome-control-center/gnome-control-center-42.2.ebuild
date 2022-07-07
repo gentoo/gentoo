@@ -29,7 +29,7 @@ BDEPEND="${PYTHON_DEPS}"
 # First block is toplevel meson.build deps in order of occurrence (plus deeper deps if in same conditional). Second block is dependency() from subdir meson.builds, sorted by directory name occurrence order
 DEPEND="
 	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.25.3:= )
-	>=media-sound/pulseaudio-2.0[glib]
+	|| ( media-libs/libpulse[glib] >=media-sound/pulseaudio-2.0[glib] )
 	>=gui-libs/libadwaita-1.1:1=
 	>=sys-apps/accountsservice-0.6.39
 	>=x11-misc/colord-0.1.34:0=

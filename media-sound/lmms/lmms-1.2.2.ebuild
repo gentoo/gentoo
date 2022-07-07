@@ -43,7 +43,7 @@ COMMON_DEPEND="
 		media-libs/libvorbis
 	)
 	portaudio? ( >=media-libs/portaudio-19_pre )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	sdl? (
 		media-libs/libsdl
 		>=media-libs/sdl-sound-1.0.1

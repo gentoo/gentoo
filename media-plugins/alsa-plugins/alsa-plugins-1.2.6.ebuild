@@ -18,7 +18,7 @@ RDEPEND="
 	ffmpeg? ( media-video/ffmpeg:0=[${MULTILIB_USEDEP}] )
 	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
 	libsamplerate? ( >=media-libs/libsamplerate-0.1.8-r1:=[${MULTILIB_USEDEP}] )
-	pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] )
+	pulseaudio? ( || ( media-libs/libpulse[${MULTILIB_USEDEP}] >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] ) )
 	speex? (
 		>=media-libs/speex-1.2.0:=[${MULTILIB_USEDEP}]
 		media-libs/speexdsp[${MULTILIB_USEDEP}]

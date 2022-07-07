@@ -22,7 +22,7 @@ RDEPEND="
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
 	portaudio? ( media-libs/portaudio )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	sndfile? ( media-libs/libsndfile )"
 DEPEND="${RDEPEND}
 	sys-devel/flex"

@@ -15,7 +15,7 @@ KEYWORDS="amd64 x86"
 IUSE="pulseaudio"
 
 DEPEND="sys-libs/ncurses:=
-	pulseaudio? ( media-sound/pulseaudio )"
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )"
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 

@@ -74,7 +74,7 @@ RDEPEND="
 		dev-qt/qtopengl:5
 		media-libs/libprojectm:=
 	)
-	pulseaudio? ( >=media-sound/pulseaudio-0.9.9 )
+	pulseaudio? ( || ( media-libs/libpulse >=media-sound/pulseaudio-0.9.9 ) )
 	qtmedia? ( dev-qt/qtmultimedia:5 )
 	scrobbler? ( net-misc/curl )
 	shout? ( media-libs/libshout )

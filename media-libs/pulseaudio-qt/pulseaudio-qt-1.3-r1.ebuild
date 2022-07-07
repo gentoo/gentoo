@@ -23,7 +23,7 @@ SLOT="0/3"
 RDEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
-	media-sound/pulseaudio
+	|| ( media-libs/libpulse media-sound/pulseaudio )
 "
 DEPEND="${RDEPEND}
 	test? (

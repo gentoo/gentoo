@@ -47,7 +47,7 @@ RDEPEND="
 	opengl? ( virtual/opengl )
 	pipewire? ( media-video/pipewire )
 	portaudio? ( media-libs/portaudio )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	sid? ( media-libs/libsidplayfp )
 	shaders? ( >=media-libs/shaderc-2020.1 )
 	taglib? ( media-libs/taglib	)

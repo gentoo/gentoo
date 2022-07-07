@@ -28,7 +28,7 @@ RDEPEND="x11-libs/fox:1.7
 		ogg? ( media-libs/libogg )
 		opus? ( media-libs/opus )
 		aac? ( media-libs/faad2 )
-		pulseaudio? ( media-sound/pulseaudio )
+		pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 		opengl? ( media-libs/libepoxy virtual/glu )"
 DEPEND="dev-util/cmake ${RDEPEND}"
 

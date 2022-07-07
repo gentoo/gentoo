@@ -19,7 +19,7 @@ IUSE="+doc"
 
 COMMON_DEP="
 	virtual/jdk:1.8
-	>=media-sound/pulseaudio-0.9.11"
+	|| ( media-sound/libpulse >=media-sound/pulseaudio-0.9.11 )"
 RDEPEND="${COMMON_DEP}"
 DEPEND="${COMMON_DEP}"
 BDEPEND="app-arch/zip"

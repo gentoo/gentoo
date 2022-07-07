@@ -24,7 +24,7 @@ RDEPEND="
 	media-libs/fontconfig
 	>=media-libs/lcms-2.2:2
 	media-libs/libcanberra:0=[gtk3,pulseaudio]
-	>=media-sound/pulseaudio-0.9.16[glib]
+	|| ( media-libs/libpulse[glib] >=media-sound/pulseaudio-0.9.16[glib] )
 	>=sys-apps/dbus-1.1.2
 	dev-libs/dbus-glib
 	>=sys-auth/polkit-0.97

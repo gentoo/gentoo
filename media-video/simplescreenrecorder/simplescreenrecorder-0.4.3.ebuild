@@ -39,7 +39,7 @@ RDEPEND="
 	virtual/glu[${MULTILIB_USEDEP}]
 	v4l? ( media-libs/libv4l )
 	jack? ( virtual/jack )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"

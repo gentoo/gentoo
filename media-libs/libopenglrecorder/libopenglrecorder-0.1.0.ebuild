@@ -23,7 +23,7 @@ DEPEND="
 	openh264? ( media-libs/openh264[${MULTILIB_USEDEP}] )
 	sound? (
 		media-libs/libvorbis[${MULTILIB_USEDEP}]
-		media-sound/pulseaudio[${MULTILIB_USEDEP}]
+		|| ( media-libs/libpulse[${MULTILIB_USEDEP}] media-sound/pulseaudio[${MULTILIB_USEDEP}] )
 	)
 	vpx? ( media-libs/libvpx:0=[${MULTILIB_USEDEP}] )"
 

@@ -20,7 +20,7 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 		media-libs/alsa-lib
 		virtual/jack
 	)
-	pulseaudio? ( media-sound/pulseaudio )"
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	doc? ( app-doc/doxygen )

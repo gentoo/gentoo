@@ -22,7 +22,7 @@ RDEPEND="
 	alsa? ( media-libs/alsa-lib )
 	fftw? ( sci-libs/fftw:3.0= )
 	jack? ( virtual/jack )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

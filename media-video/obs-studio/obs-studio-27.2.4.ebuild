@@ -97,7 +97,7 @@ DEPEND="
 	jack? ( virtual/jack )
 	lua? ( ${LUA_DEPS} )
 	pipewire? ( media-video/pipewire:= )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	python? ( ${PYTHON_DEPS} )
 	speex? ( media-libs/speexdsp )
 	ssl? ( net-libs/mbedtls:= )

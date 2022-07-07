@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="nls sndfile"
 
-RDEPEND="media-sound/pulseaudio
+RDEPEND="|| ( media-libs/libpulse media-sound/pulseaudio )
 	x11-libs/gtk+:2
 	sndfile? ( media-libs/libsndfile )"
 DEPEND="${RDEPEND}"

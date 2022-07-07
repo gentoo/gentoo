@@ -40,7 +40,7 @@ COMMON_DEPEND=">=dev-libs/dbus-glib-0.74
 	)
 	pulseaudio? (
 		>=media-libs/libmatemixer-1.10[pulseaudio]
-		>=media-sound/pulseaudio-0.9.15
+		|| ( media-libs/libpulse >=media-sound/pulseaudio-0.9.15 )
 	)
 	smartcard? ( >=dev-libs/nss-3.11.2 )
 	sound? (

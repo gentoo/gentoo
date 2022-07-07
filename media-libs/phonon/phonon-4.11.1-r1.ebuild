@@ -27,7 +27,7 @@ DEPEND="
 	designer? ( dev-qt/designer:5 )
 	pulseaudio? (
 		dev-libs/glib:2
-		media-sound/pulseaudio[glib]
+		|| ( media-libs/libpulse[glib] media-sound/pulseaudio[glib] )
 	)
 "
 RDEPEND="${DEPEND}"

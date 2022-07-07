@@ -23,7 +23,7 @@ RDEPEND="
 	dev-libs/nss
 	media-libs/alsa-lib
 	media-libs/fontconfig:1.0
-	media-sound/pulseaudio
+	|| ( media-libs/libpulse media-sound/pulseaudio )
 	net-print/cups
 	sys-power/upower
 	sys-apps/dbus

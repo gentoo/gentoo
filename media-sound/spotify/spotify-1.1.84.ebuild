@@ -32,7 +32,7 @@ RDEPEND="
 	media-libs/mesa[X(+)]
 	net-misc/curl[ssl]
 	net-print/cups[ssl]
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	!pulseaudio? ( media-sound/apulse )
 	local-playback? ( media-video/ffmpeg:0/56.58.58 )
 	x11-libs/gtk+:3

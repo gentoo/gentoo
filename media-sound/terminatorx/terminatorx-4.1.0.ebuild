@@ -24,7 +24,7 @@ RDEPEND="
 	alsa? ( media-libs/alsa-lib )
 	jack? ( virtual/jack )
 	mad? ( media-sound/madplay )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	vorbis? ( media-libs/libvorbis )
 	sox? ( media-sound/sox
 		media-sound/mpg123 )

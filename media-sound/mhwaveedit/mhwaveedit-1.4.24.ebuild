@@ -21,7 +21,7 @@ RDEPEND="
 	jack? ( virtual/jack )
 	ladspa? ( media-libs/ladspa-sdk )
 	libsamplerate? ( media-libs/libsamplerate:= )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	sdl? ( media-libs/libsdl:= )
 	sndfile? ( media-libs/libsndfile:= )
 	sox? ( media-sound/sox:= )"

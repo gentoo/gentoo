@@ -48,7 +48,7 @@ DEPEND="
 		dev-libs/libdispatch
 	)
 	opus? ( media-libs/opusfile	)
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	vorbis? ( media-libs/libvorbis )
 	wavpack? ( media-sound/wavpack )
 	lastfm? ( dev-libs/libdispatch )

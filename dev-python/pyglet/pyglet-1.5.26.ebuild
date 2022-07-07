@@ -36,6 +36,7 @@ RDEPEND="
 	) )
 	sound? ( || (
 		media-libs/openal
+		media-libs/libpulse
 		media-sound/pulseaudio
 	) )
 "

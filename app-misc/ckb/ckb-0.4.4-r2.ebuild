@@ -23,7 +23,7 @@ RDEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
-	media-sound/pulseaudio
+	|| ( media-libs/libpulse media-sound/pulseaudio )
 	virtual/libudev:=
 	x11-libs/libX11
 	x11-libs/libxcb:=

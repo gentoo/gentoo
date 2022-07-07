@@ -51,6 +51,7 @@ COMMON_DEPEND="
 		player? ( media-sound/alsa-utils )
 		pulseaudio? ( || (
 			media-sound/apulse[sdk]
+			media-libs/libpulse
 			media-sound/pulseaudio
 		) )
 		audiofile? ( media-libs/audiofile:= )

@@ -17,7 +17,7 @@ RDEPEND="
 	>=dev-cpp/gtkmm-3.22:3.0[X]
 	>=dev-libs/libsigc++-2.2:2
 	>=media-libs/libcanberra-0.16[gtk3]
-	>=media-sound/pulseaudio-15.0[glib]
+	|| ( >=media-libs/libpulse-15.0[glib] >=media-sound/pulseaudio-15.0[glib] )
 	virtual/freedesktop-icon-theme
 "
 DEPEND="${RDEPEND}"

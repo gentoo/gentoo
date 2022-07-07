@@ -26,7 +26,7 @@ DEPEND="
 	media-video/ffmpeg:=
 	gui? ( dev-qt/qtsql:5 )
 	portaudio? ( media-libs/portaudio )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 "
 RDEPEND="${DEPEND}"
 

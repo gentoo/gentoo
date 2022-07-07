@@ -90,7 +90,7 @@ RDEPEND="
 	lirc? ( app-misc/lirc )
 	nvdec? ( x11-drivers/nvidia-drivers )
 	opengl? ( dev-qt/qtopengl:5 )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	systemd? ( sys-apps/systemd:= )
 	vaapi? ( x11-libs/libva:=[opengl] )
 	vdpau? ( x11-libs/libvdpau )

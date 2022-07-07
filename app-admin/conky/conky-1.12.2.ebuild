@@ -33,7 +33,7 @@ COMMON_DEPEND="
 	mysql? ( dev-db/mysql-connector-c )
 	ncurses? ( sys-libs/ncurses:= )
 	nvidia? ( x11-drivers/nvidia-drivers[tools,static-libs] )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	rss? ( dev-libs/libxml2 net-misc/curl dev-libs/glib:2 )
 	systemd? ( sys-apps/systemd )
 	truetype? ( x11-libs/libXft >=media-libs/freetype-2 )

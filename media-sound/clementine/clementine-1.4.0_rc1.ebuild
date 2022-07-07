@@ -97,7 +97,7 @@ DEPEND="${COMMON_DEPEND}
 	box? ( dev-cpp/sparsehash )
 	dropbox? ( dev-cpp/sparsehash )
 	googledrive? ( dev-cpp/sparsehash )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	seafile? ( dev-cpp/sparsehash )
 	skydrive? ( dev-cpp/sparsehash )
 "

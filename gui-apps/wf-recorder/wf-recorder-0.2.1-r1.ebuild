@@ -22,7 +22,7 @@ IUSE="+man opencl"
 
 DEPEND="
 	dev-libs/wayland
-	media-sound/pulseaudio
+	|| ( media-libs/libpulse media-sound/pulseaudio )
 	media-video/ffmpeg[opencl?,pulseaudio,x264]
 	opencl? ( virtual/opencl )
 "

@@ -21,7 +21,7 @@ fi
 
 IUSE=""
 
-DEPEND="media-sound/pulseaudio:="
+DEPEND="|| ( media-libs/libpulse:= media-sound/pulseaudio:= )"
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 

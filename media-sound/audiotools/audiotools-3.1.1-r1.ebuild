@@ -27,7 +27,7 @@ DEPEND="
 		media-libs/opus
 		media-libs/opusfile
 	)
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	vorbis? ( media-libs/libvorbis )
 	wavpack? ( media-sound/wavpack )
 "

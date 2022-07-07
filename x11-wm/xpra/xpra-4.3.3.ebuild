@@ -67,7 +67,7 @@ DEPEND="
 	ffmpeg? ( >=media-video/ffmpeg-3.2.2:0=[x264,x265] )
 	jpeg? ( media-libs/libjpeg-turbo )
 	pulseaudio? (
-		media-sound/pulseaudio
+		|| ( media-libs/libpulse media-sound/pulseaudio )
 		media-plugins/gst-plugins-pulse:1.0
 	)
 	sound? (

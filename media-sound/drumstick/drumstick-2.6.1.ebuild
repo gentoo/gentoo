@@ -36,7 +36,7 @@ DEPEND="
 	media-libs/alsa-lib
 	fluidsynth? ( media-sound/fluidsynth )
 	network? ( dev-qt/qtnetwork:5 )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 "
 RDEPEND="${DEPEND}"
 

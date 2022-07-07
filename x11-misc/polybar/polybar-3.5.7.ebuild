@@ -38,7 +38,7 @@ DEPEND="
 	)
 	mpd? ( media-libs/libmpdclient )
 	network? ( net-wireless/wireless-tools )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 "
 
 RDEPEND="${DEPEND}"

@@ -19,7 +19,7 @@ IUSE="debug test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	media-sound/pulseaudio
+	|| ( media-libs/libpulse media-sound/pulseaudio )
 	media-video/ffmpeg[openssl]
 	media-video/vidify[${PYTHON_USEDEP}]
 	sci-libs/fftw

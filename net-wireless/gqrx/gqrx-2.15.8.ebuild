@@ -31,7 +31,7 @@ DEPEND=">=net-wireless/gnuradio-3.7_rc:=[audio,analog,filter]
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	sci-libs/volk:=
-	pulseaudio? ( media-sound/pulseaudio:= )
+	pulseaudio? ( || ( media-libs/libpulse:= media-sound/pulseaudio:= ) )
 	portaudio? ( media-libs/portaudio:= )"
 RDEPEND="${DEPEND}"
 

@@ -32,7 +32,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	http? ( net-misc/curl:= )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	ssl? (
 		dev-libs/openssl:0=
 	)
