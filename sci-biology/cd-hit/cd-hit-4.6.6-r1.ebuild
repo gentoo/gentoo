@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit flag-o-matic toolchain-funcs
+inherit toolchain-funcs
 
 RELDATE="2016-0711"
 RELEASE="${PN}-v${PV}-${RELDATE}"
@@ -11,6 +11,7 @@ RELEASE="${PN}-v${PV}-${RELDATE}"
 DESCRIPTION="Clustering Database at High Identity with Tolerance"
 HOMEPAGE="http://weizhong-lab.ucsd.edu/cd-hit/"
 SRC_URI="https://github.com/weizhongli/cdhit/releases/download/V${PV}/${RELEASE}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/${RELEASE}
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,8 +19,6 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="openmp"
 
 RDEPEND="dev-lang/perl"
-
-S="${WORKDIR}"/${RELEASE}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.6.6-fix-perl-shebangs.patch
