@@ -12,7 +12,7 @@ inherit check-reqs bash-completion-r1 cmake python-r1 flag-o-matic \
 		lua-single udev readme.gentoo-r1 toolchain-funcs systemd tmpfiles
 
 SRC_URI="https://download.ceph.com/tarballs/${P}.tar.gz"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 
 DESCRIPTION="Ceph distributed filesystem"
 HOMEPAGE="https://ceph.com/"
