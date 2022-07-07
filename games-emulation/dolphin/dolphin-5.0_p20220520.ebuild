@@ -40,7 +40,7 @@ RDEPEND="
 	app-arch/xz-utils:=
 	app-arch/zstd:=
 	dev-libs/hidapi:=
-	>=dev-libs/libfmt-8:=
+	=dev-libs/libfmt-8*:=
 	dev-libs/lzo:=
 	dev-libs/pugixml:=
 	media-libs/cubeb:=
