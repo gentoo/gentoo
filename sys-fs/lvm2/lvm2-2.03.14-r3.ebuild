@@ -268,6 +268,10 @@ pkg_postinst() {
 		tmpfiles_process lvm2.conf
 	fi
 
+	if use udev; then
+		udev_reload
+	fi
+
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		# This is a new installation
 		ewarn "Make sure the \"lvm\" init script is in the runlevels:"
@@ -291,6 +295,12 @@ pkg_postinst() {
 			ewarn ""
 			ewarn "This is known to be causing problems for UDEV-enabled LVM services."
 		fi
+	fi
+}
+
+pkg_postrm() {
+	if use udev && [[ -z ${REPLACING_VERSIONS} ]]; then
+		udev_reload
 	fi
 }
 
