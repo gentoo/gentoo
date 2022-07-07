@@ -1,28 +1,23 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
 DESCRIPTION="A base caller for Sanger DNA sequencing"
 HOMEPAGE="http://phrap.org/phredphrapconsed.html"
 SRC_URI="phred-dist-071220.b-acd.tar.gz"
+S="${WORKDIR}"
 
 LICENSE="phrap"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
-
-DEPEND=""
-RDEPEND=""
-
-S="${WORKDIR}"
-
 RESTRICT="fetch"
+
 PATCHES=(
-	"${FILESDIR}/${PN}-071220-fix-build-system.patch"
-	"${FILESDIR}/${PN}-071220-fix-qa.patch"
+	"${FILESDIR}"/${PN}-071220-fix-build-system.patch
+	"${FILESDIR}"/${PN}-071220-fix-qa.patch
 )
 
 pkg_nofetch() {
@@ -39,11 +34,12 @@ src_compile() {
 src_install() {
 	dobin phred daev
 
-	insinto /usr/share/${PN}
+	insinto /usr/share/phred
 	doins phredpar.dat
 
-	echo "PHRED_PARAMETER_FILE=${EPREFIX}/usr/share/${PN}/phredpar.dat" > 99phred || die
-	doenvd 99phred
+	newenvd - 99phred <<- EOF
+		PHRED_PARAMETER_FILE="${EPREFIX}/usr/share/phred/phredpar.dat"
+	EOF
 
 	newdoc DAEV.DOC DAEV.DOC.txt
 	newdoc PHRED.DOC PHRED.DOC.txt
