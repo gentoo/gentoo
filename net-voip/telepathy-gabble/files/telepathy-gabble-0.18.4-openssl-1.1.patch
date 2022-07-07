@@ -19,12 +19,12 @@ index b77fb4c..bb50523 100644
  		0x02,
  		};
  	DH *dh;
-+#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
 +	int r = 0;
 +#endif
  
  	if ((dh=DH_new()) == NULL) return(NULL);
-+#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
 +	r = DH_set0_pqg(dh, BN_bin2bn(dh1024_p,sizeof(dh1024_p),NULL),
 +					NULL, BN_bin2bn(dh1024_g,sizeof(dh1024_g),NULL));
 +	if (!r)
@@ -45,12 +45,12 @@ index c16deb7..d53ceda 100644
  		0x02,
  		};
  	DH *dh;
-+#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
 +	int r = 0;
 +#endif
  
  	if ((dh=DH_new()) == NULL) return(NULL);
-+#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
 +	r = DH_set0_pqg(dh, BN_bin2bn(dh2048_p,sizeof(dh2048_p),NULL),
 +						NULL, BN_bin2bn(dh2048_g,sizeof(dh2048_g),NULL));
 +	if (!r)
@@ -71,12 +71,12 @@ index 2854385..93fa7e5 100644
  		0x02,
  		};
  	DH *dh;
-+#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
 +	int r = 0;
 +#endif
  
  	if ((dh=DH_new()) == NULL) return(NULL);
-+#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
 +	r = DH_set0_pqg(dh, BN_bin2bn(dh4096_p,sizeof(dh4096_p),NULL),
 +						NULL, BN_bin2bn(dh4096_g,sizeof(dh4096_g),NULL));
 +	if (!r)
@@ -97,12 +97,12 @@ index 8e7a278..c2891cd 100644
  		0x02,
  		};
  	DH *dh;
-+#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
 +	int r = 0;
 +#endif
  
  	if ((dh=DH_new()) == NULL) return(NULL);
-+#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
 +	r = DH_set0_pqg(dh, BN_bin2bn(dh512_p,sizeof(dh512_p),NULL),
 +					NULL, BN_bin2bn(dh512_g,sizeof(dh512_g),NULL));
 +	if (!r)
@@ -124,7 +124,7 @@ index 2201213..18f9981 100644
    gboolean rval = FALSE;
    X509_NAME *subject = X509_get_subject_name (cert);
 -  X509_CINF *ci = cert->cert_info;
-+#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
 +  const STACK_OF(X509_EXTENSION)* extensions = X509_get0_extensions(cert);
 +#else
 +  const STACK_OF(X509_EXTENSION)* extensions = cert->cert_info->extensions;
@@ -148,7 +148,7 @@ index 2201213..18f9981 100644
          long ni = OBJ_obj2nid (obj);
          const guchar *p;
          char *value = NULL;
-+#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
 +        const ASN1_OCTET_STRING* ext_value = X509_EXTENSION_get_data(ext);
 +        int len = ASN1_STRING_length(ext_value);
 +#else
@@ -161,7 +161,7 @@ index 2201213..18f9981 100644
          if ((convert = (X509V3_EXT_METHOD *) X509V3_EXT_get (ext)) == NULL)
            continue;
  
-+#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
 +        p = ASN1_STRING_get0_data(ext_value);
 +#else
          p = ext->value->data;
@@ -173,7 +173,7 @@ index 2201213..18f9981 100644
            X509_STORE *store = SSL_CTX_get_cert_store(session->ctx);
            X509 *cert = SSL_get_peer_certificate (session->ssl);
            STACK_OF(X509) *chain = SSL_get_peer_cert_chain (session->ssl);
-+#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
 +          X509_VERIFY_PARAM* param = X509_STORE_get0_param(store);
 +          long old_flags = X509_VERIFY_PARAM_get_flags(param);
 +#else
@@ -184,7 +184,7 @@ index 2201213..18f9981 100644
  
            new_flags &= ~(X509_V_FLAG_CRL_CHECK|X509_V_FLAG_CRL_CHECK_ALL);
  
-+#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
 +          X509_VERIFY_PARAM_set_flags(param, new_flags);
 +#else
            store->param->flags = new_flags;
@@ -196,7 +196,7 @@ index 2201213..18f9981 100644
                status = _cert_status (session, new_code, level, ssl_code);
              }
  
-+#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
 +          X509_VERIFY_PARAM_set_flags(param, old_flags);
 +#else
            store->param->flags = old_flags;
@@ -208,7 +208,7 @@ index 2201213..18f9981 100644
  
    if G_UNLIKELY (g_once_init_enter (&initialised))
      {
-+#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
 +      DEBUG ("initialising SSL library and error strings");
 +#else
        gint malloc_init_succeeded;
