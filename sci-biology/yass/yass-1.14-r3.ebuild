@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -11,8 +11,8 @@ SRC_URI="http://bioinfo.lifl.fr/yass/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="dmalloc lowmem threads"
 KEYWORDS="~amd64 ~x86"
+IUSE="dmalloc lowmem threads"
 
 DEPEND="dmalloc? ( dev-libs/dmalloc )"
 RDEPEND="${DEPEND}"
