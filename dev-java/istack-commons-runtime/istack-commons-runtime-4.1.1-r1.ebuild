@@ -26,8 +26,9 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 # POM: runtime/pom.xml
 # test? junit:junit:4.13.2 -> >=dev-java/junit-4.13.2:4
 
+# fails if jdk-1.8:* # https://bugs.gentoo.org/857024
 DEPEND="
-	>=virtual/jdk-1.8:*
+	>=virtual/jdk-11:*
 	dev-java/jakarta-activation-api:2
 "
 
