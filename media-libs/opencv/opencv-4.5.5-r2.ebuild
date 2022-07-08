@@ -115,7 +115,7 @@ RDEPEND="
 		sys-libs/libraw1394[${MULTILIB_USEDEP}]
 	)
 	java? ( >=virtual/jre-1.8:* )
-	jpeg? ( virtual/jpeg:0[${MULTILIB_USEDEP}] )
+	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	jpeg2k? ( media-libs/openjpeg:2=[${MULTILIB_USEDEP}] )
 	lapack? (
 		virtual/cblas
