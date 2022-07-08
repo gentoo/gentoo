@@ -33,7 +33,6 @@ RDEPEND="
 		dev-python/pyjwt[${PYTHON_USEDEP}]
 		dev-python/PyQt5[declarative,gui,network,widgets,${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
-		dev-python/python-discid[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		media-libs/mutagen[${PYTHON_USEDEP}]
 		discid? ( dev-python/python-discid[${PYTHON_USEDEP}] )
