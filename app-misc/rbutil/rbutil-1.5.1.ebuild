@@ -26,7 +26,10 @@ RDEPEND="
 	media-libs/speexdsp
 	virtual/libusb:1
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	dev-qt/qttest:5
+"
 BDEPEND="
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig
