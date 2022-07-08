@@ -21,20 +21,20 @@ SLOT="0"
 IUSE="debug +gles +system-wfconfig +system-wlroots X"
 
 DEPEND="
-	dev-libs/libevdev
-	dev-libs/libinput
+	dev-libs/libinput:=
 	dev-libs/wayland
 	gui-libs/gtk-layer-shell
 	media-libs/glm
 	media-libs/mesa:=[gles2,wayland,X?]
 	media-libs/libglvnd[X?]
-	media-libs/libjpeg-turbo
-	media-libs/libpng
+	media-libs/libjpeg-turbo:=
+	media-libs/libpng:=
 	media-libs/freetype:=[X?]
 	x11-libs/libdrm
 	x11-libs/gtk+:3=[wayland,X?]
-	x11-libs/cairo:=[X?,svg]
-	x11-libs/libxkbcommon:=[X?]
+	x11-libs/cairo[X?,svg]
+	x11-libs/libxkbcommon[X?]
+	x11-libs/pango
 	x11-libs/pixman
 	X? (
 		x11-base/xwayland
@@ -46,8 +46,7 @@ DEPEND="
 	)
 	!system-wfconfig? ( !gui-libs/wf-config )
 	system-wlroots? (
-		>=gui-libs/wlroots-0.15.0:=[X?]
-		<gui-libs/wlroots-0.16.0:=
+		gui-libs/wlroots:0/15[X?]
 	)
 	!system-wlroots? ( !gui-libs/wlroots )
 "
