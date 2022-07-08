@@ -24,7 +24,7 @@ SRC_URI="https://cdn.zabbix.com/${PN}/sources/stable/$(ver_cut 1-2)/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 WEBAPP_MANUAL_SLOT="yes"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="agent +agent2 curl frontend gnutls ipv6 java ldap libxml2 mysql odbc openipmi +openssl oracle +pcre2 +postgres proxy server snmp sqlite ssh static"
 REQUIRED_USE="|| ( agent agent2 frontend proxy server )
 	?? ( gnutls openssl )
@@ -255,6 +255,7 @@ src_install() {
 		doins "${S}"/src/go/conf/zabbix_agent2.conf
 		fperms 0640 /etc/zabbix/zabbix_agent2.conf
 		fowners root:zabbix /etc/zabbix/zabbix_agent2.conf
+		keepdir /etc/zabbix/zabbix_agent2.d/plugins.d
 
 		newinitd "${FILESDIR}"/zabbix-agent2.init zabbix-agent2
 
