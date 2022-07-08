@@ -1,0 +1,13 @@
+Fix for when char is unsigned by default
+
+--- a/converter/other/pnmtopalm/palmtopnm.c
++++ b/converter/other/pnmtopalm/palmtopnm.c
+@@ -870,7 +870,7 @@
+         pm_readcharu(ifP, &incountByte);
+         if (incountByte & 0x80) {
+             /* How do we handle incount == -128 ? */
+-            int const signedIncount = (char)incountByte;
++            int const signedIncount = (signed char)incountByte;
+             unsigned int const runlength = -signedIncount + 1;
+             unsigned char inval;
+             pm_readcharu(ifP, &inval);
