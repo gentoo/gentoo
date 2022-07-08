@@ -48,10 +48,10 @@ src_compile() {
 
 	sed \
 		-e 's:CCFLAGS:CFLAGS:g' \
-		-e "s:ar rusc:$(tc-getAR) rusc:g" \
 		-i Jambase || die
 
 	tc-export CC RANLIB
+	export AR="$(tc-getAR) ruscU"
 
 	jam -dx -fJambase "-j$(makeopts_jobs)" || die
 }
@@ -90,4 +90,8 @@ pkg_postinst() {
 	elog "For further info on setting up instrument access read"
 	elog "http://www.argyllcms.com/doc/Installing_Linux.html"
 	echo
+}
+
+pkg_postrm() {
+	udev_reload
 }
