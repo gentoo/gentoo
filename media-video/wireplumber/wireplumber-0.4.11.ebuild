@@ -62,12 +62,7 @@ RDEPEND="${DEPEND}
 DOCS=( {NEWS,README}.rst )
 
 PATCHES=(
-	"${FILESDIR}"/${P}-config-fix-enabled-property-to-default-to-true-when.patch
-	"${FILESDIR}"/${P}-m-lua-scripting-allow-converting-GValue-holding-NUL.patch
-	"${FILESDIR}"/${P}-alsa.lua-fix-device-name-deduplication-when-reserva.patch
-	"${FILESDIR}"/${P}-m-default-nodes-don-t-check-if-all-device-nodes-are.patch
-	"${FILESDIR}"/${P}-m-lua-scripting-fix-object-refcounting.patch
-	"${FILESDIR}"/${P}-config-disable-sound-server-parts.patch # defer enabling sound server parts to media-video/pipewire
+	"${FILESDIR}"/${PN}-0.4.10-config-disable-sound-server-parts.patch # defer enabling sound server parts to media-video/pipewire
 )
 
 src_configure() {
