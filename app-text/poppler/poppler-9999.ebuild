@@ -15,7 +15,7 @@ else
 
 	SRC_URI="https://poppler.freedesktop.org/${P}.tar.xz"
 	SRC_URI+=" verify-sig? ( https://poppler.freedesktop.org/${P}.tar.xz.sig )"
-	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	SLOT="0/122"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
 fi
 
@@ -28,7 +28,7 @@ IUSE="boost cairo cjk curl +cxx debug doc +introspection +jpeg +jpeg2k +lcms nss
 # No test data provided
 RESTRICT="test"
 
-DEPEND="
+COMMON_DEPEND="
 	media-libs/fontconfig
 	>=media-libs/freetype-2.8
 	sys-libs/zlib
@@ -50,10 +50,10 @@ DEPEND="
 	)
 	tiff? ( media-libs/tiff:0 )
 "
-RDEPEND="${DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	cjk? ( app-text/poppler-data )
 "
-DEPEND+="
+DEPEND="${COMMON_DEPEND}
 	boost? ( dev-libs/boost )
 "
 BDEPEND="
