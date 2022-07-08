@@ -37,6 +37,7 @@ RDEPEND="
 	sys-libs/zlib
 	dvd? ( media-libs/libdvdread:= )
 	dev-qt/qtcore:5
+	dev-qt/qtsvg:5
 	gui? (
 		dev-qt/qtgui:5
 		dev-qt/qtnetwork:5
