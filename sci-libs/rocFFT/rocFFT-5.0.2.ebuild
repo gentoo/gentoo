@@ -35,7 +35,7 @@ BDEPEND="
 	test? ( dev-cpp/gtest dev-libs/boost
 	>=sci-libs/fftw-3 sys-libs/libomp )
 	>=dev-util/cmake-3.22
-	dev-util/rocm-cmake:${SLOT}
+	>=dev-util/rocm-cmake-${PV}-r1:${SLOT}
 "
 
 CHECKREQS_DISK_BUILD="7G"
