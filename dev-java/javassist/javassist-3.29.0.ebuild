@@ -30,15 +30,7 @@ RESTRICT="test"
 # test? junit:junit:[4.13.1,) -> >=dev-java/junit-4.13.2:4
 # test? org.hamcrest:hamcrest-all:1.3 -> !!!artifactId-not-found!!!
 
-DEPEND="
-	!test? (
-		>=virtual/jdk-8:*
-	)
-	test? (
-		>=virtual/jdk-11:*
-		dev-java/hamcrest-library:1.3
-	)
-"
+DEPEND=">=virtual/jdk-11:*"
 
 # https://github.com/jboss-javassist/javassist/blob/rel_3_29_0_ga/pom.xml#L156-L157
 RDEPEND=">=virtual/jre-8:*"
