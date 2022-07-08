@@ -58,7 +58,11 @@ DEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto
 "
 
-PATCHES=( "${FILESDIR}/${PN}-1.24.1-libsecret.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.24.1-libsecret.patch"
+	"${FILESDIR}/${PN}-1.24.3-removing-execinfo.patch"
+	"${FILESDIR}/${PN}-1.24.3-removing-backtrace.patch"
+)
 
 src_configure() {
 	mate_src_configure \
