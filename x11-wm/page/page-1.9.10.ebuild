@@ -3,11 +3,9 @@
 
 EAPI=8
 
-inherit autotools
-
 DESCRIPTION="A mouse friendly tiling window manager"
 HOMEPAGE="https://github.com/gschwind/page"
-SRC_URI="http://www.hzog.net/pub/${PN}-1.9.9-r1.tar.gz"
+SRC_URI="https://github.com/gschwind/page/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -28,11 +26,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=x11-base/xcb-proto-1.12-r2
 	x11-base/xorg-proto"
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 src_install() {
 	default
