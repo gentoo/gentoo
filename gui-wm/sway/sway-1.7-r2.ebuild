@@ -46,8 +46,8 @@ if [[ ${PV} == 9999 ]]; then
 	DEPEND+="~gui-libs/wlroots-9999:=[X?]"
 else
 	DEPEND+="
-		>=gui-libs/wlroots-0.16:=[X?]
-		<gui-libs/wlroots-0.17:=[X?]
+		>=gui-libs/wlroots-0.15:=[X?]
+		<gui-libs/wlroots-0.16:=[X?]
 	"
 fi
 RDEPEND="
