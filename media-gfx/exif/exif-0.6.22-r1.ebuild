@@ -24,7 +24,6 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-empty-string-check.patch
-	"${FILESDIR}"/${P}-fix-empty-string-check.patch
 )
 
 src_configure() {
