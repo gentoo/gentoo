@@ -1,6 +1,10 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2022-07-08)
+# virtual/jre is not available on loong yet.
+www-client/chromium js-type-check
+
 # WANG Xuerui <xen0n@gentoo.org> (2022-05-13)
 # Fails testing at least with libssh-0.9.6 and mbedtls-2.28.0-r1, needs
 # investigation.
