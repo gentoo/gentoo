@@ -145,10 +145,6 @@ pkg_setup() {
 	java-pkg-opt-2_pkg_setup
 }
 
-src_prepare() {
-	default
-}
-
 src_configure() {
 	local econf_args=(
 		"$(use_enable agent)"
