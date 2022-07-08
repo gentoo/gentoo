@@ -201,7 +201,6 @@ src_install() {
 	)
 
 	for dir in "${dirs[@]}"; do
-		dodir "${dir}"
 		keepdir "${dir}"
 	done
 
