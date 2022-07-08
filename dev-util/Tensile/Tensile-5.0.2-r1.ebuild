@@ -33,6 +33,7 @@ PATCHES=( "${FILESDIR}"/${PN}-4.3.0-output-commands.patch
 		  "${FILESDIR}"/${PN}-5.0.2-gfx1031.patch
 		  "${FILESDIR}"/${PN}-5.0.2-fix-arch-parse.patch
 		  "${FILESDIR}"/${PN}-5.0.2-use-ninja.patch
+		  "${FILESDIR}"/${PN}-5.0.2-adjust-parallel.patch
 		  "${WORKDIR}"/${PN}-5.0.2-PR1419.patch
 	  )
 
