@@ -6,7 +6,7 @@ EAPI=8
 DOCS_BUILDER="doxygen"
 DOCS_DIR="docs"
 DOCS_DEPEND="media-gfx/graphviz"
-inherit cmake docs prefix
+inherit cmake docs multiprocessing prefix
 
 DESCRIPTION="AMD's library for BLAS on ROCm"
 HOMEPAGE="https://github.com/ROCmSoftwarePlatform/rocBLAS"
@@ -22,7 +22,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	dev-util/rocm-cmake:${SLOT}
-	dev-util/Tensile:${SLOT}
+	>=dev-util/Tensile-${PV}-r1:${SLOT}
 "
 
 DEPEND="
@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.0.2-change-default-Tensile-library-dir.patch
 	"${FILESDIR}"/${PN}-5.0.2-cpp_lib_filesystem.patch
 	"${FILESDIR}"/${PN}-5.0.2-unbundle-Tensile.patch
+	"${FILESDIR}"/${PN}-5.0.2-respect-makeopts.patch
 	)
 
 src_prepare() {
@@ -85,6 +86,7 @@ src_configure() {
 		-DBUILD_CLIENTS_SAMPLES=OFF
 		-DBUILD_CLIENTS_TESTS=$(usex test ON OFF)
 		-DBUILD_CLIENTS_BENCHMARKS=$(usex benchmark ON OFF)
+		-DTensile_CPU_THREADS=$(makeopts_jobs)
 		${AMDGPU_TARGETS+-DAMDGPU_TARGETS="${AMDGPU_TARGETS}"}
 	)
 
