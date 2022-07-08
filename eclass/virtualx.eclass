@@ -108,9 +108,8 @@ virtx() {
 	local i=0
 	local retval=0
 	local OLD_SANDBOX_ON="${SANDBOX_ON}"
-	local XVFB XDISPLAY
+	local XDISPLAY
 	local xvfbargs=( -screen 0 1280x1024x24 +extension RANDR )
-	XVFB=$(type -p Xvfb) || die
 
 	debug-print "${FUNCNAME}: running Xvfb hack"
 	export XAUTHORITY=
@@ -133,24 +132,24 @@ virtx() {
 	# We really do not want SANDBOX enabled here
 	export SANDBOX_ON="0"
 
-	debug-print "${FUNCNAME}: ${XVFB} :${XDISPLAY} ${xvfbargs[*]}"
-	${XVFB} :${XDISPLAY} "${xvfbargs[@]}" &>/dev/null &
+	debug-print "${FUNCNAME}: Xvfb :${XDISPLAY} ${xvfbargs[*]}"
+	Xvfb :${XDISPLAY} "${xvfbargs[@]}" &>/dev/null &
 	sleep 2
 
 	local start=${XDISPLAY}
 	while [[ ! -f /tmp/.X${XDISPLAY}-lock ]]; do
 		# Stop trying after 15 tries
 		if ((XDISPLAY - start > 15)) ; then
-			eerror "'${XVFB} :${XDISPLAY} ${xvfbargs[*]}' returns:"
+			eerror "'Xvfb :${XDISPLAY} ${xvfbargs[*]}' returns:"
 			echo
-			${XVFB} :${XDISPLAY} "${xvfbargs[@]}"
+			Xvfb :${XDISPLAY} "${xvfbargs[@]}"
 			echo
 			eerror "If possible, correct the above error and try your emerge again."
 			die "Unable to start Xvfb"
 		fi
 			((XDISPLAY++))
-		debug-print "${FUNCNAME}: ${XVFB} :${XDISPLAY} ${xvfbargs[*]}"
-		${XVFB} :${XDISPLAY} "${xvfbargs[@]}" &>/dev/null &
+		debug-print "${FUNCNAME}: Xvfb :${XDISPLAY} ${xvfbargs[*]}"
+		Xvfb :${XDISPLAY} "${xvfbargs[@]}" &>/dev/null &
 		sleep 2
 	done
 
