@@ -53,7 +53,7 @@ case ${VIRTUALX_REQUIRED} in
 	*)
 		BDEPEND="${VIRTUALX_REQUIRED}? ( ${VIRTUALX_DEPEND} )"
 		IUSE="${VIRTUALX_REQUIRED}"
-		[[ ${VIRTUALX_REQUIRED} == test ]] &&
+		[[ ${VIRTUALX_REQUIRED} == "test" ]] &&
 			RESTRICT+=" !test? ( test )"
 		;;
 esac
