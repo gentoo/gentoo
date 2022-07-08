@@ -1,0 +1,38 @@
+# Musl doesn't supply execinfo.h as a result build fails.
+# Closes: https://bugs.gentoo.org/762484
+--- a/applets/brightness/egg-debug.c
++++ b/applets/brightness/egg-debug.c
+@@ -39,7 +39,9 @@
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <time.h>
++#if (defined(__GLIBC__))
+ #include <execinfo.h>
++#endif
+
+ #include "egg-debug.h"
+
+--- a/applets/inhibit/egg-debug.c
++++ b/applets/inhibit/egg-debug.c
+@@ -39,7 +39,9 @@
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <time.h>
++#if (defined(__GLIBC__))
+ #include <execinfo.h>
++#endif
+
+ #include "egg-debug.h"
+
+--- a/src/egg-debug.c
++++ b/src/egg-debug.c
+@@ -39,7 +39,9 @@
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <time.h>
++#if (defined(__GLIBC__))
+ #include <execinfo.h>
++#endif
+
+ #include "egg-debug.h"
+
