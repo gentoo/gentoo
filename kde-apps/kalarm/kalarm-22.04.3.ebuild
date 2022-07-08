@@ -78,3 +78,9 @@ src_configure() {
 
 	ecm_src_configure
 }
+
+src_test() {
+	# LC_TIME bug 665626, 857012
+	# TZ bug https://bugs.kde.org/show_bug.cgi?id=445734
+	LC_TIME="C" TZ=UTC ecm_src_test
+}
