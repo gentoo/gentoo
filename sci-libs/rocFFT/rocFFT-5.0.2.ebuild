@@ -33,10 +33,10 @@ DEPEND="dev-util/hip:${SLOT}
 
 BDEPEND="
 	test? ( dev-cpp/gtest dev-libs/boost
-	>=sci-libs/fftw-3
+	>=sci-libs/fftw-3 )
 	>=dev-util/cmake-3.22
 	dev-util/rocm-cmake:${SLOT}
-)"
+"
 
 CHECKREQS_DISK_BUILD="7G"
 
