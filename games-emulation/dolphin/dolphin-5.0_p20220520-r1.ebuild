@@ -35,12 +35,14 @@ IUSE="
 	profile pulseaudio systemd upnp vulkan
 "
 
+PATCHES=("${FILESDIR}/${P}-libfmt-9.0.0-fix-build.patch")
+
 RDEPEND="
 	app-arch/bzip2:=
 	app-arch/xz-utils:=
 	app-arch/zstd:=
 	dev-libs/hidapi:=
-	=dev-libs/libfmt-8*:=
+	>=dev-libs/libfmt-8:=
 	dev-libs/lzo:=
 	dev-libs/pugixml:=
 	media-libs/cubeb:=
