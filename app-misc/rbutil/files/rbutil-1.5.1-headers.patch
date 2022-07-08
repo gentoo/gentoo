@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/830559
+https://www.rockbox.org/tracker/task/13358
+
+Note: This may need tweaking for non-Linux platforms.
+
+diff --git a/utils/sansapatcher/sansaio.h b/utils/sansapatcher/sansaio.h
+index 61e2f1d1b2..327f8fbd18 100644
+--- a/utils/sansapatcher/sansaio.h
++++ b/utils/sansapatcher/sansaio.h
+@@ -23,6 +23,7 @@
+ #define __SANSAIO_H
+
+ #include <stdint.h>
++#include <sys/types.h>
+ #if !defined(_MSC_VER)
+ #include <unistd.h> /* not available on MSVC */
+ #endif
