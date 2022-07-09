@@ -33,7 +33,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-lang/erlang
+	dev-lang/erlang[ssl]
 	!dev-util/rebar-bin
 "
 DEPEND="${RDEPEND}"
