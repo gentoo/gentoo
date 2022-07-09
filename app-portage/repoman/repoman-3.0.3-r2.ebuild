@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=bdepend
+DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python3_{8..10} pypy3 )
 PYTHON_REQ_USE='bzip2(+)'
 
@@ -14,8 +14,11 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/portage.git"
 	S="${WORKDIR}/${P}/repoman"
 else
-	SRC_URI="https://dev.gentoo.org/~zmedico/portage/archives/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	SRC_URI="https://dev.gentoo.org/~zmedico/portage/archives/${P}.tar.bz2
+		https://github.com/gentoo/portage/compare/285d3ae987a079f32b909c6e6eddde9bc45a4a25...b09b4071151d8e3a81f3576843d00f88eb407799.patch -> ${P}-unit-test-bug-779055.patch
+		https://github.com/gentoo/portage/commit/e29177fcd2950199afa4f83673c0771afb261123.patch -> ${P}-version-bug-779508.patch
+		https://github.com/gentoo/portage/commit/2eb3ca092a528e0722e0ca32f616836ed8039936.patch -> ${P}-unit-test-bug-779967.patch"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="Repoman is a Quality Assurance tool for Gentoo ebuilds"
@@ -27,10 +30,22 @@ IUSE=""
 
 RDEPEND="
 	>=sys-apps/portage-3.0.18[${PYTHON_USEDEP}]
+	<sys-apps/portage-3.0.31[${PYTHON_USEDEP}]
 	>=dev-python/lxml-3.6.0[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+
+python_prepare_all() {
+	local patches=(
+		"${DISTDIR}/${P}-unit-test-bug-779055.patch"
+		"${DISTDIR}/${P}-version-bug-779508.patch"
+		"${DISTDIR}/${P}-unit-test-bug-779967.patch"
+	)
+	eapply -p2 "${patches[@]}"
+
+	distutils-r1_python_prepare_all
+}
 
 python_test() {
 	unset REPOMAN_DEFAULT_OPTS
