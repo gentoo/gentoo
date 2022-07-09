@@ -11,7 +11,7 @@
 # and inter-module dependency checking.
 
 LUA_COMPAT=( lua5-{1..4} )
-inherit autotools flag-o-matic lua-single multilib ssl-cert user toolchain-funcs
+inherit autotools flag-o-matic lua-single multilib ssl-cert toolchain-funcs
 
 [[ ${CATEGORY}/${PN} != www-servers/apache ]] \
 	&& die "Do not use this eclass with anything else than www-servers/apache ebuilds!"
@@ -133,6 +133,8 @@ unset -f _apache2_set_mpms
 
 # Dependencies
 RDEPEND="
+	acct-group/apache
+	acct-user/apache
 	dev-lang/perl
 	>=dev-libs/apr-1.5.1:=
 	=dev-libs/apr-util-1*:=[gdbm=,ldap?]
@@ -436,10 +438,6 @@ check_upgrade() {
 # needed (we don't depend on kernel sources and therefore cannot check).
 apache-2_pkg_setup() {
 	check_upgrade
-
-	# setup apache user and group
-	enewgroup apache 81
-	enewuser apache 81 -1 /var/www apache
 
 	setup_mpm
 	setup_modules
