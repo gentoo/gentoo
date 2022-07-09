@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>java@gentoo.org</email>
-	<name>Java</name>
-</maintainer>
-<longdescription>
-The Sun Multi-Schema XML Validator (MSV) is a Java technology tool
-to validate XML documents against several kinds of XML schemata.
-</longdescription>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription>
+		The Sun Multi-Schema XML Validator (MSV) is a Java technology tool
+		to validate XML documents against several kinds of XML schemata.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">xmlark/msv</remote-id>
+	</upstream>
 </pkgmetadata>
