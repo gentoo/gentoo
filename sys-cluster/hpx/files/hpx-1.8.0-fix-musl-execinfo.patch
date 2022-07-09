@@ -1,0 +1,16 @@
+# Check for execinfo only on glibc and ulibc systems.
+#
+# With this PR https://github.com/STEllAR-GROUP/hpx/pull/5947 merged, from
+# 1.8.1 we can drop these patches
+--- a/libs/core/debugging/src/backtrace.cpp
++++ b/libs/core/debugging/src/backtrace.cpp
+@@ -19,7 +19,9 @@
+
+ #if (defined(__linux) || defined(__APPLE__) || defined(__sun)) &&              \
+     (!defined(__ANDROID__) || !defined(ANDROID))
++#if defined(__GLIBC__)
+ #define HPX_HAVE_EXECINFO
++#endif
+ #define HPX_HAVE_DLFCN
+ #if defined(__GNUC__) && !defined(__clang__)
+ #define HPX_HAVE_UNWIND
