@@ -29,8 +29,11 @@ else
 fi
 
 SLOT="0"
-IUSE="ipv6 libssh2 ncat nping +nse ssl +system-lua"
-REQUIRED_USE="system-lua? ( nse ${LUA_REQUIRED_USE} )"
+IUSE="ipv6 libssh2 ncat nping +nse ssl symlink +system-lua"
+REQUIRED_USE="
+	system-lua? ( nse ${LUA_REQUIRED_USE} )
+	symlink? ( ncat )
+"
 
 RDEPEND="
 	dev-libs/liblinear:=
@@ -131,4 +134,6 @@ src_install() {
 		install
 
 	dodoc CHANGELOG HACKING docs/README docs/*.txt
+
+	use symlink && dosym /usr/bin/ncat /usr/bin/nc
 }

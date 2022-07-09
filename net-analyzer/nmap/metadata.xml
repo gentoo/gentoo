@@ -18,6 +18,7 @@
 		<flag name="ncat">Install the ncat utility</flag>
 		<flag name="nping">Install the nping utility</flag>
 		<flag name="nse">Include support for the Nmap Scripting Engine (NSE)</flag>
+		<flag name="symlink">Install symlink to nc</flag>
 		<flag name="system-lua">Use <pkg>dev-lang/lua</pkg> instead of the bundled liblua</flag>
 	</use>
 </pkgmetadata>
