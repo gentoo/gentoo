@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
 RDEPEND="app-admin/gkrellm:2[X]"
 DEPEND="${RDEPEND}"
-BDPEND="virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-makefile.patch
