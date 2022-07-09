@@ -362,19 +362,32 @@ ecm_punt_qt_module() {
 }
 
 # @FUNCTION: ecm_punt_bogus_dep
-# @USAGE: <prefix> <dependency>
+# @USAGE: <dependency> or <prefix> <dependency>
 # @DESCRIPTION:
-# Removes a specified dependency from a find_package call with multiple
-# components.
+# Removes a specified dependency from a find_package call, optionally
+# supports prefix for find_package with multiple components.
 ecm_punt_bogus_dep() {
-	local prefix=${1}
-	local dep=${2}
+
+	if [[ "$#" == 2 ]] ; then
+		local prefix=${1}
+		local dep=${2}
+	elif [[ "$#" == 1 ]] ; then
+		local dep=${1}
+	else
+		die "${FUNCNAME[0]} must be passed either one or two arguments"
+	fi
 
 	if [[ ! -e "CMakeLists.txt" ]]; then
 		return
 	fi
 
-	pcregrep -Mni "(?s)find_package\s*\(\s*${prefix}[^)]*?${dep}.*?\)" CMakeLists.txt > "${T}/bogus${dep}"
+	if [[ -z ${prefix} ]]; then
+		sed -e "/find_package\s*(\s*${dep}\(\s\+\(REQUIRED\|CONFIG\|COMPONENTS\|\${[A-Z0-9_]*}\)\)\+\s*)/Is/^/# removed by ecm.eclass - /" \
+			-i CMakeLists.txt || die
+		return
+	else
+		pcregrep -Mni "(?s)find_package\s*\(\s*${prefix}[^)]*?${dep}.*?\)" CMakeLists.txt > "${T}/bogus${dep}"
+	fi
 
 	# pcregrep returns non-zero on no matches/error
 	if [[ $? -ne 0 ]] ; then
