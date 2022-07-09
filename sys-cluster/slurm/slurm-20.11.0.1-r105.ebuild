@@ -156,9 +156,9 @@ src_configure() {
 		touch "${S}/src/api/.libs/libslurm.so" || die
 		touch "${S}/src/db_api/.libs/libslurmdb.so" || die
 		cd "${LIBSLURM_PERL_S}" || die
-		S="${LIBSLURM_PERL_S}" SRC_PREP="no" perl-module_src_configure
+		S="${LIBSLURM_PERL_S}" perl-module_src_configure
 		cd "${LIBSLURMDB_PERL_S}" || die
-		S="${LIBSLURMDB_PERL_S}" SRC_PREP="no" perl-module_src_configure
+		S="${LIBSLURMDB_PERL_S}" perl-module_src_configure
 		cd "${S}" || die
 		rm -rf "${S}/src/api/.libs" "${S}/src/db_api/.libs" || die
 	fi
