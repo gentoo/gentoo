@@ -7,7 +7,7 @@ pidfile="/var/run/epmd.pid"
 command_args="-daemon -relaxed_command_check -address 127.0.0.1"
 
 depend() {
-	need net.lo
+	need loopback
 	before sshd
 }
 
