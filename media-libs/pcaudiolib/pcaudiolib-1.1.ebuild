@@ -34,11 +34,12 @@ src_configure() {
 		$(use_with oss)
 		$(use_with alsa)
 		$(use_with pulseaudio)
+		--disable-static
 	)
 	econf "${econf_args[@]}"
 }
 
 src_install() {
 	default
-	rm "${ED}"/usr/lib*/libpcaudio.{a,la} || die
+	find "${ED}" -name '*.la' -delete || die
 }
