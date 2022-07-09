@@ -12,7 +12,7 @@ MY_PN="OpenRCT2"
 MY_PN_OBJ="objects"
 MY_PN_RPL="replays"
 MY_PN_TS="title-sequences"
-MY_PV_OBJ="1.2.7"
+MY_PV_OBJ="1.3.2"
 MY_PV_RPL="0.0.67"
 MY_PV_TS="0.4.0"
 
@@ -71,8 +71,8 @@ BDEPEND="
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.2.6-gtest-1.10.patch"
 	"${FILESDIR}/${PN}-0.4.0-include-additional-paths.patch"
+	"${FILESDIR}/${PN}-0.4.1-gtest-1.10.patch"
 )
 
 src_unpack() {
@@ -120,7 +120,6 @@ src_configure() {
 		-DOPENRCT2_USE_CCACHE=OFF
 		-DPORTABLE=OFF
 		-DSTATIC=OFF
-		$(usex test "-DSYSTEM_GTEST=ON" "")
 		-DWITH_TESTS=$(usex test)
 		-DUSE_MMAP=ON
 	)
