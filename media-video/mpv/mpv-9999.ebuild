@@ -1,38 +1,40 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 LUA_COMPAT=( lua5-{1..2} luajit )
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE='threads(+)'
 
-WAF_PV=2.0.22
-
-inherit bash-completion-r1 flag-o-matic lua-single optfeature pax-utils python-r1 toolchain-funcs waf-utils xdg-utils
+inherit edo flag-o-matic lua-single optfeature meson pax-utils python-single-r1 toolchain-funcs xdg
 
 DESCRIPTION="Media player based on MPlayer and mplayer2"
 HOMEPAGE="https://mpv.io/ https://github.com/mpv-player/mpv"
 
-if [[ ${PV} != *9999* ]]; then
-	SRC_URI="https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux"
-	DOCS=( RELEASE_NOTES )
-else
+if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/mpv-player/mpv.git"
 	inherit git-r3
-	DOCS=(); SRC_URI=""
+
+	DOCS=()
+else
+	SRC_URI="https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux"
+
+	DOCS=( RELEASE_NOTES )
 fi
-SRC_URI+=" https://waf.io/waf-${WAF_PV}"
+
 DOCS+=( README.md DOCS/{client-api,interface}-changes.rst )
 
-# See Copyright in sources and Gentoo bug 506946. Waf is BSD, libmpv is ISC.
-LICENSE="LGPL-2.1+ GPL-2+ BSD ISC"
+# See Copyright in sources and Gentoo bug #506946. libmpv is ISC.
+# See https://github.com/mpv-player/mpv/blob/6265724f3331e3dee8d9ec2b6639def5004a5fa2/Copyright which
+# says other files may be BSD/MIT/ISC.
+LICENSE="LGPL-2.1+ GPL-2+ BSD MIT ISC"
 SLOT="0"
 IUSE="+alsa aqua archive bluray cdda +cli coreaudio cplugins debug doc drm dvb
 	dvd +egl gamepad gbm +iconv jack javascript jpeg lcms libcaca libmpv +lua
-	nvenc openal +opengl pulseaudio raspberry-pi rubberband sdl
-	selinux test tools +uchardet vaapi vdpau vulkan wayland +X +xv zlib zimg"
+	nvenc openal +opengl pipewire pulseaudio raspberry-pi rubberband sdl
+	selinux sndio test tools +uchardet vaapi vdpau +vector vulkan wayland +X +xv zlib zimg"
 
 REQUIRED_USE="
 	|| ( cli libmpv )
@@ -79,17 +81,19 @@ COMMON_DEPEND="
 	)
 	jack? ( virtual/jack )
 	javascript? ( >=dev-lang/mujs-1.0.0 )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	lcms? ( >=media-libs/lcms-2.6:2 )
 	>=media-libs/libass-0.12.1:=[fontconfig,harfbuzz(+)]
 	virtual/ttf-fonts
 	libcaca? ( >=media-libs/libcaca-0.99_beta18 )
 	lua? ( ${LUA_DEPS} )
 	openal? ( >=media-libs/openal-1.13 )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
+	pipewire? ( media-video/pipewire:= )
 	raspberry-pi? ( >=media-libs/raspberrypi-userland-0_pre20160305-r1 )
 	rubberband? ( >=media-libs/rubberband-1.8.0 )
 	sdl? ( media-libs/libsdl2[sound,threads,video] )
+	sndio? ( media-sound/sndio )
 	vaapi? ( x11-libs/libva:=[drm(+)?,X?,wayland?] )
 	vdpau? ( x11-libs/libvdpau )
 	vulkan? (
@@ -118,7 +122,6 @@ COMMON_DEPEND="
 	zimg? ( >=media-libs/zimg-2.9.2 )
 "
 DEPEND="${COMMON_DEPEND}
-	${PYTHON_DEPS}
 	dvb? ( virtual/linuxtv-dvb-headers )
 	nvenc? ( >=media-libs/nv-codec-headers-8.2.15.7 )
 "
@@ -129,21 +132,18 @@ RDEPEND="${COMMON_DEPEND}
 "
 BDEPEND="dev-python/docutils
 	virtual/pkgconfig
-	test? ( >=dev-util/cmocka-1.0.0 )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-9999-docdir.patch
+)
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
-}
-
-src_prepare() {
-	cp "${DISTDIR}/waf-${WAF_PV}" "${S}"/waf || die
-	chmod +x "${S}"/waf || die
-	default
+	use tools && python-single-r1_pkg_setup
 }
 
 src_configure() {
-	python_setup
 	tc-export CC PKG_CONFIG AR
 
 	if use raspberry-pi; then
@@ -151,133 +151,137 @@ src_configure() {
 		append-ldflags -L"${ESYSROOT}/opt/vc/lib"
 	fi
 
-	local mywafargs=(
-		--confdir="${EPREFIX}/etc/${PN}"
+	if use debug && ! use test; then
+		append-cppflags -DNDEBUG
+	fi
 
-		$(usex cli '' '--disable-cplayer')
-		$(use_enable libmpv libmpv-shared)
+	local emesonargs=(
+		-Dbuild-date=false
+		$(meson_use cli cplayer)
+		$(meson_use libmpv)
+		$(meson_use test tests)
 
-		--disable-libmpv-static
-		--disable-static-build
-		# See deep down below for build-date.
-		--disable-optimize # Don't add '-O2' to CFLAGS.
-		$(usex debug '' '--disable-debug-build')
+		$(meson_feature doc html-build)
+		-Dmanpage-build=enabled
+		-Dpdf-build=disabled
 
-		$(use_enable doc html-build)
-		--disable-pdf-build
-		--enable-manpage-build
-		$(use_enable cplugins)
-		$(use_enable test)
+		$(meson_feature cplugins)
+		$(meson_feature iconv)
+		$(meson_feature javascript)
+		$(meson_feature zlib)
+		$(meson_feature bluray libbluray)
+		$(meson_feature dvd dvdnav)
 
-		$(use_enable iconv)
-		$(use_enable lua)
-		$(use_enable javascript)
-		$(use_enable zlib)
-		$(use_enable bluray libbluray)
-		$(use_enable dvd dvdnav)
-		$(use_enable cdda)
-		$(use_enable uchardet)
-		$(use_enable rubberband)
-		$(use_enable lcms lcms2)
-		--disable-vapoursynth # Only available in overlays.
-		$(use_enable archive libarchive)
+		$(meson_feature cdda)
 
-		--enable-libavdevice
+		$(meson_feature uchardet)
+		$(meson_feature rubberband)
+		$(meson_feature lcms lcms2)
+
+		# Only available in overlays.
+		-Dvapoursynth=disabled
+
+		$(meson_feature vector)
+
+		$(meson_feature archive libarchive)
+
+		-Dlibavdevice=enabled
 
 		# Audio outputs:
-		$(use_enable sdl sdl2) # Listed under audio, but also includes video.
-		$(use_enable pulseaudio pulse)
-		$(use_enable jack)
-		$(use_enable openal)
-		--disable-opensles
-		$(use_enable alsa)
-		$(use_enable coreaudio)
+		$(meson_feature sdl sdl2-audio)
+		$(meson_feature pulseaudio pulse)
+		$(meson_feature jack)
+		$(meson_feature openal)
+		$(meson_feature pipewire)
+		-Dopensles=disabled
+		$(meson_feature alsa)
+		$(meson_feature coreaudio)
+		$(meson_feature sndio)
 
 		# Video outputs:
-		$(use_enable aqua cocoa)
-		$(use_enable drm)
-		$(use_enable gbm)
-		$(use_enable wayland wayland-scanner)
-		$(use_enable wayland wayland-protocols)
-		$(use_enable wayland)
-		$(use_enable X x11)
-		$(use_enable xv)
-		$(usex opengl "$(use_enable aqua gl-cocoa)" '--disable-gl-cocoa')
-		$(usex opengl "$(use_enable X gl-x11)" '--disable-gl-x11')
-		$(usex egl "$(use_enable X egl-x11)" '--disable-egl-x11')
-		$(usex egl "$(use_enable gbm egl-drm)" '--disable-egl-drm')
-		$(usex opengl "$(use_enable wayland gl-wayland)" '--disable-gl-wayland')
-		$(use_enable vdpau)
-		$(usex vdpau "$(use_enable opengl vdpau-gl-x11)" '--disable-vdpau-gl-x11')
-		$(use_enable vaapi) # See below for vaapi-glx, vaapi-x-egl.
-		$(usex vaapi "$(use_enable X vaapi-x11)" '--disable-vaapi-x11')
-		$(usex vaapi "$(use_enable wayland vaapi-wayland)" '--disable-vaapi-wayland')
-		$(usex vaapi "$(use_enable gbm vaapi-drm)" '--disable-vaapi-drm')
-		$(use_enable libcaca caca)
-		$(use_enable jpeg)
-		$(use_enable vulkan shaderc)
-		$(use_enable vulkan libplacebo)
-		$(use_enable raspberry-pi rpi)
-		$(usex libmpv "$(use_enable opengl plain-gl)" '--disable-plain-gl')
-		$(usex opengl '' '--disable-gl')
-		$(use_enable vulkan)
-		$(use_enable gamepad sdl2-gamepad)
+		$(meson_feature sdl sdl2-video)
+		$(meson_feature aqua cocoa)
+		$(meson_feature drm)
+		$(meson_feature gbm)
+		$(meson_feature wayland)
+		$(meson_feature X x11)
+		$(meson_feature xv)
+
+		$(meson_feature opengl gl)
+		$(usex opengl "$(meson_feature aqua gl-cocoa)" '-Dgl-cocoa=disabled')
+		$(usex opengl "$(meson_feature X gl-x11)" '-Dgl-x11=disabled')
+
+		$(meson_feature egl)
+		$(usex egl "$(meson_feature X egl-x11)" "-Degl-x11=disabled")
+		$(usex egl "$(meson_feature gbm egl-drm)" "-Degl-drm=disabled")
+		$(usex opengl "$(meson_feature wayland egl-wayland)" '-Degl-wayland=disabled')
+
+		$(meson_feature vdpau)
+		$(usex vdpau "$(meson_feature opengl vdpau-gl-x11)" '-Dvdpau-gl-x11=disabled')
+
+		$(meson_feature vaapi) # See below for vaapi-glx, vaapi-x-egl.
+		$(usex vaapi "$(meson_feature X vaapi-x11)" "-Dvaapi-x11=disabled")
+		$(usex vaapi "$(meson_feature wayland vaapi-wayland)" "-Dvaapi-wayland=disabled")
+		$(usex vaapi "$(meson_feature gbm vaapi-drm)" "-Dvaapi-drm=disabled")
+
+		$(meson_feature libcaca caca)
+		$(meson_feature jpeg)
+		$(meson_feature vulkan shaderc)
+		$(meson_feature vulkan libplacebo)
+		$(meson_feature raspberry-pi rpi)
+
+		-Dsixel=disabled
+		-Dspirv-cross=disabled
+
+		$(usex libmpv "$(meson_feature opengl plain-gl)" "-Dplain-gl=disabled")
+		$(meson_feature opengl gl)
+		$(meson_feature vulkan)
+		$(meson_feature gamepad sdl2-gamepad)
 
 		# HWaccels:
 		# Automagic Video Toolbox HW acceleration. See Gentoo bug 577332.
-		$(use_enable nvenc cuda-hwaccel)
-		$(use_enable nvenc cuda-interop)
+		$(meson_feature nvenc cuda-hwaccel)
+		$(meson_feature nvenc cuda-interop)
 
 		# TV features:
-		$(use_enable dvb dvbin)
+		$(meson_feature dvb dvbin)
 
 		# Miscellaneous features:
-		$(use_enable zimg)
+		$(meson_feature zimg)
 	)
+
 	if use lua; then
-		if use lua_single_target_luajit; then
-			mywafargs+=( --lua="luajit" )
-		else
-			# Because it would be too simple to just let the user directly
-			# specify the package name to check, wouldn't it.
-			mywafargs+=( --lua="$(ver_rs 1 '' $(ver_cut 1-2 $(lua_get_version)))" )
-		fi
+		emesonargs+=( -Dlua="${ELUA}" )
+	else
+		emesonargs+=( -Dlua=disabled )
 	fi
 
 	if use vaapi && use X; then
-		mywafargs+=(
-			$(use_enable egl vaapi-x-egl)
+		emesonargs+=(
+			$(meson_feature egl vaapi-x-egl)
 		)
 	fi
 
 	# Not for us
-	mywafargs+=(
-		--disable-android
-		--disable-egl-android
-		--disable-uwp
-		--disable-audiounit
-		--disable-macos-media-player
-		--disable-wasapi
-		--disable-ios-gl
-		--disable-macos-touchbar
-		--disable-macos-cocoa-cb
-		--disable-tvos
-		--disable-egl-angle-win32
+	emesonargs+=(
+		-Duwp=disabled
+		-Daudiounit=disabled
+		-Doss-audio=disabled
+		-Dwasapi=disabled
+
+		-Dd3d11=disabled
+		-Ddirect3d=disabled
 	)
 
-	mywafargs+=(
-		--bashdir="$(get_bashcompdir)"
-		--zshdir="${EPREFIX}"/usr/share/zsh/site-functions
-)
+	meson_src_configure
+}
 
-	# Create reproducible non-live builds.
-	[[ ${PV} != *9999* ]] && mywafargs+=(--disable-build-date)
-
-	waf-utils_src_configure "${mywafargs[@]}"
+src_test() {
+	edo "${BUILD_DIR}"/mpv --no-config -v --unittest=all-simple
 }
 
 src_install() {
-	waf-utils_src_install
+	meson_src_install
 
 	if use lua; then
 		insinto /usr/share/${PN}
@@ -291,7 +295,7 @@ src_install() {
 	if use tools; then
 		dobin TOOLS/{mpv_identify.sh,umpv}
 		newbin TOOLS/idet.sh mpv_idet.sh
-		python_replicate_script "${ED}"/usr/bin/umpv
+		python_fix_shebang "${ED}"/usr/bin/umpv
 	fi
 }
 
@@ -341,19 +345,4 @@ pkg_postinst() {
 
 	xdg_icon_cache_update
 	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
-}
-
-src_test() {
-	cd "${S}"/build/test || die
-	local test
-	for test in *; do
-		if [[ -x ${test} ]]; then
-			./"${test}" || die "Test suite failed"
-		fi
-	done
 }
