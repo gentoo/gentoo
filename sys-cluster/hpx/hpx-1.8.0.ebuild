@@ -47,6 +47,9 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-python.patch"
+	"${FILESDIR}/${P}-fix-musl-exec_pagesize-not-defined.patch"
+	"${FILESDIR}/${P}-fix-musl-execinfo.patch"
+	"${FILESDIR}/${P}-fix-musl-rtdl-not-declared.patch"
 )
 
 hpx_memory_requirement() {
