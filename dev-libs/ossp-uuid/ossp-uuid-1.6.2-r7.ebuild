@@ -83,5 +83,7 @@ src_install() {
 
 	mv "${ED}"/usr/$(get_libdir)/pkgconfig/{,ossp-}uuid.pc || die
 	mv "${ED}"/usr/share/man/man3/uuid.3{,ossp} || die
-	mv "${ED}"/usr/share/man/man3/uuid++.3{,ossp} || die
+	if use cxx; then
+		mv "${ED}"/usr/share/man/man3/uuid++.3{,ossp} || die
+	fi
 }
