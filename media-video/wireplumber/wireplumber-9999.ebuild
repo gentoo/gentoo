@@ -3,6 +3,13 @@
 
 EAPI=8
 
+# 1. Please regularly check (even at the point of bumping) Fedora's packaging
+# for needed backports at https://src.fedoraproject.org/rpms/wireplumber/tree/rawhide
+#
+# 2. Keep an eye on git master (for both PipeWire and WirePlumber) as things
+# continue to move quickly. It's not uncommon for fixes to be made shortly
+# after releases.
+
 LUA_COMPAT=( lua5-{3,4} )
 
 inherit lua-single meson systemd
