@@ -31,7 +31,10 @@ CPU_FEATURES=( ${X86_CPU_FEATURES[@]/#/cpu_flags_x86_} )
 
 IUSE="doc partio qt5 test ${CPU_FEATURES[@]%:*} python"
 
+# libfmt dep can actually be removed once it builds w/ 9.0.0, it uses
+# headers via openimageio, but it's code in osl which breaks
 RDEPEND="
+	<dev-libs/libfmt-9.0.0
 	dev-libs/boost:=
 	dev-libs/pugixml
 	>=media-libs/openexr-3:0=
