@@ -26,7 +26,7 @@ BDEPEND="verify-sig? ( sec-keys/signify-keys-signify )"
 
 PATCHES=( "${FILESDIR}"/${PN}-30-man_compress.patch )
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/signify-keys/${P}.pub"
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/signify-keys/${PN}-30.pub"
 
 src_unpack() {
 	if use verify-sig; then
