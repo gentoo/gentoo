@@ -1,3 +1,7 @@
+From: Christopher Rudolph
+Fix build with libfmt-9.0.0
+Upstream report: https://github.com/dolphin-emu/dolphin/pull/10825
+
 diff --git a/Source/Core/Common/MsgHandler.h b/Source/Core/Common/MsgHandler.h
 index 750da51..1d6a467 100644
 --- a/Source/Core/Common/MsgHandler.h
