@@ -1,13 +1,14 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit cmake flag-o-matic prefix
+EAPI=8
+inherit cmake prefix
 
 DESCRIPTION="C++ Heterogeneous-Compute Interface for Portability"
 HOMEPAGE="https://github.com/ROCm-Developer-Tools/HIP"
 SRC_URI="https://github.com/ROCm-Developer-Tools/HIP/archive/rocm-${PV}.tar.gz -> rocm-hip-${PV}.tar.gz
 	https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/archive/rocm-${PV}.tar.gz -> rocm-opencl-runtime-${PV}.tar.gz"
+S="${WORKDIR}/HIP-rocm-${PV}"
 
 KEYWORDS="~amd64"
 LICENSE="MIT"
@@ -15,8 +16,11 @@ SLOT="0/$(ver_cut 1-2)"
 
 IUSE="debug profile"
 
-DEPEND="dev-libs/rocclr:${SLOT}
+DEPEND="
+	<sys-devel/gcc-12:*
+	dev-libs/rocclr:${SLOT}
 	dev-util/rocminfo:${SLOT}
+	dev-libs/roct-thunk-interface:${SLOT}
 	=sys-devel/llvm-roc-${PV}*[runtime]
 	profile? ( dev-util/roctracer:${SLOT} )"
 RDEPEND="${DEPEND}
@@ -30,11 +34,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.2.0-cancel-hcc-header-removal.patch"
 )
 
-S="${WORKDIR}/HIP-rocm-${PV}"
-
 src_prepare() {
 	cmake_src_prepare
-	eapply_user
 
 	# Use Gentoo slot number, otherwise git hash is attempted in vain.
 	sed -e "/set (HIP_LIB_VERSION_STRING/cset (HIP_LIB_VERSION_STRING ${SLOT#*/})" -i CMakeLists.txt || die
@@ -68,6 +69,10 @@ src_prepare() {
 		-e "s,@HIP_VERSION_PATCH@,$(ver_cut 3)," -i bin/hipvars.pm || die
 
 	cp -a "${WORKDIR}"/ROCm-OpenCL-Runtime-rocm-${PV}/amdocl/cl_vk_amd.hpp amdocl/ || die
+
+	# Bug 790164
+	rm amdocl/CL/cl{,_icd,_gl,_gl_ext,_platform}.h || die
+	sed -i 's/CL_EXT_SUFFIX/CL_API_SUFFIX/' amdocl/cl_icd_amd.h amdocl/CL/cl_ext.h rocclr/cl_lqdflash_amd.h || die
 }
 
 src_configure() {
