@@ -1,0 +1,23 @@
+https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/7b0106883716cb0fa72a2b3c4715175607ec658a
+
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Fri, 8 Jul 2022 09:23:31 +0200
+Subject: [PATCH] audioconvert: consume right amount of input samples
+
+When we are not using the resampler, we consume the same amount of
+input samples as output samples.
+
+Fixes #2519
+--- a/spa/plugins/audioconvert/audioconvert.c
++++ b/spa/plugins/audioconvert/audioconvert.c
+@@ -2542,8 +2542,8 @@ static int impl_node_process(void *object)
+ 		this->in_offset += in_len;
+ 		n_samples = out_len;
+ 	} else {
+-		this->in_offset += n_samples;
+ 		n_samples = SPA_MIN(n_samples, n_out);
++		this->in_offset += n_samples;
+ 	}
+ 	this->out_offset += n_samples;
+ 
+GitLab
