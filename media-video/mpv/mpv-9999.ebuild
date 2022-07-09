@@ -33,7 +33,7 @@ LICENSE="LGPL-2.1+ GPL-2+ BSD MIT ISC"
 SLOT="0"
 IUSE="+alsa aqua archive bluray cdda +cli coreaudio cplugins debug doc drm dvb
 	dvd +egl gamepad gbm +iconv jack javascript jpeg lcms libcaca libmpv +lua
-	nvenc openal +opengl pipewire pulseaudio raspberry-pi rubberband sdl
+	mmal nvenc openal +opengl pipewire pulseaudio raspberry-pi rubberband sdl
 	selinux sndio test tools +uchardet vaapi vdpau +vector vulkan wayland +X +xv zlib zimg"
 
 REQUIRED_USE="
@@ -229,6 +229,7 @@ src_configure() {
 		$(meson_feature vulkan shaderc)
 		$(meson_feature vulkan libplacebo)
 		$(meson_feature raspberry-pi rpi)
+		$(meson_feature mmal rpi-mmal)
 
 		-Dsixel=disabled
 		-Dspirv-cross=disabled
