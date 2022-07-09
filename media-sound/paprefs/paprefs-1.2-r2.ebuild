@@ -31,7 +31,8 @@ BDEPEND="
 
 src_configure() {
 	append-cxxflags -std=c++11 #568590
-	local mymesonargs=(
+
+	local emesonargs=(
 		-Dlynx=false
 	)
 	meson_src_configure
