@@ -17,6 +17,7 @@
 		<flag name="jpeg">Enable support for saving screenshots in JPEG format</flag>
 		<flag name="libmpv">Build mpv shared library</flag>
 		<flag name="lua">Enable Lua scripting, OSC (On Screen Controller) GUI and <pkg>net-misc/youtube-dl</pkg> hook-script</flag>
+		<flag name="mmal">Enables Multi-Media Abstraction Layer (MMAL) decoding support: Available e.g. on the Raspberry Pi.</flag>
 		<flag name="opengl" restrict="&lt;media-video/mpv-0.28.0">Enable the recommended 'opengl' video output</flag>
 		<flag name="opengl" restrict="&gt;=media-video/mpv-0.28.0">Enable support for various OpenGL-based video backends</flag>
 		<flag name="raspberry-pi">Enable support for the Raspberry Pi</flag>

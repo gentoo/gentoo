@@ -237,10 +237,6 @@ app-admin/rsyslog imhttp mdblookup
 # https://caml.inria.fr/pub/docs/manual-ocaml/spacetime.html
 dev-lang/ocaml spacetime
 
-# Thomas Deutschmann <whissi@gentoo.org> (2017-01-30)
-# media-libs/raspberrypi-userland not keyworded
-media-video/motion mmal
-
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2017-01-04)
 # Mask assembly optimisations that are platform-specific
 dev-libs/libsecp256k1 asm
@@ -283,8 +279,10 @@ media-video/mpv raspberry-pi
 # Alexis Ballier <aballier@gentoo.org> (2015-11-14)
 # MMAL is only available on the Raspberry Pi:
 # Mask it globally, unmask it on arm.
+media-video/motion mmal
 media-video/ffmpeg mmal
 media-video/ffmpeg-chromium mmal
+media-video/mpv mmal
 
 # Brian Evans <grknight@gentoo.org (2015-09-14)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies
