@@ -1,0 +1,18 @@
+[Unit]
+Description=netflow accounting daemon
+After=network.target
+
+[Service]
+ProtectSystem=full
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+Type=forking
+ExecStart=/usr/sbin/nfacctd -f /etc/pmacctd/nfacctd.conf -i %I
+
+[Install]
+WantedBy=multi-user.target
