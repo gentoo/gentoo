@@ -16,7 +16,7 @@ IUSE="emboss minimal"
 RESTRICT="binchecks strip"
 
 BDEPEND="emboss? ( sci-biology/emboss )"
-REPEND="${BDEPEND}"
+RDEPEND="${BDEPEND}"
 
 src_compile() {
 	if use emboss; then
