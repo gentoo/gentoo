@@ -58,7 +58,6 @@ src_prepare() {
 
 src_configure(){
 	local mycmakeargs=(
-		-DBUILD_SHARED_LIBS=yes
 		-DUNICORN_ARCH="${UNICORN_TARGETS// /;}"
 	)
 
