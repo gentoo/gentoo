@@ -15,5 +15,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">PyO3/maturin</remote-id>
+		<remote-id type="pypi">maturin</remote-id>
 	</upstream>
 </pkgmetadata>
