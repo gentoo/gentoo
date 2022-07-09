@@ -41,7 +41,7 @@ RDEPEND=">=dev-libs/expat-2.0.1
 	)
 	dev-cpp/libmcpp
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( $(ruby_implementation_depend ruby26) )
+	ruby? ( $(ruby_implementation_depend ruby27) )
 	mono? ( dev-lang/mono )"
 DEPEND="${RDEPEND}
 	readline? ( sys-libs/readline:0= )
