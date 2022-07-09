@@ -1,0 +1,73 @@
+--- a/watchman/python/setup.py
++++ b/watchman/python/setup.py
+@@ -13,30 +13,10 @@ try:
+ except ImportError:
+     from distutils.core import setup, Extension
+ 
+-watchman_src_dir = os.environ.get("CMAKE_CURRENT_SOURCE_DIR")
+-if watchman_src_dir is None:
+-    watchman_src_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..")
+-
+-# Setuptools is very picky about the path on Windows. They have to be relative
+-# paths, and on Windows that means we have to be on the same drive as the source
+-# files. Otherwise it is impossible to obtain a relative path across different
+-# drives. However this has an implication that we will not be able to build this
+-# package outside the repository. Not great but it works.
+-py_dir = os.path.join(watchman_src_dir, "watchman", "python")
+-if os.name == "nt":
+-    os.chdir(py_dir)
+-    py_dir = os.path.relpath(py_dir)
+-
+-
+-def srcs(names):
+-    """transform a list of sources to be relative to py_dir"""
+-    return ["%s/%s" % (py_dir, n) for n in names]
+-
+ 
+ setup(
+     name="pywatchman",
+     version="1.4.1",
+-    package_dir={"": py_dir},
+     description="Watchman client for python",
+     author="Wez Furlong, Rain",
+     author_email="wez@fb.com",
+@@ -47,7 +27,7 @@ setup(
+     keywords=("watchman inotify fsevents kevent kqueue portfs filesystem watcher"),
+     license="BSD",
+     packages=["pywatchman"],
+-    ext_modules=[Extension("pywatchman.bser", sources=srcs(["pywatchman/bser.c"]))],
++    ext_modules=[Extension("pywatchman.bser", sources=["pywatchman/bser.c"])],
+     platforms="Platform Independent",
+     classifiers=[
+         "Development Status :: 5 - Production/Stable",
+@@ -63,12 +43,10 @@ setup(
+         "Programming Language :: Python :: 3.6",
+     ],
+     zip_safe=True,
+-    scripts=srcs(
+-        [
++    scripts=[
+             "bin/watchman-make",
+             "bin/watchman-wait",
+             "bin/watchman-replicate-subscription",
+-        ]
+-    ),
++    ],
+     test_suite="tests",
+ )
+--- a/watchman/python/tests/tests.py	2022-07-09 05:21:29.017605168 +0100
++++ b/watchman/python/tests/tests.py	2022-07-09 05:21:34.920982537 +0100
+@@ -27,13 +27,6 @@
+ )
+ 
+ 
+-if os.path.basename(bser.__file__) == "pybser.py":
+-    raise Exception(
+-        "bser module resolved to pybser! Something is broken in your build. __file__={!r}, sys.path={!r}".format(
+-            bser.__file__, sys.path
+-        )
+-    )
+-
+ PILE_OF_POO = "\U0001F4A9"
+ NON_UTF8_STRING = b"\xff\xff\xff"
+ 
