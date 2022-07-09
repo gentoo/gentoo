@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+inherit autotools toolchain-funcs systemd
 
 DESCRIPTION="A network tool to gather IP traffic information"
 HOMEPAGE="http://www.pmacct.net/"
@@ -101,6 +101,8 @@ src_install() {
 
 	newinitd "${FILESDIR}"/pmacctd-init.d pmacctd
 	newconfd "${FILESDIR}"/pmacctd-conf.d pmacctd
+
+	systemd_dounit "${FILESDIR}"/{nfacctd,pmacctd,sfacctd}.service
 
 	insinto /etc/pmacctd
 	newins examples/pmacctd-imt.conf.example pmacctd.conf
