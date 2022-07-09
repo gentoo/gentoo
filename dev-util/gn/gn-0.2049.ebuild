@@ -32,7 +32,7 @@ src_configure() {
 	python_setup
 	tc-export AR CC CXX
 	unset CFLAGS
-	set -- ${EPYTHON} build/gen.py --no-last-commit-position --no-strip --no-static-libstdc++
+	set -- ${EPYTHON} build/gen.py --no-last-commit-position --no-strip --no-static-libstdc++ --allow-warnings
 	echo "$@" >&2
 	"$@" || die
 	cat >out/last_commit_position.h <<-EOF || die
