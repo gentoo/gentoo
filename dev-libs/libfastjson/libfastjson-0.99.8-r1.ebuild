@@ -13,7 +13,7 @@ SLOT="0/4.2.0"
 KEYWORDS="amd64 arm arm64 ~hppa sparc x86"
 IUSE="static-libs"
 
-BEPEND=">=sys-devel/autoconf-archive-2015.02.04"
+BDEPEND=">=sys-devel/autoconf-archive-2015.02.04"
 
 DOCS=( AUTHORS ChangeLog )
 
