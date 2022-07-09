@@ -166,7 +166,7 @@ NJS_MODULE_WD="${WORKDIR}/njs-${NJS_MODULE_PV}"
 SSL_DEPS_SKIP=1
 AUTOTOOLS_AUTO_DEPEND="no"
 
-inherit autotools lua-single ssl-cert toolchain-funcs perl-module flag-o-matic user systemd multilib pax-utils
+inherit autotools lua-single ssl-cert toolchain-funcs perl-module systemd pax-utils
 
 DESCRIPTION="Robust, small and high performance http and reverse proxy server"
 HOMEPAGE="https://nginx.org"
@@ -279,6 +279,8 @@ done
 IUSE="${IUSE} nginx_modules_http_spdy"
 
 CDEPEND="
+	acct-group/nginx
+	acct-user/nginx
 	virtual/libcrypt:=
 	pcre? ( dev-libs/libpcre:= )
 	pcre-jit? ( dev-libs/libpcre:=[jit] )
@@ -342,11 +344,6 @@ REQUIRED_USE="pcre-jit? ( pcre )
 pkg_setup() {
 	NGINX_HOME="/var/lib/nginx"
 	NGINX_HOME_TMP="${NGINX_HOME}/tmp"
-
-	ebegin "Creating nginx user and group"
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 "${NGINX_HOME}" ${PN}
-	eend $?
 
 	if use libatomic; then
 		ewarn "GCC 4.1+ features built-in atomic operations."
