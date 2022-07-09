@@ -428,6 +428,7 @@ meson_install() {
 	local mesoninstallargs=(
 		-C "${BUILD_DIR}"
 		--destdir "${D}"
+		--no-rebuild
 		"$@"
 	)
 
