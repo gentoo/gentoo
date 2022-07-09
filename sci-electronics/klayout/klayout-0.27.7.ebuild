@@ -7,7 +7,7 @@ RUBY_OPTIONAL=no
 USE_RUBY="ruby27"
 # note: define maximally ONE implementation here
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9,10,11} )
 
 inherit toolchain-funcs python-single-r1 ruby-ng
 
