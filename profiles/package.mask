@@ -238,13 +238,6 @@ dev-python/editdistance-s
 # w/ no hope of them being upstreamed. Bug #850958.
 dev-cpp/commoncpp2
 
-# Michał Górny <mgorny@gentoo.org> (2022-06-08)
-# pulseaudio-dlna has not seen any upstream activity since 2017,
-# and has had its last release in 2016.  It does not feature a non-live
-# ebuild.
-# Removal on 2022-07-08.  Bug #813990.
-net-misc/pulseaudio-dlna
-
 # Matt Turner <mattst88@gentoo.org> (2022-05-30)
 # libwacom-2 broke ABI compatibility; reverse dependencies need to be updated.
 # Bug #848501
