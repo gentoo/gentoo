@@ -28,7 +28,7 @@ perfscripts? (
 	dev-python/pandas[${PYTHON_USEDEP}] )
 ${PYTHON_DEPS}"
 
-DEPEND="dev-util/hip:${SLOT}
+DEPEND=">=dev-util/hip-5.0.2-r3:${SLOT}
 	${PYTHON_DEPS}"
 
 BDEPEND="
