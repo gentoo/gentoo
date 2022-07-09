@@ -14,22 +14,16 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+RDEPEND="dev-lang/perl:="
+BDEPEND="${RDEPEND}"
+
 PATCHES=(
-	"${FILESDIR}"/${P}-ldflags.patch
+	"${FILESDIR}"/${P}-makefile.patch
+	"${FILESDIR}"/${P}-portable-perl-shebangs.patch
 )
 
-src_prepare() {
-	default
-
-	sed \
-		-e "s:BINDIR  = \$(HOME)/bin:BINDIR = ${EPREFIX}/usr/bin:" \
-		-e "s:LIBDIR  = \$(HOME)/lib/tRNAscan-SE:LIBDIR = ${EPRFIX}/usr/share/${PN}:" \
-		-e "s:MANDIR  = \$(HOME)/man:MANDIR = ${EPREFIX}/usr/share/man:" \
-		-e "s:CC = gcc:CC = $(tc-getCC):" \
-		-e "s;CFLAGS = -O;CFLAGS = ${CFLAGS};" \
-		-i Makefile || die
-
-	perl_set_version
+src_configure() {
+	tc-export CC
 }
 
 src_test() {
@@ -40,14 +34,10 @@ src_install() {
 	dobin covels-SE coves-SE eufindtRNA tRNAscan-SE trnascan-1.4
 
 	newman tRNAscan-SE.man tRNAscan-SE.man.1
+	dodoc MANUAL Manual.ps README Release.history
 
-	dodoc MANUAL README Release.history
-
-	insinto /usr/share/${PN}/
+	insinto /usr/share/trnascan-se
 	doins *.cm gcode.* Dsignal TPCsignal
 
-	dodoc Manual.ps
-
-	insinto ${VENDOR_LIB}
-	doins -r tRNAscanSE
+	perl_domodule -r tRNAscanSE
 }

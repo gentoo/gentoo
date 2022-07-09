@@ -1,0 +1,140 @@
+--- a/Makefile
++++ b/Makefile
+@@ -20,9 +20,9 @@
+ PERLBIN = perl
+ 
+ ## where you want things installed
+-BINDIR  = $(HOME)/bin
+-LIBDIR  = $(HOME)/lib/tRNAscan-SE
+-MANDIR  = $(HOME)/man
++BINDIR = $(EPREFIX)/usr/bin
++LIBDIR = $(EPREFIX)/usr/share/trnascan-se
++MANDIR = $(EPREFIX)/usr/share/man
+ 
+ ## NOTE !!  If you later manually move the location of 
+ ## binaries or data files in the BINDIR or LIBDIR directories,
+@@ -33,10 +33,8 @@
+ TEMPDIR = /tmp
+ 
+ ## your compiler
+-CC = gcc	  # GNU cc (if available) otherwise use vendor's cc
+ 
+ ## any special compiler flags you want
+-CFLAGS = -O    # ok for most machines (remove -O for DEC OSF/1 cc compiler)
+ 
+ ## machine specific definitions
+ #  You shouldn't need any. The specific #define's in squid are historical.
+@@ -58,7 +56,7 @@
+ #######
+ 
+ SHELL  = /bin/sh
+-LIBS   = -lm
++LIBS   += -lm
+ .SUFFIXES : .c .o
+ 
+ DOCS = README MANUAL INSTALL COPYING GNULICENSE FILES Release.history
+@@ -109,20 +107,20 @@
+ all: 	$(PROGS) tRNAscan-SE setpaths
+ 
+ covels-SE:  $(OBJ) scan_main.o
+-	$(CC) $(CFLAGS) $(RFLAGS) -o covels-SE scan_main.o $(OBJ) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(RFLAGS) -o covels-SE scan_main.o $(OBJ) $(LIBS)
+ 
+ coves-SE: $(OBJ) score_main.o
+-	$(CC) $(CFLAGS) $(RFLAGS) -o coves-SE score_main.o $(OBJ) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(RFLAGS) -o coves-SE score_main.o $(OBJ) $(LIBS)
+ 
+ eufindtRNA: $(SQUIDOBJ) pavesi.o eufind_main.o
+-	$(CC) $(CFLAGS)  -o eufindtRNA eufind_main.o \
++	$(CC) $(LDFLAGS) $(CFLAGS) -o eufindtRNA eufind_main.o \
+ 	pavesi.o $(SQUIDOBJ) $(LIBS)
+ 
+-trnascan-1.4: trnascan.o
+-	$(CC) $(CFLAGS) -DTSCANDIR=\"$(LIBDIR)\" -o trnascan-1.4 trnascan.c
++trnascan-1.4: trnascan.c
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) -DTSCANDIR=\"$(LIBDIR)\" -o trnascan-1.4 trnascan.c
+ 
+ tRNAscan-SE:
+-	$(PERLDIR)/$(PERLBIN) checkversion.pl
++	$(PERLBIN) checkversion.pl
+ 	sed 's#/tmp#$(TEMPDIR)#g' tRNAscan-SE.src | \
+ 	sed 's#bindir = ""#bindir =\"$(BINDIR)/"#g' | \
+ 	sed 's#/usr/local/lib/tRNAscanSE#$(LIBDIR)#g' | \
+@@ -200,11 +198,11 @@
+ noambig: trnascan-1.4-NA eufindtRNA-NA
+ 
+ trnascan-1.4-NA:  trnascan.o
+-	$(CC) $(CFLAGS) -DNO_AMBIG -DTSCANDIR=\"$(LIBDIR)\" -o trnascan-1.4-NA trnascan.c
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) -DNO_AMBIG -DTSCANDIR=\"$(LIBDIR)\" -o trnascan-1.4-NA trnascan.c
+ 
+ eufindtRNA-NA: $(SQUIDOBJ) eufind_main.o
+-	$(CC) $(CFLAGS) -DNO_AMBIG -c -o pavesi-NA.o pavesi.c 
+-	$(CC) $(CFLAGS) -o eufindtRNA-NA eufind_main.o \
++	$(CC) $(CFLAGS) $(CPPFLAGS) -DNO_AMBIG -c -o pavesi-NA.o pavesi.c 
++	$(CC) $(LDFLAGS) $(CFLAGS) -o eufindtRNA-NA eufind_main.o \
+ 	pavesi-NA.o $(SQUIDOBJ) $(LIBS)	
+ 
+ 
+@@ -220,7 +218,7 @@
+ 	rmdir -ps $(MANDIR)
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) $(MDEFS) -c $<		
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -c $<		
+ 
+ ## programs from Sean Eddy's sequence i/o function library not
+ ## needed for tRNAscan-SE but included for their utility
+@@ -233,16 +231,16 @@
+ 	cp $(UTILS) $(BINDIR)/.
+ 
+ reformat: $(SQUIDOBJ) reformat_main.o
+-	$(CC) $(CFLAGS) $(MDEFS) -o reformat $(SQUIDOBJ) reformat_main.o $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(MDEFS) -o reformat $(SQUIDOBJ) reformat_main.o $(LIBS)
+ 
+ revcomp: $(SQUIDOBJ) revcomp_main.o
+-	$(CC) $(CFLAGS) $(MDEFS) -o revcomp $(SQUIDOBJ) revcomp_main.o $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(MDEFS) -o revcomp $(SQUIDOBJ) revcomp_main.o $(LIBS)
+ 
+ seqstat: $(SQUIDOBJ) seqstat_main.o
+-	$(CC) $(CFLAGS) $(MDEFS) -o seqstat $(SQUIDOBJ) seqstat_main.o $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(MDEFS) -o seqstat $(SQUIDOBJ) seqstat_main.o $(LIBS)
+ 
+ shuffle: $(SQUIDOBJ) shuffle_main.o
+-	$(CC) $(CFLAGS) $(MDEFS) -o shuffle $(SQUIDOBJ) shuffle_main.o $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(MDEFS) -o shuffle $(SQUIDOBJ) shuffle_main.o $(LIBS)
+ 
+ ## other programs in Cove package (below) not needed for
+ ## tRNAscan-SE, but are included for users who wish to apply
+@@ -255,25 +253,25 @@
+ 	cp $(COVE_SUITE) $(BINDIR)/.
+ 
+ covea: $(OBJ) align_main.o
+-	$(CC) $(CFLAGS) $(RFLAGS) -o covea align_main.o $(OBJ) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(RFLAGS) -o covea align_main.o $(OBJ) $(LIBS)
+ 
+ coveb: $(OBJ) build_main.o
+-	$(CC) $(CFLAGS) $(RFLAGS) -o coveb build_main.o $(OBJ) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(RFLAGS) -o coveb build_main.o $(OBJ) $(LIBS)
+ 
+ covee: $(OBJ) emit_main.o
+-	$(CC) $(CFLAGS) $(RFLAGS) -o covee emit_main.o $(OBJ) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(RFLAGS) -o covee emit_main.o $(OBJ) $(LIBS)
+ 
+ covet: $(OBJ) train_main.o
+-	$(CC) $(CFLAGS) $(RFLAGS) -o covet train_main.o $(OBJ) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(RFLAGS) -o covet train_main.o $(OBJ) $(LIBS)
+ 
+ covels:  $(OBJ) scan_main.o
+-	$(CC) $(CFLAGS) $(RFLAGS) -o covels scan_main.o $(OBJ) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(RFLAGS) -o covels scan_main.o $(OBJ) $(LIBS)
+ 
+ coves: $(OBJ) score_main.o
+-	$(CC) $(CFLAGS) $(RFLAGS) -o coves score_main.o $(OBJ) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(RFLAGS) -o coves score_main.o $(OBJ) $(LIBS)
+ 
+ structcheck: $(OBJ) structcheck_main.o
+-	$(CC) $(CFLAGS) $(RFLAGS) -o structcheck structcheck_main.o $(OBJ) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(RFLAGS) -o structcheck structcheck_main.o $(OBJ) $(LIBS)
+ 
+ 
+ ## Maspar memory limits
