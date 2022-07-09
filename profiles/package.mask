@@ -33,23 +33,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Hans de Graaff <graaff@gentoo.org> (2022-07-09)
-# ruby26-only version of dev-ruby/rails and associated dependencies. Use
-# a newer slot instead. Masked for removal in 30 days.
-dev-ruby/actioncable:5.2
-dev-ruby/actionmailer:5.2
-dev-ruby/actionpack:5.2
-dev-ruby/actionview:5.2
-dev-ruby/activejob:5.2
-dev-ruby/activemodel:5.2
-dev-ruby/activerecord:5.2
-dev-ruby/activestorage:5.2
-dev-ruby/rails:5.2
-dev-ruby/railties:5.2
-dev-ruby/arel
-dev-ruby/web-console:3
-dev-ruby/activeldap:5
-
 # David Seifert <soap@gentoo.org> (2022-07-07)
 # Broken by recent fix attempts, bug #856811.
 >app-emulation/virtualbox-6.1.34-r1
