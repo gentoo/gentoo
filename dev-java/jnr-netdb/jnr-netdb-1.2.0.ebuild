@@ -14,7 +14,7 @@ SRC_URI="https://github.com/jnr/jnr-netdb/archive/jnr-netdb-${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="1.0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 
 CP_DEPEND="
 	dev-java/jnr-ffi:2"
