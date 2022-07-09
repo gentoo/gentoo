@@ -23,7 +23,7 @@ RESTRICT="x86? ( test )
 RDEPEND="app-arch/snappy:=
 	app-arch/zstd:=
 	>=dev-libs/libbson-${PV}[static-libs?]
-	dev-python/sphinx
+	<dev-python/sphinx-5
 	sys-libs/zlib:=
 	icu? ( dev-libs/icu:= )
 	sasl? ( dev-libs/cyrus-sasl:= )
