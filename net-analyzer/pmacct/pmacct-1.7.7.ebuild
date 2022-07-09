@@ -1,21 +1,27 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools flag-o-matic git-r3 toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="A network tool to gather IP traffic information"
 HOMEPAGE="http://www.pmacct.net/"
-EGIT_REPO_URI="https://github.com/pmacct/pmacct/"
+if [[ ${PV} == 9999 ]] ; then
+	EGIT_REPO_URI="https://github.com/pmacct/pmacct"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/pmacct/pmacct/releases/download/v${PV}/${P}.tar.gz
+		http://www.pmacct.net/${P}.tar.gz"
+
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="
-	+bgp-bins +bmp-bins geoip geoipv2 jansson kafka +l2 mysql ndpi nflog
-	postgres rabbitmq sqlite +st-bins +traffic-bins zmq
-"
+
+IUSE="+bgp-bins +bmp-bins geoip geoipv2 jansson kafka +l2 mysql ndpi nflog postgres rabbitmq sqlite +st-bins +traffic-bins zmq"
+
 REQUIRED_USE="
 	?? ( geoip geoipv2 )
 	kafka? ( jansson )
@@ -41,6 +47,11 @@ RDEPEND="dev-libs/libcdada
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.7.4--Werror.patch"
+	"${FILESDIR}/${PN}-1.7.6-nogit.patch"
+)
+
 DOCS=(
 	CONFIG-KEYS ChangeLog FAQS QUICKSTART UPGRADE
 	docs/INTERNALS docs/PLUGINS docs/SIGNALS
@@ -48,34 +59,36 @@ DOCS=(
 
 src_prepare() {
 	default
-	sed -i -e 's|-Werror||g' configure.ac || die
 	eautoreconf
 }
 
 src_configure() {
 	tc-export CC AR RANLIB
-	append-cflags -fcommon
 
-	econf \
-		$(use_enable bgp-bins) \
-		$(use_enable bmp-bins) \
-		$(use_enable geoip) \
-		$(use_enable geoipv2) \
-		$(use_enable jansson) \
-		$(use_enable kafka) \
-		$(use_enable l2) \
-		$(use_enable mysql) \
-		$(use_enable ndpi) \
-		$(use_enable nflog) \
-		$(use_enable postgres pgsql) \
-		$(use_enable rabbitmq) \
-		$(use_enable sqlite sqlite3) \
-		$(use_enable st-bins) \
-		$(use_enable traffic-bins) \
-		$(use_enable zmq) \
-		--without-external-deps \
-		--disable-debug \
+	local myeconfargs=(
+		$(use_enable bgp-bins)
+		$(use_enable bmp-bins)
+		$(use_enable geoip)
+		$(use_enable geoipv2)
+		$(use_enable jansson)
+		$(use_enable kafka)
+		$(use_enable l2)
+		$(use_enable mysql)
+		$(use_enable ndpi)
+		$(use_enable nflog)
+		$(use_enable postgres pgsql)
+		$(use_enable rabbitmq)
+		$(use_enable sqlite sqlite3)
+		$(use_enable st-bins)
+		$(use_enable traffic-bins)
+		$(use_enable zmq)
+
+		--without-external-deps
+		--disable-debug
 		--disable-mongodb
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
