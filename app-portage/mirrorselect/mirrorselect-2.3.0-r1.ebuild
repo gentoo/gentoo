@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="xml"
 
@@ -25,6 +25,10 @@ RDEPEND="
 	>=net-analyzer/netselect-0.4[ipv6(+)?]
 	>=dev-python/ssl-fetch-0.3[${PYTHON_USEDEP}]
 "
+
+PATCHES=(
+	"${FILESDIR}/mirrorselect-2.3.0-setup.py.patch"
+)
 
 python_prepare_all() {
 	python_setup
