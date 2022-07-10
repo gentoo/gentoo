@@ -1,0 +1,43 @@
+Bug: https://bugs.gentoo.org/790647
+
+From: orbea <orbea@riseup.net>
+Date: Sun, 10 Jul 2022 09:26:59 -0700
+Subject: [PATCH] Fix the build with slibtool
+
+The build system should not use the .libs directory which is for
+internal use by the libtool implementation only. GNU libtool is far less
+strict than slibtool in these cases.
+
+--- a/bindings/c++/Makefile.am
++++ b/bindings/c++/Makefile.am
+@@ -21,7 +21,7 @@ libpreludecpp_la_SOURCES = \
+ 	prelude-log.cxx
+ 
+ libpreludecpp_la_LDFLAGS = -no-undefined -version-info @LIBPRELUDECPP_SONAME@
+-libpreludecpp_la_LIBADD  = $(top_builddir)/src/.libs/libprelude.la
++libpreludecpp_la_LIBADD  = $(top_builddir)/src/libprelude.la
+ libpreludecpp_la_CPPFLAGS = -I$(top_builddir) -I$(top_builddir)/src/include -I$(top_srcdir)/src/include -I$(top_builddir)/src/libprelude-error -I$(top_builddir)/bindings/c++/include -I$(top_srcdir)/bindings/c++/include 
+ 
+ endif
+--- a/bindings/lua/Makefile.am
++++ b/bindings/lua/Makefile.am
+@@ -10,7 +10,7 @@ dist_swigdata_DATA = libpreludecpp-lua.i
+ AM_CPPFLAGS = -I@top_srcdir@ -I@top_builddir@/src/include -I@top_srcdir@/src/include -I@top_builddir@/src/libprelude-error -I@top_srcdir@/bindings/c++/include @LUA_CFLAGS@ -I@top_srcdir@/libmissing -I@top_builddir@/libmissing
+ 
+ prelude_la_LDFLAGS = -module -avoid-version
+-prelude_la_LIBADD = $(top_builddir)/bindings/c++/.libs/libpreludecpp.la
++prelude_la_LIBADD = $(top_builddir)/bindings/c++/libpreludecpp.la
+ prelude_la_SOURCES = prelude.cxx
+ preludedir = $(libdir)/lua/@LUA_VERSION@
+ prelude_LTLIBRARIES = prelude.la
+--- a/bindings/ruby/Makefile.am
++++ b/bindings/ruby/Makefile.am
+@@ -9,7 +9,7 @@ EXTRA_DIST = libpreludecpp-ruby.i Prelude.cxx
+ rbexec_LTLIBRARIES = Prelude.la
+ Prelude_la_CPPFLAGS = $(RUBY_INCLUDES) $(RUBY_CCFLAGS) -I@top_builddir@ -I$(top_srcdir)/src/include -I$(top_builddir)/src/include -I@top_builddir@/src/libprelude-error -I$(top_srcdir)/bindings/c++/include
+ Prelude_la_LDFLAGS = -module -avoid-version
+-Prelude_la_LIBADD = $(top_builddir)/bindings/c++/.libs/libpreludecpp.la $(RUBY_LIBS)
++Prelude_la_LIBADD = $(top_builddir)/bindings/c++/libpreludecpp.la $(RUBY_LIBS)
+ nodist_Prelude_la_SOURCES = Prelude.cxx
+ 
+ Prelude.cxx: $(top_srcdir)/bindings/c++/include/*.hxx $(top_srcdir)/bindings/libpreludecpp.i libpreludecpp-ruby.i 
