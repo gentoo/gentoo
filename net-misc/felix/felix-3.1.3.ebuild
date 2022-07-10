@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -86,7 +86,7 @@ EGO_VENDOR=(
 "k8s.io/kube-openapi 0c329704159e3b051aafac400b15baacf2a94a04 github.com/kubernetes/kube-openapi"
 )
 
-inherit golang-vcs-snapshot systemd user
+inherit golang-vcs-snapshot
 
 FELIX_COMMIT="dba3279377fd6ec7baf0ee560bcaec685f25fa86"
 
