@@ -29,6 +29,8 @@ MODULESD_VBOXDRV_ENABLED="yes"
 MODULESD_VBOXNETADP_ENABLED="no"
 MODULESD_VBOXNETFLT_ENABLED="no"
 
+PATCHES=( "${FILESDIR}"/${PN}-6.1.34-remove-netif_rx_ni.patch )
+
 pkg_setup() {
 	linux-mod_pkg_setup
 	BUILD_PARAMS="CC=\"$(tc-getBUILD_CC)\" KERN_DIR=${KV_DIR} KERN_VER=${KV_FULL} O=${KV_OUT_DIR} V=1 KBUILD_VERBOSE=1"
