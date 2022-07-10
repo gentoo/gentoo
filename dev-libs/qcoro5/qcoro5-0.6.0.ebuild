@@ -31,7 +31,10 @@ DEPEND="${RDEPEND}
 		dev-qt/qtconcurrent:5
 		dev-qt/qtwidgets:5
 	)
-	test? ( dev-qt/qtconcurrent:5 )
+	test? (
+		dev-qt/qtconcurrent:5
+		dev-qt/qttest:5
+	)
 "
 
 src_configure() {
