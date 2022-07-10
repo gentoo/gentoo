@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python3_{8..11} pypy3 )
 PYTHON_REQ_USE="xml(+),threads(+)"
 
@@ -28,6 +28,10 @@ DEPEND="
 RDEPEND="${DEPEND}
 	virtual/awk
 	sys-apps/gentoo-functions"
+
+PATCHES=(
+	"${FILESDIR}/gentoolkit-0.6.1-data_files.patch"
+)
 
 distutils_enable_tests setup.py
 
