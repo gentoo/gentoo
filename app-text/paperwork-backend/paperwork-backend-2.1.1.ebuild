@@ -30,3 +30,4 @@ RDEPEND="app-text/poppler[introspection]
 	dev-python/whoosh[${PYTHON_USEDEP}]
 	sci-libs/scikit-learn[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
+distutils_enable_tests unittest
