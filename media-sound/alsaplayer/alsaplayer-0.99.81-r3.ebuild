@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools desktop xdg
 
@@ -13,6 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~mips ~ppc ~riscv ~sparc x86"
 IUSE="+alsa audiofile doc flac gtk id3tag jack mad mikmod nas nls ogg opengl oss vorbis xosd"
+REQUIRED_USE="|| ( alsa jack nas oss )"
 
 RDEPEND="
 	media-libs/libsndfile:=
@@ -31,27 +32,17 @@ RDEPEND="
 	vorbis? ( media-libs/libvorbis )
 	xosd? ( x11-libs/xosd )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
-	nls? ( sys-devel/gettext )
 	oss? ( virtual/os-headers )"
-REQUIRED_USE="|| ( alsa jack nas oss )"
+BDEPEND="
+	sys-devel/gettext
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )"
+
+PATCHES=( "${FILESDIR}"/${P}-autotools.ebuild )
 
 src_prepare() {
 	default
-
-	sed -i \
-		-e 's:AM_CFLAGS = $(AM_CXXFLAGS)::' \
-		output/jack/Makefile.am || die
-
-	sed -i \
-		-e 's:-O2 -funroll-loops -finline-functions -ffast-math::' \
-		configure.ac || die
-
-	sed -i \
-		-e "s:/usr/lib:/usr/$(get_libdir):" \
-		configure.ac config.rpath || die
-
+	cp "${BROOT}"/usr/share/gettext/config.rpath . || die
 	eautoreconf
 }
 
@@ -83,5 +74,5 @@ src_install() {
 
 	newicon interface/gtk2/pixmaps/logo.xpm ${PN}.xpm
 
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
