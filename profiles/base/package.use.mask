@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2022-07-10)
+# TBB support is deprecated/broken upstream, needs older version,
+# and upstream are inclined to remove it entirely. bug #820827.
+sci-physics/bullet tbb
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-07-03)
 # miri is known to be broken on release builds from time to time
 # most of the time it requires nightly (real nightly) compiler.
