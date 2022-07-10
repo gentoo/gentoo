@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit desktop
 
 DESCRIPTION="A Puzzle Bobble clone similar to Frozen-Bubble"
@@ -16,22 +17,24 @@ IUSE="nls"
 RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXt
-	media-libs/libpng:0=
+	media-libs/libpng:=
 	nls? ( virtual/libintl )
 "
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )
-"
+DEPEND="${RDEPEND}"
+BDEPEND="nls? ( sys-devel/gettext )"
 
 DOCS=( AUTHORS ChangeLog NEWS NetworkProtocol README TODO )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-xpaths.patch
+	"${FILESDIR}"/${P}-locale.patch
+	"${FILESDIR}"/${P}-libpng14.patch
+	"${FILESDIR}"/${P}-png15.patch
+)
+
 src_prepare() {
 	default
-	eapply \
-		"${FILESDIR}"/${P}-xpaths.patch \
-		"${FILESDIR}"/${P}-locale.patch \
-		"${FILESDIR}"/${P}-libpng14.patch \
-		"${FILESDIR}"/${P}-png15.patch
+
 	sed -i \
 		-e '/^AM_CFLAGS/d' \
 		src/Makefile.in || die
@@ -45,6 +48,7 @@ src_configure() {
 }
 
 src_install() {
+
 	default
 	newicon data/themes/fancy/Bubble_black_DEAD_01.png ${PN}.png
 	make_desktop_entry ${PN} XBubble
