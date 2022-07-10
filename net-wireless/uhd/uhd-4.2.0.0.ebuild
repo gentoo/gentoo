@@ -18,14 +18,14 @@ SRC_URI="https://github.com/EttusResearch/uhd/archive/v${PV}.tar.gz -> EttusRese
 LICENSE="GPL-3"
 SLOT="0/$(ver_cut 1-3)"
 KEYWORDS="~amd64 ~arm ~riscv ~x86"
-IUSE="+b100 +b200 doc e300 examples +mpmd octoclock +n230 test +usb +usrp1 +usrp2 +utils +x300"
+IUSE="+b100 +b200 doc e300 examples +mpmd octoclock test +usb +usrp1 +usrp2 +utils +x300"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 			b100? ( usb )
 			b200? ( usb )
 			usrp1? ( usb )
 			usrp2? ( usb )
-			|| ( b100 b200 e300 mpmd n230 usrp1 usrp2 x300 )"
+			|| ( b100 b200 e300 mpmd usrp1 usrp2 x300 )"
 
 RDEPEND="${PYTHON_DEPS}
 	e300? ( virtual/udev )
@@ -112,9 +112,6 @@ src_install() {
 	fi
 	if ! use mpmd; then
 		rm "${WORKDIR}"/images/usrp_n310* || die
-	fi
-	if ! use n230; then
-		rm "${WORKDIR}"/images/usrp_n230* || die
 	fi
 	if ! use octoclock; then
 		rm "${WORKDIR}"/images/octoclock* || die
