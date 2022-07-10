@@ -1,0 +1,94 @@
+From 9651f5df1c95cdfee3d8f5f3f989fe326547f5d0 Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Mon, 16 May 2022 21:54:21 -0400
+Subject: [PATCH 1/2] Fix alignment issues for strict architectures
+
+Fixes two locations where unaligned accesses will cause bus errors on
+architectures that are strict about such accesses, namely sparc.
+
+The first is in swab32_into, which is called with an offset of +1 into
+an unsigned char array from mklink_fs.
+
+The second is in add2fs_from_tarball when checking the validity of a
+tarball, which casts a string from an unaligned position inside a struct
+to a long.
+
+After these changes, the test suite passes on sparc.
+---
+ genext2fs.c | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/genext2fs.c b/genext2fs.c
+index 96bbb43..404f31e 100644
+--- a/genext2fs.c
++++ b/genext2fs.c
+@@ -2058,11 +2058,14 @@ mkdir_fs(filesystem *fs, uint32 parent_nod, const char *name, uint32 mode,
+ 
+ // byte swapping for symlinks
+ static inline void
+-swab32_into(uint32 *dst, uint32 *src, size_t n)
++swab32_into(uint32 *dst, uint8 *src, size_t n)
+ {
+ 	size_t i;
+-	for(i = 0; i < n; i++)
+-		dst[i] = swab32(src[i]);
++	for(i = 0; i < n; i++) {
++		uint32 tmp_buf;
++		memcpy(&tmp_buf, src + i * sizeof(uint32) / sizeof(uint8), sizeof(uint32) / sizeof(uint8));
++		dst[i] = swab32(tmp_buf);
++	}
+ }
+ 
+ // make a symlink
+@@ -2079,7 +2082,7 @@ mklink_fs(filesystem *fs, uint32 parent_nod, const char *name, size_t size, uint
+ 
+ 	if (size < 4 * (EXT2_TIND_BLOCK + 1))
+ 		if (fs->swapit)
+-			swab32_into(node->i_block, (uint32 *)b, EXT2_TIND_BLOCK + 1);
++			swab32_into(node->i_block, b, EXT2_TIND_BLOCK + 1);
+ 		else
+ 			memcpy(node->i_block, b, 4 * (EXT2_TIND_BLOCK + 1));
+ 	else
+@@ -2290,7 +2293,7 @@ add2fs_from_tarball(filesystem *fs, uint32 this_nod, FILE * fh, int squash_uids,
+ 			continue;
+ 		} else
+ 			nbnull = 0;
+-		if (*(long *)tarhead->ustar != *(long *)"ustar\00000" && strcmp(tarhead->ustar, "ustar  "))
++		if (memcmp(tarhead->ustar, "ustar\00000", sizeof(long)) && strcmp(tarhead->ustar, "ustar  "))
+ 			error_msg_and_die("not a tarball");
+ 		signed_checksum = unsigned_checksum = 0;
+ 		checksum = OCTAL_READ(tarhead->checksum);
+@@ -3351,7 +3354,7 @@ print_link(filesystem *fs, uint32 nod)
+ 			uint32 *buf = malloc(4 * (EXT2_TIND_BLOCK + 1));
+ 			if (buf == NULL)
+ 				error_msg_and_die(memory_exhausted);
+-			swab32_into(buf, node->i_block, EXT2_TIND_BLOCK + 1);
++			swab32_into(buf, (uint8*)node->i_block, EXT2_TIND_BLOCK + 1);
+ 			printf("links to '%s'\n", (char*) buf);
+ 			free(buf);
+ 		} else {
+
+From 4a99c22603fb01ca8d6c6c4cb9873f50124ac025 Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Wed, 18 May 2022 11:46:44 -0400
+Subject: [PATCH 2/2] Hardcode length of hardcoded char array instead of
+ sizeof(long)
+
+sizeof(long) != 8 on 32-bit.
+---
+ genext2fs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/genext2fs.c b/genext2fs.c
+index 404f31e..e8c71ff 100644
+--- a/genext2fs.c
++++ b/genext2fs.c
+@@ -2293,7 +2293,7 @@ add2fs_from_tarball(filesystem *fs, uint32 this_nod, FILE * fh, int squash_uids,
+ 			continue;
+ 		} else
+ 			nbnull = 0;
+-		if (memcmp(tarhead->ustar, "ustar\00000", sizeof(long)) && strcmp(tarhead->ustar, "ustar  "))
++		if (memcmp(tarhead->ustar, "ustar\00000", 8) && strcmp(tarhead->ustar, "ustar  "))
+ 			error_msg_and_die("not a tarball");
+ 		signed_checksum = unsigned_checksum = 0;
+ 		checksum = OCTAL_READ(tarhead->checksum);
