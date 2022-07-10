@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~riscv ~x86"
 
-DEPEND="dev-libs/elfutils:0="
+DEPEND="dev-libs/elfutils:="
 RDEPEND="${DEPEND}"
 
 src_configure() {
@@ -21,6 +21,6 @@ src_configure() {
 }
 
 src_install() {
-	emake prefix="${ED%/}/usr" install
+	emake prefix="${ED}"/usr install
 	einstalldocs
 }
