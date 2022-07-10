@@ -17,7 +17,7 @@ fi
 LICENSE="MIT"
 
 SLOT="0"
-IUSE="debug +gtk gtk2 ipv6 gssapi"
+IUSE="debug doc +gtk gtk2 ipv6 gssapi"
 
 RDEPEND="
 	!net-misc/pssh
@@ -37,8 +37,8 @@ DEPEND="
 BDEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
+	doc? ( app-doc/halibut )
 "
-#[[ ${PV} == *9999 ]] && BDEPEND+=" doc? ( app-doc/halibut )"
 
 REQUIRED_USE="
 	gtk2? ( gtk )
@@ -60,15 +60,19 @@ src_configure() {
 	cmake_src_configure
 }
 
+src_compile() {
+	cmake_src_compile all doc
+}
+
 src_install() {
 	cmake_src_install
 
 	doman "${BUILD_DIR}"/doc/*.1
 
-	#if use doc ; then
-	#	docinto html
-	#	dodoc "${BUILD_DIR}"/doc/html/*.html
-	#fi
+	if use doc ; then
+		docinto html
+		dodoc "${BUILD_DIR}"/doc/html/*.html
+	fi
 
 	if use gtk ; then
 		local i
