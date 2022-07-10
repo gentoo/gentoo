@@ -51,8 +51,3 @@ BDEPEND="
 	')"
 
 distutils_enable_tests pytest
-
-python_configure_all() {
-	# Avoid iso-639, iso3166 dependencies since we use pycountry.
-	export STREAMLINK_USE_PYCOUNTRY=1
-}
