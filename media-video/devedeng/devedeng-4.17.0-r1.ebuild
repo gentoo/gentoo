@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1 xdg
 
@@ -38,9 +38,9 @@ src_prepare() {
 	default
 
 	# Documentation path
-	sed -e "s#/usr/share/doc/devedeng#/usr/share/doc/${P}#" \
+	sed -e "s#/usr/share/doc/devedeng#/usr/share/doc/${PF}#" \
 		-i src/devedeng/configuration_data.py || die
-	sed -e "/'doc'/s/devedeng/${P}/" -i setup.py || die
+	sed -e "/'doc'/s/devedeng/${PF}/" -i setup.py || die
 
 	# Desktop icon
 	sed -e "/^Icon/s/.svg$//#" -i data/devede_ng.py.desktop || die
