@@ -22,6 +22,7 @@
 		the ability to run OpenGL applications with full 3D hardware acceleration.
 	</longdescription>
 	<upstream>
+		<remote-id type="github">virtualgl/virtualgl</remote-id>
 		<remote-id type="sourceforge">virtualgl</remote-id>
 	</upstream>
 </pkgmetadata>
