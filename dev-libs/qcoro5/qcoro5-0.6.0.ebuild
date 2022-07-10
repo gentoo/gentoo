@@ -21,6 +21,8 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="dbus examples +network test websockets"
 
+RESTRICT="!test? ( test )"
+
 RDEPEND="
 	dev-qt/qtcore:5
 	dbus? ( dev-qt/qtdbus:5 )
