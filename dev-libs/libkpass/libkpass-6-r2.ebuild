@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="Libkpass is a C implementation to access KeePass 1.x format password databases"
 HOMEPAGE="http://libkpass.sourceforge.net/"
@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="static-libs"
 
-RDEPEND=">=dev-libs/nettle-2.7.1"
+RDEPEND=">=dev-libs/nettle-2.7.1:="
 DEPEND="${RDEPEND}"
 
 src_configure() {
@@ -21,5 +21,6 @@ src_configure() {
 
 src_install() {
 	default
+
 	use static-libs || rm -f "${ED}"/usr/lib*/${PN}.la
 }
