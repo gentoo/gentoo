@@ -136,6 +136,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fuse-glibc-2.34.patch
 	"${FILESDIR}"/${P}-gcc-12-boost-1.79.patch
 	"${FILESDIR}"/${P}-chroot-path.patch
+	"${FILESDIR}"/${P}-slibtool.patch # 836012
 	"${DISTDIR}"/${P}-s390x.patch
 )
 
