@@ -64,7 +64,6 @@ pkg_setup() {
 	use X && MODULE_NAMES+=" vboxvideo(misc:${VBOX_MOD_SRC_DIR}/vboxvideo::${VBOX_MOD_SRC_DIR}/vboxvideo)"
 
 	linux-mod_pkg_setup
-	BUILD_PARAMS="KERN_DIR=/lib/modules/${KV_FULL}/build KERNOUT=${KV_OUT_DIR} KBUILD_EXTRA_SYMBOLS=${S}/Module.symvers"
 }
 
 src_prepare() {
@@ -178,6 +177,8 @@ src_compile() {
 	# Now creating the kernel modules. We must do this _after_
 	# we compiled the user-space tools as we need two of the
 	# automatically generated header files. (>=3.2.0)
+	# Move this here for bug 836037
+	BUILD_PARAMS="KERN_DIR=/lib/modules/${KV_FULL}/build KERNOUT=${KV_OUT_DIR} KBUILD_EXTRA_SYMBOLS=${S}/Module.symvers"
 	linux-mod_src_compile
 }
 
