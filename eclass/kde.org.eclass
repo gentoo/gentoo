@@ -112,7 +112,7 @@ readonly KDE_ORG_CATEGORIES
 # Mark package is being part of KDE Gear release schedule.
 # By default, this is set to "false" and does nothing.
 # If CATEGORY equals kde-apps, this is automatically set to "true".
-# If set to "true", set SRC_URI accordingly and apply KDE_UNRELEASED.
+# If set to "true", set SRC_URI accordingly.
 : ${KDE_GEAR:=false}
 if [[ ${CATEGORY} == kde-apps ]]; then
 	KDE_GEAR=true
@@ -134,13 +134,21 @@ case ${KDE_SELINUX_MODULE} in
 		;;
 esac
 
-# @ECLASS_VARIABLE: KDE_UNRELEASED
+# @ECLASS_VARIABLE: KDE_PV_UNRELEASED
 # @INTERNAL
+# @DEFAULT_UNSET
 # @DESCRIPTION:
-# An array of $CATEGORY-$PV pairs of packages that are unreleased upstream.
+# An array of package versions that are unreleased upstream.
 # Any package matching this will have fetch restriction enabled, and receive
 # a proper error message via pkg_nofetch.
-KDE_UNRELEASED=( )
+
+# @ECLASS_VARIABLE: KDE_ORG_UNRELEASED
+# @DESCRIPTION:
+# If set to "true" fetch restriction will be enabled, and a proper error
+# message displayed via pkg_nofetch.
+KDE_ORG_UNRELEASED=false
+has ${PV} "${KDE_PV_UNRELEASED[*]}" && KDE_ORG_UNRELEASED=true
+[[ ${KDE_ORG_UNRELEASED} == true ]] && RESTRICT+=" fetch"
 
 # @ECLASS_VARIABLE: EGIT_MIRROR
 # @DESCRIPTION:
@@ -170,25 +178,6 @@ case ${CATEGORY} in
 		;;
 	*) ;;
 esac
-
-# @FUNCTION: _kde.org_is_unreleased
-# @INTERNAL
-# @DESCRIPTION:
-# Return true if $CATEGORY-$PV matches against an entry in KDE_UNRELEASED array.
-_kde.org_is_unreleased() {
-	local pair
-	for pair in "${KDE_UNRELEASED[@]}" ; do
-		if [[ "${pair}" == "${CATEGORY}-${PV}" ]]; then
-			return 0
-		elif [[ ${KDE_GEAR} == true ]]; then
-			if [[ "${pair/kde-apps/${CATEGORY}}" == "${CATEGORY}-${PV}" ]]; then
-				return 0
-			fi
-		fi
-	done
-
-	return 1
-}
 
 # @FUNCTION: _kde.org_calculate_src_uri
 # @INTERNAL
@@ -246,9 +235,7 @@ _kde.org_calculate_src_uri() {
 		SRC_URI="${_src_uri}${KDE_ORG_NAME}-${PV}.tar.xz"
 	fi
 
-	if _kde.org_is_unreleased ; then
-		RESTRICT+=" fetch"
-	fi
+	[[ ${KDE_ORG_UNRELEASED} == true ]] && RESTRICT+=" fetch"
 }
 
 # @FUNCTION: _kde.org_calculate_live_repo
@@ -297,9 +284,7 @@ esac
 # KDE_UNRELEASED, display a giant warning that the package has not yet been
 # released upstream and should not be used.
 kde.org_pkg_nofetch() {
-	if ! _kde.org_is_unreleased ; then
-		return
-	fi
+	[[ ${KDE_ORG_UNRELEASED} == true ]] || return
 
 	case ${CATEGORY} in
 		kde-frameworks) KDE_ORG_SCHEDULE_URI+="/Frameworks" ;;
