@@ -30,7 +30,7 @@ RDEPEND="${DEPEND}
 
 S=${WORKDIR}/${PN}-v${PV}
 
-PATCHES="${FILESDIR}/${PV}-multiple_user.patch"
+PATCHES=( "${FILESDIR}/${PV}-multiple_user.patch" )
 
 src_configure() {
 	local mycmakeargs=(
