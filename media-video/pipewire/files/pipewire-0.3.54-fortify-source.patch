@@ -1,0 +1,33 @@
+https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/240d21282271dce7d2eeff03185a61ffca0c12c5
+https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/2526
+https://bugs.gentoo.org/857201
+
+From 240d21282271dce7d2eeff03185a61ffca0c12c5 Mon Sep 17 00:00:00 2001
+From: Pauli Virtanen <pav@iki.fi>
+Date: Sun, 10 Jul 2022 16:05:27 +0300
+Subject: [PATCH] pipewire-v4l2: disable _FORTIFY_SOURCE when defining override
+ functions
+
+_FORTIFY_SOURCE defines always_inline versions of open etc. functions,
+which conflict with our exported override versions.  Disable it for the
+file that defines the override functions.
+--- a/pipewire-v4l2/src/v4l2-func.c
++++ b/pipewire-v4l2/src/v4l2-func.c
+@@ -22,6 +22,16 @@
+  * DEALINGS IN THE SOFTWARE.
+  */
+ 
++
++/*
++ * We need to export open* etc., but _FORTIFY_SOURCE defines conflicting
++ * always_inline versions. Disable _FORTIFY_SOURCE for this file, so we
++ * can define our overrides.
++ */
++#ifdef _FORTIFY_SOURCE
++#undef _FORTIFY_SOURCE
++#endif
++
+ #include <stdio.h>
+ #include <errno.h>
+ #include <fcntl.h>
+GitLab
