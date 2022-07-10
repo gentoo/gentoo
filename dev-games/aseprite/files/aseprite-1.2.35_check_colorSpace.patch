@@ -1,0 +1,25 @@
+From 7ce4c04bce391ed16b8b8eeafc1b27c36638014c Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Sun, 10 Jul 2022 19:33:44 +0300
+Subject: [PATCH] Check colorSpace before accessing
+
+In some cases internal surface may not have a colorspace.
+---
+ src/app/ui/color_selector.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/app/ui/color_selector.cpp b/src/app/ui/color_selector.cpp
+index 50ca45476..0aefaa52b 100644
+--- a/src/app/ui/color_selector.cpp
++++ b/src/app/ui/color_selector.cpp
+@@ -447,6 +447,7 @@ void ColorSelector::onPaint(ui::PaintEvent& ev)
+     bool isSRGB;
+     // TODO compare both color spaces
+     if (get_current_color_space()->isSRGB() &&
++        g->getInternalSurface()->colorSpace() &&
+         g->getInternalSurface()->colorSpace()->isSRGB()) {
+       // We can render directly in the ui::Graphics surface
+       canvas = &static_cast<os::SkiaSurface*>(g->getInternalSurface())->canvas();
+-- 
+2.35.1
+
