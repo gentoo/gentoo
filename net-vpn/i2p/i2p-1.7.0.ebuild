@@ -13,7 +13,7 @@ LICENSE="Apache-2.0 Artistic BSD CC-BY-2.5 CC-BY-3.0 CC-BY-SA-3.0 EPL-1.0 GPL-2 
 SLOT="0"
 
 # Until the deps reach other arches
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="nls test"
 RESTRICT="!test? ( test )"
 
