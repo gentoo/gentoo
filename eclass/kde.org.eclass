@@ -233,10 +233,6 @@ _kde.org_calculate_src_uri() {
 			;;
 	esac
 
-	if [[ ${PN} == kdevelop* && ${PV} == 5.6.2 ]]; then
-		_src_uri+="stable/kdevelop/${PV}/src/"
-	fi
-
 	if [[ -n ${KDE_ORG_COMMIT} ]]; then
 		SRC_URI="https://invent.kde.org/${KDE_ORG_CATEGORY}/${KDE_ORG_NAME}/-/"
 		SRC_URI+="archive/${KDE_ORG_COMMIT}/${KDE_ORG_NAME}-${KDE_ORG_COMMIT}.tar.gz"
