@@ -11,7 +11,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ppc64 sparc x86"
 SRC_URI="
-	https://dev.gentoo.org/~polynomial-c/${PN}-icons.tar.bz2
+	https://dev.gentoo.org/~matthew/distfiles/${PN}-icons.tar.bz2
 	https://the.earth.li/~sgtatham/${PN}/${PV}/${P}.tar.gz
 "
 IUSE="doc +gtk gtk2 ipv6 gssapi"
