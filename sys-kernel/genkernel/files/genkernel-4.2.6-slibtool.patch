@@ -1,0 +1,106 @@
+Bug: https://bugs.gentoo.org/836012
+Upstream-PR: https://github.com/gentoo/genkernel/pull/33
+
+From 1bb3cc10d51026ad500bc9cec883f1f2f0c445ec Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sun, 15 May 2022 15:49:21 -0700
+Subject: [PATCH 1/3] gen_funcs: Add an install_exe function
+
+This helps when the build uses slibtool where the compiled binary output
+path differs from GNU libtool.
+
+Signed-off-by: orbea <orbea@riseup.net>
+---
+ gen_funcs.sh | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+diff --git a/gen_funcs.sh b/gen_funcs.sh
+index 500caf2d..a4dc0e44 100755
+--- a/gen_funcs.sh
++++ b/gen_funcs.sh
+@@ -1974,6 +1974,29 @@ check_distfiles() {
+ 	fi
+ }
+ 
++# @FUNCTION: install_exe
++# @USAGE: <file> <destination>
++# @DESCRIPTION:
++# Finds an executable binary file and installs it in cases where there may be
++# similarly named shell wrapper scripts. This happens when GNU libtool creates
++# an executable named 'foo' while slibtool creates '.libs/foo' and 'foo' is a
++# shell script that should not be installed.
++install_exe() {
++	local file="${1##*/}"
++	local dest="${2}"
++
++	local dir
++	[[ "${1%/*}" == "${file}" ]] || dir="${1%/*}/"
++
++	[[ -f "${dir}${file}" ]] || gen_die "File '${dir}${file}' does not exist!"
++
++	# Ensure only the binaries are installed and not a similarly named wrapper script
++	find "${S}/${dir}" -type f -name "${file}" -print0 |
++		xargs -0 file | grep executable | grep ELF | cut -f 1 -d : |
++		xargs -I '{}' cp -a '{}' "${dest}" ||
++		gen_die "Failed to copy '${S}/${dir}${file}' to '${dest}'!"
++}
++
+ # @FUNCTION: expand_file
+ # @USAGE: <file>
+ # @DESCRIPTION:
+
+From cfc9ff455e2473e4322bd18c5fa21370d9c0702e Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Thu, 24 Mar 2022 11:43:40 -0700
+Subject: [PATCH 2/3] gkbuild/util-linux: Install the correct binaries with
+ slibtool
+
+Signed-off-by: orbea <orbea@riseup.net>
+---
+ gkbuilds/util-linux.gkbuild | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/gkbuilds/util-linux.gkbuild b/gkbuilds/util-linux.gkbuild
+index 40ea1fbb..5addbb1d 100644
+--- a/gkbuilds/util-linux.gkbuild
++++ b/gkbuilds/util-linux.gkbuild
+@@ -47,11 +47,8 @@ src_install() {
+ 
+ 	mkdir "${D}"/sbin || die "Failed to create '${D}/sbin'!"
+ 
+-	cp -a blkid.static "${D}"/sbin/blkid \
+-		|| die "Failed to copy '${S}/blkid.static' to '${D}/sbin/blkid'!"
+-
+-	cp -a switch_root "${D}"/sbin/switch_root \
+-		|| die "Failed to copy '${S}/switch_root' to '${D}/sbin/switch_root'!"
++	install_exe 'blkid.static' "${D}"/sbin/blkid
++	install_exe 'switch_root' "${D}"/sbin/switch_root
+ 
+ 	local sbin
+ 	for sbin in \
+
+From 2d2e91f288679e272f731917feb58f3768ea586d Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Thu, 24 Mar 2022 13:17:07 -0700
+Subject: [PATCH 3/3] gkbuild/cryptsetup: Install the correct binaries with
+ slibtool
+
+Signed-off-by: orbea <orbea@riseup.net>
+---
+ gkbuilds/cryptsetup.gkbuild | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/gkbuilds/cryptsetup.gkbuild b/gkbuilds/cryptsetup.gkbuild
+index 007874d1..816df609 100644
+--- a/gkbuilds/cryptsetup.gkbuild
++++ b/gkbuilds/cryptsetup.gkbuild
+@@ -34,8 +34,7 @@ src_install() {
+ 		"${D}"/sbin/* \
+ 		"${D}"/usr/share/
+ 
+-	cp -a cryptsetup.static "${D}"/sbin/cryptsetup \
+-		|| die "Failed to copy '${S}/cryptsetup.static' to '${D}/sbin/cryptsetup'!"
++	install_exe 'cryptsetup.static' "${D}"/sbin/cryptsetup
+ 
+ 	"${STRIP}" --strip-all "${D}"/sbin/cryptsetup \
+ 		|| die "Failed to strip '${D}/sbin/cryptsetup'!"
