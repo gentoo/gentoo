@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="Create a diff disregarding formatting"
 HOMEPAGE="https://www.gnu.org/software/wdiff/"
@@ -16,14 +16,16 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	sys-apps/diffutils
 	sys-apps/less
-	sys-libs/ncurses:0="
-DEPEND="${RDEPEND}
+	sys-libs/ncurses:=
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-apps/texinfo
-	test? ( app-misc/screen )"
+	test? ( app-misc/screen )
+"
 
 src_configure() {
-	econf \
-		$(use_enable experimental)
+	econf $(use_enable experimental)
 }
 
 src_test() {
@@ -31,5 +33,6 @@ src_test() {
 	# when an incompatible screenrc is found
 	touch tests/screenrc || die
 	export SYSSCREENRC=tests/screenrc SCREENRC=tests/screenrc
+
 	default
 }
