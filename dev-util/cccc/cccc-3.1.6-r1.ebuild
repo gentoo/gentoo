@@ -1,12 +1,12 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="Source metrics (line counts, complexity, etc) for Java and C++"
-HOMEPAGE="http://sarnold.github.io/cccc/"
+HOMEPAGE="https://sarnold.github.io/cccc/"
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/sarnold/cccc.git"
 	EGIT_BRANCH="master"
@@ -20,16 +20,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="apidoc debug doc mfc"
 
-RDEPEND=""
-DEPEND="${RDEPEND}
-	apidoc? ( app-doc/doxygen[dot] )
-	"
+BDEPEND="apidoc? ( app-doc/doxygen[dot] )"
 
 src_prepare() {
-	is-flagq -flto* && filter-flags -flto* -fuse-linker-plugin
-	use mfc && eapply "${FILESDIR}"/${PN}-c_dialect.patch
 	default
 
+	use mfc && eapply "${FILESDIR}"/${PN}-c_dialect.patch
+	is-flagq -flto* && filter-flags -flto* -fuse-linker-plugin
 }
 
 src_compile() {
