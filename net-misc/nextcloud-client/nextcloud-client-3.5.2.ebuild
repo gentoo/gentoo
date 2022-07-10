@@ -41,7 +41,7 @@ DEPEND="
 	dev-qt/linguist-tools:5
 	dev-qt/qtconcurrent:5
 	dev-qt/qtxml:5
-	gnome-base/librsvg
+	|| ( gnome-base/librsvg media-gfx/inkscape )
 	doc? (
 		dev-python/sphinx
 		dev-tex/latexmk
