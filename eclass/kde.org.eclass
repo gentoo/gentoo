@@ -101,6 +101,11 @@ readonly KDE_ORG_CATEGORIES
 # Name of the package as hosted on kde.org mirrors.
 : ${KDE_ORG_NAME:=$PN}
 
+# @ECLASS_VARIABLE: KDE_ORG_SCHEDULE_URI
+# @DESCRIPTION:
+# Known schedule URI of package or release group.
+: ${KDE_ORG_SCHEDULE_URI:="https://community.kde.org/Schedules"}
+
 # @ECLASS_VARIABLE: KDE_GEAR
 # @PRE_INHERIT
 # @DESCRIPTION:
@@ -296,13 +301,12 @@ kde.org_pkg_nofetch() {
 		return
 	fi
 
-	local sched_uri="https://community.kde.org/Schedules"
 	case ${CATEGORY} in
-		kde-frameworks) sched_uri+="/Frameworks" ;;
-		kde-plasma) sched_uri+="/Plasma_5" ;;
+		kde-frameworks) KDE_ORG_SCHEDULE_URI+="/Frameworks" ;;
+		kde-plasma) KDE_ORG_SCHEDULE_URI+="/Plasma_5" ;;
 		*)
 			[[ ${KDE_GEAR} == true ]] &&
-				sched_uri+="/KDE_Gear_$(ver_cut 1-2)_Schedule"
+				KDE_ORG_SCHEDULE_URI+="/KDE_Gear_$(ver_cut 1-2)_Schedule"
 			;;
 	esac
 
@@ -325,7 +329,7 @@ kde.org_pkg_nofetch() {
 	eerror ""
 	eerror "Please consult the upstream release schedule to see when this "
 	eerror "package is scheduled to be released:"
-	eerror "${sched_uri}"
+	eerror "${KDE_ORG_SCHEDULE_URI}"
 }
 
 # @FUNCTION: kde.org_src_unpack
