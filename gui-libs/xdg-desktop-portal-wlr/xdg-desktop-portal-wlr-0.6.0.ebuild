@@ -22,21 +22,24 @@ IUSE="elogind systemd"
 REQUIRED_USE="?? ( elogind systemd )"
 
 DEPEND="
-	>=media-video/pipewire-0.3.34:=
+	>=media-video/pipewire-0.3.41:=
 	dev-libs/inih
 	dev-libs/wayland
+	media-libs/mesa
+	x11-libs/libdrm
 	|| (
 		systemd? ( >=sys-apps/systemd-237 )
 		elogind? ( >=sys-auth/elogind-237 )
 		sys-libs/basu
 	)
 "
+# mesa is needed for gbm dep (which it hards sets to 'on')
 RDEPEND="
 	${DEPEND}
 	sys-apps/xdg-desktop-portal
 "
 BDEPEND="
-	dev-libs/wayland-protocols
+	>=dev-libs/wayland-protocols-1.24
 	virtual/pkgconfig
 "
 
