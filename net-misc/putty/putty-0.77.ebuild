@@ -6,7 +6,7 @@ inherit cmake desktop xdg-utils
 
 DESCRIPTION="A Free Telnet/SSH Client"
 HOMEPAGE="https://www.chiark.greenend.org.uk/~sgtatham/putty/"
-SRC_URI="https://dev.gentoo.org/~polynomial-c/${PN}-icons.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~matthew/distfiles/${PN}-icons.tar.bz2"
 if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.tartarus.org/simon/putty.git"
