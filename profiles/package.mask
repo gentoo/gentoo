@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-07-10)
+# Broken with autoconf 2.70+, stuck on EAPI 6, plenty
+# of concerning warnings. Even Debian's fork isn't
+# enough to fix all the issues (w/ autoconf).
+# Removal on 2022-07-10.
+net-mail/mpack
+
 # David Seifert <soap@gentoo.org> (2022-07-10)
 # Unmaintained, last release in 2010, ebuild added by author and then
 # abandoned, terrible macros break compiling with GCC 12.
