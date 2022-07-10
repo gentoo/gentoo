@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="Dump ABI of an ELF object containing DWARF debug info"
 HOMEPAGE="https://github.com/lvc/abi-dumper"
@@ -11,10 +11,11 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~riscv ~x86"
 
-DEPEND="dev-lang/perl"
-RDEPEND="${DEPEND}
+RDEPEND="
 	dev-libs/elfutils
-	dev-util/vtable-dumper"
+	dev-util/vtable-dumper
+"
+BDEPEND="dev-lang/perl"
 
 src_compile() {
 	:
