@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-07-12)
+# Unused java libraries, all asm-* included in dev-java/asm,
+# log4j-api-java9 never to be used as a package. Removal on 2022-08-12.
+dev-java/asm-analysis
+dev-java/asm-commons
+dev-java/asm-tree
+dev-java/asm-util
+dev-java/log4j-api-java9
+
 # Sam James <sam@gentoo.org> (2022-07-12)
 # Huge number of open bugs, deprecated upstream (they recommend
 # using other video editors like Shotcut, Kdenlive, ...). Removal on 2022-08-12.
