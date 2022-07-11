@@ -23,7 +23,7 @@ start_post() {
 	local c=0
 	ebegin "Waiting for glusterd to start up"
 	while ! /usr/sbin/gluster volume list >/dev/null 2>&1 && [ "${c}" -lt "${glusterd_max_wait_start-60}" ]; do
-		$(( c=c+1 ))
+		(( c=c+1 ))
 	done
 	[ "${c}" -lt "${glusterd_max_wait_start-60}" ]
 	eend $?
