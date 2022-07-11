@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic multilib pam systemd
+inherit autotools flag-o-matic pam systemd
 
 DESCRIPTION="Open Source AFP server"
 HOMEPAGE="https://netatalk.sourceforge.net/"
