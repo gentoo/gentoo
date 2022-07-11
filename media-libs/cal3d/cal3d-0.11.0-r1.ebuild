@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Cal3D is a skeletal based character animation library"
 HOMEPAGE="https://mp3butcher.github.io/Cal3D/"
-SRC_URI="http://download.gna.org/cal3d/sources/${P}.tar.gz"
+SRC_URI="https://mp3butcher.github.io/Cal3D/sources/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
