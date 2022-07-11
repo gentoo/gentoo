@@ -316,7 +316,6 @@ java-pkg_rm_files() {
 		[[ ! -f "${filename}" ]] && die "${filename} is not a regular file. Aborting."
 		einfo "Removing unneeded file ${filename}"
 		rm -f "${S}/${filename}" || die "cannot remove ${filename}"
-		eend $?
 	done
 }
 
