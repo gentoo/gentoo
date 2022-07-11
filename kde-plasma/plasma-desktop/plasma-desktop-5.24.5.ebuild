@@ -120,6 +120,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${WORKDIR}/${XORGHDRS}/override-include-dirs.patch" # downstream patch
+	"${FILESDIR}/${P}-kf-5.95.patch" # bug 857249
 )
 
 src_prepare() {

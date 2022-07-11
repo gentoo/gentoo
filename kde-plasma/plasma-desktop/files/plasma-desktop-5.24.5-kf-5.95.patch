@@ -1,0 +1,46 @@
+From 399c1288114d083199db7058710fd61945e2a181 Mon Sep 17 00:00:00 2001
+From: Ahmad Samir <a.samirh78@gmail.com>
+Date: Sat, 11 Jun 2022 10:34:41 +0200
+Subject: [PATCH] Fix includes when building the kglobalaccel dbus interface
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+So that KGloalAccel::MatchType can be found:
+In file included from /builds/plasma/plasma-desktop/kcms/keys/kcm_keys.cpp:23:
+/builds/plasma/plasma-desktop/_build/kcms/keys/kglobalaccel_interface.h:129:105: error: ‘KGlobalAccel’ has not been declared
+  129 |     inline QDBusPendingReply<QList<KGlobalShortcutInfo> > globalShortcutsByKey(const QKeySequence &key, KGlobalAccel::MatchType matchType)
+
+And kglobalaccel.h already includes kglobalshortcutinfo.h
+
+(cherry picked from commit 1ae254abae26416576e5f0f910a4d5aef665dad5)
+(cherry picked from commit a5e1f2c023b98b130bccee1ebd1ee184c8a2f495)
+---
+ kcms/keys/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/kcms/keys/CMakeLists.txt b/kcms/keys/CMakeLists.txt
+index 3df5629dd..38869de26 100644
+--- a/kcms/keys/CMakeLists.txt
++++ b/kcms/keys/CMakeLists.txt
+@@ -13,7 +13,7 @@ set(kcm_keys_SRCS
+ 
+ set(kglobalaccel_xml ${KGLOBALACCEL_DBUS_INTERFACES_DIR}/kf5_org.kde.KGlobalAccel.xml)
+ set_source_files_properties(${kglobalaccel_xml} PROPERTIES
+-    INCLUDE "kglobalshortcutinfo.h"
++    INCLUDE "kglobalaccel.h"
+     NO_NAMESPACE TRUE
+     CLASSNAME "KGlobalAccelInterface"
+ )
+@@ -21,7 +21,7 @@ qt_add_dbus_interface(kcm_keys_SRCS ${kglobalaccel_xml} kglobalaccel_interface)
+ 
+ set(kglobalaccel_component_xml ${KGLOBALACCEL_DBUS_INTERFACES_DIR}/kf5_org.kde.kglobalaccel.Component.xml)
+ set_source_files_properties(${kglobalaccel_component_xml} PROPERTIES
+-    INCLUDE "kglobalshortcutinfo.h"
++    INCLUDE "kglobalaccel.h"
+     NO_NAMESPACE TRUE
+     CLASSNAME "KGlobalAccelComponentInterface"
+ )
+-- 
+GitLab
+
