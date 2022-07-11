@@ -40,4 +40,5 @@ src_configure() {
 src_install() {
 	default_src_install
 	use static-libs || rm "${ED}"/usr/$(get_libdir)/libosmodsp.a
+	use static-libs || rm "${ED}"/usr/$(get_libdir)/libosmodsp.la
 }
