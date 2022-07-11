@@ -22,10 +22,6 @@ php7-3
 # See e.g. bug #753323, bug #822690.
 pch
 
-# Hans de Graaff <graaff@gentoo.org> (2021-07-09)
-# Mask Ruby 2.5 as EOL
-ruby_targets_ruby25
-
 # Brian Evans <grknight@gentoo.org> (2021-01-07)
 # PHP 7.2 is security vulnerable and end-of-life
 # Please upgrade to a newer slot
@@ -37,10 +33,6 @@ php_targets_php7-2
 # on the filesystem and causes build failures.
 # See e.g. bug #741076
 ros_messages_eus
-
-# Hans de Graaff <graaff@gentoo.org> (2020-06-13)
-# Mask Ruby 2.4 as EOL
-ruby_targets_ruby24
 
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # app-office/texmacs is package.mask'd. Bug #436400
