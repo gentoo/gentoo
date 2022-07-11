@@ -111,6 +111,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-42.0-Disable-anonymous-file-test.patch
+	"${FILESDIR}"/${PN}-42.3-musl-disable-pageflipping.patch
 )
 
 python_check_deps() {

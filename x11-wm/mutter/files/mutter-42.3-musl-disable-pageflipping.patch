@@ -1,0 +1,25 @@
+# Mutter or any other application using mutter gets stuck rendering until VT's
+# are switched manually[1]. This bug is noticable only on musl and with
+# mutter[-wayland]. The developers have mentioned about a race condition [2]
+# existing with current implementation and X. If pageflipping is disabled the
+# rendering works fine.
+#
+# [1]: https://gitlab.gnome.org/GNOME/mutter/-/issues/2103
+# [2]: https://gitlab.gnome.org/GNOME/mutter/-/blob/60e13fde09d1319f6002c83edfcbfecf24adb275/src/backends/meta-stage-impl.c#L616
+--- a/src/backends/meta-stage-impl.c
++++ b/src/backends/meta-stage-impl.c
+@@ -621,10 +621,14 @@ meta_stage_impl_redraw_view_primary (MetaStageImpl    *stage_impl,
+    * the resize anyway so it should only exhibit temporary
+    * artefacts.
+    */
++#if defined(__GLIBC__)
+   if (use_clipped_redraw)
+     swap_region = cairo_region_reference (fb_clip_region);
+   else
+     swap_region = cairo_region_create ();
++#else
++  swap_region = cairo_region_reference (fb_clip_region);
++#endif
+
+   g_clear_pointer (&redraw_clip, cairo_region_destroy);
+   g_clear_pointer (&fb_clip_region, cairo_region_destroy);
