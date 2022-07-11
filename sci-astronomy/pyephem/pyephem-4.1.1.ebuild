@@ -14,7 +14,7 @@ SRC_URI="https://github.com/brandon-rhodes/pyephem/archive/refs/tags/${PV}.tar.g
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
 BDEPEND="doc? ( dev-python/sphinx )"
