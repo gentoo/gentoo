@@ -6,7 +6,7 @@ EAPI=8
 LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{8..10} )
 GNOME2_EAUTORECONF=yes
-VALA_MIN_API_VERSION="0.44"
+VALA_MIN_API_VERSION="0.50"
 VALA_USE_DEPEND=vapigen
 
 inherit git-r3 gnome2 lua-single python-single-r1 toolchain-funcs vala virtualx
@@ -39,7 +39,7 @@ COMMON_DEPEND="
 	dev-libs/libxslt
 	>=gnome-base/librsvg-2.40.21:2
 	>=media-gfx/mypaint-brushes-2.0.2:=
-	>=media-libs/babl-0.1.90[introspection,lcms,vala?]
+	>=media-libs/babl-0.1.92[introspection,lcms,vala?]
 	>=media-libs/fontconfig-2.12.6
 	>=media-libs/freetype-2.10.2
 	>=media-libs/gegl-0.4.36:0.4[cairo,introspection,lcms,vala?]
@@ -111,11 +111,6 @@ BDEPEND="virtual/pkgconfig"
 
 DOCS=( "AUTHORS" "devel-docs/CODING_STYLE.md" "devel-docs/HACKING.md" "NEWS" "README" "README.i18n" )
 
-# Bugs 685210 (and duplicate 691070)
-PATCHES=(
-	"${FILESDIR}/${PN}-2.10_fix_test-appdata.patch"
-)
-
 pkg_setup() {
 	use lua && lua-single_pkg_setup
 
@@ -125,6 +120,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+#	sed -i -e '/validate/s:${GIMP_TESTING:--no-net ${GIMP_TESTING:' desktop/test-appdata.sh.in || die # Bug 685210 (and duplicate 691070)
+
 	sed -i -e 's/mypaint-brushes-1.0/mypaint-brushes-2.0/' configure.ac || die #737794
 
 	sed -i -e 's/== "xquartz"/= "xquartz"/' configure.ac || die #494864
@@ -165,10 +162,10 @@ src_configure() {
 
 		--disable-check-update
 		--enable-mp
-		--with-appdata-test
 		--with-bug-report-url=https://bugs.gentoo.org/
 		--with-pdbgen
 		--with-xmc
+		--without-appdata-test
 		--without-libbacktrace
 		--without-webkit
 		--without-xvfb-run
