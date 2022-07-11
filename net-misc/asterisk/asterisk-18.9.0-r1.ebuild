@@ -66,7 +66,7 @@ DEPEND="acct-user/asterisk
 	mysql? ( dev-db/mysql-connector-c:= )
 	newt? ( dev-libs/newt )
 	odbc? ( dev-db/unixODBC )
-	pjproject? ( >=net-libs/pjproject-2.9:= )
+	pjproject? ( >=net-libs/pjproject-2.12:= )
 	portaudio? ( media-libs/portaudio )
 	postgres? ( dev-db/postgresql:* )
 	radius? ( net-dialup/freeradius-client )
