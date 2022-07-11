@@ -20,7 +20,7 @@ if [[ ${PV} == *9999* ]] ; then
 else
 	SRC_URI="https://www.spice-space.org/download/gtk/${P}.tar.xz"
 	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-meson-0.63.patch.xz"
-	KEYWORDS="~alpha ~amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+	KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 	SPICE_PROTOCOL_VER=0.14.3
 fi
