@@ -187,6 +187,10 @@ src_configure() {
 
 		-Dlibavdevice=enabled
 
+		# Needed for either of the more specific audio or video options
+		# bug #857156
+		$(meson_feature sdl sdl2)
+
 		# Audio outputs:
 		$(meson_feature sdl sdl2-audio)
 		$(meson_feature pulseaudio pulse)
