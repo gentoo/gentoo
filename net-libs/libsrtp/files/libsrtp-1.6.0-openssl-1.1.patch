@@ -217,7 +217,7 @@ Backport of https://github.com/cisco/libsrtp/commit/0b45423678ddc46d702f3a51614f
 -    if (pointer == NULL) {
 +/* OpenSSL 1.1.0 made HMAC_CTX an opaque structure, which must be allocated
 +   using HMAC_CTX_new.  But this function doesn't exist in OpenSSL 1.0.x. */
-+#if OPENSSL_VERSION_NUMBER < 0x10100000L || (defined(LIBRESSL_VERSION_NUMBER) && LIBRESSL_VERSION_NUMBER < 0x2070000fL)
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
 +    {
 +        /* allocate memory for auth and HMAC_CTX structures */
 +        uint8_t* pointer;
@@ -263,7 +263,7 @@ Backport of https://github.com/cisco/libsrtp/commit/0b45423678ddc46d702f3a51614f
  
      hmac_ctx = (HMAC_CTX*)a->state;
  
-+#if OPENSSL_VERSION_NUMBER < 0x10100000L || (defined(LIBRESSL_VERSION_NUMBER) && LIBRESSL_VERSION_NUMBER < 0x2070000fL)
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
      HMAC_CTX_cleanup(hmac_ctx);
  
      /* zeroize entire state*/
@@ -318,7 +318,7 @@ Backport of https://github.com/cisco/libsrtp/commit/0b45423678ddc46d702f3a51614f
  
 +/* OpenSSL 1.1.0 made EVP_MD_CTX an opaque structure, which must be allocated
 +   using EVP_MD_CTX_new. But this function doesn't exist in OpenSSL 1.0.x. */
-+#if OPENSSL_VERSION_NUMBER < 0x10100000L || (defined(LIBRESSL_VERSION_NUMBER) && LIBRESSL_VERSION_NUMBER < 0x2070000fL)
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
 +
 +typedef EVP_MD_CTX sha1_ctx_t;
 +
