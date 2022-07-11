@@ -1,0 +1,48 @@
+--- a/Makefile.inc
++++ b/Makefile.inc
+@@ -110,7 +110,7 @@
+ # Evaluates to "option" if yes, and "fallback" otherwise.
+ TEST_CC_OPTION = $(shell \
+ 	if echo 'int main(void){return 0;}' | \
+-		$(CC) -o /dev/null -c -Werror "$(1)" -xc - >/dev/null 2>&1; \
++		$(CC) -o /dev/null -c "$(1)" -xc - >/dev/null 2>&1; \
+ 	then \
+ 		echo "$(1)"; \
+ 	else \
+@@ -124,7 +124,7 @@
+ # but it doesn't seem to make a difference wrt the compilation result.
+ FORTIFY_OPT := $(shell \
+ 	if /bin/echo -e '$(__HASH__)include <string.h>\nint main(void) { return 0; }' | \
+-		$(CC) -o /dev/null -c -O2 -Werror -D_FORTIFY_SOURCE=3 -xc - 2>/dev/null; \
++		$(CC) -o /dev/null -c -O2 -D_FORTIFY_SOURCE=3 -xc - 2>/dev/null; \
+ 	then \
+ 		echo "-D_FORTIFY_SOURCE=3"; \
+ 	else \
+@@ -132,14 +132,12 @@
+ 	fi)
+ 
+ STACKPROT := $(call TEST_CC_OPTION,-fstack-protector-strong,-fstack-protector)
+-ERROR_DISCARDED_QUALIFIERS := $(call TEST_CC_OPTION,-Werror=discarded-qualifiers,)
+ WNOCLOBBERED := $(call TEST_CC_OPTION,-Wno-clobbered -Wno-error=clobbered,)
+ WFORMATOVERFLOW := $(call TEST_CC_OPTION,-Wformat-overflow=2,)
+ 
+ OPTFLAGS	:= -O2 -g $(STACKPROT) --param=ssp-buffer-size=4
+-WARNFLAGS	:= -Werror -Wall -Wextra -Wformat=2 $(WFORMATOVERFLOW) -Werror=implicit-int \
+-		  -Werror=implicit-function-declaration -Werror=format-security \
+-		  $(WNOCLOBBERED) -Werror=cast-qual $(ERROR_DISCARDED_QUALIFIERS)
++WARNFLAGS	:= -Wall -Wextra -Wformat=2 $(WFORMATOVERFLOW) \
++		  $(WNOCLOBBERED)
+ CPPFLAGS	+= -DBIN_DIR=\"$(bindir)\" -DMULTIPATH_DIR=\"$(plugindir)\" -DRUN_DIR=\"${RUN}\" \
+ 		   -DCONFIG_DIR=\"$(configdir)\" -DEXTRAVERSION=\"$(EXTRAVERSION)\" -MMD -MP
+ CFLAGS		+= -std=gnu99 $(WARNFLAGS)
+--- a/tests/Makefile
++++ b/tests/Makefile
+@@ -7,7 +7,7 @@
+ # gcc 4.8 compiles blacklist.c only with -Wno-missing-field-initializers
+ TEST_MISSING_INITIALIZERS = $(shell \
+ 	echo 'struct A {int a, b;}; struct B {struct A a; int b;} b = {.a.a=1};' | \
+-		$(CC) -c -Werror -Wmissing-field-initializers -o /dev/null -xc - >/dev/null 2>&1 \
++		$(CC) -c -Wmissing-field-initializers -o /dev/null -xc - >/dev/null 2>&1 \
+ 	|| echo -Wno-missing-field-initializers)
+ W_MISSING_INITIALIZERS := $(call TEST_MISSING_INITIALIZERS)
+ 
