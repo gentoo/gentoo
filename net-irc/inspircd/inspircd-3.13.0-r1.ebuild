@@ -10,7 +10,8 @@ HOMEPAGE="https://www.inspircd.org/"
 SRC_URI="
 	https://github.com/inspircd/inspircd/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/clinew/gentoo-distfiles/raw/master/inspircd-${PV}-fix-path-builds.patch.bz2
-	https://github.com/clinew/gentoo-distfiles/raw/master/inspircd-${PV}-fix-template-files.patch.bz2"
+	https://github.com/clinew/gentoo-distfiles/raw/master/inspircd-${PV}-fix-template-files.patch.bz2
+	https://github.com/clinew/gentoo-distfiles/raw/master/inspircd-${PV}-fix-logrotate-conf.patch.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -37,7 +38,8 @@ DEPEND="${RDEPEND}"
 DOCS=( docs/. .configure/apparmor )
 PATCHES=(
 	"${WORKDIR}"/${P}-fix-path-builds.patch
-	"${WORKDIR}"/${P}-fix-template-files.patch)
+	"${WORKDIR}"/${P}-fix-template-files.patch
+	"${WORKDIR}"/${P}-fix-logrotate-conf.patch)
 
 src_configure() {
 	local extras=""
