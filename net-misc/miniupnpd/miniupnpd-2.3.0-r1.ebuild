@@ -13,7 +13,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+leasefile igd2 ipv6 nftables pcp-peer portinuse strict"
 
 RDEPEND="
