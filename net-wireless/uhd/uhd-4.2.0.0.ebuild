@@ -86,6 +86,7 @@ src_configure() {
 		-DENABLE_OCTOCLOCK="$(usex octoclock)"
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DPKG_DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
+		-DUHD_VERSION="${PV}"
 	)
 	cmake_src_configure
 }
