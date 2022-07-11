@@ -48,19 +48,11 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
-	# flaky test that's now problematic due to xfail_strict
-	cherrypy/test/test_caching.py::CacheTest::test_antistampede
-)
-
 python_prepare_all() {
-	sed -r -e '/(pytest-sugar|pytest-cov)/ d' \
-		-i setup.py || die
-
-	sed -r -e 's:--cov-report[[:space:]]+[[:graph:]]+::g' \
-		-e 's:--cov[[:graph:]]+::g' \
-		-e 's:--doctest[[:graph:]]+::g' \
-		-i pytest.ini || die
+	sed -i -e '/cov/d' pytest.ini || die
+	# upstream has been using xfail to mark flaky tests, then added
+	# xfail_strict... not a good idea
+	sed -i -e '/xfail_strict/d' pytest.ini || die
 
 	distutils-r1_python_prepare_all
 }
