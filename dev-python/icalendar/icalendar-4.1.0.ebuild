@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
 DESCRIPTION="Package used for parsing and generating iCalendar files (RFC 2445)"
 HOMEPAGE="https://github.com/collective/icalendar"
-SRC_URI="mirror://pypi/i/${PN}/${P}.tar.gz"
+SRC_URI="mirror://pypi/${P::1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
