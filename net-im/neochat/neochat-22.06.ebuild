@@ -3,15 +3,15 @@
 
 EAPI=8
 
+KDE_ORG_CATEGORY=network
 KFMIN=5.96.0
 QTMIN=5.15.5
-inherit ecm kde.org
+inherit ecm plasma-mobile.kde.org
 
 DESCRIPTION="Client for Matrix, the decentralized communication protocol"
 HOMEPAGE="https://apps.kde.org/neochat/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	SRC_URI="mirror://kde/stable/plasma-mobile/${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64"
 fi
 
