@@ -22,6 +22,8 @@ RDEPEND="
 	media-video/mediainfo
 	dev-db/sqlite"
 
+QA_PREBUILT="*"
+
 S="${WORKDIR}/Sonarr"
 
 src_install() {
