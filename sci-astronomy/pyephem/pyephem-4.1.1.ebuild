@@ -19,6 +19,12 @@ IUSE="doc"
 
 BDEPEND="doc? ( dev-python/sphinx )"
 
+EPYTEST_DESELECT=(
+	# Can't find its test files (class not loaded properly in test env?)
+	# bug #855461
+	tests/test_jpl.py::JPLTest::runTest
+)
+
 distutils_enable_tests pytest
 
 src_prepare() {
