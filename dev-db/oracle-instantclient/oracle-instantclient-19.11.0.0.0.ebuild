@@ -160,7 +160,7 @@ src_install() {
 			elog "Skipping unsupported ABI ${ABI}."
 			continue
 		fi
-		einfo "Installing runtime for ${MY_PLAT} ..."
+		ebegin "Installing runtime for ${MY_PLAT}"
 
 		cd "${MY_S}" || die
 
@@ -224,7 +224,7 @@ src_install() {
 		# doins precomp/admin/pcbcfg.cfg
 	fi
 	if use sdk; then
-		einfo "Installing SDK ..."
+		ebegin "Installing SDK"
 		DOCS+=( SDK_README )
 		scripts+=( sdk/ott )
 		insinto "${oracle_home}"/$(get_libdir)
@@ -259,7 +259,7 @@ src_install() {
 		paxbins+=( exp expdp imp impdp sqlldr wrc )
 	fi
 
-	einfo "Installing binaries for ${MY_PLAT} ..."
+	ebegin "Installing binaries for ${MY_PLAT}"
 	into "${oracle_home}"
 	dobin ${paxbins[*]} ${scripts[*]}
 	pushd "${ED}${oracle_home}/bin" >/dev/null || die
