@@ -24,6 +24,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.1-rename.patch
+	"${FILESDIR}"/${PN}-1.6.0-musl-fix-execinfo.patch
 )
 
 src_install() {
