@@ -56,3 +56,14 @@ python_prepare_all() {
 
 	distutils-r1_python_prepare_all
 }
+
+python_test() {
+	local EPYTEST_DESELECT=()
+	[[ ${EPYTHON} == python3.11 ]] && EPYTEST_DESELECT+=(
+		# broken by changes in traceback output
+		cherrypy/test/test_request_obj.py::RequestObjectTests::testErrorHandling
+		cherrypy/test/test_tools.py::ToolTests::testHookErrors
+	)
+
+	epytest
+}
