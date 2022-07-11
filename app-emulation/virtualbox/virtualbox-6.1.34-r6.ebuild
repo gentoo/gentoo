@@ -299,13 +299,6 @@ src_configure() {
 	if use amd64 && ! has_multilib_profile ; then
 		myconf+=( --disable-vmmraw )
 	fi
-
-	# bug #843437
-	cat >> LocalConfig.kmk <<-EOF || die
-		CFLAGS=${CFLAGS}
-		CXXFLAGS=${CXXFLAGS}
-	EOF
-
 	# not an autoconf script
 	edo ./configure "${myconf[@]}"
 
