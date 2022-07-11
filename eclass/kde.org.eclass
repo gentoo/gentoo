@@ -169,12 +169,16 @@ case ${CATEGORY} in
 			https://invent.kde.org/qt/qt/ https://www.qt.io/"
 		;;
 	kde-plasma)
-		HOMEPAGE="https://kde.org/plasma-desktop"
+		if [[ -z ${_PLASMA_KDE_ORG_ECLASS} ]]; then
+			HOMEPAGE="https://kde.org/plasma-desktop"
+		fi
 		;;
 	kde-frameworks)
-		HOMEPAGE="https://kde.org/products/frameworks/"
-		SLOT=5/${PV}
-		[[ ${KDE_BUILD_TYPE} == release ]] && SLOT=$(ver_cut 1)/$(ver_cut 1-2)
+		if [[ -z ${_FRAMEWORKS_KDE_ORG_ECLASS} ]]; then
+			HOMEPAGE="https://kde.org/products/frameworks/"
+			SLOT=5/${PV}
+			[[ ${KDE_BUILD_TYPE} == release ]] && SLOT=$(ver_cut 1)/$(ver_cut 1-2)
+		fi
 		;;
 	*) ;;
 esac
@@ -185,6 +189,18 @@ esac
 # Determine fetch location for released tarballs
 _kde.org_calculate_src_uri() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	if [[ -n ${KDE_ORG_COMMIT} ]]; then
+		SRC_URI="https://invent.kde.org/${KDE_ORG_CATEGORY}/${KDE_ORG_NAME}/-/"
+		SRC_URI+="archive/${KDE_ORG_COMMIT}/${KDE_ORG_NAME}-${KDE_ORG_COMMIT}.tar.gz"
+		SRC_URI+=" -> ${KDE_ORG_NAME}-${PV}-${KDE_ORG_COMMIT:0:8}.tar.gz"
+	fi
+
+	[[ ${KDE_ORG_UNRELEASED} == true ]] && RESTRICT+=" fetch"
+
+	if [[ -n ${_FRAMEWORKS_KDE_ORG_ECLASS} ]] || [[ -n ${_PLASMA_KDE_ORG_ECLASS} ]] || [[ -n ${_GEAR_KDE_ORG_ECLASS} ]] || [[ -n ${KDE_ORG_COMMIT} ]]; then
+		return
+	fi
 
 	local _src_uri="mirror://kde/"
 
@@ -227,45 +243,18 @@ _kde.org_calculate_src_uri() {
 			;;
 	esac
 
-	if [[ -n ${KDE_ORG_COMMIT} ]]; then
-		SRC_URI="https://invent.kde.org/${KDE_ORG_CATEGORY}/${KDE_ORG_NAME}/-/"
-		SRC_URI+="archive/${KDE_ORG_COMMIT}/${KDE_ORG_NAME}-${KDE_ORG_COMMIT}.tar.gz"
-		SRC_URI+=" -> ${KDE_ORG_NAME}-${PV}-${KDE_ORG_COMMIT:0:8}.tar.gz"
-	else
-		SRC_URI="${_src_uri}${KDE_ORG_NAME}-${PV}.tar.xz"
-	fi
-
-	[[ ${KDE_ORG_UNRELEASED} == true ]] && RESTRICT+=" fetch"
-}
-
-# @FUNCTION: _kde.org_calculate_live_repo
-# @INTERNAL
-# @DESCRIPTION:
-# Determine fetch location for live sources
-_kde.org_calculate_live_repo() {
-	debug-print-function ${FUNCNAME} "$@"
-
-	SRC_URI=""
-
-	EGIT_MIRROR=${EGIT_MIRROR:=https://invent.kde.org/${KDE_ORG_CATEGORY}}
-
-	if [[ ${PV} == 5.??(.?)*.9999 && ${CATEGORY} == dev-qt ]]; then
-		EGIT_BRANCH="kde/$(ver_cut 1-2)"
-	fi
-
-	if [[ ${PV} == ??.??.49.9999 && ${KDE_GEAR} == true ]]; then
-		EGIT_BRANCH="release/$(ver_cut 1-2)"
-	fi
-
-	if [[ ${PV} != 9999 && ${CATEGORY} == kde-plasma ]]; then
-		EGIT_BRANCH="Plasma/$(ver_cut 1-2)"
-	fi
-
-	EGIT_REPO_URI="${EGIT_MIRROR}/${EGIT_REPONAME:=$KDE_ORG_NAME}.git"
+	SRC_URI="${_src_uri}${KDE_ORG_NAME}-${PV}.tar.xz"
 }
 
 case ${KDE_BUILD_TYPE} in
-	live) _kde.org_calculate_live_repo ;;
+	live)
+		EGIT_MIRROR=${EGIT_MIRROR:=https://invent.kde.org/${KDE_ORG_CATEGORY}}
+		EGIT_REPO_URI="${EGIT_MIRROR}/${EGIT_REPONAME:=$KDE_ORG_NAME}.git"
+
+		if [[ ${PV} == 5.??.?.9999 && ${CATEGORY} == dev-qt ]]; then
+			EGIT_BRANCH="kde/$(ver_cut 1-2)"
+		fi
+		;;
 	*)
 		_kde.org_calculate_src_uri
 		debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: SRC_URI is ${SRC_URI}"
@@ -285,16 +274,6 @@ esac
 # released upstream and should not be used.
 kde.org_pkg_nofetch() {
 	[[ ${KDE_ORG_UNRELEASED} == true ]] || return
-
-	case ${CATEGORY} in
-		kde-frameworks) KDE_ORG_SCHEDULE_URI+="/Frameworks" ;;
-		kde-plasma) KDE_ORG_SCHEDULE_URI+="/Plasma_5" ;;
-		*)
-			[[ ${KDE_GEAR} == true ]] &&
-				KDE_ORG_SCHEDULE_URI+="/KDE_Gear_$(ver_cut 1-2)_Schedule"
-			;;
-	esac
-
 	eerror " _   _ _   _ ____  _____ _     _____    _    ____  _____ ____  "
 	eerror "| | | | \ | |  _ \| ____| |   | ____|  / \  / ___|| ____|  _ \ "
 	eerror "| | | |  \| | |_) |  _| | |   |  _|   / _ \ \___ \|  _| | | | |"
