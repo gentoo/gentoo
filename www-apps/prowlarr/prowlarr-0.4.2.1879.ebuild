@@ -26,6 +26,8 @@ RDEPEND="
 	dev-util/lttng-ust:0
 	dev-db/sqlite"
 
+QA_PREBUILT="*"
+
 S="${WORKDIR}/Prowlarr"
 
 src_install() {
