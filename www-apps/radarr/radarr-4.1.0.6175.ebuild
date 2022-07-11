@@ -27,6 +27,8 @@ RDEPEND="
 	dev-util/lttng-ust:0
 	dev-db/sqlite"
 
+QA_PREBUILT="*"
+
 S="${WORKDIR}/Radarr"
 
 src_install() {
