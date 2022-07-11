@@ -26,6 +26,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.1-desktop_rename.patch"
+	"${FILESDIR}/${PN}-3.1.0-musl-fix-execinfo.patch"
 )
 
 src_prepare() {
