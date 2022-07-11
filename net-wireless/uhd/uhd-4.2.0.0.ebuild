@@ -131,3 +131,11 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins -r "${WORKDIR}/images"
 }
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
+}
