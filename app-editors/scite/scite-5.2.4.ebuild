@@ -92,6 +92,6 @@ src_compile() {
 # want to use the base src_install() as base_src_install()
 
 src_install() {
-	default
+	GTK3=1 default
 	dosym SciTE /usr/bin/scite
 }
