@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2022-07-11)
+# Crashes with latest emboss, no other distro packages this,
+# ancient release, bug #361411, removal on 2022-08-10.
+sci-biology/transfac
+
 # Sam James <sam@gentoo.org> (2022-07-10)
 # Broken with autoconf 2.70+, stuck on EAPI 6, plenty
 # of concerning warnings. Even Debian's fork isn't
