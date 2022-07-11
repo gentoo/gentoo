@@ -1,5 +1,7 @@
 diff --git a/src/qpwgraph.cpp b/src/qpwgraph.cpp
 index c056343..1e64986 100644
+link to usptream commit:
+https://github.com/rncbc/qpwgraph/commit/7c1e8ee86fd0ee4792425b46a34e923e4eac7834
 --- a/src/qpwgraph.cpp
 +++ b/src/qpwgraph.cpp
 @@ -134,6 +134,13 @@ bool qpwgraph_application::parse_args ( const QStringList& args )
