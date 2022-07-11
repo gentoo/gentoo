@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2022-07-11)
+# Unmaintained, companion lib of dev-cpp/commoncpp2 which has already
+# been removed, fails with USE=-ssl, no revdeps, upstream mostly dead.
+# Bug #830581, removal on 2022-08-10.
+dev-libs/ucommon
+
 # Brian Evans <grknight@gentoo.org> (2022-07-11)
 # The database behind this extension is no longer available
 # Please migrate to dev-php/maxmind-db-reader optionally with its
