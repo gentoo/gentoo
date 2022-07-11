@@ -14,7 +14,8 @@ dev-libs/elfutils
 # packages that need masked packages or multilib
 dev-games/ps2-packer
 games-action/beathazardultra
-games-action/brutal-legend
+games-action/brutal-legend-gog
+games-action/brutal-legend-hb
 games-action/crimsonland
 games-action/descent3
 games-action/descent3-demo
