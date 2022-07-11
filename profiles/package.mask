@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (2022-07-11)
+# The database behind this extension is no longer available
+# Please migrate to dev-php/maxmind-db-reader optionally with its
+# bundled extension. Bug 857636
+# Removal on 2022-08-10.
+dev-php/pecl-geoip
+
 # David Seifert <soap@gentoo.org> (2022-07-11)
 # Crashes with latest emboss, no other distro packages this,
 # ancient release, bug #361411, removal on 2022-08-10.
