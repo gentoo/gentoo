@@ -38,7 +38,7 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
-PATCHES=( "${FILESDIR}"/${P}-autotools.ebuild )
+PATCHES=( "${FILESDIR}"/${P}-autotools.patch )
 
 src_prepare() {
 	default
