@@ -143,6 +143,7 @@ dev-libs/amdgpu-pro-opencl
 # Patrick McLean <chutzpah@gentoo.org> (2018-07-12)
 # requires nodejs
 >=sys-cluster/ceph-13
+app-metrics/ceph_exporter
 
 # Michał Górny <mgorny@gentoo.org> (2018-04-15)
 # Broken multilib dependencies.
