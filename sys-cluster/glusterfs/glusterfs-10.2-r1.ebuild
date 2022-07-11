@@ -150,7 +150,7 @@ src_install() {
 	chmod 0755 "${ED}"/usr/share/glusterfs/scripts/*.sh || die
 
 	newinitd "${FILESDIR}/glusterfsd-10.2.initd" glusterfsd
-	newinitd "${FILESDIR}/glusterd-10.2.initd" glusterd
+	newinitd "${FILESDIR}/glusterd-10.2-r1.initd" glusterd
 	newconfd "${FILESDIR}/${PN}.confd" glusterfsd
 
 	keepdir /var/log/${PN}
