@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,13 +15,13 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-lang/ghc-7.4.1:=
 "
 DEPEND="${RDEPEND}
-	>=dev-haskell/cabal-1.6 <dev-haskell/cabal-3.3
+	>=dev-haskell/cabal-1.6 <dev-haskell/cabal-3.7
 "
 
 src_prepare() {
@@ -30,8 +30,9 @@ src_prepare() {
 	# but in gentoo we install it to fixed patch, so remove Setup.hs detection code
 	cabal-mksetup
 
+	# https://github.com/simonmar/ghc-paths/pull/26
 	cabal_chdeps \
-		'Cabal >= 1.6 && <3.1' 'Cabal >= 1.6 && <3.3'
+		'Cabal >= 1.6 && <3.1' 'Cabal >= 1.6 && <3.7'
 
 	# and use gentoo's hardcoded one:
 	# a few things we need to replace, and example values
