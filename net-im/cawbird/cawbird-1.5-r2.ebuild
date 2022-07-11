@@ -12,7 +12,7 @@ S="${WORKDIR}"/${P}
 
 LICENSE="CC-BY-3.0 GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="gstreamer spell"
 
 RDEPEND="
