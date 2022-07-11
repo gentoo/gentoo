@@ -27,7 +27,10 @@ BDEPEND="sys-devel/pmake
 
 S="${WORKDIR}"/${MYP}
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=(
+    "${FILESDIR}"/${P}-gentoo.patch
+    "${FILESDIR}"/${P}-fcntl.patch
+)
 
 DOCS=( README reference.txt )
 
