@@ -32,7 +32,7 @@ RDEPEND="
 	>=media-libs/libvorbis-1.3[abi_x86_32]
 	>=media-libs/openal-1.15[abi_x86_32]
 	>=sys-devel/gcc-4.6[cxx]
-	>=sys-libs/glibc-2.15
+	>=sys-libs/glibc-2.15[stack-realign(-)]
 	sys-libs/zlib[abi_x86_32]
 	virtual/glu[abi_x86_32]
 	virtual/opengl[abi_x86_32]
