@@ -1,0 +1,26 @@
+Detect amdgpu module for amdgpu-builtin kernel
+From dc2a4b5b256692e1a6ecef45210682c316b961e0 Mon Sep 17 00:00:00 2001
+From: YiyangWu <xgreenlandforwyy@gmail.com>
+Date: Sat, 2 Apr 2022 16:40:11 +0800
+Subject: [PATCH] Check /sys/module/amdgpu for ROCk instead of lsmod
+
+Closes: #102
+
+Signed-off-by: YiyangWu <xgreenlandforwyy@gmail.com>
+---
+ python_smi_tools/rocm_smi.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/python_smi_tools/rocm_smi.py b/python_smi_tools/rocm_smi.py
+index 57606ee..35be495 100755
+--- a/python_smi_tools/rocm_smi.py
++++ b/python_smi_tools/rocm_smi.py
+@@ -66,7 +66,7 @@ def driverInitialized():
+     """
+     driverInitialized = ''
+     try:
+-        driverInitialized = str(subprocess.check_output("cat /proc/modules|grep amdgpu", shell=True))
++        driverInitialized = str(subprocess.check_output("test -d /sys/module/amdgpu", shell=True))
+     except subprocess.CalledProcessError:
+         pass
+     if len(driverInitialized) > 0:
