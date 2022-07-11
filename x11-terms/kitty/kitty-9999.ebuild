@@ -23,7 +23,7 @@ HOMEPAGE="https://sw.kovidgoyal.net/kitty/"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+X debug test transfer wayland"
+IUSE="+X test transfer wayland"
 REQUIRED_USE="
 	|| ( X wayland )
 	${PYTHON_REQUIRED_USE}"
@@ -64,15 +64,12 @@ BDEPEND="
 	wayland? ( dev-util/wayland-scanner )"
 [[ ${PV} == 9999 ]] || BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-kovidgoyal )"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.23.1-flags.patch
-)
-
 src_prepare() {
 	default
 
 	sed -e "s/'x11 wayland'/'$(usev X x11) $(usev wayland)'/" \
 		-e "/num_workers = /s/=.*/= $(makeopts_jobs)/" \
+		-e "s/cflags.append.*-O3.*/pass/" -e 's/-O3//' \
 		-i setup.py || die
 
 	if use !transfer; then
@@ -102,7 +99,6 @@ src_compile() {
 		--shell-integration="enabled no-rc"
 		--update-check-interval=0
 		--verbose
-		$(usev debug --debug)
 	)
 
 	echo "${setup[*]}"
