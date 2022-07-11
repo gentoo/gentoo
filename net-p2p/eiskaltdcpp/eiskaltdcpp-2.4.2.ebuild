@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ LUA_COMPAT=( lua5-1 lua5-2 )
 CMAKE_REMOVE_MODULES_LIST="FindASPELL FindLua"
 PLOCALES="be bg cs da de el en es eu fr hu ie it pl pt_BR ru sk sr sr@latin sv_SE tr uk vi zh_CN"
 
-inherit cmake lua-single plocale strip-linguas xdg-utils toolchain-funcs
+inherit cmake lua-single plocale strip-linguas xdg-utils
 [[ ${PV} = *9999* ]] && inherit git-r3
 
 DESCRIPTION="Qt/DC++ based client for DirectConnect and ADC protocols"
