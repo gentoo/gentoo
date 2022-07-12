@@ -48,7 +48,7 @@ DEPEND="
 	dev-cpp/gflags:=
 	<dev-libs/leveldb-1.23:=[snappy,tcmalloc(-)?]
 	dev-libs/libaio:=
-	dev-libs/libfmt:=
+	<dev-libs/libfmt-9:=
 	dev-libs/libnl:3=
 	dev-libs/libxml2:=
 	dev-libs/libevent:=
@@ -217,6 +217,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-16.2.2-system-zstd.patch"
 	"${FILESDIR}/ceph-16.2.7-string-includes.patch"
 	"${FILESDIR}/ceph-17.2.0-fuse3.patch"
+	"${FILESDIR}/ceph-16.2.9-python310.patch"
 )
 
 check-reqs_export_vars() {
