@@ -1,0 +1,25 @@
+Bug: https://bugs.gentoo.org/779484
+
+From: orbea <orbea@riseup.net>
+Date: Mon, 11 Jul 2022 17:23:36 -0700
+Subject: [PATCH] build: Remove -no-undefined
+
+This depends on lxappearance_changed which is only available in the
+lxappearence binary and will be undefined at build time. Additionally
+GNU libtool silently ignores -no-undefined allowing the build to work
+while slibtool will respect it as expected.
+
+The easiest way to solve this is to just remove -no-undefined since it
+is not respected anyways.
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -126,7 +126,7 @@ AC_SUBST(LXAPPEARANCE_LIBDIR)
+ AC_SUBST(LXAPPEARANCE_DATADIR)
+ 
+ LXAPPEARANCE_MODULE="-avoid-version \
+-    -no-undefined "'-export-symbols-regex "^[[^_]].*"'
++    "'-export-symbols-regex "^[[^_]].*"'
+ AC_SUBST(LXAPPEARANCE_MODULE)
+ 
+ if test x"$enable_more_warnings" = x"yes"; then
