@@ -27,6 +27,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=( "${FILESDIR}/${P}-version.patch" )
+
 src_prepare() {
 	default
 	eautoreconf
