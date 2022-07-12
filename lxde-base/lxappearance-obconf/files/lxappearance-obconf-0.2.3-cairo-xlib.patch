@@ -22,8 +22,6 @@ src/preview.c:146:15: warning: implicit declaration of function ‘cairo_xlib_su
  	$(OPENBOX_LIBS) \
  	$(GTK_LIBS) \
  	$(LXAPPEARANCE_LIBS) \
-diff --git a/configure.ac b/configure.ac
-index 9042f7f..84de1c7 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -89,6 +89,10 @@ PKG_CHECK_MODULES(OPENBOX, [obrender-3.5 >= 3.5 obt-3.5 >= 3.5])
@@ -37,3 +35,13 @@ index 9042f7f..84de1c7 100644
  if test "x$enable_gtk3" = "xyes" ; then
    CFLAGS="$CFLAGS -DENABLE_GTK3"
    gtk_modules="gtk+-3.0 >= 3.0.0"
+--- a/src/preview.c
++++ b/src/preview.c
+@@ -27,6 +27,7 @@
+ 
+ #include <string.h>
+ 
++#include <cairo/cairo-xlib.h>
+ #include <obrender/theme.h>
+ 
+ #if GTK_CHECK_VERSION(3, 0, 0)
