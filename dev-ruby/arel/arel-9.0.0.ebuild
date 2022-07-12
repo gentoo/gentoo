@@ -20,6 +20,10 @@ SLOT="$(get_version_component_range 1).0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix_BigDecimal.patch"
+)
+
 ruby_add_bdepend "
 	test? (
 		dev-ruby/concurrent-ruby:1
