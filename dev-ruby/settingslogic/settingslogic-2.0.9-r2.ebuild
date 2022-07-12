@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby26 ruby27"
+USE_RUBY="ruby26 ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.rdoc"
 
-RUBY_FAKEGEM_RECIPE_TEST="rspec"
+RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 inherit ruby-fakegem
 
@@ -23,4 +23,7 @@ PATCHES=( "${FILESDIR}/${P}-psych-4.patch" )
 
 all_ruby_prepare() {
 	sed -i -e '/check_dependencies/d' Rakefile || die
+
+	# Use rspec 3
+	sed -i -e 's/be_false/be false/' spec/settingslogic_spec.rb || die
 }
