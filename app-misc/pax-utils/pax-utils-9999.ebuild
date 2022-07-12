@@ -25,7 +25,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="test man caps python seccomp"
+IUSE="caps +man python seccomp test"
 
 _PYTHON_DEPS="
 	${PYTHON_DEPS}
