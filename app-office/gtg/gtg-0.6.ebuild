@@ -46,13 +46,13 @@ BDEPEND="
 	)
 "
 
+src_test() {
+	sed -e "s|@VCS_TAG@|${PV}|" GTG/core/info.py.in > GTG/core/info.py || die
+	nosetests -v || die
+}
+
 src_install() {
 	meson_src_install
 	python_fix_shebang "${ED}"/usr/bin/gtg
 	python_optimize
-}
-
-src_test() {
-	sed -e "s|@VCS_TAG@|${PV}|" GTG/core/info.py.in > GTG/core/info.py || die
-	nosetests -v || die
 }
