@@ -1,0 +1,232 @@
+From 083691aa10e802a1b9b57922f3d0a234cafdb90d Mon Sep 17 00:00:00 2001
+From: Oleg Grenrus <oleg.grenrus@iki.fi>
+Date: Sat, 20 Feb 2021 23:15:41 +0200
+Subject: [PATCH] Add GHC-9.0.1 CI job
+
+Not for benchmarks yet though, cassava etc need bounds relaxed first
+
+We need to reorder stuff in UnitTests, GHC-9.0 is stricter about
+which instances are visible.
+---
+ aeson.cabal                                 |   2 +-
+ tests/UnitTests.hs                          | 144 ++++++++++----------
+
+diff --git a/aeson.cabal b/aeson.cabal
+index 91eacd7d..6152e509 100644
+--- a/aeson.cabal
++++ b/aeson.cabal
+@@ -8,7 +8,7 @@ copyright:       (c) 2011-2016 Bryan O'Sullivan
+ author:          Bryan O'Sullivan <bos@serpentine.com>
+ maintainer:      Adam Bergmark <adam@bergmark.nl>
+ stability:       experimental
+-tested-with:     GHC == 7.8.4, GHC == 7.10.3, GHC == 8.0.2, GHC == 8.2.2, GHC == 8.4.4, GHC == 8.6.5, GHC == 8.8.3, GHC == 8.10.1
++tested-with:     GHC == 7.8.4, GHC == 7.10.3, GHC == 8.0.2, GHC == 8.2.2, GHC == 8.4.4, GHC == 8.6.5, GHC == 8.8.3, GHC == 8.10.4, GHC == 9.0.1
+ synopsis:        Fast JSON parsing and encoding
+ cabal-version:   >= 1.10
+ homepage:        https://github.com/haskell/aeson
+ 
+diff --git a/tests/UnitTests.hs b/tests/UnitTests.hs
+index a0651dda..e5c73f46 100644
+--- a/tests/UnitTests.hs
++++ b/tests/UnitTests.hs
+@@ -76,59 +76,7 @@ import qualified SerializationFormatSpec
+ import Data.Aeson.Parser.UnescapeFFI ()
+ import Data.Aeson.Parser.UnescapePure ()
+ 
+-tests :: TestTree
+-tests = testGroup "unit" [
+-    testGroup "SerializationFormatSpec" SerializationFormatSpec.tests
+-  , testGroup "ErrorMessages" ErrorMessages.tests
+-  , testGroup "camelCase" [
+-      testCase "camelTo" $ roundTripCamel "aName"
+-    , testCase "camelTo" $ roundTripCamel "another"
+-    , testCase "camelTo" $ roundTripCamel "someOtherName"
+-    , testCase "camelTo" $
+-        assertEqual "" "camel_apicase" (camelTo '_' "CamelAPICase")
+-    , testCase "camelTo2" $ roundTripCamel2 "aName"
+-    , testCase "camelTo2" $ roundTripCamel2 "another"
+-    , testCase "camelTo2" $ roundTripCamel2 "someOtherName"
+-    , testCase "camelTo2" $
+-        assertEqual "" "camel_api_case" (camelTo2 '_' "CamelAPICase")
+-    ]
+-  , testGroup "encoding" [
+-      testCase "goodProducer" goodProducer
+-    ]
+-  , testGroup "utctime" [
+-      testCase "good" utcTimeGood
+-    , testCase "bad"  utcTimeBad
+-    ]
+-  , testGroup "formatError" [
+-      testCase "example 1" formatErrorExample
+-    ]
+-  , testGroup ".:, .:?, .:!" $ fmap (testCase "-") dotColonMark
+-  , testGroup "Hashable laws" $ fmap (testCase "-") hashableLaws
+-  , testGroup "Object construction" $ fmap (testCase "-") objectConstruction
+-  , testGroup "Issue #351" $ fmap (testCase "-") issue351
+-  , testGroup "Nullary constructors" $ fmap (testCase "-") nullaryConstructors
+-  , testGroup "FromJSONKey" $ fmap (testCase "-") fromJSONKeyAssertions
+-  , testCase "PR #455" pr455
+-  , testCase "Unescape string (PR #477)" unescapeString
+-  , testCase "Show Options" showOptions
+-  , testGroup "SingleMaybeField" singleMaybeField
+-  , testCase "withEmbeddedJSON" withEmbeddedJSONTest
+-  , testCase "SingleFieldCon" singleFieldCon
+-  , testGroup "UnknownFields" unknownFields
+-  , testGroup "Ordering of object keys" keyOrdering
+-  , testCase "Ratio with denominator 0" ratioDenominator0
+-  , testCase "Rational parses number"   rationalNumber
+-  , testCase "Big rational"             bigRationalDecoding
+-  , testCase "Small rational"           smallRationalDecoding
+-  , testCase "Big scientific exponent" bigScientificExponent
+-  , testCase "Big integer decoding" bigIntegerDecoding
+-  , testCase "Big natural decading" bigNaturalDecoding
+-  , testCase "Big integer key decoding" bigIntegerKeyDecoding
+-  , testGroup "QQ.Simple"
+-    [ testCase "example" $
+-      assertEqual "" (object ["foo" .= True]) [aesonQQ| {"foo": true } |]
+-    ]
+-  ]
++
+ 
+ roundTripCamel :: String -> Assertion
+ roundTripCamel name = assertEqual "" name (camelFrom '_' $ camelTo '_' name)
+@@ -389,11 +337,7 @@ issue351 = [
+ -- Comparison between bytestring and text encoders
+ ------------------------------------------------------------------------------
+ 
+-ioTests :: IO [TestTree]
+-ioTests = do
+-  enc <- encoderComparisonTests
+-  js <- jsonTestSuite
+-  return [enc, js]
++
+ 
+ encoderComparisonTests :: IO TestTree
+ encoderComparisonTests = do
+@@ -427,6 +371,7 @@ encoderComparisonTests = do
+ 
+ -- A regression test for: https://github.com/bos/aeson/issues/293
+ data MyRecord = MyRecord {_field1 :: Maybe Int, _field2 :: Maybe Bool}
++deriveJSON defaultOptions{omitNothingFields=True} ''MyRecord
+ 
+ data MyRecord2 = MyRecord2 {_field3 :: Maybe Int, _field4 :: Maybe Bool}
+   deriving Generic
+@@ -522,6 +467,8 @@ _blacklist = HashSet.fromList [
+ 
+ -- A regression test for: https://github.com/bos/aeson/pull/455
+ data Foo a = FooNil | FooCons (Foo Int)
++deriveToJSON  defaultOptions ''Foo
++deriveToJSON1 defaultOptions ''Foo
+ 
+ pr455 :: Assertion
+ pr455 = assertEqual "FooCons FooNil"
+@@ -548,6 +495,7 @@ showOptions =
+ 
+ newtype SingleMaybeField = SingleMaybeField { smf :: Maybe Int }
+   deriving (Eq, Show, Generic)
++deriveJSON defaultOptions{omitNothingFields=True,unwrapUnaryRecords=True} ''SingleMaybeField
+ 
+ singleMaybeField :: [TestTree]
+ singleMaybeField = do
+@@ -589,14 +537,21 @@ singleFieldCon =
+ 
+ newtype UnknownFields = UnknownFields { knownField :: Int }
+   deriving (Eq, Show, Generic)
++deriveJSON defaultOptions{rejectUnknownFields=True} ''UnknownFields
++
+ newtype UnknownFieldsTag = UnknownFieldsTag { tag :: Int }
+   deriving (Eq, Show, Generic)
++deriveJSON defaultOptions{rejectUnknownFields=True} ''UnknownFieldsTag
++
+ newtype UnknownFieldsUnaryTagged = UnknownFieldsUnaryTagged { knownFieldUnaryTagged :: Int }
+   deriving (Eq, Show, Generic)
++deriveJSON defaultOptions{tagSingleConstructors=True,rejectUnknownFields=True} ''UnknownFieldsUnaryTagged
++
+ data UnknownFieldsSum
+   = UnknownFields1 { knownField1 :: Int }
+   | UnknownFields2 { knownField2 :: Int }
+   deriving (Eq, Show, Generic)
++deriveJSON defaultOptions{rejectUnknownFields=True} ''UnknownFieldsSum
+ 
+ unknownFields :: [TestTree]
+ unknownFields = concat
+@@ -753,17 +708,68 @@ bigNaturalKeyDecoding =
+ type family Fam757 :: * -> *
+ type instance Fam757 = Maybe
+ newtype Newtype757 a = MkNewtype757 (Fam757 a)
++deriveToJSON1 defaultOptions ''Newtype757
+ 
+-deriveJSON defaultOptions{omitNothingFields=True} ''MyRecord
+-
+-deriveToJSON  defaultOptions ''Foo
+-deriveToJSON1 defaultOptions ''Foo
+-
+-deriveJSON defaultOptions{omitNothingFields=True,unwrapUnaryRecords=True} ''SingleMaybeField
++-------------------------------------------------------------------------------
++-- Tests trees
++-------------------------------------------------------------------------------
+ 
+-deriveJSON defaultOptions{rejectUnknownFields=True} ''UnknownFields
+-deriveJSON defaultOptions{rejectUnknownFields=True} ''UnknownFieldsTag
+-deriveJSON defaultOptions{tagSingleConstructors=True,rejectUnknownFields=True} ''UnknownFieldsUnaryTagged
+-deriveJSON defaultOptions{rejectUnknownFields=True} ''UnknownFieldsSum
++ioTests :: IO [TestTree]
++ioTests = do
++  enc <- encoderComparisonTests
++  js <- jsonTestSuite
++  return [enc, js]
+ 
+-deriveToJSON1 defaultOptions ''Newtype757
++tests :: TestTree
++tests = testGroup "unit" [
++    testGroup "SerializationFormatSpec" SerializationFormatSpec.tests
++  , testGroup "ErrorMessages" ErrorMessages.tests
++  , testGroup "camelCase" [
++      testCase "camelTo" $ roundTripCamel "aName"
++    , testCase "camelTo" $ roundTripCamel "another"
++    , testCase "camelTo" $ roundTripCamel "someOtherName"
++    , testCase "camelTo" $
++        assertEqual "" "camel_apicase" (camelTo '_' "CamelAPICase")
++    , testCase "camelTo2" $ roundTripCamel2 "aName"
++    , testCase "camelTo2" $ roundTripCamel2 "another"
++    , testCase "camelTo2" $ roundTripCamel2 "someOtherName"
++    , testCase "camelTo2" $
++        assertEqual "" "camel_api_case" (camelTo2 '_' "CamelAPICase")
++    ]
++  , testGroup "encoding" [
++      testCase "goodProducer" goodProducer
++    ]
++  , testGroup "utctime" [
++      testCase "good" utcTimeGood
++    , testCase "bad"  utcTimeBad
++    ]
++  , testGroup "formatError" [
++      testCase "example 1" formatErrorExample
++    ]
++  , testGroup ".:, .:?, .:!" $ fmap (testCase "-") dotColonMark
++  , testGroup "Hashable laws" $ fmap (testCase "-") hashableLaws
++  , testGroup "Object construction" $ fmap (testCase "-") objectConstruction
++  , testGroup "Issue #351" $ fmap (testCase "-") issue351
++  , testGroup "Nullary constructors" $ fmap (testCase "-") nullaryConstructors
++  , testGroup "FromJSONKey" $ fmap (testCase "-") fromJSONKeyAssertions
++  , testCase "PR #455" pr455
++  , testCase "Unescape string (PR #477)" unescapeString
++  , testCase "Show Options" showOptions
++  , testGroup "SingleMaybeField" singleMaybeField
++  , testCase "withEmbeddedJSON" withEmbeddedJSONTest
++  , testCase "SingleFieldCon" singleFieldCon
++  , testGroup "UnknownFields" unknownFields
++  , testGroup "Ordering of object keys" keyOrdering
++  , testCase "Ratio with denominator 0" ratioDenominator0
++  , testCase "Rational parses number"   rationalNumber
++  , testCase "Big rational"             bigRationalDecoding
++  , testCase "Small rational"           smallRationalDecoding
++  , testCase "Big scientific exponent" bigScientificExponent
++  , testCase "Big integer decoding" bigIntegerDecoding
++  , testCase "Big natural decading" bigNaturalDecoding
++  , testCase "Big integer key decoding" bigIntegerKeyDecoding
++  , testGroup "QQ.Simple"
++    [ testCase "example" $
++      assertEqual "" (object ["foo" .= True]) [aesonQQ| {"foo": true } |]
++    ]
++  ]
