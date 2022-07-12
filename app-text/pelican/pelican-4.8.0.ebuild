@@ -32,6 +32,8 @@ BDEPEND="
 	test? (
 		>=dev-python/markdown-3.1[${PYTHON_USEDEP}]
 		dev-python/typogrify[${PYTHON_USEDEP}]
+		dev-python/lxml[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 	)"
 
 DOCS=( README.rst )
