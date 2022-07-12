@@ -16,7 +16,7 @@
  #else
  SchemaData *
 -tdomGetSchemadata (void) 
-+tdomGetSchemadata (Tcl_Interp *) 
++tdomGetSchemadata (Tcl_Interp *interp) 
  {
      return GETASI;
  }
