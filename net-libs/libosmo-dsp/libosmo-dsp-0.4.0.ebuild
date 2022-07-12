@@ -30,6 +30,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+# Adapt version for libosmodsp.pc to 0.4.0 snapshot (bug #857678)
+# Needs to be adapted on version bump.
 PATCHES=( "${FILESDIR}/${P}-version.patch" )
 
 src_prepare() {
