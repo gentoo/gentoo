@@ -7,7 +7,7 @@ inherit bash-completion-r1 go-module systemd
 
 DESCRIPTION="Main implementation of IPFS"
 HOMEPAGE="https://ipfs.io/"
-SRC_URI="https://github.com/ipfs/${PN}/releases/download/v${PV}/${PN}-source.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ipfs/${PN}/releases/download/v${PV}/go-ipfs-source.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 ISC MIT MPL-2.0"
 SLOT="0"
@@ -63,7 +63,7 @@ pkg_postinst() {
 	elog 'or change IPFS_PATH of /etc/conf.d/ipfs with another with proper permissions.'
 
 	# See https://bugs.gentoo.org/838238
-	ewarn 'In case go-ipfs CPU usage is too high run the next workaround'
-	ewarn 'su -s /bin/sh -c "ipfs config profile apply lowpower"'
+	ewarn 'In case kubo CPU usage is too high run the next workaround'
+	ewarn 'su -s /bin/sh -c "ipfs config profile apply lowpower" ipfs'
 	ewarn 'Be aware that this will make your node less visible to other peers'
 }
