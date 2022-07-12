@@ -1,0 +1,45 @@
+From bf3eb16e451fd1bdee8ef03a0d22e0040e033f19 Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <dolsen@gentoo.org>
+Date: Sun, 10 Jul 2022 23:41:33 -0700
+Subject: [PATCH] eclean/pkgindex.py: Fix typo in function call
+
+  File "/usr/lib/python3.10/site-packages/gentoolkit/eclean/pkgindex.py", line
+60, in clean_pkgs_index
+    if self.get_emaint_binhost():
+AttributeError: 'PkgIndex' object has no attribute 'get_emaint_binhost'. Did
+you mean: '_get_emaint_binhost'?
+
+Also fix too many parameters in line 68 for the self.controller() call
+
+Bug: https://bugs.gentoo.org/857555
+
+Signed-off-by: Brian Dolbec <dolsen@gentoo.org>
+---
+ pym/gentoolkit/eclean/pkgindex.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pym/gentoolkit/eclean/pkgindex.py b/pym/gentoolkit/eclean/pkgindex.py
+index d0878a1..7d6fade 100644
+--- a/pym/gentoolkit/eclean/pkgindex.py
++++ b/pym/gentoolkit/eclean/pkgindex.py
+@@ -57,15 +57,15 @@ class PkgIndex:
+         statinfo = os.stat(file_)
+         size1 = statinfo.st_size
+         show_progress = not quiet
+-        if self.get_emaint_binhost():
++        if self._get_emaint_binhost():
+             self.taskmaster = TaskHandler(show_progress_bar=show_progress)
+             tasks = [self.binhost]
+             self.taskmaster.run_tasks(tasks)
+         else:
+             self.call_emaint()
+         statinfo = os.stat(file_)
+         clean_size = size1 - statinfo.st_size
+-        self.controller("\n", clean_size, "Packages Index", file_, "Index")
++        self.controller(clean_size, "Packages Index", file_, "Index")
+         return clean_size
+ 
+     def call_emaint(self):
+--
+libgit2 1.4.3
+

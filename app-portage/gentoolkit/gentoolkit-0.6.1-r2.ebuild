@@ -31,6 +31,7 @@ RDEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/gentoolkit-0.6.1-data_files.patch"
+	"${FILESDIR}/gentoolkit-0.6.1-pkgindex.patch"
 )
 
 distutils_enable_tests setup.py
