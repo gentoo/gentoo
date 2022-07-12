@@ -24,7 +24,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 DEPEND="
-	sys-apps/portage[${PYTHON_USEDEP}]"
+	>=sys-apps/portage-3.0.32[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
 	virtual/awk
 	sys-apps/gentoo-functions"
