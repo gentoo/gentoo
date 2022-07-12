@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit flag-o-matic systemd toolchain-funcs
+inherit systemd toolchain-funcs
 
 DESCRIPTION="System performance tools for Linux"
 HOMEPAGE="http://pagesperso-orange.fr/sebastien.godard/"
@@ -12,7 +12,6 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="dcron debug nls lm-sensors lto selinux systemd"
-
 
 BDEPEND="
 	virtual/pkgconfig
