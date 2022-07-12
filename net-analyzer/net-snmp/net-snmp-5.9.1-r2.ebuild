@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -64,7 +64,14 @@ RDEPEND="
 	${COMMON_DEPEND}
 	perl? (
 		X? ( dev-perl/Tk )
-		!minimal? ( dev-perl/TermReadKey )
+		!minimal? (
+			virtual/perl-Carp
+			virtual/perl-Data-Dumper
+			virtual/perl-Getopt-Long
+			dev-perl/JSON
+			dev-perl/TermReadKey
+			virtual/perl-Term-ReadLine
+		)
 	)
 	selinux? ( sec-policy/selinux-snmp )
 "
