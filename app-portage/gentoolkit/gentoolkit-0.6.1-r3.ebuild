@@ -23,8 +23,9 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage-Tools"
 LICENSE="GPL-2"
 SLOT="0"
 
+# Need newer Portage for XML fix, bug #857537
 DEPEND="
-	sys-apps/portage[${PYTHON_USEDEP}]"
+	>=sys-apps/portage-3.0.32[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
 	virtual/awk
 	sys-apps/gentoo-functions"
