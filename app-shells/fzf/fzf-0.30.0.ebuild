@@ -16,7 +16,7 @@ SRC_URI="https://github.com/junegunn/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT BSD-with-disclosure"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 
 src_prepare() {
 	default
