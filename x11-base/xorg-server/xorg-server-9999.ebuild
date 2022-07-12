@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 XORG_TARBALL_SUFFIX="xz"
 XORG_EAUTORECONF="no"
@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://gitlab.freedesktop.org/xorg/xserver.git"
 DESCRIPTION="X.Org X servers"
 SLOT="0/${PV}"
 if [[ ${PV} != 9999* ]]; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 IUSE_SERVERS="xephyr xnest xorg xvfb"
@@ -31,14 +31,18 @@ CDEPEND="
 	>=x11-libs/libXau-1.0.4
 	>=x11-libs/libXdmcp-1.0.2
 	>=x11-libs/libXfont2-2.0.1
-	>=x11-libs/libxcvt-0.1.0
 	>=x11-libs/libxkbfile-1.0.4
 	>=x11-libs/libxshmfence-1.1
 	>=x11-libs/pixman-0.27.2
 	>=x11-misc/xbitmaps-1.0.1
 	>=x11-misc/xkeyboard-config-2.4.1-r3
-	>=x11-libs/libXext-1.0.5
-	x11-libs/libXv
+	xorg? (
+		>=x11-libs/libxcvt-0.1.0
+	)
+	xnest? (
+		>=x11-libs/libXext-1.0.99.4
+		>=x11-libs/libX11-1.1.5
+	)
 	xephyr? (
 		x11-libs/libxcb[xkb]
 		x11-libs/xcb-util
@@ -48,8 +52,6 @@ CDEPEND="
 		x11-libs/xcb-util-wm
 	)
 	!minimal? (
-		>=x11-libs/libX11-1.1.5
-		>=x11-libs/libXext-1.0.5
 		>=media-libs/mesa-18[X(+),egl(+),gbm(+)]
 		>=media-libs/libepoxy-1.5.4[X,egl(+)]
 	)
@@ -74,6 +76,7 @@ DEPEND="${CDEPEND}
 	>=x11-base/xorg-proto-2021.4.99.2
 	>=x11-libs/xtrans-1.3.5
 	media-fonts/font-util
+	test? ( >=x11-libs/libxcvt-0.1.0 )
 "
 RDEPEND="${CDEPEND}
 	!systemd? ( gui-libs/display-manager-init )
@@ -91,9 +94,6 @@ REQUIRED_USE="!minimal? (
 	)
 	elogind? ( udev )
 	?? ( elogind systemd )"
-
-UPSTREAMED_PATCHES=(
-)
 
 PATCHES=(
 	"${UPSTREAMED_PATCHES[@]}"
