@@ -117,6 +117,8 @@ src_compile() {
 src_test() {
 	local runtestargs=(
 		--clients "$(makeopts_jobs)" # see bug #649868
+
+		--skiptest "Active defrag eval scripts" # see bug #851654
 	)
 
 	if has usersandbox ${FEATURES} || ! has userpriv ${FEATURES}; then
