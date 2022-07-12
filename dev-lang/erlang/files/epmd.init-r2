@@ -12,7 +12,7 @@ command_background=yes
 pidfile="/var/run/epmd.pid"
 
 depend() {
-	need loopback
+	use loopback
 	before sshd
 }
 
