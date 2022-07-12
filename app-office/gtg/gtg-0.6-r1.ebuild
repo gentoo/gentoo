@@ -33,6 +33,7 @@ RDEPEND="
 	x11-libs/pango[introspection]
 	x11-libs/gdk-pixbuf[introspection]
 	x11-libs/gtk+:3[introspection]
+	x11-libs/gtksourceview:4[introspection]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
