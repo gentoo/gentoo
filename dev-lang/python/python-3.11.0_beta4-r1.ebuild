@@ -232,19 +232,19 @@ src_configure() {
 
 		# Avoid as many dependencies as possible for the cross build.
 		cat >> Makefile <<-EOF || die
-		MODULE_NIS=disabled
-		MODULE__DBM=disabled
-		MODULE__GDBM=disabled
-		MODULE__DBM=disabled
-		MODULE__SQLITE3=disabled
-		MODULE__HASHLIB=disabled
-		MODULE__SSL=disabled
-		MODULE__CURSES=disabled
-		MODULE__CURSES_PANEL=disabled
-		MODULE_READLINE=disabled
-		MODULE__TKINTER=disabled
-		MODULE_PYEXPAT=disabled
-		MODULE_ZLIB=disabled
+		MODULE_NIS_STATE=disabled
+		MODULE__DBM_STATE=disabled
+		MODULE__GDBM_STATE=disabled
+		MODULE__DBM_STATE=disabled
+		MODULE__SQLITE3_STATE=disabled
+		MODULE__HASHLIB_STATE=disabled
+		MODULE__SSL_STATE=disabled
+		MODULE__CURSES_STATE=disabled
+		MODULE__CURSES_PANEL_STATE=disabled
+		MODULE_READLINE_STATE=disabled
+		MODULE__TKINTER_STATE=disabled
+		MODULE_PYEXPAT_STATE=disabled
+		MODULE_ZLIB_STATE=disabled
 		EOF
 
 		# Unfortunately, we do have to build this immediately, and
@@ -276,7 +276,7 @@ src_configure() {
 
 	local mod
 	for mod in "${disable_modules[@]}"; do
-		echo "MODULE_${mod}=disabled"
+		echo "MODULE_${mod}_STATE=disabled"
 	done >> Makefile || die
 }
 
