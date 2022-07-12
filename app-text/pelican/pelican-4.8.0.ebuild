@@ -53,9 +53,9 @@ python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}
+		docinto /usr/share/doc/${PF}
 		docompress -x /usr/share/doc/${PF}/samples
-		doins -r samples
+		dodoc -r samples
 	fi
 
 	distutils-r1_python_install_all
