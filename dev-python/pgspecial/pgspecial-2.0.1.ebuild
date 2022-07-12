@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="BSD MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	>=dev-python/click-4.1[${PYTHON_USEDEP}]
