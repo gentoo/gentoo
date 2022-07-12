@@ -52,9 +52,9 @@ RDEPEND="
 	usbredir? (
 		sys-apps/hwdata
 		>=sys-apps/usbredir-0.4.2
+		virtual/acl
 		virtual/libusb:1
 		policykit? (
-			sys-apps/acl
 			>=sys-auth/polkit-0.110-r1
 		)
 	)
