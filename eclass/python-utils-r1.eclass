@@ -462,7 +462,7 @@ _python_export() {
 					python3.10)
 						PYTHON_PKG_DEP=">=dev-lang/python-3.10.4:3.10";;
 					python3.11)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.11.0_beta3:3.11";;
+						PYTHON_PKG_DEP=">=dev-lang/python-3.11.0_beta4:3.11";;
 					python*)
 						PYTHON_PKG_DEP="dev-lang/python:${impl#python}";;
 					pypy)
