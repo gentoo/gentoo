@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2022-07-12)
+# Depends on last-rited media-video/kino
+media-video/dv2sub kino
+
 # Sam James <sam@gentoo.org> (2022-07-10)
 # TBB support is deprecated/broken upstream, needs older version,
 # and upstream are inclined to remove it entirely. bug #820827.
