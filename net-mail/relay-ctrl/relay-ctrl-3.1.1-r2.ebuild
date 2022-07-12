@@ -34,6 +34,9 @@ src_configure() {
 	local myCC="$(tc-getCC)"
 	echo "${myCC} ${CFLAGS}" > conf-cc || die
 	echo "${myCC} ${LDFLAGS}" > conf-ld || die
+	sed -i \
+		-e "s:'ar :'$(tc-getAR) :" \
+		-e "s:'ranlib :'$(tc-getRANLIB) :" Makefile || die
 }
 
 src_install() {
