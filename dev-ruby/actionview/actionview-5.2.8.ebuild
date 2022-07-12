@@ -44,6 +44,10 @@ ruby_add_bdepend "
 		~dev-ruby/railties-${PV}
 	)"
 
+PATCHES=(
+	"${FILESDIR}/${P}-ruby25_support.patch"
+)
+
 all_ruby_prepare() {
 	# Remove items from the common Gemfile that we don't need for this
 	# test run. This also requires handling some gemspecs.

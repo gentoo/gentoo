@@ -46,6 +46,10 @@ ruby_add_bdepend "
 		dev-ruby/sqlite3
 	)"
 
+PATCHES=(
+	"${FILESDIR}/actionview-5.2.8-ruby25_support.patch"
+)
+
 all_ruby_prepare() {
 	# Remove items from the common Gemfile that we don't need for this
 	# test run. This also requires handling some gemspecs.

@@ -1,0 +1,47 @@
+From 507b5aa3f4e22a5de16c950b688ed5948b5263ab Mon Sep 17 00:00:00 2001
+From: Petrik <petrik@deheus.net>
+Date: Wed, 11 May 2022 21:58:18 +0200
+Subject: [PATCH] Fix failing test on 6-1-stable for Ruby 2.5 and 2.6
+
+6-1-stable currently has failing tests: https://buildkite.com/rails/rails/builds/86353
+
+      assert_equal "<the-name #{escaped_dangerous_chars}=\"the value\"></the-name>",
+        tag.public_send(:"the-name", COMMON_DANGEROUS_CHARS => "the value")
+
+      TagHelperTest#test_tag_builder_with_dangerous_unknown_attribute_name [/rails/actionview/test/template/tag_helper_test.rb:179]:
+      - expected
+      + actual
+      @@ -1 +1 @@
+      -"<the-name _______________=\"the value\"></the-name>"
+      +"<the-name>{&quot;&amp;&lt;&gt;\\&quot;&#39; %*+,/;=^|&quot;=&gt;&quot;the value&quot;}</the-name>"
+
+The test fails because the `attributes` hash argument has string keys.
+In Ruby 2.5 and 2.6 only Symbol keys are allowed in keyword arguments.
+So the argument is seen as the `content` argument for the tag instead of the
+`attributes`.
+
+This test was introduced in 123f42a573.
+Running the test prior to 123f42a573 generates the same error.
+
+Calling `to_sym` on the key fixes the test.
+---
+ actionview/test/template/tag_helper_test.rb | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/actionview/test/template/tag_helper_test.rb b/actionview/test/template/tag_helper_test.rb
+index eb90134ece3a4..341f9d0d8e1bb 100644
+--- a/test/template/tag_helper_test.rb
++++ b/test/template/tag_helper_test.rb
+@@ -177,10 +177,10 @@ def test_tag_with_dangerous_unknown_attribute_name
+   def test_tag_builder_with_dangerous_unknown_attribute_name
+     escaped_dangerous_chars = "_" * COMMON_DANGEROUS_CHARS.size
+     assert_equal "<the-name #{escaped_dangerous_chars}=\"the value\"></the-name>",
+-                 tag.public_send(:"the-name", COMMON_DANGEROUS_CHARS => "the value")
++                 tag.public_send(:"the-name", COMMON_DANGEROUS_CHARS.to_sym => "the value")
+ 
+     assert_equal "<the-name #{COMMON_DANGEROUS_CHARS}=\"the value\"></the-name>",
+-                 tag.public_send(:"the-name", COMMON_DANGEROUS_CHARS => "the value", escape: false)
++                 tag.public_send(:"the-name", COMMON_DANGEROUS_CHARS.to_sym => "the value", escape: false)
+   end
+ 
+   def test_content_tag

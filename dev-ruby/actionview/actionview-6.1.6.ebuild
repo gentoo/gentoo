@@ -28,6 +28,10 @@ IUSE=""
 
 RUBY_S="rails-${PV}/${PN}"
 
+PATCHES=(
+	"${FILESDIR}/actionview-5.2.8-ruby25_support.patch"
+)
+
 ruby_add_rdepend "
 	~dev-ruby/activesupport-${PV}
 	>=dev-ruby/builder-3.1:* =dev-ruby/builder-3*:*
