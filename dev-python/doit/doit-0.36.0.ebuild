@@ -39,12 +39,18 @@ distutils_enable_sphinx doc \
 
 EPYTEST_DESELECT=(
 	# test failing due to impact on PATH run in a sandbox
+	tests/test_cmd_strace.py::TestCmdStrace::test_dep # #836164
 	tests/test_cmd_strace.py::TestCmdStrace::test_target
 )
 
 src_prepare() {
 	# Replace custom theme with builtin for documentation
 	sed -e '/html_theme/s/press/sphinx_rtd_theme/' -i doc/conf.py || die
+	# Remove non-exist modules for doc generation (#832754)
+	sed \
+		-e '/sphinx_sitemap/d' \
+		-e '/sphinx_reredirects/d' \
+		-i doc/conf.py || die
 
 	distutils-r1_src_prepare
 }
