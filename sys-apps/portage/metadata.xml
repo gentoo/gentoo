@@ -3,7 +3,7 @@
 <pkgmetadata>
   <upstream>
     <bugs-to>mailto:dev-portage@gentoo.org</bugs-to>
-    <changelog>https://gitweb.gentoo.org/proj/portage.git/plain/RELEASE-NOTES</changelog>
+    <changelog>https://gitweb.gentoo.org/proj/portage.git/plain/NEWS</changelog>
     <doc>https://wiki.gentoo.org/wiki/Handbook:AMD64/Working/Portage</doc>
     <remote-id type="cpe">cpe:/a:gentoo:portage</remote-id>
     <remote-id type="pypi">portage</remote-id>
