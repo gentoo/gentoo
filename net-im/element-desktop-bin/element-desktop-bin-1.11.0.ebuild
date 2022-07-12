@@ -24,6 +24,7 @@ RDEPEND="app-accessibility/at-spi2-atk:2
 	dev-libs/atk
 	dev-libs/expat
 	dev-libs/glib:2
+	dev-libs/nettle
 	dev-libs/nspr
 	dev-libs/nss
 	media-libs/alsa-lib
@@ -51,9 +52,7 @@ QA_PREBUILT="opt/Element/chrome-sandbox
 	opt/Element/libGLESv2.so
 	opt/Element/libffmpeg.so
 	opt/Element/libvk_swiftshader.so
-	opt/Element/libvulkan.so.1
-	opt/Element/swiftshader/libEGL.so
-	opt/Element/swiftshader/libGLESv2.so"
+	opt/Element/libvulkan.so.1"
 
 src_prepare() {
 	default
