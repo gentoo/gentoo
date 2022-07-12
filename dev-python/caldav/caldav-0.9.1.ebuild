@@ -28,8 +28,10 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/vobject[${PYTHON_USEDEP}]
 "
+# For now, really does use nose imports: bug #857738
 BDEPEND="
 	test? (
+		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/icalendar[${PYTHON_USEDEP}]
 		dev-python/tzlocal[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
