@@ -23,7 +23,10 @@ IUSE="doc static-libs"
 RDEPEND="sci-libs/fftw:3.0"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	doc? ( app-doc/doxygen )
+	doc? (
+		app-doc/doxygen
+		dev-texlive/texlive-latexextra
+	)
 	virtual/pkgconfig
 "
 
