@@ -18,12 +18,22 @@ SRC_URI="https://github.com/ecordell/pymacaroons/archive/v${PV}.tar.gz -> ${P}.g
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="test"
 
-# tests are incompatible with dev-python/hypothesis::gentoo. This package needs
-# <2.0.0, because needed hypothesis.specifiers module was removed in 2.0.0.
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/pynacl[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
+BDEPEND="test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/nose[${PYTHON_USEDEP}]
+	)
+"
+
+python_test() {
+	# The package also contains property_tests, however, they are incompatible
+	# with dev-python/hypothesis in gentoo. The package requires too old version.
+	"${EPYTHON}" -m nose -v tests/functional_tests || die "Tests failed with ${EPYTHON}"
+}
