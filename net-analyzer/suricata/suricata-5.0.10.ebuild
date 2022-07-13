@@ -152,6 +152,10 @@ src_install() {
 pkg_postinst() {
 	tmpfiles_process ${PN}.conf
 
+	ewarn
+	ewarn "The 5.0 branch of ${PN} will reach the end of life (EOL) on 2022-08-01, after which date upstream will no longer produce or release fixes for this branch."
+	ewarn
+
 	elog
 	if use systemd; then
 		elog "Suricata requires either the mode of operation (e.g. --af-packet) or the interface to listen on (e.g. -i eth0)"
