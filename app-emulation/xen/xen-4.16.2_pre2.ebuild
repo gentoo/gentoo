@@ -173,10 +173,3 @@ src_install() {
 	# make install likes to throw in some extra EFI bits if it built
 	use efi || rm -rf "${D}/usr/$(get_libdir)/efi"
 }
-
-pkg_postinst() {
-	elog "Official Xen Guide:"
-	elog " https://wiki.gentoo.org/wiki/Xen"
-
-	use efi && einfo "The efi executable is installed in /boot/efi/gentoo"
-}
