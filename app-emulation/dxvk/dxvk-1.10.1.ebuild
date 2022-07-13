@@ -103,7 +103,7 @@ multilib_src_install_all() {
 }
 
 pkg_preinst() {
-	[[ -e /usr/$(get_libdir)/dxvk/d3d11.dll ]] && DXVK_HAD_OVERLAY=
+	[[ -e ${EROOT}/usr/$(get_libdir)/dxvk/d3d11.dll ]] && DXVK_HAD_OVERLAY=
 }
 
 pkg_postinst() {
