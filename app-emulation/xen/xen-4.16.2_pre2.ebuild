@@ -123,6 +123,12 @@ xen_make() {
 		LDFLAGS="$(raw-ldflags)" \
 		HOSTCC="$(tc-getBUILD_CC)" \
 		HOSTCXX="$(tc-getBUILD_CXX)" \
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
+		LD="$(tc-getLD)" \
+		AR="$(tc-getAR)" \
+		OBJDUMP="$(tc-getOBJDUMP)" \
+		RANLIB="$(tc-getRANLIB)" \
 		clang="${clang}" \
 		"$@"
 }
