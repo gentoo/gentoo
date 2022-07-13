@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="openmp"
 
+PATCHES=( "${FILESDIR}"/${P}-big-endian.patch )
 DOCS="AUTHORS ChangeLog README" # NEWS is empty, PORTING and ROADMAP are for building
 
 pkg_pretend() {
