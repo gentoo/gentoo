@@ -5,6 +5,9 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<use>
+		<flag name="text-show">Use text-show library for efficient ToHttpApiData implementation.</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">fizruk/http-api-data</remote-id>
 	</upstream>
