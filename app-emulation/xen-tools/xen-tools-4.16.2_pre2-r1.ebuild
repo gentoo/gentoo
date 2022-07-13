@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE='ncurses,xml,threads(+)'
 
-inherit bash-completion-r1 flag-o-matic multilib python-single-r1 toolchain-funcs
+inherit bash-completion-r1 flag-o-matic multilib python-single-r1 readme.gentoo-r1 toolchain-funcs
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -517,27 +517,27 @@ src_install() {
 	fi
 
 	python_optimize
+
+	local -x DISABLE_AUTOFORMATTING=true
+	local -x DOC_CONTENTS="Official Xen Guide and the offical wiki page:
+- https://wiki.gentoo.org/wiki/Xen
+- https://wiki.xen.org/wiki/Main_Page
+
+
+If you use OpenRC:
+It is recommended to utilise the xencommons script to configure the system at
+boot time.
+
+
+If you use QEMU:
+The qemu-bridge-helper is renamed to the xen-bridge-helper in the in source
+build of qemu.  This allows for app-emulation/qemu to be emerged concurrently
+with the qemu capable xen.  It is up to the user to distinguish between and utilise
+the qemu-bridge-helper and the xen-bridge-helper. File bugs of any issues that arise
+"
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	elog "Official Xen Guide and the offical wiki page:"
-	elog "https://wiki.gentoo.org/wiki/Xen"
-	elog "https://wiki.xen.org/wiki/Main_Page"
-	elog ""
-	elog "Recommended to utilise the xencommons script to config system at boot"
-	elog "Add by use of rc-update on completion of the install"
-
-	if ! use hvm; then
-		echo
-		elog "HVM (VT-x and AMD-V) support has been disabled. If you need hvm"
-		elog "support enable the hvm use flag."
-		elog "An x86 or amd64 system is required to build HVM support."
-	fi
-
-	if use qemu; then
-		elog "The qemu-bridge-helper is renamed to the xen-bridge-helper in the in source"
-		elog "build of qemu.  This allows for app-emulation/qemu to be emerged concurrently"
-		elog "with the qemu capable xen.  It is up to the user to distinguish between and utilise"
-		elog "the qemu-bridge-helper and the xen-bridge-helper. File bugs of any issues that arise"
-	fi
+	readme.gentoo_print_elog
 }
