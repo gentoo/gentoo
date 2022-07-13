@@ -45,12 +45,12 @@ DEPEND="${RDEPEND}"
 BDEPEND=">=dev-util/boost-build-1.78.0-r1"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.71.0-disable_icu_rpath.patch
-	"${FILESDIR}"/${PN}-1.71.0-context-x32.patch
-	"${FILESDIR}"/${PN}-1.71.0-build-auto_index-tool.patch
+	"${FILESDIR}"/${PN}-1.79.0-disable_icu_rpath.patch
+	"${FILESDIR}"/${PN}-1.79.0-context-x32.patch
+	"${FILESDIR}"/${PN}-1.79.0-build-auto_index-tool.patch
 	# Boost.MPI's __init__.py doesn't work on Py3
-	"${FILESDIR}"/${PN}-1.73-boost-mpi-python-PEP-328.patch
-	"${FILESDIR}"/${PN}-1.74-CVE-2012-2677.patch
+	"${FILESDIR}"/${PN}-1.79.0-boost-mpi-python-PEP-328.patch
+	"${FILESDIR}"/${PN}-1.79.0-CVE-2012-2677.patch
 	"${FILESDIR}"/${PN}-1.79.0-fix-mips1-transition.patch
 )
 
