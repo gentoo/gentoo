@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2022-07-13)
+# Upstream has switched from CMake to hand-crafted Makefiles (yes, TO them),
+# which have seriously messed up dependency handling and trigger several
+# QA violations in Gentoo. Mask until all of the latter have been resolved
+# and the jumbo patch fixing the former has been thoroughly tested.
+>media-gfx/gmic-3.1.0
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-07-12)
 # Unused java libraries, all asm-* included in dev-java/asm,
 # log4j-api-java9 never to be used as a package. Removal on 2022-08-12.
