@@ -30,6 +30,7 @@ REQUIRED_USE="
 "
 
 BDEPEND="${PYTHON_DEPS}
+	dev-lang/perl
 	abi_x86_32? ( dev-lang/yasm )
 	abi_x86_64? ( dev-lang/yasm )
 	abi_x86_x32? ( dev-lang/yasm )
