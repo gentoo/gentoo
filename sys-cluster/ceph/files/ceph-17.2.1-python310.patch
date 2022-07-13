@@ -1,0 +1,35 @@
+From 389054888f2aa782f73564125ec7a1ef0212d536 Mon Sep 17 00:00:00 2001
+From: Pete Zaitcev <zaitcev@redhat.com>
+Date: Tue, 14 Dec 2021 23:04:34 -0600
+Subject: [PATCH] mgr: Define PY_SSIZE_T_CLEAN ahead of every Python.h
+
+Building on Fedora 35 with Python 3.10 makes vstart to loop
+forever, throwing the following message:
+
+ Error EINVAL: SystemError: PY_SSIZE_T_CLEAN macro must be
+ defined for '#' formats
+
+I followed the hint in the following document:
+ https://docs.python.org/3/c-api/intro.html
+
+It says "recommended" to always define PY_SSIZE_T_CLEAN,
+but as you can see it is actually required in our case.
+
+Fixes: https://tracker.ceph.com/issues/53441
+Signed-off-by: Pete Zaitcev <zaitcev@redhat.com>
+---
+ src/mgr/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/mgr/CMakeLists.txt b/src/mgr/CMakeLists.txt
+index 55147af4fc6ba..8f39e41ac0694 100644
+--- a/src/mgr/CMakeLists.txt
++++ b/src/mgr/CMakeLists.txt
+@@ -33,6 +33,7 @@ if(WITH_MGR)
+     mgr_commands.cc
+     $<TARGET_OBJECTS:mgr_cap_obj>)
+   add_executable(ceph-mgr ${mgr_srcs})
++  target_compile_definitions(ceph-mgr PRIVATE PY_SSIZE_T_CLEAN)
+   if(WITH_LIBCEPHSQLITE)
+     target_link_libraries(ceph-mgr cephsqlite SQLite3::SQLite3)
+   endif()
