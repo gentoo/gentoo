@@ -1,0 +1,10 @@
+diff -Naur a/configure.ac b/configure.ac
+--- a/configure.ac	2022-04-26 23:46:37.000000000 +0300
++++ b/configure.ac	2022-07-13 14:25:18.039895152 +0300
+@@ -1,5 +1,5 @@
+ AC_PREREQ(2.60)
+-AC_INIT([libdqlite], [1.10.0], [https://github.com/canonical/dqlite])
++AC_INIT([libdqlite], [1.11.0], [https://github.com/canonical/dqlite])
+ AC_CONFIG_MACRO_DIR([m4])
+ AC_CONFIG_AUX_DIR([ac])
+ 
