@@ -6,6 +6,18 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
+		<flag name="comonad">
+			You can disable the use of the `comonad`
+			package using `-f-comonad`. Disabling this is an unsupported
+			configuration, but it may be useful for accelerating builds in sandboxes for
+			expert users. If disabled we will not supply instances of `Comonad`
+		</flag>
+		<flag name="containers">
+			You can disable the use of the `containers`
+			package using `-f-containers`. Disabling this is an unsupported
+			configuration, but it may be useful for accelerating builds in sandboxes for
+			expert users.
+		</flag>
 		<flag name="contravariant">
 			You can disable the use of the `contravariant`
 			package using `-f-contravariant`. Disabling this is an unsupported
