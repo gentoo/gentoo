@@ -179,13 +179,4 @@ pkg_postinst() {
 	elog " https://wiki.gentoo.org/wiki/Xen"
 
 	use efi && einfo "The efi executable is installed in /boot/efi/gentoo"
-
-	ewarn
-	ewarn "Xen 4.12+ changed the default scheduler to credit2 which can cause"
-	ewarn "domU lockups on multi-cpu systems. The legacy credit scheduler seems"
-	ewarn "to work fine."
-	ewarn
-	ewarn "Add sched=credit to xen command line options to use the legacy scheduler."
-	ewarn
-	ewarn "https://wiki.gentoo.org/wiki/Xen#Xen_domU_hanging_with_Xen_4.12.2B"
 }
