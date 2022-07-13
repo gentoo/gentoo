@@ -429,7 +429,16 @@ src_compile() {
 		local -x NO_WERROR=1
 	fi
 
-	emake CC="$(tc-getCC)" LD="$(tc-getLD)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" build-tools ${myopt}
+	emake \
+		HOSTCC="$(tc-getBUILD_CC)" \
+		HOSTCXX="$(tc-getBUILD_CXX)" \
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
+		LD="$(tc-getLD)" \
+		AR="$(tc-getAR)" \
+		OBJDUMP="$(tc-getOBJDUMP)" \
+		RANLIB="$(tc-getRANLIB)" \
+		build-tools ${myopt}
 
 	if use doc; then
 		emake -C docs build
