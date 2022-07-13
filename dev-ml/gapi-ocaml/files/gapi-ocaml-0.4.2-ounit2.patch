@@ -1,0 +1,58 @@
+diff --git a/gapi-ocaml.opam b/gapi-ocaml.opam
+index cb9b0fb5..923675d8 100644
+--- a/gapi-ocaml.opam
++++ b/gapi-ocaml.opam
+@@ -15,7 +15,7 @@ depends: [
+   "dune"
+   "ocamlnet" {>= "4.1.4"}
+   "ocurl"
+-  "ounit" {with-test}
++  "ounit2" {with-test}
+   "yojson"
+ ]
+ synopsis: "A simple OCaml client for Google Services"
+diff --git a/src/test/dune b/src/test/dune
+index 5d955f42..ef45f0ce 100644
+--- a/src/test/dune
++++ b/src/test/dune
+@@ -1,7 +1,7 @@
+ (executable
+  (name testSuite)
+  (flags (:standard -w -3-6-23-27-32-33-50))
+- (libraries threads oUnit gapi-ocaml))
++ (libraries threads ounit2 gapi-ocaml))
+ 
+ (alias
+  (name runtest)
+diff --git a/src/test/testSuite.ml b/src/test/testSuite.ml
+index 7851661e..150781f7 100644
+--- a/src/test/testSuite.ml
++++ b/src/test/testSuite.ml
+@@ -76,11 +76,11 @@ let build_suite_from_list test_list =
+ 
+ let _ =
+   let test_list = ref (core_tests @ model_tests) in
+-  let ounit_specs =
++  let ounit2_specs =
+     [
+-      ("-verbose", Arg.Unit (fun _ -> ()), "See oUnit doc");
+-      ("-only-test", Arg.String (fun _ -> ()), "See oUnit doc");
+-      ("-list-test", Arg.String (fun _ -> ()), "See oUnit doc");
++      ("-verbose", Arg.Unit (fun _ -> ()), "See ounit2 doc");
++      ("-only-test", Arg.String (fun _ -> ()), "See ounit2 doc");
++      ("-list-test", Arg.String (fun _ -> ()), "See ounit2 doc");
+     ]
+   in
+   let arg_specs =
+@@ -100,9 +100,9 @@ let _ =
+       ]
+   in
+   let _ =
+-    Arg.parse (arg_specs @ ounit_specs)
++    Arg.parse (arg_specs @ ounit2_specs)
+       (fun _ -> ())
+-      ("Usage: " ^ Sys.argv.(0) ^ " [-service svc] [-all] [oUnit arguments]")
++      ("Usage: " ^ Sys.argv.(0) ^ " [-service svc] [-all] [ounit2 arguments]")
+   in
+   let _ =
+     (* Reset argument counter, to let OUnit reparse arguments *)
