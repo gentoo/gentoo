@@ -4,7 +4,7 @@
 EAPI=8
 
 QTMIN=5.15.4
-inherit ecm kde.org
+inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework providing access to Open Collaboration Services"
 LICENSE="LGPL-2.1+"

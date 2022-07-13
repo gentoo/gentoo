@@ -4,7 +4,7 @@
 EAPI=8
 
 QTMIN=5.15.4
-inherit ecm kde.org xdg-utils
+inherit ecm frameworks.kde.org xdg-utils
 
 DESCRIPTION="Framework for solving common problems such as caching, randomisation, and more"
 

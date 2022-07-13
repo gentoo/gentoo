@@ -6,7 +6,7 @@ EAPI=8
 ECM_QTHELP="false"
 ECM_TEST="false"
 KDE_ORG_NAME="kdelibs4support"
-inherit ecm kde.org
+inherit ecm frameworks.kde.org
 
 DESCRIPTION="Icons of flags for various countries"
 

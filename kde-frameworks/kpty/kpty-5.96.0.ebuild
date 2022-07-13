@@ -4,7 +4,7 @@
 EAPI=8
 
 PVCUT=$(ver_cut 1-2)
-inherit ecm kde.org
+inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework for pseudo terminal devices and running child processes"
 LICENSE="LGPL-2+"

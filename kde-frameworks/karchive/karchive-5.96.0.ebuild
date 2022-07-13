@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit ecm kde.org
+inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework for reading, creation, and manipulation of various archive formats"
 LICENSE="GPL-2 LGPL-2.1"

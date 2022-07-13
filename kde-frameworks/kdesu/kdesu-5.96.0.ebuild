@@ -5,7 +5,7 @@ EAPI=8
 
 ECM_TEST="true"
 PVCUT=$(ver_cut 1-2)
-inherit ecm kde.org
+inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework to handle super user actions"
 

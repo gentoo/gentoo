@@ -6,7 +6,7 @@ EAPI=8
 PVCUT=$(ver_cut 1-2)
 QTMIN=5.15.4
 VIRTUALX_REQUIRED="test"
-inherit ecm kde.org
+inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework for providing different actions given a string query"
 

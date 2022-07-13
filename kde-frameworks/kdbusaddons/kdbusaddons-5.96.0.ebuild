@@ -5,7 +5,7 @@ EAPI=8
 
 QTMIN=5.15.4
 VIRTUALDBUS_TEST="true"
-inherit ecm kde.org
+inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework for registering services and applications per freedesktop standards"
 LICENSE="LGPL-2+"

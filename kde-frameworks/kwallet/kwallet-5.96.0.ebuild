@@ -5,7 +5,7 @@ EAPI=8
 
 PVCUT=$(ver_cut 1-2)
 QTMIN=5.15.4
-inherit ecm kde.org optfeature
+inherit ecm frameworks.kde.org optfeature
 
 DESCRIPTION="Framework providing desktop-wide storage for passwords"
 
@@ -13,9 +13,6 @@ LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="gpg +man"
 
-BDEPEND="
-	man? ( >=kde-frameworks/kdoctools-${PVCUT}:5 )
-"
 DEPEND="
 	dev-libs/libgcrypt:0=
 	>=dev-qt/qtdbus-${QTMIN}:5
@@ -33,6 +30,7 @@ DEPEND="
 	gpg? ( >=app-crypt/gpgme-1.7.1:=[cxx,qt5] )
 "
 RDEPEND="${DEPEND}"
+BDEPEND="man? ( >=kde-frameworks/kdoctools-${PVCUT}:5 )"
 
 src_configure() {
 	local mycmakeargs=(

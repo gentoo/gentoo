@@ -5,7 +5,7 @@ EAPI=8
 
 QTMIN=5.15.4
 VIRTUALX_REQUIRED="test"
-inherit ecm kde.org optfeature
+inherit ecm frameworks.kde.org optfeature
 
 DESCRIPTION="Provider for platform independent hardware discovery, abstraction and management"
 
