@@ -10,7 +10,7 @@ PVCUT=$(ver_cut 1-3)
 KFMIN=5.92.0
 QTMIN=5.15.4
 PYTHON_COMPAT=( python3_{8..11} )
-inherit ecm kde.org python-single-r1
+inherit ecm gear.kde.org python-single-r1
 
 DESCRIPTION="Library for parsing and evaluating OSM opening hours expressions"
 HOMEPAGE="https://api.kde.org/kopeninghours/html/index.html

@@ -7,7 +7,7 @@ ECM_HANDBOOK="optional"
 PVCUT=$(ver_cut 1-3)
 KFMIN=5.92.0
 QTMIN=5.15.4
-inherit ecm kde.org
+inherit ecm gear.kde.org
 
 DESCRIPTION="Container application to unify several major PIM applications within one"
 HOMEPAGE="https://kontact.kde.org/ https://apps.kde.org/kontact/"

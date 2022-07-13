@@ -6,7 +6,7 @@ EAPI=8
 KFMIN=5.92.0
 PLASMA_MINIMAL=5.16.5
 QTMIN=5.15.4
-inherit ecm kde.org
+inherit ecm gear.kde.org
 
 DESCRIPTION="Application to read documentation for KDE Plasma, Applications, Utilities"
 HOMEPAGE="https://apps.kde.org/help/ https://userbase.kde.org/KHelpCenter"

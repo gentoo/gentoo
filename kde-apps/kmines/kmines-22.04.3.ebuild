@@ -8,7 +8,7 @@ KDE_SELINUX_MODULE="games"
 PVCUT=$(ver_cut 1-3)
 KFMIN=5.92.0
 QTMIN=5.15.4
-inherit ecm kde.org
+inherit ecm gear.kde.org
 
 DESCRIPTION="Classic mine sweeper game"
 HOMEPAGE="https://apps.kde.org/kmines/"

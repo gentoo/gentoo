@@ -6,7 +6,7 @@ EAPI=8
 ECM_TEST="forceoptional"
 QTMIN=5.15.4
 VIRTUALX_REQUIRED="test"
-inherit ecm kde.org
+inherit ecm gear.kde.org
 
 DESCRIPTION="KDE library for mathematical features"
 

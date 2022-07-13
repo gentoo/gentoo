@@ -9,7 +9,7 @@ KDE_GEAR="true"
 KDE_ORG_CATEGORY="network"
 KFMIN=5.92.0
 QTMIN=5.15.4
-inherit ecm kde.org
+inherit ecm gear.kde.org
 
 DESCRIPTION="KIO Slave for Google Drive service"
 HOMEPAGE="https://apps.kde.org/kio_gdrive/"

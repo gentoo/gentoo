@@ -7,7 +7,7 @@ KDE_ORG_NAME="kdegraphics-thumbnailers"
 PVCUT=$(ver_cut 1-3)
 KFMIN=5.92.0
 QTMIN=5.15.4
-inherit ecm kde.org
+inherit ecm gear.kde.org
 
 DESCRIPTION="Thumbnail generators for Mobipocket, PDF/PS and RAW files"
 

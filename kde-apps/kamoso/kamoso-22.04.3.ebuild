@@ -7,7 +7,7 @@ ECM_HANDBOOK="forceoptional"
 KFMIN=5.92.0
 QTMIN=5.15.4
 VIRTUALX_REQUIRED="test"
-inherit ecm kde.org
+inherit ecm gear.kde.org
 
 DESCRIPTION="Application to take pictures and videos from your webcam by KDE"
 HOMEPAGE="https://apps.kde.org/kamoso/ https://userbase.kde.org/Kamoso"

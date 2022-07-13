@@ -4,7 +4,7 @@
 EAPI=8
 
 KFMIN=5.92.0
-inherit ecm kde.org
+inherit ecm gear.kde.org
 
 DESCRIPTION="kioslaves from kdesdk package"
 

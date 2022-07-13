@@ -6,7 +6,7 @@ EAPI=8
 USE_RUBY="ruby26 ruby27"
 KFMIN=5.92.0
 QTMIN=5.15.4
-inherit ecm kde.org ruby-single
+inherit ecm gear.kde.org ruby-single
 
 DESCRIPTION="Kross interpreter plugins for programming languages"
 

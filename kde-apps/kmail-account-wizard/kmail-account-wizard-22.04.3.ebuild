@@ -9,7 +9,7 @@ PVCUT=$(ver_cut 1-3)
 KFMIN=5.92.0
 QTMIN=5.15.4
 VIRTUALX_REQUIRED="test"
-inherit ecm kde.org
+inherit ecm gear.kde.org
 
 DESCRIPTION="Assistant for KMail accounts configuration"
 HOMEPAGE+=" https://userbase.kde.org/KMail/Account_Wizard"
