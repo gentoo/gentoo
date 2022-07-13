@@ -5,7 +5,7 @@ EAPI=8
 
 KFMIN=5.92.0
 QTMIN=5.15.4
-inherit ecm kde.org
+inherit ecm gear.kde.org
 
 DESCRIPTION="KDE Telepathy contact, presence and chat Plasma applets"
 HOMEPAGE="https://community.kde.org/KTp"

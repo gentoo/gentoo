@@ -8,7 +8,7 @@ ECM_TEST="true"
 PVCUT=$(ver_cut 1-3)
 KFMIN=5.92.0
 QTMIN=5.15.4
-inherit ecm kde.org optfeature
+inherit ecm gear.kde.org optfeature
 
 DESCRIPTION="Image viewer by KDE"
 HOMEPAGE="https://apps.kde.org/gwenview/ https://userbase.kde.org/Gwenview"

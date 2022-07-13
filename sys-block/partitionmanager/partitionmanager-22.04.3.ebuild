@@ -8,7 +8,7 @@ KDE_GEAR="true"
 KFMIN=5.92.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=5.15.4
-inherit ecm kde.org
+inherit ecm gear.kde.org
 
 DESCRIPTION="Utility for management of disks, partitions and file systems"
 HOMEPAGE="https://apps.kde.org/partitionmanager/"

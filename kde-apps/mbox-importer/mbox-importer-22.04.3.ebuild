@@ -7,7 +7,7 @@ ECM_HANDBOOK="forceoptional" # FIXME: Check back for doc in release
 PVCUT=$(ver_cut 1-3)
 KFMIN=5.92.0
 QTMIN=5.15.4
-inherit ecm kde.org
+inherit ecm gear.kde.org
 
 DESCRIPTION="Import mbox email archives from various sources into Akonadi"
 

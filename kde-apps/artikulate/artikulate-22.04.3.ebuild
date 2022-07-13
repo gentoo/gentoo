@@ -6,7 +6,7 @@ EAPI=8
 ECM_HANDBOOK="optional"
 KFMIN=5.92.0
 QTMIN=5.15.4
-inherit ecm kde.org
+inherit ecm gear.kde.org
 
 DESCRIPTION="Language learning application that helps improving pronunciation skills"
 HOMEPAGE="https://apps.kde.org/artikulate/"

@@ -7,7 +7,7 @@ ECM_HANDBOOK="optional"
 PVCUT=$(ver_cut 1-3)
 KFMIN=5.92.0
 QTMIN=5.15.4
-inherit ecm kde.org
+inherit ecm gear.kde.org
 
 DESCRIPTION="MathML-based 2D and 3D graph calculator by KDE"
 HOMEPAGE="https://apps.kde.org/kalgebra/ https://edu.kde.org/kalgebra/"

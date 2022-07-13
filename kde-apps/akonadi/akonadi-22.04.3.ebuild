@@ -10,7 +10,7 @@ KFMIN=5.92.0
 QTMIN=5.15.4
 VIRTUALDBUS_TEST="true"
 VIRTUALX_REQUIRED="test"
-inherit ecm kde.org readme.gentoo-r1
+inherit ecm gear.kde.org readme.gentoo-r1
 
 DESCRIPTION="Storage service for PIM data and libraries for PIM apps"
 HOMEPAGE="https://community.kde.org/KDE_PIM/akonadi"

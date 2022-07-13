@@ -6,7 +6,7 @@ EAPI=8
 ECM_HANDBOOK="forceoptional"
 KFMIN=5.92.0
 QTMIN=5.15.4
-inherit ecm kde.org
+inherit ecm gear.kde.org
 
 DESCRIPTION="Mathematical function plotter"
 HOMEPAGE="https://apps.kde.org/kmplot/ https://edu.kde.org/kmplot/"

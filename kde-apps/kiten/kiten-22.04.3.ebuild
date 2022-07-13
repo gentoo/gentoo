@@ -6,7 +6,7 @@ EAPI=8
 ECM_HANDBOOK="forceoptional"
 KFMIN=5.92.0
 QTMIN=5.15.4
-inherit ecm kde.org
+inherit ecm gear.kde.org
 
 DESCRIPTION="KDE Japanese dictionary and reference"
 HOMEPAGE="https://apps.kde.org/kiten/ https://edu.kde.org/kiten/"

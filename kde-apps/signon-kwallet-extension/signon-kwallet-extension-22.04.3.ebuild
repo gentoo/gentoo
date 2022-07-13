@@ -4,7 +4,7 @@
 EAPI=8
 
 KFMIN=5.92.0
-inherit ecm kde.org
+inherit ecm gear.kde.org
 
 DESCRIPTION="KWallet extension for signond"
 HOMEPAGE="https://accounts-sso.gitlab.io/"

@@ -8,7 +8,7 @@ ECM_TEST="forceoptional"
 KFMIN=5.92.0
 QTMIN=5.15.4
 VIRTUALX_REQUIRED="test"
-inherit ecm kde.org
+inherit ecm gear.kde.org
 
 DESCRIPTION="Advanced download manager by KDE"
 HOMEPAGE="https://apps.kde.org/kget/"

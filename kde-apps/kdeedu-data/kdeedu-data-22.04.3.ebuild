@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit kde.org cmake
+inherit gear.kde.org cmake
 
 DESCRIPTION="Shared icons, artwork and data files for educational applications"
 

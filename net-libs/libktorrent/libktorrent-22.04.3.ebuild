@@ -9,7 +9,7 @@ KDE_ORG_CATEGORY="network"
 KFMIN=5.92.0
 QTMIN=5.15.4
 VIRTUALX_REQUIRED="test"
-inherit ecm kde.org
+inherit ecm gear.kde.org
 
 DESCRIPTION="BitTorrent library based on KDE Frameworks"
 HOMEPAGE="https://apps.kde.org/ktorrent/ https://userbase.kde.org/KTorrent"

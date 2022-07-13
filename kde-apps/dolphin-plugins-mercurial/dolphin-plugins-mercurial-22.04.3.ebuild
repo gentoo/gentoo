@@ -9,7 +9,7 @@ MY_PLUGIN_NAME="hg"
 PVCUT=$(ver_cut 1-3)
 KFMIN=5.92.0
 QTMIN=5.15.4
-inherit ecm kde.org
+inherit ecm gear.kde.org
 
 DESCRIPTION="Dolphin plugin for Mercurial integration"
 HOMEPAGE="https://apps.kde.org/dolphin_plugins/"

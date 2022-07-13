@@ -4,7 +4,7 @@
 EAPI=8
 
 QTMIN=5.15.4
-inherit ecm kde.org
+inherit ecm gear.kde.org
 
 DESCRIPTION="Wrapper around exiv2 library"
 

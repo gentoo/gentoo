@@ -8,7 +8,7 @@ ECM_TEST="true"
 KFMIN=5.92.0
 QTMIN=5.15.4
 VIRTUALX_REQUIRED="test"
-inherit flag-o-matic ecm kde.org optfeature
+inherit flag-o-matic ecm gear.kde.org optfeature
 
 DESCRIPTION="Web browser and file manager based on KDE Frameworks"
 HOMEPAGE="https://apps.kde.org/konqueror/"
