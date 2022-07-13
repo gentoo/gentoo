@@ -518,23 +518,6 @@ src_install() {
 
 	python_optimize
 
-	local -x DISABLE_AUTOFORMATTING=true
-	local -x DOC_CONTENTS="Official Xen Guide and the offical wiki page:
-- https://wiki.gentoo.org/wiki/Xen
-- https://wiki.xen.org/wiki/Main_Page
-
-
-If you use OpenRC:
-It is recommended to utilise the xencommons script to configure the system at
-boot time.
-
-
-If you use QEMU:
-The qemu-bridge-helper is renamed to the xen-bridge-helper in the in source
-build of qemu.  This allows for app-emulation/qemu to be emerged concurrently
-with the qemu capable xen.  It is up to the user to distinguish between and utilise
-the qemu-bridge-helper and the xen-bridge-helper. File bugs of any issues that arise
-"
 	readme.gentoo_create_doc
 }
 
