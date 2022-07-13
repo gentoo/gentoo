@@ -12,7 +12,7 @@ if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/pothosware/SoapyPlutoSDR.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~riscv ~x86"
 	COMMIT="782650597b18f311cc97fbb7c6813539e6adef16"
 	SRC_URI="https://github.com/pothosware/SoapyPlutoSDR/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/SoapyPlutoSDR-${COMMIT}
