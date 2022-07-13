@@ -1,7 +1,7 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -19,7 +19,7 @@ LICENSE="ISC Apache-2.0 MIT"
 SLOT="0"
 
 PATCHES=(
-	"${FILESDIR}/${P}-null_pointer_fix.patch" #786957
+	"${FILESDIR}/${P}-null_pointer_fix.patch" # 786951
 )
 
 src_compile() {
