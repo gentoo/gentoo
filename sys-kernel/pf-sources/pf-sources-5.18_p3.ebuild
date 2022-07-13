@@ -25,6 +25,9 @@ K_WANT_GENPATCHES="base extras"
 # major kernel version, e.g. 5.14
 SHPV="${PV/_p*/}"
 
+# Replace "_p" with "-pf"
+PFPV="${PV/_p/-pf}"
+
 # https://gitlab.com/alfredchen/projectc/ revision for a major version,
 # e.g. prjc-v5.14-r2 = 2
 PRJC_R=2
@@ -33,20 +36,18 @@ inherit kernel-2 optfeature
 detect_version
 
 DESCRIPTION="Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches"
-HOMEPAGE="https://gitlab.com/post-factum/pf-kernel/-/wikis/README
+HOMEPAGE="https://codeberg.org/pf-kernel/linux/wiki/README
 	https://dev.gentoo.org/~mpagano/genpatches/"
-SRC_URI="${KERNEL_URI}
-	https://github.com/pfactum/pf-kernel/compare/v${SHPV}...v${SHPV}-pf${PV/*_p/}.diff -> ${P}.patch
+SRC_URI="https://codeberg.org/pf-kernel/linux/archive/v${PFPV}.tar.gz -> linux-${PFPV}.tar.gz
 	https://dev.gentoo.org/~mpagano/genpatches/tarballs/genpatches-${SHPV}-${K_GENPATCHES_VER}.base.tar.xz
 	https://dev.gentoo.org/~mpagano/genpatches/tarballs/genpatches-${SHPV}-${K_GENPATCHES_VER}.extras.tar.xz
 	https://gitlab.com/alfredchen/projectc/-/raw/master/${SHPV}/prjc_v${SHPV}-r${PRJC_R}.patch"
 
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
-S="${WORKDIR}/linux-${PVR}-pf"
+S="${WORKDIR}/linux-${PFPV}"
 
-PATCHES=( "${DISTDIR}/${P}.patch"
-	"${DISTDIR}/prjc_v${SHPV}-r${PRJC_R}.patch" )
+PATCHES=( "${DISTDIR}/prjc_v${SHPV}-r${PRJC_R}.patch" )
 
 K_EXTRAEINFO="For more info on pf-sources and details on how to report problems,
 	see: ${HOMEPAGE}."
@@ -62,8 +63,18 @@ pkg_setup() {
 	kernel-2_pkg_setup
 }
 
+src_unpack() {
+	# Since the Codeberg-hosted pf-sources include full kernel sources, we need to manually override
+	# the src_unpack phase because kernel-2_src_unpack() does a lot of unwanted magic here.
+	unpack ${A}
+
+	mv pf-kernel linux-${PFPV} || die "Failed to move source directory"
+}
+
 src_prepare() {
-	# kernel-2_src_prepare doesn't apply PATCHES().
+	# kernel-2_src_prepare doesn't apply PATCHES(). And with pf-sources's move to Codeberg, we need
+	# to manually eapply the genpatches too.
+	eapply "${WORKDIR}"/*.patch
 	default
 }
 
