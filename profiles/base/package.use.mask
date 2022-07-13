@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Depends on an older enigmail that only supports python2, which is
+# being removed soon. #758344
+www-client/seamonkey crypt
+
 # Sam James <sam@gentoo.org> (2022-07-12)
 # Depends on last-rited media-video/kino
 media-video/dv2sub kino
