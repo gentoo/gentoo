@@ -13,10 +13,10 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Shotwell"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~sparc ~x86"
-IUSE="opencv udev"
+IUSE="opencv udev wayland"
 
 DEPEND="
-	>=x11-libs/gtk+-3.22.0:3
+	>=x11-libs/gtk+-3.22.0:3[wayland?]
 	>=dev-libs/glib-2.40.0:2
 	>=dev-libs/libgee-0.8.5:0.8
 	>=net-libs/webkit-gtk-2.26:4
@@ -52,6 +52,8 @@ BDEPEND="
 	app-crypt/gcr[vala]
 "
 
+PATCHES=( "${FILESDIR}"/0.30.16-optional-wayland.patch )
+
 src_prepare() {
 	default
 	vala_setup
@@ -70,6 +72,7 @@ src_configure() {
 		-Dinstall-apport-hook=false
 		$(meson_use opencv face-detection)
 		-Dfatal_warnings=false
+		$(meson_use wayland)
 	)
 	meson_src_configure
 }

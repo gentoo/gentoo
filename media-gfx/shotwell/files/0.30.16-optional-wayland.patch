@@ -1,0 +1,59 @@
+Make wayland backend optional
+
+* Unfortunately, upstream is hostile to making wayland optional:
+  https://gitlab.gnome.org/GNOME/shotwell/-/merge_requests/57#note_1500284
+
+See: https://bugs.gentoo.org/836831
+
+--- a/meson.build
++++ b/meson.build
+@@ -64,7 +64,14 @@
+ libraw = dependency('libraw', version : '>= 0.13.2')
+ libexif = dependency('libexif', version : '>= 0.6.16')
+ unity = dependency('unity', required : false)
+-gdk = [ dependency('gdk-x11-3.0'), dependency('gdk-wayland-3.0') ]
++gdk = [ dependency('gdk-x11-3.0') ]
++add_global_arguments(['--define=HAVE_X11_BACKEND'],
++                     language : 'vala')
++if get_option('wayland')
++  gdk += [dependency('gdk-wayland-3.0')]
++  add_global_arguments(['--define=HAVE_WAYLAND_BACKEND'],
++                       language : 'vala')
++endif
+ 
+ unity_available = false
+ if unity.found() and get_option('unity-support')
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -8,3 +8,4 @@
+ option('install-apport-hook', type : 'boolean', value : 'true', description: 'Enable Ubuntu apport hook')
+ option('face-detection', type:'boolean', value:false, description: 'Enable face detection and recognition features')
+ option('fatal_warnings', type:'boolean', value:false)
++option('wayland', type: 'boolean', value: true, description: 'Enable Wayland support')
+--- a/src/Portal.vala
++++ b/src/Portal.vala
+@@ -53,6 +53,7 @@
+     private static async string get_parent_window () {
+         var window = AppWindow.get_instance().get_window ();
+ 
++#if HAVE_WAYLAND_BACKEND
+         if (window is Gdk.Wayland.Window) {
+             var handle = "wayland:";
+             ((Gdk.Wayland.Window) window).export_handle ((w, h) => {
+@@ -61,9 +62,14 @@
+             });
+             yield;
+             return handle;
+-        } else if (window is Gdk.X11.Window) {
++        } else
++#endif
++#if HAVE_X11_BACKEND
++        if (window is Gdk.X11.Window) {
+             return "x11:%x".printf ((uint) ((Gdk.X11.Window) window).get_xid ());
+-        } else {
++        } else
++#endif
++        {
+             warning ("Could not get parent window");
+             return "";
+         }
