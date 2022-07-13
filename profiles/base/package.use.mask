@@ -6,6 +6,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Yiyang Wu <xgreenlandforwyy@gmail.com> (2022-09-21)
+# Intolerable mathematical errors found on AMD Radeon VII GPU during src_test,
+# may lead to incorrect results in computation.
+# https://github.com/ROCmSoftwarePlatform/rocFFT/issues/369
+=sci-libs/rocFFT-5.1.3 amdgpu_targets_gfx906
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-09-17)
 # po4a crashes while translating
 # mask for now

@@ -1,0 +1,11 @@
+Contributed-by: perestoronin https://bugs.gentoo.org/693200#c25
+--- a/library/src/include/twiddles.h
++++ b/library/src/include/twiddles.h
+@@ -14,6 +14,7 @@
+ #include <numeric>
+ #include <tuple>
+ #include <vector>
++#include <stdexcept>
+ 
+ static const size_t LTWD_BASE_DEFAULT       = 8;
+ static const size_t LARGE_TWIDDLE_THRESHOLD = 4096;
