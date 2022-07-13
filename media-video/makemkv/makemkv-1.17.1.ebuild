@@ -49,7 +49,6 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-path.patch
-	"${FILESDIR}"/${PN}-flags.patch
 )
 
 src_prepare() {
