@@ -101,13 +101,18 @@ readonly KDE_ORG_CATEGORIES
 # Name of the package as hosted on kde.org mirrors.
 : ${KDE_ORG_NAME:=$PN}
 
+# @ECLASS_VARIABLE: KDE_ORG_SCHEDULE_URI
+# @DESCRIPTION:
+# Known schedule URI of package or release group.
+: ${KDE_ORG_SCHEDULE_URI:="https://community.kde.org/Schedules"}
+
 # @ECLASS_VARIABLE: KDE_GEAR
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Mark package is being part of KDE Gear release schedule.
 # By default, this is set to "false" and does nothing.
 # If CATEGORY equals kde-apps, this is automatically set to "true".
-# If set to "true", set SRC_URI accordingly and apply KDE_UNRELEASED.
+# If set to "true", set SRC_URI accordingly.
 : ${KDE_GEAR:=false}
 if [[ ${CATEGORY} == kde-apps ]]; then
 	KDE_GEAR=true
@@ -129,13 +134,21 @@ case ${KDE_SELINUX_MODULE} in
 		;;
 esac
 
-# @ECLASS_VARIABLE: KDE_UNRELEASED
+# @ECLASS_VARIABLE: KDE_PV_UNRELEASED
 # @INTERNAL
+# @DEFAULT_UNSET
 # @DESCRIPTION:
-# An array of $CATEGORY-$PV pairs of packages that are unreleased upstream.
+# An array of package versions that are unreleased upstream.
 # Any package matching this will have fetch restriction enabled, and receive
 # a proper error message via pkg_nofetch.
-KDE_UNRELEASED=( )
+
+# @ECLASS_VARIABLE: KDE_ORG_UNRELEASED
+# @DESCRIPTION:
+# If set to "true" fetch restriction will be enabled, and a proper error
+# message displayed via pkg_nofetch.
+KDE_ORG_UNRELEASED=false
+has ${PV} "${KDE_PV_UNRELEASED[*]}" && KDE_ORG_UNRELEASED=true
+[[ ${KDE_ORG_UNRELEASED} == true ]] && RESTRICT+=" fetch"
 
 # @ECLASS_VARIABLE: EGIT_MIRROR
 # @DESCRIPTION:
@@ -156,34 +169,19 @@ case ${CATEGORY} in
 			https://invent.kde.org/qt/qt/ https://www.qt.io/"
 		;;
 	kde-plasma)
-		HOMEPAGE="https://kde.org/plasma-desktop"
+		if [[ -z ${_PLASMA_KDE_ORG_ECLASS} ]]; then
+			HOMEPAGE="https://kde.org/plasma-desktop"
+		fi
 		;;
 	kde-frameworks)
-		HOMEPAGE="https://kde.org/products/frameworks/"
-		SLOT=5/${PV}
-		[[ ${KDE_BUILD_TYPE} == release ]] && SLOT=$(ver_cut 1)/$(ver_cut 1-2)
+		if [[ -z ${_FRAMEWORKS_KDE_ORG_ECLASS} ]]; then
+			HOMEPAGE="https://kde.org/products/frameworks/"
+			SLOT=5/${PV}
+			[[ ${KDE_BUILD_TYPE} == release ]] && SLOT=$(ver_cut 1)/$(ver_cut 1-2)
+		fi
 		;;
 	*) ;;
 esac
-
-# @FUNCTION: _kde.org_is_unreleased
-# @INTERNAL
-# @DESCRIPTION:
-# Return true if $CATEGORY-$PV matches against an entry in KDE_UNRELEASED array.
-_kde.org_is_unreleased() {
-	local pair
-	for pair in "${KDE_UNRELEASED[@]}" ; do
-		if [[ "${pair}" == "${CATEGORY}-${PV}" ]]; then
-			return 0
-		elif [[ ${KDE_GEAR} == true ]]; then
-			if [[ "${pair/kde-apps/${CATEGORY}}" == "${CATEGORY}-${PV}" ]]; then
-				return 0
-			fi
-		fi
-	done
-
-	return 1
-}
 
 # @FUNCTION: _kde.org_calculate_src_uri
 # @INTERNAL
@@ -191,6 +189,18 @@ _kde.org_is_unreleased() {
 # Determine fetch location for released tarballs
 _kde.org_calculate_src_uri() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	if [[ -n ${KDE_ORG_COMMIT} ]]; then
+		SRC_URI="https://invent.kde.org/${KDE_ORG_CATEGORY}/${KDE_ORG_NAME}/-/"
+		SRC_URI+="archive/${KDE_ORG_COMMIT}/${KDE_ORG_NAME}-${KDE_ORG_COMMIT}.tar.gz"
+		SRC_URI+=" -> ${KDE_ORG_NAME}-${PV}-${KDE_ORG_COMMIT:0:8}.tar.gz"
+	fi
+
+	[[ ${KDE_ORG_UNRELEASED} == true ]] && RESTRICT+=" fetch"
+
+	if [[ -n ${_FRAMEWORKS_KDE_ORG_ECLASS} ]] || [[ -n ${_PLASMA_KDE_ORG_ECLASS} ]] || [[ -n ${_GEAR_KDE_ORG_ECLASS} ]] || [[ -n ${KDE_ORG_COMMIT} ]]; then
+		return
+	fi
 
 	local _src_uri="mirror://kde/"
 
@@ -233,51 +243,18 @@ _kde.org_calculate_src_uri() {
 			;;
 	esac
 
-	if [[ ${PN} == kdevelop* && ${PV} == 5.6.2 ]]; then
-		_src_uri+="stable/kdevelop/${PV}/src/"
-	fi
-
-	if [[ -n ${KDE_ORG_COMMIT} ]]; then
-		SRC_URI="https://invent.kde.org/${KDE_ORG_CATEGORY}/${KDE_ORG_NAME}/-/"
-		SRC_URI+="archive/${KDE_ORG_COMMIT}/${KDE_ORG_NAME}-${KDE_ORG_COMMIT}.tar.gz"
-		SRC_URI+=" -> ${KDE_ORG_NAME}-${PV}-${KDE_ORG_COMMIT:0:8}.tar.gz"
-	else
-		SRC_URI="${_src_uri}${KDE_ORG_NAME}-${PV}.tar.xz"
-	fi
-
-	if _kde.org_is_unreleased ; then
-		RESTRICT+=" fetch"
-	fi
-}
-
-# @FUNCTION: _kde.org_calculate_live_repo
-# @INTERNAL
-# @DESCRIPTION:
-# Determine fetch location for live sources
-_kde.org_calculate_live_repo() {
-	debug-print-function ${FUNCNAME} "$@"
-
-	SRC_URI=""
-
-	EGIT_MIRROR=${EGIT_MIRROR:=https://invent.kde.org/${KDE_ORG_CATEGORY}}
-
-	if [[ ${PV} == 5.??(.?)*.9999 && ${CATEGORY} == dev-qt ]]; then
-		EGIT_BRANCH="kde/$(ver_cut 1-2)"
-	fi
-
-	if [[ ${PV} == ??.??.49.9999 && ${KDE_GEAR} == true ]]; then
-		EGIT_BRANCH="release/$(ver_cut 1-2)"
-	fi
-
-	if [[ ${PV} != 9999 && ${CATEGORY} == kde-plasma ]]; then
-		EGIT_BRANCH="Plasma/$(ver_cut 1-2)"
-	fi
-
-	EGIT_REPO_URI="${EGIT_MIRROR}/${EGIT_REPONAME:=$KDE_ORG_NAME}.git"
+	SRC_URI="${_src_uri}${KDE_ORG_NAME}-${PV}.tar.xz"
 }
 
 case ${KDE_BUILD_TYPE} in
-	live) _kde.org_calculate_live_repo ;;
+	live)
+		EGIT_MIRROR=${EGIT_MIRROR:=https://invent.kde.org/${KDE_ORG_CATEGORY}}
+		EGIT_REPO_URI="${EGIT_MIRROR}/${EGIT_REPONAME:=$KDE_ORG_NAME}.git"
+
+		if [[ ${PV} == 5.??.?.9999 && ${CATEGORY} == dev-qt ]]; then
+			EGIT_BRANCH="kde/$(ver_cut 1-2)"
+		fi
+		;;
 	*)
 		_kde.org_calculate_src_uri
 		debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: SRC_URI is ${SRC_URI}"
@@ -296,20 +273,7 @@ esac
 # KDE_UNRELEASED, display a giant warning that the package has not yet been
 # released upstream and should not be used.
 kde.org_pkg_nofetch() {
-	if ! _kde.org_is_unreleased ; then
-		return
-	fi
-
-	local sched_uri="https://community.kde.org/Schedules"
-	case ${CATEGORY} in
-		kde-frameworks) sched_uri+="/Frameworks" ;;
-		kde-plasma) sched_uri+="/Plasma_5" ;;
-		*)
-			[[ ${KDE_GEAR} == true ]] &&
-				sched_uri+="/KDE_Gear_$(ver_cut 1-2)_Schedule"
-			;;
-	esac
-
+	[[ ${KDE_ORG_UNRELEASED} == true ]] || return
 	eerror " _   _ _   _ ____  _____ _     _____    _    ____  _____ ____  "
 	eerror "| | | | \ | |  _ \| ____| |   | ____|  / \  / ___|| ____|  _ \ "
 	eerror "| | | |  \| | |_) |  _| | |   |  _|   / _ \ \___ \|  _| | | | |"
@@ -329,7 +293,7 @@ kde.org_pkg_nofetch() {
 	eerror ""
 	eerror "Please consult the upstream release schedule to see when this "
 	eerror "package is scheduled to be released:"
-	eerror "${sched_uri}"
+	eerror "${KDE_ORG_SCHEDULE_URI}"
 }
 
 # @FUNCTION: kde.org_src_unpack
