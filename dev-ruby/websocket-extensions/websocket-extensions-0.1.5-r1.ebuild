@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby25 ruby26 ruby27 ruby30"
+USE_RUBY="ruby26 ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -21,3 +21,5 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~x86"
 IUSE=""
+
+PATCHES=( "${FILESDIR}"/${P}-rspec-mocks.patch )
