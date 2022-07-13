@@ -45,6 +45,8 @@ ruby_add_bdepend "
 	)"
 
 all_ruby_prepare() {
+	eapply -p2 "${FILESDIR}/actionview-6.1-ruby26-tests.patch"
+
 	# Remove items from the common Gemfile that we don't need for this
 	# test run. This also requires handling some gemspecs.
 	sed -i -e "/\(system_timer\|sdoc\|w3c_validators\|pg\|execjs\|jquery-rails\|'mysql'\|journey\|rack-cache\|ruby-prof\|stackprof\|benchmark-ips\|kindlerb\|turbolinks\|coffee-rails\|debugger\|redcarpet\|bcrypt\|uglifier\|mime-types\|minitest\|sprockets\|stackprof\)/ s:^:#:" \
