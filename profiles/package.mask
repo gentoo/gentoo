@@ -279,13 +279,6 @@ media-gfx/jpeg2ps
 # 2020. Removal on 2022-07-15.  Bug #718550.
 sys-cluster/csync2
 
-# Michał Górny <mgorny@gentoo.org> (2022-06-13)
-# Upstream has discontinued the fork.  No revdeps.  They recommend using
-# the original editdistance (not packaged on Gentoo)
-# or dev-python/ukkonen.
-# Removal on 2022-07-13.  Bug #851678.
-dev-python/editdistance-s
-
 # Matt Turner <mattst88@gentoo.org> (2022-05-30)
 # libwacom-2 broke ABI compatibility; reverse dependencies need to be updated.
 # Bug #848501
