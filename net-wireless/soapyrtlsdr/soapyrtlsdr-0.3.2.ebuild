@@ -12,7 +12,7 @@ if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/pothosware/SoapyRTLSDR.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~riscv ~x86"
 	SRC_URI="https://github.com/pothosware/SoapyRTLSDR/archive/soapy-rtl-sdr-${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/SoapyRTLSDR-soapy-rtl-sdr-"${PV}"
 fi
