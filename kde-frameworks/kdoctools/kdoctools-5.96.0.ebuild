@@ -5,7 +5,7 @@ EAPI=8
 
 ECM_QTHELP="false"
 PVCUT=$(ver_cut 1-2)
-inherit ecm kde.org
+inherit ecm frameworks.kde.org
 
 DESCRIPTION="Tools to generate documentation in various formats from DocBook files"
 

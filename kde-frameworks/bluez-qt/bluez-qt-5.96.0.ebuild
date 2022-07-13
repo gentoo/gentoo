@@ -5,7 +5,7 @@ EAPI=8
 
 QTMIN=5.15.4
 VIRTUALX_REQUIRED="test"
-inherit ecm kde.org udev
+inherit ecm frameworks.kde.org udev
 
 DESCRIPTION="Qt wrapper for Bluez 5 DBus API"
 

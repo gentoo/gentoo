@@ -8,7 +8,7 @@ ECM_QTHELP="false"
 PVCUT=$(ver_cut 1-2)
 QTMIN=5.15.4
 VIRTUALX_REQUIRED="test"
-inherit ecm kde.org
+inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework easing the development transition from KDELibs 4 to KF 5"
 LICENSE="LGPL-2+"

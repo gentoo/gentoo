@@ -5,7 +5,7 @@ EAPI=8
 
 ECM_HANDBOOK="optional"
 ECM_QTHELP="false"
-inherit ecm kde.org
+inherit ecm frameworks.kde.org
 
 DESCRIPTION="ECMAScipt compatible parser and engine"
 LICENSE="BSD-2 LGPL-2+"

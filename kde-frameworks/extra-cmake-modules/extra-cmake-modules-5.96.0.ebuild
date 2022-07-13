@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
 QTMIN=5.15.4
-inherit cmake kde.org python-any-r1
+inherit cmake frameworks.kde.org python-any-r1
 
 DESCRIPTION="Extra modules and scripts for CMake"
 HOMEPAGE="https://invent.kde.org/frameworks/extra-cmake-modules"

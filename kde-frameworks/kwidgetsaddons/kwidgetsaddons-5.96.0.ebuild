@@ -6,7 +6,7 @@ EAPI=8
 ECM_DESIGNERPLUGIN="true"
 QTMIN=5.15.4
 VIRTUALX_REQUIRED="test"
-inherit ecm kde.org
+inherit ecm frameworks.kde.org
 
 DESCRIPTION="An assortment of high-level widgets for common tasks"
 

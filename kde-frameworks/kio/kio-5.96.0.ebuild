@@ -8,7 +8,7 @@ ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-2)
 QTMIN=5.15.4
 VIRTUALX_REQUIRED="test"
-inherit ecm kde.org xdg-utils
+inherit ecm frameworks.kde.org xdg-utils
 
 DESCRIPTION="Framework providing transparent file and data management"
 

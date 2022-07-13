@@ -6,7 +6,7 @@ EAPI=8
 ECM_TEST="false"
 PVCUT=$(ver_cut 1-2)
 QTMIN=5.15.4
-inherit ecm kde.org
+inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework for configuring desktop notifications"
 LICENSE="LGPL-2+"

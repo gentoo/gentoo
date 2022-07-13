@@ -5,7 +5,7 @@ EAPI=8
 
 ECM_TEST="forceoptional"
 QTMIN=5.15.4
-inherit ecm kde.org
+inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework for syntax highlighting"
 LICENSE="MIT"

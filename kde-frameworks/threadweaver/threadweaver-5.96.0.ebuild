@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit ecm kde.org
+inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework for managing threads using job and queue-based interfaces"
 LICENSE="LGPL-2+"

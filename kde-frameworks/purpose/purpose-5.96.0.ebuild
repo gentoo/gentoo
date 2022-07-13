@@ -7,7 +7,7 @@ ECM_QTHELP="false"
 ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-2)
 QTMIN=5.15.4
-inherit ecm kde.org optfeature xdg-utils
+inherit ecm frameworks.kde.org optfeature xdg-utils
 
 DESCRIPTION="Library for providing abstractions to get the developer's purposes fulfilled"
 LICENSE="LGPL-2.1+"

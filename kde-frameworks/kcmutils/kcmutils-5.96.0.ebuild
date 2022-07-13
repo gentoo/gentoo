@@ -7,7 +7,7 @@ ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-2)
 QTMIN=5.15.4
 VIRTUALX_REQUIRED="test"
-inherit ecm kde.org
+inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework to work with KDE System Settings modules"
 LICENSE="LGPL-2"
