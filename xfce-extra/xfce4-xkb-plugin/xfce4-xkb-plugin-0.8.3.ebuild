@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit xdg-utils
+
 DESCRIPTION="XKB layout switching panel plug-in for the Xfce desktop environment"
 HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-xkb-plugin"
 SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
@@ -48,4 +50,12 @@ src_configure() {
 src_install() {
 	default
 	find "${D}" -name '*.la' -delete || die
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
