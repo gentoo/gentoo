@@ -82,11 +82,9 @@ x11-base/xwayland video_cards_nvidia
 x11-wm/mutter video_cards_nvidia
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-04-25)
-# Depends on either unkeyworded dev-java/openjdk:11
-# or unavailable >=dev-java/icedtea-4, bug #785640
->=app-office/libreoffice-7 base java
->=app-office/libreoffice-bin-7 java
->=app-office/libreoffice-bin-debug-7 java
+# Mask java on old bin-versions with it unavailable
+<app-office/libreoffice-bin-7.3.5 java
+<app-office/libreoffice-bin-debug-7.3.5 java
 
 # Daniel Novomesky <dnovomesky@gmail.com> (2021-02-24)
 # Depends on media-libs/svt-av1, which is unavailable on x86
