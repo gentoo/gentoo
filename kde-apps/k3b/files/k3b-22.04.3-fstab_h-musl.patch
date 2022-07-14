@@ -1,0 +1,92 @@
+https://invent.kde.org/multimedia/k3b/-/merge_requests/16
+https://invent.kde.org/multimedia/k3b/-/merge_requests/16#note_323616
+
+https://invent.kde.org/multimedia/k3b/-/merge_requests/32
+
+From a8f810d6a245363402c103fc8a949ddf99297720 Mon Sep 17 00:00:00 2001
+From: Alfred Persson Forsberg <cat@catcream.org>
+Date: Thu, 14 Jul 2022 21:07:32 +0200
+Subject: [PATCH] k3bsystemproblemdialog.cpp: Check for HAVE_FSTAB_H
+
+Signed-off-by: Alfred Persson Forsberg <cat@catcream.org>
+---
+ src/k3bsystemproblemdialog.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/k3bsystemproblemdialog.cpp b/src/k3bsystemproblemdialog.cpp
+index 317f957d8..16393023d 100644
+--- a/src/k3bsystemproblemdialog.cpp
++++ b/src/k3bsystemproblemdialog.cpp
+@@ -49,7 +49,7 @@
+ #include <langinfo.h>
+ #endif
+ 
+-#ifndef Q_OS_WIN32
++#ifdef HAVE_FSTAB_H
+ #include <fstab.h>
+ #endif
+ #include <unistd.h>
+@@ -388,7 +388,7 @@ void K3b::SystemProblemDialog::checkSystem(QWidget* parent, NotificationLevel le
+             dvd_r_dl = true;
+     }
+ 
+-#ifndef Q_OS_WIN32
++#ifdef HAVE_FSTAB_H
+     // check automounted devices
+     QList<K3b::Device::Device*> automountedDevices = checkForAutomounting();
+     for( QList<K3b::Device::Device *>::const_iterator it = automountedDevices.constBegin();
+@@ -676,7 +676,7 @@ int K3b::SystemProblemDialog::dmaActivated( K3b::Device::Device* dev )
+ }
+ 
+ 
+-#ifndef Q_OS_WIN32
++#ifdef HAVE_FSTAB_H
+ QList<K3b::Device::Device*> K3b::SystemProblemDialog::checkForAutomounting()
+ {
+     QList<K3b::Device::Device *> l;
+-- 
+GitLab
+
+https://invent.kde.org/multimedia/k3b/-/merge_requests/16
+https://invent.kde.org/multimedia/k3b/-/merge_requests/16#note_323616
+
+https://invent.kde.org/multimedia/k3b/-/merge_requests/32
+
+From 3a76314adbe12b6046a5ee8095696d894321c98e Mon Sep 17 00:00:00 2001
+From: Alfred Persson Forsberg <cat@catcream.org>
+Date: Thu, 14 Jul 2022 21:01:09 +0200
+Subject: [PATCH] Add HAVE_FSTAB_H checks in CMake
+
+fstab.h does not exist on musl.
+See: https://invent.kde.org/multimedia/k3b/-/merge_requests/16#note_323616
+
+Signed-off-by: Alfred Persson Forsberg <cat@catcream.org>
+---
+ cmake/modules/ConfigureChecks.cmake | 1 +
+ config-k3b.h.cmake                  | 2 ++
+ 2 files changed, 3 insertions(+)
+
+diff --git a/cmake/modules/ConfigureChecks.cmake b/cmake/modules/ConfigureChecks.cmake
+index 4aae72eed..507f357d5 100644
+--- a/cmake/modules/ConfigureChecks.cmake
++++ b/cmake/modules/ConfigureChecks.cmake
+@@ -10,5 +10,6 @@ check_function_exists(stat64 HAVE_STAT64)
+ check_include_files(sys/vfs.h HAVE_SYS_VFS_H)
+ check_include_files(sys/statvfs.h HAVE_SYS_STATVFS_H)
+ check_include_files(byteswap.h HAVE_BYTESWAP_H)
++check_include_files(fstab.h HAVE_FSTAB_H)
+ 
+ test_big_endian(WORDS_BIGENDIAN)
+diff --git a/config-k3b.h.cmake b/config-k3b.h.cmake
+index 3d48241f9..38c1bc8cc 100644
+--- a/config-k3b.h.cmake
++++ b/config-k3b.h.cmake
+@@ -26,3 +26,5 @@
+ 
+ #cmakedefine HAVE_ICONV
+ #cmakedefine ICONV_SECOND_ARGUMENT_IS_CONST
++
++#cmakedefine HAVE_FSTAB_H
+-- 
+GitLab
+
