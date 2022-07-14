@@ -26,7 +26,7 @@ ruby_add_rdepend "
 "
 
 ruby_add_bdepend "
-	test? ( >=dev-ruby/cucumber-compatibility-kit-9.2.0:9 )
+	test? ( >=dev-util/cucumber-compatibility-kit-9.2.0:9 )
 "
 
 all_ruby_prepare() {
