@@ -7,5 +7,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">distlib</remote-id>
+		<remote-id type="github">pypa/distlib</remote-id>
 	</upstream>
 </pkgmetadata>
