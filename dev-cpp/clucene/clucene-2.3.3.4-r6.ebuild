@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-pkgconfig.patch"
 	"${FILESDIR}/${P}-gcc6.patch"
 	"${FILESDIR}/${P}-gmtime.patch"
+	"${FILESDIR}/${P}-musl-pthread.patch"
 )
 
 src_prepare() {
