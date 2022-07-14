@@ -581,7 +581,7 @@ _test-flag-PROG() {
 	printf "%s\n" "${in_src}" > "${test_in}" || die "Failed to create '${test_in}'"
 
 	# Currently we rely on warning-free output of a compiler
-	# before the flag to see if a flag prduces any warnings.
+	# before the flag to see if a flag produces any warnings.
 	# This has a few drawbacks:
 	# - if compiler already generates warnings we filter out
 	#   every single flag: bug #712488
