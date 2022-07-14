@@ -22,6 +22,7 @@ KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 
 PATCHES=(
 	# bug 842915, drop on next version bump
 	"${FILESDIR}"/${PN}-2.4-vacall-riscv-pic.patch
+	"${FILESDIR}"/${PN}-2.4-slibtool.patch # 776976
 )
 
 src_prepare() {
