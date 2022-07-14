@@ -70,6 +70,7 @@ MULTILIB_CHOST_TOOLS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.64.1-mark-gdbus-server-auth-test-flaky.patch
+	"${FILESDIR}"/${PN}-2.72.3-remove-unneccesary-ngettext-usage.patch
 )
 
 pkg_setup() {
