@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernard Cafarelli <voyageur@gentoo.org> (2022-07-14)
+# Dead upstream (last release in 2013, no tarballs or git download)
+# No reverse dependencies for a long time, several test and build failures
+# Bug #857948, removal on 2022-08-13.
+net-misc/csync
+
 # David Seifert <soap@gentoo.org> (2022-07-14)
 # Unmaintained, no other major distro carries this, code quality is
 # abysmal, build system has major issues, tons of patches, EAPI 6,
