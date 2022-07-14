@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -15,7 +15,6 @@ KEYWORDS="amd64 ~arm ~hppa ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="openmp"
 
 PATCHES=( "${FILESDIR}"/${P}-big-endian.patch )
-DOCS="AUTHORS ChangeLog README" # NEWS is empty, PORTING and ROADMAP are for building
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
