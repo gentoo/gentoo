@@ -33,7 +33,8 @@ src_compile() {
 		"PREFIX=${EPREFIX}/usr"
 		"CC=$(tc-getCC)"
 		"config=release"
-		"LIBDIR=/usr/$(get_libdir)"
+		"LIBDIR=${EPREFIX}/usr/$(get_libdir)"
+		"INCDIR=${EPREFIX}/usr/include"
 	)
 
 	emake "${myemakeargs[@]}" lib-bin
@@ -47,8 +48,9 @@ src_install() {
 	local myemakeargs=(
 		"VERBOSE=1"
 		"PREFIX=${EPREFIX}/usr"
-		"DESTDIR=${ED}"
-		"LIBDIR=/usr/$(get_libdir)"
+		"DESTDIR=${D}"
+		"LIBDIR=${EPREFIX}/usr/$(get_libdir)"
+		"INCDIR=${EPREFIX}/usr/include"
 		"XLDFLAGS=-shared"
 	)
 
