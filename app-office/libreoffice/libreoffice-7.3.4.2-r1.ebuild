@@ -293,6 +293,11 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 	"${FILESDIR}/${PN}-7.2.0.4-qt5detect.patch"
+
+	# TODO: upstream
+	"${FILESDIR}/${PN}-7.2.6.2-poppler-22.03.0.patch" # by Archlinux
+	"${FILESDIR}/${PN}-7.3.3.2-Import-FreeBSD-patch-for-Poppler-22.04.0-build.patch" # from FreeBSD
+	"${FILESDIR}/${PN}-7.3.3.2-Add-missing-nSize-set-for-Poppler-22.04.0.patch" # fixup for FreeBSD patch
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
