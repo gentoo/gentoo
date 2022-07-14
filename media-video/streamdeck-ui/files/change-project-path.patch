@@ -1,0 +1,11 @@
+--- a/streamdeck_ui/config.py
++++ b/streamdeck_ui/config.py
+@@ -1,7 +1,7 @@
+ """Defines shared configuration variables for the streamdeck_ui project"""
+ import os
+ 
+-PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
++PROJECT_PATH = '/usr/share/streamdeck-ui'
+ LOGO = os.path.join(PROJECT_PATH, "logo.png")
+ FONTS_PATH = os.path.join(PROJECT_PATH, "fonts")
+ DEFAULT_FONT = os.path.join("roboto", "Roboto-Regular.ttf")

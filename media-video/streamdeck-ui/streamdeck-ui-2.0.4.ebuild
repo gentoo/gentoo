@@ -29,8 +29,11 @@ DEPEND="${PYTHON_DEPS}
 		dev-libs/hidapi"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/change-project-path.patch
+)
+
 src_prepare() {
-	sed -i "s#os.path.dirname(os.path.abspath(__file__))#'/usr/share/streamdeck-ui'#" streamdeck_ui/config.py
 	distutils-r1_src_prepare
 }
 
