@@ -72,7 +72,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	# kernel-2_src_prepare doesn't apply PATCHES(). And with pf-sources's move to Codeberg, we need
+	# kernel-2_src_prepare doesn't apply PATCHES(). After pf-sources moved to Codeberg, we need
 	# to manually eapply the genpatches too.
 	eapply "${WORKDIR}"/*.patch
 	default
