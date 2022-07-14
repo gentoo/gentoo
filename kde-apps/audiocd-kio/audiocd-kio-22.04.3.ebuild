@@ -9,7 +9,7 @@ KFMIN=5.92.0
 QTMIN=5.15.4
 inherit ecm gear.kde.org
 
-DESCRIPTION="kioslave for accessing audio CDs"
+DESCRIPTION="KIO worker for accessing audio CDs"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
 SLOT="5"
