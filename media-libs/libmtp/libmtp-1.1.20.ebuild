@@ -9,6 +9,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://git.code.sf.net/p/${PN}/code"
 	inherit autotools git-r3
 else
+	inherit libtool
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~x86"
 fi
@@ -50,6 +51,11 @@ src_prepare() {
 			touch config.rpath || die # This is from upstream autogen.sh
 		fi
 		eautoreconf
+	else
+		# Needed to fix -fuse-ld=* filtering (e.g. lld)
+		# Can drop this once copyright year in libtool file included
+		# says >= 2021 (was 2014 at time of writing).
+		elibtoolize
 	fi
 }
 
