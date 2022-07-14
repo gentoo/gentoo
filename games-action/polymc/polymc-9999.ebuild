@@ -67,6 +67,7 @@ COMMON_DEPENDS="
 
 DEPEND="
 	${COMMON_DEPENDS}
+	app-text/scdoc
 	kde-frameworks/extra-cmake-modules
 	media-libs/libglvnd
 	>=virtual/jdk-1.8.0:*
