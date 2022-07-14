@@ -10,7 +10,10 @@ inherit cmake wxwidgets xdg
 
 DESCRIPTION="A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)"
 HOMEPAGE="https://github.com/supermerill/SuperSlicer/"
-SRC_URI="https://github.com/supermerill/SuperSlicer/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/supermerill/SuperSlicer/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/slic3r/slic3r-profiles/archive/748fbdfd2ac077e4e415868e7bc963740b92aa8e.tar.gz -> ${P}-profiles.tar.gz
+"
 
 LICENSE="AGPL-3 Boost-1.0 GPL-2 LGPL-3 MIT"
 SLOT="0"
@@ -59,6 +62,12 @@ PATCHES=(
 )
 
 S="${WORKDIR}/${MY_PN}-${PV}"
+
+src_unpack() {
+	default
+
+	mv slic3r-profiles-*/* ${S}/resources/profiles/ || die
+}
 
 src_configure() {
 	CMAKE_BUILD_TYPE="Release"
