@@ -17,7 +17,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
