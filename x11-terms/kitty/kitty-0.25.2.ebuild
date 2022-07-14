@@ -72,6 +72,7 @@ src_prepare() {
 	default
 
 	sed -e "s/'x11 wayland'/'$(usev X x11) $(usev wayland)'/" \
+		-e "$(usev !X '/gl_libs =/s/=.*/= []/')" \
 		-e "/num_workers = /s/=.*/= $(makeopts_jobs)/" \
 		-i setup.py || die
 
