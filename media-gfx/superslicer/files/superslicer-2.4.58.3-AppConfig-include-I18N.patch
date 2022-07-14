@@ -1,0 +1,12 @@
+diff --git a/src/libslic3r/AppConfig.cpp b/src/libslic3r/AppConfig.cpp
+index 59910e6..c35986c 100644
+--- a/src/libslic3r/AppConfig.cpp
++++ b/src/libslic3r/AppConfig.cpp
+@@ -1,6 +1,7 @@
+ #include <boost/filesystem.hpp>
+ #include "libslic3r/libslic3r.h"
+ #include "libslic3r/Utils.hpp"
++#include "libslic3r/I18N.hpp"
+ #include "AppConfig.hpp"
+ #include "Exception.hpp"
+ #include "LocalesUtils.hpp"
