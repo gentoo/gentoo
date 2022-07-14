@@ -25,6 +25,10 @@ ruby_add_rdepend "
 	!<dev-util/cucumber-html-formatter-17.0.0-r1
 "
 
+ruby_add_bdepend "
+	test? ( >=dev-ruby/cucumber-compatibility-kit-9.2.0:9 )
+"
+
 all_ruby_prepare() {
 	sed -i -e '1igem "cucumber-messages", "~>18.0"' spec/html_formatter_spec.rb || die
 }
