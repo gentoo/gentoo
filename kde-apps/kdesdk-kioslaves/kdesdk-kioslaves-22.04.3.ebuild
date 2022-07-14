@@ -6,9 +6,9 @@ EAPI=8
 KFMIN=5.92.0
 inherit ecm gear.kde.org
 
-DESCRIPTION="kioslaves from kdesdk package"
+DESCRIPTION="KIO worker interface to browse Perl documentation"
 
-LICENSE="GPL-2" # TODO: CHECK
+LICENSE="GPL-2+ || ( Artistic GPL-1+ )"
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE=""
