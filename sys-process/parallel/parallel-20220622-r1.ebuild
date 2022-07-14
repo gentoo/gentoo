@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-oletange-20210423 )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-20220622-makefile-completions.patch
+	"${FILESDIR}"/${PN}-20220622-makefile-completions-deux.patch
 )
 
 src_prepare() {
