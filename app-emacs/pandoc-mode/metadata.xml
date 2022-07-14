@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    pandoc-mode is an Emacs mode for interacting with Pandoc. pandoc-mode is
+    implemented as a minor mode that can be activated alongside the major mode
+    for any of Pandoc's supported input formats. It provides facilities to set
+    the various options that Pandoc accepts and to run Pandoc on the input
+    file.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/joostkremers/pandoc-mode/issues/</bugs-to>
+    <remote-id type="github">joostkremers/pandoc-mode</remote-id>
+  </upstream>
+</pkgmetadata>
