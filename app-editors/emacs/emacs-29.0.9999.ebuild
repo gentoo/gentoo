@@ -40,7 +40,7 @@ DESCRIPTION="The extensible, customizable, self-documenting real-time display ed
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png seccomp selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars webp wide-int +X Xaw3d xft +xpm xwidgets zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars webp wide-int +X Xaw3d xft +xpm xwidgets zlib"
 RESTRICT="test"
 
 X_DEPEND="x11-libs/libICE
@@ -109,7 +109,6 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
 	mailutils? ( net-mail/mailutils[clients] )
 	!mailutils? ( acct-group/mail net-libs/liblockfile )
-	seccomp? ( >=sys-libs/libseccomp-2.5.4 )
 	selinux? ( sys-libs/libselinux )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? ( net-libs/gnutls:0= )
@@ -188,11 +187,10 @@ src_prepare() {
 	# Fix filename reference in redirected man page
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 || die
 
-	if ! use seccomp; then
-		# libseccomp is detected even if not requested by its USE flag.
-		# Suppress it by supplying pkg-config with a wrong library name.
-		sed -i -e "/CHECK_MODULES/s/libseccomp/DiSaBlE&/" configure.ac || die
-	fi
+	# libseccomp is detected by configure but doesn't appear to have any
+	# effect on the installed image. Suppress it by supplying pkg-config
+	# with a wrong library name.
+	sed -i -e "/CHECK_MODULES/s/libseccomp/DiSaBlE&/" configure.ac || die
 
 	AT_M4DIR=m4 eautoreconf
 }
