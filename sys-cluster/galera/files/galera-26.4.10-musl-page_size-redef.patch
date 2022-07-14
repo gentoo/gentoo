@@ -1,0 +1,25 @@
+# Little bit modified version of Alpine linux patch to make it work for both
+# musl and other libc
+# https://git.alpinelinux.org/aports/tree/testing/galera/musl-page-size.patch
+# Closes: https://bugs.gentoo.org/829176
+--- a/galerautils/src/gu_alloc.cpp
++++ b/galerautils/src/gu_alloc.cpp
+@@ -29,10 +29,18 @@ gu::Allocator::HeapStore::my_new_page (page_size_type const size)
+     if (gu_likely(size <= left_))
+     {
+         /* to avoid too frequent allocation, make it (at least) 64K */
++#if !defined(PAGE_SIZE)
+         static page_size_type const PAGE_SIZE(gu_page_size_multiple(1 << 16));
++#else /* On musl PAGE_SIZE is already defined to PAGESIZE, check file include/limits.h*/
++        static page_size_type const PAGE_SZ(gu_page_size_multiple(1 << 16));
++#endif
+
+         page_size_type const page_size
++#if !defined(PAGE_SIZE)
+             (std::min(std::max(size, PAGE_SIZE), left_));
++#else
++            (std::min(std::max(size, PAGE_SZ), left_));
++#endif
+
+         Page* ret = new HeapPage (page_size);
+
