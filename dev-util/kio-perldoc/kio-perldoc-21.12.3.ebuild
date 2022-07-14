@@ -3,14 +3,16 @@
 
 EAPI=8
 
-KFMIN=5.92.0
-inherit ecm gear.kde.org
+KDE_GEAR=true
+KDE_ORG_NAME="kdesdk-kioslaves"
+KFMIN=5.88.0
+inherit ecm kde.org
 
 DESCRIPTION="KIO worker interface to browse Perl documentation"
 
 LICENSE="GPL-2+ || ( Artistic GPL-1+ )"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 IUSE=""
 
 DEPEND="

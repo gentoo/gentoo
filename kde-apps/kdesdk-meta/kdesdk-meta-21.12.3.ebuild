@@ -12,11 +12,11 @@ KEYWORDS="amd64 arm64 x86"
 IUSE="cvs git mercurial php python ruby subversion webengine"
 
 RDEPEND="
+	>=dev-util/kio-perldoc-${PV}:${SLOT}
 	>=kde-apps/kapptemplate-${PV}:${SLOT}
 	>=kde-apps/kcachegrind-${PV}:${SLOT}
 	>=kde-apps/kde-dev-scripts-${PV}:${SLOT}
 	>=kde-apps/kde-dev-utils-${PV}:${SLOT}
-	>=kde-apps/kdesdk-kioslaves-${PV}:${SLOT}
 	>=kde-apps/kdesdk-thumbnailers-${PV}:${SLOT}
 	>=kde-apps/kompare-${PV}:${SLOT}
 	>=kde-apps/libkomparediff2-${PV}:${SLOT}
