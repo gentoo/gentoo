@@ -17,7 +17,9 @@ KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
 LICENSE="BSD"
 SLOT="0"
 
-RDEPEND="app-crypt/gnupg"
+# Need gnupg[nls] for avoiding decode errors and possible hangs
+# w/ e.g. sec-keys/openpgp-keys-gentoo-developers but other pkgs too.
+RDEPEND="app-crypt/gnupg[nls]"
 DEPEND="${RDEPEND}"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-vinaysajip )"
 
