@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>arsen@aarsen.me</email>
+    <name>Arsen Arsenović</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <use>
+    <flag name="libpkgconf">
+      Enable looking up packages via <pkg>dev-util/pkgconf</pkg>.
+    </flag>
+    <flag name="archive">
+      Enable extracting wraps using <pkg>app-arch/libarchive</pkg>.
+    </flag>
+  </use>
+</pkgmetadata>
