@@ -574,6 +574,15 @@ _test-flag-PROG() {
 		c+ld)
 			in_ext='c'
 			in_src='int main(void) { return 0; }'
+
+			if is-ldflagq -fuse-ld=* ; then
+				# Respect linker chosen by user so we don't
+				# end up giving false results by checking
+				# with default linker. bug #832377
+				fuse_ld_value=$(get-flag -fuse-ld=*)
+				cmdline_extra+=(${fuse_ld_value})
+			fi
+
 			cmdline_extra+=(-xc)
 			;;
 	esac
