@@ -1,0 +1,32 @@
+diff -Naur a/meson.build b/meson.build
+--- a/meson.build	2022-07-08 23:53:08.000000000 +0300
++++ b/meson.build	2022-07-14 08:12:38.358174169 +0300
+@@ -13,28 +13,6 @@
+   dependency('libcap-ng'),
+ ]
+ 
+-systemd = dependency('systemd', required: false)
+-
+-if systemd.found()
+-  systemd_system_unit_dir = systemd.get_pkgconfig_variable('systemdsystemunitdir')
+-  unit_files = [
+-    'uksmd.service'
+-  ]
+-
+-
+-  foreach u: unit_files
+-    configure_file(
+-      copy: true,
+-      input: u,
+-      install: true,
+-      install_dir: systemd_system_unit_dir,
+-      output: u,
+-    )
+-  endforeach
+-
+-  project_dependencies += systemd
+-endif
+-
+ build_args = [
+   '-DPROJECT_NAME=' + meson.project_name(),
+   '-DPROJECT_VERSION=' + meson.project_version(),
