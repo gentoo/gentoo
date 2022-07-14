@@ -1,0 +1,29 @@
+diff -Naur gnustep-make-2.9.0.orig/GNUmakefile.in gnustep-make-2.9.0/GNUmakefile.in
+--- gnustep-make-2.9.0.orig/GNUmakefile.in	2021-03-21 22:56:13.000000000 +0100
++++ gnustep-make-2.9.0/GNUmakefile.in	2022-07-14 14:21:10.545943581 +0200
+@@ -255,23 +255,16 @@
+ 	   for f in $(TEST_FRAMEWORK_FILES); do \
+ 	     $(INSTALL_DATA) "$(srcdir)/TestFramework/$$f" "$(testdir)"; \
+ 	   done)
+-	$(EC)(echo "Installing (and compressing) manpages"; \
++	$(EC)(echo "Installing manpages"; \
+ 	  "$(srcdir)/mkinstalldirs" "$(mandir)/man1" \
+ 	                          "$(mandir)/man7"; \
+ 	  $(INSTALL_DATA) "$(srcdir)/Documentation/debugapp.1" "$(mandir)/man1"; \
+-	  which gzip > /dev/null 2>&1 && rm -f "$(mandir)/man1/debugapp.1.gz" && gzip -9 -n "$(mandir)/man1/debugapp.1"; \
+ 	  $(INSTALL_DATA) "$(srcdir)/Documentation/gnustep-config.1" "$(mandir)/man1"; \
+-	  which gzip > /dev/null 2>&1 && rm -f "$(mandir)/man1/gnustep-config.1.gz" && gzip -9 -n "$(mandir)/man1/gnustep-config.1"; \
+ 	  $(INSTALL_DATA) "$(srcdir)/Documentation/gnustep-tests.1" "$(mandir)/man1"; \
+-	  which gzip > /dev/null 2>&1 && rm -f "$(mandir)/man1/gnustep-tests.1.gz" && gzip -9 -n "$(mandir)/man1/gnustep-tests.1"; \
+ 	  $(INSTALL_DATA) "$(srcdir)/Documentation/openapp.1" "$(mandir)/man1"; \
+-	  which gzip > /dev/null 2>&1 && rm -f "$(mandir)/man1/openapp.1.gz" && gzip -9 -n "$(mandir)/man1/openapp.1"; \
+ 	  $(INSTALL_DATA) "$(srcdir)/Documentation/opentool.1" "$(mandir)/man1"; \
+-	  which gzip > /dev/null 2>&1 && rm -f "$(mandir)/man1/opentool.1.gz" && gzip -9 -n "$(mandir)/man1/opentool.1"; \
+ 	  $(INSTALL_DATA) "$(srcdir)/Documentation/GNUstep.7" "$(mandir)/man7"; \
+-	  which gzip > /dev/null 2>&1 && rm -f "$(mandir)/man7/GNUstep.7.gz" && gzip -9 -n "$(mandir)/man7/GNUstep.7"; \
+-	  $(INSTALL_DATA) "$(srcdir)/Documentation/library-combo.7" "$(mandir)/man7"; \
+-	  which gzip > /dev/null 2>&1 && rm -f "$(mandir)/man7/library-combo.7.gz" && gzip -9 -n "$(mandir)/man7/library-combo.7")
++	  $(INSTALL_DATA) "$(srcdir)/Documentation/library-combo.7" "$(mandir)/man7";)
+ 	$(EC)(if [ "@GNUSTEP_STRIP_MAKEFILES@" = "strip" ]; then \
+ 	   echo "Stripping makefiles and shell scripts..."; \
+ 	   cd "$(makedir)"; ./strip_makefiles.sh; \
