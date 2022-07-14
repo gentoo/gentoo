@@ -134,6 +134,12 @@ fi
 #	JAVA_MAIN_CLASS="org.gentoo.java.ebuilder.Main"
 # @CODE
 
+# @ECLASS_VARIABLE: JAVA_AUTOMATIC_MODULE_NAME
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# The value of the Automatic-Module-Name entry, which is going to be added to
+# MANIFEST.MF.
+
 # @ECLASS_VARIABLE: JAVADOC_ARGS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -418,6 +424,12 @@ java-pkg-simple_src_compile() {
 		jar_args="cf ${JAVA_JAR_FILENAME}"
 	fi
 	jar ${jar_args} -C ${classes} . || die "jar failed"
+	if  [[ -v JAVA_AUTOMATIC_MODULE_NAME ]]; then
+		cat > "${T}/add-to-MANIFEST.MF" <<< "Automatic-Module-Name: ${JAVA_AUTOMATIC_MODULE_NAME}" \
+			|| die "add-to-MANIFEST.MF failed"
+		jar ufmv ${JAVA_JAR_FILENAME} "${T}/add-to-MANIFEST.MF" \
+			|| die "updating MANIFEST.MF failed"
+	fi
 }
 
 # @FUNCTION: java-pkg-simple_src_install
