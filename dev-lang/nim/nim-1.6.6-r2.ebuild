@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit bash-completion-r1 multiprocessing toolchain-funcs xdg-utils
+inherit bash-completion-r1 edo multiprocessing toolchain-funcs xdg-utils
 
 DESCRIPTION="compiled, garbage-collected systems programming language"
 HOMEPAGE="https://nim-lang.org/"
@@ -15,24 +15,16 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="debug experimental +readline"
+IUSE="debug experimental"
 RESTRICT="test"  # need to sort out depends and numerous failures
 
-RDEPEND="readline? ( sys-libs/readline:0= )"
-DEPEND="${RDEPEND}"
+# BDEPEND="sys-process/parallel"
 # BDEPEND="test? ( net-libs/nodejs )"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.20.0-paths.patch )
-
-_run() {
-	einfo "Running: ${@}"
-	PATH="${S}/bin:${PATH}" "${@}" || die "Failed: \"${*}\""
-}
-
-nim_use_enable() {
-	[[ -z "${2}" ]] && die "usage: nim_use_enable <USE flag> <compiler flag>"
-	use "${1}" && echo "-d:${2}"
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.20.0-paths.patch
+	"${FILESDIR}"/${PN}-1.6.6-csources-flags.patch
+)
 
 # Borrowed from nim-utils.eclass (guru overlay).
 nim_gen_config() {
@@ -77,19 +69,28 @@ src_configure() {
 }
 
 src_compile() {
-	_run bash ./build.sh
+	local -x PATH="${S}/bin:${PATH}"
 
-	_run ./bin/nim compile koch
-	_run ./koch boot $(nim_use_enable readline useGnuReadline)
-	_run ./koch tools
+	# Build from C sources
+	# Compiling with sys-process/parallel fails for some reason but hopefully
+	# we'll be able to enable it later...
+	edo bash build.sh  # --parallel "$(makeopts_jobs)"
+
+	edo ./bin/nim compile koch
+	edo ./koch boot -d:nimUseLinenoise --skipParentCfg:off
+	edo ./koch tools
 }
 
 src_test() {
-	_run ./koch test
+	local -x PATH="${S}/bin:${PATH}"
+
+	edo ./koch test
 }
 
 src_install() {
-	_run ./koch install "${ED}"
+	local -x PATH="${S}/bin:${PATH}"
+
+	edo ./koch install "${ED}"
 
 	# "./koch install" installs only "nim" binary
 	# but not the rest
