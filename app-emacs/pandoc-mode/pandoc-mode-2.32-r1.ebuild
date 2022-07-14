@@ -3,8 +3,6 @@
 
 EAPI=8
 
-NEED_EMACS=26.1
-
 inherit elisp
 
 DESCRIPTION="BibTeX database manager for Emacs"
