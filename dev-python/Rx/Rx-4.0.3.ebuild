@@ -5,6 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
 
+DISTUTILS_USE_PEP517=poetry
 inherit distutils-r1 virtualx
 
 MY_P="RxPY-${PV}"
@@ -16,7 +17,7 @@ SRC_URI="
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
-SLOT="3"
+SLOT="4"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
