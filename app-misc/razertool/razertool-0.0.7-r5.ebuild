@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit autotools desktop
+inherit autotools desktop udev
 
 DESCRIPTION="Unofficial tool for controlling the Razer Copperhead mouse"
 HOMEPAGE="http://razertool.sourceforge.net/"
@@ -16,6 +16,7 @@ IUSE="gtk"
 
 RDEPEND="dev-libs/glib:2
 	virtual/libusb:0
+	virtual/udev
 	gtk? (
 		dev-libs/atk
 		>=gnome-base/librsvg-2.0
@@ -28,20 +29,11 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
-PATCHES=( "${FILESDIR}"/${P}-ar.patch )
+PATCHES=( "${FILESDIR}"/${P}-configure.patch
+	"${FILESDIR}"/${P}-rules.patch )
 
 src_prepare() {
 	default
-
-	sed -i razertool.rules.example \
-		-e 's:ACTION=="add", ::;s:BUS=:SUBSYSTEMS=:;s:SYSFS{:ATTRS{:g' \
-		|| die
-
-	# plugdev group may not exist (created by hal), default to usb
-	sed -i razertool.rules.example \
-		-e 's:plugdev:usb:' \
-		|| die
-
 	eautoreconf
 }
 
@@ -52,8 +44,7 @@ src_configure() {
 src_install() {
 	default
 
-	insinto /lib/udev/rules.d
-	newins razertool.rules.example 90-razertool.rules
+	udev_newrules razertool.rules.example 90-razertool.rules
 
 	# Icon and desktop entry
 	if use gtk; then
@@ -63,6 +54,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
+
 	elog "Razer Copperhead mice need firmware version 6.20 or higher"
 	elog "to work properly. Running ${PN} on mice with older firmwares"
 	elog "might lead to random USB-disconnects."
@@ -71,4 +64,8 @@ pkg_postinst() {
 	elog "or adapt permissions/owner/group in:"
 	elog "   /etc/udev/rules.d/90-razertool.rules"
 	elog "Then unplug and plug in the mouse."
+}
+
+pkg_postrm() {
+	udev_reload
 }
