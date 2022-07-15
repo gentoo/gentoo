@@ -207,7 +207,6 @@ mysqli - Add support for the improved mySQL libraries
 nas - Add support for network audio sound
 ncurses - Add ncurses support (console display library)
 neXt - Enable neXt toolkit
-neon - Enable optimization support for ARM NEON processors
 netcdf - Enable NetCDF data format support
 networkmanager - Enable net-misc/networkmanager support
 nis - Support for NIS/YP services
