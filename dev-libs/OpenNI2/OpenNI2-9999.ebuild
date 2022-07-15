@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/occipital/openni2"
 fi
 
-inherit ${SCM} toolchain-funcs multilib java-pkg-opt-2 flag-o-matic
+inherit ${SCM} toolchain-funcs java-pkg-opt-2
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
@@ -23,12 +23,12 @@ DESCRIPTION="OpenNI2 SDK"
 HOMEPAGE="https://structure.io/openni"
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="doc java neon opengl static-libs"
+IUSE="cpu_flags_arm_neon doc java opengl static-libs"
 
 RDEPEND="
+	media-libs/libjpeg-turbo:=
 	virtual/libusb:1
 	virtual/libudev
-	virtual/jpeg:0
 	opengl? ( media-libs/freeglut )
 	java? ( virtual/jre:1.8 )
 "
@@ -52,7 +52,7 @@ src_prepare() {
 }
 
 src_compile() {
-	use neon && export CFLAGS="${CFLAGS} -DXN_NEON"
+	use cpu_flags_arm_neon && export CFLAGS="${CFLAGS} -DXN_NEON"
 	emake \
 		CC="$(tc-getCC)" \
 		CXX="$(tc-getCXX)" \
