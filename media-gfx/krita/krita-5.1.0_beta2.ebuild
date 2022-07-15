@@ -110,6 +110,7 @@ src_configure() {
 		$(cmake_use_find_package gsl GSL)
 		$(cmake_use_find_package heif HEIF)
 		$(cmake_use_find_package jpeg JPEG)
+		$(cmake_use_find_package jpeg libjpeg-turbo)
 		$(cmake_use_find_package jpegxl JPEGXL)
 		$(cmake_use_find_package mypaint-brush-engine LibMyPaint)
 		$(cmake_use_find_package openexr OpenEXR)
