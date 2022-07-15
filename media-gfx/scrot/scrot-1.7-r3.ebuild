@@ -10,7 +10,7 @@ DESCRIPTION="Screen capture utility using imlib2 library"
 HOMEPAGE="https://github.com/resurrecting-open-source-projects/scrot"
 if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/resurrecting-open-source-projects/${PN}"
-	inherit autotools git-r3
+	inherit git-r3
 else
 	SRC_URI="https://github.com/resurrecting-open-source-projects/${PN}/releases/download/${PV}/${P}.tar.gz"
 
@@ -20,8 +20,10 @@ fi
 LICENSE="feh LGPL-2+"
 SLOT="0"
 
+# imlib2[X] needed for imlib_create_image_from_drawable, bug #835582
 RDEPEND="
 	dev-libs/libbsd
+	media-libs/imlib2[X]
 	x11-libs/libXext
 	x11-libs/libX11
 	x11-libs/libXcomposite
