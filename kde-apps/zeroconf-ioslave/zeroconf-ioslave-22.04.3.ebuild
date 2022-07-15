@@ -7,9 +7,9 @@ KFMIN=5.92.0
 QTMIN=5.15.4
 inherit ecm gear.kde.org
 
-DESCRIPTION="DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module"
+DESCRIPTION="KIO worker to discover file systems by DNS-SD (DNS Service Discovery)"
 
-LICENSE="GPL-2" # TODO: CHECK
+LICENSE="GPL-2+"
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE=""
