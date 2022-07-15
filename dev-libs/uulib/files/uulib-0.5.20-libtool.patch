@@ -23,13 +23,14 @@ index 951c731..342bf56 100644
  # the ranlib program
  #
  RANLIB =	@RANLIB@
-@@ -40,9 +44,15 @@ PATCH	=	@PATCH@
+@@ -40,9 +44,16 @@ PATCH	=	@PATCH@
  VDEF	=	-DVERSION=\"$(VERSION)\" -DPATCH=\"$(PATCH)\"
  #
  
 +top_builddir = @top_builddir@
 +
 +prefix = @prefix@
++exec_prefix = @exec_prefix@
 +libdir = @libdir@
 +includedir = @includedir@
 +
@@ -40,7 +41,7 @@ index 951c731..342bf56 100644
  
  #
  # make stuff
-@@ -51,11 +61,11 @@ UULIB_OBJ	=	${UULIB_SOURCE:.c=.o}
+@@ -51,11 +62,11 @@ UULIB_OBJ  =       ${UULIB_SOURCE:.c=.o}
  .SUFFIXES:
  .SUFFIXES: .c .o
  
@@ -54,7 +55,7 @@ index 951c731..342bf56 100644
  
  distclean:	clean
  	rm -f config.status config.cache config.log Makefile config.h
-@@ -67,22 +77,25 @@ new:		clean
+@@ -67,22 +78,25 @@ new:		clean
  	rm -f libuu.a
  	$(MAKE) all
  
