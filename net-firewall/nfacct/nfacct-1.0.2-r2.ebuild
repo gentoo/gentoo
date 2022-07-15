@@ -1,7 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit linux-info
 
 DESCRIPTION="Command line tool to create/retrieve/delete accounting objects in NetFilter"
@@ -13,18 +14,16 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc64 x86"
 
 RDEPEND="
-	net-libs/libmnl
+	net-libs/libmnl:=
 	>=net-libs/libnetfilter_acct-1.0.3
 "
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 CONFIG_CHECK="~NETFILTER_NETLINK_ACCT"
 
 src_install() {
-	default_src_install
+	default
 
 	keepdir /var/lib/nfacct
 	newinitd "${FILESDIR}"/${PN}.initd nfacct
