@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,7 @@ src_prepare() {
 src_configure() {
 	# "myutils.h: error: reference to byte is ambiguous""
 	# bug #786297
-	append-cppflags -std=c++14
+	append-cxxflags -std=c++14
 
 	cmake_src_configure
 }
