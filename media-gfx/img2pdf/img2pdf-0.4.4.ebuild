@@ -39,7 +39,7 @@ RDEPEND="
 "
 
 # gif animation test fails
-PATCHES=( "${FILESDIR}"/${P}-test-gif-animation.patch )
+PATCHES=( "${FILESDIR}"/img2pdf-0.4.3-test-gif-animation.patch )
 
 distutils_enable_tests pytest
 
