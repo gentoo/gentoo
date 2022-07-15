@@ -79,5 +79,7 @@ src_configure() {
 }
 
 pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	optfeature "gnuplot support" sci-visualization/gnuplot
 }
