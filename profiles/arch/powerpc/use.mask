@@ -55,8 +55,6 @@ appindicator
 
 # These flags should only be used for ppc
 -ppcsha1
-# Unmask the Altivec instruction set
--altivec
 
 # Incompatible Use Flags
 #

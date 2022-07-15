@@ -68,7 +68,6 @@ cpu_flags_x86_ssse3
 cpu_flags_x86_xop
 
 # ppc arch specific USE flags
-altivec
 ppcsha1
 
 # mips arch specific USE flags
