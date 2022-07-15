@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-07-15)
+# No activity upstream since early 2021, uses deprecated Go eclass,
+# open bugs: bug #680358, bug #844694. Removal on 2022-08-15.
+dev-util/docker-ls
+
 # Bernard Cafarelli <voyageur@gentoo.org> (2022-07-14)
 # Dead upstream (last release in 2013, no tarballs or git download)
 # No reverse dependencies for a long time, several test and build failures
