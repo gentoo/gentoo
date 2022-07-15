@@ -36,6 +36,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.7.4-big-endian-test.patch
+	"${FILESDIR}"/${PN}-4.9.0-fix-musl-execinfo_h.patch
 )
 
 src_configure() {
