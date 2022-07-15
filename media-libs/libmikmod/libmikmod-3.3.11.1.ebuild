@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/mikmod/${P}.tar.gz"
 LICENSE="LGPL-2+ LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="+alsa altivec coreaudio debug nas openal oss pulseaudio cpu_flags_x86_sse2 static-libs +threads"
+IUSE="+alsa coreaudio cpu_flags_ppc_altivec debug nas openal oss pulseaudio cpu_flags_x86_sse2 static-libs +threads"
 
 REQUIRED_USE="|| ( alsa coreaudio nas openal oss pulseaudio )"
 
@@ -37,7 +37,7 @@ src_prepare() {
 multilib_src_configure() {
 	local mysimd="--disable-simd"
 	if use ppc || use ppc64 || use ppc-macos; then
-		mysimd="$(use_enable altivec simd)"
+		mysimd="$(use_enable cpu_flags_ppc_altivec simd)"
 	fi
 	if use amd64 || use x86 || use amd64-linux || use x86-linux || use x64-macos; then
 		mysimd="$(use_enable cpu_flags_x86_sse2 simd)"
