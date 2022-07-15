@@ -1,6 +1,6 @@
 diff -Naur wmhdplop-0.9.11.orig/configure.ac wmhdplop-0.9.11/configure.ac
 --- wmhdplop-0.9.11.orig/configure.ac	2018-12-11 02:45:33.000000000 +0100
-+++ wmhdplop-0.9.11/configure.ac	2022-07-15 14:17:50.244012667 +0200
++++ wmhdplop-0.9.11/configure.ac	2022-07-15 19:42:42.504309025 +0200
 @@ -1,12 +1,14 @@
 -AC_INIT(wmhdplop, 0.9.11)
 +AC_INIT([wmhdplop], [0.9.11], [https://www.dockapps.net/wmhdplop])
@@ -18,18 +18,14 @@ diff -Naur wmhdplop-0.9.11.orig/configure.ac wmhdplop-0.9.11/configure.ac
  
  AC_CANONICAL_HOST
  
-@@ -19,39 +21,42 @@
+@@ -19,39 +21,37 @@
  AC_DEFINE(_GNU_SOURCE,[],[uses GNU extensions])
  
  
 -if test x$GCC = xyes; then
 -  CFLAGS="-O3 -fomit-frame-pointer -ffast-math -Wall -W";
 -fi
-+AS_IF(
-+  [test "x${GCC}" = "xyes"],
-+  [CFLAGS="-O3 -fomit-frame-pointer -ffast-math -Wall -W"]
-+)
- 
+-
  dnl check for X
  AC_PATH_X
  AC_PATH_XTRA
@@ -78,7 +74,7 @@ diff -Naur wmhdplop-0.9.11.orig/configure.ac wmhdplop-0.9.11/configure.ac
   [  --enable-gkrellm        build the gkrellm plugin (requires gtk2 and gkrellm developpement files) (Default is yes)
    --disable-gkrellm       do not build the gkrellm plugin],
   [ if   test "x$enableval" = "xno" ; then
-@@ -69,8 +74,8 @@
+@@ -69,8 +69,8 @@
    PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
    GTK2_CFLAGS=$PACKAGE_CFLAGS;
    GTK2_LIBS=$PACKAGE_LIBS;
@@ -89,7 +85,7 @@ diff -Naur wmhdplop-0.9.11.orig/configure.ac wmhdplop-0.9.11/configure.ac
    SAVECPPFLAGS="$CPPFLAGS"
    CPPFLAGS="$CFLAGS $GTK2_CFLAGS"
    AC_CHECK_HEADERS([gkrellm2/gkrellm.h], [ok=1], [ok=0])
-@@ -82,7 +87,7 @@
+@@ -82,7 +82,7 @@
    fi
    CPPFLAGS="$SAVECPPFLAGS"
  fi
@@ -100,7 +96,7 @@ diff -Naur wmhdplop-0.9.11.orig/configure.ac wmhdplop-0.9.11/configure.ac
  AC_OUTPUT(Makefile)
 diff -Naur wmhdplop-0.9.11.orig/Makefile.am wmhdplop-0.9.11/Makefile.am
 --- wmhdplop-0.9.11.orig/Makefile.am	2018-12-08 22:48:27.000000000 +0100
-+++ wmhdplop-0.9.11/Makefile.am	2022-07-15 14:11:07.842722348 +0200
++++ wmhdplop-0.9.11/Makefile.am	2022-07-15 19:42:17.107279593 +0200
 @@ -8,6 +8,8 @@
  
  EXTRA_DIST=autogen.sh gkrellm_hdplop.c
