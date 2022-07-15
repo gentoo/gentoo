@@ -14,7 +14,7 @@ SRC_URI="https://www.bitbucket.org/france/${PN}-tcforge/downloads/${P}.tar.bz2
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm64 ppc ppc64 ~riscv sparc x86"
-IUSE="cpu_flags_x86_3dnow a52 aac alsa altivec dv dvd +iconv imagemagick jpeg lzo mjpeg cpu_flags_x86_mmx mp3 mpeg nuv ogg oss pic postproc quicktime sdl cpu_flags_x86_sse cpu_flags_x86_sse2 theora truetype v4l vorbis X x264 xml xvid"
+IUSE="cpu_flags_ppc_altivec cpu_flags_x86_3dnow a52 aac alsa dv dvd +iconv imagemagick jpeg lzo mjpeg cpu_flags_x86_mmx mp3 mpeg nuv ogg oss pic postproc quicktime sdl cpu_flags_x86_sse cpu_flags_x86_sse2 theora truetype v4l vorbis X x264 xml xvid"
 
 REQUIRED_USE="
 	cpu_flags_x86_sse? ( cpu_flags_x86_mmx )
@@ -32,7 +32,7 @@ RDEPEND="
 	dvd? ( media-libs/libdvdread:0= )
 	iconv? ( virtual/libiconv )
 	imagemagick? ( media-gfx/imagemagick:= )
-	jpeg? ( virtual/jpeg:0= )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	lzo? ( >=dev-libs/lzo-2 )
 	mjpeg? ( media-video/mjpegtools:= )
 	mp3? ( media-sound/lame )
@@ -99,11 +99,11 @@ src_configure() {
 	use x86 && myconf="$(use_enable !pic x86-textrels)" # bug 271476
 
 	local myeconfargs=(
+		$(use_enable cpu_flags_ppc_altivec altivec)
 		$(use_enable cpu_flags_x86_mmx mmx)
 		$(use_enable cpu_flags_x86_3dnow 3dnow)
 		$(use_enable cpu_flags_x86_sse sse)
 		$(use_enable cpu_flags_x86_sse2 sse2)
-		$(use_enable altivec)
 		$(use_enable v4l libv4l2)
 		$(use_enable v4l libv4lconvert)
 		$(use_enable mpeg libmpeg2)
