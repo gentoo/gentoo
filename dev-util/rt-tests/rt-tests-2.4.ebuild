@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{7..11} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit python-single-r1 toolchain-funcs
 
