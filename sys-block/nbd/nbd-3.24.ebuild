@@ -13,7 +13,7 @@ if [[ ${PV} = 9999 ]] ; then
 else
 	SRC_URI="https://github.com/NetworkBlockDevice/nbd/releases/download/${P}/${P}.tar.xz
 		mirror://sourceforge/nbd/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ppc64 ~sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ppc ppc64 ~sparc x86"
 fi
 
 LICENSE="GPL-2"
