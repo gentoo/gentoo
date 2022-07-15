@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools elisp-common
+inherit elisp-common
 
 MY_PN=Singular
 MY_PV=$(ver_rs 3 '')
