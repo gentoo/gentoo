@@ -269,6 +269,7 @@ samba - Add support for SAMBA (Windows File and Printer sharing)
 sasl - Add support for the Simple Authentication and Security Layer
 savedconfig - Use this to restore your config from /etc/portage/savedconfig ${CATEGORY}/${PN}. Make sure your USE flags allow for appropriate dependencies
 scanner - Add support for scanner hardware (e.g. build the sane frontend in kdegraphics)
+screencast - Enable support for remote desktop and screen cast using PipeWire
 sctp - Support for Stream Control Transmission Protocol
 sdl - Add support for Simple Direct Layer (media library)
 seccomp - Enable seccomp (secure computing mode) to perform system call filtering at runtime to increase security of programs
