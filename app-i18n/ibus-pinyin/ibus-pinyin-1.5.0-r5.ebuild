@@ -3,7 +3,7 @@
 
 EAPI=7
 LUA_COMPAT=( lua5-1 )
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit autotools lua-single python-single-r1
 
