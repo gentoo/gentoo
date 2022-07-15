@@ -48,7 +48,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-docfiles.patch"
-	"${FILESDIR}/${PN}-dependencies.patch"
+	"${FILESDIR}/${PN}-9999-dependencies.patch"
 )
 
 DOCS=( README.md NEWS ChangeLog AUTHORS )
