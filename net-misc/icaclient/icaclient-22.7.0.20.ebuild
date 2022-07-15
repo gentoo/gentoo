@@ -87,7 +87,7 @@ pkg_setup() {
 
 src_unpack() {
 	default
-	mv "${WORKDIR}/${ICAARCH}/${ICAARCH}.cor" "${S}"
+	mv "${WORKDIR}/${ICAARCH}/${ICAARCH}.cor" "${S}" || die
 }
 
 src_prepare() {
