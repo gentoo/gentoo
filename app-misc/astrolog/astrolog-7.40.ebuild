@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# Please bump with app-misc/astrolog-ephemeris
+
 inherit toolchain-funcs
 
 DESCRIPTION="A many featured astrology chart calculation program"
