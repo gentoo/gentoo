@@ -14,12 +14,12 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="nls xinetd"
 
-RDEPEND="
+DEPEND="
 	sys-libs/ncurses:=
 	!net-misc/netkit-telnetd
 "
 RDEPEND="${DEPEND}
-	xinetd? ( sys-apps/xinetd   )
+	xinetd? ( sys-apps/xinetd )
 	!net-misc/netkit-telnetd
 "
 BDEPEND="virtual/pkgconfig"
