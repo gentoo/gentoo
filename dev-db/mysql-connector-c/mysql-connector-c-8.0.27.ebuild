@@ -51,6 +51,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-8.0.22-always-build-decompress-utilities.patch
 	"${FILESDIR}"/${PN}-8.0.19-do-not-install-comp_err.patch
 	"${FILESDIR}"/${PN}-8.0.27-add-OpenSSL-3.0.0-support.patch
+	"${FILESDIR}"/${PN}-8.0.27-res_n.patch
 )
 
 src_prepare() {
