@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 inherit autotools
 
 DESCRIPTION="a dockapp for monitoring disk activities with fancy visuals"
@@ -21,14 +21,15 @@ RDEPEND="media-libs/imlib2[X]
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.9.10-cflags.patch
+	"${FILESDIR}"/${P}-configure.patch
+	"${FILESDIR}"/${P}-indent.patch
 )
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
 src_prepare() {
-	eautoreconf
 	default
+	eautoreconf
 }
 
 src_configure() {
