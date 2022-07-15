@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">python-ironicclient</remote-id>
+		<remote-id type="github">openstack/python-ironicclient</remote-id>
 	</upstream>
 </pkgmetadata>
