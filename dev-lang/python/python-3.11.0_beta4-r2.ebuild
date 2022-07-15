@@ -278,6 +278,9 @@ src_configure() {
 	for mod in "${disable_modules[@]}"; do
 		echo "MODULE_${mod}_STATE=disabled"
 	done >> Makefile || die
+
+	# install epython.py as part of stdlib
+	echo "EPYTHON='python${PYVER}'" > Lib/epython.py || die
 }
 
 src_compile() {
@@ -424,25 +427,9 @@ src_install() {
 		-i "${ED}/etc/conf.d/pydoc-${PYVER}" \
 		"${ED}/etc/init.d/pydoc-${PYVER}" || die "sed failed"
 
-	local -x EPYTHON=python${PYVER}
-	# if not using a cross-compiler, use the fresh binary
-	if ! tc-is-cross-compiler; then
-		cat > python.wrap <<-EOF || die
-			#!/bin/sh
-			export LD_LIBRARY_PATH=\${PWD}\${LD_LIBRARY_PATH+:\${LD_LIBRARY_PATH}}
-			exec ./python "\${@}"
-		EOF
-		chmod +x python.wrap || die
-		local -x PYTHON=./python.wrap
-	else
-		local -x PYTHON=${EPREFIX}/usr/bin/${EPYTHON}
-	fi
-
-	echo "EPYTHON='${EPYTHON}'" > epython.py || die
-	python_domodule epython.py
-
 	# python-exec wrapping support
 	local pymajor=${PYVER%.*}
+	local EPYTHON=python${PYVER}
 	local scriptdir=${D}$(python_get_scriptdir)
 	mkdir -p "${scriptdir}" || die
 	# python and pythonX
