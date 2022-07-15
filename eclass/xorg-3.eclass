@@ -377,7 +377,7 @@ xorg-3_src_configure() {
 	# Check if package supports disabling of dep tracking
 	# Fixes warnings like:
 	#    WARNING: unrecognized options: --disable-dependency-tracking
-	if grep -q -s "disable-depencency-tracking" ${ECONF_SOURCE:-.}/configure; then
+	if grep -q -s "disable-dependency-tracking" ${ECONF_SOURCE:-.}/configure; then
 		local dep_track="--disable-dependency-tracking"
 	fi
 
