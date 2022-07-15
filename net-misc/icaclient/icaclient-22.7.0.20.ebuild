@@ -36,6 +36,7 @@ RDEPEND="
 	media-libs/gst-plugins-base:1.0
 	media-libs/gstreamer:1.0
 	media-libs/libogg
+	media-libs/libjpeg-turbo
 	media-libs/libvorbis
 	media-libs/speex
 	net-libs/libsoup:2.4
@@ -45,7 +46,6 @@ RDEPEND="
 	sys-libs/libcxxabi
 	sys-libs/zlib
 	virtual/krb5
-	virtual/jpeg:0
 	virtual/libudev
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
