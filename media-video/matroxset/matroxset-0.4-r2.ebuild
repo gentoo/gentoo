@@ -1,38 +1,29 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit toolchain-funcs
+EAPI=8
+
+inherit edo toolchain-funcs
 
 DESCRIPTION="Matrox utility to switch output modes (activate tvout)"
 HOMEPAGE="ftp://platan.vc.cvut.cz/pub/linux/matrox-latest/"
 SRC_URI="ftp://platan.vc.cvut.cz/pub/linux/matrox-latest/${P}.tar.gz"
-LICENSE="GPL-2"
 
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 
-RDEPEND="
-	sys-libs/ncurses:=
-"
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
-
-doecho() {
-	echo "$@"
-	"$@"
-}
+RDEPEND="sys-libs/ncurses:="
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_compile() {
-	doecho $(tc-getCC) -o ${PN} \
+	edo $(tc-getCC) -o ${PN} \
 		${CFLAGS} ${LDFLAGS} \
 		${PN}.c \
-		$($(tc-getPKG_CONFIG) --libs ncurses) \
-		|| die "build failed"
+		$($(tc-getPKG_CONFIG) --libs ncurses)
 
-	#prepare small README
+	# Prepare small README
 	cat >> "${S}"/README << _EOF_
 This utility has been created by Petr Vandrovec
 
