@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -44,7 +44,7 @@ DEPEND="${COMMON_DEPEND}
 PDEPEND="hddtemp? ( dbus? ( sys-fs/udisks:2 ) )"
 
 PATCHES=(
-    "${FILESDIR}/${PN}-1.24.1-dont-check-for-headers.patch"
+	"${FILESDIR}/${PN}-1.24.1-dont-check-for-headers.patch"
 )
 
 src_configure() {
