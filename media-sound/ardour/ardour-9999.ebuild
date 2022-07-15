@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="7"
-IUSE="altivec doc jack nls phonehome pulseaudio cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
+IUSE="doc jack nls phonehome pulseaudio cpu_flags_ppc_altivec cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
 
 RDEPEND="
 	dev-cpp/glibmm:2
@@ -136,7 +136,7 @@ src_configure() {
 		--noconfirm
 		--optimize
 		--with-backends=${backends}
-		$({ use altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization")
+		$({ use cpu_flags_ppc_altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization")
 		$(usex doc "--docs" '')
 		$(usex nls "--nls" "--no-nls")
 		$(usex phonehome "--phone-home" "--no-phone-home")
