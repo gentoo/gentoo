@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit savedconfig toolchain-funcs
 
@@ -12,12 +12,10 @@ SRC_URI="https://www.brain-dump.org/projects/${PN}/${P}.tar.gz"
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE=""
-
-DEPEND=""
-RDEPEND=""
 
 src_prepare() {
+	default
+
 	sed -e 's:^PREFIX.*:PREFIX = /usr:' \
 		-e 's/-Os//' \
 		-e '/^CC/d' \
@@ -33,8 +31,6 @@ src_prepare() {
 	restore_config config.def.h
 
 	tc-export CC
-
-	default
 }
 
 src_test() {
