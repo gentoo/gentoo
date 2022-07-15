@@ -240,7 +240,7 @@ llvm_check_deps() {
 
 pre_build_checks() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		( use lto || use pgo ) && llvm_pkg_setup
+		[[ ${EBUILD_PHASE_FUNC} == pkg_setup ]] && ( use lto || use pgo ) && llvm_pkg_setup
 
 		local -x CPP="$(tc-getCXX) -E"
 		if tc-is-gcc && ! ver_test "$(gcc-version)" -ge 9.2; then
@@ -256,7 +256,7 @@ pre_build_checks() {
 				die "At least clang 12 is required"
 			fi
 		fi
-		if use js-type-check; then
+		if [[ ${EBUILD_PHASE_FUNC} == pkg_setup ]] && use js-type-check; then
 			"${EPREFIX}"/usr/bin/java -version 2>1 > /dev/null || die "Java VM not setup correctly"
 		fi
 	fi
@@ -279,7 +279,7 @@ pre_build_checks() {
 			CHECKREQS_MEMORY="16G"
 		fi
 	fi
-	check-reqs_pkg_setup
+	check-reqs_${EBUILD_PHASE_FUNC}
 }
 
 pkg_pretend() {
