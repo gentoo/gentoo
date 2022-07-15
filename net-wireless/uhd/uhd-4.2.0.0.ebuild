@@ -18,7 +18,7 @@ SRC_URI="https://github.com/EttusResearch/uhd/archive/v${PV}.tar.gz -> EttusRese
 LICENSE="GPL-3"
 SLOT="0/$(ver_cut 1-3)"
 KEYWORDS="~amd64 ~arm ~riscv ~x86"
-IUSE="+b100 +b200 doc e300 examples +mpmd octoclock test +usb +usrp1 +usrp2 +utils +x300"
+IUSE="+b100 +b200 doc cpu_flags_arm_neon cpu_flags_x86_ssse3 e300 examples +mpmd octoclock test +usb +usrp1 +usrp2 +utils +x300"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 			b100? ( usb )
@@ -84,6 +84,8 @@ src_configure() {
 		-DENABLE_X300="$(usex x300)"
 		-DENABLE_MPMD="$(usex mpmd)"
 		-DENABLE_OCTOCLOCK="$(usex octoclock)"
+		-DENABLE_SSSE3="$(usex cpu_flags_x86_ssse3)"
+		-DNEON_SIMD_ENABLE="$(usex cpu_flags_arm_neon)"
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DPKG_DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
 		-DUHD_VERSION="${PV}"
