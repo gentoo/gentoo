@@ -38,6 +38,7 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/nspr
 	>=dev-libs/nss-3.26
+	dev-libs/wayland
 	media-fonts/liberation-fonts
 	media-libs/alsa-lib
 	media-libs/mesa[gbm(+)]
