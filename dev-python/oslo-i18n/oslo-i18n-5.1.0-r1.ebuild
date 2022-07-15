@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
@@ -23,6 +23,10 @@ S=${WORKDIR}/${MY_P}
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~riscv x86"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-5.1.0-fix-py3.11.patch"
+)
 
 RDEPEND="
 	>=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
