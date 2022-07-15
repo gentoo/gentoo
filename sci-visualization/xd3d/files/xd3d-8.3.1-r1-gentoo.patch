@@ -51,8 +51,8 @@ diff -Naur RULES.gentoo RULES.gentoo
 +# C compiler
 +#
 +COMPILC = $(CC)
-+RANLIB  = ranlib
-+AR      = ar r
++RANLIB  = $(MY_RANLIB)
++AR      = $(MY_AR) r
 +STRIP   = echo $@
 +
 +#
