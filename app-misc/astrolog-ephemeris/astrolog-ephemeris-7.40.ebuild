@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# Please bump with app-misc/astrolog
+
 DESCRIPTION="ephemeris files for optional extended accuracy of astrolog's calculations"
 HOMEPAGE="https://www.astrolog.org/astrolog.htm"
 SRC_URI="https://www.astrolog.org/ftp/ephem/ephemall.zip"
