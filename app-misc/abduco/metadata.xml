@@ -8,4 +8,7 @@
     detached - run in the background - and then later reattached. Together 
     with dvtm it provides a simpler and cleaner alternative to tmux or screen.
   </longdescription>
+  <upstream>
+    <remote-id type="github">martanne/abduco</remote-id>
+  </upstream>
 </pkgmetadata>
