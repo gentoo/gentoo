@@ -1,0 +1,30 @@
+--- configure.ac.old	2017-03-07 13:31:46.074580930 +0100
++++ configure.ac	2017-03-07 13:33:25.640924331 +0100
+@@ -347,7 +347,7 @@
+     AC_DEFINE([LIBCW_WITH_PULSEAUDIO], [1], [Define as 1 if your build machine can support PulseAudio.])
+ fi
+ 
+-
++PKG_PROG_PKG_CONFIG
+ 
+ if test "$enable_cwcp" = "no" ; then
+    WITH_CWCP='no'
+@@ -355,6 +355,7 @@
+     AC_CHECK_LIB(curses, initscr)
+     if test $ac_cv_lib_curses_initscr = 'yes' ; then
+ 	WITH_CWCP='yes'
++	PKG_CHECK_MODULES(ncurses, ncurses, [NCURSES_LIB="$ncurses_LIBS"], )
+     else
+ 	WITH_CWCP='no'
+ 	AC_MSG_WARN([Cannot find libcurses - unable to build cwcp])
+--- src/cwcp/Makefile.am.old	2022-07-15 17:36:58.554778217 +0200
++++ src/cwcp/Makefile.am	2022-07-15 17:37:49.169570822 +0200
+@@ -28,7 +28,7 @@
+ # Target-specific linker flags (objects to link). Order is important:
+ # first static library then dynamic. Otherwise linker may not find
+ # symbols from the dynamic library.
+-cwcp_LDADD = $(top_builddir)/src/cwutils/lib_cwcp.a -lcurses $(INTL_LIB) -L$(top_builddir)/src/libcw/.libs -lcw
++cwcp_LDADD = $(top_builddir)/src/cwutils/lib_cwcp.a ${ncurses_LIBS} $(INTL_LIB) -L$(top_builddir)/src/libcw/.libs -lcw
+ 
+ 
+ # copy man page to proper directory during installation	
