@@ -1,5 +1,6 @@
 Fix alignment of vector of floats in babl-rgb-converter.c
 Bug: https://bugs.gentoo.org/857708
+Upstream-Bug: https://gitlab.gnome.org/GNOME/babl/-/issues/76
 Signed-off-by: Alexander Bezrukov <phmagic@mail.ru>
 
 diff -ur a/babl/base/babl-rgb-converter.c b/babl/base/babl-rgb-converter.c
