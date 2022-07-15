@@ -22,6 +22,8 @@ DEPEND="app-arch/bzip2
 	|| ( sys-libs/zlib sys-libs/zlib-ng )"
 RDEPEND="${DEPEND}"
 
+RESTRICT="!test? ( test )"
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_INCLUDEDIR=/usr/include/minizip-ng # do not mix up with libzip
