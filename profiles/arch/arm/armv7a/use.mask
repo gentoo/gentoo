@@ -2,8 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask armv7 specific USE flags
--neon
-
 -cpu_flags_arm_v4
 -cpu_flags_arm_v5
 -cpu_flags_arm_v6

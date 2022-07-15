@@ -105,9 +105,6 @@ cpu_flags_arm_vfpv3
 cpu_flags_arm_vfpv4
 cpu_flags_arm_vfp-d32
 
-# [old] arm arch specific USE flags
-neon
-
 # nVidia XvMC requires nvidia-drivers/nvidia-legacy-drivers
 nvidia
 
