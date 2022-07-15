@@ -6,7 +6,7 @@ EAPI=7
 # TODO: change to sphinx for docs in 5.17
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit bash-completion-r1 python-single-r1
+inherit bash-completion-r1 python-single-r1 udev
 
 libbtrfs_soname=0
 
