@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby26 ruby27"
+USE_RUBY="ruby26 ruby27 ruby30 ruby31"
 
-RUBY_FAKEGEM_RECIPE_TEST="rspec"
+RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_EXTRADOC="README.org History.org"
 RUBY_FAKEGEM_GEMSPEC="org-ruby.gemspec"
@@ -26,6 +26,5 @@ ruby_add_rdepend ">=dev-ruby/rubypants-0.2:0"
 ruby_add_bdepend "test? ( dev-ruby/tilt )"
 
 all_ruby_prepare() {
-	#Fix tests until rspec:3 is available in the tree
-	sed -i -e "s/truthy/true/" -e "s/falsy/false/" spec/headline_spec.rb spec/parser_spec.rb spec/line_spec.rb || die
+	sed -i -e '1irequire "pathname"' spec/spec_helper.rb || die
 }
