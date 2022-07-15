@@ -14,7 +14,6 @@ acpi - Add support for Advanced Configuration and Power Interface
 adns - Add support for asynchronous DNS resolution
 afs - Add OpenAFS support (distributed file system)
 alsa - Add support for media-libs/alsa-lib (Advanced Linux Sound Architecture)
-altivec - Add support for optimizations for G4 and G5/ppc970 processors
 ao - Use libao audio output library for sound playback
 apache2 - Add Apache2 support
 aqua - Include support for the Mac OS X Aqua (Carbon/Cocoa) GUI
