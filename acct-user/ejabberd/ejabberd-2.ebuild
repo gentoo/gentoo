@@ -11,4 +11,10 @@ ACCT_USER_ID=114
 ACCT_USER_GROUPS=( ${PN} )
 ACCT_USER_HOME=/var/lib/${PN}
 
+IUSE="pam"
+
 acct-user_add_deps
+
+pkg_setup() {
+	use pam && ACCT_USER_GROUPS+=( epam )
+}
