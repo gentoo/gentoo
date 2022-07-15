@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit depend.apache multilib
+inherit depend.apache
 
 DESCRIPTION="Icinga Web 2 - Frontend for icinga2"
 HOMEPAGE="http://www.icinga.org/"
@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]];then
 	EGIT_BRANCH="master"
 else
 	SRC_URI="https://codeload.github.com/Icinga/${PN}/tar.gz/v${PV} -> ${P}.tar.gz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-2"
@@ -25,10 +25,15 @@ REQUIRED_USE="( ^^ ( apache2-server nginx ) ) apache2? ( apache2-server )"
 DEPEND=">=net-analyzer/icinga2-2.1.1
 		dev-php/pecl-imagick
 		pdf? ( media-gfx/imagemagick[png] )
-		apache2-server? ( >=www-servers/apache-2.4.0 )
-		nginx? ( >=www-servers/nginx-1.7.0:* )
+		apache2-server? (
+			acct-user/apache[icingaweb2]
+			>=www-servers/apache-2.4.0
+		)
+		nginx? (
+			acct-user/nginx[icingaweb2]
+			>=www-servers/nginx-1.7.0:*
+		)
 		|| (
-			dev-lang/php:7.3[apache2?,cli,fpm?,gd,json,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
 			dev-lang/php:7.4[apache2?,cli,fpm?,gd,json,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
 			dev-lang/php:8.0[apache2?,cli,fpm?,gd,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
 		)
@@ -42,9 +47,6 @@ want_apache2
 
 pkg_setup() {
 	depend.apache_pkg_setup
-
-	use nginx && usermod -a -G icingacmd,icingaweb2 nginx
-	use apache2 && usermod -a -G icingacmd,icingaweb2 apache
 }
 
 pkg_config() {
