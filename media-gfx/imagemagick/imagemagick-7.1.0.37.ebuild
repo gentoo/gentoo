@@ -44,35 +44,35 @@ RDEPEND="
 	graphviz? ( media-gfx/graphviz )
 	heif? ( media-libs/libheif:=[x265] )
 	jbig? ( >=media-libs/jbigkit-2:= )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	jpeg2k? ( >=media-libs/openjpeg-2.1.0:2 )
 	lcms? ( media-libs/lcms:2= )
 	lqr? ( media-libs/liblqr )
 	opencl? ( virtual/opencl )
 	openexr? ( media-libs/openexr:0= )
 	pango? ( x11-libs/pango )
-	perl? ( >=dev-lang/perl-5.8.8:0= )
-	png? ( media-libs/libpng:0= )
+	perl? ( >=dev-lang/perl-5.8.8:= )
+	png? ( media-libs/libpng:= )
 	postscript? ( app-text/ghostscript-gpl )
 	raw? ( media-libs/libraw:= )
 	svg? (
 		gnome-base/librsvg
 		media-gfx/potrace
-		)
-	tiff? ( media-libs/tiff:0= )
+	)
+	tiff? ( media-libs/tiff:= )
 	truetype? (
 		media-fonts/urw-fonts
 		>=media-libs/freetype-2
-		)
-	webp? ( media-libs/libwebp:0= )
+	)
+	webp? ( media-libs/libwebp:= )
 	wmf? ( media-libs/libwmf )
 	X? (
 		x11-libs/libICE
 		x11-libs/libSM
 		x11-libs/libXext
 		x11-libs/libXt
-		)
-	xml? ( dev-libs/libxml2:= )
+	)
+	xml? ( dev-libs/libxml2 )
 	lzma? ( app-arch/xz-utils )
 	zip? ( dev-libs/libzip:= )
 	zlib? ( sys-libs/zlib:= )"
