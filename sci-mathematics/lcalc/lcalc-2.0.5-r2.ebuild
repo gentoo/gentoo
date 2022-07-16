@@ -10,7 +10,7 @@ SRC_URI="https://gitlab.com/sagemath/lcalc/uploads/25f029f3c02fcb6c3174972e0ac0e
 LICENSE="GPL-2+"
 # The subslot is the libLfunction soname major version
 SLOT="0/1"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # Omit USE=mpfr for now because it's broken upstream:
 #
