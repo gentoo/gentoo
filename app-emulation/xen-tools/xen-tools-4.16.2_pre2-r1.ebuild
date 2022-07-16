@@ -24,7 +24,7 @@ else
 	IPXE_COMMIT="3c040ad387099483102708bb1839110bc788cefb"
 
 	XEN_PRE_PATCHSET_NUM=1
-	XEN_GENTOO_PATCHSET_NUM=1
+	XEN_GENTOO_PATCHSET_NUM=2
 	XEN_PRE_VERSION_BASE=4.16.1
 
 	XEN_BASE_PV="${PV}"
@@ -265,11 +265,11 @@ src_prepare() {
 
 		# Bug #816987
 		pushd tools/firmware/ovmf-dir-remote/BaseTools/Source/C/BrotliCompress/brotli > /dev/null
-			eapply "${FILESDIR}/${PN}-4.15.1-brotli-gcc11.patch"
+			eapply "${XEN_GENTOO_PATCHES_DIR}/ovmf/${PN}-4.15.1-brotli-gcc11.patch"
 		popd > /dev/null
 
 		pushd tools/firmware/ovmf-dir-remote/MdeModulePkg/Library/BrotliCustomDecompressLib/brotli > /dev/null
-			eapply "${FILESDIR}/${PN}-4.15.1-brotli-gcc11.patch"
+			eapply "${XEN_GENTOO_PATCHES_DIR}/ovmf/${PN}-4.15.1-brotli-gcc11.patch"
 		popd > /dev/null
 	fi
 
