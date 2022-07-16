@@ -27,7 +27,7 @@ SRC_URI="
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="dedicated +lightfx +opengl scripting test +truetype"
+IUSE="dedicated +flac +lightfx +opengl scripting test +truetype +vorbis"
 
 COMMON_DEPEND="
 	dev-libs/icu:=
@@ -39,7 +39,9 @@ COMMON_DEPEND="
 	!dedicated? (
 		media-libs/libsdl2
 		media-libs/speexdsp
+		flac? ( media-libs/flac )
 		opengl? ( virtual/opengl )
+		vorbis? ( media-libs/libvorbis )
 	)
 	dev-libs/openssl:0=
 	scripting? ( dev-lang/duktape:= )
@@ -105,6 +107,7 @@ src_configure() {
 	# as both packages do not exist in Gentoo, so support for them has been disabled.
 	local mycmakeargs=(
 		-DDISABLE_DISCORD_RPC=ON
+		$(usex !dedicated "-DDISABLE_FLAC=$(usex !flac)" "")
 		-DDISABLE_GOOGLE_BENCHMARK=ON
 		-DDISABLE_GUI=$(usex dedicated)
 		-DDISABLE_HTTP=OFF
@@ -112,6 +115,7 @@ src_configure() {
 		-DDISABLE_NETWORK=OFF
 		$(usex !dedicated "-DDISABLE_OPENGL=$(usex !opengl)" "")
 		-DDISABLE_TTF=$(usex !truetype)
+		$(usex !dedicated "-DDISABLE_VORBIS=$(usex !vorbis)" "")
 		-DDOWNLOAD_OBJECTS=OFF
 		-DDOWNLOAD_REPLAYS=OFF
 		-DDOWNLOAD_TITLE_SEQUENCES=OFF
