@@ -41,7 +41,7 @@ ruby_add_bdepend "
 		~dev-ruby/actionmailer-${PV}
 		>=dev-ruby/sqlite3-1.3.6
 		dev-ruby/mocha
-		dev-ruby/minitest:5
+		<dev-ruby/minitest-5.16:5
 	)"
 
 DEPEND+=" test? ( >=dev-db/sqlite-3.12.1 )"
