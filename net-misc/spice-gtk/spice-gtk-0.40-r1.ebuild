@@ -117,6 +117,12 @@ src_configure() {
 		$(meson_feature wayland wayland-protocols)
 	)
 
+	if use elibc_musl; then
+		emesonargs+=(
+			-Dcoroutine=gthread
+		)
+	fi
+
 	if use usbredir; then
 		emesonargs+=(
 			-Dusb-acl-helper-dir=/usr/libexec
