@@ -82,7 +82,7 @@ if [[ ${EAPI} == [6-8] ]]; then
 		fi
 	}
 
-	python_pyc_check
+	time python_pyc_check
 fi
 
 : # guarantee successful exit
