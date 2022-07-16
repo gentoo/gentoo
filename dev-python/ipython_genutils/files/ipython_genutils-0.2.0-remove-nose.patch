@@ -107,16 +107,18 @@ https://build.opensuse.org/package/view_file/devel:languages:python:jupyter/pyth
 
 --- a/ipython_genutils/tests/test_importstring.py
 +++ b/ipython_genutils/tests/test_importstring.py
-@@ -3,7 +3,7 @@
+@@ -3,25 +3,25 @@
  # Copyright (c) IPython Development Team.
  # Distributed under the terms of the Modified BSD License.
 
 -import nose.tools as nt
-+import pytest
-
+-
  from ..importstring import import_item
 
-@@ -11,17 +11,17 @@ def test_import_plain():
++import pytest
++
++
+ def test_import_plain():
      "Test simple imports"
      import os
      os2 = import_item('os')
@@ -135,8 +137,8 @@ https://build.opensuse.org/package/view_file/devel:languages:python:jupyter/pyth
  def test_import_raises():
      "Test that failing imports raise the right exception"
 -    nt.assert_raises(ImportError, import_item, 'IPython.foobar')
+-    
 +    pytest.raises(ImportError, import_item, 'IPython.foobar')
-
 --- a/ipython_genutils/tests/test_path.py
 +++ b/ipython_genutils/tests/test_path.py
 @@ -5,15 +5,12 @@
