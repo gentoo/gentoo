@@ -44,6 +44,7 @@ ruby_add_bdepend "
 		~dev-ruby/railties-${PV}
 		>=dev-ruby/rack-cache-1.2:1.2
 		www-servers/puma
+		<dev-ruby/minitest-5.16:5
 	)"
 
 all_ruby_prepare() {
