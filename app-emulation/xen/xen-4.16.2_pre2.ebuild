@@ -15,7 +15,7 @@ else
 	KEYWORDS="~amd64 ~arm -x86"
 
 	XEN_PRE_PATCHSET_NUM=1
-	XEN_GENTOO_PATCHSET_NUM=1
+	XEN_GENTOO_PATCHSET_NUM=2
 	XEN_PRE_VERSION_BASE=4.16.1
 
 	XEN_BASE_PV="${PV}"
@@ -88,11 +88,9 @@ src_prepare() {
 		eapply "${XEN_GENTOO_PATCHES_DIR}"
 	fi
 
-	eapply "${FILESDIR}"/${PN}-4.16-efi.patch
-
 	# Symlinks do not work on fat32 volumes # 829765
 	if ! use boot-symlinks || use efi; then
-		eapply "${FILESDIR}"/${PN}-4.16-no-symlink.patch
+		eapply "${XEN_GENTOO_PATCHES_DIR}"/no-boot-symlinks/${PN}-4.16-no-symlinks.patch
 	fi
 
 	# Workaround new gcc-11 options
