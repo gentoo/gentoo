@@ -4,7 +4,7 @@
 EAPI=8
 
 QA_PKGCONFIG_VERSION=$(ver_cut 1-3)
-inherit autotools flag-o-matic libtool perl-functions toolchain-funcs
+inherit autotools flag-o-matic perl-functions toolchain-funcs
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/ImageMagick/ImageMagick.git"
