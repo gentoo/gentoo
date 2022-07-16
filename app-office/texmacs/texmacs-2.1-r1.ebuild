@@ -28,7 +28,7 @@ RDEPEND="
 	>=dev-qt/qtwidgets-5.9.1:5
 	>=dev-qt/qtprintsupport-5.9.1:5
 	sqlite? ( dev-db/sqlite )
-	jpeg? ( media-gfx/imagemagick )
+	jpeg? ( virtual/imagemagick-tools[jpeg] )
 	netpbm? ( media-libs/netpbm )
 	spell? ( app-text/aspell )
 	svg? ( || ( media-gfx/inkscape gnome-base/librsvg:2 ) )
