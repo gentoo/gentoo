@@ -12,16 +12,14 @@ SRC_URI="https://projects.vdr-developer.org/git/${PN}.git/snapshot/${P}.tar.bz2"
 KEYWORDS="amd64 x86"
 SLOT="0"
 LICENSE="GPL-2"
-IUSE="fontconfig freetype graphicsmagick imagemagick lcd_devices_ax206dpf lcd_devices_picolcd_256x64 lcd_devices_vnc"
-REQUIRED_USE="?? ( graphicsmagick imagemagick )"
+IUSE="fontconfig freetype lcd_devices_ax206dpf lcd_devices_picolcd_256x64 lcd_devices_vnc"
 
 RDEPEND="
 	dev-libs/libhid
+	media-gfx/graphicsmagick:0/1.3[cxx]
 	net-libs/libvncserver
 	freetype? ( media-libs/freetype:2= )
 	fontconfig? ( media-libs/fontconfig:1.0= )
-	graphicsmagick? ( media-gfx/graphicsmagick:0/1.3[cxx] )
-	imagemagick? ( <media-gfx/imagemagick-7 )
 	lcd_devices_ax206dpf? ( virtual/libusb:0 )
 	lcd_devices_picolcd_256x64? ( virtual/libusb:0 )
 "
@@ -46,6 +44,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Use always GraphicsMagick
+	sed -e "69s:#::" -i Make.config || die
+
 	# Build optional drivers
 	if use lcd_devices_ax206dpf; then
 		sed -e "78s:#::" -i Make.config || die
@@ -63,12 +64,6 @@ src_configure() {
 	fi
 	if ! use fontconfig; then
 		sed -e "62s:HAVE:#HAVE:" -i Make.config || die
-	fi
-	if use graphicsmagick; then
-		sed -e "69s:#::" -i Make.config || die
-	fi
-	if use imagemagick; then
-		sed -e "68s:#::" -i Make.config || die
 	fi
 }
 
