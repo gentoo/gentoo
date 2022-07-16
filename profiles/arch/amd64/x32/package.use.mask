@@ -6,13 +6,15 @@
 x11-libs/libva-intel-driver hybrid
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-02-09)
-# Requires net-libs/nodejs, plus mask all reverse-dependencies.
+# dev-qt/qtwebengine requires net-libs/nodejs, plus mask all
+# reverse-dependencies.
 app-i18n/fcitx-libpinyin dictionary-manager
 dev-lang/idris2 test-full
 dev-python/cloudscraper test
 games-util/lgogdownloader gui
 kde-apps/kde-apps-meta:5 pim
 kde-apps/kdenetwork-meta:5 bittorrent
+kde-apps/kleopatra:5 pim
 kde-apps/umbrello:5 php
 kde-misc/kio-gdrive kaccounts
 net-irc/quassel urlpreview
