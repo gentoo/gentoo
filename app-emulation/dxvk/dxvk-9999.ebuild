@@ -64,7 +64,10 @@ src_configure() {
 	append-flags -mno-avx
 
 	if [[ ${CHOST} != *-mingw* ]]; then
-		[[ ! -v MINGW_BYPASS ]] && unset AR CC CXX RC STRIP
+		if [[ ! -v MINGW_BYPASS ]]; then
+			unset AR CC CXX RC STRIP
+			filter-flags '-fuse-ld=*'
+		fi
 
 		CHOST_amd64=x86_64-w64-mingw32
 		CHOST_x86=i686-w64-mingw32
