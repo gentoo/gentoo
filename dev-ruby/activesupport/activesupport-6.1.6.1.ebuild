@@ -43,6 +43,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/rack
 	dev-ruby/rexml
 	dev-ruby/mocha
+	<dev-ruby/minitest-5.16:5
 	)"
 
 all_ruby_prepare() {
