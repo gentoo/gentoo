@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-readelf.patch
 	"${FILESDIR}"/${P}-zero-dir-entry.patch
 	"${FILESDIR}"/${P}-hppa.patch
+	"${FILESDIR}"/${P}-musl-error.h-fix.patch
 )
 
 src_prepare() {
