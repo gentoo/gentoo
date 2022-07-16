@@ -108,6 +108,8 @@ src_prepare() {
 	)
 	if use elibc_musl; then
 		PATCHES+=( "${WORKDIR}/${MUSL_PATCHSET}" )
+		# Applied upstream in 251.3
+		rm "${WORKDIR}/${MUSL_PATCHSET}/0001-Add-sys-file.h-for-LOCK_.patch" || die
 	fi
 	default
 
