@@ -94,7 +94,10 @@ src_configure() {
 	use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
 
 	if [[ ${CHOST} != *-mingw* ]]; then
-		[[ ! -v MINGW_BYPASS ]] && unset AR CC CXX STRIP WIDL
+		if [[ ! -v MINGW_BYPASS ]]; then
+			unset AR CC CXX RC STRIP WIDL
+			filter-flags '-fuse-ld=*'
+		fi
 
 		CHOST_amd64=x86_64-w64-mingw32
 		CHOST_x86=i686-w64-mingw32
