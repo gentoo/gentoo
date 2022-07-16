@@ -4,7 +4,9 @@
 # QA check: ensure that Python modules are compiled after installing
 # Maintainer: Python project <python@gentoo.org>
 
-if [[ ${EAPI} == [6-7] ]]; then
+# EAPI guard to prevent errors from trying to import python-utils-r1
+# in unsupported EAPIs.  Please keep the list in sync with the eclass!
+if [[ ${EAPI} == [6-8] ]]; then
 	inherit python-utils-r1
 
 	python_pyc_check() {
