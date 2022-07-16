@@ -16,10 +16,10 @@ RDEPEND="
 	>=kde-apps/kopete-${PV}:${SLOT}
 	>=kde-apps/krdc-${PV}:${SLOT}
 	>=kde-apps/krfb-${PV}:${SLOT}
-	>=kde-apps/zeroconf-ioslave-${PV}:${SLOT}
 	>=kde-misc/kdeconnect-${PV}:${SLOT}
 	>=kde-misc/kio-gdrive-${PV}:${SLOT}
 	>=net-irc/konversation-${PV}:${SLOT}
+	>=net-misc/kio-zeroconf-${PV}:${SLOT}
 	bittorrent? (
 		>=net-libs/libktorrent-${PV}:${SLOT}
 		>=net-p2p/ktorrent-${PV}:${SLOT}
