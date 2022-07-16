@@ -24,6 +24,6 @@ src_test() {
 	for slot in $(php_get_slots); do
 		php_init_slot_env "${slot}"
 		# Some tests will be skipped (such that require a running Kafka instance).
-		make test 
+		make test
 	done
 }
