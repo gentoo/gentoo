@@ -5,21 +5,16 @@
 
 EAPI=8
 
-inherit multilib-minimal
-
-if [[ ${PV} == 9999 ]] ; then
-	EGIT_REPO_URI="https://github.com/nghttp2/nghttp2.git"
-	inherit autotools git-r3
-else
-	SRC_URI="https://github.com/nghttp2/nghttp2/releases/download/v${PV}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-fi
+inherit autotools multilib-minimal
 
 DESCRIPTION="HTTP/2 C Library"
 HOMEPAGE="https://nghttp2.org/"
+SRC_URI="https://github.com/nghttp2/nghttp2/releases/download/v${PV}/${P}.tar.xz
+	https://dev.gentoo.org/~voyageur/distfiles/${P}-pthread.patch"
 
 LICENSE="MIT"
 SLOT="0/1.14" # <C++>.<C> SONAMEs
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="cxx debug hpack-tools jemalloc static-libs test +threads utils xml"
 
 RESTRICT="!test? ( test )"
@@ -46,13 +41,11 @@ DEPEND="${RDEPEND}
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-pthread.patch
+	"${DISTDIR}"/${P}-pthread.patch
 	)
 
 src_prepare() {
 	default
-	# Restore when patch is merged/dropped
-	#[[ ${PV} == 9999 ]] && eautoreconf
 	eautoreconf
 }
 
