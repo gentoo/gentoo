@@ -4,6 +4,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Hans de Graaff <graaff@gentoo.org> (2022-07-16)
+# Mask ruby 2.6 as EOL
+ruby_targets_ruby26
+
 # Matt Turner <mattst88@gentoo.org> (2022-04-16)
 # dev-util/sysprof not keyworded on most arches yet
 sysprof
