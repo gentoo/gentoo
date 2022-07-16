@@ -40,7 +40,7 @@ ruby_add_bdepend "
 		~dev-ruby/railties-${PV}
 		>=dev-ruby/sqlite3-1.4.0
 		dev-ruby/mocha
-		dev-ruby/minitest:5
+		<dev-ruby/minitest-5.16:5
 	)"
 
 DEPEND+=" test? ( >=dev-db/sqlite-3.12.1 )"
