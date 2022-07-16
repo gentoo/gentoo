@@ -1,0 +1,50 @@
+# musl doesn't provide error.h as a result debugedit is failing to build on
+# musl.
+#
+# With advice from developer Anthony G. Basile <blueness@gentoo.org> I went
+# with creating a define that redefines the err function. The major
+# improvements over the previous implementation is that this time the patch is
+# smaller and more readable compared to previous implementation.
+#
+# Closes: https://bugs.gentoo.org/714206
+--- a/configure.ac
++++ b/configure.ac
+@@ -57,6 +57,8 @@ PKG_CHECK_MODULES([LIBDW], [libdw])
+
+ # Checks for header files.
+ AC_CHECK_HEADERS([fcntl.h inttypes.h limits.h malloc.h stddef.h stdint.h stdlib.h string.h unistd.h])
++AC_CHECK_HEADERS([error.h],
++		 [AC_DEFINE(HAVE_ERROR_H, 1, [has error.h -- non musl system])])
+
+ # Checks for typedefs, structures, and compiler characteristics.
+ AC_CHECK_HEADER_STDBOOL
+--- a/tools/debugedit.c
++++ b/tools/debugedit.c
+@@ -25,7 +25,12 @@
+ #include <byteswap.h>
+ #include <endian.h>
+ #include <errno.h>
++#ifdef HAVE_ERROR_H
+ #include <error.h>
++#else
++#include <err.h>
++#define error(status, errno, ...) err(status, __VA_ARGS__)
++#endif
+ #include <limits.h>
+ #include <string.h>
+ #include <stdlib.h>
+--- a/tools/sepdebugcrcfix.c
++++ b/tools/sepdebugcrcfix.c
+@@ -29,7 +29,12 @@
+ #include <endian.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#ifdef HAVE_ERROR_H
+ #include <error.h>
++#else
++#include <err.h>
++#define error(status, errno, ...) err(status, __VA_ARGS__)
++#endif
+ #include <libelf.h>
+ #include <gelf.h>
+
