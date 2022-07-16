@@ -601,8 +601,8 @@ _tc-has-openmp() {
 }
 
 # @FUNCTION: tc-has-openmp
-# @DEPRECATED: tc-check-openmp
 # @USAGE: [toolchain prefix]
+# @DEPRECATED: tc-check-openmp
 # @DESCRIPTION:
 # See if the toolchain supports OpenMP.  This function is deprecated and will be
 # removed on 2023-01-01.
