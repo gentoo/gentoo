@@ -44,6 +44,7 @@ ruby_add_bdepend "
 		~dev-ruby/activerecord-${PV}
 		~dev-ruby/railties-${PV}
 		dev-ruby/sqlite3
+		<dev-ruby/minitest-5.16:5
 	)"
 
 all_ruby_prepare() {
