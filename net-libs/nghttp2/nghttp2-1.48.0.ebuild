@@ -45,9 +45,15 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-util/cunit-2.1[${MULTILIB_USEDEP}] )"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-pthread.patch
+	)
+
 src_prepare() {
 	default
-	[[ ${PV} == 9999 ]] && eautoreconf
+	# Restore when patch is merged/dropped
+	#[[ ${PV} == 9999 ]] && eautoreconf
+	eautoreconf
 }
 
 multilib_src_configure() {
@@ -61,6 +67,7 @@ multilib_src_configure() {
 		$(use_enable debug)
 		$(multilib_native_use_enable hpack-tools)
 		$(use_enable static-libs static)
+		$(use_with test cunit)
 		$(use_enable threads)
 		$(multilib_native_use_enable utils app)
 		$(multilib_native_use_with jemalloc)
