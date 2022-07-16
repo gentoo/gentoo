@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2022-07-16)
+# No longer supported upstream. Use a newer ruby version instead.
+# Masked for removal in 30 days.
+dev-lang/ruby:2.6
+
 # Sam James <sam@gentoo.org> (2022-07-15)
 # No activity upstream since early 2021, uses deprecated Go eclass,
 # open bugs: bug #680358, bug #844694. Removal on 2022-08-15.
