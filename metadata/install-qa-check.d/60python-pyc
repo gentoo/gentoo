@@ -10,7 +10,7 @@ if [[ ${EAPI} == [6-8] ]]; then
 	inherit python-utils-r1
 
 	python_pyc_check() {
-		local impl missing=() outdated=()
+		local impl missing=() outdated=() invalid=()
 		for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 			_python_export "${impl}" EPYTHON PYTHON
 			[[ -x ${PYTHON} ]] || continue
@@ -36,6 +36,15 @@ if [[ ${EAPI} == [6-8] ]]; then
 						;;
 				esac
 
+				local magic=$(
+					"${PYTHON}" <<-EOF
+						from base64 import b64encode
+						from importlib.util import MAGIC_NUMBER
+
+						print(b64encode(MAGIC_NUMBER).decode())
+					EOF
+				)
+
 				einfo "Verifying compiled files in ${sitedir}"
 				local f s
 				while read -d $'\0' -r f; do
@@ -47,6 +56,9 @@ if [[ ${EAPI} == [6-8] ]]; then
 						local cache=${dir}/${subdir}${basename}${s}
 						if [[ ! -f ${cache} ]]; then
 							missing+=( "${cache}" )
+						elif [[ $(head -c 4 "${cache}" | base64) != ${magic} ]]
+						then
+							invalid+=( "${cache}" )
 						elif [[ ${f} -nt ${cache} ]]; then
 							outdated+=( "${cache}" )
 						fi
@@ -55,6 +67,17 @@ if [[ ${EAPI} == [6-8] ]]; then
 			fi
 		done
 
+		local bad=
+		if [[ ${invalid[@]} ]]; then
+			eqawarn
+			eqawarn "QA Notice: This package installs one or more compiled Python modules"
+			eqawarn "that have incorrect header (magic)."
+			eqawarn "The following files are invalid:"
+			eqawarn
+			eqatag -v python-pyc.invalid "${invalid[@]#${D}}"
+			bad=1
+		fi
+
 		if [[ ${missing[@]} ]]; then
 			eqawarn
 			eqawarn "QA Notice: This package installs one or more Python modules that are"
@@ -62,6 +85,7 @@ if [[ ${EAPI} == [6-8] ]]; then
 			eqawarn "The following files are missing:"
 			eqawarn
 			eqatag -v python-pyc.missing "${missing[@]#${D}}"
+			bad=1
 		fi
 
 		if [[ ${outdated[@]} ]]; then
@@ -70,9 +94,10 @@ if [[ ${EAPI} == [6-8] ]]; then
 			eqawarn "older timestamps than the corresponding source files:"
 			eqawarn
 			eqatag -v python-pyc.outdated "${outdated[@]#${D}}"
+			bad=1
 		fi
 
-		if [[ ${missing[@]} || ${outdated[@]} ]]; then
+		if [[ ${bad} ]]; then
 			eqawarn
 			eqawarn "Please either fix the upstream build system to byte-compile Python modules"
 			eqawarn "correctly, or call python_optimize after installing them.  For more"
