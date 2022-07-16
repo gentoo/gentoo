@@ -16,7 +16,7 @@ kde-apps/kde-apps-meta:5 pim
 kde-apps/kdenetwork-meta:5 bittorrent
 kde-apps/kleopatra:5 pim
 kde-apps/umbrello:5 php
-kde-misc/kio-gdrive kaccounts
+kde-misc/kio-gdrive kaccounts share
 net-irc/quassel urlpreview
 net-misc/fatrat bittorrent
 net-misc/seafile-client shibboleth
