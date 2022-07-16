@@ -29,6 +29,9 @@ src_prepare() {
 	append-cflags -std=gnu11
 	append-cxxflags -std=gnu++11
 	eapply -p0 "${FILESDIR}"/$PN-3.6-tinfo.patch
+	# Bug# 837617 and 858278
+	sed -i -e "s/curses, initscr/ncurses, initscr/" \
+		-e "s/_curses_initscr/_ncurses_initscr/" configure.ac || die
 	eapply_user
 	eautoreconf
 }
