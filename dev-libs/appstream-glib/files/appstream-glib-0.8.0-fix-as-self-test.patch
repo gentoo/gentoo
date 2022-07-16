@@ -1,0 +1,34 @@
+From 3870226a3585be4c31c1719248be0e17d789f3d7 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Fri, 15 Jul 2022 20:33:50 +0200
+Subject: [PATCH] Properly initialize AsNodeToXmlHelper
+
+Fixes: https://github.com/hughsie/appstream-glib/issues/445
+---
+ libappstream-glib/as-node.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/libappstream-glib/as-node.c b/libappstream-glib/as-node.c
+index 4d438f5..b6650e4 100644
+--- a/libappstream-glib/as-node.c
++++ b/libappstream-glib/as-node.c
+@@ -826,7 +826,7 @@ as_node_from_xml_internal (const gchar *data, gssize data_sz,
+ 			   AsNodeFromXmlFlags flags,
+ 			   GError **error)
+ {
+-	AsNodeToXmlHelper helper;
++	AsNodeToXmlHelper helper = {0};
+ 	AsNode *root = NULL;
+ 	gboolean ret;
+ 	g_autoptr(GError) error_local = NULL;
+@@ -963,7 +963,7 @@ as_node_from_file (GFile *file,
+ 		   GCancellable *cancellable,
+ 		   GError **error)
+ {
+-	AsNodeToXmlHelper helper;
++	AsNodeToXmlHelper helper = {0};
+ 	GError *error_local = NULL;
+ 	AsNode *root = NULL;
+ 	const gchar *content_type = NULL;
+-- 
+2.35.1
