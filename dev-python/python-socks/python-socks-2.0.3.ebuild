@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="SOCKS4, SOCKS5, HTTP tunneling functionality for Python"
@@ -36,3 +36,8 @@ BDEPEND="
 	)"
 
 distutils_enable_tests pytest
+
+python_test() {
+	# can be removed on next version bump
+	epytest --asyncio-mode=strict
+}
