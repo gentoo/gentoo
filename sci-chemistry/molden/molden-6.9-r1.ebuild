@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="opengl"
 
-RDEPEND="
+DEPEND="
 	x11-libs/libXmu
 	opengl? (
 		media-libs/freeglut
@@ -25,10 +25,9 @@ RDEPEND="
 		virtual/glu
 	)
 "
-DEPEND="${RDEPEND}
-	x11-misc/gccmakedep
-	app-editors/vim"
-	# vim provides ex, which the build system uses (surf/Makefile, at least)
+RDEPEND="${DEPEND}
+	sci-chemistry/surf
+"
 
 PATCHES=(
 	"${FILESDIR}/${P}-ldflags.patch"
@@ -36,9 +35,6 @@ PATCHES=(
 
 src_prepare() {
 	default
-	sed \
-		-e 's:makedepend:gccmakedep:g' \
-		-i src/surf/Makefile || die
 	sed 's:shell g77:shell $(FC):g' -i makefile || die
 }
 
@@ -60,7 +56,7 @@ src_compile() {
 	)
 
 	einfo "Building Molden..."
-	emake -j1 molden ambfor/ambfor ambfor/ambmd surf/surf "${args[@]}"
+	emake -j1 molden ambfor/ambfor ambfor/ambmd "${args[@]}"
 	if use opengl ; then
 		einfo "Building Molden OpenGL helper..."
 		emake -j1 "${args[@]}" gmolden
@@ -68,7 +64,7 @@ src_compile() {
 }
 
 src_install() {
-	dobin bin/molden bin/ambfor bin/ambmd bin/surf
+	dobin bin/molden bin/ambfor bin/ambmd
 	if use opengl; then
 		dobin bin/gmolden
 		doicon -s 64 haux/gmolden.png
