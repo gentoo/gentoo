@@ -25,7 +25,7 @@ COMMON_DEPEND="
 	dev-libs/libgpg-error:=
 	net-firewall/conntrack-tools
 	net-firewall/iptables
-	net-misc/cni-plugins
+	app-containers/cni-plugins
 	net-misc/socat
 	sys-apps/iproute2
 	sys-libs/libseccomp:=
