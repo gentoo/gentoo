@@ -61,6 +61,8 @@ src_prepare() {
 	# fix missing qt_version_tag symbol w/ LTO, bug 674382
 	sed -i -e 's/^gcc:ltcg/gcc/' src/corelib/global/global.pri || die
 
+	eapply "${FILESDIR}/${P}-slibtool.patch" # bug 792804, TODO: merge into _QT5_GENTOOPATCHSET_REV
+
 	qt5-build_src_prepare
 }
 
