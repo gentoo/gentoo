@@ -1,0 +1,10 @@
+--- a/meson.build	2020-10-28 22:05:23.000000000 +0100
++++ b/meson.build	2022-07-17 09:53:55.047880112 +0200
+@@ -1,6 +1,6 @@
+ project('appmenu-gtk-module', 'c',
+ 	meson_version: '>=0.49.0',
+-	version: '0.7',
++	version: '0.7.6',
+ 	license: ['LGPL-3.0-or-later'],
+     default_options: [
+         'c_std=gnu11',

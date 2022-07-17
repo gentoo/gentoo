@@ -8,29 +8,27 @@ inherit gnome2-utils meson systemd
 DESCRIPTION="Application menu module for GTK"
 HOMEPAGE="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 SRC_URI="https://gitlab.com/vala-panel-project/vala-panel-appmenu/uploads/e0b6a32a340922cd05060292b0757162/${P}.tar.xz"
+S="${WORKDIR}/${PN}"
 
-LICENSE="GPL-2 LGPL-2"
+LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="gtk2 wayland"
-
-BDEPEND="virtual/pkgconfig"
 
 RDEPEND="
 	dev-libs/glib[dbus]
 	>=x11-libs/gtk+-3.22.0:3[wayland=]
 	gtk2? ( >=x11-libs/gtk+-2.24.0:2 )
 "
-
 DEPEND="${RDEPEND}
 	wayland? ( dev-libs/wayland )
 "
-
-S="${WORKDIR}/${PN}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}/0.7.6-no-automagic-gtk.patch"
-	"${FILESDIR}/0.7.6-no-automagic-unitdir.patch"
+	"${FILESDIR}/${P}-no-automagic-gtk.patch"
+	"${FILESDIR}/${P}-no-automagic-unitdir.patch"
+	"${FILESDIR}/${P}-fix-pkgconfig.patch"
 )
 
 src_configure() {
