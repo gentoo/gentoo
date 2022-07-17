@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit flag-o-matic python-single-r1
+inherit python-single-r1
 
 DESCRIPTION="Run executables under a new DBus session for testing"
 HOMEPAGE="https://launchpad.net/dbus-test-runner"
