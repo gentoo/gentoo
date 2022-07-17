@@ -125,7 +125,7 @@ src_configure() {
 
 	# Doesn't work with LTO: bug #852917.
 	# https://github.com/besser82/libxcrypt/issues/24
-	filter-flags -flto=* -flto
+	filter-lto
 
 	multibuild_foreach_variant multilib-minimal_src_configure
 }
