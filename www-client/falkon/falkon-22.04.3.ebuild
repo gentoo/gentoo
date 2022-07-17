@@ -64,12 +64,12 @@ fi
 RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtsvg-${QTMIN}:5
 "
-BDEPEND="
-	>=dev-qt/linguist-tools-${QTMIN}:5
-"
+BDEPEND=">=dev-qt/linguist-tools-${QTMIN}:5"
+
+PATCHES=( "${FILESDIR}/${PN}-22.04.3-python3.patch" )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	use python && python-single-r1_pkg_setup
 	ecm_pkg_setup
 }
 
@@ -83,6 +83,11 @@ src_configure() {
 		$(cmake_use_find_package python Shiboken2)
 		$(cmake_use_find_package python Python3)
 		-DNO_X11=$(usex !X)
+	)
+	use python && mycmakeargs+=(
+		-DPYTHON_CONFIG_SUFFIX="-${EPYTHON}" # shiboken_helpers.cmake quirk
+		-DPython3_INCLUDE_DIR=$(python_get_includedir)
+		-DPython3_LIBRARY=$(python_get_library_path)
 	)
 	ecm_src_configure
 }
