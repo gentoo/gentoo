@@ -3,15 +3,15 @@
 
 EAPI=8
 
-inherit autotools git-r3
+inherit autotools
 
 DESCRIPTION="GNU Wget2 is a file and recursive website downloader"
 HOMEPAGE="https://gitlab.com/gnuwget/wget2"
-EGIT_REPO_URI="https://gitlab.com/gnuwget/wget2.git"
+SRC_URI="mirror://gnu/wget/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0/0" # subslot = libwget.so version
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="brotli bzip2 doc +gnutls gpgme +http2 idn lzip lzma openssl pcre psl +ssl test valgrind xattr zlib"
 REQUIRED_USE="valgrind? ( test )"
 
@@ -48,28 +48,10 @@ BDEPEND="
 
 RESTRICT="!test? ( test )"
 
-src_unpack() {
-	git-r3_src_unpack
-
-	# We need to mess with gnulib :-/
-	EGIT_REPO_URI="https://git.savannah.gnu.org/r/gnulib.git" \
-	EGIT_CHECKOUT_DIR="${WORKDIR}/gnulib" \
-	git-r3_src_unpack
-}
-
 src_prepare() {
 	default
-
-	local bootstrap_opts=(
-		--gnulib-srcdir=../gnulib
-		--no-bootstrap-sync
-		--copy
-		--no-git
-		--skip-po
-	)
-	AUTORECONF="/bin/true" \
-	LIBTOOLIZE="/bin/true" \
-	sh ./bootstrap "${bootstrap_opts[@]}" || die
+	sed -e "/LIBWGET_VERSION/s/2.1.0/${PV}/" \
+		-i configure.ac ||die
 	eautoreconf
 }
 
