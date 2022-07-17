@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-07-17)
+# Code quality issues, out of date by several versions in Gentoo,
+# unmaintained, and several open bugs: bugs #521272, #729684, #855230.
+# Removal on 2022-08-17.
+dev-db/gigabase
+
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
 # Masked for removal in 30 days.
