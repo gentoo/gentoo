@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/OpenNI/OpenNI"
 fi
 
-inherit ${SCM} toolchain-funcs multilib java-pkg-opt-2
+inherit ${SCM} flag-o-matic toolchain-funcs java-pkg-opt-2
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
@@ -26,16 +26,16 @@ SLOT="0"
 IUSE="doc java opengl"
 
 RDEPEND="
+	media-libs/libjpeg-turbo:=
 	virtual/libusb:1
 	virtual/libudev
-	virtual/jpeg:0
 	dev-libs/tinyxml
 	opengl? ( media-libs/freeglut !dev-libs/OpenNI2[opengl] )
 	java? ( virtual/jre:1.8 )
 "
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )
 	java? ( virtual/jdk:1.8 )"
+BDEPEND="doc? ( app-doc/doxygen )"
 
 PATCHES=(
 	"${FILESDIR}/tinyxml.patch"
@@ -56,6 +56,9 @@ src_prepare() {
 }
 
 src_compile() {
+	# bug #855671
+	append-flags -fno-strict-aliasing
+
 	emake -C "${S}/Platform/Linux/Build" \
 		CC="$(tc-getCC)" \
 		CXX="$(tc-getCXX)" \
