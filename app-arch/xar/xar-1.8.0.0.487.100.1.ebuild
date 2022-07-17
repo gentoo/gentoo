@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools flag-o-matic toolchain-funcs multilib-minimal multilib
+inherit autotools flag-o-matic toolchain-funcs multilib-minimal
 
 APPLE_PV=$(ver_cut 5-)  # 487: macOS 12.3 and up
 DESCRIPTION="An easily extensible archive format"
-HOMEPAGE="https://github.com/apple-oss-distributions/xar/tree/xar-${APPLE_PV}"
+HOMEPAGE="https://github.com/apple-oss-distributions/xar"
 SRC_URI="https://github.com/apple-oss-distributions/xar/archive/xar-${APPLE_PV}.tar.gz"
 
 LICENSE="BSD-2"
@@ -79,7 +79,7 @@ multilib_src_configure() {
 		sed -i -e '/HAVE_SYS_ACL_H/s:^\(.*\)$:/* \1 */:' include/config.h || die
 	fi
 	# allow xar/xar.h to be found
-	(cd include && ln -s . xar)
+	( cd include && ln -s . xar )
 }
 
 multilib_src_install() {
