@@ -4,7 +4,7 @@
 EAPI=8
 
 PLOCALES="cs da de en_GB es fi fr hu it ja ko nl pl pt_BR ru zh_CN"
-inherit cmake plocale qmake-utils xdg
+inherit cmake plocale xdg
 
 DESCRIPTION="Featureful and configurable Qt client for the music player daemon (MPD)"
 HOMEPAGE="https://github.com/CDrummond/cantata"
