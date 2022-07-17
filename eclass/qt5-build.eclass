@@ -107,11 +107,15 @@ if [[ ${PN} != qtwebengine ]]; then
 		*9999 )
 			inherit kde.org # kde/5.15 branch
 			;;
-		5.15.[3-9]* | 5.15.??* )
+		5.15.[5-9]* | 5.15.??* )
 			# official stable release
 			_QT5_P=${QT5_MODULE}-everywhere-opensource-src-${PV}
 			HOMEPAGE="https://www.qt.io/"
 			SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}/submodules/${_QT5_P}.tar.xz"
+			if [[ ${QT5_MODULE} == qtbase ]]; then
+				_QT5_GENTOOPATCHSET_REV=1
+				SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/qtbase-5.15-gentoo-patchset-${_QT5_GENTOOPATCHSET_REV}.tar.xz"
+			fi
 			# KDE Qt5PatchCollection on top of tag v${PV}-lts-lgpl
 			if [[ -n ${QT5_KDEPATCHSET_REV} ]]; then
 				HOMEPAGE+=" https://invent.kde.org/qt/qt/${QT5_MODULE} https://community.kde.org/Qt5PatchCollection"
@@ -120,11 +124,6 @@ if [[ ${PN} != qtwebengine ]]; then
 			S="${WORKDIR}"/${_QT5_P/opensource-}
 			;;
 	esac
-fi
-
-if [[ ${QT5_MODULE} == qtbase ]] && [[ ${PV} == 5.15.[5-9]* ]]; then
-	_QT5_GENTOOPATCHSET_REV=1
-	SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/qtbase-5.15-gentoo-patchset-${_QT5_GENTOOPATCHSET_REV}.tar.xz"
 fi
 
 # @ECLASS_VARIABLE: QT5_BUILD_DIR
