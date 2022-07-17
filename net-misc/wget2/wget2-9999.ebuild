@@ -95,7 +95,7 @@ src_configure() {
 		$(use_with gpgme)
 		$(use_with http2 libnghttp2)
 		$(use_with idn libidn2)
-		$(use_with lzip lz)
+		$(use_with lzip)
 		$(use_with lzma)
 		$(use_with pcre libpcre2)
 		$(use_with psl libpsl)
