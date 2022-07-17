@@ -37,6 +37,7 @@ BDEPEND="sys-apps/acl
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.2.0-Dont-run-systemd-sysusers-in-Makefile.patch"
+	"${FILESDIR}/${PN}-3.2.0-slibtool.patch" # 858674
 )
 
 pkg_setup() {
