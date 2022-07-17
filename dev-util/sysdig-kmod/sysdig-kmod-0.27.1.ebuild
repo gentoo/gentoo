@@ -43,5 +43,18 @@ src_configure() {
 	# setup linux-mod ugliness
 	MODULE_NAMES="sysdig-probe(extra:${BUILD_DIR}/driver/src:)"
 	BUILD_PARAMS='KERNELDIR="${KERNEL_DIR}"'
+
+	# try to work with clang-built kernels (#816024)
+	if linux_chkconfig_present CC_IS_CLANG; then
+		BUILD_PARAMS+=' CC=${CHOST}-clang'
+		if linux_chkconfig_present LD_IS_LLD; then
+			BUILD_PARAMS+=' LD=ld.lld'
+			if linux_chkconfig_present LTO_CLANG_THIN; then
+				# kernel enables cache by default leading to sandbox violations
+				BUILD_PARAMS+=' ldflags-y=--thinlto-cache-dir= LDFLAGS_MODULE=--thinlto-cache-dir='
+			fi
+		fi
+	fi
+
 	BUILD_TARGETS="all"
 }
