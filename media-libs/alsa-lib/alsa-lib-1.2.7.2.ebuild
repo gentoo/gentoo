@@ -54,7 +54,7 @@ multilib_src_configure() {
 	# Broken upstream. Could in theory work with -flto-partitions=none
 	# but it's a hack to workaround the real problem and not strictly safe.
 	# bug #616108, bug #669086, and https://github.com/alsa-project/alsa-lib/issues/6.
-	filter-flags -flto=* -flto
+	filter-lto
 
 	local myeconfargs=(
 		--disable-maintainer-mode
