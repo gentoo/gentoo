@@ -273,6 +273,20 @@ src_install() {
 	doins Makefile
 
 	dodoc ChangeLog
+
+	# bug 858596
+	if use prefix-guest ; then
+		dodir sbin
+		cat > "${ED}"/sbin/runscript <<- EOF
+			#!/usr/bin/env sh
+			source "${EPREFIX}/lib/gentoo/functions.sh"
+
+			eerror "runscript/openrc-run not supported by Gentoo Prefix Base System release ${PV}" 1>&2
+			exit 1
+		EOF
+		chmod 755 "${ED}"/sbin/runscript || die
+		cp "${ED}"/sbin/{runscript,openrc-run} || die
+	fi
 }
 
 pkg_postinst() {
