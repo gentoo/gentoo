@@ -11,7 +11,7 @@ SRC_URI="https://github.com/neagix/idesk/archive/refs/tags/v${PV}.tar.gz -> ${P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ppc64 sparc x86"
 IUSE="svg"
 
 RDEPEND="
@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1-use-pkg-config-imlib2.patch
+	"${FILESDIR}"/${PN}-0.7.8-use-pkg-config-imlib2.patch
 )
 
 src_prepare() {
