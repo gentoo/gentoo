@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # RISC-V profile for rv64gc multilib
@@ -7,6 +7,7 @@
 # stages just fine, but the only "hardware" that can run them is qemu-user ...
 
 CHOST="riscv64-unknown-linux-gnu"
+RUSTHOST="riscv64gc-unknown-linux-gnu"
 
 # Multilib ABIs
 MULTILIB_ABIS="lp64d lp64 ilp32d ilp32"

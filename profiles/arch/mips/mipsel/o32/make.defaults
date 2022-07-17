@@ -4,7 +4,9 @@
 PROFILE_ARCH="mipsel"
 
 CHOST="mipsel-unknown-linux-gnu"
-CHOST_o32="mipsel-unknown-linux-gnu"
+RUSTHOST="mipsel-unknown-linux-gnu"
+CHOST_o32="${CHOST}"
+RUSTHOST_o32="${RUSTHOST}"
 
 ABI="o32"
 DEFAULT_ABI="o32"

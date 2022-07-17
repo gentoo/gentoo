@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 CHOST="sparc-unknown-linux-gnu"
+RUSTHOST="sparc-unknown-linux-gnu"
 
 # Multilib stuff
 MULTILIB_ABIS="sparc32"

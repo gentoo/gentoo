@@ -179,15 +179,12 @@ LICENSE="|| ( Apache-2.0 Boost-1.0 )
 	|| ( Unlicense MIT )
 	openssl"
 SLOT="0/0"
-IUSE=""
 DOCS=( COPYING README.md )
 
 BDEPEND="
-	>=virtual/rust-1.47.0[${MULTILIB_USEDEP}]
 	dev-util/cmake
+	>=virtual/rust-1.47.0
 "
-DEPEND=""
-RDEPEND=""
 
 BUILD_DIR="${WORKDIR}/${P}"
 
@@ -217,19 +214,19 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	BUILD_DIR="${BUILD_DIR}/deps/boringssl/build" cmake_src_compile bssl
-	QUICHE_BSSL_PATH="${BUILD_DIR}/deps/boringssl" cargo_src_compile --features "ffi pkg-config-meta" --target="$(rust_abi)"
+	QUICHE_BSSL_PATH="${BUILD_DIR}/deps/boringssl" cargo_src_compile --features "ffi pkg-config-meta" --target="${RUSTHOST}"
 }
 
 multilib_src_test() {
-	QUICHE_BSSL_PATH="${BUILD_DIR}/deps/boringssl" cargo_src_test  --target="$(rust_abi)"
+	QUICHE_BSSL_PATH="${BUILD_DIR}/deps/boringssl" cargo_src_test  --target="${RUSTHOST}"
 }
 
 multilib_src_install() {
-	sed -i -e "s:libdir=.\+:libdir=${EPREFIX}/usr/$(get_libdir):" -e "s:includedir=.\+:includedir=${EPREFIX}/usr/include:" target/$(rust_abi)/release/quiche.pc || die
+	sed -i -e "s:libdir=.\+:libdir=${EPREFIX}/usr/$(get_libdir):" -e "s:includedir=.\+:includedir=${EPREFIX}/usr/include:" "target/${RUSTHOST}/release/quiche.pc" || die
 	insinto "/usr/$(get_libdir)/pkgconfig"
-	doins target/$(rust_abi)/release/quiche.pc
+	doins "target/${RUSTHOST}/release/quiche.pc"
 	doheader -r include/*
-	dolib.so "target/$(rust_abi)/release/libquiche.so"
+	dolib.so "target/${RUSTHOST}/release/libquiche.so"
 	QA_FLAGS_IGNORED+=" usr/$(get_libdir)/libquiche.so" # rust libraries don't use LDFLAGS
 	QA_SONAME+=" usr/$(get_libdir)/libquiche.so" # https://github.com/cloudflare/quiche/issues/165
 }

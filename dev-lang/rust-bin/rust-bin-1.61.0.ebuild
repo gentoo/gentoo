@@ -72,7 +72,7 @@ src_unpack() {
 
 	default_src_unpack
 
-	mv "${WORKDIR}/${MY_P}-$(rust_abi)" "${S}" || die
+	mv "${WORKDIR}/${MY_P}-${RUSTHOST}" "${S}" || die "Unsupported target binary: ${RUSTHOST}"
 }
 
 patchelf_for_bin() {
@@ -193,7 +193,7 @@ multilib_src_install() {
 
 	else
 		local rust_target
-		rust_target="$(rust_abi $(get_abi_CHOST ${v##*.}))"
+		rust_target="$(get_abi_RUSTHOST ${v##*.})"
 		dodir "/opt/${P}/lib/rustlib"
 		cp -vr "${WORKDIR}/rust-${PV}-${rust_target}/rust-std-${rust_target}/lib/rustlib/${rust_target}"\
 			"${ED}/opt/${P}/lib/rustlib" || die

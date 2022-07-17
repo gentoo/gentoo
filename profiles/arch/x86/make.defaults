@@ -8,6 +8,7 @@ ARCH="x86"
 ACCEPT_KEYWORDS="x86"
 
 CHOST="i686-pc-linux-gnu"
+RUSTHOST="i686-unknown-linux-gnu"
 CFLAGS="-O2 -march=i686 -pipe"
 CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"
@@ -24,6 +25,7 @@ MULTILIB_ABIS="x86"
 DEFAULT_ABI="x86"
 ABI="x86"
 CHOST_x86="${CHOST}"
+RUSTHOST_x86="${RUSTHOST}"
 LIBDIR_x86="lib"
 
 # Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)

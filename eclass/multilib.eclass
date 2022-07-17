@@ -25,8 +25,10 @@ export MULTILIB_ABIS=${MULTILIB_ABIS:-"default"}
 export DEFAULT_ABI=${DEFAULT_ABI:-"default"}
 export CFLAGS_default
 export LDFLAGS_default
+export RUSTFLAGS_default
 export CHOST_default=${CHOST_default:-${CHOST}}
 export CTARGET_default=${CTARGET_default:-${CTARGET:-${CHOST_default}}}
+export RUSTHOST_default=${RUSTHOST_default:-${RUSTHOST}}
 export LIBDIR_default=${CONF_LIBDIR:-"lib"}
 export KERNEL_ABI=${KERNEL_ABI:-${DEFAULT_ABI}}
 
@@ -99,6 +101,12 @@ get_abi_CFLAGS() { get_abi_var CFLAGS "$@"; }
 # Alias for 'get_abi_var LDFLAGS'
 get_abi_LDFLAGS() { get_abi_var LDFLAGS "$@"; }
 
+# @FUNCTION: get_abi_RUSTFLAGS
+# @USAGE: [ABI]
+# @DESCRIPTION:
+# Alias for 'get_abi_var RUSTFLAGS'
+get_abi_RUSTFLAGS() { get_abi_var RUSTFLAGS "$@"; }
+
 # @FUNCTION: get_abi_CHOST
 # @USAGE: [ABI]
 # @DESCRIPTION:
@@ -110,6 +118,12 @@ get_abi_CHOST() { get_abi_var CHOST "$@"; }
 # @DESCRIPTION:
 # Alias for 'get_abi_var CTARGET'
 get_abi_CTARGET() { get_abi_var CTARGET "$@"; }
+
+# @FUNCTION: get_abi_RUSTHOST
+# @USAGE: [ABI]
+# @DESCRIPTION:
+# Alias for 'get_abi_var RUSTHOST'
+get_abi_RUSTHOST() { get_abi_var RUSTHOST "$@"; }
 
 # @FUNCTION: get_abi_FAKE_TARGETS
 # @USAGE: [ABI]
@@ -519,6 +533,7 @@ multilib_toolchain_setup() {
 	local save_restore_variables=(
 		CBUILD
 		CHOST
+		RUSTHOST
 		AR
 		CC
 		CXX
@@ -537,6 +552,7 @@ multilib_toolchain_setup() {
 		PKG_CONFIG_PATH
 		PKG_CONFIG_SYSTEM_INCLUDE_PATH
 		PKG_CONFIG_SYSTEM_LIBRARY_PATH
+		RUSTFLAGS
 	)
 
 	# First restore any saved state we have laying around.
@@ -584,10 +600,12 @@ multilib_toolchain_setup() {
 		export STRIP="$(tc-getSTRIP)" # Avoid 'strip', use '${CHOST}-strip'
 
 		export CHOST=$(get_abi_CHOST $1)
+		export RUSTHOST=$(get_abi_RUSTHOST $1)
 		export PKG_CONFIG_LIBDIR=${EPREFIX}/usr/$(get_libdir)/pkgconfig
 		export PKG_CONFIG_PATH=${EPREFIX}/usr/share/pkgconfig
 		export PKG_CONFIG_SYSTEM_INCLUDE_PATH=${EPREFIX}/usr/include
 		export PKG_CONFIG_SYSTEM_LIBRARY_PATH=${EPREFIX}/$(get_libdir):${EPREFIX}/usr/$(get_libdir)
+		export RUSTFLAGS=$(get_abi_RUSTFLAGS $1)
 	fi
 }
 

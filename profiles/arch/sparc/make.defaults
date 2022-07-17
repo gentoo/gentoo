@@ -13,6 +13,7 @@ CTARGETS_BINUTILS="sparc-unknown-linux-gnu sparc64-unknown-linux-gnu"
 # The funky stuffs for handling different kernel compiler than userland compiler
 KERNEL_ABI="sparc64"
 CHOST_sparc64="sparc64-unknown-linux-gnu"
+RUSTHOST_sparc64="sparc64-unknown-linux-gnu"
 LDFLAGS_sparc64="-m elf64_sparc"
 
 # Multilib stuff
@@ -20,6 +21,7 @@ CFLAGS_sparc32=""  # 32 bit is the default, so no need to set it.
 LDFLAGS_sparc32="" # setting it would make gcc use -m32 and -m64 at the same time
 CHOST_sparc32="sparc-unknown-linux-gnu"
 CTARGET_sparc32="sparc-unknown-linux-gnu"
+RUSTHOST_sparc32="sparc-unknown-linux-gnu"
 # do NOT set CFLAGS_sparc64 here it'd break linux-headers for non-multilib
 # profiles
 

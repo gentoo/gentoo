@@ -1,4 +1,6 @@
 # Big endian ARM64 settings.
 
 CHOST="aarch64_be-unknown-linux-gnu"
+RUSTHOST="aarch64_be-unknown-linux-gnu"
 CHOST_arm64="${CHOST}"
+RUSTHOST_arm64="${RUSTHOST}"

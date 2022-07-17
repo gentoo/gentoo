@@ -1,5 +1,7 @@
 CHOST="armv4tl-softfloat-linux-gnueabi"
+RUSTHOST="armv4t-unknown-linux-gnueabi"
 CHOST_arm="${CHOST}"
+RUSTHOST_arm="${RUSTHOST}"
 
 CFLAGS="-O2 -pipe -march=armv4t"
 CXXFLAGS="${CFLAGS}"

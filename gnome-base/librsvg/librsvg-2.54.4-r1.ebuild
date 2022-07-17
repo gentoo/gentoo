@@ -1,10 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-GNOME2_EAUTORECONF=yes # for patching configure.ac
-PYTHON_COMPAT=( python3_{8..10} )
+EAPI=8
 
+PYTHON_COMPAT=( python3_{8..11} )
 inherit gnome2 multilib-minimal python-any-r1 rust-toolchain vala
 
 DESCRIPTION="Scalable Vector Graphics (SVG) rendering library"
@@ -12,8 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/LibRsvg https://gitlab.gnome.org/GNOME
 
 LICENSE="LGPL-2+"
 SLOT="2"
-KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
-
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="gtk-doc +introspection +vala"
 REQUIRED_USE="
 	gtk-doc? ( introspection )
@@ -32,12 +30,14 @@ RDEPEND="
 
 	introspection? ( >=dev-libs/gobject-introspection-0.10.8:= )
 "
-DEPEND="${RDEPEND}
-	>=virtual/rust-1.56
+DEPEND="${RDEPEND}"
+BDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/docutils[${PYTHON_USEDEP}]')
-	gtk-doc? ( dev-util/gi-docgen )
 	virtual/pkgconfig
+	>=virtual/rust-1.56
+	x11-libs/gdk-pixbuf
+	gtk-doc? ( dev-util/gi-docgen )
 	vala? ( $(vala_depend) )
 
 	dev-libs/gobject-introspection-common
@@ -50,14 +50,8 @@ QA_FLAGS_IGNORED="
 	usr/lib.*/librsvg.*
 "
 
-src_prepare() {
-	use vala && vala_src_prepare
-	gnome2_src_prepare
-}
-
 multilib_src_configure() {
 	local myconf=(
-		--disable-static
 		--disable-debug
 		$(multilib_native_use_enable gtk-doc)
 		$(multilib_native_use_enable introspection)
@@ -67,7 +61,9 @@ multilib_src_configure() {
 		RUST_TARGET="${RUSTHOST}"
 	)
 
-	if ! multilib_is_native_abi; then
+	if multilib_is_native_abi; then
+		use vala && vala_setup
+	else
 		myconf+=(
 			# RUST_TARGET is only honored if cross_compiling, but non-native ABIs aren't cross as
 			# far as C parts and configure auto-detection are concerned as CHOST equals CBUILD
@@ -92,6 +88,7 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
+	einstalldocs
 	find "${ED}" -name '*.la' -delete || die
 
 	if use gtk-doc; then

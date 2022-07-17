@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 CHOST="riscv64-gentoo-linux-musl"
+RUSTHOST="riscv64gc-unknown-linux-musl"
 
-CHOST_lp64d="riscv64-gentoo-linux-musl"
+CHOST_lp64d="${CHOST}"
+RUSTHOST_lp64d="${RUSTHOST}"
 
 LIBDIR_lp64d="lib"

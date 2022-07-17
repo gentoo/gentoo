@@ -1,5 +1,7 @@
 CHOST="armv6j-unknown-linux-gnueabihf"
+RUSTHOST="arm-unknown-linux-gnueabihf"
 CHOST_arm="${CHOST}"
+RUSTHOST_arm="${RUSTHOST}"
 
 CFLAGS="-O2 -pipe -march=armv6j"
 CXXFLAGS="${CFLAGS}"

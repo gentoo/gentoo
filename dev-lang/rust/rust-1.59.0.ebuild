@@ -171,7 +171,7 @@ bootstrap_rust_version_check() {
 	[[ ${MERGE_TYPE} == binary ]] && return
 	local rustc_wanted="$(ver_cut 1).$(($(ver_cut 2) - 1))"
 	local rustc_toonew="$(ver_cut 1).$(($(ver_cut 2) + 1))"
-	local rustc_version=( $(eselect --brief rust show 2>/dev/null) )
+	local rustc_version=( $(ROOT=${BROOT:-/} eselect --brief rust show 2>/dev/null) )
 	rustc_version=${rustc_version[0]#rust-bin-}
 	rustc_version=${rustc_version#rust-}
 
@@ -248,7 +248,7 @@ pkg_setup() {
 src_prepare() {
 	if ! use system-bootstrap; then
 		local rust_stage0_root="${WORKDIR}"/rust-stage0
-		local rust_stage0="rust-${RUST_STAGE0_VERSION}-$(rust_abi)"
+		local rust_stage0="rust-${RUST_STAGE0_VERSION}-${RUSTHOST}"
 
 		"${WORKDIR}/${rust_stage0}"/install.sh --disable-ldconfig \
 			--without=rust-docs --destdir="${rust_stage0_root}" --prefix=/ || die
@@ -261,11 +261,11 @@ src_configure() {
 	local rust_target="" rust_targets="" arch_cflags
 
 	# Collect rust target names to compile standard libs for all ABIs.
-	for v in $(multilib_get_enabled_abi_pairs); do
-		rust_targets="${rust_targets},\"$(rust_abi $(get_abi_CHOST ${v##*.}))\""
+	for v in $(get_all_abis); do
+		rust_targets+=",\"$(get_abi_RUSTHOST ${v})\""
 	done
 	if use wasm; then
-		rust_targets="${rust_targets},\"wasm32-unknown-unknown\""
+		rust_targets+=',"wasm32-unknown-unknown"'
 		if use system-llvm; then
 			# un-hardcode rust-lld linker for this target
 			# https://bugs.gentoo.org/715348
@@ -274,22 +274,12 @@ src_configure() {
 	fi
 	rust_targets="${rust_targets#,}"
 
-	local tools="\"cargo\","
-	if use clippy; then
-		tools="\"clippy\",$tools"
-	fi
-	if use miri; then
-		tools="\"miri\",$tools"
-	fi
-	if use rls; then
-		tools="\"rls\",\"analysis\",$tools"
-	fi
-	if use rustfmt; then
-		tools="\"rustfmt\",$tools"
-	fi
-	if use rust-src; then
-		tools="\"src\",$tools"
-	fi
+	local tools='"cargo"'
+	use clippy && tools+=',"clippy"'
+	use miri && tools+=',"miri"'
+	use rls && tools+=',"rls","analysis"'
+	use rustfmt && tools+=',"rustfmt"'
+	use rust-src && tools+=',"src"'
 
 	local rust_stage0_root
 	if use system-bootstrap; then
@@ -302,8 +292,6 @@ src_configure() {
 	# in case of prefix it will be already prefixed, as --print sysroot returns full path
 	[[ -d ${rust_stage0_root} ]] || die "${rust_stage0_root} is not a directory"
 
-	rust_target="$(rust_abi)"
-
 	cat <<- _EOF_ > "${S}"/config.toml
 		changelog-seen = 2
 		[llvm]
@@ -315,7 +303,7 @@ src_configure() {
 		targets = "${LLVM_TARGETS// /;}"
 		experimental-targets = ""
 		link-shared = $(toml_usex system-llvm)
-		$(case "${rust_target}" in
+		$(case ${RUSTHOST} in
 			i586-*-linux-*)
 				# https://github.com/rust-lang/rust/issues/93059
 				echo 'cflags = "-fcf-protection=none"'
@@ -327,8 +315,8 @@ src_configure() {
 		build-stage = 2
 		test-stage = 2
 		doc-stage = 2
-		build = "${rust_target}"
-		host = ["${rust_target}"]
+		build = "${RUSTBUILD:-${RUSTHOST}}"
+		host = ["${RUSTHOST}"]
 		target = [${rust_targets}]
 		cargo = "${rust_stage0_root}/bin/cargo"
 		rustc = "${rust_stage0_root}/bin/rustc"
@@ -388,9 +376,9 @@ src_configure() {
 		compression-formats = ["xz"]
 	_EOF_
 
-	for v in $(multilib_get_enabled_abi_pairs); do
-		rust_target=$(rust_abi $(get_abi_CHOST ${v##*.}))
-		arch_cflags="$(get_abi_CFLAGS ${v##*.})"
+	for v in $(get_all_abis); do
+		arch_cflags=$(get_abi_CFLAGS ${v})
+		rust_target=$(get_abi_RUSTHOST ${v})
 
 		cat <<- _EOF_ >> "${S}"/config.env
 			CFLAGS_${rust_target}=${arch_cflags}

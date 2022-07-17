@@ -4,11 +4,13 @@
 PROFILE_ARCH="mips64el"
 
 CHOST="mips64el-unknown-linux-gnu"
+RUSTHOST="mips64el-unknown-linux-gnuabi64"
 
 DEFAULT_ABI="n64"
 ABI="${DEFAULT_ABI}"
 MULTILIB_ABIS="n64"
 CHOST_n64="${CHOST}"
+RUSTHOST_n64="${RUSTHOST}"
 
 ABI_MIPS="n64"
 IUSE_IMPLICIT="abi_mips_n64"

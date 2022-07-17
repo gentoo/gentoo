@@ -8,6 +8,7 @@ ARCH="ppc"
 ACCEPT_KEYWORDS="ppc"
 
 CHOST="powerpc-unknown-linux-gnu"
+RUSTHOST="powerpc-unknown-linux-gnu"
 CFLAGS="-O2 -pipe"
 CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"
@@ -23,6 +24,7 @@ ABI="ppc"
 DEFAULT_ABI="ppc"
 MULTILIB_ABIS="ppc"
 CHOST_ppc="${CHOST}"
+RUSTHOST_ppc="${RUSTHOST}"
 LIBDIR_ppc="lib"
 
 # Michał Górny <mgorny@gentoo.org> (2014-06-27)

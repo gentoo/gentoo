@@ -32,7 +32,7 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.10.8:= )
 "
 DEPEND="${RDEPEND}
-	>=virtual/rust-1.56[${MULTILIB_USEDEP}]
+	>=virtual/rust-1.56
 	${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/docutils[${PYTHON_USEDEP}]')
 	gtk-doc? ( dev-util/gi-docgen )
@@ -62,12 +62,12 @@ multilib_src_configure() {
 		$(multilib_native_use_enable introspection)
 		$(multilib_native_use_enable vala)
 		--enable-pixbuf-loader
+		# Set the rust target, which can differ from CHOST
+		RUST_TARGET="${RUSTHOST}"
 	)
 
 	if ! multilib_is_native_abi; then
 		myconf+=(
-			# Set the rust target, which can differ from CHOST
-			RUST_TARGET="$(rust_abi)"
 			# RUST_TARGET is only honored if cross_compiling, but non-native ABIs aren't cross as
 			# far as C parts and configure auto-detection are concerned as CHOST equals CBUILD
 			cross_compiling=yes

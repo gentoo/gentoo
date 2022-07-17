@@ -8,6 +8,7 @@ ARCH="ppc64"
 ACCEPT_KEYWORDS="${ARCH}"
 
 CHOST="powerpc64-unknown-linux-gnu"
+RUSTHOST="powerpc64-unknown-linux-gnu"
 CFLAGS="-O2 -pipe"
 CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"
@@ -23,11 +24,13 @@ ABI="ppc64"
 
 #CFLAGS_ppc64="-m64"
 LDFLAGS_ppc64="-m elf64ppc"
-CHOST_ppc64="powerpc64-unknown-linux-gnu"
+CHOST_ppc64="${CHOST}"
+RUSTHOST_ppc64="${RUSTHOST}"
 
 CFLAGS_ppc="-m32"
 LDFLAGS_ppc="-m elf32ppc"
 CHOST_ppc="powerpc-unknown-linux-gnu"
+RUSTHOST_ppc="powerpc-unknown-linux-gnu"
 
 # Michał Górny <mgorny@gentoo.org> (2014-06-27)
 # Make the ABI flag implicit for compatibility with native ebuilds.
