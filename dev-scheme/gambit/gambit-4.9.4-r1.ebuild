@@ -22,6 +22,8 @@ BDEPEND="
 	emacs? ( >=app-editors/emacs-23.1:* )
 "
 
+PATCHES=( "${FILESDIR}"/${P}-stamp-release-version.patch )
+
 DOCS=( INSTALL.txt README README.md )
 SITEFILE="50gambit-gentoo.el"
 
