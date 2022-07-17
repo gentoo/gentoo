@@ -3,7 +3,7 @@
 
 EAPI=8
 
-JAVA_PKG_IUSE="+binary"
+JAVA_PKG_IUSE="binary"
 
 inherit java-pkg-2 java-pkg-simple
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/rundeck/rundeck-cli/releases/download/v${PV}/rundeck
 
 LICENSE="Apache-2.0"
 SLOT="0"
-# KEYWORDS="~amd64"
+KEYWORDS="~amd64"
 IUSE="+binary"
 
 RDEPEND=">=virtual/jre-11:*"
