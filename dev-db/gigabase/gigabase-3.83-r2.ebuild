@@ -1,21 +1,21 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
+inherit flag-o-matic
 
 DESCRIPTION="OO-DBMS with interfaces for C/C++/Java/PHP/Perl"
 HOMEPAGE="http://www.garret.ru/~knizhnik/gigabase.html"
 SRC_URI="mirror://sourceforge/gigabase/${P}.tar.gz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc static-libs"
 
-DEPEND="doc? ( app-doc/doxygen )"
-RDEPEND=""
-
-S="${WORKDIR}/${PN}"
+BDEPEND="doc? ( app-doc/doxygen )"
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-dereferencing.patch"
@@ -24,6 +24,9 @@ PATCHES=(
 )
 
 src_configure() {
+	# bug #855230
+	append-flags -fno-strict-aliasing
+
 	econf $(use_enable static-libs static)
 }
 
