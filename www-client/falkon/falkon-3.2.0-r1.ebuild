@@ -6,8 +6,9 @@ EAPI=8
 ECM_TEST="true"
 KFMIN=5.88.0
 QTMIN=5.15.2
+PYTHON_COMPAT=( python3_{8..10} )
 VIRTUALX_REQUIRED="test"
-inherit ecm kde.org
+inherit ecm kde.org python-single-r1
 
 DESCRIPTION="Cross-platform web browser using QtWebEngine"
 HOMEPAGE="https://www.falkon.org/ https://apps.kde.org/falkon/"
@@ -19,8 +20,9 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="dbus kde +X"
+IUSE="dbus kde python +X"
 
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="test" # bug 653046
 
 COMMON_DEPEND="
@@ -43,6 +45,13 @@ COMMON_DEPEND="
 		>=kde-frameworks/kwallet-${KFMIN}:5
 		>=kde-frameworks/purpose-${KFMIN}:5
 	)
+	python? (
+		${PYTHON_DEPS}
+		$(python_gen_cond_dep '
+			dev-python/pyside2[designer,gui,webengine,widgets,${PYTHON_USEDEP}]
+			dev-python/shiboken2[${PYTHON_USEDEP}]
+		')
+	)
 	X? (
 		>=dev-qt/qtx11extras-${QTMIN}:5
 		x11-libs/libxcb:=
@@ -58,20 +67,30 @@ fi
 RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtsvg-${QTMIN}:5
 "
-BDEPEND="
-	>=dev-qt/linguist-tools-${QTMIN}:5
-"
+BDEPEND=">=dev-qt/linguist-tools-${QTMIN}:5"
+
+PATCHES=( "${FILESDIR}/${PN}-22.04.3-python3.patch" )
+
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+	ecm_pkg_setup
+}
 
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_KEYRING=OFF
-		-DCMAKE_DISABLE_FIND_PACKAGE_PySide2=ON
-		-DCMAKE_DISABLE_FIND_PACKAGE_Shiboken2=ON
-		-DCMAKE_DISABLE_FIND_PACKAGE_PythonLibs=ON
 		-DDISABLE_DBUS=$(usex !dbus)
+		$(cmake_use_find_package python PySide2)
+		$(cmake_use_find_package python Shiboken2)
+		$(cmake_use_find_package python Python3)
 		$(cmake_use_find_package kde KF5Wallet)
 		$(cmake_use_find_package kde KF5KIO)
 		-DNO_X11=$(usex !X)
+	)
+	use python && mycmakeargs+=(
+		-DPYTHON_CONFIG_SUFFIX="-${EPYTHON}" # shiboken_helpers.cmake quirk
+		-DPython3_INCLUDE_DIR=$(python_get_includedir)
+		-DPython3_LIBRARY=$(python_get_library_path)
 	)
 	ecm_src_configure
 }
