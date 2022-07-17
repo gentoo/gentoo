@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -20,11 +20,6 @@ SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 
 distutils_enable_tests pytest
-
-PATCHES=(
-	# https://github.com/gvalkov/python-evdev/pull/174
-	"${FILESDIR}/${P}-python311.patch"
-)
 
 EPYTEST_DESELECT=(
 	tests/test_uinput.py
