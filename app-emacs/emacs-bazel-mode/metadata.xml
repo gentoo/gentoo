@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    The library provides major modes for editing Bazel BUILD files, WORKSPACE
+    files, .bazelrc files, as well as Starlark files. It also provides commands
+    to run Bazel commands and integration with core GNU Emacs infrastructure
+    like compilation and xref.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/bazelbuild/emacs-bazel-mode/issues/</bugs-to>
+    <remote-id type="github">bazelbuild/emacs-bazel-mode</remote-id>
+  </upstream>
+</pkgmetadata>
