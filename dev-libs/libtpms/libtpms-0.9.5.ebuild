@@ -18,6 +18,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.9.0-Remove-WError.patch"
+	"${FILESDIR}/${PN}-0.9.5-slibtool.patch" # 858671
 )
 
 src_prepare() {
