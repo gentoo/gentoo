@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>zerochaos@gentoo.org</email>
-		<name>Rick Farina</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="3d">Build Qt3DCore, Qt3DAnimation, Qt3DExtras, Qt3DInput, Qt3DLogic, and Qt3DRender modules</flag>
 		<flag name="charts">Build QtCharts module</flag>
