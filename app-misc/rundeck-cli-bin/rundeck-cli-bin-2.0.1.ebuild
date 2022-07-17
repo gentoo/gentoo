@@ -3,7 +3,7 @@
 
 EAPI=8
 
-JAVA_PKG_IUSE="+binary"
+JAVA_PKG_IUSE="binary"
 
 inherit java-pkg-2 java-pkg-simple
 
