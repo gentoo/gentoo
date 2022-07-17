@@ -27,6 +27,7 @@ DEPEND="
 
 RDEPEND="${DEPEND}
 	dev-python/pycairo[${PYTHON_USEDEP}]
+	x11-libs/vte
 "
 
 S="${WORKDIR}/${MY_PN}-${MY_PV}"
