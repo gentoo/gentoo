@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake xdg
+inherit cmake flag-o-matic xdg
 
 DESCRIPTION="Classic overhead run-and-gun game"
 HOMEPAGE="https://cxong.github.io/cdogs-sdl/"
@@ -25,6 +25,9 @@ PATCHES=(
 )
 
 src_configure() {
+	# LTO warnings, bug #858527
+	filter-lto
+
 	local mycmakeargs=(
 		-DCDOGS_DATA_DIR="${EPREFIX}"/usr/share/${PN}/
 		-DBUILD_EDITOR=OFF
