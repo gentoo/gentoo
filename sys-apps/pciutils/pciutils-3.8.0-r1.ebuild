@@ -112,6 +112,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# bug #640836, bug #852929
+	filter-lto
+
 	# bug #471102
 	append-lfs-flags
 }
