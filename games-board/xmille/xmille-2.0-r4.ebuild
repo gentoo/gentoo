@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop toolchain-funcs
+inherit desktop flag-o-matic toolchain-funcs
 
 DEB_PATCH_VER="13"
 DESCRIPTION="Mille Bournes card game"
@@ -29,6 +29,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #858620
+	filter-lto
+
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
 		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf || die
 }
