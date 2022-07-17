@@ -93,6 +93,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Wodr warnings, see bug #854357 and https://github.com/doxygen/doxygen/issues/9287
+	filter-lto
+
 	local mycmakeargs=(
 		-Duse_libclang=$(usex clang)
 		-Dbuild_doc=$(usex doc)
