@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/854627
+--- a/setup.py
++++ b/setup.py
+@@ -275,7 +275,6 @@ def settings_from_prefix(prefix=None):
+                 and platform.architecture()[0] == '64bit'
+             ):
+                 settings['library_dirs'] += [pjoin(prefix, 'lib/amd64')]
+-            settings['library_dirs'] += [pjoin(prefix, 'lib')]
+         else:
+             # If prefix is not explicitly set, pull it from pkg-config by default.
+             # this is probably applicable across platforms, but i don't have
