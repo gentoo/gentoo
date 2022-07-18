@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Amtk https://gitlab.gnome.org/swilmet/
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="+introspection gtk-doc"
 
 RDEPEND="
