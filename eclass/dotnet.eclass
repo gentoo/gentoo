@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: dotnet.eclass
@@ -12,7 +12,7 @@
 # MONO_SHARED_DIR and sets LC_ALL in order to prevent errors during compilation
 # of dotnet packages.
 
-case ${EAPI:-0} in
+case ${EAPI} in
 	6)
 		inherit eapi7-ver multilib
 		DEPEND="dev-lang/mono"
@@ -98,7 +98,6 @@ exbuild() {
 # @DESCRIPTION:
 # Install package to GAC.
 egacinstall() {
-	use !prefix && has "${EAPI:-0}" 0 1 2 && ED="${D}"
 	gacutil -i "${1}" \
 		-root "${ED}"/usr/$(get_libdir) \
 		-gacdir /usr/$(get_libdir) \
@@ -110,7 +109,6 @@ egacinstall() {
 # @DESCRIPTION:
 # multilib comply
 dotnet_multilib_comply() {
-	use !prefix && has "${EAPI:-0}" 0 1 2 && ED="${D}"
 	local dir finddirs=() mv_command=${mv_command:-mv}
 	if [[ -d "${ED}/usr/lib" && "$(get_libdir)" != "lib" ]]
 	then
