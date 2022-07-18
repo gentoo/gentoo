@@ -67,11 +67,9 @@ python_test() {
 		tests/test_integration.py
 	)
 	local EPYTEST_DESELECT=(
-		# regression due to deps?
+		# Regression due to deps?
 		tests/test_check.py::test_fails_rst_no_content
-	)
-	[[ ${EPYTHON} == python3.11 ]] && EPYTEST_DESELECT+=(
-		# confused by extra log entries that don't seem relevant
+		# Avoid needing heavy virtualx
 		tests/test_auth.py::test_warns_for_empty_password
 	)
 
