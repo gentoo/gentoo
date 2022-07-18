@@ -24,7 +24,7 @@ COMMON_DEPEND="app-accessibility/espeak-ng[sound]
 	media-libs/alsa-lib"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
-BDEPEND="man? ( app-text/ronn )"
+BDEPEND="man? ( || ( app-text/ronn-ng app-text/ronn ) )"
 
 CONFIG_CHECK="~SPEAKUP ~SPEAKUP_SYNTH_SOFT"
 ERROR_SPEAKUP="CONFIG_SPEAKUP is not enabled in this kernel!"
