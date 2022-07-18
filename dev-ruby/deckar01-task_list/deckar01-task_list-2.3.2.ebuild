@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
@@ -19,3 +19,11 @@ IUSE=""
 ruby_add_rdepend "
 	dev-ruby/html-pipeline
 "
+
+ruby_add_bdepend "test? (
+	dev-ruby/commonmarker
+	dev-ruby/coffee-script
+	dev-ruby/json
+	dev-ruby/rack
+	dev-ruby/sprockets
+)"
