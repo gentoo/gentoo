@@ -1,0 +1,19 @@
+[Unit]
+Description=LXC Container Initialization and Autoboot Code
+After=network.target lxc-net.service remote-fs.target
+Wants=lxc-net.service
+Documentation=man:lxc-autostart man:lxc
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStartPre=/usr/libexec/lxc/lxc-apparmor-load
+ExecStart=/usr/libexec//lxc/lxc-containers start
+ExecStop=/usr/libexec/lxc/lxc-containers stop
+ExecReload=/usr/libexec/lxc/lxc-apparmor-load
+# Environment=BOOTUP=serial
+# Environment=CONSOLETYPE=serial
+Delegate=yes
+
+[Install]
+WantedBy=multi-user.target
