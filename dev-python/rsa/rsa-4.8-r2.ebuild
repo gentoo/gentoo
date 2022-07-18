@@ -29,6 +29,8 @@ RDEPEND="
 	>=dev-python/pyasn1-0.1.3[${PYTHON_USEDEP}]
 "
 
+PATCHES=( "${FILESDIR}/${P}-includes.patch" )
+
 distutils_enable_tests unittest
 
 src_prepare() {
