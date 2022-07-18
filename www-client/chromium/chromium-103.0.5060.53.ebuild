@@ -247,7 +247,7 @@ pre_build_checks() {
 			fi
 		fi
 		if use js-type-check; then
-			"${EPREFIX}"/usr/bin/java -version 2>1 > /dev/null || die "Java VM not setup correctly"
+			"${BROOT}"/usr/bin/java -version 2>1 > /dev/null || die "Java VM not setup correctly"
 		fi
 	fi
 
