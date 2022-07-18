@@ -191,7 +191,7 @@ pm_echovar=""
 # Get the ebuild sources ready.
 # This function is to be called during the ebuild src_prepare() phase.
 perl-module_src_prepare() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	default
 
@@ -207,7 +207,7 @@ perl-module_src_prepare() {
 # Configure the ebuild sources.
 # This function is to be called during the ebuild src_configure() phase.
 perl-module_src_configure() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	perl_check_env
 
@@ -270,7 +270,8 @@ perl-module_src_configure() {
 # Compile the ebuild sources.
 # This function is to be called during the ebuild src_compile() phase.
 perl-module_src_compile() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
+
 	perl_set_version
 
 	case ${EAPI} in
@@ -324,7 +325,8 @@ perl-module_src_compile() {
 # This code attempts to work out your threadingness and runs tests
 # according to the settings of DIST_TEST using Test::Harness.
 perl-module_src_test() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
+
 	local my_test_control
 	local my_test_verbose
 
@@ -377,7 +379,7 @@ perl-module_src_test() {
 # Install a Perl ebuild.
 # This function is to be called during the ebuild src_install() phase.
 perl-module_src_install() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	perl_set_version
 
@@ -450,7 +452,8 @@ perl-module_src_install() {
 # links that prevent file collisions for dual-life packages installing scripts.
 # In any other category it immediately exits.
 perl-module_pkg_postinst() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
+
 	if [[ ${CATEGORY} != perl-core ]] ; then
 		eerror "perl-module.eclass: You are calling perl-module_pkg_postinst outside the perl-core category."
 		die    "   This does not do anything; the call can be removed."
@@ -465,7 +468,8 @@ perl-module_pkg_postinst() {
 # links that prevent file collisions for dual-life packages installing scripts.
 # In any other category it immediately exits.
 perl-module_pkg_postrm() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
+
 	if [[ ${CATEGORY} != perl-core ]] ; then
 		eerror "perl-module.eclass: You are calling perl-module_pkg_postrm outside the perl-core category."
 		die    "   This does not do anything; the call can be removed."
