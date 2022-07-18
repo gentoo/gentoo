@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,7 +33,9 @@ BDEPEND="dev-util/glib-utils
 # https://wiki.gentoo.org/wiki/Debugging
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.0.1-meson_options.patch )
+PATCHES=( "${FILESDIR}"/${PN}-1.0.1-meson_options.patch
+	"${FILESDIR}"/${P}-musl.patch
+	)
 
 src_prepare() {
 	vala_src_prepare
