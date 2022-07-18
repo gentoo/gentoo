@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools readme.gentoo-r1
 
 DESCRIPTION="Exports a gssapi interface which calls other random gssapi libraries"
 HOMEPAGE="http://www.citi.umich.edu/projects/nfsv4/linux https://gitlab.com/gsasl/libgssglue"
@@ -14,10 +14,24 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
+RDEPEND="virtual/krb5"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3-protos.patch
 	"${FILESDIR}"/${PN}-0.4-implicit-declarations.patch
 )
+
+DOC_CONTENTS="
+This package allows choosing a Kerberos or GSSAPI implementation
+at runtime.
+
+See
+https://blog.josefsson.org/2022/07/14/towards-pluggable-gss-api-modules/
+for more details.
+
+A system-wide implementation can be chosen by editing ${EROOT}/etc/gssapi_mech.conf,
+or it can be set per-process via the GSSAPI_MECH_CONF environment variable.
+"
 
 src_prepare() {
 	default
@@ -31,8 +45,14 @@ src_prepare() {
 src_install() {
 	default
 
-	find "${ED}" -name '*.la' -delete || die
+	readme.gentoo_create_doc
 
 	insinto /etc
 	doins doc/gssapi_mech.conf
+
+	find "${ED}" -name '*.la' -delete || die
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }
