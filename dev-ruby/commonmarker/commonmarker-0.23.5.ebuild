@@ -12,7 +12,7 @@ RUBY_FAKEGEM_GEMSPEC="commonmarker.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A fast, safe, extensible parser for CommonMark, wrapping the official libcmark library"
+DESCRIPTION="A fast, safe, extensible parser for CommonMark, wrapping the libcmark library"
 HOMEPAGE="https://github.com/gjtorikian/commonmarker"
 SRC_URI="https://github.com/gjtorikian/commonmarker/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
