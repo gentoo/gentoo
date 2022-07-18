@@ -180,38 +180,11 @@ src_install() {
 	insinto "${ICAROOT}"/keyboard
 	doins keyboard/*
 
+	cp -a util "${ED}/${ICAROOT}" || die
+	test -f util/HdxRtcEngine && fperms 0755 "${ICAROOT}"/util/HdxRtcEngine
+
 	rm -r "${S}"/keystore/cacerts || die
 	dosym ../../../../etc/ssl/certs "${ICAROOT}"/keystore/cacerts
-
-	local util_files=(
-		HdxRtcEngine
-		configmgr
-		conncenter
-		ctx_app_bind
-		ctx_rehash
-		ctxlogd
-		ctxwebhelper
-		echo_cmd
-		gst_play1.0
-		gst_read1.0
-		hdxcheck.sh
-		icalicense.sh
-		libgstflatstm1.0.so
-		lurdump
-		new_store
-		nslaunch
-		setlog
-		storebrowse
-		sunraymac.sh
-		webcontainer
-		what
-		xcapture
-	)
-
-	exeinto "${ICAROOT}"/util
-	for bin in ${util_files[@]} ; do
-		doexe util/${bin}
-	done
 
 	local other_files=(
 		icasessionmgr
