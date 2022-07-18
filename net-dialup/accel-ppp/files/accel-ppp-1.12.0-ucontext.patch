@@ -1,0 +1,30 @@
+# Use ucontext, this is specific to musl libc
+#
+# Modified from Alpine linux patch:
+# https://git.alpinelinux.org/aports/tree/community/accel-ppp/0001-ucontext.patch
+#
+# Closes: https://bugs.gentoo.org/828906
+--- a/accel-pppd/CMakeLists.txt
++++ b/accel-pppd/CMakeLists.txt
+@@ -113,7 +113,21 @@ ADD_EXECUTABLE(accel-pppd
+ 	main.c
+ )
+
++option(USE_LIBUCONTEXT "Use libucontext on non glibc systems" OFF)
++IF(USE_LIBUCONTEXT)
++	find_library(LIBUCONTEXT_LIBRARY ucontext)
++
++	IF(NOT LIBUCONTEXT_LIBRARY)
++		message(FATAL_ERROR "Required libucontext not found.\n Install ucontext and run cmake again")
++	ENDIF(NOT LIBUCONTEXT_LIBRARY)
++ENDIF(USE_LIBUCONTEXT)
++
+ TARGET_LINK_LIBRARIES(accel-pppd triton rt pthread ${crypto_lib} pcre)
++
++IF(USE_LIBUCONTEXT)
++	TARGET_LINK_LIBRARIES(accel-pppd ucontext)
++ENDIF(USE_LIBUCONTEXT)
++
+ set_property(TARGET accel-pppd PROPERTY CMAKE_SKIP_BUILD_RPATH FALSE)
+ set_property(TARGET accel-pppd PROPERTY CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+ set_property(TARGET accel-pppd PROPERTY INSTALL_RPATH_USE_LINK_PATH FALSE)

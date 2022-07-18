@@ -1,0 +1,17 @@
+# Don't type cast l2tp_tunnel_free_sessions on musl libc
+#
+# Taken from Alpine linux patch:
+# https://git.alpinelinux.org/aports/tree/community/accel-ppp/0003-tsearch.patch
+#
+# Closes: https://bugs.gentoo.org/828906
+--- a/accel-pppd/ctrl/l2tp/l2tp.c
++++ b/accel-pppd/ctrl/l2tp/l2tp.c
+@@ -852,7 +852,7 @@ static void l2tp_tunnel_free_sessions(struct l2tp_conn_t *conn)
+ 	void *sessions = conn->sessions;
+
+ 	conn->sessions = NULL;
+-	tdestroy(sessions, (__free_fn_t)l2tp_session_free);
++	tdestroy(sessions, l2tp_session_free);
+ 	/* Let l2tp_session_free() handle the session counter and
+ 	 * the reference held by the tunnel.
+ 	 */

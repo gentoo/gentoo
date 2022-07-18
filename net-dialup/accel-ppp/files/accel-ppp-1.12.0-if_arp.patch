@@ -1,0 +1,30 @@
+# Dont use if_arp on musl libc. Causes redefinition error
+#
+# Taken from Alpine linux patch:
+# https://git.alpinelinux.org/aports/tree/community/accel-ppp/0004-if_arp.patch
+#
+# Closes: https://bugs.gentoo.org/828906
+--- a/accel-pppd/ctrl/ipoe/arp.c
++++ b/accel-pppd/ctrl/ipoe/arp.c
+@@ -13,7 +13,9 @@
+ #include <netinet/ip.h>
+ #include <sys/socket.h>
+ #include <sys/ioctl.h>
++#if defined(__GLIBC__)
+ #include <linux/if_arp.h>
++#endif
+ #include <linux/if_packet.h>
+
+ #include "list.h"
+--- a/accel-pppd/ctrl/ipoe/ipoe.c
++++ b/accel-pppd/ctrl/ipoe/ipoe.c
+@@ -15,7 +15,9 @@
+ #include <sys/socket.h>
+ #include <sys/ioctl.h>
+ #include <linux/if.h>
++#if defined(__GLIBC__)
+ #include <linux/if_arp.h>
++#endif
+ #include <linux/route.h>
+
+ #include <pcre.h>
