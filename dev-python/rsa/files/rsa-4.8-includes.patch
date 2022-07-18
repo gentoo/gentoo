@@ -1,0 +1,28 @@
+https://github.com/sybrenstuvel/python-rsa/commit/3031bf5c6ae64083431e849903b0104d2cfae893
+https://bugs.gentoo.org/859175
+
+From 3031bf5c6ae64083431e849903b0104d2cfae893 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 27 Jan 2022 10:26:23 +0100
+Subject: [PATCH] Do not include arbitrary files in wheel
+
+Fix the include key to apply to sdist format only.  Otherwise, the
+listed files are added to the top directory of wheel as well and end up
+being installed in top-level site-packages directory, e.g.:
+
+ *  FILES:+usr/lib/python3.9/site-packages/CHANGELOG.md
+ *  FILES:+usr/lib/python3.9/site-packages/LICENSE
+ *  FILES:+usr/lib/python3.9/site-packages/README.md
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -26,7 +26,9 @@ classifiers = [
+   "Topic :: Security :: Cryptography",
+ ]
+ include = [
+-  "LICENSE", "README.md", "CHANGELOG.md",
++  { path = "LICENSE", format = "sdist" },
++  { path = "README.md", format = "sdist" },
++  { path = "CHANGELOG.md", format = "sdist" },
+ ]
+ 
+ [tool.poetry.dependencies]
