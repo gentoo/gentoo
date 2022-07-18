@@ -14,15 +14,11 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.5.0-fix-makefile.patch
-)
-
 RESTRICT="test"
 
 src_compile() {
 	emake \
-		GIT_HASH=${GIT_HASH}
+		GIT_HASH=${GIT_HASH} \
 		GIT_VERSION=v${PV} \
 		GIT_TREESTATE=clean
 }
