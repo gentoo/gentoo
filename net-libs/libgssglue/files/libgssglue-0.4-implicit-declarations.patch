@@ -1,3 +1,5 @@
+https://gitlab.com/gsasl/libgssglue/-/merge_requests/1
+
 * g_initialize.c:275:5: warning: implicit declaration of function 'getuid' [-Wimplicit-function-declaration]
 * g_initialize.c:275:5: warning: implicit declaration of function 'geteuid' [-Wimplicit-function-declaration]
 
