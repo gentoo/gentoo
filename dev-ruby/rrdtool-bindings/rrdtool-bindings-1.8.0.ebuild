@@ -13,8 +13,8 @@ inherit ruby-ng
 
 DESCRIPTION="Ruby bindings for rrdtool"
 HOMEPAGE="https://oss.oetiker.ch/rrdtool/"
-SRC_URI="https://oss.oetiker.ch/rrdtool/pub/${MY_P}.tar.gz"
-RUBY_S="$MY_P"/bindings/ruby
+SRC_URI="https://github.com/oetiker/${PN/-bindings}-1.x/releases/download/v${PV}/${MY_P}.tar.gz"
+RUBY_S="${MY_P}/bindings/ruby"
 
 LICENSE="GPL-2"
 SLOT="0"
