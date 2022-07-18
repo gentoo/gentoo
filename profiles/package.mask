@@ -282,7 +282,6 @@ dev-ruby/packetfu
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-06-19)
 # Unused java libraries. Removal on 2022-07-19
 dev-java/netty-transport
-dev-java/netty-buffer
 
 # John Helmert III <ajak@gentoo.org> (2022-06-19)
 # Untouched by maintainer since Git transition. No reverse dependencies,
