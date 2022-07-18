@@ -284,13 +284,6 @@ dev-ruby/packetfu
 # unused by upstream, vulnerable. Removal in 30 days. Bug #678705
 dev-libs/libvterm-neovim
 
-# Ulrich Müller <ulm@gentoo.org> (2022-06-16)
-# Last release in 2002. The distfile cannot be redistributed
-# and is no longer available upstream. Use media-gfx/imagemagick
-# ("convert" with eps2 or eps3 output format) as replacement.
-# Masked for removal in 30 days. Bug #851708.
-media-gfx/jpeg2ps
-
 # Matt Turner <mattst88@gentoo.org> (2022-05-30)
 # libwacom-2 broke ABI compatibility; reverse dependencies need to be updated.
 # Bug #848501
