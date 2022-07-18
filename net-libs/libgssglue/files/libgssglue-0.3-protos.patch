@@ -1,3 +1,5 @@
+https://gitlab.com/gsasl/libgssglue/-/merge_requests/1
+
 add missing prototype to header
 
 --- a/src/mglueP.h
