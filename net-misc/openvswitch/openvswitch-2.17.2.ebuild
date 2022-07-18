@@ -21,7 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # Check python/ovs/version.py in tarball for dev-python/ovs dep
 RDEPEND="${PYTHON_DEPS}
 	~dev-python/ovs-2.17.1_p1[${PYTHON_USEDEP}]
-	dev-python/twisted[conch,${PYTHON_USEDEP}]
+	dev-python/twisted[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]
 	debug? ( dev-lang/perl )
 	ssl? ( dev-libs/openssl:= )"
