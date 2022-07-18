@@ -55,7 +55,8 @@ src_prepare() {
 	bs+="LD = ${LD:-ld}\n"
 	bs+="AR(name) =\n"
 	bs+="    return(${AR:-ar} cq \$(name))\n"
-	bs+="AS = ${AS:-as}"
+	bs+="AS = ${AS:-as}\n"
+	bs+="RANLIB = ${RANLIB:-ranlib}"
 	sed	-e "s@\(OCAMLFLAGS= -w -A\)@\1 -cc ${CC:-gcc} ${cflags}${lflags}@" \
 		-e "s@\(CFLAGS +=\) -g@\1 ${CFLAGS}\n${bs}@" \
 		-i "${S}/source/OMakefile" \
