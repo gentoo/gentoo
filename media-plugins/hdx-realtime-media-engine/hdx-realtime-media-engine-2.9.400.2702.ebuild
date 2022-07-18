@@ -88,9 +88,9 @@ src_install() {
 
 pkg_postinst() {
 	ebegin "add info about our plugin to the module.ini of the Citrix receiver"
-	local inifile="${BROOT}${ICAROOT}/config/module.ini"
+	local inifile="${ROOT}${ICAROOT}/config/module.ini"
 	if cp "${inifile}" . ; then
-		"${BROOT}${ICAROOT}"/rtme/RTMEconfig -install -ignoremm \
+		"${ROOT}${ICAROOT}"/rtme/RTMEconfig -install -ignoremm \
 			&& cp new_module.ini "${inifile}"
 	fi
 	eend $?
