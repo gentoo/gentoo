@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libmediaart"
 
 LICENSE="LGPL-2.1+"
 SLOT="2.0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="gtk gtk-doc +introspection qt5 test vala"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
