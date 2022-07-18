@@ -4,86 +4,110 @@
 # QA check: ensure that Python modules are compiled after installing
 # Maintainer: Python project <python@gentoo.org>
 
-# EAPI guard to prevent errors from trying to import python-utils-r1
-# in unsupported EAPIs.  Please keep the list in sync with the eclass!
-if [[ ${EAPI} == [6-8] ]]; then
-	inherit python-utils-r1
+python_pyc_check() {
+	local save=$(shopt -p nullglob)
+	shopt -s nullglob
+	local progs=( "${EPREFIX}"/usr/lib/python-exec/*/gpep517 )
+	${save}
 
-	python_pyc_check() {
-		local impl missing=() outdated=()
-		for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-			_python_export "${impl}" EPYTHON PYTHON
-			[[ -x ${PYTHON} ]] || continue
-			local sitedir=$(python_get_sitedir "${impl}")
+	local invalid=()
+	local mismatched_timestamp=()
+	local mismatched_data=()
+	local missing=()
+	local stray=()
 
-			if [[ -d ${D}${sitedir} ]]; then
-				local suffixes=() subdir=
-				case ${EPYTHON} in
-					python2*)
-						suffixes=( .py{c,o} )
-						;;
-					pypy)
-						suffixes=( .pyc )
-						;;
-					python3*|pypy3*)
-						local tag=$("${PYTHON}" -c 'import sys; print(sys.implementation.cache_tag)')
-						suffixes=( ".${tag}"{,.opt-{1,2}}.pyc )
-						subdir=__pycache__/
-						;;
-					*)
-						# skip testing unknown impl
-						continue
-						;;
-				esac
+	for prog in "${progs[@]}"; do
+		local impl=${prog%/*}
+		impl=${impl##*/}
+		einfo "Verifying compiled files for ${impl}"
+		local kind pyc py
+		while IFS=: read -r kind pyc py extra; do
+			case ${kind} in
+				invalid)
+					invalid+=( "${pyc}" )
+					;;
+				mismatched)
+					case ${extra} in
+						timestamp)
+							mismatched_timestamp+=( "${pyc}" )
+							;;
+						*)
+							mismatched_data+=( "${pyc}" )
+							;;
+					esac
+					;;
+				missing)
+					missing+=( "${pyc}" )
+					;;
+				older)
+					# older warnings were produced by earlier version
+					# of gpep517 but the check was incorrect, so we just
+					# ignore them
+					;;
+				stray)
+					stray+=( "${pyc}" )
+					;;
+			esac
+		done < <("${prog}" verify-pyc --destdir "${D}" --prefix "${EPREFIX}"/usr)
+	done
 
-				einfo "Verifying compiled files in ${sitedir}"
-				local f s
-				while read -d $'\0' -r f; do
-					local dir=${f%/*}
-					local basename=${f##*/}
-					basename=${basename%.py}
+	local found=
+	if [[ ${missing[@]} ]]; then
+		eqawarn
+		eqawarn "QA Notice: This package installs one or more Python modules that are"
+		eqawarn "not byte-compiled."
+		eqawarn "The following files are missing:"
+		eqawarn
+		eqatag -v python-pyc.missing "${missing[@]}"
+		found=1
+	fi
 
-					for s in "${suffixes[@]}"; do
-						local cache=${dir}/${subdir}${basename}${s}
-						if [[ ! -f ${cache} ]]; then
-							missing+=( "${cache}" )
-						elif [[ ${f} -nt ${cache} ]]; then
-							outdated+=( "${cache}" )
-						fi
-					done
-				done < <(find "${D}${sitedir}" -name '*.py' -print0)
-			fi
-		done
+	if [[ ${invalid[@]} ]]; then
+		eqawarn
+		eqawarn "QA Notice: This package installs one or more compiled Python modules"
+		eqawarn "that seem to be invalid (do not have the correct header)."
+		eqawarn "The following files are invalid:"
+		eqawarn
+		eqatag -v python-pyc.invalid "${invalid[@]}"
+		found=1
+	fi
 
-		if [[ ${missing[@]} ]]; then
-			eqawarn
-			eqawarn "QA Notice: This package installs one or more Python modules that are"
-			eqawarn "not byte-compiled."
-			eqawarn "The following files are missing:"
-			eqawarn
-			eqatag -v python-pyc.missing "${missing[@]#${D}}"
-		fi
+	if [[ ${mismatched_data[@]} ]]; then
+		eqawarn
+		eqawarn "QA Notice: This package installs one or more compiled Python modules whose"
+		eqawarn ".py files have different content (size or hash) than recorded:"
+		eqawarn
+		eqatag -v python-pyc.mismatched.data "${mismatched_data[@]}"
+		found=1
+	fi
 
-		if [[ ${outdated[@]} ]]; then
-			eqawarn
-			eqawarn "QA Notice: This package installs one or more compiled Python modules that have"
-			eqawarn "older timestamps than the corresponding source files:"
-			eqawarn
-			eqatag -v python-pyc.outdated "${outdated[@]#${D}}"
-		fi
+	if [[ ${mismatched_timestamp[@]} ]]; then
+		eqawarn
+		eqawarn "QA Notice: This package installs one or more compiled Python modules whose"
+		eqawarn ".py files have different timestamps than recorded:"
+		eqawarn
+		eqatag -v python-pyc.mismatched.timestamp "${mismatched_timestamp[@]}"
+		found=1
+	fi
 
-		if [[ ${missing[@]} || ${outdated[@]} ]]; then
-			eqawarn
-			eqawarn "Please either fix the upstream build system to byte-compile Python modules"
-			eqawarn "correctly, or call python_optimize after installing them.  For more"
-			eqawarn "information, see:"
-			eqawarn "https://projects.gentoo.org/python/guide/helper.html#byte-compiling-python-modules"
-			eqawarn
-		fi
-	}
+	if [[ ${stray[@]} ]]; then
+		eqawarn
+		eqawarn "QA Notice: This package installs one or more compiled Python modules"
+		eqawarn "that do not match installed modules (or their implementation)."
+		eqawarn "The following files are stray:"
+		eqawarn
+		eqatag -v python-pyc.stray "${stray[@]}"
+		found=1
+	fi
 
-	python_pyc_check
-fi
+	if [[ ${found} ]]; then
+		eqawarn
+		eqawarn "For more information on bytecode files and related issues, please see:"
+		eqawarn "  https://projects.gentoo.org/python/guide/qawarn.html#compiled-bytecode-related-warnings"
+	fi
+}
+
+python_pyc_check
 
 : # guarantee successful exit
 
