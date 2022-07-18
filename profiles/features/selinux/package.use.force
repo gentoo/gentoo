@@ -6,6 +6,7 @@
 # so stages can build with no interacton. Bug #527938
 sys-libs/libselinux static-libs
 dev-libs/libpcre static-libs
+dev-libs/libcre2 static-libs
 
 # Sven Vermeulen <swift@gentoo.org> (2013-05-21)
 # sys-apps/policycoreutils has PYTHON_USE_WITH="xml" set, so we force it
