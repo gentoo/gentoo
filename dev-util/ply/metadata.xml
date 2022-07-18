@@ -8,14 +8,6 @@
     <email>jsmolic@gentoo.org</email>
     <name>Jakov Smolić</name>
   </maintainer>
-  <maintainer type="person" proxied="yes">
-    <email>luka.perkov@sartura.hr</email>
-    <name>Luka Perkov</name>
-  </maintainer>
-  <maintainer type="project" proxied="proxy">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
   <upstream>
     <remote-id type="github">iovisor/ply</remote-id>
   </upstream>
