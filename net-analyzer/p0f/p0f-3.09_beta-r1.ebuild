@@ -1,14 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit toolchain-funcs
+EAPI=8
+
+inherit edo toolchain-funcs
 
 MY_P=${P/_beta/b}
 
 DESCRIPTION="A tool to perform passive OS detection based on SYN packets"
 HOMEPAGE="https://lcamtuf.coredump.cx/p0f3/"
 SRC_URI="https://lcamtuf.coredump.cx/p0f3/releases/${MY_P}.tgz"
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -17,8 +19,6 @@ IUSE="debug ipv6"
 
 RDEPEND="net-libs/libpcap"
 DEPEND="${RDEPEND}"
-
-S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	default
@@ -36,7 +36,9 @@ src_prepare() {
 
 src_compile() {
 	tc-export CC
-	./build.sh $(use debug && echo debug) || die
+
+	edo ./build.sh $(use debug && echo debug)
+
 	emake -C tools p0f-client p0f-sendsyn $(use ipv6 && echo p0f-sendsyn6)
 }
 
