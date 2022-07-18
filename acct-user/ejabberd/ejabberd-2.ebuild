@@ -13,6 +13,8 @@ ACCT_USER_HOME=/var/lib/${PN}
 
 IUSE="pam"
 
+RDEPEND="pam? ( acct-group/epam )"
+
 acct-user_add_deps
 
 pkg_setup() {
