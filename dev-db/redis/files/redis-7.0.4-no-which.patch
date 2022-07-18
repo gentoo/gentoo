@@ -1,0 +1,66 @@
+--- a/runtest
++++ b/runtest
+@@ -3,7 +3,7 @@ TCL_VERSIONS="8.5 8.6 8.7"
+ TCLSH=""
+ 
+ for VERSION in $TCL_VERSIONS; do
+-	TCL=`which tclsh$VERSION 2>/dev/null` && TCLSH=$TCL
++	TCL=`command -v tclsh$VERSION 2>/dev/null` && TCLSH=$TCL
+ done
+ 
+ if [ -z $TCLSH ]
+--- a/runtest-cluster
++++ b/runtest-cluster
+@@ -3,7 +3,7 @@ TCL_VERSIONS="8.5 8.6 8.7"
+ TCLSH=""
+ 
+ for VERSION in $TCL_VERSIONS; do
+-	TCL=`which tclsh$VERSION 2>/dev/null` && TCLSH=$TCL
++	TCL=`command -v tclsh$VERSION 2>/dev/null` && TCLSH=$TCL
+ done
+ 
+ if [ -z $TCLSH ]
+--- a/runtest-moduleapi
++++ b/runtest-moduleapi
+@@ -4,7 +4,7 @@ TCLSH=""
+ [ -z "$MAKE" ] && MAKE=make
+ 
+ for VERSION in $TCL_VERSIONS; do
+-	TCL=`which tclsh$VERSION 2>/dev/null` && TCLSH=$TCL
++	TCL=`command -v tclsh$VERSION 2>/dev/null` && TCLSH=$TCL
+ done
+ 
+ if [ -z $TCLSH ]
+--- a/runtest-sentinel
++++ b/runtest-sentinel
+@@ -3,7 +3,7 @@ TCL_VERSIONS="8.5 8.6 8.7"
+ TCLSH=""
+ 
+ for VERSION in $TCL_VERSIONS; do
+-	TCL=`which tclsh$VERSION 2>/dev/null` && TCLSH=$TCL
++	TCL=`command -v tclsh$VERSION 2>/dev/null` && TCLSH=$TCL
+ done
+ 
+ if [ -z $TCLSH ]
+--- a/utils/generate-module-api-doc.rb
++++ b/utils/generate-module-api-doc.rb
+@@ -164,7 +164,7 @@ end
+ # Populate the 'since' map (name => version) if we're in a git repo.
+ $since = {}
+ git_dir = File.dirname(__FILE__) ++ "/../.git"
+-if File.directory?(git_dir) && `which git` != ""
++if File.directory?(git_dir) && `comamnd -v git` != ""
+     `git --git-dir="#{git_dir}" tag --sort=v:refname`.each_line do |version|
+         next if version !~ /^(\d+)\.\d+\.\d+?$/ || $1.to_i < 4
+         version.chomp!
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -52,7 +52,7 @@ INSTALL=install
+ PKG_CONFIG?=pkg-config
+ 
+ ifndef PYTHON
+-PYTHON := $(shell which python3 || which python)
++PYTHON := $(shell command -v python3 || command -v python)
+ endif
+ 
+ # Default allocator defaults to Jemalloc if it's not an ARM
