@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit xdg cmake readme.gentoo-r1
+inherit cmake readme.gentoo-r1 xdg
 
 DESCRIPTION="Feature-enhanced open source re-implementation of Caesar III"
 HOMEPAGE="https://github.com/Keriew/augustus"
@@ -16,7 +16,7 @@ IUSE="uncapped"
 
 DEPEND="
 	dev-libs/expat
-	media-libs/libpng:0=
+	media-libs/libpng:=
 	media-libs/libsdl2[joystick,video,sound]
 	media-libs/sdl2-mixer
 "
