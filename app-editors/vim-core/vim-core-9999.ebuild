@@ -5,7 +5,7 @@ EAPI=8
 
 # Please bump with app-editors/vim and app-editors/gvim
 
-VIM_VERSION="8.2"
+VIM_VERSION="9.0"
 inherit estack vim-doc flag-o-matic bash-completion-r1 prefix desktop xdg-utils
 
 if [[ ${PV} == 9999* ]] ; then
@@ -13,11 +13,11 @@ if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/vim/vim.git"
 	EGIT_CHECKOUT_DIR=${WORKDIR}/vim-${PV}
 else
-	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> vim-${PV}.tar.gz
-		https://dev.gentoo.org/~mattst88/distfiles/vim-8.2.5066-gentoo-patches.tar.xz"
+	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> ${P}.tar.gz
+		https://gitweb.gentoo.org/proj/vim-patches.git/snapshot/vim-patches-vim-9.0.0049-patches.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
-S="${WORKDIR}"/vim-${PV}
+S="${WORKDIR}/vim-${PV}"
 
 DESCRIPTION="vim and gvim shared files"
 HOMEPAGE="https://vim.sourceforge.io/ https://github.com/vim/vim"
@@ -36,16 +36,12 @@ pkg_setup() {
 	# people with broken alphabets run into trouble. bug #82186.
 	unset LANG LC_ALL
 	export LC_COLLATE="C"
-
-	# Gnome sandbox silliness. bug #114475.
-	mkdir -p "${T}"/home || die "mkdir -p failed"
-	export HOME="${T}"/home
 }
 
 src_prepare() {
 	if [[ ${PV} != 9999* ]] ; then
 		# Gentoo patches to fix runtime issues, cross-compile errors, etc
-		eapply "${WORKDIR}"/patches
+		eapply "${WORKDIR}/vim-patches-vim-9.0.0049-patches"
 	fi
 
 	# Fixup a script to use awk instead of nawk
@@ -57,8 +53,8 @@ src_prepare() {
 	rm -v "${S}"/runtime/tools/vimspell.sh || die "rm failed"
 
 	# Read vimrc and gvimrc from /etc/vim
-	echo '#define SYS_VIMRC_FILE "'${EPREFIX}'/etc/vim/vimrc"' >> "${S}"/src/feature.h
-	echo '#define SYS_GVIMRC_FILE "'${EPREFIX}'/etc/vim/gvimrc"' >> "${S}"/src/feature.h
+	echo '#define SYS_VIMRC_FILE "'${EPREFIX}'/etc/vim/vimrc"' >> "${S}"/src/feature.h || die
+	echo '#define SYS_GVIMRC_FILE "'${EPREFIX}'/etc/vim/gvimrc"' >> "${S}"/src/feature.h || die
 
 	# Use exuberant ctags which installs as /usr/bin/exuberant-ctags.
 	# Hopefully this pattern won't break for a while at least.
@@ -97,16 +93,6 @@ src_prepare() {
 		"s:\\\$(PERLLIB)/ExtUtils/xsubpp:${EPREFIX}/usr/bin/xsubpp:" \
 		"${S}"/src/Makefile || die 'sed for ExtUtils-ParseXS failed'
 
-	eapply_user
-}
-
-src_configure() {
-	local myconf
-
-	# Fix bug #37354: Disallow -funroll-all-loops on amd64
-	# Bug 57859 suggests that we want to do this for all archs
-	filter-flags -funroll-all-loops
-
 	# Fix bug #76331: -O3 causes problems, use -O2 instead. We'll do this for
 	# everyone since previous flag filtering bugs have turned out to affect
 	# multiple archs...
@@ -122,6 +108,14 @@ src_configure() {
 	# Remove src/auto/configure file.
 	rm -v src/auto/configure || die "rm configure failed"
 
+	eapply_user
+}
+
+src_configure() {
+	# Fix bug #37354: Disallow -funroll-all-loops on amd64
+	# Bug 57859 suggests that we want to do this for all archs
+	filter-flags -funroll-all-loops
+
 	emake -j1 -C src autoconf
 
 	# This should fix a sandbox violation (see bug 24447). The hvc
@@ -135,22 +129,24 @@ src_configure() {
 	# Let Portage do the stripping. Some people like that.
 	export ac_cv_prog_STRIP="$(type -P true ) faking strip"
 
-	# Keep Gentoo Prefix env contained within the EPREFIX
-	use prefix && myconf+=" --without-local-dir"
+	local myconf=(
+		--with-modified-by=Gentoo-${PVR}
+		--enable-gui=no
+		--without-x
+		--disable-darwin
+		--disable-perlinterp
+		--disable-pythoninterp
+		--disable-rubyinterp
+		--disable-gpm
+		--disable-selinux
+		$(use_enable nls)
+		$(use_enable acl)
+	)
 
-	econf \
-		--with-modified-by=Gentoo-${PVR} \
-		--enable-gui=no \
-		--without-x \
-		--disable-darwin \
-		--disable-perlinterp \
-		--disable-pythoninterp \
-		--disable-rubyinterp \
-		--disable-gpm \
-		--disable-selinux \
-		$(use_enable nls) \
-		$(use_enable acl) \
-		${myconf}
+	# Keep Gentoo Prefix env contained within the EPREFIX
+	use prefix && myconf+=( --without-local-dir )
+
+	econf "${myconf[@]}"
 }
 
 src_compile() {
