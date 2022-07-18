@@ -23,7 +23,7 @@ DEPEND="
 	gcrypt? ( dev-libs/libgcrypt:= )
 	gnutls? ( net-libs/gnutls:= )
 	idn? ( net-dns/libidn:= )
-	kerberos? ( net-libs/libgssglue )
+	kerberos? ( >=net-libs/libgssglue-0.5-r1 )
 	nls? ( >=sys-devel/gettext-0.18.1 )
 	ntlm? ( >=net-libs/libntlm-0.3.5 )
 "
