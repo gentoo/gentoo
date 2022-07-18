@@ -884,10 +884,10 @@ _distutils-r1_handle_pyproject_toml() {
 
 	if [[ ! -f setup.py && -f pyproject.toml ]]; then
 		if [[ ${DISTUTILS_USE_SETUPTOOLS} != pyproject.toml ]]; then
-			eerror "No setup.py found but pyproject.toml is present.  In order to enable"
-			eerror "pyproject.toml support in distutils-r1, set:"
-			eerror "  DISTUTILS_USE_SETUPTOOLS=pyproject.toml"
-			die "No setup.py found and DISTUTILS_USE_SETUPTOOLS!=pyproject.toml"
+			eerror "No setup.py found but pyproject.toml is present.  Please migrate"
+			eerror "the package to use DISTUTILS_USE_PEP517. See:"
+			eerror "  https://projects.gentoo.org/python/guide/distutils.html"
+			die "No setup.py found and PEP517 mode not enabled"
 		fi
 	fi
 }
