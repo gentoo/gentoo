@@ -3,11 +3,11 @@
 
 EAPI=8
 
-# Please bump with app-editors/vim-core and app-editors/gvim
+# Please bump with app-editors/vim-core and app-editors/vim
 
-VIM_VERSION="8.2"
+VIM_VERSION="9.0"
 LUA_COMPAT=( lua5-1 luajit )
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby26 ruby27"
 
@@ -19,7 +19,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_CHECKOUT_DIR=${WORKDIR}/vim-${PV}
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> vim-${PV}.tar.gz
-		https://dev.gentoo.org/~zlogene/distfiles/app-editors/vim/vim-8.2.0360-gentoo-patches.tar.xz"
+		https://gitweb.gentoo.org/proj/vim-patches.git/snapshot/vim-patches-vim-9.0.0049-patches.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 fi
 S="${WORKDIR}"/vim-${PV}
@@ -96,20 +96,14 @@ pkg_setup() {
 	unset LANG LC_ALL
 	export LC_COLLATE="C"
 
-	# Gnome sandbox silliness. bug #114475.
-	mkdir -p "${T}"/home || die
-	export HOME="${T}"/home
-
 	use lua && lua-single_pkg_setup
 	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
 	if [[ ${PV} != 9999* ]]; then
-		rm "${WORKDIR}"/patches/006-vim-8.0.0617-crosscompile.patch || di
-
 		# Gentoo patches to fix runtime issues, cross-compile errors, etc
-		eapply "${WORKDIR}"/patches/
+		eapply "${WORKDIR}/vim-patches-vim-9.0.0049-patches"
 	fi
 
 	# Fixup a script to use awk instead of nawk
@@ -162,11 +156,26 @@ src_prepare() {
 		"s:\\\$(PERLLIB)/ExtUtils/xsubpp:${EPREFIX}/usr/bin/xsubpp:" \
 		"${S}"/src/Makefile || die 'sed for ExtUtils-ParseXS failed'
 
+	# Fix bug 18245: Prevent "make" from the following chain:
+	# (1) Notice configure.ac is newer than auto/configure
+	# (2) Rebuild auto/configure
+	# (3) Notice auto/configure is newer than auto/config.mk
+	# (4) Run ./configure (with wrong args) to remake auto/config.mk
+	sed -i -e \
+		's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
+	rm -v src/auto/configure || die "rm failed"
+
+	# --with-features=huge forces on cscope even if we --disable it. We need
+	# to sed this out to avoid screwiness. (1 Sep 2004 ciaranm)
+	if ! use cscope; then
+		sed -i -e \
+			'/# define FEAT_CSCOPE/d' src/feature.h || die "couldn't disable cscope"
+	fi
+
 	eapply_user
 }
 
 src_configure() {
-	local myconf=()
 
 	# Fix bug 37354: Disallow -funroll-all-loops on amd64
 	# Bug 57859 suggests that we want to do this for all archs
@@ -177,14 +186,6 @@ src_configure() {
 	# multiple archs...
 	replace-flags -O3 -O2
 
-	# Fix bug 18245: Prevent "make" from the following chain:
-	# (1) Notice configure.ac is newer than auto/configure
-	# (2) Rebuild auto/configure
-	# (3) Notice auto/configure is newer than auto/config.mk
-	# (4) Run ./configure (with wrong args) to remake auto/config.mk
-	sed -i -e \
-		's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
-	rm -v src/auto/configure || die "rm failed"
 	emake -j1 -C src autoconf
 
 	# This should fix a sandbox violation (see bug 24447). The hvc
@@ -198,7 +199,7 @@ src_configure() {
 
 	use debug && append-flags "-DDEBUG"
 
-	myconf=(
+	local myconf=(
 		--with-features=huge
 		--disable-gpm
 		--with-gnome=no
@@ -217,13 +218,6 @@ src_configure() {
 		$(use_enable session xsmp)
 		$(use_enable tcl tclinterp)
 	)
-
-	# --with-features=huge forces on cscope even if we --disable it. We need
-	# to sed this out to avoid screwiness. (1 Sep 2004 ciaranm)
-	if ! use cscope; then
-		sed -i -e \
-			'/# define FEAT_CSCOPE/d' src/feature.h || die "couldn't disable cscope"
-	fi
 
 	if use lua; then
 		myconf+=(
