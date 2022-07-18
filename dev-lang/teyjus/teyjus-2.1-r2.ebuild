@@ -14,9 +14,7 @@ KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-3"
 IUSE="emacs examples"
 
-RDEPEND=">=sys-devel/binutils-2.17:*
-	>=sys-devel/gcc-2.95.3:*
-	>=dev-lang/ocaml-3.10[ocamlopt]
+RDEPEND="dev-lang/ocaml[ocamlopt]
 	emacs? ( >=app-editors/emacs-23.1:* )"
 DEPEND="${RDEPEND}
 	app-text/dos2unix
@@ -34,7 +32,7 @@ PATCHES=( "${FILESDIR}/${P}-p001-Fixes-arity-for-pervasive-modulo-operation.patc
 src_prepare() {
 	rm -rf source/front/caml \
 		|| die "Could not remove bundled ocaml header files"
-	find . -type f -exec dos2unix {} \; \
+	find . -type f -exec dos2unix --quiet {} \; \
 		|| die "Could not convert files from DOS to Unix format"
 	mv source/front/ccode_stubs.c source/front/ccode_stubs_c.c \
 	   || die "Could not rename source/front/ccode_stubs.c to source/front/ccode_stubs_c.c"
@@ -51,8 +49,15 @@ src_prepare() {
 	do
 		lflags="${lflags} -cclib ${i}"
 	done
-	sed	-e "s@\(OCAMLFLAGS= -w -A\)@\1 ${cflags}${lflags}@" \
-		-e "s@\(CFLAGS +=\) -g@\1 ${CFLAGS}\nLDFLAGS += ${LDFLAGS}@" \
+	local bs="LDFLAGS += ${LDFLAGS}\n"
+	bs+="CC = ${CC:-gcc}\n"
+	bs+="CPP = ${CPP:-cpp}\n"
+	bs+="LD = ${LD:-ld}\n"
+	bs+="AR(name) =\n"
+	bs+="    return(${AR:-ar} cq \$(name))\n"
+	bs+="AS = ${AS:-as}"
+	sed	-e "s@\(OCAMLFLAGS= -w -A\)@\1 -cc ${CC:-gcc} ${cflags}${lflags}@" \
+		-e "s@\(CFLAGS +=\) -g@\1 ${CFLAGS}\n${bs}@" \
 		-i "${S}/source/OMakefile" \
 		|| die "Could not set flags in ${S}/source/OMakefile"
 }
