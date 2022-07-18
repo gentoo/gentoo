@@ -1,0 +1,27 @@
+From 7d72354898feac15bc4082130bcbe638bae02450 Mon Sep 17 00:00:00 2001
+From: Fabrice Fontaine <fontaine.fabrice@gmail.com>
+Date: Thu, 14 Jul 2022 17:03:40 +0200
+Subject: [PATCH] meson.build: fix build with -Dcapabilities=false
+
+Define libcap_static to an empty array to avoid the following build
+failure with -Dcapabilities=false:
+
+output/build/lxc-5.0.0/src/lxc/cmd/meson.build:64:4: ERROR: Unknown variable "libcap_static".
+
+Signed-off-by: Fabrice Fontaine <fontaine.fabrice@gmail.com>
+---
+ meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/meson.build b/meson.build
+index 992fa08c72..4ed57a655b 100644
+--- a/meson.build
++++ b/meson.build
+@@ -443,6 +443,7 @@ int main(int argc, char *argv[]) { return 0; };
+         srcconf.set10('HAVE_STATIC_LIBCAP', false)
+     endif
+ else
++    libcap_static = []
+     srcconf.set10('HAVE_LIBCAP', false)
+     srcconf.set10('HAVE_STATIC_LIBCAP', false)
+ endif
