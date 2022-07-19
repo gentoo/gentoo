@@ -15,4 +15,7 @@
 	<use>
 		<flag name="harfbuzz">Use <pkg>media-libs/harfbuzz</pkg> for enhanced font rendering</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">libsdl-org/SDL_ttf</remote-id>
+	</upstream>
 </pkgmetadata>
