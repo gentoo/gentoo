@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools readme.gentoo-r1 toolchain-funcs
+inherit autotools flag-o-matic readme.gentoo-r1 toolchain-funcs
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -70,6 +70,8 @@ src_prepare() {
 }
 
 src_configure() {
+	filter-lto #858755
+
 	qf_client() {
 		usex client $(use_enable ${1}) --disable-${1}
 	}
