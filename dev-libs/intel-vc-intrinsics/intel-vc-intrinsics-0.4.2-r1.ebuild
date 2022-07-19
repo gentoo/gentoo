@@ -4,7 +4,7 @@
 EAPI=8
 
 CMAKE_BUILD_TYPE="Release"
-LLVM_MAX_SLOT="12"
+LLVM_MAX_SLOT="13"
 MY_PN="${PN/intel-/}"
 MY_P="${MY_PN}-${PV}"
 PYTHON_COMPAT=( python3_{8..10} )
