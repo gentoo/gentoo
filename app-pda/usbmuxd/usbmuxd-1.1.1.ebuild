@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools systemd udev
 
 DESCRIPTION="USB multiplex daemon for use with Apple iPhone/iPod Touch devices"
-HOMEPAGE="https://www.libimobiledevice.org/"
+HOMEPAGE="https://libimobiledevice.org/"
 SRC_URI="https://github.com/libimobiledevice/usbmuxd/releases/download/${PV}/${P}.tar.bz2"
 
 # src/utils.h is LGPL-2.1+, rest is found in COPYING*
