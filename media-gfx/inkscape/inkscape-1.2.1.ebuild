@@ -49,7 +49,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/gdl:3
 	dev-libs/popt
 	media-gfx/potrace
-	media-libs/libepoxy
 	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/lcms:2
