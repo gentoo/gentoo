@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-07-19)
+# No upstream commits since 2017, broken by yr.no widget discontinuation.
+# Replaced by kde-misc/kweather from KDE Plasma Mobile Gear.
+# Removal on 2022-08-18.
+kde-misc/plasma-applet-weather-widget
+
 # Sam James <sam@gentoo.org> (2022-07-17)
 # Code quality issues, out of date by several versions in Gentoo,
 # unmaintained, and several open bugs: bugs #521272, #729684, #855230.
