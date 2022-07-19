@@ -45,7 +45,7 @@ HOMEPAGE="https://www.seamonkey-project.org/"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 SLOT="0"
 SYSTEM_IUSE=( +system-{av1,harfbuzz,icu,jpeg,libevent,libvpx,png,sqlite} )
-IUSE="+chatzilla cpu_flags_arm_neon +crypt dbus debug +gmp-autoupdate +ipc jack
+IUSE="+chatzilla cpu_flags_arm_neon dbus +gmp-autoupdate +ipc jack
 lto pulseaudio selinux startup-notification test webrtc wifi"
 IUSE+=" ${SYSTEM_IUSE[@]}"
 KEYWORDS="amd64 ~ppc64 x86"
@@ -96,7 +96,6 @@ COMMON_DEPEND="
 		>=sys-apps/dbus-0.60
 	)
 	jack? ( virtual/jack )
-	crypt? ( <x11-plugins/enigmail-2.1.0 )
 	kernel_linux? ( !pulseaudio? ( media-libs/alsa-lib ) )
 	pulseaudio? ( || (
 		media-sound/pulseaudio
@@ -116,7 +115,7 @@ COMMON_DEPEND="
 	system-libevent? ( >=dev-libs/libevent-2.0:0= )
 	system-libvpx? ( >=media-libs/libvpx-1.8.0:0=[postproc] )
 	system-png? ( >=media-libs/libpng-1.6.31:0=[apng] )
-	system-sqlite? ( >=dev-db/sqlite-3.38.2:3[secure-delete,debug=] )
+	system-sqlite? ( >=dev-db/sqlite-3.38.2:3[secure-delete] )
 	wifi? (
 		kernel_linux? (
 			>=dev-libs/dbus-glib-0.72
@@ -147,21 +146,12 @@ pkg_setup() {
 		ewarn "Those belong to upstream: https://bugzilla.mozilla.org"
 	fi
 
-	if use crypt ; then
-		ewarn
-		ewarn "Enigmail has dropped support for Seamonkey in early 2019. If you are still"
-		ewarn "using it, consider yourself lucky, but also consider to start migrating away"
-		ewarn "from it. The crypt USE flag and its x11-plugins/enigmail dependency will be"
-		ewarn "removed in the near future."
-		ewarn
-	fi
-
 	moz_pkgsetup
 }
 
 pkg_pretend() {
 	# Ensure we have enough disk space to compile
-	if use debug || use lto || use test ; then
+	if use lto || use test ; then
 		CHECKREQS_DISK_BUILD="16G"
 	else
 		CHECKREQS_DISK_BUILD="12G"
@@ -171,7 +161,7 @@ pkg_pretend() {
 
 spkg_setup() {
 	# Ensure we have enough disk space to compile
-	if use debug || use lto || use test ; then
+	if use lto || use test ; then
 		CHECKREQS_DISK_BUILD="16G"
 	else
 		CHECKREQS_DISK_BUILD="12G"
@@ -201,19 +191,8 @@ src_prepare() {
 
 	use system-libvpx && eapply -p2 "${WORKDIR}"/gentoo-${PN}-patches-${PV}/USE_flag/1009_seamonkey-2.53.3-system_libvpx-1.8.patch
 
-	# Fix for non-intel architectures, for now only ppc64. See bug 836319
-	if use ppc64; then
-	    use webrtc && eapply -p2 "${WORKDIR}"/gentoo-${PN}-patches-${PV}/USE_flag/1012_seamonkey-2.53.11.1-ppc64_webrtc_skip_sse2.patch
-	fi
-
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
-
-	# Enable gnomebreakpad
-	if use debug ; then
-		sed -i -e "s:GNOME_DISABLE_CRASH_DIALOG=1:GNOME_DISABLE_CRASH_DIALOG=0:g" \
-			build/unix/run-mozilla.sh || die
-	fi
 
 	# Ensure that are plugins dir is enabled as default
 	sed -i -e "s:/usr/$(get_libdir)/mozilla/plugins:/usr/$(get_libdir)/${PN}/plugins:" \
@@ -268,6 +247,9 @@ src_configure() {
 	# Must pass release in order to properly select linker via gold useflag
 	mozconfig_annotate 'Enable by Gentoo' --enable-release
 
+	# Broken on PPC64, but outdated and should not be used according to upstream.
+	mozconfig_annotate 'Outdated and broken, disabled' --disable-jemalloc
+
 	# Must pass --enable-gold if using ld.gold
 	if tc-ld-is-gold ; then
 		mozconfig_annotate 'tc-ld-is-gold=true' --enable-gold
@@ -278,13 +260,8 @@ src_configure() {
 	# Enable position independent executables
 	mozconfig_annotate 'enabled by Gentoo' --enable-pie
 
-	mozconfig_use_enable debug
-	mozconfig_use_enable debug tests
-	if use debug ; then
-		mozconfig_annotate 'enabled by Gentoo' --enable-debug-symbols
-	else
-		mozconfig_annotate 'disabled by Gentoo' --disable-debug-symbols
-	fi
+	# Debug is broken, disable debug symbols
+	mozconfig_annotate 'disabled by Gentoo' --disable-debug-symbols
 
 	mozconfig_use_enable startup-notification
 
