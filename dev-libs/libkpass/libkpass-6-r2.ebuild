@@ -4,10 +4,10 @@
 EAPI=8
 
 DESCRIPTION="Libkpass is a C implementation to access KeePass 1.x format password databases"
-HOMEPAGE="http://libkpass.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/libkpass/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="static-libs"
