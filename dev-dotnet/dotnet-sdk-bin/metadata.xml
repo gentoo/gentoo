@@ -6,12 +6,13 @@
     <email>xgqt@gentoo.org</email>
     <name>Maciej Barć</name>
   </maintainer>
-  <upstream>
-    <doc>https://docs.microsoft.com/en-us/dotnet/</doc>
-  </upstream>
   <use>
     <flag name="dotnet-symlink">
       Install a dotnet symlink that points to dotnet-bin.
     </flag>
   </use>
+  <upstream>
+    <doc>https://docs.microsoft.com/en-us/dotnet/</doc>
+    <remote-id type="github">dotnet/sdk</remote-id>
+  </upstream>
 </pkgmetadata>
