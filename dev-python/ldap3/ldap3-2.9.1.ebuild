@@ -15,7 +15,7 @@ SRC_URI="https://github.com/cannatag/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 
 # tests require a ldap server and extra configuration
 RESTRICT="test"
