@@ -1,0 +1,4 @@
+/var/lib/readarr/.config/readarr/logs/*.log{
+    missingok
+    su readarr readarr
+}
