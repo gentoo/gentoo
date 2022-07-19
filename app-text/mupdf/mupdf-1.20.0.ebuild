@@ -69,6 +69,11 @@ src_prepare() {
 		-e "1iverbose = yes" \
 		-e "1ibuild = debug" \
 		-i Makerules || die "Failed adding build variables to Makerules in src_prepare()"
+
+	# Adjust MuPDF version in .pc file created by the
+	# mupdf-1.10a-add-desktop-pc-xpm-files.patch file
+	sed -e "s/Version: \(.*\)/Version: ${PV}/" \
+		-i platform/debian/${PN}.pc || die "Failed substituting version in ${PN}.pc"
 }
 
 _emake() {
