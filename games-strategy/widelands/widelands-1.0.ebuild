@@ -44,6 +44,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-boost-1.77.patch
+	"${FILESDIR}"/${P}-gcc12-werror.patch
 )
 
 src_configure() {
