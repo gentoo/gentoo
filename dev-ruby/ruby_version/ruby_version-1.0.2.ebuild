@@ -9,7 +9,7 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Provides a RubyVersion class which offers a convenient DSL for checking for the right Ruby version"
+DESCRIPTION="A class which offers a convenient DSL for checking for the right Ruby version"
 HOMEPAGE="https://github.com/janlelis/ruby_version"
 
 LICENSE="MIT"
