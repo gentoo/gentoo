@@ -5,8 +5,8 @@ EAPI=8
 
 inherit toolchain-funcs
 
-DESCRIPTION="unpacker for the bogus ZIX format"
-HOMEPAGE="http://funzix.sourceforge.net/"
+DESCRIPTION="Unpacker for the bogus ZIX format"
+HOMEPAGE="https://funzix.sourceforge.io/"
 SRC_URI="mirror://sourceforge/funzix/${P}.tar.bz2"
 
 LICENSE="public-domain"
