@@ -17,9 +17,6 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="nls"
 
-BDEPEND="
-	nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )
-"
 DEPEND="
 	dev-libs/cyrus-sasl:2
 	>=dev-qt/qtgui-${QTMIN}:5
@@ -31,6 +28,7 @@ DEPEND="
 	>=kde-frameworks/kwallet-${KFMIN}:5
 "
 RDEPEND="${DEPEND}"
+BDEPEND="nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )"
 
 PATCHES=( "${FILESDIR}"/${PN}-22.04.2-gnu_source.patch )
 
@@ -38,9 +36,10 @@ src_test() {
 	local myctestargs=(
 		# Both fail for multiple distros, see bug #832709 for more discussion
 		# Revisit at least once Qt 5.15.3 is in wider distribution (in Gentoo at least):
-		# - contacts-contactcreatejobtest
-		# - contacts-contactmodifyjobtest
-		-E "(contacts-contactcreatejobtest|contacts-contactmodifyjobtest)"
+		#   contacts-contactcreatejobtest, contacts-contactmodifyjobtest
+		# More failures not specific to Gentoo, bug #852593, KDE-bug #440648:
+		#  calendar-eventcreatejobtest, calendar-eventfetchjobtest, calendar-eventmodifyjobtest
+		-E "(contacts-contactcreatejobtest|contacts-contactmodifyjobtest|calendar-eventcreatejobtest|calendar-eventfetchjobtest|calendar-eventmodifyjobtest)"
 	)
 
 	virtx cmake_src_test
