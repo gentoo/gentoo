@@ -12,7 +12,6 @@ SRC_URI="https://github.com/Keriew/augustus/archive/refs/tags/v${PV}.tar.gz -> $
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64"
-IUSE="uncapped"
 
 DEPEND="
 	dev-libs/expat
@@ -28,11 +27,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.0.1-desktop_rename.patch"
 	"${FILESDIR}/${PN}-3.1.0-musl-fix-execinfo.patch"
 )
-
-src_prepare() {
-	use uncapped && eapply "${FILESDIR}"/${PN}-3.0.1-uncapped.patch
-	cmake_src_prepare
-}
 
 src_install() {
 	cmake_src_install
