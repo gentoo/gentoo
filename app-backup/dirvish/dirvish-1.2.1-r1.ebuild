@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="Dirvish is a fast, disk based, rotating network backup system"
 HOMEPAGE="http://www.dirvish.org/"
@@ -10,26 +10,27 @@ SRC_URI="http://dirvish.org/${P}.tgz"
 LICENSE="OSL-2.0"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE=""
 
-DEPEND="app-arch/tar"
-RDEPEND="dev-perl/Time-ParseDate
+RDEPEND="
+	dev-perl/Time-ParseDate
 	dev-perl/Time-Period
-	>=net-misc/rsync-2.5.7"
+	net-misc/rsync
+"
+BDEPEND="app-arch/tar"
 
 src_prepare() {
 	default
 
-	local f
-	for f in dirvish dirvish-runall dirvish-expire dirvish-locate; do
-		cat > $f  <<-EOF || die
-		#!/usr/bin/perl
+	local file
+	for file in dirvish dirvish-runall dirvish-expire dirvish-locate; do
+		cat > ${file}  <<-EOF || die
+		#!${EPREFIX}/usr/bin/perl
 
-		\$CONFDIR = "/etc/dirvish";
+		\$CONFDIR = "${EPREFIX}/etc/dirvish";
 
 		EOF
-		cat $f.pl >> $f || die
-		cat loadconfig.pl >> $f || die
+		cat ${file}.pl >> ${file} || die
+		cat loadconfig.pl >> ${file} || die
 	done
 }
 
