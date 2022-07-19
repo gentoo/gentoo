@@ -87,7 +87,7 @@ sci-libs/openblas relapack
 # temporarily block tests so that bugs can be resolved
 dev-php/theseer-Autoload test
 
-# James Le Cuirot <sam@gentoo.org> (2020-11-23)
+# James Le Cuirot <chewi@gentoo.org> (2020-11-23)
 # Cinnamon is not stable on any architecture.
 x11-themes/arc-theme cinnamon
 
