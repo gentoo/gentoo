@@ -3,11 +3,11 @@
 
 EAPI=8
 
-DESCRIPTION="A tool to help administrators keep track of daily activities"
-HOMEPAGE="https://www.deer-run.com/~hal/"
+DESCRIPTION="Tool to help administrators keep track of daily activities"
+HOMEPAGE="https://deer-run.com/users/hal/"
 SRC_URI="http://www.far2wise.net/plod/${P}.tar.gz"
 
-LICENSE="|| ( Artistic GPL-2 )"
+LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 
