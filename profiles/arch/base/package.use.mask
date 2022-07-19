@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Conrad Kostecki <conikost@gentoo.org> (2022-07-19)
+# www-servers/nginx requires keywording
+www-servers/nginx nginx_modules_http_security
+
 # media-libs/libxmp requires keywording
 media-sound/qmmp xmp
 

@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Conrad Kostecki <conikost@gentoo.org> (2022-07-19)
+# www-servers/nginx currently only available on amd64/x86
+www-servers/nginx -nginx_modules_http_security
+
 # James Le Cuirot <chewi@gentoo.org> (2022-06-25)
 # Allow stack to be realigned for compatibility with older 32-bit binaries.
 sys-libs/glibc -stack-realign
