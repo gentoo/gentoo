@@ -45,6 +45,10 @@ RDEPEND="
 	)
 	nse? ( sys-libs/zlib )
 	ssl? ( dev-libs/openssl:0= )
+	symlink? (
+		!net-analyzer/netcat
+		!net-analyzer/openbsd-netcat
+	)
 	system-lua? ( ${LUA_DEPS} )
 "
 DEPEND="${RDEPEND}"
