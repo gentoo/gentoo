@@ -6,10 +6,10 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="ncurses based password database client compatible with KeePass 1.x databases"
-HOMEPAGE="http://ckpass.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/ckpass/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
 
