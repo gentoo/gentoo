@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ MY_P="Yarock_${PV}_Sources"
 inherit cmake
 
 DESCRIPTION="Qt-based music player"
-HOMEPAGE="https://seb-apps.github.io/yarock/"
+HOMEPAGE="https://code.launchpad.net/yarock"
 SRC_URI="https://launchpad.net/${PN}/1.x/${PV}/+download/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
@@ -27,7 +27,7 @@ RDEPEND="
 	dev-qt/qtxml:5
 	media-libs/taglib
 	x11-libs/libX11
-	mpv? ( media-video/mpv:= )
+	mpv? ( media-video/mpv:=[libmpv] )
 	phonon? ( >=media-libs/phonon-4.11.0 )
 	vlc? ( media-video/vlc:= )
 "
