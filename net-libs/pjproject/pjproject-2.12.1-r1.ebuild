@@ -22,7 +22,7 @@ IUSE="amr debug epoll examples opus resample silk ssl static-libs webrtc
 	${VIDEO_FLAGS}
 	${SOUND_FLAGS}"
 
-RDEPEND="net-libs/libsrtp:=
+RDEPEND=">=net-libs/libsrtp-2.3.0:=
 	alsa? ( media-libs/alsa-lib )
 	amr? ( media-libs/opencore-amr )
 	ffmpeg? ( media-video/ffmpeg:= )
