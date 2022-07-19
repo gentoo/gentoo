@@ -3,14 +3,13 @@
 
 EAPI=8
 
-inherit autotools
-
 DESCRIPTION="GNU Wget2 is a file and recursive website downloader"
 HOMEPAGE="https://gitlab.com/gnuwget/wget2"
 SRC_URI="mirror://gnu/wget/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0/0" # subslot = libwget.so version
+QA_PKGCONFIG_VERSION="2.1.0" # libwget pkg-config versioning
 KEYWORDS="~amd64 ~x86"
 IUSE="brotli bzip2 doc +gnutls gpgme +http2 idn lzip lzma openssl pcre psl +ssl test valgrind xattr zlib"
 REQUIRED_USE="valgrind? ( test )"
@@ -47,13 +46,6 @@ BDEPEND="
 "
 
 RESTRICT="!test? ( test )"
-
-src_prepare() {
-	default
-	sed -e "/LIBWGET_VERSION/s/2.1.0/${PV}/" \
-		-i configure.ac ||die
-	eautoreconf
-}
 
 src_configure() {
 	local myeconfargs=(
