@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-07-19)
+# Unaddressed file collisions, fails to build with slibtool, EAPI 6, and
+# out of date. Bugs #800617, #658318. No reverse dependencies in ::gentoo
+# and needs a dependency in ::sci to run tests. Removal on 2022-08-19.
+sci-libs/io_lib
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-07-19)
 # No upstream commits since 2017, broken by yr.no widget discontinuation.
 # Replaced by kde-misc/kweather from KDE Plasma Mobile Gear.
