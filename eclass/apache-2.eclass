@@ -291,7 +291,7 @@ setup_modules() {
 		mod_type="shared"
 	fi
 
-	MY_CONF=( --enable-so=static )
+	MY_CONF=( --enable-so=static --disable-static )
 	MY_MODS=()
 
 	if use ldap ; then
