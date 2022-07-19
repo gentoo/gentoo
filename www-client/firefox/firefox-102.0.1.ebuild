@@ -3,11 +3,11 @@
 
 EAPI="8"
 
-FIREFOX_PATCHSET="firefox-102-patches-01j.tar.xz"
+FIREFOX_PATCHSET="firefox-102-patches-02j.tar.xz"
 
 LLVM_MAX_SLOT=14
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="ncurses,sqlite,ssl"
 
 WANT_AUTOCONF="2.1"
