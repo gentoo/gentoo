@@ -13,3 +13,7 @@ IUSE=""
 RDEPEND=""
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.0-missing_path_wtmpx.patch
+)
