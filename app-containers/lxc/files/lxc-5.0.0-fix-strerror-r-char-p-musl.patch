@@ -1,0 +1,36 @@
+https://github.com/lxc/lxc/commit/8ee8879083f40d2d0b9cef46d6a6907c1b5a814b
+
+From 8ee8879083f40d2d0b9cef46d6a6907c1b5a814b Mon Sep 17 00:00:00 2001
+From: Fabrice Fontaine <fontaine.fabrice@gmail.com>
+Date: Thu, 14 Jul 2022 12:31:21 +0200
+Subject: [PATCH] src/lxc/log.h: fix STRERROR_R_CHAR_P
+
+STRERROR_R_CHAR_P is always defined to 0 or 1 depending on the value of
+have_func_strerror_r_char_p in meson.build so replace #ifdef by #if to
+avoid a redefinition build failure if char *strerror_r is not defined
+
+Signed-off-by: Fabrice Fontaine <fontaine.fabrice@gmail.com>
+---
+ src/lxc/log.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/lxc/log.h b/src/lxc/log.h
+index 554a2e1d48..fcddc679a8 100644
+--- a/src/lxc/log.h
++++ b/src/lxc/log.h
+@@ -304,13 +304,13 @@ __lxc_unused static inline void LXC_##LEVEL(struct lxc_log_locinfo* locinfo,	\
+  * Helper macro to define errno string.
+  */
+ #if HAVE_STRERROR_R
+-	#ifdef STRERROR_R_CHAR_P
++	#if STRERROR_R_CHAR_P
+ 	char *strerror_r(int errnum, char *buf, size_t buflen);
+ 	#else
+ 	int strerror_r(int errnum, char *buf, size_t buflen);
+ 	#endif
+ 
+-	#ifdef STRERROR_R_CHAR_P
++	#if STRERROR_R_CHAR_P
+ 		#define lxc_log_strerror_r                                               \
+ 			char errno_buf[PATH_MAX / 2] = {"Failed to get errno string"};   \
+ 			char *ptr = NULL;                                                \
