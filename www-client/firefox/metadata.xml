@@ -19,7 +19,6 @@
 		instead of downloading binary blob from Mozilla at runtime</flag>
 	<flag name="pgo">Add support for profile-guided optimization for faster binaries - this
 		option will double the compile time</flag>
-	<flag name="screencast">Enable support for remote desktop and screen cast using <pkg>media-video/pipewire</pkg></flag>
 	<flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
 	<flag name="system-av1">Use the system-wide <pkg>media-libs/dav1d</pkg>
 		and <pkg>media-libs/libaom</pkg> library instead of bundled</flag>
