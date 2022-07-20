@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-DISTUTILS_USE_SETUPTOOLS=no
+DISTUTILS_USE_PEP517=setuptools
 
 inherit desktop distutils-r1 optfeature xdg-utils
 
@@ -24,7 +24,7 @@ fi
 DESCRIPTION="Set of graphical tools for Mercurial"
 HOMEPAGE="https://tortoisehg.bitbucket.io/"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
@@ -36,7 +36,7 @@ RDEPEND="
 	dev-python/PyQt5[network,svg,${PYTHON_USEDEP}]
 	>=dev-python/qscintilla-python-2.11.6[qt5(+),${PYTHON_USEDEP}]
 "
-DEPEND="
+BDEPEND="
 	${RDEPEND}
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
@@ -55,8 +55,8 @@ python_prepare_all() {
 }
 
 python_test() {
-	${EPYTHON} tests/run-tests.py -m 'not largefiles' --doctest-modules tests || die
-	${EPYTHON} tests/run-tests.py -m largefiles tests || die
+	${EPYTHON} tests/run-tests.py -m 'not largefiles' --disable-pytest-warnings --doctest-modules tests || die "Tests failed with ${EPYTHON}"
+	${EPYTHON} tests/run-tests.py -m largefiles --disable-pytest-warnings tests || die "Tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
