@@ -88,7 +88,7 @@ RDEPEND="${PYTHON_DEPS}
 		>=dev-libs/imath-3.1.4-r2:=
 		>=media-libs/openexr-3:0=
 	)
-	opensubdiv? ( >=media-libs/opensubdiv-3.4.0[cuda=] )
+	opensubdiv? ( >=media-libs/opensubdiv-3.4.0 )
 	openvdb? (
 		>=media-gfx/openvdb-9.0.0:=[nanovdb?]
 		dev-libs/c-blosc:=
