@@ -1,0 +1,98 @@
+From: orbea <orbea@riseup.net>
+Date: Wed, 20 Jul 2022 07:45:38 -0700
+Subject: [PATCH] build: Add a minimal configures script
+
+When building libvterm with slibtool using the rlibtool symlink the
+build will fail when the generated libtool is not found. This file is
+required with rlibtool so that the build can determine if the build
+should be shared, static or both.
+
+This can be solved by adding a minimal configure script.
+
+The build steps are now:
+
+autoreconf -fi
+./configure
+make
+make install
+
+Gentoo Bug: https://bugs.gentoo.org/779034
+
+diff --git a/Makefile b/Makefile.in
+similarity index 89%
+rename from Makefile
+rename to Makefile.in
+index 3330703..8a170c7 100644
+--- a/Makefile
++++ b/Makefile.in
+@@ -1,13 +1,13 @@
+-ifeq ($(shell uname),Darwin)
+-  LIBTOOL ?= glibtool
+-else
+-  LIBTOOL ?= libtool
+-endif
++top_builddir = @top_builddir@
++
++LIBTOOL = @LIBTOOL@
+ 
+ ifneq ($(VERBOSE),1)
+   LIBTOOL +=--quiet
+ endif
+ 
++CC = @CC@
++
+ override CFLAGS +=-Wall -Iinclude -std=c99 -Wpedantic
+ 
+ ifeq ($(shell uname),SunOS)
+@@ -40,13 +40,14 @@ VERSION_CURRENT=0
+ VERSION_REVISION=4
+ VERSION_AGE=0
+ 
+-VERSION=0.1.4
++VERSION=@PACKAGE_VERSION@
+ 
+-PREFIX=/usr/local
+-BINDIR=$(PREFIX)/bin
+-LIBDIR=$(PREFIX)/lib
+-INCDIR=$(PREFIX)/include
+-MANDIR=$(PREFIX)/share/man
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++BINDIR=@bindir@
++LIBDIR=@libdir@
++INCDIR=@includedir@
++MANDIR=@mandir@
+ MAN3DIR=$(MANDIR)/man3
+ 
+ all: $(LIBRARY) $(BINFILES)
+@@ -70,7 +71,7 @@ src/encoding.lo: $(INCFILES)
+ 
+ bin/%: bin/%.c $(LIBRARY)
+ 	@echo CC $<
+-	@$(LIBTOOL) --mode=link --tag=CC $(CC) $(CFLAGS) -o $@ $< -lvterm $(LDFLAGS)
++	@$(LIBTOOL) --mode=link --tag=CC $(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+ 
+ t/harness.lo: t/harness.c $(HFILES)
+ 	@echo CC $<
+diff --git a/configure.ac b/configure.ac
+new file mode 100644
+index 0000000..c3d758e
+--- /dev/null
++++ b/configure.ac
+@@ -0,0 +1,16 @@
++m4_define([version_major], [0])
++m4_define([version_minor], [1])
++m4_define([version_patch], [4])
++
++AC_INIT([libvterm], [version_major.version_minor.version_patch])
++AC_CONFIG_FILES([Makefile])
++
++LT_INIT
++
++AC_SUBST([top_builddir], [$abs_builddir])
++
++AC_SUBST([VERSION_MAJOR], [version_major])
++AC_SUBST([VERSION_MINOR], [version_minor])
++AC_SUBST([VERSION_PATCH], [version_patch])
++
++AC_OUTPUT
