@@ -239,13 +239,6 @@ app-backup/kfoldersync
 # Bugs #845807, #798372, #748531. Removal on 2022-07-21.
 dev-python/pygpgme
 
-# Sam James <sam@gentoo.org> (2022-06-19)
-# Unsupported by upstream, no updates in a long time,
-# vulnerable to issues fixed in the main firejail package.
-# bug #834601.
-# Please migrate to sys-apps/firejail. Removal on 2022-07-19.
-sys-apps/firejail-lts
-
 # Matt Turner <mattst88@gentoo.org> (2022-05-30)
 # libwacom-2 broke ABI compatibility; reverse dependencies need to be updated.
 # Bug #848501
