@@ -40,12 +40,11 @@ src_install() {
 	local dest="opt/${PN}-${SLOT}"
 	dodir "${dest%/*}"
 
-	# 6.0.100 is SDK feature band which will not change between minor increases, so 6.0.101, 6.102
-	# will still have same 6.0.100 SDK feature band in the name. Thus I have to hard code this
-	# https://github.com/dotnet/sdk/pull/18823#issuecomment-915603684
-	local workloads="metadata/workloads/${SLOT}.100"
-
+	# Create a magic workloads file, bug #841896
+	local featureband="$(ver_cut 3 | sed "s/[0-9]/0/2g")"
+	local workloads="metadata/workloads/${SLOT}.${featureband}"
 	{ mkdir -p "${S}/${workloads}" && touch "${S}/${workloads}/userlocal"; } || die
+
 	{ mv "${S}" "${ED}/${dest}" && mkdir "${S}" && fperms 0755 "/${dest}"; } || die
 	dosym "../../${dest}/dotnet" "/usr/bin/dotnet-bin-${SLOT}"
 
