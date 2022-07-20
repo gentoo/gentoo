@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit meson
+PYTHON_COMPAT=( python3_{8..11} )
+inherit meson python-any-r1
 
 COMMIT_HASH="1d85870cc3b92690d42fa3e480961fb2f708388e"
 MESON_DOCS_TAR=meson-docs-0.63.0-40-g280f3423b.tar.gz
@@ -32,6 +33,17 @@ DEPEND="
 	man? ( app-text/scdoc )
 "
 RDEPEND="${DEPEND}"
+BDEPEND="
+	man? (
+		$(python_gen_any_dep '
+			dev-python/pyyaml[${PYTHON_USEDEP}]
+		')
+	)
+"
+
+python_check_deps() {
+	python_has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
+}
 
 src_prepare() {
 	default
