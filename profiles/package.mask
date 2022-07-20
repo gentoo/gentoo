@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2022-07-20)
+# Obsolete ruby26-only slot without reverse dependencies. Use a newer
+# slot instead. Masked for removal in 30 days.
+dev-ruby/activeldap:5
+dev-ruby/web-console:3
+
 # Sam James <sam@gentoo.org> (2022-07-19)
 # Unaddressed file collisions, fails to build with slibtool, EAPI 6, and
 # out of date. Bugs #800617, #658318. No reverse dependencies in ::gentoo
