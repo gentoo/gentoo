@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7..10} )
-inherit python-any-r1
+inherit python-any-r1 udev
 
 DESCRIPTION="Repository of data files describing media player capabilities"
 HOMEPAGE="https://gitlab.freedesktop.org/media-player-info/media-player-info"
@@ -34,5 +34,9 @@ pkg_postinst() {
 	if [[ ${ROOT} != "" ]] && [[ ${ROOT} != "/" ]]; then
 		return 0
 	fi
-	udevadm control --reload
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
 }
