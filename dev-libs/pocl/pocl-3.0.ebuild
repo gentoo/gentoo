@@ -69,6 +69,18 @@ pkg_setup() {
 }
 
 src_configure() {
+	local host_cpu_variants="generic"
+
+	if use amd64 ; then
+		# Use pocl's curated list of CPU variants which should contain a good match for any given amd64 CPU
+		host_cpu_variants="distro"
+	elif use ppc64 ; then
+		# A selection of architectures in which new Altivec / VSX features were added
+		# This attempts to recreate the amd64 "distro" option for ppc64
+		# See discussion in bug #831859
+		host_cpu_variants="pwr10;pwr9;pwr8;pwr7;pwr6;g5;a2;generic"
+	fi
+
 	local mycmakeargs=(
 		-DENABLE_HSA=OFF
 
@@ -79,7 +91,7 @@ src_configure() {
 		-DENABLE_IPO=$(usex lto)
 
 		-DENABLE_POCL_BUILDING=ON
-		-DKERNELLIB_HOST_CPU_VARIANTS=distro
+		-DKERNELLIB_HOST_CPU_VARIANTS="${host_cpu_variants}"
 
 		-DSTATIC_LLVM=OFF
 		-DWITH_LLVM_CONFIG=$(get_llvm_prefix -d "${LLVM_MAX_SLOT}")/bin/llvm-config
