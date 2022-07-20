@@ -246,11 +246,6 @@ dev-python/pygpgme
 # Please migrate to sys-apps/firejail. Removal on 2022-07-19.
 sys-apps/firejail-lts
 
-# John Helmert III <ajak@gentoo.org> (2022-06-19)
-# Untouched by maintainer since Git transition. No reverse dependencies,
-# unused by upstream, vulnerable. Removal in 30 days. Bug #678705
-dev-libs/libvterm-neovim
-
 # Matt Turner <mattst88@gentoo.org> (2022-05-30)
 # libwacom-2 broke ABI compatibility; reverse dependencies need to be updated.
 # Bug #848501
