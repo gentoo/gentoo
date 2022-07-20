@@ -10,11 +10,11 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <use>
-    <flag name="libpkgconf">
-      Enable looking up packages via <pkg>dev-util/pkgconf</pkg>.
-    </flag>
     <flag name="archive">
       Enable extracting wraps using <pkg>app-arch/libarchive</pkg>.
+    </flag>
+    <flag name="libpkgconf">
+      Enable looking up packages via <pkg>dev-util/pkgconf</pkg>.
     </flag>
   </use>
 </pkgmetadata>
