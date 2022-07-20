@@ -4,10 +4,10 @@
 EAPI=8
 
 CMAKE_BUILD_TYPE="Release"
-LLVM_MAX_SLOT="13"
+LLVM_MAX_SLOT="14"
 MY_PN="${PN/intel-/}"
 MY_P="${MY_PN}-${PV}"
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit cmake llvm python-any-r1
 
