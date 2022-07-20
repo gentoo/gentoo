@@ -69,7 +69,6 @@ COMMON_TARGETS="
 	cris
 	hppa
 	i386
-	loongarch64
 	m68k
 	microblaze
 	microblazeel
@@ -295,8 +294,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
 	"${FILESDIR}"/${PN}-5.2.0-disable-keymap.patch
 	"${FILESDIR}"/${PN}-6.0.0-make.patch
-	"${FILESDIR}"/${PN}-7.1.0-also-build-virtfs-proxy-helper.patch
-	"${FILESDIR}"/${PN}-7.1.0-strings.patch
+	"${FILESDIR}"/${PN}-6.1.0-strings.patch
+	"${FILESDIR}"/${PN}-7.0.0-also-build-virtfs-proxy-helper.patch
+	"${FILESDIR}"/${P}-virtio-scsi-fixes.patch
+	"${FILESDIR}"/${P}-pci-overflow-fortify-source-3.patch
 )
 
 QA_PREBUILT="
@@ -564,7 +565,7 @@ qemu_src_configure() {
 		$(conf_notuser numa)
 		$(conf_notuser opengl)
 		$(conf_notuser pam auth-pam)
-		$(conf_notuser png)
+		$(conf_notuser png vnc-png)
 		$(conf_notuser rbd)
 		$(conf_notuser sasl vnc-sasl)
 		$(conf_notuser sdl)
