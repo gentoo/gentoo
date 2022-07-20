@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="pkg-config compatible replacement with no dependencies other than ANSI C89"
-HOMEPAGE="https://git.sr.ht/~kaniini/pkgconf"
+HOMEPAGE="https://gitea.treehouse.systems/ariadne/pkgconf"
 
 LICENSE="ISC"
 SLOT="0/3"
