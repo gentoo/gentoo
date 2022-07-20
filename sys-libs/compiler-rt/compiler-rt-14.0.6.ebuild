@@ -70,7 +70,7 @@ src_configure() {
 	# pre-set since we need to pass it to cmake
 	BUILD_DIR=${WORKDIR}/${P}_build
 
-	local nolib_flags=( -nodefaultlibs -lc )
+	local nolib_flags=( -nodefaultlibs -nostartfiles -lc )
 	if use clang; then
 		# Only do this conditionally to allow overriding with
 		# e.g. CC=clang-13 in case of breakage
