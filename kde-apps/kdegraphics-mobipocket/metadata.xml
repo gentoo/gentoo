@@ -8,7 +8,4 @@
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
-	<use>
-		<flag name="thumbnail">Enables thumbnail generation</flag>
-	</use>
 </pkgmetadata>
