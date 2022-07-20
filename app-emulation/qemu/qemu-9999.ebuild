@@ -814,7 +814,7 @@ src_install() {
 	cd "${S}/tools-build" || die
 	emake DESTDIR="${ED}" install
 
-	# If USE=doc, there'll be newly generated docs.
+	# If USE=doc, there'll be newly generated docs which we install instead.
 	if ! use doc && [[ ${QEMU_DOCS_PREBUILT} == 1 ]] ; then
 		doman "${WORKDIR}"/${PN}-${QEMU_DOCS_VERSION}-docs/docs/*.[0-8]
 	fi
