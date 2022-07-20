@@ -40,7 +40,7 @@ src_install() {
 	cmake_src_install
 
 	if use doc ; then
-		HTML_DOCS=( "${BUILD_DIR}"/doc/doxygen_docs/html/. )
+		HTML_DOCS=( "${BUILD_DIR}"/doxygen/doxygen_docs/html/. )
 		einstalldocs
 	fi
 }
