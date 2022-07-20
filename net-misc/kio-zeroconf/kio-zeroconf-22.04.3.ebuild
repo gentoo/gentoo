@@ -12,7 +12,7 @@ DESCRIPTION="KIO worker to discover file systems by DNS-SD (DNS Service Discover
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~x86"
 IUSE=""
 
 DEPEND="
