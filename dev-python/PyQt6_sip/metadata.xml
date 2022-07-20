@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ionen@gentoo.org</email>
+		<name>Ionen Wolkens</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://www.riverbankcomputing.com/mailman/listinfo/pyqt/</bugs-to>
+		<remote-id type="pypi">PyQt6-sip</remote-id>
+	</upstream>
+</pkgmetadata>
