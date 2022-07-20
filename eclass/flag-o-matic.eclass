@@ -957,7 +957,8 @@ _test-compile-PROG() {
 
 # @FUNCTION: append-atomic-flags
 # @USAGE: [bytes]
-# @DESCRIPTION: Attempts to detect if appending -latomic is required to use
+# @DESCRIPTION:
+# Attempts to detect if appending -latomic is required to use
 # a specific-sized atomic intrinsic, and if so, appends it.  If the bytesize
 # is not specified, then check the four most common byte sizes (1, 2, 4, 8).
 # >=16-byte atomics are not included in this default set and must be explicitly
