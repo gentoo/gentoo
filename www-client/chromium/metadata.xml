@@ -18,7 +18,6 @@
 		<flag name="pgo">Build with Profile Guided Optimizations (2-stage compilation)</flag>
 		<flag name="pic">Disable optimized assembly code that is not PIC friendly</flag>
 		<flag name="proprietary-codecs">Enable codecs for patent-encumbered audio and video formats.</flag>
-		<flag name="screencast">Enable support for remote desktop and screen cast using <pkg>media-video/pipewire</pkg></flag>
 		<flag name="suid">Build the SUID sandbox, which is only needed on CONFIG_USER_NS=n kernels</flag>
 		<flag name="system-ffmpeg">Use system ffmpeg instead of the bundled one</flag>
 		<flag name="system-harfbuzz">Use system harfbuzz instead of the bundled one.</flag>
