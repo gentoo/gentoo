@@ -41,6 +41,10 @@ src_prepare() {
 
 	rm test/RowWiseSparseAdagradFusedTest.cc || die
 	rm test/SparseAdagradTest.cc || die
+	sed -i \
+		-e "/-Werror/d" \
+		CMakeLists.txt \
+		|| die
 	cmake_src_prepare
 }
 
