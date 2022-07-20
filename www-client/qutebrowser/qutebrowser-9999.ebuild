@@ -79,6 +79,8 @@ src_prepare() {
 }
 
 python_test() {
+	local -x PYTEST_QT_API=pyqt5
+
 	local EPYTEST_DESELECT=(
 		# end2end and other IPC tests are broken with "Name error" if
 		# socket path is over 104 characters (=124 in /var/tmp/portage)
