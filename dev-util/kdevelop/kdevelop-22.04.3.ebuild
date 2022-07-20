@@ -19,7 +19,7 @@ HOMEPAGE="https://kdevelop.org/"
 LICENSE="GPL-2 LGPL-2"
 SLOT="5/57" # look at KDEVELOP_SOVERSION inside CMakeLists.txt
 IUSE="+gdbui hex +plasma +qmake reviewboard subversion"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 
 # see bug 366471
 RESTRICT="test"
