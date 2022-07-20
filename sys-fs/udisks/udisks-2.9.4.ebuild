@@ -142,3 +142,7 @@ pkg_postinst() {
 		ewarn "You should reboot the system now to get /run mounted with tmpfs!"
 	fi
 }
+
+pkg_postrm() {
+	udev_reload
+}
