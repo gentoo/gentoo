@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-07-25)
+# Merged into kde-apps/kalarm since 22.04.3, no other revdeps, obsolete.
+# Masked for removal on 2022-08-08.
+kde-apps/kalarmcal
+
 # Michał Górny <mgorny@gentoo.org> (2022-07-25)
 # aioredis has been integrated in >=dev-python/redis-py-4.2.0.
 # No revdeps.
