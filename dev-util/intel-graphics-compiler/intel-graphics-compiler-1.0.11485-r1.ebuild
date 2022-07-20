@@ -54,6 +54,9 @@ src_configure() {
 	# Get LLVM version
 	local llvm_version="$(best_version -d sys-devel/llvm:${LLVM_MAX_SLOT})"
 
+	# Strip release version
+	local llvm_version="${llvm_version%*-r*}"
+
 	# See https://github.com/intel/intel-graphics-compiler/issues/212
 	append-ldflags -Wl,-z,undefs
 
