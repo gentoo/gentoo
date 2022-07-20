@@ -12,6 +12,5 @@
 	<use>
 		<flag name="enchant">Enable the app-text/aspell spell-checking backend</flag>
 		<flag name="hunspell">Enable the app-text/hunspell spell-checking backend</flag>
-		<flag name="screencast">Enable support for remote desktop and screen cast using <pkg>media-video/pipewire</pkg></flag>
 	</use>
 </pkgmetadata>
