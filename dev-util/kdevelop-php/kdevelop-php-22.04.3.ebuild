@@ -20,7 +20,7 @@ HOMEPAGE="https://kdevelop.org/"
 LICENSE="GPL-2 LGPL-2"
 SLOT="5"
 IUSE=""
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 
 # remaining tests fail for some, bug 668530
 RESTRICT="test"
