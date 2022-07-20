@@ -51,6 +51,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	# https://github.com/VirtualGL/virtualgl/issues/205 (from 'master')
+	"${FILESDIR}"/${P}-libX11-1.8.patch
+)
+
 src_prepare() {
 	# Use /var/lib, bug #428122
 	sed -e "s#/etc/opt#/var/lib#g" -i doc/unixconfig.txt doc/index.html doc/advancedopengl.txt \
