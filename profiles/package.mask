@@ -233,12 +233,6 @@ sys-power/tuxedo-cc-wmi
 # Bugs #845807, #798372, #748531. Removal on 2022-07-21.
 dev-python/pygpgme
 
-# Matt Turner <mattst88@gentoo.org> (2022-05-30)
-# libwacom-2 broke ABI compatibility; reverse dependencies need to be updated.
-# Bug #848501
->=dev-libs/libwacom-2.0
->=x11-drivers/xf86-input-wacom-1.0
-
 # Sam James <sam@gentoo.org> (2022-05-28)
 # GCC 9 and older no longer receive upstream support or fixes for
 # bugs. Please switch to a newer GCC version using gcc-config.
