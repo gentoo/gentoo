@@ -11,7 +11,6 @@
 	<use>
 		<flag name="gnome-shell">Install theme for <pkg>gnome-base/gnome-shell</pkg></flag>
 		<flag name="gtk2">Install GTK+2 theme</flag>
-		<flag name="mate">Install Metacity theme for <pkg>mate-base/mate</pkg></flag>
 		<flag name="xfce">Install theme for <pkg>xfce-base/xfwm4</pkg></flag>
 	</use>
 </pkgmetadata>
