@@ -45,6 +45,8 @@ RESTRICT="!test? ( test )"
 
 S=${WORKDIR}/${MY_PN}-${PV}
 
+PATCHES=( "${FILESDIR}"/${P}-gcc12.patch )
+
 src_prepare() {
 	# Keep tests in ${T}
 	sed -i -e "s#\"/tmp#\"${T}#g" test/test*.cpp || die
