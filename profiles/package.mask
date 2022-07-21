@@ -227,12 +227,6 @@ dev-ruby/rspec-rails:3
 # see bug #843746
 sys-power/tuxedo-cc-wmi
 
-# Matt Turner <mattst88@gentoo.org> (2022-06-21)
-# Dead slot. No reverse dependencies.
-# Removal on 2022-07-21. Bug #846617
-app-misc/tracker:0
-app-misc/tracker-miners:0
-
 # Sam James <sam@gentoo.org> (2022-06-21)
 # Obsolete, no reverse dependencies, does not run test suite, and doesn't
 # support Python 3.10+. Use app-crypt/gpgme[python] instead.
