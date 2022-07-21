@@ -6,7 +6,6 @@
 		<name>Robin H. Johnson</name>
 	</maintainer>
 	<use>
-		<flag name="contrib">Install user-contributed files</flag>
 		<flag name="tools">Install tools to e.g. convert a Gitosis config to
 			gitolite or one to check if your setup is gitolite &gt;= 3.x compatible</flag>
 	</use>
