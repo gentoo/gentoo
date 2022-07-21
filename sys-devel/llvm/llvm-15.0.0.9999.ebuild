@@ -72,8 +72,8 @@ llvm.org_set_globals
 python_check_deps() {
 	use doc || return 0
 
-	has_version -b "dev-python/recommonmark[${PYTHON_USEDEP}]" &&
-	has_version -b "dev-python/sphinx[${PYTHON_USEDEP}]"
+	python_has_version -b "dev-python/recommonmark[${PYTHON_USEDEP}]" &&
+	python_has_version -b "dev-python/sphinx[${PYTHON_USEDEP}]"
 }
 
 check_uptodate() {
