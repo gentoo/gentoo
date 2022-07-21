@@ -83,8 +83,8 @@ sci-mathematics/gmp-ecm -custom-tune
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-05)
 # dropbox requires binaries unavaliable for ppc64
-# webengine flag requires unkeyworded plasma-telepathy-meta
-kde-apps/kdenetwork-meta dropbox webengine
+# telepathy flag requires unkeyworded plasma-telepathy-meta
+kde-apps/kdenetwork-meta dropbox telepathy
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-08-20)
 # zfs is keyworded on ppc64
