@@ -15,7 +15,7 @@ DESCRIPTION="XPath is a Ruby DSL around a subset of XPath 1.0"
 HOMEPAGE="https://github.com/jnicklas/xpath"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 SLOT="3"
 IUSE=""
 
