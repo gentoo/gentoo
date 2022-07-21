@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Anthony G. Basile <blueness@gentoo.org> (2022-07-21)
+# This package is provided by dev-libs/xapian-bindings[perl]
+# and is unnecessary. Masked for removal in 30 days.
+dev-perl/Search-Xapian
+
 # Hans de Graaff <graaff@gentoo.org> (2022-07-20)
 # Obsolete ruby26-only slot without reverse dependencies. Use a newer
 # slot instead. Masked for removal in 30 days.
