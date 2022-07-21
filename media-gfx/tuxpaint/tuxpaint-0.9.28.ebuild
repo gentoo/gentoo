@@ -8,7 +8,7 @@ inherit desktop optfeature toolchain-funcs xdg
 DESCRIPTION="Drawing program designed for young children"
 HOMEPAGE="https://www.tuxpaint.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-sdl1.tar.gz -> ${P}.tar.gz"
-S=${WORKDIR}/${P}-sdl1
+S="${WORKDIR}"/${P}-sdl1
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -20,7 +20,7 @@ RDEPEND="
 	gnome-base/librsvg:2
 	>=media-libs/libpng-1.2:0=
 	>=media-libs/freetype-2:2
-	media-libs/libsdl[joystick]
+	media-libs/libsdl[X,joystick]
 	media-libs/sdl-image[png]
 	media-libs/sdl-mixer
 	media-libs/sdl-pango
