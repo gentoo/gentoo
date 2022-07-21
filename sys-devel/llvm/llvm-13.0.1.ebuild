@@ -71,7 +71,7 @@ python_check_deps() {
 	has_version -b "dev-python/sphinx[${PYTHON_USEDEP}]"
 }
 
-check_live_ebuild() {
+check_uptodate() {
 	local prod_targets=(
 		$(sed -n -e '/set(LLVM_ALL_TARGETS/,/)/p' CMakeLists.txt \
 			| tail -n +2 | head -n -1)
@@ -168,8 +168,8 @@ src_prepare() {
 	# Update config.guess to support more systems
 	cp "${BROOT}/usr/share/gnuconfig/config.guess" cmake/ || die
 
-	# Verify that the live ebuild is up-to-date
-	check_live_ebuild
+	# Verify that the ebuild is up-to-date
+	check_uptodate
 
 	llvm.org_src_prepare
 }
