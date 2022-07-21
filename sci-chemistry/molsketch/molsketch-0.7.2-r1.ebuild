@@ -16,7 +16,6 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 DEPEND="
 	>=sci-chemistry/openbabel-3:=
-	dev-qt/linguist-tools:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
@@ -25,6 +24,7 @@ DEPEND="
 	dev-qt/qtwidgets:5
 "
 RDEPEND="${DEPEND}"
+BDEPEND="dev-qt/linguist-tools:5"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.0-_DEFAULT_SOURCE.patch
