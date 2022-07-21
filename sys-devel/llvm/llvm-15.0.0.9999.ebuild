@@ -244,11 +244,13 @@ get_distribution_components() {
 			llvm-cxxdump
 			llvm-cxxfilt
 			llvm-cxxmap
+			llvm-debuginfod
 			llvm-debuginfod-find
 			llvm-diff
 			llvm-dis
 			llvm-dlltool
 			llvm-dwarfdump
+			llvm-dwarfutil
 			llvm-dwp
 			llvm-exegesis
 			llvm-extract
