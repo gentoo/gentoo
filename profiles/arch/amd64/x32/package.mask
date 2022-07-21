@@ -34,6 +34,7 @@ media-gfx/freecad
 # reverse-dependencies.
 dev-qt/qtwebengine
 dev-qt/qtwebview
+dev-python/PyQt6_WebEngine
 dev-python/PyQtWebEngine
 app-admin/calamares
 app-doc/zeal
