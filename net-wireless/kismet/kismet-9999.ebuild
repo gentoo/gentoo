@@ -64,26 +64,23 @@ CDEPEND="
 	suid? ( sys-libs/libcap )
 	ubertooth? ( net-wireless/ubertooth:= )
 	"
-
-DEPEND="${CDEPEND}
-	dev-libs/boost
-	dev-libs/libfmt
-	virtual/pkgconfig
-"
-
 RDEPEND="${CDEPEND}
 	$(python_gen_cond_dep '
 		dev-python/pyserial[${PYTHON_USEDEP}]
 	')
-	selinux? ( sec-policy/selinux-kismet )
-"
-PDEPEND="
 	rtlsdr? (
 		$(python_gen_cond_dep '
 			dev-python/numpy[${PYTHON_USEDEP}]
 		')
 		net-wireless/rtl-sdr
-	)"
+	)
+	selinux? ( sec-policy/selinux-kismet )
+"
+DEPEND="${CDEPEND}
+	dev-libs/boost
+	dev-libs/libfmt
+"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	sed -i -e "s:^\(logtemplate\)=\(.*\):\1=/tmp/\2:" \
@@ -200,4 +197,8 @@ pkg_postinst() {
 			fi
 		done
 	fi
+	udev_reload
+}
+pkg_postrm() {
+	udev_reload
 }
