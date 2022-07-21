@@ -1,14 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 ECM_TEST="forceoptional"
 KFMIN=5.60.0
 QTMIN=5.12.3
 inherit ecm kde.org
 
-DESCRIPTION="KIO Slave and daemon to stash discontinuous file selections"
+DESCRIPTION="KIO worker and daemon to stash discontinuous file selections"
 HOMEPAGE="https://arnavdhamija.com/2017/07/04/kio-stash-shipped/ https://invent.kde.org/utilities/kio-stash"
 SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
-RESTRICT+=" test"
+RESTRICT="test"
 
 DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
@@ -31,4 +31,5 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${P}-no-kf5config.patch
 	"${FILESDIR}"/${P}-kioslave-no-desktop-app.patch
+	"${FILESDIR}"/${P}-unused-includes.patch
 )
