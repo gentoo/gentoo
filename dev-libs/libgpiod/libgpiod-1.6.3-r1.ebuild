@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit multilib-minimal
+inherit linux-mod multilib-minimal
 
 DESCRIPTION="C library and tools for interacting with the linux GPIO character device"
 HOMEPAGE="https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/"
@@ -19,6 +19,11 @@ RESTRICT="!test? ( test )"
 #  --enable-tests          enable libgpiod tests [default=no]
 #  --enable-bindings-cxx   enable C++ bindings [default=no]
 #  --enable-bindings-python
+
+pkg_setup() {
+	CONFIG_CHECK="GPIO_CDEV_V1"
+	linux-mod_pkg_setup
+}
 
 multilib_src_configure() {
 	local myconf=(
