@@ -381,6 +381,19 @@ src_prepare() {
 	use !debug || sed -i "s/^cargo_args = \[/&'--profile','dev',/" setup.py || die
 
 	filter-lto # undefined references with ring crate
+
+	# ensure rustls is disabled on arches where ring crate is problematic,
+	# keep in sync with src_configure below (bug #859577)
+	if use ppc64 || use s390; then
+		sed -i '/^if platform.machine/s/^if/if True or/' setup.py || die
+	fi
+}
+
+src_configure() {
+	if use ppc64 || use s390; then
+		local myfeatures=( upload log human-panic ) # sync with setup.py
+		cargo_src_configure --no-default-features
+	fi
 }
 
 python_compile_all() {
