@@ -29,10 +29,11 @@ HOMEPAGE="https://vim.sourceforge.io/ https://github.com/vim/vim"
 
 LICENSE="vim"
 SLOT="0"
-IUSE="acl aqua crypt cscope debug gtk gtk2 lua motif neXt netbeans nls perl python racket ruby selinux session sound tcl"
+IUSE="acl aqua crypt cscope debug lua motif netbeans nls perl python racket ruby selinux session sound tcl"
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
+	aqua? ( !motif )
 "
 
 RDEPEND="
@@ -45,22 +46,10 @@ RDEPEND="
 	x11-libs/libXt
 	acl? ( kernel_linux? ( sys-apps/acl ) )
 	!aqua? (
-		gtk? (
+		motif? ( >=x11-libs/motif-2.3:0 )
+		!motif? (
 			x11-libs/gtk+:3
 			x11-libs/libXft
-		)
-		!gtk? (
-			gtk2? (
-				>=x11-libs/gtk+-2.6:2
-				x11-libs/libXft
-			)
-			!gtk2? (
-				motif? ( >=x11-libs/motif-2.3:0 )
-				!motif? (
-					neXt? ( x11-libs/neXtaw )
-					!neXt? ( x11-libs/libXaw )
-				)
-			)
 		)
 	)
 	crypt? ( dev-libs/libsodium:= )
@@ -227,13 +216,7 @@ src_configure() {
 		)
 	fi
 
-	# gvim's GUI preference order is as follows:
-	# aqua                         CARBON (not tested)
-	# -aqua gtk                    GTK3
-	# -aqua -gtk gtk2              GTK2
-	# -aqua -gtk -gtk motif        MOTIF
-	# -aqua -gtk -gtk -motif neXt  NEXTAW
-	# -aqua -gtk -gtk -motif -neXt ATHENA
+	# Default is gtk unless aqua or motif are enabled
 	echo ; echo
 	if use aqua; then
 		einfo "Building gvim with the Carbon GUI"
@@ -241,23 +224,13 @@ src_configure() {
 			--enable-darwin
 			--enable-gui=carbon
 		)
-	elif use gtk; then
-		myconf+=( --enable-gtk3-check )
-		einfo "Building gvim with the gtk+-3 GUI"
-		myconf+=( --enable-gui=gtk3 )
-	elif use gtk2; then
-		myconf+=( --enable-gtk2-check )
-		einfo "Building gvim with the gtk+-2 GUI"
-		myconf+=( --enable-gui=gtk2 )
 	elif use motif; then
 		einfo "Building gvim with the MOTIF GUI"
 		myconf+=( --enable-gui=motif )
-	elif use neXt; then
-		einfo "Building gvim with the neXtaw GUI"
-		myconf+=( --enable-gui=nextaw )
 	else
-		einfo "Building gvim with the Athena GUI"
-		myconf+=( --enable-gui=athena )
+		myconf+=( --enable-gtk3-check )
+		einfo "Building gvim with the gtk+-3 GUI"
+		myconf+=( --enable-gui=gtk3 )
 	fi
 	echo ; echo
 
