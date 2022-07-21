@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit linux-info
+inherit linux-info systemd
 
 DESCRIPTION="iptables firewall generator"
 HOMEPAGE="https://firehol.org/ https://github.com/firehol/firehol"
@@ -64,4 +64,6 @@ src_install() {
 	newinitd "${FILESDIR}"/firehol.initd firehol
 	newconfd "${FILESDIR}"/fireqos.confd fireqos
 	newinitd "${FILESDIR}"/fireqos.initd fireqos
+
+	systemd_dounit contrib/fire{hol,qos}.service
 }
