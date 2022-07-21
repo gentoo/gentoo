@@ -84,6 +84,8 @@ src_install() {
 
 	systemd_dounit "${S}/tools/stunnel.service"
 	newtmpfiles "${FILESDIR}"/stunnel.tmpfiles.conf stunnel.conf
+
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
