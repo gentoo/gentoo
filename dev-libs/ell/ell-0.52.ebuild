@@ -35,6 +35,8 @@ CONFIG_CHECK="
 
 src_prepare() {
 	default
+	sed -i -e "s#/tmp/ell-test-bus#/tmp/ell-test-bus-$(uuidgen)#" \
+		unit/test-dbus*.c unit/dbus.conf || die
 	[[ "${PV}" == *9999 ]] && eautoreconf
 }
 
