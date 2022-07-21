@@ -46,8 +46,6 @@ virtual/jpeg
 
 # Matt Turner <mattst88@gentoo.org> (2022-03-27)
 # Deprecated GNOME 2 era packages
-app-misc/tracker:0
-app-misc/tracker-miners:0
 app-text/enchant:0
 app-text/gnome-doc-utils
 app-text/gtkspell:2
