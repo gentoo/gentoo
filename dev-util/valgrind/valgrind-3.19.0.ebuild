@@ -34,6 +34,12 @@ src_prepare() {
 
 	eapply "${FILESDIR}"/${PN}-3.15.0-Build-ldst_multiple-test-with-fno-pie.patch
 
+	# conditionally copy musl specific suppressions && apply patch
+	if use elibc_musl ; then
+		cp "${FILESDIR}/musl.supp" "${S}"
+		eapply "${FILESDIR}/valgrind-3.13.0-malloc.patch"
+	fi
+
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# upstream doesn't support this, but we don't build with
 		# Sun/Oracle ld, we have a GNU toolchain, so get some things
