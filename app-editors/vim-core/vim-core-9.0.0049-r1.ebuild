@@ -30,8 +30,7 @@ IUSE="nls acl minimal"
 DEPEND=">=sys-libs/ncurses-5.2-r2:0"
 BDEPEND="sys-devel/autoconf"
 # Avoid icon file collision, bug #673880
-RDEPEND="!!<app-editors/gvim-8.1.0648
-	!<app-editors/vim-8.2.4328-r1"
+RDEPEND="!<app-editors/vim-8.2.4328-r1"
 PDEPEND="!minimal? ( app-vim/gentoo-syntax )"
 
 pkg_setup() {
