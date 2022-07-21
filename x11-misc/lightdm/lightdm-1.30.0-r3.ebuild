@@ -51,6 +51,11 @@ DOCS=( NEWS )
 RESTRICT="test"
 REQUIRED_USE="vala? ( introspection )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.30.0-musl-locale.patch
+	"${FILESDIR}"/${PN}-1.30.0-musl-updwtmpx.patch
+)
+
 pkg_setup() {
 	export LIGHTDM_USER=${LIGHTDM_USER:-lightdm}
 }
