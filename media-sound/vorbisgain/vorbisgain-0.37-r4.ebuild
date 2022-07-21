@@ -9,7 +9,7 @@ SRC_URI="https://sjeng.org/ftp/vorbis/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ppc ~ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND="
 	media-libs/libogg
