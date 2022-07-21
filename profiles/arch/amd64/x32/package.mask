@@ -30,7 +30,8 @@ sci-visualization/jupyter-dash
 media-gfx/freecad
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-02-09)
-# Requires net-libs/nodejs, plus mask all reverse-dependencies.
+# dev-qt/qtwebengine requires net-libs/nodejs, plus mask all
+# reverse-dependencies.
 dev-qt/qtwebengine
 dev-qt/qtwebview
 dev-python/PyQtWebEngine
@@ -93,6 +94,7 @@ kde-apps/parley:5
 kde-apps/pim-data-exporter:5
 kde-apps/pim-sieve-editor:5
 kde-apps/plasma-telepathy-meta:5
+>=kde-misc/kio-gdrive-22.04.3-r1
 kde-misc/kmarkdownwebview:5
 kde-misc/tellico:5
 kde-misc/zanshin:5
