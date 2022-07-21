@@ -31,6 +31,9 @@ PATCHES=(
 	"${FILESDIR}"/${P}-pkgconfig.patch
 )
 
+# Upstream doesn't flag release candidates (bug 858350)
+QA_PKGCONFIG_VERSION=""
+
 wrap_python() {
 	local phase=$1
 	shift
