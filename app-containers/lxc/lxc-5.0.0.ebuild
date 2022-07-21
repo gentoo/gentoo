@@ -67,7 +67,8 @@ VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/linuxcontainers.asc
 
 DOCS=( AUTHORS CONTRIBUTING MAINTAINERS README.md doc/FAQ.txt )
 
-PATCHES=( "${FILESDIR}"/lxc-5.0.0-dont-depend-on-static-libcap.patch )
+PATCHES=( "${FILESDIR}"/lxc-5.0.0-dont-depend-on-static-libcap.patch
+	"${FILESDIR}"/${PN}-5.0.0-fix-strerror-r-char-p-musl.patch )
 
 pkg_setup() {
 	linux-info_pkg_setup
