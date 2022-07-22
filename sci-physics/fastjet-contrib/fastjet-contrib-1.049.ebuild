@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit toolchain-funcs
+
 MY_PN=fjcontrib
 MY_P=${MY_PN}-${PV}
 
@@ -23,7 +25,8 @@ PATCHES=(
 )
 
 src_configure() {
-	./configure --prefix=/usr --fastjet-config=/usr/bin/fastjet-config CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}" FFLAGS="${FFLAGS}" LDFLAGS="${LDFLAGS}" || die
+	CXX=`tc-getCXX`
+	./configure --prefix=/usr --fastjet-config=/usr/bin/fastjet-config CXX="${CXX}" CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}" FFLAGS="${FFLAGS}" LDFLAGS="${LDFLAGS}" || die
 }
 src_compile() {
 	emake
