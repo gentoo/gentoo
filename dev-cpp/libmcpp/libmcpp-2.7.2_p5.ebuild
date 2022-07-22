@@ -16,7 +16,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ~ppc64 ~riscv x86 ~x86-linux ~x64-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc64 ~riscv x86 ~x86-linux ~x64-macos"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.7.2-fix-build-system.patch
