@@ -61,7 +61,7 @@ src_prepare() {
 }
 
 src_compile() {
-	dune build @install
+	dune build @install || die
 
 	if use emacs ; then
 		# Build the emacs integration
