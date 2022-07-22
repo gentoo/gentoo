@@ -13,7 +13,7 @@ AUTOTOOLS_AUTO_DEPEND="no"
 DOCS_BUILDER="sphinx"
 DOCS_DIR="docs"
 PYTHON_COMPAT=( python3_{9,10} )
-inherit autotools cmake optfeature python-single-r1 docs qmake-utils verify-sig xdg
+inherit autotools cmake flag-o-matic optfeature python-single-r1 docs qmake-utils verify-sig xdg
 
 DESCRIPTION="A stand-alone graphics debugging tool"
 HOMEPAGE="https://renderdoc.org https://github.com/baldurk/renderdoc"
@@ -99,7 +99,7 @@ PATCHES=(
 	# Needed to prevent sandbox violations during build.
 	"${FILESDIR}"/${PN}-1.18-env-home.patch
 
-	"${FILESDIR}"/${PN}-1.18-system-glslang.patch
+	"${FILESDIR}"/${PN}-1.20-system-glslang.patch
 	"${FILESDIR}"/${PN}-1.18-system-compress.patch
 )
 
@@ -123,6 +123,10 @@ src_unpack() {
 
 src_prepare() {
 	cmake_src_prepare
+
+	# Ensure that we use the system glslang headers instead of the
+	# vendored copy.
+	rm -r renderdoc/3rdparty/glslang || die 'rm vendored glslang failed'
 
 	# Remove the calls to install the documentation files.  Instead,
 	# install them with einstalldocs.
@@ -179,6 +183,9 @@ src_configure() {
 	)
 
 	use pyside2 && mycmakeargs+=( -DPYTHON_CONFIG_SUFFIX=-${EPYTHON} )
+
+	# Lots of type mismatch issues.
+	filter-lto
 
 	cmake_src_configure
 }
