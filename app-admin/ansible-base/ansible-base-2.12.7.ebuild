@@ -19,7 +19,7 @@ else
 	MY_PN="${PN/-base/-core}"
 	MY_P="${MY_PN}-${PV}"
 	SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~x64-macos"
+	KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86 ~x64-macos"
 	S="${WORKDIR}"/${MY_P}
 fi
 
