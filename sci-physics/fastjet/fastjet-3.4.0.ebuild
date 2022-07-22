@@ -9,6 +9,7 @@ DOCS_BUILDER="doxygen"
 DOCS_DEPEND="
 	media-gfx/graphviz
 	media-libs/freetype
+	dev-texlive/texlive-latex
 "
 
 inherit autotools docs flag-o-matic fortran-2 python-single-r1
