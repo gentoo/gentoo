@@ -48,8 +48,9 @@ src_prepare() {
 	java-pkg-2_src_prepare
 
 	# enable tests on all platforms
-	grep "testsuite_SOURCE" "src/c/Makefile-linux-x86-64.make" | tee -a src/c/Makefile-*.make || die
 	if use test; then
+		grep "testsuite_SOURCE" "src/c/Makefile-linux-x86-64.make" | tee -a src/c/Makefile-*.make
+		assert
 		echo 'all: testsuite' | tee -a src/c/Makefile-*.make
 		assert
 	fi
