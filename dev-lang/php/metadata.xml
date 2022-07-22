@@ -12,6 +12,7 @@
   <use>
     <flag name="apparmor">Support FPM application confinement through <pkg>sys-libs/libapparmor</pkg></flag>
     <flag name="argon2">Enable password hashing algorithm from <pkg>app-crypt/argon2</pkg></flag>
+    <flag name="avif">Enable avif support for GD in php-8.1</flag>
     <flag name="bcmath">Add support for libbcmath</flag>
     <flag name="cli">Enable CLI SAPI</flag>
     <flag name="coverage">
