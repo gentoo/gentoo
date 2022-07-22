@@ -29,6 +29,9 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+# libttfautohint is versioned separately, check lib/local.mk.
+QA_PKGCONFIG_VERSION="1.3.0"
+
 src_prepare() {
 	default
 
