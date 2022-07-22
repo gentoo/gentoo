@@ -56,8 +56,8 @@ EANT_EXTRA_ARGS="-Dbuild-native=true -Dcompatibility=1.8 -Ddynlink.native=true"
 EANT_TEST_EXTRA_ARGS="-Djava.io.tmpdir=\"${T}\""
 EANT_TEST_GENTOO_CLASSPATH="animal-sniffer-annotations,reflections"
 
-pkg_setup() {
-	java-pkg-2_pkg_setup
+src_prepare() {
+	default
 
 	EANT_GENTOO_CLASSPATH_EXTRA="$(java-pkg_getjars --build-only \
 		animal-sniffer-annotations,ant-core,asm-9)"
@@ -68,10 +68,6 @@ pkg_setup() {
 	ANT_OPTS="-DCC='$(tc-getCC)' -DSTRIP='$(tc-getSTRIP)'"
 	# Parallel build does not respect dependency relationships between objects
 	ANT_OPTS+=" -DEXTRA_MAKE_OPTS='${MAKEOPTS} -j1'"
-}
-
-src_prepare() {
-	default
 
 	# Eliminate build.xml's dependency on bundled native JARs
 	sed -i -e '/zipfileset src="${lib.native}/,+2d' build.xml ||
