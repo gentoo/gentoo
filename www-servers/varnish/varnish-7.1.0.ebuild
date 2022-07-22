@@ -18,6 +18,7 @@ IUSE="jemalloc jit static-libs"
 
 CDEPEND="
 	sys-libs/readline:0=
+	dev-libs/libedit
 	dev-libs/libpcre[jit?]
 	jemalloc? ( dev-libs/jemalloc )
 	sys-libs/ncurses:0="
