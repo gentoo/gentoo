@@ -416,7 +416,9 @@ src_prepare() {
 	fi
 
 	# binpkg may have been built with FEATURES=splitdebug
-	[[ -d "${WORKDIR}/usr/lib/debug" ]] && rm -rf "${WORKDIR}/usr/lib/debug" || die
+	if [[ -d "${WORKDIR}/usr/lib/debug" ]] ; then
+		rm -rf "${WORKDIR}/usr/lib/debug" || die
+	fi
 	find "${WORKDIR}/usr/lib" -type d -empty -delete 2>/dev/null # do not die on failure here
 
 	# ffi headers don't get included in the binpkg for some reason
