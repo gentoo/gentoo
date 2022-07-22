@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ LUA_COMPAT=( lua5-{1..4} luajit )
 PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="threads(+)"
 
-USE_PHP="php7-2 php7-3 php7-4"
+USE_PHP="php7-4"
 
 PHP_EXT_NAME="xapian"
 PHP_EXT_INI="yes"
