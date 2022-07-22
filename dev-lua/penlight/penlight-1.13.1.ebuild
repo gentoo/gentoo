@@ -6,7 +6,7 @@ EAPI=8
 LUA_COMPAT=( lua5-{1..4} luajit )
 MY_PN="Penlight"
 
-inherit lua toolchain-funcs
+inherit lua
 
 DESCRIPTION="Lua utility libraries loosely based on the Python standard libraries"
 HOMEPAGE="https://github.com/lunarmodules/Penlight"
