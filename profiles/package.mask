@@ -34,6 +34,19 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2022-07-22)
+# Monolithic mask for dev-haskell/* packages which have no reverse dependencies,
+# are broken, or severely out of date. The aim is to have the Haskell overlay
+# (::haskell) be the place for development packages and only have packages
+# needed for end-user applications in ::gentoo, as the status who has
+# proven to be unsustainable.
+# Removal on 2022-08-22.
+dev-haskell/hsql-mysql
+dev-haskell/hit
+dev-haskell/hsb2hs
+dev-haskell/lhs2tex
+dev-haskell/hsql-odbc
+
+# Sam James <sam@gentoo.org> (2022-07-22)
 # Severely broken, unbuildable with modern glibc, several versions out of date,
 # needs a big rework. Bugs #766294, #775545, #855197, #727912, #831868, #696938,
 # and #531996, #836111, #818721. Removal on 2022-08-22.
