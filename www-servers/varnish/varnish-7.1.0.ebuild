@@ -96,4 +96,6 @@ src_install() {
 	fowners root:varnish /etc/varnish/
 	fowners varnish:varnish /var/lib/varnish/
 	fperms 0750 /var/lib/varnish/ /etc/varnish/
+
+	find "${ED}" -name "*.la" -delete || die
 }
