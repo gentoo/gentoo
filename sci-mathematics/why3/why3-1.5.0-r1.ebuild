@@ -22,7 +22,7 @@ RDEPEND="
 	coq? ( >=sci-mathematics/coq-8.7 )
 	emacs? ( app-editors/emacs:* )
 	gtk? ( dev-ml/lablgtk:=[sourceview,ocamlopt?] )
-	re? ( dev-ml/re:= dev-ml/seq:= )
+	re? ( dev-ml/re:= )
 	sexp? (
 		dev-ml/ppx_deriving:=[ocamlopt?]
 		dev-ml/ppx_sexp_conv:=[ocamlopt?]
