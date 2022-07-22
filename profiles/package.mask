@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-07-22)
+# Severely broken, unbuildable with modern glibc, several versions out of date,
+# needs a big rework. Bugs #766294, #775545, #855197, #727912, #831868, #696938,
+# and #531996, #836111, #818721. Removal on 2022-08-22.
+sci-mathematics/rstudio
+dev-haskell/pandoc-citeproc
+
 # Hans de Graaff <graaff@gentoo.org> (2022-07-20)
 # Obsolete ruby26-only slot without reverse dependencies. Use a newer
 # slot instead. Masked for removal in 30 days.
