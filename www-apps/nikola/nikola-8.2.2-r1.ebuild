@@ -28,6 +28,7 @@ RDEPEND="${DEPEND}
 	>=dev-python/lxml-3.3.5[${PYTHON_USEDEP}]
 	>=dev-python/mako-1.0[${PYTHON_USEDEP}]
 	>=dev-python/markdown-3.0.0[${PYTHON_USEDEP}]
+	<dev-python/markdown-3.4[${PYTHON_USEDEP}]
 	>=dev-python/natsort-3.5.2[${PYTHON_USEDEP}]
 	>=dev-python/piexif-1.0.3[${PYTHON_USEDEP}]
 	>=dev-python/pygments-1.6[${PYTHON_USEDEP}]
