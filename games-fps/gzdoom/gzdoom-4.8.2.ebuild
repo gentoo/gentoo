@@ -44,6 +44,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# https://bugs.gentoo.org/858749
+	filter-lto
+	append-flags -fno-strict-aliasing
+
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=OFF
 		-DINSTALL_DOCS_PATH="${EPREFIX}/usr/share/doc/${PF}"
