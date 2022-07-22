@@ -15,8 +15,8 @@ fi
 
 PYTHON_COMPAT=( python3_{8..10} )
 inherit python-any-r1
-inherit autotools bash-completion-r1 eutils flag-o-matic ghc-package
-inherit multilib multiprocessing pax-utils toolchain-funcs prefix
+inherit autotools bash-completion-r1 flag-o-matic ghc-package
+inherit multiprocessing pax-utils toolchain-funcs prefix
 inherit check-reqs
 DESCRIPTION="The Glasgow Haskell Compiler"
 HOMEPAGE="https://www.haskell.org/ghc/"
