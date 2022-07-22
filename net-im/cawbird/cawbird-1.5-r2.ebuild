@@ -43,6 +43,13 @@ BDEPEND="
 
 src_prepare() {
 	default
+
+	# Remove tests that require the network.
+	for test in avatardownload filters inlinemediadownloader \
+							   texttransform tweetparsing; do
+		sed -i "/${test}/d" tests/meson.build || die
+	done
+
 	vala_setup
 }
 
