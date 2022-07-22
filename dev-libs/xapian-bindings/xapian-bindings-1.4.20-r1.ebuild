@@ -45,7 +45,10 @@ COMMONDEPEND=">=dev-libs/xapian-1.4.20
 	mono? ( dev-lang/mono )"
 DEPEND="${COMMONDEPEND}
 	virtual/pkgconfig
-	java? ( >=virtual/jdk-1.8:* )"
+	java? (
+		>=virtual/jdk-1.8:*
+		sys-devel/slibtool
+	)"
 RDEPEND="${COMMONDEPEND}
 	java? ( >=virtual/jre-1.8:* )"
 
