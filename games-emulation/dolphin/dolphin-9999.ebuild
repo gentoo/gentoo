@@ -145,6 +145,9 @@ src_prepare() {
 
 	# Remove dirty suffix: needed for netplay
 	sed -i -e 's/--dirty/&=""/' CMakeLists.txt || die
+
+	# Force Qt5 rather than automagic until support is properly handled here
+	sed -i -e '/NAMES Qt6 COMP/d' Source/Core/DolphinQt/CMakeLists.txt || die
 }
 
 src_configure() {
