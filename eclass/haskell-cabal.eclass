@@ -8,7 +8,6 @@
 # Original author: Andres Loeh <kosmikus@gentoo.org>
 # Original author: Duncan Coutts <dcoutts@gentoo.org>
 # @SUPPORTED_EAPIS: 6 7 8
-# @PROVIDES: ghc-package
 # @BLURB: for packages that make use of the Haskell Common Architecture for Building Applications and Libraries (cabal)
 # @DESCRIPTION:
 # Basic instructions:
@@ -50,7 +49,7 @@ esac
 
 inherit ghc-package multilib toolchain-funcs
 
-EXPORT_FUNCTIONS pkg_setup src_configure src_compile src_test src_install pkg_postinst pkg_postrm
+EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile src_test src_install pkg_postinst pkg_postrm
 
 # @ECLASS_VARIABLE: CABAL_EXTRA_CONFIGURE_FLAGS
 # @USER_VARIABLE
@@ -123,6 +122,72 @@ EXPORT_FUNCTIONS pkg_setup src_configure src_compile src_test src_install pkg_po
 # Set to anything else to disable.
 : ${CABAL_REPORT_OTHER_BROKEN_PACKAGES:=yes}
 
+# @ECLASS_VARIABLE: CABAL_HACKAGE_REVISION
+# @PRE_INHERIT
+# @DESCRIPTION:
+# Set the upstream revision number from Hackage. This will automatically
+# add the upstream cabal revision to SRC_URI and apply it in src_prepare.
+: ${CABAL_HACKAGE_REVISION:=0}
+
+# @ECLASS_VARIABLE: CABAL_PN
+# @PRE_INHERIT
+# @DESCRIPTION:
+# Set the name of the package as it is recorded in the Hackage database. This
+# is mostly used when packages use CamelCase names upstream, but we want them
+# to be lowercase in portage.
+: ${CABAL_PN:=${PN}}
+
+# @ECLASS_VARIABLE: CABAL_PV
+# @PRE_INHERIT
+# @DESCRIPTION:
+# Set the version of the package as it is recorded in the Hackage database.
+# This can be useful if we use a different versioning scheme in Portage than
+# the one from upstream
+: ${CABAL_PV:=${PV}}
+
+# @ECLASS_VARIABLE: CABAL_P
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# The combined $CABAL_PN and $CABAL_PV variables, analogous to $P
+CABAL_P="${CABAL_PN}-${CABAL_PV}"
+
+S="${WORKDIR}/${CABAL_P}"
+
+# @ECLASS_VARIABLE: CABAL_FILE
+# @DESCRIPTION:
+# The location of the .cabal file for the Haskell package. This defaults to
+# "${S}/${CABAL_PN}.cabal".
+: ${CABAL_FILE:="${S}/${CABAL_PN}.cabal"}
+
+# @ECLASS_VARIABLE: CABAL_DISTFILE
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# The name of the .cabal file downloaded from Hackage. This filename does not
+# include $DISTDIR
+if [[ ${CABAL_HACKAGE_REVISION} -ge 1 ]]; then
+	CABAL_DISTFILE="${P}-rev${CABAL_HACKAGE_REVISION}.cabal"
+fi
+
+# @ECLASS_VARIABLE: CABAL_CHDEPS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Specifies changes to be made to the .cabal file. Uses the cabal_chdeps
+# function internally and shares the same syntax.
+# @EXAMPLE:
+# CABAL_CHDEPS=(
+#    'base >= 4.2 && < 4.6' 'base >= 4.2 && < 4.7'
+#    'containers ==0.4.*' 'containers >= 0.4 && < 0.6'
+# )
+: ${CABAL_CHDEPS:=}
+
+
+# @ECLASS_VARIABLE: CABAL_LIVE_VERSION
+# @PRE_INHERIT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Set this to any value to prevent SRC_URI from being set automatically.
+: ${CABAL_LIVE_VERSION:=}
+
 # 'dev-haskell/cabal' passes those options with ./configure-based
 # configuration, but most packages don't need/don't accept it:
 # #515362, #515362
@@ -156,7 +221,7 @@ fi
 
 if [[ -n "${CABAL_USE_HOOGLE}" ]]; then
 	# enabled only in ::haskell
-	#IUSE="${IUSE} hoogle"
+	# IUSE="${IUSE} hoogle"
 	CABAL_USE_HOOGLE=
 fi
 
@@ -168,6 +233,26 @@ if [[ -n "${CABAL_TEST_SUITE}" ]]; then
 	IUSE="${IUSE} test"
 	RESTRICT+=" !test? ( test )"
 fi
+
+# If SRC_URI is defined in the ebuild without appending, it will overwrite
+# the value set here. This will not be set on packages whose versions end in "9999"
+# or if CABAL_LIVE_VERSION is set.
+case $PV in
+	*9999) ;;
+	*)
+		if [[ -z "${CABAL_LIVE_VERSION}" ]]; then
+			if [[ "${CABAL_P}" == "${P}" ]]; then
+				SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
+			else
+				SRC_URI="https://hackage.haskell.org/package/${CABAL_P}/${CABAL_P}.tar.gz -> ${P}.tar.gz"
+			fi
+			if [[ -n ${CABAL_DISTFILE} ]]; then
+				SRC_URI+=" https://hackage.haskell.org/package/${CABAL_P}/revision/${CABAL_HACKAGE_REVISION}.cabal -> ${CABAL_DISTFILE}"
+			fi
+		fi ;;
+esac
+
+BDEPEND="${BDEPEND} app-text/dos2unix"
 
 # returns the version of cabal currently in use.
 # Rarely it's handy to pin cabal version from outside.
@@ -228,20 +313,6 @@ cabal-bootstrap() {
 		$(ghc-getghc) "$@"
 	}
 	if $(ghc-supports-shared-libraries); then
-		# # some custom build systems might use external libraries,
-		# # for which we don't have shared libs, so keep static fallback
-		# bug #411789, http://hackage.haskell.org/trac/ghc/ticket/5743#comment:3
-		# http://hackage.haskell.org/trac/ghc/ticket/7062
-		# http://hackage.haskell.org/trac/ghc/ticket/3072
-		# ghc does not set RPATH for extralibs, thus we do it ourselves by hands
-		einfo "Prepending $(ghc-libdir) to LD_LIBRARY_PATH"
-		if [[ ${CHOST} != *-darwin* ]]; then
-			LD_LIBRARY_PATH="$(ghc-libdir)${LD_LIBRARY_PATH:+:}${LD_LIBRARY_PATH}"
-			export LD_LIBRARY_PATH
-		else
-			DYLD_LIBRARY_PATH="$(ghc-libdir)${DYLD_LIBRARY_PATH:+:}${DYLD_LIBRARY_PATH}"
-			export DYLD_LIBRARY_PATH
-		fi
 		{ make_setup -dynamic "$@" && ./setup --help >/dev/null; } ||
 		make_setup "$@" || die "compiling ${setupmodule} failed"
 	else
@@ -288,8 +359,8 @@ cabal-show-brokens() {
 	elog "ghc-pkg check: 'checking for other broken packages:'"
 	# pretty-printer
 	$(ghc-getghcpkg) check 2>&1 \
-		| grep -E -v '^Warning: haddock-(html|interfaces): ' \
-		| grep -E -v '^Warning: include-dirs: ' \
+		| egrep -v '^Warning: haddock-(html|interfaces): ' \
+		| egrep -v '^Warning: include-dirs: ' \
 		| head -n 20
 
 	cabal-die-if-nonempty 'broken' \
@@ -448,7 +519,7 @@ cabal-build() {
 }
 
 cabal-copy() {
-	set -- copy --destdir="${D}" "$@"
+	set -- copy "$@" --destdir="${D}"
 	echo ./setup "$@"
 	./setup "$@" || die "setup copy failed"
 
@@ -508,6 +579,29 @@ haskell-cabal_pkg_setup() {
 	if cabal-is-dummy-lib; then
 		einfo "${P} is included in ghc-${CABAL_CORE_LIB_GHC_PV}, nothing to install."
 	fi
+}
+
+haskell-cabal_src_prepare() {
+	# Needed for packages that are still using MY_PN
+	if [[ -n ${MY_PN} ]]; then
+		local cabal_file="${S}/${MY_PN}.cabal"
+	else
+		local cabal_file="${CABAL_FILE}"
+	fi
+
+	if [[ -n ${CABAL_DISTFILE} ]]; then
+		# pull revised cabal from upstream
+		einfo "Using revised .cabal file from Hackage: revision ${CABAL_HACKAGE_REVISION}"
+		cp "${DISTDIR}/${CABAL_DISTFILE}" "${cabal_file}" || die
+	fi
+
+	# Convert to unix line endings
+	dos2unix "${cabal_file}" || die
+
+	# Apply patches *after* pulling the revised cabal
+	default
+
+	[[ -n "${CABAL_CHDEPS}" ]] && cabal_chdeps "${CABAL_CHDEPS[@]}"
 }
 
 haskell-cabal_src_configure() {
@@ -599,7 +693,8 @@ haskell-cabal_src_test() {
 # exported function: cabal-style copy and register
 cabal_src_install() {
 	if ! cabal-is-dummy-lib; then
-		cabal-copy
+		# Pass arguments to cabal-copy
+		cabal-copy "$@"
 		cabal-pkg
 	fi
 
@@ -614,10 +709,14 @@ cabal_src_install() {
 	touch "${hint_file}" || die
 }
 
+# Arguments passed to this function will make their way to `cabal-copy`
+# and eventually `./setup copy`. This allows you to specify which
+# components will be installed.
+# e.g. `haskell-cabal_src_install "lib:${PN}"` will only install the library
 haskell-cabal_src_install() {
 	pushd "${S}" > /dev/null || die
 
-	cabal_src_install
+	cabal_src_install "$@"
 
 	popd > /dev/null || die
 }
@@ -678,23 +777,28 @@ cabal_flag() {
 #}
 # or
 # src_prepare() {
-#    CABAL_FILE=${S}/${MY_PN}.cabal cabal_chdeps \
+#    CABAL_FILE=${S}/${CABAL_PN}.cabal cabal_chdeps \
 #        'base >= 4.2 && < 4.6' 'base >= 4.2 && < 4.7'
-#    CABAL_FILE=${S}/${MY_PN}-tools.cabal cabal_chdeps \
+#    CABAL_FILE=${S}/${CABAL_PN}-tools.cabal cabal_chdeps \
 #        'base == 3.*' 'base >= 4.2 && < 4.7'
 #}
 #
 cabal_chdeps() {
-	local cabal_fn=${MY_PN:-${PN}}.cabal
-	local cf=${CABAL_FILE:-${S}/${cabal_fn}}
+	# Needed for compatibility with ebuilds still using MY_PN
+	if [[ -n ${MY_PN} ]]; then
+		local cabal_file="${S}/${MY_PN}.cabal"
+	else
+		local cabal_file="${CABAL_FILE}"
+	fi
+
 	local from_ss # ss - substring
 	local to_ss
 	local orig_c # c - contents
 	local new_c
 
-	[[ -f $cf ]] || die "cabal file '$cf' does not exist"
+	[[ -f "${cabal_file}" ]] || die "cabal file '${cabal_file}' does not exist"
 
-	orig_c=$(< "$cf")
+	orig_c=$(< "${cabal_file}")
 
 	while :; do
 		from_pat=$1
@@ -712,9 +816,9 @@ cabal_chdeps() {
 		new_c=${orig_c//${from_pat}/${to_str}}
 
 		if [[ -n $CABAL_DEBUG_LOOSENING ]]; then
-			echo "${orig_c}" >"${T}/${cf}".pre
-			echo "${new_c}" >"${T}/${cf}".post
-			diff -u "${T}/${cf}".{pre,post}
+			echo "${orig_c}" >"${T}/${cabal_file}".pre
+			echo "${new_c}" >"${T}/${cabal_file}".post
+			diff -u "${T}/${cabal_file}".{pre,post}
 		fi
 
 		[[ "${orig_c}" == "${new_c}" ]] && die "no trigger for '${from_pat}'"
@@ -723,7 +827,7 @@ cabal_chdeps() {
 		shift
 	done
 
-	echo "${new_c}" > "$cf" ||
+	echo "${new_c}" > "$cabal_file" ||
 		die "failed to update"
 }
 
