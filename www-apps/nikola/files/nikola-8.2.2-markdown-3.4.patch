@@ -1,0 +1,49 @@
+https://bugs.gentoo.org/860087
+
+Patch backported from upstream:
+
+commit 1be6e8b387bbebcc891b0afc53802cf69607cfcf
+Author: Chris Warrick <kwpolska@gmail.com>
+Date:   Sun Jul 17 00:08:24 2022 +0200
+
+    Fix #3635 — fix compatibility of Markdown extensions with Markdown 3.4+
+
+--- Nikola-8.2.2/nikola/plugins/compile/markdown/mdx_gist.py
++++ Nikola-8.2.2/nikola/plugins/compile/markdown/mdx_gist.py
+@@ -76,6 +76,7 @@
+ """
+ 
+ import requests
++import xml.etree.ElementTree as etree
+ 
+ from nikola.plugin_categories import MarkdownExtension
+ from nikola.utils import get_logger
+@@ -84,11 +85,10 @@
+     from markdown.extensions import Extension
+     from markdown.inlinepatterns import Pattern
+     from markdown.util import AtomicString
+-    from markdown.util import etree
+ except ImportError:
+     # No need to catch this, if you try to use this without Markdown,
+     # the markdown compiler will fail first
+-    Extension = Pattern = object
++    Extension = Pattern = AtomicString = object
+ 
+ 
+ LOGGER = get_logger('compile_markdown.mdx_gist')
+--- Nikola-8.2.2/nikola/plugins/compile/markdown/mdx_podcast.py
++++ Nikola-8.2.2/nikola/plugins/compile/markdown/mdx_podcast.py
+@@ -36,11 +36,12 @@
+ <p><audio controls=""><source src="https://archive.org/download/Rebeldes_Stereotipos/rs20120609_1.mp3" type="audio/mpeg"></source></audio></p>
+ """
+ 
++import xml.etree.ElementTree as etree
++
+ from nikola.plugin_categories import MarkdownExtension
+ try:
+     from markdown.extensions import Extension
+     from markdown.inlinepatterns import Pattern
+-    from markdown.util import etree
+ except ImportError:
+     # No need to catch this, if you try to use this without Markdown,
+     # the markdown compiler will fail first
