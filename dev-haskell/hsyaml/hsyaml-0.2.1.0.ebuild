@@ -10,7 +10,7 @@ MY_PN="HsYAML"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Pure Haskell YAML 1.2 parser"
-HOMEPAGE="https://github.com/hvr/HsYAML"
+HOMEPAGE="https://github.com/haskell-hvr/HsYAML"
 SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
