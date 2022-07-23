@@ -23,6 +23,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.6-fixup-testsuite.patch
 	"${FILESDIR}"/${PN}-2.23-uncompressed-man-pages.patch
 	"${FILESDIR}"/${PN}-2.23-allow-building-against-glibc-2.34.patch
+	"${FILESDIR}"/${PN}-2.23-musl-sc-level2-fix.patch
+	"${FILESDIR}"/${PN}-2.23-musl-path-max-fix.patch
+	"${FILESDIR}"/${PN}-2.23-musl-nonnull-fix.patch
+	"${FILESDIR}"/${PN}-2.23-musl-ino_t-fix.patch
 )
 
 src_prepare() {

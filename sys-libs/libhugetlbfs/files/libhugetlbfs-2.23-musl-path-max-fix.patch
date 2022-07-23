@@ -1,0 +1,22 @@
+# Include limits.h for PATH_MAX
+# Closes: https://bugs.gentoo.org/828830
+--- a/hugeadm.c
++++ b/hugeadm.c
+@@ -33,6 +33,7 @@
+ #include <grp.h>
+ #include <pwd.h>
+ #include <fcntl.h>
++#include <limits.h>
+
+ #include <sys/stat.h>
+ #include <sys/types.h>
+--- a/tests/gethugepagesizes.c
++++ b/tests/gethugepagesizes.c
+@@ -27,6 +27,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
++#include <limits.h>
+ #include <stdarg.h>
+ #include <hugetlbfs.h>
+
