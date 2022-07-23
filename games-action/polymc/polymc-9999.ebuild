@@ -94,6 +94,8 @@ src_configure(){
 		-DCMAKE_INSTALL_PREFIX="/usr"
 		# Resulting binary is named polymc
 		-DLauncher_APP_BINARY_NAME="${PN}"
+		# Force Qt5 to avoid accidentaly building the Qt6 version and breaking things
+		-DLauncher_QT_VERSION_MAJOR=5
 
 		-DENABLE_LTO=$(usex lto)
 		-DBUILD_TESTING=$(usex test)
