@@ -1,16 +1,17 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+# As of 3.0.2, Upstream does NOT yet support newer than python3.8
 PYTHON_COMPAT=(python3_{7..8})
 PYTHON_REQ_USE="ipv6(+)?"
 
-inherit user autotools bash-completion-r1 python-single-r1 tmpfiles versionator
+inherit autotools bash-completion-r1 python-single-r1 tmpfiles
 
 MY_PV="${PV/_rc/~rc}"
 MY_PV="${MY_PV/_beta/~beta}"
 MY_P="${PN}-${MY_PV}"
-SERIES="$(get_version_component_range 1-2)"
+SERIES="3.0"
 
 if [[ ${PV} =~ [9]{4,} ]] ; then
 	EGIT_REPO_URI="git://git.ganeti.org/ganeti.git"
@@ -136,8 +137,7 @@ DEPEND="
 	rbd? ( sys-cluster/ceph )
 	ipv6? ( net-misc/ndisc6 )
 	${PYTHON_DEPS}"
-RDEPEND="${DEPEND}
-	!app-emulation/ganeti-htools"
+RDEPEND="${DEPEND}"
 DEPEND+="
 	sys-devel/m4
 	app-text/pandoc
