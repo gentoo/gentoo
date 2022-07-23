@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Golden tests support for tasty"
-HOMEPAGE="https://github.com/feuerbach/tasty-golden"
+HOMEPAGE="https://github.com/UnkindPartition/tasty-golden"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
