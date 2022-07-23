@@ -1,18 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
-DESCRIPTION="program for cryptanalyzing xor 'encryption' with variable key length"
-HOMEPAGE="http://www.habets.pp.se/synscan/programs.php?prog=xor-analyze"
-SRC_URI="http://www.habets.pp.se/synscan/files/${P}.tar.gz"
+DESCRIPTION="Program for cryptanalyzing xor 'encryption' with variable key length"
+HOMEPAGE="https://www.habets.pp.se/synscan/programs_xor-analyze.html"
+SRC_URI="https://www.habets.pp.se/synscan/files/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 src_compile() {
 	rm -f Makefile || die
