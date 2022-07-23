@@ -1,0 +1,641 @@
+diff -Naur claws-mail-4.1.0.orig/src/common/smtp.c claws-mail-4.1.0/src/common/smtp.c
+--- claws-mail-4.1.0.orig/src/common/smtp.c	2022-03-19 13:03:24.000000000 +0100
++++ claws-mail-4.1.0/src/common/smtp.c	2022-07-23 22:10:48.323673856 +0200
+@@ -1,6 +1,6 @@
+ /*
+  * Claws Mail -- a GTK based, lightweight, and fast e-mail client
+- * Copyright (C) 1999-2012 Hiroyuki Yamamoto and the Claws Mail team
++ * Copyright (C) 1999-2022 the Claws Mail team and Hiroyuki Yamamoto
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+@@ -42,11 +42,11 @@
+ static gint smtp_auth(SMTPSession *session);
+ #ifdef USE_GNUTLS
+ static gint smtp_starttls(SMTPSession *session);
++static gint smtp_auth_oauth2(SMTPSession *session);
+ #endif
+ static gint smtp_auth_cram_md5(SMTPSession *session);
+ static gint smtp_auth_login(SMTPSession *session);
+ static gint smtp_auth_plain(SMTPSession *session);
+-static gint smtp_auth_oauth2(SMTPSession *session);
+ 
+ static gint smtp_ehlo(SMTPSession *session);
+ static gint smtp_ehlo_recv(SMTPSession *session, const gchar *msg);
+@@ -176,11 +176,13 @@
+                  &&
+ 		  (session->avail_auth_type & SMTPAUTH_PLAIN) != 0)
+ 		smtp_auth_plain(session);
++#ifdef USE_GNUTLS
+ 	else if ((session->forced_auth_type == SMTPAUTH_OAUTH2
+ 		  || session->forced_auth_type == 0)
+                  &&
+ 		  (session->avail_auth_type & SMTPAUTH_OAUTH2) != 0)
+ 		smtp_auth_oauth2(session);
++#endif
+ 	else if (session->forced_auth_type == 0) {
+ 		log_warning(LOG_PROTOCOL, _("No SMTP AUTH method available\n"));
+ 		return SM_AUTHFAIL;
+@@ -323,8 +325,10 @@
+ 				session->avail_auth_type |= SMTPAUTH_CRAM_MD5;
+ 			if (strcasestr(p, "DIGEST-MD5"))
+ 				session->avail_auth_type |= SMTPAUTH_DIGEST_MD5;
++#ifdef USE_GNUTLS
+ 			if (strcasestr(p, "XOAUTH2"))
+ 				session->avail_auth_type |= SMTPAUTH_OAUTH2;
++#endif
+ 		}
+ 		if (g_ascii_strncasecmp(p, "SIZE", 4) == 0) {
+ 			p += 5;
+@@ -399,7 +403,7 @@
+ 	return SM_OK;
+ }
+ 
+-
++#ifdef USE_GNUTLS
+ static gint smtp_auth_oauth2(SMTPSession *session)
+ {
+ 	gchar buf[MESSAGEBUFSIZE], *b64buf, *out;
+@@ -428,6 +432,7 @@
+ 
+ 	return SM_OK;
+ }
++#endif
+ 
+ static gint smtp_auth_login(SMTPSession *session)
+ {
+@@ -547,7 +552,9 @@
+ 	case SMTP_AUTH_PLAIN:
+ 	case SMTP_AUTH_LOGIN_USER:
+ 	case SMTP_AUTH_LOGIN_PASS:
++#ifdef USE_GNUTLS
+         case SMTP_AUTH_OAUTH2:
++#endif
+ 	case SMTP_AUTH_CRAM_MD5:
+ 		log_print(LOG_PROTOCOL, "ESMTP< %s\n", msg);
+ 		break;
+@@ -670,7 +677,9 @@
+ 		break;
+ 	case SMTP_AUTH_PLAIN:
+ 	case SMTP_AUTH_LOGIN_PASS:
++#ifdef USE_GNUTLS
+         case SMTP_AUTH_OAUTH2:
++#endif
+ 	case SMTP_AUTH_CRAM_MD5:
+ 		ret = smtp_from(smtp_session);
+ 		break;
+diff -Naur claws-mail-4.1.0.orig/src/etpan/imap-thread.c claws-mail-4.1.0/src/etpan/imap-thread.c
+--- claws-mail-4.1.0.orig/src/etpan/imap-thread.c	2022-03-19 13:03:24.000000000 +0100
++++ claws-mail-4.1.0/src/etpan/imap-thread.c	2022-07-23 22:10:48.324673857 +0200
+@@ -1,6 +1,6 @@
+ /*
+  * Claws Mail -- a GTK based, lightweight, and fast e-mail client
+- * Copyright (C) 2005-2016 DINH Viet Hoa and the Claws Mail team
++ * Copyright (C) 2005-2022 the Claws Mail team and DINH Viet Hoa
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+@@ -999,9 +999,11 @@
+ 			param->type, NULL, NULL, NULL,
+ 			NULL, param->login,
+ 			param->password, NULL);
+-	else if (!strcmp(param->type, "XOAUTH2")) {
++#ifdef USE_GNUTLS
++	else if (!strcmp(param->type, "XOAUTH2"))
+                 r = mailimap_oauth2_authenticate(param->imap, param->login, param->password);
+-	} else
++#endif
++	else
+ 		r = mailimap_authenticate(param->imap,
+ 			param->type, NULL, NULL, NULL,
+ 			param->login, param->login,
+diff -Naur claws-mail-4.1.0.orig/src/imap.c claws-mail-4.1.0/src/imap.c
+--- claws-mail-4.1.0.orig/src/imap.c	2022-03-19 13:03:24.000000000 +0100
++++ claws-mail-4.1.0/src/imap.c	2022-07-23 22:10:48.325673859 +0200
+@@ -72,7 +72,9 @@
+ #include "main.h"
+ #include "passwordstore.h"
+ #include "file-utils.h"
++#ifdef USE_GNUTLS
+ #include "oauth2.h"
++#endif
+ 
+ typedef struct _IMAPFolder	IMAPFolder;
+ typedef struct _IMAPSession	IMAPSession;
+@@ -913,9 +915,11 @@
+ 	case IMAP_AUTH_PLAIN:
+ 		ok = imap_cmd_login(session, user, pass, "PLAIN");
+ 		break;
++#ifdef USE_GNUTLS
+ 	case IMAP_AUTH_OAUTH2:
+ 		ok = imap_cmd_login(session, user, pass, "XOAUTH2");
+ 		break;
++#endif
+ 	case IMAP_AUTH_LOGIN:
+ 		ok = imap_cmd_login(session, user, pass, "LOGIN");
+ 		break;
+@@ -932,7 +936,9 @@
+ 				"\t DIGEST-MD5 %d\n"
+ 				"\t SCRAM-SHA-1 %d\n"
+ 				"\t PLAIN %d\n"
++#ifdef USE_GNUTLS
+ 				"\t OAUTH2 %d\n"
++#endif
+ 				"\t LOGIN %d\n"
+ 				"\t GSSAPI %d\n", 
+ 			imap_has_capability(session, "ANONYMOUS"),
+@@ -940,7 +946,9 @@
+ 			imap_has_capability(session, "DIGEST-MD5"),
+ 			imap_has_capability(session, "SCRAM-SHA-1"),
+ 			imap_has_capability(session, "PLAIN"),
++#ifdef USE_GNUTLS
+ 			imap_has_capability(session, "XOAUTH2"),
++#endif
+ 			imap_has_capability(session, "LOGIN"),
+ 			imap_has_capability(session, "GSSAPI"));
+ 		if (imap_has_capability(session, "CRAM-MD5"))
+@@ -957,8 +965,10 @@
+ 			ok = imap_cmd_login(session, user, pass, "GSSAPI");
+ 		if (ok == MAILIMAP_ERROR_LOGIN) /* we always try plaintext login before giving up */
+ 			ok = imap_cmd_login(session, user, pass, "plaintext");
++#ifdef USE_GNUTLS
+ 		if (ok == MAILIMAP_ERROR_LOGIN && imap_has_capability(session, "XOAUTH2"))
+ 			ok = imap_cmd_login(session, user, pass, "XOAUTH2");
++#endif
+ 	}
+ 
+ 	if (ok == MAILIMAP_NO_ERROR)
+@@ -993,12 +1003,12 @@
+ 				     "compiled with SASL support and the "
+ 				     "LOGIN SASL plugin is installed.");
+ 		}
+-
++#ifdef USE_GNUTLS
+ 		if (type == IMAP_AUTH_OAUTH2) {
+ 			ext_info = _("\n\nOAuth2 error. Check and correct your OAuth2 "
+ 				     "account preferences.");
+ 		} 
+-
++#endif
+ 		if (time(NULL) - last_login_err > 10) {
+ 			if (!prefs_common.no_recv_err_panel) {
+ 				alertpanel_error_log(_("Connection to %s failed: "
+@@ -1320,10 +1330,10 @@
+ 	gboolean failed = FALSE;
+ 	gint ok = MAILIMAP_NO_ERROR;
+ 	g_return_val_if_fail(account->userid != NULL, MAILIMAP_ERROR_BAD_STATE);
+-
++#ifdef USE_GNUTLS
+ 	if(account->imap_auth_type == IMAP_AUTH_OAUTH2)
+ 	        oauth2_check_passwds (account);
+-	
++#endif
+ 	if (!password_get(account->userid, account->recv_server, "imap",
+ 			 SESSION(session)->port, &acc_pass)) {
+ 		acc_pass = passwd_store_get_account(account->account_id,
+diff -Naur claws-mail-4.1.0.orig/src/inc.c claws-mail-4.1.0/src/inc.c
+--- claws-mail-4.1.0.orig/src/inc.c	2022-03-19 13:03:24.000000000 +0100
++++ claws-mail-4.1.0/src/inc.c	2022-07-23 22:10:48.325673859 +0200
+@@ -61,7 +61,9 @@
+ #include "hooks.h"
+ #include "logwindow.h"
+ #include "passwordstore.h"
++#ifdef USE_GNUTLS
+ #include "oauth2.h"
++#endif
+ 
+ extern SessionStats session_stats;
+ 
+@@ -633,11 +635,12 @@
+ 			manage_window_focus_in
+ 				(inc_dialog->dialog->window,
+ 				 NULL, NULL);
+-
++#ifdef USE_GNUTLS
+ 		if(pop3_session->ac_prefs->use_pop_auth && 
+ 		   pop3_session->ac_prefs->pop_auth_type == POPAUTH_OAUTH2)
+ 		     oauth2_check_passwds (pop3_session->ac_prefs);
+-		
++#endif
++
+ 		if (password_get(pop3_session->user,
+ 					pop3_session->ac_prefs->recv_server,
+ 					"pop3", pop3_get_port(pop3_session),
+diff -Naur claws-mail-4.1.0.orig/src/oauth2.c claws-mail-4.1.0/src/oauth2.c
+--- claws-mail-4.1.0.orig/src/oauth2.c	2022-03-19 13:03:24.000000000 +0100
++++ claws-mail-4.1.0/src/oauth2.c	2022-07-23 22:10:48.325673859 +0200
+@@ -22,6 +22,8 @@
+ #include "claws-features.h"
+ #endif
+ 
++#ifdef USE_GNUTLS
++
+ #include <glib.h>
+ #ifdef ENABLE_NLS
+ #include <glib/gi18n.h>
+@@ -715,3 +717,5 @@
+ 	 
+ 	 return (0);
+ }
++
++#endif	/* USE_GNUTLS */
+diff -Naur claws-mail-4.1.0.orig/src/oauth2.h claws-mail-4.1.0/src/oauth2.h
+--- claws-mail-4.1.0.orig/src/oauth2.h	2022-03-19 13:03:24.000000000 +0100
++++ claws-mail-4.1.0/src/oauth2.h	2022-07-23 22:10:48.325673859 +0200
+@@ -1,6 +1,6 @@
+ /*
+  * Claws Mail -- a GTK based, lightweight, and fast e-mail client
+- * Copyright (C) 2020 the Claws Mail team
++ * Copyright (C) 2020-2022 the Claws Mail team
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+@@ -21,6 +21,8 @@
+ #include "claws-features.h"
+ #endif
+ 
++#ifdef USE_GNUTLS
++
+ #include <glib.h>
+ 
+ #include "socket.h"
+@@ -79,3 +81,5 @@
+ gint oauth2_use_refresh_token (Oauth2Service provider, OAUTH2Data *OAUTH2Data);
+ guchar* oauth2_decode(const gchar *in);
+ void oauth2_encode(const gchar *in);
++
++#endif	/* USE_GNUTLS */
+diff -Naur claws-mail-4.1.0.orig/src/pop.c claws-mail-4.1.0/src/pop.c
+--- claws-mail-4.1.0.orig/src/pop.c	2022-03-19 13:03:24.000000000 +0100
++++ claws-mail-4.1.0/src/pop.c	2022-07-23 22:10:48.325673859 +0200
+@@ -1,6 +1,6 @@
+ /*
+  * Claws Mail -- a GTK based, lightweight, and fast e-mail client
+- * Copyright (C) 1999-2012 Hiroyuki Yamamoto and the Claws Mail team
++ * Copyright (C) 1999-2022 the Claws Mail team and Hiroyuki Yamamoto
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+@@ -178,6 +178,7 @@
+ 	return PS_SUCCESS;
+ }
+ 
++#ifdef USE_GNUTLS
+ static gint pop3_getauth_oauth2_send(Pop3Session *session)
+ {
+ 	gchar buf[MESSAGEBUFSIZE], *b64buf, *out;
+@@ -202,6 +203,7 @@
+ 	g_free(out);
+ 	return PS_SUCCESS;
+ }
++#endif
+ 
+ static gint pop3_getrange_stat_send(Pop3Session *session)
+ {
+@@ -533,8 +535,10 @@
+ 
+ 	if (!g_ascii_strncasecmp(buf, "PASS ", 5))
+ 		log_print(LOG_PROTOCOL, "POP> PASS ********\n");
++#ifdef USE_GNUTLS
+         else if  (!g_ascii_strncasecmp(buf, "AUTH XOAUTH2 ", 13))
+ 		log_print(LOG_PROTOCOL, "POP> AUTH XOAUTH2  ********\n");
++#endif
+ 	else
+ 		log_print(LOG_PROTOCOL, "POP> %s\n", buf);
+ 
+@@ -989,12 +993,12 @@
+ #ifdef USE_GNUTLS
+ 		if (pop3_session->ac_prefs->ssl_pop == SSL_STARTTLS)
+ 			val = pop3_stls_send(pop3_session);
++                else if (pop3_session->ac_prefs->use_pop_auth && pop3_session->ac_prefs->pop_auth_type == POPAUTH_OAUTH2)
++			val = pop3_getauth_oauth2_send(pop3_session);
+ 		else
+ #endif
+ 		if (pop3_session->ac_prefs->use_pop_auth && pop3_session->ac_prefs->pop_auth_type == POPAUTH_APOP)
+ 			val = pop3_getauth_apop_send(pop3_session);
+-                else if (pop3_session->ac_prefs->use_pop_auth && pop3_session->ac_prefs->pop_auth_type == POPAUTH_OAUTH2)
+-			val = pop3_getauth_oauth2_send(pop3_session);
+ 		else
+ 			val = pop3_getauth_user_send(pop3_session);
+ 		break;
+@@ -1015,7 +1019,9 @@
+ 		break;
+ 	case POP3_GETAUTH_PASS:
+ 	case POP3_GETAUTH_APOP:
++#ifdef USE_GNUTLS
+         case POP3_GETAUTH_OAUTH2:
++#endif
+ 		if (!pop3_session->pop_before_smtp)
+ 			val = pop3_getrange_stat_send(pop3_session);
+ 		else
+diff -Naur claws-mail-4.1.0.orig/src/prefs_account.c claws-mail-4.1.0/src/prefs_account.c
+--- claws-mail-4.1.0.orig/src/prefs_account.c	2022-03-19 13:03:24.000000000 +0100
++++ claws-mail-4.1.0/src/prefs_account.c	2022-07-23 22:14:18.477957308 +0200
+@@ -1,6 +1,6 @@
+ /*
+  * Claws Mail -- a GTK based, lightweight, and fast e-mail client
+- * Copyright (C) 1999-2021 the Claws Mail team and Hiroyuki Yamamoto
++ * Copyright (C) 1999-2022 the Claws Mail team and Hiroyuki Yamamoto
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+@@ -54,7 +54,9 @@
+ #include "smtp.h"
+ #include "imap.h"
+ #include "pop.h"
++#ifdef USE_GNUTLS
+ #include "oauth2.h"
++#endif
+ #include "remotefolder.h"
+ #include "combobox.h"
+ #include "setup.h"
+@@ -200,6 +202,7 @@
+ 	GtkWidget *pop_auth_minutes_lbl;
+ } SendPage;
+ 
++#ifdef USE_GNUTLS
+ typedef struct Oauth2Page
+ {
+         PrefsPage page;
+@@ -218,6 +221,7 @@
+         GtkWidget *oauth2_client_secret_entry;
+ 
+ } Oauth2Page;
++#endif
+ 
+ typedef struct
+ {
+@@ -373,7 +377,9 @@
+ static BasicPage basic_page;
+ static ReceivePage receive_page;
+ static SendPage send_page;
++#ifdef USE_GNUTLS
+ static Oauth2Page oauth2_page;
++#endif
+ static ComposePage compose_page;
+ static TemplatesPage templates_page;
+ static PrivacyPage privacy_page;
+@@ -416,7 +422,8 @@
+ static void prefs_account_pop_auth_type_set_data_from_optmenu
+ 							(PrefParam *pparam);
+ static void prefs_account_pop_auth_type_set_optmenu	(PrefParam *pparam);
+- 
++
++#ifdef USE_GNUTLS
+ static void prefs_account_oauth2_provider_set_data_from_optmenu
+ 							(PrefParam *pparam);
+ static void prefs_account_oauth2_provider_set_optmenu	(PrefParam *pparam);
+@@ -425,6 +432,7 @@
+ static void prefs_account_oauth2_set_sensitivity(void);
+ static void prefs_account_oauth2_set_auth_sensitivity(void);
+ static void prefs_account_oauth2_obtain_tokens(GtkButton *button, gpointer data);
++#endif
+ static void prefs_account_set_autochk_interval_from_widgets(PrefParam *pparam);
+ static void prefs_account_set_autochk_interval_to_widgets(PrefParam *pparam);
+ 
+@@ -652,6 +660,7 @@
+ };
+ 
+ static PrefParam oauth2_param[] = {
++#ifdef USE_GNUTLS
+ 	{"oauth2_auth_provider", "0", &tmp_ac_prefs.oauth2_provider, P_ENUM,
+ 	 &oauth2_page.oauth2_auth_optmenu,
+ 	 prefs_account_oauth2_provider_set_data_from_optmenu,
+@@ -668,6 +677,23 @@
+ 
+ 	{"oauth2_client_secret", NULL, &tmp_ac_prefs.oauth2_client_secret, P_STRING,
+ 	 &oauth2_page.oauth2_client_secret_entry, prefs_set_data_from_entry, prefs_set_entry},
++#else
++	{"oauth2_auth_provider", "0", &tmp_ac_prefs.oauth2_provider, P_ENUM,
++	 NULL, NULL, NULL},
++
++	{"oauth2_date", 0, &tmp_ac_prefs.oauth2_date, P_INT,
++	 NULL, NULL, NULL},
++
++	{"oauth2_authcode", NULL, &tmp_ac_prefs.oauth2_authcode, P_PASSWORD,
++	 NULL, NULL, NULL},
++
++	{"oauth2_client_id", NULL, &tmp_ac_prefs.oauth2_client_id, P_STRING,
++	 NULL, NULL, NULL},
++
++	{"oauth2_client_secret", NULL, &tmp_ac_prefs.oauth2_client_secret, P_STRING,
++	 NULL, NULL, NULL},
++
++#endif
+ 
+ 	{NULL, NULL, NULL, P_OTHER, NULL, NULL, NULL}
+ };
+@@ -1624,8 +1650,9 @@
+ 	COMBOBOX_ADD (menu2, _("Select"), 0);
+ 	COMBOBOX_ADD (menu2, NULL, 0);
+ 	COMBOBOX_ADD (menu2, "APOP", POPAUTH_APOP);
++#ifdef USE_GNUTLS
+ 	COMBOBOX_ADD (menu2, "OAuth2", POPAUTH_OAUTH2);
+-
++#endif
+ 	SET_TOGGLE_SENSITIVITY (pop_auth_checkbtn, vbox5);
+ 
+ 	PACK_CHECK_BUTTON (vbox2, rmmail_checkbtn,
+@@ -1762,7 +1789,9 @@
+ 	COMBOBOX_ADD (menu, "SCRAM-SHA-1", IMAP_AUTH_SCRAM_SHA1);
+ 	COMBOBOX_ADD (menu, "PLAIN", IMAP_AUTH_PLAIN);
+ 	COMBOBOX_ADD (menu, "LOGIN", IMAP_AUTH_LOGIN);
++#ifdef USE_GNUTLS
+ 	COMBOBOX_ADD (menu, "OAUTH2", IMAP_AUTH_OAUTH2);
++#endif
+ 
+ 	hbox1 = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 8);
+ 	gtk_widget_show (hbox1);
+@@ -2019,7 +2048,9 @@
+ 	COMBOBOX_ADD (menu, "PLAIN", SMTPAUTH_PLAIN);
+ 	COMBOBOX_ADD (menu, "LOGIN", SMTPAUTH_LOGIN);
+ 	COMBOBOX_ADD (menu, "CRAM-MD5", SMTPAUTH_CRAM_MD5);
++#ifdef USE_GNUTLS
+ 	COMBOBOX_ADD (menu, "OAUTH2", SMTPAUTH_OAUTH2);
++#endif
+ 	COMBOBOX_ADD (menu, "DIGEST-MD5", SMTPAUTH_DIGEST_MD5);
+ 	gtk_list_store_set(menu, &iter, COMBOBOX_SENS, FALSE, -1);
+ 
+@@ -2165,6 +2196,7 @@
+ 	page->page.widget = vbox1;
+ }
+ 
++#ifdef USE_GNUTLS
+ static void oauth2_create_widget_func(PrefsPage * _page,
+                                            GtkWindow * window,
+                                            gpointer data)
+@@ -2379,6 +2411,7 @@
+ 	/* 	oauth2_encode(OAUTH2info[0][OA2_CLIENT_ID]); */
+ 
+ }
++#endif
+ 
+ static void compose_create_widget_func(PrefsPage * _page,
+                                            GtkWindow * window,
+@@ -3612,8 +3645,10 @@
+ 			gtk_entry_get_text(GTK_ENTRY(basic_page.pass_entry)),
+ 			FALSE);
+ 
++#ifdef USE_GNUTLS
+ 	/* Manual password change - reset expiry on OAUTH2 tokens*/
+ 	passwd_store_set_account(tmp_ac_prefs.account_id, PWS_ACCOUNT_OAUTH2_EXPIRY, "0", FALSE);
++#endif
+ 
+ 	if (protocol == A_IMAP4 || protocol == A_NNTP) {
+ 		new_id = g_strdup_printf("#%s/%s",
+@@ -3656,13 +3691,15 @@
+ 			PWS_ACCOUNT_SEND,
+ 			gtk_entry_get_text(GTK_ENTRY(send_page.smtp_pass_entry)),
+ 			FALSE);
+-
++#ifdef USE_GNUTLS
+ 	/* Manual password change - reset expiry on OAUTH2 tokens*/
+ 	passwd_store_set_account(tmp_ac_prefs.account_id, PWS_ACCOUNT_OAUTH2_EXPIRY, "0", FALSE);
++#endif
+ 
+ 	return 0;
+ }
+ 
++#ifdef USE_GNUTLS
+ static gint prefs_oauth2_apply(void)
+ {
+ 	prefs_set_data_from_dialog(oauth2_param);
+@@ -3675,6 +3712,7 @@
+ 
+  	return 0;
+ }
++#endif
+ 
+ static gint prefs_compose_apply(void)
+ {
+@@ -3773,10 +3811,12 @@
+ 	/* SendPage *page = (SendPage *) _page; */
+ }
+ 
++#ifdef USE_GNUTLS
+ static void oauth2_destroy_widget_func(PrefsPage *_page)
+ {
+ 	/* Oauth2Page *page = (Oauth2Page *) _page; */
+ }
++#endif
+ 
+ static void compose_destroy_widget_func(PrefsPage *_page)
+ {
+@@ -3840,6 +3880,7 @@
+ 	return prefs_send_apply() >= 0;
+ }
+ 
++#ifdef USE_GNUTLS
+ static gboolean oauth2_can_close_func(PrefsPage *_page)
+ {	
+ 	Oauth2Page *page = (Oauth2Page *) _page;
+@@ -3849,6 +3890,7 @@
+ 
+ 	return prefs_oauth2_apply() >= 0;
+ }
++#endif
+ 
+ static gboolean compose_can_close_func(PrefsPage *_page)
+ {	
+@@ -3945,6 +3987,7 @@
+ 		cancelled = FALSE;
+ }
+ 
++#ifdef USE_GNUTLS
+ static void oauth2_save_func(PrefsPage *_page)
+ {
+ 	Oauth2Page *page = (Oauth2Page *) _page;
+@@ -3955,6 +3998,7 @@
+ 	if (prefs_oauth2_apply() >= 0)
+ 		cancelled = FALSE;
+ }
++#endif
+ 
+ static void compose_save_func(PrefsPage *_page)
+ {
+@@ -4090,6 +4134,7 @@
+ 	prefs_account_register_page((PrefsPage *) &send_page);
+ }
+ 
++#ifdef USE_GNUTLS
+ static void register_oauth2_page(void)
+ {
+ 	static gchar *path[3];
+@@ -4107,6 +4152,7 @@
+ 
+ 	prefs_account_register_page((PrefsPage *) &oauth2_page);
+ }
++#endif
+ 
+ static void register_compose_page(void)
+ {
+@@ -4296,7 +4342,9 @@
+ 	hooks_register_hook(SSL_CERT_GET_PASSWORD, sslcert_get_password, NULL);
+ #endif
+ 	register_proxy_page();
++#ifdef USE_GNUTLS
+ 	register_oauth2_page();
++#endif
+ 	register_advanced_page();
+ }
+ 
+@@ -5043,6 +5091,7 @@
+ 	combobox_select_by_data(optmenu, type);
+ }
+ 
++#ifdef USE_GNUTLS
+ static void prefs_account_oauth2_provider_set_data_from_optmenu(PrefParam *pparam)
+ {
+ 	*((Oauth2Service *)pparam->data) =
+@@ -5177,6 +5226,7 @@
+ 	g_free(trim_text);
+ 	g_free(OAUTH2Data);
+ }
++#endif
+ 
+ static void prefs_account_set_autochk_interval_to_widgets(PrefParam *pparam)
+ {
+diff -Naur claws-mail-4.1.0.orig/src/prefs_account.h claws-mail-4.1.0/src/prefs_account.h
+--- claws-mail-4.1.0.orig/src/prefs_account.h	2022-03-19 13:03:24.000000000 +0100
++++ claws-mail-4.1.0/src/prefs_account.h	2022-07-23 22:10:48.328673863 +0200
+@@ -1,6 +1,6 @@
+ /*
+  * Claws Mail -- a GTK based, lightweight, and fast e-mail client
+- * Copyright (C) 1999-2012 Hiroyuki Yamamoto and the Claws Mail team
++ * Copyright (C) 1999-2022 the Claws Mail team and Hiroyuki Yamamoto
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff -Naur claws-mail-4.1.0.orig/src/send_message.c claws-mail-4.1.0/src/send_message.c
+--- claws-mail-4.1.0.orig/src/send_message.c	2022-03-19 13:03:24.000000000 +0100
++++ claws-mail-4.1.0/src/send_message.c	2022-07-23 22:10:48.328673863 +0200
+@@ -57,7 +57,9 @@
+ #include "log.h"
+ #include "passwordstore.h"
+ #include "file-utils.h"
++#ifdef USE_GNUTLS
+ #include "oauth2.h"
++#endif
+ 
+ typedef struct _SendProgressDialog	SendProgressDialog;
+ 
+@@ -282,6 +284,9 @@
+ 		    strlen(ac_prefs->gnutls_priority))
+ 			session->gnutls_priority = g_strdup(ac_prefs->gnutls_priority);
+ 		session->use_tls_sni = ac_prefs->use_tls_sni;
++
++		if (ac_prefs->use_smtp_auth && ac_prefs->smtp_auth_type == SMTPAUTH_OAUTH2)
++		        oauth2_check_passwds (ac_prefs);
+ #else
+ 		if (ac_prefs->ssl_smtp != SSL_NONE) {
+ 			if (alertpanel_full(_("Insecure connection"),
+@@ -299,9 +304,6 @@
+ 		}
+ 		port = ac_prefs->set_smtpport ? ac_prefs->smtpport : SMTP_PORT;
+ #endif
+-		
+-		if(ac_prefs->use_smtp_auth && ac_prefs->smtp_auth_type == SMTPAUTH_OAUTH2)
+-		        oauth2_check_passwds (ac_prefs);
+ 
+ 		if (ac_prefs->use_smtp_auth) {
+ 			smtp_session->forced_auth_type = ac_prefs->smtp_auth_type;
