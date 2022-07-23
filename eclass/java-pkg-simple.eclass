@@ -6,7 +6,7 @@
 # java@gentoo.org
 # @AUTHOR:
 # Java maintainers <java@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Eclass for packaging Java software with ease.
 # @DESCRIPTION:
 # This class is intended to build pure Java packages from Java sources
@@ -16,8 +16,8 @@
 # addressed by an ebuild by putting corresponding files into the target
 # directory before calling the src_compile function of this eclass.
 
-case ${EAPI:-0} in
-	5|6) inherit eutils ;; # eutils for eqawarn
+case ${EAPI} in
+	6) inherit eutils ;; # eutils for eqawarn
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
@@ -468,10 +468,6 @@ java-pkg-simple_src_install() {
 		java-pkg_dosrc ${srcdirs}
 	fi
 
-	if [[ ${EAPI} == 5 ]]; then
-		# einstalldocs is only available on EAPI >= 6.
-		return
-	fi
 	einstalldocs
 }
 
