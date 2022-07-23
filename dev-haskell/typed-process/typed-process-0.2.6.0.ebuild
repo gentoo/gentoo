@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Run external processes, with strong typing of streams"
-HOMEPAGE="https://haskell-lang.org/library/typed-process"
+HOMEPAGE="https://github.com/fpco/typed-process"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
