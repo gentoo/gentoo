@@ -6,18 +6,7 @@
 # base-system@gentoo.org
 # @SUPPORTED_EAPIS: 6 7
 # @BLURB: many extra (but common) functions that are used in ebuilds
-# @DESCRIPTION:
-# The eutils eclass contains a suite of functions that complement
-# the ones that ebuild.sh already contain.  The idea is that the functions
-# are not required in all ebuilds but enough utilize them to have a common
-# home rather than having multiple ebuilds implementing the same thing.
-#
-# Due to the nature of this eclass, some functions may have maintainers
-# different from the overall eclass!
-#
-# This eclass is DEPRECATED and must not be inherited by any new ebuilds
-# or eclasses.  Use the more specific split eclasses instead, or native
-# package manager functions when available.
+# @DEPRECATED native package manager functions, more specific eclasses
 
 if [[ -z ${_EUTILS_ECLASS} ]]; then
 _EUTILS_ECLASS=1
