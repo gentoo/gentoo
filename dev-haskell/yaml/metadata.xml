@@ -7,14 +7,14 @@
 	</maintainer>
 	<longdescription>
 		Provides support for parsing and emitting Yaml documents.
-		
+
 		This package includes the full libyaml C library version 0.1.12 by Kirill
 		Simonov (&lt;http://pyyaml.org/wiki/LibYAML&gt;) in the package so you
 		don't need to worry about any non-Haskell dependencies.
 	</longdescription>
 	<use>
-		<flag name="no-examples">don't build the examples</flag>
-		<flag name="no-exe">don't install the yaml2json executable</flag>
+		<flag name="examples">Install the haskell-yaml-examples executable</flag>
+		<flag name="executable">Install the yaml2json and json2yaml executables</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">snoyberg/yaml</remote-id>
