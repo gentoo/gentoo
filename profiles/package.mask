@@ -202,7 +202,6 @@ dev-haskell/listlike
 dev-haskell/logict-state
 dev-haskell/lrucache
 dev-haskell/maccatcher
-dev-haskell/markdown-unlit
 dev-haskell/mersenne-random-pure64
 dev-haskell/mime
 dev-haskell/mime-mail
