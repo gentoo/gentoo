@@ -1,0 +1,12 @@
+Newer setuptools dropped 2to3 support, so let's call it in the ebuild instead.
+--- a/setup.py
++++ b/setup.py
+@@ -7,8 +7,6 @@ try:
+     setupopts = {
+             'test_suite':"fdsend.tests",
+         }
+-    if sys.version_info >= (3,):
+-        setupopts['use_2to3'] = True
+ except ImportError:
+     from distutils.core import setup
+     setupopts = {}
