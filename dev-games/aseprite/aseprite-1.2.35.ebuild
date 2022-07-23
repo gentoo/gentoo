@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake desktop ninja-utils toolchain-funcs xdg-utils
 
@@ -23,13 +23,9 @@ IUSE="kde test webp"
 RESTRICT="bindist mirror !test? ( test )"
 
 RDEPEND="
-	kde? (
-		dev-qt/qtcore:5
-		kde-frameworks/kio:5
-	)
-	webp? ( media-libs/libwebp )
-	app-arch/libarchive
-	app-text/cmark
+	app-arch/libarchive:=
+	app-text/cmark:=
+	dev-cpp/json11
 	dev-libs/tinyxml
 	media-libs/freetype
 	media-libs/giflib:=
@@ -39,7 +35,16 @@ RDEPEND="
 	net-misc/curl
 	sys-libs/zlib:=
 	virtual/opengl
-	x11-libs/pixman"
+	x11-libs/libX11
+	x11-libs/libXcursor
+	x11-libs/libxcb:=
+	kde? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		kde-frameworks/kio:5
+	)
+	webp? ( media-libs/libwebp:= )"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	test? ( dev-cpp/gtest )
 	app-arch/unzip
