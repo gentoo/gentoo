@@ -162,7 +162,6 @@ dev-haskell/hs-bibutils
 dev-haskell/hs3
 dev-haskell/hsb2hs
 dev-haskell/hspec-smallcheck
-dev-haskell/hsql
 dev-haskell/hsql-odbc
 dev-haskell/hsql-sqlite3
 dev-haskell/hstringtemplate
