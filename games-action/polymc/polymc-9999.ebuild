@@ -47,15 +47,16 @@ REQUIRED_USE="
 RESTRICT="!test? ( test )"
 
 MIN_QT="5.12.0"
+QT_SLOT=5
 
 QT_DEPS="
-	>=dev-qt/qtconcurrent-${MIN_QT}:5
-	>=dev-qt/qtcore-${MIN_QT}:5
-	>=dev-qt/qtgui-${MIN_QT}:5
-	>=dev-qt/qtnetwork-${MIN_QT}:5
-	>=dev-qt/qttest-${MIN_QT}:5
-	>=dev-qt/qtwidgets-${MIN_QT}:5
-	>=dev-qt/qtxml-${MIN_QT}:5
+	>=dev-qt/qtconcurrent-${MIN_QT}:${QT_SLOT}
+	>=dev-qt/qtcore-${MIN_QT}:${QT_SLOT}
+	>=dev-qt/qtgui-${MIN_QT}:${QT_SLOT}
+	>=dev-qt/qtnetwork-${MIN_QT}:${QT_SLOT}
+	>=dev-qt/qttest-${MIN_QT}:${QT_SLOT}
+	>=dev-qt/qtwidgets-${MIN_QT}:${QT_SLOT}
+	>=dev-qt/qtxml-${MIN_QT}:${QT_SLOT}
 "
 
 # Required at both build-time and run-time
@@ -98,7 +99,7 @@ src_configure(){
 		# Resulting binary is named polymc
 		-DLauncher_APP_BINARY_NAME="${PN}"
 		# Force Qt5 to avoid accidentaly building the Qt6 version and breaking things
-		-DLauncher_QT_VERSION_MAJOR=5
+		-DLauncher_QT_VERSION_MAJOR=${QT_SLOT}
 
 		-DENABLE_LTO=$(usex lto)
 		-DBUILD_TESTING=$(usex test)
