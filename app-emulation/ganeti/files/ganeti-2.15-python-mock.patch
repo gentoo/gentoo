@@ -1,0 +1,26 @@
+diff --git a/test/py/cmdlib/test_unittest.py b/test/py/cmdlib/test_unittest.py
+index f93f99d..2d0d083 100644
+--- a/test/py/cmdlib/test_unittest.py
++++ b/test/py/cmdlib/test_unittest.py
+@@ -85,7 +85,7 @@ class TestLUTestDelay(CmdlibTestCase):
+ 
+     self.ExecOpCode(op)
+ 
+-    self.rpc.call_test_delay.assert_called_once()
++    assert self.rpc.call_test_delay.called
+ 
+   def testFailingRpc(self):
+     op = opcodes.OpTestDelay(duration=DELAY_DURATION,
+diff --git a/test/py/testutils/__init__.py b/test/py/testutils/__init__.py
+index 27ca425..04ea0ee 100644
+--- a/test/py/testutils/__init__.py
++++ b/test/py/testutils/__init__.py
+@@ -242,7 +242,7 @@ def patch_object(*args, **kwargs):
+   This function unifies the different variations.
+ 
+   """
+-  import mock
++  from mock import mock
+   try:
+     # pylint: disable=W0212
+     return mock._patch_object(*args, **kwargs)

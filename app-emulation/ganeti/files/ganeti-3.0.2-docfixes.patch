@@ -1,0 +1,11 @@
+diff -Nuar ganeti-3.0.2.orig/doc/index.rst ganeti-3.0.2/doc/index.rst
+--- ganeti-3.0.2.orig/doc/index.rst	2022-06-21 22:50:29.119540902 -0700
++++ ganeti-3.0.2/doc/index.rst	2022-06-21 22:55:40.645219873 -0700
+@@ -120,6 +120,7 @@
+    design-internal-shutdown.rst
+    design-kvmd.rst
+    design-linuxha.rst
++   design-location.rst
+    design-lu-generated-jobs.rst
+    design-monitoring-agent.rst
+    design-move-instance-improvements.rst

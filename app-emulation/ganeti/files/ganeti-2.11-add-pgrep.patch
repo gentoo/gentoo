@@ -1,0 +1,25 @@
+diff --git a/daemons/daemon-util.in b/daemons/daemon-util.in
+index 656dc95..01f2cbb 100644
+--- a/daemons/daemon-util.in
++++ b/daemons/daemon-util.in
+@@ -246,12 +246,14 @@ start() {
+   @PKGLIBDIR@/ensure-dirs
+ 
+   if type -p start-stop-daemon >/dev/null; then
+-    start-stop-daemon --start --quiet \
+-      --pidfile $pidfile \
+-      --exec $daemonexec \
+-      --user $usergroup \
+-      --wait 300 \
+-      -- $args "$@"
++    if ! ret=$(/usr/bin/pgrep $name) ; then
++      start-stop-daemon --start --quiet \
++        --pidfile $pidfile \
++        --exec $daemonexec \
++        --user $usergroup \
++        --wait 300 \
++        -- $args "$@"
++    fi
+   else
+     # TODO: Find a way to start daemon with a group, until then the group must
+     # be removed

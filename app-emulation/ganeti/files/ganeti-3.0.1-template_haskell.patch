@@ -1,0 +1,24 @@
+API change in version 2.16 (shipped with ghc-8.10) which changed the type for
+the TupE constructor from [Exp] to [Maybe Exp].
+
+Thanks-To: solpeth in #gentoo-haskell
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+--- ganeti-3.0.1/src/Ganeti/THH/Types.hs	2021-02-03 09:24:44.000000000 -0800
++++ ganeti-3.0.1.modified//src/Ganeti/THH/Types.hs	2021-08-14 21:37:38.027556528 -0700
+@@ -122,5 +122,13 @@
+ curryN n = do
+   f <- newName "f"
+   ps <- replicateM n (newName "x")
+-  return $ LamE (VarP f : map VarP ps)
+-             (AppE (VarE f) (TupE $ map VarE ps))
++  -- return $ LamE (VarP f : map VarP ps)
++  --            (AppE (VarE f) (TupE $ map VarE ps))
++  let args = map VarP (f:ps)
++      ntup = TupE
++#if MIN_VERSION_template_haskell(2,16,0)
++                   $ map Just (map VarE ps)
++#else
++	               (map VarE ps)
++#endif
++  return $ LamE args (AppE (VarE f) ntup)

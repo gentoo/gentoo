@@ -1,0 +1,79 @@
+--- ganeti-3.0.1.orig/autotools/check-python-code	2021-02-03 09:24:44.000000000 -0800
++++ ganeti-3.0.1/autotools/check-python-code	2021-08-17 22:09:01.279286516 -0700
+@@ -32,9 +32,10 @@
+ # Ensure the checks always use the same locale
+ export LC_ALL=C
+
+-readonly maxlinelen=$(for ((i=0; i<81; ++i)); do echo -n .; done)
++readonly maxlinelen_num=120
++readonly maxlinelen=$(for ((i=0; i<$maxlinelen_num; ++i)); do echo -n .; done)
+
+-if [[ "${#maxlinelen}" != 81 ]]; then
++if [[ "${#maxlinelen}" != $maxlinelen_num ]]; then
+   echo "Internal error: Check for line length is incorrect" >&2
+   exit 1
+ fi
+@@ -68,7 +69,7 @@
+
+   if grep -n -H "^$maxlinelen" "$script"; then
+     let ++problems
+-    echo "Longest line in $script is longer than 80 characters" >&2
++    echo "Longest line in $script is longer than $maxlinelen_num characters" >&2
+   fi
+
+   if grep -n -H -E -i \
+--- ganeti-3.0.1.orig/test/py/ganeti.cli_unittest.py	2021-02-03 09:24:44.000000000 -0800
++++ ganeti-3.0.1/test/py/ganeti.cli_unittest.py	2021-08-17 22:40:45.098873762 -0700
+@@ -1140,7 +1140,7 @@
+         if len(keyparts) > 1:
+           self._RenameDictItem(minmax, key, keyparts[0])
+     self.assertTrue(constants.IPOLICY_DTS in parsed)
+-    parsed[constants.IPOLICY_DTS] = yaml.load("[%s]" %
++    parsed[constants.IPOLICY_DTS] = yaml.full_load("[%s]" %
+                                               parsed[constants.IPOLICY_DTS])
+
+   @staticmethod
+@@ -1148,7 +1148,7 @@
+     formatted = cli.FormatPolicyInfo(custom, effective, iscluster)
+     buf = StringIO()
+     cli._SerializeGenericInfo(buf, formatted, 0)
+-    return yaml.load(buf.getvalue())
++    return yaml.full_load(buf.getvalue())
+
+   def _PrintAndCheckParsed(self, policy):
+     parsed = self._PrintAndParsePolicy(policy, NotImplemented, True)
+--- ganeti-3.0.1.orig/qa/qa_utils.py	2021-02-03 09:24:44.000000000 -0800
++++ ganeti-3.0.1/qa/qa_utils.py	2021-08-17 22:40:45.099873801 -0700
+@@ -450,7 +450,7 @@
+   master = qa_config.GetMasterNode()
+   cmdline = utils.ShellQuoteArgs(infocmd)
+   info_out = GetCommandOutput(master.primary, cmdline)
+-  return yaml.load(info_out)
++  return yaml.full_load(info_out)
+
+
+ def UploadFile(node, src):
+diff -Nuar ganeti-3.0.1.orig/test/py/ganeti.hooks_unittest.py ganeti-3.0.1/test/py/ganeti.hooks_unittest.py
+--- ganeti-3.0.1.orig/test/py/ganeti.hooks_unittest.py	2021-08-17 22:49:00.459354704 -0700
++++ ganeti-3.0.1/test/py/ganeti.hooks_unittest.py	2021-08-17 23:16:29.276890680 -0700
+@@ -66,6 +66,8 @@
+ class TestHooksRunner(unittest.TestCase):
+   """Testing case for HooksRunner"""
+   def setUp(self):
++    # See all differences in env
++    self.maxDiff = None
+     self.torm = []
+     self.tmpdir = tempfile.mkdtemp()
+     self.torm.append((self.tmpdir, True))
+diff -Nuar ganeti-3.0.1.orig/test/py/ganeti.utils.process_unittest.py ganeti-3.0.1/test/py/ganeti.utils.process_unittest.py
+--- ganeti-3.0.1.orig/test/py/ganeti.utils.process_unittest.py	2021-08-17 22:49:00.458354624 -0700
++++ ganeti-3.0.1/test/py/ganeti.utils.process_unittest.py	2021-08-17 23:19:04.413002771 -0700
+@@ -208,6 +208,8 @@
+
+   def setUp(self):
+     testutils.GanetiTestCase.setUp(self)
++    # See all differences in env
++    self.maxDiff = None
+     self.magic = time.ctime() + " ganeti test"
+     self.fname = self._CreateTempFile()
+     self.fifo_tmpdir = tempfile.mkdtemp()

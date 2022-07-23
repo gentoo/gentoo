@@ -1,0 +1,9 @@
+diff -Nuar ganeti-3.0.1.orig/lib/build/shell_example_lexer.py ganeti-3.0.1/lib/build/shell_example_lexer.py
+--- ganeti-3.0.1.orig/lib/build/shell_example_lexer.py	2021-02-03 09:24:44.000000000 -0800
++++ ganeti-3.0.1/lib/build/shell_example_lexer.py	2021-08-17 21:30:34.049432703 -0700
+@@ -79,4 +79,4 @@
+
+
+ def setup(app):
+-  app.add_lexer("shell-example", ShellExampleLexer())
++  app.add_lexer("shell-example", ShellExampleLexer)
