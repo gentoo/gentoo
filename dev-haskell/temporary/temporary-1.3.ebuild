@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Portable temporary file and directory support for Windows and Unix"
-HOMEPAGE="https://github.com/feuerbach/temporary"
+HOMEPAGE="https://github.com/UnkindPartition/temporary"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
