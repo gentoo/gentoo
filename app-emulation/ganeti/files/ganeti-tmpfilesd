@@ -1,0 +1,41 @@
+# needs to be readable by ganeti
+f /etc/ganeti/file-storage-paths 0640 root root -
+
+# stateful ganeti stuff
+d /var/lib/ganeti 0755 root root -
+d /var/lib/ganeti/queue 0750 root root -
+d /var/lib/ganeti/queue/archive 0750 root root -
+d /var/lib/ganeti/rapi 0750 root root -
+
+# places to store data
+d /srv/ganeti/file-storage - - - -
+d /srv/ganeti/shared-file-storage - - - -
+d /srv/ganeti/export - - - -
+d /srv/ganeti/os - - -
+d /srv/ganeti/extstorage - - - -
+
+# Needed to run ganeti
+d /run/ganeti/ 0775 root root
+d /run/ganeti/bdev-cache 0755 root root
+d /run/ganeti/chroot-hypervisor 0775 root root
+d /run/ganeti/crypto 0700 root root
+d /run/ganeti/fake-hypervisor 0775 root root
+d /run/ganeti/gluster 0750 root root -
+d /run/ganeti/import-export 0755 root root
+d /run/ganeti/instance-disks 0755 root root
+d /run/ganeti/instance-reason 0755 root root
+d /run/ganeti/kvm-hypervisor 0775 root root
+d /run/ganeti/kvm-hypervisor/chroot 0775 root root
+d /run/ganeti/kvm-hypervisor/chroot-quarantine 0775 root root
+d /run/ganeti/kvm-hypervisor/conf 0775 root root
+d /run/ganeti/kvm-hypervisor/ctrl 0775 root root
+d /run/ganeti/kvm-hypervisor/keymap 0775 root root
+d /run/ganeti/kvm-hypervisor/nic 0775 root root
+d /run/ganeti/kvm-hypervisor/pid 0775 root root
+d /run/ganeti/kvm-hypervisor/uid 0775 root root
+d /run/ganeti/livelocks 0750 root root
+d /run/ganeti/luxidmessages 0750 root root
+d /run/ganeti/lxc 0755 root root
+d /run/ganeti/lxc/instance 0750 root root
+d /run/ganeti/socket 0770 root root
+d /run/ganeti/uid-pool 0750 root root

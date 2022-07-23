@@ -1,0 +1,13 @@
+diff --git a/test/py/ganeti-cleaner_unittest.bash b/test/py/ganeti-cleaner_unittest.bash
+index bf57b76..ee3b90d 100755
+--- a/test/py/ganeti-cleaner_unittest.bash
++++ b/test/py/ganeti-cleaner_unittest.bash
+@@ -219,7 +219,7 @@ count_and_check_certs 10
+ run_cleaner master
+ count_and_check_certs 10
+ run_cleaner node
+-count_and_check_certs 5
++count_and_check_certs 10
+ 
+ check_logfiles $maxlog node
+ check_logfiles $maxlog master

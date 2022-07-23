@@ -1,0 +1,122 @@
+From c3697936405ed8c95b674a7d412886e364306f5f Mon Sep 17 00:00:00 2001
+Message-Id: <c3697936405ed8c95b674a7d412886e364306f5f.1483650125.git.robbat2@gentoo.org>
+From: "Robin H. Johnson" <robbat2@gentoo.org>
+Date: Thu, 29 Sep 2016 08:57:28 -0700
+Subject: [PATCH-2.15] kvm: use_guest_agent: QEMU Guest Agent support
+
+Implement the QEMU Guest Agent sockets, so that code/scripts on the
+hypervisors can communicate with guest operating systems easily.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+---
+ lib/hypervisor/hv_kvm/__init__.py | 23 +++++++++++++++++++++++
+ man/gnt-instance.rst              |  7 +++++++
+ src/Ganeti/Constants.hs           |  5 +++++
+ 3 files changed, 35 insertions(+)
+
+diff --git a/lib/hypervisor/hv_kvm/__init__.py b/lib/hypervisor/hv_kvm/__init__.py
+index cd29baa38..89bc18b85 100644
+--- a/lib/hypervisor/hv_kvm/__init__.py
++++ b/lib/hypervisor/hv_kvm/__init__.py
+@@ -351,6 +351,7 @@ class KVMHypervisor(hv_base.BaseHypervisor):
+     constants.HV_MIGRATION_BANDWIDTH: hv_base.REQ_NONNEGATIVE_INT_CHECK,
+     constants.HV_MIGRATION_DOWNTIME: hv_base.REQ_NONNEGATIVE_INT_CHECK,
+     constants.HV_MIGRATION_MODE: hv_base.MIGRATION_MODE_CHECK,
++    constants.HV_USE_GUEST_AGENT: hv_base.NO_CHECK,
+     constants.HV_USE_LOCALTIME: hv_base.NO_CHECK,
+     constants.HV_DISK_CACHE:
+       hv_base.ParamInSet(True, constants.HT_VALID_CACHE_TYPES),
+@@ -581,6 +582,13 @@ class KVMHypervisor(hv_base.BaseHypervisor):
+     """
+     return utils.PathJoin(cls._CTRL_DIR, "%s.qmp" % instance_name)
+ 
++  @classmethod
++  def _InstanceQemuGuestAgentMonitor(cls, instance_name):
++    """Returns the instance serial QEMU Guest Agent socket name
++
++    """
++    return utils.PathJoin(cls._CTRL_DIR, "%s.qga" % instance_name)
++
+   @classmethod
+   def _InstanceKvmdMonitor(cls, instance_name):
+     """Returns the instance kvm daemon socket name
+@@ -667,6 +675,7 @@ class KVMHypervisor(hv_base.BaseHypervisor):
+     utils.RemoveFile(cls._InstanceMonitor(instance_name))
+     utils.RemoveFile(cls._InstanceSerial(instance_name))
+     utils.RemoveFile(cls._InstanceQmpMonitor(instance_name))
++    utils.RemoveFile(cls._InstanceQemuGuestAgentMonitor(instance_name))
+     utils.RemoveFile(cls._InstanceKVMRuntime(instance_name))
+     utils.RemoveFile(cls._InstanceKeymapFile(instance_name))
+     uid_file = cls._InstanceUidFile(instance_name)
+@@ -1376,6 +1385,20 @@ class KVMHypervisor(hv_base.BaseHypervisor):
+     if self._UUID_RE.search(kvmhelp):
+       kvm_cmd.extend(["-uuid", instance.uuid])
+ 
++    # Add guest agent socket
++    if hvp[constants.HV_USE_GUEST_AGENT]:
++      qga_addr = utils.GetFreeSlot(pci_reservations, reserve=True)
++      qga_pci_info = "bus=%s,addr=%s" % ('pci.0', hex(qga_addr))
++      qga_path = self._InstanceQemuGuestAgentMonitor(instance.name)
++      logging.info("KVM: Guest Agent available at %s", qga_path)
++      # The 'qga0' identified can change, but the 'org.qemu.guest_agent.0' string is
++      # the default expected by the Guest Agent.
++      kvm_cmd.extend([
++        "-chardev", "socket,path=%s,server,nowait,id=qga0" % qga_path,
++        "-device", "virtio-serial,id=qga0,%s" % qga_pci_info,
++        "-device", "virtserialport,chardev=qga0,name=org.qemu.guest_agent.0",
++        ])
++
+     if hvp[constants.HV_KVM_EXTRA]:
+       kvm_cmd.extend(hvp[constants.HV_KVM_EXTRA].split(" "))
+ 
+diff --git a/man/gnt-instance.rst b/man/gnt-instance.rst
+index a29fd7972..433b1f3b1 100644
+--- a/man/gnt-instance.rst
++++ b/man/gnt-instance.rst
+@@ -526,6 +526,13 @@ viridian
+     viridian (Hyper-V) for this instance. The default is false,
+     disabling viridian support.
+ 
++use\_guest\_agent
++    Valid for the KVM hypervisor.
++
++    A boolean option that specifies if the hypervisor should enable
++    the QEMU Guest Agent protocol for this instance. By default, the
++    Guest Agent is disabled.
++
+ use\_localtime
+     Valid for the Xen HVM and KVM hypervisors.
+ 
+diff --git a/src/Ganeti/Constants.hs b/src/Ganeti/Constants.hs
+index 09783d4bf..cf5421946 100644
+--- a/src/Ganeti/Constants.hs
++++ b/src/Ganeti/Constants.hs
+@@ -1806,6 +1806,9 @@ hvUsbMouse = "usb_mouse"
+ hvUseBootloader :: String
+ hvUseBootloader = "use_bootloader"
+ 
++hvUseGuestAgent :: String
++hvUseGuestAgent = "use_guest_agent"
++
+ hvUseLocaltime :: String
+ hvUseLocaltime = "use_localtime"
+ 
+@@ -1938,6 +1941,7 @@ hvsParameterTypes = Map.fromList
+   , (hvUsbDevices,                      VTypeString)
+   , (hvUsbMouse,                        VTypeString)
+   , (hvUseBootloader,                   VTypeBool)
++  , (hvUseGuestAgent,                   VTypeBool)
+   , (hvUseLocaltime,                    VTypeBool)
+   , (hvVga,                             VTypeString)
+   , (hvVhostNet,                        VTypeBool)
+@@ -3996,6 +4000,7 @@ hvcDefaults =
+           , (hvMigrationBandwidth,              PyValueEx (32 :: Int))
+           , (hvMigrationDowntime,               PyValueEx (30 :: Int))
+           , (hvMigrationMode,                   PyValueEx htMigrationLive)
++          , (hvUseGuestAgent,                   PyValueEx False)
+           , (hvUseLocaltime,                    PyValueEx False)
+           , (hvDiskCache,                       PyValueEx htCacheDefault)
+           , (hvSecurityModel,                   PyValueEx htSmNone)
+-- 
+2.11.0.rc2
+

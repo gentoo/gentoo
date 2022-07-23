@@ -1,0 +1,10 @@
+--- ganeti-3.0.1.orig/doc/index.rst	2021-02-03 09:24:44.000000000 -0800
++++ ganeti-3.0.1/doc/index.rst	2021-08-14 22:04:20.028241843 -0700
+@@ -121,7 +121,6 @@
+    design-kvmd.rst
+    design-location.rst
+    design-linuxha.rst
+-   design-location.rst
+    design-lu-generated-jobs.rst
+    design-monitoring-agent.rst
+    design-move-instance-improvements.rst

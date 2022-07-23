@@ -1,0 +1,18 @@
+--- a/Makefile.am	2013-11-13 01:48:34.733493100 +0000
++++ b/Makefile.am	2013-11-13 01:48:46.623657315 +0000
+@@ -1245,7 +1245,6 @@
+ 	test/py/cfgupgrade_unittest.py \
+ 	test/py/docs_unittest.py \
+ 	test/py/ganeti.asyncnotifier_unittest.py \
+-	test/py/ganeti.backend_unittest-runasroot.py \
+ 	test/py/ganeti.backend_unittest.py \
+ 	test/py/ganeti.bootstrap_unittest.py \
+ 	test/py/ganeti.cli_unittest.py \
+@@ -1308,7 +1307,6 @@
+ 	test/py/ganeti.utils.algo_unittest.py \
+ 	test/py/ganeti.utils.filelock_unittest.py \
+ 	test/py/ganeti.utils.hash_unittest.py \
+-	test/py/ganeti.utils.io_unittest-runasroot.py \
+ 	test/py/ganeti.utils.io_unittest.py \
+ 	test/py/ganeti.utils.log_unittest.py \
+ 	test/py/ganeti.utils.lvm_unittest.py \

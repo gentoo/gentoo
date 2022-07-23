@@ -1,0 +1,49 @@
+diff --git a/Makefile.am b/Makefile.am
+index 66ad714..5bd2e9c 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -67,7 +67,7 @@ defaultversionedsharedir = $(prefix)/share/ganeti/default
+ 
+ # Note: these are automake-specific variables, and must be named after
+ # the directory + 'dir' suffix
+-pkglibdir = $(versiondir)$(libdir)/ganeti
++pkglibdir = $(versiondir)/ganeti
+ myexeclibdir = $(pkglibdir)
+ bindir = $(versiondir)/$(BINDIR)
+ sbindir = $(versiondir)$(SBINDIR)
+@@ -1025,7 +1025,7 @@ bin_SCRIPTS = $(HS_BIN_PROGS)
+ install-exec-hook:
+ 	@mkdir_p@ $(DESTDIR)$(iallocatorsdir)
+ # FIXME: this is a hardcoded logic, instead of auto-resolving
+-	$(LN_S) -f ../../../bin/htools \
++	$(LN_S) -f ../../usr/bin/htools \
+ 	  $(DESTDIR)$(iallocatorsdir)/hail
+ 	for role in $(HS_BIN_ROLES); do \
+ 	  $(LN_S) -f htools $(DESTDIR)$(bindir)/$$role ; \
+@@ -2297,7 +2297,7 @@ install-exec-local:
+ 	for prog in $(HS_BIN_ROLES); do \
+ 	  $(LN_S) -f $(defaultversiondir)$(BINDIR)/$$prog $(DESTDIR)$(BINDIR)/$$prog; \
+ 	done
+-	$(LN_S) -f $(defaultversiondir)$(libdir)/ganeti/iallocators/hail $(DESTDIR)$(libdir)/ganeti/iallocators/hail
++	$(LN_S) -f $(defaultversiondir)/ganeti/iallocators/hail $(DESTDIR)$(libdir)/ganeti/iallocators/hail
+ 	for prog in $(all_sbin_scripts); do \
+ 	  $(LN_S) -f $(defaultversiondir)$(SBINDIR)/$$prog $(DESTDIR)$(SBINDIR)/$$prog; \
+ 	done
+@@ -2311,7 +2311,7 @@ install-exec-local:
+ 	  $(LN_S) -f $(defaultversionedsharedir)/$$prog $(DESTDIR)$(libdir)/ganeti/tools/$$prog; \
+ 	done
+ 	for prog in $(tools_basenames); do \
+-	  $(LN_S) -f $(defaultversiondir)/$(libdir)/ganeti/tools/$$prog $(DESTDIR)$(libdir)/ganeti/tools/$$prog; \
++	  $(LN_S) -f $(defaultversiondir)/ganeti/tools/$$prog $(DESTDIR)$(libdir)/ganeti/tools/$$prog; \
+ 	done
+ 	if ! test -n '$(ENABLE_MANPAGES)'; then \
+ 	  for man in $(manfullpath); do \
+@@ -2319,7 +2319,7 @@ install-exec-local:
+ 	  done; \
+ 	fi
+ 	for prog in $(myexeclib_scripts_basenames); do \
+-	  $(LN_S) -f $(defaultversiondir)$(libdir)/ganeti/$$prog $(DESTDIR)$(libdir)/ganeti/$$prog; \
++	  $(LN_S) -f $(defaultversiondir)/ganeti/$$prog $(DESTDIR)$(libdir)/ganeti/$$prog; \
+ 	done
+ if INSTALL_SYMLINKS
+ 	$(LN_S) -f $(versionedsharedir) $(DESTDIR)$(sysconfdir)/ganeti/share

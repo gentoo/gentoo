@@ -1,0 +1,47 @@
+Copied from 2.15.2 Debian Patches, as it was missed in the 2.16.0~rc1 debian patches.
+
+Author: Apollon Oikonomopoulos <apoikos@debian.org>
+Description: Fix FTBFS with sphinx 1.4
+ Suppress app.add_role warnings, as upstream knowingly overrides sphinx's
+ built-in manpage role. Without this, a warning is emitted which then turns to
+ an error when sphinx is run with the `-W' switch.
+ .
+ Also replace unicode ellipses in doc/design-query2.rst with three ascii dots,
+ as sphinx emits another warning for not being able to properly highlight these
+ lines as Python code.
+Last-Update: 2016-07-09
+Forwarded: no
+--- a/doc/conf.py
++++ b/doc/conf.py
+@@ -229,3 +229,8 @@
+ 
+ # If false, no module index is generated.
+ latex_use_modindex = False
++
++# We override the manpage role and sphinx issues a warning, which is treated as
++# error. Suppress role_add warnings to avoid FTBFS.
++
++suppress_warnings = ["app.add_role"]
+--- a/doc/design-query2.rst
++++ b/doc/design-query2.rst
+@@ -129,16 +129,16 @@
+   specific names, the filter must be specified as follows, with the
+   inner part repeated for each name::
+ 
+-    ["|", ["=", "name", "node1"], ["=", "name", "node2"], …]
++    ["|", ["=", "name", "node1"], ["=", "name", "node2"], ...]
+ 
+-  Filters consist of S-expressions (``["operator", <operants…>]``) and
++  Filters consist of S-expressions (``["operator", <operants...>]``) and
+   extensions will be made in the future to allow for more operators and
+   fields. Such extensions might include a Python-style "in" operator,
+   but for simplicity only "=" is supported in this implementation.
+ 
+   To reiterate: Filters for this implementation must consist of exactly
+-  one OR expression (``["|", …]``) and one or more name equality filters
+-  (``["=", "name", "…"]``).
++  one OR expression (``["|", ...]``) and one or more name equality filters
++  (``["=", "name", "..."]``).
+ 
+ Support for synchronous queries, currently available in the interface
+ but disabled in the master daemon, will be dropped. Direct calls to
