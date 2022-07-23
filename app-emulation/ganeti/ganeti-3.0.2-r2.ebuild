@@ -35,7 +35,7 @@ HOMEPAGE="http://www.ganeti.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="drbd experimental ipv6 kvm lxc monitoring multiple-users rbd syslog test xen restricted-commands"
+IUSE="drbd experimental ipv6 kvm lxc monitoring rbd syslog test xen restricted-commands"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="|| ( kvm xen lxc )
@@ -208,12 +208,14 @@ pkg_setup() {
 	local user
 	python-single-r1_pkg_setup
 
-	if use multiple-users; then
-		for user in gnt-{masterd,confd,luxid,rapi,daemons,admin}; do
-			enewgroup ${user}
-			enewuser ${user} -1 -1 -1 ${user}
-		done
-	fi
+	# Unknown if this functionality was ever used. Maybe re-introduce if issues
+	# reported.
+	#if use multiple-users; then
+	#	for user in gnt-{masterd,confd,luxid,rapi,daemons,admin}; do
+	#		enewgroup ${user}
+	#		enewuser ${user} -1 -1 -1 ${user}
+	#	done
+	#fi
 }
 
 # These flags get applied in src_prepare and src_configure
@@ -300,10 +302,10 @@ src_configure() {
 		--enable-metadata
 		$(use_enable restricted-commands)
 		$(use_enable test haskell-tests)
-		$(usex multiple-users "--with-default-user=" "" "gnt-daemons" "")
-		$(usex multiple-users "--with-user-prefix=" "" "${USER_PREFIX}" "")
-		$(usex multiple-users "--with-default-group=" "" "gnt-daemons" "")
-		$(usex multiple-users "--with-group-prefix=" "" "${GROUP_PREFIX}" "")
+		#$(usex multiple-users "--with-default-user=" "" "gnt-daemons" "")
+		#$(usex multiple-users "--with-user-prefix=" "" "${USER_PREFIX}" "")
+		#$(usex multiple-users "--with-default-group=" "" "gnt-daemons" "")
+		#$(usex multiple-users "--with-group-prefix=" "" "${GROUP_PREFIX}" "")
 		$(use_enable syslog)
 		$(use_enable monitoring)
 		$(usex kvm '--with-kvm-path=' '' "/usr/bin/qemu-system-${kvm_arch}" '')
