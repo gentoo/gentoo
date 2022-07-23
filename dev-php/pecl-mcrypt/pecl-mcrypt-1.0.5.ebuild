@@ -17,7 +17,8 @@ LICENSE="PHP-3.01"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
-DEPEND="dev-libs/libmcrypt"
+DEPEND="dev-libs/libltdl
+	dev-libs/libmcrypt"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
