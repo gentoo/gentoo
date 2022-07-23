@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit dune
 
 DESCRIPTION="Helpers for writing expectation tests"
@@ -15,7 +16,10 @@ KEYWORDS="~amd64"
 IUSE="+ocamlopt"
 
 DEPEND="
+	dev-ml/base:${SLOT}
+	dev-ml/core:${SLOT}
 	dev-ml/ppx_jane:${SLOT}
+	dev-ml/stdio:${SLOT}
 	dev-ml/sexp_pretty:${SLOT}
 "
 RDEPEND="${DEPEND}"
