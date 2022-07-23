@@ -13,12 +13,10 @@ inherit haskell-cabal
 
 DESCRIPTION="Singleton Tuple"
 HOMEPAGE="https://hackage.haskell.org/package/OneTuple"
-SRC_URI="https://hackage.haskell.org/package/${CABAL_PN}/${CABAL_PN}-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-S="${WORKDIR}/${CABAL_PN}-${PV}"
 
 RDEPEND=">=dev-haskell/base-orphans-0.8.6:=[profile?]
 	>=dev-haskell/hashable-1.3.5.0:=[profile?] <dev-haskell/hashable-1.5:=[profile?]
