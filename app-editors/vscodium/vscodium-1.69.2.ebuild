@@ -13,7 +13,7 @@ SRC_URI="
 	arm64? ( https://github.com/VSCodium/${PN}/releases/download/${PV}/VSCodium-linux-arm64-${PV}.tar.gz -> ${P}-arm64.tar.gz )
 "
 
-RESTRICT="mirror strip bindist"
+RESTRICT="strip bindist"
 
 LICENSE="
 	Apache-2.0
