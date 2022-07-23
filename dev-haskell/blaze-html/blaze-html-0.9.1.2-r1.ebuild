@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="A blazingly fast HTML combinator library for Haskell"
-HOMEPAGE="http://jaspervdj.be/blaze"
+HOMEPAGE="https://jaspervdj.be/blaze/"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
