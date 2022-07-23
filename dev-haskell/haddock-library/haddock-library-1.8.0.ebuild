@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,13 +23,13 @@ RDEPEND=">=dev-haskell/parsec-3.1.13.0:=[profile?] <dev-haskell/parsec-3.2:=[pro
 	>=dev-lang/ghc-7.8.2:=
 "
 DEPEND="${RDEPEND}
-	>=dev-haskell/cabal-2.2
-	test? ( >=dev-haskell/hspec-2.4.4 <dev-haskell/hspec-2.8
-		>=dev-haskell/optparse-applicative-0.15 <dev-haskell/optparse-applicative-0.16
-		>=dev-haskell/tree-diff-0.1 <dev-haskell/tree-diff-0.2
-		>=dev-haskell/base-compat-0.9.3 <dev-haskell/base-compat-0.12
-		>=dev-haskell/quickcheck-2.11 <dev-haskell/quickcheck-2.14 )
-"
+	>=dev-haskell/cabal-2.2"
+# 	test? ( >=dev-haskell/hspec-2.4.4 <dev-haskell/hspec-2.8
+# 		>=dev-haskell/optparse-applicative-0.15 <dev-haskell/optparse-applicative-0.16
+# 		>=dev-haskell/tree-diff-0.1 <dev-haskell/tree-diff-0.2
+# 		>=dev-haskell/base-compat-0.9.3 <dev-haskell/base-compat-0.12
+# 		>=dev-haskell/quickcheck-2.11 <dev-haskell/quickcheck-2.14 )
+# "
 
 src_prepare() {
 	default
