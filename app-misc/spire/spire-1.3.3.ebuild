@@ -18,8 +18,6 @@ COMMON_DEPEND="acct-group/spire
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
-RESTRICT="test"
-
 src_compile() {
 	local targets v
 	targets=(
