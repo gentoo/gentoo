@@ -11,11 +11,11 @@ inherit autotools bash-completion-r1 python-single-r1 tmpfiles
 MY_PV="${PV/_rc/~rc}"
 MY_PV="${MY_PV/_beta/~beta}"
 MY_P="${PN}-${MY_PV}"
-SERIES="3.0"
+SERIES="3.1"
 
 if [[ ${PV} =~ [9]{4,} ]] ; then
 	EGIT_REPO_URI="https://github.com/ganeti/ganeti"
-	EGIT_BRANCH="stable-$SERIES"
+	EGIT_BRANCH="master" # not branched yet
 	inherit git-r3
 	PATCHES=()
 else
