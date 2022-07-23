@@ -606,6 +606,7 @@ dev-ml/async_extra:0/0.15
 dev-ml/core_bench:0/0.15
 dev-ml/patience_diff:0/0.15
 dev-util/patdiff:0/0.15
+=dev-ml/alcotest-1.6.0*
 
 # Sam James <sam@gentoo.org> (2022-04-13)
 # 2.35.2 was a quick release to mitigate a security issue (bug #838127), but
