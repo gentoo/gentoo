@@ -8,7 +8,7 @@
 # Author: Diego E. Pettenò <flameeyes@gentoo.org>
 # Author: Alex Legler <a3li@gentoo.org>
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: An eclass for installing Ruby packages with proper support for multiple Ruby slots.
 # @DESCRIPTION:
 # The Ruby eclass is designed to allow an easier installation of Ruby packages
@@ -67,9 +67,6 @@
 # passed to "grep -E" to remove reporting of these shared objects.
 
 case ${EAPI} in
-	5)
-		inherit eutils toolchain-funcs
-		;;
 	6)
 		inherit estack toolchain-funcs
 		;;
@@ -86,7 +83,7 @@ EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_test src_i
 S="${WORKDIR}"
 
 case ${EAPI} in
-	5|6|7|8) ;;
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -214,7 +211,7 @@ ruby_add_rdepend() {
 		1) ;;
 		2)
 			case ${EAPI} in
-				5|6)
+				6)
 					[[ "${GENTOO_DEV}" == "yes" ]] && eqawarn "You can now use the usual syntax in ruby_add_rdepend for $CATEGORY/$PF"
 					ruby_add_rdepend "$(_ruby_wrap_conditions "$1" "$2")"
 					return
@@ -236,7 +233,7 @@ ruby_add_rdepend() {
 	# Add the dependency as a test-dependency since we're going to
 	# execute the code during test phase.
 	case ${EAPI} in
-		5|6) DEPEND="${DEPEND} test? ( ${dependency} )" ;;
+		6) DEPEND="${DEPEND} test? ( ${dependency} )" ;;
 		*) BDEPEND="${BDEPEND} test? ( ${dependency} )" ;;
 	esac
 	if ! has test "$IUSE"; then
@@ -261,7 +258,7 @@ ruby_add_bdepend() {
 		1) ;;
 		2)
 			case ${EAPI} in
-				5|6)
+				6)
 					[[ "${GENTOO_DEV}" == "yes" ]] && eqawarn "You can now use the usual syntax in ruby_add_bdepend for $CATEGORY/$PF"
 					ruby_add_bdepend "$(_ruby_wrap_conditions "$1" "$2")"
 					return
@@ -279,7 +276,7 @@ ruby_add_bdepend() {
 	local dependency=$(_ruby_atoms_samelib "$1")
 
 	case ${EAPI} in
-		5|6) DEPEND="${DEPEND} $dependency" ;;
+		6) DEPEND="${DEPEND} $dependency" ;;
 		*) BDEPEND="${BDEPEND} $dependency" ;;
 	esac
 	RDEPEND="${RDEPEND}"
@@ -294,7 +291,7 @@ ruby_add_depend() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	case ${EAPI} in
-		5|6) die "only available in EAPI 7 and newer" ;;
+		6) die "only available in EAPI 7 and newer" ;;
 		*) ;;
 	esac
 
@@ -368,7 +365,7 @@ if [[ ${RUBY_OPTIONAL} != yes ]]; then
 	RDEPEND="${RDEPEND} $(ruby_implementations_depend)"
 	REQUIRED_USE+=" || ( $(ruby_get_use_targets) )"
 	case ${EAPI} in
-		5|6) ;;
+		6) ;;
 		*) BDEPEND="${BDEPEND} $(ruby_implementations_depend)" ;;
 	esac
 fi
@@ -476,17 +473,6 @@ ruby-ng_src_unpack() {
 
 _ruby_apply_patches() {
 	case ${EAPI} in
-		5)
-			for patch in "${RUBY_PATCHES[@]}"; do
-				if [ -f "${patch}" ]; then
-					epatch "${patch}"
-				elif [ -f "${FILESDIR}/${patch}" ]; then
-					epatch "${FILESDIR}/${patch}"
-				else
-					die "Cannot find patch ${patch}"
-				fi
-			done
-			;;
 		6)
 			if [[ -n ${RUBY_PATCHES[@]} ]]; then
 			   eqawarn "RUBY_PATCHES is no longer supported, use PATCHES instead"
@@ -525,13 +511,7 @@ ruby-ng_src_prepare() {
 	find . -name '._*' -delete
 
 	# Handle PATCHES and user supplied patches via the default phase
-	case ${EAPI} in
-		5)
-			;;
-		*)
-			_ruby_invoke_environment all default
-			;;
-	esac
+	_ruby_invoke_environment all default
 
 	_ruby_invoke_environment all _ruby_apply_patches
 
