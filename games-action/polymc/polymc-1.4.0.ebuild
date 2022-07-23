@@ -65,10 +65,13 @@ COMMON_DEPENDS="
 	sys-libs/zlib
 "
 
+BDEPEND="
+	app-text/scdoc
+	kde-frameworks/extra-cmake-modules:5
+"
+
 DEPEND="
 	${COMMON_DEPENDS}
-	app-text/scdoc
-	kde-frameworks/extra-cmake-modules
 	media-libs/libglvnd
 	>=virtual/jdk-1.8.0:*
 "
