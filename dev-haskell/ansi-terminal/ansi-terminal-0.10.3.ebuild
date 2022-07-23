@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Simple ANSI terminal support, with Windows compatibility"
-HOMEPAGE="https://github.com/feuerbach/ansi-terminal"
+HOMEPAGE="https://github.com/UnkindPartition/ansi-terminal"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
