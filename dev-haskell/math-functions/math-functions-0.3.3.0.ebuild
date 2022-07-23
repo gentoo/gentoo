@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Special functions and Chebyshev polynomials"
-HOMEPAGE="https://github.com/bos/math-functions"
+HOMEPAGE="https://github.com/haskell/math-functions"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD-2"
