@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="HUnit support for the Tasty test framework"
-HOMEPAGE="https://github.com/feuerbach/tasty"
+HOMEPAGE="https://github.com/UnkindPartition/tasty"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
