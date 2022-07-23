@@ -35,6 +35,7 @@ fi
 if [[ ! ${_PYTHON_UTILS_R1} ]]; then
 
 [[ ${EAPI} == [67] ]] && inherit eapi8-dosym
+[[ ${EAPI} == 6 ]] && inherit eqawarn
 inherit multiprocessing toolchain-funcs
 
 # @ECLASS_VARIABLE: _PYTHON_ALL_IMPLS
