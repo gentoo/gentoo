@@ -24,7 +24,7 @@ _EUTILS_ECLASS=1
 
 # implicitly inherited (now split) eclasses
 case ${EAPI} in
-	6) inherit desktop edos2unix epatch estack ltprune multilib \
+	6) inherit desktop edos2unix epatch eqawarn estack ltprune multilib \
 			preserve-libs strip-linguas toolchain-funcs vcs-clean wrapper ;;
 	7) inherit edos2unix strip-linguas wrapper ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
@@ -49,18 +49,5 @@ use_if_iuse() {
 	eerror "    in_iuse foo && use foo"
 	die "use_if_iuse is banned"
 }
-
-# @FUNCTION: eqawarn
-# @USAGE: [message]
-# @DESCRIPTION:
-# Proxy to ewarn for package managers that don't provide eqawarn and use the PM
-# implementation if available. Reuses PORTAGE_ELOG_CLASSES as set by the dev
-# profile.
-if [[ ${EAPI} == 6 ]] && ! declare -F eqawarn >/dev/null ; then
-	eqawarn() {
-		has qa ${PORTAGE_ELOG_CLASSES} && ewarn "$@"
-		:
-	}
-fi
 
 fi
