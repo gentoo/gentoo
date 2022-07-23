@@ -22,7 +22,7 @@ gnome-base/gdm
 >=gnome-base/gnome-light-3.36.5
 >=gnome-base/gnome-shell-3.38
 >=gnome-base/librsvg-2.41
-gnome-extra/chrome-gnome-shell
+gnome-extra/gnome-browser-connector
 gnome-extra/gnome-tweaks
 media-libs/libavif
 media-video/rav1e

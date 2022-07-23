@@ -4,12 +4,15 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
+MY_PN="chrome-gnome-shell"
+MY_P="${MY_PN}-${PV}"
 
 inherit cmake python-single-r1
 
 DESCRIPTION="GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers"
 HOMEPAGE="https://wiki.gnome.org/Projects/GnomeShellIntegrationForChrome"
-SRC_URI="mirror://gnome/sources/${PN}/${PV}/${P}.tar.xz"
+SRC_URI="mirror://gnome/sources/${MY_PN}/${PV}/${MY_P}.tar.xz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3+"
 SLOT="0"
