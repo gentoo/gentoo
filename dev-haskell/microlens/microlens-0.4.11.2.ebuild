@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="A tiny lens library with no dependencies"
-HOMEPAGE="https://github.com/monadfix/microlens"
+HOMEPAGE="https://github.com/stevenfontanella/microlens"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
