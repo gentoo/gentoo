@@ -10,19 +10,19 @@
 		HTTP connections, transmitting requests and processing the responses coming back, all
 		from within the comforts of Haskell. It's dependent on the network package to operate,
 		but other than that, the implementation is all written in Haskell.
-		
+
 		A basic API for issuing single HTTP requests + receiving responses is provided. On top
 		of that, a session-level abstraction is also on offer  (the @BrowserAction@ monad);
 		it taking care of handling the management of persistent connections, proxies,
 		state (cookies) and authentication credentials required to handle multi-step
 		interactions with a web server.
-		
+
 		The representation of the bytes flowing across is extensible via the use of a type class,
 		letting you pick the representation of requests and responses that best fits your use.
 		Some pre-packaged, common instances are provided for you (@ByteString@, @String@.)
-		
+
 		Here's an example use:
-		
+
 		&gt;
 		&gt;    do
 		&gt;      rsp &lt;- Network.HTTP.simpleHTTP (getRequest "http://www.haskell.org/")
@@ -35,13 +35,9 @@
 		&gt;               request $ getRequest "https://google.com/"
 		&gt;      fmap (take 100) (getResponseBody rsp)
 		&gt;
-		
+
 		Git repository available at &lt;https://github.com/haskell/HTTP.git&gt;
 	</longdescription>
-	<use>
-		<flag name="conduit10">Use version 1.0.x or below of the conduit package (for the test suite).</flag>
-		<flag name="network-uri">Get Network.URI from the network-uri package.</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">haskell/HTTP</remote-id>
 	</upstream>
