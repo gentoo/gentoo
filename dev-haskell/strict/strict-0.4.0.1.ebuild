@@ -11,7 +11,7 @@ CABAL_HACKAGE_REVISION="4"
 inherit haskell-cabal
 
 DESCRIPTION="Strict data types and String IO"
-HOMEPAGE="https://github.com/haskell-strict/strict"
+HOMEPAGE="https://github.com/haskellari/strict"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz
 	https://hackage.haskell.org/package/${P}/revision/${CABAL_HACKAGE_REVISION}.cabal -> ${PF}.cabal"
 
