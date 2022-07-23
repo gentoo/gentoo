@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour" # test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Bindings to the ICU library"
-HOMEPAGE="https://github.com/bos/text-icu"
+HOMEPAGE="https://github.com/haskell/text-icu"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
