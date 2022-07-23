@@ -68,7 +68,7 @@
 
 case ${EAPI} in
 	6)
-		inherit estack toolchain-funcs
+		inherit eqawarn estack toolchain-funcs
 		;;
 	*)
 		inherit estack
