@@ -28,4 +28,12 @@ RDEPEND=">=dev-haskell/mtl-1.1.1:=[profile?] <dev-haskell/mtl-2.3:=[profile?]
 "
 DEPEND="${RDEPEND}"
 
-CABAL_CORE_LIB_GHC_PV="PM:8.8.4-r1 PM:8.10.5-r1 PM:8.10.6 PM:8.10.7 PM:9.0.1-r1 PM:9.0.2 PM:9999"
+CABAL_CORE_LIB_GHC_PV="PM:8.8.4-r1 PM:8.10.4-r1 PM:8.10.5-r1 PM:8.10.6 PM:8.10.7 PM:9.0.1-r1 PM:9.0.2 PM:9.0.2-r1 PM:9999"
+
+src_prepare() {
+	default
+	cabal_chdeps \
+		'base       >= 4.5.0   && < 4.14' 'base       >= 4.5.0' \
+		'bytestring >= 0.9.2.1 && < 0.11' 'bytestring >= 0.9.2.1' \
+		'semigroups >= 0.18 && < 0.20' 'semigroups >= 0.18'
+}
