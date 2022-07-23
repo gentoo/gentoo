@@ -17,7 +17,7 @@
 # directory before calling the src_compile function of this eclass.
 
 case ${EAPI} in
-	6) inherit eutils ;; # eutils for eqawarn
+	6) inherit eqawarn ;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
