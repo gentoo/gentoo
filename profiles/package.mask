@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Robin H. Johnson <robbat2@gentoo.org> (2022-07-23)
+# Prepare to re-introduce into the tree
+app-emulation/ganeti
+
 # Sam James <sam@gentoo.org> (2022-07-22)
 # Monolithic mask for dev-haskell/* packages which have no reverse dependencies,
 # are broken, or severely out of date. The aim is to have the Haskell overlay
