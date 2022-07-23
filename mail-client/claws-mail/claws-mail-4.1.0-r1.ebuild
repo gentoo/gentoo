@@ -111,6 +111,7 @@ RDEPEND="${COMMONDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-3.17.5-enchant-2_default.patch"
 	"${FILESDIR}/${PN}-4.1.0-perl-5.36.patch"
+	"${FILESDIR}/${PN}-4.1.0-disable_gnutls.patch"
 )
 
 src_prepare() {
