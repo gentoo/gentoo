@@ -16,7 +16,6 @@ SERIES="3.0"
 if [[ ${PV} =~ [9]{4,} ]] ; then
 	EGIT_REPO_URI="git://git.ganeti.org/ganeti.git"
 	inherit git-2
-	KEYWORDS=""
 	PATCHES=()
 else
 	DEBIAN_PV="${PV}"
