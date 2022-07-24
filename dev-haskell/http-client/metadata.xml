@@ -5,10 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<use>
-		<flag name="network-uri">Get Network.URI from the network-uri package.</flag>
-	</use>
-	<upstream>
-		<remote-id type="github">snoyberg/http-client</remote-id>
-	</upstream>
 </pkgmetadata>
