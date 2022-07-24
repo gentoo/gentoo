@@ -136,14 +136,14 @@ RDEPEND="
 	acct-user/saned
 	gphoto2? (
 		>=media-libs/libgphoto2-2.5.3.1:=[${MULTILIB_USEDEP}]
-		>=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}]
+		media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}]
 	)
 	sane_backends_canon_pp? ( >=sys-libs/libieee1284-0.2.11-r3[${MULTILIB_USEDEP}] )
-	sane_backends_dc210? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
-	sane_backends_dc240? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
+	sane_backends_dc210? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
+	sane_backends_dc240? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	sane_backends_dell1600n_net? (
 		>=media-libs/tiff-3.9.7-r1:0=[${MULTILIB_USEDEP}]
-		>=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}]
+		media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}]
 	)
 	sane_backends_escl? (
 		app-text/poppler[cairo]
@@ -156,7 +156,7 @@ RDEPEND="
 	)
 	sane_backends_hpsj5s? ( >=sys-libs/libieee1284-0.2.11-r3[${MULTILIB_USEDEP}] )
 	sane_backends_mustek_pp? ( >=sys-libs/libieee1284-0.2.11-r3[${MULTILIB_USEDEP}] )
-	sane_backends_pixma? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
+	sane_backends_pixma? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	snmp? ( net-analyzer/net-snmp:0= )
 	systemd? ( sys-apps/systemd:0= )
 	usb? ( >=virtual/libusb-1-r1:1=[${MULTILIB_USEDEP}] )
