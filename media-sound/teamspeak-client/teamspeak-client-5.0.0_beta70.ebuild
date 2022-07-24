@@ -14,7 +14,7 @@ KEYWORDS=""
 LICENSE="teamspeak5 || ( GPL-2 GPL-3 LGPL-3 )"
 SLOT="5"
 
-RDEPEND="
+RDEPEND="${PV}
 	app-accessibility/at-spi2-atk:2
 	dev-libs/atk
 	dev-libs/expat
