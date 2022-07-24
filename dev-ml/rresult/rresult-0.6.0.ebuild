@@ -11,7 +11,7 @@ SRC_URI="https://erratique.ch/software/rresult/releases/${P}.tbz"
 
 LICENSE="ISC"
 SLOT="0/${PV}"
-KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~x86"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 x86"
 
 RDEPEND="dev-ml/result:="
 DEPEND="${RDEPEND}"
