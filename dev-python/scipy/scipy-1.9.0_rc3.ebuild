@@ -60,6 +60,7 @@ BDEPEND="
 	>=dev-python/cython-0.29.18[${PYTHON_USEDEP}]
 	dev-python/pybind11[${PYTHON_USEDEP}]
 	dev-python/pythran[${PYTHON_USEDEP}]
+	>=dev-util/meson-0.62.2
 	dev-util/patchelf
 	virtual/pkgconfig
 	doc? ( app-arch/unzip )
