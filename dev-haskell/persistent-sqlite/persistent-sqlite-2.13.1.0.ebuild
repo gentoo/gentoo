@@ -14,7 +14,7 @@ HOMEPAGE="https://www.yesodweb.com/book/persistent"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="build-sanity-exe"
 
 RDEPEND=">=dev-db/sqlite-3.0
