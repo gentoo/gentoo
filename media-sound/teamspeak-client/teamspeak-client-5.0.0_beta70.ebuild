@@ -7,14 +7,14 @@ inherit desktop xdg-utils
 
 DESCRIPTION="A client software for quality voice communication via the internet"
 HOMEPAGE="https://www.teamspeak.com/"
-SRC_URI="https://files.teamspeak-services.com/pre_releases/client/${PV}/teamspeak-client.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://files.teamspeak-services.com/pre_releases/client/${PV/-/_}/teamspeak-client.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"
 
 KEYWORDS=""
 LICENSE="teamspeak5 || ( GPL-2 GPL-3 LGPL-3 )"
 SLOT="5"
 
-RDEPEND="
+RDEPEND="${PV}
 	app-accessibility/at-spi2-atk:2
 	dev-libs/atk
 	dev-libs/expat
