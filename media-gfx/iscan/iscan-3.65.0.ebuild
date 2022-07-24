@@ -94,11 +94,13 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
 	use gui && xdg_icon_cache_update
 	elog "If you encounter problems with media-gfx/xsane when scanning (e.g., bad resolution),"
 	elog "please try the built-in GUI and kde-misc/skanlite first before reporting bugs."
 }
 
 pkg_postrm() {
+	udev_reload
 	use gui && xdg_icon_cache_update
 }
