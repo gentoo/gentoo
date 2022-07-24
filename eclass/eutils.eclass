@@ -6,7 +6,7 @@
 # base-system@gentoo.org
 # @SUPPORTED_EAPIS: 6 7
 # @BLURB: many extra (but common) functions that are used in ebuilds
-# @DEPRECATED native package manager functions, more specific eclasses
+# @DEPRECATED: native package manager functions, more specific eclasses
 
 if [[ -z ${_EUTILS_ECLASS} ]]; then
 _EUTILS_ECLASS=1
