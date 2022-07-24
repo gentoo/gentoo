@@ -25,7 +25,7 @@
 		An overview is available in the README: &lt;https://github.com/yesodweb/Shelly.hs/blob/master/README.md&gt;
 	</longdescription>
 	<upstream>
-		<remote-id type="github">yesodweb/Shelly.hs</remote-id>
+		<remote-id type="github">gregwebs/Shelly.hs</remote-id>
 	</upstream>
 	<use>
 		<flag name="lifted">run the tests against Shelly.Lifted</flag>
