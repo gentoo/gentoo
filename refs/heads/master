@@ -1,16 +1,13 @@
 certificate version 0.1
-pusher 0xACEB29740C9A4E97 1658624428 -0400
-pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1658624428-fb78aa495547ae821a14e8b74963797fdede4a77
+pusher 9A607DDF 1658624524 +0900
+pushee git.gentoo.org:repo/gentoo.git
+nonce 1658624524-5176c4bf76a695012cf8a8fe7cf843030c7b4fd6
 
-944c03b52aa91c92471b3fe992daf8e58344adbb 302c2eea9248a25b356ea4a150b65a24f42d2f19 refs/heads/master
+302c2eea9248a25b356ea4a150b65a24f42d2f19 eb317ca3b6563e983cc8e938f763ccb3e1f8d105 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
 
-iNUEABYKAH0WIQReryEEmoa4pUzLG/qs6yl0DJpOlwUCYtyZrF8UgAAAAAAuAChp
-c3N1ZXItZnByQG5vdGF0aW9ucy5vcGVucGdwLmZpZnRoaG9yc2VtYW4ubmV0NUVB
-RjIxMDQ5QTg2QjhBNTRDQ0IxQkZBQUNFQjI5NzQwQzlBNEU5NwAKCRCs6yl0DJpO
-l6wAAP9h0vbrMCmLoB7eI70ruXlbTm285P5DhwaumSzgDO4UYwEAmVWMz0obRUOj
-NEm/lPfA9ut6NsKpMCOS2AI9l9XFjQM=
-=GFLm
+iHUEABYIAB0WIQQFEq6VMfBNm5o5rZtbQ+PigXdl6wUCYtyaDAAKCRBbQ+PigXdl
+6ybWAP9+Y/Wio8WNOcTVNPK8s//pzfYvoGJ0pOEUBnBQrklRbwEA6IVmePyklRZp
+jxpqRhwTeOqoWomda9RoVvcrZVwEWww=
+=c3VJ
 -----END PGP SIGNATURE-----
