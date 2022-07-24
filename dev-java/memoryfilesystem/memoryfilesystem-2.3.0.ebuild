@@ -14,7 +14,7 @@ SRC_URI="https://github.com/marschall/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 
 CP_DEPEND="
 	dev-java/jakarta-annotations-api:0
