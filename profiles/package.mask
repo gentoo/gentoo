@@ -252,7 +252,6 @@ dev-haskell/psqueue
 dev-haskell/publicsuffixlist
 dev-haskell/punycode
 dev-haskell/pwstore-fast
-dev-haskell/quickcheck-classes
 dev-haskell/quickcheck-classes-base
 dev-haskell/quickcheck-unicode
 dev-haskell/ranges
