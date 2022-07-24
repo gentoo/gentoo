@@ -1,0 +1,70 @@
+From efb795efbe0579cb30cc042d61214c139c5fb110 Mon Sep 17 00:00:00 2001
+From: ivan tkachenko <me@ratijas.tk>
+Date: Fri, 22 Jul 2022 20:31:48 +0300
+Subject: [PATCH] ProgressBar,Slider: Adapt great precision to the harsh
+ reality
+
+Test case: `to` values >= 214749 should work.
+
+BUG: 455339
+---
+ org.kde.desktop/ProgressBar.qml | 10 +++++++---
+ org.kde.desktop/Slider.qml      | 12 ++++++++----
+ 2 files changed, 15 insertions(+), 7 deletions(-)
+
+diff --git a/org.kde.desktop/ProgressBar.qml b/org.kde.desktop/ProgressBar.qml
+index 18d879b..77beb1b 100644
+--- a/org.kde.desktop/ProgressBar.qml
++++ b/org.kde.desktop/ProgressBar.qml
+@@ -22,11 +22,15 @@ T.ProgressBar {
+     contentItem: Item {}
+ 
+     background: StylePrivate.StyleItem {
++        // Rescale for extra precision. Adapts to the range of `from` & `to` to avoid integer overflow.
++        property int factor: (Math.abs(controlRoot.from) < 100000 && Math.abs(controlRoot.to) < 100000)
++            ? 10000 : 1
++
+         elementType: "progressbar"
+         control: controlRoot
+-        maximum: indeterminate ? 0 : 10000 * controlRoot.to
+-        minimum: indeterminate ? 0 : 10000 * controlRoot.from
+-        value: indeterminate ? 0 : 10000 * controlRoot.value
++        maximum: indeterminate ? 0 : factor * controlRoot.to
++        minimum: indeterminate ? 0 : factor * controlRoot.from
++        value: indeterminate ? 0 : factor * controlRoot.value
+         horizontal: true
+         enabled: controlRoot.enabled
+ 
+diff --git a/org.kde.desktop/Slider.qml b/org.kde.desktop/Slider.qml
+index 58bc99a..49b8ccb 100644
+--- a/org.kde.desktop/Slider.qml
++++ b/org.kde.desktop/Slider.qml
+@@ -28,6 +28,10 @@ T.Slider {
+     snapMode: T.Slider.SnapOnRelease
+ 
+     background: StylePrivate.StyleItem {
++        // Rescale for extra precision. Adapts to the range of `from` & `to` to avoid integer overflow.
++        property int factor: (Math.abs(controlRoot.from) < 100000 && Math.abs(controlRoot.to) < 100000)
++            ? 10000 : 1
++
+         control: controlRoot
+         elementType: "slider"
+         sunken: controlRoot.pressed
+@@ -36,10 +40,10 @@ T.Slider {
+         contentHeight: horizontal ? (Kirigami.Settings.tabletMode ? 24 : 22) : controlRoot.implicitHeight
+         anchors.verticalCenter: controlRoot.verticalCenter
+ 
+-        maximum: 10000 * controlRoot.to
+-        minimum: 10000 * controlRoot.from
+-        step: 10000 * controlRoot.stepSize
+-        value: 10000 * controlRoot.value
++        maximum: factor * controlRoot.to
++        minimum: factor * controlRoot.from
++        step: factor * controlRoot.stepSize
++        value: factor * controlRoot.value
+         horizontal: controlRoot.orientation === Qt.Horizontal
+         enabled: controlRoot.enabled
+         hasFocus: controlRoot.activeFocus
+-- 
+GitLab
+
