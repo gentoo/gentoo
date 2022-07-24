@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: opam.eclass
@@ -64,7 +64,7 @@ opam_src_install() {
 	local pkg="${1:-${PN}}"
 	opam-install "${pkg}"
 	# Handle opam putting doc in a subdir
-	if [ -d "${ED%/}/usr/share/doc/${PF}/${pkg}" ] ; then
+	if [[ -d ${ED%/}/usr/share/doc/${PF}/${pkg} ]] ; then
 		mv "${ED%/}/usr/share/doc/${PF}/${pkg}/"* "${ED%/}/usr/share/doc/${PF}/" || die
 		rmdir "${ED%/}/usr/share/doc/${PF}/${pkg}" || die
 	fi
