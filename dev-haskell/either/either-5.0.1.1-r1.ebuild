@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-haskell/bifunctors-4:=[profile?] <dev-haskell/bifunctors-6:=[profile?]
@@ -26,7 +26,14 @@ RDEPEND=">=dev-haskell/bifunctors-4:=[profile?] <dev-haskell/bifunctors-6:=[prof
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10
-	test? ( >=dev-haskell/quickcheck-2.9 <dev-haskell/quickcheck-2.14
+	test? ( >=dev-haskell/quickcheck-2.9
 		>=dev-haskell/test-framework-0.8.1.1 <dev-haskell/test-framework-0.9
 		>=dev-haskell/test-framework-quickcheck2-0.3.0.3 <dev-haskell/test-framework-quickcheck2-0.4 )
 "
+
+src_prepare(){
+	default
+
+	cabal_chdeps \
+		'QuickCheck                 >= 2.9     && < 2.14' 'QuickCheck >= 2.9'
+}
