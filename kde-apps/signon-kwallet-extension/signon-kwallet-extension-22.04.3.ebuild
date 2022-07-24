@@ -11,7 +11,7 @@ HOMEPAGE="https://accounts-sso.gitlab.io/"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="amd64 arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 
 DEPEND="
 	>=kde-frameworks/kwallet-${KFMIN}:5
