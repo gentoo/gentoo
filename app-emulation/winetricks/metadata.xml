@@ -5,10 +5,6 @@
 		<email>chiitoo@gentoo.org</email>
 		<name>Jimi Huotari</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>np-hardass@gentoo.org</email>
-		<name>Adam Feldman</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>wine@gentoo.org</email>
 		<name>Wine</name>
