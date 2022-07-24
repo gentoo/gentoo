@@ -20,6 +20,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~ppc64 ~x86"
+RESTRICT="test" # tests only work if not already installed
 
 RDEPEND=">=dev-lang/ghc-8.6.3:=
 "
@@ -42,7 +43,7 @@ src_test() {
 	if use test; then
 		./setup register --inplace --gen-pkg-config || die
 		ghc-pkg init pkgdb || die
-		ghc-pkg -f pkgdb register "${P}.conf" || die
+		ghc-pkg -f pkgdb register "${P}.conf"
 
 		old_S="${S}"
 		export S="${WORKDIR}/${TESTS_P}"
