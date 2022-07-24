@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Diffing of (expression) trees"
-HOMEPAGE="https://github.com/phadej/tree-diff"
+HOMEPAGE="https://github.com/haskellari/tree-diff"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
