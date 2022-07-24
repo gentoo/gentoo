@@ -40,6 +40,10 @@ DEPEND="${RDEPEND}
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-9.0.0-no-man-compress.patch
+)
+
 RESTRICT="!test? ( test )"
 
 pkg_pretend() {
