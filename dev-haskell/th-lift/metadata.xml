@@ -6,6 +6,6 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">mboes/th-lift</remote-id>
+		<remote-id type="github">RyanGlScott/th-lift</remote-id>
 	</upstream>
 </pkgmetadata>
