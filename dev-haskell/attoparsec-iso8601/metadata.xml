@@ -5,8 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<use>
-		<flag name="developer">operate in developer mode</flag>
-		<flag name="fast">compile without optimizations</flag>
-	</use>
 </pkgmetadata>
