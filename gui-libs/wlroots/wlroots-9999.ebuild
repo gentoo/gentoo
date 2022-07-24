@@ -23,7 +23,7 @@ IUSE="vulkan x11-backend X"
 
 DEPEND="
 	>=dev-libs/libinput-1.14.0:0=
-	>=dev-libs/wayland-1.20.0
+	>=dev-libs/wayland-1.21.0
 	>=dev-libs/wayland-protocols-1.24
 	media-libs/mesa[egl(+),gles2,gbm(+)]
 	sys-auth/seatd:=
