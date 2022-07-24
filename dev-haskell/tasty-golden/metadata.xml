@@ -12,6 +12,6 @@
 		'golden' file, which contains the correct result for the test.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">feuerbach/tasty-golden</remote-id>
+		<remote-id type="github">UnkindPartition/tasty-golden</remote-id>
 	</upstream>
 </pkgmetadata>
