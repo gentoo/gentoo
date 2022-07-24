@@ -59,6 +59,8 @@ src_prepare() {
 	rm -r ./src/teakra || die
 
 	filter-lto
+	append-flags -fno-strict-aliasing
+
 	cmake_src_prepare
 }
 

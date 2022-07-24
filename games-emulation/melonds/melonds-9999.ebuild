@@ -53,8 +53,10 @@ DOC_CONTENTS="You need the following files in order to run melonDS:
 Place them in ~/.config/melonDS
 Those files can be found somewhere on the Internet ;-)"
 
-src_prepare(){
+src_prepare() {
 	filter-lto
+	append-flags -fno-strict-aliasing
+
 	cmake_src_prepare
 }
 
