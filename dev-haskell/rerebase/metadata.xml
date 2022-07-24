@@ -5,9 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		A rich drop-in replacement for \"base\".
-		For details and docs please visit
-		&lt;https://github.com/nikita-volkov/rerebase the project's GitHub page&gt;.
-	</longdescription>
 </pkgmetadata>
