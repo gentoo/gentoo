@@ -245,14 +245,12 @@ dev-haskell/postgresql-simple
 dev-haskell/pqueue
 dev-haskell/prelude-extras
 dev-haskell/preprocessor-tools
-dev-haskell/primitive-addr
 dev-haskell/process-extras
 dev-haskell/profunctor-extras
 dev-haskell/psqueue
 dev-haskell/publicsuffixlist
 dev-haskell/punycode
 dev-haskell/pwstore-fast
-dev-haskell/quickcheck-classes-base
 dev-haskell/quickcheck-unicode
 dev-haskell/ranges
 dev-haskell/readargs
@@ -262,7 +260,6 @@ dev-haskell/regex-pcre-builtin
 dev-haskell/riff
 dev-haskell/say
 dev-haskell/semigroupoid-extras
-dev-haskell/semirings
 dev-haskell/sendfile
 dev-haskell/shakespeare-css
 dev-haskell/shakespeare-i18n
