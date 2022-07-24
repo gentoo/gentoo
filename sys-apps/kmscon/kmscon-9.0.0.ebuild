@@ -6,7 +6,7 @@ EAPI=7
 SRC_URI="https://github.com/Aetf/kmscon/releases/download/v${PV}/${P}.tar.xz"
 KEYWORDS="~amd64 ~x86"
 
-inherit meson flag-o-matic systemd toolchain-funcs
+inherit meson flag-o-matic toolchain-funcs
 
 DESCRIPTION="KMS/DRM based virtual Console Emulator"
 HOMEPAGE="https://github.com/Aetf/kmscon"
