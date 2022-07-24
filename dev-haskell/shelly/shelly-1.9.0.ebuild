@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="shell-like (systems) programming in Haskell"
-HOMEPAGE="https://github.com/yesodweb/Shelly.hs"
+HOMEPAGE="https://github.com/gregwebs/Shelly.hs"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
