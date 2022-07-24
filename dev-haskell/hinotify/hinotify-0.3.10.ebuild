@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Haskell binding to inotify"
-HOMEPAGE="https://github.com/kolmodin/hinotify.git"
+HOMEPAGE="https://github.com/kolmodin/hinotify"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
