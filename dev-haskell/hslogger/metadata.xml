@@ -5,19 +5,13 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<use>
-		<flag name="network-3">Use network-3</flag>
-	</use>
 	<longdescription>
 		hslogger is a logging framework for Haskell, roughly similar to
 		Python's logging module.
-		
+
 		hslogger lets each log message have a priority and source be associated
 		with it.  The programmer can then define global handlers that route
 		or filter messages based on the priority and source.  hslogger also
 		has a syslog handler built in.
 	</longdescription>
-	<upstream>
-		<remote-id type="github">jgoerzen/hslogger</remote-id>
-	</upstream>
 </pkgmetadata>
