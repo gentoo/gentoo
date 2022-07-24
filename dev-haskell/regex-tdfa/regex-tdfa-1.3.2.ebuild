@@ -14,7 +14,7 @@ HOMEPAGE="https://wiki.haskell.org/Regular_expressions"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 
 RDEPEND=">=dev-haskell/regex-base-0.94:=[profile?] <dev-haskell/regex-base-0.95:=[profile?]
 	>=dev-lang/ghc-8.4.3:=
