@@ -75,6 +75,10 @@ src_configure() {
 	# in Gentoo does not make much sense, only breaks them: bug #607280
 	export ovs_cv_flake8="no"
 
+	# Only adds a diagram to the man page, just skip it as we don't
+	# want to add a BDEPEND on graphviz right now. bug #856286
+	export ovs_cv_dot="no"
+
 	local linux_config
 	use modules && linux_config="--with-linux=${KV_OUT_DIR}"
 
