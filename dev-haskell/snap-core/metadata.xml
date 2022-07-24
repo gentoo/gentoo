@@ -5,43 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<use>
-		<flag name="portable">No non-haskell unportable code.</flag>
-	</use>
-	<longdescription>
-		Snap is a simple and fast web development framework and server written in
-		Haskell. For more information or to download the latest version, you can
-		visit the Snap project website at &lt;http://snapframework.com/&gt;.
-		
-		This library contains the core definitions and types for the Snap framework,
-		including:
-		
-		1. Primitive types and functions for HTTP (requests, responses, cookies,
-		post/query parameters, etc)
-		
-		2. Type aliases and helper functions for Iteratee I/O
-		
-		3. A monad for programming web handlers called \"Snap\", inspired by
-		happstack's (&lt;http://happstack.com/index.html&gt;), which allows:
-		
-		* Stateful access to the HTTP request and response objects
-		
-		* Monadic failure (i.e. MonadPlus/Alternative instances) for declining
-		to handle requests and chaining handlers together
-		
-		* Early termination of the computation if you know early what you want
-		to return and want to prevent further monadic processing
-		
-		/Quick start/: The 'Snap' monad and HTTP definitions are in "Snap.Core",
-		some iteratee utilities are in "Snap.Iteratee".
-		
-		Higher-level facilities for building web applications (like user/session
-		management, component interfaces, data modeling, etc.) are planned but not
-		yet implemented, so this release will mostly be of interest for those who:
-		
-		* need a fast and minimal HTTP API at roughly the same level of abstraction
-		as Java servlets, or
-		
-		* are interested in contributing to the Snap Framework project.
-	</longdescription>
 </pkgmetadata>
