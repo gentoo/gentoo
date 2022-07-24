@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# William Hubbs <williamh@gentoo.org> (2022-07-24)
+# **NOTE:** Golint is deprecated and frozen
+# according to [this issue](https://github.com/golang/go/issues/38968).
+# There's no drop-in replacement for it, but tools such as
+# [Staticcheck](https://staticcheck.io/) # and `go vet` should be used instead.
+# Bug #844412
+# Removal: 2022-08-23
+dev-go/golint
+
 # Sam James <sam@gentoo.org> (2022-07-22)
 # Monolithic mask for dev-haskell/* packages which have no reverse dependencies,
 # are broken, or severely out of date. The aim is to have the Haskell overlay
