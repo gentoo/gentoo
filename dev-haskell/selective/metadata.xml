@@ -5,13 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Selective applicative functors: declare your effects statically,
-		select which to execute dynamically.
-		
-		This is a library for /selective applicative functors/, or just
-		/selective functors/ for short, an abstraction between
-		applicative functors and monads, introduced in
-		&lt;https://www.staff.ncl.ac.uk/andrey.mokhov/selective-functors.pdf this paper&gt;.
-	</longdescription>
 </pkgmetadata>
