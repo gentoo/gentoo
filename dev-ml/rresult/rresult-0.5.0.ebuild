@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
 inherit opam
 
@@ -11,11 +11,12 @@ SRC_URI="https://erratique.ch/software/rresult/releases/${P}.tbz"
 
 LICENSE="ISC"
 SLOT="0/${PV}"
-KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~x86"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 x86"
+IUSE=""
 
 RDEPEND="dev-ml/result:="
-DEPEND="${RDEPEND}"
-BDEPEND="dev-ml/topkg
+DEPEND="${RDEPEND}
+	dev-ml/topkg
 	dev-ml/ocamlbuild"
 
 src_compile() {

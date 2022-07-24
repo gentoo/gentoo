@@ -1,0 +1,221 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index f38cc8ff5..4f1a127a2 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
+ 
+ ## [Unreleased (4.0.1)]
+ 
++### Fixed
++
++- **Breaking**: The 4.0.0 change replacing the `Agiodisc_t` struct member
++  `putstr` by `printf` has been reverted
++
+ ## [4.0.0] – 2022-05-29
+ 
+ ### Changed
+diff --git a/cmd/gvpr/gvprmain.c b/cmd/gvpr/gvprmain.c
+index 188cfdf94..92872f8cd 100644
+--- a/cmd/gvpr/gvprmain.c
++++ b/cmd/gvpr/gvprmain.c
+@@ -47,14 +47,17 @@ static int iofread(void *chan, char *buf, int bufsize)
+   return (int)fread(buf, 1, (size_t)bufsize, chan);
+ }
+ 
++static int ioputstr(void *chan, const char *str)
++{
++  return fputs(str, chan);
++}
++
+ static int ioflush(void *chan)
+ {
+   return fflush(chan);
+ }
+ 
+-typedef int (*printfn)(void *chan, const char *format, ...);
+-
+-static Agiodisc_t gprIoDisc = { iofread, (printfn)fprintf, ioflush };
++static Agiodisc_t gprIoDisc = { iofread, ioputstr, ioflush };
+ 
+ static Agdisc_t gprDisc = { &AgMemDisc, &AgIdDisc, &gprIoDisc };
+ 
+diff --git a/lib/cgraph/cgraph.3 b/lib/cgraph/cgraph.3
+index ed7392c06..67e35c2e9 100644
+--- a/lib/cgraph/cgraph.3
++++ b/lib/cgraph/cgraph.3
+@@ -487,14 +487,14 @@ The I/O discipline provides an abstraction for the reading and writing of graphs
+ .P0
+ struct Agiodisc_s {
+     int        (*fread)(void *chan, char *buf, int bufsize);
+-    int        (*printf)(void *chan, const char *format, ...);
++    int        (*putstr)(void *chan, char *str);
+     int        (*flush)(void *chan);    /* sync */
+ } ;
+ .P1
+ Normally, the \fBFILE\fP structure and its related functions are used for I/O. At times, though,
+ an application may need to use a totally different type of character source. The associated
+ state or stream information is provided by the \fIchan\fP argument to \fBagread\fP or \fBagwrite\fP.
+-The discipline function \fIfread\fP and \fIprintf\fP provide the corresponding functions for
++The discipline function \fIfread\fP and \fIputstr\fP provide the corresponding functions for
+ read and writing.
+ 
+ .SH "MEMORY DISCIPLINE"
+diff --git a/lib/cgraph/cgraph.h b/lib/cgraph/cgraph.h
+index 7b005c442..cbec3bbe6 100644
+--- a/lib/cgraph/cgraph.h
++++ b/lib/cgraph/cgraph.h
+@@ -169,7 +169,7 @@ struct Agiddisc_s {		/* object ID allocator */
+ 
+ struct Agiodisc_s {
+     int (*afread) (void *chan, char *buf, int bufsize);
+-    int (*printf)(void *chan, const char *format, ...);
++    int (*putstr) (void *chan, const char *str);
+     int (*flush) (void *chan);	/* sync */
+     /* error messages? */
+ };
+diff --git a/lib/cgraph/io.c b/lib/cgraph/io.c
+index d8b136804..66c605ae6 100644
+--- a/lib/cgraph/io.c
++++ b/lib/cgraph/io.c
+@@ -24,15 +24,17 @@ static int iofread(void *chan, char *buf, int bufsize)
+ }
+ 
+ /* default IO methods */
++static int ioputstr(void *chan, const char *str)
++{
++    return fputs(str, chan);
++}
+ 
+ static int ioflush(void *chan)
+ {
+     return fflush(chan);
+ }
+ 
+-typedef int (*printfn)(void *chan, const char *format, ...);
+-
+-Agiodisc_t AgIoDisc = { iofread, (printfn)fprintf, ioflush };
++Agiodisc_t AgIoDisc = { iofread, ioputstr, ioflush };
+ 
+ typedef struct {
+     const char *data;
+@@ -78,7 +80,7 @@ static Agraph_t *agmemread0(Agraph_t *arg_g, const char *cp)
+     rdr_t rdr;
+     Agdisc_t disc;
+ 
+-    memIoDisc.printf = AgIoDisc.printf;
++    memIoDisc.putstr = AgIoDisc.putstr;
+     memIoDisc.flush = AgIoDisc.flush;
+     rdr.data = cp;
+     rdr.len = strlen(cp);
+diff --git a/lib/cgraph/write.c b/lib/cgraph/write.c
+index e14f7d835..9e72d2c5c 100644
+--- a/lib/cgraph/write.c
++++ b/lib/cgraph/write.c
+@@ -26,7 +26,7 @@ typedef void iochan_t;
+ 
+ static int ioput(Agraph_t * g, iochan_t * ofile, char *str)
+ {
+-    return AGDISC(g, io)->printf(ofile, "%s", str);
++    return AGDISC(g, io)->putstr(ofile, str);
+ 
+ }
+ 
+diff --git a/lib/gvpr/compile.c b/lib/gvpr/compile.c
+index a7fe27bf5..3704f51d9 100644
+--- a/lib/gvpr/compile.c
++++ b/lib/gvpr/compile.c
+@@ -66,14 +66,17 @@ static int iofread(void *chan, char *buf, int bufsize)
+     return (int)read(sffileno(chan), buf, bufsize);
+ }
+ 
++static int ioputstr(void *chan, const char *str)
++{
++    return sfputr(chan, str, -1);
++}
++
+ static int ioflush(void *chan)
+ {
+     return sfsync(chan);
+ }
+ 
+-typedef int (*printfn)(void *chan, const char *format, ...);
+-
+-static Agiodisc_t gprIoDisc = { iofread, (printfn)sfprintf, ioflush };
++static Agiodisc_t gprIoDisc = { iofread, ioputstr, ioflush };
+ 
+ #ifdef GVDLL
+ static Agdisc_t gprDisc = { 0, 0, &gprIoDisc };
+diff --git a/plugin/core/gvrender_core_dot.c b/plugin/core/gvrender_core_dot.c
+index c45563460..63eb5e535 100644
+--- a/plugin/core/gvrender_core_dot.c
++++ b/plugin/core/gvrender_core_dot.c
+@@ -511,7 +511,7 @@ static void xdot_end_graph(graph_t* g)
+     textflags[EMIT_GLABEL] = 0;
+ }
+ 
+-typedef int (*printfn)(void *chan, const char *format, ...);
++typedef int (*putstrfn) (void *chan, const char *str);
+ typedef int (*flushfn) (void *chan);
+ static void dot_end_graph(GVJ_t *job)
+ {
+@@ -521,7 +521,7 @@ static void dot_end_graph(GVJ_t *job)
+ 
+     if (io.afread == NULL) {
+ 	io.afread = AgIoDisc.afread;
+-	io.printf = (printfn)gvprintf;
++	io.putstr = (putstrfn)gvputs;
+ 	io.flush = (flushfn)gvflush;
+     }
+ 
+diff --git a/plugin/core/gvrender_core_json.c b/plugin/core/gvrender_core_json.c
+index bab5d64af..88715a93a 100644
+--- a/plugin/core/gvrender_core_json.c
++++ b/plugin/core/gvrender_core_json.c
+@@ -693,7 +693,7 @@ static void write_graph(Agraph_t * g, GVJ_t * job, int top, state_t* sp)
+ 	gvputs(job, "}");
+ }
+ 
+-typedef int (*printfn)(void *chan, const char *format, ...);
++typedef int (*putstrfn) (void *chan, const char *str);
+ typedef int (*flushfn) (void *chan);
+ 
+ static void json_end_graph(GVJ_t *job)
+@@ -704,7 +704,7 @@ static void json_end_graph(GVJ_t *job)
+ 
+     if (io.afread == NULL) {
+ 	io.afread = AgIoDisc.afread;
+-	io.printf = (printfn)gvprintf;
++	io.putstr = (putstrfn)gvputs;
+ 	io.flush = (flushfn)gvflush;
+     }
+ 
+diff --git a/tclpkg/tcldot/tcldot.c b/tclpkg/tcldot/tcldot.c
+index 335d8e469..b747124cf 100644
+--- a/tclpkg/tcldot/tcldot.c
++++ b/tclpkg/tcldot/tcldot.c
+@@ -163,7 +163,7 @@ int Tcldot_Init(Tcl_Interp * interp)
+     /* build disciplines dynamically so we can selectively replace functions */
+ 
+     ictx->myioDisc.afread = NULL;            /* set in dotread() or dotstring() according to need */
+-    ictx->myioDisc.printf = AgIoDisc.printf; /* no change */
++    ictx->myioDisc.putstr = AgIoDisc.putstr; /* no change */
+     ictx->myioDisc.flush = AgIoDisc.flush;   /* no change */
+ 
+     ictx->mydisc.mem = &AgMemDisc;           /* no change */
+diff --git a/lib/common/output.c b/lib/common/output.c
+index c91dfe41e..648409c5a 100644
+--- a/lib/common/output.c
++++ b/lib/common/output.c
+@@ -80,11 +80,11 @@ void write_plain(GVJ_t *job, graph_t *g,
+     bezier bz;
+     pointf pt;
+     char *lbl;
+     char* fillcolor;
+ 
+-    print = g->clos->disc.io->printf;
++    print = g->clos->disc.io->putstr;
+ //    setup_graph(job, g);
+     setYInvert(g);
+     pt = GD_bb(g).UR;
+     print(f, "graph %.5g %.5g %.5g\n", job->zoom, PS2INCH(pt.x), PS2INCH(pt.y));
+     for (n = agfstnode(g); n; n = agnxtnode(g, n)) {

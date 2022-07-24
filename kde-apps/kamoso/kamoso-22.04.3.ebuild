@@ -3,7 +3,6 @@
 
 EAPI=8
 
-ECM_TEST="true"
 ECM_HANDBOOK="forceoptional"
 KFMIN=5.92.0
 QTMIN=5.15.4
@@ -20,7 +19,7 @@ IUSE=""
 
 RESTRICT="test" # bug 653674
 
-COMMON_DEPEND="
+DEPEND="
 	dev-libs/glib:2
 	>=dev-qt/qtdeclarative-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
@@ -34,10 +33,7 @@ COMMON_DEPEND="
 	media-libs/gst-plugins-base:1.0
 	virtual/opengl
 "
-DEPEND="${COMMON_DEPEND}
-	test? ( >=dev-qt/qtopengl-${QTMIN}:5 )
-"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 	>=kde-frameworks/kirigami-${KFMIN}:5
 	media-plugins/gst-plugins-jpeg:1.0
@@ -45,5 +41,3 @@ RDEPEND="${COMMON_DEPEND}
 	media-plugins/gst-plugins-meta:1.0[alsa,theora,vorbis,v4l]
 "
 BDEPEND="virtual/pkgconfig"
-
-PATCHES=( "${FILESDIR}/${P}-tests-optional.patch" )
