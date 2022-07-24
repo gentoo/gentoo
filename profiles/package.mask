@@ -179,7 +179,6 @@ dev-haskell/idna
 dev-haskell/inspection-testing
 dev-haskell/integer-roots
 dev-haskell/json
-dev-haskell/keys
 dev-haskell/language-bash
 dev-haskell/language-css
 dev-haskell/language-dot
@@ -239,7 +238,6 @@ dev-haskell/persistent-postgresql
 dev-haskell/persistent-qq
 dev-haskell/pid1
 dev-haskell/pipes
-dev-haskell/pointed
 dev-haskell/postgresql-libpq
 dev-haskell/postgresql-simple
 dev-haskell/pqueue
@@ -299,7 +297,6 @@ dev-haskell/url
 dev-haskell/uuagc
 dev-haskell/uuagc-cabal
 dev-haskell/uulib
-dev-haskell/vector-instances
 dev-haskell/vector-space
 dev-haskell/wai-conduit
 dev-haskell/wai-test
