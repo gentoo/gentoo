@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jack Todaro <solpeth@posteo.org> (2022-07-24)
+# Last-rite for removal in 30 days. Has no reverse dependencies
+# and is unmaintained upstream.
+dev-haskell/bytestring-handle
+dev-haskell/chaselev-deque
+
 # William Hubbs <williamh@gentoo.org> (2022-07-24)
 # **NOTE:** Golint is deprecated and frozen
 # according to [this issue](https://github.com/golang/go/issues/38968).
@@ -41,12 +47,6 @@
 # Bug #844412
 # Removal: 2022-08-23
 dev-go/golint
-
-# Jack Todaro <solpeth@posteo.org> (2022-07-24)
-# Last-rite for removal in 30 days. Has no reverse dependencies
-# and is unmaintained upstream.
-dev-haskell/bytestring-handle
-dev-haskell/chaselev-deque
 
 # Sam James <sam@gentoo.org> (2022-07-22)
 # Monolithic mask for dev-haskell/* packages which have no reverse dependencies,
