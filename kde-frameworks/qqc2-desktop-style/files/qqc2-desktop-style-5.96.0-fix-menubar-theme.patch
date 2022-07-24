@@ -1,0 +1,31 @@
+From 299748e9bdc01a30e90cb7413b0815564864dc3b Mon Sep 17 00:00:00 2001
+From: Kartikey Subramanium <kartikey@tutanota.com>
+Date: Wed, 20 Jul 2022 14:33:55 +0000
+Subject: [PATCH] Fix QQC2 MenuBar theme.
+
+BUG: 456729
+
+| Before | After |
+| ------ | ------ |
+| ![Screenshot_20220720_193546](/uploads/4eded8d26fe77b8a64d9abd7806ecf2f/Screenshot_20220720_193546.png) | ![Screenshot_20220720_193536](/uploads/825c2cc901d859ea5cd84fe299bdc941/Screenshot_20220720_193536.png) |
+---
+ org.kde.desktop/MenuBar.qml | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/org.kde.desktop/MenuBar.qml b/org.kde.desktop/MenuBar.qml
+index f10b01a..68b92af 100644
+--- a/org.kde.desktop/MenuBar.qml
++++ b/org.kde.desktop/MenuBar.qml
+@@ -13,6 +13,9 @@ import org.kde.kirigami 2.4 as Kirigami
+ T.MenuBar {
+     id: controlRoot
+ 
++    Kirigami.Theme.colorSet: Kirigami.Theme.Header
++    Kirigami.Theme.inherit: false
++
+     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                             contentWidth + leftPadding + rightPadding)
+     implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+-- 
+GitLab
+
