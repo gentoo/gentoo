@@ -234,10 +234,6 @@ x11-wm/sawfish kde
 # Missing keywords
 media-sound/rhythmbox upnp-av
 
-# Pacho Ramos <pacho@gentoo.org> (2015-10-27)
-# Missing keywords
-net-wireless/blueman appindicator
-
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2015-10-26)
 # x11-drivers/xf86-video-amdgpu is not keyworded
 x11-base/xorg-drivers video_cards_amdgpu

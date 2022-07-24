@@ -49,10 +49,6 @@ clang
 # PowerPC has no support for this bootloader (bug #550322)
 gnuefi
 
-# Patrick Lauer <patrick@gentoo.org> (2015-04-28)
-# dependencies not keyworded yet
-appindicator
-
 # These flags should only be used for ppc
 -cpu_flags_ppc_altivec
 -cpu_flags_ppc_vsx
