@@ -14,7 +14,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 RESTRICT="test" # Known failure, issue #22 on upstream github
 
 RDEPEND=">=dev-haskell/base-compat-0.7.0:=[profile?]
