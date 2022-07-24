@@ -1,0 +1,72 @@
+From d868caa001d134cf70ad08185511c1dfc81476db Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 24 Jul 2022 13:46:19 +0200
+Subject: [PATCH] Make tests optional with standard BUILD_TESTING switch
+
+Qt5OpenGL is only needed for tests.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                             |  2 +-
+ src/elements/gstqtvideosink/CMakeLists.txt | 35 ++++++++++++----------
+ 2 files changed, 20 insertions(+), 17 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e2b1e40..3c04631 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -13,7 +13,7 @@ set(KF5_MIN_VERSION 5.70.0)
+ find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
+ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH}  ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+ 
+-find_package(Qt5 NO_MODULE REQUIRED COMPONENTS Core Gui Widgets Quick Test OpenGL)
++find_package(Qt5 NO_MODULE REQUIRED COMPONENTS Core Gui Widgets Quick)
+ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Config DocTools KIO I18n Purpose Notifications)
+ 
+ find_package(PkgConfig REQUIRED)
+diff --git a/src/elements/gstqtvideosink/CMakeLists.txt b/src/elements/gstqtvideosink/CMakeLists.txt
+index a9f371d..37c3774 100644
+--- a/src/elements/gstqtvideosink/CMakeLists.txt
++++ b/src/elements/gstqtvideosink/CMakeLists.txt
+@@ -59,19 +59,22 @@ target_link_libraries(gst${QTVIDEOSINK_NAME}
+ 
+ install(TARGETS gst${QTVIDEOSINK_NAME} DESTINATION ${CMAKE_INSTALL_LIBDIR}/gstreamer-${GSTREAMER_ABI_VERSION})
+ 
+-ecm_add_test(
+-        autotest.cpp
+-        utils/utils.cpp
+-        utils/bufferformat.cpp
+-        painters/genericsurfacepainter.cpp
+-        painters/openglsurfacepainter.cpp
+-        ${GstQtVideoSink_test_GL_SRCS}
+-    LINK_LIBRARIES
+-        PkgConfig::GStreamerVideo
+-        ${GstQtVideoSink_GL_LIBS}
+-        Qt5::Test
+-        Qt5::OpenGL
+-        Qt5::Quick
+-    TEST_NAME qtvideosink_autotest
+-)
+-
++if(BUILD_TESTING)
++    find_package(Qt5 NO_MODULE REQUIRED COMPONENTS OpenGL Widgets)
++    ecm_add_test(
++            autotest.cpp
++            utils/utils.cpp
++            utils/bufferformat.cpp
++            painters/genericsurfacepainter.cpp
++            painters/openglsurfacepainter.cpp
++            ${GstQtVideoSink_test_GL_SRCS}
++        LINK_LIBRARIES
++            PkgConfig::GStreamerVideo
++            ${GstQtVideoSink_GL_LIBS}
++            Qt5::Test
++            Qt5::OpenGL
++            Qt5::Quick
++            Qt5::Widgets
++        TEST_NAME qtvideosink_autotest
++    )
++endif()
+-- 
+2.35.1
+
