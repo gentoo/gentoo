@@ -69,7 +69,7 @@ src_install() {
 	dodir /opt/bin
 	dosym ../teamspeak5-client/TeamSpeak /opt/bin/ts5client
 
-	make_desktop_entry /opt/bin/ts5client "Teamspeak 5 Client" /opt/teamspeak5-client/html/client_ui/images/icons/teamspea "Audio;AudioVideo;Network"
+	make_desktop_entry /opt/bin/ts5client "Teamspeak 5 Client" /opt/teamspeak5-client/html/client_ui/images/icons/teamspeak_logo.svg "Audio;AudioVideo;Network"
 }
 
 pkg_postinst() {
