@@ -7,7 +7,7 @@ inherit desktop xdg-utils
 
 DESCRIPTION="A client software for quality voice communication via the internet"
 HOMEPAGE="https://www.teamspeak.com/"
-SRC_URI="https://files.teamspeak-services.com/teamspeak/teamspeak-client.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://files.teamspeak-services.com/pre_releases/client/${PV/-/_}/teamspeak-client.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"
 
 KEYWORDS=""
