@@ -12,7 +12,5 @@
 	</longdescription>
 	<use>
 		<flag name="buildexamples">Build example executables.</flag>
-		<flag name="network-uri">Get Network.URI from the network-uri package.</flag>
-		<flag name="network-bsd">Get Network.BSD from the network-bsd package.</flag>
 	</use>
 </pkgmetadata>
