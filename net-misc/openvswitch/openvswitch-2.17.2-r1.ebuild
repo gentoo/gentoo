@@ -6,7 +6,7 @@ EAPI=8
 MODULES_OPTIONAL_USE="modules"
 PYTHON_COMPAT=( python3_{8..11} )
 
-inherit autotools linux-info linux-mod python-r1 systemd tmpfiles
+inherit autotools linux-info linux-mod python-single-r1 systemd tmpfiles
 
 DESCRIPTION="Production quality, multilayer virtual switch"
 HOMEPAGE="https://www.openvswitch.org"
@@ -20,9 +20,11 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # Check python/ovs/version.py in tarball for dev-python/ovs dep
 RDEPEND="${PYTHON_DEPS}
-	~dev-python/ovs-2.17.1_p1[${PYTHON_USEDEP}]
-	dev-python/twisted[${PYTHON_USEDEP}]
-	dev-python/zope-interface[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		~dev-python/ovs-2.17.1_p1[${PYTHON_USEDEP}]
+		dev-python/twisted[${PYTHON_USEDEP}]
+		dev-python/zope-interface[${PYTHON_USEDEP}]
+	')
 	debug? ( dev-lang/perl )
 	ssl? ( dev-libs/openssl:= )"
 DEPEND="${RDEPEND}
@@ -76,7 +78,8 @@ src_configure() {
 	local linux_config
 	use modules && linux_config="--with-linux=${KV_OUT_DIR}"
 
-	CONFIG_SHELL="${BROOT}"/bin/bash SHELL="${BROOT}"/bin/bash econf ${linux_config} \
+	# Need PYTHON3 variable for bug #860240
+	PYTHON3="${PYTHON}" CONFIG_SHELL="${BROOT}"/bin/bash SHELL="${BROOT}"/bin/bash econf ${linux_config} \
 		--with-rundir=/var/run/openvswitch \
 		--with-logdir=/var/log/openvswitch \
 		--with-pkidir=/etc/ssl/openvswitch \
@@ -97,8 +100,7 @@ src_install() {
 	local SCRIPT
 	if use monitor; then
 		for SCRIPT in ovs-{pcap,parse-backtrace,dpctl-top,l3ping,tcpdump,tcpundump,test,vlan-test} bugtool/ovs-bugtool; do
-			sed -e '1s|^.*$|#!/usr/bin/python|' -i utilities/"${SCRIPT}"
-			python_foreach_impl python_doscript utilities/"${SCRIPT}"
+			python_doscript utilities/"${SCRIPT}"
 		done
 		rm -r "${ED}"/usr/share/openvswitch/python || die
 	fi
