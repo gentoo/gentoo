@@ -46,6 +46,7 @@ dev-go/golint
 # Last-rite for removal in 30 days. Has no reverse dependencies
 # and is unmaintained upstream.
 dev-haskell/bytestring-handle
+dev-haskell/chaselev-deque
 
 # Sam James <sam@gentoo.org> (2022-07-22)
 # Monolithic mask for dev-haskell/* packages which have no reverse dependencies,
