@@ -34,7 +34,7 @@ QT_DEPEND="
 	>=dev-qt/qtnetwork-${MIN_QT_VER}:5=
 	>=dev-qt/qtwidgets-${MIN_QT_VER}:5=
 "
-COMMON_DEPEND="
+DEPEND="
 	sys-libs/zlib:0=
 	curl? ( net-misc/curl )
 	fftw? ( sci-libs/fftw:3.0=[threads] )
@@ -56,14 +56,14 @@ COMMON_DEPEND="
 		x11-libs/libX11
 		x11-libs/libXext
 	)"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	ffmpeg? ( media-video/ffmpeg:0= )
 "
-DEPEND="${COMMON_DEPEND}
-	gimp? ( dev-qt/linguist-tools )
-	qt5? ( dev-qt/linguist-tools )
+BDEPEND="
+	virtual/pkgconfig
+	gimp? ( dev-qt/linguist-tools:5 )
+	qt5? ( dev-qt/linguist-tools:5 )
 "
-BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.5-makefile_automagic.patch
