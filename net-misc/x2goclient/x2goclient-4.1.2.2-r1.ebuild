@@ -6,15 +6,16 @@ EAPI=7
 inherit desktop qmake-utils xdg
 
 DESCRIPTION="The X2Go Qt client"
-HOMEPAGE="http://www.x2go.org"
-SRC_URI="http://code.x2go.org/releases/source/${PN}/${P}.tar.gz"
+HOMEPAGE="https://wiki.x2go.org/doku.php"
+SRC_URI="https://code.x2go.org/releases/source/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="ldap"
 
-COMMON_DEPEND="dev-qt/qtcore:5
+DEPEND="
+	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtsvg:5
@@ -24,10 +25,9 @@ COMMON_DEPEND="dev-qt/qtcore:5
 	net-print/cups
 	x11-libs/libXpm
 	ldap? ( net-nds/openldap:= )"
-DEPEND="${COMMON_DEPEND}
-	dev-qt/linguist-tools:5"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	net-misc/nx"
+BDEPEND="dev-qt/linguist-tools:5"
 
 CLIENT_BUILD="${WORKDIR}"/${P}.client_build
 PLUGIN_BUILD="${WORKDIR}"/${P}.plugin_build
