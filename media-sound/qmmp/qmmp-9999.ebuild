@@ -89,9 +89,8 @@ RDEPEND="
 	wavpack? ( media-sound/wavpack )
 	xmp? ( media-libs/libxmp )
 "
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-qt/linguist-tools:5"
 
 DOCS=( AUTHORS ChangeLog README )
 
