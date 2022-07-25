@@ -22,6 +22,7 @@ SLOT="0"
 DEPEND="
 	dev-libs/glib:2
 	x11-libs/cairo
+	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	x11-libs/pango
 "
@@ -30,6 +31,7 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="
 	app-text/scdoc
+	sys-devel/gettext
 	virtual/pkgconfig
 "
 
