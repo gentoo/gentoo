@@ -19,7 +19,7 @@ KEYWORDS="amd64 ~x86"
 IUSE="graphviz"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-COMMON_DEPEND="${PYTHON_DEPS}
+DEPEND="${PYTHON_DEPS}
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
@@ -27,9 +27,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-qt/qtwidgets:5
 	>=dev-util/rizin-0.4.0:=
 	graphviz? ( media-gfx/graphviz )"
-DEPEND="${COMMON_DEPEND}
-	dev-qt/linguist-tools:5"
-RDEPEND="${COMMON_DEPEND}"
+RDEPEND="${DEPEND}"
+BDEPEND="dev-qt/linguist-tools:5"
 
 src_prepare() {
 	rmdir "${S}/src/translations" || die
