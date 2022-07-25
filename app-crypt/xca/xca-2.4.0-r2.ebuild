@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -22,8 +22,8 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	>=dev-libs/openssl-1.1.0:=
 	doc? ( app-text/linuxdoc-tools )"
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-qt/linguist-tools:5"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.0-desktop.patch"
