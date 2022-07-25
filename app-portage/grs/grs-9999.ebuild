@@ -55,5 +55,7 @@ src_install() {
 	if use server; then
 		mkdir "${D}"/usr/share/${PN}
 		cp "${DISTDIR}"/${ISO} "${D}"/usr/share/${PN}
+	else
+		rm "${D}"/usr/bin/grsrun
 	fi
 }
