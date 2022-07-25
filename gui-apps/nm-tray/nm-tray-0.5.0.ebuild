@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
@@ -14,7 +14,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-BDEPEND=">=dev-util/cmake-3.10"
+BDEPEND="
+	dev-qt/linguist-tools:5
+	>=dev-util/cmake-3.10
+"
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -23,10 +26,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	kde-frameworks/networkmanager-qt
 "
-DEPEND="
-	${RDEPEND}
-	dev-qt/linguist-tools:5
-"
+DEPEND="${RDEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
