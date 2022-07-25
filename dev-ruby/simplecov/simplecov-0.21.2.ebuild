@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby26 ruby27"
+USE_RUBY="ruby26 ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
@@ -41,6 +41,10 @@ all_ruby_prepare() {
 	sed -i -e '/blocks other processes/askip "gentoo"' spec/result_merger_spec.rb || die
 
 	sed -i -e '5i require "bundler"' spec/helper.rb || die
+
+	sed -e '/start_coverage_measurement/,/^  end/ s|with(lines: true)|with({lines: true})|' \
+		-e '/start_coverage_measurement/,/^  end/ s|with(lines: true, branches: true)|with({lines: true, branches: true})|' \
+		-i spec/simplecov_spec.rb || die
 }
 
 each_ruby_test() {
