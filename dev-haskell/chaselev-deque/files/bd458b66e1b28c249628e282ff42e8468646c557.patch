@@ -1,0 +1,281 @@
+From bd458b66e1b28c249628e282ff42e8468646c557 Mon Sep 17 00:00:00 2001
+From: Ryan Scott <ryan.gl.scott@gmail.com>
+Date: Mon, 24 Feb 2020 10:22:38 -0500
+Subject: [PATCH] Import unsafeCoerce# from GHC.Exts, not GHC.Prim
+
+`atomic-primops` and `chaselev-deque` fail to build on GHC HEAD
+(8.11) since `unsafeCoerce#` can no longer be imported from
+`GHC.Prim` (see
+https://gitlab.haskell.org/ghc/ghc/commit/74ad75e87317196c600dfabc61aee1b87d95c214).
+Luckily, `GHC.Exts` provides a backwards-compatible way to import
+`unsafeCoerce#`, so we can simply import it from there instead.
+
+diff --git a/CHANGELOG.md a/CHANGELOG.md
+new file mode 100644
+index 0000000..c0a4b4b
+--- /dev/null
++++ a/CHANGELOG.md
+@@ -0,0 +1,25 @@
++## next [????.??.??]
++* Allow building with `base-4.15`.
++
++## 0.5.0.4
++* bugfix
++
++## 0.5.0.3
++* minor bump to change abstract-deque dep.
++
++## 0.5.0.2
++* bump to go along with MAJOR bugfix in atomic-primops 0.5.0.2
++
++## 0.4
++* bump to go along with atomic-primops 0.4
++
++## 0.3
++* bump to go along with atomic-primops 0.3
++
++## 0.1.3
++* small release to fix version deps before atomic-primops api change
++
++## 0.1.2
++
++## 0.1.1
++* bump for fixing bugs!  First release candidate.
+diff --git a/Data/Concurrent/Deque/ChaseLev.hs a/Data/Concurrent/Deque/ChaseLev.hs
+index 7ec2ff0..baf0843 100644
+--- a/Data/Concurrent/Deque/ChaseLev.hs
++++ a/Data/Concurrent/Deque/ChaseLev.hs
+@@ -39,8 +39,7 @@ import Data.Atomics.Counter
+ import System.IO.Unsafe (unsafePerformIO)
+ import Text.Printf (printf)
+ import System.Mem.StableName (makeStableName, hashStableName)
+-import GHC.Exts (Int(I#))
+-import GHC.Prim (reallyUnsafePtrEquality#, unsafeCoerce#)
++import GHC.Exts (Int(I#), reallyUnsafePtrEquality#, unsafeCoerce#)
+ 
+ --------------------------------------------------------------------------------
+ -- Instances
+diff --git a/Data/Concurrent/Deque/ChaseLevUnboxed.hs a/Data/Concurrent/Deque/ChaseLevUnboxed.hs
+index 2817f7a..e1d2fe5 100644
+--- a/Data/Concurrent/Deque/ChaseLevUnboxed.hs
++++ a/Data/Concurrent/Deque/ChaseLevUnboxed.hs
+@@ -3,7 +3,7 @@
+ -- TEMPORARY: An experiment in duplicating ChaseLev.hs to support unboxed queue contents.
+ 
+ -- | Chase-Lev work stealing Deques
+--- 
++--
+ -- This implementation derives directly from the pseudocode in the 2005 SPAA paper:
+ --
+ --   http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.170.1097&rep=rep1&type=pdf
+@@ -15,7 +15,7 @@ module Data.Concurrent.Deque.ChaseLevUnboxed
+     -- The convention here is to directly provide the concrete
+     -- operations as well as providing the class instances.
+     ChaseLevDeque(), newQ, nullQ, pushL, tryPopL, tryPopR,
+-    approxSize, 
++    approxSize,
+     dbgInspectCLD
+   )
+  where
+@@ -41,14 +41,13 @@ import Data.Atomics.Counter
+ import System.IO.Unsafe (unsafePerformIO)
+ import Text.Printf (printf)
+ import System.Mem.StableName (makeStableName, hashStableName)
+-import GHC.Exts (Int(I#))
+-import GHC.Prim (reallyUnsafePtrEquality#, unsafeCoerce#)
++import GHC.Exts (Int(I#), reallyUnsafePtrEquality#, unsafeCoerce#)
+ 
+ --------------------------------------------------------------------------------
+ -- Instances
+ 
+ {-
+-instance PC.DequeClass ChaseLevDeque where 
++instance PC.DequeClass ChaseLevDeque where
+   newQ  = newQ
+   nullQ = nullQ
+   pushL = pushL
+@@ -57,7 +56,7 @@ instance PC.DequeClass ChaseLevDeque where
+   leftThreadSafe  _ = False
+   rightThreadSafe _ = True
+ 
+-instance PC.PopL ChaseLevDeque where 
++instance PC.PopL ChaseLevDeque where
+   tryPopL = tryPopL
+ -}
+ 
+@@ -93,7 +92,7 @@ dbgInspectCLD CLD{top,bottom,activeArr} = do
+          | isInfixOf "uninitialised element" (show e) -> return "<uninit>"
+          | otherwise -> return$ "<"++ show e ++">"
+        Right val' -> return (show val')
+-     
++
+ 
+ 
+ --------------------------------------------------------------------------------
+@@ -108,7 +107,7 @@ dbgInspectCLD CLD{top,bottom,activeArr} = do
+ {-# INLINE slc #-}
+ #ifndef DEBUGCL
+ dbg = False
+-nu a      = MV.unsafeNew a 
++nu a      = MV.unsafeNew a
+ rd a b    = MV.unsafeRead a b
+ wr a b c  = MV.unsafeWrite a b c
+ slc a b c = MV.unsafeSlice a b c
+@@ -116,13 +115,13 @@ cpy a b   = MV.unsafeCopy a b
+ #else
+ #warning "Activating DEBUGCL!"
+ dbg = True
+-nu a      = MV.new a 
++nu a      = MV.new a
+ rd a b    = MV.read a b
+ wr a b c  = MV.write a b c
+ slc a b c = MV.slice a b c
+ cpy a b   = MV.copy a b
+ -- Temp, debugging: Our own bounds checking, better error:
+--- wr v i x = 
++-- wr v i x =
+ --   if i >= MV.length v
+ --   then error (printf "ERROR: Out of bounds of top of vector index %d, vec length %d\n" i (MV.length v))
+ --   else MV.write v i x
+@@ -131,8 +130,8 @@ cpy a b   = MV.copy a b
+ 
+ #ifdef DEBUGCL
+ -- This simply localizes exceptions better:
+-tryit msg action = Control.Exception.catch action 
+-	                        (\e -> do putStrLn$ "ERROR inside "++msg++" "++ show e 
++tryit msg action = Control.Exception.catch action
++	                        (\e -> do putStrLn$ "ERROR inside "++msg++" "++ show e
+                                           throw (e::SomeException))
+ #else
+ {-# INLINE tryit #-}
+@@ -145,9 +144,9 @@ tryit msg action = action
+ 
+ -- TODO: make a "grow" that uses memcpy.
+ growCirc :: V.Unbox a => Int -> Int -> MV.IOVector a -> IO (MV.IOVector a)
+-growCirc !strt !end !oldarr = do  
++growCirc !strt !end !oldarr = do
+   -- let len = MV.length oldarr
+-  --     strtmod = strt`mod` len 
++  --     strtmod = strt`mod` len
+   --     endmod  = end `mod` len
+   -- newarr <- nu (len + len)
+   -- if endmod < strtmod then do
+@@ -165,7 +164,7 @@ growCirc !strt !end !oldarr = do
+   -- return newarr
+   ----------------------------------------
+   -- Easier version first:
+-  ----------------------------------------  
++  ----------------------------------------
+   let len   = MV.length oldarr
+       elems = end - strt
+   when dbg $ putStrLn$ "Grow to size "++show (len+len)++", copying over "++show elems
+@@ -176,8 +175,8 @@ growCirc !strt !end !oldarr = do
+ 							    ++" had only initialized "++show elems++" elems: "
+ 							    ++show(strt`mod`(len+len),end`mod`(len+len))))
+   -- Strictly matches what's in the paper:
+-  for_ strt end $ \ind -> do 
+-    x <- getCirc oldarr ind 
++  for_ strt end $ \ind -> do
++    x <- getCirc oldarr ind
+     evaluate x
+     putCirc newarr ind x
+   return $! newarr
+@@ -206,7 +205,7 @@ copyOffset !from !to !iFrom !iTo !len =
+ newQ :: V.Unbox elt => IO (ChaseLevDeque elt)
+ newQ = do
+   -- Arbitrary Knob: We start as size 32 and double from there:
+-  v  <- MV.new 32 
++  v  <- MV.new 32
+   r1 <- newCounter 0
+   r2 <- newCounter 0
+   r3 <- newIORef v
+@@ -217,8 +216,8 @@ nullQ :: ChaseLevDeque elt -> IO Bool
+ nullQ CLD{top,bottom} = do
+   -- This should get a LOWER bound on size at some point in logic time, right?
+   b   <- readCounter bottom
+-  t   <- readCounter top  
+-  let size = b - t  
++  t   <- readCounter top
++  let size = b - t
+   return $! size <= 0
+ 
+ {-# INLINE approxSize #-}
+@@ -226,7 +225,7 @@ nullQ CLD{top,bottom} = do
+ approxSize :: ChaseLevDeque elt -> IO Int
+ approxSize CLD{top,bottom} = do
+   b   <- readCounter bottom
+-  t   <- readCounter top  
++  t   <- readCounter top
+   return $! b - t
+ 
+ {-# INLINE pushL #-}
+@@ -237,12 +236,12 @@ pushL CLD{top,bottom,activeArr} obj = tryit "pushL" $ do
+   b   <- readCounter bottom
+   t   <- readCounter top
+   arr <- readIORef activeArr
+-  let len = MV.length arr 
++  let len = MV.length arr
+       size = b - t
+ 
+ --  when (dbg && size < 0) $ error$ "pushL: INVARIANT BREAKAGE - bottom, top: "++ show (b,t)
+ 
+-  arr' <- if (size >= len - 1) then do 
++  arr' <- if (size >= len - 1) then do
+             arr' <- growCirc t b arr -- Double in size, don't change b/t.
+             -- Only a single thread will do this!:
+ 	    writeIORef activeArr arr'
+@@ -268,7 +267,7 @@ pushL CLD{top,bottom,activeArr} obj = tryit "pushL" $ do
+ tryPopR :: V.Unbox elt => ChaseLevDeque elt -> IO (Maybe elt)
+ tryPopR CLD{top,bottom,activeArr} =  tryit "tryPopR" $ do
+   -- NB. these loads must be ordered, otherwise there is a race
+-  -- between steal and pop.  
++  -- between steal and pop.
+   tt  <- readCounterForCAS top
+   loadLoadBarrier
+   b   <- readCounter bottom
+@@ -277,14 +276,14 @@ tryPopR CLD{top,bottom,activeArr} =  tryit "tryPopR" $ do
+ 
+   let t = peekCTicket tt
+       size = b - t
+-  if size <= 0 then 
++  if size <= 0 then
+     return Nothing
+-   else do 
++   else do
+     obj   <- getCirc  arr t
+     (b,_) <- casCounter top tt (t+1)
+-    if b then 
++    if b then
+       return $! Just obj
+-     else 
++     else
+       return Nothing -- Someone beat us, abort
+ 
+ {-# INLINE tryPopL #-}
+@@ -298,14 +297,14 @@ tryPopL CLD{top,bottom,activeArr} = tryit "tryPopL" $ do
+   -- very important that the following read of q->top does not occur
+   -- before the earlier write to q->bottom.
+   storeLoadBarrier
+-  
++
+   tt   <- readCounterForCAS top
+ --  when (dbg && b < t) $ error$ "tryPopL: INVARIANT BREAKAGE - bottom < top: "++ show (b,t)
+ 
+   let t = peekCTicket tt
+-      size = b - t 
++      size = b - t
+   if size < 0 then do
+-    writeCounter bottom t 
++    writeCounter bottom t
+     return Nothing
+    else do
+     obj <- getCirc arr b
+@@ -315,7 +314,7 @@ tryPopL CLD{top,bottom,activeArr} = tryit "tryPopL" $ do
+       (b,ol) <- casCounter top tt (t+1)
+       writeCounter bottom (t+1)
+       if b then return $! Just obj
+-           else return $  Nothing 
++           else return $  Nothing
+ 
+ ------------------------------------------------------------
+ 
