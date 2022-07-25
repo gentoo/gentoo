@@ -17,8 +17,6 @@ if [[ ${PV} = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/${MY_PN}/${MY_PN}.git"
 	S="${WORKDIR}/freecad-${PV}"
 else
-	MY_PV=$(ver_cut 1-2)
-	MY_PV=$(ver_rs 1 '_' ${MY_PV})
 	SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 	S="${WORKDIR}/FreeCAD-${PV}"
@@ -32,7 +30,7 @@ SLOT="0"
 # see https://forum.freecadweb.org/viewtopic.php?f=4&t=69450
 IUSE="debug headless test"
 
-FREECAD_EXPERIMENTAL_MODULES="cloud pcl plot ship"
+FREECAD_EXPERIMENTAL_MODULES="cloud pcl"
 FREECAD_STABLE_MODULES="addonmgr fem idf image inspection material
 	openscad part-design path points raytracing robot show surface
 	techdraw tux"
@@ -121,7 +119,6 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	inspection? ( points )
 	path? ( robot )
-	ship? ( image plot )
 "
 
 PATCHES=(
@@ -181,13 +178,11 @@ src_configure() {
 		-DBUILD_PART=ON
 		-DBUILD_PART_DESIGN=$(usex part-design)
 		-DBUILD_PATH=$(usex path)
-		-DBUILD_PLOT=$(usex plot)				# conflicts with possible external workbench
 		-DBUILD_POINTS=$(usex points)
 		-DBUILD_QT5=ON							# OFF means to use Qt4
 		-DBUILD_RAYTRACING=$(usex raytracing)
 		-DBUILD_REVERSEENGINEERING=OFF			# currently only an empty sandbox
 		-DBUILD_ROBOT=$(usex robot)
-		-DBUILD_SHIP=$(usex ship)				# conflicts with possible external workbench
 		-DBUILD_SHOW=$(usex show)
 		-DBUILD_SKETCHER=ON						# needed by draft workspace
 		-DBUILD_SMESH=ON
@@ -279,18 +274,6 @@ src_install() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-
-	if use plot; then
-		einfo "Note: You are enabling the 'plot' USE flag."
-		einfo "This conflicts with the plot workbench that can be loaded"
-		einfo "via the addon manager! You can only install one of those."
-	fi
-
-	if use ship; then
-		einfo "Note: You are enabling the 'ship' USE flag."
-		einfo "This conflicts with the ship workbench that can be loaded"
-		einfo "via the addon manager! You can only install one of those."
-	fi
 
 	einfo "You can load a lot of additional workbenches using the integrated"
 	einfo "AddonManager."
