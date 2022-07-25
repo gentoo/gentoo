@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? (
-		dev-qt/linguist-tools:5
 		dev-qt/qtdbus:5
 		dev-qt/qtdeclarative:5
 		dev-qt/qttest:5
@@ -42,6 +41,7 @@ BDEPEND="
 		dev-qt/qdoc:5
 		dev-qt/qthelp:5
 	)
+	test? ( dev-qt/linguist-tools:5 )
 "
 
 src_prepare() {
