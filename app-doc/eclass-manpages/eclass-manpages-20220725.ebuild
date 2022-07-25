@@ -17,8 +17,7 @@ SLOT="0"
 # Keep the keywords stable. No need to change to ~arch.
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
 
-BDEPEND="sys-apps/gawk
-	sys-apps/groff"
+BDEPEND="sys-apps/gawk"
 
 src_install() {
 	emake install DESTDIR="${D}" PREFIX="${EPREFIX}/usr"
