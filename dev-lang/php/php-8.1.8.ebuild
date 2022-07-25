@@ -33,7 +33,7 @@ IUSE="${IUSE}
 	${SAPIS/cli/+cli}
 	threads"
 
-IUSE="${IUSE} acl apparmor argon2 bcmath berkdb bzip2 calendar cdb cjk
+IUSE="${IUSE} acl apparmor argon2 avif bcmath berkdb bzip2 calendar cdb cjk
 	coverage +ctype curl debug
 	enchant exif ffi +fileinfo +filter firebird
 	+flatfile ftp gd gdbm gmp +iconv imap inifile
@@ -51,6 +51,7 @@ REQUIRED_USE="
 	|| ( cli cgi fpm apache2 embed phpdbg )
 	cli? ( ^^ ( readline libedit ) )
 	!cli? ( ?? ( readline libedit ) )
+	avif? ( gd zlib )
 	truetype? ( gd zlib )
 	webp? ( gd zlib )
 	cjk? ( gd zlib )
@@ -82,6 +83,7 @@ COMMON_DEPEND="
 	fpm? ( acl? ( sys-apps/acl ) apparmor? ( sys-libs/libapparmor ) )
 	apache2? ( www-servers/apache[apache2_modules_unixd(+),threads=] )
 	argon2? ( app-crypt/argon2:= )
+	avif? ( >=media-libs/libavif-0.8.2 )
 	berkdb? ( || (	sys-libs/db:5.3 sys-libs/db:4.8 ) )
 	bzip2? ( app-arch/bzip2:0= )
 	cdb? ( || ( dev-db/cdb dev-db/tinycdb ) )
@@ -337,6 +339,7 @@ src_configure() {
 		$(use_with gd jpeg)
 		$(use_with xpm)
 		$(use_with webp)
+		$(use_with avif)
 	)
 	# enable gd last, so configure can pick up the previous settings
 	our_conf+=( $(use_enable gd) )
