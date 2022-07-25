@@ -11,7 +11,7 @@ RUBY_FAKEGEM_GEMSPEC="nanoc.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="nanoc is a simple but very flexible static site generator written in Ruby"
-HOMEPAGE="https://nanoc.ws/"
+HOMEPAGE="https://nanoc.app/"
 SRC_URI="https://github.com/nanoc/nanoc/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 

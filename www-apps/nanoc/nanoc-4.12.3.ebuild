@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ RUBY_FAKEGEM_GEMSPEC="nanoc.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="nanoc is a simple but very flexible static site generator written in Ruby"
-HOMEPAGE="https://nanoc.ws/"
+HOMEPAGE="https://nanoc.app/"
 SRC_URI="https://github.com/nanoc/nanoc/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
