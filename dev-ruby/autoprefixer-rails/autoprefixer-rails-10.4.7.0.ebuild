@@ -23,6 +23,8 @@ KEYWORDS="~amd64"
 SLOT="$(ver_cut 1)"
 IUSE=""
 
+DEPEND+="test? ( net-libs/nodejs )"
+
 ruby_add_rdepend "dev-ruby/execjs"
 
 ruby_add_bdepend "test? (
