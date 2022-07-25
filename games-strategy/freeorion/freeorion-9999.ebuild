@@ -4,74 +4,112 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit cmake python-single-r1 xdg
-
-DESCRIPTION="A free turn-based space empire and galactic conquest game"
-HOMEPAGE="https://www.freeorion.org"
+inherit check-reqs cmake multiprocessing python-single-r1 xdg
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/freeorion/freeorion.git"
 else
+	FREEORION_BUILD_ID=""
+	SRC_URI="https://github.com/freeorion/freeorion/releases/download/v${PV}/FreeOrion_v${PV}_${FREEORION_BUILD_ID}_Source.tar.gz"
+	S="${WORKDIR}/src-tarball"
 	KEYWORDS="~amd64"
-	if [[ ${PV} = *_p* ]]; then
-		COMMIT=""
-		SRC_URI="https://github.com/${PN}/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-		S="${WORKDIR}/${PN}-${COMMIT}"
-	else
-		SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
-		S="${WORKDIR}/${PN}-${PV/_/-}"
-	fi
 fi
 
-LICENSE="GPL-2 LGPL-2.1 CC-BY-SA-3.0"
+DESCRIPTION="Free turn-based space empire and galactic conquest game"
+HOMEPAGE="https://www.freeorion.org/"
+
+LICENSE="GPL-2+ CC-BY-SA-3.0 LGPL-2.1+"
 SLOT="0"
-IUSE="dedicated"
-
+IUSE="dedicated doc test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RESTRICT="!test? ( test )"
 
-BDEPEND="
-	virtual/pkgconfig
-"
-RDEPEND="
-	$(python_gen_cond_dep '
-		>=dev-libs/boost-1.60:=[nls,python,threads(+),${PYTHON_USEDEP}]
-	')
-	!dedicated? (
-		media-libs/freealut
-		>=media-libs/freetype-2.5.5
-		media-libs/glew:=
-		>=media-libs/libogg-1.1.3
-		media-libs/libpng:0=
-		media-libs/libsdl2[X,opengl,video]
-		>=media-libs/libvorbis-1.1.2
-		media-libs/openal
-		sci-physics/bullet:=
-		virtual/opengl
-	)
-	sys-libs/zlib
+DEPEND="
 	${PYTHON_DEPS}
-"
-DEPEND="${RDEPEND}"
+	$(python_gen_cond_dep 'dev-libs/boost:=[${PYTHON_USEDEP},nls,python]')
+	sys-libs/zlib:=
+	!dedicated? (
+		media-libs/freetype
+		media-libs/glew:=
+		media-libs/libglvnd
+		media-libs/libogg
+		media-libs/libpng:=
+		media-libs/libsdl2[opengl,video]
+		media-libs/libvorbis
+		media-libs/openal
+	)"
+RDEPEND="
+	${DEPEND}
+	!dedicated? (
+		media-fonts/dejavu
+		media-fonts/roboto
+	)"
+BDEPEND="
+	${PYTHON_DEPS}
+	doc? (
+		app-doc/doxygen
+		media-gfx/graphviz
+	)
+	test? (
+		$(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]')
+	)"
+
+freeorion_check-reqs() {
+	# cc1plus processes may suddenly use ~1.5GB all at once early on (2+GB
+	# if debug symbols) then far less for the rest, check minimal jobs*1.5
+	local CHECKREQS_MEMORY=$(($(makeopts_jobs)*1500))M
+	check-reqs_${EBUILD_PHASE_FUNC}
+}
+
+pkg_pretend() {
+	freeorion_check-reqs
+}
+
+pkg_setup() {
+	freeorion_check-reqs
+	python-single-r1_pkg_setup
+}
 
 src_prepare() {
-	sed -e "s/-O3//" -i CMakeLists.txt || die
-
 	cmake_src_prepare
+
+	sed -i 's/-O3//' CMakeLists.txt || die
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_BUILD_TYPE=Release
-		-DCMAKE_SKIP_RPATH=ON
-		-DBUILD_HEADLESS="$(usex dedicated)"
+		-DBUILD_CLIENT_GG=$(usex !dedicated)
+		-DBUILD_CLIENT_GODOT=no # TODO, perhaps with system godot (experimental)
+		-DBUILD_TESTING=$(usex test)
 	)
 
 	cmake_src_configure
 }
 
+src_compile() {
+	cmake_src_compile all $(usev doc)
+}
+
+src_test() {
+	cmake_src_test -j1 # avoid running 2 conflicting servers
+
+	epytest -o cache_dir="${T}"/pytest_cache default/python/tests
+}
+
 src_install() {
+	local DOCS=( ChangeLog.md README.md )
 	cmake_src_install
 
-	newenvd "${FILESDIR}/${PN}.envd" 99${PN}
+	use doc && dodoc -r "${BUILD_DIR}"/doc/cpp-apidoc/html
+
+	if use dedicated; then
+		rm -r "${ED}"/usr/share/freeorion/default/data/fonts || die
+	else
+		local font
+		for font in roboto/Roboto-{Bold,Regular}.ttf dejavu/DejaVuSans{-Bold,}.ttf; do
+			dosym -r /usr/share/{fonts/${font%/*},${PN}/default/data/fonts}/${font##*/}
+		done
+		rm "${ED}"/usr/share/${PN}/default/data/fonts/LICENSE.{Roboto,DejaVu} || die
+	fi
 }
