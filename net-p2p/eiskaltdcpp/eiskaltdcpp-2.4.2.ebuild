@@ -48,9 +48,7 @@ RDEPEND="
 		virtual/perl-Getopt-Long
 		dev-perl/JSON-RPC
 	)
-	daemon? (
-		dev-libs/jsoncpp:=
-	)
+	daemon? ( dev-libs/jsoncpp:= )
 	gtk? (
 		dev-libs/glib:2
 		x11-libs/gtk+:3
@@ -80,12 +78,11 @@ RDEPEND="
 	)
 	upnp? ( net-libs/miniupnpc )
 "
+DEPEND="${RDEPEND}"
 BDEPEND="
-	gold? ( sys-devel/binutils[gold] )
-"
-DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
+	gold? ( sys-devel/binutils[gold] )
 	qt5? ( dev-qt/linguist-tools:5 )
 "
 
