@@ -523,12 +523,6 @@ dev-python/jikanpy
 # see bug #843746
 sys-power/tuxedo-cc-wmi
 
-# Sam James <sam@gentoo.org> (2022-06-21)
-# Obsolete, no reverse dependencies, does not run test suite, and doesn't
-# support Python 3.10+. Use app-crypt/gpgme[python] instead.
-# Bugs #845807, #798372, #748531. Removal on 2022-07-21.
-dev-python/pygpgme
-
 # Sam James <sam@gentoo.org> (2022-05-28)
 # GCC 9 and older no longer receive upstream support or fixes for
 # bugs. Please switch to a newer GCC version using gcc-config.
