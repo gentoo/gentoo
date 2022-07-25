@@ -31,12 +31,8 @@ ACCT_DEPEND="
 BDEPEND="${ACCT_DEPEND}
 	virtual/pkgconfig
 	nls? (
-		gtk? (
-			sys-devel/gettext
-		)
-		qt5? (
-			dev-qt/linguist-tools:5
-		)
+		gtk? ( sys-devel/gettext )
+		qt5? ( dev-qt/linguist-tools:5 )
 	)
 "
 COMMON_DEPEND="
@@ -63,15 +59,7 @@ COMMON_DEPEND="
 	systemd? ( >=sys-apps/systemd-209:= )
 "
 DEPEND="${COMMON_DEPEND}
-	nls? (
-		virtual/libintl
-		gtk? (
-			sys-devel/gettext
-		)
-		qt5? (
-			dev-qt/linguist-tools:5
-		)
-	)
+	nls? ( virtual/libintl )
 "
 RDEPEND="${COMMON_DEPEND}
 	${ACCT_DEPEND}
