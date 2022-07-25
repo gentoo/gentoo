@@ -52,6 +52,9 @@ src_configure() {
 
 	"$(qt5_get_bindir)"/lrelease fmit.pro || die
 
-	eqmake5 CONFIG+="${config}" fmit.pro PREFIX="${D}"/usr \
-		PREFIXSHORTCUT="${D}"/usr DISTDIR=/usr
+	eqmake5 CONFIG+="${config}" PREFIX=/usr fmit.pro
+}
+
+src_install() {
+	emake install INSTALL_ROOT="${D}"
 }
