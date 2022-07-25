@@ -30,7 +30,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/0001-setup-specify-build-backend-in-pyproject.toml.patch"
+	"${FILESDIR}"/pyroute2-0.7.1-specify-build-backend-in-pyproject.toml.patch
 )
 
 # tests need root access
