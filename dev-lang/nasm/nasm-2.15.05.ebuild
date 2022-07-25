@@ -31,6 +31,19 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.15-bsd-cp-doc.patch
 )
 
+DOCS=(
+	AUTHORS
+	README.md
+	LICENSE
+	INSTALL
+	ChangeLog
+	CHANGES
+	nasm.txt
+	ndisasm.txt
+	version
+	SubmittingPatches
+)
+
 src_compile() {
 	default
 	use doc && emake doc
@@ -38,5 +51,6 @@ src_compile() {
 
 src_install() {
 	default
+	use doc && einstalldocs
 	emake DESTDIR="${D}" install_rdf $(usex doc install_doc '')
 }
