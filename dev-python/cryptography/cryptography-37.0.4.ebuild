@@ -75,7 +75,7 @@ SRC_URI="
 # extra licenses come from Rust deps
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="
 	>=dev-libs/openssl-1.0.2o-r6:0=
