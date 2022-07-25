@@ -26,8 +26,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-lang/yasm
-	dev-qt/linguist-tools:5
 "
+BDEPEND="dev-qt/linguist-tools:5"
 
 src_configure() {
 	append-ldflags -Wl,-z,noexecstack
