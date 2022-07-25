@@ -18,7 +18,7 @@ REQUIRED_USE="static? ( !qt5 )"
 
 # WARNING: reiserfs support does NOT work with reiserfsprogs
 # you MUST use progsreiserfs-0.3.1_rc8 (the last version ever released).
-COMMON_DEPEND="
+DEPEND="
 	static? (
 		sys-apps/util-linux[static-libs]
 		sys-fs/e2fsprogs[static-libs]
@@ -45,10 +45,8 @@ COMMON_DEPEND="
 		!arm? ( ewf? ( app-forensics/libewf:= ) )
 	)
 "
-DEPEND="${COMMON_DEPEND}
-	qt5? ( dev-qt/linguist-tools:5 )
-"
-RDEPEND="!static? ( ${COMMON_DEPEND} )"
+RDEPEND="!static? ( ${DEPEND} )"
+BDEPEND="qt5? ( dev-qt/linguist-tools:5 )"
 
 DOCS=()
 
