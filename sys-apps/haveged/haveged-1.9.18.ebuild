@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jirka-h/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~mips ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ~ppc ppc64 ~riscv x86"
 IUSE="selinux static-libs threads"
 
 RDEPEND="
