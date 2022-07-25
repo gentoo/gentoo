@@ -518,11 +518,6 @@ gnome-extra/gtkhtml
 # Removal on 2022-07-26.
 dev-python/jikanpy
 
-# Marc Schiffbauer <mschiff@gentoo.org> (2022-06-22)
-# Deprecated package. Removal in 30 days.
-# see bug #843746
-sys-power/tuxedo-cc-wmi
-
 # Sam James <sam@gentoo.org> (2022-05-28)
 # GCC 9 and older no longer receive upstream support or fixes for
 # bugs. Please switch to a newer GCC version using gcc-config.
