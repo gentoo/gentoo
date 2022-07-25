@@ -82,9 +82,8 @@ RDEPEND="
 	)
 	sundials? ( >=sci-libs/sundials-4:0= )
 	X? ( x11-libs/libX11:0= )"
-DEPEND="${RDEPEND}"
-BDEPEND="dev-util/gperf
-	virtual/pkgconfig
+DEPEND="${RDEPEND}
+	dev-util/gperf
 	virtual/imagemagick-tools
 	doc? (
 		dev-texlive/texlive-fontsrecommended
@@ -92,10 +91,12 @@ BDEPEND="dev-util/gperf
 		dev-texlive/texlive-metapost
 		virtual/latex-base
 	)
-	gui? ( dev-qt/linguist-tools:5 )
 	java? ( >=virtual/jdk-1.8:* )
 	qrupdate? ( app-misc/pax-utils )
 	sparse? ( app-misc/pax-utils )"
+BDEPEND="
+	virtual/pkgconfig
+	gui? ( dev-qt/linguist-tools:5 )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.1.0-pkgbuilddir.patch
