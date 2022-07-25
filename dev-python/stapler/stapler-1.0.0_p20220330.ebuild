@@ -19,8 +19,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="
-	dev-python/PyPDF2[${PYTHON_USEDEP}]
-"
+DEPEND="test? ( dev-python/PyPDF2[${PYTHON_USEDEP}] )"
+RDEPEND="dev-python/PyPDF2[${PYTHON_USEDEP}]"
 
 distutils_enable_tests unittest
