@@ -513,11 +513,6 @@ dev-util/rebar-bin
 # as deprecated since March 2022. Removal in 30 days (Bug #855299).
 gnome-extra/gtkhtml
 
-# Piotr Karbowski <slashbeast@gentoo.org> (2022-06-26)
-# Abandoned upstream, depends on API that no longer exists.
-# Removal on 2022-07-26.
-dev-python/jikanpy
-
 # Sam James <sam@gentoo.org> (2022-05-28)
 # GCC 9 and older no longer receive upstream support or fixes for
 # bugs. Please switch to a newer GCC version using gcc-config.
