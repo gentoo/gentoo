@@ -11,7 +11,7 @@ DESCRIPTION="Convert MultiMarkdown syntax to (X)HTML"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 ~arm64 ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 
 RDEPEND="
 	virtual/perl-Digest-MD5
