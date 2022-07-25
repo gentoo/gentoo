@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>haskell@gentoo.org</email>
@@ -8,7 +8,4 @@
 	<longdescription>
 		Bindings for Amazon Web Services (AWS), with the aim of supporting all AWS services. To see a high level overview of the library, see the README at &lt;https://github.com/aristidb/aws/blob/master/README.org&gt;.
 	</longdescription>
-	<upstream>
-		<remote-id type="github">aristidb/aws</remote-id>
-	</upstream>
 </pkgmetadata>
