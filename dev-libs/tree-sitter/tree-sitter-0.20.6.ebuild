@@ -25,6 +25,12 @@ src_prepare() {
 	tc-export CC
 }
 
+src_compile() {
+	emake \
+		PREFIX="${EPREFIX}/usr" \
+		LIBDIR="${EPREFIX}/usr/$(get_libdir)"
+}
+
 src_install() {
 	emake DESTDIR="${D}" \
 		  PREFIX="${EPREFIX}/usr" \
