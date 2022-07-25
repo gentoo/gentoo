@@ -8,7 +8,4 @@
 	<longdescription>
 		Bindings for Amazon Web Services (AWS), with the aim of supporting all AWS services. To see a high level overview of the library, see the README at &lt;https://github.com/aristidb/aws/blob/master/README.org&gt;.
 	</longdescription>
-	<upstream>
-		<remote-id type="github">aristidb/aws</remote-id>
-	</upstream>
 </pkgmetadata>
