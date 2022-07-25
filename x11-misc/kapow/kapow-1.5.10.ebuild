@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit qmake-utils xdg-utils
 
 DESCRIPTION="A punch clock program designed to easily keep track of your hours"
@@ -19,13 +20,10 @@ RDEPEND="
 	dev-qt/qtprintsupport:5
 	dev-qt/qtwidgets:5
 "
-DEPEND="
-	${RDEPEND}
-	dev-qt/linguist-tools:5
-"
-K_LANGS="
-	ar bg cs da de el en es fr it lt nl no pl pt_BR pt ro ru sv tr uk
-"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-qt/linguist-tools:5"
+
+K_LANGS="ar bg cs da de el en es fr it lt nl no pl pt_BR pt ro ru sv tr uk"
 for K_LANG in ${K_LANGS}; do
 	IUSE+=" l10n_${K_LANG/_/-}"
 done
