@@ -11,6 +11,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">martinpitt/python-dbusmock</remote-id>
 		<remote-id type="pypi">python-dbusmock</remote-id>
 	</upstream>
 </pkgmetadata>
