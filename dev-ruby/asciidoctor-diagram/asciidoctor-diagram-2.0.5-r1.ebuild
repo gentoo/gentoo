@@ -25,7 +25,8 @@ IUSE=""
 RDEPEND+=" virtual/jre"
 DEPEND+=" test? (
 	dev-texlive/texlive-latex
-	media-gfx/imagemagick
+	dev-texlive/texlive-latexextra
+	media-gfx/imagemagick[png,postscript]
 	media-gfx/graphviz
 	media-sound/lilypond
 	sci-visualization/gnuplot
