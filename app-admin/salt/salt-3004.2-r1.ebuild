@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit systemd distutils-r1
 
@@ -17,7 +17,7 @@ if [[ ${PV} == 9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="Apache-2.0"
@@ -29,9 +29,10 @@ IUSE="cheetah cherrypy ldap libcloud libvirt genshi gnupg keyring mako
 RDEPEND="
 	sys-apps/pciutils
 	>=dev-python/distro-1.5[${PYTHON_USEDEP}]
-	dev-python/jinja[${PYTHON_USEDEP}]
+	>=dev-python/jinja-3.0[${PYTHON_USEDEP}]
 	dev-python/libnacl[${PYTHON_USEDEP}]
 	>=dev-python/msgpack-1.0.0[${PYTHON_USEDEP}]
+	>=dev-python/psutil-5.0.0[${PYTHON_USEDEP}]
 	>=dev-python/pycryptodome-3.9.8[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/markupsafe[${PYTHON_USEDEP}]
@@ -55,7 +56,7 @@ RDEPEND="
 		>=dev-python/raet-0.6.0[${PYTHON_USEDEP}]
 	)
 	cherrypy? ( >=dev-python/cherrypy-3.2.2[${PYTHON_USEDEP}] )
-	cheetah? ( dev-python/cheetah3[${PYTHON_USEDEP}] )
+	cheetah? ( >=dev-python/cheetah3-3.2.2[${PYTHON_USEDEP}] )
 	genshi? ( dev-python/genshi[${PYTHON_USEDEP}] )
 	mongodb? ( dev-python/pymongo[${PYTHON_USEDEP}] )
 	portage? ( sys-apps/portage[${PYTHON_USEDEP}] )
@@ -71,7 +72,7 @@ RDEPEND="
 	gnupg? ( dev-python/python-gnupg[${PYTHON_USEDEP}] )
 	profile? ( dev-python/yappi[${PYTHON_USEDEP}] )
 	vim-syntax? ( app-vim/salt-vim )
-	zeromq? ( >=dev-python/pyzmq-19.1.0[${PYTHON_USEDEP}] )
+	zeromq? ( >=dev-python/pyzmq-19.0.0[${PYTHON_USEDEP}] )
 "
 BDEPEND="
 	test? (
@@ -80,20 +81,20 @@ BDEPEND="
 		>=dev-python/jsonschema-3.0[${PYTHON_USEDEP}]
 		dev-python/mako[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
-		>=dev-python/moto-1.3.14[${PYTHON_USEDEP}]
+		>=dev-python/moto-0.3.6[${PYTHON_USEDEP}]
+		dev-python/passlib
 		dev-python/pip[${PYTHON_USEDEP}]
-		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
-		=dev-python/pytest-salt-factories-0.121*[${PYTHON_USEDEP}]
+		>=dev-python/pytest-salt-factories-1.0.0_rc13[${PYTHON_USEDEP}]
 		dev-python/pytest-tempdir[${PYTHON_USEDEP}]
 		dev-python/pytest-helpers-namespace[${PYTHON_USEDEP}]
 		dev-python/pytest-subtests[${PYTHON_USEDEP}]
 		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/libcloud[${PYTHON_USEDEP}]
 		net-dns/bind-tools
-		>=dev-python/virtualenv-20.0.20[${PYTHON_USEDEP}]
-		!x86? ( >=dev-python/boto3-1.19.63[${PYTHON_USEDEP}] )
+		>=dev-python/virtualenv-20.3.0[${PYTHON_USEDEP}]
+		!x86? ( >=dev-python/boto3-1.17.67[${PYTHON_USEDEP}] )
 	)"
 
 DOCS=( README.rst AUTHORS )
@@ -102,18 +103,17 @@ REQUIRED_USE="|| ( raet zeromq )
 	test? ( cheetah genshi )"
 RESTRICT="!test? ( test ) x86? ( test )"
 
-# tests currently broken
-RESTRICT+=" test"
-
 PATCHES=(
 	"${FILESDIR}/salt-3003-skip-tests-that-oom-machine.patch"
 	"${FILESDIR}/salt-3003-gentoolkit-revdep.patch"
 	"${FILESDIR}/salt-3002-tests.patch"
-	"${FILESDIR}/salt-3003.3-tests.patch"
 	"${FILESDIR}/salt-3003.1-tests.patch"
 	"${FILESDIR}/salt-3004.2-jinja-3.patch"
-	"${FILESDIR}/salt-3003.4-tests.patch"
-	"${FILESDIR}/salt-3003.4-relax-pyzmq-dep.patch"
+	"${FILESDIR}/salt-3004.1-tests.patch"
+	"${FILESDIR}/salt-3004.1-relax-pyzmq-dep.patch"
+	"${FILESDIR}/salt-3004.1-py310.patch"
+	"${FILESDIR}/salt-3004.2-importlib.patch"
+	"${FILESDIR}/salt-3004.2-pyzmq-23.patch"
 )
 
 python_prepare_all() {
@@ -131,11 +131,12 @@ python_prepare_all() {
 	rm -r tests/kitchen/tests/wordpress/tests || die
 	rm tests/kitchen/test_kitchen.py || die
 	rm tests/unit/modules/test_network.py || die
+	rm tests/pytests/functional/modules/test_pip.py || die
+	rm tests/pytests/unit/client/ssh/test_ssh.py || die
 
 	# tests require root access
 	rm tests/integration/pillar/test_git_pillar.py || die
 	rm tests/integration/states/test_supervisord.py || die
-	rm tests/pytests/unit/client/test_ssh.py || die
 
 	# make sure pkg_resources doesn't bomb because pycrypto isn't installed
 	find "${S}" -name '*.txt' -print0 | xargs -0 sed -e '/pycrypto>/ d ; /pycryptodomex/ d' -i || die
