@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-07-25)
+# aioredis has been integrated in >=dev-python/redis-py-4.2.0.
+# No revdeps.
+# Removal on 2022-08-24.  Bug #860840.
+dev-python/aioredis
+
 # Jack Todaro <solpeth@posteo.org> (2022-07-24)
 # Last-rite for removal in 30 days. Has no reverse dependencies
 # and is unmaintained upstream.
