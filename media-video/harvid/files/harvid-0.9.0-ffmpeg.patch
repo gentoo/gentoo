@@ -1,0 +1,21 @@
+https://github.com/x42/harvid/commit/5da512c504e6d1cef9546a33f16d2b466289b1f6
+
+From: Robin Gareus <robin@gareus.org>
+Date: Sat, 23 Apr 2022 02:30:59 +0200
+Subject: [PATCH] Fix ffmpeg compatibility
+
+--- a/libharvid/ffcompat.h
++++ b/libharvid/ffcompat.h
+@@ -75,8 +75,10 @@ static inline void av_packet_unref (AVPacket *pkt)
+ #if LIBAVUTIL_VERSION_INT < AV_VERSION_INT(51, 63, 100)
+ static inline int av_image_get_buffer_size (enum AVPixelFormat pix_fmt, int width, int height, int align)
+ {
+-	return avpicture_get_size (pix_fmt, width, height)
++	return avpicture_get_size (pix_fmt, width, height);
+ }
++#else
++#include <libavutil/imgutils.h>
+ #endif
+ 
+ #if LIBAVFORMAT_VERSION_INT < AV_VERSION_INT(53, 2, 0)
+
