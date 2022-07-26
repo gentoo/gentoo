@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1
 
 PYSDL="${PN}-2.1.0"
@@ -21,12 +21,13 @@ BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
+	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
 	media-libs/libsdl2:=[video]
 	media-libs/sdl2-image:=[png,jpeg]
 	>=media-libs/sdl2-mixer-2.0.2:=
 	media-libs/sdl2-ttf:=
-	virtual/jpeg:0"
+"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${PYSDL}-for-renpy-${PV}
