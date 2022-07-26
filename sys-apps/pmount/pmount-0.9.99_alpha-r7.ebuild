@@ -12,7 +12,7 @@ S="${WORKDIR}"/${P/_/-}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ppc ppc64 ~sparc ~x86"
 IUSE="crypt"
 
 # cryptsetup is executed at runtime only, no libraries used AFAICT
