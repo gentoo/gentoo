@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-07-26)
+# Fails to build with ffmpeg 5, no reverse dependencies, maintainer-needed,
+# and no commits upstream since 2017. Bug #834383. Removal on 2022-08-26.
+media-libs/libgroove
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-07-25)
 # Merged into kde-apps/kalarm since 22.04.3, no other revdeps, obsolete.
 # Masked for removal on 2022-08-08.
