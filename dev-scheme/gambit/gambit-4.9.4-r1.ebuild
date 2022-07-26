@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit elisp-common
+inherit flag-o-matic elisp-common
 
 DESCRIPTION="Gambit-C is a native Scheme to C compiler and interpreter"
 HOMEPAGE="http://www.iro.umontreal.ca/~gambit/"
@@ -28,6 +28,9 @@ DOCS=( INSTALL.txt README README.md )
 SITEFILE="50gambit-gentoo.el"
 
 src_configure() {
+	# bug #858254
+	filter-lto
+
 	local myconf=(
 		$(use_enable !static shared)
 		$(use_enable ssl openssl)
