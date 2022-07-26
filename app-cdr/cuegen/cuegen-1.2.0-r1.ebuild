@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit flag-o-matic toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="CUEgen is a FLAC-compatible cuesheet generator for Linux"
 HOMEPAGE="http://www.cs.man.ac.uk/~slavinp/cuegen.html"
@@ -12,12 +12,13 @@ SRC_URI="http://www.cs.man.ac.uk/~slavinp/files/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-PATCHES=( "${FILESDIR}"/${PN}-1.2.0-fix-build-system.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.2.0-fix-build-system.patch
+	"${FILESDIR}"/${PN}-1.2.0-missing-includes.patch
+)
 
 src_configure() {
-	append-cflags -W -Wall -Wstrict-prototypes -Wmissing-prototypes
 	tc-export CC
 }
 
