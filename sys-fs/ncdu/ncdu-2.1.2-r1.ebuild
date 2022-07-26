@@ -14,13 +14,13 @@ KEYWORDS="~amd64"
 DEPEND="sys-libs/ncurses:=[unicode(+)]"
 RDEPEND="${DEPEND}"
 BDEPEND="
-	~dev-lang/zig-0.9.1
+	|| ( ~dev-lang/zig-0.9.1 ~dev-lang/zig-bin-0.9.1 )
 	virtual/pkgconfig
 "
 
 # see https://github.com/ziglang/zig/issues/3382
 # For now, Zig doesn't support CFLAGS/LDFLAGS/etc.
-QA_FLAGS_IGNORED="/usr/bin/ncdu"
+QA_FLAGS_IGNORED="usr/bin/ncdu"
 
 src_test() {
 	zig build test || die "Tests failed"
