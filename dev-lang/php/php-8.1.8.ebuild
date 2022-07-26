@@ -83,7 +83,7 @@ COMMON_DEPEND="
 	fpm? ( acl? ( sys-apps/acl ) apparmor? ( sys-libs/libapparmor ) )
 	apache2? ( www-servers/apache[apache2_modules_unixd(+),threads=] )
 	argon2? ( app-crypt/argon2:= )
-	avif? ( >=media-libs/libavif-0.8.2 )
+	avif? ( >=media-libs/libavif-0.8.2:= )
 	berkdb? ( || (	sys-libs/db:5.3 sys-libs/db:4.8 ) )
 	bzip2? ( app-arch/bzip2:0= )
 	cdb? ( || ( dev-db/cdb dev-db/tinycdb ) )
