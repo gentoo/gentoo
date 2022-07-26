@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SLOT="3"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND=">=dev-libs/glib-2.61.3:2
+RDEPEND=">=dev-libs/glib-2.61.3:2[${MULTILIB_USEDEP}]
 	!=dev-util/sysprof-3.34.1-r0"
 DEPEND="${RDEPEND}"
 BDEPEND="
