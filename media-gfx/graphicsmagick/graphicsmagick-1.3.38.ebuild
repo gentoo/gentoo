@@ -7,7 +7,7 @@ inherit autotools toolchain-funcs
 
 MY_P=${P/graphicsm/GraphicsM}
 DESCRIPTION="Collection of tools and libraries for many image formats"
-HOMEPAGE="http://www.graphicsmagick.org/ http://hg.code.sf.net/p/graphicsmagick/code/"
+HOMEPAGE="http://www.graphicsmagick.org/ https://hg.osdn.net/view/graphicsmagick/GM"
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit mercurial
