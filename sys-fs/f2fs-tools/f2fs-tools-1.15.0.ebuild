@@ -11,7 +11,7 @@ SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/${PN}.git/snaps
 
 LICENSE="GPL-2"
 SLOT="0/9"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~mips ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv x86"
 IUSE="selinux"
 
 RDEPEND="

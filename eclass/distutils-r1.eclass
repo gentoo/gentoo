@@ -230,7 +230,7 @@ _distutils_set_globals() {
 				;;
 			maturin)
 				bdep+='
-					>=dev-util/maturin-0.12.17[${PYTHON_USEDEP}]
+					>=dev-util/maturin-0.12.20[${PYTHON_USEDEP}]
 				'
 				;;
 			no)
@@ -244,12 +244,12 @@ _distutils_set_globals() {
 				;;
 			pbr)
 				bdep+='
-					>=dev-python/pbr-5.8.0-r1[${PYTHON_USEDEP}]
+					>=dev-python/pbr-5.9.0[${PYTHON_USEDEP}]
 				'
 				;;
 			pdm)
 				bdep+='
-					>=dev-python/pdm-pep517-1.0.0[${PYTHON_USEDEP}]
+					>=dev-python/pdm-pep517-1.0.2[${PYTHON_USEDEP}]
 				'
 				;;
 			poetry)
@@ -259,13 +259,13 @@ _distutils_set_globals() {
 				;;
 			setuptools)
 				bdep+='
-					>=dev-python/setuptools-62.3.3[${PYTHON_USEDEP}]
+					>=dev-python/setuptools-62.6.0[${PYTHON_USEDEP}]
 					dev-python/wheel[${PYTHON_USEDEP}]
 				'
 				;;
 			sip)
 				bdep+='
-					>=dev-python/sip-6.5.0-r1[${PYTHON_USEDEP}]
+					>=dev-python/sip-6.6.1[${PYTHON_USEDEP}]
 				'
 				;;
 			standalone)
@@ -1465,13 +1465,6 @@ distutils-r1_python_compile() {
 	esac
 
 	if [[ ${DISTUTILS_USE_PEP517} ]]; then
-		# python likes to compile any module it sees, which triggers sandbox
-		# failures if some packages haven't compiled their modules yet.
-		addpredict "${EPREFIX}/usr/lib/${EPYTHON}"
-		addpredict /usr/lib/pypy3.8
-		addpredict /usr/lib/portage/pym
-		addpredict /usr/local # bug 498232
-
 		distutils_pep517_install "${BUILD_DIR}/install"
 	fi
 }
@@ -1654,8 +1647,7 @@ distutils-r1_python_install() {
 		# python likes to compile any module it sees, which triggers sandbox
 		# failures if some packages haven't compiled their modules yet.
 		addpredict "${EPREFIX}/usr/lib/${EPYTHON}"
-		addpredict /usr/lib/pypy3.8
-		addpredict /usr/lib/portage/pym
+		addpredict /usr/lib/pypy3.9
 		addpredict /usr/local # bug 498232
 
 		if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then

@@ -7,17 +7,18 @@ inherit cmake desktop ninja-utils toolchain-funcs xdg-utils
 
 SKIA_VER="m102"
 # Last commit in ${SKIA_VER} feature branch
+# Don't use skia.googlesource.com, it produces non-reproducible tarballs
 SKIA_REV="3338e90707323d2cd3a150276acb9f39933deee2"
 
 DESCRIPTION="Animated sprite editor & pixel art tool"
 HOMEPAGE="https://www.aseprite.org"
 SRC_URI="https://github.com/aseprite/aseprite/releases/download/v${PV}/Aseprite-v${PV}-Source.zip
-	https://skia.googlesource.com/skia/+archive/${SKIA_REV}.tar.gz -> skia-${SKIA_VER}-${SKIA_REV}.tar.gz"
+	https://github.com/google/skia/archive/${SKIA_REV}.tar.gz -> skia-${SKIA_VER}-${SKIA_REV}.gh.tar.gz"
 
 # See https://github.com/aseprite/aseprite#license
 LICENSE="Aseprite-EULA"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="kde test webp"
 RESTRICT="bindist mirror !test? ( test )"
@@ -68,18 +69,11 @@ PATCHES=(
 	"${FILESDIR}/${P}_laf_fixes.patch"
 )
 
-src_unpack() {
-	unpack "Aseprite-v${PV}-Source.zip"
-	# Unpack skia into separate dir
-	mkdir -p "${WORKDIR}/skia" || die
-	cd "${WORKDIR}/skia" || die
-	unpack "skia-${SKIA_VER}-${SKIA_REV}.tar.gz"
-}
-
 src_prepare() {
 	cmake_src_prepare
 	# Skia: remove custom optimizations
-	sed -i -e 's:"\/\/gn\/skia\:optimize",::g' skia/gn/BUILDCONFIG.gn || die
+	sed -i -e 's:"\/\/gn\/skia\:optimize",::g' \
+		"skia-${SKIA_REV}/gn/BUILDCONFIG.gn" || die
 	# Aseprite: don't install tga bundled library
 	sed -i -e '/install/d' src/tga/CMakeLists.txt || die
 	# Aseprite: don't use bundled gtest
@@ -92,7 +86,7 @@ src_prepare() {
 
 src_configure() {
 	einfo "Skia configuration"
-	cd "${WORKDIR}/skia" || die
+	cd "${WORKDIR}/skia-${SKIA_REV}" || die
 
 	tc-export AR CC CXX
 
@@ -164,10 +158,10 @@ src_configure() {
 		-DLAF_WITH_EXAMPLES=OFF
 		-DLAF_WITH_TESTS="$(usex test)"
 		-DFULLSCREEN_PLATFORM=ON
-		-DSKIA_DIR="${WORKDIR}/skia/"
-		-DSKIA_LIBRARY_DIR="${WORKDIR}/skia/out/Static/"
-		-DSKIA_LIBRARY="${WORKDIR}/skia/out/Static/libskia.a"
-		-DSKSHAPER_LIBRARY="${WORKDIR}/skia/out/Static/libskshaper.a"
+		-DSKIA_DIR="${WORKDIR}/skia-${SKIA_REV}/"
+		-DSKIA_LIBRARY_DIR="${WORKDIR}/skia-${SKIA_REV}/out/Static/"
+		-DSKIA_LIBRARY="${WORKDIR}/skia-${SKIA_REV}/out/Static/libskia.a"
+		-DSKSHAPER_LIBRARY="${WORKDIR}/skia-${SKIA_REV}/out/Static/libskshaper.a"
 		-DUSE_SHARED_CMARK=ON
 		-DUSE_SHARED_CURL=ON
 		-DUSE_SHARED_FREETYPE=ON
@@ -187,7 +181,7 @@ src_configure() {
 
 src_compile() {
 	einfo "Skia compilation"
-	cd "${WORKDIR}/skia" || die
+	cd "${WORKDIR}/skia-${SKIA_REV}" || die
 	eninja -C out/Static
 
 	einfo "Aseprite compilation"

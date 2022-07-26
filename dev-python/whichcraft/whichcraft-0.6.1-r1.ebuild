@@ -14,7 +14,7 @@ SRC_URI="https://github.com/cookiecutter/${PN}/archive/${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DOCS=( README.rst HISTORY.rst CONTRIBUTING.rst )
 

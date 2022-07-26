@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/kopete/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 IUSE="ssl v4l"
 
 # Available plugins

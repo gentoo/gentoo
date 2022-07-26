@@ -16,4 +16,5 @@
 		<email>musl@gentoo.org</email>
 		<name>Musl project</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

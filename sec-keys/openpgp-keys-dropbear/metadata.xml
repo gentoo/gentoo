@@ -5,4 +5,5 @@
 		<email>embedded@gentoo.org</email>
 		<name>Embedded Gentoo</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

@@ -9,4 +9,5 @@
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

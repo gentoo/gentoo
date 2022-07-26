@@ -9,7 +9,7 @@ SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~riscv x86"
 
 DEPEND="
 	>=xfce-base/libxfce4ui-4.12:=[gtk3(+)]

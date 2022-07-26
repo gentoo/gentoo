@@ -5,6 +5,10 @@
 		<email>gyakovlev@gentoo.org</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>zoltan@sinustrom.info</email>
+		<name>Zoltan Puskas</name>
+	</maintainer>
 	<use>
 		<flag name="alias">Enable plugin for alias control</flag>
 		<flag name="buflist">Enable buflist plugin</flag>

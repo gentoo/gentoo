@@ -1,10 +1,6 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-06-29)
-# dev-java/assertj-core:3 not keyworded
->=dev-java/randomized-runner-2.8.0 test
-
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded
 app-text/enchant nuspell
@@ -233,10 +229,6 @@ x11-wm/sawfish kde
 # Pacho Ramos <pacho@gentoo.org> (2015-11-15)
 # Missing keywords
 media-sound/rhythmbox upnp-av
-
-# Pacho Ramos <pacho@gentoo.org> (2015-10-27)
-# Missing keywords
-net-wireless/blueman appindicator
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2015-10-26)
 # x11-drivers/xf86-video-amdgpu is not keyworded

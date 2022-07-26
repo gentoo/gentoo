@@ -17,4 +17,5 @@
 	<email>office@gentoo.org</email>
 	<description>Please CC on stabilisation bugs</description>
 </maintainer>
+<stabilize-allarches/>
 </pkgmetadata>

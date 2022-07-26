@@ -5,7 +5,7 @@ EAPI=8
 
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit lua-single xdg-utils
+inherit flag-o-matic lua-single xdg-utils
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
@@ -47,6 +47,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Bug #858719
+	append-flags -fno-strict-aliasing
+
 	local myeconfargs=(
 		$(use_enable gme)
 		--with-lua=$(usex lua_single_target_luajit luajit lua)

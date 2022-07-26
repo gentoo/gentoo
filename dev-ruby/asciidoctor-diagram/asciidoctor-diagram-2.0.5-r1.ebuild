@@ -23,6 +23,14 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND+=" virtual/jre"
+DEPEND+=" test? (
+	dev-texlive/texlive-latex
+	dev-texlive/texlive-latexextra
+	media-gfx/imagemagick[png,postscript]
+	media-gfx/graphviz
+	media-sound/lilypond
+	sci-visualization/gnuplot
+)"
 ruby_add_rdepend ">=dev-ruby/asciidoctor-1.5.7 <dev-ruby/asciidoctor-3"
 
 all_ruby_prepare() {

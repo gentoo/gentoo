@@ -5,8 +5,4 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>np-hardass@gentoo.org</email>
-		<name>Adam Feldman</name>
-	</maintainer>
 </pkgmetadata>

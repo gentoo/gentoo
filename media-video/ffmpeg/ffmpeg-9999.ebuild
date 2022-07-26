@@ -441,9 +441,9 @@ multilib_src_configure() {
 		break
 	done
 
-	# LTO support, bug #566282, bug #754654
-	is-flagq "-flto*" && myconf+=( "--enable-lto" )
-	filter-flags "-flto*"
+	# LTO support, bug #566282, bug #754654, bug #772854
+	[[ ${ABI} != x86 ]] && is-flagq "-flto*" && myconf+=( "--enable-lto" )
+	filter-lto
 
 	# Mandatory configuration
 	myconf=(

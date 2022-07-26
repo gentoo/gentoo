@@ -24,7 +24,7 @@ inherit toolchain-funcs
 
 # @FUNCTION: all-flag-vars
 # @DESCRIPTION:
-# Return all the flag variables that our high level funcs operate on.
+# Return all the flag variables that our high level functions operate on.
 all-flag-vars() {
 	echo {ADA,C,CPP,CXX,CCAS,F,FC,LD}FLAGS
 }
@@ -209,6 +209,7 @@ filter-flags() {
 # Remove flags that enable Large File Support.
 filter-lfs-flags() {
 	[[ $# -ne 0 ]] && die "filter-lfs-flags takes no arguments"
+
 	# http://www.gnu.org/s/libc/manual/html_node/Feature-Test-Macros.html
 	# _LARGEFILE_SOURCE: enable support for new LFS funcs (ftello/etc...)
 	# _LARGEFILE64_SOURCE: enable support for 64bit variants (off64_t/fseeko64/etc...)
@@ -254,7 +255,7 @@ append-cppflags() {
 # @CODE
 append-cflags() {
 	[[ $# -eq 0 ]] && return 0
-	# Do not do automatic flag testing ourselves. #417047
+	# Do not do automatic flag testing ourselves, bug #417047
 	export CFLAGS+=" $*"
 	return 0
 }
@@ -269,7 +270,7 @@ append-cflags() {
 # @CODE
 append-cxxflags() {
 	[[ $# -eq 0 ]] && return 0
-	# Do not do automatic flag testing ourselves. #417047
+	# Do not do automatic flag testing ourselves, bug #417047
 	export CXXFLAGS+=" $*"
 	return 0
 }
@@ -284,7 +285,7 @@ append-cxxflags() {
 # @CODE
 append-fflags() {
 	[[ $# -eq 0 ]] && return 0
-	# Do not do automatic flag testing ourselves. #417047
+	# Do not do automatic flag testing ourselves, bug #417047
 	export FFLAGS+=" $*"
 	export FCFLAGS+=" $*"
 	return 0
@@ -295,7 +296,8 @@ append-fflags() {
 # Add flags that enable Large File Support.
 append-lfs-flags() {
 	[[ $# -ne 0 ]] && die "append-lfs-flags takes no arguments"
-	# see comments in filter-lfs-flags func for meaning of these
+
+	# See comments in filter-lfs-flags func for meaning of these
 	append-cppflags -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE
 }
 
@@ -322,9 +324,9 @@ append-ldflags() {
 append-flags() {
 	[[ $# -eq 0 ]] && return 0
 	case " $* " in
-	*' '-[DIU]*) eqawarn 'please use append-cppflags for preprocessor flags' ;;
+	*' '-[DIU]*) eqawarn 'Please use append-cppflags for preprocessor flags' ;;
 	*' '-L*|\
-	*' '-Wl,*)  eqawarn 'please use append-ldflags for linker flags' ;;
+	*' '-Wl,*)  eqawarn 'Please use append-ldflags for linker flags' ;;
 	esac
 	append-cflags "$@"
 	append-cxxflags "$@"
@@ -572,6 +574,15 @@ _test-flag-PROG() {
 		c+ld)
 			in_ext='c'
 			in_src='int main(void) { return 0; }'
+
+			if is-ldflagq -fuse-ld=* ; then
+				# Respect linker chosen by user so we don't
+				# end up giving false results by checking
+				# with default linker. bug #832377
+				fuse_ld_value=$(get-flag -fuse-ld=*)
+				cmdline_extra+=(${fuse_ld_value})
+			fi
+
 			cmdline_extra+=(-xc)
 			;;
 	esac
@@ -581,7 +592,7 @@ _test-flag-PROG() {
 	printf "%s\n" "${in_src}" > "${test_in}" || die "Failed to create '${test_in}'"
 
 	# Currently we rely on warning-free output of a compiler
-	# before the flag to see if a flag prduces any warnings.
+	# before the flag to see if a flag produces any warnings.
 	# This has a few drawbacks:
 	# - if compiler already generates warnings we filter out
 	#   every single flag: bug #712488
@@ -607,7 +618,9 @@ _test-flag-PROG() {
 		# -Werror makes clang bail out on unused arguments as well;
 		# try to add -Qunused-arguments to work-around that
 		# other compilers don't support it but then, it's failure like
-		# any other
+		# any other.
+		#
+		# See also bug #712488 and bug #714742.
 		cmdline+=( -Qunused-arguments )
 		"${cmdline[@]}" &>/dev/null
 	fi
@@ -672,7 +685,7 @@ _test-flags-PROG() {
 
 	while (( $# )); do
 		case "$1" in
-			# '-B /foo': bug # 687198
+			# '-B /foo': bug #687198
 			--param|-B)
 				if test-flag-${comp} "$1" "$2"; then
 					flags+=( "$1" "$2" )
@@ -858,7 +871,7 @@ raw-ldflags() {
 			x=${x#-Wl,}
 			set -- "$@" ${x//,/ }
 			;;
-		*)	# Assume it's a compiler driver flag, so throw it away #441808
+		*)	# Assume it's a compiler driver flag, so throw it away, bug #441808
 			;;
 		esac
 	done

@@ -26,6 +26,7 @@ ruby_add_rdepend "dev-ruby/concurrent-ruby:1"
 ruby_add_bdepend "test? (
 	>=dev-ruby/activesupport-5.1
 	dev-ruby/bundler
+	>=dev-ruby/minitest-5.14:5
 	>=dev-ruby/mocha-1.7.0
 	dev-ruby/test_declarative )"
 

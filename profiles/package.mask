@@ -33,6 +33,37 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-07-26)
+# Fails to build with ffmpeg 5, no reverse dependencies, maintainer-needed,
+# and no commits upstream since 2017. Bug #834383. Removal on 2022-08-26.
+media-libs/libgroove
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-07-25)
+# Merged into kde-apps/kalarm since 22.04.3, no other revdeps, obsolete.
+# Masked for removal on 2022-08-08.
+kde-apps/kalarmcal
+
+# Michał Górny <mgorny@gentoo.org> (2022-07-25)
+# aioredis has been integrated in >=dev-python/redis-py-4.2.0.
+# No revdeps.
+# Removal on 2022-08-24.  Bug #860840.
+dev-python/aioredis
+
+# Jack Todaro <solpeth@posteo.org> (2022-07-24)
+# Last-rite for removal in 30 days. Has no reverse dependencies
+# and is unmaintained upstream.
+dev-haskell/bytestring-handle
+dev-haskell/chaselev-deque
+
+# William Hubbs <williamh@gentoo.org> (2022-07-24)
+# **NOTE:** Golint is deprecated and frozen
+# according to [this issue](https://github.com/golang/go/issues/38968).
+# There's no drop-in replacement for it, but tools such as
+# [Staticcheck](https://staticcheck.io/) # and `go vet` should be used instead.
+# Bug #844412
+# Removal: 2022-08-23
+dev-go/golint
+
 # Sam James <sam@gentoo.org> (2022-07-22)
 # Monolithic mask for dev-haskell/* packages which have no reverse dependencies,
 # are broken, or severely out of date. The aim is to have the Haskell overlay
@@ -179,7 +210,6 @@ dev-haskell/idna
 dev-haskell/inspection-testing
 dev-haskell/integer-roots
 dev-haskell/json
-dev-haskell/keys
 dev-haskell/language-bash
 dev-haskell/language-css
 dev-haskell/language-dot
@@ -202,7 +232,6 @@ dev-haskell/listlike
 dev-haskell/logict-state
 dev-haskell/lrucache
 dev-haskell/maccatcher
-dev-haskell/markdown-unlit
 dev-haskell/mersenne-random-pure64
 dev-haskell/mime
 dev-haskell/mime-mail
@@ -240,21 +269,17 @@ dev-haskell/persistent-postgresql
 dev-haskell/persistent-qq
 dev-haskell/pid1
 dev-haskell/pipes
-dev-haskell/pointed
 dev-haskell/postgresql-libpq
 dev-haskell/postgresql-simple
 dev-haskell/pqueue
 dev-haskell/prelude-extras
 dev-haskell/preprocessor-tools
-dev-haskell/primitive-addr
 dev-haskell/process-extras
 dev-haskell/profunctor-extras
 dev-haskell/psqueue
 dev-haskell/publicsuffixlist
 dev-haskell/punycode
 dev-haskell/pwstore-fast
-dev-haskell/quickcheck-classes
-dev-haskell/quickcheck-classes-base
 dev-haskell/quickcheck-unicode
 dev-haskell/ranges
 dev-haskell/readargs
@@ -264,7 +289,6 @@ dev-haskell/regex-pcre-builtin
 dev-haskell/riff
 dev-haskell/say
 dev-haskell/semigroupoid-extras
-dev-haskell/semirings
 dev-haskell/sendfile
 dev-haskell/shakespeare-css
 dev-haskell/shakespeare-i18n
@@ -304,7 +328,6 @@ dev-haskell/url
 dev-haskell/uuagc
 dev-haskell/uuagc-cabal
 dev-haskell/uulib
-dev-haskell/vector-instances
 dev-haskell/vector-space
 dev-haskell/wai-conduit
 dev-haskell/wai-test
@@ -495,47 +518,6 @@ dev-util/rebar-bin
 # as deprecated since March 2022. Removal in 30 days (Bug #855299).
 gnome-extra/gtkhtml
 
-# Piotr Karbowski <slashbeast@gentoo.org> (2022-06-26)
-# Abandoned upstream, depends on API that no longer exists.
-# Removal on 2022-07-26.
-dev-python/jikanpy
-
-# Hans de Graaff <graaff@gentoo.org> (2022-06-25)
-# Obsolete slot. Use a newer slot instead.
-# Removal in 30 days.
-dev-ruby/hashie:3
-
-# Hans de Graaff <graaff@gentoo.org> (2022-06-25)
-# Obsolete slot. Use a newer slot instead.
-# Removal in 30 days.
-dev-ruby/marcel:0
-
-# Hans de Graaff <graaff@gentoo.org> (2022-06-25)
-# Obsolete slot. Use a newer slot instead.
-# Removal in 30 days.
-dev-ruby/paramesan:0
-
-# Hans de Graaff <graaff@gentoo.org> (2022-06-25)
-# Obsolete slot. Use a newer slot instead.
-# Removal in 30 days.
-dev-ruby/paramesan:0
-
-# Hans de Graaff <graaff@gentoo.org> (2022-06-24)
-# Obsolete slot. Use a newer slot instead.
-# Removal in 30 days.
-dev-ruby/rspec-rails:3
-
-# Marc Schiffbauer <mschiff@gentoo.org> (2022-06-22)
-# Deprecated package. Removal in 30 days.
-# see bug #843746
-sys-power/tuxedo-cc-wmi
-
-# Sam James <sam@gentoo.org> (2022-06-21)
-# Obsolete, no reverse dependencies, does not run test suite, and doesn't
-# support Python 3.10+. Use app-crypt/gpgme[python] instead.
-# Bugs #845807, #798372, #748531. Removal on 2022-07-21.
-dev-python/pygpgme
-
 # Sam James <sam@gentoo.org> (2022-05-28)
 # GCC 9 and older no longer receive upstream support or fixes for
 # bugs. Please switch to a newer GCC version using gcc-config.
@@ -607,6 +589,7 @@ dev-ml/async_extra:0/0.15
 dev-ml/core_bench:0/0.15
 dev-ml/patience_diff:0/0.15
 dev-util/patdiff:0/0.15
+=dev-ml/alcotest-1.6.0*
 
 # Sam James <sam@gentoo.org> (2022-04-13)
 # 2.35.2 was a quick release to mitigate a security issue (bug #838127), but

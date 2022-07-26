@@ -1,0 +1,55 @@
+From 50eaece7aef004b588a684c9fadff0f6787f2ef8 Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Thu, 14 Jul 2022 22:45:14 +0100
+Subject: [PATCH] Scope DialogShadows lifetime to application
+
+- DialogShadows own KWayland::Client::buffer objects
+ - Buffer cleanup makes wayland calls
+ - wayland calls after QGuiApplication has stoped will fail
+
+Q_GLOBAL_STATIC mangaged objects can outlive the QGuiApplication.
+
+BUG:443706
+---
+ src/plasmaquick/dialogshadows.cpp | 18 ++++++------------
+ 1 file changed, 6 insertions(+), 12 deletions(-)
+
+diff --git a/src/plasmaquick/dialogshadows.cpp b/src/plasmaquick/dialogshadows.cpp
+index 17c9a41e2..93b9bcc0f 100644
+--- a/src/plasmaquick/dialogshadows.cpp
++++ b/src/plasmaquick/dialogshadows.cpp
+@@ -37,17 +37,6 @@ public:
+     QVector<KWindowShadowTile::Ptr> m_tiles;
+ };
+ 
+-class DialogShadowsSingleton
+-{
+-public:
+-    DialogShadowsSingleton()
+-    {
+-    }
+-
+-    DialogShadows self;
+-};
+-
+-Q_GLOBAL_STATIC(DialogShadowsSingleton, privateDialogShadowsSelf)
+ 
+ DialogShadows::DialogShadows(QObject *parent, const QString &prefix)
+     : Plasma::Svg(parent)
+@@ -64,7 +53,12 @@ DialogShadows::~DialogShadows()
+ 
+ DialogShadows *DialogShadows::self()
+ {
+-    return &privateDialogShadowsSelf->self;
++    // KF6 port to Q_APPLICATION_STATIC
++    static DialogShadows *s_privateDialogShadowsSelf = nullptr;
++    if (!s_privateDialogShadowsSelf) {
++        s_privateDialogShadowsSelf = new DialogShadows(qApp);
++    }
++    return s_privateDialogShadowsSelf;
+ }
+ 
+ void DialogShadows::addWindow(QWindow *window, Plasma::FrameSvg::EnabledBorders enabledBorders)
+-- 
+GitLab
+

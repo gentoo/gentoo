@@ -5,4 +5,5 @@
 		<email>toolchain@gentoo.org</email>
 		<name>Gentoo Toolchain Project</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

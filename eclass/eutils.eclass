@@ -6,25 +6,14 @@
 # base-system@gentoo.org
 # @SUPPORTED_EAPIS: 6 7
 # @BLURB: many extra (but common) functions that are used in ebuilds
-# @DESCRIPTION:
-# The eutils eclass contains a suite of functions that complement
-# the ones that ebuild.sh already contain.  The idea is that the functions
-# are not required in all ebuilds but enough utilize them to have a common
-# home rather than having multiple ebuilds implementing the same thing.
-#
-# Due to the nature of this eclass, some functions may have maintainers
-# different from the overall eclass!
-#
-# This eclass is DEPRECATED and must not be inherited by any new ebuilds
-# or eclasses.  Use the more specific split eclasses instead, or native
-# package manager functions when available.
+# @DEPRECATED: native package manager functions, more specific eclasses
 
 if [[ -z ${_EUTILS_ECLASS} ]]; then
 _EUTILS_ECLASS=1
 
 # implicitly inherited (now split) eclasses
 case ${EAPI} in
-	6) inherit desktop edos2unix epatch estack ltprune multilib \
+	6) inherit desktop edos2unix epatch eqawarn estack ltprune multilib \
 			preserve-libs strip-linguas toolchain-funcs vcs-clean wrapper ;;
 	7) inherit edos2unix strip-linguas wrapper ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
@@ -49,18 +38,5 @@ use_if_iuse() {
 	eerror "    in_iuse foo && use foo"
 	die "use_if_iuse is banned"
 }
-
-# @FUNCTION: eqawarn
-# @USAGE: [message]
-# @DESCRIPTION:
-# Proxy to ewarn for package managers that don't provide eqawarn and use the PM
-# implementation if available. Reuses PORTAGE_ELOG_CLASSES as set by the dev
-# profile.
-if [[ ${EAPI} == 6 ]] && ! declare -F eqawarn >/dev/null ; then
-	eqawarn() {
-		has qa ${PORTAGE_ELOG_CLASSES} && ewarn "$@"
-		:
-	}
-fi
 
 fi
