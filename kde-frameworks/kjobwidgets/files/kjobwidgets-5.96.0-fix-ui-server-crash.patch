@@ -1,0 +1,82 @@
+From 5aeba3f01ef8cdf723813cacdd29945328288663 Mon Sep 17 00:00:00 2001
+From: Michael Pyne <mpyne@kde.org>
+Date: Sat, 2 Jul 2022 17:57:10 -0400
+Subject: [PATCH] ui-server: Fix crash by only re-registering live KJobs.
+
+This addresses a frequently-reported crash in the job tracker for
+KUiServerV2 that occurs when attempting to re-register new job views for
+active KJobs after a new UI server comes online.
+
+Although I have not been able to reproduce the crash myself, (by
+attempting to use both long-lived and short-lived file transfers from
+Dolphin and restarting plasmashell), inspection of the code shows that
+it is possible for there to be deleted KJobs pointing to JobView objects
+during some portions of the job tracker's lifetime.
+
+The current code deals with this in situations including DBus calls to
+create a U/I view for a KJob (the KJob may terminate before the DBus
+reply is received) and even a short delay that can be optionally
+introduced (the KJob may terminate before the delay elapses).  A
+QPointer<KJob> is used as a guard in these situations, but there is no
+similar guard for the re-registration code.
+
+In this case we cannot use QPointer<KJob> to guard the job's lifetime
+because the KJob must be alive when the QPointer<KJob> is created, and
+this crash occurs when the KJob is terminated. However the KJob's
+destruction should lead to the unregisterJob() function being called,
+which handles removing the terminated KJob from the map of job views
+with only one exception, where instead the job view for the KJob has its
+"terminated" pending status set.
+
+So the fix here checks for the "terminated" state in the same way as
+performed in requestView(), and if the KJob is terminated, handles
+requesting the job view to terminate the U/I and finally removing the
+terminated KJob from the map of job views.
+
+By doing this, we avoid passing a deleted KJob to the registerJob()
+function, which will attempt to dereference it and crash the
+application.
+
+See also merge request !22
+
+BUG:450325
+---
+ src/kuiserverv2jobtracker.cpp | 20 ++++++++++++++++----
+ 1 file changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/src/kuiserverv2jobtracker.cpp b/src/kuiserverv2jobtracker.cpp
+index 737c880..3592618 100644
+--- a/src/kuiserverv2jobtracker.cpp
++++ b/src/kuiserverv2jobtracker.cpp
+@@ -209,12 +209,24 @@ void KUiServerV2JobTracker::registerJob(KJob *job)
+ 
+                 const auto oldState = view.currentState;
+ 
+-                delete view.jobView;
+-                d->jobViews.remove(job);
++                // It is possible that the KJob has been deleted already so do not
++                // use or deference if marked as terminated
++                if (oldState.value(QStringLiteral("terminated")).toBool()) {
++                    const uint errorCode = oldState.value(QStringLiteral("errorCode")).toUInt();
++                    const QString errorMessage = oldState.value(QStringLiteral("errorMessage")).toString();
+ 
+-                registerJob(job);
++                    view.jobView->terminate(errorCode, errorMessage, QVariantMap() /*hints*/);
+ 
+-                d->jobViews[job].currentState = oldState;
++                    delete view.jobView;
++                    d->jobViews.remove(job);
++                } else {
++                    delete view.jobView;
++                    d->jobViews.remove(job); // must happen before registerJob
++
++                    registerJob(job);
++
++                    d->jobViews[job].currentState = oldState;
++                }
+             }
+         });
+     }
+-- 
+GitLab
+
