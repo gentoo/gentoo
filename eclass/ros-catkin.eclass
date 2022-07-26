@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ros-catkin.eclass
@@ -13,9 +13,9 @@
 # Provides function for building ROS packages on Gentoo.
 # It supports selectively building messages, single-python installation, live ebuilds (git only).
 
-case "${EAPI:-0}" in
+case ${EAPI} in
 	7) ;;
-	*) die "EAPI='${EAPI}' is not supported" ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # @ECLASS_VARIABLE: ROS_REPO_URI
@@ -36,17 +36,14 @@ EGIT_REPO_URI="${ROS_REPO_URI}"
 # @DESCRIPTION:
 # Set to enable in-source build.
 
-SCM=""
-if [ "${PV#9999}" != "${PV}" ] ; then
-	SCM="git-r3"
-fi
+[[ ${PV} == *9999 ]] && inherit git-r3
 
 # ROS only really works with one global python version and the target
 # version depends on the release. Noetic targets 3.7 and 3.8.
 # py3.9 or later are ok to add there as long as dev-ros/* have their deps satisfied.
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit ${SCM} python-single-r1 cmake flag-o-matic
+inherit python-single-r1 cmake flag-o-matic
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -54,8 +51,8 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 RDEPEND="${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
-	$(python_gen_cond_dep "dev-util/catkin[\${PYTHON_USEDEP}]")
-	$(python_gen_cond_dep "dev-python/empy[\${PYTHON_USEDEP}]")
+	$(python_gen_cond_dep 'dev-util/catkin[${PYTHON_USEDEP}]')
+	$(python_gen_cond_dep 'dev-python/empy[${PYTHON_USEDEP}]')
 "
 
 # @ECLASS_VARIABLE: CATKIN_HAS_MESSAGES
@@ -70,7 +67,7 @@ DEPEND="${RDEPEND}
 # Some messages have dependencies on other messages.
 # In that case, CATKIN_MESSAGES_TRANSITIVE_DEPS should contain a space-separated list of atoms
 # representing those dependencies. The eclass uses it to ensure proper dependencies on these packages.
-if [ -n "${CATKIN_HAS_MESSAGES}" ] ; then
+if [[ -n ${CATKIN_HAS_MESSAGES} ]] ; then
 	IUSE="${IUSE} +ros_messages_python +ros_messages_cxx ros_messages_eus ros_messages_lisp ros_messages_nodejs"
 	RDEPEND="${RDEPEND}
 		ros_messages_cxx?    ( dev-ros/gencpp:=[${PYTHON_SINGLE_USEDEP}]    )
@@ -84,12 +81,13 @@ if [ -n "${CATKIN_HAS_MESSAGES}" ] ; then
 		dev-ros/message_generation
 		dev-ros/genmsg[${PYTHON_SINGLE_USEDEP}]
 	"
-	if [ -n "${CATKIN_MESSAGES_TRANSITIVE_DEPS}" ] ; then
+	if [[ -n ${CATKIN_MESSAGES_TRANSITIVE_DEPS} ]] ; then
 		for i in ${CATKIN_MESSAGES_TRANSITIVE_DEPS} ; do
 			ds="${i}[ros_messages_python(-)?,ros_messages_cxx(-)?,ros_messages_lisp(-)?,ros_messages_eus(-)?,ros_messages_nodejs(-)?] ros_messages_python? ( ${i}[${PYTHON_SINGLE_USEDEP}] )"
 			RDEPEND="${RDEPEND} ${ds}"
 			DEPEND="${DEPEND} ${ds}"
 		done
+		unset i
 	fi
 fi
 
@@ -118,9 +116,9 @@ CATKIN_MESSAGES_EUS_USEDEP="ros_messages_eus(-)"
 # Use it as cat/pkg[${CATKIN_MESSAGES_NODEJS_USEDEP}] to indicate a dependency on the nodejs messages of cat/pkg.
 CATKIN_MESSAGES_NODEJS_USEDEP="ros_messages_nodejs(-)"
 
-if [ "${PV#9999}" != "${PV}" ] ; then
-	SRC_URI=""
-	KEYWORDS=""
+if [[ ${PV} == *9999 ]] ; then
+	unset SRC_URI
+	unset KEYWORDS
 	S=${WORKDIR}/${P}/${ROS_SUBDIR}
 else
 	SRC_URI="${ROS_REPO_URI}/archive/${VER_PREFIX}${PV%_*}${VER_SUFFIX}.tar.gz -> ${ROS_REPO_URI##*/}-${PV}.tar.gz"
@@ -135,11 +133,11 @@ HOMEPAGE="https://wiki.ros.org/${PN} ${ROS_REPO_URI}"
 # by installing a recursive CMakeLists.txt to handle bundles.
 ros-catkin_src_prepare() {
 	# If no multibuild, just use cmake IN_SOURCE support
-	[ -n "${CATKIN_IN_SOURCE_BUILD}" ] && export CMAKE_IN_SOURCE_BUILD=yes
+	[[ -n ${CATKIN_IN_SOURCE_BUILD} ]] && export CMAKE_IN_SOURCE_BUILD=yes
 
 	cmake_src_prepare
 
-	if [ ! -f "${S}/CMakeLists.txt" ] ; then
+	if [[ ! -f ${S}/CMakeLists.txt ]] ; then
 		catkin_init_workspace || die
 	fi
 
@@ -162,7 +160,7 @@ ros-catkin_src_configure() {
 	export ROS_ROOT="${EPREFIX}/usr/share/ros"
 	export ROS_PYTHON_VERSION="${EPYTHON#python}"
 
-	if [ -n "${CATKIN_HAS_MESSAGES}" ] ; then
+	if [[ -n ${CATKIN_HAS_MESSAGES} ]] ; then
 		ROS_LANG_DISABLE=""
 		use ros_messages_cxx    || ROS_LANG_DISABLE="${ROS_LANG_DISABLE}:gencpp"
 		use ros_messages_eus    || ROS_LANG_DISABLE="${ROS_LANG_DISABLE}:geneus"
@@ -184,7 +182,7 @@ ros-catkin_src_configure() {
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DPYTHON_INSTALL_DIR="${sitedir#${EPREFIX}/usr/}"
 	)
-	if [ -n "${CATKIN_IN_SOURCE_BUILD}" ] ; then
+	if [[ -n ${CATKIN_IN_SOURCE_BUILD} ]] ; then
 		export CMAKE_USE_DIR="${BUILD_DIR}"
 	fi
 
@@ -205,7 +203,7 @@ ros-catkin_src_test() {
 	cd "${BUILD_DIR}" || die
 
 	# Regenerate env for tests, PYTHONPATH is not set properly otherwise...
-	if [ -f catkin_generated/generate_cached_setup.py ] ; then
+	if [[ -f catkin_generated/generate_cached_setup.py ]] ; then
 		einfo "Regenerating setup_cached.sh for tests"
 		${PYTHON:-python} catkin_generated/generate_cached_setup.py || die
 	fi
@@ -218,7 +216,7 @@ ros-catkin_src_test() {
 # @DESCRIPTION:
 # Installs a catkin-based package.
 ros-catkin_src_install() {
-	if [ -n "${CATKIN_IN_SOURCE_BUILD}" ] ; then
+	if [[ -n ${CATKIN_IN_SOURCE_BUILD} ]] ; then
 		export CMAKE_USE_DIR="${BUILD_DIR}"
 	fi
 
