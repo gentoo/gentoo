@@ -5,6 +5,6 @@ EAPI=8
 
 inherit acct-group
 
-DESCRIPTION="A group for sys-process/systemd-cron failuire emails"
+DESCRIPTION="A group for sys-process/systemd-cron failure emails"
 
 ACCT_GROUP_ID="520"
