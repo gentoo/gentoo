@@ -9,4 +9,5 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>
