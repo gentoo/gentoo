@@ -1,6 +1,10 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Yu Gu <guyu2876@gmail.com> (2022-07-26)
+# Xen does not work on riscv, ceph not tested, bug #859625
+app-emulation/libvirt xen rbd
+
 # Sam James <sam@gentoo.org> (2022-07-02)
 # The required sys-libs/db slot is not keyworded on riscv
 dev-libs/cyrus-sasl berkdb
