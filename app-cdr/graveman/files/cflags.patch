@@ -1,0 +1,25 @@
+--- a/configure.in
++++ b/configure.in
+@@ -23,7 +23,7 @@
+ 
+ 
+ 
+-AC_INIT(configure.in)
++AC_INIT(configure.ac)
+ AC_CONFIG_HEADER(config.h)
+ AM_MAINTAINER_MODE
+ 
+@@ -283,13 +283,6 @@
+ AC_SUBST(GETTEXT_PACKAGE)
+ AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE],["$GETTEXT_PACKAGE"],[gettext domain])
+ 
+-if test "A$enable_debug" = "A"; then
+-	enable_debug=no
+-	CFLAGS="-Wall"
+-else
+-	CFLAGS="-Wall -g"
+-fi
+-
+ dnl Ecriture des fichiers
+ AC_OUTPUT([ m4/Makefile 
+ Makefile
