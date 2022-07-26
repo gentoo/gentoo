@@ -15,7 +15,6 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=app-text/sword-1.8.1
 	dev-cpp/clucene
-	dev-libs/icu
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtprintsupport:5
@@ -26,6 +25,7 @@ RDEPEND=">=app-text/sword-1.8.1
 	dev-qt/qtxml:5"
 DEPEND="${RDEPEND}
 	dev-libs/boost
+	dev-libs/icu
 	dev-qt/qttest:5
 	net-misc/curl
 	sys-libs/zlib"
