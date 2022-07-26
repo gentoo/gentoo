@@ -24,7 +24,7 @@ inherit toolchain-funcs
 
 # @FUNCTION: all-flag-vars
 # @DESCRIPTION:
-# Return all the flag variables that our high level funcs operate on.
+# Return all the flag variables that our high level functions operate on.
 all-flag-vars() {
 	echo {ADA,C,CPP,CXX,CCAS,F,FC,LD}FLAGS
 }
@@ -209,6 +209,7 @@ filter-flags() {
 # Remove flags that enable Large File Support.
 filter-lfs-flags() {
 	[[ $# -ne 0 ]] && die "filter-lfs-flags takes no arguments"
+
 	# http://www.gnu.org/s/libc/manual/html_node/Feature-Test-Macros.html
 	# _LARGEFILE_SOURCE: enable support for new LFS funcs (ftello/etc...)
 	# _LARGEFILE64_SOURCE: enable support for 64bit variants (off64_t/fseeko64/etc...)
@@ -254,7 +255,7 @@ append-cppflags() {
 # @CODE
 append-cflags() {
 	[[ $# -eq 0 ]] && return 0
-	# Do not do automatic flag testing ourselves. #417047
+	# Do not do automatic flag testing ourselves, bug #417047
 	export CFLAGS+=" $*"
 	return 0
 }
@@ -269,7 +270,7 @@ append-cflags() {
 # @CODE
 append-cxxflags() {
 	[[ $# -eq 0 ]] && return 0
-	# Do not do automatic flag testing ourselves. #417047
+	# Do not do automatic flag testing ourselves, bug #417047
 	export CXXFLAGS+=" $*"
 	return 0
 }
@@ -284,7 +285,7 @@ append-cxxflags() {
 # @CODE
 append-fflags() {
 	[[ $# -eq 0 ]] && return 0
-	# Do not do automatic flag testing ourselves. #417047
+	# Do not do automatic flag testing ourselves, bug #417047
 	export FFLAGS+=" $*"
 	export FCFLAGS+=" $*"
 	return 0
@@ -295,7 +296,8 @@ append-fflags() {
 # Add flags that enable Large File Support.
 append-lfs-flags() {
 	[[ $# -ne 0 ]] && die "append-lfs-flags takes no arguments"
-	# see comments in filter-lfs-flags func for meaning of these
+
+	# See comments in filter-lfs-flags func for meaning of these
 	append-cppflags -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE
 }
 
@@ -322,9 +324,9 @@ append-ldflags() {
 append-flags() {
 	[[ $# -eq 0 ]] && return 0
 	case " $* " in
-	*' '-[DIU]*) eqawarn 'please use append-cppflags for preprocessor flags' ;;
+	*' '-[DIU]*) eqawarn 'Please use append-cppflags for preprocessor flags' ;;
 	*' '-L*|\
-	*' '-Wl,*)  eqawarn 'please use append-ldflags for linker flags' ;;
+	*' '-Wl,*)  eqawarn 'Please use append-ldflags for linker flags' ;;
 	esac
 	append-cflags "$@"
 	append-cxxflags "$@"
@@ -672,7 +674,7 @@ _test-flags-PROG() {
 
 	while (( $# )); do
 		case "$1" in
-			# '-B /foo': bug # 687198
+			# '-B /foo': bug #687198
 			--param|-B)
 				if test-flag-${comp} "$1" "$2"; then
 					flags+=( "$1" "$2" )
@@ -858,7 +860,7 @@ raw-ldflags() {
 			x=${x#-Wl,}
 			set -- "$@" ${x//,/ }
 			;;
-		*)	# Assume it's a compiler driver flag, so throw it away #441808
+		*)	# Assume it's a compiler driver flag, so throw it away, bug #441808
 			;;
 		esac
 	done
