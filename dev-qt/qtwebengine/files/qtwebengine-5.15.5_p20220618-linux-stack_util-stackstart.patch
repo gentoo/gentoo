@@ -1,0 +1,31 @@
+https://git.alpinelinux.org/aports/tree/community/qt5-qtwebengine/qt-musl-stackstart.patch?id=65f58742e6e669c7d0f5b23c0764f4f73661980b
+
+---
+ .../third_party/blink/renderer/platform/wtf/stack_util.cc     | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/3rdparty/chromium/third_party/blink/renderer/platform/wtf/stack_util.cc b/src/3rdparty/chromium/third_party/blink/renderer/platform/wtf/stack_util.cc
+index 71b901f40..f33aba04b 100644
+--- a/src/3rdparty/chromium/third_party/blink/renderer/platform/wtf/stack_util.cc
++++ b/src/3rdparty/chromium/third_party/blink/renderer/platform/wtf/stack_util.cc
+@@ -29,7 +29,7 @@ size_t GetUnderestimatedStackSize() {
+ // FIXME: On Mac OSX and Linux, this method cannot estimate stack size
+ // correctly for the main thread.
+ 
+-#elif defined(__GLIBC__) || defined(OS_ANDROID) || defined(OS_FREEBSD) || \
++#elif defined(OS_LINUX) || defined(OS_ANDROID) || defined(OS_FREEBSD) || \
+     defined(OS_FUCHSIA)
+   // pthread_getattr_np() can fail if the thread is not invoked by
+   // pthread_create() (e.g., the main thread of blink_unittests).
+@@ -97,7 +97,7 @@ return Threading::ThreadStackSize();
+ }
+ 
+ void* GetStackStart() {
+-#if defined(__GLIBC__) || defined(OS_ANDROID) || defined(OS_FREEBSD) || \
++#if defined(OS_LINUX) || defined(OS_ANDROID) || defined(OS_FREEBSD) || \
+     defined(OS_FUCHSIA)
+   pthread_attr_t attr;
+   int error;
+-- 
+2.35.1
+

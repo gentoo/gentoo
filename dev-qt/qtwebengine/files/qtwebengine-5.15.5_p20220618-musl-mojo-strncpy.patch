@@ -1,0 +1,21 @@
+strncpy is not defined without including string.h
+
+---
+ .../mojo/public/cpp/platform/named_platform_channel_posix.cc     | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/3rdparty/chromium/mojo/public/cpp/platform/named_platform_channel_posix.cc b/src/3rdparty/chromium/mojo/public/cpp/platform/named_platform_channel_posix.cc
+index 9082ac4da..d039ff83a 100644
+--- a/src/3rdparty/chromium/mojo/public/cpp/platform/named_platform_channel_posix.cc
++++ b/src/3rdparty/chromium/mojo/public/cpp/platform/named_platform_channel_posix.cc
+@@ -8,6 +8,7 @@
+ #include <sys/socket.h>
+ #include <sys/un.h>
+ #include <unistd.h>
++#include <string.h>
+ 
+ #include "base/files/file_util.h"
+ #include "base/files/scoped_file.h"
+-- 
+2.35.1
+

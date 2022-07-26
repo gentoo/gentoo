@@ -1,0 +1,45 @@
+From 91fcf20ad6923db94a228faa1cf3bcdcaa5f8cbc Mon Sep 17 00:00:00 2001
+From: Alfred Persson Forsberg <cat@catcream.org>
+Date: Tue, 26 Jul 2022 20:53:11 +0200
+Subject: [PATCH] Don't use initializer list for msghdr
+
+msghdr is defined with padding in musl libc. Using an initializer list
+will set an int padding (5th element) to nullptr and break the build
+because of implicit conversion error from ptr to int.
+
+https://git.musl-libc.org/cgit/musl/tree/include/sys/socket.h#n22
+https://sourceware.org/git/?p=glibc.git;a=blob;f=sysdeps/unix/sysv/linux/bits/socket.h;h=4f1f810ea1d9bf00ff428e4e7c49a52c71620775;hb=6488f4d00653b489e7969c0a489dc665c26514a8#l262
+
+Signed-off-by: Alfred Persson Forsberg <cat@catcream.org>
+---
+ .../chromium/net/socket/udp_socket_posix.cc        | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/src/3rdparty/chromium/net/socket/udp_socket_posix.cc b/src/3rdparty/chromium/net/socket/udp_socket_posix.cc
+index 71265568b..58b2b1cbf 100644
+--- a/src/3rdparty/chromium/net/socket/udp_socket_posix.cc
++++ b/src/3rdparty/chromium/net/socket/udp_socket_posix.cc
+@@ -1151,8 +1151,18 @@ SendResult UDPSocketPosixSender::InternalSendmmsgBuffers(
+   for (auto& buffer : buffers)
+     msg_iov->push_back({const_cast<char*>(buffer->data()), buffer->length()});
+   msgvec->reserve(buffers.size());
+-  for (size_t j = 0; j < buffers.size(); j++)
+-    msgvec->push_back({{nullptr, 0, &msg_iov[j], 1, nullptr, 0, 0}, 0});
++  for (size_t j = 0; j < buffers.size(); j++) {
++    struct msghdr msg;
++    msg.msg_name = nullptr;
++    msg.msg_namelen = 0;
++    msg.msg_iov = &msg_iov[j];
++    msg.msg_iovlen = 1;
++    msg.msg_control = 0;
++    msg.msg_controllen = 0;
++    msg.msg_flags = 0;
++
++    msgvec->push_back({msg, 0});
++  }
+   int result = HANDLE_EINTR(Sendmmsg(fd, &msgvec[0], buffers.size(), 0));
+   SendResult send_result(0, 0, std::move(buffers));
+   if (result < 0) {
+-- 
+2.35.1
+

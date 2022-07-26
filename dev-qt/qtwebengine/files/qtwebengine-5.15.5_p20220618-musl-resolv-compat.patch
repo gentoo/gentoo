@@ -1,0 +1,80 @@
+https://git.alpinelinux.org/aports/tree/community/qt5-qtwebengine/qt-musl-resolve.patch
+
+A better method would be to check for these functions in the build system
+but as QMake is getting replaced by CMake in Qt6 I did not bother.
+
+---
+ .../net/dns/dns_config_service_posix.cc       |  4 +++
+ src/3rdparty/chromium/net/dns/dns_reloader.cc |  4 +++
+ src/3rdparty/chromium/net/dns/resolv_compat.h | 29 +++++++++++++++++++
+ 3 files changed, 37 insertions(+)
+ create mode 100644 src/3rdparty/chromium/net/dns/resolv_compat.h
+
+diff --git a/src/3rdparty/chromium/net/dns/dns_config_service_posix.cc b/src/3rdparty/chromium/net/dns/dns_config_service_posix.cc
+index 5a4aead0a..0e4480d16 100644
+--- a/src/3rdparty/chromium/net/dns/dns_config_service_posix.cc
++++ b/src/3rdparty/chromium/net/dns/dns_config_service_posix.cc
+@@ -8,6 +8,10 @@
+ #include <string>
+ #include <type_traits>
+ 
++#if !defined(__GLIBC__)
++#include "resolv_compat.h"
++#endif
++
+ #include "base/bind.h"
+ #include "base/files/file.h"
+ #include "base/files/file_path.h"
+diff --git a/src/3rdparty/chromium/net/dns/dns_reloader.cc b/src/3rdparty/chromium/net/dns/dns_reloader.cc
+index 0672e711a..298489866 100644
+--- a/src/3rdparty/chromium/net/dns/dns_reloader.cc
++++ b/src/3rdparty/chromium/net/dns/dns_reloader.cc
+@@ -9,6 +9,10 @@
+ 
+ #include <resolv.h>
+ 
++#if !defined(__GLIBC__)
++#include "resolv_compat.h"
++#endif
++
+ #include "base/lazy_instance.h"
+ #include "base/macros.h"
+ #include "base/notreached.h"
+diff --git a/src/3rdparty/chromium/net/dns/resolv_compat.h b/src/3rdparty/chromium/net/dns/resolv_compat.h
+new file mode 100644
+index 000000000..4f0e852a1
+--- /dev/null
++++ b/src/3rdparty/chromium/net/dns/resolv_compat.h
+@@ -0,0 +1,29 @@
++#if !defined(__GLIBC__)
++/***************************************************************************
++ * resolv_compat.h
++ *
++ * Mimick GLIBC's res_ninit() and res_nclose() for musl libc
++ * Note: res_init() is actually deprecated according to
++ * http://docs.oracle.com/cd/E36784_01/html/E36875/res-nclose-3resolv.html
++ **************************************************************************/
++#include <string.h>
++
++static inline int res_ninit(res_state statp)
++{
++	int rc = res_init();
++	if (statp != &_res) {
++		memcpy(statp, &_res, sizeof(*statp));
++	}
++	return rc;
++}
++
++static inline int res_nclose(res_state statp)
++{
++	if (!statp)
++		return -1;
++	if (statp != &_res) {
++		memset(statp, 0, sizeof(*statp));
++	}
++	return 0;
++}
++#endif
+-- 
+2.35.1
+

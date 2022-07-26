@@ -1,0 +1,628 @@
+https://wiki.musl-libc.org/faq.html#Q:-When-compiling-something-against-musl,-I-get-error-messages-about-%3Ccode%3Esys/cdefs.h%3C/code%3E
+"The bug is in the application that uses this internal glibc header. This header is not intended to be used by any program"
+
+sys/cdefs.h does not exist in musl libc, this breaks bundled Chromium.
+The only thing QtWebEngine uses cdefs.h for is the __*_DECLS macros, so
+this patch replaces all that with the correct 'extern "C"' code.
+
+--- b/src/3rdparty/chromium/third_party/apple_apsl/dnsinfo.h
++++ b/src/3rdparty/chromium/third_party/apple_apsl/dnsinfo.h
+@@ -28,7 +28,7 @@
+  * These routines provide access to the systems DNS configuration
+  */
+ 
+-#include <sys/cdefs.h>
++
+ #include <stdint.h>
+ #include <sys/types.h>
+ #include <sys/socket.h>
+@@ -91,7 +91,9 @@
+ #pragma pack()
+ 
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ 
+ /*
+  * DNS configuration access APIs
+@@ -110,5 +112,7 @@
+ 				 const char	*bundle_id);
+ 
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif	/* __DNSINFO_H__ */
+--- b/src/3rdparty/chromium/third_party/libsync/src/include/sync/sync.h
++++ b/src/3rdparty/chromium/third_party/libsync/src/include/sync/sync.h
+@@ -19,12 +19,14 @@
+ #ifndef __SYS_CORE_SYNC_H
+ #define __SYS_CORE_SYNC_H
+ 
+-#include <sys/cdefs.h>
++
+ #include <stdint.h>
+ 
+ #include <linux/types.h>
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ 
+ struct sync_legacy_merge_data {
+  int32_t fd2;
+@@ -159,5 +161,7 @@
+ void sync_fence_info_free(struct sync_fence_info_data *info);
+ 
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif /* __SYS_CORE_SYNC_H */
+--- a/src/3rdparty/chromium/third_party/libsync/src/sw_sync.h
++++ b/src/3rdparty/chromium/third_party/libsync/src/sw_sync.h
+@@ -19,7 +19,9 @@
+ #ifndef __SYS_CORE_SW_SYNC_H
+ #define __SYS_CORE_SW_SYNC_H
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ 
+ /*
+  * sw_sync is mainly intended for testing and should not be compiled into
+@@ -30,6 +32,8 @@ int sw_sync_timeline_create(void);
+ int sw_sync_timeline_inc(int fd, unsigned count);
+ int sw_sync_fence_create(int fd, const char *name, unsigned value);
+ 
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif /* __SYS_CORE_SW_SYNC_H */
+--- b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_uio.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_uio.h
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_uio.h 362473 2020-06-21 23:12:56Z tuexen $");
+ #endif
+ 
+@@ -1317,7 +1317,9 @@
+  */
+ #if !(defined(_KERNEL)) && !(defined(__Userspace__))
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ int	sctp_peeloff(int, sctp_assoc_t);
+ int	sctp_bindx(int, struct sockaddr *, int, int);
+ int	sctp_connectx(int, const struct sockaddr *, int, sctp_assoc_t *);
+@@ -1355,7 +1357,9 @@
+ 
+ ssize_t	sctp_recvv(int, const struct iovec *, int, struct sockaddr *,
+ 	    socklen_t *, void *, socklen_t *, unsigned int *, int *);
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif				/* !_KERNEL */
+ #endif				/* !__sctp_uio_h__ */
+--- a/src/3rdparty/chromium/base/allocator/allocator_shim_internals.h
++++ b/src/3rdparty/chromium/base/allocator/allocator_shim_internals.h
+@@ -9,7 +9,7 @@
+ 
+ #if defined(__GNUC__)
+ 
+-#include <sys/cdefs.h>  // for __THROW
++  // for __THROW
+ 
+ #ifndef __THROW  // Not a glibc system
+ #ifdef _NOEXCEPT  // LLVM libc++ uses noexcept instead
+--- a/src/3rdparty/chromium/base/mac/close_nocancel.cc
++++ b/src/3rdparty/chromium/base/mac/close_nocancel.cc
+@@ -34,7 +34,7 @@
+ // is resolved from libsyscall. By linking with this version of close prior to
+ // the libsyscall version, close's implementation is overridden.
+ 
+-#include <sys/cdefs.h>
++
+ #include <unistd.h>
+ 
+ // If the non-cancelable variants of all system calls have already been
+--- a/src/3rdparty/chromium/third_party/breakpad/breakpad/src/common/android/include/stab.h
++++ b/src/3rdparty/chromium/third_party/breakpad/breakpad/src/common/android/include/stab.h
+@@ -30,7 +30,7 @@
+ #ifndef GOOGLE_BREAKPAD_COMMON_ANDROID_INCLUDE_STAB_H
+ #define GOOGLE_BREAKPAD_COMMON_ANDROID_INCLUDE_STAB_H
+ 
+-#include <sys/cdefs.h>
++
+ 
+ #ifdef __BIONIC_HAVE_STAB_H
+ #include <stab.h>
+--- a/src/3rdparty/chromium/third_party/breakpad/breakpad/src/common/android/include/sys/procfs.h
++++ b/src/3rdparty/chromium/third_party/breakpad/breakpad/src/common/android/include/sys/procfs.h
+@@ -37,7 +37,7 @@
+ #else
+ 
+ #include <asm/ptrace.h>
+-#include <sys/cdefs.h>
++
+ #if defined (__mips__)
+ #include <sys/types.h>
+ #endif
+--- a/src/3rdparty/chromium/third_party/crashpad/crashpad/compat/android/sys/mman.h
++++ b/src/3rdparty/chromium/third_party/crashpad/crashpad/compat/android/sys/mman.h
+@@ -18,7 +18,7 @@
+ #include_next <sys/mman.h>
+ 
+ #include <android/api-level.h>
+-#include <sys/cdefs.h>
++
+ 
+ // There’s no mmap() wrapper compatible with a 64-bit off_t for 32-bit code
+ // until API 21 (Android 5.0/“Lollipop”). A custom mmap() wrapper is provided
+--- a/src/3rdparty/chromium/third_party/crashpad/crashpad/compat/linux/sys/ptrace.h
++++ b/src/3rdparty/chromium/third_party/crashpad/crashpad/compat/linux/sys/ptrace.h
+@@ -17,7 +17,7 @@
+ 
+ #include_next <sys/ptrace.h>
+ 
+-#include <sys/cdefs.h>
++
+ 
+ // https://sourceware.org/bugzilla/show_bug.cgi?id=22433
+ #if !defined(PTRACE_GET_THREAD_AREA) && !defined(PT_GET_THREAD_AREA) && \
+--- a/src/3rdparty/chromium/third_party/tcmalloc/chromium/src/libc_override_gcc_and_weak.h
++++ b/src/3rdparty/chromium/third_party/tcmalloc/chromium/src/libc_override_gcc_and_weak.h
+@@ -40,7 +40,7 @@
+ #define TCMALLOC_LIBC_OVERRIDE_GCC_AND_WEAK_INL_H_
+ 
+ #ifdef HAVE_SYS_CDEFS_H
+-#include <sys/cdefs.h>    // for __THROW
++    // for __THROW
+ #endif
+ #include <gperftools/tcmalloc.h>
+ 
+--- a/src/3rdparty/chromium/third_party/tcmalloc/vendor/src/libc_override_gcc_and_weak.h
++++ b/src/3rdparty/chromium/third_party/tcmalloc/vendor/src/libc_override_gcc_and_weak.h
+@@ -40,7 +40,7 @@
+ #define TCMALLOC_LIBC_OVERRIDE_GCC_AND_WEAK_INL_H_
+ 
+ #ifdef HAVE_SYS_CDEFS_H
+-#include <sys/cdefs.h>    // for __THROW
++    // for __THROW
+ #endif
+ #include <gperftools/tcmalloc.h>
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp.h
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp.h 356357 2020-01-04 20:33:12Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_asconf.c
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_asconf.c
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_asconf.c 363194 2020-07-14 20:32:50Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_asconf.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_asconf.h
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_asconf.h 362377 2020-06-19 12:35:29Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_auth.c
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_auth.c
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_auth.c 362054 2020-06-11 13:34:09Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_auth.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_auth.h
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_auth.h 338749 2018-09-18 10:53:07Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_bsd_addr.c
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_bsd_addr.c
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_bsd_addr.c 358080 2020-02-18 19:41:55Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_bsd_addr.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_bsd_addr.h
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_bsd_addr.h 353480 2019-10-13 18:17:08Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_callout.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_callout.h
+@@ -31,7 +31,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD$");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_cc_functions.c
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_cc_functions.c
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_cc_functions.c 359405 2020-03-28 20:25:45Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_constants.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_constants.h
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_constants.h 363440 2020-07-23 01:35:24Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_crc32.c
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_crc32.c
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_crc32.c 362498 2020-06-22 14:36:14Z tuexen $");
+ 
+ #include "opt_sctp.h"
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_crc32.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_crc32.h
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_crc32.h 362338 2020-06-18 19:32:34Z markj $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_header.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_header.h
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_header.h 309682 2016-12-07 19:30:59Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_indata.c
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_indata.c
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_indata.c 363440 2020-07-23 01:35:24Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_indata.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_indata.h
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_indata.h 361116 2020-05-16 19:26:39Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_input.c
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_input.c
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_input.c 368622 2020-12-13 23:51:51Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_input.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_input.h
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_input.h 326672 2017-12-07 22:19:08Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_lock_userspace.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_lock_userspace.h
+@@ -34,7 +34,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD$");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_os.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_os.h
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_os.h 361872 2020-06-06 18:20:09Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_output.c
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_output.c
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_output.c 364937 2020-08-28 20:05:18Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_output.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_output.h
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_output.h 362054 2020-06-11 13:34:09Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_pcb.c
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_pcb.c
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_pcb.c 366248 2020-09-29 09:36:06Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_pcb.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_pcb.h
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_pcb.h 362106 2020-06-12 16:31:13Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_peeloff.c
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_peeloff.c
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_peeloff.c 362054 2020-06-11 13:34:09Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_peeloff.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_peeloff.h
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_peeloff.h 309607 2016-12-06 10:21:25Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_sha1.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_sha1.h
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD$");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_ss_functions.c
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_ss_functions.c
+@@ -29,7 +29,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_ss_functions.c 362173 2020-06-14 09:50:00Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_structs.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_structs.h
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_structs.h 364268 2020-08-16 11:50:37Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_sysctl.c
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_sysctl.c
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_sysctl.c 361934 2020-06-08 20:23:20Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_sysctl.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_sysctl.h
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_sysctl.h 361895 2020-06-07 14:39:20Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_timer.c
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_timer.c
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_timer.c 362054 2020-06-11 13:34:09Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_timer.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_timer.h
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_timer.h 359195 2020-03-21 16:12:19Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_usrreq.c
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_usrreq.c
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_usrreq.c 364353 2020-08-18 19:25:03Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_var.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctp_var.h
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctp_var.h 363323 2020-07-19 12:34:19Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctputil.c
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctputil.c
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctputil.c 364268 2020-08-16 11:50:37Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctputil.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet/sctputil.h
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet/sctputil.h 364268 2020-08-16 11:50:37Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet6/sctp6_usrreq.c
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet6/sctp6_usrreq.c
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet6/sctp6_usrreq.c 361895 2020-06-07 14:39:20Z tuexen $");
+ #endif
+ 
+--- a/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet6/sctp6_var.h
++++ b/src/3rdparty/chromium/third_party/usrsctp/usrsctplib/usrsctplib/netinet6/sctp6_var.h
+@@ -33,7 +33,7 @@
+  */
+ 
+ #if defined(__FreeBSD__) && !defined(__Userspace__)
+-#include <sys/cdefs.h>
++
+ __FBSDID("$FreeBSD: head/sys/netinet6/sctp6_var.h 317457 2017-04-26 19:26:40Z tuexen $");
+ #endif
+ 
