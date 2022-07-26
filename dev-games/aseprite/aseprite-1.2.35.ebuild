@@ -18,7 +18,7 @@ SRC_URI="https://github.com/aseprite/aseprite/releases/download/v${PV}/Aseprite-
 # See https://github.com/aseprite/aseprite#license
 LICENSE="Aseprite-EULA"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="kde test webp"
 RESTRICT="bindist mirror !test? ( test )"
