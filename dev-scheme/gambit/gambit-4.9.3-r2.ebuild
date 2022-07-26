@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit elisp-common
+inherit flag-o-matic elisp-common
 
 MY_PV="${PV//./_}"
 MY_P="${PN}-v${MY_PV}"
@@ -30,6 +30,9 @@ S="${WORKDIR}/${MY_P}" #-devel
 IUSE="emacs ssl static"
 
 src_configure() {
+	# bug #858254
+	filter-lto
+
 	econf \
 		$(use_enable !static shared) \
 		$(use_enable ssl openssl) \
