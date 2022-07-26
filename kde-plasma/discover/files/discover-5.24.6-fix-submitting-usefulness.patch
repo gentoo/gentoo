@@ -1,0 +1,62 @@
+From e74e0745bf233e02450469632e49a3cb1f416643 Mon Sep 17 00:00:00 2001
+From: Aleix Pol <aleixpol@kde.org>
+Date: Wed, 20 Jul 2022 18:12:08 +0200
+Subject: [PATCH] Fix submitting usefulness
+
+QML was getting the names mixed up somehow
+
+
+(cherry picked from commit 7ab3bfe4ec6a6767aa1410aa448faed77c934069)
+
+(cherry picked from commit 9f06c84d9ecd035c730c8720ad01d2fa8d39848b)
+---
+ discover/qml/ReviewDelegate.qml | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/discover/qml/ReviewDelegate.qml b/discover/qml/ReviewDelegate.qml
+index 15eccda2c..0e04f1882 100644
+--- a/discover/qml/ReviewDelegate.qml
++++ b/discover/qml/ReviewDelegate.qml
+@@ -11,7 +11,7 @@ import org.kde.discover 2.0
+ import org.kde.kirigami 2.14 as Kirigami
+ 
+ Kirigami.AbstractCard {
+-    id: item
++    id: reviewDelegateItem
+     visible: model.shouldShow
+     property bool compact: false
+     property bool separator: true
+@@ -85,10 +85,10 @@ Kirigami.AbstractCard {
+     }
+ 
+     footer: Loader {
+-        active: !item.compact
++        active: !reviewDelegateItem.compact
+         sourceComponent: RowLayout {
+             id: rateTheReviewLayout
+-            visible: !item.compact
++            visible: !reviewDelegateItem.compact
+             Label {
+                 Layout.leftMargin: Kirigami.Units.largeSpacing
+                 visible: usefulnessTotal !== 0
+@@ -117,7 +117,7 @@ Kirigami.AbstractCard {
+                 checked: usefulChoice === ReviewsModel.Yes
+                 onClicked: {
+                     noButton.checked = false
+-                    item.markUseful(true)
++                    reviewDelegateItem.markUseful(true)
+                 }
+             }
+             Button {
+@@ -134,7 +134,7 @@ Kirigami.AbstractCard {
+                 checked: usefulChoice === ReviewsModel.No
+                 onClicked: {
+                     yesButton.checked = false
+-                    item.markUseful(false)
++                    reviewDelegateItem.markUseful(false)
+                 }
+             }
+         }
+-- 
+GitLab
+
