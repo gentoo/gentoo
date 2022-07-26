@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}-project/${PN}/releases/download/release-${PV}/
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~riscv x86"
 IUSE="static-libs"
 
 DOCS=(
