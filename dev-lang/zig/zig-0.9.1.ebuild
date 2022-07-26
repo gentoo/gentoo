@@ -21,26 +21,24 @@ SLOT="0"
 IUSE="test +threads"
 RESTRICT="!test? ( test )"
 
-PATCHES=("${FILESDIR}/${P}-fix-single-threaded.patch")
+PATCHES=(
+	"${FILESDIR}/${P}-fix-single-threaded.patch"
+	"${FILESDIR}/${P}-fix-riscv.patch"
+)
 
 BUILD_DIR="${S}/build"
 
-# According to zig's author, zig builds that do not support all targets are not
-# supported by the upstream project.
-ALL_LLVM_TARGETS=(
-	AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430 NVPTX
-	PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
-)
-ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
-LLVM_TARGET_USEDEPS="${ALL_LLVM_TARGETS[@]}"
-
-RDEPEND="
+DEPEND="
 	sys-devel/clang:${LLVM_MAX_SLOT}
 	>=sys-devel/lld-${LLVM_MAX_SLOT}
 	<sys-devel/lld-$((${LLVM_MAX_SLOT} + 1))
-	sys-devel/llvm:${LLVM_MAX_SLOT}[${LLVM_TARGET_USEDEPS// /,}]
+	sys-devel/llvm:${LLVM_MAX_SLOT}
+	>=sys-libs/zlib-1.2.12
 "
-DEPEND="${RDEPEND}"
+
+RDEPEND="${DEPEND}
+	!dev-lang/zig-bin
+"
 
 llvm_check_deps() {
 	has_version "sys-devel/clang:${LLVM_SLOT}"
@@ -58,7 +56,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DZIG_USE_CCACHE=OFF
 		-DZIG_PREFER_CLANG_CPP_DYLIB=ON
-		-DZIG_SINGLE_THREADED="$(usex threads OFF ON)"
+		-DZIG_SINGLE_THREADED="$(usex !threads)"
 	)
 
 	cmake_src_configure
