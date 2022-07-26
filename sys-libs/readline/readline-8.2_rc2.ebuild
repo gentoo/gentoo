@@ -40,7 +40,7 @@ patches() {
 }
 
 DESCRIPTION="Another cute console display library"
-HOMEPAGE="https://tiswww.case.edu/php/chet/readline/rltop.html"
+HOMEPAGE="https://tiswww.case.edu/php/chet/readline/rltop.html https://git.savannah.gnu.org/cgit/readline.git"
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/readline.git"
