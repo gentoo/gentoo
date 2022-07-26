@@ -23,3 +23,8 @@ DEPEND="test? ( dev-python/PyPDF2[${PYTHON_USEDEP}] )"
 RDEPEND="dev-python/PyPDF2[${PYTHON_USEDEP}]"
 
 distutils_enable_tests unittest
+
+src_prepare() {
+	default
+	sed -i -e 's/^from PyPDF2.pdf/from PyPDF2/' staplelib/tests.py || die
+}
