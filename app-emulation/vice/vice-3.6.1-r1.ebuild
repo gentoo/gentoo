@@ -1,9 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# --enable-static-lame triggers bug #814380 with EAPI-8, could work
-# around but staying EAPI-7 for now unless there's some urgency
-EAPI=7
+EAPI=8
 
 inherit multibuild toolchain-funcs xdg
 
@@ -46,7 +44,7 @@ RDEPEND="
 		x11-libs/libX11
 		x11-libs/pango
 	)
-	jpeg? ( virtual/jpeg )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	lame? ( media-sound/lame )
 	mpg123? ( media-sound/mpg123 )
 	ogg? (
@@ -57,7 +55,7 @@ RDEPEND="
 	pci? ( sys-apps/pciutils )
 	png? ( media-libs/libpng:= )
 	portaudio? ( media-libs/portaudio )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
 	sdl? (
 		media-libs/libsdl2[video]
 		media-libs/sdl2-image
@@ -79,6 +77,8 @@ BDEPEND="
 	virtual/yacc
 	doc? ( virtual/texi2dvi )
 	gtk? ( x11-misc/xdg-utils )"
+
+QA_CONFIGURE_OPTIONS="--disable-static" #814380
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -151,7 +151,7 @@ multibuild_src_configure() {
 		$(use_with pulseaudio pulse)
 		$(use_with zlib)
 		$(usex alsa --enable-midi $(use_enable oss midi))
-		$(usex pci '' ac_cv_header_pci_pci_h=no)
+		$(usev !pci ac_cv_header_pci_pci_h=no)
 		--disable-arch
 		--disable-sdlui
 		ac_cv_lib_ungif_EGifPutLine=no # ensure use giflib, not ungif
