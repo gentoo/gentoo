@@ -48,7 +48,7 @@ python_test() {
 }
 
 pkg_postinst() {
-	if ver_test "${REPLACING_VERSIONS}" -lt 4; then
+	if ver_test ${REPLACING_VERSIONS} -lt 4; then
 		ewarn "${P} - new 4.x release with breaking changes:"
 		ewarn "  - Public API has been defined by limiting access to internals that have been refactored into multiple source files"
 		ewarn "  - If active security features are detected, the default behavior changes to prevent unintentional bricking"
