@@ -609,7 +609,9 @@ _test-flag-PROG() {
 		# -Werror makes clang bail out on unused arguments as well;
 		# try to add -Qunused-arguments to work-around that
 		# other compilers don't support it but then, it's failure like
-		# any other
+		# any other.
+		#
+		# See also bug #712488 and bug #714742.
 		cmdline+=( -Qunused-arguments )
 		"${cmdline[@]}" &>/dev/null
 	fi
