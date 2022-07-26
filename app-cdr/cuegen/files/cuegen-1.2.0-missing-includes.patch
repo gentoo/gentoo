@@ -1,0 +1,17 @@
+--- a/cuegen.c
++++ b/cuegen.c
+@@ -10,12 +10,14 @@
+  */
+ 
+ 
++#include <fcntl.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <linux/cdrom.h>
+ #include <sys/ioctl.h>
+ #include <sys/file.h>
+ #include <sys/types.h>
++#include <sys/stat.h>
+ #include <unistd.h>
+ #include <string.h>
+ 
