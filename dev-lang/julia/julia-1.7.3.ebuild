@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit llvm pax-utils toolchain-funcs
+inherit flag-o-matic llvm pax-utils toolchain-funcs
 
 # correct versions for stdlibs are in deps/checksums
 # for everything else, run with network-sandbox and wait for the crash
@@ -123,6 +123,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #855602
+	filter-lto
+
 	use system-llvm && ewarn "You have enabled system-llvm. This is unsupported by upstream and may not work."
 
 	# julia does not play well with the system versions of libuv
