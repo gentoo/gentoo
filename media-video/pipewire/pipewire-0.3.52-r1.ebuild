@@ -55,7 +55,7 @@ BDEPEND="
 "
 RDEPEND="
 	acct-group/audio
-	media-libs/alsa-lib
+	media-libs/alsa-lib[${MULTILIB_USEDEP}]
 	sys-apps/dbus[${MULTILIB_USEDEP}]
 	sys-libs/readline:=
 	sys-libs/ncurses:=[unicode(+)]
