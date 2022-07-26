@@ -75,6 +75,7 @@ media-libs/libcanberra sound
 # media-libs/libavif isn't keyworded here
 media-libs/gd avif heif
 media-gfx/graphicsmagick heif
+dev-lang/php avif
 
 # Sam James <sam@gentoo.org> (2022-04-24)
 # Unkeyworded dev-tcltk/* dependencies

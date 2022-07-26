@@ -45,6 +45,7 @@ dev-libs/efl avif
 kde-frameworks/kimageformats avif
 media-libs/gd avif
 net-libs/webkit-gtk avif
+dev-lang/php avif
 
 # Mart Raudsepp <leio@gentoo.org> (2020-08-02)
 # ${arch} has no virtual/rust support, needed by newer gnome-base/librsvg, et al

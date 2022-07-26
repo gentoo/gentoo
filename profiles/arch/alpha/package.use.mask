@@ -105,6 +105,7 @@ media-libs/rubberband jni
 # media-libs/libavif isn't keyworded here
 media-libs/gd avif heif
 media-gfx/graphicsmagick heif
+dev-lang/php avif
 
 # Sam James <sam@gentoo.org> (2021-02-26)
 # dev-libs/efl not keyworded here
