@@ -13,7 +13,7 @@ SKIA_REV="3338e90707323d2cd3a150276acb9f39933deee2"
 DESCRIPTION="Animated sprite editor & pixel art tool"
 HOMEPAGE="https://www.aseprite.org"
 SRC_URI="https://github.com/aseprite/aseprite/releases/download/v${PV}/Aseprite-v${PV}-Source.zip
-	https://github.com/google/skia/archive/${SKIA_REV}.tar.gz -> skia-${SKIA_VER}-${SKIA_REV}.tar.gz"
+	https://github.com/google/skia/archive/${SKIA_REV}.tar.gz -> skia-${SKIA_VER}-${SKIA_REV}.gh.tar.gz"
 
 # See https://github.com/aseprite/aseprite#license
 LICENSE="Aseprite-EULA"
