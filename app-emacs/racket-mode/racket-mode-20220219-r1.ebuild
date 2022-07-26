@@ -3,7 +3,7 @@
 
 EAPI=8
 
-H=77c2d41c9ab041c383dfc60ed6ae562c4e953130
+H=52e993f3b39416eeb4df6262491d4a42d0b35232
 NEED_EMACS=25.1
 
 inherit elisp
@@ -15,14 +15,23 @@ S="${WORKDIR}"/${PN}-${H}
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="dev-scheme/racket:=[-minimal]"
 BDEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${PN}-rkt-source-dir.patch )
+
 DOCS=( CONTRIBUTING.md README.md THANKS.md )
+
 ELISP_TEXINFO="doc/racket-mode.texi"
 SITEFILE="50${PN}-gentoo.el"
+
+src_prepare() {
+	elisp_src_prepare
+
+	sed "s|@SITEETC@|${SITEETC}/${PN}|" -i racket-util.el || die
+}
 
 src_compile() {
 	elisp_src_compile
