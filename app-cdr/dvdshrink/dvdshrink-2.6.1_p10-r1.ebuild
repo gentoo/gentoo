@@ -1,13 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit desktop
 
 DESCRIPTION="Scriptable DVD copy software"
 HOMEPAGE="http://dvdshrink.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P/_p/-}mdk.tar.gz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -22,11 +23,8 @@ RDEPEND="
 	>=media-video/mjpegtools-1.8.0-r1
 	>=media-video/subtitleripper-0.3.4-r1
 	>=media-video/transcode-1.0.2-r2[dvd]
-	gtk? ( >=dev-perl/Gtk2-1.104 )
-"
-DEPEND=""
+	gtk? ( >=dev-perl/Gtk2-1.104 )"
 
-S=${WORKDIR}/${PN}
 PATCHES=( "${FILESDIR}"/${PN}-2.6.1_p10-fix-paths.patch )
 
 src_install() {
