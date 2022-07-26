@@ -1,0 +1,47 @@
+https://github.com/ziglang/zig/commit/ca3c4ff2d0afcdc8fe86e7e7b41a967c88779729
+From: Shupei Fan <dymarkfan@outlook.com>
+zig0: properly set llvm_cpu_names and llvm_cpu_features for riscv
+
+Bug: https://bugs.gentoo.org/851732
+
+--- a/src/stage1/zig0.cpp
++++ b/src/stage1/zig0.cpp
+@@ -160,6 +160,17 @@ static void get_native_target(ZigTarget *target) {
+     }
+ }
+ 
++static const char* get_baseline_llvm_cpu_name(ZigLLVM_ArchType arch) {
++    return "";
++}
++
++static const char* get_baseline_llvm_cpu_features(ZigLLVM_ArchType arch) {
++    switch (arch) {
++        case ZigLLVM_riscv64: return "+a,+c,+d,+m";
++        default: return "";
++    }
++}
++
+ static Error target_parse_triple(struct ZigTarget *target, const char *zig_triple, const char *mcpu,
+         const char *dynamic_linker)
+ {
+@@ -178,8 +189,8 @@ static Error target_parse_triple(struct ZigTarget *target, const char *zig_tripl
+         } else if (strcmp(mcpu, "baseline") == 0) {
+             target->is_native_os = false;
+             target->is_native_cpu = false;
+-            target->llvm_cpu_name = "";
+-            target->llvm_cpu_features = "";
++            target->llvm_cpu_name = get_baseline_llvm_cpu_name(target->arch);
++            target->llvm_cpu_features = get_baseline_llvm_cpu_features(target->arch);
+         } else {
+             const char *msg = "stage0 can't handle CPU/features in the target";
+             stage2_panic(msg, strlen(msg));
+@@ -220,6 +231,9 @@ static Error target_parse_triple(struct ZigTarget *target, const char *zig_tripl
+             const char *msg = "stage0 can't handle CPU/features in the target";
+             stage2_panic(msg, strlen(msg));
+         }
++
++        target->llvm_cpu_name = get_baseline_llvm_cpu_name(target->arch);
++        target->llvm_cpu_features = get_baseline_llvm_cpu_features(target->arch);
+     }
+ 
+     return ErrorNone;
