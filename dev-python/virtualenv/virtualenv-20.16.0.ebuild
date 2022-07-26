@@ -59,6 +59,9 @@ python_test() {
 		tests/unit/activation/test_xonsh.py
 		tests/unit/seed/embed/test_bootstrap_link_via_app_data.py::test_seed_link_via_app_data
 		tests/unit/create/test_creator.py::test_cross_major
+		# tests failing without python2 installed
+		"tests/unit/create/test_creator.py::test_py_pyc_missing[True-False]"
+		"tests/unit/create/test_creator.py::test_py_pyc_missing[False-False]"
 	)
 	[[ ${EPYTHON} == pypy3 ]] && EPYTEST_DESELECT+=(
 		'tests/unit/create/test_creator.py::test_create_no_seed[root-pypy3-posix-copies-isolated]'
