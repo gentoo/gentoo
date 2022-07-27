@@ -20,7 +20,7 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="calf +doc mda-lv2 zamaudio"
 
-DEPEND="dev-cpp/nlohmann_json
+COMMON="dev-cpp/nlohmann_json
 	dev-cpp/tbb
 	>=dev-libs/glib-2.56:2
 	dev-libs/libfmt
@@ -38,19 +38,19 @@ DEPEND="dev-cpp/nlohmann_json
 	>=media-libs/zita-convolver-3.0.0
 	>=media-video/pipewire-0.3.41
 	sci-libs/fftw:3.0"
-RDEPEND="${DEPEND}
+# Only header files are used from libsamplerate
+DEPEND="${COMMON}
+	media-libs/libsamplerate"
+RDEPEND="${COMMON}
 	>=media-libs/lsp-plugins-1.1.24[lv2]
 	sys-apps/dbus
 	calf? ( >=media-plugins/calf-0.90.1[lv2] )
 	doc? ( gnome-extra/yelp )
 	mda-lv2? ( media-plugins/mda-lv2 )
 	zamaudio? ( media-plugins/zam-plugins )"
-# Only header files are used from libsamplerate so put it here rather than DEPEND
-# to avoid unnecessary cross-compilation.
 BDEPEND="dev-libs/appstream-glib
 	dev-util/desktop-file-utils
 	dev-util/itstool
-	media-libs/libsamplerate
 	sys-devel/gettext
 	virtual/pkgconfig"
 
