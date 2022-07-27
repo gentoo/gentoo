@@ -107,16 +107,12 @@ virtx() {
 
 	local i=0
 	local retval=0
-	local OLD_SANDBOX_ON="${SANDBOX_ON}"
 	local xvfbargs=( -screen 0 1280x1024x24 +extension RANDR )
 
 	debug-print "${FUNCNAME}: running Xvfb hack"
 	export XAUTHORITY=
 
 	einfo "Starting Xvfb ..."
-
-	# We really do not want SANDBOX enabled here
-	export SANDBOX_ON="0"
 
 	debug-print "${FUNCNAME}: Xvfb -displayfd 1 ${xvfbargs[*]}"
 	local logfile=${T}/Xvfb.log
@@ -133,9 +129,6 @@ virtx() {
 		cat "${logfile}"
 		die "Xvfb failed to start"
 	fi
-
-	# Now enable SANDBOX again if needed.
-	export SANDBOX_ON="${OLD_SANDBOX_ON}"
 
 	# Do not break on error, but setup $retval, as we need to kill Xvfb
 	einfo "Xvfb started on DISPLAY=${DISPLAY}"
