@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 src_compile() {
-	ego build -o bin/syft ./cmd/syft
+	ego build -o bin/syft -ldflags "-X github.com/anchore/syft/internal/version.version=${PV}" ./cmd/syft
 }
 
 src_install() {
