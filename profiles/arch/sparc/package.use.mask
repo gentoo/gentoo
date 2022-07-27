@@ -98,9 +98,9 @@ dev-cpp/eigen test
 
 # Sam James <sam@gentoo.org> (2021-04-27)
 # Deps not yet tested/keyworded.
-sys-devel/clang default-compiler-rt default-libcxx default-lld
-sys-devel/clang-runtime compiler-rt libcxx
-sys-devel/llvm binutils-plugin z3
+sys-devel/clang default-compiler-rt default-lld
+sys-devel/clang-runtime compiler-rt
+sys-devel/llvm z3
 
 # Sam James <sam@gentoo.org> (2021-03-19)
 # On sparc, we have to force sys-apps/grep[libsigsegv]
