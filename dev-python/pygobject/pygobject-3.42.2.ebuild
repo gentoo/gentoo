@@ -65,6 +65,7 @@ python_test() {
 
 python_install() {
 	meson_src_install
+	python_optimize
 }
 
 python_install_all() {
