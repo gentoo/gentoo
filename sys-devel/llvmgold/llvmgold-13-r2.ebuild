@@ -12,10 +12,7 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv ~sparc x86 ~amd64-linux"
 
 RDEPEND="
-	|| (
-		sys-devel/llvm:${PV}[binutils-plugin(-)]
-		sys-devel/llvm:${PV}[gold(-)]
-	)
+	sys-devel/llvm:${PV}[binutils-plugin(-)]
 	!sys-devel/llvm:0"
 
 S=${WORKDIR}
