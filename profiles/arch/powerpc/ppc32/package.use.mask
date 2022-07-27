@@ -84,11 +84,6 @@ media-sound/easyeffects zamaudio
 # dev-python/django is not keyworded here
 dev-python/diskcache test
 
-# Sam James <sam@gentoo.org> (2021-05-17)
-# Deps not yet tested/keyworded.
-# bug #708344
-sys-devel/llvm gold
-
 # Sam James <sam@gentoo.org> (2021-03-11)
 # media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
