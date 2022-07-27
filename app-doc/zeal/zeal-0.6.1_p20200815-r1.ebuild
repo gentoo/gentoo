@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 COMMIT=994cc5f6b6bfffddd5faaaafdb4fed483c38188f
 inherit cmake xdg-utils
@@ -9,6 +9,7 @@ inherit cmake xdg-utils
 DESCRIPTION="Offline documentation browser inspired by Dash"
 HOMEPAGE="https://zealdocs.org/"
 SRC_URI="https://github.com/zealdocs/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -27,7 +28,6 @@ DEPEND="
 	dev-qt/qtwebengine:5[widgets]
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
-	kde-frameworks/extra-cmake-modules:5
 	x11-libs/libX11
 	x11-libs/libxcb:=
 	>=x11-libs/xcb-util-keysyms-0.3.9
@@ -35,8 +35,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	x11-themes/hicolor-icon-theme
 "
-
-S="${WORKDIR}/${PN}-${COMMIT}"
+BDEPEND="kde-frameworks/extra-cmake-modules:5"
 
 PATCHES=(
 	"${FILESDIR}/0002-settings-disable-checking-for-updates-by-default.patch"
