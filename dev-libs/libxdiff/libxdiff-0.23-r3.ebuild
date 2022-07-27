@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -12,20 +12,15 @@ SRC_URI="http://www.xmailserver.org/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
+
+PATCHES=( "${FILESDIR}/${P}-tests.patch" )
 
 src_prepare() {
 	default
-	# test utils require static libs ...
-	sed 's/test//g' -i Makefile.am
 	eautoreconf
-}
-
-src_configure() {
-	econf --disable-static
 }
 
 src_install() {
 	default
-	rm "${D}/usr/$(get_libdir)"/*.la
+	find "${ED}" -name '*.la' -delete || die
 }
