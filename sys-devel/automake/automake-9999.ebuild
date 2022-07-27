@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -45,11 +45,6 @@ BDEPEND="
 	sys-apps/help2man
 	test? ( ${PYTHON_DEPS} )
 "
-
-PATCHES=(
-	"${FILESDIR}"/automake-1.16.2-py3-compile.patch
-)
-# All patches have been submitted upstream.
 
 pkg_setup() {
 	# Avoid python-any-r1_pkg_setup
