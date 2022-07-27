@@ -36,7 +36,7 @@ src_prepare() {
 
 	# conditionally copy musl specific suppressions && apply patch
 	if use elibc_musl ; then
-		cp "${FILESDIR}/musl.supp" "${S}"
+		cp "${FILESDIR}/musl.supp" "${S}" || die
 		eapply "${FILESDIR}/valgrind-3.13.0-malloc.patch"
 	fi
 
