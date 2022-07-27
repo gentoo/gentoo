@@ -81,7 +81,14 @@ RDEPEND="
 		>=kde-plasma/breeze-plymouth-${PV}:${SLOT}
 		>=kde-plasma/plymouth-kcm-${PV}:${SLOT}
 	)
-	pulseaudio? ( >=kde-plasma/plasma-pa-${PV}:${SLOT} )
+	pulseaudio? (
+		>=kde-plasma/plasma-pa-${PV}:${SLOT}
+		|| (
+			media-video/pipewire[sound-server(+)]
+			media-sound/pulseaudio-daemon
+			media-sound/pulseaudio[daemon(+)]
+		)
+	)
 	sdk? ( >=kde-plasma/plasma-sdk-${PV}:${SLOT} )
 	smart? ( >=kde-plasma/plasma-disks-${PV}:${SLOT} )
 	systemd? (
