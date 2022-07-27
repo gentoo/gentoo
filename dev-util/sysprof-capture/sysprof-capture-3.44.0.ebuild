@@ -14,7 +14,7 @@ SLOT="4"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
-RDEPEND="!=dev-util/sysprof-3.34.1-r0"
+RDEPEND=""
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/gdbus-codegen
