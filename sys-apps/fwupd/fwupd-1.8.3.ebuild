@@ -21,7 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	fastboot? ( gusb )
 	logitech? ( gusb )
 	minimal? ( !introspection )
-	modemmanager ( gusb )
+	modemmanager? ( gusb )
 	spi? ( lzma )
 	synaptics? ( gnutls )
 	uefi? ( gnutls )
