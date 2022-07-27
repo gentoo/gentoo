@@ -9,7 +9,7 @@ SRC_URI="https://github.com/mgorny/mgorny-dev-scripts/archive/v${PV}.tar.gz -> $
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc x86 ~x64-macos"
 
 RDEPEND="
 	app-portage/gentoolkit
