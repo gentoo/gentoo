@@ -1,0 +1,41 @@
+From 33ed9a414da190ffa8099856901df792ff9150d5 Mon Sep 17 00:00:00 2001
+From: Sona Kurazyan <sona.kurazyan@qt.io>
+Date: Mon, 18 Jul 2022 14:46:24 +0200
+Subject: [PATCH] QtConcurrent::ReduceKernel: fix race conditions
+
+resultsMapSize is modified inside the runReduce() method, and the
+writes are protected via mutex lock. However, reads of resultsMapSize
+through shouldThrottle()/shouldStartThread() (that can be called by
+multiple threads) are done without a lock. Added the missing locks.
+
+Task-number: QTBUG-104787
+Pick-to: 6.4 6.3 6.2 5.15
+Change-Id: I700e7b66e67025bc7f570bc8ad69409b82675049
+Reviewed-by: Jarek Kobus <jaroslaw.kobus@qt.io>
+Reviewed-by: Marc Mutz <marc.mutz@qt.io>
+(cherry picked from commit 7afb093dd77f0ed9a1b4145d2d279810aba411c7)
+---
+ src/concurrent/qtconcurrentreducekernel.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/concurrent/qtconcurrentreducekernel.h b/src/concurrent/qtconcurrentreducekernel.h
+index 8f9a938952..a98dedef2e 100644
+--- a/src/concurrent/qtconcurrentreducekernel.h
++++ b/src/concurrent/qtconcurrentreducekernel.h
+@@ -212,11 +212,13 @@ public:
+ 
+     inline bool shouldThrottle()
+     {
++        std::lock_guard<QMutex> locker(mutex);
+         return (resultsMapSize > (ReduceQueueThrottleLimit * threadCount));
+     }
+ 
+     inline bool shouldStartThread()
+     {
++        std::lock_guard<QMutex> locker(mutex);
+         return (resultsMapSize <= (ReduceQueueStartLimit * threadCount));
+     }
+ };
+-- 
+GitLab
+
