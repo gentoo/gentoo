@@ -12,7 +12,7 @@ S="${WORKDIR}"/${P/_/}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~sparc x86"
+KEYWORDS="amd64 ppc sparc x86"
 IUSE="nls suid"
 
 RDEPEND=">=app-cdr/cdrtools-3.02_alpha09
