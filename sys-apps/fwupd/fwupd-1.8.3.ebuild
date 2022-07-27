@@ -94,6 +94,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.3-docgen_deps_test.patch
+	"${FILESDIR}"/${PN}-1.8.3-gresource_quirks_paths.patch
 )
 
 pkg_setup() {
@@ -150,6 +151,7 @@ src_configure() {
 		-Dconsolekit="disabled"
 		-Dcurl="enabled"
 		-Defi_binary="false"
+		-Dgresource_quirks="disabled"
 		-Dsupported_build="enabled"
 		-Dudevdir="${EPREFIX}$(get_udevdir)"
 		$(meson_feature archive libarchive)
