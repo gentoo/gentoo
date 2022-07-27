@@ -27,6 +27,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dbus? ( dev-qt/qtdbus:5 )
 	network? ( dev-qt/qtnetwork:5 )
+	websockets? ( dev-qt/qtwebsockets:5 )
 "
 DEPEND="${RDEPEND}
 	examples? (
