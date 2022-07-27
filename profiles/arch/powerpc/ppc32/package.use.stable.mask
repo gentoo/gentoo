@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-07-27)
+# sys-devel/lld is not marked stable on ppc
+>=dev-lang/spidermonkey-78 lto
+
 # Sam James <sam@gentoo.org> (2022-05-11)
 # sys-apps/keyutils not stable here (test failures)
 # ... and samba[client] pulls in cifs-utils which pulls in keyutils.
