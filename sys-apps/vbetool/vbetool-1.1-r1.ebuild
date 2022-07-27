@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -12,7 +12,6 @@ SRC_URI="http://www.codon.org.uk/~mjg59/vbetool/download/vbetool-${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 RDEPEND="
 	sys-libs/zlib
@@ -24,8 +23,6 @@ PATCHES=( "${FILESDIR}"/${PN}-1.0-build.patch )
 
 src_prepare() {
 	default
-
-	eaclocal # temp fix for #439614
 	eautoreconf
 }
 
