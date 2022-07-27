@@ -6,7 +6,7 @@ EAPI=8
 MY_PV=$(ver_cut 1-2)
 WX_GTK_VER=3.0-gtk3
 
-inherit autotools desktop flag-o-matic linux-info wxwidgets xdg-utils
+inherit autotools desktop flag-o-matic linux-info optfeature wxwidgets xdg-utils
 
 DESCRIPTION="The Berkeley Open Infrastructure for Network Computing"
 HOMEPAGE="https://boinc.berkeley.edu/"
@@ -195,6 +195,9 @@ pkg_postinst() {
 	elog "Run as root:"
 	elog "gpasswd -a boinc video"
 	elog
+
+	optfeature_header "If you want to run ATLAS native tasks by LHC@home, you need to install:"
+	optfeature "CERN VM filesystem support" net-fs/cvmfs
 }
 
 pkg_postrm() {
