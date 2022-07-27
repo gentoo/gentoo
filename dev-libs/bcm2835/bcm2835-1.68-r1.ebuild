@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -14,8 +14,11 @@ SLOT="0"
 KEYWORDS="~arm"
 IUSE="doc examples"
 
-DEPEND="doc? ( app-doc/doxygen )"
-RDEPEND=""
+BDEPEND="doc? ( app-doc/doxygen )"
+
+src_compile() {
+	emake AR="$(tc-getAR)"
+}
 
 src_install() {
 	use doc && HTML_DOCS=( doc/html/. )
@@ -24,8 +27,4 @@ src_install() {
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
 	default
-}
-
-src_compile() {
-	emake AR="$(tc-getAR)"
 }
