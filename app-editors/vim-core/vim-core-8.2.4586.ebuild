@@ -6,7 +6,7 @@ EAPI=7
 # Please bump with app-editors/vim and app-editors/gvim
 
 VIM_VERSION="8.2"
-inherit estack vim-doc flag-o-matic bash-completion-r1 prefix desktop xdg-utils
+inherit vim-doc flag-o-matic bash-completion-r1 prefix desktop xdg-utils
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
@@ -188,24 +188,24 @@ src_install() {
 	if use minimal; then
 		# To save space, install only a subset of the files.
 		# Helps minimalize the livecd, bug 65144.
-		eshopts_push -s extglob
+		rm -rv "${ED}${vimfiles}"/{compiler,doc,ftplugin,indent} || die
+		rm -rv "${ED}${vimfiles}"/{macros,print,tools,tutor} || die
+		rm -v "${ED}"/usr/bin/vimtutor || die
 
-		rm -rv "${ED}${vimfiles}"/{compiler,doc,ftplugin,indent} || die "rm failed"
-		rm -rv "${ED}${vimfiles}"/{macros,print,tools,tutor} || die "rm failed"
-		rm -v "${ED}"/usr/bin/vimtutor || die "rm failed"
+		for f in "${ED}${vimfiles}"/colors/*.vim; do
+			if [[ ${f} != */@(default).vim ]] ; then
+				printf '%s\0' "${f}"
+			fi
+		done | xargs -0 rm -f || die
 
-		local keep_colors="default"
-		ignore=$(rm -fr "${ED}${vimfiles}"/colors/!(${keep_colors}).vim )
-
-		local keep_syntax="conf|crontab|fstab|inittab|resolv|sshdconfig"
-		# tinkering with the next line might make bad things happen ...
-		keep_syntax="${keep_syntax}|syntax|nosyntax|synload"
-		ignore=$(rm -fr "${ED}${vimfiles}"/syntax/!(${keep_syntax}).vim )
+		for f in "${ED}${vimfiles}"/syntax/*.vim; do
+			if [[ ${f} != */@(conf|crontab|fstab|inittab|resolv|sshdconfig|syntax|nosyntax|synload).vim ]] ; then
+				printf '%s\0' "${f}"
+			fi
+		done | xargs -0 rm -f || die
 
 		# Delete skip_defaults_vim config not supported by vim[minimal]
-		sed -i '/skip_defaults_vim/d' "${ED}"/etc/vim/vimrc || die "sed failed"
-
-		eshopts_pop
+		sed -i '/skip_defaults_vim/d' "${ED}"/etc/vim/vimrc || die
 	fi
 
 	newbashcomp "${FILESDIR}"/xxd-completion xxd
