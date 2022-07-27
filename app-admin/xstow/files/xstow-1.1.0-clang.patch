@@ -1,15 +1,9 @@
-From bdcbdb6f6e0f35ed0a0df50f0a9d19441af9c866 Mon Sep 17 00:00:00 2001
+https://github.com/majorkingleo/xstow/commit/bdcbdb6f6e0f35ed0a0df50f0a9d19441af9c866
+
 From: Martin Oberzalek <kingleo@gmx.at>
 Date: Wed, 27 Jul 2022 09:25:03 +0200
 Subject: [PATCH] Fixed compilation with clang
 
----
- src/cpputils/cpputilsshared/cpputilsformat/format2.h |  2 +-
- src/cpputils/cpputilsshared/leoini.h                 | 11 +++++------
- 2 files changed, 6 insertions(+), 7 deletions(-)
-
-diff --git a/src/cpputils/cpputilsshared/cpputilsformat/format2.h b/src/cpputils/cpputilsshared/cpputilsformat/format2.h
-index eb084e2..b3d7624 100644
 --- a/src/cpputils/cpputilsshared/cpputilsformat/format2.h
 +++ b/src/cpputils/cpputilsshared/cpputilsformat/format2.h
 @@ -40,7 +40,7 @@ namespace Tools {
@@ -21,8 +15,6 @@ index eb084e2..b3d7624 100644
      : _is_int( is_int_ ),
        _is_string( is_string_ )
      {}
-diff --git a/src/cpputils/cpputilsshared/leoini.h b/src/cpputils/cpputilsshared/leoini.h
-index ee77511..0ad8493 100644
 --- a/src/cpputils/cpputilsshared/leoini.h
 +++ b/src/cpputils/cpputilsshared/leoini.h
 @@ -278,12 +278,11 @@ namespace Leo
@@ -43,6 +35,3 @@ index ee77511..0ad8493 100644
    }
  } // namespace Leo
  
--- 
-2.35.1
-
