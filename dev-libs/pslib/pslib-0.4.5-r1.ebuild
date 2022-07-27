@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -12,31 +12,31 @@ SRC_URI="mirror://sourceforge/pslib/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="debug jpeg png static-libs tiff"
+IUSE="debug jpeg png tiff"
 
 RDEPEND="
-	png? ( media-libs/libpng:0= )
-	jpeg? ( virtual/jpeg:0 )
-	tiff? ( media-libs/tiff:0= )"
+	png? ( media-libs/libpng:= )
+	jpeg? ( media-libs/libjpeg-turbo:= )
+	tiff? ( media-libs/tiff:= )"
 #gif? requires libungif, not in portage
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-lang/perl
-	>=dev-libs/glib-2
+	dev-libs/glib:2
 	dev-util/intltool
-	dev-perl/XML-Parser"
+	dev-perl/XML-Parser
+	sys-devel/gettext"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.4.5-fix-build-system.patch )
 
 src_prepare() {
 	default
-	mv configure.{in,ac} || die
 	eautoreconf
 }
 
 src_configure() {
 	econf \
 		--enable-bmp \
-		$(use_enable static-libs static) \
 		$(use_with png) \
 		$(use_with jpeg) \
 		$(use_with tiff) \
@@ -47,5 +47,5 @@ src_install() {
 	default
 
 	# package installs .pc files
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
