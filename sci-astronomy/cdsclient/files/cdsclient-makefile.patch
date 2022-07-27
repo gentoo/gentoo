@@ -1,5 +1,19 @@
---- cdsclient-3.81/Makefile.in.orig	2016-02-26 17:33:14.217750589 +0000
-+++ cdsclient-3.81/Makefile.in	2016-02-26 17:38:22.463875411 +0000
+- remove non standard "mantex" page
+- respect user flags
+
+--- a/configure
++++ b/configure
+@@ -3938,7 +3938,7 @@
+ 
+ 
+ EXPORT_SOURCE_FILE="aclient.c wwwget.c skio.c skclient.c sk.h"
+-EXPORT_MAN_FILE="sk.3 aclient.1 wwwget.1 aclient.tex"
++EXPORT_MAN_FILE="sk.3 aclient.1 wwwget.1 "
+ EXPORT_MAN_TEX="man.tex"
+ CASE="dev"
+ 
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -31,17 +31,17 @@
  #################################################################
  #PREFIX  = /usr/local
