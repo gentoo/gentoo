@@ -41,53 +41,6 @@ create_work_directory() {
 	return 0
 }
 
-fix_lib_symlinks() {
-	local src="$1"
-	local tgt="$2"
-
-	# If the source does not exist, we can not do anything
-	if [ ! -f "${src}" ] ; then
-		return 1
-	fi
-
-	# Check whether the symlink is already there and in order
-	if [ -L "${tgt}" ] ; then
-		if [ -f "${tgt}" ] ; then
-			return 0
-		fi
-
-		# Remove broken symlink
-		if ! rm -f "${tgt}"; then
-			eerror "Removing '${tgt}' failed!"
-			return 1
-		fi
-	fi
-
-	# symlink the correct path
-	if ! ln -snf "${src}" "${tgt}"; then
-		eerror "Symlinking '${src}' to '${tgt}' failed!"
-		return 1
-	fi
-
-	return 0
-}
-
-cuda_check() {
-	local libsource="/opt/cuda/@libdir@/libcudart.so"
-	local libtarget="${RUNTIMEDIR}/libcudart.so"
-
-	fix_lib_symlinks "${libsource}" "${libtarget}" || return 1
-	return 0
-}
-
-opencl_check() {
-	local libsource="/usr/@libdir@/libOpenCL.so"
-	local libtarget="${RUNTIMEDIR}/libOpenCL.so"
-
-	fix_lib_symlinks "${libsource}" "${libtarget}" || return 1
-	return 0
-}
-
 env_check() {
 	# Make sure the configuration is sane
 	: ${USER:="boinc"}
@@ -120,8 +73,6 @@ env_check() {
 start_pre() {
 	env_check || return 1
 	create_work_directory || return 1
-	cuda_check || einfo "CUDA not supported"
-	opencl_check || einfo "OpenCL not supported"
 
 	if [ ! -f "${RUNTIMEDIR}/lockfile" ]; then
 		einfo "File \"${RUNTIMEDIR}/lockfile\" does not exist, assuming first run."
