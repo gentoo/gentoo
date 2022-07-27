@@ -18,17 +18,18 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
 IUSE="examples opengl"
 
-DEPEND=">=virtual/opencl-2"
-RDEPEND="${DEPEND}
+COMMON=">=virtual/opencl-2"
+# libglvnd is only needed for the headers
+DEPEND="${COMMON}
+	opengl? ( media-libs/libglvnd )"
+RDEPEND="${COMMON}
 	>=dev-python/mako-0.3.6[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	>=dev-python/platformdirs-2.2.0[${PYTHON_USEDEP}]
 	>=dev-python/pytools-2021.2.7[${PYTHON_USEDEP}]"
-# libglvnd is only needed for the headers
 BDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
 	>=dev-python/pybind11-2.5.0[${PYTHON_USEDEP}]
-	<dev-python/pybind11-2.10.0[${PYTHON_USEDEP}]
-	opengl? ( media-libs/libglvnd )"
+	<dev-python/pybind11-2.10.0[${PYTHON_USEDEP}]"
 
 # The test suite fails if there are no OpenCL platforms available, and
 # even if there is one (which requires the presence of both an OpenCL
