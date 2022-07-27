@@ -28,6 +28,10 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-Fix-aliasing-violation.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 #		"-DOpenGL_GL_PREFERENCE=GLVND" # bug 721006
