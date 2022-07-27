@@ -76,9 +76,3 @@ games-strategy/dominions2
 games-strategy/knights-demo
 games-strategy/majesty-demo
 media-video/binkplayer
-
-# Ian Stakenvicius, 2017-06-14
-# on behalf of mozilla@gentoo.org
-# Mask firefox-54 and above as it requires rust
-# now, and rust reportedly will not build yet.
->=www-client/firefox-54.0
