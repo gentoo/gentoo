@@ -1,5 +1,5 @@
---- Makefile.orig	2013-02-11 16:35:56.834368910 +0400
-+++ Makefile	2013-02-11 16:36:02.587369368 +0400
+--- a/Makefile
++++ b/Makefile
 @@ -22,7 +22,7 @@
  	$(AR) cru libx86.a $(OBJECTS)
  
