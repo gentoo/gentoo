@@ -205,7 +205,7 @@ _distutils_set_globals() {
 		fi
 
 		bdep='
-			>=dev-python/gpep517-6[${PYTHON_USEDEP}]
+			>=dev-python/gpep517-8[${PYTHON_USEDEP}]
 		'
 		case ${DISTUTILS_USE_PEP517} in
 			flit)
