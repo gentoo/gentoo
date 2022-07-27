@@ -34,3 +34,8 @@ distutils_enable_tests unittest
 python_compile() {
 	python_domodule src/tomli "${WORKDIR}"/*.dist-info
 }
+
+python_install() {
+	distutils-r1_python_install
+	python_optimize
+}
