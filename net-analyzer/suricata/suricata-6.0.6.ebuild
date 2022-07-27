@@ -6,7 +6,7 @@ EAPI=8
 LUA_COMPAT=( lua5-1 luajit )
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit autotools linux-info lua-single python-single-r1 systemd tmpfiles
+inherit autotools flag-o-matic linux-info lua-single python-single-r1 systemd tmpfiles
 
 DESCRIPTION="High performance Network IDS, IPS and Network Security Monitoring engine"
 HOMEPAGE="https://suricata.io/"
@@ -80,6 +80,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Bug #861242
+	filter-lto
+
 	local myeconfargs=(
 		"--localstatedir=/var" \
 		"--runstatedir=/run" \
