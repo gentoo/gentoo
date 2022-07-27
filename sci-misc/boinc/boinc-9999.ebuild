@@ -25,18 +25,36 @@ fi
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="X cuda curl_ssl_gnutls +curl_ssl_openssl"
 
-REQUIRED_USE="^^ ( curl_ssl_gnutls curl_ssl_openssl ) "
+IUSE_VIDEO_CARDS="
+		video_cards_amdgpu
+		video_cards_intel
+		video_cards_nvidia
+		video_cards_radeonsi
+"
+
+IUSE="${IUSE_VIDEO_CARDS} X cuda curl_ssl_gnutls +curl_ssl_openssl opencl"
+
+REQUIRED_USE="
+	^^ ( curl_ssl_gnutls curl_ssl_openssl )
+	cuda? ( opencl video_cards_nvidia )
+	opencl? ( || ( ${IUSE_VIDEO_CARDS} ) )
+"
 
 # libcurl must not be using an ssl backend boinc does not support.
 # If the libcurl ssl backend changes, boinc should be recompiled.
 DEPEND="
 	acct-user/boinc
-	>=app-misc/ca-certificates-20080809
+	app-misc/ca-certificates
 	cuda? (
-		>=dev-util/nvidia-cuda-toolkit-2.1
-		>=x11-drivers/nvidia-drivers-180.22
+		dev-util/nvidia-cuda-toolkit
+		x11-drivers/nvidia-drivers
+	)
+	opencl? (
+		video_cards_amdgpu?   ( amd64? ( dev-libs/rocm-opencl-runtime ) )
+		video_cards_intel?    ( amd64? ( dev-libs/intel-compute-runtime ) )
+		video_cards_nvidia?   ( x11-drivers/nvidia-drivers media-gfx/nvidia-cg-toolkit )
+		video_cards_radeonsi? ( media-libs/mesa[opencl] )
 	)
 	dev-libs/openssl:=
 	net-misc/curl[curl_ssl_gnutls(-)=,-curl_ssl_nss(-),curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-)]
@@ -47,7 +65,7 @@ DEPEND="
 		media-libs/freeglut
 		media-libs/libjpeg-turbo:=
 		x11-libs/gtk+:3
-		>=x11-libs/libnotify-0.7
+		x11-libs/libnotify
 		x11-libs/libX11
 		x11-libs/libXScrnSaver
 		x11-libs/libxcb:=
@@ -180,14 +198,6 @@ pkg_postinst() {
 	elog "To be able to use CUDA or OpenCL you should add the boinc user to the video group."
 	elog "Run as root:"
 	elog "gpasswd -a boinc video"
-	elog
-	# Add information about BOINC supporting OpenCL
-	elog "BOINC supports OpenCL. To use it you have to eselect"
-	if use cuda; then
-		elog "nvidia as the OpenCL implementation, as you are using CUDA."
-	else
-		elog "the correct OpenCL implementation for your graphic card."
-	fi
 	elog
 }
 
