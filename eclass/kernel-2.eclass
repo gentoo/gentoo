@@ -675,23 +675,13 @@ if [[ ${ETYPE} == sources ]]; then
 
 	# Bug #266157, deblob for libre support
 	if [[ -z ${K_PREDEBLOBBED} ]]; then
-		# deblob less than 5.10 require python 2.7
-		if kernel_is lt 5 10; then
-			K_DEBLOB_AVAILABLE=0
-		fi
 		if [[ ${K_DEBLOB_AVAILABLE} == 1 ]]; then
-			PYTHON_COMPAT=( python3_{8..10} )
-
-			inherit python-any-r1
-
 			IUSE="${IUSE} deblob"
 
 			# Reflect that kernels contain firmware blobs unless otherwise
 			# stripped. Starting with version 4.14, the whole firmware
 			# tree has been dropped from the kernel.
 			kernel_is lt 4 14 && LICENSE+=" !deblob? ( linux-firmware )"
-
-			BDEPEND+=" deblob? ( ${PYTHON_DEPS} )"
 
 			if [[ -n KV_MINOR ]]; then
 				DEBLOB_PV="${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}"
@@ -1470,8 +1460,10 @@ kernel-2_src_compile() {
 	cd "${S}" || die
 
 	if [[ ${K_DEBLOB_AVAILABLE} == 1 ]] && use deblob; then
+		einfo ">>> Patching deblob script for forcing awk ..."
+		sed -i '/check="\/bin\/sh $check"/a \  check="$check --use-awk"' \
+			"${T}/${DEBLOB_A}" || die "Failed to patch ${DEBLOB_A}"
 		einfo ">>> Running deblob script ..."
-		python_setup
 		sh "${T}/${DEBLOB_A}" --force || die "Deblob script failed to run!!!"
 	fi
 }
