@@ -20,10 +20,6 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="calf +doc mda-lv2 zamaudio"
 
-# Tests fail since 6.1.0 due to upstream changes to the metainfo file.
-# TODO: check this every release.
-RESTRICT="test"
-
 DEPEND="dev-cpp/nlohmann_json
 	dev-cpp/tbb
 	>=dev-libs/glib-2.56:2
