@@ -8,7 +8,7 @@ inherit acct-user
 DESCRIPTION="A user for dev-db/firebird"
 
 ACCT_USER_GROUPS=( "firebird" )
-ACCT_USER_ID="520"
+ACCT_USER_ID="450"
 ACCT_USER_SHELL="/bin/sh"
 
 acct-user_add_deps
