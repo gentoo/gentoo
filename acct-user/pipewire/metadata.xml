@@ -9,8 +9,4 @@
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>asturm@gentoo.org</email>
-		<name>Andreas Sturmlechner</name>
-	</maintainer>
 </pkgmetadata>
