@@ -1,8 +1,6 @@
-Index: vbetool-1.0/Makefile.am
-===================================================================
---- vbetool-1.0.orig/Makefile.am
-+++ vbetool-1.0/Makefile.am
-@@ -2,7 +2,7 @@ AUTOMAKE_OPTIONS = foreign
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2,7 +2,7 @@
  
  sbin_PROGRAMS = vbetool
  
@@ -11,8 +9,10 @@ Index: vbetool-1.0/Makefile.am
  
  man_MANS = vbetool.1
  vbetool_SOURCES = vbetool.c $(x86)
-@@ -14,4 +14,3 @@ maintainer-clean-local: 
+@@ -13,5 +13,4 @@
+ maintainer-clean-local: 
  	$(RM) Makefile.in aclocal.m4 config.h.in stamp-h.in configure
  
- AM_CFLAGS = -g -Wall -pedantic -std=gnu99
+-AM_CFLAGS = -g -Wall -pedantic -std=gnu99
 -AM_LDFLAGS = -lz -lx86
++AM_CFLAGS = -Wall -pedantic -std=gnu99
