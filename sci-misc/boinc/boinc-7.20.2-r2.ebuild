@@ -35,7 +35,7 @@ IUSE="${IUSE_VIDEO_CARDS} X cuda curl_ssl_gnutls +curl_ssl_openssl opencl"
 
 REQUIRED_USE="
 	^^ ( curl_ssl_gnutls curl_ssl_openssl )
-	cuda? ( opencl video_cards_nvidia )
+	cuda? ( video_cards_nvidia )
 	opencl? ( || ( ${IUSE_VIDEO_CARDS} ) )
 "
 
@@ -45,13 +45,13 @@ DEPEND="
 	acct-user/boinc
 	app-misc/ca-certificates
 	cuda? (
-		dev-util/nvidia-cuda-toolkit
 		x11-drivers/nvidia-drivers
 	)
 	opencl? (
+		virtual/opencl
 		video_cards_amdgpu?   ( amd64? ( dev-libs/rocm-opencl-runtime ) )
 		video_cards_intel?    ( amd64? ( dev-libs/intel-compute-runtime ) )
-		video_cards_nvidia?   ( x11-drivers/nvidia-drivers media-gfx/nvidia-cg-toolkit )
+		video_cards_nvidia?   ( x11-drivers/nvidia-drivers )
 		video_cards_radeonsi? ( media-libs/mesa[opencl] )
 	)
 	dev-libs/openssl:=
