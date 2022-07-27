@@ -1,0 +1,266 @@
+diff -Naru fjcontrib-1.049.orig/Centauro/Makefile fjcontrib-1.049/Centauro/Makefile
+--- fjcontrib-1.049.orig/Centauro/Makefile	2022-07-24 00:55:40.912538473 +0200
++++ fjcontrib-1.049/Centauro/Makefile	2022-07-24 01:20:00.488103968 +0200
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+diff -Naru fjcontrib-1.049.orig/ClusteringVetoPlugin/Makefile fjcontrib-1.049/ClusteringVetoPlugin/Makefile
+--- fjcontrib-1.049.orig/ClusteringVetoPlugin/Makefile	2022-07-24 00:55:40.913538487 +0200
++++ fjcontrib-1.049/ClusteringVetoPlugin/Makefile	2022-07-24 01:20:00.488103968 +0200
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+diff -Naru fjcontrib-1.049.orig/ConstituentSubtractor/Makefile fjcontrib-1.049/ConstituentSubtractor/Makefile
+--- fjcontrib-1.049.orig/ConstituentSubtractor/Makefile	2022-07-24 00:55:40.913538487 +0200
++++ fjcontrib-1.049/ConstituentSubtractor/Makefile	2022-07-24 01:20:00.488103968 +0200
+@@ -41,8 +41,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+diff -Naru fjcontrib-1.049.orig/EnergyCorrelator/Makefile fjcontrib-1.049/EnergyCorrelator/Makefile
+--- fjcontrib-1.049.orig/EnergyCorrelator/Makefile	2022-07-24 00:55:40.912538473 +0200
++++ fjcontrib-1.049/EnergyCorrelator/Makefile	2022-07-24 01:20:00.488103968 +0200
+@@ -40,8 +40,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS)
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+diff -Naru fjcontrib-1.049.orig/FlavorCone/Makefile fjcontrib-1.049/FlavorCone/Makefile
+--- fjcontrib-1.049.orig/FlavorCone/Makefile	2022-07-24 00:55:40.914538502 +0200
++++ fjcontrib-1.049/FlavorCone/Makefile	2022-07-24 01:20:00.488103968 +0200
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+diff -Naru fjcontrib-1.049.orig/GenericSubtractor/Makefile fjcontrib-1.049/GenericSubtractor/Makefile
+--- fjcontrib-1.049.orig/GenericSubtractor/Makefile	2022-07-24 00:55:40.916538529 +0200
++++ fjcontrib-1.049/GenericSubtractor/Makefile	2022-07-24 01:20:00.488103968 +0200
+@@ -38,8 +38,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+diff -Naru fjcontrib-1.049.orig/JetCleanser/Makefile fjcontrib-1.049/JetCleanser/Makefile
+--- fjcontrib-1.049.orig/JetCleanser/Makefile	2022-07-24 00:55:40.917538544 +0200
++++ fjcontrib-1.049/JetCleanser/Makefile	2022-07-24 01:20:00.488103968 +0200
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+diff -Naru fjcontrib-1.049.orig/JetFFMoments/Makefile fjcontrib-1.049/JetFFMoments/Makefile
+--- fjcontrib-1.049.orig/JetFFMoments/Makefile	2022-07-24 00:55:40.911538459 +0200
++++ fjcontrib-1.049/JetFFMoments/Makefile	2022-07-24 01:20:00.488103968 +0200
+@@ -34,8 +34,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ examples: example
+ 
+diff -Naru fjcontrib-1.049.orig/JetsWithoutJets/Makefile fjcontrib-1.049/JetsWithoutJets/Makefile
+--- fjcontrib-1.049.orig/JetsWithoutJets/Makefile	2022-07-24 00:55:40.912538473 +0200
++++ fjcontrib-1.049/JetsWithoutJets/Makefile	2022-07-24 01:20:00.488103968 +0200
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+diff -Naru fjcontrib-1.049.orig/LundPlane/Makefile fjcontrib-1.049/LundPlane/Makefile
+--- fjcontrib-1.049.orig/LundPlane/Makefile	2022-07-24 00:55:40.912538473 +0200
++++ fjcontrib-1.049/LundPlane/Makefile	2022-07-24 01:20:00.488103968 +0200
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+diff -Naru fjcontrib-1.049.orig/Nsubjettiness/Makefile fjcontrib-1.049/Nsubjettiness/Makefile
+--- fjcontrib-1.049.orig/Nsubjettiness/Makefile	2022-07-24 00:55:40.915538515 +0200
++++ fjcontrib-1.049/Nsubjettiness/Makefile	2022-07-24 01:20:00.488103968 +0200
+@@ -40,8 +40,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS)
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES) $(EXAMPLES2)
+diff -Naru fjcontrib-1.049.orig/QCDAwarePlugin/Makefile fjcontrib-1.049/QCDAwarePlugin/Makefile
+--- fjcontrib-1.049.orig/QCDAwarePlugin/Makefile	2022-07-24 00:55:40.914538502 +0200
++++ fjcontrib-1.049/QCDAwarePlugin/Makefile	2022-07-24 01:20:00.488103968 +0200
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+diff -Naru fjcontrib-1.049.orig/RecursiveTools/Makefile fjcontrib-1.049/RecursiveTools/Makefile
+--- fjcontrib-1.049.orig/RecursiveTools/Makefile	2022-07-24 00:55:40.915538515 +0200
++++ fjcontrib-1.049/RecursiveTools/Makefile	2022-07-24 01:20:00.488103968 +0200
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+diff -Naru fjcontrib-1.049.orig/ScJet/Makefile fjcontrib-1.049/ScJet/Makefile
+--- fjcontrib-1.049.orig/ScJet/Makefile	2022-07-24 00:55:40.913538487 +0200
++++ fjcontrib-1.049/ScJet/Makefile	2022-07-24 01:20:00.488103968 +0200
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+diff -Naru fjcontrib-1.049.orig/scripts/internal/Template/Makefile fjcontrib-1.049/scripts/internal/Template/Makefile
+--- fjcontrib-1.049.orig/scripts/internal/Template/Makefile	2022-07-24 00:55:40.916538529 +0200
++++ fjcontrib-1.049/scripts/internal/Template/Makefile	2022-07-24 01:20:00.488103968 +0200
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+diff -Naru fjcontrib-1.049.orig/SoftKiller/Makefile fjcontrib-1.049/SoftKiller/Makefile
+--- fjcontrib-1.049.orig/SoftKiller/Makefile	2022-07-24 00:55:40.913538487 +0200
++++ fjcontrib-1.049/SoftKiller/Makefile	2022-07-24 01:20:00.488103968 +0200
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+diff -Naru fjcontrib-1.049.orig/SubjetCounting/Makefile fjcontrib-1.049/SubjetCounting/Makefile
+--- fjcontrib-1.049.orig/SubjetCounting/Makefile	2022-07-24 00:55:40.915538515 +0200
++++ fjcontrib-1.049/SubjetCounting/Makefile	2022-07-24 01:20:00.488103968 +0200
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+diff -Naru fjcontrib-1.049.orig/ValenciaPlugin/Makefile fjcontrib-1.049/ValenciaPlugin/Makefile
+--- fjcontrib-1.049.orig/ValenciaPlugin/Makefile	2022-07-24 00:55:40.914538502 +0200
++++ fjcontrib-1.049/ValenciaPlugin/Makefile	2022-07-24 01:20:00.488103968 +0200
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+diff -Naru fjcontrib-1.049.orig/VariableR/Makefile fjcontrib-1.049/VariableR/Makefile
+--- fjcontrib-1.049.orig/VariableR/Makefile	2022-07-24 00:55:40.914538502 +0200
++++ fjcontrib-1.049/VariableR/Makefile	2022-07-24 01:20:00.488103968 +0200
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
