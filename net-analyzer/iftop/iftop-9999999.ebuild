@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit autotools git-r3
 
 DESCRIPTION="display bandwidth usage on an interface"
-HOMEPAGE="http://www.ex-parrot.com/pdw/iftop/"
+HOMEPAGE="http://www.ex-parrot.com/pdw/iftop/ https://code.blinkace.com/pdw/iftop"
 EGIT_REPO_URI="https://code.blinkace.com/pdw/iftop"
 
 LICENSE="GPL-2"
