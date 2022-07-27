@@ -14,11 +14,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="ncurses"
 
-DEPEND="ncurses? ( sys-libs/ncurses:0= )"
+DEPEND="ncurses? ( sys-libs/ncurses:= )"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/xstow-1.1.0-clang.patch
+	"${FILESDIR}"/${P}-clang.patch
 )
 
 src_prepare() {
