@@ -73,6 +73,15 @@ src_test() {
 	dbus-run-session meson test -C "${BUILD_DIR}" || die 'tests failed'
 }
 
+src_install() {
+	meson_src_install
+
+	if use gtk-doc; then
+		mkdir -p "${ED}"/usr/share/gtk-doc/html/ || die
+		mv "${ED}"/usr/share/doc/{gck-1,gcr-3,gcr-ui-3} "${ED}"/usr/share/gtk-doc/html/ || die
+	fi
+}
+
 pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_schemas_update
