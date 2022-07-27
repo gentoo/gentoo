@@ -97,7 +97,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	[[ ${PV} == 9999 ]] && eautoreconf
+	[[ ${PV} == 9999 ]] && eautoreconf || eautomake
 	distutils-r1_src_prepare
 }
 

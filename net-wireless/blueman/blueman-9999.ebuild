@@ -7,13 +7,13 @@ DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=no
 PYTHON_COMPAT=( python3_{8..11} )
 
-inherit distutils-r1 gnome2-utils linux-info systemd xdg-utils
+inherit autotools distutils-r1 gnome2-utils linux-info systemd xdg-utils
 
 DESCRIPTION="Simple and intuitive GTK+ Bluetooth Manager"
 HOMEPAGE="https://github.com/blueman-project/blueman/"
 
 if [[ ${PV} == "9999" ]] ; then
-	inherit autotools git-r3
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/blueman-project/blueman.git"
 else
 	SRC_URI="
@@ -97,7 +97,12 @@ pkg_setup() {
 }
 
 src_prepare() {
-	[[ ${PV} == 9999 ]] && eautoreconf
+	if [[ ${PV} == 9999 ]]; then
+		eautoreconf
+	else
+		# remove this when upstream switches to automake with .pyc fix
+		eautomake
+	fi
 	distutils-r1_src_prepare
 }
 
