@@ -29,10 +29,10 @@ RESTRICT="test"
 
 MIN_QT_VER="5.2.0"
 QT_DEPEND="
-	>=dev-qt/qtcore-${MIN_QT_VER}:5=
-	>=dev-qt/qtgui-${MIN_QT_VER}:5=
-	>=dev-qt/qtnetwork-${MIN_QT_VER}:5=
-	>=dev-qt/qtwidgets-${MIN_QT_VER}:5=
+	>=dev-qt/qtcore-${MIN_QT_VER}:5
+	>=dev-qt/qtgui-${MIN_QT_VER}:5
+	>=dev-qt/qtnetwork-${MIN_QT_VER}:5
+	>=dev-qt/qtwidgets-${MIN_QT_VER}:5
 "
 DEPEND="
 	sys-libs/zlib:0=
