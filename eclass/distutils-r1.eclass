@@ -265,7 +265,7 @@ _distutils_set_globals() {
 				;;
 			sip)
 				bdep+='
-					>=dev-python/sip-6.6.1[${PYTHON_USEDEP}]
+					>=dev-python/sip-6.6.2[${PYTHON_USEDEP}]
 				'
 				;;
 			standalone)
