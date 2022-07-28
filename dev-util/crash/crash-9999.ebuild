@@ -8,7 +8,7 @@ inherit toolchain-funcs
 GDB_VERSION=10.2
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/crash-utility/crash.git"
-	SRC_URI="mirror://gnu/gdb/gdb-${GDB_VERSION}.tar.xz"
+	SRC_URI="mirror://gnu/gdb/gdb-${GDB_VERSION}.tar.gz"
 	EGIT_BRANCH="master"
 	inherit git-r3
 else
