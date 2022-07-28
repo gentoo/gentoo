@@ -22,6 +22,7 @@
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:freetype:freetype</remote-id>
+		<remote-id type="github">freetype/freetype</remote-id>
 		<remote-id type="sourceforge">freetype</remote-id>
 	</upstream>
 </pkgmetadata>
