@@ -9,6 +9,7 @@
 		<flag name="allegro">Add support for Allegro</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">DentonW/DevIL</remote-id>
 		<remote-id type="sourceforge">openil</remote-id>
 	</upstream>
 </pkgmetadata>
