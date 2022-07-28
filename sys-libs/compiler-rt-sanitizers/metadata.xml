@@ -28,4 +28,7 @@
 		<flag name="shadowcallstack">Build ShadowCallStack.</flag>
 		<flag name="gwp-asan">Build GWP-ASAN runtime.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">llvm/llvm-project</remote-id>
+	</upstream>
 </pkgmetadata>
