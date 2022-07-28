@@ -32,4 +32,7 @@ Conformance with C/C++/ObjC and their variants</longdescription>
 		<flag name="default-lld">Use lld as the default linker for clang</flag>
 		<flag name="static-analyzer">Install the Clang static analyzer</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">llvm/llvm-project</remote-id>
+	</upstream>
 </pkgmetadata>
