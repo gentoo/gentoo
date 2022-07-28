@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <!-- maintainer-needed -->
+    <maintainer type="person">
+        <email>williamh@gentoo.org</email>
+        <name>William Hubbs</name>
+    </maintainer>
     <longdescription lang="en">
         kube-router is an alternative to several network components used
         in typical Kubernetes clusters.
