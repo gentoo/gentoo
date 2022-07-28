@@ -16,6 +16,10 @@ KEYWORDS="~amd64"
 
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-makefile.patch
+)
+
 src_compile() {
 	emake \
 		GIT_HASH=${GIT_HASH} \
