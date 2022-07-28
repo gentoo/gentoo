@@ -14,15 +14,10 @@ LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS=""
 IUSE="
-	cuda debug hwloc offload ompt test
+	debug hwloc offload ompt test
 	llvm_targets_AMDGPU llvm_targets_NVPTX
 "
 RESTRICT="!test? ( test )"
-# CUDA works only with the x86_64 ABI
-REQUIRED_USE="
-	cuda? ( llvm_targets_NVPTX )
-	offload? ( cuda? ( abi_x86_64 ) )
-"
 
 RDEPEND="
 	hwloc? ( >=sys-apps/hwloc-2.5:0=[${MULTILIB_USEDEP}] )
@@ -30,7 +25,6 @@ RDEPEND="
 		virtual/libelf:=[${MULTILIB_USEDEP}]
 		dev-libs/libffi:=[${MULTILIB_USEDEP}]
 		~sys-devel/llvm-${PV}[${MULTILIB_USEDEP}]
-		cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	)
 "
 # tests:
@@ -53,7 +47,7 @@ BDEPEND="
 	)
 "
 
-LLVM_COMPONENTS=( openmp llvm/include )
+LLVM_COMPONENTS=( openmp cmake llvm/include )
 llvm.org_set_globals
 
 python_check_deps() {
@@ -104,20 +98,13 @@ multilib_src_configure() {
 	if use offload; then
 		if has "${CHOST%%-*}" aarch64 powerpc64le x86_64; then
 			mycmakeargs+=(
-				-DCMAKE_DISABLE_FIND_PACKAGE_CUDA=$(usex !cuda)
-				-DLIBOMPTARGET_BUILD_AMDGCN_BCLIB=$(usex llvm_targets_AMDGPU)
-				-DLIBOMPTARGET_BUILD_NVPTX_BCLIB=$(usex llvm_targets_NVPTX)
-				# a cheap hack to force clang
-				-DLIBOMPTARGET_NVPTX_CUDA_COMPILER="$(type -P "${CHOST}-clang")"
-				# upstream defaults to looking for it in clang dir
-				# this fails when ccache is being used
-				-DLIBOMPTARGET_NVPTX_BC_LINKER="$(type -P llvm-link)"
+				-DLIBOMPTARGET_BUILD_AMDGPU_PLUGIN=$(usex llvm_targets_AMDGPU)
+				-DLIBOMPTARGET_BUILD_CUDA_PLUGIN=$(usex llvm_targets_NVPTX)
 			)
 		else
 			mycmakeargs+=(
-				-DCMAKE_DISABLE_FIND_PACKAGE_CUDA=ON
-				-DLIBOMPTARGET_BUILD_AMDGCN_BCLIB=OFF
-				-DLIBOMPTARGET_BUILD_NVPTX_BCLIB=OFF
+				-DLIBOMPTARGET_BUILD_AMDGPU_PLUGIN=OFF
+				-DLIBOMPTARGET_BUILD_CUDA_PLUGIN=OFF
 			)
 		fi
 	fi
