@@ -2,16 +2,16 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<maintainer type="person">
 		<email>zlogene@gentoo.org</email>
 		<name>Mikle Kolyada</name>
 	</maintainer>
 	<maintainer type="person">
 		<email>bman@gentoo.org</email>
 		<name>Aaron Bauman</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>sam@gentoo.org</email>
-		<name>Sam James</name>
 	</maintainer>
 	<longdescription>
 		Wireshark is the world's foremost network protocol analyzer, and is the de
@@ -70,4 +70,8 @@
 		<flag name="tshark">Install tshark, to dump and analyzer network traffic from the command line</flag>
 		<flag name="udpdump">Install udpdump, to get packets exported from a source (like a network device or a GSMTAP producer) that are dumped to a pcap file</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">wireshark/wireshark</remote-id>
+		<remote-id type="gitlab">wireshark/wireshark</remote-id>
+	</upstream>
 </pkgmetadata>
