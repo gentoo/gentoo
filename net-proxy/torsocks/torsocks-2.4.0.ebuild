@@ -14,7 +14,7 @@ SRC_URI="https://gitlab.torproject.org/tpo/core/torsocks/-/archive/v${PV}/${UPST
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="static-libs"
 
 # We do not depend on tor which might be running on a different box
