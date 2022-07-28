@@ -302,6 +302,7 @@ mips		hardened/linux/musl/mips/mipsel				exp
 ppc		default/linux/powerpc/ppc32/17.0/musl			exp
 ppc		default/linux/powerpc/ppc32/17.0/musl/hardened		exp
 riscv		default/linux/riscv/20.0/rv64gc/lp64d/musl		exp
+riscv		default/linux/riscv/20.0/rv64gc/lp64/musl		exp
 x86		default/linux/x86/17.0/musl				exp
 x86		default/linux/x86/17.0/musl/selinux			exp
 
