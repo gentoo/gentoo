@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>base-system@gentoo.org</email>
-    <name>Gentoo Base System</name>
-  </maintainer>
-  <longdescription>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<longdescription>
 OpenSSH is a FREE version of the SSH protocol suite of network connectivity tools that 
 increasing numbers of people on the Internet are coming to rely on. Many users of telnet, 
 rlogin, ftp, and other such programs might not realize that their password is transmitted 
@@ -18,19 +18,20 @@ The OpenSSH suite includes the ssh program which replaces rlogin and telnet, scp
 replaces rcp, and sftp which replaces ftp. Also included is sshd which is the server side of 
 the package, and the other basic utilities like ssh-add, ssh-agent, ssh-keysign, ssh-keyscan, 
 ssh-keygen and sftp-server. OpenSSH supports SSH protocol versions 1.3, 1.5, and 2.0.
-</longdescription>
-  <use>
-    <flag name="scp">Enable scp command with known security problems. See bug 733802</flag>
-    <flag name="hpn">Enable high performance ssh</flag>
-    <flag name="ldns">Use LDNS for DNSSEC/SSHFP validation.</flag>
-    <flag name="livecd">Enable root password logins for live-cd environment.</flag>
-    <flag name="security-key">Include builtin U2F/FIDO support</flag>
-    <flag name="ssl">Enable additional crypto algorithms via OpenSSL</flag>
-    <flag name="X509">Adds support for X.509 certificate authentication</flag>
-    <flag name="xmss">Enable XMSS post-quantum authentication algorithm</flag>
-  </use>
-  <upstream>
-    <remote-id type="cpe">cpe:/a:openbsd:openssh</remote-id>
-    <remote-id type="sourceforge">hpnssh</remote-id>
-  </upstream>
+	</longdescription>
+	<use>
+		<flag name="scp">Enable scp command with known security problems. See bug 733802</flag>
+		<flag name="hpn">Enable high performance ssh</flag>
+		<flag name="ldns">Use LDNS for DNSSEC/SSHFP validation.</flag>
+		<flag name="livecd">Enable root password logins for live-cd environment.</flag>
+		<flag name="security-key">Include builtin U2F/FIDO support</flag>
+		<flag name="ssl">Enable additional crypto algorithms via OpenSSL</flag>
+		<flag name="X509">Adds support for X.509 certificate authentication</flag>
+		<flag name="xmss">Enable XMSS post-quantum authentication algorithm</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:openbsd:openssh</remote-id>
+		<remote-id type="github">openssh/openssh-portable</remote-id>
+		<remote-id type="sourceforge">hpnssh</remote-id>
+	</upstream>
 </pkgmetadata>
