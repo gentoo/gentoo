@@ -51,7 +51,7 @@ BDEPEND="
 	)
 "
 
-LLVM_COMPONENTS=( lldb )
+LLVM_COMPONENTS=( lldb cmake )
 LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
 llvm.org_set_globals
 
