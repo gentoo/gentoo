@@ -13,5 +13,6 @@
     </maintainer>
     <bugs-to>https://github.com/mgorny/gentoopm/issues/</bugs-to>
     <remote-id type="github">mgorny/gentoopm</remote-id>
+    <remote-id type="pypi">gentoopm</remote-id>
   </upstream>
 </pkgmetadata>
