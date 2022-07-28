@@ -24,6 +24,10 @@ RDEPEND="
 		)
 	)
 "
+# in 15.x, cxxabi.h is moving from libcxx to libcxxabi
+RDEPEND+="
+	!<sys-libs/libcxx-15
+"
 # llvm-6 for new lit options
 DEPEND="
 	${RDEPEND}
@@ -83,14 +87,11 @@ multilib_src_configure() {
 		# upstream is omitting standard search path for this
 		# probably because gcc & clang are bundling their own unwind.h
 		-DLIBCXXABI_LIBUNWIND_INCLUDES="${EPREFIX}"/usr/include
-		-DLIBCXXABI_TARGET_TRIPLE="${CHOST}"
 
 		-DLIBCXX_LIBDIR_SUFFIX=
 		-DLIBCXX_ENABLE_SHARED=ON
 		-DLIBCXX_ENABLE_STATIC=OFF
-		-DLIBCXX_ENABLE_EXPERIMENTAL_LIBRARY=OFF
 		-DLIBCXX_CXX_ABI=libcxxabi
-		-DLIBCXX_CXX_ABI_INCLUDE_PATHS="${WORKDIR}"/libcxxabi/include
 		-DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=OFF
 		-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
 		-DLIBCXX_HAS_GCC_S_LIB=OFF
@@ -122,9 +123,4 @@ multilib_src_test() {
 
 multilib_src_install() {
 	DESTDIR="${D}" cmake_build install-cxxabi
-}
-
-multilib_src_install_all() {
-	insinto /usr/include/libcxxabi
-	doins -r "${WORKDIR}"/libcxxabi/include/.
 }
