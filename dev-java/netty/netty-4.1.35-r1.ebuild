@@ -18,7 +18,7 @@ SRC_URI="https://github.com/netty/netty/archive/refs/tags/netty-${PV}.Final.tar.
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
 
 # We do not build the full range of modules provided by netty but only what
 # was available before in netty-common, netty-buffer and netty-transport.
