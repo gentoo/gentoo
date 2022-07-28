@@ -18,4 +18,7 @@
 			Use tcmalloc from <pkg>dev-util/google-perftools</pkg> for allocations.
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">redis/redis</remote-id>
+	</upstream>
 </pkgmetadata>
