@@ -7,4 +7,8 @@
 	<upstream>
 		<remote-id type="github">llvm/llvm-project</remote-id>
 	</upstream>
+	<use>
+		<flag name="clang">Force building using installed clang (rather
+			than the default CC/CXX; required for testing).</flag>
+	</use>
 </pkgmetadata>

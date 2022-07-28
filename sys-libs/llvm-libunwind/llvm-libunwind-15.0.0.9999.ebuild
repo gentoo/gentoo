@@ -13,7 +13,8 @@ HOMEPAGE="https://github.com/llvm-mirror/libunwind"
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug static-libs test"
+IUSE="+clang debug static-libs test"
+REQUIRED_USE="test? ( clang )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -24,11 +25,13 @@ DEPEND="
 	>=sys-devel/llvm-6
 "
 BDEPEND="
+	clang? (
+		sys-devel/clang
+	)
 	!test? (
 		${PYTHON_DEPS}
 	)
 	test? (
-		>=sys-devel/clang-3.9.0
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 	)
 "
@@ -45,6 +48,14 @@ python_check_deps() {
 multilib_src_configure() {
 	local use_compiler_rt=OFF
 	local libdir=$(get_libdir)
+
+	if use clang && ! tc-is-clang; then
+		# Only do this conditionally to allow overriding with
+		# e.g. CC=clang-13 in case of breakage
+		local -x CC=${CHOST}-clang
+		local -x CXX=${CHOST}-clang++
+		strip-unsupported-flags
+	fi
 
 	# link to compiler-rt
 	# https://github.com/gentoo/gentoo/pull/21516
@@ -65,7 +76,6 @@ multilib_src_configure() {
 		-DLIBUNWIND_ENABLE_STATIC=$(usex static-libs)
 		-DLIBUNWIND_INCLUDE_TESTS=$(usex test)
 		-DLIBUNWIND_INSTALL_HEADERS=ON
-		-DLIBUNWIND_TARGET_TRIPLE="${CHOST}"
 
 		# support non-native unwinding; given it's small enough,
 		# enable it unconditionally
@@ -90,7 +100,6 @@ multilib_src_configure() {
 			-DLIBCXX_LIBDIR_SUFFIX=
 			-DLIBCXX_ENABLE_SHARED=OFF
 			-DLIBCXX_ENABLE_STATIC=ON
-			-DLIBCXX_ENABLE_EXPERIMENTAL_LIBRARY=OFF
 			-DLIBCXX_CXX_ABI=libcxxabi
 			-DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=OFF
 			-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
@@ -101,15 +110,6 @@ multilib_src_configure() {
 	fi
 
 	cmake_src_configure
-
-	if use test; then
-		local clang_path=$(type -P "${CHOST:+${CHOST}-}clang" 2>/dev/null)
-		[[ -n ${clang_path} ]] || die "Unable to find ${CHOST}-clang for tests"
-
-		# meh, we need to override the compiler explicitly
-		sed -e "/%{cxx}/s@, '.*'@, '${clang_path}'@" \
-			-i "${BUILD_DIR}"/libunwind/test/lit.site.cfg || die
-	fi
 }
 
 multilib_src_test() {
