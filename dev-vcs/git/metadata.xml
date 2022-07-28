@@ -35,5 +35,6 @@
   </use>
   <upstream>
     <remote-id type="cpe">cpe:/a:git:git</remote-id>
+    <remote-id type="github">git/git</remote-id>
   </upstream>
 </pkgmetadata>
