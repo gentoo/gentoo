@@ -7,4 +7,7 @@
 	<use>
 		<flag name="libunwind">Use libunwind instead of libgcc_s for stack unwinding, thus avoiding dependency on gcc</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">llvm/llvm-project</remote-id>
+	</upstream>
 </pkgmetadata>
