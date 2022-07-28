@@ -8,4 +8,7 @@
 	<maintainer type="project">
 		<email>netmon@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">BelledonneCommunications/bcg729</remote-id>
+	</upstream>
 </pkgmetadata>
