@@ -11,6 +11,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">mgorny/docutils-glep</remote-id>
 		<remote-id type="pypi">docutils-glep</remote-id>
 	</upstream>
 </pkgmetadata>
