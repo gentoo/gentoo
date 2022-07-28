@@ -5,4 +5,7 @@
 		<email>kensington@gentoo.org</email>
 		<name>Michael Palimaka</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="gitlab">saalen/ansifilter</remote-id>
+	</upstream>
 </pkgmetadata>
