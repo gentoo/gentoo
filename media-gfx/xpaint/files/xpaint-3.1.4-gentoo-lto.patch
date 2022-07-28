@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/859820
+
+dynFinish is declared as double, but always used as int (actually Boolean).
+
+--- a/dynPenOp.c
++++ b/dynPenOp.c
+@@ -35,7 +35,8 @@
+ 
+ #define XTIMEOUT 20
+ 
+-double dynWidth = 10, dynMass = 600, dynDrag = 15, dynFinish = 0;
++double dynWidth = 10, dynMass = 600, dynDrag = 15;
++Boolean dynFinish = 0;
+ 
+ typedef struct {
+ 	double	startx, starty;
+--- a/ops.h
++++ b/ops.h
+@@ -26,7 +26,7 @@
+ extern double tickSize, tickAngle;
+ extern double brushOpacity;
+ extern double dynWidth, dynMass, dynDrag;
+-extern int dynFinish;
++extern Boolean dynFinish;
+ extern int sprayRadius, sprayDensity, sprayRate;
+ extern int boxSize;
+ extern double boxRatio;
