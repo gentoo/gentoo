@@ -30,6 +30,10 @@ RDEPEND="
 distutils_enable_sphinx docs \
 	dev-python/sphinx_rtd_theme
 
+PATCHES=(
+	"${FILESDIR}"/${P}-version.patch
+)
+
 src_prepare() {
 	# seriously? that hard to depend on six?!
 	rm -r nose2/_vendor || die
