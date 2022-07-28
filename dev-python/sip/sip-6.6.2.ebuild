@@ -20,7 +20,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="|| ( GPL-2 GPL-3 SIP )"
 SLOT="5"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND="
 	!<dev-python/sip-4.19.25-r1[${PYTHON_USEDEP}]
