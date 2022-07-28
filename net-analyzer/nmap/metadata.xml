@@ -21,4 +21,7 @@
 		<flag name="symlink">Install symlink to nc</flag>
 		<flag name="system-lua">Use <pkg>dev-lang/lua</pkg> instead of the bundled liblua</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">nmap/nmap</remote-id>
+	</upstream>
 </pkgmetadata>
