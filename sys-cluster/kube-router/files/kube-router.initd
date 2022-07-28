@@ -5,7 +5,7 @@
 description="Kubernetes routing engine"
 supervisor=supervise-daemon
 command="/usr/bin/kube-router"
-error_log='/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log'
+error_log="/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
 pidfile="${pidfile:-/run/${RC_SVCNAME}.pid}"
 
 command_args="--master=${K8S_APISERVER} --kubeconfig=${KUBECONFIG} \
