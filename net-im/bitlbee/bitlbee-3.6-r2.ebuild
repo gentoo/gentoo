@@ -115,6 +115,7 @@ src_configure() {
 		--prefix=/usr \
 		--datadir=/usr/share/bitlbee \
 		--etcdir=/etc/bitlbee \
+		--libdir=/usr/$(get_libdir) \
 		--plugindir=/usr/$(get_libdir)/bitlbee \
 		--pcdir=/usr/$(get_libdir)/pkgconfig \
 		--systemdsystemunitdir=$(systemd_get_systemunitdir) \
