@@ -13,9 +13,12 @@ HOMEPAGE="https://libcxx.llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS=""
-IUSE="+libcxxabi +libunwind static-libs test"
+IUSE="+clang +libcxxabi +libunwind static-libs test"
+REQUIRED_USE="
+	libunwind? ( libcxxabi )
+	test? ( clang )
+"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="libunwind? ( libcxxabi )"
 
 RDEPEND="
 	libcxxabi? (
@@ -31,12 +34,14 @@ DEPEND="
 	>=sys-devel/llvm-6
 "
 BDEPEND="
+	clang? (
+		sys-devel/clang
+	)
 	!test? (
 		${PYTHON_DEPS}
 	)
 	test? (
 		>=dev-util/cmake-3.16
-		>=sys-devel/clang-3.9.0
 		sys-devel/gdb[python]
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 	)
@@ -90,6 +95,14 @@ src_configure() {
 }
 
 multilib_src_configure() {
+	if use clang && ! tc-is-clang; then
+		# Only do this conditionally to allow overriding with
+		# e.g. CC=clang-13 in case of breakage
+		local -x CC=${CHOST}-clang
+		local -x CXX=${CHOST}-clang++
+		strip-unsupported-flags
+	fi
+
 	# we want -lgcc_s for unwinder, and for compiler runtime when using
 	# gcc, clang with gcc runtime (or any unknown compiler)
 	local extra_libs=() want_gcc_s=ON want_compiler_rt=OFF
@@ -129,6 +142,7 @@ multilib_src_configure() {
 
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
+		-DCMAKE_CXX_COMPILER_TARGET="${CHOST}"
 		-DPython3_EXECUTABLE="${PYTHON}"
 		-DLLVM_ENABLE_RUNTIMES=libcxx
 		-DLLVM_INCLUDE_TESTS=OFF
@@ -155,8 +169,7 @@ multilib_src_configure() {
 
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-			-DLLVM_LIT_ARGS="$(get_lit_flags);--param=cxx_under_test=${clang_path}"
-			-DLIBCXX_LINK_TESTS_WITH_SHARED_LIBCXXABI=ON
+			-DLLVM_LIT_ARGS="$(get_lit_flags)"
 			-DPython3_EXECUTABLE="${PYTHON}"
 		)
 	fi
