@@ -5,4 +5,7 @@
     <email>mpagano@gentoo.org</email>
   </maintainer>
   <stabilize-allarches/>
+  <upstream>
+    <remote-id type="github">mpagano/portpeek</remote-id>
+  </upstream>
 </pkgmetadata>
