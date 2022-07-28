@@ -9,4 +9,7 @@
 		<flag name="nss">Install apr_crypto_nss module</flag>
 		<flag name="openssl">Install apr_crypto_openssl module</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">apache/apr-util</remote-id>
+	</upstream>
 </pkgmetadata>
