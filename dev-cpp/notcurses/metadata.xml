@@ -19,4 +19,7 @@
     haciendo un uso completo de Unicode y color real de 24 bits.
     Presenta una API similar a la de Curses y funciona sobre Terminfo.
   </longdescription>
+  <upstream>
+    <remote-id type="github">dankamongmen/notcurses</remote-id>
+  </upstream>
 </pkgmetadata>
