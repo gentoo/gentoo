@@ -341,7 +341,7 @@ LICENSE="
 	0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD CC0-1.0 ISC MIT MPL-2.0 openssl
 	doc? ( CC-BY-4.0 OFL-1.1 )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
