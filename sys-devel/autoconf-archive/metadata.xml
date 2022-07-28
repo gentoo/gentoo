@@ -6,4 +6,7 @@
 		<name>Gentoo Base System</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">autoconf-archive/autoconf-archive</remote-id>
+	</upstream>
 </pkgmetadata>
