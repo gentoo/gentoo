@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit xorg-3
 
 DESCRIPTION="Xaw3dXft library"
-HOMEPAGE="https://sourceforge.net/projects/sf-xpaint"
+HOMEPAGE="https://sourceforge.net/projects/sf-xpaint/"
 SRC_URI="mirror://sourceforge/sf-xpaint/${P}.tar.bz2"
 
 KEYWORDS="amd64 x86"
@@ -23,7 +23,10 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 BDEPEND="
 	sys-devel/flex
-	virtual/yacc"
+	virtual/yacc
+	x11-misc/util-macros"
+
+QA_PKGCONFIG_VERSION="${PV//[!0-9.]}"
 
 src_configure() {
 	local XORG_CONFIGURE_OPTIONS=(
