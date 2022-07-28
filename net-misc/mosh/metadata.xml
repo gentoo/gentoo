@@ -21,5 +21,6 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/keithw/mosh/issues</bugs-to>
+		<remote-id type="github">mobile-shell/mosh</remote-id>
 	</upstream>
 </pkgmetadata>
