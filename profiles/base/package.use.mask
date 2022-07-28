@@ -301,12 +301,15 @@ x11-libs/colord-gtk doc
 <dev-ml/llvm-ocaml-14 llvm_targets_VE
 <sys-devel/clang-14 llvm_targets_VE
 <sys-devel/llvm-14 llvm_targets_VE
-<dev-ml/llvm-ocaml-15 llvm_targets_ARC
-<sys-devel/clang-15 llvm_targets_ARC
-<sys-devel/llvm-15 llvm_targets_ARC
-<dev-ml/llvm-ocaml-15 llvm_targets_CSKY llvm_targets_M68k
-<sys-devel/clang-15 llvm_targets_CSKY llvm_targets_M68k
-<sys-devel/llvm-15 llvm_targets_CSKY llvm_targets_M68k
+<dev-ml/llvm-ocaml-16 llvm_targets_ARC llvm_targets_CSKY
+<sys-devel/clang-16 llvm_targets_ARC llvm_targets_CSKY
+<sys-devel/llvm-16 llvm_targets_ARC llvm_targets_CSKY
+<dev-ml/llvm-ocaml-16 llvm_targets_DirectX llvm_targets_LoongArch
+<sys-devel/clang-16 llvm_targets_DirectX llvm_targets_LoongArch
+<sys-devel/llvm-16 llvm_targets_DirectX llvm_targets_LoongArch
+<dev-ml/llvm-ocaml-16 llvm_targets_M68k llvm_targets_SPIRV
+<sys-devel/clang-16 llvm_targets_M68k llvm_targets_SPIRV
+<sys-devel/llvm-16 llvm_targets_M68k llvm_targets_SPIRV
 
 # Marek Szuba <marecki@gentoo.org> (2020-11-30)
 # Vendored therecipe/qt violates network sandbox + uses external binary
