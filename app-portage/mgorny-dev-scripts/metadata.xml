@@ -6,4 +6,7 @@
 		<name>Michał Górny</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">mgorny/mgorny-dev-scripts</remote-id>
+	</upstream>
 </pkgmetadata>
