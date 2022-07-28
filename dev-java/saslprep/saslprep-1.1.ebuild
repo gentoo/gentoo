@@ -14,7 +14,7 @@ SRC_URI="https://repo1.maven.org/maven2/com/ongres/stringprep/saslprep/${PV}/sas
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc64 x86"
+KEYWORDS="amd64 ppc64 x86"
 
 DEPEND=">=virtual/jdk-1.8:*
 	dev-java/stringprep:0"
