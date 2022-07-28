@@ -24,4 +24,7 @@
 		<flag name="typing">Enable typing plugin</flag>
 		<flag name="xfer">Enable xfer plugin support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">weechat/weechat</remote-id>
+	</upstream>
 </pkgmetadata>
