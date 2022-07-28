@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit autotools flag-o-matic python-single-r1
 
 DESCRIPTION="Provide access to (SM)BIOS information"
-HOMEPAGE="http://linux.dell.com/files/libsmbios/"
+HOMEPAGE="https://github.com/dell/libsmbios"
 SRC_URI="https://github.com/dell/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( GPL-2+ OSL-2.1 ) BSD Boost-1.0"
