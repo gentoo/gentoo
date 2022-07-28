@@ -24,4 +24,7 @@
 		you to log on and then connect to various instant messaging protocols
 		(AIM, MSN, Yahoo, Jabber, etc).
 	</longdescription>
+	<upstream>
+		<remote-id type="github">bitlbee/bitlbee</remote-id>
+	</upstream>
 </pkgmetadata>
