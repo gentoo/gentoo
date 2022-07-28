@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>base-system@gentoo.org</email>
-	<name>Gentoo Base System</name>
-</maintainer>
-<use>
-	<flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking.</flag>
-	<flag name="kill">Build the kill program</flag>
-	<flag name="modern-top">Enables new startup defaults of top. Keeps old defaults if disabled</flag>
-	<flag name="ncurses">Build programs that use ncurses: top, slabtop, watch</flag>
-</use>
-<upstream>
-	<remote-id type="sourceforge">procps</remote-id>
-	<remote-id type="cpe">cpe:/a:procps_project:procps</remote-id>
-</upstream>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<use>
+		<flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking.</flag>
+		<flag name="kill">Build the kill program</flag>
+		<flag name="modern-top">Enables new startup defaults of top. Keeps old defaults if disabled</flag>
+		<flag name="ncurses">Build programs that use ncurses: top, slabtop, watch</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:procps_project:procps</remote-id>
+		<remote-id type="gitlab">procps-ng/procps</remote-id>
+		<remote-id type="sourceforge">procps</remote-id>
+	</upstream>
 </pkgmetadata>
