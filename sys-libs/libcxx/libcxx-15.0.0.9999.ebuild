@@ -79,7 +79,7 @@ src_configure() {
 	local cxxabi cxxabi_incs
 	if use libcxxabi; then
 		cxxabi=system-libcxxabi
-		cxxabi_incs="${EPREFIX}/usr/include/libcxxabi"
+		cxxabi_incs="${EPREFIX}/usr/include/c++/v1"
 	else
 		local gcc_inc="${EPREFIX}/usr/lib/gcc/${CHOST}/$(gcc-fullversion)/include/g++-v$(gcc-major-version)"
 		cxxabi=libsupc++
@@ -146,7 +146,6 @@ multilib_src_configure() {
 		-DLIBCXX_INCLUDE_TESTS=$(usex test)
 		-DLIBCXX_USE_COMPILER_RT=${want_compiler_rt}
 		-DLIBCXX_HAS_ATOMIC_LIB=${want_gcc_s}
-		-DLIBCXX_TARGET_TRIPLE="${CHOST}"
 		-DCMAKE_SHARED_LINKER_FLAGS="${extra_libs[*]} ${LDFLAGS}"
 	)
 
