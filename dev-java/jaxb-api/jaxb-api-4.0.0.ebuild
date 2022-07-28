@@ -15,7 +15,7 @@ SRC_URI="https://github.com/eclipse-ee4j/${PN}/archive/${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="EPL-1.0"
 SLOT="4"
-KEYWORDS="~amd64 ~arm ~arm64 ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
 
 CP_DEPEND="dev-java/jakarta-activation:2"
 
