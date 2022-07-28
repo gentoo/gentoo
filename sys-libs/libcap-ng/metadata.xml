@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>base-system@gentoo.org</email>
-	<name>Gentoo Base System</name>
-</maintainer>
-<longdescription>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<longdescription>
 	The libcap-ng library is intended to make programming with POSIX
 	capabilities much easier than the traditional libcap library. It includes
 	utilities that can analyse all currently running applications and print
 	out any capabilities and whether or not it has an open ended bounding set.
-</longdescription>
-<upstream>
-	<remote-id type="cpe">cpe:/a:libcap-ng_project:libcap-ng</remote-id>
-</upstream>
+	</longdescription>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:libcap-ng_project:libcap-ng</remote-id>
+		<remote-id type="github">stevegrubb/libcap-ng</remote-id>
+	</upstream>
 </pkgmetadata>
