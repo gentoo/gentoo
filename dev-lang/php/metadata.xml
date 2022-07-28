@@ -65,4 +65,7 @@
     <flag name="xslt">Enable the XSL extension</flag>
     <flag name="webp">Enable webp support for GD in php-7.x</flag>
   </use>
+  <upstream>
+    <remote-id type="github">php/php-src</remote-id>
+  </upstream>
 </pkgmetadata>
