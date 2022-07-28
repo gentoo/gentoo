@@ -6,10 +6,10 @@ EAPI=8
 # Please bump with app-editors/vim-core and app-editors/vim
 
 VIM_VERSION="9.0"
-LUA_COMPAT=( lua5-1 luajit )
+LUA_COMPAT=( lua5-{1..4} luajit )
 PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="threads(+)"
-USE_RUBY="ruby26 ruby27"
+USE_RUBY="ruby27 ruby30 ruby31"
 
 inherit vim-doc flag-o-matic xdg-utils bash-completion-r1 prefix lua-single python-single-r1 ruby-single
 
