@@ -107,6 +107,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
 	# c.f. https://github.com/fwupd/fwupd/issues/1414
 	sed -e "/test('thunderbolt-self-test', e, env: test_env, timeout : 120)/d" \
 		-i plugins/thunderbolt/meson.build || die
@@ -118,6 +119,8 @@ src_prepare() {
 		-i data/builder/meson.build || die
 	sed -e "/install_dir.*'doc'/s/doc/gtk-doc/" \
 		-i docs/meson.build || die
+
+	python_fix_shebang "${S}"/contrib/*.py
 }
 
 src_configure() {
