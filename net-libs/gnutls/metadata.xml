@@ -1,46 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>base-system@gentoo.org</email>
-  </maintainer>
-  <use>
-    <flag name="brotli">
-      Enable brotli decompression support via <pkg>app-arch/brotli</pkg>
-    </flag>
-    <flag name="dane">
-      Build libgnutls-dane, implementing DNS-based Authentication of
-      Named Entities. Requires <pkg>net-dns/unbound</pkg>
-    </flag>
-    <flag name="openssl">
-      Build openssl compatibility libraries
-    </flag>
-    <flag name="pkcs11">
-      Add support for PKCS#11 through <pkg>app-crypt/p11-kit</pkg>
-    </flag>
-    <flag name="tools">
-      Build extra tools
-    </flag>
-    <flag name="tls-heartbeat">
-      Enable the Heartbeat Extension in TLS and DTLS
-    </flag>
-    <flag name="sslv2">
-      Support for the old/insecure SSLv2 protocol
-    </flag>
-    <flag name="sslv3">
-      Support for the old/insecure SSLv3 protocol
-    </flag>
-    <flag name="test-full">
-      Enable full test mode
-    </flag>
-    <flag name="valgrind">
-      Enable usage of <pkg>dev-util/valgrind</pkg> in debug
-    </flag>
-  </use>
-  <slots>
-   <subslots>Reflect ABI compatibility of libgnutls.so</subslots>
-  </slots>
-  <upstream>
-    <remote-id type="cpe">cpe:/a:gnu:gnutls</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="brotli">
+			Enable brotli decompression support via <pkg>app-arch/brotli</pkg>
+		</flag>
+		<flag name="dane">
+			Build libgnutls-dane, implementing DNS-based Authentication of
+			Named Entities. Requires <pkg>net-dns/unbound</pkg>
+		</flag>
+		<flag name="openssl">
+			Build openssl compatibility libraries
+		</flag>
+		<flag name="pkcs11">
+			Add support for PKCS#11 through <pkg>app-crypt/p11-kit</pkg>
+		</flag>
+		<flag name="tools">
+			Build extra tools
+		</flag>
+		<flag name="tls-heartbeat">
+			Enable the Heartbeat Extension in TLS and DTLS
+		</flag>
+		<flag name="sslv2">
+			Support for the old/insecure SSLv2 protocol
+		</flag>
+		<flag name="sslv3">
+			Support for the old/insecure SSLv3 protocol
+		</flag>
+		<flag name="test-full">
+			Enable full test mode
+		</flag>
+		<flag name="valgrind">
+			Enable usage of <pkg>dev-util/valgrind</pkg> in debug
+		</flag>
+	</use>
+	<slots>
+		<subslots>Reflect ABI compatibility of libgnutls.so</subslots>
+	</slots>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:gnu:gnutls</remote-id>
+		<remote-id type="gitlab">gnutls/gnutls</remote-id>
+	</upstream>
 </pkgmetadata>
