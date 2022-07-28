@@ -10,4 +10,7 @@
 		<name>Python</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">mgorny/unittest-or-fail</remote-id>
+	</upstream>
 </pkgmetadata>
