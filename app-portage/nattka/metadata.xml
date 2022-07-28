@@ -11,4 +11,7 @@
 			Process packages in depgraph order whenever possible.
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">mgorny/nattka</remote-id>
+	</upstream>
 </pkgmetadata>
