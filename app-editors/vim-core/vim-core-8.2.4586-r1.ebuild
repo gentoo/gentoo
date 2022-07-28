@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
 # Please bump with app-editors/vim and app-editors/gvim
 
@@ -14,8 +14,8 @@ if [[ ${PV} == 9999* ]] ; then
 	EGIT_CHECKOUT_DIR=${WORKDIR}/vim-${PV}
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> vim-${PV}.tar.gz
-		https://dev.gentoo.org/~mattst88/distfiles/vim-8.2.5066-gentoo-patches.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+		https://dev.gentoo.org/~zlogene/distfiles/app-editors/vim/vim-8.2.0360-gentoo-patches.tar.xz"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 S="${WORKDIR}"/vim-${PV}
 
@@ -26,11 +26,10 @@ LICENSE="vim"
 SLOT="0"
 IUSE="nls acl minimal"
 
-# ncurses is only needed by ./configure, so no subslot operator required
-DEPEND=">=sys-libs/ncurses-5.2-r2:0"
 BDEPEND="sys-devel/autoconf"
 # Avoid icon file collision, bug #673880
-RDEPEND="!<app-editors/vim-8.2.4328-r1"
+RDEPEND="!!<app-editors/gvim-8.1.0648
+	!<app-editors/vim-8.2.4328-r1"
 PDEPEND="!minimal? ( app-vim/gentoo-syntax )"
 
 pkg_setup() {
@@ -81,7 +80,7 @@ src_prepare() {
 	# which isn't even in the source file being invalid, we'll do some trickery
 	# to make the error never occur. bug 66162 (02 October 2004 ciaranm)
 	find "${S}" -name '*.c' | while read c; do
-		echo >> "$c" || die "echo failed"
+	    echo >> "$c" || die "echo failed"
 	done
 
 	# Try to avoid sandbox problems. Bug #114475.
@@ -183,7 +182,7 @@ src_install() {
 	# default vimrc is installed by vim-core since it applies to
 	# both vim and gvim
 	insinto /etc/vim/
-	newins "${FILESDIR}"/vimrc-r5 vimrc
+	newins "${FILESDIR}"/vimrc-r6 vimrc
 	eprefixify "${ED}"/etc/vim/vimrc
 
 	if use minimal; then
