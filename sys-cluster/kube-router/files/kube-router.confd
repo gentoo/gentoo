@@ -2,7 +2,8 @@
 # KUBECONFIG=/etc/kubernetes/kube-router.kubeconfig
 
 # Leave empty to autodetect:
-# HOSTNAME=
+# HOSTNAME is a bashism, so change to HOSTNAME_OVERRIDE
+# HOSTNAME_OVERRIDE=
 
 # RUN_PROXY=true
 # RUN_FIREWALL=true
