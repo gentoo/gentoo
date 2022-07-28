@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby26 ruby27 ruby30"
+USE_RUBY="ruby26 ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -23,7 +23,7 @@ IUSE="test"
 ruby_add_bdepend "test?
 	(
 		dev-ruby/json
-		dev-ruby/vcr:5
+		dev-ruby/vcr:6
 		dev-ruby/xml-simple
 		dev-ruby/nokogiri
 		dev-ruby/webmock:3
@@ -32,7 +32,7 @@ ruby_add_bdepend "test?
 all_ruby_prepare() {
 	# Remove bundler but keep vcr version requirement
 	rm -f Gemfile || die
-	sed -i -e '1igem "vcr", "~> 5.0"' spec/spec_helper.rb || die
+	sed -i -e '1igem "vcr", "~> 6.0"' spec/spec_helper.rb || die
 
 	# Avoid development dependencies
 	sed -i -e '/coverall/I s:^:#:' spec/spec_helper.rb || die
