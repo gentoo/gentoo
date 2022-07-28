@@ -11,6 +11,7 @@
 	restricted by its license.
 </longdescription>
 	<upstream>
+		<remote-id type="github">FreeGLUTProject/freeglut</remote-id>
 		<remote-id type="sourceforge">freeglut</remote-id>
 	</upstream>
 </pkgmetadata>
