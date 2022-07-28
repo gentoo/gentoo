@@ -9,6 +9,6 @@
 		<email>llvm@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">llvm-mirror/libclc</remote-id>
+		<remote-id type="github">llvm/llvm-project</remote-id>
 	</upstream>
 </pkgmetadata>
