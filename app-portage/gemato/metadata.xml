@@ -16,5 +16,6 @@
 	<upstream>
 		<bugs-to>https://github.com/mgorny/gemato/issues/</bugs-to>
 		<remote-id type="github">mgorny/gemato</remote-id>
+		<remote-id type="pypi">gemato</remote-id>
 	</upstream>
 </pkgmetadata>
