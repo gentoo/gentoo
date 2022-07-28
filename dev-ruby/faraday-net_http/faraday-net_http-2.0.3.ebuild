@@ -23,7 +23,7 @@ SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE=""
 
-ruby_add_bdepend "test? ( >=dev-ruby/faraday-1.3.1:1 )"
+ruby_add_bdepend "test? ( || ( dev-ruby/faraday:2 >=dev-ruby/faraday-1.3.1:1 ) )"
 
 all_ruby_prepare() {
 	sed -i -e "s:_relative ':'./:" ${RUBY_FAKEGEM_GEMSPEC} || die
