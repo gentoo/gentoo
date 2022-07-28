@@ -7,8 +7,11 @@ PYTHON_COMPAT=( python3_{8..11} )
 inherit python-single-r1
 
 DESCRIPTION="Manage repos.conf via eselect"
-HOMEPAGE="https://github.com/mgorny/eselect-repository"
-SRC_URI="https://github.com/mgorny/eselect-repository/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/mgorny/eselect-repository/"
+SRC_URI="
+	https://github.com/mgorny/eselect-repository/archive/v${PV}.tar.gz
+		-> ${P}.tar.gz
+"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -17,18 +20,21 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
-RDEPEND="${PYTHON_DEPS}
+RDEPEND="
+	${PYTHON_DEPS}
 	app-admin/eselect
 	$(python_gen_cond_dep '
 		dev-python/lxml[${PYTHON_USEDEP}]
 	')
-	net-misc/wget"
+	net-misc/wget
+"
 BDEPEND="
 	test? (
 		$(python_gen_cond_dep '
 			dev-python/pytest[${PYTHON_USEDEP}]
 		')
-	)"
+	)
+"
 
 src_compile() {
 	MAKEARGS=(
