@@ -387,17 +387,17 @@ src_prepare() {
 	# TODO: package-agnostic way to handle IUSE=debug with setuptools-rust?
 	use !debug || sed -i "s/^cargo_args = \[/&'--profile','dev',/" setup.py || die
 
-	filter-lto # undefined references with ring crate
-
 	# setup.py handles most for non-tests, but ensure disabled rustls on arches
 	# where ring crate is problematic -- keep in sync below (bug #859577)
-	if use mips || use ppc || use ppc64 || use s390 || use sparc; then
+	if use mips || use ppc || use ppc64 || use riscv || use s390 || use sparc; then
 		sed -i '/^if platform.machine/s/^if/if True or/' setup.py || die
 	fi
 }
 
 src_configure() {
-	if use mips || use ppc || use ppc64 || use s390 || use sparc; then
+	filter-lto # undefined references with ring crate
+
+	if use mips || use ppc || use ppc64 || use riscv || use s390 || use sparc; then
 		local myfeatures=( upload log human-panic )
 		cargo_src_configure --no-default-features
 	fi
