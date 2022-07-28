@@ -28,7 +28,8 @@ RDEPEND="
 "
 
 distutils_enable_sphinx docs \
-	dev-python/sphinx_rtd_theme
+	dev-python/sphinx_rtd_theme \
+	dev-python/sphinx-issues
 
 PATCHES=(
 	"${FILESDIR}"/${P}-version.patch
