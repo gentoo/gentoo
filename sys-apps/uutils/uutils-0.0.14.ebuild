@@ -253,6 +253,7 @@ SRC_URI+=" $(cargo_crate_uris)"
 # License set may be more restrictive as OR is not respected
 # use cargo-license for a more accurate license picture
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 CC0-1.0 ISC MIT Unlicense"
+QA_FLAGS_IGNORED=".*"
 
 BDEPEND=">=virtual/rust-1.56.0"
 
