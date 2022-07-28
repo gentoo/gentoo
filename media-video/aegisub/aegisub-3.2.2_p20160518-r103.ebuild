@@ -20,7 +20,7 @@ LICENSE="BSD MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+alsa debug +fftw openal oss portaudio pulseaudio spell test +uchardet"
-RESTRICT="!test? ( test )"
+RESTRICT="test"
 
 # aegisub bundles luabins (https://github.com/agladysh/luabins).
 # Unfortunately, luabins upstream is practically dead since 2010.
@@ -29,7 +29,7 @@ RDEPEND="${LUA_DEPS}
 	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,debug?]
 	dev-libs/boost:=[icu,nls,threads(+)]
 	dev-libs/icu:=
-	media-libs/ffmpegsource:=
+	~media-libs/ffmpegsource-2.23:=
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/libass:=[fontconfig]
