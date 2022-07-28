@@ -24,6 +24,9 @@ IUSE=""
 DEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]"
 RDEPEND="dev-libs/openssl:0"
 
+# Tests require a local ACME server to be set up.
+RESTRICT="test"
+
 pkg_setup() {
 	if [[ ${PV} != 9999 ]]; then
 		export SETUPTOOLS_SCM_PRETEND_VERSION="${PV}"
