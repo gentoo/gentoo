@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2022-07-28)
+# Unmaintained, EOL upstream, QA and build issues, EAPI 6.
+# Bug #682346, #844592, removal on 2022-08-27.
+app-crypt/kbfs
+
 # Sam James <sam@gentoo.org> (2022-07-26)
 # Fails to build with ffmpeg 5, no reverse dependencies, maintainer-needed,
 # and no commits upstream since 2017. Bug #834383. Removal on 2022-08-26.
