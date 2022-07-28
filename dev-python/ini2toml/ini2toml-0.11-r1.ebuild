@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv"
 
 RDEPEND="
 	>=dev-python/packaging-20.7[${PYTHON_USEDEP}]
