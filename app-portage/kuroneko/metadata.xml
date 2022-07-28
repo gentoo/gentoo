@@ -10,4 +10,7 @@
 			Include the dependencies necessary for Bugzilla scraping.
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">mgorny/kuroneko</remote-id>
+	</upstream>
 </pkgmetadata>
