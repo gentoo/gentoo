@@ -23,8 +23,11 @@ REQUIRED_USE="cpu_flags_arm_aes? ( cpu_flags_arm_sha1 cpu_flags_arm_sha2 )
 
 DEPEND="gmp? ( >=dev-libs/gmp-6.1:0=[static-libs?,${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}"
-BDEPEND="doc? ( sys-apps/texinfo )
-	verify-sig? ( sec-keys/openpgp-keys-nettle )"
+BDEPEND="
+	sys-devel/m4
+	doc? ( sys-apps/texinfo )
+	verify-sig? ( sec-keys/openpgp-keys-nettle )
+"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/nettle/version.h
