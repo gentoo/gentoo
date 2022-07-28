@@ -89,14 +89,6 @@ src_prepare() {
 	mkdir -p x/y || die
 	BUILD_DIR=${WORKDIR}/x/y/clang
 
-	# workaround another developer believing it's a great idea to use
-	# private LLVM headers in clang
-	# https://reviews.llvm.org/D120185
-	mkdir -p unittests/ASTMatchers/llvm/Config || die
-	cat > unittests/ASTMatchers/llvm/Config/config.h <<-EOF || die
-		#define ENABLE_BACKTRACES 1
-	EOF
-
 	llvm.org_src_prepare
 
 	# add Gentoo Portage Prefix for Darwin (see prefix-dirs.patch)
