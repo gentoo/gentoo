@@ -36,5 +36,6 @@
 		<remote-id type="cpe">cpe:/a:curl:libcurl</remote-id>
 		<remote-id type="cpe">cpe:/a:haxx:curl</remote-id>
 		<remote-id type="cpe">cpe:/a:haxx:libcurl</remote-id>
+		<remote-id type="github">curl/curl</remote-id>
 	</upstream>
 </pkgmetadata>
