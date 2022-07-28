@@ -424,6 +424,7 @@ src_prepare() {
 	# ffi headers don't get included in the binpkg for some reason
 	for f in "${WORKDIR}/usr/$(get_libdir)/${PN}-${BIN_PV}/include/"{ffi.h,ffitarget.h}
 	do
+		mkdir -p "$(dirname "${f}")"
 		[[ -e "${f}" ]] || ln -sf "$($(tc-getPKG_CONFIG) --cflags-only-I libffi | sed "s/-I//g" | tr -d " ")/$(basename "${f}")" "${f}" || die
 	done
 
