@@ -8,4 +8,7 @@
 		<flag name="clang">Force building using installed clang (rather
 			than the default CC/CXX).</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">llvm/llvm-project</remote-id>
+	</upstream>
 </pkgmetadata>
