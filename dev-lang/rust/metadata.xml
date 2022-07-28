@@ -23,4 +23,7 @@
 		<flag name="system-llvm">Use the system LLVM installation</flag>
 		<flag name="wasm">Build support for the wasm32-unknown-unknown target</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">rust-lang/rust</remote-id>
+	</upstream>
 </pkgmetadata>
