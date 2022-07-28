@@ -13,4 +13,7 @@
 		<flag name="libcxxabi">Build on top of <pkg>sys-libs/libcxxabi</pkg> instead of gcc's libsupc++ (avoids depending on gcc).</flag>
 		<flag name="libunwind">Use libunwind instead of libgcc_s for stack unwinding, thus avoiding dependence on gcc.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">llvm/llvm-project</remote-id>
+	</upstream>
 </pkgmetadata>
