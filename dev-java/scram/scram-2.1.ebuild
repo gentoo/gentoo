@@ -18,7 +18,7 @@ SRC_URI="https://gitlab.com/ongresinc/${PN}/-/archive/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ppc64 x86"
+KEYWORDS="amd64 ppc64 x86"
 
 # Common dependencies
 # POM: common/pom.xml
