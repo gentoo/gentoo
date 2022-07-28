@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-<email>netmon@gentoo.org</email>
-</maintainer>
-<maintainer type="person">
-	<email>mgorny@gentoo.org</email>
-	<name>Michał Górny</name>
-</maintainer>
-<use>
-	<flag name="gcrypt">Use <pkg>dev-libs/libgcrypt</pkg> instead of <pkg>dev-libs/openssl</pkg></flag>
-	<flag name="mbedtls">Use <pkg>net-libs/mbedtls</pkg> instead of <pkg>dev-libs/openssl</pkg></flag>
-</use>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<use>
+		<flag name="gcrypt">Use <pkg>dev-libs/libgcrypt</pkg> instead of <pkg>dev-libs/openssl</pkg></flag>
+		<flag name="mbedtls">Use <pkg>net-libs/mbedtls</pkg> instead of <pkg>dev-libs/openssl</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">libssh2/libssh2</remote-id>
+	</upstream>
 </pkgmetadata>
