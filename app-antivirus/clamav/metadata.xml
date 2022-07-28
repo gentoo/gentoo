@@ -22,6 +22,7 @@
 		<flag name="rar">RAR support</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">Cisco-Talos/clamav</remote-id>
 		<remote-id type="sourceforge">clamav</remote-id>
 	</upstream>
 </pkgmetadata>
