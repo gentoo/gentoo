@@ -9,4 +9,7 @@
 		<flag name="json">Support JSON output via <pkg>dev-libs/json-c</pkg></flag>
 		<flag name="uuid">UUID support via <pkg>sys-apps/util-linux</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="github">linux-nvme/libnvme</remote-id>
+	</upstream>
 </pkgmetadata>
