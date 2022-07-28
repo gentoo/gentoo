@@ -1,0 +1,99 @@
+--- smbc-1.2.2.orig/src/bookmarks.c
++++ smbc-1.2.2/src/bookmarks.c
+@@ -23,7 +23,7 @@
+ #endif /* not HAVE_STRING_H */
+ 
+ #include <libintl.h>
+-#include <libsmbclient.h>
++#include <samba-4.0/libsmbclient.h>
+ #include <unistd.h>
+ #include <stdlib.h>
+ #include "dulist.h"
+--- smbc-1.2.2.orig/src/dulist.c
++++ smbc-1.2.2/src/dulist.c
+@@ -22,7 +22,7 @@
+ 
+ #include <libintl.h>
+ #include <dirent.h>
+-#include <libsmbclient.h>
++#include <samba-4.0/libsmbclient.h>
+ #include <unistd.h>
+ #include <stdlib.h>
+ #include "fnet.h"
+--- smbc-1.2.2.orig/src/find-index-manage.c
++++ smbc-1.2.2/src/find-index-manage.c
+@@ -23,7 +23,7 @@
+ #include <stdio.h>
+ #include <sys/types.h>
+ #include <unistd.h>
+-#include <libsmbclient.h>
++#include <samba-4.0/libsmbclient.h>
+ #include <stdlib.h>
+ #include <math.h>
+ #include "find-index-manage.h"
+--- smbc-1.2.2.orig/src/fnet.c
++++ smbc-1.2.2/src/fnet.c
+@@ -20,7 +20,7 @@
+ #endif /* HAVE_STRINGS_H */
+ #endif /* not HAVE_STRING_H */
+ 
+-#include <libsmbclient.h>
++#include <samba-4.0/libsmbclient.h>
+ #include <fcntl.h>
+ #include <stdio.h>
+ #include <unistd.h>
+--- smbc-1.2.2.orig/src/smb-pack.c
++++ smbc-1.2.2/src/smb-pack.c
+@@ -21,7 +21,7 @@
+ #include <sys/types.h>
+ #include <signal.h>
+ #include <curses.h>
+-#include <libsmbclient.h>
++#include <samba-4.0/libsmbclient.h>
+ #include <unistd.h>
+ #include <stdlib.h>
+ #include "smb-pack.h"
+--- smbc-1.2.2.orig/src/smb-pack.h
++++ smbc-1.2.2/src/smb-pack.h
+@@ -18,7 +18,7 @@
+ #endif /* HAVE_STRINGS_H */
+ #endif /* not HAVE_STRING_H */
+ 
+-#include <libsmbclient.h>
++#include <samba-4.0/libsmbclient.h>
+ 
+ #define RstrCmp(src, dst) (!strcmp(src, dst))
+ 
+--- smbc-1.2.2.orig/src/smbc.c
++++ smbc-1.2.2/src/smbc.c
+@@ -31,7 +31,7 @@
+ #include <dirent.h>
+ #include <time.h>
+ #include <errno.h>
+-#include <libsmbclient.h>
++#include <samba-4.0/libsmbclient.h>
+ #include <popt.h>
+ #include <unistd.h>
+ #include <stdlib.h>
+--- smbc-1.2.2.orig/src/ttlist.c
++++ smbc-1.2.2/src/ttlist.c
+@@ -20,7 +20,7 @@
+ #endif /* HAVE_STRINGS_H */
+ #endif /* not HAVE_STRING_H */
+ 
+-#include <libsmbclient.h>
++#include <samba-4.0/libsmbclient.h>
+ #include <fcntl.h>
+ #include <stdio.h>
+ #include <unistd.h>
+--- smbc-1.2.2.orig/src/winpopup.c
++++ smbc-1.2.2/src/winpopup.c
+@@ -11,7 +11,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
+-#include <libsmbclient.h>
++#include <samba-4.0/libsmbclient.h>
+ #include <unistd.h>
+ #include "winpopup.h"
+ #include "debug.h"
