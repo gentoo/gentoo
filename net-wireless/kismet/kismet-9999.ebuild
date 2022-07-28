@@ -142,7 +142,7 @@ src_install() {
 		dobin "${FILESDIR}"/kismet-gdb
 	fi
 
-	dodoc CHANGELOG README*
+	dodoc README*
 	newinitd "${FILESDIR}"/${PN}.initd-r3 kismet
 	newconfd "${FILESDIR}"/${PN}.confd-r2 kismet
 	systemd_dounit packaging/systemd/kismet.service
