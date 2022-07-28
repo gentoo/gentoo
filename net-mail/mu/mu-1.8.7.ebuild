@@ -11,7 +11,7 @@ SRC_URI="https://github.com/djcb/mu/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86 ~x64-macos"
 IUSE="emacs readline"
 
 DEPEND="
