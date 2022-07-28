@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
+		<remote-id type="github">SawfishWM/librep</remote-id>
 		<remote-id type="sourceforge">librep</remote-id>
 	</upstream>
 </pkgmetadata>
