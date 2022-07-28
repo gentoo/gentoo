@@ -190,8 +190,11 @@ endif " has("autocmd")
 " }}}
 
 " We don't want VIM to load their own built-in defaults, preferring ours here
-" instead:
-let g:skip_defaults_vim = 1
+" instead. This option cannot apply to minimal builds, so it is guarded by a
+" test that's guaranteed to fail for those, owing to the lack of +eval.
+if 1
+  let g:skip_defaults_vim = 1
+endif
 
 " Enable Omni completion when opening a file only if a specific plugin does
 " not already exist for that filetype. This allows Omni completion
