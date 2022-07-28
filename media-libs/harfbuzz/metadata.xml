@@ -11,6 +11,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:harfbuzz_project:harfbuzz</remote-id>
+		<remote-id type="github">harfbuzz/harfbuzz</remote-id>
 	</upstream>
 	<use>
 		<flag name="experimental">Enable experimental APIs</flag>
