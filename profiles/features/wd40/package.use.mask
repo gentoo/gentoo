@@ -2,19 +2,29 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (2022-07-29)
+# More packages requiring dev-python/cryptography or its revdeps.
+app-admin/salt keyring neutron
+dev-python/boto test
+dev-python/dask test
+dev-python/docker-py test
+dev-python/google-api-python-client test
+dev-python/keystoneauth test
+dev-python/libtmux test
+dev-python/locket test
+dev-python/pyjwt test
+dev-python/python-keystoneclient test
+
+# Michał Górny <mgorny@gentoo.org> (2022-07-29)
 # More packages requiring dev-python/pyopenssl or its revdeps.
 app-admin/salt libcloud openssl test
 dev-python/aiohttp test
-dev-python/autobahn test
 dev-python/cheroot test
 dev-python/cherrypy ssl
 dev-python/eventlet test
 dev-python/google-auth test
-dev-python/os-client-config test
 dev-python/pyftpdlib ssl test
 dev-python/python-novaclient test
 dev-python/requests test
-dev-python/service_identity test
 dev-python/uvloop test
 www-apps/roundup ssl
 
