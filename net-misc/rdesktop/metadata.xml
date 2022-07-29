@@ -15,5 +15,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">rdesktop</remote-id>
+		<remote-id type="github">rdesktop/rdesktop</remote-id>
 	</upstream>
 </pkgmetadata>
