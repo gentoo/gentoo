@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -13,18 +13,19 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ppc ppc64 ~riscv sparc x86"
 IUSE="lirc oss +sdl sid vorbis"
+REQUIRED_USE="|| ( oss sdl )"
 
 RDEPEND="
-	sys-libs/ncurses:0=
+	sys-libs/ncurses:=
 	lirc? ( app-misc/lirc )
 	sdl? ( media-libs/libsdl )
 	sid? ( media-libs/libsidplay:1 )
 	vorbis? ( media-libs/libvorbis )"
-DEPEND="${RDEPEND}
-	x11-misc/imake
+DEPEND="
+	${RDEPEND}
 	oss? ( virtual/os-headers )"
+BDEPEND="x11-misc/imake"
 
-REQUIRED_USE="|| ( oss sdl )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.5-fix-c++14.patch
 	"${FILESDIR}"/${PN}-3.2.5-fix-build-system.patch
@@ -57,8 +58,8 @@ src_install() {
 	default
 
 	# relocate everything except commands.txt because it's used by src/main.cc
-	mv -vf "${ED%/}"/usr/share/{${PN}/{charmap,sample.*},doc/${PF}} || die
+	mv -vf "${ED}"/usr/share/{${PN}/{charmap,sample.*},doc/${PF}} || die
 
 	# file collision with media-sound/splay
-	mv -vf "${ED%/}"/usr/bin/splay{,_mp3blaster} || die
+	mv -vf "${ED}"/usr/bin/splay{,_mp3blaster} || die
 }
