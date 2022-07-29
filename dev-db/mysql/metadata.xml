@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>mysql-bugs@gentoo.org</email>
-    <name>MySQL</name>
-  </maintainer>
-<!-- 
-Please note that this list is shared between the following packages:
-dev-db/mysql
-dev-db/mariadb
--->
-<use>
-  <flag name="cjk">Add CJK support for InnoDB fulltext search using <pkg>app-text/mecab</pkg></flag>
-  <flag name="client-libs">Build the client libraries from the server package instead of the C Connector packages (not recommended)</flag>
-  <flag name="experimental">Build experimental features aka "rapid" plugins</flag>
-  <flag name="latin1">Use LATIN1 encoding instead of UTF8</flag>
-  <flag name="numa">Enable NUMA support using <pkg>sys-process/numactl</pkg> (NUMA kernel support is also required)</flag>
-  <flag name="profiling">Add support for statement profiling (requires USE=community).</flag>
-  <flag name="router">Build the MySQL router program</flag>
-  <flag name="server">Build the server program</flag>
-  <flag name="systemtap">Build support for profiling and tracing using <pkg>dev-util/systemtap</pkg></flag>
-  <flag name="test">Install upstream testsuites for end use.</flag>
-</use>
+	<maintainer type="project">
+		<email>mysql-bugs@gentoo.org</email>
+		<name>MySQL</name>
+	</maintainer>
+	<!-- 
+		Please note that this list is shared between the following packages:
+		dev-db/mysql
+		dev-db/mariadb
+	-->
+	<use>
+		<flag name="cjk">Add CJK support for InnoDB fulltext search using <pkg>app-text/mecab</pkg></flag>
+		<flag name="client-libs">Build the client libraries from the server package instead of the C Connector packages (not recommended)</flag>
+		<flag name="experimental">Build experimental features aka "rapid" plugins</flag>
+		<flag name="latin1">Use LATIN1 encoding instead of UTF8</flag>
+		<flag name="numa">Enable NUMA support using <pkg>sys-process/numactl</pkg> (NUMA kernel support is also required)</flag>
+		<flag name="profiling">Add support for statement profiling (requires USE=community).</flag>
+		<flag name="router">Build the MySQL router program</flag>
+		<flag name="server">Build the server program</flag>
+		<flag name="systemtap">Build support for profiling and tracing using <pkg>dev-util/systemtap</pkg></flag>
+		<flag name="test">Install upstream testsuites for end use.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">mysql/mysql-server</remote-id>
+	</upstream>
 </pkgmetadata>
