@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Esteve Varela Colominas (2022-07-29)
+# Qt6 isn't supported yet, as it's only available in the ::qt overlay
+net-im/telegram-desktop qt6
+
 # Depends on an older enigmail that only supports python2, which is
 # being removed soon. #758344
 www-client/seamonkey crypt
