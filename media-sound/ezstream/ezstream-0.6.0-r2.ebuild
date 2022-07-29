@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="A command line source client for Icecast media streaming servers"
 HOMEPAGE="https://www.icecast.org/ezstream/"
@@ -12,19 +12,20 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="taglib"
 
-COMMON_DEPEND="dev-libs/libxml2
+DEPEND="
+	dev-libs/libxml2
 	>=media-libs/libshout-2.2
 	!taglib? ( media-libs/libvorbis )
 	taglib? ( media-libs/taglib )"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="
+	${DEPEND}
 	net-misc/icecast"
-DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	econf \
 		--enable-examplesdir='$(docdir)/examples' \
-		$(use_with taglib taglib "/usr")
+		$(use_with taglib taglib "${ESYSROOT}"/usr)
 }
 
 src_install() {
@@ -33,5 +34,5 @@ src_install() {
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 
-	rm -f "${D%/}"/usr/share/doc/${PF}/COPYING
+	rm -f "${ED}"/usr/share/doc/${PF}/COPYING || die
 }
