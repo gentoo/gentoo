@@ -42,6 +42,10 @@ DEPEND="${RDEPEND}
 # fails to build
 RESTRICT+=" test"
 
+PATCHES=(
+    "${FILESDIR}"/${PN}-0.8.0-musl-execinfo.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
 	# tests are sprinkled all over the place, and examples are needed...
