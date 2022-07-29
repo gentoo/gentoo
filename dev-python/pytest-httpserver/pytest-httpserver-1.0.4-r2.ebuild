@@ -26,7 +26,7 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	sed -i -e '/tests\//d' pyproject.toml || die
+	sed -i -e '/^include = \[/,/\]/d' pyproject.toml || die
 
 	distutils-r1_python_prepare_all
 }
