@@ -114,7 +114,7 @@ src_prepare() {
 	done
 
 	# install docs in correct directory
-	sed -i "s#\${SHAREDIR}/doc/\${PROJECT_NAME}#\0-${PV}/html#" doc/*/CMakeLists.txt || die
+	sed -i "s#\${DATAROOTDIR}/doc/\${PROJECT_NAME}#\0-${PVR}/html#" doc/*/CMakeLists.txt || die
 
 	if [[ ${CHOST} == *-darwin* ]]; then
 		# fix linking error on Darwin
