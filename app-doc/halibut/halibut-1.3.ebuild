@@ -11,4 +11,4 @@ SRC_URI="https://www.chiark.greenend.org.uk/~sgtatham/${PN}/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 ~arm64 ~hppa ppc ~ppc64 ~riscv ~sparc x86"
