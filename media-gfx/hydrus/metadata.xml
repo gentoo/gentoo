@@ -15,4 +15,7 @@
 		anonymously through custom servers that any user may run
 	</longdescription>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">hydrusnetwork/hydrus</remote-id>
+	</upstream>
 </pkgmetadata>
