@@ -21,6 +21,7 @@ src_compile() {
 	local BUILD_DATE
 	BUILD_DATE=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 	ego build -o bin/syft -ldflags "
+		-extldflags '-static'
 		-X github.com/anchore/syft/internal/version.version=${PV}
 		-X github.com/anchore/syft/internal/version.gitCommit=${GIT_COMMIT}
 			-X github.com/anchore/syft/internal/version.buildDate=${BUILD_DATE}
