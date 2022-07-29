@@ -1,0 +1,24 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,9 @@
+ # Makefile - makefile for rexima
+ 
+-CC=gcc
+-CFLAGS=-O -Wall
++PKG_CONFIG ?= pkg-config
++CFLAGS += -Wall
++CPPFLAGS += $(shell $(PKG_CONFIG) --cflags ncurses)
++LDLIBS = $(shell $(PKG_CONFIG) --libs ncurses)
+ 
+ # Set BINDIR to directory for binary,
+ # MANDIR to directory for man page.
+@@ -16,9 +18,6 @@
+ 
+ all: rexima
+ 
+-rexima: rexima.o
+-	$(CC) $(CFLAGS) -o rexima rexima.o -lncurses
+-
+ installdirs:
+ 	/bin/sh ./mkinstalldirs $(BINDIR) $(MANDIR)
+ 

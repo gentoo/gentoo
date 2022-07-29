@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -12,19 +12,15 @@ SRC_URI="ftp://ftp.ibiblio.org/pub/Linux/apps/sound/mixers/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
-IUSE=""
 
-RDEPEND="sys-libs/ncurses:0="
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+RDEPEND="sys-libs/ncurses:="
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
 src_configure() {
-	tc-export CC
-
-	cat > Makefile <<- _EOF_ || die
-		LDLIBS=$($(tc-getPKG_CONFIG) --libs ncurses)
-		all: rexima
-	_EOF_
+	tc-export CC PKG_CONFIG
 }
 
 src_install() {
