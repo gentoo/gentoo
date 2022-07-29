@@ -20,4 +20,8 @@
 			Build topology spatial types and functions
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">postgis/postgis</remote-id>
+		<remote-id type="gitlab">postgis/postgis</remote-id>
+	</upstream>
 </pkgmetadata>
