@@ -17,7 +17,7 @@ DESCRIPTION="FastCGI library for Ruby"
 HOMEPAGE="https://github.com/alphallc/ruby-fcgi-ng"
 
 KEYWORDS="amd64 arm ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-LICENSE="Ruby"
+LICENSE="MIT Ruby-BSD"
 
 DEPEND+=" dev-libs/fcgi"
 RDEPEND+=" dev-libs/fcgi"
