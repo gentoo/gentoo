@@ -1,10 +1,11 @@
-Fix underlinking issues caused by missing libm and libogg linking
-Gentoo Bug: https://bugs.gentoo.org/show_bug.cgi?id=513012
+* Fix underlinking issues caused by missing libm and libogg linking
+  https://bugs.gentoo.org/513012
+* Fix spurious test failure caused by incomplete POTFILES.in
+  https://bugs.gentoo.org/631236
+* In addition, fix nonidiomatic AC_ARG_ENABLE option handling.
 
-In addition, fix nonidiomatic AC_ARG_ENABLE option handling.
-
---- tagtool-0.12.3/configure.ac
-+++ tagtool-0.12.3/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -13,20 +13,16 @@
  
  
@@ -57,8 +58,15 @@ In addition, fix nonidiomatic AC_ARG_ENABLE option handling.
  
  AM_CONDITIONAL(ENABLE_MP3,    test "$enable_mp3" = "yes")
  AM_CONDITIONAL(ENABLE_VORBIS, test "$enable_vorbis" = "yes")
---- tagtool-0.12.3/src/Makefile.am
-+++ tagtool-0.12.3/src/Makefile.am
+--- a/po/POTFILES.in
++++ b/po/POTFILES.in
+@@ -22,3 +22,4 @@
+ src/vorbis_edit.c
+ src/vorbis_edit_field.c
+ src/vorbis_file.c
++src/vcedit.c
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -28,7 +28,8 @@
  vorbis_sources = vorbis_file.c vorbis_file.h vorbis_edit.c 		\
  	vorbis_edit.h vorbis_edit_field.c vorbis_edit_field.h vcedit.c 	\

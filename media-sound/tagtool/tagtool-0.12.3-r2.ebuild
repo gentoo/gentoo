@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -15,21 +15,20 @@ KEYWORDS="amd64 ppc ~sparc x86"
 IUSE="mp3 +vorbis"
 REQUIRED_USE="|| ( mp3 vorbis )"
 
-RDEPEND="x11-libs/gtk+:2
+RDEPEND="
+	x11-libs/gtk+:2
 	>=gnome-base/libglade-2.6
 	mp3? ( >=media-libs/id3lib-3.8.3-r6 )
 	vorbis? ( >=media-libs/libvorbis-1 )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-underlinking.patch
+	"${FILESDIR}"/${P}-autotools.patch
+	"${FILESDIR}"/${P}-QA-desktop.patch
 )
 
 src_prepare() {
-	# QA fix for wrong boolean value
-	sed -i -e 's/Terminal=False/Terminal=false/' data/tagtool.desktop.in || die
-
 	default
 	eautoreconf
 }
@@ -43,9 +42,8 @@ src_configure() {
 src_install() {
 	emake \
 		DESTDIR="${D}" \
-		GNOME_SYSCONFDIR="${D}/etc" \
-		sysdir="${D}/usr/share/applets/Multimedia" \
+		GNOME_SYSCONFDIR="${ED}"/etc \
+		sysdir="${ED}"/usr/share/applets/Multimedia \
 		install
-
-	dodoc ChangeLog NEWS README TODO THANKS
+	einstalldocs
 }
