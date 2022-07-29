@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# David Seifert <soap@gentoo.org> (2022-07-29)
+# Binary package linked against glibc
+sys-block/megacli
+
 # Marek Szuba <marecki@gentoo.org> (2022-07-28)
 # Relies on unimplemented functions outb_p and inb_p,
 # support for which has never made it into musl. Bug #712972.
