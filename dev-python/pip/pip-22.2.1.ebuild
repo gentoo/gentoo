@@ -53,9 +53,9 @@ BDEPEND="
 			dev-python/tomli-w[${PYTHON_USEDEP}]
 			dev-python/werkzeug[${PYTHON_USEDEP}]
 			dev-python/wheel[${PYTHON_USEDEP}]
-			!alpha? ( !hppa? ( !ia64? (
+			!alpha? ( !arm? ( !hppa? ( !ia64? ( !s390? ( !sparc? (
 				dev-python/cryptography[${PYTHON_USEDEP}]
-			) ) )
+			) ) ) ) ) )
 		' "${PYTHON_TESTED[@]}")
 	)
 "
