@@ -140,6 +140,7 @@ BDEPEND="${PYTHON_DEPS}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-pam.patch"
+	"${FILESDIR}/ldb-2.5.2-skip-wav-tevent-check.patch"
 )
 
 #CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"

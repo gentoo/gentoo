@@ -1,0 +1,12 @@
+--- ldb-1.3.6/lib/tevent/wscript
++++ ldb-1.3.6/lib/tevent/wscript
+@@ -34,8 +34,7 @@
+         if conf.CHECK_BUNDLED_SYSTEM_PKG('tevent', minversion=VERSION,
+                                      onlyif='talloc', implied_deps='replace talloc'):
+             conf.define('USING_SYSTEM_TEVENT', 1)
+-            if not conf.env.disable_python and \
+-                conf.CHECK_BUNDLED_SYSTEM_PYTHON('pytevent', 'tevent', minversion=VERSION):
++            if not conf.env.disable_python:
+                 conf.define('USING_SYSTEM_PYTEVENT', 1)
+ 
+     if conf.CHECK_FUNCS('epoll_create', headers='sys/epoll.h'):
