@@ -12,6 +12,7 @@
 		<flag name="speech">Enable text-to-speech support in Mumble.</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">mumble-voip/mumble</remote-id>
 		<remote-id type="sourceforge">mumble</remote-id>
 	</upstream>
 </pkgmetadata>
