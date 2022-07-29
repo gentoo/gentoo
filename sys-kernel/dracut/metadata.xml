@@ -13,4 +13,7 @@
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">dracutdevs/dracut</remote-id>
+	</upstream>
 </pkgmetadata>
