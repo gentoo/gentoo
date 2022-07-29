@@ -17,12 +17,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
 
-# Since 6.2.0 ansible-lint once again does not need access to Ansible Galaxy
-# even to get the test suite started, however quite a large fraction of tests
-# fails without network access. Needs more work.
-PROPERTIES="test_network"
-RESTRICT="test"
-
 RDEPEND="
 	>=app-admin/ansible-base-2.12.0[${PYTHON_USEDEP}]
 	>=dev-python/ansible-compat-2.1.0[${PYTHON_USEDEP}]
@@ -47,18 +41,26 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.2_test-module-check.patch
 )
 
-# Skip problematic tests (TODO: update this list for ansible-lint-6.2.0+):
+# Skip problematic tests:
 #  - test_call_from_outside_venv doesn't play nicely with the sandbox
-#  - all test_eco and some test_prerun tests require Internet access
-#  - as of 5.4.0, test_cli_auto_detect fails even when run manually with tox
+#  - all the others require Internet access, mostly in order to access Ansible Galaxy
 EPYTEST_DESELECT=(
+	test/test_cli_role_paths.py::test_run_playbook_github
 	test/test_eco.py
+	test/test_examples.py::test_custom_kinds
+	test/test_import_playbook.py::test_task_hook_import_playbook
+	test/test_list_rules.py::test_list_rules_includes_opt_in_rules
+	test/test_list_rules.py::test_list_rules_with_format_option
+	test/test_list_rules.py::test_list_tags_includes_opt_in_rules
 	test/test_main.py::test_call_from_outside_venv
 	test/test_prerun.py::test_install_collection
 	test/test_prerun.py::test_prerun_reqs_v1
 	test/test_prerun.py::test_prerun_reqs_v2
 	test/test_prerun.py::test_require_collection_wrong_version
+	test/test_rules_collection.py::test_rich_rule_listing
 	test/test_utils.py::test_cli_auto_detect
+	test/test_utils.py::test_template_lookup
+	test/test_verbosity.py::test_default_verbosity
 )
 
 distutils_enable_tests pytest
