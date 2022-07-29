@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Shotwell"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~ppc64 ~riscv ~sparc ~x86"
 IUSE="opencv udev wayland"
 
 DEPEND="
