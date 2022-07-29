@@ -5,7 +5,8 @@ EAPI=8
 
 CMAKE_ECLASS=cmake
 PYTHON_COMPAT=( python3_{8..10} )
-inherit cmake-multilib llvm llvm.org python-any-r1 toolchain-funcs
+inherit cmake-multilib flag-o-matic llvm llvm.org python-any-r1 \
+	toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
 HOMEPAGE="https://libcxx.llvm.org/"
