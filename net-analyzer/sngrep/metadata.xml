@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-<email>netmon@gentoo.org</email>
-</maintainer>
-<use>
-<flag name="eep">Enable EEP packet send/receive support</flag>
-<flag name="gnutls">Use <pkg>net-libs/gnutls</pkg> to parse captured TLS packets</flag>
-<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> to parse captured TLS packets</flag>
-</use>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="eep">Enable EEP packet send/receive support</flag>
+		<flag name="gnutls">Use <pkg>net-libs/gnutls</pkg> to parse captured TLS packets</flag>
+		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> to parse captured TLS packets</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">irontec/sngrep</remote-id>
+	</upstream>
 </pkgmetadata>
