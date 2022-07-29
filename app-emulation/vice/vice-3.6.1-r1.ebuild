@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/vice-emu/releases/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="
 	alsa cpuhistory debug doc ethernet ffmpeg flac gif +gtk headless jpeg
 	lame mpg123 ogg openmp oss parport pci png portaudio pulseaudio sdl zlib"
