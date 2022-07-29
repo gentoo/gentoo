@@ -2,6 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Various packages requiring Rust.
+app-crypt/acme
+app-crypt/certbot
+app-crypt/certbot-nginx
 app-eselect/eselect-rust
 app-text/mdbook
 dev-lang/rust
@@ -9,8 +12,14 @@ dev-lang/rust-bin
 >=dev-lang/spidermonkey-78
 >=dev-libs/gjs-1.66
 >=dev-python/cryptography-36
+dev-python/gcs-oauth2-boto-plugin
+dev-python/josepy
+dev-python/libcloud
+dev-python/ndg-httpsclient
+dev-python/python-glanceclient
 >=dev-python/pyopenssl-22
 dev-python/setuptools-rust
+dev-python/trustme
 dev-python/watchfiles
 dev-util/cargo-c
 dev-util/cbindgen
@@ -28,6 +37,7 @@ media-libs/libavif
 media-video/rav1e
 >=net-irc/polari-3.37
 net-libs/quiche
+net-misc/gsutil
 net-news/newsboat
 net-p2p/deluge
 sci-geosciences/gnome-maps
