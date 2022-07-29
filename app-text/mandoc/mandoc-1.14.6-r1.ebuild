@@ -15,7 +15,10 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc 
 IUSE="cgi system-man"
 
 RDEPEND="sys-libs/zlib
-	system-man? ( !sys-apps/man-db )
+	system-man? (
+		app-text/manpager
+		!sys-apps/man-db
+	)
 "
 DEPEND="${RDEPEND}
 	cgi? ( sys-libs/zlib[static-libs] )
