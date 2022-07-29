@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -12,7 +12,6 @@ SRC_URI="https://alioth-archive.debian.org/releases/${PN}/${PN}/${PV}/${P}.tar.g
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="static-libs"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-multilib.patch
@@ -29,13 +28,7 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
-	econf $(use_enable static-libs static)
-}
-
 src_install() {
 	default
-	if ! use static-libs; then
-		find "${D}" -name "*.la" -delete || die
-	fi
+	find "${ED}" -name '*.la' -delete || die
 }
