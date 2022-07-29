@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>sound@gentoo.org</email>
-    <name>Gentoo Sound project</name>
-  </maintainer>
-  <upstream>
-    <remote-id type="sourceforge">modplug-xmms</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Konstanty/libmodplug</remote-id>
+		<remote-id type="sourceforge">modplug-xmms</remote-id>
+	</upstream>
 </pkgmetadata>
