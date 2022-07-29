@@ -9,7 +9,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/sushi"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~ppc64 ~riscv ~sparc ~x86"
 IUSE="office wayland +X"
 REQUIRED_USE="|| ( wayland X )"
 
