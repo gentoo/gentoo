@@ -18,10 +18,7 @@ RDEPEND="
 	dev-perl/Crypt-SmbHash
 	dev-perl/Digest-SHA1
 	dev-perl/Unicode-MapUTF8
-	dev-perl/IO-Socket-SSL
-	net-nds/openldap
-	net-fs/samba"
-DEPEND="${RDEPEND}"
+	dev-perl/IO-Socket-SSL"
 
 src_prepare() {
 	default
