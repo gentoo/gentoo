@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <mattst88@gentoo.org> (2022-07-28)
+# kde-frameworks/plasma not keyworded here
+app-i18n/uim kde
+
 # Matt Turner <mattst88@gentoo.org> (2022-05-16)
 # media-libs/libheif not keyworded here
 media-gfx/gthumb heif
