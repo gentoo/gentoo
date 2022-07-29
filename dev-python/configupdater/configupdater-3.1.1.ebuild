@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT PSF-2 PYTHON"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~riscv ~sparc"
+KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc"
 
 distutils_enable_tests pytest
 
