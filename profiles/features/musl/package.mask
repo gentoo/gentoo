@@ -3,6 +3,10 @@
 
 # David Seifert <soap@gentoo.org> (2022-07-29)
 # Binary package linked against glibc
+media-sound/baudline
+
+# David Seifert <soap@gentoo.org> (2022-07-29)
+# Binary package linked against glibc
 sys-block/megacli
 
 # Marek Szuba <marecki@gentoo.org> (2022-07-28)
