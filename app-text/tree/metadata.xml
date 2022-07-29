@@ -7,6 +7,8 @@
 	</maintainer>
 	<upstream>
 		<changelog>http://mama.indstate.edu/users/ice/tree/changes.html</changelog>
+		<remote-id type="gitlab">OldManProgrammer/unix-tree</remote-id>
+		<remote-id type="github">Old-Man-Programmer/tree</remote-id>
 	</upstream>
 	<longdescription>Tree is a recursive directory listing command that
 produces a depth indented listing of files, which is colorized ala 
