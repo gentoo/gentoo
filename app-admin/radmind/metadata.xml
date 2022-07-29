@@ -5,6 +5,7 @@
 	<longdescription>A suite of Unix command-line tools and a server designed to remotely administer
 the file systems of multiple Unix machines.</longdescription>
 	<upstream>
+		<remote-id type="github">Radmind/radmind</remote-id>
 		<remote-id type="sourceforge">radmind</remote-id>
 	</upstream>
 </pkgmetadata>
