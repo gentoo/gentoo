@@ -1,6 +1,23 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2022-07-29)
+# More packages requiring dev-python/pyopenssl or its revdeps.
+app-admin/salt libcloud openssl test
+dev-python/aiohttp test
+dev-python/autobahn test
+dev-python/cheroot test
+dev-python/cherrypy ssl
+dev-python/eventlet test
+dev-python/google-auth test
+dev-python/os-client-config test
+dev-python/pyftpdlib ssl test
+dev-python/python-novaclient test
+dev-python/requests test
+dev-python/service_identity test
+dev-python/uvloop test
+www-apps/roundup ssl
+
 # Michał Górny <mgorny@gentoo.org> (2022-06-26)
 # dev-python/trustme requires dev-python/cryptography.
 dev-python/anyio test
