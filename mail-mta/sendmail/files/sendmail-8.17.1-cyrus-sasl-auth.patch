@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/859172
+https://bz-attachments.freebsd.org/attachment.cgi?id=233353
+https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=263287
+https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=262935
+--- a/sendmail/sendmail.h
++++ b/sendmail/sendmail.h
+@@ -760,7 +760,7 @@ extern bool	filesys_free __P((long));
+ # define SASL_IS_AUTH	2		/* authenticated */
+ 
+ /* SASL options */
+-# define SASL_AUTH_AUTH	0x1000		/* use auth= only if authenticated */
++# define SASL_AUTH_AUTH	0x10000		/* use auth= only if authenticated */
+ # if SASL >= 20101
+ #  define SASL_SEC_MASK	SASL_SEC_MAXIMUM /* mask for SASL_SEC_* values: sasl.h */
+ # else /* SASL >= 20101 */
+@@ -775,6 +775,9 @@ extern bool	filesys_free __P((long));
+ #  endif /* SASL_SEC_NOPLAINTEXT & SASL_SEC_MASK) == 0 ... */
+ # endif /* SASL >= 20101 */
+ # define MAXOUTLEN 8192	/* length of output buffer, should be 2^n */
++# if (SASL_AUTH_AUTH & SASL_SEC_MASK) != 0
++#  ERROR "change SASL_AUTH_AUTH notify sendmail.org!"
++# endif
+ 
+ /* functions */
+ extern char	*intersect __P((char *, char *, SM_RPOOL_T *));
+
