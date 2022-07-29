@@ -27,6 +27,7 @@ app-cdr/brasero nautilus tracker
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
 # media-libs/libffado is not stable yet, which itself has unstable and
 # unmaintained/broken dependencies. bug #746722
+media-sound/alsa-utils ieee1394
 media-sound/jack2 ieee1394
 
 # Sam James <sam@gentoo.org> (2020-07-30)
