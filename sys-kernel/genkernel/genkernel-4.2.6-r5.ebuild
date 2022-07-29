@@ -91,7 +91,7 @@ else
 	SRC_URI="https://dev.gentoo.org/~whissi/dist/genkernel/${P}.tar.xz
 		${COMMON_URI}"
 	SRC_URI+=" https://gitweb.gentoo.org/proj/genkernel.git/patch/?id=8c9de489290dc470e30f8c7d0aaa3456eb124537 -> ${P}-s390x.patch"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 DESCRIPTION="Gentoo automatic kernel building scripts"
