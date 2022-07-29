@@ -5,4 +5,7 @@
 		<email>matthew@gentoo.org</email>
 		<name>Matthew Smith</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">libimobiledevice/libimobiledevice</remote-id>
+	</upstream>
 </pkgmetadata>
