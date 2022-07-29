@@ -70,5 +70,6 @@ src_test() {
 
 	# Checked out Fedora's test workarounds for inspiration
 	# https://src.fedoraproject.org/rpms/rb_libtorrent/blob/rawhide/f/rb_libtorrent.spec#_120
-	LD_LIBRARY_PATH="${BUILD_DIR}:${LD_LIBRARY_PATH}" cmake_src_test
+	# -j1 for https://bugs.gentoo.org/854603#c1
+	LD_LIBRARY_PATH="${BUILD_DIR}:${LD_LIBRARY_PATH}" cmake_src_test -j1
 }
