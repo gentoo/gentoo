@@ -9,7 +9,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/mobile-broadband/libqrtr-glib.git"
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 	SRC_URI="https://gitlab.freedesktop.org/mobile-broadband/${PN}/-/archive/${PV}/${P}.tar.bz2"
 fi
 
