@@ -417,10 +417,10 @@ src_install() {
 	fi
 
 	# Remove shared info pages
-	rm -f "${ED}"/${DATAPATH}/info/{dir,configure.info,standards.info} || die
+	rm -f "${ED}"/${DATAPATH}/info/{dir,configure.info,standards.info}
 
 	# Trim all empty dirs
-	find "${ED}" -depth -type d -exec rmdir {} + 2>/dev/null || die
+	find "${ED}" -depth -type d -exec rmdir {} + 2>/dev/null
 }
 
 pkg_postinst() {
