@@ -33,7 +33,7 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=( compiler-rt cmake )
-LLVM_PATCHSET=${PV}
+LLVM_PATCHSET=${PV}-r2
 llvm.org_set_globals
 
 python_check_deps() {
