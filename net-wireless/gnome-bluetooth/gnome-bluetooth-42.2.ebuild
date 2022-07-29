@@ -12,7 +12,7 @@ LICENSE="GPL-2+ LGPL-2.1+ FDL-1.1+"
 SLOT="3/13" # subslot = libgnome-bluetooth-3 soname version
 IUSE="gtk-doc +introspection sendto test"
 RESTRICT="!test? ( test )"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~ppc ~ppc64 ~riscv ~x86"
 
 DEPEND="
 	>=dev-libs/glib-2.44:2
