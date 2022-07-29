@@ -62,6 +62,8 @@ src_prepare() {
 }
 
 src_configure() {
+	MAKEOPTS+=" VERBOSE=1"
+
 	# ICU tries to append -std=c++11 without this, so as of 71.1,
 	# despite GCC 9+ using c++14 (or gnu++14) and GCC 11+ using gnu++17,
 	# we still need this.
@@ -136,7 +138,7 @@ multilib_src_test() {
 	# CINTLTST_OPTS: cintltst options
 	#   -e: Exhaustive testing
 	#   -v: Increased verbosity
-	emake -j1 VERBOSE="1" check
+	emake -j1 check
 }
 
 multilib_src_install() {
