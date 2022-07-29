@@ -34,12 +34,12 @@ BDEPEND="
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		dev-python/pytest-xprocess[${PYTHON_USEDEP}]
 		dev-python/watchdog[${PYTHON_USEDEP}]
-		!alpha? ( !hppa? ( !ia64? (
+		!alpha? ( !arm? ( !hppa? ( !ia64? ( !s390? (
 			$(python_gen_cond_dep '
 				dev-python/cryptography[${PYTHON_USEDEP}]
 			' python3_{8..11} pypy3 # TODO: add py3.11 when ported
 			)
-		) ) )
+		) ) ) ) )
 		!hppa? ( !ia64? ( !loong? (
 			$(python_gen_cond_dep '
 				dev-python/greenlet[${PYTHON_USEDEP}]
