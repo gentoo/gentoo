@@ -54,7 +54,7 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=( openmp llvm/include )
-LLVM_PATCHSET=${PV}-r1
+LLVM_PATCHSET=${PV}-r2
 llvm.org_set_globals
 
 python_check_deps() {
