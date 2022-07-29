@@ -18,7 +18,7 @@ fi
 DESCRIPTION="irc to IM gateway that support multiple IM protocols"
 HOMEPAGE="https://www.bitlbee.org/"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2 BSD-2"
 SLOT="0"
 IUSE_PROTOCOLS="msn oscar purple twitter +xmpp"
 IUSE="debug +gnutls ipv6 libevent nss otr +plugins selinux test xinetd
@@ -65,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-libcheck.patch
 	"${FILESDIR}"/${PN}-3.5-libevent.patch
 	"${FILESDIR}"/${P}-disabled-plugins-use.patch
+	"${FILESDIR}"/${P}-strict-aliasing.patch
 )
 
 src_configure() {
