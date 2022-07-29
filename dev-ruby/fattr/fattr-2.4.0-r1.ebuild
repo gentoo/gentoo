@@ -14,7 +14,7 @@ inherit ruby-fakegem
 DESCRIPTION="fattr.rb is a \"fatter attr\" for ruby"
 HOMEPAGE="https://github.com/ahoward/fattr"
 
-LICENSE="Ruby"
+LICENSE="Ruby-BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
