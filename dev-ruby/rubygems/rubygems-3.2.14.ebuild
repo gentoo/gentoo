@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ inherit ruby-ng prefix
 
 DESCRIPTION="Centralized Ruby extension management system"
 HOMEPAGE="https://rubygems.org/"
-LICENSE="GPL-2 || ( Ruby MIT )"
+LICENSE="|| ( Ruby MIT )"
 
 SRC_URI="https://rubygems.org/rubygems/${P}.tgz"
 
