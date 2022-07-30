@@ -1,0 +1,30 @@
+From: hololeap <hololeap@protonmail.com>
+Signed-off-by: hololeap <hololeap@protonmail.com>
+
+Fixes a weird bug observed in a sandbox with ghc-8.10.6. This may not be
+necessary on other systems.
+
+diff -urN mustache-2.4.0/src/Text/Mustache/Parser.hs mustache-2.4.0-r1/src/Text/Mustache/Parser.hs
+--- mustache-2.4.0/src/Text/Mustache/Parser.hs	2021-11-23 07:31:36.000000000 -0700
++++ mustache-2.4.0-r1/src/Text/Mustache/Parser.hs	2022-02-22 18:30:48.436611631 -0700
+@@ -37,9 +37,10 @@
+ 
+ import           Control.Monad
+ import           Data.Char           (isAlphaNum, isSpace)
++import           Data.Functor.Identity
+ import           Data.List           (nub)
+ import           Data.Monoid         ((<>))
+-import           Data.Text           as T (Text, null, pack)
++import           Data.Text           as T (Text, null, pack, uncons)
+ import           Prelude             as Prel
+ import           Text.Mustache.Types
+ import           Text.Parsec         as P hiding (endOfLine, parse)
+@@ -66,6 +67,8 @@
+   | Tag (Node Text)
+   | HandledTag
+ 
++instance {-# OVERLAPPING #-} Stream Text Identity Char where
++    uncons = return . T.uncons
+ 
+ -- | @#@
+ sectionBegin :: Char
