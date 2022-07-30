@@ -13,7 +13,7 @@ inherit ruby-fakegem
 DESCRIPTION="A ruby library for creating NFS safe lockfiles"
 HOMEPAGE="https://github.com/ahoward/lockfile"
 
-LICENSE="Ruby"
+LICENSE="Ruby-BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
