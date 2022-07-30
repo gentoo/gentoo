@@ -23,7 +23,7 @@ HOMEPAGE="https://cairographics.org/rcairo/"
 IUSE=""
 
 SLOT="0"
-LICENSE="|| ( Ruby GPL-2 )"
+LICENSE="|| ( Ruby-BSD GPL-2 )"
 KEYWORDS="~amd64 ~ppc ~riscv ~x86"
 
 RDEPEND="${RDEPEND}
