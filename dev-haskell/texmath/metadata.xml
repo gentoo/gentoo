@@ -9,4 +9,7 @@
 		<flag name="executable">Compile test executable.</flag>
 		<flag name="server">Compile webserver.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">jgm/texmath</remote-id>
+	</upstream>
 </pkgmetadata>
