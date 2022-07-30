@@ -14,7 +14,7 @@ HOMEPAGE="https://invent.kde.org/plasma/plasma-thunderbolt"
 
 LICENSE="|| ( GPL-2 GPL-3+ )"
 SLOT="5"
-KEYWORDS="amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE=""
 
 # tests require DBus
