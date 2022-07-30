@@ -32,50 +32,51 @@ src_prepare() {
 	sed -i -e "/^SUBDIRS/s/=.*/= ${L10N//-/_}/" po/Makefile.{am,in} || die
 
 	# some packages have their own translations
-	local noinst_manpages=(
+	local f noinst_manpages=(
 		# app-arch/xz-utils
-		de/xz.1
-		de/xzdec.1
-		de/xzdiff.1
-		de/xzgrep.1
-		de/xzless.1
-		de/xzmore.1
+		xz.1
+		xzdec.1
+		xzdiff.1
+		xzgrep.1
+		xzless.1
+		xzmore.1
 		# sys-apps/shadow
-		{cs,de,es,hu,nl,pl}/groups.1
-		de/su.1
+		groups.1
+		su.1
 		# sys-apps/sysvinit
-		de/last.1
-		de/mesg.1
-		de/mountpoint.1
-		de/utmpdump.1
-		de/wall.1
-		fr/bootlogd.8
-		de/halt.8
-		{fr,pl}/killall5.8
-		de/runlevel.8
-		de/sulogin.8
+		last.1
+		mesg.1
+		mountpoint.1
+		utmpdump.1
+		wall.1
+		bootlogd.8
+		halt.8
+		killall5.8
+		runlevel.8
+		sulogin.8
 		# sys-process/procps
-		{de,fr,pl}/free.1
-		{de,fr}/pgrep.1
-		{de,fr}/pmap.1
-		{de,fr,pl}/ps.1
-		{de,fr}/pwdx.1
-		{de,fr}/tload.1
-		{de,fr,pl}/uptime.1
-		{de,fr}/sysctl.conf.5
-		{de,fr}/sysctl.8
-		{de,fr}/vmstat.8
+		free.1
+		pgrep.1
+		pmap.1
+		ps.1
+		pwdx.1
+		tload.1
+		uptime.1
+		sysctl.conf.5
+		sysctl.8
+		vmstat.8
 		# sys-process/psmisc
-		{de,nl,pl}/fuser.1
-		{de,pl}/killall.1
-		de/peekfd.1
-		de/prtstat.1
-		de/pslog.1
-		{de,pl}/pstree.1
+		fuser.1
+		killall.1
+		peekfd.1
+		prtstat.1
+		pslog.1
+		pstree.1
 	)
-	printf '%s\n' "${noinst_manpages[@]}" \
-		| sed 's%^\(.*\)/\(.*\)\.\(.*\)$%po/\1/man\3/\2.\3.po%' | xargs rm
-	assert
+
+	for f in "${noinst_manpages[@]}"; do
+		rm po/*/"man${f##*.}/${f}.po" || die
+	done
 }
 
 src_configure() {
