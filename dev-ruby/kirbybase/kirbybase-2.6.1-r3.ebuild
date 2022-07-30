@@ -14,7 +14,7 @@ inherit ruby-fakegem
 DESCRIPTION="A simple Ruby DBMS that stores data in plaintext files"
 HOMEPAGE="http://www.netpromi.com/kirbybase_ruby.html"
 
-LICENSE="Ruby"
+LICENSE="Ruby-BSD"
 SLOT="0"
 KEYWORDS="amd64 ~ppc64 x86"
 IUSE=""
