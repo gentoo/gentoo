@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools xdg
 
 DESCRIPTION="Audio Tag Tool Ogg/Mp3 Tagger"
 HOMEPAGE="https://sourceforge.net/projects/tagtool/"
