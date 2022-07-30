@@ -1882,12 +1882,39 @@ toolchain_src_test() {
 	# 'asan' wants to be preloaded first, so does 'sandbox'.
 	# To make asan tests work disable sandbox for all of test suite.
 	# 'backtrace' tests also does not like 'libsandbox.so' presence.
-	SANDBOX_ON=0 LD_PRELOAD= emake -k check
+	#
+	# Nonfatal here as we die if compare_tests failed
+	SANDBOX_ON=0 LD_PRELOAD= nonfatal emake -k check
+	local success_tests=$?
 
-	einfo "Testing complete."
+	if [[ ! -d "${BROOT}"/var/cache/gcc/${SLOT} ]] && ! [[ ${success_tests} -eq 0 ]] ; then
+		# We have no reference data saved from a previous run to know if
+		# the failures are tolerable or not, so we bail out.
+		eerror "Reference test data does NOT exist at ${BROOT}/var/cache/gcc/${SLOT}"
+		eerror "Tests failed and nothing to compare with, so this is a fatal error."
+		eerror "(Set GCC_TESTS_IGNORE_NO_BASELINE=1 to make this non-fatal for initial run.)"
+
+		if [[ -z ${GCC_TESTS_IGNORE_NO_BASELINE} ]] ; then
+			die "Tests failed (failures occurred with no reference data)"
+		fi
+	fi
+
+	einfo "Testing complete! Review the following output to check for success or failure."
 	einfo "Please ignore any 'mail' lines in the summary output below (no mail is sent)."
 	einfo "Summary:"
 	"${S}"/contrib/test_summary
+
+	# If previous results exist on the system, compare with it
+	# TODO: Distribute some baseline results in e.g. gcc-patches.git?
+	if [[ -d "${BROOT}"/var/cache/gcc/${SLOT} ]] ; then
+		einfo "Comparing with previous cached results at ${BROOT}/var/cache/gcc/${SLOT}"
+
+		# Exit with the following values:
+                # 0 if there is nothing of interest
+                # 1 if there are errors when comparing single test case files
+                # N for the number of errors found when comparing directories
+		"${S}"/contrib/compare_tests "${BROOT}"/var/cache/gcc/${SLOT}/ . || die "Comparison for tests results failed, error code: $?"
+	fi
 }
 
 #---->> src_install <<----
@@ -2122,6 +2149,19 @@ toolchain_src_install() {
 	if is_gcj ; then
 		pax-mark -m "${ED}/libexec/gcc/${CTARGET}/${GCC_CONFIG_VER}/ecj1"
 		pax-mark -m "${ED}/${CTARGET}/gcc-bin/${GCC_CONFIG_VER}/gij"
+	fi
+
+	if use test ; then
+		# TODO: In future, install orphaned to allow comparison across
+		# more versions even after unmerged? Also would be useful for
+		# historical records and tracking down regressions a while
+		# after they first appeared, but were only just reported.
+		einfo "Copying test results to ${EPREFIX}/var/cache/gcc/${SLOT} for future comparison"
+		(
+			dodir /var/cache/gcc/${SLOT}
+			cd "${WORKDIR}"/build || die
+			find . -name \*.sum -exec cp --parents -v {} "${ED}"/var/cache/gcc/${SLOT} \;
+		)
 	fi
 }
 
