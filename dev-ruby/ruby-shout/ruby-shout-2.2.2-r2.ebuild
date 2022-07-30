@@ -16,7 +16,7 @@ inherit ruby-fakegem
 DESCRIPTION="A Ruby interface to libshout2"
 HOMEPAGE="https://github.com/niko/ruby-shout"
 
-LICENSE="Ruby"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
 IUSE=""
