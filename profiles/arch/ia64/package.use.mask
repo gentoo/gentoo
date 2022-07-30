@@ -213,10 +213,6 @@ app-admin/syslog-ng test
 # app-emulation/xen-tools is not keyworded on ia64.
 sys-boot/grub grub_platforms_xen grub_platforms_xen-32 grub_platforms_xen-pvh
 
-# Thomas Deutschmann <whissi@gentoo.org> (2019-11-11)
-# dev-util/google-perftools is not keyworded yet
-sys-block/fio tcmalloc
-
 # Mart Raudsepp <leio@gentoo.org> (2019-08-18)
 # media-video/pipewire is not keyworded yet
 x11-wm/mutter screencast
@@ -462,12 +458,6 @@ gnome-extra/sushi office
 # Agostino Sarubbo <ago@gentoo.org> (2012-12-18)
 # kde is not stable, then no needs phonon backends
 media-libs/phonon gstreamer vlc
-
-# Robin H Johnson <robbat2@gentoo.org> (2012-11-01)
-# MySQL 5.5 wants systemtap, tcmalloc & jemalloc
->=dev-db/mysql-5.5 tcmalloc
->=dev-db/mariadb-5.5 tcmalloc
->=dev-db/percona-server-5.5 tcmalloc
 
 # Raúl Porcel <armin76@gentoo.org> (2012-05-28)
 # Needs x11-misc/lightdm(which also requires some other deps)
