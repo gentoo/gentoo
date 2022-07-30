@@ -70,6 +70,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.9999-meson-options-lapack.patch
 )
 
+EPYTEST_DESELECT=(
+	linalg/tests/test_decomp.py::TestSchur::test_sort
+	linalg/tests/test_solvers.py::test_solve_discrete_are
+)
+
 distutils_enable_tests pytest
 
 python_test() {
