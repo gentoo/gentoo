@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,7 +27,7 @@ IUSE="midi songs tools webcam"
 RDEPEND="
 	dev-cpp/glibmm:2
 	dev-cpp/libxmlpp:2.6
-	dev-libs/boost[threads(+)]
+	dev-libs/boost:=
 	dev-libs/glib:2
 	dev-libs/libxml2:2
 	gnome-base/librsvg:2
