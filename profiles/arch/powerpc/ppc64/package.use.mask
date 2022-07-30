@@ -5,10 +5,6 @@
 # dev-python/pyside2 is not keyworded
 www-client/falkon python
 
-# Matthew Smith <matthew@gentoo.org> (2022-07-10)
-# Needs unkeyworded app-doc/halibut
->=net-misc/putty-0.77 doc
-
 # Jimi Huotari <chiitoo@gentoo.org> (2022-05-08)
 # Not keyworded here yet.
 lxqt-base/lxqt-meta desktop-portal
