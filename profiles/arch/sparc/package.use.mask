@@ -5,10 +5,6 @@
 # sys-devel/lld is not keyworded on sparc
 >=dev-lang/spidermonkey-78 lto
 
-# Matthew Smith <matthew@gentoo.org> (2022-07-10)
-# Needs unkeyworded app-doc/halibut
->=net-misc/putty-0.77 doc
-
 # Matt Turner <mattst88@gentoo.org> (2022-06-25)
 # net-libs/libqrtr-glib not keyworded
 net-misc/modemmanager qrtr
