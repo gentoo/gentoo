@@ -5,25 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		The texmathml library provides functions to convert LaTeX
-		math formulas to presentation MathML. It supports
-		basic LaTeX and AMS extensions, and it can parse and
-		apply LaTeX macros.
-		
-		Use the @test@ flag to install a standalone executable,
-		@texmath@, that reads a LaTeX formula from @stdin@ and
-		writes MathML to @stdout@.
-		
-		Use the @cgi@ flag to install a cgi script,
-		@texmath-cgi@.
-	</longdescription>
 	<use>
 		<flag name="executable">Compile test executable.</flag>
-		<flag name="network-uri">Get Network.URI from the network-uri package.</flag>
 		<flag name="server">Compile webserver.</flag>
 	</use>
-	<upstream>
-		<remote-id type="github">jgm/texmath</remote-id>
-	</upstream>
 </pkgmetadata>
