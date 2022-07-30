@@ -17,7 +17,7 @@ inherit ruby-fakegem
 DESCRIPTION="Treetop is a language for describing languages"
 HOMEPAGE="https://github.com/cjheath/treetop"
 SRC_URI="https://github.com/cjheath/treetop/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-LICENSE="Ruby"
+LICENSE="MIT"
 
 KEYWORDS="~amd64 ~arm ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 SLOT="0"
