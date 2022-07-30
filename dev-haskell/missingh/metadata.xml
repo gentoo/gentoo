@@ -10,4 +10,7 @@
 		Haskell programmers.  It is written in pure Haskell and thus should
 		be extremely portable and easy to use.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">jgoerzen/missingh</remote-id>
+	</upstream>
 </pkgmetadata>
