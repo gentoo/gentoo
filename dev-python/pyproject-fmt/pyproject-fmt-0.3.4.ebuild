@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~m68k ~ppc ~ppc64 ~riscv ~sparc"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~m68k ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND="
 	>=dev-python/packaging-21.3[${PYTHON_USEDEP}]
