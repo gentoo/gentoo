@@ -6,7 +6,7 @@ EAPI=8
 inherit desktop xdg
 
 DESCRIPTION="XTide provides tide and current predictions in a wide variety of formats"
-HOMEPAGE="http://www.flaterco.com/xtide/"
+HOMEPAGE="https://flaterco.com/xtide/"
 SRC_URI="ftp://ftp.flaterco.com/xtide/${P}.tar.bz2"
 
 LICENSE="GPL-3"
