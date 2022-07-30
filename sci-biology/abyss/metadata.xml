@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>sci-biology@gentoo.org</email>
-    <name>Gentoo Biology Project</name>
-  </maintainer>
-  <use>
-    <flag name="misc-haskell">build abyss-samtobreak tool, pull in haskell toolchain</flag>
-  </use>
-  <upstream>
-    <remote-id type="github">bcgsc/abyss</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>sci-biology@gentoo.org</email>
+		<name>Gentoo Biology Project</name>
+	</maintainer>
+	<use>
+		<flag name="misc-haskell">build abyss-samtobreak tool, pull in haskell toolchain</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">bcgsc/abyss</remote-id>
+	</upstream>
 </pkgmetadata>
