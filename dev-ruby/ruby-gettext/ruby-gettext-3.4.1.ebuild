@@ -23,7 +23,7 @@ HOMEPAGE="https://ruby-gettext.github.io/"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="doc test"
 SLOT="0"
-LICENSE="|| ( Ruby LGPL-3+ )"
+LICENSE="|| ( GPL-2 Ruby-BSD LGPL-3+ )"
 
 ruby_add_rdepend ">=dev-ruby/locale-2.0.5 >=dev-ruby/text-1.3.0"
 
