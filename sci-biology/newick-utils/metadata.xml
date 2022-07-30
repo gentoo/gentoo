@@ -8,4 +8,7 @@
 	<use>
 		<flag name="xml">Uses <pkg>dev-libs/libxml2</pkg> to handle ornaments</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">tjunier/newick_utils</remote-id>
+	</upstream>
 </pkgmetadata>
