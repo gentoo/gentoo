@@ -10,7 +10,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
 
 src_install() {
 	insinto /usr/share/icons
@@ -22,6 +22,27 @@ src_install() {
 	for cursorset in ../../icons/*; do
 		dosym ${cursorset} /usr/share/cursors/xorg-x11/${cursorset##*/}
 	done
+}
+
+pkg_preinst() {
+	# Needed until bug #834600 is solved
+	if [[ -n ${REPLACING_VERSIONS} ]] ; then
+		GENTOOCURSORS="${EROOT}/usr/share/cursors/xorg-x11"
+		if [[ -d "${GENTOOCURSORS}/gentoo" ]] ; then
+			rm -r "${GENTOOCURSORS}/gentoo" || die
+		fi
+		if [[ -d "${GENTOOCURSORS}/gentoo-blue" ]] ; then
+			rm -r "${GENTOOCURSORS}/gentoo-blue" || die
+		fi
+		if [[ -d "${GENTOOCURSORS}/gentoo-silver" ]] ; then
+			rm -r "${GENTOOCURSORS}/gentoo-silver" || die
+		fi
+
+		if [[ -L "${GENTOOCURSORS}"/gentoo.backup.0000 ]]; then
+			einfo "There are symlinks left from a previous failed upgrade."
+			einfo "Remove ${GENTOOCURSORS}/gentoo*.backup.* manually to get rid of them."
+		fi
+	fi
 }
 
 pkg_postinst() {
