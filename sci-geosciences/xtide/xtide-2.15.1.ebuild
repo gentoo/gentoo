@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit desktop gnome2-utils
 
 DESCRIPTION="XTide provides tide and current predictions in a wide variety of formats"
-HOMEPAGE="http://www.flaterco.com/xtide/"
+HOMEPAGE="https://flaterco.com/xtide/"
 SRC_URI="ftp://ftp.flaterco.com/xtide/${P}.tar.bz2"
 
 LICENSE="GPL-3"
