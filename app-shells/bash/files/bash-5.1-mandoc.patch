@@ -1,0 +1,33 @@
+Upstream-Pr: https://savannah.gnu.org/patch/?9592
+Author: orbea <orbea@riseup.net>
+Date:   Mon Mar 12 19:59:25 2018 -0700
+
+    doc: Fix referenced man page paths.
+
+    With mandoc opening these man pages will print the following error:
+
+    man: bash.1: ERROR: No such file or directory
+
+    The issue is that .so requires the prefix path such as man1 while some
+    man implementations seemingly ignore this.
+
+--- doc/builtins.1.orig
++++ doc/builtins.1
+@@ -19,6 +19,6 @@ shift, shopt, source, suspend, test, times, trap, true, type, typeset,
+ ulimit, umask, unalias, unset, wait \- bash built-in commands, see \fBbash\fR(1)
+ .SH BASH BUILTIN COMMANDS
+ .nr zZ 1
+-.so bash.1
++.so man1/bash.1
+ .SH SEE ALSO
+ bash(1), sh(1)
+--- doc/rbash.1.orig
++++ doc/rbash.1
+@@ -3,6 +3,6 @@
+ rbash \- restricted bash, see \fBbash\fR(1)
+ .SH RESTRICTED SHELL
+ .nr zY 1
+-.so bash.1
++.so man1/bash.1
+ .SH SEE ALSO
+ bash(1)

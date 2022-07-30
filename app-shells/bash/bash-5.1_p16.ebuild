@@ -79,6 +79,9 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	# Patches from Chet sent to bashbug ml
 	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-5.0-syslog-history-extern.patch
+
+	# Fix for the bash_builtins man pages when using mandoc
+	"${FILESDIR}"/${PN}-5.1-mandoc.patch
 )
 
 pkg_setup() {
