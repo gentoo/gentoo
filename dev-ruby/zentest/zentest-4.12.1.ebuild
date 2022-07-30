@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Testing tools: zentest, unit_diff, autotest, multiruby, and Test::Rails"
 HOMEPAGE="https://github.com/seattlerb/zentest"
-LICENSE="Ruby"
+LICENSE="MIT"
 
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 SLOT="0"
