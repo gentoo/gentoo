@@ -14,7 +14,7 @@ inherit ruby-fakegem
 DESCRIPTION="Universal capture of STDOUT and STDERR and handling of child process PID"
 HOMEPAGE="http://codeforpeople.com/lib/ruby/systemu/"
 
-LICENSE="Ruby"
+LICENSE="Ruby-BSD"
 SLOT="0"
 KEYWORDS="amd64 ~riscv x86"
 IUSE=""
