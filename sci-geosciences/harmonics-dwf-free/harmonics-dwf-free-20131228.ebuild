@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 MY_P="${P/-free-/-}"
 DESCRIPTION="Tidal harmonics database for libtcd"
-HOMEPAGE="http://www.flaterco.com/xtide/"
+HOMEPAGE="https://flaterco.com/xtide/"
 SRC_URI="ftp://ftp.flaterco.com/xtide/${MY_P}-free.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 
