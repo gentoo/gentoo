@@ -12,4 +12,7 @@
 		build a realistic Point Spread Function, generate a list of stars and
 		galaxies. Galaxies are modeled analytically.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">astromatic/skymaker</remote-id>
+	</upstream>
 </pkgmetadata>
