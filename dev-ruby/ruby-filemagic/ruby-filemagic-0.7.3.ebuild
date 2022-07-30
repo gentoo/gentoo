@@ -17,7 +17,7 @@ inherit ruby-fakegem
 DESCRIPTION="Ruby binding to libmagic"
 HOMEPAGE="https://github.com/blackwinter/ruby-filemagic"
 
-LICENSE="Ruby"
+LICENSE="Ruby-BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 IUSE=""
