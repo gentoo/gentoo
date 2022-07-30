@@ -4,10 +4,6 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
-# Matthew Smith <matthew@gentoo.org> (2022-07-10)
-# Needs unkeyworded app-doc/halibut
->=net-misc/putty-0.77 doc
-
 # Sergey Torokhov <torokhov-s-a@yandex.ru> (2022-06-22)
 # media-libs/libjxl is not keyworded
 # bug https://bugs.gentoo.org/853628
