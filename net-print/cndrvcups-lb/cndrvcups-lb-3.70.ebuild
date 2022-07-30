@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ MY_PV="$(ver_rs 1- '')"
 SOURCES_NAME="linux-UFRII-drv-v${MY_PV}-uken"
 
 DESCRIPTION="Canon UFR II / LIPSLX Printer Driver for Linux"
-HOMEPAGE="https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i.aspx"
+HOMEPAGE="https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i.html"
 SRC_URI="http://gdlp01.c-wss.com/gds/8/0100007658/08/${SOURCES_NAME}-05.tar.gz"
 S="${WORKDIR}/${SOURCES_NAME}/Sources/${P}"
 
