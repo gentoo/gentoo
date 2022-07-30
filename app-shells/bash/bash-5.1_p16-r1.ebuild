@@ -3,16 +3,12 @@
 
 EAPI=7
 
-# TODO on release:
-# - check READLINE_VER, obviously
-# (presumably there weren't always readline releases for bash RCs etc)
-
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/chetramey.asc
 inherit flag-o-matic toolchain-funcs prefix verify-sig
 
 # Uncomment if we have a patchset
-#GENTOO_PATCH_DEV="sam"
-#GENTOO_PATCH_VER="${PV}"
+GENTOO_PATCH_DEV="sam"
+GENTOO_PATCH_VER="${PV}"
 
 # Official patchlevel
 # See ftp://ftp.cwru.edu/pub/bash/bash-5.1-patches/
@@ -22,8 +18,8 @@ MY_PV="${MY_PV/_/-}"
 MY_P="${PN}-${MY_PV}"
 is_release() {
 	case ${PV} in
-		9999|*_alpha*|*_beta*|*_rc*) return 1 ;;
-		*) return 0 ;;
+	*_alpha*|*_beta*|*_rc*) return 1 ;;
+	*) return 0 ;;
 	esac
 }
 [[ ${PV} != *_p* ]] && PLEVEL=0
@@ -38,64 +34,51 @@ patches() {
 		local u
 		for u in mirror://gnu/${pn} ftp://ftp.cwru.edu/pub/bash ; do
 			printf "${u}/${pn}-${pv}-patches/%s " "$@"
-			printf "${u}/${pn}-${pv}-patches/%s.asc " "$@"
+			printf "${u}/${pn}-${pv}-patches/%s.sig " "$@"
 		done
 	fi
 }
 
 # The version of readline this bash normally ships with.
-# Note: right now, we don't use the system copy of readline for bash for non-releases.
-READLINE_VER="8.2"
+READLINE_VER="8.1"
 
 DESCRIPTION="The standard GNU Bourne again shell"
-HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html https://git.savannah.gnu.org/cgit/bash.git"
-if [[ ${PV} == 9999 ]] ; then
-	EGIT_REPO_URI="https://git.savannah.gnu.org/git/bash.git"
-	EGIT_BRANCH=devel
-	inherit git-r3
-elif is_release ; then
+HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html"
+if is_release ; then
 	SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
 	SRC_URI+=" verify-sig? ( mirror://gnu/bash/${MY_P}.tar.gz.sig )"
 else
-	SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
-	SRC_URI+=" verify-sig? ( mirror://gnu/${PN}/${MY_P}.tar.gz.sig ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz.sig )"
+	SRC_URI="ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
+	SRC_URI+=" verify-sig? ( ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz.sig )"
 fi
 
 if [[ -n ${GENTOO_PATCH_VER} ]] ; then
 	SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${GENTOO_PATCH_VER}-patches.tar.xz"
 fi
 
-LICENSE="GPL-3+"
+LICENSE="GPL-3"
 SLOT="0"
-if is_release ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-fi
+[[ "${PV}" == *_rc* ]] || \
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="afs bashlogger examples mem-scramble +net nls plugins +readline"
 
 DEPEND="
 	>=sys-libs/ncurses-5.2-r2:0=
 	nls? ( virtual/libintl )
+	readline? ( >=sys-libs/readline-${READLINE_VER}:0= )
 "
-if is_release ; then
-	DEPEND+=" readline? ( >=sys-libs/readline-${READLINE_VER}:= )"
-fi
 RDEPEND="
 	${DEPEND}
 "
 # We only need yacc when the .y files get patched (bash42-005, bash51-011)
-#BDEPEND="virtual/yacc"
-BDEPEND="verify-sig? ( sec-keys/openpgp-keys-chetramey )"
+BDEPEND="virtual/yacc
+	verify-sig? ( sec-keys/openpgp-keys-chetramey )"
 
 S="${WORKDIR}/${MY_P}"
 
-# EAPI 8 tries to append it but it doesn't exist here
-QA_CONFIGURE_OPTIONS="--disable-static"
-
 PATCHES=(
-	#"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}/
-
 	# Patches from Chet sent to bashbug ml
-	"${FILESDIR}"/${PN}-5.0-syslog-history-extern.patch
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-5.0-syslog-history-extern.patch
 )
 
 pkg_setup() {
@@ -227,13 +210,6 @@ src_compile() {
 	fi
 }
 
-src_test() {
-	# Used in test suite.
-	unset A
-
-	default
-}
-
 src_install() {
 	local d f
 
@@ -294,7 +270,11 @@ src_install() {
 		done
 	fi
 
-	doman doc/*.1
+	# Install bash_builtins.1 and rbash.1
+	emake -C doc DESTDIR="${D}" install_builtins
+	sed 's:bash\.1:man1/&:' doc/rbash.1 > "${T}"/rbash.1 || die
+	doman "${T}"/rbash.1
+
 	newdoc CWRU/changelog ChangeLog
 	dosym bash.info /usr/share/info/bashref.info
 }
