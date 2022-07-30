@@ -5,10 +5,6 @@
 # dev-java/assertj-core:3 not keyworded
 >=dev-java/randomized-runner-2.8.0 test
 
-# Matthew Smith <matthew@gentoo.org> (2022-07-10)
-# Needs unkeyworded app-doc/halibut
->=net-misc/putty-0.77 doc
-
 # Sam James <sam@gentoo.org> (2022-07-08)
 # Unmask galera for dev-db/mariadb
 >=dev-db/mariadb-10.1.0 -galera
