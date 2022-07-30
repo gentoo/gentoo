@@ -20,7 +20,7 @@ RDEPEND="sys-apps/grep[pcre]"
 DEPEND="
 	dev-util/vulkan-headers
 	media-libs/libglvnd
-	x11-base/xorg-proto"
+	x11-libs/libX11"
 
 QA_SONAME="usr/lib.*/libstrangle.*" # intended for dlopen()
 
