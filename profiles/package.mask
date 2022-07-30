@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Marc Schiffbauer <mschiff@gentoo.org> (2022-07-30)
+# No update since 2016, compilation and build system
+# errors
+# Bugs #637150, #686078, #733066, #733068, #828986, #854744
+# removal in 30 days (2022-08-29)
+app-misc/zygrib
+
 # David Seifert <soap@gentoo.org> (2022-07-28)
 # Unmaintained, EOL upstream, QA and build issues, EAPI 6.
 # Bug #682346, #844592, removal on 2022-08-27.
