@@ -15,7 +15,7 @@ S="${WORKDIR}/MediaInfo"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="curl mms wxwidgets"
 
 RDEPEND="~media-libs/libmediainfo-${PV}[curl=,mms=]
