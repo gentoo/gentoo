@@ -12,4 +12,7 @@
 		based on UAE (the Universal Amiga Emulator). It was deeply
 		reworked and improved thus it's very different now.
 	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">gtktiemu</remote-id>
+	</upstream>
 </pkgmetadata>
