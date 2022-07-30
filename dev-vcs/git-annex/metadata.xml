@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>haskell@gentoo.org</email>
@@ -9,34 +9,10 @@
 		<flag name="assistant">Enable git-annex assistant and watch command</flag>
 		<flag name="benchmark">Enable benchmarking</flag>
 		<flag name="dbus">Enable dbus support</flag>
-		<flag name="debuglocks">Debug location of MVar/STM deadlocks</flag>
 		<flag name="gitlfs">Build with git-lfs library (rather than vendored copy)</flag>
-		<flag name="httpclientrestricted">Build with http-client-restricted library (rather than vendored copy)</flag>
 		<flag name="magicmime">Use libmagic to determine file MIME types</flag>
-		<flag name="networkbsd">Build with network-3.0 which split out network-bsd</flag>
 		<flag name="pairing">Enable pairing</flag>
-		<flag name="s3">Enable S3 support</flag>
 		<flag name="torrentparser">Use haskell torrent library to parse torrent files</flag>
 		<flag name="webapp">Enable git-annex webapp</flag>
-		<flag name="webdav">Enable WebDAV support</flag>
 	</use>
-	<longdescription>
-		git-annex allows managing files with git, without checking the file
-		contents into git. While that may seem paradoxical, it is useful when
-		dealing with files larger than git can currently easily handle, whether due
-		to limitations in memory, time, or disk space.
-		
-		It can store large files in many places, from local hard drives, to a
-		large number of cloud storage services, including S3, WebDAV,
-		and rsync, with a dozen cloud storage providers usable via plugins.
-		Files can be stored encrypted with gpg, so that the cloud storage
-		provider cannot see your data. git-annex keeps track of where each file
-		is stored, so it knows how many copies are available, and has many
-		facilities to ensure your data is preserved.
-		
-		git-annex can also be used to keep a folder in sync between computers,
-		noticing when files are changed, and automatically committing them
-		to git and transferring them to other computers. The git-annex webapp
-		makes it easy to set up and use git-annex this way.
-	</longdescription>
 </pkgmetadata>

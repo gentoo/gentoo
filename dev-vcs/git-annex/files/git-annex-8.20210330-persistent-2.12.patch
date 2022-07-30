@@ -1,0 +1,28 @@
+--- a/Database/Handle.hs
++++ b/Database/Handle.hs
+@@ -26,7 +26,7 @@ import qualified Database.Sqlite as Sqlite
+ import Control.Monad
+ import Control.Monad.IO.Class (liftIO)
+ import Control.Monad.IO.Unlift (MonadUnliftIO, withRunInIO)
+-import Control.Monad.Logger (MonadLogger)
++import Control.Monad.Logger (MonadLogger, askLoggerIO, MonadLoggerIO)
+ import Control.Concurrent
+ import Control.Concurrent.Async
+ import Control.Exception (throwIO, BlockedIndefinitelyOnMVar(..))
+@@ -246,6 +246,7 @@ runSqliteRobustly tablename db a = do
+ withSqlConnRobustly
+ 	:: (MonadUnliftIO m
+ 		, MonadLogger m
++		, MonadLoggerIO m
+ 		, IsPersistBackend backend
+ 		, BaseBackend backend ~ SqlBackend
+ 		, BackendCompatible SqlBackend backend
+@@ -254,7 +255,7 @@ withSqlConnRobustly
+ 	-> (backend -> m a)
+ 	-> m a
+ withSqlConnRobustly open f = do
+-	logFunc <- askLogFunc
++	logFunc <- askLoggerIO
+ 	withRunInIO $ \run -> bracket
+ 		(open logFunc)
+ 		closeRobustly
