@@ -14,7 +14,7 @@ SRC_URI="https://github.com/maik/xml-simple/archive/${COMMIT}.tar.gz -> ${P}.tar
 DESCRIPTION="Easy API to maintain XML. A Ruby port of Grant McLean's Perl module XML::Simple"
 HOMEPAGE="https://github.com/maik/xml-simple"
 
-LICENSE="Ruby"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc ~x86"
 IUSE=""
