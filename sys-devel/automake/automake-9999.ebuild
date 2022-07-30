@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit python-any-r1
 
@@ -23,6 +23,7 @@ else
 		# Alpha/beta releases are not distributed on the usual mirrors.
 		SRC_URI="https://alpha.gnu.org/pub/gnu/${PN}/${MY_P}.tar.xz"
 	fi
+
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -53,14 +54,15 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
 	export WANT_AUTOCONF=2.5
-	# Don't try wrapping the autotools this thing runs as it tends
+	# Don't try wrapping the autotools - this thing runs as it tends
 	# to be a bit esoteric, and the script does `set -e` itself.
 	./bootstrap || die
 	sed -i -e "/APIVERSION=/s:=.*:=${SLOT}:" configure || die
 
-	# Bug 628912
-	if ! has_version sys-apps/texinfo ; then
+	# bug #628912
+	if ! has_version -b sys-apps/texinfo ; then
 		touch doc/{stamp-vti,version.texi,automake.info} || die
 	fi
 }
@@ -70,8 +72,8 @@ src_configure() {
 	default
 }
 
-# slot the info pages.  do this w/out munging the source so we don't have
-# to depend on texinfo to regen things.  #464146 (among others)
+# Slot the info pages. Do this w/out munging the source so we don't have
+# to depend on texinfo to regen things. bug #464146 (among others)
 slot_info_pages() {
 	pushd "${ED}"/usr/share/info >/dev/null || die
 	rm -f dir
