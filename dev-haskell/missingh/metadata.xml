@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>haskell@gentoo.org</email>
-  </maintainer>
-  <use>
-    <flag name="network-3">Use network-3</flag>
-  </use>
-  <upstream>
-    <remote-id type="github">jgoerzen/missingh</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		MissingH is a library of all sorts of utility functions for
+		Haskell programmers.  It is written in pure Haskell and thus should
+		be extremely portable and easy to use.
+	</longdescription>
 </pkgmetadata>
