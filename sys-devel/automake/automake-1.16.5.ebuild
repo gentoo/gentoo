@@ -2,20 +2,20 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8,9,10} )
+
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit python-any-r1
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/r/${PN}.git"
-
 	inherit git-r3
 else
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	if [[ ${PV/_beta} == ${PV} ]]; then
 		MY_P="${P}"
 		SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 			https://alpha.gnu.org/pub/gnu/${PN}/${MY_P}.tar.xz"
+		KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	else
 		MY_PV="$(ver_cut 1).$(($(ver_cut 2)-1))b"
 		MY_P="${PN}-${MY_PV}"
@@ -23,6 +23,7 @@ else
 		# Alpha/beta releases are not distributed on the usual mirrors.
 		SRC_URI="https://alpha.gnu.org/pub/gnu/${PN}/${MY_P}.tar.xz"
 	fi
+
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -59,14 +60,15 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
 	export WANT_AUTOCONF=2.5
-	# Don't try wrapping the autotools this thing runs as it tends
+	# Don't try wrapping the autotools - this thing runs as it tends
 	# to be a bit esoteric, and the script does `set -e` itself.
 	./bootstrap || die
 	sed -i -e "/APIVERSION=/s:=.*:=${SLOT}:" configure || die
 
-	# Bug 628912
-	if ! has_version sys-apps/texinfo ; then
+	# bug #628912
+	if ! has_version -b sys-apps/texinfo ; then
 		touch doc/{stamp-vti,version.texi,automake.info} || die
 	fi
 }
@@ -76,8 +78,8 @@ src_configure() {
 	default
 }
 
-# slot the info pages.  do this w/out munging the source so we don't have
-# to depend on texinfo to regen things.  #464146 (among others)
+# Slot the info pages. Do this w/out munging the source so we don't have
+# to depend on texinfo to regen things. bug #464146 (among others)
 slot_info_pages() {
 	pushd "${ED}"/usr/share/info >/dev/null || die
 	rm -f dir
