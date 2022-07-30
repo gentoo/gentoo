@@ -5,7 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<use>
-		<flag name="generators">build the generator scripts for constants</flag>
-	</use>
 </pkgmetadata>
