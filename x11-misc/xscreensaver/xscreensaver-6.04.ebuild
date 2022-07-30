@@ -17,7 +17,7 @@ SRC_URI="https://www.jwz.org/xscreensaver/${P}.tar.gz"
 #   SpecialElite.ttf -- Apache-2.0
 LICENSE="BSD fonts? ( MIT Apache-2.0 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="elogind fonts +gdk-pixbuf gdm gles glx +gtk jpeg +locking new-login offensive opengl pam +perl +png selinux suid systemd +xft xinerama"
 REQUIRED_USE="
 	gdk-pixbuf? ( gtk )
