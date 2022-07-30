@@ -5,23 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<use>
-		<flag name="mkunicodedata">build codes generator itself</flag>
-	</use>
-	<longdescription>
-		This library implements @i;unicode-casemap@,
-		the simple, non locale-sensitive unicode collation
-		algorithm described in RFC 5051 (&lt;http://www.rfc-editor.org/rfc/rfc5051.txt&gt;).
-		Proper unicode collation can be done using text-icu, but that is a big
-		dependency that depends on a large C library, and rfc5051 might be better
-		for some purposes.
-		
-		Here is a list of strings sorted by the Prelude's @sort@ function:
-		
-		@Abe Oeb abe ab&amp;#233; oeb &amp;#193;be &amp;#196;be &amp;#212;eb &amp;#225;be &amp;#228;be &amp;#244;eb@
-		
-		Here is the same list sorted by @sortBy compareUnicode@:
-		
-		@Abe abe ab&amp;#233; &amp;#193;be &amp;#225;be &amp;#196;be &amp;#228;be Oeb oeb &amp;#212;eb &amp;#244;eb@
-	</longdescription>
 </pkgmetadata>
