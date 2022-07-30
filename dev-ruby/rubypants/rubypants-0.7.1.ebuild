@@ -14,7 +14,7 @@ inherit ruby-fakegem
 DESCRIPTION="A Ruby port of the SmartyPants PHP library"
 HOMEPAGE="https://leahneukirchen.org/repos/rubypants/README"
 
-LICENSE="Ruby"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~riscv x86"
 IUSE=""
