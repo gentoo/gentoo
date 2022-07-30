@@ -17,6 +17,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux"
 IUSE="+assistant +benchmark +dbus debug doc +gitlfs +magicmime +pairing +torrentparser +webapp"
 
+REQUIRED_USE="webapp? ( assistant )"
+
 RDEPEND="dev-haskell/aeson:=
 	>=dev-haskell/ansi-terminal-0.9:=
 	dev-haskell/async:=
