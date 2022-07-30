@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 MY_P=${P/_p/-r}
 DESCRIPTION="Calculate speeds, equilibrium arguments, node factors of tidal constituents"
-HOMEPAGE="http://www.flaterco.com/xtide/files.html"
+HOMEPAGE="https://flaterco.com/xtide/files.html"
 SRC_URI="ftp://ftp.flaterco.com/xtide/${MY_P}.tar.bz2"
 
 LICENSE="GPL-3"
