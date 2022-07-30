@@ -13,7 +13,7 @@ SRC_URI="https://github.com/BRiAl/BRiAl/releases/download/${PV}/${P}.tar.bz2"
 LICENSE="BSD GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
-IUSE="png static-libs"
+IUSE="png"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="dev-libs/boost
@@ -26,9 +26,8 @@ src_configure() {
 	# with-boost-libdir added to deal with some rather quirky setups
 	# see https://github.com/cschwan/sage-on-gentoo/issues/551
 	econf \
-		--with-boost="${EPREFIX}"/usr \
-		--with-boost-libdir="${EPREFIX}"/usr/$(get_libdir) \
-		$(use_enable static-libs static)
+		--with-boost="${ESYSROOT}"/usr \
+		--with-boost-libdir="${ESYSROOT}"/usr/$(get_libdir)
 }
 
 src_install() {
