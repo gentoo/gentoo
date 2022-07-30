@@ -38,7 +38,7 @@ else
 	S="${WORKDIR}"/${MY_P}
 
 	if [[ ${PV} != *rc* ]] ; then
-		KEYWORDS="~amd64 ~arm ~arm64 -hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+		KEYWORDS="~amd64 -hppa"
 	fi
 fi
 
@@ -60,6 +60,7 @@ BDEPEND="
 	>=dev-python/cython-0.29.18[${PYTHON_USEDEP}]
 	dev-python/pybind11[${PYTHON_USEDEP}]
 	dev-python/pythran[${PYTHON_USEDEP}]
+	>=dev-util/meson-0.62.2
 	dev-util/patchelf
 	virtual/pkgconfig
 	doc? ( app-arch/unzip )
