@@ -66,6 +66,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.36-flags.patch
 	"${FILESDIR}"/${PN}-1.3.19-perl.patch
+	"${FILESDIR}"/${P}-configure-bashism.patch
 )
 
 pkg_pretend() {
