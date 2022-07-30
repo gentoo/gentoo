@@ -11,7 +11,7 @@ SRC_URI="https://github.com/celluloid-player/celluloid/releases/download/v${PV}/
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 
 RDEPEND=">=dev-libs/glib-2.44
 	>=x11-libs/gtk+-3.22.23:3
