@@ -14,7 +14,7 @@ DESCRIPTION="Extra Plasma applets and engines"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="5"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="share webengine"
 
 RESTRICT="test" # bug 727846
