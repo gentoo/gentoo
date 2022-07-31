@@ -258,7 +258,7 @@ QA_FLAGS_IGNORED=".*"
 BDEPEND=">=virtual/rust-1.56.0"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 S="${WORKDIR}/coreutils-${PV}"
 
 src_compile() {
