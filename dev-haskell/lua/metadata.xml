@@ -6,25 +6,6 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
-		<flag name="allow-unsafe-gc">Allow optimizations which make Lua&#39;s garbage collection
-potentially unsafe; enabling this should be safe if
-there are no callbacks into Haskell during Lua garbage
-collection cycles. The flag should be *disabled* if Lua
-objects can have Haskell finalizers, i.e., @__gc@
-metamethods that call Haskell function.</flag>
-		<flag name="apicheck">Compile Lua with -DLUA_USE_APICHECK.</flag>
-		<flag name="export-dynamic">Add all symbols to dynamic symbol table; disabling this
-will make it possible to create fully static binaries,
-but renders loading of dynamic C libraries impossible.</flag>
-		<flag name="hardcode-reg-keys">Don&#39;t use CAPI to determine the names of certain
-registry key names but use hard coded values instead.
-This flag is required when compiling against Lua 5.3.3
-or earlier, as those versions do not expose the
-necessary information in the @lauxlib.h@ header file.
-Setting this flag should usually be unproblematic,
-except if the used Lua version has been patched
-heavily.</flag>
-		<flag name="lua-32bits">Compile Lua with -DLUA_32BITS</flag>
 		<flag name="system-lua">Use @pkg-config@ to discover library and include paths.
 Setting this flag implies `pkg-config`.</flag>
 	</use>
