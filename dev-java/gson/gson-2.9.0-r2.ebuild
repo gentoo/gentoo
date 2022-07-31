@@ -18,7 +18,7 @@ SRC_URI="https://github.com/google/${PN}/archive/${PN}-parent-${PV}.tar.gz -> ${
 
 LICENSE="Apache-2.0"
 SLOT="2.6"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 DEPEND=">=virtual/jdk-11:*"
 RDEPEND=">=virtual/jre-1.8:*"
