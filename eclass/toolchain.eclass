@@ -1910,9 +1910,9 @@ toolchain_src_test() {
 		einfo "Comparing with previous cached results at ${BROOT}/var/cache/gcc/${SLOT}"
 
 		# Exit with the following values:
-                # 0 if there is nothing of interest
-                # 1 if there are errors when comparing single test case files
-                # N for the number of errors found when comparing directories
+		# 0 if there is nothing of interest
+		# 1 if there are errors when comparing single test case files
+		# N for the number of errors found when comparing directories
 		"${S}"/contrib/compare_tests "${BROOT}"/var/cache/gcc/${SLOT}/ . || die "Comparison for tests results failed, error code: $?"
 	fi
 }
