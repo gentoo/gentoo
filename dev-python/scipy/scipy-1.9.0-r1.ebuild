@@ -81,6 +81,14 @@ EPYTEST_DESELECT=(
 
 distutils_enable_tests pytest
 
+src_unpack() {
+	default
+
+	if use doc; then
+		unzip -qo "${DISTDIR}"/${PN}-html-${DOC_PV}.zip -d html || die
+	fi
+}
+
 python_test() {
 	cd "${T}" || die
 
