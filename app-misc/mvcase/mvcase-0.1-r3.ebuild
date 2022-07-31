@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -15,18 +15,18 @@ KEYWORDS="amd64 ppc x86"
 
 DEPEND="dev-libs/shhopt"
 RDEPEND="${DEPEND}"
+BDEPEND="sys-apps/groff"
 
 PATCHES=(
-	"${FILESDIR}/${P}-includes.patch"
-	"${FILESDIR}/${P}-flags.patch"
+	"${FILESDIR}"/${P}-includes.patch
+	"${FILESDIR}"/${P}-flags.patch
 )
 
-src_compile() {
-	emake CC="$(tc-getCC)"
+src_configure() {
+	tc-export CC
 }
 
 src_install() {
-	dobin "${PN}"
-	doman "${PN}.1"
-	einstalldocs
+	dobin mvcase
+	doman mvcase.1
 }
