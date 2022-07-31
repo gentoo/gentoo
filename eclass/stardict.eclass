@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: stardict.eclass
@@ -6,7 +6,7 @@
 # No maintainer <maintainer-needed@gentoo.org>
 # @AUTHOR:
 # Alastair Tse <liquidx@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Convenience class to do stardict dictionary installations.
 # @DESCRIPTION:
 # Usage:
@@ -16,8 +16,8 @@
 #      * DICT_PREFIX   -  SRC_URI prefix, like "dictd_www.mova.org_"
 #	   * DICT_SUFFIX   -  SRC_URI after the prefix.
 
-case ${EAPI:-0} in
-	[67]) ;;
+case ${EAPI} in
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
