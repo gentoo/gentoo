@@ -50,7 +50,7 @@ src_prepare() {
 
 	extract_version_from_source() {
 		# Extract "#  define SMFI_VERSION  0x01000002" from include/libmilter/mfapi.h
-		local actual_libmilter_ver=$(grep -o -P -m 1 "0[xX][0-9a-fA-F]+" include/libmilter/mfapi.h)
+		local actual_libmilter_ver=$(grep -o -E -m 1 "0[xX][0-9a-fA-F]+" include/libmilter/mfapi.h)
 
 		# SM_LM_VRS_MAJOR(v)      (((v) & 0x7f000000) >> 24)
 		local actual_libmilter_ver_major=$(((actual_libmilter_ver & 0x7f000000) >> 24))
