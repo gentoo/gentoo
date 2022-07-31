@@ -13,7 +13,7 @@ SRC_URI="https://github.com/cask/epl/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x64-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
