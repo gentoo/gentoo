@@ -488,11 +488,6 @@ games-engines/nazghul
 # Removal on 2022-08-09.  Bug #857252.
 dev-python/pydispatcher
 
-# Sam James <sam@gentoo.org> (2022-07-02)
-# Deprecated dependencies, no activity upstream. Bugs #845615, #796326.
-# Removal on 2022-08-02.
-app-vim/pyclewn
-
 # Fabian Groffen <grobian@gentoo.org> (2022-07-02)
 # Segfaults handling SPF validations (warn on permerror), like the
 # previous release, better not to trust your important mail to
