@@ -6,7 +6,7 @@
 # No maintainer <maintainer-needed@gentoo.org>
 # @AUTHOR:
 # Alastair Tse <liquidx@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 8
 # @BLURB: Convenience class to do stardict dictionary installations.
 # @DESCRIPTION:
 # Usage:
@@ -17,7 +17,7 @@
 #      * DICT_SUFFIX   -  SRC_URI after the prefix.
 
 case ${EAPI} in
-	6|7|8) ;;
+	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
