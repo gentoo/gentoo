@@ -507,13 +507,6 @@ net-wireless/kismetdb
 # Removal on 2022-08-02.
 app-vim/pyclewn
 
-# Michał Górny <mgorny@gentoo.org> (2022-07-02)
-# Last release in 2014.  Archived upstream, and superseded by GeoIP2
-# (not packaged).  There is only one revdep (net-p2p/deluge) for which
-# it is optional.
-# Removal on 2022-08-01.  Bug #855737.
-dev-python/geoip-python
-
 # Fabian Groffen <grobian@gentoo.org> (2022-07-02)
 # Segfaults handling SPF validations (warn on permerror), like the
 # previous release, better not to trust your important mail to
