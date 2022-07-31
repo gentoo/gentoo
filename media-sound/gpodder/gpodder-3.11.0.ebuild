@@ -16,7 +16,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+dbus bluetooth mtp"
 
 RDEPEND="
@@ -75,6 +75,6 @@ pkg_postinst() {
 	xdg_pkg_postinst
 
 	optfeature "track length detection for device sync (only one package is needed)" media-video/mplayer dev-python/eyeD3
-	optfeature "for the youtube-dl extension" net-misc/youtube-dl
+	optfeature "for the YouTube extension" net-misc/yt-dlp net-misc/youtube-dl
 	optfeature "iPod sync support" media-libs/libgpod
 }
