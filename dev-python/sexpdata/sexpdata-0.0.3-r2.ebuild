@@ -14,6 +14,6 @@ SRC_URI="https://github.com/jd-boyd/sexpdata/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"
 
 distutils_enable_tests nose
