@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-if [[ ${PV} == "9999" ]]; then
+if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/garybernhardt/selecta"
 else
@@ -16,11 +16,8 @@ HOMEPAGE="https://github.com/garybernhardt/selecta"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE=""
 
-DEPEND=""
-RDEPEND="${DEPEND}
-	>=dev-lang/ruby-1.9.3"
+RDEPEND="dev-lang/ruby"
 
 src_install() {
 	dobin selecta
