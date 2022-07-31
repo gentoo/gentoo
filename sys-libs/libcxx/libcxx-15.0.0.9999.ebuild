@@ -14,16 +14,13 @@ HOMEPAGE="https://libcxx.llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS=""
-IUSE="+clang +libcxxabi +libunwind static-libs test"
-REQUIRED_USE="
-	libunwind? ( libcxxabi )
-	test? ( clang )
-"
+IUSE="+clang +libcxxabi static-libs test"
+REQUIRED_USE="test? ( clang )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	libcxxabi? (
-		~sys-libs/libcxxabi-${PV}[libunwind=,static-libs?,${MULTILIB_USEDEP}]
+		~sys-libs/libcxxabi-${PV}[static-libs?,${MULTILIB_USEDEP}]
 	)
 	!libcxxabi? ( >=sys-devel/gcc-4.7:=[cxx] )
 "
@@ -104,32 +101,14 @@ multilib_src_configure() {
 		strip-unsupported-flags
 	fi
 
-	# we want -lgcc_s for unwinder, and for compiler runtime when using
-	# gcc, clang with gcc runtime (or any unknown compiler)
-	local extra_libs=() want_gcc_s=ON want_compiler_rt=OFF
-	if use libunwind; then
-		# work-around missing -lunwind upstream
-		extra_libs+=( -lunwind )
-		# if we're using libunwind and clang with compiler-rt, we want
-		# to link to compiler-rt instead of -lgcc_s
-		if tc-is-clang; then
-			local compiler_rt=$($(tc-getCC) ${CFLAGS} ${CPPFLAGS} \
-			   ${LDFLAGS} -print-libgcc-file-name)
-			if [[ ${compiler_rt} == *libclang_rt* ]]; then
-				want_gcc_s=OFF
-				want_compiler_rt=ON
-				extra_libs+=( "${compiler_rt}" )
-			fi
+	# link against compiler-rt instead of libgcc if this is what clang does
+	local want_compiler_rt=OFF
+	if tc-is-clang; then
+		local compiler_rt=$($(tc-getCC) ${CFLAGS} ${CPPFLAGS} \
+			${LDFLAGS} -print-libgcc-file-name)
+		if [[ ${compiler_rt} == *libclang_rt* ]]; then
+			want_compiler_rt=ON
 		fi
-	elif [[ ${CHOST} == *-darwin* ]] && tc-is-clang; then
-		# clang-based darwin prefix disables libunwind useflag during
-		# bootstrap, because libunwind is not in the prefix yet.
-		# override the default, though, because clang based libcxx
-		# should never use gcc_s on Darwin.
-		want_gcc_s=OFF
-		# compiler_rt is not available in EPREFIX during bootstrap,
-		# so we cannot link to it yet anyway, so keep the defaults
-		# of want_compiler_rt=OFF and extra_libs=()
 	fi
 
 	# bootstrap: cmake is unhappy if compiler can't link to stdlib
@@ -156,12 +135,9 @@ multilib_src_configure() {
 		# we're using our own mechanism for generating linker scripts
 		-DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=OFF
 		-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
-		-DLIBCXX_HAS_GCC_S_LIB=${want_gcc_s}
 		-DLIBCXX_INCLUDE_BENCHMARKS=OFF
 		-DLIBCXX_INCLUDE_TESTS=$(usex test)
 		-DLIBCXX_USE_COMPILER_RT=${want_compiler_rt}
-		-DLIBCXX_HAS_ATOMIC_LIB=${want_gcc_s}
-		-DCMAKE_SHARED_LINKER_FLAGS="${extra_libs[*]} ${LDFLAGS}"
 	)
 
 	if use test; then
@@ -223,7 +199,6 @@ gen_static_ldscript() {
 	local deps=(
 		libc++_static.a
 		$(usex libcxxabi libc++abi.a libsupc++.a)
-		$(usex libunwind libunwind.a libgcc_eh.a)
 	)
 	# On Linux/glibc it does not link without libpthread or libdl. It is
 	# fine on FreeBSD.
@@ -239,7 +214,6 @@ gen_shared_ldscript() {
 		libc++_shared.so
 		# libsupc++ doesn't have a shared version
 		$(usex libcxxabi libc++abi.so libsupc++.a)
-		$(usex libunwind libunwind.so libgcc_s.so)
 	)
 
 	gen_ldscript "${deps[*]}" > lib/libc++.so || die
