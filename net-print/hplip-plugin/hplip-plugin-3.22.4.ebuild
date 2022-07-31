@@ -12,7 +12,7 @@ S="${WORKDIR}"
 
 LICENSE="hplip-plugin"
 SLOT="0"
-KEYWORDS="~amd64 arm ~arm64 x86"
+KEYWORDS="amd64 arm ~arm64 x86"
 IUSE="orblite"
 # License does not allow us to redistribute the "source" package
 RESTRICT="mirror"
