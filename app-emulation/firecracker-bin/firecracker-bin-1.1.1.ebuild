@@ -21,8 +21,7 @@ KEYWORDS="~amd64 ~arm64"
 
 RESTRICT="test strip"
 
-RDEPEND="!app-emulation/firecracker
-	acct-group/kvm"
+RDEPEND="acct-group/kvm"
 
 QA_PREBUILT="usr/bin/firecracker
 	usr/bin/jailer
