@@ -525,11 +525,6 @@ dev-util/rebar-bin
 ~app-editors/emacs-28.1.91
 ~app-editors/emacs-28.1.92
 
-# Marek Szuba <marecki@gentoo.org> (2022-06-30)
-# A GNOME 2-era library with no consumers left in the tree, marked
-# as deprecated since March 2022. Removal in 30 days (Bug #855299).
-gnome-extra/gtkhtml
-
 # Sam James <sam@gentoo.org> (2022-05-28)
 # GCC 9 and older no longer receive upstream support or fixes for
 # bugs. Please switch to a newer GCC version using gcc-config.

@@ -58,7 +58,6 @@ dev-libs/libunique:1
 gnome-base/gconf
 gnome-base/libgnomecanvas
 gnome-extra/gconf-editor
-gnome-extra/gtkhtml
 x11-libs/gtk+extra
 x11-libs/gtksourceview:2.0
 x11-libs/libwnck:1
