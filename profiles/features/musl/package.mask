@@ -217,9 +217,12 @@ sci-electronics/eagle
 
 # Ulrich Müller <ulm@gentoo.org> (2022-01-04, 2022-07-31)
 # Emacs 23 does not support x86_64-gentoo-linux-musl systems
-# (bug #830408). Emacs 24 has multiple build failures (bug #862462).
+# (bug #830408). Emacs 24 and 25 have build failures (bug #862462).
+# Emacs 26 segfaults when dumping (bug #862489).
 app-editors/emacs:23
 app-editors/emacs:24
+app-editors/emacs:25
+app-editors/emacs:26
 
 # Marek Szuba <marecki@gentoo.org> (2022-01-01)
 # Binary-only package linked against glibc.
