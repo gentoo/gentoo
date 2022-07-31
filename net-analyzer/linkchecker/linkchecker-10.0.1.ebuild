@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -49,6 +49,5 @@ python_install_all() {
 pkg_postinst() {
 	optfeature "bash-completion support" dev-python/argcomplete[${PYTHON_USEDEP}]
 	optfeature "Virus scanning" app-antivirus/clamav
-	optfeature "Geo IP support" dev-python/geoip-python[${PYTHON_USEDEP}]
 	optfeature "GNOME proxy settings support" dev-python/pygobject[${PYTHON_USEDEP}]
 }
