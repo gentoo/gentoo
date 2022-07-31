@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1 optfeature
 
 DESCRIPTION="Image processing routines for SciPy"
@@ -14,18 +14,30 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-python/imageio[${PYTHON_USEDEP}]
+# It seems that scikit-image has not been built correctly.
+RESTRICT="test"
+
+RDEPEND="
+	dev-python/imageio[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
 	dev-python/networkx[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pywavelets[${PYTHON_USEDEP}]
-	dev-python/scipy[sparse,${PYTHON_USEDEP}]
-	dev-python/tifffile[${PYTHON_USEDEP}]"
+	dev-python/scipy[sparse(+),${PYTHON_USEDEP}]
+	dev-python/tifffile[${PYTHON_USEDEP}]
+"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/cython[${PYTHON_USEDEP}]"
+BDEPEND="
+	dev-python/cython[${PYTHON_USEDEP}]
+	dev-python/packaging[${PYTHON_USEDEP}]
+"
 
 DOCS=( CONTRIBUTORS.txt RELEASE.txt )
+
+distutils_enable_tests --install pytest
+# TODO: package myst_parser
+#distutils_enable_sphinx doc/source dev-python/numpydoc
 
 pkg_postinst() {
 	optfeature "FITS io capability" dev-python/astropy

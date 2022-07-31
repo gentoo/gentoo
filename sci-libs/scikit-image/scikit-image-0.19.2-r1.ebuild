@@ -23,7 +23,7 @@ RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pywavelets[${PYTHON_USEDEP}]
-	dev-python/scipy[sparse,${PYTHON_USEDEP}]
+	dev-python/scipy[sparse(+),${PYTHON_USEDEP}]
 	dev-python/tifffile[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
