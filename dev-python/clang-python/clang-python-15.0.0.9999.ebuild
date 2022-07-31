@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit llvm.org python-r1
 
 DESCRIPTION="Python bindings for sys-devel/clang"
