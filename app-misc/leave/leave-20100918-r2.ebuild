@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -14,19 +14,16 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-fix-makefile.diff"
+	"${FILESDIR}"/${P}-makefile.patch
+	"${FILESDIR}"/${P}-posix.patch
 )
 
-src_compile() {
-	cp -v "${FILESDIR}/README" . || die
-	emake \
-		CC="$(tc-getCC)" \
-		CFLAGS="${CFLAGS}" \
-		LDFLAGS="${LDFLAGS}"
+src_configure() {
+	tc-export CC
 }
 
 src_install() {
-	dobin "${PN}"
-	doman "${PN}.1"
-	einstalldocs
+	dobin leave
+	doman leave.1
+	dodoc "${FILESDIR}"/README
 }
