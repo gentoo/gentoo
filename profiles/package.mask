@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matthew Smith <matthew@gentoo.org> (2022-07-31)
+# No updates since 2010, dead homepage, and incompatible with newer
+# sci-libs/gsl. Bug #862486. Removal on 2022-08-31.
+sci-chemistry/numbat
+
 # Marc Schiffbauer <mschiff@gentoo.org> (2022-07-30)
 # No update since 2016, compilation and build system
 # errors
