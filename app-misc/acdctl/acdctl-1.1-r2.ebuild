@@ -1,7 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
+inherit toolchain-funcs
 
 DESCRIPTION="Apple Cinema Display Control"
 HOMEPAGE="https://web.archive.org/web/20090725222711/http://technocage.com:80/~caskey/acdctl/"
@@ -14,7 +16,16 @@ KEYWORDS="ppc"
 RDEPEND="virtual/libusb:0"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-makefile.patch
+	"${FILESDIR}"/${P}-warnings.patch
+)
+
+src_configure() {
+	tc-export CC
+}
+
 src_install() {
+	dobin acdctl
 	einstalldocs
-	dobin "${PN}"
 }
