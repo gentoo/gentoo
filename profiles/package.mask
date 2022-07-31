@@ -498,7 +498,6 @@ dev-python/gatt-python
 dev-python/pynput
 media-libs/elgato-streamdeck
 media-video/streamdeck-ui
-net-wireless/jackit
 
 # Sam James <sam@gentoo.org> (2022-07-02)
 # Deprecated dependencies, no activity upstream. Bugs #845615, #796326.
