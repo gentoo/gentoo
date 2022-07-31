@@ -14,83 +14,14 @@
     <name>Mart Raudsepp</name>
   </maintainer>
   <use>
-    <flag name="X">
-      Build the X11 publish module to export PulseAudio information
-      through X11 protocol for clients to make use. Don't enable this
-      flag if you want to use a system wide instance. If unsure, enable
-      this flag.
-    </flag>
-    <flag name="alsa-plugin">
-      Request installing <pkg>media-plugins/alsa-plugins</pkg> with
-      PulseAudio plugin enabled. This ensures that clients supporting
-      ALSA only will use PulseAudio.
-    </flag>
     <flag name="daemon">Build the pulseaudio binary (not-needed for pipewire-pulse)</flag>
-    <flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for giving each session a PA client</flag>
-    <flag name="gconf">
-      Ensure <pkg>gnome-base/gconf</pkg> is present for pulseaudio GConf
-      to GSettings module automatic migration (keeping the user configuration)
-    </flag>
-    <flag name="oss">
-      Enable OSS sink/source (output/input). Deprecated, upstream does
-      not support this on systems where other sink/source systems are
-      available (i.e.: Linux). The padsp wrapper is now always build
-      if the system supports OSS at all.
-    </flag>
     <flag name="glib">
       Add support to <pkg>dev-libs/glib</pkg>-based mainloop for the
       libpulse client library, to allow using libpulse on glib-based
       programs. Build the GSettings PA module.
     </flag>
-    <flag name="system-wide">
-      Allow preparation and installation of the system-wide init
-      script for PulseAudio. Since this support is only supported for
-      embedded situations, do not enable without reading the upstream
-      instructions at
-      https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/WhatIsWrongWithSystemWide/ .
-    </flag>
-    <flag name="asyncns">Use libasyncns for asynchronous name resolution.</flag>
-    <flag name="doc">Build the doxygen-described API documentation.</flag>
-    <flag name="realtime">
-      Makes PulseAudio use RealtimeKit (<pkg>sys-auth/rtkit</pkg>) to get
-      real-time priority while running.
-    </flag>
-    <flag name="equalizer">
-      Enable the equalizer module (requires <pkg>sci-libs/fftw</pkg>).
-    </flag>
-    <flag name="ssl">
-      Use <pkg>dev-libs/openssl</pkg> to provide support for RAOP
-      (AirPort) streaming.
-    </flag>
-    <flag name="gdbm">
-      Use <pkg>sys-libs/gdbm</pkg> to store PulseAudio
-      databases. Recommended for desktop usage. This flag causes the
-      whole package to be licensed under GPL-2 or later.
-    </flag>
-    <flag name="webrtc-aec">
-      Uses the webrtc.org AudioProcessing library for enhancing VoIP calls
-      greatly in applications that support it by performing acoustic echo
-      cancellation, analog gain control, noise suppression and other processing.
-    </flag>
-    <flag name="systemd">
-      Build with <pkg>sys-apps/systemd</pkg> support to replace standalone
-      ConsoleKit.
-    </flag>
-    <flag name="native-headset">
-      Build with native HSP backend for bluez 5.
-    </flag>
     <flag name="ofono-headset">
       Build with oFono HFP backend for bluez 5, requires <pkg>net-misc/ofono</pkg>.
-    </flag>
-    <flag name="gstreamer">
-      Build with support for gstreamer including ability to use bluetooth codecs.
-      For bluetooth codecs see USE ldac and aptx.
-    </flag>
-    <flag name="aptx">
-      aptX (HD) over Bluetooth (many Android compatible headphones), requires <pkg>media-plugins/gst-plugins-openaptx</pkg>.
-    </flag>
-    <flag name="ldac">
-      LDAC over Bluetooth (primarily Sony headphones), requires <pkg>media-plugins/gst-plugins-ldac</pkg>.
     </flag>
   </use>
 </pkgmetadata>
