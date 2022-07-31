@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -13,20 +13,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 sparc x86"
 
-src_prepare() {
-	# Don't strip, install in correct share dir and respect CFLAGS
-	sed \
-		-e "s@install -s@install@g" \
-		-e "s@#SHARE@SHARE@g" \
-		-e "s@-O2@${CFLAGS}@g" \
-		-i Makefile || die
-	sed \
-		-e 's@grep -v@grep --binary-files=text -v@g' \
-		-i runtest.sh || die
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
-	default
-}
-
-src_compile() {
-	emake CC="$(tc-getCC)"
+src_configure() {
+	tc-export CC
 }
