@@ -38,7 +38,7 @@ else
 	S="${WORKDIR}"/${MY_P}
 
 	if [[ ${PV} != *rc* ]] ; then
-		KEYWORDS="~amd64 -hppa ~riscv"
+		KEYWORDS="~amd64 -hppa ~ppc64 ~riscv"
 	fi
 fi
 
