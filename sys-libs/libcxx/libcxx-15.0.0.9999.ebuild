@@ -177,9 +177,27 @@ multilib_src_configure() {
 	cmake_src_configure
 }
 
+multilib_src_compile() {
+	cmake_src_compile
+	if [[ ${CHOST} != *-darwin* ]] ; then
+		gen_shared_ldscript
+		use static-libs && gen_static_ldscript
+	fi
+}
+
 multilib_src_test() {
 	local -x LIT_PRESERVES_TMP=1
 	cmake_build check-cxx
+}
+
+multilib_src_install() {
+	cmake_src_install
+	# since we've replaced libc++.{a,so} with ldscripts, now we have to
+	# install the extra symlinks
+	if [[ ${CHOST} != *-darwin* ]] ; then
+		dolib.so lib/libc++_shared.so
+		use static-libs && dolib.a lib/libc++_static.a
+	fi
 }
 
 # Usage: deps
@@ -198,38 +216,33 @@ END_LDSCRIPT
 }
 
 gen_static_ldscript() {
-	local libdir=$(get_libdir)
-	local cxxabi_lib=$(usex libcxxabi "libc++abi.a" "libsupc++.a")
-
 	# Move it first.
-	mv "${ED}/usr/${libdir}/libc++.a" "${ED}/usr/${libdir}/libc++_static.a" || die
+	mv lib/libc++{,_static}.a || die
 	# Generate libc++.a ldscript for inclusion of its dependencies so that
 	# clang++ -stdlib=libc++ -static works out of the box.
-	local deps="libc++_static.a ${cxxabi_lib} $(usex libunwind libunwind.a libgcc_eh.a)"
+	local deps=(
+		libc++_static.a
+		$(usex libcxxabi libc++abi.a libsupc++.a)
+		$(usex libunwind libunwind.a libgcc_eh.a)
+	)
 	# On Linux/glibc it does not link without libpthread or libdl. It is
 	# fine on FreeBSD.
-	use elibc_glibc && deps+=" libpthread.a libdl.a"
+	use elibc_glibc && deps+=( libpthread.a libdl.a )
 
-	gen_ldscript "${deps}" > "${ED}/usr/${libdir}/libc++.a" || die
+	gen_ldscript "${deps[*]}" > lib/libc++.a || die
 }
 
 gen_shared_ldscript() {
-	local libdir=$(get_libdir)
-	# libsupc++ doesn't have a shared version
-	local cxxabi_lib=$(usex libcxxabi "libc++abi.so" "libsupc++.a")
+	# Move it first.
+	mv lib/libc++{,_shared}.so || die
+	local deps=(
+		libc++_shared.so
+		# libsupc++ doesn't have a shared version
+		$(usex libcxxabi libc++abi.so libsupc++.a)
+		$(usex libunwind libunwind.so libgcc_s.so)
+	)
 
-	mv "${ED}/usr/${libdir}/libc++.so" "${ED}/usr/${libdir}/libc++_shared.so" || die
-	local deps="libc++_shared.so ${cxxabi_lib} $(usex libunwind libunwind.so libgcc_s.so)"
-
-	gen_ldscript "${deps}" > "${ED}/usr/${libdir}/libc++.so" || die
-}
-
-multilib_src_install() {
-	cmake_src_install
-	if [[ ${CHOST} != *-darwin* ]] ; then
-		gen_shared_ldscript
-		use static-libs && gen_static_ldscript
-	fi
+	gen_ldscript "${deps[*]}" > lib/libc++.so || die
 }
 
 pkg_postinst() {
