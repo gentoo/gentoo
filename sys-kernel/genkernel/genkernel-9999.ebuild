@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # genkernel-9999        -> latest Git branch "master"
@@ -6,7 +6,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit bash-completion-r1 python-single-r1
 
@@ -119,6 +119,9 @@ RDEPEND="${PYTHON_DEPS}
 	sys-devel/autoconf
 	sys-devel/autoconf-archive
 	sys-devel/automake
+	sys-devel/bc
+	sys-devel/bison
+	sys-devel/flex
 	sys-devel/libtool
 	virtual/pkgconfig
 	elibc_glibc? ( sys-libs/glibc[static-libs(+)] )
