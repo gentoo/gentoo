@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -13,17 +13,17 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 
-DOCS=( README.txt )
+PATCHES=(
+	"${FILESDIR}"/${P}-makefile.patch
+	"${FILESDIR}"/${P}-Wimplicit-function-declaration.patch
+)
 
-src_compile() {
-	emake OPTFLAGS="-ansi -pedantic ${CFLAGS}" \
-		PREFIX=/usr \
-		CC="$(tc-getCC)" \
-		LDFLAGS="${LDFLAGS}"
+src_configure() {
+	tc-export CC
 }
 
 src_install() {
-	dobin "${PN}"
-	doman "${PN}.1"
+	dobin tpipe
 	einstalldocs
+	doman tpipe.1
 }
