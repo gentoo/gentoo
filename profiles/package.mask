@@ -495,7 +495,6 @@ dev-python/pydispatcher
 # #846017, #846200, #846203, #846206, #853844, removal on 2022-08-01.
 app-misc/siglo
 dev-python/gatt-python
-dev-python/pynput
 
 # Sam James <sam@gentoo.org> (2022-07-02)
 # Deprecated dependencies, no activity upstream. Bugs #845615, #796326.
