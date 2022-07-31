@@ -1,0 +1,17 @@
+--- a/configure
++++ b/configure
+@@ -21,11 +21,9 @@
+ infodir='$(datarootdir)/info'
+ mandir='$(datarootdir)/man'
+ sysconfdir='$(prefix)/etc'
+-CXX=g++
+-CPPFLAGS=
+-CXXFLAGS='-Wall -W -O2'
+-LDFLAGS=
+-LIBS=-lncurses
++CPPFLAGS="$(${PKG_CONFIG} --cflags ncurses) ${CPPFLAGS}"
++CXXFLAGS="-Wall -W ${CXXFLAGS}"
++LIBS="$(${PKG_CONFIG} --libs ncurses) ${LIBS}"
+ 
+ # checking whether we are using GNU C++.
+ /bin/sh -c "${CXX} --version" > /dev/null 2>&1 || { CXX=c++ ; CXXFLAGS=-O2 ; }
