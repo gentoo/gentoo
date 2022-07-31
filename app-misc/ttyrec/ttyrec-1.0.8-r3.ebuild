@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit flag-o-matic toolchain-funcs
 
@@ -12,15 +12,16 @@ SRC_URI="http://0xcc.net/ttyrec/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+
 PATCHES=(
-	"${FILESDIR}/${P}-flags.patch"
-	"${FILESDIR}/${P}-glibc-2.30.patch"
+	"${FILESDIR}"/${P}-flags.patch
+	"${FILESDIR}"/${P}-glibc-2.30.patch
 )
 
-src_compile() {
+src_configure() {
 	# Bug 106530
 	[[ ${CHOST} != *-darwin* ]] && append-cppflags -DSVR4 -D_XOPEN_SOURCE=500
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
+	tc-export CC
 }
 
 src_install() {
