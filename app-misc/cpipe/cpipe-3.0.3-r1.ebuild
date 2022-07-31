@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -13,20 +13,15 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-src_prepare() {
-	default
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
-	sed -i \
-		-e "s/CFLAGS =/CFLAGS =${CFLAGS} /" \
-		-e "s/-lm/-lm ${LDFLAGS}/" \
-		-e "s/744/644/" makefile || die "sed failed"
-}
-
-src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
+src_configure() {
+	tc-export CC
 }
 
 src_install() {
-	dobin "${PN}"
-	doman "${PN}.1"
+	dobin cpipe
+
+	einstalldocs
+	doman cpipe.1
 }
