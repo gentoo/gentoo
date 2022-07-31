@@ -500,7 +500,6 @@ media-libs/elgato-streamdeck
 media-video/streamdeck-ui
 net-wireless/jackit
 net-wireless/kismet-rest
-net-wireless/kismetdb
 
 # Sam James <sam@gentoo.org> (2022-07-02)
 # Deprecated dependencies, no activity upstream. Bugs #845615, #796326.
