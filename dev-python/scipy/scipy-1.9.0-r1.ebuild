@@ -46,9 +46,11 @@ LICENSE="BSD LGPL-2"
 SLOT="0"
 IUSE="doc"
 
+# umfpack is technically optional but it's preferred to have it available.
 DEPEND="
 	>=dev-python/numpy-1.18.5[lapack,${PYTHON_USEDEP}]
-	sci-libs/arpack:0=
+	sci-libs/arpack:=
+	sci-libs/umfpack
 	virtual/cblas
 	>=virtual/lapack-3.8
 "
