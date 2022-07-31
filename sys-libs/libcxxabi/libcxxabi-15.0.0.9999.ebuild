@@ -14,18 +14,10 @@ HOMEPAGE="https://libcxxabi.llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS=""
-IUSE="+clang +libunwind static-libs test"
+IUSE="+clang static-libs test"
 REQUIRED_USE="test? ( clang )"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	libunwind? (
-		|| (
-			>=sys-libs/libunwind-1.0.1-r1[static-libs?,${MULTILIB_USEDEP}]
-			>=sys-libs/llvm-libunwind-3.9.0-r1[static-libs?,${MULTILIB_USEDEP}]
-		)
-	)
-"
 # in 15.x, cxxabi.h is moving from libcxx to libcxxabi
 RDEPEND+="
 	!<sys-libs/libcxx-15
@@ -74,9 +66,9 @@ multilib_src_configure() {
 		strip-unsupported-flags
 	fi
 
-	# link against compiler-rt instead of libgcc if we are using clang with libunwind
+	# link against compiler-rt instead of libgcc if this is what clang does
 	local want_compiler_rt=OFF
-	if use libunwind && tc-is-clang; then
+	if tc-is-clang; then
 		local compiler_rt=$($(tc-getCC) ${CFLAGS} ${CPPFLAGS} \
 			${LDFLAGS} -print-libgcc-file-name)
 		if [[ ${compiler_rt} == *libclang_rt* ]]; then
@@ -94,7 +86,6 @@ multilib_src_configure() {
 		-DLIBCXXABI_ENABLE_SHARED=ON
 		-DLIBCXXABI_ENABLE_STATIC=$(usex static-libs)
 		-DLIBCXXABI_INCLUDE_TESTS=$(usex test)
-		-DLIBCXXABI_USE_LLVM_UNWINDER=$(usex libunwind)
 		-DLIBCXXABI_USE_COMPILER_RT=${want_compiler_rt}
 
 		# upstream is omitting standard search path for this
