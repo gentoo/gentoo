@@ -1,34 +1,27 @@
-diff --git a/Makefile b/Makefile
-index 9330578..3ff7319 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -26,13 +26,13 @@ BINMODE=755
+@@ -26,10 +26,9 @@
  LOGDIRMODE=700
  
  # Compiler to use
 -CC=gcc
-+CC ?= gcc
  
  # Compiler warnings
 -WARNINGS= -pedantic -Wall
-+WARNINGS= 
++CFLAGS += -pedantic -Wall
  
  # Compiler flags
--CCOPTS = -O2 -fomit-frame-pointer
-+CCOPTS = ${CFLAGS}
- 
- # The makefile standards document I read says that I have to put it here...
- SHELL = /bin/sh
-@@ -61,7 +61,7 @@ PROGRAM = iso3166
+ CCOPTS = -O2 -fomit-frame-pointer
+@@ -61,7 +60,7 @@
  all: $(PROGRAM)
  
  $(PROGRAM): $(ISO3166OBJ)
 -	$(CC) $(CCOPTS) $(ISO3166OBJ) -o $@
-+	$(CC) $(CCOPTS) $(LDFLAGS) $(ISO3166OBJ) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $(ISO3166OBJ) -o $@
  
  clean:
  	rm -f $(ISO3166OBJ) core defines.h $(PROGRAM)
-@@ -70,8 +70,10 @@ strip:
+@@ -70,8 +69,10 @@
  	strip $(PROGRAM)
  
  install:
@@ -40,3 +33,13 @@ index 9330578..3ff7319 100644
  	@$(SEDBIN) $(SEDCMDS) ${docdir}/iso3166.1.in > ${mandir}/iso3166.1
  	@chown 0.0 ${mandir}/iso3166.1
  	@echo
+@@ -80,9 +81,6 @@
+ 	rm -f ${bindir}/$(PROGRAM)
+ 	rm -f ${mandir}/iso3166.1
+ 
+-.c.o:
+-	$(CC) $(CCOPTS) $(WARNINGS) -c $<
+-
+ $(ISO3166OBJ): common.h defines.h protos.h tables.h
+ 
+ defines.h:
