@@ -35,7 +35,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	optfeature "GeoIP support" dev-python/geoip-python
 	optfeature "Extract ipv4 from ipv6 addresses" dev-python/ipy
 	optfeature "Clipboard support" dev-python/pyperclip
 }
