@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -12,13 +12,11 @@ SRC_URI="mirror://sourceforge/pipeworks/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE=""
 
-RDEPEND=""
-DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
-src_compile() {
-	emake CC="$(tc-getCC) ${CFLAGS} ${LDFLAGS}"
+src_configure() {
+	tc-export CC
 }
 
 src_install() {
