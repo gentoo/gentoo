@@ -16,7 +16,7 @@ inherit toolchain-funcs
 SENDMAIL_VER=8.17.1.9
 
 DESCRIPTION="The Sendmail Filter API (Milter)"
-HOMEPAGE="http://www.sendmail.org/"
+HOMEPAGE="https://www.sendmail.org/"
 if [[ -n $(ver_cut 4 ${SENDMAIL_VER}) ]] ; then
 	# Snapshots have an extra version component (e.g. 8.17.1 vs 8.17.1.9)
 	SRC_URI+="https://ftp.sendmail.org/snapshots/sendmail.${SENDMAIL_VER}.tar.gz
