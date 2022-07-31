@@ -14,7 +14,7 @@ S="${WORKDIR}"/${PN}-${MY_COMMIT}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x64-macos"
 
 SITEFILE="50${PN}-gentoo.el"
 
