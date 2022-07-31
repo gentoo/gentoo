@@ -25,10 +25,6 @@ sci-physics/bullet tbb
 # please unmask as needed, may require patching
 >=dev-lang/rust-1.62.0 miri
 
-# Michał Górny <mgorny@gentoo.org> (2022-07-02)
-# dev-python/geoip-python is masked for removal.
-net-p2p/deluge geoip
-
 # James Le Cuirot <chewi@gentoo.org> (2022-06-25)
 # This flag concerns an x86-specific problem.
 sys-libs/glibc stack-realign
