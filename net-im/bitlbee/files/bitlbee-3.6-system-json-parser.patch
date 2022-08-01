@@ -1,0 +1,82 @@
+This is adapted patch from upstream PR 151. Original PR defines
+--external-json-parser which breaks configuration, see [1]. It was changed to
+--externaljsonparser and $external_json_parser to $externaljsonparser.
+
+[1] https://github.com/bitlbee/bitlbee/pull/151#issuecomment-1201181905
+
+Upstream-PR: https://github.com/bitlbee/bitlbee/pull/151
+
+diff --git a/configure b/configure
+index 4640c806..77b1213b 100755
+--- a/configure
++++ b/configure
+@@ -47,6 +47,7 @@ plugins=1
+ otr=0
+ 
+ events=glib
++externaljsonparser=auto
+ ssl=auto
+ 
+ pam=0
+@@ -148,6 +149,7 @@ Option		Description				Default
+ --events=...	Event handler (glib, libevent)		$events
+ --ssl=...	SSL library to use (gnutls, nss, openssl, auto)
+ 							$ssl
++--externaljsonparser=0/1/auto	Use External JSON parser $externaljsonparser
+ 
+ 
+ --target=...	Cross compilation target 		same as host
+@@ -398,6 +400,20 @@ else
+ fi
+ echo 'EVENT_HANDLER=events_'$events'.o' >> Makefile.settings
+ 
++if [ "$externaljsonparser" = "auto" ]; then
++	if pkg-config --exists json-parser; then
++		externaljsonparser=1
++	else
++		externaljsonparser=0
++	fi
++fi
++echo "EXTERNAL_JSON_PARSER=$externaljsonparser" >> Makefile.settings
++if [ "$externaljsonparser" = "1" ]; then
++    echo "CFLAGS+=$(pkg-config --cflags json-parser)" >> Makefile.settings
++    echo "LDFLAGS_BITLBEE+=$(pkg-config --libs json-parser)" >> Makefile.settings
++fi
++
++
+ detect_gnutls()
+ {
+ 	if $PKG_CONFIG --exists gnutls; then
+@@ -979,6 +995,12 @@ else
+ 	echo '  systemd disabled.'
+ fi
+ 
++if [ "$externaljsonparser" = "1" ]; then
++    echo '  Using system JSON parser.'
++else
++    echo '  Using bundled JSON parser.'
++fi
++
+ echo '  Using event handler: '$events
+ echo '  Using SSL library: '$ssl
+ #echo '  Building with these storage backends: '$STORAGES
+diff --git a/lib/Makefile b/lib/Makefile
+index fc46aedc..ad95d9cb 100644
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -12,7 +12,11 @@ _SRCDIR_ := $(_SRCDIR_)lib/
+ endif
+ 
+ # [SH] Program variables
+-objects = arc.o base64.o canohost.o $(EVENT_HANDLER) ftutil.o http_client.o ini.o json.o json_util.o md5.o misc.o oauth.o oauth2.o proxy.o sha1.o $(SSL_CLIENT) url.o xmltree.o ns_parse.o
++objects = arc.o base64.o canohost.o $(EVENT_HANDLER) ftutil.o http_client.o ini.o json_util.o md5.o misc.o oauth.o oauth2.o proxy.o sha1.o $(SSL_CLIENT) url.o xmltree.o ns_parse.o
++
++ifneq ($(EXTERNAL_JSON_PARSER),1)
++objects += json.o
++endif
+ 
+ LFLAGS += -r
+ 
+-- 
+2.35.1
+
