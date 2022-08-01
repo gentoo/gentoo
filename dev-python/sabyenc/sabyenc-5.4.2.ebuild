@@ -18,9 +18,11 @@ LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-BDEPEND="test? (
+BDEPEND="
+	test? (
 		dev-python/chardet[${PYTHON_USEDEP}]
-	)"
+	)
+"
 
 DOCS=( README.md doc/yenc-draft.1.3.txt )
 
