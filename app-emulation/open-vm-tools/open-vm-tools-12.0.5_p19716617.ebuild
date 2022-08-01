@@ -68,6 +68,7 @@ BDEPEND="
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
+	"${FILESDIR}/open-vm-tools-rename-poll.h.patch"
 	"${FILESDIR}/10.1.0-Werror.patch"
 	"${FILESDIR}/11.3.5-icu.patch"
 )
