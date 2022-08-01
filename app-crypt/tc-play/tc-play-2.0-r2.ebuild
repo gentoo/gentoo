@@ -1,11 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit toolchain-funcs multilib-minimal
+inherit toolchain-funcs
 
-DESCRIPTION="a free, pretty much fully featured and stable TrueCrypt implementation"
+DESCRIPTION="A free, pretty much fully featured and stable TrueCrypt implementation"
 HOMEPAGE="https://github.com/bwalex/tc-play"
 SRC_URI="https://github.com/bwalex/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -15,19 +15,18 @@ KEYWORDS="~amd64"
 IUSE="gnutls"
 
 DEPEND="
+	dev-libs/libgcrypt:=
 	dev-libs/libgpg-error
-	sys-fs/lvm2
 	sys-apps/util-linux
-	dev-libs/libgcrypt:0
+	sys-fs/lvm2
 	gnutls? ( net-libs/gnutls )
 	!gnutls? (
-		dev-libs/openssl:0=
-	)"
+		dev-libs/openssl:=
+	)
+"
 RDEPEND="${DEPEND}"
 
-DOCS=(
-	README.md
-)
+DOCS=( README.md )
 
 PATCHES=(
 	"${FILESDIR}/${P}-build.patch"
