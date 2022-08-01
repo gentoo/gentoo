@@ -1,0 +1,15 @@
+[Unit]
+Description=Real-time web log analyzer
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+Restart=always
+ExecStart=/usr/bin/goaccess --real-time-html --daemonize -p /etc/goaccess/goaccess.conf --user-name=goaccess -o /var/lib/goaccess/goaccess.html -l /var/log/goaccess/goaccess.log
+StandardOutput=null
+StandardError=null
+
+[Install]
+WantedBy=multi-user.target
