@@ -21,7 +21,9 @@ RDEPEND="!dev-libs/libmemcached
 	sasl? ( dev-libs/cyrus-sasl:2 )"
 DEPEND="${RDEPEND}
 	test? ( net-misc/memcached )"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="sys-devel/bison
+	sys-devel/flex
+	virtual/pkgconfig"
 
 src_configure() {
 	local mycmakeargs=(
