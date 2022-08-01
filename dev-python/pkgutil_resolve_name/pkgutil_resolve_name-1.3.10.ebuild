@@ -18,4 +18,4 @@ SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64"
