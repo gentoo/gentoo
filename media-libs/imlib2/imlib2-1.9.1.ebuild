@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# Must be bumped with media-plugins/imlib2_loaders!
+
 inherit multilib-minimal toolchain-funcs
 
 DESCRIPTION="Version 2 of an advanced replacement library for libraries like libXpm"
