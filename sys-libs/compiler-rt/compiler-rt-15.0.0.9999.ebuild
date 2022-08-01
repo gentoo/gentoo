@@ -32,7 +32,7 @@ BDEPEND="
 	)
 "
 
-LLVM_COMPONENTS=( compiler-rt cmake llvm/cmake )
+LLVM_COMPONENTS=( runtimes compiler-rt cmake llvm/cmake )
 LLVM_PATCHSET=9999-1
 llvm.org_set_globals
 
@@ -70,7 +70,6 @@ src_configure() {
 	# pre-set since we need to pass it to cmake
 	BUILD_DIR=${WORKDIR}/${P}_build
 
-	local nolib_flags=( -nodefaultlibs -nostartfiles -lc )
 	if use clang; then
 		# Only do this conditionally to allow overriding with
 		# e.g. CC=clang-13 in case of breakage
@@ -79,18 +78,14 @@ src_configure() {
 			local -x CXX=${CHOST}-clang++
 		fi
 		strip-unsupported-flags
-		# ensure we can use clang before installing compiler-rt
-		local -x LDFLAGS="${LDFLAGS} ${nolib_flags[*]}"
-	elif ! test_compiler; then
-		if test_compiler "${nolib_flags[@]}"; then
-			local -x LDFLAGS="${LDFLAGS} ${nolib_flags[*]}"
-			ewarn "${CC} seems to lack runtime, trying with ${nolib_flags[*]}"
-		fi
 	fi
 
 	local mycmakeargs=(
-		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${SLOT}"
+		-DLLVM_ENABLE_RUNTIMES=compiler-rt
+		# this only adds unnecessary req on llvm-lit directory
+		-DLLVM_INCLUDE_TESTS=OFF
 
+		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${SLOT}"
 		-DCOMPILER_RT_INCLUDE_TESTS=$(usex test)
 		-DCOMPILER_RT_BUILD_LIBFUZZER=OFF
 		-DCOMPILER_RT_BUILD_MEMPROF=OFF
