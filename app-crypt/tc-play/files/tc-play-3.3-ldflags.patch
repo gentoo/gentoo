@@ -1,0 +1,11 @@
+--- a/Makefile.classic
++++ b/Makefile.classic
+@@ -84,7 +84,7 @@ all: tcplay libtcplay.so libtcplay.a
+ 	$(CC) $(COMMON_CFLAGS) $(CFLAGS)   -c -o $@ $<
+ 
+ tcplay: $(OBJS_PROG)
+-	$(CC) $(COMMON_CFLAGS) $(CFLAGS)   -o tcplay $(OBJS_PROG) $(LIBS)
++	$(CC) $(COMMON_CFLAGS) $(CFLAGS)   -o tcplay $(LDFLAGS) $(OBJS_PROG) $(LIBS)
+ 
+ libtcplay.so.$(MAJ_VER).$(MIN_VER): $(OBJS_LIB)
+ 	$(CC) -shared -Wl,-version-script=tcplay.map -Wl,-soname=libtcplay.so.$(MAJ_VER).$(MIN_VER)  $(LDFLAGS) \
