@@ -1,6 +1,6 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -384,7 +384,7 @@
+@@ -464,7 +464,7 @@ endif()
  option(PREFER_LUA "Prefer Lua over LuaJIT in the nvim executable." OFF)
  
  if(PREFER_LUA)
