@@ -29,6 +29,10 @@ BDEPEND="
 	|| ( sys-apps/util-linux app-misc/getopt )
 	test? ( ${RDEPEND} )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-rcd-plain-name.patch
+)
+
 src_configure() {
 	local emesonargs=(
 		-Ddocdir=${PF}
