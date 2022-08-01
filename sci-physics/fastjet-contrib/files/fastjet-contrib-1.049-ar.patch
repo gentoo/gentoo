@@ -1,0 +1,247 @@
+--- a/Centauro/Makefile
++++ b/Centauro/Makefile
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+--- a/ClusteringVetoPlugin/Makefile
++++ b/ClusteringVetoPlugin/Makefile
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+--- a/ConstituentSubtractor/Makefile
++++ b/ConstituentSubtractor/Makefile
+@@ -41,8 +41,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+--- a/EnergyCorrelator/Makefile
++++ b/EnergyCorrelator/Makefile
+@@ -40,8 +40,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS)
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+--- a/FlavorCone/Makefile	
++++ b/FlavorCone/Makefile
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+--- a/GenericSubtractor/Makefile
++++ b/GenericSubtractor/Makefile
+@@ -38,8 +38,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+--- a/JetCleanser/Makefile
++++ b/JetCleanser/Makefile
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+--- a/JetFFMoments/Makefile
++++ b/JetFFMoments/Makefile
+@@ -34,8 +34,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ examples: example
+ 
+--- a/JetsWithoutJets/Makefile
++++ b/JetsWithoutJets/Makefile
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+--- a/LundPlane/Makefile
++++ b/LundPlane/Makefile
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+--- a/Nsubjettiness/Makefile
++++ b/Nsubjettiness/Makefile
+@@ -40,8 +40,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS)
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES) $(EXAMPLES2)
+--- a/QCDAwarePlugin/Makefile	
++++ b/QCDAwarePlugin/Makefile
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+--- a/RecursiveTools/Makefile
++++ b/RecursiveTools/Makefile
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+--- a/ScJet/Makefile
++++ b/ScJet/Makefile
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+--- a/scripts/internal/Template/Makefile
++++ b/scripts/internal/Template/Makefile
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+--- a/SoftKiller/Makefile
++++ b/SoftKiller/Makefile
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+--- a/SubjetCounting/Makefile
++++ b/SubjetCounting/Makefile
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+--- a/ValenciaPlugin/Makefile
++++ b/ValenciaPlugin/Makefile
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
+--- a/VariableR/Makefile
++++ b/VariableR/Makefile
+@@ -39,8 +39,8 @@
+ all: lib$(NAME).a
+ 
+ lib$(NAME).a: $(OBJS) 
+-	ar cru lib$(NAME).a $(OBJS)
+-	ranlib lib$(NAME).a
++	$(AR) cru lib$(NAME).a $(OBJS)
++	$(RANLIB) lib$(NAME).a
+ 
+ # building the examples
+ examples: $(EXAMPLES)
