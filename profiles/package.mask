@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2022-08-01)
+# Suricata-5 has reached end of life upstream. Please switch to major version 6.
+# Removal in 30 days (Bug #)
+<net-analyzer/suricata-6.0.0
+
 # Matthew Smith <matthew@gentoo.org> (2022-07-31)
 # No updates since 2010, dead homepage, and incompatible with newer
 # sci-libs/gsl. Bug #862486. Removal on 2022-08-31.
