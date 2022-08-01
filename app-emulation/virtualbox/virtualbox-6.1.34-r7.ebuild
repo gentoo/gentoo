@@ -1,27 +1,49 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
+# To add a new Python here:
+# 1. Patch src/libs/xpcom18a4/python/Makefile.kmk (copy the previous impl's logic)
+#    Do NOT skip this part. It'll end up silently not-building the Python extension
+#    or otherwise misbehaving if you do.
+#
+# 2. Then update PYTHON_COMPAT & set PYTHON_SINGLE_TARGET for testing w/ USE=python.
+#
+#  May need to look at other distros (e.g. Arch Linux) to find patches for newer
+#  Python versions as upstream tends to lag. Upstream may have patches on their
+#  trunk branch but not release branch.
+#
+#  See bug #785835, bug #856121.
 PYTHON_COMPAT=( python3_{8..10} )
-inherit desktop flag-o-matic java-pkg-opt-2 linux-info pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg
+
+inherit desktop edo java-pkg-opt-2 linux-info multilib optfeature pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg
 
 MY_PN="VirtualBox"
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
 MY_P=${MY_PN}-${MY_PV}
-[[ "${PV}" == *a ]] && DIR_PV="$(ver_cut 1-3)"
+[[ ${PV} == *a ]] && DIR_PV="$(ver_cut 1-3)"
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${DIR_PV:-${MY_PV}}/${MY_P}.tar.bz2
 	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-6.1.12-patches-01.tar.xz"
+S="${WORKDIR}/${MY_PN}-${DIR_PV:-${MY_PV}}"
 
 LICENSE="GPL-2 dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
-[[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="amd64"
-IUSE="alsa debug doc dtrace headless java lvm +opus pam pax-kernel pch pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
+if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
+	KEYWORDS="amd64"
+fi
+IUSE="alsa debug doc dtrace headless java lvm +opus pam pax-kernel pch pulseaudio +opengl python +qt5 +sdk +sdl +udev vboxwebsrv vnc"
+
+REQUIRED_USE="
+	java? ( sdk )
+	python? ( sdk )
+	vboxwebsrv? ( java )
+	${PYTHON_REQUIRED_USE}
+"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
@@ -36,7 +58,7 @@ COMMON_DEPEND="
 	media-libs/libvpx:0=
 	sys-libs/zlib:=
 	!headless? (
-		media-libs/libsdl:0[X,video]
+		sdl? ( media-libs/libsdl:0[X,video] )
 		x11-libs/libX11
 		x11-libs/libxcb:=
 		x11-libs/libXcursor
@@ -64,6 +86,16 @@ COMMON_DEPEND="
 	udev? ( >=virtual/udev-171 )
 	vnc? ( >=net-libs/libvncserver-0.9.9 )
 "
+# We're stuck on JDK (and JRE, I guess?) 1.8 because of need for wsimport
+# with USE="vboxwebsrv java". Note that we have to put things in DEPEND,
+# not (only, anyway) BDEPEND, as the eclass magic to set the environment variables
+# based on *DEPEND doesn't work for BDEPEND at least right now.
+#
+# There's a comment in Config.kmk about it
+# ("With Java 11 wsimport was removed, usually part of a separate install now.")
+# but it needs more investigation.
+#
+# See bug #832166.
 DEPEND="
 	${COMMON_DEPEND}
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
@@ -71,16 +103,17 @@ DEPEND="
 		x11-libs/libXinerama
 		opengl? ( virtual/opengl )
 	)
+	java? ( virtual/jdk:1.8 )
 	pam? ( sys-libs/pam )
 	pax-kernel? ( sys-apps/elfix )
 	pulseaudio? ( media-sound/pulseaudio )
-	qt5? ( dev-qt/linguist-tools:5 )
 	vboxwebsrv? ( net-libs/gsoap[-gnutls(-)] )
 "
 BDEPEND="
 	${PYTHON_DEPS}
 	>=dev-util/kbuild-0.1.9998.3127
 	>=dev-lang/yasm-0.6.2
+	sys-apps/which
 	sys-devel/bin86
 	sys-libs/libcap
 	sys-power/iasl
@@ -94,53 +127,59 @@ BDEPEND="
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-fontsextra
 	)
-	java? ( >=virtual/jdk-1.8 )
+	java? ( virtual/jdk:1.8 )
+	qt5? ( dev-qt/linguist-tools:5 )
 "
 RDEPEND="
 	${COMMON_DEPEND}
-	java? ( >=virtual/jre-1.6 )
+	java? ( virtual/jre:1.8 )
 "
 
-QA_TEXTRELS_x86="usr/lib/virtualbox-ose/VBoxGuestPropSvc.so
-	usr/lib/virtualbox/VBoxSDL.so
-	usr/lib/virtualbox/VBoxSharedFolders.so
-	usr/lib/virtualbox/VBoxDD2.so
-	usr/lib/virtualbox/VBoxOGLrenderspu.so
-	usr/lib/virtualbox/VBoxPython.so
-	usr/lib/virtualbox/VBoxDD.so
-	usr/lib/virtualbox/VBoxDDU.so
-	usr/lib/virtualbox/VBoxREM64.so
-	usr/lib/virtualbox/VBoxSharedClipboard.so
-	usr/lib/virtualbox/VBoxHeadless.so
-	usr/lib/virtualbox/VBoxRT.so
-	usr/lib/virtualbox/VBoxREM.so
-	usr/lib/virtualbox/VBoxSettings.so
-	usr/lib/virtualbox/VBoxKeyboard.so
-	usr/lib/virtualbox/VBoxSharedCrOpenGL.so
-	usr/lib/virtualbox/VBoxVMM.so
-	usr/lib/virtualbox/VirtualBox.so
-	usr/lib/virtualbox/VBoxOGLhosterrorspu.so
-	usr/lib/virtualbox/components/VBoxC.so
-	usr/lib/virtualbox/components/VBoxSVCM.so
-	usr/lib/virtualbox/components/VBoxDDU.so
-	usr/lib/virtualbox/components/VBoxRT.so
-	usr/lib/virtualbox/components/VBoxREM.so
-	usr/lib/virtualbox/components/VBoxVMM.so
-	usr/lib/virtualbox/VBoxREM32.so
-	usr/lib/virtualbox/VBoxPython2_7.so
-	usr/lib/virtualbox/VBoxXPCOMC.so
-	usr/lib/virtualbox/VBoxOGLhostcrutil.so
-	usr/lib/virtualbox/VBoxNetDHCP.so
-	usr/lib/virtualbox/VBoxNetNAT.so"
-
-S="${WORKDIR}/${MY_PN}-${DIR_PV:-${MY_PV}}"
-
-REQUIRED_USE="
-	java? ( sdk )
-	python? ( sdk )
-	vboxwebsrv? ( java )
-	${PYTHON_REQUIRED_USE}
+QA_FLAGS_IGNORED="
+	usr/lib64/virtualbox/VBoxDDR0.r0
+	usr/lib64/virtualbox/VMMR0.r0
 "
+
+QA_TEXTRELS="
+	usr/lib64/virtualbox/VMMR0.r0
+"
+
+QA_EXECSTACK="
+	usr/lib64/virtualbox/iPxeBaseBin
+	usr/lib64/virtualbox/VMMR0.r0
+	usr/lib64/virtualbox/VBoxDDR0.r0
+"
+
+QA_WX_LOAD="
+	usr/lib64/virtualbox/iPxeBaseBin
+"
+
+QA_PRESTRIPPED="
+	usr/lib64/virtualbox/VMMR0.r0
+	usr/lib64/virtualbox/VBoxDDR0.r0
+"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-vboxr0.patch
+
+	# Upstream patch for USE=-pam
+	# bug #843437
+	"${FILESDIR}"/${PN}-6.1.34-no-pam.patch
+
+	"${FILESDIR}"/${PN}-6.1.26-configure-include-qt5-path.patch # bug #805365
+
+	# This patch is needed to avoid automagic detection based on a hardcoded
+	# list of Pythons in configure. It's necessary but not sufficient
+	# (see the rest of the ebuild's logic for the remainder) to handle
+	# proper Python selection.
+	"${FILESDIR}"/${PN}-6.1.34-r3-python.patch
+
+	# Patch grabbed from Arch Linux / upstream for Python 3.10 support
+	"${FILESDIR}"/${PN}-6.1.34-r3-python3.10.patch
+
+	# Downloaded patchset
+	"${WORKDIR}"/patches
+)
 
 pkg_pretend() {
 	if ! use headless && ! use qt5 ; then
@@ -163,17 +202,25 @@ pkg_pretend() {
 pkg_setup() {
 	java-pkg-opt-2_pkg_setup
 	python-single-r1_pkg_setup
-
-	tc-ld-disable-gold #bug 488176
-	tc-export CC CXX LD AR RANLIB
-	export HOST_CC="$(tc-getBUILD_CC)"
 }
 
 src_prepare() {
-	# Remove shipped binaries (kBuild,yasm), see bug #232775
+	default
+
+	# Only add nopie patch when we're on hardened
+	if gcc-specs-pie ; then
+		eapply "${FILESDIR}"/050_virtualbox-5.2.8-nopie.patch
+	fi
+
+	# Only add paxmark patch when we're on pax-kernel
+	if use pax-kernel ; then
+		eapply "${FILESDIR}"/virtualbox-5.2.8-paxmark-bldprogs.patch
+	fi
+
+	# Remove shipped binaries (kBuild, yasm), see bug #232775
 	rm -r kBuild/bin tools || die
 
-	# Replace pointless GCC version check with something less stupid.
+	# Replace pointless GCC version check with something more sensible.
 	# This is needed for the qt5 version check.
 	sed -e 's@^check_gcc$@cc_maj="$(${CC} -dumpversion | cut -d. -f1)" ; cc_min="$(${CC} -dumpversion | cut -d. -f2)"@' \
 		-i configure || die
@@ -210,35 +257,21 @@ src_prepare() {
 			-i "${S}"/Config.kmk || die
 		java-pkg-opt-2_src_prepare
 	fi
-
-	# Only add nopie patch when we're on hardened
-	if gcc-specs-pie ; then
-		eapply "${FILESDIR}/050_virtualbox-5.2.8-nopie.patch"
-	fi
-
-	# Only add paxmark patch when we're on pax-kernel
-	if use pax-kernel ; then
-		eapply "${FILESDIR}"/virtualbox-5.2.8-paxmark-bldprogs.patch
-	fi
-
-	eapply "${FILESDIR}/${PN}-6.1.26-configure-include-qt5-path.patch" #805365
-
-	eapply "${WORKDIR}/patches"
-
-	default
-}
-
-doecho() {
-	echo "$@"
-	"$@" || die
 }
 
 src_configure() {
+	tc-ld-disable-gold # bug #488176
+
+	tc-export AR CC CXX LD RANLIB
+	export HOST_CC="$(tc-getBUILD_CC)"
+
 	local myconf=(
 		--with-gcc="$(tc-getCC)"
 		--with-g++="$(tc-getCXX)"
+
 		--disable-dbus
 		--disable-kmods
+
 		$(usex alsa '' --disable-alsa)
 		$(usex debug --build-debug '')
 		$(usex doc '' --disable-docs)
@@ -250,9 +283,11 @@ src_configure() {
 		$(usex vboxwebsrv --enable-webservice '')
 		$(usex vnc --enable-vnc '')
 	)
+
 	if ! use headless ; then
 		myconf+=(
 			$(usex opengl '' --disable-opengl)
+			$(usex sdl '' --disable-sdl)
 			$(usex qt5 '' --disable-qt)
 		)
 	else
@@ -261,27 +296,108 @@ src_configure() {
 			--disable-opengl
 		)
 	fi
+
 	if use amd64 && ! has_multilib_profile ; then
 		myconf+=( --disable-vmmraw )
 	fi
 	# not an autoconf script
-	doecho ./configure "${myconf[@]}"
+	edo ./configure "${myconf[@]}"
+
+	# Force usage of chosen Python implementation
+	# bug #856121, bug #785835
+	sed -i \
+		-e '/VBOX_WITH_PYTHON.*=/d' \
+		-e '/VBOX_PATH_PYTHON_INC.*=/d' \
+		-e '/VBOX_LIB_PYTHON.*=/d' \
+		AutoConfig.kmk || die
+
+	cat >> AutoConfig.kmk <<-EOF || die
+		VBOX_WITH_PYTHON=$(usev python 1)
+		VBOX_PATH_PYTHON_INC=$(python_get_includedir)
+		VBOX_LIB_PYTHON=$(python_get_library_path)
+	EOF
+
+	if use python ; then
+		local mangled_python="${EPYTHON#python}"
+		mangled_python="${mangled_python/.}"
+
+		# Stub out the script which defines what the Makefile ends up
+		# building for. gen_python_deps.py gets called by the Makefile
+		# with some args and it spits out a bunch of paths for a hardcoded
+		# list of Pythons. We just override it with what we're actually using.
+		# This minimises the amount of patching we have to do for new Pythons.
+		cat > src/libs/xpcom18a4/python/gen_python_deps.py <<-EOF || die
+			print("VBOX_PYTHON${mangled_python}_INC=$(python_get_includedir)")
+			print("VBOX_PYTHON${mangled_python}_LIB=$(python_get_library_path)")
+			print("VBOX_PYTHONDEF_INC=$(python_get_includedir)")
+			print("VBOX_PYTHONDEF_LIB=$(python_get_library_path)")
+		EOF
+
+		chmod +x src/libs/xpcom18a4/python/gen_python_deps.py || die
+	fi
 }
 
 src_compile() {
 	source ./env.sh || die
 
 	# Force kBuild to respect C[XX]FLAGS and MAKEOPTS (bug #178529)
-	MAKEJOBS=$(grep -Eo '(\-j|\-\-jobs)(=?|[[:space:]]*)[[:digit:]]+' <<< ${MAKEOPTS}) #'
-	MAKELOAD=$(grep -Eo '(\-l|\-\-load-average)(=?|[[:space:]]*)[[:digit:]]+' <<< ${MAKEOPTS}) #'
+	MAKEJOBS=$(grep -Eo '(\-j|\-\-jobs)(=?|[[:space:]]*)[[:digit:]]+' <<< ${MAKEOPTS})
+	MAKELOAD=$(grep -Eo '(\-l|\-\-load-average)(=?|[[:space:]]*)[[:digit:]]+' <<< ${MAKEOPTS})
 	MAKEOPTS="${MAKEJOBS} ${MAKELOAD}"
-	MAKE="kmk" emake \
-		VBOX_BUILD_PUBLISHER=_Gentoo \
-		TOOL_GXX3_CC="$(tc-getCC)" TOOL_GXX3_CXX="$(tc-getCXX)" \
-		TOOL_GXX3_LD="$(tc-getCXX)" VBOX_GCC_OPT="${CXXFLAGS}" \
-		TOOL_YASM_AS=yasm KBUILD_VERBOSE=2 \
-		VBOX_WITH_VBOXIMGMOUNT=1 \
-		all
+
+	local myemakeargs=(
+		VBOX_BUILD_PUBLISHER=_Gentoo
+		VBOX_WITH_VBOXIMGMOUNT=1
+
+		KBUILD_VERBOSE=2
+
+		AS="$(tc-getCC)"
+		CC="$(tc-getCC)"
+		CXX="$(tc-getCXX)"
+
+		TOOL_GCC3_CC="$(tc-getCC)"
+		TOOL_GCC3_LD="$(tc-getCC)"
+		TOOL_GCC3_AS="$(tc-getCC)"
+		TOOL_GCC3_AR="$(tc-getAR)"
+		TOOL_GCC3_OBJCOPY="$(tc-getOBJCOPY)"
+
+		TOOL_GXX3_CC="$(tc-getCC)"
+		TOOL_GXX3_CXX="$(tc-getCXX)"
+		TOOL_GXX3_LD="$(tc-getCXX)"
+		TOOL_GXX3_AS="$(tc-getCXX)"
+		TOOL_GXX3_AR="$(tc-getAR)"
+		TOOL_GXX3_OBJCOPY="$(tc-getOBJCOPY)"
+
+		TOOL_GCC3_CFLAGS="${CFLAGS}"
+		TOOL_GCC3_CXXFLAGS="${CXXFLAGS}"
+		VBOX_GCC_OPT="${CXXFLAGS}"
+		VBOX_NM="$(tc-getNM)"
+
+		TOOL_YASM_AS=yasm
+	)
+
+	if use amd64 && has_multilib_profile ; then
+		myemakeargs+=(
+			CC32="$(tc-getCC) -m32"
+			CXX32="$(tc-getCXX) -m32"
+
+			TOOL_GCC32_CC="$(tc-getCC) -m32"
+			TOOL_GCC32_CXX="$(tc-getCXX) -m32"
+			TOOL_GCC32_LD="$(tc-getCC) -m32"
+			TOOL_GCC32_AS="$(tc-getCC) -m32"
+			TOOL_GCC32_AR="$(tc-getAR)"
+			TOOL_GCC32_OBJCOPY="$(tc-getOBJCOPY)"
+
+			TOOL_GXX32_CC="$(tc-getCC) -m32"
+			TOOL_GXX32_CXX="$(tc-getCXX) -m32"
+			TOOL_GXX32_LD="$(tc-getCXX) -m32"
+			TOOL_GXX32_AS="$(tc-getCXX) -m32"
+			TOOL_GXX32_AR="$(tc-getAR)"
+			TOOL_GXX32_OBJCOPY="$(tc-getOBJCOPY)"
+		)
+	fi
+
+	MAKE="kmk" emake "${myemakeargs[@]}" all
 }
 
 src_install() {
@@ -360,12 +476,14 @@ src_install() {
 
 	if ! use headless ; then
 		vbox_inst rdesktop-vrdp
-		vbox_inst VBoxSDL 4750
-		pax-mark -m "${ED}"${vbox_inst_path}/VBoxSDL
+		if use sdl ; then
+			vbox_inst VBoxSDL 4750
+			pax-mark -m "${ED}"${vbox_inst_path}/VBoxSDL
 
-		for each in vboxsdl VBoxSDL ; do
-			dosym ${vbox_inst_path}/VBox /usr/bin/${each}
-		done
+			for each in vboxsdl VBoxSDL ; do
+				dosym ${vbox_inst_path}/VBox /usr/bin/${each}
+			done
+		fi
 
 		if use qt5 ; then
 			vbox_inst VirtualBox
@@ -426,14 +544,18 @@ src_install() {
 
 	if use udev ; then
 		local udevdir="$(get_udevdir)"
+		local udev_file="VBoxCreateUSBNode.sh"
+		local rules_file="10-virtualbox.rules"
+
 		insinto ${udevdir}
-		doins VBoxCreateUSBNode.sh
-		fowners root:vboxusers ${udevdir}/VBoxCreateUSBNode.sh
-		fperms 0750 ${udevdir}/VBoxCreateUSBNode.sh
+		doins ${udev_file}
+		fowners root:vboxusers ${udevdir}/${udev_file}
+		fperms 0750 ${udevdir}/${udev_file}
+
 		insinto ${udevdir}/rules.d
-		sed "s@%UDEVDIR%@${udevdir}@" "${FILESDIR}"/10-virtualbox.rules \
-			> "${T}"/10-virtualbox.rules || die
-		doins "${T}"/10-virtualbox.rules
+		sed "s@%UDEVDIR%@${udevdir}@" "${FILESDIR}"/${rules_file} \
+			> "${T}"/${rules_file} || die
+		doins "${T}"/${rules_file}
 	fi
 
 	if use vboxwebsrv ; then
@@ -468,6 +590,19 @@ src_install() {
 		dodoc UserManual.pdf
 	fi
 
+	if use python ; then
+		local mangled_python="${EPYTHON#python}"
+		mangled_python="${mangled_python/./_}"
+
+		local python_path_ext="${ED}/usr/$(get_libdir)/virtualbox/VBoxPython${mangled_python}.so"
+		if [[ ! -x "${python_path_ext}" ]] ; then
+			eerror "Couldn't find ${python_path_ext}! Bindings were requested with USE=python"
+			eerror "but none were installed. This may happen if support for a Python target"
+			eerror "(listed in PYTHON_COMPAT in the ebuild) is incomplete within the Makefiles."
+			die "Incomplete installation of Python bindings! File a bug with Gentoo!"
+		fi
+	fi
+
 	newtmpfiles "${FILESDIR}"/${PN}-vboxusb_tmpfilesd ${PN}-vboxusb.conf
 }
 
@@ -475,8 +610,8 @@ pkg_postinst() {
 	xdg_pkg_postinst
 
 	if use udev ; then
-		udevadm control --reload-rules \
-			&& udevadm trigger --subsystem-match=usb
+		udevadm control --reload-rules
+		udevadm trigger --subsystem-match=usb
 	fi
 
 	tmpfiles_process virtualbox-vboxusb.conf
@@ -484,31 +619,18 @@ pkg_postinst() {
 	if ! use headless && use qt5 ; then
 		elog "To launch VirtualBox just type: \"virtualbox\"."
 	fi
+
 	elog "You must be in the vboxusers group to use VirtualBox."
 	elog ""
 	elog "The latest user manual is available for download at:"
-	elog "http://download.virtualbox.org/virtualbox/${DIR_PV:-${PV}}/UserManual.pdf"
+	elog "https://download.virtualbox.org/virtualbox/${DIR_PV:-${PV}}/UserManual.pdf"
 	elog ""
-	elog "For advanced networking setups you should emerge:"
-	elog "net-misc/bridge-utils and sys-apps/usermode-utilities"
-	elog ""
-	elog "Starting with version 4.0.0, ${PN} has USB-1 support."
-	elog "For USB-2 support, PXE-boot ability and VRDP support please emerge"
-	elog "  app-emulation/virtualbox-extpack-oracle"
-	elog "package."
-	elog "Starting with version 5.0.0, ${PN} no longer has the \"additions\" and"
-	elog "the \"extension\" USE flag. For installation of the guest additions ISO"
-	elog "image, please emerge"
-	elog "  app-emulation/virtualbox-additions"
-	elog "and for the USB2, USB3, VRDP and PXE boot ROM modules, please emerge"
-	elog "  app-emulation/virtualbox-extpack-oracle"
+
+	optfeature "Advanced networking setups" net-misc/bridge-utils sys-apps/usermode-utilities
+	optfeature "USB2, USB3, PXE boot, and VRDP support" app-emulation/virtualbox-extpack-oracle
+	optfeature "Guest additions ISO" app-emulation/virtualbox-additions
+
 	if ! use udev ; then
-		elog ""
-		elog "WARNING!"
-		elog "Without USE=udev, USB devices will likely not work in ${PN}."
-	elif [[ -e "${ROOT}/etc/udev/rules.d/10-virtualbox.rules" ]] ; then
-		elog ""
-		elog "Please remove \"${ROOT}/etc/udev/rules.d/10-virtualbox.rules\""
-		elog "or else USB in ${PN} won't work."
+		ewarn "Without USE=udev, USB devices will likely not work in ${PN}."
 	fi
 }
