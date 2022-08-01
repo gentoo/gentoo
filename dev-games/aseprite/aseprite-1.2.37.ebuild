@@ -3,7 +3,9 @@
 
 EAPI=8
 
-inherit cmake desktop ninja-utils toolchain-funcs xdg-utils
+PYTHON_COMPAT=( python3_{8..11} )
+
+inherit cmake desktop ninja-utils python-any-r1 toolchain-funcs xdg-utils
 
 SKIA_VER="m102"
 # Last commit in ${SKIA_VER} feature branch
@@ -48,6 +50,7 @@ RDEPEND="
 	webp? ( media-libs/libwebp:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="
+	${PYTHON_DEPS}
 	test? ( dev-cpp/gtest )
 	app-arch/unzip
 	dev-util/gn
