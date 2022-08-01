@@ -47,7 +47,6 @@ src_install() {
 
 	if use doc; then
 		emake -C doc html
-		rm -R "${ED}"/usr/share/doc/rcs || die
 		mv doc/rcs.html doc/html || die
 		dodoc -r doc/html/
 	fi
