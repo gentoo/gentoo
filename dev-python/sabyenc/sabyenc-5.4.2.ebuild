@@ -9,7 +9,10 @@ inherit distutils-r1
 
 DESCRIPTION="Module providing raw yEnc encoding/decoding for SABnzbd"
 HOMEPAGE="https://github.com/sabnzbd/sabyenc"
-SRC_URI="https://github.com/sabnzbd/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/sabnzbd/${PN}/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="LGPL-3"
 SLOT="0"
