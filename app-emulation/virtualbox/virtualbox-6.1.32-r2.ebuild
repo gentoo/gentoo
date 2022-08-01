@@ -21,7 +21,7 @@ LICENSE="GPL-2 dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
 [[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
 KEYWORDS="amd64"
-IUSE="alsa debug doc dtrace headless java lvm +opus pam pax-kernel pch pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
+IUSE="alsa debug doc dtrace headless java lvm +opus pam pax-kernel pch pulseaudio +opengl python +qt5 +sdk +sdl +udev vboxwebsrv vnc"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
@@ -36,7 +36,7 @@ COMMON_DEPEND="
 	media-libs/libvpx:0=
 	sys-libs/zlib:=
 	!headless? (
-		media-libs/libsdl:0[X,video]
+		sdl? ( media-libs/libsdl:0[X,video] )
 		x11-libs/libX11
 		x11-libs/libxcb:=
 		x11-libs/libXcursor
@@ -253,6 +253,7 @@ src_configure() {
 	if ! use headless ; then
 		myconf+=(
 			$(usex opengl '' --disable-opengl)
+			$(usex sdl '' --disable-sdl)
 			$(usex qt5 '' --disable-qt)
 		)
 	else
@@ -360,12 +361,14 @@ src_install() {
 
 	if ! use headless ; then
 		vbox_inst rdesktop-vrdp
-		vbox_inst VBoxSDL 4750
-		pax-mark -m "${ED}"${vbox_inst_path}/VBoxSDL
+		if use sdl ; then
+			vbox_inst VBoxSDL 4750
+			pax-mark -m "${ED}"${vbox_inst_path}/VBoxSDL
 
-		for each in vboxsdl VBoxSDL ; do
-			dosym ${vbox_inst_path}/VBox /usr/bin/${each}
-		done
+			for each in vboxsdl VBoxSDL ; do
+				dosym ${vbox_inst_path}/VBox /usr/bin/${each}
+			done
+		fi
 
 		if use qt5 ; then
 			vbox_inst VirtualBox
