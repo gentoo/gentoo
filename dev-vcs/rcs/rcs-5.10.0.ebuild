@@ -38,10 +38,6 @@ src_configure() {
 }
 
 src_test() {
-	emake check
-}
-
-src_test() {
 	# Tests attempt to call rcs commands on /dev/null and /tmp.
 	# https://bugs.gentoo.org/840173
 	local -x SANDBOX_PREDICT=${SANDBOX_PREDICT}
