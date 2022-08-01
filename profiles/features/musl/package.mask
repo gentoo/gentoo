@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2022-08-01)
+# Fails to build.
+app-emulation/open-vm-tools
+
 # William Hubbs <williamh@gentoo.org> (2022-07-30)
 # Binary package linked against glibc, bug #861893.
 app-admin/awscli-bin
