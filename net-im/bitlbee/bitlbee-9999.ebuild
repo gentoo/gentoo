@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://get.bitlbee.org/src/${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
 DESCRIPTION="irc to IM gateway that support multiple IM protocols"
@@ -36,6 +36,7 @@ COMMON_DEPEND="
 	acct-group/bitlbee
 	acct-user/bitlbee
 	dev-libs/glib:2
+	dev-libs/json-parser:=
 	purple? ( net-im/pidgin )
 	libevent? ( dev-libs/libevent:= )
 	otr? ( >=net-libs/libotr-4 )
@@ -61,7 +62,8 @@ BDEPEND="${PYTHON_DEPS}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.5-systemd-user.patch
+	"${FILESDIR}/${PN}-3.5-systemd-user.patch"
+	"${FILESDIR}/${P}-system-json-parser.patch"
 )
 
 src_configure() {
@@ -112,8 +114,9 @@ src_configure() {
 		--datadir=/usr/share/bitlbee \
 		--etcdir=/etc/bitlbee \
 		--libdir=/usr/$(get_libdir) \
-		--plugindir=/usr/$(get_libdir)/bitlbee \
 		--pcdir=/usr/$(get_libdir)/pkgconfig \
+		--plugindir=/usr/$(get_libdir)/bitlbee \
+		--externaljsonparser=1 \
 		--systemdsystemunitdir=$(systemd_get_systemunitdir) \
 		--doc=1 \
 		--strip=0 \
