@@ -31,6 +31,8 @@ DEPEND="${CDEPEND}
 	x11-base/xorg-proto
 "
 
+PATCHES=( "${FILESDIR}/${PN}-0.17-musl.patch" )
+
 src_configure() {
 	local myconf=(
 		$(use_enable cdaudio)
