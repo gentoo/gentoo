@@ -164,7 +164,7 @@ src_install() {
 	rm -r "${ED}"/etc || die "rm failed"
 	find "${D}" -name '*.la' -delete || die "Removing .la files failed"
 
-	newinitd ${PN}.init ${PN}
+	newinitd "${FILESDIR}"/${PN}.init ${PN}
 	newconfd "${FILESDIR}"/${PN}.conf ${PN}
 }
 
