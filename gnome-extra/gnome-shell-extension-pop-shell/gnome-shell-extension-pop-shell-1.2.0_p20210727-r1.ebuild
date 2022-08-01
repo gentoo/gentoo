@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -53,7 +53,7 @@ pkg_postinst() {
 	optfeature gnome-extra/gnome-shell-extensions "better tiling via native-window-placement"
 }
 
-pkg_postinst() {
+pkg_postrm() {
 	ebegin "Updating list of installed extensions"
 	eselect gnome-shell-extensions update
 	eend $?
