@@ -17,11 +17,12 @@ KEYWORDS="~amd64 ~x64-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="test? ( app-emacs/ert-runner )"
+BDEPEND="test? ( app-emacs/f )"
 
 DOCS=( README.md )
 SITEFILE="50epl-gentoo.el"
 
 src_test() {
-	ert-runner --reporter ert+duration --script || die
+	${EMACS} ${EMACSFLAGS} -L . -L test -l epl.el -l test/epl-test.el \
+		-f ert-run-tests-batch-and-exit || die
 }
