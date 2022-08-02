@@ -1,0 +1,71 @@
+From 5976d0349c1900e2649b7d2904d98ba6a7278e6b Mon Sep 17 00:00:00 2001
+From: Wolfgang Bumiller <w.bumiller@proxmox.com>
+Date: Fri, 29 Jul 2022 09:30:10 +0200
+Subject: [PATCH] fix reinitialization with fuse3
+
+With fuse3 `fuse_get_context` returns NULL before fuse was
+fully initialized, so we must not access it.
+
+Futher, we call 'do_reload' for normal initialization as
+well, so let's prevent that from re-initializing the
+bindings initially and only do this on actual reloads,
+otherwise we do it twice on startup.
+
+Signed-off-by: Wolfgang Bumiller <w.bumiller@proxmox.com>
+Fixes #549
+---
+ src/bindings.c | 2 +-
+ src/lxcfs.c    | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/bindings.c b/src/bindings.c
+index 422a6229..fee7ede0 100644
+--- a/src/bindings.c
++++ b/src/bindings.c
+@@ -943,5 +943,5 @@ void *lxcfs_fuse_init(struct fuse_conn_info *conn, void *data)
+ 	can_use_sys_cpu = true;
+ #endif
+ 	has_versioned_opts = true;
+-	return fc->private_data;
++	return fc ? fc->private_data : NULL;
+ }
+diff --git a/src/lxcfs.c b/src/lxcfs.c
+index d1a3d805..fed896c9 100644
+--- a/src/lxcfs.c
++++ b/src/lxcfs.c
+@@ -123,7 +123,7 @@ static int lxcfs_init_library(void)
+ 
+ /* do_reload - reload the dynamic library.  Done under
+  * lock and when we know the user_count was 0 */
+-static void do_reload(void)
++static void do_reload(bool reinit)
+ {
+ 	int ret;
+ 	char lxcfs_lib_path[PATH_MAX];
+@@ -164,7 +164,7 @@ static void do_reload(void)
+ 
+ good:
+ 	/* initialize the library */
+-	if (lxcfs_init_library() < 0) {
++	if (reinit && lxcfs_init_library() < 0) {
+ 		log_exit("Failed to initialize liblxcfs.so");
+ 	}
+ 
+@@ -180,7 +180,7 @@ static void up_users(void)
+ {
+ 	users_lock();
+ 	if (users_count == 0 && need_reload)
+-		do_reload();
++		do_reload(true);
+ 	users_count++;
+ 	users_unlock();
+ }
+@@ -1362,7 +1362,7 @@ int main(int argc, char *argv[])
+ 	fuse_argv[fuse_argc++] = new_argv[0];
+ 	fuse_argv[fuse_argc] = NULL;
+ 
+-	do_reload();
++	do_reload(false);
+ 	if (install_signal_handler(SIGUSR1, sigusr1_reload)) {
+ 		lxcfs_error("%s - Failed to install SIGUSR1 signal handler", strerror(errno));
+ 		goto out;
