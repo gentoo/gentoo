@@ -15,7 +15,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.ta
 
 LICENSE="BSD GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ppc64 ~riscv x86"
 IUSE="X +anthy curl eb emacs expat libffi gtk gtk2 kde l10n_ja l10n_ko l10n_zh-CN l10n_zh-TW libedit libnotify m17n-lib ncurses nls qt5 skk sqlite ssl static-libs xft"
 RESTRICT="test"
 REQUIRED_USE="gtk? ( X )
