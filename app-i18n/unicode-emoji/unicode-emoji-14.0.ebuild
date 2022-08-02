@@ -15,7 +15,7 @@ SRC_URI="${DATA_URI}/${PN#*-}-sequences.txt -> ${PN}-sequences-${PV}.txt
 
 LICENSE="unicode"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~ppc ppc64 ~riscv sparc x86"
 IUSE=""
 
 RDEPEND=""
