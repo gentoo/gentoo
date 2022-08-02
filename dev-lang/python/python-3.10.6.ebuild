@@ -24,9 +24,16 @@ SRC_URI="
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2"
+# ensurepip bundles pip and setuptools, and pip bundles a lot
+LICENSE+="
+	ensurepip? ( Apache-2.0 BSD BSD-2 ISC LGPL-2.1+ MIT MPL-2.0 PSF-2 )
+"
 SLOT="${PYVER}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="bluetooth build examples gdbm hardened libedit lto +ncurses pgo +readline +sqlite +ssl test tk wininst +xml"
+IUSE="
+	bluetooth build +ensurepip examples gdbm hardened libedit lto
+	+ncurses pgo +readline +sqlite +ssl test tk wininst +xml
+"
 RESTRICT="!test? ( test )"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
@@ -337,6 +344,9 @@ src_install() {
 		pax-mark m "${ED}/usr/bin/${abiver}"
 	fi
 
+	if ! use ensurepip; then
+		rm -r "${libdir}"/ensurepip || die
+	fi
 	use sqlite || rm -r "${libdir}/"{sqlite3,test/test_sqlite*} || die
 	use tk || rm -r "${ED}/usr/bin/idle${PYVER}" "${libdir}/"{idlelib,tkinter,test/test_tk*} || die
 
