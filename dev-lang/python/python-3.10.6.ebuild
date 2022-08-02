@@ -4,8 +4,8 @@
 EAPI="7"
 WANT_LIBTOOL="none"
 
-inherit autotools check-reqs flag-o-matic multiprocessing pax-utils \
-	python-utils-r1 toolchain-funcs verify-sig
+inherit autotools check-reqs flag-o-matic multiprocessing pax-utils
+inherit python-utils-r1 toolchain-funcs verify-sig
 
 MY_PV=${PV/_rc/rc}
 MY_P="Python-${MY_PV%_p*}"
@@ -13,7 +13,10 @@ PYVER=$(ver_cut 1-2)
 PATCHSET="python-gentoo-patches-${MY_PV}"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
-HOMEPAGE="https://www.python.org/"
+HOMEPAGE="
+	https://www.python.org/
+	https://github.com/python/cpython/
+"
 SRC_URI="
 	https://www.python.org/ftp/python/${PV%%_*}/${MY_P}.tar.xz
 	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz
@@ -28,7 +31,7 @@ SLOT="${PYVER}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="
 	bluetooth build +ensurepip examples gdbm hardened libedit lto
-	+ncurses pgo +readline +sqlite +ssl test tk wininst +xml
+	+ncurses pgo +readline +sqlite +ssl test tk +xml
 "
 RESTRICT="!test? ( test )"
 
@@ -79,7 +82,7 @@ BDEPEND="
 	!sys-devel/gcc[libffi(-)]
 "
 RDEPEND+="
-	build? ( app-misc/mime-types )
+	!build? ( app-misc/mime-types )
 "
 
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/python.org.asc
@@ -105,10 +108,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Ensure that internal copies of expat, libffi and zlib are not used.
-	rm -fr Modules/expat || die
-	rm -fr Modules/_ctypes/libffi* || die
-	rm -fr Modules/zlib || die
+	# Ensure that internal copies of expat and libffi are not used.
+	rm -r Modules/expat || die
+	rm -r Modules/_ctypes/libffi* || die
 
 	local PATCHES=(
 		"${WORKDIR}/${PATCHSET}"
@@ -116,12 +118,12 @@ src_prepare() {
 
 	default
 
-	sed -i -e "s:@@GENTOO_LIBDIR@@:$(get_libdir):g" \
-		setup.py || die "sed failed to replace @@GENTOO_LIBDIR@@"
+	# https://bugs.gentoo.org/850151
+	sed -i -e "s:@@GENTOO_LIBDIR@@:$(get_libdir):g" setup.py || die
 
-	# force correct number of jobs
+	# force the correct number of jobs
 	# https://bugs.gentoo.org/737660
-	local jobs=$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")
+	local jobs=$(makeopts_jobs)
 	sed -i -e "s:-j0:-j${jobs}:" Makefile.pre.in || die
 	sed -i -e "/self\.parallel/s:True:${jobs}:" setup.py || die
 
@@ -129,9 +131,11 @@ src_prepare() {
 }
 
 src_configure() {
-	local disable
 	# disable automagic bluetooth headers detection
-	use bluetooth || export ac_cv_header_bluetooth_bluetooth_h=no
+	if ! use bluetooth; then
+		local -x ac_cv_header_bluetooth_bluetooth_h=no
+	fi
+	local disable
 	use gdbm      || disable+=" gdbm"
 	use ncurses   || disable+=" _curses _curses_panel"
 	use readline  || disable+=" readline"
@@ -152,7 +156,6 @@ src_configure() {
 	fi
 
 	append-flags -fwrapv
-
 	filter-flags -malign-double
 
 	# https://bugs.gentoo.org/700012
@@ -161,29 +164,45 @@ src_configure() {
 	fi
 
 	# Export CXX so it ends up in /usr/lib/python3.X/config/Makefile.
-	tc-export CXX
+	# PKG_CONFIG needed for cross.
+	tc-export CXX PKG_CONFIG
 
 	# Fix implicit declarations on cross and prefix builds. Bug #674070.
-	use ncurses && append-cppflags -I"${ESYSROOT}"/usr/include/ncursesw
+	if use ncurses; then
+		append-cppflags -I"${ESYSROOT}"/usr/include/ncursesw
+	fi
 
-	local dbmliborder
+	local dbmliborder=
 	if use gdbm; then
 		dbmliborder+="${dbmliborder:+:}gdbm"
 	fi
 
 	if use pgo; then
-		local jobs=$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")
-		export PROFILE_TASK="-m test -j${jobs} --pgo-extended -x test_gdb -u-network"
+		local profile_task_flags=(
+			-m test
+			"-j$(makeopts_jobs)"
+			--pgo-extended
+			-x test_gdb
+			-u-network
 
-		# All of these seem to occasionally hang for PGO inconsistently
-		# They'll even hang here but be fine in src_test sometimes.
-		# bug #828535 (and related: bug #788022)
-		PROFILE_TASK+=" -x test_socket -x test_asyncio -x test_httpservers -x test_logging -x test_multiprocessing_fork -x test_xmlrpc"
+			# All of these seem to occasionally hang for PGO inconsistently
+			# They'll even hang here but be fine in src_test sometimes.
+			# bug #828535 (and related: bug #788022)
+			-x test_asyncio
+			-x test_httpservers
+			-x test_logging
+			-x test_multiprocessing_fork
+			-x test_socket
+			-x test_xmlrpc
+		)
 
 		if has_version "app-arch/rpm" ; then
 			# Avoid sandbox failure (attempts to write to /var/lib/rpm)
-			PROFILE_TASK+=" -x test_distutils"
+			profile_task_flags+=(
+				-x test_distutils
+			)
 		fi
+		local -x PROFILE_TASK="${profile_task_flags[*]}"
 	fi
 
 	local myeconfargs=(
@@ -193,7 +212,6 @@ src_configure() {
 		ac_cv_header_stropts_h=no
 
 		--enable-shared
-		--with-wheel-pkg-dir="${EPREFIX}"/usr/lib/python/ensurepip
 		--without-static-libpython
 		--enable-ipv6
 		--infodir='${prefix}/share/info'
@@ -205,6 +223,7 @@ src_configure() {
 		--without-ensurepip
 		--with-system-expat
 		--with-system-ffi
+		--with-wheel-pkg-dir="${EPREFIX}"/usr/lib/python/ensurepip
 
 		$(use_with lto)
 		$(use_enable pgo optimizations)
@@ -226,6 +245,9 @@ src_configure() {
 		eerror "Please ensure that /dev/shm is mounted as a tmpfs with mode 1777."
 		die "Broken sem_open function (bug 496328)"
 	fi
+
+	# install epython.py as part of stdlib
+	echo "EPYTHON='python${PYVER}'" > Lib/epython.py || die
 }
 
 src_compile() {
@@ -271,18 +293,21 @@ src_test() {
 		return
 	fi
 
-	# Skip failing tests.
-	local skipped_tests="gdb"
+	local test_opts=(
+		-u-network
+		-j "$(makeopts_jobs)"
+
+		# fails
+		-x test_gdb
+	)
 
 	if use sparc ; then
 		# bug #788022
-		skipped_tests+=" multiprocessing_fork"
-		skipped_tests+=" multiprocessing_forkserver"
+		test_opts+=(
+			-x test_multiprocessing_fork
+			-x test_multiprocessing_forkserver
+		)
 	fi
-
-	for test in ${skipped_tests}; do
-		mv "${S}"/Lib/test/test_${test}.py "${T}"
-	done
 
 	# bug 660358
 	local -x COLUMNS=80
@@ -290,28 +315,8 @@ src_test() {
 	# workaround https://bugs.gentoo.org/775416
 	addwrite /usr/lib/python3.10/site-packages
 
-	local jobs=$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")
-
-	emake test EXTRATESTOPTS="-u-network -j${jobs}" \
-		CPPFLAGS= CFLAGS= LDFLAGS= < /dev/tty
-	local result=$?
-
-	for test in ${skipped_tests}; do
-		mv "${T}/test_${test}.py" "${S}"/Lib/test
-	done
-
-	elog "The following tests have been skipped:"
-	for test in ${skipped_tests}; do
-		elog "test_${test}.py"
-	done
-
-	elog "If you would like to run them, you may:"
-	elog "cd '${EPREFIX}/usr/lib/python${PYVER}/test'"
-	elog "and run the tests separately."
-
-	if [[ ${result} -ne 0 ]]; then
-		die "emake test failed"
-	fi
+	emake test EXTRATESTOPTS="${test_opts[*]}" \
+		CPPFLAGS= CFLAGS= LDFLAGS= < /dev/tty || die "emake test failed"
 }
 
 src_install() {
@@ -346,8 +351,13 @@ src_install() {
 	if ! use ensurepip; then
 		rm -r "${libdir}"/ensurepip || die
 	fi
-	use sqlite || rm -r "${libdir}/"{sqlite3,test/test_sqlite*} || die
-	use tk || rm -r "${ED}/usr/bin/idle${PYVER}" "${libdir}/"{idlelib,tkinter,test/test_tk*} || die
+	if ! use sqlite; then
+		rm -r "${libdir}/"{sqlite3,test/test_sqlite*} || die
+	fi
+	if ! use tk; then
+		rm -r "${ED}/usr/bin/idle${PYVER}" || die
+		rm -r "${libdir}/"{idlelib,tkinter,test/test_tk*} || die
+	fi
 
 	dodoc Misc/{ACKS,HISTORY,NEWS}
 
@@ -357,9 +367,11 @@ src_install() {
 		dodoc -r Tools
 	fi
 	insinto /usr/share/gdb/auto-load/usr/$(get_libdir) #443510
-	local libname=$(printf 'e:\n\t@echo $(INSTSONAME)\ninclude Makefile\n' | \
-		emake --no-print-directory -s -f - 2>/dev/null)
-	newins "${S}"/Tools/gdb/libpython.py "${libname}"-gdb.py
+	local libname=$(
+		printf 'e:\n\t@echo $(INSTSONAME)\ninclude Makefile\n' |
+		emake --no-print-directory -s -f - 2>/dev/null
+	)
+	newins Tools/gdb/libpython.py "${libname}"-gdb.py
 
 	newconfd "${FILESDIR}/pydoc.conf" pydoc-${PYVER}
 	newinitd "${FILESDIR}/pydoc.init" pydoc-${PYVER}
@@ -369,30 +381,13 @@ src_install() {
 		-i "${ED}/etc/conf.d/pydoc-${PYVER}" \
 		"${ED}/etc/init.d/pydoc-${PYVER}" || die "sed failed"
 
-	local -x EPYTHON=python${PYVER}
-	# if not using a cross-compiler, use the fresh binary
-	if ! tc-is-cross-compiler; then
-		cat > python.wrap <<-EOF || die
-			#!/bin/sh
-			export LD_LIBRARY_PATH=\${PWD}\${LD_LIBRARY_PATH+:\${LD_LIBRARY_PATH}}
-			exec ./python "\${@}"
-		EOF
-		chmod +x python.wrap || die
-		local -x PYTHON=./python.wrap
-	else
-		local -x PYTHON=${EPREFIX}/usr/bin/${EPYTHON}
-	fi
-
-	echo "EPYTHON='${EPYTHON}'" > epython.py || die
-	python_domodule epython.py
-
 	# python-exec wrapping support
 	local pymajor=${PYVER%.*}
+	local EPYTHON=python${PYVER}
 	local scriptdir=${D}$(python_get_scriptdir)
 	mkdir -p "${scriptdir}" || die
 	# python and pythonX
-	ln -s "../../../bin/${abiver}" \
-		"${scriptdir}/python${pymajor}" || die
+	ln -s "../../../bin/${abiver}" "${scriptdir}/python${pymajor}" || die
 	ln -s "python${pymajor}" "${scriptdir}/python" || die
 	# python-config and pythonX-config
 	# note: we need to create a wrapper rather than symlinking it due
@@ -402,16 +397,12 @@ src_install() {
 		exec "${abiver}-config" "\${@}"
 	EOF
 	chmod +x "${scriptdir}/python${pymajor}-config" || die
-	ln -s "python${pymajor}-config" \
-		"${scriptdir}/python-config" || die
+	ln -s "python${pymajor}-config" "${scriptdir}/python-config" || die
 	# 2to3, pydoc
-	ln -s "../../../bin/2to3-${PYVER}" \
-		"${scriptdir}/2to3" || die
-	ln -s "../../../bin/pydoc${PYVER}" \
-		"${scriptdir}/pydoc" || die
+	ln -s "../../../bin/2to3-${PYVER}" "${scriptdir}/2to3" || die
+	ln -s "../../../bin/pydoc${PYVER}" "${scriptdir}/pydoc" || die
 	# idle
 	if use tk; then
-		ln -s "../../../bin/idle${PYVER}" \
-			"${scriptdir}/idle" || die
+		ln -s "../../../bin/idle${PYVER}" "${scriptdir}/idle" || die
 	fi
 }
