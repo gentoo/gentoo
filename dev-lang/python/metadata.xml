@@ -9,6 +9,11 @@
 		<flag name="bluetooth">
 			Build Bluetooth protocol support in socket module
 		</flag>
+		<flag name="ensurepip">
+			Install the ensurepip module that uses bundled wheels
+			to bootstrap pip and setuptools (if disabled, it will
+			be only possible to use venv `--without-pip`)
+		</flag>
 		<flag name="libedit">
 			Link readline extension against <pkg>dev-libs/libedit</pkg>
 			instead of <pkg>sys-libs/readline</pkg>
