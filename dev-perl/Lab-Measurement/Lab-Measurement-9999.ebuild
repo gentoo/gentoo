@@ -47,6 +47,7 @@ RDEPEND="
 	>=dev-perl/Moose-2.121.300
 	>=dev-perl/MooseX-Params-Validate-0.180.0
 	dev-perl/MooseX-StrictConstructor
+	dev-perl/Net-RFC3161-Timestamp
 	>=dev-perl/PDL-2.7.0
 	dev-perl/PDL-Graphics-Gnuplot
 	>=dev-perl/Role-Tiny-1.3.4
@@ -54,6 +55,7 @@ RDEPEND="
 	dev-perl/Statistics-Descriptive
 	virtual/perl-Storable
 	>=dev-perl/TermReadKey-2.300.0
+	dev-perl/Text-Diff
 	virtual/perl-Thread-Semaphore
 	virtual/perl-Time-HiRes
 	dev-perl/Time-Monotonic
