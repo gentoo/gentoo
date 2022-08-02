@@ -41,7 +41,7 @@ RDEPEND="
 	=kde-frameworks/kpackage-${PVCUT}*:5
 	=kde-frameworks/kservice-${PVCUT}*:5
 	=kde-frameworks/kwidgetsaddons-${PVCUT}*:5
-	=kde-frameworks/kwindowsystem-${PVCUT}*:5
+	=kde-frameworks/kwindowsystem-${PVCUT}*:5[X?]
 	=kde-frameworks/kxmlgui-${PVCUT}*:5
 	!gles2-only? ( media-libs/libglvnd[X?] )
 	wayland? (
@@ -59,14 +59,15 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="man? ( >=kde-frameworks/kdoctools-${PVCUT}:5 )"
 
+PATCHES=( "${FILESDIR}/${P}-without_x11.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package !gles2-only OpenGL)
 		$(cmake_use_find_package man KF5DocTools)
 		$(cmake_use_find_package wayland EGL)
 		$(cmake_use_find_package wayland KF5Wayland)
-		$(cmake_use_find_package X X11)
-		$(cmake_use_find_package X XCB)
+		-DWITHOUT_X11=$(usex !X)
 	)
 
 	ecm_src_configure
