@@ -153,6 +153,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	eapply "${FILESDIR}"/${PV}-fix-crash.patch
+
 	cmake_src_prepare
 	gnome2_src_prepare
 }
