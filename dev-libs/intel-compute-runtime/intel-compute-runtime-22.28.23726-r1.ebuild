@@ -26,11 +26,11 @@ DEPEND="
 	>=dev-libs/intel-metrics-library-0_pre20220526:=
 	dev-libs/libnl:3
 	dev-libs/libxml2:2
-	>=dev-util/intel-graphics-compiler-1.0.11485-r1
+	>=dev-util/intel-graphics-compiler-1.0.11485
 	>=dev-util/intel-graphics-system-controller-0.8.0:=
 	media-libs/mesa
 	>=virtual/opencl-3
-	l0? ( >=dev-libs/level-zero-1.8.5:= )
+	l0? ( >=dev-libs/level-zero-1.8.1:= )
 	vaapi? (
 		x11-libs/libdrm[video_cards_intel]
 		x11-libs/libva
