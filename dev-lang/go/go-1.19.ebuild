@@ -64,14 +64,14 @@ README.md
 
 go_arch() {
 	# By chance most portage arch names match Go
-	local portage_arch=$(tc-arch $@)
-	case "${portage_arch}" in
+	local tc_arch=$(tc-arch $@)
+	case "${tc_arch}" in
 		x86)	echo 386;;
 		x64-*)	echo amd64;;
 		ppc64) [[ $(tc-endian $@) = big ]] && echo ppc64 || echo ppc64le ;;
 		riscv) echo riscv64 ;;
 		s390) echo s390x ;;
-		*)		echo "${portage_arch}";;
+		*)		echo "${tc_arch}";;
 	esac
 }
 
