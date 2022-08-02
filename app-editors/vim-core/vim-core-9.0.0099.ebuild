@@ -42,7 +42,8 @@ pkg_setup() {
 src_prepare() {
 	if [[ ${PV} != 9999* ]] ; then
 		# Gentoo patches to fix runtime issues, cross-compile errors, etc
-		eapply "${WORKDIR}/vim-patches-vim-9.0.0049-patches"
+		eapply "${WORKDIR}"/vim-patches-vim-9.0.0049-patches
+		eapply "${FILESDIR}"/vim-9.0-fix-create-timer-for-cros-compiling.patch
 	fi
 
 	# Fixup a script to use awk instead of nawk
