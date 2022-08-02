@@ -7,7 +7,7 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="Generic tool for pairwise sequence comparison"
 HOMEPAGE="https://www.ebi.ac.uk/about/vertebrate-genomics/software/exonerate"
-SRC_URI="http://ftp.ebi.ac.uk/pub/software/vertebrategenomics/exonerate/${P}.tar.gz"
+SRC_URI="https://ftp.ebi.ac.uk/pub/software/vertebrategenomics/exonerate/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
