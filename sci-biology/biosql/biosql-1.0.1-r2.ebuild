@@ -4,8 +4,8 @@
 EAPI=8
 
 DESCRIPTION="A generic bioinformatics relational database model"
-HOMEPAGE="http://www.biosql.org/"
-SRC_URI="http://biosql.org/DIST/${P}.tar.bz2"
+HOMEPAGE="https://biosql.org/"
+SRC_URI="https://biosql.org/DIST/${P}.tar.bz2"
 
 LICENSE="LGPL-3"
 SLOT="0"
