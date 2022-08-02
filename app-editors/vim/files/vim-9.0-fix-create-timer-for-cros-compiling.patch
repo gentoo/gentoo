@@ -1,0 +1,28 @@
+From bba26c9ed9d4ddc82afd0343f145dc9e14b91498 Mon Sep 17 00:00:00 2001
+From: Varsha Teratipally <teratipally@google.com>
+Date: Tue, 2 Aug 2022 22:18:29 +0000
+Subject: [PATCH] Configure check for timer_create may give wrong error.
+Give a warning instead of an error
+
+Partial solution from github.com/vim/vim/commit/5f6cae8b8a49c435556e32f84d067cd0b4d28e4c
+
+---
+ src/configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/configure.ac b/src/configure.ac
+index e8522ec05..41f41dee3 100644
+--- a/src/configure.ac
++++ b/src/configure.ac
+@@ -3850,7 +3850,7 @@ static void set_flag(union sigval sv) {}
+     ])],
+     vim_cv_timer_create=yes,
+     vim_cv_timer_create=no),
+-    AC_MSG_ERROR(cross-compiling: please set 'vim_cv_timer_create')
++    AC_MSG_WARN(cross-compiling: please set 'vim_cv_timer_create')
+     )]
+ )
+ 
+-- 
+
+
