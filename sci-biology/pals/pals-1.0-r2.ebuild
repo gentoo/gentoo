@@ -6,8 +6,8 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="Pairwise Aligner for Long Sequences"
-HOMEPAGE="http://www.drive5.com/pals/"
-SRC_URI="http://www.drive5.com/pals/pals_source.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://www.drive5.com/pals/"
+SRC_URI="https://www.drive5.com/pals/pals_source.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"
 
 LICENSE="public-domain"
