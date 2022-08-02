@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/open-gram/dict.utf8-${DICT_VERSION}.tar.bz2
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~ppc ppc64 ~riscv x86"
 IUSE=""
 
 # https://github.com/sunpinyin/sunpinyin/commit/0fff1e78d9a409205e025736286838721a2ccbf8
