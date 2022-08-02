@@ -6,6 +6,9 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Doesn't compile with 'Xaw3d' use flag, #849947.
+app-text/xdvik Xaw3d
+
 # Depends on an older enigmail that only supports python2, which is
 # being removed soon. #758344
 www-client/seamonkey crypt
