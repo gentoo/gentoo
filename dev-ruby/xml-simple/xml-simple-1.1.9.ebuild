@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/maik/xml-simple"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc x86"
 IUSE=""
 
 RUBY_S="${PN}-${COMMIT}"
