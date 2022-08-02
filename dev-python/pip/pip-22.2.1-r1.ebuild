@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# please bump dev-python/ensurepip-wheels along with this package!
+
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_TESTED=( python3_{8..10} )
 PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_11 pypy3 )
