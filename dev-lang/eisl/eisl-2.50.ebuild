@@ -20,7 +20,10 @@ DOCS=( README-ja.md README.md documents )
 RDEPEND="sys-libs/ncurses:="
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-Makefile.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-Makefile.patch
+	"${FILESDIR}"/${P}-compat-no-cdefs.patch
+)
 
 src_compile() {
 	emake CC="$(tc-getCC)" clean all
