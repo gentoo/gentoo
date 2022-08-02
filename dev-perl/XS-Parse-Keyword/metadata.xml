@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>hattya@gentoo.org</email>
+		<name>Akinori Hattori</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">XS-Keyword-Try</remote-id>
+		<remote-id type="cpan-module">XS::Parse::Infix</remote-id>
+		<remote-id type="cpan-module">XS::Parse::Infix::Builder</remote-id>
+		<remote-id type="cpan-module">XS::Parse::Keyword</remote-id>
+		<remote-id type="cpan-module">XS::Parse::Keyword::Builder</remote-id>
+	</upstream>
+</pkgmetadata>
