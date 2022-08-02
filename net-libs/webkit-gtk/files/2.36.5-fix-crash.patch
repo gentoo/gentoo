@@ -1,0 +1,82 @@
+https://bugs.gentoo.org/863008
+https://bugs.webkit.org/show_bug.cgi?id=243401
+
+From a6277d4834cce0dea2f999d4c06ffa57abfbb82d Mon Sep 17 00:00:00 2001
+From: Michael Catanzaro <mcatanzaro@redhat.com>
+Date: Mon, 1 Aug 2022 14:07:04 -0700
+Subject: [PATCH] REGRESSION(252485@main): [GTK]
+ webkit_web_context_get_default() crashes in Eclipse since webkit-gtk v2.36.5,
+ v2.36.4 was fine https://bugs.webkit.org/show_bug.cgi?id=243401
+
+Reviewed by Adrian Perez de Castro.
+
+Turns out WebKit's "main thread" may not actually be the real main
+thread. This is OK as long as it matches the GTK "main thread," and as
+long as the application is careful to iterate the default main context
+only on the WebKit/GTK "main thread," as as long as the application does
+not ever attempt to use these libraries on any other thread.
+
+The motivation to do this is if the programming language controls the
+real thread 1, as is the case with Java, where the Java main thread that
+applications can use to run GTK and WebKit is apparently not the same as
+the real main thread that's running the JVM. These applications have no
+control over what their "main thread" is, and it seems unkind to break
+them.
+
+I've checked in with the GTK developers, and consensus is that this
+is actually expected to work, so let's not break it.
+
+* Source/WTF/wtf/generic/MainThreadGeneric.cpp:
+(WTF::initializeMainThreadPlatform):
+(WTF::isMainThread):
+
+Canonical link: https://commits.webkit.org/253010@main
+---
+ Source/WTF/wtf/generic/MainThreadGeneric.cpp | 13 ++-----------
+ 1 file changed, 2 insertions(+), 11 deletions(-)
+
+diff --git a/Source/WTF/wtf/generic/MainThreadGeneric.cpp b/Source/WTF/wtf/generic/MainThreadGeneric.cpp
+index 3a9208b0f9ab..b51e2e456047 100644
+--- a/Source/WTF/wtf/generic/MainThreadGeneric.cpp
++++ b/Source/WTF/wtf/generic/MainThreadGeneric.cpp
+@@ -31,29 +31,22 @@
+  */
+ 
+ #include "config.h"
+-#if !OS(LINUX)
+ #include <pthread.h>
+-#endif
+ #if HAVE(PTHREAD_NP_H)
+ #include <pthread_np.h>
+ #endif
+-#if OS(LINUX)
+-#include <sys/syscall.h>
+-#include <sys/types.h>
+-#include <unistd.h>
+-#endif
+ 
+ #include <wtf/RunLoop.h>
+ 
+ namespace WTF {
+ 
+-#if !HAVE(PTHREAD_MAIN_NP) && !OS(LINUX)
++#if !HAVE(PTHREAD_MAIN_NP)
+ static pthread_t mainThread;
+ #endif
+ 
+ void initializeMainThreadPlatform()
+ {
+-#if !HAVE(PTHREAD_MAIN_NP) && !OS(LINUX)
++#if !HAVE(PTHREAD_MAIN_NP)
+     mainThread = pthread_self();
+ #endif
+ }
+@@ -62,8 +55,6 @@ bool isMainThread()
+ {
+ #if HAVE(PTHREAD_MAIN_NP)
+     return pthread_main_np();
+-#elif OS(LINUX)
+-    return getpid() == static_cast<pid_t>(syscall(SYS_gettid));
+ #else
+     return pthread_equal(pthread_self(), mainThread);
+ #endif
