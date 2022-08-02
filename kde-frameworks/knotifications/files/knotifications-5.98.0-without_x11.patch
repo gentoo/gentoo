@@ -1,0 +1,81 @@
+From 0450e434116acdc640b0c8256228feec8b363e47 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 2 Aug 2022 10:14:51 +0200
+Subject: [PATCH] Add CMake option to build WITHOUT_X11
+
+We want to be able to build without X11 support even if some of the used
+libraries may not work w/o X11 themselves yet or need to be built with
+X11 support for other reverse dependencies.
+
+HAVE_X11 already exists and is set automagically so far, but using
+-DCMAKE_DISABLE_FIND_PACKAGE_X11 will break if any dependencies list X11
+as required in their cmake config.
+
+Introducing this option means there is no behavior change by default,
+cmake will just skip finding X11 or adding unwanted features if the
+option is enabled.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                  | 15 +++++++++------
+ KF5NotificationsConfig.cmake.in |  2 +-
+ src/CMakeLists.txt              |  2 +-
+ 3 files changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a59f704..8e6763f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -75,14 +75,17 @@ if (QT_MAJOR_VERSION STREQUAL "5")
+ endif()
+ 
+ if (NOT APPLE AND NOT WIN32)
+-    find_package(X11)
++    option(WITHOUT_X11 "Build without X11 support (skips finding X11)." OFF)
++    if(NOT WITHOUT_X11)
++        find_package(X11)
++        set(HAVE_X11 ${X11_FOUND})
++        set(HAVE_XTEST ${X11_XTest_FOUND})
++        if(X11_FOUND AND QT_MAJOR_VERSION STREQUAL "5")
++            find_package(Qt5X11Extras ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED)
++        endif()
++    endif()
+ endif()
+ 
+-set(HAVE_X11 ${X11_FOUND})
+-set(HAVE_XTEST ${X11_XTest_FOUND})
+-if(X11_FOUND AND QT_MAJOR_VERSION STREQUAL "5")
+-    find_package(Qt5X11Extras ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED)
+-endif()
+ if(APPLE)
+    find_package(Qt5MacExtras ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
+ endif()
+diff --git a/KF5NotificationsConfig.cmake.in b/KF5NotificationsConfig.cmake.in
+index b0dbea8..dc97209 100644
+--- a/KF5NotificationsConfig.cmake.in
++++ b/KF5NotificationsConfig.cmake.in
+@@ -36,7 +36,7 @@ if (NOT @BUILD_SHARED_LIBS@)
+         find_dependency(Qt5TextToSpeech @REQUIRED_QT_VERSION@)
+     endif()
+ 
+-    if(@X11_FOUND@)
++    if(@HAVE_X11@)
+         if (NOT TARGET Qt6::Gui)
+             find_dependency(Qt5X11Extras @REQUIRED_QT_VERSION@)
+         endif()
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 7f47f54..8f63201 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -143,7 +143,7 @@ if (Qt5TextToSpeech_FOUND)
+     target_link_libraries(KF5Notifications PRIVATE Qt5::TextToSpeech)
+ endif()
+ 
+-if(X11_FOUND)
++if(HAVE_X11)
+    target_link_libraries(KF5Notifications PRIVATE ${X11_X11_LIB})
+     if (TARGET Qt5::X11Extras)
+         target_link_libraries(KF5Notifications PRIVATE Qt5::X11Extras)
+-- 
+GitLab
+

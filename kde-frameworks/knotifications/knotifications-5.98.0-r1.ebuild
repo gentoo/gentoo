@@ -9,6 +9,7 @@ QTMIN=5.15.5
 inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework for notifying the user of an event"
+
 LICENSE="LGPL-2.1+"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="dbus nls phonon qml speech X"
@@ -19,7 +20,7 @@ RDEPEND="
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	=kde-frameworks/kconfig-${PVCUT}*:5
 	=kde-frameworks/kcoreaddons-${PVCUT}*:5
-	=kde-frameworks/kwindowsystem-${PVCUT}*:5[X=]
+	=kde-frameworks/kwindowsystem-${PVCUT}*:5[X?]
 	dbus? ( dev-libs/libdbusmenu-qt[qt5(+)] )
 	!phonon? ( media-libs/libcanberra )
 	phonon? ( >=media-libs/phonon-4.11.0 )
@@ -34,9 +35,9 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
 "
-BDEPEND="
-	nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )
-"
+BDEPEND="nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )"
+
+PATCHES=( "${FILESDIR}/${P}-without_x11.patch" )
 
 src_configure() {
 	local mycmakeargs=(
@@ -44,7 +45,7 @@ src_configure() {
 		$(cmake_use_find_package !phonon Canberra)
 		$(cmake_use_find_package qml Qt5Qml)
 		$(cmake_use_find_package speech Qt5TextToSpeech)
-		$(cmake_use_find_package X X11)
+		-DWITHOUT_X11=$(usex !X)
 	)
 
 	ecm_src_configure
