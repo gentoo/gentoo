@@ -46,7 +46,10 @@ CDEPEND="X? (
 	m17n-lib? ( dev-libs/m17n-lib )
 	ncurses? ( sys-libs/ncurses:0= )
 	nls? ( virtual/libintl )
-	qt5? ( dev-qt/qtx11extras:5 )
+	qt5? (
+		dev-qt/qtx11extras:5
+		dev-qt/qtwidgets:5
+	)
 	skk? ( app-i18n/skk-jisyo )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? ( dev-libs/openssl:0= )"
