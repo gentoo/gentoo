@@ -244,6 +244,8 @@ src_prepare() {
 		# Breaks Clang. Revert the commit for now and force off F_S=3.
 		# bug #841770.
 		"${FILESDIR}/251-revert-fortify-source-3-fix.patch"
+		# bug #863218
+		"${FILESDIR}/251-glibc-2.36.patch"
 	)
 
 	if ! use vanilla; then
