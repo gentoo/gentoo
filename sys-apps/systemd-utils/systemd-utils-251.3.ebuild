@@ -105,7 +105,10 @@ QA_FLAGS_IGNORED="usr/lib/systemd/boot/efi/.*"
 
 src_prepare() {
 	local PATCHES=(
+		# bug #863218
+		"${FILESDIR}/251-glibc-2.36.patch"
 	)
+
 	if use elibc_musl; then
 		PATCHES+=( "${WORKDIR}/${MUSL_PATCHSET}" )
 		# Applied upstream in 251.3
