@@ -1,0 +1,64 @@
+From: orbea <orbea@riseup.net>
+Date: Tue, 2 Aug 2022 12:09:16 -0700
+Subject: [PATCH] Create shared library symlinks
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -3,12 +3,15 @@ CC	= @CC@
+ CFLAGS	= @CFLAGS@ -I. -DDEBUG -fPIC -fvisibility=hidden
+ OBJS	= triostr.o trio.o trionan.o
+ TARGETLIB	= libtrio.a
+-TARGETSHLIB	= $(TARGETLIB:.a=.so.2.0.0)
++TARGETSHLIB	= $(TARGETLIB:.a=.so)
++TARGETSHLIB_M	= $(TARGETSHLIB).2
++TARGETSHLIB_V	= $(TARGETSHLIB_M).0.0
+ TARGETINCS	= trio.h triop.h triodef.h trionan.h triostr.h
+ LDFLAGS	= -L. -ltrio -lm
+ AR	= ar
+ RANLIB	= @RANLIB@
+ ERASE	= rm -f
++LN	= ln -s
+ MKDIR	= mkdir -p
+ GENDOC	= doxygen
+ srcdir	= @srcdir@
+@@ -25,7 +28,7 @@ exec_prefix	= @exec_prefix@
+ includedir	= @includedir@
+ libdir		= @libdir@
+ 
+-all: $(TARGETLIB) $(TARGETSHLIB) $(TARGET)
++all: $(TARGETSHLIB) $(TARGETSHLIB_M) $(TARGET)
+ 
+ .PHONY: all check test install doc clean
+ 
+@@ -43,10 +46,12 @@ check:	test
+ test:	regression
+ 	./regression
+ 
+-install:	$(TARGETLIB) $(TARGETSHLIB)
++install: all
+ 	$(MKDIR) $(DESTDIR)$(libdir)/pkgconfig
+ 	$(MKDIR) $(DESTDIR)$(includedir)
+-	$(INSTALL_DATA) $(TARGETLIB) $(TARGETSHLIB) $(DESTDIR)$(libdir)/
++	$(INSTALL_DATA) $(TARGETLIB) $(TARGETSHLIB_V) $(DESTDIR)$(libdir)/
++	$(LN) $(TARGETSHLIB_V) $(DESTDIR)$(libdir)/$(TARGETSHLIB)
++	$(LN) $(TARGETSHLIB_V) $(DESTDIR)$(libdir)/$(TARGETSHLIB_M)
+ 	$(INSTALL_DATA) libtrio.pc $(DESTDIR)$(libdir)/pkgconfig/
+ 	for i in $(TARGETINCS);do \
+ 	(set -x;$(INSTALL_DATA) $(srcdir)/$$i $(DESTDIR)$(includedir)); \
+@@ -68,11 +73,14 @@ $(TARGETLIB): $(OBJS)
+ 	$(AR) ruv $(TARGETLIB) $(OBJS)
+ 	$(RANLIB) $(TARGETLIB)
+ 
+-$(TARGETSHLIB): $(TARGETLIB)
++$(TARGETSHLIB_V): $(TARGETLIB)
+ 	$(CC) -lm -shared -Wl,-soname,$(patsubst %.so.2.0.0,%.so.2,$@) -Wl,--whole-archive,$< -Wl,--no-whole-archive -o $@
+ 
++$(TARGETSHLIB) $(TARGETSHLIB_M): $(TARGETSHLIB_V)
++	$(LN) $< $@
++
+ doc::
+ 	(cd $(srcdir) && $(GENDOC) doc/trio.cfg)
+ 
+ clean:
+-	$(ERASE) *~ core core.* regression example $(TOBJS) $(OBJS) $(TARGET) $(TARGETLIB) $(TARGETSHLIB) example.o regression.o
++	$(ERASE) *~ core core.* regression example $(TOBJS) $(OBJS) $(TARGET) $(TARGETLIB) $(TARGETSHLIB) $(TARGETSHLIB_M) $(TARGETSHLIB_V) example.o regression.o

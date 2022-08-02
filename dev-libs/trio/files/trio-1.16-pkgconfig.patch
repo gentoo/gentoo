@@ -1,0 +1,51 @@
+From: orbea <orbea@riseup.net>
+Date: Tue, 2 Aug 2022 11:41:19 -0700
+Subject: [PATCH] Add a pkgconfig file
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -44,9 +44,10 @@ test:	regression
+ 	./regression
+ 
+ install:	$(TARGETLIB) $(TARGETSHLIB)
+-	$(MKDIR) $(DESTDIR)$(libdir)
++	$(MKDIR) $(DESTDIR)$(libdir)/pkgconfig
+ 	$(MKDIR) $(DESTDIR)$(includedir)
+ 	$(INSTALL_DATA) $(TARGETLIB) $(TARGETSHLIB) $(DESTDIR)$(libdir)/
++	$(INSTALL_DATA) libtrio.pc $(DESTDIR)$(libdir)/pkgconfig/
+ 	for i in $(TARGETINCS);do \
+ 	(set -x;$(INSTALL_DATA) $(srcdir)/$$i $(DESTDIR)$(includedir)); \
+ 	done
+--- a/configure.in
++++ b/configure.in
+@@ -2,7 +2,7 @@ dnl
+ dnl Configuration for trio
+ dnl
+ 
+-AC_INIT
++AC_INIT([trio], [1.16])
+ AC_CONFIG_SRCDIR([triodef.h])
+ AC_PREREQ(2.55) dnl autoconf 2.55 was released in 2002
+ 
+@@ -73,5 +73,5 @@ if test $ac_cv_sigaction != false; then
+   CFLAGS="${CFLAGS} -DHAVE_STRUCT_SIGACTION"
+ fi
+ 
+-AC_CONFIG_FILES([Makefile])
++AC_CONFIG_FILES([Makefile libtrio.pc])
+ AC_OUTPUT
+new file mode 100644
+--- /dev/null
++++ b/libtrio.pc.in
+@@ -0,0 +1,11 @@
++prefix=@prefix@
++exec_prefix=${prefix}
++includedir=@includedir@
++libdir=@libdir@
++
++Name: libtrio
++Description: Portable printf and string functions
++URL: https://daniel.haxx.se/projects/trio/
++Version: @PACKAGE_VERSION@
++CFlags: -I${includedir}
++Libs: -L${libdir} -ltrio

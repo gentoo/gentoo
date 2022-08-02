@@ -1,0 +1,36 @@
+From: orbea <orbea@riseup.net>
+Date: Tue, 2 Aug 2022 12:42:35 -0700
+Subject: [PATCH] Fix LDFLAGS
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -7,7 +7,7 @@ TARGETSHLIB	= $(TARGETLIB:.a=.so)
+ TARGETSHLIB_M	= $(TARGETSHLIB).2
+ TARGETSHLIB_V	= $(TARGETSHLIB_M).0.0
+ TARGETINCS	= trio.h triop.h triodef.h trionan.h triostr.h
+-LDFLAGS	= -L. -ltrio -lm
++LIBS	= -L. -ltrio -lm
+ AR	= ar
+ RANLIB	= @RANLIB@
+ ERASE	= rm -f
+@@ -58,16 +58,16 @@ install: all
+ 	done
+ 
+ regression: regression.o $(TARGETLIB)
+-	$(CC) $(CFLAGS) regression.o $(LDFLAGS) -o $@
++	$(CC) $(CFLAGS) regression.o $(LIBS) $(LDFLAGS) -o $@
+ 
+ example: example.o $(TARGETLIB)
+-	$(CC) $(CFLAGS) example.o $(LDFLAGS) -o $@
++	$(CC) $(CFLAGS) example.o $(LIBS) $(LDFLAGS) -o $@
+ 
+ compare: compare.o $(TARGETLIB)
+-	$(CC) $(CFLAGS) compare.o $(LDFLAGS) -o $@
++	$(CC) $(CFLAGS) compare.o $(LIBS) $(LDFLAGS) -o $@
+ 
+ userdef: userdef.o $(TARGETLIB)
+-	$(CC) $(CFLAGS) userdef.o $(LDFLAGS) -o $@
++	$(CC) $(CFLAGS) userdef.o $(LIBS) $(LDFLAGS) -o $@
+ 
+ $(TARGETLIB): $(OBJS)
+ 	$(AR) ruv $(TARGETLIB) $(OBJS)

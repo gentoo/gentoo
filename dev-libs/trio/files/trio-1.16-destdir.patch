@@ -1,0 +1,22 @@
+From: orbea <orbea@riseup.net>
+Date: Tue, 2 Aug 2022 11:50:22 -0700
+Subject: [PATCH] Support DESTDIR
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -44,11 +44,11 @@ test:	regression
+ 	./regression
+ 
+ install:	$(TARGETLIB) $(TARGETSHLIB)
+-	$(MKDIR) $(libdir)
+-	$(MKDIR) $(includedir)
+-	$(INSTALL_DATA) $(TARGETLIB) $(TARGETSHLIB) $(libdir)/
++	$(MKDIR) $(DESTDIR)$(libdir)
++	$(MKDIR) $(DESTDIR)$(includedir)
++	$(INSTALL_DATA) $(TARGETLIB) $(TARGETSHLIB) $(DESTDIR)$(libdir)/
+ 	for i in $(TARGETINCS);do \
+-	(set -x;$(INSTALL_DATA) $(srcdir)/$$i $(includedir)); \
++	(set -x;$(INSTALL_DATA) $(srcdir)/$$i $(DESTDIR)$(includedir)); \
+ 	done
+ 
+ regression: regression.o $(TARGETLIB)
