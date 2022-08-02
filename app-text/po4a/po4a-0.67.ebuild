@@ -12,7 +12,7 @@ SRC_URI="https://github.com/mquinson/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
