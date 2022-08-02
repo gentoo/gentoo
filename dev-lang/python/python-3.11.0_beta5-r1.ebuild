@@ -27,10 +27,6 @@ SRC_URI="
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2"
-# ensurepip bundles pip and setuptools, and pip bundles a lot
-LICENSE+="
-	ensurepip? ( Apache-2.0 BSD BSD-2 ISC LGPL-2.1+ MIT MPL-2.0 PSF-2 )
-"
 SLOT="${PYVER}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="
@@ -54,6 +50,7 @@ RDEPEND="
 	>=sys-libs/zlib-1.1.3:=
 	virtual/libcrypt:=
 	virtual/libintl
+	ensurepip? ( dev-python/ensurepip-wheels )
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
 	ncurses? ( >=sys-libs/ncurses-5.2:= )
 	readline? (
@@ -200,6 +197,7 @@ src_configure() {
 		--with-system-ffi
 		--with-platlibdir=lib
 		--with-pkg-config=yes
+		--with-wheel-pkg-dir="${EPREFIX}"/usr/lib/python/ensurepip
 
 		$(use_with lto)
 		$(use_enable pgo optimizations)
@@ -411,6 +409,7 @@ src_install() {
 		pax-mark m "${ED}/usr/bin/${abiver}"
 	fi
 
+	rm -r "${libdir}"/ensurepip/_bundled || die
 	if ! use ensurepip; then
 		rm -r "${libdir}"/ensurepip || die
 	fi
