@@ -19,14 +19,14 @@ case ${EAPI} in
 	*)	die "qt6-build.eclass: unsupported EAPI=${EAPI:-0}" ;;
 esac
 
-# @ECLASS-VARIABLE: QT6_MODULE
+# @ECLASS_VARIABLE: QT6_MODULE
 # @PRE_INHERIT
 # @DESCRIPTION:
 # The upstream name of the module this package belongs to. Used for
 # SRC_URI and EGIT_REPO_URI. Must be set before inheriting the eclass.
 : ${QT6_MODULE:=${PN}}
 
-# @ECLASS-VARIABLE: VIRTUALX_REQUIRED
+# @ECLASS_VARIABLE: VIRTUALX_REQUIRED
 # @DESCRIPTION:
 # For proper description see virtualx.eclass man page.
 # Here we redefine default value to be manual, if your package needs virtualx
@@ -76,7 +76,7 @@ EGIT_REPO_URI=(
 )
 [[ ${QT6_BUILD_TYPE} == live ]] && inherit git-r3
 
-# @ECLASS-VARIABLE: QT6_BUILD_DIR
+# @ECLASS_VARIABLE: QT6_BUILD_DIR
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Build directory for out-of-source builds.
