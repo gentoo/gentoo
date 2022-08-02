@@ -6,10 +6,6 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Esteve Varela Colominas (2022-07-29)
-# Qt6 is still experimental and masked in ::gentoo
-net-im/telegram-desktop qt6
-
 # Doesn't compile with 'Xaw3d' use flag, #849947.
 app-text/xdvik Xaw3d
 
