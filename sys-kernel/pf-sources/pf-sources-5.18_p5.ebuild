@@ -79,7 +79,13 @@ src_prepare() {
 }
 
 pkg_postinst() {
+	local KV_FULL="${PFPV}"
 	kernel-2_pkg_postinst
 
 	optfeature "userspace KSM helper" sys-process/uksmd
+}
+
+pkg_postrm() {
+	local KV_FULL="${PFPV}"
+	kernel-2_pkg_postrm
 }
