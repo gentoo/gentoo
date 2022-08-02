@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="XS functions to assist in parsing keyword syntax"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND=""
 BDEPEND="${RDEPEND}
