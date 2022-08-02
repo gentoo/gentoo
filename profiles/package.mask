@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-08-02)
+# Multiple rendering/font issues reported: bug #844115, bug #851141.
+=app-text/ghostscript-gpl-9.56.1
+
 # Marek Szuba <marecki@gentoo.org> (2022-08-01)
 # Suricata-5 has reached end of life upstream. Please switch to major version 6.
 # Removal in 30 days (Bug #)
