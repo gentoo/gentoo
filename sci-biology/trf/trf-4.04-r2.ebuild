@@ -6,8 +6,8 @@ EAPI=8
 MY_P="${PN}404"
 
 DESCRIPTION="Tandem Repeats Finder"
-HOMEPAGE="http://tandem.bu.edu/trf/trf.html"
-SRC_URI="http://tandem.bu.edu/trf/downloads/${MY_P}.linux"
+HOMEPAGE="https://tandem.bu.edu/trf/trf.html"
+SRC_URI="https://tandem.bu.edu/trf/downloads/${MY_P}.linux"
 S="${WORKDIR}"
 
 LICENSE="trf"	# http://tandem.bu.edu/trf/trf.license.html
