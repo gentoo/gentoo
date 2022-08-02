@@ -79,6 +79,7 @@ src_prepare() {
 }
 
 pkg_postinst() {
+	# Fixes "wrongly" detected directory name, bgo#862534.
 	local KV_FULL="${PFPV}"
 	kernel-2_pkg_postinst
 
@@ -86,6 +87,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
+	# Same here, bgo#862534.
 	local KV_FULL="${PFPV}"
 	kernel-2_pkg_postrm
 }
