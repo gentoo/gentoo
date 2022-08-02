@@ -36,6 +36,8 @@
 # Jimi Huotari <chiitoo@gentoo.org> (2022-08-02)
 # Masked for testing. The split of some packages may still
 # change. bug #838970.
+dev-python/PyQt6
+dev-python/PyQt6_WebEngine
 dev-qt/qt5compat:6
 dev-qt/qtbase:6
 dev-qt/qtdeclarative:6
