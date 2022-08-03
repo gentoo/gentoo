@@ -234,13 +234,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Do NOT add patches here
-	local PATCHES=()
-
-	[[ -d "${WORKDIR}"/patches ]] && PATCHES+=( "${WORKDIR}"/patches )
-
-	# Add local patches here
-	PATCHES+=(
+	local PATCHES=(
 	)
 
 	if ! use vanilla; then
