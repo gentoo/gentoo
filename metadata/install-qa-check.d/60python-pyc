@@ -16,6 +16,11 @@ python_pyc_check() {
 	local missing=()
 	local stray=()
 
+	# Avoid running the check if sufficiently new gpep517 is not installed
+	# yet. It's valid to schedule (for merge order) >=gpep517-8 after
+	# packages which have this check run if they don't use distutils-r1.
+	has_version -b ">=dev-python/gpep517-8" || return
+
 	for prog in "${progs[@]}"; do
 		local impl=${prog%/*}
 		impl=${impl##*/}
