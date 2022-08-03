@@ -16,7 +16,7 @@
 	diagrams, posters and slides.
 	</longdescription>
 	<upstream>
-		<reomte-id type="github">vlabella/gle</remote-id>
+		<remote-id type="github">vlabella/gle</remote-id>
 		<remote-id type="sourceforge">glx</remote-id>
 	</upstream>
 </pkgmetadata>
