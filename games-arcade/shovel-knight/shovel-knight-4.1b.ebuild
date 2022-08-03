@@ -7,7 +7,7 @@ inherit desktop unpacker wrapper xdg
 
 MY_PN="ShovelKnight"
 DESCRIPTION="Sweeping classic action adventure with an 8-bit retro aesthetic"
-HOMEPAGE="https://yachtclubgames.com/shovel-knight/"
+HOMEPAGE="https://yachtclubgames.com/games/shovel-knight-treasure-trove/"
 SRC_URI="${PN//-/_}_treasure_trove_4_1b_arby_s_46298.sh"
 S="${WORKDIR}/data/noarch/game"
 
