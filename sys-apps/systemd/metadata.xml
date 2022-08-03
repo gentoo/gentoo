@@ -20,7 +20,6 @@
 		<flag name="fido2">Enable FIDO2 support</flag>
 		<flag name="gcrypt">Enable use of <pkg>dev-libs/libgcrypt</pkg> for various features</flag>
 		<flag name="homed">Enable portable home directories</flag>
-		<flag name="hostnamed-fallback">Enable setting hostname with networkd/hostnamed without polkit (requires running <pkg>sys-apps/dbus-broker</pkg>)</flag>
 		<flag name="http">Enable embedded HTTP server in journald</flag>
 		<flag name="importd">Enable import daemon</flag>
 		<flag name="iptables">Use libiptc from <pkg>net-firewall/iptables</pkg> for NAT support in systemd-networkd; this is used only if the running kernel does not support nftables</flag>
