@@ -84,8 +84,7 @@ src_configure() {
 		echo ${*/#/${state}}
 	}
 
-	# hack: currently lacking qt6_get_bindir (or alternatively have
-	# qmake6 in PATH like qmake5 is so it wouldn't matter)
+	# workaround until bug 863395 has something to offer
 	local qmake6=$(qt5_get_bindir)/qmake6
 	qmake6=${qmake6//qt5/qt6}
 
