@@ -24,6 +24,9 @@ python_pyc_check() {
 	for prog in "${progs[@]}"; do
 		local impl=${prog%/*}
 		impl=${impl##*/}
+
+		[[ -d "${ED}"/usr/lib/${impl}/site-packages ]] || continue
+
 		einfo "Verifying compiled files for ${impl}"
 		local kind pyc py
 		while IFS=: read -r kind pyc py extra; do
