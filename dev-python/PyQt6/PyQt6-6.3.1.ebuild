@@ -85,7 +85,7 @@ src_configure() {
 	}
 
 	# workaround until bug 863395 has something to offer
-	local qmake6=$(qt5_get_bindir)/qmake6
+	local qmake6=$(qt5_get_bindir)/qmake
 	qmake6=${qmake6//qt5/qt6}
 
 	DISTUTILS_ARGS=(
