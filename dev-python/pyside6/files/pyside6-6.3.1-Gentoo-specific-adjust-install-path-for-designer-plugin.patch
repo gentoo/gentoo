@@ -1,0 +1,21 @@
+From 3367fb7f56f2a291718dc3d9253ca7d113f83d5e Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Wed, 10 Aug 2022 17:19:00 +0200
+Subject: [PATCH] [Gentoo specific]: adjust install path for designer plugin
+
+The default settings install into /usr/plugins on Gentoo, because
+CMAKE_INSTALL_PREFIX=/usr. This patch adds the Qt6 related prefix
+to the plugins installation path.
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/plugins/designer/CMakeLists.txt
++++ b/plugins/designer/CMakeLists.txt
+@@ -53,4 +53,4 @@ target_link_libraries(PySidePlugin PRIVATE
+                       Qt::Widgets
+                       ${SHIBOKEN_PYTHON_LIBRARIES})
+ 
+-install(TARGETS PySidePlugin LIBRARY DESTINATION "plugins/designer")
++install(TARGETS PySidePlugin LIBRARY DESTINATION "lib${LIB_SUFFIX}/qt6/plugins/designer")
+-- 
+2.35.1
+
