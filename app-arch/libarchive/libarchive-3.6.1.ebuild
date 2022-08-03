@@ -45,6 +45,10 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-libarchive )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-glibc-2.36.patch
+)
+
 multilib_src_configure() {
 	export ac_cv_header_ext2fs_ext2_fs_h=$(usex e2fsprogs) #354923
 
