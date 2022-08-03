@@ -48,5 +48,5 @@ src_install() {
 	mv go-*-bootstrap "${ED}/usr/lib/go-bootstrap" || die
 
 	# testdata directories are not needed on the installed system
-	rm -fr $(find "${ED}"/usr/lib/go -iname testdata -type d -print)
+	rm -fr $(find "${ED}"/usr/lib/go-bootstrap -iname testdata -type d -print)
 }
