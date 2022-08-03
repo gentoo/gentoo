@@ -8,10 +8,12 @@ PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1 flag-o-matic multiprocessing qmake-utils
 
 QT_PV="6.3:6" # minimum tested qt version
+MY_P="${P/-/_}"
 
 DESCRIPTION="Python bindings for QtWebEngine"
 HOMEPAGE="https://www.riverbankcomputing.com/software/pyqtwebengine/"
-SRC_URI="mirror://pypi/${P::1}/${PN}/${P}.tar.gz"
+SRC_URI="mirror://pypi/${P::1}/${PN}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0"

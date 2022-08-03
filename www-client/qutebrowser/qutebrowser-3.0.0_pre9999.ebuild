@@ -39,7 +39,7 @@ RDEPEND="
 		dev-qt/qtbase:6[icu]
 		$(python_gen_cond_dep '
 			dev-python/PyQt6[${PYTHON_USEDEP},dbus,gui,network,opengl,printsupport,qml,sql,widgets]
-			dev-python/PyQt6_WebEngine[${PYTHON_USEDEP},widgets]')
+			dev-python/PyQt6-WebEngine[${PYTHON_USEDEP},widgets]')
 	)
 	!qt6? (
 		dev-qt/qtcore:5[icu]
