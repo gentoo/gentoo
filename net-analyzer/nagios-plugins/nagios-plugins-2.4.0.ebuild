@@ -9,7 +9,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/release-${PV}/${P}.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ppc64 sparc ~x86"
 IUSE="ipv6 ldap mysql nagios-dns nagios-ping nagios-game postgres radius samba selinux snmp ssh +ssl"
 
 # Most of the plugins use automagic dependencies, i.e. the plugin will
