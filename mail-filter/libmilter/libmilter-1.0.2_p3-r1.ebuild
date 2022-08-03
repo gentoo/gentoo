@@ -29,11 +29,12 @@ fi
 S="${WORKDIR}/sendmail-${SENDMAIL_VER}"
 
 LICENSE="Sendmail"
-# We increment _pN when a new sendmail tarball comes out
-# We change the actual "main version" (1.0.2 at time of writing) when the version
-# of libmilter included in the tarball changes. But there seems to be ABI
-# stability between sendmail versions.
-SLOT="0/$(ver_cut 1-3)"
+# We increment _pN when a new sendmail tarball comes out and change the actual
+# "main version" (1.0.2 at time of writing) when the version
+# of libmilter included in the tarball changes.
+# We used to use $(ver_cut 1-3) here (assuming ABI stability between sendmail
+# versions) but that doesn't seem to apply for sendmail snapshots.
+SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="ipv6 poll"
 
