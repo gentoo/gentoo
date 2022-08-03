@@ -9,3 +9,4 @@ move kde-apps/kdesdk-kioslaves dev-util/kio-perldoc
 move kde-apps/zeroconf-ioslave net-misc/kio-zeroconf
 move net-misc/cni-plugins app-containers/cni-plugins
 move gnome-extra/chrome-gnome-shell gnome-extra/gnome-browser-connector
+move dev-python/PyQt6_sip dev-python/PyQt6-sip

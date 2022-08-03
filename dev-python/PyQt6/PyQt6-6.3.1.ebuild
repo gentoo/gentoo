@@ -59,7 +59,7 @@ DEPEND="
 	websockets? ( >=dev-qt/qtwebsockets-${QT_PV} )"
 RDEPEND="
 	${DEPEND}
-	>=dev-python/PyQt6_sip-13.4[${PYTHON_USEDEP}]"
+	>=dev-python/PyQt6-sip-13.4[${PYTHON_USEDEP}]"
 BDEPEND="
 	>=dev-python/PyQt-builder-1.11[${PYTHON_USEDEP}]
 	>=dev-qt/qtbase-${QT_PV}
