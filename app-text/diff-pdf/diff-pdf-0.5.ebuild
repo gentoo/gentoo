@@ -14,7 +14,7 @@ SRC_URI="https://github.com/vslavik/${PN}/releases/download/v${PV}/${P}.tar.gz"
 # version 2.16.5 of GTK+, which is licensed LGPL-2+.
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 # The build system checks for "poppler-glib", which is provided only
