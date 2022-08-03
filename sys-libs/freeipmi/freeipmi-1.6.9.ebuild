@@ -15,7 +15,7 @@ SRC_URI="mirror://gnu${ALPHA}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
+KEYWORDS="amd64 ~hppa ~ppc64 ~x86"
 IUSE="debug nagios"
 
 RDEPEND="dev-libs/libgcrypt:0="
