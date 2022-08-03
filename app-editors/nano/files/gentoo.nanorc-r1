@@ -4,6 +4,8 @@
 syntax ebuild "\.e(build|class)$"
 comment "#"
 
+linter bash -n
+
 ## All the standard portage functions:
 color brightgreen "(^|\<default_)src_(unpack|prepare|configure|compile|install|test)\>"
 color brightgreen "^pkg_(config|nofetch|info|pretend|setup|(pre|post)(inst|rm))\>"
@@ -13,29 +15,51 @@ color green "\<(break|case|continue|do|done|elif|else|esac|exit|fi|for|function|
 color green "\<(declare|eval|exec|export|let|local)\>"
 color green "[][{}():;|`$<>!=&\]"
 color green "-[defhnrsuwxzL]\>"
-color green "-(eq|ne|gt|lt|ge|le)\>"
+color green "-(eq|ne|gt|lt|ge|le|ef|ot|nt)\>"
+
 ## Variables... official portage ones in red, all others in bright red:
 color brightred "\$[-0-9@*#?$!]" "\$[[:alpha:]_][[:alnum:]_]*"
 color brightred "\$\{[#!]?([-@*#?$!]|[0-9]+|[[:alpha:]_][[:alnum:]_]*)(\[([[:digit:]]|@)+\])?(([#%/]|:?[-=?+])[^}]*\}|\[|\})"
 color red "\<(EAPI|ARCH|HOMEPAGE|DESCRIPTION|IUSE|SRC_URI|LICENSE|SLOT|KEYWORDS|[BIPR]?DEPEND|PROVIDE|PROPERTIES|REQUIRED_USE|RESTRICT|USERLAND)\>"
 color red "\<(S|E?D|T|PV|PF|P|PN|PR|PVR|A|CATEGORY|DISTDIR|FILESDIR|EPREFIX|(B|E|E?SYS)?ROOT|WORKDIR)\>"
-color red "\<(AS|C(PP|XX)?|LD)FLAGS\>" "\<C(HOST|TARGET|BUILD)\>" "\<(MERGE_TYPE|REPLACING_VERSIONS|REPLACED_BY_VERSION)\>"
+color red "\<(T|TMPDIR|HOME)\>"
+color red "\<(AS|C(PP|XX)?|FF|GO|LD|RUST)FLAGS\>" "\<C(HOST|TARGET|BUILD)\>" "\<(MERGE_TYPE|REPLACING_VERSIONS|REPLACED_BY_VERSION)\>"
 color red "\<EBUILD_PHASE(_FUNC)?\>"
 color red "\<QA_((TEXTRELS|EXECSTACK|WX_LOAD)(_[a-zA-Z_0-9]+)?|DT_HASH|PRESTRIPPED)\>"
-color red "\<(PATCHES|(HTML_)?DOCS)\>" "\<WANT_(AUTO(CONF|MAKE)|LIBTOOL)\>" "\<AT_M4DIR\>"
+color red "\<(PATCHES|(HTML_)?DOCS)\>" "\<WANT_(AUTO(CONF|MAKE)|LIBTOOL)\>" "\<AUTOTOOLS_(AUTO_)?DEPEND\>" "\<AM_OPTS\>" "\<AT_(NOEAUTOHEADER|NOEAUTOMAKE|NOELIBTOOLIZE|M4DIR)\>"
+color red "\<ECONF_SOURCE\>"
+
 ## Portage commands:
-color magenta "\<(use(_(with|enable|if_iuse)|x)?|in_iuse) [!a-zA-Z0-9_+ -]*" "inherit.*"
-color brightblue "\<e(apply(_user)?|begin|end|conf|install|make|ninja|qmake5|ant|(qa)?warn|infon?|error|log|patch(_user)?|new(group|user))\>"
+color magenta "\<(use(_(with|enable|if_iuse)|x|v)?|in_iuse) [!a-zA-Z0-9_+ -]*" "inherit.*"
+color brightblue "\<e(apply(_user)?|begin|end|conf|install(docs)?|make|ninja|qmake5|ant|(qa)?warn|infon?|error|log|patch(_user)?|new(group|user))\>"
 color brightblue "\<e(pause|beep|mktemp|(cvs|svn)_clean|punt_cxx)\>" "\<e(aclocal|auto(reconf|header|conf|make)|libtoolize)\>"
 color brightblue "\<e(stack|shopts|umask)_(push|pop)\>" "\<get_libdir\>" "\<ver_(cut|rs|test)\>" "\<version_is_at_least\>"
 color brightblue "\<make_desktop_entry\>" "\<unpack(_(makeself|pdv))?\>"
-color brightblue "\<(die|hasv?|inherit|nonfatal)\>" "\<(use(_(with|enable|if_iuse)|x)?|in_iuse)\>" "\<(has|best)_version\>"
+color brightblue "\<(assert|die|hasv?|inherit|nonfatal)\>" "\<(use(_(with|enable|if_iuse)|x|v)?|in_iuse)\>" "\<(has|best)_version\>"
 color brightblue "\<(do|new)(ins|s?bin|doc|header|lib(\.so|\.a)?|man|info|exe|initd|confd|envd|pam|menu|icon)\>"
 color brightblue "\<do(compress|dir|html|mo|strip|sym)\>" "\<keepdir\>"
 color brightblue "\<prepall(docs|info|man|strip)?\>" "\<prep(info|lib|lib\.(so|a)|man|strip)\>"
 color brightblue "\<(doc|ins|exe)?into\>" "\<f(owners|perms)\>" "\<(exe|ins|dir)opts\>"
-color brightblue "\<tc-get(BUILD_)?(AR|AS|CC|CPP|CXX|LD|NM|OBJCOPY|PKG_CONFIG|RANLIB)\>"
-color brightblue "\<tc-(arch(-kernel)?|export|has-(tls|openmp)|is-cross-compiler)\>"
+color brightblue "\<add(read|write|predict|deny)\>"
+### common eclasses
+color brightblue "\<edo(b)?\>"
+### flag-o-matic.eclass, toolchain-funcs.eclass
+color brightblue "\<(all-flag-vars)\>"
+color brightblue "\<(filter-(flags|lfs-flags|lto|mfpmath))\>"
+color brightblue "\<strip-flags\>"
+color brightblue "\<append-(cpp|c|cxx|f|lfs|ld)flags\>"
+color brightblue "\<replace-flags\>" "\<replace-cpu-flags\>"
+color brightblue "\<is-(ld?)flagq?\>"
+color brightblue "\<(append-atomic-flags|no-as-needed|raw-ldflags|append-libs|replace-sparc64-flags|get-flag|strip-unsupported-flags)\>"
+color brightblue "\<tc-get(BUILD_)?(AR|AS|CC|CPP|CXX|DLLWRAP|F77|FC|GCJ|GO|LD|STRINGS|STRIP|NM|OBJCOPY|OBJDUMP|PKG_CONFIG|RANLIB|RC|READELF)\>"
+color brightblue "\<test-flag(s)?-(CC|CXX|F77|FC|CCLD)\>"
+color brightblue "\<tc-ld-(is-(gold|lld)|disable-gold|force-bfd)\>"
+color brightblue "\<tc-(arch(-kernel)?|check-openmp|export|has-(tls|openmp)|is-cross-compiler)\>"
+color brightblue "\<tc-is-(clang|gcc)\>"
+color brightblue "\<(clang|gcc)-(fullversion|(major-|minor|micro-)version)\>"
+### debugging
+color brightblue "\<debug-print(-function|-section)\>"
+
 ## Common commands used in ebuilds:
 color blue "\<(awk|cat|cd|chmod|chown|cp|echo|env|find|e?grep|ln|make|mkdir|mv|popd|printf|pushd|rm|rmdir|sed|set|tar|touch|unset|xargs)\>"
 ## Comments (doesn't work that well):
