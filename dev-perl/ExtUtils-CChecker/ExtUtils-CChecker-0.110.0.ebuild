@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Configure-time utilities for using C headers"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND="
 	virtual/perl-ExtUtils-CBuilder
