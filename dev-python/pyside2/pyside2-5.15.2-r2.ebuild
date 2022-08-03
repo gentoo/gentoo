@@ -34,7 +34,7 @@ S="${WORKDIR}/${MY_P}/sources/pyside2"
 # See "sources/pyside2/PySide2/licensecomment.txt" for licensing details.
 LICENSE="|| ( GPL-2 GPL-3+ LGPL-3 )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm arm64 x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 IUSE="
 	3d charts concurrent datavis designer gles2-only +gui help location
 	multimedia +network positioning printsupport qml quick script scripttools
