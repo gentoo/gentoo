@@ -234,13 +234,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Do NOT add patches here
-	local PATCHES=()
-
-	[[ -d "${WORKDIR}"/patches ]] && PATCHES+=( "${WORKDIR}"/patches )
-
-	# Add local patches here
-	PATCHES+=(
+	local PATCHES=(
 		# Breaks Clang. Revert the commit for now and force off F_S=3.
 		# bug #841770.
 		"${FILESDIR}/251-revert-fortify-source-3-fix.patch"
