@@ -16,9 +16,9 @@ SRC_URI="mirror://pypi/${P::1}/${PN}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-# currently keeping defaults in sync with qtbase, and beside that trying to
-# stay minimal'ish given each builds relatively slowly (but still subject to
-# change if something is needed by most consumers)
+# currently keeping defaults in sync with qtbase (no extra deps), but trying
+# to stay minimal'ish given each builds relatively slowly (subject to change,
+# perhaps more or less depending on consumers and if qtbase is ever split)
 IUSE="
 	+dbus debug qml designer examples gles2-only +gui help multimedia
 	+network opengl positioning printsupport quick quick3d serialport
