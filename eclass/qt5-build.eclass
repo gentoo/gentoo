@@ -112,10 +112,6 @@ if [[ ${PN} != qtwebengine ]]; then
 			_QT5_P=${QT5_MODULE}-everywhere-opensource-src-${PV}
 			HOMEPAGE="https://www.qt.io/"
 			SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}/submodules/${_QT5_P}.tar.xz"
-			if [[ ${QT5_MODULE} == qtbase ]]; then
-				_QT5_GENTOOPATCHSET_REV=1
-				SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/qtbase-5.15-gentoo-patchset-${_QT5_GENTOOPATCHSET_REV}.tar.xz"
-			fi
 			# KDE Qt5PatchCollection on top of tag v${PV}-lts-lgpl
 			if [[ -n ${QT5_KDEPATCHSET_REV} ]]; then
 				HOMEPAGE+=" https://invent.kde.org/qt/qt/${QT5_MODULE} https://community.kde.org/Qt5PatchCollection"
@@ -124,6 +120,18 @@ if [[ ${PN} != qtwebengine ]]; then
 			S="${WORKDIR}"/${_QT5_P/opensource-}
 			;;
 	esac
+fi
+
+if [[ ${QT5_MODULE} == qtbase ]]; then
+	case ${PV} in
+		5.15.5)
+			_QT5_GENTOOPATCHSET_REV=1
+			;;
+		*)
+			_QT5_GENTOOPATCHSET_REV=2
+			;;
+	esac
+	SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/qtbase-5.15-gentoo-patchset-${_QT5_GENTOOPATCHSET_REV}.tar.xz"
 fi
 
 # @ECLASS_VARIABLE: QT5_BUILD_DIR
@@ -181,6 +189,8 @@ qt5-build_src_prepare() {
 	if [[ ${QT5_MODULE} == qtbase ]]; then
 		qt5_symlink_tools_to_build_dir
 
+		[[ -n ${_QT5_GENTOOPATCHSET_REV} ]] && eapply "${WORKDIR}/qtbase-5.15-gentoo-patchset-${_QT5_GENTOOPATCHSET_REV}"
+
 		# Avoid unnecessary qmake recompilations
 		sed -i -e "/Creating qmake/i if [ '!' -e \"\$outpath/bin/qmake\" ]; then" \
 			-e '/echo "Done."/a fi' configure || die "sed failed (skip qmake bootstrap)"
@@ -200,8 +210,6 @@ qt5-build_src_prepare() {
 
 		# Respect build variables in configure tests (bug #639494)
 		sed -i -e "s|\"\$outpath/bin/qmake\" \"\$relpathMangled\" -- \"\$@\"|& $(qt5_qmake_args) |" configure || die
-
-		[[ -n ${_QT5_GENTOOPATCHSET_REV} ]] && eapply "${WORKDIR}/qtbase-5.15-gentoo-patchset-${_QT5_GENTOOPATCHSET_REV}"
 	fi
 
 	[[ -n ${QT5_KDEPATCHSET_REV} ]] && eapply "${WORKDIR}/${QT5_MODULE}-${PV}-gentoo-kde-${QT5_KDEPATCHSET_REV}"
