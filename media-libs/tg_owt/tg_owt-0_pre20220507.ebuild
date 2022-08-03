@@ -59,6 +59,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}/tg_owt-0_pre20220507-allow-disabling-X11.patch"
 	"${FILESDIR}/tg_owt-0_pre20220507-unbundle-crc32c.patch"
+	"${FILESDIR}/tg_owt-0_pre20220209-gcc-12-cstdint.patch"
 )
 
 src_unpack() {
