@@ -343,6 +343,20 @@ build_separate_libffmpeg() {
 	use opencl
 }
 
+pkg_setup() {
+	# ffmpeg[chromaprint] depends on chromaprint, and chromaprint[tools] depends on ffmpeg.
+	# May cause breakage while updating, #862996, #625210, #833821.
+	if has_version media-libs/chromaprint[tools] && use chromaprint; then
+		ewarn "You have media-libs/chromaprint installed with 'tools' USE flag, which "
+		ewarn "links to ffmpeg, and you have enabled 'chromaprint' USE flag for ffmpeg, "
+		ewarn "which links to chromaprint. This may cause issues while rebuilding ffmpeg."
+		ewarn ""
+		ewarn "If your build fails to 'ERROR: chromaprint not found', rebuild chromaprint "
+		ewarn "without the 'tools' use flag first, then rebuild ffmpeg, and then finally enable "
+		ewarn "'tools' USE flag for chromaprint. See #862996."
+	fi
+}
+
 src_prepare() {
 	if [[ "${PV%_p*}" != "${PV}" ]] ; then # Snapshot
 		export revision=git-N-${FFMPEG_REVISION}
