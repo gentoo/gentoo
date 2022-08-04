@@ -11,7 +11,7 @@ SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ppc ppc64 ~sparc x86"
 IUSE="async-connect chat-screen doc +help-screen key-screen +library-screen lirc lyrics-screen +mouse nls outputs-screen pcre search-screen +song-screen"
 
 BDEPEND="
