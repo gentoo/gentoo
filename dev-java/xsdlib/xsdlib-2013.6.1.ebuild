@@ -14,7 +14,7 @@ SRC_URI="https://repo1.maven.org/maven2/net/java/dev/msv/xsdlib/${PV}/xsdlib-${P
 
 LICENSE="BSD Apache-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 
 CP_DEPEND="dev-java/relaxng-datatype:0"
 BDEPEND="app-arch/unzip"
