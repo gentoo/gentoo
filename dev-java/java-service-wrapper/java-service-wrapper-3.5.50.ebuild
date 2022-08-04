@@ -13,7 +13,7 @@ SRC_URI="https://download.tanukisoftware.com/wrapper/${PV}/wrapper_${PV}_src.tar
 
 LICENSE="tanuki-community"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=virtual/jre-1.8:*"
