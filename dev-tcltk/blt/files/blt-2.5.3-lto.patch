@@ -1,0 +1,18 @@
+--- a/generic/bltObjConfig.c	2022-08-04 10:42:54.705864029 +0200
++++ b/generic/bltObjConfig.c	2022-08-04 10:44:02.681005365 +0200
+@@ -1803,11 +1803,11 @@
+             fprintf(stderr, "Blt_ConfigTypes changed\n");
+         }
+         if (stype == BLT_CONFIG_CUSTOM) {
+-            extern Blt_CustomOption bltDistanceOption;
+-            extern Blt_CustomOption bltPositiveDistanceOption;
++            extern Tk_CustomOption bltDistanceOption;
++            extern Tk_CustomOption bltPositiveDistanceOption;
+ 
+-            if (specPtr->customPtr == &bltDistanceOption ||
+-                specPtr->customPtr == &bltPositiveDistanceOption
++            if (specPtr->customPtr == (Blt_CustomOption *)&bltDistanceOption ||
++                specPtr->customPtr == (Blt_CustomOption *)&bltPositiveDistanceOption
+             ) {
+                 stype = BLT_CONFIG_PIXELS;
+             }
