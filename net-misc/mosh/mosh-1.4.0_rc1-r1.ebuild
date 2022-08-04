@@ -17,7 +17,7 @@ SLOT="0"
 if [[ ${PV} != *_rc* ]] ; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
-IUSE="+client examples +mosh-hardening nettle +server syslog ufw +utempter"
+IUSE="+client examples +hardened nettle +server syslog ufw +utempter"
 
 REQUIRED_USE="
 	|| ( client server )
@@ -64,8 +64,8 @@ src_configure() {
 		$(use_enable client)
 		$(use_enable server)
 		$(use_enable examples)
+		$(use_enable hardened hardening)
 		$(use_enable ufw)
-		$(use_enable mosh-hardening hardening)
 		$(use_enable syslog)
 		$(use_with utempter)
 
