@@ -4,14 +4,13 @@
 EAPI=8
 
 DOCS_BUILDER="doxygen"
-DOCS_DEPEND="media-gfx/imagemagick"
 DOCS_DIR="doc"
 
 inherit docs
 
 DESCRIPTION="Portable string functions, focus on the *printf() and *scanf() clones"
 HOMEPAGE="https://daniel.haxx.se/projects/trio/"
-SRC_URI="https://github.com/orbea/${PN}/releases/download/v${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/orbea/trio/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="trio"
 SLOT="0"
@@ -24,5 +23,5 @@ src_compile() {
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -type f -name '*.la' -delete || die
 }
