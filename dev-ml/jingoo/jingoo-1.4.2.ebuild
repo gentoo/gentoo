@@ -17,6 +17,7 @@ IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-ml/ppx_deriving:=
+	dev-ml/ppxlib:=
 	dev-ml/uucp:=
 	dev-ml/uutf:=
 	dev-ml/re:=
