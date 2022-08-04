@@ -44,6 +44,8 @@ DEPEND="${RDEPEND}
 	dev-qt/qttest:5
 "
 
+PATCHES=( "${FILESDIR}"/qlcplus-4.12.5-fix-test-issue.patch )
+
 src_prepare() {
 	default
 
