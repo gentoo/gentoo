@@ -17,14 +17,13 @@ SLOT="0"
 if [[ ${PV} != *_rc* ]] ; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
-IUSE="+client examples +mosh-hardening +server syslog ufw +utempter"
+IUSE="+client examples +mosh-hardening nettle +server syslog ufw +utempter"
 
 REQUIRED_USE="
 	|| ( client server )
 	examples? ( client )"
 
 RDEPEND="
-	dev-libs/openssl:=
 	dev-libs/protobuf:=
 	sys-libs/ncurses:=
 	sys-libs/zlib
@@ -33,6 +32,8 @@ RDEPEND="
 		dev-lang/perl
 		dev-perl/IO-Tty
 	)
+	!nettle? ( dev-libs/openssl:= )
+	nettle? ( dev-libs/nettle:= )
 	utempter? (
 		sys-libs/libutempter
 	)"
@@ -67,6 +68,9 @@ src_configure() {
 		$(use_enable mosh-hardening hardening)
 		$(use_enable syslog)
 		$(use_with utempter)
+
+		# We default to OpenSSL as upstream do
+		--with-crypto-library=$(usex nettle nettle openssl-with-openssl-ocb)
 	)
 
 	econf "${myeconfargs[@]}"
