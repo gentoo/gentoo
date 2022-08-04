@@ -348,7 +348,7 @@ LICENSE="
 	BSD CC0-1.0 ISC MIT MPL-2.0 openssl unicode
 	doc? ( CC-BY-4.0 OFL-1.1 )"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~sparc"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
