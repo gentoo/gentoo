@@ -8,7 +8,7 @@ inherit qmake-utils
 MY_GIT_COMMIT="a7222bdbcd3c52e13d96993a33c5648f1306aeba"
 SRC_URI="https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin/-/archive/${MY_GIT_COMMIT}/OpenRGBEffectsPlugin-${MY_GIT_COMMIT}.tar.bz2"
 S="${WORKDIR}/OpenRGBEffectsPlugin-${MY_GIT_COMMIT}"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DESCRIPTION="Plugin for OpenRGB with various Effects that can be synced across devices"
 HOMEPAGE="https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin"
