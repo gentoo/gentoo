@@ -56,28 +56,24 @@ src_install() {
 
 	# bin
 	dodir /usr/bin/
-	dosym ../../usr/share/${PN}/${PN}.sh /usr/bin/${PN}
+	dosym -r /usr/share/${PN}/${PN}.sh /usr/bin/${PN}
 
 	# env
 	doenvd "${FILESDIR}"/50slib
 
-	# docs
-	doinfo slib.info
-	doman slib.1
-
 	# guile
 	if has_version '=dev-scheme/guile-3.0*'; then
 		dodir /usr/share/guile/3.0
-		dosym ../../../../usr/share/${PN}/ /usr/share/guile/3.0/${PN}
+		dosym -r /usr/share/${PN}/ /usr/share/guile/3.0/${PN}
 	elif has_version '=dev-scheme/guile-2.2*'; then
 		dodir /usr/share/guile/2.2
-		dosym ../../../../usr/share/${PN}/ /usr/share/guile/2.2/${PN}
+		dosym -r /usr/share/${PN}/ /usr/share/guile/2.2/${PN}
 	elif has_version '=dev-scheme/guile-2.0*'; then
 		dodir /usr/share/guile/2.0
-		dosym ../../../../usr/share/${PN}/ /usr/share/guile/2.0/${PN}
+		dosym -r /usr/share/${PN}/ /usr/share/guile/2.0/${PN}
 	else
 		dodir /usr/share/guile/1.8
-		dosym ../../../../usr/share/${PN}/ /usr/share/guile/1.8/${PN}
+		dosym -r /usr/share/${PN}/ /usr/share/guile/1.8/${PN}
 	fi
 
 	# gambit
@@ -85,8 +81,11 @@ src_install() {
 
 	# backwards compatibility
 	dodir /usr/lib/
-	dosym ../../usr/share/${PN}/ /usr/lib/${PN}
+	dosym -r /usr/share/${PN}/ /usr/lib/${PN}
 
+	# docs
+	doinfo slib.info
+	doman slib.1
 	einstalldocs
 }
 
