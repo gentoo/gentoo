@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">libtmux</remote-id>
+		<remote-id type="github">tmux-python/libtmux</remote-id>
 	</upstream>
 </pkgmetadata>
