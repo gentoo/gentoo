@@ -16,6 +16,10 @@ src_compile() {
 	emake VERSION=v${PV}
 }
 
+src_test() {
+	emake test
+}
+
 src_install() {
 	dobin cilium
 }
