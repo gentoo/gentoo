@@ -7,6 +7,7 @@
 
 amdgpu - VIDEO_CARDS setting to build driver for AMDGPU video cards
 ast - VIDEO_CARDS setting to build driver for ASpeedTech video cards
+d3d12 - VIDEO_CARDS seeting to build driver for Microsoft WSL video cards
 dummy - VIDEO_CARDS setting to build driver for dummy video cards
 exynos - VIDEO_CARDS setting to build driver for Samsung Exynos video cards
 freedreno - VIDEO_CARDS setting to build reverse-engineered driver for Qualcomm Adreno cards
