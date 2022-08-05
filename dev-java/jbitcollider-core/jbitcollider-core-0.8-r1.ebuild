@@ -17,7 +17,7 @@ SRC_URI="mirror://sourceforge/project/bitcollider/jBitcollider%20%28Java%29/${PV
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
