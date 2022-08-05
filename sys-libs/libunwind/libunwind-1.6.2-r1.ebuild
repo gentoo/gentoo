@@ -1,7 +1,17 @@
 # Copyright 2005-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
+# Generate using https://github.com/thesamesam/sam-gentoo-scripts/blob/main/niche/generate-libunwind-docs
+# Set to 1 if prebuilt, 0 if not
+# (the construct below is to allow overriding from env for script)
+LIBUNWIND_DOCS_PREBUILT=${LIBUNWIND_DOCS_PREBUILT:-1}
+LIBUNWIND_DOCS_PREBUILT_DEV=sam
+LIBUNWIND_DOCS_VERSION=$(ver_cut 1-3)
+# Default to generating docs (inc. man pages) if no prebuilt; overridden later
+# bug #830088
+LIBUNWIND_DOCS_USEFLAG="+doc"
 
 MY_PV=${PV/_/-}
 MY_P=${PN}-${MY_PV}
@@ -10,12 +20,16 @@ inherit multilib-minimal
 DESCRIPTION="Portable and efficient API to determine the call-chain of a program"
 HOMEPAGE="https://savannah.nongnu.org/projects/libunwind"
 SRC_URI="mirror://nongnu/libunwind/${MY_P}.tar.gz"
+if [[ ${LIBUNWIND_DOCS_PREBUILT} == 1 ]] ; then
+	SRC_URI+=" !doc? ( https://dev.gentoo.org/~${LIBUNWIND_DOCS_PREBUILT_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${LIBUNWIND_DOCS_VERSION}-docs.tar.xz )"
+fi
+
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0/8" # libunwind.so.8
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 -sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="debug debug-frame doc libatomic lzma static-libs test zlib"
+IUSE="debug debug-frame ${LIBUNWIND_DOCS_USEFLAG} libatomic lzma static-libs test zlib"
 
 RESTRICT="test !test? ( test )" # some tests are broken (toolchain version dependent, rely on external binaries)
 
@@ -94,4 +108,9 @@ multilib_src_test() {
 
 multilib_src_install_all() {
 	find "${ED}" -name "*.la" -type f -delete || die
+
+	# If USE=doc, there'll be newly generated docs which we install instead.
+	if ! use doc && [[ ${LIBUNWIND_DOCS_PREBUILT} == 1 ]] ; then
+		doman "${WORKDIR}"/${PN}-${LIBUNWIND_DOCS_VERSION}-docs/docs/*.[0-8]
+	fi
 }
