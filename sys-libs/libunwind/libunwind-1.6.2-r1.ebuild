@@ -12,6 +12,8 @@ LIBUNWIND_DOCS_VERSION=$(ver_cut 1-3)
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
 LIBUNWIND_DOCS_USEFLAG="+doc"
 
+[[ ${LIBUNWIND_DOCS_PREBUILT} == 1 ]] && LIBUNWIND_DOCS_USEFLAG="doc"
+
 MY_PV=${PV/_/-}
 MY_P=${PN}-${MY_PV}
 inherit multilib-minimal
@@ -110,6 +112,6 @@ multilib_src_install_all() {
 
 	# If USE=doc, there'll be newly generated docs which we install instead.
 	if ! use doc && [[ ${LIBUNWIND_DOCS_PREBUILT} == 1 ]] ; then
-		doman "${WORKDIR}"/${PN}-${LIBUNWIND_DOCS_VERSION}-docs/docs/*.[0-8]
+		doman "${WORKDIR}"/${PN}-${LIBUNWIND_DOCS_VERSION}-docs/man*/*.[0-8]
 	fi
 }
