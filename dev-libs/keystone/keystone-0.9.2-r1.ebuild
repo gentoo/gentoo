@@ -5,7 +5,7 @@ EAPI=8
 
 LLVM_MAX_SLOT=14
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit cmake distutils-r1 llvm
 
