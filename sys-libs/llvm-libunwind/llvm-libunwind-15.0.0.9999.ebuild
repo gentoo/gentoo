@@ -9,7 +9,7 @@ inherit cmake-multilib flag-o-matic llvm llvm.org python-any-r1 \
 	toolchain-funcs
 
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
-HOMEPAGE="https://github.com/llvm-mirror/libunwind"
+HOMEPAGE="https://llvm.org/docs/ExceptionHandling.html"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
