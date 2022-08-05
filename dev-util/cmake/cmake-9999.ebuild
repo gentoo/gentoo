@@ -52,6 +52,8 @@ else
 	fi
 fi
 
+[[ ${CMAKE_DOCS_PREBUILT} == 1 ]] && CMAKE_DOCS_USEFLAG="doc"
+
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="CMake"
