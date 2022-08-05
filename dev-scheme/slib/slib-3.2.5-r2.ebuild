@@ -69,6 +69,9 @@ src_install() {
 	if has_version '=dev-scheme/guile-3.0*'; then
 		dodir /usr/share/guile/3.0
 		dosym ../../../../usr/share/${PN}/ /usr/share/guile/3.0/${PN}
+	elif has_version '=dev-scheme/guile-2.2*'; then
+		dodir /usr/share/guile/2.2
+		dosym ../../../../usr/share/${PN}/ /usr/share/guile/2.2/${PN}
 	elif has_version '=dev-scheme/guile-2.0*'; then
 		dodir /usr/share/guile/2.0
 		dosym ../../../../usr/share/${PN}/ /usr/share/guile/2.0/${PN}
