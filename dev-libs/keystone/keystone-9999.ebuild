@@ -29,7 +29,7 @@ ALL_LLVM_TARGETS=( AArch64 ARM Hexagon Mips PowerPC Sparc SystemZ X86 )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
-IUSE="python ${ALL_LLVM_TARGETS[*]}"
+IUSE="python test ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
 	<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):=[${LLVM_TARGET_USEDEPS// /,}]
@@ -41,6 +41,9 @@ REQUIRED_USE="
 	|| ( ${ALL_LLVM_TARGETS[*]} )
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
+
+# Upstream doesn't provide automated tests
+RESTRICT="!test? ( test )"
 
 # Upstream doesn't flag patch releases (bug 858395)
 QA_PKGCONFIG_VERSION="$(ver_cut 1-2)"
