@@ -8,7 +8,7 @@ inherit libtool flag-o-matic gnuconfig strip-linguas toolchain-funcs
 DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
 LICENSE="GPL-3+"
-IUSE="cet default-gold doc +gold multitarget +nls pgo +plugins static-libs test vanilla"
+IUSE="cet default-gold doc gold multitarget +nls pgo +plugins static-libs test vanilla"
 REQUIRED_USE="default-gold? ( gold )"
 
 # Variables that can be set here  (ignored for live ebuilds)
