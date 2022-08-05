@@ -31,8 +31,10 @@ PATCHES=(
 	"${FILESDIR}"/${P}-pkgconfig.patch
 )
 
-# Upstream doesn't flag release candidates (bug 858350)
-QA_PKGCONFIG_VERSION=""
+if [[ ${PV} == *_rc* ]]; then
+	# Upstream doesn't flag release candidates (bug 858350)
+	QA_PKGCONFIG_VERSION=""
+fi
 
 wrap_python() {
 	local phase=$1
