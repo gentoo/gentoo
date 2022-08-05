@@ -1136,6 +1136,7 @@ glibc_headers_configure() {
 		--host=${CTARGET_OPT:-${CTARGET}}
 		--with-headers=$(build_eprefix)$(alt_build_headers)
 		--prefix="$(host_eprefix)/usr"
+		$(use_enable crypt)
 		${EXTRA_ECONF}
 	)
 
