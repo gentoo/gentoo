@@ -17,6 +17,7 @@ IUSE="static"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.60-build.patch
+	"${FILESDIR}"/${PN}-9.64-glibc-2.36.patch
 )
 
 src_prepare() {
