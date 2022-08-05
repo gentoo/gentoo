@@ -54,7 +54,7 @@ src_prepare() {
 python_compile() {
 	distutils-r1_python_compile
 	if ! has "${EPYTHON}" python3.{8..9}; then
-		find "${BUILD_DIR}"/install -name '*eventletutils*.py' -delete || die
+		find "${BUILD_DIR}"/install -name '*eventletutils*' -delete || die
 	fi
 }
 
