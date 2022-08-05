@@ -18,6 +18,7 @@ i965 - VIDEO_CARDS setting to build driver for Intel i965 video cards
 intel - VIDEO_CARDS setting to build driver for Intel video cards
 lima - VIDEO_CARDS setting to build driver for Mali 200/400 video cards
 mga - VIDEO_CARDS setting to build driver for mga video cards
+microsoft - VIDEO_CARDS seeting to build driver for Microsoft WSL video cards
 nouveau - VIDEO_CARDS setting to build reverse-engineered driver for nvidia cards
 nvidia - VIDEO_CARDS setting to build driver for nvidia video cards
 nv - VIDEO_CARDS setting to build driver for nv video cards
