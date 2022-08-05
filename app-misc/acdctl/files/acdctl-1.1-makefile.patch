@@ -1,0 +1,13 @@
+--- a/Makefile
++++ b/Makefile
+@@ -25,8 +25,8 @@
+ #****************************************************************************
+ 
+ 
+-CFLAGS=-Wall
+-LDFLAGS=-lusb
++CFLAGS += -Wall
++LDLIBS = -lusb
+ 
+ all:acdctl
+ 

@@ -20,7 +20,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="console geoip gtk libnotify sound webinterface"
+IUSE="console gtk libnotify sound webinterface"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	libnotify? ( gtk )
@@ -51,7 +51,6 @@ RDEPEND="
 			>=dev-python/twisted-17.1.0[crypt(-),${PYTHON_USEDEP}]
 		)
 		>=dev-python/zope-interface-4.4.2[${PYTHON_USEDEP}]
-		geoip? ( dev-python/geoip-python[${PYTHON_USEDEP}] )
 		gtk? (
 			sound? ( dev-python/pygame[${PYTHON_USEDEP}] )
 			dev-python/pygobject:3[${PYTHON_USEDEP}]

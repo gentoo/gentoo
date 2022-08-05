@@ -1,11 +1,34 @@
---- a/mepl.c	2009-04-07 21:17:32.000000000 +0200
-+++ b/mepl.c	2009-04-07 21:16:48.000000000 +0200
+--- a/mepl.c
++++ b/mepl.c
 @@ -1,3 +1,4 @@
 +#include <stdlib.h>
  #define VERSION "0.45 Don Nov 25 19:13:58 CET 1999"
  /*  Version: @(#) mepl.c 0.45
-     Autor: Frank Holtz <frank@hof-berlin.de>--- mepl.c	2009-04-07 21:08:18.000000000 +0200
-@@ -347,7 +347,7 @@
+     Autor: Frank Holtz <frank@hof-berlin.de>
+@@ -18,11 +19,12 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ #include <fcntl.h>
+-// #include <signal.h> #If you have problems to compile remove the "//"
++#include <signal.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <sys/time.h>
+ #include <sys/types.h>
++#include <sys/wait.h>
+ #include <termios.h>
+ #include <time.h>
+ #include <unistd.h>
+@@ -93,7 +95,7 @@
+ int hex(unsigned char *);
+ int fget(int);
+ 
+-main(int argc, char *argv[])
++int main(int argc, char *argv[])
+ {
+  int   i,z,j,k,error,errz,ic,resin,resout,n,pid,opt;
+  struct termios oldtio,newtio;
+@@ -346,7 +348,7 @@
   errz=0; 
   do {
   error=0;

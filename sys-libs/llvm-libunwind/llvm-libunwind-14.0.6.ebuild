@@ -8,11 +8,11 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit cmake-multilib llvm llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
-HOMEPAGE="https://github.com/llvm-mirror/libunwind"
+HOMEPAGE="https://llvm.org/docs/ExceptionHandling.html"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv sparc x86 ~x64-macos"
 IUSE="debug static-libs test"
 RESTRICT="!test? ( test )"
 

@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Joonas Niilola <juippis@gentoo.org> (2022-08-02)
+# Doesn't compile with 'Xaw3d' use flag, #849947.
+app-text/xdvik Xaw3d
+
+# Joonas Niilola <juippis@gentoo.org> (2022-07-13)
 # Depends on an older enigmail that only supports python2, which is
 # being removed soon. #758344
 www-client/seamonkey crypt
@@ -24,10 +29,6 @@ sci-physics/bullet tbb
 # most of the time it requires nightly (real nightly) compiler.
 # please unmask as needed, may require patching
 >=dev-lang/rust-1.62.0 miri
-
-# Michał Górny <mgorny@gentoo.org> (2022-07-02)
-# dev-python/geoip-python is masked for removal.
-net-p2p/deluge geoip
 
 # James Le Cuirot <chewi@gentoo.org> (2022-06-25)
 # This flag concerns an x86-specific problem.

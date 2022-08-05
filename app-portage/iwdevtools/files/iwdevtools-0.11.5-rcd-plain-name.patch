@@ -1,0 +1,18 @@
+https://github.com/ionenwks/iwdevtools/commit/408fba9
+From: Ionen Wolkens <ionen@gentoo.org>
+Date: Mon, 1 Aug 2022 04:28:49 -0400
+Subject: [PATCH] repo-cd: use plain name for error display
+
+Given doesn't look so nice with the [_-] addition:
+ ! no non-excluded match found for '*some[_-]name*'
+--- a/scripts/repo-cd
++++ b/scripts/repo-cd
+@@ -307,7 +307,7 @@ rcd-cd() {
+ 		done | mapfile -td '' choice
+ 
+ 		if (( ! ${#choice[@]} )); then
+-			rcd-msg '!:r' "no non-excluded match found for '${C[m]}${search}${C[n]}'${userepo:+ in ::${userepo}}"
++			rcd-msg '!:r' "no non-excluded match found for '${C[m]}${name}${C[n]}'${userepo:+ in ::${userepo}}"
+ 			exit 104
+ 		fi
+ 

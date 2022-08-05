@@ -1,8 +1,36 @@
-diff --git a/ttyrec.c b/ttyrec.c
-index 3392f70..86a59ee 100644
+--- a/io.h
++++ b/io.h
+@@ -9,5 +9,6 @@
+ int     edup            (int oldfd);
+ int     edup2           (int oldfd, int newfd);
+ FILE*   efdopen         (int fd, const char *mode);
++void    set_progname    (const char *name);
+ 
+ #endif
 --- a/ttyrec.c
 +++ b/ttyrec.c
-@@ -57,7 +57,9 @@
+@@ -42,13 +42,19 @@
+ /*
+  * script
+  */
++
++#ifndef _GNU_SOURCE
++#define _GNU_SOURCE
++#endif
++
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <termios.h>
+ #include <sys/ioctl.h>
+ #include <sys/time.h>
+ #include <sys/file.h>
+-#include <sys/signal.h>
++#include <sys/wait.h>
++#include <signal.h>
+ #include <stdio.h>
+ #include <time.h>
+ #include <unistd.h>
+@@ -57,7 +63,9 @@
  
  #if defined(SVR4)
  #include <fcntl.h>
@@ -12,7 +40,16 @@ index 3392f70..86a59ee 100644
  #endif /* SVR4 */
  
  #include <sys/time.h>
-@@ -449,6 +451,7 @@ getslave()
+@@ -341,7 +349,7 @@
+ 	rtt = tt;
+ #if defined(SVR4)
+ 	rtt.c_iflag = 0;
+-	rtt.c_lflag &= ~(ISIG|ICANON|XCASE|ECHO|ECHOE|ECHOK|ECHONL);
++	rtt.c_lflag &= ~(ISIG|ICANON|ECHO|ECHOE|ECHOK|ECHONL);
+ 	rtt.c_oflag = OPOST;
+ 	rtt.c_cc[VINTR] = CDEL;
+ 	rtt.c_cc[VQUIT] = CDEL;
+@@ -449,6 +457,7 @@
  		perror("open(fd, O_RDWR)");
  		fail();
  	}
@@ -20,7 +57,7 @@ index 3392f70..86a59ee 100644
  	if (isastream(slave)) {
  		if (ioctl(slave, I_PUSH, "ptem") < 0) {
  			perror("ioctl(fd, I_PUSH, ptem)");
-@@ -466,6 +469,7 @@ getslave()
+@@ -466,6 +475,7 @@
  #endif
  		(void) ioctl(0, TIOCGWINSZ, (char *)&win);
  	}

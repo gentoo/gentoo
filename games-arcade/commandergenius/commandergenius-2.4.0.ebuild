@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ inherit python-single-r1 xdg cmake
 MY_PN="Commander-Genius"
 MY_P="${MY_PN}-v${PV}"
 DESCRIPTION="Open Source Commander Keen clone (needs original game files)"
-HOMEPAGE="http://clonekeenplus.sourceforge.net"
+HOMEPAGE="https://clonekeenplus.sourceforge.io"
 SRC_URI="https://gitlab.com/Dringgstein/${MY_PN}/-/archive/v${PV}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"

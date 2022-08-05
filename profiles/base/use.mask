@@ -4,6 +4,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2022-08-02)
+# Masked for testing. The split of some packages may still
+# change. bug #838970.
+qt6
+
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # Mask ruby 2.6 as EOL
 ruby_targets_ruby26

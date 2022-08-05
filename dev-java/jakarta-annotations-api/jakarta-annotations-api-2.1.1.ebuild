@@ -14,7 +14,7 @@ SRC_URI="https://github.com/eclipse-ee4j/${PN/jakarta/common}/archive/${PV}.tar.
 
 LICENSE="EPL-2.0 GPL-2-with-classpath-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 DEPEND="
 	>=virtual/jdk-11:*

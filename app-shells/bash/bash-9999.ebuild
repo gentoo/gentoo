@@ -294,7 +294,11 @@ src_install() {
 		done
 	fi
 
-	doman doc/*.1
+	# Install bash_builtins.1 and rbash.1
+	emake -C doc DESTDIR="${D}" install_builtins
+	sed 's:bash\.1:man1/&:' doc/rbash.1 > "${T}"/rbash.1 || die
+	doman "${T}"/rbash.1
+
 	newdoc CWRU/changelog ChangeLog
 	dosym bash.info /usr/share/info/bashref.info
 }

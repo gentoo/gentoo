@@ -1,0 +1,20 @@
+--- a/acdctl.c
++++ b/acdctl.c
+@@ -130,7 +130,7 @@
+       next->vendor, next->product, next->description, next->year);
+     next++;
+   }
+-  printf("\n%d displays supported\n", displayCount);
++  printf("\n%ld displays supported\n", displayCount);
+ }
+ 
+ void help(const char* program_name) {
+@@ -277,7 +277,7 @@
+ }
+ 
+ void found_display(int index, struct usb_device *dev) {
+-  int ret;
++  int ret = 0;
+   usb_dev_handle* display_device = usb_open(dev);
+ 
+   if(display_device) {

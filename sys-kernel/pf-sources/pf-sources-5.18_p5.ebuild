@@ -79,7 +79,15 @@ src_prepare() {
 }
 
 pkg_postinst() {
+	# Fixes "wrongly" detected directory name, bgo#862534.
+	local KV_FULL="${PFPV}"
 	kernel-2_pkg_postinst
 
 	optfeature "userspace KSM helper" sys-process/uksmd
+}
+
+pkg_postrm() {
+	# Same here, bgo#862534.
+	local KV_FULL="${PFPV}"
+	kernel-2_pkg_postrm
 }

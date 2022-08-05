@@ -19,7 +19,7 @@ SRC_URI="https://github.com/downloads/rafaelmartins/${PN}/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="doc"
 
 BDEPEND="doc? ( >=dev-python/sphinx-1.0 )"

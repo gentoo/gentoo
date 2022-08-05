@@ -205,7 +205,7 @@ _distutils_set_globals() {
 		fi
 
 		bdep='
-			>=dev-python/gpep517-6[${PYTHON_USEDEP}]
+			>=dev-python/gpep517-8[${PYTHON_USEDEP}]
 		'
 		case ${DISTUTILS_USE_PEP517} in
 			flit)
@@ -265,7 +265,7 @@ _distutils_set_globals() {
 				;;
 			sip)
 				bdep+='
-					>=dev-python/sip-6.6.1[${PYTHON_USEDEP}]
+					>=dev-python/sip-6.6.2[${PYTHON_USEDEP}]
 				'
 				;;
 			standalone)
@@ -884,10 +884,10 @@ _distutils-r1_handle_pyproject_toml() {
 
 	if [[ ! -f setup.py && -f pyproject.toml ]]; then
 		if [[ ${DISTUTILS_USE_SETUPTOOLS} != pyproject.toml ]]; then
-			eerror "No setup.py found but pyproject.toml is present.  In order to enable"
-			eerror "pyproject.toml support in distutils-r1, set:"
-			eerror "  DISTUTILS_USE_SETUPTOOLS=pyproject.toml"
-			die "No setup.py found and DISTUTILS_USE_SETUPTOOLS!=pyproject.toml"
+			eerror "No setup.py found but pyproject.toml is present.  Please migrate"
+			eerror "the package to use DISTUTILS_USE_PEP517. See:"
+			eerror "  https://projects.gentoo.org/python/guide/distutils.html"
+			die "No setup.py found and PEP517 mode not enabled"
 		fi
 	fi
 }
@@ -1270,13 +1270,25 @@ distutils_wheel_install() {
 	local wheel=${2}
 
 	einfo "  Installing ${wheel##*/} to ${root}"
-	local cmd=(
-		gpep517 install-wheel
-			--destdir="${root}"
-			--interpreter="${PYTHON}"
-			--prefix="${EPREFIX}/usr"
-			"${wheel}"
-	)
+	if has_version -b ">=dev-python/gpep517-9"; then
+		# TODO: inline when we dep on >=9
+		local cmd=(
+			gpep517 install-wheel
+				--destdir="${root}"
+				--interpreter="${PYTHON}"
+				--prefix="${EPREFIX}/usr"
+				--optimize=all
+				"${wheel}"
+		)
+	else
+		local cmd=(
+			gpep517 install-wheel
+				--destdir="${root}"
+				--interpreter="${PYTHON}"
+				--prefix="${EPREFIX}/usr"
+				"${wheel}"
+		)
+	fi
 	printf '%s\n' "${cmd[*]}"
 	"${cmd[@]}" || die "Wheel install failed"
 
@@ -1647,8 +1659,8 @@ distutils-r1_python_install() {
 		# python likes to compile any module it sees, which triggers sandbox
 		# failures if some packages haven't compiled their modules yet.
 		addpredict "${EPREFIX}/usr/lib/${EPYTHON}"
-		addpredict /usr/lib/pypy3.9
-		addpredict /usr/local # bug 498232
+		addpredict "${EPREFIX}/usr/lib/pypy3.9"
+		addpredict "${EPREFIX}/usr/local" # bug 498232
 
 		if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 			merge_root=1
@@ -1994,9 +2006,13 @@ _distutils-r1_post_python_install() {
 		done
 
 		if [[ ${DISTUTILS_USE_PEP517} ]]; then
-			# we need to recompile everything here in order to embed
-			# the correct paths
-			python_optimize "${sitedir}"
+			if ! has_version -b ">=dev-python/gpep517-9"
+			then
+				# TODO: remove when we dep on >=9
+				# we need to recompile everything here in order to embed
+				# the correct paths
+				python_optimize "${sitedir}"
+			fi
 		fi
 	fi
 }

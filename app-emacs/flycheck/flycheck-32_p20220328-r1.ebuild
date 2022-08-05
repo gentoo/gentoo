@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x64-macos"
 RESTRICT="test" # test requires cask and ert-runner which are not packaged yet
 
 RDEPEND=">=app-emacs/dash-2.12.1

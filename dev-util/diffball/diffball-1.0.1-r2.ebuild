@@ -13,7 +13,7 @@ SRC_URI="https://github.com/zmedico/diffball/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ppc ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="debug"
 
 RDEPEND="

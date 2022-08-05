@@ -1,0 +1,44 @@
+--- a/Makefile
++++ b/Makefile
+@@ -12,7 +12,7 @@
+ else
+ OSCFLAGS=-Wall -Wstrict-prototypes
+ endif
+-CFLAGS=-O2 $(DEBUG) -D$(OS) $(OSCFLAGS)
++CFLAGS += $(DEBUG) -D$(OS) $(OSCFLAGS)
+ 
+ # engine
+ ENGSRC=bdengine.c xmalloc.c
+@@ -48,16 +48,15 @@
+ 
+ else
+ birthday: $(CMDOBJ)
+-	$(CC) $(LDFLAGS) $(CMDOBJ) -o $@
++	$(CC) $(LDFLAGS) $(CMDOBJ) -o $@ $(LIBS)
+ 
+ # you can override this to use the new FHS locations.
+-SHARE=
+-#SHARE=/share
++SHARE=/share
+ 
+ install: birthday birthday.man
+-	install -d $(DESTDIR)/usr/bin $(DESTDIR)/usr$(SHARE)/man/man1
+-	install -s birthday $(DESTDIR)/usr/bin/birthday
+-	install -m 0644 birthday.man $(DESTDIR)/usr$(SHARE)/man/man1/birthday.1
++	install -d $(DESTDIR)$(EPREFIX)/usr/bin $(DESTDIR)$(EPREFIX)/usr$(SHARE)/man/man1
++	install birthday $(DESTDIR)$(EPREFIX)/usr/bin/birthday
++	install -m 0644 birthday.man $(DESTDIR)$(EPREFIX)/usr$(SHARE)/man/man1/birthday.1
+ 
+ test: birthday
+ 	sh runtest.sh -exec `pwd`/birthday test/*.t
+--- a/runtest.sh
++++ b/runtest.sh
+@@ -7,7 +7,7 @@
+ unset PASSED FAILED TAKEN KEEP
+ 
+ extract_section() {
+-  sed -ne "/^\\*$1/,/^\\*/p" "$2" | grep -v '^*'
++  sed -ne "/^\\*$1/,/^\\*/p" "$2" | grep --binary-files=text -v '^*'
+ }
+ 
+ runtest() {

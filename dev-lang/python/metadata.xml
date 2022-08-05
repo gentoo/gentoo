@@ -6,11 +6,28 @@
 		<name>Python</name>
 	</maintainer>
 	<use>
-		<flag name="bluetooth">Build Bluetooth protocol support in socket module</flag>
-		<flag name="libedit">Link readline extension against <pkg>dev-libs/libedit</pkg> instead of <pkg>sys-libs/readline</pkg>.</flag>
-		<flag name="pgo">Optimize the build using Profile Guided Optimization (PGO)</flag>
-		<flag name="lto">Optimize the build using Link Time Optimization (LTO)</flag>
-		<flag name="wininst">Install Windows executables required to create an executable installer for MS Windows.</flag>
+		<flag name="bluetooth">
+			Build Bluetooth protocol support in socket module
+		</flag>
+		<flag name="ensurepip">
+			Install the ensurepip module that uses bundled wheels
+			to bootstrap pip and setuptools (if disabled, it will
+			be only possible to use venv `--without-pip`)
+		</flag>
+		<flag name="libedit">
+			Link readline extension against <pkg>dev-libs/libedit</pkg>
+			instead of <pkg>sys-libs/readline</pkg>
+		</flag>
+		<flag name="pgo">
+			Optimize the build using Profile Guided Optimization (PGO)
+		</flag>
+		<flag name="lto">
+			Optimize the build using Link Time Optimization (LTO)
+		</flag>
+		<flag name="wininst">
+			Install Windows executables required to create an executable
+			installer for MS Windows
+		</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">python/cpython</remote-id>

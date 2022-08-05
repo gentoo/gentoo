@@ -61,6 +61,10 @@ FILECAPS=(
 	-m 755 "CAP_NET_RAW+eip CAP_NET_ADMIN+eip" usr/bin/pcsx2
 )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.7.0-crcs.patch
+)
+
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary && $(tc-getCC) == *gcc* ]]; then
 		# -mxsave flag is needed when GCC >= 8.2 is used
@@ -93,8 +97,8 @@ src_configure() {
 	# if it something other than "Devel|Debug|Release"
 	local CMAKE_BUILD_TYPE="Release"
 	local mycmakeargs=(
-		-DARCH_FLAG=
 		-DBUILD_SHARED_LIBS=FALSE
+		-DDISABLE_ADVANCE_SIMD=TRUE
 		-DDISABLE_BUILD_DATE=TRUE
 		-DDISABLE_PCSX2_WRAPPER=TRUE
 		-DDISABLE_SETCAP=TRUE

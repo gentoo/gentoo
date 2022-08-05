@@ -6,7 +6,7 @@ EAPI=8
 MAJOR=$(ver_cut 1)
 CMAKE_IN_SOURCE_BUILD="ON"
 
-inherit cmake readme.gentoo-r1
+inherit flag-o-matic cmake readme.gentoo-r1
 
 DESCRIPTION="The Lean Theorem Prover"
 HOMEPAGE="https://leanprover-community.github.io/"
@@ -36,6 +36,8 @@ src_configure() {
 	else
 		CMAKE_BUILD_TYPE="Release"
 	fi
+
+	filter-lto
 
 	local mycmakeargs=(
 		-DALPHA=ON

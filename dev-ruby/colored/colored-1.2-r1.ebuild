@@ -10,7 +10,7 @@ DESCRIPTION="Console coloring"
 HOMEPAGE="https://github.com/defunkt/colored"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="~amd64 ~riscv x86"
 SLOT="0"
 IUSE=""
 

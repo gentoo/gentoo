@@ -1,0 +1,124 @@
+--- a/bfr.c
++++ b/bfr.c
+@@ -222,7 +222,7 @@
+ 	temp = tv.tv_sec - prev_spit_s;
+ 	if(((temp*1000000UL) + (tv.tv_usec - prev_spit_u) > 1000000UL)) {
+ 		unsigned long long thistime;
+-		int i, point1, point2;
++		long i, point1, point2;
+ 		switch(p_rate) {
+ 			case 1000	 : units1 = "t/s";
+ 							break;
+@@ -309,7 +309,8 @@
+ 	 * if we get an error, go to WO mode
+ 	 */
+ 
+-	int retval, wantedbytes;
++	int retval;
++	long wantedbytes;
+ 	retval = wantedbytes = 0;
+ 
+ 	if(readptr == bufsize) {
+@@ -373,8 +374,8 @@
+ 	return 0;
+ }
+ 
+-int bytes_to_write() {
+-	int wantedbytes = 0;
++long bytes_to_write() {
++	long wantedbytes = 0;
+ 	if(writeptr == bufsize) {
+ 		writeptr = 0;
+ 		if(readptr == 0)
+@@ -392,7 +393,7 @@
+ 		debug("write type 2: ");
+ 	} 
+ 	if(cap) {
+-		int temp;
++		long temp;
+ 		temp = cap - run_avg_o;
+ 		temp -= written_this_time;
+ 		if(temp < 0) {
+@@ -415,7 +416,8 @@
+ 	 * also check to see if we can go to mode RW from mode BF 
+ 	 */
+ 	 
+-	int retval, wantedbytes;
++	int retval;
++	long wantedbytes;
+ 	retval = 0;
+ 
+ 	if(writeptr == 0) {
+@@ -520,12 +522,12 @@
+ 		
+ /* the main program *gasp* */
+ int main(int argc, char *argv[]) {
+-	int finished, retval, filenames, maxval, capping, should_fork;
++	long finished, retval, maxval, capping, should_fork;
+ 	fd_set readfds, writefds, exceptfds;
+ 	struct timeval thetime;
+ 	char *optstr, tch;
+ 	char *opt_bufsize, *opt_timeout, *opt_cap, *opt_throttle, *opt_min, *opt_init, *opt_progress, *outdev;
+-	int temp;
++	long temp;
+ 	
+ 	/* defaults */
+ 	opt_min      = "10%";
+@@ -545,7 +547,6 @@
+ 	writeptr	= 0;
+ 	readptr		= 0;
+ 	total_written	= 0;
+-	filenames	= 0;
+ 	mystate		= IN;
+ 	stdin_mode	= 1;
+ #ifdef DEBUG
+@@ -704,7 +705,8 @@
+ 	if(should_fork) {
+ 		int mypipe[2], rv;
+ 		verbose("forking\n");
+-		pipe(mypipe);
++		if(pipe(mypipe))
++			exit(fprintf(stderr,"No pipe!\n"));
+ 		rv = fork();
+ 		if(!rv) {
+ 			bufsize = 10240;
+@@ -727,7 +729,7 @@
+ 			infd = open(argv[my_optind],O_RDONLY);
+ 			if(infd == -1)
+ 				exit(fprintf(stderr,"Cannot open file: %s\n",argv[my_optind]));
+-			verbose("opening file %s: %i\n",argv[my_optind],infd);
++			verbose("opening file %s: %li\n",argv[my_optind],infd);
+ 			stdin_mode = 0;
+ 		}
+ 		my_optind++;
+@@ -735,7 +737,7 @@
+ 
+ 	buffer = (char *)malloc(bufsize);
+ 	if(buffer == NULL) {
+-		fprintf(stderr,"malloc()ing a buffer of size %i failed!\n",bufsize);
++		fprintf(stderr,"malloc()ing a buffer of size %li failed!\n",bufsize);
+ 		fprintf(stderr,"Perhaps you don't have enough memory, perhaps you've\n");
+ 		fprintf(stderr,"exceeded a memory usage quota.\n");
+ 		exit(1);
+@@ -869,7 +871,7 @@
+ 					if(my_optind < argc) {
+ 						if(strcmp("-",argv[my_optind])) {
+ 							infd = open(argv[my_optind],O_RDONLY|O_NONBLOCK);
+-							verbose("opening file %s: %i\n",argv[my_optind],infd);
++							verbose("opening file %s: %li\n",argv[my_optind],infd);
+ 							if(infd == -1)
+ 								perror(NAME);
+ 						} else {
+--- a/bfr.h
++++ b/bfr.h
+@@ -62,8 +62,8 @@
+ unsigned char verbose, progress;
+ state mystate;
+ char *modestrings[] = {"IN","RO","BF","WO","RW"};
+-int initial, threshold, bufsize, writeptr, readptr, timeout, infd, outfd, throttle, my_optind, stdin_mode, p_units, p_rate, p_cdmode, p_mode, cap;
+-int prev_rp = 0, prev_wp = 0, run_avg_t = 0, prev_ts = 0, prev_tu, thetimes, thetimeu, written_this_time = 0;
++long initial, threshold, bufsize, writeptr, readptr, timeout, infd, outfd, throttle, my_optind, stdin_mode, p_units, p_rate, p_cdmode, p_mode, cap;
++long prev_rp = 0, prev_wp = 0, run_avg_t = 0, prev_ts = 0, prev_tu, thetimes, thetimeu, written_this_time = 0;
+ unsigned long run_avg_i, run_avg_o;
+ unsigned long long total_written;
+ struct timeval tv;

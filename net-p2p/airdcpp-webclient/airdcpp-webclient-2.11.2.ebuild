@@ -11,7 +11,7 @@ DESCRIPTION="Cross-platform Direct Connect client"
 HOMEPAGE="https://airdcpp-web.github.io/"
 SRC_URI="https://github.com/airdcpp-web/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="debug nat-pmp +tbb +webui"

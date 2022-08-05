@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="github">angeloc/htpdate</remote-id>
+		<remote-id type="github">twekkel/htpdate</remote-id>
 	</upstream>
 </pkgmetadata>
