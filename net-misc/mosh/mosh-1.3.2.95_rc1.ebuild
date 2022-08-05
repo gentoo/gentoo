@@ -5,7 +5,7 @@ EAPI=8
 
 inherit autotools bash-completion-r1
 
-MY_P=${PN}-${PV/_/-}
+MY_P=${PN}-${PV/_rc/rc}
 DESCRIPTION="Mobile shell that supports roaming and intelligent local echo"
 HOMEPAGE="https://mosh.org"
 #SRC_URI="https://mosh.org/${P}.tar.gz"
