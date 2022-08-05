@@ -51,7 +51,7 @@ RDEPEND="${PYTHON_DEPS}
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/zstandard[${PYTHON_USEDEP}]
 	')
-	media-libs/freetype:=
+	media-libs/freetype:=[brotli]
 	media-libs/glew:*
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
