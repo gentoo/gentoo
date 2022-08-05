@@ -61,10 +61,6 @@ fi
 BDEPEND+="test? ( dev-python/pytest )"
 RDEPEND+="dev-vcs/git"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-fix-signoff-example.patch
-)
-
 distutils_enable_sphinx doc
 distutils_enable_tests setup.py
 
