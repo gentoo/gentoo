@@ -42,6 +42,9 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
+# Upstream doesn't flag patch releases (bug 858395)
+QA_PKGCONFIG_VERSION="$(ver_cut 1-2)"
+
 wrap_python() {
 	if use python; then
 		pushd bindings/python >/dev/null || die
