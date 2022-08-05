@@ -16,6 +16,10 @@ LICENSE="Apache-2.0"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.2.22-disable-integration-tests.patch"
+)
+
 RDEPEND="<dev-haskell/cereal-0.6:=[profile?]
 	>=dev-haskell/conduit-1.3.0:=[profile?] <dev-haskell/conduit-1.4:=[profile?]
 	<dev-haskell/lens-5.2:=[profile?]

@@ -1,0 +1,28 @@
+From: hololeap <hololeap@protonmail.com>
+Signed-off-by: hololeap <hololeap@protonmail.com>
+
+dev-haskell/dbus: Disable integration tests
+
+These tests try to spin up an instance of dbus-daemon
+
+diff -urN dbus-1.2.22/tests/DBusTests.hs dbus-1.2.22-r1/tests/DBusTests.hs
+--- dbus-1.2.22/tests/DBusTests.hs	2021-12-16 12:34:16.000000000 -0700
++++ dbus-1.2.22-r1/tests/DBusTests.hs	2022-08-05 12:51:12.447871229 -0600
+@@ -23,7 +23,7 @@
+ import DBusTests.BusName
+ import DBusTests.Client
+ import DBusTests.ErrorName
+-import DBusTests.Integration
++--import DBusTests.Integration
+ import DBusTests.InterfaceName
+ import DBusTests.Introspection
+ import DBusTests.MemberName
+@@ -55,7 +55,7 @@
+     , test_BusName
+     , test_Client
+     , test_ErrorName
+-    , test_Integration
++--    , test_Integration
+     , test_InterfaceName
+     , test_Introspection
+     , test_MemberName
