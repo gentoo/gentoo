@@ -123,6 +123,7 @@ video_cards_geode
 input_devices_vmmouse
 video_cards_ast
 video_cards_crocus
+video_cards_d3d12
 video_cards_i915
 video_cards_i965
 video_cards_intel
