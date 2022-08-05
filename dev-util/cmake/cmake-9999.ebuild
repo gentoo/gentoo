@@ -33,13 +33,13 @@ if [[ ${PV} == 9999 ]] ; then
 else
 	SRC_URI="https://cmake.org/files/v$(ver_cut 1-2)/${MY_P}.tar.gz"
 
+	if [[ ${CMAKE_DOCS_PREBUILT} == 1 ]] ; then
+		SRC_URI+=" !doc? ( https://dev.gentoo.org/~${CMAKE_DOCS_PREBUILT_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${CMAKE_DOCS_VERSION}-docs.tar.xz )"
+	fi
+
 	if [[ ${PV} != *_rc* ]] ; then
 		VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/bradking.asc
 		inherit verify-sig
-
-		if [[ ${CMAKE_DOCS_PREBUILT} == 1 ]] ; then
-			SRC_URI+=" !doc? ( https://dev.gentoo.org/~${CMAKE_DOCS_PREBUILT_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${CMAKE_DOCS_VERSION}-docs.tar.xz )"
-		fi
 
 		SRC_URI+=" verify-sig? (
 			https://github.com/Kitware/CMake/releases/download/v$(ver_cut 1-3)/${MY_P}-SHA-256.txt
@@ -132,7 +132,7 @@ cmake_src_bootstrap() {
 src_unpack() {
 	if [[ ${PV} == 9999 ]] ; then
 		git-r3_src_unpack
-	elif ! use verify-sig || [[ ${PV} == *_rc ]] ; then
+	elif ! use verify-sig || [[ ${PV} == *_rc* ]] ; then
 		default
 	else
 		cd "${DISTDIR}" || die
@@ -247,7 +247,7 @@ src_install() {
 
 	# If USE=doc, there'll be newly generated docs which we install instead.
 	if ! use doc && [[ ${CMAKE_DOCS_PREBUILT} == 1 ]] ; then
-		doman "${WORKDIR}"/${PN}-${CMAKE_DOCS_VERSION}-docs/docs/*.[0-8]
+		doman "${WORKDIR}"/${PN}-${CMAKE_DOCS_VERSION}-docs/man*/*.[0-8]
 	fi
 
 	if use emacs; then
