@@ -47,7 +47,11 @@ src_prepare() {
 	cp "${S}/src/c/Makefile-linux-armel-32.make" "${S}/src/c/Makefile-linux-arm-32.make"
 	java-pkg-2_src_prepare
 
-	# enable tests on all platforms
+	# disable tests by default (they are only enabled by default on amd64)
+	sed -e "s/\(all: init wrapper libwrapper.so\) testsuite/\1/g" \
+		-i src/c/Makefile-linux-x86-64.make || die
+
+	# re-enable tests on all platforms if requested
 	if use test; then
 		grep "testsuite_SOURCE" "src/c/Makefile-linux-x86-64.make" | tee -a src/c/Makefile-*.make
 		assert
