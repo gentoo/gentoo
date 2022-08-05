@@ -3,6 +3,16 @@
 
 EAPI=8
 
+# Generate using https://github.com/thesamesam/sam-gentoo-scripts/blob/main/niche/generate-cmake-docs
+# Set to 1 if prebuilt, 0 if not
+# (the construct below is to allow overriding from env for script)
+CMAKE_DOCS_PREBUILT=${CMAKE_DOCS_PREBUILT:-1}
+CMAKE_DOCS_PREBUILT_DEV=sam
+CMAKE_DOCS_VERSION=$(ver_cut 1-3)
+# Default to generating docs (inc. man pages) if no prebuilt; overridden later
+# See bug #784815
+CMAKE_DOCS_USEFLAG="+doc"
+
 # TODO RunCMake.LinkWhatYouUse fails consistently w/ ninja
 # ... but seems fine as of 3.22.3?
 # TODO ... but bootstrap sometimes(?) fails with ninja now. bug #834759.
@@ -16,6 +26,8 @@ MY_P="${P/_/-}"
 DESCRIPTION="Cross platform Make"
 HOMEPAGE="https://cmake.org/"
 if [[ ${PV} == 9999 ]] ; then
+	CMAKE_DOCS_PREBUILT=0
+
 	EGIT_REPO_URI="https://gitlab.kitware.com/cmake/cmake.git"
 	inherit git-r3
 else
@@ -24,6 +36,10 @@ else
 	if [[ ${PV} != *_rc* ]] ; then
 		VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/bradking.asc
 		inherit verify-sig
+
+		if [[ ${CMAKE_DOCS_PREBUILT} == 1 ]] ; then
+			SRC_URI+=" !doc? ( https://dev.gentoo.org/~${CMAKE_DOCS_PREBUILT_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${CMAKE_DOCS_VERSION}-docs.tar.xz )"
+		fi
 
 		SRC_URI+=" verify-sig? (
 			https://github.com/Kitware/CMake/releases/download/v$(ver_cut 1-3)/${MY_P}-SHA-256.txt
@@ -40,7 +56,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="CMake"
 SLOT="0"
-IUSE="doc emacs ncurses qt5 test"
+IUSE="${CMAKE_DOCS_USEFLAG} emacs ncurses qt5 test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -226,6 +242,11 @@ src_test() {
 
 src_install() {
 	cmake_src_install
+
+	# If USE=doc, there'll be newly generated docs which we install instead.
+	if ! use doc && [[ ${CMAKE_DOCS_PREBUILT} == 1 ]] ; then
+		doman "${WORKDIR}"/${PN}-${CMAKE_DOCS_VERSION}-docs/docs/*.[0-8]
+	fi
 
 	if use emacs; then
 		elisp-install ${PN} Auxiliary/cmake-mode.el Auxiliary/cmake-mode.elc
