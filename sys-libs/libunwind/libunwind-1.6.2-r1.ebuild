@@ -10,7 +10,6 @@ LIBUNWIND_DOCS_PREBUILT=${LIBUNWIND_DOCS_PREBUILT:-1}
 LIBUNWIND_DOCS_PREBUILT_DEV=sam
 LIBUNWIND_DOCS_VERSION=$(ver_cut 1-3)
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
-# bug #830088
 LIBUNWIND_DOCS_USEFLAG="+doc"
 
 MY_PV=${PV/_/-}
