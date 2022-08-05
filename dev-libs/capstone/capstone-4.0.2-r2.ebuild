@@ -1,10 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python{3_7,3_8,3_9,3_10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit cmake distutils-r1 toolchain-funcs
 
