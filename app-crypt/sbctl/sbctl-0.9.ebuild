@@ -16,7 +16,6 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 BDEPEND="app-text/asciidoc
-	dev-lang/go
 	verify-sig? ( sec-keys/openpgp-keys-foxboron )"
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/foxboron.asc"
