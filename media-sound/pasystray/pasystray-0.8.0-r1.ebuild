@@ -16,7 +16,9 @@ IUSE="libnotify zeroconf"
 
 RDEPEND="
 	dev-libs/glib
-	|| ( media-sound/pulseaudio-daemon[glib,zeroconf?] <media-sound/pulseaudio-15.99.1[glib,zeroconf?] )
+	|| ( media-sound/pulseaudio-daemon[glib,zeroconf?]
+		<media-sound/pulseaudio-15.99.1[glib,zeroconf?]
+		 media-libs/libpulse[glib] )
 	x11-libs/gtk+:3
 	x11-libs/libX11
 	zeroconf? ( net-dns/avahi )
