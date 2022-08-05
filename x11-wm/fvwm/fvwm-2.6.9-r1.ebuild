@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 inherit autotools flag-o-matic python-single-r1 desktop
@@ -14,7 +14,7 @@ LICENSE="GPL-2+ FVWM"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="bidi debug doc netpbm nls perl png readline rplay stroke svg tk truetype +vanilla xinerama lock"
- REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="
 	sys-libs/zlib
