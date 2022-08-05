@@ -42,10 +42,8 @@ wrap_python() {
 
 	if use python; then
 		pushd bindings/python >/dev/null || die
-		echo distutils-r1_${phase} "$@"
-		pwd
 		distutils-r1_${phase} "$@"
-		popd >/dev/null
+		popd >/dev/null || die
 	fi
 }
 
