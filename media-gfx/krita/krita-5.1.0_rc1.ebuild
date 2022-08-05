@@ -11,8 +11,8 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org python-single-r1
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	SRC_URI="mirror://kde/unstable/${PN}/${PV/_/-}/${P/_/-}.tar.xz"
-	S="${WORKDIR}/${P/_/-}"
+	SRC_URI="mirror://kde/unstable/${PN}/${PV/_rc/-RC}/${PN}-${PV/_rc/-RC}.tar.xz"
+	S="${WORKDIR}/${PN}-${PV/_rc/-RC}"
 # 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 fi
 
