@@ -1,46 +1,43 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-
-inherit versionator
+EAPI=8
 
 #version magic thanks to masterdriverz and UberLord using bash array instead of tr
 trarr="0abcdefghi"
-MY_PV="$(get_version_component_range 1)${trarr:$(get_version_component_range 2):1}$(get_version_component_range 3)"
+MY_PV="$(ver_cut 1)${trarr:$(ver_cut 2):1}$(ver_cut 3)"
 
 DESCRIPTION="Portable Scheme library for all standard Scheme implementations"
 HOMEPAGE="http://people.csail.mit.edu/jaffer/SLIB"
 SRC_URI="http://groups.csail.mit.edu/mac/ftpdir/scm/${PN}-${MY_PV}.zip"
-
-RESTRICT="mirror"
+S="${WORKDIR}"/${PN}
 
 LICENSE="public-domain BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~ia64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 IUSE="gambit scm"
+RESTRICT="mirror"
 
 RDEPEND="
-	>=sys-apps/texinfo-5.0
 	>=dev-scheme/guile-1.8.8:=
 	gambit? ( dev-scheme/gambit )
-	scm? ( dev-scheme/scm )"
-DEPEND="${RDEPEND}
-	app-arch/unzip"
+	scm? ( dev-scheme/scm )
+"
+BDEPEND="
+	${RDEPEND}
+	>=sys-apps/texinfo-5.0
+	app-arch/unzip
+"
 
 DOCS=( ANNOUNCE COPYING FAQ README ChangeLog slib.{txt,html} )
 
 PATCHES=(
-	"${FILESDIR}/${P}-fix-paths.patch"
-	"${FILESDIR}/${P}-fix-makefile-guile.patch"
+	"${FILESDIR}"/${P}-fix-makefile-guile.patch
+	"${FILESDIR}"/${P}-fix-paths.patch
 )
 
-S="${WORKDIR}/${PN}"
-
 src_configure() {
-	./configure \
-		--prefix=/usr \
-		--libdir=/usr/share || die
+	./configure --prefix=/usr --libdir=/usr/share || die
 }
 
 src_compile() {
@@ -52,44 +49,47 @@ src_compile() {
 
 src_install() {
 	# core
-	dodir /usr/share/${PN}
 	insinto /usr/share/${PN}
-	doins *.{dat,init,ps,scm,sh}
-
-	# permissions
-	local i
-	for i in "${ED%/}"/usr/share/${PN}/*.sh ; do
-		fperms +x /usr/share/${PN}/$(basename "$i")
-	done
+	doins *.{dat,init,ps,scm}
+	exeinto /usr/share/${PN}
+	doexe *.sh
 
 	# bin
 	dodir /usr/bin/
-	dosym /usr/share/${PN}/${PN}.sh /usr/bin/${PN}
+	dosym ../../usr/share/${PN}/${PN}.sh /usr/bin/${PN}
 
 	# env
-	doenvd "${FILESDIR}/50slib"
+	doenvd "${FILESDIR}"/50slib
 
 	# docs
 	doinfo slib.info
 	doman slib.1
 
 	# guile
-	if has_version '=dev-scheme/guile-2.0*'; then
+	if has_version '=dev-scheme/guile-3.0*'; then
+		dodir /usr/share/guile/3.0
+		dosym ../../../../usr/share/${PN}/ /usr/share/guile/3.0/${PN}
+	elif has_version '=dev-scheme/guile-2.0*'; then
 		dodir /usr/share/guile/2.0
-		dosym /usr/share/${PN}/ /usr/share/guile/2.0/${PN}
+		dosym ../../../../usr/share/${PN}/ /usr/share/guile/2.0/${PN}
 	else
 		dodir /usr/share/guile/1.8
-		dosym /usr/share/${PN}/ /usr/share/guile/1.8/${PN}
+		dosym ../../../../usr/share/${PN}/ /usr/share/guile/1.8/${PN}
 	fi
+
+	# gambit
+	use gambit && dodir /usr/share/gambc
 
 	# backwards compatibility
 	dodir /usr/lib/
-	dosym /usr/share/${PN}/ /usr/lib/${PN}
+	dosym ../../usr/share/${PN}/ /usr/lib/${PN}
+
+	einstalldocs
 }
 
 _new_catalog() {
-	if [[ ! "$1" =~ ^(guile|scm)$ ]]; then
-		echo -n "(load \"${ROOT}/usr/share/slib/$1.init\")" || die
+	if [[ ! "${1}" =~ ^(guile|scm)$ ]]; then
+		echo -n "(load \"${ROOT}/usr/share/slib/${1}.init\")" || die
 	fi
 	echo " (require 'new-catalog) (slib:report-version)" || die
 }
