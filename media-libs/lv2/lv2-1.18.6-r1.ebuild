@@ -45,6 +45,10 @@ RDEPEND="
 	')
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-add-missing-lv2.h.patch"
+)
+
 src_prepare() {
 	default
 
