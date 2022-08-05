@@ -21,7 +21,7 @@
 		- intelligent local echo and line editing to reduce the effects of "network lag" on high-latency connections.
 	</longdescription>
 	<upstream>
-		<bugs-to>https://github.com/keithw/mosh/issues</bugs-to>
+		<bugs-to>https://github.com/mobile-shell/mosh/issues</bugs-to>
 		<remote-id type="github">mobile-shell/mosh</remote-id>
 	</upstream>
 </pkgmetadata>
