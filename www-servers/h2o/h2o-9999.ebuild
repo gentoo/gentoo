@@ -1,8 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
-CMAKE_MAKEFILE_GENERATOR="emake"
 SSL_DEPS_SKIP=1
 USE_RUBY="ruby26 ruby27"
 
@@ -20,10 +19,14 @@ IUSE="libh2o +mruby"
 RDEPEND="acct-group/h2o
 	acct-user/h2o
 	dev-lang/perl
+	dev-libs/openssl:0=
 	!sci-libs/libh2o
+	sys-libs/libcap
 	sys-libs/zlib
-	libh2o? ( dev-libs/libuv )
-	dev-libs/openssl:0="
+	libh2o? (
+		app-arch/brotli
+		dev-libs/libuv
+	)"
 DEPEND="${RDEPEND}
 	mruby? (
 		${RUBY_DEPS}
@@ -66,6 +69,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}"/etc/${PN}
+		-DWITH_CCACHE=OFF
 		-DWITH_MRUBY=$(usex mruby)
 		-DWITHOUT_LIBS=$(usex !libh2o)
 		-DBUILD_SHARED_LIBS=$(usex libh2o)
