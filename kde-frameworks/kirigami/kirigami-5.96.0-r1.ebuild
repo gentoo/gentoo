@@ -16,7 +16,7 @@ EGIT_REPO_URI="${EGIT_REPO_URI/${PN}2/${PN}}"
 SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${P}-fix-ScrollBar-binding-loop-freeze.patch.xz"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE=""
 
 # requires package to already be installed
