@@ -55,6 +55,7 @@ sys-block/thin-provisioning-tools test
 # James Le Cuirot <chewi@gentoo.org> (2021-09-19)
 # Requires texlive and friends to be keyworded.
 app-doc/doxygen doc
+app-text/po4a test
 dev-libs/libcbor doc
 media-libs/libcaca doc
 
