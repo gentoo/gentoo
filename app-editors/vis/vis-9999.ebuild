@@ -52,6 +52,9 @@ src_prepare() {
 		# https://bugs.gentoo.org/722014 https://github.com/martanne/vis-test/pull/22
 		sed -i 's;./ccan-config > config.h;./ccan-config "${CC}" ${CFLAGS} > config.h;' test/core/Makefile || die
 
+		# https://github.com/martanne/vis-test/pull/29
+		sed -i 's;cpp -P;${CPP:-cpp} -P;' test/vim/test.sh || die
+
 		# https://github.com/martanne/vis-test/issues/27 a Werror clone
 		sed -i 's;|| strstr(output, "warning");;' test/core/ccan-config.c || die
 	fi
