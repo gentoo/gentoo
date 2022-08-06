@@ -30,7 +30,7 @@ S="${WORKDIR}/${PN}-g${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.7.1-Introduce-the-BUILD_NONFREE-option.patch
-	"${FILESDIR}"/0001-Revert-load-the-hex-font-as-early-as-possible.patch
+	"${FILESDIR}"/${P}-fix-gzdoom-pk3.patch
 )
 
 src_prepare() {
