@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]]; then
 	S="${WORKDIR}/${P}/src"
 else
 	SRC_URI="https://github.com/scsitape/stenc/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~riscv ~x86"
 fi
 
 DESCRIPTION="SCSI Tape Encryption Manager enables AES support for LTO drives"
