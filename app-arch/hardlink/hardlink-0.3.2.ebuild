@@ -11,7 +11,7 @@ SRC_URI="https://salsa.debian.org/jak/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ppc ppc64 ~riscv x86"
 
 RDEPEND="
 	dev-libs/libpcre
