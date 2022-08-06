@@ -23,6 +23,8 @@ BDEPEND="test? (
 	)"
 S="${WORKDIR}/${P#lib}"
 
+QA_PKGCONFIG_VERSION="$(ver_cut 1).5.0"
+
 src_prepare() {
 	if use cjk; then
 		einfo "Modifying East Asian Ambiguous (A) as wide ..."
