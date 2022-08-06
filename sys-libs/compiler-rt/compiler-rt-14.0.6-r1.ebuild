@@ -88,8 +88,9 @@ src_configure() {
 			local -x LDFLAGS="${LDFLAGS} ${nolib_flags[*]}"
 			ewarn "${CC} seems to lack runtime, trying with ${nolib_flags[*]}"
 		elif test_compiler "${nolib_flags[@]}" -nostartfiles; then
-			# Avoiding -nostartfiles earlier on for bug #862540
-			nolib_flags+=( -nostartfiles )
+			# Avoiding -nostartfiles earlier on for bug #862540,
+			# and set available entry symbol for bug #862798.
+			nolib_flags+=( -nostartfiles -emain )
 			local -x LDFLAGS="${LDFLAGS} ${nolib_flags[*]}"
 			ewarn "${CC} seems to lack runtime, trying with ${nolib_flags[*]}"
 		fi
