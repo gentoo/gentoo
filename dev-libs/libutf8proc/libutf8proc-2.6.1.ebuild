@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -22,6 +22,8 @@ BDEPEND="test? (
 		${RUBY_DEPS}
 	)"
 S="${WORKDIR}/${P#lib}"
+
+QA_PKGCONFIG_VERSION="$(ver_cut 1).4.1"
 
 src_prepare() {
 	if use cjk; then

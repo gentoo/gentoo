@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -20,6 +20,8 @@ BDEPEND="test? ( =app-i18n/unicode-data-13.0* )"
 S="${WORKDIR}/${P#lib}"
 
 PATCHES=( "${FILESDIR}"/${PN}-grapheme-test.patch )
+
+QA_PKGCONFIG_VERSION="$(ver_cut 1).3.2"
 
 src_prepare() {
 	if use cjk; then
