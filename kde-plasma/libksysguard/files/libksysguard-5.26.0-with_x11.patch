@@ -1,0 +1,110 @@
+From c389fbdaff34e35b0cd5de32b52e818714e13d40 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 1 Aug 2022 16:53:42 +0200
+Subject: [PATCH] Add CMake option to build WITH_X11
+
+We want to be able to build without X11 support even if some of the used
+libraries may not work w/o X11 themselves yet or need to be built with
+X11 support for other reverse dependencies.
+
+HAVE_X11 already exists and is set automagically so far, but using
+-DCMAKE_DISABLE_FIND_PACKAGE_X11 will break if any dependencies list X11
+as required in their cmake config.
+
+- Cleanup HAVE_* definitions a bit
+- Clarify X11 PURPOSE a bit
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt           | 44 ++++++++++++++++++++++------------------
+ processui/CMakeLists.txt |  4 ++--
+ 2 files changed, 26 insertions(+), 22 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 55938c4..5d4e085 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -65,25 +65,31 @@ ecm_setup_version(${PROJECT_VERSION}
+                   SOVERSION 9
+ )
+ 
+-find_package(X11)
+-set_package_properties(X11 PROPERTIES DESCRIPTION "X11 libraries"
+-                        URL "https://www.x.org"
+-                        TYPE OPTIONAL
+-                        PURPOSE "Required for building the X11 based workspace"
+-                    )
+-if(X11_FOUND)
+-    if (QT_MAJOR_VERSION STREQUAL "5")
+-        find_package(Qt5X11Extras REQUIRED)
+-    elseif (QT_MAJOR_VERSION STREQUAL "6")
+-        find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED Gui) # qtx11extras_p.h
+-    endif()
+-    set(HAVE_X11 1)
+-    find_library(X11_XRes_LIB XRes ${X11_LIB_SEARCH_PATH})
+-    find_path(X11_XRes_INCLUDE_PATH X11/extensions/XRes.h ${X11_INC_SEARCH_PATH})
+-
+-    if(X11_XRes_LIB AND X11_XRes_INCLUDE_PATH)
+-        set(X11_XRes_FOUND TRUE)
++option(WITH_X11 "Build with X11 support." ON)
++if(WITH_X11)
++    find_package(X11)
++    set_package_properties(X11 PROPERTIES DESCRIPTION "X11 libraries"
++                            URL "https://www.x.org"
++                            TYPE OPTIONAL
++                            PURPOSE "Required for building Process UI with X11 support"
++                        )
++    if(X11_FOUND)
++        if (QT_MAJOR_VERSION STREQUAL "5")
++            find_package(Qt5X11Extras REQUIRED)
++        elseif (QT_MAJOR_VERSION STREQUAL "6")
++            find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED Gui) # qtx11extras_p.h
++        endif()
++        set(HAVE_X11 1)
++        find_library(X11_XRes_LIB XRes ${X11_LIB_SEARCH_PATH})
++        find_path(X11_XRes_INCLUDE_PATH X11/extensions/XRes.h ${X11_INC_SEARCH_PATH})
++
++        if(X11_XRes_LIB AND X11_XRes_INCLUDE_PATH)
++            set(HAVE_XRES 1)
++        endif()
+     endif()
++else()
++    set(HAVE_X11 0)
++    set(HAVE_XRES 0)
+ endif()
+ 
+ set(WEBENGINE_SCRIPTING_ENABLED FALSE)
+@@ -122,8 +128,6 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+         PURPOSE "Used for reading hardware sensors")
+ endif()
+ 
+-set(HAVE_X11 ${X11_FOUND})
+-set(HAVE_XRES ${X11_XRes_FOUND})
+ configure_file(config-ksysguard.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-ksysguard.h )
+ 
+ option(BUILD_DESIGNERPLUGIN "Build plugin for Qt Designer" ON)
+diff --git a/processui/CMakeLists.txt b/processui/CMakeLists.txt
+index 2932733..c9bd800 100644
+--- a/processui/CMakeLists.txt
++++ b/processui/CMakeLists.txt
+@@ -30,7 +30,7 @@ ki18n_wrap_ui( processui_LIB_SRCS
+ add_library(processui ${processui_LIB_SRCS})
+ add_library(KSysGuard::ProcessUi ALIAS processui)
+ 
+-if(X11_XRes_FOUND)
++if(HAVE_XRES)
+     target_link_libraries(processui PRIVATE ${X11_XRes_LIB} ${X11_LIBRARIES})
+     include_directories(${X11_XRes_INCLUDE_PATH})
+ endif()
+@@ -59,7 +59,7 @@ target_include_directories(processui
+         "$<BUILD_INTERFACE:${libksysguard_SOURCE_DIR}>"
+         "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/ksysguard>"
+ )
+-if(X11_FOUND)
++if(HAVE_X11)
+     if (QT_MAJOR_VERSION STREQUAL "5")
+        target_link_libraries(processui PRIVATE Qt::X11Extras KF5::WindowSystem)
+     else()
+-- 
+2.35.1
+

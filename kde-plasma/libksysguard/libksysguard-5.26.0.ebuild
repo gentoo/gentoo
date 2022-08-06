@@ -57,13 +57,19 @@ RDEPEND="${COMMON_DEPEND}
 	!<kde-plasma/ksysguard-5.21.90:5
 "
 
-PATCHES=( "${FILESDIR}/${PN}-5.22.80-no-detailed-mem-message.patch" )
+PATCHES=(
+	# downstream patch
+	"${FILESDIR}/${PN}-5.22.80-no-detailed-mem-message.patch"
+	# pending upstream:
+	# https://invent.kde.org/plasma/libksysguard/-/merge_requests/238
+	"${FILESDIR}/${P}-with_x11.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package webengine Qt5WebChannel)
 		$(cmake_use_find_package webengine Qt5WebEngineWidgets)
-		$(cmake_use_find_package X X11)
+		-DWITH_X11=$(usex X)
 	)
 
 	ecm_src_configure
