@@ -11,7 +11,7 @@ SRC_URI="https://github.com/inikep/lz5/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 BSD-2"
 SLOT="0/2"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 src_prepare() {
 	default
