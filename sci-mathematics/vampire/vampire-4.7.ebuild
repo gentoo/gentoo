@@ -5,7 +5,7 @@ EAPI=8
 
 H=2d02e4655e1b08d1ca9ee7c0aade40f59f046460  # "bump to 4.7"
 
-inherit cmake
+inherit flag-o-matic cmake
 
 DESCRIPTION="The Vampire Prover, theorem prover for first-order logic"
 HOMEPAGE="https://vprover.github.io"
@@ -37,6 +37,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_configure() {
+	# -Werror=strict-aliasing warnings, bug #863269
+	filter-lto
+	append-flags -fno-strict-aliasing
+
 	local CMAKE_BUILD_TYPE
 	if use debug ; then
 		CMAKE_BUILD_TYPE=Debug
