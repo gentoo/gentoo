@@ -12,7 +12,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc x86"
+KEYWORDS="amd64 ~hppa ppc ~riscv x86"
 RESTRICT="test"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.3-fix-build-system.patch )
