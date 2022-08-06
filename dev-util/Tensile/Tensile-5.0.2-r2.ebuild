@@ -26,7 +26,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-util/rocm-smi-4.3.0
 "
 DEPEND="${RDEPEND}
-	dev-util/hip:${SLOT}
+	dev-util/hip:=
 "
 
 PATCHES=( "${FILESDIR}"/${PN}-4.3.0-output-commands.patch
