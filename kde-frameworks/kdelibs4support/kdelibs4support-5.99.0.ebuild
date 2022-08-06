@@ -11,8 +11,9 @@ VIRTUALX_REQUIRED="test"
 inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework easing the development transition from KDELibs 4 to KF 5"
+
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="X"
 
 RESTRICT="test"
@@ -45,13 +46,13 @@ COMMON_DEPEND="
 	=kde-frameworks/kio-${PVCUT}*:5
 	=kde-frameworks/kitemviews-${PVCUT}*:5
 	=kde-frameworks/kjobwidgets-${PVCUT}*:5
-	=kde-frameworks/knotifications-${PVCUT}*:5[X=]
+	=kde-frameworks/knotifications-${PVCUT}*:5[X?]
 	=kde-frameworks/kparts-${PVCUT}*:5
 	=kde-frameworks/kservice-${PVCUT}*:5
 	=kde-frameworks/ktextwidgets-${PVCUT}*:5
 	=kde-frameworks/kunitconversion-${PVCUT}*:5
 	=kde-frameworks/kwidgetsaddons-${PVCUT}*:5
-	=kde-frameworks/kwindowsystem-${PVCUT}*:5[X=]
+	=kde-frameworks/kwindowsystem-${PVCUT}*:5[X?]
 	=kde-frameworks/kxmlgui-${PVCUT}*:5
 	=kde-frameworks/solid-${PVCUT}*:5
 	virtual/libintl
@@ -79,8 +80,12 @@ BDEPEND="
 "
 
 PATCHES=(
+	# downstream patches
 	"${FILESDIR}/${PN}-5.80.0-no-kdesignerplugin.patch" # bug 755956
 	"${FILESDIR}/${PN}-5.86.0-unused-dep.patch" # bug 755956
+	# pending upstream:
+	# https://invent.kde.org/frameworks/kdelibs4support/-/merge_requests/21
+	"${FILESDIR}/${P}-with_x11.patch"
 )
 
 src_prepare() {
@@ -95,7 +100,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake_use_find_package X X11)
+		-DWITH_X11=$(usex X)
 	)
 
 	ecm_src_configure
