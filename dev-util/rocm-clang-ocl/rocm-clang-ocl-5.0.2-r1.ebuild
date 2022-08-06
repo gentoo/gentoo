@@ -20,12 +20,13 @@ DEPEND="
 
 S="${WORKDIR}/clang-ocl-rocm-${PV}"
 
+PATCHES=( "${FILESDIR}"/${PN}-5.0.2-system-llvm.patch )
+
 src_prepare() {
-	sed -e "s:HINTS \${CXX_COMPILER_PATH}/bin:NO_DEFAULT_PATH:" \
-		-e "s:/opt/rocm/llvm/bin:${EPREFIX}/usr/lib/llvm/roc/bin:" \
+	cmake_src_prepare
+
+	sed \
 		-e "/AMDDeviceLibs PATHS/s:/opt/rocm:${EPREFIX}/usr/lib/cmake/AMDDeviceLibs:" \
 		-e "s:\${AMD_DEVICE_LIBS_PREFIX}/amdgcn/bitcode:${EPREFIX}/usr/lib/amdgcn/bitcode:" \
 		-i CMakeLists.txt || die
-
-	cmake_src_prepare
 }
