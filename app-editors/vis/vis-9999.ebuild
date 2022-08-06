@@ -4,7 +4,7 @@
 EAPI=7
 
 MY_PTV=0.5
-LUA_COMPAT=( lua5-2 lua5-3 )
+LUA_COMPAT=( lua5-2 lua5-3 lua5-4 )
 
 inherit lua-single optfeature
 
