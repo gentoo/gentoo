@@ -81,7 +81,6 @@ pkg_pretend() {
 multilib_src_configure() {
 	local emesonargs=(
 		-Dwith-systemd-user-unit-dir="$(systemd_get_userunitdir)"
-		-Dwith-pam-limits-dir="${EPREFIX}"/etc/security/limits.d
 	)
 	if multilib_is_native_abi; then
 		emesonargs+=(
@@ -90,7 +89,7 @@ multilib_src_configure() {
 	else
 		emesonargs+=(
 			-Dwith-sd-bus-provider=no-daemon
-			-Dwith-pam-renicing=false
+			-Dwith-pam-group=gamemode
 			-Dwith-examples=false
 		)
 	fi
