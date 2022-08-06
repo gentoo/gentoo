@@ -26,7 +26,7 @@ BDEPEND="
 "
 
 DEPEND="
-	dev-util/hip:${SLOT}
+	dev-util/hip:=
 	dev-libs/msgpack
 	test? (
 		virtual/blas
