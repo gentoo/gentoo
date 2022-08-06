@@ -14,7 +14,7 @@ S="${WORKDIR}"
 
 LICENSE="Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="debug +jit"
 
 # perl for pod2man
