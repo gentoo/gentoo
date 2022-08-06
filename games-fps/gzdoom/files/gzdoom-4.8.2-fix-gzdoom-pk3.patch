@@ -1,0 +1,36 @@
+From b132d2c3fe7f9074e1c08dbab77fc1270e8736fb Mon Sep 17 00:00:00 2001
+From: Omar Polo <op@omarpolo.com>
+Date: Mon, 11 Jul 2022 11:52:43 +0200
+Subject: [PATCH] fix gzdoom.pk3 not found error
+
+Move the initialization before BaseFileSearch is called, otherwise
+GameConfig is used not initialized and it doesn't find the gzdoom.pk3
+file.
+
+GameConfig used uninitalized was spotted by @LoneFox78.
+---
+ src/d_main.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/d_main.cpp b/src/d_main.cpp
+index b64142c07fe..005f8cf8cd5 100644
+--- a/src/d_main.cpp
++++ b/src/d_main.cpp
+@@ -3534,6 +3534,8 @@ static int D_DoomMain_Internal (void)
+ 	
+ 	std::set_new_handler(NewFailure);
+ 	const char *batchout = Args->CheckValue("-errorlog");
++
++	D_DoomInit();
+ 	
+ 	// [RH] Make sure zdoom.pk3 is always loaded,
+ 	// as it contains magic stuff we need.
+@@ -3568,8 +3570,6 @@ static int D_DoomMain_Internal (void)
+ 
+ 	if (!batchrun) Printf(PRINT_LOG, "%s version %s\n", GAMENAME, GetVersionString());
+ 
+-	D_DoomInit();
+-
+ 	extern void D_ConfirmSendStats();
+ 	D_ConfirmSendStats();
+ 
