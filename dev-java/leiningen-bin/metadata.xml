@@ -7,4 +7,7 @@
 	<upstream>
 		<remote-id type="github">technomancy/leiningen</remote-id>
 	</upstream>
+	<use>
+		<flag name="binary">Copy the precompiled jar file and skip the rest of src_compile</flag>
+	</use>
 </pkgmetadata>
