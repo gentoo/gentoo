@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Haelwenn (lanodan) Monnier <contact@hacktivis.me> (2022-08-07)
+# Default to lua 5.4 (upstream requires 5.2 or higher)
+>=app-editors/vis-0.7-r1 lua_single_target_lua5-4
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-06-14)
 # Only python 3.9 supported, bug #835921
 dev-util/kdevelop-python:5 python_single_target_python3_9
