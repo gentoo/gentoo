@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ GT_H=2ad076167a676e3ed62f90b754b30fac5caa1f88
 
 PYTHON_COMPAT=( python3_{8,9,10} )
 
-inherit python-single-r1 cmake
+inherit flag-o-matic python-single-r1 cmake
 
 DESCRIPTION="Simple Theorem Prover, an efficient SMT solver for bitvectors"
 HOMEPAGE="https://stp.github.io/"
@@ -71,12 +71,16 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr warnings, bug #863263
+	filter-lto
+
 	local CMAKE_BUILD_TYPE
 	if use debug ; then
 		CMAKE_BUILD_TYPE=Debug
 	else
 		CMAKE_BUILD_TYPE=Release
 	fi
+
 	local mycmakeargs=(
 		-DNOCRYPTOMINISAT=$(usex cryptominisat 'OFF' 'ON')  # double negation
 		-DENABLE_PYTHON_INTERFACE=$(usex python)
