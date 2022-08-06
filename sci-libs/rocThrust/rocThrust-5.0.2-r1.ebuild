@@ -16,10 +16,10 @@ IUSE="benchmark test"
 
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-util/hip:${SLOT}
-	sci-libs/rocPRIM:${SLOT}
+RDEPEND="dev-util/hip:=
+	sci-libs/rocPRIM:${SLOT}"
+DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )"
-DEPEND="${RDEPEND}"
 BDEPEND=">=dev-util/cmake-3.22"
 
 S="${WORKDIR}/rocThrust-rocm-${PV}"
