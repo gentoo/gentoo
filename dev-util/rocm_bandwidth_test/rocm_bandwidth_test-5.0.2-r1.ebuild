@@ -13,7 +13,7 @@ LICENSE="NCSA-AMD"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 
-DEPEND="dev-libs/rocr-runtime:${SLOT}"
+DEPEND="dev-libs/rocr-runtime:="
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
