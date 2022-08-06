@@ -59,7 +59,8 @@ distutils_enable_tests pytest
 src_prepare() {
 	local pkgName
 	local jobs=$(makeopts_jobs)
-	local packages=( attr cerberus cached_property click colorama idna importlib_metadata importlib_resources iso8601 pexpect dateutil pyparsing requests toml tomli tomlkit urllib3 zipp )
+	local packages=( attr cerberus cached_property click colorama idna importlib_metadata \
+					 importlib_resources iso8601 pexpect dateutil pyparsing requests toml tomli tomlkit urllib3 zipp )
 	for pkgName in ${packages[@]}; do
 		find ./ -type f -print0 | \
 			xargs --max-procs="${jobs}" --null \
