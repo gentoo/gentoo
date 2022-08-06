@@ -51,7 +51,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+blksha1 +curl cgi doc gnome-keyring +gpg highlight +iconv mediawiki mediawiki-experimental +nls +pcre perforce +perl +ppcsha1 selinux subversion tk +threads +webdav xinetd cvs test"
+IUSE="+blksha1 +curl cgi doc gnome-keyring +gpg highlight +iconv mediawiki mediawiki-experimental +nls +pcre perforce +perl +ppcsha1 +safe-directory selinux subversion tk +threads +webdav xinetd cvs test"
 
 # Common to both DEPEND and RDEPEND
 DEPEND="
@@ -251,6 +251,13 @@ src_prepare() {
 			"${FILESDIR}"/git-2.7.0-mediawiki-namespaces.patch
 			"${FILESDIR}"/git-2.7.0-mediawiki-subpages.patch
 			"${FILESDIR}"/git-2.7.0-mediawiki-500pages.patch
+		)
+	fi
+	if ! use safe-directory ; then
+		# This patch neuters the "safe directory" detection.
+		# bugs #838271, #838223
+		PATCHES+=(
+			"${FILESDIR}"/git-2.37.1-unsafe-directory.patch
 		)
 	fi
 
