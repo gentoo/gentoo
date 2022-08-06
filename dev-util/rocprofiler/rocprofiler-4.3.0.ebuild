@@ -28,6 +28,7 @@ BDEPEND="
 
 PATCHES=( "${FILESDIR}/${P}-fix-gcc11.patch"
 		"${FILESDIR}/${PN}-4.3.0-nostrip.patch"
+		"${FILESDIR}/${PN}-4.3.0-no-aqlprofile.patch"
 		"${FILESDIR}/${PN}-4.3.0-ldflag.patch"
 		"${FILESDIR}/${PN}-4.3.0-gentoo-location.patch" )
 
