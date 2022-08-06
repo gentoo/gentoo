@@ -9,7 +9,7 @@ Index: rocprofiler-rocm-5.0.2/bin/rpl_run.sh
 -ROOT_DIR=$(dirname $PKG_DIR)
 -TT_DIR=$ROOT_DIR/roctracer
 +ROOT_DIR=$PKG_DIR
-+TT_DIR=ROOT_DIR
++TT_DIR=$ROOT_DIR
  RUN_DIR=`pwd`
  TMP_DIR="/tmp"
  DATA_DIR="rpl_data_${time_stamp}_$$"
