@@ -46,6 +46,9 @@ src_test() {
 	# "org.jctools.queues.QueueSanityTest"
 	# "org.jctools.queues.ScQueueRemoveTest"
 	# "org.jctools.util.TestUtil"
+	# Test timeout on arm64, https://bugs.gentoo.org/863977
+	# "org.jctools.queues.atomic.AtomicMpqSanityTestMpscLinked"
+	# "org.jctools.queues.MpqSanityTestMpscLinked"
 	pushd src/test/java || die
 		local JAVA_TEST_RUN_ONLY=$(find * \
 			\( -name "*Test*.java" \
@@ -55,6 +58,8 @@ src_test() {
 			! -name "QueueSanityTest.java" \
 			! -name "ScQueueRemoveTest.java" \
 			! -name "TestUtil.java" \
+			! -name "AtomicMpqSanityTestMpscLinked.java" \
+			! -name "MpqSanityTestMpscLinked.java" \
 			)
 	popd
 	JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//.java}"
