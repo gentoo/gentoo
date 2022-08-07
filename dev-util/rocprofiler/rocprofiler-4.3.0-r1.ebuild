@@ -17,7 +17,7 @@ SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 
 RDEPEND="dev-libs/rocr-runtime:${SLOT}
-	dev-util/roctracer:${SLOT}
+	>=dev-util/roctracer-${PV}-r3:${SLOT}
 	"
 DEPEND="${RDEPEND}"
 BDEPEND="
