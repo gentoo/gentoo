@@ -70,7 +70,6 @@ src_configure() {
 	# pre-set since we need to pass it to cmake
 	BUILD_DIR=${WORKDIR}/${P}_build
 
-	local nolib_flags=( -nodefaultlibs -nostartfiles -lc )
 	if use clang; then
 		# Only do this conditionally to allow overriding with
 		# e.g. CC=clang-13 in case of breakage
@@ -78,11 +77,19 @@ src_configure() {
 			local -x CC=${CHOST}-clang
 			local -x CXX=${CHOST}-clang++
 		fi
+
 		strip-unsupported-flags
-		# ensure we can use clang before installing compiler-rt
-		local -x LDFLAGS="${LDFLAGS} ${nolib_flags[*]}"
-	elif ! test_compiler; then
+	fi
+
+	if ! test_compiler; then
+		local nolib_flags=( -nodefaultlibs -lc )
+
 		if test_compiler "${nolib_flags[@]}"; then
+			local -x LDFLAGS="${LDFLAGS} ${nolib_flags[*]}"
+			ewarn "${CC} seems to lack runtime, trying with ${nolib_flags[*]}"
+		elif test_compiler "${nolib_flags[@]}" -nostartfiles; then
+			# Avoiding -nostartfiles earlier on for bug #862540
+			nolib_flags+=( -nostartfiles )
 			local -x LDFLAGS="${LDFLAGS} ${nolib_flags[*]}"
 			ewarn "${CC} seems to lack runtime, trying with ${nolib_flags[*]}"
 		fi
