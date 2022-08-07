@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 
 inherit autotools
 
@@ -15,12 +15,13 @@ KEYWORDS="amd64 ppc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="|| (
+RDEPEND="app-i18n/skk-jisyo[cdb]
+	|| (
 		dev-db/tinycdb
 		dev-db/cdb
-	)
+	)"
+DEPEND="${RDEPEND}
 	test? ( app-i18n/nkf )"
-RDEPEND="app-i18n/skk-jisyo[cdb]"
 
 PATCHES=( "${FILESDIR}"/${PN}-cdb.patch )
 
