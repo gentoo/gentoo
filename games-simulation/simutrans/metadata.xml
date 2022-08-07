@@ -15,9 +15,5 @@
 	</upstream>
 	<use>
 		<flag name="minimal">Don't install any PakSets (scenario data)</flag>
-		<flag name="pak128">Install more detailed scenario data</flag>
-		<flag name="pak128-britain">Install British scenario data</flag>
-		<flag name="pak128-german">Install German scenario data</flag>
-		<flag name="pak192-comic">Install comic-like scenario data</flag>
 	</use>
 </pkgmetadata>
