@@ -22,6 +22,7 @@ CONFIG_CHECK="~ATM"
 PATCHES=(
 	"${FILESDIR}"/${P}-headers.patch
 	"${FILESDIR}"/${P}-linux-5.2-SIOCGSTAMP.patch
+	"${FILESDIR}"/${P}-linux-headers-5.19.patch
 )
 
 src_prepare() {
