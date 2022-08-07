@@ -29,6 +29,15 @@
 # A Couple of env vars are available to effect usage of this eclass
 # These are as follows:
 
+
+# @ECLASS_VARIABLE: CHECKCONFIG_DONOTHING
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Do not error out in check_extra_config if CONFIG settings are not met.
+# This is a user flag and should under _no circumstances_ be set in the ebuild.
+: ${CHECKCONFIG_DONOTHING:=""}
+
 # @ECLASS_VARIABLE: KERNEL_DIR
 # @DESCRIPTION:
 # A string containing the directory of the target kernel sources. The default value is
@@ -978,7 +987,7 @@ linux-info_pkg_setup() {
 
 	linux-info_get_any_version
 
-	[ -n "${CONFIG_CHECK}" ] && check_extra_config;
+	[[ -n "${CONFIG_CHECK}" && -z ${CHECKCONFIG_DONOTHING} ]] && check_extra_config;
 }
 
 # @FUNCTION: kernel_get_makefile
