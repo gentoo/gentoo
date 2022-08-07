@@ -158,21 +158,6 @@ esac
 # Set the env ARCH to match what the kernel expects.
 set_arch_to_kernel() { export ARCH=$(tc-arch-kernel); }
 
-# @FUNCTION: set_arch_to_portage
-# @DESCRIPTION:
-# Set the env ARCH to match what portage expects.
-set_arch_to_portage() { 
-
-	ewarn "The function name: set_arch_to_portage is being deprecated and"
-	ewarn "being changed to:  set_arch_to_pkgmgr to comply with pms policy."
-	ewarn "See bug #843686"
-	ewarn "The old function name will be removed on or about July 1st, 2022."
-	ewarn "Please update your ebuild or eclass before this date."
-	ewarn ""
-
-	export ARCH=$(tc-arch); 
-}
-
 # @FUNCTION: set_arch_to_pkgmgr
 # @DESCRIPTION:
 # Set the env ARCH to match what the package manager expects.
