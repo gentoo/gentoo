@@ -601,11 +601,20 @@ _test-flag-PROG() {
 	#
 	# We can add more selective detection of no-op flags via
 	# '-Werror=ignored-optimization-argument' and similar error options
-	# similar to what we are doing with '-Qunused-arguments'.
+	# or accept unused flags with '-Qunused-arguments' like we
+	# used to for bug #627474. Since we now invoke the linker
+	# for testing linker flags, unused argument warnings aren't
+	# ignored; linker flags may no longer be accepted in CFLAGS.
+	#
+	# However, warnings emitted by a compiler for a clean source
+	# can break feature detection by CMake or autoconf since
+	# many checks use -Werror internally. See e.g. bug #714742.
 	local cmdline=(
 		"${comp[@]}"
 		# Clang will warn about unknown gcc flags but exit 0.
 		# Need -Werror to force it to exit non-zero.
+		#
+		# See also bug #712488 and bug #714742.
 		-Werror
 		"$@"
 		# -x<lang> options need to go before first source file
@@ -614,16 +623,7 @@ _test-flag-PROG() {
 		"${test_in}" -o "${test_out}"
 	)
 
-	if ! "${cmdline[@]}" &>/dev/null; then
-		# -Werror makes clang bail out on unused arguments as well;
-		# try to add -Qunused-arguments to work-around that
-		# other compilers don't support it but then, it's failure like
-		# any other.
-		#
-		# See also bug #712488 and bug #714742.
-		cmdline+=( -Qunused-arguments )
-		"${cmdline[@]}" &>/dev/null
-	fi
+	"${cmdline[@]}" &>/dev/null
 }
 
 # @FUNCTION: test-flag-CC
