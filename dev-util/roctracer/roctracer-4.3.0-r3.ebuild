@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8,10} )
 
 inherit cmake prefix python-any-r1
 
@@ -33,9 +33,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.3.0-glibc-2.34.patch
 	"${FILESDIR}"/${PN}-4.3.0-ldflag.patch
 	"${FILESDIR}"/${PN}-4.3.0-tracer_tool.patch
-	"${FILESDIR}"/${PN}-5.0.2-Werror.patch
-	"${FILESDIR}"/${PN}-5.0.2-headers.patch
-	"${FILESDIR}"/${PN}-5.0.2-strip-license.patch
+	"${FILESDIR}"/${PN}-4.3.0-no-aqlprofile.patch
 )
 
 python_check_deps() {
@@ -44,14 +42,14 @@ python_check_deps() {
 }
 
 src_prepare() {
-	cmake_src_prepare
-
 	mv "${WORKDIR}"/rocprofiler-rocm-${PV} "${WORKDIR}"/rocprofiler || die
 	mv "${WORKDIR}"/hsa-class-*/test/util "${S}"/inc/ || die
 	rm "${S}"/inc/util/hsa* || die
 	cp -a "${S}"/src/util/hsa* "${S}"/inc/util/ || die
 
+	# do not build the tool and it´s library;
 	# change destination for headers to include/roctracer;
+	# do not install a second set of header files;
 
 	sed -e "/LIBRARY DESTINATION/s,lib,$(get_libdir)," \
 		-e "/DESTINATION/s,\${DEST_NAME}/include,include/roctracer," \
@@ -66,13 +64,16 @@ src_prepare() {
 		-i test/CMakeLists.txt || die
 
 	hprefixify script/*.py
+
+	cmake_src_prepare
 }
 
 src_configure() {
 	export HIP_PATH="$(hipconfig -p)"
 
 	local mycmakeargs=(
-		-DCMAKE_PREFIX_PATH="${EPREFIX}/usr/include/hsa"
+		-DHIP_VDI=1
+		-DCMAKE_PREFIX_PATH="${EPREFIX}/usr/include/hsa:${EPREFIX}/usr/lib"
 	)
 
 	cmake_src_configure
