@@ -48,6 +48,8 @@ BDEPEND="
 "
 RESTRICT="test" # Opens the program and doesn't close it.
 
+PATCHES=( "${FILESDIR}"/${PN}-123.0.1-silence-svn-and-git-errors.patch )
+
 src_unpack() {
 	unpack "simutrans-src-${MY_PV}.zip"
 	use minimal || unpack "simutrans_${MY_PAK_64}"
