@@ -102,6 +102,7 @@ PDEPEND=">=kde-plasma/kde-cli-tools-${PVCUT}:5"
 PATCHES=(
 	"${FILESDIR}/${P}-emit-rowsChanged.patch"
 	"${FILESDIR}/${P}-fix-color-picker.patch" # KDE-bug 454974
+	"${FILESDIR}/${P}-drm-fix-blob-updating.patch" # KDE-bug 449285
 )
 
 src_prepare() {
