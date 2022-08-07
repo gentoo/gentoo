@@ -81,7 +81,7 @@ S="${WORKDIR}/python-${P}"
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 
 BDEPEND="test? ( dev-python/toml[${PYTHON_USEDEP}] )"
 
