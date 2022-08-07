@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.0.2-Werror.patch
 	"${FILESDIR}"/${PN}-5.0.2-headers.patch
 	"${FILESDIR}"/${PN}-5.0.2-strip-license.patch
+	"${FILESDIR}"/${PN}-5.1.3-no-aqlprofile.patch
 )
 
 python_check_deps() {
