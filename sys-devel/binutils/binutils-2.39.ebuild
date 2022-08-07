@@ -34,6 +34,7 @@ else
 	SLOT=$(ver_cut 1-2)
 	# live ebuild
 	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~loong"
 fi
 
 #
