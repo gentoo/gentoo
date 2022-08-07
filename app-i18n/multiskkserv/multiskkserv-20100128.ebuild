@@ -6,8 +6,8 @@ EAPI="8"
 inherit autotools
 
 DESCRIPTION="SKK server that handles multiple dictionaries"
-HOMEPAGE="http://www3.big.or.jp/~sian/linux/products/"
-SRC_URI="http://www3.big.or.jp/~sian/linux/products/${P}.tar.xz"
+HOMEPAGE="https://www3.big.or.jp/~sian/linux/products/"
+SRC_URI="https://www3.big.or.jp/~sian/linux/products/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
