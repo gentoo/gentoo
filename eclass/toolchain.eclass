@@ -371,11 +371,14 @@ if [[ ${TOOLCHAIN_SET_S} == yes ]] ; then
 fi
 
 gentoo_urls() {
+	# the list is sorted by likelihood of getting the patches tarball from
+	# respective devspace
 	# slyfox's distfiles are mirrored to sam's devspace
 	declare -A devspace_urls=(
 		[soap]=HTTP~soap/distfiles/URI
 		[sam]=HTTP~sam/distfiles/sys-devel/gcc/URI
 		[slyfox]=HTTP~sam/distfiles/URI
+		[xen0n]=HTTP~xen0n/distfiles/sys-devel/gcc/URI
 		[tamiko]=HTTP~tamiko/distfiles/URI
 		[zorry]=HTTP~zorry/patches/gcc/URI
 		[vapier]=HTTP~vapier/dist/URI
