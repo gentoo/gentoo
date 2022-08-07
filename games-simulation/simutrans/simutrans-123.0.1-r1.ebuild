@@ -64,6 +64,7 @@ src_prepare() {
 	xdg_environment_reset
 
 	strip-flags # bug #293927
+	append-flags -fno-strict-aliasing # bug #859229
 
 	eautoreconf
 
