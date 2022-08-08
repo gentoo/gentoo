@@ -25,11 +25,10 @@ fi
 LICENSE="MIT CC-BY-SA-3.0"
 SLOT="0"
 
-IUSE="colord +desktop +drm editor examples fullscreen +gles2 headless ivi jpeg kiosk lcms pipewire rdp remoting +resize-optimization screen-sharing +seatd +suid systemd test wayland-compositor webp +X xwayland"
+IUSE="+desktop +drm editor examples fullscreen +gles2 headless ivi jpeg kiosk lcms pipewire rdp remoting +resize-optimization screen-sharing +seatd +suid systemd test wayland-compositor webp +X xwayland"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
-	colord? ( lcms )
 	drm? ( gles2 )
 	pipewire? ( drm )
 	remoting? ( drm gles2 )
@@ -52,7 +51,6 @@ RDEPEND="
 	>=x11-libs/libxkbcommon-0.5.0
 	>=x11-libs/pixman-0.25.2
 	x11-misc/xkeyboard-config
-	colord? ( >=x11-misc/colord-0.1.27 )
 	drm? (
 		>=media-libs/mesa-17.1[gbm(+)]
 		>=sys-libs/mtdev-1.1.0
@@ -113,7 +111,6 @@ src_configure() {
 		$(meson_use ivi shell-ivi)
 		$(meson_use kiosk shell-kiosk)
 		$(meson_use lcms color-management-lcms)
-		$(meson_use colord color-management-colord)
 		$(meson_use systemd launcher-logind)
 		$(meson_use jpeg image-jpeg)
 		$(meson_use webp image-webp)
