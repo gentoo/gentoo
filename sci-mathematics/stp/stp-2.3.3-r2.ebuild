@@ -92,7 +92,12 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
-	mv "${D}"/usr/man "${D}"/usr/share/man || die
 
+	# Because Python files for tests (in BUILD_DIR) and those installed on the
+	# system differ, and are generated upon install, we have to wait for CMake
+	# to install them into the temporary image.
+	use python && python_optimize "${D}/$(python_get_sitedir)"/stp
+
+	mv "${D}"/usr/man "${D}"/usr/share/man || die
 	dodoc -r papers
 }
