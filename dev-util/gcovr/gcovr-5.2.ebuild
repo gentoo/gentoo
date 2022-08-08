@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..11} )
 DISTUTILS_IN_SOURCE_BUILD=1
 
 inherit distutils-r1
@@ -19,13 +19,17 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
+	dev-python/pygments[${PYTHON_USEDEP}]
+	dev-python/yaxmldiff[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	test? ( dev-python/PyUtilib[${PYTHON_USEDEP}] )
+	test? (
+		dev-python/pytest-timeout[${PYTHON_USEDEP}]
+	)
 "
 
 # tests fail on gcc newer than 5.8
-RESTRICT="test"
+#RESTRICT="test"
 
 distutils_enable_tests pytest
 
