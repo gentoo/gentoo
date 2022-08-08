@@ -16,7 +16,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/sashs/Ropper"
 else
-	SRC_URI="https://github.com/sashs/Ropper/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/sashs/Ropper/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 	S="${WORKDIR}"/Ropper-${PV}
 
 	KEYWORDS="~amd64 ~x86"
