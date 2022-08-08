@@ -1,6 +1,6 @@
 --- a/configure.in
 +++ b/configure.in
-@@ -126,19 +126,38 @@
+@@ -126,19 +126,39 @@
        fi
      done
    else
@@ -15,6 +15,7 @@
 +      if test -f "$with_cdb/$i/cdb.h"; then
 +        CDB_DIR="$with_cdb"
 +        CDB_INCLUDES="-I$with_cdb/$i"
++        available_cdb="yes"
 +        if test -f "$with_cdb/$i/uint32.h"; then
 +          for l in lib64 lib32 lib; do
 +            available_cdb="yes"
