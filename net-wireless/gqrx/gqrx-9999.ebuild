@@ -9,10 +9,10 @@ DESCRIPTION="Software defined radio receiver powered by GNU Radio and Qt"
 HOMEPAGE="https://gqrx.dk/"
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/csete/gqrx.git"
+	EGIT_REPO_URI="https://github.com/gqrx-sdr/gqrx.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/csete/gqrx/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/gqrx-sdr/gqrx/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~riscv ~x86"
 fi
 
@@ -21,7 +21,11 @@ SLOT="0"
 IUSE="gr-audio portaudio pulseaudio"
 REQUIRED_USE="^^ ( pulseaudio portaudio gr-audio )"
 
-DEPEND=">=net-wireless/gnuradio-3.7_rc:=[audio,analog,filter]
+DEPEND="
+	|| (
+		<net-wireless/gnuradio-3.10:0[audio,analog,filter]
+		>=net-wireless/gnuradio-3.10:0[audio,analog,filter,network]
+	)
 	>=net-wireless/gr-osmosdr-0.1.0:=
 	dev-libs/boost:=
 	dev-libs/log4cpp:=
