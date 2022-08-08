@@ -1,0 +1,21 @@
+commit 3b108563a0784df332791d44cf70bbba0fc81822
+Author: Michael Mair-Keimberger <mmk@levelnine.at>
+Date:   Mon Aug 8 19:23:16 2022 +0200
+
+    gns3.service.openrc: make openrc script posix compliant
+
+diff --git a/init/gns3.service.openrc b/init/gns3.service.openrc
+index 8b0864cd..5a574fca 100755
+--- a/init/gns3.service.openrc
++++ b/init/gns3.service.openrc
+@@ -23,8 +23,8 @@ depend() {
+ 
+ checkconfig() {
+   if yesno "${GNS3_SERVER_LOG_ENABLED}" ; then
+-    command_args+=" --log ${GNS3_SERVER_LOG}";
+-    if [ "${command_user}" ] ; then 
++    command_args="${command_args} --log ${GNS3_SERVER_LOG}";
++    if [ "${command_user}" ] ; then
+       checkpath --directory --mode 0700 --owner "${command_user}" "${GNS3_SERVER_LOG_PATH}";
+     else
+       unset command_user

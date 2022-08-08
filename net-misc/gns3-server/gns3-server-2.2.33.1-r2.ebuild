@@ -39,6 +39,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-openrc-posix-complaint.patch"
+	)
+
 distutils_enable_tests pytest
 
 src_prepare() {
