@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.5-meson-pkgbuild-fix-version-number.patch"
