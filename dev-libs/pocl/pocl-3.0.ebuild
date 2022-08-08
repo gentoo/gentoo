@@ -50,7 +50,7 @@ PATCHES=(
 )
 
 python_check_deps() {
-	has_version -b "<dev-python/markupsafe-2.0[${PYTHON_USEDEP}]"
+	python_has_version "<dev-python/markupsafe-2.0[${PYTHON_USEDEP}]"
 }
 
 llvm_check_deps() {
