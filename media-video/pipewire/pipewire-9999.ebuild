@@ -151,7 +151,7 @@ PATCHES=(
 limitsdfile=40-${PN}.conf
 
 python_check_deps() {
-	has_version -b "dev-python/docutils[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/docutils[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {
