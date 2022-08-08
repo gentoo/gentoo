@@ -15,10 +15,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	media-libs/alsa-lib
-	media-libs/libsdl[X]
+	media-libs/libsdl2[X]
 	x11-libs/libX11
-	x11-libs/libXext
 	x11-libs/libXv
 "
 DEPEND="${RDEPEND}
