@@ -177,6 +177,6 @@ src_install() {
 		echo "[Network]" >> "${iwdconf}"
 		echo "NameResolvingService=$(usex systemd systemd resolvconf)" >> "${iwdconf}"
 		dodir /etc/conf.d
-		echo "rc_provide=\"net\"" > ${ED}/etc/conf.d/iwd
+		echo "rc_provide=\"net\"" > "${ED}"/etc/conf.d/iwd
 	fi
 }
