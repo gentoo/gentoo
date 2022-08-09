@@ -13,8 +13,10 @@ if [[ ${PV} =~ ^[9]{4,}$ ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://git.netfilter.org/${PN}"
 else
-	SRC_URI="https://netfilter.org/projects/${PN}/files/${P}.tar.bz2
-		verify-sig? ( https://netfilter.org/projects/${PN}/files/${P}.tar.bz2.sig )"
+	SRC_URI="
+		https://netfilter.org/projects/${PN}/files/${P}.tar.bz2
+		verify-sig? ( https://netfilter.org/projects/${PN}/files/${P}.tar.bz2.sig )
+	"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-netfilter )"
@@ -25,13 +27,13 @@ SLOT="0/11" # libnftnl.so version
 IUSE="examples static-libs test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=net-libs/libmnl-1.0.4:="
-BDEPEND+=" virtual/pkgconfig"
+RDEPEND="
+	>=net-libs/libmnl-1.0.4:=
+"
+BDEPEND+="
+	virtual/pkgconfig
+"
 DEPEND="${RDEPEND}"
-
-PATCHES=(
-	"${FILESDIR}"/${P}-missing-export-set_elem.patch
-)
 
 pkg_setup() {
 	if kernel_is ge 3 13; then
