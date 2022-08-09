@@ -78,7 +78,7 @@ RDEPEND="${CDEPEND}
 "
 DEPEND="${CDEPEND}
 	dev-libs/boost
-	dev-libs/libfmt
+	<dev-libs/libfmt-9
 "
 BDEPEND="virtual/pkgconfig"
 
@@ -116,6 +116,10 @@ src_prepare() {
 	if [ "${PV}" = "9999" ]; then
 		eautoreconf
 	fi
+	# VERSION was incorrectly removed in 4e490cf0b49a287e964df9c5e5c4067f6918909e upstream
+	# https://github.com/kismetwireless/kismet/issues/427
+	# https://bugs.gentoo.org/864298
+	echo "${PV}" > VERSION
 }
 
 src_configure() {
