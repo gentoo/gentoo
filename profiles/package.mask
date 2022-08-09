@@ -485,12 +485,6 @@ media-video/kino
 # Removal on 2022-08-11.
 x11-libs/gtk+extra
 
-# David Seifert <soap@gentoo.org> (2022-07-11)
-# Unmaintained, companion lib of dev-cpp/commoncpp2 which has already
-# been removed, fails with USE=-ssl, no revdeps, upstream mostly dead.
-# Bug #830581, removal on 2022-08-10.
-dev-libs/ucommon
-
 # Fabian Groffen <grobian@gentoo.org> (2022-07-02)
 # Segfaults handling SPF validations (warn on permerror), like the
 # previous release, better not to trust your important mail to
