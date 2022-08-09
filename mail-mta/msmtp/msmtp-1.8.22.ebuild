@@ -41,14 +41,11 @@ RDEPEND="${DEPEND}
 		!mail-mta/courier
 		!mail-mta/esmtp
 		!mail-mta/exim
-		!mail-mta/mini-qmail
 		!mail-mta/netqmail
 		!mail-mta/nullmailer
 		!mail-mta/postfix
-		!mail-mta/qmail-ldap
 		!mail-mta/sendmail
 		!mail-mta/opensmtpd
-		!<mail-mta/ssmtp-2.64-r2
 		!>=mail-mta/ssmtp-2.64-r2[mta]
 	)
 "
