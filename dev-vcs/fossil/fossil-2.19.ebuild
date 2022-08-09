@@ -8,7 +8,7 @@ inherit toolchain-funcs
 MY_TAG="1e131febd3fbb028d00cab6d020214e8fe36be95daaf93237523c29c542e9a5f"
 
 DESCRIPTION="Simple, high-reliability, source control management, and more"
-HOMEPAGE="https://www.fossil-scm.org/"
+HOMEPAGE="https://www.fossil-scm.org/home"
 SRC_URI="https://fossil-scm.org/home/tarball/${MY_TAG}/fossil-src-${PV}.tar.gz"
 
 LICENSE="BSD-2"
