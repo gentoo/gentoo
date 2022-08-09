@@ -10,6 +10,6 @@
 		<flag name="non-root">Use non-root user by default</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">CanonicalLtd/lightdm</remote-id>
+		<remote-id type="github">canonical/lightdm</remote-id>
 	</upstream>
 </pkgmetadata>
