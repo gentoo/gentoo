@@ -57,6 +57,7 @@ EPYTEST_DESELECT=(
 	test/test_prerun.py::test_prerun_reqs_v1
 	test/test_prerun.py::test_prerun_reqs_v2
 	test/test_prerun.py::test_require_collection_wrong_version
+	test/test_profiles.py::test_profile_listing
 	test/test_rules_collection.py::test_rich_rule_listing
 	test/test_utils.py::test_cli_auto_detect
 	test/test_utils.py::test_template_lookup
