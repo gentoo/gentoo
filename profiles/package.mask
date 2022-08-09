@@ -503,13 +503,6 @@ dev-php/pecl-geoip
 # ancient release, bug #361411, removal on 2022-08-10.
 sci-biology/transfac
 
-# Sam James <sam@gentoo.org> (2022-07-10)
-# Broken with autoconf 2.70+, stuck on EAPI 6, plenty
-# of concerning warnings. Even Debian's fork isn't
-# enough to fix all the issues (w/ autoconf).
-# Removal on 2022-07-10.
-net-mail/mpack
-
 # Fabian Groffen <grobian@gentoo.org> (2022-07-02)
 # Segfaults handling SPF validations (warn on permerror), like the
 # previous release, better not to trust your important mail to
