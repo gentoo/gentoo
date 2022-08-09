@@ -12,7 +12,7 @@ PKGDEV_DOCS_VERSION=$(ver_cut 1-3)
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
 PKGDEV_DOCS_USEFLAG="+doc"
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 DISTUTILS_IN_SOURCE_BUILD=1
 inherit distutils-r1
 
