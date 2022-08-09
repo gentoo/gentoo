@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Matthew Smith <matthew@gentoo.org> (2022-08-09)
+# Please update to Erlang/OTP 24 or 25. Removal in 30 days.
+# See following link for breaking changes:
+# https://www.erlang.org/patches/otp-24.0#incompatibilities
+<dev-lang/erlang-24
+~dev-lang/elixir-1.11.4
+
 # Fabian Groffen <grobian@gentoo.org> (2022-08-06)
 # superseeded by sys-apps/baselayout, removal in 30 days.  bug #836114
 sys-apps/baselayout-prefix
