@@ -1,0 +1,30 @@
+From 327942b7090e77a2a6baac18504ddb3dd3480df3 Mon Sep 17 00:00:00 2001
+From: WANG Xuerui <xen0n@gentoo.org>
+Date: Sat, 6 Aug 2022 18:04:55 +0800
+Subject: [PATCH] fix build with glibc-2.36
+
+See section 2.1 of https://sourceware.org/glibc/wiki/Release/2.36
+("Usage of <linux/mount.h> and <sys/mount.h>") for details.
+
+Also, remove a couple of ancient hacks that are no longer relevant after
+the removal of <linux/fs.h> inclusion.
+
+Signed-off-by: WANG Xuerui <xen0n@gentoo.org>
+---
+ src/hd/hd.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/src/hd/hd.c b/src/hd/hd.c
+index fa0a5089..159bfaab 100644
+--- a/src/hd/hd.c
++++ b/src/hd/hd.c
+@@ -21,9 +21,6 @@
+ #include <sys/mman.h>
+ #include <linux/pci.h>
+ #include <linux/hdreg.h>
+-#define _LINUX_AUDIT_H_
+-#define _LINUX_PRIO_TREE_H
+-#include <linux/fs.h>
+ 
+ /**
+  * @defgroup libhdBUSint Bus scanning code
