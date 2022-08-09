@@ -15,3 +15,7 @@ RDEPEND="elibc_musl? ( sys-libs/argp-standalone )"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${PN/_/-}-${PV}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.3.1-limits-include.patch
+)
