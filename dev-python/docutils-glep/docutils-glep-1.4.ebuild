@@ -10,11 +10,11 @@ inherit distutils-r1
 
 DESCRIPTION="Gentoo GLEP support for docutils"
 HOMEPAGE="
-	https://github.com/mgorny/docutils-glep/
+	https://github.com/projg2/docutils-glep/
 	https://pypi.org/project/docutils-glep/
 "
 SRC_URI="
-	https://github.com/mgorny/docutils-glep/archive/v${PV}.tar.gz
+	https://github.com/projg2/docutils-glep/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 
