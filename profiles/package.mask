@@ -491,13 +491,6 @@ x11-libs/gtk+extra
 # Bug #830581, removal on 2022-08-10.
 dev-libs/ucommon
 
-# Brian Evans <grknight@gentoo.org> (2022-07-11)
-# The database behind this extension is no longer available
-# Please migrate to dev-php/maxmind-db-reader optionally with its
-# bundled extension. Bug 857636
-# Removal on 2022-08-10.
-dev-php/pecl-geoip
-
 # Fabian Groffen <grobian@gentoo.org> (2022-07-02)
 # Segfaults handling SPF validations (warn on permerror), like the
 # previous release, better not to trust your important mail to
