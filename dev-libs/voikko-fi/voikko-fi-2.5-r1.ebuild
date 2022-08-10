@@ -17,7 +17,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-DEPEND="dev-libs/foma
+DEPEND="dev-libs/foma:=
 	dev-libs/libvoikko"
 RDEPEND="${DEPEND}"
 BDEPEND="${PYTHON_DEPS}
