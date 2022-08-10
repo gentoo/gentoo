@@ -78,6 +78,8 @@ src_configure() {
 
 		if [[ ${MULTIBUILD_VARIANT} == webui ]] ; then
 			mycmakeargs+=(
+				# Need to specify GUI here to allow webui settings
+				# to appear in the GUI. bug #864731.
 				-DGUI=$(usex gui)
 				-DWEBUI=ON
 			)
