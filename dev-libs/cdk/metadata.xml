@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<changelog>https://dickey.his.com/cdk/CHANGES.html</changelog>
+		<remote-id type="github">ThomasDickey/cdk-snapshots</remote-id>
 	</upstream>
 </pkgmetadata>
