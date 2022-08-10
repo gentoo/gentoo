@@ -11,7 +11,7 @@ DESCRIPTION="Python bindings for x11-libs/xapp"
 HOMEPAGE="https://github.com/linuxmint/python3-xapp"
 SRC_URI="https://github.com/linuxmint/python3-xapp/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="LGPL-2"
+LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~riscv x86"
 IUSE=""
