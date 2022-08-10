@@ -9,8 +9,8 @@ PYTHON_COMPAT=( python3_{7..9} )
 inherit bash-completion-r1 distutils-r1
 
 DESCRIPTION="A smart CLI mangler for package.* files"
-HOMEPAGE="https://github.com/mgorny/flaggie/"
-SRC_URI="https://github.com/mgorny/flaggie/releases/download/${P}/${P}.tar.bz2"
+HOMEPAGE="https://github.com/projg2/flaggie/"
+SRC_URI="https://github.com/projg2/flaggie/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
