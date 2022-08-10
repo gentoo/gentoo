@@ -19,4 +19,9 @@
 	such as Puppy Linux and Damn Small Linux, and it is available as a separate
 	package in many other distributions.
 	</longdescription>
+	<use>
+		<flag name="pango">
+			Bidirectional text layout support with pango using xft backend.
+		</flag>
+	</use>
 </pkgmetadata>
