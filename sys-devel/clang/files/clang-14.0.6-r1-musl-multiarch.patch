@@ -1,0 +1,139 @@
+# From clang 13.0.0 a new option -print-multiarch, matching gcc, was added.
+# On linux-musl systems this outputs x86_64-linux-gnu (or aarch64-linux-gnu,
+# etc) instead of x86_64-linux-musl (or aarch64-linux-musl, etc).
+#
+# Amongst other things, this bug breaks compiling python with clang on musl
+# hosts, as the python configure script does a sanity check and notices the
+# output of -print-multiarch is inconsistent with the linux-musl platform triplet
+# it (correctly) deduces for the host by other means. (The configure script
+# errors out with "internal configure error for the platform triplet, please file
+# a bug report" FWIW. This worked okay in clang 12.0.1 because python only checks
+# the multiarch target for consistency if $CC -print-multiarch isn't an error.)
+#
+# The implementation in Linux::getMultiarchTriple() of
+# clang/lib/Driver/ToolChains/Linux.cpp special-cases -linux-android targets, and
+# assumes -linux-gnu for anything else.
+#
+# Credit for this patch goes to arachsys <Chris Webb>
+# Please also reffer: https://bugs.llvm.org/show_bug.cgi?id=52127 and
+# https://github.com/llvm/llvm-project/issues/51469
+#
+# Closes: https://bugs.gentoo.org/862888
+--- a/clang/lib/Driver/ToolChains/Linux.cpp
++++ b/clang/lib/Driver/ToolChains/Linux.cpp
+@@ -42,7 +42,8 @@ std::string Linux::getMultiarchTriple(const Driver &D,
+                                       StringRef SysRoot) const {
+   llvm::Triple::EnvironmentType TargetEnvironment =
+       TargetTriple.getEnvironment();
+-  bool IsAndroid = TargetTriple.isAndroid();
++  std::string EnvName = TargetTriple.isAndroid() ? "android" :
++    TargetTriple.isMusl() ? "musl" : "gnu";
+   bool IsMipsR6 = TargetTriple.getSubArch() == llvm::Triple::MipsSubArch_r6;
+   bool IsMipsN32Abi = TargetTriple.getEnvironment() == llvm::Triple::GNUABIN32;
+
+@@ -58,78 +59,66 @@ std::string Linux::getMultiarchTriple(const Driver &D,
+   // regardless of what the actual target triple is.
+   case llvm::Triple::arm:
+   case llvm::Triple::thumb:
+-    if (IsAndroid)
+-      return "arm-linux-androideabi";
+     if (TargetEnvironment == llvm::Triple::GNUEABIHF)
+-      return "arm-linux-gnueabihf";
+-    return "arm-linux-gnueabi";
++      return "arm-linux-" + EnvName + "eabihf";
++    return "arm-linux-" + EnvName + "eabi";
+   case llvm::Triple::armeb:
+   case llvm::Triple::thumbeb:
+     if (TargetEnvironment == llvm::Triple::GNUEABIHF)
+-      return "armeb-linux-gnueabihf";
+-    return "armeb-linux-gnueabi";
++      return "armeb-linux-" + EnvName + "eabihf";
++    return "armeb-linux-" + EnvName + "eabi";
+   case llvm::Triple::x86:
+-    if (IsAndroid)
+-      return "i686-linux-android";
+-    return "i386-linux-gnu";
++    return "i386-linux-" + EnvName;
+   case llvm::Triple::x86_64:
+-    if (IsAndroid)
+-      return "x86_64-linux-android";
+     if (TargetEnvironment == llvm::Triple::GNUX32)
+-      return "x86_64-linux-gnux32";
+-    return "x86_64-linux-gnu";
++      return "x86_64-linux-" + EnvName + "x32";
++    return "x86_64-linux-" + EnvName;
+   case llvm::Triple::aarch64:
+-    if (IsAndroid)
+-      return "aarch64-linux-android";
+-    return "aarch64-linux-gnu";
++    return "aarch64-linux-" + EnvName;
+   case llvm::Triple::aarch64_be:
+-    return "aarch64_be-linux-gnu";
++    return "aarch64_be-linux-" + EnvName;
+
+   case llvm::Triple::m68k:
+-    return "m68k-linux-gnu";
++    return "m68k-linux-" + EnvName;
+
+   case llvm::Triple::mips:
+-    return IsMipsR6 ? "mipsisa32r6-linux-gnu" : "mips-linux-gnu";
++    return (IsMipsR6 ? "mipsisa32r6-linux-" : "mips-linux-") + EnvName;
+   case llvm::Triple::mipsel:
+-    if (IsAndroid)
+-      return "mipsel-linux-android";
+-    return IsMipsR6 ? "mipsisa32r6el-linux-gnu" : "mipsel-linux-gnu";
++    return (IsMipsR6 ? "mipsisa32r6el-linux-" : "mipsel-linux-") + EnvName;
+   case llvm::Triple::mips64: {
+     std::string MT = std::string(IsMipsR6 ? "mipsisa64r6" : "mips64") +
+-                     "-linux-" + (IsMipsN32Abi ? "gnuabin32" : "gnuabi64");
++                     "-linux-" + EnvName + (IsMipsN32Abi ? "abin32" : "abi64");
+     if (D.getVFS().exists(SysRoot + "/lib/" + MT))
+       return MT;
+-    if (D.getVFS().exists(SysRoot + "/lib/mips64-linux-gnu"))
+-      return "mips64-linux-gnu";
++    if (D.getVFS().exists(SysRoot + "/lib/mips64-linux-" + EnvName))
++      return "mips64-linux-" + EnvName;
+     break;
+   }
+   case llvm::Triple::mips64el: {
+-    if (IsAndroid)
+-      return "mips64el-linux-android";
+     std::string MT = std::string(IsMipsR6 ? "mipsisa64r6el" : "mips64el") +
+-                     "-linux-" + (IsMipsN32Abi ? "gnuabin32" : "gnuabi64");
++                     "-linux-" + EnvName + (IsMipsN32Abi ? "abin32" : "abi64");
+     if (D.getVFS().exists(SysRoot + "/lib/" + MT))
+       return MT;
+-    if (D.getVFS().exists(SysRoot + "/lib/mips64el-linux-gnu"))
+-      return "mips64el-linux-gnu";
++    if (D.getVFS().exists(SysRoot + "/lib/mips64el-linux-" + EnvName))
++      return "mips64el-linux-" + EnvName;
+     break;
+   }
+   case llvm::Triple::ppc:
+-    if (D.getVFS().exists(SysRoot + "/lib/powerpc-linux-gnuspe"))
+-      return "powerpc-linux-gnuspe";
+-    return "powerpc-linux-gnu";
++    if (D.getVFS().exists(SysRoot + "/lib/powerpc-linux-" + EnvName + "spe"))
++      return "powerpc-linux-" + EnvName + "spe";
++    return "powerpc-linux-" + EnvName;
+   case llvm::Triple::ppcle:
+-    return "powerpcle-linux-gnu";
++    return "powerpcle-linux-" + EnvName;
+   case llvm::Triple::ppc64:
+-    return "powerpc64-linux-gnu";
++    return "powerpc64-linux-" + EnvName;
+   case llvm::Triple::ppc64le:
+-    return "powerpc64le-linux-gnu";
++    return "powerpc64le-linux-" + EnvName;
+   case llvm::Triple::sparc:
+-    return "sparc-linux-gnu";
++    return "sparc-linux-" + EnvName;
+   case llvm::Triple::sparcv9:
+-    return "sparc64-linux-gnu";
++    return "sparc64-linux-" + EnvName;
+   case llvm::Triple::systemz:
+-    return "s390x-linux-gnu";
++    return "s390x-linux-" + EnvName;
+   }
+   return TargetTriple.str();
+ }

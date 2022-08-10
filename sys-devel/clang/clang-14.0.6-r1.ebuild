@@ -79,6 +79,10 @@ llvm.org_set_globals
 # Therefore: use sys-devel/clang[${MULTILIB_USEDEP}] only if you need
 # multilib clang* libraries (not runtime, not wrappers).
 
+PATCHES=(
+	"${FILESDIR}/${PN}"-14.0.6-r1-musl-multiarch.patch
+)
+
 pkg_setup() {
 	LLVM_MAX_SLOT=${SLOT} llvm_pkg_setup
 	python-single-r1_pkg_setup
