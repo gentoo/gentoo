@@ -6,7 +6,7 @@
 		<name>Michał Górny</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://github.com/mgorny/unsymlink-lib/issues/</bugs-to>
-		<remote-id type="github">mgorny/unsymlink-lib</remote-id>
+		<bugs-to>https://github.com/projg2/unsymlink-lib/issues/</bugs-to>
+		<remote-id type="github">projg2/unsymlink-lib</remote-id>
 	</upstream>
 </pkgmetadata>
