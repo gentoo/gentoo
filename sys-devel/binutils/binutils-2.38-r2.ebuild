@@ -312,7 +312,7 @@ src_compile() {
 		emake V=1 info
 	fi
 
-	use emacs && elisp-compile "${S}"/binutils/dwarf-mode.el
+	! is_cross && use emacs && elisp-compile "${S}"/binutils/dwarf-mode.el
 
 	# we nuke the manpages when we're left with junk
 	# (like when we bootstrap, no perl -> no manpages)
@@ -406,7 +406,7 @@ src_install() {
 		dodoc opcodes/ChangeLog*
 	fi
 
-	if use emacs ; then
+	if ! is_cross && use emacs ; then
 		elisp-install ${PN} "${S}"/binutils/dwarf-mode.el{,c}
 		elisp-site-file-install "${FILESDIR}/50${PN}-gentoo.el"
 	fi
@@ -423,7 +423,7 @@ pkg_postinst() {
 	[[ -e ${EROOT}/etc/env.d/binutils/config-${CTARGET} ]] && return 0
 	binutils-config ${CTARGET}-${PV}
 
-	use emacs && elisp-site-regen
+	! is_cross && use emacs && elisp-site-regen
 }
 
 pkg_postrm() {
@@ -448,7 +448,7 @@ pkg_postrm() {
 		binutils-config ${CTARGET}-${PV}
 	fi
 
-	use emacs && elisp-site-regen
+	! is_cross && use emacs && elisp-site-regen
 }
 
 # Note [slotting support]
