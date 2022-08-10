@@ -9,9 +9,9 @@ PYTHON_REQ_USE='threads(+)'
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Stand-alone Manifest generation & verification tool"
-HOMEPAGE="https://github.com/mgorny/gemato"
+HOMEPAGE="https://github.com/projg2/gemato"
 SRC_URI=""
-EGIT_REPO_URI="https://github.com/mgorny/gemato.git"
+EGIT_REPO_URI="https://github.com/projg2/gemato.git"
 
 LICENSE="BSD-2"
 SLOT="0"
