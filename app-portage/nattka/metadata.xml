@@ -12,7 +12,7 @@
 		</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">mgorny/nattka</remote-id>
+		<remote-id type="github">projg2/nattka</remote-id>
 		<remote-id type="pypi">nattka</remote-id>
 	</upstream>
 </pkgmetadata>

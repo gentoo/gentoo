@@ -9,8 +9,8 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="A New Arch Tester Toolkit -- open-source stable-bot replacement"
-HOMEPAGE="https://github.com/mgorny/nattka/"
-SRC_URI="https://github.com/mgorny/nattka/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/projg2/nattka/"
+SRC_URI="https://github.com/projg2/nattka/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
