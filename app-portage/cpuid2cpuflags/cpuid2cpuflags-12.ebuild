@@ -4,9 +4,9 @@
 EAPI=8
 
 DESCRIPTION="Tool to guess CPU_FLAGS_* flags for the host"
-HOMEPAGE="https://github.com/mgorny/cpuid2cpuflags/"
+HOMEPAGE="https://github.com/projg2/cpuid2cpuflags/"
 SRC_URI="
-	https://github.com/mgorny/cpuid2cpuflags/releases/download/v${PV}/${P}.tar.bz2
+	https://github.com/projg2/cpuid2cpuflags/releases/download/v${PV}/${P}.tar.bz2
 "
 
 LICENSE="BSD-2"
