@@ -47,9 +47,3 @@ src_install() {
 	use doc && dodoc -r examples
 	find "${D}" -type f \( -name '*.la' -o -name '*.a' \) -delete || die
 }
-
-# Explicit src_test is there to document that the test suite is integrated and
-# is expected to pass. Please do not remove.
-src_test() {
-	emake check
-}
