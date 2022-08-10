@@ -56,6 +56,17 @@ MICROCODE_SIGNATURES_DEFAULT=""
 # only specific CPU: MICROCODE_SIGNATURES="-s 0x00000f4a -s 0x00010676"
 # exclude specific CPU: MICROCODE_SIGNATURES="-s !0x00000686"
 
+#Version  bump instructions :
+# 1. The ebuild is the form of intel-microcode-<INTEL_SNAPSHOT>_p<COLLECTION_SNAPSHOT>.ebuild 
+# 2. The INTEL_SNAPSHOT upstream is located at: https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files\
+# 3. The COLLECTION_SNAPSHOT is created manually using the following steps:
+#   a. Clone the repository https://github.com/platomav/CPUMicrocodes
+#   b. Rename the Intel directory to intel-microcode-collection-<YYYYMMDD>
+#   c. From the CPUMicrocodes directory tar and xz compress the contents of intel-microcode-collection-<YYYYMMDD>:
+#      tar -cJf intel-microcode-collection-<YYYYMMDD>.tar.xz intel-microcode-collection-<YYYYMMDD>/
+#   d. This file can go in your devspace, add the URL to SRC_URI if it's not there
+#      https://dev.gentoo.org/~<dev nick>/dist/intel-microcode/intel-microcode-collection-${COLLECTION_SNAPSHOT}.tar.xz
+
 pkg_pretend() {
 	use initramfs && mount-boot_pkg_pretend
 }
@@ -76,6 +87,8 @@ src_prepare() {
 	# Prevent "invalid file format" errors from iucode_tool
 	rm -f "${S}"/intel-ucod*/list || die
 
+	# Remove non-microcode file from list
+	rm -f "${S}"/intel-ucode/LICENSE
 }
 
 src_install() {
