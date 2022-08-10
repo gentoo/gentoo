@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Displays info about your card's VDPAU support"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/VDPAU"
@@ -25,4 +25,6 @@ src_prepare() {
 	default
 
 	eautoreconf
+
+	append-flags -fno-strict-aliasing #864755
 }
