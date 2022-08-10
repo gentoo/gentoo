@@ -11,7 +11,7 @@ DESCRIPTION="A collection of libraries and utilites used by Cinnamon"
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cinnamon-desktop"
 SRC_URI="https://github.com/linuxmint/cinnamon-desktop/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2+ FDL-1.1+ LGPL-2+"
+LICENSE="GPL-1 GPL-2+ LGPL-2+ LGPL-2.1+ MIT"
 SLOT="0/4" # subslot = libcinnamon-desktop soname version
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 
