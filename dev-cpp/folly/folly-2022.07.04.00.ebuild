@@ -39,6 +39,10 @@ DEPEND="${RDEPEND}
 	sys-libs/binutils-libs"
 BDEPEND="test? ( sys-devel/clang )"
 
+PATCHES=(
+	"${FILESDIR}/${PN}"-2022.07.04.00-musl-fix.patch
+)
+
 pkg_setup() {
 	[[ ${BUILD_TYPE} == "binary" ]] && return
 
