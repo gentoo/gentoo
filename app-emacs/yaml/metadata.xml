@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    yaml.el is a YAML parser written in Emacs List without any external
+    dependencies. It provides an interface similar to the Emacs JSON parsing
+    utility.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/zkry/yaml.el/issues/</bugs-to>
+    <remote-id type="github">zkry/yaml.el</remote-id>
+  </upstream>
+</pkgmetadata>
