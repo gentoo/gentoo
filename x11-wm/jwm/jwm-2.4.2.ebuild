@@ -35,6 +35,7 @@ RDEPEND="dev-libs/expat
 	xpm? ( x11-libs/libXpm )"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
+BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	econf \
