@@ -56,8 +56,8 @@ MICROCODE_SIGNATURES_DEFAULT=""
 # only specific CPU: MICROCODE_SIGNATURES="-s 0x00000f4a -s 0x00010676"
 # exclude specific CPU: MICROCODE_SIGNATURES="-s !0x00000686"
 
-#Version  bump instructions :
-# 1. The ebuild is the form of intel-microcode-<INTEL_SNAPSHOT>_p<COLLECTION_SNAPSHOT>.ebuild
+# Package Maintenance instructions :
+# 1. The ebuild is in the form of intel-microcode-<INTEL_SNAPSHOT>_p<COLLECTION_SNAPSHOT>.ebuild
 # 2. The INTEL_SNAPSHOT upstream is located at: https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files\
 # 3. The COLLECTION_SNAPSHOT is created manually using the following steps:
 #   a. Clone the repository https://github.com/platomav/CPUMicrocodes
