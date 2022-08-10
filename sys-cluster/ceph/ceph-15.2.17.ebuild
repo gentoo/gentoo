@@ -49,6 +49,7 @@ DEPEND="
 	dev-libs/leveldb:=[snappy,tcmalloc(-)?]
 	dev-libs/libaio:=
 	dev-libs/libfmt:=
+	<dev-libs/libfmt-9:=
 	dev-libs/libnl:3=
 	dev-libs/libxml2:=
 	<dev-libs/rocksdb-6.15:=
