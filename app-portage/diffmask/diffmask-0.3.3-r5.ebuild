@@ -9,8 +9,8 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="A utility to maintain package.unmask entries up-to-date with masks"
-HOMEPAGE="https://github.com/mgorny/diffmask/"
-SRC_URI="https://github.com/mgorny/diffmask/releases/download/${P}/${P}.tar.bz2"
+HOMEPAGE="https://github.com/projg2/diffmask/"
+SRC_URI="https://github.com/projg2/diffmask/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
