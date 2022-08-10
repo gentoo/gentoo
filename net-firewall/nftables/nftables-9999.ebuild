@@ -33,7 +33,7 @@ RESTRICT="test? ( userpriv ) !test? ( test )"
 
 RDEPEND="
 	>=net-libs/libmnl-1.0.4:0=
-	>=net-libs/libnftnl-1.2.2:0=
+	>=net-libs/libnftnl-1.2.3:0=
 	gmp? ( dev-libs/gmp:= )
 	json? ( dev-libs/jansson:= )
 	python? ( ${PYTHON_DEPS} )
