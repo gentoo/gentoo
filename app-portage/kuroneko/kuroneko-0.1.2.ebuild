@@ -7,9 +7,9 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Vulnerability checker using data scraped from Gentoo Bugzilla"
-HOMEPAGE="https://github.com/mgorny/kuroneko/"
+HOMEPAGE="https://github.com/projg2/kuroneko/"
 SRC_URI="
-	https://github.com/mgorny/kuroneko/archive/v${PV}.tar.gz
+	https://github.com/projg2/kuroneko/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
 LICENSE="BSD-2"
