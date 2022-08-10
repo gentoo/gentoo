@@ -1271,7 +1271,7 @@ pkg_postinst() {
 	# bug 835078
 	if use hwaccel && has_version "x11-drivers/xf86-video-nouveau"; then
 		ewarn "You have nouveau drivers installed in your system and 'hwaccel' "
-		ewarn "enabled for Firefox. Nouveau / your GPU might not supported the "
+		ewarn "enabled for Firefox. Nouveau / your GPU might not support the "
 		ewarn "required EGL, so either disable 'hwaccel' or try the workaround "
 		ewarn "explained in https://bugs.gentoo.org/835078#c5 if Firefox crashes."
 	fi
