@@ -4,7 +4,7 @@
 EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
-inherit cmake fcaps flag-o-matic git-r3 toolchain-funcs wxwidgets
+inherit cmake fcaps git-r3 toolchain-funcs wxwidgets
 
 DESCRIPTION="A PlayStation 2 emulator"
 HOMEPAGE="https://pcsx2.net/"
@@ -64,14 +64,6 @@ FILECAPS=(
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.0-crcs.patch
 )
-
-pkg_setup() {
-	if [[ ${MERGE_TYPE} != binary && $(tc-getCC) == *gcc* ]]; then
-		# -mxsave flag is needed when GCC >= 8.2 is used
-		# https://bugs.gentoo.org/685156
-		append-flags -mxsave
-	fi
-}
 
 src_prepare() {
 	cmake_src_prepare
