@@ -7,7 +7,7 @@ FORTRAN_NEEDED=fortran
 
 PYTHON_COMPAT=( python3_{8..11} )
 
-inherit cmake fortran-2 python-single-r1
+inherit cmake flag-o-matic fortran-2 python-single-r1
 
 DESCRIPTION="A library to store and exchange meshed data or computation results"
 HOMEPAGE="https://www.salome-platform.org/user-section/about/med"
@@ -61,6 +61,9 @@ src_prepare() {
 	sed -e 's/med-fichier/med/' -i CMakeLists.txt || die "fix paths failed"
 	sed -e 's|doc/med-${MED_STR_VERSION}|doc/med-${MED_STR_VERSION}/html|' \
 		-i CMakeLists.txt || die "fix doc path failed"
+
+	# bug #862900, already reported upstream. CHECK on updates!
+	filter-lto
 
 	cmake_src_prepare
 }
