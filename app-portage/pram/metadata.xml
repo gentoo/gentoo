@@ -11,7 +11,7 @@
 			<email>mgorny@gentoo.org</email>
 			<name>Michał Górny</name>
 		</maintainer>
-		<bugs-to>https://github.com/mgorny/pram/issues/</bugs-to>
-		<remote-id type="github">mgorny/pram</remote-id>
+		<bugs-to>https://github.com/projg2/pram/issues/</bugs-to>
+		<remote-id type="github">projg2/pram</remote-id>
 	</upstream>
 </pkgmetadata>
