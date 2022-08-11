@@ -1,20 +1,22 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit desktop
 
 DESCRIPTION="Cruising on Broadway: a painting-type game"
-HOMEPAGE="http://www.autismuk.freeserve.co.uk/"
-SRC_URI="http://www.autismuk.freeserve.co.uk/${P}.tar.gz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="
+	mirror://gentoo/${P}.tar.gz
+	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~x86"
-IUSE=""
 
-DEPEND="media-libs/libsdl[joystick,sound,video]"
-RDEPEND="${DEPEND}"
+RDEPEND="media-libs/libsdl[joystick,sound,video]"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc43.patch
@@ -23,5 +25,7 @@ PATCHES=(
 
 src_install() {
 	default
+
+	doicon "${DISTDIR}"/${PN}.png
 	make_desktop_entry ${PN} "Cruising on Broadway"
 }
