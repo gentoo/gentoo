@@ -21,15 +21,16 @@ DEPEND="
 	>=media-libs/libpng-1.4:0=[${MULTILIB_USEDEP}]
 	jpeg? ( media-libs/libjpeg-turbo:0=[${MULTILIB_USEDEP}] )
 	tiff? ( >=media-libs/tiff-3.9.2:0=[${MULTILIB_USEDEP}] )
-	gtk-doc? ( >=dev-util/gi-docgen-2021.1 )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
+	gtk-doc? ( >=dev-util/gi-docgen-2021.1 )
 	app-text/docbook-xsl-stylesheets
 	app-text/docbook-xml-dtd:4.3
 	dev-libs/glib:2
 	dev-libs/libxslt
+	dev-python/docutils
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
