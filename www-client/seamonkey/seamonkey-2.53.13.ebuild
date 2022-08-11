@@ -516,7 +516,7 @@ src_install() {
 
 	# revdep-rebuild entry
 	insinto /etc/revdep-rebuild
-	echo "SEARCH_DIRS_MASK=${MOZILLA_FIVE_HOME}*" >> ${T}/11${PN} || die
+	echo "SEARCH_DIRS_MASK=${MOZILLA_FIVE_HOME}*" >> "${T}"/11${PN} || die
 	doins "${T}"/11${PN}
 }
 
