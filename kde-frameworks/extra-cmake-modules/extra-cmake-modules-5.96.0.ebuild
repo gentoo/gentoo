@@ -38,7 +38,7 @@ PATCHES=(
 )
 
 python_check_deps() {
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
