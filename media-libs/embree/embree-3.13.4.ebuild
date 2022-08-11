@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic linux-info toolchain-funcs
+inherit cmake flag-o-matic linux-info
 
 DESCRIPTION="Collection of high-performance ray tracing kernels"
 HOMEPAGE="https://github.com/embree/embree"
