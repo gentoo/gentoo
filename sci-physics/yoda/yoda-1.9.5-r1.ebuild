@@ -12,7 +12,7 @@ HOMEPAGE="https://yoda.hepforge.org/"
 SRC_URI="https://yoda.hepforge.org/downloads?f=${P^^}.tar.bz2 -> ${P^^}.tar.bz2"
 S="${WORKDIR}/${P^^}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="root python"
