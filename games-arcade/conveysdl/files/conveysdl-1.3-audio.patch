@@ -1,0 +1,15 @@
+Fix header and add lacking instructions to readme.
+--- a/main.c
++++ b/main.c
+@@ -8,3 +8,3 @@
+ #ifdef ENABLE_SOUND
+-#include <SDL_Mixer.h>
++#include <SDL_mixer.h>
+ static int soundv = 2;
+--- a/readme
++++ b/readme
+@@ -6,2 +6,4 @@
+ 
++use -nosound to disable sound
++
+ I knocked this game up over a couple of days, and can't be
