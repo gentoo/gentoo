@@ -50,7 +50,7 @@ LLVM_PATCHSET=${PV/_/-}
 llvm.org_set_globals
 
 python_check_deps() {
-	has_version "dev-python/lit[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
 kernel_pds_check() {
