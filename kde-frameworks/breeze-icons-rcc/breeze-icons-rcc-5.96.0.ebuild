@@ -24,7 +24,7 @@ BDEPEND="${PYTHON_DEPS}
 DEPEND="test? ( dev-qt/qttest:5 )"
 
 python_check_deps() {
-	has_version "dev-python/lxml[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/lxml[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {
