@@ -13,7 +13,7 @@ MY_P="${MY_PN}-${PV}"
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Core library of matchers for building test expressions"
-HOMEPAGE="http://hamcrest.org/JavaHamcrest/"
+HOMEPAGE="https://hamcrest.org/JavaHamcrest/"
 SRC_URI="mirror://gentoo/${MY_P}.tgz"
 
 LICENSE="BSD-2"

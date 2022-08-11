@@ -11,7 +11,7 @@ MY_PN="hamcrest"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Library of matchers for building test expressions"
-HOMEPAGE="http://hamcrest.org/JavaHamcrest/"
+HOMEPAGE="https://hamcrest.org/JavaHamcrest/"
 SRC_URI="https://github.com/${MY_PN}/JavaHamcrest/archive/${MY_PN}-java-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
