@@ -286,8 +286,8 @@ src_test() {
 	blender_get_version
 	# Define custom blender data/script file paths not be able to find them otherwise during testing.
 	# (Because the data is in the image directory and it will default to look in /usr/share)
-	export BLENDER_SYSTEM_SCRIPTS=${ED}/usr/share/blender/${BV}/scripts
-	export BLENDER_SYSTEM_DATAFILES=${ED}/usr/share/blender/${BV}/datafiles
+	export BLENDER_SYSTEM_SCRIPTS="${ED}"/usr/share/blender/${BV}/scripts
+	export BLENDER_SYSTEM_DATAFILES="${ED}"/usr/share/blender/${BV}/datafiles
 
 	# Sanity check that the script and datafile path is valid.
 	# If they are not vaild, blender will fallback to the default path which is not what we want.
@@ -297,7 +297,7 @@ src_test() {
 	cmake_src_test
 
 	# Clean up the image directory for src_install
-	rm -fr ${ED}/* || die
+	rm -fr "${ED}"/* || die
 }
 
 src_install() {
