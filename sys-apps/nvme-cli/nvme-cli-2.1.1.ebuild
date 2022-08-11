@@ -28,7 +28,7 @@ src_configure() {
 	local unitdir="$(systemd_get_systemunitdir)"
 	local emesonargs=(
 		-Dsystemddir=${unitdir%/system}
-		-Dudevrulesdir=${EPREFIX}$(get_udevdir)
+		-Dudevrulesdir="${EPREFIX}"$(get_udevdir)
 	)
 	meson_src_configure
 }
