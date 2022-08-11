@@ -65,6 +65,7 @@ python_install() {
 	sed -e "/^SCHEMA_DIR/s|=.*|= \"${EPREFIX}/usr/share/glib-2.0/schemas\"|" \
 		-e "/def get_default_data_dir/{n;s|=.*|= \"${EPREFIX}/usr/share/guake\"|}" \
 		-i "${BUILD_DIR}/install$(python_get_sitedir)"/guake/paths.py || die
+	python_optimize "${BUILD_DIR}/install$(python_get_sitedir)"/guake/paths.py
 
 	distutils-r1_python_install
 }
