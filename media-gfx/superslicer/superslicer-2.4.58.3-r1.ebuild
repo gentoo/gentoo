@@ -66,7 +66,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 src_unpack() {
 	default
 
-	mv slic3r-profiles-*/* ${S}/resources/profiles/ || die
+	mv slic3r-profiles-*/* "${S}"/resources/profiles/ || die
 }
 
 src_configure() {
