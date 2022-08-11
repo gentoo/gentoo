@@ -38,6 +38,7 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}/${PN}-20211102.0-fix-cuda-nvcc-build.patch"
 	"${FILESDIR}/${PN}-20211102.0-r2-cuda11.6-compile-fix.patch"
+	"${FILESDIR}/${PN}-20211102.0-r2-loong.patch"
 )
 
 src_prepare() {
