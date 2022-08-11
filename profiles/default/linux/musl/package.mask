@@ -62,6 +62,7 @@ games-puzzle/world-of-goo-hb
 games-roguelike/adom
 games-roguelike/neon-chrome
 games-rpg/costume-quest
+games-rpg/crosscode
 games-rpg/dear-esther
 games-rpg/dungeon-defenders
 games-rpg/eschalon-book-1-demo
