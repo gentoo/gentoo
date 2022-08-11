@@ -16,7 +16,8 @@ X86_CPU_FLAGS=( sse2:sse2 sse4_2:sse4_2 avx:avx avx2:avx2 avx512dq:avx512dq )
 CPU_FLAGS=( cpu_flags_arm_neon ${X86_CPU_FLAGS[@]/#/cpu_flags_x86_} )
 IUSE="+compact-polys ispc +raymask ssp +tbb tutorial ${CPU_FLAGS[@]%:*}"
 # Let's be explicit here even though we could simplify it.
-REQUIRED_USE="amd64? ( cpu_flags_x86_sse2 ) x86? ( cpu_flags_x86_sse2 )"
+REQUIRED_USE="amd64? ( cpu_flags_x86_sse2 )
+	x86? ( cpu_flags_x86_sse2 )"
 
 BDEPEND="
 	virtual/pkgconfig
