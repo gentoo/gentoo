@@ -7,7 +7,7 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
-MAVEN_ID="org.apache.tomcat:jakartaee-migration:1.0.0"
+MAVEN_ID="org.apache.tomcat:jakartaee-migration:1.0.1"
 JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
