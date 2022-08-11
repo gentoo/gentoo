@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby26 ruby27"
+USE_RUBY="ruby26 ruby27 ruby30"
 RUBY_OPTIONAL="yes"
 
 inherit cmake ruby-ng
