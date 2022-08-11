@@ -38,7 +38,7 @@ llvm.org_set_globals
 
 python_check_deps() {
 	use test || return 0
-	has_version "dev-python/lit[${PYTHON_USEDEP}]"
+	python_has_version ">=dev-python/lit-9.0.1[${PYTHON_USEDEP}]"
 }
 
 pkg_pretend() {
