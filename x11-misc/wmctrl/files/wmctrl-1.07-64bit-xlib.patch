@@ -1,0 +1,12 @@
+http://mail.gnome.org/archives/wm-spec-list/2003-March/msg00067.html
+--- a/main.c
++++ b/main.c
+@@ -1441,6 +1451,8 @@
+ 
+     /* null terminate the result to make string handling easier */
+     tmp_size = (ret_format / 8) * ret_nitems;
++    /* Correct 64 Architecture implementation of 32 bit data */
++    if(ret_format==32) tmp_size *= sizeof(long)/4;
+     ret = g_malloc(tmp_size + 1);
+     memcpy(ret, ret_prop, tmp_size);
+     ret[tmp_size] = '\0';
