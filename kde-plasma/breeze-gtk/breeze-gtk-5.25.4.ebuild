@@ -22,7 +22,7 @@ BDEPEND="${PYTHON_DEPS}
 "
 
 python_check_deps() {
-	has_version "dev-python/pycairo[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/pycairo[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
