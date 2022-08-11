@@ -77,6 +77,11 @@ games-strategy/knights-demo
 games-strategy/majesty-demo
 media-video/binkplayer
 
+# James Le Cuirot <chewi@gentoo.org> (2022-08-11)
+# Binary package for glibc. Could be built from source but would take ages and
+# isn't worth the maintenance cost.
+dev-libs/nwjs
+
 # Ian Stakenvicius, 2017-06-14
 # on behalf of mozilla@gentoo.org
 # Mask firefox-54 and above as it requires rust
