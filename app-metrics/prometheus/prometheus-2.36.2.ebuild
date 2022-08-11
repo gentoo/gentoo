@@ -37,7 +37,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake PROMU=${EPREFIX}/usr/bin/promu common-build plugins
+	emake PROMU="${EPREFIX}"/usr/bin/promu common-build plugins
 }
 
 src_install() {
