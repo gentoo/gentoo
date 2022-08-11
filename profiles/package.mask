@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# John Helmert III <ajak@gentoo.org> (2022-08-10)
+# Root privilege escalation vulnerability, unmaintained since the git
+# transition, multiple open bugs. Removal in 30 days, bug 630752
+app-admin/logcheck
+
 # Matthew Smith <matthew@gentoo.org> (2022-08-09)
 # Please update to Erlang/OTP 24 or 25. Removal in 30 days.
 # See following link for breaking changes:
