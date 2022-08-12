@@ -598,15 +598,6 @@ dev-ml/patience_diff:0/0.15
 dev-util/patdiff:0/0.15
 =dev-ml/alcotest-1.6.0*
 
-# Sam James <sam@gentoo.org> (2022-04-13)
-# 2.35.2 was a quick release to mitigate a security issue (bug #838127), but
-# introduces problems of its own with e.g. Portage. bug #838223. Pending
-# investigation both on the Portage side and potentially upstream (as there's
-# at least some UX issues with 2.35.2+ with the new "safe directory" mechanism).
-# Earlier versions are still safe as long as you do not use git commands
-# on a local repository controlled by a user you do not trust.
->=dev-vcs/git-2.35.2
-
 # David Seifert <soap@gentoo.org> (2022-04-06)
 # Unsupported branches, no consumers left, removal on 2023-01-01.
 sys-devel/automake:1.13
