@@ -16,19 +16,19 @@ SRC_URI+="
 	https://dev.gentoo.org/~mpagano/dist/genpatches/${GENPATCHES_P}.base.tar.xz
 	https://dev.gentoo.org/~mpagano/dist/genpatches/${GENPATCHES_P}.extras.tar.xz
 	amd64? (
-		https://dev.gentoo.org/~sam/binpkg/amd64/kernel/sys-kernel/gentoo-kernel/${BINPKG}.xpak
+		https://dev.gentoo.org/~mgorny/binpkg/amd64/kernel/sys-kernel/gentoo-kernel/${BINPKG}.xpak
 			-> ${BINPKG}.amd64.xpak
 	)
 	arm64? (
-		https://dev.gentoo.org/~sam/binpkg/arm64/kernel/sys-kernel/gentoo-kernel/${BINPKG}.xpak
+		https://dev.gentoo.org/~mgorny/binpkg/arm64/kernel/sys-kernel/gentoo-kernel/${BINPKG}.xpak
 			-> ${BINPKG}.arm64.xpak
 	)
 	ppc64? (
-		https://dev.gentoo.org/~sam/binpkg/ppc64le/kernel/sys-kernel/gentoo-kernel/${BINPKG}.xpak
+		https://dev.gentoo.org/~mgorny/binpkg/ppc64le/kernel/sys-kernel/gentoo-kernel/${BINPKG}.xpak
 			-> ${BINPKG}.ppc64le.xpak
 	)
 	x86? (
-		https://dev.gentoo.org/~sam/binpkg/x86/kernel/sys-kernel/gentoo-kernel/${BINPKG}.xpak
+		https://dev.gentoo.org/~mgorny/binpkg/x86/kernel/sys-kernel/gentoo-kernel/${BINPKG}.xpak
 			-> ${BINPKG}.x86.xpak
 	)
 "
