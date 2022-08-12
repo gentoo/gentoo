@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
-inherit cmake systemd
+inherit cmake flag-o-matic systemd
 
 CMAKE_USE_DIR="${S}/src"
 
@@ -44,6 +44,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Wodr warnings, see bug #860414
+	filter-lto
+
 	local mycmakeargs=(
 		-DSYSCONF_INSTALL_DIR=/etc
 		-DLOCAL_STATE_DIR=/var
