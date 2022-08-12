@@ -125,6 +125,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable libusb libusb) \
+		$(use_enable libusb wifi-coconut) \
 		$(use_enable pcre) \
 		$(use_enable lm-sensors lmsensors) \
 		$(use_enable networkmanager libnm) \
