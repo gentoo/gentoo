@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>base-system@gentoo.org</email>
-    <name>Gentoo Base System</name>
-  </maintainer>
-  <use>
-    <flag name="aio">
-      Enable <pkg>dev-libs/libaio</pkg> support for tracing Asynchronous I/O operations
-    </flag>
-    <flag name="unwind">
-      Enable stack backtraces (-k flag) via <pkg>sys-libs/libunwind</pkg>
-    </flag>
-    <flag name="elfutils">
-      Enable stack backtraces (-k flag) via <pkg>dev-libs/elfutils</pkg>
-    </flag>
-  </use>
-  <upstream>
-    <remote-id type="github">strace/strace</remote-id>
-    <remote-id type="sourceforge">strace</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<use>
+		<flag name="aio">
+			Enable <pkg>dev-libs/libaio</pkg> support for tracing Asynchronous I/O operations
+		</flag>
+		<flag name="unwind">
+			Enable stack backtraces (-k flag) via <pkg>sys-libs/libunwind</pkg>
+		</flag>
+		<flag name="elfutils">
+			Enable stack backtraces (-k flag) via <pkg>dev-libs/elfutils</pkg>
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">strace/strace</remote-id>
+		<remote-id type="gitlab">strace/strace</remote-id>
+		<remote-id type="sourceforge">strace</remote-id>
+	</upstream>
 </pkgmetadata>
