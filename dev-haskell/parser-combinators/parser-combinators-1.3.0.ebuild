@@ -9,18 +9,16 @@ EAPI=8
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
-TESTS_PN="${PN}-tests"
-TESTS_P="${TESTS_PN}-${PV}"
+TESTS_PN="${CABAL_PN}-tests"
+TESTS_P="${TESTS_PN}-${CABAL_PV}"
 
 DESCRIPTION="Lightweight package providing commonly useful parser combinators"
 HOMEPAGE="https://github.com/mrkkrp/parser-combinators"
-SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz
-	https://hackage.haskell.org/package/${TESTS_P}/${TESTS_P}.tar.gz"
+SRC_URI+=" https://hackage.haskell.org/package/${TESTS_P}/${TESTS_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-RESTRICT="test" # tests only work if not already installed
 
 RDEPEND=">=dev-lang/ghc-8.6.3:=
 "
@@ -41,18 +39,21 @@ src_configure() {
 
 src_test() {
 	if use test; then
-		./setup register --inplace --gen-pkg-config || die
-		ghc-pkg init pkgdb || die
-		ghc-pkg -f pkgdb register "${P}.conf"
+		local -a configure_flags=( "--flag=-dev" )
 
-		old_S="${S}"
+		# Runs the block if the main package is not installed currently
+		if ! ghc-pkg describe "${CABAL_PN}" &>/dev/null; then
+			./setup register --inplace --gen-pkg-config || die
+			ghc-pkg init pkgdb || die
+			ghc-pkg -f pkgdb register "${CABAL_P}.conf" || die
+			configure_flags+=( "--package-db=${S}/pkgdb" )
+		fi
+
+		local old_S="${S}"
 		export S="${WORKDIR}/${TESTS_P}"
 		pushd "${S}" > /dev/null || die
 
-		haskell-cabal_src_configure \
-			--package-db="${old_S}/pkgdb" \
-			--flag=-dev
-
+		haskell-cabal_src_configure "${configure_flags[@]}"
 		haskell-cabal_src_compile
 		haskell-cabal_src_test
 
