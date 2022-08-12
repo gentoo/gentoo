@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Raspberry Pi Sense HAT python library"
 HOMEPAGE="https://github.com/astro-pi/python-sense-hat"
-SRC_URI="https://github.com/astro-pi/python-sense-hat/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/astro-pi/python-sense-hat/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
