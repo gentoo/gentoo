@@ -328,7 +328,7 @@ src_compile() {
 
 	# we have to do this here to prevent from building everything multiple times
 	python_copy_sources
-	python_foreach_impl python_compile
+	distutils-r1_src_compile
 }
 
 src_test() {
@@ -346,7 +346,7 @@ python_install() {
 
 src_install() {
 	cmake_src_install
-	python_foreach_impl python_install
+	distutils-r1_src_install
 
 	find "${ED}" -name '*.la' -type f -delete || die
 
