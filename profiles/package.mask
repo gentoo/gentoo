@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org>
+# Masked for testing, depends on dev-qt/qt*:6
+# Pyside6 is stuck on python3_10 for the moment being
+dev-python/shiboken6
+dev-python/pyside6
+dev-python/pyside6-tools
+
 # Michał Górny <mgorny@gentoo.org> (2022-08-11)
 # Niche library with no revdeps left.  Last commit in 2015.
 # Removal on 2022-09-10.  Bug #864889.
