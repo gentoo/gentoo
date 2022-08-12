@@ -203,8 +203,6 @@ src_install() {
 		doins doc/interpreter/macros.texi
 	fi
 
-	[[ -e test/fntests.log ]] && dodoc test/fntests.log
-
 	use java && \
 		java-pkg_regjar "${ED}/usr/share/${PN}/${PV}/m/java/octave.jar"
 
