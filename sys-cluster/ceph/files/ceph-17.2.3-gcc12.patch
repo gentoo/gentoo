@@ -1,0 +1,12 @@
+diff --git a/src/include/buffer.h b/src/include/buffer.h
+index 0c89367dd3b..98fcd7c3e08 100644
+--- a/src/include/buffer.h
++++ b/src/include/buffer.h
+@@ -62,6 +62,7 @@
+ #endif
+ 
+ #include "inline_memory.h"
++#include <memory>
+ 
+ #define CEPH_BUFFER_API
+ 

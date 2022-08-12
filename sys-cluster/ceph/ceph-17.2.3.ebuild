@@ -216,6 +216,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-17.2.0-fuse3.patch"
 	"${FILESDIR}/ceph-17.2.0-osd_class_dir.patch"
 	"${FILESDIR}/ceph-17.2.1-python310.patch"
+	"${FILESDIR}/ceph-17.2.3-gcc12.patch"
 )
 
 check-reqs_export_vars() {
