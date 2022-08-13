@@ -8,7 +8,7 @@ inherit autotools desktop flag-o-matic
 MY_P="CriticalMass-${PV}"
 
 DESCRIPTION="SDL/OpenGL space shoot'em up game"
-HOMEPAGE="https://criticalmass.sourceforge.io/"
+HOMEPAGE="http://criticalmass.sourceforge.net/"
 SRC_URI="mirror://sourceforge/criticalmass/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 
