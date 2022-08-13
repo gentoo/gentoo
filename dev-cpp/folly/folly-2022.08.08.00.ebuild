@@ -3,6 +3,11 @@
 
 EAPI=8
 
+# These must be bumped together:
+# dev-cpp/edencommon
+# dev-cpp/folly
+# dev-util/watchman
+
 inherit cmake toolchain-funcs
 
 DESCRIPTION="An open-source C++ library developed and used at Facebook"
