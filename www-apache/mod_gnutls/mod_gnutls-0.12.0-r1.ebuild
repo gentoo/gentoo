@@ -21,9 +21,6 @@ TEST_REQUIRED_APACHE_MODULES="apache2_modules_proxy,apache2_modules_proxy_http"
 COMMON_DEPEND=">=net-libs/gnutls-3.3.0:=[pkcs11]"
 
 DEPEND="${COMMON_DEPEND}
-	$(python_gen_any_dep '
-		dev-python/pyyaml[${PYTHON_USEDEP}]
-	')
 	test? (
 		app-crypt/monkeysphere
 		>=net-libs/gnutls-3.3.0:=[tools]
@@ -38,6 +35,9 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}"
 BDEPEND="
 	virtual/pkgconfig
+	$(python_gen_any_dep '
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+	')
 "
 
 RESTRICT="!test? ( test )"
@@ -50,7 +50,7 @@ DOCFILES="CHANGELOG NOTICE README"
 need_apache2_4
 
 python_check_deps() {
-	has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
