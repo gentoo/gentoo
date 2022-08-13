@@ -51,10 +51,14 @@ src_configure() {
 src_test() {
 	cd "${BUILD_DIR}"/tests || die
 
+	# git_required:
 	# Skip certain tests needing git per upstream
 	# https://github.com/nlohmann/json/issues/2189
+	#
+	# cmake_fetch_content_configure, cmake_fetch_content2_configure:
+	# Needs network (bug #865027)
 	local myctestargs=(
-		"-LE git_required"
+		-E "(git_required|cmake_fetch_content_configure|cmake_fetch_content2_configure)"
 	)
 
 	cmake_src_test
