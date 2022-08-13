@@ -36,7 +36,8 @@ RDEPEND="app-arch/bzip2
 	!llvm-libunwind? ( sys-libs/libunwind:= )"
 # libiberty is linked statically
 DEPEND="${RDEPEND}
-	sys-libs/binutils-libs"
+	sys-libs/binutils-libs
+	test? ( dev-cpp/gtest )"
 BDEPEND="test? ( sys-devel/clang )"
 
 PATCHES=(
