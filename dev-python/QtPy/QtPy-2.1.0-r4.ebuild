@@ -122,6 +122,9 @@ src_prepare() {
 		sed -i -e "s/from PySide2 import/raise ImportError #/" qtpy/__init__.py || die
 		sed -i -e "s/from PySide2.QtCore import/raise ImportError #/" qtpy/__init__.py || die
 	fi
+	sed -i -e "s/from PyQt6.QtCore import/raise ImportError #/" qtpy/__init__.py || die
+	sed -i -e "s/from PySide6 import/raise ImportError #/" qtpy/__init__.py || die
+	sed -i -e "s/from PySide6.QtCore import/raise ImportError #/" qtpy/__init__.py
 }
 
 python_test() {
