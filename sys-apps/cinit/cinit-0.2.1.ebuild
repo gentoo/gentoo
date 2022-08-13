@@ -11,7 +11,7 @@ SRC_URI="http://linux.schottelius.org/${PN}/archives/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~riscv ~x86"
 IUSE="doc"
 
 src_prepare() {
