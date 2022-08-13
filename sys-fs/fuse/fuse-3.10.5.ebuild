@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ RDEPEND=">=sys-fs/fuse-common-3.3.0-r1"
 DOCS=( AUTHORS ChangeLog.rst README.md doc/README.NFS doc/kernel.txt )
 
 python_check_deps() {
-	has_version -b "dev-python/pytest[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/pytest[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
