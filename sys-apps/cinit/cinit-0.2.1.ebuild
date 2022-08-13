@@ -31,7 +31,7 @@ src_compile() {
 }
 
 src_install() {
-	emake LD="$(tc-getCC)" DESTDIR="${D}" install
+	emake LD="$(tc-getCC)" DESTDIR="${ED}" install
 	rm -f "${D}"/sbin/{init,shutdown,reboot} || die
 	dodoc Changelog CHANGES CREDITS README TODO
 	use doc && dodoc -r doc
