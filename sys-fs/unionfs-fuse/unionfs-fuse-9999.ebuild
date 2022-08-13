@@ -17,7 +17,8 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="sys-fs/fuse:0"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	test? (
 		$(python_gen_any_dep 'dev-python/pytest[${PYTHON_USEDEP}]')
 	)
@@ -29,7 +30,7 @@ pkg_setup() {
 
 python_check_deps() {
 	use test || return 0
-	has_version "dev-python/pytest[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/pytest[${PYTHON_USEDEP}]"
 }
 
 src_compile() {
