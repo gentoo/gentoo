@@ -1,3 +1,5 @@
+https://bugs.gentoo.org/830180
+
 --- tdesktop-3.3.0-full.orig/Telegram/lib_spellcheck/spellcheck/platform/linux/spellcheck_linux.cpp
 +++ tdesktop-3.3.0-full/Telegram/lib_spellcheck/spellcheck/platform/linux/spellcheck_linux.cpp
 @@ -34,7 +34,7 @@

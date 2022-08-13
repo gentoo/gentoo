@@ -1,0 +1,25 @@
+Fix declaration of std::unique_ptr
+
+I'm not sure if this is an inherent tdesktop issue or if it's related to any
+new version of a tool...
+
+--- tdesktop-4.1.0-full.orig/Telegram/SourceFiles/ffmpeg/ffmpeg_emoji.h
++++ tdesktop-4.1.0-full/Telegram/SourceFiles/ffmpeg/ffmpeg_emoji.h
+@@ -9,6 +9,7 @@
+ 
+ #include "ui/effects/frame_generator.h"
+ 
++#include <memory>
+ #include <QtGui/QImage>
+ 
+ namespace FFmpeg {
+--- tdesktop-4.1.0-full.orig/Telegram/lib_lottie/lottie/lottie_emoji.h
++++ tdesktop-4.1.0-full/Telegram/lib_lottie/lottie/lottie_emoji.h
+@@ -8,6 +8,7 @@
+ 
+ #include "ui/effects/frame_generator.h"
+ 
++#include <memory>
+ #include <QtGui/QImage>
+ 
+ namespace rlottie {

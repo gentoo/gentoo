@@ -5,6 +5,8 @@ jemalloc is linked for those, and they're ran under portage's sandbox. Since
 this is only used during build-time, and jemalloc is merely necessary to
 improve runtime memory use, it's unnecessary to use it for anything else.
 
+https://bugs.gentoo.org/802624
+
 --- tdesktop-3.6.0-full.orig/Telegram/CMakeLists.txt
 +++ tdesktop-3.6.0-full/Telegram/CMakeLists.txt
 @@ -1376,6 +1376,14 @@
