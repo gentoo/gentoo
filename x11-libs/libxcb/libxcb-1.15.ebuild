@@ -37,7 +37,7 @@ BDEPEND="${PYTHON_DEPS}
 "
 
 python_check_deps() {
-	has_version -b ">=x11-base/xcb-proto-1.15[${PYTHON_USEDEP}]"
+	python_has_version ">=x11-base/xcb-proto-1.15[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
