@@ -30,17 +30,16 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+BDEPEND="
 	test? (
 		$(python_gen_any_dep '
 			dev-python/python-libevdev[${PYTHON_USEDEP}]
 		')
 	)
 "
-RDEPEND=""
 
 python_check_deps() {
-	has_version -b "dev-python/python-libevdev[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/python-libevdev[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
