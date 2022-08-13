@@ -37,6 +37,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+RESTRICT=test # only regression tests
+
 REQUIRED_USE="
 	|| ( ${ALL_LLVM_TARGETS[*]} )
 	python? ( ${PYTHON_REQUIRED_USE} )
