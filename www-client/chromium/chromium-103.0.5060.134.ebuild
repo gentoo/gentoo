@@ -208,7 +208,7 @@ in /etc/chromium/default.
 "
 
 python_check_deps() {
-	has_version -b "dev-python/setuptools[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/setuptools[${PYTHON_USEDEP}]"
 }
 
 needs_clang() {
