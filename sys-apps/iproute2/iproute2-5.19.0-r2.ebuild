@@ -52,6 +52,7 @@ PATCHES=(
 	#"${FILESDIR}"/${PN}-5.1.0-portability.patch
 	"${FILESDIR}"/${PN}-5.7.0-mix-signal.h-include.patch
 	"${FILESDIR}"/${P}-musl.patch
+	"${FILESDIR}"/${P}-setns-check.patch
 	"${FILESDIR}"/${PN}-default-color-auto.patch
 )
 
