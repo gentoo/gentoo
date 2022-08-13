@@ -7,7 +7,3 @@ dev-libs/libffi experimental-loong
 sys-kernel/linux-headers experimental-loong
 sys-libs/glibc experimental-loong
 sys-libs/libseccomp experimental-loong
-
-# WANG Xuerui <xen0n@gentoo.org> (2022-04-18)
-# gcc-12 is live ebuild for now, hence requiring this
-dev-vcs/git curl
