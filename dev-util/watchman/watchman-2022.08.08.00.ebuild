@@ -139,6 +139,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-2022.07.04.00-python-working-dir.patch
 	"${FILESDIR}"/${PN}-2022.02.28.00-libatomic.patch
+	"${FILESDIR}"/${PN}-2022.08.08.00-musl-fsword-fix.patch
 )
 
 # Rust utility
