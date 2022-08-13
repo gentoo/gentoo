@@ -40,6 +40,12 @@ checkconfig() {
 		X11VNC_AUTH_OPTS="-auth ${X11VNC_AUTH}"
 	fi
 
+	# Attempt to find SDDM
+	if [ -d /var/run/sddm/ ]; then
+		# If SDDM is found
+		X11VNC_AUTH_OPTS="-auth $(find /var/run/sddm/ -type f)"
+	fi
+
 	if [ ! -f "${X11VNC_AUTH}" ]; then
 		eerror "Specified X-Authority file '${X11VNC_AUTH}' not found!"
 		return 1
