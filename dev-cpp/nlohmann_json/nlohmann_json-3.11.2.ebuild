@@ -56,9 +56,9 @@ src_test() {
 	# https://github.com/nlohmann/json/issues/2189
 	#
 	# cmake_fetch_content_configure, cmake_fetch_content2_configure:
-	# Needs network (bug #865027)
+	# Needs network (bug #865027, bug #865105)
 	local myctestargs=(
-		-E "(git_required|cmake_fetch_content_configure|cmake_fetch_content2_configure)"
+		-E "(git_required|cmake_fetch_content_configure|cmake_fetch_content2_configure|cmake_fetch_content_build|cmake_fetch_content2_build)"
 	)
 
 	cmake_src_test
