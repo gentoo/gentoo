@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit flag-o-matic prefix python-single-r1 systemd
+inherit prefix python-single-r1 systemd
 
 DESCRIPTION="File transfer program to keep remote files into sync"
 HOMEPAGE="https://rsync.samba.org/"
