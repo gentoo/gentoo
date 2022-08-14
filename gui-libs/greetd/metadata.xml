@@ -10,4 +10,7 @@
 		for wayland based compositors. If you can run it from
 		your shell in a TTY, greetd can start it.
 	</longdescription>
+	<upstream>
+		<remote-id type="sourcehut">~kennylevinsen/greetd</remote-id>
+	</upstream>
 </pkgmetadata>
