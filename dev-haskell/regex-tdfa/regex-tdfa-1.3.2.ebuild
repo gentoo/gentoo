@@ -16,13 +16,18 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.3.2-disable-doctests.patch"
+)
+
 RDEPEND=">=dev-haskell/regex-base-0.94:=[profile?] <dev-haskell/regex-base-0.95:=[profile?]
 	>=dev-lang/ghc-8.4.3:=
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1
-	test? ( >=dev-haskell/doctest-parallel-0.2.2
-		>=dev-haskell/utf8-string-1.0.1 <dev-haskell/utf8-string-1.1 )
+	test? (
+		>=dev-haskell/utf8-string-1.0.1 <dev-haskell/utf8-string-1.1
+	)
 "
 
 src_configure() {
