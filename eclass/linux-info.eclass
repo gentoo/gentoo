@@ -140,6 +140,16 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # A read-only variable. It's a string containing the kernel object directory, will be KV_DIR unless
 # KBUILD_OUTPUT is used. This should be used for referencing .config.
 
+
+# @ECLASS_VARIABLE: SKIP_KERNEL_CHECK
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Do not check for kernel sources or a running kernel version 
+# Main use-case is for chroots
+# This is a user flag and should under _no circumstances_ be set in the ebuild.
+: ${SKIP_KERNEL_CHECK:=""}
+
 # And to ensure all the weirdness with crosscompile
 inherit toolchain-funcs
 [[ ${EAPI:-0} == [0123456] ]] && inherit eapi7-ver
@@ -339,6 +349,9 @@ linux_config_path() {
 # This function verifies that the current kernel is configured (it checks against the existence of .config)
 # otherwise it dies.
 require_configured_kernel() {
+
+	[[ -n ${SKIP_KERNEL_CHECK} ]] && return
+
 	if ! use kernel_linux; then
 		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
 	fi
@@ -488,6 +501,8 @@ get_version() {
 	fi
 
 	local tmplocal
+
+	[[ -n ${SKIP_KERNEL_CHECK} ]] && return
 
 	# no need to execute this twice assuming KV_FULL is populated.
 	# we can force by unsetting KV_FULL
@@ -697,6 +712,9 @@ check_kernel_built() {
 	fi
 
 	# if we haven't determined the version yet, we need to
+
+	[[ -n ${SKIP_KERNEL_CHECK} ]] && return
+
 	require_configured_kernel
 
 	local versionh_path
