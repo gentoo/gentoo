@@ -6,4 +6,7 @@
     <name>Gentoo GNU Emacs project</name>
   </maintainer>
   <stabilize-allarches/>
+  <upstream>
+    <remote-id type="sourcehut">~pkal/compat</remote-id>
+  </upstream>
 </pkgmetadata>
