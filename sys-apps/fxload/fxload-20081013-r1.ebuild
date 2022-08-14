@@ -30,6 +30,6 @@ src_compile() {
 }
 
 src_install() {
-	emake prefix="${D}" install
+	emake prefix="${ED}" install
 	dodoc README.txt
 }
