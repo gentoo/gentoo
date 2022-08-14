@@ -3,7 +3,6 @@
 
 EAPI=7
 
-CMAKE_ECLASS=cmake
 PYTHON_COMPAT=( python3_{8..10} )
 inherit cmake-multilib llvm llvm.org python-any-r1 toolchain-funcs
 

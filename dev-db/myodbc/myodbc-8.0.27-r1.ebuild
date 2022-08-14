@@ -3,8 +3,6 @@
 
 EAPI=7
 
-CMAKE_ECLASS=cmake
-
 inherit cmake-multilib
 
 MAJOR="$(ver_cut 1-2)"

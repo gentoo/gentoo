@@ -4,7 +4,6 @@
 EAPI=7
 
 MY_PN=Vulkan-Loader
-CMAKE_ECLASS="cmake"
 inherit flag-o-matic cmake-multilib toolchain-funcs
 
 if [[ ${PV} == *9999* ]]; then
