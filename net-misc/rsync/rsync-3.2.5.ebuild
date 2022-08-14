@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit prefix python-single-r1 systemd
+inherit flag-o-matic prefix python-single-r1 systemd
 
 DESCRIPTION="File transfer program to keep remote files into sync"
 HOMEPAGE="https://rsync.samba.org/"
@@ -78,6 +78,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# Force enable IPv6 on musl - upstream bug:
+	# https://bugzilla.samba.org/show_bug.cgi?id=10715
+	use elibc_musl && append-cppflags -DINET6
+
 	local myeconfargs=(
 		--with-rsyncd-conf="${EPREFIX}"/etc/rsyncd.conf
 		--without-included-popt
