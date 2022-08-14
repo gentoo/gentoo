@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit font
+inherit font optfeature
 
 REALV="2.038R-ro/1.058R-it/1.018R-VAR"
 
@@ -29,4 +29,11 @@ FONT_SUFFIX="otf"
 src_prepare() {
 	default
 	mv OTF/*.otf . || die
+}
+
+pkg_postinst() {
+	optfeature_header "Other variants of this font are:"
+	optfeature "Chinese, Japanese and Korean support" media-fonts/source-han-sans
+	optfeature "the sans-serif variant" media-fonts/source-sans
+	optfeature "the serif variant" media-fonts/source-serif
 }

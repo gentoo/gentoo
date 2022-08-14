@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit font
+inherit font optfeature
 
 # Note to maintainers:
 # The upstream tarball is huge (over 780 MB), so we use the
@@ -36,4 +36,11 @@ src_install() {
 	use l10n_zh-CN && FONT_S="${S}/SubsetOTF/CN" font_src_install
 	use l10n_zh-HK && FONT_S="${S}/SubsetOTF/HK" font_src_install
 	use l10n_zh-TW && FONT_S="${S}/SubsetOTF/TW" font_src_install
+}
+
+pkg_postinst() {
+	optfeature_header "Other variants of this font are:"
+	optfeature "the monospace variant" media-fonts/source-code-pro
+	optfeature "the sans-serif variant" media-fonts/source-sans
+	optfeature "the serif variant" media-fonts/source-serif
 }
