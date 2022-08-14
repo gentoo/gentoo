@@ -32,7 +32,7 @@ DOCS=( DESIGN docs/{DESIGN.kconfig,options.md} )
 src_configure() {
 	local mycmakeargs=(
 		-DKCONFIG_USE_DBUS=$(usex dbus)
-		$(cmake_use_find_package qml Qt5Qml)
+		-DKCONFIG_USE_QML=$(usex qml)
 	)
 	ecm_src_configure
 }
