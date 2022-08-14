@@ -9,7 +9,7 @@
 		<flag name="jpeg">Enable JPEG support.</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">emersion/grim</remote-id>
+		<remote-id type="sourcehut">~emersion/grim</remote-id>
 		<bugs-to>https://github.com/emersion/grim/issues</bugs-to>
 		<changelog>https://github.com/emersion/grim/releases</changelog>
 	</upstream>
