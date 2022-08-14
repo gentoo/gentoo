@@ -46,7 +46,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-python.patch"
+	"${FILESDIR}/${PN}-1.8.0-python.patch"
 )
 
 hpx_memory_requirement() {
