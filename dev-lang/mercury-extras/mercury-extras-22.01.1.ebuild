@@ -15,7 +15,7 @@ SRC_URI="https://dl.mercurylang.org/release/${MY_P}.tar.gz
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="cairo examples glut gmp iodbc ncurses odbc opengl ssl tk tommath X xml"
 REQUIRED_USE="?? ( odbc iodbc )"
