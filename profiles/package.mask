@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+
+
+# hololeap <hololeap@protonmail.com>
+# doctest-parallel does not currently work with Setup.hs (used internally by
+# haskell-cabal.eclass)
+# See: <https://github.com/martijnbastiaan/doctest-parallel/issues/45>
+dev-haskell/doctest-parallel
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org>
 # Masked for testing, depends on dev-qt/qt*:6
 # Pyside6 is stuck on python3_10 for the moment being
