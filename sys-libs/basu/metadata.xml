@@ -16,4 +16,7 @@
 		However not all systems have systemd or elogind installed. This
 		library provides just sd-bus (and the busctl utility).
 	</longdescription>
+	<upstream>
+		<remote-id type="sourcehut">~emersion/basu</remote-id>
+	</upstream>
 </pkgmetadata>
