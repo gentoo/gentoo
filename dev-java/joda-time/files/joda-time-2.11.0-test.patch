@@ -1,0 +1,14 @@
+--- a/src/test/java/org/joda/time/TestDateTimeZone.java
++++ b/src/test/java/org/joda/time/TestDateTimeZone.java
+@@ -778,9 +778,10 @@ public class TestDateTimeZone extends TestCase {
+     static final boolean JDK9;
+     static {
+         boolean jdk9 = true;
++        System.out.println("java.version = " + System.getProperty("java.version")  );
+         try {
+             String str = System.getProperty("java.version");
+-            jdk9 = str.startsWith("9");
++            jdk9 = str.startsWith("11");
+         } catch (Exception ex) {
+             jdk9 = false;
+         }
