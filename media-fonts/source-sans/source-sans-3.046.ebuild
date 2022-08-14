@@ -6,7 +6,7 @@ EAPI=8
 MAJORV="${PV%%.*}"
 FONT_PN=${PN}-${MAJORV}
 
-inherit font
+inherit font optfeature
 
 DESCRIPTION="Sans serif font family for user interface environments"
 HOMEPAGE="https://adobe-fonts.github.io/source-sans/"
@@ -27,4 +27,11 @@ FONT_SUFFIX="otf"
 src_prepare() {
 	default
 	mv OTF/*.otf . || die
+}
+
+pkg_postinst() {
+	optfeature_header "Other variants of this font are:"
+	optfeature "the monospace variant" media-fonts/source-code-pro
+	optfeature "Chinese, Japanese and Korean support" media-fonts/source-han-sans
+	optfeature "the serif variant" media-fonts/source-serif
 }
