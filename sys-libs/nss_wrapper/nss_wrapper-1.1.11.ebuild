@@ -3,7 +3,6 @@
 
 EAPI=7
 
-CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="Wrapper for the user, group and hosts NSS API"

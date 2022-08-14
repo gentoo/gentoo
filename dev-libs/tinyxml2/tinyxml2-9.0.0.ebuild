@@ -3,7 +3,6 @@
 
 EAPI=7
 
-CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="A simple, small, efficient, C++ XML parser"

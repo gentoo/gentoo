@@ -3,7 +3,6 @@
 
 EAPI=7
 
-CMAKE_ECLASS=cmake
 inherit cmake-multilib flag-o-matic mono-env
 
 DESCRIPTION="Library for automatic proxy configuration management"

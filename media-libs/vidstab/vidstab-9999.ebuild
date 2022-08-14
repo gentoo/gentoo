@@ -3,7 +3,6 @@
 
 EAPI=7
 
-CMAKE_ECLASS=cmake
 inherit cmake-multilib toolchain-funcs
 
 DESCRIPTION="Video stabilization library"

@@ -3,7 +3,6 @@
 
 EAPI=7
 
-CMAKE_ECLASS=cmake
 PYTHON_COMPAT=( python3_{8..10} )
 DOCS_BUILDER="sphinx"
 DOCS_DEPEND="dev-python/sphinx_rtd_theme"

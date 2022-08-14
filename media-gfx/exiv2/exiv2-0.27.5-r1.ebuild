@@ -12,7 +12,6 @@ else
 	S="${WORKDIR}/${P}-Source"
 fi
 
-CMAKE_ECLASS=cmake
 PYTHON_COMPAT=( python3_{8..10} )
 inherit cmake-multilib python-any-r1
 

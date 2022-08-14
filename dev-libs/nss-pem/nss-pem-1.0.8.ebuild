@@ -3,8 +3,6 @@
 
 EAPI=7
 
-CMAKE_ECLASS="cmake"
-
 inherit cmake-multilib
 
 DESCRIPTION="PEM file reader for Network Security Services (NSS)"
