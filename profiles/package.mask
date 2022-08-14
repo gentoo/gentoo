@@ -33,8 +33,6 @@
 
 #--- END OF EXAMPLES ---
 
-
-
 # hololeap <hololeap@protonmail.com>
 # doctest-parallel does not currently work with Setup.hs (used internally by
 # haskell-cabal.eclass)
