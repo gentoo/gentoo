@@ -3,15 +3,12 @@
 
 EAPI=8
 
-# This is a beta for additional arch support (ppc, sparc64, mips),
-# feel free to keyword as needed if 0.13.1 does not work.
-
 CRATES="
 	addr2line-0.17.0
 	adler-1.0.2
 	aes-0.7.5
 	aho-corasick-0.7.18
-	anyhow-1.0.58
+	anyhow-1.0.61
 	async-io-1.7.0
 	atty-0.2.14
 	autocfg-1.1.0
@@ -25,17 +22,17 @@ CRATES="
 	bstr-0.2.17
 	bumpalo-3.10.0
 	byteorder-1.4.3
-	bytes-1.2.0
+	bytes-1.2.1
 	bytesize-1.1.0
 	bzip2-0.4.3
 	bzip2-sys-0.1.11+1.0.8
 	cab-0.4.1
 	cache-padded-1.2.0
-	camino-1.0.9
+	camino-1.1.1
 	cargo-options-0.3.1
 	cargo-platform-0.1.2
 	cargo-xwin-0.10.2
-	cargo-zigbuild-0.11.3
+	cargo-zigbuild-0.12.0
 	cargo_metadata-0.15.0
 	cbindgen-0.24.3
 	cc-1.0.73
@@ -44,13 +41,13 @@ CRATES="
 	charset-0.1.3
 	chunked_transfer-1.4.0
 	cipher-0.3.0
-	clap-3.2.15
-	clap_complete-3.2.3
+	clap-3.2.17
+	clap_complete-3.2.4
 	clap_complete_fig-3.2.4
-	clap_derive-3.2.15
+	clap_derive-3.2.17
 	clap_lex-0.2.4
 	cli-table-0.4.7
-	combine-4.6.4
+	combine-4.6.6
 	concurrent-queue-1.2.4
 	configparser-3.0.0
 	console-0.15.1
@@ -66,7 +63,7 @@ CRATES="
 	crypto-mac-0.11.1
 	data-encoding-2.3.2
 	derivative-2.2.0
-	dialoguer-0.10.1
+	dialoguer-0.10.2
 	digest-0.10.3
 	digest-0.9.0
 	dirs-4.0.0
@@ -104,7 +101,7 @@ CRATES="
 	futures-sink-0.3.21
 	futures-task-0.3.21
 	futures-util-0.3.21
-	generic-array-0.14.5
+	generic-array-0.14.6
 	getrandom-0.2.7
 	gimli-0.26.2
 	glob-0.3.0
@@ -121,15 +118,15 @@ CRATES="
 	ignore-0.4.18
 	indexmap-1.9.1
 	indicatif-0.17.0-rc.6
-	indoc-1.0.6
+	indoc-1.0.7
 	instant-0.1.12
 	itertools-0.10.3
-	itoa-1.0.2
+	itoa-1.0.3
 	js-sys-0.3.59
 	keyring-1.2.0
 	lazy_static-1.4.0
 	lddtree-0.2.9
-	libc-0.2.126
+	libc-0.2.131
 	lock_api-0.4.7
 	log-0.4.17
 	lzxd-0.1.4
@@ -165,12 +162,13 @@ CRATES="
 	openssl-probe-0.1.5
 	openssl-src-111.22.0+1.1.1q
 	openssl-sys-0.9.75
-	os_str_bytes-6.2.0
+	os_str_bytes-6.3.0
 	os_type-2.4.0
 	parking-2.0.0
 	parking_lot-0.12.1
 	parking_lot_core-0.9.3
-	path-slash-0.2.0
+	path-slash-0.2.1
+	pep440-0.2.0
 	percent-encoding-2.1.0
 	pin-project-lite-0.2.9
 	pin-utils-0.1.0
@@ -181,14 +179,14 @@ CRATES="
 	ppv-lite86-0.2.16
 	pretty_env_logger-0.4.0
 	proc-macro-crate-0.1.5
-	proc-macro-crate-1.1.3
+	proc-macro-crate-1.2.1
 	proc-macro-error-1.0.4
 	proc-macro-error-attr-1.0.4
-	proc-macro2-1.0.42
+	proc-macro2-1.0.43
 	pyproject-toml-0.3.1
 	python-pkginfo-0.5.4
 	quick-error-1.2.3
-	quote-1.0.20
+	quote-1.0.21
 	quoted_printable-0.4.5
 	rand-0.8.5
 	rand_chacha-0.3.1
@@ -207,7 +205,7 @@ CRATES="
 	rustc-demangle-0.1.21
 	rustc_version-0.4.0
 	rustls-0.20.6
-	ryu-1.0.10
+	ryu-1.0.11
 	same-file-1.0.6
 	schannel-0.1.20
 	scoped-tls-1.0.0
@@ -218,11 +216,11 @@ CRATES="
 	secret-service-2.0.2
 	security-framework-2.6.1
 	security-framework-sys-2.6.1
-	semver-1.0.12
-	serde-1.0.140
-	serde_derive-1.0.140
-	serde_json-1.0.82
-	serde_repr-0.1.8
+	semver-1.0.13
+	serde-1.0.143
+	serde_derive-1.0.143
+	serde_json-1.0.83
+	serde_repr-0.1.9
 	sha2-0.10.2
 	sha2-0.9.9
 	sharded-slab-0.1.4
@@ -235,32 +233,32 @@ CRATES="
 	static_assertions-1.1.0
 	strsim-0.10.0
 	subtle-2.4.1
-	syn-1.0.98
+	syn-1.0.99
 	tar-0.4.38
 	target-lexicon-0.12.4
 	tempfile-3.3.0
 	termcolor-1.1.3
 	terminal_size-0.1.17
 	textwrap-0.15.0
-	thiserror-1.0.31
-	thiserror-impl-1.0.31
+	thiserror-1.0.32
+	thiserror-impl-1.0.32
 	thread_local-1.1.4
-	time-0.3.11
+	time-0.3.13
 	time-macros-0.2.4
 	tinyvec-1.6.0
 	tinyvec_macros-0.1.0
 	toml-0.5.9
 	toml_edit-0.14.4
-	tracing-0.1.35
+	tracing-0.1.36
 	tracing-attributes-0.1.22
-	tracing-core-0.1.28
+	tracing-core-0.1.29
 	tracing-serde-0.1.3
 	tracing-subscriber-0.3.15
 	twox-hash-1.6.3
 	typenum-1.15.0
 	unicase-2.6.0
 	unicode-bidi-0.3.8
-	unicode-ident-1.0.2
+	unicode-ident-1.0.3
 	unicode-linebreak-0.1.2
 	unicode-normalization-0.1.21
 	unicode-width-0.1.9
@@ -303,8 +301,10 @@ CRATES="
 	zvariant-2.10.0
 	zvariant_derive-2.10.0"
 CRATES_TEST="
+	indoc-1.0.6
 	libc-0.2.119
 	libc-0.2.125
+	libc-0.2.126
 	once_cell-1.10.0
 	once_cell-1.11.0
 	once_cell-1.12.0
@@ -333,22 +333,19 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{8..11} )
 inherit cargo distutils-r1 flag-o-matic
 
-MATURIN_BETA_PV="$(ver_cut 1-3)-beta.$(ver_cut 5)"
-
 DESCRIPTION="Build and publish crates with pyo3, rust-cpython and cffi bindings"
 HOMEPAGE="https://maturin.rs/"
 SRC_URI="
-	https://github.com/PyO3/maturin/archive/refs/tags/v${MATURIN_BETA_PV}.tar.gz -> ${P}.gh.tar.gz
+	https://github.com/PyO3/maturin/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz
 	$(cargo_crate_uris)
 	test? ( $(cargo_crate_uris ${CRATES_TEST}) )"
-S="${WORKDIR}/${PN}-${MATURIN_BETA_PV}"
 
 LICENSE="
 	0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions
 	BSD CC0-1.0 ISC MIT MPL-2.0 openssl unicode
 	doc? ( CC-BY-4.0 OFL-1.1 )"
 SLOT="0"
-KEYWORDS="~sparc"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~s390 ~sparc ~x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
