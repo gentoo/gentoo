@@ -17,4 +17,7 @@
       Enable looking up packages via <pkg>dev-util/pkgconf</pkg>.
     </flag>
   </use>
+  <upstream>
+    <remote-id type="sourcehut">~lattis/muon</remote-id>
+  </upstream>
 </pkgmetadata>
