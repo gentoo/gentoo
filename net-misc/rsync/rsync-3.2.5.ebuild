@@ -78,10 +78,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# Force enable IPv6 on musl - upstream bug:
-	# https://bugzilla.samba.org/show_bug.cgi?id=10715
-	use elibc_musl && append-cppflags -DINET6
-
 	local myeconfargs=(
 		--with-rsyncd-conf="${EPREFIX}"/etc/rsyncd.conf
 		--without-included-popt
