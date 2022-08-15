@@ -35,7 +35,12 @@ DEPEND="${RDEPEND}
 		dev-qt/qttest:5
 	)
 "
-BDEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="
+	doc? (
+		app-doc/doxygen[dot]
+		virtual/latex-base
+	)
+"
 
 PATCHES=( "${FILESDIR}/${PN}-disable-pgp-test.patch" )
 
