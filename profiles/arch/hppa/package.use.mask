@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-08-15)
+# deps not keyworded
+dev-util/pkgcheck emacs
+
 # Sergey Torokhov <torokhov-s-a@yandex.ru> (2022-06-22)
 # media-libs/libjxl is not keyworded
 # bug https://bugs.gentoo.org/853628
