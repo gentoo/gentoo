@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-08-15)
+# deps not keyworded
+dev-util/pkgcheck emacs
+
 # Sam James <sam@gentoo.org> (2022-07-27)
 # sys-devel/lld is not keyworded on sparc
 >=dev-lang/spidermonkey-78 lto
