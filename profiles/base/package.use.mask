@@ -7,6 +7,10 @@
 # mask everywhere, unmask on arch/*) use arch/base.
 
 # John Helmert III <ajak@gentoo.org> (2022-08-14)
+# libaacplus is last rited
+media-sound/darkice aacplus
+
+# John Helmert III <ajak@gentoo.org> (2022-08-14)
 # slurm is last rited
 app-metrics/collectd collectd_plugins_slurm
 sys-cluster/openmpi openmpi_rm_slurm
