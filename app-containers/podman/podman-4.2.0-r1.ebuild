@@ -26,6 +26,7 @@ COMMON_DEPEND="
 	dev-libs/libassuan:=
 	dev-libs/libgpg-error:=
 	>=app-containers/cni-plugins-0.8.6
+	sys-apps/shadow:=
 	sys-fs/lvm2
 	sys-libs/libseccomp:=
 
