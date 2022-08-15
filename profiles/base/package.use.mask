@@ -6,6 +6,9 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# John Helmert III <ajak@gentoo.org> (2022-08-14)
+app-metrics/collectd collectd_plugins_slurm
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-08-13)
 # PyQt6/PySide6 are masked for testing
 dev-python/QtPy pyqt6 pyside6
