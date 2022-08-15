@@ -17,13 +17,17 @@ DEPEND="elibc_musl? ( sys-libs/queue-standalone )"
 
 CONFIG_CHECK="~NETWORK_PHY_TIMESTAMPING ~PPS ~PTP_1588_CLOCK"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.1.1-user_cpp.patch
+)
+
 pkg_setup() {
 	linux-info_pkg_setup
 }
 
 src_compile() {
 	# parse needed additional CFLAGS
-	export MY_FLAGS=$(./incdefs.sh)
+	export MY_FLAGS=$(CPP="$(tc-getCPP)" ./incdefs.sh)
 	export EXTRA_CFLAGS="${CFLAGS} ${MY_FLAGS}"
 	emake CC="$(tc-getCC)" prefix=/usr mandir=/usr/share/man
 }
