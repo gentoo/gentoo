@@ -293,7 +293,9 @@ src_test() {
 	# Too sensitive to leaked environment variables.
 	# - Test_term_mouse_multiple_clicks_to_select_mode
 	# Hangs.
-	export TEST_SKIP_PAT='\(Test_expand_star_star\|Test_exrc\|Test_job_tty_in_out\|Test_spelldump_bang\|Test_fuzzy_completion_env\|Test_term_mouse_multiple_clicks_to_select_mode\)'
+	# - Test_spelldump
+	# Hangs.
+	export TEST_SKIP_PAT='\(Test_expand_star_star\|Test_exrc\|Test_job_tty_in_out\|Test_spelldump_bang\|Test_fuzzy_completion_env\|Test_term_mouse_multiple_clicks_to_select_mode\|Test_spelldump\)'
 
 	emake -j1 -C src/testdir nongui
 }
