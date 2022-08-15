@@ -11,7 +11,7 @@ SRC_URI="http://dl.exactcode.de/oss/minised/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"
 
 src_prepare() {
 	default
