@@ -5,4 +5,7 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">xmlark/msv</remote-id>
+	</upstream>
 </pkgmetadata>
