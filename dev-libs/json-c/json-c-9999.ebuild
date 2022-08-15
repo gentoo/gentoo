@@ -3,7 +3,6 @@
 
 EAPI=8
 
-CMAKE_ECLASS=cmake
 inherit cmake-multilib git-r3
 
 DESCRIPTION="A JSON implementation in C"

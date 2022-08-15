@@ -3,7 +3,6 @@
 
 EAPI=8
 
-CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 MY_PV="${PV%.*}${PV##*.}"

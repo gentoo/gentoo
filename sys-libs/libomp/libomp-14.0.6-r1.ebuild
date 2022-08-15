@@ -3,7 +3,6 @@
 
 EAPI=8
 
-CMAKE_ECLASS=cmake
 PYTHON_COMPAT=( python3_{8..10} )
 inherit cmake-multilib linux-info llvm llvm.org python-any-r1
 

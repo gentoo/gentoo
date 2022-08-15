@@ -6,7 +6,6 @@ EAPI=8
 # Python is required for tests and some build tasks.
 PYTHON_COMPAT=( python3_{8..10} )
 
-CMAKE_ECLASS=cmake
 inherit cmake-multilib python-any-r1
 
 if [[ ${PV} == "9999" ]]; then
