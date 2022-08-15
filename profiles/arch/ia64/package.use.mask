@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-08-15)
+# deps not keyworded
+dev-util/pkgcheck emacs
+
 # Matt Turner <mattst88@gentoo.org> (2022-06-25)
 # net-libs/libqrtr-glib not keyworded
 net-misc/modemmanager qrtr
@@ -330,7 +334,7 @@ gnome-extra/nm-applet teamd
 # Opt-out of ofono support until there is a user request,
 # see also pulseaudio/connman
 net-misc/networkmanager ofono
- 
+
 # Thomas Deutschmann <whissi@gentoo.org> (2016-08-26)
 # Enable numa support on supported architectures
 dev-db/mysql -numa
