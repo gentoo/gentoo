@@ -16,7 +16,7 @@ SRC_URI="https://github.com/opencontainers/${PN}/archive/v${MY_PV}.tar.gz -> ${P
 
 LICENSE="Apache-2.0 BSD-2 BSD MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv ~x86"
 IUSE="apparmor hardened +kmem +seccomp selinux test"
 
 DEPEND="seccomp? ( sys-libs/libseccomp )"
