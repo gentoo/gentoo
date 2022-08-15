@@ -3,7 +3,6 @@
 
 EAPI=8
 
-CMAKE_ECLASS=cmake
 inherit cmake-multilib systemd toolchain-funcs
 
 DESCRIPTION="Software real-time synthesizer based on the Soundfont 2 specifications"
