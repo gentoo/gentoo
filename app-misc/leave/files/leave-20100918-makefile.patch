@@ -1,0 +1,8 @@
+--- a/Makefile
++++ b/Makefile
+@@ -3,4 +3,4 @@
+ 
+ PROG=	leave
+ 
+-.include <bsd.prog.mk>
++all: $(PROG)

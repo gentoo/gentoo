@@ -1,0 +1,65 @@
+https://bugs.gentoo.org/859847
+
+From 8c6f6bf3ad2fd33d15de6ee96175cd29bf804d9f Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Tue, 26 Jul 2022 15:47:02 -0400
+Subject: [PATCH] Fix aliasing violation
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Noticed when compiling with link-time optimizations.
+
+include/GL/freeglut_std.h:240:18: error: type of ‘glutBitmapHelvetica18’ does not match original declaration [-Werror=lto-type-mismatch]
+  240 |     extern void* glutBitmapHelvetica18;
+      |                  ^
+src/x11/fg_glutfont_definitions_x11.c:103:27: note: ‘glutBitmapHelvetica18’ was previously declared here
+  103 | struct freeglutBitmapFont glutBitmapHelvetica18 ;
+      |                           ^
+src/x11/fg_glutfont_definitions_x11.c:103:27: note: code may be misoptimized unless ‘-fno-strict-aliasing’ is used
+---
+ src/x11/fg_glutfont_definitions_x11.c | 29 ++++++++++++++++++---------
+ 1 file changed, 20 insertions(+), 9 deletions(-)
+
+diff --git a/src/x11/fg_glutfont_definitions_x11.c b/src/x11/fg_glutfont_definitions_x11.c
+index bec20371..d086a990 100644
+--- a/src/x11/fg_glutfont_definitions_x11.c
++++ b/src/x11/fg_glutfont_definitions_x11.c
+@@ -91,14 +91,25 @@ struct freeglutBitmapFont
+ };
+ 
+ 
+-struct freeglutStrokeFont glutStrokeRoman ;
+-struct freeglutStrokeFont glutStrokeMonoRoman ;
++static struct freeglutStrokeFont glutStrokeRoman_ ;
++static struct freeglutStrokeFont glutStrokeMonoRoman_ ;
+ 
+-struct freeglutBitmapFont glutBitmap9By15 ;
+-struct freeglutBitmapFont glutBitmap8By13 ;
+-struct freeglutBitmapFont glutBitmapTimesRoman10 ;
+-struct freeglutBitmapFont glutBitmapTimesRoman24 ;
+-struct freeglutBitmapFont glutBitmapHelvetica10 ;
+-struct freeglutBitmapFont glutBitmapHelvetica12 ;
+-struct freeglutBitmapFont glutBitmapHelvetica18 ;
++static struct freeglutBitmapFont glutBitmap9By15_ ;
++static struct freeglutBitmapFont glutBitmap8By13_ ;
++static struct freeglutBitmapFont glutBitmapTimesRoman10_ ;
++static struct freeglutBitmapFont glutBitmapTimesRoman24_ ;
++static struct freeglutBitmapFont glutBitmapHelvetica10_ ;
++static struct freeglutBitmapFont glutBitmapHelvetica12_ ;
++static struct freeglutBitmapFont glutBitmapHelvetica18_ ;
+ 
++
++void *glutStrokeRoman = &glutStrokeRoman_ ;
++void *glutStrokeMonoRoman = &glutStrokeMonoRoman_ ;
++
++void *glutBitmap9By15 = &glutBitmap9By15_ ;
++void *glutBitmap8By13 = &glutBitmap8By13_ ;
++void *glutBitmapTimesRoman10 = &glutBitmapTimesRoman10_ ;
++void *glutBitmapTimesRoman24 = &glutBitmapTimesRoman24_ ;
++void *glutBitmapHelvetica10 = &glutBitmapHelvetica10_ ;
++void *glutBitmapHelvetica12 = &glutBitmapHelvetica12_ ;
++void *glutBitmapHelvetica18 = &glutBitmapHelvetica18_ ;
+-- 
+2.35.1
+

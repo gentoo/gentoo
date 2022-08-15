@@ -18,5 +18,6 @@
     <flag name="http">Enable http protocol support</flag>
     <flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> for XML parsing (preferred) instead of bundled tinyxml</flag>
     <flag name="server">Install xrootd server and related plug-ins</flag>
+    <flag name="test-suite">Install additional components useful for testing xrootd</flag>
   </use>
 </pkgmetadata>

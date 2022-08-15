@@ -12,7 +12,7 @@ HOMEPAGE="https://invent.kde.org/plasma/breeze-gtk"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE=""
 
 BDEPEND="${PYTHON_DEPS}
@@ -22,7 +22,7 @@ BDEPEND="${PYTHON_DEPS}
 "
 
 python_check_deps() {
-	has_version "dev-python/pycairo[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/pycairo[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {

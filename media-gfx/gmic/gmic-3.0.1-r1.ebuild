@@ -31,7 +31,7 @@ QT_DEPEND="
 	>=dev-qt/qtnetwork-${MIN_QT_VER}:5=
 	>=dev-qt/qtwidgets-${MIN_QT_VER}:5=
 "
-COMMON_DEPEND="
+DEPEND="
 	curl? ( net-misc/curl )
 	fftw? ( sci-libs/fftw:3.0=[threads] )
 	gimp? (
@@ -53,14 +53,14 @@ COMMON_DEPEND="
 		x11-libs/libXext
 	)
 	zlib? ( sys-libs/zlib:0= )"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	ffmpeg? ( media-video/ffmpeg:0= )
 "
-DEPEND="${COMMON_DEPEND}
-	gimp? ( dev-qt/linguist-tools )
-	qt5? ( dev-qt/linguist-tools )
+BDEPEND="
+	virtual/pkgconfig
+	gimp? ( dev-qt/linguist-tools:5 )
+	qt5? ( dev-qt/linguist-tools:5 )
 "
-BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.0_ipa-sra.patch

@@ -13,6 +13,7 @@
     the full power of Python to control compilation.
   </longdescription>
   <upstream>
+    <remote-id type="github">SCons/scons</remote-id>
     <remote-id type="sourceforge">scons</remote-id>
   </upstream>
 </pkgmetadata>

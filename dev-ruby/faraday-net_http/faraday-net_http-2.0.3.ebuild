@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby26 ruby27 ruby30"
+USE_RUBY="ruby26 ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
@@ -23,7 +23,7 @@ SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE=""
 
-ruby_add_bdepend "test? ( >=dev-ruby/faraday-1.3.1:1 )"
+ruby_add_bdepend "test? ( || ( dev-ruby/faraday:2 >=dev-ruby/faraday-1.3.1:1 ) )"
 
 all_ruby_prepare() {
 	sed -i -e "s:_relative ':'./:" ${RUBY_FAKEGEM_GEMSPEC} || die

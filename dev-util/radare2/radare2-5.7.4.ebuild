@@ -82,7 +82,7 @@ src_configure() {
 src_test() {
 	ln -fs "${S}/binr/radare2/radare2" "${S}/binr/radare2/r2" || die
 	LDFLAGS=""
-	for i in ${S}/libr/*; do
+	for i in "${S}"/libr/*; do
 		if [[ -d ${i} ]]; then
 			LDFLAGS+="-R${i} -L${i} "
 			LD_LIBRARY_PATH+=":${i}"

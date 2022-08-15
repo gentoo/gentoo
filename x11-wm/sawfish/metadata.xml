@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<!-- uncomment the following block when there is a new primary maintainer
-<maintainer type="project">
-  <email>gnu-emacs@gentoo.org</email>
-  <description>
-    Components installed with USE=emacs.
-    Do not assign for anything else.
-  </description>
-</maintainer>
--->
+	<!-- maintainer-needed -->
+	<!-- uncomment the following block when there is a new primary maintainer
+	<maintainer type="project">
+		<email>gnu-emacs@gentoo.org</email>
+		<description>
+			Components installed with USE=emacs.
+			Do not assign for anything else.
+		</description>
+	</maintainer>
+	-->
+	<upstream>
+		<remote-id type="github">SawfishWM/sawfish</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,6 +1,27 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2022-08-01)
+# Fails to build.
+app-emulation/open-vm-tools
+
+# William Hubbs <williamh@gentoo.org> (2022-07-30)
+# Binary package linked against glibc, bug #861893.
+app-admin/awscli-bin
+
+# David Seifert <soap@gentoo.org> (2022-07-29)
+# Binary package linked against glibc
+media-sound/baudline
+
+# David Seifert <soap@gentoo.org> (2022-07-29)
+# Binary package linked against glibc
+sys-block/megacli
+
+# Marek Szuba <marecki@gentoo.org> (2022-07-28)
+# Relies on unimplemented functions outb_p and inb_p,
+# support for which has never made it into musl. Bug #712972.
+sys-libs/libsmbios
+
 # Stefan Strogin <steils@gentoo.org> (2022-06-29)
 # Binary package linked against glibc
 net-im/element-desktop-bin
@@ -198,10 +219,14 @@ sci-misc/jupyterlab-desktop-bin
 sci-misc/netlogo-bin
 sci-electronics/eagle
 
-# Ulrich Müller <ulm@gentoo.org> (2022-01-04)
+# Ulrich Müller <ulm@gentoo.org> (2022-01-04, 2022-07-31)
 # Emacs 23 does not support x86_64-gentoo-linux-musl systems
-# (bug #830408)
+# (bug #830408). Emacs 24 and 25 have build failures (bug #862462).
+# Emacs 26 segfaults when dumping (bug #862489).
 app-editors/emacs:23
+app-editors/emacs:24
+app-editors/emacs:25
+app-editors/emacs:26
 
 # Marek Szuba <marecki@gentoo.org> (2022-01-01)
 # Binary-only package linked against glibc.

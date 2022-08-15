@@ -54,11 +54,12 @@ RDEPEND="${COMMON_DEPEND}
 	>=kde-apps/kqtquickcharts-${PVCUT}:5
 "
 
+PATCHES=( "${FILESDIR}/${P}-without_x11.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DCOMPILE_QML=OFF
-		$(cmake_use_find_package X X11)
-		$(cmake_use_find_package X Qt5X11Extras)
+		-DWITHOUT_X11=$(usex !X)
 	)
 	ecm_src_configure
 }

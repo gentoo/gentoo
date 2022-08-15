@@ -11,4 +11,7 @@
 	<use>
 		<flag name="monitor">Build the Python and GUI dependent monitor applications</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">openvswitch/ovs</remote-id>
+	</upstream>
 </pkgmetadata>

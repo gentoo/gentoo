@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/ged/ruby-pg"
 SRC_URI="https://github.com/ged/ruby-pg/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="ruby-${P}"
 
-LICENSE="|| ( GPL-2 Ruby )"
+LICENSE="|| ( BSD-2 Ruby-BSD )"
 SLOT="1"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""

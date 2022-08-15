@@ -32,6 +32,7 @@ DEPEND="python? ( ${PYTHON_DEPS} )
 RDEPEND="${DEPEND}
 	python? ( dev-python/pyxdg[${PYTHON_USEDEP}] )"
 BDEPEND="
+	sys-apps/help2man
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig"
 

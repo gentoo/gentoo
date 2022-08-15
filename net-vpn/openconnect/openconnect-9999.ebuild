@@ -17,7 +17,7 @@ else
 fi
 
 DESCRIPTION="Free client for Cisco AnyConnect SSL VPN software"
-HOMEPAGE="http://www.infradead.org/openconnect.html"
+HOMEPAGE="https://www.infradead.org/openconnect/"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5"

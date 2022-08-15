@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<changelog>https://invisible-island.net/luit/luit.log.html</changelog>
+		<remote-id type="github">ThomasDickey/luit-snapshots</remote-id>
 	</upstream>
 </pkgmetadata>

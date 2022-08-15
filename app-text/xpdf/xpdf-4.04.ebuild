@@ -59,6 +59,13 @@ PATCHES=(
 
 DOCS=( ANNOUNCE CHANGES README )
 
+src_unpack() {
+	if use verify-sig; then
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz{,.sig}
+	fi
+	default
+}
+
 src_prepare() {
 	sed -i \
 		"s|/usr/local/etc|${EPREFIX}/etc|;

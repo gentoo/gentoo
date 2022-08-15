@@ -1,0 +1,27 @@
+From 6a095ad15153479e22472628ddfe1bab1183d911 Mon Sep 17 00:00:00 2001
+From: ivan tkachenko <me@ratijas.tk>
+Date: Sat, 4 Jun 2022 03:11:58 +0300
+Subject: [PATCH] ProgressBar: Drop layout direction hack
+
+It is not needed anymore: mirroring is now handled correctly in the
+Breeze theme implementation.
+---
+ org.kde.desktop/ProgressBar.qml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/org.kde.desktop/ProgressBar.qml b/org.kde.desktop/ProgressBar.qml
+index 23c1df3..2d075c7 100644
+--- a/org.kde.desktop/ProgressBar.qml
++++ b/org.kde.desktop/ProgressBar.qml
+@@ -26,7 +26,7 @@ T.ProgressBar {
+         control: controlRoot
+         maximum: indeterminate ? 0 : 10000 * controlRoot.to
+         minimum: indeterminate ? 0 : 10000 * controlRoot.from
+-        value: indeterminate ? 0 : 10000 * ((Qt.application.layoutDirection === Qt.LeftToRight ? controlRoot.visualPosition : 1 - controlRoot.visualPosition) * (controlRoot.to - controlRoot.from) + controlRoot.from)
++        value: indeterminate ? 0 : 10000 * controlRoot.value
+         horizontal: true
+         enabled: controlRoot.enabled
+ 
+-- 
+GitLab
+

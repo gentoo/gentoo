@@ -6,6 +6,24 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# John Helmert III <ajak@gentoo.org> (2022-08-14)
+# libaacplus is last rited
+media-sound/darkice aacplus
+
+# John Helmert III <ajak@gentoo.org> (2022-08-14)
+# slurm is last rited
+app-metrics/collectd collectd_plugins_slurm
+sys-cluster/openmpi openmpi_rm_slurm
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-08-13)
+# PyQt6/PySide6 are masked for testing
+dev-python/QtPy pyqt6 pyside6
+
+# Joonas Niilola <juippis@gentoo.org> (2022-08-02)
+# Doesn't compile with 'Xaw3d' use flag, #849947.
+app-text/xdvik Xaw3d
+
+# Joonas Niilola <juippis@gentoo.org> (2022-07-13)
 # Depends on an older enigmail that only supports python2, which is
 # being removed soon. #758344
 www-client/seamonkey crypt
@@ -24,10 +42,6 @@ sci-physics/bullet tbb
 # most of the time it requires nightly (real nightly) compiler.
 # please unmask as needed, may require patching
 >=dev-lang/rust-1.62.0 miri
-
-# Michał Górny <mgorny@gentoo.org> (2022-07-02)
-# dev-python/geoip-python is masked for removal.
-net-p2p/deluge geoip
 
 # James Le Cuirot <chewi@gentoo.org> (2022-06-25)
 # This flag concerns an x86-specific problem.
@@ -301,12 +315,15 @@ x11-libs/colord-gtk doc
 <dev-ml/llvm-ocaml-14 llvm_targets_VE
 <sys-devel/clang-14 llvm_targets_VE
 <sys-devel/llvm-14 llvm_targets_VE
-<dev-ml/llvm-ocaml-15 llvm_targets_ARC
-<sys-devel/clang-15 llvm_targets_ARC
-<sys-devel/llvm-15 llvm_targets_ARC
-<dev-ml/llvm-ocaml-15 llvm_targets_CSKY llvm_targets_M68k
-<sys-devel/clang-15 llvm_targets_CSKY llvm_targets_M68k
-<sys-devel/llvm-15 llvm_targets_CSKY llvm_targets_M68k
+<dev-ml/llvm-ocaml-16 llvm_targets_ARC llvm_targets_CSKY
+<sys-devel/clang-16 llvm_targets_ARC llvm_targets_CSKY
+<sys-devel/llvm-16 llvm_targets_ARC llvm_targets_CSKY
+<dev-ml/llvm-ocaml-16 llvm_targets_DirectX llvm_targets_LoongArch
+<sys-devel/clang-16 llvm_targets_DirectX llvm_targets_LoongArch
+<sys-devel/llvm-16 llvm_targets_DirectX llvm_targets_LoongArch
+<dev-ml/llvm-ocaml-16 llvm_targets_M68k llvm_targets_SPIRV
+<sys-devel/clang-16 llvm_targets_M68k llvm_targets_SPIRV
+<sys-devel/llvm-16 llvm_targets_M68k llvm_targets_SPIRV
 
 # Marek Szuba <marecki@gentoo.org> (2020-11-30)
 # Vendored therecipe/qt violates network sandbox + uses external binary

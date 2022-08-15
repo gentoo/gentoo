@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake xdg-utils
 
@@ -14,16 +14,15 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-# bundles x11-libs/libqxt but no qt5 system version is available yet
+# TODO: still accurate? bundles x11-libs/libqxt but no qt5 system version is available yet
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	x11-libs/libX11
 "
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-qt/linguist-tools:5"
 
 pkg_postinst() {
 	xdg_icon_cache_update

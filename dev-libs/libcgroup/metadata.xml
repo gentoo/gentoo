@@ -14,6 +14,7 @@
 		<flag name="tools">Install the cgroup rules processing daemon and init/config files.</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">libcgroup/libcgroup</remote-id>
 		<remote-id type="sourceforge">libcg</remote-id>
 	</upstream>
 </pkgmetadata>

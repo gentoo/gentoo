@@ -14,7 +14,7 @@ inherit ruby-fakegem
 DESCRIPTION="Shim library for Module#ruby2_keywords"
 HOMEPAGE="https://github.com/ruby/ruby2_keywords"
 
-LICENSE="Ruby"
+LICENSE="|| ( BSD-2 Ruby-BSD )"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE=""

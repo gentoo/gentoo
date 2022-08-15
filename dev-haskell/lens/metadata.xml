@@ -5,25 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<use>
-		<flag name="benchmark-uniplate">
-			Enable benchmarking against Neil Mitchell's
-			uniplate library for comparative performance analysis. Defaults to being
-			turned off to avoid the extra dependency.
-		</flag>
-		<flag name="inlining">
-			Generate inline pragmas when using
-			template-haskell. This defaults to enabled, but you can
-			to shut it off to benchmark the relative performance impact,
-			or as last ditch effort to address compile errors resulting
-			from the myriad versions of template-haskell that all purport to be 2.8.
-		</flag>
-		<flag name="safe">Disallow unsafeCoerce</flag>
-		<flag name="dump-splices">Build and run the doctests test-suite.</flag>
-		<flag name="j">Attempt a parallel build with GHC 7.8.</flag>
-		<flag name="trustworthy">Assert that we are trustworthy when we can</flag>
-	</use>
-	<upstream>
-		<remote-id type="github">ekmett/lens</remote-id>
-	</upstream>
 </pkgmetadata>

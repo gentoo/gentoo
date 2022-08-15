@@ -6,27 +6,19 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
-		<flag name="build-pong">Build a server that just returns "PONG"</flag>
-		<flag name="openssl">enable https support using <pkg>dev-haskell/hsopenssl</pkg></flag>
-		<flag name="portable">no non-haskell unportable code.</flag>
+		<flag name="debug">Enable support for debugging.</flag>
+		<flag name="openssl">Enable https support using the HsOpenSSL library.</flag>
+		<flag name="pong-server">Build a server that just returns "PONG". Normally useful only for benchmarks.</flag>
+		<flag name="test-server">Build the blackbox testserver</flag>
 	</use>
 	<longdescription>
 		Snap is a simple and fast web development framework and server written in
 		Haskell. For more information or to download the latest version, you can
 		visit the Snap project website at &lt;http://snapframework.com/&gt;.
 		
-		The Snap HTTP server is a high performance, epoll-enabled, iteratee-based web
-		server library written in Haskell. Together with the @snap-core@ library upon
-		which it depends, it provides a clean and efficient Haskell programming
-		interface to the HTTP protocol.
-		
-		Higher-level facilities for building web applications (like user/session
-		management, component interfaces, data modeling, etc.) are planned but not
-		yet implemented, so this release will mostly be of interest for those who:
-		
-		* need a fast and minimal HTTP API at roughly the same level of abstraction
-		as Java servlets, or
-		
-		* are interested in contributing to the Snap Framework project.
+		The Snap HTTP server is a high performance web server library written in
+		Haskell. Together with the @snap-core@ library upon which it depends, it
+		provides a clean and efficient Haskell programming interface to the HTTP
+		protocol.
 	</longdescription>
 </pkgmetadata>

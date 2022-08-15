@@ -9,7 +9,7 @@ inherit ruby-ng
 DESCRIPTION="A Romaji <-> Kana conversion library for Ruby"
 HOMEPAGE="http://0xcc.net/ruby-romkan/"
 SRC_URI="http://0xcc.net/ruby-romkan/${P}.tar.gz"
-LICENSE="Ruby"
+LICENSE="Ruby-BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""

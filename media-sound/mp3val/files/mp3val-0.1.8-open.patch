@@ -1,5 +1,5 @@
---- mp3val-0.1.8-src/crossapi.cpp.orig	2010-05-03 10:45:53.000000000 -0700
-+++ mp3val-0.1.8-src/crossapi.cpp	2017-02-19 23:38:21.000000000 -0000
+--- a/crossapi.cpp
++++ b/crossapi.cpp
 @@ -241,7 +241,7 @@
  //Moving failed due to different logical drives of source and destination. Let's copy:
  	id=open(szOldName,O_RDONLY);

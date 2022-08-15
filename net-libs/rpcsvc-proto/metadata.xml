@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
- <email>toolchain@gentoo.org</email>
- <name>Gentoo Toolchain Project</name>
-</maintainer>
-<maintainer type="project">
- <email>base-system@gentoo.org</email>
- <name>Gentoo Base System Project</name>
-</maintainer>
+	<maintainer type="project">
+		<email>toolchain@gentoo.org</email>
+		<name>Gentoo Toolchain Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">thkukuk/rpcsvc-proto</remote-id>
+	</upstream>
 </pkgmetadata>

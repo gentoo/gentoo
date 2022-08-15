@@ -21,7 +21,7 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="bs2b calf +doc rnnoise rubberband webrtc zamaudio"
 
-DEPEND=">=dev-libs/boost-1.72:=
+COMMON=">=dev-libs/boost-1.72:=
 	>=dev-cpp/glibmm-2.56.0:2
 	>=dev-cpp/gtkmm-3.24:3.0
 	>=dev-libs/glib-2.56:2
@@ -37,8 +37,11 @@ DEPEND=">=dev-libs/boost-1.72:=
 	>=x11-libs/gtk+-3.20:3
 	bs2b? ( >=media-plugins/gst-plugins-bs2b-1.12.5:1.0 )
 	rnnoise? ( media-libs/rnnoise )"
+# Only header files are used from libsamplerate
+DEPEND="${COMMON}
+	media-libs/libsamplerate"
 RDEPEND="!media-sound/easyeffects
-	${DEPEND}
+	${COMMON}
 	>=media-libs/gst-plugins-good-1.12.5:1.0
 	>=media-libs/lsp-plugins-1.1.24[lv2]
 	>=media-plugins/gst-plugins-ladspa-1.12.5:1.0
@@ -50,12 +53,9 @@ RDEPEND="!media-sound/easyeffects
 	rubberband? ( media-libs/rubberband[ladspa] )
 	webrtc? ( media-plugins/gst-plugins-webrtc )
 	zamaudio? ( media-plugins/zam-plugins )"
-# Only header files are used from libsamplerate so put it here rather than DEPEND
-# to avoid unnecessary cross-compilation.
 BDEPEND="dev-libs/appstream-glib
 	dev-util/desktop-file-utils
 	dev-util/itstool
-	media-libs/libsamplerate
 	sys-devel/gettext
 	virtual/pkgconfig"
 

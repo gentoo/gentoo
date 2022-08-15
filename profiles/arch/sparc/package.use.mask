@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Matthew Smith <matthew@gentoo.org> (2022-07-10)
-# Needs unkeyworded app-doc/halibut
->=net-misc/putty-0.77 doc
+# Sam James <sam@gentoo.org> (2022-07-27)
+# sys-devel/lld is not keyworded on sparc
+>=dev-lang/spidermonkey-78 lto
 
 # Matt Turner <mattst88@gentoo.org> (2022-06-25)
 # net-libs/libqrtr-glib not keyworded
@@ -94,9 +94,9 @@ dev-cpp/eigen test
 
 # Sam James <sam@gentoo.org> (2021-04-27)
 # Deps not yet tested/keyworded.
-sys-devel/clang default-compiler-rt default-libcxx default-lld
-sys-devel/clang-runtime compiler-rt libcxx
-sys-devel/llvm gold z3
+sys-devel/clang default-compiler-rt default-lld
+sys-devel/clang-runtime compiler-rt
+sys-devel/llvm z3
 
 # Sam James <sam@gentoo.org> (2021-03-19)
 # On sparc, we have to force sys-apps/grep[libsigsegv]
@@ -533,9 +533,9 @@ media-libs/phonon gstreamer vlc
 
 # Robin H Johnson <robbat2@gentoo.org> (2012-11-01)
 # MySQL 5.5 wants systemtap, tcmalloc & jemalloc
->=dev-db/mysql-5.5 systemtap tcmalloc jemalloc
->=dev-db/mariadb-5.5 systemtap tcmalloc jemalloc
->=dev-db/percona-server-5.5 tcmalloc jemalloc
+>=dev-db/mysql-5.5 systemtap jemalloc
+>=dev-db/mariadb-5.5 systemtap jemalloc
+>=dev-db/percona-server-5.5 jemalloc
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-06-24)
 # Requires libpcre with jit

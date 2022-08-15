@@ -33,6 +33,130 @@
 
 #--- END OF EXAMPLES ---
 
+# John Helmert III <ajak@gentoo.org> (2022-08-14)
+# Vulnerable, unmaintained in Gentoo, EAPI6. Removal in 30 days,
+# bug #772209
+app-crypt/keybase
+
+# John Helmert III <ajak@gentoo.org> (2022-08-14)
+# Remote code execution vulnerability, dead upstream. Removal in 30
+# days, bug #791004.
+x11-terms/mrxvt
+
+# John Helmert III <ajak@gentoo.org> (2022-08-14)
+# Dead upstream, vulnerable, no revdeps except a usedep. Removal in 30
+# days, bug #618000
+media-libs/libaacplus
+
+# John Helmert III <ajak@gentoo.org> (2022-08-14)
+# Many vulnerabilities (including code execution and root privilege
+# escalation), effectively unmaintained. Removal in 30 days, bugs
+# #631552, #790296, #842789
+sys-cluster/slurm
+
+# John Helmert III <ajak@gentoo.org> (2022-08-14)
+# Vulnerable and unmaintained for years, many open bugs, no revdeps,
+# EAPI 6. Removal in 30 days, bug 733354
+net-misc/calico-cni-plugin
+net-misc/calicoctl
+
+# Sam James <sam@gentoo.org> (2022-08-14)
+# Removes MSVC functionality which some packages are relying on - they
+# need time to adapt to upstream setuptools changes.
+# bug #865183.
+=dev-python/setuptools-65.0.0
+
+# John Helmert III <ajak@gentoo.org> (2022-08-14)
+# Vulnerable and unmaintained for years, many open bugs, no revdeps
+# Removal in 30 days, bug #631140
+net-analyzer/smokeping
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org>
+# Masked for testing, depends on dev-qt/qt*:6
+# Pyside6 is stuck on python3_10 for the moment being
+dev-python/shiboken6
+dev-python/pyside6
+dev-python/pyside6-tools
+
+# Michał Górny <mgorny@gentoo.org> (2022-08-11)
+# Niche library with no revdeps left.  Last commit in 2015.
+# Removal on 2022-09-10.  Bug #864889.
+dev-libs/libdivsufsort
+
+# John Helmert III <ajak@gentoo.org> (2022-08-10)
+# Root privilege escalation vulnerability, many open bugs. Removal in 30
+# days, bug 630752
+net-analyzer/sguil-sensor
+
+# John Helmert III <ajak@gentoo.org> (2022-08-10)
+# Root privilege escalation vulnerability, unmaintained since the git
+# transition, multiple open bugs. Removal in 30 days, bug 630752
+app-admin/logcheck
+
+# Matthew Smith <matthew@gentoo.org> (2022-08-09)
+# Please update to Erlang/OTP 24 or 25. Removal in 30 days.
+# See following link for breaking changes:
+# https://www.erlang.org/patches/otp-24.0#incompatibilities
+<dev-lang/erlang-24
+~dev-lang/elixir-1.11.4
+
+# Fabian Groffen <grobian@gentoo.org> (2022-08-06)
+# superseeded by sys-apps/baselayout, removal in 30 days.  bug #836114
+sys-apps/baselayout-prefix
+
+# Jimi Huotari <chiitoo@gentoo.org> (2022-08-02)
+# Masked for testing. The split of some packages may still
+# change. bug #838970.
+dev-python/PyQt6
+dev-python/PyQt6-WebEngine
+dev-qt/qt5compat:6
+dev-qt/qtbase:6
+dev-qt/qtdeclarative:6
+dev-qt/qtlocation:6
+dev-qt/qtmultimedia:6
+dev-qt/qtpositioning:6
+dev-qt/qtquick3d:6
+dev-qt/qtquicktimeline:6
+dev-qt/qtserialport:6
+dev-qt/qtshadertools:6
+dev-qt/qtsvg:6
+dev-qt/qttools:6
+dev-qt/qtwayland:6
+dev-qt/qtwebchannel:6
+dev-qt/qtwebengine:6
+dev-qt/qtwebsockets:6
+
+# Sam James <sam@gentoo.org> (2022-08-02)
+# Multiple rendering/font issues reported: bug #844115, bug #851141.
+=app-text/ghostscript-gpl-9.56.1
+
+# Marek Szuba <marecki@gentoo.org> (2022-08-01)
+# Suricata-5 has reached end of life upstream. Please switch to major version 6.
+# Removal in 30 days (Bug #)
+<net-analyzer/suricata-6.0.0
+
+# Matthew Smith <matthew@gentoo.org> (2022-07-31)
+# No updates since 2010, dead homepage, and incompatible with newer
+# sci-libs/gsl. Bug #862486. Removal on 2022-08-31.
+sci-chemistry/numbat
+
+# Marc Schiffbauer <mschiff@gentoo.org> (2022-07-30)
+# No update since 2016, compilation and build system
+# errors
+# Bugs #637150, #686078, #733066, #733068, #828986, #854744
+# removal in 30 days (2022-08-29)
+app-misc/zygrib
+
+# David Seifert <soap@gentoo.org> (2022-07-28)
+# Unmaintained, EOL upstream, QA and build issues, EAPI 6.
+# Bug #682346, #844592, removal on 2022-08-27.
+app-crypt/kbfs
+
+# Sam James <sam@gentoo.org> (2022-07-26)
+# Fails to build with ffmpeg 5, no reverse dependencies, maintainer-needed,
+# and no commits upstream since 2017. Bug #834383. Removal on 2022-08-26.
+media-libs/libgroove
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-07-25)
 # Merged into kde-apps/kalarm since 22.04.3, no other revdeps, obsolete.
 # Masked for removal on 2022-08-08.
@@ -63,7 +187,7 @@ dev-go/golint
 # Monolithic mask for dev-haskell/* packages which have no reverse dependencies,
 # are broken, or severely out of date. The aim is to have the Haskell overlay
 # (::haskell) be the place for development packages and only have packages
-# needed for end-user applications in ::gentoo, as the status who has
+# needed for end-user applications in ::gentoo, as the status quo has
 # proven to be unsustainable. More up-to-date versions of these packages
 # are available in ::haskell.
 # Removal on 2022-08-22.
@@ -428,75 +552,6 @@ media-video/kino
 # Removal on 2022-08-11.
 x11-libs/gtk+extra
 
-# David Seifert <soap@gentoo.org> (2022-07-11)
-# Unmaintained, companion lib of dev-cpp/commoncpp2 which has already
-# been removed, fails with USE=-ssl, no revdeps, upstream mostly dead.
-# Bug #830581, removal on 2022-08-10.
-dev-libs/ucommon
-
-# Brian Evans <grknight@gentoo.org> (2022-07-11)
-# The database behind this extension is no longer available
-# Please migrate to dev-php/maxmind-db-reader optionally with its
-# bundled extension. Bug 857636
-# Removal on 2022-08-10.
-dev-php/pecl-geoip
-
-# David Seifert <soap@gentoo.org> (2022-07-11)
-# Crashes with latest emboss, no other distro packages this,
-# ancient release, bug #361411, removal on 2022-08-10.
-sci-biology/transfac
-
-# Sam James <sam@gentoo.org> (2022-07-10)
-# Broken with autoconf 2.70+, stuck on EAPI 6, plenty
-# of concerning warnings. Even Debian's fork isn't
-# enough to fix all the issues (w/ autoconf).
-# Removal on 2022-07-10.
-net-mail/mpack
-
-# David Seifert <soap@gentoo.org> (2022-07-10)
-# Unmaintained, last release in 2010, ebuild added by author and then
-# abandoned, terrible macros break compiling with GCC 12.
-# Bugs #851867, removal on 2022-08-09.
-games-engines/nazghul
-
-# Michał Górny <mgorny@gentoo.org> (2022-07-10)
-# The original package was discontinued in 2015.  This is a fork that
-# lived for two months in 2017, and is not name-compatible with
-# the original.  The last revdep was removed in 2018.
-# Removal on 2022-08-09.  Bug #857252.
-dev-python/pydispatcher
-
-# David Seifert <soap@gentoo.org> (2022-07-02)
-# Unmaintained, no response on bugs, stuck on python 3.9. If you
-# want to unmask these, you have to at least port them to python 3.10.
-# Bugs #809524, #809527, #809530, #809533, #809833, #845729, #845816,
-# #846017, #846200, #846203, #846206, #853844, removal on 2022-08-01.
-app-misc/siglo
-dev-python/gatt-python
-dev-python/pynput
-media-libs/elgato-streamdeck
-media-video/streamdeck-ui
-net-wireless/jackit
-net-wireless/kismet-rest
-net-wireless/kismetdb
-
-# Sam James <sam@gentoo.org> (2022-07-02)
-# Deprecated dependencies, no activity upstream. Bugs #845615, #796326.
-# Removal on 2022-08-02.
-app-vim/pyclewn
-
-# Michał Górny <mgorny@gentoo.org> (2022-07-02)
-# Last release in 2014.  Archived upstream, and superseded by GeoIP2
-# (not packaged).  There is only one revdep (net-p2p/deluge) for which
-# it is optional.
-# Removal on 2022-08-01.  Bug #855737.
-dev-python/geoip-python
-
-# Matthew Smith <matthew@gentoo.org> (2022-07-02)
-# Superseded by dev-util/rebar:3.
-# Removal in 30 days. Bug #855728.
-dev-util/rebar-bin
-
 # Fabian Groffen <grobian@gentoo.org> (2022-07-02)
 # Segfaults handling SPF validations (warn on permerror), like the
 # previous release, better not to trust your important mail to
@@ -507,27 +562,6 @@ dev-util/rebar-bin
 ~app-editors/emacs-28.1.90
 ~app-editors/emacs-28.1.91
 ~app-editors/emacs-28.1.92
-
-# Marek Szuba <marecki@gentoo.org> (2022-06-30)
-# A GNOME 2-era library with no consumers left in the tree, marked
-# as deprecated since March 2022. Removal in 30 days (Bug #855299).
-gnome-extra/gtkhtml
-
-# Piotr Karbowski <slashbeast@gentoo.org> (2022-06-26)
-# Abandoned upstream, depends on API that no longer exists.
-# Removal on 2022-07-26.
-dev-python/jikanpy
-
-# Marc Schiffbauer <mschiff@gentoo.org> (2022-06-22)
-# Deprecated package. Removal in 30 days.
-# see bug #843746
-sys-power/tuxedo-cc-wmi
-
-# Sam James <sam@gentoo.org> (2022-06-21)
-# Obsolete, no reverse dependencies, does not run test suite, and doesn't
-# support Python 3.10+. Use app-crypt/gpgme[python] instead.
-# Bugs #845807, #798372, #748531. Removal on 2022-07-21.
-dev-python/pygpgme
 
 # Sam James <sam@gentoo.org> (2022-05-28)
 # GCC 9 and older no longer receive upstream support or fixes for
@@ -601,15 +635,6 @@ dev-ml/core_bench:0/0.15
 dev-ml/patience_diff:0/0.15
 dev-util/patdiff:0/0.15
 =dev-ml/alcotest-1.6.0*
-
-# Sam James <sam@gentoo.org> (2022-04-13)
-# 2.35.2 was a quick release to mitigate a security issue (bug #838127), but
-# introduces problems of its own with e.g. Portage. bug #838223. Pending
-# investigation both on the Portage side and potentially upstream (as there's
-# at least some UX issues with 2.35.2+ with the new "safe directory" mechanism).
-# Earlier versions are still safe as long as you do not use git commands
-# on a local repository controlled by a user you do not trust.
->=dev-vcs/git-2.35.2
 
 # David Seifert <soap@gentoo.org> (2022-04-06)
 # Unsupported branches, no consumers left, removal on 2023-01-01.

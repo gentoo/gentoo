@@ -1,5 +1,5 @@
 # use lld by default
-sys-devel/llvm -gold
+sys-devel/llvm -binutils-plugin
 
 # use all defaults
 sys-devel/clang default-compiler-rt default-lld default-libcxx llvm-libunwind

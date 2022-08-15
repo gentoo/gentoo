@@ -1,0 +1,32 @@
+From 19b97b58b35ee746fdae1fc34ba97d7967175a62 Mon Sep 17 00:00:00 2001
+From: sternenseemann <sternenseemann@systemli.org>
+Date: Tue, 15 Mar 2022 12:09:27 +0100
+Subject: [PATCH] Support unordered-containers >= 0.2.17.0
+Bug: https://github.com/JustusAdam/mustache/pull/59
+
+We just need to make the orphan HashMap instance conditional on the
+unordered-containers version.
+---
+ src/Text/Mustache/Internal/Types.hs | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/Text/Mustache/Internal/Types.hs b/src/Text/Mustache/Internal/Types.hs
+index 74f6665..d499ba3 100644
+--- a/src/Text/Mustache/Internal/Types.hs
++++ b/src/Text/Mustache/Internal/Types.hs
+@@ -394,12 +394,15 @@ deriveLift ''DataIdentifier
+ deriveLift ''Node
+ deriveLift ''Template
+ 
++-- Data.HashMap 0.2.17.0 introduces its own Lift instance
++#if !MIN_VERSION_unordered_containers(0,2,17)
+ instance Lift TemplateCache where
+ #if MIN_VERSION_template_haskell(2,16,0)
+   liftTyped m = [|| HM.fromList $$(liftTyped $ HM.toList m) ||]
+ #else
+   lift m = [| HM.fromList $(lift $ HM.toList m) |]
+ #endif
++#endif
+ 
+ --Data.Text 1.2.4.0 introduces its own Lift Text instance
+ #if !MIN_VERSION_text(1,2,4)

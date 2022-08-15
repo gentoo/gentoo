@@ -32,8 +32,14 @@ ruby_add_bdepend "test? (
 
 all_ruby_prepare() {
 	# Require a compatible version of mocha
-	sed -i -e '1igem "mocha", "~> 1.0"; gem "railties", "~>6.1.0" ; gem "actionpack", "~>6.1.0"' \
-		-e '2i gem "test-unit"; require "test/unit"' \
+	sed -i -e '1igem "mocha", "~> 1.0"; gem "railties", "~>6.1.0" ; gem "actionpack", "~>6.1.0"; require "action_dispatch"' \
 		-e '/mocha/ s/mini_test/minitest/' \
 		-e '/\(byebug\|minitest_helpers\|simplecov\)/I s:^:#:' test/test_helper.rb || die
+
+	# Avoid test tripped up by kwargs confusion
+	sed -i -e '/test_authorize/askip "kwargs confusion"' test/units/test_cli.rb || die
+}
+
+each_ruby_test() {
+	${RUBY} -Ilib:test:. -e 'Dir["test/**/*test*.rb"].each {|f| require f}' || die
 }

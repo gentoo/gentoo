@@ -12,4 +12,7 @@
 		Terminal email client with Vim-style keybindings, git awareness and other advanced features.
 		Works with multiple accounts, with support for IMAP, Maildir, SMTP, and sendmail transfer protocols.
 	</longdescription>
+	<upstream>
+		<remote-id type="sourcehut">~rjarry/aerc</remote-id>
+	</upstream>
 </pkgmetadata>

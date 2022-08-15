@@ -53,13 +53,11 @@ RDEPEND="
 		sys-apps/pcsc-lite
 	)
 "
-
-DEPEND="
-	${RDEPEND}
-	dev-qt/linguist-tools:5
+DEPEND="${RDEPEND}
 	dev-qt/qttest:5
 "
 BDEPEND="
+	dev-qt/linguist-tools:5
 	doc? ( dev-ruby/asciidoctor )
 "
 

@@ -5,4 +5,7 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">yaml/libyaml</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,6 +1,6 @@
 --- a/configure.in
 +++ b/configure.in
-@@ -126,19 +126,38 @@
+@@ -126,19 +126,39 @@
        fi
      done
    else
@@ -18,6 +18,7 @@
 +        available_cdb="yes"
 +        if test -f "$with_cdb/$i/uint32.h"; then
 +          for l in lib64 lib32 lib; do
++            available_cdb="yes"
 +            for a in cdb.a alloc.a buffer.a byte.a unix.a; do
 +              if test -f "$with_cdb/$l/$a"; then
 +                LIBADD_CDB="$LIBADD_CDB $with_cdb/$l/$a"

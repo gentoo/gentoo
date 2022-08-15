@@ -13,7 +13,7 @@ inherit ruby-fakegem
 DESCRIPTION="Use the McIlroy-Hunt LCS algorithm to compute differences"
 HOMEPAGE="https://github.com/halostatue/diff-lcs"
 
-LICENSE="|| ( MIT Ruby GPL-2 )"
+LICENSE="|| ( Artistic MIT GPL-2+ )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""

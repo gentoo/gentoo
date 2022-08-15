@@ -18,4 +18,7 @@
 			<pkg>dev-libs/ossp-uuid</pkg>).
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">postgres/postgres</remote-id>
+	</upstream>
 </pkgmetadata>

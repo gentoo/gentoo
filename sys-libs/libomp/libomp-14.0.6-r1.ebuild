@@ -12,7 +12,7 @@ HOMEPAGE="https://openmp.llvm.org"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86 ~amd64-linux ~x64-macos"
 IUSE="
 	cuda debug hwloc offload ompt test
 	llvm_targets_AMDGPU llvm_targets_NVPTX
@@ -54,11 +54,11 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=( openmp llvm/include )
-LLVM_PATCHSET=${PV}-r1
+LLVM_PATCHSET=${PV}-r2
 llvm.org_set_globals
 
 python_check_deps() {
-	has_version "dev-python/lit[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
 kernel_pds_check() {

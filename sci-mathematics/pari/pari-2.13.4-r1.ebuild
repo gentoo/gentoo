@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 # The subslot is the value of $soname_num obtained from
 # upstream's config/version script.
 SLOT="0/7"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="data doc fltk gmp test threads X"
 RESTRICT="!test? ( test )"
 
@@ -48,6 +48,15 @@ src_prepare() {
 		-e "s:\$d = \$0:\$d = '${EPREFIX}/usr/share/doc/${PF}':" \
 		-e 's:"acroread":"xdg-open":' \
 		doc/gphelp.in || die "Failed to fix doc dir"
+
+	# These tests fail when LaTeX is not installed (which we don't
+	# require without USE=doc), most likely due to output formatting
+	# issues but I haven't deleted my LaTeX installation to check.
+	# There's no real upstream support for enabling/disabling the LaTeX
+	# docs, so this is probably the correctest way to skip these tests.
+	if ! use doc; then
+		rm src/test/{in,32}/help || die
+	fi
 }
 
 src_configure() {

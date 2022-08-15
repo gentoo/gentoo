@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ppc ppc64 ~sparc x86"
 
 RDEPEND="
 	>=dev-python/coverage-4.4.1[${PYTHON_USEDEP}]
@@ -28,7 +28,12 @@ RDEPEND="
 "
 
 distutils_enable_sphinx docs \
-	dev-python/sphinx_rtd_theme
+	dev-python/sphinx_rtd_theme \
+	dev-python/sphinx-issues
+
+PATCHES=(
+	"${FILESDIR}"/${P}-version.patch
+)
 
 src_prepare() {
 	# seriously? that hard to depend on six?!

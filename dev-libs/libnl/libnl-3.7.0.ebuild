@@ -34,7 +34,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="${RDEPEND}
 	sys-devel/bison
 	sys-devel/flex
-	python? ( dev-lang/swig )
+	python? (
+		${DISTUTILS_DEPS}
+		dev-lang/swig
+	)
 	test? ( dev-libs/check )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

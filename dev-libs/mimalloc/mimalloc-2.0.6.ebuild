@@ -11,7 +11,7 @@ SRC_URI="https://github.com/microsoft/mimalloc/archive/refs/tags/v${PV}.tar.gz -
 
 LICENSE="MIT"
 SLOT="0/2"
-KEYWORDS="amd64 ~loong ~x86"
+KEYWORDS="amd64 ~loong ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

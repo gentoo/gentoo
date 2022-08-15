@@ -256,6 +256,8 @@ src_prepare() {
 }
 
 src_configure() {
+	use system-llvm && filter-flags '-flto*' # https://bugs.gentoo.org/862109
+
 	local rust_target="" rust_targets="" arch_cflags
 
 	# Collect rust target names to compile standard libs for all ABIs.

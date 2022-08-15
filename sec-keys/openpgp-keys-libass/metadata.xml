@@ -4,4 +4,5 @@
   <maintainer type="project">
     <email>media-video@gentoo.org</email>
   </maintainer>
+  <stabilize-allarches/>
 </pkgmetadata>

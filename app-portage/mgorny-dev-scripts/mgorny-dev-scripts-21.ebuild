@@ -4,12 +4,12 @@
 EAPI=8
 
 DESCRIPTION="Handy scripts for ebuild development and more"
-HOMEPAGE="https://github.com/mgorny/mgorny-dev-scripts"
-SRC_URI="https://github.com/mgorny/mgorny-dev-scripts/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/projg2/mgorny-dev-scripts"
+SRC_URI="https://github.com/projg2/mgorny-dev-scripts/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc x86 ~x64-macos"
 
 RDEPEND="
 	app-portage/gentoolkit

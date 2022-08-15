@@ -17,7 +17,7 @@ SRC_URI="https://github.com/pocl/pocl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ppc64"
 # TODO: hsa tce
 IUSE="accel +conformance cuda debug examples float-conversion hardening +hwloc memmanager lto test"
 # Tests not yet passing, fragile in Portage environment(?)
@@ -50,7 +50,7 @@ PATCHES=(
 )
 
 python_check_deps() {
-	has_version -b "<dev-python/markupsafe-2.0[${PYTHON_USEDEP}]"
+	python_has_version "<dev-python/markupsafe-2.0[${PYTHON_USEDEP}]"
 }
 
 llvm_check_deps() {

@@ -45,6 +45,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	sys-devel/gettext
 	virtual/pkgconfig
 "
 

@@ -15,7 +15,7 @@ S=${WORKDIR}/z3-${P}
 
 SLOT="0/4.8"
 LICENSE="MIT"
-KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv sparc x86"
 IUSE="doc examples gmp isabelle java python"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

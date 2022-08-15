@@ -13,7 +13,7 @@ inherit ruby-fakegem
 DESCRIPTION="Wirble is a set of enhancements for Irb"
 HOMEPAGE="http://pablotron.org/software/wirble/"
 
-LICENSE="Ruby"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE=""

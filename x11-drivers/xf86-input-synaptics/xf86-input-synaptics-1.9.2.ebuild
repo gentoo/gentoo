@@ -8,7 +8,7 @@ inherit linux-info xorg-3
 
 DESCRIPTION="Driver for Synaptics touchpads"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 x86"
 
 RDEPEND="
 	>=x11-base/xorg-server-1.14

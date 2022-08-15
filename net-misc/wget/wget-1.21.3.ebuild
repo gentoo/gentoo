@@ -50,7 +50,7 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 	test? (
 		${PYTHON_DEPS}
-		dev-perl/HTTP-Daemon
+		>=dev-perl/HTTP-Daemon-6.60.0
 		dev-perl/HTTP-Message
 		dev-perl/IO-Socket-SSL
 	)

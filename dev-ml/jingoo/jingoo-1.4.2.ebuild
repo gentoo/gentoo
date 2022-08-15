@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,9 +17,11 @@ IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-ml/ppx_deriving:=
+	dev-ml/ppxlib:=
 	dev-ml/uucp:=
 	dev-ml/uutf:=
 	dev-ml/re:=
+	dev-ml/ocaml-migrate-parsetree:=
 	dev-ml/menhir:="
 DEPEND="${RDEPEND}
 	test? ( dev-ml/ounit2 )"

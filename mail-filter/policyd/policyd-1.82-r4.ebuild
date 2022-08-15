@@ -6,10 +6,10 @@ EAPI=7
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Policy daemon for postfix and other MTAs"
-HOMEPAGE="http://policyd.sf.net/"
-SRC_URI="http://policyd.sourceforge.net/${P}.tar.gz"
+HOMEPAGE="https://wiki.policyd.org"
+SRC_URI="https://download.policyd.org/v1.82/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~hppa x86"
 

@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-{1..2} luajit )
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE='threads(+)'
 
 inherit edo flag-o-matic lua-single optfeature meson pax-utils python-single-r1 toolchain-funcs xdg

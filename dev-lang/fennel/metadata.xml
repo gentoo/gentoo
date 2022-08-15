@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
-
 <pkgmetadata>
   <maintainer type="person">
     <email>xgqt@gentoo.org</email>
@@ -20,4 +19,7 @@
     At https://fennel-lang.org there's a live in-browser REPL you can use
     without installing anything.
   </longdescription>
+  <upstream>
+    <remote-id type="sourcehut">~technomancy/fennel</remote-id>
+  </upstream>
 </pkgmetadata>

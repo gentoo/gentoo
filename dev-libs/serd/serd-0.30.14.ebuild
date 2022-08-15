@@ -34,7 +34,7 @@ src_prepare() {
 	default
 
 	# fix doc installation path
-	sed -i "s/versioned_name/'${P}'/g" doc/c/meson.build || die
+	sed -i "s/versioned_name/'${PF}'/g" doc/c/meson.build || die
 }
 
 multilib_src_configure() {

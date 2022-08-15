@@ -151,5 +151,4 @@ net-fs/samba ads
 
 # Michał Górny <mgorny@gentoo.org> (2018-02-19)
 # Masked due to unstable deps.
-dev-db/redis tcmalloc
 net-analyzer/netcat crypt

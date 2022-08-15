@@ -10,5 +10,6 @@
   </longdescription>
   <upstream>
     <remote-id type="launchpad">cloud-init</remote-id>
+    <remote-id type="github">canonical/cloud-init</remote-id>
   </upstream>
 </pkgmetadata>

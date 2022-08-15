@@ -1,4 +1,4 @@
-# Copyright 2014-2021 Gentoo Authors
+# Copyright 2014-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,12 +13,11 @@ fi
 
 inherit toolchain-funcs flag-o-matic
 
-DESCRIPTION="base functions required by all Gentoo systems"
+DESCRIPTION="Base functions required by all Gentoo systems"
 HOMEPAGE="https://gitweb.gentoo.org/proj/gentoo-functions.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
 
 src_configure() {
 	tc-export CC

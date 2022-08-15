@@ -1,0 +1,8 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+CHOST="riscv64-gentoo-linux-musl"
+
+CHOST_lp64="riscv64-gentoo-linux-musl"
+
+LIBDIR_lp64="lib"

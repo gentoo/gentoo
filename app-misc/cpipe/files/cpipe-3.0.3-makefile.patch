@@ -1,0 +1,29 @@
+--- a/makefile
++++ b/makefile
+@@ -15,14 +15,14 @@
+ MANDIR=$(prefix)/man/man1
+ 
+ ## Your favorite compiler flags.
+-CFLAGS = -O2 -W -Wall -pedantic
++CFLAGS += -W -Wall -pedantic
++LDLIBS = -lm
+ 
+ VERSION=$(shell cat .version)
+ ########################################################################
+ all: cpipe cpipe.1
+ 
+-cpipe: cpipe.o cmdline.o
+-	$(CC) -o $@ cpipe.o cmdline.o -lm
++cpipe: cmdline.o
+ 
+ cpipe.1: cpipe.1.in
+ 	sed -e "s/|VERSION|/${VERSION}/g" <cpipe.1.in >cpipe.1
+@@ -37,7 +37,7 @@
+ install: cpipe cpipe.1
+ 	mkdir -p $(BINDIR) $(MANDIR)
+ 	cp cpipe $(BINDIR); chmod 755 $(BINDIR)/cpipe
+-	cp cpipe.1 $(MANDIR); chmod 744 $(MANDIR)/cpipe.1
++	cp cpipe.1 $(MANDIR); chmod 644 $(MANDIR)/cpipe.1
+ 
+ uninstall:
+ 	-rm $(BINDIR)/cpipe

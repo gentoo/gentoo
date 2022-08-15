@@ -5,35 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		
-		A web client library that is designed for ease of use.
-		
-		Tutorial: &lt;http://www.serpentine.com/wreq/tutorial.html&gt;
-		
-		Features include:
-		
-		* Simple but powerful `lens`-based API
-		
-		* A solid test suite, and built on reliable libraries like
-		http-client and lens
-		
-		* Session handling includes connection keep-alive and pooling, and
-		cookie persistence
-		
-		* Automatic response body decompression
-		
-		* Powerful multipart form and file upload handling
-		
-		* Support for JSON requests and responses, including navigation of
-		schema-less responses
-		
-		* Basic and OAuth2 bearer authentication
-		
-		* Early TLS support via the tls package
-	</longdescription>
-	<use>
-		<flag name="aws">Enable AWS tests</flag>
-		<flag name="httpbin">Install client</flag>
-	</use>
 </pkgmetadata>

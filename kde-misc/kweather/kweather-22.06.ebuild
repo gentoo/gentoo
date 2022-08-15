@@ -12,7 +12,7 @@ DESCRIPTION="Weather forecast application for Plasma with flat and dynamic/anima
 HOMEPAGE="https://apps.kde.org/kweather/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 LICENSE="GPL-2+"

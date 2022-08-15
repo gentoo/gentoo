@@ -27,7 +27,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	${FILESDIR}/sanlock-fence_sanlock-LDFLAGS.patch
+	"${FILESDIR}"/sanlock-fence_sanlock-LDFLAGS.patch
 )
 
 pkg_setup() {

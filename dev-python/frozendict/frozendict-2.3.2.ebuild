@@ -21,7 +21,9 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
 
-# few tests fail with python3_9 and one with python3_10
-RESTRICT="test"
-
 distutils_enable_tests pytest
+
+python_test() {
+	cd "${T}" || die
+	epytest "${S}/test"
+}

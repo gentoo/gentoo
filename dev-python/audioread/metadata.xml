@@ -11,7 +11,7 @@
 		* The standard library wave and aifc modules (for WAV and AIFF files).
 	</longdescription>
 	<upstream>
-		<remote-id type="github">sampsyo/audioread</remote-id>
+		<remote-id type="github">beetbox/audioread</remote-id>
 		<remote-id type="pypi">audioread</remote-id>
 	</upstream>
 </pkgmetadata>

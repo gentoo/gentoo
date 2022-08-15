@@ -26,4 +26,7 @@
 		<flag name="qml">Enable support Qml-based plugins using <pkg>dev-qt/qtdeclarative</pkg></flag>
 		<flag name="serial">Enable support for serial GPS using <pkg>dev-qt/qtserialport</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="github">qgis/QGIS</remote-id>
+	</upstream>
 </pkgmetadata>

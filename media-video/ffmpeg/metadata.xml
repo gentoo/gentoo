@@ -1,73 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>media-video@gentoo.org</email>
-</maintainer>
-<use>
-	<flag name="amf">Enables support for AMD's Advanced Media Framework (AMF)</flag>
-	<flag name="amr">Enables Adaptive Multi-Rate Audio support</flag>
-	<flag name="amrenc">Enables Adaptive Multi-Rate Audio encoding support with <pkg>media-libs/vo-amrwbenc</pkg>.</flag>
-	<flag name="appkit">Enables Apple AppKit framework</flag>
-	<flag name="bluray">Enable playback of Blu-ray filesystems</flag>
-	<flag name="bs2b">Enables <pkg>media-libs/libbs2b</pkg> based Bauer stereo-to-binaural filter.</flag>
-	<flag name="cdio">Enables audio CD grabbing with <pkg>dev-libs/libcdio</pkg>.</flag>
-	<flag name="chromaprint">Enables audio fingerprinting support with <pkg>media-libs/chromaprint</pkg>.</flag>
-	<flag name="chromium">Builds libffmpeg.so to enable media playback in Chromium-based browsers like Opera and Vivaldi.</flag>
-	<flag name="codec2">Enables codec2 low bit rate speech codec support via <pkg>media-libs/codec2</pkg>.</flag>
-	<flag name="cpudetection">Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)</flag>
-	<flag name="cuda">Enables CUDA-based acceleration. Mostly used for specific filters.</flag>
-	<flag name="dav1d">Enables AV1 decoding via <pkg>media-libs/dav1d</pkg>.</flag>
-	<flag name="fdk">Use external fdk-aac library for AAC encoding</flag>
-	<flag name="flite">Adds a text-to-speech filter based on <pkg>app-accessibility/flite</pkg>.</flag>
-	<flag name="frei0r">Enable frei0r wrapping in libavfilter</flag>
-	<flag name="fribidi">Enables fribidi support in the drawtext filter.</flag>
-	<flag name="gcrypt">Enables gcrypt support: Needed for rtmp(t)e support if openssl, librtmp or gmp is not used.</flag>
-	<flag name="gme">Enables support for <pkg>media-libs/game-music-emu</pkg> for playing various video game music formats.</flag>
-	<flag name="gpl">Build GPL code. Should be enabled unless you require LGPL binaries.</flag>
-	<flag name="hardcoded-tables">Use pre-calculated tables rather than calculating them on the fly.</flag>
-	<flag name="iec61883"> Support for FireWire DV/HDV input device using <pkg>media-libs/libiec61883</pkg>.</flag>
-	<flag name="kvazaar">Enables <pkg>media-libs/kvazaar</pkg> based HEVC encoder.</flag>
-	<flag name="libaom">Enables <pkg>media-libs/libaom</pkg> based AV1 codec support.</flag>
-	<flag name="libaribb24">Enables ARIB text and caption decoding via <pkg>media-libs/aribb24</pkg>.</flag>
-	<flag name="libdrm">Enables <pkg>x11-libs/libdrm</pkg> support for better screen grabbing and hardware accelerated codecs.</flag>
-	<flag name="libilbc">Enables iLBC de/encoding via <pkg>media-libs/libilbc</pkg>.</flag>
-	<flag name="librtmp">Enables Real Time Messaging Protocol using librtmp (<pkg>media-video/rtmpdump</pkg>) in addition to FFmpeg's native implementation.</flag>
-	<flag name="libsoxr">Enables audio resampling through <pkg>media-libs/soxr</pkg>.</flag>
-	<flag name="libtesseract">Enables the OCR filter via <pkg>app-text/tesseract</pkg>.</flag>
-	<flag name="libv4l">Uses <pkg>media-libs/libv4l</pkg> for video4linux instead of direct calls. Adds support for more devices via the userspace library.</flag>
-	<flag name="libxml2">Uses <pkg>dev-libs/libxml2</pkg> to enable dash demuxing support.</flag>
-	<flag name="lv2">Enables lv2 audio filter wrapper.</flag>
-	<flag name="mipsdspr1">Enables MIPS DSP ASE R1 optimizations.</flag>
-	<flag name="mipsdspr2">Enables MIPS DSP ASE R2 optimizations.</flag>
-	<flag name="mipsfpu">Enables floating point MIPS optimizations.</flag>
-	<flag name="mmal">Enables Multi-Media Abstraction Layer (MMAL) decoding support: Available e.g. on the Raspberry Pi.</flag>
-	<flag name="network">Enables network streaming support</flag>
-	<flag name="opencl">Enable OpenCL support</flag>
-	<flag name="openh264">Enables H.264 encoding suppoprt via <pkg>media-libs/openh264</pkg>.</flag>
-	<flag name="openssl">Enables <pkg>dev-libs/openssl</pkg> support. Adds support for encrypted network protocols (TLS/HTTPS).</flag>
-	<flag name="pic">Force shared libraries to be built as PIC (this is slower)</flag>
-	<flag name="postproc">Build and install libpostproc.</flag>
-	<flag name="rav1e">Enables AV1 encoding support via <pkg>media-video/rav1e</pkg>.</flag>
-	<flag name="rubberband">Adds time-stretching and pitch-shifting audio filter based on <pkg>media-libs/rubberband</pkg>.</flag>
-	<flag name="snappy">Enable <pkg>app-arch/snappy</pkg> support. Required for e.g. Vidvox Hap encoder.</flag>
-	<flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
-	<flag name="srt">Enable support for Secure Reliable Transport (SRT) via <pkg>net-libs/srt</pkg></flag>
-	<flag name="ssh">Enable SSH/sftp support via <pkg>net-libs/libssh</pkg>.</flag>
-	<flag name="svt-av1">Enables AV1 encoding support via <pkg>media-libs/svt-av1</pkg>.</flag>
-	<flag name="twolame">Enables MP2 encoding via <pkg>media-sound/twolame</pkg> as an alternative to the internal encoder.</flag>
-	<flag name="vidstab">Enables video stabilization filter using vid.stab library (<pkg>media-libs/vidstab</pkg>).</flag>
-	<flag name="vmaf">Enables Netflix's perceptual video quality assessment filter using the library (<pkg>media-libs/libvmaf</pkg>).</flag>
-	<flag name="vpx">Enables VP8 and VP9 codec support using libvpx: Decoding does not require this to be enabled but libvpx can also be used for decoding; encoding requires this useflag to be enabled though.</flag>
-	<flag name="vulkan">Enables support for the vulkan API for GPU offload.</flag>
-	<flag name="x265">Enables HEVC encoding with <pkg>media-libs/x265</pkg>.</flag>
-	<flag name="zeromq">Enables <pkg>net-libs/zeromq</pkg> support with the zmq/azmq filters.</flag>
-	<flag name="zimg">Enables <pkg>media-libs/zimg</pkg> based scale filter.</flag>
-	<flag name="zvbi">Enables <pkg>media-libs/zvbi</pkg> based teletext decoder.</flag>
-</use>
-<slots>
-	<slot name="0">For building against. This is the only slot that provides
-	headers and command line tools. Binary compatibility slots come and go
-	as required, so always pin dependencies to this slot when appropriate.</slot>
-</slots>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="amf">Enables support for AMD's Advanced Media Framework (AMF)</flag>
+		<flag name="amr">Enables Adaptive Multi-Rate Audio support</flag>
+		<flag name="amrenc">Enables Adaptive Multi-Rate Audio encoding support with <pkg>media-libs/vo-amrwbenc</pkg>.</flag>
+		<flag name="appkit">Enables Apple AppKit framework</flag>
+		<flag name="bluray">Enable playback of Blu-ray filesystems</flag>
+		<flag name="bs2b">Enables <pkg>media-libs/libbs2b</pkg> based Bauer stereo-to-binaural filter.</flag>
+		<flag name="cdio">Enables audio CD grabbing with <pkg>dev-libs/libcdio</pkg>.</flag>
+		<flag name="chromaprint">Enables audio fingerprinting support with <pkg>media-libs/chromaprint</pkg>.</flag>
+		<flag name="chromium">Builds libffmpeg.so to enable media playback in Chromium-based browsers like Opera and Vivaldi.</flag>
+		<flag name="codec2">Enables codec2 low bit rate speech codec support via <pkg>media-libs/codec2</pkg>.</flag>
+		<flag name="cpudetection">Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)</flag>
+		<flag name="cuda">Enables CUDA-based acceleration. Mostly used for specific filters.</flag>
+		<flag name="dav1d">Enables AV1 decoding via <pkg>media-libs/dav1d</pkg>.</flag>
+		<flag name="fdk">Use external fdk-aac library for AAC encoding</flag>
+		<flag name="flite">Adds a text-to-speech filter based on <pkg>app-accessibility/flite</pkg>.</flag>
+		<flag name="frei0r">Enable frei0r wrapping in libavfilter</flag>
+		<flag name="fribidi">Enables fribidi support in the drawtext filter.</flag>
+		<flag name="gcrypt">Enables gcrypt support: Needed for rtmp(t)e support if openssl, librtmp or gmp is not used.</flag>
+		<flag name="gme">Enables support for <pkg>media-libs/game-music-emu</pkg> for playing various video game music formats.</flag>
+		<flag name="gpl">Build GPL code. Should be enabled unless you require LGPL binaries.</flag>
+		<flag name="hardcoded-tables">Use pre-calculated tables rather than calculating them on the fly.</flag>
+		<flag name="iec61883"> Support for FireWire DV/HDV input device using <pkg>media-libs/libiec61883</pkg>.</flag>
+		<flag name="kvazaar">Enables <pkg>media-libs/kvazaar</pkg> based HEVC encoder.</flag>
+		<flag name="libaom">Enables <pkg>media-libs/libaom</pkg> based AV1 codec support.</flag>
+		<flag name="libaribb24">Enables ARIB text and caption decoding via <pkg>media-libs/aribb24</pkg>.</flag>
+		<flag name="libdrm">Enables <pkg>x11-libs/libdrm</pkg> support for better screen grabbing and hardware accelerated codecs.</flag>
+		<flag name="libilbc">Enables iLBC de/encoding via <pkg>media-libs/libilbc</pkg>.</flag>
+		<flag name="librtmp">Enables Real Time Messaging Protocol using librtmp (<pkg>media-video/rtmpdump</pkg>) in addition to FFmpeg's native implementation.</flag>
+		<flag name="libsoxr">Enables audio resampling through <pkg>media-libs/soxr</pkg>.</flag>
+		<flag name="libtesseract">Enables the OCR filter via <pkg>app-text/tesseract</pkg>.</flag>
+		<flag name="libv4l">Uses <pkg>media-libs/libv4l</pkg> for video4linux instead of direct calls. Adds support for more devices via the userspace library.</flag>
+		<flag name="libxml2">Uses <pkg>dev-libs/libxml2</pkg> to enable dash demuxing support.</flag>
+		<flag name="lv2">Enables lv2 audio filter wrapper.</flag>
+		<flag name="mipsdspr1">Enables MIPS DSP ASE R1 optimizations.</flag>
+		<flag name="mipsdspr2">Enables MIPS DSP ASE R2 optimizations.</flag>
+		<flag name="mipsfpu">Enables floating point MIPS optimizations.</flag>
+		<flag name="mmal">Enables Multi-Media Abstraction Layer (MMAL) decoding support: Available e.g. on the Raspberry Pi.</flag>
+		<flag name="network">Enables network streaming support</flag>
+		<flag name="opencl">Enable OpenCL support</flag>
+		<flag name="openh264">Enables H.264 encoding suppoprt via <pkg>media-libs/openh264</pkg>.</flag>
+		<flag name="openssl">Enables <pkg>dev-libs/openssl</pkg> support. Adds support for encrypted network protocols (TLS/HTTPS).</flag>
+		<flag name="pic">Force shared libraries to be built as PIC (this is slower)</flag>
+		<flag name="postproc">Build and install libpostproc.</flag>
+		<flag name="rav1e">Enables AV1 encoding support via <pkg>media-video/rav1e</pkg>.</flag>
+		<flag name="rubberband">Adds time-stretching and pitch-shifting audio filter based on <pkg>media-libs/rubberband</pkg>.</flag>
+		<flag name="snappy">Enable <pkg>app-arch/snappy</pkg> support. Required for e.g. Vidvox Hap encoder.</flag>
+		<flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
+		<flag name="srt">Enable support for Secure Reliable Transport (SRT) via <pkg>net-libs/srt</pkg></flag>
+		<flag name="ssh">Enable SSH/sftp support via <pkg>net-libs/libssh</pkg>.</flag>
+		<flag name="svt-av1">Enables AV1 encoding support via <pkg>media-libs/svt-av1</pkg>.</flag>
+		<flag name="twolame">Enables MP2 encoding via <pkg>media-sound/twolame</pkg> as an alternative to the internal encoder.</flag>
+		<flag name="vidstab">Enables video stabilization filter using vid.stab library (<pkg>media-libs/vidstab</pkg>).</flag>
+		<flag name="vmaf">Enables Netflix's perceptual video quality assessment filter using the library (<pkg>media-libs/libvmaf</pkg>).</flag>
+		<flag name="vpx">Enables VP8 and VP9 codec support using libvpx: Decoding does not require this to be enabled but libvpx can also be used for decoding; encoding requires this useflag to be enabled though.</flag>
+		<flag name="vulkan">Enables support for the vulkan API for GPU offload.</flag>
+		<flag name="x265">Enables HEVC encoding with <pkg>media-libs/x265</pkg>.</flag>
+		<flag name="zeromq">Enables <pkg>net-libs/zeromq</pkg> support with the zmq/azmq filters.</flag>
+		<flag name="zimg">Enables <pkg>media-libs/zimg</pkg> based scale filter.</flag>
+		<flag name="zvbi">Enables <pkg>media-libs/zvbi</pkg> based teletext decoder.</flag>
+	</use>
+	<slots>
+		<slot name="0">For building against. This is the only slot that provides
+		headers and command line tools. Binary compatibility slots come and go
+		as required, so always pin dependencies to this slot when appropriate.</slot>
+	</slots>
+	<upstream>
+		<remote-id type="github">FFmpeg/FFmpeg</remote-id>
+	</upstream>
 </pkgmetadata>

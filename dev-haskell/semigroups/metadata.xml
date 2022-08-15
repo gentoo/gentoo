@@ -5,11 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<use>
-		<flag name="binary">provide instances for binary package</flag>
-		<flag name="transformers">provide instances for transformers package.</flag>
-	</use>
-	<upstream>
-		<remote-id type="github">ekmett/semigroups</remote-id>
-	</upstream>
 </pkgmetadata>

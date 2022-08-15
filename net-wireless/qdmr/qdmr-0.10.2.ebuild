@@ -14,7 +14,7 @@ else
 	MY_PV="${PV/_/-}"
 	SRC_URI="https://github.com/hmatuschek/qdmr/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${MY_PV}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-3+"
@@ -32,9 +32,8 @@ RDEPEND="
 	dev-qt/qtserialport:5
 	virtual/libusb:1
 "
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5"
-BDEPEND=""
+DEPEND="${RDEPEND}"
+BDEPEND="dev-qt/linguist-tools:5"
 
 PATCHES=( "${FILESDIR}/${P}-musl.patch" )
 
@@ -51,4 +50,8 @@ src_prepare() {
 	sed -i 's#666#660#' dist/99-qdmr.rules
 	sed -i "s#/etc/udev/rules.d/#$(get_udevdir)/rules.d#" lib/CMakeLists.txt
 	cmake_src_prepare
+}
+
+pkg_postinst() {
+	udev_reload
 }

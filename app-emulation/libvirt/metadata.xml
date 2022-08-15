@@ -1,99 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>tamiko@gentoo.org</email>
-	<name>Matthias Maier</name>
-</maintainer>
-<maintainer type="person" proxied="yes">
-	<email>michal.privoznik@gmail.com</email>
-	<name>Michal Prívozník</name>
-</maintainer>
-<maintainer type="project">
-	<email>virtualization@gentoo.org</email>
-	<name>Gentoo Virtualization Project</name>
-</maintainer>
-<use>
-	<!-- Pool backend flags -->
-	<flag name="iscsi-direct">
-		Allow using libiscsi for iSCSI storage pool backend
-	</flag>
-	<flag name="iscsi">
-		Allow using an iSCSI remote storage server as pool for disk image storage
-	</flag>
-	<flag name="lvm">
-		Allow using the Logical Volume Manager (<pkg>sys-fs/lvm2</pkg>) as pool for disk image
-		storage
-	</flag>
-	<flag name="nfs">
-		Allow using Network File System mounts as pool for disk image storage
-	</flag>
-	<flag name="parted">
-		Allow using real disk partitions as pool for disk image storage, using
-	<pkg>sys-block/parted</pkg> to create, resize and delete them.
-	</flag>
-	<flag name="rbd">
-		Enable rados block device support via <pkg>sys-cluster/ceph</pkg>
-	</flag>
-	<!-- Virtualisation backends -->
-	<flag name="lxc">
-		Support management of Linux Containers virtualisation (<pkg>app-containers/lxc</pkg>)
-	</flag>
-	<flag name="openvz">
-		Support management of OpenVZ virtualisation (openvz-sources)
-	</flag>
-	<flag name="qemu">
-		Support management of QEMU virtualisation (<pkg>app-emulation/qemu</pkg>)
-	</flag>
-	<flag name="xen">
-		Support management of Xen virtualisation (<pkg>app-emulation/xen</pkg>)
-	</flag>
-	<flag name="virtualbox">
-		Support management of VirtualBox virtualisation (<pkg>app-emulation/virtualbox</pkg>)
-	</flag>
-	<!-- Miscellaneous flags -->
-	<flag name="apparmor">Enable AppArmor support</flag>
-	<flag name="dtrace">Enable dtrace support via <pkg>dev-util/systemtap</pkg></flag>
-	<flag name="fuse">Allow LXC to use <pkg>sys-fs/fuse</pkg> for mount
-		points</flag>
-	<flag name="numa">
-		Use NUMA for memory segmenting via <pkg>sys-process/numactl</pkg> and
-		<pkg>sys-process/numad</pkg>
-	</flag>
-	<flag name="libvirtd">
-		Builds the libvirtd daemon as well as the client utilities instead of just the client
-		utilities
-	</flag>
-	<flag name="libssh">
-		Use <pkg>net-libs/libssh</pkg> to communicate with remote libvirtd hosts,
-		for example: qemu+libssh://server/system
-	</flag>
-	<flag name="libssh2">
-		Use <pkg>net-libs/libssh2</pkg> to communicate with remote libvirtd hosts,
-		for example: qemu+libssh2://server/system
-	</flag>
-	<flag name="pcap">
-		Support auto learning IP addreses for routing
-	</flag>
-	<flag name="virt-network">
-		Enable virtual networking (NAT) support for guests. Includes all
-		the dependencies for NATed network mode. Effectively any network
-		setup that relies on libvirt to setup and configure network
-		interfaces on your host. This can include bridged and routed
-		networks ONLY if you are allowing libvirt to create and manage
-		the underlying devices for you. In some cases this requires
-		enabling the 'netcf' USE flag (currently unavailable).
-	</flag>
-	<flag name="firewalld">DBus interface to iptables/ebtables allowing
-		for better runtime management of your firewall.</flag>
-	<flag name="wireshark-plugins">
-		Build the <pkg>net-analyzer/wireshark</pkg> plugin for the Libvirt RPC protocol
-	</flag>
-	<flag name="glusterfs">
-		Enable GlusterFS support via <pkg>sys-cluster/glusterfs</pkg>
-	</flag>
-	<flag name="zfs">
-		Enable ZFS backend storage <pkg>sys-fs/zfs</pkg>
-	</flag>
-</use>
+	<maintainer type="person">
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>michal.privoznik@gmail.com</email>
+		<name>Michal Prívozník</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>virtualization@gentoo.org</email>
+		<name>Gentoo Virtualization Project</name>
+	</maintainer>
+	<use>
+		<!-- Pool backend flags -->
+		<flag name="iscsi-direct">
+			Allow using libiscsi for iSCSI storage pool backend
+		</flag>
+		<flag name="iscsi">
+			Allow using an iSCSI remote storage server as pool for disk image storage
+		</flag>
+		<flag name="lvm">
+			Allow using the Logical Volume Manager (<pkg>sys-fs/lvm2</pkg>) as pool for disk image
+			storage
+		</flag>
+		<flag name="nfs">
+			Allow using Network File System mounts as pool for disk image storage
+		</flag>
+		<flag name="parted">
+			Allow using real disk partitions as pool for disk image storage, using
+			<pkg>sys-block/parted</pkg> to create, resize and delete them.
+		</flag>
+		<flag name="rbd">
+			Enable rados block device support via <pkg>sys-cluster/ceph</pkg>
+		</flag>
+		<!-- Virtualisation backends -->
+		<flag name="lxc">
+			Support management of Linux Containers virtualisation (<pkg>app-containers/lxc</pkg>)
+		</flag>
+		<flag name="openvz">
+			Support management of OpenVZ virtualisation (openvz-sources)
+		</flag>
+		<flag name="qemu">
+			Support management of QEMU virtualisation (<pkg>app-emulation/qemu</pkg>)
+		</flag>
+		<flag name="xen">
+			Support management of Xen virtualisation (<pkg>app-emulation/xen</pkg>)
+		</flag>
+		<flag name="virtualbox">
+			Support management of VirtualBox virtualisation (<pkg>app-emulation/virtualbox</pkg>)
+		</flag>
+		<!-- Miscellaneous flags -->
+		<flag name="apparmor">Enable AppArmor support</flag>
+		<flag name="dtrace">Enable dtrace support via <pkg>dev-util/systemtap</pkg></flag>
+		<flag name="fuse">Allow LXC to use <pkg>sys-fs/fuse</pkg> for mountpoints</flag>
+		<flag name="numa">
+			Use NUMA for memory segmenting via <pkg>sys-process/numactl</pkg> and
+			<pkg>sys-process/numad</pkg>
+		</flag>
+		<flag name="libvirtd">
+			Builds the libvirtd daemon as well as the client utilities instead of just the client
+			utilities
+		</flag>
+		<flag name="libssh">
+			Use <pkg>net-libs/libssh</pkg> to communicate with remote libvirtd hosts,
+			for example: qemu+libssh://server/system
+		</flag>
+		<flag name="libssh2">
+			Use <pkg>net-libs/libssh2</pkg> to communicate with remote libvirtd hosts,
+			for example: qemu+libssh2://server/system
+		</flag>
+		<flag name="pcap">
+			Support auto learning IP addreses for routing
+		</flag>
+		<flag name="virt-network">
+			Enable virtual networking (NAT) support for guests. Includes all
+			the dependencies for NATed network mode. Effectively any network
+			setup that relies on libvirt to setup and configure network
+			interfaces on your host. This can include bridged and routed
+			networks ONLY if you are allowing libvirt to create and manage
+			the underlying devices for you. In some cases this requires
+			enabling the 'netcf' USE flag (currently unavailable).
+		</flag>
+		<flag name="firewalld">DBus interface to iptables/ebtables allowing
+			for better runtime management of your firewall.</flag>
+		<flag name="wireshark-plugins">
+			Build the <pkg>net-analyzer/wireshark</pkg> plugin for the Libvirt RPC protocol
+		</flag>
+		<flag name="glusterfs">
+			Enable GlusterFS support via <pkg>sys-cluster/glusterfs</pkg>
+		</flag>
+		<flag name="zfs">
+			Enable ZFS backend storage <pkg>sys-fs/zfs</pkg>
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="gitlab">libvirt/libvirt</remote-id>
+	</upstream>
 </pkgmetadata>

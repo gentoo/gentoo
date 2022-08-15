@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2022-07-28)
+# kde-frameworks/plasma not stable on ppc64
+app-i18n/uim kde
+
 # Sam James <sam@gentoo.org> (2022-03-07)
 # sys-cluster/torque not marked stable on ppc64
 sys-cluster/openmpi openmpi_rm_pbs

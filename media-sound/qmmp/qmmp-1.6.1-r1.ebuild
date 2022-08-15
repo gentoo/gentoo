@@ -10,7 +10,7 @@ HOMEPAGE="http://qmmp.ylsoftware.com"
 if [[ ${PV} != 9999 ]]; then
 	SRC_URI="http://qmmp.ylsoftware.com/files/${P}.tar.bz2
 		mirror://sourceforge/${PN}-dev/files/${P}.tar.bz2"
-	KEYWORDS="~amd64 x86"
+	KEYWORDS="amd64 x86"
 else
 	inherit subversion
 	QMMP_DEV_BRANCH="1.3"
@@ -89,9 +89,8 @@ RDEPEND="
 	wavpack? ( media-sound/wavpack )
 	xmp? ( media-libs/libxmp )
 "
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-qt/linguist-tools:5"
 
 DOCS=( AUTHORS ChangeLog README )
 

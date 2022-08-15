@@ -73,4 +73,7 @@
 		<pkg>sys-apps/attr</pkg>. Requisite for the virtfs backend.</flag>
 		<flag name="xen">Enables support for Xen backends</flag>
 	</use>
+	<upstream>
+		<remote-id type="gitlab">qemu-project/qemu</remote-id>
+	</upstream>
 </pkgmetadata>

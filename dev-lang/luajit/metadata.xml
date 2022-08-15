@@ -11,4 +11,7 @@
       from Lua 5.2 that are unlikely to break existing code.
     </flag>
   </use>
+  <upstream>
+    <remote-id type="github">LuaJIT/LuaJIT</remote-id>
+  </upstream>
 </pkgmetadata>

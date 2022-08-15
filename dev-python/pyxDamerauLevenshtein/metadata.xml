@@ -11,6 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pyxDamerauLevenshtein</remote-id>
-		<remote-id type="github">gfairchild/pyxDamerauLevenshtein</remote-id>
+		<remote-id type="github">lanl/pyxDamerauLevenshtein</remote-id>
 	</upstream>
 </pkgmetadata>

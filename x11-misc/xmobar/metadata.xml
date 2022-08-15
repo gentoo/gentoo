@@ -6,25 +6,16 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
-		<flag name="alsa">Use alsa-mixer to get the volume from soundcards</flag>
-		<flag name="dbus">Publish a service on the session bus for controlling xmobar</flag>
-		<flag name="inotify">inotify support (modern Linux only). Required for the Mail and MBox plugins</flag>
-		<flag name="mpd">Support mpd plugin</flag>
-		<flag name="timezone">Enables localized date support</flag>
-		<flag name="mpris">Enables MPRIS v1, v2  support</flag>
-		<flag name="rtsopts">Reduce process wakekups frequency to decrease CPU usage</flag>
-		<flag name="uvmeter">Plugin to show UV data for Australia</flag>
-		<flag name="weather">Enable weather plugin</flag>
-		<flag name="wifi">Wireless info support via nl80211. Required for the Wireless plugin on systems running Linux</flag>
-		<flag name="iwlib">Wireless info support via Wext ioctls (deprecated)</flag>
-		<flag name="xft">Use Xft to render text. UTF-8 support included</flag>
-		<flag name="xpm">Enable usage of xpm for icons</flag>
+		<flag name="alsa">Use alsa-mixer to get the volume from soundcards.</flag>
+		<flag name="dbus">Publish a service on the session bus for controlling xmobar.</flag>
+		<flag name="mpd">MPD support. Needs libmpd installed.</flag>
+		<flag name="mpris">MPRIS v1, v2 support.</flag>
+		<flag name="rtsopts">Use -with-rtsopts=-V0 to reduce wakeups.</flag>
+		<flag name="timezone">Enables localized date support.</flag>
+		<flag name="uvmeter">UVMeter only useful to australians.</flag>
+		<flag name="weather">Enable weather plugin.</flag>
+		<flag name="wifi">Wireless info support via nl80211. Required for the Wireless plugin on systems running Linux, the kernel.</flag>
+		<flag name="xft">Use Xft to render text. UTF-8 support included.</flag>
+		<flag name="xpm">Enable usage of xpm for icons.</flag>
 	</use>
-	<longdescription>
-		Xmobar is a minimalistic text based status bar.
-		
-		Inspired by the Ion3 status bar, it supports similar
-		features, like dynamic color management, output templates,
-		and extensibility through plugins.
-	</longdescription>
 </pkgmetadata>

@@ -1,11 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ARCH="ppc64"
 CHOST="powerpc64le-pc-linux-gnu"
-# The base profile sets ACCEPT_KEYWORDS=ppc64 and we don't have that in prefix.
-# Eventually, ~* should be removed once someone is motivated for this arch
-ACCEPT_KEYWORDS="-ppc64 ~ppc64-linux ~*"
+# The base profile sets ACCEPT_KEYWORDS=ppc64, add unstable on top of that
+ACCEPT_KEYWORDS="~ppc64"
 
 # We don't have lib64 in prefix so, remove it here.
 SYMLINK_LIB=""

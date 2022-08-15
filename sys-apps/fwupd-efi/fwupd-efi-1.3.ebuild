@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit meson python-any-r1 toolchain-funcs
 
@@ -39,6 +39,7 @@ src_configure() {
 	local emesonargs=(
 		-Defi-cc="$(tc-getCC)"
 		-Defi-ld="$(tc-getLD)"
+		-Defi-libdir="${EPREFIX}"/usr/$(get_libdir)
 		-Defi_sbat_distro_id="gentoo"
 		-Defi_sbat_distro_summary="Gentoo GNU/Linux"
 		-Defi_sbat_distro_pkgname="${PN}"

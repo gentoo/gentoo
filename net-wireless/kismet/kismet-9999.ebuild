@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{9,10,11} )
 
 inherit autotools python-single-r1 udev systemd
 
@@ -78,7 +78,7 @@ RDEPEND="${CDEPEND}
 "
 DEPEND="${CDEPEND}
 	dev-libs/boost
-	dev-libs/libfmt
+	<dev-libs/libfmt-9
 "
 BDEPEND="virtual/pkgconfig"
 
@@ -116,11 +116,16 @@ src_prepare() {
 	if [ "${PV}" = "9999" ]; then
 		eautoreconf
 	fi
+	# VERSION was incorrectly removed in 4e490cf0b49a287e964df9c5e5c4067f6918909e upstream
+	# https://github.com/kismetwireless/kismet/issues/427
+	# https://bugs.gentoo.org/864298
+	echo "${PV}" > VERSION
 }
 
 src_configure() {
 	econf \
 		$(use_enable libusb libusb) \
+		$(use_enable libusb wifi-coconut) \
 		$(use_enable pcre) \
 		$(use_enable lm-sensors lmsensors) \
 		$(use_enable networkmanager libnm) \
@@ -142,7 +147,7 @@ src_install() {
 		dobin "${FILESDIR}"/kismet-gdb
 	fi
 
-	dodoc CHANGELOG README*
+	dodoc README*
 	newinitd "${FILESDIR}"/${PN}.initd-r3 kismet
 	newconfd "${FILESDIR}"/${PN}.confd-r2 kismet
 	systemd_dounit packaging/systemd/kismet.service

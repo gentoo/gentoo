@@ -19,4 +19,7 @@
 			(uses <pkg>app-arch/xar</pkg>)</flag>
 		<flag name="z3">Enable support for <pkg>sci-mathematics/z3</pkg> constraint solver</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">llvm/llvm-project</remote-id>
+	</upstream>
 </pkgmetadata>

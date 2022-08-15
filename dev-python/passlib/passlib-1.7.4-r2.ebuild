@@ -24,9 +24,9 @@ BDEPEND="
 	test? (
 		dev-python/bcrypt[${PYTHON_USEDEP}]
 		dev-python/scrypt[${PYTHON_USEDEP}]
-		!alpha? ( !hppa? ( !ia64? (
+		!alpha? ( !arm? ( !hppa? ( !ia64? ( !s390? ( !sparc? (
 			dev-python/cryptography[${PYTHON_USEDEP}]
-		) ) )
+		) ) ) ) ) )
 	)"
 
 distutils_enable_tests pytest

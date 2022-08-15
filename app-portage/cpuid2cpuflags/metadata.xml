@@ -6,6 +6,6 @@
     <name>Michał Górny</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">mgorny/cpuid2cpuflags</remote-id>
+    <remote-id type="github">projg2/cpuid2cpuflags</remote-id>
   </upstream>
 </pkgmetadata>

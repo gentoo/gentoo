@@ -5,7 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="github">ekmett/keys</remote-id>
-	</upstream>
 </pkgmetadata>

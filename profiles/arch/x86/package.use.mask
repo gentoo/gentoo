@@ -1,10 +1,6 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-06-29)
-# dev-java/assertj-core:3 not keyworded
->=dev-java/randomized-runner-2.8.0 test
-
 # Conrad Kostecki <conikost@gentoo.org> (2022-07-19)
 # www-servers/nginx currently only available on amd64/x86
 www-servers/nginx -nginx_modules_http_security
@@ -154,10 +150,6 @@ app-text/texlive-core -xindy
 # sys-apps/apparmor not keyworded on x86.
 app-containers/lxc apparmor
 app-containers/lxd apparmor
-
-# Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
-# sys-cluster/slurm is keyworded on x86
-app-metrics/collectd -collectd_plugins_slurm
 
 # Georgy Yakovlev <gyakovlev@gentoo.org (2020-04-26)
 # static-pie works on x86, #719444

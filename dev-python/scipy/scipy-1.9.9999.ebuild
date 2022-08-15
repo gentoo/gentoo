@@ -38,28 +38,33 @@ else
 	S="${WORKDIR}"/${MY_P}
 
 	if [[ ${PV} != *rc* ]] ; then
-		KEYWORDS="~amd64 ~arm ~arm64 -hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+		KEYWORDS="~amd64 -hppa ~ppc64 ~riscv"
 	fi
 fi
 
 LICENSE="BSD LGPL-2"
 SLOT="0"
-IUSE="doc +sparse"
+IUSE="doc"
 
+# umfpack is technically optional but it's preferred to have it available.
 DEPEND="
 	>=dev-python/numpy-1.18.5[lapack,${PYTHON_USEDEP}]
-	sci-libs/arpack:0=
+	sci-libs/arpack:=
+	sci-libs/umfpack
 	virtual/cblas
 	>=virtual/lapack-3.8
-	sparse? ( sci-libs/umfpack:0= )"
-RDEPEND="${DEPEND}
-	dev-python/pillow[${PYTHON_USEDEP}]"
+"
+RDEPEND="
+	${DEPEND}
+	dev-python/pillow[${PYTHON_USEDEP}]
+"
 # TODO: restore pythran optionality?
 BDEPEND="
 	dev-lang/swig
 	>=dev-python/cython-0.29.18[${PYTHON_USEDEP}]
 	dev-python/pybind11[${PYTHON_USEDEP}]
 	dev-python/pythran[${PYTHON_USEDEP}]
+	>=dev-util/meson-0.62.2
 	dev-util/patchelf
 	virtual/pkgconfig
 	doc? ( app-arch/unzip )
@@ -69,10 +74,31 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.9999-meson-options-lapack.patch
 )
 
+EPYTEST_DESELECT=(
+	linalg/tests/test_decomp.py::TestSchur::test_sort
+	linalg/tests/test_solvers.py::test_solve_discrete_are
+)
+
 distutils_enable_tests pytest
+
+src_unpack() {
+	default
+
+	if use doc; then
+		unzip -qo "${DISTDIR}"/${PN}-html-${DOC_PV}.zip -d html || die
+	fi
+}
 
 python_test() {
 	cd "${T}" || die
 
 	epytest -n "$(makeopts_jobs)" --pyargs scipy
+}
+
+python_install_all() {
+	use doc && \
+		local DOCS=( "${DISTDIR}"/${PN}-ref-${DOC_PV}.pdf ) \
+		local HTML_DOCS=( "${WORKDIR}"/html/. )
+
+	distutils-r1_python_install_all
 }

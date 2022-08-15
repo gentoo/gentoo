@@ -71,6 +71,7 @@ src_configure() {
 	tc-export AR CC RANLIB
 	use fidonet && append-cppflags "-DFIDO"
 	append-cppflags "-DAUTO_PPP"
+	filter-lto
 
 	sed -e 's:var/log/mgetty:var/log/mgetty/mgetty:' \
 		-e 's:var/log/sendfax:var/log/mgetty/sendfax:' \

@@ -260,7 +260,7 @@ pre_build_checks() {
 		CHECKREQS_DISK_BUILD="12G"
 		tc-is-cross-compiler && CHECKREQS_DISK_BUILD="15G"
 	fi
-	if ( shopt -s extglob; is-flagq '-g?(gdb)?([1-9])' ); then
+	if is-flagq '-g?(gdb)?([1-9])'; then
 		if use custom-cflags || use component-build; then
 			CHECKREQS_DISK_BUILD="25G"
 		fi

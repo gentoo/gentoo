@@ -5,4 +5,7 @@
 		<email>base-system@gentoo.org</email>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">vcrhonek/hwdata</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -76,11 +76,17 @@ tree-sitter-grammar_src_compile() {
 	fi
 
 	local soname=lib${PN}$(get_libname $(_get_tsg_abi_ver))
+
+	local soname_args="-Wl,--soname=${soname}"
+	if [[ ${CHOST} == *darwin* ]] ; then
+		soname_args="-Wl,-install_name,${EPREFIX}/usr/$(get_libdir)/${soname}"
+	fi
+
 	edo ${link} ${LDFLAGS} \
 			-shared \
 			*.o \
-			-Wl,--soname=${soname} \
-			-o "${WORKDIR}"/${soname} || die
+			${soname_args} \
+			-o "${WORKDIR}"/${soname}
 }
 
 # @FUNCTION: tree-sitter-grammar_src_install

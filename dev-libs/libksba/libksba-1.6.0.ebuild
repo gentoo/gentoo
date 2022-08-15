@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="X.509 and CMS (PKCS#7) library"
-HOMEPAGE="http://www.gnupg.org/related_software/libksba"
+HOMEPAGE="https://www.gnupg.org/related_software/libksba"
 SRC_URI="mirror://gnupg/libksba/${P}.tar.bz2"
 
 LICENSE="LGPL-3+ GPL-2+ GPL-3"

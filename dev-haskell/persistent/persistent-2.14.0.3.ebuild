@@ -14,7 +14,7 @@ HOMEPAGE="https://www.yesodweb.com/book/persistent"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 
 RDEPEND=">=dev-haskell/aeson-1.0:=[profile?] <dev-haskell/aeson-2.1:=[profile?]
 	dev-haskell/attoparsec:=[profile?]

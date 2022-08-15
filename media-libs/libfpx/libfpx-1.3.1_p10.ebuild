@@ -17,6 +17,7 @@ S=${WORKDIR}/${P/_p/-}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.0.13-export-symbols.patch
+	"${FILESDIR}"/${PN}-1.3.1_p10-musl-1.2.3-null.patch
 )
 
 src_prepare() {

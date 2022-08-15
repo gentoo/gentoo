@@ -13,5 +13,6 @@
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:sqlite:sqlite</remote-id>
+		<remote-id type="github">sqlite/sqlite</remote-id>
 	</upstream>
 </pkgmetadata>

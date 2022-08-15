@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit cmake-multilib python-any-r1
 
 DESCRIPTION="EXIF, IPTC and XMP metadata C++ library and command line utility"
-HOMEPAGE="https://www.exiv2.org/"
+HOMEPAGE="https://exiv2.org/"
 
 LICENSE="GPL-2"
 # In 0.27.5, ABI seemed to be broken for bmff functions

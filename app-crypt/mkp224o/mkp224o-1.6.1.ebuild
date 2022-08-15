@@ -9,7 +9,7 @@ SRC_URI="https://github.com/cathugger/${PN}/releases/download/v${PV}/${PN}-${PV}
 
 LICENSE="CC0-1.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="cpu_flags_x86_sse2 pcre2"
 
 DEPEND="

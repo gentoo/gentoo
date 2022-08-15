@@ -27,6 +27,7 @@ RDEPEND="${DEPEND}
 # libglvnd is only needed for the headers
 BDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
 	>=dev-python/pybind11-2.5.0[${PYTHON_USEDEP}]
+	<dev-python/pybind11-2.10.0[${PYTHON_USEDEP}]
 	opengl? ( media-libs/libglvnd )"
 
 # The test suite fails if there are no OpenCL platforms available, and

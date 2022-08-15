@@ -13,7 +13,7 @@ if [[ ${PV} =~ [9]{4,} ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://git.kernel.org/pub/scm/libs/libtrace/libtracefs.git/snapshot/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 LICENSE="LGPL-2.1"

@@ -9,4 +9,7 @@
   <flag name="mariadb">Add mariadb database support</flag>
   <flag name="stemmer">Enable language stemming support</flag>
 </use>
+<upstream>
+  <remote-id type="github">sphinxsearch/sphinx</remote-id>
+</upstream>
 </pkgmetadata>

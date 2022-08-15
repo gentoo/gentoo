@@ -5,32 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		An API for efficient and convenient construction of vectors.
-		It provides the composable `Builder` abstraction, which has instances of the `Monoid` and `Semigroup` classes.
-		
-		[Usage]
-		
-		First you use the `Builder` abstraction to specify the structure of the vector.
-		Then you execute the builder to actually produce the vector.
-		
-		[Example]
-		
-		The following code shows how you can efficiently concatenate different datastructures into a single immutable vector:
-		
-		&gt;
-		&gt;import qualified Data.Vector as A
-		&gt;import qualified VectorBuilder.Builder as B
-		&gt;import qualified VectorBuilder.Vector as C
-		&gt;
-		&gt;
-		&gt;myVector :: A.Vector a -&gt; [a] -&gt; a -&gt; A.Vector a
-		&gt;myVector vector list element =
-		&gt;  C.build builder
-		&gt;  where
-		&gt;    builder =
-		&gt;      B.vector vector &lt;&gt;
-		&gt;      foldMap B.singleton list &lt;&gt;
-		&gt;      B.singleton element
-	</longdescription>
 </pkgmetadata>

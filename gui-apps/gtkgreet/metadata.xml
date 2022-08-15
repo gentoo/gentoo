@@ -5,4 +5,7 @@
 	<use>
 		<flag name="layershell">Enable layer shell support</flag>
 	</use>
+	<upstream>
+		<remote-id type="sourcehut">~kennylevinsen/gtkgreet</remote-id>
+	</upstream>
 </pkgmetadata>

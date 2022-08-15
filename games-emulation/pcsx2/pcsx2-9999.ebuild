@@ -4,7 +4,7 @@
 EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
-inherit cmake fcaps flag-o-matic git-r3 toolchain-funcs wxwidgets
+inherit cmake fcaps git-r3 toolchain-funcs wxwidgets
 
 DESCRIPTION="A PlayStation 2 emulator"
 HOMEPAGE="https://pcsx2.net/"
@@ -61,13 +61,9 @@ FILECAPS=(
 	-m 755 "CAP_NET_RAW+eip CAP_NET_ADMIN+eip" usr/bin/pcsx2
 )
 
-pkg_setup() {
-	if [[ ${MERGE_TYPE} != binary && $(tc-getCC) == *gcc* ]]; then
-		# -mxsave flag is needed when GCC >= 8.2 is used
-		# https://bugs.gentoo.org/685156
-		append-flags -mxsave
-	fi
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.7.0-crcs.patch
+)
 
 src_prepare() {
 	cmake_src_prepare
@@ -93,8 +89,8 @@ src_configure() {
 	# if it something other than "Devel|Debug|Release"
 	local CMAKE_BUILD_TYPE="Release"
 	local mycmakeargs=(
-		-DARCH_FLAG=
 		-DBUILD_SHARED_LIBS=FALSE
+		-DDISABLE_ADVANCE_SIMD=TRUE
 		-DDISABLE_BUILD_DATE=TRUE
 		-DDISABLE_PCSX2_WRAPPER=TRUE
 		-DDISABLE_SETCAP=TRUE

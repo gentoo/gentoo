@@ -24,6 +24,7 @@
 	<upstream>
 		<bugs-to>https://bugs.openldap.org/</bugs-to>
 		<remote-id type="cpe">cpe:/a:openldap:openldap</remote-id>
+		<remote-id type="github">openldap/openldap</remote-id>
 		<remote-id type="gitlab">openldap/openldap</remote-id>
 	</upstream>
 </pkgmetadata>

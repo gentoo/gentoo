@@ -20,5 +20,6 @@
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:todd_miller:sudo</remote-id>
+		<remote-id type="github">sudo-project/sudo</remote-id>
 	</upstream>
 </pkgmetadata>

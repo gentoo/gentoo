@@ -1,0 +1,47 @@
+From 939273025ed92246b5e6d1e3a944a8c88bbc682b Mon Sep 17 00:00:00 2001
+From: ivan tkachenko <me@ratijas.tk>
+Date: Fri, 22 Jul 2022 21:27:04 +0300
+Subject: [PATCH] ToolTip: Sync to PC3: Strip out ampersands
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Easily reproducible broken example: put a notes applet on a desktop,
+hover over its "Configure…" button (it should be fine so far), then
+right click it, press Escape (or otherwise close the context menu, and
+hover again: now the tooltip spells "&Configure…" because for some
+reason a mnemonic was added during this time.
+---
+ org.kde.desktop/ToolTip.qml | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/org.kde.desktop/ToolTip.qml b/org.kde.desktop/ToolTip.qml
+index 40dfcbd..3a03cc5 100644
+--- a/org.kde.desktop/ToolTip.qml
++++ b/org.kde.desktop/ToolTip.qml
+@@ -13,7 +13,7 @@ import QtQuick.Layouts 1.15
+ import org.kde.kirigami 2.12 as Kirigami
+ 
+ T.ToolTip {
+-    id: controlRoot
++    id: control
+ 
+     Kirigami.Theme.colorSet: Kirigami.Theme.Tooltip
+     Kirigami.Theme.inherit: false
+@@ -41,9 +41,11 @@ T.ToolTip {
+     closePolicy: T.Popup.CloseOnEscape | T.Popup.CloseOnPressOutsideParent | T.Popup.CloseOnReleaseOutsideParent
+ 
+     contentItem: Controls.Label {
+-        text: controlRoot.text
++        // Strip out ampersands right before non-whitespace characters, i.e.
++        // those used to determine the alt key shortcut
++        text: control.text.replace(/&(?=\S)/g, "")
+         wrapMode: Text.WordWrap
+-        font: controlRoot.font
++        font: control.font
+         Kirigami.Theme.colorSet: Kirigami.Theme.Tooltip
+         color: Kirigami.Theme.textColor
+     }
+-- 
+GitLab
+

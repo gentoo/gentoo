@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="display bandwidth usage on an interface"
 SRC_URI="http://www.ex-parrot.com/pdw/iftop/download/${P/_/}.tar.gz"
-HOMEPAGE="http://www.ex-parrot.com/pdw/iftop/"
+HOMEPAGE="http://www.ex-parrot.com/pdw/iftop/ https://code.blinkace.com/pdw/iftop"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -14,4 +14,7 @@
 		estimate the level of consistency of each position within the new
 		alignment with the rest of the alignments.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">cbcrg/tcoffee</remote-id>
+	</upstream>
 </pkgmetadata>

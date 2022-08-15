@@ -48,7 +48,7 @@ patches() {
 READLINE_VER="8.2"
 
 DESCRIPTION="The standard GNU Bourne again shell"
-HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html"
+HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html https://git.savannah.gnu.org/cgit/bash.git"
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/bash.git"
 	EGIT_BRANCH=devel
@@ -70,7 +70,7 @@ SLOT="0"
 if is_release ; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
-IUSE="afs bashlogger examples mem-scramble +net nls plugins +readline"
+IUSE="afs bashlogger examples mem-scramble +net nls plugins pgo +readline"
 
 DEPEND="
 	>=sys-libs/ncurses-5.2-r2:0=
@@ -84,7 +84,10 @@ RDEPEND="
 "
 # We only need yacc when the .y files get patched (bash42-005, bash51-011)
 #BDEPEND="virtual/yacc"
-BDEPEND="verify-sig? ( sec-keys/openpgp-keys-chetramey )"
+BDEPEND="
+	pgo? ( dev-util/gperf )
+	verify-sig? ( sec-keys/openpgp-keys-chetramey )
+"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -186,16 +189,16 @@ src_configure() {
 	#use static && export LDFLAGS="${LDFLAGS} -static"
 	use nls || myconf+=( --disable-nls )
 
-	# Historically, we always used the builtin readline, but since
-	# our handling of SONAME upgrades has gotten much more stable
-	# in the PM (and the readline ebuild itself preserves the old
-	# libs during upgrades), linking against the system copy should
-	# be safe.
-	# Exact cached version here doesn't really matter as long as it
-	# is at least what's in the DEPEND up above.
-	export ac_cv_rl_version=${READLINE_VER%%_*}
-
 	if is_release ; then
+		# Historically, we always used the builtin readline, but since
+		# our handling of SONAME upgrades has gotten much more stable
+		# in the PM (and the readline ebuild itself preserves the old
+		# libs during upgrades), linking against the system copy should
+		# be safe.
+		# Exact cached version here doesn't really matter as long as it
+		# is at least what's in the DEPEND up above.
+		export ac_cv_rl_version=${READLINE_VER%%_*}
+
 		# Use system readline only with released versions.
 		myconf+=( --with-installed-readline=. )
 	fi
@@ -220,10 +223,24 @@ src_configure() {
 }
 
 src_compile() {
-	emake
+	if use pgo ; then
+		# Build Bash and run its tests to generate profiles.
+		emake CFLAGS="${CFLAGS} -fprofile-generate=${T}/pgo -fprofile-dir=${T}/pgo"
 
-	if use plugins ; then
-		emake -C examples/loadables all others
+		# Used in test suite.
+		unset A
+
+		emake CFLAGS="${CFLAGS} -fprofile-generate=${T}/pgo -fprofile-dir=${T}/pgo" -k check
+
+		# Rebuild Bash using the profiling data we just generated.
+		emake clean
+		emake CFLAGS="${CFLAGS} -fprofile-use=${T}/pgo -fprofile-dir=${T}/pgo"
+
+		use plugins && emake -C examples/loadables CFLAGS="${CFLAGS} -fprofile-use=${T}/pgo -fprofile-dir=${T}/pgo" all others
+	else
+		emake
+
+		use plugins && emake -C examples/loadables all others
 	fi
 }
 
@@ -294,7 +311,11 @@ src_install() {
 		done
 	fi
 
-	doman doc/*.1
+	# Install bash_builtins.1 and rbash.1
+	emake -C doc DESTDIR="${D}" install_builtins
+	sed 's:bash\.1:man1/&:' doc/rbash.1 > "${T}"/rbash.1 || die
+	doman "${T}"/rbash.1
+
 	newdoc CWRU/changelog ChangeLog
 	dosym bash.info /usr/share/info/bashref.info
 }

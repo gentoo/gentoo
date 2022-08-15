@@ -55,5 +55,6 @@
   </use>
   <upstream>
     <remote-id type="sourceforge">opendkim</remote-id>
+    <remote-id type="github">trusteddomainproject/OpenDKIM</remote-id>
   </upstream>
 </pkgmetadata>

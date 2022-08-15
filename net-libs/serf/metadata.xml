@@ -9,4 +9,7 @@
 		<email>jsmolic@gentoo.org</email>
 		<name>Jakov Smolić</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">apache/serf</remote-id>
+	</upstream>
 </pkgmetadata>

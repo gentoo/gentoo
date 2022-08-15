@@ -6,6 +6,6 @@
 		<name>Chromium in Gentoo Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">martine/ninja</remote-id>
+		<remote-id type="github">ninja-build/ninja</remote-id>
 	</upstream>
 </pkgmetadata>

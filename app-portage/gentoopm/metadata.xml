@@ -11,7 +11,8 @@
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
     </maintainer>
-    <bugs-to>https://github.com/mgorny/gentoopm/issues/</bugs-to>
-    <remote-id type="github">mgorny/gentoopm</remote-id>
+    <bugs-to>https://github.com/projg2/gentoopm/issues/</bugs-to>
+    <remote-id type="github">projg2/gentoopm</remote-id>
+    <remote-id type="pypi">gentoopm</remote-id>
   </upstream>
 </pkgmetadata>

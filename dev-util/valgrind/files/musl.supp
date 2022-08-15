@@ -1,0 +1,47 @@
+# From: https://git.alpinelinux.org/aports/tree/main/valgrind/
+# Suppressions for musl libc
+# See: https://www.openwall.com/lists/musl/2017/06/15/4
+
+{
+   musl-dynlink-false-positive1
+   Memcheck:Leak
+   fun:calloc
+   fun:load_direct_deps
+   fun:load_deps
+   fun:load_deps
+   fun:__dls3
+   fun:__dls2b
+   fun:__dls2
+}
+
+{
+   musl-dynlink-false-positive2
+   Memcheck:Leak
+   fun:calloc
+   fun:load_direct_deps
+   fun:load_deps
+   fun:load_deps
+   fun:__dls3
+   fun:__dls2
+}
+
+{
+   musl-dynlink-false-positive3
+   Memcheck:Leak
+   fun:calloc
+   fun:load_library
+   fun:load_preload
+   fun:__dls3
+   fun:__dls2b
+   fun:__dls2
+}
+
+{
+   musl-dynlink-false-positive4
+   Memcheck:Leak
+   fun:calloc
+   fun:load_library
+   fun:load_preload
+   fun:__dls3
+   fun:__dls2
+}

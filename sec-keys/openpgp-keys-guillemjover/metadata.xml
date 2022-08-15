@@ -5,4 +5,5 @@
     <email>freedesktop-bugs@gentoo.org</email>
     <name>Gentoo Freedesktop Project</name>
   </maintainer>
+  <stabilize-allarches/>
 </pkgmetadata>

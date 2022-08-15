@@ -36,7 +36,7 @@ SRC_URI="
 LICENSE="EPL-1.0 Apache-2.0 BSD"
 SLOT="$(ver_cut 1-2)"
 
-KEYWORDS="~amd64 ~x86 ~x86-linux"
+KEYWORDS="amd64 x86 ~x86-linux"
 
 PATCHES=( "${FILESDIR}"/add-compile-spec-ant-build-target.patch )
 

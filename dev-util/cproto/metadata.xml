@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<changelog>https://invisible-island.net/cproto/CHANGES.html</changelog>
+		<remote-id type="github">ThomasDickey/cproto-snapshots</remote-id>
 	</upstream>
 </pkgmetadata>

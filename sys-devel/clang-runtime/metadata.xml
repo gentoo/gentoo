@@ -10,4 +10,7 @@
 		<flag name="openmp">Install <pkg>sys-libs/libomp</pkg> for -fopenmp support</flag>
 		<flag name="sanitize">Enable compiler-rt sanitizer (-fsanitize*) support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">llvm/llvm-project</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-                <email>eras@gentoo.org</email>
-                <name>Eray Aslan</name>
-        </maintainer>
-  <use>
-    <flag name="argon2">Add support for ARGON2 password schemes</flag>
-    <flag name="managesieve">Add managesieve protocol support</flag>
-    <flag name="sieve">Add sieve support</flag>
-    <flag name="lucene">Add lucene full text search (FTS) support using <pkg>dev-cpp/clucene</pkg></flag>
-    <flag name="rpc">Add support for NFS quotas</flag>
-    <flag name="solr">Add solr full text search (FTS) support</flag>
-    <flag name="stemmer">Add libstemmer support (for FTS)</flag>
-    <flag name="textcat">Add libtextcat language guessing support for full text search (FTS)</flag>
-    <flag name="zstd">Add support for zstd (de)compression</flag>
-  </use>
-  <upstream>
-    <remote-id type="github">dovecot/core</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>eras@gentoo.org</email>
+		<name>Eray Aslan</name>
+	</maintainer>
+	<use>
+		<flag name="argon2">Add support for ARGON2 password schemes</flag>
+		<flag name="managesieve">Add managesieve protocol support</flag>
+		<flag name="sieve">Add sieve support</flag>
+		<flag name="lucene">Add lucene full text search (FTS) support using <pkg>dev-cpp/clucene</pkg></flag>
+		<flag name="rpc">Add support for NFS quotas</flag>
+		<flag name="solr">Add solr full text search (FTS) support</flag>
+		<flag name="stemmer">Add libstemmer support (for FTS)</flag>
+		<flag name="textcat">Add libtextcat language guessing support for full text search (FTS)</flag>
+		<flag name="zstd">Add support for zstd (de)compression</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">dovecot/core</remote-id>
+	</upstream>
 </pkgmetadata>
