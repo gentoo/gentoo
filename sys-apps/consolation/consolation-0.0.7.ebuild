@@ -11,7 +11,7 @@ SRC_URI="https://salsa.debian.org/consolation-team/${PN}/-/archive/${P}/${PN}-${
 
 LICENSE="GPL-2+ MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE=""
 
 DEPEND="dev-libs/libinput:=
