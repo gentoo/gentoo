@@ -4,7 +4,6 @@
 EAPI=8
 
 ECM_TEST="forceoptional"
-KDE_GEAR="true"
 KDE_ORG_CATEGORY="kdevelop"
 KDE_ORG_NAME="kdev-python"
 PYTHON_COMPAT=( python3_{8..9} )

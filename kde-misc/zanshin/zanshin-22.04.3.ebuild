@@ -4,7 +4,6 @@
 EAPI=8
 
 ECM_TEST="forceoptional"
-KDE_GEAR="true"
 KDE_ORG_CATEGORY="pim"
 PVCUT=$(ver_cut 1-3)
 KFMIN=5.92.0
