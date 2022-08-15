@@ -192,6 +192,10 @@ src_configure() {
 	# Fix linking on Solaris
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lsocket -lnsl
 
+	# ODR warnings, bug #858335
+	# https://gitlab.kitware.com/cmake/cmake/-/issues/20740
+	filter-lto
+
 	local mycmakeargs=(
 		-DCMAKE_USE_SYSTEM_LIBRARIES=ON
 		-DCMAKE_DOC_DIR=/share/doc/${PF}
