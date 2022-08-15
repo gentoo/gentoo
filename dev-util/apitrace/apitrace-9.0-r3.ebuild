@@ -1,9 +1,8 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-CMAKE_ECLASS=cmake
 PYTHON_COMPAT=( python3_{7..10} )
 inherit cmake-multilib multilib python-single-r1
 
@@ -62,7 +61,7 @@ src_configure() {
 			-DENABLE_GUI=$(multilib_native_usex qt5)
 			-DENABLE_STATIC_SNAPPY=OFF
 			-DENABLE_WAFFLE=ON
-			-DPYTHON_EXECUTABLE="${PYTHON}"
+			-DPython3_EXECUTABLE="${PYTHON}"
 		)
 		cmake_src_configure
 	}
