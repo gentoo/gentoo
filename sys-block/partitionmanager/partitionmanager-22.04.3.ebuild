@@ -4,7 +4,6 @@
 EAPI=8
 
 ECM_HANDBOOK="optional"
-KDE_GEAR="true"
 KFMIN=5.92.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=5.15.4

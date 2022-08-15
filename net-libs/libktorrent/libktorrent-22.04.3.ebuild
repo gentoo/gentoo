@@ -4,7 +4,6 @@
 EAPI=8
 
 ECM_TEST="forceoptional"
-KDE_GEAR="true"
 KDE_ORG_CATEGORY="network"
 KFMIN=5.92.0
 QTMIN=5.15.4

@@ -4,7 +4,6 @@
 EAPI=8
 
 ECM_HANDBOOK="false"
-KDE_GEAR="true"
 KDE_ORG_CATEGORY="sdk"
 KDE_ORG_NAME="dolphin-plugins"
 MY_PLUGIN_NAME="mountiso"
