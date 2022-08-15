@@ -125,10 +125,6 @@ sys-apps/flashrom atahpt atapromise atavia drkaiser gfxnvidia internal it8212 ni
 # requires clisp whichis keyworded on fewer arches
 app-text/texlive-core xindy
 
-# Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
-# Dependency is only keyworded on amd64 and x86
-app-metrics/collectd collectd_plugins_slurm
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-26)
 # static-pie is not implemented on all arches, #719444
 # https://sourceware.org/glibc/wiki/PortStatus
