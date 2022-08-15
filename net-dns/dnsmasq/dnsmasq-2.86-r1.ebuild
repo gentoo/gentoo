@@ -44,11 +44,17 @@ DEPEND="${COMMON_DEPEND}
 		dev-libs/nettle:=[gmp]
 		static? ( >=dev-libs/nettle-3.4[static-libs(+)] )
 	)
+	nettlehash? (
+		static? ( >=dev-libs/nettle-3.4[static-libs(+)] )
+	)
 "
 
 RDEPEND="${COMMON_DEPEND}
 	dnssec? (
 		!static? ( >=dev-libs/nettle-3.4:=[gmp] )
+	)
+	nettlehash? (
+		!static? ( dev-libs/nettle:=[gmp] )
 	)
 	selinux? ( sec-policy/selinux-dnsmasq )
 "
