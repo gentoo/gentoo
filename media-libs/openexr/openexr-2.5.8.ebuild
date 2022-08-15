@@ -3,7 +3,6 @@
 
 EAPI=8
 
-CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="ILM's OpenEXR high dynamic-range image file format libraries"
