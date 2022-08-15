@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-CMAKE_ECLASS=cmake
 
 inherit cmake-multilib flag-o-matic systemd
 
