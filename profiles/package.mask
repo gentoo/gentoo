@@ -513,12 +513,6 @@ dev-util/docker-ls
 # Bug #857948, removal on 2022-08-13.
 net-misc/csync
 
-# David Seifert <soap@gentoo.org> (2022-07-14)
-# Unmaintained, no other major distro carries this, code quality is
-# abysmal, build system has major issues, tons of patches, EAPI 6,
-# no other revdeps in tree. Bug #822762, #831874, removal on 2022-08-13.
-sci-visualization/opendx
-
 # Marek Szuba <marecki@gentoo.org> (2022-07-13)
 # Upstream has switched from CMake to hand-crafted Makefiles (yes, TO them),
 # which have seriously messed up dependency handling and trigger several
