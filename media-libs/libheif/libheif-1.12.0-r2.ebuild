@@ -61,6 +61,7 @@ multilib_src_configure() {
 		$(use_enable gdk-pixbuf)
 		$(use_enable rav1e)
 		$(use_enable threads multithreading)
+		$(use_enable test tests)
 		$(use_enable x265)
 	)
 	ECONF_SOURCE="${S}" econf "${econf_args[@]}"
