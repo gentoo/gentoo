@@ -729,7 +729,7 @@ python_setup() {
 	fi
 
 	# (reverse iteration -- newest impl first)
-	local found
+	local found i
 	_python_verify_patterns "${@}"
 	for (( i = ${#_PYTHON_SUPPORTED_IMPLS[@]} - 1; i >= 0; i-- )); do
 		local impl=${_PYTHON_SUPPORTED_IMPLS[i]}
