@@ -37,6 +37,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
+	"${FILESDIR}"/${P}-dav1d-1.0.0.patch
 	"${FILESDIR}"/${PN}-1.12.0-fix-bashism.patch
 )
 
