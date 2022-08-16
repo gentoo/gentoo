@@ -10,7 +10,12 @@ inherit distutils-r1
 
 DESCRIPTION="Python library and command line tool for configuring a YubiKey"
 HOMEPAGE="https://developers.yubico.com/yubikey-manager/"
-SRC_URI="https://github.com/Yubico/yubikey-manager/releases/download/${PV}/${P}.tar.gz"
+# Per https://github.com/Yubico/yubikey-manager/issues/217, Yubico is
+# the official source for tarballs, not Github.
+# Unfortunately in spite of having been mentioned on the Release Notes
+# page since mid-July, as of mid-August 2022 there is still no trace
+# of an official 4.0.9 tarball.
+SRC_URI="https://github.com/Yubico/yubikey-manager/releases/download/${PV}/${P}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
