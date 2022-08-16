@@ -28,6 +28,10 @@ BDEPEND="
 	doc? ( app-text/xmlto app-text/asciidoc )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.3.1-musl-pthread.patch
+)
+
 src_configure() {
 	EMAKE_FLAGS=(
 		"prefix=${EPREFIX}/usr"
