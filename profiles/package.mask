@@ -534,7 +534,6 @@ dev-java/asm-analysis
 dev-java/asm-commons
 dev-java/asm-tree
 dev-java/asm-util
-dev-java/log4j-api-java9
 
 # Fabian Groffen <grobian@gentoo.org> (2022-07-02)
 # Segfaults handling SPF validations (warn on permerror), like the
