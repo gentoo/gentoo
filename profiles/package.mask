@@ -507,12 +507,6 @@ dev-lang/ruby:2.6
 # open bugs: bug #680358, bug #844694. Removal on 2022-08-15.
 dev-util/docker-ls
 
-# Bernard Cafarelli <voyageur@gentoo.org> (2022-07-14)
-# Dead upstream (last release in 2013, no tarballs or git download)
-# No reverse dependencies for a long time, several test and build failures
-# Bug #857948, removal on 2022-08-13.
-net-misc/csync
-
 # Marek Szuba <marecki@gentoo.org> (2022-07-13)
 # Upstream has switched from CMake to hand-crafted Makefiles (yes, TO them),
 # which have seriously messed up dependency handling and trigger several
