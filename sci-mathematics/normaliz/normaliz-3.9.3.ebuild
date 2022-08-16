@@ -11,7 +11,7 @@ SRC_URI="https://github.com/Normaliz/Normaliz/releases/download/v${PV}/${P}.tar.
 
 LICENSE="GPL-3"
 SLOT="0/3"
-KEYWORDS="~amd64 ~arm ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc extras nauty openmp"
 
 RDEPEND="
