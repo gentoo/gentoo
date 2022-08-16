@@ -11,12 +11,6 @@ From: Christos Zoulas <christos@zoulas.com>
 Date: Mon, 4 Jul 2022 17:00:51 +0000
 Subject: [PATCH] PR/358: Fix width for -f - (jpalus)
 
----
- src/file.c | 46 +++++++++++++++++++++++++++++-----------------
- 2 files changed, 31 insertions(+), 18 deletions(-)
-
-diff --git a/src/file.c b/src/file.c
-index 5300e5af8..bb058ce1e 100644
 --- a/src/file.c
 +++ b/src/file.c
 @@ -506,35 +506,47 @@ unwrap(struct magic_set *ms, const char *fn)
@@ -262,12 +256,6 @@ Date: Mon, 4 Jul 2022 20:16:29 +0000
 Subject: [PATCH] Handle invalid characters as octal (idea from PR/363 by
  dimich)
 
----
- src/file.c | 16 +++++++++++-----
- 1 file changed, 11 insertions(+), 5 deletions(-)
-
-diff --git a/src/file.c b/src/file.c
-index 5e89137d7..af9be0f0c 100644
 --- a/src/file.c
 +++ b/src/file.c
 @@ -580,8 +580,11 @@ fname_print(const char *inname)
@@ -307,12 +295,6 @@ Date: Mon, 4 Jul 2022 22:30:51 +0000
 Subject: [PATCH] mbrlen(NULL, is not portable; revert to using memset to
  initialize the state.
 
----
- src/file.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
-diff --git a/src/file.c b/src/file.c
-index af9be0f0c..8b4f14c2e 100644
 --- a/src/file.c
 +++ b/src/file.c
 @@ -575,14 +575,14 @@ fname_print(const char *inname)
@@ -395,12 +377,6 @@ From: Christos Zoulas <christos@zoulas.com>
 Date: Tue, 26 Jul 2022 15:10:05 +0000
 Subject: [PATCH] Fix bug with large flist (Florian Weimer)
 
----
- src/file.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/src/file.c b/src/file.c
-index e169c08fc..c0b8aa197 100644
 --- a/src/file.c
 +++ b/src/file.c
 @@ -535,6 +535,7 @@ out:		file_err(EXIT_FAILURE, "Cannot allocate memory for file list");
