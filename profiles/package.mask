@@ -518,7 +518,6 @@ net-misc/csync
 # abysmal, build system has major issues, tons of patches, EAPI 6,
 # no other revdeps in tree. Bug #822762, #831874, removal on 2022-08-13.
 sci-visualization/opendx
-sci-visualization/opendx-samples
 
 # Marek Szuba <marecki@gentoo.org> (2022-07-13)
 # Upstream has switched from CMake to hand-crafted Makefiles (yes, TO them),
