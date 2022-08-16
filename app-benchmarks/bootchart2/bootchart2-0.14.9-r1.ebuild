@@ -31,6 +31,7 @@ CONFIG_CHECK="~PROC_EVENTS ~TASKSTATS ~TASK_DELAY_ACCT ~TMPFS"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.14.8-no-compressed-man.patch
+	"${FILESDIR}"/${P}-glibc-2.36.patch
 )
 
 src_prepare() {
