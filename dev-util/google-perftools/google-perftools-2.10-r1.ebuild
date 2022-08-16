@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,16 +19,14 @@ SLOT="0/4"
 # AIX ppc/ppc64
 KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 
-IUSE="largepages largepages64k +debug minimal optimisememory test static-libs"
+IUSE="largepages largepages64k +debug llvm-libunwind minimal optimisememory test static-libs"
 
 RESTRICT="!test? ( test )"
 
-# TODO: remove the riscv special case once either libunwind has begun supporting this arch
-# or this package allows using llvm-libunwind for other arches
-DEPEND="!ppc64? (
-	riscv? ( sys-libs/llvm-libunwind:= )
-	!riscv? ( sys-libs/libunwind:= )
-)"
+DEPEND="
+	llvm-libunwind? ( sys-libs/llvm-libunwind:= )
+	!llvm-libunwind? ( sys-libs/libunwind:= )
+"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
