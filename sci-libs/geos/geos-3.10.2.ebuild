@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake
 
 DESCRIPTION="Geometry engine library for Geographic Information Systems"
-HOMEPAGE="https://trac.osgeo.org/geos/"
+HOMEPAGE="https://libgeos.org/"
 SRC_URI="https://download.osgeo.org/geos/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
