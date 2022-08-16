@@ -527,11 +527,6 @@ sci-visualization/opendx-samples
 # and the jumbo patch fixing the former has been thoroughly tested.
 >media-gfx/gmic-3.1.0
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-07-12)
-# Unused java libraries, all asm-* included in dev-java/asm,
-# log4j-api-java9 never to be used as a package. Removal on 2022-08-12.
-dev-java/asm-analysis
-
 # Fabian Groffen <grobian@gentoo.org> (2022-07-02)
 # Segfaults handling SPF validations (warn on permerror), like the
 # previous release, better not to trust your important mail to
