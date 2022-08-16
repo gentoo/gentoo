@@ -317,6 +317,7 @@ python_setup() {
 
 	# fallback to the best installed impl.
 	# (reverse iteration over _PYTHON_SUPPORTED_IMPLS)
+	local i
 	for (( i = ${#_PYTHON_SUPPORTED_IMPLS[@]} - 1; i >= 0; i-- )); do
 		local impl=${_PYTHON_SUPPORTED_IMPLS[i]}
 		# avoid checking EPYTHON twice
