@@ -531,7 +531,6 @@ sci-visualization/opendx-samples
 # Unused java libraries, all asm-* included in dev-java/asm,
 # log4j-api-java9 never to be used as a package. Removal on 2022-08-12.
 dev-java/asm-analysis
-dev-java/asm-commons
 
 # Fabian Groffen <grobian@gentoo.org> (2022-07-02)
 # Segfaults handling SPF validations (warn on permerror), like the
