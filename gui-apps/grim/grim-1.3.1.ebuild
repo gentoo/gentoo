@@ -21,11 +21,11 @@ SLOT="0"
 IUSE="+man jpeg"
 
 DEPEND="
-	>=dev-libs/wayland-protocols-1.14
 	dev-libs/wayland
-	jpeg? ( virtual/jpeg )
-	x11-libs/cairo"
-
+	>=dev-libs/wayland-protocols-1.14
+	x11-libs/cairo
+	jpeg? ( media-libs/libjpeg-turbo )
+"
 RDEPEND="${DEPEND}"
 
 if [[ ${PV} == 9999 ]]; then
