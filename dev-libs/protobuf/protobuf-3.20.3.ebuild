@@ -21,7 +21,7 @@ HOMEPAGE="
 "
 
 LICENSE="BSD"
-SLOT="0/32"
+SLOT="0/31"
 IUSE="emacs examples static-libs test zlib"
 RESTRICT="!test? ( test )"
 
@@ -34,7 +34,7 @@ RDEPEND="emacs? ( app-editors/emacs:* )
 PATCHES=(
 	"${FILESDIR}/${PN}-3.19.0-disable_no-warning-test.patch"
 	"${FILESDIR}/${PN}-3.19.0-system_libraries.patch"
-	"${FILESDIR}/${PN}-3.20.1-protoc_input_output_files.patch"
+	"${FILESDIR}/${PN}-3.20.2-protoc_input_output_files.patch"
 )
 
 DOCS=(CHANGES.txt CONTRIBUTORS.txt README.md)
