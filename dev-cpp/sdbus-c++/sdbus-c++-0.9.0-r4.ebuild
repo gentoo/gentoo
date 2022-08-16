@@ -6,8 +6,8 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 inherit python-any-r1 meson cmake
 
-SDP="systemd-stable-250.6"
-MUSL_PATCHSET="250.4"
+SDP="systemd-stable-251.4"
+MUSL_PATCHSET="251.2"
 
 DESCRIPTION="High-level C++ D-Bus library"
 HOMEPAGE="https://github.com/Kistler-Group/sdbus-cpp"
