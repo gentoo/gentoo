@@ -38,6 +38,7 @@ PATCHES=(
 	# See bug #836702 before removing / verify builds fine w/ USE=python
 	# with latest kernel headers.
 	"${FILESDIR}"/${PN}-3.0.8-linux-headers-5.17.patch
+	"${FILESDIR}"/${PN}-3.0.8-musl-malloc.patch
 )
 
 src_prepare() {
@@ -72,7 +73,7 @@ multilib_src_configure() {
 			mkdir -p "${BUILD_DIR}" || die
 			pushd "${BUILD_DIR}" &>/dev/null || die
 
-			ECONF_SOURCE=${S} econf "${myeconfargs[@]}" --with-python3
+			ECONF_SOURCE="${S}" econf "${myeconfargs[@]}" --with-python3
 
 			popd &>/dev/null || die
 		}
