@@ -403,6 +403,11 @@ src_unpack() {
 src_prepare() {
 	ghc_setup_cflags
 
+	# ghc-9.0.2 release anomaly
+	# https://www.mail-archive.com/search?l=ghc-devs@haskell.org&q=subject:%22Re%5C%3A+%5C%5BHaskell%5C%5D+%5C%5BANNOUNCE%5C%5D+GHC+9.0.2+released%22&o=newest&f=1
+	# https://src.fedoraproject.org/rpms/ghc9.0/blob/rawhide/f/ghc9.0.spec#_327
+	rm -rf "libraries/containers/containers/dist-install" || die
+
 	if ! use ghcbootstrap && [[ ${CHOST} != *-darwin* && ${CHOST} != *-solaris* ]]; then
 		# Modify the wrapper script from the binary tarball to use GHC_PERSISTENT_FLAGS.
 		# See bug #313635.
