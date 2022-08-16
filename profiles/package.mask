@@ -536,12 +536,6 @@ dev-java/asm-tree
 dev-java/asm-util
 dev-java/log4j-api-java9
 
-# Sam James <sam@gentoo.org> (2022-07-12)
-# Huge number of open bugs, deprecated upstream (they recommend
-# using other video editors like Shotcut, Kdenlive, ...). Removal on 2022-08-12.
-# Bugs #372053, #438248, #740528, #778338, #832380, #834406.
-media-video/kino
-
 # Fabian Groffen <grobian@gentoo.org> (2022-07-02)
 # Segfaults handling SPF validations (warn on permerror), like the
 # previous release, better not to trust your important mail to
