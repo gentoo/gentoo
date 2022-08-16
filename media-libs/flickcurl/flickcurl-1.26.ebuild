@@ -6,8 +6,8 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="C library for the Flickr API"
-HOMEPAGE="http://librdf.org/flickcurl/"
-SRC_URI="http://download.dajobe.org/flickcurl/${P}.tar.gz"
+HOMEPAGE="https://librdf.org/flickcurl/"
+SRC_URI="https://download.dajobe.org/flickcurl/${P}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 GPL-2 Apache-2.0 )"
 SLOT="0"
