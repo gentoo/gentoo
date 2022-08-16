@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit flag-o-matic prefix python-single-r1 systemd
+inherit prefix python-single-r1 systemd
 
 DESCRIPTION="File transfer program to keep remote files into sync"
 HOMEPAGE="https://rsync.samba.org/"
@@ -34,18 +34,19 @@ SLOT="0"
 IUSE="acl examples iconv lz4 ssl stunnel system-zlib xattr xxhash zstd"
 REQUIRED_USE+=" examples? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="acl? ( virtual/acl )
+RDEPEND="
+	>=dev-libs/popt-1.5
+	acl? ( virtual/acl )
 	examples? (
 		${PYTHON_DEPS}
 		dev-lang/perl
 	)
-	lz4? ( app-arch/lz4 )
-	ssl? ( dev-libs/openssl:0= )
+	lz4? ( app-arch/lz4:= )
+	ssl? ( dev-libs/openssl:= )
 	system-zlib? ( sys-libs/zlib )
 	xattr? ( kernel_linux? ( sys-apps/attr ) )
-	xxhash? ( dev-libs/xxhash )
-	zstd? ( >=app-arch/zstd-1.4 )
-	>=dev-libs/popt-1.5
+	xxhash? ( >=dev-libs/xxhash-0.8 )
+	zstd? ( >=app-arch/zstd-1.4:= )
 	iconv? ( virtual/libiconv )"
 DEPEND="${RDEPEND}"
 BDEPEND="examples? ( ${PYTHON_DEPS} )"
