@@ -145,7 +145,7 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	dodoc ChangeLog MAINT README
+	dodoc ChangeLog MAINT README.md
 
 	# Required for `file -C`
 	insinto /usr/share/misc/magic
