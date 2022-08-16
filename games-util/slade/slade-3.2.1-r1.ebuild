@@ -54,7 +54,7 @@ src_prepare() {
 	cmake_src_prepare
 
 	# Delete bundled libraries just in case.
-	rm -r thirdparty/dumb/ || die
+	rm -r thirdparty/dumb/ thirdparty/fmt/ || die
 
 }
 
@@ -66,9 +66,12 @@ src_configure() {
 		-DLua_FIND_VERSION_MINOR=$(ver_cut 2 "${luav}")
 		-DLua_FIND_VERSION_COUNT=2
 		-DLua_FIND_VERSION_EXACT=ON
+		-DNO_COTIRE=ON
 		-DNO_FLUIDSYNTH=$(usex fluidsynth OFF ON)
 		-DNO_WEBVIEW=$(usex webkit OFF ON)
 		-DUSE_SFML_RENDERWINDOW=ON
+		-DUSE_SYSTEM_DUMB=ON
+		-DUSE_SYSTEM_FMT=ON
 		-DWX_GTK3=ON
 	)
 
