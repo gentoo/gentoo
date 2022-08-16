@@ -11,9 +11,6 @@
 		every input DV frame or create MicroDVD subtitles with the
 		recording date and time.
 	</longdescription>
-	<use>
-		<flag name="kino">install kino plugin</flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">dv2sub</remote-id>
 	</upstream>
