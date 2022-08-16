@@ -21,7 +21,7 @@ HOMEPAGE="
 "
 
 LICENSE="BSD"
-SLOT="0/32"
+SLOT="0/30"
 IUSE="emacs examples static-libs test zlib"
 RESTRICT="!test? ( test )"
 
@@ -34,7 +34,7 @@ RDEPEND="emacs? ( app-editors/emacs:* )
 PATCHES=(
 	"${FILESDIR}/${PN}-3.19.0-disable_no-warning-test.patch"
 	"${FILESDIR}/${PN}-3.19.0-system_libraries.patch"
-	"${FILESDIR}/${PN}-3.20.1-protoc_input_output_files.patch"
+	"${FILESDIR}/${PN}-3.16.0-protoc_input_output_files.patch"
 )
 
 DOCS=(CHANGES.txt CONTRIBUTORS.txt README.md)
@@ -57,8 +57,11 @@ src_prepare() {
 	# https://github.com/protocolbuffers/protobuf/issues/8460
 	sed -e "/^TEST(AnyTest, TestPackFromSerializationExceedsSizeLimit) {$/a\\  if (sizeof(void*) == 4) {\n    GTEST_SKIP();\n  }" -i src/google/protobuf/any_test.cc || die
 
+	# https://github.com/protocolbuffers/protobuf/issues/9392
+	sed -e "s/^AC_PROG_OBJC$/AS_CASE([\$target_os], [darwin*], [AC_PROG_OBJC], [AM_CONDITIONAL([am__fastdepOBJC], [false])])/" -i configure.ac || die
+
 	# https://github.com/protocolbuffers/protobuf/issues/9433
-	sed -e "/^[[:space:]]*static_assert(alignof(U) <= 8, \"\");$/d" -i src/google/protobuf/descriptor.cc || die
+	sed -e "/^[[:space:]]*static_assert(alignof(T) <= 8, \"\");$/d" -i src/google/protobuf/descriptor.cc || die
 
 	eautoreconf
 }
