@@ -256,7 +256,7 @@ src_configure() {
 		# TODO: Available from 2.39+ on but let's try the warning on for a bit
 		# first... (--enable-warn-execstack)
 		# Could put it under USE=hardened?
-		#--disable-default-execstack
+		#--disable-default-execstack (or is it --enable-default-execstack=no? docs are confusing)
 
 		# Things to think about
 		#--enable-deterministic-archives
