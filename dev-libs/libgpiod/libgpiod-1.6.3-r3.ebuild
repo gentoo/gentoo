@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 #  --enable-bindings-python
 
 pkg_setup() {
-	CONFIG_CHECK="GPIO_CDEV_V1"
+	CONFIG_CHECK="~GPIO_CDEV_V1"
 	linux-info_pkg_setup
 }
 
