@@ -542,11 +542,6 @@ dev-java/log4j-api-java9
 # Bugs #372053, #438248, #740528, #778338, #832380, #834406.
 media-video/kino
 
-# Matt Turner <mattst88@gentoo.org> (2022-07-11)
-# Dead package upstream. No reverse dependencies.
-# Removal on 2022-08-11.
-x11-libs/gtk+extra
-
 # Fabian Groffen <grobian@gentoo.org> (2022-07-02)
 # Segfaults handling SPF validations (warn on permerror), like the
 # previous release, better not to trust your important mail to
