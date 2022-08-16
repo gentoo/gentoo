@@ -50,6 +50,10 @@ DEPEND="${DEPEND}
 
 DOCS=( README.md doc/ChangeLog doc/cmd.txt )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.27.5-musl-tests.patch
+)
+
 pkg_setup() {
 	use doc && python-any-r1_pkg_setup
 }
