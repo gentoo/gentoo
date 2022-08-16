@@ -533,7 +533,6 @@ sci-visualization/opendx-samples
 dev-java/asm-analysis
 dev-java/asm-commons
 dev-java/asm-tree
-dev-java/asm-util
 
 # Fabian Groffen <grobian@gentoo.org> (2022-07-02)
 # Segfaults handling SPF validations (warn on permerror), like the
