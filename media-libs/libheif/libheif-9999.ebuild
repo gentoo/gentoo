@@ -22,7 +22,12 @@ IUSE="+aom gdk-pixbuf go rav1e test +threads x265"
 REQUIRED_USE="test? ( go )"
 RESTRICT="!test? ( test )"
 
-BDEPEND="test? ( dev-lang/go )"
+BDEPEND="
+	test? (
+		<dev-cpp/catch-3
+		dev-lang/go
+	)
+"
 DEPEND="
 	media-libs/dav1d:=[${MULTILIB_USEDEP}]
 	media-libs/libde265:=[${MULTILIB_USEDEP}]
@@ -44,6 +49,11 @@ src_prepare() {
 	default
 
 	sed -i -e 's:-Werror::' configure.ac || die
+
+	if use test ; then
+		rm tests/catch.hpp || die
+		ln -s "${ESYSROOT}"/usr/include/catch2/catch.hpp tests/catch.hpp || die
+	fi
 
 	eautoreconf
 
