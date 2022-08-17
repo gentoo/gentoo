@@ -33,20 +33,18 @@ HOMEPAGE="
 "
 
 LICENSE="BSD"
-SLOT="0/32"
+SLOT="0/31"
 
 S="${WORKDIR}/${PARENT_P}/python"
 
 BDEPEND="
-	dev-libs/protobuf:${SLOT}
-	dev-python/six[${PYTHON_USEDEP}]
 "
 DEPEND="
 	${PYTHON_DEPS}
-	dev-libs/protobuf:${SLOT}
 "
 RDEPEND="
 	${BDEPEND}
+	dev-libs/protobuf:${SLOT}
 "
 
 distutils_enable_tests setup.py

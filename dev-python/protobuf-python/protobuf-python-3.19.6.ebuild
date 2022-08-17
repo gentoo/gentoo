@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -33,20 +33,18 @@ HOMEPAGE="
 "
 
 LICENSE="BSD"
-SLOT="0/32"
+SLOT="0/30"
 
 S="${WORKDIR}/${PARENT_P}/python"
 
 BDEPEND="
-	dev-libs/protobuf:${SLOT}
-	dev-python/six[${PYTHON_USEDEP}]
 "
 DEPEND="
 	${PYTHON_DEPS}
-	dev-libs/protobuf:${SLOT}
 "
 RDEPEND="
 	${BDEPEND}
+	dev-libs/protobuf:${SLOT}
 "
 
 distutils_enable_tests setup.py
@@ -55,6 +53,7 @@ distutils_enable_tests setup.py
 # please see function `python_prepare_all` below.
 # Simplier for users IMHO.
 PARENT_PATCHES=(
+	"${FILESDIR}/${PN}-3.19.0-google.protobuf.pyext._message.PyUnknownFieldRef.patch"
 )
 
 # Here for patches within "python/" subdirectory.
