@@ -156,13 +156,15 @@ pkg_postinst() {
 
 	if [[ ! -v QUTEBROWSER_HAD_QT6 ]] && use qt6; then
 		elog "USE=qt6 is enabled using the qt6-v2 branch, it is work-in-progress"
-		elog "and some issues are to be expected. Can follow upstream progress at:"
+		elog "and some issues may be expected. Can follow upstream progress at:"
 		elog "  https://github.com/qutebrowser/qutebrowser/issues/7202 [qt6 general]"
 		elog "  https://github.com/qutebrowser/qutebrowser/tree/qt6-v2 [used branch]"
-		elog
-		elog "You may optionally want to backup your ~/.local/share/${PN} before"
-		elog "it is converted to use Qt6 WebEngine (one-way conversion). ${PN}"
-		elog "will also warn about this on launch for a last chance to abort."
+		if [[ ${REPLACING_VERSIONS} ]]; then
+			elog
+			elog "You may optionally want to backup your ~/.local/share/${PN} before"
+			elog "it is converted to use Qt6 WebEngine (one-way conversion). ${PN}"
+			elog "will also warn about this on launch for a last chance to abort."
+		fi
 	fi
 
 	# TODO: left-out given be confusing while IUSE is masked anywhere
