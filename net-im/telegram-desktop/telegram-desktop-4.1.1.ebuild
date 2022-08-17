@@ -76,7 +76,6 @@ PATCHES=(
 	"${FILESDIR}/tdesktop-3.3.0-fix-enchant.patch"
 	"${FILESDIR}/tdesktop-3.5.2-musl.patch"
 	"${FILESDIR}/tdesktop-4.0.2-fix-gcc12-cstdint.patch"
-	"${FILESDIR}/tdesktop-4.1.0-fix-unique_ptr-declaration.patch"
 )
 
 # Current desktop-file-utils-0.26 does not understand Version=1.5
