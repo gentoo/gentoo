@@ -16,5 +16,5 @@ SRC_URI="https://github.com/socketry/http-accept/archive/v${PV}.tar.gz -> ${P}.t
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~arm64"
 IUSE=""
