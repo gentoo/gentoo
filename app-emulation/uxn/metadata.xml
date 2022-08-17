@@ -12,4 +12,7 @@
     It was designed with an implementation-first mindset with a focus on
     creating portable tools and games.
   </longdescription>
+  <upstream>
+    <remote-id type="sourcehut">~rabbits/uxn</remote-id>
+  </upstream>
 </pkgmetadata>
