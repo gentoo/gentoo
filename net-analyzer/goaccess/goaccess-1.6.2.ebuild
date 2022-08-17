@@ -15,7 +15,8 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE="debug geoip geoipv2 getline ssl unicode"
 REQUIRED_USE="geoipv2? ( geoip )"
 
-RDEPEND="acct-user/goaccess
+RDEPEND="acct-group/goaccess
+	acct-user/goaccess
 	sys-libs/ncurses:=[unicode(+)?]
 	geoip? (
 		!geoipv2? ( dev-libs/geoip )
