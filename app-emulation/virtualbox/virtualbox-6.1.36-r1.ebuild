@@ -172,6 +172,9 @@ PATCHES=(
 	# Patch grabbed from Arch Linux / upstream for Python 3.10 support
 	"${FILESDIR}"/${PN}-6.1.36-python3.10.patch
 
+	# 865361
+	"${FILESDIR}"/${PN}-6.1.36-fcf-protection.patch
+
 	# Downloaded patchset
 	"${WORKDIR}"/virtualbox-patches-${MY_PV}/patches
 )
