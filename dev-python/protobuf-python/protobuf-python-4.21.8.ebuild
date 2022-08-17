@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1
 
 PARENT_PN="${PN/-python/}"
-PARENT_PV="${PV}"
+PARENT_PV="$(ver_cut 2-)"
 PARENT_P="${PARENT_PN}-${PARENT_PV}"
 
 if [[ "${PV}" == *9999 ]]; then
@@ -38,15 +38,13 @@ SLOT="0/32"
 S="${WORKDIR}/${PARENT_P}/python"
 
 BDEPEND="
-	dev-libs/protobuf:${SLOT}
-	dev-python/six[${PYTHON_USEDEP}]
 "
 DEPEND="
 	${PYTHON_DEPS}
-	dev-libs/protobuf:${SLOT}
 "
 RDEPEND="
 	${BDEPEND}
+	dev-libs/protobuf:${SLOT}
 "
 
 distutils_enable_tests setup.py
