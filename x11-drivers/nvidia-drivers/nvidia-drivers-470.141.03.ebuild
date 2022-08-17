@@ -456,6 +456,7 @@ pkg_postinst() {
 		elog "Of note, may possibly cause issues with SLI and Reverse PRIME."
 		elog
 		elog "This version of ${PN} only supports EGLStream which is only"
-		elog "supported by a few wayland compositors (e.g. kwin / mutter, not sway)."
+		elog "supported by a few wayland compositors (e.g. kwin / mutter, not sway),"
+		elog "and is barely tested (X11 is recommended for this legacy branch)."
 	fi
 }
