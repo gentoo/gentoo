@@ -88,6 +88,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-widevine.patch
+	"${FILESDIR}"/${P}-favicon.patch
 )
 
 python_check_deps() {
