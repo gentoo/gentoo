@@ -43,6 +43,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-jars.patch
+	"${FILESDIR}"/${PN}-1.3.1-Fix-build-failure-after-Oracle-Java-CPU-for-April-2022.patch
 )
 
 DOCS=( ChangeLog README.md )

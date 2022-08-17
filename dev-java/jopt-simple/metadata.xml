@@ -6,6 +6,6 @@
 		<name>Java</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">pholser/jopt-simple</remote-id>
+		<remote-id type="github">jopt-simple/jopt-simple</remote-id>
 	</upstream>
 </pkgmetadata>

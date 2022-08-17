@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="An Angband variant, with a Japanese/fantasy theme"
-HOMEPAGE="http://hengband.sourceforge.jp/en/"
+HOMEPAGE="https://hengband.github.io/"
 SRC_URI="mirror://sourceforge.jp/hengband/10331/${P}.tar.bz2
 	mirror://gentoo/${P}-mispellings.patch.gz"
 

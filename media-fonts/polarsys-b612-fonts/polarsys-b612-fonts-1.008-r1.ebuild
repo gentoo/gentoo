@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/polarsys/b612/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="EPL-1.0 BSD OFL-1.1"   # to be clarified #746725
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 
 S="${WORKDIR}/b612-${PV}"
 FONT_S="${S}/fonts/ttf"

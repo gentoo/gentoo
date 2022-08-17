@@ -1,0 +1,123 @@
+Modified from: PDL Linux
+https://raw.githubusercontent.com/pld-linux/uudeview/master/uudeview-shared.patch
+https://github.com/pld-linux/uudeview
+
+Bug: https://bugs.gentoo.org/780018
+
+From: orbea <orbea@riseup.net>
+Date: Wed, 13 Jul 2022 22:17:55 -0700
+Subject: [PATCH] Use libtool
+
+diff --git a/Makefile.in b/Makefile.in
+index 951c731..342bf56 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -25,6 +25,10 @@ CC	=	@CC@
+ #
+ CFLAGS	=	@CFLAGS@ -I. @CPPFLAGS@ @DEFS@
+ #
++# the libtool program
++#
++LIBTOOL =       @LIBTOOL@
++#
+ # the ranlib program
+ #
+ RANLIB =	@RANLIB@
+@@ -40,9 +44,16 @@ PATCH	=	@PATCH@
+ VDEF	=	-DVERSION=\"$(VERSION)\" -DPATCH=\"$(PATCH)\"
+ #
+ 
++top_builddir = @top_builddir@
++
++prefix = @prefix@
++exec_prefix = @exec_prefix@
++libdir = @libdir@
++includedir = @includedir@
++
+ UULIB_SOURCE	=	uulib.c uucheck.c uunconc.c uuutil.c uuencode.c \
+ 			uuscan.c uustring.c fptools.c crc32.c
+-UULIB_OBJ	=	${UULIB_SOURCE:.c=.o}
++UULIB_OBJ	=	${UULIB_SOURCE:.c=.lo}
+ 
+ #
+ # make stuff
+@@ -51,11 +62,11 @@ UULIB_OBJ  =       ${UULIB_SOURCE:.c=.o}
+ .SUFFIXES:
+ .SUFFIXES: .c .o
+ 
+-all:		libuu.a
++all:		libuu.la
+ 
+ clean:
+ 	rm -f [Xx]deview gif2gfp
+-	rm -f *.o *.a *.so core *~ TAGS
++	rm -f *.o *.a *.so core *~ TAGS *.lo *.la
+ 
+ distclean:	clean
+ 	rm -f config.status config.cache config.log Makefile config.h
+@@ -67,22 +78,25 @@ new:		clean
+ 	rm -f libuu.a
+ 	$(MAKE) all
+ 
+-libuu.a:	$(UULIB_OBJ)
+-	rm -f $@
+-	ar r $@ $(UULIB_OBJ)
+-	-$(RANLIB) $@
++libuu.la:	$(UULIB_OBJ)
++	$(LIBTOOL) --mode=link $(CC) -o libuu.la $(LDFLAGS) $(UULIB_OBJ) -rpath $(libdir)
++
++%.lo : %.c
++	$(LIBTOOL) --mode=compile $(CC) -c $(CFLAGS) $(VDEF) $<
+ 
+-.c.o:
+-	$(CC) -c $(CFLAGS) $(VDEF) $<
++install:	libuu.la
++	mkdir -p $(DESTDIR)$(libdir) $(DESTDIR)$(includedir)
++	$(LIBTOOL) --mode=install install libuu.la $(DESTDIR)$(libdir)
++	cp uudeview.h fptools.h $(DESTDIR)$(includedir)
+ 
+-uuencode.o:	uuencode.c uudeview.h uuint.h uustring.h fptools.h config.h
+-uulib.o:	uulib.c uudeview.h uuint.h uustring.h fptools.h config.h
+-uunconc.o:	uunconc.c uudeview.h uuint.h uustring.h fptools.h config.h
+-uucheck.o:	uucheck.c uudeview.h uuint.h uustring.h fptools.h config.h
+-uuutil.o:	uuutil.c  uudeview.h uuint.h uustring.h fptools.h config.h
+-uuscan.o:	uuutil.c  uudeview.h uuint.h uustring.h fptools.h config.h
+-uustring.o:	uustring.c uudeview.h uuint.h uustring.h config.h
+-fptools.o:	fptools.c fptools.h config.h
++uuencode.lo:	uuencode.c uudeview.h uuint.h uustring.h fptools.h config.h
++uulib.lo:	uulib.c uudeview.h uuint.h uustring.h fptools.h config.h
++uunconc.lo:	uunconc.c uudeview.h uuint.h uustring.h fptools.h config.h
++uucheck.lo:	uucheck.c uudeview.h uuint.h uustring.h fptools.h config.h
++uuutil.lo:	uuutil.c  uudeview.h uuint.h uustring.h fptools.h config.h
++uuscan.lo:	uuutil.c  uudeview.h uuint.h uustring.h fptools.h config.h
++uustring.lo:	uustring.c uudeview.h uuint.h uustring.h config.h
++fptools.lo:	fptools.c fptools.h config.h
+ 
+ uustring.h:	uustring.c
+ 	awk -f uustring.awk < uustring.c > uustring.h
+diff --git a/configure.in b/configure.in
+index ef00d18..563c77d 100644
+--- a/configure.in
++++ b/configure.in
+@@ -8,6 +8,8 @@ dnl
+ 
+ AC_INIT(uulib.c)
+ AC_PREREQ(2.9)
++AC_CONFIG_AUX_DIR([.])
++AC_CONFIG_MACRO_DIR([m4])
+ AC_CONFIG_HEADER(config.h)
+ 
+ #
+@@ -20,7 +22,7 @@ AC_PROG_CC
+ AC_PROG_CPP
+ wi_PROTOTYPES
+ AC_PROG_MAKE_SET
+-AC_PROG_RANLIB
++LT_INIT
+ 
+ if test "$wi_cv_prototypes" = no ; then
+ 	AC_WARN([Your compiler does not support function prototyping and])
+diff --git a/aclocal.m4 b/m4/uulib.m4
+similarity index 100%
+rename from aclocal.m4
+rename to m4/uulib.m4

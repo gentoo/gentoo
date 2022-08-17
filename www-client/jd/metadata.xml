@@ -10,6 +10,6 @@
 		<flag name="oniguruma">Use <pkg>dev-libs/oniguruma</pkg> for regular expression</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge-jp">jd4linux</remote-id>
+		<remote-id type="osdn">jd4linux</remote-id>
 	</upstream>
 </pkgmetadata>

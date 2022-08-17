@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,6 +24,8 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${P}-setup.py.in-sysconfig.patch )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup

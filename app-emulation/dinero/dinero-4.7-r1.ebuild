@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit autotools toolchain-funcs
 MY_P="d${PV/./-}"
 S="${WORKDIR}/${MY_P}"
 DESCRIPTION="Cache simulator"
-HOMEPAGE="http://www.cs.wisc.edu/~markhill/DineroIV/"
+HOMEPAGE="https://pages.cs.wisc.edu/~markhill/DineroIV/"
 SRC_URI="ftp://ftp.cs.wisc.edu/markhill/DineroIV/${MY_P}.tar.gz"
 
 LICENSE="free-noncomm"

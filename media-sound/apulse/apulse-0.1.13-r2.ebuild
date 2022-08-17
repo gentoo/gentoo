@@ -55,7 +55,8 @@ multilib_src_test() {
 		pushd tests || die
 		cmake -S "${S}/tests" -B . || die
 		emake test_ringbuffer
-		ctest -j "$(makeopts_jobs)" --test-load "$(makeopts_loadavg)" || die
+		ctest -j "$(makeopts_jobs "${MAKEOPTS}" 999)" \
+			--test-load "$(makeopts_loadavg)" || die
 		popd || die
 	}
 	multilib_foreach_abi _test

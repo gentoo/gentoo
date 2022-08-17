@@ -12,7 +12,7 @@ HOMEPAGE="https://libcxxabi.llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~riscv ~x86 ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~riscv x86 ~x64-macos"
 IUSE="+libunwind static-libs test"
 RESTRICT="!test? ( test )"
 
@@ -35,7 +35,7 @@ LLVM_COMPONENTS=( libcxx{abi,} llvm/cmake )
 llvm.org_set_globals
 
 python_check_deps() {
-	has_version "dev-python/lit[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {

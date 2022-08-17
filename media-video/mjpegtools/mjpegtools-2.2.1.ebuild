@@ -46,8 +46,6 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	[[ $(gcc-major-version) -eq 3 ]] && append-flags -mno-sse2
-
 	local myconf=(
 		--enable-compile-warnings
 		$(use_enable cpu_flags_x86_mmx simd-accel)

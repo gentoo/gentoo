@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# Check for bumps & cleanup with app-misc/ddcui
+
 inherit autotools linux-info udev
 
 DESCRIPTION="Program for querying and changing monitor settings"
@@ -37,6 +39,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.2.2-no-werror.patch
+)
 
 pkg_pretend() {
 	# This program needs /dev/ic2-* devices to communicate with the monitor.

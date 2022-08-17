@@ -6,6 +6,6 @@
 	<name>Florian Schmaus</name>
 </maintainer>
 <use>
-	<flag name="launcher">Install the launcher</flag>
+	<flag name="launcher">Install the launcher, i.e., an alternative to the udev/systemd hooks</flag>
 </use>
 </pkgmetadata>

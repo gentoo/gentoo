@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ all_ruby_prepare() {
 	sed -i -e '/highline/ s/~>/>=/' \
 		-e '/gem.files/d' ${RUBY_FAKEGEM_GEMSPEC} || die
 
-	sed -i -e 's:/tmp:'${T}':' \
+	sed -i -e "s:/tmp:${T}:" \
 		features/sandbox/puppet/environments/local/modules/test/manifests/run.pp \
 		features/sandbox/puppet-hiera-merge/environments/local/modules/test/manifests/run.pp \
 		features/puppet.feature
@@ -39,7 +39,7 @@ all_ruby_prepare() {
 
 each_ruby_prepare() {
 	# Run tests with the correct ruby interpreter
-	sed -i -e 's:I run `eyaml:I run `'${RUBY}' '${S}'/bin/eyaml:' features/*.feature || die
+	sed -i -e 's:I run `eyaml:I run `'${RUBY}' '"${S}"'/bin/eyaml:' features/*.feature || die
 
 }
 

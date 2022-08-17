@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,8 +24,9 @@ PATCHES=(
 
 src_compile() {
 	use ssl || local opt="NO_ENCRYPTION=1"
-	emake CC=$(tc-getCC) $opt uftp uftp_keymgt
-	use server && emake CC=$(tc-getCC) $opt uftpd uftpproxyd
+
+	emake CC="$(tc-getCC)" ${opt} uftp uftp_keymgt
+	use server && emake CC="$(tc-getCC)" ${opt} uftpd uftpproxyd
 }
 
 src_install() {

@@ -9,13 +9,13 @@
 # @DESCRIPTION:
 # This eclass supports ebuilds for packages distributed by XEmacs.
 
-# @ECLASS-VARIABLE: XEMACS_PKG_CAT
+# @ECLASS_VARIABLE: XEMACS_PKG_CAT
 # @REQUIRED
 # @DESCRIPTION:
 # The package category that the package is in. Can be either standard,
 # mule, or contrib.
 
-# @ECLASS-VARIABLE: XEMACS_EXPERIMENTAL
+# @ECLASS_VARIABLE: XEMACS_EXPERIMENTAL
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:

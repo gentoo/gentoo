@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools bash-completion-r1 perl-functions
+inherit autotools bash-completion-r1 perl-functions udev
 
 DESCRIPTION="Userspace tools to configure the kernel modules from net-misc/dahdi"
 HOMEPAGE="https://www.asterisk.org"
@@ -47,7 +47,7 @@ src_install() {
 	local bashcompdir="$(get_bashcompdir)"
 	local bashcmd bashcmdtarget
 
-	emake DESTDIR="${ED}" bashcompdir="${bashcompdir}" udevrulesdir=/lib/udev/rules.d install
+	emake DESTDIR="${ED}" bashcompdir="${bashcompdir}" udevrulesdir="$(get_udevdir)/rules.d" install
 	emake DESTDIR="${ED}" install-config
 
 	dosbin patgen pattest patlooptest hdlcstress hdlctest hdlcgen hdlcverify timertest
@@ -63,4 +63,8 @@ src_install() {
 	rm "${ED}"/usr/$(get_libdir)/libtonezone.a || die "Unable to remove static libs from install."
 	# Delete *if* the libtool file exists, bug #778380
 	find "${ED}" -name '*.la' -delete || die
+}
+
+pkg_postinst() {
+	udev_reload
 }

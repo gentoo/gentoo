@@ -1,0 +1,12 @@
+diff --git a/src/rgw/store/dbstore/CMakeLists.txt b/src/rgw/store/dbstore/CMakeLists.txt
+index 143ede3c094..204ef653010 100644
+--- a/src/rgw/store/dbstore/CMakeLists.txt
++++ b/src/rgw/store/dbstore/CMakeLists.txt
+@@ -24,6 +24,7 @@ if(WITH_JAEGER)
+   list(APPEND link_targets ${jaeger_base})
+ endif()
+ target_link_libraries(dbstore_lib PUBLIC ${link_targets})
++install(TARGETS dbstore_lib DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ set (CMAKE_LINK_LIBRARIES ${CMAKE_LINK_LIBRARIES} dbstore_lib)
+ 

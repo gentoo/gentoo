@@ -1,0 +1,24 @@
+Respect user's pkg-config, don't call gcc directly
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,9 @@
+ PKGNAME = gkrellweather
+ VERSION = 2.0.8
+-CFLAGS = -O2 -std=gnu99 -Wall -fPIC `pkg-config gtk+-2.0 --cflags`
+-LIBS = `pkg-config gtk+-2.0 --libs`
++PKG_CONFIG ?= pkg-config
++GTK_INCLUDE = $(shell ${PKG_CONFIG} gtk+-2.0 --cflags)
++CFLAGS = -std=gnu99 -fPIC $(GTK_INCLUDE)
++LIBS =  $(shell ${PKG_CONFIG} gtk+-2.0 --libs)
+ LFLAGS = -shared
+ PREFIX = /usr/local
+ 
+@@ -16,7 +18,7 @@ endif
+ CFLAGS += -DPACKAGE="\"$(PKGNAME)\""
+ export PKGNAME LOCALEDIR
+ 
+-CC = gcc
++CC = $(CC)
+ 
+ OBJS = gkrellweather.o
+ 

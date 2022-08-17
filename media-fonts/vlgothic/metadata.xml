@@ -11,6 +11,6 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="sourceforge-jp">vlgothic</remote-id>
+		<remote-id type="osdn">vlgothic</remote-id>
 	</upstream>
 </pkgmetadata>

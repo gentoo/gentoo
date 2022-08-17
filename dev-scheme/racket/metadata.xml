@@ -17,7 +17,7 @@ Whether you're just starting out, want to know more about programming language a
   </longdescription>
   <upstream>
     <bugs-to>https://github.com/racket/racket/issues/</bugs-to>
-    <remote-id type="github">racket</remote-id>
+    <remote-id type="github">racket/racket</remote-id>
   </upstream>
   <use>
     <flag name="chez">

@@ -1,0 +1,21 @@
+index a9c3e6f..04f90b5 100755
+--- a/microcode/configure
++++ b/microcode/configure
+@@ -5482,7 +5482,7 @@ if test x"${GCC}" = xyes; then
+ 	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for compiler $flag" >&5
+ $as_echo_n "checking for compiler $flag... " >&6; }
+ 	SAVED_CFLAGS=${CFLAGS}
+-	CFLAGS="${SAVED_CFLAGS} ${flag} -Werror"
++	CFLAGS="${SAVED_CFLAGS} ${flag}"
+ 	cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+@@ -10751,7 +10751,7 @@ for base in ${OPTIONAL_BASES}; do
+     OPTIONAL_OBJECTS="${OPTIONAL_OBJECTS} ${base}.o"
+ done
+ 
+-CFLAGS="${CFLAGS} ${CFLAGS_WERROR}"
++CFLAGS="${CFLAGS}"
+ LIARC_CFLAGS="${LIARC_CFLAGS} ${CFLAGS_WNOERROR}"
+ 
+ 

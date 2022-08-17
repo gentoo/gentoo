@@ -25,7 +25,6 @@ RDEPEND="
 "
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
-	dev-python/versioneer[${PYTHON_USEDEP}]
 "
 
 RESTRICT="test"

@@ -18,4 +18,7 @@
 	<use>
 		<flag name="constraints">Enable HTTPS TLS time constraint support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">openntpd-portable/openntpd-portable</remote-id>
+	</upstream>
 </pkgmetadata>

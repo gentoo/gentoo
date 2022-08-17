@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://git.pwmt.org/pwmt/zathura-ps.git"
 	EGIT_BRANCH="develop"
 else
-	KEYWORDS="~amd64 ~arm ~riscv ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 arm ~riscv x86 ~amd64-linux ~x86-linux"
 	SRC_URI="https://pwmt.org/projects/zathura-ps/download/${P}.tar.xz"
 fi
 

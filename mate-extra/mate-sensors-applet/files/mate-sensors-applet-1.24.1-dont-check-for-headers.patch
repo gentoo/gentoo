@@ -1,0 +1,20 @@
+# Removing unnecessary HAVE_STDIO_H and HAVE_LOCALE_H config checks. The
+# HAVE_LOCALE_H also makes fails to build on musl system.
+# Upstream issue: https://github.com/mate-desktop/mate-sensors-applet/issues/123
+# Closes: https://bugs.gentoo.org/777375
+--- a/plugins/i2c-proc/i2c-proc-plugin.c
++++ b/plugins/i2c-proc/i2c-proc-plugin.c
+@@ -20,13 +20,8 @@
+ #include <config.h>
+ #endif /* HAVE_CONFIG_H */
+
+-#ifdef HAVE_STDIO_H
+ #include <stdio.h>
+-#endif /* HAVE_STDIO_H */
+-
+-#ifdef HAVE_LOCALE_H
+ #include <locale.h>
+-#endif
+
+ #include <glib.h>
+ #include <glib/gi18n.h>

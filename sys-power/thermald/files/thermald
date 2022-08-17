@@ -8,7 +8,7 @@ depend() {
 start() {
 	ebegin "Starting thermald"
 
-	start-stop-daemon --start --quiet --name thermald --exec /usr/sbin/thermald -- --dbus-enable
+	start-stop-daemon --start --quiet --name thermald --exec /usr/sbin/thermald -- --dbus-enable --adaptive
 	eend $?
 }
 

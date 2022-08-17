@@ -10,6 +10,6 @@
 		<name>Cjk</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge-jp">efont</remote-id>
+		<remote-id type="osdn">efont</remote-id>
 	</upstream>
 </pkgmetadata>

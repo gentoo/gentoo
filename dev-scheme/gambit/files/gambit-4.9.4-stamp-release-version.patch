@@ -1,0 +1,11 @@
+--- a/include/stamp-release.h
++++ b/include/stamp-release.h
+@@ -7,7 +7,7 @@
+  */
+ 
+ #ifndef ___STAMP_RELEASE_VERSION
+-#define ___STAMP_RELEASE_VERSION "v4.9.3"
++#define ___STAMP_RELEASE_VERSION "v4.9.4"
+ #endif
+ 
+ #ifndef ___STAMP_RELEASE_YMD

@@ -1,10 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 #Note: this is Gentoo Prefix specific! (2008-07-13, darkside)
 
-# The base profile sets ACCEPT_KEYWORDS=amd64 and we don't have that in prefix.
-ACCEPT_KEYWORDS="-amd64 ~amd64-linux"
+# The base profile sets ACCEPT_KEYWORDS=amd64, add unstable on top of
+# that, and retain historical Prefix-only amd64-linux keyword for a
+# transition period, bug #473598.
+ACCEPT_KEYWORDS="~amd64 ~amd64-linux"
 
 # We don't have lib64 or multilib in prefix, but single ABI, so remove it here.
 SYMLINK_LIB=""

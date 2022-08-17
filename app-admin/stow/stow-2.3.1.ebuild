@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,8 +8,8 @@ inherit perl-functions verify-sig
 
 DESCRIPTION="GNU Stow is a symlink farm manager"
 HOMEPAGE="https://www.gnu.org/software/stow/ https://git.savannah.gnu.org/cgit/stow.git"
-SRC_URI="mirror://gnu/stow/${P}.tar.gz"
-SRC_URI+=" verify-sig? ( mirror://gnu/stow/${P}.tar.gz.sig )"
+SRC_URI="mirror://gnu/stow/${P}.tar.bz2"
+SRC_URI+=" verify-sig? ( mirror://gnu/stow/${P}.tar.bz2.sig )"
 
 LICENSE="GPL-3+"
 SLOT="0"

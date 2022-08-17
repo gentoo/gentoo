@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -18,7 +18,7 @@ SRC_URI="https://github.com/jahlborn/${PN}/archive/refs/tags/${P}.tar.gz -> ${P}
 
 LICENSE="Apache-2.0"
 SLOT="1"
-KEYWORDS="amd64 arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 # Common dependencies
 # POM: pom.xml

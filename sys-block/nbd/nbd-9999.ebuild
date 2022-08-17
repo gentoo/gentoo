@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,14 +6,16 @@ EAPI=7
 inherit systemd
 
 DESCRIPTION="Userland client/server for kernel network block device"
-HOMEPAGE="http://nbd.sourceforge.net/"
-if [[ "${PV}" = 9999 ]] ; then
+HOMEPAGE="https://nbd.sourceforge.net/"
+if [[ ${PV} = 9999 ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/NetworkBlockDevice/nbd.git"
 else
-	SRC_URI="mirror://sourceforge/nbd/${P}.tar.xz"
+	SRC_URI="https://github.com/NetworkBlockDevice/nbd/releases/download/${P}/${P}.tar.xz
+		mirror://sourceforge/nbd/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
+
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug gnutls netlink zlib"
@@ -27,24 +29,29 @@ RDEPEND="
 	zlib? ( sys-libs/zlib )
 "
 DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/bison"
 
-if [[ "${PV}" = 9999 ]] ; then
-	DEPEND+="
+if [[ ${PV} = 9999 ]] ; then
+	BDEPEND+="
 		app-text/docbook-sgml-dtd:4.5
 		app-text/docbook-sgml-utils
+		sys-devel/autoconf-archive
 	"
 fi
 
 src_prepare() {
 	default
-	if [[ "${PV}" = 9999 ]] ; then
+
+	if [[ ${PV} = 9999 ]] ; then
 		emake -C man -f Makefile.am \
 			nbd-server.1.sh.in \
 			nbd-server.5.sh.in \
 			nbd-client.8.sh.in \
 			nbd-trdump.1.sh.in \
 			nbdtab.5.sh.in
+
 		emake -C systemd -f Makefile.am nbd@.service.sh.in
+
 		eautoreconf
 	fi
 }
@@ -58,6 +65,7 @@ src_configure() {
 		$(use_with gnutls)
 		$(use_with netlink libnl)
 	)
+
 	econf "${myeconfargs[@]}"
 }
 

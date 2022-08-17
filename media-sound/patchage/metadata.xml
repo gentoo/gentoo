@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>proaudio@gentoo.org</email>
-    <name>Gentoo ProAudio Project</name>
-  </maintainer>
-  <use>
-    <flag name="jack-dbus">Use Jack via D-Bus instead of libjack</flag>
-  </use>
+	<maintainer type="project">
+		<email>proaudio@gentoo.org</email>
+		<name>Gentoo ProAudio Project</name>
+	</maintainer>
+	<use>
+		<flag name="jack-dbus">Use Jack via D-Bus instead of libjack</flag>
+	</use>
+	<upstream>
+		<remote-id type="gitlab">drobilla/patchage</remote-id>
+	</upstream>
 </pkgmetadata>

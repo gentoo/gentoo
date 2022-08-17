@@ -1,9 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit flag-o-matic toolchain-funcs prefix
+
+# Uncomment if we have a patchset
+GENTOO_PATCH_DEV="sam"
+GENTOO_PATCH_VER="${PV}"
 
 # Official patchlevel
 # See ftp://ftp.cwru.edu/pub/bash/bash-5.0-patches/
@@ -37,11 +41,15 @@ patches() {
 READLINE_VER="8.0"
 
 DESCRIPTION="The standard GNU Bourne again shell"
-HOMEPAGE="http://tiswww.case.edu/php/chet/bash/bashtop.html"
+HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html"
 if is_release ; then
 	SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
 else
 	SRC_URI="ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
+fi
+
+if [[ -n ${GENTOO_PATCH_VER} ]] ; then
+	SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${GENTOO_PATCH_VER}-patches.tar.xz"
 fi
 
 LICENSE="GPL-3"
@@ -64,8 +72,8 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	# Patches from Chet sent to bashbug ml
-	"${FILESDIR}"/${PN}-5.0-history-append.patch
-	"${FILESDIR}"/${PN}-5.0-syslog-history-extern.patch
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-5.0-history-append.patch
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-5.0-syslog-history-extern.patch
 )
 
 pkg_setup() {
@@ -84,6 +92,10 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${MY_P}.tar.gz
+
+	if [[ -n ${GENTOO_PATCH_VER} ]] ; then
+		unpack ${PN}-${GENTOO_PATCH_VER}-patches.tar.xz
+	fi
 }
 
 src_prepare() {

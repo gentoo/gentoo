@@ -15,4 +15,7 @@
 		<flag name="system-ssl">Use system OpenSSL instead of the bundled one</flag>
 		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">nodejs/node</remote-id>
+	</upstream>
 </pkgmetadata>

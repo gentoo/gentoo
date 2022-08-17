@@ -13,4 +13,7 @@
 		ccache acts as a caching pre-processor to C/C++ compilers, improving
 		compilation time when recompiling previously compiled source.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">ccache/ccache</remote-id>
+	</upstream>
 </pkgmetadata>

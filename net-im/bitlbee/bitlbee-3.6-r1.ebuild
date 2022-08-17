@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit python-any-r1 systemd toolchain-funcs
 
@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://get.bitlbee.org/src/${P}.tar.gz"
-	KEYWORDS="amd64 ppc ~ppc64 x86"
+	KEYWORDS="amd64 ~arm64 ppc ~ppc64 x86"
 fi
 
 DESCRIPTION="irc to IM gateway that support multiple IM protocols"

@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 hppa ~ia64 ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	>=dev-libs/elfutils-0.176-r1
@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-readelf.patch
 	"${FILESDIR}"/${P}-zero-dir-entry.patch
 	"${FILESDIR}"/${P}-hppa.patch
+	"${FILESDIR}"/${P}-musl-error.h-fix.patch
 )
 
 src_prepare() {

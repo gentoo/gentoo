@@ -1,0 +1,181 @@
+--- a/src/client/gui_text.cpp
++++ b/src/client/gui_text.cpp
+@@ -341,7 +341,7 @@
+   m_labelSplit = newtLabel(1, 12, i18n("Image split mode"));
+   m_radioSplitAuto = newtRadiobutton(1, 13, i18n("Automatic split (when no space left)"), !options.qwSplitSize, NULL);
+   m_radioSplitSize = newtRadiobutton(1, 14, i18n("Into files whose size is:............"), !!options.qwSplitSize, m_radioSplitAuto);
+-  SNPRINTF(szTemp, "%"PRIu64"", (!!options.qwSplitSize) ? (options.qwSplitSize/1024/1024) : 2048);
++  SNPRINTF(szTemp, "%" PRIu64 "", (!!options.qwSplitSize) ? (options.qwSplitSize/1024/1024) : 2048);
+   m_editSplitSize = newtEntry(43, 14, szTemp, 8, NULL, 0);
+   m_labelSplitSizeKB = newtLabel(52, 14, i18n("MiB"));
+   m_checkSplitWait = newtCheckbox(1, 15, i18n("Wait after each volume change"), (!!options.bSplitWait ? 'X' : ' '), " X", NULL);
+@@ -462,7 +462,7 @@
+   SNPRINTF(szTemp, i18n("Partition to save:...........%s"), szDevice);
+   m_labelPartition = newtLabel(1, 0, szTemp);
+   
+-  SNPRINTF(szTemp, i18n("Size of the Partition:.......%s = %"PRIu64" bytes"), formatSize(qwPartSize, szTemp2), qwPartSize);
++  SNPRINTF(szTemp, i18n("Size of the Partition:.......%s = %" PRIu64 " bytes"), formatSize(qwPartSize, szTemp2), qwPartSize);
+   m_labelPartitionSize = newtLabel(1, 1, szTemp);
+   
+   SNPRINTF(szTemp, i18n("Image file to create:........%s"), szImageFile);
+@@ -610,7 +610,7 @@
+       newtLabelSetText(m_labelImageFileSize, szTemp);
+     }
+   
+-  SNPRINTF (szTemp, i18n("Available space for image:...%s = %"PRIu64" bytes"), formatSize(qwFreeSpace, szTemp2), qwFreeSpace);
++  SNPRINTF (szTemp, i18n("Available space for image:...%s = %" PRIu64 " bytes"), formatSize(qwFreeSpace, szTemp2), qwFreeSpace);
+   newtLabelSetText(m_labelFreeSpace, szTemp);
+ 
+   //option -B gui=no
+@@ -734,7 +734,7 @@
+   SNPRINTF(szTemp, i18n("Partition to restore:.............%s"), szDevice);
+   m_labelPartition = newtLabel(1, 0, szTemp);
+   
+-  SNPRINTF(szTemp, i18n("Size of partition to restore:.....%s = %"PRIu64" bytes"), formatSize(qwCurPartSize, szTemp2), qwCurPartSize);
++  SNPRINTF(szTemp, i18n("Size of partition to restore:.....%s = %" PRIu64 " bytes"), formatSize(qwCurPartSize, szTemp2), qwCurPartSize);
+   m_labelPartitionSize = newtLabel(1, 1, szTemp);
+   
+   SNPRINTF(szTemp, i18n("Image file to use:................%s"), szImageFile);
+@@ -751,7 +751,7 @@
+   SNPRINTF(szTemp, i18n("Image created on:.................%s\n"), asctime_portable(&dateCreate));
+   m_labelDate = newtLabel(1, 6, szTemp);
+ 
+-  SNPRINTF(szTemp, i18n("Size of the original partition:...%s = %"PRIu64" bytes"), formatSize(qwOrigPartSize, szTemp2), qwOrigPartSize);
++  SNPRINTF(szTemp, i18n("Size of the original partition:...%s = %" PRIu64 " bytes"), formatSize(qwOrigPartSize, szTemp2), qwOrigPartSize);
+   m_labelOriginalPartitionSize = newtLabel(1, 7, szTemp);
+ 
+   // stats
+--- a/src/client/imginfo.cpp
++++ b/src/client/imginfo.cpp
+@@ -111,7 +111,7 @@
+ {
+   snprintf(szText, nMaxTextLen, i18n("-------------------- MBR %.3d -------------------\n"
+ 				     "Device:................%s\n"
+-				     "Device blocks count:...%"PRIu64"\n"
++				     "Device blocks count:...%" PRIu64 "\n"
+ 				     "Device model:..........%s\n\n"),
+ 	   i, mbr->szDevice, mbr->qwBlocksCount, mbr->szDescModel);
+ }
+@@ -153,7 +153,7 @@
+   snprintf(szText, nMaxTextLen, i18n("Volume number:.........%u\n"
+ 				     "Volume size:...........%s\n"
+ 				     "Compression level: ....%d -> %s\n"
+-				     "Identificator:.........%"PRIu64"=%"PRIX64"\n\n"),
++				     "Identificator:.........%" PRIu64 "=%" PRIX64 "\n\n"),
+ 	   head->dwVolumeNumber, formatSize(qwImageSize, cTemp), dwCompression, 
+ 	   szCompression, head->qwIdentificator, head->qwIdentificator);
+ }
+--- a/src/client/main.cpp
++++ b/src/client/main.cpp
+@@ -301,7 +301,7 @@
+ 	  case 'V': // split image into multiple files
+ 	  
+ 	    options.qwSplitSize = (QWORD)atol(optarg) * 1024 * 1024;
+-	    fprintf (stderr, i18n("Volume size: %"PRIu64" bytes (%ld MiB)\n"),
++	    fprintf (stderr, i18n("Volume size: %" PRIu64 " bytes (%ld MiB)\n"),
+ 		     options.qwSplitSize, atol(optarg));
+ 	    break;
+ 	  
+--- a/src/client/misc.cpp
++++ b/src/client/misc.cpp
+@@ -211,7 +211,7 @@
+ 	  image.closeReading(true);
+           throw excep;
+ 	}
+-      SNPRINTF(szTemp, "%.3u: %s [%"PRIu64" blocks]", i, mbrOriginal[i].szDevice, mbrOriginal[i].qwBlocksCount);
++      SNPRINTF(szTemp, "%.3u: %s [%" PRIu64 " blocks]", i, mbrOriginal[i].szDevice, mbrOriginal[i].qwBlocksCount);
+       if (options->bBatchMode == false)
+ 	optGui.addMbr(szTemp, i);
+       
+--- a/src/client/fs/fs_base.cpp
++++ b/src/client/fs/fs_base.cpp
+@@ -730,10 +730,10 @@
+ 
+   if (bShowBlocksInfo)
+     {
+-      SNPRINTF(szBlocksInfo, i18n("Block size:...................%"PRIu64" bytes\n"
+-				  "Total blocks count:...........%"PRIu64"\n"
+-				  "Used blocks count:............%"PRIu64"\n"
+-				  "Free blocks count:............%"PRIu64"\n"),
++      SNPRINTF(szBlocksInfo, i18n("Block size:...................%" PRIu64 " bytes\n"
++				  "Total blocks count:...........%" PRIu64 "\n"
++				  "Used blocks count:............%" PRIu64 "\n"
++				  "Free blocks count:............%" PRIu64 "\n"),
+ 	       m_header.qwBlockSize, 
+ 	       m_header.qwBlocksCount,
+ 	       m_header.qwUsedBlocks,
+@@ -745,7 +745,7 @@
+     }
+  
+   snprintf(szDest, nMaxLen, i18n("%s" // Blocks infos
+-				 "Space usage:..................%"PRIu64" %%\n"
++				 "Space usage:..................%" PRIu64 " %%\n"
+ 				 "Used space:...................%s\n"
+ 				 "Free space:...................%s\n"
+ 				 "Bitmap size:..................%s\n"
+--- a/src/client/fs/fs_hfs.cpp
++++ b/src/client/fs/fs_hfs.cpp
+@@ -142,10 +142,10 @@
+   getStdInfos(szText, sizeof(szText), true);
+   
+   SNPRINTF(szFullText, i18n("%s" // standard infos
+-			    "Allocation Group count:.......%"PRIu64"\n"
++			    "Allocation Group count:.......%" PRIu64 "\n"
+ 			    "Blocks per Allocation Group:..%u\n"
+ 			    "Allocation Group size:........%s\n"
+-			    "First allocation block:.......%"PRIu64"\n"),
++			    "First allocation block:.......%" PRIu64 "\n"),
+ 	   szText, m_info.qwAllocCount, m_info.dwBlocksPerAlloc,
+ 	   formatSize(m_info.dwAllocSize,szTemp1), m_info.qwFirstAllocBlock);
+     
+--- a/src/client/fs/fs_ntfs.cpp
++++ b/src/client/fs/fs_ntfs.cpp
+@@ -312,7 +312,7 @@
+ 			    "Bytes per sector:.............%u\n"
+ 			    "Sectors per cluster:..........%u\n"
+ 			    "File record size:.............%u\n"
+-			    "LCN of MFT Data attrib:.......%"PRIu64"\n"),
++			    "LCN of MFT Data attrib:.......%" PRIu64 "\n"),
+ 	   szText, m_info.nBytesPerSector, m_info.cSectorsPerCluster, 
+ 	   m_info.dwFileRecordSize, m_info.qwLCNOfMftDataAttrib);
+     
+@@ -730,7 +730,7 @@
+   QWORD i;
+   
+   for (i=0L; i < m_qwClustersCount; i++)
+-    fprintf(stderr, "cluster[%llu] = %"PRIu64"\n", (long long unsigned int)i, m_qwOffset[i]);
++    fprintf(stderr, "cluster[%llu] = %" PRIu64 "\n", (long long unsigned int)i, m_qwOffset[i]);
+   
+ }
+ 
+--- a/src/client/fs/fs_ufs.cpp
++++ b/src/client/fs/fs_ufs.cpp
+@@ -217,7 +217,7 @@
+ 			    "Cylinder group size:..........%s\n"
+ 			    "Basic blocks per CG:..........%u\n"
+ 			    "Basic block size:.............%u\n"
+-			    "Data frags count:.............%"PRIu64"\n"),
++			    "Data frags count:.............%" PRIu64 "\n"),
+ 	   szText, m_info.dwCylinderGroupsCount, 
+ 	   formatSize(m_info.dwCylinderGroupSize*m_info.dwBasicBlockSize,szTemp1),
+ 	   m_info.dwCylinderGroupSize, m_info.dwBasicBlockSize, m_info.qwDataFrags);
+--- a/src/shared/common.cpp
++++ b/src/shared/common.cpp
+@@ -272,7 +272,7 @@
+   
+   if (qwSize < llKiloB) // In Bytes
+     {
+-      snprintf(szText, nMaxLen, i18n("%"PRId64" bytes"), qwSize);
++      snprintf(szText, nMaxLen, i18n("%" PRId64 " bytes"), qwSize);
+     }
+   else if (qwSize < llMegaB) // In KiloBytes
+     {
+@@ -311,7 +311,7 @@
+ 
+   if (qwSize < llKiloB) // In Bytes
+     {
+-      snprintf(szText, nMaxLen, i18n("%"PRId64" Bytes"), qwSize);
++      snprintf(szText, nMaxLen, i18n("%" PRId64 " Bytes"), qwSize);
+     }
+   else if (qwSize < llMegaB) // In KiloBytes
+     {

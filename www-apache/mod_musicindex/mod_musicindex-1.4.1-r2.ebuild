@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit apache-module
 
 DESCRIPTION="mod_musicindex allows nice displaying of directories containing music files"
-HOMEPAGE="http://www.parisc-linux.org/~varenet/musicindex/"
+HOMEPAGE="http://hacks.slashdirt.org/sw/musicindex/"
 SRC_URI="http://hacks.slashdirt.org/musicindex/${P}.tar.gz
 	http://validator.w3.org/feed/images/valid-rss.png -> ${P}_valid-rss.png
 	http://jigsaw.w3.org/css-validator/images/vcss -> ${P}_vcss

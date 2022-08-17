@@ -1,0 +1,68 @@
+From bf83f8bd974925aec07a2e8dbfd50ad39995b428 Mon Sep 17 00:00:00 2001
+From: Volker Krause <vkrause@kde.org>
+Date: Fri, 8 Jul 2022 16:04:19 +0200
+Subject: [PATCH] Support ZXing 1.4.0
+
+The previous code crashes (if it builds at all) with ZXing 1.4.0, so
+distributions updating to 1.4.0 would need to apply this patch on top
+of 22.04.3 as well.
+
+(cherry picked from commit e60195421aa159462353892ed32bf46ac8c57d19)
+---
+ src/lib/barcodedecoder.cpp | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+
+diff --git a/src/lib/barcodedecoder.cpp b/src/lib/barcodedecoder.cpp
+index b38140a..40e0c64 100644
+--- a/src/lib/barcodedecoder.cpp
++++ b/src/lib/barcodedecoder.cpp
+@@ -15,6 +15,7 @@
+ #include <QString>
+ 
+ #ifdef HAVE_ZXING
++#define ZX_USE_UTF8 1
+ #ifdef ZXING_USE_READBARCODE
+ #include <ZXing/ReadBarcode.h>
+ #else
+@@ -244,6 +245,30 @@ void BarcodeDecoder::decodeZxing(const QImage &img, BarcodeDecoder::BarcodeTypes
+ #endif
+ 
+     if (res.isValid()) {
++#if ZXING_VERSION >= QT_VERSION_CHECK(1, 4, 0)
++        // detect content type
++        std::string zxUtf8Text;
++        if (res.contentType() == ZXing::ContentType::Text) {
++            result.contentType = Result::Any;
++            zxUtf8Text = res.text();
++            // check if the text is ASCII-only (in which case we allow access as byte array as well)
++            if (std::any_of(zxUtf8Text.begin(), zxUtf8Text.end(), [](unsigned char c) { return c > 0x7F; })) {
++                result.contentType &= ~Result::ByteArray;
++            }
++        } else {
++            result.contentType = Result::ByteArray;
++        }
++
++        // decode content
++        if (result.contentType & Result::ByteArray) {
++            QByteArray b;
++            b.resize(res.bytes().size());
++            std::copy(res.bytes().begin(), res.bytes().end(), b.begin());
++            result.content = b;
++        } else {
++            result.content = QString::fromStdString(zxUtf8Text);
++        }
++#else
+         // detect content type
+         result.contentType = Result::Any;
+         if (std::any_of(res.text().begin(), res.text().end(), [](const auto c) { return c > 255; })) {
+@@ -262,6 +287,7 @@ void BarcodeDecoder::decodeZxing(const QImage &img, BarcodeDecoder::BarcodeTypes
+         } else {
+             result.content = QString::fromStdWString(res.text());
+         }
++#endif
+         result.positive |= formatToType(res.format());
+     } else {
+         result.negative |= format;
+-- 
+2.35.1
+

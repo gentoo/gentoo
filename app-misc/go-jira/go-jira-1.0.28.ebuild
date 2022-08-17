@@ -13,7 +13,7 @@ SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD-2 BSD ISC MIT MIT-with-advertising"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 S="${WORKDIR}/jira-${PV}"
 

@@ -1,0 +1,18 @@
+From a0fd5bc899aa6552f14a64adcce24467376062c3 Mon Sep 17 00:00:00 2001
+From: Matthew Smith <matthew@gentoo.org>
+Date: Tue, 5 Jul 2022 20:52:35 +0100
+Subject: [PATCH] build: Use pkg-config to find libgit2
+
+--- a/Makefile
++++ b/Makefile
+@@ -8,8 +8,8 @@ PREFIX = /usr/local
+ MANPREFIX = ${PREFIX}/man
+ DOCPREFIX = ${PREFIX}/share/doc/${NAME}
+ 
+-LIBGIT_INC = -I/usr/local/include
+-LIBGIT_LIB = -L/usr/local/lib -lgit2
++LIBGIT_INC = $(shell pkg-config --cflags libgit2)
++LIBGIT_LIB = $(shell pkg-config --libs libgit2)
+ 
+ # use system flags.
+ STAGIT_CFLAGS = ${LIBGIT_INC} ${CFLAGS}

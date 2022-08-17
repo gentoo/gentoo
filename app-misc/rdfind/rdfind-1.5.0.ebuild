@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,4 +23,11 @@ PATCHES=( "${FILESDIR}/${PN}-1.5.0_include-limits-header.patch" )
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_test() {
+	# Bug 840544
+	local -x SANDBOX_PREDICT="${SANDBOX_PREDICT}"
+	addpredict /
+	default
 }

@@ -1,0 +1,60 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-07-08)
+# virtual/jre is not available on loong yet.
+www-client/chromium js-type-check
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-05-13)
+# Fails testing at least with libssh-0.9.6 and mbedtls-2.28.0-r1, needs
+# investigation.
+net-libs/libssh mbedtls
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-05-13)
+# dev-lang/go is not available on loong yet.
+media-libs/libheif go test
+sys-apps/earlyoom test
+sys-libs/libcap tools
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-04-24)
+# Unmask experimental-loong on packages; we're loong.
+dev-libs/libffi -experimental-loong
+sys-kernel/linux-headers -experimental-loong
+sys-libs/glibc -experimental-loong
+sys-libs/libseccomp -experimental-loong
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-04-18)
+# Mask io-uring & zbc pending keywording
+sys-block/fio -io-uring -zbc
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-04-18)
+# We never had non-deprecated libcrypt support from glibc, so disable compat
+# from libxcrypt for a world without libcrypt.so.1
+>=sys-libs/libxcrypt-4.4.23-r1 compat
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-04-18)
+# Catalyst has support for assembling bootloader on this arch
+dev-util/catalyst -system-bootloader
+
+# The below masks are liberally taken from riscv, which has similar
+# limitations.
+
+# LoongArch has no gold
+sys-devel/binutils gold
+
+# sys-libs/libunwind do not support LoongArch for now
+dev-libs/efl unwind
+dev-util/strace unwind
+media-libs/gstreamer unwind
+media-libs/mesa unwind
+net-libs/zeromq unwind
+net-mail/dovecot unwind
+x11-base/xorg-server unwind
+x11-base/xwayland unwind
+
+# These aren't ported to LoongArch yet
+dev-libs/libpcre2 jit
+dev-libs/libpcre jit
+www-servers/nginx pcre-jit
+
+# End snippets taken from riscv

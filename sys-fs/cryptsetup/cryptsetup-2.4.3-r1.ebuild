@@ -12,14 +12,16 @@ SRC_URI="https://www.kernel.org/pub/linux/utils/${PN}/v$(ver_cut 1-2)/${P/_/-}.t
 LICENSE="GPL-2+"
 SLOT="0/12" # libcryptsetup.so version
 [[ ${PV} != *_rc* ]] && \
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 CRYPTO_BACKENDS="gcrypt kernel nettle +openssl"
 # we don't support nss since it doesn't allow cryptsetup to be built statically
 # and it's missing ripemd160 support so it can't provide full backward compatibility
-IUSE="${CRYPTO_BACKENDS} +argon2 nls pwquality reencrypt ssh static static-libs test +udev urandom"
+IUSE="${CRYPTO_BACKENDS} +argon2 fips nls pwquality reencrypt ssh static static-libs test +udev urandom"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="^^ ( ${CRYPTO_BACKENDS//+/} )
-	static? ( !gcrypt !ssh !udev )" # 496612, 832711
+	static? ( !gcrypt !ssh !udev !fips )
+	fips? ( !kernel !nettle )
+" # 496612, 832711, 843863
 
 LIB_DEPEND="
 	dev-libs/json-c:=[static-libs(+)]
@@ -75,7 +77,7 @@ src_configure() {
 	local myeconfargs=(
 		--disable-internal-argon2
 		--enable-shared
-		--sbindir=/sbin
+		--sbindir="${EPREFIX}"/sbin
 		# for later use
 		--with-default-luks-format=LUKS2
 		--with-tmpfilesdir="${EPREFIX}/usr/lib/tmpfiles.d"
@@ -91,6 +93,7 @@ src_configure() {
 		$(use_enable !urandom dev-random)
 		$(use_enable ssh ssh-token)
 		$(usex argon2 '' '--with-luks2-pbkdf=pbkdf2')
+		$(use_enable fips)
 	)
 	econf "${myeconfargs[@]}"
 }

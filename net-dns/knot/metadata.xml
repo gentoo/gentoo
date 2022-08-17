@@ -13,6 +13,9 @@
 		<flag name="cookies">
 			Enable the DNS cookie module (RFC 7873)
 		</flag>
+		<flag name="doh">
+			Enable DNS over HTTP (DoH) using libnghttp2
+		</flag>
 		<flag name="dnsproxy">
 			Enable the tiny DNS proxy module
 		</flag>
@@ -56,6 +59,9 @@
 		</flag>
 		<flag name="whoami">
 			Enable the whoami response module
+		</flag>
+		<flag name="xdp">
+			Enable eXpress Data Path
 		</flag>
 	</use>
 </pkgmetadata>

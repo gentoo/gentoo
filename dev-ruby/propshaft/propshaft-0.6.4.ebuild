@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27"
+USE_RUBY="ruby27 ruby30"
 
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/rails/propshaft/archive/v${PV}.tar.gz -> ${P}-git.tg
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 IUSE=""
 

@@ -1,13 +1,16 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_7 python3_8 python3_9 )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+EAPI=8
 
-inherit distutils-r1
+# Disabled for now: bug #850628
+#DISTUTILS_USE_PEP517=setuptools
+# https://bugs.launchpad.net/cloud-init/+bug/1978328
+PYTHON_COMPAT=( python3_{8..10} )
 
-if [[ ${PV} == *9999 ]];then
+inherit distutils-r1 udev
+
+if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.launchpad.net/cloud-init"
 else
@@ -20,8 +23,6 @@ HOMEPAGE="https://launchpad.net/cloud-init"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 CDEPEND="
 	dev-python/jinja[${PYTHON_USEDEP}]
@@ -32,15 +33,16 @@ CDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/jsonpatch[${PYTHON_USEDEP}]
 	dev-python/jsonschema[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
+	dev-python/netifaces[${PYTHON_USEDEP}]
 "
-DEPEND="
+BDEPEND="
+	${CDEPEND}
 	test? (
-		${CDEPEND}
 		>=dev-python/httpretty-0.7.1[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/coverage[${PYTHON_USEDEP}]
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
+		dev-python/responses[${PYTHON_USEDEP}]
+		dev-python/setuptools[${PYTHON_USEDEP}]
 	)
 "
 RDEPEND="
@@ -51,26 +53,17 @@ RDEPEND="
 	virtual/logger
 "
 
-PATCHES=(
-	# Fix Gentoo support
-	# https://code.launchpad.net/~gilles-dartiguelongue/cloud-init/+git/cloud-init/+merge/358777
-	"${FILESDIR}/${PN}-18.4-fix-packages-module.patch"
-	"${FILESDIR}/${PN}-21.2-gentoo-support-upstream-templates.patch"
-	"${FILESDIR}"/18.4-fix-filename-for-storing-locale.patch
-	"${FILESDIR}"/18.4-fix-update_package_sources-function.patch
-	"${FILESDIR}"/18.4-add-support-for-package_upgrade.patch
-)
+distutils_enable_tests pytest
 
 python_prepare_all() {
 	# Fix location of documentation installation
 	sed -i "s:USR + '/share/doc/cloud-init:USR + '/share/doc/${PF}:" setup.py || die
-	sed -i 's/version=get_version(),/version=9999,/g' setup.py || die
-	distutils-r1_python_prepare_all
-}
 
-python_test() {
-	# Do not use Makefile target as it does not setup environment correclty
-	esetup.py nosetests -v --where cloudinit --where tests/unittests || die
+	if [[ ${PV} == *9999 ]] ; then
+		sed -i 's/version=get_version(),/version=9999,/g' setup.py || die
+	fi
+
+	distutils-r1_python_prepare_all
 }
 
 python_install() {
@@ -83,10 +76,16 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	# installs as non-executable
-	chmod +x "${D}"/etc/init.d/*
+	chmod +x "${D}"/etc/init.d/* || die
+}
+
+pkg_prerm() {
+	udev_reload
 }
 
 pkg_postinst() {
+	udev_reload
+
 	elog "cloud-init-local needs to be run in the boot runlevel because it"
 	elog "modifies services in the default runlevel.  When a runlevel is started"
 	elog "it is cached, so modifications that happen to the current runlevel"

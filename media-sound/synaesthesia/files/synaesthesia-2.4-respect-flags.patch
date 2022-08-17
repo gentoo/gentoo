@@ -1,0 +1,11 @@
+--- a/configure
++++ b/configure
+@@ -1664,8 +1664,6 @@
+           ac_config_commands="$ac_config_commands default-1"
+ 
+ 
+-CXXFLAGS="-O4"
+-CFLAGS="-O4"
+ 
+ ac_ext=c
+ ac_cpp='$CPP $CPPFLAGS'

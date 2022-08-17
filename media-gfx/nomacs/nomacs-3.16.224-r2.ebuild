@@ -57,6 +57,9 @@ src_prepare() {
 	if use plugins ; then
 		rmdir plugins || die
 		mv -v ../../${PLUGIN_PKG} plugins || die
+		# Fix bug #847112
+		sed -e 's:QT_QMAKE_EXECUTABLE NAMES "qmake" "qmake-qt5" "qmake.exe":QT_QMAKE_EXECUTABLE NAMES "qmake" "qmake5" "qmake.exe":' \
+			-i plugins/cmake/Utils.cmake || die
 		# Fix nomacs-plugins installation and search library directory
 		sed -e "s:lib/nomacs-plugins:$(get_libdir)/nomacs-plugins:" \
 			-i plugins/cmake/Utils.cmake || die

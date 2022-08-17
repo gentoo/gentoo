@@ -1,7 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
+inherit toolchain-funcs
 
 DESCRIPTION="dockapp which provides a drawer (retractable button bar) to launch applications"
 HOMEPAGE="http://people.easter-eggs.org/~valos/wmdrawer/"
@@ -33,11 +35,11 @@ src_prepare() {
 	# Do not auto-strip binaries
 	sed -i -e 's/	strip $@//' Makefile || die
 	# Honour Gentoo LDFLAGS
-	sed -i -e 's/$(CC) -o/$(CC) $(REAL_LDFLAGS) -o/' Makefile || die
+	sed -i -e 's/$(CC) -o/$(CC) $(GENTOO_LDFLAGS) -o/' Makefile || die
 }
 
 src_compile() {
-	emake REAL_LDFLAGS="${LDFLAGS}"
+	emake CC="$(tc-getCC)" GENTOO_LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="http://www.fgdc.gov/HSWG/symbol_downloads/ers_v${PV//./}.zip"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~riscv x86"
+KEYWORDS="amd64 ~loong ~riscv x86"
 
 BDEPEND="app-arch/unzip"
 

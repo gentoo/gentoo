@@ -1,6 +1,34 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-08-15)
+# deps not keyworded
+dev-util/pkgcheck emacs
+
+# Matt Turner <mattst88@gentoo.org> (2022-07-28)
+# kde-frameworks/plasma not keyworded here
+app-i18n/uim kde
+
+# Matt Turner <mattst88@gentoo.org> (2022-05-16)
+# media-libs/libheif not keyworded here
+media-gfx/gthumb heif
+
+# Nickolas Raymond Kaczynski <nrk@disroot.org> (2022-04-24)
+# Dependencies are missing keywords
+media-libs/imlib2 heif
+
+# Lars Wendler <polynomial-c@gentoo.org> (2022-04-22)
+# gnome-base/librsvg missing keywords
+media-libs/freetype svg
+
+# Matt Turner <mattst88@gentoo.org> (2022-04-16)
+# sys-auth/seatd is not keyworded
+dev-libs/weston seatd
+
+# Bernard Cafarelli <voyageur@gentoo.org> (2022-03-14)
+# Now requires dev-java/rhino which is not keyworded
+net-misc/plowshare javascript
+
 # Maciej Barć <xgqt@gentoo.org> (2022-03-10)
 # Java and Tex dependencies required to build documentation are not keyworded,
 # notably dev-java/antlr-tool and dev-python/sphinxcontrib-bibtex.
@@ -32,11 +60,8 @@ app-office/planner eds
 gnome-base/nautilus previewer
 # needs libgdata[gnome-online-accounts], depends on net-libs/webkit-gtk
 gnome-base/gvfs google
-gnome-base/gnome-control-center flickr
 # needs mail-client/evolution, depends on net-libs/webkit-gtk
 net-mail/lbdb evo
-# needs dev-util/devhelp, depends on net-libs/webkit-gtk
-dev-util/anjuta devhelp
 
 # Daniel Pielmeier <billie@gentoo.org> (2021-11-07)
 # gnome-base/librsvg has no stable keywords here, bug #807130
@@ -49,6 +74,7 @@ app-i18n/uim kde
 # Sam James <sam@gentoo.org> (2021-10-17)
 # media-libs/libheif not keyworded here
 sci-libs/gdal heif
+media-gfx/graphicsmagick heif
 
 # Matt Turner <mattst88@gentoo.org> (2021-07-25)
 # gdm requires gnome-shell requires rustified librsvg.
@@ -65,11 +91,6 @@ media-sound/easyeffects zamaudio
 # Matt Turner <mattst88@gentoo.org> (2021-06-10)
 # dev-python/django is not keyworded here
 dev-python/diskcache test
-
-# Sam James <sam@gentoo.org> (2021-05-17)
-# Deps not yet tested/keyworded.
-# bug #708344
-sys-devel/llvm gold
 
 # Sam James <sam@gentoo.org> (2021-03-11)
 # media-libs/libheif isn't keyworded here
@@ -88,18 +109,9 @@ sys-devel/clang default-compiler-rt
 # bug #766150
 dev-tex/rubber test
 
-# Cédric Krier <cedk@gentoo.org> (2020-11-10)
-# virtual/rust has no ppc keyword
-dev-vcs/mercurial rust
-
 # Mark Wright <gienah@gentoo.org> (2020-10-11)
 # dev-ml/ounit2 is not keyworded
 dev-ml/cudf test
-
-# Mart Raudsepp <leio@gentoo.org> (2020-08-02)
-# ppc32 has no virtual/rust support yet, needed by newer
-# gnome-base/librsvg, et al
->=media-gfx/eog-3.33.1 svg
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # clisp is keyworded on ppc
@@ -164,10 +176,6 @@ net-vpn/tor seccomp
 # Michał Górny <mgorny@gentoo.org> (2017-03-23)
 # Most of clang runtimes are not supported here
 sys-devel/clang-runtime openmp sanitize
-
-# Michael Weber <xmw@gentoo.org> (2017-03-15)
-# Cannot test non-free dependency dev-libs/device-atlas-api-c
-net-proxy/haproxy device-atlas
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2016-12-13)
 # Dropping ppc from sci-libs/armadillo, bug 555896

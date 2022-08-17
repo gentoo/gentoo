@@ -1,0 +1,214 @@
+https://sourceware.org/git/?p=glibc.git;a=patch;h=738ee53f0ce5e39b9b7a6777f5d3057afbaac498
+https://sourceware.org/git/?p=glibc.git;a=patch;h=d53b9cc391c72a1011ea8fe7a9f70dc5060a0db2
+
+From 738ee53f0ce5e39b9b7a6777f5d3057afbaac498 Mon Sep 17 00:00:00 2001
+From: John David Anglin <danglin@gcc.gnu.org>
+Date: Tue, 15 Mar 2022 23:12:37 +0000
+Subject: [PATCH] hppa: Implement swapcontext in assembler (bug 28960)
+
+When swapcontext.c is compiled without -g, the following error occurs:
+Error: CFI instruction used without previous .cfi_startproc
+
+Fix by converting swapcontext routine to assembler.
+---
+ sysdeps/unix/sysv/linux/hppa/swapcontext.S | 72 +++++++++++++++++++
+ sysdeps/unix/sysv/linux/hppa/swapcontext.c | 83 ----------------------
+ 2 files changed, 72 insertions(+), 83 deletions(-)
+ create mode 100644 sysdeps/unix/sysv/linux/hppa/swapcontext.S
+ delete mode 100644 sysdeps/unix/sysv/linux/hppa/swapcontext.c
+
+diff --git a/sysdeps/unix/sysv/linux/hppa/swapcontext.S b/sysdeps/unix/sysv/linux/hppa/swapcontext.S
+new file mode 100644
+index 0000000000..94b164dc63
+--- /dev/null
++++ b/sysdeps/unix/sysv/linux/hppa/swapcontext.S
+@@ -0,0 +1,72 @@
++/* Swap to new context.
++   Copyright (C) 2008-2022 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library.  If not, see
++   <https://www.gnu.org/licenses/>.  */
++
++#include <sysdep.h>
++#include "ucontext_i.h"
++
++	.text
++ENTRY(__swapcontext)
++
++	/* Copy rp to ret0 (r28).  */
++	copy %rp,%ret0
++
++	/* Create a frame.  */
++	ldo 64(%sp),%sp
++	.cfi_def_cfa_offset -64
++
++	/* Save the current machine context to oucp.  */
++	bl __getcontext,%rp
++
++	/* Copy oucp to register ret1 (r29).  __getcontext saves and
++	   restores it on a normal return.  It is restored from oR29
++	   on reactivation.  */
++	copy %r26,%ret1
++
++	/* Pop frame.  */
++	ldo -64(%sp),%sp
++	.cfi_def_cfa_offset 0
++
++	/* Load return pointer from oR28.  */
++	ldw oR28(%ret1),%rp
++
++	/* Return if error.  */
++	or,= %r0,%ret0,%r0
++	bv,n %r0(%rp)
++
++	/* Load sc_sar flag.  */
++	ldb oSAR(%ret1),%r20
++
++	/* Return if oucp context has been reactivated.  */
++	or,= %r0,%r20,%r0
++	bv,n %r0(%rp)
++
++	/* Mark sc_sar flag.  */
++	ldi 1,%r20
++	stb %r20,oSAR(%ret1)
++
++	/* Activate the machine context in ucp.  */
++	bl __setcontext,%rp
++	ldw oR25(%ret1),%r26
++
++	/* Load return pointer.  */
++	ldw oR28(%ret1),%rp
++	bv,n %r0(%rp)
++
++PSEUDO_END(__swapcontext)
++
++weak_alias (__swapcontext, swapcontext)
+diff --git a/sysdeps/unix/sysv/linux/hppa/swapcontext.c b/sysdeps/unix/sysv/linux/hppa/swapcontext.c
+deleted file mode 100644
+index 1664f68c7b..0000000000
+--- a/sysdeps/unix/sysv/linux/hppa/swapcontext.c
++++ /dev/null
+@@ -1,83 +0,0 @@
+-/* Swap to new context.
+-   Copyright (C) 2008-2021 Free Software Foundation, Inc.
+-   This file is part of the GNU C Library.
+-   Contributed by Helge Deller <deller@gmx.de>, 2008.
+-
+-   The GNU C Library is free software; you can redistribute it and/or
+-   modify it under the terms of the GNU Lesser General Public
+-   License as published by the Free Software Foundation; either
+-   version 2.1 of the License, or (at your option) any later version.
+-
+-   The GNU C Library is distributed in the hope that it will be useful,
+-   but WITHOUT ANY WARRANTY; without even the implied warranty of
+-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the GNU
+-   Lesser General Public License for more details.
+-
+-   You should have received a copy of the GNU Lesser General Public
+-   License along with the GNU C Library.  If not, see
+-   <https://www.gnu.org/licenses/>.  */
+-
+-#include <ucontext.h>
+-#include "ucontext_i.h"
+-
+-extern int __getcontext (ucontext_t *ucp);
+-extern int __setcontext (const ucontext_t *ucp);
+-
+-int
+-__swapcontext (ucontext_t *oucp, const ucontext_t *ucp)
+-{
+-  /* Save rp for debugger.  */
+-  asm ("stw %rp,-20(%sp)");
+-  asm (".cfi_offset 2, -20");
+-
+-  /* Copy rp to ret0 (r28).  */
+-  asm ("copy %rp,%ret0");
+-
+-  /* Create a frame.  */
+-  asm ("ldo 64(%sp),%sp");
+-  asm (".cfi_def_cfa_offset -64");
+-
+-  /* Save the current machine context to oucp.  */
+-  asm ("bl __getcontext,%rp");
+-
+-  /* Copy oucp to register ret1 (r29).  __getcontext saves and restores it
+-     on a normal return.  It is restored from oR29 on reactivation.  */
+-  asm ("copy %r26,%ret1");
+-
+-  /* Pop frame.  */
+-  asm ("ldo -64(%sp),%sp");
+-  asm (".cfi_def_cfa_offset 0");
+-
+-  /* Load return pointer from oR28.  */
+-  asm ("ldw %0(%%ret1),%%rp" : : "i" (oR28));
+-
+-  /* Return if error.  */
+-  asm ("or,= %r0,%ret0,%r0");
+-  asm ("bv,n %r0(%rp)");
+-
+-  /* Load sc_sar flag.  */
+-  asm ("ldb %0(%%ret1),%%r20" : : "i" (oSAR));
+-
+-  /* Return if oucp context has been reactivated.  */
+-  asm ("or,= %r0,%r20,%r0");
+-  asm ("bv,n %r0(%rp)");
+-
+-  /* Mark sc_sar flag.  */
+-  asm ("1: ldi 1,%r20");
+-  asm ("stb %%r20,%0(%%ret1)" : : "i" (oSAR));
+-
+-  /* Activate the machine context in ucp.  */
+-  asm ("bl __setcontext,%rp");
+-  asm ("ldw %0(%%ret1),%%r26" : : "i" (oR25));
+-
+-  /* Load return pointer.  */
+-  asm ("ldw %0(%%ret1),%%rp" : : "i" (oR28));
+-
+-  /* A successful call to setcontext does not return.  */
+-  asm ("bv,n %r0(%rp)");
+-
+-  /* Make gcc happy.  */
+-  return 0;
+-}
+-
+-weak_alias (__swapcontext, swapcontext)
+-- 
+2.27.0
+
+
+From d53b9cc391c72a1011ea8fe7a9f70dc5060a0db2 Mon Sep 17 00:00:00 2001
+From: John David Anglin <danglin@gcc.gnu.org>
+Date: Tue, 15 Mar 2022 23:04:39 +0000
+Subject: [PATCH] hppa: Use END instead of PSEUDO_END in swapcontext.S
+
+(cherry picked from commit 7a5c440102d4ec7fafd9bbd98eca9bd90ecaaafd)
+---
+ sysdeps/unix/sysv/linux/hppa/swapcontext.S | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sysdeps/unix/sysv/linux/hppa/swapcontext.S b/sysdeps/unix/sysv/linux/hppa/swapcontext.S
+index 94b164dc63..fbc22586d1 100644
+--- a/sysdeps/unix/sysv/linux/hppa/swapcontext.S
++++ b/sysdeps/unix/sysv/linux/hppa/swapcontext.S
+@@ -67,6 +67,6 @@ ENTRY(__swapcontext)
+ 	ldw oR28(%ret1),%rp
+ 	bv,n %r0(%rp)
+ 
+-PSEUDO_END(__swapcontext)
++END(__swapcontext)
+ 
+ weak_alias (__swapcontext, swapcontext)
+-- 
+2.27.0

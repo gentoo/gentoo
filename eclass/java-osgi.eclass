@@ -25,7 +25,7 @@ _JAVA_OSGI_ECLASS=1
 
 inherit java-utils-2
 
-# @ECLASS-VARIABLE: _OSGI_T
+# @ECLASS_VARIABLE: _OSGI_T
 # @INTERNAL
 # @DESCRIPTION:
 # We define _OSGI_T so that it does not contain a slash at the end.

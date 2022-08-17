@@ -1,0 +1,16 @@
+Originally reported in https://bugs.gentoo.org/show_bug.cgi?id=843422
+Upstream PR https://github.com/s-yata/marisa-trie/pull/46
+
+diff --git a/include/marisa/base.h b/include/marisa/base.h
+index bf4794e..95861b4 100644
+--- a/include/marisa/base.h
++++ b/include/marisa/base.h
+@@ -30,7 +30,7 @@ typedef uint64_t marisa_uint64;
+ 
+ #if defined(_WIN64) || defined(__amd64__) || defined(__x86_64__) || \
+     defined(__ia64__) || defined(__ppc64__) || defined(__powerpc64__) || \
+-    defined(__sparc64__) || defined(__mips64__) || defined(__aarch64__) || \
++    (defined(__sparc__) && defined(__LP64__)) || defined(__mips64__) || defined(__aarch64__) || \
+     defined(__s390x__) || (defined(__riscv) && (__riscv_xlen == 64)) || \
+     defined(__loongarch64)
+  #define MARISA_WORD_SIZE 64

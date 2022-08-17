@@ -9,4 +9,7 @@
 		<remote-id type="sourceforge">jboss</remote-id>
 		<remote-id type="github">jboss-javassist/javassist</remote-id>
 	</upstream>
+	<longdescription>
+		Javassist (JAVA programming ASSISTant) makes Java bytecode manipulation simple. It is a class library for editing bytecodes in Java.
+	</longdescription>
 </pkgmetadata>

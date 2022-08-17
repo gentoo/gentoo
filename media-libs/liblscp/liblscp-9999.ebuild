@@ -1,36 +1,37 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools subversion
+inherit cmake
 
 DESCRIPTION="C++ library for the Linux Sampler control protocol"
 HOMEPAGE="https://www.linuxsampler.org"
-ESVN_REPO_URI="https://svn.linuxsampler.org/svn/liblscp/trunk"
+
+if [[ ${PV} == "9999" ]] ; then
+	inherit subversion
+	ESVN_REPO_URI="https://svn.linuxsampler.org/svn/liblscp/trunk"
+else
+	SRC_URI="https://www.rncbc.org/archive/${P}.tar.gz
+		https://download.linuxsampler.org/packages/${P}.tar.gz"
+	KEYWORDS="~amd64 ~ppc ~x86"
+fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
 IUSE="doc"
 
 BDEPEND="doc? ( app-doc/doxygen )"
 
-DOCS=( AUTHORS ChangeLog TODO NEWS README )
+PATCHES=(
+	"${FILESDIR}/${PN}-0.9.6-conditional.patch"
+)
 
-src_prepare() {
-	default
-
-	emake -f Makefile.git
-	eautoreconf
-}
+DOCS=( ChangeLog README )
 
 src_configure() {
-	econf --disable-static
-}
-
-src_install() {
-	use doc && local HTML_DOCS=( doc/html/. )
-	default
-	find "${D}" -name '*.la' -delete || die
+	local mycmakeargs=(
+		-DBUILD_DOC=$(usex doc)
+	)
+	cmake_src_configure
 }

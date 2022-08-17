@@ -11,7 +11,7 @@ DESCRIPTION="A simple date object"
 
 SLOT="0"
 LICENSE="|| ( Artistic GPL-2+ )"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86 ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ppc ~ppc64 ~riscv x86 ~x86-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

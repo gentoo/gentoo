@@ -1,0 +1,56 @@
+https://gitlab.freedesktop.org/freetype/freetype/-/merge_requests/156
+
+--- freetype-2.12.0/builds/unix/configure.ac
++++ freetype-2.12.0/builds/unix/configure.ac
+@@ -530,13 +530,20 @@
+                [test "$ac_cv_search_clock_gettime" = "none required" \
+                 || LIB_CLOCK_GETTIME=$ac_cv_search_clock_gettime])
+ 
+-# 'librsvg' is needed to demonstrate SVG support.
+-PKG_CHECK_MODULES([LIBRSVG], [librsvg-2.0 >= 2.46.0],
+-                  [have_librsvg="yes (pkg-config)"], [have_librsvg=no])
+-
+ FT_DEMO_CFLAGS=""
+ FT_DEMO_LDFLAGS="$LIB_CLOCK_GETTIME"
+ 
++# 'librsvg' is needed to demonstrate SVG support.
++AC_ARG_WITH([librsvg],
++  [AS_HELP_STRING([--with-librsvg=@<:@yes|no|auto@:>@],
++                  [librsvg is needed to demonstrate SVG support in demos @<:@default=auto@:>@])],
++  [], [with_librsvg=auto])
++
++have_librsvg=no
++AS_IF([test x"$with_librsvg" != xno], [
++	PKG_CHECK_MODULES([LIBRSVG], [librsvg-2.0 >= 2.46.0],
++			  [have_librsvg="yes (pkg-config)"])
++])
+ if test "$have_librsvg" != no; then
+   FT_DEMO_CFLAGS="$FT_DEMO_CFLAGS $LIBRSVG_CFLAGS -DHAVE_LIBRSVG"
+   FT_DEMO_LDFLAGS="$FT_DEMO_LDFLAGS $LIBRSVG_LIBS"
+--- freetype-2.12.0/builds/unix/configure.raw
++++ freetype-2.12.0/builds/unix/configure.raw
+@@ -530,13 +530,20 @@
+                [test "$ac_cv_search_clock_gettime" = "none required" \
+                 || LIB_CLOCK_GETTIME=$ac_cv_search_clock_gettime])
+ 
+-# 'librsvg' is needed to demonstrate SVG support.
+-PKG_CHECK_MODULES([LIBRSVG], [librsvg-2.0 >= 2.46.0],
+-                  [have_librsvg="yes (pkg-config)"], [have_librsvg=no])
+-
+ FT_DEMO_CFLAGS=""
+ FT_DEMO_LDFLAGS="$LIB_CLOCK_GETTIME"
+ 
++# 'librsvg' is needed to demonstrate SVG support.
++AC_ARG_WITH([librsvg],
++  [AS_HELP_STRING([--with-librsvg=@<:@yes|no|auto@:>@],
++                  [librsvg is needed to demonstrate SVG support in demos @<:@default=auto@:>@])],
++  [], [with_librsvg=auto])
++
++have_librsvg=no
++AS_IF([test x"$with_librsvg" != xno], [
++	PKG_CHECK_MODULES([LIBRSVG], [librsvg-2.0 >= 2.46.0],
++			  [have_librsvg="yes (pkg-config)"])
++])
+ if test "$have_librsvg" != no; then
+   FT_DEMO_CFLAGS="$FT_DEMO_CFLAGS $LIBRSVG_CFLAGS -DHAVE_LIBRSVG"
+   FT_DEMO_LDFLAGS="$FT_DEMO_LDFLAGS $LIBRSVG_LIBS"

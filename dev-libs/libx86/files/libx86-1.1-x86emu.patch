@@ -1,6 +1,5 @@
-diff -Naur libx86-1.1+ds1.orig/Makefile libx86-1.1+ds1/Makefile
---- a/libx86-1.1/Makefile	2008-05-19 12:28:59.000000000 +0300
-+++ b/libx86-1.1/Makefile	2012-02-20 01:32:03.750068423 +0200
+--- a/Makefile
++++ b/Makefile
 @@ -5,6 +5,7 @@
  ifeq ($(BACKEND),x86emu)
  	OBJECTS += thunk.o x86emu/decode.o x86emu/debug.o x86emu/fpu.o \
@@ -9,9 +8,8 @@ diff -Naur libx86-1.1+ds1.orig/Makefile libx86-1.1+ds1/Makefile
  else
  	OBJECTS += lrmi.o
  endif
-diff -Naur libx86-1.1+ds1.orig/thunk.c libx86-1.1+ds1/thunk.c
---- a/libx86-1.1+ds1.orig/thunk.c	2008-04-03 03:48:00.000000000 +0300
-+++ b/libx86-1.1/thunk.c	2012-02-20 01:12:56.468820192 +0200
+--- a/thunk.c
++++ b/thunk.c
 @@ -32,6 +32,7 @@
  #define TRUE 1
  #define FALSE 0

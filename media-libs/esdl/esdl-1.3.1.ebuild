@@ -23,7 +23,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	dev-util/rebar
+	dev-util/rebar:0
 "
 
 src_compile() {

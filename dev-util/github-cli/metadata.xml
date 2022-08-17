@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>robbat2@gentoo.org</email>
-    <name>Robin H. Johnson</name>
+    <email>williamh@gentoo.org</email>
+    <name>William Hubbs</name>
   </maintainer>
   <upstream>
     <remote-id type="github">cli/cli</remote-id>

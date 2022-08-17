@@ -25,7 +25,7 @@ case ${EAPI:-0} in
 esac
 
 
-# @ECLASS-VARIABLE: POSTGRES_COMPAT
+# @ECLASS_VARIABLE: POSTGRES_COMPAT
 # @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
@@ -40,7 +40,7 @@ if ! declare -p POSTGRES_COMPAT &>/dev/null; then
 	die 'Required variable POSTGRES_COMPAT not declared.'
 fi
 
-# @ECLASS-VARIABLE: _POSTGRES_INTERSECT_SLOTS
+# @ECLASS_VARIABLE: _POSTGRES_INTERSECT_SLOTS
 # @INTERNAL
 # @DESCRIPTION:
 # A Bash array containing the intersect of POSTGRES_TARGETS and

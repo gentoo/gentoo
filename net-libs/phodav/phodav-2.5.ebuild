@@ -59,3 +59,11 @@ src_install() {
 		udev_dorules "${FILESDIR}/70-spice-webdavd.rules"
 	fi
 }
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
+}

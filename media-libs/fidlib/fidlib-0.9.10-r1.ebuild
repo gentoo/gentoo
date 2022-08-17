@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs
+inherit edo flag-o-matic toolchain-funcs
 
 DESCRIPTION="Run-time filter design and execution library"
 HOMEPAGE="http://uazu.net/fidlib/"
@@ -17,11 +17,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-extern.patch
 )
 
-doecho() {
-	echo "$@"
-	"$@" || die
-}
-
 src_prepare() {
 	default
 
@@ -33,11 +28,11 @@ src_prepare() {
 
 src_compile() {
 	# build library
-	doecho $(tc-getCC) ${CFLAGS} -DT_LINUX ${LDFLAGS} -Wl,-soname,libfidlib.so.${PV:0:1} \
+	edo $(tc-getCC) ${CFLAGS} -DT_LINUX ${LDFLAGS} -Wl,-soname,libfidlib.so.${PV:0:1} \
 		-fPIC -shared fidlib.c -lm -o libfidlib.so.${PV:0:1}
 
 	# build command-line tool
-	doecho $(tc-getCC) ${CFLAGS} ${LDFLAGS} firun.c -lm ./libfidlib.so.${PV:0:1} -o firun
+	edo $(tc-getCC) ${CFLAGS} ${LDFLAGS} firun.c -lm ./libfidlib.so.${PV:0:1} -o firun
 }
 
 src_install() {

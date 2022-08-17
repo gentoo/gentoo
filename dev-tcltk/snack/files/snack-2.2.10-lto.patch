@@ -1,0 +1,28 @@
+--- a/generic/sound.c	2022-07-18 08:21:20.492977432 +0200
++++ b/generic/sound.c	2022-07-18 08:21:44.720698702 +0200
+@@ -120,9 +120,9 @@
+ int littleEndian = 0;
+ 
+ #ifdef __cplusplus
+-extern "C" SnackStubs *snackStubs;
++extern "C" SnackStubs snackStubs;
+ #else
+-extern SnackStubs *snackStubs;
++extern SnackStubs snackStubs;
+ #endif
+ 
+ extern Tcl_HashTable *filterHashTable;
+--- a/generic/snack.c	2022-07-18 08:21:29.953868734 +0200
++++ b/generic/snack.c	2022-07-18 08:22:05.978453035 +0200
+@@ -203,9 +203,9 @@
+ int littleEndian = 0;
+ 
+ #ifdef __cplusplus
+-extern "C" SnackStubs *snackStubs;
++extern "C" SnackStubs snackStubs;
+ #else
+-extern SnackStubs *snackStubs;
++extern SnackStubs snackStubs;
+ #endif
+ 
+ extern Tcl_HashTable *filterHashTable;

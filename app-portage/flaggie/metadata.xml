@@ -5,12 +5,9 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
-		<maintainer status="active">
-			<email>mgorny@gentoo.org</email>
-			<name>Michał Górny</name>
-		</maintainer>
-		<bugs-to>https://github.com/mgorny/flaggie/issues/</bugs-to>
-		<remote-id type="github">mgorny/flaggie</remote-id>
+		<bugs-to>https://github.com/projg2/flaggie/issues/</bugs-to>
+		<remote-id type="github">projg2/flaggie</remote-id>
 	</upstream>
 </pkgmetadata>

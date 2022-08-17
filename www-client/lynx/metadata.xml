@@ -8,5 +8,6 @@
 	</use>
 	<upstream>
 		<changelog>https://lynx.invisible-island.net/current/CHANGES.html</changelog>
+		<remote-id type="github">ThomasDickey/lynx-snapshots</remote-id>
 	</upstream>
 </pkgmetadata>

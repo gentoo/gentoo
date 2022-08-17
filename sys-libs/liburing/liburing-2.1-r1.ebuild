@@ -45,9 +45,10 @@ multilib_src_configure() {
 		--libdevdir="${EPREFIX}/usr/$(get_libdir)"
 		--mandir="${EPREFIX}/usr/share/man"
 		--cc="$(tc-getCC)"
+		--cxx="$(tc-getCXX)"
 	)
 	# No autotools configure! "econf" will fail.
-	TMPDIR="${T}" ./configure "${myconf[@]}"
+	TMPDIR="${T}" ./configure "${myconf[@]}" || die
 }
 
 multilib_src_compile() {

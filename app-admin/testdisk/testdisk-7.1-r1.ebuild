@@ -11,14 +11,14 @@ SRC_URI="https://www.cgsecurity.org/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~riscv x86"
 IUSE="ewf jpeg ntfs qt5 reiserfs static zlib"
 
 REQUIRED_USE="static? ( !qt5 )"
 
 # WARNING: reiserfs support does NOT work with reiserfsprogs
 # you MUST use progsreiserfs-0.3.1_rc8 (the last version ever released).
-COMMON_DEPEND="
+DEPEND="
 	static? (
 		sys-apps/util-linux[static-libs]
 		sys-fs/e2fsprogs[static-libs]
@@ -45,10 +45,8 @@ COMMON_DEPEND="
 		!arm? ( ewf? ( app-forensics/libewf:= ) )
 	)
 "
-DEPEND="${COMMON_DEPEND}
-	qt5? ( dev-qt/linguist-tools:5 )
-"
-RDEPEND="!static? ( ${COMMON_DEPEND} )"
+RDEPEND="!static? ( ${DEPEND} )"
+BDEPEND="qt5? ( dev-qt/linguist-tools:5 )"
 
 DOCS=()
 
@@ -73,13 +71,13 @@ src_configure() {
 	econf "${myconf[@]}"
 
 	# perform safety checks for NTFS, REISERFS and JPEG
-	if use ntfs && ! egrep -q '^#define HAVE_LIBNTFS(3G)? 1$' "${S}"/config.h ; then
+	if use ntfs && ! grep -E -q '^#define HAVE_LIBNTFS(3G)? 1$' "${S}"/config.h ; then
 		die "Failed to find either NTFS or NTFS-3G library."
 	fi
-	if use reiserfs && egrep -q 'undef HAVE_LIBREISERFS\>' "${S}"/config.h ; then
+	if use reiserfs && grep -E -q 'undef HAVE_LIBREISERFS\>' "${S}"/config.h ; then
 		die "Failed to find reiserfs library."
 	fi
-	if use jpeg && egrep -q 'undef HAVE_LIBJPEG\>' "${S}"/config.h ; then
+	if use jpeg && grep -E -q 'undef HAVE_LIBJPEG\>' "${S}"/config.h ; then
 		die "Failed to find jpeg library."
 	fi
 }

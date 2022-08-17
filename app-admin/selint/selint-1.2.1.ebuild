@@ -3,6 +3,8 @@
 
 EAPI="8"
 
+inherit flag-o-matic
+
 DESCRIPTION="Static code analysis of refpolicy style SELinux policy"
 HOMEPAGE="https://github.com/TresysTechnology/selint/wiki"
 
@@ -21,7 +23,8 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/confuse:=
-	dev-libs/uthash"
+	dev-libs/uthash
+	elibc_musl? ( sys-libs/fts-standalone )"
 
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )"
@@ -33,5 +36,7 @@ src_prepare() {
 }
 
 src_configure() {
+	use elibc_musl && append-libs "-lfts"
+
 	econf $(use_with test check)
 }

@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>polynomial-c@gentoo.org</email>
-		<name>Lars Wendler</name>
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
 	</maintainer>
 	<use>
 		<flag name="convert-mozilla-cookies">Install the convert-mozilla-cookies script and its run-time dependencies</flag>

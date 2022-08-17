@@ -38,11 +38,14 @@
 		<flag name="urlpreview">
 			Use QtWebEngine rendering engine for showing URL thumbnails.
 		</flag>
-		<flag name="X">
+		<flag name="gui">
 			Build the Qt5 GUI client for quassel. If this USE flag is
 			disabled, the GUI is not built, and cannot be used. You might
 			want to disable this on the server, but you need it enabled on
 			the client.
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">quassel/quassel</remote-id>
+	</upstream>
 </pkgmetadata>

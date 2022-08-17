@@ -1,12 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 RUBY_OPTIONAL="yes"
-USE_RUBY="ruby26"
+USE_RUBY="ruby27"
 
 PHP_EXT_NAME="IcePHP"
 PHP_EXT_INI="yes"
@@ -41,7 +41,7 @@ RDEPEND=">=dev-libs/expat-2.0.1
 	)
 	dev-cpp/libmcpp
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( $(ruby_implementation_depend ruby26) )
+	ruby? ( $(ruby_implementation_depend ruby27) )
 	mono? ( dev-lang/mono )"
 DEPEND="${RDEPEND}
 	readline? ( sys-libs/readline:0= )

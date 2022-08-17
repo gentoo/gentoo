@@ -13,6 +13,7 @@
 		CD command line recording, ripping and copying tool. Especially ISOs and bin/cue-files are handled very well.
 	</longdescription>
 	<upstream>
+		<remote-id type="github">cdrdao/cdrdao</remote-id>
 		<remote-id type="sourceforge">cdrdao</remote-id>
 	</upstream>
 </pkgmetadata>

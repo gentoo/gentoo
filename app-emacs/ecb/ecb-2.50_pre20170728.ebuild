@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,10 +13,6 @@ SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="java"
-
-RDEPEND="java? ( app-emacs/jde )"
-DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${PN}-${PV%_*}"
 SITEFILE="70${PN}-gentoo.el"
@@ -31,9 +27,7 @@ src_prepare() {
 }
 
 src_compile() {
-	local loadpath
-	use java && loadpath="${EPREFIX}${SITELISP}"/{elib,jde,jde/lisp}
-	emake LOADPATH="${loadpath}"
+	default
 }
 
 src_install() {

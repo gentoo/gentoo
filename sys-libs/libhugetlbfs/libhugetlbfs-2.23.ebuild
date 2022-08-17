@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit toolchain-funcs python-any-r1
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/libhugetlbfs/libhugetlbfs/archive/${PV}.tar.gz -> ${
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~s390 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~x86"
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
@@ -47,17 +47,6 @@ src_prepare() {
 	# Tarballs from github don't have the version set.
 	# https://github.com/libhugetlbfs/libhugetlbfs/issues/7
 	[[ -f version ]] || echo "${PV}" > version
-}
-
-src_compile() {
-	tc-export AR
-	emake CC="$(tc-getCC)" libs tools
-}
-
-src_install() {
-	default
-
-	use static-libs || rm -f "${ED}"/usr/$(get_libdir)/*.a
 }
 
 src_test_alloc_one() {
@@ -168,4 +157,15 @@ src_test() {
 	# ---------------------------------------------------------
 
 	return ${rc}
+}
+
+src_compile() {
+	tc-export AR
+	emake CC="$(tc-getCC)" libs tools
+}
+
+src_install() {
+	default
+
+	use static-libs || rm -f "${ED}"/usr/$(get_libdir)/*.a
 }

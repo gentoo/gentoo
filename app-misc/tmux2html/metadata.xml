@@ -10,6 +10,6 @@
 		<name>Gentoo Shell Tools Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">greymd/tmux-xpanes</remote-id>
+		<remote-id type="github">tweekmonster/tmux2html</remote-id>
 	</upstream>
 </pkgmetadata>

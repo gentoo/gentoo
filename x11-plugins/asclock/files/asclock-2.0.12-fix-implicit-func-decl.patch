@@ -1,0 +1,13 @@
+diff --git a/asclock.h b/asclock.h
+index 7580df8..ec6883b 100644
+--- a/asclock.h
++++ b/asclock.h
+@@ -137,6 +137,8 @@ extern char *hour_map;
+ extern char *min_map;
+ extern char *sec_map;
+ 
++int mytime();
++
+ /********* symbols.c ***************/
+ void init_symbols();
+ void postconfig();

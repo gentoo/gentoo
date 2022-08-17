@@ -16,7 +16,6 @@ nameserver performance.
 </longdescription>
 <use>
 	<flag name="dnstap">Enable support for dnstap</flag>
-	<flag name="protobuf">Enable support for <pkg>dev-libs/protobuf</pkg>.</flag>
 	<flag name="sodium">Use <pkg>dev-libs/libsodium</pkg> for cryptography</flag>
 </use>
 </pkgmetadata>

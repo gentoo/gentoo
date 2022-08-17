@@ -1,4 +1,4 @@
-# Copyright 2006-2021 Gentoo Authors
+# Copyright 2006-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/transmission/transmission"
 else
 	SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm ~arm64 ~mips ppc ppc64 x86 ~amd64-linux"
+	KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="A fast, easy, and free BitTorrent client"
@@ -31,13 +31,8 @@ ACCT_DEPEND="
 BDEPEND="${ACCT_DEPEND}
 	virtual/pkgconfig
 	nls? (
-		gtk? (
-			dev-util/intltool
-			sys-devel/gettext
-		)
-		qt5? (
-			dev-qt/linguist-tools:5
-		)
+		gtk? ( sys-devel/gettext )
+		qt5? ( dev-qt/linguist-tools:5 )
 	)
 "
 COMMON_DEPEND="
@@ -65,16 +60,7 @@ COMMON_DEPEND="
 	systemd? ( >=sys-apps/systemd-209:= )
 "
 DEPEND="${COMMON_DEPEND}
-	nls? (
-		virtual/libintl
-		gtk? (
-			dev-util/intltool
-			sys-devel/gettext
-		)
-		qt5? (
-			dev-qt/linguist-tools:5
-		)
-	)
+	nls? ( virtual/libintl )
 "
 RDEPEND="${COMMON_DEPEND}
 	${ACCT_DEPEND}

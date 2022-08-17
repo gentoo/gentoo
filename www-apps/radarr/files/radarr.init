@@ -1,0 +1,7 @@
+#!/sbin/openrc-run
+
+pidfile="/run/radarr.pid"
+command="/opt/radarr/Radarr"
+command_user="radarr:radarr"
+command_background=true
+

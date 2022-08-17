@@ -18,6 +18,10 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~riscv ~s390 ~
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
+PATCHES=(
+	"${FILESDIR}/ksh-1.0.0-beta.2-gcc12.patch"
+)
+
 src_prepare() {
 	default
 

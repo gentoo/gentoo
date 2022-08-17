@@ -17,6 +17,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-07-27)
+# sys-devel/lld is not marked stable on ppc
+>=dev-lang/spidermonkey-78 lto
+
+# Sam James <sam@gentoo.org> (2022-05-11)
+# sys-apps/keyutils not stable here (test failures)
+# ... and samba[client] pulls in cifs-utils which pulls in keyutils.
+# bug #636252
+net-fs/nfs-utils nfsv4
+net-fs/samba client
+gnome-base/gvfs samba
+media-video/ffmpeg samba
+media-video/vlc samba
+
 # Sam James <sam@gentoo.org> (2022-03-03)
 # net-nds/openldap / dev-libs/cyrus-sasl not stable here
 dev-lang/php ldap-sasl

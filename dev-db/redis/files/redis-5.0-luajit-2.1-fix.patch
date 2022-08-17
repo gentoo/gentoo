@@ -1,0 +1,47 @@
+Backported from https://github.com/openresty/lua-cjson
+
+Upstream-commit: 638ac2741a7f ("optimize: improved forward-compatibility with older versions of Lua/LuaJIT.")
+Link: https://github.com/openresty/lua-cjson/commit/638ac2741a7f274979ac3fe2e1ea5fd6487702fe
+Upstream-PR: https://github.com/openresty/lua-cjson/pull/32
+See-also: https://www.freelists.org/post/luajit/ANN-LuaJIT210beta3,3
+
+diff --git a/deps/lua/src/lua_cjson.c b/deps/lua/src/lua_cjson.c
+index c26c0d7b8..af9e4ca54 100644
+--- a/deps/lua/src/lua_cjson.c
++++ b/deps/lua/src/lua_cjson.c
+@@ -1293,11 +1293,13 @@ static int json_decode(lua_State *l)
+ /* ===== INITIALISATION ===== */
+ 
+ #if !defined(LUA_VERSION_NUM) || LUA_VERSION_NUM < 502
+-/* Compatibility for Lua 5.1.
++/* Compatibility for Lua 5.1 and older LuaJIT.
+  *
+- * luaL_setfuncs() is used to create a module table where the functions have
+- * json_config_t as their first upvalue. Code borrowed from Lua 5.2 source. */
+-static void luaL_setfuncs (lua_State *l, const luaL_Reg *reg, int nup)
++ * compat_luaL_setfuncs() is used to create a module table where the functions
++ * have json_config_t as their first upvalue. Code borrowed from Lua 5.2
++ * source's luaL_setfuncs().
++ */
++static void compat_luaL_setfuncs(lua_State *l, const luaL_Reg *reg, int nup)
+ {
+     int i;
+ 
+@@ -1310,6 +1312,8 @@ static void luaL_setfuncs (lua_State *l, const luaL_Reg *reg, int nup)
+     }
+     lua_pop(l, nup);  /* remove upvalues */
+ }
++#else
++#define compat_luaL_setfuncs(L, reg, nup) luaL_setfuncs(L, reg, nup)
+ #endif
+ 
+ /* Call target function in protected mode with all supplied args.
+@@ -1365,7 +1369,7 @@ static int lua_cjson_new(lua_State *l)
+ 
+     /* Register functions with config data as upvalue */
+     json_create_config(l);
+-    luaL_setfuncs(l, reg, 1);
++    compat_luaL_setfuncs(l, reg, 1);
+ 
+     /* Set cjson.null */
+     lua_pushlightuserdata(l, NULL);

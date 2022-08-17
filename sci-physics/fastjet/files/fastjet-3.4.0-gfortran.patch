@@ -1,0 +1,11 @@
+--- a/plugins/PxCone/Makefile.am	2022-07-20 18:25:01.390035710 +0200
++++ b/plugins/PxCone/Makefile.am	2022-07-20 18:25:43.261623399 +0200
+@@ -7,7 +7,7 @@
+ endif
+ libPxConePlugin_la_CXXFLAGS = $(AM_CXXFLAGS) -I$(srcdir) -I$(srcdir)/../../include
+ libPxConePlugin_la_SOURCES = pxcone.f PxConePlugin.cc
+-libPxConePlugin_la_LIBADD = ../../src/libfastjet.la
++libPxConePlugin_la_LIBADD = ../../src/libfastjet.la -lgfortran
+ 
+ EXTRA_DIST = makefile.static pxcone.h
+ 

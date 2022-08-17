@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ else
 #	SRC_URI="https://github.com/apple/cups/releases/download/v${MY_PV}/${MY_P}-source.tar.gz"
 	SRC_URI="https://github.com/OpenPrinting/cups/releases/download/v${MY_PV}/cups-${MY_PV}-source.tar.gz"
 	if [[ "${PV}" != *_beta* ]] && [[ "${PV}" != *_rc* ]] ; then
-		KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+		KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 	fi
 fi
 
@@ -84,11 +84,6 @@ MULTILIB_CHOST_TOOLS=(
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
-	#enewgroup lp -> acct-group/lp
-	# user lp already provided by baselayout
-	#enewuser lp -1 -1 -1 lp
-	#enewgroup lpadmin 106
-
 	if use kernel_linux; then
 		linux-info_pkg_setup
 		if  ! linux_config_exists; then

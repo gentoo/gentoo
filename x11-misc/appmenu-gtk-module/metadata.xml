@@ -6,6 +6,9 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">derat/xsettingsd</remote-id>
+		<remote-id type="gitlab">vala-panel-project/vala-panel-appmenu</remote-id>
 	</upstream>
+	<use>
+		<flag name="gtk2">Build module for GTK+2</flag>
+	</use>
 </pkgmetadata>

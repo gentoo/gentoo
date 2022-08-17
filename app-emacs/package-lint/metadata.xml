@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <upstream>
+    <bugs-to>https://github.com/purcell/package-lint/issues/</bugs-to>
+    <remote-id type="github">purcell/package-lint</remote-id>
+  </upstream>
+  <longdescription>
+    This library provides a linter for the metadata in Emacs Lisp files which
+    are intended to be packages. You can integrate it into your build process.
+    package-lint detects various issues that may make your package
+    uninstallable or unusable for some users, and it warns about significant
+    deviations from the Elisp coding conventions, such as non-compliant symbol
+    naming, and use of reserved keybindings. Among other community uses,
+    package-lint is a prerequisite for submission of packages to MELPA.
+    package-lint can be used standalone, but see also the flycheck-package and
+    package-lint-flymake packages, which both use package-lint to conveniently
+    display packaging errors directly in the buffer while writing elisp
+    packages.
+  </longdescription>
+</pkgmetadata>

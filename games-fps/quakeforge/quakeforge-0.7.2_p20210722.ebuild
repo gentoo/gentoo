@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools readme.gentoo-r1 toolchain-funcs
+inherit autotools flag-o-matic readme.gentoo-r1 toolchain-funcs
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -68,6 +68,8 @@ src_prepare() {
 }
 
 src_configure() {
+	filter-lto #858755
+
 	qf_client() {
 		echo $(usex client $(use_enable ${1}) --disable-${1})
 	}

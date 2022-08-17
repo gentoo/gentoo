@@ -1,6 +1,14 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-07-17)
+# dev-python/pyside2 is not keyworded
+www-client/falkon python
+
+# Jimi Huotari <chiitoo@gentoo.org> (2022-05-08)
+# Not keyworded here yet.
+lxqt-base/lxqt-meta desktop-portal
+
 # Michał Górny <mgorny@gentoo.org> (2021-12-31)
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.
@@ -71,8 +79,8 @@ sci-mathematics/gmp-ecm -custom-tune
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-05)
 # dropbox requires binaries unavaliable for ppc64
-# webengine flag requires unkeyworded plasma-telepathy-meta
-kde-apps/kdenetwork-meta dropbox webengine
+# telepathy flag requires unkeyworded plasma-telepathy-meta
+kde-apps/kdenetwork-meta dropbox telepathy
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-08-20)
 # zfs is keyworded on ppc64
@@ -138,10 +146,6 @@ net-analyzer/snort open-appid
 # Incomplete support, bug #605878.
 net-vpn/tor seccomp
 
-# Robin H. Johnson <robbat2@gentoo.org> (2016-11-18)
-# dev-lang/luajit lacks ppc64 keyword. luajit upstream does not support ppc64
-dev-db/redis luajit
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2016-08-01)
 # kde-frameworks/*:5 not keyworded.
 net-irc/kvirc kde
@@ -155,7 +159,6 @@ dev-vcs/subversion kwallet
 # Patrice Clement <monsieurp@gentoo.org> (2016-02-08)
 # I would need to keyword an awful lot of packages on ppc64
 # that would need Java 7 otherwise.
-dev-java/batik python
 dev-java/bsf python
 dev-java/ant-apache-bsf python
 

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools multibuild xdg
+inherit autotools multibuild toolchain-funcs xdg
 
 DESCRIPTION="Atari Running on Any Machine, VM running Atari ST/TT/Falcon OS and TOS/GEM apps"
 HOMEPAGE="https://aranym.github.io"
@@ -38,6 +38,8 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.0-conditional-installs.patch
+	"${FILESDIR}"/${PN}-1.1.0-libcwrap.patch
+	"${FILESDIR}"/${PN}-1.1.0-ar.patch
 )
 
 ECONF_SOURCE="${S}"
@@ -49,6 +51,9 @@ src_prepare() {
 }
 
 src_configure() {
+	tc-export_build_env
+	export CC_FOR_BUILD=$(tc-getBUILD_CC) CXX_FOR_BUILD=$(tc-getBUILD_CXX)
+
 	# standard must come last otherwise the aranym executable gets
 	# overwritten by the others.
 	MULTIBUILD_VARIANTS=(

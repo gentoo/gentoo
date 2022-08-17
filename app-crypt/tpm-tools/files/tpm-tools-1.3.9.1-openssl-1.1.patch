@@ -17,7 +17,7 @@ index f534717..33c76e7 100644
  #include <openssl/evp.h>
  #include <openssl/err.h>
  
-+#if OPENSSL_VERSION_NUMBER < 0x10100000L || (defined(LIBRESSL_VERSION_NUMBER) && LIBRESSL_VERSION_NUMBER < 0x20700000L)
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
 +static void RSA_get0_key(const RSA *r, const BIGNUM **n, const BIGNUM **e, const BIGNUM **d) {
 +	if ( n )
 +		*n = r->n;
@@ -236,6 +236,3 @@ index f534717..33c76e7 100644
  
  	rc = 0;
  
--- 
-2.19.2
-

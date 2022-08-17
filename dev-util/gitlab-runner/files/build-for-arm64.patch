@@ -1,0 +1,48 @@
+From 2fc7d1d71c298fe736d4b8679f684942cd23d102 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 21 Jun 2022 23:35:28 +0100
+Subject: [PATCH] Makefile.build.mk: allow building for arm64 without
+ overriding ARCH
+
+Bug: https://bugs.gentoo.org/852962
+Thanks-to: William Hubbs <williamh@gentoo.org>
+---
+ Makefile.build.mk | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile.build.mk b/Makefile.build.mk
+index 977db1e0e9..f6f31647f9 100644
+--- a/Makefile.build.mk
++++ b/Makefile.build.mk
+@@ -35,7 +35,7 @@ runner-bin-fips-docker:
+ 	@docker rm -f gitlab-runner-fips
+ 
+ runner-bin-host: OS := $(shell uname -s | tr '[:upper:]' '[:lower:]')
+-runner-bin-host: ARCH := $(shell uname -m | sed s/x86_64/amd64/ | sed s/i386/386/)
++runner-bin-host: ARCH := $(shell uname -m | sed s/aarch64/arm64/ | sed s/x86_64/amd64/ | sed s/i386/386/)
+ runner-bin-host:
+ 	# Building $(NAME) in version $(VERSION) for host platform
+ 	$(MAKE) runner-bin BUILD_PLATFORMS="-osarch=$(OS)/$(ARCH)"
+@@ -56,15 +56,15 @@ runner-and-helper-docker-host: runner-and-helper-deb-host
+ 	$(MAKE) release_docker_images
+ 	$(MAKE) release_helper_docker_images
+ 
+-runner-and-helper-deb-host: ARCH := $(shell uname -m | sed s/x86_64/amd64/ | sed s/i386/386/)
++runner-and-helper-deb-host: ARCH := $(shell uname -m | sed s/aarch64/arm64/ | sed s/x86_64/amd64/ | sed s/i386/386/)
+ runner-and-helper-deb-host: export BUILD_ARCHS := -arch '$(ARCH)'
+-runner-and-helper-deb-host: PACKAGE_ARCH := $(shell uname -m | sed s/x86_64/amd64/ | sed s/i386/i686/)
++runner-and-helper-deb-host: PACKAGE_ARCH := $(shell uname -m | sed s/aarch64/arm64/ | sed s/x86_64/amd64/ | sed s/i386/i686/)
+ runner-and-helper-deb-host: runner-and-helper-bin-host package-deps package-prepare
+ 	$(MAKE) package-deb-arch ARCH=$(ARCH) PACKAGE_ARCH=$(PACKAGE_ARCH)
+ 
+-runner-and-helper-rpm-host: ARCH := $(shell uname -m | sed s/x86_64/amd64/ | sed s/i386/386/)
++runner-and-helper-rpm-host: ARCH := $(shell uname -m | sed s/aarch64/arm64/ | sed s/x86_64/amd64/ | sed s/i386/386/)
+ runner-and-helper-rpm-host: export BUILD_ARCHS := -arch '$(ARCH)'
+-runner-and-helper-rpm-host: PACKAGE_ARCH := $(shell uname -m | sed s/x86_64/amd64/ | sed s/i386/i686/)
++runner-and-helper-rpm-host: PACKAGE_ARCH := $(shell uname -m | sed s/aarch64/arm64/ | sed s/x86_64/amd64/ | sed s/i386/i686/)
+ runner-and-helper-rpm-host: runner-and-helper-bin-host package-deps package-prepare
+ 	$(MAKE) package-rpm-arch ARCH=$(ARCH) PACKAGE_ARCH=$(PACKAGE_ARCH)
+ 
+-- 
+GitLab
+

@@ -2,13 +2,16 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>polynomial-c@gentoo.org</email>
-		<name>Lars Wendler</name>
+		<email>nex+b-g-o@nexadn.de</email>
+		<name>Adrian Schollmeyer</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
 		<flag name="libcanberra">Enable sound event support using
 			<pkg>media-libs/libcanberra</pkg></flag>
-		<flag name="libproxy">Enable proxy support.</flag>
 		<flag name="plugin-checksum">Build Checksum plugin
 			(needs plugins)</flag>
 		<flag name="plugin-fishlim">Build FiSHLiM plugin (needs plugins

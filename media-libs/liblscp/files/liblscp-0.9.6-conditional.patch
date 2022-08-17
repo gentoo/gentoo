@@ -1,0 +1,17 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cf38831..a13f094 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -129,8 +129,10 @@ endif ()
+ #
+ 
+ add_subdirectory (src)
+-add_subdirectory (doc)
+-add_subdirectory (examples)
++
++if (BUILD_DOC)
++  add_subdirectory (doc)
++endif ()
+ 
+ configure_file (liblscp.spec.in liblscp.spec IMMEDIATE @ONLY)
+ 

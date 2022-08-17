@@ -37,4 +37,6 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install
 	font_src_install
+
+	find "${ED}" -type f -name '*.la' -delete || die
 }

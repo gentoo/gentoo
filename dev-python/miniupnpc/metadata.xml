@@ -6,6 +6,7 @@
 		<name>Michał Górny</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">miniupnp/miniupnp</remote-id>
 		<remote-id type="pypi">miniupnpc</remote-id>
 	</upstream>
 </pkgmetadata>

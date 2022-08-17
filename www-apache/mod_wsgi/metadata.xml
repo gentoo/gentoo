@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>djc@gentoo.org</email>
-		<name>Dirkjan Ochtman</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="pypi">mod_wsgi</remote-id>
 		<remote-id type="github">GrahamDumpleton/mod_wsgi</remote-id>

@@ -12,7 +12,7 @@ SRC_URI="https://github.com/vifm/vifm/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~x86"
-IUSE="developer +extended-keys gtk +magic +vim +vim-syntax X"
+IUSE="+extended-keys gtk +magic +vim +vim-syntax X"
 
 DEPEND="
 	>=sys-libs/ncurses-5.9-r3:0
@@ -30,8 +30,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# developer just turns off optimisations and adds -Werror again
+	# bug #855386
 	econf \
-		$(use_enable developer) \
+		--disable-developer \
+		--disable-werror \
 		$(use_enable extended-keys) \
 		$(use_with magic libmagic) \
 		$(use_with gtk) \

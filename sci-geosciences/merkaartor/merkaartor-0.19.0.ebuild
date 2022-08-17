@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PLOCALES="ar cs de en es et fr hr hu id_ID it ja nl pl pt_BR pt ru sk sv uk vi zh_CN zh_TW"
+PLOCALES="cs de en es fi fr hr hu id_ID it ja nl pl pt_BR ru sv uk zh_TW"
 inherit flag-o-matic plocale qmake-utils xdg
 
 DESCRIPTION="Qt based map editor for the openstreetmap.org project"

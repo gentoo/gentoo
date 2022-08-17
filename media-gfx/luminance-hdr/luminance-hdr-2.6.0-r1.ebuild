@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -56,6 +56,14 @@ PATCHES=(
 )
 
 pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+src_configure() {
 	if use cpu_flags_x86_sse2 ; then
 		append-flags -msse2
 	else
@@ -63,12 +71,6 @@ pkg_pretend() {
 		die "SSE2 support missing"
 	fi
 
-	if use openmp ; then
-		tc-has-openmp || die "Please switch to an openmp compatible compiler"
-	fi
-}
-
-src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package fits CFITSIO)
 		-DUSE_OPENMP="$(usex openmp)"

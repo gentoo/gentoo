@@ -1,4 +1,4 @@
-# Copyright 2002-2021 Gentoo Authors
+# Copyright 2002-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp.eclass
@@ -27,7 +27,7 @@
 # file with the file name ${P}.el, then this eclass will move ${P}.el to
 # ${PN}.el in src_unpack().
 
-# @ECLASS-VARIABLE: NEED_EMACS
+# @ECLASS_VARIABLE: NEED_EMACS
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -35,7 +35,7 @@
 # variable before inheriting elisp.eclass.  Set it to the version your
 # package uses and the dependency will be adjusted.
 
-# @ECLASS-VARIABLE: ELISP_PATCHES
+# @ECLASS_VARIABLE: ELISP_PATCHES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Space separated list of patches to apply after unpacking the sources.
@@ -43,12 +43,12 @@
 # FILESDIR.  This variable is semi-deprecated, preferably use the
 # PATCHES array instead.
 
-# @ECLASS-VARIABLE: ELISP_REMOVE
+# @ECLASS_VARIABLE: ELISP_REMOVE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Space separated list of files to remove after unpacking the sources.
 
-# @ECLASS-VARIABLE: SITEFILE
+# @ECLASS_VARIABLE: SITEFILE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Name of package's site-init file.  The filename must match the shell
@@ -56,7 +56,7 @@
 # reserved for internal use.  "50${PN}-gentoo.el" is a reasonable choice
 # in most cases.
 
-# @ECLASS-VARIABLE: ELISP_TEXINFO
+# @ECLASS_VARIABLE: ELISP_TEXINFO
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Space separated list of Texinfo sources.  Respective GNU Info files
@@ -64,7 +64,7 @@
 
 inherit elisp-common
 
-case ${EAPI:-0} in
+case ${EAPI} in
 	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac

@@ -5,4 +5,7 @@
 		<email>php-bugs@gentoo.org</email>
 		<name>PHP</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">m6w6/ext-http</remote-id>
+	</upstream>
 </pkgmetadata>

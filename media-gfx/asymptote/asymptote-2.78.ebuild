@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/asymptote/${P}.src.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~ppc ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="+boehm-gc context curl doc emacs examples fftw gsl +imagemagick latex lsp offscreen +opengl python sigsegv svg test vim-syntax X"
 RESTRICT="!test? ( test )"
 

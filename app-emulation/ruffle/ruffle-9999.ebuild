@@ -4,7 +4,7 @@
 EAPI=8
 
 # python is needed by xcb-0.8.2 until update to >=0.10
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="xml(+)"
 inherit cargo desktop flag-o-matic git-r3 python-any-r1 xdg
 
@@ -12,7 +12,7 @@ DESCRIPTION="Flash Player emulator written in Rust"
 HOMEPAGE="https://ruffle.rs/"
 EGIT_REPO_URI="https://github.com/ruffle-rs/ruffle.git"
 
-LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 ISC MIT MPL-2.0 ZLIB curl"
+LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 ISC MIT MPL-2.0 ZLIB curl unicode"
 SLOT="0"
 
 RDEPEND="
@@ -25,8 +25,9 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
+	virtual/jre:*
 	virtual/pkgconfig
-	>=virtual/rust-1.56"
+	>=virtual/rust-1.62"
 
 QA_FLAGS_IGNORED="
 	usr/bin/${PN}
@@ -39,7 +40,7 @@ src_unpack() {
 }
 
 src_compile() {
-	filter-flags '-flto*' # undefined references with ring crate and more
+	filter-lto # undefined references with ring crate and more
 
 	cargo_src_compile --bins # note: configure --bins would skip tests
 }

@@ -20,7 +20,8 @@ RDEPEND="
 	net-libs/libnsl:=
 	>=sys-apps/util-linux-2.20
 	dmalloc? ( dev-libs/dmalloc[threads] )
-	ldap? ( >=net-nds/openldap-2.0
+	ldap? (
+		>=net-nds/openldap-2.0:=
 		sasl? (
 			dev-libs/cyrus-sasl
 			dev-libs/libxml2
@@ -28,7 +29,7 @@ RDEPEND="
 		)
 	)
 	systemd? ( sys-apps/systemd )
-	libtirpc? ( net-libs/libtirpc )
+	libtirpc? ( net-libs/libtirpc:= )
 	!libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) )
 "
 DEPEND="${RDEPEND}
@@ -44,6 +45,7 @@ PATCHES=(
 	"${WORKDIR}"/${P}-patches/
 	"${FILESDIR}/${P}-dmalloc.patch"
 	"${FILESDIR}/${P}-nfsv4-mount.patch"
+	"${FILESDIR}/${P}-mount_conflict.patch"
 )
 
 pkg_setup() {

@@ -1,0 +1,29 @@
+Drop -Werror= (uninitialized cause issues from gcc-12) and also backport
+fix for the offending variable.
+
+Note: upstream changed how -Werror is handled next release, currently pass
+a hard non-specific -Werror and disables it for gcc-12 (review on bump, see
+commit/PR below).
+
+https://bugs.gentoo.org/859277
+https://github.com/widelands/widelands/pull/5415
+https://github.com/widelands/widelands/commit/e4da6d624
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -312,8 +312,2 @@
+ if(NOT MSVC)
+-  # Turn some warnings into errors.
+-  wl_add_flag(WL_COMPILE_DIAGNOSTICS "-Werror=format-security")
+-  wl_add_flag(WL_COMPILE_DIAGNOSTICS "-Werror=return-type")
+-  wl_add_flag(WL_COMPILE_DIAGNOSTICS "-Werror=shadow")
+-  wl_add_flag(WL_COMPILE_DIAGNOSTICS "-Werror=uninitialized")
+-
+   wl_add_flag(WL_GENERIC_CXX_FLAGS "-std=c++11")
+--- a/src/editor/editorinteractive.h
++++ b/src/editor/editorinteractive.h
+@@ -87,4 +87,4 @@
+ 		EditorIncreaseResourcesTool increase_resources;
+-		EditorSetPortSpaceTool set_port_space;
+ 		EditorUnsetPortSpaceTool unset_port_space;
++		EditorSetPortSpaceTool set_port_space;
+ 		EditorSetOriginTool set_origin;

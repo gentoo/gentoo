@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit check-reqs cmake optfeature python-single-r1 xdg
 
@@ -17,10 +17,7 @@ if [[ ${PV} = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/${MY_PN}/${MY_PN}.git"
 	S="${WORKDIR}/freecad-${PV}"
 else
-	MY_PV=$(ver_cut 1-2)
-	MY_PV=$(ver_rs 1 '_' ${MY_PV})
-	SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
-		https://raw.githubusercontent.com/waebbl/waebbl-gentoo/master/patches/${P}-0005-Make-smesh-compile-with-vtk9.patch.xz"
+	SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 	S="${WORKDIR}/FreeCAD-${PV}"
 fi
@@ -29,10 +26,9 @@ fi
 # examples are licensed CC-BY-SA (without note of specific version)
 LICENSE="LGPL-2 CC-BY-SA-4.0"
 SLOT="0"
-IUSE="debug headless pcl test"
-RESTRICT="!test? ( test )"
+IUSE="debug designer headless test"
 
-FREECAD_EXPERIMENTAL_MODULES="cloud plot ship"
+FREECAD_EXPERIMENTAL_MODULES="cloud pcl"
 FREECAD_STABLE_MODULES="addonmgr fem idf image inspection material
 	openscad part-design path points raytracing robot show surface
 	techdraw tux"
@@ -44,6 +40,8 @@ for module in ${FREECAD_EXPERIMENTAL_MODULES}; do
 	IUSE="${IUSE} ${module}"
 done
 unset module
+
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	${PYTHON_DEPS}
@@ -68,7 +66,7 @@ RDEPEND="
 	sci-libs/flann[openmp]
 	sci-libs/hdf5:=[fortran,zlib]
 	>=sci-libs/med-4.0.0-r1[python,${PYTHON_SINGLE_USEDEP}]
-	sci-libs/opencascade:=[vtk(+)]
+	sci-libs/opencascade:=[json,vtk(+)]
 	sci-libs/orocos_kdl:=
 	sys-libs/zlib
 	virtual/glu
@@ -87,7 +85,7 @@ RDEPEND="
 		dev-python/numpy[${PYTHON_USEDEP}]
 		>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
 		dev-python/pybind11[${PYTHON_USEDEP}]
-		dev-python/pyside2[gui,svg,${PYTHON_USEDEP}]
+		dev-python/pyside2[gui,svg,webchannel,webengine,${PYTHON_USEDEP}]
 		dev-python/shiboken2[${PYTHON_USEDEP}]
 		addonmgr? ( dev-python/GitPython[${PYTHON_USEDEP}] )
 		fem? ( dev-python/ply[${PYTHON_USEDEP}] )
@@ -119,7 +117,6 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	inspection? ( points )
 	path? ( robot )
-	ship? ( image plot )
 "
 
 PATCHES=(
@@ -134,14 +131,10 @@ CHECKREQS_DISK_BUILD="2G"
 pkg_setup() {
 	check-reqs_pkg_setup
 	python-single-r1_pkg_setup
-	[[ -z ${CASROOT} ]] && die "\${CASROOT} not set, plesae run eselect opencascade"
+	[[ -z ${CASROOT} ]] && die "\${CASROOT} not set, please run eselect opencascade"
 }
 
 src_prepare() {
-	# the upstream provided file doesn't find the coin doc tag file,
-	# but cmake ships a working one, so we use this.
-	rm "${S}/cMake/FindCoin3D.cmake" || die
-
 	# Fix desktop file
 	sed -e 's/Exec=FreeCAD/Exec=freecad/' -i src/XDGData/org.freecadweb.FreeCAD.desktop || die
 
@@ -156,6 +149,7 @@ src_configure() {
 		-DBUILD_CLOUD=$(usex cloud)
 		-DBUILD_COMPLETE=OFF					# deprecated
 		-DBUILD_DRAFT=ON
+		-DBUILD_DESIGNER_PLUGIN=$(usex designer)
 		-DBUILD_DRAWING=ON
 		-DBUILD_ENABLE_CXX_STD:STRING="C++17"	# needed for current git master
 		-DBUILD_FEM=$(usex fem)
@@ -176,13 +170,11 @@ src_configure() {
 		-DBUILD_PART=ON
 		-DBUILD_PART_DESIGN=$(usex part-design)
 		-DBUILD_PATH=$(usex path)
-		-DBUILD_PLOT=$(usex plot)				# conflicts with possible external workbench
 		-DBUILD_POINTS=$(usex points)
 		-DBUILD_QT5=ON							# OFF means to use Qt4
 		-DBUILD_RAYTRACING=$(usex raytracing)
 		-DBUILD_REVERSEENGINEERING=OFF			# currently only an empty sandbox
 		-DBUILD_ROBOT=$(usex robot)
-		-DBUILD_SHIP=$(usex ship)				# conflicts with possible external workbench
 		-DBUILD_SHOW=$(usex show)
 		-DBUILD_SKETCHER=ON						# needed by draft workspace
 		-DBUILD_SMESH=ON
@@ -270,24 +262,10 @@ src_install() {
 	python_optimize "${ED}"/usr/share/${PN}/data/Mod/Start/StartPage "${ED}"/usr/$(get_libdir)/${PN}{/Ext,/Mod}/
 	# compile main package in python site-packages as well
 	python_optimize
-
-	doenvd "${FILESDIR}/99${PN}"
 }
 
 pkg_postinst() {
 	xdg_pkg_postinst
-
-	if use plot; then
-		einfo "Note: You are enabling the 'plot' USE flag."
-		einfo "This conflicts with the plot workbench that can be loaded"
-		einfo "via the addon manager! You can only install one of those."
-	fi
-
-	if use ship; then
-		einfo "Note: You are enabling the 'ship' USE flag."
-		einfo "This conflicts with the ship workbench that can be loaded"
-		einfo "via the addon manager! You can only install one of those."
-	fi
 
 	einfo "You can load a lot of additional workbenches using the integrated"
 	einfo "AddonManager."
@@ -299,23 +277,23 @@ pkg_postinst() {
 	einfo "https://wiki.freecadweb.org/Installing#External_software_supported_by_FreeCAD"
 	optfeature_header "Computational utilities"
 	optfeature "BLAS library" sci-libs/openblas
-	optfeature "statistical computation with Python" dev-python/pandas
-	optfeature "scientific computation with Python" dev-python/scipy
-	optfeature "symbolic math with Python" dev-python/sympy
+	optfeature "Statistical computation with Python" dev-python/pandas
+	optfeature "Use scientific computation with Python" dev-python/scipy
+	optfeature "Use symbolic math with Python" dev-python/sympy
 	optfeature_header "Imaging, Plotting and Rendering utilities"
-	optfeature "dependency graphs" media-gfx/graphviz
+	optfeature "Dependency graphs" media-gfx/graphviz
 	optfeature "PBR Rendering" media-gfx/povray
 	optfeature_header "Import / Export"
-	optfeature "interacting with git repositories" dev-python/GitPython
-	optfeature "working with COLLADA documents" dev-python/pycollada
+	optfeature "Interact with git repositories" dev-python/GitPython
+	optfeature "Work with COLLADA documents" dev-python/pycollada
 	optfeature "YAML importer and emitter" dev-python/pyyaml
-	optfeature "importing and exporting 2D AutoCAD DWG files" media-gfx/libredwg
-	optfeature "importing and exporting geospatial data formats" sci-libs/gdal
-	optfeature "working with projection data" sci-libs/proj
+	optfeature "Importing and exporting 2D AutoCAD DWG files" media-gfx/libredwg
+	optfeature "Importing and exporting geospatial data formats" sci-libs/gdal
+	optfeature "Working with projection data" sci-libs/proj
 	optfeature_header "Meshing and FEM"
 	optfeature "FEM mesh generator" sci-libs/gmsh
-	optfeature "triangulating meshes" sci-libs/gts
-	optfeature "visualization" sci-visualization/paraview
+	optfeature "Triangulating meshes" sci-libs/gts
+	optfeature "Visualization" sci-visualization/paraview
 }
 
 pkg_postrm() {

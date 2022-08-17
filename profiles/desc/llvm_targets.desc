@@ -8,6 +8,7 @@ ARM - ARM CPU target
 AVR - 8-bit Atmel AVR microcontroller target
 BPF - Berkeley Packet Filter target
 CSKY - C-SKY CPU target [EXPERIMENTAL]
+DirectX - DirectX target [EXPERIMENTAL]
 Hexagon - Qualcomm Hexagon DSP target
 Lanai - Lanai CPU target
 LoongArch - LoongArch CPU support [EXPERIMENTAL]
@@ -18,6 +19,7 @@ NVPTX - NVIDIA PTX (GPU) target (32-bit and 64-bit)
 PowerPC - PowerPC CPU target (PPC32 and PPC64)
 RISCV - RISC-V CPU target
 Sparc - Sparc CPU target
+SPIRV - Support SPIR-V language target for graphics and parallel computing
 SystemZ - SystemZ (s390x) CPU target
 VE - NEC SX-Aurora TSUBASA vector engine target
 WebAssembly - WebAssembly backend

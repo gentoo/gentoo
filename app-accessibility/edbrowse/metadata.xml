@@ -5,4 +5,7 @@
 	<email>accessibility@gentoo.org</email>
 	<name>Gentoo Accessibility Project</name>
 </maintainer>
+<upstream>
+	<remote-id type="github">CMB/edbrowse</remote-id>
+</upstream>
 </pkgmetadata>

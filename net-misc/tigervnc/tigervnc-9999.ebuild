@@ -1,81 +1,93 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-CMAKE_IN_SOURCE_BUILD=1
 
-inherit autotools cmake flag-o-matic git-r3 systemd xdg
+CMAKE_IN_SOURCE_BUILD=1
+inherit autotools cmake eapi8-dosym flag-o-matic git-r3 java-pkg-opt-2 optfeature systemd xdg
 
 XSERVER_VERSION="21.1.1"
 
 DESCRIPTION="Remote desktop viewer display system"
-HOMEPAGE="http://www.tigervnc.org"
+HOMEPAGE="https://tigervnc.org"
 SRC_URI="server? ( ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-${XSERVER_VERSION}.tar.xz )"
 EGIT_REPO_URI="https://github.com/TigerVNC/tigervnc/"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="dri3 +drm gnutls nls +opengl server xinerama +xorgmodule"
+IUSE="dri3 +drm gnutls java nls +opengl +server xinerama"
+REQUIRED_USE="
+	dri3? ( drm )
+	opengl? ( server )
+"
 
 CDEPEND="
-	virtual/jpeg:0
+	media-libs/libjpeg-turbo:=
 	sys-libs/zlib:=
-	>=x11-libs/fltk-1.3.1
-	sys-libs/pam
+	x11-libs/fltk:1
 	x11-libs/libX11
 	x11-libs/libXext
+	x11-libs/libXi
+	x11-libs/libXrandr
 	x11-libs/libXrender
-	x11-libs/libxcvt
 	x11-libs/pixman
 	gnutls? ( net-libs/gnutls:= )
 	nls? ( virtual/libiconv )
 	server? (
+		dev-libs/libbsd
+		dev-libs/openssl:0=
+		sys-libs/pam
 		x11-libs/libXau
 		x11-libs/libXdamage
 		x11-libs/libXdmcp
+		x11-libs/libXfixes
 		x11-libs/libXfont2
 		x11-libs/libXtst
-		>=x11-libs/pixman-0.27.2
-		>=x11-apps/xauth-1.0.3
+		x11-libs/pixman
+		x11-libs/xtrans
+		x11-apps/xauth
+		x11-apps/xinit
+		x11-apps/xkbcomp
 		x11-apps/xsetroot
-		>=x11-misc/xkeyboard-config-2.4.1-r3
-		xorgmodule? ( =x11-base/xorg-server-${XSERVER_VERSION%.*}* )
-		drm? ( x11-libs/libdrm )
-		dev-libs/openssl:0=
+		x11-misc/xkeyboard-config
+		opengl? ( media-libs/libglvnd[X] )
 	)
-	xinerama? ( x11-libs/libXinerama )
 	"
 
 RDEPEND="${CDEPEND}
-	!net-misc/tightvnc
-	!net-misc/vnc
-	!net-misc/xf4vnc"
+	java? ( virtual/jre:1.8 )
+	server? (
+		dev-lang/perl
+		sys-process/psmisc
+	)"
 
 DEPEND="${CDEPEND}
-	nls? ( sys-devel/gettext )
-	x11-base/xorg-proto
-	media-libs/fontconfig
-	x11-libs/libICE
-	x11-libs/libSM
-	x11-libs/libXcursor
-	x11-libs/libXfixes
-	x11-libs/libXft
-	x11-libs/libXi
+	drm? ( x11-libs/libdrm )
 	server? (
-		dev-libs/libbsd
-		x11-libs/libxkbfile
-		x11-libs/libxshmfence
-		virtual/pkgconfig
 		media-fonts/font-util
+		x11-base/xorg-proto
+		x11-libs/libxcvt
+		x11-libs/libxkbfile
 		x11-misc/util-macros
-		>=x11-libs/xtrans-1.3.3
-		opengl? ( >=media-libs/mesa-10.3.4-r1 )
+		opengl? ( media-libs/mesa )
 	)"
+
+BDEPEND="
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
+	"
+
+PATCHES=(
+	# Restore Java viewer
+	"${FILESDIR}"/${PN}-1.11.0-install-java-viewer.patch
+	"${FILESDIR}"/${PN}-1.12.0-xsession-path.patch
+	"${FILESDIR}"/${PN}-1.12.80-disable-server-and-pam.patch
+)
 
 src_unpack() {
 	git-r3_src_unpack
-	unpack xorg-server-${XSERVER_VERSION}.tar.xz
+	use server && unpack xorg-server-${XSERVER_VERSION}.tar.xz
 }
 
 src_prepare() {
@@ -91,8 +103,9 @@ src_prepare() {
 		eautoreconf
 		sed -i 's:\(present.h\):../present/\1:' os/utils.c || die
 		sed -i '/strcmp.*-fakescreenfps/,/^        \}/d' os/utils.c || die
+
+		cd "${WORKDIR}" && sed -i 's:\(drm_fourcc.h\):libdrm/\1:' $(grep drm_fourcc.h -rl .) || die
 	fi
-	cd "${WORKDIR}" && sed -i 's:\(drm_fourcc.h\):libdrm/\1:' $(grep drm_fourcc.h -rl .) || die
 }
 
 src_configure() {
@@ -103,7 +116,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DENABLE_GNUTLS=$(usex gnutls)
 		-DENABLE_NLS=$(usex nls)
-		-DBUILD_JAVA=no
+		-DBUILD_JAVA=$(usex java)
+		-DBUILD_SERVER=$(usex server)
 	)
 
 	cmake_src_configure
@@ -116,7 +130,6 @@ src_configure() {
 			--disable-config-hal \
 			--disable-config-udev \
 			--disable-devel-docs \
-			--disable-dmx \
 			--disable-dri \
 			$(use_enable dri3) \
 			--disable-glamor \
@@ -133,7 +146,6 @@ src_configure() {
 			--disable-xorg \
 			--disable-xvfb \
 			--disable-xwin \
-			--disable-xwayland \
 			--enable-dri2 \
 			--with-pic \
 			--without-dtrace \
@@ -162,23 +174,28 @@ src_install() {
 
 	if use server; then
 		emake -C unix/xserver/hw/vnc DESTDIR="${D}" install
-		if ! use xorgmodule; then
-			rm -rv "${ED}"/usr/$(get_libdir)/xorg || die
-		else
-			rm -v "${ED}"/usr/$(get_libdir)/xorg/modules/extensions/libvnc.la || die
-		fi
+		rm -v "${ED}"/usr/$(get_libdir)/xorg/modules/extensions/libvnc.la || die
 
-		newconfd "${FILESDIR}"/${PN}.confd ${PN}
-		newinitd "${FILESDIR}"/${PN}.initd ${PN}
+		newconfd "${FILESDIR}"/${PN}-1.12.0.confd ${PN}
+		newinitd "${FILESDIR}"/${PN}-1.12.0.initd ${PN}
 
 		systemd_douserunit unix/vncserver/vncserver@.service
-	else
-		local f
-		for f in x0vncserver vncconfig; do
-			rm "${ED}"/usr/bin/${f} || die
-			rm "${ED}"/usr/share/man/man1/${f}.1 || die
-		done
-		rm -r "${ED}"/usr/{sbin,libexec} || die
-		rm -r "${ED}"/usr/share/man/man8 || die
+
+		# comment out pam_selinux.so, the server does not start if missing
+		# part of bug #746227
+		sed -i -e '/pam_selinux/s/^/#/' "${ED}"/etc/pam.d/tigervnc || die
+
+		# install vncserver to /usr/bin too, see bug #836620
+		dosym8 -r /usr/libexec/vncserver /usr/bin/vncserver
 	fi
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	local OPTIONAL_DM="gnome-base/gdm x11-misc/lightdm x11-misc/sddm x11-misc/slim"
+	use server && \
+		optfeature "keeping track of the xorg-server module" net-misc/tigervnc-xorg-module && \
+		optfeature_header "Install any additional display manager package:" && \
+		optfeature "proper session support" ${OPTIONAL_DM}
 }

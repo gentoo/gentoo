@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    web-mode.el is an emacs major mode for editing web templates aka HTML files
+    embedding parts (CSS/JavaScript) and blocks (pre rendered by client/server
+    side engines). web-mode.el is compatible with many template engines: PHP,
+    JSP, ASP, Django, Twig, Jinja, Mustache, ERB, FreeMarker, Velocity,
+    Cheetah, Smarty, CTemplate, Mustache, Blade, ErlyDTL, Go Template, Dust.js,
+    Google Closure (soy), React/JSX, Angularjs, ejs, Nunjucks, etc.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/fxbois/web-mode/issues/</bugs-to>
+    <remote-id type="github">fxbois/web-mode</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -2,8 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>polynomial-c@gentoo.org</email>
-    <name>Lars Wendler</name>
+    <email>slashbeast@gentoo.org</email>
+    <name>Piotr Karbowski</name>
+  </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>t@laumann.xyz</email>
+    <name>Thomas Bracht Laumann Jespersen</name>
   </maintainer>
   <longdescription>
   Zsh is a shell designed for interactive use, although it is also a

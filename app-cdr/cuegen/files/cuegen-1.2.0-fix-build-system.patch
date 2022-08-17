@@ -1,11 +1,12 @@
 --- a/Makefile
 +++ b/Makefile
-@@ -1,9 +1 @@
+@@ -1,9 +1,3 @@
 -TARGET := cuegen
 -CC     := gcc
 -CFLAGS := -O2 -pipe -fomit-frame-pointer
 -WARN   := -W -Wall -Wstrict-prototypes -Wmissing-prototypes
--
++CFLAGS += -W -Wall -Wstrict-prototypes -Wmissing-prototypes
+ 
  all:	cuegen
 -
 -cuegen:	cuegen.o

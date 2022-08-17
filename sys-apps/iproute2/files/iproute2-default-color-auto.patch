@@ -1,0 +1,7 @@
+diff --git a/ip/ip.c b/ip/ip.c
+index 40d2998a..454da1a3 100644
+--- a/ip/ip.c
++++ b/ip/ip.c
+@@ -169 +169 @@ int main(int argc, char **argv)
+-	int color = 0;
++	int color = COLOR_OPT_AUTO;

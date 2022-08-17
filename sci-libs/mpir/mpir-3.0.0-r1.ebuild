@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,12 +6,12 @@ EAPI=7
 inherit autotools toolchain-funcs
 
 DESCRIPTION="Library for arbitrary precision integer arithmetic (fork of gmp)"
-HOMEPAGE="http://www.mpir.org/"
-SRC_URI="http://www.mpir.org/${P}.tar.bz2"
+HOMEPAGE="https://www.mpir.org/"
+SRC_URI="https://www.mpir.org/${P}.tar.bz2"
 
 LICENSE="LGPL-3"
 SLOT="0/23"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+cxx cpudetection"
 
 BDEPEND="
@@ -25,12 +25,14 @@ PATCHES=(
 
 src_prepare() {
 	tc-export CC
+
 	default
+
 	# In the same way there was QA regarding executable stacks
 	# with GMP we have some here as well. We cannot apply the
 	# GMP solution as yasm is used, at least on x86/amd64.
 	# Furthermore we are able to patch config.ac.
-	ebegin "Patching assembler files to remove executable sections"
+	einfo "Patching assembler files to remove executable sections"
 	local i
 	for i in $(find . -type f -name '*.asm') ; do
 		cat >> $i <<-EOF || die
@@ -49,7 +51,7 @@ src_prepare() {
 			%endif
 		EOF
 	done
-	eend
+
 	eautoreconf
 }
 

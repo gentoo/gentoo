@@ -19,8 +19,6 @@
 	</longdescription>
 	<use>
 		<flag name="brotli">Enable output compression via <pkg>app-arch/brotli</pkg> (recommended)</flag>
-		<flag name="bzip2">Enable output compression via bzip2</flag>
-		<flag name="libev">Enable fdevent handler</flag>
 		<flag name="gnutls">Build module for TLS via <pkg>net-libs/gnutls</pkg></flag>
 		<flag name="maxminddb">Add support for geolocation using <pkg>dev-libs/libmaxminddb</pkg></flag>
 		<flag name="mbedtls">Build module for TLS via <pkg>net-libs/mbedtls</pkg></flag>

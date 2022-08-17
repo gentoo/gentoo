@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -46,7 +46,7 @@ pkg_setup() {
 	fi
 
 	BUILD_TARGETS="all"
-	MODULE_NAMES="ipt_NETFLOW(ipt_netflow:${S})"
+	MODULE_NAMES="ipt_NETFLOW(ipt_netflow)"
 	IPT_LIB="/usr/$(get_libdir)/xtables"
 
 	linux-mod_pkg_setup

@@ -1,0 +1,44 @@
+https://bugs.gentoo.org/840526
+https://github.com/desktop-app/tg_owt/pull/101
+
+From 86d2bcd7afb8706663d29e30f65863de5a626142 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sun, 15 May 2022 12:47:41 +0200
+Subject: [PATCH] fix(h265_pps_parser): fix missing cstdint include
+
+--- a/src/common_video/h265/h265_pps_parser.h
++++ b/src/common_video/h265/h265_pps_parser.h
+@@ -12,6 +12,7 @@
+ #define COMMON_VIDEO_H265_PPS_PARSER_H_
+ 
+ #include "absl/types/optional.h"
++#include <cstdint>
+ 
+ namespace rtc {
+ class BitBuffer;
+
+From c358917ff8deac2015586356113dae75d076d1e3 Mon Sep 17 00:00:00 2001
+From: peeweep <peeweep@0x0.ee>
+Date: Mon, 27 Jun 2022 15:07:04 +0000
+Subject: [PATCH] fix(module_common_types_public): fix missing cstdint include
+
+Signed-off-by: peeweep <peeweep@0x0.ee>
+---
+ src/modules/include/module_common_types_public.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/modules/include/module_common_types_public.h b/src/modules/include/module_common_types_public.h
+index 345e45ce..8338a514 100644
+--- a/src/modules/include/module_common_types_public.h
++++ b/src/modules/include/module_common_types_public.h
+@@ -11,6 +11,7 @@
+ #ifndef MODULES_INCLUDE_MODULE_COMMON_TYPES_PUBLIC_H_
+ #define MODULES_INCLUDE_MODULE_COMMON_TYPES_PUBLIC_H_
+ 
++#include <cstdint>
+ #include <limits>
+ 
+ #include "absl/types/optional.h"
+-- 
+2.35.1
+

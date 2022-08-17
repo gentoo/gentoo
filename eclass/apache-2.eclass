@@ -11,7 +11,7 @@
 # and inter-module dependency checking.
 
 LUA_COMPAT=( lua5-{1..4} )
-inherit autotools flag-o-matic lua-single multilib ssl-cert user toolchain-funcs
+inherit autotools flag-o-matic lua-single multilib ssl-cert toolchain-funcs
 
 [[ ${CATEGORY}/${PN} != www-servers/apache ]] \
 	&& die "Do not use this eclass with anything else than www-servers/apache ebuilds!"
@@ -36,7 +36,7 @@ esac
 # INTERNAL VARIABLES
 # ==============================================================================
 
-# @ECLASS-VARIABLE: GENTOO_PATCHNAME
+# @ECLASS_VARIABLE: GENTOO_PATCHNAME
 # @DESCRIPTION:
 # This internal variable contains the prefix for the patch tarball.
 # Defaults to the full name and version (including revision) of the package.
@@ -45,7 +45,7 @@ esac
 # GENTOO_PATCHNAME="gentoo-${PN}-${PV}${ORIG_PR:+-${ORIG_PR}}"
 [[ -n "${GENTOO_PATCHNAME}" ]] || GENTOO_PATCHNAME="gentoo-${PF}"
 
-# @ECLASS-VARIABLE: GENTOO_PATCHDIR
+# @ECLASS_VARIABLE: GENTOO_PATCHDIR
 # @DESCRIPTION:
 # This internal variable contains the working directory where patches and config
 # files are located.
@@ -133,6 +133,8 @@ unset -f _apache2_set_mpms
 
 # Dependencies
 RDEPEND="
+	acct-group/apache
+	acct-user/apache
 	dev-lang/perl
 	>=dev-libs/apr-1.5.1:=
 	=dev-libs/apr-util-1*:=[gdbm=,ldap?]
@@ -200,7 +202,7 @@ unset -f _apache2_set_module_depends
 # INTERNAL FUNCTIONS
 # ==============================================================================
 
-# @ECLASS-VARIABLE: MY_MPM
+# @ECLASS_VARIABLE: MY_MPM
 # @DESCRIPTION:
 # This internal variable contains the selected MPM after a call to setup_mpm()
 
@@ -266,12 +268,12 @@ check_module_critical() {
 	fi
 }
 
-# @ECLASS-VARIABLE: MY_CONF
+# @ECLASS_VARIABLE: MY_CONF
 # @DESCRIPTION:
 # This internal variable contains the econf options for the current module
 # selection after a call to setup_modules()
 
-# @ECLASS-VARIABLE: MY_MODS
+# @ECLASS_VARIABLE: MY_MODS
 # @DESCRIPTION:
 # This internal variable contains a sorted, space separated list of currently
 # selected modules after a call to setup_modules()
@@ -289,7 +291,7 @@ setup_modules() {
 		mod_type="shared"
 	fi
 
-	MY_CONF=( --enable-so=static )
+	MY_CONF=( --enable-so=static --disable-static )
 	MY_MODS=()
 
 	if use ldap ; then
@@ -436,10 +438,6 @@ check_upgrade() {
 # needed (we don't depend on kernel sources and therefore cannot check).
 apache-2_pkg_setup() {
 	check_upgrade
-
-	# setup apache user and group
-	enewgroup apache 81
-	enewuser apache 81 -1 /var/www apache
 
 	setup_mpm
 	setup_modules
@@ -650,7 +648,6 @@ apache-2_src_install() {
 	mv -f "${ED%/}/var/www/localhost/icons" \
 		"${ED%/}/usr/share/apache2/icons" || die
 	rm -rf "${ED%/}/var/www/localhost/" || die
-	eend $?
 
 	# set some sane permissions for suexec
 	if use suexec ; then

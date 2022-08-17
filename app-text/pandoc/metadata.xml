@@ -16,7 +16,6 @@
 	</longdescription>
 	<use>
 		<flag name="embed-data-files">Embed data files in binary for relocatable executable.</flag>
-		<flag name="optimize">Enable -O1 optimizations (requires ~16GiB memory)</flag>
 		<flag name="trypandoc">Build trypandoc cgi executable.</flag>
 	</use>
 </pkgmetadata>

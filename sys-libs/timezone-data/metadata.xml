@@ -16,4 +16,7 @@
       is used. Not all programs can handle 'slim' format'.
     </flag>
   </use>
+  <upstream>
+    <remote-id type="github">eggert/tz</remote-id>
+  </upstream>
 </pkgmetadata>

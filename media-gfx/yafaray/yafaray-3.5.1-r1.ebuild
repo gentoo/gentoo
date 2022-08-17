@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -45,7 +45,11 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}"/${P}-0001-respect-distribution-CFLAGS.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-0001-respect-distribution-CFLAGS.patch
+	"${FILESDIR}"/${P}-add-missing-limits-header.patch
+)
+
 DOCS=( AUTHORS.md CHANGELOG.md CODING.md INSTALL.md README.md )
 
 pkg_setup() {

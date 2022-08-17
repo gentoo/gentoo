@@ -5,10 +5,6 @@
 		<email>flow@gentoo.org</email>
 		<name>Florian Schmaus</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>andrey_utkin@gentoo.org</email>
-		<name>Andrey Utkin</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="github">herbstluftwm/herbstluftwm</remote-id>
 	</upstream>

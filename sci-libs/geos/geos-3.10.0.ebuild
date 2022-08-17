@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake
 
 DESCRIPTION="Geometry engine library for Geographic Information Systems"
-HOMEPAGE="https://trac.osgeo.org/geos/"
+HOMEPAGE="https://libgeos.org/"
 SRC_URI="https://download.osgeo.org/geos/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"

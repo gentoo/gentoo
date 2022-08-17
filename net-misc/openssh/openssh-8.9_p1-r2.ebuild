@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit user-info flag-o-matic autotools pam systemd toolchain-funcs
+inherit user-info flag-o-matic autotools pam systemd toolchain-funcs verify-sig
 
 # Make it more portable between straight releases
 # and _p? releases.
@@ -20,8 +20,10 @@ HPN_PATCHES=(
 	${PN}-${HPN_PV/./_}-hpn-PeakTput-${HPN_VER}.diff
 )
 
-SCTP_VER="1.2" SCTP_PATCH="${PARCH}-sctp-${SCTP_VER}.patch.xz"
-X509_VER="13.3.1" X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
+SCTP_VER="1.2"
+SCTP_PATCH="${PARCH}-sctp-${SCTP_VER}.patch.xz"
+X509_VER="13.3.1"
+X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
 
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="https://www.openssh.com/"
@@ -29,12 +31,14 @@ SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
 	${SCTP_PATCH:+sctp? ( https://dev.gentoo.org/~chutzpah/dist/openssh/${SCTP_PATCH} )}
 	${HPN_VER:+hpn? ( $(printf "mirror://sourceforge/project/hpnssh/Patches/HPN-SSH%%20${HPN_VER/./v}%%20${HPN_PV/_P/p}/%s\n" "${HPN_PATCHES[@]}") )}
 	${X509_PATCH:+X509? ( https://roumenpetrov.info/openssh/x509-${X509_VER}/${X509_PATCH} )}
+	verify-sig? ( mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz.asc )
 "
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/openssh.org.asc
 S="${WORKDIR}/${PARCH}"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # Probably want to drop ssl defaulting to on in a future version.
 IUSE="abi_mips_n32 audit debug hpn kerberos ldns libedit livecd pam +pie +scp sctp security-key selinux +ssl static test X X509 xmss"
 
@@ -87,6 +91,7 @@ RDEPEND="${RDEPEND}
 BDEPEND="
 	virtual/pkgconfig
 	sys-devel/autoconf
+	verify-sig? ( sec-keys/openpgp-keys-openssh )
 "
 
 pkg_pretend() {
@@ -110,6 +115,13 @@ pkg_pretend() {
 		ewarn "Sorry, but openssh no longer supports tcp-wrappers, and it seems like"
 		ewarn "you're trying to use it.  Update your ${EROOT}/etc/hosts.{allow,deny} please."
 	fi
+}
+
+src_unpack() {
+	default
+
+	# We don't have signatures for HPN, X509, so we have to write this ourselves
+	use verify-sig && verify-sig_verify_detached "${DISTDIR}"/${PARCH}.tar.gz{,.asc}
 }
 
 src_prepare() {
@@ -296,7 +308,7 @@ src_configure() {
 		# We apply the sctp patch conditionally, so can't pass --without-sctp
 		# unconditionally else we get unknown flag warnings.
 		$(use sctp && use_with sctp)
-		$(use_with ldns ldns "${EPREFIX}"/usr)
+		$(use_with ldns)
 		$(use_with libedit)
 		$(use_with pam)
 		$(use_with pie)
@@ -312,9 +324,6 @@ src_configure() {
 		# https://bugs.gentoo.org/753230
 		myconf+=( --disable-utmp --disable-wtmp )
 	fi
-
-	# The seccomp sandbox is broken on x32, so use the older method for now. #553748
-	use amd64 && [[ ${ABI} == "x32" ]] && myconf+=( --with-sandbox=rlimit )
 
 	econf "${myconf[@]}"
 }

@@ -1,0 +1,18 @@
+--- a/src/ClpCholeskyMumps.cpp
++++ b/src/ClpCholeskyMumps.cpp
+@@ -11,7 +11,6 @@
+ #define JOB_INIT -1
+ #define JOB_END -2
+ #define USE_COMM_WORLD -987654
+-extern "C" {
+ #include "dmumps_c.h"
+ // In newer ThirdParty/Mumps, mpi.h is renamed to mumps_mpi.h.
+ // We get informed about this by having COIN_USE_MUMPS_MPI_H defined.
+@@ -20,7 +19,6 @@
+ #else
+ #include "mpi.h"
+ #endif
+-}
+ 
+ #include "ClpCholeskyMumps.hpp"
+ #include "ClpMessage.hpp"

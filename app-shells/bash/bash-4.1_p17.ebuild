@@ -1,9 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit flag-o-matic toolchain-funcs
+
+# Uncomment if we have a patchset
+GENTOO_PATCH_DEV="sam"
+GENTOO_PATCH_VER="${PV}"
 
 # Official patchlevel
 # See ftp://ftp.cwru.edu/pub/bash/bash-4.1-patches/
@@ -28,8 +32,12 @@ patches() {
 }
 
 DESCRIPTION="The standard GNU Bourne again shell"
-HOMEPAGE="http://tiswww.case.edu/php/chet/bash/bashtop.html"
+HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html"
 SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
+
+if [[ -n ${GENTOO_PATCH_VER} ]] ; then
+	SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${GENTOO_PATCH_VER}-patches.tar.xz"
+fi
 
 LICENSE="GPL-3"
 SLOT="${MY_PV}"
@@ -46,10 +54,10 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.1-fbsd-eaccess.patch #bug #303411
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-4.1-fbsd-eaccess.patch #bug #303411
 
-	"${FILESDIR}"/${PN}-4.1-parallel-build.patch
-	"${FILESDIR}"/${PN}-4.2-dev-fd-buffer-overflow.patch #bug #431850
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-4.1-parallel-build.patch
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-4.2-dev-fd-buffer-overflow.patch #bug #431850
 )
 
 pkg_setup() {
@@ -63,6 +71,10 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${MY_P}.tar.gz
+
+	if [[ -n ${GENTOO_PATCH_VER} ]] ; then
+		unpack ${PN}-${GENTOO_PATCH_VER}-patches.tar.xz
+	fi
 }
 
 src_prepare() {

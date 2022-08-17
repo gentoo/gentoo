@@ -1,14 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 ECM_HANDBOOK="forceoptional"
 KFMIN=5.60.0
 QTMIN=5.12.3
 inherit ecm kde.org
 
-DESCRIPTION="Gopher Kioslave for Konqueror"
+DESCRIPTION="Gopher KIO worker for Konqueror"
 HOMEPAGE="https://userbase.kde.org/Kio_gopher"
 SRC_URI="mirror://kde/unstable/${PN}/${P}.tar.xz"
 

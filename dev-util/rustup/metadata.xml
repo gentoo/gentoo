@@ -9,4 +9,7 @@
 		<email>rust@gentoo.org</email>
 		<name>Rust Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">rust-lang/rustup</remote-id>
+	</upstream>
 </pkgmetadata>

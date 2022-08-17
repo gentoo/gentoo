@@ -7,7 +7,7 @@ EAPI=7
 # - add USE flag for remote modules? Those modules can be downloaded
 #	properly before building.
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 WEBAPP_OPTIONAL=yes
 WEBAPP_MANUAL_SLOT=yes
 
@@ -31,7 +31,7 @@ S="${WORKDIR}/VTK-${PV}"
 
 LICENSE="BSD LGPL-2"
 SLOT="0/${MY_PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 # Note: external xdmf2 has no recognized target
 IUSE="+X all-modules boost cuda doc examples ffmpeg gdal imaging java
 	+json kits mpi mysql odbc offscreen openmp pegtl postgres python

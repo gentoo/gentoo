@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- comaintainers-welcomed -->
+	<maintainer type="person" proxied="yes">
+		<email>gaboroszkar@protonmail.com</email>
+		<name>Gábor Oszkár Dénes</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+	Qiskit is an open-source framework for working with noisy quantum computers at the level of pulses, circuits, and algorithms.
+	Qiskit is made up of elements that work together to enable quantum computing. This element is Terra and is the foundation on which the rest of Qiskit is built.
+	</longdescription>
+	<use>
+		<flag name="visualization">Enable visualization modules</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">Qiskit/qiskit-terra</remote-id>
+		<remote-id type="pypi">qiskit-terra</remote-id>
+	</upstream>
+</pkgmetadata>

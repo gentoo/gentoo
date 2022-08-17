@@ -1,0 +1,67 @@
+Makefile and configure should respect user's pkg-config
+--- a/Makefile
++++ b/Makefile
+@@ -28,9 +28,10 @@
+ OSFLAG = $(shell uname | tr '[:lower:]' '[:upper:]')
+ SHELL=/bin/sh
+ 
++PKG_CONFIG ?= pkg-config
+ GKRELL1FLAG=1
+ #find out if we have gkrellm 2 or 1 (from the gtk+ version)
+-GKRELL1FLAG=$(shell bash -c 'pkg-config gtk+-2.0 --cflags &>/dev/null && echo 0')
++GKRELL1FLAG=$(shell bash -c "${PKG_CONFIG} gtk+-2.0 --cflags &>/dev/null && echo 0")
+ GKRELLTOP = gkrelltop.so
+ OBJ = top_three.o gkrelltop.o 
+ EXTRA = krell_panel1.xpm
+@@ -43,7 +44,8 @@ endif
+ 
+ ifeq ($(GKRELL1FLAG),0)
+ # Parameters for gkrellm version 2.*
+-CFLAGS2 = -g -D$(OSFLAG) -DGKRELLM2 -fPIC -Wall `pkg-config gtk+-2.0 --cflags`
++GTK_INCLUDE=$(shell ${PKG_CONFIG} gtk+-2.0 --cflags)
++CFLAGS2 = -g -D$(OSFLAG) -DGKRELLM2 -fPIC -Wall ${GTK_INCLUDE}
+ LIBS =  
+ CC += $(CFLAGS) $(CFLAGS2)
+ 
+@@ -69,8 +71,9 @@ LIBSD = `glib-config --libs`
+ LIBSD = 
+ CONFIGURE_ARGS += --with-glib12
+ else
+-CFLAGSD = -D$(OSFLAG) -fPIC -Wall `pkg-config glib-2.0 --cflags`
+-LIBSD = `pkg-config glib-2.0 --libs`
++GLIB_INCLUDE=$(shell ${PKG_CONFIG} glib-2.0 --cflags)
++CFLAGSD = -D$(OSFLAG) -fPIC -Wall ${GLIB_INCLUDE}
++LIBSD = $(shell ${PKG_CONFIG} glib-2.0 --libs)
+ LIBSD = 
+ endif
+ INSTALLDIRD ?= $(PREFIXD)/$(DESTDIR)
+diff --git a/configure b/configure
+index f0b7366..99f58d8 100755
+--- a/configure
++++ b/configure
+@@ -4,8 +4,9 @@
+ # There is no need to run this configure before doing a make.
+ #
+ 
+-GLIB_INCLUDE=`pkg-config --cflags glib-2.0`
+-GLIB_LIBS=`pkg-config --libs glib-2.0`
++PKG_CONFIG=${PKG_CONFIG-pkg-config}
++GLIB_INCLUDE=$(${PKG_CONFIG} --cflags glib-2.0)
++GLIB_LIBS=$(${PKG_CONFIG} --libs glib-2.0)
+ 
+ for i
+ do
+@@ -17,8 +18,8 @@ do
+ done
+ 
+ 
+-PKG_INCLUDE=`pkg-config gkrellm --cflags --silence-errors`
+-PKG_LIBS=`pkg-config gkrellm --libs --silence-errors`
++PKG_INCLUDE=$(${PKG_CONFIG} gkrellm --cflags --silence-errors)
++PKG_LIBS=$(${PKG_CONFIG} gkrellm --libs --silence-errors)
+ 
+ if [ "$PKG_INCLUDE" = "" ]
+ then
+-- 
+2.34.1
+

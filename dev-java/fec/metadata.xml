@@ -9,7 +9,4 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="bitbucket">onionnetworks</remote-id>
-	</upstream>
 </pkgmetadata>

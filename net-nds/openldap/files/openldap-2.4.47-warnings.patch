@@ -1,5 +1,3 @@
-diff --git a/include/ldap.h b/include/ldap.h
-index c245651c2..7f14f1051 100644
 --- a/include/ldap.h
 +++ b/include/ldap.h
 @@ -2041,6 +2041,10 @@ LDAP_F( int )
@@ -13,8 +11,6 @@ index c245651c2..7f14f1051 100644
  LDAP_F( int )
  ldap_url_parse LDAP_P((
  	LDAP_CONST char *url,
-diff --git a/include/ldap_int_thread.h b/include/ldap_int_thread.h
-index e2dd8a942..bbc07c845 100644
 --- a/include/ldap_int_thread.h
 +++ b/include/ldap_int_thread.h
 @@ -33,7 +33,7 @@ LDAP_END_DECL
@@ -26,8 +22,6 @@ index e2dd8a942..bbc07c845 100644
  #include <pthread.h>
  #ifdef HAVE_SCHED_H
  #include <sched.h>
-diff --git a/libraries/libldap/tls2.c b/libraries/libldap/tls2.c
-index d25c190ea..639f598e7 100644
 --- a/libraries/libldap/tls2.c
 +++ b/libraries/libldap/tls2.c
 @@ -76,6 +76,8 @@ static oid_name oids[] = {

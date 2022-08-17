@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -51,7 +51,7 @@ if test -z "`${CC} check_atomicbuiltins.c -o check_atomicbuiltins 2>&1`" ; then
+ 	HAVE_GCC_ATOMIC_BUILTINS=yes
+ 	AC_DEFINE(HAVE_GCC_ATOMIC_BUILTINS, 1, [Define to 1 if GCC atomic builtins are available])
+ 	AC_MSG_RESULT([yes])
+-	if test $cross_compiling == "yes"; then
++	if test $cross_compiling = "yes"; then
+ 		# Some platforms don't seem to be fully happy for libraries using GCC atomic builtins
+ 		#  unless -lgcc and -lgcc_s are explicitly included.
+ 		# (Errors like

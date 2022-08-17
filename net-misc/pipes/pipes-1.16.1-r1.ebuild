@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ src_compile() {
 	# Prevent the build system from looking for dependencies
 	touch .depend || die
 
-	emake CC=$(tc-getCC) OPTIM="${CFLAGS}" LDFLAGS="${CFLAGS} ${LDFLAGS}"
+	emake CC="$(tc-getCC)" OPTIM="${CFLAGS}" LDFLAGS="${CFLAGS} ${LDFLAGS}"
 }
 
 src_install() {

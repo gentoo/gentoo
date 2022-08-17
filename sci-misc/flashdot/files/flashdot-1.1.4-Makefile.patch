@@ -1,0 +1,10 @@
+--- a/mathexpr/Makefile	2022-03-22 10:51:43.081062080 +0100
++++ b/mathexpr/Makefile	2022-03-22 10:53:37.226190652 +0100
+@@ -72,6 +72,6 @@
+ # Dependencies
+ depend:
+-	$(OCAMLDEP) $(OCAMLINCS) *.mli *.ml > depend
++	$(OCAMLDEP) -I $(XMLLIGHTDIR) $(OCAMLINCSLOCAL) *.mli *.ml > depend
+ 
+ include depend
+ 

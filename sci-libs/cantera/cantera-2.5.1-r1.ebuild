@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{8,9} )
 FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD="77 90"
 
-inherit desktop fortran-2 python-single-r1 scons-utils toolchain-funcs
+inherit fortran-2 python-single-r1 scons-utils toolchain-funcs
 
 DESCRIPTION="Object-oriented tool suite for chemical kinetics, thermodynamics, and transport"
 HOMEPAGE="https://www.cantera.org"

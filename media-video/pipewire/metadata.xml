@@ -9,14 +9,6 @@
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>asturm@gentoo.org</email>
-		<name>Andreas Sturmlechner</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>whissi@gentoo.org</email>
-		<name>Thomas Deutschmann</name>
-	</maintainer>
 	<upstream>
 		<bugs-to>https://gitlab.freedesktop.org/pipewire/pipewire/-/issues</bugs-to>
 		<changelog>https://gitlab.freedesktop.org/pipewire/pipewire/-/releases</changelog>
@@ -32,5 +24,6 @@
 		<flag name="ssl">Enable raop-sink support (needs <pkg>dev-libs/openssl</pkg>)</flag>
 		<flag name="system-service">Install systemd unit files for running as a system service. Not recommended.</flag>
 		<flag name="X">Enable audible bell for X11</flag>
+		<flag name="sound-server">Provide sound server using ALSA and bluetooth devices</flag>
 	</use>
 </pkgmetadata>

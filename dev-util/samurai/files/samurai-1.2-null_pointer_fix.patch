@@ -1,3 +1,37 @@
+CVE-2021-30218 + CVE-2021-30219
+Bug: https://bugs.gentoo.org/786951
+
+Upstream-Commit: https://github.com/michaelforney/samurai/commit/e84b6d99c85043fa1ba54851ee500540ec206918
+From e84b6d99c85043fa1ba54851ee500540ec206918 Mon Sep 17 00:00:00 2001
+From: Michael Forney <mforney@mforney.org>
+Date: Fri, 2 Apr 2021 17:27:48 -0700
+Subject: [PATCH] util: Check for NULL string in writefile
+
+This check was there previously, but was removed in f549b757 with
+the addition of a check during parse that every rule has rspfile
+if and only if it has rspfile_content. However, this fails to
+consider the possibility of those variables coming from the edge
+or global environment. So, re-add the check.
+
+Fixes #67 (https://github.com/michaelforney/samurai/issues/67).
+---
+ util.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/util.c b/util.c
+index ea5c3ce..2a59881 100644
+--- a/util.c
++++ b/util.c
+@@ -258,7 +258,7 @@ writefile(const char *name, struct string *s)
+ 		return -1;
+ 	}
+ 	ret = 0;
+-	if (fwrite(s->s, 1, s->n, f) != s->n || fflush(f) != 0) {
++	if (s && (fwrite(s->s, 1, s->n, f) != s->n || fflush(f) != 0)) {
+ 		warn("write %s:", name);
+ 		ret = -1;
+ 	}
+Upstream-Commit: https://github.com/michaelforney/samurai/commit/d2af3bc375e2a77139c3a28d6128c60cd8d08655
 From d2af3bc375e2a77139c3a28d6128c60cd8d08655 Mon Sep 17 00:00:00 2001
 From: Michael Forney <mforney@mforney.org>
 Date: Sun, 4 Apr 2021 03:50:09 -0700
@@ -6,7 +40,7 @@ Subject: [PATCH] parse: Check for non-empty command/rspfile/rspfile_content
 This matches ninja behavior and prevents the possibility of a rule
 with an empty (NULL) command string.
 
-Fixes #68.
+Fixes #68 (https://github.com/michaelforney/samurai/issues/68).
 ---
  parse.c | 2 ++
  1 file changed, 2 insertions(+)

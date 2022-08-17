@@ -1,0 +1,24 @@
+--- a/cmake/XRootDFindLibs.cmake
++++ b/cmake/XRootDFindLibs.cmake
+@@ -25,15 +25,19 @@
+ 
+ find_package( TinyXml )
+ 
+-find_package( LibXml2 )
++if( ENABLE_LIBXML2 )
++find_package( LibXml2 REQUIRED )
+ if( LIBXML2_FOUND )
+   add_definitions( -DHAVE_XML2 )
+ endif()
++endif()
+ 
+-find_package( Systemd )
++if( ENABLE_SYSTEMD )
++find_package( Systemd REQUIRED )
+ if( SYSTEMD_FOUND )
+   add_definitions( -DHAVE_SYSTEMD )
+ endif()
++endif()
+ 
+ find_package( CURL )
+ 

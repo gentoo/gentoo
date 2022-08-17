@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,8 +38,8 @@ src_install() {
 	done
 	# Get systemimager-using tool out of bin, since systemimager isn't in
 	# portage
-	dodoc ${D}/${C3DIR}/cpushimage
-	rm ${D}/${C3DIR}/cpushimage || die
+	dodoc "${D}"/${C3DIR}/cpushimage
+	rm "${D}"/${C3DIR}/cpushimage || die
 
 	dodoc README README.scale CHANGELOG KNOWN_BUGS
 	docinto contrib

@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="github">coreos/zetcd</remote-id>
+		<remote-id type="github">etcd-io/zetcd</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		For examples and an introduction to the library please take a look at the &lt;https://github.com/CRogers/should-not-typecheck#should-not-typecheck- README&gt; on github.
+	</longdescription>
+</pkgmetadata>

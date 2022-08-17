@@ -1,0 +1,12 @@
+--- a/Makefile.linux
++++ b/Makefile.linux
+@@ -1,7 +1,7 @@
+-CXXFLAGS=-Wall -O2
++CXXFLAGS += -Wall
+ 
+ mp3val: main.o mpegparse.o out.o report.o crossapi.o crc.o
+-	$(CXX) $(CXXFLAGS) $^ -o $@
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) $^ -o $@
+ 
+ clean:
+ 	rm -f mp3val

@@ -1,0 +1,54 @@
+The Fedora / upstream fixes (shiboken2-5.15.2-python311.patch) end up breaking
+Python 3.8 compatibility (maybe 3.9 too, but didn't get that far).
+
+Wrap them with PY_VERSION_HEX for Python 3.11.
+--- a/libpyside/pysideqflags.cpp
++++ b/libpyside/pysideqflags.cpp
+@@ -187,7 +187,12 @@ namespace QFlags
+         }
+         newspec.slots = SbkNewQFlagsType_spec.slots;
+         PyTypeObject *type = (PyTypeObject *)SbkType_FromSpec(&newspec);
+-        Py_SET_TYPE(type, &PyType_Type);
++
++        #if PY_VERSION_HEX < 0x030B00A1
++            Py_TYPE(type) = &PyType_Type;
++        #else
++            Py_SET_TYPE(type, &PyType_Type);
++        #endif
+ 
+         PySideQFlagsType *flagsType = reinterpret_cast<PySideQFlagsType *>(type);
+         PepType_PFTP(flagsType)->converterPtr = &PepType_PFTP(flagsType)->converter;
+--- a/libpyside/pysidesignal.cpp
++++ b/libpyside/pysidesignal.cpp
+@@ -162,7 +162,13 @@ PyTypeObject *PySideSignalTypeF(void)
+     if (!type) {
+         type = reinterpret_cast<PyTypeObject *>(SbkType_FromSpec(&PySideSignalType_spec));
+         PyTypeObject *hold = Py_TYPE(type);
+-        Py_SET_TYPE(type, PySideMetaSignalTypeF());
++
++        #if PY_VERSION_HEX < 0x030B00A1
++            Py_TYPE(type) = PySideMetaSignalTypeF();
++        #else
++            Py_SET_TYPE(type, PySideMetaSignalTypeF());
++        #endif
++
+         Py_INCREF(Py_TYPE(type));
+         Py_DECREF(hold);
+     }
+--- a/libpyside/pysideweakref.cpp
++++ b/libpyside/pysideweakref.cpp
+@@ -90,7 +90,13 @@ PyObject *create(PyObject *obj, PySideWeakRefFunction func, void *userData)
+ 
+     if (Py_TYPE(PySideCallableObjectTypeF()) == 0)
+     {
+-        Py_SET_TYPE(PySideCallableObjectTypeF(), &PyType_Type);
++
++        #if PY_VERSION_HEX < 0x030B00A1
++            Py_TYPE(PySideCallableObjectTypeF()) = &PyType_Type;
++        #else
++            Py_SET_TYPE(PySideCallableObjectTypeF(), &PyType_Type);
++        #endif
++
+         PyType_Ready(PySideCallableObjectTypeF());
+     }
+ 

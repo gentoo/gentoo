@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# Check for bumps & cleanup with app-misc/ddcutil
+
 inherit cmake xdg
 
 DESCRIPTION="Graphical user interface for ddcutil - control monitor settings"

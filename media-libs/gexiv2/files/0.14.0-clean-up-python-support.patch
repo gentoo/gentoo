@@ -1,0 +1,175 @@
+https://gitlab.gnome.org/GNOME/gexiv2/-/merge_requests/64
+
+From 7e36a7dfeadfff134beabf502ca4d551f505fd8e Mon Sep 17 00:00:00 2001
+From: "Alex Xu (Hello71)" <alex_y_xu@yahoo.ca>
+Date: Fri, 24 Sep 2021 11:48:34 -0400
+Subject: [PATCH] clean up python support
+
+- fix always failing gexiv2 test due to missing import gi
+- actually use override during testing
+- fix totally ignoring gexiv2 test status
+- fix broken build with -Dpython3=false
+- remove unnecessary configure_file
+- remove misleading explanation of -Dpython3=false (it also disables
+  installing GExiv2.py)
+- remove unnecessary python3_girdir
+---
+ meson.build                                   | 21 +++++--------------
+ meson_options.txt                             |  1 -
+ test/meson.build                              | 13 +++---------
+ test/python/{gexiv2.py.in => gexiv2.py}       |  3 ++-
+ test/python/meson.build                       | 10 ---------
+ .../{test_metadata.py.in => test_metadata.py} |  4 ++--
+ test/python3-test.in                          |  4 ----
+ 7 files changed, 12 insertions(+), 44 deletions(-)
+ rename test/python/{gexiv2.py.in => gexiv2.py} (94%)
+ rename test/python/{test_metadata.py.in => test_metadata.py} (99%)
+ delete mode 100755 test/python3-test.in
+
+diff --git a/meson.build b/meson.build
+index 42f70cb..3f9426f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -23,7 +23,6 @@ gio = dependency('gio-2.0', version : '>= 2.46.0')
+ cc = meson.get_compiler('c')
+ cpp = meson.get_compiler('cpp')
+ math = cc.find_library('m', required : false)
+-python3 = import('python').find_installation('python3', modules: 'gi', required: get_option('python3'))
+ 
+ bmff_test = '''#include <exiv2/exiv2.hpp>
+ #ifndef EXV_ENABLE_BMFF
+@@ -48,24 +47,14 @@ if get_option('gtk_doc')
+   subdir('docs')
+ endif
+ 
+-if get_option('python3') == false
+-    warning('\'python3\' is disabled, any Python tests will not be run.')
+-else
++if get_option('python3')
+   if get_option('introspection') == false
+     error('Build option \'python3\' requires \'introspection\' to be enabled.')
+   endif
+-
+-  girdir = get_option('python3_girdir')
+-  if girdir == 'auto'
+-    python3_output = run_command(python3, ['-c', 'import gi; print(gi._overridesdir)'])
+-    if python3_output.returncode() != 0
+-      error('Finding the Python 3 gi/override path: ' + python3_output.stderr())
+-    endif
+-    girdir = python3_output.stdout().strip()
+-  endif
+-  
+-  message('Installing \'GExiv2.py\' into \'' + girdir + '\'')
+-  python3.install_sources('GExiv2.py', subdir : girdir)
++  python3 = import('python').find_installation('python3', modules: 'gi')
++  python3.install_sources('GExiv2.py', subdir: 'gi/overrides')
++else
++  python3 = disabler()
+ endif
+ 
+ subdir('test')
+diff --git a/meson_options.txt b/meson_options.txt
+index 5e76789..edb3cfd 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -2,5 +2,4 @@ option('gtk_doc', type: 'boolean', value: false, description: 'Enable or disable
+ option('introspection', type: 'boolean', value : true, description: 'Enable or disable GObject Introspection')
+ option('vapi', type: 'boolean', value: true, description: 'Enable or disable generation of vala vapi file')
+ option('tools', type: 'boolean', value: true, description: 'Enable or disable building the commandline tools')
+-option('python3_girdir', type: 'string', value : 'auto', description : 'Installation dir for PyGObject3 overrides (default = auto)')
+ option('python3', type: 'boolean', value : true, description : 'Enable or disable using Python 3 (and PyGObject module)')
+diff --git a/test/meson.build b/test/meson.build
+index c4f287d..0ae50ed 100644
+--- a/test/meson.build
++++ b/test/meson.build
+@@ -1,12 +1,11 @@
+ test_sample_path = join_paths(meson.current_source_dir(), 'data')
+-python_module_path = join_paths(meson.current_build_dir(), 'python')
+ 
+ test_env = environment()
+ test_env.set('G_SLICE', 'always-malloc')
+ test_env.set('TEST_DATA_DIR', test_sample_path)
+ test_env.prepend('GI_TYPELIB_PATH', typelib_path)
+ test_env.prepend('LD_LIBRARY_PATH', typelib_path)
+-test_env.prepend('PYTHONPATH', python_module_path)
++test_env.prepend('PYTHONPATH', join_paths(meson.current_source_dir(), 'python'))
+ 
+ regression_test = executable('gexiv2-regression', 'gexiv2-regression.c',
+                              dependencies : [gobject, gio, math],
+@@ -19,11 +18,5 @@ regression_test = executable('gexiv2-regression', 'gexiv2-regression.c',
+ 
+ test('regression', regression_test, env : test_env)
+ 
+-subdir('python')
+-
+-python3_test_conf = configuration_data()
+-python3_test_conf.set('PYTHON3_PATH', python3.path())
+-python3_test = configure_file(input: 'python3-test.in',
+-                              output : 'python3-test',
+-                              configuration: python3_test_conf)
+-test('python3', find_program(python3_test), env : test_env)
++test('python3-gexiv2', python3, args: ['-m', 'unittest', 'gexiv2'], env: test_env)
++test('python3-metadata', python3, args: ['-m', 'unittest', 'test_metadata'], env: test_env)
+diff --git a/test/python/gexiv2.py.in b/test/python/gexiv2.py
+similarity index 94%
+rename from test/python/gexiv2.py.in
+rename to test/python/gexiv2.py
+index 4e01ff5..503815c 100644
+--- a/test/python/gexiv2.py.in
++++ b/test/python/gexiv2.py
+@@ -22,7 +22,8 @@
+ import unittest
+ import os
+ 
+-gi.require_version('GExiv2', '@PROJECT_API_VERSION@')
++import gi.overrides
++gi.overrides.__path__.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
+ from gi.repository import GExiv2
+ 
+ 
+diff --git a/test/python/meson.build b/test/python/meson.build
+index 783ba0b..e69de29 100644
+--- a/test/python/meson.build
++++ b/test/python/meson.build
+@@ -1,10 +0,0 @@
+-python_conf = configuration_data()
+-python_conf.set('PROJECT_API_VERSION', project_api_version)
+-
+-gexiv2_py_file = configure_file(input: 'gexiv2.py.in',
+-                                output : 'gexiv2.py',
+-                                configuration: python_conf)
+-
+-test_metadata_py_file = configure_file(input: 'test_metadata.py.in',
+-                                       output : 'test_metadata.py',
+-                                       configuration: python_conf)
+diff --git a/test/python/test_metadata.py.in b/test/python/test_metadata.py
+similarity index 99%
+rename from test/python/test_metadata.py.in
+rename to test/python/test_metadata.py
+index 45d9d45..8d4296c 100644
+--- a/test/python/test_metadata.py.in
++++ b/test/python/test_metadata.py
+@@ -30,8 +30,8 @@ import tempfile
+ 
+ PY3K = sys.version_info[0] == 3
+ 
+-import gi
+-gi.require_version('GExiv2', '@PROJECT_API_VERSION@')
++import gi.overrides
++gi.overrides.__path__.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
+ from gi.repository import GExiv2, GLib
+ from fractions import Fraction
+ 
+diff --git a/test/python3-test.in b/test/python3-test.in
+deleted file mode 100755
+index 6fb3bf8..0000000
+--- a/test/python3-test.in
++++ /dev/null
+@@ -1,4 +0,0 @@
+-#!/bin/sh
+-
+-'@PYTHON3_PATH@' -m unittest gexiv2
+-'@PYTHON3_PATH@' -m unittest test_metadata
+-- 
+2.34.1
+

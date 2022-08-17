@@ -8,7 +8,7 @@ inherit autotools
 MYP=why3-${PV}-20200429-199EF-src
 
 DESCRIPTION="Platform for deductive program verification"
-HOMEPAGE="http://why3.lri.fr/"
+HOMEPAGE="https://why3.lri.fr/"
 SRC_URI="https://community.download.adacore.com/v1/8bb5801e17b8b23453262da69c981c091959eec7?filename=${MYP}.tar.gz"
 
 LICENSE="GPL-3"

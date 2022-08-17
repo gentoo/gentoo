@@ -17,7 +17,7 @@ S="${WORKDIR}/${PN}-${TG_OWT_COMMIT}"
 
 LICENSE="BSD"
 SLOT="0/${PV##*pre}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv"
 IUSE="screencast +X"
 
 # This package's USE flags may change the ABI and require a rebuild of
@@ -60,6 +60,8 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}/tg_owt-0_pre20220209-allow-disabling-X11.patch"
 	"${FILESDIR}/tg_owt-0_pre20211207-fix-dcsctp-references.patch"
+	"${FILESDIR}/tg_owt-0_pre20220209-gcc-12-cstdint.patch"
+	"${FILESDIR}/tg_owt-0_pre20220209-gcc-12-cstddef.patch"
 )
 
 src_unpack() {

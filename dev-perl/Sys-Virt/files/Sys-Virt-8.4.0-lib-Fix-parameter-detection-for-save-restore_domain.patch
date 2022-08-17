@@ -1,0 +1,48 @@
+From be960176a8b045d54ac1dfa0cb76cef8ed9cc660 Mon Sep 17 00:00:00 2001
+Message-Id: <be960176a8b045d54ac1dfa0cb76cef8ed9cc660.1655221618.git.mprivozn@redhat.com>
+From: Michal Privoznik <mprivozn@redhat.com>
+Date: Tue, 14 Jun 2022 10:45:53 +0200
+Subject: [perl][PATCH] lib: Fix parameter detection for save/restore_domain
+
+Libvirt gained params alternative for
+virDomainSave/virDomainRestore APIs. As usual in our bindings, we
+don't expose these variants under new methods, rather wire them
+under existing ones and then have a small code that decides
+whether the old API or params API should be called. In case of
+save/restore_domain this is done by checking whether path to
+save/restore from was provided. However, the actual check is not
+written properly and checks for decoded string rather than perl
+argument. Not to mention this is done before the perl argument is
+decoded.
+
+Fixes: 1bdf37223b4870581deb0d5310489223ca34e88a
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+---
+ lib/Sys/Virt.xs | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/Sys/Virt.xs b/lib/Sys/Virt.xs
+index de9f907..2fbfd99 100644
+--- a/lib/Sys/Virt.xs
++++ b/lib/Sys/Virt.xs
+@@ -2390,7 +2390,7 @@ restore_domain(con, fromsv=&PL_sv_undef, dxmlsv=&PL_sv_undef, params_sv=&PL_sv_u
+       virTypedParameterPtr params;
+       int nparams;
+   PPCODE:
+-      if (!from && !SvOK(params_sv))
++      if (!SvOK(fromsv) && !SvOK(params_sv))
+           croak("Either $from or $params parameter must be supplied");
+ 
+       if (SvOK(dxmlsv))
+@@ -4553,7 +4553,7 @@ PREINIT:
+       virTypedParameterPtr params;
+       int nparams;
+   PPCODE:
+-      if (!to && !SvOK(params_sv))
++      if (!SvOK(tosv) && !SvOK(params_sv))
+           croak("Either $to or $params parameter must be supplied");
+ 
+       if (SvOK(dxmlsv))
+-- 
+2.35.1
+

@@ -1,0 +1,21 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -6,3 +6,3 @@
+ ## Any directories that you want built and installed should go here.
+-SUBDIRS = curl tinyxml utils utilssdl utilsgl tools data game
++SUBDIRS = tinyxml utils utilssdl utilsgl tools data game
+ 
+--- a/configure.in
++++ b/configure.in
+@@ -121,4 +121,2 @@
+ 
+-AC_CONFIG_SUBDIRS(curl)
+-
+ AC_OUTPUT(Makefile utils/Makefile utilssdl/Makefile utilsgl/Makefile game/Makefile tools/Makefile data/Makefile data/music/Makefile tinyxml/Makefile)
+--- a/game/Makefile.am
++++ b/game/Makefile.am
+@@ -43,3 +43,3 @@
+ LDADD = \
+-	../curl/lib/libcurl.a \
++	-lcurl \
+ 	../utils/libutils.a \

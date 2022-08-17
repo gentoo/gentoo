@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python3_{7..10} )
 inherit python-single-r1
 
 DESCRIPTION="gentoo.git signature verification tool"
-HOMEPAGE="https://github.com/mgorny/gverify"
-SRC_URI="https://github.com/mgorny/gverify/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/projg2/gverify"
+SRC_URI="https://github.com/projg2/gverify/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

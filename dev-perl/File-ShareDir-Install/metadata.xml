@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="cpan">File-ShareDir-Install</remote-id>
     <remote-id type="cpan-module">File::ShareDir::Install</remote-id>
+    <remote-id type="github">Perl-Toolchain-Gang/File-ShareDir-Install</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 MY_PV=${PV/_p/-}
 MY_P=${PN}-${MY_PV}
 
-inherit cmake linux-info python-single-r1 toolchain-funcs
+inherit cmake linux-info python-single-r1 toolchain-funcs udev
 
 DESCRIPTION="Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor"
 HOMEPAGE="http://libcec.pulse-eight.com"
@@ -36,6 +36,7 @@ S="${WORKDIR}/${PN}-${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.7-no-override-udev.patch"
+	"${FILESDIR}/${PN}-6.0.2-musl-nullptr.patch"
 )
 
 pkg_pretend() {
@@ -111,12 +112,13 @@ src_install() {
 	use tools && doman debian/cec-client.1
 
 	if use udev; then
-		insinto /lib/udev/rules.d
-		doins "${BUILD_DIR}/65-pulse-eight-usb-cec.udev"
+		udev_dorules "${BUILD_DIR}/65-pulse-eight-usb-cec.udev"
 	fi
 }
 
 pkg_postinst() {
+	use udev && udev_reload
+
 	elog "You will need to ensure the user running your CEC client has"
 	elog "read/write access to the device. You can ensure this by adding"
 	elog "them to the uucp group"

@@ -1,0 +1,10 @@
+Makefile: Run gkrellm, not gkrellm2 for test
+
+--- a/Makefile
++++ b/Makefile
+@@ -90,4 +90,4 @@ deinstall uninstall:
+ 	if [ -f ~/.gkrellm2/plugins/gkrellmpc.so ]; then rm -f ~/.gkrellm2/plugins/gkrellmpc.so; fi 
+ 
+ test: gkrellmpc.so
+-	gkrellm2 -p gkrellmpc.so
++	gkrellm -p gkrellmpc.so

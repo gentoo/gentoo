@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake xdg
 
@@ -27,10 +27,18 @@ RDEPEND="
 	media-libs/sdl2-image
 	x11-libs/cairo
 	x11-libs/pango
-	media-video/ffmpeg:=
+	>media-video/ffmpeg-5:=
 "
 
 DEPEND="${RDEPEND}"
+
+src_unpack() {
+	default
+
+	if [[ ${PV} = *9999 ]]; then
+		git-r3_src_unpack
+	fi
+}
 
 src_prepare() {
 	if use osu-skin; then
@@ -43,8 +51,8 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		'-DOSHU_DEFAULT_SKIN='$(usex osu-skin 'osu' 'minimal')
-		'-DOSHU_SKINS=minimal'$(usex osu-skin ';osu' '')
+		-DOSHU_DEFAULT_SKIN=$(usex osu-skin osu minimal)
+		-DOSHU_SKINS=minimal$(usev osu-skin ';osu')
 	)
 
 	cmake_src_configure

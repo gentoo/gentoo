@@ -1,0 +1,72 @@
+This fixes several issues:
+* the upstream rebase error (unclosed double quote)
+* typo "lugin_seagate_opts"
+* "readonly" with assignment is problematic on Bash 5.1.x
+
+Gentoo bug: https://bugs.gentoo.org/852764
+Upstream: https://github.com/linux-nvme/nvme-cli/pull/1574
+Upstream: https://github.com/linux-nvme/nvme-cli/commit/25fd8c707b106ca0763402566ad657ef710bf09e
+
+Author: Karlson2k (Evgeny Grin)
+Signed-off-by: Karlson2k (Evgeny Grin) <k2k@narod.ru>
+
+diff --git a/completions/bash-nvme-completion.sh b/completions/bash-nvme-completion.sh
+index 41938d77..31afb3b3 100644
+--- a/completions/bash-nvme-completion.sh
++++ b/completions/bash-nvme-completion.sh
+@@ -3,12 +3,13 @@
+ # Kelly Kaoudis kelly.n.kaoudis at intel.com, Aug. 2015
+ 
+ # Constant to indicate command has no options
+-readonly NO_OPTS=""
++NO_OPTS=""
++readonly NO_OPTS
+ 
+ # Associative array of plugins and associated subcommands
+ # Order here is same as PLUGIN_OBJS in Makefile
+ typeset -A _plugin_subcmds
+-readonly _plugin_subcmds=(
++_plugin_subcmds=(
+ 	[intel]="id-ctrl internal-log lat-stats \
+ 		set-bucket-thresholds lat-stats-tracking \
+ 		market-name smart-log-add temp-stats"
+@@ -55,10 +56,11 @@ readonly _plugin_subcmds=(
+ 	[nvidia]="id-ctrl"
+ 	[ymtc]="smart-log-add"
+ )
++readonly _plugin_subcmds
+ 
+ # Associative array mapping plugins to coresponding option completions
+ typeset -A _plugin_funcs
+-readonly _plugin_funcs=(
++_plugin_funcs=(
+ 	[intel]="plugin_intel_opts"
+ 	[amzn]="plugin_amzn_opts"
+ 	[lnvm]="plugin_lnvm_opts"
+@@ -77,6 +79,7 @@ readonly _plugin_funcs=(
+ 	[nvidia]="plugin_nvidia_opts"
+ 	[ymtc]="plugin_ymtc_opts"
+ )
++readonly _plugin_funcs
+ 
+ # Top level commands
+ _cmds="list list-subsys id-ctrl id-ns \
+@@ -101,8 +104,7 @@ _cmds="list list-subsys id-ctrl id-ns \
+ 	connect disconnect disconnect-all gen-hostnqn \
+ 	show-hostnqn dir-receive dir-send virt-mgmt \
+ 	rpmb boot-part-log fid-support-effects-log \
+-	supported-log-pages lockdown"
+-	supported-log-pages list-endgrp"
++	supported-log-pages lockdown list-endgrp"
+ 
+ # Add plugins:
+ for plugin in "${!_plugin_subcmds[@]}"; do
+@@ -983,7 +985,7 @@ plugin_micron_opts () {
+ 	return 0
+ }
+ 
+-lugin_seagate_opts () {
++plugin_seagate_opts () {
+     local opts=""
+ 	local compargs=""
+ 

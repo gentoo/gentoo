@@ -8,7 +8,7 @@ inherit autotools
 MAJOR="3.0"
 DESCRIPTION="GNU Ubiquitous Intelligent Language for Extensions"
 HOMEPAGE="https://www.gnu.org/software/guile/"
-SRC_URI="mirror://gnu/guile/${P}.tar.gz"
+SRC_URI="mirror://gnu/guile/${P}.tar.xz"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-gnulib-glibc-2.34.patch.bz2"
 
 LICENSE="LGPL-3+"

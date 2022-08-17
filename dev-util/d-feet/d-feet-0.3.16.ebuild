@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit gnome2 meson python-single-r1 virtualx
 
@@ -33,7 +33,6 @@ RDEPEND="
 "
 BDEPEND="
 	dev-util/itstool
-	>=dev-util/intltool-0.40.0
 	test? ( dev-python/pycodestyle )
 "
 

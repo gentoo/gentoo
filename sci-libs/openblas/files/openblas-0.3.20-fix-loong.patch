@@ -1,0 +1,178 @@
+https://github.com/xianyi/OpenBLAS/pull/3626, rebased on top of v0.3.20.
+
+From: WANG Xuerui <xen0n@gentoo.org>
+Date: Fri, 13 May 2022 15:26:33 +0800
+Subject: [PATCH 1/3] Move LoongArch make rules to Makefile.loongarch64
+
+--- a/Makefile.loongarch64
++++ b/Makefile.loongarch64
+@@ -1,3 +1,4 @@
+-ifdef BINARY64
+-else
++ifeq ($(CORE), LOONGSON3R5)
++CCOMMON_OPT += -march=loongarch64 -mabi=lp64
++FCOMMON_OPT += -march=loongarch64 -mabi=lp64
+ endif
+--- a/Makefile.system
++++ b/Makefile.system
+@@ -886,13 +886,6 @@ ifeq ($(OSNAME), AIX)
+ BINARY_DEFINED = 1
+ endif
+ 
+-ifeq ($(ARCH), loongarch64)
+-ifeq ($(CORE), LOONGSON3R5)
+-CCOMMON_OPT += -march=loongarch64 -mabi=lp64
+-FCOMMON_OPT += -march=loongarch64 -mabi=lp64
+-endif
+-endif
+-
+ endif
+ 
+ ifndef BINARY_DEFINED
+From: WANG Xuerui <xen0n@gentoo.org>
+Date: Fri, 13 May 2022 15:53:22 +0800
+Subject: [PATCH 2/3] Probe for old-world LASX flavor on LoongArch and use
+ generic DGEMM kernel otherwise
+
+See: https://bugs.gentoo.org/844013
+--- a/Makefile.system
++++ b/Makefile.system
+@@ -1683,6 +1683,7 @@ export TARGET_CORE
+ export NO_AVX512
+ export NO_AVX2
+ export BUILD_BFLOAT16
++export NO_LASX
+ 
+ export SBGEMM_UNROLL_M
+ export SBGEMM_UNROLL_N
+--- a/c_check
++++ b/c_check
+@@ -270,6 +270,37 @@ if (($architecture eq "x86") || ($architecture eq "x86_64")) {
+     }
+ }
+ 
++$no_lasx = 0;
++if (($architecture eq "loongarch64")) {
++    eval "use File::Temp qw(tempfile)";
++    if ($@){
++        warn "could not load PERL module File::Temp, so could not check compiler compatibility with the LoongArch LASX extension";
++        # Assume no LASX, because currently LASX is only present in vendor
++        # toolchains, undocumented nor upstreamed.
++        $no_lasx = 1;
++    } else {
++        # Old-world assembly flavor: LASX registers named "$xrNN", different
++        # from the ISA manual which suggests "$xNN". This is the flavor we
++        # currently support.
++        #
++        # As the LASX ISA manual is not out yet, we cannot predict what the
++        # new-world flavor would look like, so do not probe flavor for now.
++        # The compiler flags are also unsuitable for new-world gcc.
++        ($fh,$tmpf) = tempfile( SUFFIX => '.c' , UNLINK => 1 );
++        $code = '"xvld $xr0, $a0, 0\n"';
++        print $fh "int main(void){ __asm__ volatile($code); }\n";
++        $args = " -march=loongarch64 -mabi=lp64 -mlasx -c -o $tmpf.o $tmpf";
++        my @cmd = ("$compiler_name $flags $args >/dev/null 2>/dev/null");
++        system(@cmd) == 0;
++        if ($? != 0) {
++            $no_lasx = 1;
++        } else {
++            $no_lasx = 0;
++        }
++        unlink("$tmpf.o");
++    }
++}
++
+ $c11_atomics = 0;
+ if ($data =~ /HAVE_C11/) {
+     eval "use File::Temp qw(tempfile)";
+@@ -393,6 +424,7 @@ print MAKEFILE "HAVE_MSA=1\n" if $have_msa eq 1;
+ print MAKEFILE "MSA_FLAGS=$msa_flags\n" if $have_msa eq 1;
+ print MAKEFILE "NO_AVX512=1\n" if $no_avx512 eq 1;
+ print MAKEFILE "NO_AVX2=1\n" if $no_avx2 eq 1;
++print MAKEFILE "NO_LASX=1\n" if $no_lasx eq 1;
+ print MAKEFILE "OLDGCC=1\n" if $oldgcc eq 1;
+ 
+ $os           =~ tr/[a-z]/[A-Z]/;
+--- a/kernel/loongarch64/KERNEL.LOONGSON3R5
++++ b/kernel/loongarch64/KERNEL.LOONGSON3R5
+@@ -1,3 +1,7 @@
++ifeq ($(NO_LASX), 1)
++# No LASX support in compiler, unable to consume the optimized version
++# leave out DGEMMKERNEL to pull in the generic version
++else
+ DGEMMKERNEL    = dgemm_kernel_16x4.S
+ DGEMMINCOPY    = dgemm_ncopy_16.S
+ DGEMMITCOPY    = dgemm_tcopy_16.S
+@@ -7,6 +11,7 @@ DGEMMINCOPYOBJ = dgemm_incopy.o
+ DGEMMITCOPYOBJ = dgemm_itcopy.o
+ DGEMMONCOPYOBJ = dgemm_oncopy.o
+ DGEMMOTCOPYOBJ = dgemm_otcopy.o
++endif
+ 
+ DTRSMKERNEL_LN  = ../generic/trsm_kernel_LN.c
+ DTRSMKERNEL_LT  = ../generic/trsm_kernel_LT.c
+From: WANG Xuerui <xen0n@gentoo.org>
+Date: Fri, 13 May 2022 16:23:46 +0800
+Subject: [PATCH 3/3] Fix ABI CFLAGS setting on new-world LoongArch
+
+See: https://bugs.gentoo.org/844013
+--- a/Makefile.loongarch64
++++ b/Makefile.loongarch64
+@@ -1,4 +1,13 @@
+ ifeq ($(CORE), LOONGSON3R5)
+-CCOMMON_OPT += -march=loongarch64 -mabi=lp64
+-FCOMMON_OPT += -march=loongarch64 -mabi=lp64
++CCOMMON_OPT += -march=loongarch64
++FCOMMON_OPT += -march=loongarch64
++
++ifeq ($(LOONGARCH_CC_FLAVOR), NEW)
++CCOMMON_OPT += -mabi=lp64d
++FCOMMON_OPT += -mabi=lp64d
++endif
++ifeq ($(LOONGARCH_CC_FLAVOR), OLD)
++CCOMMON_OPT += -mabi=lp64
++FCOMMON_OPT += -mabi=lp64
++endif
+ endif
+--- a/Makefile.system
++++ b/Makefile.system
+@@ -1683,6 +1683,7 @@ export TARGET_CORE
+ export NO_AVX512
+ export NO_AVX2
+ export BUILD_BFLOAT16
++export LOONGARCH_CC_FLAVOR
+ export NO_LASX
+ 
+ export SBGEMM_UNROLL_M
+--- a/c_check
++++ b/c_check
+@@ -270,6 +270,21 @@ if (($architecture eq "x86") || ($architecture eq "x86_64")) {
+     }
+ }
+ 
++$loongarch_cc_flavor = "";
++if (($architecture eq "loongarch64")) {
++    # Currently there are only 2 flavors: new-world and old-world.
++    # They differ in ABI names accepted, so check it to avoid creating temp
++    # files.
++    $args = " -mabi=lp64d -E -o - /dev/null";
++    my @cmd = ("$compiler_name $flags $args >/dev/null 2>/dev/null");
++    system(@cmd) == 0;
++    if ($? != 0) {
++        $loongarch_cc_flavor = "OLD";
++    } else {
++        $loongarch_cc_flavor = "NEW";
++    }
++}
++
+ $no_lasx = 0;
+ if (($architecture eq "loongarch64")) {
+     eval "use File::Temp qw(tempfile)";
+@@ -424,6 +439,7 @@ print MAKEFILE "HAVE_MSA=1\n" if $have_msa eq 1;
+ print MAKEFILE "MSA_FLAGS=$msa_flags\n" if $have_msa eq 1;
+ print MAKEFILE "NO_AVX512=1\n" if $no_avx512 eq 1;
+ print MAKEFILE "NO_AVX2=1\n" if $no_avx2 eq 1;
++print MAKEFILE "LOONGARCH_CC_FLAVOR=$loongarch_cc_flavor\n" if $architecture eq "loongarch64";
+ print MAKEFILE "NO_LASX=1\n" if $no_lasx eq 1;
+ print MAKEFILE "OLDGCC=1\n" if $oldgcc eq 1;
+ 

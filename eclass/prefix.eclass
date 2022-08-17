@@ -20,7 +20,7 @@ esac
 if [[ -z ${_PREFIX_ECLASS} ]]; then
 _PREFIX_ECLASS=1
 
-# @ECLASS-VARIABLE: EPREFIX
+# @ECLASS_VARIABLE: EPREFIX
 # @DESCRIPTION:
 # The offset prefix of a Gentoo Prefix installation.  When Gentoo Prefix
 # is not used, ${EPREFIX} should be "".  Prefix Portage sets EPREFIX,

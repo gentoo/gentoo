@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/841335
+Taken from https://github.com/roswell/asdf/commit/fd289d99d1c76601fb310f8ca26a48f807337c8d
+
+From fd289d99d1c76601fb310f8ca26a48f807337c8d Mon Sep 17 00:00:00 2001
+From: "Robert P. Goldman" <rpgoldman@sift.net>
+Date: Fri, 2 Jul 2021 15:57:34 -0500
+Subject: [PATCH] Fix garbled test.
+
+By accident a bad test slipped into a commit: this was due to my not
+understanding how `with-expected-failure` works.
+---
+ test/test-utilities.script | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/test-utilities.script b/test/test-utilities.script
+index 09a03347..b1e00fa5 100644
+--- a/test/test-utilities.script
++++ b/test/test-utilities.script
+@@ -342,7 +342,7 @@
+ ;; (assert (directory-exists-p oddball-pathname))
+ ;; (pathname oddball-namestring)
+ ;; (assert-equal nil (uiop:subdirectories oddball-namestring))
+-(with-expected-failure ("UIOP:SUBDIRECTORIES does not handle non-standard pathnames.")
++(with-expected-failure (#+(or sbcl cmucl) t)
+     (assert-equal nil (uiop:subdirectories "/[foo")))
+ 
+ (DBG "check to make sure WITH-CURRENT-DIRECTORY checks its parameter for directory pathname")

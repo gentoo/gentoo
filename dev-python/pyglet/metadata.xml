@@ -21,5 +21,6 @@
   pyglet might be seen as an alternative to PyGame.</longdescription>
   <upstream>
     <remote-id type="pypi">pyglet</remote-id>
+    <remote-id type="github">pyglet/pyglet</remote-id>
   </upstream>
 </pkgmetadata>

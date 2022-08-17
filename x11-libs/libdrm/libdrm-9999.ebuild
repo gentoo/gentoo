@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/drm.git"
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
@@ -18,7 +18,7 @@ if [[ ${PV} = 9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://dri.freedesktop.org/libdrm/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 VIDEO_CARDS="amdgpu exynos freedreno intel nouveau omap radeon tegra vc4 vivante vmware"
@@ -26,7 +26,7 @@ for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
 done
 
-IUSE="${IUSE_VIDEO_CARDS} libkms valgrind"
+IUSE="${IUSE_VIDEO_CARDS} valgrind"
 RESTRICT="test" # see bug #236845
 LICENSE="MIT"
 SLOT="0"
@@ -58,7 +58,6 @@ multilib_src_configure() {
 		$(meson_use video_cards_vc4 vc4)
 		$(meson_use video_cards_vivante etnaviv)
 		$(meson_use video_cards_vmware vmwgfx)
-		$(meson_use libkms)
 		# valgrind installs its .pc file to the pkgconfig for the primary arch
 		-Dvalgrind=$(usex valgrind auto false)
 	)

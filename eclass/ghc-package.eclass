@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ghc-package.eclass
@@ -152,10 +152,10 @@ ghc-supports-parallel-make() {
 	$(ghc-getghc) --info | grep "Support parallel --make" | grep -q "YES"
 }
 
-# @FUNCTION: ghc-extractportageversion
+# @FUNCTION: ghc-extract-pm-version
 # @DESCRIPTION:
 # extract the version of a portage-installed package
-ghc-extractportageversion() {
+ghc-extract-pm-version() {
 	local pkg
 	local version
 	pkg="$(best_version $1)"

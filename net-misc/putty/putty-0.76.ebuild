@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ppc64 sparc x86"
 SRC_URI="
-	https://dev.gentoo.org/~polynomial-c/${PN}-icons.tar.bz2
+	https://dev.gentoo.org/~matthew/distfiles/${PN}-icons.tar.bz2
 	https://the.earth.li/~sgtatham/${PN}/${PV}/${P}.tar.gz
 "
 IUSE="doc +gtk gtk2 ipv6 gssapi"
@@ -57,7 +57,7 @@ src_configure() {
 
 src_compile() {
 	emake -C "${S}"/doc
-	emake -C "${S}"/unix AR=$(tc-getAR) $(usex ipv6 '' COMPAT=-DNO_IPV6)
+	emake -C "${S}"/unix AR="$(tc-getAR)" $(usex ipv6 '' COMPAT=-DNO_IPV6)
 }
 
 src_test() {

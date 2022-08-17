@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="launchpad">soundconverter</remote-id>
+		<remote-id type="github">kassoulet/soundconverter</remote-id>
 	</upstream>
 </pkgmetadata>

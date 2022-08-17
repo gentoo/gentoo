@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ IUSE="ipv6 static +tools"
 
 src_configure() {
 	# Uses non-standard configure script, econf doesn't work
-	CC=$(tc-getCC) ./configure $(use_enable ipv6) || die "Configure failed"
+	CC="$(tc-getCC)" ./configure $(use_enable ipv6) || die "Configure failed"
 }
 
 src_compile() {

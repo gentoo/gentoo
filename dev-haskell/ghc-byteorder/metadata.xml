@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package transparently supplies the &quot;GHC.ByteOrder&quot; API as provided in @base-4.11.0.0@ for legacy GHC releases which didn&#39;t provide it yet (i.e. GHC 7.0 through GHC 8.2).
+		
+		This release reexports [GHC.ByteOrder from base](https://hackage.haskell.org/package/base-4.11.1.0/docs/GHC-ByteOrder.html) via Cabal&#39;s @reexported-modules@ mechanism.  For GHC 8.2 and earlier a different release of @ghc-byteorder@ (with the same minor version) is eligible by the Cabal solver with a backported &quot;GHC.ByteOrder&quot; module.
+		
+		In order to use this compatibility layer, simply declare a dependency on @ghc-byteorder@ in your @.cabal@ package description like so
+		
+		&gt; build-depends: ghc-byteorder ^&gt;= 4.11.0.0
+		
+		And your code will be able to access this respective API version of the module via the usual
+		
+		&gt; import GHC.ByteOrder
+		
+		mechanism.
+	</longdescription>
+</pkgmetadata>

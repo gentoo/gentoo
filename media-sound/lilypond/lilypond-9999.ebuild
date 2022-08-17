@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit elisp-common autotools python-single-r1 toolchain-funcs xdg-utils
 
@@ -62,7 +62,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.22.1-free_font.patch
 )
 
-DOCS=( DEDICATION HACKING README.md ROADMAP )
+DOCS=( DEDICATION README.md ROADMAP )
 
 src_prepare() {
 	default

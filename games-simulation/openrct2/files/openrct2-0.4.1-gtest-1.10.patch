@@ -1,0 +1,8 @@
+--- a/test/tests/ReplayTests.cpp
++++ b/test/tests/ReplayTests.cpp
+@@ -115,4 +115,5 @@
+     }
+ };
+ 
++GTEST_ALLOW_UNINSTANTIATED_PARAMETERIZED_TEST(ReplayTests);
+ INSTANTIATE_TEST_SUITE_P(Replay, ReplayTests, testing::ValuesIn(GetReplayFiles()), PrintReplayParameter());

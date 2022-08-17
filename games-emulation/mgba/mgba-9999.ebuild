@@ -1,128 +1,102 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake desktop xdg
+LUA_COMPAT=( lua5-{3..4} )
+inherit cmake lua-single xdg
 
-DESCRIPTION="Game Boy Advance emulator written in C"
-HOMEPAGE="https://mgba.io"
-if [[ "${PV}" == 9999 ]] ; then
+if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mgba-emu/mgba.git"
 else
-	MY_PV="${PV/_beta/-b}"
-	SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	[[ "${PV}" == *_beta* ]] || \
-	KEYWORDS="~amd64 ~arm64 ~x86"
-	S="${WORKDIR}/${PN}-${MY_PV}"
+	SRC_URI="https://github.com/mgba-emu/mgba/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
-LICENSE="MPL-2.0"
-SLOT="0"
-IUSE="debug discord elf ffmpeg gles2 gles3 opengl qt5 +sdl sqlite"
-REQUIRED_USE="|| ( qt5 sdl )
-		qt5? ( opengl )"
+
+DESCRIPTION="Game Boy Advance Emulator"
+HOMEPAGE="https://mgba.io/"
+
+LICENSE="MPL-2.0 BSD LGPL-2.1+ public-domain discord? ( MIT )"
+SLOT="0/10"
+IUSE="debug discord elf ffmpeg gles2 gles3 gui libretro lua opengl +sdl sqlite test"
+REQUIRED_USE="
+	|| ( gui sdl )
+	gui? ( || ( gles2 gles3 opengl ) )
+	lua? ( ${LUA_REQUIRED_USE} )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
-	media-libs/libpng:0=
-	sys-libs/zlib[minizip]
+	media-libs/libpng:=
+	sys-libs/zlib:=[minizip]
 	debug? ( dev-libs/libedit )
 	elf? ( dev-libs/elfutils )
 	ffmpeg? ( media-video/ffmpeg:= )
+	gles2? ( media-libs/libglvnd )
+	gles3? ( media-libs/libglvnd )
+	lua? ( ${LUA_DEPS} )
 	opengl? ( media-libs/libglvnd )
-	qt5? (
+	gui? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtmultimedia:5
+		dev-qt/qtnetwork:5
 		dev-qt/qtwidgets:5
-		opengl? ( dev-qt/qtopengl:5 )
 	)
-	sdl? ( media-libs/libsdl2[X,sound,joystick,video,opengl?] )
-	sqlite? ( dev-db/sqlite:3 )
-"
-DEPEND="${RDEPEND}
-	gles2? ( media-libs/libglvnd )
-	gles3? ( media-libs/libglvnd )
-"
+	sdl? ( media-libs/libsdl2[sound,joystick,opengl?,video] )
+	sqlite? ( dev-db/sqlite:3 )"
+DEPEND="
+	${RDEPEND}
+	test? ( dev-util/cmocka )"
+BDEPEND="lua? ( virtual/pkgconfig )"
 
-src_prepare() {
-	xdg_environment_reset
-	cmake_src_prepare
-
-	# Get rid of any bundled stuff we don't want
-	local pkg
-	for pkg in libpng lzma sqlite3 zlib ; do
-		rm -r src/third-party/${pkg} || die
-	done
+pkg_setup() {
+	use lua && lua-single_pkg_setup
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_SKIP_RPATH=ON
-		-DBUILD_GL="$(usex opengl)"
-		-DBUILD_GLES2="$(usex gles2)"
-		-DBUILD_GLES3="$(usex gles3)"
-		-DBUILD_PYTHON=OFF
-		-DBUILD_QT="$(usex qt5)"
-		-DBUILD_SDL="$(usex sdl)"
-		-DBUILD_SHARED=ON
-		# test suite fails to build (>=0.6.0)
-		-DBUILD_SUITE=OFF
-		-DBUILD_TEST=OFF
-		-DM_CORE_GB=ON
-		-DM_CORE_GBA=ON
-		-DUSE_DEBUGGERS="$(usex debug)"
-		-DUSE_DISCORD_RPC="$(usex discord)"
-		-DUSE_EDITLINE="$(usex debug)"
-		-DUSE_ELF="$(usex elf)"
+		-DBUILD_CINEMA=$(usex test)
+		-DBUILD_GL=$(usex opengl)
+		-DBUILD_GLES2=$(usex gles2)
+		-DBUILD_GLES3=$(usex gles3)
+		-DBUILD_LIBRETRO=$(usex libretro)
+		-DBUILD_QT=$(usex gui)
+		-DBUILD_SDL=$(usex sdl)
+		-DBUILD_SUITE=$(usex test)
+		-DENABLE_SCRIPTING=$(usex lua)
+		-DMARKDOWN=OFF #752048
+		-DUSE_DEBUGGERS=$(usex debug)
+		-DUSE_DISCORD_RPC=$(usex discord)
+		-DUSE_EDITLINE=$(usex debug)
+		-DUSE_ELF=$(usex elf)
 		-DUSE_EPOXY=OFF
-		-DUSE_FFMPEG="$(usex ffmpeg)"
-		-DUSE_GDB_STUB="$(usex debug)"
+		-DUSE_FFMPEG=$(usex ffmpeg)
+		-DUSE_GDB_STUB=$(usex debug)
 		-DUSE_LIBZIP=OFF
-		-DUSE_LZMA=OFF
+		-DUSE_LZMA=ON
 		-DUSE_MINIZIP=ON
 		-DUSE_PNG=ON
-		-DUSE_SQLITE3="$(usex sqlite)"
+		-DUSE_SQLITE3=$(usex sqlite)
 		-DUSE_ZLIB=ON
+		$(usev libretro -DLIBRETRO_LIBDIR="${EPREFIX}"/usr/$(get_libdir)/libretro)
 	)
+	use lua && mycmakeargs+=( -DUSE_LUA=$(ver_cut 1-2 $(lua_get_version)) )
+
 	cmake_src_configure
 }
 
-src_compile() {
-	cmake_src_compile
+src_test() {
+	# CMakeLists.txt forces SKIP_RPATH=ON when PREFIX=/usr
+	local -x LD_LIBRARY_PATH=${BUILD_DIR}:${LD_LIBRARY_PATH}
+
+	cmake_src_test
 }
 
 src_install() {
-	if use qt5 ; then
-		dobin ${BUILD_DIR}/qt/${PN}-qt
-		doman doc/${PN}-qt.6
-		domenu res/${PN}-qt.desktop
-		for size in 16 24 32 48 64 96 128 256 ; do
-			newicon -s ${size} res/${PN}-${size}.png ${PN}.png
-		done
-	fi
-	if use sdl ; then
-		doman doc/${PN}.6
-		newbin ${BUILD_DIR}/sdl/${PN} ${PN}-sdl
-	fi
+	cmake_src_install
 
-	dolib.so ${BUILD_DIR}/lib${PN}.so*
-}
+	use !test || rm "${ED}"/usr/bin/mgba-cinema || die
 
-pkg_preinst() {
-	if use qt5 ; then
-		xdg_pkg_preinst
-	fi
-}
-
-pkg_postinst() {
-	if use qt5 ; then
-		xdg_pkg_postinst
-	fi
-}
-
-pkg_postrm() {
-	if use qt5 ; then
-		xdg_pkg_postrm
-	fi
+	rm -r "${ED}"/usr/share/doc/${PF}/{LICENSE,licenses} || die
 }

@@ -3,13 +3,13 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit autotools python-single-r1
 
 DESCRIPTION="Library for manipulating and storing storage volume encryption keys"
 HOMEPAGE="https://pagure.io/volume_key"
-SRC_URI="http://releases.pagure.org/${PN}/${P}.tar.xz"
+SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -39,13 +39,11 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.3.12-find_python3.patch" #764230
 )
 
-pkg_setup() {
-	python-single-r1_pkg_setup
-}
-
 src_prepare() {
 	default
-	eautoreconf #764230
+
+	# bug #764230
+	eautoreconf
 }
 
 src_configure() {

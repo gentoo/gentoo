@@ -29,30 +29,30 @@ esac
 
 RDEPEND=">=dev-php/pear-1.8.1"
 
-# @ECLASS-VARIABLE: PHP_PEAR_PKG_NAME
+# @ECLASS_VARIABLE: PHP_PEAR_PKG_NAME
 # @DESCRIPTION:
 # Set this if the PEAR package name differs from ${PN/PEAR-/}
 # (generally shouldn't be the case).
 : ${PHP_PEAR_PKG_NAME:=${PN/PEAR-/}}
 
-# @ECLASS-VARIABLE: PEAR_PV
+# @ECLASS_VARIABLE: PEAR_PV
 # @DESCRIPTION:
 # Set in ebuild if the ${PV} breaks SRC_URI for alpha/beta/rc versions
 : ${PEAR_PV:=${PV}}
 
-# @ECLASS-VARIABLE: PEAR-P
+# @ECLASS_VARIABLE: PEAR-P
 # @INTERNAL
 # @DESCRIPTION:
 # Combines PHP_PEAR_PKG_NAME and PEAR_PV
 PEAR_P="${PHP_PEAR_PKG_NAME}-${PEAR_PV}"
 
-# @ECLASS-VARIABLE: PHP_PEAR_DOMAIN
+# @ECLASS_VARIABLE: PHP_PEAR_DOMAIN
 # @DESCRIPTION:
 # Set in ebuild to the domain name of the channel if not pear.php.net
 # When the domain is not pear.php.net, setting the SRC_URI is required
 : ${PHP_PEAR_DOMAIN:=pear.php.net}
 
-# @ECLASS-VARIABLE: PHP_PEAR_CHANNEL
+# @ECLASS_VARIABLE: PHP_PEAR_CHANNEL
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set in ebuild to the path of channel.xml file which is necessary for

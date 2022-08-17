@@ -25,13 +25,13 @@ RDEPEND="${DEPEND}"
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_compile() {
-	emake PKG_NAME=tclpython3 CC=$(tc-getCC) \
+	emake PKG_NAME=tclpython3 CC="$(tc-getCC)" \
 		MYCFLAGS="${CFLAGS}" \
 		MYLDFLAGS="${LDFLAGS} $(python_get_library_path)"
 }
 
 src_test() {
-	emake PKG_NAME=tclpython3 CC=$(tc-getCC) test
+	emake PKG_NAME=tclpython3 CC="$(tc-getCC)" test
 }
 
 src_install() {

@@ -1,0 +1,24 @@
+https://github.com/openssl/openssl/pull/18719
+
+From 7f58de577c05ae0bbd20eee9b2971cfa1cd062c8 Mon Sep 17 00:00:00 2001
+From: Gregor Jasny <gjasny@googlemail.com>
+Date: Tue, 5 Jul 2022 12:57:06 +0200
+Subject: [PATCH] Add missing header for memcmp
+
+CLA: trivial
+---
+ test/v3ext.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/test/v3ext.c b/test/v3ext.c
+index 926f3884b138..a8ab64b2714b 100644
+--- a/test/v3ext.c
++++ b/test/v3ext.c
+@@ -8,6 +8,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include <openssl/x509.h>
+ #include <openssl/x509v3.h>
+ #include <openssl/pem.h>

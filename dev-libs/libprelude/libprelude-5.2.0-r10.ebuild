@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.0.0-fix-python-bindings.patch"
 	"${FILESDIR}/${PN}-5.1.0-fix_gtkdoc_1.32.patch"
 	"${FILESDIR}/${PN}-5.2.0-luabindings_liblua.patch"
+	"${FILESDIR}/${PN}-5.2.0-slibtool.patch" # 790647
 )
 
 src_prepare() {

@@ -10,7 +10,10 @@ PYTHON_REQ_USE="sqlite"
 inherit distutils-r1
 
 DESCRIPTION="Persistent dict in Python, backed by SQLite and pickle"
-HOMEPAGE="https://github.com/piskvorky/sqlitedict"
+HOMEPAGE="
+	https://github.com/RaRe-Technologies/sqlitedict/
+	https://pypi.org/project/sqlitedict/
+"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

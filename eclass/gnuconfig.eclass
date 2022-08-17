@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnuconfig.eclass
@@ -84,9 +84,9 @@ gnuconfig_do_update() {
 		if [[ -n ${targetlist} ]] ; then
 			for target in ${targetlist} ; do
 				[[ -L ${target} ]] && rm -f "${target}"
-				einfo "  Updating ${target/$startdir\//}"
+				ebegin "  Updating ${target/$startdir\//}"
 				cp -f "${configsubs_dir}/${file}" "${target}"
-				eend $?
+				eend $? || die
 			done
 		else
 			ewarn "  No ${file} found in ${startdir}, skipping ..."

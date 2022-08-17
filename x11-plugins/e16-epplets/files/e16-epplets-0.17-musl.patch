@@ -1,0 +1,60 @@
+commit c3dcab92ff903422814573d6315ed2a1417080f6
+Author: Andrew Savchenko <bircoph@gentoo.org>
+Date:   Mon Aug 1 12:03:51 2022 +0300
+
+    Include <sys/select.h> for fd_set
+    
+    When fd_set is used <sys/select.h> should be included.
+    On glibc it is done implicitly via other headers,
+    on musl it must be explicitly provided.
+    
+    Signed-off-by: Andrew Savchenko <bircoph@gentoo.org>
+
+diff --git a/api/epplet.c b/api/epplet.c
+index b6a7907..b74a4bc 100644
+--- a/api/epplet.c
++++ b/api/epplet.c
+@@ -3,6 +3,7 @@
+ #include <errno.h>
+ #include <fcntl.h>
+ #include <sys/resource.h>
++#include <sys/select.h>
+ #include <sys/utsname.h>
+ #include <signal.h>
+ #include <sys/time.h>
+diff --git a/epplets/E-Pinger.c b/epplets/E-Pinger.c
+index 7187315..d397063 100644
+--- a/epplets/E-Pinger.c
++++ b/epplets/E-Pinger.c
+@@ -32,6 +32,7 @@
+ 
+ #include <errno.h>
+ #include <signal.h>
++#include <sys/select.h>
+ #include <sys/wait.h>
+ 
+ #include "config.h"
+diff --git a/epplets/E-SD.c b/epplets/E-SD.c
+index cd92fa3..d3b6b93 100644
+--- a/epplets/E-SD.c
++++ b/epplets/E-SD.c
+@@ -19,6 +19,7 @@
+  */
+ #include <esd.h>
+ #include <fcntl.h>
++#include <sys/select.h>
+ 
+ #include "config.h"
+ #include "epplet.h"
+diff --git a/epplets/E-ScreenShoot_ftp.c b/epplets/E-ScreenShoot_ftp.c
+index 377e7ee..ae40ca7 100644
+--- a/epplets/E-ScreenShoot_ftp.c
++++ b/epplets/E-ScreenShoot_ftp.c
+@@ -5,6 +5,7 @@
+ #include <errno.h>
+ #include <fcntl.h>
+ #include <stdarg.h>
++#include <sys/select.h>
+ 
+ #include "E-ScreenShoot_ftp.h"
+ 

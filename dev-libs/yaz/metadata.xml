@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<use>
-		<flag name="ziffy">Install ziffy, a promiscuous Z39.50 APDU sniffer</flag>
-	</use>
-	<upstream>
-		<remote-id type="github">indexdata/yaz</remote-id>
-	</upstream>
+  <maintainer type="person" proxied="yes">
+    <name>Thamognya Kodi</name>
+    <email>contact@thamognya.com</email>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">indexdata/yaz</remote-id>
+  </upstream>
+  <use>
+    <flag name="ziffy">Install ziffy, a promiscuous Z39.50 APDU sniffer</flag>
+  </use>
 </pkgmetadata>

@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit optfeature python-single-r1 toolchain-funcs xdg
+inherit optfeature multiprocessing python-single-r1 toolchain-funcs xdg
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
@@ -23,16 +23,16 @@ HOMEPAGE="https://sw.kovidgoyal.net/kitty/"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+X debug test transfer wayland"
+IUSE="+X test transfer wayland"
 REQUIRED_USE="
 	|| ( X wayland )
 	${PYTHON_REQUIRED_USE}"
 RESTRICT="!X? ( test ) !test? ( test ) !transfer? ( test ) !wayland? ( test )"
 
+# dlopen: fontconfig,libglvnd
 RDEPEND="
 	${PYTHON_DEPS}
 	media-libs/fontconfig
-	media-libs/freetype:2
 	media-libs/harfbuzz:=
 	media-libs/lcms:2
 	media-libs/libglvnd[X?]
@@ -64,14 +64,14 @@ BDEPEND="
 	wayland? ( dev-util/wayland-scanner )"
 [[ ${PV} == 9999 ]] || BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-kovidgoyal )"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.23.1-flags.patch
-)
-
 src_prepare() {
 	default
 
-	sed -i "s/'x11 wayland'/'$(usev X x11) $(usev wayland)'/" setup.py || die
+	sed -e "s/'x11 wayland'/'$(usev X x11) $(usev wayland)'/" \
+		-e "$(usev !X '/gl_libs =/s/=.*/= []/')" \
+		-e "/num_workers = /s/=.*/= $(makeopts_jobs)/" \
+		-e "s/cflags.append.*-O3.*/pass/" -e 's/-O3//' \
+		-i setup.py || die
 
 	if use !transfer; then
 		sed -i 's/rs_cflag =/& []#/;/files.*rsync/d' setup.py || die
@@ -80,6 +80,9 @@ src_prepare() {
 
 	# test relies on 'who' command which doesn't detect users with pid-sandbox
 	rm kitty_tests/utmp.py || die
+
+	# test may fail/hang depending on environment and shell initialization scripts
+	rm kitty_tests/{shell_integration,ssh}.py || die
 
 	# skip docs for live version
 	[[ ${PV} != 9999 ]] || sed -i '/exists.*_build/,/docs(ddir)/d' setup.py || die
@@ -97,7 +100,6 @@ src_compile() {
 		--shell-integration="enabled no-rc"
 		--update-check-interval=0
 		--verbose
-		$(usev debug --debug)
 	)
 
 	echo "${setup[*]}"
@@ -116,7 +118,8 @@ src_install() {
 	insinto /usr
 	doins -r linux-package/.
 
-	fperms +x /usr/bin/kitty
+	fperms +x /usr/bin/kitty \
+		/usr/$(get_libdir)/kitty/shell-integration/ssh/{askpass.py,kitty}
 }
 
 pkg_postinst() {

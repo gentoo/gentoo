@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: qmail.eclass
@@ -133,7 +133,7 @@ qmail_base_install() {
 	# subshell to not leak the install options
 	(
 	einfo "Setting up basic directory hierarchy"
-	diropts -o root -g qmail
+	diropts -o 0 -g qmail
 	dodir "${QMAIL_HOME}"/bin
 	keepdir "${QMAIL_HOME}"/{control,users}
 	diropts -o alias -g qmail
@@ -145,7 +145,7 @@ qmail_base_install() {
 	einfo "Installing all qmail software"
 	exeinto "${QMAIL_HOME}"/bin
 
-	exeopts -o root -g qmail
+	exeopts -o 0 -g qmail
 	doexe bouncesaying condredirect config-fast datemail except forward maildir2mbox \
 		maildirmake mailsubj predate preline qbiff \
 		qmail-{inject,qmqpc,qmqpd,qmtpd,qread,qstat,smtpd,tcpok,tcpto,showctl} \
@@ -158,20 +158,17 @@ qmail_base_install() {
 
 	use pop3 && doexe qmail-pop3d
 
-	exeopts -o root -g qmail -m 711
+	exeopts -o 0 -g qmail -m 711
 	doexe qmail-{clean,getpw,local,pw2u,remote,rspawn,send} splogger
 	use pop3 && doexe qmail-popup
 
-	exeopts -o root -g qmail -m 700
+	exeopts -o 0 -g qmail -m 700
 	doexe qmail-{lspawn,newmrh,newu,start}
 
 	exeopts -o qmailq -g qmail -m 4711
 	doexe qmail-queue
 
 	)
-
-	declare -F qmail_base_install_hook >/dev/null && \
-		qmail_base_install_hook
 }
 
 qmail_config_install() {
@@ -182,9 +179,6 @@ qmail_config_install() {
 	einfo "Installing configuration sanity checker and launcher"
 	insinto "${QMAIL_HOME}"/bin
 	doins "${GENQMAIL_S}"/control/qmail-config-system
-
-	declare -F qmail_config_install_hook >/dev/null && \
-		qmail_config_install_hook
 }
 
 qmail_man_install() {
@@ -200,9 +194,6 @@ qmail_man_install() {
 	else
 		dodoc CHANGES.md FAQ.md SECURITY.md THOUGHTS.md UPGRADE.md
 	fi
-
-	declare -F qmail_man_install_hook >/dev/null && \
-		qmail_man_install_hook
 }
 
 qmail_sendmail_install() {
@@ -211,9 +202,6 @@ qmail_sendmail_install() {
 
 	dosym "${QMAIL_HOME}"/bin/sendmail /usr/sbin/sendmail
 	dosym "${QMAIL_HOME}"/bin/sendmail /usr/lib/sendmail
-
-	declare -F qmail_sendmail_install_hook >/dev/null && \
-		qmail_sendmail_install_hook
 }
 
 qmail_maildir_install() {
@@ -245,9 +233,6 @@ qmail_maildir_install() {
 	done
 
 	)
-
-	declare -F qmail_maildir_install_hook >/dev/null && \
-		qmail_maildir_install_hook
 }
 
 qmail_tcprules_install() {
@@ -262,7 +247,7 @@ qmail_supervise_install_one() {
 	dosupervise ${1}
 	# subshell to not leak the install options
 	(
-	diropts -o qmaill -g root
+	diropts -o qmaill -g 0
 	keepdir /var/log/qmail/${1}
 	)
 }
@@ -280,9 +265,6 @@ qmail_supervise_install() {
 		qmail_supervise_install_one qmail-pop3d
 		use ssl && qmail_supervise_install_one qmail-pop3sd
 	fi
-
-	declare -F qmail_supervise_install_hook >/dev/null && \
-		qmail_supervise_install_hook
 }
 
 qmail_spp_install() {
@@ -295,9 +277,6 @@ qmail_spp_install() {
 	for i in authlog mfdnscheck ifauthnext tarpit; do
 		dospp "${GENQMAIL_S}"/spp/${i}
 	done
-
-	declare -F qmail_spp_install_hook >/dev/null && \
-		qmail_spp_install_hook
 }
 
 qmail_ssl_install() {
@@ -317,9 +296,6 @@ qmail_ssl_install() {
 	doexe "${GENQMAIL_S}"/ssl/qmail-genrsacert.sh
 
 	keepdir "${QMAIL_HOME}"/control/tlshosts
-
-	declare -F qmail_ssl_install_hook >/dev/null && \
-		qmail_ssl_install_hook
 }
 
 qmail_src_install() {
@@ -433,7 +409,7 @@ qmail_config_fast() {
 }
 
 qmail_tcprules_config() {
-	local localips ip tcpstring line proto f
+	local localips ip tcpstring proto f
 
 	einfo "Accepting relaying by default from all ips configured on this machine."
 
@@ -449,10 +425,9 @@ qmail_tcprules_config() {
 	tcpstring=':allow,RELAYCLIENT="",RBLSMTPD=""'
 
 	for ip in ${localips}; do
-		line="${ip}${tcpstring}"
 		for proto in smtp qmtp qmqp; do
 			f="${EROOT}${TCPRULES_DIR}/tcp.qmail-${proto}"
-			egrep -qs "${line}" "${f}" || echo "${line}" >> "${f}"
+			grep -qs "^${ip}:" "${f}" || echo "${ip}${tcpstring}" >> "${f}"
 		done
 	done
 }

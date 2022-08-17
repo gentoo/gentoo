@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>bman@gentoo.org</email>
-		<name>Aaron Bauman</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
@@ -26,6 +22,7 @@
 		something else.
 	</longdescription>
 	<use>
+		<flag name="grimshot">Install 'grimshot': script for taking screenshots</flag>
 		<flag name="swaybar">Install 'swaybar': sway's status bar component</flag>
 		<flag name="swaybg">Install 'swaybg': allows to set a desktop background image</flag>
 		<flag name="swayidle">Install 'swayidle': idle manager to run commands when user is inactive</flag>

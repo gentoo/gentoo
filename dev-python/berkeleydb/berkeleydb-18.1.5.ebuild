@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+)"
 DISTUTILS_IN_SOURCE_BUILD=1
-inherit db-use distutils-r1
+inherit db-use flag-o-matic distutils-r1
 
 # Tests aren't included in PyPi tarballs, so just manually clone from upstream
 # at https://hg.jcea.es/pybsddb/ and prepare out tarball
@@ -17,7 +17,7 @@ SRC_URI="https://dev.gentoo.org/~arthurzam/distfiles/dev-python/${PN}/${P}.tar.x
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 
 RDEPEND="
 	|| (
@@ -55,6 +55,11 @@ python_configure_all() {
 	export BERKELEYDB_INCDIR="$(db_includedir ${DB_VER})"
 	export BERKELEYDB_LIBDIR="${EPREFIX}/usr/$(get_libdir)"
 	export YES_I_HAVE_THE_RIGHT_TO_USE_THIS_BERKELEY_DB_VERSION=1
+
+	if use ia64; then
+		# bug #814179
+		append-flags -fno-optimize-sibling-calls
+	fi
 }
 
 python_test() {

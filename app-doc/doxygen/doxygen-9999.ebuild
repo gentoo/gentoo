@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_REQ_USE="xml(+)"
 
 inherit cmake flag-o-matic llvm python-any-r1
 if [[ ${PV} = *9999* ]]; then
@@ -56,10 +57,9 @@ RDEPEND="app-text/ghostscript-gpl
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.8.16-link_with_pthread.patch"
-	"${FILESDIR}/${PN}-1.8.17-ensure_static_support_libraries.patch"
+	"${FILESDIR}/${PN}-1.9.4-link_with_pthread.patch"
 	"${FILESDIR}/${PN}-1.9.1-ignore-bad-encoding.patch"
-	"${FILESDIR}/${PN}-1.9.1-header-dep.patch"
+	"${FILESDIR}/${PN}-1.9.1-do_not_force_libcxx.patch"
 )
 
 DOCS=( LANGUAGE.HOWTO README.md )
@@ -92,6 +92,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Wodr warnings, see bug #854357 and https://github.com/doxygen/doxygen/issues/9287
+	filter-lto
+
 	local mycmakeargs=(
 		-Duse_libclang=$(usex clang)
 		-Dbuild_doc=$(usex doc)

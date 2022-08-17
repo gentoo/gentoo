@@ -9,7 +9,7 @@ DESCRIPTION="Operating system and container binary deployment and upgrades"
 HOMEPAGE="https://ostreedev.github.io/ostree/"
 SRC_URI="https://github.com/ostreedev/ostree/releases/download/v${PV}/lib${P}.tar.xz -> ${P}.tar.xz"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 LICENSE="LGPL-2+"
 SLOT="0"
 
@@ -25,7 +25,7 @@ COMMON_DEPEND="
 	app-arch/xz-utils
 	dev-libs/libassuan
 	dev-libs/glib:2
-	>=sys-fs/fuse-2.9.2:0
+	sys-fs/fuse:3
 	sys-libs/zlib
 	archive? ( app-arch/libarchive:= )
 	curl? ( net-misc/curl )

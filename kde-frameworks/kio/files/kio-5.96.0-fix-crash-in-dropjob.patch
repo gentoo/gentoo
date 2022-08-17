@@ -1,0 +1,45 @@
+From 29bdf541aa83c78bc8e9d90487a7e1dd505ef013 Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Fri, 8 Jul 2022 15:46:11 +0100
+Subject: [PATCH] Fix crash in DropJob
+
+QMimeData is owned by the backend and can be deleted during any event
+processing.
+
+DropJob has a deferred start operation. One path in this is to call
+PasteJob with mimedata. It could be dangling by this point.
+
+Pastejob follows a similar pattern in
+1d668a9fe65c5bc178487fc32e6662ff815147f6 internally but we also need to
+handle this usage before PasteJob.
+
+BUG: 454747
+---
+ src/widgets/dropjob.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/widgets/dropjob.cpp b/src/widgets/dropjob.cpp
+index fa2bf4ccc..5af578d28 100644
+--- a/src/widgets/dropjob.cpp
++++ b/src/widgets/dropjob.cpp
+@@ -139,7 +139,7 @@ public:
+     void addPluginActions(KIO::DropMenu *popup, const KFileItemListProperties &itemProps);
+     void doCopyToDirectory();
+ 
+-    const QMimeData *m_mimeData;
++    QPointer<const QMimeData> m_mimeData;
+     const QList<QUrl> m_urls;
+     QMap<QString, QString> m_metaData;
+     Qt::DropAction m_dropAction;
+@@ -271,7 +271,7 @@ void DropJobPrivate::slotStart()
+                 q->emitResult();
+             }
+         }
+-    } else {
++    } else if (m_mimeData) {
+         // Dropping raw data
+         KIO::PasteJob *job = KIO::PasteJobPrivate::newJob(m_mimeData, m_destUrl, KIO::HideProgressInfo, false /*not clipboard*/);
+         QObject::connect(job, &KIO::PasteJob::itemCreated, q, &KIO::DropJob::itemCreated);
+-- 
+GitLab
+

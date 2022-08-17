@@ -1,0 +1,11 @@
+--- a/geiser-gambit.el
++++ b/geiser-gambit.el
+@@ -304,7 +304,7 @@ If t, Geiser will use `next-error' to jump to the error's location."
+                                    binary)))
+ 
+ (defvar geiser-gambit-scheme-dir
+-  (expand-file-name "src/" (file-name-directory load-file-name))
++  (expand-file-name "src/" "@SITEETC@")
+   "Directory where the Gambit scheme geiser modules are installed.")
+ 
+ (defun geiser-gambit--parameters ()

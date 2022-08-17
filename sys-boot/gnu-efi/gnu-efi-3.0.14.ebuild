@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Library for build EFI Applications"
 HOMEPAGE="https://sourceforge.net/projects/gnu-efi/"
@@ -16,8 +16,12 @@ SRC_URI="mirror://sourceforge/gnu-efi/${P}.tar.bz2"
 # - GPL-2+ : setjmp_ia32.S
 LICENSE="GPL-2+ BSD BSD-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~arm ~arm64 ~ia64 ~riscv ~x86"
+KEYWORDS="-* amd64 arm arm64 ~ia64 ~riscv x86"
 IUSE="abi_x86_32 abi_x86_64 custom-cflags"
+REQUIRED_USE="
+	amd64? ( || ( abi_x86_32 abi_x86_64 ) )
+	x86? ( || ( abi_x86_32 abi_x86_64 ) )
+"
 
 # These objects get run early boot (i.e. not inside of Linux),
 # so doing these QA checks on them doesn't make sense.
@@ -63,18 +67,18 @@ src_compile() {
 		unset CFLAGS CPPFLAGS LDFLAGS
 	fi
 
-	if [[ ${CHOST} == x86_64* ]]; then
+	if use amd64 || use x86; then
 		use abi_x86_32 && CHOST=i686 ABI=x86 efimake
-		use abi_x86_64 && efimake
+		use abi_x86_64 && CHOST=x86_64 ABI=amd64 efimake
 	else
 		efimake
 	fi
 }
 
 src_install() {
-	if [[ ${CHOST} == x86_64* ]]; then
+	if use amd64 || use x86; then
 		use abi_x86_32 && CHOST=i686 ABI=x86 efimake INSTALLROOT="${D}" install
-		use abi_x86_64 && efimake INSTALLROOT="${D}" install
+		use abi_x86_64 && CHOST=x86_64 ABI=amd64 efimake INSTALLROOT="${D}" install
 	else
 		efimake INSTALLROOT="${D}" install
 	fi

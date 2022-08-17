@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<use>
-   <flag name="abort">Enable query abortion</flag>
-   <flag name="benchmark">Build benchmark programs</flag>
-   <flag name="dynamic-malloc-change">Allow dynamic memory allocation change for testing</flag>
-   <flag name="exact-alloc-count">Atomic counting for memory alloc count</flag>
-   <flag name="fmalloc">Make memory allocation failed in specified condition for debug</flag>
-   <flag name="futex">Use futex</flag>
-   <flag name="libevent">Enable <pkg>dev-libs/libevent</pkg> used for suggestion</flag>
-   <flag name="mecab">Use <pkg>app-text/mecab</pkg> for morphological analysis</flag>
-   <flag name="msgpack">Enable <pkg>dev-libs/msgpack</pkg> used for suggestion</flag>
-   <flag name="nfkc">Use nfkc based utf8 normalization</flag>
-   <flag name="sphinx">Enable document generation by <pkg>app-misc/sphinx</pkg></flag>
-   <flag name="uyield">Build for detecting race conditions</flag>
-   <flag name="zeromq">Enable <pkg>net-libs/zeromq</pkg> used for suggestion</flag>
-</use>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="abort">Enable query abortion</flag>
+		<flag name="benchmark">Build benchmark programs</flag>
+		<flag name="dynamic-malloc-change">Allow dynamic memory allocation change for testing</flag>
+		<flag name="exact-alloc-count">Atomic counting for memory alloc count</flag>
+		<flag name="fmalloc">Make memory allocation failed in specified condition for debug</flag>
+		<flag name="futex">Use futex</flag>
+		<flag name="libevent">Enable <pkg>dev-libs/libevent</pkg> used for suggestion</flag>
+		<flag name="mecab">Use <pkg>app-text/mecab</pkg> for morphological analysis</flag>
+		<flag name="msgpack">Enable <pkg>dev-libs/msgpack</pkg> used for suggestion</flag>
+		<flag name="nfkc">Use nfkc based utf8 normalization</flag>
+		<flag name="sphinx">Enable document generation by <pkg>app-misc/sphinx</pkg></flag>
+		<flag name="uyield">Build for detecting race conditions</flag>
+		<flag name="zeromq">Enable <pkg>net-libs/zeromq</pkg> used for suggestion</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">groonga/groonga</remote-id>
+	</upstream>
 </pkgmetadata>

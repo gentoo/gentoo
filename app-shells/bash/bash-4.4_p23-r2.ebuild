@@ -1,9 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit flag-o-matic toolchain-funcs prefix
+
+# Uncomment if we have a patchset
+GENTOO_PATCH_DEV="sam"
+GENTOO_PATCH_VER="${PV}-r2"
 
 # Official patchlevel
 # See ftp://ftp.cwru.edu/pub/bash/bash-4.4-patches/
@@ -37,11 +41,15 @@ patches() {
 READLINE_VER="7.0"
 
 DESCRIPTION="The standard GNU Bourne again shell"
-HOMEPAGE="http://tiswww.case.edu/php/chet/bash/bashtop.html"
+HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html"
 if is_release ; then
 	SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
 else
 	SRC_URI="ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
+fi
+
+if [[ -n ${GENTOO_PATCH_VER} ]] ; then
+	SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${GENTOO_PATCH_VER}-patches.tar.xz"
 fi
 
 LICENSE="GPL-3"
@@ -78,14 +86,18 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${MY_P}.tar.gz
+
+	if [[ -n ${GENTOO_PATCH_VER} ]] ; then
+		unpack ${PN}-${GENTOO_PATCH_VER}-patches.tar.xz
+	fi
 }
 
 src_prepare() {
 	# Include official patches
 	[[ ${PLEVEL} -gt 0 ]] && eapply -p0 $(patches -s)
 
-	eapply "${FILESDIR}/${PN}-4.4-jobs_overflow.patch" # bug #644720
-	eapply "${FILESDIR}/${PN}-4.4-set-SHOBJ_STATUS.patch" # bug #644720
+	eapply "${WORKDIR}"/${P}-r2-patches/${PN}-4.4-jobs_overflow.patch # bug #644720
+	eapply "${WORKDIR}"/${P}-r2-patches/${PN}-4.4-set-SHOBJ_STATUS.patch # bug #644720
 
 	# Clean out local libs so we know we use system ones w/releases.
 	if is_release ; then

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://www.aquamaniac.de/rdm/attachments/download/342/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~riscv x86"
 IUSE="debug doc ebics examples ofx"
 
 BDEPEND="

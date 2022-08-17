@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Simple console game, where you drive a car across the moon's surface"
 HOMEPAGE="https://www.seehuhn.de/pages/moon-buggy.html"
@@ -28,6 +28,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# LTO warnings, bug #858518
+	filter-lto
+
 	econf \
 		--sharedstatedir="${EPREFIX}/var/games" \
 		--with-curses-libs="$($(tc-getPKG_CONFIG) ncurses --libs)"

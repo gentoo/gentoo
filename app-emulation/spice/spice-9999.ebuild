@@ -39,6 +39,7 @@ DEPEND="${RDEPEND}
 	smartcard? ( app-emulation/qemu[smartcard] )
 	test? ( net-libs/glib-networking )"
 BDEPEND="${PYTHON_DEPS}
+	sys-devel/autoconf-archive
 	virtual/pkgconfig
 	$(python_gen_any_dep '
 		>=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]

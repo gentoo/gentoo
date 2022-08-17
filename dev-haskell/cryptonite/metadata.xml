@@ -30,6 +30,7 @@
 	</longdescription>
 	<use>
 		<flag name="integer-gmp">Whether or not to use GMP for some functions</flag>
+		<flag name="target-attributes">use GCC / clang function attributes instead of global target options.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">haskell-crypto/cryptonite</remote-id>

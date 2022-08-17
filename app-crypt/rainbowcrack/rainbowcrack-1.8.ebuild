@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit wrapper
 
 DESCRIPTION="Hash cracker that precomputes plaintext - ciphertext pairs in advance"
-HOMEPAGE="https://project-rainbowcrack.com/"
-SRC_URI="https://project-${PN}.com/${P}-linux64.zip"
+HOMEPAGE="http://project-rainbowcrack.com/"
+SRC_URI="http://project-${PN}.com/${P}-linux64.zip"
 
 LICENSE="all-rights-reserved"
 SLOT="0"

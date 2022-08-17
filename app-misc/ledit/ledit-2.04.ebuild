@@ -22,6 +22,8 @@ RDEPEND="${DEPEND}"
 # https://github.com/gentoo/gentoo/pull/14865#issuecomment-605697524
 QA_FLAGS_IGNORED="/usr/bin/ledit"
 
+PATCHES=( "${FILESDIR}"/${P}-ocaml4.09.patch )
+
 src_compile() {
 	emake -j1 all
 	if use ocamlopt; then

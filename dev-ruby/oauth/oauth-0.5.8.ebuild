@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby26 ruby27"
+USE_RUBY="ruby26 ruby27 ruby30"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md TODO"
 
@@ -17,7 +17,7 @@ RUBY_S="${PN}-ruby-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"
 IUSE=""
 
 ruby_add_bdepend "test? (
@@ -26,13 +26,13 @@ ruby_add_bdepend "test? (
 	dev-ruby/mocha:1.0
 	dev-ruby/webmock
 	dev-ruby/rack
-	dev-ruby/actionpack:6.0
-	dev-ruby/railties:6.0
+	dev-ruby/actionpack:6.1
+	dev-ruby/railties:6.1
 )"
 
 all_ruby_prepare() {
 	# Require a compatible version of mocha
-	sed -i -e '1igem "mocha", "~> 1.0"; gem "railties", "~>6.0.0" ; gem "actionpack", "~>6.0.0"' \
+	sed -i -e '1igem "mocha", "~> 1.0"; gem "railties", "~>6.1.0" ; gem "actionpack", "~>6.1.0"' \
 		-e '2i gem "test-unit"; require "test/unit"' \
 		-e '/mocha/ s/mini_test/minitest/' \
 		-e '/\(byebug\|minitest_helpers\|simplecov\)/I s:^:#:' test/test_helper.rb || die

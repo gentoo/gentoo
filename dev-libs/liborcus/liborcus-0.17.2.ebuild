@@ -17,8 +17,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	MDDS_SLOT="1/2.0"
 	SRC_URI="https://kohei.us/files/orcus/src/${P}.tar.xz"
-	# Unkeyworded while libreoffice has no release making use of this slot
-	# KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 x86"
 fi
 
 LICENSE="MIT"
@@ -38,13 +37,17 @@ DEPEND="${RDEPEND}
 	dev-util/mdds:${MDDS_SLOT}
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-clang.patch
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
 	# bug 713586
-	use test && eapply "${FILESDIR}/${P}-test-fix.patch"
+	use test && eapply "${FILESDIR}/${PN}-0.17.0-test-fix.patch"
 
 	default
 	eautoreconf

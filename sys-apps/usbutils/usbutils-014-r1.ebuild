@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 PYTHON_COMPAT=( python3_{8,9,10} )
 
-inherit autotools python-single-r1
+inherit python-single-r1
 
 DESCRIPTION="USB enumeration utilities"
 HOMEPAGE="https://www.kernel.org/pub/linux/utils/usb/usbutils/
@@ -13,7 +13,7 @@ SRC_URI="https://www.kernel.org/pub/linux/utils/usb/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -36,12 +36,13 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	eautoreconf
+
 	use python && python_fix_shebang lsusb.py.in
 }
 
 src_configure() {
 	local myeconfargs=(
+		--cache-file="${S}"/config.cache
 		--datarootdir="${EPREFIX}/usr/share"
 		--datadir="${EPREFIX}/usr/share/hwdata"
 	)

@@ -1,17 +1,18 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnustep-base.eclass
 # @MAINTAINER:
 # GNUstep Herd <gnustep@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Internal handling of GNUstep pacakges
 # @DESCRIPTION:
 # Inner gnustep eclass, should only be inherited directly by gnustep-base
 # packages
 
-case ${EAPI:-0} in
-	[5678]) inherit eutils ;;
+case ${EAPI} in
+	6|7) inherit eutils ;;
+	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -64,7 +65,7 @@ gnustep-base_src_prepare() {
 		eend $?
 	fi
 
-	! has ${EAPI} 5 && default
+	default
 }
 
 gnustep-base_src_configure() {

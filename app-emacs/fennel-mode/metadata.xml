@@ -12,5 +12,6 @@
     </changelog>
     <bugs-to>https://gitlab.com/technomancy/fennel-mode/-/issues/</bugs-to>
     <remote-id type="gitlab">technomancy/fennel-mode</remote-id>
+    <remote-id type="sourcehut">~technomancy/fennel-mode</remote-id>
   </upstream>
 </pkgmetadata>

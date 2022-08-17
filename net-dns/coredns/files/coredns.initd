@@ -19,7 +19,7 @@ depend() {
 	after net
 }
 
-if [[ -n "${COREDNS_HEALTHCHECK_URI}" ]]; then
+if [ -n "${COREDNS_HEALTHCHECK_URI}" ]; then
         healthcheck_delay=20
         healthcheck_timer=30
 

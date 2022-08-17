@@ -6,17 +6,13 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
-		<flag name="comonad">optional instances</flag>
-		<flag name="containers">optional instances</flag>
-		<flag name="kan-extensions">optional instances</flag>
-		<flag name="semigroupoids">optional instances</flag>
-		<flag name="semigroups">optional instances</flag>
-		<flag name="stm">optional instances</flag>
-		<flag name="tagged">optional instances</flag>
-		<flag name="transformers">optional instances</flag>
-		<flag name="unordered-containers">optional instances</flag>
+		<flag name="comonad">You can disable the use of the `comonad` package using `-f-transformers`.</flag>
+		<flag name="kan-extensions">You can disable the use of the `kan-extensions` package using `-f-kan-extensions`.</flag>
+		<flag name="semigroupoids">You can disable the use of the `semigroupoids` package using `-f-semigroupoids`.</flag>
+		<flag name="semigroups">You can disable the use of the `semigroups` package using `-f-semigroups`.</flag>
+		<flag name="stm">You can disable the use of the `stm` package using `-f-stm`.</flag>
+		<flag name="tagged">You can disable the use of the `tagged` package using `-f-tagged`.</flag>
+		<flag name="transformers">You can disable the use of the `transformers` package using `-f-transformers`.</flag>
+		<flag name="unordered-containers">You can disable the use of the `unordered-containers` package using `-f-unordered-containers`.</flag>
 	</use>
-	<upstream>
-		<remote-id type="github">ekmett/pointed</remote-id>
-	</upstream>
 </pkgmetadata>

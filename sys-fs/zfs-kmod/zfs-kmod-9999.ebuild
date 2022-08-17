@@ -19,7 +19,7 @@ else
 	SRC_URI="https://github.com/openzfs/zfs/releases/download/zfs-${MY_PV}/zfs-${MY_PV}.tar.gz"
 	SRC_URI+=" verify-sig? ( https://github.com/openzfs/zfs/releases/download/zfs-${MY_PV}/zfs-${MY_PV}.tar.gz.asc )"
 	S="${WORKDIR}/zfs-${PV%_rc?}"
-	ZFS_KERNEL_COMPAT="5.16"
+	ZFS_KERNEL_COMPAT="5.18"
 
 	#  increments minor eg 5.14 -> 5.15, and still supports override.
 	ZFS_KERNEL_DEP="${ZFS_KERNEL_COMPAT_OVERRIDE:-${ZFS_KERNEL_COMPAT}}"
@@ -180,7 +180,7 @@ pkg_postinst() {
 	linux-mod_pkg_postinst
 
 	if [[ -z ${ROOT} ]] && use dist-kernel; then
-		set_arch_to_portage
+		set_arch_to_pkgmgr
 		dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
 	fi
 

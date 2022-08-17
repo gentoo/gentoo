@@ -10,12 +10,12 @@ PYTHON_REQ_USE="xml(+)"
 inherit distutils-r1 xdg
 
 DESCRIPTION="Advanced freedesktop.org compliant menu editor"
-HOMEPAGE="https://bluesabre.org/menulibre/"
+HOMEPAGE="https://bluesabre.org/projects/menulibre"
 SRC_URI="https://github.com/bluesabre/menulibre/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '

@@ -4,4 +4,7 @@
 	<maintainer type="person">
 		<email>sam@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">systemd/zram-generator</remote-id>
+	</upstream>
 </pkgmetadata>

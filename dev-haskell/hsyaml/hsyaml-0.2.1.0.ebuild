@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,12 +10,12 @@ MY_PN="HsYAML"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Pure Haskell YAML 1.2 parser"
-HOMEPAGE="https://github.com/hvr/HsYAML"
+HOMEPAGE="https://github.com/haskell-hvr/HsYAML"
 SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-haskell/fail-4.9.0.0:=[profile?] <dev-haskell/fail-4.10:=[profile?]

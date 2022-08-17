@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,13 +32,13 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--with-cxx=$(tc-getCXX) \
+		--with-cxx="$(tc-getCXX)" \
 		--with-cxx-optflags="${CXXFLAGS}" \
 		--with-cxxgen-optflags="${CXXFLAGS}" \
-		--with-cxxdepend=$(tc-getCXX) \
-		--with-ranlib=$(tc-getRANLIB) \
-		--with-ar=$(tc-getAR) \
-		--with-ld=$(tc-getLD) \
+		--with-cxxdepend="$(tc-getCXX)" \
+		--with-ranlib="$(tc-getRANLIB)" \
+		--with-ar="$(tc-getAR)" \
+		--with-ld="$(tc-getLD)" \
 		--enable-eri=2 --enable-eri3=2 --enable-eri2=2 \
 		--with-eri-max-am=7,5,4 --with-eri-opt-am=3 \
 		--with-eri3-max-am=7 --with-eri2-max-am=7 \

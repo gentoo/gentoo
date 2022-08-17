@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ PATCHES=(
 )
 
 src_compile() {
-	emake HGVERSION="${PV}" CC=$(tc-getCC)
+	emake HGVERSION="${PV}" CC="$(tc-getCC)"
 }
 
 src_install() {

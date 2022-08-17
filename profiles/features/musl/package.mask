@@ -1,9 +1,65 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2022-08-01)
+# Fails to build.
+app-emulation/open-vm-tools
+
+# William Hubbs <williamh@gentoo.org> (2022-07-30)
+# Binary package linked against glibc, bug #861893.
+app-admin/awscli-bin
+
+# David Seifert <soap@gentoo.org> (2022-07-29)
+# Binary package linked against glibc
+media-sound/baudline
+
+# David Seifert <soap@gentoo.org> (2022-07-29)
+# Binary package linked against glibc
+sys-block/megacli
+
+# Marek Szuba <marecki@gentoo.org> (2022-07-28)
+# Relies on unimplemented functions outb_p and inb_p,
+# support for which has never made it into musl. Bug #712972.
+sys-libs/libsmbios
+
+# Stefan Strogin <steils@gentoo.org> (2022-06-29)
+# Binary package linked against glibc
+net-im/element-desktop-bin
+
+# Florian Schmaus <flow@gentoo.org> (2022-06-05)
+# Binary package linked against glibc, bug #832932
+sys-block/hpssacli
+
+# Sam James <sam@gentoo.org> (2022-04-23)
+# Binary package linked against glibc, bug #832615
+net-print/cnijfilter2
+
+# Sam James <sam@gentoo.org> (2022-04-23)
+# Compatibility packages for binary/pre-built software shouldn't
+# be needed on musl (and these fail to build anyway).
+sys-libs/libtermcap-compat
+sys-libs/libstdc++-v3
+
+# Sam James <sam@gentoo.org> (2022-04-22)
+# Needs strndupa, upstream not interested in supporting musl
+# bug #713542
+net-misc/casync
+
+# Martin Dummer <martin.dummer@gmx.net> (2022-03-26)
+# Binary package linked to glibc. Bug #832558
+net-misc/teamviewer
+
+# Mike Pagano <mpagano@gentoo.org> (2022-03-21)
+# Binary package linked to glibc
+dev-util/idea-community
+
 # Pacho Ramos <pacho@gentoo.org> (2022-03-13)
 # Binary package linked to glibc
 sys-power/dptfxtract
+
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2022-03-14)
+# Doesn't build with musl, bug #832742
+sci-libs/opencascade
 
 # Adel KARA SLIMANE <adel.ks@zegrapher.com> (2022-03-09)
 # Binary packages linked to glibc
@@ -158,14 +214,19 @@ app-text/zotero-bin
 media-video/popcorntime-bin
 net-im/rocketchat-desktop-bin
 net-im/whatsapp-desktop-bin
+net-im/wazzapp-bin
 sci-misc/jupyterlab-desktop-bin
 sci-misc/netlogo-bin
 sci-electronics/eagle
 
-# Ulrich Müller <ulm@gentoo.org> (2022-01-04)
+# Ulrich Müller <ulm@gentoo.org> (2022-01-04, 2022-07-31)
 # Emacs 23 does not support x86_64-gentoo-linux-musl systems
-# (bug #830408)
+# (bug #830408). Emacs 24 and 25 have build failures (bug #862462).
+# Emacs 26 segfaults when dumping (bug #862489).
 app-editors/emacs:23
+app-editors/emacs:24
+app-editors/emacs:25
+app-editors/emacs:26
 
 # Marek Szuba <marecki@gentoo.org> (2022-01-01)
 # Binary-only package linked against glibc.

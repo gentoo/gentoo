@@ -1,0 +1,25 @@
+https://github.com/pkgcore/pkgdev/commit/b780cf967804cb532421ef7cced5f1964224d8dd
+
+From: Arthur Zamarin <arthurzam@gentoo.org>
+Date: Mon, 23 May 2022 22:07:43 +0300
+Subject: [PATCH] docs: fix signoff example
+
+Fixes: https://github.com/pkgcore/pkgdev/issues/72
+Signed-off-by: Arthur Zamarin <arthurzam@gentoo.org>
+--- a/doc/man/config.rst
++++ b/doc/man/config.rst
+@@ -34,10 +34,10 @@ related values. To find all possible configuration options, run:
+     push.ask = true
+ 
+ - Add `Signed-off-by` consenting to the `Certificate of Origin <https://www.gentoo.org/glep/glep-0076.html#certificate-of-origin>`_
+-  to all commits for the 'gentoo' repository::
++  to all commits::
+ 
+-    [gentoo]
+-    push.signoff = true
++    [DEFAULT]
++    commit.signoff = true
+ 
+ - When committing, stage all files in current working directory (note that this
+   option doesn't expect value, therefore no value is defined post equal sign)::
+

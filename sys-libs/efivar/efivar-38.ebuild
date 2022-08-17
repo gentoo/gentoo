@@ -11,7 +11,7 @@ SRC_URI="https://github.com/rhinstaller/efivar/releases/download/${PV}/${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0/1"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -33,6 +33,8 @@ src_prepare() {
 		"${FILESDIR}"/efivar-38-march-native.patch
 		"${FILESDIR}"/efivar-38-Makefile-dep.patch
 		"${FILESDIR}"/efivar-38-binutils-2.36.patch
+		"${FILESDIR}"/efivar-38-ld-locale.patch
+		"${FILESDIR}"/efivar-38-glibc-2.36.patch
 	)
 	default
 }

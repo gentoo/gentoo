@@ -1,0 +1,150 @@
+From 930293a899825ae552370a060dd04117ebc5fdae Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Thu, 7 Jul 2022 21:52:54 +0100
+Subject: [PATCH] rbutil: Add USE_SYSTEM_QUAZIP option to use system-wide
+ QuaZIP
+
+QuaZIP is included in several major Linux distributions and packaging
+policies strongly oppose bundling of libraries.
+
+Change-Id: I8d454784dc4b244f4dd8aa18deb3350a29aaab77
+---
+ docs/CREDITS                    |  1 +
+ utils/rbutilqt/CMakeLists.txt   | 65 ++++++++++++++++++---------------
+ utils/rbutilqt/base/ziputil.cpp |  6 +--
+ utils/rbutilqt/base/ziputil.h   |  6 +--
+ 4 files changed, 43 insertions(+), 35 deletions(-)
+
+diff --git a/docs/CREDITS b/docs/CREDITS
+index 6f7c23fc7e..3a6fcb83b9 100644
+--- a/docs/CREDITS
++++ b/docs/CREDITS
+@@ -710,6 +710,7 @@ Marc Aarts
+ Fabrice Bellard
+ Selami Dinçer
+ Matej Golian
++James Le Cuirot
+ 
+ The libmad team
+ The wavpack team
+diff --git a/utils/rbutilqt/CMakeLists.txt b/utils/rbutilqt/CMakeLists.txt
+index 41954cb9ee..350790109b 100644
+--- a/utils/rbutilqt/CMakeLists.txt
++++ b/utils/rbutilqt/CMakeLists.txt
+@@ -255,9 +255,43 @@ if(APPLE)
+         ${CMAKE_CURRENT_LIST_DIR}/base/ttscarbon.h)
+ endif()
+ 
++option(USE_SYSTEM_QUAZIP "Use system QuaZIP library" OFF)
++if(USE_SYSTEM_QUAZIP)
++    find_package(QuaZip-Qt5 REQUIRED)
++    set(QUAZIP_LIBRARY QuaZip::QuaZip)
++else()
++    # TODO: Upstream has cmake support, use that instead.
++    add_library(quazip
++        ${CMAKE_CURRENT_LIST_DIR}/quazip/ioapi.h
++        ${CMAKE_CURRENT_LIST_DIR}/quazip/minizip_crypt.h
++        ${CMAKE_CURRENT_LIST_DIR}/quazip/qioapi.cpp
++        ${CMAKE_CURRENT_LIST_DIR}/quazip/quazip.cpp
++        ${CMAKE_CURRENT_LIST_DIR}/quazip/quazipfile.cpp
++        ${CMAKE_CURRENT_LIST_DIR}/quazip/quazipfile.h
++        ${CMAKE_CURRENT_LIST_DIR}/quazip/quazipfileinfo.cpp
++        ${CMAKE_CURRENT_LIST_DIR}/quazip/quazipfileinfo.h
++        ${CMAKE_CURRENT_LIST_DIR}/quazip/quazip_global.h
++        ${CMAKE_CURRENT_LIST_DIR}/quazip/quazip.h
++        ${CMAKE_CURRENT_LIST_DIR}/quazip/quazipnewinfo.cpp
++        ${CMAKE_CURRENT_LIST_DIR}/quazip/quazipnewinfo.h
++        ${CMAKE_CURRENT_LIST_DIR}/quazip/unzip.c
++        ${CMAKE_CURRENT_LIST_DIR}/quazip/unzip.h
++        ${CMAKE_CURRENT_LIST_DIR}/quazip/zip.c
++        ${CMAKE_CURRENT_LIST_DIR}/quazip/zip.h
++        )
++    target_include_directories(quazip PUBLIC ${CMAKE_CURRENT_LIST_DIR}/quazip)
++    target_link_libraries(quazip z Qt${QT_VERSION_MAJOR}::Core)
++    if(QT_VERSION_MAJOR EQUAL 6)
++        target_link_libraries(quazip Qt${QT_VERSION_MAJOR}::Core5Compat)
++    endif()
++    target_compile_definitions(quazip PUBLIC QUAZIP_STATIC)
++    set_property(TARGET quazip PROPERTY AUTOMOC ON)
++    set(QUAZIP_LIBRARY quazip)
++endif()
++
+ target_link_libraries(rbbase
+-    cutelogger quazip mspack bspatch rbspeex voicefont
+-    sansapatcher ipodpatcher chinachippatcher
++    cutelogger ${QUAZIP_LIBRARY} mspack bspatch rbspeex
++    voicefont sansapatcher ipodpatcher chinachippatcher
+     mkamsboot mkimxboot mkmpioboot mktccboot mks5lboot
+     Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Network)
+ target_include_directories(rbbase PUBLIC ${CMAKE_CURRENT_LIST_DIR}/base)
+@@ -298,33 +332,6 @@ target_link_libraries(cutelogger PUBLIC Qt${QT_VERSION_MAJOR}::Core)
+ target_compile_definitions(cutelogger PUBLIC CUTELOGGER_STATIC)
+ set_property(TARGET cutelogger PROPERTY AUTOMOC ON)
+ 
+-# TODO: Upstream has cmake support, use that instead.
+-add_library(quazip
+-    ${CMAKE_CURRENT_LIST_DIR}/quazip/ioapi.h
+-    ${CMAKE_CURRENT_LIST_DIR}/quazip/minizip_crypt.h
+-    ${CMAKE_CURRENT_LIST_DIR}/quazip/qioapi.cpp
+-    ${CMAKE_CURRENT_LIST_DIR}/quazip/quazip.cpp
+-    ${CMAKE_CURRENT_LIST_DIR}/quazip/quazipfile.cpp
+-    ${CMAKE_CURRENT_LIST_DIR}/quazip/quazipfile.h
+-    ${CMAKE_CURRENT_LIST_DIR}/quazip/quazipfileinfo.cpp
+-    ${CMAKE_CURRENT_LIST_DIR}/quazip/quazipfileinfo.h
+-    ${CMAKE_CURRENT_LIST_DIR}/quazip/quazip_global.h
+-    ${CMAKE_CURRENT_LIST_DIR}/quazip/quazip.h
+-    ${CMAKE_CURRENT_LIST_DIR}/quazip/quazipnewinfo.cpp
+-    ${CMAKE_CURRENT_LIST_DIR}/quazip/quazipnewinfo.h
+-    ${CMAKE_CURRENT_LIST_DIR}/quazip/unzip.c
+-    ${CMAKE_CURRENT_LIST_DIR}/quazip/unzip.h
+-    ${CMAKE_CURRENT_LIST_DIR}/quazip/zip.c
+-    ${CMAKE_CURRENT_LIST_DIR}/quazip/zip.h
+-    )
+-target_include_directories(quazip PUBLIC ${CMAKE_CURRENT_LIST_DIR}/quazip)
+-target_link_libraries(quazip z Qt${QT_VERSION_MAJOR}::Core)
+-if(QT_VERSION_MAJOR EQUAL 6)
+-    target_link_libraries(quazip Qt${QT_VERSION_MAJOR}::Core5Compat)
+-endif()
+-target_compile_definitions(quazip PUBLIC QUAZIP_STATIC)
+-set_property(TARGET quazip PROPERTY AUTOMOC ON)
+-
+ add_library(mspack
+     #mspack/cabc.c
+     mspack/cabd.c
+diff --git a/utils/rbutilqt/base/ziputil.cpp b/utils/rbutilqt/base/ziputil.cpp
+index e285446711..877a861253 100644
+--- a/utils/rbutilqt/base/ziputil.cpp
++++ b/utils/rbutilqt/base/ziputil.cpp
+@@ -22,9 +22,9 @@
+ #include "progressloglevels.h"
+ #include "Logger.h"
+ 
+-#include "quazip/quazip.h"
+-#include "quazip/quazipfile.h"
+-#include "quazip/quazipfileinfo.h"
++#include <quazip.h>
++#include <quazipfile.h>
++#include <quazipfileinfo.h>
+ 
+ 
+ ZipUtil::ZipUtil(QObject* parent) : ArchiveUtil(parent)
+diff --git a/utils/rbutilqt/base/ziputil.h b/utils/rbutilqt/base/ziputil.h
+index 73a87a820a..ea32ca42c3 100644
+--- a/utils/rbutilqt/base/ziputil.h
++++ b/utils/rbutilqt/base/ziputil.h
+@@ -21,9 +21,9 @@
+ 
+ #include <QtCore>
+ #include "archiveutil.h"
+-#include "quazip/quazip.h"
+-#include "quazip/quazipfile.h"
+-#include "quazip/quazipfileinfo.h"
++#include <quazip.h>
++#include <quazipfile.h>
++#include <quazipfileinfo.h>
+ 
+ class ZipUtil : public ArchiveUtil
+ {
+-- 
+2.35.1
+

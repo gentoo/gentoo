@@ -1,0 +1,86 @@
+Bug: https://bugs.gentoo.org/776976
+Upstream-ML: https://lists.gnu.org/archive/html/libffcall/2022-07/msg00000.html
+
+From: orbea <orbea@riseup.net>
+Date: Wed, 13 Jul 2022 17:45:05 -0700
+Subject: [PATCH] build: Fix the build with slibtool
+
+Using symlinks to create dummy .lo files does not work with slibtool
+which tries to find the corresponding .o file which doesn't exist.
+
+Its better to use the real .lo file instead.
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -2,6 +2,8 @@
+ 
+ #### Start of system configuration section. ####
+ 
++CPU = @HOST_CPU_C_ABI@
++
+ # Directories used by "make":
+ srcdir = @srcdir@
+ 
+@@ -69,8 +71,8 @@ ffcall-version.h : $(srcdir)/ffcall-version.in.h
+ ffcall-version.lo : $(srcdir)/ffcall-version.c ffcall-version.h config.h
+ 	$(LIBTOOL_COMPILE) $(CC) $(CFLAGS) $(CFLAGS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS) -c $(srcdir)/ffcall-version.c
+ 
+-libffcall.la : ffcall-version.lo avcall/avcall.lo avcall/avcall-libapi.lo avcall/avcall-structcpy.lo callback/vacall_r/libvacall.la callback/trampoline_r/libtrampoline.la callback/callback-libapi.lo
+-	$(LIBTOOL_LINK) $(CC) $(CFLAGS) $(CFLAGS) -o libffcall.la -rpath $(libdir) -no-undefined -export-symbols-regex $(LIBFFCALL_EXPORTED_SYMBOLS_REGEX) -version-info $(LIBFFCALL_VERSION_INFO) ffcall-version.lo avcall/avcall.lo avcall/avcall-libapi.lo avcall/avcall-structcpy.lo callback/vacall_r/vacall.lo callback/vacall_r/vacall-libapi.lo callback/vacall_r/vacall-structcpy.lo callback/trampoline_r/*.lo callback/callback-libapi.lo gnulib-lib/libgnu.la $(LDFLAGS) $(LTLIBTHREAD)
++libffcall.la : ffcall-version.lo avcall/avcall-$(CPU).lo avcall/avcall-libapi.lo avcall/avcall-structcpy.lo callback/vacall_r/libvacall.la callback/trampoline_r/libtrampoline.la callback/callback-libapi.lo
++	$(LIBTOOL_LINK) $(CC) $(CFLAGS) $(CFLAGS) -o libffcall.la -rpath $(libdir) -no-undefined -export-symbols-regex $(LIBFFCALL_EXPORTED_SYMBOLS_REGEX) -version-info $(LIBFFCALL_VERSION_INFO) ffcall-version.lo avcall/avcall-$(CPU).lo avcall/avcall-libapi.lo avcall/avcall-structcpy.lo callback/vacall_r/vacall-$(CPU).lo callback/vacall_r/vacall-libapi.lo callback/vacall_r/vacall-structcpy.lo callback/trampoline_r/*.lo callback/callback-libapi.lo gnulib-lib/libgnu.la $(LDFLAGS) $(LTLIBTHREAD)
+ 
+ install : force
+ 	mkdir -p $(DESTDIR)$(prefix)
+--- a/avcall/Makefile.in
++++ b/avcall/Makefile.in
+@@ -58,7 +58,7 @@ SHELL = /bin/sh
+ # Needed by $(LIBTOOL).
+ top_builddir = ..
+ 
+-OBJECTS = avcall.lo avcall-libapi.lo avcall-structcpy.lo avcall-compat.lo
++OBJECTS = avcall-$(CPU).lo avcall-libapi.lo avcall-structcpy.lo avcall-compat.lo
+ 
+ # Limit the set of exported symbols, on those platforms where libtool supports it.
+ # Currently this does not exclude any symbol; maybe sometime in the future...
+@@ -70,11 +70,6 @@ LIBAVCALL_VERSION_INFO = 2:0:1
+ 
+ all : $(OBJECTS) libavcall.la $(srcdir)/avcall.3 $(srcdir)/avcall.html
+ 
+-avcall.lo : avcall-$(CPU).lo
+-	$(RM) avcall.lo avcall.@OBJEXT@
+-	$(LN) avcall-$(CPU).lo avcall.lo
+-	if test -f avcall-$(CPU).@OBJEXT@; then $(LN) avcall-$(CPU).@OBJEXT@ avcall.@OBJEXT@; fi
+-
+ @IFNOT_MSVC@avcall-i386.lo : avcall-i386.s
+ @IFNOT_MSVC@	$(LIBTOOL_COMPILE) $(CC) $(CFLAGS) @GCC_X_NONE@ -c avcall-i386.s
+ 
+--- a/callback/Makefile.in
++++ b/callback/Makefile.in
+@@ -77,7 +77,7 @@ callback-compat.lo : $(srcdir)/callback-compat.c ../config.h
+ 	$(LIBTOOL_COMPILE) $(CC) $(CFLAGS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS) -c $(srcdir)/callback-compat.c
+ 
+ libcallback.la : vacall_r/libvacall.la trampoline_r/libtrampoline.la callback-libapi.lo callback-compat.lo
+-	$(LIBTOOL_LINK) $(CC) $(CFLAGS) -o libcallback.la -rpath $(libdir) -no-undefined -export-symbols-regex $(LIBCALLBACK_EXPORTED_SYMBOLS_REGEX) -version-info $(LIBCALLBACK_VERSION_INFO) vacall_r/vacall.lo vacall_r/vacall-libapi.lo vacall_r/vacall-structcpy.lo trampoline_r/*.lo callback-libapi.lo callback-compat.lo ../gnulib-lib/libgnu.la $(LDFLAGS) $(LTLIBTHREAD)
++	$(LIBTOOL_LINK) $(CC) $(CFLAGS) -o libcallback.la -rpath $(libdir) -no-undefined -export-symbols-regex $(LIBCALLBACK_EXPORTED_SYMBOLS_REGEX) -version-info $(LIBCALLBACK_VERSION_INFO) vacall_r/vacall-$(CPU).lo vacall_r/vacall-libapi.lo vacall_r/vacall-structcpy.lo trampoline_r/*.lo callback-libapi.lo callback-compat.lo ../gnulib-lib/libgnu.la $(LDFLAGS) $(LTLIBTHREAD)
+ 
+ # Installs the library and include files only. Typically called with only
+ # $(libdir) and $(includedir) - don't use $(prefix) and $(exec_prefix) here.
+--- a/callback/vacall_r/Makefile.in
++++ b/callback/vacall_r/Makefile.in
+@@ -54,15 +54,10 @@ SHELL = /bin/sh
+ # Needed by $(LIBTOOL).
+ top_builddir = ../..
+ 
+-OBJECTS = vacall.lo vacall-libapi.lo vacall-structcpy.lo
++OBJECTS = vacall-$(CPU).lo vacall-libapi.lo vacall-structcpy.lo
+ 
+ all : $(OBJECTS) libvacall.la
+ 
+-vacall.lo : vacall-$(CPU).lo
+-	$(RM) vacall.lo vacall.@OBJEXT@
+-	$(LN) vacall-$(CPU).lo vacall.lo
+-	if test -f vacall-$(CPU).@OBJEXT@; then $(LN) vacall-$(CPU).@OBJEXT@ vacall.@OBJEXT@; fi
+-
+ @IFNOT_MSVC@vacall-i386.lo : vacall-i386.s
+ @IFNOT_MSVC@	$(LIBTOOL_COMPILE) $(CC) $(CFLAGS) @GCC_X_NONE@ -c vacall-i386.s
+ 

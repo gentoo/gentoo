@@ -19,7 +19,7 @@ else
 	SLOT="stable/${ABI_VER}"
 	MY_P="rustc-${PV}"
 	SRC="${MY_P}-src.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86"
 fi
 
 RUST_STAGE0_VERSION="1.$(($(ver_cut 2) - 1)).1"
@@ -191,10 +191,10 @@ bootstrap_rust_version_check() {
 }
 
 pre_build_checks() {
-	local M=4096
-	# multiply requirements by 1.5 if we are doing x86-multilib
+	local M=8192
+	# multiply requirements by 1.3 if we are doing x86-multilib
 	if use amd64; then
-		M=$(( $(usex abi_x86_32 15 10) * ${M} / 10 ))
+		M=$(( $(usex abi_x86_32 13 10) * ${M} / 10 ))
 	fi
 	M=$(( $(usex clippy 128 0) + ${M} ))
 	M=$(( $(usex miri 128 0) + ${M} ))
@@ -258,6 +258,8 @@ src_prepare() {
 }
 
 src_configure() {
+	use system-llvm && filter-flags '-flto*' # https://bugs.gentoo.org/862109
+
 	local rust_target="" rust_targets="" arch_cflags
 
 	# Collect rust target names to compile standard libs for all ABIs.

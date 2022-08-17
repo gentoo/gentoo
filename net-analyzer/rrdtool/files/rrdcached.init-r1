@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="Data caching daemon for RRDTool"
+rrdcached_database="${RRCACHE_DATABASE:-/var/lib/rrdcached/db}"
+rrdcached_group="${GROUP:-rrdcached}"
+rrdcached_journal="${RRCACHE_JOURNAL:-/var/lib/rrdcached/journal}"
+rrdcached_user="${USER:-rrdcached}"
+pidfile="/run/rrdcached.pid"
+
+command="/usr/bin/rrdcached"
+command_args="${RRCACHE_ARGS} -b ${rrdcached_database} -G ${rrdcached_group} -j ${rrdcached_journal} -p ${pidfile} -U ${rrdcached_user}"
+
+depend() {
+	need localmount
+	use logger
+}
+
+start_pre() {
+	checkpath -d -o "${rrdcached_user}:${rrdcached_group}" -q "${rrdcached_database}"
+	checkpath -d -o "${rrdcached_user}:${rrdcached_group}" -q "${rrdcached_journal}"
+}

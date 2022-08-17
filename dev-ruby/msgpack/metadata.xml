@@ -6,6 +6,6 @@
 		<name>Gentoo Ruby Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge-jp">msgpack</remote-id>
+		<remote-id type="github">msgpack/msgpack-ruby</remote-id>
 	</upstream>
 </pkgmetadata>

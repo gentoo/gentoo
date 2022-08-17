@@ -4,11 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( pypy3 python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..11} )
+
 inherit distutils-r1
 
 DESCRIPTION="Poetry PEP 517 Build Backend"
-HOMEPAGE="https://pypi.org/project/poetry-core/ https://github.com/python-poetry/poetry-core"
+HOMEPAGE="
+	https://github.com/python-poetry/poetry-core/
+	https://pypi.org/project/poetry-core/
+"
 SRC_URI="
 	https://github.com/python-poetry/poetry-core/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
@@ -16,13 +20,13 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 # check inside src/poetry/core/_vendor/vendor.txt
 RDEPEND="
 	dev-python/attrs[${PYTHON_USEDEP}]
 	dev-python/jsonschema[${PYTHON_USEDEP}]
-	dev-python/lark-parser[${PYTHON_USEDEP}]
+	dev-python/lark[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
 	dev-python/pyrsistent[${PYTHON_USEDEP}]

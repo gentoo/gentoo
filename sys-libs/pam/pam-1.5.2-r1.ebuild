@@ -19,7 +19,7 @@ SRC_URI="https://github.com/linux-pam/linux-pam/releases/download/v${PV}/${MY_P}
 
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="audit berkdb debug nis selinux"
 
 BDEPEND="
@@ -62,10 +62,10 @@ multilib_src_configure() {
 	local myconf=(
 		CC_FOR_BUILD="$(tc-getBUILD_CC)"
 		--with-db-uniquename=-$(db_findver sys-libs/db)
-		--with-xml-catalog=/etc/xml/catalog
-		--enable-securedir=/$(get_libdir)/security
-		--includedir=/usr/include/security
-		--libdir=/usr/$(get_libdir)
+		--with-xml-catalog="${EPREFIX}"/etc/xml/catalog
+		--enable-securedir="${EPREFIX}"/$(get_libdir)/security
+		--includedir="${EPREFIX}"/usr/include/security
+		--libdir="${EPREFIX}"/usr/$(get_libdir)
 		--enable-pie
 		--enable-unix
 		--disable-prelude
@@ -122,7 +122,7 @@ pkg_postinst() {
 	ewarn "restart the software manually after the update."
 	ewarn ""
 	ewarn "You can get a list of such software running a command like"
-	ewarn "  lsof / | egrep -i 'del.*libpam\\.so'"
+	ewarn "  lsof / | grep -E -i 'del.*libpam\\.so'"
 	ewarn ""
 	ewarn "Alternatively, simply reboot your system."
 

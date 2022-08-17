@@ -8,7 +8,7 @@ See also: https://bugs.gentoo.org/show_bug.cgi?id=594060
      else
      {
 -        cout<<"HMModel::alignmentModel: impossible 'as'"<<cout;
-+        cout<<"HMModel::alignmentModel: impossible 'as'"<<bool(cout);
++        cout<<"HMModel::alignmentModel: impossible 'as'";
          exit(-1);
      }
  

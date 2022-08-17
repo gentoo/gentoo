@@ -6,6 +6,6 @@
 		<name>Cjk</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge-jp">naist-jdic</remote-id>
+		<remote-id type="osdn">naist-jdic</remote-id>
 	</upstream>
 </pkgmetadata>

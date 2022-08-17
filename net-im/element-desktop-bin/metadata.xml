@@ -5,7 +5,4 @@
 		<email>steils@gentoo.org</email>
 		<name>Stefan Strogin</name>
 	</maintainer>
-	<use>
-		<flag name="emoji">Use <pkg>media-fonts/noto-emoji</pkg> for displaying emoji</flag>
-	</use>
 </pkgmetadata>

@@ -75,17 +75,17 @@ if [[ ! ${_LLVM_ECLASS} ]]; then
 # are uninstalled
 DEPEND="!!sys-devel/llvm:0"
 
-# @ECLASS-VARIABLE: LLVM_MAX_SLOT
+# @ECLASS_VARIABLE: LLVM_MAX_SLOT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Highest LLVM slot supported by the package. Needs to be set before
 # llvm_pkg_setup is called. If unset, no upper bound is assumed.
 
-# @ECLASS-VARIABLE: _LLVM_KNOWN_SLOTS
+# @ECLASS_VARIABLE: _LLVM_KNOWN_SLOTS
 # @INTERNAL
 # @DESCRIPTION:
 # Correct values of LLVM slots, newest first.
-declare -g -r _LLVM_KNOWN_SLOTS=( {15..8} )
+declare -g -r _LLVM_KNOWN_SLOTS=( {16..8} )
 
 # @FUNCTION: get_llvm_prefix
 # @USAGE: [-b|-d] [<max_slot>]

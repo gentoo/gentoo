@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>amynka@gentoo.org</email>
-		<name>Amy Liffey</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 OpenCV (Open Source Computer Vision) is a library of programming functions mainly aimed at real time computer vision.
 Example applications of the OpenCV library are Human-Computer Interaction (HCI); Object Identification, Segmentation and Recognition;

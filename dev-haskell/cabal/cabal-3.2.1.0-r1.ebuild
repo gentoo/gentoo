@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -51,4 +51,4 @@ src_configure() {
 		--flag=-bundled-binary-generic
 }
 
-CABAL_CORE_LIB_GHC_PV="PM:8.10.3 PM:8.10.4 PM:8.10.4-r1 PM:9999"
+CABAL_CORE_LIB_GHC_PV="PM:8.10.6"

@@ -7,6 +7,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">aio-libs/async-lru</remote-id>
-		<remote-id type="pypi">async_lru</remote-id>
+		<remote-id type="pypi">async-lru</remote-id>
 	</upstream>
 </pkgmetadata>

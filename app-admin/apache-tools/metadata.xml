@@ -10,4 +10,7 @@
 		having apache itself installed (like htdigest/htpasswd, but also ab -
 		the apache benchmark).
 	</longdescription>
+	<upstream>
+		<remote-id type="github">apache/httpd</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -13,5 +13,6 @@
 		<remote-id type="cpan-module">File::Listing::netware</remote-id>
 		<remote-id type="cpan-module">File::Listing::unix</remote-id>
 		<remote-id type="cpan-module">File::Listing::vms</remote-id>
+		<remote-id type="github">PerlAlien/File-Listing</remote-id>
 	</upstream>
 </pkgmetadata>

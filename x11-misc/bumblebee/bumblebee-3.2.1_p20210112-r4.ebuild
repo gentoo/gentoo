@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools readme.gentoo-r1 systemd
+inherit autotools readme.gentoo-r1 systemd udev
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -90,4 +90,12 @@ src_install() {
 	local DOC_CONTENTS="In order to use Bumblebee, add your user to 'bumblebee' group.
 		You may need to setup your /etc/bumblebee/bumblebee.conf"
 	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
 }

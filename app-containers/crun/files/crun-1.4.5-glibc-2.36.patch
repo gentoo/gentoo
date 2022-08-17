@@ -1,0 +1,79 @@
+https://bugs.gentoo.org/863437
+https://github.com/containers/crun/commit/3df14584b84414df77b2079c1b8b48d44d0ceb61
+
+From 3df14584b84414df77b2079c1b8b48d44d0ceb61 Mon Sep 17 00:00:00 2001
+From: Giuseppe Scrivano <gscrivan@redhat.com>
+Date: Tue, 26 Jul 2022 15:17:16 +0200
+Subject: [PATCH] linux: fix build with glibc 2.36
+
+glibc 2.36 has the new mount API in the <sys/mount.h> file.  These
+definitions conflict with the definitions in the <linux/mount.h>
+file.
+
+Add a check and include <linux/mount.h> only if it doesn't conflict
+with <sys/mount.h>.
+
+Closes: https://bugzilla.redhat.com/show_bug.cgi?id=2110738
+
+Signed-off-by: Giuseppe Scrivano <gscrivan@redhat.com>
+--- a/configure.ac
++++ b/configure.ac
+@@ -174,11 +174,21 @@ LIBS=""
+ AC_MSG_CHECKING([for new mount API (fsconfig)])
+ AC_COMPILE_IFELSE(
+ 	[AC_LANG_SOURCE([[
++			#include <sys/mount.h>
++			int cmd = FSCONFIG_CMD_CREATE;
++	]])],
++	[AC_MSG_RESULT(yes)
++		 AC_DEFINE([HAVE_FSCONFIG_CMD_CREATE_SYS_MOUNT_H], 1, [Define if FSCONFIG_CMD_CREATE is available in sys/mount.h])],
++	[AC_MSG_RESULT(no)])
++AC_COMPILE_IFELSE(
++	[AC_LANG_SOURCE([[
++			/* also make sure it doesn't conflict with <sys/mount.h> since it is always used.  */
++			#include <sys/mount.h>
+ 			#include <linux/mount.h>
+ 			int cmd = FSCONFIG_CMD_CREATE;
+ 	]])],
+ 	[AC_MSG_RESULT(yes)
+-		 AC_DEFINE([HAVE_FSCONFIG_CMD_CREATE], 1, [Define if FSCONFIG_CMD_CREATE is available])],
++		 AC_DEFINE([HAVE_FSCONFIG_CMD_CREATE_LINUX_MOUNT_H], 1, [Define if FSCONFIG_CMD_CREATE is available in linux/mount.h])],
+ 	[AC_MSG_RESULT(no)])
+ 
+ AC_MSG_CHECKING([for seccomp notify API])
+--- a/src/libcrun/linux.c
++++ b/src/libcrun/linux.c
+@@ -26,9 +26,13 @@
+ #include <fcntl.h>
+ #include <unistd.h>
+ #include <sys/mount.h>
+-#ifdef HAVE_FSCONFIG_CMD_CREATE
++#ifdef HAVE_FSCONFIG_CMD_CREATE_LINUX_MOUNT_H
+ #  include <linux/mount.h>
+ #endif
++#if defined HAVE_FSCONFIG_CMD_CREATE_LINUX_MOUNT_H || defined HAVE_FSCONFIG_CMD_CREATE_SYS_MOUNT_H
++#  define HAVE_NEW_MOUNT_API
++#endif
++
+ #include <sys/syscall.h>
+ #include <sys/prctl.h>
+ #ifdef HAVE_CAP
+@@ -990,7 +994,7 @@ open_mount_target (libcrun_container_t *container, const char *target_rel, libcr
+ static int
+ fsopen_mount (runtime_spec_schema_defs_mount *mount)
+ {
+-#ifdef HAVE_FSCONFIG_CMD_CREATE
++#ifdef HAVE_NEW_MOUNT_API
+   cleanup_close int fsfd = -1;
+   int ret;
+ 
+@@ -1016,7 +1020,7 @@ fsopen_mount (runtime_spec_schema_defs_mount *mount)
+ static int
+ fs_move_mount_to (int fd, int dirfd, const char *name)
+ {
+-#ifdef HAVE_FSCONFIG_CMD_CREATE
++#ifdef HAVE_NEW_MOUNT_API
+   if (name)
+     return syscall_move_mount (fd, "", dirfd, name, MOVE_MOUNT_F_EMPTY_PATH);
+ 
+

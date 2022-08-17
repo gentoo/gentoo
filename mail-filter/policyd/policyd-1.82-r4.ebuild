@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,10 +6,10 @@ EAPI=7
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Policy daemon for postfix and other MTAs"
-HOMEPAGE="http://policyd.sf.net/"
-SRC_URI="http://policyd.sourceforge.net/${P}.tar.gz"
+HOMEPAGE="https://wiki.policyd.org"
+SRC_URI="https://download.policyd.org/v1.82/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~hppa x86"
 
@@ -42,7 +42,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake CC=$(tc-getCC) build
+	emake CC="$(tc-getCC)" build
 }
 
 src_install() {

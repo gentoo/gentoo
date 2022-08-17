@@ -19,4 +19,7 @@
 		<flag name="traffic-bins">Link IPv4/IPv6 traffic accounting binaries</flag>
 		<flag name="zmq">Enable support for ZeroMQ through <pkg>net-libs/zeromq</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="github">pmacct/pmacct</remote-id>
+	</upstream>
 </pkgmetadata>

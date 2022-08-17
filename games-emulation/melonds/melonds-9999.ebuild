@@ -6,7 +6,7 @@ EAPI=8
 MY_PN="melonDS"
 MY_P="${MY_PN}-${PV}"
 
-inherit cmake readme.gentoo-r1 toolchain-funcs xdg
+inherit cmake flag-o-matic readme.gentoo-r1 toolchain-funcs xdg
 
 DESCRIPTION="Nintendo DS emulator, sorta"
 HOMEPAGE="
@@ -53,10 +53,9 @@ DOC_CONTENTS="You need the following files in order to run melonDS:
 Place them in ~/.config/melonDS
 Those files can be found somewhere on the Internet ;-)"
 
-PATCHES=( "${FILESDIR}"/melonds-system-teakra.patch )
-
 src_prepare() {
-	rm -r ./src/teakra || die
+	filter-lto
+	append-flags -fno-strict-aliasing
 
 	cmake_src_prepare
 }

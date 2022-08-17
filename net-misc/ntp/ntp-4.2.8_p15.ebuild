@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -44,7 +44,6 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.2.8-ipc-caps.patch #533966
 	"${FILESDIR}"/${PN}-4.2.8-sntp-test-pthreads.patch #563922
-	"${FILESDIR}"/${PN}-4.2.8_p10-fix-build-wo-ssl-or-libressl.patch
 	"${FILESDIR}"/${PN}-4.2.8_p14-add_cap_ipc_lock.patch #711530
 	"${FILESDIR}"/${PN}-4.2.8_p15-gcc10.patch #759409
 	"${FILESDIR}"/${PN}-4.2.8_p15-glibc-2.34.patch

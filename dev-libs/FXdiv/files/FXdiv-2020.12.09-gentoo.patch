@@ -1,0 +1,25 @@
+--- a/CMakeLists.txt	2022-05-09 20:14:30.379955259 +0200
++++ b/CMakeLists.txt	2022-05-09 20:15:03.362459969 +0200
+@@ -22,12 +22,6 @@
+ 
+ # ---[ Download deps
+ IF(FXDIV_BUILD_TESTS AND NOT DEFINED GOOGLETEST_SOURCE_DIR)
+-  MESSAGE(STATUS "Downloading Google Test to ${CMAKE_BINARY_DIR}/googletest-source (define GOOGLETEST_SOURCE_DIR to avoid it)")
+-  CONFIGURE_FILE(cmake/DownloadGoogleTest.cmake "${CMAKE_BINARY_DIR}/googletest-download/CMakeLists.txt")
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+-    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/googletest-download")
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" --build .
+-    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/googletest-download")
+   SET(GOOGLETEST_SOURCE_DIR "${CMAKE_BINARY_DIR}/googletest-source" CACHE STRING "Google Test source directory")
+ ENDIF()
+ 
+@@ -52,9 +52,6 @@
+   # ---[ Build google test
+   IF(NOT TARGET gtest)
+     SET(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+-    ADD_SUBDIRECTORY(
+-      "${GOOGLETEST_SOURCE_DIR}"
+-      "${CMAKE_BINARY_DIR}/googletest")
+   ENDIF()
+ 
+   ADD_EXECUTABLE(multiply-high-test test/multiply-high.cc)

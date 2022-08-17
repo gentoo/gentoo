@@ -13,8 +13,9 @@ S="${WORKDIR}/opam-${PV/_/-}"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+ocamlopt"
+RESTRICT="test" #see bugs 838658
 
 RDEPEND="
 	dev-ml/cmdliner:=

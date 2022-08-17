@@ -1,0 +1,71 @@
+Fixes check for atomics.
+
+The upstream currently does not have checks for atomics in v6.17.3.
+However, since v6.22.1, rocksdb includes checks similar/identical to 
+files/rocksdb-6.14.6-libatomic.patch, which is superseded by this new patch. 
+See: https://github.com/facebook/rocksdb/commit/47b424f4bd51078591e674ff936de5a270530ce2
+Once the upstream adopts new methods for checking, this patch may be removed after testing.
+
+https://bugs.gentoo.org/834855
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -289,6 +289,7 @@ else()
+ endif()
+ 
+ include(CheckCXXSourceCompiles)
++set(OLD_CMAKE_REQUIRED_FLAGS ${CMAKE_REQUIRED_FLAGS})
+ if(NOT MSVC)
+   set(CMAKE_REQUIRED_FLAGS "-msse4.2 -mpclmul")
+ endif()
+@@ -305,7 +306,6 @@ int main() {
+   auto d = _mm_cvtsi128_si64(c);
+ }
+ " HAVE_SSE42)
+-unset(CMAKE_REQUIRED_FLAGS)
+ if(HAVE_SSE42)
+   add_definitions(-DHAVE_SSE42)
+   add_definitions(-DHAVE_PCLMUL)
+@@ -313,6 +313,37 @@ elseif(FORCE_SSE42)
+   message(FATAL_ERROR "FORCE_SSE42=ON but unable to compile with SSE4.2 enabled")
+ endif()
+ 
++# Check if -latomic is required or not
++if (NOT MSVC)
++  set(CMAKE_REQUIRED_FLAGS "--std=c++11")
++  set(ATOMIC_TEST_SOURCE "
++	#include <atomic>
++	std::atomic<int> x;
++	std::atomic<short> y;
++	std::atomic<char> z;
++        std::atomic<long long> w;
++	int main() {
++		++z;
++		++y;
++                ++w;
++		return ++x;
++	}")
++  CHECK_CXX_SOURCE_COMPILES("${ATOMIC_TEST_SOURCE}" BUILTIN_ATOMIC)
++  if (NOT BUILTIN_ATOMIC)
++    set(CMAKE_REQUIRED_LIBRARIES atomic)
++    CHECK_CXX_SOURCE_COMPILES("${ATOMIC_TEST_SOURCE}" ATOMICS_REQUIRE_LIBATOMIC)
++    unset(CMAKE_REQUIRED_LIBRARIES)
++    if (ATOMICS_REQUIRE_LIBATOMIC)
++      list(APPEND THIRDPARTY_LIBS atomic)
++    else()
++      message(FATAL_ERROR "Host compiler must support std::atomic!")
++    endif()
++  endif()
++endif()
++
++# Reset the required flags
++set(CMAKE_REQUIRED_FLAGS ${OLD_CMAKE_REQUIRED_FLAGS})
++
+ CHECK_CXX_SOURCE_COMPILES("
+ #if defined(_MSC_VER) && !defined(__thread)
+ #define __thread __declspec(thread)
+@@ -1354,3 +1385,4 @@ option(WITH_EXAMPLES "build with examples" OFF)
+ if(WITH_EXAMPLES)
+   add_subdirectory(examples)
+ endif()
++

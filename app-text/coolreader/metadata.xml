@@ -12,6 +12,6 @@
     <flag name="wxwidgets">Use <pkg>x11-libs/wxGTK</pkg> instead of Qt5</flag>
   </use>
   <upstream>
-    <remote-id type="sourceforge">crengine</remote-id>
+    <remote-id type="github">buggins/coolreader</remote-id>
   </upstream>
 </pkgmetadata>

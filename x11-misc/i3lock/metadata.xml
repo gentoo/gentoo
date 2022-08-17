@@ -9,4 +9,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">i3/i3lock</remote-id>
+	</upstream>
 </pkgmetadata>

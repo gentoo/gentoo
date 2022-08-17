@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: preserve-libs.eclass
@@ -7,8 +7,8 @@
 # @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: preserve libraries after SONAME changes
 
-case ${EAPI:-0} in
-	[567]) ;;
+case ${EAPI} in
+	5|6|7) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -34,15 +34,13 @@ preserve_old_lib() {
 	# let portage worry about it
 	has preserve-libs ${FEATURES} && return 0
 
-	has "${EAPI:-0}" 0 1 2 && local ED=${D} EROOT=${ROOT}
-
 	local lib dir
 	for lib in "$@" ; do
 		[[ -e ${EROOT}/${lib} ]] || continue
 		dir=${lib%/*}
-		dodir ${dir} || die "dodir ${dir} failed"
-		cp "${EROOT}"/${lib} "${ED}"/${lib} || die "cp ${lib} failed"
-		touch "${ED}"/${lib}
+		dodir "${dir}"
+		cp "${EROOT}/${lib}" "${ED}/${lib}" || die "cp ${lib} failed"
+		touch "${ED}/${lib}"
 	done
 }
 
@@ -58,8 +56,6 @@ preserve_old_lib_notify() {
 
 	# let portage worry about it
 	has preserve-libs ${FEATURES} && return 0
-
-	has "${EAPI:-0}" 0 1 2 && local EROOT=${ROOT}
 
 	local lib notice=0
 	for lib in "$@" ; do

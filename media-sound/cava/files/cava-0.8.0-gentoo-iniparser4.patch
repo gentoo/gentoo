@@ -1,0 +1,15 @@
+Gentoo uses non-standard naming for slotted iniparser:4 and it
+does not have a pkg-config file (ideally should be unslotted).
+Cava can use iniparser:0 as well but <3.2 forces legacy mode.
+--- a/configure.ac
++++ b/configure.ac
+@@ -259,6 +259,6 @@
+ 
+-AC_CHECK_LIB(iniparser,iniparser_load, have_iniparser=yes, have_iniparser=no)
++AC_CHECK_LIB(iniparser4,iniparser_load, have_iniparser=yes, have_iniparser=no)
+     if [[ $have_iniparser = "yes" ]] ; then
+-    LIBS="$LIBS -liniparser"
+-      CPPFLAGS="$CPPFLAGS -I/usr/include/iniparser"
++    LIBS="$LIBS -liniparser4"
++      CPPFLAGS="$CPPFLAGS -I${GENTOO_SYSROOT}/usr/include/iniparser4"
+     AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <iniparser.h>]],

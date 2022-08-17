@@ -3,15 +3,17 @@
 
 EAPI=7
 
-inherit flag-o-matic
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/sed.asc
+inherit flag-o-matic verify-sig
 
 DESCRIPTION="Super-useful stream editor"
 HOMEPAGE="http://sed.sourceforge.net/"
 SRC_URI="mirror://gnu/sed/${P}.tar.xz"
+SRC_URI+=" verify-sig? ( mirror://gnu/sed/${P}.tar.xz.sig )"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="acl nls selinux static"
 
 RDEPEND="
@@ -28,7 +30,8 @@ DEPEND="${RDEPEND}
 		selinux? ( sys-libs/libselinux[static-libs(+)] )
 	)
 "
-BDEPEND="nls? ( sys-devel/gettext )"
+BDEPEND="nls? ( sys-devel/gettext )
+	verify-sig? ( sec-keys/openpgp-keys-sed )"
 
 src_configure() {
 	use static && append-ldflags -static

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,21 +19,12 @@ DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${PN}-1.6.2-autotools.patch )
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
-	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
-		if ! tc-has-openmp; then
-			ewarn "OpenMP is not available in your current selected compiler"
-
-			if tc-is-clang; then
-				ewarn "OpenMP support in sys-devel/clang is provided by sys-libs/libomp,"
-				ewarn "which you will need to build ${CATEGORY}/${PN} with USE=\"openmp\""
-			fi
-
-			die "need openmp capable compiler"
-		fi
-		FORTRAN_NEED_OPENMP=1
-	fi
-
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp && FORTRAN_NEED_OPENMP=1
 	use fortran && fortran-2_pkg_setup
 }
 

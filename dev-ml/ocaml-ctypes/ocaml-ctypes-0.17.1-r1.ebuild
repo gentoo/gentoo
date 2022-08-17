@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,12 +16,13 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-lang/ocaml-4.02:=[ocamlopt]
+	>=dev-lang/ocaml-4.02:=
 	>=dev-libs/libffi-3.3_rc0:=
 	dev-ml/integers:=
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ml/ounit2 dev-ml/lwt )"
+REQUIRED_USE="ocamlopt"
 
 src_prepare() {
 	sed -e 's/oUnit/ounit2/g' -i Makefile.tests || die

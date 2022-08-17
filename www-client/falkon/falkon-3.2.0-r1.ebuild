@@ -15,7 +15,7 @@ HOMEPAGE="https://www.falkon.org/ https://apps.kde.org/falkon/"
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 arm64 ~ppc64 x86"
 fi
 
 LICENSE="GPL-3"
@@ -67,12 +67,12 @@ fi
 RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtsvg-${QTMIN}:5
 "
-BDEPEND="
-	>=dev-qt/linguist-tools-${QTMIN}:5
-"
+BDEPEND=">=dev-qt/linguist-tools-${QTMIN}:5"
+
+PATCHES=( "${FILESDIR}/${PN}-22.04.3-python3.patch" )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	use python && python-single-r1_pkg_setup
 	ecm_pkg_setup
 }
 
@@ -86,6 +86,11 @@ src_configure() {
 		$(cmake_use_find_package kde KF5Wallet)
 		$(cmake_use_find_package kde KF5KIO)
 		-DNO_X11=$(usex !X)
+	)
+	use python && mycmakeargs+=(
+		-DPYTHON_CONFIG_SUFFIX="-${EPYTHON}" # shiboken_helpers.cmake quirk
+		-DPython3_INCLUDE_DIR=$(python_get_includedir)
+		-DPython3_LIBRARY=$(python_get_library_path)
 	)
 	ecm_src_configure
 }

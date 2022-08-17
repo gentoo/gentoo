@@ -4,9 +4,6 @@ Date: Mon, 3 Sep 2018 04:56:16 +0000
 Subject: [PATCH] Fix the build issue with --enable-static
 
 Fixes https://gitlab.freedesktop.org/fontconfig/fontconfig/issues/109
----
-diff --git a/fontconfig/fontconfig.h b/fontconfig/fontconfig.h
-index bac1dda..af870d0 100644
 --- a/fontconfig/fontconfig.h
 +++ b/fontconfig/fontconfig.h
 @@ -1076,6 +1076,10 @@ FcUtf16Len (const FcChar8   *string,
@@ -20,8 +17,6 @@ index bac1dda..af870d0 100644
  FcPublic FcChar8 *
  FcStrDirname (const FcChar8 *file);
  
-diff --git a/src/fcint.h b/src/fcint.h
-index de78cd8..a9d075a 100644
 --- a/src/fcint.h
 +++ b/src/fcint.h
 @@ -1282,10 +1282,6 @@ FcStrUsesHome (const FcChar8 *s);
@@ -35,8 +30,6 @@ index de78cd8..a9d075a 100644
  FcPrivate FcChar8 *
  FcStrLastSlash (const FcChar8  *path);
  
-diff --git a/test/test-bz106632.c b/test/test-bz106632.c
-index daa0c1e..2d67c2e 100644
 --- a/test/test-bz106632.c
 +++ b/test/test-bz106632.c
 @@ -25,25 +25,26 @@
@@ -96,6 +89,3 @@ index daa0c1e..2d67c2e 100644
  int
  main (void)
  {
--- 
-2.18.0
-

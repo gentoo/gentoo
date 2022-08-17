@@ -1,31 +1,30 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit flag-o-matic toolchain-funcs
 
 MY_P="${P/_p/-}"
 
 DESCRIPTION="TOMOYO Linux tools"
-HOMEPAGE="http://tomoyo.sourceforge.jp/"
+HOMEPAGE="https://tomoyo.sourceforge.jp/"
 SRC_URI="mirror://sourceforge.jp/tomoyo/49693/${MY_P}.tar.gz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 RESTRICT="test"
 
-CDEPEND="
+COMMON_DEPEND="
 	sys-libs/ncurses:0=
 	sys-libs/readline:0="
-RDEPEND="${CDEPEND}
+RDEPEND="${COMMON_DEPEND}
 	sys-apps/which"
-DEPEND="${CDEPEND}
-	virtual/pkgconfig"
+DEPEND="${COMMON_DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}/${PN}"
 PATCHES=(
 	"${FILESDIR}"/${P}-warnings.patch
 	"${FILESDIR}"/${P}-ncurses-underlinking.patch
@@ -38,6 +37,8 @@ src_prepare() {
 		-e "s:/usr/lib:/usr/$(get_libdir):g" \
 		-e "s:= /:= ${EPREFIX}/:g" \
 		Include.make || die
+
+	gunzip usr_share_man/man8/ccs*.8.gz || die
 }
 
 src_configure() {

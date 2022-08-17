@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit autotools python-single-r1 xdg-utils
 
 DESCRIPTION="A library for manipulating block devices"
@@ -19,12 +19,12 @@ else
 	#MY_P="${PN}-${MY_PV}"
 	#SRC_URI="https://github.com/storaged-project/${PN}/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 	SRC_URI="https://github.com/storaged-project/${PN}/releases/download/${MY_PV}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	#S="${WORKDIR}/${MY_P}"
 fi
 LICENSE="LGPL-2+"
 SLOT="0"
-IUSE="bcache +cryptsetup device-mapper dmraid escrow gtk-doc introspection lvm kbd test +tools vdo"
+IUSE="bcache +cryptsetup device-mapper dmraid escrow gtk-doc introspection lvm kbd +nvme test +tools"
 # Tests require root. In a future release, we may be able to run a smaller
 # subset with new run_tests.py arguments.
 RESTRICT="!test? ( test ) test"
@@ -51,7 +51,7 @@ RDEPEND="
 		sys-fs/lvm2
 		virtual/udev
 	)
-	vdo? ( dev-libs/libyaml )
+	nvme? ( sys-libs/libnvme )
 	${PYTHON_DEPS}
 "
 
@@ -88,6 +88,7 @@ src_configure() {
 		--with-btrfs
 		--with-fs
 		--with-part
+		--with-python3
 		--without-mpath
 		--without-nvdimm
 		$(use_enable introspection)
@@ -101,10 +102,8 @@ src_configure() {
 		$(use_with kbd)
 		$(use_with lvm lvm)
 		$(use_with lvm lvm-dbus)
+		$(use_with nvme)
 		$(use_with tools)
-		$(use_with vdo)
-		--without-python2
-		--with-python3
 	)
 	econf "${myeconfargs[@]}"
 }
@@ -121,7 +120,7 @@ src_install() {
 	find "${ED}" -type f -name "*.la" -delete || die
 	# This is installed even with USE=-lvm, but libbd_lvm are omitted so it
 	# doesn't work at all.
-	if ! use lvm; then
+	if ! use lvm ; then
 		rm -f "${ED}"/usr/bin/lvm-cache-stats || die
 	fi
 	python_optimize #718576

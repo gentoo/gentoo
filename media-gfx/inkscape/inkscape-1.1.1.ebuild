@@ -14,7 +14,7 @@ SRC_URI="https://media.inkscape.org/dl/resources/file/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="cdr dbus dia exif graphicsmagick imagemagick inkjar jemalloc jpeg
 openmp postscript readline spell svg2 visio wpg"
 
@@ -97,10 +97,17 @@ RESTRICT="test"
 
 S="${WORKDIR}/${P}_2021-09-20_3bf5ae0d25"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.1.2-poppler-22.03.0.patch"  # bug 835424
+)
+
 pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
-		tc-has-openmp || die "Please switch to an openmp compatible compiler"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+	python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -120,6 +127,7 @@ src_configure() {
 		-DENABLE_POPPLER=ON
 		-DENABLE_POPPLER_CAIRO=ON
 		-DWITH_PROFILING=OFF
+		-DWITH_INTERNAL_2GEOM=ON
 		-DBUILD_TESTING=OFF
 		-DWITH_LIBCDR=$(usex cdr)
 		-DWITH_DBUS=$(usex dbus)

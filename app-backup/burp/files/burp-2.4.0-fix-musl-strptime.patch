@@ -1,0 +1,86 @@
+https://github.com/grke/burp/commit/76b7f1ba9f4445108059b13f3d79a7fde8a292a3
+https://github.com/grke/burp/issues/908
+https://bugs.gentoo.org/862019
+
+From 76b7f1ba9f4445108059b13f3d79a7fde8a292a3 Mon Sep 17 00:00:00 2001
+From: Graham Keeling <grke@grke.net>
+Date: Mon, 8 Aug 2022 07:53:38 +1000
+Subject: [PATCH] 908: Only glibc supports %z in strptime()
+
+Change-Id: I220e4529073c92df856b892559725b323dc84334
+---
+ src/times.h                            |  8 ++++----
+ utest/client/monitor/test_json_input.c | 15 +++++++++++----
+ utest/test_times.c                     |  7 ++++---
+ 3 files changed, 19 insertions(+), 11 deletions(-)
+
+diff --git a/src/times.h b/src/times.h
+index 325419c2b..b0fd3876f 100644
+--- a/src/times.h
++++ b/src/times.h
+@@ -3,11 +3,11 @@
+ 
+ #define DEFAULT_TIMESTAMP_FORMAT_OLD	"%Y-%m-%d %H:%M:%S"
+ 
+-// Windows does not seem to support %z.
+-#ifdef HAVE_WIN32
+-#define DEFAULT_TIMESTAMP_FORMAT DEFAULT_TIMESTAMP_FORMAT_OLD
+-#else
++#ifdef __GLIBC__
+ #define DEFAULT_TIMESTAMP_FORMAT	"%Y-%m-%d %H:%M:%S %z"
++#else
++// Only glibc supports %z in strptime.
++#define DEFAULT_TIMESTAMP_FORMAT DEFAULT_TIMESTAMP_FORMAT_OLD
+ #endif
+ 
+ extern const char *getdatestr(const time_t t);
+diff --git a/utest/client/monitor/test_json_input.c b/utest/client/monitor/test_json_input.c
+index 516fc779b..aea2a4154 100644
+--- a/utest/client/monitor/test_json_input.c
++++ b/utest/client/monitor/test_json_input.c
+@@ -162,13 +162,20 @@ static struct sd sd1[] = {
+ 
+ static void assert_bu_minimal(struct bu *bu, struct sd *s)
+ {
+-	const char *sd_timestamp;
++	const char *cp;
++	const char *cp_end;
+ 	fail_unless(bu!=NULL);
+ 	fail_unless(s->bno==bu->bno);
+ 	fail_unless(s->flags==bu->flags);
+-	fail_unless((sd_timestamp=strchr(s->timestamp, ' '))!=NULL);
+-	sd_timestamp++;
+-	ck_assert_str_eq(sd_timestamp, bu->timestamp);
++	fail_unless((cp=strchr(s->timestamp, ' '))!=NULL);
++	cp++;
++#ifdef __GLIBC__
++	cp_end=s->timestamp+strlen(s->timestamp)-1;
++#else
++	// Only glibc supports %z in strptime.
++	fail_unless((cp_end=strrchr(s->timestamp, ' '))!=NULL);
++#endif
++	fail_unless(strncmp(cp, bu->timestamp, cp_end-cp)==0);
+ }
+ 
+ static void do_test_json_clients_with_backup(const char *path,
+diff --git a/utest/test_times.c b/utest/test_times.c
+index 98be11fd1..5a68203a6 100644
+--- a/utest/test_times.c
++++ b/utest/test_times.c
+@@ -35,12 +35,13 @@ struct ds
+ 
+ static struct ds ds[] = {
+ 	{ 0, "", "never" },
+-#ifdef HAVE_WIN32
+-	{ 1000, "", "1970-01-01 00:16:40" },
+-#else
++#ifdef __GLIBC__
+ 	{ 1000, "", "1970-01-01 00:16:40 +0000" },
+ 	{ 1000, "UTC+10", "1969-12-31 14:16:40 -1000" },
+ 	{ 1000, "UTC+10", "1969-12-31 14:16:40 -1000" },
++#else
++	// Only glibc supports %z in strptime.
++	{ 1000, "", "1970-01-01 00:16:40" },
+ #endif
+ };
+ 

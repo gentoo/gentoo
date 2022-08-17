@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ DOCS=( README.md )
 _emake() {
 	emake \
 		-j1 \
-		PREFIX=${EPREFIX}/usr \
+		PREFIX="${EPREFIX}"/usr \
 		LIBDIR=/$(get_libdir) \
 		"$@"
 }
@@ -31,7 +31,7 @@ src_compile() {
 }
 
 src_install() {
-	_emake DESTDIR=${ED} install
+	_emake DESTDIR="${ED}" install
 
 	einstalldocs
 }

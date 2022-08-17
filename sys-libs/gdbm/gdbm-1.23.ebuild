@@ -3,19 +3,30 @@
 
 EAPI=7
 
-inherit multilib-minimal
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gdbm.asc
+inherit libtool multilib-minimal verify-sig
 
 DESCRIPTION="Standard GNU database libraries"
 HOMEPAGE="https://www.gnu.org/software/gdbm/"
 SRC_URI="mirror://gnu/gdbm/${P}.tar.gz"
+SRC_URI+=" verify-sig? ( mirror://gnu/gdbm/${P}.tar.gz.sig )"
 
 LICENSE="GPL-3"
 SLOT="0/6" # libgdbm.so version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+berkdb nls +readline static-libs"
 
 DEPEND="readline? ( sys-libs/readline:=[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-gdbm )"
+
+src_prepare() {
+	default
+
+	# gdbm ships with very old libtool files, regen to avoid
+	# errors when cross-compiling.
+	elibtoolize
+}
 
 multilib_src_configure() {
 	# gdbm doesn't appear to use either of these libraries

@@ -13,7 +13,6 @@ DESCRIPTION="A free GIS with raster and vector functionality, as well as 3D vizu
 HOMEPAGE="https://grass.osgeo.org/"
 
 LICENSE="GPL-2"
-SLOT="0/8.1"
 
 GVERSION=${SLOT#*/}
 MY_PM="${PN}${GVERSION}"
@@ -22,8 +21,10 @@ MY_PM="${MY_PM/.}"
 if [[ ${PV} =~ "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/OSGeo/grass.git"
+	SLOT="0/8.3"
 else
 	MY_P="${P/_rc/RC}"
+	SLOT="0/$(ver_cut 1-2 ${PV})"
 	SRC_URI="https://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 	if [[ ${PV} != *_rc* ]] ; then
 		KEYWORDS="~amd64 ~ppc ~x86"
@@ -32,7 +33,7 @@ else
 	S="${WORKDIR}/${MY_P}"
 fi
 
-IUSE="blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl opengl openmp png postgres readline sqlite threads tiff truetype X zstd"
+IUSE="blas cxx fftw geos lapack las mysql netcdf nls odbc opencl opengl openmp pdal png postgres readline sqlite threads tiff truetype X zstd"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	opengl? ( X )"
@@ -59,12 +60,13 @@ RDEPEND="
 	fftw? ( sci-libs/fftw:3.0= )
 	geos? ( sci-libs/geos:= )
 	lapack? ( virtual/lapack[eselect-ldso(+)] )
-	liblas? ( sci-geosciences/liblas )
+	las? ( sci-geosciences/liblas )
 	mysql? ( dev-db/mysql-connector-c:= )
 	netcdf? ( sci-libs/netcdf:= )
 	odbc? ( dev-db/unixODBC )
 	opencl? ( virtual/opencl )
 	opengl? ( virtual/opengl )
+	pdal? ( >=sci-libs/pdal-2.0.0:0= )
 	png? ( media-libs/libpng:0= )
 	postgres? ( >=dev-db/postgresql-8.4:= )
 	readline? ( sys-libs/readline:0= )
@@ -179,7 +181,8 @@ src_configure() {
 		$(use_with threads pthread)
 		$(use_with openmp)
 		$(use_with opencl)
-		$(use_with liblas liblas "${EPREFIX}"/usr/bin/liblas-config)
+		$(use_with pdal pdal "${EPREFIX}"/usr/bin/pdal-config)
+		$(use_with las liblas "${EPREFIX}"/usr/bin/liblas-config)
 		$(use_with X wxwidgets "${WX_CONFIG}")
 		$(use_with netcdf netcdf "${EPREFIX}"/usr/bin/nc-config)
 		$(use_with geos geos "${EPREFIX}"/usr/bin/geos-config)
@@ -269,6 +272,8 @@ os.environ\[\"GRASS_PYTHON\"\] = \"${EPYTHON}\":" \
 
 pkg_postinst() {
 	use X && xdg_pkg_postinst
+	ewarn 'Starting with version 8.0.2 the "liblas" USE flag has been renamed'
+	ewarn 'to "las" in order to match dev-games/openscenegraph (Bug 680854)'
 }
 
 pkg_postrm() {

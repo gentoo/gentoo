@@ -5,7 +5,7 @@ EAPI=7
 
 PV_COMMIT=77bb2ba5eadfb95b67abccd22b298cfb75dd3328
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit cmake flag-o-matic python-single-r1
 
@@ -25,7 +25,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="dev-libs/libutf8proc
 	sys-libs/zlib
-	dev-libs/gmp:0
+	dev-libs/gmp:0[cxx]
 	java? ( >=virtual/jdk-1.8:* )
 	mpi? ( virtual/mpi )
 	mysql? ( dev-db/mysql-connector-c:0= )

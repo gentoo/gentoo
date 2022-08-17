@@ -16,6 +16,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Digest-MD5
+	virtual/perl-Encode
 	>=virtual/perl-File-Spec-0.800.0
 "
 BDEPEND="${RDEPEND}

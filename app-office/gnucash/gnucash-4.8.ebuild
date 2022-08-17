@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/Gnucash/${PN}/releases/download/${PV}/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~riscv x86"
 
 IUSE="aqbanking debug doc examples gnome-keyring +gui mysql nls ofx postgres
 	  python quotes register2 smartcard sqlite test"
@@ -86,10 +86,6 @@ BDEPEND="
 	dev-lang/swig
 	dev-util/cmake
 	virtual/pkgconfig
-	|| (
-		>=sys-devel/gcc-8:*
-		>=sys-devel/clang-6:*
-	)
 "
 
 PDEPEND="doc? (
@@ -103,18 +99,6 @@ PATCHES=(
 )
 
 S="${WORKDIR}/${PN}-$(ver_cut 1-2)"
-
-pkg_pretend() {
-	if tc-is-gcc; then
-		if [[ $(gcc-major-version) -lt 8 ]]; then
-			die "GnuCash needs at least GCC version 8."
-		fi
-	elif tc-is-clang; then
-		if [[ $(clang-major-version) -lt 6 ]]; then
-			die "GnuCash needs at least clang version 6."
-		fi
-	fi
-}
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup

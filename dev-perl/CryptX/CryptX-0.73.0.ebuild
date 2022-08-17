@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Self-contained crypto toolkit"
 LICENSE="|| ( Artistic GPL-1+ ) public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc64 ~riscv sparc x86"
 IUSE="minimal"
 
 RDEPEND="

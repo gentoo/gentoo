@@ -1,5 +1,3 @@
-diff --git a/dbinc/atomic.h b/dbinc/atomic.h
-index 0034dcc..fa7ba93 100644
 --- a/dbinc/atomic.h
 +++ b/dbinc/atomic.h
 @@ -144,7 +144,7 @@ typedef LONG volatile *interlocked_val;

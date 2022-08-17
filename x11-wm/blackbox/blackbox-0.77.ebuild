@@ -26,6 +26,10 @@ BDEPEND=">=sys-devel/autoconf-2.71
 
 S="${WORKDIR}"/blackboxwm-${PV}
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.77-gcc12-time.patch
+)
+
 src_prepare() {
 	sed -e '/AC_DISABLE_SHARED/d' -i configure.ac || die
 	default

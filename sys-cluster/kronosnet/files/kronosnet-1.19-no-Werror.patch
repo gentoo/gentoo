@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -307,7 +307,7 @@
+ 	GDB_FLAGS="-g"
+ fi
+ 
+-DEFAULT_CFLAGS="-Werror -Wall -Wextra"
++DEFAULT_CFLAGS="-Wall -Wextra"
+ 
+ # manual overrides
+ # generates too much noise for stub APIs

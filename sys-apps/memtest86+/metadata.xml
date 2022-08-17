@@ -6,9 +6,15 @@
 	<name>Ben Kohler</name>
 </maintainer>
 <use>
+	<flag name="bios32">Compile a BIOS-bootable 32bit memtest image</flag>
+	<flag name="bios64">Compile a BIOS-bootable 64bit memtest image</flag>
 	<flag name="boot">Also install to /boot instead of just /usr/share/memtest86+/</flag>
+	<flag name="efi32">Compile a EFI32-bootable 32bit memtest image</flag>
+	<flag name="efi64">Compile a UEFI-bootable 64bit memtest image</flag>
 	<flag name="floppy">Install a script to create floppy disks containing memtest86+ binaries.</flag>
 	<flag name="iso">Compile an ISO image</flag>
+	<flag name="iso32">Compile a 32bit ISO image</flag>
+	<flag name="iso64">Compile a 64bit ISO image</flag>
 	<flag name="serial">Compile with serial console support</flag>
 </use>
 </pkgmetadata>

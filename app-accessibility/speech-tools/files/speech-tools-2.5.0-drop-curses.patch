@@ -1,0 +1,43 @@
+We already force in the correct detection via another patch and this
+logic (being dropped in this patch) assumes no -ltinfo.
+
+https://bugs.gentoo.org/837800
+--- a/configure.in
++++ b/configure.in
+@@ -42,12 +42,6 @@ AC_CHECK_TOOL(AR, ar)
+ 
+ AC_C_BIGENDIAN
+ 
+-AC_CHECK_LIB(ncurses, tputs, [TERMCAPLIB=-lncurses], [TERMCAPLIB=-lcurses])
+-dnl if test "$TERMCAPLIB" != "-ltermcap"; then
+-dnl    AC_CHECK_LIB(termcap, tputs, [TERMCAPLIB=-ltermcap], [TERMCAPLIB=-lncurses])
+-dnl 
+-AC_SUBST(TERMCAPLIB)
+-
+ dnl Which version of GCC do we have here
+ COMPILERTYPE=gcc
+ AC_TRY_COMPILE([#include <stdio.h>],
+diff --git a/config/config.in b/config/config.in
+index c7a268a..6c7f16a 100644
+--- a/config/config.in
++++ b/config/config.in
+@@ -98,7 +98,6 @@ LINUXAUDIO = @LINUXAUDIO@
+ ## It may not work under all systems, so may be optionally omitted.
+ INCLUDE_MODULES += EDITLINE
+ 
+-TERMCAPLIB = @TERMCAPLIB@
+ # speech recognition
+ #INCLUDE_MODULES += ASR
+ 
+diff --git a/config/modules/editline.mak b/config/modules/editline.mak
+index fe83c37..2d48b39 100644
+--- a/config/modules/editline.mak
++++ b/config/modules/editline.mak
+@@ -43,7 +43,6 @@ INCLUDE_EDITLINE=1
+ MOD_DESC_EDITLINE=Use editline for command line editing and history
+ 
+ IO_DEFINES   += -DSUPPORT_EDITLINE $(MODULE_EDITLINE_OPTIONS:%=-DEDITLINE_%)
+-MODULE_LIBS  += $(TERMCAPLIB)
+ 
+ ifeq ($(DIRNAME),siod)
+     CSRCS := $(CSRCS) el_complete.c editline.c el_sys_unix.c

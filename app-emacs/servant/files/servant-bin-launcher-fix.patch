@@ -1,0 +1,13 @@
+diff --git a/bin/servant b/bin/servant
+index dc8fabe..0cfc72c 100755
+--- a/bin/servant
++++ b/bin/servant
+@@ -6,6 +6,6 @@ else
+   SERVANT_EMACS="${EMACS:-emacs}"
+ fi
+ 
+-SERVANT_HOME="$(dirname $(dirname $0))"
++SERVANT_HOME="@SITELISP@"
+ 
+-${SERVANT_EMACS} -Q --script "${SERVANT_HOME}/servant-cli.el" -- "$@"
++${SERVANT_EMACS} -q --script "${SERVANT_HOME}/servant-cli.el" -- "$@"

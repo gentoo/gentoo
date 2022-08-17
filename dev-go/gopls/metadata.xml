@@ -5,6 +5,6 @@
 		<email>zmedico@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">golang/tools/gopls</remote-id>
+		<remote-id type="github">golang/tools</remote-id>
 	</upstream>
 </pkgmetadata>

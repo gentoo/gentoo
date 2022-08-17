@@ -27,7 +27,7 @@ fi
 # LICENSE="BSD-1 GPL-2+ LGPL-2+ MIT qt4? ( BSD )"
 LICENSE="BSD-1 GPL-2+ LGPL-2+ MIT"
 SLOT="4"
-KEYWORDS="amd64 ~arm64 ~hppa ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~hppa ~loong ppc ppc64 ~riscv x86"
 IUSE="+X +autostart +cairo debug +enchant gtk2 +gtk3 +introspection lua nls opencc +pango +table test +xkb"
 REQUIRED_USE="cairo? ( X )
 	lua? ( ${LUA_REQUIRED_USE} )

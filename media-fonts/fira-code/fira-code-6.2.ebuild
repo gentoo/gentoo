@@ -14,7 +14,7 @@ SRC_URI="https://github.com/tonsky/FiraCode/releases/download/${PV}/Fira_Code_v$
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~riscv x86"
 
 DOCS=( README.txt specimen.html fira_code.css )
 

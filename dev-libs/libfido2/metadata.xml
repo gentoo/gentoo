@@ -8,4 +8,7 @@
 	<use>
 		<flag name="nfc">Enable experimental NFC support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">Yubico/libfido2</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-  <email>naota@gentoo.org</email>
-</maintainer>
-<maintainer type="project">
-  <email>gnu-emacs@gentoo.org</email>
-  <name>Gentoo GNU Emacs project</name>
-</maintainer>
-<stabilize-allarches/>
-<use>
-  <flag name="howm">Add support for the <pkg>app-emacs/howm</pkg>
-    note-taking tool</flag>
-</use>
-<upstream>
-  <remote-id type="github">kiwanami/emacs-calfw</remote-id>
-</upstream>
+	<maintainer type="person">
+		<email>naota@gentoo.org</email>
+		<name>Naohiro Aota</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>gnu-emacs@gentoo.org</email>
+		<name>Gentoo GNU Emacs project</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<use>
+		<flag name="howm">Add support for the <pkg>app-emacs/howm</pkg>
+			note-taking tool</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">kiwanami/emacs-calfw</remote-id>
+	</upstream>
 </pkgmetadata>

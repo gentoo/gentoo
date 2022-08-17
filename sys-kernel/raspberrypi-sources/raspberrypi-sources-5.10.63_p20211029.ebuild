@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 ETYPE=sources
 K_DEFCONFIG="bcmrpi_defconfig"
@@ -17,7 +17,7 @@ DESCRIPTION="Raspberry Pi kernel sources"
 HOMEPAGE="https://github.com/raspberrypi/linux"
 SRC_URI="https://github.com/raspberrypi/linux/archive/${MY_P}.tar.gz -> linux-${KV_FULL}.tar.gz"
 
-KEYWORDS="~arm ~arm64"
+KEYWORDS="arm arm64"
 
 src_unpack() {
 	default

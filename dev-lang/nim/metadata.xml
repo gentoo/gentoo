@@ -36,4 +36,7 @@
     <bugs-to>https://github.com/nim-lang/Nim/issues/</bugs-to>
     <remote-id type="github">nim-lang/Nim</remote-id>
   </upstream>
+  <use>
+    <flag name="experimental">Apply experimental patches</flag>
+  </use>
 </pkgmetadata>

@@ -12,14 +12,14 @@ S="${WORKDIR}/dune-${PV}"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	~dev-ml/dune-private-libs-${PV}:=[ocamlopt=]
-	dev-ml/csexp:=[ocamlopt=]
-	dev-ml/result:=[ocamlopt=]
+	~dev-ml/dune-private-libs-${PV}:=[ocamlopt?]
+	dev-ml/csexp:=[ocamlopt?]
+	dev-ml/result:=[ocamlopt?]
 "
 DEPEND="${RDEPEND}
 	test? (

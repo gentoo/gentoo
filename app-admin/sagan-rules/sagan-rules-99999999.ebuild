@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit git-r3
 EGIT_REPO_URI="https://github.com/beave/sagan-rules.git"
 
 DESCRIPTION="Rules for Sagan log analyzer"
-HOMEPAGE="http://sagan.softwink.com/"
+HOMEPAGE="https://quadrantsec.com/sagan_log_analysis_engine/"
 
 LICENSE="BSD"
 SLOT="0"

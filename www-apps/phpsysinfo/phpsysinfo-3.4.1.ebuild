@@ -6,7 +6,7 @@ EAPI=8
 inherit optfeature webapp
 
 DESCRIPTION="A customizable PHP script that displays information about your system nicely"
-HOMEPAGE="https://rk4an.github.com/phpsysinfo/"
+HOMEPAGE="https://phpsysinfo.github.io/phpsysinfo/"
 SRC_URI="https://github.com/rk4an/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"

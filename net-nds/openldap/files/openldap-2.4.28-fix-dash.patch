@@ -11,8 +11,6 @@ Patch unbreaks build when /bin/sh points to dash:
     eval: 1: base_compile+= x86_64-pc-linux-gnu-gcc: not found
     ...
     make[2]: *** [decode.lo] Error 1
-diff --git a/build/top.mk b/build/top.mk
-index 6fea488..ea324e3 100644
 --- a/build/top.mk
 +++ b/build/top.mk
 @@ -20,7 +20,7 @@ VERSION= @VERSION@

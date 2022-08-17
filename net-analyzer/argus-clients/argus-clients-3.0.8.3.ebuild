@@ -63,7 +63,7 @@ src_configure() {
 src_compile() {
 	emake \
 		CCOPT="${CFLAGS} ${LDFLAGS}" \
-		RANLIB=$(tc-getRANLIB) \
+		RANLIB="$(tc-getRANLIB)" \
 		CURSESLIB="$( $(tc-getPKG_CONFIG) --libs ncurses)"
 }
 

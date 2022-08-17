@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=( python3_{8..10} )
-USE_RUBY="ruby25 ruby26 ruby27"
+PYTHON_COMPAT=( python3_{8..11} )
+USE_RUBY="ruby26 ruby27"
 
 # No, I am not calling ruby-ng
 inherit python-r1 toolchain-funcs multilib-minimal
@@ -20,21 +20,19 @@ if [[ ${PV} == 9999 ]]; then
 	S="${WORKDIR}/${P}/${PN}"
 else
 	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${MY_PV}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~riscv ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
 LICENSE="public-domain"
 SLOT="0"
-IUSE="pcre2 python ruby static-libs ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27"
+IUSE="python ruby static-libs ruby_targets_ruby26 ruby_targets_ruby27"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND=">=sys-libs/libsepol-${PV}:=[${MULTILIB_USEDEP}]
-	!pcre2? ( >=dev-libs/libpcre-8.33-r1:=[static-libs?,${MULTILIB_USEDEP}] )
-	pcre2? ( dev-libs/libpcre2:=[static-libs?,${MULTILIB_USEDEP}] )
+RDEPEND="dev-libs/libpcre2:=[static-libs?,${MULTILIB_USEDEP}]
+	>=sys-libs/libsepol-${PV}:=[${MULTILIB_USEDEP}]
 	python? ( ${PYTHON_DEPS} )
 	ruby? (
-		ruby_targets_ruby25? ( dev-lang/ruby:2.5 )
 		ruby_targets_ruby26? ( dev-lang/ruby:2.6 )
 		ruby_targets_ruby27? ( dev-lang/ruby:2.7 )
 	)
@@ -59,7 +57,7 @@ multilib_src_compile() {
 		LIBDIR="\$(PREFIX)/$(get_libdir)" \
 		SHLIBDIR="/$(get_libdir)" \
 		LDFLAGS="-fPIC ${LDFLAGS} -pthread" \
-		USE_PCRE2="$(usex pcre2 y n)" \
+		USE_PCRE2=y \
 		FTS_LDLIBS="$(usex elibc_musl '-lfts' '')" \
 		all
 
@@ -69,7 +67,7 @@ multilib_src_compile() {
 				LDFLAGS="-fPIC ${LDFLAGS} -lpthread" \
 				LIBDIR="\$(PREFIX)/$(get_libdir)" \
 				SHLIBDIR="/$(get_libdir)" \
-				USE_PCRE2="$(usex pcre2 y n)" \
+				USE_PCRE2=y \
 				FTS_LDLIBS="$(usex elibc_musl '-lfts' '')" \
 				pywrap
 		}
@@ -86,7 +84,7 @@ multilib_src_compile() {
 				LDFLAGS="-fPIC ${LDFLAGS} -lpthread" \
 				LIBDIR="\$(PREFIX)/$(get_libdir)" \
 				SHLIBDIR="/$(get_libdir)" \
-				USE_PCRE2="$(usex pcre2 y n)" \
+				USE_PCRE2=y \
 				FTS_LDLIBS="$(usex elibc_musl '-lfts' '')" \
 				rubywrap
 		}
@@ -102,7 +100,7 @@ multilib_src_install() {
 	emake DESTDIR="${D}" \
 		LIBDIR="\$(PREFIX)/$(get_libdir)" \
 		SHLIBDIR="/$(get_libdir)" \
-		USE_PCRE2="$(usex pcre2 y n)" \
+		USE_PCRE2=y \
 		install
 
 	if multilib_is_native_abi && use python; then
@@ -110,7 +108,7 @@ multilib_src_install() {
 			emake DESTDIR="${D}" \
 				LIBDIR="\$(PREFIX)/$(get_libdir)" \
 				SHLIBDIR="/$(get_libdir)" \
-				USE_PCRE2="$(usex pcre2 y n)" \
+				USE_PCRE2=y \
 				install-pywrap
 			python_optimize # bug 531638
 		}
@@ -126,7 +124,7 @@ multilib_src_install() {
 				LIBDIR="\$(PREFIX)/$(get_libdir)" \
 				SHLIBDIR="/$(get_libdir)" \
 				RUBY=${1} \
-				USE_PCRE2="$(usex pcre2 y n)" \
+				USE_PCRE2=y \
 				install-rubywrap
 		}
 		for RUBYTARGET in ${USE_RUBY}; do

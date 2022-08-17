@@ -2,37 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>whissi@gentoo.org</email>
-    <name>Thomas Deutschmann</name>
+    <email>ulm@gentoo.org</email>
   </maintainer>
-  <use>
-    <flag name="assets">
-      Support web asset management
-    </flag>
-    <flag name="charts">
-      Support chart generation through <pkg>dev-python/pygal</pkg>
-    </flag>
-    <flag name="hyphenation">
-      Add hyphenation support through <pkg>dev-python/pyphen</pkg>
-    </flag>
-    <flag name="ipython">
-      Add IPython notebook compilation and LESS support
-    </flag>
-    <flag name="jinja">
-      Add support for <pkg>dev-python/jinja</pkg> as alternative templating
-      engine to Mako
-    </flag>
-    <flag name="server">
-      Enable support for built-in web server using <pkg>dev-python/aiohttp</pkg>
-    </flag>
-    <flag name="watchdog">
-      Use <pkg>dev-python/watchdog</pkg> to monitor file system events
-    </flag>
-    <flag name="webmedia">
-      Use <pkg>dev-python/micawber</pkg> to extract metadata from web media
-      links
-    </flag>
-  </use>
   <upstream>
     <remote-id type="pypi">Nikola</remote-id>
   </upstream>

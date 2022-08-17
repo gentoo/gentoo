@@ -1,22 +1,36 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-LUA_COMPAT=( lua5-{1..2} )
+LUA_COMPAT=( lua5-4 )
 
-inherit git-r3 lua-single toolchain-funcs readme.gentoo-r1
+inherit lua-single toolchain-funcs readme.gentoo-r1
 
 DESCRIPTION="Notion is a tiling, tabbed window manager for the X window system"
 HOMEPAGE="https://notionwm.net/"
-EGIT_REPO_URI="https://github.com/raboof/${PN}.git"
+
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/raboof/${PN}.git"
+else
+	SRC_URI="https://github.com/raboof/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
 IUSE="nls xinerama +xrandr"
+# needs slingshot,... not in tree
+RESTRICT="test"
+# mod_xrandr references mod_xinerama
+REQUIRED_USE="
+	${LUA_REQUIRED_USE}
+	xrandr? ( xinerama )"
 
-RDEPEND="${LUA_DEPS}
+RDEPEND="
+	${LUA_DEPS}
 	x11-libs/libSM
 	x11-libs/libX11
 	x11-libs/libXext
@@ -25,44 +39,27 @@ RDEPEND="${LUA_DEPS}
 	xrandr? ( x11-libs/libXrandr )"
 DEPEND="${RDEPEND}"
 # luac is called at build time
-BDEPEND="${LUA_DEPS}
+BDEPEND="
+	${LUA_DEPS}
 	virtual/pkgconfig"
 
-# mod_xrandr references mod_xinerama
-REQUIRED_USE="${LUA_REQUIRED_USE}
-	xrandr? ( xinerama )"
-
-# needs slingshot,... not in tree
-RESTRICT=test
-
-src_prepare() {
-	default
-
-	sed -e "/^CFLAGS/{s: =: +=: ; s:-Os:: ; s:-g::}" \
-		-e "/^LDFLAGS/{s: =: +=: ; s:-Wl,--as-needed::}" \
-		-i system-autodetect.mk || die
-	echo > build/lua-detect.mk
-}
-
 src_configure() {
-	{	echo "CFLAGS += -D_DEFAULT_SOURCE"
-		echo "PREFIX=${EROOT}/usr"
-		echo "DOCDIR=\$(PREFIX)/share/doc/${PF}"
-		echo "ETCDIR=${EROOT}/etc/${PN}"
-		echo "LIBDIR=\$(PREFIX)/$(get_libdir)"
-		echo "VARDIR=${EROOT}/var/cache/${PN}"
-		echo "X11_PREFIX=${EROOT}/usr"
-		echo "STRIPPROG=true"
-		echo "CC=$(tc-getCC)"
-		echo "AR=$(tc-getAR)"
-		echo "RANLIB=$(tc-getRANLIB)"
-		echo "LUA_MANUAL=1"
-		echo "LUA=${LUA}"
-		echo "LUAC=luac"
-		echo "LUA_LIBS=$(lua_get_LIBS)"
-		echo "LUA_INCLUDES=$(lua_get_CFLAGS)"
-		use nls || echo "DEFINES+=-DCF_NO_LOCALE -DCF_NO_GETTEXT"
-	} > system-local.mk
+	tc-export AR CC PKG_CONFIG
+	export INSTALL_STRIP=""
+
+	cat > system-local.mk <<- _EOF_ || die
+		PREFIX=${EPREFIX}/usr
+		DOCDIR=\$(PREFIX)/share/doc/${PF}
+		ETCDIR=${EPREFIX}/etc/${PN}
+		LIBDIR=\$(PREFIX)/$(get_libdir)
+		VARDIR=${EPREFIX}/var/cache/${PN}
+		LUA_MANUAL=1
+		LUA=${LUA}
+		LUAC=${BROOT}/usr/bin/${ELUA/lua/luac}
+		LUA_LIBS=$(lua_get_LIBS)
+		LUA_INCLUDES=$(lua_get_CFLAGS)
+		$(usev !nls "DEFINES+=-DCF_NO_LOCALE -DCF_NO_GETTEXT")
+	_EOF_
 
 	if ! use xinerama ; then
 		sed -e 's/mod_xinerama//g' -i modulelist.mk || die
@@ -70,8 +67,7 @@ src_configure() {
 
 	if ! use xrandr ; then
 		sed -e 's/mod_xrandr//g' -i modulelist.mk || die
-		sed -e '/mod_xrandr/d' \
-			-i etc/cfg_defaults.lua || die
+		sed -e '/mod_xrandr/d' -i etc/cfg_defaults.lua || die
 	fi
 }
 
@@ -84,12 +80,12 @@ src_install() {
 	insinto /usr/share/xsessions
 	doins "${FILESDIR}"/notion.desktop
 
+	local DOC_CONTENTS="
+		If you want notion to have an ability to view a file based on its
+		guessed MIME type you should emerge app-misc/run-mailcap."
 	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
 	readme.gentoo_print_elog
 }
-
-DOC_CONTENTS="If you want notion to have an ability to view a file based on its
-guessed MIME type you should emerge app-misc/run-mailcap."

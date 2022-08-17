@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -107,7 +107,7 @@ src_configure() {
 	# homemade configure script
 	./configure \
 		--arch=Linux \
-		--cxx=$(tc-getCXX) \
+		--cxx="$(tc-getCXX)" \
 		--enable-shared \
 		--prefix="${EPREFIX}/usr" \
 		--prefix-lib="$(get_libdir)" \

@@ -15,7 +15,7 @@ LICENSE="BSD-2"
 # packaged as x11-wm/e16, but the slot is kept because it's more complicated to
 # reset it rather than just to keep it.
 SLOT="0.17/${PV%%_*}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
 IUSE="acpi bluetooth connman doc exif geolocation nls pam policykit systemd udisks wayland xwayland"
 
 REQUIRED_USE="xwayland? ( wayland )"
@@ -115,6 +115,5 @@ pkg_postinst() {
 	optfeature "ConnMan user interface for Enlightenment" net-misc/econnman
 	optfeature "system and process monitor" sys-process/evisum
 	optfeature "feature rich terminal emulator" x11-terms/terminology
-	optfeature "a modern flat enlightenment WM theme" x11-themes/e-flat-theme
 	optfeature "a matching GTK theme" x11-themes/e-gtk-theme
 }

@@ -1,0 +1,24 @@
+--- a/data/scripts/Xsession
++++ b/data/scripts/Xsession
+@@ -50,6 +50,10 @@
+     ;;
+ esac
+ 
++# Make D-Bus start properly, see:
++# /etc/X11/xinit/xinitrc.d/80-dbus
++command="$@"
++
+ [ -f /etc/xprofile ] && . /etc/xprofile
+ [ -f $HOME/.xprofile ] && . $HOME/.xprofile
+ 
+@@ -94,8 +98,8 @@
+   . "$USERXSESSION"
+ fi
+ 
+-if [ -z "$*" ]; then
++if [ -z "$command" ]; then
+     exec xmessage -center -buttons OK:0 -default OK "Sorry, $DESKTOP_SESSION is no valid session."
+ else
+-    exec $@
++    exec $command
+ fi

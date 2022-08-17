@@ -1,5 +1,5 @@
---- db-6.1.19/dist/aclocal/sql.m4
-+++ db-6.1.19/dist/aclocal/sql.m4
+--- a/dist/aclocal/sql.m4
++++ b/dist/aclocal/sql.m4
 @@ -96,6 +96,6 @@
  if test "$db_cv_build_cryptography" = "yes"; then
  	CPPFLAGS="$CPPFLAGS -DSQLITE_HAS_CODEC=1"

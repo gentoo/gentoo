@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ if [[ ${PV} =~ 99999999$ ]]; then
 	EGIT_REPO_URI="https://github.com/neomutt/neomutt.git"
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc64 ~s390 ~x86"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 
 TEST_FILES_COMMIT=8629adab700a75c54e8e28bf05ad092503a98f75
@@ -112,11 +112,11 @@ src_configure() {
 		"$(usex test --testing --disable-testing)"
 	)
 
-	econf CCACHE=none CC_FOR_BUILD=$(tc-getCC) "${myconf[@]}"
+	econf CCACHE=none CC_FOR_BUILD="$(tc-getCC)" "${myconf[@]}"
 }
 
 src_test() {
-	local test_dir="$(readlink --canonicalize ${S}/../neomutt-test-files-${TEST_FILES_COMMIT})"
+	local test_dir="$(readlink --canonicalize "${S}"/../neomutt-test-files-${TEST_FILES_COMMIT})"
 	pushd ${test_dir} || die "Could not cd into test_dir"
 	NEOMUTT_TEST_DIR="${test_dir}" ./setup.sh \
 		|| die "Failed to run the setup.sh script"

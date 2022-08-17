@@ -1,15 +1,9 @@
-From cdc753516798882a805db1d2042dbce8313382bf Mon Sep 17 00:00:00 2001
+https://bugs.gentoo.org/834374
+
+https://github.com/mgba-emu/mgba/commit/cdc753516798882a805db1d2042dbce8313382bf
 From: Ryan Tandy <ryan@nardis.ca>
 Date: Thu, 3 Feb 2022 19:02:52 -0800
 Subject: [PATCH] FFmpeg: Support FFmpeg 5.0
-
----
- src/feature/ffmpeg/ffmpeg-decoder.c |  3 ++-
- src/feature/ffmpeg/ffmpeg-encoder.c | 25 ++++++++++++++-----------
- 2 files changed, 16 insertions(+), 12 deletions(-)
-
-diff --git a/src/feature/ffmpeg/ffmpeg-decoder.c b/src/feature/ffmpeg/ffmpeg-decoder.c
-index c3bb6d1c5c..daa47fbf2c 100644
 --- a/src/feature/ffmpeg/ffmpeg-decoder.c
 +++ b/src/feature/ffmpeg/ffmpeg-decoder.c
 @@ -5,6 +5,7 @@
@@ -29,8 +23,6 @@ index c3bb6d1c5c..daa47fbf2c 100644
  		struct AVCodecContext* context = NULL;
  		if (type == AVMEDIA_TYPE_VIDEO && decoder->videoStream < 0) {
  			decoder->video = avcodec_alloc_context3(NULL);
-diff --git a/src/feature/ffmpeg/ffmpeg-encoder.c b/src/feature/ffmpeg/ffmpeg-encoder.c
-index ad76ca57b2..be6bd3af5e 100644
 --- a/src/feature/ffmpeg/ffmpeg-encoder.c
 +++ b/src/feature/ffmpeg/ffmpeg-encoder.c
 @@ -12,6 +12,9 @@

@@ -9,13 +9,15 @@ MY_PN="ownCloud"
 DESCRIPTION="Synchronize files from ownCloud Server with your computer"
 HOMEPAGE="https://owncloud.org/"
 SRC_URI="https://download.owncloud.com/desktop/${MY_PN}/stable/${PV}/source/${MY_PN}-${PV}.tar.xz"
+S=${WORKDIR}/${MY_PN}-${PV}
 
 LICENSE="CC-BY-3.0 GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="dolphin gnome-keyring nautilus test"
+RESTRICT="!test? ( test )"
 
-COMMON_DEPEND=">=dev-db/sqlite-3.4:3
+RDEPEND=">=dev-db/sqlite-3.4:3
 	dev-libs/qtkeychain[gnome-keyring?,qt5(+)]
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
@@ -32,18 +34,15 @@ COMMON_DEPEND=">=dev-db/sqlite-3.4:3
 	)
 	nautilus? ( dev-python/nautilus-python )"
 
-RDEPEND="${COMMON_DEPEND}"
-DEPEND="${COMMON_DEPEND}
-	dev-qt/linguist-tools:5
-	kde-frameworks/extra-cmake-modules
+DEPEND="${RDEPEND}
 	test? (
 		dev-util/cmocka
 		dev-qt/qttest:5
 	)"
 
-RESTRICT="!test? ( test )"
-
-S=${WORKDIR}/${MY_PN}-${PV}
+BDEPEND="
+	dev-qt/linguist-tools:5
+	kde-frameworks/extra-cmake-modules"
 
 src_prepare() {
 	# Keep tests in ${T}

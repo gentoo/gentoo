@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1
 
@@ -30,7 +30,9 @@ BDEPEND="
 		dev-python/tqdm[${PYTHON_USEDEP}]
 	)"
 
-distutils_enable_sphinx doc dev-python/sphinx_rtd_theme
+### docs no included in pypi tarball
+# distutils_enable_sphinx doc \
+#	dev-python/sphinx_rtd_theme
 distutils_enable_tests pytest
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}

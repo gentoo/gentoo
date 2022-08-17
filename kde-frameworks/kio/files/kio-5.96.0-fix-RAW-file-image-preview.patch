@@ -1,0 +1,37 @@
+From 5002a07e71ff270a8717911b965a75c33993f883 Mon Sep 17 00:00:00 2001
+From: Alexander Lohnau <alexander.lohnau@gmx.de>
+Date: Fri, 8 Jul 2022 11:00:42 +0200
+Subject: [PATCH] Fix thumbnailer result for parent mime types being
+ overwritten
+
+BUG: 453480
+---
+ src/widgets/previewjob.cpp | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/src/widgets/previewjob.cpp b/src/widgets/previewjob.cpp
+index c53bcc88a..91be5575e 100644
+--- a/src/widgets/previewjob.cpp
++++ b/src/widgets/previewjob.cpp
+@@ -384,11 +384,13 @@ void PreviewJobPrivate::startPreview()
+                     }
+                 }
+ 
+-                // Check the wildcards last, see BUG 453480
+-                QString groupMimeType = mimeType;
+-                static const QRegularExpression expr(QStringLiteral("/.*"));
+-                groupMimeType.replace(expr, QStringLiteral("/*"));
+-                pluginIt = mimeMap.constFind(groupMimeType);
++                if (pluginIt == mimeMap.constEnd()) {
++                    // Check the wildcards last, see BUG 453480
++                    QString groupMimeType = mimeType;
++                    static const QRegularExpression expr(QStringLiteral("/.*"));
++                    groupMimeType.replace(expr, QStringLiteral("/*"));
++                    pluginIt = mimeMap.constFind(groupMimeType);
++                }
+             }
+ 
+             if (pluginIt != mimeMap.constEnd()) {
+-- 
+GitLab
+

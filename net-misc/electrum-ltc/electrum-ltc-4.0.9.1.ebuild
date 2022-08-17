@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -6,7 +6,7 @@ EAPI="7"
 PYTHON_COMPAT=( python3_8 )
 PYTHON_REQ_USE="ncurses?"
 
-inherit desktop distutils-r1 gnome2-utils xdg-utils
+inherit desktop distutils-r1 xdg
 
 EGIT_COMMIT="${PV}"
 DESCRIPTION="Litecoin thin client"
@@ -140,18 +140,4 @@ src_prepare() {
 src_install() {
 	doicon -s 128 ${PN/-/_}/gui/icons/${PN}.png
 	distutils-r1_src_install
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
 }

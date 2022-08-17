@@ -1,0 +1,36 @@
+From 4c4b0d39dba07911a707f8b8f17711900d2ee786 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Viktor=20S=C3=B6derqvist?= <viktor.soderqvist@est.tech>
+Date: Fri, 5 Nov 2021 09:46:29 +0100
+Subject: [PATCH] Make bootstrap use _checkouts
+
+This makes it possible to run the bootstrap offline by placing the deps
+in the using the already documented _checkouts directory in advance.
+---
+ bootstrap | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/bootstrap b/bootstrap
+index 9632b6c77..18cc46216 100755
+--- a/bootstrap
++++ b/bootstrap
+@@ -92,7 +92,19 @@ fetch_and_compile({Name, ErlFirstFiles}, Deps) ->
+ 
+     compile(Name, ErlFirstFiles).
+ 
+-fetch({pkg, Name, Vsn}, App) ->
++fetch(Source, App) ->
++    Dir = filename:join([filename:absname("_checkouts"), App]),
++    case filelib:is_dir(Dir) of
++        false ->
++            fetch_from_hex(Source, App);
++        true ->
++            io:format("Using ~p from ~p~n", [App, Dir]),
++            Dest = filename:absname("_build/default/lib"),
++            ok = filelib:ensure_dir(filename:join([Dest, "dummy"])),
++            cp_r([Dir], Dest)
++    end.
++
++fetch_from_hex({pkg, Name, Vsn}, App) ->
+     Dir = filename:join([filename:absname("_build/default/lib/"), App]),
+     case filelib:is_dir(Dir) of
+         false ->

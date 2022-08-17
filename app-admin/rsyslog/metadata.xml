@@ -1,46 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
 <pkgmetadata>
-	<maintainer type="person">
-		<email>whissi@gentoo.org</email>
-		<name>Thomas Deutschmann</name>
-	</maintainer>
-	<use>
-		<flag name="clickhouse">Build the ClickHouse output module (requires <pkg>net-misc/curl</pkg>)</flag>
-		<flag name="curl">Enable http_request() function in RainerScript (requires <pkg>net-misc/curl</pkg>)</flag>
-		<flag name="dbi">Build the general database output module (requires <pkg>dev-db/libdbi</pkg>)</flag>
-		<flag name="elasticsearch">Build the Elasticsearch output module (requires <pkg>net-misc/curl</pkg>)</flag>
-		<flag name="gcrypt">Add support for encrypted log files using <pkg>dev-libs/libgcrypt</pkg></flag>
-		<flag name="gnutls">Build the GnuTLS network stream driver (requires <pkg>net-libs/gnutls</pkg>)</flag>
-		<flag name="imhttp">Build the http input module (requires <pkg>www-servers/civetweb</pkg>)</flag>
-		<flag name="impcap">Build the pcap input module (requires <pkg>net-libs/libpcap</pkg>)</flag>
-		<flag name="kafka">Build the Apache Kafka input/output module (requires <pkg>dev-libs/librdkafka</pkg>)</flag>
-		<flag name="kerberos">Build the GSSAPI input and output module (requires <pkg>virtual/krb5</pkg>)</flag>
-		<flag name="kubernetes">Build the kubernetes modify plugin (requires <pkg>net-misc/curl</pkg>)</flag>
-		<flag name="mdblookup">Build the MaxMind DB lookup message modify plugin using <pkg>dev-libs/libmaxminddb</pkg></flag>
-		<flag name="mongodb">Build the MongoDB output module (requires <pkg>dev-libs/mongo-c-driver</pkg>)</flag>
-		<flag name="mysql">Build the MySQL database output module (requires <pkg>virtual/mysql</pkg>)</flag>
-		<flag name="normalize">Build the normalize modify module (requires <pkg>dev-libs/libee</pkg> and <pkg>dev-libs/liblognorm</pkg>)</flag>
-		<flag name="omhttp">Build the http output module (requires <pkg>net-misc/curl</pkg>)</flag>
-		<flag name="omhttpfs">Build the httpfs output module (requires <pkg>net-misc/curl</pkg>)</flag>
-		<flag name="omudpspoof">Build the udpspoof output module (requires <pkg>net-libs/libnet</pkg>)</flag>
-		<flag name="openssl">Build the OpenSSL network stream driver (requires <pkg>dev-libs/openssl</pkg>)</flag>
-		<flag name="postgres">Build the PostgreSQL database output module (requires <pkg>dev-db/postgresql</pkg>)</flag>
-		<flag name="rabbitmq">Build the RabbitMQ output module (requires <pkg>net-libs/rabbitmq-c</pkg>)</flag>
-		<flag name="redis">Build the Redis output module using (requires <pkg>dev-libs/hiredis</pkg>)</flag>
-		<flag name="relp">Build the Reliable Event Logging Protocol (RELP) output module (requires <pkg>dev-libs/librelp</pkg>)</flag>
-		<flag name="rfc3195">Build the rfc3195 input module (requires <pkg>dev-libs/liblogging</pkg>)</flag>
-		<flag name="rfc5424hmac">Build the rfc5424hmac modify module (requires <pkg>dev-libs/openssl</pkg>)</flag>
-		<flag name="snmp">Build the snmp modify and output module (requires <pkg>net-analyzer/net-snmp</pkg>)</flag>
-		<flag name="ssl">Add support for encrypted client/server communication (requires <pkg>net-libs/gnutls</pkg>)</flag>
-		<flag name="systemd">Build the journal input and output module (requires <pkg>sys-apps/systemd</pkg>)</flag>
-		<flag name="uuid">Include UUIDs in messages (requires <pkg>sys-apps/util-linux</pkg>)</flag>
-		<flag name="usertools">Installs the user tools (rsgtutil, rscryutil...) corresponding to the set USE flags</flag>
-		<flag name="xxhash">Enable xxHash support in fmhash module (requires <pkg>dev-libs/xxhash</pkg>)</flag>
-		<flag name="zeromq">Build the ZeroMQ input and output modules (requires <pkg>net-libs/czmq</pkg>)</flag>
-	</use>
-	<upstream>
-		<bugs-to>https://github.com/rsyslog/rsyslog/issues</bugs-to>
-		<remote-id type="cpe">cpe:/a:rsyslog:rsyslog</remote-id>
-	</upstream>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Rsyslog is a rocket-fast system for log processing. It offers
+    high-performance, great security features and a modular design. While it
+    started as a regular syslogd, rsyslog has evolved into a kind of swiss army
+    knife of logging, being able to accept inputs from a wide variety of
+    sources, transform them, and output to the results to diverse destinations.
+    Rsyslog can deliver over one million messages per second to local
+    destinations when limited processing is applied (based on v7, December
+    2013). Even with remote destinations and more elaborate processing the
+    performance is usually considered "stunning".
+  </longdescription>
+  <use>
+    <flag name="clickhouse">Build the ClickHouse output module (requires <pkg>net-misc/curl</pkg>)</flag>
+    <flag name="curl">Enable http_request() function in RainerScript (requires <pkg>net-misc/curl</pkg>)</flag>
+    <flag name="dbi">Build the general database output module (requires <pkg>dev-db/libdbi</pkg>)</flag>
+    <flag name="elasticsearch">Build the Elasticsearch output module (requires <pkg>net-misc/curl</pkg>)</flag>
+    <flag name="gcrypt">Add support for encrypted log files using <pkg>dev-libs/libgcrypt</pkg></flag>
+    <flag name="gnutls">Build the GnuTLS network stream driver (requires <pkg>net-libs/gnutls</pkg>)</flag>
+    <flag name="imhttp">Build the http input module (requires <pkg>www-servers/civetweb</pkg>)</flag>
+    <flag name="impcap">Build the pcap input module (requires <pkg>net-libs/libpcap</pkg>)</flag>
+    <flag name="kafka">Build the Apache Kafka input/output module (requires <pkg>dev-libs/librdkafka</pkg>)</flag>
+    <flag name="kerberos">Build the GSSAPI input and output module (requires <pkg>virtual/krb5</pkg>)</flag>
+    <flag name="kubernetes">Build the kubernetes modify plugin (requires <pkg>net-misc/curl</pkg>)</flag>
+    <flag name="mdblookup">Build the MaxMind DB lookup message modify plugin using <pkg>dev-libs/libmaxminddb</pkg></flag>
+    <flag name="mongodb">Build the MongoDB output module (requires <pkg>dev-libs/mongo-c-driver</pkg>)</flag>
+    <flag name="mysql">Build the MySQL database output module (requires <pkg>virtual/mysql</pkg>)</flag>
+    <flag name="normalize">Build the normalize modify module (requires <pkg>dev-libs/libee</pkg> and <pkg>dev-libs/liblognorm</pkg>)</flag>
+    <flag name="omhttp">Build the http output module (requires <pkg>net-misc/curl</pkg>)</flag>
+    <flag name="omhttpfs">Build the httpfs output module (requires <pkg>net-misc/curl</pkg>)</flag>
+    <flag name="omudpspoof">Build the udpspoof output module (requires <pkg>net-libs/libnet</pkg>)</flag>
+    <flag name="openssl">Build the OpenSSL network stream driver (requires <pkg>dev-libs/openssl</pkg>)</flag>
+    <flag name="postgres">Build the PostgreSQL database output module (requires <pkg>dev-db/postgresql</pkg>)</flag>
+    <flag name="rabbitmq">Build the RabbitMQ output module (requires <pkg>net-libs/rabbitmq-c</pkg>)</flag>
+    <flag name="redis">Build the Redis output module using (requires <pkg>dev-libs/hiredis</pkg>)</flag>
+    <flag name="relp">Build the Reliable Event Logging Protocol (RELP) output module (requires <pkg>dev-libs/librelp</pkg>)</flag>
+    <flag name="rfc3195">Build the rfc3195 input module (requires <pkg>dev-libs/liblogging</pkg>)</flag>
+    <flag name="rfc5424hmac">Build the rfc5424hmac modify module (requires <pkg>dev-libs/openssl</pkg>)</flag>
+    <flag name="snmp">Build the snmp modify and output module (requires <pkg>net-analyzer/net-snmp</pkg>)</flag>
+    <flag name="ssl">Add support for encrypted client/server communication (requires <pkg>net-libs/gnutls</pkg>)</flag>
+    <flag name="systemd">Build the journal input and output module (requires <pkg>sys-apps/systemd</pkg>)</flag>
+    <flag name="uuid">Include UUIDs in messages (requires <pkg>sys-apps/util-linux</pkg>)</flag>
+    <flag name="usertools">Installs the user tools (rsgtutil, rscryutil...) corresponding to the set USE flags</flag>
+    <flag name="xxhash">Enable xxHash support in fmhash module (requires <pkg>dev-libs/xxhash</pkg>)</flag>
+    <flag name="zeromq">Build the ZeroMQ input and output modules (requires <pkg>net-libs/czmq</pkg>)</flag>
+  </use>
+  <upstream>
+    <bugs-to>https://github.com/rsyslog/rsyslog/issues/</bugs-to>
+    <remote-id type="cpe">cpe:/a:rsyslog:rsyslog</remote-id>
+    <remote-id type="github">rsyslog/rsyslog</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python{3_8,3_9} )
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_OPTIONAL="1"
 
 inherit distutils-r1 flag-o-matic toolchain-funcs
@@ -14,7 +14,7 @@ SRC_URI="https://www.kernel.org/pub/software/utils/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

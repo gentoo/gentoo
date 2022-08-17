@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of the PHP_TARGETS USE_EXPAND flags
@@ -8,6 +8,3 @@ php8-0 - Build against PHP 8.0
 php7-4 - Build against PHP 7.4
 php7-3 - Build against PHP 7.3
 php7-2 - Build against PHP 7.2
-php7-1 - Build against PHP 7.1
-php7-0 - Build against PHP 7.0
-php5-6 - Build against PHP 5.6

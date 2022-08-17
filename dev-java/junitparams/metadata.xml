@@ -5,7 +5,7 @@
 		<email>java@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">Pragmatists/JUnitParams/tags</remote-id>
+		<remote-id type="github">Pragmatists/JUnitParams</remote-id>
 		<doc>https://github.com/Pragmatists/JUnitParams/wiki</doc>
 		<bugs-to>https://github.com/Pragmatists/JUnitParams/issues</bugs-to>
 	</upstream>

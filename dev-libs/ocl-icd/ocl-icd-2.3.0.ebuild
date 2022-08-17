@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/OCL-dev/ocl-icd"
 SRC_URI="https://github.com/OCL-dev/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~ppc64 x86"
 
 # Does nothing now but by keeping it here we avoid having to have virtual/opencl
 # handle ebuilds both with and without this flag.
@@ -37,7 +37,8 @@ src_prepare() {
 multilib_src_configure() {
 	# dev-util/opencl-headers ARE official Khronos Group headers, what this option
 	# does is disable the use of the bundled ones
-	ECONF_SOURCE="${S}" econf --enable-pthread-once --disable-official-khronos-headers
+	ECONF_SOURCE="${S}" econf --enable-pthread-once --disable-official-khronos-headers \
+		--enable-custom-vendordir="${EPREFIX}/etc/OpenCL/vendors"
 }
 
 multilib_src_compile() {

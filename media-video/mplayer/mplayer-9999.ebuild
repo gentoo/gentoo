@@ -9,7 +9,7 @@ ESVN_REPO_URI="svn://svn.mplayerhq.hu/mplayer/trunk"
 
 inherit toolchain-funcs flag-o-matic ${SVN_ECLASS}
 
-IUSE="cpu_flags_x86_3dnow cpu_flags_x86_3dnowext a52 aalib +alsa altivec aqua bidi bl bluray
+IUSE="cpu_flags_ppc_altivec cpu_flags_x86_3dnow cpu_flags_x86_3dnowext a52 aalib +alsa aqua bidi bl bluray
 bs2b cddb +cdio cdparanoia cpudetection debug dga
 doc dts dv dvb +dvd +dvdnav +enca +encode faac faad fbcon
 ftp ggi gsm +iconv ipv6 jack joystick jpeg ladspa
@@ -89,7 +89,7 @@ RDEPEND+="
 	gsm? ( media-sound/gsm )
 	iconv? ( virtual/libiconv )
 	jack? ( virtual/jack )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	ladspa? ( media-libs/ladspa-sdk )
 	libass? ( >=media-libs/libass-0.9.10:= )
 	libcaca? ( media-libs/libcaca )
@@ -448,10 +448,9 @@ src_configure() {
 		myconf+=" $(use_enable cpu_flags_x86_${i} ${i})"
 	done
 
-	uses="altivec shm"
-	for i in ${uses}; do
-		myconf+=" $(use_enable ${i})"
-	done
+	myconf+="
+		$(use_enable cpu_flags_ppc_altivec altivec)
+		$(use_enable shm)"
 
 	use debug && myconf+=" --enable-debug=3"
 

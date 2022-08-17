@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,9 @@ else
 	KEYWORDS="amd64 x86"
 	SRC_URI="https://dl.winehq.org/vkd3d/source/${P}.tar.xz"
 fi
+
+#Tests fail: https://bugs.gentoo.org/838655
+RESTRICT="test"
 
 IUSE="spirv-tools"
 RDEPEND="spirv-tools? ( dev-util/spirv-tools:=[${MULTILIB_USEDEP}] )

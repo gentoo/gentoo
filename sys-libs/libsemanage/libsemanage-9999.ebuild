@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit python-r1 toolchain-funcs multilib-minimal
 
@@ -18,7 +18,7 @@ if [[ ${PV} == 9999 ]]; then
 	S="${WORKDIR}/${P}/${PN}"
 else
 	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${MY_PV}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~riscv ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -84,6 +84,7 @@ multilib_src_compile() {
 			emake \
 				AR="$(tc-getAR)" \
 				CC="$(tc-getCC)" \
+				PKG_CONFIG="$(tc-getPKG_CONFIG)" \
 				LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 				"$@"
 		}
@@ -101,6 +102,7 @@ multilib_src_install() {
 		installation_py() {
 			emake DESTDIR="${ED}" \
 				LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
+				PKG_CONFIG="$(tc-getPKG_CONFIG)" \
 				install-pywrap
 			python_optimize # bug 531638
 		}

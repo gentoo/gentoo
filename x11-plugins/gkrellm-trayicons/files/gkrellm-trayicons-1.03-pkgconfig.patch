@@ -1,0 +1,18 @@
+Have Makefile respect user-configured pkg-config
+--- a/Makefile
++++ b/Makefile
+@@ -1,11 +1,11 @@
+ 
+ VERSION = `cat VERSION`
+ PREFIX ?= /usr/local
+-GTK_CONFIG = pkg-config gtk+-2.0
++PKG_CONFIG ?= pkg-config
+ PLUGIN_DIR ?= $(PREFIX)/lib/gkrellm2/plugins
+ GKRELLM_INCLUDE = -I$(PREFIX)/include
+-GTK_CFLAGS = `$(GTK_CONFIG) --cflags` 
+-GTK_LIB = `$(GTK_CONFIG) --libs`
++GTK_CFLAGS = $(shell ${PKG_CONFIG} gtk+-2.0 --cflags)
++GTK_LIB = $(shell ${PKG_CONFIG} gtk+-2.0 --libs)
+ FLAGS = -fPIC $(GTK_CFLAGS) $(GKRELLM_INCLUDE)
+ CFLAGS += $(FLAGS)
+ CFLAGS += -DVERSION=\"$(VERSION)\"

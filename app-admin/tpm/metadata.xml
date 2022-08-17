@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>orbea@riseup.net</email>
+		<name>orbea</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<longdescription>
+		tpm is a tiny shell script which is heavily inspired and
+		largely compatible with pass(1). Just like pass it uses
+		gpg2(1) to securely store your passwords, the major difference
+		between pass and tpm is that the latter is a lot more minimal.
+		Furthermore, tpm is written entirely in POSIX shell.
+	</longdescription>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">nmeum/tpm</remote-id>
+	</upstream>
+</pkgmetadata>

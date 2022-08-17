@@ -1,0 +1,83 @@
+diff -urN foldl-1.4.12/Setup.hs foldl-1.4.12-r1/Setup.hs
+--- foldl-1.4.12/Setup.hs	2001-09-08 19:46:40.000000000 -0600
++++ foldl-1.4.12-r1/Setup.hs	2022-03-23 03:20:48.427151688 -0600
+@@ -1,2 +1,6 @@
+-import Distribution.Simple
+-main = defaultMain
++module Main (main) where
++
++import Distribution.Extra.Doctest ( defaultMainWithDoctests )
++
++main :: IO ()
++main = defaultMainWithDoctests "doctest"
+diff -urN foldl-1.4.12/foldl.cabal foldl-1.4.12-r1/foldl.cabal
+--- foldl-1.4.12/foldl.cabal	2022-03-23 03:17:07.317151581 -0600
++++ foldl-1.4.12-r1/foldl.cabal	2022-03-23 03:20:10.187151669 -0600
+@@ -2,7 +2,7 @@
+ Version: 1.4.12
+ x-revision: 2
+ Cabal-Version: >=1.10
+-Build-Type: Simple
++Build-Type: Custom
+ License: BSD3
+ License-File: LICENSE
+ Copyright: 2013 Gabriel Gonzalez
+@@ -22,6 +22,12 @@
+     Type: git
+     Location: https://github.com/Gabriel439/Haskell-Foldl-Library
+ 
++custom-setup
++    setup-depends:
++        base
++      , Cabal
++      , cabal-doctest
++
+ Library
+     HS-Source-Dirs: src
+     Build-Depends:
+@@ -83,6 +89,9 @@
+     Main-Is: doctest.hs
+     Build-Depends:
+         base,
+-        doctest >= 0.16
++        doctest >= 0.16,
++        directory,
++        filepath,
++        base-compat
+     GHC-Options: -threaded
+     Default-Language: Haskell2010
+diff -urN foldl-1.4.12/test/doctest.hs foldl-1.4.12-r1/test/doctest.hs
+--- foldl-1.4.12/test/doctest.hs	2001-09-08 19:46:40.000000000 -0600
++++ foldl-1.4.12-r1/test/doctest.hs	2022-03-23 03:22:41.077151743 -0600
+@@ -1,4 +1,29 @@
+ import Test.DocTest
++import GHC.IO.Encoding (setLocaleEncoding)
++import System.Directory (getCurrentDirectory, makeAbsolute)
++import System.FilePath.Posix ((</>))
++import System.IO (utf8)
++import Build_doctests (pkgs)
++ 
++main = do
++    setLocaleEncoding utf8
++    pwd    <- getCurrentDirectory
++    prefix <- makeAbsolute pwd
+ 
+-main :: IO ()
+-main = doctest ["-isrc", "src/Control/Foldl.hs", "src/Control/Scanl.hs"]
++    let customFlags =
++            [ "-package-env=-"
++            , "-hide-all-packages"
++            , "-no-user-package-db"
++            , "-package-db=" ++ prefix </> "dist/package.conf.inplace"
++            ]
++
++    let origFlags =
++            [ "-isrc"
++            ]
++
++    let modules =
++            [ "src/Control/Foldl.hs"
++            , "src/Control/Scanl.hs"
++            ]
++
++    doctest $ customFlags ++ pkgs ++ origFlags ++ modules

@@ -1,6 +1,15 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org (2022-06-08)
+# Depends on www-plugins/chrome-binary-plugins which is masked here.
+www-client/qutebrowser widevine
+
+# Petr Vaněk <arkamar@atlas.cz> (2022-03-15)
+# musl package does not currently provide gencat binary, which is needed for
+# nls support, see bug #712828
+x11-wm/fluxbox nls
+
 # Marco Genasci <fedeliallalinea@gmail.com> (2022-01-06)
 # Pulls dev-db/oracle-instantclient which doesn't work on musl
 app-metrics/collectd collectd_plugins_oracle
@@ -23,21 +32,17 @@ net-misc/iputils rarpd
 # Sam James <sam@gentoo.org> (2021-11-20)
 # Pulls in po4a which doesn't seem to work on musl (wants /usr/bin/locale)
 sys-apps/man-db nls
-
-# Sam James <sam@gentoo.org> (2021-11-07)
-# gdb-10[nls] doesn't build on musl
-# "ax.cc:(.text+0x2e0): undefined reference to `libintl_gettext'"
-# bug #809686
-<sys-devel/gdb-11 nls
+sys-apps/sysvinit nls
 
 # Sam James <sam@gentoo.org> (2021-11-07)
 # Disable some sanitizers for LLVM, see bug #753935
 # Needs libexecinfo on musl, not yet packaged
-sys-libs/compiler-rt-sanitizers gwp-asan libfuzzer
+sys-libs/compiler-rt-sanitizers gwp-asan
+<sys-libs/compiler-rt-sanitizers-13 libfuzzer
 
 # Sam James <sam@gentoo.org> (2021-11-07)
 # Broken as "error: unknown type name '_Unwind_Word'"
-sys-libs/compiler-rt-sanitizers hwasan
+<sys-libs/compiler-rt-sanitizers-14 hwasan
 
 # Andreas K. Hüttel <dilfridge@gentoo.org>
 # Restore mask here that is gone elsewhere

@@ -1,0 +1,12 @@
+index 7f29927..45c194e 100644
+--- a/geiser-chez.el
++++ b/geiser-chez.el
+@@ -40,7 +40,7 @@
+   :group 'geiser)
+ 
+ (geiser-custom--defcustom geiser-chez-binary
+-    "scheme"
++    "chezscheme"
+   "Name to use to call the Chez Scheme executable when starting a REPL."
+   :type '(choice string (repeat string))
+   :group 'geiser-chez)

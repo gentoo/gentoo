@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,14 +14,12 @@ SRC_URI="https://github.com/grobian/darwin-xtools/archive/gentoo-${PVR}.tar.gz -
 LICENSE="APSL-2"
 SLOT="8"
 KEYWORDS="~ppc-macos ~x64-macos"
-IUSE="tapi"
 
 # xtools uses c++11 features, not available in gcc-apple, hence gcc/clang dep
 DEPEND="sys-devel/binutils-config
 	|| ( sys-devel/gcc:* sys-devel/clang:* )
 	app-arch/xar
-	tapi? ( sys-libs/tapi )
-	!tapi? ( dev-libs/libyaml )"
+	dev-libs/libyaml"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
@@ -65,7 +63,7 @@ src_configure() {
 		-DXTOOLS_LTO_SUPPORT=NO
 		-DXTOOLS_HAS_LIBPRUNETRIE=YES
 		-DXTOOLS_TAPI_SUPPORT=ON
-		-DXTOOLS_USE_TAPILITE=$(use tapi && echo OFF || echo ON)
+		-DXTOOLS_USE_TAPILITE=ON
 		-DXTOOLS_HOST_IS_64B=$(is-host-64bit)
 		-DXTOOLS_BUGURL="https://bugs.gentoo.org/"
 	)

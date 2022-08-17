@@ -1,12 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7..10} )
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit distutils-r1 multilib
+inherit distutils-r1
 
 DESCRIPTION="Homology or comparative modeling of protein three-dimensional structures"
 HOMEPAGE="https://salilab.org/modeller/"

@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<upstream>
-		<remote-id type="github">douglascrockford/JSON-java</remote-id>
-	</upstream>
 	<maintainer type="project">
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/stleary/JSON-java/issues</bugs-to>
+		<doc>https://github.com/stleary/JSON-java/wiki/</doc>
+		<remote-id type="github">stleary/JSON-java</remote-id>
+	</upstream>
+	<longdescription>
+		JSON is a light-weight, language independent, data interchange format. See http://www.JSON.org/ The files in this package implement JSON encoders/decoders in Java. It also includes the capability to convert between JSON and XML, HTTP headers, Cookies, and CDL. This is a reference implementation. There is a large number of JSON packages in Java. Perhaps someday the Java community will standardize on one. Until then, choose carefully. The license includes this restriction: \"The software shall be used for good, not evil.\" If your conscience cannot live with that, then choose a different package.
+	</longdescription>
 </pkgmetadata>

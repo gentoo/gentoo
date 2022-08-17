@@ -1,0 +1,35 @@
+From 4168c6ded4e54602f6fad8b0a483b20ab7f83cd5 Mon Sep 17 00:00:00 2001
+From: haoyuan2 <Hao.Yuan@amd.com>
+Date: Mon, 21 Feb 2022 10:10:04 -0800
+Subject: [PATCH] SWDEV-316128 - HIP surface API support
+
+remove redundant code in host API
+
+Change-Id: I8fbf894e858642da4198cc7afd2d2e2f1971e738
+Signed-off-by: YiyangWu <xgreenlandforwyy@gmail.com>
+---
+ src/hip_surface.cpp | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src/hip_surface.cpp b/src/hip_surface.cpp
+index 831df321..a8e7f71d 100644
+--- a/src/hip_surface.cpp
++++ b/src/hip_surface.cpp
+@@ -1,4 +1,4 @@
+-/* Copyright (c) 2015 - 2021 Advanced Micro Devices, Inc.
++/* Copyright (c) 2015 - 2022 Advanced Micro Devices, Inc.
+ 
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+@@ -81,8 +81,6 @@ hipError_t hipCreateSurfaceObject(hipSurfaceObject_t* pSurfObject,
+ }
+ 
+ hipError_t ihipDestroySurfaceObject(hipSurfaceObject_t surfaceObject) {
+-  HIP_INIT_API(hipDestroySurfaceObject, surfaceObject);
+-
+   if (surfaceObject == nullptr) {
+     return hipSuccess;
+   }
+-- 
+2.34.1
+

@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!--maintainer-needed-->
 	<upstream>
-		<remote-id type="github">stevedonovan/LDoc</remote-id>
+		<remote-id type="github">lunarmodules/LDoc</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -15,7 +15,7 @@ if [[ "${PV}" != *9999 ]] ; then
 	else
 		#SRC_URI="https://github.com/keepassxreboot/keepassxc/archive/${PV}.tar.gz -> ${P}.tar.gz"
 		SRC_URI="https://github.com/keepassxreboot/keepassxc/releases/download/${PV}/${P}-src.tar.xz"
-		KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+		KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 	fi
 else
 	inherit git-r3
@@ -25,12 +25,13 @@ fi
 
 LICENSE="LGPL-2.1 GPL-2 GPL-3"
 SLOT="0"
-IUSE="autotype browser ccache doc keeshare +network test yubikey"
+IUSE="autotype browser doc keeshare +network test yubikey"
 
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/botan:2
+	app-crypt/argon2:=
+	dev-libs/botan:2=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -38,11 +39,11 @@ RDEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
+	dev-qt/qtx11extras:5
 	media-gfx/qrencode:=
 	sys-libs/readline:0=
 	sys-libs/zlib:=
 	autotype? (
-		dev-qt/qtx11extras:5
 		x11-libs/libX11
 		x11-libs/libXtst
 	)
@@ -52,14 +53,11 @@ RDEPEND="
 		sys-apps/pcsc-lite
 	)
 "
-
-DEPEND="
-	${RDEPEND}
-	dev-qt/linguist-tools:5
+DEPEND="${RDEPEND}
 	dev-qt/qttest:5
 "
 BDEPEND="
-	ccache? ( dev-util/ccache )
+	dev-qt/linguist-tools:5
 	doc? ( dev-ruby/asciidoctor )
 "
 
@@ -76,7 +74,9 @@ src_configure() {
 	filter-flags -flto*
 
 	local mycmakeargs=(
-		-DWITH_CCACHE="$(usex ccache)"
+		# Gentoo users enable ccache via e.g. FEATURES=ccache or
+		# other means. We don't want the build system to enable it for us.
+		-DWITH_CCACHE=OFF
 		-DWITH_GUI_TESTS=OFF
 		-DWITH_TESTS="$(usex test)"
 		-DWITH_XC_AUTOTYPE="$(usex autotype)"

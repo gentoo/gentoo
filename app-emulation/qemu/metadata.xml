@@ -2,16 +2,20 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
+		<email>ajak@gentoo.org</email>
+		<name>John Helmert III</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<maintainer type="person">
 		<email>tamiko@gentoo.org</email>
 		<name>Matthias Maier</name>
 	</maintainer>
 	<maintainer type="person">
 		<email>zlogene@gentoo.org</email>
 		<name>Mikle Kolyada</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>ajak@gentoo.org</email>
-		<name>John Helmert III</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>virtualization@gentoo.org</email>
@@ -68,7 +72,8 @@
 		<flag name="xattr">Add support for getting and setting POSIX extended attributes, through
 		<pkg>sys-apps/attr</pkg>. Requisite for the virtfs backend.</flag>
 		<flag name="xen">Enables support for Xen backends</flag>
-		<flag name="xfs">Support xfsctl() notification and syncing for XFS backed
-		virtual disks.</flag>
 	</use>
+	<upstream>
+		<remote-id type="gitlab">qemu-project/qemu</remote-id>
+	</upstream>
 </pkgmetadata>

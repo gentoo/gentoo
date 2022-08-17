@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/861656
+https://github.com/nose-devs/nose2/commit/fc3d69290462930bc0fa81cb69bc4c6e15f8ae66
+
+From: Stephen Rosen <sirosen@globus.org>
+Date: Sat, 16 Jul 2022 16:41:55 +0000
+Subject: [PATCH] Minor fixes regarding __version__ move
+
+Docs in conf.py and the CI build used `_version.py`, and just need
+minor updates.
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -20,7 +20,7 @@
+ master_doc = "index"
+ project = "nose2"
+ copyright = "2010-2022, Jason Pellerin, Stephen Rosen"
+-version = release = nose2._version.__version__
++version = release = nose2.__version__
+ exclude_patterns = ["_build"]
+ templates_path = ["_templates"]
+ 
+

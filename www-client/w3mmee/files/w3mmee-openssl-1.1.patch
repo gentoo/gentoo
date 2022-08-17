@@ -15,7 +15,7 @@
  	gn = sk_GENERAL_NAME_value(alt, i);
  
  	if (gn->type == GEN_DNS) {
-+#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
  	  char *sn = ASN1_STRING_data(gn->d.ia5);
 +#else
 +	  char *sn = ASN1_STRING_get0_data(gn->d.ia5);
@@ -64,7 +64,7 @@
  	X509_set_default_verify_paths(ssl_ctx->cert);
 -#else				/* SSLEAY_VERSION_NUMBER >= 0x0800 */
 +#else				/* OPENSSL_VERSION_NUMBER >= 0x0800 */
-+#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
  	SSLeay_add_ssl_algorithms();
  	SSL_load_error_strings();
 +#else

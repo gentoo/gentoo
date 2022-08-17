@@ -1,0 +1,26 @@
+Former fix[1] for musl that got reverted[2] for possibly(?) wrong
+reasons[3]. Should be harmless to include here until sorted out.
+https://bugs.gentoo.org/831976
+
+[1] https://github.com/inotify-tools/inotify-tools/commit/b7889c8d
+[2] https://github.com/inotify-tools/inotify-tools/commit/cbab7c0b
+[3] https://github.com/inotify-tools/inotify-tools/issues/155
+From: Khem Raj <raj.khem@gmail.com>
+Date: Mon, 3 Jan 2022 04:42:50 -0800
+Subject: [PATCH] libinotifytools: Bridge differences between musl/glibc/kernel
+ fnotify.h (#154)
+--- a/libinotifytools/src/inotifytools.c
++++ b/libinotifytools/src/inotifytools.c
+@@ -54,6 +54,12 @@ struct fanotify_event_fid {
+ 	struct fanotify_event_info_fid info;
+ 	struct file_handle handle;
+ };
++
++#ifndef __GLIBC__
++#define val __val
++#define __kernel_fsid_t fsid_t
++#endif
++
+ #endif
+ 
+ /**

@@ -1,0 +1,28 @@
+diff --git a/jni/GNUmakefile b/jni/GNUmakefile
+index cfe570a..c8bbb51 100755
+--- a/jni/GNUmakefile
++++ b/jni/GNUmakefile
+@@ -278,7 +278,7 @@ debug:
+ 	@echo "OBJS=$(OBJS)"
+ 
+ $(LIBJFFI):  $(OBJS) $(LIBFFI_LIBS)
+-	$(CC) -o $@ $(LDFLAGS) $(SOFLAGS) $(OBJS) $(LIBFFI) $(LIBS)
++	$(CC) -o $@ $(LDFLAGS) $(SOFLAGS) $(OBJS) $(LIBFFI) $(LIBS) $(LIBFFI_LIBS)
+ 	$(STRIP) $@
+ ifeq ($(OS), darwin)
+ 	codesign -s - $@
+@@ -287,10 +287,14 @@ endif
+ $(BUILD_DIR)/%.o : $(SRC_DIR)/%.c $(wildcard $(JFFI_SRC_DIR)/*.h)
+ 	@mkdir -p $(@D)
+ 	@$(CCACHE) $(CC) $(CFLAGS) -c $< -o $@
++	mkdir -p $(@D)
++	$(CCACHE) $(CC) $(CFLAGS) -c $< -o $@
+ 
+ $(BUILD_DIR)/%.o : $(SRC_DIR)/%.S $(wildcard $(JFFI_SRC_DIR)/*.h)
+ 	@mkdir -p $(@D)
+ 	@$(CC) $(CFLAGS) -o $@ -c $<
++	mkdir -p $(@D)
++	$(CC) $(CFLAGS) -o $@ -c $<
+ 
+ $(OBJS) : $(LIBFFI)
+ 

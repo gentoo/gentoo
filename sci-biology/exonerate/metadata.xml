@@ -6,6 +6,6 @@
 		<name>Gentoo Biology Project</name>
 	</maintainer>
 	<use>
-		<flag name="utils">Install all utilities</flag>
+		<flag name="utils">Install the follow binaries: esd2esi, fasta2esd, fastaannotatecdna, fastachecksum, fastaclean, fastaclip, fastacomposition, fastadiff, fastaexplode, fastafetch, fastahardmask, fastaindex, fastalength, fastanrdb, fastaoverlap, fastareformat, fastaremove, fastarevcomp, fastasoftmask, fastasort, fastasplit, fastasubseq, fastatranslate, fastavalidcds</flag>
 	</use>
 </pkgmetadata>

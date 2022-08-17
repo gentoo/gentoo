@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools
+inherit autotools udev
 
 if [[ ${PV} = "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/wroberts/rogauracore.git"
@@ -32,4 +32,12 @@ src_configure() {
 
 src_compile() {
 	emake
+}
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
 }

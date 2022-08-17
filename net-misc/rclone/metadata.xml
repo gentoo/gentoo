@@ -5,4 +5,8 @@
 		<email>perfinion@gentoo.org</email>
 		<name>Jason Zaman</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>slashbeast@gentoo.org</email>
+		<name>Piotr Karbowski</name>
+	</maintainer>
 </pkgmetadata>

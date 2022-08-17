@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ src_prepare() {
 src_compile() {
 	append-fflags $(test-flags-FC -fallow-argument-mismatch)
 	emake \
-		F77=$(tc-getF77) \
+		F77="$(tc-getF77)" \
 		FFLAGS="${FFLAGS}"
 }
 

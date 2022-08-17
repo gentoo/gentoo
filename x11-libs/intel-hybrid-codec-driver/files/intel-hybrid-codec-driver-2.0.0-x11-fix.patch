@@ -1,0 +1,54 @@
+From b3b4d9a3a08d48bf6022723908a22255cc271ab7 Mon Sep 17 00:00:00 2001
+From: Daniel Charles <daniel.charles@intel.com>
+Date: Fri, 4 May 2018 09:56:10 -0700
+Subject: [PATCH] driver_init: load libva-x11.so for any ABI version
+
+with libva > 2.0.0 hybrid driver can operate with it as well
+so make this load generic to libva installed version
+
+Signed-off-by: Daniel Charles <daniel.charles@intel.com>
+---
+ src/media_drv_output_dri.c | 10 ++++++++++
+ src/media_drv_output_dri.h |  2 +-
+ 2 files changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/src/media_drv_output_dri.c b/src/media_drv_output_dri.c
+index 42299b8..bbd9713 100644
+--- a/src/media_drv_output_dri.c
++++ b/src/media_drv_output_dri.c
+@@ -105,6 +105,15 @@ media_output_dri_init (VADriverContextP ctx)
+   struct dri_vtable *dri_vtable;
+
+   static const struct dso_symbol symbols[] = {
++#if VA_CHECK_VERSION(1,0,0)
++    {"va_dri_get_drawable",
++     offsetof (struct dri_vtable, get_drawable)},
++    {"va_dri_get_rendering_buffer",
++     offsetof (struct dri_vtable, get_rendering_buffer)},
++    {"va_dri_swap_buffer",
++     offsetof (struct dri_vtable, swap_buffer)},
++    {NULL,}
++#else
+     {"dri_get_drawable",
+      offsetof (struct dri_vtable, get_drawable)},
+     {"dri_get_rendering_buffer",
+@@ -112,6 +121,7 @@ media_output_dri_init (VADriverContextP ctx)
+     {"dri_swap_buffer",
+      offsetof (struct dri_vtable, swap_buffer)},
+     {NULL,}
++#endif
+   };
+
+   drv_ctx->dri_output =
+diff --git a/src/media_drv_output_dri.h b/src/media_drv_output_dri.h
+index 0d6ccf0..889861c 100644
+--- a/src/media_drv_output_dri.h
++++ b/src/media_drv_output_dri.h
+@@ -30,7 +30,7 @@
+ #define _MEDIA__DRIVER_OUT_DRI_H
+ #include <stdbool.h>
+ #include "media_drv_defines.h"
+-#define LIBVA_X11_NAME "libva-x11.so.1"
++#define LIBVA_X11_NAME "libva-x11.so.2"
+ VOID media_output_dri_terminate (VADriverContextP ctx);
+ BOOL media_output_dri_init (VADriverContextP ctx);

@@ -6,26 +6,6 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
-		<flag name="network-uri">Get Network.URI from the network-uri package.</flag>
 		<flag name="lukko">Use @lukko@ for file-locking, otherwise use @GHC.IO.Handle.Lock@</flag>
 	</use>
-	<longdescription>
-		The hackage security library provides both server and
-		client utilities for securing the Hackage package server
-		(&lt;http://hackage.haskell.org/&gt;).  It is based on The Update
-		Framework (&lt;http://theupdateframework.com/&gt;), a set of
-		recommendations developed by security researchers at
-		various universities in the US as well as developers on the
-		Tor project (&lt;https://www.torproject.org/&gt;).
-		
-		The current implementation supports only index signing,
-		thereby enabling untrusted mirrors. It does not yet provide
-		facilities for author package signing.
-		
-		The library has two main entry points:
-		"Hackage.Security.Client" is the main entry point for
-		clients (the typical example being @cabal@), and
-		"Hackage.Security.Server" is the main entry point for
-		servers (the typical example being @hackage-server@).
-	</longdescription>
 </pkgmetadata>

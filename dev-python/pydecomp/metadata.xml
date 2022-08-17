@@ -11,6 +11,7 @@
 		routines.  It can easily be extended with custom compression,
 		decompression, and contents definitions.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">dol-sen/pyDeComp</remote-id>
 		<bugs-to>https://github.com/dol-sen/pyDeComp/issues</bugs-to>

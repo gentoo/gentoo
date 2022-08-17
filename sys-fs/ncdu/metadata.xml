@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>whissi@gentoo.org</email>
-		<name>Thomas Deutschmann</name>
+		<email>jsmolic@gentoo.org</email>
+		<name>Jakov Smolić</name>
 	</maintainer>
 	<longdescription>
 		As the name already suggests, ncdu is an NCurses version of the famous old 'du'

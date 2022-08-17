@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/851669
+--- a/CommonSource/Utilities/SafeFunctions.h
++++ b/CommonSource/Utilities/SafeFunctions.h
+@@ -17,6 +17,7 @@
+ #include <cstdio>
+ #include <cstdarg>
+ #include <cstring>
++#include <ctime>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <errno.h>

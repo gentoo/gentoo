@@ -13,7 +13,7 @@ SLOT="${PV}" # Single live slot.
 IUSE="+acl daemon gd +mysqli postgres"
 REQUIRED_USE="|| ( mysqli postgres )"
 
-PHP_SLOTS="8.0 7.4 7.3"
+PHP_SLOTS="8.0 7.4"
 PHP_USE="gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml"
 
 php_rdepend() {
@@ -51,7 +51,7 @@ DEPEND="
 need_httpd_cgi # From webapp.eclass
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-no-chmod.patch
+	"${FILESDIR}"/${PN}-no-chmod-r2.patch
 )
 
 src_install() {

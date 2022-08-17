@@ -10,6 +10,7 @@
 		<name>William Hubbs</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">mesonbuild/meson</remote-id>
 		<remote-id type="pypi">meson</remote-id>
 	</upstream>
 </pkgmetadata>

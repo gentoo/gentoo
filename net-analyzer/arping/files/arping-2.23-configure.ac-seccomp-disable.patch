@@ -1,0 +1,31 @@
+https://github.com/ThomasHabets/arping/pull/51
+
+From 47622ccc97591f55899f8fff325af241b89df09f Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 16 May 2022 06:24:27 +0000
+Subject: [PATCH] configure.ac: make --disable-seccomp work
+
+The first branch ("[action-if-given]") is taken even if --disable-seccomp
+is passed. So, in that branch, check whether the user disabled it or not.
+
+Without this, we'd get a failure when seccomp is detected but we want
+to disable it:
+```
+./configure --disable-seccomp
+[...]
+checking for library containing clock_gettime... none required
+configure: error: --enable-seccomp given but seccomp libraries not present
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -35,7 +35,7 @@ AC_CHECK_LIB([pcap], [pcap_open_live], ,[AC_MSG_ERROR([libpcap not found])])
+ AC_SEARCH_LIBS([clock_gettime], [rt])
+ 
+ AC_ARG_ENABLE([seccomp], [Enable seccomp priv drops by default (-z to turn on, -Z for off)], [
+-   if test "$ac_cv_lib_seccomp_seccomp_init" = "no"; then
++   if test x"$enableval" != x"no" && test "$ac_cv_lib_seccomp_seccomp_init" = "no"; then
+       AC_MSG_ERROR([--enable-seccomp given but seccomp libraries not present])
+    fi
+    AC_DEFINE([DEFAULT_SECCOMP], [1], [Enable seccomp by default])

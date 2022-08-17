@@ -1,4 +1,5 @@
-(eval-after-load "yasnippet"
-  '(let ((snippets-dir "@SITEETC@"))
-     (add-to-list 'yas-snippet-dirs snippets-dir t)
-     (yas-load-directory snippets-dir t)))
+(add-to-list 'load-path "@SITELISP@")
+(autoload 'yasnippet-snippets-initialize "yasnippet-snippets"
+  "Load the `yasnippet-snippets' snippets directory." t)
+(eval-after-load 'yasnippet
+  '(yasnippet-snippets-initialize))

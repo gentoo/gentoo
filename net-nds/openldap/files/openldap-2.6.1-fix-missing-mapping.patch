@@ -1,0 +1,15 @@
+From 59e013602d7b1aa0d7da79d65367c9ec391b96f8 Mon Sep 17 00:00:00 2001
+From: Simon Pichugin <spichugi@redhat.com>
+Date: Wed, 3 Nov 2021 19:03:40 -0700
+Subject: [PATCH] Fix missing mapping
+
+--- a/libraries/liblber/lber.map
++++ b/libraries/liblber/lber.map
+@@ -121,6 +121,7 @@ OPENLDAP_2.200
+     ber_sockbuf_io_fd;
+     ber_sockbuf_io_readahead;
+     ber_sockbuf_io_tcp;
++    ber_sockbuf_io_udp;
+     ber_sockbuf_remove_io;
+     ber_sos_dump;
+     ber_start;

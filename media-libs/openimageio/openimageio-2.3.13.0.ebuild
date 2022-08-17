@@ -59,8 +59,8 @@ RDEPEND="
 	>=media-libs/opencolorio-2.1.1-r4:=
 	>=media-libs/openexr-3:0=
 	media-libs/tiff:0=
+	media-libs/libjpeg-turbo:=
 	sys-libs/zlib:=
-	virtual/jpeg:0
 	dicom? ( sci-libs/dcmtk )
 	ffmpeg? ( media-video/ffmpeg:= )
 	gif? ( media-libs/giflib:0= )

@@ -1,0 +1,31 @@
+https://raw.githubusercontent.com/FreeCAD/homebrew-freecad/master/patches/libshiboken-numpy-1.23.compat.patch
+
+From c238f558bb72860c15da00546a7b7924d0b90848 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Thu, 21 Jul 2022 06:37:26 +0200
+Subject: [PATCH] add numpy-1.23 compatibility
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ libshiboken/sbknumpyarrayconverter.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+--- a/libshiboken/sbknumpyarrayconverter.cpp
++++ b/libshiboken/sbknumpyarrayconverter.cpp
+@@ -116,8 +116,13 @@ std::ostream &operator<<(std::ostream &str, PyArrayObject *o)
+             str << " NPY_ARRAY_NOTSWAPPED";
+         if ((flags & NPY_ARRAY_WRITEABLE) != 0)
+             str << " NPY_ARRAY_WRITEABLE";
++#if NPY_VERSION >= 0x00000010 // NPY_1_23_API_VERSION
++        if ((flags & NPY_ARRAY_WRITEBACKIFCOPY) != 0)
++            str << " NPY_ARRAY_WRITEBACKIFCOPY";
++#else
+         if ((flags & NPY_ARRAY_UPDATEIFCOPY) != 0)
+             str << " NPY_ARRAY_UPDATEIFCOPY";
++#endif
+     } else {
+         str << '0';
+     }
+-- 
+2.35.1
+

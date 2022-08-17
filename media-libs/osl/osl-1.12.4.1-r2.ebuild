@@ -82,7 +82,7 @@ src_configure() {
 	# If no CPU SIMDs were used, completely disable them
 	[[ -z ${mysimd} ]] && mysimd=("0")
 
-	local gcc=$(tc-getCC)
+	local gcc="$(tc-getCC)"
 	# LLVM needs CPP11. Do not disable.
 	local mycmakeargs=(
 		-DCMAKE_CXX_STANDARD=14

@@ -48,16 +48,11 @@ RDEPEND="${PYTHON_DEPS}
 		policykit? ( sys-auth/polkit[introspection] )
 	)"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/docutils
-	dev-util/intltool"
-
-distutils_enable_tests pytest
+BDEPEND="dev-python/docutils"
 
 DOCS=( README.md NEWS.md )
 
-src_prepare() {
-	distutils-r1_src_prepare
-}
+distutils_enable_tests pytest
 
 python_configure() {
 	esetup.py configure --default-graphics=spice

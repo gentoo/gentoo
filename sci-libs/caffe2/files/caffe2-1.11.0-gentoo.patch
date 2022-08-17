@@ -1,0 +1,132 @@
+--- a/cmake/Dependencies.cmake	2022-06-17 22:12:34.451841710 +0200
++++ b/cmake/Dependencies.cmake	2022-06-17 22:12:48.302786501 +0200
+@@ -1512,7 +1512,6 @@
+   if(NOT USE_SYSTEM_ONNX)
+     add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/../third_party/onnx EXCLUDE_FROM_ALL)
+   endif()
+-  add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/../third_party/foxi EXCLUDE_FROM_ALL)
+ 
+   add_definitions(-DONNX_NAMESPACE=${ONNX_NAMESPACE})
+   if(NOT USE_SYSTEM_ONNX)
+@@ -1810,7 +1809,6 @@
+ #
+ set(TEMP_BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS})
+ set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build shared libs" FORCE)
+-add_subdirectory(${PROJECT_SOURCE_DIR}/third_party/fmt)
+ 
+ # Disable compiler feature checks for `fmt`.
+ #
+@@ -1819,9 +1817,7 @@
+ # CMAKE_CXX_FLAGS in ways that break feature checks. Since we already know
+ # `fmt` is compatible with a superset of the compilers that PyTorch is, it
+ # shouldn't be too bad to just disable the checks.
+-set_target_properties(fmt-header-only PROPERTIES INTERFACE_COMPILE_FEATURES "")
+ 
+-list(APPEND Caffe2_DEPENDENCY_LIBS fmt::fmt-header-only)
+ set(BUILD_SHARED_LIBS ${TEMP_BUILD_SHARED_LIBS} CACHE BOOL "Build shared libs" FORCE)
+ 
+ if(USE_BREAKPAD)
+--- a/c10/CMakeLists.txt	2022-06-17 22:40:53.573306905 +0200
++++ b/c10/CMakeLists.txt	2022-06-17 22:41:16.920219686 +0200
+@@ -59,7 +59,7 @@
+ if(${USE_GLOG})
+     target_link_libraries(c10 PUBLIC glog::glog)
+ endif()
+-target_link_libraries(c10 PRIVATE fmt::fmt-header-only)
++target_link_libraries(c10 PRIVATE fmt)
+ 
+ find_package(Backtrace)
+ if(Backtrace_FOUND)
+--- a/torch/CMakeLists.txt	2022-06-17 22:42:20.396982644 +0200
++++ b/torch/CMakeLists.txt	2022-06-17 22:43:20.214759326 +0200
+@@ -82,7 +82,6 @@
+ 
+ set(TORCH_PYTHON_LINK_LIBRARIES
+     shm
+-    fmt::fmt-header-only
+     ATEN_CPU_FILES_GEN_LIB)
+ 
+ set(TORCH_PYTHON_COMPILE_DEFINITIONS)
+--- a/CMakeLists.txt	2022-06-18 20:35:01.451116185 +0200
++++ b/CMakeLists.txt	2022-06-18 20:35:08.219023569 +0200
+@@ -750,7 +750,7 @@
+ 
+ # ---[ Build flags
+ if(NOT MSVC)
+-  string(APPEND CMAKE_CXX_FLAGS " -O2 -fPIC")
++  string(APPEND CMAKE_CXX_FLAGS " -fPIC")
+   string(APPEND CMAKE_CXX_FLAGS " -Wno-narrowing")
+   # Eigen fails to build with some versions, so convert this to a warning
+   # Details at http://eigen.tuxfamily.org/bz/show_bug.cgi?id=1459
+--- a/cmake/public/utils.cmake	2022-06-18 20:50:39.314263395 +0200
++++ b/cmake/public/utils.cmake	2022-06-18 20:51:49.611291709 +0200
+@@ -512,8 +512,6 @@
+   endif()
+ 
+   # Use -O2 for release builds (-O3 doesn't improve perf, and -Os results in perf regression)
+-  target_compile_options(${libname} PRIVATE
+-      $<$<AND:$<COMPILE_LANGUAGE:CXX>,$<OR:$<CONFIG:Release>,$<CONFIG:RelWithDebInfo>>>:-O2>)
+ 
+ endfunction()
+ 
+--- a/cmake/Codegen.cmake	2022-06-18 21:33:13.366381817 +0200
++++ b/cmake/Codegen.cmake	2022-06-18 21:33:30.249157610 +0200
+@@ -57,7 +57,7 @@
+   if(MSVC)
+     set(OPT_FLAG "/fp:strict ")
+   else(MSVC)
+-    set(OPT_FLAG "-O3 ")
++    set(OPT_FLAG " ")
+     if("${CMAKE_BUILD_TYPE}" MATCHES "Debug")
+       set(OPT_FLAG " ")
+     endif()
+--- a/caffe2/CMakeLists.txt	2022-07-01 21:56:49.643490049 +0200
++++ b/caffe2/CMakeLists.txt	2022-07-01 21:57:17.091489479 +0200
+@@ -109,7 +109,7 @@
+ # Note: the folders that are being commented out have not been properly
+ # addressed yet.
+ 
+-if(NOT MSVC AND USE_XNNPACK)
++if(FALSE)
+   if(NOT TARGET fxdiv)
+     set(FXDIV_BUILD_TESTS OFF CACHE BOOL "")
+     set(FXDIV_BUILD_BENCHMARKS OFF CACHE BOOL "")
+@@ -967,7 +967,6 @@
+ endif()
+ 
+ if(NOT MSVC AND USE_XNNPACK)
+-  TARGET_LINK_LIBRARIES(torch_cpu PRIVATE fxdiv)
+ endif()
+ 
+ # ==========================================================
+--- a/cmake/External/nnpack.cmake	2022-07-02 21:56:54.905696921 +0200
++++ b/cmake/External/nnpack.cmake	2022-07-02 21:57:03.665696739 +0200
+@@ -58,7 +58,7 @@
+   set(PTHREADPOOL_SOURCE_DIR "${CAFFE2_THIRD_PARTY_ROOT}/pthreadpool" CACHE STRING "pthreadpool source directory")
+   set(GOOGLETEST_SOURCE_DIR "${CAFFE2_THIRD_PARTY_ROOT}/googletest" CACHE STRING "Google Test source directory")
+ 
+-  if(NOT TARGET nnpack)
++  if(FALSE)
+     if(NOT USE_SYSTEM_PTHREADPOOL AND USE_INTERNAL_PTHREADPOOL_IMPL)
+       set(NNPACK_CUSTOM_THREADPOOL ON CACHE BOOL "")
+     endif()
+--- a/cmake/Dependencies.cmake
++++ b/cmake/Dependencies.cmake
+@@ -481,7 +481,7 @@ endif()
+ list(APPEND Caffe2_DEPENDENCY_LIBS cpuinfo)
+ 
+ # ---[ QNNPACK
+-if(USE_QNNPACK)
++if(FALSE)
+   set(CAFFE2_THIRD_PARTY_ROOT "${PROJECT_SOURCE_DIR}/third_party")
+ 
+   if(NOT DEFINED QNNPACK_SOURCE_DIR)
+@@ -537,7 +537,7 @@ if(USE_QNNPACK)
+ endif()
+ 
+ # ---[ Caffe2 Int8 operators (enabled by USE_QNNPACK) depend on gemmlowp and neon2sse headers
+-if(USE_QNNPACK)
++if(FALSE)
+   set(CAFFE2_THIRD_PARTY_ROOT "${PROJECT_SOURCE_DIR}/third_party")
+   include_directories(SYSTEM "${CAFFE2_THIRD_PARTY_ROOT}/gemmlowp")
+   include_directories(SYSTEM "${CAFFE2_THIRD_PARTY_ROOT}/neon2sse")

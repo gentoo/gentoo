@@ -2,6 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
+		<email>arthurzam@gentoo.org</email>
+		<name>Arthur Zamarin</name>
+	</maintainer>
+	<maintainer type="person">
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
@@ -9,7 +13,9 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">pkgcore/pkgdev</remote-id>
+		<remote-id type="pypi">pkgdev</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -5,4 +5,7 @@
 		<email>sound@gentoo.org</email>
 		<name>Gentoo Sound project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">PromyLOPh/pianobar</remote-id>
+	</upstream>
 </pkgmetadata>

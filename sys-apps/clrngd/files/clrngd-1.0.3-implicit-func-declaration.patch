@@ -1,0 +1,27 @@
+--- a/clrngd.c
++++ b/clrngd.c
+@@ -14,6 +14,13 @@
+ #include <sys/time.h>
+ #include <stdio.h>
+ #include <string.h>
++
++#ifdef HAVE_STROPT_H
++#include <stropts.h>
++#else
++#include <sys/ioctl.h>
++#endif
++
+ #include <linux/types.h>
+ #include <linux/random.h>
+ #include <errno.h>
+--- a/configure.in
++++ b/configure.in
+@@ -18,7 +18,7 @@ dnl Checks for libraries.
+ 
+ dnl Checks for header files.
+ AC_HEADER_STDC
+-AC_CHECK_HEADERS(unistd.h sys/param.h sys/time.h time.h sys/mkdev.h sys/sysmacros.h string.h memory.h fcntl.h dirent.h sys/ndir.h ndir.h alloca.h locale.h )
++AC_CHECK_HEADERS(unistd.h sys/param.h sys/time.h time.h sys/mkdev.h sys/sysmacros.h string.h memory.h fcntl.h dirent.h sys/ndir.h ndir.h alloca.h locale.h stropts.h)
+ 
+ jm_CHECK_TYPE_STRUCT_UTIMBUF
+ AC_HEADER_MAJOR

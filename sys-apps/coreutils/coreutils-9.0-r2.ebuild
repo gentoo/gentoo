@@ -4,8 +4,8 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
-
-inherit flag-o-matic python-any-r1 toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/coreutils.asc
+inherit flag-o-matic python-any-r1 toolchain-funcs verify-sig
 
 PATCH="${PN}-8.30-patches-01"
 DESCRIPTION="Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)"
@@ -14,7 +14,8 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 	!vanilla? (
 		mirror://gentoo/${PATCH}.tar.xz
 		https://dev.gentoo.org/~polynomial-c/dist/${PATCH}.tar.xz
-	)"
+	)
+	verify-sig? ( mirror://gnu/${PN}/${P}.tar.xz.sig )"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -42,6 +43,7 @@ BDEPEND="
 		dev-util/strace
 		${PYTHON_DEPS}
 	)
+	verify-sig? ( sec-keys/openpgp-keys-coreutils )
 "
 RDEPEND+="
 	hostname? ( !sys-apps/net-tools[hostname] )
@@ -62,6 +64,15 @@ pkg_setup() {
 	if use test ; then
 		python-any-r1_pkg_setup
 	fi
+}
+
+src_unpack() {
+	if use verify-sig ; then
+		# Needed for downloaded patch (which is unsigned, which is fine)
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.sig}
+	fi
+
+	default
 }
 
 src_prepare() {

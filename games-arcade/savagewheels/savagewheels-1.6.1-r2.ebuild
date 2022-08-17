@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,13 +6,13 @@ EAPI=7
 inherit cmake
 
 DESCRIPTION="2D car crashing game similar to the old classic Destruction Derby"
-HOMEPAGE="https://github.com/petarov/savagewheels"
+HOMEPAGE="https://github.com/kenamick/savagewheels"
 
 GAMEDATA="${PN}-gamedata-1.4.0"
 
 SRC_URI="
-	https://github.com/petarov/savagewheels/archive/${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/petarov/savagewheels/releases/download/v1.4/${PN}-gamedata.tar.gz -> ${GAMEDATA}.tar.gz
+	https://github.com/kenamick/savagewheels/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/kenamick/savagewheels/releases/download/v1.4/${PN}-gamedata.tar.gz -> ${GAMEDATA}.tar.gz
 "
 
 LICENSE="MIT"

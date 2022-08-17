@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -44,7 +44,7 @@ src_prepare() {
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
 		$(use_enable trust trust-module) \
-		$(use_with trust trust-paths ${EPREFIX}/etc/ssl/certs/ca-certificates.crt) \
+		$(use_with trust trust-paths "${EPREFIX}"/etc/ssl/certs/ca-certificates.crt) \
 		$(use_enable debug) \
 		$(use_with libffi) \
 		$(use_with asn1 libtasn1) \

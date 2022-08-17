@@ -62,7 +62,7 @@ src_compile() {
 	# on the offchance that we're cross-compiling.
 	echo -e ""
 	einfo ">>> Building the 'wreckoff' utility with $(tc-getBUILD_CC) ..."
-	emake CC=$(tc-getBUILD_CC) tools_clean tools
+	emake CC="$(tc-getBUILD_CC)" tools_clean tools
 
 	# 32bit copy (sashARCS for IP22/IP32)
 	echo -e ""

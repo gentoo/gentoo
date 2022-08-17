@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # @ECLASS: mozcoreconf-v6.eclass
@@ -10,7 +10,7 @@
 #
 # inherit mozconfig-v6.* or above for mozilla configuration support
 
-# @ECLASS-VARIABLE: MOZILLA_FIVE_HOME
+# @ECLASS_VARIABLE: MOZILLA_FIVE_HOME
 # @DESCRIPTION:
 # This is an eclass-generated variable that defines the rpath that the mozilla
 # product will be installed in.  Read-only
@@ -76,24 +76,12 @@ mozconfig_use_with() {
 	mozconfig_annotate "$(use $1 && echo +$1 || echo -$1)" "${flag}"
 }
 
-# @FUNCTION: mozconfig_use_extension
-# @DESCRIPTION:
-# enable or disable an extension based on a USE-flag
-#
-# Example:
-# mozconfig_use_extension gnome gnomevfs
-# => ac_add_options --enable-extensions=gnomevfs
-mozconfig_use_extension() {
-	declare minus=$(use $1 || echo -)
-	mozconfig_annotate "${minus:-+}$1" --enable-extensions=${minus}${2}
-}
-
 moz_pkgsetup() {
 	# Ensure we use C locale when building
-	export LANG="C"
-	export LC_ALL="C"
-	export LC_MESSAGES="C"
-	export LC_CTYPE="C"
+	export LANG="C.UTF-8"
+	export LC_ALL="C.UTF-8"
+	export LC_MESSAGES="C.UTF-8"
+	export LC_CTYPE="C.UTF-8"
 
 	# Ensure we use correct toolchain
 	export HOST_CC="$(tc-getBUILD_CC)"
@@ -207,8 +195,13 @@ mozconfig_init() {
 	# Strip optimization so it does not end up in compile string
 	filter-flags '-O*'
 
+	# elf-hack is broken on x86 and disabled by default.
 	if is-flagq '-g*' ; then
-		mozconfig_annotate 'elf-hack broken with -g* flags' --disable-elf-hack
+		case "${ARCH}" in
+		amd64 | arm)
+			mozconfig_annotate 'elf-hack is broken with -g* flags' --disable-elf-hack
+			;;
+		esac
 	fi
 
 	# Strip over-aggressive CFLAGS
@@ -289,12 +282,6 @@ mozconfig_final() {
 	done
 	echo "=========================================================="
 	echo
-
-	# Resolve multiple --enable-extensions down to one
-	declare exts=$(sed -n 's/^ac_add_options --enable-extensions=\([^ ]*\).*/\1/p' \
-		.mozconfig | xargs)
-	sed -i '/^ac_add_options --enable-extensions/d' .mozconfig
-	echo "ac_add_options --enable-extensions=${exts// /,}" >> .mozconfig
 }
 
 _MOZCORECONF=1

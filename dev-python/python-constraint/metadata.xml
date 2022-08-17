@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- comaintainers-welcomed -->
+	<maintainer type="person" proxied="yes">
+		<email>gaboroszkar@protonmail.com</email>
+		<name>Gábor Oszkár Dénes</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+	The Python constraint module offers solvers for Constraint Satisfaction Problems (CSPs) over finite domains in simple and pure Python. CSP is class of problems which may be represented in terms of variables (a, b, ...), domains (a in [1, 2, 3], ...), and constraints (a &lt; b, ...).
+	</longdescription>
+	<upstream>
+		<remote-id type="github">python-constraint/python-constraint</remote-id>
+		<remote-id type="pypi">python-constraint</remote-id>
+	</upstream>
+</pkgmetadata>

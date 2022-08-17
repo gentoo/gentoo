@@ -23,7 +23,7 @@ else
 fi
 
 RDEPEND="
-	dev-libs/libevent[ssl,threads]
+	dev-libs/libevent:=[ssl,threads]
 	dev-libs/openssl:0=
 	net-libs/libnet:1.1
 	net-libs/libpcap
@@ -31,6 +31,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}/${P}-openssl3.patch" )
 
 src_prepare() {
 	default

@@ -1,15 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-CMAKE_ECLASS=cmake
+PKGNAME="ssr"
 inherit cmake-multilib flag-o-matic xdg
 
 DESCRIPTION="A Simple Screen Recorder"
-HOMEPAGE="https://www.maartenbaert.be/simplescreenrecorder"
-LICENSE="GPL-3"
-PKGNAME="ssr"
+HOMEPAGE="https://www.maartenbaert.be/simplescreenrecorder/"
 if [[ ${PV} = 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/MaartenBaert/${PKGNAME}.git"
@@ -20,8 +18,11 @@ else
 	S="${WORKDIR}/${PKGNAME}-${PV}"
 fi
 
+LICENSE="GPL-3"
 SLOT="0"
-IUSE="+asm jack mp3 pulseaudio theora v4l vorbis vpx x264"
+IUSE="+asm jack mp3 opengl pulseaudio theora v4l vorbis vpx x264"
+
+REQUIRED_USE="abi_x86_32? ( opengl )"
 
 RDEPEND="
 	dev-qt/qtcore:5
@@ -29,7 +30,6 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	media-libs/alsa-lib:0=
-	media-libs/libglvnd[${MULTILIB_USEDEP},X]
 	media-video/ffmpeg[vorbis?,vpx?,x264?,mp3?,theora?]
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext
@@ -37,19 +37,20 @@ RDEPEND="
 	x11-libs/libXi
 	x11-libs/libXinerama
 	virtual/glu[${MULTILIB_USEDEP}]
-	v4l? ( media-libs/libv4l )
 	jack? ( virtual/jack )
+	opengl? ( media-libs/libglvnd[${MULTILIB_USEDEP},X] )
 	pulseaudio? ( media-sound/pulseaudio )
+	v4l? ( media-libs/libv4l )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"
 
 pkg_pretend() {
-	if [[ "${ABI}" == amd64 ]]; then
-		elog "You may want to add USE flag 'abi_x86_32' when running a 64bit system"
-		elog "When added 32bit GLInject libraries are also included. This is"
-		elog "required if you want to use OpenGL recording on 32bit applications."
-		elog
+	if [[ "${ABI}" == amd64 ]] ; then
+		einfo "You may want to add USE flag 'abi_x86_32' when running a 64bit system"
+		einfo "When added 32bit GLInject libraries are also included. This is"
+		einfo "required if you want to use OpenGL recording on 32bit applications."
+		einfo
 	fi
 
 	if has_version media-video/ffmpeg[x264] && has_version media-libs/x264[10bit] ; then
@@ -63,24 +64,20 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	# QT requires -fPIC. Compile fails otherwise.
+	# Qt requires -fPIC. Compile fails otherwise.
 	# Recently removed from the default compile options upstream
 	# https://github.com/MaartenBaert/ssr/commit/25fe1743058f0d1f95f6fbb39014b6ac146b5180
 	append-flags -fPIC
-}
-
-src_prepare() {
-	# required because xdg.eclass overrides default cmake_src_prepare
-	cmake_src_prepare
 }
 
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DENABLE_JACK_METADATA="$(multilib_native_usex jack)"
 		-DENABLE_X86_ASM="$(usex asm)"
+		-DWITH_OPENGL_RECORDING="$(usex opengl)"
 		-DWITH_PULSEAUDIO="$(multilib_native_usex pulseaudio)"
 		-DWITH_JACK="$(multilib_native_usex jack)"
-		-DWITH_GLINJECT="true"
+		-DWITH_GLINJECT="$(usex opengl)"
 		-DWITH_V4L2="$(multilib_native_usex v4l)"
 	)
 

@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+# Copyright 2020-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${MINIFLUX_USER:=miniflux}
+: ${MINIFLUX_GROUP:=nobody}
+: ${MINIFLUX_CONF:=/etc/miniflux.conf}
+
+name="miniflux daemon"
+description="Miniflux Web Server"
+command=/usr/bin/miniflux
+command_args="${miniflux_args} -c ${MINIFLUX_CONF}"
+command_background="true"
+command_user="${MINIFLUX_USER}:${MINIFLUX_GROUP}"
+error_log="/var/log/${RC_SVCNAME}.err"
+pidfile="/run/${RC_SVCNAME}.pid"

@@ -1,0 +1,47 @@
+# EXEC_PAGESIZE is a preprocessor macro from the Linux Kernel headers. Include
+# the appropriate Linux header file <linux/param.h>
+#
+# With this PR https://github.com/STEllAR-GROUP/hpx/pull/5947 merged, from
+# 1.8.1 we can drop these patches
+--- a/components/performance_counters/memory/src/mem_counter_linux.cpp
++++ b/components/performance_counters/memory/src/mem_counter_linux.cpp
+@@ -14,6 +14,11 @@
+ #include <sys/types.h>
+ #include <unistd.h>
+
++// Fix for musl. Use linux/param.h for EXEC_PAGESIZE
++#ifdef __linux__
++#include <linux/param.h>
++#endif
++
+ #include <hpx/modules/errors.hpp>
+ #include <hpx/modules/format.hpp>
+
+--- a/libs/core/coroutines/include/hpx/coroutines/detail/context_linux_x86.hpp
++++ b/libs/core/coroutines/include/hpx/coroutines/detail/context_linux_x86.hpp
+@@ -37,6 +37,11 @@
+ #include <stdexcept>
+ #include <sys/param.h>
+
++// Fix for musl. Use linux/param.h for EXEC_PAGESIZE
++#ifdef __linux__
++#include <linux/param.h>
++#endif
++
+ #if defined(HPX_HAVE_STACKOVERFLOW_DETECTION)
+
+ #include <cstring>
+--- a/libs/core/coroutines/include/hpx/coroutines/detail/posix_utility.hpp
++++ b/libs/core/coroutines/include/hpx/coroutines/detail/posix_utility.hpp
+@@ -67,6 +67,11 @@
+ #define EXEC_PAGESIZE static_cast<std::size_t>(sysconf(_SC_PAGESIZE))
+ #endif
+
++// Fix for musl. Use linux/param.h for EXEC_PAGESIZE
++#ifdef __linux__
++#include <linux/param.h>
++#endif
++
+ /**
+  * Stack allocation routines and trampolines for setcontext
+  */

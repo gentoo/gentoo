@@ -8,6 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">installer</remote-id>
-		<remote-id type="github">pradyunsg/installer</remote-id>
+		<remote-id type="github">pypa/installer</remote-id>
 	</upstream>
 </pkgmetadata>

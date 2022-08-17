@@ -19,6 +19,8 @@ RDEPEND="!<=dev-util/sysdig-0.26.4[modules]"
 
 CONFIG_CHECK="HAVE_SYSCALL_TRACEPOINTS ~TRACEPOINTS"
 
+PATCHES=( "${FILESDIR}"/${PV}-fix-kmod-build-on-5.18+.patch )
+
 pkg_pretend() {
 	linux-mod_pkg_setup
 }

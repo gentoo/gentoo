@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,8 +12,8 @@ HOMEPAGE="https://sourceforge.net/projects/xineliboutput/"
 SRC_URI="mirror://sourceforge/${PN#vdr-}/${P}.tgz
 		http://vdr.websitec.de/download/${PN}/${P}_clang.patch.bz2"
 
-SLOT="0"
 LICENSE="GPL-2+"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="bluray caps cec dbus fbcon jpeg libextractor nls opengl +vdr vaapi vdpau +X +xine xinerama"
 
@@ -89,8 +89,8 @@ src_configure() {
 
 	# No autotools based configure script
 	./configure \
-		--cc=$(tc-getCC) \
-		--cxx=$(tc-getCXX) \
+		--cc="$(tc-getCC)" \
+		--cxx="$(tc-getCXX)" \
 		$(use_enable X x11) \
 		$(use_enable X xshm) \
 		$(use_enable X xdpms) \

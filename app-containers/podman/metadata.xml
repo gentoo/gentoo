@@ -22,6 +22,9 @@
 			Enables dependencies for the "btrfs" graph driver, including
 			necessary kernel flags.
 		</flag>
+		<flag name="cgroup-hybrid">
+			Default to hybrid (legacy) cgroup hierarchy instead of unified (modern).
+		</flag>
 		<flag name="fuse">
 			Enables fuse dependencies (fuse-overlayfs is especially useful
 			for rootless mode).

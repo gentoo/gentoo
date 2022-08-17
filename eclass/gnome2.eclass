@@ -11,7 +11,7 @@
 # Exports portage base functions used by ebuilds written for packages using the
 # GNOME framework. For additional functions, see gnome2-utils.eclass.
 
-# @ECLASS-VARIABLE: GNOME2_EAUTORECONF
+# @ECLASS_VARIABLE: GNOME2_EAUTORECONF
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Run eautoreconf instead of only elibtoolize
@@ -31,13 +31,13 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-# @ECLASS-VARIABLE: ELTCONF
+# @ECLASS_VARIABLE: ELTCONF
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Extra options passed to elibtoolize
 ELTCONF=${ELTCONF:-""}
 
-# @ECLASS-VARIABLE: G2CONF
+# @ECLASS_VARIABLE: G2CONF
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Extra configure opts passed to econf.
@@ -47,7 +47,7 @@ if has ${EAPI} 5; then
 	G2CONF=${G2CONF:-""}
 fi
 
-# @ECLASS-VARIABLE: GCONF_DEBUG
+# @ECLASS_VARIABLE: GCONF_DEBUG
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Whether to handle debug or not.
@@ -65,12 +65,12 @@ if has ${EAPI} 5; then
 	fi
 fi
 
-# @ECLASS-VARIABLE: GNOME2_ECLASS_GIO_MODULES
+# @ECLASS_VARIABLE: GNOME2_ECLASS_GIO_MODULES
 # @INTERNAL
 # @DESCRIPTION:
 # Array containing glib GIO modules
 
-# @ECLASS-VARIABLE: GNOME2_LA_PUNT
+# @ECLASS_VARIABLE: GNOME2_LA_PUNT
 # @DESCRIPTION:
 # In EAPIs 5 and 6, it relies on prune_libtool_files (from ltprune.eclass) for
 # this. Later EAPIs use find ... -delete. Available values for GNOME2_LA_PUNT:

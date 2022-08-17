@@ -14,7 +14,6 @@ acpi - Add support for Advanced Configuration and Power Interface
 adns - Add support for asynchronous DNS resolution
 afs - Add OpenAFS support (distributed file system)
 alsa - Add support for media-libs/alsa-lib (Advanced Linux Sound Architecture)
-altivec - Add support for optimizations for G4 and G5/ppc970 processors
 ao - Use libao audio output library for sound playback
 apache2 - Add Apache2 support
 aqua - Include support for the Mac OS X Aqua (Carbon/Cocoa) GUI
@@ -22,7 +21,6 @@ atm - Enable Asynchronous Transfer Mode protocol support
 appindicator - Build in support for notifications using the libindicate or libappindicator plugin
 audiofile - Add support for libaudiofile where applicable
 audit - Enable support for Linux audit subsystem using sys-process/audit
-ayatana - Build in support for Ayatana notification using the libindicate or libappindicator plugin
 bash-completion - Enable bash-completion support
 berkdb - Add support for sys-libs/db (Berkeley DB for MySQL)
 bidi - Enable bidirectional language support
@@ -209,7 +207,6 @@ mysqli - Add support for the improved mySQL libraries
 nas - Add support for network audio sound
 ncurses - Add ncurses support (console display library)
 neXt - Enable neXt toolkit
-neon - Enable optimization support for ARM NEON processors
 netcdf - Enable NetCDF data format support
 networkmanager - Enable net-misc/networkmanager support
 nis - Support for NIS/YP services
@@ -272,6 +269,7 @@ samba - Add support for SAMBA (Windows File and Printer sharing)
 sasl - Add support for the Simple Authentication and Security Layer
 savedconfig - Use this to restore your config from /etc/portage/savedconfig ${CATEGORY}/${PN}. Make sure your USE flags allow for appropriate dependencies
 scanner - Add support for scanner hardware (e.g. build the sane frontend in kdegraphics)
+screencast - Enable support for remote desktop and screen cast using PipeWire
 sctp - Support for Stream Control Transmission Protocol
 sdl - Add support for Simple Direct Layer (media library)
 seccomp - Enable seccomp (secure computing mode) to perform system call filtering at runtime to increase security of programs

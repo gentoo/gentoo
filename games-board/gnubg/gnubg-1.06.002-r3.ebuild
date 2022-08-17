@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit autotools desktop python-single-r1 xdg
 
 DESCRIPTION="GNU BackGammon"
 HOMEPAGE="https://www.gnu.org/software/gnubg/"
-SRC_URI="https://ftp.gnu.org/gnu/gnubg/${PN}-release-${PV}-sources.tar.gz"
+SRC_URI="mirror://gnu/gnu/${PN}/${PN}-release-${PV}-sources.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=7
 
 COMMIT="1dc111308356d999f2a32aa50b6a0737ec5e6b09"
 DESCRIPTION="glastree is a poor mans snapshot utility using hardlinks written in perl"
-HOMEPAGE="http://www.igmus.org/code/"
+HOMEPAGE="https://old.igmus.org/code/"
 SRC_URI="https://github.com/jeremywohl/glastree/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${COMMIT}"
 

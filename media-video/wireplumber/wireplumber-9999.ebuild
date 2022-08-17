@@ -3,6 +3,13 @@
 
 EAPI=8
 
+# 1. Please regularly check (even at the point of bumping) Fedora's packaging
+# for needed backports at https://src.fedoraproject.org/rpms/wireplumber/tree/rawhide
+#
+# 2. Keep an eye on git master (for both PipeWire and WirePlumber) as things
+# continue to move quickly. It's not uncommon for fixes to be made shortly
+# after releases.
+
 LUA_COMPAT=( lua5-{3,4} )
 
 inherit lua-single meson systemd
@@ -13,7 +20,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://gitlab.freedesktop.org/pipewire/${PN}/-/archive/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 DESCRIPTION="Replacement for pipewire-media-session"
@@ -36,13 +43,14 @@ BDEPEND="
 	dev-libs/glib
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
+	sys-devel/gettext
 "
 
 DEPEND="
 	${LUA_DEPS}
 	>=dev-libs/glib-2.62
-	>=media-video/pipewire-0.3.45:=
-	virtual/libc
+	>=media-video/pipewire-0.3.53-r1:=
+	virtual/libintl
 	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd )
 "
@@ -86,7 +94,7 @@ src_install() {
 	# If a reflinking CoW filesystem is used (e.g. Btrfs), then the files
 	# will not actually get stored twice until modified.
 	insinto /etc
-	doins -r ${ED}/usr/share/wireplumber
+	doins -r "${ED}"/usr/share/wireplumber
 }
 
 pkg_postinst() {

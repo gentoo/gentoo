@@ -2,36 +2,40 @@ Ensure we link against the correct ncurses libraries.
 https://bugs.gentoo.org/764470
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
-@@ -1,11 +1,7 @@
- #AM_CFLAGS = --pedantic -Wall
+@@ -2,9 +2,9 @@
  #-DDEBUG
  
--if HAVE_WIDE_NCURSES
+ if HAVE_WIDE_NCURSES
 -nudoku_LDADD = -lncursesw
--else
++nudoku_LDADD = ${ncursesw_LIBS}
+ else
 -nudoku_LDADD = -lncurses
--endif
 +nudoku_LDADD = ${ncurses_LIBS}
+ endif
  bin_PROGRAMS = nudoku
  nudoku_SOURCES = main.c sudoku.c sudoku.h
- 
+
 --- a/configure.ac
 +++ b/configure.ac
-@@ -34,15 +34,7 @@ the cairo development libraries, or compile without support (--disable-cairo)
+@@ -6,6 +6,9 @@ AC_INIT([nudoku], [2.1.0], [jubalh@iodoru.org])
+ AC_CONFIG_SRCDIR([src/main.c])
+ AM_INIT_AUTOMAKE([foreign])
  
++# Check for pkg-config
++PKG_PROG_PKG_CONFIG()
++
+ # Checks for programs.
+ AC_PROG_CC
+ # Use C99.
+@@ -35,9 +38,9 @@ the cairo development libraries, or compile without support (--disable-cairo)
  fi
  
--have_wide_ncurses=no
+ have_wide_ncurses=no
 -AC_CHECK_LIB(ncursesw, initscr, [have_wide_ncurses=yes])
--if test $have_wide_ncurses = no; then
++PKG_CHECK_MODULES([ncursesw], [ncursesw], [have_wide_ncurses=yes], [])
+ if test $have_wide_ncurses = no; then
 -   AC_CHECK_LIB(ncurses, initscr, [], [
--   echo "nudoku requires ncurses"
--   exit 1
--   ])
--fi
--AM_CONDITIONAL([HAVE_WIDE_NCURSES], [test $have_wide_ncurses = yes])
-+PKG_CHECK_MODULES([ncurses], [ncurses])
- 
- # Checks for header files.
- AC_CHECK_HEADERS([stdlib.h string.h unistd.h])
-
++   PKG_CHECK_MODULES([ncurses], [ncurses], [], [ 
+    echo "nudoku requires ncurses"
+    exit 1
+    ])

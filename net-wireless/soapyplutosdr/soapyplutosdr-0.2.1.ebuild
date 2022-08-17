@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/pothosware/SoapyPlutoSDR.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~riscv ~x86"
 	COMMIT="782650597b18f311cc97fbb7c6813539e6adef16"
 	SRC_URI="https://github.com/pothosware/SoapyPlutoSDR/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/SoapyPlutoSDR-${COMMIT}

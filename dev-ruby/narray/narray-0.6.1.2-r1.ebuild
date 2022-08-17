@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ DESCRIPTION="Numerical N-dimensional Array class"
 HOMEPAGE="https://masa16.github.io/narray/"
 SRC_URI="https://github.com/masa16/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="Ruby"
+LICENSE="Ruby-BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~hppa ~mips ppc ~ppc64 x86"
 

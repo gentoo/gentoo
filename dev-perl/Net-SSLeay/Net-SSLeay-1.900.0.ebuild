@@ -12,7 +12,7 @@ DESCRIPTION="Perl extension for using OpenSSL"
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="minimal examples"
 
 RDEPEND="
@@ -51,6 +51,7 @@ src_configure() {
 		export NETWORK_TESTS=no
 	fi
 	export LIBDIR=$(get_libdir)
+	use prefix && export OPENSSL_PREFIX="${EPREFIX}/usr"
 	perl-module_src_configure
 }
 

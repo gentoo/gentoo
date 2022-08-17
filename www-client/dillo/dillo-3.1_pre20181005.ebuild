@@ -50,7 +50,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake AR=$(tc-getAR)
+	emake AR="$(tc-getAR)"
 	if use doc; then
 		doxygen Doxyfile || die
 	fi

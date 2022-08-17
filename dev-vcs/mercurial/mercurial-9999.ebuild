@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="threads(+)"
 DISTUTILS_USE_SETUPTOOLS=no
 CARGO_OPTIONAL=1
@@ -59,7 +59,7 @@ src_compile() {
 	if use rust; then
 		pushd rust/hg-cpython || die
 		cargo_src_compile --no-default-features --features python3 --jobs $(makeopts_jobs)
-		popd
+		popd || die
 	fi
 	distutils-r1_src_compile
 }
@@ -92,7 +92,9 @@ python_install() {
 	if use rust; then
 		local -x HGWITHRUSTEXT="cpython"
 	fi
+
 	distutils-r1_python_install build_ext
+	python_doscript contrib/hg-ssh
 }
 
 python_install_all() {
@@ -107,7 +109,6 @@ python_install_all() {
 	if use tk; then
 		dobin contrib/hgk
 	fi
-	python_foreach_impl python_doscript contrib/hg-ssh
 
 	if use emacs; then
 		elisp-install ${PN} contrib/mercurial.el* || die "elisp-install failed!"

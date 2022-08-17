@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ IUSE=""
 DEPEND=">=media-video/vdr-1.4.2"
 
 RDEPEND="${DEPEND}
-	|| ( media-video/mplay-sh >=media-video/mplayer-sh-0.8.6-r1 )
+	media-video/mplay-sh
 	sys-apps/util-linux"
 
 S=${WORKDIR}/mp3-${PV}

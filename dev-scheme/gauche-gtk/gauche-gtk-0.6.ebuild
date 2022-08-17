@@ -11,7 +11,7 @@ SRC_URI="https://github.com/shirok/${PN^g}2/releases/download/release-${PV}/${MY
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="examples"
 RESTRICT="test"
 

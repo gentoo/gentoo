@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,6 +18,8 @@ IUSE="doc memcached pam ssl static-libs"
 
 RDEPEND="
 	${POSTGRES_DEP}
+	acct-group/postgres
+	acct-user/pgpool
 	net-libs/libnsl:0=
 	virtual/libcrypt:=
 	memcached? ( dev-libs/libmemcached )
@@ -35,8 +37,6 @@ DEPEND="${RDEPEND}
 "
 
 pkg_setup() {
-	postgres_new_user pgpool
-
 	postgres-multi_pkg_setup
 }
 
@@ -55,7 +55,7 @@ src_prepare() {
 src_configure() {
 	postgres-multi_foreach econf \
 		--disable-rpath \
-		--sysconfdir="${EROOT}/etc/${PN}" \
+		--sysconfdir="${EPREFIX}/etc/${PN}" \
 		--with-pgsql-includedir='/usr/include/postgresql-@PG_SLOT@' \
 		--with-pgsql-libdir="/usr/$(get_libdir)/postgresql-@PG_SLOT@/$(get_libdir)" \
 		$(use_enable static-libs static) \

@@ -1,15 +1,16 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit python-any-r1 toolchain-funcs
 
 DESCRIPTION="Tools for manipulation and analysis of BED, GFF/GTF, VCF, SAM/BAM file formats"
 HOMEPAGE="https://bedtools.readthedocs.io/"
 SRC_URI="https://github.com/arq5x/${PN}2/releases/download/v${PV}/${P}.tar.gz"
+S="${WORKDIR}/${PN}2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -25,8 +26,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	test? ( >=sci-biology/samtools-1.10:0 )"
-
-S="${WORKDIR}"/${PN}2
 
 # bedtools2 has a *terrible* build system and development practices.
 # Upstream has forked htslib 1.9 and extended it by adding clever callbacks
@@ -44,6 +43,6 @@ src_configure() {
 src_install() {
 	default
 
-	insinto /usr/share/${PN}
+	insinto /usr/share/bedtools
 	doins -r genomes
 }

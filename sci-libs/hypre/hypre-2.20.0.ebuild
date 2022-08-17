@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,16 +27,12 @@ DEPEND="${RDEPEND}"
 DOCS=( CHANGELOG COPYRIGHT README )
 
 pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]] && use openmp && [[ $(tc-getCC) == *gcc* ]] ; then
-		tc-check-openmp
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 pkg_setup() {
-	if [[ ${MERGE_TYPE} != binary ]] && use openmp && [[ $(tc-getCC) == *gcc* ]] && ! tc-has-openmp ; then
-		ewarn "You are using a non capable gcc compiler ( < 4.2 ? )"
-		die "Need an OpenMP capable compiler"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+	use fortran && fortran-2_pkg_setup
 }
 
 src_prepare() {
@@ -60,8 +56,9 @@ src_configure() {
 	tc-export CC CXX
 	append-flags -Dhypre_dgesvd=dgesvd_
 
-	if use openmp && [[ $(tc-getCC) == *gcc* ]] ; then
-		append-flags -fopenmp && append-ldflags -fopenmp
+	if use openmp ; then
+		append-flags -fopenmp
+		append-ldflags -fopenmp
 	fi
 
 	if use mpi ; then

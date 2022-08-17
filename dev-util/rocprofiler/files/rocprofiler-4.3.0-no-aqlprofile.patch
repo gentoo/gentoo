@@ -1,0 +1,35 @@
+Skip loading proprietary AQLProfile lib
+--- a/src/util/hsa_rsrc_factory.cpp 2021-06-28 23:09:44.000000000 +0800
++++ b/src/util/hsa_rsrc_factory.cpp 2022-05-11 10:48:23.431989766 +0800
+@@ -138,14 +138,6 @@ HsaRsrcFactory::HsaRsrcFactory(bool init
+   if (cpu_pool_ == NULL) CHECK_STATUS("CPU memory pool is not found", HSA_STATUS_ERROR);
+   if (kern_arg_pool_ == NULL) CHECK_STATUS("Kern-arg memory pool is not found", HSA_STATUS_ERROR);
+
+-  // Get AqlProfile API table
+-  aqlprofile_api_ = {0};
+-#ifdef ROCP_LD_AQLPROFILE
+-  status = LoadAqlProfileLib(&aqlprofile_api_);
+-#else
+-  status = hsa_api_.hsa_system_get_major_extension_table(HSA_EXTENSION_AMD_AQLPROFILE, hsa_ven_amd_aqlprofile_VERSION_MAJOR, sizeof(aqlprofile_api_), &aqlprofile_api_);
+-#endif
+-  CHECK_STATUS("aqlprofile API table load failed", status);
+
+   // Get Loader API table
+   loader_api_ = {0};
+--- a/test/util/hsa_rsrc_factory.cpp        2021-06-28 23:09:44.000000000 +0800
++++ b/test/util/hsa_rsrc_factory.cpp        2022-05-11 10:50:44.571990702 +0800
+@@ -135,14 +135,6 @@ HsaRsrcFactory::HsaRsrcFactory(bool init
+   if (cpu_pool_ == NULL) CHECK_STATUS("CPU memory pool is not found", HSA_STATUS_ERROR);
+   if (kern_arg_pool_ == NULL) CHECK_STATUS("Kern-arg memory pool is not found", HSA_STATUS_ERROR);
+
+-  // Get AqlProfile API table
+-  aqlprofile_api_ = {0};
+-#ifdef ROCP_LD_AQLPROFILE
+-  status = LoadAqlProfileLib(&aqlprofile_api_);
+-#else
+-  status = hsa_api_.hsa_system_get_major_extension_table(HSA_EXTENSION_AMD_AQLPROFILE, hsa_ven_amd_aqlprofile_VERSION_MAJOR, sizeof(aqlprofile_api_), &aqlprofile_api_);
+-#endif
+-  CHECK_STATUS("aqlprofile API table load failed", status);
+
+   // Get Loader API table
+   loader_api_ = {0};

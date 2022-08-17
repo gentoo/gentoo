@@ -1,0 +1,121 @@
+From 299d50c9cb0ba73343d1a88c202e17f6599fde54 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 14 May 2022 13:39:13 +0200
+Subject: [PATCH] Fix functional tests compatibility with pytest
+
+Provide a default value for test parameters provided by decorators
+in order to prevent pytest from recognizing them as fixtures.  This
+is the smaller change needed to run the complete test suite via pytest.
+
+Fixes #449
+---
+ tests/functional/test_bypass.py   |  8 ++++----
+ tests/functional/test_debug.py    | 10 +++++-----
+ tests/functional/test_requests.py |  2 +-
+ 3 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/tests/functional/test_bypass.py b/tests/functional/test_bypass.py
+index e85dfac..cf7e75d 100644
+--- a/tests/functional/test_bypass.py
++++ b/tests/functional/test_bypass.py
+@@ -88,7 +88,7 @@ def stop_tcp_server(context):
+ 
+ @httpretty.activate
+ @that_with_context(start_http_server, stop_http_server)
+-def test_httpretty_bypasses_when_disabled(context):
++def test_httpretty_bypasses_when_disabled(context=None):
+     "httpretty should bypass all requests by disabling it"
+ 
+     httpretty.register_uri(
+@@ -122,7 +122,7 @@ def test_httpretty_bypasses_when_disabled(context):
+ 
+ @httpretty.activate(verbose=True)
+ @that_with_context(start_http_server, stop_http_server)
+-def test_httpretty_bypasses_a_unregistered_request(context):
++def test_httpretty_bypasses_a_unregistered_request(context=None):
+     "httpretty should bypass a unregistered request by disabling it"
+ 
+     httpretty.register_uri(
+@@ -145,7 +145,7 @@ def test_httpretty_bypasses_a_unregistered_request(context):
+ 
+ @httpretty.activate(verbose=True)
+ @that_with_context(start_tcp_server, stop_tcp_server)
+-def test_using_httpretty_with_other_tcp_protocols(context):
++def test_using_httpretty_with_other_tcp_protocols(context=None):
+     "httpretty should work even when testing code that also use other TCP-based protocols"
+ 
+     httpretty.register_uri(
+@@ -163,7 +163,7 @@ def test_using_httpretty_with_other_tcp_protocols(context):
+ 
+ @httpretty.activate(allow_net_connect=False)
+ @that_with_context(start_http_server, stop_http_server)
+-def test_disallow_net_connect_1(context, verbose=True):
++def test_disallow_net_connect_1(context=None, verbose=True):
+     """
+     When allow_net_connect = False, a request that otherwise
+     would have worked results in UnmockedError.
+diff --git a/tests/functional/test_debug.py b/tests/functional/test_debug.py
+index 86bf09e..ee742f3 100644
+--- a/tests/functional/test_debug.py
++++ b/tests/functional/test_debug.py
+@@ -39,7 +39,7 @@ def create_socket(context):
+ @skip('not currently supported')
+ @httprettified
+ @scenario(create_socket)
+-def test_httpretty_debugs_socket_send(context):
++def test_httpretty_debugs_socket_send(context=None):
+     "HTTPretty should forward_and_trace socket.send"
+ 
+     expect(context.sock.send).when.called_with(b'data').to.throw(
+@@ -50,7 +50,7 @@ def test_httpretty_debugs_socket_send(context):
+ @skip('not currently supported')
+ @httprettified
+ @scenario(create_socket)
+-def test_httpretty_debugs_socket_sendto(context):
++def test_httpretty_debugs_socket_sendto(context=None):
+     "HTTPretty should forward_and_trace socket.sendto"
+ 
+     expect(context.sock.sendto).when.called.to.throw(
+@@ -61,7 +61,7 @@ def test_httpretty_debugs_socket_sendto(context):
+ @skip('not currently supported')
+ @httprettified
+ @scenario(create_socket)
+-def test_httpretty_debugs_socket_recvfrom(context):
++def test_httpretty_debugs_socket_recvfrom(context=None):
+     "HTTPretty should forward_and_trace socket.recvfrom"
+ 
+     expect(context.sock.recvfrom).when.called.to.throw(
+@@ -72,7 +72,7 @@ def test_httpretty_debugs_socket_recvfrom(context):
+ @skip('not currently supported')
+ @httprettified
+ @scenario(create_socket)
+-def test_httpretty_debugs_socket_recv_into(context):
++def test_httpretty_debugs_socket_recv_into(context=None):
+     "HTTPretty should forward_and_trace socket.recv_into"
+     buf = bytearray()
+     expect(context.sock.recv_into).when.called_with(buf).to.throw(
+@@ -83,7 +83,7 @@ def test_httpretty_debugs_socket_recv_into(context):
+ @skip('not currently supported')
+ @httprettified
+ @scenario(create_socket)
+-def test_httpretty_debugs_socket_recvfrom_into(context):
++def test_httpretty_debugs_socket_recvfrom_into(context=None):
+     "HTTPretty should forward_and_trace socket.recvfrom_into"
+ 
+     expect(context.sock.recvfrom_into).when.called.to.throw(
+diff --git a/tests/functional/test_requests.py b/tests/functional/test_requests.py
+index 55aa109..04a5e80 100644
+--- a/tests/functional/test_requests.py
++++ b/tests/functional/test_requests.py
+@@ -768,7 +768,7 @@ def test_unicode_querystrings():
+ 
+ 
+ @use_tornado_server
+-def test_recording_calls(port):
++def test_recording_calls(port=None):
+     ("HTTPretty should be able to record calls")
+     # Given a destination path:
+     destination = FIXTURE_FILE("recording-1.json")
+-- 
+2.35.1
+

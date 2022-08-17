@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    This package adds marks and filters to tabulated-list-mode. It also puts a
+    dired face on tabulated list buffers. It can be used by deriving from
+    tablist-mode, or with more limited features by enabling tablist-minor-mode
+    inside a tabulated-list-mode buffer.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/politza/tablist/issues/</bugs-to>
+    <remote-id type="github">politza/tablist</remote-id>
+  </upstream>
+</pkgmetadata>

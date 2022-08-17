@@ -1,17 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/${PN}"
 	GIT_ECLASS="git-r3"
 else
 	SRC_URI="https://gitlab.freedesktop.org/mesa/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2"
-	KEYWORDS="amd64 arm ~arm64 ~ppc ~ppc64 x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 	S="${WORKDIR}"/${PN}-v${PV}
 fi
-inherit meson-multilib ${GIT_ECLASS}
+inherit meson-multilib multilib ${GIT_ECLASS}
 
 DESCRIPTION="Library that allows selection of GL API and of window system at runtime"
 HOMEPAGE="http://www.waffle-gl.org/ https://gitlab.freedesktop.org/mesa/waffle"
@@ -31,7 +31,7 @@ RDEPEND="
 	wayland? ( >=dev-libs/wayland-1.10[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
-	X? ( >=x11-base/xcb-proto-1.8-r3[${MULTILIB_USEDEP}] )
+	X? ( >=x11-base/xcb-proto-1.8-r3 )
 "
 BDEPEND="
 	dev-libs/libxslt

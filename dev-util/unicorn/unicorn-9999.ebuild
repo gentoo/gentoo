@@ -7,7 +7,7 @@ MY_PV=${PV/_/-}
 
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit cmake distutils-r1
 
 DESCRIPTION="A lightweight multi-platform, multi-architecture CPU emulator framework"
@@ -17,7 +17,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/unicorn-engine/unicorn"
 else
-	SRC_URI="https://github.com/unicorn-engine/unicorn/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/unicorn-engine/unicorn/archive/${MY_PV}.tar.gz -> ${P}.gh.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -34,12 +34,12 @@ RDEPEND="python? ( ${PYTHON_DEPS} )"
 BDEPEND="virtual/pkgconfig
 	python? ( ${DISTUTILS_DEPS} )"
 
-UNICORN_TARGETS="x86 arm aarch64 riscv mips sparc m68k ppc s390x"
+UNICORN_TARGETS="x86 arm aarch64 riscv mips sparc m68k ppc s390x tricore"
 
 wrap_python() {
 	if use python; then
 		# src_prepare
-		# do not compile C extensions
+		# Do not compile C extensions
 		export LIBUNICORN_PATH=1
 
 		pushd bindings/python >/dev/null || die
@@ -58,7 +58,6 @@ src_prepare() {
 
 src_configure(){
 	local mycmakeargs=(
-		-DBUILD_SHARED_LIBS=$(usex !static-libs)
 		-DUNICORN_ARCH="${UNICORN_TARGETS// /;}"
 	)
 
@@ -75,6 +74,10 @@ src_compile() {
 
 src_install() {
 	cmake_src_install
+
+	if ! use static-libs; then
+		find "${ED}" -type f \( -name "*.a" -o -name "*.la" \) -delete || die
+	fi
 
 	wrap_python ${FUNCNAME}
 }

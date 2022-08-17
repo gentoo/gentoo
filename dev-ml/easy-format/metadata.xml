@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="github">mjambon/easy-format</remote-id>
+		<remote-id type="github">ocaml-community/easy-format</remote-id>
 	</upstream>
 </pkgmetadata>

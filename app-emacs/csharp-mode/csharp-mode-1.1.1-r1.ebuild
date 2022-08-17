@@ -11,7 +11,7 @@ SRC_URI="https://github.com/emacs-csharp/${PN}/archive/refs/tags/${PV}.tar.gz ->
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 RESTRICT="test" # tries to install an old version of dash from the network
 
 DOCS=( README.org )

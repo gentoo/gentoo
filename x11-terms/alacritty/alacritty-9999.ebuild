@@ -1,4 +1,4 @@
-# Copyright 2017-2021 Gentoo Authors
+# Copyright 2017-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ PYTHON_COMPAT=( python3_{7..10} )
 inherit bash-completion-r1 cargo desktop python-any-r1
 
 DESCRIPTION="GPU-accelerated terminal emulator"
-HOMEPAGE="https://github.com/alacritty/alacritty"
+HOMEPAGE="https://alacritty.org"
 
 if [ ${PV} == "9999" ] ; then
 	inherit git-r3
@@ -56,7 +56,7 @@ RDEPEND="${COMMON_DEPEND}
 
 BDEPEND="
 	dev-util/cmake
-	>=virtual/rust-1.56.0
+	>=virtual/rust-1.57.0
 "
 
 QA_FLAGS_IGNORED="usr/bin/alacritty"
@@ -103,7 +103,7 @@ src_install() {
 	newicon extra/logo/compat/alacritty-term.svg Alacritty.svg
 
 	insinto /usr/share/metainfo
-	doins extra/linux/io.alacritty.Alacritty.appdata.xml
+	doins extra/linux/org.alacritty.Alacritty.appdata.xml
 
 	insinto /usr/share/alacritty/scripts
 	doins -r scripts/*

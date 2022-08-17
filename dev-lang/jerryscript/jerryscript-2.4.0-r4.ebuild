@@ -21,6 +21,7 @@ RESTRICT+=" test"
 
 PATCHES=(
 	"${FILESDIR}/jerryscript-2.4.0-python3-r4.patch"
+	"${FILESDIR}/jerryscript-2.4.0-no-werror.patch"
 )
 
 src_prepare() {

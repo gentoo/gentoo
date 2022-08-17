@@ -31,7 +31,7 @@ QT_DEPEND="
 	>=dev-qt/qtnetwork-${MIN_QT_VER}:5=
 	>=dev-qt/qtwidgets-${MIN_QT_VER}:5=
 "
-COMMON_DEPEND="
+DEPEND="
 	curl? ( net-misc/curl )
 	fftw? ( sci-libs/fftw:3.0=[threads] )
 	gimp? (
@@ -53,14 +53,14 @@ COMMON_DEPEND="
 		x11-libs/libXext
 	)
 	zlib? ( sys-libs/zlib:0= )"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	ffmpeg? ( media-video/ffmpeg:0= )
 "
-DEPEND="${COMMON_DEPEND}
-	gimp? ( dev-qt/linguist-tools )
-	qt5? ( dev-qt/linguist-tools )
+BDEPEND="
+	virtual/pkgconfig
+	gimp? ( dev-qt/linguist-tools:5 )
+	qt5? ( dev-qt/linguist-tools:5 )
 "
-BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.0_ipa-sra.patch
@@ -68,11 +68,11 @@ PATCHES=(
 )
 
 pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if use openmp; then
-			tc-has-openmp || die "Please switch to an openmp compatible compiler"
-		fi
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_prepare() {
@@ -168,7 +168,7 @@ pkg_postinst() {
 		for v in ${REPLACING_VERSIONS}; do
 			if ver_test "${v}" -le "3.0.0"; then
 				einfo "Note that starting with version 3.0.1 ${CATEGORY}/${PN} no longer provides a Krita interface."
-				einfo "Please use the built-in G'MIC plugin provided with Krita 5, or use an older version."
+				einfo "Please use the built-in G'MIC plugin provided with Krita 5 instead."
 				break
 			fi
 		done

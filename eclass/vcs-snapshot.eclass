@@ -43,7 +43,8 @@
 # in ${WORKDIR}/${P} and ${WORKDIR}/${P}-otherstuff respectively.
 
 case ${EAPI} in
-	6|7|8) ;;
+	6) inherit eqawarn ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,9 +12,9 @@ MY_PN="OpenRCT2"
 MY_PN_OBJ="objects"
 MY_PN_RPL="replays"
 MY_PN_TS="title-sequences"
-MY_PV_OBJ="1.2.4"
-MY_PV_RPL="0.0.62"
-MY_PV_TS="0.1.2c"
+MY_PV_OBJ="1.3.2"
+MY_PV_RPL="0.0.67"
+MY_PV_TS="0.4.0"
 
 DESCRIPTION="An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2"
 HOMEPAGE="https://openrct2.org/"
@@ -27,7 +27,7 @@ SRC_URI="
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="dedicated +lightfx +opengl scripting test +truetype"
+IUSE="dedicated +flac +lightfx +opengl scripting test +truetype +vorbis"
 
 COMMON_DEPEND="
 	dev-libs/icu:=
@@ -39,7 +39,9 @@ COMMON_DEPEND="
 	!dedicated? (
 		media-libs/libsdl2
 		media-libs/speexdsp
+		flac? ( media-libs/flac )
 		opengl? ( virtual/opengl )
+		vorbis? ( media-libs/libvorbis )
 	)
 	dev-libs/openssl:0=
 	scripting? ( dev-lang/duktape:= )
@@ -71,8 +73,8 @@ BDEPEND="
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.2.4-include-additional-paths.patch"
-	"${FILESDIR}/${PN}-0.2.6-gtest-1.10.patch"
+	"${FILESDIR}/${PN}-0.4.0-include-additional-paths.patch"
+	"${FILESDIR}/${PN}-0.4.1-gtest-1.10.patch"
 )
 
 src_unpack() {
@@ -105,12 +107,15 @@ src_configure() {
 	# as both packages do not exist in Gentoo, so support for them has been disabled.
 	local mycmakeargs=(
 		-DDISABLE_DISCORD_RPC=ON
+		$(usex !dedicated "-DDISABLE_FLAC=$(usex !flac)" "")
 		-DDISABLE_GOOGLE_BENCHMARK=ON
 		-DDISABLE_GUI=$(usex dedicated)
 		-DDISABLE_HTTP=OFF
+		-DDISABLE_IPO=ON
 		-DDISABLE_NETWORK=OFF
 		$(usex !dedicated "-DDISABLE_OPENGL=$(usex !opengl)" "")
 		-DDISABLE_TTF=$(usex !truetype)
+		$(usex !dedicated "-DDISABLE_VORBIS=$(usex !vorbis)" "")
 		-DDOWNLOAD_OBJECTS=OFF
 		-DDOWNLOAD_REPLAYS=OFF
 		-DDOWNLOAD_TITLE_SEQUENCES=OFF
@@ -119,7 +124,6 @@ src_configure() {
 		-DOPENRCT2_USE_CCACHE=OFF
 		-DPORTABLE=OFF
 		-DSTATIC=OFF
-		$(usex test "-DSYSTEM_GTEST=ON" "")
 		-DWITH_TESTS=$(usex test)
 		-DUSE_MMAP=ON
 	)

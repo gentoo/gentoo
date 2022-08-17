@@ -1,0 +1,12 @@
+diff -Naur a/tests/scrap_bench.py b/tests/scrap_bench.py
+--- a/tests/scrap_bench.py	2022-01-05 17:13:26.000000000 +0000
++++ b/tests/scrap_bench.py	2022-06-24 14:33:10.215047579 +0100
+@@ -22,7 +22,7 @@
+     time2 = 0
+
+     b_map.show()
+-    while True:
++    for _ in range(100):
+         time0 = time.time()
+         times += time2
+         for ob in rectangle.obs:

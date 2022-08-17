@@ -31,6 +31,7 @@
     <flag name="gtk">Build the IDE <pkg>x11-libs/gtk+</pkg></flag>
     <flag name="re">Use Re (<pkg>dev-ml/re</pkg>) instead of Str for regular expressions</flag>
     <flag name="sexp">Add support for outputting S-expressions with <pkg>dev-ml/ppx_sexp_conv</pkg></flag>
+    <flag name="stackify">Enable structure reconstruction algorithm for MLCFG</flag>
     <flag name="zarith">Use Zarith (<pkg>dev-ml/zarith</pkg>) instead of Nums (<pkg>dev-ml/num</pkg>) for computations</flag>
     <flag name="zip">Enable compression of session files</flag>
   </use>

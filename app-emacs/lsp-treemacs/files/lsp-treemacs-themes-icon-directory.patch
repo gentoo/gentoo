@@ -1,0 +1,39 @@
+index 3a24127..2dbe570 100644
+--- a/lsp-treemacs-themes.el
++++ b/lsp-treemacs-themes.el
+@@ -32,7 +32,7 @@
+   :group 'lsp-treemacs)
+ 
+ (treemacs-modify-theme "Default"
+-  :icon-directory (f-join (f-dirname (or load-file-name buffer-file-name)) "icons/vscode")
++  :icon-directory "@SITEETC@/icons/vscode"
+   :config
+   (progn
+     (treemacs-create-icon :file "BooleanData.png" :extensions (boolean-data) :fallback "-")
+@@ -107,7 +107,7 @@
+ 
+ (treemacs-create-theme "Eclipse"
+   :extends "Default"
+-  :icon-directory (f-join (f-dirname (or load-file-name buffer-file-name)) "icons/eclipse")
++  :icon-directory "@SITEETC@/icons/eclipse"
+   :config
+   (progn
+     (treemacs-create-icon :file "vscode/Namespace.png" :extensions (namespace) :fallback "-")
+@@ -140,7 +140,7 @@
+ 
+ (treemacs-create-theme "Netbeans"
+   :extends "Default"
+-  :icon-directory (f-join (f-dirname (or load-file-name buffer-file-name)) "icons/netbeans")
++  :icon-directory "@SITEETC@/icons/netbeans"
+   :config
+   (progn
+     (treemacs-create-icon :file "vscode/Namespace.png" :extensions (namespace) :fallback "-")
+@@ -173,7 +173,7 @@
+ 
+ (treemacs-create-theme "Idea"
+   :extends "Default"
+-  :icon-directory (f-join (f-dirname (or load-file-name buffer-file-name)) "icons/idea")
++  :icon-directory "@SITEETC@/icons/idea"
+   :config
+   (progn
+     (treemacs-create-icon :file "vscode/template.png" :extensions (template) :fallback "-")

@@ -7,7 +7,10 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1 virtualx
 
 DESCRIPTION="Jupyter kernel for octave"
-HOMEPAGE="https://github.com/Calysto/octave_kernel"
+HOMEPAGE="
+	https://github.com/Calysto/octave_kernel/
+	https://pypi.org/project/octave-kernel/
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

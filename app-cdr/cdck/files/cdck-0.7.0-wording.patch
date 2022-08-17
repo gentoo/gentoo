@@ -1,0 +1,25 @@
+Description: improve wording
+Author: DenverD
+Reviewed-by: gregor herrmann <gregoa@debian.org>
+Last-Update: 2010-05-25
+
+--- a/src/lib_main.cpp
++++ b/src/lib_main.cpp
+@@ -566,7 +566,7 @@
+ 	fprintf (stdout, "\nConclusion:\n");
+ 
+ 	if (bad_sectors > 0) {
+-		fprintf (stdout, "   Disc contains BAD or even readable sectors, put it into trash can!\n");
++		fprintf (stdout, "   Disc contains BAD or even unreadable sectors, put it into trash can!\n");
+ 		return;
+ 	}
+ 
+@@ -580,7 +580,7 @@
+ 		return;
+ 	}
+ 
+-	fprintf (stdout, "   Even there is no unreadable sectors, disc is unstable!\n");
++	fprintf (stdout, "   Even though there are no unreadable sectors, disc is unstable!\n");
+ }
+ 
+ void Ccdrom::DeallocateTimings()

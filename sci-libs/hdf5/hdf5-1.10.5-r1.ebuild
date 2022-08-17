@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
 FORTRAN_NEEDED="fortran"
 
-inherit autotools fortran-2 flag-o-matic toolchain-funcs multilib prefix
+inherit autotools fortran-2 flag-o-matic toolchain-funcs prefix
 
 MY_P="${PN}-${PV/_p/-patch}"
 MAJOR_P="${PN}-$(ver_cut 1-2)"
@@ -16,7 +16,7 @@ SRC_URI="https://www.hdfgroup.org/ftp/HDF5/releases/${MAJOR_P}/${MY_P}/src/${MY_
 
 LICENSE="NCSA-HDF"
 SLOT="0/${PV%%_p*}"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 IUSE="cxx debug examples fortran +hl mpi szip threads unsupported zlib"
 
 REQUIRED_USE="
@@ -83,6 +83,7 @@ src_prepare() {
 }
 
 src_configure() {
+	use sparc && tc-is-gcc && append-flags -fno-tree-ccp # bug 686620
 	local myconf=(
 		--disable-static
 		--enable-deprecated-symbols

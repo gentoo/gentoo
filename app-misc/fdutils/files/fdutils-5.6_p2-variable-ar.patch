@@ -1,0 +1,30 @@
+Add variable for ${AR}
+--- a/configure.in
++++ b/configure.in
+@@ -6,6 +6,7 @@ AC_PROG_MAKE_SET
+ 
+ dnl Checks for compiler
+ AC_PROG_CC
++AM_PROG_AR
+ AC_PROG_GCC_TRADITIONAL
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -21,6 +21,7 @@ sysconfdir  = $(DESTDIR)@sysconfdir@
+ datarootdir = $(DESTDIR)@datarootdir@
+ 
+ CC       = @CC@
++AR       = @AR@
+ PID      = -DPIDFILE=\"@localstatedir@/run/diskseekd.pid\"
+ DEFINES  = $(DEFINES) $(PID) -DSYSCONFDIR=\"@sysconfdir@\"
+ DEFS     = @DEFS@ -DSYSCONFDIR=\"@sysconfdir@\"
+@@ -69,7 +70,7 @@ lex.%.c: %.lex
+ 	lex -P$* $<
+ 
+ libfdutils.a: $(LIBFILES)
+-	ar rcs $@ $^
++	$(AR) rcs $@ $^
+ 
+ floppycontrol.o getfdprm setfdprm: /usr/include/linux/fd.h
+ diskseekd.o superformat.o fdrawcmd.o: /usr/include/linux/fd.h \

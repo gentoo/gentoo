@@ -5,6 +5,7 @@
 		<email>llvm@gentoo.org</email>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">llvm/llvm-project</remote-id>
 		<remote-id type="pypi">lit</remote-id>
 	</upstream>
 </pkgmetadata>

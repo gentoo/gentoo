@@ -6,6 +6,6 @@
 		<name>Gentoo Shell Tools Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">flok99/multitail</remote-id>
+		<remote-id type="github">folkertvanheusden/multitail</remote-id>
 	</upstream>
 </pkgmetadata>

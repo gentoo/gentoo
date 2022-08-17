@@ -54,5 +54,5 @@ media-libs/grilo playlist
 # Pulled in by tracker and grilo-plugins, has REQUIRED_USE="?? ( gtk qt5 )"
 media-libs/libmediaart gtk -qt5
 
-# For net-misc/vinagre-3.4 and gnome-boxes
+# For gnome-boxes
 net-misc/spice-gtk gtk3

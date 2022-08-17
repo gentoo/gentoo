@@ -14,7 +14,7 @@ if [[ "${PV}" == *9999 ]]; then
 else
 	SRC_URI="https://github.com/TACC/Hermes/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${P^}"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 LICENSE="MIT"

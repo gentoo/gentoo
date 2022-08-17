@@ -12,6 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="sourceforge">mdk-ut</remote-id>
-		<remote-id type="sourceforge-jp">users</remote-id>
+		<remote-id type="osdn">users</remote-id>
 	</upstream>
 </pkgmetadata>

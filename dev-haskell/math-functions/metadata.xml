@@ -11,6 +11,6 @@
 		useful in statistical and numerical computing.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">bos/math-functions</remote-id>
+		<remote-id type="github">haskell/math-functions</remote-id>
 	</upstream>
 </pkgmetadata>

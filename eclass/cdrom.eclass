@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cdrom.eclass
 # @MAINTAINER:
 # games@gentoo.org
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Functions for CD-ROM handling
 # @DESCRIPTION:
 # Acquire CD(s) for those lovely CD-based emerges.  Yes, this violates
@@ -16,7 +16,7 @@
 # The functions are generally called in src_unpack.
 
 case ${EAPI:-0} in
-	[67]) ;;
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -25,7 +25,7 @@ _CDROM_ECLASS=1
 
 inherit portability
 
-# @ECLASS-VARIABLE: CDROM_OPTIONAL
+# @ECLASS_VARIABLE: CDROM_OPTIONAL
 # @DEFAULT_UNSET
 # @PRE_INHERIT
 # @DESCRIPTION:
@@ -79,11 +79,11 @@ fi
 cdrom_get_cds() {
 	unset CDROM_SET
 	export CDROM_CURRENT_CD=0
-    export CDROM_NUM_CDS="${#}"
-    local i
-    for i in $(seq ${#}); do
-        export CDROM_CHECK_${i}="${!i}"
-    done
+	export CDROM_NUM_CDS="${#}"
+	local i
+	for i in $(seq ${#}); do
+		export CDROM_CHECK_${i}="${!i}"
+	done
 
 	# If the user has set CD_ROOT or CD_ROOT_1, don't bother informing
 	# them about which discs are needed as they presumably already know.

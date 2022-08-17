@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-test.patch
 	"${FILESDIR}"/${PN}${PV}-seektell-fix.patch
 	"${FILESDIR}"/tcl-${P}-python3.patch
+	"${FILESDIR}"/${P}-lto.patch
 )
 
 HTML_DOCS="${WORKDIR}/${PN}${PV}/doc/*"

@@ -6,6 +6,6 @@
     <name>Cjk</name>
   </maintainer>
   <upstream>
-    <remote-id type="sourceforge-jp">kasumi</remote-id>
+    <remote-id type="osdn">kasumi</remote-id>
   </upstream>
 </pkgmetadata>

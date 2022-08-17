@@ -1,9 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="High-performance messaging interface for distributed applications"
@@ -18,12 +17,13 @@ IUSE="doc"
 DEPEND="doc? ( dev-ruby/asciidoctor )"
 
 multilib_src_prepare() {
-	eapply_user
 	# Old CPUs like HPPA fails test because of timeout
 	sed -i \
 		-e '/inproc_shutdown/s/5/80/' \
 		-e '/ws_async_shutdown/s/5/80/' \
 		-e '/ipc_shutdown/s/30/80/' CMakeLists.txt || die
+
+	cmake_src_prepare
 }
 
 multilib_src_configure() {
@@ -37,8 +37,8 @@ multilib_src_configure() {
 	else
 		mycmakeargs+=(
 			-DNN_ENABLE_DOC=OFF
-			-DNN_ENABLE_TOOLS=OFF
-			-DNN_ENABLE-NANOCAT=OFF
+			-DNN_TOOLS=OFF
+			-DNN_ENABLE_NANOCAT=OFF
 		)
 	fi
 	cmake_src_configure

@@ -1,6 +1,5 @@
-diff -ur graveman-0.3.12-5.orig/desktop/graveman.desktop.in graveman-0.3.12-5/desktop/graveman.desktop.in
---- graveman-0.3.12-5.orig/desktop/graveman.desktop.in	2005-05-24 00:07:08.000000000 +0300
-+++ graveman-0.3.12-5/desktop/graveman.desktop.in	2008-05-10 06:33:32.000000000 +0300
+--- a/desktop/graveman.desktop.in
++++ b/desktop/graveman.desktop.in
 @@ -1,5 +1,4 @@
  [Desktop Entry]
 -Encoding=UTF-8

@@ -6,8 +6,6 @@
 		<flag name="explicit-initialization">Require explicit initialization</flag>
 		<flag name="iconv">Use inconv for wchar_t &lt;-&gt; char conversions. See also log4cplus's unicode.txt documentation</flag>
 		<flag name="server">Build the logging server</flag>
-		<flag name="working-locale">Use C++'s std::locale for wchar_t &lt;-&gt; char conversions. See also log4cplus's unicode.txt documentation</flag>
-		<flag name="working-c-locale">Use the C99 locale facilities for wchar_t &lt;-&gt; char conversions. See also log4cplus's unicode.txt documentation </flag>
 	</use>
 	<slots>
 		<subslots>soname major version number</subslots>

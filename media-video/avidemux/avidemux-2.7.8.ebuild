@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,15 +18,14 @@ SRC_URI="
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
 SLOT="2.7"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug nls nvenc opengl qt5 sdl vaapi vdpau xv"
+IUSE="debug nls opengl qt5 sdl vaapi vdpau xv"
 
 BDEPEND="
 	dev-lang/yasm
 	qt5? ( dev-qt/linguist-tools:5 )
 "
 DEPEND="
-	~media-libs/avidemux-core-${PV}:${SLOT}[nls?,sdl?,vaapi?,vdpau?,xv?,nvenc?]
-	nvenc? ( amd64? ( media-video/nvidia_video_sdk:0 ) )
+	~media-libs/avidemux-core-${PV}:${SLOT}[nls?,sdl?,vaapi?,vdpau?,xv?]
 	opengl? ( virtual/opengl:0 )
 	qt5? (
 		dev-qt/qtcore:5

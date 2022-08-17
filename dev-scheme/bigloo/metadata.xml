@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>scheme@gentoo.org</email>
+    <name>Gentoo Scheme Project</name>
+  </maintainer>
+  <longdescription>
+    Bigloo is a Scheme implementation devoted to one goal: enabling Scheme
+    based programming style where C(++) is usually required.
+    Bigloo attempts to make Scheme practical by offering features usually
+    presented by traditional programming languages but not offered by Scheme
+    and functional programming. Bigloo compiles Scheme modules. It delivers
+    small and fast stand alone binary executables. Bigloo enables full
+    connections between Scheme and C programs.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/manuel-serrano/bigloo/issues/</bugs-to>
+    <remote-id type="github">manuel-serrano/bigloo</remote-id>
+  </upstream>
+  <use>
+    <flag name="avahi">Enable Avahi support</flag>
+    <flag name="gpg">Enable GPG support</flag>
+    <flag name="libuv">Enable libuv support</flag>
+  </use>
+</pkgmetadata>

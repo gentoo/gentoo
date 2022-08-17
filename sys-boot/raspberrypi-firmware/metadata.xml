@@ -5,7 +5,12 @@
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>expeditioneer@gentoo.org</email>
+		<name>Dennis Lamm</name>
+	</maintainer>
 	<upstream>
+		<bugs-to>https://github.com/raspberrypi/firmware/issues</bugs-to>
 		<remote-id type="github">raspberrypi/firmware</remote-id>
 	</upstream>
 </pkgmetadata>

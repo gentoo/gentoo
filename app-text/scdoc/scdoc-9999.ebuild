@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://git.sr.ht/~sircmpwn/scdoc/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="MIT"
@@ -35,10 +35,11 @@ src_compile() {
 			CFLAGS="${BUILD_CFLAGS} -DVERSION='\"${PV}\"'" LDFLAGS="${BUILD_LDFLAGS}"
 		mv scdoc hostscdoc || die 'Failed to rename host scdoc'
 	fi
-	emake LDFLAGS="${LDFLAGS}" PREFIX="${EPREFIX}/usr" HOST_SCDOC="${MY_HS}"
+
+	emake CC="$(tc-getCC)" LDFLAGS="${LDFLAGS}" PREFIX="${EPREFIX}/usr" HOST_SCDOC="${MY_HS}"
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" HOST_SCDOC="${MY_HS}" \
-	PCDIR="${EPREFIX}/usr/$(get_libdir)/pkgconfig" install
+	emake DESTDIR="${ED}" PREFIX="${EPREFIX}/usr" HOST_SCDOC="${MY_HS}" \
+		PCDIR="/usr/$(get_libdir)/pkgconfig" install
 }

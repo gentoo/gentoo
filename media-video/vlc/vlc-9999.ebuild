@@ -127,7 +127,7 @@ RDEPEND="
 		sys-libs/libraw1394
 	)
 	jack? ( virtual/jack )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:0 )
 	kate? ( media-libs/libkate )
 	kms? ( x11-libs/libdrm )
 	libass? (
@@ -203,7 +203,7 @@ RDEPEND="
 	udev? ( virtual/udev )
 	upnp? ( net-libs/libupnp:=[ipv6] )
 	v4l? ( media-libs/libv4l:= )
-	vaapi? ( x11-libs/libva:=[drm,wayland?,X?] )
+	vaapi? ( x11-libs/libva:=[drm(+),wayland?,X?] )
 	vdpau? ( x11-libs/libvdpau )
 	vnc? ( net-libs/libvncserver )
 	vpx? ( media-libs/libvpx:= )
@@ -281,7 +281,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local -x BUILDCC=$(tc-getBUILD_CC)
+	local -x BUILDCC="$(tc-getBUILD_CC)"
 
 	local myeconfargs=(
 		--disable-optimizations
@@ -440,9 +440,6 @@ src_configure() {
 		# Bug 569774
 		replace-flags -Os -O2
 	fi
-
-	# VLC now requires C++11 after commit 4b1c9dcdda0bbff801e47505ff9dfd3f274eb0d8
-	append-cxxflags -std=c++11
 
 	if use omxil; then
 		# bug #723006

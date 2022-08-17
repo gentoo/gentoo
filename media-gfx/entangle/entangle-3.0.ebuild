@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
+
 inherit gnome2-utils meson python-single-r1 xdg-utils
 
 DESCRIPTION="Tethered Camera Control & Capture"
@@ -13,7 +14,6 @@ SRC_URI="https://entangle-photo.org/download/sources/${P}.tar.xz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 DEPEND="
@@ -32,8 +32,11 @@ DEPEND="
 	>=x11-libs/gtk+-3.22:3[introspection]
 	>=x11-libs/libXext-1.3.0
 	>=x11-libs/pango-1.40.11
-	x11-themes/adwaita-icon-theme"
-RDEPEND="${DEPEND}"
+	x11-themes/adwaita-icon-theme
+"
+RDEPEND="
+	${DEPEND}
+"
 
 # perl for pod2man
 BDEPEND="
@@ -43,7 +46,8 @@ BDEPEND="
 	dev-util/gtk-doc
 	dev-util/itstool
 	sys-devel/gettext
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-meson-0.61-build.patch

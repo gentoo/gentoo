@@ -1,8 +1,8 @@
 Fix wrong charakter classes no longer missinterpreted by grep-2.7
 Michael Weber <xmw@gentoo.org>
 
---- docbook-utils-0.6.14/bin/jw.in
-+++ docbook-utils-0.6.14/bin/jw.in
+--- a/bin/jw.in
++++ b/bin/jw.in
 @@ -80,9 +80,9 @@
  SGML_CATALOGS_DIR="/etc/sgml"
  if [ -f "$SGML_CONF" ]

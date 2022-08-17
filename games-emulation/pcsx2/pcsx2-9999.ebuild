@@ -4,7 +4,7 @@
 EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
-inherit cmake fcaps flag-o-matic git-r3 toolchain-funcs wxwidgets
+inherit cmake fcaps git-r3 toolchain-funcs wxwidgets
 
 DESCRIPTION="A PlayStation 2 emulator"
 HOMEPAGE="https://pcsx2.net/"
@@ -24,12 +24,14 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-arch/xz-utils
+	app-arch/zstd:=
 	dev-cpp/rapidyaml:=
 	dev-libs/glib:2
 	dev-libs/libaio
 	dev-libs/libchdr
 	>=dev-libs/libfmt-7.1.3:=
 	dev-libs/libxml2:2
+	dev-libs/libzip:=[zstd]
 	media-libs/alsa-lib
 	media-libs/cubeb
 	media-libs/freetype
@@ -59,25 +61,20 @@ FILECAPS=(
 	-m 755 "CAP_NET_RAW+eip CAP_NET_ADMIN+eip" usr/bin/pcsx2
 )
 
-pkg_setup() {
-	if [[ ${MERGE_TYPE} != binary && $(tc-getCC) == *gcc* ]]; then
-		# -mxsave flag is needed when GCC >= 8.2 is used
-		# https://bugs.gentoo.org/685156
-		if [[ $(gcc-major-version) -gt 8 || $(gcc-major-version) == 8 && $(gcc-minor-version) -ge 2 ]]; then
-			append-flags -mxsave
-		fi
-	fi
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.7.0-crcs.patch
+)
 
 src_prepare() {
 	cmake_src_prepare
 
 	# unbundle, use sed over patch for less chances to break -9999
+	# note: gentoo's zstd lacks a cmake module which upstream tries to use
 	sed -e '/add_subdir.*cubeb/c\find_package(cubeb REQUIRED)' \
-		-e '/add_subdir.*libchdr/c\pkg_check_modules(chdr REQUIRED IMPORTED_TARGET libchdr)' \
+		-e '/add_subdir.*libchdr/c\pkg_check_modules(chdr REQUIRED IMPORTED_TARGET libchdr)\nalias_library(chdr-static PkgConfig::chdr)' \
+		-e '/system_library.*zstd/,/endif()/c\pkg_check_modules(zstd REQUIRED IMPORTED_TARGET libzstd)\nalias_library(Zstd::Zstd PkgConfig::zstd)' \
 		-e '/compile_options(\(cubeb\|chdr-static\|speex\)/d' \
 		-i cmake/SearchForStuff.cmake || die
-	sed -i 's/chdr-static/PkgConfig::chdr/' pcsx2/CMakeLists.txt || die
 
 	# pulseaudio is only used for usb-mic, not audio output
 	use pulseaudio || > cmake/FindPulseAudio.cmake || die
@@ -92,15 +89,16 @@ src_configure() {
 	# if it something other than "Devel|Debug|Release"
 	local CMAKE_BUILD_TYPE="Release"
 	local mycmakeargs=(
-		-DARCH_FLAG=
 		-DBUILD_SHARED_LIBS=FALSE
+		-DDISABLE_ADVANCE_SIMD=TRUE
 		-DDISABLE_BUILD_DATE=TRUE
 		-DDISABLE_PCSX2_WRAPPER=TRUE
 		-DDISABLE_SETCAP=TRUE
 		-DENABLE_TESTS=$(usex test)
 		-DPACKAGE_MODE=TRUE
-		-DSDL2_API=TRUE # uses SDL2 either way but option is needed if wxGTK[sdl]
-		-DUSE_SYSTEM_YAML=TRUE
+		-DQT_BUILD=FALSE # TODO when qt6 is in tree
+		-DSDL2_API=TRUE # conditionally needed if wxGTK[sdl], cmake/ApiValidation.cmake
+		-DUSE_SYSTEM_LIBS=TRUE
 		-DUSE_VTUNE=FALSE
 		-DXDG_STD=TRUE
 	)

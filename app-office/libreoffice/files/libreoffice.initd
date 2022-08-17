@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="LibreOffice headless daemon for generating documents"
+name="LibreOffice headless daemon"
+pidfile="/run/soffice.pid"
+soffice_args="${libreoffice_opts}"
+
+command="/usr/bin/soffice"
+command_args="--nodefault --nofirststartwizard --nolockcheck --nologo --norestore --headless ${soffice_args}"
+command_background="true"
+command_group="libreoffice"
+command_user="libreoffice"

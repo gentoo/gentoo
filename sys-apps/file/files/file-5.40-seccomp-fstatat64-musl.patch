@@ -10,12 +10,6 @@ sys/stat.h in musl does this:
 Counteract this with an #undef.
 
 Bug: https://bugs.gentoo.org/789336
----
- src/seccomp.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/src/seccomp.c b/src/seccomp.c
-index 3318367c..eb8b1e57 100644
 --- a/src/seccomp.c
 +++ b/src/seccomp.c
 @@ -179,6 +179,7 @@ enable_sandbox_full(void)
@@ -26,6 +20,3 @@ index 3318367c..eb8b1e57 100644
  	ALLOW_RULE(fstatat64);
  #endif
  	ALLOW_RULE(futex);
--- 
-2.32.0
-

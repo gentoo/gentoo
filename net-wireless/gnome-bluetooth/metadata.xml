@@ -5,4 +5,7 @@
 	<email>gnome@gentoo.org</email>
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
+<use>
+	<flag name="sendto">Build the bluetooth-sendto application to send files to various locations/devices</flag>
+</use>
 </pkgmetadata>

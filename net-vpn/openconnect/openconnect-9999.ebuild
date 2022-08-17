@@ -1,7 +1,7 @@
-# Copyright 2011-2021 Gentoo Authors
+# Copyright 2011-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="xml"
@@ -17,14 +17,14 @@ else
 fi
 
 DESCRIPTION="Free client for Cisco AnyConnect SSL VPN software"
-HOMEPAGE="http://www.infradead.org/openconnect.html"
+HOMEPAGE="https://www.infradead.org/openconnect/"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5"
-IUSE="doc +gnutls gssapi libproxy lz4 nls pskc smartcard stoken test"
+IUSE="doc +gnutls gssapi libproxy lz4 nls pskc selinux smartcard stoken test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+COMMON_DEPEND="
 	dev-libs/libxml2
 	sys-libs/zlib
 	app-crypt/p11-kit
@@ -38,7 +38,7 @@ DEPEND="
 		dev-libs/nettle
 		>=net-libs/gnutls-3.6.13:0=
 		dev-libs/libtasn1:0=
-		app-crypt/tpm2-tss
+		app-crypt/tpm2-tss:=
 	)
 	gssapi? ( virtual/krb5 )
 	libproxy? ( net-libs/libproxy )
@@ -48,19 +48,23 @@ DEPEND="
 	smartcard? ( sys-apps/pcsc-lite:0= )
 	stoken? ( app-crypt/stoken )
 "
-RDEPEND="${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	test? (
+		net-libs/socket_wrapper
+		sys-libs/uid_wrapper
+		!gnutls? ( dev-libs/openssl:0[weak-ssl-ciphers(-)] )
+	)
+"
+RDEPEND="${COMMON_DEPEND}
 	sys-apps/iproute2
 	>=net-vpn/vpnc-scripts-20210402-r1
+	selinux? ( sec-policy/selinux-vpn )
 "
 BDEPEND="
 	virtual/pkgconfig
 	doc? ( ${PYTHON_DEPS} sys-apps/groff )
 	nls? ( sys-devel/gettext )
-	test? (
-		net-libs/socket_wrapper
-		net-vpn/ocserv
-		sys-libs/uid_wrapper
-	)
+	test? ( net-vpn/ocserv )
 "
 
 CONFIG_CHECK="~TUN"
@@ -118,7 +122,7 @@ src_configure() {
 
 src_test() {
 	local charset
-	for charset in UTF-8 ISO8859-2; do
+	for charset in UTF-8 ISO-8859-2; do
 		if [[ $(LC_ALL=cs_CZ.${charset} locale charmap 2>/dev/null) != ${charset} ]]; then
 			# If we don't have valid cs_CZ locale data, auth-nonascii will fail.
 			# Force a test skip by exiting with status 77.

@@ -38,7 +38,7 @@ if [[ ! ${_RUBY_SINGLE} ]]; then
 
 inherit ruby-utils
 
-# @ECLASS-VARIABLE: USE_RUBY
+# @ECLASS_VARIABLE: USE_RUBY
 # @DEFAULT_UNSET
 # @PRE_INHERIT
 # @REQUIRED
@@ -48,7 +48,7 @@ inherit ruby-utils
 # default. All ebuilds are expected to set this variable.
 
 
-# @ECLASS-VARIABLE: RUBY_DEPS
+# @ECLASS_VARIABLE: RUBY_DEPS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 #

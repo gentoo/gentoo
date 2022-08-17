@@ -1,0 +1,33 @@
+From 769a0462befb9829594a76e675526aba8579317e Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sun, 27 Mar 2022 15:09:48 -0400
+Subject: [PATCH] sysdeps-unix: check fd before calling
+ _dbus_fd_set_close_on_exec()
+
+If /proc/self/oom_score_adj does not exist, fd will invalid (-1).
+Attempting to set the CLOEXEC flag will obviously fail, and we lose the
+original errno value from open().
+
+Bug: https://bugs.gentoo.org/834725
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+---
+ dbus/dbus-sysdeps-util-unix.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/dbus/dbus-sysdeps-util-unix.c b/dbus/dbus-sysdeps-util-unix.c
+index 314ce64b..8f079cbf 100644
+--- a/dbus/dbus-sysdeps-util-unix.c
++++ b/dbus/dbus-sysdeps-util-unix.c
+@@ -1633,7 +1633,8 @@ _dbus_reset_oom_score_adj (const char **error_str_p)
+   if (fd < 0)
+     {
+       fd = open ("/proc/self/oom_score_adj", O_RDWR);
+-      _dbus_fd_set_close_on_exec (fd);
++      if (fd >= 0)
++        _dbus_fd_set_close_on_exec (fd);
+     }
+ 
+   if (fd >= 0)
+-- 
+GitLab
+

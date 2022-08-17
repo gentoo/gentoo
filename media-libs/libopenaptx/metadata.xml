@@ -13,4 +13,7 @@
 		<email>codec@gentoo.org</email>
 		<name>Gentoo Codec Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">pali/libopenaptx</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -5,12 +5,12 @@ EAPI=8
 
 inherit meson
 
-MY_COMMIT="582b2d345abaa0e313cf16c902e602084ea59551"
+EGLWAYLAND_HASH="582b2d345abaa0e313cf16c902e602084ea59551"
 
 DESCRIPTION="EGLStream-based Wayland external platform"
 HOMEPAGE="https://github.com/NVIDIA/egl-wayland"
-SRC_URI="https://github.com/NVIDIA/egl-wayland/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${PN}-${MY_COMMIT}"
+SRC_URI="https://github.com/NVIDIA/egl-wayland/archive/${EGLWAYLAND_HASH}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${EGLWAYLAND_HASH}"
 
 LICENSE="MIT"
 SLOT="0"

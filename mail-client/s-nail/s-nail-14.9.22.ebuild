@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,7 +34,7 @@ BDEPEND="
 
 src_configure() {
 	local confopts=(
-		CC=$(tc-getCC)
+		CC="$(tc-getCC)"
 		EXTRA_CFLAGS=-std=c99
 		strip=/bin/true
 		OPT_AUTOCC=no

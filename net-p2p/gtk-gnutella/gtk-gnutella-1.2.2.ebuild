@@ -69,7 +69,7 @@ src_configure() {
 	./build.sh \
 		--configure-only \
 		--prefix="/usr" \
-		--cc=$(tc-getCC) \
+		--cc="$(tc-getCC)" \
 		${myconf}
 }
 

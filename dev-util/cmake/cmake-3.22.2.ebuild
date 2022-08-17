@@ -117,7 +117,7 @@ cmake_src_test() {
 	#    RunCMake.{IncompatibleQt,ObsoleteQtMacros}: Require Qt4
 	#    TestUpload: requires network access
 	"${BUILD_DIR}"/bin/ctest \
-		-j "$(makeopts_jobs)" \
+		-j "$(makeopts_jobs "${MAKEOPTS}" 999)" \
 		--test-load "$(makeopts_loadavg)" \
 		${ctestargs} \
 		-E "(BootstrapTest|BundleUtilities|ConfigSources|CMakeOnly.AllFindModules|CPackComponentsDEB-components-depend2|CompileOptions|CTest.UpdateCVS|DependencyGraph|Fortran|RunCMake.CompilerLauncher|RunCMake.IncompatibleQt|RunCMake.ObsoleteQtMacros|RunCMake.PrecompileHeaders|RunCMake.CPack_(DEB|RPM)|TestUpload)" \

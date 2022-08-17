@@ -3,20 +3,23 @@
 
 EAPI=8
 
-inherit linux-info
+inherit linux-info verify-sig
 
 DESCRIPTION="Programming interface (API) to the in-kernel connection tracking state table"
 HOMEPAGE="https://www.netfilter.org/projects/libnetfilter_conntrack/"
-SRC_URI="https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2"
+SRC_URI="https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2
+	verify-sig? ( https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2.sig )"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/netfilter.org.asc
 
 RDEPEND=">=net-libs/libmnl-1.0.3
 	>=net-libs/libnfnetlink-1.0.0"
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-netfilter )"
 
 DOCS=( README )
 

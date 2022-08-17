@@ -11,7 +11,7 @@ SRC_URI="https://download.enlightenment.org/rel/apps/ephoto/${P}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND=">=dev-libs/efl-1.26.1[eet,X]
 	media-libs/libexif"

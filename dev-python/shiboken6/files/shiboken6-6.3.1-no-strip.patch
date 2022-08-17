@@ -1,0 +1,26 @@
+diff --git a/libshiboken/CMakeLists.txt b/libshiboken/CMakeLists.txt
+index c65dcdb..f27287f 100644
+--- a/libshiboken/CMakeLists.txt
++++ b/libshiboken/CMakeLists.txt
+@@ -140,8 +140,6 @@ set_target_properties(libshiboken PROPERTIES OUTPUT_NAME "shiboken6${shiboken6_S
+                                              SOVERSION ${libshiboken_SOVERSION}
+                                              DEFINE_SYMBOL BUILD_LIBSHIBOKEN)
+ 
+-qfp_strip_library("libshiboken")
+-
+ install(FILES
+         autodecref.h
+         basewrapper.h
+diff --git a/shibokenmodule/CMakeLists.txt b/shibokenmodule/CMakeLists.txt
+index 2d52766..8defd5d 100644
+--- a/shibokenmodule/CMakeLists.txt
++++ b/shibokenmodule/CMakeLists.txt
+@@ -34,8 +34,6 @@ target_link_libraries(shibokenmodule PUBLIC libshiboken)
+ 
+ create_generator_target(shibokenmodule)
+ 
+-qfp_strip_library("shibokenmodule")
+-
+ install(TARGETS shibokenmodule DESTINATION ${PYTHON_SITE_PACKAGES}/shiboken6)
+ 
+ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/_config.py.in"

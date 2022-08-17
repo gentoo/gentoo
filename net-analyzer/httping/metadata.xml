@@ -8,7 +8,4 @@
 	<use>
 		<flag name="tfo">Enable support for TCP Fast Open</flag>
 	</use>
-	<upstream>
-		<remote-id type="github">flok99/httping</remote-id>
-	</upstream>
 </pkgmetadata>

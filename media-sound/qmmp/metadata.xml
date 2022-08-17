@@ -30,5 +30,6 @@
 		<flag name="sndfile">Enable wav playback support via <pkg>media-libs/libsndfile</pkg></flag>
 		<flag name="stereo">Enable stereo effect</flag>
 		<flag name="tray">Build tray icon</flag>
+		<flag name="xmp">Enable module files renderer (modplug replacement)</flag>
 	</use>
 </pkgmetadata>

@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <!-- maintainer-needed -->
-    <longdescription>
-        Pooch manages your Python library's sample data files: it automatically downloads and stores them in a local directory,
-        with support for versioning and corruption checks.
-    </longdescription>
-    <upstream>
-        <bugs-to>https://github.com/fatiando/pooch/issues</bugs-to>
-        <doc>https://www.fatiando.org/pooch/</doc>
-        <remote-id type="github">fatiando/pooch</remote-id>
-        <remote-id type="pypi">pooch</remote-id>
-    </upstream>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<longdescription>
+		Pooch manages your Python library's sample data files: it automatically downloads and stores them in a local directory,
+		with support for versioning and corruption checks.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/fatiando/pooch/issues</bugs-to>
+		<doc>https://www.fatiando.org/pooch/</doc>
+		<remote-id type="github">fatiando/pooch</remote-id>
+		<remote-id type="pypi">pooch</remote-id>
+	</upstream>
 </pkgmetadata>

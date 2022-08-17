@@ -31,7 +31,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-force_external_fmt.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-force_external_fmt.patch"
+	"${FILESDIR}/${P}-fix-clone-test.patch"
+)
 
 src_prepare() {
 	use test && eapply "${WORKDIR}"/${P}-update-catch-glibc-2.34.patch

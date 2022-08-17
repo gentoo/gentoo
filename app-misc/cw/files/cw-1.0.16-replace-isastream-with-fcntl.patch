@@ -1,0 +1,20 @@
+--- /var/tmp/portage/app-misc/cw-1.0.16-r3/work/cw-1.0.16/src/cw.c
++++ cw-1.0.16/src/cw.c
+@@ -1173,7 +1173,7 @@
+   close(master);
+   return(0);
+  }
+- if(isastream(slave)){
++ if(fcntl(slave,F_GETFD) < 0){
+   if(ioctl(slave,I_PUSH,"ptem")<0||ioctl(slave,I_PUSH,"ldterm")<0){
+    close(master);
+    close(slave);
+@@ -1211,7 +1211,7 @@
+   close(master);
+   return(0);
+  }
+- if(isastream(slave)){
++ if(fcntl(slave,F_GETFD) < 0){
+   if(ioctl(slave,I_PUSH,"ptem")<0||ioctl(slave,I_PUSH,"ldterm")<0){
+    close(master);
+    close(slave);

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-  <email>naota@gentoo.org</email>
-</maintainer>
-<longdescription> pommed handles the hotkeys found on the Apple MacBook Pro,
-MacBook and PowerBook laptops and adjusts the LCD backlight, sound volume,
-keyboard backlight or ejects the CD-ROM drive accordingly.
-pommed also monitors the ambient light sensors to automatically light up the
-keyboard backlight on the MacBook Pro and the latest PowerBook.
-Optional support for the Apple Remote control is available.</longdescription>
+	<maintainer type="person">
+		<email>naota@gentoo.org</email>
+		<name>Naohiro Aota</name>
+	</maintainer>
+	<longdescription> pommed handles the hotkeys found on the Apple MacBook Pro,
+	MacBook and PowerBook laptops and adjusts the LCD backlight, sound volume,
+	keyboard backlight or ejects the CD-ROM drive accordingly.
+	pommed also monitors the ambient light sensors to automatically light up the
+	keyboard backlight on the MacBook Pro and the latest PowerBook.
+	Optional support for the Apple Remote control is available.</longdescription>
 </pkgmetadata>

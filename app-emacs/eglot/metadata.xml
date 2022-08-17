@@ -9,6 +9,10 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
   <upstream>
     <remote-id type="github">joaotavora/eglot</remote-id>
     <doc>https://github.com/joaotavora/eglot/blob/master/README.md</doc>

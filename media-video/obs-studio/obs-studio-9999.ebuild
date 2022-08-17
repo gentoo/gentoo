@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit cmake lua-single python-single-r1 xdg
 
-OBS_BROWSER_COMMIT="915761778ec1eae99e740ad4bf63b40db3142ee2"
+OBS_BROWSER_COMMIT="b798763ae75b538e405c2d7e2ab3a1edfe59ed0c"
 CEF_DIR="cef_binary_4638_linux64"
 
 if [[ ${PV} == 9999 ]]; then
@@ -46,15 +46,11 @@ DEPEND="
 	dev-libs/glib:2
 	dev-libs/jansson:=
 	dev-qt/qtcore:5
-	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5[wayland?]
-	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtquickcontrols:5
-	dev-qt/qtsql:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
 	media-libs/libglvnd
 	media-libs/x264:=
@@ -63,12 +59,9 @@ DEPEND="
 	sys-apps/dbus
 	sys-apps/pciutils
 	sys-libs/zlib:=
-	virtual/udev
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXfixes
-	x11-libs/libXinerama
-	x11-libs/libXrandr
 	x11-libs/libxcb:=
 	alsa? ( media-libs/alsa-lib )
 	browser? (
@@ -85,13 +78,17 @@ DEPEND="
 		net-print/cups
 		x11-libs/cairo
 		x11-libs/libdrm
-		x11-libs/libXScrnSaver
 		x11-libs/libXcursor
 		x11-libs/libXdamage
 		x11-libs/libXext
 		x11-libs/libXi
+		x11-libs/libxkbcommon
+		x11-libs/libXrandr
 		x11-libs/libXrender
+		x11-libs/libXScrnSaver
+		x11-libs/libxshmfence
 		x11-libs/libXtst
+		x11-libs/pango
 	)
 	fdk? ( media-libs/fdk-aac:= )
 	jack? ( virtual/jack )
@@ -105,9 +102,15 @@ DEPEND="
 		media-libs/fontconfig
 		media-libs/freetype
 	)
-	v4l? ( media-libs/libv4l )
+	v4l? (
+		media-libs/libv4l
+		virtual/udev
+	)
 	vlc? ( media-video/vlc:= )
-	wayland? ( dev-libs/wayland )
+	wayland? (
+		dev-libs/wayland
+		x11-libs/libxkbcommon
+	)
 "
 RDEPEND="${DEPEND}"
 
@@ -138,30 +141,35 @@ src_unpack() {
 	fi
 }
 
+src_prepare() {
+	# We have not enabled VST before, but now it will be looked for unconditionally if
+	# any plugins are enabled, so make the VST part a warning instead of fatal for now.
+	sed -i 's/FATAL_ERROR "obs-vst submodule not available/WARNING "obs-vst submodule not available/' \
+		plugins/CMakeLists.txt || die
+
+	cmake_src_prepare
+}
+
 src_configure() {
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
 		$(usev browser -DCEF_ROOT_DIR=../${CEF_DIR})
-		-DBUILD_BROWSER=$(usex browser)
-		-DBUILD_VST=no
-		-DENABLE_WAYLAND=$(usex wayland)
-		-DDISABLE_ALSA=$(usex !alsa)
-		-DDISABLE_DECKLINK=$(usex !decklink)
-		-DDISABLE_FREETYPE=$(usex !truetype)
-		-DDISABLE_JACK=$(usex !jack)
-		-DDISABLE_LIBFDK=$(usex !fdk)
+		-DENABLE_ALSA=$(usex alsa)
+		-DENABLE_AJA=OFF
+		-DENABLE_BROWSER=$(usex browser)
+		-DENABLE_DECKLINK=$(usex decklink)
+		-DENABLE_FREETYPE=$(usex truetype)
+		-DENABLE_JACK=$(usex jack)
+		-DENABLE_LIBFDK=$(usex fdk)
 		-DENABLE_PIPEWIRE=$(usex pipewire)
-		-DDISABLE_PULSEAUDIO=$(usex !pulseaudio)
-		-DDISABLE_SPEEXDSP=$(usex !speex)
-		-DDISABLE_V4L2=$(usex !v4l)
-		-DDISABLE_VLC=$(usex !vlc)
+		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
+		-DENABLE_RTMPS=$(usex ssl ON OFF)
+		-DENABLE_SPEEXDSP=$(usex speex)
+		-DENABLE_V4L2=$(usex v4l)
+		-DENABLE_VLC=$(usex vlc)
+		-DENABLE_WAYLAND=$(usex wayland)
 		-DOBS_MULTIARCH_SUFFIX=${libdir#lib}
 		-DUNIX_STRUCTURE=1
-		-DWITH_RTMPS=$(usex ssl)
-
-		# deprecated and currently cause issues
-		# https://github.com/obsproject/obs-studio/pull/4560#issuecomment-826345608
-		-DLIBOBS_PREFER_IMAGEMAGICK=no
 	)
 
 	if [[ ${PV} != 9999 ]]; then
@@ -172,12 +180,12 @@ src_configure() {
 
 	if use lua || use python; then
 		mycmakeargs+=(
-			-DDISABLE_LUA=$(usex !lua)
-			-DDISABLE_PYTHON=$(usex !python)
-			-DENABLE_SCRIPTING=yes
+			-DENABLE_SCRIPTING_LUA=$(usex lua)
+			-DENABLE_SCRIPTING_PYTHON=$(usex python)
+			-DENABLE_SCRIPTING=ON
 		)
 	else
-		mycmakeargs+=( -DENABLE_SCRIPTING=no )
+		mycmakeargs+=( -DENABLE_SCRIPTING=OFF )
 	fi
 
 	cmake_src_configure

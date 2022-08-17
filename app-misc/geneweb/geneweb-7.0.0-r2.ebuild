@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,8 @@ RDEPEND="dev-lang/ocaml[ocamlopt?]
 	dev-ml/uunf:=
 	>=dev-ml/markup-1.0.0:=
 	dev-ml/unidecode:=
-	dev-ml/calendars:="
+	dev-ml/calendars:=
+	dev-ml/zarith:="
 DEPEND="${RDEPEND}
 	dev-ml/cppo
 	test? ( dev-ml/ounit2 )"

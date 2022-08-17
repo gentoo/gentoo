@@ -5,32 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<use>
-		<flag name="contravariant">
-			You can disable the use of the `contravariant`
-			package using `-f-contravariant`. Disabling this is an unsupported
-			configuration, but it may be useful for accelerating builds in sandboxes for
-			expert users. If disabled we will not supply instances of `Contravariant`
-		</flag>
-		<flag name="distributive">
-			You can disable the use of the `distributive`
-			package using `-f-distributive`. Disabling this is an unsupported
-			configuration, but it may be useful for accelerating builds in sandboxes for
-			expert users. If disabled we will not supply instances of `Distributive`
-		</flag>
-		<flag name="tagged">
-			You can disable the use of the `tagged` package
-			using `-f-tagged`. Disabing this is an unsupported
-			configuration, but it may be useful for accelerating builds in
-			sandboxes for expert users.
-		</flag>
-		<flag name="unordered-containers">
-			Enable the use of the `unordered-containers` package (and also its
-			dependency `hashable`). Disabling this is an unsupported configuration,
-			but it may be useful for accelerating builds in sandboxes for expert users.
-		</flag>
-
-	</use>
 	<upstream>
 		<remote-id type="github">ekmett/semigroupoids</remote-id>
 	</upstream>

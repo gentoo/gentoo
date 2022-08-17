@@ -15,7 +15,6 @@
 	<flag name="headless">Headless backend and a noop renderer, mainly for testing purposes</flag>
 	<flag name="ivi">Enable the IVI shell</flag>
 	<flag name="kiosk">Enable the kiosk shell</flag>
-	<flag name="launch">Install weston-launch utility</flag>
 	<flag name="pipewire">Enable virtual remote output with Pipewire on DRM backend</flag>
 	<flag name="rdp">Enable Remote Desktop Protocol compositor support</flag>
 	<flag name="remoting">Enable plugin to stream output to remote hosts using <pkg>media-libs/gstreamer</pkg></flag>

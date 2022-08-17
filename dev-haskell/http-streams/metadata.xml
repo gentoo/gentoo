@@ -5,18 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		/Overview/
-		
-		An HTTP client, using the Snap Framework's 'io-streams' library to
-		hande the streaming IO. The API is optimized for ease of use for the
-		rather common case of code needing to query web services and deal with
-		the result.
-		
-		The library is exported in a single module; see "Network.Http.Client"
-		for full documentation.
-	</longdescription>
-	<use>
-		<flag name="network-uri">Get Network.URI from the network-uri package.</flag>
-	</use>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -16,19 +16,18 @@ if [[ ${PV} != *9999 ]]; then
 	SRC_URI="http://haproxy.1wt.eu/download/$(ver_cut 1-2)/src/${MY_P}.tar.gz"
 	KEYWORDS="amd64 arm ppc x86"
 else
-	EGIT_REPO_URI="http://git.haproxy.org/git/haproxy-$(ver_cut 1-2).git/"
+	EGIT_REPO_URI="https://git.haproxy.org/git/haproxy-$(ver_cut 1-2).git/"
 	EGIT_BRANCH=master
 fi
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="+crypt doc examples slz +net_ns +pcre pcre-jit pcre2 pcre2-jit prometheus-exporter
-ssl systemd +threads tools vim-syntax +zlib lua device-atlas 51degrees wurfl"
+ssl systemd +threads tools vim-syntax +zlib lua 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
 	pcre2-jit? ( pcre2 )
 	pcre? ( !pcre2 )
 	lua? ( ${LUA_REQUIRED_USE} )
-	device-atlas? ( pcre )
 	?? ( slz zlib )"
 
 BDEPEND="virtual/pkgconfig"
@@ -48,8 +47,7 @@ DEPEND="
 	slz? ( dev-libs/libslz:= )
 	systemd? ( sys-apps/systemd )
 	zlib? ( sys-libs/zlib )
-	lua? ( ${LUA_DEPS} )
-	device-atlas? ( dev-libs/device-atlas-api-c )"
+	lua? ( ${LUA_DEPS} )"
 RDEPEND="${DEPEND}
 	acct-group/haproxy
 	acct-user/haproxy"
@@ -96,7 +94,6 @@ src_compile() {
 	args+=( $(haproxy_use zlib ZLIB) )
 	args+=( $(haproxy_use lua LUA) )
 	args+=( $(haproxy_use 51degrees 51DEGREES) )
-	args+=( $(haproxy_use device-atlas DEVICEATLAS) )
 	args+=( $(haproxy_use wurfl WURFL) )
 	args+=( $(haproxy_use systemd SYSTEMD) )
 
@@ -113,14 +110,14 @@ src_compile() {
 	fi
 
 	# HAProxy really needs some of those "SPEC_CFLAGS", like -fno-strict-aliasing
-	emake CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) EXTRA_OBJS="${EXTRA_OBJS}" TARGET_LDFLAGS="${TARGET_LDFLAGS}" ${args[@]}
+	emake CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" EXTRA_OBJS="${EXTRA_OBJS}" TARGET_LDFLAGS="${TARGET_LDFLAGS}" ${args[@]}
 	emake -C contrib/systemd SBINDIR=/usr/sbin
 
 	if use tools ; then
 		for contrib in ${CONTRIBS[@]} ; do
 			# Those two includes are a workaround for hpack Makefile missing those
 			emake -C contrib/${contrib} \
-				CFLAGS="${CFLAGS} -I../../include/ -I../../ebtree/" OPTIMIZE="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args[@]}
+				CFLAGS="${CFLAGS} -I../../include/ -I../../ebtree/" OPTIMIZE="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" ${args[@]}
 		done
 	fi
 }

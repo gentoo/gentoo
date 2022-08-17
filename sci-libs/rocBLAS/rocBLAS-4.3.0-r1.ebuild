@@ -76,7 +76,6 @@ src_configure() {
 	addpredict /dev/random
 
 	export PATH="${EPREFIX}/usr/lib/llvm/roc/bin:${PATH}"
-	export TENSILE_SKIP_LIBRARY=1
 
 	local mycmakeargs=(
 		-DTensile_LOGIC="asm_full"
@@ -130,7 +129,7 @@ src_test() {
 	addwrite /dev/kfd
 	addwrite /dev/dri/
 	cd "${BUILD_DIR}/clients/staging" || die
-	./rocblas-test || die "Tests failed"
+	LD_LIBRARY_PATH="${BUILD_DIR}/clients:${BUILD_DIR}/library/src" ROCBLAS_TENSILE_LIBPATH="${BUILD_DIR}/Tensile/library" ./rocblas-test || die "Tests failed"
 }
 
 src_install() {

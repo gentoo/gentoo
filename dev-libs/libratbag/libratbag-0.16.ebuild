@@ -61,6 +61,10 @@ DEPEND="
 	dev-libs/gobject-introspection
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.16-musl-error.h.patch
+)
+
 src_prepare() {
 	default
 

@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~johu/distfiles/${P}.tar.xz"
 
 LICENSE="MIT-with-advertising"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~riscv x86"
+KEYWORDS="amd64 ~arm ~loong ~riscv x86"
 IUSE=""
 
 FONT_CONF=( 10-powerline-symbols.conf )

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE=xml
 DISTUTILS_SINGLE_IMPL=1
 
@@ -18,7 +18,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-3+"
 SLOT="1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 RDEPEND="$(python_gen_cond_dep '

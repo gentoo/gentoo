@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>netmon@gentoo.org</email>
 		<name>Gentoo network monitoring and analysis project</name>
@@ -8,6 +12,7 @@
 	<use>
 		<flag name="graph">Enable support for graphing functions</flag>
 		<flag name="rados">Enable support for librados from <pkg>sys-cluster/ceph</pkg></flag>
+		<flag name="rrdcached">Build support for write-caching daemon</flag>
 		<flag name="rrdcgi">Build rrdcgi support</flag>
 	</use>
 	<upstream>

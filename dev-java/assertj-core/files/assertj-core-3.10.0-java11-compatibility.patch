@@ -1,0 +1,456 @@
+From 2e107db2a40c5ef60d4f5370e1e71fa780b67599 Mon Sep 17 00:00:00 2001
+From: Erhard Pointl <epeee@users.noreply.github.com>
+Date: Wed, 23 May 2018 11:45:35 +0200
+Subject: [PATCH] java11 compatibility (#1243)
+
+Fix java11 ea compile errors by adding assertThat method for StringBuilder and StringBuffer to disambiguate method resolution as StringBuilder and StringBuffer implements Comparable in java 11
+---
+ .../java/org/assertj/core/api/Assertions.java | 23 ++++++++++++
+ .../core/api/AssertionsForClassTypes.java     | 24 +++++++++++++
+ .../org/assertj/core/api/Assumptions.java     | 25 +++++++++++++
+ .../org/assertj/core/api/BDDAssertions.java   | 24 +++++++++++++
+ .../api/Java6AbstractBDDSoftAssertions.java   | 24 +++++++++++++
+ .../Java6AbstractStandardSoftAssertions.java  | 24 +++++++++++++
+ .../org/assertj/core/api/Java6Assertions.java | 24 +++++++++++++
+ .../assertj/core/api/Java6BDDAssertions.java  | 24 +++++++++++++
+ .../org/assertj/core/api/WithAssertions.java  | 24 +++++++++++++
+ .../org/assertj/core/api/WithAssumptions.java | 23 ++++++++++++
+ ...ons_assertThat_with_StringBuffer_Test.java | 36 +++++++++++++++++++
+ ...ns_assertThat_with_StringBuilder_Test.java | 36 +++++++++++++++++++
+ 12 files changed, 311 insertions(+)
+ create mode 100644 src/test/java/org/assertj/core/api/Assertions_assertThat_with_StringBuffer_Test.java
+ create mode 100644 src/test/java/org/assertj/core/api/Assertions_assertThat_with_StringBuilder_Test.java
+
+diff --git a/src/main/java/org/assertj/core/api/Assertions.java b/src/main/java/org/assertj/core/api/Assertions.java
+index 28c457f4c7..664748dad3 100644
+--- a/src/main/java/org/assertj/core/api/Assertions.java
++++ b/src/main/java/org/assertj/core/api/Assertions.java
+@@ -2565,6 +2565,29 @@ public static <T> T assertThat(final AssertProvider<T> component) {
+     return AssertionsForInterfaceTypes.assertThat(actual);
+   }
+ 
++  /**
++   * Creates a new instance of <code>{@link CharSequenceAssert}</code> from a {@link StringBuilder}.
++   *
++   * @param actual the actual value.
++   * @return the created assertion object.
++   * @since 3.11.0
++   */
++  @CheckReturnValue
++  public static AbstractCharSequenceAssert<?, ? extends CharSequence> assertThat(StringBuilder actual) {
++    return AssertionsForClassTypes.assertThat(actual);
++  }
++  /**
++   * Creates a new instance of <code>{@link CharSequenceAssert}</code> from a {@link StringBuffer}.
++   *
++   * @param actual the actual value.
++   * @return the created assertion object.
++   * @since 3.11.0
++   */
++  @CheckReturnValue
++  public static AbstractCharSequenceAssert<?, ? extends CharSequence> assertThat(StringBuffer actual) {
++    return AssertionsForClassTypes.assertThat(actual);
++  }
++
+   /**
+    * Creates a new instance of <code>{@link CharSequenceAssert}from a {@link String}</code>.
+    *
+diff --git a/src/main/java/org/assertj/core/api/AssertionsForClassTypes.java b/src/main/java/org/assertj/core/api/AssertionsForClassTypes.java
+index fd05593159..fb2e2acfbd 100644
+--- a/src/main/java/org/assertj/core/api/AssertionsForClassTypes.java
++++ b/src/main/java/org/assertj/core/api/AssertionsForClassTypes.java
+@@ -487,6 +487,30 @@ public static AbstractShortArrayAssert<?> assertThat(short[] actual) {
+     return new ShortArrayAssert(actual);
+   }
+ 
++  /**
++   * Creates a new instance of <code>{@link CharSequenceAssert}</code> from a {@link StringBuilder}.
++   *
++   * @param actual the actual value.
++   * @return the created assertion object.
++   * @since 3.11.0
++   */
++  @CheckReturnValue
++  public static AbstractCharSequenceAssert<?, ? extends CharSequence> assertThat(StringBuilder actual) {
++    return new CharSequenceAssert(actual);
++  }
++
++  /**
++   * Creates a new instance of <code>{@link CharSequenceAssert}</code> from a {@link StringBuffer}.
++   *
++   * @param actual the actual value.
++   * @return the created assertion object.
++   * @since 3.11.0
++   */
++  @CheckReturnValue
++  public static AbstractCharSequenceAssert<?, ? extends CharSequence> assertThat(StringBuffer actual) {
++    return new CharSequenceAssert(actual);
++  }
++
+   /**
+    * Creates a new instance of <code>{@link StringAssert}</code>.
+    *
+diff --git a/src/main/java/org/assertj/core/api/Assumptions.java b/src/main/java/org/assertj/core/api/Assumptions.java
+index 9ce773bd44..d26b2453ce 100644
+--- a/src/main/java/org/assertj/core/api/Assumptions.java
++++ b/src/main/java/org/assertj/core/api/Assumptions.java
+@@ -308,6 +308,31 @@ public static AbstractCharArrayAssert<?> assumeThat(char[] actual) {
+     return asAssumption(CharSequenceAssert.class, CharSequence.class, actual);
+   }
+ 
++  /**
++   * Creates a new instance of <code>{@link CharSequenceAssert}</code> assumption from a {@link StringBuilder}.
++   *
++   * @param actual the actual value.
++   * @return the created assumption for assertion object.
++   * @since 3.11.0
++   */
++  @CheckReturnValue
++  public static AbstractCharSequenceAssert<?, ? extends CharSequence> assumeThat(StringBuilder actual) {
++    return asAssumption(CharSequenceAssert.class, CharSequence.class, actual);
++  }
++
++  /**
++   * Creates a new instance of <code>{@link CharSequenceAssert}</code> assumption from a {@link StringBuffer}.
++   *
++   * @param actual the actual value.
++   * @return the created assumption for assertion object.
++   * @since 3.11.0
++   */
++  @CheckReturnValue
++  public static AbstractCharSequenceAssert<?, ? extends CharSequence> assumeThat(StringBuffer actual) {
++    return asAssumption(CharSequenceAssert.class, CharSequence.class, actual);
++  }
++
++
+   /**
+    * Creates a new instance of <code>{@link ShortAssert}</code> assumption.
+    *
+diff --git a/src/main/java/org/assertj/core/api/BDDAssertions.java b/src/main/java/org/assertj/core/api/BDDAssertions.java
+index c558153faf..03e574a8d2 100644
+--- a/src/main/java/org/assertj/core/api/BDDAssertions.java
++++ b/src/main/java/org/assertj/core/api/BDDAssertions.java
+@@ -800,6 +800,30 @@ public static AbstractShortArrayAssert<?> then(short[] actual) {
+     return assertThat(actual);
+   }
+ 
++  /**
++   * Creates a new instance of <code>{@link org.assertj.core.api.CharSequenceAssert}</code> from a {@link StringBuilder}.
++   *
++   * @param actual the actual value.
++   * @return the created assertion object.
++   * @since 3.11.0
++   */
++  @CheckReturnValue
++  public static AbstractCharSequenceAssert<?, ? extends CharSequence> then(StringBuilder actual) {
++    return assertThat(actual);
++  }
++
++  /**
++   * Creates a new instance of <code>{@link org.assertj.core.api.CharSequenceAssert}</code> from a {@link StringBuffer}.
++   *
++   * @param actual the actual value.
++   * @return the created assertion object.
++   * @since 3.11.0
++   */
++  @CheckReturnValue
++  public static AbstractCharSequenceAssert<?, ? extends CharSequence> then(StringBuffer actual) {
++    return assertThat(actual);
++  }
++
+   /**
+    * Creates a new instance of <code>{@link org.assertj.core.api.StringAssert}</code>.
+    *
+diff --git a/src/main/java/org/assertj/core/api/Java6AbstractBDDSoftAssertions.java b/src/main/java/org/assertj/core/api/Java6AbstractBDDSoftAssertions.java
+index bd54285ae1..edb0451067 100644
+--- a/src/main/java/org/assertj/core/api/Java6AbstractBDDSoftAssertions.java
++++ b/src/main/java/org/assertj/core/api/Java6AbstractBDDSoftAssertions.java
+@@ -487,6 +487,30 @@ public CharSequenceAssert then(CharSequence actual) {
+     return proxy(CharSequenceAssert.class, CharSequence.class, actual);
+   }
+ 
++  /**
++   * Creates a new instance of <code>{@link CharSequenceAssert}</code> from a {@link StringBuilder}.
++   *
++   * @param actual the actual value.
++   * @return the created assertion object.
++   * @since 3.11.0
++   */
++  @CheckReturnValue
++  public CharSequenceAssert then(StringBuilder actual) {
++    return proxy(CharSequenceAssert.class, CharSequence.class, actual);
++  }
++
++  /**
++   * Creates a new instance of <code>{@link CharSequenceAssert}</code> from a {@link StringBuffer}.
++   *
++   * @param actual the actual value.
++   * @return the created assertion object.
++   * @since 3.11.0
++   */
++  @CheckReturnValue
++  public CharSequenceAssert then(StringBuffer actual) {
++    return proxy(CharSequenceAssert.class, CharSequence.class, actual);
++  }
++
+   /**
+    * Creates a new instance of <code>{@link StringAssert}</code>.
+    *
+diff --git a/src/main/java/org/assertj/core/api/Java6AbstractStandardSoftAssertions.java b/src/main/java/org/assertj/core/api/Java6AbstractStandardSoftAssertions.java
+index ee9d3fb72d..4ff4315635 100644
+--- a/src/main/java/org/assertj/core/api/Java6AbstractStandardSoftAssertions.java
++++ b/src/main/java/org/assertj/core/api/Java6AbstractStandardSoftAssertions.java
+@@ -489,6 +489,30 @@ public CharSequenceAssert assertThat(CharSequence actual) {
+     return proxy(CharSequenceAssert.class, CharSequence.class, actual);
+   }
+ 
++  /**
++   * Creates a new instance of <code>{@link CharSequenceAssert}</code> from a {@link StringBuilder}.
++   *
++   * @param actual the actual value.
++   * @return the created assertion object.
++   * @since 3.11.0
++   */
++  @CheckReturnValue
++  public CharSequenceAssert assertThat(StringBuilder actual) {
++    return proxy(CharSequenceAssert.class, CharSequence.class, actual);
++  }
++
++  /**
++   * Creates a new instance of <code>{@link CharSequenceAssert}</code> from a {@link StringBuffer}.
++   *
++   * @param actual the actual value.
++   * @return the created assertion object.
++   * @since 3.11.0
++   */
++  @CheckReturnValue
++  public CharSequenceAssert assertThat(StringBuffer actual) {
++    return proxy(CharSequenceAssert.class, CharSequence.class, actual);
++  }
++
+   /**
+    * Creates a new instance of <code>{@link StringAssert}</code>.
+    *
+diff --git a/src/main/java/org/assertj/core/api/Java6Assertions.java b/src/main/java/org/assertj/core/api/Java6Assertions.java
+index e88ccde3c8..10912f41bc 100644
+--- a/src/main/java/org/assertj/core/api/Java6Assertions.java
++++ b/src/main/java/org/assertj/core/api/Java6Assertions.java
+@@ -924,6 +924,30 @@ public static AbstractShortArrayAssert<?> assertThat(short[] actual) {
+     return new CharSequenceAssert(actual);
+   }
+ 
++  /**
++   * Creates a new instance of <code>{@link CharSequenceAssert}</code> from a {@link StringBuilder}.
++   *
++   * @param actual the actual value.
++   * @return the created assertion object.
++   * @since 3.11.0
++   */
++  @CheckReturnValue
++  public static AbstractCharSequenceAssert<?, ? extends CharSequence> assertThat(StringBuilder actual) {
++    return new CharSequenceAssert(actual);
++  }
++
++  /**
++   * Creates a new instance of <code>{@link CharSequenceAssert}</code> from a {@link StringBuffer}.
++   *
++   * @param actual the actual value.
++   * @return the created assertion object.
++   * @since 3.11.0
++   */
++  @CheckReturnValue
++  public static AbstractCharSequenceAssert<?, ? extends CharSequence> assertThat(StringBuffer actual) {
++    return new CharSequenceAssert(actual);
++  }
++
+   /**
+    * Creates a new instance of <code>{@link StringAssert}</code>.
+    *
+diff --git a/src/main/java/org/assertj/core/api/Java6BDDAssertions.java b/src/main/java/org/assertj/core/api/Java6BDDAssertions.java
+index 4ffc23475b..009929ebc9 100644
+--- a/src/main/java/org/assertj/core/api/Java6BDDAssertions.java
++++ b/src/main/java/org/assertj/core/api/Java6BDDAssertions.java
+@@ -795,6 +795,30 @@ public static AbstractShortArrayAssert<?> then(short[] actual) {
+     return assertThat(actual);
+   }
+ 
++  /**
++   * Creates a new instance of <code>{@link org.assertj.core.api.CharSequenceAssert}</code> from a {@link StringBuilder}.
++   *
++   * @param actual the actual value.
++   * @return the created assertion object.
++   * @since 3.11.0
++   */
++  @CheckReturnValue
++  public static AbstractCharSequenceAssert<?, ? extends CharSequence> then(StringBuilder actual) {
++    return assertThat(actual);
++  }
++
++  /**
++   * Creates a new instance of <code>{@link org.assertj.core.api.CharSequenceAssert}</code> from a {@link StringBuffer}.
++   *
++   * @param actual the actual value.
++   * @return the created assertion object.
++   * @since 3.11.0
++   */
++  @CheckReturnValue
++  public static AbstractCharSequenceAssert<?, ? extends CharSequence> then(StringBuffer actual) {
++    return assertThat(actual);
++  }
++
+   /**
+    * Creates a new instance of <code>{@link org.assertj.core.api.StringAssert}</code>.
+    *
+diff --git a/src/main/java/org/assertj/core/api/WithAssertions.java b/src/main/java/org/assertj/core/api/WithAssertions.java
+index c87854dd89..b71250c1bd 100644
+--- a/src/main/java/org/assertj/core/api/WithAssertions.java
++++ b/src/main/java/org/assertj/core/api/WithAssertions.java
+@@ -564,6 +564,30 @@ default <VALUE> AtomicStampedReferenceAssert<VALUE> assertThat(AtomicStampedRefe
+     return Assertions.assertThat(actual);
+   }
+ 
++  /**
++   * Creates a new instance of <code>{@link CharSequenceAssert}</code> from a {@link StringBuilder}.
++   *
++   * @param actual the actual value.
++   * @return the created assertion object.
++   * @since 3.11.0
++   */
++  @CheckReturnValue
++  default AbstractCharSequenceAssert<?, ? extends CharSequence> assertThat(final StringBuilder actual) {
++    return Assertions.assertThat(actual);
++  }
++
++  /**
++   * Creates a new instance of <code>{@link CharSequenceAssert}</code> from a {@link StringBuffer}.
++   *
++   * @param actual the actual value.
++   * @return the created assertion object.
++   * @since 3.11.0
++   */
++  @CheckReturnValue
++  default AbstractCharSequenceAssert<?, ? extends CharSequence> assertThat(final StringBuffer actual) {
++    return Assertions.assertThat(actual);
++  }
++
+   /**
+    * Creates a new instance of <code>{@link ShortArrayAssert}</code>.
+    *
+diff --git a/src/main/java/org/assertj/core/api/WithAssumptions.java b/src/main/java/org/assertj/core/api/WithAssumptions.java
+index 0703fa33dd..56539e36dd 100644
+--- a/src/main/java/org/assertj/core/api/WithAssumptions.java
++++ b/src/main/java/org/assertj/core/api/WithAssumptions.java
+@@ -371,6 +371,29 @@ default <VALUE> AtomicStampedReferenceAssert<VALUE> assumeThat(AtomicStampedRefe
+     return Assumptions.assumeThat(actual);
+   }
+ 
++  /**
++   * Creates a new instance of <code>{@link CharSequenceAssert}</code> assumption from a {@link StringBuilder}.
++   *
++   * @param actual the actual value.
++   * @return the created assumption for assertion object.
++   * @since 3.11.0
++   */
++  @CheckReturnValue
++  default AbstractCharSequenceAssert<?, ? extends CharSequence> assumeThat(final StringBuilder actual) {
++    return Assumptions.assumeThat(actual);
++  }
++
++  /**
++   * Creates a new instance of <code>{@link CharSequenceAssert}</code> assumption from a {@link StringBuffer}.
++   *
++   * @param actual the actual value.
++   * @return the created assumption for assertion object.
++   * @since 3.11.0
++   */
++  @CheckReturnValue
++  default AbstractCharSequenceAssert<?, ? extends CharSequence> assumeThat(final StringBuffer actual) {
++    return Assumptions.assumeThat(actual);
++  }
+   /**
+    * Creates a new instance of <code>{@link ShortArrayAssert}</code> assumption.
+    *
+diff --git a/src/test/java/org/assertj/core/api/Assertions_assertThat_with_StringBuffer_Test.java b/src/test/java/org/assertj/core/api/Assertions_assertThat_with_StringBuffer_Test.java
+new file mode 100644
+index 0000000000..b3f020f101
+--- /dev/null
++++ b/src/test/java/org/assertj/core/api/Assertions_assertThat_with_StringBuffer_Test.java
+@@ -0,0 +1,36 @@
++/*
++ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
++ * the License. You may obtain a copy of the License at
++ *
++ * http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
++ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
++ * specific language governing permissions and limitations under the License.
++ *
++ * Copyright 2012-2018 the original author or authors.
++ */
++package org.assertj.core.api;
++
++import org.junit.Test;
++
++import static org.assertj.core.api.Assertions.assertThat;
++
++/**
++ * Tests for <code>{@link Assertions#assertThat(StringBuffer)}</code>.
++ */
++public class Assertions_assertThat_with_StringBuffer_Test {
++
++  @Test
++  public void should_create_Assert() {
++    AbstractCharSequenceAssert<?, ?> assertions = Assertions.assertThat(new StringBuffer("Yoda"));
++    assertThat(assertions).isNotNull();
++  }
++
++  @Test
++  public void should_pass_actual() {
++    StringBuffer actual = new StringBuffer("Yoda");
++    AbstractCharSequenceAssert<?, ?> assertions = Assertions.assertThat(actual);
++    assertThat(assertions.actual).isSameAs(actual);
++  }
++}
+diff --git a/src/test/java/org/assertj/core/api/Assertions_assertThat_with_StringBuilder_Test.java b/src/test/java/org/assertj/core/api/Assertions_assertThat_with_StringBuilder_Test.java
+new file mode 100644
+index 0000000000..315d6d4b9f
+--- /dev/null
++++ b/src/test/java/org/assertj/core/api/Assertions_assertThat_with_StringBuilder_Test.java
+@@ -0,0 +1,36 @@
++/*
++ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
++ * the License. You may obtain a copy of the License at
++ *
++ * http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
++ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
++ * specific language governing permissions and limitations under the License.
++ *
++ * Copyright 2012-2018 the original author or authors.
++ */
++package org.assertj.core.api;
++
++import org.junit.Test;
++
++import static org.assertj.core.api.Assertions.assertThat;
++
++/**
++ * Tests for <code>{@link Assertions#assertThat(StringBuilder)}</code>.
++ */
++public class Assertions_assertThat_with_StringBuilder_Test {
++
++  @Test
++  public void should_create_Assert() {
++    AbstractCharSequenceAssert<?, ?> assertions = Assertions.assertThat(new StringBuilder("Yoda"));
++    assertThat(assertions).isNotNull();
++  }
++
++  @Test
++  public void should_pass_actual() {
++    StringBuilder actual = new StringBuilder("Yoda");
++    AbstractCharSequenceAssert<?, ?> assertions = Assertions.assertThat(actual);
++    assertThat(assertions.actual).isSameAs(actual);
++  }
++}

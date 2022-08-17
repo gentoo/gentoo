@@ -19,7 +19,7 @@ case ${1} in
 		;;
 	-h|--help)
 		_print_help
-		exit -1
+		exit 255
 		;;
 	*)
 		_print_help

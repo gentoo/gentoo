@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-<!-- maintainer-needed -->
-	<use>
-		<flag name="ansi">Add support for ANSI escape sequences</flag>
-		<flag name="gtk3">Use <pkg>x11-libs/gtk+</pkg>:3 instead of <pkg>x11-libs/gtk+</pkg>:2</flag>
-	</use>
-</pkgmetadata>

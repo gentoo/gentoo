@@ -1,0 +1,72 @@
+Use system's crc32c if found
+
+--- tg_owt-10d5f4bf77333ef6b43516f90d2ce13273255f41.orig/CMakeLists.txt
++++ tg_owt-10d5f4bf77333ef6b43516f90d2ce13273255f41/CMakeLists.txt
+@@ -147,7 +147,6 @@
+ 
+ target_link_libraries(tg_owt
+ PRIVATE
+-    tg_owt::libcrc32c
+     tg_owt::libpffft
+     tg_owt::librnnoise
+     tg_owt::libsrtp
+@@ -185,6 +184,7 @@
+ link_libabsl(tg_owt)
+ link_libopenh264(tg_owt)
+ link_libvpx(tg_owt)
++link_crc32c(tg_owt)
+ 
+ if (TG_OWT_BUILD_AUDIO_BACKENDS AND (UNIX AND NOT APPLE))
+     link_libalsa(tg_owt)
+@@ -2599,7 +2599,6 @@
+ 
+ set(export_targets
+     ${tg_owt_export}
+-    libcrc32c
+     libpffft
+     librnnoise
+     libsrtp
+@@ -2617,6 +2616,9 @@
+ if (NOT LIBOPENH264_FOUND)
+     list(APPEND export_targets libopenh264)
+ endif()
++if (NOT Crc32c_FOUND)
++    list(APPEND export_targets libcrc32c)
++endif()
+ 
+ export(
+     TARGETS ${export_targets}
+--- tg_owt-10d5f4bf77333ef6b43516f90d2ce13273255f41.orig/cmake/external.cmake
++++ tg_owt-10d5f4bf77333ef6b43516f90d2ce13273255f41/cmake/external.cmake
+@@ -166,6 +166,20 @@
+     endif()
+ endfunction()
+ 
++# crc32c
++function(link_crc32c target_name)
++    if (TG_OWT_PACKAGED_BUILD)
++        find_package(Crc32c)
++        set(Crc32c_FOUND ${Crc32c_FOUND} PARENT_SCOPE)
++        if (Crc32c_FOUND)
++            target_link_libraries(${target_name} PRIVATE Crc32c::crc32c)
++        endif()
++    endif()
++    if (NOT Crc32c_FOUND)
++        target_link_libraries(${target_name} PRIVATE tg_owt::libcrc32c)
++    endif()
++endfunction()
++
+ function(link_glib target_name)
+     find_package(PkgConfig REQUIRED)
+     pkg_check_modules(GLIB2 REQUIRED glib-2.0)
+--- tg_owt-10d5f4bf77333ef6b43516f90d2ce13273255f41.orig/src/net/dcsctp/packet/crc32c.cc
++++ tg_owt-10d5f4bf77333ef6b43516f90d2ce13273255f41/src/net/dcsctp/packet/crc32c.cc
+@@ -11,7 +11,7 @@
+ 
+ #include <cstdint>
+ 
+-#include "third_party/crc32c/src/include/crc32c/crc32c.h"
++#include "crc32c/crc32c.h"
+ 
+ namespace dcsctp {
+ 

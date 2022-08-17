@@ -1,6 +1,3 @@
-# Copyright 1999-2019 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
 VERSION="Eclipse Temurin JDK ${PV}"
 JAVA_HOME="${EPREFIX}/opt/${P}"
 JDK_HOME="${EPREFIX}/opt/${P}"

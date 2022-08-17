@@ -5,6 +5,9 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
+	<use>
+		<flag name="experimental-loong">Add experimental LoongArch patchset</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">seccomp/libseccomp</remote-id>
 		<remote-id type="sourceforge">libseccomp</remote-id>

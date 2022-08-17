@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="5"
-KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 IUSE=""
 
 RDEPEND=">=x11-misc/xdg-utils-1.1.1-r1"

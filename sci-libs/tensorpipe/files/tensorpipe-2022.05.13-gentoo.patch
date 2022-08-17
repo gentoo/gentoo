@@ -1,0 +1,10 @@
+--- a/tensorpipe/CMakeLists.txt	2022-05-27 16:04:55.374134087 +0200
++++ b/tensorpipe/CMakeLists.txt	2022-05-27 16:05:11.596909345 +0200
+@@ -184,7 +184,6 @@
+ # We should keep libnop headers private as they should not be exposed to downstream users,
+ # but they're currently transitively included by tensorpipe/transport/connection.h (which
+ # is still unclear whether it should be a public or private header).
+-list(APPEND TP_INCLUDE_DIRS $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/third_party/libnop/include>)
+ 
+ 
+ ## Target

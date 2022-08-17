@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,11 +24,12 @@ RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${PN}-${GITHASH}
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
-	if [[ ${MERGE_TYPE} != "binary" ]] && use openmp && ! tc-has-openmp; then
-		ewarn "You are using a compiler without OpenMP support"
-		die "Need an OpenMP capable compiler"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_prepare() {

@@ -40,6 +40,15 @@ BDEPEND="
 	test? ( gcc-plugin? ( dev-scheme/guile ) )
 "
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+	fortran-2_pkg_setup
+}
+
 src_prepare() {
 	default
 

@@ -1,0 +1,11 @@
+--- a/IGC/cmake/igc_find_opencl_clang.cmake
++++ b/IGC/cmake/igc_find_opencl_clang.cmake
+@@ -104,7 +104,7 @@
+ 
+     # Get parent dir of the location of CLANG_EXE
+     get_filename_component(CLANG_EXE_PARENT_DIR ${CLANG_EXE} DIRECTORY)
+-    file(GLOB_RECURSE opencl-header ${CLANG_EXE_PARENT_DIR}/../*opencl-c.h)
++    file(GLOB_RECURSE opencl-header ${CCLANG_INCLUDE_PREBUILDS_DIR}/*opencl-c.h)
+     if(opencl-header)
+       message(STATUS "[IGC] Found opencl-c.h: ${opencl-header}")
+     else(opencl-header)

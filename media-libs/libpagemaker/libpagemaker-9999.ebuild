@@ -1,14 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-if [[ ${PV} = *9999 ]]; then
-	EGIT_REPO_URI="git://gerrit.libreoffice.org/${PN}.git"
+if [[ ${PV} == *9999 ]]; then
+	EGIT_REPO_URI="https://git.libreoffice.org/libpagemaker"
 	inherit autotools git-r3
 else
 	SRC_URI="http://dev-www.libreoffice.org/src/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 DESCRIPTION="C++ Library that parses the file format of Aldus/Adobe PageMaker documents"
 HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libpagemaker"
@@ -17,15 +17,15 @@ LICENSE="MPL-2.0"
 SLOT="0"
 IUSE="debug doc tools"
 
-BDEPEND="
-	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
-"
 RDEPEND="
 	dev-libs/librevenge
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost
+"
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
 "
 
 src_prepare() {
@@ -44,5 +44,5 @@ src_configure() {
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -type f -delete || die
+	find "${ED}" -name '*.la' -type f -delete || die
 }

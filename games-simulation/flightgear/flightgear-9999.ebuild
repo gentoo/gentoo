@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -54,8 +54,7 @@ COMMON_DEPEND="
 "
 # libXi and libXmu are build-only-deps according to FindGLUT.cmake
 DEPEND="${COMMON_DEPEND}
-	>=dev-libs/boost-1.44
-	qt5? ( >=dev-qt/linguist-tools-5.7.1:5 )
+	dev-libs/boost
 	utils? (
 		x11-libs/libXi
 		x11-libs/libXmu
@@ -64,6 +63,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	~games-simulation/${PN}-data-${PV}
 "
+BDEPEND="qt5? ( >=dev-qt/linguist-tools-5.7.1:5 )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2020.3.5-cmake.patch"
@@ -72,7 +72,11 @@ PATCHES=(
 DOCS=(AUTHORS ChangeLog NEWS README Thanks)
 
 pkg_pretend() {
-	use openmp && tc-check-openmp
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_configure() {

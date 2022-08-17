@@ -12,7 +12,7 @@ if [[ ${PV} = *9999* ]]; then
 else
 	SRC_URI="http://doxygen.nl/files/${P}.src.tar.gz"
 	SRC_URI+=" mirror://sourceforge/doxygen/rel-${PV}/${P}.src.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="Documentation system for most programming languages"
@@ -61,6 +61,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.9.1-ignore-bad-encoding.patch"
 	"${FILESDIR}/${PN}-1.9.1-header-dep.patch"
 	"${FILESDIR}/${P}-xml-static.patch"
+	"${FILESDIR}/${PN}-1.9.1-do_not_force_libcxx.patch"
 )
 
 DOCS=( LANGUAGE.HOWTO README.md )

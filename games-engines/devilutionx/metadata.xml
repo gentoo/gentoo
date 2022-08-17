@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>polynomial-c@gentoo.org</email>
-    <name>Lars Wendler</name>
+  <maintainer type="project">
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
   </maintainer>
   <use>
-    <flag name="lto">Build with link time optimization enabled</flag>
+    <flag name="sodium">Enable network packet encryption using <pkg>dev-libs/libsodium</pkg></flag>
+    <flag name="zerotier">Enable ZeroTier for online public games</flag>
   </use>
   <upstream>
     <remote-id type="github">diasurgical/devilutionX</remote-id>

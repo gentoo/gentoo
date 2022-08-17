@@ -35,9 +35,11 @@
 	</longdescription>
 	<use>
 		<flag name="exec-static-trampoline">Don't rely on dynamic code generation for trampolines.</flag>
+		<flag name="experimental-loong">Add experimental LoongArch patchset</flag>
 		<flag name="pax-kernel">Use PaX emulated trampolines, for we can't use PROT_EXEC</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:libffi_project:libffi</remote-id>
+		<remote-id type="github">libffi/libffi</remote-id>
 	</upstream>
 </pkgmetadata>

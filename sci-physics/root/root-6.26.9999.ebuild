@@ -163,12 +163,12 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_C_COMPILER=$(tc-getCC)
-		-DCMAKE_CXX_COMPILER=$(tc-getCXX)
-		-DCMAKE_CUDA_HOST_COMPILER=$(tc-getCXX)
+		-DCMAKE_C_COMPILER="$(tc-getCC)"
+		-DCMAKE_CXX_COMPILER="$(tc-getCXX)"
+		-DCMAKE_CUDA_HOST_COMPILER="$(tc-getCXX)"
 		-DCMAKE_C_FLAGS="${CFLAGS}"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
-		-DCMAKE_CXX_STANDARD=$((usev c++14 || usev c++17) | cut -c4-)
+		-DCMAKE_CXX_STANDARD=$( (usev c++14 || usev c++17) | cut -c4-)
 		-DPYTHON_EXECUTABLE="${EPREFIX}/usr/bin/${EPYTHON}"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)"
 		-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)/share/man"

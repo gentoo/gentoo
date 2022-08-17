@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,13 +13,13 @@ RUBY_FAKEGEM_BINDIR="exe"
 
 RUBY_FAKEGEM_GEMSPEC="rdoc.gemspec"
 
-inherit prefix ruby-fakegem
+inherit ruby-fakegem
 
 DESCRIPTION="An extended version of the RDoc library from Ruby 1.8"
 HOMEPAGE="https://github.com/ruby/rdoc/"
 SRC_URI="https://github.com/ruby/rdoc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="Ruby MIT"
+LICENSE="|| ( GPL-2 Ruby-BSD )"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 SLOT="0"
 IUSE="doc"
@@ -82,7 +82,6 @@ all_ruby_install() {
 				ruby_fakegem_binwrapper $bin /usr/bin/${bin}${version}
 				sed -i -e "1s/env ruby/ruby${version}/" \
 					"${ED}/usr/bin/${bin}${version}" || die
-				use prefix && hprefixify "${ED}/usr/bin/${bin}${version}"
 			fi
 		done
 	done

@@ -1,0 +1,49 @@
+Bug: https://bugs.gentoo.org/858674
+Upstream-PR: https://github.com/tpm2-software/tpm2-tss/pull/2391
+Upstream-Commit: https://github.com/tpm2-software/tpm2-tss/commit/5e626ab72283017cf4cb2dc4b101d16a58a6c470
+
+From f61fd726c064e909b7576f233f0ad0e885e1752e Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Thu, 14 Jul 2022 09:22:49 -0700
+Subject: [PATCH] build: Remove erroneous comma
+
+When building tpm2-tss with slibtool instead of GNU libtool the build
+will fail during 'make check'. This happens because there is an extra
+erroneous comma which is then passed to gcc causing it to fail to find a
+non-existent file. With GNU libtool it appears that the comma is
+silently removed while slibtool does not do this.
+
+rdlibtool --tag=CC --mode=link gcc -I./src -I./include/tss2 -I./test/fuzz/tcti -std=c99 -Wall -Wextra -Wformat-security -Werror -fstack-protector-all -fpic -fPIC -Wno-missing-braces -Wstrict-overflow=5 -DINTERNALBUILD=1 -I./include -I./src/tss2-mu -I./src/tss2-sys -I./src/tss2-esys -I./src/tss2-fapi -I./test/data -Wno-unused-parameter -Wno-missing-field-initializers -DTOP_SOURCEDIR="." -DTOP_SOURCEDIR="." -g -Wl,--wrap=read -Wl,--wrap=write, -Wl,--wrap=poll -Wl,--wrap=open -o test/unit/tcti-device test/unit/tcti_device-tcti-device.o src/tss2-tcti/test_unit_tcti_device-tcti-common.o src/tss2-tcti/test_unit_tcti_device-tcti-device.o -lcmocka src/tss2-mu/libtss2-mu.la libutil.la
+
+rdlibtool: lconf: {.name="libtool"}.
+rdlibtool: fdcwd: {.fdcwd=AT_FDCWD, .realpath="/tmp/tpm2-tss"}.
+rdlibtool: lconf: fstatat(AT_FDCWD,".",...) = 0 {.st_dev = 45, .st_ino = 15835}.
+rdlibtool: lconf: openat(AT_FDCWD,"libtool",O_RDONLY,0) = 3.
+rdlibtool: lconf: found "/tmp/tpm2-tss/libtool".
+rdlibtool: link: gcc test/unit/tcti_device-tcti-device.o src/tss2-tcti/test_unit_tcti_device-tcti-common.o src/tss2-tcti/test_unit_tcti_device-tcti-device.o .libs/libutil.a -I./src -I./include/tss2 -I./test/fuzz/tcti -std=c99 -Wall -Wextra -Wformat-security -Werror -fstack-protector-all -fpic -fPIC -Wno-missing-braces -Wstrict-overflow=5 -DINTERNALBUILD=1 -I./include -I./src/tss2-mu -I./src/tss2-sys -I./src/tss2-esys -I./src/tss2-fapi -I./test/data -Wno-unused-parameter -Wno-missing-field-initializers -DTOP_SOURCEDIR="." -DTOP_SOURCEDIR="." -g -Wl,--wrap=read -Wl,--wrap=write, -Wl,--wrap=poll -Wl,--wrap=open -lcmocka -Lsrc/tss2-mu/.libs -ltss2-mu -L.libs -o test/unit/.libs/tcti-device
+/usr/lib/gcc/x86_64-pc-linux-gnu/11.3.0/../../../../x86_64-pc-linux-gnu/bin/ld: cannot find : No such file or directory
+collect2: error: ld returned 1 exit status
+rdlibtool: exec error upon slbt_exec_link_create_executable(), line 1745: (see child process error messages).
+rdlibtool: < returned to > slbt_exec_link(), line 2155.
+make[1]: *** [Makefile:14899: test/unit/tcti-device] Error 2
+make[1]: Leaving directory '/tmp/tpm2-tss'
+make: *** [Makefile:29619: check-am] Error 2
+
+Signed-off-by: orbea <orbea@riseup.net>
+---
+ Makefile-test.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile-test.am b/Makefile-test.am
+index bb933e956..533dfb38a 100644
+--- a/Makefile-test.am
++++ b/Makefile-test.am
+@@ -413,7 +413,7 @@ if UNIT
+ if ENABLE_TCTI_DEVICE
+ test_unit_tcti_device_CFLAGS  = $(CMOCKA_CFLAGS) $(TESTS_CFLAGS)
+ test_unit_tcti_device_LDADD   = $(CMOCKA_LIBS) $(libtss2_mu) $(libutil)
+-test_unit_tcti_device_LDFLAGS = -Wl,--wrap=read -Wl,--wrap=write, -Wl,--wrap=poll  \
++test_unit_tcti_device_LDFLAGS = -Wl,--wrap=read -Wl,--wrap=write -Wl,--wrap=poll  \
+         -Wl,--wrap=open
+ test_unit_tcti_device_SOURCES = test/unit/tcti-device.c \
+     src/tss2-tcti/tcti-common.c \

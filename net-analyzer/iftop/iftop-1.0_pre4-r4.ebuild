@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,11 +6,11 @@ inherit autotools
 
 DESCRIPTION="display bandwidth usage on an interface"
 SRC_URI="http://www.ex-parrot.com/pdw/iftop/download/${P/_/}.tar.gz"
-HOMEPAGE="http://www.ex-parrot.com/pdw/iftop/"
+HOMEPAGE="http://www.ex-parrot.com/pdw/iftop/ https://code.blinkace.com/pdw/iftop"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="
 	net-libs/libpcap

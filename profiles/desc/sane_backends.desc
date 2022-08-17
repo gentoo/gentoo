@@ -30,6 +30,7 @@ dmc - SANE_BACKENDS setting for building the dmc backend
 epjitsu - SANE_BACKENDS setting for building the epjitsu backend
 epson - SANE_BACKENDS setting for building the epson backend
 epson2 - SANE_BACKENDS setting for building the epson2 backend
+epsonds - SANE_BACKENDS setting for building the epsonds backend
 escl - SANE_BACKENDS setting for building the escl backend
 fujitsu - SANE_BACKENDS setting for building the fujitsu backend
 genesys - SANE_BACKENDS setting for building the genesys backend

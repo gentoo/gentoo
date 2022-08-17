@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1 optfeature xdg
 
 if [[ ${PV} == 9999 ]]; then
@@ -26,7 +26,7 @@ IUSE="+adblock widevine"
 RDEPEND="
 	dev-qt/qtcore:5[icu]
 	dev-qt/qtgui:5[png]
-	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' python3_8)
+	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' 3.8)
 	$(python_gen_cond_dep '
 		dev-python/colorama[${PYTHON_USEDEP}]
 		>=dev-python/jinja-3.0.2[${PYTHON_USEDEP}]
@@ -56,8 +56,8 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-python_prepare_all() {
-	distutils-r1_python_prepare_all
+src_prepare() {
+	distutils-r1_src_prepare
 
 	if use widevine; then
 		local widevine=${EPREFIX}/usr/$(get_libdir)/chromium-browser/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so
@@ -79,6 +79,8 @@ python_prepare_all() {
 }
 
 python_test() {
+	local -x PYTEST_QT_API=pyqt5
+
 	local EPYTEST_DESELECT=(
 		# end2end and other IPC tests are broken with "Name error" if
 		# socket path is over 104 characters (=124 in /var/tmp/portage)
@@ -92,6 +94,8 @@ python_test() {
 		tests/unit/misc/test_checkpyver.py::test_old_python
 		# bug 819393
 		tests/unit/commands/test_userscripts.py::test_custom_env[_POSIXUserscriptRunner]
+		# not worth running dbus over
+		tests/unit/browser/test_notification.py::TestDBus
 	)
 	use widevine && EPYTEST_DESELECT+=( tests/unit/config/test_qtargs.py )
 

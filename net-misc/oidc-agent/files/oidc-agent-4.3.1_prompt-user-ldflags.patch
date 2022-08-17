@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -154,7 +154,7 @@
+ LINKER   := $(CC)
+ LINKER_XX   := $(CXX)
+ ifndef ANY_MSYS
+-PROMPT_LFLAGS = $(CPPFLAGS) $(LSODIUM)
++PROMPT_LFLAGS := $(CPPFLAGS) $(LDFLAGS) $(LSODIUM)
+ endif
+ ifdef MAC_OS
+ LFLAGS   = $(LSODIUM) $(LARGP)

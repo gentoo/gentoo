@@ -1,0 +1,31 @@
+From 8238e16c699ce7f99f5ff3f80d03d332d72015f8 Mon Sep 17 00:00:00 2001
+From: pgajdos <pgajdos@suse.cz>
+Date: Wed, 8 Jul 2020 15:22:19 +0200
+Subject: [PATCH] use pytest instead of deprecated nose
+
+---
+ tests/test_signals.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_signals.py b/tests/test_signals.py
+index 2d6a65a..e74db47 100644
+--- a/tests/test_signals.py
++++ b/tests/test_signals.py
+@@ -4,7 +4,7 @@
+ 
+ import blinker
+ 
+-from nose.tools import assert_raises
++import pytest
+ 
+ 
+ jython = sys.platform.startswith('java')
+@@ -227,7 +227,7 @@ def receiver(sender, **kw):
+         pass
+     sig = blinker.Signal()
+ 
+-    assert_raises(TypeError, sig.connect, receiver)
++    pytest.raises(TypeError, sig.connect, receiver)
+     assert not sig.receivers
+     assert not sig._by_receiver
+     assert sig._by_sender == {blinker.base.ANY_ID: set()}

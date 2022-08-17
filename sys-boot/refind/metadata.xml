@@ -40,24 +40,22 @@ d'amorçage au moment de l'exécution le rend très facile à utiliser, en
 particulier associé à des noyau Linux qui fournissent un support EFI stub.
 	</longdescription>
 	<use lang="en">
+		<flag name="btrfs">Builds the EFI binary btrfs filesystem driver</flag>
 		<flag name="ext2">Builds the EFI binary ext2 filesystem driver</flag>
 		<flag name="ext4">Builds the EFI binary ext4 filesystem driver</flag>
-		<flag name="reiserfs">Builds the EFI binary reiserfs filesystem driver</flag>
-		<flag name="iso9660">Builds the EFI binary iso9660 filesystem driver</flag>
 		<flag name="hfs">Builds the EFI binary hfs filesystem driver</flag>
-		<flag name="btrfs">Builds the EFI binary btrfs filesystem driver</flag>
+		<flag name="iso9660">Builds the EFI binary iso9660 filesystem driver</flag>
 		<flag name="ntfs">Builds the EFI binary ntfs filesystem driver</flag>
-		<flag name="gnuefi">Compile using GNU-EFI instead of Tianocore</flag>
+		<flag name="reiserfs">Builds the EFI binary reiserfs filesystem driver</flag>
 	</use>
 	<use lang="fr">
+		<flag name="btrfs">Construire le gestionnaire EFI pour le système de fichier btrfs</flag>
 		<flag name="ext2">Construire le gestionnaire EFI pour le système de fichier ext2</flag>
 		<flag name="ext4">Construire le gestionnaire EFI pour le système de fichier ext4</flag>
-		<flag name="reiserfs">Construire le gestionnaire EFI pour le système de fichier reiserfs</flag>
-		<flag name="iso9660">Construire le gestionnaire EFI pour le système de fichier iso9660</flag>
 		<flag name="hfs">Construire le gestionnaire EFI pour le système de fichier hfs</flag>
-		<flag name="btrfs">Construire le gestionnaire EFI pour le système de fichier btrfs</flag>
+		<flag name="iso9660">Construire le gestionnaire EFI pour le système de fichier iso9660</flag>
 		<flag name="ntfs">Construire le gestionnaire EFI pour le système de fichier ntfs</flag>
-		<flag name="gnuefi">Compiler en utilisant GNU-EFI au lieu de Tianocore</flag>
+		<flag name="reiserfs">Construire le gestionnaire EFI pour le système de fichier reiserfs</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">refind</remote-id>

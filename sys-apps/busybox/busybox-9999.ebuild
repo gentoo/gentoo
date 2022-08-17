@@ -5,7 +5,7 @@
 
 EAPI=7
 
-inherit flag-o-matic savedconfig toolchain-funcs
+inherit eapi8-dosym flag-o-matic savedconfig toolchain-funcs
 
 DESCRIPTION="Utilities for rescue and embedded systems"
 HOMEPAGE="https://www.busybox.net/"
@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MY_P="${PN}-${PV/_/-}"
 	SRC_URI="https://www.busybox.net/downloads/${MY_P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-2" # GPL-2 only
@@ -72,6 +72,8 @@ busybox_config_enabled() {
 # patches go here!
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.26.2-bb.patch
+	"${FILESDIR}"/${PN}-1.34.1-skip-selinux-search.patch
+	"${FILESDIR}"/${PN}-1.36.0-fix-wx-sections.patch
 	# "${FILESDIR}"/${P}-*.patch
 )
 
@@ -114,12 +116,14 @@ src_configure() {
 		ewarn "Could not locate user configfile, so we will save a default one"
 	fi
 
+	# setting SKIP_SELINUX skips searching for selinux at this stage. We don't
+	# need to search now in case we end up not needing it after all.
 	# setup the config file
-	emake -j1 -s allyesconfig >/dev/null
+	emake -j1 -s allyesconfig SKIP_SELINUX=$(usex selinux n y) >/dev/null #620918
 	# nommu forces a bunch of things off which we want on #387555
 	busybox_config_option n NOMMU
 	sed -i '/^#/d' .config
-	yes "" | emake -j1 -s oldconfig >/dev/null
+	yes "" | emake -j1 -s oldconfig SKIP_SELINUX=$(usex selinux n y) >/dev/null #620918
 
 	# now turn off stuff we really don't want
 	busybox_config_option n DMALLOC
@@ -131,6 +135,10 @@ src_configure() {
 	busybox_config_option n MONOTONIC_SYSCALL
 	busybox_config_option n USE_PORTABLE_CODE
 	busybox_config_option n WERROR
+	# CONFIG_MODPROBE_SMALL=y disables depmod.c and uses a smaller one that
+	# does not support -b. Setting this to no creates slightly larger and
+	# slightly more useful modutils
+	busybox_config_option n MODPROBE_SMALL #472464
 	# triming the BSS size may be dangerous
 	busybox_config_option n FEATURE_USE_BSS_TAIL
 
@@ -245,7 +253,10 @@ src_install() {
 	if use mdev ; then
 		dodir /$(get_libdir)/mdev/
 		use make-symlinks || dosym /bin/bb /sbin/mdev
-		cp "${S}"/examples/mdev_fat.conf "${ED}"/etc/mdev.conf
+		cp "${S}"/examples/mdev_fat.conf "${ED}"/etc/mdev.conf || die
+		if [[ ! "$(get_libdir)" == "lib" ]]; then
+			sed -i -e "s:/lib/:/$(get_libdir)/:g" "${ED}"/etc/mdev.conf || die #831251 - replace lib with lib64 where appropriate
+		fi
 
 		exeinto /$(get_libdir)/mdev/
 		doexe "${FILESDIR}"/mdev/*
@@ -274,6 +285,7 @@ src_install() {
 		newinitd "${FILESDIR}"/watchdog.initd busybox-watchdog
 	fi
 	if busybox_config_enabled UDHCPC; then
+		sed -i 's:$((metric++)):$metric; metric=$((metric + 1)):' examples/udhcp/simple.script || die #801535
 		local path=$(busybox_config_enabled UDHCPC_DEFAULT_SCRIPT)
 		exeinto "${path%/*}"
 		newexe examples/udhcp/simple.script "${path##*/}"
@@ -282,13 +294,22 @@ src_install() {
 		insinto /etc
 		doins examples/udhcp/udhcpd.conf
 	fi
+	if busybox_config_enabled ASH && ! use make-symlinks; then
+		dosym8 -r /bin/busybox /bin/ash
+	fi
+	if busybox_config_enabled CROND; then
+		newconfd "${FILESDIR}"/crond.confd busybox-crond
+		newinitd "${FILESDIR}"/crond.initd busybox-crond
+	fi
 
 	# bundle up the symlink files for use later
 	emake DESTDIR="${ED}" install
 	rm _install/bin/busybox || die
 	# for compatibility, provide /usr/bin/env
 	mkdir -p _install/usr/bin || die
-	ln -s /bin/env _install/usr/bin/env || die
+	if [[ ! -e _install/usr/bin/env ]]; then
+		ln -s /bin/env _install/usr/bin/env || die
+	fi
 	tar cf busybox-links.tar -C _install . || : #;die
 	insinto /usr/share/${PN}
 	use make-symlinks && doins busybox-links.tar
@@ -307,17 +328,12 @@ src_install() {
 	cd ../examples || die
 	docinto examples
 	dodoc inittab depmod.pl *.conf *.script undeb unrpm
+
+	cd ../networking || die
+	dodoc httpd_indexcgi.c httpd_post_upload.cgi
 }
 
 pkg_preinst() {
-	if use make-symlinks && [[ ! ${VERY_BRAVE_OR_VERY_DUMB} == "yes" ]] && [[ -z "${ROOT}" ]] ; then
-		ewarn "setting USE=make-symlinks and emerging to / is very dangerous."
-		ewarn "it WILL overwrite lots of system programs like: ls bash awk grep (bug 60805 for full list)."
-		ewarn "If you are creating a binary only and not merging this is probably ok."
-		ewarn "set env VERY_BRAVE_OR_VERY_DUMB=yes if this is really what you want."
-		die "silly options will destroy your system"
-	fi
-
 	if use make-symlinks ; then
 		mv "${ED}"/usr/share/${PN}/busybox-links.tar "${T}"/ || die
 	fi

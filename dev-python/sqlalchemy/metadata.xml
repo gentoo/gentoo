@@ -10,7 +10,4 @@
 		<remote-id type="github">sqlalchemy/sqlalchemy</remote-id>
 		<bugs-to>https://github.com/sqlalchemy/sqlalchemy/issues</bugs-to>
 	</upstream>
-	<use>
-		<flag name="asyncio">Depend on <pkg>virtual/python-greenlet</pkg> for asyncio capabilities</flag>
-	</use>
 </pkgmetadata>

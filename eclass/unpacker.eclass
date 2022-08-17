@@ -25,7 +25,7 @@ _UNPACKER_ECLASS=1
 
 inherit toolchain-funcs
 
-# @ECLASS-VARIABLE: UNPACKER_BZ2
+# @ECLASS_VARIABLE: UNPACKER_BZ2
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -33,7 +33,7 @@ inherit toolchain-funcs
 # `pbzip2` and `bzip2`.  Make sure your choice accepts the "-dc" options.
 # Note: this is meant for users to set, not ebuilds.
 
-# @ECLASS-VARIABLE: UNPACKER_LZIP
+# @ECLASS_VARIABLE: UNPACKER_LZIP
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:

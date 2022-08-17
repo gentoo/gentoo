@@ -1,7 +1,7 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit systemd
 
@@ -29,6 +29,7 @@ BDEPEND="
 		net-vpn/openconnect
 		sys-libs/nss_wrapper
 		sys-libs/uid_wrapper
+		pam? ( sys-libs/pam_wrapper )
 	)
 "
 DEPEND="

@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>rndxelement@protonmail.com</email>
+		<name>Philipp Rösner</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="launchpad">xpad</remote-id>
-		<changelog>https://launchpadlibrarian.net/253130440/ChangeLog</changelog>
+		<changelog>https://launchpadlibrarian.net/589705902/ChangeLog</changelog>
 	</upstream>
 </pkgmetadata>

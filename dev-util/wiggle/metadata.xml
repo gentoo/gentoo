@@ -5,4 +5,7 @@
     <email>robbat2@gentoo.org</email>
     <name>Robin H. Johnson</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">neilbrown/wiggle</remote-id>
+  </upstream>
 </pkgmetadata>

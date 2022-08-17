@@ -11,17 +11,12 @@
 	</maintainer>
 	<use>
 		<flag name="cli">Command Line Interface for OpenVAS Scanner</flag>
-		<flag name="cron">A cron job to update GVM's vulnerability feeds daily</flag>
-		<flag name="extras">Extra fonts, pdf-results! and html docs support</flag>
 		<flag name="gsa">Greenbone Security Assistant (WebUI)</flag>
 		<flag name="ospd">Enable support for scanner wrappers</flag>
 	</use>
 	<longdescription lang="en">
-	GVM previously named OpenVAS stands for Open Vulnerability Assessment System and is a network security scanner 
-	with associated tools like a graphical user front-end. 
+	GVM previously named OpenVAS stands for Open Vulnerability Assessment System and is a network security scanner
+	with associated tools like a graphical user front-end.
 	The core component is a server with a set of network vulnerability tests (NVTs) to detect security problems in remote systems and applications.
 	</longdescription>
-	<upstream>
-		<remote-id type="github">greenbone</remote-id>
-	</upstream>
 </pkgmetadata>

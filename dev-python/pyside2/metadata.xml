@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>zerochaos@gentoo.org</email>
-		<name>Rick Farina</name>
+	<maintainer type="person" proxied="proxy">
+		<email>andrewammerlaan@gentoo.org</email>
+		<name>Andrew Ammerlaan</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>waebbl-gentoo@posteo.net</email>
+		<name>Bernd Waibel</name>
 	</maintainer>
 	<use>
 		<flag name="3d">Build Qt3DCore, Qt3DAnimation, Qt3DExtras, Qt3DInput, Qt3DLogic, and Qt3DRender modules</flag>

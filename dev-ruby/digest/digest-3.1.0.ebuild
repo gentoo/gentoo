@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby26 ruby27 ruby30"
+USE_RUBY="ruby26 ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_EXTENSIONS="ext/digest/extconf.rb"
@@ -22,4 +22,8 @@ IUSE=""
 
 all_ruby_prepare() {
 	sed -i -e 's/__dir__/"."/' ${RUBY_FAKEGEM_GEMSPEC} || die
+}
+
+each_ruby_test() {
+	${RUBY} -Ilib:.:test -e 'Dir["test/**/*_test.rb"].each{|f| require f}' || die
 }

@@ -11,4 +11,7 @@
 		Also all kind of statistics are collected, which can be accessed through UniFi.
 		There is also an internal RADIUS server, which can be used for WPA2-Enterprise.
 	</longdescription>
+	<use>
+		<flag name="system-mongodb">Using <pkg>dev-db/mongodb</pkg> systemd service instead of the bundled one</flag>
+	</use>
 </pkgmetadata>

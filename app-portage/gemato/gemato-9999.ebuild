@@ -1,17 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 PYTHON_REQ_USE='threads(+)'
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Stand-alone Manifest generation & verification tool"
-HOMEPAGE="https://github.com/mgorny/gemato"
+HOMEPAGE="https://github.com/projg2/gemato"
 SRC_URI=""
-EGIT_REPO_URI="https://github.com/mgorny/gemato.git"
+EGIT_REPO_URI="https://github.com/projg2/gemato.git"
 
 LICENSE="BSD-2"
 SLOT="0"

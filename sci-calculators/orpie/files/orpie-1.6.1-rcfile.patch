@@ -1,0 +1,14 @@
+--- a/src/orpie/rcfile.ml	2022-03-21 11:25:42.405186025 +0100
++++ b/src/orpie/rcfile.ml	2022-03-21 11:24:44.477121172 +0100
+@@ -916,10 +916,7 @@
+       let rcfile_fullpath = 
+          (* expand out any occurrences of ${prefix} that autoconf
+           * decides to insert *)
+-         let prefix_regex = Str.regexp "\\${prefix}" in
+-         let expanded_sysconfdir = Str.global_replace prefix_regex 
+-         Install.prefix Install.sysconfdir in
+-         Utility.join_path expanded_sysconfdir "orpierc"
++         "/etc/orpie/orpierc"
+       in
+       begin try (open_in home_rcfile, home_rcfile)
+       with Sys_error error_str ->

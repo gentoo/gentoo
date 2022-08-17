@@ -46,7 +46,7 @@ case ${EAPI} in
 	*) IDEPEND="filecaps? ( sys-libs/libcap )" ;;
 esac
 
-# @ECLASS-VARIABLE: FILECAPS
+# @ECLASS_VARIABLE: FILECAPS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array of fcap arguments to use to automatically execute fcaps.  See that
@@ -83,18 +83,18 @@ esac
 #
 # If the system is unable to set capabilities, it will use the specified user,
 # group, and mode (presumably to make the binary set*id).  The defaults there
-# are root:0 and 4711.  Otherwise, the ownership and permissions will be
+# are 0:0 and 4711.  Otherwise, the ownership and permissions will be
 # unchanged.
 fcaps() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	if [[ ${EUID} != 0 ]] ; then
+	if [[ ${EUID} -ne 0 ]] ; then
 		einfo "Insufficient privileges to execute ${FUNCNAME}, skipping."
 		return 0
 	fi
 
 	# Process the user options first.
-	local owner='root'
+	local owner='0'
 	local group='0'
 	local mode='4711'
 	local caps_mode='711'

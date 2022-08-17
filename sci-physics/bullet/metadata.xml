@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person" proxied="yes">
-    <email>rossbridger.cc@gmail.com</email>
-    <name>Ross Charles Campbell</name>
-  </maintainer>
-  <maintainer type="project" proxied="proxy">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
   <maintainer type="project">
     <email>sci-physics@gentoo.org</email>
     <name>Gentoo Physics Project</name>

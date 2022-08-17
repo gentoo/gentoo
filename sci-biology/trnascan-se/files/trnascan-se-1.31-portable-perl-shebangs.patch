@@ -1,0 +1,32 @@
+--- a/fasta2gsi.pl
++++ b/fasta2gsi.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Usage: fasta2gsi.perl <seqfile>
+ # Creates seqfile.gsi
+--- a/instman.pl
++++ b/instman.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Sean Eddy, Wed Jul 29 15:24:43 1992
+ 
+--- a/sstofa.pl
++++ b/sstofa.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ 
+ if ($#ARGV < 0) {
+--- a/tRNAscan-SE.src
++++ b/tRNAscan-SE.src
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ #
+ # --------------------------------------------------------------------
+ # tRNAscan-SE: a program for improved detection of transfer RNA

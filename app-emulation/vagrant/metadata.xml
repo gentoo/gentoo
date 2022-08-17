@@ -9,11 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="virtualbox">
-			Use VirtualBox provider.
-		</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">hashicorp/vagrant</remote-id>
 	</upstream>

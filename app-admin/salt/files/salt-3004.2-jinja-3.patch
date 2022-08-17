@@ -1,0 +1,14 @@
+diff --git a/tests/unit/utils/test_jinja.py b/tests/unit/utils/test_jinja.py
+index 6502831aff..dec847364a 100644
+--- a/tests/unit/utils/test_jinja.py
++++ b/tests/unit/utils/test_jinja.py
+@@ -22,7 +22,8 @@ import salt.utils.files
+ import salt.utils.json
+ import salt.utils.stringutils
+ import salt.utils.yaml
+-from jinja2 import DictLoader, Environment, Markup, exceptions
++from jinja2 import DictLoader, Environment, exceptions
++from markupsafe import Markup
+ from salt.exceptions import SaltRenderError
+ from salt.utils.decorators.jinja import JinjaFilter
+ from salt.utils.jinja import (

@@ -160,7 +160,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 LGPL-3+ MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="

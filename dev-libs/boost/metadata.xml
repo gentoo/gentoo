@@ -19,6 +19,7 @@
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:boost:boost</remote-id>
+		<remote-id type="github">boostorg/boost</remote-id>
 		<remote-id type="sourceforge">boost</remote-id>
 	</upstream>
 </pkgmetadata>

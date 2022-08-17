@@ -47,7 +47,6 @@ BDEPEND="
 src_configure() {
 	local emesonargs=(
 		-Dicons=$(usex icons enabled disabled)
-		"-Dwerror=false"
 	)
 
 	if use systemd ; then

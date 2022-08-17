@@ -106,7 +106,11 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-7.3.0-cmake.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-7.3.0-cmake.patch"
+	# upstream git master
+	"${FILESDIR}/${P}-akonadi-22.04.0.patch"
+)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp

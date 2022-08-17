@@ -6,7 +6,7 @@
 		<name>Matthew Thode</name>
 	</maintainer>
 	<use>
-		<flag name="libkms">Provides abstraction to the DRM drivers (intel,
+		<flag name="drm">Provides abstraction to the DRM drivers (intel,
 			nouveau and vmwgfx at this moment)</flag>
 		<flag name="pango">Adds support for printing text on splash screen and
 			text prompts, e.g. for password</flag>

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -17,7 +17,7 @@ SRC_URI="https://repo1.maven.org/maven2/com/googlecode/${PN}/diffutils/${PV}/dif
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64 x86"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"

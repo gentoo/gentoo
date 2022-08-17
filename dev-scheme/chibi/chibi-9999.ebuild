@@ -1,20 +1,25 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+MY_PN=${PN}-scheme
+MY_PV=${PV}  # May be tagged incorrectly, see bug #858245
+MY_P=${MY_PN}-${MY_PV}
 
 inherit toolchain-funcs
 
 DESCRIPTION="Minimal Scheme implementation for use as an extension language"
 HOMEPAGE="http://synthcode.com/scheme/chibi/"
 
-if [[ "${PV}" == *9999* ]]; then
+if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/ashinn/${PN}-scheme.git"
+	EGIT_REPO_URI="https://github.com/ashinn/${MY_PN}.git"
 else
-	SRC_URI="https://github.com/ashinn/${PN}-scheme/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/ashinn/${MY_PN}/archive/${MY_PV}.tar.gz
+				-> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${PN}-scheme-${PV}"
+	S="${WORKDIR}"/${MY_P}
 fi
 
 LICENSE="BSD"
@@ -27,12 +32,12 @@ src_configure() {
 	export LIBDIR="${EPREFIX}/usr/$(get_libdir)"
 	export SOLIBDIR="${EPREFIX}/usr/$(get_libdir)"
 
-	# if ldconfig (stored in LDCONFIG variable) exists it is ran
+	# If "ldconfig" exists it is ran, overwrite it with "LDCONFIG" variable.
 	export LDCONFIG="0"
 }
 
 src_install() {
 	default
 
-	dosym chibi-scheme /usr/bin/chibi
+	dosym ${MY_PN} /usr/bin/${PN}
 }

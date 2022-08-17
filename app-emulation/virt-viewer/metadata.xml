@@ -10,6 +10,8 @@
 			managed by libvirt.</flag>
 		<flag name="spice">Support connecting to SPICE-enabled virtual
 			machines.</flag>
+		<flag name="vte">Enable terminal support (<pkg>x11-libs/vte</pkg>)
+			in the GTK+ interface</flag>
 		<flag name="vnc">Support connecting to VNC-enabled virtual
 			machines.</flag>
 	</use>

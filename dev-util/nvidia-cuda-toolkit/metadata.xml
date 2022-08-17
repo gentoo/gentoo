@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="debugger">Install the CUDA debugger</flag>
-		<flag name="eclipse">Install Eclipse plugins</flag>
 		<flag name="nsight">Install profiling and optimizing tools (nsight-compute, nsight-systems)</flag>
 		<flag name="profiler">Install the NVIDIA CUDA profiler (nvprof) and the related libraries</flag>
 		<flag name="sanitizer">Install compute-sanitizer tool</flag>

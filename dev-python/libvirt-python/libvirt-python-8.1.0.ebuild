@@ -3,6 +3,8 @@
 
 EAPI=7
 
+# Please bump with app-emulation/libvirt!
+
 PYTHON_COMPAT=( python3_{8..10} )
 
 DISTUTILS_USE_SETUPTOOLS=no

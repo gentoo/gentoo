@@ -1,7 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
+inherit toolchain-funcs
 
 DESCRIPTION="A Window Maker applet that shows your biorhythm"
 HOMEPAGE="http://wmbio.sourceforge.net/"
@@ -23,10 +25,14 @@ S=${WORKDIR}/${P}/src
 
 src_prepare() {
 	default
-	# Honour Gentoo CFLAGS
-	sed -i "s/-g -O2/\$(CFLAGS)/" Makefile || die
-	# Honour Gentoo LDFLAGS
-	sed -i "s/-o wmbio/\$(LDFLAGS) -o wmbio/" Makefile || die
+	# Honour Gentoo CFLAGS, LDFLAGS, CC
+	sed -i -e "s/-g -O2/\$(CFLAGS)/" \
+		-e "s/-o wmbio/\$(LDFLAGS) -o wmbio/" \
+		-e "s/cc /\$(CC) /" Makefile || die
+}
+
+src_compile() {
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {

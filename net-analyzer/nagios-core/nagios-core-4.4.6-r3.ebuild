@@ -17,7 +17,7 @@ SRC_URI="mirror://sourceforge/nagios/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ppc ppc64 sparc x86"
 IUSE="apache2 classicui lighttpd +web vim-syntax"
 
 # In pkg_postinst(), we change the group of the Nagios configuration
@@ -132,11 +132,11 @@ src_configure() {
 }
 
 src_compile() {
-	emake CC=$(tc-getCC) nagios
+	emake CC="$(tc-getCC)" nagios
 
 	if use web; then
 		# Only compile the CGIs/HTML when USE=web is set.
-		emake CC=$(tc-getCC) cgis html
+		emake CC="$(tc-getCC)" cgis html
 	fi
 }
 

@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~robbat2/distfiles/${P}.tgz"
 
 LICENSE="ITS4"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 
 S="${WORKDIR}/${PN}"
 
@@ -24,7 +24,7 @@ src_configure() {
 	# WARNING
 	# non-standard configure
 	# do NOT use econf
-	./configure --with-cpp=$(tc-getCXX) --prefix=/usr --mandir=/usr/share/man --datadir=/usr/share/its4 || die "configure failed"
+	./configure --with-cpp="$(tc-getCXX)" --prefix=/usr --mandir=/usr/share/man --datadir=/usr/share/its4 || die "configure failed"
 }
 
 src_compile() {

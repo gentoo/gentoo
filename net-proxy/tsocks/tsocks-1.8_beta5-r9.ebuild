@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/tsocks/${PN}-${PV/_}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~loong ppc ppc64 ~riscv sparc x86"
 IUSE="debug dns envconf tordns server-lookups"
 
 REQUIRED_USE="

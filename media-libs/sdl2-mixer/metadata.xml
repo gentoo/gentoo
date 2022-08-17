@@ -15,4 +15,7 @@
 		<flag name="tremor">enable OGG Vorbis music via libtremor</flag>
 		<flag name="wav">support WAVE files</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">libsdl-org/SDL_mixer</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -120,7 +120,7 @@ smlnj_get_libdir() {
 	# Remove the native lib dir
 	local y=$(remove_element_from_array $(get_libdir) ${x[@]})
 	# Remove libx32 if it exists
-	local z=$(remove_element_from_array "libx32" ${y[@]})
+	local z=( $(remove_element_from_array "libx32" ${y[@]}) )
 	# However if the system is not multlib, then we still need to install
 	# the 32 bit smlnj executables and libraries somewhere, so I guess we
 	# just have to put them under the system lib directory.  Put the

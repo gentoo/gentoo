@@ -9,12 +9,6 @@
 video_cards_nvidia
 nvenc
 
-# Sam James <sam@gentoo.org> (2020-12-23)
-# dev-lang/luajit is not yet stable
-lua_single_target_luajit
-lua_targets_luajit
-luajit
-
 # Sam James <sam@gentoo.org> (2020-10-08)
 # Not enough packages stable w/ PyPy3 support
 python_targets_pypy3

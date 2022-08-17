@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -45,7 +45,7 @@ src_install() {
 	dodoc WHATS_NEW
 
 	dodir /var/games
-	> ${ED}/var/games/${PN}.scores || die
+	> "${ED}"/var/games/${PN}.scores || die
 
 	fowners :gamestat /usr/bin/${PN} /var/games/${PN}.scores
 	fperms g+s /usr/bin/${PN}

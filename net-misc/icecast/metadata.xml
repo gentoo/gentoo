@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>polynomial-c@gentoo.org</email>
-		<name>Lars Wendler</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="kate">Add karaoke and text encapsulation support for Ogg files</flag>
 		<flag name="yp">Build support for yp public directory listings</flag>

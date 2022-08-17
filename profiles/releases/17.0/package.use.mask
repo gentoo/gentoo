@@ -1,9 +1,5 @@
-# Copyright 2017-2021 Gentoo Authors
+# Copyright 2017-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Michał Górny <mgorny@gentoo.org> (2021-01-06)
-# LSAN is currently broken (due to new glibc?)
-<sys-libs/compiler-rt-sanitizers-12 lsan
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2017-05-27)
 # Unmask default-PIE on 17.0 profiles.

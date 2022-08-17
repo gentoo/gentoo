@@ -14,7 +14,7 @@ SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/iconv.m4.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="examples static-libs"
 
 BDEPEND="virtual/pkgconfig"
@@ -47,9 +47,9 @@ src_prepare() {
 
 src_configure() {
 	# lto not supported yet -- https://github.com/libfuse/libfuse/issues/198
-	# gcc-9 with -flto leads to link failures: #663518,
+	# gcc-9 with -flto leads to link failures: #663518 (see also #863899)
 	# https://gcc.gnu.org/PR91186
-	filter-flags -flto*
+	filter-lto
 
 	econf \
 		INIT_D_PATH="${EPREFIX}/etc/init.d" \

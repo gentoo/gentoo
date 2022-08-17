@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/bin/busybox crond"
+command_args="${CRONDARGS}"
+pidfile="/run/crond.pid"
+
+depend() {
+	need clock logger
+	provide cron
+}

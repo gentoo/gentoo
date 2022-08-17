@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit elisp readme.gentoo-r1
 
 DESCRIPTION="Emacs Speaks Statistics"
-HOMEPAGE="http://ess.r-project.org/"
-SRC_URI="http://ess.r-project.org/downloads/ess/${P}.tgz"
+HOMEPAGE="https://ess.r-project.org/"
+SRC_URI="https://ess.r-project.org/downloads/ess/${P}.tgz"
 
 LICENSE="GPL-2+ GPL-3+ Texinfo-manual"
 SLOT="0"
@@ -17,6 +17,7 @@ RESTRICT="test"
 BDEPEND="app-text/texi2html
 	virtual/latex-base"
 
+PATCHES=( "${FILESDIR}"/${P}-emacs-28.patch )
 SITEFILE="50${PN}-gentoo.el"
 
 src_compile() {

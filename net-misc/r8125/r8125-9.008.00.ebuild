@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit linux-info linux-mod
 
@@ -19,6 +19,11 @@ KEYWORDS="~amd64 ~x86"
 MODULE_NAMES="r8125(net:${S}/src)"
 BUILD_TARGETS="modules"
 IUSE="+multi-tx-q ptp +rss use-firmware"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-9.008.00-linux-5.17.patch" # bug 839282
+	"${FILESDIR}/${PN}-9.008.00-linux-5.18.patch" # bug 852311
+)
 
 CONFIG_CHECK="~!R8169"
 WARNING_R8169="CONFIG_R8169 is enabled. ${PN} will not be loaded unless kernel driver Realtek 8169 PCI Gigabit Ethernet (CONFIG_R8169) is DISABLED."

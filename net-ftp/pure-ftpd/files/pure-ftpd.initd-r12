@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+ftpd_configfile="/etc/${SVCNAME}.conf"
+pidfile="/run/pure-ftpd.pid"
+
+command="/usr/sbin/pure-ftpd"
+command_args="${ftpd_configfile}"
+command_background="true"
+
+depend() {
+	need localmount
+	use netmount
+}
+
+start_pre() {
+	if [ ! -f "${ftpd_configfile}" ] ; then
+		eerror "The file ${ftpd_configfile} does not exist!"
+		eerror "Please create and configure the configuration file."
+		return 1
+	fi
+}

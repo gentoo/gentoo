@@ -1,0 +1,15 @@
+Respect user's pkg-config
+--- a/Makefile
++++ b/Makefile
+@@ -6,8 +6,9 @@ DISTRIB_DIR= gkrellm-imonc-$(VERSION)
+ #
+ #
+ 
+-GTK_INCLUDE = $(shell pkg-config gtk+-2.0 --cflags)
+-GTK_LIB = $(shell pkg-config gtk+-2.0 --libs)
++PKG_CONFIG ?= pkg-config
++GTK_INCLUDE = $(shell ${PKG_CONFIG} gtk+-2.0 --cflags)
++GTK_LIB = $(shell ${PKG_CONFIG} gtk+-2.0 --libs)
+ 
+ FLAGS = -fPIC $(GTK_INCLUDE)
+ LIBS = $(GTK_LIB)

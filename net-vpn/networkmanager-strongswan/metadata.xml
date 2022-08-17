@@ -5,4 +5,7 @@
 		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
 	</maintainer>
+	<use>
+		<flag name="gtk4">Use GTK4 instead of GTK3.</flag>
+	</use>
 </pkgmetadata>

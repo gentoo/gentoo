@@ -23,14 +23,17 @@ else
 	SRC_URI="https://nmap.org/dist/${P}.tar.bz2"
 	SRC_URI+=" verify-sig? ( https://nmap.org/dist/sigs/${P}.tar.bz2.asc )"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 	LICENSE="|| ( NPSL GPL-2 )"
 fi
 
 SLOT="0"
-IUSE="ipv6 libssh2 ncat nping +nse ssl +system-lua"
-REQUIRED_USE="system-lua? ( nse ${LUA_REQUIRED_USE} )"
+IUSE="ipv6 libssh2 ncat nping +nse ssl symlink +system-lua"
+REQUIRED_USE="
+	system-lua? ( nse ${LUA_REQUIRED_USE} )
+	symlink? ( ncat )
+"
 
 RDEPEND="
 	dev-libs/liblinear:=
@@ -42,6 +45,12 @@ RDEPEND="
 	)
 	nse? ( sys-libs/zlib )
 	ssl? ( dev-libs/openssl:0= )
+	symlink? (
+		ncat? (
+			!net-analyzer/netcat
+			!net-analyzer/openbsd-netcat
+		)
+	)
 	system-lua? ( ${LUA_DEPS} )
 "
 DEPEND="${RDEPEND}"
@@ -117,8 +126,8 @@ src_compile() {
 	done
 
 	emake \
-		AR=$(tc-getAR) \
-		RANLIB=$(tc-getRANLIB)
+		AR="$(tc-getAR)" \
+		RANLIB="$(tc-getRANLIB)"
 }
 
 src_install() {
@@ -131,4 +140,6 @@ src_install() {
 		install
 
 	dodoc CHANGELOG HACKING docs/README docs/*.txt
+
+	use symlink && dosym /usr/bin/ncat /usr/bin/nc
 }

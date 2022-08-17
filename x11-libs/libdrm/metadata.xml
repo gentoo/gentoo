@@ -6,7 +6,6 @@
 <name>X11</name>
 </maintainer>
 <use>
-<flag name="libkms">Enable building of libkms, a library for applications to interface with KMS</flag>
 <flag name="valgrind">Compile in valgrind memory hints</flag>
 </use>
 </pkgmetadata>

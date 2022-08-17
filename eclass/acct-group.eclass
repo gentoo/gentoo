@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: acct-group.eclass
@@ -48,7 +48,7 @@ inherit user
 
 # << Eclass variables >>
 
-# @ECLASS-VARIABLE: ACCT_GROUP_NAME
+# @ECLASS_VARIABLE: ACCT_GROUP_NAME
 # @INTERNAL
 # @DESCRIPTION:
 # The name of the group.  This is forced to ${PN} and the policy
@@ -56,7 +56,7 @@ inherit user
 ACCT_GROUP_NAME=${PN}
 readonly ACCT_GROUP_NAME
 
-# @ECLASS-VARIABLE: ACCT_GROUP_ID
+# @ECLASS_VARIABLE: ACCT_GROUP_ID
 # @REQUIRED
 # @DESCRIPTION:
 # Preferred GID for the new group.  This variable is obligatory, and its
@@ -66,7 +66,7 @@ readonly ACCT_GROUP_NAME
 # Overlays should set this to -1 to dynamically allocate GID.  Using -1
 # in ::gentoo is prohibited by policy.
 
-# @ECLASS-VARIABLE: ACCT_GROUP_ENFORCE_ID
+# @ECLASS_VARIABLE: ACCT_GROUP_ENFORCE_ID
 # @DESCRIPTION:
 # If set to a non-null value, the eclass will require the group to have
 # specified GID.  If the group already exists with another GID, or
@@ -77,7 +77,7 @@ readonly ACCT_GROUP_NAME
 # << Boilerplate ebuild variables >>
 : ${DESCRIPTION:="System group: ${ACCT_GROUP_NAME}"}
 : ${SLOT:=0}
-: ${KEYWORDS:=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris}
+: ${KEYWORDS:=alpha amd64 arm arm64 hppa ia64 ~loong m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris}
 S=${WORKDIR}
 
 

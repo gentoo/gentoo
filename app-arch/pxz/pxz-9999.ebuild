@@ -1,11 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit toolchain-funcs flag-o-matic
+inherit toolchain-funcs
 
-if [[ ${PV} == "9999" ]] ; then
+if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/jnovy/pxz.git"
 	inherit git-r3
 else
@@ -27,19 +27,27 @@ SLOT="0"
 IUSE=""
 
 # needs the library from xz-utils
-# needs the libgomp library from gcc at runtime
-DEPEND="app-arch/xz-utils
-	sys-devel/gcc:*[openmp]"
+DEPEND="app-arch/xz-utils"
 RDEPEND="${DEPEND}"
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
+}
+
 src_prepare() {
-	tc-check-openmp
+	default
+
+	if use elibc_musl ; then
+		sed -i -e '/<error.h>/c\#define error(R,E,S,...) fprintf(stderr, S "\\n", ##__VA_ARGS__); exit(R)' pxz.c || die
+	fi
+}
+
+src_configure() {
 	tc-export CC
 	export BINDIR="${EPREFIX}"/usr/bin
 	export MANDIR="${EPREFIX}"/usr/share/man
-	default_src_prepare
-
-	if use elibc_musl ; then
-	    sed -i -e '/<error.h>/c\#define error(R,E,S,...) fprintf(stderr, S "\\n", ##__VA_ARGS__); exit(R)' pxz.c
-	fi
 }

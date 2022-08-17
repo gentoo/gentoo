@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="gnutls +ssl"
 
-DEPEND="
+COMMON_DEPEND="
 	app-arch/bzip2
 	media-libs/freetype
 	>=media-libs/libjpeg-turbo-2.0.0:=[java?]
@@ -40,9 +40,15 @@ DEPEND="
 	!net-misc/tigervnc
 "
 RDEPEND="
-	${DEPEND}
+	${COMMON_DEPEND}
 	x11-apps/xkbcomp
 "
+DEPEND="
+	${COMMON_DEPEND}
+	x11-libs/xtrans
+"
+
+PATCHES=( "${FILESDIR}"/"${P}"-fix-musl-compilation.patch )
 
 src_prepare() {
 	use java && java-pkg-opt-2_src_prepare
@@ -57,6 +63,7 @@ src_configure() {
 		-DTVNC_BUILDNATIVE=$(usex java)
 		-DXKB_BIN_DIRECTORY=/usr/bin
 		-DXKB_DFLT_RULES=base
+		-DBUILDING_ON_MUSL=$(usex elibc_musl)	# bug #836723
 	)
 
 	if use ssl ; then

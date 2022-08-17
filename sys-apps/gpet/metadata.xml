@@ -3,8 +3,9 @@
 <pkgmetadata>
   <maintainer type="person">
     <email>naota@gentoo.org</email>
+    <name>Naohiro Aota</name>
   </maintainer>
   <upstream>
-    <remote-id type="sourceforge-jp">gpet</remote-id>
+    <remote-id type="osdn">gpet</remote-id>
   </upstream>
 </pkgmetadata>

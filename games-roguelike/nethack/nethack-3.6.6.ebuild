@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,6 +40,7 @@ S="${WORKDIR}/NetHack-NetHack-${PV}_Released"
 
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-3.6.3-recover.patch"
+	eapply "${FILESDIR}/${PN}-3.6.6-wunused-result.patch" # bug 830556
 	eapply_user
 
 	cp "${FILESDIR}/${PN}-3.6.3-hint-$(usex X x11 tty)" hint || die "Failed to copy hint file"

@@ -24,9 +24,6 @@ libvirt
 firebird
 oci8
 
-# cilk has been ported only to x86 systems
-cilk
-
 # cuda/NVENC only works on amd64/arm64
 cuda
 nvenc
@@ -71,7 +68,10 @@ cpu_flags_x86_ssse3
 cpu_flags_x86_xop
 
 # ppc arch specific USE flags
-altivec
+cpu_flags_ppc_altivec
+cpu_flags_ppc_vsx
+cpu_flags_ppc_vsx2
+cpu_flags_ppc_vsx3
 ppcsha1
 
 # mips arch specific USE flags
@@ -108,9 +108,6 @@ cpu_flags_arm_vfp
 cpu_flags_arm_vfpv3
 cpu_flags_arm_vfpv4
 cpu_flags_arm_vfp-d32
-
-# [old] arm arch specific USE flags
-neon
 
 # nVidia XvMC requires nvidia-drivers/nvidia-legacy-drivers
 nvidia
@@ -221,6 +218,7 @@ arm
 arm64
 hppa
 ia64
+loong
 m68k
 mips
 ppc

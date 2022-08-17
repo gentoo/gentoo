@@ -8,12 +8,12 @@ inherit tmpfiles verify-sig
 
 DESCRIPTION="An IRC server written from scratch"
 HOMEPAGE="https://ngircd.barton.de/"
-SRC_URI="https://arthur.barton.de/pub/${PN}/${P}.tar.gz"
-SRC_URI+=" verify-sig? ( https://arthur.barton.de/pub/${PN}/${P}.tar.gz.sig )"
+SRC_URI="https://arthur.barton.de/pub/${PN}/${P}.tar.xz"
+SRC_URI+=" verify-sig? ( https://arthur.barton.de/pub/${PN}/${P}.tar.xz.sig )"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~x64-macos"
+KEYWORDS="amd64 arm arm64 x86 ~x64-macos"
 IUSE="debug gnutls ident irc-plus +ipv6 pam +ssl strict-rfc tcpd test zlib"
 
 # Flaky test needs investigation (bug 719256)

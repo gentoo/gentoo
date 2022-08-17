@@ -1,0 +1,13 @@
+--- intel-hybrid-driver/src/media_drv_init.c
++++ intel-hybrid-driver-new/src/media_drv_init.c
+@@ -2764,9 +2764,9 @@ va_driver_init (VADriverContextP ctx)
+   return ret;
+ }
+
+-VAStatus DLL_EXPORT __vaDriverInit_0_34 (VADriverContextP ctx);
++VAStatus DLL_EXPORT VA_DRIVER_INIT_FUNC (VADriverContextP ctx);
+ VAStatus
+-__vaDriverInit_0_34 (VADriverContextP ctx)
++VA_DRIVER_INIT_FUNC (VADriverContextP ctx)
+ {
+   VAStatus ret = VA_STATUS_ERROR_UNKNOWN;

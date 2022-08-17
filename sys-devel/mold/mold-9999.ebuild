@@ -28,6 +28,12 @@ RDEPEND=">=dev-cpp/tbb-2021.4.0:=
 # TODO: restore SYSTEM_XXHASH upstream?
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	# Bug #841575
+	"${FILESDIR}"/${PN}-1.2.1-install-nopython.patch
+	"${FILESDIR}"/${PN}-1.3.0-openssl-pkgconfig.patch
+)
+
 pkg_pretend() {
 	# Requires a c++20 compiler, see #831473
 	if [[ ${MERGE_TYPE} != binary ]]; then
@@ -43,16 +49,20 @@ src_prepare() {
 	default
 
 	# Needs unpackaged dwarfdump
-	rm test/elf/{compress-debug-sections,compressed-debug-info}.sh || die
+	rm test/elf/{{dead,compress}-debug-sections,compressed-debug-info}.sh || die
+
+	# Heavy tests, need qemu
+	rm test/elf/gdb-index-{compress-output,dwarf{2,3,4,5}}.sh || die
+	rm test/elf/lto-{archive,dso,gcc,llvm,version-script}.sh || die
 
 	# Sandbox sadness
 	rm test/elf/run.sh || die
-	sed -i 's|$mold-wrapper.so|"& ${LD_PRELOAD}"|' \
+	sed -i 's|`pwd`/mold-wrapper.so|"& ${LD_PRELOAD}"|' \
 		test/elf/mold-wrapper{,2}.sh || die
 
 	# static-pie tests require glibc built with static-pie support
 	if ! has_version -d 'sys-libs/glibc[static-pie(+)]'; then
-		rm test/elf/{hello,ifunc}-static-pie.sh || die
+		rm test/elf/{,ifunc-}static-pie.sh || die
 	fi
 }
 

@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 FORTRAN_NEEDED=test
 
-inherit autotools fortran-2
+inherit autotools fortran-2 flag-o-matic
 
 DEB_PR="1"
 
@@ -37,6 +37,11 @@ src_prepare() {
 		cp -ar eg eg_src || die "Failed to preserve a clean copy of examples"
 		rm -f eg_src/Makefile{,.am,.in}
 	fi
+}
+
+src_configure() {
+	use sparc && append-fflags $(test-flags-FC -fno-store-merging -fno-tree-slp-vectorize) # bug 818400
+	default
 }
 
 src_install() {

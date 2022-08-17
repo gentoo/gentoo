@@ -1,7 +1,7 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson
 
@@ -18,26 +18,14 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+man pulseaudio opencl"
 
 DEPEND="
 	dev-libs/wayland
-	pulseaudio? ( media-sound/pulseaudio )
-	media-video/ffmpeg[opencl?,pulseaudio?,x264]
-	opencl? ( virtual/opencl )
+	media-sound/pulseaudio
+	media-video/ffmpeg[pulseaudio,x264]
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	dev-libs/wayland-protocols
-	man? ( >=app-text/scdoc-1.9.3 )
 "
-
-src_configure() {
-	local emesonargs=(
-		$(meson_feature man man-pages)
-		$(meson_feature pulseaudio pulse)
-		$(meson_feature opencl)
-	)
-	meson_src_configure
-}

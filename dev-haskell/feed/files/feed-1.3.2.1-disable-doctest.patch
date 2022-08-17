@@ -1,0 +1,18 @@
+From: hololeap <hololeap@protonmail.com>
+Signed-off-by: hololeap <hololeap@protonmail.com>
+
+These doctests are difficult to run successfully and aren't worth the effort.
+
+diff -urN feed-1.3.2.1/feed.cabal feed-1.3.2.1-r1/feed.cabal
+--- feed-1.3.2.1/feed.cabal	2022-03-28 20:36:31.561223247 -0600
++++ feed-1.3.2.1-r1/feed.cabal	2022-03-28 21:05:49.501202376 -0600
+@@ -153,8 +153,7 @@
+   main-is: doctest-driver.hs
+   type: exitcode-stdio-1.0
+   default-language: Haskell2010
+-  if impl(ghc < 8)
+-     buildable: False
++  buildable: False
+   build-depends:
+       base >= 4.6
+     , doctest

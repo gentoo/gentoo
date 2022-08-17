@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ DESCRIPTION="Passenger makes deployment of Ruby on Rails applications a breeze"
 HOMEPAGE="https://www.phusionpassenger.com/"
 SRC_URI="https://s3.amazonaws.com/phusion-passenger/releases/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="Boost-1.0 MIT BSD"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="apache2 debug"

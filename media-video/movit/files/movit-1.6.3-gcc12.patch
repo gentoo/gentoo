@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/839915
+
+--- a/test_util.cpp
++++ b/test_util.cpp
+@@ -2,6 +2,7 @@
+ #include <math.h>
+ #include <stdio.h>
+ #include <algorithm>
++#include <memory>
+ #include <epoxy/gl.h>
+ #include <gtest/gtest.h>
+ #include <gtest/gtest-message.h>

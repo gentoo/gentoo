@@ -1,6 +1,5 @@
-diff -Naur /var/tmp/portage/graveman-0.3.12_p5/work/graveman-0.3.12-5/src/sox.c ./src/sox.c
---- a/src/sox.c	2005-05-28 02:37:14.000000000 +0200
-+++ b/src/sox.c	2007-01-27 18:22:11.000000000 +0100
+--- a/src/sox.c
++++ b/src/sox.c
 @@ -37,7 +37,7 @@
  gboolean check_sox()
  {

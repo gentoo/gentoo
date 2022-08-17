@@ -21,7 +21,7 @@
 # phase rather than 'default'.
 
 [[ ${EAPI} == 7 ]] && : ${CMAKE_ECLASS:=cmake-utils}
-# @ECLASS-VARIABLE: CMAKE_ECLASS
+# @ECLASS_VARIABLE: CMAKE_ECLASS
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Only "cmake" is supported in EAPI-8 and later.
@@ -29,7 +29,7 @@
 # ebuilds that ported to cmake.eclass already.
 : ${CMAKE_ECLASS:=cmake}
 
-# @ECLASS-VARIABLE: _CMAKE_ECLASS_IMPL
+# @ECLASS_VARIABLE: _CMAKE_ECLASS_IMPL
 # @INTERNAL
 # @DESCRIPTION:
 # TODO: Cleanup once EAPI-7 support is gone.

@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit linux-info toolchain-funcs
 
-DESCRIPTION="A file-based build system"
-HOMEPAGE="http://gittup.org/tup"
+DESCRIPTION="File-based build system"
+HOMEPAGE="https://gittup.org/tup/"
 # Tup itself is GPLv2, but it bundles differently licensed software:
 # - lua: MIT
 # - sqlite (unused in this ebuild): public domain

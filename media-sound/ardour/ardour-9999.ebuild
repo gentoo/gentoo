@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,12 +21,11 @@ fi
 
 LICENSE="GPL-2"
 SLOT="7"
-IUSE="altivec doc jack nls phonehome pulseaudio cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
+IUSE="doc jack nls phonehome pulseaudio cpu_flags_ppc_altivec cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
 
 RDEPEND="
 	dev-cpp/glibmm:2
 	dev-cpp/gtkmm:2.4
-	dev-cpp/libgnomecanvasmm:2.6
 	dev-libs/boost:=
 	dev-libs/glib:2
 	dev-libs/libsigc++:2
@@ -137,7 +136,7 @@ src_configure() {
 		--noconfirm
 		--optimize
 		--with-backends=${backends}
-		$({ use altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization")
+		$({ use cpu_flags_ppc_altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization")
 		$(usex doc "--docs" '')
 		$(usex nls "--nls" "--no-nls")
 		$(usex phonehome "--phone-home" "--no-phone-home")

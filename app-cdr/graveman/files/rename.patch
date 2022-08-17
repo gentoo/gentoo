@@ -1,5 +1,5 @@
---- a/src/callbacks.c.old	2006-05-23 17:42:48.642913000 +0200
-+++ b/src/callbacks.c	2006-05-23 17:42:52.553201500 +0200
+--- a/src/callbacks.c
++++ b/src/callbacks.c
 @@ -268,7 +268,7 @@
  
    gtk_tree_model_get(Ltreemodel, &Liter, 2, &Lname, -1);

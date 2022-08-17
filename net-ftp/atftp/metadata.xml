@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>klausman@gentoo.org</email>
-	</maintainer>
 	<maintainer type="person" proxied="yes">
 		<email>martin.dummer@gmx.net</email>
 	</maintainer>

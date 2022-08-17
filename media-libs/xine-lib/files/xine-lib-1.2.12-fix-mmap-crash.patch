@@ -1,0 +1,15 @@
+https://sourceforge.net/p/xine/tickets/12/
+https://sourceforge.net/p/xine/xine-lib-1.2/ci/f56d70b45346ca9363a720724b0c2d00fc798988/tree/src/input/input_file.c?diff=d6e5d46a943257f0be171fb8ab16050810a21581
+https://bugs.gentoo.org/846398
+
+--- a/src/input/input_file.c
++++ b/src/input/input_file.c
+@@ -449,7 +449,7 @@
+ #ifdef HAVE_MMAP
+   this->mmap_base = NULL;
+   do {
+-    uint8_t mmap_base;
++    uint8_t *mmap_base;
+     size_t tmp_size;
+     /* may cause truncation - if it does, DON'T mmap! */
+     tmp_size = (size_t)sbuf.st_size;
