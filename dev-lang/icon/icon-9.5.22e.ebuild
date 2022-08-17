@@ -18,13 +18,13 @@ IUSE="X"
 S="${WORKDIR}/icon-${PV}"
 
 RDEPEND="
-	X? ( x11-libs/libX11:= )"
+	X? (
+		x11-libs/libX11
+		x11-libs/libXpm
+	)"
 DEPEND="
 	${RDEPEND}
-	X? (
-		x11-libs/libXpm
-		x11-libs/libXt
-	)"
+	X? ( x11-libs/libXt )"
 
 src_prepare() {
 	default
