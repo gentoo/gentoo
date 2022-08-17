@@ -96,6 +96,9 @@ src_install() {
 	# Cleanup
 	rm -r ./resources/app/LICENSES.chromium.html ./resources/app/LICENSE.rtf ./resources/app/licenses || die
 
+	# Disable update server
+	sed -i "/updateUrl/d" ${S}/resources/app/product.json || die
+
 	# Install
 	pax-mark m code
 	insinto "/opt/${PN}"
