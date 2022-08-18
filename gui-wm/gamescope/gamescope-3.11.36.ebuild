@@ -15,7 +15,7 @@ SLOT="0"
 IUSE="pipewire"
 
 RDEPEND="
-	=dev-libs/libliftoff-0.2*
+	=dev-libs/libliftoff-0.3*
 	dev-libs/wayland
 	>=dev-libs/wayland-protocols-1.17
 	=gui-libs/wlroots-0.15*[X]
