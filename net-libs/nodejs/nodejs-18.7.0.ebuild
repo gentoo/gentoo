@@ -7,7 +7,7 @@ CONFIG_CHECK="~ADVISE_SYSCALLS"
 PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit bash-completion-r1 flag-o-matic linux-info pax-utils python-any-r1 toolchain-funcs xdg-utils
+inherit bash-completion-r1 check-reqs flag-o-matic linux-info pax-utils python-any-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
@@ -52,9 +52,26 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-15.2.0-global-npm-config.patch
 )
 
+# These are measured on a loong machine with -ggdb on, and only checked
+# if debugging flags are present in CFLAGS.
+#
+# The final link consumed a little more than 7GiB alone, so 8GiB is the lower
+# limit for memory usage. Disk usage was 19.1GiB for the build directory and
+# 1.2GiB for the installed image, so we leave some room for architectures with
+# fatter binaries and set the disk requirement to 22GiB.
+CHECKREQS_MEMORY="8G"
+CHECKREQS_DISK_BUILD="22G"
+
 pkg_pretend() {
 	(use x86 && ! use cpu_flags_x86_sse2) && \
 		die "Your CPU doesn't support the required SSE2 instruction."
+
+	if [[ ${MERGE_TYPE} != "binary" ]]; then
+		if is-flagq "-g*" && ! is-flagq "-g*0" ; then
+			einfo "Checking for sufficient disk space and memory to build ${PN} with debugging CFLAGS"
+			check-reqs_pkg_pretend
+		fi
+	fi
 }
 
 pkg_setup() {
