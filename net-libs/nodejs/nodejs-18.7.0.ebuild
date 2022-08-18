@@ -135,14 +135,15 @@ src_configure() {
 	fi
 
 	local myarch=""
-	case ${ABI} in
-		amd64) myarch="x64";;
-		arm) myarch="arm";;
-		arm64) myarch="arm64";;
-		lp64*) myarch="riscv64";;
-		ppc64) myarch="ppc64";;
-		x32) myarch="x32";;
-		x86) myarch="ia32";;
+	case "${ARCH}:${ABI}" in
+		*:amd64) myarch="x64";;
+		*:arm) myarch="arm";;
+		*:arm64) myarch="arm64";;
+		loong:lp64*) myarch="loong64";;
+		riscv:lp64*) myarch="riscv64";;
+		*:ppc64) myarch="ppc64";;
+		*:x32) myarch="x32";;
+		*:x86) myarch="ia32";;
 		*) myarch="${ABI}";;
 	esac
 
