@@ -30,8 +30,10 @@ LICENSE="GPL-3"
 SLOT="${PV/_*}"
 IUSE="emacs"
 
+# for 2.71, our Perl time resolution patch changes our min Perl from 5.6
+# (vanilla upstream for 2.71) to 5.8.
 BDEPEND=">=sys-devel/m4-1.4.16
-	>=dev-lang/perl-5.6"
+	>=dev-lang/perl-5.8"
 RDEPEND="${BDEPEND}
 	>=sys-devel/autoconf-wrapper-15
 	sys-devel/gnuconfig
