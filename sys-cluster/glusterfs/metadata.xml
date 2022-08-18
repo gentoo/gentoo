@@ -26,5 +26,6 @@
 		<flag name="ipv6">Use IPv6 by default, requires libtirpc</flag>
 		<flag name="libtirpc">Build against <pkg>net-libs/libtirpc</pkg> for RPC support</flag>
 		<flag name="rsyslog">Install configuration snippet for <pkg>app-admin/rsyslog</pkg></flag>
+		<flag name="uring">Control whether or not glusterfs is compiled with uring support or not.</flag>
 	</use>
 </pkgmetadata>
