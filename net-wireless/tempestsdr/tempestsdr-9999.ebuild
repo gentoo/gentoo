@@ -1,7 +1,7 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit java-pkg-2
 
@@ -22,6 +22,7 @@ fi
 IUSE=""
 
 DEPEND=">=virtual/jdk-1.8:*
+		dev-libs/boost:=
 		net-wireless/airspy
 		net-wireless/uhd:=
 		net-wireless/rtl-sdr
