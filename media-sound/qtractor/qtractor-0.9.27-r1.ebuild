@@ -32,14 +32,18 @@ DEPEND="
 	media-libs/lv2
 	media-libs/suil
 	virtual/jack
-	aubio? ( media-libs/aubio )
+	x11-libs/libxcb:=
+	aubio? ( media-libs/aubio:= )
 	dssi? ( media-libs/dssi )
 	ladspa? ( media-libs/ladspa-sdk )
 	libsamplerate? ( media-libs/libsamplerate )
 	mad? ( media-libs/libmad )
 	osc? ( media-libs/liblo )
 	rubberband? ( media-libs/rubberband )
-	vorbis? ( media-libs/libvorbis )
+	vorbis? (
+		media-libs/libogg
+		media-libs/libvorbis
+	)
 	zlib? ( sys-libs/zlib )
 "
 RDEPEND="${DEPEND}"
