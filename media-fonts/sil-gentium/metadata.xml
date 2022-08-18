@@ -19,7 +19,4 @@
 		Gentium Plus now includes more extended Latin glyphs (Unicode 5.1),
 		archaic Greek symbols, and full extended Cyrillic script support.
 	</longdescription>
-	<use>
-		<flag name="compact">Also install more compact version of the font.</flag>
-	</use>
 </pkgmetadata>
