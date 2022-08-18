@@ -1213,6 +1213,17 @@ toolchain_src_configure() {
 					armv7*) confgcc+=( --with-fpu=vfpv3-d16 ) ;;
 				esac
 			fi
+
+			# If multilib is used, make the compiler build multilibs
+			# for A or R and M architecture profiles. Do this only
+			# when no specific arch/mode/float is specified, e.g.
+			# for target arm-none-eabi, since doing this is
+			# incompatible with --with-arch/cpu/float/fpu.
+			if is_multilib && [[ ${arm_arch} == arm ]] && \
+			   tc_version_is_at_least 7.1
+			then
+				confgcc+=( --with-multilib-list=aprofile,rmprofile  )
+			fi
 			;;
 		mips)
 			# Add --with-abi flags to set default ABI
