@@ -28,7 +28,7 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	|| ( purple xmpp )
 	purple? ( plugins )
-	test? ( plugins )
+	test? ( xmpp )
 	xmpp? ( !nss )
 "
 
