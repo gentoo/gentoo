@@ -138,7 +138,8 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	AT_M4DIR="autoconf third-party third-party/pjproject third-party/jansson" eautoreconf
+	AT_M4DIR="autoconf third-party third-party/pjproject third-party/jansson" \
+		AC_CONFIG_SUBDIRS=menuselect eautoreconf
 }
 
 src_configure() {
