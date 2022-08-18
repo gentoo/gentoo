@@ -22,6 +22,7 @@ RDEPEND="
 	dev-ml/extlib:=
 	~dev-ml/opam-client-${PV}:=
 	dev-ml/opam-file-format:=
+	sys-apps/bubblewrap
 	dev-ml/re:="
 DEPEND="${RDEPEND}"
 
