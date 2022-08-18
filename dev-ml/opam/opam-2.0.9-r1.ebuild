@@ -22,7 +22,8 @@ RDEPEND="
 	dev-ml/extlib:=
 	~dev-ml/opam-client-${PV}:=
 	dev-ml/opam-file-format:=
-	dev-ml/re:="
+	dev-ml/re:=
+	sys-apps/bubblewrap:="
 DEPEND="${RDEPEND}"
 
 # Cherry-picked from https://deb.debian.org/debian/pool/main/o/opam/opam_2.0.8-1.debian.tar.xz
