@@ -68,7 +68,7 @@ python_test() {
 }
 
 src_test() {
-	edo $(tc-getCC) ${CFLAGS} -I. ${CPPFLAGS} ${LDFLAGS} -o tests/test tests/test.c json.o
+	edo $(tc-getCC) ${CFLAGS} -I. ${CPPFLAGS} ${LDFLAGS} -o tests/test tests/test.c json.o -lm
 	pushd tests > /dev/null || die
 	edo ./test
 	use python && distutils-r1_src_test
