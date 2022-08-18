@@ -16,7 +16,8 @@ KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="+X"
 
 RDEPEND="app-text/hunspell:=
-	>=dev-qt/qtcore-5.15.0
+	>=dev-qt/qtcore-5.15.0:5
+	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtsvg:5
