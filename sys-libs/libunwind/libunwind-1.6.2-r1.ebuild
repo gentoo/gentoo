@@ -6,7 +6,8 @@ EAPI=8
 # Generate using https://github.com/thesamesam/sam-gentoo-scripts/blob/main/niche/generate-libunwind-docs
 # Set to 1 if prebuilt, 0 if not
 # (the construct below is to allow overriding from env for script)
-LIBUNWIND_DOCS_PREBUILT=${LIBUNWIND_DOCS_PREBUILT:-1}
+: ${LIBUNWIND_DOCS_PREBUILT:=1}
+
 LIBUNWIND_DOCS_PREBUILT_DEV=sam
 LIBUNWIND_DOCS_VERSION=$(ver_cut 1-3)
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
