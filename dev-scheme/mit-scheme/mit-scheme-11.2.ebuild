@@ -20,6 +20,7 @@ RDEPEND="
 	blowfish? ( dev-libs/openssl:= )
 	gdbm? ( sys-libs/gdbm:= )
 	gui? ( x11-libs/libX11 )
+	postgres? ( dev-db/postgresql:* )
 "
 DEPEND="${RDEPEND}"
 
