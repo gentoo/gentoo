@@ -36,7 +36,7 @@ SLOT="${PV:0:4}"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-lang/perl
+RDEPEND=">=dev-lang/perl-5.6
 	>=sys-devel/automake-wrapper-11
 	>=sys-devel/autoconf-2.69:*
 	sys-devel/gnuconfig"
