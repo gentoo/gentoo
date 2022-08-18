@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="virtual/pkgconfig
 	doc? (
-		graph? ( app-doc/doxygen[dot] )
+		graph? ( app-doc/doxygen[dot,doc] )
 		!graph? ( app-doc/doxygen )
 	)
 "
