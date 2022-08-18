@@ -1,13 +1,16 @@
 This is adapted patch from upstream PR 151. Original PR defines
 --external-json-parser which breaks configuration, see [1]. It was changed to
 --externaljsonparser and $external_json_parser to $externaljsonparser.
+Additionally, LDFLAGS_CHECK variable was introduced in order to make
+tests working, see [2] and #865667.
 
 [1] https://github.com/bitlbee/bitlbee/pull/151#issuecomment-1201181905
+[2] https://github.com/bitlbee/bitlbee/pull/151#issuecomment-1219254239
 
 Upstream-PR: https://github.com/bitlbee/bitlbee/pull/151
 
 diff --git a/configure b/configure
-index 4640c806..77b1213b 100755
+index fd8d363a..39495515 100755
 --- a/configure
 +++ b/configure
 @@ -47,6 +47,7 @@ plugins=1
@@ -26,7 +29,7 @@ index 4640c806..77b1213b 100755
  
  
  --target=...	Cross compilation target 		same as host
-@@ -398,6 +400,20 @@ else
+@@ -398,6 +400,21 @@ else
  fi
  echo 'EVENT_HANDLER=events_'$events'.o' >> Makefile.settings
  
@@ -41,13 +44,14 @@ index 4640c806..77b1213b 100755
 +if [ "$externaljsonparser" = "1" ]; then
 +    echo "CFLAGS+=$(pkg-config --cflags json-parser)" >> Makefile.settings
 +    echo "LDFLAGS_BITLBEE+=$(pkg-config --libs json-parser)" >> Makefile.settings
++    echo "LDFLAGS_CHECK+=$(pkg-config --libs json-parser)" >> Makefile.settings
 +fi
 +
 +
  detect_gnutls()
  {
  	if $PKG_CONFIG --exists gnutls; then
-@@ -979,6 +995,12 @@ else
+@@ -979,6 +996,12 @@ else
  	echo '  systemd disabled.'
  fi
  
@@ -77,6 +81,19 @@ index fc46aedc..ad95d9cb 100644
  
  LFLAGS += -r
  
+diff --git a/tests/Makefile b/tests/Makefile
+index 76122a2f..2235bf1d 100644
+--- a/tests/Makefile
++++ b/tests/Makefile
+@@ -20,7 +20,7 @@ test_objs = check.o check_util.o check_nick.o check_md5.o check_arc.o check_irc.
+ 
+ check: $(test_objs) $(addprefix ../, $(main_objs)) ../protocols/protocols.o ../lib/lib.o
+ 	@echo '*' Linking $@
+-	$(VERBOSE) $(CC) $(CFLAGS) -o $@ $^ $(LFLAGS) $(EFLAGS)
++	$(VERBOSE) $(CC) $(CFLAGS) -o $@ $^ $(LFLAGS) $(LDFLAGS_CHECK) $(EFLAGS)
+ 
+ %.o: $(_SRCDIR_)%.c
+ 	@echo '*' Compiling $<
 -- 
 2.35.1
 
