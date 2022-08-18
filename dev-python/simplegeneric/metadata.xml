@@ -13,6 +13,7 @@
 		e.g. pickle.dump() and other generic functions found in the Python
 		standard library.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">simplegeneric</remote-id>
 	</upstream>
