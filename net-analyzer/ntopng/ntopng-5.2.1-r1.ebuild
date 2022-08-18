@@ -23,6 +23,7 @@ DEPEND="dev-db/mysql-connector-c:=
 	net-analyzer/rrdtool
 	net-libs/libpcap
 	>=net-libs/nDPI-4.2:=
+	<net-libs/nDPI-4.4:=
 	>=net-libs/zeromq-3:=
 	net-misc/curl
 	sys-libs/libcap
