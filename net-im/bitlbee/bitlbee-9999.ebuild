@@ -29,7 +29,6 @@ REQUIRED_USE="
 	|| ( purple xmpp )
 	purple? ( plugins )
 	test? ( xmpp )
-	xmpp? ( !nss )
 "
 
 COMMON_DEPEND="
