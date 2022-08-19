@@ -15,7 +15,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="pypi">pypi</remote-id>
+		<remote-id type="pypi">pyupgrade</remote-id>
 		<remote-id type="github">asottile/pyupgrade</remote-id>
 	</upstream>
 </pkgmetadata>
