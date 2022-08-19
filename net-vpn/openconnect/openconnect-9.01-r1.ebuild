@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3 autotools
 else
 	SRC_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz"
-	KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86"
+	KEYWORDS="~amd64"
 fi
 
 DESCRIPTION="Free client for Cisco AnyConnect SSL VPN software"
@@ -25,6 +25,7 @@ IUSE="doc +gnutls gssapi libproxy lz4 nls pskc selinux smartcard stoken test"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
+	dev-libs/json-parser:0=
 	dev-libs/libxml2
 	sys-libs/zlib
 	app-crypt/p11-kit
@@ -117,7 +118,7 @@ src_configure() {
 		$(use_with smartcard libpcsclite)
 		$(use_with stoken)
 		--with-vpnc-script="${EPREFIX}/etc/vpnc/vpnc-script"
-		--with-builtin-json
+		--without-builtin-json
 		--without-java
 	)
 
