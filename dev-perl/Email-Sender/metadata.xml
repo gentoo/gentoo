@@ -31,5 +31,6 @@
     <remote-id type="cpan-module">Email::Sender::Transport::Test</remote-id>
     <remote-id type="cpan-module">Email::Sender::Transport::Wrapper</remote-id>
     <remote-id type="cpan-module">Email::Sender::Util</remote-id>
+    <remote-id type="github">rjbs/Email-Sender</remote-id>
   </upstream>
 </pkgmetadata>
