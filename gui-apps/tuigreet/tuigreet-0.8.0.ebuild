@@ -151,3 +151,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~riscv"
 
 RDEPEND="gui-libs/greetd"
+
+src_install() {
+	dodir /var/cache/${PN}
+	fowners greetd:greetd /var/cache/${PN}
+
+	cargo_src_install
+}
