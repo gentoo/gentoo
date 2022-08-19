@@ -13,5 +13,6 @@
     <remote-id type="cpan-module">Email::Send::SMTP</remote-id>
     <remote-id type="cpan-module">Email::Send::Sendmail</remote-id>
     <remote-id type="cpan-module">Email::Send::Test</remote-id>
+    <remote-id type="github">Perl-Email-Project/Email-Send</remote-id>
   </upstream>
 </pkgmetadata>
