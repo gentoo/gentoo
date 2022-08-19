@@ -67,6 +67,4 @@ src_install() {
 	meson_src_install
 
 	use perl && perl_delete_localpod
-
-	dodoc AUTHORS ChangeLog README.md TODO NEWS
 }
