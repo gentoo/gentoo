@@ -19,7 +19,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="BSD-2"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE="python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
