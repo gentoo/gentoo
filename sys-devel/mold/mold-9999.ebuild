@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit cmake toolchain-funcs
 
 DESCRIPTION="A Modern Linker"
 HOMEPAGE="https://github.com/rui314/mold"
@@ -12,27 +12,25 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/rui314/mold/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~riscv"
 fi
 
-LICENSE="AGPL-3"
+# mold (AGPL-3)
+#  - xxhash (BSD-2)
+#  - tbb (Apache-2.0)
+LICENSE="AGPL-3 Apache-2.0 BSD-2"
 SLOT="0"
+IUSE="system-tbb"
 
-RDEPEND=">=dev-cpp/tbb-2021.4.0:=
+RDEPEND="
 	sys-libs/zlib
+	system-tbb? ( >=dev-cpp/tbb-2021.4.0:= )
 	!kernel_Darwin? (
 		>=dev-libs/mimalloc-2:=
 		dev-libs/openssl:=
-	)"
-# As of 1.1, xxhash is now a header-only dep, but it's now bundled :(
-# TODO: restore SYSTEM_XXHASH upstream?
+	)
+"
 DEPEND="${RDEPEND}"
-
-PATCHES=(
-	# Bug #841575
-	"${FILESDIR}"/${PN}-1.2.1-install-nopython.patch
-	"${FILESDIR}"/${PN}-1.3.0-openssl-pkgconfig.patch
-)
 
 pkg_pretend() {
 	# Requires a c++20 compiler, see #831473
@@ -46,7 +44,7 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	default
+	cmake_src_prepare
 
 	# Needs unpackaged dwarfdump
 	rm test/elf/{{dead,compress}-debug-sections,compressed-debug-info}.sh || die
@@ -64,34 +62,36 @@ src_prepare() {
 	if ! has_version -d 'sys-libs/glibc[static-pie(+)]'; then
 		rm test/elf/{,ifunc-}static-pie.sh || die
 	fi
+
+	# Don't require python
+	sed -i '/find_package(Python3/d' CMakeLists.txt || die
+	sed -i '/add_dependencies/d' CMakeLists.txt || die
+	cat <<EOF>git-hash.cc
+#include <string>
+namespace mold {
+std::string mold_git_hash = "gentoo-${PVR}";
+}
+EOF
 }
 
-src_compile() {
-	tc-export CC CXX
-
-	emake \
-		CFLAGS="${CFLAGS}" \
-		CXXFLAGS="${CXXFLAGS}" \
-		SYSTEM_TBB=1 \
-		SYSTEM_MIMALLOC=1 \
-		STRIP="true" \
-		LIBDIR="${EPREFIX}/usr/$(get_libdir)"
-}
-
-src_test() {
-	emake \
-		SYSTEM_TBB=1 \
-		SYSTEM_MIMALLOC=1 \
-		check
+src_configure() {
+	local mycmakeargs=(
+		-DMOLD_ENABLE_QEMU_TESTS=OFF
+		-DMOLD_LTO=OFF # Should be up to the user to decide this with CXXFLAGS.
+		-DMOLD_USE_SYSTEM_MIMALLOC=ON
+		-DMOLD_USE_SYSTEM_TBB=$(usex system-tbb)
+	)
+	cmake_src_configure
 }
 
 src_install() {
-	emake \
-		SYSTEM_TBB=1 \
-		SYSTEM_MIMALLOC=1 \
-		DESTDIR="${D}" \
-		PREFIX="${EPREFIX}/usr" \
-		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
-		STRIP="true" \
-		install
+	dobin "${BUILD_DIR}"/${PN}
+	dolib.so "${BUILD_DIR}"/${PN}-wrapper.so
+
+	dodoc docs/{design,execstack}.md
+	doman docs/${PN}.1
+
+	dosym ${PN} /usr/bin/ld.${PN}
+	dosym ${PN} /usr/bin/ld64.${PN}
+	dosym ../../../usr/bin/${PN} /usr/libexec/${PN}/ld
 }
