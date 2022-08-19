@@ -32,7 +32,7 @@ else
 		SRC_URI="https://alpha.gnu.org/gnu/emacs/pretest/${PN}-${PV/_/-}.tar.xz"
 	fi
 	# Patchset from proj/emacs-patches.git
-	SRC_URI+=" https://dev.gentoo.org/~ulm/emacs/${PN}-28.1-patches-1.tar.xz"
+	SRC_URI+=" https://dev.gentoo.org/~ulm/emacs/${P}-patches-1.tar.xz"
 	PATCHES=("${WORKDIR}/patch")
 	SLOT="${PV%%.*}"
 	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
@@ -141,7 +141,7 @@ SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
 
 src_prepare() {
 	if [[ ${PV##*.} = 9999 ]]; then
-		FULL_VERSION=$(sed -n 's/^AC_INIT([^,]*,[^0-9.]*\([0-9.]*\).*/\1/p' \
+		FULL_VERSION=$(sed -n 's/^AC_INIT([^,]*,[ \t]*\([^ \t,)]*\).*/\1/p' \
 			configure.ac)
 		[[ ${FULL_VERSION} ]] || die "Cannot determine current Emacs version"
 		einfo "Emacs branch: ${EGIT_BRANCH}"
@@ -152,6 +152,9 @@ src_prepare() {
 	fi
 
 	if use jit; then
+		export NATIVE_FULL_AOT=1
+		find lisp -type f -name "*.elc" -delete || die
+
 		# These files ignore LDFLAGS. We assign the variable here, because
 		# for live ebuilds FULL_VERSION doesn't exist in global scope
 		QA_FLAGS_IGNORED="usr/$(get_libdir)/emacs/${FULL_VERSION}/native-lisp/.*"
