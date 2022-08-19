@@ -43,6 +43,8 @@ RDEPEND=""
 BDEPEND="${CATEGORY}/binutils"
 
 src_prepare() {
+	eapply "${FILESDIR}"/${P}-glibc-2.36.patch
+
 	local p upstreamed_patches=(
 		# add them here
 	)

@@ -23,5 +23,6 @@ BDEPEND=">=${CATEGORY}/binutils-2.30[cet(-)?]"
 src_prepare() {
 	toolchain_src_prepare
 
+	eapply "${FILESDIR}"/${P}-glibc-2.36.patch
 	eapply_user
 }
