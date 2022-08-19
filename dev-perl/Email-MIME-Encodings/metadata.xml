@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="cpan">Email-MIME-Encodings</remote-id>
     <remote-id type="cpan-module">Email::MIME::Encodings</remote-id>
+    <remote-id type="github">rjbs/Email-MIME-Encodings</remote-id>
   </upstream>
 </pkgmetadata>
