@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="cpan">Email-Date</remote-id>
     <remote-id type="cpan-module">Email::Date</remote-id>
+    <remote-id type="github">Perl-Email-Project/Email-Date</remote-id>
   </upstream>
 </pkgmetadata>
