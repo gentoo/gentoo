@@ -15,4 +15,7 @@
 		<flag name="vnc">Support connecting to VNC-enabled virtual
 			machines.</flag>
 	</use>
+	<upstream>
+		<remote-id type="gitlab">virt-viewer/virt-viewer</remote-id>
+	</upstream>
 </pkgmetadata>
