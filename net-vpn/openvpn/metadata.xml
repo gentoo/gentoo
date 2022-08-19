@@ -22,5 +22,6 @@ networks using an encrypted tunnel.</longdescription>
   </use>
   <upstream>
     <remote-id type="cpe">cpe:/a:openvpn:openvpn</remote-id>
+    <remote-id type="github">OpenVPN/openvpn</remote-id>
   </upstream>
 </pkgmetadata>
