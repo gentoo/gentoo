@@ -7,7 +7,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
-    <remote-id type="github">sdispater/cleo</remote-id>
+    <remote-id type="github">python-poetry/cleo</remote-id>
     <remote-id type="pypi">cleo</remote-id>
   </upstream>
 </pkgmetadata>
