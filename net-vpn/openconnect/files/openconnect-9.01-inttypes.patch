@@ -1,0 +1,32 @@
+From c0775e6cd46fb5df6c6aab52314e3038c44d2152 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 19 Aug 2022 11:55:42 -0400
+Subject: [PATCH] jsondump.c: include <inttypes.h> for PRId64
+
+Fixes a build failure with gnutls and a json-parser snapshot taken on
+2021-12-08.
+
+Building with openssl or with the bundled copy of json-parser causes
+inttypes.h to be included indirectly.
+
+Bug: https://bugs.gentoo.org/865797
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+---
+ jsondump.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/jsondump.c b/jsondump.c
+index a18780b5..2b097e8a 100644
+--- a/jsondump.c
++++ b/jsondump.c
+@@ -24,6 +24,7 @@
+ #include <string.h>
+ #include <ctype.h>
+ #include <errno.h>
++#include <inttypes.h>
+ 
+ /*
+  * Copyright (C) 2015 Mirko Pasqualetti  All rights reserved.
+-- 
+GitLab
+

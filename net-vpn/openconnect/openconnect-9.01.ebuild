@@ -85,6 +85,9 @@ src_unpack() {
 }
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/openconnect-9.01-inttypes.patch"
+	)
 	default
 	if [[ ${PV} == 9999 ]]; then
 		eautoreconf
