@@ -13,7 +13,7 @@ SRC_URI="https://github.com/X0rg/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="+bandwidth +dmidecode force-libstatgrab +gtk +libcpuid +libglfw +libpci +ncurses +nls opencl test"
+IUSE="+cpu force-libstatgrab +gpu +gui +ncurses +nls opencl +pci test"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -23,11 +23,11 @@ COMMON_DEPEND="
 	x11-libs/pango
 	force-libstatgrab? ( sys-libs/libstatgrab )
 	!force-libstatgrab? ( sys-process/procps:= )
-	gtk? ( >=x11-libs/gtk+-3.12:3 )
-	libcpuid? ( >=dev-libs/libcpuid-0.3.0:= )
-	libglfw? ( >=media-libs/glfw-3.3
+	gui? ( >=x11-libs/gtk+-3.12:3 )
+	cpu? ( >=dev-libs/libcpuid-0.3.0:= )
+	gpu? ( >=media-libs/glfw-3.3
 		media-libs/libglvnd )
-	libpci? ( sys-apps/pciutils )
+	pci? ( sys-apps/pciutils )
 	ncurses? ( sys-libs/ncurses:=[tinfo] )
 	opencl? ( virtual/opencl )
 "
