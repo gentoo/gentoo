@@ -8,7 +8,7 @@ DISTUTILS_IN_SOURCE_BUILD=1
 
 inherit elisp distutils-r1
 
-DESCRIPTION="A tool that allows both-side communication beetween Python and Emacs Lisp"
+DESCRIPTION="A tool that allows both-side communication between Python and Emacs Lisp"
 HOMEPAGE="https://www.emacswiki.org/emacs/PyMacs"
 SRC_URI="https://github.com/dgentry/${PN^}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
