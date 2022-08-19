@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="cpan">Email-Address-XS</remote-id>
     <remote-id type="cpan-module">Email::Address::XS</remote-id>
+    <remote-id type="github">pali/Email-Address-XS</remote-id>
   </upstream>
 </pkgmetadata>
