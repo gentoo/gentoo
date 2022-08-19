@@ -9,4 +9,7 @@
 		<email>php-bugs@gentoo.org</email>
 		<name>PHP</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="gitlab">libvirt/libvirt-php</remote-id>
+	</upstream>
 </pkgmetadata>
