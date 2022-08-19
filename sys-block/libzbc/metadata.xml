@@ -16,4 +16,7 @@
 		emulation mode allowing emulating the behavior of a host-managed zoned
 		disk using a regular file or a standard block device as backing store.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">westerndigitalcorporation/libzbc</remote-id>
+	</upstream>
 </pkgmetadata>
