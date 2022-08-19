@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~s390"
 
 RDEPEND="
 	dev-python/hatchling[${PYTHON_USEDEP}]
