@@ -42,7 +42,7 @@ by adding the following to your ~/.emacs file:
 (load "/usr/share/emacs/site-lisp/emacspeak/lisp/emacspeak-setup.el")
 '
 
-HTML_DOCS=( info/ )
+HTML_DOCS=( etc/ info/ )
 
 src_configure() {
 	MAKEOPTS+=" -j1"
