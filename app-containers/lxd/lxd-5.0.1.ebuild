@@ -125,7 +125,7 @@ src_compile() {
 		go install -v -x "${S}/${k}" || die "failed compiling ${k}"
 	done
 
-	go install -v -x -tags libsqlite3 ${S}/lxd || die "Failed to build the daemon"
+	go install -v -x -tags libsqlite3 "${S}"/lxd || die "Failed to build the daemon"
 
 	# Needs to be built statically
 	CGO_ENABLED=0 go install -v -tags netgo "${S}"/lxd-migrate
@@ -177,4 +177,14 @@ pkg_postinst() {
 	optfeature "zfs storage backend" sys-fs/zfs
 	elog
 	elog "Be sure to add your local user to the lxd group."
+
+	if [[ -n ${REPLACING_VERSIONS} ]] && has_version app-emulation/qemu[spice,usbredir,virtfs]; then
+		ewarn ""
+		ewarn "You're updating from <5.0.1. Due to incompatible API updates in the lxd-agent"
+		ewarn "product, you'll have to restart any running virtual machines before they work"
+		ewarn "properly."
+		ewarn ""
+		ewarn "Run: 'lxc restart your-vm' after the update for your vm's managed by lxd."
+		ewarn ""
+	fi
 }
