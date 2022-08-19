@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jaco Kroon <jaco@uls.co.za> (2022-08-22)
+# Superceded by bgpq4 (already in tree).  Non-co-operative upstream.  Removal
+# in 30 days.  Open bugs, already fixed in bgpq4.  Please convert your usage to
+# bgpq4.  Mostly you just need to drop the -3 argument.
+net-misc/bgpq3
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-08-22)
 # Java library without consumers. Removal on 2022-09-22
 dev-java/byte-buddy-agent
