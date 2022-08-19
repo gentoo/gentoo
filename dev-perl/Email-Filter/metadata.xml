@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="cpan">Email-Filter</remote-id>
     <remote-id type="cpan-module">Email::Filter</remote-id>
+    <remote-id type="github">Perl-Email-Project/Email-Filter</remote-id>
   </upstream>
 </pkgmetadata>
