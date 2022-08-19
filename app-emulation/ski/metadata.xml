@@ -7,5 +7,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">ski</remote-id>
+		<remote-id type="github">trofi/ski</remote-id>
 	</upstream>
 </pkgmetadata>
