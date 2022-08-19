@@ -12,4 +12,7 @@
 		<flag name="vdo">Enable Virtual Data Optimizer support.</flag>
 		<flag name="zram">Enable ZRAM support (requires <pkg>sys-apps/systemd</pkg>).</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">storaged-project/udisks</remote-id>
+	</upstream>
 </pkgmetadata>
