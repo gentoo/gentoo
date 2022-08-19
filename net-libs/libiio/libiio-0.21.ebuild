@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit cmake udev
 
 DESCRIPTION="Library for interfacing with IIO devices"
 HOMEPAGE="https://github.com/analogdevicesinc/libiio"
@@ -24,3 +24,11 @@ RDEPEND="dev-libs/libxml2:=
 	aio? ( dev-libs/libaio )
 	zeroconf? ( net-dns/avahi )"
 DEPEND="${RDEPEND}"
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
+}
