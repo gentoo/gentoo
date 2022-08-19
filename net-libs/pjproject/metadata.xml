@@ -26,4 +26,7 @@
 		<flag name="vpx">Include VP8 and VP9 codec support in the build</flag>
 		<flag name="webrtc">Enable WebRTC support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">pjsip/pjproject</remote-id>
+	</upstream>
 </pkgmetadata>
