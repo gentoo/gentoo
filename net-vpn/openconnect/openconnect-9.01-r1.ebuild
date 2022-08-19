@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3 autotools
 else
 	SRC_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~riscv"
 fi
 
 DESCRIPTION="Free client for Cisco AnyConnect SSL VPN software"
