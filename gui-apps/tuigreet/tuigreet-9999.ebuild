@@ -34,3 +34,10 @@ LICENSE="Apache-2.0 Boost-1.0 GPL-3 MIT"
 SLOT="0"
 
 RDEPEND="gui-libs/greetd"
+
+src_install() {
+	dodir /var/cache/${PN}
+	fowners greetd:greetd /var/cache/${PN}
+
+	cargo_src_install
+}
