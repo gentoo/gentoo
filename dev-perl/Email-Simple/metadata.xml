@@ -10,5 +10,6 @@
     <remote-id type="cpan-module">Email::Simple</remote-id>
     <remote-id type="cpan-module">Email::Simple::Creator</remote-id>
     <remote-id type="cpan-module">Email::Simple::Header</remote-id>
+    <remote-id type="github">rjbs/Email-Simple</remote-id>
   </upstream>
 </pkgmetadata>
