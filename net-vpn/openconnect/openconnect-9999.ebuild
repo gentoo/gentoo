@@ -25,6 +25,7 @@ IUSE="doc +gnutls gssapi libproxy lz4 nls pskc selinux smartcard stoken test"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
+	dev-libs/json-parser:0=
 	dev-libs/libxml2
 	sys-libs/zlib
 	app-crypt/p11-kit
@@ -114,6 +115,7 @@ src_configure() {
 		$(use_with smartcard libpcsclite)
 		$(use_with stoken)
 		--with-vpnc-script="${EPREFIX}/etc/vpnc/vpnc-script"
+		--without-builtin-json
 		--without-java
 	)
 
