@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Group of utilities to build beautiful and testable command line interfaces"
@@ -27,9 +27,11 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-python_prepare_all() {
-	# skip failing test
-	rm tests/utils/test_terminal.py || die
-
-	distutils-r1_python_prepare_all
+python_test() {
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	local EPYTEST_DESELECT=(
+		# skip failing test
+		tests/utils/test_terminal.py
+	)
+	epytest
 }
