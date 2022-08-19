@@ -14,5 +14,6 @@
     <remote-id type="cpan-module">Email::Abstract::MailInternet</remote-id>
     <remote-id type="cpan-module">Email::Abstract::MailMessage</remote-id>
     <remote-id type="cpan-module">Email::Abstract::Plugin</remote-id>
+    <remote-id type="github">rjbs/Email-Abstract</remote-id>
   </upstream>
 </pkgmetadata>
