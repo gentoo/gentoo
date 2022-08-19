@@ -54,13 +54,11 @@ src_configure() {
 	local mycmakeargs=(
 		-DFORCE_LIBSTATGRAB=$(usex force-libstatgrab)
 		-DGSETTINGS_COMPILE=OFF
-		-DWITH_BANDWIDTH=$(usex bandwidth)
-		-DWITH_DMIDECODE=$(usex dmidecode)
 		-DWITH_GETTEXT=$(usex nls)
-		-DWITH_GTK=$(usex gtk)
-		-DWITH_LIBCPUID=$(usex libcpuid)
-		-DWITH_LIBGLFW=$(usex libglfw)
-		-DWITH_LIBPCI=$(usex libpci)
+		-DWITH_GTK=$(usex gui)
+		-DWITH_LIBCPUID=$(usex cpu)
+		-DWITH_LIBGLFW=$(usex gpu)
+		-DWITH_LIBPCI=$(usex pci)
 		-DWITH_LIBSTATGRAB=OFF
 		-DWITH_NCURSES=$(usex ncurses)
 		-DWITH_OPENCL=$(usex opencl)
