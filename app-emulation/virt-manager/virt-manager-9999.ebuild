@@ -38,14 +38,14 @@ RDEPEND="
 		dev-python/requests[${PYTHON_USEDEP}]
 	')
 	gui? (
-		>=net-libs/gtk-vnc-0.3.8[gtk3(+),introspection]
 		gnome-base/dconf
+		>=net-libs/gtk-vnc-0.3.8[gtk3(+),introspection]
 		net-misc/spice-gtk[usbredir,gtk3,introspection,sasl?]
-		policykit? ( sys-auth/polkit[introspection] )
 		sys-apps/dbus[X]
 		x11-libs/gtk+:3[introspection]
 		x11-libs/gtksourceview:4[introspection]
 		x11-libs/vte:2.91[introspection]
+		policykit? ( sys-auth/polkit[introspection] )
 	)
 "
 DEPEND="${RDEPEND}"
