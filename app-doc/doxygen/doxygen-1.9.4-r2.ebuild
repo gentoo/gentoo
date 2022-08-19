@@ -131,4 +131,6 @@ src_compile() {
 
 src_install() {
 	cmake_src_install
+
+	doman doc/*.1
 }
