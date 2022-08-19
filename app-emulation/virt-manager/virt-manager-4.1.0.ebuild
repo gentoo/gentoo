@@ -53,9 +53,6 @@ BDEPEND="dev-python/docutils"
 
 DOCS=( README.md NEWS.md )
 
-# Doesn't seem to play nicely in a sandboxed environment.
-#RESTRICT="test"
-
 DISTUTILS_ARGS=(
 	--no-update-icon-cache
 	--no-compile-schemas
