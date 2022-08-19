@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{8..11} )
 inherit autotools bash-completion-r1 linux-info pam python-single-r1
 
 DESCRIPTION="Tools for Managing Linux CIFS Client Filesystems"
-HOMEPAGE="https://wiki.samba.org/index.php/LinuxCIFS_utils"
+HOMEPAGE="https://wiki.samba.org/index.php/LinuxCIFS_utils https://git.samba.org/cifs-utils.git/?p=cifs-utils.git"
 SRC_URI="https://ftp.samba.org/pub/linux-cifs/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
