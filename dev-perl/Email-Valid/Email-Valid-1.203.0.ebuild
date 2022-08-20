@@ -5,6 +5,7 @@ EAPI=8
 
 DIST_AUTHOR=RJBS
 DIST_VERSION=1.203
+DIST_TEST="do verbose"
 inherit perl-module
 
 DESCRIPTION="Check validity of Internet email addresses"
