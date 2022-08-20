@@ -3,15 +3,15 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
-DISTUTILS_USE_SETUPTOOLS="pyproject.toml"
+PYTHON_COMPAT=( python3_{8..11} )
+DISTUTILS_USE_PEP517="poetry"
 
 inherit distutils-r1
 
 MY_PN="${PN/-/_}"
 MY_P="${MY_PN}-${PV}"
 
-DESCRIPTION="Write unit tests in Python to test actual state of your servers"
+DESCRIPTION="Run tests in your markdown"
 HOMEPAGE="https://github.com/Jc2k/pytest-markdown"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz -> ${P}.tar.gz"
 
