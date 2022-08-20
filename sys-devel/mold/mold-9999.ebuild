@@ -32,6 +32,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	# https://bugs.gentoo.org/865837
+	"${FILESDIR}"/mold-1.4.1-tbb-flags-stripping.patch
+)
+
 pkg_pretend() {
 	# Requires a c++20 compiler, see #831473
 	if [[ ${MERGE_TYPE} != binary ]]; then
