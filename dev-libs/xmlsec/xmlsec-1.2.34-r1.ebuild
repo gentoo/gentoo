@@ -10,13 +10,13 @@ S="${WORKDIR}/${PN}1-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="doc gcrypt gnutls nss +openssl static-libs test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( gcrypt gnutls nss openssl )
 	gnutls? ( gcrypt )"
 
-RDEPEND=">=dev-libs/libxml2-2.7.4:=
+RDEPEND=">=dev-libs/libxml2-2.7.4:=[ftp(+)]
 	>=dev-libs/libxslt-1.0.20:=
 	dev-libs/libltdl
 	gcrypt? ( >=dev-libs/libgcrypt-1.4.0:0= )
@@ -38,7 +38,7 @@ BDEPEND="virtual/pkgconfig
 
 src_configure() {
 	# Bash because of bug #721128
-	CONFIG_SHELL=${BASH} econf \
+	CONFIG_SHELL="${BROOT}"/bin/bash econf \
 		$(use_enable doc docs) \
 		$(use_enable static-libs static) \
 		$(use_with gcrypt) \
@@ -52,7 +52,7 @@ src_configure() {
 
 src_test() {
 	# See https://github.com/lsh123/xmlsec/issues/280 for TZ=UTC
-	TZ=UTC SHELL=${BASH} emake TMPFOLDER="${T}" check
+	TZ=UTC SHELL="${BROOT}"/bin/bash emake TMPFOLDER="${T}" check
 }
 
 src_install() {
