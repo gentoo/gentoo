@@ -1,0 +1,29 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0733b41..fd613be 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -210,6 +210,11 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/cmake/sdbus-c++-config.cmake
+         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/sdbus-c++
+         COMPONENT dev)
+ 
++if(BUILD_LIBSYSTEMD OR pkgcfg_lib_Systemd_systemd MATCHES "\.a$")
++    set(PKGCONFIG_REQS "")
++else()
++    set(PKGCONFIG_REQS "libsystemd")
++endif()
+ configure_file(pkgconfig/sdbus-c++.pc.in pkgconfig/sdbus-c++.pc @ONLY)
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/pkgconfig/sdbus-c++.pc
+         DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig COMPONENT dev)
+diff --git a/pkgconfig/sdbus-c++.pc.in b/pkgconfig/sdbus-c++.pc.in
+index 21e0f0b..a6d6ec9 100644
+--- a/pkgconfig/sdbus-c++.pc.in
++++ b/pkgconfig/sdbus-c++.pc.in
+@@ -5,7 +5,7 @@ includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
+ 
+ Name: @PROJECT_NAME@
+ Description: C++ library on top of sd-bus, a systemd D-Bus library
+-Requires: libsystemd
++Requires: @PKGCONFIG_REQS@
+ Version: @SDBUSCPP_VERSION@
+ Libs: -L${libdir} -l@PROJECT_NAME@
+ Cflags: -I${includedir}
