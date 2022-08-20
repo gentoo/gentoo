@@ -812,7 +812,7 @@ chromium_configure() {
 
 		# Prevent libvpx/xnnpack build failures. Bug 530248, 544702, 546984, 853646.
 		if [[ ${myarch} == amd64 || ${myarch} == x86 ]]; then
-			filter-flags -mno-mmx -mno-sse2 -mno-ssse3 -mno-sse4.1 -mno-avx -mno-avx2 -mno-fma -mno-fma4 -mno-xop
+			filter-flags -mno-mmx -mno-sse2 -mno-ssse3 -mno-sse4.1 -mno-avx -mno-avx2 -mno-fma -mno-fma4 -mno-xop -mno-sse4a
 		fi
 	fi
 
