@@ -15,7 +15,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="pypi">pypi</remote-id>
+		<remote-id type="pypi">pyannotate</remote-id>
 		<remote-id type="github">dropbox/pyannotate</remote-id>
 	</upstream>
 </pkgmetadata>
