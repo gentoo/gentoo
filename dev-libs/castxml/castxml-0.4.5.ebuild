@@ -14,7 +14,7 @@ S="${WORKDIR}/CastXML-${PV}"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
+IUSE="+man test"
 
 RESTRICT="!test? ( test )"
 
@@ -25,14 +25,14 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 		${RDEPEND}
-		dev-python/sphinx
+		man? ( dev-python/sphinx )
 	"
 
 src_configure() {
 	local mycmakeargs=(
 		-DCastXML_INSTALL_DOC_DIR="share/doc/${P}"
 		-DCastXML_INSTALL_MAN_DIR="share/man"
-		-DSPHINX_MAN=ON
+		-DSPHINX_MAN="$(usex man)"
 		-DSPHINX_HTML=OFF
 		-DBUILD_TESTING="$(usex test)"
 	)
