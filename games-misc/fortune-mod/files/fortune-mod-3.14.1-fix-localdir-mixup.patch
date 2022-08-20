@@ -1,3 +1,5 @@
+https://github.com/shlomif/fortune-mod/pull/69
+
 The intention of LOCALDIR seems to be to allow local cookies to be
 provided by the sysadmin in e.g. /usr/local/share/fortune,
 but if set, before this patch, even cookies distributed
