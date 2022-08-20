@@ -51,7 +51,11 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" V=1 $(usex debug 'DEBUG' '' '=yes' '')
+	emake \
+		CC="$(tc-getCC)" \
+		LIBDIR=/usr/$(get_libdir) \
+		V=1 \
+		$(usex debug 'DEBUG' '' '=yes' '')
 }
 
 src_install() {
