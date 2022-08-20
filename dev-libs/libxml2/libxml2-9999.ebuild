@@ -36,7 +36,7 @@ S="${WORKDIR}/${PN}-${PV%_rc*}"
 
 LICENSE="MIT"
 SLOT="2"
-IUSE="debug examples icu lzma +python readline static-libs test"
+IUSE="debug examples +ftp icu lzma +python readline static-libs test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -106,6 +106,7 @@ multilib_src_configure() {
 	libxml2_configure() {
 		ECONF_SOURCE="${S}" econf \
 			--enable-ipv6 \
+			$(use_with ftp) \
 			$(use_with debug run-debug) \
 			$(use_with icu) \
 			$(use_with lzma) \
