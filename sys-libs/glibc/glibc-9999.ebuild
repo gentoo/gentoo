@@ -326,6 +326,12 @@ setup_target_flags() {
 				fi
 				# For compatibility with older binaries at slight performance cost.
 				use stack-realign && export CFLAGS_x86+=" -mstackrealign"
+
+				# Workaround for bug #823780.
+				if tc-is-gcc && (($(gcc-major-version) == 11)) && (($(gcc-minor-version) <= 2)) && (($(gcc-micro-version) == 0)) ; then
+					export CFLAGS_x86="${CFLAGS_x86} -mno-avx512f"
+					einfo "Auto adding -mno-avx512f to CFLAGS_x86 for buggy GCC version (bug #823780) (ABI=${ABI})"
+				fi
 			fi
 		;;
 		mips)
