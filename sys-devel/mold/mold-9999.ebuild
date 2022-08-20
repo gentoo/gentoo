@@ -67,16 +67,6 @@ src_prepare() {
 	if ! has_version -d 'sys-libs/glibc[static-pie(+)]'; then
 		rm test/elf/{,ifunc-}static-pie.sh || die
 	fi
-
-	# Don't require python
-	sed -i '/find_package(Python3/d' CMakeLists.txt || die
-	sed -i '/add_dependencies/d' CMakeLists.txt || die
-	cat <<EOF>git-hash.cc
-#include <string>
-namespace mold {
-std::string mold_git_hash = "gentoo-${PVR}";
-}
-EOF
 }
 
 src_configure() {
