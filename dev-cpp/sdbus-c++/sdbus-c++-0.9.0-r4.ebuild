@@ -58,6 +58,10 @@ S="${WORKDIR}/sdbus-cpp-${PV}"
 SDS="${WORKDIR}/${SDP}"
 SDB="${WORKDIR}/systemd-build"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-pc-reqs.patch
+)
+
 pkg_setup() {
 	use systemd || python-any-r1_pkg_setup
 }
