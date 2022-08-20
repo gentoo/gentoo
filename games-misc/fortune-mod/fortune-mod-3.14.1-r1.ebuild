@@ -16,19 +16,25 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc64 ~riscv ~sparc ~x86"
 IUSE="offensive test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="app-text/recode:=
-	!games-misc/fortune-mod-tao"
+RDEPEND="
+	app-text/recode:=
+	!games-misc/fortune-mod-tao
+"
 DEPEND="${DEPEND}"
-BDEPEND="app-text/App-XML-DocBook-Builder
+BDEPEND="
+	app-text/App-XML-DocBook-Builder
+	dev-lang/perl
 	test? (
 		dev-perl/File-Find-Object
 		dev-perl/IO-All
 		dev-perl/Test-Differences
 		dev-perl/Test-Trap
-	)"
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.14.0-valgrind-tests.patch
+	"${FILESDIR}"/${PN}-3.14.1-fix-localdir-mixup.patch
 )
 
 src_configure() {
