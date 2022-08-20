@@ -33,6 +33,11 @@ DEPEND+="
 		sys-devel/gdb[xml]
 	)"
 
+QA_FLAGS_IGNORED="
+	usr/lib.*/rr/librrpage.so
+	usr/lib.*/rr/librrpage_32.so
+"
+
 RESTRICT="test" # toolchain and kernel version dependent
 
 pkg_setup() {
