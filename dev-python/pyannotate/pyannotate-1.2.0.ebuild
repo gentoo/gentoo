@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
-DESCRIPTION="A tool (and pre-commit hook) to automatically upgrade syntax for newer versions of the language."
+DESCRIPTION="Auto-generate PEP-484 annotations"
 HOMEPAGE="https://github.com/dropbox/pyannotate"
 SRC_URI="https://github.com/dropbox/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
