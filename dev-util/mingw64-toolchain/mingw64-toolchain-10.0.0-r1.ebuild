@@ -12,6 +12,7 @@ inherit edo flag-o-matic multilib-build toolchain-funcs
 # Do _p1++ rather than revbump if changing without bumping mingw64 itself.
 BINUTILS_PV=2.37 # 2.38 needs bug #838106
 GCC_PV=11.3.0
+MINGW_PV=$(ver_cut 1-3)
 
 DESCRIPTION="All-in-one mingw64 toolchain intended for building Wine without crossdev"
 HOMEPAGE="
@@ -19,7 +20,7 @@ HOMEPAGE="
 	https://gcc.gnu.org/
 	https://sourceware.org/binutils/"
 SRC_URI="
-	mirror://sourceforge/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v${PV}.tar.bz2
+	mirror://sourceforge/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v${MINGW_PV}.tar.bz2
 	mirror://gnu/gcc/gcc-${GCC_PV}/gcc-${GCC_PV}.tar.xz
 	mirror://gnu/binutils/binutils-${BINUTILS_PV}.tar.xz"
 S="${WORKDIR}"
@@ -58,7 +59,7 @@ src_prepare() {
 	# rename directories to simplify both patching and the ebuild
 	mv binutils{-${BINUTILS_PV},} || die
 	mv gcc{-${GCC_PV},} || die
-	mv mingw-w64-v${PV} mingw64 || die
+	mv mingw-w64-v${MINGW_PV} mingw64 || die
 
 	default
 }
@@ -99,13 +100,6 @@ src_compile() {
 		--without-debuginfod
 	)
 	mwt-binutils() {
-		# replace duplicates with symlinks
-		local bin
-		for bin in "${sysroot}"/${CTARGET}/bin/*; do
-			ln -sf {../${CTARGET}/bin/,"${sysroot}"/bin/${CTARGET}-}${bin##*/} || die
-		done
-		ln -sf ld.bfd "${sysroot}"/${CTARGET}/bin/ld || die
-
 		# symlink gcc's lto plugin for AR (bug #854516)
 		mkdir "${sysroot}"/${CTARGET}/lib/bfd-plugins || die
 		ln -s ../../../libexec/gcc/${CTARGET}/${GCC_PV}/liblto_plugin.so \
@@ -125,6 +119,7 @@ src_compile() {
 		--disable-libssp
 		--disable-libvtv
 		--disable-shared
+		--disable-werror
 		--with-system-zlib
 		--without-isl
 		--without-zstd
@@ -144,10 +139,6 @@ src_compile() {
 		--with-sysroot="${prefix}"
 		--with-build-sysroot="${sysroot}"
 	)
-	mwt-gcc_stage3() {
-		# replace duplicate with symlink
-		ln -sf ${CTARGET}-gcc "${sysroot}"/bin/${CTARGET}-gcc-${GCC_PV} || die
-	}
 
 	# mingw64-runtime (split in several parts, 3 needed for gcc stages)
 	local conf_mingw64=(
