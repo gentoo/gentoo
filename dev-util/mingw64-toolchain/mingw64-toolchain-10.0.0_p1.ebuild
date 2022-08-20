@@ -93,9 +93,9 @@ src_compile() {
 		--prefix="${prefix}"
 		--host=${CHOST}
 		--disable-cet
+		--disable-default-execstack
 		--disable-nls
 		--disable-shared
-		--enable-default-execstack=no
 		--with-system-zlib
 		--without-debuginfod
 		--without-msgpack
