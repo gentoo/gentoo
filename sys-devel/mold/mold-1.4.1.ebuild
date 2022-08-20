@@ -36,6 +36,8 @@ PATCHES=(
 	# Allows us to rm the tests as before. Will be included in next
 	# release.
 	"${FILESDIR}"/mold-1.4.1-glob-tests.patch
+	# https://bugs.gentoo.org/865837
+	"${FILESDIR}"/mold-1.4.1-tbb-flags-stripping.patch
 )
 
 pkg_pretend() {
