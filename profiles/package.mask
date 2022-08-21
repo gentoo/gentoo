@@ -33,7 +33,7 @@
 
 #--- END OF EXAMPLES ---
 
-# hololeap <hololeap@protonmail.com> (2022-08-19)
+# hololeap <hololeap@protonmail.com> (2022-08-21)
 # Monolithic mask for dev-haskell/* packages which have no reverse dependencies,
 # are broken, or severely out of date. The aim is to have the Haskell overlay
 # (::haskell) be the place for development packages and only have packages
@@ -161,7 +161,7 @@ net-misc/haeredes
 net-misc/hath
 dev-util/bnfc
 
-# hololeap <hololeap@protonmail.com> (2022-08-19)
+# hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
 # haskell-cabal.eclass)
 # See: <https://github.com/martijnbastiaan/doctest-parallel/issues/45>
