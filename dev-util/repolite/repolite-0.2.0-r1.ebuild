@@ -3,9 +3,8 @@
 
 EAPI=8
 
-DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1 optfeature
 
@@ -27,17 +26,14 @@ IUSE="doc"
 RESTRICT="test"  # no tests :(
 
 RDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/pyyaml[${PYTHON_USEDEP}]
-		dev-python/munch[${PYTHON_USEDEP}]
-		>=dev-python/versioningit-2.0.1[${PYTHON_USEDEP}]
-	')
+	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/munch[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}
 	dev-vcs/git
 "
 BDEPEND="
-	$(python_gen_cond_dep '
+	$(python_gen_any_dep '
 		>=dev-python/versioningit-2.0.1[${PYTHON_USEDEP}]
 	')
 "
