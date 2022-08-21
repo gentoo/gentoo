@@ -605,7 +605,6 @@ dev-haskell/yesod-json
 dev-haskell/zlib-conduit
 dev-haskell/zlib-enum
 dev-util/bustle
-games-board/goatee-gtk
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
