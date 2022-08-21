@@ -512,7 +512,6 @@ dev-haskell/mysql-simple
 dev-haskell/network-conduit
 dev-haskell/network-data
 dev-haskell/newtype
-dev-haskell/nonce
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
