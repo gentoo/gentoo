@@ -608,7 +608,6 @@ dev-util/bustle
 games-board/goatee-gtk
 sci-mathematics/agda
 sci-mathematics/agda-stdlib
-www-apps/gitit
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
