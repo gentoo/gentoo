@@ -610,12 +610,6 @@ sci-mathematics/agda
 sci-mathematics/agda-stdlib
 www-apps/gitit
 
-# Sam James <sam@gentoo.org> (2022-07-22)
-# Severely broken, unbuildable with modern glibc, several versions out of date,
-# needs a big rework. Bugs #766294, #775545, #855197, #727912, #831868, #696938,
-# and #531996, #836111, #818721. Removal on 2022-08-22.
-sci-mathematics/rstudio
-
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
 # Masked for removal in 30 days.
