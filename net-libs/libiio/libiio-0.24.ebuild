@@ -25,6 +25,14 @@ RDEPEND="dev-libs/libxml2:=
 	zeroconf? ( net-dns/avahi )"
 DEPEND="${RDEPEND}"
 
+src_configure() {
+	local mycmakeargs=(
+		-DHAVE_DNS_SD="$(usex zeroconf)"
+		-DWITH_AIO="$(usex aio)"
+	)
+	cmake_src_configure
+}
+
 pkg_postinst() {
 	udev_reload
 }
