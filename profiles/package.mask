@@ -585,7 +585,6 @@ dev-haskell/uri-encode
 dev-haskell/url
 dev-haskell/uuagc
 dev-haskell/uuagc-cabal
-dev-haskell/uulib
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
