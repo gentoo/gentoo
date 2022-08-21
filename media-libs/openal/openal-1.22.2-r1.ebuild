@@ -51,41 +51,37 @@ DEPEND="
 
 DOCS=( alsoftrc.sample docs/env-vars.txt docs/hrtf.txt ChangeLog README.md )
 
-src_configure() {
-	my_configure() {
-		local mycmakeargs=(
-			# See bug #809314 for getting both options for backends
-			-DALSOFT_{BACKEND,REQUIRE}_ALSA=$(usex alsa)
-			-DALSOFT_{BACKEND,REQUIRE}_COREAUDIO=$(usex coreaudio)
-			-DALSOFT_{BACKEND,REQUIRE}_JACK=$(usex jack)
-			-DALSOFT_{BACKEND,REQUIRE}_OSS=$(usex oss)
-			-DALSOFT_{BACKEND,REQUIRE}_PIPEWIRE=$(usex pipewire)
-			-DALSOFT_{BACKEND,REQUIRE}_PORTAUDIO=$(usex portaudio)
-			-DALSOFT_{BACKEND,REQUIRE}_PULSEAUDIO=$(usex pulseaudio)
-			-DALSOFT_{BACKEND,REQUIRE}_SDL2=$(usex sdl)
-			-DALSOFT_{BACKEND,REQUIRE}_SNDIO=$(usex sndio)
+multilib_src_configure() {
+	local mycmakeargs=(
+		# See bug #809314 for getting both options for backends
+		-DALSOFT_{BACKEND,REQUIRE}_ALSA=$(usex alsa)
+		-DALSOFT_{BACKEND,REQUIRE}_COREAUDIO=$(usex coreaudio)
+		-DALSOFT_{BACKEND,REQUIRE}_JACK=$(usex jack)
+		-DALSOFT_{BACKEND,REQUIRE}_OSS=$(usex oss)
+		-DALSOFT_{BACKEND,REQUIRE}_PIPEWIRE=$(usex pipewire)
+		-DALSOFT_{BACKEND,REQUIRE}_PORTAUDIO=$(usex portaudio)
+		-DALSOFT_{BACKEND,REQUIRE}_PULSEAUDIO=$(usex pulseaudio)
+		-DALSOFT_{BACKEND,REQUIRE}_SDL2=$(usex sdl)
+		-DALSOFT_{BACKEND,REQUIRE}_SNDIO=$(usex sndio)
 
-			-DALSOFT_UTILS=$(multilib_is_native_abi && echo "ON" || echo "OFF")
-			-DALSOFT_NO_CONFIG_UTIL=$(usex qt5 "$(multilib_is_native_abi && echo "OFF" || echo "ON")" ON)
-			 # EXAMPLES=OFF to avoid FFmpeg dependency, bug #481670
-			-DALSOFT_EXAMPLES=OFF
+		-DALSOFT_UTILS=$(multilib_is_native_abi && echo "ON" || echo "OFF")
+		-DALSOFT_NO_CONFIG_UTIL=$(usex qt5 "$(multilib_is_native_abi && echo "OFF" || echo "ON")" ON)
+		 # EXAMPLES=OFF to avoid FFmpeg dependency, bug #481670
+		-DALSOFT_EXAMPLES=OFF
+	)
+
+	# Avoid unused variable warnings, bug #738240
+	if use amd64 || use x86 ; then
+		mycmakeargs+=(
+			-DALSOFT_CPUEXT_SSE=$(usex cpu_flags_x86_sse)
+			-DALSOFT_CPUEXT_SSE2=$(usex cpu_flags_x86_sse2)
+			-DALSOFT_CPUEXT_SSE4_1=$(usex cpu_flags_x86_sse4_1)
 		)
+	elif use arm || use arm64 ; then
+		mycmakeargs+=(
+			-DALSOFT_CPUEXT_NEON=$(usex cpu_flags_arm_neon)
+		)
+	fi
 
-		# Avoid unused variable warnings, bug #738240
-		if use amd64 || use x86 ; then
-			mycmakeargs+=(
-				-DALSOFT_CPUEXT_SSE=$(usex cpu_flags_x86_sse)
-				-DALSOFT_CPUEXT_SSE2=$(usex cpu_flags_x86_sse2)
-				-DALSOFT_CPUEXT_SSE4_1=$(usex cpu_flags_x86_sse4_1)
-			)
-		elif use arm || use arm64 ; then
-			mycmakeargs+=(
-				-DALSOFT_CPUEXT_NEON=$(usex cpu_flags_arm_neon)
-			)
-		fi
-
-		cmake_src_configure
-	}
-
-	multilib_parallel_foreach_abi my_configure
+	cmake_src_configure
 }
