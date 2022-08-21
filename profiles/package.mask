@@ -551,7 +551,6 @@ dev-haskell/sendfile
 dev-haskell/shakespeare-css
 dev-haskell/shakespeare-i18n
 dev-haskell/shakespeare-js
-dev-haskell/shakespeare-text
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
