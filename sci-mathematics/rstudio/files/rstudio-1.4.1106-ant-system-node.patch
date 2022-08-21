@@ -1,0 +1,35 @@
+Upstream has strong opinions about which node executable to use. This patch
+allows to use a system version
+
+diff --git a/src/gwt/build.xml b/src/gwt/build.xml
+index 899ae7fecd..7e416ab9ab 100644
+--- a/src/gwt/build.xml
++++ b/src/gwt/build.xml
+@@ -82,26 +82,12 @@
+    </target>
+ 
+    <!-- panmirror typescript library -->
+-   <property name="node.version" value="10.19.0"/>
+-   <property name="node.dir" value="../../dependencies/common/node/${node.version}"/>
+-   <condition property="node.bin" value="../../../${node.dir}/bin/node">
+-     <not>
+-        <os family="windows" />
+-     </not>
+-   </condition>
+-   <condition property="node.bin" value="${node.dir}/node.exe">
+-     <os family="windows" />
+-   </condition>
+-
+-   <!-- use node from /opt/rstudio-tools if installed (typical for Docker) -->
+-   <available property="node.bin" value="/opt/rstudio-tools/dependencies/common/node/${node.version}/bin/node" file="/opt/rstudio-tools/dependencies/common/node/${node.version}/bin/node"/>
+-
+    <property name="panmirror.dir" value="./panmirror/src/editor"/>
+    <property name="panmirror.build.dir" value="./www/js/panmirror"/>
+ 
+    <target name="panmirror" description="Compile panmirror library">
+       <mkdir dir="${panmirror.build.dir}"/>
+-      <exec executable="${node.bin}" dir="${panmirror.dir}" spawn="${panmirror.spawn}">
++      <exec executable="node" dir="${panmirror.dir}" spawn="${panmirror.spawn}">
+          <arg value="fuse"/>
+          <arg value="${panmirror.target}"/>
+          <env key="NODE_PATH" path="${env.NODE_PATH}:/opt/rstudio-tools/panmirror/node_modules"/>

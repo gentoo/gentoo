@@ -1,0 +1,35 @@
+# Upstream takes it upon themselves to assume that the resources dir is one
+# directory above the binary, i.e. if /usr/bin/rstudio, then it should be
+# /usr/resources. This patch allows to specify a target resources directory to
+# cmake, and the rstudio runtime will respect this path.
+#
+# PR opened upstream at https://github.com/rstudio/ , #9199
+
+--- a/CMakeGlobals.txt
++++ b/CMakeGlobals.txt
+@@ -179,9 +179,13 @@ else()
+    else()
+      set(RSTUDIO_INSTALL_BIN bin)
+    endif()
+-   set(RSTUDIO_INSTALL_SUPPORTING .)
++   if(NOT RSTUDIO_INSTALL_SUPPORTING)
++       set(RSTUDIO_INSTALL_SUPPORTING .)
++   endif()
+ endif()
+ 
++add_compile_definitions(RSTUDIO_RESOURCES_DIR="${RSTUDIO_INSTALL_SUPPORTING}")
++
+ # if the install prefix is /usr/local then tweak as appropriate
+ if(UNIX)
+    if(${CMAKE_INSTALL_PREFIX} STREQUAL "/usr/local")
+--- a/src/cpp/session/SessionOptions.cpp
++++ b/src/cpp/session/SessionOptions.cpp
+@@ -87,7 +87,7 @@ core::ProgramStatus Options::read(int argc, char * const argv[], std::ostream& o
+    core::system::unsetenv(kMonitorSharedSecretEnvVar);
+ 
+    // compute the resource path
+-   Error error = core::system::installPath("..", argv[0], &resourcePath_);
++   Error error = core::system::installPath(RSTUDIO_RESOURCES_DIR, argv[0], &resourcePath_);
+    if (error)
+    {
+       LOG_ERROR_MESSAGE("Unable to determine install path: "+error.getSummary());

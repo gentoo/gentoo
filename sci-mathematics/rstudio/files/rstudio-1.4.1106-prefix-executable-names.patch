@@ -1,0 +1,70 @@
+# The upstream configurations result in /usr/bin/diagnostics and
+# /usr/bin/crashpad-handler. While these aren't known to conflict with anything,
+# it seems prudent to provide a more descriptive name. Alternatively, we may not
+# even need to ship these binaries, so keep that in bind if you're maintaining
+# this patch...
+
+--- a/src/cpp/diagnostics/CMakeLists.txt
++++ b/src/cpp/diagnostics/CMakeLists.txt
+@@ -50,16 +50,16 @@ if(WIN32)
+ 
+ endif()
+ 
+-add_stripped_executable(diagnostics
++add_stripped_executable(rstudio-diagnostics
+   ${DIAGNOSTICS_SOURCE_FILES}
+ )
+ 
+ # set link dependencies
+-target_link_libraries(diagnostics
++target_link_libraries(rstudio-diagnostics
+    rstudio-core
+ )
+ if(NOT RSTUDIO_SESSION_WIN32)
+-   install(TARGETS diagnostics DESTINATION ${RSTUDIO_INSTALL_BIN})
++   install(TARGETS rstudio-diagnostics DESTINATION ${RSTUDIO_INSTALL_BIN})
+ endif()
+ 
+ # if doing a package build on MacOS, reroute depdendent libraries to our bundled copies
+@@ -77,15 +77,15 @@ if(APPLE AND RSTUDIO_PACKAGE_BUILD)
+       # 2. extracts the path from the output using grep and awk
+       # 3. runs install_name_tool and tells it to replace the path with one that
+       #    points to a bundled copy of the same file
+-      add_custom_command (TARGET diagnostics POST_BUILD
+-         COMMAND install_name_tool -change `otool -L ${CMAKE_CURRENT_BINARY_DIR}/diagnostics | grep ${LIB_FILE} | awk '{ print $$1 }'` @executable_path/../Frameworks/${LIB_FILE} ${CMAKE_CURRENT_BINARY_DIR}/diagnostics)
++      add_custom_command (TARGET rstudio-diagnostics POST_BUILD
++         COMMAND install_name_tool -change `otool -L ${CMAKE_CURRENT_BINARY_DIR}/rstudio-diagnostics | grep ${LIB_FILE} | awk '{ print $$1 }'` @executable_path/../Frameworks/${LIB_FILE} ${CMAKE_CURRENT_BINARY_DIR}/rstudio-diagnostics)
+    endforeach()
+ 
+    # do something similar to the above to fix paths to SOCI libraries
+    foreach(lib ${SOCI_DEPENDENCIES})
+       get_filename_component(LIB_NAME "${lib}" NAME_WE)
+-      add_custom_command (TARGET diagnostics POST_BUILD
+-          COMMAND install_name_tool -change `otool -L ${CMAKE_CURRENT_BINARY_DIR}/diagnostics | grep ${LIB_NAME} | awk '{ print $$1 }'` @executable_path/../Frameworks/$$\(otool -L ${CMAKE_CURRENT_BINARY_DIR}/diagnostics | grep ${LIB_NAME} | awk '{ print $$1 }' | xargs basename\) ${CMAKE_CURRENT_BINARY_DIR}/diagnostics)
++      add_custom_command (TARGET rstudio-diagnostics POST_BUILD
++          COMMAND install_name_tool -change `otool -L ${CMAKE_CURRENT_BINARY_DIR}/rstudio-diagnostics | grep ${LIB_NAME} | awk '{ print $$1 }'` @executable_path/../Frameworks/$$\(otool -L ${CMAKE_CURRENT_BINARY_DIR}/rstudio-diagnostics | grep ${LIB_NAME} | awk '{ print $$1 }' | xargs basename\) ${CMAKE_CURRENT_BINARY_DIR}/rstudio-diagnostics)
+    endforeach()
+ 
+ endif()
+diff --git a/src/cpp/server/crash-handler-proxy/CMakeLists.txt b/src/cpp/server/crash-handler-proxy/CMakeLists.txt
+index bcc3620..38ee322 100644
+--- a/src/cpp/server/crash-handler-proxy/CMakeLists.txt
++++ b/src/cpp/server/crash-handler-proxy/CMakeLists.txt
+@@ -23,14 +23,14 @@ include_directories(
+ 
+ 
+ # define executable
+-add_stripped_executable(crash-handler-proxy
++add_stripped_executable(rtudio-crash-handler-proxy
+                         ${CRASH_HANDLER_PROXY_SOURCE_FILES} ${CRASH_HANDLER_PROXY_HEADER_FILES})
+ 
+ # set link dependencies
+-target_link_libraries(crash-handler-proxy
++target_link_libraries(rtudio-crash-handler-proxy
+    rstudio-core
+ )
+ 
+ # installation rules
+-install(TARGETS crash-handler-proxy DESTINATION ${RSTUDIO_INSTALL_BIN})
++install(TARGETS rtudio-crash-handler-proxy DESTINATION ${RSTUDIO_INSTALL_BIN})
+ 

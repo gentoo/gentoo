@@ -11,6 +11,7 @@
 	</longdescription>
 	<use>
 		<flag name="server">Build and install the RStudio server</flag>
+		<flag name="headless">Build just the RStudio server</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">rstudio/rstudio</remote-id>
