@@ -332,7 +332,8 @@ S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
 	"${FILESDIR}"/chromium-r1.patch
-	"${FILESDIR}"/ffmpeg-5.0-backport-ranlib-build-fix.patch
+	"${FILESDIR}"/${PN}-5.0-backport-ranlib-build-fix.patch
+	"${FILESDIR}"/${P}-libsdl2-new-version-scheme.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
