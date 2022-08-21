@@ -576,7 +576,6 @@ dev-haskell/th-utilities
 dev-haskell/thyme
 dev-haskell/top
 dev-haskell/unexceptionalio
-dev-haskell/uniqueid
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
