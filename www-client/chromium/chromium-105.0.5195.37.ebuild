@@ -890,17 +890,6 @@ chromium_configure() {
 		fi
 	fi
 
-	# Disable opaque pointers, https://crbug.com/1316298
-	if tc-is-clang; then
-		if test-flag-CXX -Xclang -no-opaque-pointers; then
-			append-flags -Xclang -no-opaque-pointers
-			if tc-is-cross-compiler; then
-				export BUILD_CXXFLAGS+=" -Xclang -no-opaque-pointers"
-				export BUILD_CFLAGS+=" -Xclang -no-opaque-pointers"
-			fi
-		fi
-	fi
-
 	# Explicitly disable ICU data file support for system-icu/headless builds.
 	if use system-icu || use headless; then
 		myconf_gn+=" icu_use_data_file=false"
