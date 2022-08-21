@@ -572,7 +572,6 @@ dev-haskell/testing-feat
 dev-haskell/testing-type-modifiers
 dev-haskell/text-binary
 dev-haskell/text-stream-decode
-dev-haskell/th-utilities
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
