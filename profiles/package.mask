@@ -592,7 +592,6 @@ dev-haskell/wai-test
 dev-haskell/wavy
 dev-haskell/with-location
 dev-haskell/wl-pprint
-dev-haskell/wl-pprint-text
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
