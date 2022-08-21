@@ -518,8 +518,6 @@ dev-haskell/numtype-dk
 dev-haskell/objectname
 dev-haskell/openal
 dev-haskell/opengl
-dev-haskell/openglraw
-dev-haskell/pandoc-citeproc
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
