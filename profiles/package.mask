@@ -567,7 +567,6 @@ dev-haskell/system-posix-redirect
 dev-haskell/tagshare
 dev-haskell/tagstream-conduit
 dev-haskell/tasty-ant-xml
-dev-haskell/tensor
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
