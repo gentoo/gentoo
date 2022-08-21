@@ -578,7 +578,6 @@ dev-haskell/top
 dev-haskell/unexceptionalio
 dev-haskell/uniqueid
 dev-haskell/unixutils
-dev-haskell/uri
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
