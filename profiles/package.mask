@@ -527,7 +527,6 @@ dev-haskell/persistent-postgresql
 dev-haskell/persistent-qq
 dev-haskell/pid1
 dev-haskell/pipes
-dev-haskell/postgresql-libpq
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
