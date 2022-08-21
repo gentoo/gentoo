@@ -561,7 +561,6 @@ dev-haskell/store-core
 dev-haskell/stream
 dev-haskell/stringable
 dev-haskell/stringprep
-dev-haskell/stringsearch
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
