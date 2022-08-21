@@ -59,21 +59,16 @@ dev-haskell/casa-client
 dev-haskell/casa-types
 dev-haskell/cipher-aes128
 dev-haskell/concurrent-extra
-dev-haskell/configurator
 dev-haskell/contravariant-extras
-dev-haskell/convertible
 dev-haskell/cpphs
 dev-haskell/crypto-pubkey-types
 dev-haskell/cryptohash
 dev-haskell/cryptohash-cryptoapi
 dev-haskell/data-default-instances-base
-dev-haskell/dns
 dev-haskell/drbg
 dev-haskell/edit-distance-vector
 dev-haskell/either
-dev-haskell/errorcall-eq-instance
 dev-haskell/filelock
-dev-haskell/filemanip
 dev-haskell/filepattern
 dev-haskell/fsnotify
 dev-haskell/ghc-lib-parser
@@ -86,14 +81,10 @@ dev-haskell/haddock-api
 dev-haskell/hashable-time
 dev-haskell/hashtables
 dev-haskell/haskell-src-meta
-dev-haskell/hdbc
 dev-haskell/hdbc-odbc
-dev-haskell/hdbc-postgresql
-dev-haskell/hdbc-sqlite3
 dev-haskell/hi-file-parser
 dev-haskell/hlint
 dev-haskell/hpack
-dev-haskell/hslogger
 dev-haskell/hsopenssl
 dev-haskell/hsyaml-aeson
 dev-haskell/http-common
@@ -114,14 +105,12 @@ dev-haskell/keys
 dev-haskell/lens-aeson
 dev-haskell/memotrie
 dev-haskell/mintty
-dev-haskell/missingh
 dev-haskell/mustache
 dev-haskell/newtype-generics
 dev-haskell/open-browser
 dev-haskell/openssl-streams
 dev-haskell/optparse-simple
 dev-haskell/pantry
-dev-haskell/parallel-io
 dev-haskell/path-io
 dev-haskell/pointed
 dev-haskell/polyparse
@@ -154,11 +143,6 @@ dev-haskell/weigh
 dev-haskell/wreq
 dev-haskell/xhtml
 dev-haskell/zlib-bindings
-dev-util/shelltestrunner
-net-mail/list-remote-forwards
-net-mail/mailbox-count
-net-misc/haeredes
-net-misc/hath
 dev-util/bnfc
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
