@@ -582,7 +582,6 @@ dev-haskell/uri
 dev-haskell/uri-bytestring
 dev-haskell/uri-bytestring-aeson
 dev-haskell/uri-encode
-dev-haskell/url
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
