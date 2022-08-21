@@ -635,34 +635,10 @@ sci-libs/io_lib
 # Removal on 2022-08-18.
 kde-misc/plasma-applet-weather-widget
 
-# Sam James <sam@gentoo.org> (2022-07-17)
-# Code quality issues, out of date by several versions in Gentoo,
-# unmaintained, and several open bugs: bugs #521272, #729684, #855230.
-# Removal on 2022-08-17.
-dev-db/gigabase
-
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
 # Masked for removal in 30 days.
 dev-lang/ruby:2.6
-
-# Sam James <sam@gentoo.org> (2022-07-15)
-# No activity upstream since early 2021, uses deprecated Go eclass,
-# open bugs: bug #680358, bug #844694. Removal on 2022-08-15.
-dev-util/docker-ls
-
-# Bernard Cafarelli <voyageur@gentoo.org> (2022-07-14)
-# Dead upstream (last release in 2013, no tarballs or git download)
-# No reverse dependencies for a long time, several test and build failures
-# Bug #857948, removal on 2022-08-13.
-net-misc/csync
-
-# David Seifert <soap@gentoo.org> (2022-07-14)
-# Unmaintained, no other major distro carries this, code quality is
-# abysmal, build system has major issues, tons of patches, EAPI 6,
-# no other revdeps in tree. Bug #822762, #831874, removal on 2022-08-13.
-sci-visualization/opendx
-sci-visualization/opendx-samples
 
 # Marek Szuba <marecki@gentoo.org> (2022-07-13)
 # Upstream has switched from CMake to hand-crafted Makefiles (yes, TO them),
@@ -670,26 +646,6 @@ sci-visualization/opendx-samples
 # QA violations in Gentoo. Mask until all of the latter have been resolved
 # and the jumbo patch fixing the former has been thoroughly tested.
 >media-gfx/gmic-3.1.0
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-07-12)
-# Unused java libraries, all asm-* included in dev-java/asm,
-# log4j-api-java9 never to be used as a package. Removal on 2022-08-12.
-dev-java/asm-analysis
-dev-java/asm-commons
-dev-java/asm-tree
-dev-java/asm-util
-dev-java/log4j-api-java9
-
-# Sam James <sam@gentoo.org> (2022-07-12)
-# Huge number of open bugs, deprecated upstream (they recommend
-# using other video editors like Shotcut, Kdenlive, ...). Removal on 2022-08-12.
-# Bugs #372053, #438248, #740528, #778338, #832380, #834406.
-media-video/kino
-
-# Matt Turner <mattst88@gentoo.org> (2022-07-11)
-# Dead package upstream. No reverse dependencies.
-# Removal on 2022-08-11.
-x11-libs/gtk+extra
 
 # Fabian Groffen <grobian@gentoo.org> (2022-07-02)
 # Segfaults handling SPF validations (warn on permerror), like the
