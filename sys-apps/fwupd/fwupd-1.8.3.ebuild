@@ -95,6 +95,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.3-docgen_deps_test.patch
 	"${FILESDIR}"/${PN}-1.8.3-gresource_quirks_paths.patch
+	"${FILESDIR}"/${PN}-1.8.3-installed_tests.patch
 )
 
 pkg_setup() {
