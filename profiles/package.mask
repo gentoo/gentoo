@@ -629,12 +629,6 @@ dev-ruby/web-console:3
 # and needs a dependency in ::sci to run tests. Removal on 2022-08-19.
 sci-libs/io_lib
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2022-07-19)
-# No upstream commits since 2017, broken by yr.no widget discontinuation.
-# Replaced by kde-misc/kweather from KDE Plasma Mobile Gear.
-# Removal on 2022-08-18.
-kde-misc/plasma-applet-weather-widget
-
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
 # Masked for removal in 30 days.
