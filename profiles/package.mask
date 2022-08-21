@@ -600,7 +600,6 @@ dev-haskell/wxdirect
 dev-haskell/xmlgen
 dev-haskell/yesod-auth
 dev-haskell/yesod-auth-hashdb
-dev-haskell/yesod-default
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
