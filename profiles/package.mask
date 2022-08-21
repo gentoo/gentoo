@@ -537,7 +537,6 @@ dev-haskell/profunctor-extras
 dev-haskell/psqueue
 dev-haskell/publicsuffixlist
 dev-haskell/punycode
-dev-haskell/pwstore-fast
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
