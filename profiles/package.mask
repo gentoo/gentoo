@@ -544,7 +544,6 @@ dev-haskell/readargs
 dev-haskell/readline
 dev-haskell/recaptcha
 dev-haskell/regex-pcre-builtin
-dev-haskell/riff
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
