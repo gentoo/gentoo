@@ -507,7 +507,6 @@ dev-haskell/mtl-compat
 dev-haskell/multipart
 dev-haskell/murmur-hash
 dev-haskell/mutable-containers
-dev-haskell/mysql
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
