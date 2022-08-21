@@ -597,7 +597,6 @@ dev-haskell/wx
 dev-haskell/wxc
 dev-haskell/wxcore
 dev-haskell/wxdirect
-dev-haskell/xmlgen
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
