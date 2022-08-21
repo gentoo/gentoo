@@ -531,7 +531,6 @@ dev-haskell/postgresql-libpq
 dev-haskell/postgresql-simple
 dev-haskell/pqueue
 dev-haskell/prelude-extras
-dev-haskell/preprocessor-tools
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
