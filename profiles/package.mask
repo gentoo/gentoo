@@ -569,7 +569,6 @@ dev-haskell/tagstream-conduit
 dev-haskell/tasty-ant-xml
 dev-haskell/tensor
 dev-haskell/testing-feat
-dev-haskell/testing-type-modifiers
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
