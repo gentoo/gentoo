@@ -558,7 +558,6 @@ dev-haskell/stack-bin
 dev-haskell/stmonadtrans
 dev-haskell/store
 dev-haskell/store-core
-dev-haskell/stream
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
