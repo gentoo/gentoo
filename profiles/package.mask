@@ -510,7 +510,6 @@ dev-haskell/mutable-containers
 dev-haskell/mysql
 dev-haskell/mysql-simple
 dev-haskell/network-conduit
-dev-haskell/network-data
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
