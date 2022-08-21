@@ -623,12 +623,6 @@ dev-haskell/pandoc-citeproc
 dev-ruby/activeldap:5
 dev-ruby/web-console:3
 
-# Sam James <sam@gentoo.org> (2022-07-19)
-# Unaddressed file collisions, fails to build with slibtool, EAPI 6, and
-# out of date. Bugs #800617, #658318. No reverse dependencies in ::gentoo
-# and needs a dependency in ::sci to run tests. Removal on 2022-08-19.
-sci-libs/io_lib
-
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
 # Masked for removal in 30 days.
