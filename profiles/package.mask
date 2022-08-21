@@ -588,7 +588,6 @@ dev-haskell/uuagc-cabal
 dev-haskell/uulib
 dev-haskell/vector-space
 dev-haskell/wai-conduit
-dev-haskell/wai-test
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
