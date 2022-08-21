@@ -501,7 +501,6 @@ dev-haskell/monadcatchio-mtl
 dev-haskell/monadcatchio-transformers
 dev-haskell/monadlib
 dev-haskell/monadplus
-dev-haskell/monadrandom
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
