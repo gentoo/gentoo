@@ -522,7 +522,6 @@ dev-haskell/openglraw
 dev-haskell/pandoc-citeproc
 dev-haskell/pango
 dev-haskell/pcap
-dev-haskell/persistent-mysql
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
