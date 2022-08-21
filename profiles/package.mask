@@ -541,7 +541,6 @@ dev-haskell/pwstore-fast
 dev-haskell/quickcheck-unicode
 dev-haskell/ranges
 dev-haskell/readargs
-dev-haskell/readline
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
