@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -30,4 +30,8 @@ distutils_enable_tests pytest
 EPYTEST_DESELECT=(
 	# test require in source build
 	test/test_autopep8.py::SystemTests::test_e101_skip_innocuous
+)
+
+PATCHES=(
+	"${FILESDIR}"/autopep8-1.6.0-lib2to3-deprecation-pytest.patch
 )
