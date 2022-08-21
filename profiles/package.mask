@@ -509,7 +509,6 @@ dev-haskell/murmur-hash
 dev-haskell/mutable-containers
 dev-haskell/mysql
 dev-haskell/mysql-simple
-dev-haskell/network-conduit
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
