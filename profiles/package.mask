@@ -536,7 +536,6 @@ dev-haskell/process-extras
 dev-haskell/profunctor-extras
 dev-haskell/psqueue
 dev-haskell/publicsuffixlist
-dev-haskell/punycode
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
