@@ -602,7 +602,6 @@ dev-haskell/yesod-auth
 dev-haskell/yesod-auth-hashdb
 dev-haskell/yesod-default
 dev-haskell/yesod-json
-dev-haskell/zlib-conduit
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
