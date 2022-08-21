@@ -533,7 +533,6 @@ dev-haskell/pqueue
 dev-haskell/prelude-extras
 dev-haskell/preprocessor-tools
 dev-haskell/process-extras
-dev-haskell/profunctor-extras
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
