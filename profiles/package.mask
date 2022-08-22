@@ -338,7 +338,6 @@ dev-haskell/alut
 dev-haskell/argparser
 dev-haskell/arithmoi
 dev-haskell/arrows
-dev-haskell/ascii-progress
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
