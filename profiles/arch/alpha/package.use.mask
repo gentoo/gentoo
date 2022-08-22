@@ -443,10 +443,6 @@ net-im/telepathy-connection-managers sipe
 # Missing keywords, bug #478254
 >=gnome-base/gnome-3.8 classic
 
-# Mark Wright <gienah@gentoo.org> (2013-10-26)
-# template-haskell not yet available
-dev-haskell/dataenc test
-
 # Pacho Ramos <pacho@gentoo.org> (2013-07-20)
 # Keywords pending, bug #476710
 >=gnome-base/gnome-extra-apps-3.8 games
