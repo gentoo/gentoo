@@ -18,7 +18,7 @@ DESCRIPTION="Stand-alone build of libbpf from the Linux kernel"
 HOMEPAGE="https://github.com/libbpf/libbpf"
 
 LICENSE="GPL-2 LGPL-2.1 BSD-2"
-SLOT="0/${PV}"
+SLOT="0/$(ver_cut 1-2)"
 IUSE="static-libs"
 
 DEPEND="
