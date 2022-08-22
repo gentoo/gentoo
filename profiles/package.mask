@@ -481,7 +481,6 @@ dev-haskell/lens-family
 dev-haskell/lens-family-core
 dev-haskell/lens-family-th
 dev-haskell/lens-simple
-dev-haskell/lhs2tex
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
