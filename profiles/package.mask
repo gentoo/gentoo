@@ -488,7 +488,6 @@ dev-haskell/linear
 dev-haskell/list
 dev-haskell/listlike
 dev-haskell/logict-state
-dev-haskell/lrucache
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
