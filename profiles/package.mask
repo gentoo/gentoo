@@ -322,16 +322,6 @@ dev-haskell/chaselev-deque
 # Removal: 2022-08-23
 dev-go/golint
 
-# Sam James <sam@gentoo.org> (2022-07-22)
-# Monolithic mask for dev-haskell/* packages which have no reverse dependencies,
-# are broken, or severely out of date. The aim is to have the Haskell overlay
-# (::haskell) be the place for development packages and only have packages
-# needed for end-user applications in ::gentoo, as the status quo has
-# proven to be unsustainable. More up-to-date versions of these packages
-# are available in ::haskell.
-# Removal on 2022-08-22.
-dev-haskell/ac-ppm
-
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
 # Masked for removal in 30 days.
