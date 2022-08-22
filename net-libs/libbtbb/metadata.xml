@@ -7,6 +7,5 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">greatscottgadgets/libbtbb</remote-id>
-		<remote-id type="sourceforge">libbtbb</remote-id>
 	</upstream>
 </pkgmetadata>
