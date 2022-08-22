@@ -417,7 +417,6 @@ dev-haskell/fixed
 dev-haskell/fmlist
 dev-haskell/geniplate-mirror
 dev-haskell/gio
-dev-haskell/git
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
