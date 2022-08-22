@@ -362,7 +362,6 @@ dev-haskell/bytes
 dev-haskell/bytestring-mmap
 dev-haskell/bytestring-show
 dev-haskell/bzlib
-dev-haskell/cairo
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
