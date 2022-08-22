@@ -406,7 +406,6 @@ dev-haskell/ekg-json
 dev-haskell/enumerator
 dev-haskell/equivalence
 dev-haskell/esqueleto
-dev-haskell/exact-pi
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
