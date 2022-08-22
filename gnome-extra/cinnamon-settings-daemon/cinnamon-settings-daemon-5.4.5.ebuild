@@ -11,7 +11,7 @@ DESCRIPTION="Cinnamon's settings daemon"
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cinnamon-settings-daemon"
 SRC_URI="https://github.com/linuxmint/cinnamon-settings-daemon/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2+"
+LICENSE="GPL-2+ LGPL-2+ LGPL-2.1 LGPL-2.1+ MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="+colord cups input_devices_wacom smartcard systemd"
