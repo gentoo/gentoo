@@ -434,7 +434,6 @@ dev-haskell/half
 dev-haskell/hamlet
 dev-haskell/happstack-server
 dev-haskell/harp
-dev-haskell/haskell-src
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
