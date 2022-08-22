@@ -473,7 +473,6 @@ dev-haskell/language-css
 dev-haskell/language-dot
 dev-haskell/language-ecmascript
 dev-haskell/language-glsl
-dev-haskell/language-lua
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
