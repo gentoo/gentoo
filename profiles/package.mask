@@ -391,7 +391,6 @@ dev-haskell/data-endian
 dev-haskell/data-hash
 dev-haskell/dataenc
 dev-haskell/date-cache
-dev-haskell/deepseq-generics
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
