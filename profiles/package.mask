@@ -412,7 +412,6 @@ dev-haskell/failure
 dev-haskell/fclabels
 dev-haskell/fgl-arbitrary
 dev-haskell/file-location
-dev-haskell/filestore
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
