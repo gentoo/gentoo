@@ -5,8 +5,8 @@ EAPI=8
 
 TOOLCHAIN_PATCH_SUFFIX="xz"
 TOOLCHAIN_PATCH_DEV="sam"
-PATCH_GCC_VER="10.4.0"
-MUSL_GCC_VER="10.4.0"
+PATCH_GCC_VER="10.5.0"
+MUSL_GCC_VER="10.5.0"
 
 if [[ $(ver_cut 3) == 9999 ]] ; then
 	MY_PV_2=$(ver_cut 2)
