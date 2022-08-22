@@ -3,11 +3,11 @@
 
 EAPI=8
 
-TOOLCHAIN_PATCH_SUFFIX="xz"
 TOOLCHAIN_PATCH_DEV="sam"
+TOOLCHAIN_PATCH_SUFFIX="xz"
 #TOOLCHAIN_GCC_RC=1
 PATCH_GCC_VER="10.4.0"
-PATCH_VER="2"
+PATCH_VER="3"
 MUSL_VER="1"
 MUSL_GCC_VER="10.4.0"
 
@@ -43,8 +43,6 @@ RDEPEND=""
 BDEPEND="${CATEGORY}/binutils"
 
 src_prepare() {
-	eapply "${FILESDIR}"/${P}-glibc-2.36.patch
-
 	local p upstreamed_patches=(
 		# add them here
 	)
