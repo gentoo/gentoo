@@ -355,7 +355,6 @@ dev-haskell/bitwise
 dev-haskell/blaze-builder-conduit
 dev-haskell/blaze-textual
 dev-haskell/boolean
-dev-haskell/boundedchan
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
