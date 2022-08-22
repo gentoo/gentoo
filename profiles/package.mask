@@ -428,7 +428,6 @@ dev-haskell/graphviz
 dev-haskell/gsasl
 dev-haskell/gtk
 dev-haskell/gtk2hs-buildtools
-dev-haskell/gtk3
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
