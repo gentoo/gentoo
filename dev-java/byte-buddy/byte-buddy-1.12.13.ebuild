@@ -133,7 +133,7 @@ src_test() {
 		net.bytebuddy.pool.TypePoolDefaultMethodDescriptionTest	# 39 tests
 		# v1.12.13
 		net.bytebuddy.build.CachedReturnPluginTest	# 44 tests
-		net.bytebuddy.build.CachedReturnPluginOtherTest	# 4 tests 
+		net.bytebuddy.build.CachedReturnPluginOtherTest	# 4 tests
 	)
 	java-pkg-simple_src_test
 }
