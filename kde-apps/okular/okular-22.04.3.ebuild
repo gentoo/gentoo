@@ -96,12 +96,47 @@ src_configure() {
 }
 
 src_test() {
-	# mainshelltest hangs, chmgeneratortest fails, bug #603116
-	# parttest hangs, bug #641728, annotationtoolbartest fails, KDE-Bug #429640
-	# epubgeneratortest and signunsignedfieldtest fail, whatever. bug #852749
-	local myctestargs=(
-		-E "(mainshelltest|chmgeneratortest|parttest|annotationtoolbartest|epubgeneratortest|signunsignedfieldtest)"
+	local bad_tests=(
+		# annotationtoolbartest fails, KDE-Bug #429640
+		annotationtoolbartest
+		# mainshelltest hangs, chmgeneratortest fails, bug #603116
+		chmgeneratortest
+		mainshelltest
+		# parttest hangs, bug #641728
+		parttest
+		# epubgeneratortest and signunsignedfieldtest fail, whatever. bug #852749
+		epubgeneratortest
+		signunsignedfieldtest
 	)
-
+	# Many Okular tests require Okular to be installed
+	# See https://invent.kde.org/graphics/okular/-/issues/75#note_508616 and https://bugs.gentoo.org/653618#c11
+	if ! has_version kde-apps/okular; then
+		bad_tests+=(
+			addremoveannotationtest
+			annotationstest
+			annotationtoolbartest
+			calculatetexttest
+			documenttest
+			editannotationcontentstest
+			editformstest
+			epubgeneratortest
+			formattest
+			keystroketest
+			kjsfunctionstest
+			mainshelltest
+			modifyannotationpropertiestest
+			searchtest
+			signatureformtest
+			signunsignedfieldtest
+			translateannotationtest
+			visibilitytest
+		)
+		ewarn "Many tests for ${PN} are disabled because ${PN} is reqired to be installed for them to succeed."
+		ewarn "See https://invent.kde.org/graphics/okular/-/issues/75#note_508616 and https://bugs.gentoo.org/653618#c11"
+	fi
+	bad_tests_formatted="$( IFS='|'; echo "${bad_tests[*]}" )"
+	local myctestargs=(
+		-E "(${bad_tests_formatted})"
+	)
 	ecm_src_test
 }
