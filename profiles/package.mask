@@ -382,7 +382,6 @@ dev-haskell/cpu
 dev-haskell/crypto
 dev-haskell/crypto-numbers
 dev-haskell/crypto-pubkey
-dev-haskell/crypto-random-api
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
