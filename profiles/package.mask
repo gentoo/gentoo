@@ -445,7 +445,6 @@ dev-haskell/hex
 dev-haskell/hexpat
 dev-haskell/highlighting-kate
 dev-haskell/hit
-dev-haskell/hoauth2
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
