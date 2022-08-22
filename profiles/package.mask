@@ -400,7 +400,6 @@ dev-haskell/double-conversion
 dev-haskell/edisonapi
 dev-haskell/edisoncore
 dev-haskell/editline
-dev-haskell/ekg
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
