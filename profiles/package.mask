@@ -380,7 +380,6 @@ dev-haskell/configfile
 dev-haskell/control-monad-loop
 dev-haskell/cpu
 dev-haskell/crypto
-dev-haskell/crypto-numbers
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
