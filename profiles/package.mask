@@ -410,7 +410,6 @@ dev-haskell/exact-pi
 dev-haskell/executable-path
 dev-haskell/failure
 dev-haskell/fclabels
-dev-haskell/fgl-arbitrary
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
