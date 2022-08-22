@@ -389,7 +389,6 @@ dev-haskell/data-accessor
 dev-haskell/data-binary-ieee754
 dev-haskell/data-endian
 dev-haskell/data-hash
-dev-haskell/dataenc
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
