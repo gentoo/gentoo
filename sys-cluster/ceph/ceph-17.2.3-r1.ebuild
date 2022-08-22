@@ -41,7 +41,7 @@ DEPEND="
 	app-arch/bzip2:=
 	app-arch/lz4:=
 	app-arch/snappy:=
-	|| ( >=app-arch/snappy-1.1.9-r1 <app-arch/snappy-1.1.9 )
+	>=app-arch/snappy-1.1.9-r1
 	app-arch/zstd:=
 	app-shells/bash:0
 	app-misc/jq:=
@@ -99,7 +99,7 @@ DEPEND="
 	rdma? ( sys-cluster/rdma-core:= )
 	spdk? ( dev-util/cunit )
 	sqlite? ( dev-db/sqlite:= )
-	system-boost? ( >=dev-libs/boost-1.72:=[threads(+),context,python,${PYTHON_USEDEP}] )
+	system-boost? ( >=dev-libs/boost-1.72:=[threads(+),context,python,${PYTHON_USEDEP},zlib] )
 	uring? ( sys-libs/liburing:= )
 	xfs? ( sys-fs/xfsprogs:= )
 	zbd? ( sys-block/libzbd:= )
