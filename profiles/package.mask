@@ -493,7 +493,6 @@ dev-haskell/maccatcher
 dev-haskell/mersenne-random-pure64
 dev-haskell/mime
 dev-haskell/mime-mail
-dev-haskell/minisat
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
