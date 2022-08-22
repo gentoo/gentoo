@@ -1,9 +1,0 @@
-diff --git a/Network/HTTP/Attoparsec.hs b/Network/HTTP/Attoparsec.hs
-index ec464d0..37f9983 100644
---- a/Network/HTTP/Attoparsec.hs
-+++ b/Network/HTTP/Attoparsec.hs
-@@ -7,3 +7,3 @@ module Network.HTTP.Attoparsec
- where
--import Network.HTTP.Types.Header
-+import Network.HTTP.Types.Header hiding (parseByteRanges)
- 
