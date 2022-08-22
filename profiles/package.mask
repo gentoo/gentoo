@@ -340,7 +340,6 @@ dev-haskell/arithmoi
 dev-haskell/arrows
 dev-haskell/ascii-progress
 dev-haskell/attoparsec-conduit
-dev-haskell/attoparsec-enumerator
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
