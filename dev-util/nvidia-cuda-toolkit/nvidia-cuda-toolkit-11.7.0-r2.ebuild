@@ -27,6 +27,7 @@ RDEPEND="
 	>=x11-drivers/nvidia-drivers-450.80.02
 	nsight? (
 		dev-libs/libpfm
+		dev-libs/wayland
 		|| (
 			dev-libs/openssl-compat:1.1.1
 			=dev-libs/openssl-1.1.1*
