@@ -450,7 +450,6 @@ dev-haskell/hps
 dev-haskell/hs-bibutils
 dev-haskell/hs3
 dev-haskell/hsb2hs
-dev-haskell/hspec-smallcheck
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
