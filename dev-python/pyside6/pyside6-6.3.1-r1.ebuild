@@ -98,6 +98,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${P}-no-strip.patch"
+	"${FILESDIR}/${P}-fix-designer-plugin-install-location.patch"
 )
 
 src_configure() {
