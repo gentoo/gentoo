@@ -10,7 +10,7 @@ SRC_URI="https://dl.suckless.org/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="
 	media-libs/libjpeg-turbo
