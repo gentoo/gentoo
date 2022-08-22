@@ -40,7 +40,7 @@ DEPEND="
 	app-arch/bzip2:=
 	app-arch/lz4:=
 	app-arch/snappy:=
-	|| ( >=app-arch/snappy-1.1.9-r1 <app-arch/snappy-1.1.9 )
+	>=app-arch/snappy-1.1.9-r1
 	app-arch/zstd:=
 	app-shells/bash:0
 	app-misc/jq:=
@@ -92,7 +92,7 @@ DEPEND="
 	rdma? ( sys-cluster/rdma-core:= )
 	spdk? ( dev-util/cunit )
 	sqlite? ( dev-db/sqlite:= )
-	system-boost? ( >=dev-libs/boost-1.72:=[threads(+),context,python,${PYTHON_USEDEP}] )
+	system-boost? ( >=dev-libs/boost-1.72:=[threads(+),context,python,${PYTHON_USEDEP},zlib] )
 	!system-boost? ( $(python_gen_impl_dep '' 3.8 3.9) )
 	uring? ( sys-libs/liburing:= )
 	xfs? ( sys-fs/xfsprogs:= )
@@ -218,6 +218,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-16.2.7-string-includes.patch"
 	"${FILESDIR}/ceph-17.2.0-fuse3.patch"
 	"${FILESDIR}/ceph-16.2.9-python310.patch"
+	"${FILESDIR}/ceph-16.2.10-gcc12.patch"
 )
 
 check-reqs_export_vars() {
