@@ -331,7 +331,6 @@ dev-go/golint
 # are available in ::haskell.
 # Removal on 2022-08-22.
 dev-haskell/ac-ppm
-dev-haskell/aeson-compat
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
