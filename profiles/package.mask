@@ -348,7 +348,6 @@ dev-haskell/binary-instances
 dev-haskell/binary-tagged
 dev-haskell/biocore
 dev-haskell/biofasta
-dev-haskell/biosff
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
