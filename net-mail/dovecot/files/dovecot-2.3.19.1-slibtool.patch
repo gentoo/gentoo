@@ -1,0 +1,65 @@
+Upstream-commit: https://github.com/dovecot/core/commit/d5f5cd32bafc18a28a7edbe1dbe559f8abe55323
+
+From d5f5cd32bafc18a28a7edbe1dbe559f8abe55323 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <timo.sirainen@open-xchange.com>
+Date: Mon, 25 Jul 2022 19:47:34 +0300
+Subject: [PATCH] lib-index: Makefile.am - Fix double-linking of
+ mail-index-util.o
+
+This fixes linking with slibtool.
+---
+ src/lib-index/Makefile.am | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/src/lib-index/Makefile.am b/src/lib-index/Makefile.am
+index f203201bf7..a4af01715b 100644
+--- a/src/lib-index/Makefile.am
++++ b/src/lib-index/Makefile.am
+@@ -79,10 +79,13 @@ test_programs = \
+ noinst_PROGRAMS = $(test_programs)
+ 
+ test_libs = \
+-	mail-index-util.lo \
+ 	../lib-test/libtest.la \
+ 	../lib/liblib.la
+ 
++test_minimal_libs = \
++	mail-index-util.lo \
++	$(test_libs)
++
+ test_deps = $(noinst_LTLIBRARIES) $(test_libs)
+ 
+ test_mail_cache_SOURCES = test-mail-cache-common.c test-mail-cache.c
+@@ -114,19 +117,19 @@ test_mail_index_sync_ext_LDADD = $(noinst_LTLIBRARIES) $(test_libs)
+ test_mail_index_sync_ext_DEPENDENCIES = $(test_deps)
+ 
+ test_mail_index_transaction_finish_SOURCES = test-mail-index-transaction-finish.c
+-test_mail_index_transaction_finish_LDADD = mail-index-transaction-finish.lo $(test_libs)
++test_mail_index_transaction_finish_LDADD = mail-index-transaction-finish.lo $(test_minimal_libs)
+ test_mail_index_transaction_finish_DEPENDENCIES = $(test_deps)
+ 
+ test_mail_index_transaction_update_SOURCES = test-mail-index-transaction-update.c
+-test_mail_index_transaction_update_LDADD = mail-index-transaction-update.lo $(test_libs)
++test_mail_index_transaction_update_LDADD = mail-index-transaction-update.lo $(test_minimal_libs)
+ test_mail_index_transaction_update_DEPENDENCIES = $(test_deps)
+ 
+ test_mail_index_write_SOURCES = test-mail-index-write.c
+-test_mail_index_write_LDADD = mail-index-write.lo $(test_libs)
++test_mail_index_write_LDADD = mail-index-write.lo $(test_minimal_libs)
+ test_mail_index_write_DEPENDENCIES = $(test_deps)
+ 
+ test_mail_transaction_log_append_SOURCES = test-mail-transaction-log-append.c
+-test_mail_transaction_log_append_LDADD = mail-transaction-log-append.lo $(test_libs)
++test_mail_transaction_log_append_LDADD = mail-transaction-log-append.lo $(test_minimal_libs)
+ test_mail_transaction_log_append_DEPENDENCIES = $(test_deps)
+ 
+ test_mail_transaction_log_file_SOURCES = test-mail-transaction-log-file.c
+@@ -134,7 +137,7 @@ test_mail_transaction_log_file_LDADD = $(noinst_LTLIBRARIES) $(test_libs)
+ test_mail_transaction_log_file_DEPENDENCIES = $(test_deps)
+ 
+ test_mail_transaction_log_view_SOURCES = test-mail-transaction-log-view.c
+-test_mail_transaction_log_view_LDADD = mail-transaction-log-view.lo $(test_libs)
++test_mail_transaction_log_view_LDADD = mail-transaction-log-view.lo $(test_minimal_libs)
+ test_mail_transaction_log_view_DEPENDENCIES = $(test_deps)
+ 
+ check-local:
