@@ -8,4 +8,7 @@
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
+	<use>
+		<flag name="pim">Enable WKS publishing support using <pkg>kde-apps/kmail</pkg></flag>
+	</use>
 </pkgmetadata>
