@@ -375,7 +375,6 @@ dev-haskell/classy-prelude
 dev-haskell/cmark
 dev-haskell/cmark-gfm
 dev-haskell/comonad-transformers
-dev-haskell/comonads-fd
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
