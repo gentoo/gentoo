@@ -345,7 +345,6 @@ dev-haskell/authenticate
 dev-haskell/base-noprelude
 dev-haskell/basic-prelude
 dev-haskell/binary-instances
-dev-haskell/binary-tagged
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
