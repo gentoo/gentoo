@@ -367,7 +367,6 @@ dev-haskell/cereal-vector
 dev-haskell/cgi
 dev-haskell/chasingbottoms
 dev-haskell/chimera
-dev-haskell/chunked-data
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
