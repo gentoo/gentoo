@@ -333,7 +333,6 @@ dev-go/golint
 dev-haskell/ac-ppm
 dev-haskell/aeson-compat
 dev-haskell/aeson-qq
-dev-haskell/alex-tools
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
