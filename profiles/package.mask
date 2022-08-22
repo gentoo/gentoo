@@ -351,7 +351,6 @@ dev-haskell/biofasta
 dev-haskell/biosff
 dev-haskell/bitarray
 dev-haskell/bits-atomic
-dev-haskell/bitwise
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
