@@ -439,7 +439,6 @@ dev-haskell/haskell-src-exts-util
 dev-haskell/haxml
 dev-haskell/hcg-minus
 dev-haskell/hcodecs
-dev-haskell/hdbc-mysql
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
