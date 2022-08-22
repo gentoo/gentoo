@@ -59,6 +59,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# fails to complie with -flto (bug #860417)
+	filter-lto
+
 	local mycmakeargs=(
 		-DWSJT_GENERATE_DOCS="$(usex doc)"
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
