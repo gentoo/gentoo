@@ -1,7 +1,0 @@
---- a/src/ID3/Type/Tag.hs
-+++ b/src/ID3/Type/Tag.hs
-@@ -89,3 +89,3 @@ getActualSize t = (footerSize t) + (framesSize (t^.frames)) + (extHSize t)
- framesSize :: Map FrameID ID3Frame -> FrameSize
--framesSize fs = Map.fold (\fr x -> fr^.frHeader^.frSize + 10 + x) 0 fs
-+framesSize fs = Map.foldr (\fr x -> fr^.frHeader^.frSize + 10 + x) 0 fs
- footerSize :: ID3Tag -> Integer
