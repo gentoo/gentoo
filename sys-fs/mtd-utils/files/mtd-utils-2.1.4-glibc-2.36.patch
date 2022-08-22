@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/864346
+
+X-Git-Url: https://git.infradead.org/mtd-utils.git/blobdiff_plain/a315011bd3c237660436e0c796743d61acf4a7b6..ac98b3fc7cb9c122bea4b5d1d351727eb4ea0bac:/tests/fs-tests/lib/tests.c
+
+diff --git a/tests/fs-tests/lib/tests.c b/tests/fs-tests/lib/tests.c
+index d1a2e0c..3db0426 100644
+--- a/tests/fs-tests/lib/tests.c
++++ b/tests/fs-tests/lib/tests.c
+@@ -35,7 +35,6 @@
+ #include <sys/vfs.h>
+ #include <sys/mount.h>
+ #include <sys/statvfs.h>
+-#include <linux/fs.h>
+ #include <linux/jffs2.h>
+ 
+ #include "tests.h"
+
