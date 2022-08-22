@@ -35,7 +35,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_configure() {
-	local mycmakeargs=( -DBUILD_SHARED_LIBS=OFF )
+	local mycmakeargs=(
+		-DBUILD_SHARED_LIBS=OFF
+		-DQt=Qt5
+	)
 	cmake_src_configure
 }
 
