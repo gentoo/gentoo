@@ -464,7 +464,6 @@ dev-haskell/http-reverse-proxy
 dev-haskell/icalendar
 dev-haskell/iconv
 dev-haskell/idiii
-dev-haskell/idna
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
