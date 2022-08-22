@@ -358,7 +358,6 @@ dev-haskell/boolean
 dev-haskell/boundedchan
 dev-haskell/boxes
 dev-haskell/bytedump
-dev-haskell/bytes
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
