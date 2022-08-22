@@ -67,6 +67,7 @@ go_arch() {
 	case "${tc_arch}" in
 		x86)	echo 386;;
 		x64-*)	echo amd64;;
+		loong)	echo loong64;;
 		ppc64) [[ $(tc-endian $@) = big ]] && echo ppc64 || echo ppc64le ;;
 		riscv) echo riscv64 ;;
 		s390) echo s390x ;;
