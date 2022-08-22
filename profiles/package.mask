@@ -422,7 +422,6 @@ dev-haskell/gitrev
 dev-haskell/glib
 dev-haskell/gluraw
 dev-haskell/glut
-dev-haskell/gnuidn
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
