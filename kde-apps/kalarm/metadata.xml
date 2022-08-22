@@ -9,6 +9,7 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 	<use>
+		<flag name="pim">Enable birthday import, email functions etc. using <pkg>kde-apps/akonadi</pkg></flag>
 		<flag name="speech">Enable text-to-speech support</flag>
 	</use>
 </pkgmetadata>
