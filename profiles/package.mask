@@ -397,7 +397,6 @@ dev-haskell/djinn-ghc
 dev-haskell/djinn-lib
 dev-haskell/dlist-instances
 dev-haskell/double-conversion
-dev-haskell/edisonapi
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
