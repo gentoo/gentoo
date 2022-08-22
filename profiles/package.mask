@@ -394,7 +394,6 @@ dev-haskell/date-cache
 dev-haskell/deepseq-generics
 dev-haskell/dictionary-sharing
 dev-haskell/djinn-ghc
-dev-haskell/djinn-lib
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
