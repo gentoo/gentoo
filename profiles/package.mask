@@ -460,7 +460,6 @@ dev-haskell/htf
 dev-haskell/http-attoparsec
 dev-haskell/http-client-conduit
 dev-haskell/http-client-multipart
-dev-haskell/http-reverse-proxy
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
