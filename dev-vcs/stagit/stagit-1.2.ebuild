@@ -9,7 +9,7 @@ SRC_URI="https://codemadness.org/releases/stagit/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="dev-libs/libgit2:="
 DEPEND="${RDEPEND}"
