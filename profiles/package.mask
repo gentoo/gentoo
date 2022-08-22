@@ -458,7 +458,6 @@ dev-haskell/hsql-sqlite3
 dev-haskell/hstringtemplate
 dev-haskell/htf
 dev-haskell/http-attoparsec
-dev-haskell/http-client-conduit
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
