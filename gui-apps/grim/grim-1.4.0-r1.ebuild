@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/emersion/${PN}.git"
 else
 	SRC_URI="https://github.com/emersion/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="MIT"
@@ -21,12 +21,12 @@ SLOT="0"
 IUSE="+man jpeg"
 
 DEPEND="
-	>=dev-libs/wayland-protocols-1.14
 	dev-libs/wayland
+	>=dev-libs/wayland-protocols-1.14
 	media-libs/libpng
 	x11-libs/pixman
-	jpeg? ( virtual/jpeg )"
-
+	jpeg? ( media-libs/libjpeg-turbo )
+"
 RDEPEND="${DEPEND}"
 BDEPEND="man? ( app-text/scdoc )"
 

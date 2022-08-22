@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>bkohler@gentoo.org</email>
+		<name>Ben Kohler</name>
+	</maintainer>
+	<longdescription>
+		<pkg>sys-apps/cpu-x</pkg> is similar to CPU-Z (Windows), but, unlike
+		the latter, it is a Free and Open Source software, written in C and
+		designed for GNU/Linux. It can also be used in graphical mode by using
+		<pkg>x11-libs/gtk+</pkg>, than in text-based mode with the use of
+		<pkg>sys-libs/ncurses</pkg>.
+	</longdescription>
+	<longdescription lang="fr">
+		<pkg>sys-apps/cpu-x</pkg> est similaire à CPU-Z (Windows), mais,
+		contrairement à ce dernier, c'est un logiciel Libre et Open Source,
+		écrit en C et concu pour GNU/Linux. Il peut être aussi bien utilisé en
+		mode graphique en utlisant <pkg>x11-libs/gtk+</pkg>, qu'en mode textuel
+		avec l'utilisation de <pkg>sys-libs/ncurses</pkg>.
+	</longdescription>
+	<use>
+		<flag name="force-libstatgrab">Use <pkg>sys-libs/libstatgrab</pkg> to instead of <pkg>sys-process/procps</pkg></flag>
+		<flag name="cpu">Use the <pkg>dev-libs/libcpuid</pkg> library for CPU info</flag>
+		<flag name="gpu">Use the <pkg>media-libs/glfw</pkg> library for GPU info</flag>
+		<flag name="pci">Use the <pkg>sys-apps/pciutils</pkg> library for PCI info</flag>
+		<flag name="opencl">Use the <pkg>virtual/opencl</pkg> library</flag>
+	</use>
+	<use lang="fr">
+		<flag name="bandwidth">Intégrer bandwidth</flag>
+		<flag name="dmidecode">Intégrer dmidecode</flag>
+		<flag name="force-libstatgrab">Utiliser <pkg>sys-libs/libstatgrab</pkg> à la place de <pkg>sys-process/procps</pkg></flag>
+		<flag name="libcpuid">Utiliser la bibliothèque <pkg>dev-libs/libcpuid</pkg></flag>
+		<flag name="libglfw">Utiliser la bibliothèque <pkg>media-libs/glfw</pkg></flag>
+		<flag name="libpci">Utiliser la bibliothèque <pkg>sys-apps/pciutils</pkg></flag>
+		<flag name="opencl">Utiliser la bibliothèque <pkg>virtual/opencl</pkg></flag>
+	</use>
+	<upstream>
+		<maintainer status="active">
+			<name>X0rg</name>
+		</maintainer>
+		<changelog>https://raw.githubusercontent.com/X0rg/CPU-X/master/ChangeLog</changelog>
+		<doc>https://github.com/X0rg/CPU-X/wiki/</doc>
+		<bugs-to>https://github.com/X0rg/CPU-X/issues/</bugs-to>
+		<remote-id type="github">X0rg/CPU-X</remote-id>
+	</upstream>
+</pkgmetadata>

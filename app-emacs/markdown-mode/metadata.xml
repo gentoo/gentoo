@@ -10,4 +10,7 @@
 		<name>Gentoo GNU Emacs project</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">rblevin/markdown-mode</remote-id>
+	</upstream>
 </pkgmetadata>

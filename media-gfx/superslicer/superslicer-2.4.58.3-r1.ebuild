@@ -22,7 +22,7 @@ IUSE="test"
 
 RESTRICT="test"
 
-# No dep on sci-libs/libigl, in-tree version cannot build 
+# No dep on sci-libs/libigl, in-tree version cannot build
 # static library currently. Using bundled one.
 RDEPEND="
 	dev-cpp/eigen:3
@@ -66,7 +66,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 src_unpack() {
 	default
 
-	mv slic3r-profiles-*/* ${S}/resources/profiles/ || die
+	mv slic3r-profiles-*/* "${S}"/resources/profiles/ || die
 }
 
 src_configure() {

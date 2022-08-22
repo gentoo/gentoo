@@ -18,6 +18,8 @@ IUSE="libopts static-libs"
 RDEPEND=">=dev-scheme/guile-2.0:=
 	dev-libs/libxml2"
 DEPEND="${RDEPEND}"
+# TODO: investigate & drop this!
+BDEPEND="sys-apps/which"
 
 # We don't pass the flag explicitly, bug #796776.
 # Let's fix it upstream after next autogen release if it happens.

@@ -1,0 +1,26 @@
+--- a/Makefile
++++ b/Makefile
+@@ -18,21 +18,11 @@
+ #    along with pipeworks; if not, write to the Free Software
+ #    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ 
+-CC= gcc -Wall
++CFLAGS += -Wall
+ 
+ all:  pipeworks
+ 
+-filesize.o:  Makefile filesize.h filesize.c
+-	$(CC) -c -o filesize.o filesize.c
+-
+-timemanip.o:  Makefile timemanip.h timemanip.c
+-	$(CC) -c -o timemanip.o timemanip.c
+-
+-pipeworks.o:  Makefile pipeworks.c filesize.h
+-	$(CC) -c -o pipeworks.o pipeworks.c
+-
+-pipeworks:  pipeworks.o filesize.o timemanip.o
+-	$(CC) -o pipeworks pipeworks.o filesize.o timemanip.o
++pipeworks: filesize.o timemanip.o
+ 
+ clean:
+ 	rm -f *.o *~ pipeworks

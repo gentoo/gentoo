@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,8 +32,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="doc? ( app-doc/doxygen )"
 
 DOCS=( README.md )
-
-PATCHES=( "${FILESDIR}/${P}-mandir.patch" ) # TODO: GNUInstallDirs
 
 src_compile() {
 	cmake_src_compile

@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/rcs/${P}.tar.lz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
 IUSE="doc"
 
 RDEPEND="sys-apps/diffutils
@@ -47,7 +47,6 @@ src_install() {
 
 	if use doc; then
 		emake -C doc html
-		rm -R "${ED}"/usr/share/doc/rcs || die
 		mv doc/rcs.html doc/html || die
 		dodoc -r doc/html/
 	fi

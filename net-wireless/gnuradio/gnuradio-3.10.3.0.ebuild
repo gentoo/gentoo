@@ -114,10 +114,7 @@ RDEPEND="${PYTHON_DEPS}
 	zeromq? ( >=net-libs/zeromq-2.1.11:= )
 "
 
-#That's right, it can't build if gnuradio 3.8 is installed
-#Both due to build failure, and then file collision due to bundled volk
 DEPEND="${RDEPEND}
-	!!<net-wireless/gnuradio-3.10
 	app-text/docbook-xml-dtd:4.2
 	$(python_gen_cond_dep 'dev-python/pybind11[${PYTHON_USEDEP}]')
 	$(python_gen_cond_dep 'dev-python/pygccxml[${PYTHON_USEDEP}]')
@@ -132,6 +129,11 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-util/cppunit-1.9.14 )
 	zeromq? ( net-libs/cppzmq )
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-3.10.3.0-fix-fmt-v9.patch" #858659
+	"${FILESDIR}/${PN}-3.10.3.0-fix-gcc12.patch" #858665
+)
 
 src_prepare() {
 	xdg_environment_reset #534582

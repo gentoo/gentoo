@@ -45,7 +45,7 @@ BDEPEND="virtual/pkgconfig
 DOCS=( README.md picom.sample.conf )
 
 python_check_deps() {
-	has_version -b "dev-python/xcffib[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/xcffib[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {

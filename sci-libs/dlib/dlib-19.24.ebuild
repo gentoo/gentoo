@@ -32,10 +32,15 @@ RDEPEND="
 	sqlite? ( dev-db/sqlite:3 )
 	X? ( x11-libs/libX11 )"
 DEPEND="${RDEPEND}"
-BDEPEND="python? ( test? (
-	dev-python/pytest[${PYTHON_USEDEP}]
-	dev-python/pip[${PYTHON_USEDEP}]
-) )"
+BDEPEND="
+	python? (
+		${DISTUTILS_DEPS}
+		test? (
+			dev-python/pytest[${PYTHON_USEDEP}]
+			dev-python/pip[${PYTHON_USEDEP}]
+		)
+	)
+"
 
 DOCS=( docs/README.txt )
 

@@ -1,9 +1,7 @@
-# Copyright 2018-2021 Gentoo Authors
+# Copyright 2018-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
-CMAKE_ECLASS=cmake
 
 inherit cmake-multilib flag-o-matic
 
@@ -13,7 +11,7 @@ SRC_URI="mirror://mariadb/connector-odbc-${PV}/${P}-src.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/3.1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="ssl"
 
 S="${S}-src"

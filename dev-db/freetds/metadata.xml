@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="cpe">cpe:/a:freetds:freetds</remote-id>
+		<remote-id type="github">FreeTDS/freetds</remote-id>
 	</upstream>
 </pkgmetadata>

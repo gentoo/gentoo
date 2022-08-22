@@ -33,7 +33,7 @@ DEPEND="${COMMON_DEPEND}
 BDEPEND="virtual/pkgconfig
 	doc? ( dev-util/gtk-doc )"
 
-REQUIRED_USE="gles2? ( drm )"
+REQUIRED_USE="drm? ( gles2 )"
 
 PATCHES=( "${FILESDIR}"/kmscon-9.0.0-systemd-path-fix.patch )
 

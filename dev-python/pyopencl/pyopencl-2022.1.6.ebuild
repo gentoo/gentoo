@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_USE_PEP517=setuptools
 
-inherit distutils-r1
+inherit distutils-r1 multiprocessing
 
 DESCRIPTION="Python wrapper for OpenCL"
 HOMEPAGE="https://mathema.tician.de/software/pyopencl/
@@ -29,15 +29,10 @@ RDEPEND="${COMMON}
 	>=dev-python/pytools-2021.2.7[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
 	>=dev-python/pybind11-2.5.0[${PYTHON_USEDEP}]
-	<dev-python/pybind11-2.10.0[${PYTHON_USEDEP}]"
+	<dev-python/pybind11-2.10.0[${PYTHON_USEDEP}]
+	test? ( dev-libs/pocl )"
 
-# The test suite fails if there are no OpenCL platforms available, and
-# even if there is one (which requires the presence of both an OpenCL
-# runtime *and* hardware supported by it - simply emerging any runtime
-# is not enough) the vast majority of tests end up skipped because by
-# default the portage user hasn't got sufficient privileges to talk
-# to the GPU.
-RESTRICT="test"
+distutils_enable_tests pytest
 
 python_configure_all() {
 	local myconf=()
@@ -47,6 +42,18 @@ python_configure_all() {
 
 	"${EPYTHON}" configure.py \
 		"${myconf[@]}"
+}
+
+python_test() {
+	# Use dev-libs/pocl for testing; ignore any other OpenCL devices that might be present
+	local -x PYOPENCL_TEST="portable:pthread"
+	# Set the number of threads to match MAKEOPTS
+	local -x POCL_MAX_PTHREAD_COUNT=$(makeopts_jobs)
+	# Change to the 'test' directory so that python does not try to import pyopencl from the source directory
+	# (Importing from the source directory fails, because the compiled '_cl' module is only in the build directory)
+	pushd test >/dev/null || die
+	epytest
+	popd >/dev/null || die
 }
 
 python_install_all() {

@@ -16,4 +16,7 @@
 		unstructured grids. You can also mix and match them in HDF files
 		according to your needs.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">HDFGroup/hdf4</remote-id>
+	</upstream>
 </pkgmetadata>

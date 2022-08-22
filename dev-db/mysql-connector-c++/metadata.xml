@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<use>
-	<flag name="gcov">Build coverage support</flag>
-	<flag name="legacy">Build the legacy 1.x API as well as the DevX API</flag>
-</use>
-<maintainer type="project">
-	<email>mysql-bugs@gentoo.org</email>
-	<name>MySQL</name>
-</maintainer>
+	<maintainer type="project">
+		<email>mysql-bugs@gentoo.org</email>
+		<name>MySQL</name>
+	</maintainer>
+	<use>
+		<flag name="gcov">Build coverage support</flag>
+		<flag name="legacy">Build the legacy 1.x API as well as the DevX API</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">mysql/mysql-connector-cpp</remote-id>
+	</upstream>
 </pkgmetadata>

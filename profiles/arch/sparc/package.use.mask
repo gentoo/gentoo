@@ -1,13 +1,13 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-08-15)
+# deps not keyworded
+dev-util/pkgcheck emacs
+
 # Sam James <sam@gentoo.org> (2022-07-27)
 # sys-devel/lld is not keyworded on sparc
 >=dev-lang/spidermonkey-78 lto
-
-# Matthew Smith <matthew@gentoo.org> (2022-07-10)
-# Needs unkeyworded app-doc/halibut
->=net-misc/putty-0.77 doc
 
 # Matt Turner <mattst88@gentoo.org> (2022-06-25)
 # net-libs/libqrtr-glib not keyworded
@@ -536,9 +536,9 @@ media-libs/phonon gstreamer vlc
 
 # Robin H Johnson <robbat2@gentoo.org> (2012-11-01)
 # MySQL 5.5 wants systemtap, tcmalloc & jemalloc
->=dev-db/mysql-5.5 systemtap tcmalloc jemalloc
->=dev-db/mariadb-5.5 systemtap tcmalloc jemalloc
->=dev-db/percona-server-5.5 tcmalloc jemalloc
+>=dev-db/mysql-5.5 systemtap jemalloc
+>=dev-db/mariadb-5.5 systemtap jemalloc
+>=dev-db/percona-server-5.5 jemalloc
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-06-24)
 # Requires libpcre with jit

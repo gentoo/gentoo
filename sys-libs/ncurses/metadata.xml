@@ -21,5 +21,6 @@
 	<upstream>
 		<changelog>https://invisible-island.net/ncurses/NEWS.html</changelog>
 		<remote-id type="cpe">cpe:/a:gnu:ncurses</remote-id>
+		<remote-id type="github">ThomasDickey/ncurses-snapshots</remote-id>
 	</upstream>
 </pkgmetadata>

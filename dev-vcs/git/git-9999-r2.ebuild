@@ -258,7 +258,7 @@ src_prepare() {
 
 	if use prefix ; then
 		# bug #757309
-		eapply "${FILESDIR}"/git-2.31.0-darwin-prefix-gettext.patch
+		eapply "${FILESDIR}"/git-2.37.2-darwin-prefix-gettext.patch
 	fi
 
 	sed -i \

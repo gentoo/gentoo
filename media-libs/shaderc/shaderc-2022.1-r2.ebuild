@@ -1,12 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-
-CMAKE_ECLASS=cmake
-
 inherit cmake-multilib python-any-r1
 
 DESCRIPTION="Collection of tools, libraries and tests for shader compilation"
@@ -17,7 +14,7 @@ S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 IUSE="doc test"
 
 RDEPEND="
@@ -27,15 +24,15 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	>=dev-util/spirv-headers-1.3.216
-	doc? ( dev-ruby/asciidoctor )
 	test? (
 		dev-cpp/gtest
 		$(python_gen_any_dep 'dev-python/nose[${PYTHON_USEDEP}]')
 	)
 "
+BDEPEND="doc? ( dev-ruby/asciidoctor )"
 
 PATCHES=(
-		"${FILESDIR}"/${PN}-2020.4-fix-build.patch
+	"${FILESDIR}"/${PN}-2020.4-fix-build.patch
 )
 
 # https://github.com/google/shaderc/issues/470

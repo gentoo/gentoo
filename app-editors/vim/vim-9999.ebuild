@@ -6,10 +6,10 @@ EAPI=8
 # Please bump with app-editors/vim-core and app-editors/gvim
 
 VIM_VERSION="9.0"
-LUA_COMPAT=( lua5-1 luajit )
+LUA_COMPAT=( lua5-{1..4} luajit )
 PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="threads(+)"
-USE_RUBY="ruby26 ruby27"
+USE_RUBY="ruby27 ruby30 ruby31"
 
 inherit vim-doc flag-o-matic bash-completion-r1 lua-single python-single-r1 ruby-single desktop xdg-utils
 
@@ -293,7 +293,9 @@ src_test() {
 	# Too sensitive to leaked environment variables.
 	# - Test_term_mouse_multiple_clicks_to_select_mode
 	# Hangs.
-	export TEST_SKIP_PAT='\(Test_expand_star_star\|Test_exrc\|Test_job_tty_in_out\|Test_spelldump_bang\|Test_fuzzy_completion_env\|Test_term_mouse_multiple_clicks_to_select_mode\)'
+	# - Test_spelldump
+	# Hangs.
+	export TEST_SKIP_PAT='\(Test_expand_star_star\|Test_exrc\|Test_job_tty_in_out\|Test_spelldump_bang\|Test_fuzzy_completion_env\|Test_term_mouse_multiple_clicks_to_select_mode\|Test_spelldump\)'
 
 	emake -j1 -C src/testdir nongui
 }

@@ -16,7 +16,8 @@ HOMEPAGE="https://github.com/simonmar/monad-par"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
+IUSE="chaselev"
 
 RDEPEND=">=dev-haskell/abstract-deque-0.1.4:=[profile?]
 	dev-haskell/abstract-par:=[profile?]

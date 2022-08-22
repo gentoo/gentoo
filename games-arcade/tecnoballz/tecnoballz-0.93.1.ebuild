@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools desktop
 
 DESCRIPTION="An exciting Brick Breaker"
-HOMEPAGE="http://linux.tlk.fr/games/TecnoballZ/"
+HOMEPAGE="https://linux.tlk.fr/games/TecnoballZ/"
 SRC_URI="https://github.com/brunonymous/tecnoballz/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

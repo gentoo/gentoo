@@ -45,6 +45,7 @@ PATCHES=(
 	"${WORKDIR}"/${P}-patches/
 	"${FILESDIR}/${P}-dmalloc.patch"
 	"${FILESDIR}/${P}-nfsv4-mount.patch"
+	"${FILESDIR}/${P}-mount_conflict.patch"
 )
 
 pkg_setup() {

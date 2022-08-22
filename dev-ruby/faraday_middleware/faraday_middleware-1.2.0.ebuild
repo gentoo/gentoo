@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby26 ruby27"
+USE_RUBY="ruby26 ruby27 ruby30"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -46,17 +46,21 @@ ruby_add_bdepend "test? (
 
 all_ruby_prepare() {
 	sed -i -e '/\(cane\|parallel\|rubocop\|simplecov\)/ s:^:#:' \
-		-e '/rspec/ s/>=/~>/' \
 		-e "/addressable/ s/, '< 2.4'//" \
 		-e "/rack/ s/< 2/< 2.3/" \
 		-e "/rack-cache/ s/, '< 1.3'//" \
 		-e "/simple_oauth/ s/, '< 0.3'//" \
+		-e "/safe_yaml/ s:^:#:" \
 		-e "/webmock/ s/2.3/3.0/" Gemfile || die
 
 	# Avoid unneeded dependency on git
 	sed -i -e '/git ls-files/d' ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	sed -i -e '1irequire "fileutils"' spec/spec_helper.rb || die
+
+	# Avoid safe_yaml specs since they are broken with newer ruby versions
+	# and safe_yaml is not mandatory for using faraday_middleware.
+	rm -f spec/unit/parse_yaml_spec.rb || die
 }
 
 each_ruby_test() {

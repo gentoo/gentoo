@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/strukturag/libheif/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="ISO/IEC 23008-12:2017 HEIF file format decoder and encoder"
@@ -22,7 +22,12 @@ IUSE="+aom gdk-pixbuf go rav1e test +threads x265"
 REQUIRED_USE="test? ( go )"
 RESTRICT="!test? ( test )"
 
-BDEPEND="test? ( dev-lang/go )"
+BDEPEND="
+	test? (
+		<dev-cpp/catch-3
+		dev-lang/go
+	)
+"
 DEPEND="
 	media-libs/dav1d:=[${MULTILIB_USEDEP}]
 	media-libs/libde265:=[${MULTILIB_USEDEP}]
@@ -36,10 +41,19 @@ DEPEND="
 	x265? ( media-libs/x265:=[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.12.0-fix-bashism.patch
+)
+
 src_prepare() {
 	default
 
 	sed -i -e 's:-Werror::' configure.ac || die
+
+	if use test ; then
+		rm tests/catch.hpp || die
+		ln -s "${ESYSROOT}"/usr/include/catch2/catch.hpp tests/catch.hpp || die
+	fi
 
 	eautoreconf
 
@@ -57,6 +71,7 @@ multilib_src_configure() {
 		$(use_enable gdk-pixbuf)
 		$(use_enable rav1e)
 		$(use_enable threads multithreading)
+		$(use_enable test tests)
 		$(use_enable x265)
 	)
 	ECONF_SOURCE="${S}" econf "${econf_args[@]}"

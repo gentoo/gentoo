@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/dockapps"
 
-PATCHES=( ${FILESDIR}/${P}-cpp11.patch )
+PATCHES=( "${FILESDIR}"/${P}-cpp11.patch )
 DOCS=( ARTWORK README )
 
 src_prepare() {

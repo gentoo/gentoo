@@ -9,7 +9,7 @@ SRC_URI="http://dev.gentooexperimental.org/~scarabeus/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 
 DEPEND="sci-libs/colamd"
 RDEPEND="${DEPEND}"

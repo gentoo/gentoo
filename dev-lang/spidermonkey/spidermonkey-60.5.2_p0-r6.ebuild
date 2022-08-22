@@ -3,7 +3,7 @@
 
 EAPI=6
 WANT_AUTOCONF="2.1"
-inherit autotools check-reqs toolchain-funcs pax-utils mozcoreconf-v5
+inherit autotools check-reqs toolchain-funcs pax-utils mozcoreconf-v5 flag-o-matic
 
 MY_PN="mozjs"
 MY_P="${MY_PN}-${PV/_rc/.rc}"
@@ -53,6 +53,8 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-60.5.2-ia64-fix-virtual-address-length.patch"
 
 	eapply_user
+
+	append-atomic-flags # bug 688574
 
 	cd "${S}/js/src" || die
 	eautoconf old-configure.in

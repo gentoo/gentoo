@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit flag-o-matic meson
+inherit meson
 
 DESCRIPTION="EGLStream-based Wayland external platform"
 HOMEPAGE="https://github.com/NVIDIA/egl-wayland"
@@ -19,19 +19,12 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	gui-libs/eglexternalplatform
-	media-libs/libglvnd"
+	>=media-libs/libglvnd-1.3.4"
 BDEPEND="dev-util/wayland-scanner"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.6-remove-werror.patch
 )
-
-src_configure() {
-	# EGLStream is not intended for X11, always build without (bug #777558)
-	append-cppflags -DEGL_NO_X11
-
-	meson_src_configure
-}
 
 src_install() {
 	meson_src_install

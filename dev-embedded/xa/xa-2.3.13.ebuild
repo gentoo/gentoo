@@ -11,7 +11,7 @@ SRC_URI="https://www.floodgap.com/retrotech/xa/dists/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.10-Makefile.patch

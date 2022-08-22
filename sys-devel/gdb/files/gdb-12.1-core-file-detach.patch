@@ -1,0 +1,155 @@
+https://sourceware.org/git/?p=binutils-gdb.git;a=commitdiff;h=0fe74cb9ad35add9c6da4df5c9879f254d918a6a
+
+From: Pedro Alves <pedro@palves.net>
+Date: Wed, 22 Jun 2022 18:44:37 +0100
+Subject: [PATCH] Fix core-file -> detach -> crash (corefiles/29275)
+
+After loading a core file, you're supposed to be able to use "detach"
+to unload the core file.  That unfortunately regressed starting with
+GDB 11, with these commits:
+
+ 1192f124a308 - gdb: generalize commit_resume, avoid commit-resuming when threads have pending statuses
+ 408f66864a1a - detach in all-stop with threads running
+
+resulting in a GDB crash:
+
+ ...
+ Thread 1 "gdb" received signal SIGSEGV, Segmentation fault.
+ 0x0000555555e842bf in maybe_set_commit_resumed_all_targets () at ../../src/gdb/infrun.c:2899
+ 2899          if (proc_target->commit_resumed_state)
+ (top-gdb) bt
+ #0  0x0000555555e842bf in maybe_set_commit_resumed_all_targets () at ../../src/gdb/infrun.c:2899
+ #1  0x0000555555e848bf in scoped_disable_commit_resumed::reset (this=0x7fffffffd440) at ../../src/gdb/infrun.c:3023
+ #2  0x0000555555e84a0c in scoped_disable_commit_resumed::reset_and_commit (this=0x7fffffffd440) at ../../src/gdb/infrun.c:3049
+ #3  0x0000555555e739cd in detach_command (args=0x0, from_tty=1) at ../../src/gdb/infcmd.c:2791
+ #4  0x0000555555c0ba46 in do_simple_func (args=0x0, from_tty=1, c=0x55555662a600) at ../../src/gdb/cli/cli-decode.c:95
+ #5  0x0000555555c112b0 in cmd_func (cmd=0x55555662a600, args=0x0, from_tty=1) at ../../src/gdb/cli/cli-decode.c:2514
+ #6  0x0000555556173b1f in execute_command (p=0x5555565c5916 "", from_tty=1) at ../../src/gdb/top.c:699
+
+The code that crashes looks like:
+
+ static void
+ maybe_set_commit_resumed_all_targets ()
+ {
+   scoped_restore_current_thread restore_thread;
+
+   for (inferior *inf : all_non_exited_inferiors ())
+     {
+       process_stratum_target *proc_target = inf->process_target ();
+
+       if (proc_target->commit_resumed_state)
+           ^^^^^^^^^^^
+
+With 'proc_target' above being null.  all_non_exited_inferiors filters
+out inferiors that have pid==0.  We get here at the end of
+detach_command, after core_target::detach has already run, at which
+point the inferior _should_ have pid==0 and no process target.  It is
+clear it no longer has a process target, but, it still has a pid!=0
+somehow.
+
+The reason the inferior still has pid!=0, is that core_target::detach
+just unpushes, and relies on core_target::close to actually do the
+getting rid of the core and exiting the inferior.  The problem with
+that is that detach_command grabs an extra strong reference to the
+process stratum target, so the unpush_target inside
+core_target::detach doesn't actually result in a call to
+core_target::close.
+
+Fix this my moving the cleaning up the core inferior to a shared
+routine called by both core_target::close and core_target::detach.  We
+still need to cleanup the inferior from within core_file::close
+because there are paths to it that want to get rid of the core without
+going through detach.  E.g., "core-file" -> "run".
+
+This commit includes a new test added to gdb.base/corefile.exp to
+cover the "core-file core" -> "detach" scenario.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=29275
+
+Change-Id: Ic42bdd03182166b19f598428b0dbc2ce6f67c893
+--- a/gdb/corelow.c
++++ b/gdb/corelow.c
+@@ -120,6 +120,9 @@ public:
+ 
+ private: /* per-core data */
+ 
++  /* Get rid of the core inferior.  */
++  void clear_core ();
++
+   /* The core's section table.  Note that these target sections are
+      *not* mapped in the current address spaces' set of target
+      sections --- those should come only from pure executable or
+@@ -290,10 +293,8 @@ core_target::build_file_mappings ()
+ /* An arbitrary identifier for the core inferior.  */
+ #define CORELOW_PID 1
+ 
+-/* Close the core target.  */
+-
+ void
+-core_target::close ()
++core_target::clear_core ()
+ {
+   if (core_bfd)
+     {
+@@ -307,6 +308,14 @@ core_target::close ()
+ 
+       current_program_space->cbfd.reset (nullptr);
+     }
++}
++
++/* Close the core target.  */
++
++void
++core_target::close ()
++{
++  clear_core ();
+ 
+   /* Core targets are heap-allocated (see core_target_open), so here
+      we delete ourselves.  */
+@@ -592,9 +601,15 @@ core_target_open (const char *arg, int from_tty)
+ void
+ core_target::detach (inferior *inf, int from_tty)
+ {
+-  /* Note that 'this' is dangling after this call.  unpush_target
+-     closes the target, and our close implementation deletes
+-     'this'.  */
++  /* Get rid of the core.  Don't rely on core_target::close doing it,
++     because target_detach may be called with core_target's refcount > 1,
++     meaning core_target::close may not be called yet by the
++     unpush_target call below.  */
++  clear_core ();
++
++  /* Note that 'this' may be dangling after this call.  unpush_target
++     closes the target if the refcount reaches 0, and our close
++     implementation deletes 'this'.  */
+   inf->unpush_target (this);
+ 
+   /* Clear the register cache and the frame cache.  */
+--- a/gdb/testsuite/gdb.base/corefile.exp
++++ b/gdb/testsuite/gdb.base/corefile.exp
+@@ -207,6 +207,16 @@ gdb_test "up" "#\[0-9\]* *\[0-9xa-fH'\]* in .* \\(.*\\).*" "up in corefile.exp (
+ 
+ gdb_test "core" "No core file now."
+ 
++# Test that we can unload the core with the "detach" command.
++
++proc_with_prefix corefile_detach {} {
++    clean_restart $::binfile
++
++    gdb_test "core-file $::corefile" "Core was generated by .*" "load core"
++    gdb_test "detach" "No core file now\\." "detach core"
++}
++
++corefile_detach
+ 
+ # Test a run (start) command will clear any loaded core file.
+ 
+@@ -222,6 +232,8 @@ proc corefile_test_run {} {
+ 	return
+     }
+ 
++    clean_restart $::binfile
++
+     gdb_test "core-file $corefile" "Core was generated by .*" "run: load core again"
+     gdb_test "info files" "\r\nLocal core dump file:\r\n.*" "run: sanity check we see the core file"
+ 

@@ -16,7 +16,7 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.gz
 	https://dev.gentoo.org/~blueness/${PN}/${ISO}"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~x86"
 fi
 
 DESCRIPTION="Suite to build Gentoo Reference Systems"

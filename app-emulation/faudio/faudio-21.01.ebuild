@@ -1,10 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # shellcheck disable=SC2034
 EAPI=7
 
-CMAKE_ECLASS=cmake
 CMAKE_MAKEFILE_GENERATOR="emake"
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 

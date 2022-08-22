@@ -4,15 +4,12 @@ Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
 
 --- a/src/fprobe.c
 +++ b/src/fprobe.c
-@@ -1541,10 +1541,10 @@
- 	}
- 
+@@ -1543,7 +1543,7 @@
  	if (pw) {
-		if (setgroups(0, NULL) < 0) {
-			my_log(LOG_CRIT, "setgroups: %s", strerror(errno));
+ 		if (setgroups(0, NULL) < 0) {
+ 			my_log(LOG_CRIT, "setgroups: %s", strerror(errno));
 -			exit(1);
 +			//exit(1);
-		}
+ 		}
  		if (setregid(pw->pw_gid, pw->pw_gid)) {
  			my_log(LOG_CRIT, "setregid(%u): %s", pw->pw_gid, strerror(errno));
- 			exit(1);

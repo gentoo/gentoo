@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfred Persson Forsberg <cat@catcream.org> (2022-07-27)
+# Firefox does not build with these flags enabled on musl libc.
+# See bug #829033
+www-client/firefox clang pgo
+
 # Ionen Wolkens <ionen@gentoo.org (2022-06-08)
 # Depends on www-plugins/chrome-binary-plugins which is masked here.
 www-client/qutebrowser widevine
@@ -38,7 +43,6 @@ sys-apps/sysvinit nls
 # Disable some sanitizers for LLVM, see bug #753935
 # Needs libexecinfo on musl, not yet packaged
 sys-libs/compiler-rt-sanitizers gwp-asan
-<sys-libs/compiler-rt-sanitizers-13 libfuzzer
 
 # Sam James <sam@gentoo.org> (2021-11-07)
 # Broken as "error: unknown type name '_Unwind_Word'"

@@ -4,7 +4,6 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-
 DISTUTILS_USE_SETUPTOOLS=no
 
 inherit desktop distutils-r1 optfeature xdg-utils
@@ -13,7 +12,7 @@ if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64 ~arm64 ~x86"
 	SRC_URI="https://foss.heptapod.net/mercurial/${PN}/thg/-/archive/${PV}/thg-${PV}.tar.gz -> ${P}.tar.gz"
 	HG_DEPEND=">=dev-vcs/mercurial-5.9[${PYTHON_USEDEP}]
-		<dev-vcs/mercurial-6.2[${PYTHON_USEDEP}]"
+		<dev-vcs/mercurial-6.3[${PYTHON_USEDEP}]"
 	S="${WORKDIR}/thg-${PV}"
 else
 	inherit mercurial
@@ -35,7 +34,7 @@ RDEPEND="
 	dev-python/iniparse[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/PyQt5[network,svg,${PYTHON_USEDEP}]
-	>=dev-python/qscintilla-python-2.9.4[qt5(+),${PYTHON_USEDEP}]
+	>=dev-python/qscintilla-python-2.11.6[qt5(+),${PYTHON_USEDEP}]
 "
 DEPEND="
 	${RDEPEND}

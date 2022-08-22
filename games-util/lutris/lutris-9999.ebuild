@@ -3,11 +3,11 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="sqlite,threads(+)"
 DISTUTILS_SINGLE_IMPL="1"
 
-inherit distutils-r1 virtualx xdg
+inherit distutils-r1 optfeature virtualx xdg
 
 DESCRIPTION="An open source gaming platform for GNU/Linux"
 HOMEPAGE="https://lutris.net/"
@@ -26,7 +26,7 @@ else
 	fi
 fi
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+ CC0-1.0"
 SLOT="0"
 
 RDEPEND="
@@ -35,6 +35,7 @@ RDEPEND="
 	app-arch/unzip
 	$(python_gen_cond_dep '
 		dev-python/dbus-python[${PYTHON_USEDEP}]
+		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		dev-python/python-evdev[${PYTHON_USEDEP}]
@@ -50,6 +51,7 @@ RDEPEND="
 	x11-apps/xgamma
 	x11-apps/xrandr
 	x11-libs/gtk+:3[introspection]
+	x11-libs/gdk-pixbuf[jpeg]
 	x11-libs/libnotify[introspection]
 "
 
@@ -69,7 +71,10 @@ python_install_all() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
+	optfeature "running windows games through wine+DXVK/proton or other Vulkan games (plus ICD for your hardware)" media-libs/vulkan-loader
+
 	# Quote README.rst
+	elog ""
 	elog "Lutris installations are fully automated through scripts, which can"
 	elog "be written in either JSON or YAML. The scripting syntax is described"
 	elog "in ${EROOT}/usr/share/doc/${PF}/installers.rst.bz2, and is also"

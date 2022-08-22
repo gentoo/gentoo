@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+inherit flag-o-matic cmake
 
 DESCRIPTION="Neko is a high-level dynamically typed programming language"
 HOMEPAGE="https://nekovm.org/"
@@ -38,6 +38,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_configure() {
+	# -Werror=strict-aliasing warnings, bug #855641
+	filter-lto
+	append-flags -fno-strict-aliasing
+
 	local mycmakeargs=(
 		-DRUN_LDCONFIG=OFF
 		-DWITH_NEKOML=ON

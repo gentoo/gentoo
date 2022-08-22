@@ -9,7 +9,7 @@ inherit ruby-ng
 DESCRIPTION="A module to convert ISO/IEC 10646 (Unicode) string and Japanese strings"
 HOMEPAGE="http://www.yoshidam.net/Ruby.html#uconv"
 SRC_URI="http://www.yoshidam.net/${P}.tar.gz"
-LICENSE="Ruby"
+LICENSE="Ruby-BSD"
 SLOT="0"
 KEYWORDS="~amd64 ppc ppc64 x86"
 IUSE=""

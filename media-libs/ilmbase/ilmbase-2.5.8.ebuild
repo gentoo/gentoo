@@ -3,7 +3,6 @@
 
 EAPI=8
 
-CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="OpenEXR ILM Base libraries"
@@ -18,7 +17,6 @@ IUSE="large-stack static-libs test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="!media-libs/openexr:3"
-DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 DOCS=( README.md )

@@ -10,17 +10,17 @@ inherit distutils-r1
 
 DESCRIPTION="Gentoo GLEP support for docutils"
 HOMEPAGE="
-	https://github.com/mgorny/docutils-glep/
+	https://github.com/projg2/docutils-glep/
 	https://pypi.org/project/docutils-glep/
 "
 SRC_URI="
-	https://github.com/mgorny/docutils-glep/archive/v${PV}.tar.gz
+	https://github.com/projg2/docutils-glep/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 RDEPEND="
 	>=dev-python/docutils-0.10[${PYTHON_USEDEP}]

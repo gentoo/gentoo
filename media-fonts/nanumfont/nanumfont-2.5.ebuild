@@ -13,7 +13,7 @@ SRC_URI="https://github.com/naver/${PN}/releases/download/VER${PV}/${MY_PN}-${PV
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~x86"
+KEYWORDS="amd64 ~loong x86"
 IUSE=""
 RESTRICT="strip binchecks"
 

@@ -18,8 +18,10 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="sys-apps/grep[pcre]"
 DEPEND="
+	dev-util/vulkan-headers
 	media-libs/libglvnd
-	dev-util/vulkan-headers"
+	x11-base/xorg-proto
+	x11-libs/libX11"
 
 QA_SONAME="usr/lib.*/libstrangle.*" # intended for dlopen()
 

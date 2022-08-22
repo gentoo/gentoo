@@ -6,13 +6,14 @@ EAPI=8
 # Generate using https://github.com/thesamesam/sam-gentoo-scripts/blob/main/niche/generate-pkgdev-docs
 # Set to 1 if prebuilt, 0 if not
 # (the construct below is to allow overriding from env for script)
-PKGDEV_DOCS_PREBUILT=${PKGDEV_DOCS_PREBUILT:-1}
+: ${PKGDEV_DOCS_PREBUILT:=1}
+
 PKGDEV_DOCS_PREBUILT_DEV=sam
 PKGDEV_DOCS_VERSION=$(ver_cut 1-3)
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
 PKGDEV_DOCS_USEFLAG="+doc"
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 DISTUTILS_IN_SOURCE_BUILD=1
 inherit distutils-r1
 
@@ -51,19 +52,15 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	# https://github.com/pkgcore/pkgdev/blob/main/requirements/install.txt
 	RDEPEND="
-		>=dev-python/snakeoil-0.9.6[${PYTHON_USEDEP}]
+		>=dev-python/snakeoil-0.9.12[${PYTHON_USEDEP}]
 		>=dev-util/pkgcheck-0.10.0[${PYTHON_USEDEP}]
-		>=sys-apps/pkgcore-0.12.0[${PYTHON_USEDEP}]
+		>=sys-apps/pkgcore-0.12.13[${PYTHON_USEDEP}]
 	"
 fi
 
 # Uses pytest but we want to use the setup.py runner to get generated modules
 BDEPEND+="test? ( dev-python/pytest )"
 RDEPEND+="dev-vcs/git"
-
-PATCHES=(
-	"${FILESDIR}"/${P}-fix-signoff-example.patch
-)
 
 distutils_enable_sphinx doc
 distutils_enable_tests setup.py

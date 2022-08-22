@@ -3,7 +3,6 @@
 
 EAPI=7
 
-CMAKE_ECLASS="cmake"
 PYTHON_COMPAT=( python3_{8..11} )
 inherit cmake-multilib python-any-r1
 

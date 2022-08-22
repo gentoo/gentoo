@@ -1,0 +1,27 @@
+Sent upstream to gnupg-devel@ but not yet in archive.
+
+From: Sam James <sam@gentoo.org>
+Date: Mon, 15 Aug 2022 19:29:06 +0100
+Subject: [PATCH] tests/start-stop-agent: use 'command -v' instead of 'which'
+
+`which` is an external command which isn't required by POSIX.
+
+Debian and other distributions (like Gentoo!) are looking
+to drop it from their base set of packages.
+
+Switch to `command -v` which should always work instead.
+
+Note we already use `command -v` at the start of this test anyway.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/tests/start-stop-agent
++++ b/tests/start-stop-agent
+@@ -15,7 +15,7 @@ fi
+ 
+ GPG_AGENT_INFO=
+ export GPG_AGENT_INFO
+-GPG_AGENT=$(which gpg-agent)
++GPG_AGENT=$(command -v gpg-agent)
+ 
+ token=$(echo "gpgme-$(pwd)" | tr ' ' '_')
+ 

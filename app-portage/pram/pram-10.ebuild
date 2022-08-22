@@ -6,8 +6,8 @@ EAPI=7
 inherit meson
 
 DESCRIPTION="Tool to ease merging Pull Requests and git patches"
-HOMEPAGE="https://github.com/mgorny/pram"
-SRC_URI="https://github.com/mgorny/pram/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/projg2/pram"
+SRC_URI="https://github.com/projg2/pram/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

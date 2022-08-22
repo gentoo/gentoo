@@ -44,6 +44,7 @@ BDEPEND="
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
 	virtual/pkgconfig
+	htmlreport? ( ${DISTUTILS_DEPS} )
 	qt5? ( dev-qt/linguist-tools:5 )
 	test? (
 		htmlreport? (

@@ -6,12 +6,13 @@ EAPI=8
 # Generate using https://github.com/thesamesam/sam-gentoo-scripts/blob/main/niche/generate-qemu-docs
 # Set to 1 if prebuilt, 0 if not
 # (the construct below is to allow overriding from env for script)
-QEMU_DOCS_PREBUILT=${QEMU_DOCS_PREBUILT:-1}
+: ${QEMU_DOCS_PREBUILT:=1}
+
 QEMU_DOCS_PREBUILT_DEV=sam
 QEMU_DOCS_VERSION=$(ver_cut 1-3)
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
 # bug #830088
-QEMU_DOC_USEFLAG="+doc"
+QEMU_DOCS_USEFLAG="+doc"
 
 PYTHON_COMPAT=( python3_{8,9,10} )
 PYTHON_REQ_USE="ncurses,readline"
@@ -51,9 +52,9 @@ HOMEPAGE="https://www.qemu.org https://www.linux-kvm.org"
 LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
 
-[[ ${QEMU_DOCS_PREBUILT} == 1 ]] && QEMU_DOC_USEFLAG="doc"
+[[ ${QEMU_DOCS_PREBUILT} == 1 ]] && QEMU_DOCS_USEFLAG="doc"
 
-IUSE="accessibility +aio alsa bpf bzip2 capstone +caps +curl debug ${QEMU_DOC_USEFLAG}
+IUSE="accessibility +aio alsa bpf bzip2 capstone +caps +curl debug ${QEMU_DOCS_USEFLAG}
 	+fdt fuse glusterfs +gnutls gtk infiniband iscsi io-uring
 	jack jemalloc +jpeg
 	lzo multipath
@@ -300,6 +301,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.0-also-build-virtfs-proxy-helper.patch
 	"${FILESDIR}"/${P}-virtio-scsi-fixes.patch
 	"${FILESDIR}"/${P}-pci-overflow-fortify-source-3.patch
+	"${FILESDIR}"/${P}-glibc-2.36.patch
 )
 
 QA_PREBUILT="

@@ -21,12 +21,12 @@ SLOT="0"
 IUSE="+man jpeg"
 
 DEPEND="
-	>=dev-libs/wayland-protocols-1.14
 	dev-libs/wayland
+	>=dev-libs/wayland-protocols-1.14
 	media-libs/libpng
 	x11-libs/pixman
-	jpeg? ( virtual/jpeg )"
-
+	jpeg? ( media-libs/libjpeg-turbo )
+"
 RDEPEND="${DEPEND}"
 BDEPEND="man? ( app-text/scdoc )"
 

@@ -28,7 +28,7 @@ LLVM_TEST_COMPONENTS=( llvm/utils/{lit,unittest} )
 llvm.org_set_globals
 
 python_check_deps() {
-	has_version -b "dev-python/lit[${PYTHON_USEDEP}]"
+	python_has_version "~dev-python/lit-${PV}[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {

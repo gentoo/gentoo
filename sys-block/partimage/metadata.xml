@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>base-system@gentoo.org</email>
-	<name>Gentoo Base System</name>
-</maintainer>
-<use>
-	<flag name="nologin">Do not include login support when connecting partimaged</flag>
-</use>
-<upstream>
-	<remote-id type="sourceforge">partimage</remote-id>
-</upstream>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<use>
+		<flag name="nologin">Do not include login support when connecting partimaged</flag>
+	</use>
+	<upstream>
+		<remote-id type="gitlab">partimage/partimage-sources</remote-id>
+		<remote-id type="sourceforge">partimage</remote-id>
+	</upstream>
 </pkgmetadata>

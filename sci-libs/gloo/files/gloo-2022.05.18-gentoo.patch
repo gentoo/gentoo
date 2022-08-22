@@ -62,3 +62,13 @@
    endif()
  endif()
  
+--- a/gloo/transport/tcp/device.cc	2022-08-02 11:25:32.404166606 +0200
++++ b/gloo/transport/tcp/device.cc	2022-08-02 11:25:48.706963018 +0200
+@@ -12,6 +12,7 @@
+ #include <netdb.h>
+ #include <netinet/in.h>
+ #include <string.h>
++#include <array>
+ 
+ #include "gloo/common/linux.h"
+ #include "gloo/common/logging.h"

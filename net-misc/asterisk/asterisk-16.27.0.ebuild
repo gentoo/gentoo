@@ -140,7 +140,8 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	AT_M4DIR="autoconf third-party third-party/pjproject third-party/jansson" eautoreconf
+	AT_M4DIR="autoconf third-party third-party/pjproject third-party/jansson" \
+		AC_CONFIG_SUBDIRS=menuselect eautoreconf
 }
 
 src_configure() {
@@ -148,6 +149,7 @@ src_configure() {
 	local copt cstate
 
 	econf \
+		SED=sed \
 		LUA_VERSION="${ELUA#lua}" \
 		--libdir="/usr/$(get_libdir)" \
 		--localstatedir="/var" \

@@ -26,6 +26,7 @@ WARNING_R8169="CONFIG_R8169 is enabled. ${P} will not be loaded unless kernel dr
 
 PATCHES=(
 	"${FILESDIR}/r8168-8.050.02-5.18-fix.patch"
+	"${FILESDIR}/r8168-8.050.03-5.19-fix.patch"
 )
 
 pkg_setup() {

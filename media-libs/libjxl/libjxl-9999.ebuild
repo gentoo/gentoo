@@ -17,7 +17,7 @@ IUSE="gdk-pixbuf gimp210 openexr"
 
 DEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
 	dev-cpp/gflags:=[${MULTILIB_USEDEP}]
-	>=dev-cpp/highway-0.16.0[${MULTILIB_USEDEP}]
+	>=dev-cpp/highway-1.0.0[${MULTILIB_USEDEP}]
 	media-libs/giflib:=[${MULTILIB_USEDEP}]
 	media-libs/libpng:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]

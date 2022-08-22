@@ -1,0 +1,52 @@
+From fe4438ee999938da3b6f67b4dd53d6676d67c3e7 Mon Sep 17 00:00:00 2001
+From: Arthur Zamarin <arthurzam@gentoo.org>
+Date: Fri, 29 Jul 2022 14:06:03 +0300
+Subject: [PATCH] Disable coverage testing support inside test venvs
+
+---
+ tests/conftest.py | 15 ---------------
+ 1 file changed, 15 deletions(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index c9ab292..e7c14df 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -403,13 +403,6 @@ def wheel_install(tmpdir_factory: pytest.TempPathFactory, common_wheels: Path) -
+     return _common_wheel_editable_install(tmpdir_factory, common_wheels, "wheel")
+ 
+ 
+-@pytest.fixture(scope="session")
+-def coverage_install(
+-    tmpdir_factory: pytest.TempPathFactory, common_wheels: Path
+-) -> Path:
+-    return _common_wheel_editable_install(tmpdir_factory, common_wheels, "coverage")
+-
+-
+ def install_pth_link(
+     venv: VirtualEnvironment, project_name: str, lib_dir: Path
+ ) -> None:
+@@ -424,7 +417,6 @@ def virtualenv_template(
+     tmpdir_factory: pytest.TempPathFactory,
+     pip_src: Path,
+     setuptools_install: Path,
+-    coverage_install: Path,
+ ) -> Iterator[VirtualEnvironment]:
+ 
+     venv_type: VirtualEnvironmentType
+@@ -451,13 +443,6 @@ def virtualenv_template(
+         [os.fspath(venv.bin / "python"), "setup.py", "-q", "develop"], cwd=pip_editable
+     )
+ 
+-    # Install coverage and pth file for executing it in any spawned processes
+-    # in this virtual environment.
+-    install_pth_link(venv, "coverage", coverage_install)
+-    # zz prefix ensures the file is after easy-install.pth.
+-    with open(venv.site / "zz-coverage-helper.pth", "a") as f:
+-        f.write("import coverage; coverage.process_startup()")
+-
+     # Drop (non-relocatable) launchers.
+     for exe in os.listdir(venv.bin):
+         if not (
+-- 
+2.35.1
+

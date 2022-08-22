@@ -1,0 +1,185 @@
+From 7af7586c5d244d07f77d49e5fdc739e6e8e54816 Mon Sep 17 00:00:00 2001
+From: Joey Hess <joeyh@joeyh.name>
+Date: Mon, 18 Oct 2021 14:35:30 -0400
+Subject: [PATCH] build with aeson 2
+
+---
+ Aws/DynamoDb/Commands/Table.hs      |  4 +--
+ Aws/DynamoDb/Commands/UpdateItem.hs |  5 ++--
+ Aws/DynamoDb/Core.hs                | 39 +++++++++++++++--------------
+ aws.cabal                           |  2 +-
+ 4 files changed, 26 insertions(+), 24 deletions(-)
+
+diff --git a/Aws/DynamoDb/Commands/Table.hs b/Aws/DynamoDb/Commands/Table.hs
+index 5fb42e0..a5fe025 100644
+--- a/Aws/DynamoDb/Commands/Table.hs
++++ b/Aws/DynamoDb/Commands/Table.hs
+@@ -35,9 +35,9 @@ module Aws.DynamoDb.Commands.Table
+ import           Control.Applicative
+ import           Data.Aeson            ((.!=), (.:), (.:?), (.=))
+ import qualified Data.Aeson            as A
++import qualified Data.Aeson.KeyMap     as KM
+ import qualified Data.Aeson.Types      as A
+ import           Data.Char             (toUpper)
+-import qualified Data.HashMap.Strict   as M
+ import           Data.Scientific       (Scientific)
+ import qualified Data.Text             as T
+ import           Data.Time
+@@ -281,7 +281,7 @@ data TableDescription
+ 
+ instance A.FromJSON TableDescription where
+     parseJSON = A.withObject "Table must be an object" $ \o -> do
+-        t <- case (M.lookup "Table" o, M.lookup "TableDescription" o) of
++        t <- case (KM.lookup "Table" o, KM.lookup "TableDescription" o) of
+                 (Just (A.Object t), _) -> return t
+                 (_, Just (A.Object t)) -> return t
+                 _ -> fail "Table description must have key 'Table' or 'TableDescription'"
+diff --git a/Aws/DynamoDb/Commands/UpdateItem.hs b/Aws/DynamoDb/Commands/UpdateItem.hs
+index 0d94a59..1152b5a 100644
+--- a/Aws/DynamoDb/Commands/UpdateItem.hs
++++ b/Aws/DynamoDb/Commands/UpdateItem.hs
+@@ -31,6 +31,7 @@ module Aws.DynamoDb.Commands.UpdateItem
+ -------------------------------------------------------------------------------
+ import           Control.Applicative
+ import           Data.Aeson
++import qualified Data.Aeson.Key      as AK
+ import           Data.Default
+ import qualified Data.Text           as T
+ import           Prelude
+@@ -91,9 +92,9 @@ instance ToJSON AttributeUpdates where
+     toJSON = object . map mk . getAttributeUpdates
+         where
+           mk AttributeUpdate { auAction = UDelete, auAttr = auAttr } =
+-            (attrName auAttr) .= object
++            (AK.fromText (attrName auAttr)) .= object
+             ["Action" .= UDelete]
+-          mk AttributeUpdate { .. } = (attrName auAttr) .= object
++          mk AttributeUpdate { .. } = AK.fromText (attrName auAttr) .= object
+             ["Value" .= (attrVal auAttr), "Action" .= auAction]
+ 
+ 
+diff --git a/Aws/DynamoDb/Core.hs b/Aws/DynamoDb/Core.hs
+index 1c116d3..b9a6cc4 100644
+--- a/Aws/DynamoDb/Core.hs
++++ b/Aws/DynamoDb/Core.hs
+@@ -128,6 +128,8 @@ import           Control.Monad.Trans.Resource (throwM)
+ import qualified Crypto.Hash                  as CH
+ import           Data.Aeson
+ import qualified Data.Aeson                   as A
++import qualified Data.Aeson.Key               as AK
++import qualified Data.Aeson.KeyMap            as KM
+ import           Data.Aeson.Types             (Pair, parseEither)
+ import qualified Data.Aeson.Types             as A
+ import qualified Data.Attoparsec.ByteString   as AttoB (endOfInput)
+@@ -141,7 +143,6 @@ import           Data.Conduit
+ import           Data.Conduit.Attoparsec      (sinkParser)
+ import           Data.Default
+ import           Data.Function                (on)
+-import qualified Data.HashMap.Strict          as HM
+ import           Data.Int
+ import           Data.IORef
+ import           Data.List
+@@ -536,7 +537,7 @@ instance ToJSON PrimaryKey where
+     toJSON (PrimaryKey h (Just r)) =
+       let Object p1 = toJSON h
+           Object p2 = toJSON r
+-      in Object (p1 `HM.union` p2)
++      in Object (p1 `KM.union` p2)
+ 
+ instance FromJSON PrimaryKey where
+     parseJSON p = do
+@@ -544,8 +545,8 @@ instance FromJSON PrimaryKey where
+        case length l of
+           1 -> return $ head l 
+           _ -> fail "Unable to parse PrimaryKey"     
+-      where listPKey p'= map (\(txt,dval)-> hk txt dval)
+-                          . HM.toList <$> parseJSON p'
++      where listPKey p'= map (\(k,dval)-> hk (AK.toText k) dval)
++                          . KM.toList <$> parseJSON p'
+ 
+ 
+ -- | A key-value pair
+@@ -661,9 +662,9 @@ instance ToJSON Attribute where
+ -------------------------------------------------------------------------------
+ -- | Parse a JSON object that contains attributes
+ parseAttributeJson :: Value -> A.Parser [Attribute]
+-parseAttributeJson (Object v) = mapM conv $ HM.toList v
++parseAttributeJson (Object v) = mapM conv $ KM.toList v
+     where
+-      conv (k, o) = Attribute k <$> parseJSON o
++      conv (k, o) = Attribute (AK.toText k) <$> parseJSON o
+ parseAttributeJson _ = error "Attribute JSON must be an Object"
+ 
+ 
+@@ -674,7 +675,7 @@ attributesJson as = object $ map attributeJson as
+ 
+ -- | Convert into JSON pair
+ attributeJson :: Attribute -> Pair
+-attributeJson (Attribute nm v) = nm .= v
++attributeJson (Attribute nm v) = AK.fromText nm .= v
+ 
+ 
+ -------------------------------------------------------------------------------
+@@ -962,7 +963,7 @@ conditionsJson key (Conditions op es) = b ++ a
+     where
+       a = if null es
+           then []
+-          else [key .= object (map conditionJson es)]
++          else [AK.fromText key .= object (map conditionJson es)]
+ 
+       b = if length (take 2 es) > 1
+           then ["ConditionalOperator" .= String (rendCondOp op) ]
+@@ -1046,7 +1047,7 @@ renderCondOp c = case c of
+ 
+ 
+ conditionJson :: Condition -> Pair
+-conditionJson Condition{..} = condAttr .= condOp
++conditionJson Condition{..} = AK.fromText condAttr .= condOp
+ 
+ 
+ instance ToJSON CondOp where
+@@ -1076,12 +1077,12 @@ data ConsumedCapacity = ConsumedCapacity {
+ 
+ 
+ instance FromJSON ConsumedCapacity where
+-    parseJSON (Object v) = ConsumedCapacity
+-      <$> v .: "CapacityUnits"
+-      <*> (HM.toList <$> v .:? "GlobalSecondaryIndexes" .!= mempty)
+-      <*> (HM.toList <$> v .:? "LocalSecondaryIndexes" .!= mempty)
+-      <*> (v .:? "Table" >>= maybe (return Nothing) (.: "CapacityUnits"))
+-      <*> v .: "TableName"
++    parseJSON (Object o) = ConsumedCapacity
++      <$> o .: "CapacityUnits"
++      <*> (map (\(k, v) -> (AK.toText k, v)) . KM.toList <$> o .:? "GlobalSecondaryIndexes" .!= mempty)
++      <*> (map (\(k, v) -> (AK.toText k, v)) . KM.toList <$> o .:? "LocalSecondaryIndexes" .!= mempty)
++      <*> (o .:? "Table" >>= maybe (return Nothing) (.: "CapacityUnits"))
++      <*> o .: "TableName"
+     parseJSON _ = fail "ConsumedCapacity must be an Object."
+ 
+ 
+@@ -1115,8 +1116,8 @@ data ItemCollectionMetrics = ItemCollectionMetrics {
+ 
+ 
+ instance FromJSON ItemCollectionMetrics where
+-    parseJSON (Object v) = ItemCollectionMetrics
+-      <$> (do m <- v .: "ItemCollectionKey"
+-              return $ head $ HM.toList m)
+-      <*> v .: "SizeEstimateRangeGB"
++    parseJSON (Object o) = ItemCollectionMetrics
++      <$> (do m <- o .: "ItemCollectionKey"
++              return $ (\(k, v) -> (AK.toText k, v)) $ head $ KM.toList m)
++      <*> o .: "SizeEstimateRangeGB"
+     parseJSON _ = fail "ItemCollectionMetrics must be an Object."
+
+
+--- a/aws.cabal      2022-07-25 08:47:06.270139909 +1000
++++ b/aws.cabal   2022-07-25 08:47:28.497479783 +1000
+@@ -35,7 +35,7 @@
+   Default: True
+ 
+ Library
+-  build-depends: aeson <1.6
++  build-depends: aeson >= 2.0
+ 
+   Exposed-modules:
+                        Aws

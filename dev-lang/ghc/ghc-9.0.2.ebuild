@@ -32,8 +32,10 @@ BIN_PV=${PV}
 arch_binaries="$arch_binaries amd64? ( https://eidetic.codes/ghc-bin-${PV}-x86_64-pc-linux-gnu.tbz2 )"
 #arch_binaries="$arch_binaries ia64?  ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ia64-fixed-fiw.tbz2 )"
 #arch_binaries="$arch_binaries ppc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc.tbz2 )"
-#arch_binaries="$arch_binaries ppc64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc64.tbz2 )"
-arch_binaries="$arch_binaries ppc64? ( !big-endian? ( https://github.com/matoro/ghc/releases/download/${PV}/ghc-bin-${PV}-powerpc64le-unknown-linux-gnu.tar.gz ) )"
+arch_binaries="$arch_binaries ppc64? (
+	big-endian? ( https://github.com/matoro/ghc/releases/download/${PV}/ghc-bin-${PV}-powerpc64-unknown-linux-gnu.tar.gz )
+	!big-endian? ( https://github.com/matoro/ghc/releases/download/${PV}/ghc-bin-${PV}-powerpc64le-unknown-linux-gnu.tar.gz )
+)"
 #arch_binaries="$arch_binaries sparc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-sparc.tbz2 )"
 arch_binaries="$arch_binaries x86? ( https://eidetic.codes/ghc-bin-${PV}-i686-pc-linux-gnu.tbz2 )"
 
@@ -49,9 +51,7 @@ yet_binary() {
 		amd64) return 0 ;;
 		#ia64) return 0 ;;
 		#ppc) return 0 ;;
-		ppc64)
-			use big-endian || return 0
-			;;
+		ppc64) return 0 ;;
 		#sparc) return 0 ;;
 		x86) return 0 ;;
 		*) return 1 ;;
@@ -403,6 +403,11 @@ src_unpack() {
 src_prepare() {
 	ghc_setup_cflags
 
+	# ghc-9.0.2 release anomaly
+	# https://www.mail-archive.com/search?l=ghc-devs@haskell.org&q=subject:%22Re%5C%3A+%5C%5BHaskell%5C%5D+%5C%5BANNOUNCE%5C%5D+GHC+9.0.2+released%22&o=newest&f=1
+	# https://src.fedoraproject.org/rpms/ghc9.0/blob/rawhide/f/ghc9.0.spec#_327
+	rm -rf "libraries/containers/containers/dist-install" || die
+
 	if ! use ghcbootstrap && [[ ${CHOST} != *-darwin* && ${CHOST} != *-solaris* ]]; then
 		# Modify the wrapper script from the binary tarball to use GHC_PERSISTENT_FLAGS.
 		# See bug #313635.
@@ -424,6 +429,7 @@ src_prepare() {
 	# ffi headers don't get included in the binpkg for some reason
 	for f in "${WORKDIR}/usr/$(get_libdir)/${PN}-${BIN_PV}/include/"{ffi.h,ffitarget.h}
 	do
+		mkdir -p "$(dirname "${f}")"
 		[[ -e "${f}" ]] || ln -sf "$($(tc-getPKG_CONFIG) --cflags-only-I libffi | sed "s/-I//g" | tr -d " ")/$(basename "${f}")" "${f}" || die
 	done
 
@@ -500,30 +506,14 @@ src_prepare() {
 
 		eapply "${FILESDIR}"/${PN}-9.0.2-CHOST-prefix.patch
 		eapply "${FILESDIR}"/${PN}-9.0.2-darwin.patch
-
-		# Incompatible with ghc-9.0.2-modorigin-semigroup.patch
-		# Below patch should not be needed by ghc-9.2
-		#eapply "${FILESDIR}"/${PN}-9.0.2-modorigin.patch
-
-		# ModUnusable pretty-printing should include the reason
-		#eapply "${FILESDIR}/${PN}-9.0.2-verbose-modunusable.patch"
-
 		# Fixes panic when compiling some packages
 		# https://github.com/gentoo-haskell/gentoo-haskell/issues/1250#issuecomment-1044257595
 		# https://gitlab.haskell.org/ghc/ghc/-/issues/21097
 		eapply "${FILESDIR}/${PN}-9.0.2-modorigin-semigroup.patch"
-
 		# Needed for testing with python-3.10
 		use test && eapply "${FILESDIR}/${PN}-9.0.2-fix-tests-python310.patch"
-
-		#needs a port?
-		#eapply "${FILESDIR}"/${PN}-8.8.1-revert-CPP.patch
 		eapply "${FILESDIR}"/${PN}-8.10.1-allow-cross-bootstrap.patch
-		#eapply "${FILESDIR}"/${PN}-8.10.3-C99-typo-ac270.patch
-
-		# a bunch of crosscompiler patches
-		# needs newer version:
-		#eapply "${FILESDIR}"/${PN}-8.2.1_rc1-hp2ps-cross.patch
+		eapply "${FILESDIR}"/${PN}-9.0.2-disable-unboxed-arrays.patch
 
 		# mingw32 target
 		pushd "${S}/libraries/Win32"

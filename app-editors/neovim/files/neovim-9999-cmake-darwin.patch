@@ -1,6 +1,6 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -80,23 +80,6 @@ set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:${DEPS_PREFIX}/lib/pkgconfig")
+@@ -80,33 +80,6 @@ set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:${DEPS_PREFIX}/lib/pkgconfig")
  # used for check_c_compiler_flag
  include(CheckCCompilerFlag)
  
@@ -12,6 +12,16 @@
 -  # up with conflicting versions.  So, let's make them more of a priority having
 -  # them be included as one of the first places to look for dependencies.
 -  list(APPEND CMAKE_PREFIX_PATH /sw /opt/local)
+-
+-  # If the macOS deployment target is not set manually (via $MACOSX_DEPLOYMENT_TARGET),
+-  # fall back to local system version. Needs to be done both here and in cmake.deps.
+-  if(NOT CMAKE_OSX_DEPLOYMENT_TARGET)
+-    execute_process(COMMAND sw_vers -productVersion
+-                    OUTPUT_VARIABLE MACOS_VERSION
+-                    OUTPUT_STRIP_TRAILING_WHITESPACE)
+-    set(CMAKE_OSX_DEPLOYMENT_TARGET "${MACOS_VERSION}")
+-  endif()
+-  message("Using deployment target ${CMAKE_OSX_DEPLOYMENT_TARGET}")
 -
 -  # Work around some old, broken detection by CMake for knowing when to use the
 -  # isystem flag.  Apple's compilers have supported this for quite some time
@@ -42,7 +52,7 @@
    # The LuaJIT build does not like being passed multiple `-arch` flags
 --- a/src/nvim/CMakeLists.txt
 +++ b/src/nvim/CMakeLists.txt
-@@ -205,10 +205,6 @@ get_directory_property(gen_includes INCLUDE_DIRECTORIES)
+@@ -181,10 +181,6 @@ get_directory_property(gen_includes INCLUDE_DIRECTORIES)
  foreach(gen_include ${gen_includes} ${LUA_PREFERRED_INCLUDE_DIRS})
    list(APPEND gen_cflags "-I${gen_include}")
  endforeach()

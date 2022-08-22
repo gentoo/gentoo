@@ -13,7 +13,7 @@
 		the mask entries) and remove old unmasks.
 	</longdescription>
 	<upstream>
-		<bugs-to>https://github.com/mgorny/diffmask/issues/</bugs-to>
-		<remote-id type="github">mgorny/diffmask</remote-id>
+		<bugs-to>https://github.com/projg2/diffmask/issues/</bugs-to>
+		<remote-id type="github">projg2/diffmask</remote-id>
 	</upstream>
 </pkgmetadata>

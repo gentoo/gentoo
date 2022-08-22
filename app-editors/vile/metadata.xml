@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<changelog>https://invisible-island.net/vile/CHANGES.html</changelog>
+		<remote-id type="github">ThomasDickey/vile-snapshots</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,6 +26,7 @@ ruby_add_rdepend "dev-ruby/concurrent-ruby:1"
 ruby_add_bdepend "test? (
 	>=dev-ruby/activesupport-5.1
 	dev-ruby/bundler
+	>=dev-ruby/minitest-5.14:5
 	>=dev-ruby/mocha-1.7.0
 	dev-ruby/test_declarative )"
 

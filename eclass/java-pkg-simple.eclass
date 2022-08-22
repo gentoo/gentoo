@@ -344,9 +344,6 @@ java-pkg-simple_prepend_resources() {
 java-pkg-simple_src_compile() {
 	local sources=sources.lst classes=target/classes apidoc=target/api moduleinfo
 
-	# auto generate classpath
-	java-pkg_gen-cp JAVA_GENTOO_CLASSPATH
-
 	# do not compile if we decide to install binary jar
 	if has binary ${JAVA_PKG_IUSE} && use binary; then
 		# register the runtime dependencies
@@ -357,6 +354,9 @@ java-pkg-simple_src_compile() {
 		cp "${DISTDIR}"/${JAVA_BINJAR_FILENAME} ${JAVA_JAR_FILENAME}\
 			|| die "Could not copy the binary jar file to ${S}"
 		return 0
+	else
+		# auto generate classpath
+		java-pkg_gen-cp JAVA_GENTOO_CLASSPATH
 	fi
 
 	# gather sources

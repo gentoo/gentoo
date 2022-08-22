@@ -1,0 +1,39 @@
+https://gitlab.haskell.org/ghc/packages/containers/-/commit/f5a511f1ff2cf16e710342948792cb8d7576e27c
+https://bugs.gentoo.org/865311
+
+From f5a511f1ff2cf16e710342948792cb8d7576e27c Mon Sep 17 00:00:00 2001
+From: Peter Trommler <ptrommler@acm.org>
+Date: Fri, 31 Dec 2021 18:20:45 +0100
+Subject: [PATCH] Disable unboxed arrays on big-endian
+
+Unboxed arrays are broken on big-endian architectures, see
+https://gitlab.haskell.org/ghc/ghc/-/issues/16998 for details.
+This patch makes the use of unboxed arrays conditional on
+little-endian architecture.
+
+Fixes #673
+---
+ libraries/containers/containers/include/containers.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/libraries/containers/containers/include/containers.h b/libraries/containers/containers/include/containers.h
+index cd201ca3..fc2a0e84 100644
+--- a/libraries/containers/containers/include/containers.h	2022-08-16 07:50:42.844217960 +0200
++++ b/libraries/containers/containers/include/containers.h	2022-08-16 07:50:49.327446486 +0200
+@@ -35,7 +35,13 @@
+ 
+ #ifdef __GLASGOW_HASKELL__
+ # define USE_ST_MONAD 1
++#ifndef WORDS_BIGENDIAN
++/*
++ * Unboxed arrays are broken on big-endian architectures.
++ * See https://gitlab.haskell.org/ghc/ghc/-/issues/16998
++ */
+ # define USE_UNBOXED_ARRAYS 1
+ #endif
++#endif
+ 
+ #endif
+-- 
+GitLab
+

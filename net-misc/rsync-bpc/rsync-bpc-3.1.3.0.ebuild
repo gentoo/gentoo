@@ -9,7 +9,7 @@ SRC_URI="https://github.com/backuppc/rsync-bpc/releases/download/${PV}/${P}.tar.
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="virtual/ssh"
 DEPEND="${RDEPEND}"

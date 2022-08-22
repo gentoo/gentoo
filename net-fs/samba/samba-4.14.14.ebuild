@@ -22,10 +22,10 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="acl addc addns ads ceph client cluster cups debug fam glusterfs
-gpg iprint json ldap ntvfs pam profiling-data python quota +regedit selinux
-snapper spotlight syslog system-heimdal +system-mitkrb5 systemd test winbind
-zeroconf"
+IUSE="acl addc addns ads ceph client cluster cpu_flags_x86_aes cups debug fam
+glusterfs gpg iprint json ldap ntvfs pam profiling-data python quota +regedit
+selinux snapper spotlight syslog system-heimdal +system-mitkrb5 systemd test
+winbind zeroconf"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	addc? ( python json winbind )
@@ -143,6 +143,7 @@ BDEPEND="${PYTHON_DEPS}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-pam.patch"
+	"${FILESDIR}/ldb-2.5.2-skip-wav-tevent-check.patch"
 )
 
 #CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
@@ -209,6 +210,7 @@ multilib_src_configure() {
 		--nopyc
 		--nopyo
 		--without-winexe
+		--accel-aes=$(usex cpu_flags_x86_aes intelaesni none)
 		$(multilib_native_use_with acl acl-support)
 		$(multilib_native_usex addc '' '--without-ad-dc')
 		$(multilib_native_use_with addns dnsupdate)
@@ -328,15 +330,4 @@ multilib_src_test() {
 
 pkg_postinst() {
 	tmpfiles_process samba.conf
-
-	if [[ -z ${REPLACING_VERSIONS} ]] ; then
-		elog "Be aware that this release contains the best of all of Samba's"
-		elog "technology parts, both a file server (that you can reasonably expect"
-		elog "to upgrade existing Samba 3.x releases to) and the AD domain"
-		elog "controller work previously known as 'samba4'."
-		elog
-	fi
-	elog "For further information and migration steps make sure to read "
-	elog "https://samba.org/samba/history/${P}.html "
-	elog "https://wiki.samba.org/index.php/Samba4/HOWTO "
 }

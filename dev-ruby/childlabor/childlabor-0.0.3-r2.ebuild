@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby26 ruby27"
+USE_RUBY="ruby26 ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_TASK_TEST=""
@@ -24,14 +24,18 @@ IUSE="test"
 
 RUBY_S="${PN}-${COMMIT_ID}"
 
-ruby_add_bdepend "test? ( dev-ruby/rspec:2 )"
+ruby_add_bdepend "test? ( dev-ruby/rspec:3 )"
 
 all_ruby_prepare() {
 	# Avoid failing spec. The signals work, but the stdout handling
 	# doesn't seem to play nice with portage.
 	sed -i -e '/can send signals/,/^  end/ s:^:#:' spec/task_spec.rb || die
+
+	# Rspec 3 compatibility
+	sed -i -e 's/Spec::Runner/RSpec/' spec/spec_helper.rb || die
+	sed -i -e 's/be_false/be_falsey/ ; s/be_true/be true/' spec/task_spec.rb || die
 }
 
 each_ruby_test() {
-	ruby-ng_rspec -I. spec/task_spec.rb || die
+	RSPEC_VERSION=3 ruby-ng_rspec -I. spec/task_spec.rb || die
 }

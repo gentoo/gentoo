@@ -3,8 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
-inherit python-r1 cmake
+PYTHON_COMPAT=( python3_{8..11} )
+inherit python-r1 cmake flag-o-matic
 
 MYPN=pytorch
 MYP=${MYPN}-${PV}
@@ -69,6 +69,7 @@ PATCHES=(
 )
 
 src_prepare() {
+	filter-lto #bug 862672
 	cmake_src_prepare
 	pushd torch/csrc/jit/serialization || die
 	flatc --cpp --gen-mutable --scoped-enums mobile_bytecode.fbs || die

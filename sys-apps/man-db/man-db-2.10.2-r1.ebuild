@@ -131,9 +131,11 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 
 	# Disable color output from groff so that the manpager can add it. bug #184604
-	sed -i \
-		-e '/^#DEFINE.*\<[nt]roff\>/{s:^#::;s:$: -c:}' \
-		src/man_db.conf || die
+	if use manpager; then
+		sed -i \
+			-e '/^#DEFINE.*\<[nt]roff\>/{s:^#::;s:$: -c:}' \
+			src/man_db.conf || die
+	fi
 
 	cat > 15man-db <<-EOF || die
 	SANDBOX_PREDICT="/var/cache/man"

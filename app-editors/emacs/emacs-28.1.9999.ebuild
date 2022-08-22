@@ -149,6 +149,9 @@ src_prepare() {
 	fi
 
 	if use jit; then
+		export NATIVE_FULL_AOT=1
+		find lisp -type f -name "*.elc" -delete || die
+
 		# These files ignore LDFLAGS. We assign the variable here, because
 		# for live ebuilds FULL_VERSION doesn't exist in global scope
 		QA_FLAGS_IGNORED="usr/$(get_libdir)/emacs/${FULL_VERSION}/native-lisp/.*"

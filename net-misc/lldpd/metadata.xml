@@ -31,4 +31,7 @@ lldpd also implements CDP (Cisco Discovery Protocol), FDP (Foundry Discovery Pro
 		<flag name="sonmp">Enable SynOptics Network Management</flag>
 		<flag name="snmp">Enable the use of SNMP</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">lldpd/lldpd</remote-id>
+	</upstream>
 </pkgmetadata>

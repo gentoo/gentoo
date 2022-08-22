@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
@@ -19,5 +19,9 @@ KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 BDEPEND="
 	test? ( dev-python/chardet[${PYTHON_USEDEP}] )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-python311-tests.patch
+)
 
 distutils_enable_tests unittest

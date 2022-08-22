@@ -1,0 +1,154 @@
+https://bugs.gentoo.org/863218
+https://github.com/systemd/systemd/issues/23984
+https://github.com/systemd/systemd/commit/3657d3a01c7e25ff86d7a4642065b367c4ff7484
+https://github.com/systemd/systemd/commit/0a58cd00454cc7b57b04f3a4a334584d743d7f7a
+
+From: Rudi Heitbaum <rudi@heitbaum.com>
+Date: Sat, 23 Jul 2022 10:38:49 +0000
+Subject: [PATCH] glibc: Remove #include <linux/fs.h> to resolve
+ fsconfig_command/mount_attr conflict with glibc 2.36
+
+--- a/meson.build
++++ b/meson.build
+@@ -511,7 +511,6 @@ decl_headers = '''
+ #include <uchar.h>
+ #include <sys/mount.h>
+ #include <sys/stat.h>
+-#include <linux/fs.h>
+ '''
+ 
+ foreach decl : ['char16_t',
+@@ -523,6 +522,17 @@ foreach decl : ['char16_t',
+         # We get -1 if the size cannot be determined
+         have = cc.sizeof(decl, prefix : decl_headers, args : '-D_GNU_SOURCE') > 0
+ 
++        if decl == 'struct mount_attr'
++                if have
++                        want_linux_fs_h = false
++                else
++                        have = cc.sizeof(decl,
++                                         prefix : decl_headers + '#include <linux/fs.h>',
++                                         args : '-D_GNU_SOURCE') > 0
++                        want_linux_fs_h = have
++                endif
++        endif
++
+         if decl == 'struct statx'
+                 if have
+                         want_linux_stat_h = false
+@@ -538,6 +548,7 @@ foreach decl : ['char16_t',
+ endforeach
+ 
+ conf.set10('WANT_LINUX_STAT_H', want_linux_stat_h)
++conf.set10('WANT_LINUX_FS_H', want_linux_fs_h)
+ 
+ foreach ident : ['secure_getenv', '__secure_getenv']
+         conf.set10('HAVE_' + ident.to_upper(), cc.has_function(ident))
+--- a/src/basic/fd-util.c
++++ b/src/basic/fd-util.c
+@@ -3,7 +3,9 @@
+ #include <errno.h>
+ #include <fcntl.h>
+ #include <linux/btrfs.h>
++#if WANT_LINUX_FS_H
+ #include <linux/fs.h>
++#endif
+ #include <linux/magic.h>
+ #include <sys/ioctl.h>
+ #include <sys/resource.h>
+--- a/src/core/namespace.c
++++ b/src/core/namespace.c
+@@ -7,7 +7,9 @@
+ #include <sys/file.h>
+ #include <sys/mount.h>
+ #include <unistd.h>
++#if WANT_LINUX_FS_H
+ #include <linux/fs.h>
++#endif
+ 
+ #include "alloc-util.h"
+ #include "base-filesystem.h"
+--- a/src/shared/mount-util.c
++++ b/src/shared/mount-util.c
+@@ -7,7 +7,9 @@
+ #include <sys/statvfs.h>
+ #include <unistd.h>
+ #include <linux/loop.h>
++#if WANT_LINUX_FS_H
+ #include <linux/fs.h>
++#endif
+ 
+ #include "alloc-util.h"
+ #include "chase-symlinks.h"
+
+From 0a58cd00454cc7b57b04f3a4a334584d743d7f7a Mon Sep 17 00:00:00 2001
+From: Yu Watanabe <watanabe.yu+github@gmail.com>
+Date: Tue, 26 Jul 2022 20:03:12 +0900
+Subject: [PATCH] home: drop conflicted headers
+
+Fixes #24117.
+--- a/src/basic/missing_fs.h
++++ b/src/basic/missing_fs.h
+@@ -64,3 +64,8 @@
+ #ifndef FS_PROJINHERIT_FL
+ #define FS_PROJINHERIT_FL 0x20000000
+ #endif
++
++/* linux/fscrypt.h */
++#ifndef FS_KEY_DESCRIPTOR_SIZE
++#define FS_KEY_DESCRIPTOR_SIZE 8
++#endif
+--- a/src/home/homework-cifs.c
++++ b/src/home/homework-cifs.c
+@@ -1,5 +1,10 @@
+ /* SPDX-License-Identifier: LGPL-2.1-or-later */
+ 
++#include <sys/mount.h>
++#if WANT_LINUX_FS_H
++#include <linux/fs.h>
++#endif
++
+ #include "dirent-util.h"
+ #include "fd-util.h"
+ #include "fileio.h"
+--- a/src/home/homework-luks.c
++++ b/src/home/homework-luks.c
+@@ -4,7 +4,6 @@
+ #include <poll.h>
+ #include <sys/file.h>
+ #include <sys/ioctl.h>
+-#include <sys/mount.h>
+ #include <sys/xattr.h>
+ 
+ #if HAVE_VALGRIND_MEMCHECK_H
+--- a/src/home/homework-mount.c
++++ b/src/home/homework-mount.c
+@@ -2,7 +2,9 @@
+ 
+ #include <sched.h>
+ #include <sys/mount.h>
++#if WANT_LINUX_FS_H
+ #include <linux/fs.h>
++#endif
+ 
+ #include "alloc-util.h"
+ #include "fd-util.h"
+--- a/src/home/homework.h
++++ b/src/home/homework.h
+@@ -1,13 +1,14 @@
+ /* SPDX-License-Identifier: LGPL-2.1-or-later */
+ #pragma once
+ 
+-#include <linux/fs.h>
+ #include <sys/vfs.h>
+ 
+ #include "sd-id128.h"
+ 
++#include "cryptsetup-util.h"
+ #include "homework-password-cache.h"
+ #include "loop-util.h"
++#include "missing_fs.h" /* for FS_KEY_DESCRIPTOR_SIZE, do not include linux/fs.h */
+ #include "missing_keyctl.h"
+ #include "missing_syscall.h"
+ #include "user-record.h"
+

@@ -34,6 +34,7 @@ src_prepare() {
 		"${FILESDIR}"/efivar-38-Makefile-dep.patch
 		"${FILESDIR}"/efivar-38-binutils-2.36.patch
 		"${FILESDIR}"/efivar-38-ld-locale.patch
+		"${FILESDIR}"/efivar-38-glibc-2.36.patch
 	)
 	default
 }

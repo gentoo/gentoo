@@ -14,7 +14,7 @@ SRC_URI="https://gitlab.freedesktop.org/libfprint/${PN}/-/archive/v${PV}/${MY_P}
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm ~ia64 ppc ~riscv sparc x86"
+KEYWORDS="amd64 arm ~arm64 ~ia64 ppc ~riscv sparc x86"
 IUSE="doc pam systemd test"
 RESTRICT="!test? ( test )"
 

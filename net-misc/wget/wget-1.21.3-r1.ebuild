@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/wget.asc
 inherit flag-o-matic python-any-r1 toolchain-funcs verify-sig
 
@@ -50,7 +50,7 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 	test? (
 		${PYTHON_DEPS}
-		dev-perl/HTTP-Daemon
+		>=dev-perl/HTTP-Daemon-6.60.0
 		dev-perl/HTTP-Message
 		dev-perl/IO-Socket-SSL
 	)

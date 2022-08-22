@@ -316,12 +316,6 @@ x11-misc/colord argyllcms extra-print-profiles
 # Mask telepathy, no stable net-libs/telepathy-qt, bug #441456
 net-im/choqok telepathy
 
-# Robin H Johnson <robbat2@gentoo.org> (2012-11-01)
-# MySQL 5.5 wants systemtap, tcmalloc & jemalloc
->=dev-db/mysql-5.5 tcmalloc
->=dev-db/mariadb-5.5 tcmalloc
->=dev-db/percona-server-5.5 tcmalloc
-
 # Samuli Suominen <ssuominen@gentoo.org> (2012-09-27)
 # I don't want to open this can of worms yet. Feel free
 # to do so.

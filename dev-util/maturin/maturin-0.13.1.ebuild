@@ -343,7 +343,7 @@ LICENSE="
 	BSD CC0-1.0 ISC MIT MPL-2.0 openssl unicode
 	doc? ( CC-BY-4.0 OFL-1.1 )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv ~s390 ~x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
@@ -413,14 +413,12 @@ python_test() {
 
 	local skip=(
 		--skip locked_doesnt_build_without_cargo_lock
-		# move below when >=rust-1.62 is stable, xfail "pass" with 1.60-1.61
-		--skip pyo3_no_extension_module
 	)
 	[[ ${EPYTHON} == pypy3 ]] && skip+=(
 		# test enables pyo3's auto-initialize that is incompatible with pypy
 		--skip integration_pyo3_bin
 		# wants the missing libpypy*-c.so
-#		--skip pyo3_no_extension_module
+		--skip pyo3_no_extension_module
 	)
 
 	cp -r test-crates{.orig,} || die

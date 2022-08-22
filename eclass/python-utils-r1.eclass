@@ -1331,6 +1331,9 @@ epytest() {
 		# sterilize pytest-markdown as it runs code snippets from all
 		# *.md files found without any warning
 		-p no:markdown
+		# pytest-sugar undoes everything that's good about pytest output
+		# and makes it hard to read logs
+		-p no:sugar
 	)
 	local x
 	for x in "${EPYTEST_DESELECT[@]}"; do

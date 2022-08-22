@@ -28,16 +28,17 @@ LICENSE="MIT"
 SLOT="0/${PV%.*}"
 
 IUSE="bzip2 +cxx debug dynamic-loading fpx heif imagemagick jbig jpeg jpegxl lcms lzma"
-IUSE+=" openmp perl png postscript q16 q32 static-libs svg threads tiff truetype"
-IUSE+=" webp wmf X zlib"
+IUSE+=" openmp perl png postscript q16 q32 static-libs svg tcmalloc threads tiff truetype"
+IUSE+=" webp wmf X zlib zstd"
 
-RDEPEND="dev-libs/libltdl
+RDEPEND="
+	dev-libs/libltdl
 	bzip2? ( app-arch/bzip2 )
 	fpx? ( media-libs/libfpx )
 	heif? ( media-libs/libheif:= )
 	imagemagick? ( !media-gfx/imagemagick )
 	jbig? ( media-libs/jbigkit )
-	jpeg? ( virtual/jpeg )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	jpegxl? ( media-libs/libjxl:= )
 	lcms? ( media-libs/lcms:2 )
 	lzma? ( app-arch/xz-utils )
@@ -45,6 +46,7 @@ RDEPEND="dev-libs/libltdl
 	png? ( media-libs/libpng:= )
 	postscript? ( app-text/ghostscript-gpl )
 	svg? ( dev-libs/libxml2 )
+	tcmalloc? ( dev-util/google-perftools:= )
 	tiff? ( media-libs/tiff )
 	truetype? (
 		media-fonts/urw-fonts
@@ -54,9 +56,12 @@ RDEPEND="dev-libs/libltdl
 	wmf? ( media-libs/libwmf )
 	X? (
 		x11-libs/libSM
+		x11-libs/libX11
 		x11-libs/libXext
 	)
-	zlib? ( sys-libs/zlib )"
+	zlib? ( sys-libs/zlib )
+	zstd? ( app-arch/zstd:= )
+"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
@@ -107,11 +112,14 @@ src_configure() {
 		$(use_with jbig)
 		$(use_with webp)
 		$(use_with jpeg)
+		# Needs last-rited/unpackaged jasper
 		--without-jp2
 		$(use_with lcms lcms2)
 		$(use_with lzma)
 		$(use_with png)
+		$(use_with tcmalloc)
 		$(use_with tiff)
+		--without-trio
 		$(use_with truetype ttf)
 		$(use_with wmf)
 		--with-fontpath="${EPREFIX}"/usr/share/fonts
@@ -119,6 +127,7 @@ src_configure() {
 		--with-windows-font-dir="${EPREFIX}"/usr/share/fonts/corefonts
 		$(use_with svg xml)
 		$(use_with zlib)
+		$(use_with zstd)
 		$(use_with X x)
 	)
 

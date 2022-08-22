@@ -78,7 +78,7 @@ src_prepare() {
 
 	if [[ ${PV} != 9999* ]] ; then
 		# Gentoo patches to fix runtime issues, cross-compile errors, etc
-		eapply "${WORKDIR}/vim-patches-vim-9.0.0049-patches"
+		eapply "${WORKDIR}"/vim-patches-vim-9.0.0049-patches
 	fi
 
 	# Fixup a script to use awk instead of nawk

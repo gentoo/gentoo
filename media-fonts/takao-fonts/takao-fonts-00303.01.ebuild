@@ -13,7 +13,7 @@ SRC_URI="https://launchpad.net/${PN}/trunk/15.03/+download/${MY_P}.tar.xz"
 
 LICENSE="IPAfont"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 IUSE=""
 RESTRICT="binchecks strip"
 

@@ -7,6 +7,6 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">mgorny/mgorny-dev-scripts</remote-id>
+		<remote-id type="github">projg2/mgorny-dev-scripts</remote-id>
 	</upstream>
 </pkgmetadata>

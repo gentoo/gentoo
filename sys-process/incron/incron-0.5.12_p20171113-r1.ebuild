@@ -14,7 +14,7 @@ SRC_URI="https://github.com/ar-/incron/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ppc ~riscv x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.5.12-use-execl-instead-system.patch

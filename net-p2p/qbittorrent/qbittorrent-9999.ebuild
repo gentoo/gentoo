@@ -78,7 +78,7 @@ src_configure() {
 
 		if [[ ${MULTIBUILD_VARIANT} == webui ]] ; then
 			mycmakeargs+=(
-				-DGUI=OFF
+				-DGUI=$(usex gui)
 				-DWEBUI=ON
 			)
 		else

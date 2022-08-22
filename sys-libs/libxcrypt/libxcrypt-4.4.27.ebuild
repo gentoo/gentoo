@@ -38,7 +38,7 @@ BDEPEND="dev-lang/perl
 	test? ( $(python_gen_any_dep 'dev-python/passlib[${PYTHON_USEDEP}]') )"
 
 python_check_deps() {
-	has_version -b "dev-python/passlib[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/passlib[${PYTHON_USEDEP}]"
 }
 
 pkg_pretend() {

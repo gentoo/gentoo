@@ -11,5 +11,6 @@
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:alsa-project:alsa-plugins</remote-id>
+		<remote-id type="github">alsa-project/alsa-plugins</remote-id>
 	</upstream>
 </pkgmetadata>

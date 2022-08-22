@@ -62,6 +62,7 @@ games-puzzle/world-of-goo-hb
 games-roguelike/adom
 games-roguelike/neon-chrome
 games-rpg/costume-quest
+games-rpg/crosscode
 games-rpg/dear-esther
 games-rpg/dungeon-defenders
 games-rpg/eschalon-book-1-demo
@@ -77,8 +78,7 @@ games-strategy/knights-demo
 games-strategy/majesty-demo
 media-video/binkplayer
 
-# Ian Stakenvicius, 2017-06-14
-# on behalf of mozilla@gentoo.org
-# Mask firefox-54 and above as it requires rust
-# now, and rust reportedly will not build yet.
->=www-client/firefox-54.0
+# James Le Cuirot <chewi@gentoo.org> (2022-08-11)
+# Binary package for glibc. Could be built from source but would take ages and
+# isn't worth the maintenance cost.
+dev-libs/nwjs

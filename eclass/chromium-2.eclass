@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: chromium-2.eclass
@@ -122,7 +122,7 @@ chromium_pkg_die() {
 	fi
 
 	# Prevent user problems like bug #348235.
-	if ( shopt -s extglob; is-flagq '-g?(gdb)?([1-9])' ); then
+	if is-flagq '-g?(gdb)?([1-9])'; then
 		ewarn
 		ewarn "You have enabled debug info (i.e. -g or -ggdb in your CFLAGS/CXXFLAGS)."
 		ewarn "This produces very large build files causes the linker to consume large"

@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Libraries useful for Icinga Web 2"
 HOMEPAGE="https://dev.icinga.org/projects/icingaweb2-module-incubator/"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 MY_PN="icingaweb2-module-incubator"
 SRC_URI="https://codeload.github.com/Icinga/${MY_PN}/tar.gz/v${PV} -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"

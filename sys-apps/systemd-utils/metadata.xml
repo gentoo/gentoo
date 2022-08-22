@@ -11,4 +11,8 @@
 		<flag name="tmpfiles">Enable systemd-tmpfiles</flag>
 		<flag name="udev">Enable systemd-udev (userspace device manager)</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">systemd/systemd</remote-id>
+		<remote-id type="github">systemd/systemd-stable</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -19,7 +19,7 @@ DESCRIPTION="RubyODBC - For accessing ODBC data sources from the Ruby language"
 HOMEPAGE="http://www.ch-werner.de/rubyodbc/"
 SRC_URI="http://www.ch-werner.de/rubyodbc/${P}.tar.gz"
 
-LICENSE="|| ( GPL-2 Ruby )"
+LICENSE="|| ( GPL-2 Ruby-BSD )"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""

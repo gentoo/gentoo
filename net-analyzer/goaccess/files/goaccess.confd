@@ -1,0 +1,8 @@
+# Config file for /etc/init.d/goaccess
+
+# Various options.
+# run `goaccess --help` for valid cmdline options
+OPTS="--user-name=goaccess --pid-file=/run/goaccess/goaccess.pid -o /var/lib/goaccess/goaccess.html -l /var/log/goaccess/goaccess.log"
+
+# GoAccess config file
+#CONFIG="/etc/goaccess/goaccess.conf"

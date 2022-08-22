@@ -36,7 +36,9 @@ BDEPEND="
 # We're skipping redis entirely since it requires a running server.
 BDEPEND+="
 	test? (
-		dev-python/pyopenssl[${PYTHON_USEDEP}]
+		!arm? ( !sparc? (
+			dev-python/pyopenssl[${PYTHON_USEDEP}]
+		) )
 		$(python_gen_cond_dep '
 			>=dev-python/boto3-1.17.72[${PYTHON_USEDEP}]
 			dev-python/httplib2[${PYTHON_USEDEP}]

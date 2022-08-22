@@ -38,6 +38,13 @@ if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
 fi
 IUSE="alsa debug doc dtrace headless java lvm +opus pam pax-kernel pch pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
 
+REQUIRED_USE="
+	java? ( sdk )
+	python? ( sdk )
+	vboxwebsrv? ( java )
+	${PYTHON_REQUIRED_USE}
+"
+
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	!app-emulation/virtualbox-bin
@@ -100,7 +107,6 @@ DEPEND="
 	pam? ( sys-libs/pam )
 	pax-kernel? ( sys-apps/elfix )
 	pulseaudio? ( media-sound/pulseaudio )
-	qt5? ( dev-qt/linguist-tools:5 )
 	vboxwebsrv? ( net-libs/gsoap[-gnutls(-)] )
 "
 BDEPEND="
@@ -122,6 +128,7 @@ BDEPEND="
 		dev-texlive/texlive-fontsextra
 	)
 	java? ( virtual/jdk:1.8 )
+	qt5? ( dev-qt/linguist-tools:5 )
 "
 RDEPEND="
 	${COMMON_DEPEND}
@@ -150,13 +157,6 @@ QA_WX_LOAD="
 QA_PRESTRIPPED="
 	usr/lib64/virtualbox/VMMR0.r0
 	usr/lib64/virtualbox/VBoxDDR0.r0
-"
-
-REQUIRED_USE="
-	java? ( sdk )
-	python? ( sdk )
-	vboxwebsrv? ( java )
-	${PYTHON_REQUIRED_USE}
 "
 
 PATCHES=(

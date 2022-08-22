@@ -37,4 +37,7 @@
 		<flag name="video">Control video support (disable at your own risk)</flag>
 		<flag name="vulkan">Enable Vulkan support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">libsdl-org/SDL</remote-id>
+	</upstream>
 </pkgmetadata>

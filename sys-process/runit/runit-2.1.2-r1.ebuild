@@ -49,7 +49,7 @@ src_install() {
 	einstalldocs
 	doman ../man/*.[18]
 
-dodir /etc/runit
+	dodir /etc/runit
 	exeinto /etc/runit
 	doexe "${FILESDIR}"/ctrlaltdel
 	newexe "${FILESDIR}"/1-${PV} 1

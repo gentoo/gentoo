@@ -1,0 +1,74 @@
+* add option to respect AR
+ (respecting PKG_CONFIG is handled in the ebuild)
+* handle recastnavigation unbundling
+* remove unnecessary opusfile
+* remove unnecessary -no-pie
+* remove -pipe from LDFLAGS, may "possibly" be relevant to:
+  https://bugs.gentoo.org/861689
+  https://github.com/godotengine/godot/commit/f035e784
+--- a/SConstruct
++++ b/SConstruct
+@@ -192,4 +192,5 @@
+ opts.Add("CXX", "C++ compiler")
+ opts.Add("CC", "C compiler")
++opts.Add("AR", "Archiver")
+ opts.Add("LINK", "Linker")
+ opts.Add("CCFLAGS", "Custom flags for both the C and C++ compilers")
+--- a/platform/server/detect.py
++++ b/platform/server/detect.py
+@@ -135,5 +135,4 @@
+ 
+     env.Append(CCFLAGS=["-pipe"])
+-    env.Append(LINKFLAGS=["-pipe"])
+ 
+     ## Dependencies
+@@ -178,4 +177,7 @@
+         env.ParseConfig("pkg-config libenet --cflags --libs")
+ 
++    if not env["builtin_recast"]:
++        env.ParseConfig("pkg-config recastnavigation --cflags --libs")
++
+     if not env["builtin_squish"]:
+         env.ParseConfig("pkg-config libsquish --cflags --libs")
+@@ -205,5 +207,5 @@
+     if not env["builtin_opus"]:
+         env["builtin_libogg"] = False  # Needed to link against system opus
+-        env.ParseConfig("pkg-config opus opusfile --cflags --libs")
++        env.ParseConfig("pkg-config opus --cflags --libs")
+ 
+     if not env["builtin_libogg"]:
+--- a/platform/x11/detect.py
++++ b/platform/x11/detect.py
+@@ -232,17 +232,5 @@
+ 
+     env.Append(CCFLAGS=["-pipe"])
+-    env.Append(LINKFLAGS=["-pipe"])
+ 
+-    # Check for gcc version >= 6 before adding -no-pie
+-    version = get_compiler_version(env) or [-1, -1]
+-    if using_gcc(env):
+-        if version[0] >= 6:
+-            env.Append(CCFLAGS=["-fpie"])
+-            env.Append(LINKFLAGS=["-no-pie"])
+-    # Do the same for clang should be fine with Clang 4 and higher
+-    if using_clang(env):
+-        if version[0] >= 4:
+-            env.Append(CCFLAGS=["-fpie"])
+-            env.Append(LINKFLAGS=["-no-pie"])
+ 
+     ## Dependencies
+@@ -298,4 +286,7 @@
+         env.ParseConfig("pkg-config libenet --cflags --libs")
+ 
++    if not env["builtin_recast"]:
++        env.ParseConfig("pkg-config recastnavigation --cflags --libs")
++
+     if not env["builtin_squish"]:
+         env.ParseConfig("pkg-config libsquish --cflags --libs")
+@@ -325,5 +316,5 @@
+     if not env["builtin_opus"]:
+         env["builtin_libogg"] = False  # Needed to link against system opus
+-        env.ParseConfig("pkg-config opus opusfile --cflags --libs")
++        env.ParseConfig("pkg-config opus --cflags --libs")
+ 
+     if not env["builtin_libogg"]:

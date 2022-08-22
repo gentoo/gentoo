@@ -265,6 +265,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 BDEPEND="
 	dev-util/intltool
+	sys-apps/which
 	sys-devel/bison
 	sys-devel/flex
 	sys-devel/gettext
@@ -582,6 +583,9 @@ src_configure() {
 		use libreoffice_extensions_scripting-javascript && \
 			myeconfargs+=( --with-rhino-jar=$(java-pkg_getjar rhino-1.6 rhino.jar) )
 	fi
+
+	# Workaround to fix build w/ gpgme 1.18.0, bug #865321
+	export ac_cv_lib_gpgmepp_progress_callback=yes
 
 	is-flagq "-flto*" && myeconfargs+=( --enable-lto )
 

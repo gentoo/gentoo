@@ -5,4 +5,7 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">haskell/cabal</remote-id>
+	</upstream>
 </pkgmetadata>

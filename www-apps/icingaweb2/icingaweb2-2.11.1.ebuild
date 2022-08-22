@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]];then
 	EGIT_BRANCH="master"
 else
 	SRC_URI="https://codeload.github.com/Icinga/${PN}/tar.gz/v${PV} -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2"
@@ -33,8 +33,8 @@ DEPEND=">=net-analyzer/icinga2-2.1.1
 			dev-lang/php:8.0[apache2?,cli,fpm?,gd,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
 			dev-lang/php:8.1[apache2?,cli,fpm?,gd,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
 		)
-		dev-libs/icinga-php-library
-		dev-libs/icinga-php-thirdparty
+		>=dev-libs/icinga-php-library-0.8.1
+		>=dev-libs/icinga-php-thirdparty-0.11.0
 		acct-group/icingacmd
 		acct-group/icingaweb2"
 RDEPEND="${DEPEND}"

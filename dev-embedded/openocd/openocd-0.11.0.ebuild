@@ -95,5 +95,11 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
+
 	elog "To access openocd devices as user you must be in the plugdev group"
+}
+
+pkg_postrm() {
+	udev_reload
 }

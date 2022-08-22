@@ -106,18 +106,6 @@ readonly KDE_ORG_CATEGORIES
 # Known schedule URI of package or release group.
 : ${KDE_ORG_SCHEDULE_URI:="https://community.kde.org/Schedules"}
 
-# @ECLASS_VARIABLE: KDE_GEAR
-# @PRE_INHERIT
-# @DESCRIPTION:
-# Mark package is being part of KDE Gear release schedule.
-# By default, this is set to "false" and does nothing.
-# If CATEGORY equals kde-apps, this is automatically set to "true".
-# If set to "true", set SRC_URI accordingly.
-: ${KDE_GEAR:=false}
-if [[ ${CATEGORY} == kde-apps ]]; then
-	KDE_GEAR=true
-fi
-
 # @ECLASS_VARIABLE: KDE_SELINUX_MODULE
 # @PRE_INHERIT
 # @DESCRIPTION:
@@ -162,89 +150,11 @@ has ${PV} "${KDE_PV_UNRELEASED[*]}" && KDE_ORG_UNRELEASED=true
 
 HOMEPAGE="https://kde.org/"
 
-case ${CATEGORY} in
-	dev-qt)
-		KDE_ORG_NAME=${QT5_MODULE:-${PN}}
-		HOMEPAGE="https://community.kde.org/Qt5PatchCollection
-			https://invent.kde.org/qt/qt/ https://www.qt.io/"
-		;;
-	kde-plasma)
-		if [[ -z ${_PLASMA_KDE_ORG_ECLASS} ]]; then
-			HOMEPAGE="https://kde.org/plasma-desktop"
-		fi
-		;;
-	kde-frameworks)
-		if [[ -z ${_FRAMEWORKS_KDE_ORG_ECLASS} ]]; then
-			HOMEPAGE="https://kde.org/products/frameworks/"
-			SLOT=5/${PV}
-			[[ ${KDE_BUILD_TYPE} == release ]] && SLOT=$(ver_cut 1)/$(ver_cut 1-2)
-		fi
-		;;
-	*) ;;
-esac
-
-# @FUNCTION: _kde.org_calculate_src_uri
-# @INTERNAL
-# @DESCRIPTION:
-# Determine fetch location for released tarballs
-_kde.org_calculate_src_uri() {
-	debug-print-function ${FUNCNAME} "$@"
-
-	if [[ -n ${KDE_ORG_COMMIT} ]]; then
-		SRC_URI="https://invent.kde.org/${KDE_ORG_CATEGORY}/${KDE_ORG_NAME}/-/"
-		SRC_URI+="archive/${KDE_ORG_COMMIT}/${KDE_ORG_NAME}-${KDE_ORG_COMMIT}.tar.gz"
-		SRC_URI+=" -> ${KDE_ORG_NAME}-${PV}-${KDE_ORG_COMMIT:0:8}.tar.gz"
-	fi
-
-	[[ ${KDE_ORG_UNRELEASED} == true ]] && RESTRICT+=" fetch"
-
-	if [[ -n ${_FRAMEWORKS_KDE_ORG_ECLASS} ]] || [[ -n ${_PLASMA_KDE_ORG_ECLASS} ]] || [[ -n ${_GEAR_KDE_ORG_ECLASS} ]] || [[ -n ${KDE_ORG_COMMIT} ]]; then
-		return
-	fi
-
-	local _src_uri="mirror://kde/"
-
-	if [[ ${KDE_GEAR} == true ]]; then
-		case ${PV} in
-			??.??.[6-9]? )
-				_src_uri+="unstable/release-service/${PV}/src/"
-				RESTRICT+=" mirror"
-				;;
-			*) _src_uri+="stable/release-service/${PV}/src/" ;;
-		esac
-	fi
-
-	case ${CATEGORY} in
-		kde-frameworks)
-			_src_uri+="stable/frameworks/$(ver_cut 1-2)/"
-			case ${PN} in
-				countryflags | \
-				kdelibs4support | \
-				kdesignerplugin | \
-				kdewebkit | \
-				khtml | \
-				kjs | \
-				kjsembed | \
-				kmediaplayer | \
-				kross | \
-				kxmlrpcclient)
-					_src_uri+="portingAids/"
-					;;
-			esac
-			;;
-		kde-plasma)
-			case ${PV} in
-				5.??.[6-9]?* )
-					_src_uri+="unstable/plasma/$(ver_cut 1-3)/"
-					RESTRICT+=" mirror"
-					;;
-				*) _src_uri+="stable/plasma/$(ver_cut 1-3)/" ;;
-			esac
-			;;
-	esac
-
-	SRC_URI="${_src_uri}${KDE_ORG_NAME}-${PV}.tar.xz"
-}
+if [[ ${CATEGORY} == dev-qt ]]; then
+	KDE_ORG_NAME=${QT5_MODULE:-${PN}}
+	HOMEPAGE="https://community.kde.org/Qt5PatchCollection
+		https://invent.kde.org/qt/qt/ https://www.qt.io/"
+fi
 
 case ${KDE_BUILD_TYPE} in
 	live)
@@ -256,7 +166,12 @@ case ${KDE_BUILD_TYPE} in
 		fi
 		;;
 	*)
-		_kde.org_calculate_src_uri
+		if [[ -n ${KDE_ORG_COMMIT} ]]; then
+			SRC_URI="https://invent.kde.org/${KDE_ORG_CATEGORY}/${KDE_ORG_NAME}/-/"
+			SRC_URI+="archive/${KDE_ORG_COMMIT}/${KDE_ORG_NAME}-${KDE_ORG_COMMIT}.tar.gz"
+			SRC_URI+=" -> ${KDE_ORG_NAME}-${PV}-${KDE_ORG_COMMIT:0:8}.tar.gz"
+		fi
+		[[ ${KDE_ORG_UNRELEASED} == true ]] && RESTRICT+=" fetch"
 		debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: SRC_URI is ${SRC_URI}"
 		if [[ -n ${KDE_ORG_COMMIT} ]]; then
 			S=${WORKDIR}/${KDE_ORG_NAME}-${KDE_ORG_COMMIT}

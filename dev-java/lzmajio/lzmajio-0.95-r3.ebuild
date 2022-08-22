@@ -14,7 +14,7 @@ SRC_URI="https://github.com/league/${P}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 CDEPEND="dev-java/lzma:0"
 

@@ -4,7 +4,8 @@
 EAPI=7
 
 TOOLCHAIN_PATCH_DEV="sam"
-PATCH_VER="5"
+TOOLCHAIN_PATCH_SUFFIX="xz"
+PATCH_VER="6"
 PATCH_GCC_VER="11.3.0"
 MUSL_VER="1"
 MUSL_GCC_VER="11.3.0"
@@ -19,9 +20,3 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 s
 RDEPEND="elibc_glibc? ( sys-libs/glibc[cet(-)?] )"
 DEPEND="${RDEPEND}"
 BDEPEND=">=${CATEGORY}/binutils-2.30[cet(-)?]"
-
-src_prepare() {
-	toolchain_src_prepare
-
-	eapply_user
-}
