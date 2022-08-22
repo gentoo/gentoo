@@ -10,7 +10,7 @@ SRC_URI="https://dl.suckless.org/tools/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 DEPEND="
 	media-libs/fontconfig
