@@ -402,7 +402,6 @@ dev-haskell/edisoncore
 dev-haskell/editline
 dev-haskell/ekg
 dev-haskell/ekg-core
-dev-haskell/ekg-json
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
