@@ -364,7 +364,6 @@ dev-haskell/bytestring-show
 dev-haskell/bzlib
 dev-haskell/cairo
 dev-haskell/cereal-vector
-dev-haskell/cgi
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
