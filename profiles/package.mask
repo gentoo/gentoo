@@ -467,7 +467,6 @@ dev-haskell/idiii
 dev-haskell/idna
 dev-haskell/inspection-testing
 dev-haskell/integer-roots
-dev-haskell/json
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
