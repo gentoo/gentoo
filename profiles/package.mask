@@ -455,7 +455,6 @@ dev-haskell/hsql
 dev-haskell/hsql-mysql
 dev-haskell/hsql-odbc
 dev-haskell/hsql-sqlite3
-dev-haskell/hstringtemplate
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
