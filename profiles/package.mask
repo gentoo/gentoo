@@ -343,7 +343,6 @@ dev-haskell/attoparsec-conduit
 dev-haskell/attoparsec-enumerator
 dev-haskell/authenticate
 dev-haskell/base-noprelude
-dev-haskell/basic-prelude
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
