@@ -370,7 +370,6 @@ dev-haskell/chimera
 dev-haskell/chunked-data
 dev-haskell/cipher-camellia
 dev-haskell/cipher-des
-dev-haskell/cipher-rc4
 
 # Hans de Graaff <graaff@gentoo.org> (2022-07-16)
 # No longer supported upstream. Use a newer ruby version instead.
