@@ -11,7 +11,7 @@ DESCRIPTION="Cinnamon session manager"
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cinnamon-session"
 SRC_URI="https://github.com/linuxmint/cinnamon-session/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2+ FDL-1.1+ LGPL-2+"
+LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="ipv6 systemd"
