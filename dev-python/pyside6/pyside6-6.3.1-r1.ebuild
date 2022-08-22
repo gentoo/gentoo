@@ -98,6 +98,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${P}-no-strip.patch"
+	"${FILESDIR}/${P}-fix-designer-plugin-install-location.patch"
 )
 
 src_configure() {
@@ -153,6 +154,10 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_Qt6Widgets=$(usex !widgets)
 		#-DCMAKE_DISABLE_FIND_PACKAGE_Qt6WinExtras=yes
 		-DCMAKE_DISABLE_FIND_PACKAGE_Qt6Xml=$(usex !xml)
+		# try to avoid pre-stripping
+		-DQFP_NO_OVERRIDE_OPTIMIZATION_FLAGS=yes
+		-DQFP_NO_STRIP=yes
+
 	)
 
 	pyside6_configure() {
