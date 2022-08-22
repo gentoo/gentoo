@@ -11,7 +11,7 @@ DESCRIPTION="A file manager for Cinnamon, forked from Nautilus"
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/nemo"
 SRC_URI="https://github.com/linuxmint/nemo/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2+ LGPL-2+ FDL-1.1"
+LICENSE="GPL-2+ LGPL-2+ LGPL-2.1+ FDL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="exif gtk-doc +nls selinux test xmp"
