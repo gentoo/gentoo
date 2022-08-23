@@ -42,6 +42,7 @@ BDEPEND="
 PATCHES+=(
 	"${FILESDIR}"/OpenRGB-0.7-plugins.patch
 	"${FILESDIR}"/OpenRGB-0.7-r1-udev.patch
+	"${FILESDIR}"/OpenRGB-0.7-json.patch
 )
 
 src_prepare() {
