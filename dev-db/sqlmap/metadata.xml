@@ -9,6 +9,10 @@
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription>
 		sqlmap is an open source penetration testing tool that automates the
 		process of detecting and exploiting SQL injection flaws and taking over
