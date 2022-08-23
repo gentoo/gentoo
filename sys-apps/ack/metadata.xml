@@ -31,5 +31,6 @@
 		<remote-id type="cpan-module">App::Ack::Filter::MatchGroup</remote-id>
 		<remote-id type="cpan-module">App::Ack::Resource</remote-id>
 		<remote-id type="cpan-module">App::Ack::Resources</remote-id>
+		<remote-id type="github">beyondgrep/ack3</remote-id>
 	</upstream>
 </pkgmetadata>
