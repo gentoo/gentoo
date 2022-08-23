@@ -1,0 +1,37 @@
+Note:  Upstream development is done in HG, not git; this patch was
+generated using the git mirror at
+https://github.com/MrBitBucket/reportlab-mirror.  Attempted to submit to
+reportlab-users mailing list but it rejected my mail server.
+
+From 9ba2380a68e891667a2659e16d0f04ebe0ecfd19 Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Mon, 4 Jul 2022 18:42:18 -0400
+Subject: [PATCH] correct srclen type in gstate__aapixbuf
+
+gstate__aapixbuf calls PyArg_ParseTuple with the format string
+"ddddy#ii|i".  Specifically the key "y#" will try to read a bytes-like
+object and its size into two Python variables.  The latter of these
+should be of type Py_ssize_t as specified by the C API, but here it is
+incorrectly declared as an int.  This was pointed out to me by the
+cpython developers when I mistakenly identified it as a cpython bug and
+submitted a PR there:  https://github.com/python/cpython/issues/94149
+---
+ src/rl_addons/renderPM/_renderPM.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/rl_addons/renderPM/_renderPM.c b/src/rl_addons/renderPM/_renderPM.c
+index c8415595..bc77d766 100644
+--- a/src/rl_addons/renderPM/_renderPM.c
++++ b/src/rl_addons/renderPM/_renderPM.c
+@@ -1319,7 +1319,7 @@ static	void _reverse_rows_inplace( char *buf, int nrows, int stride)
+ 
+ static PyObject* gstate__aapixbuf(gstateObject* self, PyObject* args)
+ {
+-	int			srclen;
++	Py_ssize_t	srclen;
+ 	double		ctm[6], dstX, dstY, dstW, dstH;
+ 	ArtPixBuf	src;
+ 
+-- 
+2.37.2
+
