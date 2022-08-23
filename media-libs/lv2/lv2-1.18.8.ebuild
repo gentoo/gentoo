@@ -28,6 +28,7 @@ BDEPEND="
 CDEPEND="
 	${PYTHON_DEPS}
 	plugins? (
+		media-libs/libsamplerate
 		media-libs/libsndfile
 		x11-libs/gtk+:2
 	)
