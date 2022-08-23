@@ -13,7 +13,8 @@ DESCRIPTION="Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & 
 HOMEPAGE="https://grafana.org"
 SRC_URI="https://dl.grafana.com/oss/release/grafana-${PV}.linux-amd64.tar.gz -> ${P}.tar.gz"
 
-LICENSE="Apache-2.0"
+RESTRICT="mirror"
+LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 
