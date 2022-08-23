@@ -10,6 +10,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">01org/hyperscan</remote-id>
+		<remote-id type="github">intel/hyperscan</remote-id>
 	</upstream>
 </pkgmetadata>
