@@ -10,8 +10,8 @@ inherit distutils-r1
 
 DESCRIPTION="Signs JSON objects with ED25519 signatures."
 HOMEPAGE="
-	https://github.com/matrix-org/python-signedjson
-	https://pypi.python.org/pypi/signedjson
+	https://github.com/matrix-org/python-signedjson/
+	https://pypi.org/project/signedjson/
 "
 SRC_URI="https://github.com/matrix-org/python-signedjson/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
