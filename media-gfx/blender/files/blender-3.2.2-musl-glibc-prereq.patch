@@ -1,0 +1,27 @@
+Fix build error in libc_compat when using musl libc
+
+Checking for the existence of and using __GLIBC_PREREQ can't be done in the
+same conditional.
+
+Please refer: https://github.com/blender/blender/commit/7be7280c5710f7831789cdde140d010722be9068
+--- a/intern/libc_compat/libc_compat.c
++++ b/intern/libc_compat/libc_compat.c
+@@ -13,7 +13,8 @@
+ #  include <features.h>
+ #  include <math.h>
+
+-#  if defined(__GLIBC_PREREQ) && __GLIBC_PREREQ(2, 31)
++#  if defined(__GLIBC_PREREQ)
++#    if __GLIBC_PREREQ(2, 31)
+
+ double __exp_finite(double x);
+ double __exp2_finite(double x);
+@@ -112,5 +113,6 @@ float __powf_finite(float x, float y)
+   return powf(x, y);
+ }
+
+-#  endif /* __GLIBC_PREREQ */
+-#endif   /* __linux__ */
++#    endif /* __GLIBC_PREREQ(2, 31) */
++#  endif   /* __GLIBC_PREREQ */
++#endif     /* __linux__ */
