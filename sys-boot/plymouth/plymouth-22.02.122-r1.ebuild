@@ -52,6 +52,7 @@ DOC_CONTENTS="
 
 PATCHES=(
 	"${FILESDIR}"/0.9.3-glibc-sysmacros.patch
+	"${FILESDIR}"/${P}-glibc-2.36.patch
 )
 
 src_prepare() {
