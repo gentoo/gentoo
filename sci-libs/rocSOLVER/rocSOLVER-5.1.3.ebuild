@@ -18,7 +18,6 @@ SLOT="0/$(ver_cut 1-2)"
 IUSE="test benchmark"
 REQUIRED_USE="${ROCM_REQUIRED_USE}"
 
-# sci-libs/rocBLAS:${SLOT}
 RDEPEND="dev-util/hip
 	sci-libs/rocBLAS:${SLOT}[${ROCM_USEDEP}]
 	=dev-libs/libfmt-8*
