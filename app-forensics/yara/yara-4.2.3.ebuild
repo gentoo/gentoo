@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="A malware identification and classification tool"
-HOMEPAGE="http://virustotal.github.io/yara/"
+HOMEPAGE="https://virustotal.github.io/yara/"
 SRC_URI="https://github.com/virustotal/yara/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${PV/_/-}"
 
