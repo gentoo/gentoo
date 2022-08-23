@@ -73,8 +73,10 @@ pkg_setup() {
 }
 
 src_configure() {
-	# TODO: liburing could in theory be optional but fails to link
+	# Fragile when changing compilers
+	export CCACHE_DISABLE=1
 
+	# TODO: liburing could in theory be optional but fails to link
 	local mycmakeargs=(
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 
