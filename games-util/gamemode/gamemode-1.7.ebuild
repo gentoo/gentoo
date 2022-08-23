@@ -37,6 +37,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.7-static-libs.patch
+	"${FILESDIR}"/${P}-glibc-2.36.patch
 )
 
 DOCS=(
