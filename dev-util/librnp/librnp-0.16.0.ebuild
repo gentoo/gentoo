@@ -12,20 +12,22 @@ SRC_URI="https://github.com/rnpgp/rnp/archive/refs/tags/v${PV}.tar.gz -> ${P}.ta
 LICENSE="Apache-2.0 BSD BSD-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="man"
+IUSE="man test"
 
-DEPEND="app-arch/bzip2
+RDEPEND="app-arch/bzip2
 	dev-libs/botan:2=
 	dev-libs/json-c:=
 	sys-libs/zlib"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-cpp/gtest )"
 BDEPEND="man? ( dev-ruby/asciidoctor )"
 
+RESTRICT="!test? ( test )"
 S="${WORKDIR}/${P/*lib/}"
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_TESTING=off
+		-DBUILD_TESTING=$(usex test on off)
 
 		-DCRYPTO_BACKEND=botan
 
@@ -33,15 +35,15 @@ src_configure() {
 		-DDOWNLOAD_RUBYRNP=off
 
 		-DENABLE_COVERAGE=off
+		-DENABLE_DOC=$(usex man on off)
 		-DENABLE_FUZZERS=off
 		-DENABLE_SANITIZERS=off
 	)
 
-	if use man; then
-		mycmakeargs+=( -DENABLE_DOC=on )
-	else
-		mycmakeargs+=( -DENABLE_DOC=off )
-	fi
-
 	cmake_src_configure
+}
+
+src_test() {
+	cd "${BUILD_DIR}" || die
+	ctest -j"${MAKEOPTS}" -R .* --output-on-failure || die
 }
