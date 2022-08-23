@@ -21,10 +21,14 @@ src_configure() {
 	)
 
 	if use test; then
+		# Fix relative paths to test data
 		sed -i -e "s:../tests/data/documents/:../${P}/tests/data/documents/:" tests/test_adapter_comparison.cpp || die
 		sed -i -e "s:../tests/data:../${P}/tests/data:" tests/test_validation_errors.cpp || die
 		sed -i -e "s:../thirdparty/:../${P}/thirdparty/:" -e "s:../doc/schema/:../${P}/doc/schema/:" tests/test_validator.cpp || die
 	fi
+
+	# -Werror is too aggressive due to false positives with gcc-12, see bug #866153
+	sed -i -e 's/-Werror//g' ../${P}/CMakeLists.txt || die
 
 	cmake_src_configure
 }
