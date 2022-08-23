@@ -10,8 +10,8 @@ inherit distutils-r1
 
 DESCRIPTION="Canonical JSON"
 HOMEPAGE="
-	https://github.com/matrix-org/python-canonicaljson
-	https://pypi.python.org/pypi/canonicaljson
+	https://github.com/matrix-org/python-canonicaljson/
+	https://pypi.org/project/canonicaljson/
 "
 SRC_URI="https://github.com/matrix-org/python-canonicaljson/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
