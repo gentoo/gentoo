@@ -176,3 +176,4 @@ sys-apps/yarn
 www-apps/jekyll-coffeescript
 www-apps/kibana-bin
 www-client/chromium
+>=www-apps/redmine-5.0.2
