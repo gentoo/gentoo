@@ -35,7 +35,7 @@ for lang in ${LANGS}; do
 done
 unset dict lang LANGS
 
-DOCS=( AUTHORS ChangeLog NEWS THANKS license.{hunspell,myspell} README.md )
+DOCS=( AUTHORS ChangeLog NEWS THANKS license.{hunspell,myspell} README )
 
 PATCHES=(
 	# Upstream package creates some executables which names are too generic
