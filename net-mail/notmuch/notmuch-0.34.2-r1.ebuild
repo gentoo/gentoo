@@ -36,7 +36,7 @@ BDEPEND="
 		dev-lang/perl
 	)
 	doc? (
-		$(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]')
+		dev-python/sphinx[${PYTHON_USEDEP}]
 		sys-apps/texinfo
 	)
 	python? (
@@ -92,10 +92,6 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 SITEFILE="50${PN}-gentoo.el"
-
-python_check_deps() {
-	python_has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
-}
 
 pkg_setup() {
 	use emacs && elisp-check-emacs-version
