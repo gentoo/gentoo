@@ -5,4 +5,7 @@
 		<name>Patrick McLean</name>
 		<email>chutzpah@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">xd009642/tarpaulin</remote-id>
+	</upstream>
 </pkgmetadata>
