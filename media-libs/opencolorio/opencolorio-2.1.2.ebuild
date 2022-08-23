@@ -55,6 +55,7 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.1-gcc12.patch
+	"${FILESDIR}"/${PN}-2.1.2-musl-strtol.patch
 )
 
 pkg_setup() {
