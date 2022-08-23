@@ -145,6 +145,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.0.3-IO-FFMPEG-support-FFmpeg-5.0-API-changes.patch
 	"${FILESDIR}"/${P}-adjust-to-find-binaries.patch
 	"${FILESDIR}"/${P}-avoid-naming-collision-with-netcdf-4.9.0.patch
+	"${FILESDIR}"/${P}-Change-or-scope-struct-names-to-avoid-conflicts.patch
 )
 
 DOCS=( CONTRIBUTING.md README.md )
