@@ -288,10 +288,6 @@ net-im/telepathy-connection-managers sipe
 # Missing keywords, bug #478254
 gnome-base/gnome classic extras
 
-# Mark Wright <gienah@gentoo.org> (2013-10-26)
-# template-haskell not yet available
-dev-haskell/dataenc test
-
 # Agostino Sarubbo <ago@gentoo.org> (2013-08-24)
 # Klibc does not work anymore on ppc
 app-shells/mksh static

@@ -10,4 +10,7 @@
 		<name>Gentoo Webapps</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">moodle/moodle</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -23,14 +23,18 @@ RESTRICT="!test? ( test )"
 
 BUILD_DIR="${S}/build"
 
-RDEPEND="
+DEPEND="
 	sys-devel/clang:${LLVM_MAX_SLOT}
 	>=sys-devel/lld-${LLVM_MAX_SLOT}
 	<sys-devel/lld-$((${LLVM_MAX_SLOT} + 1))
 	sys-devel/llvm:${LLVM_MAX_SLOT}
 	>=sys-libs/zlib-1.2.12
 "
-DEPEND="${RDEPEND}"
+
+RDEPEND="
+	${DEPEND}
+	!dev-lang/zig-bin
+"
 
 llvm_check_deps() {
 	has_version "sys-devel/clang:${LLVM_SLOT}"
@@ -50,8 +54,8 @@ pkg_setup() {
 src_configure() {
 	local mycmakeargs=(
 		-DZIG_USE_CCACHE=OFF
-		-DZIG_PREFER_CLANG_CPP_DYLIB=ON
-		-DZIG_SINGLE_THREADED="$(usex threads OFF ON)"
+		-DZIG_SHARED_LLVM=ON
+		-DZIG_SINGLE_THREADED="$(usex !threads)"
 	)
 
 	cmake_src_configure
@@ -62,7 +66,7 @@ src_compile() {
 
 	if use stage2 ; then
 		cd "${BUILD_DIR}" || die
-		./zig build -p stage2 -Dstatic-llvm=false -Denable-llvm=true -Dsingle-threaded="$(usex threads false true)" || die
+		./zig build -p stage2 -Dstatic-llvm=false -Denable-llvm=true -Dsingle-threaded="$(usex threads false true)" -Dskip-install-lib-files=true --verbose || die
 	fi
 }
 
@@ -74,15 +78,11 @@ src_test() {
 src_install() {
 	cmake_src_install
 
-	if use stage2 ; then
-		cd "${BUILD_DIR}" || die
-		mv ./stage2/bin/zig zig-stage2 || die
-		dobin zig-stage2
-	fi
+	use stage2 && newbin "${BUILD_DIR}/stage2/bin/zig" zig-stage2
 }
 
 # see https://github.com/ziglang/zig/issues/3382
-QA_FLAGS_IGNORED="/usr/bin/zig-stage2"
+QA_FLAGS_IGNORED="usr/bin/zig-stage2"
 
 pkg_postinst() {
 	use stage2 && elog "You enabled stage2 USE flag, Zig stage1 was installed as /usr/bin/zig, Zig stage2 was installed as /usr/bin/zig-stage2"
