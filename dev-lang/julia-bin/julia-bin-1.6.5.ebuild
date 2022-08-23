@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 MY_PN=${PN/-bin/}
 MY_P=${MY_PN}-${PV/_/-}
 MY_PV=$(ver_cut 1-2)
@@ -17,20 +18,18 @@ SRC_URI="
 	)
 	arm64? ( ${BASE_SRC_URI}/linux/aarch64/${MY_PV}/${MY_P}-linux-aarch64.tar.gz )
 "
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="${MY_PV}"
 KEYWORDS="-* ~amd64 ~x86"
+RESTRICT="strip"
 
 RDEPEND="app-arch/p7zip"
 DEPEND="${RDEPEND}"
 
-RESTRICT="strip"
-
 QA_PREBUILT="*"
 QA_SONAME="*"
-
-S="${WORKDIR}/${MY_P}"
 
 src_install() {
 	insinto "/usr/$(get_libdir)/${MY_P}/"
@@ -45,6 +44,6 @@ src_install() {
 
 	local revord=$(( 9999 - $(ver_cut 1) * 100 - $(ver_cut 2) )) # 1.6 -> 106
 	newenvd - 99${MY_PN}${revord} <<-EOF
-		PATH="${EROOT}/usr/$(get_libdir)/${MY_P}/bin"
+		PATH="${EPREFIX}/usr/$(get_libdir)/${MY_P}/bin"
 	EOF
 }
