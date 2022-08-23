@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
 RESTRICT=test # Ambiguous packages: dns-3.0.2 resolv-0.1.1.1
@@ -40,6 +40,11 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-ghc84.patch
 )
+
+src_prepare() {
+	sed -i -e "/-optc-O3/d" -e "/-optc-march=native/d" "${PN}.cabal" || die
+	default
+}
 
 src_install() {
 	haskell-cabal_src_install
