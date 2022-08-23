@@ -13,7 +13,7 @@ SRC_URI="https://github.com/VeNoMouS/${PN}/archive/${PV}.tar.gz -> ${PF}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 
 RDEPEND="
 	dev-python/pyparsing[${PYTHON_USEDEP}]
