@@ -1,0 +1,35 @@
+https://github.com/ostreedev/ostree/pull/2702
+
+From c568073d1e6a5e602a6df29eaa5b7392e076f5d6 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 23 Aug 2022 23:37:06 +0100
+Subject: [PATCH] buildutil/glibtests.m4: fix bashism
+
+configure scripts need to be runnable with a POSIX-compliant /bin/sh.
+
+On many (but not all!) systems, /bin/sh is provided by Bash, so errors
+like this aren't spotted. Notably Debian defaults to /bin/sh provided
+by dash which doesn't tolerate such bashisms as '=='.
+
+This retains compatibility with bash.
+
+Fixes configure warnings/errors like:
+```
+
+checking whether to build static libraries... no
+./configure: 14795: test: unexpected operator
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/buildutil/glibtests.m4
++++ b/buildutil/glibtests.m4
+@@ -25,7 +25,7 @@ AC_DEFUN([GLIB_TESTS],
+                   *) AC_MSG_ERROR([bad value ${enableval} for --enable-always-build-tests]) ;;
+                  esac])
+   AM_CONDITIONAL([ENABLE_ALWAYS_BUILD_TESTS], test "$ENABLE_ALWAYS_BUILD_TESTS" = "1")
+-  if test "$ENABLE_INSTALLED_TESTS" == "1"; then
++  if test "$ENABLE_INSTALLED_TESTS" = "1"; then
+     AC_SUBST(installed_test_metadir, [${datadir}/installed-tests/]AC_PACKAGE_NAME)
+     AC_SUBST(installed_testdir, [${libexecdir}/installed-tests/]AC_PACKAGE_NAME)
+   fi
+
