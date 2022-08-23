@@ -9,6 +9,10 @@
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription>
 		With this library you can use YARA from your Python programs. It covers
 		all YARA's features, from compiling, saving and loading rules to
