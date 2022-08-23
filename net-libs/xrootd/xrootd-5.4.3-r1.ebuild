@@ -80,6 +80,7 @@ src_configure() {
 		-DENABLE_TESTS=$(usex test-suite)
 		-DENABLE_VOMS=no
 		-DFORCE_ENABLED=yes
+		-DPIP_OPTIONS="--ignore-installed" # bug 861452
 		-DXRDCL_ONLY=$(usex server "no" "yes")
 	)
 	cmake_src_configure
