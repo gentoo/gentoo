@@ -1,0 +1,14 @@
+# Fix unknown type name 'u_char' on musl
+# Closes: https://bugs.gentoo.org/829245
+# Closes: https://bugs.gentoo.org/715758
+# Upstream PR: https://github.com/greatscottgadgets/libbtbb/pull/64
+--- a/lib/src/pcap.c
++++ b/lib/src/pcap.c
+@@ -27,6 +27,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <assert.h>
++#include <sys/types.h>
+
+ typedef enum {
+ 	PCAP_OK = 0,
