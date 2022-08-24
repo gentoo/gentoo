@@ -219,6 +219,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-17.2.3-gcc12.patch"
 	"${FILESDIR}/ceph-17.2.0-gcc12-dout.patch"
 	"${FILESDIR}/ceph-17.2.0-gcc12-header.patch"
+	"${FILESDIR}/ceph-17.2.3-flags.patch"
 )
 
 check-reqs_export_vars() {
@@ -330,6 +331,9 @@ ceph_src_configure() {
 	else
 		mycmakeargs+=(
 			-DWITH_RADOSGW_SELECT_PARQUET:BOOL=OFF
+			-DWITH_JAEGER:BOOL=OFF
+			# don't want to warn about unused CLI when reconfiguring for python
+			-DCMAKE_WARN_UNUSED_CLI:BOOL=OFF
 		)
 	fi
 
@@ -396,6 +400,7 @@ src_install() {
 
 	python_setup
 	cmake_src_install
+	python_optimize
 
 	find "${ED}" -name '*.la' -type f -delete || die
 
@@ -458,5 +463,9 @@ python_install() {
 pkg_postinst() {
 	readme.gentoo_print_elog
 	tmpfiles_process ${PN}.conf
+	udev_reload
+}
+
+pkg_postrm() {
 	udev_reload
 }
