@@ -44,6 +44,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# Upstream aren't interested in fixing: bug #855698
+	filter-lto
+
 	if use arm ; then
 		# When building for thumb, we can't allow frame pointers.
 		# http://crbug.com/464517
