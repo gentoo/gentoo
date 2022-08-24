@@ -25,6 +25,7 @@ RESTRICT="test"
 
 RDEPEND="
 	>=dev-libs/libbpf-0.8:=
+	<dev-libs/libbpf-1.0:=
 	>=dev-util/bcc-0.13.0:=
 	dev-util/systemtap
 	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=
