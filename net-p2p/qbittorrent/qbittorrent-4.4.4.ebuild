@@ -19,13 +19,12 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+dbus +gui test webui"
-RESTRICT="!test? ( test )"
+IUSE="+dbus +gui webui"
 REQUIRED_USE="dbus? ( gui )
 	|| ( gui webui )"
 
 RDEPEND="
-	>=dev-libs/boost-1.71:=
+	>=dev-libs/boost-1.65.0-r1:=
 	>=dev-libs/openssl-1.1.1:=
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5[ssl]
@@ -44,7 +43,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
-DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md )
+DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md TODO )
 
 src_prepare() {
 	MULTIBUILD_VARIANTS=( base )
@@ -74,8 +73,6 @@ src_configure() {
 			# We do these in multibuild, see bug #839531 for why.
 			# Fedora has to do the same thing.
 			-DGUI=$(usex gui)
-
-			-DTESTING=$(usex test)
 		)
 
 		if [[ ${MULTIBUILD_VARIANT} == webui ]] ; then
@@ -97,15 +94,6 @@ src_configure() {
 
 src_compile() {
 	multibuild_foreach_variant cmake_src_compile
-}
-
-src_test() {
-	qbittorrent_run_tests() {
-		cd "${BUILD_DIR}"/test || die
-		ctest . || die
-	}
-
-	multibuild_foreach_variant qbittorrent_run_tests
 }
 
 src_install() {
