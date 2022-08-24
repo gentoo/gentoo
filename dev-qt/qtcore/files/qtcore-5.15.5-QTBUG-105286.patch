@@ -1,0 +1,165 @@
+From 7f9253defd2e90f900d963c6d248a2a0bdaca1a8 Mon Sep 17 00:00:00 2001
+From: Volker Hilsheimer <volker.hilsheimer@qt.io>
+Date: Tue, 16 Aug 2022 15:32:58 +0200
+Subject: [PATCH] Don't access QObjectPrivate::declarativeData unguarded
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The QObjectPrivate::declarativeData member is stored in a union with
+currentChildBeingDeleted. The QObject destructor always sets the
+currentChildBeingDeleted member of the union. It also sets the
+isDeletingChildren bool, which is the only way to find out which union
+member we can safely access.
+
+While the QObject destructor is deleting children and isDeletingChildren
+is set, we must not access the declarativeData member of the union.
+
+Add a test case that initializes the function pointers for the
+declarative handlers and constructs a situation where an object
+emits a signal while it is destroying children.
+
+Fixes: QTBUG-105286
+Pick-to: 6.4 6.3 6.3.2 6.2 5.15
+Change-Id: Iea5ba2f7843b6926a8d157be166e6044d98d6c02
+Reviewed-by: Qt CI Bot <qt_ci_bot@qt-project.org>
+Reviewed-by: Mårten Nordheim <marten.nordheim@qt.io>
+(cherry picked from commit 3be99799a675a631c67e05897383af9abbc377b3)
+---
+ src/corelib/kernel/qobject.cpp                |  4 +-
+ src/corelib/kernel/qobject_p.h                |  2 +-
+ .../corelib/kernel/qobject/tst_qobject.cpp    | 77 +++++++++++++++++++
+ 3 files changed, 80 insertions(+), 3 deletions(-)
+
+diff --git a/src/corelib/kernel/qobject.cpp b/src/corelib/kernel/qobject.cpp
+index 0124f88abd..1f3843669b 100644
+--- a/src/corelib/kernel/qobject.cpp
++++ b/src/corelib/kernel/qobject.cpp
+@@ -992,7 +992,7 @@ QObject::~QObject()
+         emit destroyed(this);
+     }
+ 
+-    if (d->declarativeData) {
++    if (!d->isDeletingChildren && d->declarativeData) {
+         if (static_cast<QAbstractDeclarativeDataImpl*>(d->declarativeData)->ownedByQml1) {
+             if (QAbstractDeclarativeData::destroyed_qml1)
+                 QAbstractDeclarativeData::destroyed_qml1(d->declarativeData, this);
+@@ -2583,7 +2583,7 @@ int QObject::receivers(const char *signal) const
+         if (!d->isSignalConnected(signal_index))
+             return receivers;
+ 
+-        if (d->declarativeData && QAbstractDeclarativeData::receivers) {
++        if (!d->isDeletingChildren && d->declarativeData && QAbstractDeclarativeData::receivers) {
+             receivers += QAbstractDeclarativeData::receivers(d->declarativeData, this,
+                                                              signal_index);
+         }
+diff --git a/src/corelib/kernel/qobject_p.h b/src/corelib/kernel/qobject_p.h
+index 66c19d174e..46dcb93521 100644
+--- a/src/corelib/kernel/qobject_p.h
++++ b/src/corelib/kernel/qobject_p.h
+@@ -428,7 +428,7 @@ inline void QObjectPrivate::checkForIncompatibleLibraryVersion(int version) cons
+ 
+ inline bool QObjectPrivate::isDeclarativeSignalConnected(uint signal_index) const
+ {
+-    return declarativeData && QAbstractDeclarativeData::isSignalConnected
++    return !isDeletingChildren && declarativeData && QAbstractDeclarativeData::isSignalConnected
+             && QAbstractDeclarativeData::isSignalConnected(declarativeData, q_func(), signal_index);
+ }
+ 
+diff --git a/tests/auto/corelib/kernel/qobject/tst_qobject.cpp b/tests/auto/corelib/kernel/qobject/tst_qobject.cpp
+index 9bd66c0835..ed4a0bae5d 100644
+--- a/tests/auto/corelib/kernel/qobject/tst_qobject.cpp
++++ b/tests/auto/corelib/kernel/qobject/tst_qobject.cpp
+@@ -158,6 +158,7 @@ private slots:
+     void nullReceiver();
+     void functorReferencesConnection();
+     void disconnectDisconnects();
++    void declarativeData();
+ };
+ 
+ struct QObjectCreatedOnShutdown
+@@ -7679,5 +7680,81 @@ void tst_QObject::disconnectDisconnects()
+ Q_STATIC_ASSERT(QtPrivate::HasQ_OBJECT_Macro<tst_QObject>::Value);
+ Q_STATIC_ASSERT(!QtPrivate::HasQ_OBJECT_Macro<SiblingDeleter>::Value);
+ 
++#ifdef QT_BUILD_INTERNAL
++/*
++    Since QObjectPrivate stores the declarativeData pointer in a union with the pointer
++    to the currently destroyed child, calls to the QtDeclarative handlers need to be
++    correctly guarded. QTBUG-105286
++*/
++namespace QtDeclarative {
++static QAbstractDeclarativeData *theData;
++
++static void destroyed(QAbstractDeclarativeData *data, QObject *)
++{
++    QCOMPARE(data, theData);
++}
++static void signalEmitted(QAbstractDeclarativeData *data, QObject *, int, void **)
++{
++    QCOMPARE(data, theData);
++}
++// we can't use QCOMPARE in the next two functions, as they don't return void
++static int receivers(QAbstractDeclarativeData *data, const QObject *, int)
++{
++    QTest::qCompare(data, theData, "data", "theData", __FILE__, __LINE__);
++    return 0;
++}
++static bool isSignalConnected(QAbstractDeclarativeData *data, const QObject *, int)
++{
++    QTest::qCompare(data, theData, "data", "theData", __FILE__, __LINE__);
++    return true;
++}
++
++class Object : public QObject
++{
++    Q_OBJECT
++public:
++    using QObject::QObject;
++    ~Object()
++    {
++        if (Object *p = static_cast<Object *>(parent()))
++            p->emitSignal();
++    }
++
++    void emitSignal()
++    {
++        emit theSignal();
++    }
++
++signals:
++    void theSignal();
++};
++
++}
++#endif
++
++void tst_QObject::declarativeData()
++{
++#ifdef QT_BUILD_INTERNAL
++    QScopedValueRollback destroyed(QAbstractDeclarativeData::destroyed,
++                                   QtDeclarative::destroyed);
++    QScopedValueRollback signalEmitted(QAbstractDeclarativeData::signalEmitted,
++                                       QtDeclarative::signalEmitted);
++    QScopedValueRollback receivers(QAbstractDeclarativeData::receivers,
++                                   QtDeclarative::receivers);
++    QScopedValueRollback isSignalConnected(QAbstractDeclarativeData::isSignalConnected,
++                                           QtDeclarative::isSignalConnected);
++
++    QtDeclarative::Object p;
++    QObjectPrivate *priv = QObjectPrivate::get(&p);
++    priv->declarativeData = QtDeclarative::theData = new QAbstractDeclarativeData;
++
++    connect(&p, &QtDeclarative::Object::theSignal, &p, []{
++    });
++
++    QtDeclarative::Object *child = new QtDeclarative::Object;
++    child->setParent(&p);
++#endif
++}
++
+ QTEST_MAIN(tst_QObject)
+ #include "tst_qobject.moc"
+-- 
+GitLab
+
