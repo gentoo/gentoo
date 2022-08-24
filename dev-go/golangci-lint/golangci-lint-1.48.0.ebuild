@@ -9,7 +9,7 @@ HOMEPAGE="https://github.com/golangci/golangci-lint"
 SRC_URI="https://github.com/golangci/golangci-lint/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
-LICENSE="BSD MIT"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 
