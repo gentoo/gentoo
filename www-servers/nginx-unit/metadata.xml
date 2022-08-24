@@ -13,7 +13,6 @@
 		engineering or operations.
 	</longdescription>
 	<use>
-		<flag name="php7-3">Support for PHP 7.3</flag>
 		<flag name="php7-4">Support for PHP 7.4</flag>
 		<flag name="php8-0">Support for PHP 7.4</flag>
 		<flag name="php8-1">Support for PHP 7.4</flag>
