@@ -1,0 +1,19 @@
+https://github.com/slicer69/sysvinit/commit/e7622b031dac56e1836d2c6e353da4b7f8367aab
+
+From: Adam Sampson <ats@offog.org>
+Date: Sun, 21 Aug 2022 22:13:09 +0100
+Subject: [PATCH] Use the .po files to work out which manpage dirs to create.
+
+The pattern being used here didn't match anything in a tarball release.
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -214,7 +214,7 @@ install:	all
+ 		fi
+ 		$(INSTALL_DIR) $(ROOT)/usr/include/
+ 		$(INSTALL_DATA) initreq.h $(ROOT)/usr/include/
+-		for lang in  '' $(subst ../man/,,$(wildcard ../man/po/??/)); do \
++		for lang in  '' $(patsubst ../man/po/%.po,%,$(wildcard ../man/po/??.po)); do \
+ 			$(INSTALL_DIR) $(ROOT)$(MANDIR)/man1/$$lang; \
+ 			$(INSTALL_DIR) $(ROOT)$(MANDIR)/man5/$$lang; \
+ 			$(INSTALL_DIR) $(ROOT)$(MANDIR)/man8/$$lang; \
+
