@@ -57,7 +57,7 @@ SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}
 DESCRIPTION="Firefox Web Browser"
 HOMEPAGE="https://www.mozilla.com/firefox"
 
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
 SLOT="esr"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
@@ -417,15 +417,6 @@ pkg_pretend() {
 		fi
 
 		check-reqs_pkg_pretend
-	fi
-
-	if has_version =www-client/firefox-91*:esr; then
-		ewarn ""
-		ewarn "You are attempting to upgrade from firefox-91esr, this upgrade path is still"
-		ewarn "not supported by upstream. If you wish to continue, please backup your"
-		ewarn "current firefox profile, and uninstall www-client/firefox:esr before continuing."
-		ewarn ""
-		die
 	fi
 }
 
