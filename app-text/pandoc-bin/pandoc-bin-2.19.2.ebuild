@@ -18,7 +18,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~amd64"  # Upstream provides only AMD and ARM 64-bit binaries
+KEYWORDS="-* ~amd64 ~arm64"  # Upstream provides only AMD and ARM 64-bit binaries
 IUSE="+pandoc-symlink"
 
 RDEPEND="pandoc-symlink? ( !${CATEGORY}/${MY_PN} )"
