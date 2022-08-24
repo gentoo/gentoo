@@ -5,7 +5,7 @@ EAPI=8
 
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit lua toolchain-funcs
+inherit lua
 
 DESCRIPTION="Elegant Lua unit testing"
 HOMEPAGE="http://olivinelabs.com/busted/"
