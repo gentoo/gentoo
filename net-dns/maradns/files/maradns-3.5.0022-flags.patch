@@ -40,14 +40,14 @@ index 965c7fb..572dccc 100644
 +	cd ../qual ; $(MAKE) $(M) ; cd ../server ; \
 +	$(MAKE) $(M) $(V) COMPILED=\"$(COMPILED)\" ; \
 +	cd ../tools ; $(MAKE) $(M) ; \
-+	cd ../deadwood-*/src/ ; $(MAKE) FLAGS=-O2 ; \
++	cd ../deadwood-*/src/ ; $(MAKE) $(M) ; \
 +	cd ../../tcp ; $(MAKE) $(M) $(V) ; cat ../00README.FIRST
  
  debug: 
 -	cd libs ; make $(D) DEBUG="-DDEBUG -DTHREADS" ; \
 -	cd ../dns ; make $(D) ; cd ../rng ; make $(D) ; \
 -	cd ../parse ; make $(D) ; cd ../qual ; make $(D) ; \
-+	cd libs ; $(MAKE) $(D) DEBUG="-DDEBUG -DTHREADS" ; \
++	cd libs ; $(MAKE) $(D) ; \
 +	cd ../dns ; $(MAKE) $(D) ; cd ../rng ; $(MAKE) $(D) ; \
 +	cd ../parse ; $(MAKE) $(D) ; cd ../qual ; $(MAKE) $(D) ; \
  	cd ../server ; \
