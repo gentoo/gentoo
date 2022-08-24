@@ -102,4 +102,5 @@ pkg_postinst() {
 
 	optfeature "SSH_ASKPASS program implementation" lxqt-base/lxqt-openssh-askpass net-misc/ssh-askpass-fullscreen net-misc/x11-ssh-askpass
 	optfeature "QEMU host support" app-emulation/qemu[usbredir,spice]
+	optfeature "virt-install --location ISO support" dev-libs/libisoburn
 }
