@@ -1,0 +1,147 @@
+Removes hard dependency on GTK in favour of stdin calls.
+
+diff --git a/g_src/KeybindingScreen.cpp b/g_src/KeybindingScreen.cpp
+index 5dd3f2f..4d1a108 100644
+--- a/g_src/KeybindingScreen.cpp
++++ b/g_src/KeybindingScreen.cpp
+@@ -1,7 +1,9 @@
+ #ifdef __APPLE__
+ # include "osx_messagebox.h"
+ #elif defined(unix)
+-# include <gtk/gtk.h>
++# ifdef HAVE_GTK
++#  include <gtk/gtk.h>
++# endif
+ #endif
+ 
+ #include "GL/glew.h"
+diff --git a/g_src/enabler.cpp b/g_src/enabler.cpp
+index 897d56a..4ea9458 100644
+--- a/g_src/enabler.cpp
++++ b/g_src/enabler.cpp
+@@ -1,7 +1,9 @@
+ #ifdef __APPLE__
+ # include "osx_messagebox.h"
+ #elif defined(unix)
+-# include <gtk/gtk.h>
++# ifdef HAVE_GTK
++#  include <gtk/gtk.h>
++# endif
+ #endif
+ 
+ #include <cassert>
+@@ -715,7 +717,7 @@ int main (int argc, char* argv[]) {
+ #ifdef unix
+   setlocale(LC_ALL, "");
+ #endif
+-#if !defined(__APPLE__) && defined(unix)
++#if !defined(__APPLE__) && defined(unix) && defined(HAVE_GTK)
+   bool gtk_ok = false;
+   if (getenv("DISPLAY"))
+     gtk_ok = gtk_init_check(&argc, &argv);
+@@ -736,6 +738,7 @@ int main (int argc, char* argv[]) {
+   init.begin(); // Load init.txt settings
+   
+ #if !defined(__APPLE__) && defined(unix)
++ #if defined(HAVE_GTK)
+   if (!gtk_ok && !init.display.flag.has_flag(INIT_DISPLAY_FLAG_TEXT)) {
+     puts("Display not found and PRINT_MODE not set to TEXT, aborting.");
+     exit(EXIT_FAILURE);
+@@ -745,6 +748,7 @@ int main (int argc, char* argv[]) {
+     puts("Graphical tiles are not compatible with text output, sorry");
+     exit(EXIT_FAILURE);
+   }
++ #endif
+ #endif
+ 
+   // Initialize video, if we /use/ video
+diff --git a/g_src/renderer_curses.cpp b/g_src/renderer_curses.cpp
+index d93061d..f873784 100644
+--- a/g_src/renderer_curses.cpp
++++ b/g_src/renderer_curses.cpp
+@@ -1,3 +1,7 @@
++#if defined(__APPLE__) || defined(unix)
++# include <unistd.h>
++#endif
++
+ static bool curses_initialized = false;
+ 
+ static void endwin_void() {
+diff --git a/g_src/ttf_manager.cpp b/g_src/ttf_manager.cpp
+index aeebc14..ce48a03 100644
+--- a/g_src/ttf_manager.cpp
++++ b/g_src/ttf_manager.cpp
+@@ -2,6 +2,7 @@
+ #include "init.h"
+ #include <cmath>
+ #include <iostream>
++#include <cmath>
+ 
+ using namespace std;
+ 
+diff --git a/g_src/win32_compat.cpp b/g_src/win32_compat.cpp
+index 44d6ace..02582c7 100644
+--- a/g_src/win32_compat.cpp
++++ b/g_src/win32_compat.cpp
+@@ -13,7 +13,11 @@
+ # ifdef __APPLE__
+ #  include "osx_messagebox.h"
+ # elif defined(unix)
+-#  include <gtk/gtk.h>
++#  ifdef HAVE_GTK
++#    include <gtk/gtk.h>
++#  else
++#    include <unistd.h>
++#  endif
+ # endif
+ #endif
+ 
+@@ -112,6 +116,7 @@ int MessageBox(HWND *dummy, const char *text, const char *caption, UINT type)
+   }
+ # else // GTK code
+   if (getenv("DISPLAY")) {
++  #ifdef HAVE_GTK
+     // Have X, will dialog
+     GtkWidget *dialog = gtk_message_dialog_new(NULL,
+                                                GTK_DIALOG_DESTROY_WITH_PARENT,
+@@ -141,13 +146,30 @@ int MessageBox(HWND *dummy, const char *text, const char *caption, UINT type)
+         break;
+       }
+     }
++  #else
++    if (isatty(fileno(stdin))) {
++      dprintf(2, "Alert %s:\n%s\n", caption ? caption : "", text ? text : "");
++      if (type & MB_YESNO) {
++        while(ret == IDOK) {
++          dprintf(2, "please answer with 'yes' or 'no'\n");
++          char buf[16];
++          fgets(buf, sizeof buf, stdin);
++          if(!strncmp(buf, "yes", 3)) ret = IDYES;
++          else if(!strncmp(buf, "no", 2)) ret = IDNO;
++        }
++      }
++    } else {
++      /* just assume windowed if no TTY is available to ask */
++      ret = IDNO;
++    }
++  #endif /* HAVE_GTK */
+   } else {
+     // Use curses
+     init_curses();
+     erase();
+     gps.force_full_display_count = 1;
+     wattrset(*stdscr_p, A_NORMAL | COLOR_PAIR(1));
+-    
++
+     mvwaddstr(*stdscr_p, 0, 5, caption);
+     mvwaddstr(*stdscr_p, 2, 2, text);
+     nodelay(*stdscr_p, false);
+@@ -173,7 +195,7 @@ int MessageBox(HWND *dummy, const char *text, const char *caption, UINT type)
+     }
+     nodelay(*stdscr_p, -1);
+   }
+-# endif
++  #endif
+   
+   if (toggle_screen) {
+     enabler.toggle_fullscreen();
