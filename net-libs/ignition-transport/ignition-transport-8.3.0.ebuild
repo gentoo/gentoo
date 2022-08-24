@@ -29,4 +29,4 @@ BDEPEND="
 	dev-util/ignition-cmake:2
 	virtual/pkgconfig"
 CMAKE_BUILD_TYPE=RelWithDebInfo
-S="${WORKDIR}/ign-transport-${PN}8_${PV}"
+S="${WORKDIR}/gz-transport-ignition-transport8_${PV}"
