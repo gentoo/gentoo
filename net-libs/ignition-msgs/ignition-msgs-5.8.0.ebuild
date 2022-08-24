@@ -22,4 +22,4 @@ DEPEND="${RDEPEND}
 	dev-util/ignition-cmake:2"
 BDEPEND="dev-util/ignition-cmake:2"
 CMAKE_BUILD_TYPE=RelWithDebInfo
-S="${WORKDIR}/ign-msgs-${PN}5_${PV}"
+S="${WORKDIR}/gz-msgs-ignition-msgs5_${PV}"
