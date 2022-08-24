@@ -38,7 +38,7 @@ PATCHES=( "${FILESDIR}/${P}-without_x11.patch" )
 
 src_configure() {
 	local mycmakeargs=(
-		-DWITH_X11=$(usex X)
+		-DWITHOUT_X11=$(usex !X)
 	)
 	ecm_src_configure
 }
