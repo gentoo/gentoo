@@ -21,7 +21,7 @@
 # phase rather than 'default'.
 
 # @ECLASS_VARIABLE: CMAKE_ECLASS
-# @DEPRECATED
+# @DEPRECATED: none
 # @DESCRIPTION:
 # Only "cmake" is supported.
 : ${CMAKE_ECLASS:=cmake}
