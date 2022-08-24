@@ -1,93 +1,28 @@
-Index: ign-common-ignition-common3_3.14.0/av/src/AudioDecoder.cc
+Index: gz-common-ignition-common3_3.14.2/graphics/src/Image.cc
 ===================================================================
---- ign-common-ignition-common3_3.14.0.orig/av/src/AudioDecoder.cc
-+++ ign-common-ignition-common3_3.14.0/av/src/AudioDecoder.cc
-@@ -35,7 +35,7 @@ class ignition::common::AudioDecoderPriv
-   public: AVCodecContext *codecCtx;
+--- gz-common-ignition-common3_3.14.2.orig/graphics/src/Image.cc
++++ gz-common-ignition-common3_3.14.2/graphics/src/Image.cc
+@@ -20,6 +20,7 @@
+ #include <FreeImage.h>
  
-   /// \brief libavcodec audio codec.
--  public: AVCodec *codec;
-+  public: const AVCodec *codec;
+ #include <string>
++#include <cstring>
  
-   /// \brief Index of the audio stream.
-   public: int audioStream;
-@@ -132,8 +132,12 @@ bool AudioDecoder::Decode(uint8_t **_out
- # pragma GCC diagnostic push
- # pragma GCC diagnostic ignored "-Wdeprecated-declarations"
- #endif
--        bytesDecoded = avcodec_decode_audio4(this->data->codecCtx, decodedFrame,
--            &gotFrame, &packet1);
-+	bytesDecoded = avcodec_send_packet(this->data->codecCtx, &packet1);                                                        
-+	if (bytesDecoded >= 0 || bytesDecoded == AVERROR_EOF) {                                                              
-+		bytesDecoded = avcodec_receive_frame(this->data->codecCtx, decodedFrame);
-+		gotFrame = bytesDecoded >= 0;
-+		if (bytesDecoded == AVERROR(EAGAIN) || bytesDecoded == AVERROR_EOF) bytesDecoded = 0;
-+	}                                                                                   
- #ifndef _WIN32
- # pragma GCC diagnostic pop
- #endif
-@@ -224,7 +228,7 @@ bool AudioDecoder::SetFile(const std::st
- # pragma GCC diagnostic push
- # pragma GCC diagnostic ignored "-Wdeprecated-declarations"
- #endif
--    if (this->data->formatCtx->streams[i]->codec->codec_type == // NOLINT(*)
-+    if (this->data->formatCtx->streams[i]->codecpar->codec_type == // NOLINT(*)
-         AVMEDIA_TYPE_AUDIO)
- #ifndef _WIN32
- # pragma GCC diagnostic pop
-@@ -249,8 +253,9 @@ bool AudioDecoder::SetFile(const std::st
- # pragma GCC diagnostic push
- # pragma GCC diagnostic ignored "-Wdeprecated-declarations"
- #endif
--  this->data->codecCtx = this->data->formatCtx->streams[
--    this->data->audioStream]->codec;
-+  this->data->codecCtx = avcodec_alloc_context3(nullptr);
-+  avcodec_parameters_to_context(this->data->codecCtx, this->data->formatCtx->streams[
-+    this->data->audioStream]->codecpar);
- #ifndef _WIN32
- # pragma GCC diagnostic pop
- #endif
-Index: ign-common-ignition-common3_3.14.0/av/src/Video.cc
+ #include <ignition/common/Console.hh>
+ #include <ignition/common/Util.hh>
+Index: gz-common-ignition-common3_3.14.2/av/src/AudioDecoder.cc
 ===================================================================
---- ign-common-ignition-common3_3.14.0.orig/av/src/Video.cc
-+++ ign-common-ignition-common3_3.14.0/av/src/Video.cc
-@@ -91,7 +91,7 @@ void Video::Cleanup()
- /////////////////////////////////////////////////
- bool Video::Load(const std::string &_filename)
- {
--  AVCodec *codec = nullptr;
-+  const AVCodec *codec = nullptr;
-   this->dataPtr->videoStream = -1;
- 
-   if (this->dataPtr->formatCtx || this->dataPtr->avFrame ||
-Index: ign-common-ignition-common3_3.14.0/av/src/VideoEncoder.cc
-===================================================================
---- ign-common-ignition-common3_3.14.0.orig/av/src/VideoEncoder.cc
-+++ ign-common-ignition-common3_3.14.0/av/src/VideoEncoder.cc
-@@ -106,7 +106,7 @@ class IGNITION_COMMON_AV_HIDDEN ignition
-   /// Find a suitable encoder for the given codec ID.
-   /// \param[in] _codecId ID of the codec we seek the encoder for.
-   /// \return The matched encoder (or nullptr on failure).
--  public: AVCodec* FindEncoder(AVCodecID _codecId);
-+  public: const AVCodec* FindEncoder(AVCodecID _codecId);
- 
-   /// \brief Get a pointer to the frame that contains the encoder input. This
-   /// mainly serves for uploading the frame to GPU buffer if HW acceleration is
-@@ -123,7 +123,7 @@ class IGNITION_COMMON_AV_HIDDEN ignition
- };
- 
- /////////////////////////////////////////////////
--AVCodec* VideoEncoderPrivate::FindEncoder(AVCodecID _codecId)
-+const AVCodec* VideoEncoderPrivate::FindEncoder(AVCodecID _codecId)
- {
- #ifdef IGN_COMMON_BUILD_HW_VIDEO
-   if (this->hwEncoder)
-@@ -367,7 +367,7 @@ bool VideoEncoder::Start(
-   }
-   else
-   {
--    AVOutputFormat *outputFormat = av_guess_format(nullptr,
-+    const AVOutputFormat *outputFormat = av_guess_format(nullptr,
-                                    this->dataPtr->filename.c_str(), nullptr);
- 
-     if (!outputFormat)
+--- gz-common-ignition-common3_3.14.2.orig/av/src/AudioDecoder.cc
++++ gz-common-ignition-common3_3.14.2/av/src/AudioDecoder.cc
+@@ -157,7 +157,11 @@ bool AudioDecoder::Decode(uint8_t **_out
+         // decodedFrame->linesize[0].
+         int size = decodedFrame->nb_samples *
+           av_get_bytes_per_sample(this->data->codecCtx->sample_fmt) *
++#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(59,24,100)
+           this->data->codecCtx->ch_layout.nb_channels;
++#else
++          this->data->codecCtx->channels;
++#endif
+         // Resize the audio buffer as necessary
+         if (*_outBufferSize + size > maxBufferSize)
+         {

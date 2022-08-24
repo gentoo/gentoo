@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	dev-util/ignition-cmake:2"
 
-S="${WORKDIR}/ign-common-${PN}${IGN_MAJOR}_${PV}"
+S="${WORKDIR}/gz-common-ignition-common${IGN_MAJOR}_${PV}"
 PATCHES=( "${FILESDIR}/ffmpeg5.patch" )
 
 src_configure() {
