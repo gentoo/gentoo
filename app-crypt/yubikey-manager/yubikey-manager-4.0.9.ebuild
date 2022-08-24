@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..11} )
 DISTUTILS_USE_PEP517=poetry
 
-inherit distutils-r1
+inherit distutils-r1 verify-sig
 
 DESCRIPTION="Python library and command line tool for configuring a YubiKey"
 HOMEPAGE="https://developers.yubico.com/yubikey-manager/"
@@ -14,12 +14,14 @@ HOMEPAGE="https://developers.yubico.com/yubikey-manager/"
 # tarballs on Yubico Web site and on GitHub should be identical, and at least
 # for recent releases the latter are signed as well. Only the automatically
 # generated "Source code (tar.gz)" tarballs should not be used.
-SRC_URI="https://github.com/Yubico/yubikey-manager/releases/download/${PV}/${P}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/Yubico/${PN}/releases/download/${PV}/${P}.tar.gz -> ${P}.gh.tar.gz
+	verify-sig? ( https://github.com/Yubico/${PN}/releases/download/${PV}/${P}.tar.gz.sig -> ${P}.gh.tar.gz.sig )"
 
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="ssl"
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/yubico.com.asc"
 
 # app-crypt/ccid required for
 # - 'ykman oath'
@@ -33,7 +35,8 @@ RDEPEND="
 	dev-python/pyscard[${PYTHON_USEDEP}]
 	ssl? ( >=dev-python/pyopenssl-0.15.1[${PYTHON_USEDEP}] )"
 BDEPEND="
-	test? ( dev-python/makefun[${PYTHON_USEDEP}] )"
+	test? ( dev-python/makefun[${PYTHON_USEDEP}] )
+	verify-sig? ( >=sec-keys/openpgp-keys-yubico-20220824 )"
 
 distutils_enable_tests pytest
 
