@@ -5,6 +5,9 @@
 		<email>arthurzam@gentoo.org</email>
 		<name>Arthur Zamarin</name>
 	</maintainer>
+	<use>
+		<flag name="varlink">Enable remote control with varlink</flag>
+	</use>
 	<longdescription>
 		kanshi allows you to define output profiles that are
 		automatically enabled and disabled on hotplug.
