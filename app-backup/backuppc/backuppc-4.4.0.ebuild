@@ -4,6 +4,7 @@
 EAPI=7
 
 MY_P="BackupPC-${PV}"
+MY_PN="BackupPC"
 
 inherit depend.apache systemd
 
@@ -54,11 +55,11 @@ RDEPEND="
 	rss? ( dev-perl/XML-RSS )
 	samba? ( net-fs/samba )"
 
-CGIDIR="/usr/lib/backuppc/htdocs"
-CONFDIR="${EROOT}/etc/${EPREFIX}"
-DATADIR="/var/lib/backuppc"
-DOCDIR="/usr/share/doc/${PF}"
-LOGDIR="/var/log/BackupPC"
+CGIDIR="${EROOT}/usr/lib/backuppc/htdocs"
+CONFDIR="${EROOT}/etc/${MY_PN}"
+DATADIR="${EROOT}/var/lib/backuppc"
+DOCDIR="${EROOT}/usr/share/doc/${PF}"
+LOGDIR="${EROOT}/var/log/BackupPC"
 need_apache2_4
 
 src_prepare() {
