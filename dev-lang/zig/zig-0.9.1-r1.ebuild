@@ -16,6 +16,7 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64"
 fi
 
+SRC_URI+=" https://codeberg.org/BratishkaErik/distfiles/media/branch/master/zig-0.9.1-fix-detecting-abi.patch"
 LICENSE="MIT"
 SLOT="0"
 IUSE="test +threads"
@@ -24,6 +25,8 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}/${P}-fix-single-threaded.patch"
 	"${FILESDIR}/${P}-fix-riscv.patch"
+	"${FILESDIR}/${P}-fix-bad-hostname-segfault.patch"
+	"${DISTDIR}/zig-0.9.1-fix-detecting-abi.patch"
 )
 
 BUILD_DIR="${S}/build"
