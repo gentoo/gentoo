@@ -145,8 +145,8 @@ src_install() {
 	fperms 750 "/var/lib/${PN}" "/var/log/${PN}" "/etc/${PN}"
 	fperms 2750 "/var/lib/${PN}/rules" "/var/lib/${PN}/update"
 
-	newinitd "${FILESDIR}/${PN}-5.0.1-init" ${PN}
-	newconfd "${FILESDIR}/${PN}-5.0.1-conf" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd" ${PN}
+	newconfd "${FILESDIR}/${PN}.confd" ${PN}
 	systemd_dounit "${FILESDIR}"/${PN}.service
 	newtmpfiles "${FILESDIR}"/${PN}.tmpfiles ${PN}.conf
 
