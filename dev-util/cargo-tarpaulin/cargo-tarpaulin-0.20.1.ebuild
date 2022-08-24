@@ -140,6 +140,8 @@ LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 MIT Unlic
 SLOT="0"
 KEYWORDS="~amd64"
 
+QA_FLAGS_IGNORED="/usr/bin/cargo-tarpaulin"
+
 PATCHES=(
 	"${FILESDIR}/cargo-tarpaulin-0.20.1-deps.patch"
 	# integration tests require internet access
