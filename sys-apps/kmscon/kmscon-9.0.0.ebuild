@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/Aetf/kmscon"
 
 LICENSE="MIT LGPL-2.1 BSD-2"
 SLOT="0"
-IUSE="debug doc +drm +fbdev +gles2 +pango pixman systemd +unicode"
+IUSE="debug doc +drm +fbdev +gles2 +pango pixman systemd"
 
 COMMON_DEPEND="
 	>=virtual/udev-172
@@ -54,7 +54,7 @@ src_configure() {
 		$(meson_feature fbdev video_fbdev)
 		$(meson_feature drm video_drm2d)
 		$(meson_feature drm video_drm3d)
-		$(meson_feature unicode font_unifont)
+		-Dfont_unifont=enabled
 		$(meson_feature pango font_pango)
 		-Drenderer_bbulk=enabled
 		$(meson_feature gles2 renderer_gltex)
