@@ -17,13 +17,12 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64"
 MY_USE="perl python ruby"
-MY_USE_PHP="php7-3 php7-4"
+MY_USE_PHP="php7-4"
 IUSE="${MY_USE} ${MY_USE_PHP} ssl"
 REQUIRED_USE="|| ( ${IUSE} )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="perl? ( dev-lang/perl:= )
-	php7-3? ( dev-lang/php:7.3[embed] )
 	php7-4? ( dev-lang/php:7.4[embed] )
 	python? ( ${PYTHON_DEPS} )
 	ruby? (
