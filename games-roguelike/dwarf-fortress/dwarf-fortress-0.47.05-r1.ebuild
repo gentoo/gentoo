@@ -18,7 +18,7 @@ S="${WORKDIR}/df_linux"
 LICENSE="free-noncomm BSD BitstreamVera"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="debug"
+IUSE="debug gui"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -29,7 +29,7 @@ RDEPEND="
 	media-libs/sdl-ttf
 	sys-libs/zlib:=
 	virtual/glu
-	x11-libs/gtk+:2"
+	gui? ( x11-libs/gtk+:2 )"
 # libsndfile, openal and ncurses are only needed at compile-time,
 # optfeature through dlopen() at runtime if requested
 DEPEND="
@@ -44,6 +44,7 @@ QA_PREBUILT="opt/${PN}/libs/Dwarf_Fortress"
 PATCHES=(
 	"${FILESDIR}"/${P}-missing-cmath.patch
 	"${FILESDIR}"/${P}-ncurses6.patch
+	"${FILESDIR}"/${P}-nogtk.patch
 	"${FILESDIR}"/${P}-segfault-fixes.patch
 )
 
@@ -60,7 +61,7 @@ src_compile() {
 	# -DDEBUG is recognized to give additional debug output
 	append-cppflags -D$(usev !debug N)DEBUG
 
-	emake -f "${FILESDIR}"/Makefile.native
+	emake -f "${FILESDIR}"/Makefile.native HAVE_GTK=$(usex gui 1 0)
 }
 
 src_install() {
