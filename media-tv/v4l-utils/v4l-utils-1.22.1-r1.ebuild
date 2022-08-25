@@ -15,13 +15,16 @@ KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 sparc x86"
 IUSE="+bpf dvb opengl qt5 +udev"
 
 RDEPEND="
-	>=media-libs/libv4l-${PV}[dvb?,jpeg]
-	>=virtual/jpeg-0-r2:0=
-	bpf? ( virtual/libelf:= )
+	>=media-libs/libv4l-${PV}[dvb?]
+	bpf? (
+		<dev-libs/libbpf-1:=
+		virtual/libelf:=
+	)
 	udev? ( virtual/libudev )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
 		opengl? ( dev-qt/qtopengl:5[-gles2(-)] virtual/opengl )
 		media-libs/alsa-lib
 	)
@@ -82,7 +85,7 @@ src_configure() {
 		$(use_enable qt5 qv4l2) \
 		$(use_enable qt5 qvidcap) \
 		$(use_enable bpf) \
-		--with-jpeg \
+		--without-jpeg \
 		$(use_with udev libudev) \
 		--with-udevdir="$(get_udevdir)" \
 		"${qt5_paths[@]}"
