@@ -9,4 +9,8 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="sourcehut">~mcf/cproc</remote-id>
+		<remote-id type="github">michaelforney/cproc</remote-id>
+	</upstream>
 </pkgmetadata>
