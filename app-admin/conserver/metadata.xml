@@ -27,6 +27,6 @@
 		of the equipment from home or wherever.
 	</longdescription>
 	<use>
-		<flag name="freeipmi">Compile in FreeIPMI support via sys-libs/freeipmi</flag>
+		<flag name="freeipmi">Compile in FreeIPMI support via <pkg>sys-libs/freeipmi</pkg></flag>
 	</use>
 </pkgmetadata>
