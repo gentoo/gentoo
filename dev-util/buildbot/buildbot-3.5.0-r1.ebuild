@@ -86,7 +86,6 @@ src_prepare() {
 }
 
 python_test() {
-	distutils_install_for_testing
 	"${EPYTHON}" -m twisted.trial buildbot || die "Tests failed with ${EPYTHON}"
 }
 
