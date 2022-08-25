@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-09-06)
+# Java libraries without consumers.
+# Removal on 2022-10-06, bugs #853100 #716228.
+dev-java/gin
+dev-java/gwt
+dev-java/validation-api
+
 # Mike Gilbert <floppym@gentoo.org> (2022-09-05)
 # Crash due to double-free.
 # https://bugs.gentoo.org/868567
