@@ -7,7 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="bzip2">Support bzip2 compressed PCF fonts.</flag>
-		<flag name="truetype">Use media-libs/freetype for font rasterization.</flag>
+		<flag name="truetype">Use <pkg>media-libs/freetype</pkg> for font rasterization.</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:x.org:libxfont</remote-id>
