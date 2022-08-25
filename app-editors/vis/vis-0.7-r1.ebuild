@@ -19,7 +19,7 @@ fi
 
 DESCRIPTION="modern, legacy free, simple yet efficient vim-like editor"
 HOMEPAGE="https://github.com/martanne/vis"
-LICENSE="ISC"
+LICENSE="ISC MIT"
 SLOT="0"
 IUSE="+ncurses +lua selinux test tre"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
