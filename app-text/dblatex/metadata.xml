@@ -10,7 +10,7 @@
         <name>Proxy Maintainers</name>
     </maintainer>
     <use>
-        <flag name="inkscape">Use inkscape to convert SVG. Disable to use gnome-base/librsvg instead.</flag>
+        <flag name="inkscape">Use inkscape to convert SVG. Disable to use <pkg>gnome-base/librsvg</pkg> instead.</flag>
     </use>
     <longdescription>
                dbaltex is an opensource DocBook to LaTeX publishing software 
