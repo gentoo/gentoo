@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,8 +8,8 @@ LUA_COMPAT=( lua5-{1..4} luajit )
 inherit toolchain-funcs flag-o-matic lua-single systemd
 
 DESCRIPTION="Small forwarding DNS server"
-HOMEPAGE="http://www.thekelleys.org.uk/dnsmasq/doc.html"
-SRC_URI="http://www.thekelleys.org.uk/dnsmasq/${P}.tar.xz"
+HOMEPAGE="https://thekelleys.org.uk/dnsmasq/doc.html"
+SRC_URI="https://thekelleys.org.uk/dnsmasq/${P}.tar.xz"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
