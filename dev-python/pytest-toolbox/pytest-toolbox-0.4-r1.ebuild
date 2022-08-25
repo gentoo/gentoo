@@ -26,7 +26,7 @@ BDEPEND="
 	test? (
 		$(python_gen_cond_dep '
 			dev-python/pydantic[${PYTHON_USEDEP}]
-		' pypy3 python3_{8..10}  # TODO: python3_11
+		' pypy3 python3_{8..11}  # TODO: python3_11
 		)
 	)
 "
