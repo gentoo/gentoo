@@ -19,7 +19,7 @@
 		<flag name="noiplog">Disables logging of IP addresses</flag>
 		<flag name="paranoidmsg">Display paranoid messages instead of normal ones</flag>
 		<flag name="resolveids">Resolve UIDs/GIDs</flag>
-		<flag name="sysquota">Enables system quota support (needs sys-fs/quota)</flag>
+		<flag name="sysquota">Enables system quota support (needs <pkg>sys-fs/quota</pkg>)</flag>
 		<flag name="vchroot">Enable support for virtual chroot (possible security risk)</flag>
 	</use>
 </pkgmetadata>
