@@ -8,7 +8,7 @@
 	<longdescription>
 		Extensible NMEA-0183 (GPS) data parser in standard C.
 		A directly linkable library intended for applications
-		that want to embed GPS support, like app-misc/lcd4linux.
+		that want to embed GPS support, like <pkg>app-misc/lcd4linux</pkg>.
 	</longdescription>
 	<upstream>
 		<bugs-to>https://sourceforge.net/p/nmeap/bugs/</bugs-to>
