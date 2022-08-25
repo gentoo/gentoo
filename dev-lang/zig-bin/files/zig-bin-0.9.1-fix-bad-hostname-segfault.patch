@@ -1,0 +1,26 @@
+https://github.com/ziglang/zig/commit/601d8f721d6dc90ac390bf5ecc7d8bafdd6a30d8
+Bug https://bugs.gentoo.org/829959
+
+From 601d8f721d6dc90ac390bf5ecc7d8bafdd6a30d8 Mon Sep 17 00:00:00 2001
+From: Veikka Touminen <git@vexu.eu>
+Date: Sun, 10 Jul 2022 04:27:23 -0600
+Subject: [PATCH] std.net.getAddressList: fix segfault on bad hostname
+
+Fixes #12065
+---
+ lib/std/net.zig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/std/net.zig b/lib/std/net.zig
+index 235ad8496a1..c381df9bce7 100644
+--- a/lib/std/net.zig
++++ b/lib/std/net.zig
+@@ -731,7 +731,7 @@ pub fn getAddressList(allocator: mem.Allocator, name: []const u8, port: u16) !*A
+         break :blk result;
+     };
+     const arena = result.arena.allocator();
+-    errdefer result.arena.deinit();
++    errdefer result.deinit();
+ 
+     if (builtin.target.os.tag == .windows or builtin.link_libc) {
+         const name_c = try std.cstr.addNullByte(allocator, name);
