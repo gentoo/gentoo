@@ -44,7 +44,7 @@
 		<flag name="proxy_getwork">Enable proxy support for getwork protocol (often used with Block Erupter Blades)</flag>
 		<flag name="proxy_stratum">Enable proxy support for stratum protocol</flag>
 		<flag name="rockminer">Enable support for mining with RockMiner devices</flag>
-		<flag name="screen">Provide start-bfgminer.sh script to launch BFGMiner in app-misc/screen</flag>
+		<flag name="screen">Provide start-bfgminer.sh script to launch BFGMiner in <pkg>app-misc/screen</pkg></flag>
 		<flag name="scrypt">Enable support for scrypt mining algorithm</flag>
 		<flag name="sha256d">Enable support for SHA256d mining algorithm</flag>
 		<flag name="twinfury">Enable support for mining with Twinfury USB sticks</flag>
