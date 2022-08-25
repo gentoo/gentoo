@@ -295,12 +295,6 @@ app-crypt/kbfs
 # and no commits upstream since 2017. Bug #834383. Removal on 2022-08-26.
 media-libs/libgroove
 
-# Michał Górny <mgorny@gentoo.org> (2022-07-25)
-# aioredis has been integrated in >=dev-python/redis-py-4.2.0.
-# No revdeps.
-# Removal on 2022-08-24.  Bug #860840.
-dev-python/aioredis
-
 # Marek Szuba <marecki@gentoo.org> (2022-07-13)
 # Upstream has switched from CMake to hand-crafted Makefiles (yes, TO them),
 # which have seriously messed up dependency handling and trigger several
