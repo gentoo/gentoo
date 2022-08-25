@@ -1,0 +1,26 @@
+From 5d1059941f85365019ed08254e79abdb4ba80ee5 Mon Sep 17 00:00:00 2001
+From: Alexey Sokolov <sokolov@google.com>
+Date: Sun, 4 Sep 2022 01:22:30 +0100
+Subject: [PATCH] Install library to the correct lib dir
+
+---
+ QXlsx/CMakeLists.txt | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/QXlsx/CMakeLists.txt b/QXlsx/CMakeLists.txt
+index a6b1944..fc32918 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -181,9 +181,9 @@ set_target_properties(QXlsx PROPERTIES
+ 
+ install(TARGETS QXlsx
+     EXPORT QXlsxTargets DESTINATION ${CMAKE_INSTALL_LIBDIR}
+-    RUNTIME DESTINATION bin COMPONENT runtime
+-    ARCHIVE DESTINATION lib COMPONENT devel
+-    PUBLIC_HEADER DESTINATION include/QXlsx COMPONENT devel
++    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT runtime
++    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT devel
++    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/QXlsx COMPONENT devel
+ )
+ 
+ install(EXPORT QXlsxTargets
