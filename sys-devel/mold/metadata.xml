@@ -13,6 +13,6 @@
 		<remote-id type="github">rui314/mold</remote-id>
 	</upstream>
 	<use>
-		<flag name="system-tbb">Use dev-cpp/tbb package instead of vendored copy</flag>
+		<flag name="system-tbb">Use <pkg>dev-cpp/tbb</pkg> package instead of vendored copy</flag>
 	</use>
 </pkgmetadata>
