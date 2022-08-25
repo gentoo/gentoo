@@ -77,7 +77,7 @@ Exporters
     * Maya (meshes)
   </longdescription>
   <use>
-    <flag name="assimp" restrict="~dev-games/ogre-1.12.9">Use media-libs/assimp to import assets from 3D files</flag>
+    <flag name="assimp" restrict="~dev-games/ogre-1.12.9">Use <pkg>media-libs/assimp</pkg> to import assets from 3D files</flag>
     <flag name="boost">Enable boost support</flag>
     <flag name="cache">Enable GL state cache support</flag>
     <flag name="cg">NVIDIA toolkit plugin</flag>
@@ -90,16 +90,16 @@ Exporters
         Enable fine light mask granularity. This impacts on performance and should
         not be enabled unless an application really needs it.
     </flag>
-    <flag name="freeimage">Support images via media-libs/freeimage</flag>
+    <flag name="freeimage">Support images via <pkg>media-libs/freeimage</pkg></flag>
     <flag name="gl3plus">Build OpenGL 3+ RenderSystem (EXPERIMENTAL)</flag>
     <flag name="gles2" restrict="~dev-games/ogre-1.9.0">Build OpenGL ES 2.x RenderSystem</flag>
     <flag name="gles3" restrict="~dev-games/ogre-1.9.0">Enable OpenGL ES 3.x Features</flag>
-    <flag name="json">Use dev-libs/rapidjson (needed by Hlms JSON materials)</flag>
+    <flag name="json">Use <pkg>dev-libs/rapidjson</pkg> (needed by Hlms JSON materials)</flag>
     <flag name="legacy-animations">
         Use the skeletal animation from 1.x. It's much slower, but the new system
         is still experimental.
     </flag>
-    <flag name="ois">Pull in Object-oriented Input System library dev-games/ois for samples</flag>
+    <flag name="ois">Pull in Object-oriented Input System library <pkg>dev-games/ois</pkg> for samples</flag>
     <flag name="poco">When USE=threads, use poco for threading</flag>
     <!-- Not yet available? Needs testing! (Note: Shouldn't this be EGL instead of GLES2?)
     <flag name="mobile">
