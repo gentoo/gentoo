@@ -5,9 +5,9 @@ EAPI=8
 
 inherit autotools
 
-DESCRIPTION="A subset seed design tool for DNA sequence alignment"
-HOMEPAGE="http://bioinfo.lifl.fr/yass/iedera.php"
-SRC_URI="http://bioinfo.lifl.fr/yass/files/${P}.tar.gz"
+DESCRIPTION="Subset seed design tool for DNA sequence alignment"
+HOMEPAGE="https://bioinfo.lifl.fr/yass/iedera.php"
+SRC_URI="https://bioinfo.lifl.fr/yass/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

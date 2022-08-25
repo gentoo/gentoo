@@ -18,7 +18,7 @@ SRC_URI="https://github.com/jnr/${PN}/archive/${P}.tar.gz"
 
 LICENSE="EPL-2.0 GPL-2 LGPL-2.1"
 SLOT="3.0"
-KEYWORDS="amd64 arm64 ~ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64 x86"
 
 CP_DEPEND="
 	>=dev-java/jnr-ffi-2.2.12:2
@@ -39,6 +39,16 @@ JAVA_TEST_GENTOO_CLASSPATH="junit-4"
 JAVA_TEST_SRC_DIR="src/test/java"
 
 src_test() {
+	if use ppc64; then
+		# Ignore testMessageHdrMultipleControl
+		# https://bugs.gentoo.org/866199
+		# https://github.com/jnr/jnr-posix/issues/178
+		sed \
+			-e '/testMessageHdrMultipleControl/i @Ignore' \
+			-e '/import org.junit.Test/a import org.junit.Ignore;' \
+			-i src/test/java/jnr/posix/LinuxPOSIXTest.java || die
+	fi
+
 	JAVA_TEST_EXCLUDES=(
 		# https://github.com/jnr/jnr-posix/blob/jnr-posix-3.1.15/pom.xml#L185
 		# <exclude>**/windows/*Test.java</exclude>

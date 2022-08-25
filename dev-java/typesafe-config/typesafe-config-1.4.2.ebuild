@@ -14,7 +14,7 @@ SRC_URI="https://github.com/lightbend/config/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 IUSE="doc source"
 
 RDEPEND=">=virtual/jre-1.8:*"

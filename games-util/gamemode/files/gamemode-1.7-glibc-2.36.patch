@@ -1,0 +1,20 @@
+https://github.com/FeralInteractive/gamemode/commit/4934191b1928ef695c3e8af21e75781f8591745f
+https://bugs.gentoo.org/863995
+
+From: =?UTF-8?q?Nyikos=20Zolt=C3=A1n?= <nyikoszoltan0@gmail.com>
+Date: Wed, 10 Aug 2022 19:56:59 +0200
+Subject: [PATCH] Fix building when pidfd_open is available
+
+On glibc2.36 pidfd_open was made available, but it needs an include
+--- a/common/common-pidfds.c
++++ b/common/common-pidfds.c
+@@ -58,6 +58,8 @@ static int pidfd_open(pid_t pid, unsigned int flags)
+ {
+ 	return (int)syscall(__NR_pidfd_open, pid, flags);
+ }
++#else
++#include <sys/pidfd.h>
+ #endif
+ 
+ /* pidfd functions */
+

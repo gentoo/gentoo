@@ -14,8 +14,8 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MY_PV="${PV/_rc/-rc}"
 	MY_P="${PN}-${MY_PV}"
-	SRC_URI="https://gitlab.com/kicad/libraries/${PN}/-/archive/${MY_PV}/${MY_P}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN/3d/3D}-${MY_PV}" # check for directory hash
+	SRC_URI="https://gitlab.com/kicad/libraries/kicad-packages3D/-/archive/${MY_PV}/kicad-packages3D-${MY_PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN/3d/3D}-${MY_PV}"
 
 	if [[ ${PV} != *_rc* ]] ; then
 		KEYWORDS="~amd64 ~arm64 ~x86"

@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=poetry
 PYTHON_COMPAT=( pypy3 python3_{8..10} )
 
-inherit distutils-r1 optfeature
+inherit distutils-r1
 
 MY_P=fakeredis-py-${PV}
 DESCRIPTION="Fake implementation of redis API for testing purposes"
@@ -85,8 +85,4 @@ src_test() {
 
 	# Clean up afterwards
 	kill "$(<"${redis_pid}")" || die
-}
-
-pkg_postinst() {
-	optfeature "Mock aioredis" dev-python/aioredis
 }

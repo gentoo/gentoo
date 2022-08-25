@@ -1,0 +1,126 @@
+From 503557c54c6162970072f31cb84b0eb934d409d4 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 31 Jul 2022 14:47:48 +0200
+Subject: [PATCH 1/2] Drop unused X11 dependency
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt     | 8 ++------
+ src/CMakeLists.txt | 4 ----
+ 2 files changed, 2 insertions(+), 10 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 838197be7..d9218ae06 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -47,12 +47,8 @@ if(Qt5WebEngineWidgets_VERSION VERSION_LESS "5.14.0")
+   add_definitions(-DWEBENGINEDOWNLOADITEM_USE_PATH)
+ endif()
+ 
+-find_package(X11)
+-set(KONQ_HAVE_X11 ${X11_FOUND})
+-
+-if (X11_FOUND)
+-  find_package(Qt5 REQUIRED X11Extras)
+-endif(X11_FOUND)
++find_package(Qt5X11Extras)
++set(KONQ_HAVE_X11 ${Qt5X11Extras_FOUND})
+ 
+ add_definitions(
+     -DQT_USE_QSTRINGBUILDER
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 9a1343e04..286bc7da8 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -113,10 +113,6 @@ target_link_libraries(kdeinit_konqueror
+    KF5::SonnetUi
+ )
+ 
+-if (X11_FOUND)
+-  target_link_libraries(kdeinit_konqueror ${X11_LIBRARIES})
+-endif ()
+-
+ if (KActivities_FOUND)
+   target_link_libraries(kdeinit_konqueror KF5::Activities)
+ endif (KActivities_FOUND)
+-- 
+2.35.1
+
+
+From ff0e19961f8345faea54e4f85057312b7ad7007d Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 27 Nov 2021 14:36:20 +0100
+Subject: [PATCH 2/2] Add CMake option to build WITHOUT_X11
+
+We want to be able to build without X11 support even if some of the
+used libraries may not work w/o Qt5X11Extras themselves yet or need
+to be built with X11 support for other reverse dependencies.
+
+KONQ_HAVE_X11 already exists and is set automagically so far, but
+using -DCMAKE_DISABLE_FIND_PACKAGE_Qt5X11Extras will break if any
+dependencies list Qt5X11Extras as required in their cmake config.
+
+Introducing this option means there is no behavior change by default,
+cmake will just skip finding Qt5X11Extras or adding unwanted features
+if the option is enabled.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt        | 7 +++++--
+ client/CMakeLists.txt | 4 ++--
+ src/CMakeLists.txt    | 4 ++--
+ 3 files changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d9218ae06..71bc03ecb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -47,8 +47,11 @@ if(Qt5WebEngineWidgets_VERSION VERSION_LESS "5.14.0")
+   add_definitions(-DWEBENGINEDOWNLOADITEM_USE_PATH)
+ endif()
+ 
+-find_package(Qt5X11Extras)
+-set(KONQ_HAVE_X11 ${Qt5X11Extras_FOUND})
++option(WITHOUT_X11 "Build without X11 integration (skips finding Qt5X11Extras)" OFF)
++if(NOT WITHOUT_X11)
++    find_package(Qt5X11Extras)
++    set(KONQ_HAVE_X11 ${Qt5X11Extras_FOUND})
++endif()
+ 
+ add_definitions(
+     -DQT_USE_QSTRINGBUILDER
+diff --git a/client/CMakeLists.txt b/client/CMakeLists.txt
+index 24aedb14c..3c32c86f3 100644
+--- a/client/CMakeLists.txt
++++ b/client/CMakeLists.txt
+@@ -30,9 +30,9 @@ if (WIN32)
+ else (WIN32)
+     kf5_add_kdeinit_executable( kfmclient NOGUI ${kfmclient_SRCS})
+     target_link_libraries(kdeinit_kfmclient ${kfmclient_LIBS})
+-    if(X11_FOUND)
++    if(KONQ_HAVE_X11)
+       target_link_libraries(kdeinit_kfmclient Qt5::X11Extras)
+-    endif(X11_FOUND)
++    endif()
+     install(TARGETS kdeinit_kfmclient  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
+ endif (WIN32)
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 286bc7da8..500b9750c 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -33,9 +33,9 @@ target_link_libraries(konquerorprivate
+    KF5::KIOGui
+ )
+ 
+-if(X11_FOUND)
++if(KONQ_HAVE_X11)
+   target_link_libraries(konquerorprivate Qt5::X11Extras)
+-endif(X11_FOUND)
++endif()
+ 
+ 
+ set_target_properties(konquerorprivate PROPERTIES VERSION ${KONQUEROR_LIB_VERSION} SOVERSION "5" )
+-- 
+2.35.1
+

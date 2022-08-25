@@ -6,6 +6,8 @@ EAPI=8
 inherit toolchain-funcs
 
 GDB_VERSION=10.2
+UPSTREAM_VER=
+EXTRA_VER=0
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/crash-utility/crash.git"
@@ -14,12 +16,15 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	[[ -n ${UPSTREAM_VER} ]] && \
-		UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${CAT}/${PN}/${P}-patches-${UPSTREAM_VER}.tar.xz"
+		UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${CATEGORY}/${PN}/${P}-patches-${UPSTREAM_VER}.tar.xz"
+
+	[[ -n ${EXTRA_VER} ]] && \
+		EXTRA_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${CATEGORY}/${PN}/${P}-extra-${EXTRA_VER}.tar.xz"
 
 	SRC_URI="https://github.com/crash-utility/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-		${UPSTREAM_PATCHSET_URI}
+		${UPSTREAM_PATCHSET_URI} ${EXTRA_PATCHSET_URI}
 		mirror://gnu/gdb/gdb-${GDB_VERSION}.tar.gz"
-	KEYWORDS="-* ~alpha ~amd64 ~arm ~ia64 ~ppc64 ~s390 ~x86"
+	KEYWORDS="-* ~alpha ~amd64 ~arm ~ia64 ~ppc64 ~riscv ~s390 ~x86"
 fi
 
 DESCRIPTION="Red Hat crash utility; used for analyzing kernel core dumps"
@@ -38,6 +43,11 @@ src_prepare() {
 	if [[ -n ${UPSTREAM_VER} ]]; then
 		einfo "Try to apply Crash's Upstream patch set"
 		eapply "${WORKDIR}"/patches-upstream
+	fi
+
+	if [[ -n ${EXTRA_VER} ]]; then
+		einfo "Try to apply Crash's Extra patch set"
+		eapply "${WORKDIR}"/patches-extra
 	fi
 
 	sed -i -e "s|ar -rs|\${AR} -rs|g" Makefile || die

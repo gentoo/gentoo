@@ -20,16 +20,15 @@ HOMEPAGE="https://www.bitlbee.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE_PROTOCOLS="msn oscar purple twitter +xmpp"
+IUSE_PROTOCOLS="purple twitter +xmpp"
 IUSE="debug +gnutls ipv6 libevent nss otr +plugins selinux test xinetd
 	${IUSE_PROTOCOLS}"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
-	|| ( purple xmpp msn oscar )
+	|| ( purple xmpp )
 	purple? ( plugins )
-	test? ( plugins )
-	xmpp? ( !nss )
+	test? ( xmpp )
 "
 
 COMMON_DEPEND="
@@ -63,7 +62,6 @@ BDEPEND="${PYTHON_DEPS}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.5-systemd-user.patch"
-	"${FILESDIR}/${P}-system-json-parser.patch"
 )
 
 src_configure() {
@@ -116,7 +114,7 @@ src_configure() {
 		--libdir=/usr/$(get_libdir) \
 		--pcdir=/usr/$(get_libdir)/pkgconfig \
 		--plugindir=/usr/$(get_libdir)/bitlbee \
-		--externaljsonparser=1 \
+		--external_json_parser=1 \
 		--systemdsystemunitdir=$(systemd_get_systemunitdir) \
 		--doc=1 \
 		--strip=0 \

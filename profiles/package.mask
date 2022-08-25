@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Jaco Kroon <jaco@uls.co.za> (2022-08-22)
+# Superceded by bgpq4 (already in tree).  Non-co-operative upstream.  Removal
+# in 30 days.  Open bugs, already fixed in bgpq4.  Please convert your usage to
+# bgpq4.  Mostly you just need to drop the -3 argument.
+net-misc/bgpq3
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-08-22)
+# Java library without consumers. Removal on 2022-09-22
+dev-java/byte-buddy-agent
+
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # Monolithic mask for dev-haskell/* packages which have no reverse dependencies,
 # are broken, or severely out of date. The aim is to have the Haskell overlay
@@ -59,21 +69,16 @@ dev-haskell/casa-client
 dev-haskell/casa-types
 dev-haskell/cipher-aes128
 dev-haskell/concurrent-extra
-dev-haskell/configurator
 dev-haskell/contravariant-extras
-dev-haskell/convertible
 dev-haskell/cpphs
 dev-haskell/crypto-pubkey-types
 dev-haskell/cryptohash
 dev-haskell/cryptohash-cryptoapi
 dev-haskell/data-default-instances-base
-dev-haskell/dns
 dev-haskell/drbg
 dev-haskell/edit-distance-vector
 dev-haskell/either
-dev-haskell/errorcall-eq-instance
 dev-haskell/filelock
-dev-haskell/filemanip
 dev-haskell/filepattern
 dev-haskell/fsnotify
 dev-haskell/ghc-lib-parser
@@ -86,14 +91,10 @@ dev-haskell/haddock-api
 dev-haskell/hashable-time
 dev-haskell/hashtables
 dev-haskell/haskell-src-meta
-dev-haskell/hdbc
 dev-haskell/hdbc-odbc
-dev-haskell/hdbc-postgresql
-dev-haskell/hdbc-sqlite3
 dev-haskell/hi-file-parser
 dev-haskell/hlint
 dev-haskell/hpack
-dev-haskell/hslogger
 dev-haskell/hsopenssl
 dev-haskell/hsyaml-aeson
 dev-haskell/http-common
@@ -114,14 +115,12 @@ dev-haskell/keys
 dev-haskell/lens-aeson
 dev-haskell/memotrie
 dev-haskell/mintty
-dev-haskell/missingh
 dev-haskell/mustache
 dev-haskell/newtype-generics
 dev-haskell/open-browser
 dev-haskell/openssl-streams
 dev-haskell/optparse-simple
 dev-haskell/pantry
-dev-haskell/parallel-io
 dev-haskell/path-io
 dev-haskell/pointed
 dev-haskell/polyparse
@@ -154,11 +153,6 @@ dev-haskell/weigh
 dev-haskell/wreq
 dev-haskell/xhtml
 dev-haskell/zlib-bindings
-dev-util/shelltestrunner
-net-mail/list-remote-forwards
-net-mail/mailbox-count
-net-misc/haeredes
-net-misc/hath
 dev-util/bnfc
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
@@ -295,37 +289,6 @@ app-misc/zygrib
 # Unmaintained, EOL upstream, QA and build issues, EAPI 6.
 # Bug #682346, #844592, removal on 2022-08-27.
 app-crypt/kbfs
-
-# Sam James <sam@gentoo.org> (2022-07-26)
-# Fails to build with ffmpeg 5, no reverse dependencies, maintainer-needed,
-# and no commits upstream since 2017. Bug #834383. Removal on 2022-08-26.
-media-libs/libgroove
-
-# Michał Górny <mgorny@gentoo.org> (2022-07-25)
-# aioredis has been integrated in >=dev-python/redis-py-4.2.0.
-# No revdeps.
-# Removal on 2022-08-24.  Bug #860840.
-dev-python/aioredis
-
-# Jack Todaro <solpeth@posteo.org> (2022-07-24)
-# Last-rite for removal in 30 days. Has no reverse dependencies
-# and is unmaintained upstream.
-dev-haskell/bytestring-handle
-dev-haskell/chaselev-deque
-
-# William Hubbs <williamh@gentoo.org> (2022-07-24)
-# **NOTE:** Golint is deprecated and frozen
-# according to [this issue](https://github.com/golang/go/issues/38968).
-# There's no drop-in replacement for it, but tools such as
-# [Staticcheck](https://staticcheck.io/) # and `go vet` should be used instead.
-# Bug #844412
-# Removal: 2022-08-23
-dev-go/golint
-
-# Hans de Graaff <graaff@gentoo.org> (2022-07-16)
-# No longer supported upstream. Use a newer ruby version instead.
-# Masked for removal in 30 days.
-dev-lang/ruby:2.6
 
 # Marek Szuba <marecki@gentoo.org> (2022-07-13)
 # Upstream has switched from CMake to hand-crafted Makefiles (yes, TO them),

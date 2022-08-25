@@ -21,7 +21,7 @@ S="${WORKDIR}/wxWidgets-${PV}"
 LICENSE="wxWinLL-3 GPL-2 doc? ( wxWinFDL-3 )"
 SLOT="${WXRELEASE}"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
-IUSE="+X doc debug gstreamer libnotify opengl sdl tiff webkit"
+IUSE="+X doc debug gstreamer libnotify opengl pch sdl tiff webkit"
 
 RDEPEND="
 	>=app-eselect/eselect-wxwidgets-20131230
@@ -29,9 +29,9 @@ RDEPEND="
 	sdl? ( media-libs/libsdl2[${MULTILIB_USEDEP}] )
 	X? (
 		>=dev-libs/glib-2.22:2[${MULTILIB_USEDEP}]
+		media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}]
 		media-libs/libpng:0=[${MULTILIB_USEDEP}]
 		sys-libs/zlib[${MULTILIB_USEDEP}]
-		virtual/jpeg:0=[${MULTILIB_USEDEP}]
 		x11-libs/cairo[${MULTILIB_USEDEP}]
 		x11-libs/gtk+:3[${MULTILIB_USEDEP}]
 		x11-libs/gdk-pixbuf[${MULTILIB_USEDEP}]
@@ -93,6 +93,11 @@ multilib_src_configure() {
 		--with-expat=sys
 		--enable-compat28
 		$(use_with sdl)
+
+		# PCHes are unstable and are disabled in-tree where possible
+		# See bug #504204
+		# Commits 8c4774042b7fdfb08e525d8af4b7912f26a2fdce, fb809aeadee57ffa24591e60cfb41aecd4823090
+		$(use_enable pch precomp-headers)
 
 		# Don't hard-code libdir's prefix for wx-config
 		--libdir='${prefix}'/$(get_libdir)

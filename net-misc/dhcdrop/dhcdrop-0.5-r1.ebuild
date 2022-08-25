@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Effectively suppresses illegal DHCP servers on the LAN"
 HOMEPAGE="http://www.netpatch.ru/dhcdrop.html"
@@ -19,13 +19,18 @@ DEPEND="static? ( net-libs/libpcap[static-libs] )
 
 DOCS=( AUTHORS ChangeLog INSTALL NEWS README )
 
+PATCHES=(
+	# Fix building with -flto, bug #861608
+	"${FILESDIR}/${P}-lto.patch"
+)
+
 src_prepare() {
 	# Fix building with clang, bug #731694
 	sed -i \
 		-e '/^PACKAGE_/s/"//g' \
 		configure || die
 
-	eapply_user
+	default
 }
 
 src_configure() {

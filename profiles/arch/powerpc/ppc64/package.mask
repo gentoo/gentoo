@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2022-08-25)
+# Only ppc64le binpkg is provided.
+dev-python/pypy-exe-bin
+dev-python/pypy3-exe-bin
+
 # Sam James <sam@gentoo.org> (2022-01-18)
 # No bootstrap binary available on big endian PPC64 right now
 dev-lisp/sbcl

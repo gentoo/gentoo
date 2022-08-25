@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-v${PV}-${EGIT_COMMIT}"
 
 LICENSE="GPL-2 GPL-2+ LGPL-2.1 GPL-3+"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 multilib_src_configure() {
 	meson_src_configure

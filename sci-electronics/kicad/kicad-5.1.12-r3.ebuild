@@ -16,7 +16,7 @@ SRC_URI="https://gitlab.com/kicad/code/${PN}/-/archive/${PV}/${P}.tar.bz2"
 LICENSE="GPL-2+ GPL-3+ Boost-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="doc examples github +ngspice +occ openmp +python"
+IUSE="doc examples github ngspice +occ openmp +python"
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )

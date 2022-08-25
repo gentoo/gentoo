@@ -22,7 +22,7 @@ LICENSE="
 	test? ( BSD )
 "
 SLOT="0/${PV%%.*}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="test"
 
 DEPEND=""
@@ -38,6 +38,8 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}/${PN}-20211102.0-fix-cuda-nvcc-build.patch"
 	"${FILESDIR}/${PN}-20211102.0-r2-cuda11.6-compile-fix.patch"
+	"${FILESDIR}/${PN}-20211102.0-r2-loong.patch"
+	"${FILESDIR}/${PN}-20211102.0-r2-gcc-13.patch"
 )
 
 src_prepare() {

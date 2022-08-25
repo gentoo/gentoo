@@ -50,6 +50,7 @@ RDEPEND="
 	dev-perl/Net-RFC3161-Timestamp
 	>=dev-perl/PDL-2.7.0
 	dev-perl/PDL-Graphics-Gnuplot
+	dev-perl/PDL-IO-CSV
 	>=dev-perl/Role-Tiny-1.3.4
 	virtual/perl-Socket
 	dev-perl/Statistics-Descriptive

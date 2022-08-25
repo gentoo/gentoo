@@ -19,6 +19,6 @@
 		and unit, integration, and functional tests.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">Olivine-Labs/busted</remote-id>
+		<remote-id type="github">lunarmodules/busted</remote-id>
 	</upstream>
 </pkgmetadata>

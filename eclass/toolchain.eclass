@@ -1187,8 +1187,6 @@ toolchain_src_configure() {
 				fi
 			done
 
-			# Convert armv6m to armv6-m
-			[[ ${arm_arch} == armv6m ]] && arm_arch=armv6-m
 			# Convert armv7{a,r,m} to armv7-{a,r,m}
 			[[ ${arm_arch} == armv7? ]] && arm_arch=${arm_arch/7/7-}
 			# See if this is a valid --with-arch flag
@@ -1212,6 +1210,17 @@ toolchain_src_configure() {
 					armv6*) confgcc+=( --with-fpu=vfp ) ;;
 					armv7*) confgcc+=( --with-fpu=vfpv3-d16 ) ;;
 				esac
+			fi
+
+			# If multilib is used, make the compiler build multilibs
+			# for A or R and M architecture profiles. Do this only
+			# when no specific arch/mode/float is specified, e.g.
+			# for target arm-none-eabi, since doing this is
+			# incompatible with --with-arch/cpu/float/fpu.
+			if is_multilib && [[ ${arm_arch} == arm ]] && \
+			   tc_version_is_at_least 7.1
+			then
+				confgcc+=( --with-multilib-list=aprofile,rmprofile  )
 			fi
 			;;
 		mips)

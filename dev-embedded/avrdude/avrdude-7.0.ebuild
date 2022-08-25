@@ -11,7 +11,7 @@ SRC_URI="https://github.com/avrdudes/avrdude/archive/refs/tags/v${PV}.tar.gz -> 
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
+KEYWORDS="amd64 arm ppc ppc64 x86"
 IUSE="ftdi readline"
 
 RDEPEND="

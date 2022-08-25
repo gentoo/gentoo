@@ -6,33 +6,33 @@ EAPI=8
 inherit cmake multibuild systemd xdg
 
 DESCRIPTION="BitTorrent client in C++ and Qt"
-HOMEPAGE="https://www.qbittorrent.org
-	  https://github.com/qbittorrent"
+HOMEPAGE="https://www.qbittorrent.org"
 
 if [[ ${PV} == *9999 ]]; then
+	EGIT_REPO_URI="https://github.com/qbittorrent/qBittorrent.git"
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/${PN}/qBittorrent.git"
 else
 	SRC_URI="https://github.com/qbittorrent/qBittorrent/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-	S="${WORKDIR}/qBittorrent-release-${PV}"
+	S="${WORKDIR}"/qBittorrent-release-${PV}
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+dbus +gui webui"
+IUSE="+dbus +gui test webui"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="dbus? ( gui )
 	|| ( gui webui )"
 
 RDEPEND="
-	>=dev-libs/boost-1.65.0-r1:=
-	dev-libs/openssl:=
+	>=dev-libs/boost-1.71:=
+	>=dev-libs/openssl-1.1.1:=
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtsql:5
 	dev-qt/qtxml:5
 	>=net-libs/libtorrent-rasterbar-1.2.14:=
-	sys-libs/zlib
+	>=sys-libs/zlib-1.2.11
 	dbus? ( dev-qt/qtdbus:5 )
 	gui? (
 		dev-libs/geoip
@@ -44,7 +44,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
-DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md TODO )
+DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md )
 
 src_prepare() {
 	MULTIBUILD_VARIANTS=( base )
@@ -74,10 +74,14 @@ src_configure() {
 			# We do these in multibuild, see bug #839531 for why.
 			# Fedora has to do the same thing.
 			-DGUI=$(usex gui)
+
+			-DTESTING=$(usex test)
 		)
 
 		if [[ ${MULTIBUILD_VARIANT} == webui ]] ; then
 			mycmakeargs+=(
+				# Need to specify GUI here to allow webui settings
+				# to appear in the GUI. bug #864731.
 				-DGUI=$(usex gui)
 				-DWEBUI=ON
 			)
@@ -93,6 +97,15 @@ src_configure() {
 
 src_compile() {
 	multibuild_foreach_variant cmake_src_compile
+}
+
+src_test() {
+	qbittorrent_run_tests() {
+		cd "${BUILD_DIR}"/test || die
+		ctest . || die
+	}
+
+	multibuild_foreach_variant qbittorrent_run_tests
 }
 
 src_install() {

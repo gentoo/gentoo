@@ -1,0 +1,179 @@
+From d0642867ab629daf36a1194274a74758111140be Mon Sep 17 00:00:00 2001
+From: Mitch Curtis <mitch.curtis@qt.io>
+Date: Mon, 18 Jul 2022 15:21:49 +0800
+Subject: [PATCH] Fix scroll bars not showing up when binding to standalone
+ contentItem
+
+908aa77d16e00f2bccc0ddae0f8b61955c56a6a1 hid old scroll bars, but
+didn't account for the situation where the old scroll bars would be put
+back into place, and so they never showed up.
+
+In the case of the linked bug report, since there was a binding to the
+ScrollView's contentItem, a default Flickable would be created. After
+that binding was evaluated, the contentItem was set, causing the scroll
+bars to be hidden (as part of the process of disconnecting from the old
+flickable). To fix the issue, we now do the reverse of hideOldItem when
+a new contentItem is set.
+
+Fixes: QTBUG-104983
+Pick-to: 6.2 6.3 6.4
+Change-Id: I910259cc3e8f6a6231ae6c87c7d4f0f652bd0545
+Reviewed-by: Fabian Kosmale <fabian.kosmale@qt.io>
+Reviewed-by: Nate Graham
+
+(cherry picked from qtdeclarative 58bae53237417f28eac6d772fa6ecab657f8a73f)
+---
+ src/quicktemplates2/qquickcontrol.cpp       | 30 +++++++++++++
+ src/quicktemplates2/qquickcontrol_p_p.h     |  1 +
+ src/quicktemplates2/qquickscrollbar.cpp     | 11 +++++
+ tests/auto/controls/data/tst_scrollview.qml | 47 +++++++++++++++++++++
+ 4 files changed, 89 insertions(+)
+
+diff --git a/src/quicktemplates2/qquickcontrol.cpp b/src/quicktemplates2/qquickcontrol.cpp
+index bbbd0e622..1f4b47343 100644
+--- a/src/quicktemplates2/qquickcontrol.cpp
++++ b/src/quicktemplates2/qquickcontrol.cpp
+@@ -845,6 +845,13 @@ void QQuickControlPrivate::executeBackground(bool complete)
+         quickCompleteDeferred(q, backgroundName(), background);
+ }
+ 
++/*
++    \internal
++
++    Hides an item that was replaced by a newer one, rather than
++    deleting it, as the item is typically created in QML and hence
++    we don't own it.
++*/
+ void QQuickControlPrivate::hideOldItem(QQuickItem *item)
+ {
+     if (!item)
+@@ -863,6 +870,29 @@ void QQuickControlPrivate::hideOldItem(QQuickItem *item)
+ #endif
+ }
+ 
++/*
++    \internal
++
++    Named "unhide" because it's used for cases where an item
++    that was previously hidden by \l hideOldItem() wants to be
++    shown by a control again, such as a ScrollBar in ScrollView.
++*/
++void QQuickControlPrivate::unhideOldItem(QQuickControl *control, QQuickItem *item)
++{
++    Q_ASSERT(item);
++    qCDebug(lcItemManagement) << "unhiding old item" << item;
++
++    item->setVisible(true);
++    item->setParentItem(control);
++
++#if QT_CONFIG(accessibility)
++    // Add the item back in to the accessibility tree.
++    QQuickAccessibleAttached *accessible = accessibleAttached(item);
++    if (accessible)
++        accessible->setIgnored(false);
++#endif
++}
++
+ void QQuickControlPrivate::updateBaselineOffset()
+ {
+     Q_Q(QQuickControl);
+diff --git a/src/quicktemplates2/qquickcontrol_p_p.h b/src/quicktemplates2/qquickcontrol_p_p.h
+index 8e979079e..a6e624c91 100644
+--- a/src/quicktemplates2/qquickcontrol_p_p.h
++++ b/src/quicktemplates2/qquickcontrol_p_p.h
+@@ -173,6 +173,7 @@ public:
+     virtual void executeBackground(bool complete = false);
+ 
+     static void hideOldItem(QQuickItem *item);
++    static void unhideOldItem(QQuickControl *control, QQuickItem *item);
+ 
+     void updateBaselineOffset();
+ 
+diff --git a/src/quicktemplates2/qquickscrollbar.cpp b/src/quicktemplates2/qquickscrollbar.cpp
+index 4e2f509db..1c4b308cd 100644
+--- a/src/quicktemplates2/qquickscrollbar.cpp
++++ b/src/quicktemplates2/qquickscrollbar.cpp
+@@ -797,6 +797,14 @@ void QQuickScrollBarAttachedPrivate::initHorizontal()
+     if (parent && parent == flickable->parentItem())
+         horizontal->stackAfter(flickable);
+ 
++    // If a scroll bar was previously hidden (due to e.g. setting a new contentItem
++    // on a ScrollView), we need to make sure that we un-hide it.
++    // We don't bother checking if the item is actually the old one, because
++    // if it's not, all of the things the function does (setting parent, visibility, etc.)
++    // should be no-ops anyway.
++    if (auto control = qobject_cast<QQuickControl*>(q_ptr->parent()))
++        QQuickControlPrivate::unhideOldItem(control, horizontal);
++
+     layoutHorizontal();
+     horizontal->setSize(area->property("widthRatio").toReal());
+     horizontal->setPosition(area->property("xPosition").toReal());
+@@ -818,6 +826,9 @@ void QQuickScrollBarAttachedPrivate::initVertical()
+     if (parent && parent == flickable->parentItem())
+         vertical->stackAfter(flickable);
+ 
++    if (auto control = qobject_cast<QQuickControl*>(q_ptr->parent()))
++        QQuickControlPrivate::unhideOldItem(control, vertical);
++
+     layoutVertical();
+     vertical->setSize(area->property("heightRatio").toReal());
+     vertical->setPosition(area->property("yPosition").toReal());
+diff --git a/tests/auto/controls/data/tst_scrollview.qml b/tests/auto/controls/data/tst_scrollview.qml
+index 0e8b08352..cd4931184 100644
+--- a/tests/auto/controls/data/tst_scrollview.qml
++++ b/tests/auto/controls/data/tst_scrollview.qml
+@@ -576,4 +576,51 @@ TestCase {
+         verify(newHorizontalScrollBar.visible)
+         verify(!oldHorizontalScrollBar.visible)
+     }
++
++    Component {
++        id: bindingToContentItemAndStandaloneFlickable
++
++        Item {
++            width: 200
++            height: 200
++
++            property alias scrollView: scrollView
++
++            ScrollView {
++                id: scrollView
++                anchors.fill: parent
++                contentItem: listView
++
++                property Item someBinding: contentItem
++            }
++            ListView {
++                id: listView
++                model: 10
++                delegate: ItemDelegate {
++                    text: modelData
++                    width: listView.width
++                }
++            }
++        }
++    }
++
++    // Tests that scroll bars show up for a ScrollView where
++    // - its contentItem is declared as a standalone, separate item
++    // - there is a binding to contentItem (which causes a default Flickable to be created)
++    function test_bindingToContentItemAndStandaloneFlickable() {
++        let root = createTemporaryObject(bindingToContentItemAndStandaloneFlickable, testCase)
++        verify(root)
++
++        let control = root.scrollView
++        let verticalScrollBar = control.ScrollBar.vertical
++        let horizontalScrollBar = control.ScrollBar.horizontal
++        compare(verticalScrollBar.parent, control)
++        compare(horizontalScrollBar.parent, control)
++        verify(verticalScrollBar.visible)
++        verify(horizontalScrollBar.visible)
++
++        mouseDrag(verticalScrollBar, verticalScrollBar.width / 2, verticalScrollBar.height / 2, 0, 50)
++        verify(verticalScrollBar.active)
++        verify(horizontalScrollBar.active)
++    }
+ }
+-- 
+GitLab
+
