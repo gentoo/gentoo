@@ -9,19 +9,19 @@
 	</maintainer>
 	<use>
 		<flag name="fdk">
-		AAC encoding support using media-libs/fdk-aac
+		AAC encoding support using <pkg>media-libs/fdk-aac</pkg>
 		</flag>
 		<flag name="ffmpeg">
 		APTX, APTX-HD encoding support
 		</flag>
 		<flag name="ldac">
-		LDAC encoding support, using media-libs/libldac
+		LDAC encoding support, using <pkg>media-libs/libldac</pkg>
 		</flag>
 		<flag name="native-headset">
 		Build with native HSP (Headset Profile) headset for bluez 5
 		</flag>
 		<flag name="ofono-headset">
-		Build with oFono HFP (Hands Free Profile) headset for bluez 5, requires net-misc/ofono.
+		Build with oFono HFP (Hands Free Profile) headset for bluez 5, requires <pkg>net-misc/ofono</pkg>.
 		</flag>
 	</use>
 </pkgmetadata>
