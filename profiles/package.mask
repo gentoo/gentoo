@@ -33,6 +33,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-04-08)
+# Obsolete java-vm, bugs #848804 #830248.
+# Removal on 2024-05-08
+dev-java/icedtea-bin
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-04-08)
+# Java libraries without consumers.
+# Removal on 2024-05-08, bugs #853100 #716228.
+dev-java/gin
+dev-java/gwt
+dev-java/validation-api
+
 # Ben Kohler <bkohler@gentoo.org> (2024-04-07)
 # Abandoned upstream long ago in favor of Unifi Protect (running only on an
 # official Unifi appliance.  Likely contains lots of security holes in bundled
