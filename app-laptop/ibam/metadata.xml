@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<use>
-		<flag name="gkrellm">Enable building of app-admin/gkrellm module</flag>
+		<flag name="gkrellm">Enable building of <pkg>app-admin/gkrellm</pkg> module</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">ibam</remote-id>
