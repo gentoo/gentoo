@@ -27,10 +27,10 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-user/buildbot
-	>=dev-python/twisted-17.9.0[${PYTHON_USEDEP}]
+	>=dev-python/twisted-18.7.0[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]
 	>=dev-python/zope-interface-4.1.1[${PYTHON_USEDEP}]
-	>=dev-python/sqlalchemy-1.2.0[${PYTHON_USEDEP}]
+	>=dev-python/sqlalchemy-1.3.0[${PYTHON_USEDEP}]
 	<dev-python/sqlalchemy-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/alembic-1.6.0[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
@@ -43,8 +43,8 @@ RDEPEND="
 		>=dev-python/pyopenssl-16.0.0[${PYTHON_USEDEP}]
 		dev-python/service_identity[${PYTHON_USEDEP}]
 		|| (
-			>=dev-python/twisted-17.9.0[${PYTHON_USEDEP},ssl(-)]
-			>=dev-python/twisted-17.9.0[${PYTHON_USEDEP},crypt(-)]
+			>=dev-python/twisted-18.7.0[${PYTHON_USEDEP},ssl(-)]
+			>=dev-python/twisted-18.7.0[${PYTHON_USEDEP},crypt(-)]
 		)
 		dev-python/idna[${PYTHON_USEDEP}]
 	)
