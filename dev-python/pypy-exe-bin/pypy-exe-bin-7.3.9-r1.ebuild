@@ -5,24 +5,32 @@ EAPI=8
 
 inherit pax-utils
 
-MY_P=pypy-exe-${PV}-2
+MY_P=pypy-exe-${PV}
 DESCRIPTION="PyPy executable (pre-built version)"
 HOMEPAGE="https://www.pypy.org/"
 SRC_URI="
 	amd64? (
-		https://dev.gentoo.org/~mgorny/binpkg/amd64/pypy/dev-python/pypy-exe/${MY_P}.xpak
-			-> ${MY_P}.amd64.xpak
+		https://dev.gentoo.org/~mgorny/binpkg/amd64/pypy/dev-python/pypy-exe/${MY_P}-2.xpak
+			-> ${MY_P}-2.amd64.xpak
+	)
+	arm64? (
+		https://dev.gentoo.org/~mgorny/binpkg/amd64/pypy/dev-python/pypy-exe/${MY_P}-1.xpak
+			-> ${MY_P}-1.arm64.xpak
+	)
+	ppc64? (
+		https://dev.gentoo.org/~mgorny/binpkg/ppc64le/pypy/dev-python/pypy-exe/${MY_P}-1.xpak
+			-> ${MY_P}-1.ppc64le.xpak
 	)
 	x86? (
-		https://dev.gentoo.org/~mgorny/binpkg/x86/pypy/dev-python/pypy-exe/${MY_P}.xpak
-			-> ${MY_P}.x86.xpak
+		https://dev.gentoo.org/~mgorny/binpkg/x86/pypy/dev-python/pypy-exe/${MY_P}-2.xpak
+			-> ${MY_P}-2.x86.xpak
 	)
 "
 S="${WORKDIR}"
 
 LICENSE="MIT"
 SLOT="${PV%_p*}"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 
 RDEPEND="
 	app-arch/bzip2:0/1
@@ -39,9 +47,18 @@ QA_PREBUILT="
 "
 
 src_unpack() {
-	ebegin "Unpacking ${MY_P}.${ARCH}.xpak"
-	tar -x < <(xz -c -d --single-stream "${DISTDIR}/${MY_P}.${ARCH}.xpak")
-	eend ${?} || die "Unpacking ${MY_P} failed"
+	local file=${MY_P}-1.${ARCH}.xpak
+	case ${ARCH} in
+		amd64|x86)
+			file=${MY_P}-2.${ARCH}.xpak
+			;;
+		ppc64)
+			file=${MY_P}-1.ppc64le.xpak
+			;;
+	esac
+	ebegin "Unpacking ${file}"
+	tar -x < <(xz -c -d --single-stream "${DISTDIR}/${file}")
+	eend ${?} || die "Unpacking ${file} failed"
 }
 
 src_install() {
