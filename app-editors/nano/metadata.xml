@@ -29,7 +29,7 @@ perhaps providing other extra functionality.
 			straight to stderr rather than some logging facility.
 		</flag>
 		<flag name="magic">
-			Add magic file support (sys-apps/file) to automatically detect appropriate syntax highlighting
+			Add magic file support (<pkg>sys-apps/file</pkg>) to automatically detect appropriate syntax highlighting
 		</flag>
 		<flag name="minimal">
 			Disable all fancy features, including ones that otherwise have a dedicated
