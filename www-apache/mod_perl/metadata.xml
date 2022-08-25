@@ -6,6 +6,6 @@
 		<name>Gentoo Perl Project</name>
 	</maintainer>
 	<use>
-		<flag name="ithreads">Build for use with thread-capable perl, needs same setting as in dev-lang/perl</flag>
+		<flag name="ithreads">Build for use with thread-capable perl, needs same setting as in <pkg>dev-lang/perl</pkg></flag>
 	</use>
 </pkgmetadata>
