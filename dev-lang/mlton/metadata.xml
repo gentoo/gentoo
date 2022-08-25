@@ -4,10 +4,10 @@
 	<!-- maintainer-needed -->
 	<use>
 		<flag name="binary">install a binary version</flag>
-		<flag name="bootstrap-smlnj">Boostrap mlton with dev-lang/smlnj
+		<flag name="bootstrap-smlnj">Boostrap mlton with <pkg>dev-lang/smlnj</pkg>
 		(takes a long time)</flag>
 		<flag name="stage3">After bootstrap building mlton with
-		dev-lang/smlnj, rebuild mlton with the second stage build of
+		<pkg>dev-lang/smlnj</pkg>, rebuild mlton with the second stage build of
 		mlton (recommended).</flag>
 		<flag name="pax-kernel">Enable if the user plans to run the
 		package under a pax enabled hardened kernel</flag>
