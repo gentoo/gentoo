@@ -15,7 +15,7 @@
   <longdescription>
     Small utility library that lets you find a path to the system CA
     bundle, and includes a fallback to the Mozilla CA bundle.
-    Originally written as part of dev-php/composer, now extracted and
+    Originally written as part of <pkg>dev-php/composer</pkg>, now extracted and
     made available as a stand-alone library.
   </longdescription>
   <upstream>
