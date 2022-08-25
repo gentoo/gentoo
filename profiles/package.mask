@@ -316,11 +316,6 @@ dev-haskell/chaselev-deque
 # Removal: 2022-08-23
 dev-go/golint
 
-# Hans de Graaff <graaff@gentoo.org> (2022-07-16)
-# No longer supported upstream. Use a newer ruby version instead.
-# Masked for removal in 30 days.
-dev-lang/ruby:2.6
-
 # Marek Szuba <marecki@gentoo.org> (2022-07-13)
 # Upstream has switched from CMake to hand-crafted Makefiles (yes, TO them),
 # which have seriously messed up dependency handling and trigger several
