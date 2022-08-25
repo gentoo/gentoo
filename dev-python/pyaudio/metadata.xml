@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-		PyAudio provides Python bindings for PortAudio (media-libs/portaudio),
+		PyAudio provides Python bindings for PortAudio (<pkg>media-libs/portaudio</pkg>),
 		the cross-platform audio I/O library.
 	</longdescription>
 	<upstream>
