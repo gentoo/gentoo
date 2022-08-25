@@ -301,11 +301,6 @@ media-libs/libgroove
 # Removal on 2022-08-24.  Bug #860840.
 dev-python/aioredis
 
-# Jack Todaro <solpeth@posteo.org> (2022-07-24)
-# Last-rite for removal in 30 days. Has no reverse dependencies
-# and is unmaintained upstream.
-dev-haskell/bytestring-handle
-
 # Marek Szuba <marecki@gentoo.org> (2022-07-13)
 # Upstream has switched from CMake to hand-crafted Makefiles (yes, TO them),
 # which have seriously messed up dependency handling and trigger several
