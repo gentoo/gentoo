@@ -8,7 +8,7 @@
 		history logging, commands completion, and external actions triggers.
 	</longdescription>
 	<use>
-		<flag name="aspell">Adds support for app-text/aspell spell
+		<flag name="aspell">Adds support for <pkg>app-text/aspell</pkg> spell
 			checker.</flag>
 		<flag name="otr">Enable encrypted conversations using Off-The-Records
 			messaging
