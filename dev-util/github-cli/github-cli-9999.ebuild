@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	SRC_URI="https://github.com/cli/cli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
-	KEYWORDS="~amd64 ~riscv"
+	KEYWORDS="~amd64 ~loong ~riscv"
 	S="${WORKDIR}/cli-${PV}"
 fi
 
