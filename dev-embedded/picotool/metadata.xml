@@ -2,10 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-	<email>matthew@gentoo.org</email>
-	<name>Matthew Smith</name>
+    <email>matthew@gentoo.org</email>
+    <name>Matthew Smith</name>
   </maintainer>
   <upstream>
-	<remote-id type="github">raspberrypi/picotool</remote-id>
+    <remote-id type="github">raspberrypi/picotool</remote-id>
   </upstream>
 </pkgmetadata>
