@@ -12,16 +12,16 @@
 	<use>
 		<flag name="alglib">Enable alglib support for mesh optimizers</flag>
 		<flag name="cgns">Enables cgns output support</flag>
-		<flag name="eigen">Build matrix manipulation with dev-cpp/eigen</flag>
-		<flag name="gmm">A simple alternative to petsc based on sci-mathematics/gmm</flag>
+		<flag name="eigen">Build matrix manipulation with <pkg>dev-cpp/eigen</pkg></flag>
+		<flag name="gmm">A simple alternative to petsc based on <pkg>sci-mathematics/gmm</pkg></flag>
 		<flag name="metis">Enables metis support</flag>
 		<flag name="med">Enables med support</flag>
 		<flag name="mumps">Enables mumps solver support</flag>
 		<flag name="netgen">Enable 3D Frontal triangulation using netgen lib</flag>
-		<flag name="petsc">Enable sci-mathematics/petsc support</flag>
+		<flag name="petsc">Enable <pkg>sci-mathematics/petsc</pkg> support</flag>
 		<flag name="opencascade">Enable OpenCASCADE support</flag>
 		<flag name="shared">Install shared library and headers</flag>
-		<flag name="slepc">Enable sci-mathematics/slepc support</flag>
-		<flag name="voro">Enable support to sci-libs/voro++ meshing</flag>
+		<flag name="slepc">Enable <pkg>sci-mathematics/slepc</pkg> support</flag>
+		<flag name="voro">Enable support to <pkg>sci-libs/voro++</pkg> meshing</flag>
 	</use>
 </pkgmetadata>
