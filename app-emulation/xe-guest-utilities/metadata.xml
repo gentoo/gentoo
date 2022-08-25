@@ -21,6 +21,6 @@
 	<name>Gentoo Xen Project</name>
 </maintainer>
 <use>
-	<flag name="xenstore">Use xenstore binaries bundled by Citrix instead of building app-emulation/xen-tools</flag>
+	<flag name="xenstore">Use xenstore binaries bundled by Citrix instead of building <pkg>app-emulation/xen-tools</pkg></flag>
 </use>
 </pkgmetadata>
