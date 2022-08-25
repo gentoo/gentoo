@@ -21,9 +21,9 @@
 		<flag name="http2">Support the HTTP/2 protocol</flag>
 		<flag name="http-proxy">Support for rewriting HTTP proxying</flag>
 		<flag name="lejp">With the Lightweight JSON Parser</flag>
-		<flag name="libev">Support event loops via dev-libs/libev</flag>
-		<flag name="libevent">Support event loops via dev-libs/libevent</flag>
-		<flag name="libuv">Support asynchronous I/O via dev-libs/libuv</flag>
+		<flag name="libev">Support event loops via <pkg>dev-libs/libev</pkg></flag>
+		<flag name="libevent">Support event loops via <pkg>dev-libs/libevent</pkg></flag>
+		<flag name="libuv">Support asynchronous I/O via <pkg>dev-libs/libuv</pkg></flag>
 		<flag name="mbedtls">Use mbedTLS replacement for OpenSSL</flag>
 		<flag name="peer-limits">Track peers and restrict resources a single peer can allocate</flag>
 		<flag name="server-status">Support json + jscript server monitoring</flag>
