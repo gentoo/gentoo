@@ -15,8 +15,8 @@
 		<remote-id type="github">blockdiag/blockdiag</remote-id>
 	</upstream>
 	<longdescription>blockdiag generate block-diagram image file from spec-text
-	file.  Additional functionality is available with dev-python/reportlab
-	(pdf's), media-gfx/imagemagick and an imagemagic python bindings package
+	file.  Additional functionality is available with <pkg>dev-python/reportlab</pkg>
+	(pdf's), <pkg>media-gfx/imagemagick</pkg> and an imagemagic python bindings package
 	named wand (available from pypi).
 	</longdescription>
 </pkgmetadata>
