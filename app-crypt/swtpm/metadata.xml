@@ -14,6 +14,6 @@
 		<name>Gentoo Virtualization Project</name>
 	</maintainer>
 	<use>
-		<flag name="fuse">Support sys-fs/fuse based /dev/tpm interface</flag>
+		<flag name="fuse">Support <pkg>sys-fs/fuse</pkg> based /dev/tpm interface</flag>
 	</use>
 </pkgmetadata>
