@@ -11,7 +11,7 @@ SRC_URI="https://github.com/lanoxx/tilda/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="x11-libs/vte:2.91
 	>=dev-libs/glib-2.8.4:2
