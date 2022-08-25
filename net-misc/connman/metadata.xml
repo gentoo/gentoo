@@ -7,7 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="ethernet">Enable ethernet support.</flag>
-		<flag name="iwd">Enable wifi support via net-wireless/iwd</flag>
+		<flag name="iwd">Enable wifi support via <pkg>net-wireless/iwd</pkg></flag>
 		<flag name="l2tp">Use <pkg>net-dialup/xl2tpd</pkg> for L2TP VPN support.</flag>
 		<flag name="iptables">Use <pkg>net-firewall/iptables</pkg> as firewall.</flag>
 		<flag name="nftables">Use <pkg>net-firewall/nftables</pkg> as firewall.</flag>
