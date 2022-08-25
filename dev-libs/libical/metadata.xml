@@ -9,6 +9,6 @@
 		<remote-id type="github">libical/libical</remote-id>
 	</upstream>
 	<use>
-		<flag name="glib">Enable dev-libs/glib interface support</flag>
+		<flag name="glib">Enable <pkg>dev-libs/glib</pkg> interface support</flag>
 	</use>
 </pkgmetadata>
