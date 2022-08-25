@@ -19,7 +19,7 @@
 		que se pueden adoptar medidas de control de forma periódica.
 	</longdescription>
 	<use>
-		<flag name="tools">Installs app-admin/mktwpol, providing scripts
+		<flag name="tools">Installs <pkg>app-admin/mktwpol</pkg>, providing scripts
 		for the installation/setup of tripwire, including generating the
 		tripwire policy file and maintenance of the tripwire database</flag>
 		<flag name="ssl">Adds support for Secure Socket Layer connections</flag>
