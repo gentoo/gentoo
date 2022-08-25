@@ -6,7 +6,7 @@
 		<name>Gentoo Webapps</name>
 	</maintainer>
 	<use>
-		<flag name="portage">Propagate python_targets dependencies to sys-apps/portage</flag>
+		<flag name="portage">Propagate python_targets dependencies to <pkg>sys-apps/portage</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">webapp-config</remote-id>
