@@ -14,7 +14,7 @@ SRC_URI="
 			-> ${MY_P}-2.amd64.xpak
 	)
 	arm64? (
-		https://dev.gentoo.org/~mgorny/binpkg/amd64/pypy/dev-python/pypy-exe/${MY_P}-1.xpak
+		https://dev.gentoo.org/~mgorny/binpkg/arm64/pypy/dev-python/pypy-exe/${MY_P}-1.xpak
 			-> ${MY_P}-1.arm64.xpak
 	)
 	ppc64? (
