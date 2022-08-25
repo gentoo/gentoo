@@ -1,0 +1,23 @@
+From 647acc3c4d431278f3d2867a41a06d57f1978e63 Mon Sep 17 00:00:00 2001
+From: Alexey Sokolov <sokolov@google.com>
+Date: Sat, 8 Oct 2022 23:47:23 +0100
+Subject: [PATCH] Set soversion to version
+
+Since there's no ABI guarantees, as mentioned in #243
+---
+ QXlsx/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/QXlsx/CMakeLists.txt b/QXlsx/CMakeLists.txt
+index 8ddfd20..5640d8a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -182,7 +182,7 @@ PUBLIC
+ set_target_properties(QXlsx PROPERTIES
+     EXPORT_NAME QXlsx
+     VERSION ${PROJECT_VERSION}
+-    SOVERSION 0
++    SOVERSION 0.${PROJECT_VERSION}
+     PUBLIC_HEADER "${QXLSX_PUBLIC_HEADERS}"
+ )
+ 
