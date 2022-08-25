@@ -6,9 +6,9 @@
     <name>Gentoo Biology Project</name>
   </maintainer>
   <use>
-    <flag name="run">Install sci-biology/bioperl-run</flag>
-    <flag name="network">Install sci-biology/bioperl-run</flag>
-    <flag name="db">Install sci-biology/bioperl-run</flag>
+    <flag name="run">Install <pkg>sci-biology/bioperl-run</pkg></flag>
+    <flag name="network">Install <pkg>sci-biology/bioperl-run</pkg></flag>
+    <flag name="db">Install <pkg>sci-biology/bioperl-run</pkg></flag>
   </use>
   <upstream>
     <remote-id type="cpan">BioPerl</remote-id>
