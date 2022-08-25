@@ -6,6 +6,6 @@
 		<name>Patrick McLean</name>
 	</maintainer>
 	<use>
-		<flag name="udis86">Enable support for dev-libs/udis86 disassembler library</flag>
+		<flag name="udis86">Enable support for <pkg>dev-libs/udis86</pkg> disassembler library</flag>
 	</use>
 </pkgmetadata>
