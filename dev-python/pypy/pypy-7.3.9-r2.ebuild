@@ -223,6 +223,7 @@ src_install() {
 			keyword.py
 			locale.py
 			logging
+			new.py
 			opcode.py
 			optparse.py
 			pdb.py
