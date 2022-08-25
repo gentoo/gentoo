@@ -31,7 +31,7 @@ RDEPEND="
 	exif? ( media-libs/libexif )
 	dbus? ( sys-apps/dbus )
 	foomatic? ( !net-print/foomatic-filters )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	ldap? ( net-nds/openldap:= )
 	pdf? ( app-text/mupdf )
 	perl? ( dev-lang/perl:= )
