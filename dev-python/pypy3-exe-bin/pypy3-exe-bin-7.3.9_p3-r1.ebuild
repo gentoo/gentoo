@@ -13,6 +13,14 @@ SRC_URI="
 		https://dev.gentoo.org/~mgorny/binpkg/amd64/pypy/dev-python/pypy3-exe/${MY_P}.xpak
 			-> ${MY_P}.amd64.xpak
 	)
+	arm64? (
+		https://dev.gentoo.org/~mgorny/binpkg/arm64/pypy/dev-python/pypy3-exe/${MY_P}.xpak
+			-> ${MY_P}.arm64.xpak
+	)
+	ppc64? (
+		https://dev.gentoo.org/~mgorny/binpkg/ppc64le/pypy/dev-python/pypy3-exe/${MY_P}.xpak
+			-> ${MY_P}.ppc64le.xpak
+	)
 	x86? (
 		https://dev.gentoo.org/~mgorny/binpkg/x86/pypy/dev-python/pypy3-exe/${MY_P}.xpak
 			-> ${MY_P}.x86.xpak
@@ -22,7 +30,7 @@ S="${WORKDIR}"
 
 LICENSE="MIT"
 SLOT="3.9-${PV%_p*}"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 
 RDEPEND="
 	app-arch/bzip2:0/1
@@ -40,9 +48,10 @@ QA_PREBUILT="
 "
 
 src_unpack() {
-	ebegin "Unpacking ${MY_P}.${ARCH}.xpak"
-	tar -x < <(xz -c -d --single-stream "${DISTDIR}/${MY_P}.${ARCH}.xpak")
-	eend ${?} || die "Unpacking ${MY_P} failed"
+	local pkg=${MY_P}.${ARCH/ppc64/ppc64le}.xpak
+	ebegin "Unpacking ${pkg}"
+	tar -x < <(xz -c -d --single-stream "${DISTDIR}/${pkg}")
+	eend ${?} || die "Unpacking ${pkg} failed"
 }
 
 src_install() {
