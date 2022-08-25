@@ -39,7 +39,7 @@
 		<flag name="outb">Enable raw i/o access.</flag>
 		<flag name="pop3">Enable the pop3 plugin, to get notified about new mails.</flag>
 		<flag name="proc-stat">Enable the proc_stat plugin, to read data from the proc file system.</flag>
-		<flag name="python">Enable support for dev-lang/python and enable the python plugin, to execute own python scripts.</flag>
+		<flag name="python">Enable support for <pkg>dev-lang/python</pkg> and enable the python plugin, to execute own python scripts.</flag>
 		<flag name="qnaplog">Enable the qnaplog plugin, to read a log from a QNAP device.</flag>
 		<flag name="raspi">Enable the raspi plugin, to read sensor data from a Raspberry Pi.</flag>
 		<flag name="sample">Enable the sample plugin.</flag>
