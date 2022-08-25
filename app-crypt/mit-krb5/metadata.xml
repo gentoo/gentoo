@@ -12,7 +12,7 @@
     which depends on kerberos
   </flag>
   <flag name="keyutils">Enable for the keyring ccache using keyutils</flag>
-  <flag name="lmdb">Add support for using dev-db/lmdb for lookup tables</flag>
+  <flag name="lmdb">Add support for using <pkg>dev-db/lmdb</pkg> for lookup tables</flag>
   <flag name="pkinit">Enable pkinit support for the initial ticket</flag>
   <flag name="openldap">Enable support for ldap as a database backend</flag>
 </use>
