@@ -8,11 +8,11 @@
 If no user activity is detected after a set timeout, xautolock runs a program
 for you. If you want that program (with optional arguments) to be a screen
 locker, then one of these packages might fit your purpose:
-	x11-misc/alock
-	x11-misc/i3lock
-	x11-misc/slim
-	x11-misc/slock
-	x11-misc/xlockmore
-	x11-misc/xtrlock
+	<pkg>x11-misc/alock</pkg>
+	<pkg>x11-misc/i3lock</pkg>
+	<pkg>x11-misc/slim</pkg>
+	<pkg>x11-misc/slock</pkg>
+	<pkg>x11-misc/xlockmore</pkg>
+	<pkg>x11-misc/xtrlock</pkg>
 </longdescription>
 </pkgmetadata>
