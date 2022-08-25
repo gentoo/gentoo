@@ -25,7 +25,7 @@ RDEPEND="
 	sci-libs/gsl:=
 	sci-libs/libnova:=
 	sys-libs/zlib
-	virtual/libusb:0
+	virtual/libusb:1
 	ogg? (
 		media-libs/libogg
 		media-libs/libtheora
