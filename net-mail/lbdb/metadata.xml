@@ -4,7 +4,7 @@
   <!-- maintainer-needed -->
   <use>
     <flag name="abook">Enables <pkg>app-misc/abook</pkg> support</flag>
-    <flag name="bbdb">Include support for app-emacs/bbdb</flag>
+    <flag name="bbdb">Include support for <pkg>app-emacs/bbdb</pkg></flag>
     <flag name="evo">Add support for <pkg>mail-client/evolution</pkg></flag>
     <flag name="finger">Enables finger support</flag>
   </use>
