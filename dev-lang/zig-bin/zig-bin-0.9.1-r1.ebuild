@@ -19,6 +19,11 @@ RDEPEND="!dev-lang/zig"
 
 SRC_URI+=" https://codeberg.org/BratishkaErik/distfiles/media/branch/master/zig-0.9.1-fix-detecting-abi.patch"
 
+# Zig provides its standard library in source form "/opt/zig-bin-{PV}/lib/",
+# and all other Zig libraries are meant to be consumed in source form,
+# because they can use compile-time mechanics (and it is easier for distributions to patch them)
+# Here we use this feature for fixing programs that use standard library
+# Note: Zig build system is also part of standard library, so we can fix it too
 PATCHES=(
 	"${FILESDIR}/${P}-fix-bad-hostname-segfault.patch"
 	"${DISTDIR}/zig-0.9.1-fix-detecting-abi.patch"
