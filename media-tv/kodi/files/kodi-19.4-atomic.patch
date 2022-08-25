@@ -1,0 +1,108 @@
+From ac3213e683e4c62c50dc02fef3b168d883245094 Mon Sep 17 00:00:00 2001
+From: Yixun Lan <dlan@gentoo.org>
+Date: Tue, 9 Aug 2022 16:45:09 +0800
+Subject: [PATCH] [cmake] link atomic library for certain CPU architectures
+
+For those CPU architectures:
+RISC-V lack 8-bit and 16-bit atomic instructions, and
+ARM/MIPS/PPC lack 64-bit atomic instruction.
+
+GCC is supposed  to convert these atomics via masking and shifting
+like LLVM, which means anything that wants to use these instructions
+needs the link option -latomic.
+
+In this patch, we will try to detect if 8-bit, 64-bit atomic instructions exist,
+otherwise the atomic library will append to the DEPLIBS list.
+
+Original issue:
+* https://gitlab.kitware.com/cmake/cmake/-/issues/23021#note_1098733
+
+For reference:
+* https://gcc.gnu.org/wiki/Atomic/GCCMM
+
+riscv64 specific:
+* https://lists.debian.org/debian-riscv/2022/01/msg00009.html
+
+Signed-off-by: Yixun Lan <dlan@gentoo.org>
+---
+ cmake/modules/FindAtomic.cmake      | 56 +++++++++++++++++++++++++++++
+ cmake/scripts/linux/ArchSetup.cmake |  3 ++
+ 2 files changed, 59 insertions(+)
+ create mode 100644 cmake/modules/FindAtomic.cmake
+
+diff --git a/cmake/modules/FindAtomic.cmake b/cmake/modules/FindAtomic.cmake
+new file mode 100644
+index 0000000000..8ea3c815d7
+--- /dev/null
++++ b/cmake/modules/FindAtomic.cmake
+@@ -0,0 +1,56 @@
++#.rst:
++# FindAtomic
++# -----
++# Finds the ATOMIC library
++#
++# This will define the following variables::
++#
++# ATOMIC_FOUND - system has ATOMIC
++# ATOMIC_LIBRARIES - the ATOMIC libraries
++#
++# and the following imported targets::
++#
++#   ATOMIC::ATOMIC    - The ATOMIC library
++
++
++include(CheckCXXSourceCompiles)
++
++set(atomic_code
++    "
++     #include <atomic>
++     #include <cstdint>
++     std::atomic<uint8_t> n8 (0); // riscv64
++     std::atomic<uint64_t> n64 (0); // armel, mipsel, powerpc
++     int main() {
++       ++n8;
++       ++n64;
++       return 0;
++     }")
++
++check_cxx_source_compiles("${atomic_code}" ATOMIC_LOCK_FREE_INSTRUCTIONS)
++
++if(ATOMIC_LOCK_FREE_INSTRUCTIONS)
++  set(ATOMIC_FOUND TRUE)
++  set(ATOMIC_LIBRARIES)
++else()
++  set(CMAKE_REQUIRED_LIBRARIES "-latomic")
++  check_cxx_source_compiles("${atomic_code}" ATOMIC_IN_LIBRARY)
++  set(CMAKE_REQUIRED_LIBRARIES)
++  if(ATOMIC_IN_LIBRARY)
++    set(ATOMIC_LIBRARY atomic)
++    include(FindPackageHandleStandardArgs)
++    find_package_handle_standard_args(Atomic DEFAULT_MSG ATOMIC_LIBRARY)
++    set(ATOMIC_LIBRARIES ${ATOMIC_LIBRARY})
++    if(NOT TARGET ATOMIC::ATOMIC)
++      add_library(ATOMIC::ATOMIC UNKNOWN IMPORTED)
++      set_target_properties(ATOMIC::ATOMIC PROPERTIES
++	      IMPORTED_LOCATION "${ATOMIC_LIBRARY}")
++    endif()
++    unset(ATOMIC_LIBRARY)
++  else()
++    if(Atomic_FIND_REQUIRED)
++      message(FATAL_ERROR "Neither lock free instructions nor -latomic found.")
++    endif()
++  endif()
++endif()
++unset(atomic_code)
+diff --git a/cmake/scripts/linux/ArchSetup.cmake b/cmake/scripts/linux/ArchSetup.cmake
+index 35ab1402f5..848723af1f 100644
+--- a/cmake/scripts/linux/ArchSetup.cmake
++++ b/cmake/scripts/linux/ArchSetup.cmake
+@@ -199,3 +199,6 @@ if(NOT USE_INTERNAL_LIBS)
+     set(USE_INTERNAL_LIBS OFF)
+   endif()
+ endif()
++
++# Atomic library
++list(APPEND PLATFORM_REQUIRED_DEPS Atomic)
+-- 
+2.35.1
+

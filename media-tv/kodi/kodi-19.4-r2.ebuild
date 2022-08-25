@@ -35,6 +35,7 @@ inherit autotools cmake desktop linux-info pax-utils python-single-r1 xdg
 
 PATCHES=(
 	"${FILESDIR}/${P}-fmt-9.patch"
+	"${FILESDIR}/${P}-atomic.patch"
 )
 
 DESCRIPTION="A free and open source media-player and entertainment hub"
