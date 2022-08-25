@@ -10,7 +10,7 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <use>
-    <flag name="fox">Build a x11-libs/fox GUI</flag>
+    <flag name="fox">Build a <pkg>x11-libs/fox</pkg> GUI</flag>
   </use>
   <upstream>
     <remote-id type="github">signal11/hidapi</remote-id>
