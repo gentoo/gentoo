@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ DESCRIPTION="modern, legacy free, simple yet efficient vim-like editor"
 HOMEPAGE="https://github.com/martanne/vis"
 SRC_URI="https://github.com/martanne/vis/releases/download/v${PV}/${P}.tar.gz
 	test? ( https://github.com/martanne/vis-test/releases/download/v${MY_PTV}/vis-test-${MY_PTV}.tar.gz )"
-LICENSE="ISC"
+LICENSE="ISC MIT"
 SLOT="0"
 KEYWORDS="amd64 arm ~riscv x86"
 IUSE="+ncurses +lua selinux test tre"
