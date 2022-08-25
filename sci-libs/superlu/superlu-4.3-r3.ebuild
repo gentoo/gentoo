@@ -9,16 +9,13 @@ MY_PN=SuperLU
 
 DESCRIPTION="Sparse LU factorization library"
 HOMEPAGE="https://crd-legacy.lbl.gov/~xiaoye/SuperLU/"
-#SRC_URI="https://portal.nersc.gov/project/sparse/${PN}/${PN}_${PV}.tar.gz"
-# Archive of weird franken-version which we used as 4.3 but upstream changed
-# the above tarball ^. The franken-version we used seemed to have 4.1 references in it?
-# bug #862597.
-SRC_URI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}_${PV}.tar.gz"
+# See bug #862597 for .new, can drop on next version
+SRC_URI="https://portal.nersc.gov/project/sparse/${PN}/${PN}_${PV}.tar.gz -> ${PN}_${PV}.new.tar.gz"
 S="${WORKDIR}/${MY_PN}_${PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
