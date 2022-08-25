@@ -13,6 +13,6 @@ used with Ant by using the -lib option to and and setting
 -Dbuild.compiler=ecj
 </longdescription>
 <use>
-	<flag name="ant">Support using ecj in Ant builds via dev-java/ant-eclipse-ecj</flag>
+	<flag name="ant">Support using ecj in Ant builds via <pkg>dev-java/ant-eclipse-ecj</pkg></flag>
 </use>
 </pkgmetadata>
