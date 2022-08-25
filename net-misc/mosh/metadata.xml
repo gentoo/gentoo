@@ -11,7 +11,7 @@
 		<flag name="mosh-hardening">Enable compiler and linker options to frustrate memory corruption exploits</flag>
 		<flag name="nettle">Use <pkg>dev-libs/nettle</pkg> for some cryptographic functions instead of <pkg>dev-libs/openssl</pkg>. With Nettle, some of mosh's own code is used for OCB.</flag>
 		<flag name="server">Build network server</flag>
-		<flag name="ufw">Install net-firewall/ufw rule set</flag>
+		<flag name="ufw">Install <pkg>net-firewall/ufw</pkg> rule set</flag>
 		<flag name="utempter">Include libutempter support</flag>
 	</use>
 	<longdescription>
