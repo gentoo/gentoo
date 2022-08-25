@@ -21,6 +21,9 @@ src_prepare() {
 	# Bug #617624 (GCC-6 compatibility)
 	sed -i 's/-Wno-nonnull-compare //' src/Makefile || die
 
+	# bug #863911
+	filter-lto
+
 	# We used to always set this, but see:
 	# 1. https://github.com/wolfcw/libfaketime/commit/40edcc7ca087a8118fe5a2d27152617fa233e0e2
 	#     i.e. we should report cases which end up needing it, rather than always setting it.
