@@ -11,7 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="dns">
-			Enable DNS resolver via net-libs/udns
+			Enable DNS resolver via <pkg>net-libs/udns</pkg>
 		</flag>
 		<flag name="largefile">
 			Enable large file support (so we can log more than 2GB)
