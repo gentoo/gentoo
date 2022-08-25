@@ -28,7 +28,7 @@ fi
 # BSD for bundled pybind
 LICENSE="GPL-2+ GPL-3+ Boost-1.0 BSD"
 SLOT="0"
-IUSE="doc examples +ngspice nls openmp +occ +pcm"
+IUSE="doc examples ngspice nls openmp +occ +pcm"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
