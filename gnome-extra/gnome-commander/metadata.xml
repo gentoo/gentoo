@@ -19,7 +19,7 @@
   </upstream>
   <use>
     <flag name="gsf">Add metadata support for OLE, OLE2 and ODF</flag>
-    <flag name="unique">Enable single instance support using dev-libs/libunique</flag>
+    <flag name="unique">Enable single instance support using <pkg>dev-libs/libunique</pkg></flag>
     <flag name="pdf">Add metadata support for PDF</flag>
     <flag name="taglib">Add metadata support for ID3, Vorbis, FLAC and APE</flag>
   </use>
