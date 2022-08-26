@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	>=dev-python/flask-1.0.4[${PYTHON_USEDEP}]
