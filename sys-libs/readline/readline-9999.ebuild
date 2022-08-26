@@ -16,28 +16,20 @@ PLEVEL="${PV##*_p}"
 MY_PV="${PV/_p*}"
 MY_PV="${MY_PV/_/-}"
 MY_P="${PN}-${MY_PV}"
+MY_PATCHES=()
+
 is_release() {
 	case ${PV} in
-		9999|*_alpha*|*_beta*|*_rc*) return 1 ;;
-		*) return 0 ;;
+		9999|*_alpha*|*_beta*|*_rc*)
+			return 1
+			;;
+		*)
+			return 0
+			;;
 	esac
 }
+
 [[ ${PV} != *_p* ]] && PLEVEL=0
-patches() {
-	[[ ${PLEVEL} -eq 0 ]] && return 1
-	local opt=$1
-	eval set -- {1..${PLEVEL}}
-	set -- $(printf "${PN}${MY_PV/\.}-%03d " "$@")
-	if [[ ${opt} == -s ]] ; then
-		echo "${@/#/${DISTDIR}/}"
-	else
-		local u
-		for u in mirror://gnu/${PN} ftp://ftp.cwru.edu/pub/bash ; do
-			printf "${u}/${PN}-${MY_PV}-patches/%s " "$@"
-			printf "${u}/${PN}-${MY_PV}-patches/%s.sig " "$@"
-		done
-	fi
-}
 
 DESCRIPTION="Another cute console display library"
 HOMEPAGE="https://tiswww.case.edu/php/chet/readline/rltop.html https://git.savannah.gnu.org/cgit/readline.git"
@@ -47,8 +39,28 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_BRANCH=devel
 	inherit git-r3
 elif is_release ; then
-	SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz $(patches)"
+	SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz"
 	SRC_URI+=" verify-sig? ( mirror://gnu/${PN}/${MY_P}.tar.gz.sig )"
+
+	if [[ ${PLEVEL} -gt 0 ]] ; then
+		# bash-5.1 -> bash51
+		my_p=${PN}$(ver_rs 1-2 '' $(ver_cut 1-2))
+
+		patch_url=
+		my_patch_index=
+
+		for ((my_patch_index=1; my_patch_index <= ${PLEVEL} ; my_patch_index++)) ; do
+			for url in mirror://gnu/${pn} ftp://ftp.cwru.edu/pub/bash ; do
+				patch_url=$(printf "${url}/${PN}-$(ver_cut 1-2)-patches/${my_p}-%03d" ${my_patch_index})
+				SRC_URI+=" ${patch_url}"
+				SRC_URI+=" verify-sig? ( ${patch_url}.sig )"
+			done
+
+			MY_PATCHES+=( "${DISTDIR}"/$(printf ${my_p}-%03d ${my_patch_index}) )
+		done
+
+		unset my_pn patch_url my_patch_index
+	fi
 else
 	SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
 	SRC_URI+=" verify-sig? ( mirror://gnu/${PN}/${MY_P}.tar.gz.sig ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz.sig )"
@@ -94,7 +106,8 @@ src_unpack() {
 }
 
 src_prepare() {
-	[[ ${PLEVEL} -gt 0 ]] && eapply -p0 $(patches -s)
+	[[ ${PLEVEL} -gt 0 ]] && eapply -p0 "${MY_PATCHES[@]}"
+
 	default
 
 	is_release || eautoreconf
