@@ -32,7 +32,7 @@ BDEPEND="
 	dev-util/intltool
 	test? (
 		$(python_gen_cond_dep '
-			dev-python/pytest-twisted[${PYTHON_USEDEP}]
+			>=dev-python/pytest-twisted-1.13.4-r1[${PYTHON_USEDEP}]
 		')
 	)
 "
