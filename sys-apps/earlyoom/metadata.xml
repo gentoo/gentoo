@@ -8,4 +8,7 @@
 	<use>
 		<flag name="docs">Generate man page</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">rfjakob/earlyoom</remote-id>
+	</upstream>
 </pkgmetadata>
