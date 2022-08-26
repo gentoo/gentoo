@@ -53,7 +53,7 @@ SLOT="0/0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc"
 
 BDEPEND="
-	dev-util/cargo-c
+	>=dev-util/cargo-c-0.9.11
 	>=virtual/rust-1.60
 "
 
