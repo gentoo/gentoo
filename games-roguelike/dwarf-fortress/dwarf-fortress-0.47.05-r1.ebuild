@@ -18,7 +18,7 @@ S="${WORKDIR}/df_linux"
 LICENSE="free-noncomm BSD BitstreamVera"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="debug gtk"
+IUSE="debug gui"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -29,7 +29,7 @@ RDEPEND="
 	media-libs/sdl-ttf
 	sys-libs/zlib:=
 	virtual/glu
-	gtk? ( x11-libs/gtk+:2 )"
+	gui? ( x11-libs/gtk+:2 )"
 # libsndfile, openal and ncurses are only needed at compile-time,
 # optfeature through dlopen() at runtime if requested
 DEPEND="
@@ -61,7 +61,7 @@ src_compile() {
 	# -DDEBUG is recognized to give additional debug output
 	append-cppflags -D$(usev !debug N)DEBUG
 
-	if use gtk; then
+	if use gui; then
 		emake -f "${FILESDIR}"/Makefile.native
 	else
 		emake -f "${FILESDIR}"/Makefile.native HAVE_GTK=0
