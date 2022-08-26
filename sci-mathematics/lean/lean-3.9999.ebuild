@@ -11,14 +11,14 @@ inherit flag-o-matic cmake readme.gentoo-r1
 DESCRIPTION="The Lean Theorem Prover"
 HOMEPAGE="https://leanprover-community.github.io/"
 
-if [[ "${PV}" == *9999* ]]; then
+if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/leanprover-community/lean.git"
 else
 	SRC_URI="https://github.com/leanprover-community/lean/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
-S="${WORKDIR}/lean-${PV}/src"
+S="${S}/src"
 
 LICENSE="Apache-2.0"
 SLOT="0/${MAJOR}"
@@ -27,7 +27,7 @@ IUSE="debug +threads"
 RDEPEND="dev-libs/gmp:="
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-CMakeLists-fix_flags.patch" )
+PATCHES=( "${FILESDIR}"/${PN}-CMakeLists-fix_flags.patch )
 
 src_configure() {
 	local CMAKE_BUILD_TYPE
