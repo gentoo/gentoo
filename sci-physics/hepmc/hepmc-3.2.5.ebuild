@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	root? ( sci-physics/root:= )
 	doc? (
-		app-doc/doxygen
+		app-doc/doxygen[dot]
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-latexrecommended
