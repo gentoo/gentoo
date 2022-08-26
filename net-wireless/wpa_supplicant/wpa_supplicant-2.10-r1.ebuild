@@ -477,6 +477,20 @@ pkg_postinst() {
 		ewarn "WARNING: your old configuration file ${EROOT}/etc/wpa_supplicant.conf"
 		ewarn "needs to be moved to ${EROOT}/etc/wpa_supplicant/wpa_supplicant.conf"
 	fi
+	if ! use wep; then
+		einfo "WARNING: You are building with WEP support disabled, which is recommended since"
+		einfo "this protocol is deprecated and insecure.  If you still need to connect to"
+		einfo "WEP-enabled networks, you may turn this flag back on.  With this flag off,"
+		einfo "WEP-enabled networks will not even show up as available."
+		einfo "If your network is missing you may wish to USE=wep"
+	fi
+	if ! use tkip; then
+		ewarn "WARNING: You are building with TKIP support disabled, which is recommended since"
+		ewarn "this protocol is deprecated and insecure.  If you still need to connect to"
+		ewarn "TKIP-enabled networks, you may turn this flag back on.  With this flag off,"
+		ewarn "TKIP-enabled networks, including mixed mode TKIP/AES-CCMP will not even show up"
+		ewarn "as available.  If your network is missing you may wish to USE=tkip"
+	fi
 
 	# Mea culpa, feel free to remove that after some time --mgorny.
 	local fn
