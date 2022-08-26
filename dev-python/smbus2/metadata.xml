@@ -5,6 +5,7 @@
 		<email>jsmolic@gentoo.org</email>
 		<name>Jakov Smolić</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">smbus2</remote-id>
 		<remote-id type="github">kplindegaard/smbus2</remote-id>
