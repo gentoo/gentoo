@@ -86,7 +86,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.0-no_rpath.patch
-	"${FILESDIR}"/${PN}-6.2-rlfe-tgoto.patch #385091
+	"${FILESDIR}"/${PN}-6.2-rlfe-tgoto.patch # bug #385091
 	"${FILESDIR}"/${PN}-7.0-headers.patch
 	"${FILESDIR}"/${PN}-8.0-headers.patch
 
@@ -125,8 +125,8 @@ src_prepare() {
 			ncurses_libs+=" -ltinfo${ncurses_libs_suffix}"
 		fi
 	else
-		# Force ncurses linking. #71420
-		# Use pkg-config to get the right values. #457558
+		# Force ncurses linking, bug #71420.
+		# Use pkg-config to get the right values, bug #457558.
 		local ncurses_libs=$($(tc-getPKG_CONFIG) ncurses$(usex unicode w '') --libs)
 	fi
 
@@ -137,21 +137,22 @@ src_prepare() {
 		-e "/^[[:space:]]*LIBS=.-lncurses/s:-lncurses:${ncurses_libs}:" \
 		examples/rlfe/configure || die
 
-	# fix building under Gentoo/FreeBSD; upstream FreeBSD deprecated
+	# Fix building under Gentoo/FreeBSD; upstream FreeBSD deprecated
 	# objformat for years, so we don't want to rely on that.
 	sed -i -e '/objformat/s:if .*; then:if true; then:' support/shobj-conf || die
 
-	ln -s ../.. examples/rlfe/readline || die # for local readline headers
+	# For local readline headers
+	ln -s ../.. examples/rlfe/readline || die
 }
 
 src_configure() {
-	# fix implicit decls with widechar funcs
+	# Fix implicit decls with widechar funcs
 	append-cppflags -D_GNU_SOURCE
 	# https://lists.gnu.org/archive/html/bug-readline/2010-07/msg00013.html
 	append-cppflags -Dxrealloc=_rl_realloc -Dxmalloc=_rl_malloc -Dxfree=_rl_free
 
-	# Make sure configure picks a better ar than `ar`. #484866
-	export ac_cv_prog_AR=$(tc-getAR)
+	# Make sure configure picks a better ar than `ar`, bug #484866
+	export ac_cv_prog_AR="$(tc-getAR)"
 
 	# Force the test since we used sed above to force it.
 	export bash_cv_termcap_lib=ncurses
@@ -160,9 +161,10 @@ src_configure() {
 	# In cases where the C library doesn't support wide characters, readline
 	# itself won't work correctly, so forcing the answer below should be OK.
 	if tc-is-cross-compiler ; then
-		use kernel_Winnt || export bash_cv_func_sigsetjmp='present'
-		export bash_cv_func_ctype_nonascii='yes'
-		export bash_cv_wcwidth_broken='no' #503312
+		use kernel_Winnt || export bash_cv_func_sigsetjmp="present"
+		export bash_cv_func_ctype_nonascii="yes"
+		# bug #503312
+		export bash_cv_wcwidth_broken="no"
 	fi
 
 	# This is for rlfe, but we need to make sure LDFLAGS doesn't change
@@ -178,14 +180,15 @@ multilib_src_configure() {
 		--with-curses
 		$(use_enable static-libs static)
 	)
+
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 
 	if use utils && multilib_is_native_abi && ! tc-is-cross-compiler ; then
-		# code is full of AC_TRY_RUN()
+		# Code is full of AC_TRY_RUN()
 		mkdir -p examples/rlfe || die
 		cd examples/rlfe || die
-		ECONF_SOURCE="${S}"/examples/rlfe \
-		econf --cache-file="${BUILD_DIR}"/config.cache
+
+		ECONF_SOURCE="${S}"/examples/rlfe econf --cache-file="${BUILD_DIR}"/config.cache
 	fi
 }
 
@@ -193,7 +196,7 @@ multilib_src_compile() {
 	emake
 
 	if use utils && multilib_is_native_abi && ! tc-is-cross-compiler ; then
-		# code is full of AC_TRY_RUN()
+		# Code is full of AC_TRY_RUN()
 		cd examples/rlfe || die
 		local l
 		for l in readline history ; do
@@ -208,7 +211,8 @@ multilib_src_install() {
 	default
 
 	if multilib_is_native_abi ; then
-		gen_usr_ldscript -a readline history #4411
+		# bug #4411
+		gen_usr_ldscript -a readline history
 
 		if use utils && ! tc-is-cross-compiler; then
 			dobin examples/rlfe/rlfe
@@ -218,13 +222,14 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	HTML_DOCS="doc/history.html doc/readline.html doc/rluserman.html" einstalldocs
+
 	dodoc USAGE
 	docinto ps
 	dodoc doc/*.ps
 }
 pkg_preinst() {
 	# bug #29865
-	# Reappeared in #595324 with paludis so keeping this for now...
+	# Reappeared in bug #595324 with paludis so keeping this for now...
 	preserve_old_lib \
 		/$(get_libdir)/lib{history,readline}$(get_libname 4) \
 		/$(get_libdir)/lib{history,readline}$(get_libname 5) \
