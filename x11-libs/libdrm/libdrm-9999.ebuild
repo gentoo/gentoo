@@ -46,20 +46,20 @@ multilib_src_configure() {
 	local emesonargs=(
 		# Udev is only used by tests now.
 		-Dudev=false
-		-Dcairo-tests=false
-		$(meson_use video_cards_amdgpu amdgpu)
-		$(meson_use video_cards_exynos exynos)
-		$(meson_use video_cards_freedreno freedreno)
-		$(meson_use video_cards_intel intel)
-		$(meson_use video_cards_nouveau nouveau)
-		$(meson_use video_cards_omap omap)
-		$(meson_use video_cards_radeon radeon)
-		$(meson_use video_cards_tegra tegra)
-		$(meson_use video_cards_vc4 vc4)
-		$(meson_use video_cards_vivante etnaviv)
-		$(meson_use video_cards_vmware vmwgfx)
+		-Dcairo-tests=disabled
+		$(meson_feature video_cards_amdgpu amdgpu)
+		$(meson_feature video_cards_exynos exynos)
+		$(meson_feature video_cards_freedreno freedreno)
+		$(meson_feature video_cards_intel intel)
+		$(meson_feature video_cards_nouveau nouveau)
+		$(meson_feature video_cards_omap omap)
+		$(meson_feature video_cards_radeon radeon)
+		$(meson_feature video_cards_tegra tegra)
+		$(meson_feature video_cards_vc4 vc4)
+		$(meson_feature video_cards_vivante etnaviv)
+		$(meson_feature video_cards_vmware vmwgfx)
 		# valgrind installs its .pc file to the pkgconfig for the primary arch
-		-Dvalgrind=$(usex valgrind auto false)
+		-Dvalgrind=$(usex valgrind auto disabled)
 	)
 	meson_src_configure
 }
