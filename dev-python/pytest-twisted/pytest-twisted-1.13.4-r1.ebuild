@@ -27,8 +27,7 @@ distutils_enable_tests pytest
 src_prepare() {
 	# If we let pytest-twisted autoload everywhere, it breaks tests in
 	# packages that don't expect it. Apply a similar hack as for bug
-	# #661218. We can't do this in src_prepare() because the tests need
-	# autoloading enabled.
+	# #661218.
 	sed -e 's/"pytest11": \[[^]]*\]//' -i setup.py || die
 
 	# https://github.com/pytest-dev/pytest/issues/9280
