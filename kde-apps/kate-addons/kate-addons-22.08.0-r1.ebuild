@@ -17,7 +17,7 @@ HOMEPAGE="https://kate-editor.org/ https://apps.kde.org/kate/"
 LICENSE="LGPL-2 LGPL-2+ MIT"
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="+filebrowser lspclient +projects plasma +snippets sql"
+IUSE="+filebrowser lspclient plasma +projects +snippets sql"
 
 DEPEND="
 	>=dev-qt/qtconcurrent-${QTMIN}:5
@@ -82,6 +82,12 @@ src_configure() {
 		-DBUILD_kate=FALSE
 		-DBUILD_kwrite=FALSE
 		-DCMAKE_DISABLE_FIND_PACKAGE_KF5DocTools=ON # docs in kate/kwrite
+		-DBUILD_filebrowser=$(usex filebrowser)
+		-DBUILD_lspclient=$(usex lspclient)
+		-DBUILD_sessionapplet=$(usex plasma)
+		-DBUILD_project=$(usex projects)
+		-DBUILD_snippets=$(usex snippets)
+		-DBUILD_katesql=$(usex sql)
 	)
 
 	# provided by kde-apps/kate-lib
