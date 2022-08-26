@@ -73,7 +73,7 @@ fi
 IUSE="afs bashlogger examples mem-scramble +net nls plugins pgo +readline"
 
 DEPEND="
-	>=sys-libs/ncurses-5.2-r2:0=
+	>=sys-libs/ncurses-5.2-r2:=
 	nls? ( virtual/libintl )
 "
 if is_release ; then
