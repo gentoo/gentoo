@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools elisp-common java-pkg-opt-2
 
@@ -28,7 +28,7 @@ CDEPEND="
 	sci-libs/gsl:0=
 	emacs? ( >=app-editors/emacs-23.1:* )
 	fastjet? ( sci-physics/fastjet:0= )
-	hepmc? ( sci-physics/hepmc:0= )
+	hepmc? ( sci-physics/hepmc:2= )
 	lhapdf? ( >=sci-physics/lhapdf-6.0:0= )
 	zlib? ( sys-libs/zlib:0= )"
 DEPEND="${CDEPEND}
@@ -62,6 +62,7 @@ src_configure() {
 		$(use_enable static-libs static) \
 		$(use_with fastjet fastjet "${EPREFIX}"/usr) \
 		$(use_with hepmc hepmc "${EPREFIX}"/usr) \
+		$(use_with hepmc hepmcversion 2) \
 		$(use_with java javagui) \
 		$(use_with lhapdf lhapdf "${EPREFIX}"/usr) \
 		--without-rivet \
@@ -86,6 +87,8 @@ src_install() {
 	LDPATH="${EPREFIX}/usr/$(get_libdir)/ThePEG"
 	EOF
 	doenvd "${T}"/50${PN}
+
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
