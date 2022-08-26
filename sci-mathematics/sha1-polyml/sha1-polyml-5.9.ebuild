@@ -10,7 +10,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="implementation of SHA1 is taken from the GNU coreutils package"
 HOMEPAGE="https://isabelle.in.tum.de/"
-SRC_URI="https://isabelle.in.tum.de/components/${MY_P}.tar.gz"
+SRC_URI="https://isabelle.in.tum.de/components/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
