@@ -16,4 +16,7 @@
 	<use>
 		<flag name="poll">Use poll instead of select</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">The-McGrail-Foundation/MIMEDefang</remote-id>
+	</upstream>
 </pkgmetadata>
