@@ -50,6 +50,13 @@ if [[ ${PV} == *9999 ]] ; then
 		)"
 fi
 
+PATCHES=(
+	# add openrc specific options for init.d completion
+	"${FILESDIR}"/${PN}-5.3-init.d-gentoo.diff
+	# Please refer gentoo bug 833981
+	"${FILESDIR}"/${PN}-5.9-musl-V09datetime-test-fix.patch
+)
+
 src_prepare() {
 	if [[ ${PV} != *9999 ]]; then
 		# fix zshall problem with soelim
@@ -57,9 +64,6 @@ src_prepare() {
 		mv Doc/zshall.1 Doc/zshall.1.soelim || die
 		soelim Doc/zshall.1.soelim > Doc/zshall.1 || die
 	fi
-
-	# add openrc specific options for init.d completion
-	eapply "${FILESDIR}"/${PN}-5.3-init.d-gentoo.diff
 
 	default
 
@@ -132,6 +136,19 @@ src_compile() {
 }
 
 src_test() {
+	# Fixes tests A03quoting.ztst B03print.ztst on musl
+	# Please refer:
+	# https://www.zsh.org/mla/workers/2021/msg00805.html
+	# Test E02xtrace fails on musl, so we are removing it.
+	# Closes: https://bugs.gentoo.org/833981
+	if use elibc_musl ; then
+		unset LC_ALL
+		unset LC_COLLATE
+		unset LC_NUMERIC
+		unset LC_MESSAGES
+		unset LANG
+		rm "${S}"/Test/E02xtrace.ztst || die
+	fi
 	addpredict /dev/ptmx
 	local i
 	for i in C02cond.ztst V08zpty.ztst X02zlevi.ztst Y01completion.ztst Y02compmatch.ztst Y03arguments.ztst ; do
