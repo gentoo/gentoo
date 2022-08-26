@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit toolchain-funcs
+
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="git://c9x.me/qbe.git"
 	inherit git-r3
@@ -22,6 +24,8 @@ SLOT="0"
 DOCS=( README doc )
 
 src_compile() {
+	tc-export CC
+
 	emake CFLAGS="-std=c99 ${CPPFLAGS} ${CFLAGS}"
 }
 
