@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic toolchain-funcs
+inherit autotools edo flag-o-matic toolchain-funcs
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/strace/strace.git"
@@ -45,15 +45,14 @@ PATCHES=(
 src_prepare() {
 	default
 
-	eautoreconf
-
 	if [[ ! -e configure ]] ; then
 		# git generation
 		sed /autoreconf/d -i bootstrap || die
-		./bootstrap || die
-		eautoreconf
+		edo ./bootstrap
 		[[ ! -e CREDITS ]] && cp CREDITS{.in,}
 	fi
+
+	eautoreconf
 
 	# Stub out the -k test since it's known to be flaky. bug #545812
 	sed -i '1iexit 77' tests*/strace-k.test || die
