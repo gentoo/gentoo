@@ -4,13 +4,12 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
-
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1
 
-DESCRIPTION="pytest-twisted is a plugin for pytest that allows you to test code which uses the twisted framework"
+DESCRIPTION="A pytest plugin for testing Twisted framework consumers"
 HOMEPAGE="https://github.com/pytest-dev/pytest-twisted"
-SRC_URI="https://github.com/pytest-dev/pytest-twisted/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pytest-dev/pytest-twisted/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
