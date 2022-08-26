@@ -36,6 +36,7 @@ RDEPEND="
 	app-arch/bzip2:0/1
 	dev-libs/expat:0/0
 	dev-libs/libffi:0/8
+	>=sys-libs/glibc-2.35
 	sys-libs/ncurses:0/6
 	>=sys-libs/zlib-1.1.3:0/1
 	virtual/libintl:0/0
