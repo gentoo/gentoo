@@ -3,16 +3,12 @@
 
 EAPI=7
 
-# TODO on release:
-# - check READLINE_VER, obviously
-# (presumably there weren't always readline releases for bash RCs etc)
-
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/chetramey.asc
 inherit flag-o-matic toolchain-funcs prefix verify-sig
 
 # Uncomment if we have a patchset
-#GENTOO_PATCH_DEV="sam"
-#GENTOO_PATCH_VER="${PV}"
+GENTOO_PATCH_DEV="sam"
+GENTOO_PATCH_VER="${PV}"
 
 # Official patchlevel
 # See ftp://ftp.cwru.edu/pub/bash/bash-5.1-patches/
@@ -24,7 +20,7 @@ MY_PATCHES=()
 
 is_release() {
 	case ${PV} in
-		9999|*_alpha*|*_beta*|*_rc*)
+		*_alpha*|*_beta*|*_rc*)
 			return 1
 			;;
 		*)
@@ -36,17 +32,12 @@ is_release() {
 [[ ${PV} != *_p* ]] && PLEVEL=0
 
 # The version of readline this bash normally ships with.
-# Note: right now, we don't use the system copy of readline for bash for non-releases.
-READLINE_VER="8.2"
+READLINE_VER="8.1"
 
 DESCRIPTION="The standard GNU Bourne again shell"
-HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html https://git.savannah.gnu.org/cgit/bash.git"
+HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html"
 
-if [[ ${PV} == 9999 ]] ; then
-	EGIT_REPO_URI="https://git.savannah.gnu.org/git/bash.git"
-	EGIT_BRANCH=devel
-	inherit git-r3
-elif is_release ; then
+if is_release ; then
 	SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz"
 	SRC_URI+=" verify-sig? ( mirror://gnu/bash/${MY_P}.tar.gz.sig )"
 
@@ -54,7 +45,7 @@ elif is_release ; then
 		# bash-5.1 -> bash51
 		my_p=${PN}$(ver_rs 1-2 '' $(ver_cut 1-2))
 
-		patch_url=
+	        patch_url=
 		my_patch_index=
 
 		for ((my_patch_index=1; my_patch_index <= ${PLEVEL} ; my_patch_index++)) ; do
@@ -62,6 +53,7 @@ elif is_release ; then
 				patch_url=$(printf "${url}/${PN}-$(ver_cut 1-2)-patches/${my_p}-%03d" ${my_patch_index})
 				SRC_URI+=" ${patch_url}"
 				SRC_URI+=" verify-sig? ( ${patch_url}.sig )"
+
 			done
 
 			MY_PATCHES+=( "${DISTDIR}"/$(printf ${my_p}-%03d ${my_patch_index}) )
@@ -70,48 +62,37 @@ elif is_release ; then
 		unset my_pn patch_url my_patch_index
 	fi
 else
-	SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
-	SRC_URI+=" verify-sig? ( mirror://gnu/${PN}/${MY_P}.tar.gz.sig ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz.sig )"
+	SRC_URI="ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
+	SRC_URI+=" verify-sig? ( ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz.sig )"
 fi
 
 if [[ -n ${GENTOO_PATCH_VER} ]] ; then
 	SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${GENTOO_PATCH_VER}-patches.tar.xz"
 fi
 
-LICENSE="GPL-3+"
+LICENSE="GPL-3"
 SLOT="0"
-if is_release ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-fi
-IUSE="afs bashlogger examples mem-scramble +net nls plugins pgo +readline"
+[[ "${PV}" == *_rc* ]] || \
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="afs bashlogger examples mem-scramble +net nls plugins +readline"
 
 DEPEND="
-	>=sys-libs/ncurses-5.2-r2:=
+	>=sys-libs/ncurses-5.2-r2:0=
 	nls? ( virtual/libintl )
+	readline? ( >=sys-libs/readline-${READLINE_VER}:0= )
 "
-if is_release ; then
-	DEPEND+=" readline? ( >=sys-libs/readline-${READLINE_VER}:= )"
-fi
 RDEPEND="
 	${DEPEND}
 "
 # We only need yacc when the .y files get patched (bash42-005, bash51-011)
-#BDEPEND="virtual/yacc"
-BDEPEND="
-	pgo? ( dev-util/gperf )
-	verify-sig? ( sec-keys/openpgp-keys-chetramey )
-"
+BDEPEND="virtual/yacc
+	verify-sig? ( sec-keys/openpgp-keys-chetramey )"
 
 S="${WORKDIR}/${MY_P}"
 
-# EAPI 8 tries to append it but it doesn't exist here
-QA_CONFIGURE_OPTIONS="--disable-static"
-
 PATCHES=(
-	#"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}/
-
 	# Patches from Chet sent to bashbug ml
-	"${FILESDIR}"/${PN}-5.0-syslog-history-extern.patch
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-5.0-syslog-history-extern.patch
 )
 
 pkg_setup() {
@@ -202,16 +183,16 @@ src_configure() {
 	#use static && export LDFLAGS="${LDFLAGS} -static"
 	use nls || myconf+=( --disable-nls )
 
-	if is_release ; then
-		# Historically, we always used the builtin readline, but since
-		# our handling of SONAME upgrades has gotten much more stable
-		# in the PM (and the readline ebuild itself preserves the old
-		# libs during upgrades), linking against the system copy should
-		# be safe.
-		# Exact cached version here doesn't really matter as long as it
-		# is at least what's in the DEPEND up above.
-		export ac_cv_rl_version=${READLINE_VER%%_*}
+	# Historically, we always used the builtin readline, but since
+	# our handling of SONAME upgrades has gotten much more stable
+	# in the PM (and the readline ebuild itself preserves the old
+	# libs during upgrades), linking against the system copy should
+	# be safe.
+	# Exact cached version here doesn't really matter as long as it
+	# is at least what's in the DEPEND up above.
+	export ac_cv_rl_version=${READLINE_VER%%_*}
 
+	if is_release ; then
 		# Use system readline only with released versions.
 		myconf+=( --with-installed-readline=. )
 	fi
@@ -236,32 +217,11 @@ src_configure() {
 }
 
 src_compile() {
-	if use pgo ; then
-		# Build Bash and run its tests to generate profiles.
-		emake CFLAGS="${CFLAGS} -fprofile-generate=${T}/pgo -fprofile-dir=${T}/pgo"
+	emake
 
-		# Used in test suite.
-		unset A
-
-		emake CFLAGS="${CFLAGS} -fprofile-generate=${T}/pgo -fprofile-dir=${T}/pgo" -k check
-
-		# Rebuild Bash using the profiling data we just generated.
-		emake clean
-		emake CFLAGS="${CFLAGS} -fprofile-use=${T}/pgo -fprofile-dir=${T}/pgo"
-
-		use plugins && emake -C examples/loadables CFLAGS="${CFLAGS} -fprofile-use=${T}/pgo -fprofile-dir=${T}/pgo" all others
-	else
-		emake
-
-		use plugins && emake -C examples/loadables all others
+	if use plugins ; then
+		emake -C examples/loadables all others
 	fi
-}
-
-src_test() {
-	# Used in test suite.
-	unset A
-
-	default
 }
 
 src_install() {

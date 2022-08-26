@@ -20,28 +20,20 @@ PLEVEL="${PV##*_p}"
 MY_PV="${PV/_p*}"
 MY_PV="${MY_PV/_/-}"
 MY_P="${PN}-${MY_PV}"
+MY_PATCHES=()
+
 is_release() {
 	case ${PV} in
-		9999|*_alpha*|*_beta*|*_rc*) return 1 ;;
-		*) return 0 ;;
+		9999|*_alpha*|*_beta*|*_rc*)
+			return 1
+			;;
+		*)
+			return 0
+			;;
 	esac
 }
+
 [[ ${PV} != *_p* ]] && PLEVEL=0
-patches() {
-	local opt=${1} plevel=${2:-${PLEVEL}} pn=${3:-${PN}} pv=${4:-${MY_PV}}
-	[[ ${plevel} -eq 0 ]] && return 1
-	eval set -- {1..${plevel}}
-	set -- $(printf "${pn}${pv/\.}-%03d " "$@")
-	if [[ ${opt} == -s ]] ; then
-		echo "${@/#/${DISTDIR}/}"
-	else
-		local u
-		for u in mirror://gnu/${pn} ftp://ftp.cwru.edu/pub/bash ; do
-			printf "${u}/${pn}-${pv}-patches/%s " "$@"
-			printf "${u}/${pn}-${pv}-patches/%s.asc " "$@"
-		done
-	fi
-}
 
 # The version of readline this bash normally ships with.
 # Note: right now, we don't use the system copy of readline for bash for non-releases.
@@ -49,13 +41,34 @@ READLINE_VER="8.2"
 
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html https://git.savannah.gnu.org/cgit/bash.git"
+
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/bash.git"
 	EGIT_BRANCH=devel
 	inherit git-r3
 elif is_release ; then
-	SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
+	SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz"
 	SRC_URI+=" verify-sig? ( mirror://gnu/bash/${MY_P}.tar.gz.sig )"
+
+	if [[ ${PLEVEL} -gt 0 ]] ; then
+		# bash-5.1 -> bash51
+		my_p=${PN}$(ver_rs 1-2 '' $(ver_cut 1-2))
+
+		patch_url=
+		my_patch_index=
+
+		for ((my_patch_index=1; my_patch_index <= ${PLEVEL} ; my_patch_index++)) ; do
+			for url in mirror://gnu/${pn} ftp://ftp.cwru.edu/pub/bash ; do
+				patch_url=$(printf "${url}/${PN}-$(ver_cut 1-2)-patches/${my_p}-%03d" ${my_patch_index})
+				SRC_URI+=" ${patch_url}"
+				SRC_URI+=" verify-sig? ( ${patch_url}.sig )"
+			done
+
+			MY_PATCHES+=( "${DISTDIR}"/$(printf ${my_p}-%03d ${my_patch_index}) )
+		done
+
+		unset my_pn patch_url my_patch_index
+	fi
 else
 	SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
 	SRC_URI+=" verify-sig? ( mirror://gnu/${PN}/${MY_P}.tar.gz.sig ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz.sig )"
@@ -133,7 +146,7 @@ src_unpack() {
 
 src_prepare() {
 	# Include official patches
-	[[ ${PLEVEL} -gt 0 ]] && eapply -p0 $(patches -s)
+	[[ ${PLEVEL} -gt 0 ]] && eapply -p0 "${MY_PATCHES[@]}"
 
 	# Clean out local libs so we know we use system ones w/releases.
 	if is_release ; then
