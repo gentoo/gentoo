@@ -1,14 +1,14 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake-multilib
 
 DESCRIPTION="Access a working SSH implementation by means of a library"
 HOMEPAGE="https://www.libssh.org/"
 
-if [[ "${PV}" == *9999 ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.libssh.org/projects/libssh.git"
 else
@@ -22,10 +22,8 @@ IUSE="debug doc examples gcrypt gssapi mbedtls pcap server +sftp static-libs tes
 # Maintainer: check IUSE-defaults at DefineOptions.cmake
 
 REQUIRED_USE="?? ( gcrypt mbedtls )"
+RESTRICT="!test? ( test )"
 
-BDEPEND="
-	doc? ( app-doc/doxygen[dot] )
-"
 RDEPEND="
 	!gcrypt? (
 		!mbedtls? (
@@ -40,14 +38,14 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? (
 		>=dev-util/cmocka-0.3.1[${MULTILIB_USEDEP}]
-		elibc_musl? ( sys-libs/argp-standalone ) )
+		elibc_musl? ( sys-libs/argp-standalone )
+	)
 "
+BDEPEND="doc? ( app-doc/doxygen[dot] )"
 
-DOCS=( AUTHORS README ChangeLog )
+DOCS=( AUTHORS CHANGELOG README )
 
 PATCHES=( "${FILESDIR}/${PN}-0.8.0-tests.patch" )
-
-RESTRICT+=" !test? ( test )"
 
 src_prepare() {
 	cmake_src_prepare
@@ -79,17 +77,17 @@ multilib_src_configure() {
 		-DWITH_NACL=OFF
 		-DWITH_STACK_PROTECTOR=OFF
 		-DWITH_STACK_PROTECTOR_STRONG=OFF
-		-DWITH_DEBUG_CALLTRACE="$(usex debug)"
-		-DWITH_DEBUG_CRYPTO="$(usex debug)"
-		-DWITH_GCRYPT="$(usex gcrypt)"
-		-DWITH_GSSAPI="$(usex gssapi)"
-		-DWITH_MBEDTLS="$(usex mbedtls)"
-		-DWITH_PCAP="$(usex pcap)"
-		-DWITH_SERVER="$(usex server)"
-		-DWITH_SFTP="$(usex sftp)"
-		-DBUILD_STATIC_LIB="$(usex static-libs)"
-		-DUNIT_TESTING="$(usex test)"
-		-DWITH_ZLIB="$(usex zlib)"
+		-DWITH_DEBUG_CALLTRACE=$(usex debug)
+		-DWITH_DEBUG_CRYPTO=$(usex debug)
+		-DWITH_GCRYPT=$(usex gcrypt)
+		-DWITH_GSSAPI=$(usex gssapi)
+		-DWITH_MBEDTLS=$(usex mbedtls)
+		-DWITH_PCAP=$(usex pcap)
+		-DWITH_SERVER=$(usex server)
+		-DWITH_SFTP=$(usex sftp)
+		-DBUILD_STATIC_LIB=$(usex static-libs)
+		-DUNIT_TESTING=$(usex test)
+		-DWITH_ZLIB=$(usex zlib)
 	)
 
 	multilib_is_native_abi || mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=ON )
@@ -104,7 +102,7 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	cmake_src_install
-	multilib_is_native_abi && use doc && HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
+	multilib_is_native_abi && use doc && local HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
 
 	use static-libs && dolib.a src/libssh.a
 
