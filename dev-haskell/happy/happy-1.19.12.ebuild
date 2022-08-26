@@ -15,11 +15,22 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="doc"
 
+# Re: LLVM blocker - ghc-9.0.2 generates IR that crashes LLVM opt
+# for two test cases.  Unsure yet if this is a bug in the GHC LLVM
+# backend or in LLVM itself.  Tracked in
+# https://github.com/llvm/llvm-project/issues/57393
+#
+# Must be in RDEPEND or pkgcheck complains about MisplaceWeakBlocker.
+# Although in theory it's possible to enable USE=llvm on an arch with
+# native codegen, there is no reason to do so, so in practice this should
+# block USE=test exclusively on arches that support registerised GHC
+# through the LLVM backend only.
 RDEPEND=">=dev-haskell/mtl-2.2.1:=
 	>=dev-lang/ghc-7.4.1:=
+	test? ( !dev-lang/ghc[llvm(-)] )
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.8
