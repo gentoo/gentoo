@@ -13,8 +13,6 @@
 	of the toolkit and which can be used by any event generator model.
 	</longdescription>
 	<use>
-		<flag name="c++11">Build ThePEG using the C++11 standard.
-		Experimental feature, not for production use.</flag>
 		<flag name="fastjet">Adds support for <pkg>sci-physics/fastjet</pkg></flag>
 		<flag name="hepmc">Adds support for High Energy Physics Monte Carlo
 		Generators <pkg>sci-physics/hepmc</pkg></flag>
