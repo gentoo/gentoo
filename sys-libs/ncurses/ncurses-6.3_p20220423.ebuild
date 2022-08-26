@@ -22,6 +22,10 @@ if [[ ${PV} == *_p* ]] ; then
 	#	"At times (generally to mark a relatively stable point), I create a rollup
 	#	patch, which consists of all changes from the release through the current date."
 	#
+	# Also, from https://lists.gnu.org/archive/html/bug-ncurses/2019-08/msg00039.html,
+	# the patches are considered to be acceptable to use after some testing. They
+	# are both for development but also bug fixes.
+	#
 	# This array should contain a list of all the snapshots since the last
 	# release if there's no megapatch available yet.
 	PATCH_DATES=(
@@ -119,6 +123,12 @@ src_configure() {
 
 	# bug #214642
 	BUILD_CPPFLAGS+=" -D_GNU_SOURCE"
+
+	# Should be fixed upstream soon:
+	# https://lists.gnu.org/archive/html/bug-ncurses/2022-08/msg00024.html
+	# bug #866398
+	sed -i -e 's/ld --verbose/${LD} --verbose/' configure || die
+	sed -i -e 's/pkg-config --version/${PKG_CONFIG} --version/' misc/gen-pkgconfig.in || die
 
 	# Build the various variants of ncurses -- narrow, wide, and threaded. #510440
 	# Order matters here -- we want unicode/thread versions to come last so that the
@@ -258,11 +268,7 @@ do_configure() {
 		[[ -d ${cross_path} ]] && export TIC_PATH="${cross_path}/progs/tic"
 	fi
 
-	# Force bash until upstream rebuilds the configure script with a newer
-	# version of autotools. bug #545532
-	#CONFIG_SHELL=${EPREFIX}/bin/bash \
-	ECONF_SOURCE="${S}" \
-	econf "${conf[@]}" "$@"
+	ECONF_SOURCE="${S}" econf "${conf[@]}" "$@"
 }
 
 src_compile() {
