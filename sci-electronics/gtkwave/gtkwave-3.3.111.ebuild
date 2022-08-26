@@ -18,7 +18,7 @@ RDEPEND="
 	dev-libs/glib:2
 	sys-libs/zlib
 	x11-libs/pango
-	x11-libs/gtk+:3
+	x11-libs/gtk+:3[wayland]
 	judy? ( dev-libs/judy )
 	tcl? ( dev-lang/tcl:0 dev-lang/tk:0 )
 	lzma? ( app-arch/xz-utils )"
