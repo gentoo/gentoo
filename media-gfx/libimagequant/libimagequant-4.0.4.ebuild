@@ -50,7 +50,7 @@ S="${WORKDIR}"/${P}/imagequant-sys
 
 LICENSE="GPL-3"
 SLOT="0/0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64"
 
 BDEPEND="
 	>=dev-util/cargo-c-0.9.11
