@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -30,7 +30,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	fastjet? ( sci-physics/fastjet )
-	hepmc? ( sci-physics/hepmc:0= )
+	hepmc? ( sci-physics/hepmc:2= )
 	lhapdf? ( sci-physics/lhapdf:= )
 	zlib? ( sys-libs/zlib )"
 # ROOT is used only when building related tests
