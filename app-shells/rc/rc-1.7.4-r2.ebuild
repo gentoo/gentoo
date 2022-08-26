@@ -28,15 +28,16 @@ src_configure() {
 }
 
 src_install() {
-	into  "${EROOT}/usr"
+	into /usr
 	dobin "${PN}"
 	doman "${PN}.1"
 	einstalldocs
 }
 
 pkg_postinst() {
-	local bin="/usr/bin/rc"
-	elog "Updating /etc/shells"
-	# If not match, add /usr/bin/rc to /etc/shells
-	(grep -q "^$bin$" "${EROOT}/etc/shells" || echo $bin >> $_) || die
+	if ! grep -q '^/usr/bin/rc$' "${EROOT}"/etc/shells ; then
+		ebegin "Updating /etc/shells"
+		echo "/usr/bin/rc" >> "${EROOT}"/etc/shells
+		eend $?
+	fi
 }
