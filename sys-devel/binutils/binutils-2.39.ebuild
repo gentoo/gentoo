@@ -8,7 +8,7 @@ inherit elisp-common libtool flag-o-matic gnuconfig strip-linguas toolchain-func
 DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
 LICENSE="GPL-3+"
-IUSE="cet default-gold doc emacs gold multitarget +nls pgo +plugins static-libs test vanilla"
+IUSE="cet default-gold doc emacs gold gprofng multitarget +nls pgo +plugins static-libs test vanilla"
 REQUIRED_USE="default-gold? ( gold )"
 
 # Variables that can be set here  (ignored for live ebuilds)
@@ -286,6 +286,14 @@ src_configure() {
 		# Ideally we would like automagic-or-disabled here.
 		# But the check does not quite work on i686: bug #760926.
 		$(use_enable cet)
+
+		# We can enable this by default in future, but it's brand new
+		# in 2.39 with several bugs:
+		# - Doesn't build on musl (https://sourceware.org/bugzilla/show_bug.cgi?id=29477)
+		# - No man pages (https://sourceware.org/bugzilla/show_bug.cgi?id=29521)
+		# - Broken at runtime without Java (https://sourceware.org/bugzilla/show_bug.cgi?id=29479)
+		# - binutils-config (and this ebuild?) needs adaptation first (https://bugs.gentoo.org/865113)
+		$(use_enable gprofng)
 	)
 
 	if ! is_cross ; then
