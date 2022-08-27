@@ -13,7 +13,7 @@ LICENSE="Apache-2.0"
 # From 1.2.0->2.0.0, incremented SONAME, although the interface didn't actually change.
 # (Apparently to adopt semver.)
 SLOT="0/2"
-KEYWORDS="amd64 ~arm arm64 x86"
+KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 IUSE="static-libs test"
 
 # out-of-source build broken, bug #842060
