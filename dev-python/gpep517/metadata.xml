@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">mgorny/gpep517</remote-id>
+		<remote-id type="github">projg2/gpep517</remote-id>
 		<remote-id type="pypi">gpep517</remote-id>
 	</upstream>
 </pkgmetadata>
