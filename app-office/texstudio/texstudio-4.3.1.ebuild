@@ -1,18 +1,19 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop git-r3 qmake-utils xdg
+inherit desktop qmake-utils xdg
 
 MY_PV="${PV/_/}"
 DESCRIPTION="Free cross-platform LaTeX editor (fork from texmakerX)"
 HOMEPAGE="https://www.texstudio.org https://github.com/texstudio-org/texstudio"
-EGIT_REPO_URI="https://github.com/texstudio-org/texstudio.git"
+SRC_URI="https://github.com/texstudio-org/texstudio/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="video"
 
 DEPEND="
@@ -50,8 +51,6 @@ PATCHES=(
 )
 
 src_prepare() {
-	xdg_src_prepare
-
 	# TODO: find hunspell quazip utilities/poppler-data qtsingleapplication -delete || die
 	rm -r src/quazip || die
 
@@ -61,10 +60,11 @@ src_prepare() {
 
 	sed -e "/qtsingleapplication.pri/s/.*/CONFIG += qtsingleapplication/" \
 		-i ${PN}.pro || die
+	default
 }
 
 src_configure() {
-	eqmake5 USE_SYSTEM_HUNSPELL=1 USE_SYSTEM_QUAZIP=1
+	eqmake5 USE_SYSTEM_HUNSPELL=1 USE_SYSTEM_QUAZIP=1 NO_TESTS=false
 }
 
 src_install() {
@@ -74,4 +74,7 @@ src_install() {
 	done
 
 	emake DESTDIR="${D}" INSTALL_ROOT="${ED}" install
+
+	# We don't install licences per package
+	rm "${ED}"/usr/share/texstudio/COPYING || die
 }
