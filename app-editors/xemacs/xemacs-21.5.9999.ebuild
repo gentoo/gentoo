@@ -36,7 +36,7 @@ RDEPEND="
 	dnd? ( x11-libs/dnd )
 	motif? ( >=x11-libs/motif-2.3:0[xft=] )
 	athena? ( x11-libs/libXaw )
-	Xaw3d? ( x11-libs/libXaw3d[unicode] )
+	Xaw3d? ( x11-libs/libXaw3d[unicode(+)] )
 	xft? ( media-libs/freetype:2 x11-libs/libXft x11-libs/libXrender >=media-libs/fontconfig-2.5.0 )
 	neXt? ( x11-libs/neXtaw )
 	xface? ( media-libs/compface )
