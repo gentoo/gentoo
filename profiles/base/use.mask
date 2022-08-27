@@ -9,10 +9,6 @@
 # change. bug #838970.
 qt6
 
-# Hans de Graaff <graaff@gentoo.org> (2022-07-16)
-# Mask ruby 2.6 as EOL
-ruby_targets_ruby26
-
 # Matt Turner <mattst88@gentoo.org> (2022-04-16)
 # dev-util/sysprof not keyworded on most arches yet
 sysprof
