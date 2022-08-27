@@ -28,8 +28,6 @@ RESTRICT="test"  # no tests :(
 RDEPEND="
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/munch[${PYTHON_USEDEP}]
-"
-RDEPEND="${DEPEND}
 	dev-vcs/git
 "
 BDEPEND="
