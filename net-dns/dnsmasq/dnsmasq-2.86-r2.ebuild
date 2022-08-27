@@ -1,11 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit toolchain-funcs flag-o-matic lua-single systemd
+inherit toolchain-funcs lua-single systemd
 
 DESCRIPTION="Small forwarding DNS server"
 HOMEPAGE="https://thekelleys.org.uk/dnsmasq/doc.html"
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 IUSE="auth-dns conntrack dbus +dhcp dhcp-tools dnssec +dumpfile id idn libidn2"
-IUSE+=" +inotify ipv6 lua nettlehash nls script selinux static tftp"
+IUSE+=" +loop +inotify ipv6 lua nettlehash nls script selinux static tftp"
 
 DM_LINGUAS=(de es fi fr id it no pl pt_BR ro)
 
@@ -44,11 +44,17 @@ DEPEND="${COMMON_DEPEND}
 		dev-libs/nettle:=[gmp]
 		static? ( >=dev-libs/nettle-3.4[static-libs(+)] )
 	)
+	nettlehash? (
+		static? ( >=dev-libs/nettle-3.4[static-libs(+)] )
+	)
 "
 
 RDEPEND="${COMMON_DEPEND}
 	dnssec? (
 		!static? ( >=dev-libs/nettle-3.4:=[gmp] )
+	)
+	nettlehash? (
+		!static? ( dev-libs/nettle:=[gmp] )
 	)
 	selinux? ( sec-policy/selinux-dnsmasq )
 "
@@ -119,6 +125,7 @@ src_configure() {
 		$(use_have -n dhcp dhcp dhcp6)
 		$(use_have -n ipv6 ipv6 dhcp6)
 		$(use_have -n id id)
+		$(use_have -n loop)
 		$(use_have lua luascript)
 		$(use_have -n script)
 		$(use_have -n tftp)
@@ -173,7 +180,7 @@ src_install() {
 	docinto html/
 	dodoc *.html
 
-	newinitd "${FILESDIR}"/dnsmasq-init-r4 ${PN}
+	newinitd "${FILESDIR}"/dnsmasq-init-r5 ${PN}
 	newconfd "${FILESDIR}"/dnsmasq.confd-r1 ${PN}
 
 	insinto /etc/logrotate.d
@@ -187,7 +194,7 @@ src_install() {
 
 	if use dhcp; then
 		keepdir /var/lib/misc
-		newinitd "${FILESDIR}"/dnsmasq-init-dhcp-r3 ${PN}
+		newinitd "${FILESDIR}"/dnsmasq-init-dhcp-r4 ${PN}
 	fi
 	if use dbus; then
 		insinto /etc/dbus-1/system.d
