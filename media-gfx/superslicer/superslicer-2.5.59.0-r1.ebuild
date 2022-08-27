@@ -58,6 +58,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-cereal.patch"
 	"${FILESDIR}/${P}-boost.patch"
 	"${FILESDIR}/${P}-missing-includes.patch"
+	"${FILESDIR}/${P}-dont-install-bundled-angelscript.patch"
+	"${FILESDIR}/${P}-fix-gcodeviewer-symlink.patch"
 )
 
 S="${WORKDIR}/${MY_PN}-${PV}"
