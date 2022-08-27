@@ -33,7 +33,10 @@ CDEPEND="
 	zlib? ( sys-libs/zlib:0= )"
 DEPEND="${CDEPEND}
 	java? ( virtual/jdk:1.8 )
-	test? ( sys-process/time )"
+	test? (
+		sys-process/time
+		dev-libs/boost
+	)"
 RDEPEND="${CDEPEND}
 	java? ( virtual/jre:1.8 )"
 
