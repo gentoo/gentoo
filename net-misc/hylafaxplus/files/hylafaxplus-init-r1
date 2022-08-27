@@ -52,7 +52,7 @@ checkconfig() {
 	if [ x${PIDDIR} = x ] ; then
 		PIDDIR=${SPOOL}
 	else
-		PIDDIR=${PIDDIR}
+		PIDDIR=${piddir}
 	fi
 
 
@@ -159,12 +159,12 @@ zap() {
 
 	ebegin "Zap HylaFAX server daemon files"
 
-	if [ -f ${PIDFILE}/hfaxd.pid ] ; then
-		rm -f ${PIDFILE}/hfaxd.pid
+	if [ -f ${PIDDIR}/hfaxd.pid ] ; then
+		rm -f ${PIDDIR}/hfaxd.pid
 	fi
 
-	if [ -f ${PIDFILE}/faxq.pid ] ; then
-		rm -f ${PIDFILE}/faxq.pid
+	if [ -f ${PIDDIR}/faxq.pid ] ; then
+		rm -f ${PIDDIR}/faxq.pid
 	fi
 }
 
