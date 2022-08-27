@@ -12,10 +12,10 @@ inherit distutils-r1
 DESCRIPTION="A backend script to aid installing Python packages in Gentoo"
 HOMEPAGE="
 	https://pypi.org/project/gpep517/
-	https://github.com/mgorny/gpep517/
+	https://github.com/projg2/gpep517/
 "
 SRC_URI="
-	https://github.com/mgorny/gpep517/archive/v${PV}.tar.gz
+	https://github.com/projg2/gpep517/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 
