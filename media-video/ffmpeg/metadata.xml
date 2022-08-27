@@ -27,11 +27,14 @@
 		<flag name="gpl">Build GPL code. Should be enabled unless you require LGPL binaries.</flag>
 		<flag name="hardcoded-tables">Use pre-calculated tables rather than calculating them on the fly.</flag>
 		<flag name="iec61883"> Support for FireWire DV/HDV input device using <pkg>media-libs/libiec61883</pkg>.</flag>
+		<flag name="jpegxl">Enable JPEG XL de/encoding via <pkg>media-libs/libjxl</pkg>.</flag>
 		<flag name="kvazaar">Enables <pkg>media-libs/kvazaar</pkg> based HEVC encoder.</flag>
+		<flag name="lcms">Enable ICC profile support via <pkg>media-libs/lcms</pkg>.</flag>
 		<flag name="libaom">Enables <pkg>media-libs/libaom</pkg> based AV1 codec support.</flag>
 		<flag name="libaribb24">Enables ARIB text and caption decoding via <pkg>media-libs/aribb24</pkg>.</flag>
 		<flag name="libdrm">Enables <pkg>x11-libs/libdrm</pkg> support for better screen grabbing and hardware accelerated codecs.</flag>
 		<flag name="libilbc">Enables iLBC de/encoding via <pkg>media-libs/libilbc</pkg>.</flag>
+		<flag name="libplacebo">Adds flexible GPU-accelerated processing filter based on <pkg>media-libs/libplacebo</pkg>.</flag>
 		<flag name="librtmp">Enables Real Time Messaging Protocol using librtmp (<pkg>media-video/rtmpdump</pkg>) in addition to FFmpeg's native implementation.</flag>
 		<flag name="libsoxr">Enables audio resampling through <pkg>media-libs/soxr</pkg>.</flag>
 		<flag name="libtesseract">Enables the OCR filter via <pkg>app-text/tesseract</pkg>.</flag>
