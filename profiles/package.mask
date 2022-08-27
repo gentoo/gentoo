@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org) (2022-08-27)
+# No longer maintained upstream and more modern alternatives such as
+# www-servers/puma are available.
+# Removal in 30 days.
+dev-ruby/async_sinatra
+
 # Sam James <sam@gentoo.org> (2022-08-27)
 # Stuck on deprecated and removed Ruby 2.6. Removal on 2022-09-27.
 dev-ruby/aws-sdk
