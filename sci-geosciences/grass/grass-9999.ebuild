@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="sqlite"  # bug 572440
 WX_GTK_VER="3.0-gtk3"
 
-inherit autotools desktop python-single-r1 toolchain-funcs wxwidgets xdg
+inherit desktop python-single-r1 toolchain-funcs wxwidgets xdg
 
 DESCRIPTION="A free GIS with raster and vector functionality, as well as 3D vizualization"
 HOMEPAGE="https://grass.osgeo.org/"
@@ -124,7 +124,11 @@ src_prepare() {
 	sed -e "s:= python3:= ${EPYTHON}:" -i "${S}/include/Make/Platform.make.in" || die
 
 	default
-	eautoreconf
+
+	# When patching the build system, avoid running autoheader here. The file
+	# config.in.h is maintained manually upstream. Changes to it may lead to
+	# undefined behavior. See bug #866554.
+	# AT_NOEAUTOHEADER=1 eautoreconf
 
 	ebegin "Fixing python shebangs"
 	python_fix_shebang -q "${S}"
