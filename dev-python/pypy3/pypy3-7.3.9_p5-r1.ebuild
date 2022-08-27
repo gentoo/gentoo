@@ -98,7 +98,7 @@ src_compile() {
 	[[ ${soabi} == ${SLOT#*/} ]] || die "update subslot to ${soabi}"
 
 	# Add epython.py to the distribution
-	echo "EPYTHON='${EPYTHON}'" > lib-python/3/epython.py || die
+	echo 'EPYTHON="pypy3"' > lib-python/3/epython.py || die
 
 	einfo "Generating caches and CFFI modules ..."
 
