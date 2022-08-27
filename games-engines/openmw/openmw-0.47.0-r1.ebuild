@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -64,6 +64,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/openmw-0.47.0-mygui-license.patch
 	"${FILESDIR}"/openmw-0.47.0-sigstksz.patch
+	"${FILESDIR}"/openmw-0.47.0-gcc12.patch
 )
 
 src_prepare() {
