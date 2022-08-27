@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -6,8 +6,8 @@ EAPI="7"
 inherit toolchain-funcs
 
 DESCRIPTION="Shows currently transmitting beacons of the International Beacon Project (IBP)"
-HOMEPAGE="http://wwwhome.cs.utwente.nl/~ptdeboer/ham/ibp.html"
-SRC_URI="http://wwwhome.cs.utwente.nl/~ptdeboer/ham/${P}.tgz"
+HOMEPAGE="http://www.pa3fwm.nl/software/ibp/"
+SRC_URI="http://www.pa3fwm.nl/software/ibp/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
