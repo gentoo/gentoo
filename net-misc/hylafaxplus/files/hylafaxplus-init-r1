@@ -1,6 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2018 Gentoo Foundation
-# Author Geaaru
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 extra_commands="zap"
@@ -12,81 +11,81 @@ depend() {
 checkconfig() {
 	ebegin "Check hylafax server configuration..."
 
-	if [ x$spooldir = x ] ; then
+	if [ x${spooldir} = x ] ; then
 		eerror "No spooldir directory defined"
 		return 1
 	else
-		SPOOL=$spooldir
-		einfo "Use spool directory $SPOOL"
+		SPOOL=${spooldir}
+		einfo "Use spool directory ${SPOOL}"
 	fi
 
-	if [ x$mode = x ] ; then
+	if [ x${mode} = x ] ; then
 		eerror "No mode defined"
 		return 1
 	fi
 
-	if [ ! -f $SPOOL/etc/setup.cache ] ; then
-		eerror "No $SPOOL/etc/setup.cache file founded. Use faxsetup command"
+	if [ ! -f ${SPOOL}/etc/setup.cache ] ; then
+		eerror "No ${SPOOL}/etc/setup.cache file found. Use faxsetup command"
 		return 1
 	fi
 
-	if [ x$hfaxd = x -o ! -f $hfaxd ] ; then
-		eerror "No hfaxd daemon founded"
+	if [ x${hfaxd} = x ] || [ ! -f ${hfaxd} ] ; then
+		eerror "No hfaxd daemon found"
 		return 1
 	fi
 
-	if [ x$faxq = x -o ! -f $faxq ] ; then
-		eerror "No faxq program founded"
+	if [ x${faxq} = x ] || [ ! -f ${faxq} ] ; then
+		eerror "No faxq program found"
 		return 1
 	fi
 
-	if [ x$faxgetty = x -o ! -f $faxgetty ] ; then
-		eerror "No faxgetty program founded"
+	if [ x${faxgetty} = x ] || [ ! -f ${faxgetty} ] ; then
+		eerror "No faxgetty program found"
 		return 1
 	fi
 
-	if [ x$faxbind = x ] ; then
-		eerror "No binding address supply"
+	if [ x${faxbind} = x ] ; then
+		eerror "No binding address supplied"
 		return 1
 	fi
 
-	if [ x$piddir = x ] ; then
-		PIDDIR=$SPOOL
+	if [ x${PIDDIR} = x ] ; then
+		PIDDIR=${SPOOL}
 	else
-		PIDDIR=$piddir
+		PIDDIR=${PIDDIR}
 	fi
 
 
-	hfaxd_args="-l $faxbind -q $SPOOL"
+	hfaxd_args="-l ${faxbind} -q ${SPOOL}"
 
-	case $mode in
+	case ${mode} in
 		newproto)
-			if [ x$faxport = x ] ; then
+			if [ x${faxport} = x ] ; then
 				eerror "No faxport defined"
 				return 1
 			fi
-			hfaxd_args="$hfaxd_args -i $faxport"
+			hfaxd_args="${hfaxd_args} -i ${faxport}"
 			;;
 		oldproto)
-			if [ x$oldprotoport = x ] ; then
+			if [ x${oldprotoport} = x ] ; then
 				eerror "No oldprotoport defined"
 				return 1
 			fi
-			hfaxd_args="$hfaxd_args -o $oldprotoport"
+			hfaxd_args="${hfaxd_args} -o ${oldprotoport}"
 			;;
 		snpp)
-			if [ x$snppport = x ] ; then
+			if [ x${snppport} = x ] ; then
 				eerror "No snppport defined"
 				return 1
 			fi
-			hfaxd_args="$hfaxd_args -s $snppport"
+			hfaxd_args="${hfaxd_args} -s ${snppport}"
 			;;
 		any)
-			if [ x$faxport = x -o x$snppport = x -o x$oldprotoport = x ] ; then
+			if [ x${faxport} = x ] || [ x${snppport} = x ] || [ x${oldprotoport} = x ] ; then
 				eerror "No port data founded for old services"
 				return 1
 			fi
-			hfaxd_args="$hfaxd_args -i $faxport -s $snppport -o $oldprotoport"
+			hfaxd_args="${hfaxd_args} -i ${faxport} -s ${snppport} -o ${oldprotoport}"
 			;;
 		*)
 			eerror "Invalid mode"
@@ -95,12 +94,12 @@ checkconfig() {
 
 	esac
 
-	faxq_args="-q $SPOOL"
+	faxq_args="-q ${SPOOL}"
 
 	# workaround for manage save of pidfile with start-stop-daemon
-	hfaxd_args="$hfaxd_args -d"
-	faxq_args="$faxq_args -D"
-		
+	hfaxd_args="${hfaxd_args} -d"
+	faxq_args="${faxq_args} -D"
+
 	return 0
 }
 
@@ -114,35 +113,34 @@ start() {
 	start_faxq
 	result=$?
 
-	if [ $result -ne 0 ]  ; then
-		eerror "Error on start $faxq daemon"
+	if [ ${result} -ne 0 ]  ; then
+		eerror "Error on start ${faxq} daemon"
 		return 1
 	fi
 
 	start_hfaxd
 	result=$?
 
-	eend $result
+	eend ${result}
 }
 
 start_hfaxd() {
 	local arguments="--start \
-			 --make-pidfile --pidfile $PIDDIR/hfaxd.pid"
-	
-	einfo "Starting $hfaxd with args $hfaxd_args"
+			 --make-pidfile --pidfile ${PIDDIR}/hfaxd.pid"
+	einfo "Starting ${hfaxd} with args ${hfaxd_args}"
 
-	start-stop-daemon -b ${arguments} --exec $hfaxd -- $hfaxd_args > /dev/null 2>&1
+	start-stop-daemon -b ${arguments} --exec ${hfaxd} -- ${hfaxd_args} > /dev/null 2>&1
 
 	return $?;
 }
 
 start_faxq() {
 	local arguments="--start \
-			 --make-pidfile --pidfile $PIDDIR/faxq.pid"
-	einfo "Starting $faxq ... "
+			 --make-pidfile --pidfile ${PIDDIR}/faxq.pid"
+	einfo "Starting ${faxq} ... "
 
-	start-stop-daemon -b ${arguments} --exec $faxq -- $faxq_args > /dev/null 2>&1
-	
+	start-stop-daemon -b ${arguments} --exec ${faxq} -- ${faxq_args} > /dev/null 2>&1
+
 	return $?
 }
 
@@ -150,9 +148,9 @@ stop() {
 	checkconfig || return 1
 
 	ebegin "Stopping HylaFAX server daemons"
-	
-	start-stop-daemon --stop --quiet --pidfile $PIDDIR/hfaxd.pid
-	start-stop-daemon --stop --quiet --pidfile $PIDDIR/faxq.pid
+
+	start-stop-daemon --stop --quiet --pidfile ${PIDDIR}/hfaxd.pid
+	start-stop-daemon --stop --quiet --pidfile ${PIDDIR}/faxq.pid
 	eend $?
 }
 
@@ -161,12 +159,12 @@ zap() {
 
 	ebegin "Zap HylaFAX server daemon files"
 
-	if [ -f $PIDFILE/hfaxd.pid ] ; then
-		rm -f $PIDFILE/hfaxd.pid
+	if [ -f ${PIDFILE}/hfaxd.pid ] ; then
+		rm -f ${PIDFILE}/hfaxd.pid
 	fi
 
-	if [ -f $PIDFILE/faxq.pid ] ; then
-		rm -f $PIDFILE/faxq.pid
+	if [ -f ${PIDFILE}/faxq.pid ] ; then
+		rm -f ${PIDFILE}/faxq.pid
 	fi
 }
 
