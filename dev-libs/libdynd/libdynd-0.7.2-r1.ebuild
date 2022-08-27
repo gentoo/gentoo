@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake cuda
 
 # change each new libdynd version, to avoid git in tree dependency
-DYND_GIT_SHA1=341d6d91931fdb04ad657d27ed740cf533fc925b
+MY_GIT_SHA1=341d6d91931fdb04ad657d27ed740cf533fc925b
 
 DESCRIPTION="C++ dynamic multi-dimensionnal array library with Python exposure"
 HOMEPAGE="http://libdynd.org"
@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="doc? ( app-doc/doxygen[dot] )"
 RDEPEND="
-	dev-libs/c-blosc:0=
+	dev-libs/c-blosc:=
 	cuda? ( dev-util/nvidia-cuda-toolkit )
 	fftw? ( sci-libs/fftw:3.0 )
 "
@@ -59,7 +59,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DDYND_GIT_SHA1="${DYND_GIT_SHA1}"
+		-DDYND_GIT_SHA1="${MY_GIT_SHA1}"
 		-DDYND_VERSION_STRING="v${PV}"
 		-DDYND_INSTALL_LIB=ON
 		-DDYND_SHARED_LIB=ON
