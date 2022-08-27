@@ -15,10 +15,12 @@ else
 	VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/tcpdump.asc
 	inherit verify-sig
 
-	SRC_URI="https://www.tcpdump.org/release/${P}.tar.gz"
-	SRC_URI+=" verify-sig? ( https://www.tcpdump.org/release/${P}.tar.gz.sig )"
+	# Note: drop -upstream on bump, this is just because we switched to the official
+	# distfiles for verify-sig
+	SRC_URI="https://www.tcpdump.org/release/${P}.tar.gz -> ${P}-upstream.tar.gz"
+	SRC_URI+=" verify-sig? ( https://www.tcpdump.org/release/${P}.tar.gz.sig -> ${P}-upstream.tar.gz.sig )"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x86-solaris"
 fi
 
 LICENSE="BSD"
@@ -45,9 +47,8 @@ if [[ ${PV} != *9999* ]] ; then
 fi
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.9.1-pcap-config.patch
 	"${FILESDIR}"/${PN}-1.10.0-usbmon.patch
-	"${FILESDIR}"/${PN}-9999-prefix-darwin.patch
+	"${FILESDIR}"/${PN}-1.10.1-pcap-config.patch
 )
 
 src_prepare() {
