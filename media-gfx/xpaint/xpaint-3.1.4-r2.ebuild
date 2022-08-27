@@ -21,7 +21,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	media-libs/netpbm
 	x11-libs/libX11
-	>=x11-libs/libXaw3dXft-1.6.2h[unicode]
+	>=x11-libs/libXaw3dXft-1.6.2h[unicode(+)]
 	x11-libs/libXext
 	x11-libs/libXft
 	x11-libs/libXmu
