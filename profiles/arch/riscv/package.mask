@@ -1,6 +1,11 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Yixun Lan <dlan@gentoo.org> (2022-08-27)
+# mask it due to depend on virtual/jre
+# and then unmask in sub-profile accordingly
+media-tv/kodi
+
 # Yixun Lan <dlan@gentoo.org> (2022-08-11)
 # dev-java/openjdk support lp64d only, so mask others
 virtual/jdk
