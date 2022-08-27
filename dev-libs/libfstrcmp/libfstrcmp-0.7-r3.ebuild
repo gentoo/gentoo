@@ -13,7 +13,7 @@ S="${WORKDIR}/fstrcmp-${PV}.D001"
 LICENSE="GPL-3+"
 SLOT="0"
 IUSE="doc static-libs test"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 
 BDEPEND="
 	sys-apps/groff
