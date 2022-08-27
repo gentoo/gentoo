@@ -20,7 +20,7 @@ RDEPEND="
 	app-text/recode:=
 	!games-misc/fortune-mod-tao
 "
-DEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/App-XML-DocBook-Builder
 	dev-lang/perl
