@@ -11,11 +11,11 @@ inherit distutils-r1
 MY_P=fakeredis-py-${PV}
 DESCRIPTION="Fake implementation of redis API for testing purposes"
 HOMEPAGE="
-	https://github.com/dsoftwareinc/fakeredis-py/
+	https://github.com/cunla/fakeredis-py/
 	https://pypi.org/project/fakeredis/
 "
 SRC_URI="
-	https://github.com/dsoftwareinc/fakeredis-py/archive/v${PV}.tar.gz
+	https://github.com/cunla/fakeredis-py/archive/v${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}
