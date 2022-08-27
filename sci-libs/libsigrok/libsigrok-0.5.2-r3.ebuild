@@ -4,10 +4,8 @@
 EAPI="7"
 
 PYTHON_COMPAT=( python3_{8,9,10} )
-USE_RUBY="ruby26 ruby25"
-RUBY_OPTIONAL="yes"
 
-inherit autotools python-r1 java-pkg-opt-2 ruby-ng udev xdg-utils
+inherit autotools python-r1 java-pkg-opt-2 udev xdg-utils
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
@@ -22,10 +20,9 @@ HOMEPAGE="https://sigrok.org/wiki/Libsigrok"
 
 LICENSE="GPL-3"
 SLOT="0/4"
-IUSE="bluetooth +cxx ftdi hidapi java parport python ruby serial static-libs test +udev usb"
+IUSE="bluetooth +cxx ftdi hidapi java parport python serial static-libs test +udev usb"
 REQUIRED_USE="java? ( cxx )
-	python? ( cxx ${PYTHON_REQUIRED_USE} )
-	ruby? ( cxx || ( $(ruby_get_use_targets) ) )"
+	python? ( cxx ${PYTHON_REQUIRED_USE} )"
 
 RESTRICT="!test? ( test )"
 
@@ -42,7 +39,6 @@ LIB_DEPEND="
 		${PYTHON_DEPS}
 		>=dev-python/pygobject-3.0.0[${PYTHON_USEDEP}]
 	)
-	ruby? ( $(ruby_implementations_depend) )
 	serial? ( >=dev-libs/libserialport-0.1.1[static-libs(+)] )
 	usb? ( virtual/libusb:1[static-libs(+)] )
 "
@@ -62,7 +58,6 @@ DEPEND="${LIB_DEPEND//\[static-libs(+)]}
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/setuptools[${PYTHON_USEDEP}]
 	)
-	ruby? ( >=dev-lang/swig-3.0.8 )
 	test? ( >=dev-libs/check-0.9.4 )
 	virtual/pkgconfig
 "
@@ -73,13 +68,11 @@ PATCHES=(
 	# https://sigrok.org/bugzilla/show_bug.cgi?id=1527
 	"${FILESDIR}/${P}-swig-4.patch"
 	# https://sigrok.org/bugzilla/show_bug.cgi?id=1526
-	"${FILESDIR}/${P}-ruby-swig-docs.patch" # bug 705074
 	"${FILESDIR}/${P}-check-0.15.patch"
 )
 
 pkg_setup() {
 	use python && python_setup
-	use ruby && ruby-ng_pkg_setup
 	java-pkg-opt-2_pkg_setup
 }
 
@@ -91,15 +84,7 @@ sigrok_src_prepare() {
 	eautoreconf
 }
 
-each_ruby_prepare() {
-	sigrok_src_prepare
-}
-
 src_prepare() {
-	if use ruby; then
-		cp -rl "${S}" "${WORKDIR}"/all || die
-		ruby-ng_src_prepare
-	fi
 	default
 	sigrok_src_prepare
 	use python && python_copy_sources
@@ -119,10 +104,6 @@ sigrok_src_configure() {
 		"${@}"
 }
 
-each_ruby_configure() {
-	RUBY="${RUBY}" sigrok_src_configure --enable-ruby --disable-python
-}
-
 each_python_configure() {
 	cd "${BUILD_DIR}"
 	sigrok_src_configure --disable-ruby --enable-python
@@ -130,12 +111,7 @@ each_python_configure() {
 
 src_configure() {
 	sigrok_src_configure --disable-ruby --disable-python
-	use ruby && ruby-ng_src_configure
 	use python && python_foreach_impl each_python_configure
-}
-
-each_ruby_compile() {
-	emake ruby-build
 }
 
 each_python_compile() {
@@ -145,16 +121,11 @@ each_python_compile() {
 
 src_compile() {
 	default
-	use ruby && ruby-ng_src_compile
 	use python && python_foreach_impl each_python_compile
 }
 
 src_test() {
 	emake check
-}
-
-each_ruby_install() {
-	emake ruby-install DESTDIR="${D}"
 }
 
 each_python_install() {
@@ -166,7 +137,6 @@ each_python_install() {
 src_install() {
 	default
 	use python && python_foreach_impl each_python_install
-	use ruby && ruby-ng_src_install
 	use udev && udev_dorules contrib/*.rules
 	find "${D}" -name '*.la' -type f -delete || die
 }
