@@ -1,0 +1,43 @@
+--- a/pcap-config.in
++++ b/pcap-config.in
+@@ -66,16 +66,16 @@ then
+ 	#
+ 	if [ "$show_cflags" = 1 -a "$show_libs" = 1 ]
+ 	then
+-		echo "-I$includedir $LPATH -lpcap $LIBS"
++		echo "-lpcap $LIBS"
+ 	elif [ "$show_cflags" = 1 -a "$show_additional_libs" = 1 ]
+ 	then
+-		echo "-I$includedir $LPATH $LIBS"
++		echo "$LIBS"
+ 	elif [ "$show_cflags" = 1 ]
+ 	then
+-		echo "-I$includedir"
++		echo ""
+ 	elif [ "$show_libs" = 1 ]
+ 	then
+-		echo "$LPATH -lpcap $LIBS"
++		echo "-lpcap $LIBS"
+ 	elif [ "$show_additional_libs" = 1 ]
+ 	then
+ 		echo "$LIBS"
+@@ -87,15 +87,15 @@ else
+ 	#
+ 	if [ "$show_cflags" = 1 -a "$show_libs" = 1 ]
+ 	then
+-		echo "-I$includedir $LPATH $RPATH -l$PACKAGE_NAME"
++		echo " $RPATH -l$PACKAGE_NAME"
+ 	elif [ "$show_cflags" = 1 -a "$show_additional_libs" = 1 ]
+ 	then
+-		echo "-I$includedir"
++		echo ""
+ 	elif [ "$show_cflags" = 1 ]
+ 	then
+-		echo "-I$includedir"
++		echo ""
+ 	elif [ "$show_libs" = 1 ]
+ 	then
+-		echo "$LPATH $RPATH -l$PACKAGE_NAME"
++		echo "$RPATH -l$PACKAGE_NAME"
+ 	fi
+ fi
