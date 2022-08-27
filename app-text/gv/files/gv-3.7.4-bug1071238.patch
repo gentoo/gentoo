@@ -1,0 +1,22 @@
+Fix NULL access segfault
+https://bugzilla.redhat.com/show_bug.cgi?id=1071238
+https://src.fedoraproject.org/rpms/gv/blob/rawhide/f/gv-bug1071238.patch
+
+diff a/src/zoom.c b/src/zoom.c
+--- a/src/zoom.c
++++ b/src/zoom.c
+@@ -104,12 +104,12 @@ zoom_createZoom(Widget w _GL_UNUSED, XtP
+ 
+     BEGINMESSAGE(zoom_createZoom)
+ 
+-    if (!(gv_psfile != NULL || (gv_gs_arguments && *gv_gs_arguments))) {
++    if (!gv_psfile) {
+        INFMESSAGE(no file) ENDMESSAGE(zoom_createZoom)
+        return;
+     }
+ 
+-    if (strcmp(gv_filename, "-")) {
++    if (gv_filename != NULL && strcmp(gv_filename, "-")) {
+        stat(gv_filename, &sbuf);
+        if (mtime != sbuf.st_mtime) {
+ 	  INFMESSAGE1(file has changed) ENDMESSAGE1(zoom_createZoom)return;
