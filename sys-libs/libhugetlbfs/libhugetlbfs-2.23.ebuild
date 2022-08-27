@@ -38,7 +38,7 @@ src_prepare() {
 		-e 's@^\(ARCH\) ?=@\1 =@' \
 		Makefile || die "sed failed"
 
-	if [ "$(get_libdir)" == "lib64" ]; then
+	if [[ "$(get_libdir)" == "lib64" ]]; then
 		sed -i \
 			-e "/^LIB\(32\)/s:=.*:= lib32:" \
 				Makefile
