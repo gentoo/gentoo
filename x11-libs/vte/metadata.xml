@@ -9,5 +9,7 @@
 		<flag name="icu">Enable legacy charset support using <pkg>dev-libs/icu</pkg></flag>
 		<flag name="systemd">Support moving terminal child processes to their own systemd user scopes
 			to avoid terminal getting killed due to child causing OOM</flag>
+		<flag name="gtk3">Build with x11-libs/gtk+:3 support</flag>
+		<flag name="gtk4">Build with gui-libs/gtk:4 support</flag>
 	</use>
 </pkgmetadata>
