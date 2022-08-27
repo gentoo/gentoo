@@ -18,7 +18,7 @@ KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s
 RESTRICT="test"
 
 BDEPEND="dev-lang/perl"
-RDEPEND="${DEPEND}"
+RDEPEND="${BDEPEND}"
 
 src_configure() {
 	# Not an autoconf script.
