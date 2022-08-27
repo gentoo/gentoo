@@ -1,0 +1,47 @@
+Disable the creation of ChangeLog from a merge of ChangeLog.gqview and
+the (possibly missing) .git log (gen_changelog.sh).
+
+Disable converting documents to .html (pandoc) and the summary about
+printing preview (app-text/evince).
+
+diff -Nuar a/meson.build b/meson.build
+--- a/meson.build	2022-08-12 11:32:25.000000000 +0200
++++ b/meson.build	2022-08-24 17:30:06.415801827 +0200
+@@ -475,37 +475,6 @@
+ # Generate the help files
+ subdir('doc')
+ 
+-# Install other project files
+-res = run_command(find_program('gen_changelog.sh'), meson.source_root(), meson.build_root(), check : false)
+-
+-if res.returncode() == 0
+-    install_data(join_paths(meson.build_root(), 'ChangeLog'), join_paths(meson.build_root(), 'ChangeLog.html'), install_dir : helpdir)
+-    summary({'ChangeLog' : ['ChangeLog, ChangeLog.html created:', true]}, section : 'Documentation', bool_yn : true)
+-else
+-    summary({'ChangeLog' : ['ChangeLog, ChangeLog.html created:', false]}, section : 'Documentation', bool_yn : true)
+-endif
+-
+-pandoc = find_program('pandoc', required : false)
+-if pandoc.found()
+-    run_command(find_program('gen_readme.sh'), meson.source_root(), meson.build_root(), check : false)
+-
+-    install_data('README.md', 'COPYING', 'TODO', 'AUTHORS',
+-                 join_paths(meson.build_root(), 'README.html'),
+-                 install_dir : helpdir)
+-    summary({'README' : ['README.html created:', true]}, section : 'Documentation', bool_yn : true)
+-else
+-    install_data('README.md', 'COPYING', 'TODO', 'AUTHORS',
+-                 install_dir : helpdir)
+-    summary({'README' : ['pandoc not found - README.html created:', false]}, section : 'Documentation', bool_yn : true)
+-endif
+-
+-evince = find_program('evince', required : false)
+-if evince.found()
+-    summary({'print preview' : ['print preview supported:', true]}, section : 'Documentation', bool_yn : true)
+-else
+-    summary({'print preview' : ['evince not found - print preview supported:', false]}, section : 'Documentation', bool_yn : true)
+-endif
+-
+ install_data('geeqie.png', install_dir : icondir)
+ install_data('geeqie.1', install_dir : mandir1)
+ 

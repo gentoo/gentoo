@@ -1,0 +1,11 @@
+xxdi.pl is a simple alternative to Vim's 'xxd -i' mode.
+
+diff -Nuar b/scripts/generate-ClayRGB1998-icc-h.sh a/scripts/generate-ClayRGB1998-icc-h.sh
+--- b/scripts/generate-ClayRGB1998-icc-h.sh	2022-08-12 11:32:26.000000000 +0200
++++ a/scripts/generate-ClayRGB1998-icc-h.sh	2022-08-24 18:21:04.306965091 +0200
+@@ -17,4 +17,4 @@
+ 
+ cd "$(dirname "$1")" || return 1
+ 
+-xxd -i "$(basename "$1")" "$build_dir/$2"
++xxdi.pl "$(basename "$1")" > "$build_dir/$2"

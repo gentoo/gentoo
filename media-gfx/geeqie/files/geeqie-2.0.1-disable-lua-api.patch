@@ -1,0 +1,22 @@
+Disable the creation of Lua's API .html documentation.  That requires
+also app-doc/doxygen (create-doxygen-lua-api.sh).
+
+diff -Nuar a/doc/meson.build b/doc/meson.build
+--- a/doc/meson.build	2022-08-12 11:32:25.000000000 +0200
++++ b/doc/meson.build	2022-08-24 17:23:37.381872712 +0200
+@@ -26,15 +26,3 @@
+ endif
+ 
+ install_subdir(destdir, install_dir : helpdir, exclude_directories : 'lua-api/latex')
+-
+-doxygen = find_program('doxygen', required : false)
+-if doxygen.found()
+-    srcdir = join_paths(meson.source_root())
+-    destdir = join_paths(meson.build_root(), 'doc', 'html', 'lua-api')
+-
+-    run_command(find_program('create-doxygen-lua-api.sh'), srcdir, destdir, check : false)
+-
+-    summary({'lua-api' : ['lua-api help file created:', true]}, section : 'Documentation', bool_yn : true)
+-else
+-    summary({'lua-api' : ['doxygen not found - lua-api help file created:', false]}, section : 'Documentation', bool_yn : true)
+-endif

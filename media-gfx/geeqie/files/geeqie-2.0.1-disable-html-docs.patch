@@ -1,0 +1,28 @@
+Disable the creation of .html documents.
+
+diff -Nuar a/meson.build b/meson.build
+--- a/meson.build	2022-08-24 17:37:53.398117468 +0200
++++ b/meson.build	2022-08-24 17:43:53.555903394 +0200
+@@ -62,12 +62,6 @@
+ # External programs
+ gdk_pixbuf_csource = find_program('gdk-pixbuf-csource', required : true)
+ glib_genmarshal = find_program('glib-genmarshal', required : true)
+-gnome_doc_tool = find_program('yelp-build', required : false)
+-if gnome_doc_tool.found()
+-    summary({'help' : ['Help files created:', true]}, section : 'Documentation', bool_yn : true)
+-else
+-    summary({'help' : ['yelp-build not found - Help files created:', false]}, section : 'Documentation', bool_yn : true)
+-endif
+ 
+ debug = get_option('debug')
+ 
+@@ -472,9 +466,6 @@
+ # Generate the executable
+ subdir('src')
+ 
+-# Generate the help files
+-subdir('doc')
+-
+ install_data('geeqie.png', install_dir : icondir)
+ install_data('geeqie.1', install_dir : mandir1)
+ 

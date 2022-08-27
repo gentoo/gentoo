@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if ! command -v "${BROWSER}" > /dev/null 2>&1
+then
+    printf '%s\n' "ERROR: Program not found: '${BROWSER}'"
+    exit 1
+fi
+
+"${BROWSER}" ${@}

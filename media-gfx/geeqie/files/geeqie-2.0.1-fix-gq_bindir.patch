@@ -1,0 +1,14 @@
+Fix gq_bindir summary output.
+
+diff -Nuar a/meson.build b/meson.build
+--- a/meson.build	2022-08-24 17:31:37.728254621 +0200
++++ b/meson.build	2022-08-24 17:36:13.217620699 +0200
+@@ -124,7 +124,7 @@
+ podir = join_paths(meson.source_root(), 'po')
+ 
+ summary({'gq_appdir': gq_appdir,
+-        'gq_bindir': gq_helpdir,
++        'gq_bindir': gq_bindir,
+         'gq_helpdir': gq_helpdir,
+         'gq_htmldir': gq_htmldir,
+         'gq_localedir': gq_localedir,
