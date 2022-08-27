@@ -73,10 +73,6 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}"/openmw-0.47.0-mygui-license.patch
-)
-
 src_prepare() {
 	cmake_src_prepare
 
