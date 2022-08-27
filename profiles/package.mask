@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-08-27)
+# Stuck on deprecated and removed Ruby 2.6. Removal on 2022-09-27.
+dev-ruby/aws-sdk
+dev-ruby/aws-sdk-core
+dev-ruby/aws-sdk-resources
+dev-ruby/travis
+
 # Matthew Smith <matthew@gentoo.org> (2022-08-26)
 # Unmaintained upstream. Superseded by modern GTK.
 # Bug #698950, removal in 30 days.
