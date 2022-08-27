@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Cyclone is a self-hosting Scheme to C compiler
-# cyclone-bootstrap is the Cyclone SOURCE transpiled by it to C
+# cyclone-bootstrap is the Cyclone source transpiled by it to C.
 
 EAPI=8
 
@@ -11,13 +11,13 @@ inherit flag-o-matic toolchain-funcs
 DESCRIPTION="R7RS Scheme to C compiler"
 HOMEPAGE="http://justinethier.github.io/cyclone/"
 
-if [[ "${PV}" == *9999* ]]; then
+if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/justinethier/${PN}-bootstrap.git"
 else
-	SRC_URI="https://github.com/justinethier/${PN}-bootstrap/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${PN}-bootstrap-${PV}"
+	SRC_URI="https://github.com/justinethier/${PN}-bootstrap/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	S="${WORKDIR}"/${PN}-bootstrap-${PV}
 fi
 
 LICENSE="MIT"
@@ -49,7 +49,6 @@ src_test() {
 }
 
 src_install() {
-	einstalldocs
-
 	emake PREFIX="/usr" DESTDIR="${D}" install
+	einstalldocs
 }
