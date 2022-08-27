@@ -78,7 +78,7 @@ multilib_src_install() {
 	meson_src_install
 }
 
-mutlilib_src_install_all() {
+multilib_src_install_all() {
 	local DOCS=( NEWS README.md )
 	einstalldocs
 }
