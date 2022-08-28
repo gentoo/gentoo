@@ -85,7 +85,7 @@ net-misc/chrony html
 
 # Adam Feldman <NP-Hardass@gentoo.org> (2017-09-27)
 # patchset variants are not stable
-virtual/wine staging
+virtual/wine proton staging
 
 # Tim Harder <radhermit@gentoo.org> (2017-09-11)
 # Pulls in dev-ruby/asciidoctor which has too large of a ruby testing
