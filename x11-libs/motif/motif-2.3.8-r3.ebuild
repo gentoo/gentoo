@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/project/motif/Motif%20${PV}%20Source%20Code/${P}.t
 
 LICENSE="LGPL-2.1+ MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="examples jpeg +motif22-compatibility png static-libs unicode xft"
 
 RDEPEND=">=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
