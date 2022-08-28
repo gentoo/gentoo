@@ -11,8 +11,4 @@
     the Standard ML '97 programming language with associated libraries,
     tools, and documentation. SML/NJ is free, open source software.
   </longdescription>
-  <use>
-    <flag name="pax-kernel">Enable if the user plans to run the
-      package under a pax enabled hardened kernel</flag>
-  </use>
 </pkgmetadata>
