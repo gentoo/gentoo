@@ -6,6 +6,7 @@
 		<name>Wine</name>
 	</maintainer>
 	<use>
+		<flag name="proton">Enable Valve Software's fork of Wine</flag>
 		<flag name="staging">Enable Wine-Staging's Patchset</flag>
 	</use>
 	<stabilize-allarches/>
