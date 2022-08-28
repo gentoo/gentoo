@@ -52,4 +52,5 @@ PATCHES=(
 	"${FILESDIR}/${P}-akonadi-21.12.0.patch" # bug 830580
 	"${FILESDIR}/${P}-speech-optional.patch" # bug 835128
 	"${FILESDIR}/${P}-akonadi-22.04.0.patch" # bug 840272
+	"${FILESDIR}/${P}-akonadi-22.08.0.patch" # bug 867082
 )
