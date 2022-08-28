@@ -47,10 +47,16 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use udev ; then
+	if use udev; then
 		udev_reload
 	fi
 
 	optfeature "saving backups on smb/cifs servers" net-fs/cifs-utils
 	optfeature "encrypting backups" dev-libs/openssl
+}
+
+pkg_postrm() {
+	if use udev; then
+		udev_reload
+	fi
 }
