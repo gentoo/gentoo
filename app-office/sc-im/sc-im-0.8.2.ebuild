@@ -70,9 +70,7 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-export CC
-
-	PKGCONF=$(tc-getPKG_CONFIG)
+	tc-export CC PKG_CONFIG
 
 	LDLIBS="-lm"
 
@@ -114,23 +112,23 @@ src_configure() {
 	# optional feature dependency
 	use plots && append-cflags -DGNUPLOT
 	if use xls; then
-		append-cflags -DXLS $(${PKGCONF} --cflags libxls)
-		LDLIBS+=" $(${PKGCONF} --libs libxls)"
+		append-cflags -DXLS $(${PKG_CONFIG} --cflags libxls)
+		LDLIBS+=" $(${PKG_CONFIG} --libs libxls)"
 	fi
 	if use xlsx || use ods ; then
-		append-cflags -DODS -DXLSX $(${PKGCONF} --cflags libxml-2.0 libzip)
-		LDLIBS+=" -DODS -DXLSX $(${PKGCONF} --libs libxml-2.0 libzip)"
+		append-cflags -DODS -DXLSX $(${PKG_CONFIG} --cflags libxml-2.0 libzip)
+		LDLIBS+=" -DODS -DXLSX $(${PKG_CONFIG} --libs libxml-2.0 libzip)"
 	fi
 	if use xlsx ; then
-		append-cflags -DXLSX_EXPORT $(${PKGCONF} --cflags xlsxwriter)
-		LDLIBS+=" -DXLSX_EXPORT $(${PKGCONF} --libs xlsxwriter)"
+		append-cflags -DXLSX_EXPORT $(${PKG_CONFIG} --cflags xlsxwriter)
+		LDLIBS+=" -DXLSX_EXPORT $(${PKG_CONFIG} --libs xlsxwriter)"
 	fi
 	if use lua ; then
-		append-cflags -DXLUA $(${PKGCONF} --cflags lua)
-		LDLIBS+=" -DXLUA $(${PKGCONF} --libs lua) -rdynamic"
+		append-cflags -DXLUA $(${PKG_CONFIG} --cflags lua)
+		LDLIBS+=" -DXLUA $(${PKG_CONFIG} --libs lua) -rdynamic"
 	fi
-	append-cflags $(${PKGCONF} --cflags ncursesw) || append-cflags $(${PKGCONF} --cflags ncurses)
-	LDLIBS+=" $(${PKGCONF} --libs ncursesw)" || LDLIBS+=" $(${PKGCONF} --libs ncurses)"
+	append-cflags $(${PKG_CONFIG} --cflags ncursesw) || append-cflags $(${PKG_CONFIG} --cflags ncurses)
+	LDLIBS+=" $(${PKG_CONFIG} --libs ncursesw)" || LDLIBS+=" $(${PKG_CONFIG} --libs ncurses)"
 }
 
 src_compile() {
