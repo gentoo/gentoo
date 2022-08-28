@@ -43,7 +43,7 @@ dev-java/openjdk:11 -javafx
 # Problems even on ppc64le needs more work
 dev-lang/spidermonkey clang
 mail-client/thunderbird clang
-www-client/firefox clang
+<www-client/firefox-104 clang
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-02-26)
 # vulkan tested and works on ppc64le
