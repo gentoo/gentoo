@@ -1,14 +1,12 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Small and fast Portage helper tools written in C"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Portage-utils"
-
-LICENSE="GPL-2"
-SLOT="0"
-IUSE="nls static openmp +qmanifest +qtegrity"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3 autotools
@@ -18,50 +16,60 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
+LICENSE="GPL-2"
+SLOT="0"
+IUSE="openmp +qmanifest +qtegrity static"
+
 RDEPEND="
 	qmanifest? (
-		openmp? (
-			|| (
-				>=sys-devel/gcc-4.2:*[openmp]
-				sys-devel/clang-runtime:*[openmp]
-			)
-		)
-		static? (
-			app-crypt/libb2:=[static-libs]
-			dev-libs/openssl:0=[static-libs]
-			sys-libs/zlib:=[static-libs]
-			app-crypt/gpgme:=[static-libs]
-		)
 		!static? (
-			app-crypt/libb2:=
-			dev-libs/openssl:0=
-			sys-libs/zlib:=
 			app-crypt/gpgme:=
+			app-crypt/libb2:=
+			dev-libs/openssl:=
+			sys-libs/zlib:=
 		)
 	)
 	qtegrity? (
-		openmp? (
-			|| (
-				>=sys-devel/gcc-4.2:*[openmp]
-				sys-devel/clang-runtime:*[openmp]
-			)
-		)
-		static? (
-			dev-libs/openssl:0=[static-libs]
-		)
 		!static? (
-			dev-libs/openssl:0=
+			dev-libs/openssl:=
+		)
+	)"
+DEPEND="${RDEPEND}
+	qmanifest? (
+		static? (
+			app-crypt/gpgme[static-libs]
+			app-crypt/libb2[static-libs]
+			dev-libs/openssl[static-libs]
+			sys-libs/zlib[static-libs]
 		)
 	)
-"
-DEPEND="${RDEPEND}"
+	qtegrity? (
+		static? (
+			dev-libs/openssl[static-libs]
+		)
+	)"
+BDEPEND="virtual/pkgconfig"
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+src_prepare() {
+	default
+	[[ ${PV} == *9999 ]] && eautoreconf
+}
 
 src_configure() {
+	use static && append-ldflags -static
+
 	econf \
 		--disable-maintainer-mode \
 		--with-eprefix="${EPREFIX}" \
 		$(use_enable qmanifest) \
 		$(use_enable qtegrity) \
-		$(use_enable openmp) \
-		$(use_enable static)
+		$(use_enable openmp)
 }
