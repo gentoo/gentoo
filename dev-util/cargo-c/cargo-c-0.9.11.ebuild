@@ -8,7 +8,7 @@ EAPI=8
 #MY_P="${P}+cargo-0.59"
 
 CRATES="
-${MY_P}
+	${MY_P}
 	adler-1.0.2
 	aho-corasick-0.7.18
 	anyhow-1.0.58

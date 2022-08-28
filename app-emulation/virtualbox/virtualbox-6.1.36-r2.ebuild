@@ -34,7 +34,7 @@ S="${WORKDIR}/${MY_PN}-${DIR_PV:-${MY_PV}}"
 LICENSE="GPL-2 dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
 if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 IUSE="alsa debug doc dtrace headless java lvm +opus pam pax-kernel pch pulseaudio +opengl python +qt5 +sdk +sdl +udev vboxwebsrv vnc"
 

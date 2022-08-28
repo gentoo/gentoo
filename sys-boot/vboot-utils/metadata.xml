@@ -10,6 +10,6 @@
 		<email>zmedico@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name="libzip">Use dev-libs/libzip.</flag>
+		<flag name="libzip">Use <pkg>dev-libs/libzip</pkg>.</flag>
 	</use>
 </pkgmetadata>

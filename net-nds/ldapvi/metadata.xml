@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 <use>
-	<flag name="gnutls">Use net-libs/gnutls instead of dev-libs/openssl</flag>
+	<flag name="gnutls">Use <pkg>net-libs/gnutls</pkg> instead of <pkg>dev-libs/openssl</pkg></flag>
 </use>
 </pkgmetadata>

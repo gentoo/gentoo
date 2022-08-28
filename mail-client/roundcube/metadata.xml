@@ -26,7 +26,7 @@
 			and/or encryption through the enigma plugin
 		</flag>
 		<flag name="fileinfo">
-			Use the dev-lang/php fileinfo extension to guess the 
+			Use the <pkg>dev-lang/php</pkg> fileinfo extension to guess the
 			mime_type of attachments
 		</flag>
 		<flag name="ldap">

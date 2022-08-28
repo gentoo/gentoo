@@ -7,6 +7,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">fakeredis</remote-id>
-		<remote-id type="github">dsoftwareinc/fakeredis-py</remote-id>
+		<remote-id type="github">cunla/fakeredis-py</remote-id>
 	</upstream>
 </pkgmetadata>

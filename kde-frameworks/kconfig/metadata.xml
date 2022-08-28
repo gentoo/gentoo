@@ -9,7 +9,7 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 	<use>
-		<flag name="qml">Enable QML/QtQuick support via dev-qt/qtdeclarative</flag>
+		<flag name="qml">Enable QML/QtQuick support via <pkg>dev-qt/qtdeclarative</pkg></flag>
 	</use>
 	<slots>
 		<subslots>

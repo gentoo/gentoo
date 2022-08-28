@@ -27,7 +27,7 @@ else
 	MY_PV="${MY_PV}-${CODENAME}"
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 	S=${WORKDIR}/xbmc-${MY_PV}
 fi
 
@@ -35,6 +35,7 @@ inherit autotools cmake desktop linux-info pax-utils python-single-r1 xdg
 
 PATCHES=(
 	"${FILESDIR}/${P}-fmt-9.patch"
+	"${FILESDIR}/${P}-atomic.patch"
 )
 
 DESCRIPTION="A free and open source media-player and entertainment hub"

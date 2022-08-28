@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person" proxied="yes">
-    <name>Thamognya Kodi</name>
-    <email>contact@thamognya.com</email>
-  </maintainer>
-  <maintainer type="project" proxied="proxy">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
-  <upstream>
-    <remote-id type="github">go-gitea/gitea</remote-id>
-  </upstream>
-  <use>
-    <flag name="acct">User and group management via acct-*/git packages</flag>
-  </use>
+	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="github">go-gitea/gitea</remote-id>
+	</upstream>
+	<use>
+		<flag name="acct">User and group management via acct-*/git packages</flag>
+	</use>
 </pkgmetadata>

@@ -5,7 +5,7 @@
 <email>netmon@gentoo.org</email>
 </maintainer>
 <use>
-<flag name="pcap">Add support for network packet capture via net-libs/libpcap</flag>
+<flag name="pcap">Add support for network packet capture via <pkg>net-libs/libpcap</pkg></flag>
 </use>
 <upstream>
 <remote-id type="github">br101/horst</remote-id>

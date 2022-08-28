@@ -44,7 +44,6 @@ HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm xwidgets zlib"
-RESTRICT="test"
 
 RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	sys-libs/ncurses:0=
@@ -176,6 +175,9 @@ src_prepare() {
 
 src_configure() {
 	local myconf
+
+	# Prevents e.g. tests interfering with running Emacs.
+	unset EMACS_SOCKET_NAME
 
 	if use alsa; then
 		use sound || ewarn \
@@ -315,6 +317,56 @@ src_compile() {
 	fi
 
 	emake
+}
+
+src_test() {
+	# List .el test files with a comment above listing the exact
+	# subtests which caused failure. Elements should begin with a %.
+	# e.g. %lisp/gnus/mml-sec-tests.el.
+	local exclude_tests=(
+		# Reason: not yet known
+		# mml-secure-en-decrypt-{1,2,3,4}
+		# mml-secure-find-usable-keys-{1,2}
+		# mml-secure-key-checks
+		# mml-secure-select-preferred-keys-4
+		# mml-secure-sign-verify-1
+		%lisp/gnus/mml-sec-tests.el
+
+		# Reason: race condition
+		# Looks like it should be fixed in 29.x at least:
+		# https://debbugs.gnu.org/cgi/bugreport.cgi?bug=55706
+		# files-tests-file-name-non-special-file-in-directory-p
+		%lisp/files-tests.el
+
+		# Reason: permission denied on /nonexistent
+		# (vc-*-bzr only fails if breezy is installed, as they
+		# try to access cache dirs under /nonexistent)
+		#
+		# rmail-undigest-test-multipart-mixed-digest
+		# rmail-undigest-test-rfc1153-less-strict-digest
+		# rmail-undigest-test-rfc1153-sloppy-digest
+		# rmail-undigest-test-rfc934-digest
+		# vc-test-bzr02-state
+		# vc-test-bzr05-rename-file
+		# vc-test-bzr06-version-diff
+		# vc-bzr-test-bug9781
+		%lisp/mail/undigest-tests.el
+		%lisp/vc/vc-tests.el
+		%lisp/vc/vc-bzr-tests.el
+
+		# Reason: fails if bubblewrap (bwrap) is installed
+		# "bwrap: setting up uid map: Permission denied"
+		#
+		# bytecomp-tests--dest-mountpoint
+		%lisp/emacs-lisp/bytecomp-tests.el
+	)
+
+	# See test/README for possible options
+	emake \
+		EMACS_TEST_VERBOSE=1 \
+		EXCLUDE_TESTS="${exclude_tests[*]}" \
+		TEST_BACKTRACE_LINE_LENGTH=nil \
+		check
 }
 
 src_install() {

@@ -19,6 +19,6 @@
     <remote-id type="cpan-module">File::HomeDir::Windows</remote-id>
   </upstream>
   <use>
-    <flag name="xdg">Ensure XDG Semantics for returned paths via x11-misc/xdg-user-dirs</flag>
+    <flag name="xdg">Ensure XDG Semantics for returned paths via <pkg>x11-misc/xdg-user-dirs</pkg></flag>
   </use>
 </pkgmetadata>

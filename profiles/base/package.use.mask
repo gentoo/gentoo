@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2022-08-26)
+# Broken at runtime for now (bug #865113).
+sys-devel/binutils gprofng
+
 # Matthew Smith <matthew@gentoo.org> (2022-08-19)
 # Upstream recommends that tbb be built with a patch to avoid bugs.
 # https://github.com/rui314/mold/releases/tag/v1.4.1

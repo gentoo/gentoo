@@ -9,10 +9,10 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 	<use>
-		<flag name="aspell">Enable the app-text/aspell spell-checking backend</flag>
+		<flag name="aspell">Enable the <pkg>app-text/aspell</pkg> spell-checking backend</flag>
 		<flag name="designer">Build plugins for <pkg>dev-qt/designer</pkg></flag>
-		<flag name="hunspell">Enable the app-text/hunspell spell-checking backend</flag>
-		<flag name="qml">Enable QML/QtQuick support via dev-qt/qtdeclarative</flag>
+		<flag name="hunspell">Enable the <pkg>app-text/hunspell</pkg> spell-checking backend</flag>
+		<flag name="qml">Enable QML/QtQuick support via <pkg>dev-qt/qtdeclarative</pkg></flag>
 	</use>
 	<slots>
 		<subslots>

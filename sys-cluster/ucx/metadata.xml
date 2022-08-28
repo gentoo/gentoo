@@ -8,4 +8,7 @@
 	<use>
 		<flag name="numa">Add support for numa memory allocation</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">openucx/ucx</remote-id>
+	</upstream>
 </pkgmetadata>

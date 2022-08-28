@@ -4,8 +4,8 @@
 	<!-- maintainer-needed -->
 	<use>
 		<flag name="multiuser">Allow renderer customization per-user.</flag>
-		<flag name="transcode">Install optional dependencies for transcoding support via media-video/mplayer</flag>
-		<flag name="tsmuxer">Install optional dependencies for transcoding support via media-video/tsmuxer</flag>
+		<flag name="transcode">Install optional dependencies for transcoding support via <pkg>media-video/mplayer</pkg></flag>
+		<flag name="tsmuxer">Install optional dependencies for transcoding support via <pkg>media-video/tsmuxer</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="google-code">ps3mediaserver</remote-id>

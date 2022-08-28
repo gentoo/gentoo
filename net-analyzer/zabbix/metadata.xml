@@ -22,11 +22,11 @@ configure different types of notifications for pre-defined events.
     <flag name="ipv6">Turn on support of IPv6</flag>
     <flag name="java">Enable Zabbix Java JMX Management Gateway</flag>
     <flag name="libxml2">Use libxml2 client library</flag>
-    <flag name="mbedtls">Use net-libs/mbedtls as TLS backend</flag>
+    <flag name="mbedtls">Use <pkg>net-libs/mbedtls</pkg> as TLS backend</flag>
     <flag name="odbc">Enable Database Monitor and use UnixODBC Library by default</flag>
     <flag name="openipmi">Enable openipmi things</flag>
-    <flag name="openssl">Use dev-libs/openssl as TLS backend</flag>
-    <flag name="pcre2">Use dev-libs/libpcre2 instead of dev-libs/libpcre</flag>
+    <flag name="openssl">Use <pkg>dev-libs/openssl</pkg> as TLS backend</flag>
+    <flag name="pcre2">Use <pkg>dev-libs/libpcre2</pkg> instead of <pkg>dev-libs/libpcre</pkg></flag>
     <flag name="proxy">Enable proxy support</flag>
     <flag name="server">Enable zabbix server</flag>
     <flag name="ssh">SSH v2 based checks</flag>

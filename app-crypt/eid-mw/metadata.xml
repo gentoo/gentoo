@@ -27,7 +27,7 @@ These three functions form the basis of the countless applications for your eID.
     Enable "askaccess" dialog box, by using <pkg>x11-libs/gtk+</pkg>
   </flag>
   <flag name="p11-kit">
-    Support for app-crypt/p11-kit.
+    Support for <pkg>app-crypt/p11-kit</pkg>.
   </flag>
 </use>
 </pkgmetadata>

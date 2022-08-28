@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>alexander@neuwirth-informatik.de</email>
+		<name>Alexander Puck Neuwirth</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>sci-physics@gentoo.org</email>
+		<name>Gentoo Physics Project</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>sci@gentoo.org</email>
 		<name>Gentoo Science Project</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>sci-physics@gentoo.org</email>
-		<name>Gentoo Physics Project</name>
 	</maintainer>
 	<longdescription lang="en">
 	The fastjet-contrib space is intended to provide a common location for access to 3rd party extensions of FastJet.

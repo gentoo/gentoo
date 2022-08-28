@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic qmake-utils
+inherit flag-o-matic qmake-utils udev
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -41,7 +41,7 @@ BDEPEND="
 
 PATCHES+=(
 	"${FILESDIR}"/OpenRGB-0.7-plugins.patch
-	"${FILESDIR}"/OpenRGB-0.7-udev.patch
+	"${FILESDIR}"/OpenRGB-0.7-r1-udev.patch
 )
 
 src_prepare() {
@@ -64,8 +64,17 @@ src_install() {
 	emake INSTALL_ROOT="${ED}" install
 
 	dodoc README.md OpenRGB.patch
+	udev_dorules 60-openrgb.rules
 
 	# This is for plugins. Upstream doesn't install any headers at all.
 	insinto /usr/include/OpenRGB
 	find . -name '*.h' -exec cp --parents '{}' "${ED}/usr/include/OpenRGB/" ';' || die
+}
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
 }

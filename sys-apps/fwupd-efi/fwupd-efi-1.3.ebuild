@@ -15,7 +15,7 @@ if [[ ${PV} = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/fwupd/fwupd-efi.git"
 else
 	SRC_URI="https://github.com/fwupd/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 LICENSE="LGPL-2.1+"

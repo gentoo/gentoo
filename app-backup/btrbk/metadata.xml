@@ -20,7 +20,7 @@
         <remote-id type="github">digint/btrbk</remote-id>
     </upstream>
     <use>
-        <flag name="mbuffer">Use sys-block/mbuffer to enable progress bar and buffering/limiting functionality</flag>
+        <flag name="mbuffer">Use <pkg>sys-block/mbuffer</pkg> to enable progress bar and buffering/limiting functionality</flag>
         <flag name="lsbtr">Enable the lsbtr command-line tool</flag>
     </use>
 </pkgmetadata>

@@ -1,12 +1,12 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2022-08-15)
-# deps not keyworded
-dev-util/pkgcheck emacs
+# Jakov Smolić <jsmolic@gentoo.org> (2022-08-27)
+# depends on <sys-libs/libfaketime-0.9.7 which is not available on riscv
+app-admin/rsyslog jemalloc
 
 # Yixun Lan <dlan@gentoo.org> (2022-08-11)
-# lua not support on riscv
+# luajit is currently not supported on riscv
 dev-util/bcc lua
 
 # Yu Gu <guyu2876@gmail.com> (2022-07-26)

@@ -151,7 +151,8 @@ multilib_src_configure() {
 		--with-cups-user=lp
 		--with-cups-group=lp
 		--with-docdir="${EPREFIX}"/usr/share/cups/html
-		--with-system-groups=lpadmin
+		# See bug #863221 for adding root
+		--with-system-groups="root lpadmin"
 		--with-xinetd="${EPREFIX}"/etc/xinetd.d
 		$(multilib_native_use_enable acl)
 		$(use_enable dbus)

@@ -8,6 +8,6 @@
     <remote-id type="github">mricon/kup</remote-id>
   </upstream>
   <use>
-    <flag name="gitolite">Enable support for dev-vcs/gitolite in kup-server</flag>
+    <flag name="gitolite">Enable support for <pkg>dev-vcs/gitolite</pkg> in kup-server</flag>
   </use>
 </pkgmetadata>

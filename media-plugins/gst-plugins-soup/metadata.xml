@@ -6,7 +6,7 @@
 	<name>GStreamer package maintainers</name>
 </maintainer>
 <longdescription lang="en">
-	GStreamer plugin for HTTP client source/sink via net-libs/libsoup.
+	GStreamer plugin for HTTP client source/sink via <pkg>net-libs/libsoup</pkg>.
 
 	Includes the following elements:
 	* souphttpsrc - Receive data as a client over the network via HTTP using SOUP

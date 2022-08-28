@@ -36,7 +36,7 @@
       Add support to define SDT event in perf tools.
     </flag>
     <flag name="unwind">
-      Use sys-libs/libunwind for frame unwinding support.
+      Use <pkg>sys-libs/libunwind</pkg> for frame unwinding support.
     </flag>
   </use>
 </pkgmetadata>

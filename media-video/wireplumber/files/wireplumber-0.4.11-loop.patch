@@ -1,0 +1,147 @@
+https://bugs.gentoo.org/866551
+https://gitlab.freedesktop.org/pipewire/wireplumber/-/commit/37c839b9308cd3d6580bf01077db8cb29ec2aa2f
+https://gitlab.freedesktop.org/pipewire/wireplumber/-/commit/370b692933634675213110048fcda6dff52eb52b
+
+From: Pauli Virtanen <pav@iki.fi>
+Date: Tue, 19 Jul 2022 20:39:06 +0300
+Subject: [PATCH] policy-node: fix potential rescan loop
+
+SiLink activation might be delayed indefinitely under some error
+conditions. Currently, policy-node schedules a rescan when it sees a
+non-activated link on a stream to be moved, which produces busy loop if
+the si-link doesn't activate.
+
+Instead of rescheduling on non-active si-links, just remove and emit a
+warning. The si-link then gets removed once it gets activated.
+
+Reproducer:
+
+1. Play audio from Rhythmbox and pause.
+2. Switch default output with pactl between two different outputs
+3. Links from the paused stream stay at "init"
+--- a/src/scripts/policy-node.lua
++++ b/src/scripts/policy-node.lua
+@@ -694,16 +694,15 @@ function handleLinkable (si)
+     local link = lookupLink (si_id, si_flags[si_id].peer_id)
+     if reconnect then
+       if link ~= nil then
+-        -- remove old link if active, otherwise schedule rescan
+-        if ((link:get_active_features() & Feature.SessionItem.ACTIVE) ~= 0) then
+-          si_flags[si_id].peer_id = nil
+-          link:remove ()
+-          Log.info (si, "... moving to new target")
+-        else
+-          scheduleRescan()
+-          Log.info (si, "... scheduled rescan")
+-          return
++        -- remove old link
++        if ((link:get_active_features() & Feature.SessionItem.ACTIVE) == 0) then
++          -- remove also not yet activated links: they might never become active,
++          -- and we should not loop waiting for them
++          Log.warning (link, "Link was not activated before removing")
+         end
++        si_flags[si_id].peer_id = nil
++        link:remove ()
++        Log.info (si, "... moving to new target")
+       end
+     else
+       if link ~= nil then
+GitLab
+
+From: Pauli Virtanen <pav@iki.fi>
+Date: Tue, 19 Jul 2022 20:01:10 +0300
+Subject: [PATCH] m-si-link: don't wait for establish before activation +
+ cleanup links
+
+SiLink should not wait for WpLinks becoming ESTABLISHED, before
+activation. That flag shows whether a link has moved away from the
+"init" state, however, links to e.g. Pulseaudio corked streams can stay
+in "init" state until uncorking.  This causes trouble for policies,
+which needlessly wait for such links to establish.
+
+The WpLink objects may also be kept alive by other referents, and
+just unrefing them does not necessarily destroy the PW objects.
+
+Activate SiLink even if the WpLink is still in "init" state. It's enough
+that the link otherwise successfully establishes.
+
+At dispose time, explicitly request destroying the WpLinks that were
+created by the SiLink, to ensure they are removed even if there's
+something else referring to them.
+--- a/modules/module-si-standard-link.c
++++ b/modules/module-si-standard-link.c
+@@ -132,6 +132,27 @@ si_standard_link_get_associated_proxy (WpSessionItem * item, GType proxy_type)
+   return NULL;
+ }
+ 
++static void
++request_destroy_link (gpointer data, gpointer user_data)
++{
++  WpLink *link = WP_LINK (data);
++
++  wp_global_proxy_request_destroy (WP_GLOBAL_PROXY (link));
++}
++
++static void
++clear_node_links (GPtrArray **node_links_p)
++{
++  /*
++   * Something else (eg. object managers) may be keeping the WpLink
++   * objects alive. Deactive the links now, to destroy the PW objects.
++   */
++  if (*node_links_p)
++    g_ptr_array_foreach (*node_links_p, request_destroy_link, NULL);
++
++  g_clear_pointer (node_links_p, g_ptr_array_unref);
++}
++
+ static void
+ si_standard_link_disable_active (WpSessionItem *si)
+ {
+@@ -154,7 +175,8 @@ si_standard_link_disable_active (WpSessionItem *si)
+           WP_SI_LINKABLE (si_in));
+   }
+ 
+-  g_clear_pointer (&self->node_links, g_ptr_array_unref);
++  clear_node_links (&self->node_links);
++
+   self->n_active_links = 0;
+   self->n_failed_links = 0;
+   self->n_async_ops_wait = 0;
+@@ -168,7 +190,7 @@ on_link_activated (WpObject * proxy, GAsyncResult * res,
+     WpTransition * transition)
+ {
+   WpSiStandardLink *self = wp_transition_get_source_object (transition);
+-  guint len = self->node_links->len;
++  guint len = self->node_links ? self->node_links->len : 0;
+ 
+   /* Count the number of failed and active links */
+   if (wp_object_activate_finish (proxy, res, NULL))
+@@ -182,7 +204,7 @@ on_link_activated (WpObject * proxy, GAsyncResult * res,
+ 
+   /* We only active feature if all links activated successfully */
+   if (self->n_failed_links > 0) {
+-    g_clear_pointer (&self->node_links, g_ptr_array_unref);
++    clear_node_links (&self->node_links);
+     wp_transition_return_error (transition, g_error_new (
+         WP_DOMAIN_LIBRARY, WP_LIBRARY_ERROR_OPERATION_FAILED,
+         "%d of %d PipeWire links failed to activate",
+@@ -251,7 +273,7 @@ create_links (WpSiStandardLink * self, WpTransition * transition,
+   /* Clear old links if any */
+   self->n_active_links = 0;
+   self->n_failed_links = 0;
+-  g_clear_pointer (&self->node_links, g_ptr_array_unref);
++  clear_node_links (&self->node_links);
+ 
+   /* tuple format:
+       uint32 node_id;
+@@ -327,7 +349,7 @@ create_links (WpSiStandardLink * self, WpTransition * transition,
+ 
+     /* activate to ensure it is created without errors */
+     wp_object_activate_closure (WP_OBJECT (link),
+-        WP_OBJECT_FEATURES_ALL, NULL,
++        WP_OBJECT_FEATURES_ALL & ~WP_LINK_FEATURE_ESTABLISHED, NULL,
+         g_cclosure_new_object (
+             (GCallback) on_link_activated, G_OBJECT (transition)));
+   }
+GitLab

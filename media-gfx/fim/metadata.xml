@@ -4,9 +4,9 @@
 	<!-- maintainer-needed -->
 	<use>
 		<flag name="bmp">Enable BMP file support</flag>
-		<flag name="dia">Enable DIA file support via app-office/dia</flag>
-		<flag name="imagemagick">Use convert from media-gfx/imagemagick as fallback file opener</flag>
+		<flag name="dia">Enable DIA file support via <pkg>app-office/dia</pkg></flag>
+		<flag name="imagemagick">Use convert from <pkg>media-gfx/imagemagick</pkg> as fallback file opener</flag>
 		<flag name="pcx">Enable PCX file support</flag>
-		<flag name="xfig">Enable FIG file support via media-gfx/xfig</flag>
+		<flag name="xfig">Enable FIG file support via <pkg>media-gfx/xfig</pkg></flag>
 	</use>
 </pkgmetadata>

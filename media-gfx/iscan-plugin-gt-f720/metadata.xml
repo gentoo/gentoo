@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<!--maintainer-needed-->
 	<longdescription lang="en">
-		Proprietary plugin for several EPSON scanner models with the epkowa SANE backend (provided by media-gfx/iscan).
+		Proprietary plugin for several EPSON scanner models with the epkowa SANE backend (provided by <pkg>media-gfx/iscan</pkg>).
 		This particular plugin (f720) seems to be required for:
 		Epson GT-F720
 		Epson GT-S620

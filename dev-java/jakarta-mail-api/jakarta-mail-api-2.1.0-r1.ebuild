@@ -18,7 +18,7 @@ SRC_URI="https://github.com/eclipse-ee4j/mail/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="EPL-1.0 EPL-2.0 GPL-2-with-classpath-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 # Probably caused by --module-path missing @${test_sources}
 

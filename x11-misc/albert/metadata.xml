@@ -16,6 +16,6 @@
 		<flag name="debug">Enable debugging informations</flag>
 		<flag name="python-extensions">Install default python extensions system-wide</flag>
 		<flag name="statistics">Enable local statistics</flag>
-		<flag name="virtualbox">Enable app-emulation/virtualbox extension</flag>
+		<flag name="virtualbox">Enable <pkg>app-emulation/virtualbox</pkg> extension</flag>
 	</use>
 </pkgmetadata>

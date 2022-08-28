@@ -14,7 +14,7 @@
 		<flag name="external-signer">Include support for external wallet signer programs</flag>
 		<flag name="knots">Build enhanced Bitcoin Knots version, rather than Bitcoin Core</flag>
 		<flag name="nat-pmp">Enable NAT-PMP port forwarding</flag>
-		<flag name="system-leveldb">Use the system-wide dev-libs/leveldb instead of bundled</flag>
+		<flag name="system-leveldb">Use the system-wide <pkg>dev-libs/leveldb</pkg> instead of bundled</flag>
 		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
 		<flag name="upnp">Enable Universal Plug and Play</flag>
 		<flag name="wallet">Enable wallet support</flag>

@@ -16,6 +16,6 @@
 	</upstream>
 	<use>
 		<flag name="udns">Asynchronously resolve domain names using
-		net-libs/udns</flag>
+		<pkg>net-libs/udns</pkg></flag>
 	</use>
 </pkgmetadata>

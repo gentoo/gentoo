@@ -12,7 +12,7 @@ SRC_URI="https://github.com/fontforge/fontforge/releases/download/${PV}/fontforg
 
 LICENSE="BSD GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc truetype-debugger gif gtk jpeg png +python readline test tiff svg woff2 X"
 RESTRICT="!test? ( test )"
 

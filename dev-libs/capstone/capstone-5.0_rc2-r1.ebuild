@@ -14,7 +14,7 @@ SRC_URI="https://github.com/capstone-engine/capstone/archive/${PV/_rc/-rc}.tar.g
 
 LICENSE="BSD"
 SLOT="0/5" # libcapstone.so.5
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 
 IUSE="python test"
 RDEPEND="python? ( ${PYTHON_DEPS} )"

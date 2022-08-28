@@ -15,6 +15,6 @@
 </upstream>
 <use>
 	<flag name="core-inline">Enable memory-increasing inlines for better performance but requiring more build time</flag>
-	<flag name="glide">Enable unofficial Glide emulation via media-libs/openglide</flag>
+	<flag name="glide">Enable unofficial Glide emulation via <pkg>media-libs/openglide</pkg></flag>
 </use>
 </pkgmetadata>

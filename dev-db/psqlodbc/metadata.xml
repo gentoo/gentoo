@@ -6,6 +6,6 @@
 <name>PostgreSQL and Related Package Development</name>
 </maintainer>
 <use>
-<flag name="iodbc">Use dev-db/libiodbc. Disable to use dev-db/unixODBC.</flag>
+<flag name="iodbc">Use <pkg>dev-db/libiodbc</pkg>. Disable to use <pkg>dev-db/unixODBC</pkg>.</flag>
 </use>
 </pkgmetadata>

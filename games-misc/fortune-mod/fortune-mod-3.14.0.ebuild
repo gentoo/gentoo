@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="app-text/recode:=
 	!games-misc/fortune-mod-tao"
-DEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 BDEPEND="app-text/App-XML-DocBook-Builder
 	test? (
 		dev-perl/File-Find-Object

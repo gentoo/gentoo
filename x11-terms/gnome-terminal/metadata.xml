@@ -7,6 +7,6 @@
 </maintainer>
 <use>
 	<flag name="gnome-shell">Integrate with <pkg>gnome-base/gnome-shell</pkg> search</flag>
-	<flag name="nautilus">Build gnome-base/nautilus extension</flag>
+	<flag name="nautilus">Build <pkg>gnome-base/nautilus</pkg> extension</flag>
 </use>
 </pkgmetadata>

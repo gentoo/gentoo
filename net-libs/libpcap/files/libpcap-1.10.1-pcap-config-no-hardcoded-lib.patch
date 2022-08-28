@@ -1,0 +1,100 @@
+https://github.com/the-tcpdump-group/libpcap/commit/84cb8cfdbf99a5fbc8127e3f092dc4d36ab513e9
+
+From 84cb8cfdbf99a5fbc8127e3f092dc4d36ab513e9 Mon Sep 17 00:00:00 2001
+From: Guy Harris <gharris@sonic.net>
+Date: Mon, 2 Aug 2021 01:04:53 -0700
+Subject: [PATCH] pcap-config: don't provide -L/usr/lib for pkg-config --libs.
+
+It shouldn't be necessary, as C compilers generally look there by
+default and...
+
+...it can cause problems if the libpcap you want *isn't* in /usr/lib.
+For example, on some systems that support both 32-bit and 64-bit
+executables, this might cause the 32-bit library to be found, even on
+64-bit platforms, with hilarity ensuing afterwards.
+
+In particular, on Solaris 11, where /usr/lib has the 32-bit libraries
+and /usr/lib/{something} has the 64-bit libraries ({something} depends
+on whether it's SPARC or x86), that's what happens if you try to do a
+CMake build of tcpdump against the system libpcap:
+
+The CMake file for finding pcap converts the -lpcap provided by
+pcap-config into the absolute path of libpcap, and that's the path of
+the 32-bit library, as it looks in /usr/lib.  (CMake really wants "find
+library" scripts to supply a list of libraries giving their absolute
+paths.)
+
+Thus, if you're using GCC, the tests done to find out what pcap APIs are
+available will fail, as the test programs get build 64-bit but are
+linked with the 32-bit libpcap; the link fails as you're mixing 32-bit
+and 64-bit code, and the CMake script treats that as meaning "the
+function isn't available".
+
+(Sun C apparently somehow manages either to build 32-bit code by
+default, so that linking with /usr/lib/libpcap.so succeeds, or realizes
+that linking 64-bit code with /usr/lib/{library}.so is bogus and links
+with /usr/lib/{something}/libpcap.so instead.)
+
+Debian removed the -L in pcap-config for similar reasons; to quote the
+comment at the beginning of the patch file:
+
+	Remove -L<libdir> from default pcap-config --libs output, as
+	libdir is already in the default toolchain search path on
+	Debian, and we want the generated script to be arch-independent.
+
+(We don't remove it from the .pc file; we assume that 1) pkg-config and
+2) the packager of libpcap does what is necessary to make this work.)
+--- a/pcap-config.in
++++ b/pcap-config.in
+@@ -41,6 +41,13 @@ do
+ 	esac
+ 	shift
+ done
++#
++# If libdir isn't /usr/lib, add it to the link-time linker path.
++#
++if [ "$libdir" != "/usr/lib" ]
++then
++	LPATH=-L$libdir
++fi
+ if [ "$V_RPATH_OPT" != "" ]
+ then
+ 	#
+@@ -59,16 +66,16 @@ then
+ 	#
+ 	if [ "$show_cflags" = 1 -a "$show_libs" = 1 ]
+ 	then
+-		echo "-I$includedir -L$libdir -lpcap $LIBS"
++		echo "-I$includedir $LPATH -lpcap $LIBS"
+ 	elif [ "$show_cflags" = 1 -a "$show_additional_libs" = 1 ]
+ 	then
+-		echo "-I$includedir -L$libdir $LIBS"
++		echo "-I$includedir $LPATH $LIBS"
+ 	elif [ "$show_cflags" = 1 ]
+ 	then
+ 		echo "-I$includedir"
+ 	elif [ "$show_libs" = 1 ]
+ 	then
+-		echo "-L$libdir -lpcap $LIBS"
++		echo "$LPATH -lpcap $LIBS"
+ 	elif [ "$show_additional_libs" = 1 ]
+ 	then
+ 		echo "$LIBS"
+@@ -80,7 +87,7 @@ else
+ 	#
+ 	if [ "$show_cflags" = 1 -a "$show_libs" = 1 ]
+ 	then
+-		echo "-I$includedir -L$libdir $RPATH -l$PACKAGE_NAME"
++		echo "-I$includedir $LPATH $RPATH -l$PACKAGE_NAME"
+ 	elif [ "$show_cflags" = 1 -a "$show_additional_libs" = 1 ]
+ 	then
+ 		echo "-I$includedir"
+@@ -89,6 +96,6 @@ else
+ 		echo "-I$includedir"
+ 	elif [ "$show_libs" = 1 ]
+ 	then
+-		echo "-L$libdir $RPATH -l$PACKAGE_NAME"
++		echo "$LPATH $RPATH -l$PACKAGE_NAME"
+ 	fi
+ fi
+

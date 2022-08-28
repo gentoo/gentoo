@@ -11,7 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="libproxy">Support for automatic proxy configuratino management through <pkg>net-libs/libproxy</pkg>.</flag>
-		<flag name="libxml2">Use dev-libs/libxml2 to parse XML</flag>
+		<flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> to parse XML</flag>
 		<flag name="pkcs11">Support for PKCS #11 through PaKChoiS (<pkg>dev-libs/pakchois</pkg>).</flag>
 	</use>
 </pkgmetadata>

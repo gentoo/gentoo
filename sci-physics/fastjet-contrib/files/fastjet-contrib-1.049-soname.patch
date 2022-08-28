@@ -1,5 +1,5 @@
---- fjcontrib-1.046.orig/Makefile.in	2022-03-10 13:44:33.963887464 +0100
-+++ fjcontrib-1.046/Makefile.in	2022-03-10 13:45:02.573890763 +0100
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -54,7 +54,7 @@
  
  fragile_SHARED_SRC_LIST=@FRAGILE_SHARED_SRC_LIST@
