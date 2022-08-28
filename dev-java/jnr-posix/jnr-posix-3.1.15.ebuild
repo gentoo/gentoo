@@ -39,6 +39,10 @@ JAVA_TEST_GENTOO_CLASSPATH="junit-4"
 JAVA_TEST_SRC_DIR="src/test/java"
 
 src_test() {
+	sed \
+		-e '/import org.junit.Test/a import org.junit.Ignore;' \
+		-i src/test/java/jnr/posix/FileTest.java || die
+
 	if use ppc64; then
 		# Ignore testMessageHdrMultipleControl
 		# https://bugs.gentoo.org/866199
@@ -47,6 +51,29 @@ src_test() {
 			-e '/testMessageHdrMultipleControl/i @Ignore' \
 			-e '/import org.junit.Test/a import org.junit.Ignore;' \
 			-i src/test/java/jnr/posix/LinuxPOSIXTest.java || die
+	fi
+
+	if use arm; then
+		# https://bugs.gentoo.org/866692
+		sed \
+			-e '/utimensatRelativePath()/i @Ignore' \
+			-e '/utimesDefaultValuesTest()/i @Ignore' \
+			-e '/futimeTest()/i @Ignore' \
+			-e '/utimesTest()/i @Ignore' \
+			-e '/utimesPointerTest()/i @Ignore' \
+			-e '/utimensatAbsolutePath()/i @Ignore' \
+			-e '/futimens()/i @Ignore' \
+			-i src/test/java/jnr/posix/FileTest.java || die
+		sed \
+			-e '/import org.junit.Test/a import org.junit.Ignore;' \
+			-e '/ioprioThreadedTest()/i @Ignore' \
+			-e '/testPosixFadvise()/i @Ignore' \
+			-i src/test/java/jnr/posix/LinuxPOSIXTest.java || die
+		sed \
+			-e '/import org.junit.Test/a import org.junit.Ignore;' \
+			-e '/testSetRlimitPointerLinux()/i @Ignore' \
+			-e '/testGetRLimitPointer()/i @Ignore' \
+			-i src/test/java/jnr/posix/ProcessTest.java || die
 	fi
 
 	JAVA_TEST_EXCLUDES=(
