@@ -68,6 +68,7 @@ src_configure() {
 		$(use_with hepmc hepmcversion 3) \
 		$(use_with java javagui) \
 		$(use_with lhapdf lhapdf "${EPREFIX}"/usr) \
+		$(use_with test boost "${EPREFIX}"/usr) \
 		--without-rivet \
 		$(use_with zlib zlib "${EPREFIX}"/usr)
 }
