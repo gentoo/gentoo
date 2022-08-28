@@ -13,7 +13,7 @@ SRC_URI="https://untroubled.org/bcron/archive/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~riscv x86"
+KEYWORDS="amd64 ~loong ~riscv x86"
 
 RDEPEND=">=dev-libs/bglibs-2.04
 	sys-apps/ucspi-unix
