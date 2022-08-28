@@ -17,7 +17,3 @@ sys-devel/gcc -libssp
 # Fabian Groffen <grobian@gentoo.org> (2011-09-05)
 # gir tries to link c++ code using gcc and obviously fails
 app-text/poppler introspection
-
-# Fabian Groffen <grobian@gentoo.org> (2011-04-24)
-# kms seems linux only, bug #319285
-x11-libs/libdrm libkms
