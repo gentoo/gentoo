@@ -25,7 +25,7 @@ BDEPEND="
 
 src_configure() {
 	local XORG_CONFIGURE_OPTIONS=(
-		--enable-unicode
+		--enable-internationalization
 		$(use_enable xpm multiplane-bitmaps)
 		--enable-gray-stipples
 		--enable-arrow-scrollbars
