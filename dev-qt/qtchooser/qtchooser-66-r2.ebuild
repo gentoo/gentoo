@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://download.qt.io/official_releases/${PN}/${P}.tar.xz"
-	KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
 fi
 
 LICENSE="|| ( LGPL-2.1 GPL-3 )"
