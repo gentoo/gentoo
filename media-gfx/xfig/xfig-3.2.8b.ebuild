@@ -48,5 +48,7 @@ src_configure() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
+
 	optfeature "GIF support" media-libs/netpbm virtual/imagemagick-tools
 }
