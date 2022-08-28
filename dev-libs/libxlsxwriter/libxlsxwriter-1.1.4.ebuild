@@ -17,7 +17,7 @@ IUSE="openssl"
 
 DEPEND="
 	sys-libs/zlib[minizip]
-	openssl? ( dev-libs/openssl )
+	openssl? ( dev-libs/openssl:= )
 "
 RDEPEND="${DEPEND}"
 
