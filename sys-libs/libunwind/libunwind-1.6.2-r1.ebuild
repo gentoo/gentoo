@@ -21,7 +21,8 @@ inherit multilib-minimal
 
 DESCRIPTION="Portable and efficient API to determine the call-chain of a program"
 HOMEPAGE="https://savannah.nongnu.org/projects/libunwind"
-SRC_URI="mirror://nongnu/libunwind/${MY_P}.tar.gz"
+SRC_URI="mirror://nongnu/libunwind/${MY_P}.tar.gz
+	loong? ( https://dev.gentoo.org/~xen0n/distfiles/${CATEGORY}/${PN}/${P}-loong.patch.xz )"
 if [[ ${LIBUNWIND_DOCS_PREBUILT} == 1 ]] ; then
 	SRC_URI+=" !doc? ( https://dev.gentoo.org/~${LIBUNWIND_DOCS_PREBUILT_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${LIBUNWIND_DOCS_VERSION}-docs.tar.xz )"
 fi
@@ -65,6 +66,9 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 src_prepare() {
+	local PATCHES=()
+	use loong && PATCHES+=( "${WORKDIR}/${P}-loong.patch" )
+
 	default
 
 	chmod +x src/ia64/mk_cursor_i || die
