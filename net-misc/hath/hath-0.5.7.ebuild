@@ -22,17 +22,12 @@ RDEPEND=">=dev-haskell/cmdargs-0.10:=
 	>=dev-haskell/tasty-0.8:=
 	>=dev-haskell/tasty-hunit-0.8:=
 	>=dev-haskell/tasty-quickcheck-0.8.1:=
-	>=dev-lang/ghc-8.0.1:=
+	>=dev-lang/ghc-9.0.0:=
 "
 DEPEND="${RDEPEND}
-	>=dev-haskell/cabal-1.24.0.0
+	>=dev-haskell/cabal-3.0.0.0
 	test? ( dev-util/shelltestrunner )
 "
-
-src_prepare() {
-	sed -i -e '/-optc-O3/d' -e '/-optc-march=native/d' "${PN}.cabal" || die
-	default
-}
 
 src_install() {
 	cabal_src_install
