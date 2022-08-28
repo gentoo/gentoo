@@ -1,21 +1,21 @@
-From caa6f31f1032f21756ab327429702feb4381045e Mon Sep 17 00:00:00 2001
+From e23cb684ce6ca066c73b426d9974a7c823891d88 Mon Sep 17 00:00:00 2001
 From: Matt Turner <mattst88@gmail.com>
-Date: Mon, 30 May 2022 12:16:24 -0400
+Date: Sun, 28 Aug 2022 10:34:42 +0100
 Subject: [PATCH] Disable things we don't want
 
 ---
  meson.build                   | 11 +++--------
- src/egl/opengl/meson.build    | 29 ----------------------------
+ src/egl/opengl/meson.build    | 26 -------------------------
  src/egl/opengles2/meson.build |  5 -----
  src/glad/meson.build          | 17 -----------------
  src/meson.build               |  2 --
  src/util/gl_wrap.h            |  2 --
  src/util/meson.build          | 20 -------------------
  src/xdemos/meson.build        | 36 -----------------------------------
- 8 files changed, 3 insertions(+), 119 deletions(-)
+ 8 files changed, 3 insertions(+), 116 deletions(-)
 
 diff --git a/meson.build b/meson.build
-index e1968fab..9d59c1ec 100644
+index 0c15274b..36276541 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -75,14 +75,7 @@ endif
@@ -44,12 +44,12 @@ index e1968fab..9d59c1ec 100644
                                          include_directories: glut_incdir,
                                          prefix : '#include <GL/freeglut.h>')
 diff --git a/src/egl/opengl/meson.build b/src/egl/opengl/meson.build
-index ba7cadc3..789b25a5 100644
+index c0d4792b..f27b6885 100644
 --- a/src/egl/opengl/meson.build
 +++ b/src/egl/opengl/meson.build
-@@ -4,41 +4,12 @@ executable(
+@@ -4,32 +4,11 @@ executable(
    'eglgears_x11', files('eglgears.c'),
-   dependencies: [_deps, idep_eglut_x11]
+   dependencies: [_deps, dep_glu, idep_eglut_x11]
  )
 -executable(
 -  'egltri_x11', files('egltri.c'),
@@ -63,7 +63,7 @@ index ba7cadc3..789b25a5 100644
 -  'xeglthreads', files('xeglthreads.c'),
 -  dependencies: [_deps, dep_x11]
 -)
--
+ 
  executable(
    'eglgears_wayland', files('eglgears.c'),
    dependencies: [_deps, dep_glu, idep_eglut_wayland]
@@ -77,13 +77,13 @@ index ba7cadc3..789b25a5 100644
 -  'eglkms', 'eglkms.c',
 -  dependencies: [_deps, dep_drm, dep_gbm, dep_egl]
 -)
--
+ 
  executable(
    'eglinfo', 'eglinfo.c',
-   dependencies: [dep_egl],
+@@ -38,8 +17,3 @@ executable(
    install: true
  )
--
+ 
 -executable(
 -  'peglgears', 'peglgears.c',
 -  dependencies: [dep_gl, dep_glu, dep_egl, dep_m, idep_util]
@@ -156,7 +156,7 @@ index b2ff9c8f..f482df5e 100644
  
  #ifndef GLAPIENTRY
 diff --git a/src/util/meson.build b/src/util/meson.build
-index 9168aecf..066073cc 100644
+index 959e2170..066073cc 100644
 --- a/src/util/meson.build
 +++ b/src/util/meson.build
 @@ -20,26 +20,6 @@
@@ -250,5 +250,5 @@ index d6d5d5d5..ce26699f 100644
  foreach p : thread_progs
    executable(
 -- 
-2.35.1
+2.37.2
 
