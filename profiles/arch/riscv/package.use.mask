@@ -122,9 +122,7 @@ net-analyzer/suricata hyperscan
 
 # Yixun Lan <dlan@gentoo.org> (2021-08-29)
 #  sys-apps/fwupd not tested, USE=spi,uefi,dell
-#  sys-apps/flashrom no risc-v support, bug 810880
-#  sys-apps/flashrom USE=introspection fail to build, bug 811321
-sys-apps/fwupd flashrom introspection spi uefi
+sys-apps/fwupd spi uefi
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-23)
 # sys-cluster/ceph not keyworded here yet due to several dependencies
