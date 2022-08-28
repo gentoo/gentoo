@@ -9,7 +9,7 @@ inherit check-reqs pax-utils python-any-r1 toolchain-funcs
 
 PYPY_PV=${PV%_p*}
 MY_P=pypy3.9-v${PYPY_PV/_}
-PATCHSET="pypy3.9-gentoo-patches-${PV/_rc/rc}"
+PATCHSET="pypy3.9-gentoo-patches-${PV/%_p*}_p6"
 
 DESCRIPTION="PyPy3 executable (build from source)"
 HOMEPAGE="https://www.pypy.org/"
