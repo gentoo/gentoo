@@ -16,7 +16,7 @@ S="${WORKDIR}"/${PN}-${MY_PV}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ppc ~riscv x86"
+KEYWORDS="amd64 arm ~arm64 ~loong ppc ~riscv x86"
 IUSE="debug staticsocket"
 
 RDEPEND="sys-apps/kmod[tools]"
