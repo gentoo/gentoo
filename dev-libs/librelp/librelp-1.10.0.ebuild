@@ -15,7 +15,7 @@ LICENSE="GPL-3+ doc? ( FDL-1.3 )"
 # subslot = soname version
 SLOT="0/0.5.1"
 
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~ppc64 sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~ppc64 ~riscv sparc x86"
 IUSE="debug doc +ssl +gnutls openssl static-libs test"
 REQUIRED_USE="ssl? ( ^^ ( gnutls openssl ) )"
 
