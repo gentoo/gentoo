@@ -18,7 +18,7 @@ IUSE="X plots wayland xls xlsx lua ods tmux"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
 DEPEND="
-	sys-libs/ncurses
+	sys-libs/ncurses:=
 
 	lua? (
 		${LUA_DEPS}
