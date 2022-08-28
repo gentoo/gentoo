@@ -1,15 +1,5 @@
-diff --git a/src/test/java/jnr/posix/FileTest.java b/src/test/java/jnr/posix/FileTest.java
-index afadb07..7eb8af7 100644
 --- a/src/test/java/jnr/posix/FileTest.java
 +++ b/src/test/java/jnr/posix/FileTest.java
-@@ -8,6 +8,7 @@ import jnr.ffi.Pointer;
- import jnr.posix.util.Platform;
- import org.junit.BeforeClass;
- import org.junit.Test;
-+import org.junit.Ignore;
- 
- import java.io.*;
- import java.nio.ByteBuffer;
 @@ -215,7 +216,7 @@ public class FileTest {
          dir.delete();
      }
