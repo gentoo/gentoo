@@ -9,21 +9,41 @@ MY_P=pypy-exe-${PV}
 DESCRIPTION="PyPy executable (pre-built version)"
 HOMEPAGE="https://www.pypy.org/"
 SRC_URI="
-	amd64? (
-		https://dev.gentoo.org/~mgorny/binpkg/amd64/pypy/dev-python/pypy-exe/${MY_P}-2.xpak
-			-> ${MY_P}-2.amd64.xpak
+	elibc_glibc? (
+		amd64? (
+			https://dev.gentoo.org/~mgorny/binpkg/amd64/pypy/dev-python/pypy-exe/${MY_P}-2.xpak
+				-> ${MY_P}-2.amd64.xpak
+		)
+		arm64? (
+			https://dev.gentoo.org/~mgorny/binpkg/arm64/pypy/dev-python/pypy-exe/${MY_P}-1.xpak
+				-> ${MY_P}-1.arm64.xpak
+		)
+		ppc64? (
+			https://dev.gentoo.org/~mgorny/binpkg/ppc64le/pypy/dev-python/pypy-exe/${MY_P}-1.xpak
+				-> ${MY_P}-1.ppc64le.xpak
+		)
+		x86? (
+			https://dev.gentoo.org/~mgorny/binpkg/x86/pypy/dev-python/pypy-exe/${MY_P}-2.xpak
+				-> ${MY_P}-2.x86.xpak
+		)
 	)
-	arm64? (
-		https://dev.gentoo.org/~mgorny/binpkg/arm64/pypy/dev-python/pypy-exe/${MY_P}-1.xpak
-			-> ${MY_P}-1.arm64.xpak
-	)
-	ppc64? (
-		https://dev.gentoo.org/~mgorny/binpkg/ppc64le/pypy/dev-python/pypy-exe/${MY_P}-1.xpak
-			-> ${MY_P}-1.ppc64le.xpak
-	)
-	x86? (
-		https://dev.gentoo.org/~mgorny/binpkg/x86/pypy/dev-python/pypy-exe/${MY_P}-2.xpak
-			-> ${MY_P}-2.x86.xpak
+	elibc_musl? (
+		amd64? (
+			https://dev.gentoo.org/~mgorny/binpkg/amd64-musl/pypy/dev-python/pypy-exe/${MY_P}-1.xpak
+				-> ${MY_P}-1.amd64-musl.xpak
+		)
+		arm64? (
+			https://dev.gentoo.org/~mgorny/binpkg/arm64-musl/pypy/dev-python/pypy-exe/${MY_P}-1.xpak
+				-> ${MY_P}-1.arm64-musl.xpak
+		)
+		ppc64? (
+			https://dev.gentoo.org/~mgorny/binpkg/ppc64le-musl/pypy/dev-python/pypy-exe/${MY_P}-1.xpak
+				-> ${MY_P}-1.ppc64le-musl.xpak
+		)
+		x86? (
+			https://dev.gentoo.org/~mgorny/binpkg/x86-musl/pypy/dev-python/pypy-exe/${MY_P}-1.xpak
+				-> ${MY_P}-1.x86-musl.xpak
+		)
 	)
 "
 S="${WORKDIR}"
@@ -36,10 +56,10 @@ RDEPEND="
 	app-arch/bzip2:0/1
 	dev-libs/expat:0/0
 	dev-libs/libffi:0/8
-	>=sys-libs/glibc-2.35
 	sys-libs/ncurses:0/6
 	>=sys-libs/zlib-1.1.3:0/1
 	virtual/libintl:0/0
+	elibc_glibc? ( >=sys-libs/glibc-2.35 )
 	!dev-python/pypy-exe:${SLOT}
 "
 
@@ -48,18 +68,13 @@ QA_PREBUILT="
 "
 
 src_unpack() {
-	local file=${MY_P}-1.${ARCH}.xpak
-	case ${ARCH} in
-		amd64|x86)
-			file=${MY_P}-2.${ARCH}.xpak
-			;;
-		ppc64)
-			file=${MY_P}-1.ppc64le.xpak
-			;;
-	esac
-	ebegin "Unpacking ${file}"
-	tar -x < <(xz -c -d --single-stream "${DISTDIR}/${file}")
-	eend ${?} || die "Unpacking ${file} failed"
+	if [[ -z ${A} ]]; then
+		die "No binary package available for ${ARCH}/${ELIBC}"
+	fi
+
+	ebegin "Unpacking ${A}"
+	tar -x < <(xz -c -d --single-stream "${DISTDIR}/${A}")
+	eend ${?} || die "Unpacking ${A} failed"
 }
 
 src_install() {
