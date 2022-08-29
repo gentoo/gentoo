@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit optfeature multiprocessing python-single-r1 toolchain-funcs xdg
+inherit edo optfeature multiprocessing python-single-r1 toolchain-funcs xdg
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
@@ -32,6 +32,7 @@ RESTRICT="!X? ( test ) !test? ( test ) !transfer? ( test ) !wayland? ( test )"
 # dlopen: fontconfig,libglvnd
 RDEPEND="
 	${PYTHON_DEPS}
+	dev-libs/openssl:=
 	media-libs/fontconfig
 	media-libs/harfbuzz:=
 	media-libs/lcms:2
@@ -67,9 +68,10 @@ BDEPEND="
 src_prepare() {
 	default
 
+	# seds unfortunately feel easier on maintainenance than patches here
 	sed -e "s/'x11 wayland'/'$(usev X x11) $(usev wayland)'/" \
 		-e "$(usev !X '/gl_libs =/s/=.*/= []/')" \
-		-e "/num_workers = /s/=.*/= $(makeopts_jobs)/" \
+		-e "/num_workers =/s/=.*/= $(makeopts_jobs)/" \
 		-e "s/cflags.append.*-O3.*/pass/" -e 's/-O3//' \
 		-i setup.py || die
 
@@ -92,8 +94,7 @@ src_compile() {
 	tc-export CC
 	export PKGCONFIG_EXE=$(tc-getPKG_CONFIG)
 
-	local setup=(
-		${EPYTHON} setup.py linux-package
+	local conf=(
 		--disable-link-time-optimization
 		--ignore-compiler-warnings
 		--libdir-name=$(get_libdir)
@@ -102,16 +103,15 @@ src_compile() {
 		--verbose
 	)
 
-	echo "${setup[*]}"
-	"${setup[@]}" || die "setup.py failed to compile ${PN}"
+	edo ${EPYTHON} setup.py linux-package "${conf[@]}"
+	use test && edo ${EPYTHON} setup.py build-launcher "${conf[@]}"
 
 	[[ ${PV} == 9999 ]] || mv linux-package/share/doc/{${PN},${PF}} || die
 	rm -r linux-package/share/terminfo || die
 }
 
 src_test() {
-	PATH=linux-package/bin:${PATH} KITTY_CONFIG_DIRECTORY=${T} \
-		${EPYTHON} test.py || die
+	KITTY_CONFIG_DIRECTORY=${T} ./test.py || die # shebang is kitty
 }
 
 src_install() {
