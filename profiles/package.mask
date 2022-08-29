@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2022-08-29)
+# Fails to build with xorg-server-21. Bug #828426.
+# Removal on 2022-09-29.
+x11-drivers/xf86-video-glint
+
 # Hans de Graaff <graaff@gentoo.org) (2022-08-27)
 # No longer maintained upstream and more modern alternatives such as
 # www-servers/puma are available.
