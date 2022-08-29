@@ -44,6 +44,10 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-enable-python.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_DEFAULT=OFF
@@ -69,7 +73,7 @@ src_configure() {
 src_install() {
 	cmake_src_install
 	if use python; then
-		find "${D}" -name '*.py[oc]' -delete || die
+		find "${ED}" -name '*.py[oc]' -delete || die
 		python_fix_shebang "${ED}"/usr/bin
 		python_optimize
 	fi
