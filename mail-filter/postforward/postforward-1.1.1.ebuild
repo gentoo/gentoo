@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/zoni/postforward"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="
 	dev-lang/go:0"
