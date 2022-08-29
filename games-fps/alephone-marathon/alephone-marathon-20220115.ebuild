@@ -33,5 +33,5 @@ src_install() {
 
 pkg_postinst() {
 	elog "To play this scenario, run:"
-	elog "alephone.sh $MY_NAME"
+	elog "alephone.sh ${MY_NAME}"
 }
