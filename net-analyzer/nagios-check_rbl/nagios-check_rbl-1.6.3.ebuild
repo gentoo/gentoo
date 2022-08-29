@@ -12,7 +12,7 @@ SRC_URI="https://github.com/matteocorti/check_rbl/releases/download/v${PV}/${MY_
 LICENSE="GPL-3"
 SLOT="0"
 
-KEYWORDS="~amd64 ~hppa sparc x86"
+KEYWORDS="amd64 ~hppa sparc x86"
 IUSE=""
 
 # No, this is not redundant -- see bug 627082.
