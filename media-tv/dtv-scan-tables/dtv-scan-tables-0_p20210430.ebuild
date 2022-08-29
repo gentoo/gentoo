@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ if [[ ${PV#9999} != ${PV} ]]; then
 else
 	COMMIT="4181e93a30ab"
 	SRC_URI="https://linuxtv.org/downloads/dtv-scan-tables/dtv-scan-tables-${PV:3:4}-${PV:7:2}-${PV:9:2}-${COMMIT}.tar.bz2"
-	KEYWORDS="amd64 arm arm64 ~ppc x86"
+	KEYWORDS="amd64 arm arm64 ppc x86"
 	S="${WORKDIR}/usr/share/dvb"
 fi
 
