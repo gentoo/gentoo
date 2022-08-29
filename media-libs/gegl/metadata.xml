@@ -11,6 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="lensfun">Enable support for <pkg>media-libs/lensfun</pkg>.</flag>
+		<flag name="sdl2">Add support for Simple Direct Layer 2.0 (<pkg>media-libs/libsdl2</pkg>)</flag>
 		<flag name="umfpack">Enable sparse solving via <pkg>sci-libs/umfpack</pkg>.</flag>
 	</use>
 </pkgmetadata>
