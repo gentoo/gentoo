@@ -9,7 +9,7 @@ SRC_URI="https://flaterco.com/files/xtide/${P}-r2.tar.xz -> ${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="static-libs"
 
 DEPEND=">=sci-geosciences/libtcd-2.2.3"
