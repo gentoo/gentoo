@@ -52,6 +52,7 @@ PATCHES=(
 	"${FILESDIR}/bpftrace-0.15.0-install-libs.patch"
 	"${FILESDIR}/bpftrace-0.15.0-dont-compress-man.patch"
 	"${FILESDIR}/bpftrace-0.11.4-old-kernels.patch"
+	"${FILESDIR}/bpftrace-0.15.0-bcc-025.patch"
 )
 
 pkg_pretend() {
