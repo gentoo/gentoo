@@ -1,0 +1,34 @@
+From bdb13ad7f18c90d6409da713ac49dc3995d2dfe2 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Sun, 3 Oct 2021 23:52:27 +0300
+Subject: [PATCH] build: Don't automagically depend on webkit2gtk-4.1
+
+That's the libsoup3 using webkit-gtk SLOT that we don't have. Patch it out,
+so it wouldn't be picked up automagically once it's added or comes from some
+overlay.
+
+This reverts commit f9d52aad23914df9dcb404723d1c99cf7b4e1eca.
+---
+ meson.build | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 307a351a..64dc385a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -46,12 +46,8 @@ lt_revision = 3
+ lt_age = 0
+ LIBDEVHELP_LT_VERSION = '@0@.@1@.@2@'.format(lt_current, lt_revision, lt_age)
+ 
+-webkit_dep = dependency('webkit2gtk-4.1', required : false)
+-webkit_abi = '4.1'
+-if not webkit_dep.found()
+   webkit_abi = '4.0'
+   webkit_dep = dependency('webkit2gtk-4.0')
+-endif
+ 
+ LIBDEVHELP_PUBLIC_DEPS = [
+   dependency('gio-2.0', version: '>= 2.64'),
+-- 
+2.35.1
+
