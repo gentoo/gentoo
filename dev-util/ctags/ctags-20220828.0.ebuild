@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit autotools
+PYTHON_COMPAT=( python3_{8..11} )
+inherit autotools python-any-r1
 
 DESCRIPTION="Exuberant Ctags creates tags files for code browsing in editors"
 HOMEPAGE="https://ctags.io/ https://github.com/universal-ctags/ctags"
@@ -20,7 +21,8 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="json pcre xml yaml"
+IUSE="json pcre test xml yaml"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	json? ( dev-libs/jansson:= )
@@ -32,8 +34,13 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	dev-python/docutils
 	virtual/pkgconfig
+	test? ( ${PYTHON_DEPS} )
 "
 IDEPEND="app-eselect/eselect-ctags"
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	# Ignore check-genfile test (calls git which errors out)
