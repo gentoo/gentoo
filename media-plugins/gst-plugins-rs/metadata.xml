@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ionen@gentoo.org</email>
+		<name>Ionen Wolkens</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>gstreamer@gentoo.org</email>
+		<name>GStreamer package maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="aws">Build various plugins for use with Amazon AWS services</flag>
+		<flag name="closedcaption">Build the closedcaption plugin</flag>
+		<flag name="csound">Build the <pkg>media-sound/csound</pkg> plugin</flag>
+		<flag name="dav1d">Build the <pkg>media-libs/dav1d</pkg> AV1 decoder plugin</flag>
+		<flag name="gtk4">Build the GTK4 integration plugin</flag>
+		<flag name="sodium">Build the <pkg>dev-libs/libsodium</pkg> crypto plugin</flag>
+	</use>
+	<upstream>
+		<remote-id type="freedesktop-gitlab">gstreamer/gst-plugins-rs</remote-id>
+	</upstream>
+</pkgmetadata>
