@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python3_{8..10} )
 VALA_MIN_API_VERSION="0.50"
 VALA_USE_DEPEND=vapigen
 
-inherit git-r3 lua-single meson python-single-r1 vala xdg
+inherit lua-single meson python-single-r1 vala xdg
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
-EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gimp.git"
-SRC_URI=""
+SRC_URI="mirror://gimp/v2.99/${P}.tar.xz"
+
 LICENSE="GPL-3 LGPL-3"
 SLOT="0/3"
 
@@ -123,6 +123,9 @@ src_prepare() {
 	default
 
 	sed -i -e 's/mypaint-brushes-1.0/mypaint-brushes-2.0/' meson.build || die #737794
+
+	# Fix (typo) MMX and SSE support detection
+	sed -i -e "s/'-mmx'/'-mmmx'/" -e "s/'-sse'/'-msse'/" meson.build || die
 
 	# Fix Gimp  and GimpUI devel doc installation paths
 	sed -i -e "s/'doc'/'gtk-doc'/" devel-docs/reference/gimp/meson.build || die
