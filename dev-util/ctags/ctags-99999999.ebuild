@@ -20,11 +20,11 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="json pcre2 xml yaml"
+IUSE="json pcre xml yaml"
 
 DEPEND="
 	json? ( dev-libs/jansson:= )
-	pcre2? ( dev-libs/libpcre2 )
+	pcre? ( dev-libs/libpcre2 )
 	xml? ( dev-libs/libxml2:2 )
 	yaml? ( dev-libs/libyaml )
 "
@@ -49,7 +49,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable json) \
-		$(use_enable pcre2) \
+		$(use_enable pcre pcre2) \
 		$(use_enable xml) \
 		$(use_enable yaml) \
 		--disable-etags \
