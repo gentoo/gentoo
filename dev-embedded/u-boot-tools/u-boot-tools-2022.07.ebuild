@@ -19,6 +19,7 @@ IUSE="envtools"
 RDEPEND="dev-libs/openssl:="
 DEPEND="${RDEPEND}"
 BDEPEND="
+	dev-lang/swig
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
