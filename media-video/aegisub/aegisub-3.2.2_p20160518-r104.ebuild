@@ -29,7 +29,7 @@ RDEPEND="${LUA_DEPS}
 	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,debug?]
 	dev-libs/boost:=[icu,nls,threads(+)]
 	dev-libs/icu:=
-	~media-libs/ffmpegsource-2.23:=
+	media-libs/ffmpegsource
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/libass:=[fontconfig]
@@ -75,6 +75,7 @@ PATCHES=(
 	"${FILESDIR}/${PV}/${P}-tests_luarocks_lua_version.patch"
 	"${FILESDIR}/${PV}/${P}-avoid-conveying-positional-parameters-to-source-builtin.patch"
 	"${FILESDIR}/${PV}/${P}-luaL_Reg-not-luaL_reg.patch"
+	"${FILESDIR}/${PV}/${P}-ffmpegsource-2.40-compat2.patch"
 )
 
 aegisub_check_compiler() {
