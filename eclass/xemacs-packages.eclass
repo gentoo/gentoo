@@ -4,7 +4,7 @@
 # @ECLASS: xemacs-packages.eclass
 # @MAINTAINER:
 # xemacs@gentoo.org
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Eclass to support elisp packages distributed by XEmacs.
 # @DESCRIPTION:
 # This eclass supports ebuilds for packages distributed by XEmacs.
@@ -24,8 +24,8 @@
 # in the experimental repository are auto-generated from XEmacs VCS, so
 # they may not be well-tested.
 
-case ${EAPI:-0} in
-	[67]) ;;
+case ${EAPI} in
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
