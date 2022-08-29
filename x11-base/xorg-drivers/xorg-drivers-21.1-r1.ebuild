@@ -32,7 +32,6 @@ IUSE_VIDEO_CARDS="
 	video_cards_fbdev
 	video_cards_freedreno
 	video_cards_geode
-	video_cards_glint
 	video_cards_i915
 	video_cards_intel
 	video_cards_mga
@@ -77,7 +76,6 @@ PDEPEND="
 	video_cards_fbdev?         ( >=x11-drivers/xf86-video-fbdev-0.5.0 )
 	video_cards_freedreno?     ( >=x11-base/xorg-server-${PV}[-minimal] )
 	video_cards_geode?         ( x11-drivers/xf86-video-geode )
-	video_cards_glint?         ( >=x11-drivers/xf86-video-glint-1.2.9 )
 	video_cards_i915?          ( x11-drivers/xf86-video-intel )
 	video_cards_intel?         ( >=x11-base/xorg-server-${PV}[-minimal] )
 	video_cards_mga?           ( >=x11-drivers/xf86-video-mga-1.6.5 )
