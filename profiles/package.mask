@@ -296,13 +296,6 @@ dev-qt/qtwebsockets:6
 # sci-libs/gsl. Bug #862486. Removal on 2022-08-31.
 sci-chemistry/numbat
 
-# Marc Schiffbauer <mschiff@gentoo.org> (2022-07-30)
-# No update since 2016, compilation and build system
-# errors
-# Bugs #637150, #686078, #733066, #733068, #828986, #854744
-# removal in 30 days (2022-08-29)
-app-misc/zygrib
-
 # Marek Szuba <marecki@gentoo.org> (2022-07-13)
 # Upstream has switched from CMake to hand-crafted Makefiles (yes, TO them),
 # which have seriously messed up dependency handling and trigger several
