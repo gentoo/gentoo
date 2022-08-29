@@ -12,7 +12,7 @@
 # @ECLASS_VARIABLE: XEMACS_PKG_CAT
 # @REQUIRED
 # @DESCRIPTION:
-# The package category that the package is in. Can be either standard,
+# The package category that the package is in.  Can be either standard,
 # mule, or contrib.
 
 # @ECLASS_VARIABLE: XEMACS_EXPERIMENTAL
@@ -20,7 +20,7 @@
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set then the package is downloaded from the experimental packages
-# repository, which is the staging area for packages upstream. Packages
+# repository, which is the staging area for packages upstream.  Packages
 # in the experimental repository are auto-generated from XEmacs VCS, so
 # they may not be well-tested.
 
