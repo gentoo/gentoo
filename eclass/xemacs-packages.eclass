@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xemacs-packages.eclass
@@ -39,10 +39,6 @@ S="${WORKDIR}"
 
 : ${HOMEPAGE:="http://xemacs.org/"}
 : ${LICENSE:="GPL-2+"}
-
-# Backwards compatibility code, to be removed after 2017-05-03
-: ${XEMACS_PKG_CAT:=${PKG_CAT}}
-: ${XEMACS_EXPERIMENTAL:=${EXPERIMENTAL}}
 
 if [[ -n ${XEMACS_EXPERIMENTAL} ]]; then
 	: ${SRC_URI:="http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/${P}-pkg.tar.gz"}
