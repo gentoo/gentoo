@@ -78,6 +78,7 @@ src_prepare() {
 	java-pkg-opt-2_src_prepare
 	default
 	elibtoolize
+	use elibc_musl && eapply "${FILESDIR}"/${PN}-0.21-musl-omit_setlocale_lock.patch
 }
 
 multilib_src_configure() {
