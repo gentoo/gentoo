@@ -244,3 +244,13 @@ src_install() {
 	newins misc/dist/shell/_godot.zsh-completion _${s}
 	dosym _${s} /usr/share/zsh/site-functions/_${s}-runner
 }
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	if [[ ! ${REPLACING_VERSIONS} ]] && has_version ${CATEGORY}/${PN}:3; then
+		elog
+		elog "Remember to make backups before opening any Godot <=3.x projects in Godot 4."
+		elog "Automated migration is only partial, and it would be difficult to revert."
+	fi
+}
