@@ -31,7 +31,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
-		$(use_enable doc doxygen-html)
+		$(multilib_native_use_enable doc doxygen-html)
 		$(use_enable static-libs static)
 		--disable-examples
 		--program-suffix=2
