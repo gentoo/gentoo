@@ -60,6 +60,7 @@ EPYTEST_DESELECT=(
 	test/test_prerun.py::test_require_collection_wrong_version
 	test/test_profiles.py::test_profile_listing
 	test/test_rules_collection.py::test_rich_rule_listing
+	test/test_skip_inside_yaml.py::test_role_meta
 	test/test_utils.py::test_cli_auto_detect
 	test/test_utils.py::test_template_lookup
 	test/test_verbosity.py::test_default_verbosity
