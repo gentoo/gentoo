@@ -98,9 +98,9 @@ multilib_src_configure() {
 	esac
 
 	local myeconfargs=(
-		$(use_enable doc docbook)
+		$(multilib_native_use_enable doc docbook)
 		$(use_enable static-libs static)
-		--enable-docs
+		$(multilib_native_enable docs)
 		--localstatedir="${EPREFIX}"/var
 		--with-default-fonts="${EPREFIX}"/usr/share/fonts
 		--with-add-fonts="${EPREFIX}/usr/local/share/fonts${addfonts}"

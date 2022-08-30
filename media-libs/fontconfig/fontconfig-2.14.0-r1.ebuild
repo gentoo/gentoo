@@ -104,11 +104,11 @@ multilib_src_configure() {
 	esac
 
 	local myeconfargs=(
-		$(use_enable doc docbook)
+		$(multilib_native_use_enable doc docbook)
 		$(use_enable static-libs static)
 
 		# man pages. We split out the docbook parts into its own flag.
-		--enable-docs
+		$(multilib_native_enable docs)
 		# We handle this ourselves.
 		--disable-cache-build
 		# See comment above *DEPEND. We use Expat instead.
