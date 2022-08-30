@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,7 +38,7 @@ multilib_src_configure() {
 		$(use_enable static-libs static) \
 		$(use_enable cpu_flags_x86_mmx mmx) \
 		$(use_enable debug) \
-		$(multilib_is_native_abi && echo $(use_enable doc))
+		$(multilib_native_enable doc)
 	if ! multilib_is_native_abi ; then
 		sed -i -e 's/ encoder decoder util//' Makefile || die
 	fi
