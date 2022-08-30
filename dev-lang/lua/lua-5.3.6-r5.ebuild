@@ -63,9 +63,6 @@ src_prepare() {
 	# upstream does not use libtool, but we do (see bug #336167)
 	cp "${FILESDIR}/configure.in" "${S}/configure.ac" || die
 	eautoreconf
-
-	# custom Makefiles
-	copy_sources
 }
 
 src_configure() {
