@@ -1,0 +1,58 @@
+https://gitlab.com/libssh/libssh-mirror/-/commit/8cf9c8162fc317761f19c35f60fc0cae7337ceea
+https://gitlab.com/libssh/libssh-mirror/-/issues/141
+
+From: Jakub Jelen <jjelen@redhat.com>
+Date: Mon, 29 Aug 2022 12:48:34 +0200
+Subject: [PATCH] Do not force GNU_SOURCE during build to fix #141
+
+Signed-off-by: Jakub Jelen <jjelen@redhat.com>
+Reviewed-by: Andreas Schneider <asn@cryptomilk.org>
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -348,10 +348,6 @@ endif (WITH_SYMBOL_VERSIONING AND HAVE_LD_VERSION_SCRIPT AND ABIMAP_FOUND)
+ # This gets built as a static library, if -DBUILD_SHARED_LIBS=OFF is passed to
+ # cmake.
+ add_library(ssh ${libssh_SRCS})
+-target_compile_options(ssh
+-                       PRIVATE
+-                           ${DEFAULT_C_COMPILE_FLAGS}
+-                           -D_GNU_SOURCE)
+ target_include_directories(ssh
+                            PUBLIC
+                                $<BUILD_INTERFACE:${libssh_SOURCE_DIR}/include>
+@@ -408,10 +404,6 @@ install(EXPORT libssh-config
+ 
+ if (BUILD_STATIC_LIB)
+   add_library(ssh-static STATIC ${libssh_SRCS})
+-  target_compile_options(ssh-static
+-                         PRIVATE
+-                            ${DEFAULT_C_COMPILE_FLAGS}
+-                            -D_GNU_SOURCE)
+ 
+   target_include_directories(ssh-static
+                              PUBLIC
+--- a/src/misc.c
++++ b/src/misc.c
+@@ -1956,7 +1956,7 @@ char *ssh_strerror(int err_num, char *buf, size_t buflen)
+ #if defined(_WIN32)
+     strerror_s(buf, buflen, err_num);
+     return buf;
+-#elif defined(__linux__) && defined(_GNU_SOURCE)
++#elif defined(__linux__) && defined(__GLIBC__) && defined(_GNU_SOURCE)
+     /* GNU extension on Linux */
+     return strerror_r(err_num, buf, buflen);
+ #else
+--- a/tests/torture.h
++++ b/tests/torture.h
+@@ -24,10 +24,6 @@
+ #ifndef _TORTURE_H
+ #define _TORTURE_H
+ 
+-#ifndef _GNU_SOURCE
+-#define _GNU_SOURCE
+-#endif
+-
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <stdarg.h>
+GitLab

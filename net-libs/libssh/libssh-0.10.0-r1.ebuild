@@ -47,6 +47,10 @@ DOCS=( AUTHORS CHANGELOG README )
 
 PATCHES=( "${FILESDIR}/${PN}-0.8.0-tests.patch" )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-musl-gnu-source.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
 
