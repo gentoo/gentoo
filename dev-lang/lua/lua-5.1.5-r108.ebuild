@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib-minimal portability toolchain-funcs
+inherit portability toolchain-funcs
 
 DESCRIPTION="A powerful light-weight programming language designed for extending applications"
 HOMEPAGE="https://www.lua.org/"
@@ -16,7 +16,7 @@ IUSE="+deprecated readline"
 
 COMMON_DEPEND="
 	>=app-eselect/eselect-lua-3
-	readline? ( >=sys-libs/readline-6.2_p5-r1:0=[${MULTILIB_USEDEP}] )
+	readline? ( >=sys-libs/readline-6.2_p5-r1:0= )
 	!dev-lang/lua:0"
 # Cross-compiling note:
 # Must use libtool from the target system (DEPEND) because
@@ -27,7 +27,7 @@ DEPEND="
 	sys-devel/libtool"
 RDEPEND="${COMMON_DEPEND}"
 
-MULTILIB_WRAPPED_HEADERS=(
+WRAPPED_HEADERS=(
 	/usr/include/lua${SLOT}/luaconf.h
 )
 
@@ -77,10 +77,10 @@ src_prepare() {
 		"${S}"/etc/lua.pc
 
 	# custom Makefiles
-	multilib_copy_sources
+	copy_sources
 }
 
-multilib_src_configure() {
+src_configure() {
 	# We want packages to find our things...
 	sed -i \
 		-e 's:/usr/local:'${EPREFIX}'/usr:' \
@@ -88,7 +88,7 @@ multilib_src_configure() {
 		etc/lua.pc src/luaconf.h || die
 }
 
-multilib_src_compile() {
+src_compile() {
 	tc-export CC
 	myflags=
 	# what to link to liblua
@@ -113,7 +113,7 @@ multilib_src_compile() {
 	mv lua_test ../test/lua.static
 }
 
-multilib_src_install() {
+src_install() {
 	emake INSTALL_TOP="${ED}/usr" INSTALL_LIB="${ED}/usr/$(get_libdir)" \
 			V=${SLOT} gentoo_install
 
@@ -121,7 +121,7 @@ multilib_src_install() {
 	newins etc/lua.pc lua${SLOT}.pc
 }
 
-multilib_src_install_all() {
+src_install_all() {
 	DOCS="HISTORY README"
 	HTML_DOCS="doc/*.html doc/*.png doc/*.css doc/*.gif"
 	einstalldocs
@@ -131,7 +131,7 @@ multilib_src_install_all() {
 	find "${ED}" -name 'liblua*.a' -delete || die
 }
 
-multilib_src_test() {
+src_test() {
 	local positive="bisect cf echo env factorial fib fibfor hello printf sieve
 	sort trace-calls trace-globals"
 	local negative="readonly"
