@@ -51,7 +51,7 @@ multilib_src_configure() {
 	# anyway).
 	CONFIG_SHELL="${BROOT}"/bin/bash ECONF_SOURCE="${S}" econf \
 		--without-idsa \
-		$(use_enable doc doxygen) \
+		$(multilib_native_use_enable doc doxygen) \
 		$(use_enable static-libs static)
 }
 
