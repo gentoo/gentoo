@@ -84,7 +84,7 @@ multilib_src_configure() {
 		--enable-ptrace
 		--enable-setjmp
 		$(use_enable debug-frame)
-		$(use_enable doc documentation)
+		$(multilib_native_use_enable doc documentation)
 		$(use_enable lzma minidebuginfo)
 		$(use_enable static-libs static)
 		$(use_enable zlib zlibdebuginfo)
