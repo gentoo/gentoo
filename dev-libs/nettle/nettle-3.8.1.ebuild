@@ -71,7 +71,7 @@ multilib_src_configure() {
 		--disable-s390x-msa
 
 		$(use_enable asm assembler)
-		$(use_enable doc documentation)
+		$(multilib_native_use_enable doc documentation)
 		$(use_enable gmp public-key)
 		$(use_enable static-libs static)
 		--disable-fat
