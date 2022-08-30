@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit flag-o-matic toolchain-funcs udev
+
+inherit toolchain-funcs udev
 
 MY_PV="$(ver_rs 2 -)"
 
