@@ -61,7 +61,7 @@ src_prepare() {
 multilib_src_configure() {
 	ECONF_SOURCE=${S} econf \
 		--localstatedir=/var \
-		$(use_enable doc doxygen-doc) \
+		$(multilib_native_use_enable doc doxygen-doc) \
 		$(use_enable fapi) \
 		$(use_enable static-libs static) \
 		$(multilib_native_use_enable test unit) \
