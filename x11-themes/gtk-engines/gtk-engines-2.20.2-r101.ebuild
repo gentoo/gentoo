@@ -17,14 +17,13 @@ LICENSE="LGPL-2.1"
 SLOT="2"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
 IUSE="accessibility lua"
-
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
 # Lua dependency uses lua_gen_impl_dep() because LUA_REQ_USE doesn't seem
 # to play nicely with MULTILIB_USEDEP.
 RDEPEND="
 	>=x11-libs/gtk+-2.24.23:2[${MULTILIB_USEDEP}]
-	lua? ( $(lua_gen_impl_dep "${MULTILIB_USEDEP}") )
+	lua? ( ${LUA_DEPS} )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -58,16 +57,12 @@ src_prepare() {
 multilib_src_configure() {
 	local confopts=(
 		--enable-animation
-		$(use_enable lua)
-		$(use_with lua system-lua)
+		$(multilib_native_use_enable lua)
+		$(multilib_native_use_with lua system-lua)
 	)
 	ECONF_SOURCE=${S} gnome2_src_configure "${confopts[@]}"
 }
 
 multilib_src_install() {
 	gnome2_src_install
-}
-
-multilib_src_install_all() {
-	einstalldocs
 }
