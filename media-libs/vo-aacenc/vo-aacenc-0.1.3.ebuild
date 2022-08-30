@@ -33,7 +33,7 @@ multilib_src_configure() {
 
 	ECONF_SOURCE="${S}" econf \
 		$(use_enable cpu_flags_arm_neon armv7neon) \
-		$(use_enable examples example) \
+		$(multilib_native_use_enable examples example) \
 		$(use_enable static-libs static)
 }
 
