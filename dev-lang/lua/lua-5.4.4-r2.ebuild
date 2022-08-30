@@ -33,10 +33,6 @@ RDEPEND="${COMMON_DEPEND}"
 
 RESTRICT="!test? ( test )"
 
-WRAPPED_HEADERS=(
-	/usr/include/lua${SLOT}/luaconf.h
-)
-
 PATCHES=(
 	"${FILESDIR}"/lua-5.4.2-r2-make.patch
 )
@@ -114,7 +110,7 @@ src_install() {
 	emake INSTALL_TOP="${ED}/usr" INSTALL_LIB="${ED}/usr/$(get_libdir)" \
 			V=${SLOT} gentoo_install
 
-	case $SLOT in
+	case ${SLOT} in
 		0)
 			LIBNAME="lua"
 			INCLUDEDIR_SUFFIX=''
@@ -147,9 +143,7 @@ src_install() {
 	# Older systems called it 'lua53.pc'
 	dosym "lua${SLOT}.pc" "/usr/$(get_libdir)/pkgconfig/lua-${SLOT}.pc"
 	dosym "lua${SLOT}.pc" "/usr/$(get_libdir)/pkgconfig/lua${SLOT/.}.pc"
-}
 
-src_install_all() {
 	DOCS="README"
 	HTML_DOCS="doc/*.html doc/*.png doc/*.css doc/*.gif"
 	einstalldocs
