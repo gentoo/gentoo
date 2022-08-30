@@ -33,6 +33,29 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-08-30)
+# Flask-Security-Too is a package with high maintenance cost
+# and no revdeps in ::gentoo.  The next version bump (once more)
+# introduces more dependencies.
+#
+# The remaining listed packages are used exclusively by this package
+# (or its tests).  If you find one of them useful, please let us know
+# and we'll keep it.
+#
+# Removal on 2022-09-29.  Bug #867415.
+dev-python/flask-security
+dev-python/flask-babelex
+dev-python/flask-mail
+dev-python/flask-principal
+dev-python/flask-wtf
+dev-python/mongomock
+dev-python/peewee
+dev-python/pony
+dev-python/pyqrcode
+dev-python/sentinels
+dev-python/speaklater
+dev-python/zxcvbn
+
 # Matt Turner <mattst88@gentoo.org> (2022-08-29)
 # Unpatched security vulerabilities. Bug #857780.
 # Removal on 2022-09-29.
