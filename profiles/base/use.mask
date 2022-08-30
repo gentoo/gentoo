@@ -17,7 +17,6 @@ sysprof
 # PHP 7.3 is end-of-life
 # Please upgrade to a newer slot
 php_targets_php7-3
-php7-3
 
 # Sam James <sam@gentoo.org> (2022-01-12)
 # PCH has proven itself to be unreliable and lead to spurious build

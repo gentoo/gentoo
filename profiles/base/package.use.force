@@ -194,12 +194,6 @@ app-emulation/wine-staging staging
 # only for debug pruposes.
 media-tv/kodi system-ffmpeg
 
-# Sam Jorna <wraeth@gentoo.org> (2016-12-15)
-# Known to build unbootable EFI binaries on some systems when built with
-# UDK. Forcing use of gnu-efi until it's more stable
-# (probably after stabilization of refind-0.11.4).
-sys-boot/refind gnuefi
-
 # Maciej Mrozowski <reavertm@gentoo.org> (2016-09-01)
 # Workaround until resolved upstream (bug #586840)
 >=dev-games/simgear-2016.2.1 dns

@@ -309,10 +309,6 @@ dev-db/mariadb numa
 # Requires USE=seccomp that is masked in this profile.
 net-libs/gnutls test-full
 
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Requires USE=bluetooth that is masked in this profile.
-media-sound/pulseaudio native-headset
-
 # Tobias Klausmann <klausman@gentoo.org> (2017-05-18)
 # Stack protector code is not ported to alpha (and may not ever be)
 >=sys-devel/gcc-6 ssp

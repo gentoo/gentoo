@@ -35,14 +35,9 @@ sys-devel/gcc hardened
 app-arch/libarchive -e2fsprogs
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (2009-08-20)
-#
 # Mask oss USE flag for PulseAudio; it's present for compatibility
 # with FreeBSD and other operating systems that have no better
 # interfaces, but people would probably abuse it with Linux as well.
-#
-# Older versions also had an OSS compatibility wrapper on that USE so
-# they are excluded.
->=media-sound/pulseaudio-0.9.16_rc5 oss
 media-sound/pulseaudio-daemon oss
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (2011-03-27)

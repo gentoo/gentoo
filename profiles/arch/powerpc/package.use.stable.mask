@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -57,7 +57,6 @@ app-editors/emacs xwidgets
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-06-20)
 # dev-python/PyQt5 is not stable.
 dev-python/matplotlib qt5 test
-media-sound/pulseaudio qt5
 net-print/hplip qt5
 dev-python/pyudev qt5
 

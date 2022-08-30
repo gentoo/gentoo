@@ -51,10 +51,6 @@ sys-cluster/slurm ucx
 # Supports 64-bit NEON
 dev-libs/libgcrypt -cpu_flags_arm_neon
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-16)
-# requires sys-apps/dbus-broker, which is keyworded here.
-sys-apps/systemd -hostnamed-fallback
-
 # Sam James <sam@gentoo.org> (2021-10-31)
 # dev-python/pyilmbase isn't keyworded on arm64
 media-gfx/alembic python
