@@ -54,7 +54,7 @@ multilib_src_configure() {
 		$(use_enable cpu_flags_x86_aes x86-aesni)
 		$(use_enable cpu_flags_x86_sha x86-sha-ni)
 		$(use_enable asm assembler)
-		$(use_enable doc documentation)
+		$(multilib_native_use_enable doc documentation)
 		$(use_enable gmp public-key)
 		$(use_enable cpu_flags_arm_neon arm-neon)
 		$(use_enable static-libs static)
