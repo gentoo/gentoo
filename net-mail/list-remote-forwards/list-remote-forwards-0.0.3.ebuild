@@ -17,6 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
+# dev-haskell/dns and dev-haskell/resolv conflict
+# https://github.com/sol/doctest/issues/119
+RESTRICT=test
+
 RDEPEND=""
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-3.0.0
