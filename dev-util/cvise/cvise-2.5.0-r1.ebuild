@@ -51,6 +51,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.5.0-no-werror-cflags.patch
+)
+
 llvm_check_deps() {
 	has_version "sys-devel/clang:${LLVM_SLOT}"
 }
