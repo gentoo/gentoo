@@ -46,7 +46,7 @@ multilib_src_configure() {
 	local myeconfargs=(
 		--disable-static
 		--disable-jasper
-		$(use_enable examples)
+		$(multilib_native_use_enable examples)
 		$(use_enable jpeg)
 		$(use_enable lcms)
 		$(use_enable openmp)
