@@ -170,16 +170,9 @@ src_test() {
 	TEST_MARKER="${T}/test.failed"
 	rm -f "${TEST_MARKER}"
 
-	# If we are failing, set the marker file, and only check it after done all ABIs
-	abi_src_test() {
-		debug-print-function ${FUNCNAME} "$@"
-		TEST_LOG="${T}/test.${MULTIBUILD_ID}.log"
-		eval "${BUILD_DIR}"/src/lua${SLOT} ${TEST_OPTS} all.lua 2>&1 | tee "${TEST_LOG}" || die
-		grep -sq -e "final OK" "${TEST_LOG}" || echo "FAIL ${MULTIBUILD_ID}" >>"${TEST_MARKER}"
-		return 0
-	}
-
-	foreach_abi abi_src_test
+	TEST_LOG="${T}/test.log"
+	eval "${BUILD_DIR}"/src/lua${SLOT} ${TEST_OPTS} all.lua 2>&1 | tee "${TEST_LOG}" || die
+	grep -sq -e "final OK" "${TEST_LOG}" || echo "FAIL" >>"${TEST_MARKER}"
 
 	if [ -e "${TEST_MARKER}" ]; then
 		cat "${TEST_MARKER}"
