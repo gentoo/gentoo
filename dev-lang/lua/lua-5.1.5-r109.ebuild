@@ -71,9 +71,6 @@ src_prepare() {
 		-e "/^includedir=/s,(/include)$,\1/lua${SLOT}," \
 		-e "/^Libs:/s,((-llua)($| )),\2${SLOT}\3," \
 		"${S}"/etc/lua.pc
-
-	# custom Makefiles
-	copy_sources
 }
 
 src_configure() {
