@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools multilib-minimal portability toolchain-funcs
+inherit autotools portability toolchain-funcs
 
 DESCRIPTION="A powerful light-weight programming language designed for extending applications"
 HOMEPAGE="https://www.lua.org/"
@@ -33,7 +33,7 @@ RDEPEND="${COMMON_DEPEND}"
 
 RESTRICT="!test? ( test )"
 
-MULTILIB_WRAPPED_HEADERS=(
+WRAPPED_HEADERS=(
 	/usr/include/lua${SLOT}/luaconf.h
 )
 
@@ -69,10 +69,10 @@ src_prepare() {
 	eautoreconf
 
 	# custom Makefiles
-	multilib_copy_sources
+	copy_sources
 }
 
-multilib_src_configure() {
+src_configure() {
 	sed -i \
 		-e 's:\(define LUA_ROOT\s*\).*:\1"'${EPREFIX}'/usr/":' \
 		-e "s:\(define LUA_CDIR\s*LUA_ROOT \"\)lib:\1$(get_libdir):" \
@@ -82,7 +82,7 @@ multilib_src_configure() {
 	econf
 }
 
-multilib_src_compile() {
+src_compile() {
 	tc-export CC
 
 	# what to link to liblua
@@ -113,7 +113,7 @@ multilib_src_compile() {
 			gentoo_all
 }
 
-multilib_src_install() {
+src_install() {
 	emake INSTALL_TOP="${ED}/usr" INSTALL_LIB="${ED}/usr/$(get_libdir)" \
 			V=${SLOT} gentoo_install
 
@@ -152,7 +152,7 @@ multilib_src_install() {
 	dosym "lua${SLOT}.pc" "/usr/$(get_libdir)/pkgconfig/lua${SLOT/.}.pc"
 }
 
-multilib_src_install_all() {
+src_install_all() {
 	DOCS="README"
 	HTML_DOCS="doc/*.html doc/*.png doc/*.css doc/*.gif"
 	einstalldocs
@@ -188,7 +188,7 @@ src_test() {
 		return 0
 	}
 
-	multilib_foreach_abi abi_src_test
+	foreach_abi abi_src_test
 
 	if [ -e "${TEST_MARKER}" ]; then
 		cat "${TEST_MARKER}"
