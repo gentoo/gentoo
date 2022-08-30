@@ -169,7 +169,6 @@ livecd - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used during livec
 llvm-libunwind - Use sys-libs/llvm-libunwind instead of sys-libs/libunwind
 lm-sensors - Add linux lm-sensors (hardware sensors) support
 lua - Enable Lua scripting support
-luajit - Use dev-lang/luajit instead of dev-lang/lua (ineffective with USE=-lua)
 lzma - Support for LZMA (de)compression algorithm
 lz4 - Enable support for lz4 compression (as implemented in app-arch/lz4)
 lzo - Enable support for lzo compression

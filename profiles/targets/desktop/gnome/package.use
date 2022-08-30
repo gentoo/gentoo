@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Mart Raudsepp <leio@gentoo.org> (2022-01-05)
@@ -30,7 +30,7 @@ media-libs/cogl kms
 media-libs/libsdl2 gles2
 
 # Needed by mutter defaults and USE=wayland, bug #547300
->=media-libs/mesa-10.3 gbm gles2
+>=media-libs/mesa-10.3 gles2
 
 # For eautoreconf in =app-crypt/seahorse-3.10.2-r1
 app-crypt/gcr vala

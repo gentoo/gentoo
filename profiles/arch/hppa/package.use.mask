@@ -371,7 +371,6 @@ dev-libs/libpcre jit
 # usable. Mask until this is available.
 # Jeroen Roovers <jer@gentoo.org> (2014-02-18)
 # OSS is the only kernel audio interface that works on HPPA
-media-sound/pulseaudio equalizer -oss
 media-sound/pulseaudio-daemon equalizer -oss
 
 # Jeroen Roovers <jer@gentoo.org> (2012-05-21)

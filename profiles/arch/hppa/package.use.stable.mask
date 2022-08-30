@@ -28,7 +28,7 @@ dev-libs/libisoburn launch-frontend launch-frontend-setuid frontend-optional
 
 # Sam James <sam@gentoo.org> (2022-01-26)
 # Various unstable dependencies
-sys-apps/systemd fido2 http nat policykit qrcode xkb
+sys-apps/systemd fido2 http policykit qrcode xkb
 
 # Sam James <sam@gentoo.org> (2022-01-20)
 # net-misc/pps-tools is not marked stable on HPPA

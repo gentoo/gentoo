@@ -198,10 +198,6 @@ app-portage/g-sorcery bson
 sys-devel/clang default-libcxx
 sys-devel/clang-runtime libcxx
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-02-27)
-# Requires dev-qt/qtwebengine, not keyworded on ppc
-sci-geosciences/gpsbabel gui
-
 # James Le Cuirot <chewi@gentoo.org> (2016-12-14)
 # DOSBox + OpenGLide is untested on this arch.
 games-emulation/dosbox glide

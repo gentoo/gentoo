@@ -280,10 +280,6 @@ media-video/mplayer dvdnav
 # Requires USE=v4l that is masked in this profile.
 media-video/ffmpeg libv4l
 
-# Michał Górny <mgorny@gentoo.org> (2017-08-07)
-# Requires USE=bluetooth that is masked in this profile.
-media-sound/pulseaudio native-headset
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-07-20)
 # pulls in unkeyworded java
 sci-libs/gdal mdb

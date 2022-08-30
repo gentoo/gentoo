@@ -16,11 +16,10 @@ kde-apps/kde-apps-meta:5 pim
 kde-apps/kdenetwork-meta:5 bittorrent telepathy
 kde-apps/kleopatra:5 pim
 kde-apps/umbrello:5 php
-kde-misc/kio-gdrive kaccounts share
+kde-misc/kio-gdrive share
 net-irc/quassel urlpreview
 net-misc/fatrat bittorrent
 net-misc/seafile-client shibboleth
-sci-geosciences/gpsbabel gui
 sci-mathematics/yacas gui
 sci-physics/root qt5
 
@@ -43,7 +42,6 @@ www-servers/uwsgi uwsgi_plugins_rados
 
 # Michał Górny <mgorny@gentoo.org> (2018-01-12)
 # Those packages require net-libs/nodejs.
-dev-lang/nim test
 dev-python/nbdime webtools
 dev-ruby/ammeter test
 dev-ruby/jsobfu test

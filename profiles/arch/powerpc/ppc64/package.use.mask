@@ -18,10 +18,6 @@ dev-lang/python-exec -python_targets_pypy3
 # telepathy stack is not keyworded
 dev-util/kdevelop reviewboard
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-01)
-# requires sys-apps/dbus-broker, which is keyworded here.
-sys-apps/systemd -hostnamed-fallback
-
 # Sam James <sam@gentoo.org> (2021-10-17)
 # Go doesn't support pie on ppc64, bug #818529
 net-dns/dnscrypt-proxy pie

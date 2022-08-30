@@ -38,7 +38,7 @@ media-gfx/graphviz python
 media-libs/gd fontconfig
 
 # Required by kde-plasma/kwin
-media-libs/mesa egl wayland
+media-libs/mesa wayland
 
 # Required by kde-apps/kdenlive
 media-libs/mlt ffmpeg frei0r rubberband
