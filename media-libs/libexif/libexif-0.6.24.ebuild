@@ -37,7 +37,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
-		$(use_enable doc docs) \
+		$(multilib_native_use_enable doc docs) \
 		$(use_enable nls) \
 		--with-doc-dir="${EPREFIX}"/usr/share/doc/${PF}
 }
