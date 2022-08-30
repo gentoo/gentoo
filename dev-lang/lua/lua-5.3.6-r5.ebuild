@@ -33,10 +33,6 @@ RDEPEND="${COMMON_DEPEND}"
 
 RESTRICT="!test? ( test )"
 
-WRAPPED_HEADERS=(
-	/usr/include/lua${SLOT}/luaconf.h
-)
-
 PATCHES=(
 	"${FILESDIR}/lua-5.3.6-make.patch"
 )
@@ -150,9 +146,7 @@ src_install() {
 	# Older systems called it 'lua53.pc'
 	dosym "lua${SLOT}.pc" "/usr/$(get_libdir)/pkgconfig/lua-${SLOT}.pc"
 	dosym "lua${SLOT}.pc" "/usr/$(get_libdir)/pkgconfig/lua${SLOT/.}.pc"
-}
 
-src_install_all() {
 	DOCS="README"
 	HTML_DOCS="doc/*.html doc/*.png doc/*.css doc/*.gif"
 	einstalldocs

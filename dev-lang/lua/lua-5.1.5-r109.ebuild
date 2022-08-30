@@ -27,10 +27,6 @@ DEPEND="
 	sys-devel/libtool"
 RDEPEND="${COMMON_DEPEND}"
 
-WRAPPED_HEADERS=(
-	/usr/include/lua${SLOT}/luaconf.h
-)
-
 src_prepare() {
 	PATCHES=(
 		"${FILESDIR}/lua-5.1.5-make.patch"
@@ -119,9 +115,7 @@ src_install() {
 
 	insinto /usr/$(get_libdir)/pkgconfig
 	newins etc/lua.pc lua${SLOT}.pc
-}
 
-src_install_all() {
 	DOCS="HISTORY README"
 	HTML_DOCS="doc/*.html doc/*.png doc/*.css doc/*.gif"
 	einstalldocs
