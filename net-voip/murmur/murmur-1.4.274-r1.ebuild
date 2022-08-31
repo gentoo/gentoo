@@ -15,7 +15,7 @@ else
 	MY_PN="mumble"
 	if [[ "${PV}" == *_pre* ]] ; then
 		MY_P="${MY_PN}-${PV}"
-		SRC_URI="https://dev.gentoo.org/~polynomial-c/dist/${MY_P}.tar.xz"
+		SRC_URI="https://dev.gentoo.org/~concord/distfiles/${MY_P}.tar.xz"
 		S="${WORKDIR}/${MY_P}"
 	else
 		MY_PV="${PV/_/-}"
@@ -27,7 +27,9 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
-SRC_URI+=" https://dev.gentoo.org/~polynomial-c/mumble-1.4-openssl3.patch.xz"
+SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/mumble-1.4-openssl3.patch.xz"
+SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/mumble-1.4-crypto-threads.patch.xz"
+SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/mumble-1.4-odr.patch.xz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -83,6 +85,8 @@ DOC_CONTENTS="
 
 PATCHES=(
 	"${WORKDIR}/mumble-1.4-openssl3.patch"
+	"${WORKDIR}/mumble-1.4-crypto-threads.patch"
+	"${WORKDIR}/mumble-1.4-odr.patch"
 )
 
 src_prepare() {
