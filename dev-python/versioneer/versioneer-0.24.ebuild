@@ -28,6 +28,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	test? (
+		dev-python/build[${PYTHON_USEDEP}]
 		dev-python/packaging[${PYTHON_USEDEP}]
 		dev-vcs/git
 		!!dev-python/nose[${PYTHON_USEDEP}]
