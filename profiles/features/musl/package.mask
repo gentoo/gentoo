@@ -260,6 +260,7 @@ net-misc/netkit-rsh
 
 # David Seifert <soap@gentoo.org> (2021-02-08)
 # nvidia-drivers only works against glibc.
+dev-libs/optix
 x11-drivers/nvidia-drivers
 
 # Ulrich Müller (2020-03-31)
