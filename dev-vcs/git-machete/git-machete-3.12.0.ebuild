@@ -28,7 +28,7 @@ BDEPEND="test? (
 
 DOCS=( CONTRIBUTING.md README.md )
 
-distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
+distutils_enable_sphinx docs/source dev-python/sphinx_rtd_theme
 distutils_enable_tests pytest
 
 src_install() {
