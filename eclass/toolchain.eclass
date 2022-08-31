@@ -324,11 +324,11 @@ if tc_has_feature zstd ; then
 	RDEPEND+=" zstd? ( app-arch/zstd:= )"
 fi
 
-if tc_has_feature valgrind; then
+if tc_has_feature valgrind ; then
 	BDEPEND+=" valgrind? ( dev-util/valgrind )"
 fi
 
-if tc_version_is_at_least 12.0 ; then
+if tc_has_feature d && tc_version_is_at_least 12.0 ; then
 	# D in 12+ is self-hosting and needs D to bootstrap.
 	# TODO: package some binary we can use, like for Ada
 	# bug #840182
