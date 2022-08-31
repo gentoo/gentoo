@@ -128,7 +128,7 @@ src_test() {
 	local negative="readonly"
 	local test
 
-	cd "${BUILD_DIR}" || die
+	cd "${S}" || die
 	for test in ${positive}; do
 		test/lua.static test/${test}.lua || die "test $test failed"
 	done
