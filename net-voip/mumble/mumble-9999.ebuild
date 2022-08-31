@@ -14,7 +14,7 @@ if [[ "${PV}" == 9999 ]] ; then
 	EGIT_SUBMODULES=( '-*' celt-0.7.0-src celt-0.11.0-src themes/Mumble 3rdparty/rnnoise-src 3rdparty/FindPythonInterpreter 3rdparty/tracy 3rdparty/gsl )
 else
 	if [[ "${PV}" == *_pre* ]] ; then
-		SRC_URI="https://dev.gentoo.org/~polynomial-c/dist/${P}.tar.xz"
+		SRC_URI="https://dev.gentoo.org/~concord/distfiles/${P}.tar.xz"
 	else
 		MY_PV="${PV/_/-}"
 		MY_P="${PN}-${MY_PV}"
