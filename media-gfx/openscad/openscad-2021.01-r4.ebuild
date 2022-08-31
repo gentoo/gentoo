@@ -78,7 +78,8 @@ src_configure() {
 }
 
 src_compile() {
-	default
+	# We have random parallel build issues, bug #856430
+	emake -j1
 
 	if use emacs ; then
 		elisp-compile contrib/*.el
