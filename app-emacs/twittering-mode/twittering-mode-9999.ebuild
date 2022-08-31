@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit elisp
 
@@ -13,7 +13,6 @@ else
 	SRC_URI="mirror://sourceforge/twmode/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 	RESTRICT="test"
-	IUSE=""
 fi
 
 DESCRIPTION="Emacs major mode for Twitter"
@@ -22,7 +21,6 @@ HOMEPAGE="http://twmode.sourceforge.net/"
 LICENSE="GPL-2+"
 SLOT="0"
 
-DEPEND=""
 RDEPEND="app-crypt/gnupg"
 
 src_compile() {
@@ -30,11 +28,7 @@ src_compile() {
 	[[ ${PV} == *9999 ]] && use doc && emake -C doc/manual
 }
 
-src_test() {
-	emake check
-}
-
 src_install() {
-	[[ ${PV} == *9999 ]] && use doc && dodoc doc/manual/twmode/twmode.html
 	elisp-install ${PN} twittering-mode.el *.elc
+	[[ ${PV} == *9999 ]] && use doc && dodoc doc/manual/twmode/twmode.html
 }
