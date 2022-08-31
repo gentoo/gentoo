@@ -15,7 +15,7 @@ SRC_URI="https://github.com/VirtusLab/${PN}/archive/refs/tags/v${PV}.tar.gz -> $
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE="fish-completion zsh-completion"
 
 RDEPEND="dev-vcs/git"
