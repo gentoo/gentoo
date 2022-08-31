@@ -88,11 +88,9 @@ src_configure() {
 	# bug #847955
 	append-lfs-flags
 
-	# bug #811933 for libassuan prefix
 	econf \
 		$(use test || echo "--disable-gpgconf-test --disable-gpg-test --disable-gpgsm-test --disable-g13-test") \
 		--enable-languages="${languages[*]}" \
-		--with-libassuan-prefix="${ESYSROOT}"/usr \
 		$(use_enable static-libs static)
 
 	use python && emake -C lang/python prepare
