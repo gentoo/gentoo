@@ -15,7 +15,7 @@ else
 	MY_PN="mumble"
 	if [[ "${PV}" == *_pre* ]] ; then
 		MY_P="${MY_PN}-${PV}"
-		SRC_URI="https://dev.gentoo.org/~polynomial-c/dist/${MY_P}.tar.xz"
+		SRC_URI="https://dev.gentoo.org/~concord/distfiles/${MY_P}.tar.xz"
 		S="${WORKDIR}/${MY_P}"
 	else
 		MY_PV="${PV/_/-}"
