@@ -90,12 +90,8 @@ RDEPEND="
 	!ghcmakebinary? ( dev-libs/libffi:= )
 	numa? ( sys-process/numactl )
 	llvm? (
-		<sys-devel/llvm-$(("${LLVM_MAX_SLOT}" + 1)):=
+		<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):=
 		|| (
-			sys-devel/llvm:9
-			sys-devel/llvm:10
-			sys-devel/llvm:11
-			sys-devel/llvm:12
 			sys-devel/llvm:13
 		)
 	)
@@ -406,7 +402,7 @@ pkg_setup() {
 		python-any-r1_pkg_setup
 	fi
 
-	llvm_pkg_setup
+	use llvm && llvm_pkg_setup
 }
 
 src_unpack() {
