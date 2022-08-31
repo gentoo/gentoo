@@ -29,10 +29,10 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/gmp:=
 	dev-libs/mpfr:=
-	dev-libs/imath:=
 	>=media-gfx/openvdb-8.2:=
 	net-misc/curl[adns]
 	media-libs/glew:0=
+	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
 	media-libs/qhull:=
 	sci-libs/libigl
@@ -41,7 +41,6 @@ RDEPEND="
 	>=sci-mathematics/cgal-5.0:=
 	sys-apps/dbus
 	sys-libs/zlib:=
-	virtual/glu
 	virtual/opengl
 	x11-libs/gtk+:3
 	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
