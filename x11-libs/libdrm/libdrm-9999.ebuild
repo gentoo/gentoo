@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/drm.git"
 PYTHON_COMPAT=( python3_{8..11} )
@@ -60,6 +60,7 @@ multilib_src_configure() {
 		$(meson_feature video_cards_vmware vmwgfx)
 		# valgrind installs its .pc file to the pkgconfig for the primary arch
 		-Dvalgrind=$(usex valgrind auto disabled)
+		-Dtests=false # Tests are restricted
 	)
 	meson_src_configure
 }
