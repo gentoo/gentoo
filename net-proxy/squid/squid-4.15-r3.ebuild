@@ -11,7 +11,7 @@ HOMEPAGE="http://www.squid-cache.org/"
 # Upstream patch ID for the most recent bug-fixed update to the formal release.
 r=
 #r=-20181117-r0022167
-if [ -z "$r" ]; then
+if [[ -z "${r}" ]]; then
 	SRC_URI="http://www.squid-cache.org/Versions/v${PV%.*}/${P}.tar.xz"
 else
 	SRC_URI="http://www.squid-cache.org/Versions/v${PV%.*}/${P}${r}.tar.bz2"
@@ -274,7 +274,7 @@ src_install() {
 
 pkg_postinst() {
 	elog "A good starting point to debug Squid issues is to use 'squidclient mgr:' commands such as 'squidclient mgr:info'."
-	if [ ${#r} -gt 0 ]; then
+	if [[ ${#r} -gt 0 ]]; then
 		elog "You are using a release with the official ${r} patch! Make sure you mention that, or send the output of 'squidclient mgr:info' when asking for support."
 	fi
 }
