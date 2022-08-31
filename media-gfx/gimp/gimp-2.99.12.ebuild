@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 VALA_MIN_API_VERSION="0.50"
 VALA_USE_DEPEND=vapigen
 

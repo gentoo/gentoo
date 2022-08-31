@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 # vala and introspection support is broken, bug #468208
 VALA_USE_DEPEND=vapigen
 
