@@ -61,7 +61,8 @@ mymake() {
 		PREFIX="${EPREFIX}/usr" \
 		HELPER_PATH="${EPREFIX}/usr/$(get_libdir)/afl" \
 		DOC_PATH="${EPREFIX}/usr/share/doc/${PF}" \
-		MAN_PATH="${EPREFIX}/usr/share/man/man8"
+		MAN_PATH="${EPREFIX}/usr/share/man/man8" \
+		"$@"
 }
 
 src_compile() {
