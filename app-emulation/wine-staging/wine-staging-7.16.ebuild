@@ -10,6 +10,7 @@ inherit autotools estack flag-o-matic multilib-minimal pax-utils plocale toolcha
 MY_PN="${PN%%-*}"
 MY_PV="${PV/_/-}"
 MY_P="${MY_PN}-${MY_PV}"
+GECKO_VERSION="2.47.3"
 
 if [[ ${MY_PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://source.winehq.org/git/wine.git"
@@ -118,7 +119,7 @@ RDEPEND="${COMMON_DEPEND}
 	app-emulation/wine-desktop-common
 	>app-eselect/eselect-wine-0.3
 	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
-	gecko? ( app-emulation/wine-gecko:2.47.3[abi_x86_32?,abi_x86_64?] )
+	gecko? ( app-emulation/wine-gecko:${GECKO_VERSION}[abi_x86_32?,abi_x86_64?] )
 	mono? ( app-emulation/wine-mono:7.3.0 )
 	perl? (
 		dev-lang/perl
@@ -280,6 +281,13 @@ src_prepare() {
 			patchbin --nogit < "${patch}" || die
 		done
 	}
+
+	if use gecko; then
+		local source_gecko_version=$( sed -n -e '/^#define GECKO_VERSION/p' dlls/appwiz.cpl/addons.c | grep -Eo -m 1 '[0-9.]+' )
+		if [[ ${source_gecko_version} != ${GECKO_VERSION} ]] ; then
+			die "app-emulation/wine-gecko version is not correct! Please file a bug."
+		fi
+	fi
 
 	local md5="$(md5sum server/protocol.def)"
 
