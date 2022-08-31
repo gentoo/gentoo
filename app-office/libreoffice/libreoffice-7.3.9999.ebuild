@@ -293,6 +293,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 	"${FILESDIR}/${PN}-7.2.0.4-qt5detect.patch"
+
+	# Upstream
+	"${FILESDIR}/${PN}-7.3.5.2-gpgme-1.18.0.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
@@ -564,9 +567,6 @@ src_configure() {
 		use libreoffice_extensions_scripting-javascript && \
 			myeconfargs+=( --with-rhino-jar=$(java-pkg_getjar rhino-1.6 rhino.jar) )
 	fi
-
-	# Workaround to fix build w/ gpgme 1.18.0, bug #865321
-	export ac_cv_lib_gpgmepp_progress_callback=yes
 
 	is-flagq "-flto*" && myeconfargs+=( --enable-lto )
 
