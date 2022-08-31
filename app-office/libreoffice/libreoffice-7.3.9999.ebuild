@@ -585,12 +585,11 @@ src_compile() {
 }
 
 src_test() {
-	make unitcheck || die
-	make slowcheck || die
+	emake unitcheck
+	emake slowcheck
 }
 
 src_install() {
-	# This is not Makefile so no buildserver
 	emake DESTDIR="${D}" distro-pack-install -o build -o check
 
 	# bug 593514
