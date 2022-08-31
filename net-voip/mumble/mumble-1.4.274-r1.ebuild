@@ -14,7 +14,7 @@ if [[ "${PV}" == 9999 ]] ; then
 	EGIT_SUBMODULES=( '-*' celt-0.7.0-src celt-0.11.0-src themes/Mumble 3rdparty/rnnoise-src 3rdparty/FindPythonInterpreter )
 else
 	if [[ "${PV}" == *_pre* ]] ; then
-		SRC_URI="https://dev.gentoo.org/~polynomial-c/dist/${P}.tar.xz"
+		SRC_URI="https://dev.gentoo.org/~concord/distfiles/${P}.tar.xz"
 	else
 		MY_PV="${PV/_/-}"
 		MY_P="${PN}-${MY_PV}"
@@ -24,7 +24,8 @@ else
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
-SRC_URI+=" https://dev.gentoo.org/~polynomial-c/${PN}-1.4-openssl3.patch.xz"
+SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/${PN}-1.4-openssl3.patch.xz"
+SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/${PN}-1.4-odr.patch.xz"
 
 LICENSE="BSD MIT"
 SLOT="0"
@@ -74,6 +75,7 @@ BDEPEND="
 PATCHES=(
 	"${WORKDIR}/${PN}-1.4-openssl3.patch"
 	"${FILESDIR}/${PN}-1.4-crypto-threads.patch"
+	"${WORKDIR}/${PN}-1.4-odr.patch"
 )
 
 pkg_setup() {
