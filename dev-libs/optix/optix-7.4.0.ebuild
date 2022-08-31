@@ -3,7 +3,7 @@
 
 EAPI=8
 
-MY_PV=${PV:0:3}
+MY_PV=$(ver_cut 1-2)
 
 DESCRIPTION="NVIDIA Ray Tracing Engine"
 HOMEPAGE="https://developer.nvidia.com/optix"
@@ -73,7 +73,7 @@ src_install() {
 	insinto /opt/${PN}
 	doins -r include
 
-	if use !header-only; then
+	if use !headers-only; then
 		DOCS=( doc/OptiX_{API_Reference,Programming_Guide}_${PV}.pdf )
 		einstalldocs
 	fi
