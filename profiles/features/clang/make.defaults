@@ -29,7 +29,8 @@ LDFLAGS="${LDFLAGS} ${SOME_HARDENING_LDFLAGS}"
 
 # use LLVM-provided binutils
 AR="llvm-ar"
-AS="llvm-as"
+AS="clang -c"
+CPP="clang-cpp"
 NM="llvm-nm"
 STRIP="llvm-strip"
 RANLIB="llvm-ranlib"
