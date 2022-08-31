@@ -37,6 +37,7 @@ RDEPEND="
 	media-libs/qhull:=
 	sci-libs/libigl
 	sci-libs/nlopt
+	=sci-libs/opencascade-7.6*:=
 	>=sci-mathematics/cgal-5.0:=
 	sys-apps/dbus
 	sys-libs/zlib:=
@@ -59,6 +60,9 @@ S="${WORKDIR}/${MY_PN}-version_${MY_PV}"
 
 src_prepare() {
 	sed -i -e 's/PrusaSlicer-${SLIC3R_VERSION}+UNKNOWN/PrusaSlicer-${SLIC3R_VERSION}+Gentoo/g' version.inc || die
+
+  sed -i -e 's/find_package(OpenCASCADE 7.6.2 REQUIRED)/find_package(OpenCASCADE REQUIRED)/g' \
+	  src/occt_wrapper/CMakeLists.txt || die
 	cmake_src_prepare
 }
 
