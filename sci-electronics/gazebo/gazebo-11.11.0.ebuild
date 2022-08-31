@@ -65,7 +65,6 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 PATCHES=(
 	"${FILESDIR}/qwt2.patch"
 	"${FILESDIR}/cmake.patch"
-	"${FILESDIR}/gv.patch"
 )
 
 src_configure() {
