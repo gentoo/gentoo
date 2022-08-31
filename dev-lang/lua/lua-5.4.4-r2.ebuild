@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools portability toolchain-funcs
+inherit autotools optfeature portability toolchain-funcs
 
 DESCRIPTION="A powerful light-weight programming language designed for extending applications"
 HOMEPAGE="https://www.lua.org/"
@@ -180,9 +180,5 @@ src_test() {
 pkg_postinst() {
 	eselect lua set --if-unset "${PN}${SLOT}"
 
-	if has_version "app-editors/emacs"; then
-		if ! has_version "app-emacs/lua-mode"; then
-			einfo "Install app-emacs/lua-mode for lua support for emacs"
-		fi
-	fi
+	optfeature "Lua support for Emacs" app-emacs/lua-mode
 }
