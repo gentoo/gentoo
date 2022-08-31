@@ -1,0 +1,3 @@
+# Mike Gilbert <floppym@gentoo.org> (2022-08-31)
+# Avoid removing merged-usr symlinks.
+UNINSTALL_IGNORE="${UNINSTALL_IGNORE} /bin /lib /lib32 /lib64 /libx32 /sbin /usr/sbin"
