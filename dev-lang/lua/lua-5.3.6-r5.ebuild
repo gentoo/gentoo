@@ -171,7 +171,7 @@ src_test() {
 	rm -f "${TEST_MARKER}"
 
 	TEST_LOG="${T}/test.log"
-	eval "${BUILD_DIR}"/src/lua${SLOT} ${TEST_OPTS} all.lua 2>&1 | tee "${TEST_LOG}" || die
+	eval "${S}"/src/lua${SLOT} ${TEST_OPTS} all.lua 2>&1 | tee "${TEST_LOG}" || die
 	grep -sq -e "final OK" "${TEST_LOG}" || echo "FAIL" >>"${TEST_MARKER}"
 
 	if [ -e "${TEST_MARKER}" ]; then
