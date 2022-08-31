@@ -1,0 +1,13 @@
+diff --git a/geiser-mit.el b/geiser-mit.el
+index 53edf0e..2dfe9fa 100644
+--- a/geiser-mit.el
++++ b/geiser-mit.el
+@@ -61,7 +61,7 @@
+     geiser-mit-binary))
+ 
+ (defvar geiser-mit-scheme-dir
+-  (expand-file-name "src" (file-name-directory load-file-name))
++  (expand-file-name "src" "@SITEETC@")
+   "Directory where the MIT scheme geiser package is installed.")
+ 
+ (defun geiser-mit--parameters ()
