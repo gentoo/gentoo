@@ -1,0 +1,12 @@
+diff --git a/src/script_interface/CMakeLists.txt b/src/script_interface/CMakeLists.txt
+index a799571..9d03f33 100644
+--- a/src/script_interface/CMakeLists.txt
++++ b/src/script_interface/CMakeLists.txt
+@@ -54,4 +54,6 @@ target_link_libraries(
+ target_include_directories(Espresso_script_interface
+                            PUBLIC ${CMAKE_SOURCE_DIR}/src)
+ 
+-add_subdirectory(tests)
++if(WITH_TESTS)
++  add_subdirectory(tests)
++endif(WITH_TESTS)

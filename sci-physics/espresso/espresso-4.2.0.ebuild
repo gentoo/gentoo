@@ -53,6 +53,10 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS NEWS Readme.md ChangeLog )
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-disable-test.patch"
+)
+
 src_prepare() {
 	use cuda && cuda_src_prepare
 	cmake_src_prepare
@@ -86,6 +90,8 @@ src_install() {
 	local i docdir="${S}"
 
 	cmake_src_install
+
+	python_optimize
 
 	insinto /usr/share/${PN}/
 	doins "${BUILD_DIR}/myconfig-sample.hpp"
