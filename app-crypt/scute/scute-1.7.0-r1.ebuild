@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="A PKCS #11 module for OpenPGP smartcards"
 HOMEPAGE="http://www.scute.org/"
@@ -41,9 +41,7 @@ src_unpack() {
 
 src_configure() {
 	econf \
-		--libdir="${EPREFIX}"/usr/$(get_libdir)/pkcs11 \
-		--with-libgpg-error-prefix="${ESYSROOT}"/usr \
-		--with-libassuan-prefix="${ESYSROOT}"/usr
+		--libdir="${EPREFIX}"/usr/$(get_libdir)/pkcs11
 }
 
 src_install() {
