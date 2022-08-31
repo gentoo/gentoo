@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -arm64
 
+# Mike Gilbert <floppym@gentoo.org> (2022-08-31)
+# sys-libs/libapparmor
+-apparmor
+
 # David Seifert <soap@gentoo.org> (2022-03-13)
 # NVENC works here
 -nvenc
