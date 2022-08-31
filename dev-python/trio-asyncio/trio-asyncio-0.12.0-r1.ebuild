@@ -33,6 +33,8 @@ PATCHES=( "${FILESDIR}/no-pytest-runner.patch" )
 EPYTEST_DESELECT=(
 	# RuntimeError: You're within a Trio environment.
 	# https://bugs.gentoo.org/834955
+	/Python-3.8/test_asyncio/test_locks.py::ConditionTests::test_ambiguo
+	/Python-3.9/test_asyncio/test_locks.py::ConditionTests::test_ambiguo
 	/Python-3.10/test_asyncio/test_locks.py::ConditionTests::test_ambiguo
 	/Python-3.11/test_asyncio/test_locks.py::ConditionTests::test_ambiguo
 )
