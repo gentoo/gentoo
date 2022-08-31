@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake desktop xdg
 
 DESCRIPTION="A GUI frontend to gdb"
 HOMEPAGE="https://github.com/epasveer/seer"
@@ -25,3 +25,14 @@ RDEPEND="
 	${DEPEND}
 	sys-devel/gdb
 "
+
+src_install() {
+	cmake_src_install
+
+	domenu resources/seergdb.desktop
+
+	local size
+	for size in 32 64 128 256 512 ; do
+		newicon -s ${size} resources/seergdb_${size}x${size}.png seergdb.png
+	done
+}
