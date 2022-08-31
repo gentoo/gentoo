@@ -25,6 +25,7 @@ else
 fi
 
 SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/${PN}-1.4-openssl3.patch.xz"
+SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/${PN}-1.4-crypto-threads.patch.xz"
 SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/${PN}-1.4-odr.patch.xz"
 
 LICENSE="BSD MIT"
@@ -74,7 +75,7 @@ BDEPEND="
 
 PATCHES=(
 	"${WORKDIR}/${PN}-1.4-openssl3.patch"
-	"${FILESDIR}/${PN}-1.4-crypto-threads.patch"
+	"${WORKDIR}/${PN}-1.4-crypto-threads.patch"
 	"${WORKDIR}/${PN}-1.4-odr.patch"
 )
 
