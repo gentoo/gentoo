@@ -286,10 +286,9 @@ app-emulation/dosemu
 sys-libs/glibc
 
 # As of 2021-08-08, >=sys-fs/udev-249-r2 is patched in Gentoo
-# to work on musl.
+# to work on musl, so no need to mask udev.
+# systemd itself fails to build without glibc
 sys-apps/systemd
-
-# systemd sources fail to build without glibc
 sys-boot/systemd-boot
 
 # rust-bin requires a glibc system
