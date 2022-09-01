@@ -1,4 +1,8 @@
 From https://gitlab.kitware.com/vtk/vtk/-/commit/0322b938968eebee585ad7efb93bbdade7106355
+
+https://bugs.gentoo.org/863038
+https://gitlab.kitware.com/vtk/vtk/-/issues/18638
+
 From: Aron Helser <aron.helser@kitware.com>
 Date: Mon, 15 Aug 2022 10:06:13 -0400
 Subject: [PATCH 16/30] Change or scope struct names to avoid conflicts.
@@ -121,6 +125,3 @@ Subject: [PATCH 16/30] Change or scope struct names to avoid conflicts.
    vtkAMRVelodyneReaderInternal();
    ~vtkAMRVelodyneReaderInternal();
    void SetFileName(VTK_FILEPATH VTK_FUTURE_CONST char* fileName);
--- 
-2.37.2
-
