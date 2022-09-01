@@ -25,7 +25,7 @@ BLOCKDEV_MIN_VER="2.25"
 
 COMMON_DEPEND="
 	>=sys-auth/polkit-0.114
-	>=sys-libs/libblockdev-${BLOCKDEV_MIN_VER}[cryptsetup,lvm?,vdo?]
+	>=sys-libs/libblockdev-${BLOCKDEV_MIN_VER}[cryptsetup,lvm?,vdo(-)?]
 	virtual/udev
 	acl? ( virtual/acl )
 	daemon? (
