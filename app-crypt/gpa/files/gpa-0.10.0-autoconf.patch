@@ -19,17 +19,6 @@ Use AC_MSG_ERROR instead of AC_ERROR.
 * m4/libassuan.m4: Update from libassuan.
 
 Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
----
- configure.ac     |  23 +++---
- m4/check_zlib.m4 |   4 +-
- m4/gettext.m4    | 155 ++++++++++++++++++++--------------------
- m4/gpg-error.m4  | 157 ++++++++++++++++++++++++++++++++++++-----
- m4/gpgme.m4      | 180 +++++++++++++++++++++++++----------------------
- m4/libassuan.m4  | 141 ++++++++++++++++++-------------------
- 6 files changed, 396 insertions(+), 264 deletions(-)
-
-diff --git a/configure.ac b/configure.ac
-index 462d573..4c1804f 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -19,7 +19,7 @@
@@ -109,8 +98,6 @@ index 462d573..4c1804f 100644
 -"
 \ No newline at end of file
 +"
-diff --git a/m4/check_zlib.m4 b/m4/check_zlib.m4
-index d5088d3..9836653 100644
 --- a/m4/check_zlib.m4
 +++ b/m4/check_zlib.m4
 @@ -12,7 +12,7 @@
@@ -131,8 +118,6 @@ index d5088d3..9836653 100644
  
  AC_SUBST(LIBZ)
  ])
-diff --git a/m4/gettext.m4 b/m4/gettext.m4
-index f84e6a5..4f25a27 100644
 --- a/m4/gettext.m4
 +++ b/m4/gettext.m4
 @@ -1,16 +1,16 @@
@@ -394,8 +379,6 @@ index f84e6a5..4f25a27 100644
 +
 +dnl Usage: AM_GNU_GETTEXT_REQUIRE_VERSION([gettext-version])
 +AC_DEFUN([AM_GNU_GETTEXT_REQUIRE_VERSION], [])
-diff --git a/m4/gpg-error.m4 b/m4/gpg-error.m4
-index 9d96d16..c9b235f 100644
 --- a/m4/gpg-error.m4
 +++ b/m4/gpg-error.m4
 @@ -1,5 +1,5 @@
@@ -603,8 +586,6 @@ index 9d96d16..c9b235f 100644
 +  AC_SUBST(GPG_ERROR_MT_LIBS)
  ])
 -
-diff --git a/m4/gpgme.m4 b/m4/gpgme.m4
-index 44bf43c..c749a5d 100644
 --- a/m4/gpgme.m4
 +++ b/m4/gpgme.m4
 @@ -1,5 +1,5 @@
@@ -888,8 +869,6 @@ index 44bf43c..c749a5d 100644
    AC_SUBST(GPGME_GLIB_LIBS)
  ])
 -
-diff --git a/m4/libassuan.m4 b/m4/libassuan.m4
-index 004eee3..df50484 100644
 --- a/m4/libassuan.m4
 +++ b/m4/libassuan.m4
 @@ -1,5 +1,5 @@
