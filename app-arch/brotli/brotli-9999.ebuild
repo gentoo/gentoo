@@ -38,7 +38,12 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 "
-BDEPEND="python? ( ${DISTUTILS_DEPS} )"
+BDEPEND="
+	python? (
+		${DISTUTILS_DEPS}
+		test? ( dev-python/unittest-or-fail[${PYTHON_USEDEP}] )
+	)
+"
 
 DOCS=( README.md CONTRIBUTING.md )
 
