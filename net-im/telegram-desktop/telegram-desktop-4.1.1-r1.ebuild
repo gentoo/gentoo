@@ -28,18 +28,22 @@ RDEPEND="
 	!net-im/telegram-desktop-bin
 	app-arch/lz4:=
 	dev-cpp/abseil-cpp:=
+	dev-libs/glib:2
 	dev-libs/libdispatch
+	dev-libs/libsigc++:2
 	dev-libs/openssl:=
 	dev-libs/xxhash
 	media-fonts/open-sans
 	media-libs/fontconfig:=
+	media-libs/libjpeg-turbo:=
 	~media-libs/libtgvoip-2.4.4_p20220503
 	media-libs/openal
 	media-libs/opus:=
 	media-libs/rnnoise
-	~media-libs/tg_owt-0_pre20220507[screencast=,X=]
+	~media-libs/tg_owt-0_pre20220507:=[screencast=,X=]
 	media-video/ffmpeg:=[opus]
 	sys-libs/zlib:=[minizip]
+	x11-libs/xcb-util-keysyms
 	dbus? ( dev-cpp/glibmm:2 )
 	enchant? ( app-text/enchant:= )
 	hunspell? ( >=app-text/hunspell-1.7:= )
