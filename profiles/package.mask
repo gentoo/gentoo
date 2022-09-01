@@ -49,7 +49,6 @@ dev-python/flask-mail
 dev-python/flask-principal
 dev-python/flask-wtf
 dev-python/mongomock
-dev-python/peewee
 dev-python/pony
 dev-python/pyqrcode
 dev-python/sentinels
