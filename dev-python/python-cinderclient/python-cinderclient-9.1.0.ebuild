@@ -26,6 +26,7 @@ RDEPEND="
 	>=dev-python/simplejson-3.5.1[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-3.3.0[${PYTHON_USEDEP}]
 "
+# Tests fail with dev-python/prettytable-3.4.0
 BDEPEND="
 	dev-python/pbr[${PYTHON_USEDEP}]
 	test? (
@@ -34,6 +35,7 @@ BDEPEND="
 		dev-python/oslo-serialization[${PYTHON_USEDEP}]
 		dev-python/requests-mock[${PYTHON_USEDEP}]
 		dev-python/testtools[${PYTHON_USEDEP}]
+		<dev-python/prettytable-3.4.0[${PYTHON_USEDEP}]
 	)
 "
 
