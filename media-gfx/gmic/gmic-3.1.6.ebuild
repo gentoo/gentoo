@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit bash-completion-r1 toolchain-funcs
+inherit toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/dtschump/gmic.git"
