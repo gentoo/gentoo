@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{8,9} )
+EAPI=8
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit cmake python-single-r1
 
@@ -12,8 +12,9 @@ HOMEPAGE="https://github.com/bastibl/gr-ieee802-15-4"
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/bastibl/gr-ieee802-15-4.git"
+	EGIT_BRANCH="maint-3.9"
 else
-	COMMIT="c5e55146fadffa9288ed6de52c6c3ccc936688af"
+	COMMIT="1a2999ce2778df279870f028a4ce15d94e60fbd9"
 	SRC_URI="https://github.com/bastibl/gr-ieee802-15-4/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/gr-ieee802-15-4-${COMMIT}"
 	KEYWORDS="~amd64 ~x86"
@@ -22,7 +23,7 @@ fi
 LICENSE="GPL-3"
 SLOT="0/${PV}"
 
-RDEPEND="=net-wireless/gnuradio-3.8*:0=[${PYTHON_SINGLE_USEDEP}]
+RDEPEND="net-wireless/gnuradio:0=[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-libs/boost:=[${PYTHON_USEDEP}]
 	')
