@@ -3,15 +3,15 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/bastibl/${PN}"
-	EGIT_BRANCH="maint-3.8"
+	EGIT_BRANCH="maint-3.10"
 else
 	KEYWORDS="~amd64 ~x86"
-	COMMIT="ffbe3ea302c32a621f14329b7fcc09e868305e78"
+	COMMIT="f3646d04c138dc3279528808dcf6f847887e4a4f"
 	SRC_URI="https://github.com/bastibl/gr-rds/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
 fi
@@ -29,7 +29,7 @@ RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-libs/boost:=[${PYTHON_USEDEP}]
 	')
-	=net-wireless/gnuradio-3.8*:0=[${PYTHON_SINGLE_USEDEP}]
+	net-wireless/gnuradio:0=[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
