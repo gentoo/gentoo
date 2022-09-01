@@ -19,10 +19,8 @@ KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="dev-vcs/git"
 BDEPEND="test? (
-	$(python_gen_cond_dep '
-		>=dev-python/pytest-mock-3.8.2[${PYTHON_USEDEP}]
-		>=dev-python/pytest-xdist-2.5.0[${PYTHON_USEDEP}]
-	')
+	>=dev-python/pytest-mock-3.8.2[${PYTHON_USEDEP}]
+	>=dev-python/pytest-xdist-2.5.0[${PYTHON_USEDEP}]
 )"
 
 DOCS=( CONTRIBUTING.md README.md )
