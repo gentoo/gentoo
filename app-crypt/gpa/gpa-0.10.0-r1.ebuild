@@ -8,6 +8,8 @@ inherit autotools xdg
 DESCRIPTION="The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG"
 HOMEPAGE="http://gpa.wald.intevation.org"
 SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
+# Backport of upstream changes to 0.10.0
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-autoconf.patch.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -26,7 +28,7 @@ BDEPEND="virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-autoconf.patch
+	"${WORKDIR}"/${P}-autoconf.patch
 )
 
 src_prepare() {
