@@ -16,7 +16,6 @@ SRC_URI="https://github.com/VirtusLab/${PN}/archive/refs/tags/v${PV}.tar.gz -> $
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
-IUSE="fish-completion zsh-completion"
 
 RDEPEND="dev-vcs/git"
 BDEPEND="test? (
@@ -35,12 +34,10 @@ src_install() {
 	distutils-r1_src_install
 
 	newbashcomp completion/${PN}.completion.bash ${PN}
-	if use fish-completion; then
-		insinto /usr/share/fish/vendor_completions.d
-		doins completion/${PN}.fish
-	fi
-	if use zsh-completion; then
-		insinto /usr/share/zsh/site-functions
-		newins completion/${PN}.completion.zsh _${PN}
-	fi
+
+	insinto /usr/share/fish/vendor_completions.d
+	doins completion/${PN}.fish
+
+	insinto /usr/share/zsh/site-functions
+	newins completion/${PN}.completion.zsh _${PN}
 }
