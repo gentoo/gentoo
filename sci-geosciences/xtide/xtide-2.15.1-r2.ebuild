@@ -18,7 +18,7 @@ DEPEND="
 	sci-geosciences/gpsd
 	>=sci-geosciences/libtcd-2.2.5_p2
 	x11-libs/libX11
-	x11-libs/libXaw3d[unicode]
+	x11-libs/libXaw3d[unicode(+)]
 	x11-libs/libXaw3dXft
 	x11-libs/libXft
 	x11-libs/libXpm
