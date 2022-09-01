@@ -20,7 +20,4 @@
 		<remote-id type="github">VirtusLab/git-machete</remote-id>
 		<remote-id type="pypi">git-machete</remote-id>
 	</upstream>
-	<use>
-		<flag name="fish-completion">Enable fish completion support</flag>
-	</use>
 </pkgmetadata>
