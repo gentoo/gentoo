@@ -10,5 +10,8 @@
     <flag name="nagios">
       Install a nagios plugin to check sensors' status.
     </flag>
+    <flag name="without-root">
+      Configure whether or not to check for root access in ipmi tools.
+    </flag>
   </use>
 </pkgmetadata>
