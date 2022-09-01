@@ -5,6 +5,10 @@
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
 	<maintainer type="person" proxied="yes">
 		<email>ran.dall@icloud.com</email>
 		<name>Randall T. Vasquez</name>
