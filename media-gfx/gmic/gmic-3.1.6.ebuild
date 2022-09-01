@@ -66,6 +66,7 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-3.1.6-ar_so.patch
 	"${FILESDIR}"/${PN}-3.1.6-makefile_automagic.patch
 	"${FILESDIR}"/${PN}-3.1.6-relative_rpath.patch
 )
@@ -100,8 +101,6 @@ gmic_emake() {
 		$@
 }
 
-# FIXME:
-#  - honour user CFLAGS while building C binaries (i.e. 'use_libcgmic')
 src_compile() {
 	gmic_emake lib libc
 	use cli && gmic_emake cli_shared
