@@ -24,8 +24,11 @@ SLOT="0"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="${PYTHON_DEPS}
+	$(python_gen_cond_dep '
+		dev-libs/boost:=[${PYTHON_USEDEP}]
+	')
+	net-wireless/gnuradio:0=[${PYTHON_SINGLE_USEDEP}]
 	!net-wireless/gnuradio[iio(-)]
-	net-wireless/gnuradio:=
 	dev-libs/boost:=
 	net-libs/libiio:=
 	dev-libs/gmp
