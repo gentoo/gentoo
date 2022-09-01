@@ -6,10 +6,11 @@
 		<name>Anthony G. Basile</name>
 	</maintainer>
 	<maintainer type="person">
-	<email>zlogene@gentoo.org</email>
-	<name>Mikle Kolyada</name>
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">f2fs-tools</remote-id>
+		<remote-id type="github">jaegeuk/f2fs-tools</remote-id>
 	</upstream>
 </pkgmetadata>
