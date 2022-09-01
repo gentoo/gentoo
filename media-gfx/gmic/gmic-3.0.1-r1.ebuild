@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="GREYC's Magic Image Converter"
-HOMEPAGE="https://gmic.eu/ https://github.com/dtschump/gmic"
+HOMEPAGE="https://gmic.eu/ https://github.com/GreycLab/gmic"
 
 LICENSE="CeCILL-2 GPL-3"
 SLOT="0"
