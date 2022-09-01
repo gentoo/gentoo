@@ -1,0 +1,11 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -187,7 +187,7 @@
+ ifndef NO_SRIPDLIB
+ MANDATORY_CFLAGS += -std=c++11 -pedantic
+ endif
+-MANDATORY_LIBS += -L. -L$(USR)/$(LIB) -Wl,-rpath,.
++MANDATORY_LIBS += -L. -L$(USR)/$(LIB)
+ ifdef IS_GCC
+ MANDATORY_CFLAGS += -Wall -Wextra -Wfatal-errors -Werror=unknown-pragmas -Werror=unused-label
+ GCC_VER_GTEQ5 = $(shell expr `$(CXX) -dumpversion | cut -f1 -d.` \>= 5)
