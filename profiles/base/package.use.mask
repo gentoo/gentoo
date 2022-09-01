@@ -11,6 +11,7 @@
 # may lead to incorrect results in computation.
 # https://github.com/ROCmSoftwarePlatform/rocFFT/issues/369
 =sci-libs/rocFFT-5.1.3 amdgpu_targets_gfx906
+=sci-libs/hipFFT-5.1.3 amdgpu_targets_gfx906
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-09-17)
 # po4a crashes while translating
