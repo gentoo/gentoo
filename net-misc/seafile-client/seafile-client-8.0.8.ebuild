@@ -27,7 +27,7 @@ RDEPEND="dev-db/sqlite:3
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
-	net-libs/libsearpc
+	>=net-libs/libsearpc-3.2.0_p1
 	~net-misc/seafile-${PV}
 	sys-libs/zlib
 	virtual/opengl
