@@ -27,7 +27,10 @@ BDEPEND="virtual/pkgconfig"
 
 RESTRICT="!test? ( test )"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.12.2-respect-CFLAGS.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.12.2-respect-CFLAGS.patch
+	"${FILESDIR}"/${PN}-2.17.0-fix-test-version.patch
+)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
