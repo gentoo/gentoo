@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,14 +29,17 @@ IUSE=""
 
 RDEPEND="
 	|| (
-		(	media-libs/mesa[X(+)]
-			x11-libs/libGLw )
-		media-libs/mesa[motif,X(+)] )
+		(
+			media-libs/mesa[X(+)]
+			x11-libs/libGLw
+		)
+		media-libs/mesa[motif(-),X(+)]
+	)
+	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
 	media-libs/tiff:0
 	sys-libs/zlib
 	virtual/glu
-	virtual/jpeg:0
 	x11-libs/libXpm
 	x11-libs/motif:0
 	x11-apps/xdpyinfo
