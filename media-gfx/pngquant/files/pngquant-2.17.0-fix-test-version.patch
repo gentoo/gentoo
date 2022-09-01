@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/867760
+
+Drop check which looks at version as with newer libimagequant,
+it becomes 4.0.0.
+--- a/test/test.sh
++++ b/test/test.sh
+@@ -9,7 +9,6 @@ BIN=$2
+ TESTBIN=$3
+ PATH=.:$PATH # Required, since BIN may be just 'pngquant'
+ 
+-$BIN --version 2>&1 | fgrep 2.
+ $BIN --help | fgrep -q "usage:"
+ 
+ $BIN 2>/dev/null && { echo "should fail without args"; exit 1; } || true
