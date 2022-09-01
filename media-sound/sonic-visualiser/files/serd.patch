@@ -1,0 +1,21 @@
+From 865fbe253cde8e966709bb11dc8c441ceb3891ed Mon Sep 17 00:00:00 2001
+From: Chris Cannam <cannam@all-day-breakfast.com>
+Date: Fri, 29 Jul 2022 13:31:37 +0100
+Subject: [PATCH] Fix build failure
+
+---
+ meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/meson.build b/meson.build
+index 59a635f..35fc470 100644
+--- a/meson.build
++++ b/meson.build
+@@ -138,6 +138,7 @@ if system == 'linux'
+   server_dependencies = [
+     capnp_dep,
+     sord_dep,
++    serd_dep,
+     dl_dep,
+   ]
+   
