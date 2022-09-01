@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,8 +24,8 @@ RDEPEND="
 	media-fonts/urw-fonts
 	>=media-gfx/transfig-3.2.5-r1
 	media-libs/netpbm
-	jpeg? ( virtual/jpeg:0= )
-	nls? ( x11-libs/libXaw3d[unicode] )
+	jpeg? ( media-libs/libjpeg-turbo:= )
+	nls? ( x11-libs/libXaw3d[unicode(+)] )
 	postscript? ( app-text/ghostscript-gpl )
 "
 DEPEND="${RDEPEND}
