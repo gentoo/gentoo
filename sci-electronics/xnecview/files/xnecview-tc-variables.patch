@@ -1,0 +1,29 @@
+diff -Naur xnecview-1.37.org/Makefile xnecview-1.37/Makefile
+--- xnecview-1.37.org/Makefile	2006-03-27 22:38:37.000000000 +0200
++++ xnecview-1.37/Makefile	2022-09-01 19:00:31.929015747 +0200
+@@ -3,11 +3,12 @@
+ 
+ 
+ 
+-CC	= gcc
+-CFLAGS	= -O2 -g -Wall `pkg-config gtk+-2.0 --cflags`
++CC	?= gcc
++CFLAGS	?= -O2 -g -Wall
++CFLAGS	+= `$(PKG_CONFIG) gtk+-2.0 --cflags`
+ 
+-LD	= $(CC)
+-LDFLAGS	= `pkg-config gtk+-2.0 --libs` -lm
++LD	?= $(CC)
++LDFLAGS	+= `$(PKG_CONFIG) gtk+-2.0 --libs` -lm
+ 
+ ifeq ($(PNG),yes)
+ CFLAGS	+= -DHAVE_LIBPNG
+@@ -20,7 +21,7 @@
+ all:	xnecview
+ 
+ xnecview:	$(OBJS)
+-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS)  -o xnecview
++	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o xnecview
+ 
+ xnecview.tgz:	$(SRCS)
+ 	tar czvf xnecview.tgz COPYING README HISTORY Imakefile Imakefile_nopng Makefile $(SRCS) xnecview.h config.h xnecview.1x xnecview.man
