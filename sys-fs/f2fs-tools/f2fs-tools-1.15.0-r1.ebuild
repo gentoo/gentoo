@@ -3,21 +3,25 @@
 
 EAPI=8
 
-inherit git-r3 autotools
+inherit autotools
 
 DESCRIPTION="Tools for Flash-Friendly File System (F2FS)"
 HOMEPAGE="https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git/about/"
-EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/${PN}.git"
-EGIT_BRANCH="dev"
+SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/${PN}.git/snapshot/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/9"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~x86"
 IUSE="selinux"
 
 RDEPEND="
 	selinux? ( sys-libs/libselinux )
 	elibc_musl? ( sys-libs/queue-standalone )"
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.15.0-lz4-1.9.4.patch
+)
 
 src_prepare() {
 	default
