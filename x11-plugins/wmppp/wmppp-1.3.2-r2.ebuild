@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,8 @@ RDEPEND=">=x11-libs/libdockapp-0.7:=
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXpm"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	elibc_musl? ( net-libs/ppp-defs )"
 
 # Specific to this tarball
 S=${WORKDIR}/dockapps-7ec9002
