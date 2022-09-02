@@ -1,0 +1,103 @@
+https://github.com/openucx/ucx/pull/8495
+
+From 77ea0b015bc2d18f4a6bc2ba0fb9b71ac7532199 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 3 Sep 2022 00:44:28 +0100
+Subject: [PATCH 1/2] UCM: Fix deprecated <sys/fcntl.h> includes
+
+Fix deprecation warnings like:
+```
+In file included from /var/tmp/portage/sys-cluster/ucx-1.10.0_rc5/work/ucx-1.10.0-rc5/src/ucs/sys/sys.h:29,
+                 from mmap/install.c:21:
+/usr/include/sys/fcntl.h:1:2: error: #warning redirecting incorrect #include <sys/fcntl.h> to <fcntl.h> [-Werror=cpp[https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wcpp]]
+    1 | #warning redirecting incorrect #include <sys/fcntl.h> to <fcntl.h>
+      |  ^~~~~~~
+```
+
+Bug: https://bugs.gentoo.org/832966
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/src/tools/profile/read_profile.c
++++ b/src/tools/profile/read_profile.c
+@@ -13,12 +13,12 @@
+ #include <ucs/sys/string.h>
+ 
+ #include <sys/signal.h>
+-#include <sys/fcntl.h>
+ #include <sys/ioctl.h>
+ #include <sys/mman.h>
+ #include <sys/stat.h>
+ #include <stdlib.h>
+ #include <getopt.h>
++#include <fcntl.h>
+ #include <unistd.h>
+ #include <string.h>
+ #include <assert.h>
+--- a/src/ucm/util/reloc.c
++++ b/src/ucm/util/reloc.c
+@@ -17,7 +17,6 @@
+ #include <ucs/sys/string.h>
+ #include <ucs/sys/sys.h>
+ 
+-#include <sys/fcntl.h>
+ #include <sys/mman.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+--- a/test/apps/sockaddr/sa_tcp.cc
++++ b/test/apps/sockaddr/sa_tcp.cc
+@@ -8,8 +8,8 @@
+ 
+ #include <sys/socket.h>
+ #include <sys/epoll.h>
+-#include <sys/fcntl.h>
+ #include <arpa/inet.h>
++#include <fcntl.h>
+ #include <unistd.h>
+ #include <cstring>
+ #include <cerrno>
+
+From 9f9e50e5472e390c86147b9031ddd8525207822a Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 3 Sep 2022 00:44:56 +0100
+Subject: [PATCH 2/2] UCS: Fix deprecated <sys/fcntl.h> includes
+
+Fix deprecation warnings like:
+```
+In file included from /var/tmp/portage/sys-cluster/ucx-1.10.0_rc5/work/ucx-1.10.0-rc5/src/ucs/sys/sys.h:29,
+                 from mmap/install.c:21:
+/usr/include/sys/fcntl.h:1:2: error: #warning redirecting incorrect #include <sys/fcntl.h> to <fcntl.h> [-Werror=cpp[https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wcpp]]
+    1 | #warning redirecting incorrect #include <sys/fcntl.h> to <fcntl.h>
+      |  ^~~~~~~
+```
+
+Bug: https://bugs.gentoo.org/832966
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/src/ucs/sys/sys.h
++++ b/src/ucs/sys/sys.h
+@@ -26,7 +26,6 @@
+ #include <sys/time.h>
+ #include <sys/types.h>
+ #include <sys/uio.h>
+-#include <sys/fcntl.h>
+ #include <sys/stat.h>
+ #include <sys/syscall.h>
+ #include <sys/param.h>
+@@ -36,6 +35,7 @@
+ #include <stdlib.h>
+ #include <stdint.h>
+ #include <assert.h>
++#include <fcntl.h>
+ #include <stdio.h>
+ #include <stdarg.h>
+ #include <string.h>
+--- a/test/gtest/ucs/test_vfs.cc
++++ b/test/gtest/ucs/test_vfs.cc
+@@ -12,7 +12,7 @@ extern "C" {
+ #include <ucs/vfs/sock/vfs_sock.h>
+ }
+ 
+-#include <sys/fcntl.h>
++#include <fcntl.h>
+ #include <time.h>
+ 
+ 
+
