@@ -37,7 +37,7 @@ src_configure() {
 		--disable-static
 		--disable-init-scripts
 		--localstatedir="${EPREFIX}"/var
-		ac_cv_path_CPP_FOR_BUILD=$(tc-getPROG CPP cpp)
+		ac_cv_path_CPP_FOR_BUILD="$(tc-getPROG CPP cpp)"
 	)
 
 	econf "${myeconfargs[@]}"
