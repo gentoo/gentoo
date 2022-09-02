@@ -4,8 +4,10 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
+DOCS_BUILDER="doxygen"
+DOCS_DEPEND="media-gfx/graphviz"
 
-inherit cmake llvm prefix python-any-r1
+inherit cmake docs llvm prefix python-any-r1
 
 LLVM_MAX_SLOT=14
 
@@ -48,6 +50,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.0.2-set-build-id.patch"
 	"${FILESDIR}/${PN}-5.1.3-fix-hip_prof_gen.patch"
 	"${FILESDIR}/${PN}-5.1.3-correct-sample-install-location.patch"
+	"${FILESDIR}/${PN}-5.1.3-remove-cmake-doxygen-commands.patch"
 	"${FILESDIR}/0001-SWDEV-316128-HIP-surface-API-support.patch"
 )
 
@@ -62,6 +65,8 @@ HIP_S="${WORKDIR}"/HIP-rocm-${PV}
 OCL_S="${WORKDIR}"/ROCm-OpenCL-Runtime-rocm-${PV}
 CLR_S="${WORKDIR}"/ROCclr-rocm-${PV}
 RTC_S="${WORKDIR}"/roctracer-rocm-${PV}
+DOCS_DIR="${HIP_S}"/docs/doxygen-input
+DOCS_CONFIG_NAME=doxy.cfg
 
 src_prepare() {
 	cmake_src_prepare
@@ -149,6 +154,11 @@ src_configure() {
 	use profile && mycmakeargs+=( -DPROF_API_HEADER_PATH="${RTC_S}"/inc/ext )
 
 	cmake_src_configure
+}
+
+src_compile() {
+	HIP_PATH=${HIP_S} docs_compile
+	cmake_src_compile
 }
 
 src_install() {
