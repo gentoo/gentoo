@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires eapi 5 or later. New entries go on top.
@@ -17,10 +17,6 @@ mkl
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2017-05-26)
 # dev-db/firebird is keyworded ~x86
 firebird
-
-# Mike Gilbert <floppym@gentoo.org> (2014-10-19)
-# sys-libs/libapparmor
-apparmor
 
 # Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # PyPy is unstable on this arch.

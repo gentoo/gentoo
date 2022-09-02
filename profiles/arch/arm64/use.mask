@@ -5,7 +5,10 @@
 -arm64
 
 # Mike Gilbert <floppym@gentoo.org> (2022-08-31)
+# Requires the following packages to be keyworded/stable:
 # sys-libs/libapparmor
+# sys-apps/apparmor
+# sys-apps/apparmor-utils
 -apparmor
 
 # David Seifert <soap@gentoo.org> (2022-03-13)
