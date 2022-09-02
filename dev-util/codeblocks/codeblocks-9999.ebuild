@@ -5,7 +5,7 @@ EAPI=8
 
 WX_GTK_VER="3.0-gtk3"
 
-inherit autotools subversion wxwidgets xdg
+inherit autotools flag-o-matic subversion wxwidgets xdg
 
 DESCRIPTION="The open source, cross platform, free C, C++ and Fortran IDE"
 HOMEPAGE="https://codeblocks.org/"
@@ -46,6 +46,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Bug 858338
+	append-flags -fno-strict-aliasing
+
 	setup-wxwidgets
 
 	econf \
