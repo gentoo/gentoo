@@ -8,7 +8,7 @@ WX_GTK_VER="3.0-gtk3"
 inherit wxwidgets xdg
 
 DESCRIPTION="Analyse your audio files by showing their spectrogram"
-HOMEPAGE="http://www.spek-project.org/"
+HOMEPAGE="http://spek.cc/"
 SRC_URI="https://github.com/alexkay/spek/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-3"
