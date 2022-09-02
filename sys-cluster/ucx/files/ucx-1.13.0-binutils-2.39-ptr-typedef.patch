@@ -1,0 +1,25 @@
+https://github.com/openucx/ucx/commit/edd14921fa0a3e8cf631ef1a08fc724e44d072df
+https://bugs.gentoo.org/868117
+
+From 6b6128efd416831cec3a1820f7d1c8e648b79448 Mon Sep 17 00:00:00 2001
+From: Hui Zhou <hzhou321@anl.gov>
+Date: Sun, 14 Aug 2022 23:29:09 -0500
+Subject: [PATCH] UCS/DEBUG: replace PTR with void *
+
+The PTR macro is missing on the latest Arch linux.
+--- a/src/ucs/debug/debug.c
++++ b/src/ucs/debug/debug.c
+@@ -272,10 +272,10 @@ static int load_file(struct backtrace_file *file)
+         goto err_close;
+     }
+ 
+-    symcount = bfd_read_minisymbols(file->abfd, 0, (PTR)&file->syms, &size);
++    symcount = bfd_read_minisymbols(file->abfd, 0, (void *)&file->syms, &size);
+     if (symcount == 0) {
+         free(file->syms);
+-        symcount = bfd_read_minisymbols(file->abfd, 1, (PTR)&file->syms, &size);
++        symcount = bfd_read_minisymbols(file->abfd, 1, (void *)&file->syms, &size);
+     }
+     if (symcount < 0) {
+         goto err_close;
+
