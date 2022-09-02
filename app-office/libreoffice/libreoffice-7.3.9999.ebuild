@@ -26,7 +26,7 @@ inherit autotools bash-completion-r1 check-reqs flag-o-matic java-pkg-opt-2 mult
 DESCRIPTION="A full office productivity suite"
 HOMEPAGE="https://www.libreoffice.org"
 SRC_URI="branding? ( https://dev.gentoo.org/~dilfridge/distfiles/${BRANDING} )"
-[[ -n ${PATCHSET} ]] && SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${PATCHSET}"
+[[ -n ${PATCHSET} ]] && SRC_URI+=" https://dev.gentoo.org/~xen0n/distfiles/app-office/libreoffice/${PATCHSET}"
 
 # Split modules following git/tarballs; Core MUST be first!
 # Help is used for the image generator
@@ -105,7 +105,7 @@ LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 
 [[ ${MY_PV} == *9999* ]] || \
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~x86 ~amd64-linux"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
@@ -287,15 +287,18 @@ else
 fi
 
 PATCHES=(
-	# "${WORKDIR}"/${PATCHSET/.tar.xz/}
+	"${WORKDIR}"/${PATCHSET/.tar.xz/}
 
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 	"${FILESDIR}/${PN}-7.2.0.4-qt5detect.patch"
 
-	# Upstream
+	# 7.4 branch
 	"${FILESDIR}/${PN}-7.3.5.2-gpgme-1.18.0.patch"
+
+	# pending upstream
+	"${FILESDIR}/${PN}-7.3.5.2-poppler-22.09.0.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
