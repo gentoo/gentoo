@@ -10,7 +10,7 @@
     <name>Patrice Clement</name>
   </maintainer>
   <upstream>
-  <remote-id type="pypi">ansible-base</remote-id>
+  <remote-id type="pypi">ansible-core</remote-id>
     <remote-id type="github">ansible/ansible</remote-id>
     <bugs-to>https://github.com/ansible/ansible/issues</bugs-to>
   </upstream>

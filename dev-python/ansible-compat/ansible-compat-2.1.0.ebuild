@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="
-	>=app-admin/ansible-base-2.9.0[${PYTHON_USEDEP}]
+	>=app-admin/ansible-core-2.9.0[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-4.5.1[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	>=dev-python/subprocess-tee-0.3.5[${PYTHON_USEDEP}]

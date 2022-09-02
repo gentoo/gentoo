@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,11 +16,8 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/ansible/ansible.git"
 	EGIT_BRANCH="devel"
 else
-	MY_PN="${PN/-base/-core}"
-	MY_P="${MY_PN}-${PV}"
-	SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~x64-macos"
-	S="${WORKDIR}"/${MY_P}
 fi
 
 LICENSE="GPL-3"
@@ -38,7 +35,7 @@ RDEPEND="
 	dev-python/netaddr[${PYTHON_USEDEP}]
 	dev-python/pexpect[${PYTHON_USEDEP}]
 	>=dev-python/resolvelib-0.5.3[${PYTHON_USEDEP}]
-	<dev-python/resolvelib-0.6.0[${PYTHON_USEDEP}]
+	<dev-python/resolvelib-0.9.0[${PYTHON_USEDEP}]
 	net-misc/sshpass
 	virtual/ssh
 "
