@@ -17,6 +17,7 @@
 	<use>
 		<flag name="echo-cancel">Enable WebRTC-based echo canceller via <pkg>media-libs/webrtc-audio-processing</pkg></flag>
 		<flag name="extra">Build pw-cat/pw-play/pw-record</flag>
+		<flag name="flatpak">Enable Flatpak support</flag>
 		<flag name="jack-client">Install a plugin for running PipeWire as a JACK client</flag>
 		<flag name="jack-sdk">Use PipeWire as JACK replacement</flag>
 		<flag name="lv2">Allow loading LV2 plugins via <pkg>media-libs/lv2</pkg></flag>
