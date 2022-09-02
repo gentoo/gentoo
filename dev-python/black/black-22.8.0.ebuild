@@ -3,6 +3,7 @@
 
 EAPI=8
 
+# py3.11 blocked by mypy_extensions
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
 
