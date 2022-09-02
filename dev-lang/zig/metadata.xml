@@ -9,9 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="stage2">Install stage2 compiler (written in Zig) alongside stage1 compiler (written in C++ and Zig)</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">ziglang/zig</remote-id>
 		<bugs-to>https://github.com/ziglang/zig/issues</bugs-to>
