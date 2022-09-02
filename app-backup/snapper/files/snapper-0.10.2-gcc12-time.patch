@@ -1,0 +1,27 @@
+https://github.com/openSUSE/snapper/pull/743
+
+From 3415229fd29fa3e5247e30ba1ac632e91e603c9f Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 2 Sep 2022 06:48:56 +0100
+Subject: [PATCH] Fix build with GCC 12 (and musl)
+
+```
+DBusMessage.h:239:34: error: 'time_t' has not been declared
+  239 |     Hihi& operator>>(Hihi& hihi, time_t& data);
+```
+
+Include <ctime> to grab time_t.
+
+Bug: https://bugs.gentoo.org/862094
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/dbus/DBusMessage.h
++++ b/dbus/DBusMessage.h
+@@ -27,6 +27,7 @@
+ 
+ #include <dbus/dbus.h>
+ 
++#include <ctime>
+ #include <string>
+ #include <vector>
+ #include <list>
+
