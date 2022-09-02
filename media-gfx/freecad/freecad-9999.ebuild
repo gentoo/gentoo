@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit check-reqs cmake optfeature python-single-r1 xdg
 
 DESCRIPTION="QT based Computer Aided Design application"
-HOMEPAGE="https://www.freecadweb.org/ https://github.com/FreeCAD/FreeCAD"
+HOMEPAGE="https://www.freecad.org/ https://github.com/FreeCAD/FreeCAD"
 
 MY_PN=FreeCAD
 
