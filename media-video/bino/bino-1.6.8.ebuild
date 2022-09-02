@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic qmake-utils xdg
+inherit autotools flag-o-matic qmake-utils xdg
 
 DESCRIPTION="Stereoscopic and multi-display media player"
 HOMEPAGE="https://bino3d.org/"
@@ -32,7 +32,15 @@ BDEPEND="sys-devel/gettext
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.8-time-include.patch
+	"${FILESDIR}"/${PN}-1.6.8-respect-AR.patch
 )
+
+src_prepare() {
+	default
+
+	# Needed for AR patch
+	eautoreconf
+}
 
 src_configure() {
 	if use video_cards_nvidia; then
