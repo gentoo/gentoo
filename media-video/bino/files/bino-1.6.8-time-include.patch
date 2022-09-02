@@ -1,0 +1,24 @@
+Sent upstream by email on 2022-09-02.
+
+From 242b5df7074739fb4c74e2682cb9f325a5269c94 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 2 Sep 2022 02:04:26 +0100
+Subject: [PATCH 2/2] Fix build with GCC 12 and musl (missing <ctime> include)
+
+Fixes build errors like:
+```
+../../src/base/str.h:146:30: error: 'time_t' was not declared in this scope
+  146 |     std::string rfc2822_time(time_t t);
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/src/base/str.h
++++ b/src/base/str.h
+@@ -31,6 +31,7 @@
+ #include <vector>
+ #include <cstdarg>
+ #include <cerrno>
++#include <ctime>
+ 
+ #ifdef __GNUC__
+ # define STR_AFP(a, b) __attribute__ ((format (printf, a, b)))

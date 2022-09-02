@@ -30,6 +30,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/gettext
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.8-time-include.patch
+)
+
 src_configure() {
 	if use video_cards_nvidia; then
 		append-cppflags "-I${ESYSROOT}/usr/include/NVCtrl"
