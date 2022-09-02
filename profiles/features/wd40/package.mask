@@ -3,7 +3,7 @@
 
 # Various packages requiring Rust.
 app-admin/ansible
-app-admin/ansible-base
+app-admin/ansible-core
 app-crypt/acme
 app-crypt/certbot
 app-crypt/certbot-nginx

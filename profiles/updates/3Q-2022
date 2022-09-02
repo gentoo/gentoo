@@ -12,3 +12,4 @@ move gnome-extra/chrome-gnome-shell gnome-extra/gnome-browser-connector
 move dev-python/PyQt6_sip dev-python/PyQt6-sip
 move dev-python/PyQt6_WebEngine dev-python/PyQt6-WebEngine
 move net-p2p/go-ipfs net-p2p/kubo
+move app-admin/ansible-base app-admin/ansible-core
