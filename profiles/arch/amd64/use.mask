@@ -40,7 +40,10 @@
 -firebird
 
 # Mike Gilbert <floppym@gentoo.org> (2014-10-19)
+# Requires the following packages to be keyworded/stable:
 # sys-libs/libapparmor
+# sys-apps/apparmor
+# sys-apps/apparmor-utils
 -apparmor
 
 # Michał Górny <mgorny@gentoo.org> (2014-03-30)
