@@ -108,6 +108,10 @@ RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.2.1-poppler-22.09.0.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
