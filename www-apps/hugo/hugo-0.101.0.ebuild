@@ -10,6 +10,7 @@ HOMEPAGE="https://gohugo.io https://github.com/gohugoio/hugo"
 SRC_URI="
 	https://github.com/gohugoio/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://tastytea.de/files/gentoo/${P}-vendor.tar.xz
+	https://tastytea.de/files/gentoo/${PN}-0.101.0-libwebp-1.2.3.patch
 "
 
 # NOTE: To create the vendor tarball, run:
@@ -29,7 +30,7 @@ BDEPEND="
 	)
 "
 RDEPEND="
-	media-libs/libwebp:=
+	>=media-libs/libwebp-1.2.3-r1:=
 	sass? ( dev-libs/libsass:= )
 "
 DEPEND="${RDEPEND}"
@@ -37,9 +38,10 @@ DEPEND="${RDEPEND}"
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.96.0-unbundle-libwebp-and-libsass.patch"
-	"${FILESDIR}/${PN}-0.96.0-skip-some-tests.patch"
-	"${FILESDIR}/${PN}-0.99.1-test-timeout.patch"
+	"${FILESDIR}"/${PN}-0.96.0-unbundle-libwebp-and-libsass.patch
+	"${FILESDIR}"/${PN}-0.96.0-skip-some-tests.patch
+	"${FILESDIR}"/${PN}-0.99.1-test-timeout.patch
+	"${DISTDIR}"/${PN}-0.101.0-libwebp-1.2.3.patch
 )
 
 src_configure() {
