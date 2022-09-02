@@ -19,6 +19,7 @@ IUSE="doc"
 RESTRICT="test"
 
 RDEPEND="
+	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
