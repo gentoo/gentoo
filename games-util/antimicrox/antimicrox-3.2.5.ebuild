@@ -33,6 +33,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-qt/linguist-tools:5
+	kde-frameworks/extra-cmake-modules
 	doc? ( app-doc/doxygen[dot] )
 "
 
