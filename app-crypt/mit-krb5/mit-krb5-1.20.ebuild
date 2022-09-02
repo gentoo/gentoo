@@ -53,6 +53,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-config_LDFLAGS-r1.patch"
 	"${FILESDIR}/${PN}_dont_create_rundir.patch"
 	"${FILESDIR}/${PN}-1.18.2-krb5-config.patch"
+	"${FILESDIR}/${PN}-1.20-missing-time-include.patch"
 )
 
 MULTILIB_CHOST_TOOLS=(
