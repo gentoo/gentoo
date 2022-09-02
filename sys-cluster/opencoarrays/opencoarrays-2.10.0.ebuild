@@ -6,7 +6,7 @@ EAPI=8
 CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_STANDARD="2003"
 
-inherit cmake fortran-2
+inherit cmake flag-o-matic fortran-2
 
 MY_PN="OpenCoarrays"
 
@@ -33,3 +33,9 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 "
+
+src_configure() {
+	filter-lto # Bug 860765
+
+	cmake_src_configure
+}
