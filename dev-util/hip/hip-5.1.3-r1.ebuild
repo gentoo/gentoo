@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.2.0-cancel-hcc-header-removal.patch"
 	"${FILESDIR}/${PN}-5.0.2-set-build-id.patch"
 	"${FILESDIR}/${PN}-5.1.3-fix-hip_prof_gen.patch"
+	"${FILESDIR}/${PN}-5.1.3-correct-sample-install-location.patch"
 	"${FILESDIR}/0001-SWDEV-316128-HIP-surface-API-support.patch"
 )
 
