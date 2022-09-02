@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrey Grozin <grozin@gentoo.org> (2022-09-02)
+# dev-libs/capstone not keyworded
+dev-lisp/sbcl capstone
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-07-17)
 # dev-python/pyside2 is not keyworded
 www-client/falkon python
