@@ -80,6 +80,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.8-poppler-22.2.0-2.patch
 	"${FILESDIR}"/${PN}-1.5.8-poppler-22.03.0.patch # bug 834537
 	"${FILESDIR}"/${PN}-1.5.8-poppler-22.04.0.patch # bug 843287
+	"${FILESDIR}"/${PN}-1.5.8-poppler-22.09.0.patch
 )
 
 CMAKE_BUILD_TYPE="Release"
