@@ -20,6 +20,7 @@ KEYWORDS="~amd64 ~riscv"
 RDEPEND="
 	>=app-admin/ansible-base-2.12.0[${PYTHON_USEDEP}]
 	>=dev-python/ansible-compat-2.2.0[${PYTHON_USEDEP}]
+	dev-python/black[${PYTHON_USEDEP}]
 	>=dev-python/enrich-1.2.6[${PYTHON_USEDEP}]
 	dev-python/filelock[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-4.9.0[${PYTHON_USEDEP}]
