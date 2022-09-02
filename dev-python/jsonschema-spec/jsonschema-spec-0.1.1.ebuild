@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 
 RDEPEND="
 	>=dev-python/jsonschema-4.0.0[${PYTHON_USEDEP}]
