@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Marc Schiffbauer <mschiff@gentoo.org> (2022-09-02)
+# Dead upstream, open bugs, removal in 30 days
+# bugs #829447, #836227, #862504
+mail-filter/sigh
+
 # Michał Górny <mgorny@gentoo.org> (2022-08-30)
 # Flask-Security-Too is a package with high maintenance cost
 # and no revdeps in ::gentoo.  The next version bump (once more)
