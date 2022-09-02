@@ -296,6 +296,7 @@ PATCHES=(
 
 	# Upstream
 	"${FILESDIR}/${PN}-7.3.5.2-gpgme-1.18.0.patch"
+	"${FILESDIR}/${PN}-7.3.5.2-poppler-22.09.0.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
