@@ -3,6 +3,7 @@
 
 EAPI=8
 
+# fails test_typeddict_errors on py3.11
 PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
