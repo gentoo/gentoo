@@ -101,8 +101,8 @@
 		</flag>
 	</use>
 	<upstream>
-		<bugs-to>https://www.freecadweb.org/tracker/</bugs-to>
+		<bugs-to>https://github.com/FreeCAD/FreeCAD/issues</bugs-to>
 		<remote-id type="github">FreeCAD/FreeCAD</remote-id>
-		<doc lang="en">https://www.freecadweb.org/wiki/MainPage</doc>
+		<doc lang="en">https://wiki.freecad.org/Main_Page</doc>
 	</upstream>
 </pkgmetadata>
