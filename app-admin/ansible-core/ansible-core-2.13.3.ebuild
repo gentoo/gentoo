@@ -22,7 +22,6 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="test"
 RESTRICT="test"
 
 RDEPEND="
@@ -39,23 +38,16 @@ RDEPEND="
 	net-misc/sshpass
 	virtual/ssh
 "
-DEPEND="
+BDEPEND="
 	>=dev-python/packaging-16.6[${PYTHON_USEDEP}]
 	test? (
-		${RDEPEND}
-		dev-python/bcrypt[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
-		>=dev-python/mock-1.0.1[${PYTHON_USEDEP}]
-		dev-python/passlib[${PYTHON_USEDEP}]
-		dev-python/coverage[${PYTHON_USEDEP}]
-		dev-vcs/git
+		dev-python/botocore[${PYTHON_USEDEP}]
+		dev-python/pytz[${PYTHON_USEDEP}]
 	)"
+
+distutils_enable_tests pytest
 
 python_compile() {
 	export ANSIBLE_SKIP_CONFLICT_CHECK=1
 	distutils-r1_python_compile
-}
-
-python_test() {
-	nosetests -d -w test/units -v --with-coverage --cover-package=ansible --cover-branches || die
 }
