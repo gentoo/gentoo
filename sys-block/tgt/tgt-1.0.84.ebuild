@@ -10,7 +10,7 @@ SRC_URI="https://github.com/fujita/tgt/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc ppc64 x86"
 IUSE="fcoe fcp ibmvio infiniband rbd"
 
 DEPEND="
