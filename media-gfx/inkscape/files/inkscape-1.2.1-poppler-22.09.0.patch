@@ -1,0 +1,35 @@
+--- a/src/extension/internal/pdfinput/pdf-parser.cpp
++++ b/src/extension/internal/pdfinput/pdf-parser.cpp
+@@ -697,7 +697,11 @@ void PdfParser::opSetDash(Object args[], int /*numArgs*/)
+       _POPPLER_FREE(obj);
+     }
+   }
++#if POPPLER_CHECK_VERSION(22, 9, 0)
++  state->setLineDash(std::vector<double> (*dash, length), args[1].getNum());
++#else
+   state->setLineDash(dash, length, args[1].getNum());
++#endif
+   builder->updateStyle(state);
+ }
+ 
+--- a/src/extension/internal/pdfinput/svg-builder.cpp
++++ b/src/extension/internal/pdfinput/svg-builder.cpp
+@@ -388,10 +388,17 @@ void SvgBuilder::_setStrokeStyle(SPCSSAttr *css, GfxState *state) {
+     sp_repr_css_set_property(css, "stroke-miterlimit", os_ml.str().c_str());
+ 
+     // Line dash
+-    double *dash_pattern;
+     int dash_length;
+     double dash_start;
++#if POPPLER_CHECK_VERSION(22, 9, 0)
++    const double *dash_pattern;
++    const std::vector<double> &dash = state->getLineDash(&dash_start);
++    dash_pattern = dash.data();
++    dash_length = dash.size();
++#else
++    double *dash_pattern;
+     state->getLineDash(&dash_pattern, &dash_length, &dash_start);
++#endif
+     if ( dash_length > 0 ) {
+         Inkscape::CSSOStringStream os_array;
+         for ( int i = 0 ; i < dash_length ; i++ ) {
