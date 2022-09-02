@@ -1,0 +1,21 @@
+From f5cbcebd7fcc2b68d6e1e9f1ba3aa53b9ed17b56 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fran=C3=A7ois=20Bissey?= <frp.bissey@gmail.com>
+Date: Sun, 7 Aug 2022 13:25:24 +1200
+Subject: [PATCH] Fix givaro.pc.in file for issue #200
+
+---
+ givaro.pc.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/givaro.pc.in b/givaro.pc.in
+index a4805555..9487ef8c 100644
+--- a/givaro.pc.in
++++ b/givaro.pc.in
+@@ -1,6 +1,6 @@
+ prefix=@prefix@
+ exec_prefix=@prefix@
+-libdir=@prefix@/lib
++libdir=@libdir@
+ includedir=@prefix@/include
+ 
+ Name: Givaro
