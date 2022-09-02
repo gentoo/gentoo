@@ -43,10 +43,6 @@ media-video/ffmpeg amf
 # Only supports cpu_flags_x86_aes in 64-bit mode
 net-fs/samba cpu_flags_x86_aes
 
-# Conrad Kostecki <conikost@gentoo.org> (2021-11-16)
-# AppArmor is not available on x86
-app-benchmarks/stress-ng apparmor
-
 # James Le Cuirot <chewi@gentoo.org> (2021-10-22)
 # The JIT feature only works on amd64 and x86.
 app-emulation/fs-uae -jit
@@ -149,11 +145,6 @@ dev-python/influxdb test
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # clisp is keyworded on x86
 app-text/texlive-core -xindy
-
-# Joonas Niilola <juippis@gentoo.org> (2020-05-14)
-# sys-apps/apparmor not keyworded on x86.
-app-containers/lxc apparmor
-app-containers/lxd apparmor
 
 # Georgy Yakovlev <gyakovlev@gentoo.org (2020-04-26)
 # static-pie works on x86, #719444
