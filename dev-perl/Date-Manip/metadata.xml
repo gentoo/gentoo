@@ -979,5 +979,6 @@
     <remote-id type="cpan-module">Date::Manip::TZ_Base</remote-id>
     <remote-id type="cpan-module">Date::Manip::TZdata</remote-id>
     <remote-id type="cpan-module">Date::Manip::Zones</remote-id>
+    <remote-id type="github">SBECK-github/Date-Manip</remote-id>
   </upstream>
 </pkgmetadata>
