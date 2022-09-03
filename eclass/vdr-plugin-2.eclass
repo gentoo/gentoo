@@ -276,10 +276,9 @@ vdr_gettext_missing() {
 # DIR ${S}/po or DIR ${S]/_subdir_/po
 vdr_detect_po_dir() {
 	[[ -f po ]] && local po_dir="${S}"
-	local po_subdir=( ${S}/${PO_SUBDIR} )
-	local f
+	local po_subdir=( "${S}"/${PO_SUBDIR} )
 
-	pofile_dir=( ${po_dir} ${po_subdir[*]} )
+	pofile_dir=( ${po_dir} "${po_subdir[@]}" )
 }
 
 # @FUNCTION: vdr_linguas_support
@@ -605,7 +604,7 @@ vdr-plugin-2_src_install() {
 		local linguas
 		for linguas in ${LINGUAS[*]}; do
 		insinto "${LOCDIR}"
-		cp -r --parents ${linguas}* ${D%/}/${LOCDIR} \
+		cp -r --parents ${linguas}* "${D%/}"/${LOCDIR} \
 			|| die "could not copy linguas files"
 		done
 	fi
