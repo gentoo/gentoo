@@ -393,7 +393,7 @@ gstreamer_multilib_src_compile() {
 
 			# https://github.com/ninja-build/ninja/issues/1251
 			# https://github.com/ninja-build/ninja/issues/1330
-			build_dir=$(readlink -f ${BUILD_DIR})
+			build_dir=$(readlink -f "${BUILD_DIR}")
 
 			plugin_path="${plugin%%:*}"
 			eninja "${plugin_path/"${build_dir}/"/}"
