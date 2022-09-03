@@ -303,7 +303,7 @@ s390		default/linux/s390/17.0/s390x				stable
 s390		default/linux/s390/17.0/systemd				stable
 s390		default/linux/s390/17.0/systemd/merged-usr		dev
 s390		default/linux/s390/17.0/s390x/systemd			exp
-s390		default/linux/s390/17.0/s390x/systemd/merged-usr	dev
+s390		default/linux/s390/17.0/s390x/systemd/merged-usr	exp
 
 # SPARC Profiles
 # @MAINTAINER: sparc@gentoo.org
