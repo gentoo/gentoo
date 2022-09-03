@@ -97,7 +97,7 @@ TMPFILES_OPTIONAL=1
 UDEV_OPTIONAL=1
 
 python_check_deps() {
-	python_has_version -b "dev-python/jinja[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/jinja[${PYTHON_USEDEP}]"
 }
 
 QA_EXECSTACK="usr/lib/systemd/boot/efi/*"
