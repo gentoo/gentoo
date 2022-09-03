@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
 
-inherit python-single-r1 systemd udev multilib-minimal
+inherit python-single-r1 systemd tmpfiles udev multilib-minimal
 
 DESCRIPTION="PC/SC Architecture smartcard middleware library"
 HOMEPAGE="https://pcsclite.apdu.fr https://github.com/LudovicRousseau/PCSC"
@@ -63,6 +63,7 @@ multilib_src_install_all() {
 	dodoc HELP SECURITY
 
 	newinitd "${FILESDIR}"/pcscd-init.7 pcscd
+	dotmpfiles "${FILESDIR}"/pcscd.conf
 
 	if use udev; then
 		exeinto "$(get_udevdir)"
@@ -97,6 +98,8 @@ pkg_postinst() {
 		elog
 		elog "    rc_hotplug=\"pcscd\""
 	fi
+
+	tmpfiles_process pcscd.conf
 
 	use udev && udev_reload
 }

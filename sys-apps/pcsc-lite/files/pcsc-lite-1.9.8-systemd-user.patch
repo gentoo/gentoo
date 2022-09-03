@@ -3,7 +3,11 @@ https://bugs.gentoo.org/545390
 
 --- a/etc/pcscd.service.in
 +++ b/etc/pcscd.service.in
-@@ -7,6 +7,8 @@
+@@ -4,9 +4,12 @@
+ Documentation=man:pcscd(8)
+ 
+ [Service]
++PIDFile=/run/pcscd/pcscd.pid
  ExecStart=@sbindir_exp@/pcscd --foreground --auto-exit $PCSCD_ARGS
  ExecReload=@sbindir_exp@/pcscd --hotplug
  EnvironmentFile=-@sysconfdir@/default/pcscd
