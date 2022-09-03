@@ -4,8 +4,7 @@
 EAPI="7"
 WANT_LIBTOOL="none"
 
-inherit autotools flag-o-matic pax-utils
-inherit python-utils-r1 toolchain-funcs verify-sig
+inherit autotools flag-o-matic pax-utils toolchain-funcs verify-sig
 
 MY_P="Python-${PV%_p*}"
 PYVER=$(ver_cut 1-2)
@@ -71,7 +70,6 @@ BDEPEND="
 	virtual/awk
 	virtual/pkgconfig
 	verify-sig? ( sec-keys/openpgp-keys-python )
-	!sys-devel/gcc[libffi(-)]
 "
 RDEPEND+="
 	!build? ( app-misc/mime-types )
