@@ -25,11 +25,11 @@ IUSE="acl minimal nls selinux xattr pbzip2 pxz"
 RDEPEND="
 	acl? ( virtual/acl )
 	selinux? ( sys-libs/libselinux )
+	pbzip2? ( app-arch/pbzip2 )
+	pxz? ( app-arch/pxz )
 "
 DEPEND="${RDEPEND}
 	xattr? ( elibc_glibc? ( sys-apps/attr ) )
-	pbzip2? ( app-arch/pbzip2 )
-	pxz? ( app-arch/pxz )
 "
 BDEPEND="
 	nls? ( sys-devel/gettext )
@@ -45,8 +45,8 @@ src_configure() {
 		$(use_enable nls)
 		$(use_with selinux)
 		$(use_with xattr xattrs)
-		$(use_with pbzip2 bzip2=pbzip2)
-		$(use_with pxz xz=pxz)
+		$(usex pbzip2 --with-bzip2=pbzip2)
+		$(usex pxz --with-xz=pxz)
 	)
 
 	FORCE_UNSAFE_CONFIGURE=1 econf "${myeconfargs[@]}"
