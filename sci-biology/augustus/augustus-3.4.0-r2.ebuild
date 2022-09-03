@@ -5,7 +5,7 @@ EAPI=8
 
 DOCS_BUILDER="doxygen"
 DOCS_CONFIG_NAME="doxygen.conf"
-inherit docs
+inherit docs toolchain-funcs
 
 DESCRIPTION="Eukaryotic gene predictor"
 HOMEPAGE="https://bioinf.uni-greifswald.de/augustus/"
@@ -32,7 +32,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_compile() {
-	default
+	tc-export CC CXX
+
+	emake LINK.cc="$(tc-getCXX)"
+
 	docs_compile
 }
 
