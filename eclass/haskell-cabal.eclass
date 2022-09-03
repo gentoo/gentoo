@@ -390,9 +390,9 @@ cabal-configure() {
 		# it generates for ghc's base and other packages.
 		local p=${EPREFIX}/usr/bin/haddock-ghc-$(ghc-version)
 		if [[ -f $p ]]; then
-			cabalconf+=(--with-haddock="${p}")
+			cabalconf+=( --with-haddock="${p}" )
 		else
-			cabalconf+=(--with-haddock=${EPREFIX}/usr/bin/haddock)
+			cabalconf+=( --with-haddock="${EPREFIX}"/usr/bin/haddock )
 		fi
 	fi
 	if [[ -n "${CABAL_USE_PROFILE}" ]] && use profile; then
@@ -702,7 +702,7 @@ cabal_src_install() {
 	# if it does not exist (dummy libraries and binaries w/o libraries)
 	local ghc_confdir_with_prefix="$(ghc-confdir)"
 	# remove EPREFIX
-	dodir ${ghc_confdir_with_prefix#${EPREFIX}}
+	dodir "${ghc_confdir_with_prefix#${EPREFIX}}"
 	local hint_db="${D}/$(ghc-confdir)"
 	local hint_file="${hint_db}/gentoo-empty-${CATEGORY}-${PF}.conf"
 	mkdir -p "${hint_db}" || die
