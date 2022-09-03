@@ -16,19 +16,25 @@
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array variable containing list of all dictionary files.
+# @CODE
 # MYSPELL_DICT=( "file.dic" "dir/file2.aff" )
+# @CODE
 
 # @ECLASS_VARIABLE: MYSPELL_HYPH
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array variable containing list of all hyphenation files.
+# @CODE
 # MYSPELL_HYPH=( "file.dic" "dir/file2.dic" )
+# @CODE
 
 # @ECLASS_VARIABLE: MYSPELL_THES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array variable containing list of all thesarus files.
+# @CODE
 # MYSPELL_THES=( "file.dat" "dir/file2.idx" )
+# @CODE
 
 case ${EAPI} in
 	7|8)
