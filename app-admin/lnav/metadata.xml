@@ -17,4 +17,7 @@
   <upstream>
     <remote-id type="github">tstack/lnav</remote-id>
   </upstream>
+  <use>
+    <flag name="pcap">Enable support for pcap files.</flag>
+  </use>
 </pkgmetadata>
