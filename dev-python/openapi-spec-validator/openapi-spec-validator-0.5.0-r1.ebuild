@@ -23,14 +23,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~riscv"
 
 RDEPEND="
-	>=dev-python/jsonschema-3.2.0[${PYTHON_USEDEP}]
-	dev-python/jsonschema-spec[${PYTHON_USEDEP}]
-	>=dev-python/openapi-schema-validator-0.2.0[${PYTHON_USEDEP}]
+	>=dev-python/jsonschema-4.0.0[${PYTHON_USEDEP}]
+	>=dev-python/jsonschema-spec-0.1.1[${PYTHON_USEDEP}]
+	>=dev-python/lazy-object-proxy-1.7.1[${PYTHON_USEDEP}]
+	>=dev-python/openapi-schema-validator-0.3.2[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-5.1[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
-		dev-python/importlib_resources[${PYTHON_USEDEP}]
+		>=dev-python/importlib_resources-5.8.0[${PYTHON_USEDEP}]
 	' 3.8)
 "
 
