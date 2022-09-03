@@ -187,11 +187,11 @@ selinux-policy-2_src_prepare() {
 
 	# Collect only those files needed for this particular module
 	for i in ${MODS}; do
-		modfiles="$(find ${S}/refpolicy/policy/modules -iname $i.te) $modfiles"
-		modfiles="$(find ${S}/refpolicy/policy/modules -iname $i.fc) $modfiles"
-		modfiles="$(find ${S}/refpolicy/policy/modules -iname $i.cil) $modfiles"
+		modfiles="$(find "${S}/refpolicy/policy/modules" -iname $i.te) $modfiles"
+		modfiles="$(find "${S}/refpolicy/policy/modules" -iname $i.fc) $modfiles"
+		modfiles="$(find "${S}/refpolicy/policy/modules" -iname $i.cil) $modfiles"
 		if [[ ${add_interfaces} -eq 1 ]]; then
-			modfiles="$(find ${S}/refpolicy/policy/modules -iname $i.if) $modfiles"
+			modfiles="$(find "${S}/refpolicy/policy/modules" -iname $i.if) $modfiles"
 		fi
 	done
 
