@@ -19,10 +19,11 @@ IUSE="libvirt selinux sqlite +ssl test zeroconf"
 CDEPEND="
 	${PYTHON_DEPS}
 
+	dev-libs/boost:=
 	>=dev-libs/elfutils-0.142
 	dev-libs/json-c:=
-	sys-libs/ncurses:0=
-	sys-libs/readline:0=
+	sys-libs/ncurses:=
+	sys-libs/readline:=
 
 	libvirt? ( >=app-emulation/libvirt-1.0.2 )
 	selinux? ( sys-libs/libselinux )
