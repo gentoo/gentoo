@@ -565,6 +565,15 @@ multilib_is_native_abi() {
 	[[ ${COMPLETE_MULTILIB} == yes || ${ABI} == ${DEFAULT_ABI} ]]
 }
 
+# @FUNCTION: multilib_native_use
+# @USAGE: <flag>
+# @DESCRIPTION:
+# Like the standard use command, but only yields true if
+# multilib_is_native_abi and use <flag> are true, otherwise false.
+multilib_native_use() {
+	multilib_is_native_abi && use "$@"
+}
+
 # @FUNCTION: multilib_native_use_with
 # @USAGE: <flag> [<opt-name> [<opt-value>]]
 # @DESCRIPTION:
