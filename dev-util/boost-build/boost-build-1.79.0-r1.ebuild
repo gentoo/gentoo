@@ -18,6 +18,8 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 IUSE="examples"
 RESTRICT="test"
 
+RDEPEND="!dev-util/b2"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.71.0-disable_python_rpath.patch
 	"${FILESDIR}"/${PN}-1.78.0-darwin-gentoo-toolchain.patch
