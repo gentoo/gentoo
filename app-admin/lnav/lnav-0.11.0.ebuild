@@ -12,7 +12,7 @@ SRC_URI="https://github.com/tstack/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="pcap unicode test"
+IUSE="pcap test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -21,7 +21,7 @@ RDEPEND="
 	>=dev-db/sqlite-3.9.0
 	dev-libs/libpcre[cxx]
 	>=net-misc/curl-7.23.0
-	sys-libs/ncurses:=[unicode(+)?]
+	sys-libs/ncurses:=
 	sys-libs/readline:0=
 	sys-libs/zlib:0=
 	pcap? ( net-analyzer/wireshark[tshark] )"
@@ -43,6 +43,6 @@ src_prepare() {
 src_configure() {
 	econf \
 		--disable-static \
-		$(use_with test system-doctest) \
-		$(use_with unicode ncursesw)
+		--with-ncurses \
+		$(use_with test system-doctest)
 }

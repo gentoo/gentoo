@@ -19,6 +19,5 @@
   </upstream>
   <use>
     <flag name="pcap">Enable support for pcap files.</flag>
-    <flag name="unicode">Enable unicode support.</flag>
   </use>
 </pkgmetadata>
