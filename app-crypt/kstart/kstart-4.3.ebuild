@@ -9,7 +9,7 @@ SRC_URI="https://archives.eyrie.org/software/kerberos/${P}.tar.gz"
 
 LICENSE="|| ( MIT Stanford ISC )"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="afs"
 
 DEPEND="virtual/krb5
