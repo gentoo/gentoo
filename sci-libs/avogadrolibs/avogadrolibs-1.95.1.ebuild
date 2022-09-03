@@ -47,6 +47,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/"${PN}-1.91.0_pre20180406-bundled-genxrdpattern.patch
 	"${FILESDIR}/"${PN}-1.95.1-tests.patch
+	"${FILESDIR}/"${PN}-1.95.1-usability_backport.patch
 )
 
 src_unpack() {
