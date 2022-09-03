@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="sqlite"
 
 inherit python-single-r1 systemd
@@ -21,8 +21,10 @@ SRC_URI="https://github.com/sabnzbd/sabnzbd/releases/download/${MY_PV}/${MY_P}-s
 LICENSE="GPL-2 BSD LGPL-2 MIT BSD-1"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+7za +rar unzip"
+IUSE="+7za +rar unzip test"
+RESTRICT="!test? ( test )"
 
+# Is this still correct? The article has disappeared from the wiki!
 # Sabnzbd is installed to /usr/share/ as upstream makes it clear they should not
 # be in python's sitedir.  See: https://sabnzbd.org/wiki/advanced/unix-packaging
 
@@ -54,6 +56,21 @@ RDEPEND="
 	7za? ( app-arch/p7zip )
 	rar? ( || ( app-arch/unrar app-arch/rar ) )
 	unzip? ( >=app-arch/unzip-5.5.2 )
+"
+
+BDEPEND="
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/flaky[${PYTHON_USEDEP}]
+			dev-python/pkginfo[${PYTHON_USEDEP}]
+			dev-python/pyfakefs[${PYTHON_USEDEP}]
+			dev-python/pytest-httpbin[${PYTHON_USEDEP}]
+			dev-python/pytest-httpserver[${PYTHON_USEDEP}]
+			dev-python/selenium[${PYTHON_USEDEP}]
+			dev-python/xmltodict[${PYTHON_USEDEP}]
+		')
+		www-apps/chromedriver-bin
+	)
 "
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -93,6 +110,14 @@ src_install() {
 	dodoc ISSUES.txt README.mkd
 
 	systemd_newunit "${FILESDIR}"/sabnzbd_at.service 'sabnzbd@.service'
+}
+
+src_test() {
+	EPYTEST_IGNORE=(
+		# Requires dev-python/tavern which is not currently packaged for Gentoo
+		tests/test_functional_api.py
+	)
+	epytest
 }
 
 pkg_postinst() {
