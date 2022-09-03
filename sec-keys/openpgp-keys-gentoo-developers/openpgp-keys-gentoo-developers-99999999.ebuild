@@ -9,8 +9,9 @@ inherit edo python-any-r1
 DESCRIPTION="Gentoo Authority Keys (GLEP 79)"
 HOMEPAGE="https://www.gentoo.org/downloads/signatures/"
 if [[ ${PV} == 9999* ]] ; then
-	SRC_URI="https://qa-reports.gentoo.org/output/active-devs.gpg -> ${P}-active-devs.gpg"
 	PROPERTIES="live"
+
+	BDEPEND="net-misc/curl"
 else
 	SRC_URI="https://qa-reports.gentoo.org/output/keys/active-devs-${PV}.gpg -> ${P}-active-devs.gpg"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~x86"
@@ -23,7 +24,7 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="
+BDEPEND+="
 	$(python_gen_any_dep 'dev-python/python-gnupg[${PYTHON_USEDEP}]')
 	sec-keys/openpgp-keys-gentoo-auth
 	test? (
@@ -35,8 +36,24 @@ python_check_deps() {
 	python_has_version "dev-python/python-gnupg[${PYTHON_USEDEP}]"
 }
 
+src_unpack() {
+	if [[ ${PV} == 9999* ]] ; then
+		curl https://qa-reports.gentoo.org/output/active-devs.gpg -o ${P}-active-devs.gpg || die
+	else
+		default
+	fi
+}
+
 src_compile() {
 	export GNUPGHOME="${T}"/.gnupg
+
+	get_gpg_keyring_dir() {
+		if [[ ${PV} == 9999* ]] ; then
+			echo "${WORKDIR}"
+		else
+			echo "${DISTDIR}"
+		fi
+	}
 
 	local mygpgargs=(
 		--no-autostart
@@ -54,7 +71,7 @@ src_compile() {
 	chmod 700 "${GNUPGHOME}" || die
 
 	# Convert the binary keyring into an armored one so we can process it
-	edo gpg "${mygpgargs[@]}" --import "${DISTDIR}"/${P}-active-devs.gpg
+	edo gpg "${mygpgargs[@]}" --import "$(get_gpg_keyring_dir)"/${P}-active-devs.gpg
 	edo gpg "${mygpgargs[@]}" --export --armor > "${WORKDIR}"/gentoo-developers.asc
 
 	# Now strip out the keys which are expired and/or missing a signature
