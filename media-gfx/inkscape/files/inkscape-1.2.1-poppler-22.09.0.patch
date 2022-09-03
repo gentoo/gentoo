@@ -43,7 +43,7 @@ Signed-off-by: Sam James <sam@gentoo.org>
      }
    }
 +#if POPPLER_CHECK_VERSION(22, 9, 0)
-+  state->setLineDash(std::vector<double> (*dash, length), args[1].getNum());
++  state->setLineDash(std::vector<double> (dash, dash + length), args[1].getNum());
 +#else
    state->setLineDash(dash, length, args[1].getNum());
 +#endif
