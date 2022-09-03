@@ -1,0 +1,14 @@
+Don't run the daemon as root
+https://bugs.gentoo.org/545390
+
+--- a/etc/pcscd.service.in
++++ b/etc/pcscd.service.in
+@@ -7,6 +7,8 @@
+ ExecStart=@sbindir_exp@/pcscd --foreground --auto-exit $PCSCD_ARGS
+ ExecReload=@sbindir_exp@/pcscd --hotplug
+ EnvironmentFile=-@sysconfdir@/default/pcscd
++User=pcscd
++Group=pcscd
+ 
+ [Install]
+ Also=pcscd.socket
