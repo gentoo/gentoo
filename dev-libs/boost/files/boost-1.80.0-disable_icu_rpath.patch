@@ -1,0 +1,13 @@
+--- a/libs/locale/build/Jamfile.v2
++++ b/libs/locale/build/Jamfile.v2
+@@ -82,8 +82,8 @@ ICU_LINK ?= [ modules.peek : ICU_LINK_LOCALE ] ;
+ 
+ if $(ICU_LINK)
+ {
+-    ICU_OPTS = <include>$(icu-path)/include <linkflags>$(ICU_LINK) <dll-path>$(icu-path)/bin <runtime-link>shared ;
+-    ICU64_OPTS = <include>$(icu-path)/include <linkflags>$(ICU_LINK) <dll-path>$(icu-path)/bin64 <runtime-link>shared ;
++    ICU_OPTS = <include>$(icu_path)/include <linkflags>$(ICU_LINK) <runtime-link>shared ;
++    ICU64_OPTS = <include>$(icu_path)/include <linkflags>$(ICU_LINK) <runtime-link>shared ;
+ } else
+ {
+     searched-lib icuuc : :  <name>icuuc
