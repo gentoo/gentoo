@@ -3,13 +3,12 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit python-single-r1 systemd udev multilib-minimal
 
 DESCRIPTION="PC/SC Architecture smartcard middleware library"
 HOMEPAGE="https://pcsclite.apdu.fr https://github.com/LudovicRousseau/PCSC"
-
 SRC_URI="https://pcsclite.apdu.fr/files/${P}.tar.bz2"
 
 # GPL-2 is there for the init script; everything else comes from
@@ -17,41 +16,38 @@ SRC_URI="https://pcsclite.apdu.fr/files/${P}.tar.bz2"
 LICENSE="BSD ISC MIT GPL-3+ GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-
 # This is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
 IUSE="doc embedded libusb policykit selinux systemd +udev"
-
 REQUIRED_USE="^^ ( udev libusb ) ${PYTHON_REQUIRED_USE}"
 
 # No dependencies need the MULTILIB_DEPS because the libraries are actually
 # standalone, the deps are only needed for the daemon itself.
-DEPEND="libusb? ( virtual/libusb:1 )
+DEPEND="
+	libusb? ( virtual/libusb:1 )
 	udev? ( virtual/libudev:= )
 	policykit? ( >=sys-auth/polkit-0.111 )
 	acct-group/openct
 	acct-group/pcscd
 	acct-user/pcscd
 	${PYTHON_DEPS}"
-
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-pcscd )"
-
-BDEPEND="sys-devel/flex
+BDEPEND="
+	sys-devel/flex
 	virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.11-polkit-pcscd.patch
+	"${FILESDIR}"/${PN}-1.9.8-systemd-user.patch
 )
-
-DOCS=( AUTHORS HELP README SECURITY ChangeLog )
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
 		--disable-maintainer-mode \
 		--disable-strict \
-		--enable-usbdropdir="${EPREFIX}/usr/$(get_libdir)/readers/usb" \
+		--enable-usbdropdir="${EPREFIX}"/usr/$(get_libdir)/readers/usb \
 		--enable-ipcdir=/run/pcscd \
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
 		$(multilib_native_use_enable doc documentation) \
@@ -64,6 +60,7 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
+	dodoc HELP SECURITY
 
 	newinitd "${FILESDIR}"/pcscd-init.7 pcscd
 
@@ -83,20 +80,27 @@ multilib_src_install_all() {
 pkg_postinst() {
 	elog "Starting from version 1.6.5, pcsc-lite will start as user nobody in"
 	elog "the pcscd group, to avoid running as root."
-	elog ""
+	elog
 	elog "This also means you need the newest drivers available so that the"
 	elog "devices get the proper owner."
-	elog ""
+	elog
 	elog "Furthermore, a conf.d file is no longer installed by default, as"
 	elog "the default configuration does not require one. If you need to"
 	elog "pass further options to pcscd, create a file and set the"
 	elog "EXTRA_OPTS variable."
-	elog ""
+	elog
+
 	if use udev; then
 		elog "Hotplug support is provided by udev rules."
 		elog "When using OpenRC you additionally need to tell it to hotplug"
 		elog "pcscd by setting this variable in /etc/rc.conf:"
-		elog ""
+		elog
 		elog "    rc_hotplug=\"pcscd\""
 	fi
+
+	use udev && udev_reload
+}
+
+pkg_postrm() {
+	use udev && udev_reload
 }
