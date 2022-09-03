@@ -44,11 +44,11 @@ RDEPEND="
 	caps? ( sys-libs/libcap )
 	cups? ( net-print/cups )
 	dbengine? (
-		app-arch/lz4
+		app-arch/lz4:=
 		dev-libs/judy
 		dev-libs/openssl:=
 	)
-	dev-libs/libuv
+	dev-libs/libuv:=
 	cloud? ( dev-libs/protobuf:= )
 	compression? ( sys-libs/zlib )
 	ipmi? ( sys-libs/freeipmi )
@@ -57,12 +57,12 @@ RDEPEND="
 	mongodb? ( dev-libs/mongo-c-driver )
 	nfacct? (
 		net-firewall/nfacct
-		net-libs/libmnl
+		net-libs/libmnl:=
 	)
 	nodejs? ( net-libs/nodejs )
 	prometheus? (
+		app-arch/snappy:=
 		dev-libs/protobuf:=
-		app-arch/snappy
 	)
 	python? (
 		${PYTHON_DEPS}
