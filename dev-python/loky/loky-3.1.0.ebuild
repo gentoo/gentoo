@@ -37,5 +37,5 @@ python_test() {
 	)
 
 	# high memory test needs a lot of memory + is broken on 32-bit platforms
-	epytest --skip-high-memory -p no:xvfb
+	epytest --skip-high-memory
 }
