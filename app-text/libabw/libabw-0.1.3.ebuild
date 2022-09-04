@@ -24,7 +24,7 @@ RDEPEND="
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}
-	>=dev-libs/boost-1.46
+	dev-libs/boost
 	sys-devel/libtool
 "
 
