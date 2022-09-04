@@ -38,7 +38,7 @@ RDEPEND="${LUA_DEPS}
 	dev-cpp/yaml-cpp:=
 	dev-db/sqlite:3
 	dev-games/recastnavigation:=
-	dev-libs/boost:=[threads(+),zlib]
+	dev-libs/boost:=[zlib]
 	dev-libs/icu:=
 	dev-libs/tinyxml[stl]
 	media-libs/libsdl2[joystick,opengl,video]
