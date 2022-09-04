@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
 
@@ -27,7 +27,7 @@ SRC_URI="https://geant4-data.web.cern.ch/geant4-data/releases/${MY_P}.tar.gz"
 
 LICENSE="geant4"
 SLOT="4"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+c++17 c++20 +data debug doc examples freetype gdml geant3 hdf5 inventor motif opengl
 	python qt5 raytracerx static-libs tbb threads vtk"
 
@@ -54,7 +54,7 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-libs/boost:=[${PYTHON_USEDEP}]
+			dev-libs/boost:=[python,${PYTHON_USEDEP}]
 		')
 	)
 	qt5? (
