@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND="virtual/ssh"
 DEPEND="${RDEPEND}
-	>=dev-libs/boost-1.34.1"
+	dev-libs/boost"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.28-respect-LDFLAGS.patch"
