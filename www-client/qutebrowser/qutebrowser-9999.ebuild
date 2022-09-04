@@ -100,7 +100,7 @@ python_test() {
 	use widevine && EPYTEST_DESELECT+=( tests/unit/config/test_qtargs.py )
 
 	# skip benchmarks (incl. _tree), and warning tests broken by -Wdefault
-	epytest -k 'not _bench and not _matches_tree and not _warning'
+	epytest -p xvfb -k 'not _bench and not _matches_tree and not _warning'
 }
 
 python_install_all() {
