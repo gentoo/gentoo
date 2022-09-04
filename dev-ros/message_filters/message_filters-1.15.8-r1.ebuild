@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/rosconsole
 	dev-ros/roscpp
-	dev-libs/boost:=[threads(+)]
+	dev-libs/boost:=
 	dev-ros/genpy[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep "dev-python/rospkg[\${PYTHON_USEDEP}]")
