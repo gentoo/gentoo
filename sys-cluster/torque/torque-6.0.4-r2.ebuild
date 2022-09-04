@@ -20,7 +20,7 @@ DEPEND_COMMON="
 	sys-libs/zlib
 	sys-libs/readline:0=
 	dev-libs/libxml2
-	>=dev-libs/boost-1.41
+	dev-libs/boost
 	cpusets? ( sys-apps/hwloc:= )
 	munge? ( sys-auth/munge )
 	nvidia? ( >=x11-drivers/nvidia-drivers-275 )
