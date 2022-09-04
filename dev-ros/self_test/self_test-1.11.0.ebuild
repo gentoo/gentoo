@@ -17,7 +17,7 @@ RDEPEND="
 	dev-ros/diagnostic_updater
 	dev-ros/roscpp
 	dev-ros/rostest
-	dev-libs/boost:=[threads(+)]
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
 	dev-ros/diagnostic_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
