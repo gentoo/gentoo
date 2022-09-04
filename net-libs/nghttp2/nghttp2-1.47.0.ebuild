@@ -30,7 +30,7 @@ SSL_DEPEND="
 RDEPEND="
 	cxx? (
 		${SSL_DEPEND}
-		dev-libs/boost:=[${MULTILIB_USEDEP},threads(+)]
+		dev-libs/boost:=[${MULTILIB_USEDEP}]
 	)
 	hpack-tools? ( >=dev-libs/jansson-2.5:= )
 	jemalloc? ( dev-libs/jemalloc:=[${MULTILIB_USEDEP}] )
