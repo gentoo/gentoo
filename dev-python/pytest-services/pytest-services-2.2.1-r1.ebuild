@@ -44,7 +44,3 @@ PATCHES=(
 	"${FILESDIR}/pytest-services-2.0.1-no-mysql.patch"
 	"${FILESDIR}/pytest-services-2.0.1-lockdir.patch"
 )
-
-python_test() {
-	epytest -p no:xvfb
-}
