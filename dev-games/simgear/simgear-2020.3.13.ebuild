@@ -28,7 +28,7 @@ COMMON_DEPEND="
 	gdal? ( sci-libs/gdal )
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-libs/boost-1.44
+	dev-libs/boost
 "
 RDEPEND="${COMMON_DEPEND}
 	subversion? ( dev-vcs/subversion )
