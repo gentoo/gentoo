@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ RESTRICT="bindist mirror"
 RDEPEND=">=virtual/opencl-3
 	sys-process/numactl
 	system-tbb? ( >=dev-cpp/tbb-4.2.20131118 )
-	system-boost? ( >=dev-libs/boost-1.52.0:= )
+	system-boost? ( dev-libs/boost:= )
 "
 DEPEND=""
 PDEPEND="
