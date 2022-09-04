@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>base-system@gentoo.org</email>
-	<name>Gentoo Base System</name>
-</maintainer>
-<use>
-	<flag name="mpfr">use mpfr for high precision arithmetic (-M / --bignum)</flag>
-</use>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<use>
+		<flag name="mpfr">
+			Use <pkg>dev-libs/mpfr</pkg> for high precision arithmetic (-M / --bignum)
+		</flag>
+		<flag name="pma">
+			Experimental Persistent Memory Allocator (PMA) support which allows persistence
+			of variables, arrays, and user-defined functions across runs.
+		</flag>
+	</use>
 </pkgmetadata>
