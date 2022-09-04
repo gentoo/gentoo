@@ -57,7 +57,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	>=dev-libs/boost-1.41.0
+	dev-libs/boost
 	x11-base/xorg-proto
 "
 BDEPEND="

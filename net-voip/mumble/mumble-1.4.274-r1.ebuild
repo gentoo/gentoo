@@ -65,7 +65,7 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	dev-qt/qtconcurrent:5
 	dev-qt/qttest:5
-	>=dev-libs/boost-1.41.0
+	dev-libs/boost
 	x11-base/xorg-proto
 "
 BDEPEND="
