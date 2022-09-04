@@ -56,8 +56,7 @@ src_prepare() {
 
 python_test() {
 	# - uses /usr/bin/bash if SHELL is not exported
-	# - pytest-xvfb fails with Terminated, virtx alone works
-	SHELL=${SHELL} virtx epytest -p no:xvfb
+	SHELL=${SHELL} virtx epytest
 }
 
 python_install() {
