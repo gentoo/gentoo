@@ -24,7 +24,7 @@ REQUIRED_USE="${LUA_REQUIRED_USE}
 
 RDEPEND="acct-group/dnsdist
 	acct-user/dnsdist
-	>=dev-libs/boost-1.35:=
+	dev-libs/boost:=
 	dev-libs/libedit:=
 	>=dev-libs/protobuf-3:=
 	dnscrypt? ( dev-libs/libsodium:= )
