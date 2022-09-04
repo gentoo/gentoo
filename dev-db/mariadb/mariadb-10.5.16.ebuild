@@ -76,7 +76,7 @@ COMMON_DEPEND="
 		mroonga? ( app-text/groonga-normalizer-mysql >=app-text/groonga-7.0.4 )
 		numa? ( sys-process/numactl )
 		oqgraph? (
-			>=dev-libs/boost-1.40.0:=
+			dev-libs/boost:=
 			dev-libs/judy:0=
 		)
 		pam? ( sys-libs/pam:0= )
