@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{9,10} )
-PYTHON_REQ_USE="sqlite,xml"
+PYTHON_REQ_USE="sqlite,xml(+)"
 DISTUTILS_SINGLE_IMPL=1
 
 inherit distutils-r1 xdg-utils
