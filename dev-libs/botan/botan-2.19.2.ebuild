@@ -32,7 +32,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # NOTE: Boost is needed at runtime too for the CLI tool.
 DEPEND="
-	boost? ( >=dev-libs/boost-1.48:= )
+	boost? ( dev-libs/boost:= )
 	bzip2? ( >=app-arch/bzip2-1.0.5:= )
 	lzma? ( app-arch/xz-utils:= )
 	python? ( ${PYTHON_DEPS} )
