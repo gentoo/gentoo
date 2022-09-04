@@ -3,7 +3,7 @@
 
 EAPI=8
 
-GAWK_IS_BETA=yes
+GAWK_IS_BETA=no
 
 DESCRIPTION="GNU awk pattern-matching language"
 HOMEPAGE="https://www.gnu.org/software/gawk/gawk.html"
@@ -22,7 +22,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="mpfr nls readline"
+IUSE="mpfr pma nls readline"
 
 RDEPEND="
 	mpfr? (
@@ -54,10 +54,6 @@ src_prepare() {
 	# bug #413327
 	sed -i '/^pty1:$/s|$|\n_pty1:|' test/Makefile.in || die
 
-	# Fix typo in configure
-	# https://lists.gnu.org/archive/html/bug-gawk/2021-10/msg00022.html
-	sed -i -e 's/AR_FLAGS = /AR_FLAGS=/' configure || die
-
 	# Fix standards conflict on Solaris
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		sed -i \
@@ -76,6 +72,7 @@ src_configure() {
 		--libexec='$(libdir)/misc'
 		$(use_with mpfr)
 		$(use_enable nls)
+		$(use_enable pma)
 		$(use_with readline)
 	)
 
