@@ -63,6 +63,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-pdf-add-missing-flush.patch
 	"${FILESDIR}"/${P}-ft-Use-FT_Done_MM_Var-instead-of-free-when-available.patch
 	"${FILESDIR}"/${P}-strings.patch
+	"${FILESDIR}"/${P}-binutils-2.39-ptr.patch
 )
 
 src_prepare() {
