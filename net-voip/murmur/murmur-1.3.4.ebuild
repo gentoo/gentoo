@@ -24,7 +24,7 @@ else
 			https://dl.mumble.info/${MY_P}.tar.gz"
 		S="${WORKDIR}/${MY_PN}-${PV/_*}"
 	fi
-	KEYWORDS="amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm x86"
 fi
 
 LICENSE="BSD"
