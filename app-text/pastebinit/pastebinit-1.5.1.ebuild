@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
-PYTHON_REQ_USE="xml"
+PYTHON_REQ_USE="xml(+)"
 inherit python-single-r1
 
 MY_P="${PN}_${PV}"
