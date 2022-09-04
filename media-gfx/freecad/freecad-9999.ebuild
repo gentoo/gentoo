@@ -80,7 +80,7 @@ RDEPEND="
 	openscad? ( media-gfx/openscad )
 	pcl? ( sci-libs/pcl:=[opengl,openni2(+),qt5(+),vtk(+)] )
 	$(python_gen_cond_dep '
-		dev-libs/boost:=[python,threads(+),${PYTHON_USEDEP}]
+		dev-libs/boost:=[python,${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
