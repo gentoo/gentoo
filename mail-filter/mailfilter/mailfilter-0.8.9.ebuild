@@ -4,17 +4,17 @@
 EAPI=8
 
 DESCRIPTION="Mailfilter is a utility to get rid of unwanted spam mails"
-HOMEPAGE="https://mailfilter.sourceforge.io"
+HOMEPAGE="https://mailfilter.sourceforge.io/"
 SRC_URI="mirror://sourceforge/mailfilter/${P}.tar.gz"
 
-LICENSE="GPL-2+"
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~sparc ~x86"
 IUSE="+ssl"
 
 DEPEND="sys-devel/flex
-	ssl? ( dev-libs/openssl:0= )"
-RDEPEND="ssl? ( dev-libs/openssl:0= )"
+	ssl? ( dev-libs/openssl:= )"
+RDEPEND="ssl? ( dev-libs/openssl:= )"
 
 src_configure() {
 	econf $(use_with ssl openssl)
