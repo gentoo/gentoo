@@ -29,3 +29,8 @@ src_prepare() {
 	sed -e "/num_change_since_prev_pkg(/cset(NUM_COMMITS 0)" -i cmake_modules/utils.cmake || die # Fix QA issue on "git not found"
 	cmake_src_prepare
 }
+
+src_configure() {
+	local mycmakeargs=( -DROCRTST_BLD_TYPE=Release )
+	cmake_src_configure
+}
