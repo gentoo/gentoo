@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,7 @@ REQUIRED_USE="${LUA_REQUIRED_USE}
 
 RDEPEND="acct-group/dnsdist
 	acct-user/dnsdist
-	>=dev-libs/boost-1.35:=
+	dev-libs/boost:=
 	dev-libs/libedit:=
 	dnscrypt? ( dev-libs/libsodium:= )
 	dnstap? ( dev-libs/fstrm:= )
