@@ -4,7 +4,7 @@
 EAPI="7"
 VALA_USE_DEPEND="vapigen"
 PYTHON_COMPAT=( python3_{7..10} )
-PYTHON_REQ_USE="xml"
+PYTHON_REQ_USE="xml(+)"
 
 inherit gnome.org meson-multilib python-single-r1 vala xdg
 
