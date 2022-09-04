@@ -25,5 +25,5 @@ RDEPEND="${COMMON_DEPEND}
 	>=kde-plasma/kactivitymanagerd-${PLASMA_MINIMAL}:5
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-libs/boost-1.54
+	dev-libs/boost
 "
