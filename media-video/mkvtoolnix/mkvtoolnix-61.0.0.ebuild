@@ -25,7 +25,7 @@ RESTRICT="!test? ( test )"
 # check NEWS.md for build system changes entries for boost/libebml/libmatroska
 # version requirement updates and other packaging info
 RDEPEND="
-	>=dev-libs/boost-1.66:=
+	dev-libs/boost:=
 	>=dev-libs/libebml-1.4.0:=
 	>=dev-libs/libfmt-6.1.0:=
 	<dev-libs/libfmt-9.0.0:=
