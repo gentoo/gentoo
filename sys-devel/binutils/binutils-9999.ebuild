@@ -170,7 +170,7 @@ src_configure() {
 	strip-linguas -u */po
 
 	# Keep things sane
-	strip-flags
+	use custom-cflags || strip-flags
 
 	use elibc_musl && append-ldflags -Wl,-z,stack-size=2097152
 

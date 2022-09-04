@@ -150,7 +150,7 @@ src_configure() {
 	strip-linguas -u */po
 
 	# Keep things sane
-	strip-flags
+	use custom-cflags || strip-flags
 
 	local x
 	echo
