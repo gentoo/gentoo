@@ -113,7 +113,7 @@ RDEPEND="
 	zlib? ( sys-libs/zlib:= )"
 
 DEPEND="${RDEPEND}
-	>=dev-libs/boost-1.68:=
+	dev-libs/boost:=
 	test? ( dev-cpp/gtest )"
 
 BDEPEND="virtual/pkgconfig"
