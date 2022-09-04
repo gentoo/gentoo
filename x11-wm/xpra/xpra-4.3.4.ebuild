@@ -183,7 +183,8 @@ python_test() {
 	distutils_install_for_testing
 	xdg_environment_reset
 
-	PYTHONPATH=${S}/tests/unittests:${BUILD_DIR}/test/lib \
+	env -u WAYLAND_DISPLAY -u XDG_SESSION_TYPE \
+	PYTHONPATH="${S}/tests/unittests:${BUILD_DIR}/test/lib" \
 	XPRA_SYSTEMD_RUN=$(usex systemd) XPRA_TEST_COVERAGE=0 \
 		"${PYTHON}" "${S}"/tests/unittests/unit/run.py || die
 }
