@@ -195,6 +195,15 @@ pkg_pretend() {
 		einfo "You have disabled the \"python\" USE flag. This will only"
 		einfo "disable the python bindings being installed."
 	fi
+
+	# 749273
+	local d=${ROOT}
+	for i in usr "$(get_libdir)"; do
+		d="${d}/$i"
+		if [[ "$(stat -L -c "%g %u" "${d}")" != "0 0" ]]; then
+			die "${d} should be owned by root, VirtualBox will not start otherwise"
+		fi
+	done
 }
 
 pkg_setup() {
