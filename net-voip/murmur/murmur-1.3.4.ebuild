@@ -51,7 +51,7 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}
-	>=dev-libs/boost-1.41.0
+	dev-libs/boost
 "
 BDEPEND="
 	acct-group/murmur
