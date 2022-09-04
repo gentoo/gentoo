@@ -27,7 +27,7 @@ RDEPEND="
 	dev-libs/mpfr:0=
 	python? (
 		$(python_gen_cond_dep '
-			dev-libs/boost:=[${PYTHON_USEDEP}]
+			dev-libs/boost:=[python,${PYTHON_USEDEP}]
 			dev-python/cheetah3:=[${PYTHON_USEDEP}]
 		')
 		${PYTHON_DEPS}
