@@ -25,7 +25,7 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-libs/boost:=[${PYTHON_USEDEP}]
+		dev-libs/boost:=[python,${PYTHON_USEDEP}]
 	')
 	net-wireless/gnuradio:0=[${PYTHON_SINGLE_USEDEP}]
 	!net-wireless/gnuradio[iio(-)]
