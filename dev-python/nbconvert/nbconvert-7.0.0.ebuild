@@ -83,7 +83,7 @@ python_test() {
 		nbconvert/tests/test_nbconvertapp.py::TestNbConvertApp::test_post_processor
 	)
 
-	nonfatal epytest -p no:xvfb --pyargs nbconvert || die
+	nonfatal epytest --pyargs nbconvert || die
 }
 
 pkg_postinst() {
