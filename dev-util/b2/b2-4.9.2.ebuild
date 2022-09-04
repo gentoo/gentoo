@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic toolchain-funcs
+inherit edo flag-o-matic toolchain-funcs
 
 MY_PV="$(ver_rs 1- _)"
 
@@ -36,7 +36,7 @@ src_configure() {
 
 src_compile() {
 	cd engine || die
-	${CONFIG_SHELL:-${BASH}} ./build.sh cxx --cxx="$(tc-getCXX)" --cxxflags="${CXXFLAGS}" -d+2 --without-python || die "building b2 failed"
+	edo ${CONFIG_SHELL:-${BASH}} ./build.sh cxx --cxx="$(tc-getCXX)" --cxxflags="${CXXFLAGS}" -d+2 --without-python
 }
 
 src_test() {
