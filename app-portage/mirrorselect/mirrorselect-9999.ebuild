@@ -5,7 +5,7 @@ EAPI="8"
 
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python3_{8..10} )
-PYTHON_REQ_USE="xml"
+PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1 git-r3 prefix
 
