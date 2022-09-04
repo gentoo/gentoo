@@ -16,7 +16,7 @@ IUSE="debug static-libs test"
 #RESTRICT="!test? ( test )"
 RESTRICT="test"  # restricted til we don't need the shared_nowide patch
 
-RDEPEND=">=dev-libs/boost-1.73:=[nls]
+RDEPEND="dev-libs/boost:=[nls]
 	net-misc/curl"
 DEPEND="${RDEPEND}"
 
