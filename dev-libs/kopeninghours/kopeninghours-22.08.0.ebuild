@@ -30,7 +30,7 @@ DEPEND="
 	sys-libs/zlib
 	python? (
 		$(python_gen_cond_dep '
-			>=dev-libs/boost-1.70:=[python,${PYTHON_USEDEP}]
+			dev-libs/boost:=[python,${PYTHON_USEDEP}]
 		')
 	)
 "
