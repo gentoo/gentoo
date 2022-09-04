@@ -32,7 +32,7 @@ COMMON_DEPEND="
 	motif? ( media-libs/SoXt )
 	ogre? (
 		dev-games/ogre[ois(+)]
-		dev-libs/boost:=[threads(+)]
+		dev-libs/boost:=
 	)
 	opencv? ( media-libs/opencv:=[contribdnn(+)] )
 	pcl? ( sci-libs/pcl:= )
