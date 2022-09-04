@@ -42,6 +42,12 @@ src_compile() {
 		libdir='$(prefix)'"/$(get_libdir)"
 }
 
+src_test() {
+	cp "${BROOT}"/usr/share/unicode-data/{DerivedCoreProperties,{Normalization,auxiliary/GraphemeBreak}Test}.txt data || die
+
+	emake CC="$(tc-getCC)" check
+}
+
 src_install() {
 	emake \
 		DESTDIR="${D}" \
@@ -49,10 +55,4 @@ src_install() {
 		libdir='$(prefix)'"/$(get_libdir)" \
 		install
 	use static-libs || find "${ED}" -name '*.a' -delete || die
-}
-
-src_test() {
-	cp "${EPREFIX}"/usr/share/unicode-data/{DerivedCoreProperties,{Normalization,auxiliary/GraphemeBreak}Test}.txt data || die
-
-	emake CC="$(tc-getCC)" check
 }
