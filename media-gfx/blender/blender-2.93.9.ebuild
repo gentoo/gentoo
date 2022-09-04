@@ -45,7 +45,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 # Library versions for official builds can be found in the blender source directory in:
 # build_files/build_environment/install_deps.sh
 RDEPEND="${PYTHON_DEPS}
-	dev-libs/boost:=[nls?,threads(+)]
+	dev-libs/boost:=[nls?]
 	dev-libs/lzo:2=
 	$(python_gen_cond_dep '
 		dev-python/cython[${PYTHON_USEDEP}]
