@@ -28,7 +28,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=sci-libs/flann-1.7.1
-	dev-libs/boost:=[threads(+)]
+	dev-libs/boost:=
 	dev-cpp/eigen:3
 	opengl? ( virtual/opengl media-libs/freeglut )
 	openni? ( dev-libs/OpenNI )
