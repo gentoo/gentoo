@@ -27,7 +27,7 @@ RESTRICT="test"
 # Thus unbundling luabins isn't worth the effort.
 RDEPEND="${LUA_DEPS}
 	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,debug?]
-	dev-libs/boost:=[icu,nls,threads(+)]
+	dev-libs/boost:=[icu,nls]
 	dev-libs/icu:=
 	media-libs/ffmpegsource:=
 	media-libs/fontconfig
