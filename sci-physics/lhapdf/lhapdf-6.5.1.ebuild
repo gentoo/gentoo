@@ -29,7 +29,7 @@ IUSE="examples"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
-	dev-libs/boost:0=
+	dev-libs/boost:=
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
 
