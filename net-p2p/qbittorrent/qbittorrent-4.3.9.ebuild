@@ -24,7 +24,7 @@ IUSE="+dbus debug webui +X"
 REQUIRED_USE="dbus? ( X )"
 
 RDEPEND="
-	>=dev-libs/boost-1.62.0-r1:=
+	dev-libs/boost:=
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtxml:5
