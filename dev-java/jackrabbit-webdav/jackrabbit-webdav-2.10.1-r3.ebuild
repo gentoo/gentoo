@@ -24,7 +24,7 @@ CP_DEPEND="dev-java/bndlib:0
 	dev-java/slf4j-api:0
 	dev-java/slf4j-nop:0
 	dev-java/commons-httpclient:3
-	java-virtuals/servlet-api:2.3"
+	dev-java/tomcat-servlet-api:2.3"
 
 DEPEND=">=virtual/jdk-1.8:*
 	${CP_DEPEND}"
