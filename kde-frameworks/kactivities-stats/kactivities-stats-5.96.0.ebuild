@@ -19,5 +19,5 @@ RDEPEND="
 	=kde-frameworks/kconfig-${PVCUT}*:5
 "
 DEPEND="${RDEPEND}
-	test? ( >=dev-libs/boost-1.54 )
+	test? ( dev-libs/boost )
 "
