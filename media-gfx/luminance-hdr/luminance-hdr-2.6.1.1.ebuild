@@ -19,7 +19,7 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 "
 RDEPEND="
-	dev-libs/boost:0=
+	dev-libs/boost:=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
