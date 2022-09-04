@@ -23,3 +23,7 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+python_test() {
+	epytest -p xvfb
+}
