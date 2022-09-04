@@ -124,7 +124,7 @@ python_test() {
 	local jobs=$(($(makeopts_jobs) / 2 + 1))
 
 	# skip benchmarks (incl. _tree), and warning tests broken by -Wdefault
-	epytest -n ${jobs} -k 'not _bench and not _matches_tree and not _warning'
+	epytest -p xvfb -n ${jobs} -k 'not _bench and not _matches_tree and not _warning'
 }
 
 python_install_all() {
