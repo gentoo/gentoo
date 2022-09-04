@@ -29,7 +29,7 @@ RESTRICT="test"
 
 DEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-libs/boost:=[${PYTHON_USEDEP}]
+		dev-libs/boost:=[python,${PYTHON_USEDEP}]
 	')
 	dev-libs/gmp
 	sci-libs/volk:=
