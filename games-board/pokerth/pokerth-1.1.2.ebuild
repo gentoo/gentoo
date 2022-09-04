@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="dedicated"
 
 RDEPEND="dev-db/sqlite:3
-	dev-libs/boost:0=
+	dev-libs/boost:=
 	dev-libs/libgcrypt:0
 	dev-libs/protobuf:0=
 	dev-libs/tinyxml[stl]
