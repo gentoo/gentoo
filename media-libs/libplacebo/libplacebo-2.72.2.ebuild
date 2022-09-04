@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_REQ_USE="xml"
+PYTHON_REQ_USE="xml(+)"
 PYTHON_COMPAT=( python3_{7,8,9,10} )
 
 if [[ "${PV}" == "9999" ]]; then
