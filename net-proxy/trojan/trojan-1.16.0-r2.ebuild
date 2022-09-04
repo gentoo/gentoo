@@ -26,7 +26,7 @@ IUSE="mysql test"
 RESTRICT="test"
 
 RDEPEND="
-	>=dev-libs/boost-1.66.0:=
+	dev-libs/boost:=
 	dev-libs/openssl:0=
 	mysql? ( dev-db/mysql-connector-c:= )
 "
