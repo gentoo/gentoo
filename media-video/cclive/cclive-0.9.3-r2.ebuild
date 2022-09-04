@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ KEYWORDS="amd64 ~ppc ~ppc64 x86"
 RDEPEND="
 	>=media-libs/libquvi-0.4.0:0=
 	>=dev-cpp/glibmm-2.24:2
-	>=dev-libs/boost-1.49:=
+	dev-libs/boost:=
 	>=dev-libs/glib-2.24:2
 	>=net-misc/curl-7.20
 	>=dev-libs/libpcre-8.02[cxx]"
