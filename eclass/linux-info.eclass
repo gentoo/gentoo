@@ -374,6 +374,7 @@ require_configured_kernel() {
 # If linux_config_exists returns false, the results of this are UNDEFINED. You
 # MUST call linux_config_exists first.
 linux_chkconfig_present() {
+	[[ -n ${SKIP_KERNEL_CHECK} ]] && return
 	linux_config_qa_check linux_chkconfig_present
 	[[ $(getfilevar_noexec "CONFIG_$1" "$(linux_config_path)") == [my] ]]
 }
@@ -386,6 +387,7 @@ linux_chkconfig_present() {
 # If linux_config_exists returns false, the results of this are UNDEFINED. You
 # MUST call linux_config_exists first.
 linux_chkconfig_module() {
+	[[ -n ${SKIP_KERNEL_CHECK} ]] && return
 	linux_config_qa_check linux_chkconfig_module
 	[[ $(getfilevar_noexec "CONFIG_$1" "$(linux_config_path)") == m ]]
 }
@@ -398,6 +400,7 @@ linux_chkconfig_module() {
 # If linux_config_exists returns false, the results of this are UNDEFINED. You
 # MUST call linux_config_exists first.
 linux_chkconfig_builtin() {
+	[[ -n ${SKIP_KERNEL_CHECK} ]] && return
 	linux_config_qa_check linux_chkconfig_builtin
 	[[ $(getfilevar_noexec "CONFIG_$1" "$(linux_config_path)") == y ]]
 }
@@ -410,6 +413,7 @@ linux_chkconfig_builtin() {
 # If linux_config_exists returns false, the results of this are UNDEFINED. You
 # MUST call linux_config_exists first.
 linux_chkconfig_string() {
+	[[ -n ${SKIP_KERNEL_CHECK} ]] && return
 	linux_config_qa_check linux_chkconfig_string
 	getfilevar_noexec "CONFIG_$1" "$(linux_config_path)"
 }
@@ -472,6 +476,7 @@ kernel_is() {
 # - make is not present
 # - corruption exists in the kernel makefile
 get_makefile_extract_function() {
+	[[ -n ${SKIP_KERNEL_CHECK} ]] && return
 	local a='' b='' mkfunc='getfilevar'
 	a="$(getfilevar VERSION ${KERNEL_MAKEFILE})"
 	b="$(getfilevar_noexec VERSION ${KERNEL_MAKEFILE})"
