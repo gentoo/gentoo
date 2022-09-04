@@ -21,7 +21,7 @@ IUSE="dbus dedicated doc nls server"
 RDEPEND="
 	acct-group/wesnoth
 	acct-user/wesnoth
-	dev-libs/boost:=[bzip2,context,icu,nls,threads(+)]
+	dev-libs/boost:=[bzip2,context,icu,nls]
 	>=media-libs/libsdl2-2.0.4:0[joystick,video,X]
 	!dedicated? (
 		dev-libs/glib:2
