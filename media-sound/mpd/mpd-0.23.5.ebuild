@@ -106,7 +106,7 @@ RDEPEND="
 	zlib? ( sys-libs/zlib:= )"
 
 DEPEND="${RDEPEND}
-	>=dev-libs/boost-1.58:=
+	dev-libs/boost:=
 	dev-libs/libfmt:=
 	test? ( dev-cpp/gtest )"
 

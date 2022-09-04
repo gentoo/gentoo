@@ -103,7 +103,7 @@ RDEPEND="
 	zlib? ( sys-libs/zlib:= )"
 
 DEPEND="${RDEPEND}
-	>=dev-libs/boost-1.58:=
+	dev-libs/boost:=
 	test? ( dev-cpp/gtest )"
 
 BDEPEND=">=dev-util/meson-0.49.2
