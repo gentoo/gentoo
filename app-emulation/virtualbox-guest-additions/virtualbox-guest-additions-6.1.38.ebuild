@@ -56,6 +56,7 @@ BUILD_TARGET_ARCH="${ARCH}"
 
 S="${WORKDIR}/${MY_PN}-${DIR_PV:-${PV}}"
 VBOX_MOD_SRC_DIR="${S}/out/linux.${ARCH}/release/bin/additions/src"
+MODULESD_VBOXSF_ALIASES=("fs-vboxsf vboxsf") # 485996
 
 pkg_setup() {
 	export DISTCC_DISABLE=1 #674256
