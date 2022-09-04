@@ -26,14 +26,14 @@ LICENSE="MIT"
 # also check pypy/interpreter/pycode.py -> pypy_incremental_magic
 SLOT="0/pypy39-pp73-336"
 KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="bzip2 +ensurepip gdbm +jit ncurses sqlite test tk"
+IUSE="+ensurepip gdbm +jit ncurses sqlite test tk"
 # many tests are failing upstream
 # see https://buildbot.pypy.org/summary?branch=py3.9
 RESTRICT="test"
 
 RDEPEND="
 	|| (
-		>=dev-python/pypy3-exe-${PYPY_PV}_p3:3.9-${PYPY_PV}[bzip2?,ncurses?]
+		>=dev-python/pypy3-exe-${PYPY_PV}_p3:3.9-${PYPY_PV}[bzip2(+),ncurses?]
 		>=dev-python/pypy3-exe-bin-${PYPY_PV}_p3:3.9-${PYPY_PV}
 	)
 	dev-lang/python-exec[python_targets_pypy3(-)]
