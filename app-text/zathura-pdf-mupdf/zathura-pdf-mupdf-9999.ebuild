@@ -20,7 +20,7 @@ HOMEPAGE="https://git.pwmt.org/pwmt/zathura-pdf-mupdf"
 LICENSE="ZLIB"
 SLOT="0"
 
-DEPEND=">=app-text/mupdf-1.19:=
+DEPEND=">=app-text/mupdf-1.20:=
 	>=app-text/zathura-0.3.9
 	dev-libs/girara
 	dev-libs/glib:2
