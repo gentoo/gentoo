@@ -25,17 +25,19 @@ RDEPEND="
 	sys-libs/readline:0=
 	sys-libs/zlib:0=
 	pcap? ( net-analyzer/wireshark[tshark] )"
-# Once we fix https://bugs.gentoo.org/show_bug.cgi?id=813444, we can change net-misc/openssh to be
-# conditional on the test USE flag. Unfortunately, for now lnav runs some test code unconditionally
-# that uses ssh-keygen, so that's why we unconditionally depend on it at the moment.
+# The tests use ssh-keygen and use dsa and rsa keys (which is why ssl is required)
 DEPEND="${RDEPEND}
-	net-misc/openssh[ssl]
-	test? ( dev-cpp/doctest )"
+	test? (
+		net-misc/openssh[ssl]
+		dev-cpp/doctest
+	)"
 
 DOCS=( AUTHORS NEWS README )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.11.0-disable-tests.patch
+	# https://github.com/tstack/lnav/pull/1041
+	"${FILESDIR}"/${PN}-0.11.0-conditional-ssh-keygen.patch
 )
 
 src_prepare() {
