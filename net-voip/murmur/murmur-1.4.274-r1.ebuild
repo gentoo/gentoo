@@ -57,7 +57,7 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}
-	>=dev-libs/boost-1.41.0
+	dev-libs/boost
 	dev-qt/qttest:5
 "
 BDEPEND="
