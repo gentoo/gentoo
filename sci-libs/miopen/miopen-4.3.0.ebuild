@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,7 @@ RDEPEND="
 	dev-libs/ocl-icd
 	dev-util/rocm-clang-ocl:${SLOT}
 	sci-libs/rocBLAS:${SLOT}
-	>=dev-libs/boost-1.72
+	dev-libs/boost
 "
 
 DEPEND="${RDEPEND}"
