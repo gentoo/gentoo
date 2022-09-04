@@ -33,4 +33,7 @@ ruby_add_bdepend "
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/ s:^:#:' Rakefile || die
+
+	# It looks like tests are order dependent
+	sed -i -e '/test_order/ s/:alpha/:random/' test/test_helper.rb || die
 }
