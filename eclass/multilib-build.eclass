@@ -574,6 +574,15 @@ multilib_native_use() {
 	multilib_is_native_abi && use "$@"
 }
 
+# @FUNCTION: multilib_native_usev
+# @USAGE: <flag> [<opt-value>]
+# @DESCRIPTION:
+# Like the standard usev command, but only prints output
+# if multilib_is_native_abi and usev <flag> are true.
+multilib_native_usev() {
+	multilib_is_native_abi && usev "$@"
+}
+
 # @FUNCTION: multilib_native_use_with
 # @USAGE: <flag> [<opt-name> [<opt-value>]]
 # @DESCRIPTION:
