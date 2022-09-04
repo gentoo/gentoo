@@ -59,7 +59,7 @@ COMMON_DEPEND="
 	zeroconf? ( >=kde-frameworks/kdnssd-${KFMIN}:5 )
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-libs/boost-1.71
+	dev-libs/boost
 "
 RDEPEND="${COMMON_DEPEND}
 	ipfilter? (
