@@ -1334,6 +1334,11 @@ epytest() {
 		# pytest-sugar undoes everything that's good about pytest output
 		# and makes it hard to read logs
 		-p no:sugar
+		# pytest-xvfb automatically spawns Xvfb for every test suite,
+		# effectively forcing it even when we'd prefer the tests
+		# not to have DISPLAY at all, causing crashes sometimes
+		# and causing us to miss missing virtualx usage
+		-p no:xvfb
 	)
 	local x
 	for x in "${EPYTEST_DESELECT[@]}"; do
