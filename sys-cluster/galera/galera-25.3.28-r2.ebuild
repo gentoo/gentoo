@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 
 CDEPEND="
 	dev-libs/openssl:0=
-	>=dev-libs/boost-1.41:0=
+	>=dev-libs/boost-1.41:=
 	"
 BDEPEND=">=sys-devel/gcc-4.4"
 DEPEND="${BDEPEND}
