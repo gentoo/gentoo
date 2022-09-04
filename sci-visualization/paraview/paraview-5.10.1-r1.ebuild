@@ -92,7 +92,7 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	boost? (
 		$(python_gen_cond_dep '
-			dev-libs/boost[mpi?,${PYTHON_USEDEP}]
+			dev-libs/boost[mpi?,python,${PYTHON_USEDEP}]
 		')
 	)
 	doc? ( app-doc/doxygen )"
