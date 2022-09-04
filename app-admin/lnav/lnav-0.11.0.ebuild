@@ -29,7 +29,7 @@ RDEPEND="
 # conditional on the test USE flag. Unfortunately, for now lnav runs some test code unconditionally
 # that uses ssh-keygen, so that's why we unconditionally depend on it at the moment.
 DEPEND="${RDEPEND}
-	net-misc/openssh
+	net-misc/openssh[ssl]
 	test? ( dev-cpp/doctest )"
 
 DOCS=( AUTHORS NEWS README )
