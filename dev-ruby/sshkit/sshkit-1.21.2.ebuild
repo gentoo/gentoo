@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby26 ruby27 ruby30"
+USE_RUBY="ruby27 ruby30"
 
 # There are functional tests that require vagrant boxes to be set up.
 RUBY_FAKEGEM_TASK_TEST="test:units"
@@ -24,12 +24,14 @@ ruby_add_rdepend "
 	>=dev-ruby/net-scp-1.1.2
 "
 
-ruby_add_bdepend "test? ( dev-ruby/minitest dev-ruby/mocha )"
+ruby_add_bdepend "test? ( dev-ruby/minitest dev-ruby/mocha <dev-ruby/net-ssh-7 )"
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/I s:^:#:' Rakefile test/helper.rb || die
-	sed -i -e '/\(turn\|unindent\|reporters\)/I s:^:#:' \
-		-e '1irequire "set"; require "pathname"' test/helper.rb || die
+	sed -e '/\(turn\|unindent\|reporters\)/I s:^:#:' \
+		-e '1irequire "set"; require "pathname"' \
+		-e '1igem "net-ssh", "<7"' \
+		-i test/helper.rb || die
 
 	# Fix assumption about parent directory name
 	sed -i -e '/assert_match/ s/sshkit/sshkit.*/' test/unit/test_deprecation_logger.rb || die
