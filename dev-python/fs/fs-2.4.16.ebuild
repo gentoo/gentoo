@@ -36,15 +36,10 @@ BDEPEND="
 distutils_enable_sphinx docs/source dev-python/sphinx_rtd_theme dev-python/recommonmark
 distutils_enable_tests pytest
 
-python_test() {
-	local EPYTEST_IGNORE=(
-		# TODO: fails at teardown due to unfreed resources
-		tests/test_ftpfs.py
-	)
-
-	# pytest-xvfb causes test failures due to a zombie Xvfb process
-	epytest -p no:xvfb
-}
+EPYTEST_IGNORE=(
+	# TODO: fails at teardown due to unfreed resources
+	tests/test_ftpfs.py
+)
 
 pkg_postinst() {
 	optfeature "S3 support" dev-python/boto
