@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ IUSE="clock lto outputs taglib visualizer"
 
 RDEPEND="
 	>=media-libs/libmpdclient-2.1
-	dev-libs/boost:=[icu,nls,threads(+)]
+	dev-libs/boost:=[icu,nls]
 	dev-libs/icu:=
 	net-misc/curl
 	sys-libs/ncurses:=[unicode(+)]
