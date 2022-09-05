@@ -22,6 +22,7 @@ IUSE="+aom gdk-pixbuf go rav1e test +threads x265"
 REQUIRED_USE="test? ( go )"
 RESTRICT="!test? ( test )"
 
+# Bug 865351: tests requires <dev-cpp/catch-3
 BDEPEND="
 	test? (
 		<dev-cpp/catch-3
@@ -47,6 +48,7 @@ src_prepare() {
 	sed -i -e 's:-Werror::' configure.ac || die
 
 	if use test ; then
+		# bug 865351
 		rm tests/catch.hpp || die
 		ln -s "${ESYSROOT}"/usr/include/catch2/catch.hpp tests/catch.hpp || die
 	fi
