@@ -9,10 +9,6 @@ EAPI=7
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/bzip2.gpg
 inherit toolchain-funcs multilib-minimal usr-ldscript verify-sig
 
-if [[ ${PVR} != 1.0.8-r1 ]]; then
-	die "Please remove libbz2.so.1.0 logic from multilib_src_install"
-fi
-
 DESCRIPTION="A high-quality data compressor used extensively by Gentoo Linux"
 HOMEPAGE="https://sourceware.org/bzip2/"
 SRC_URI="https://sourceware.org/pub/${PN}/${P}.tar.gz"
@@ -24,6 +20,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 IUSE="static static-libs"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-bzip2 )"
+RDEPEND="!app-arch/lbzip2[symlink(-)]"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.4-makefile-CFLAGS.patch
@@ -84,13 +81,6 @@ multilib_src_install() {
 	for v in libbz2.so{,.{${PV%%.*},${PV%.*}}} ; do
 		dosym libbz2.so.${PV} /usr/$(get_libdir)/${v}
 	done
-
-	# Install libbz2.so.1.0 due to accidental soname change in 1.0.7.
-	# Reference: 98da0ad82192d21ad74ae52366ea8466e2acea24.
-	# OK to remove one year after 2020-04-11.
-	if [[ ! -L "${ED}/usr/$(get_libdir)/libbz2.so.1.0" ]]; then
-		dosym libbz2.so.${PV} "/usr/$(get_libdir)/libbz2.so.1.0"
-	fi
 
 	use static-libs && dolib.a libbz2.a
 
