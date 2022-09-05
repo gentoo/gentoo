@@ -6,7 +6,7 @@ EAPI=8
 # Please bump with app-editors/vim and app-editors/gvim
 
 VIM_VERSION="9.0"
-inherit vim-doc flag-o-matic bash-completion-r1 prefix desktop xdg-utils
+inherit autotools vim-doc flag-o-matic bash-completion-r1 prefix desktop xdg-utils
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
@@ -108,14 +108,16 @@ src_prepare() {
 	rm -v src/auto/configure || die "rm configure failed"
 
 	eapply_user
+
+	pushd src 1> /dev/null || die "pushd failed"
+	eautoconf
+	popd 1> /dev/null || die "popd failed"
 }
 
 src_configure() {
 	# Fix bug #37354: Disallow -funroll-all-loops on amd64
 	# Bug 57859 suggests that we want to do this for all archs
 	filter-flags -funroll-all-loops
-
-	emake -j1 -C src autoconf
 
 	# This should fix a sandbox violation (see bug 24447). The hvc
 	# things are for ppc64, see bug 86433.
