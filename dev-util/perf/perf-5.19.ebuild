@@ -144,6 +144,8 @@ src_prepare() {
 
 	pushd "${S_K}" >/dev/null || die
 	eapply "${FILESDIR}"/${PN}-5.18-clang.patch
+	# Used `git format-patch 00b32625982e0c796f0abb8effcac9c05ef55bd3...600b7b26c07a070d0153daa76b3806c1e52c9e00`
+	# bug #868129
 	rm "${WORKDIR}"/${P}-binutils-2.39-patches/0005-tools-bpf_jit_disasm-Fix-compilation-error-with-new-.patch || die
 	rm "${WORKDIR}"/${P}-binutils-2.39-patches/0006-tools-bpf_jit_disasm-Don-t-display-disassembler-four.patch || die
 	rm "${WORKDIR}"/${P}-binutils-2.39-patches/0007-tools-bpftool-Fix-compilation-error-with-new-binutil.patch || die
