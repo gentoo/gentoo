@@ -40,7 +40,10 @@ RDEPEND="
 	virtual/glu
 	alsa? ( media-libs/alsa-lib )
 	curl? ( net-misc/curl )
-	speex? ( media-libs/speex )
+	speex? (
+		media-libs/speex
+		media-libs/speexdsp
+	)
 	upnp? ( net-libs/miniupnpc )
 "
 
