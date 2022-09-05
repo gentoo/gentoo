@@ -11,7 +11,7 @@ SRC_URI="https://github.com/onetrueawk/awk/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~riscv ~x86 ~amd64-linux"
 
 RDEPEND="
 	app-eselect/eselect-awk"

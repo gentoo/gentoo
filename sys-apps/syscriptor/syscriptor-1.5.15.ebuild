@@ -12,7 +12,7 @@ S="${WORKDIR}"/${PN}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc x86"
+KEYWORDS="~alpha amd64 ppc ~riscv x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.15-dont-inject-additional-flags.patch
