@@ -23,7 +23,6 @@
   </longdescription>
   <upstream>
     <remote-id type="pypi">spyder</remote-id>
-    <remote-id type="bitbucket">spyder-ide/spyderlib</remote-id>
     <remote-id type="github">spyder-ide/spyder</remote-id>
   </upstream>
 </pkgmetadata>
