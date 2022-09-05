@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools multilib-minimal
+inherit autotools
 
 if [[ ${PV} = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/sass/libsass.git"
@@ -17,7 +17,6 @@ DESCRIPTION="A C/C++ implementation of a Sass CSS compiler"
 HOMEPAGE="https://github.com/sass/libsass"
 LICENSE="MIT"
 SLOT="0/1" # libsass soname
-IUSE="static-libs"
 
 DOCS=( Readme.md SECURITY.md )
 
@@ -27,27 +26,22 @@ src_prepare() {
 	if [[ ${PV} != *9999 ]]; then
 		[[ -f VERSION ]] || echo "${PV}" > VERSION
 	fi
-	eautoreconf
 
-	# only sane way to deal with various version-related scripts, env variables etc.
-	multilib_copy_sources
+	eautoreconf
 }
 
-multilib_src_configure() {
+src_configure() {
 	local myeconfargs=(
-		$(use_enable static-libs static)
 		--enable-shared
 	)
 
 	econf "${myeconfargs[@]}"
 }
 
-multilib_src_install() {
-	emake DESTDIR="${D}" install
-	find "${D}" -name '*.la' -delete || die
-}
+src_install() {
+	default
 
-multilib_src_install_all() {
-	einstalldocs
-	dodoc -r "${S}/docs"
+	dodoc -r docs
+
+	find "${ED}" -name '*.la' -delete || die
 }
