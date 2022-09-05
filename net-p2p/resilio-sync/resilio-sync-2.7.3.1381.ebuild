@@ -21,7 +21,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="bindist mirror"
 
-
 RDEPEND="acct-group/rslsync
 	acct-user/rslsync
 	virtual/libcrypt:="
