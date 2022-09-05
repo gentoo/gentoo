@@ -473,6 +473,17 @@ kernel-install_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local ver="${PV}${KV_LOCALVERSION}"
+
+	# Make symlinks relative to /usr/lib/modules for merged-usr.
+	if [[ ${EROOT}/lib/modules/${ver} -ef ${EROOT}/usr/lib/modules/${ver} ]]; then
+		if [[ ! -e ${EROOT}/usr/lib/modules/${ver}/build ]]; then
+			ln -snf ../../../src/linux-${ver} "${EROOT}/usr/lib/modules/${ver}/build" || die
+		fi
+		if [[ ! -e ${EROOT}/usr/lib/modules/${ver}/source ]]; then
+			ln -snf ../../../src/linux-${ver} "${EROOT}/usr/lib/modules/${ver}/source" || die
+		fi
+	fi
+
 	kernel-install_update_symlink "${EROOT}/usr/src/linux" "${ver}"
 
 	if [[ -z ${ROOT} ]]; then
