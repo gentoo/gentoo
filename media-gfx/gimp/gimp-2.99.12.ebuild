@@ -111,6 +111,8 @@ BDEPEND="
 
 DOCS=( "AUTHORS" "devel-docs/CODING_STYLE.md" "devel-docs/HACKING.md" "NEWS" "README" "README.i18n" )
 
+PATCHES=( "${FILESDIR}/${P}_fix_libheif-1.13_build.patch" )
+
 pkg_setup() {
 	use lua && lua-single_pkg_setup
 
