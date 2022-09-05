@@ -17,7 +17,7 @@ RESTRICT="test"
 
 DEPEND=""
 RDEPEND="${DEPEND}
-	dev-libs/protobuf"
+	dev-libs/protobuf:="
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-util/patchelf
