@@ -89,6 +89,8 @@ src_prepare() {
 	fi
 
 	pushd "${S_K}" >/dev/null || die
+	# Used `git format-patch 00b32625982e0c796f0abb8effcac9c05ef55bd3...600b7b26c07a070d0153daa76b3806c1e52c9e00`
+	# bug #868123
 	eapply "${WORKDIR}"/perf-5.19-binutils-2.39-patches
 	popd || die
 
