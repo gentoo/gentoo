@@ -150,7 +150,10 @@ LICENSE="Apache-2.0 Boost-1.0 GPL-3 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~riscv"
 
-RDEPEND="gui-libs/greetd"
+RDEPEND="acct-group/greetd
+	acct-user/greetd
+	gui-libs/greetd"
+DEPEND="${RDEPEND}"
 
 src_install() {
 	dodir /var/cache/${PN}
