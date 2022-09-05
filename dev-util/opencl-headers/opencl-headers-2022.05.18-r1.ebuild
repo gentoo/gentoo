@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit cmake
+
 MY_PN="OpenCL-Headers"
 MY_P="${MY_PN}-${PV}"
 
@@ -13,12 +15,15 @@ SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/refs/tags/v${PV}.tar.g
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
+IUSE="test"
+
+RESTRICT="!test? ( test )"
 
 S="${WORKDIR}"/${MY_P}
 
-src_install() {
-	insinto /usr/include
-	doins -r "${S}"/CL
-
-	einstalldocs
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_TESTING=$(usex test)
+	)
+	cmake_src_configure
 }
