@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 IUSE="clang"
 
 RDEPEND="
-	>=sys-libs/binutils-libs-2.29:=
+	<sys-libs/binutils-libs-2.39:=
 	sys-libs/libunwind:=
 	app-arch/xz-utils
 	clang? ( sys-libs/blocksruntime )
