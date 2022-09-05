@@ -9,7 +9,7 @@ MY_P="Linux-${PN^^}-${PV}"
 # Can reconsider w/ EAPI 8 and IDEPEND, bug #810979
 TMPFILES_OPTIONAL=1
 
-inherit autotools db-use fcaps toolchain-funcs usr-ldscript multilib-minimal
+inherit autotools db-use fcaps flag-o-matic toolchain-funcs usr-ldscript multilib-minimal
 
 DESCRIPTION="Linux-PAM (Pluggable Authentication Modules)"
 HOMEPAGE="https://github.com/linux-pam/linux-pam"
@@ -58,6 +58,19 @@ src_prepare() {
 multilib_src_configure() {
 	# Do not let user's BROWSER setting mess us up. #549684
 	unset BROWSER
+
+	# This whole weird has_version libxcrypt block can go once
+	# musl systems have libxcrypt[system] if we ever make
+	# that mandatory. See bug #867991.
+	if use elibc_musl && ! has_version sys-libs/libxcrypt[system] ; then
+		# Avoid picking up symbol-versioned compat symbol on musl systems
+		export ac_cv_search_crypt_gensalt_rn=no
+
+		# Need to avoid picking up the libxcrypt headers which define
+		# CRYPT_GENSALT_IMPLEMENTS_AUTO_ENTROPY.
+		cp "${ESYSROOT}"/usr/include/crypt.h "${T}"/crypt.h || die
+		append-cppflags -I"${T}"
+	fi
 
 	local myconf=(
 		CC_FOR_BUILD="$(tc-getBUILD_CC)"
