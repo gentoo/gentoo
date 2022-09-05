@@ -1,0 +1,20 @@
+https://salsa.debian.org/lua-team/lua5.1/-/blob/master/debian/patches/0003-extern_C.patch
+
+From: "John V. Belmonte" <jbelmonte@debian.org>
+Date: Tue, 26 Aug 2014 16:20:49 +0200
+Subject: extern_C
+
+--- a/src/luaconf.h.in
++++ b/src/luaconf.h.in
+@@ -168,7 +168,11 @@
+ 
+ #else
+ 
++#ifdef __cplusplus
++#define LUA_API		extern "C"
++#else
+ #define LUA_API		extern
++#endif
+ 
+ #endif
+ 
