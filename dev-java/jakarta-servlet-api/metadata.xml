@@ -4,4 +4,8 @@
 	<maintainer type="project">
 		<email>java@gentoo.org</email>
 	</maintainer>
+	<slots>
+		<slot name="4">provides javax.servlet</slot>
+		<slot name="6">provides jakarta.servlet</slot>
+	</slots>
 </pkgmetadata>
