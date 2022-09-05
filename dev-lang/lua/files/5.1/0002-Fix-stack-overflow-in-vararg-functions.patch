@@ -2,7 +2,7 @@ https://salsa.debian.org/lua-team/lua5.1/-/blob/master/debian/patches/0004-Fix-s
 
 From: Enrico Tassi <gareuselesinge@debian.org>
 Date: Tue, 26 Aug 2014 16:20:55 +0200
-Subject: Fix stack overflow in vararg functions
+Subject: Fix stack overflow in vararg functions (CVE-2014-5461)
 
 --- a/src/ldo.c
 +++ b/src/ldo.c
