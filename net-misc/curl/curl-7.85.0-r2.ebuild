@@ -49,6 +49,7 @@ RDEPEND="ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
 		)
 		nss? (
 			dev-libs/nss:0[${MULTILIB_USEDEP}]
+			dev-libs/nss-pem
 			app-misc/ca-certificates
 		)
 	)
