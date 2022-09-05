@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ RDEPEND="${LUA_DEPS}
 DEPEND="${RDEPEND}
 	test? ( dev-util/cppunit )"
 BDEPEND="virtual/pkgconfig
-	boost? ( dev-util/boost-build )"
+	boost? ( dev-libs/boost )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.6_p20190928-cmake_lua_version.patch

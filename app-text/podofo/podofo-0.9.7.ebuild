@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 "
 
 BDEPEND="virtual/pkgconfig
-	boost? ( dev-util/boost-build )"
+	boost? ( dev-libs/boost )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.6_p20190928-cmake_lua_version.patch
