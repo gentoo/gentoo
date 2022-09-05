@@ -9,7 +9,7 @@ inherit distutils-r1 optfeature
 
 DESCRIPTION="A Python module to bypass Cloudflare's anti-bot page"
 HOMEPAGE="https://github.com/VeNoMouS/cloudscraper"
-SRC_URI="https://github.com/VeNoMouS/${PN}/archive/${PV}.tar.gz -> ${PF}.tar.gz"
+SRC_URI="https://github.com/VeNoMouS/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"
