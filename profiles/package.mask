@@ -293,10 +293,6 @@ app-admin/logcheck
 <dev-lang/erlang-24
 ~dev-lang/elixir-1.11.4
 
-# Fabian Groffen <grobian@gentoo.org> (2022-08-06)
-# superseeded by sys-apps/baselayout, removal in 30 days.  bug #836114
-sys-apps/baselayout-prefix
-
 # Jimi Huotari <chiitoo@gentoo.org> (2022-08-02)
 # Masked for testing. The split of some packages may still
 # change. bug #838970.
