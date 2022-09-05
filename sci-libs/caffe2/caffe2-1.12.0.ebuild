@@ -27,7 +27,7 @@ REQUIRED_USE="
 RDEPEND="
 	${PYTHON_DEPS}
 	dev-cpp/gflags:=
-	<dev-cpp/glog-0.5.0
+	>=dev-cpp/glog-0.5.0
 	dev-libs/cpuinfo
 	dev-libs/libfmt
 	dev-libs/protobuf
@@ -66,6 +66,7 @@ S="${WORKDIR}"/${MYP}
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.11.0-gentoo.patch
 	"${FILESDIR}"/${PN}-1.12.0-install-dirs.patch
+	"${FILESDIR}"/${P}-glog-0.6.0.patch
 )
 
 src_prepare() {
