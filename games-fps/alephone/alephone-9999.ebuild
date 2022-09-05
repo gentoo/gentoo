@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools optfeature prefix xdg
+inherit autotools optfeature prefix toolchain-funcs xdg
 
 DESCRIPTION="An enhanced version of the game engine from the classic Mac game, Marathon"
 HOMEPAGE="http://source.bungie.org/"
@@ -73,6 +73,11 @@ src_configure() {
 		$(use_with curl) \
 		$(use_with speex) \
 		$(use_with upnp miniupnpc)
+}
+
+src_compile() {
+	tc-export AR
+	default
 }
 
 src_install() {
