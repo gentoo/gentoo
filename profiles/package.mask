@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (2022-09-05)
+# Crash due to double-free.
+# https://bugs.gentoo.org/868567
+=sys-apps/gawk-5.2.0
+
 # Marc Schiffbauer <mschiff@gentoo.org> (2022-09-02)
 # Dead upstream, open bugs, removal in 30 days
 # bugs #829447, #836227, #862504
