@@ -21,6 +21,8 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 IUSE="pic static"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-gzip )"
+RDEPEND="!app-arch/pigz[symlink(-)]
+	!app-arch/ncompress"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.3.8-install-symlinks.patch"
