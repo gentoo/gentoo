@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools multilib-minimal
+inherit autotools
 
 DESCRIPTION="Simple library for creating daemon processes in C"
 HOMEPAGE="http://0pointer.de/lennart/projects/libdaemon/"
@@ -12,7 +12,7 @@ SRC_URI="http://0pointer.de/lennart/projects/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0/5"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="doc examples static-libs"
+IUSE="doc examples"
 
 BDEPEND="doc? ( app-doc/doxygen )"
 
@@ -27,40 +27,33 @@ src_prepare() {
 	# (elibtoolize is insufficient)
 	# bug #668404
 	eautoreconf
-
-	# doxygen is broken with out-of-source builds
-	multilib_copy_sources
 }
 
-multilib_src_configure() {
-	econf \
-		--localstatedir=/var \
-		--disable-examples \
-		--disable-lynx \
-		$(use_enable static-libs static)
+src_configure() {
+	local myeconfargs=(
+		--localstatedir=/var
+		--disable-examples
+		--disable-lynx
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
-multilib_src_compile() {
+src_compile() {
 	emake
 
-	if multilib_is_native_abi && use doc; then
+	if use doc; then
+		HTML_DOCS=( doc/README.html doc/style.css doc/reference/html/. )
+
 		einfo "Building documentation"
 		emake doxygen
 	fi
 }
 
-multilib_src_install() {
-	emake DESTDIR="${D}" install
+src_install() {
+	default
 
-	if multilib_is_native_abi && use doc; then
-		docinto html
-		dodoc -r doc/README.html doc/style.css doc/reference/html/*
-		doman doc/reference/man/man3/*.h.3
-	fi
-}
-
-multilib_src_install_all() {
-	einstalldocs
+	use doc && doman doc/reference/man/man3/*.h.3
 
 	find "${ED}" -name '*.la' -delete || die
 
