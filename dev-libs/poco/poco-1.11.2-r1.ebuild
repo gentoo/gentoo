@@ -100,6 +100,7 @@ src_configure() {
 		-DENABLE_DATA_MYSQL="$(usex mysql)"
 		-DENABLE_DATA_ODBC="$(usex odbc)"
 		-DENABLE_DATA_SQLITE="$(usex sqlite)"
+		-DENABLE_DATA_POSTGRESQL=OFF
 		-DENABLE_JSON="$(usex util)"
 		-DENABLE_MONGODB="$(usex mongodb)"
 		-DENABLE_NET="$(usex net)"
