@@ -38,8 +38,8 @@ src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
 		LDFLAGS="${LDFLAGS}" \
-		INCDIRS=$(lua_get_CFLAGS) \
-		LIBLUA=$(lua_get_LIBS)
+		INCDIRS="$(lua_get_CFLAGS)" \
+		LIBLUA="$(lua_get_LIBS)"
 }
 
 src_install() {
