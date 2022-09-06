@@ -9,8 +9,7 @@ S=${WORKDIR}
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS=""
-PROPERTIES="live"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux"
 
 RDEPEND="
 	sys-devel/llvm:${PV}[binutils-plugin]
