@@ -90,9 +90,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-kde.patch
 	"${FILESDIR}"/${PN}-slibtool.patch
 	"${FILESDIR}"/${PN}-tinfo.patch
+	"${FILESDIR}"/${PN}-Wconversion.patch
 	"${FILESDIR}"/${PN}-xkb.patch
-	"${FILESDIR}"/${PN}-zh-TW.patch
-	"${FILESDIR}"/${P}-remove-Wconversion-replace.patch
+	"${FILESDIR}"/${PN}-1.8.8-zh-TW.patch
 )
 DOCS=( AUTHORS NEWS README RELNOTE doc )
 
