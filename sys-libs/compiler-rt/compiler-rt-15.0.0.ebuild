@@ -25,7 +25,6 @@ BDEPEND="
 	clang? ( sys-devel/clang )
 	test? (
 		$(python_gen_any_dep ">=dev-python/lit-15[\${PYTHON_USEDEP}]")
-		sys-devel/binutils[gold]
 		=sys-devel/clang-${PV%_*}*:${CLANG_SLOT}
 	)
 	!test? (
@@ -34,7 +33,7 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=( compiler-rt cmake llvm/cmake )
-LLVM_PATCHSET=${PV/_/-}
+LLVM_PATCHSET=${PV/_/-}-r1
 llvm.org_set_globals
 
 python_check_deps() {
