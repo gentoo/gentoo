@@ -3,9 +3,9 @@
 
 EAPI=8
 
-inherit autotools multilib-minimal
+inherit autotools
 
-DESCRIPTION="An mpeg library for linux"
+DESCRIPTION="An MPEG library for linux"
 HOMEPAGE="http://heroinewarrior.com/libmpeg3.php"
 SRC_URI="
 	mirror://sourceforge/heroines/${P}-src.tar.bz2
@@ -18,8 +18,8 @@ IUSE="cpu_flags_x86_mmx"
 
 RDEPEND="
 	media-libs/a52dec
-	sys-libs/zlib
-	virtual/jpeg:0"
+	media-libs/libjpeg-turbo:=
+	sys-libs/zlib"
 DEPEND="${RDEPEND}"
 BDEPEND="cpu_flags_x86_mmx? ( dev-lang/nasm )"
 
@@ -40,21 +40,22 @@ src_prepare() {
 	eautoreconf
 }
 
-multilib_src_configure() {
+src_configure() {
 	# disabling css since it's a fake one.
 	# One can find in the sources this message :
 	#   Stubs for deCSS which can't be distributed in source form
-	ECONF_SOURCE="${S}" econf \
+	econf \
 		$(use_enable cpu_flags_x86_mmx mmx) \
 		--disable-css
 }
 
-multilib_src_install_all() {
+src_install() {
 	HTML_DOCS=( docs/. )
-	einstalldocs
+
+	default
 
 	# This is a workaround, it wants to rebuild
-	# everything if the headers	 have changed
+	# everything if the headers have changed
 	# So we patch them after install...
 	cd "${ED}"/usr/include/libmpeg3 || die
 	# This patch patches the .h files that get installed into /usr/include
