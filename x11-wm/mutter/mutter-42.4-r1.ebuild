@@ -16,7 +16,7 @@ IUSE="doc elogind gnome input_devices_wacom +introspection screencast sysprof sy
 REQUIRED_USE="
 	wayland? ( ^^ ( elogind systemd ) udev )
 	test? ( wayland )"
-RESTRICT="!test? ( test ) test" # Tests need access to /dev/dri/card0
+RESTRICT="!test? ( test )"
 
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
@@ -110,6 +110,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-42.0-Disable-anonymous-file-test.patch
+	"${FILESDIR}"/${P}-backend-native-Don-t-warn-on-EACCES-if-headless.patch
 )
 
 python_check_deps() {

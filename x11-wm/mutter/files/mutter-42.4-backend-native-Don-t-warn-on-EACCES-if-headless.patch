@@ -1,0 +1,79 @@
+From db854a8588c1164df2f54c5718930aadf353b948 Mon Sep 17 00:00:00 2001
+From: Simon McVittie <smcv@debian.org>
+Date: Thu, 18 Aug 2022 10:41:01 +0100
+Subject: [PATCH] backend/native: Don't warn on EACCES if headless
+
+Since commit 1bf70334 "tests/runner: Make test runner use the headless
+backend", tests are run with the native backend in headless mode, which
+will attempt to open each GPU and show a warning (fatal during tests)
+if it cannot.
+
+However, in headless mode we might not be logged in on any seat (for
+example we might be logged in via ssh instead), which means we might
+legitimately not have permission to use any GPUs, even if they exist.
+Downgrade the warning to a debug message in this case.
+
+Resolves: https://gitlab.gnome.org/GNOME/mutter/-/issues/2381
+Signed-off-by: Simon McVittie <smcv@debian.org>
+Part-of: <https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2584>
+(cherry picked from commit 64a67aa00bfe54fe7219d7f581950897fcbf9a75)
+---
+ src/backends/native/meta-backend-native.c | 35 +++++++++++++++++++----
+ 1 file changed, 30 insertions(+), 5 deletions(-)
+
+diff --git a/src/backends/native/meta-backend-native.c b/src/backends/native/meta-backend-native.c
+index 224538787..a2babb4b0 100644
+--- a/src/backends/native/meta-backend-native.c
++++ b/src/backends/native/meta-backend-native.c
+@@ -514,8 +514,20 @@ on_udev_device_added (MetaUdev          *udev,
+   new_gpu_kms = create_gpu_from_udev_device (native, device, &error);
+   if (!new_gpu_kms)
+     {
+-      g_warning ("Failed to hotplug secondary gpu '%s': %s",
+-                 device_path, error->message);
++      if (meta_backend_is_headless (backend) &&
++          g_error_matches (error, G_IO_ERROR,
++                           G_IO_ERROR_PERMISSION_DENIED))
++        {
++          meta_topic (META_DEBUG_BACKEND,
++                      "Ignoring unavailable secondary gpu '%s': %s",
++                      device_path, error->message);
++        }
++      else
++        {
++          g_warning ("Failed to hotplug secondary gpu '%s': %s",
++                     device_path, error->message);
++        }
++
+       return;
+     }
+ 
+@@ -552,9 +564,22 @@ init_gpus (MetaBackendNative  *native,
+ 
+       if (!gpu_kms)
+         {
+-          g_warning ("Failed to open gpu '%s': %s",
+-                     g_udev_device_get_device_file (device),
+-                     local_error->message);
++          if (meta_backend_is_headless (backend) &&
++              g_error_matches (local_error, G_IO_ERROR,
++                               G_IO_ERROR_PERMISSION_DENIED))
++            {
++              meta_topic (META_DEBUG_BACKEND,
++                          "Ignoring unavailable gpu '%s': %s'",
++                          g_udev_device_get_device_file (device),
++                          local_error->message);
++            }
++          else
++            {
++              g_warning ("Failed to open gpu '%s': %s",
++                         g_udev_device_get_device_file (device),
++                         local_error->message);
++            }
++
+           g_clear_error (&local_error);
+           continue;
+         }
+-- 
+2.35.1
+
