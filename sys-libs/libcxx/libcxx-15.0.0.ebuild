@@ -45,7 +45,7 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=( runtimes libcxx{,abi} llvm/{cmake,utils/llvm-lit} cmake )
-LLVM_PATCHSET=${PV/_/-}
+LLVM_PATCHSET=${PV/_/-}-r1
 llvm.org_set_globals
 
 python_check_deps() {
