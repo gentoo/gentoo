@@ -33,6 +33,7 @@ RDEPEND="
 	net-misc/curl[adns]
 	net-print/cups
 	sys-apps/dbus
+	sys-libs/glibc
 	virtual/jre:*
 	virtual/opengl
 	x11-apps/xrandr

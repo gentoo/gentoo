@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-09-06)
+# Binary package linked against glibc
+games-action/minecraft-launcher
+
 # Vladimir Pavljuchenkov <spiderx@spiderx.dp.ua> (2022-08-21)
 # Binary package linked against glibc, bug #832607.
 net-p2p/resilio-sync
