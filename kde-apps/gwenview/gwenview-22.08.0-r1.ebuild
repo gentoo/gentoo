@@ -16,7 +16,7 @@ HOMEPAGE="https://apps.kde.org/gwenview/ https://userbase.kde.org/Gwenview"
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="activities +annotate fits +mpris raw semantic-desktop share X"
+IUSE="activities fits +mpris raw semantic-desktop share X"
 
 # requires running environment
 RESTRICT="test"
@@ -44,13 +44,14 @@ COMMON_DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/solid-${KFMIN}:5
 	media-gfx/exiv2:=
+	media-libs/kcolorpicker
+	>=media-libs/kimageannotator-0.5.0
 	media-libs/lcms:2
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
 	>=media-libs/phonon-4.11.0
 	media-libs/tiff
 	activities? ( >=kde-frameworks/kactivities-${KFMIN}:5 )
-	annotate? ( >=media-libs/kimageannotator-0.5.0 )
 	fits? ( sci-libs/cfitsio )
 	mpris? ( >=dev-qt/qtdbus-${QTMIN}:5 )
 	raw? ( >=kde-apps/libkdcraw-${PVCUT}:5 )
@@ -84,7 +85,6 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package activities KF5Activities)
-		$(cmake_use_find_package annotate kImageAnnotator)
 		$(cmake_use_find_package fits CFitsio)
 		$(cmake_use_find_package raw KF5KDcraw)
 		-DGWENVIEW_SEMANTICINFO_BACKEND=$(usex semantic-desktop Baloo None)
