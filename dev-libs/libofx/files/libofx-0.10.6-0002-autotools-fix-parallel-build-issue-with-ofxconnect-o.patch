@@ -1,0 +1,34 @@
+https://github.com/libofx/libofx/pull/77
+
+From 8383d1245468db3aa944e77b38b681249073eb6b Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 6 Sep 2022 06:00:04 +0100
+Subject: [PATCH 2/2] autotools: fix parallel build issue with ofxconnect,
+ ofxdump
+
+We need to build the relevant tool before calling help2man, as
+help2man tries to call the tool itself.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/ofxconnect/Makefile.am
++++ b/ofxconnect/Makefile.am
+@@ -25,7 +25,7 @@ EXTRA_DIST = cmdline.ggo test-privateserver.sh CMakeLists.txt
+ # the key needed to run this test.
+ TESTS = test-privateserver.sh 
+ 
+-ofxconnect.1: $(top_srcdir)/configure.ac
++ofxconnect.1: $(top_srcdir)/configure.ac ofxconnect
+ if HAVE_HELP2MAN
+ 	$(HELP2MAN)  -n 'Create a statement request file' -N --output=ofxconnect.1 ./ofxconnect$(EXEEXT)
+ else
+--- a/ofxdump/Makefile.am
++++ b/ofxdump/Makefile.am
+@@ -15,7 +15,7 @@ cmdline.c cmdline.h: cmdline.ggo Makefile
+ 
+ endif
+ 
+-ofxdump.1: $(top_srcdir)/configure.ac
++ofxdump.1: $(top_srcdir)/configure.ac ofxdump
+ if HAVE_HELP2MAN
+ 	$(HELP2MAN) -n 'Dump content of OFX files as human-readable text' -N --output=ofxdump.1 ./ofxdump$(EXEEXT)
+ else
