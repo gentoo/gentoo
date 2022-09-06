@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Full-featured email creation and transfer class for PHP"
 HOMEPAGE="https://github.com/PHPMailer/PHPMailer"
@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~x86"
 
 # To help out the Composer children, the tests and examples are missing
 # from the release tarballs.
-IUSE="doc idn ssl"
+IUSE="idn ssl"
 
 # The ctype and filter extensions get used unconditionally, with no
 # fallback and no "extension missing" exception. All of the other
@@ -33,28 +33,6 @@ RDEPEND="
 		idn?  ( dev-lang/php:*[ctype,filter,intl,unicode] )
 		!idn? ( dev-lang/php:*[ctype,filter] )
 	)"
-BDEPEND="doc? ( dev-php/phpDocumentor )"
-
-src_prepare() {
-	default
-
-	# OAuth.php relies on a (now non-nonexistent) autoloader. We remove
-	# it early so that we don't generate documentation for it later on.
-	rm src/OAuth.php || die 'failed to remove src/OAuth.php'
-}
-
-src_compile() {
-	if use doc; then
-		phpdoc --filename="src/*.php" \
-			--target="./html" \
-			--cache-folder="${T}" \
-			--title="${PN}" \
-			--sourcecode \
-			--force \
-			--progressbar \
-			|| die "failed to generate API documentation"
-	fi
-}
 
 src_install() {
 	# The PHPMailer class loads its language files
@@ -63,7 +41,6 @@ src_install() {
 	doins -r language src
 
 	dodoc README.md SECURITY.md
-	use doc && dodoc -r html/*
 }
 
 pkg_postinst() {
