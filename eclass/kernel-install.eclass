@@ -418,6 +418,12 @@ kernel-install_pkg_preinst() {
 		eerror "Please verify that you are applying the correct patches."
 		die "Kernel release mismatch (${release} instead of ${PV}*)"
 	fi
+	if [[ -L ${EROOT}/lib && ${EROOT}/lib -ef ${EROOT}/usr/lib ]]; then
+		# Adjust symlinks for merged-usr.
+		rm "${ED}/lib/modules/${ver}"/{build,source} || die
+		dosym "../../../src/linux-${ver}" "/usr/lib/modules/${ver}/build"
+		dosym "../../../src/linux-${ver}" "/usr/lib/modules/${ver}/source"
+	fi
 }
 
 # @FUNCTION: kernel-install_install_all
