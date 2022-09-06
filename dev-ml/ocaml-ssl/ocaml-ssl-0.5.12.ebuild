@@ -9,7 +9,7 @@ inherit dune
 
 DESCRIPTION="OCaml bindings for OpenSSL"
 HOMEPAGE="https://github.com/savonet/ocaml-ssl"
-SRC_URI="https://github.com/savonet/ocaml-ssl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/savonet/ocaml-ssl/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
