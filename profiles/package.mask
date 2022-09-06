@@ -413,7 +413,7 @@ sys-devel/automake:1.15
 # not use this program yet if you seriously need anonymity, privacy,
 # security, or stability." Feel free to unmask if this is not a
 # necessity.
-net-p2p/arti
+<net-p2p/arti-1.0.0
 
 # Stephan Hartmann <sultan@gentoo.org> (2022-08-20)
 # Dev channel releases are only for people who
