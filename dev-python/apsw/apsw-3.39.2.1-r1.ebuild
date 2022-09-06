@@ -33,7 +33,7 @@ RDEPEND="
 python_compile() {
 	# Needed for e.g. bug #851741
 	# Enable column-metadata to match dev-db/sqlite
-	distutils-r1_python_compile --enable=load_extension --enable=column_metadata
+	distutils-r1_python_compile --enable=load_extension,column_metadata
 }
 
 python_test() {
