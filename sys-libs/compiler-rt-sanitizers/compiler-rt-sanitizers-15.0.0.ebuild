@@ -47,6 +47,7 @@ BDEPEND="
 	test? (
 		!!<sys-apps/sandbox-2.13
 		$(python_gen_any_dep ">=dev-python/lit-15[\${PYTHON_USEDEP}]")
+		sys-devel/binutils[gold]
 		=sys-devel/clang-${PV%_*}*:${CLANG_SLOT}
 		sys-libs/compiler-rt:${SLOT}
 	)
