@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    This JavaScript editing mode supports: 1. strict recognition of the
+    Ecma-262 language standard 2. support for most Rhino and SpiderMonkey
+    extensions from 1.5 and up 3. parsing support for ECMAScript for XML (E4X,
+    ECMA-357) 4. accurate syntax highlighting using a recursive-descent parser
+    5. on-the-fly reporting of syntax errors and strict-mode warnings 6.
+    undeclared-variable warnings using a configurable externs framework 7.
+    "bouncing" line indentation to choose among alternate indentation points 8.
+    smart line-wrapping within comments and strings 9. code folding: 9.1. show
+    some or all function bodies as {...} 9.2. show some or all block comments
+    as /*...*/ 12. context-sensitive menu bar and popup menus 13. code browsing
+    using the `imenu' package 14. many customization options
+  </longdescription>
+  <stabilize-allarches />
+  <upstream>
+    <bugs-to>https://github.com/mooz/js2-mode/issues/</bugs-to>
+    <remote-id type="github">mooz/js2-mode</remote-id>
+  </upstream>
+</pkgmetadata>
