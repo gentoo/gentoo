@@ -30,7 +30,11 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-3.1.1-0003-disable-failing-test.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.1.1-0003-disable-failing-test.patch
+	"${FILESDIR}"/${P}-Add-missing-include-cstdint-required-by-gcc-13-1264.patch
+	"${FILESDIR}"/${P}-add-missed-include-cstdint-statement.patch
+)
 
 DOCS=( CHANGES.md GOVERNANCE.md PATENTS README.md SECURITY.md docs/SymbolVisibility.md )
 
