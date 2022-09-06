@@ -10,7 +10,7 @@ JAVA_PKG_IUSE="doc source test"
 MAVEN_ID="joda-time:joda-time:2.11.0"
 JAVA_TESTING_FRAMEWORKS="junit"
 
-inherit java-pkg-2 java-pkg-simple
+inherit edo java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Date and time library to replace JDK date handling"
 HOMEPAGE="https://www.joda.org/joda-time/"
@@ -64,7 +64,7 @@ src_compile() {
 
 	# Generate the missing "org/joda/time/tz/data/ZoneInfoMap"
 	# Arguments from https://github.com/JodaOrg/joda-time/blob/v2.10.10/pom.xml#L413-L427
-	"$(java-config -J)" \
+	edo "$(java-config -J)" \
 		-cp ${PN}.jar \
 		org.joda.time.tz.ZoneInfoCompiler \
 		-src "${JAVA_SRC_DIR}/org/joda/time/tz/src" \
@@ -79,7 +79,7 @@ src_compile() {
 		etcetera \
 		backward
 
-	java-pkg_addres ${PN}.jar "${P}"/src/main/resources || die
+	java-pkg_addres ${PN}.jar "${P}"/src/main/resources
 }
 
 src_test() {
