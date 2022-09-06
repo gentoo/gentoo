@@ -16,10 +16,6 @@
 app-arch/lbzip2 symlink
 app-arch/pigz symlink
 
-# Sam James <sam@gentoo.org> (2022-09-05)
-# Needs to be split into a separate package to avoid collisions
-sys-devel/binutils emacs
-
 # Sam James <sam@gentoo.org> (2022-08-26)
 # Broken at runtime for now (bug #865113).
 sys-devel/binutils gprofng
