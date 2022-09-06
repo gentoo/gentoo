@@ -20,7 +20,8 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 IUSE="static static-libs"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-bzip2 )"
-RDEPEND="!app-arch/lbzip2[symlink(-)]"
+RDEPEND="!app-arch/lbzip2[symlink(-)]
+	!app-arch/pbzip2[symlink(-)]"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.4-makefile-CFLAGS.patch

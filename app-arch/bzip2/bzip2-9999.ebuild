@@ -19,7 +19,8 @@ SLOT="0/1" # subslot = SONAME
 
 IUSE="static-libs"
 
-RDEPEND="!app-arch/lbzip2[symlink(-)]"
+RDEPEND="!app-arch/lbzip2[symlink(-)]
+	!app-arch/pbzip2[symlink(-)]"
 
 multilib_src_configure() {
 	local emesonargs=(
