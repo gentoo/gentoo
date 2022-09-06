@@ -14,6 +14,7 @@
 # script in /usr/local (or otherwise on PATH), or configure tools
 # like tar to use lbzip2 & pigz respectively using EXTRA_ECONF.
 app-arch/lbzip2 symlink
+app-arch/pbzip2 symlink
 app-arch/pigz symlink
 
 # Sam James <sam@gentoo.org> (2022-08-26)
