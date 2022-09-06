@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>dlan@gentoo.org</email>
-		<name>Yixun Lan</name>
-	</maintainer>
-
+	<!-- maintainer-needed -->
 	<longdescription>
 		LTTng, the Linux Trace Toolkit Next Generation, is a project that aims at producing a highly efficient full system tracing solution
 	</longdescription>
