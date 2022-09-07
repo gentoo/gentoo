@@ -19,6 +19,7 @@ CONFIG_CHECK="~NETWORK_PHY_TIMESTAMPING ~PPS ~PTP_1588_CLOCK"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.1-user_cpp.patch
+	"${FILESDIR}"/${PN}-3.1.1-string-include.patch
 )
 
 pkg_setup() {
