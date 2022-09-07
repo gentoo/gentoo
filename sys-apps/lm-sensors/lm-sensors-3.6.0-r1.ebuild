@@ -220,7 +220,6 @@ pkg_postinst() {
 		elog "sure the sensors get initialized on the next startup."
 		elog ""
 		elog "Be warned, the probing of hardware in your system performed by"
-		elog "sensors-detect could freeze your system. Also make sure you read"
-		elog "the documentation before running ${PN} on IBM ThinkPads."
+		elog "sensors-detect could freeze your system."
 	fi
 }
