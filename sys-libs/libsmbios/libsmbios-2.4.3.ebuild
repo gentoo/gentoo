@@ -32,6 +32,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.28-cppunit-tests.patch"
 	"${FILESDIR}/${PN}-2.4.3-avoid_bashisms.patch" #715202
+	"${FILESDIR}/${PN}-2.4.3-insecure_rpaths.patch"
 )
 
 pkg_setup() {
