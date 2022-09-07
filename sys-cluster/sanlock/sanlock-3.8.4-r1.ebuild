@@ -25,9 +25,11 @@ DEPEND="
 	python? ( ${PYTHON_DEPS} )
 "
 RDEPEND="${DEPEND}"
+BDEPEND="sys-apps/which"
 
 PATCHES=(
 	"${FILESDIR}/sanlock-fence_sanlock-LDFLAGS.patch"
+	"${FILESDIR}/sanlock-3.8.4-implicit-func-decls.patch"
 )
 
 CONFIG_CHECK="~SOFT_WATCHDOG"
