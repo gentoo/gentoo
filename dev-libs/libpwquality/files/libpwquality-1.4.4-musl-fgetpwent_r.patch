@@ -1,0 +1,42 @@
+https://github.com/libpwquality/libpwquality/commit/9084c1b032161cdb53d5f66132a91bdc207faecf
+
+From: Noel Kuntze <noel.kuntze@thermi.consulting>
+Date: Mon, 24 May 2021 14:15:34 +0200
+Subject: [PATCH] pam_pwquality.c: Use pam_modutil_check_user_in_passwd instead
+ of fgetpwent_r (not available on musl)
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -97,6 +97,11 @@ if test "$enable_pam" != "no"; then
+       test $fail = 1 &&
+         AC_MSG_ERROR([You must install the PAM development package in order to compile libpwquality])
+   fi
++  AC_CHECK_FUNC(
++    [pam_modutil_check_user_in_passwd],
++    [AC_DEFINE([HAVE_PAM_CHECK_USER_IN_PASSWD], [], [have pam_modutil_check_user_in_passwd])],
++    []
++  )  
+ fi
+ 
+ if test "$enable_pam" = "yes"; then
+--- a/src/pam_pwquality.c
++++ b/src/pam_pwquality.c
+@@ -98,6 +98,9 @@ static int
+ check_local_user (pam_handle_t *pamh,
+                   const char *user)
+ {
++#ifdef HAVE_PAM_CHECK_USER_IN_PASSWD
++        return pam_modutil_check_user_in_passwd(pamh, user, NULL) == PAM_SUCCESS;
++#else
+         struct passwd pw, *pwp;
+         char buf[4096];
+         int found = 0;
+@@ -136,6 +139,7 @@ check_local_user (pam_handle_t *pamh,
+         } else {
+                 return found;
+         }
++#endif
+ }
+ 
+ PAM_EXTERN int
+
