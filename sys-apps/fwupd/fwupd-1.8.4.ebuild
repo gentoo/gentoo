@@ -195,9 +195,11 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
 	use minimal || udev_reload
 }
 
 pkg_postrm() {
+	xdg_pkg_postrm
 	use minimal || udev_reload
 }
