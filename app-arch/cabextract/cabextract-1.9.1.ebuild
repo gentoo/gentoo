@@ -27,10 +27,11 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="extras"
 
-DEPEND="${LIBMSPACK_DEPEND}
-	virtual/pkgconfig"
+DEPEND="${LIBMSPACK_DEPEND}"
 RDEPEND="${LIBMSPACK_DEPEND}
 	extras? ( dev-lang/perl )"
+BDEPEND="sys-devel/gettext
+	virtual/pkgconfig"
 
 src_prepare() {
 	if [[ ${PV} == "9999" ]] ; then
