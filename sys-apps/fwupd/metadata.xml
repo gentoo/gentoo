@@ -22,7 +22,6 @@
 		<flag name="modemmanager">Build and install Modem Manager plugin</flag>
 		<flag name="spi">Install Intel-SPI plugin</flag>
 		<flag name="synaptics">Install synaptics plugin</flag>
-		<flag name="thunderbolt">Install Thunderbolt plugin</flag>
 		<flag name="tpm">Install Trusted Platform Module plugin</flag>
 		<flag name="uefi">Enable UEFI support</flag>
 	</use>
