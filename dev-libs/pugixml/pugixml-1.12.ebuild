@@ -9,7 +9,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/zeux/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/zeux/${PN}/releases/download/v${PV}/${P}.tar.gz"
+	SRC_URI="https://github.com/zeux/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 ~arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 fi
 
@@ -18,3 +18,12 @@ HOMEPAGE="https://pugixml.org/ https://github.com/zeux/pugixml"
 
 LICENSE="MIT"
 SLOT="0"
+IUSE="test"
+RESTRICT="!test? ( test )"
+
+src_configure() {
+	local mycmakeargs=(
+		-D${PN^^}_BUILD_TESTS=$(usex test ON OFF)
+	)
+	cmake_src_configure
+}
