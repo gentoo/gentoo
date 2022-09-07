@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -22,8 +22,10 @@ RDEPEND="
 	text? ( || ( virtual/w3m www-client/elinks www-client/links www-client/lynx ) )
 	latex? ( dev-texlive/texlive-formatsextra )
 "
-# We only depend on flex when we patch the input lexer.
 DEPEND="${RDEPEND}"
+# We only depend on flex when we patch the input lexer.
+# We touch it in fix-warnings.patch.
+BDEPEND="sys-devel/flex"
 
 DOCS=( AUTHORS ChangeLog FAQ NEWS README THANKS )
 
