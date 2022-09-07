@@ -16,11 +16,9 @@ SRC_URI="https://xrootd.slac.stanford.edu/download/v${PV}/${P}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples fuse http kerberos +libxml2 python readline +server systemd test test-suite"
+IUSE="doc examples fuse http kerberos +libxml2 python readline +server systemd test"
 
-# Python tests currently require manual configuration and start-up of an xrootd server.
-# No actual build-time test suite for native code.
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="acct-group/xrootd
 	acct-user/xrootd
@@ -34,7 +32,6 @@ CDEPEND="acct-group/xrootd
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )
 	systemd? ( sys-apps/systemd:= )
-	test-suite? ( dev-util/cppunit )
 "
 DEPEND="${CDEPEND}"
 BDEPEND="
@@ -48,6 +45,7 @@ BDEPEND="
 		${DISTUTILS_DEPS}
 		test? ( >=dev-python/pytest-7.1.2[${PYTHON_USEDEP}] )
 	)
+	test? ( dev-util/cppunit )
 "
 RDEPEND="${CDEPEND}
 	dev-lang/perl
@@ -56,7 +54,6 @@ REQUIRED_USE="
 	http? ( kerberos )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	test? ( server )
-	test-suite? ( server )
 "
 
 PATCHES=(
@@ -95,7 +92,7 @@ src_configure() {
 		-DENABLE_LIBXML2=$(usex libxml2)
 		-DENABLE_PYTHON=$(usex python)
 		-DENABLE_READLINE=$(usex readline)
-		-DENABLE_TESTS=$(usex test-suite)
+		-DENABLE_TESTS=$(usex test)
 		-DENABLE_VOMS=no
 		-DFORCE_ENABLED=yes
 		-DXRDCL_ONLY=$(usex server "no" "yes")
@@ -129,7 +126,17 @@ python_test() {
 }
 
 src_test() {
-	use python && distutils-r1_src_test
+	pushd "${BUILD_DIR}/tests" > /dev/null || die
+	# There are more tests but since these are ones currently run by upstream in their CI,
+	# let's follow their example.
+	./common/test-runner ./XrdClTests/libXrdClTests.so "All Tests/UtilsTest/" || die
+	./common/test-runner ./XrdClTests/libXrdClTests.so "All Tests/SocketTest/" || die
+	./common/test-runner ./XrdClTests/libXrdClTests.so "All Tests/PollerTest/" || die
+	popd > /dev/null || die
+
+	# Python tests currently require manual configuration and start-up of an xrootd server.
+	# TODO: get this to run properly.
+	#use python && distutils-r1_src_test
 }
 
 src_install() {
@@ -169,5 +176,12 @@ src_install() {
 			docinto python
 			dodoc -r bindings/python/examples
 		fi
+	fi
+
+	if use test; then
+		for f in test-runner xrdshmap; do
+			rm "${ED}"/usr/bin/${f} || die "Failed to remove test helper ${f} from installed tree"
+		done
+		rm "${ED}"/usr/$(get_libdir)/libXrdClTest*.so || die "Failed to remove test libraries from installed tree"
 	fi
 }
