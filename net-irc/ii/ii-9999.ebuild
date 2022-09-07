@@ -1,7 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit git-r3 toolchain-funcs
 
 DESCRIPTION="A minimalist FIFO and filesystem-based IRC client"
@@ -11,13 +12,6 @@ EGIT_REPO_URI="https://git.suckless.org/ii"
 LICENSE="MIT"
 SLOT="0"
 
-src_prepare() {
-	default
-
-	sed -i -e '/^LDFLAGS/{s:-s::g; s:= :+= :g}' \
-		-e '/^CFLAGS/{s: -Os::g; s:= :+= :g}' config.mk || die
-}
-
 src_compile() {
 	emake CC="$(tc-getCC)"
 }
@@ -25,7 +19,7 @@ src_compile() {
 src_install() {
 	emake \
 		DESTDIR="${D}" \
-		PREFIX="${EPREFIX}"/usr \
-		DOCPREFIX="${EPREFIX}"/usr/share/doc/${PF} \
+		PREFIX="${EPREFIX}/usr" \
+		DOCPREFIX="${EPREFIX}/usr/share/doc/${PF}" \
 		install
 }
