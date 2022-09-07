@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-09-07)
+# Python 3.8 only package, no maintainer left.
+# Removal: 2022-10-07.  Bug #869107.
+www-apps/blohg
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-09-07)
 # Python 3.8 only package, 2 open bugs. Recommended to migrate to borg.
 # No upstream activity since 2015.
 # Bugs #674822, #830291, #832240
