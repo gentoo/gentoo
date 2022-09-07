@@ -1,0 +1,15 @@
+https://github.com/openMSX/openMSX/pull/1445
+https://bugs.gentoo.org/868726
+
+diff --git a/src/file/FileBase.hh b/src/file/FileBase.hh
+index ec17fb641..d7397f908 100644
+--- a/src/file/FileBase.hh
++++ b/src/file/FileBase.hh
+@@ -4,6 +4,7 @@
+ #include "MemBuffer.hh"
+ #include "span.hh"
+ #include <cstdint>
++#include <ctime>
+ #include <string>
+
+ namespace openmsx {

@@ -38,6 +38,8 @@ the following directories: /usr/share/${PN}/systemroms
 or ~/.openMSX/share/systemroms
 "
 
+PATCHES=( "${FILESDIR}/${P}-add-ctime.patch" )
+
 src_prepare() {
 	default
 	sed -i \
