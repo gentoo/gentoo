@@ -22,6 +22,17 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+src_prepare() {
+	default
+
+	if use elibc_musl; then
+		# locales on musl are non-functional (#834153)
+		# https://wiki.musl-libc.org/open-issues.html#Locale-limitations
+		sed -e 's|os.setlocale("pt_BR") or os.setlocale("ptb")|false|g' \
+			-i tests/literals.lua || die
+	fi
+}
+
 src_configure() {
 	use deprecated && append-cppflags -DLUA_COMPAT_5_3
 	econf $(use_with readline)
