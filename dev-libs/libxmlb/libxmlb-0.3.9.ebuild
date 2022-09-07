@@ -40,6 +40,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.3.9-no_installed_tests.patch
+)
+
 python_check_deps() {
 	has_version -b "dev-python/setuptools[${PYTHON_USEDEP}]"
 }
