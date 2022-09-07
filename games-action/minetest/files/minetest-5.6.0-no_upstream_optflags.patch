@@ -1,0 +1,15 @@
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -756,11 +756,10 @@
+ 		endif()
+ 	endif()
+ 
+-	set(CMAKE_CXX_FLAGS_RELEASE "-DNDEBUG ${RELEASE_WARNING_FLAGS} ${OTHER_FLAGS} -pipe -funroll-loops")
++	set(CMAKE_CXX_FLAGS_RELEASE "-DNDEBUG ${RELEASE_WARNING_FLAGS} ${OTHER_FLAGS}")
+ 	if(CMAKE_SYSTEM_NAME MATCHES "(Darwin|BSD|DragonFly)")
+ 		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Os")
+ 	else()
+-		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -fomit-frame-pointer")
+ 		if(CMAKE_SYSTEM_NAME STREQUAL "Linux"
+ 				AND CMAKE_CXX_COMPILER_ID STREQUAL "Clang"
+ 				AND CMAKE_CXX_COMPILER_VERSION MATCHES "^9\\.")

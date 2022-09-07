@@ -3,6 +3,7 @@
 
 EAPI=8
 
+CMAKE_BUILD_TYPE="Release"
 LUA_COMPAT=( lua5-1 luajit )
 
 inherit cmake flag-o-matic lua-single systemd xdg
@@ -64,6 +65,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.4.1-system_puc_lua.patch
+	"${FILESDIR}"/${PN}-5.6.0-no_upstream_optflags.patch
 )
 
 src_prepare() {
