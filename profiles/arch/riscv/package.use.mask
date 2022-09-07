@@ -1,6 +1,11 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jakov Smolić <jsmolic@gentoo.org> (2022-09-07)
+# Unkeyworded dependencies (xen-tools, aws stack), masking to reduce
+# the dependency graph
+net-analyzer/netdata xen kinesis
+
 # Jakov Smolić <jsmolic@gentoo.org> (2022-08-27)
 # depends on <sys-libs/libfaketime-0.9.7 which is not available on riscv
 app-admin/rsyslog jemalloc
