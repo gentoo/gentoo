@@ -19,21 +19,23 @@ IUSE="test"
 
 RESTRICT="!test? ( test )"
 
-DEPEND=">=dev-util/opencl-headers-${PV}
-	!dev-libs/ocl-icd"
-RDEPEND="${DEPEND}"
+RDEPEND="!dev-libs/ocl-icd"
+# Need an opencl-headers ebuild which installs cmake package configs
+# TODO: revert to the usual >=${PV} come next upstream version
+DEPEND="${RDEPEND}
+	>=dev-util/opencl-headers-2022.05.18-r1"
 
 S="${WORKDIR}/${MY_P}"
 
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)
-		-DOPENCL_ICD_LOADER_HEADERS_DIR="${EPREFIX}/usr/include"
 	)
 	cmake_src_configure
 }
 
 multilib_src_test() {
-	OCL_ICD_FILENAMES="${BUILD_DIR}/test/driver_stub/libOpenCLDriverStub.so" \
+	local -x OCL_ICD_FILENAMES="${BUILD_DIR}/test/driver_stub/libOpenCLDriverStub.so"
+	local -x OCL_ICD_VENDORS="/dev/null"
 	cmake_src_test
 }
