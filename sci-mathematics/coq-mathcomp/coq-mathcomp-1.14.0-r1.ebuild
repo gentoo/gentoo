@@ -13,7 +13,7 @@ LICENSE="CeCILL-B"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
 
-RDEPEND=">=sci-mathematics/coq-8.13.0:="
+RDEPEND=">=sci-mathematics/coq-8.13.0:= <sci-mathematics/coq-8.16.0:="
 DEPEND="${RDEPEND}"
 
 # > make jobserver unavailable
