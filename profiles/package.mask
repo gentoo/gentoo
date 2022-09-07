@@ -76,7 +76,7 @@ dev-python/zxcvbn
 # Removal on 2022-09-29.
 x11-drivers/xf86-video-glint
 
-# Hans de Graaff <graaff@gentoo.org) (2022-08-27)
+# Hans de Graaff <graaff@gentoo.org> (2022-08-27)
 # No longer maintained upstream and more modern alternatives such as
 # www-servers/puma are available.
 # Removal in 30 days.
@@ -264,7 +264,7 @@ net-misc/calicoctl
 # Removal in 30 days, bug #631140
 net-analyzer/smokeping
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org>
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-08-12)
 # Masked for testing, depends on dev-qt/qt*:6
 # Pyside6 is stuck on python3_10 for the moment being
 dev-python/shiboken6
