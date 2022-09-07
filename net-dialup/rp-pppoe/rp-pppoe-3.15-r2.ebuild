@@ -26,6 +26,7 @@ RDEPEND="
 	tk? ( dev-lang/tk:= )
 "
 DEPEND=">=sys-kernel/linux-headers-2.6.25
+	elibc_musl? ( net-libs/ppp-defs )
 	${RDEPEND}"
 
 DOC_CONTENTS="Use pppoe-setup to configure your dialup connection"
