@@ -44,6 +44,8 @@ src_prepare() {
 	# Don't build yum-plugin - we don't need it
 	sed '/yum-plugin/d' -i Makefile.am || die
 
+	python_fix_shebang src/pyunit/test*.py
+
 	eautoreconf
 }
 
@@ -66,7 +68,7 @@ src_install() {
 
 	if use python ; then
 		python_scriptinto /usr/sbin
-		python_doscript "${ED}"/usr/sbin/smbios-{{keyboard,thermal,token,wakeup,wireless}-ctl,lcd-brightness,passwd,sys-info}
+		python_doscript "${ED}"/usr/sbin/smbios-{{battery,keyboard,thermal,token,wakeup,wireless}-ctl,lcd-brightness,passwd,sys-info}
 	fi
 
 	insinto /usr/include/
