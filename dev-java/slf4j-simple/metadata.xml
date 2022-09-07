@@ -6,7 +6,7 @@
 		<name>Java</name>
 	</maintainer>
 	<upstream>
-		<doc>http://www.slf4j.org/docs.html</doc>
-		<bugs-to>http://www.slf4j.org/bug-reporting.html</bugs-to>
+		<doc>https://www.slf4j.org/docs.html</doc>
+		<bugs-to>https://www.slf4j.org/bug-reporting.html</bugs-to>
 	</upstream>
 </pkgmetadata>
