@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matthias Schwarzott <zzam@gentoo.org> (2022-09-08)
+# Breaks kernel builds with BTF enabled.
+# Bug #868762.
+=dev-util/pahole-1.24
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-09-07)
 # Python 3.8 only package, no maintainer left.
 # Removal: 2022-10-07.  Bug #869107.
