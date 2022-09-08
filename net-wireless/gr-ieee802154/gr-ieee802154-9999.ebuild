@@ -26,6 +26,7 @@ SLOT="0/${PV}"
 RDEPEND="net-wireless/gnuradio:0=[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-libs/boost:=[python,${PYTHON_USEDEP}]
+		dev-python/pybind11[${PYTHON_USEDEP}]
 	')
 	dev-libs/gmp
 	sci-libs/volk:=
