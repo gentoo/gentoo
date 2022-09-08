@@ -22,8 +22,8 @@ RDEPEND="
 	dev-libs/libpcre[cxx]
 	>=net-misc/curl-7.23.0
 	sys-libs/ncurses:=
-	sys-libs/readline:0=
-	sys-libs/zlib:0=
+	sys-libs/readline:=
+	sys-libs/zlib:=
 	pcap? ( net-analyzer/wireshark[tshark] )"
 # The tests use ssh-keygen and use dsa and rsa keys (which is why ssl is required)
 DEPEND="${RDEPEND}
