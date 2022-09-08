@@ -13,7 +13,7 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.com/inkscape/inkscape.git"
 else
 	SRC_URI="https://media.inkscape.org/dl/resources/file/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~riscv ~sparc"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~riscv ~sparc"
 fi
 
 DESCRIPTION="SVG based generic vector-drawing program"
