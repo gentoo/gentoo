@@ -11,7 +11,7 @@ LICENSE="metapackage"
 SLOT="0"
 
 if [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 fi
 
 IUSE="doc minimal"
