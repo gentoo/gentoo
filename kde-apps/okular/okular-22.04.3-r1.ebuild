@@ -47,7 +47,7 @@ DEPEND="
 	djvu? ( app-text/djvu )
 	epub? ( app-text/ebook-tools )
 	image-backend? (
-		>=dev-qt/qtgui-${QTMIN}:5[gif,jpeg,png]
+		>=dev-qt/qtgui-${QTMIN}:5[gif(+),jpeg,png]
 		>=kde-apps/libkexiv2-${PVCUT}:5
 	)
 	markdown? ( >=app-text/discount-2.2.7-r1 )
