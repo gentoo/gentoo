@@ -1,0 +1,27 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+# /etc/conf.d/ipmievd
+
+# Interfaces:
+#   open      Linux OpenIPMI Interface
+#   imb       Intel IMB Interface
+#   bmc       IPMI v2.0 BMC interface
+#   lan       IPMI v1.5 LAN Interface
+#   lanplus   IPMI v2.0 RMCP+ LAN Interface
+
+INTERFACE="open"
+
+# Commands:
+#   open   Use OpenIPMI for asyncronous notification of events
+#   sel    Poll SEL for notification of events
+#
+# 'pidfile=...' will be appended!
+COMMAND="open daemon"
+
+# Options.
+
+OPTIONS=""
+
+# Device number:
+#  Used to target a specific BMC on a multi-node, multi-BMC system via the open interface
+DEVICENUM=0

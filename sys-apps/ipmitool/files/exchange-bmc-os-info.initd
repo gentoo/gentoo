@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+# /etc/init.d/exchange-bmc-os-info
+
+name="exchange-bmc-os-info"
+description="Exchange Information between BMC and OS"
+command=/usr/libexec/exchange-bmc-os-info
+command_args=""
+: "${DEVICENUM:=0}" # which BMC
+required_files=/dev/ipmi${DEVICENUM}
+
+depend() {
+  use hostname modules
+  keyword -docker -lxc -prefix -systemd-nspawn
+}
+
+start() {
+  "${command}" start
+}
+stop() {
+  "${command}" stop
+}
