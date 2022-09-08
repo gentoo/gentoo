@@ -51,6 +51,10 @@ RESTRICT="
 	!test? ( test )
 "
 
+PATCHES=(
+	"${FILESDIR}/pax-utils-1.3.5-man-reorder-xmlto-arguments.patch"
+)
+
 pkg_setup() {
 	if use test || use python; then
 		python-single-r1_pkg_setup
