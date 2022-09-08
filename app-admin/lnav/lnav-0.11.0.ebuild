@@ -25,7 +25,11 @@ RDEPEND="
 	sys-libs/readline:0=
 	sys-libs/zlib:0=
 	pcap? ( net-analyzer/wireshark[tshark] )"
+# Once we fix https://bugs.gentoo.org/show_bug.cgi?id=813444, we can change net-misc/openssh to be
+# conditional on the test USE flag. Unfortunately, for now lnav runs some test code unconditionally
+# that uses ssh-keygen, so that's why we unconditionally depend on it at the moment.
 DEPEND="${RDEPEND}
+	net-misc/openssh
 	test? ( dev-cpp/doctest )"
 
 DOCS=( AUTHORS NEWS README )
