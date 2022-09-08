@@ -4,8 +4,9 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8,9,10,11} )
+LLVM_MAX_SLOT=14
 
-inherit flag-o-matic linux-info pam python-single-r1 systemd tmpfiles
+inherit flag-o-matic linux-info llvm pam python-single-r1 systemd tmpfiles
 
 KEYWORDS=""
 
@@ -85,6 +86,8 @@ selinux? ( sec-policy/selinux-postgresql )
 "
 
 pkg_setup() {
+	use llvm && llvm_pkg_setup
+
 	use server && CONFIG_CHECK="~SYSVIPC" linux-info_pkg_setup
 
 	use python && python-single-r1_pkg_setup
