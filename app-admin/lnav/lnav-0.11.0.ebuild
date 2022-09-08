@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="A curses-based tool for viewing and analyzing log files"
 HOMEPAGE="https://lnav.org"
@@ -47,6 +47,8 @@ src_prepare() {
 }
 
 src_configure() {
+	filter-lto
+
 	econf \
 		--disable-static \
 		--with-ncurses \
