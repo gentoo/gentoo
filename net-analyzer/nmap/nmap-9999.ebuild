@@ -6,7 +6,7 @@ EAPI=8
 LUA_COMPAT=( lua5-3 )
 LUA_REQ_USE="deprecated"
 PYTHON_COMPAT=( python3_{8..11} )
-inherit autotools flag-o-matic lua-single python-any-r1 toolchain-funcs
+inherit autotools lua-single python-any-r1 toolchain-funcs
 
 DESCRIPTION="Network exploration tool and security / port scanner"
 HOMEPAGE="https://nmap.org/"
@@ -104,10 +104,6 @@ src_prepare() {
 src_configure() {
 	export ac_cv_path_PYTHON="${PYTHON}"
 	export am_cv_pathless_PYTHON="${EPYTHON}"
-
-	# Workaround for https://github.com/nmap/nmap/issues/2516
-	# bug #868483
-	append-cppflags -DOPENSSL_API_COMPAT=10101
 
 	# The bundled libdnet is incompatible with the version available in the
 	# tree, so we cannot use the system library here.
