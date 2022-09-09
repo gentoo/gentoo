@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools multilib-minimal
+inherit autotools
 
 MY_PN="iODBC"
 
@@ -17,12 +17,8 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="gtk"
 
-RDEPEND="gtk? ( x11-libs/gtk+:2[${MULTILIB_USEDEP}] )"
+RDEPEND="gtk? ( x11-libs/gtk+:2 )"
 DEPEND="${RDEPEND}"
-
-DOCS=( AUTHORS NEWS README )
-
-MULTILIB_CHOST_TOOLS=( /usr/bin/iodbc-config )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.52.12-multilib.patch
@@ -44,8 +40,8 @@ src_prepare() {
 	eautoreconf
 }
 
-multilib_src_configure() {
-	ECONF_SOURCE="${S}" econf \
+src_configure() {
+	econf \
 		--disable-static \
 		--enable-odbc3 \
 		--enable-pthreads \
@@ -54,8 +50,8 @@ multilib_src_configure() {
 		$(use_enable gtk gui)
 }
 
-multilib_src_install_all() {
-	einstalldocs
+src_install() {
+	default
 
 	find "${ED}" -name '*.la' -delete || die
 
