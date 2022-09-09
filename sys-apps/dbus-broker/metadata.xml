@@ -6,6 +6,7 @@
 		<name>Mike Gilbert</name>
 	</maintainer>
 	<use>
+		<flag name="apparmor">Enable AppArmor support</flag>
 		<flag name="launcher">dbus-daemon compatibility launcher</flag>
 	</use>
 </pkgmetadata>

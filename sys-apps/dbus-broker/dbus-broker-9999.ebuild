@@ -18,9 +18,12 @@ HOMEPAGE="https://github.com/bus1/dbus-broker/wiki"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="audit doc +launcher selinux"
+IUSE="apparmor audit doc +launcher selinux"
 
 DEPEND="
+	apparmor? (
+		>=sys-libs/libapparmor-3.0
+	)
 	audit? (
 		>=sys-process/audit-3.0
 		>=sys-libs/libcap-ng-0.6
@@ -48,6 +51,7 @@ fi
 
 src_configure() {
 	local emesonargs=(
+		$(meson_use apparmor)
 		-Daudit=$(usex audit true false)
 		-Ddocs=$(usex doc true false)
 		-Dlauncher=$(usex launcher true false)
