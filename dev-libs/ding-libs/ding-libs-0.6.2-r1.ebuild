@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit multilib-minimal
-
 DESCRIPTION="Set of utility libraries (mostly used by sssd)"
 HOMEPAGE="https://github.com/SSSD/ding-libs"
 SRC_URI="https://github.com/SSSD/ding-libs/releases/download/${PV}/${P}.tar.gz"
@@ -18,13 +16,9 @@ RESTRICT="!test? ( test )"
 DEPEND="test? ( dev-libs/check )"
 BDEPEND="virtual/pkgconfig"
 
-multilib_src_configure() {
-	ECONF_SOURCE="${S}" econf
-}
+src_install() {
+	default
 
-multilib_src_install_all() {
-	einstalldocs
-
-	# no static archives
+	# No static archives
 	find "${ED}" -name '*.la' -delete || die
 }
