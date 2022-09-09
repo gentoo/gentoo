@@ -6,8 +6,8 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="A PIC16, PIC18 and dsPIC microcontroller programmer software for the serial port"
-HOMEPAGE="http://www.iki.fi/hyvatti/pic/picprog.html"
-SRC_URI="http://www.iki.fi/hyvatti/pic/${P}.tar.gz"
+HOMEPAGE="http://hyvatti.fi/~jaakko/pic/picprog.html"
+SRC_URI="http://hyvatti.fi/~jaakko/pic/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
