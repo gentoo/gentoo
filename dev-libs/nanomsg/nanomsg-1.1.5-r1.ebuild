@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib
+inherit cmake
 
 DESCRIPTION="High-performance messaging interface for distributed applications"
 HOMEPAGE="https://nanomsg.org/"
@@ -14,9 +14,9 @@ SLOT="0/5.0.0"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~riscv x86"
 IUSE="doc"
 
-DEPEND="doc? ( dev-ruby/asciidoctor )"
+BDEPEND="doc? ( dev-ruby/asciidoctor )"
 
-multilib_src_prepare() {
+src_prepare() {
 	# Old CPUs like HPPA fails test because of timeout
 	sed -i \
 		-e '/inproc_shutdown/s/5/80/' \
@@ -26,20 +26,11 @@ multilib_src_prepare() {
 	cmake_src_prepare
 }
 
-multilib_src_configure() {
+src_configure() {
 	local mycmakeargs=(
 		-DNN_STATIC_LIB=OFF
+		-DNN_ENABLE_DOC=$(usex doc)
 	)
-	if multilib_is_native_abi; then
-		mycmakeargs+=(
-			-DNN_ENABLE_DOC=$(usex doc ON OFF)
-		)
-	else
-		mycmakeargs+=(
-			-DNN_ENABLE_DOC=OFF
-			-DNN_TOOLS=OFF
-			-DNN_ENABLE_NANOCAT=OFF
-		)
-	fi
+
 	cmake_src_configure
 }
