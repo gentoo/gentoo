@@ -1,0 +1,26 @@
+https://invent.kde.org/plasma/plasma-workspace/-/commit/c7ba560ccaac5e469cb2d6bf66c39e1acf967454
+https://mail.kde.org/pipermail/distributions/2022-September/001287.html
+
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sun, 21 Aug 2022 16:33:50 +0200
+Subject: [PATCH] [widgetexplorer] Don't recurse into applet's containments
+
+The intention of this code appears to be finding system tray applets, since the systemtray is a containment within another applet/containment
+
+However the code causes an infinit recursion since we are calling addContainment on the same containment again
+
+The recursion also is unnecessary since corona->containments() already lists the system tray containment, so we don't need to find it by recursing through the panel's children
+--- a/components/shellprivate/widgetexplorer/widgetexplorer.cpp
++++ b/components/shellprivate/widgetexplorer/widgetexplorer.cpp
+@@ -280,10 +280,6 @@ void WidgetExplorerPrivate::addContainment(Containment *containment)
+ 
+     foreach (Applet *applet, containment->applets()) {
+         if (applet->pluginMetaData().isValid()) {
+-            Containment *childContainment = applet->property("containment").value<Containment *>();
+-            if (childContainment) {
+-                addContainment(childContainment);
+-            }
+             runningApplets[applet->pluginMetaData().pluginId()]++;
+         } else {
+             qDebug() << "Invalid plugin metadata. :(";
+GitLab
