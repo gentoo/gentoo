@@ -19,6 +19,14 @@ RESTRICT="!test? ( test )"
 #  --enable-tests          enable libgpiod tests [default=no]
 #  --enable-bindings-cxx   enable C++ bindings [default=no]
 #  --enable-bindings-python
+DEPEND="
+	test? (
+		>=dev-libs/glib-2.50
+		>=sys-apps/kmod-18
+		>=sys-apps/util-linux-2.33.1
+		>=virtual/libudev-215
+	)
+"
 
 pkg_setup() {
 	CONFIG_CHECK="~GPIO_CDEV_V1"
