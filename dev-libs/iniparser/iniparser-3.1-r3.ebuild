@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools multilib-minimal
+inherit autotools
 
 DESCRIPTION="A free stand-alone ini file parsing library"
 HOMEPAGE="http://ndevilla.free.fr/iniparser/"
@@ -31,18 +31,13 @@ src_prepare() {
 	eautoreconf
 }
 
-multilib_src_configure() {
-	ECONF_SOURCE="${S}" econf \
-		--disable-static
-}
-
-multilib_src_install_all() {
+src_install() {
 	if use doc; then
 		emake -C doc
 		HTML_DOCS=( html/. )
 	fi
 
-	einstalldocs
+	default
 
 	if use examples; then
 		docinto examples
@@ -50,6 +45,6 @@ multilib_src_install_all() {
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
 
-	# no static archives
+	# No static archives
 	find "${ED}" -name '*.la' -delete || die
 }
