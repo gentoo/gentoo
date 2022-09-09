@@ -336,10 +336,14 @@ setup_target_flags() {
 				use stack-realign && export CFLAGS_x86+=" -mstackrealign"
 
 				# Workaround for bug #823780.
+				# Need to save/restore CC because earlier on, we stuff it full of CFLAGS, and tc-getCPP doesn't like that.
+				CC_mangled=${CC}
+				CC=${glibc__GLIBC_CC}
 				if tc-is-gcc && (($(gcc-major-version) == 11)) && (($(gcc-minor-version) <= 2)) && (($(gcc-micro-version) == 0)) ; then
 					export CFLAGS_x86="${CFLAGS_x86} -mno-avx512f"
 					einfo "Auto adding -mno-avx512f to CFLAGS_x86 for buggy GCC version (bug #823780) (ABI=${ABI})"
 				fi
+				CC=${CC_mangled}
 			fi
 		;;
 		mips)
