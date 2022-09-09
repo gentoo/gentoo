@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools multilib-minimal
+inherit autotools
 
 DESCRIPTION="MPEG-1 and MPEG-4 video encoding library"
 HOMEPAGE="http://fame.sourceforge.net/"
@@ -33,15 +33,16 @@ src_prepare() {
 	eautoreconf
 }
 
-multilib_src_configure() {
+src_configure() {
 	local myeconfargs=(
-		--disable-static
 		$(use_enable cpu_flags_x86_mmx mmx)
 	)
-	ECONF_SOURCE=${S} econf "${myeconfargs[@]}"
+
+	econf "${myeconfargs[@]}"
 }
 
-multilib_src_install_all() {
-	einstalldocs
+src_install() {
+	default
+
 	find "${ED}" -type f -name '*.la' -delete || die
 }
