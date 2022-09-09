@@ -49,6 +49,7 @@ src_configure() {
 		--disable-compiler-opt \
 		--without-fuse3 \
 		--without-go \
+		--without-java \
 		$(use_enable numa) \
 		$(use_enable openmp)
 }
