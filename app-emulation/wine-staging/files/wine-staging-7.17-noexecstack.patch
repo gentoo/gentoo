@@ -1,0 +1,7 @@
+Also write GNU-stack note on dummy files used for stub libraries.
+--- a/tools/winebuild/import.c
++++ b/tools/winebuild/import.c
+@@ -1676,2 +1676,3 @@
+         output( "\t.text\n" );
++        output_gnu_stack_note();
+     }
