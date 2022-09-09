@@ -39,3 +39,8 @@ src_configure() {
 
 	econf "${myeconfargs[@]}"
 }
+
+src_test() {
+	# -j1 for bug #869278
+	emake -j1 check
+}
