@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools multilib-minimal
+inherit autotools
 
 DESCRIPTION="security-aware parser for the HTTP protocol and the related bits and pieces"
 HOMEPAGE="https://github.com/OISF/libhtp"
@@ -22,14 +22,12 @@ src_prepare() {
 	eautoreconf
 }
 
-multilib_src_configure() {
+src_configure() {
 	# The debug configure logic is broken.
-	ECONF_SOURCE=${S} \
-	econf \
-		$(usex debug '--enable-debug' '') \
-		--disable-static
+	econf $(usev debug '--enable-debug')
 }
 
-multilib_src_install_all() {
+src_install() {
+	default
 	find "${ED}" -name '*.la' -delete || die "Failed to remove .la files"
 }
