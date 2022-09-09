@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools multilib-minimal
+inherit autotools
 
 MY_MAJ=$(ver_cut 1-2)
 
@@ -30,14 +30,13 @@ src_prepare() {
 	eautoreconf
 }
 
-multilib_src_configure() {
-	ECONF_SOURCE="${S}" econf \
-		--disable-static \
+src_configure() {
+	econf \
 		--enable-resid-install \
 		--enable-shared
 }
 
-multilib_src_install() {
+src_install() {
 	default
 
 	dodoc "${S}"/VC_CC_SUPPORT.txt
