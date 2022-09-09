@@ -3,14 +3,10 @@
 
 EAPI=8
 
-inherit cmake-multilib
+inherit cmake
 
 DESCRIPTION="Small, safe and fast formatting library"
 HOMEPAGE="https://github.com/fmtlib/fmt"
-
-LICENSE="MIT"
-IUSE="test"
-SLOT="0/${PV}"
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/fmtlib/fmt.git"
@@ -21,11 +17,12 @@ else
 	S="${WORKDIR}/fmt-${PV}"
 fi
 
-DEPEND=""
-RDEPEND=""
+LICENSE="MIT"
+SLOT="0/${PV}"
+IUSE="test"
 RESTRICT="!test? ( test )"
 
-multilib_src_configure() {
+src_configure() {
 	local mycmakeargs=(
 		-DFMT_CMAKE_DIR="$(get_libdir)/cmake/fmt"
 		-DFMT_LIB_DIR="$(get_libdir)"
