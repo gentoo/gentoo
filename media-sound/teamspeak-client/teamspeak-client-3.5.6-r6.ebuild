@@ -27,7 +27,7 @@ BDEPEND=">=dev-util/patchelf-0.10"
 RDEPEND="
 	app-arch/snappy:0/1
 	dev-libs/openssl:0
-	dev-libs/quazip:0/1
+	dev-libs/quazip:0/1[qt5(+)]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5[accessibility,dbus,X(-)]
 	dev-qt/qtnetwork:5
