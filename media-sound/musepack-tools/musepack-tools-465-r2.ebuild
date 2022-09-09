@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit cmake-multilib
+inherit cmake
 
 # svn export http://svn.musepack.net/libmpc/trunk musepack-tools-${PV}
 # tar -cjf musepack-tools-${PV}.tar.bz2 musepack-tools-${PV}
@@ -17,11 +17,14 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 
 DEPEND="
-	>=media-libs/libcuefile-${PV}[${MULTILIB_USEDEP}]
-	>=media-libs/libreplaygain-${PV}[${MULTILIB_USEDEP}]"
-RDEPEND="${DEPEND}
+	>=media-libs/libcuefile-${PV}
+	>=media-libs/libreplaygain-${PV}
+"
+RDEPEND="
+	${DEPEND}
 	!media-libs/libmpcdec
-	!media-libs/libmpcdecsv7"
+	!media-libs/libmpcdecsv7
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
