@@ -33,7 +33,8 @@ DEPEND="
 	${RDEPEND}
 	nls? ( sys-devel/gettext )
 "
-BDEPEND="virtual/pkgconfig"
+BDEPEND="sys-devel/gettext
+	virtual/pkgconfig"
 
 REQUIRED_USE="
 	agrep? ( approx )
