@@ -103,13 +103,13 @@ if [[ ${PV} == *_p* ]] ; then
 		unset my_patch_index
 	fi
 
-	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-6.3_p20220903-musl-xopen_source.patch.xz"
+	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-6.3_p20220903-patches.tar.xz"
 fi
 
 LICENSE="MIT"
 # The subslot reflects the SONAME.
 SLOT="0/6"
-#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="ada +cxx debug doc gpm minimal profile +stack-realign static-libs test tinfo trace"
 RESTRICT="!test? ( test )"
 
@@ -125,28 +125,32 @@ BDEPEND="verify-sig? ( sec-keys/openpgp-keys-thomasdickey )"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	${UPSTREAM_PATCHES[@]}
+	"${UPSTREAM_PATCHES[@]}"
 
-	"${FILESDIR}/${PN}-5.7-nongnu.patch"
-	"${FILESDIR}/${PN}-6.0-rxvt-unicode-9.15.patch" # bug #192083, bug #383871
-	"${FILESDIR}/${PN}-6.0-pkg-config.patch"
-	"${FILESDIR}/${PN}-6.0-ticlib.patch" # bug #557360
-	"${FILESDIR}/${PN}-6.2_p20210123-cppflags-cross.patch" # bug #601426
-	"${WORKDIR}/${PN}-6.3_p20220903-musl-xopen_source.patch" # bug #869128
+	# When rebasing Gentoo's patchset, please use git from a clean
+	# src_unpack with upstream patches already applied. git am
+	# the existing patchset and rebase as required. This makes it easier
+	# to manage future rebasing & adding new patches.
+	#
+	# For the same reasons, please include the original configure.in changes,
+	# NOT just the generated results!
+	"${WORKDIR}"/${PN}-6.3_p20220903-patches
 )
 
 src_unpack() {
-	# Can drop this implementation once 6.3_p20220903-musl-xopen_source.patch is dropped
-	local file
-	for file in ${A} ; do
-		if [[ ${file} == ${MY_P}.tar.gz ]] ; then
-			verify-sig_verify_detached "${DISTDIR}"/${file} "${DISTDIR}"/${file}.sig
-		else
-			[[ ${file} == @(*musl-xopen_source.patch.xz|*.asc|*.sig) ]] && continue
+	# Avoid trying to verify our own patchset tarball, there's no point
+	if use verify-sig ; then
+		local file
+		for file in ${A} ; do
+			if [[ ${file} == ${MY_P}.tar.gz ]] ; then
+				verify-sig_verify_detached "${DISTDIR}"/${file} "${DISTDIR}"/${file}.sig
+			else
+				[[ ${file} == @(patches.tar.xz|*.asc|*.sig) ]] && continue
 
-			verify-sig_verify_detached "${DISTDIR}"/${file} "${DISTDIR}"/${file}.asc
-		fi
-	done
+				verify-sig_verify_detached "${DISTDIR}"/${file} "${DISTDIR}"/${file}.asc
+			fi
+		done
+	fi
 
 	default
 }
