@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools multilib-minimal
+inherit autotools
 
 MY_PN="${PN%-c}"
 DESCRIPTION="The ANTLR3 C Runtime"
@@ -19,20 +19,16 @@ IUSE="debug debugger doc"
 BDEPEND="doc? ( app-doc/doxygen[dot] )"
 
 PATCHES=( "${FILESDIR}/3.5-cflags.patch" )
-MULTILIB_WRAPPED_HEADERS=( /usr/include/antlr3config.h )
-DOCS=( AUTHORS ChangeLog NEWS README )
 
 src_prepare() {
 	default
+
 	sed -i '/^QUIET/s/NO/YES/' doxyfile || die
 	eautoreconf
-	multilib_copy_sources
 }
 
-multilib_src_configure() {
+src_configure() {
 	local econfargs=(
-		--enable-shared
-		--disable-static
 		$(use_enable debug debuginfo)
 		$(use_enable debugger antlrdebug)
 	)
@@ -42,24 +38,23 @@ multilib_src_configure() {
 		*) econfargs+=( --disable-64bit ) ;;
 	esac
 
-	econf "${econfargs[@]}"
+	CONFIG_SHELL="${BROOT}"/bin/bash econf "${econfargs[@]}"
 }
 
 src_compile() {
-	multilib-minimal_src_compile
+	default
 
-	if use doc; then
+	if use doc ; then
 		einfo "Generating API documentation ..."
-		cd "${S}" || die
 		doxygen -u doxyfile || die
 		doxygen doxyfile || die
+
+		HTML_DOCS=( "${S}"/api/ )
 	fi
 }
 
 src_install() {
-	use doc && HTML_DOCS=( "${S}/api/" )
-
-	multilib-minimal_src_install
+	default
 
 	find "${ED}" -name '*.la' -delete || die
 }
