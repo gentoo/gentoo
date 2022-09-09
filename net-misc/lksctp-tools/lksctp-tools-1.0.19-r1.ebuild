@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
-inherit flag-o-matic autotools linux-info multilib-minimal
+inherit flag-o-matic autotools linux-info
 
 DESCRIPTION="Tools for Linux Kernel Stream Control Transmission Protocol implementation"
 HOMEPAGE="http://lksctp.sourceforge.net/"
@@ -29,11 +29,9 @@ src_prepare() {
 	default
 
 	eautoreconf
-
-	multilib_copy_sources
 }
 
-multilib_src_configure() {
+src_configure() {
 	append-flags -fno-strict-aliasing
 
 	local myeconfargs=(
@@ -44,7 +42,7 @@ multilib_src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
-multilib_src_install_all() {
+src_install() {
 	default
 
 	dodoc doc/*txt
