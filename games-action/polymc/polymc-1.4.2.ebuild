@@ -33,9 +33,9 @@ fi
 
 # Apache-2.0 for MultiMC (PolyMC is forked from it)
 # GPL-3 for PolyMC
-# LGPL-3 for libnbtplusplus
+# LGPL-3+ for libnbtplusplus
 # See the rest of PolyMC's libraries at https://github.com/PolyMC/PolyMC/tree/develop/libraries
-LICENSE="Apache-2.0 Boost-1.0 BSD BSD-2 GPL-2+ GPL-3 LGPL-3 OFL-1.1 MIT"
+LICENSE="Apache-2.0 BSD BSD-2 GPL-2+ GPL-3 ISC LGPL-2.1+ LGPL-3+ MIT"
 
 SLOT="0"
 
