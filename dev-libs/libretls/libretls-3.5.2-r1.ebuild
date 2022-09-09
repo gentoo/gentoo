@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit multilib-minimal
-
 DESCRIPTION="Port of libtls from LibreSSL to OpenSSL"
 HOMEPAGE="https://git.causal.agency/libretls/about/"
 SRC_URI="https://causal.agency/libretls/${P}.tar.gz"
@@ -23,14 +21,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-multilib_src_configure() {
-	local myconf=(
-		--disable-static
-	)
-	ECONF_SOURCE="${S}" econf "${myconf[@]}"
-}
-
-multilib_src_install() {
+src_install() {
 	default
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
