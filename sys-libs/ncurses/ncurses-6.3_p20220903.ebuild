@@ -14,6 +14,11 @@ SRC_URI="mirror://gnu/ncurses/${MY_P}.tar.gz
 	https://invisible-island.net/archives/${PN}/${MY_P}.tar.gz
 	verify-sig? ( mirror://gnu/ncurses/${MY_P}.tar.gz.sig )"
 
+GENTOO_PATCH_DEV=sam
+GENTOO_PATCH_PV=6.3_p20220903
+GENTOO_PATCH_NAME=${PN}-${GENTOO_PATCH_PV}-patches
+
+# Populated below in a loop. Do not add patches manually here.
 UPSTREAM_PATCHES=()
 
 if [[ ${PV} == *_p* ]] ; then
@@ -103,13 +108,13 @@ if [[ ${PV} == *_p* ]] ; then
 		unset my_patch_index
 	fi
 
-	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-6.3_p20220903-patches.tar.xz"
+	SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${GENTOO_PATCH_NAME}.tar.xz"
 fi
 
 LICENSE="MIT"
 # The subslot reflects the SONAME.
 SLOT="0/6"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="ada +cxx debug doc gpm minimal profile +stack-realign static-libs test tinfo trace"
 RESTRICT="!test? ( test )"
 
@@ -134,7 +139,7 @@ PATCHES=(
 	#
 	# For the same reasons, please include the original configure.in changes,
 	# NOT just the generated results!
-	"${WORKDIR}"/${PN}-6.3_p20220903-patches
+	"${WORKDIR}"/${GENTOO_PATCH_NAME}
 )
 
 src_unpack() {
@@ -145,7 +150,7 @@ src_unpack() {
 			if [[ ${file} == ${MY_P}.tar.gz ]] ; then
 				verify-sig_verify_detached "${DISTDIR}"/${file} "${DISTDIR}"/${file}.sig
 			else
-				[[ ${file} == @(patches.tar.xz|*.asc|*.sig) ]] && continue
+				[[ ${file} == @(*${GENTOO_PATCH_NAME}.tar.xz|*.asc|*.sig) ]] && continue
 
 				verify-sig_verify_detached "${DISTDIR}"/${file} "${DISTDIR}"/${file}.asc
 			fi
