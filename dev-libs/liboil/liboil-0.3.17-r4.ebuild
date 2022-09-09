@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit flag-o-matic multilib-minimal
+inherit flag-o-matic
 
 DESCRIPTION="Library of simple functions that are optimized for various CPUs"
 HOMEPAGE="https://liboil.freedesktop.org/"
@@ -24,7 +24,8 @@ BDEPEND="
 PATCHES=( "${FILESDIR}"/${P}-amd64-cpuid.patch )
 
 src_prepare() {
-	has x32 $(get_all_abis) && PATCHES+=( "${FILESDIR}"/${PN}-0.3.17-x32.patch )
+	[[ ${CHOST} == *x32 ]] && PATCHES+=( "${FILESDIR}"/${PN}-0.3.17-x32.patch )
+
 	default
 
 	if ! use examples; then
@@ -46,17 +47,15 @@ src_configure() {
 	# For use with Clang, which is the only compiler on OSX, bug #576646
 	[[ ${CHOST} == *-darwin* ]] && append-flags -fheinous-gnu-extensions
 
-	multilib_src_configure() {
-		ECONF_SOURCE="${S}" econf --disable-static
-	}
-	multilib-minimal_src_configure
+	default
 }
 
-multilib_src_install_all() {
-	einstalldocs
+src_install() {
+	default
+
 	dodoc BUG-REPORTING HACKING
 
-	# no static archives
+	# No static archives
 	find "${ED}" -name '*.la' -delete || die
 }
 
