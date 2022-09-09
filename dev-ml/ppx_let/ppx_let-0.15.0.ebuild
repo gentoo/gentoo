@@ -19,5 +19,6 @@ DEPEND="
 	dev-ml/findlib:=
 	>=dev-ml/ppxlib-0.23.0:=
 	>=dev-ml/ocaml-compiler-libs-0.11.0:=
+	dev-ml/ppx_here:=
 "
 RDEPEND="${DEPEND}"
