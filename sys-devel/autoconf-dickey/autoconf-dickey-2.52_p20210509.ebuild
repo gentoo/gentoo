@@ -33,7 +33,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--datadir=/usr/share/${PN}
+		--datadir="${EPREFIX}"/usr/share/${PN}
 		--program-suffix=-dickey
 	)
 
