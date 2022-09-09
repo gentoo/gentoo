@@ -45,6 +45,9 @@ src_configure() {
 	fi
 	use static && append-ldflags -static
 
+	# The libedit code isn't compatible currently. #830101
+	use libedit && append-flags -fcommon
+
 	# AC_SYS_LARGEFILE in configure.ac would handle this, but we don't patch
 	# autotools otherwise currently.  This change has been sent upstream, but
 	# who knows when they'll make another release.
