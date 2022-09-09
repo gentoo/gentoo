@@ -14,7 +14,8 @@ LICENSE="|| ( GPL-2+ OSL-2.1 ) BSD Boost-1.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ia64 ~riscv x86"
 IUSE="doc graphviz nls +python static-libs test"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
+	test? ( ${PYTHON_REQUIRED_USE} )"
 
 RESTRICT="!test? ( test )"
 
@@ -26,8 +27,11 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	graphviz? ( media-gfx/graphviz )
-	nls? ( sys-devel/gettext )
-	test? ( >=dev-util/cppunit-1.9.6 )"
+	nls? ( sys-devel/gettext )"
+BDEPEND="test? (
+	${PYTHON_DEPS}
+	>=dev-util/cppunit-1.9.6
+)"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.28-cppunit-tests.patch"
@@ -36,7 +40,9 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	if use python || use test; then
+		python-single-r1_pkg_setup
+	fi
 }
 
 src_prepare() {
@@ -45,7 +51,7 @@ src_prepare() {
 	# Don't build yum-plugin - we don't need it
 	sed '/yum-plugin/d' -i Makefile.am || die
 
-	if use test && use python; then
+	if use test; then
 		python_fix_shebang src/pyunit/test*.py
 	fi
 
@@ -69,7 +75,7 @@ src_configure() {
 src_install() {
 	emake install DESTDIR="${D}"
 
-	if use python ; then
+	if use python; then
 		python_scriptinto /usr/sbin
 		python_doscript "${ED}"/usr/sbin/smbios-{{battery,keyboard,thermal,token,wakeup,wireless}-ctl,lcd-brightness,passwd,sys-info}
 	fi
