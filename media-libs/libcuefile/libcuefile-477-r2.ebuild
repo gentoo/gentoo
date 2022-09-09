@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit cmake-multilib
+inherit cmake
 
 # svn export http://svn.musepack.net/libcuefile/trunk libcuefile-${PV}
 # tar -cJf libcuefile-${PV}.tar.xz libcuefile-${PV}
@@ -19,7 +19,8 @@ KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86 ~amd64
 PATCHES=( "${FILESDIR}"/${PN}-static-libs.patch )
 
 src_install() {
-	cmake-multilib_src_install
+	cmake_src_install
+
 	insinto /usr/include
 	doins -r include/cuetools
 }
