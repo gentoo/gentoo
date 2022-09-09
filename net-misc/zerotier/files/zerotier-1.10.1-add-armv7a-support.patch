@@ -1,0 +1,14 @@
+--- a/make-linux.mk
++++ b/make-linux.mk
+@@ -203,6 +203,11 @@ ifeq ($(CC_MACH),armv7)
+ 	override DEFS+=-DZT_NO_TYPE_PUNNING
+ 	ZT_USE_ARM32_NEON_ASM_CRYPTO=1
+ endif
++ifeq ($(CC_MACH),armv7a)
++	ZT_ARCHITECTURE=3
++	override DEFS+=-DZT_NO_TYPE_PUNNING
++	ZT_USE_ARM32_NEON_ASM_CRYPTO=1
++endif
+ ifeq ($(CC_MACH),armv7l)
+ 	ZT_ARCHITECTURE=3
+ 	override DEFS+=-DZT_NO_TYPE_PUNNING
