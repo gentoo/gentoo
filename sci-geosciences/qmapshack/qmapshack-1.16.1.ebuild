@@ -15,7 +15,7 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
-	dev-libs/quazip:0=
+	dev-libs/quazip:0=[qt5(+)]
 	dev-qt/designer:5
 	dev-qt/qtdbus:5
 	dev-qt/qtdeclarative:5[widgets]
