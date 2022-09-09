@@ -1,476 +1,316 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PLOCALES="ar ast bg ca cs da de el en en_US eo es fa fi fr he hi hr hu it ja ko lt ml nb_NO nl or pa pl pt_BR pt_PT rm ro ru si sk sl sr_RS@cyrillic sr_RS@latin sv ta te th tr uk wa zh_CN zh_TW"
-PLOCALE_BACKUP="en"
+MULTILIB_COMPAT=( abi_x86_{32,64} )
+inherit autotools flag-o-matic multilib multilib-build toolchain-funcs wrapper
 
-inherit autotools estack flag-o-matic multilib-minimal pax-utils plocale toolchain-funcs virtualx wrapper xdg-utils
+WINE_GECKO=2.47.3
+WINE_MONO=7.3.0
 
-MY_PN="${PN%%-*}"
-MY_P="${MY_PN}-${PV}"
-GECKO_VERSION="2.47.3"
-
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://source.winehq.org/git/wine.git"
-	EGIT_BRANCH="master"
+if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	SRC_URI=""
-	#KEYWORDS=""
+	EGIT_REPO_URI="https://gitlab.winehq.org/wine/wine.git"
 else
-	MAJOR_V=$(ver_cut 1)
-	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.x/${MY_P}.tar.xz"
+	(( $(ver_cut 2) )) && WINE_SDIR=$(ver_cut 1).x || WINE_SDIR=$(ver_cut 1).0
+	SRC_URI="https://dl.winehq.org/wine/source/${WINE_SDIR}/wine-${PV}.tar.xz"
+	S="${WORKDIR}/wine-${PV}"
 	KEYWORDS="-* ~amd64 ~x86"
 fi
-S="${WORKDIR}/${MY_P}"
-
-GWP_V="20211122"
-PATCHDIR="${WORKDIR}/gentoo-wine-patches"
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, without external patchsets"
 HOMEPAGE="https://www.winehq.org/"
-SRC_URI="${SRC_URI}
-	https://dev.gentoo.org/~sarnex/distfiles/wine/gentoo-wine-patches-${GWP_V}.tar.xz
-"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+ BSD-2 IJG MIT ZLIB gsm libpng2 libtiff"
 SLOT="${PV}"
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi crossdev-mingw cups custom-cflags dos +fontconfig +gecko gphoto2 gstreamer kerberos ldap mingw +mono mp3 netapi nls odbc openal opencl +opengl osmesa oss +perl pcap pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl test +threads +truetype udev +udisks +unwind usb v4l vulkan +X +xcomposite xinerama"
-REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
+IUSE="
+	+X +abi_x86_32 +abi_x86_64 +alsa capi crossdev-mingw cups dos
+	llvm-libunwind debug custom-cflags +fontconfig +gecko gphoto2
+	+gstreamer kerberos ldap +mingw +mono netapi nls odbc openal
+	opencl +opengl osmesa pcap perl pulseaudio samba scanner +sdl
+	selinux +ssl +truetype udev udisks +unwind usb v4l +vulkan
+	+xcomposite xinerama"
+REQUIRED_USE="
 	X? ( truetype )
-	crossdev-mingw? ( mingw )
-	elibc_glibc? ( threads )
-	osmesa? ( opengl )
-	test? ( abi_x86_32 )" # osmesa-opengl #286560 # X-truetype #551124
+	crossdev-mingw? ( mingw )" # bug #551124 for truetype
 
-# FIXME: the test suite is unsuitable for us; many tests require net access
-# or fail due to Xvfb's opengl limitations.
+# tests are non-trivial to run, can hang easily, don't play well with
+# sandbox, and several need real opengl/vulkan or network access
 RESTRICT="test"
 
-BDEPEND="sys-devel/flex
-	virtual/yacc
-	virtual/pkgconfig
-	mingw? ( !crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] ) )"
-
-COMMON_DEPEND="
+# `grep WINE_CHECK_SONAME configure.ac` + if not directly linked
+WINE_DLOPEN_DEPEND="
 	X? (
 		x11-libs/libXcursor[${MULTILIB_USEDEP}]
-		x11-libs/libXext[${MULTILIB_USEDEP}]
 		x11-libs/libXfixes[${MULTILIB_USEDEP}]
-		x11-libs/libXrandr[${MULTILIB_USEDEP}]
 		x11-libs/libXi[${MULTILIB_USEDEP}]
+		x11-libs/libXrandr[${MULTILIB_USEDEP}]
+		x11-libs/libXrender[${MULTILIB_USEDEP}]
 		x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
+		opengl? (
+			media-libs/libglvnd[X,${MULTILIB_USEDEP}]
+			osmesa? ( media-libs/mesa[osmesa,${MULTILIB_USEDEP}] )
+		)
+		xcomposite? ( x11-libs/libXcomposite[${MULTILIB_USEDEP}] )
+		xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )
+	)
+	cups? ( net-print/cups[${MULTILIB_USEDEP}] )
+	fontconfig? ( media-libs/fontconfig[${MULTILIB_USEDEP}] )
+	kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
+	netapi? ( net-fs/samba[${MULTILIB_USEDEP}] )
+	odbc? ( dev-db/unixODBC[${MULTILIB_USEDEP}] )
+	sdl? ( media-libs/libsdl2[haptic,joystick,${MULTILIB_USEDEP}] )
+	ssl? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
+	truetype? ( media-libs/freetype[${MULTILIB_USEDEP}] )
+	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
+	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
+	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )"
+WINE_COMMON_DEPEND="
+	${WINE_DLOPEN_DEPEND}
+	X? (
+		x11-libs/libX11[${MULTILIB_USEDEP}]
+		x11-libs/libXext[${MULTILIB_USEDEP}]
 	)
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
-	capi? ( net-libs/libcapi[${MULTILIB_USEDEP}] )
-	cups? ( net-print/cups:=[${MULTILIB_USEDEP}] )
-	fontconfig? ( media-libs/fontconfig:=[${MULTILIB_USEDEP}] )
-	gphoto2? (
-		media-libs/libgphoto2:=[${MULTILIB_USEDEP}]
-		media-libs/libjpeg-turbo:0=[${MULTILIB_USEDEP}]
-	)
+	capi? ( net-libs/libcapi:=[${MULTILIB_USEDEP}] )
+	gphoto2? ( media-libs/libgphoto2:=[${MULTILIB_USEDEP}] )
 	gstreamer? (
+		dev-libs/glib:2[${MULTILIB_USEDEP}]
+		media-libs/gst-plugins-base:1.0[${MULTILIB_USEDEP}]
 		media-libs/gstreamer:1.0[${MULTILIB_USEDEP}]
-		media-plugins/gst-plugins-meta:1.0[${MULTILIB_USEDEP}]
 	)
-	kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
 	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
-	netapi? ( net-fs/samba[netapi(+),${MULTILIB_USEDEP}] )
-	nls? ( sys-devel/gettext[${MULTILIB_USEDEP}] )
-	odbc? ( dev-db/unixODBC:=[${MULTILIB_USEDEP}] )
-	openal? ( media-libs/openal:=[${MULTILIB_USEDEP}] )
+	openal? ( media-libs/openal[${MULTILIB_USEDEP}] )
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
-	opengl? (
-		virtual/opengl[${MULTILIB_USEDEP}]
-	)
-	osmesa? ( >=media-libs/mesa-13[osmesa,${MULTILIB_USEDEP}] )
 	pcap? ( net-libs/libpcap[${MULTILIB_USEDEP}] )
-	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )
-	scanner? ( media-gfx/sane-backends:=[${MULTILIB_USEDEP}] )
-	sdl? ( media-libs/libsdl2:=[haptic,joystick,${MULTILIB_USEDEP}] )
-	ssl? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
-	truetype? ( >=media-libs/freetype-2.0.0[${MULTILIB_USEDEP}] )
+	pulseaudio? ( media-libs/libpulse[${MULTILIB_USEDEP}] )
+	scanner? ( media-gfx/sane-backends[${MULTILIB_USEDEP}] )
 	udev? ( virtual/libudev:=[${MULTILIB_USEDEP}] )
-	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
-	unwind? ( sys-libs/libunwind[${MULTILIB_USEDEP}] )
-	usb? ( virtual/libusb:1[${MULTILIB_USEDEP}]  )
-	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
-	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )
-	xcomposite? ( x11-libs/libXcomposite[${MULTILIB_USEDEP}] )
-	xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )"
-
-RDEPEND="${COMMON_DEPEND}
+	unwind? (
+		llvm-libunwind? ( sys-libs/llvm-libunwind[${MULTILIB_USEDEP}] )
+		!llvm-libunwind? ( sys-libs/libunwind:=[${MULTILIB_USEDEP}] )
+	)
+	usb? ( dev-libs/libusb:1[${MULTILIB_USEDEP}] )"
+RDEPEND="
+	${WINE_COMMON_DEPEND}
 	app-emulation/wine-desktop-common
-	>app-eselect/eselect-wine-0.3
-	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
-	gecko? ( app-emulation/wine-gecko:${GECKO_VERSION}[abi_x86_32?,abi_x86_64?] )
-	mono? ( app-emulation/wine-mono:7.3.0 )
+	dos? ( games-emulation/dosbox )
+	gecko? ( app-emulation/wine-gecko:${WINE_GECKO}[${MULTILIB_USEDEP}] )
+	gstreamer? ( media-plugins/gst-plugins-meta:1.0[${MULTILIB_USEDEP}] )
+	mono? ( app-emulation/wine-mono:${WINE_MONO} )
 	perl? (
 		dev-lang/perl
-		dev-perl/XML-Simple
+		dev-perl/XML-LibXML
 	)
-	pulseaudio? (
-		realtime? ( sys-auth/rtkit )
-	)
-	samba? ( >=net-fs/samba-3.0.25[winbind] )
+	samba? ( net-fs/samba[winbind] )
 	selinux? ( sec-policy/selinux-wine )
 	udisks? ( sys-fs/udisks:2 )"
+DEPEND="
+	${WINE_COMMON_DEPEND}
+	sys-kernel/linux-headers
+	X? ( x11-base/xorg-proto )"
+BDEPEND="
+	dev-lang/perl
+	sys-devel/bison
+	sys-devel/flex
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
+	!crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] )"
+IDEPEND="app-eselect/eselect-wine"
 
-# tools/make_requests requires perl
-DEPEND="${COMMON_DEPEND}
-	${BDEPEND}
-	>=sys-kernel/linux-headers-2.6
-	X? ( x11-base/xorg-proto )
-	xinerama? ( x11-base/xorg-proto )"
-
-# These use a non-standard "Wine" category, which is provided by
-# /etc/xdg/applications-merged/wine.menu
-QA_DESKTOP_FILE="usr/share/applications/wine-browsedrive.desktop
-usr/share/applications/wine-notepad.desktop
-usr/share/applications/wine-uninstaller.desktop
-usr/share/applications/wine-winecfg.desktop"
+QA_TEXTRELS="usr/lib/*/wine/i386-unix/*.so" # uses -fno-PIC -Wl,-z,notext
 
 PATCHES=(
-	"${PATCHDIR}/patches/${MY_PN}-6.22-winegcc.patch" #260726
-	"${PATCHDIR}/patches/${MY_PN}-4.7-multilib-portage.patch" #395615
-	"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch" #310611
+	"${FILESDIR}"/${PN}-7.0-llvm-libunwind.patch
+	"${FILESDIR}"/${PN}-7.0-noexecstack.patch
 )
-PATCHES_BIN=()
-
-# https://bugs.gentoo.org/show_bug.cgi?id=635222
-if [[ ${#PATCHES_BIN[@]} -ge 1 ]] || [[ ${PV} == 9999 ]]; then
-	DEPEND+=" dev-util/patchbin"
-fi
-
-wine_compiler_check() {
-	# Ensure compiler support
-	# (No checks here as of 2022)
-	return 0
-}
-
-wine_build_environment_check() {
-	[[ ${MERGE_TYPE} = "binary" ]] && return 0
-
-	if use abi_x86_32 && use opencl && [[ "$(eselect opencl show 2> /dev/null)" == "intel" ]]; then
-		eerror "You cannot build wine with USE=opencl because intel-ocl-sdk is 64-bit only."
-		eerror "See https://bugs.gentoo.org/487864 for more details."
-		eerror
-		return 1
-	fi
-}
-
-wine_env_vcs_vars() {
-	local pn_live_var="${PN//[-+]/_}_LIVE_COMMIT"
-	local pn_live_val="${pn_live_var}"
-	eval pn_live_val='$'${pn_live_val}
-	if [[ ! -z ${EGIT_COMMIT} ]]; then
-		eerror "Commits must now be specified using the environmental variables"
-		eerror "EGIT_OVERRIDE_COMMIT_WINE"
-		eerror
-		return 1
-	fi
-}
 
 pkg_pretend() {
-	wine_build_environment_check || die
-
-	# Verify OSS support
-	if use oss; then
-		if ! has_version ">=media-sound/oss-4"; then
-			eerror "You cannot build wine with USE=oss without having support from"
-			eerror ">=media-sound/oss-4 (only available through external repos)"
-			eerror
-			die
-		fi
-	fi
+	[[ ${MERGE_TYPE} == binary ]] && return
 
 	if use crossdev-mingw && [[ ! -v MINGW_BYPASS ]]; then
 		local mingw=-w64-mingw32
 		for mingw in $(usev abi_x86_64 x86_64${mingw}) $(usev abi_x86_32 i686${mingw}); do
-			type -P ${mingw}-gcc && continue
-			eerror "With USE=crossdev-mingw, you must prepare the MinGW toolchain"
-			eerror "yourself by installing sys-devel/crossdev then running:"
-			eerror
-			eerror "    crossdev --target ${mingw}"
-			eerror
-			eerror "For more information, please see: https://wiki.gentoo.org/wiki/Mingw"
-			die "USE=crossdev-mingw is enabled, but ${mingw}-gcc was not found"
+			if ! type -P ${mingw}-gcc >/dev/null; then
+				eerror "With USE=crossdev-mingw, you must prepare the MinGW toolchain"
+				eerror "yourself by installing sys-devel/crossdev then running:"
+				eerror
+				eerror "    crossdev --target ${mingw}"
+				eerror
+				eerror "For more information, please see: https://wiki.gentoo.org/wiki/Mingw"
+				die "USE=crossdev-mingw is enabled, but ${mingw}-gcc was not found"
+			fi
 		done
 	fi
-}
-
-pkg_setup() {
-	wine_build_environment_check || die
-	wine_env_vcs_vars || die
-
-	WINE_VARIANT="${PN#wine}-${PV}"
-	WINE_VARIANT="${WINE_VARIANT#-}"
-
-	MY_PREFIX="${EPREFIX}/usr/lib/wine-${WINE_VARIANT}"
-	MY_DATAROOTDIR="${EPREFIX}/usr/share/wine-${WINE_VARIANT}"
-	MY_DATADIR="${MY_DATAROOTDIR}"
-	MY_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
-	MY_INCLUDEDIR="${EPREFIX}/usr/include/wine-${WINE_VARIANT}"
-	MY_LIBEXECDIR="${EPREFIX}/usr/libexec/wine-${WINE_VARIANT}"
-	MY_LOCALSTATEDIR="${EPREFIX}/var/wine-${WINE_VARIANT}"
-	MY_MANDIR="${MY_DATADIR}/man"
-}
-
-src_unpack() {
-	if [[ ${PV} == "9999" ]] ; then
-		EGIT_CHECKOUT_DIR="${S}" git-r3_src_unpack
-	fi
-
-	default
-
-	plocale_find_changes "${S}/po" "" ".po"
 }
 
 src_prepare() {
-
-	eapply_bin(){
-		local patch
-		for patch in ${PATCHES_BIN[@]}; do
-			patchbin --nogit < "${patch}" || die
-		done
-	}
-
-	if use gecko; then
-		local source_gecko_version=$( sed -n -e '/^#define GECKO_VERSION/p' dlls/appwiz.cpl/addons.c | grep -Eo -m 1 '[0-9.]+' )
-		if [[ ${source_gecko_version} != ${GECKO_VERSION} ]] ; then
-			die "app-emulation/wine-gecko version is not correct! Please file a bug."
-		fi
+	# sanity check, bumping these has a history of oversights
+	local geckomono=$(sed -En '/^#define (GECKO|MONO)_VER/{s/[^0-9.]//gp}' \
+		dlls/appwiz.cpl/addons.c || die)
+	if [[ ${WINE_GECKO}$'\n'${WINE_MONO} != "${geckomono}" ]]; then
+		local gmfatal=
+		[[ ${PV} == *9999 ]] && gmfatal=nonfatal
+		${gmfatal} die -n "gecko/mono mismatch in ebuild, has: " ${geckomono} " (please file a bug)"
 	fi
-
-	local md5="$(md5sum server/protocol.def)"
 
 	default
-	eapply_bin
+
+	# ensure .desktop calls this variant + slot
+	sed -i "/^Exec=/s/wine /${P} /" loader/wine.desktop || die
+
+	# always update for patches (including user's wrt #432348)
 	eautoreconf
-
-	# Modification of the server protocol requires regenerating the server requests
-	if [[ "$(md5sum server/protocol.def)" != "${md5}" ]]; then
-		einfo "server/protocol.def was patched; running tools/make_requests"
-		tools/make_requests || die #432348
-	fi
-	sed -i '/^UPDATE_DESKTOP_DATABASE/s:=.*:=true:' tools/Makefile.in || die
-	if ! use run-exes; then
-		sed -i '/^MimeType/d' loader/wine.desktop || die #117785
-	fi
-
-	# Edit wine.desktop to work for specific variant
-	sed -e "/^Exec=/s/wine /wine-${WINE_VARIANT} /" -i loader/wine.desktop || die
-
-	# hi-res default icon, #472990, https://bugs.winehq.org/show_bug.cgi?id=24652
-	cp "${PATCHDIR}/files/oic_winlogo.ico" dlls/user32/resources/ || die
-
-	plocale_get_locales > po/LINGUAS || die # otherwise wine doesn't respect LINGUAS
-
-	# Fix manpage generation for locales #469418 and abi_x86_64 #617864
-
-	# Duplicate manpages input files for wine64
-	local f
-	for f in loader/*.man.in; do
-		cp ${f} ${f/wine/wine64} || die
-	done
-	# Add wine64 manpages to Makefile
-	if use abi_x86_64; then
-		sed -i "/wine.man.in/i \
-			\\\twine64.man.in \\\\" loader/Makefile.in || die
-		sed -i -E 's/(.*wine)(.*\.UTF-8\.man\.in.*)/&\
-\164\2/' loader/Makefile.in || die
-	fi
-
-	rm_man_file(){
-		local file="${1}"
-		loc=${2}
-		sed -i "/${loc}\.UTF-8\.man\.in/d" "${file}" || die
-	}
-
-	while read f; do
-		plocale_for_each_disabled_locale rm_man_file "${f}"
-	done < <(find -name "Makefile.in" -exec grep -q "UTF-8.man.in" "{}" \; -print)
+	tools/make_requests || die # perl
 }
 
 src_configure() {
-	wine_compiler_check || die
+	WINE_PREFIX=/usr/lib/${P}
+	WINE_DATADIR=/usr/share/${P}
 
-	export LDCONFIG=/bin/true
-	use custom-cflags || strip-flags
-	if use mingw; then
-		use crossdev-mingw || PATH="${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}"
-
-		# use *FLAGS for mingw, but strip unsupported (e.g. --hash-style=gnu)
-		local mingwcc=${CROSSCC:-$(usex x86 i686 x86_64)-w64-mingw32-gcc}
-		: "${CROSSCFLAGS:=$(CC=${mingwcc} test-flags-CC ${CFLAGS:--O2})}"
-		: "${CROSSLDFLAGS:=$(
-			filter-flags '-fuse-ld=*'
-			CC=${mingwcc} test-flags-CCLD ${LDFLAGS})}"
-		export CROSS{C,LD}FLAGS
-	fi
-
-	multilib-minimal_src_configure
-}
-
-multilib_src_configure() {
-	local myconf=(
-		--prefix="${MY_PREFIX}"
-		--datarootdir="${MY_DATAROOTDIR}"
-		--datadir="${MY_DATADIR}"
-		--docdir="${MY_DOCDIR}"
-		--includedir="${MY_INCLUDEDIR}"
-		--libdir="${EPREFIX}/usr/$(get_libdir)/wine-${WINE_VARIANT}"
-		--libexecdir="${MY_LIBEXECDIR}"
-		--localstatedir="${MY_LOCALSTATEDIR}"
-		--mandir="${MY_MANDIR}"
-		--sysconfdir="${EPREFIX}/etc/wine"
+	local conf=(
+		--prefix="${EPREFIX}"${WINE_PREFIX}
+		--datadir="${EPREFIX}"${WINE_DATADIR}
+		--includedir="${EPREFIX}"/usr/include/${P}
+		--libdir="${EPREFIX}"${WINE_PREFIX}
+		--mandir="${EPREFIX}"${WINE_DATADIR}/man
+		$(use_enable gecko mshtml)
+		$(use_enable mono mscoree)
+		--disable-tests
+		$(use_with X x)
 		$(use_with alsa)
 		$(use_with capi)
 		$(use_with cups)
-		$(use_with udisks dbus)
 		$(use_with fontconfig)
-		$(use_with ssl gnutls)
-		$(use_enable gecko mshtml)
 		$(use_with gphoto2 gphoto)
 		$(use_with gstreamer)
-		--enable-hal
 		$(use_with kerberos gssapi)
 		$(use_with kerberos krb5)
 		$(use_with ldap)
-		# TODO: Will bug 685172 still need special handling?
 		$(use_with mingw)
-		$(use_enable mono mscoree)
 		$(use_with netapi)
 		$(use_with nls gettext)
 		$(use_with openal)
 		$(use_with opencl)
 		$(use_with opengl)
 		$(use_with osmesa)
-		$(use_with oss)
+		--without-oss # media-sound/oss is not packaged (OSSv4)
 		$(use_with pcap)
 		$(use_with pulseaudio pulse)
-		$(use_with threads pthread)
 		$(use_with scanner sane)
 		$(use_with sdl)
-		$(use_enable test tests)
+		$(use_with ssl gnutls)
 		$(use_with truetype freetype)
 		$(use_with udev)
+		$(use_with udisks dbus) # dbus is only used for udisks
 		$(use_with unwind)
 		$(use_with usb)
 		$(use_with v4l v4l2)
 		$(use_with vulkan)
-		$(use_with X x)
-		$(use_with X xfixes)
 		$(use_with xcomposite)
 		$(use_with xinerama)
+		$(usev !odbc ac_cv_lib_soname_odbc=)
 	)
 
-	local PKG_CONFIG
-	# Avoid crossdev's i686-pc-linux-gnu-pkg-config if building wine32 on amd64; #472038
-	tc-export PKG_CONFIG
+	tc-ld-force-bfd #867097
+	use custom-cflags || strip-flags # can break in obscure ways, also no lto
+	use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
 
-	if use amd64; then
-		if [[ ${ABI} == amd64 ]]; then
-			myconf+=( --enable-win64 )
-		else
-			myconf+=( --disable-win64 )
+	# build using upstream's way (--with-wine64)
+	# order matters: configure+compile 64->32, install 32->64
+	local -i bits
+	for bits in $(usev abi_x86_64 64) $(usev abi_x86_32 32); do
+	(
+		einfo "Configuring ${PN} for ${bits}bits in ${WORKDIR}/build${bits} ..."
+
+		mkdir ../build${bits} || die
+		cd ../build${bits} || die
+
+		# CROSSCC_amd64/x86 are unused by Wine, but recognized here for users
+		if (( bits == 64 )); then
+			: "${CROSSCC:=${CROSSCC_amd64:-x86_64-w64-mingw32-gcc}}"
+			conf+=( --enable-win64 )
+		elif use amd64; then
+			conf+=(
+				$(usev abi_x86_64 --with-wine64=../build64)
+				TARGETFLAGS=-m32 # for widl
+			)
+			# _setup is optional, but use over Wine's auto-detect (+#472038)
+			multilib_toolchain_setup x86
+		fi
+		: "${CROSSCC:=${CROSSCC_x86:-i686-w64-mingw32-gcc}}"
+
+		# use *FLAGS for mingw, but strip unsupported (e.g. --hash-style=gnu)
+		if use mingw; then
+			: "${CROSSCFLAGS:=$(CC=${CROSSCC} test-flags-CC ${CFLAGS:--O2})}"
+			: "${CROSSLDFLAGS:=$(
+				filter-flags '-fuse-ld=*'
+				CC=${CROSSCC} test-flags-CCLD ${LDFLAGS})}"
+			export CROSS{CC,{C,LD}FLAGS}
 		fi
 
-		# Note: using --with-wine64 results in problems with multilib.eclass
-		# CC/LD hackery. We're using separate tools instead.
-	fi
-
-	ECONF_SOURCE=${S} \
-	econf "${myconf[@]}"
-	emake depend
-}
-
-multilib_src_test() {
-	# FIXME: win32-only; wine64 tests fail with "could not find the Wine loader"
-	if [[ ${ABI} == x86 ]]; then
-		if [[ $(id -u) == 0 ]]; then
-			ewarn "Skipping tests since they cannot be run under the root user."
-			ewarn "To run the test ${MY_PN} suite, add userpriv to FEATURES in make.conf"
-			return
-		fi
-
-		WINEPREFIX="${T}/.wine-${ABI}" \
-		virtx emake test
-	fi
-}
-
-multilib_src_install_all() {
-	local DOCS=( ANNOUNCE AUTHORS README )
-	add_locale_docs() {
-		local locale_doc="documentation/README.$1"
-		[[ ! -e ${locale_doc} ]] || DOCS+=( ${locale_doc} )
-	}
-	plocale_for_each_locale add_locale_docs
-
-	einstalldocs
-	find "${ED}" -name *.la -delete || die
-
-	if ! use perl ; then # winedump calls function_grep.pl, and winemaker is a perl script
-		rm "${D%}${MY_PREFIX}"/bin/{wine{dump,maker},function_grep.pl} \
-			"${D%}${MY_MANDIR}"/man1/wine{dump,maker}.1 || die
-	fi
-
-	use abi_x86_32 && pax-mark psmr "${D%}${MY_PREFIX}"/bin/wine{,-preloader} #255055
-	use abi_x86_64 && pax-mark psmr "${D%}${MY_PREFIX}"/bin/wine64{,-preloader}
-
-	# Avoid double prefix from dosym and make_wrapper
-	MY_PREFIX=${MY_PREFIX#${EPREFIX}}
-
-	if use abi_x86_64 && ! use abi_x86_32; then
-		dosym wine64 "${MY_PREFIX}"/bin/wine # 404331
-		dosym wine64-preloader "${MY_PREFIX}"/bin/wine-preloader
-	fi
-
-	# Failglob for binloops, shouldn't be necessary, but including to stay safe
-	eshopts_push -s failglob #615218
-	# Make wrappers for binaries for handling multiple variants
-	# Note: wrappers instead of symlinks because some are shell which use basename
-	local b
-	for b in "${ED%}${MY_PREFIX}"/bin/*; do
-		make_wrapper "${b##*/}-${WINE_VARIANT}" "${MY_PREFIX}/bin/${b##*/}"
+		ECONF_SOURCE=${S} econf "${conf[@]}"
+	)
 	done
-	eshopts_pop
+}
+
+src_compile() {
+	use abi_x86_64 && emake -C ../build64 # do first
+	use abi_x86_32 && emake -C ../build32
+}
+
+src_install() {
+	use abi_x86_32 && emake DESTDIR="${D}" -C ../build32 install
+	use abi_x86_64 && emake DESTDIR="${D}" -C ../build64 install # do last
+
+	# symlink for plain 'wine' and install its man pages if 64bit-only #404331
+	if use abi_x86_64 && use !abi_x86_32; then
+		dosym wine64 ${WINE_PREFIX}/bin/wine
+		dosym wine64-preloader ${WINE_PREFIX}/bin/wine-preloader
+		local man
+		for man in ../build64/loader/wine.*man; do
+			: "${man##*/wine}"
+			: "${_%.*}"
+			insinto ${WINE_DATADIR}/man/${_:+${_#.}/}man1
+			newins ${man} wine.1
+		done
+	fi
+
+	use perl || rm "${ED}"${WINE_DATADIR}/man/man1/wine{dump,maker}.1 \
+		"${ED}"${WINE_PREFIX}/bin/{function_grep.pl,wine{dump,maker}} || die
+
+	# create variant wrappers for eselect-wine
+	local bin
+	for bin in "${ED}"${WINE_PREFIX}/bin/*; do
+		make_wrapper "${bin##*/}-${P#wine-}" "${bin#"${ED}"}"
+	done
+
+	# don't let portage try to strip PE files with the wrong
+	# strip executable and instead handle it here (saves ~120MB)
+	if use mingw; then
+		dostrip -x ${WINE_PREFIX}/wine/{i386,x86_64}-windows
+		use debug ||
+			find "${ED}"${WINE_PREFIX}/wine/*-windows -regex '.*\.\(a\|dll\|exe\)' \
+				-exec $(usex abi_x86_64 x86_64 i686)-w64-mingw32-strip --strip-unneeded {} + || die
+	fi
+
+	dodoc ANNOUNCE AUTHORS README* documentation/README*
+}
+
+wine-eselect() {
+	ebegin "${1^}ing ${P} using eselect-wine"
+	eselect wine ${1} ${P} &&
+		eselect wine ${1} --${PN#wine-} ${P} &&
+		eselect wine update --if-unset &&
+		eselect wine update --${PN#wine-} --if-unset
+	eend ${?} || die -n "eselect failed, may need to manually handle ${P}"
 }
 
 pkg_postinst() {
-	eselect wine register ${P}
-	if [[ ${PN} == "wine-vanilla" ]]; then
-		eselect wine register --vanilla ${P} || die
-	fi
-
-	eselect wine update --all --if-unset || die
-
-	xdg_desktop_database_update
-
-	if ! use gecko; then
-		ewarn "Without Wine Gecko, wine prefixes will not have a default"
-		ewarn "implementation of iexplore.  Many older windows applications"
-		ewarn "rely upon the existence of an iexplore implementation, so"
-		ewarn "you will likely need to install an external one, like via winetricks"
-	fi
-	if ! use mono; then
-		ewarn "Without Wine Mono, wine prefixes will not have a default"
-		ewarn "implementation of .NET.  Many windows applications rely upon"
-		ewarn "the existence of a .NET implementation, so you will likely need"
-		ewarn "to install an external one, like via winetricks"
-	fi
+	wine-eselect register
 }
 
 pkg_prerm() {
-	eselect wine deregister ${P}
-	if [[ ${PN} == "wine-vanilla" ]]; then
-		eselect wine deregister --vanilla ${P} || die
-	fi
-
-	eselect wine update --all --if-unset || die
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
+	nonfatal wine-eselect deregister
 }
