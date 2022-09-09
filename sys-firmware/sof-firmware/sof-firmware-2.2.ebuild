@@ -10,7 +10,7 @@ S="${WORKDIR}"/sof-bin-v${PV}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # Needed for sof-ctl
 RDEPEND="media-libs/alsa-lib"
