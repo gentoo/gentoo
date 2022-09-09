@@ -1,10 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-inherit autotools multilib-minimal
+EAPI=8
 
-DESCRIPTION="multimedia library used by many games"
+inherit autotools
+
+DESCRIPTION="Multimedia library used by many games"
 HOMEPAGE="http://plib.sourceforge.net/"
 SRC_URI="http://plib.sourceforge.net/dist/${P}.tar.gz"
 
@@ -13,7 +14,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ppc sparc x86"
 
 DEPEND="virtual/opengl"
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-shared-libs.patch
@@ -24,20 +25,22 @@ PATCHES=(
 
 src_prepare() {
 	default
-	mv configure.in configure.ac || die
+
 	eautoreconf
 }
 
-multilib_src_configure() {
+src_configure() {
 	local myconf=(
-		--disable-static
 		--enable-shared
 	)
-	ECONF_SOURCE=${S} econf "${myconf[@]}"
+
+	econf "${myconf[@]}"
 }
 
-multilib_src_install_all() {
-	DOCS=( AUTHORS ChangeLog KNOWN_BUGS NOTICE README* TODO* )
-	einstalldocs
+src_install() {
+	default
+
+	dodoc KNOWN_BUGS TODO* NOTICE
+
 	find "${ED}" -name '*.la' -delete || die
 }
