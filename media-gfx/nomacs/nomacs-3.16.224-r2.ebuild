@@ -36,7 +36,7 @@ RDEPEND="
 		dev-qt/qtimageformats:5
 		media-libs/tiff
 	)
-	zip? ( dev-libs/quazip:0= )
+	zip? ( dev-libs/quazip:0=[qt5(+)] )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
