@@ -52,10 +52,10 @@ fi
 src_configure() {
 	local emesonargs=(
 		$(meson_use apparmor)
-		-Daudit=$(usex audit true false)
-		-Ddocs=$(usex doc true false)
-		-Dlauncher=$(usex launcher true false)
-		-Dselinux=$(usex selinux true false)
+		$(meson_use audit)
+		$(meson_use doc docs)
+		$(meson_use launcher)
+		$(meson_use selinux)
 	)
 	meson_src_configure
 }
