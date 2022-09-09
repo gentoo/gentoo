@@ -4,6 +4,7 @@
 # Various packages requiring Rust.
 app-admin/ansible
 app-admin/ansible-core
+>=app-antivirus/clamav-0.105.1
 app-crypt/acme
 app-crypt/certbot
 app-crypt/certbot-nginx

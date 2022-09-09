@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Matt Jolly <Matt.Jolly@footclan.ninja (2022-09-09)
+# app-antivirus/clamav JIT support requires LLVM <=13
+# ebuild support is there but currently failing to link
+app-antivirus/clamav jit
+
 # Sam James <sam@gentoo.org> (2022-09-06)
 # Incompatible with merged-usr and is a fundamentally flaky approach.
 # - app-arch/lbzip2: bug #868318 (possible solution in bug #868651)
