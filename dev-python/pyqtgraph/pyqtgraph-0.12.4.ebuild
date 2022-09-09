@@ -26,7 +26,7 @@ S=${WORKDIR}/${PN}-${P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="opengl svg"
 REQUIRED_USE="test? ( opengl svg )"
 
