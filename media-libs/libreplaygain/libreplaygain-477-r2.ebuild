@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit cmake-multilib
+inherit cmake
 
 # svn export http://svn.musepack.net/libreplaygain libreplaygain-${PV}
 # tar -cJf libreplaygain-${PV}.tar.xz libreplaygain-${PV}
@@ -25,7 +25,7 @@ src_prepare() {
 }
 
 src_install() {
-	cmake-multilib_src_install
+	cmake_src_install
 	insinto /usr/include
 	doins -r include/replaygain
 }
