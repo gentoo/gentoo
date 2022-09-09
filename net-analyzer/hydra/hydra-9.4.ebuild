@@ -1,22 +1,22 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit git-r3 toolchain-funcs
+inherit edo toolchain-funcs
 
 DESCRIPTION="Parallelized network login hacker"
 HOMEPAGE="https://github.com/vanhauser-thc/thc-hydra"
-EGIT_REPO_URI="https://github.com/vanhauser-thc/thc-hydra"
+SRC_URI="https://github.com/vanhauser-thc/thc-hydra/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/thc-${P}
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="
-	debug firebird gcrypt gtk idn memcached mongodb mysql ncurses
-	oracle pcre postgres rdp libssh subversion zlib
-"
+KEYWORDS="~amd64 ~ppc ~x86"
+IUSE="debug firebird gcrypt gtk idn memcached mongodb mysql ncurses oracle pcre postgres rdp libssh samba subversion zlib"
 
 RDEPEND="
+	dev-libs/openssl:=
 	gtk? (
 		dev-libs/atk
 		dev-libs/glib:2
@@ -26,24 +26,23 @@ RDEPEND="
 	firebird? ( dev-db/firebird )
 	gcrypt? ( dev-libs/libgcrypt )
 	idn? ( net-dns/libidn:0= )
-	dev-libs/openssl:0=
 	memcached? ( dev-libs/libmemcached[sasl] )
 	mongodb? ( dev-libs/mongo-c-driver )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	ncurses? ( sys-libs/ncurses:= )
 	oracle? ( dev-db/oracle-instantclient[sdk] )
-	pcre? ( dev-libs/libpcre )
+	pcre? ( dev-libs/libpcre2 )
 	postgres? ( dev-db/postgresql:* )
 	rdp? ( net-misc/freerdp )
 	libssh? ( >=net-libs/libssh-0.4.0 )
+	samba? ( net-fs/samba )
 	subversion? ( dev-vcs/subversion )
-	zlib? ( sys-libs/zlib )
-"
+	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999999-respect-cflags-more.patch
+	"${FILESDIR}"/${PN}-9.4-implicit-func-decl.patch
 )
 
 src_prepare() {
@@ -59,6 +58,12 @@ src_prepare() {
 		-e '/^OPTS/{s|=|+=|;s| -O3||}' \
 		-e '/ -o /s:$(OPTS):& $(LDFLAGS):g' \
 		Makefile.am || die
+
+	# Needed to get GTK+ 3 change in configure.in (.in got updated, but
+	# configure not regen'd.)
+	#cd hydra-gtk || die
+	#sed -i -e 's:AC_INIT(configure.in):AC_INIT(configure.ac):' configure.in || die
+	#eautoreconf
 }
 
 src_configure() {
@@ -87,18 +92,19 @@ src_configure() {
 	hydra_sed mongodb '-lmongoc-1.0' '$( "${PKG_CONFIG}" --libs libmongoc-1.0 )' '-DLIBMONGODB\|-DLIBBSON'
 	hydra_sed mysql '-lmysqlclient' '$( ${CTARGET:-${CHOST}}-mysql_config --libs )' '-DLIBMYSQLCLIENT'
 	hydra_sed ncurses '-lcurses' '$( "${PKG_CONFIG}" --libs ncurses )' '-DLIBNCURSES'
-	hydra_sed pcre '-lpcre' '$( "${PKG_CONFIG}" --libs libpcre )' '-DHAVE_PCRE'
+	hydra_sed pcre '-lpcre2-8' '$( "${PKG_CONFIG}" --libs libpcre2-8 )' '-DHAVE_PCRE'
 	hydra_sed postgres '-lpq' '$( "${PKG_CONFIG}" --libs libpq )' '-DLIBPOSTGRES'
 	hydra_sed oracle '-locci -lclntsh' '' '-DLIBORACLE'
 	hydra_sed rdp '-lfreerdp2' '$( "${PKG_CONFIG}" --libs freerdp2 )' '-DLIBFREERDP'
 	# TODO: https://bugs.gentoo.org/686148
 	#hydra_sed subversion '-lsvn_client-1 -lapr-1 -laprutil-1 -lsvn_subr-1' '$( "${PKG_CONFIG}" --libs libsvn_client )' '-DLIBSVN'
+	hydra_sed samba '-lsmbclient' '$( "${PKG_CONFIG}" --libs smbclient )' '-DLIBSMBCLIENT'
 	hydra_sed subversion '-lsvn_client-1 -lapr-1 -laprutil-1 -lsvn_subr-1' '' '-DLIBSVN'
 	hydra_sed zlib '-lz' '$( "${PKG_CONFIG}" --libs zlib )' '-DHAVE_ZLIB'
 
-	sh configure \
-		$(use gtk || echo --disable-xhydra) \
-		$(usex debug '--debug' '') \
+	edo ./configure \
+		$(usev !gtk '--disable-xhydra') \
+		$(usev debug '--debug') \
 		--nostrip \
 		--prefix=/usr \
 		|| die
