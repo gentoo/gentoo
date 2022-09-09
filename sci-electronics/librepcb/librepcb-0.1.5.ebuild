@@ -1,4 +1,4 @@
-# Copyright 2009-2021 Gentoo Authors
+# Copyright 2009-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ BDEPEND="
 	dev-qt/linguist-tools:5"
 
 RDEPEND="
-	dev-libs/quazip:=
+	dev-libs/quazip:=[qt5(+)]
 	dev-qt/qtcore:5
 	dev-qt/qtconcurrent:5
 	dev-qt/qtgui:5

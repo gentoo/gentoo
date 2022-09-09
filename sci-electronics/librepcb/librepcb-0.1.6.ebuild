@@ -19,7 +19,7 @@ BDEPEND="
 
 RDEPEND="
 	dev-cpp/muParser:=
-	dev-libs/quazip:=
+	dev-libs/quazip:=[qt5(+)]
 	dev-qt/qtcore:5
 	dev-qt/qtconcurrent:5
 	dev-qt/qtgui:5
