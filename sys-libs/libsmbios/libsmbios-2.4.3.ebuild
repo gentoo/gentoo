@@ -45,7 +45,9 @@ src_prepare() {
 	# Don't build yum-plugin - we don't need it
 	sed '/yum-plugin/d' -i Makefile.am || die
 
-	python_fix_shebang src/pyunit/test*.py
+	if use test && use python; then
+		python_fix_shebang src/pyunit/test*.py
+	fi
 
 	eautoreconf
 }
