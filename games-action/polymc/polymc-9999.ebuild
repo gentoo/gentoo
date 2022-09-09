@@ -62,7 +62,7 @@ QT_DEPS="
 # Required at both build-time and run-time
 COMMON_DEPENDS="
 	${QT_DEPS}
-	>=dev-libs/quazip-1.3:=
+	>=dev-libs/quazip-1.3:=[qt5(+)]
 	sys-libs/zlib
 "
 
