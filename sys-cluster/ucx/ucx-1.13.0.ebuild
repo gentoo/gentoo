@@ -26,6 +26,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.13.0-drop-werror.patch
 	"${FILESDIR}"/${PN}-1.13.0-fix-bashisms.patch
 	"${FILESDIR}"/${PN}-1.13.0-fix-fcntl-include-musl.patch
+	"${FILESDIR}"/${PN}-1.13.0-cstdint-include.patch
 	"${FILESDIR}"/${P}-binutils-2.39-ptr-typedef.patch
 )
 
