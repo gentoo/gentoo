@@ -24,7 +24,7 @@ RDEPEND="!games-engines/zoom
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
-	>=dev-libs/quazip-1.0:0=
+	>=dev-libs/quazip-1.0:0=[qt5(+)]
 	media-libs/alsa-lib
 	media-libs/fdk-aac:0/2
 	media-libs/fontconfig
