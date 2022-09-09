@@ -1,41 +1,50 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-MY_P=${PN}-src-${PV}
 inherit toolchain-funcs
 
+MY_P=${PN}-src-${PV}
 DESCRIPTION="A fork of Mupen64 Nintendo 64 emulator, core library"
 HOMEPAGE="https://www.mupen64plus.org/"
-SRC_URI="https://github.com/mupen64plus/${PN}/releases/download/${PV}/${MY_P}.tar.gz"
+SRC_URI="
+	https://github.com/mupen64plus/${PN}/releases/download/${PV}/${MY_P}.tar.gz
+"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2+"
 SLOT="0/2-sdl2"
 KEYWORDS="~amd64 ~x86"
 IUSE="debugger gles2-only lirc new-dynarec opencv +osd cpu_flags_x86_sse"
+REQUIRED_USE="gles2-only? ( !osd )"
 
-RDEPEND="media-libs/libpng:0=
-	media-libs/libsdl2:0=[joystick,opengl,video]
-	sys-libs/zlib:0=[minizip]
-	gles2-only? ( media-libs/libsdl2:0[gles2] )
-	lirc? ( app-misc/lirc:0 )
+DEPEND="
+	media-libs/libpng:=
+	media-libs/libsdl2[joystick,opengl,video]
+	sys-libs/zlib[minizip]
+	gles2-only? ( media-libs/libsdl2[gles2] )
+	lirc? ( app-misc/lirc )
 	opencv? ( media-libs/opencv:= )
 	osd? (
 		media-fonts/dejavu
-		media-libs/freetype:2=
-		virtual/opengl:0=
-		virtual/glu:0=
-	)"
-DEPEND="${RDEPEND}"
+		media-libs/freetype:2
+		virtual/opengl
+		virtual/glu
+	)
+"
+RDEPEND="
+	${DEPEND}
+"
 BDEPEND="
 	cpu_flags_x86_sse? ( dev-lang/nasm )
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
-REQUIRED_USE="gles2-only? ( !osd )"
-S=${WORKDIR}/${MY_P}
-
-PATCHES=( "${FILESDIR}"/${PN}-2.5.9-fix-gcc10-fno-common.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-gcc10-fno-common.patch
+	"${FILESDIR}"/${P}-pitch.patch
+)
 
 src_prepare() {
 	default
