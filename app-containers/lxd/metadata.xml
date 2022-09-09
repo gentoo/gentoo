@@ -9,9 +9,6 @@
     <email>virtualization@gentoo.org</email>
     <name>Gentoo Virtualization Project</name>
   </maintainer>
-  <use>
-    <flag name="apparmor">Enable AppArmor support</flag>
-  </use>
   <longdescription>
     LXD is a modern, secure and powerful system container and virtual machine manager.
 
