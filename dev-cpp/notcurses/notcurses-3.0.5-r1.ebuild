@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib
+inherit cmake
 
 DESCRIPTION="Blingful TUIs and character graphics"
 HOMEPAGE="https://notcurses.com"
@@ -29,21 +29,18 @@ src_configure() {
 		-DUSE_QRCODEGEN=OFF
 		-DUSE_STATIC=OFF
 	)
-	cmake-multilib_src_configure
+	cmake_src_configure
 }
 
-src_compile() {
-	cmake-multilib_src_compile
-}
-
-# warning: these will fail if you don't have your (utf8) locale available,
-# or the proper terminfo database for your (hopefully correct) TERM.
 src_test() {
-	cmake-multilib_src_test
+	ewarn "Tests will fail if you don't have a UTF8 locale available,"
+	ewarn "or if you're missing the proper terminfo database for your TERM."
+
+	cmake_src_test
 }
 
 src_install() {
-	cmake-multilib_src_install
+	cmake_src_install
 
 	# we use this tortured form lest we try, every time we release a
 	# x.y.1 or x.y.3, to install the source dir as a man page.
