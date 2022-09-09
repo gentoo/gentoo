@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<maintainer type="project">
 		<email>hppa@gentoo.org</email>
-		<name>Gentoo Linux HPPA Development</name>
+		<name>HPPA architecture team</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>toolchain@gentoo.org</email>

@@ -7,7 +7,7 @@
 	</maintainer>
 	<maintainer type="project">
 		<email>ppc@gentoo.org</email>
-		<name>Gentoo Linux PowerPC Development</name>
+		<name>PowerPC architecture team</name>
 	</maintainer>
 	<longdescription lang="en">
 		This package contains utility programs for OpenPower systems:

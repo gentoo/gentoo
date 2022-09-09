@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<maintainer type="project">
 		<email>s390@gentoo.org</email>
-		<name>Gentoo Linux s390 Development</name>
+		<name>s390 architecture team</name>
 	</maintainer>
 	<longdescription>
 		Hercules is an emulator for the IBM System/360, System/370, ESA/390, and
