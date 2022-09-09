@@ -23,7 +23,7 @@ IUSE="systemd"
 
 RDEPEND="
 	dev-libs/libdbusmenu-qt
-	dev-libs/quazip:0=
+	dev-libs/quazip:0=[qt5(+)]
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
