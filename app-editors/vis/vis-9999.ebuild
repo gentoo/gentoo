@@ -27,9 +27,10 @@ RESTRICT="!test? ( test )"
 
 # - Known to also work with NetBSD curses
 DEPEND="dev-libs/libtermkey
+	sys-apps/acl
 	ncurses? ( sys-libs/ncurses:0= )
 	lua? ( ${LUA_DEPS} )
-	tre? ( dev-libs/tre:= )"
+	tre? ( dev-libs/tre )"
 RDEPEND="${DEPEND}
 	app-eselect/eselect-vi"
 # lpeg: https://github.com/martanne/vis-test/issues/28
