@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic linux-info multilib-minimal
+inherit flag-o-matic linux-info
 
 DESCRIPTION="Embedded Linux Library provides core, low-level functionality for system daemons"
 HOMEPAGE="https://01.org/ell"
@@ -20,7 +20,6 @@ SLOT="0"
 IUSE="pie test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=""
 DEPEND="test? ( sys-apps/dbus )"
 
 CONFIG_CHECK="
@@ -40,17 +39,16 @@ src_prepare() {
 	[[ "${PV}" == *9999 ]] && eautoreconf
 }
 
-multilib_src_configure() {
+src_configure() {
 	append-cflags "-fsigned-char" #662694
 	local myeconfargs=(
 		$(use_enable pie)
 	)
-	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+	econf "${myeconfargs[@]}"
 }
 
-multilib_src_install_all() {
-	local DOCS=( ChangeLog README )
-	einstalldocs
+src_install() {
+	default
 
 	find "${ED}" -name "*.la" -delete || die
 }
