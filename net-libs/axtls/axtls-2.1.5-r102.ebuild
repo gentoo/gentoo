@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit lua-single multilib-minimal savedconfig toolchain-funcs
+inherit lua-single savedconfig toolchain-funcs
 
 ################################################################################
 # axtls CONFIG MINI-HOWTO
@@ -44,7 +44,7 @@ LICENSE="BSD GPL-2"
 SLOT="0/1"
 KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~s390 ~sparc x86"
 
-IUSE="httpd cgi-lua cgi-php static static-libs doc"
+IUSE="httpd cgi-lua cgi-php static doc"
 
 # TODO: add ipv6, and c#, java, lua, perl bindings
 # Currently these all have some issue
@@ -72,14 +72,12 @@ src_prepare() {
 
 	eapply "${FILESDIR}/explicit-libdir-r1.patch"
 
-	#We want CONFIG_DEBUG to avoid stripping
-	#but not for debugging info
+	# We want CONFIG_DEBUG to avoid stripping
+	# but not for debugging info
 	sed -i -e 's: -g::' config/Rules.mak || die
 	sed -i -e 's: -g::' config/makefile.conf || die
 
 	eapply_user
-
-	multilib_copy_sources
 }
 
 use_flag_config() {
@@ -122,12 +120,12 @@ use_flag_config() {
 	emake -j1 oldconfig < <(yes n) > /dev/null
 }
 
-multilib_src_configure() {
-	#Per-ABI substitutions.
+src_configure() {
+	# Per-ABI substitutions.
 	sed -i -e 's:^LIBDIR.*/lib:LIBDIR = $(PREFIX)/'"$(get_libdir):" \
 		Makefile || die
 
-	#Use CC as the host compiler for mconf
+	# Use CC as the host compiler for mconf
 	sed -i -e "s:^HOSTCC.*:HOSTCC=${CC}:" \
 		config/Rules.mak || die
 
@@ -145,25 +143,21 @@ multilib_src_configure() {
 	fi
 }
 
-multilib_src_install() {
-	if multilib_is_native_abi && use savedconfig; then
+src_install() {
+	if use savedconfig; then
 		save_config config/.config
 	fi
 
 	emake PREFIX="${ED}/usr" install
 
-	if ! use static-libs; then
-		rm -f "${ED}"/usr/$(get_libdir)/libaxtls.a || die
-	fi
+	rm -f "${ED}"/usr/$(get_libdir)/libaxtls.a || die
 
 	# The build system needs to install before it builds docs
-	if multilib_is_native_abi && use doc; then
+	if use doc; then
 		emake docs
 		dodoc -r docsrc/html
 	fi
-}
 
-multilib_src_install_all() {
 	if [[ -f "${ED}"/usr/bin/htpasswd ]]; then
 		mv "${ED}"/usr/bin/{,ax}htpasswd || die
 	fi
