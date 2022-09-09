@@ -18,6 +18,7 @@ ao - Use libao audio output library for sound playback
 apache2 - Add Apache2 support
 aqua - Include support for the Mac OS X Aqua (Carbon/Cocoa) GUI
 atm - Enable Asynchronous Transfer Mode protocol support
+apparmor - Enable support for the AppArmor application security system
 appindicator - Build in support for notifications using the libindicate or libappindicator plugin
 audiofile - Add support for libaudiofile where applicable
 audit - Enable support for Linux audit subsystem using sys-process/audit

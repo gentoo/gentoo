@@ -9,7 +9,6 @@
 		<subslots>Incremented for ABI breaks in libudev or libsystemd</subslots>
 	</slots>
 	<use>
-		<flag name="apparmor">Enable AppArmor support</flag>
 		<flag name="audit">Enable support for <pkg>sys-process/audit</pkg></flag>
 		<flag name="cgroup-hybrid">Default to hybrid (legacy) cgroup hierarchy instead of unified (modern).</flag>
 		<flag name="curl">Enable support for uploading journals</flag>

@@ -9,9 +9,6 @@
 		<remote-id type="github">snapcore/snapd</remote-id>
 	</upstream>
 	<use>
-		<flag name="apparmor">
-			Enable AppArmor support.
-		</flag>
 		<flag name="forced-devmode">
 			Automatically disable application confinement if feature detection fails.
 		</flag>
