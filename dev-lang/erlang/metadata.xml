@@ -10,7 +10,6 @@
 		<name>Matthew Smith</name>
 	</maintainer>
 	<use>
-		<flag name="hipe">HIgh Performance Erlang extension</flag>
 		<flag name="kpoll">Enable kernel polling support</flag>
 	</use>
 	<longdescription>
