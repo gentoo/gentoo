@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic
+inherit flag-o-matic
 
 DESCRIPTION="Library to support the Open Financial eXchange XML format"
 HOMEPAGE="https://github.com/libofx/libofx"
@@ -30,18 +30,6 @@ RDEPEND="
 	virtual/libiconv
 "
 DEPEND="${RDEPEND}"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.10.6-0001-autotools-fix-LIBOFX_MAJOR_VERSION-and-friends-in-li.patch
-	"${FILESDIR}"/${PN}-0.10.6-0002-autotools-fix-parallel-build-issue-with-ofxconnect-o.patch
-)
-
-src_prepare() {
-	default
-
-	# Needed for header version patch
-	eautoreconf
-}
 
 src_configure() {
 	# bug #566456
