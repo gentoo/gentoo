@@ -303,13 +303,6 @@ net-analyzer/sguil-sensor
 # transition, multiple open bugs. Removal in 30 days, bug 630752
 app-admin/logcheck
 
-# Matthew Smith <matthew@gentoo.org> (2022-08-09)
-# Please update to Erlang/OTP 24 or 25. Removal in 30 days.
-# See following link for breaking changes:
-# https://www.erlang.org/patches/otp-24.0#incompatibilities
-<dev-lang/erlang-24
-~dev-lang/elixir-1.11.4
-
 # Jimi Huotari <chiitoo@gentoo.org> (2022-08-02)
 # Masked for testing. The split of some packages may still
 # change. bug #838970.
