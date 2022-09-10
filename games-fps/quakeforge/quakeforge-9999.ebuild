@@ -33,7 +33,7 @@ RDEPEND="
 		x11-libs/libXi
 		x11-libs/libXxf86vm
 		alsa? ( media-libs/alsa-lib )
-		flac? ( media-libs/flac )
+		flac? ( media-libs/flac:= )
 		jack? ( virtual/jack )
 		sdl? ( media-libs/libsdl[sound] )
 		vorbis? ( media-libs/libvorbis )
