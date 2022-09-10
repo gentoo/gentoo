@@ -9,8 +9,8 @@ MY_PN=${PN}2
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="The RDF Parser Toolkit"
-HOMEPAGE="http://librdf.org/raptor/"
-SRC_URI="http://download.librdf.org/source/${MY_P}.tar.gz"
+HOMEPAGE="https://librdf.org/raptor/"
+SRC_URI="https://download.librdf.org/source/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2 LGPL-2.1"
 SLOT="2"
