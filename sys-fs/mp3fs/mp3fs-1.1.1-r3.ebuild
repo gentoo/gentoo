@@ -19,7 +19,7 @@ DEPEND="
 	media-libs/libid3tag:=
 	media-sound/lame
 	sys-fs/fuse:0=
-	flac? ( >=media-libs/flac-1.1.4 )
+	flac? ( >=media-libs/flac-1.1.4:= )
 	vorbis? ( >=media-libs/libvorbis-1.3.0 )
 "
 RDEPEND="${DEPEND}"
