@@ -29,9 +29,9 @@ BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
 	dumb? ( >=media-libs/dumb-0.9.3-r2:=[${MULTILIB_USEDEP}] )
-	flac? ( >=media-libs/flac-1.2.1-r5[${MULTILIB_USEDEP}] )
+	flac? ( >=media-libs/flac-1.2.1-r5:=[${MULTILIB_USEDEP}] )
 	gtk? ( x11-libs/gtk+:3[${MULTILIB_USEDEP}] )
-	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
+	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	openal? ( >=media-libs/openal-1.15.1[${MULTILIB_USEDEP}] )
 	opengl? (
 		>=virtual/glu-9.0-r1[${MULTILIB_USEDEP}]
