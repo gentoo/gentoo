@@ -21,7 +21,7 @@ S=${WORKDIR}/pycares-${P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 IUSE="test"
 # Tests fail with network-sandbox, since they try to resolve google.com
 PROPERTIES="test_network"
