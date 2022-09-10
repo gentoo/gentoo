@@ -31,7 +31,7 @@ COMMON_DEPEND="
 	aac? ( media-libs/faad2 )
 	clutter? ( >=media-libs/clutter-gtk-1.2:1.0 )
 	curl? ( >=net-misc/curl-7.10 )
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac:= )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
