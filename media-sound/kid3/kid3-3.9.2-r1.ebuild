@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit cmake kde.org python-any-r1 xdg
 
 DESCRIPTION="Simple tag editor based on Qt"
@@ -29,13 +29,13 @@ RDEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	sys-libs/readline:0=
+	sys-libs/readline:=
 	acoustid? (
-		media-libs/chromaprint
-		media-video/ffmpeg
+		media-libs/chromaprint:=
+		media-video/ffmpeg:=
 	)
 	flac? (
-		media-libs/flac[cxx]
+		media-libs/flac:=[cxx]
 		media-libs/libvorbis
 	)
 	kde? (
@@ -47,7 +47,7 @@ RDEPEND="
 		kde-frameworks/kxmlgui:5
 	)
 	mp3? ( media-libs/id3lib )
-	mp4? ( media-libs/libmp4v2:0 )
+	mp4? ( media-libs/libmp4v2 )
 	mpris? ( dev-qt/qtdbus:5 )
 	taglib? ( >=media-libs/taglib-1.9.1 )
 	vorbis? (
