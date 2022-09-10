@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-09-10)
+# Python 3.8 only package, with capped old dependencies, and open
+# bugs and issues.
+# Removal: 2022-10-10.  Bugs #869506, #695090, #792219, #809272.
+net-misc/electrum-ltc
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-09-10)
 # Upstream repository archived. Python 3.8 only, with issues for
 # newer targets. No reverse dependencies in tree.
 # Removal: 2022-10-10.  Bugs #869503, #747997, #832242.
@@ -70,11 +76,11 @@ mail-filter/sigh
 # Flask-Security-Too is a package with high maintenance cost
 # and no revdeps in ::gentoo.  The next version bump (once more)
 # introduces more dependencies.
-#
+# 
 # The remaining listed packages are used exclusively by this package
 # (or its tests).  If you find one of them useful, please let us know
 # and we'll keep it.
-#
+# 
 # Removal on 2022-09-29.  Bug #867415.
 dev-python/flask-security
 dev-python/flask-babelex
