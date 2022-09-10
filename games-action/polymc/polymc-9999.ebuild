@@ -85,6 +85,10 @@ RDEPEND="
 	virtual/opengl
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.1-include_QDebug.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
 
