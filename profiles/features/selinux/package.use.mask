@@ -1,19 +1,6 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-21)
-# requires systemd, as OpenBMC uses sd-dbus for communication
-sys-apps/ipmitool openbmc
-
-# Jeroen Roovers <jer@gentoo.org> (2019-02-23)
-# sdjournal links against sys-apps/systemd's libraries
-net-analyzer/wireshark sdjournal
-
-# Jason Zaman <perfinion@gentoo.org> (2015-06-27)
-# systemd has only experimental support in the SELinux policy at the moment.
-# Please see: https://wiki.gentoo.org/wiki/SELinux/FAQ#Can_I_use_SELinux_with_SystemD.3F
-www-servers/uwsgi uwsgi_plugins_systemd_logger
-
 # Brian Dolbec <dolsen@gentoo.org> (2014-09-17)
 # mask pypy for several utilities due to incompatibility with libselinux
 sys-apps/portage python_targets_pypy3
