@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="A command-line based audio CD ripper and mp3 encoder"
-SRC_URI="http://rip.sourceforge.net/download/${P}.tar.gz"
 HOMEPAGE="http://rip.sourceforge.net"
+SRC_URI="http://rip.sourceforge.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
