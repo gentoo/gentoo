@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Simple programming interface to decode and encode audio with vorbis or speex"
 HOMEPAGE="https://www.xiph.org/fishsound/"
@@ -15,10 +15,10 @@ IUSE="flac speex"
 RDEPEND="
 	media-libs/libogg
 	media-libs/libvorbis
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac:= )
 	speex? ( media-libs/speex )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 # bug #395153
 RESTRICT="test"
