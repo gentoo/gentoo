@@ -19,13 +19,13 @@ IUSE="netgear readynas zeroconf"
 
 DEPEND="
 	dev-db/sqlite:3
-	media-libs/flac
+	media-libs/flac:=
 	media-libs/libexif
 	media-libs/libid3tag:=
-	media-libs/libjpeg-turbo:0=
+	media-libs/libjpeg-turbo:=
 	media-libs/libogg
 	media-libs/libvorbis
-	media-video/ffmpeg:0=
+	media-video/ffmpeg:=
 	elibc_musl? ( sys-libs/queue-standalone )
 	zeroconf? ( net-dns/avahi )
 "
