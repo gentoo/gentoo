@@ -38,7 +38,7 @@ RDEPEND="
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
 	media-libs/chromaprint
-	media-libs/flac
+	media-libs/flac:=
 	media-libs/libebur128
 	media-libs/libid3tag:=
 	media-libs/libogg
@@ -60,9 +60,9 @@ RDEPEND="
 	x11-libs/libX11
 	aac? (
 		media-libs/faad2
-		media-libs/libmp4v2:0
+		media-libs/libmp4v2
 	)
-	ffmpeg? ( media-video/ffmpeg:0= )
+	ffmpeg? ( media-video/ffmpeg:= )
 	hid? ( dev-libs/hidapi )
 	keyfinder? ( media-libs/libkeyfinder )
 	lv2? ( media-libs/lilv )

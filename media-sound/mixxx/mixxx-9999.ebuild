@@ -7,17 +7,16 @@ inherit cmake xdg udev
 
 DESCRIPTION="Advanced Digital DJ tool based on Qt"
 HOMEPAGE="https://www.mixxx.org/"
-if [[ "${PV}" == 9999 || ?.?.9999 ]] ; then
+if [[ "${PV}" == *9999 ]] ; then
 	inherit git-r3
+	if [[ "${PV}" == ?.?.9999 ]] ; then
+		EGIT_BRANCH=${PV%.9999}
+	fi
 	EGIT_REPO_URI="https://github.com/mixxxdj/${PN}.git"
 else
 	SRC_URI="https://github.com/mixxxdj/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-release-${PV}"
 	KEYWORDS="~amd64 ~x86"
-fi
-
-if [[ "${PV}" == ?.?.9999 ]] ; then
-	EGIT_BRANCH=${PV%.9999}
 fi
 
 LICENSE="GPL-2"
@@ -27,7 +26,7 @@ IUSE="aac doc ffmpeg hid keyfinder lv2 mp3 mp4 opus qtkeychain shout wavpack"
 RDEPEND="
 	dev-db/sqlite
 	dev-libs/glib:2
-	dev-libs/protobuf:0=
+	dev-libs/protobuf:=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -41,7 +40,7 @@ RDEPEND="
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
 	media-libs/chromaprint
-	media-libs/flac
+	media-libs/flac:=
 	media-libs/libebur128
 	media-libs/libid3tag:=
 	media-libs/libogg
@@ -62,9 +61,9 @@ RDEPEND="
 	x11-libs/libX11
 	aac? (
 		media-libs/faad2
-		media-libs/libmp4v2:0
+		media-libs/libmp4v2
 	)
-	ffmpeg? ( media-video/ffmpeg:0= )
+	ffmpeg? ( media-video/ffmpeg:= )
 	hid? ( dev-libs/hidapi )
 	keyfinder? ( media-libs/libkeyfinder )
 	lv2? ( media-libs/lilv )
