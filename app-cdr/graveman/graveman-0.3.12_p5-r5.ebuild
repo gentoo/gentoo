@@ -24,7 +24,7 @@ RDEPEND="
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-2.4:2
 	dvdr? ( app-cdr/dvd+rw-tools )
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac:= )
 	mp3? (
 		media-libs/libid3tag:=
 		media-libs/libmad
