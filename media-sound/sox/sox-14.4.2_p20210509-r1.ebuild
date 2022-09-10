@@ -34,7 +34,7 @@ RDEPEND="
 	amr? ( media-libs/opencore-amr )
 	ao? ( media-libs/libao:= )
 	encode? ( >=media-sound/lame-3.98.4 )
-	flac? ( >=media-libs/flac-1.1.3 )
+	flac? ( >=media-libs/flac-1.1.3:= )
 	id3tag? ( media-libs/libid3tag:= )
 	ladspa? ( media-libs/ladspa-sdk )
 	mad? ( media-libs/libmad )
