@@ -54,7 +54,7 @@ COMMON_DEPEND="
 		)
 		curl? ( net-misc/curl )
 		ffmpeg? ( media-video/ffmpeg:= )
-		flac? ( media-libs/flac )
+		flac? ( media-libs/flac:= )
 		fluidsynth? ( media-sound/fluidsynth:= )
 		gme? ( media-libs/game-music-emu )
 		ices? (
