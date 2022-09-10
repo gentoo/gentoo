@@ -34,7 +34,7 @@ BDEPEND="
 RDEPEND="
 	dev-libs/libxdg-basedir
 	media-libs/libdvdnav
-	media-video/ffmpeg:0=
+	media-video/ffmpeg:=
 	sys-libs/zlib:=
 	virtual/libiconv
 	a52? ( media-libs/a52dec )
@@ -46,7 +46,7 @@ RDEPEND="
 	dav1d? ( media-libs/dav1d:= )
 	dts? ( media-libs/libdca )
 	dxr3? ( media-libs/libfame )
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac:= )
 	gtk? ( x11-libs/gdk-pixbuf:2 )
 	imagemagick? ( virtual/imagemagick-tools )
 	jack? ( virtual/jack )
@@ -78,23 +78,23 @@ RDEPEND="
 		media-libs/freetype:2
 	)
 	v4l? ( media-libs/libv4l )
-	vaapi? ( x11-libs/libva:0=[X] )
+	vaapi? ( x11-libs/libva:=[X] )
 	vcd? (
 		>=media-video/vcdimager-0.7.23
-		dev-libs/libcdio:0=[-minimal]
+		dev-libs/libcdio:=[-minimal]
 	)
 	vdpau? ( x11-libs/libvdpau )
 	vorbis? (
 		media-libs/libogg
 		media-libs/libvorbis
 	)
-	vpx? ( media-libs/libvpx:0= )
+	vpx? ( media-libs/libvpx:= )
 	wavpack? ( media-sound/wavpack )
 	wayland? ( dev-libs/wayland )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXext
-		x11-libs/libxcb
+		x11-libs/libxcb:=
 	)
 	xinerama? ( x11-libs/libXinerama )
 	xv? ( x11-libs/libXv )
