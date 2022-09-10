@@ -1,4 +1,6 @@
 https://bugs.gentoo.org/869371
+
+Upstream variant: https://lists.gnu.org/archive/html/screen-devel/2022-08/msg00000.html
 --- a/configure.ac
 +++ b/configure.ac
 @@ -157,10 +157,11 @@ if test -n "$ULTRIX"; then
