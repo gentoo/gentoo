@@ -16,7 +16,7 @@ IUSE="flac portaudio pulseaudio sdl sndfile"
 
 RDEPEND="
 	~media-libs/libopenmpt-${PV}
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac:= )
 	pulseaudio? ( media-sound/pulseaudio )
 	sdl? ( >=media-libs/libsdl2-2.0.4 )
 	sndfile? ( media-libs/libsndfile )
