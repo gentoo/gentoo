@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools flag-o-matic
 
@@ -19,7 +19,7 @@ RDEPEND="
 	media-libs/libid3tag:=
 	media-libs/libogg
 	media-libs/libvorbis
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac:= )
 	pcre? ( dev-libs/libpcre )
 "
 DEPEND="${RDEPEND}"
