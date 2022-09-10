@@ -26,7 +26,7 @@ RDEPEND="
 	a52? ( media-libs/a52dec )
 	aac? ( media-libs/faad2 )
 	alsa? ( media-libs/alsa-lib )
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac:= )
 	fluidsynth? ( media-sound/fluidsynth:= )
 	fribidi? ( dev-libs/fribidi )
 	gif? ( media-libs/giflib )
