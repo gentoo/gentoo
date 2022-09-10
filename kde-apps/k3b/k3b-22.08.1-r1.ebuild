@@ -52,7 +52,7 @@ DEPEND="
 	>=kde-frameworks/solid-${KFMIN}:5
 	media-libs/libsamplerate
 	dvd? ( media-libs/libdvdread:= )
-	flac? ( >=media-libs/flac-1.2[cxx] )
+	flac? ( >=media-libs/flac-1.2:=[cxx] )
 	mp3? ( media-sound/lame )
 	mad? ( media-libs/libmad )
 	musepack? ( >=media-sound/musepack-tools-444 )
