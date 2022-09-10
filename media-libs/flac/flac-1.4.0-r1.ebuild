@@ -18,7 +18,6 @@ IUSE="+cxx debug ogg cpu_flags_ppc_altivec cpu_flags_ppc_vsx cpu_flags_x86_avx2 
 # AVX configure switch is for both AVX & AVX2
 REQUIRED_USE="
 	cpu_flags_x86_avx2? ( cpu_flags_x86_avx )
-	cpu_flags_x86_avx? ( cpu_flags_x86_avx2 )
 "
 
 RDEPEND="ogg? ( media-libs/libogg[${MULTILIB_USEDEP}] )"
