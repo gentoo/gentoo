@@ -27,7 +27,7 @@ DEPEND="
 	dev-libs/openssl:=
 	alsa? ( media-libs/alsa-lib )
 	avahi? ( net-dns/avahi )
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac:= )
 	gmp? ( dev-libs/gmp:= )
 	gpg? ( app-crypt/gnupg )
 	gstreamer? (
