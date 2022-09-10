@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,8 +32,8 @@ RDEPEND="
 	alsa? ( media-libs/alsa-lib )
 	cdda? ( dev-libs/libcdio-paranoia )
 	cddb? ( media-libs/libcddb )
-	ffmpeg? ( media-video/ffmpeg:0= )
-	flac? ( media-libs/flac )
+	ffmpeg? ( media-video/ffmpeg:= )
+	flac? ( media-libs/flac:= )
 	ifp? ( media-libs/libifp )
 	jack? ( virtual/jack )
 	ladspa? ( media-libs/liblrdf )
