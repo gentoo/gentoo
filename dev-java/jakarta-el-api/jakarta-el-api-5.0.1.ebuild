@@ -19,7 +19,7 @@ SRC_URI="https://github.com/jakartaee/expression-language/archive/${PV}-RELEASE-
 
 LICENSE="EPL-2.0 GPL-2-with-classpath-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~arm64"
 
 DEPEND=">=virtual/jdk-11:*"
 # <release>11</release>
