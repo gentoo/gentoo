@@ -11,13 +11,13 @@ SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ppc ppc64 ~riscv x86"
 IUSE="+alsa ao +audiofile bzip2 cdio chromaprint +cue +curl doc +dbus
 	+eventfd expat faad +ffmpeg +fifo flac fluidsynth gme +icu +id3tag +inotify
 	+ipv6 jack lame libmpdclient libsamplerate libsoxr +mad mikmod mms
 	modplug mpg123 musepack +network nfs openal opus oss pipe pulseaudio qobuz
 	recorder samba selinux sid signalfd sndfile sndio soundcloud sqlite systemd
-	test tidal twolame udisks unicode vorbis wavpack webdav wildmidi upnp
+	test twolame udisks vorbis wavpack webdav wildmidi upnp
 	zeroconf zip zlib"
 
 OUTPUT_PLUGINS="alsa ao fifo jack network openal oss pipe pulseaudio sndio recorder"
@@ -58,8 +58,8 @@ RDEPEND="
 	doc? ( dev-python/sphinx )
 	expat? ( dev-libs/expat )
 	faad? ( media-libs/faad2 )
-	ffmpeg? ( media-video/ffmpeg:0= )
-	flac? ( media-libs/flac )
+	ffmpeg? ( media-video/ffmpeg:= )
+	flac? ( media-libs/flac:= )
 	fluidsynth? ( media-sound/fluidsynth )
 	gme? ( >=media-libs/game-music-emu-0.6.0_pre20120802 )
 	icu? (  dev-libs/icu:= )
@@ -92,8 +92,6 @@ RDEPEND="
 	soundcloud? ( >=dev-libs/yajl-2:= )
 	sqlite? ( dev-db/sqlite:3 )
 	systemd? ( sys-apps/systemd )
-	tidal? ( dev-libs/yajl
-		net-misc/curl )
 	twolame? ( media-sound/twolame )
 	udisks? ( sys-fs/udisks:2 )
 	upnp? ( net-libs/libupnp:0 )
@@ -110,10 +108,6 @@ DEPEND="${RDEPEND}
 
 BDEPEND=">=dev-util/meson-0.49.2
 	virtual/pkgconfig"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.18.conf.patch
-)
 
 pkg_setup() {
 	if use eventfd; then
@@ -140,7 +134,18 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cp -f doc/mpdconf.example doc/mpdconf.dist || die "cp failed"
+	sed -i \
+		-e 's:^#filesystem_charset.*$:filesystem_charset "UTF-8":' \
+		-e 's:^#user.*$:user "mpd":' \
+		-e 's:^#bind_to_address.*any.*$:bind_to_address "localhost":' \
+		-e 's:^#bind_to_address.*$:bind_to_address "/var/lib/mpd/socket":' \
+		-e 's:^#music_directory.*$:music_directory "/var/lib/mpd/music":' \
+		-e 's:^#playlist_directory.*$:playlist_directory "/var/lib/mpd/playlists":' \
+		-e 's:^#db_file.*$:db_file "/var/lib/mpd/database":' \
+		-e 's:^#log_file.*$:log_file "/var/lib/mpd/log":' \
+		-e 's:^#pid_file.*$:pid_file "/var/lib/mpd/pid":' \
+		-e 's:^#state_file.*$:state_file "/var/lib/mpd/state":' \
+		doc/mpdconf.example || die
 	default
 }
 
@@ -236,7 +241,6 @@ src_configure() {
 	emesonargs+=(
 		-Dqobuz=$(usex qobuz enabled disabled)
 		-Dsoundcloud=$(usex soundcloud enabled disabled)
-		-Dtidal=$(usex tidal enabled disabled)
 	)
 
 	emesonargs+=(
@@ -266,25 +270,20 @@ src_install() {
 	meson_src_install
 
 	insinto /etc
-	newins doc/mpdconf.dist mpd.conf
+	newins doc/mpdconf.example mpd.conf
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/${PN}-0.21.1.logrotate ${PN}
 
 	newinitd "${FILESDIR}"/${PN}-0.21.4.init ${PN}
 
-	if use unicode; then
-		sed -i -e 's:^#filesystem_charset.*$:filesystem_charset "UTF-8":' \
-			"${ED}"/etc/mpd.conf || die "sed failed"
-	fi
-
 	keepdir /var/lib/mpd
 	keepdir /var/lib/mpd/music
 	keepdir /var/lib/mpd/playlists
 
-	rm -r "${ED}"/usr/share/doc/mpd || die
-
 	fowners mpd:audio -R /var/lib/mpd
+
+	rm -r "${ED}"/usr/share/doc/mpd || die
 
 }
 

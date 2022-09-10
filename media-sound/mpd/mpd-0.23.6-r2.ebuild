@@ -11,7 +11,7 @@ SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~riscv ~x86"
 IUSE="+alsa ao +audiofile bzip2 cdio chromaprint +cue +curl doc +dbus
 	+eventfd expat faad +ffmpeg +fifo flac fluidsynth gme +icu +id3tag +inotify
 	+ipv6 jack lame libmpdclient libsamplerate libsoxr +mad mikmod mms
@@ -62,14 +62,11 @@ RDEPEND="
 	doc? ( dev-python/sphinx )
 	expat? ( dev-libs/expat )
 	faad? ( media-libs/faad2 )
-	ffmpeg? ( media-video/ffmpeg:0= )
-	flac? ( media-libs/flac )
+	ffmpeg? ( media-video/ffmpeg:= )
+	flac? ( media-libs/flac:= )
 	fluidsynth? ( media-sound/fluidsynth )
 	gme? ( >=media-libs/game-music-emu-0.6.0_pre20120802 )
-	icu? (
-		dev-libs/icu:=
-		virtual/libiconv
-	)
+	icu? (  dev-libs/icu:= )
 	id3tag? ( media-libs/libid3tag:= )
 	jack? ( virtual/jack )
 	lame? ( network? ( media-sound/lame ) )
@@ -82,7 +79,7 @@ RDEPEND="
 	modplug? ( media-libs/libmodplug )
 	mpg123? ( media-sound/mpg123 )
 	musepack? ( media-sound/musepack-tools )
-	network? ( >=media-libs/libshout-2.4.0 )
+	network? ( media-libs/libshout )
 	nfs? ( net-fs/libnfs )
 	openal? ( media-libs/openal )
 	openmpt? ( media-libs/libopenmpt )
