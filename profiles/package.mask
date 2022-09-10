@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-09-10)
+# Python 3.8 only package, with inactive since 2017 upstream.
+# Tests fail and doesn't work on newer python targets.
+# Removal: 2022-10-10.  Bug #869512.
+dev-python/python-etcd
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-09-10)
 # Python 3.8 only package, with capped old dependencies, and open
 # bugs and issues.
 # Removal: 2022-10-10.  Bugs #869506, #695090, #792219, #809272.
