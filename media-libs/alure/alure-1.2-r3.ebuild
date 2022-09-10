@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
@@ -17,7 +17,7 @@ IUSE="dumb examples flac fluidsynth mp3 sndfile static-libs vorbis"
 RDEPEND="
 	>=media-libs/openal-1.1
 	dumb? ( media-libs/dumb:= )
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac:= )
 	fluidsynth? ( >=media-sound/fluidsynth-1.1.1:= )
 	mp3? ( media-sound/mpg123 )
 	sndfile? ( media-libs/libsndfile )
