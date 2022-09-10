@@ -19,7 +19,7 @@ IUSE="+mp3 +mp4 +flac +vorbis +cache mysql archive"
 
 DEPEND="mp3? ( media-libs/libmad media-libs/libid3tag:= )
 	mp4? ( media-libs/libmp4v2:0 )
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac:= )
 	vorbis? ( media-libs/libvorbis )
 	archive? ( app-arch/libarchive:= )
 	mysql? ( dev-db/mysql-connector-c:0= )"
