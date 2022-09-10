@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,10 +20,10 @@ RDEPEND="
 	dev-libs/boost:=
 	sys-libs/zlib
 	x11-libs/wxGTK:${WX_GTK_VER}
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac:= )
 	iconv? ( virtual/libiconv media-libs/freetype:2 )
 	mad? ( media-libs/libmad )
-	png? ( media-libs/libpng:0= )
+	png? ( media-libs/libpng:= )
 	vorbis? ( media-libs/libvorbis )
 "
 DEPEND="
