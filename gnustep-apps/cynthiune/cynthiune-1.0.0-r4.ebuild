@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ RDEPEND="media-libs/audiofile:=
 	media-libs/taglib
 	alsa? ( media-libs/alsa-lib )
 	ao? ( media-libs/libao:= )
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac:= )
 	mad? (
 		media-libs/libid3tag:=
 		media-libs/libmad
@@ -32,8 +32,8 @@ RDEPEND="media-libs/audiofile:=
 		>=media-libs/libogg-1.1.2
 		>=media-libs/libvorbis-1.0.1-r2
 	)"
-DEPEND="${RDEPEND}
-	mad? ( virtual/pkgconfig )"
+DEPEND="${RDEPEND}"
+BDEPEND="mad? ( virtual/pkgconfig )"
 
 S=${WORKDIR}/${MY_P}
 
