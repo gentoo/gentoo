@@ -8,17 +8,16 @@ inherit multilib-minimal
 DESCRIPTION="Free lossless audio encoder and decoder"
 HOMEPAGE="https://xiph.org/flac/"
 SRC_URI="https://downloads.xiph.org/releases/${PN/-compat}/${P/-compat}.tar.xz"
-S="${WORKDIR}"/${P/-compat}
+S="${WORKDIR}/${P/-compat}"
 
 LICENSE="BSD FDL-1.2 GPL-2 LGPL-2.1"
 SLOT="8.3.0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="+cxx debug ogg cpu_flags_ppc_altivec cpu_flags_ppc_vsx cpu_flags_x86_sse static-libs"
+KEYWORDS="~amd64 ~x86"
+IUSE="+cxx ogg cpu_flags_x86_sse"
 
 RDEPEND="
 	!media-libs/flac:0/0
-	ogg? ( media-libs/libogg[${MULTILIB_USEDEP}] )
-"
+	ogg? ( media-libs/libogg[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-arch/xz-utils
@@ -28,17 +27,15 @@ BDEPEND="
 
 multilib_src_configure() {
 	local myeconfargs=(
+		--disable-debug
+		--disable-altivec
+		--disable-vsx
 		--disable-doxygen-docs
 		--disable-examples
 		--disable-xmms-plugin
-		$([[ ${CHOST} == *-darwin* ]] && echo "--disable-asm-optimizations")
-		$(use_enable cpu_flags_ppc_altivec altivec)
-		$(use_enable cpu_flags_ppc_vsx vsx)
 		$(use_enable cpu_flags_x86_sse sse)
 		$(use_enable cxx cpplibs)
-		$(use_enable debug)
 		$(use_enable ogg)
-		$(use_enable static-libs static)
 
 		# cross-compile fix (bug #521446)
 		# no effect if ogg support is disabled
@@ -55,7 +52,12 @@ multilib_src_test() {
 	fi
 }
 
-multilib_src_install() {
-	newlib.so "${BUILD_DIR}"/src/libFLAC/.libs/libFLAC.so.8.3.0 libFLAC.so.8
-	newlib.so "${BUILD_DIR}"/src/libFLAC++/.libs/libFLAC++.so.6.3.0 libFLAC++.so.6
+multilib_src_install_all() {
+	rm -r "${ED}"/usr/bin || die
+	rm -r "${ED}"/usr/include || die
+	rm -r "${ED}"/usr/share || die
+	rm -r "${ED}"/usr/lib*/pkgconfig || die
+	rm -r "${ED}"/usr/lib*/*.so || die
+
+	find "${ED}" -type f -name '*.la' -delete || die
 }
