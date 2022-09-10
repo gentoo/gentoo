@@ -54,11 +54,6 @@ sys-block/fio rbd
 # Upstream bug for criu: https://github.com/checkpoint-restore/criu/issues/1702
 app-containers/crun criu
 
-# Jakov Smolić <jsmolic@gentoo.org> (2022-03-24)
-# Depends on net-misc/memcached which has concerning test
-# failures on riscv (bug #811477)
-dev-python/pytest-services test
-
 # Alex Fan <alex.fan.q@gmail.com> (2022-02-28)
 # dev-libs/vc is a dummy implementation on this arch
 # krita fails to build with it
