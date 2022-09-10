@@ -5,15 +5,15 @@ EAPI=8
 
 ECM_HANDBOOK="forceoptional"
 PVCUT=$(ver_cut 1-3)
-KFMIN=5.92.0
-QTMIN=5.15.4
+KFMIN=5.96.0
+QTMIN=5.15.5
 inherit ecm gear.kde.org
 
 DESCRIPTION="KIO worker for accessing audio CDs"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
 SLOT="5"
-KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="flac vorbis"
 
 DEPEND="
@@ -28,7 +28,7 @@ DEPEND="
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kio-${KFMIN}:5
 	media-sound/cdparanoia
-	flac? ( >=media-libs/flac-1.1.2 )
+	flac? ( >=media-libs/flac-1.1.2:= )
 	vorbis? (
 		media-libs/libogg
 		media-libs/libvorbis
