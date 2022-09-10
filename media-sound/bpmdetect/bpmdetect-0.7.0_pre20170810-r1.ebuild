@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 COMMIT=b13aac15904c1f821b1739d00445f49432705387
 inherit cmake
@@ -14,14 +14,13 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtwidgets:5
-	media-libs/flac
+	media-libs/flac:=
 	media-libs/libmad
 	media-libs/libvorbis
 	media-libs/portaudio
@@ -32,7 +31,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=("${FILESDIR}"/${P}-gcc-11.patch)
+PATCHES=( "${FILESDIR}"/${P}-gcc-11.patch )
 
 src_install() {
 	einstalldocs
