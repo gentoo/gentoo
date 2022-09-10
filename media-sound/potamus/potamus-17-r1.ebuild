@@ -23,7 +23,7 @@ RDEPEND="
 	media-video/ffmpeg:0=
 	ao? ( media-libs/libao )
 	audiofile? ( media-libs/audiofile )
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac:= )
 	jack? ( virtual/jack )
 	mad? ( media-libs/libmad )
 	modplug? ( media-libs/libmodplug )
