@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
@@ -15,16 +15,16 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 IUSE="debug doc examples"
 
 RDEPEND="
-	media-libs/flac
+	media-libs/flac:=
 	media-libs/freetype:2
-	media-libs/libpng:0=
+	media-libs/libjpeg-turbo:=
+	media-libs/libpng:=
 	media-libs/libogg
 	media-libs/libvorbis
 	media-libs/openal
 	sys-libs/zlib
-	virtual/jpeg:0
-	kernel_linux? ( virtual/libudev:0 )
 	virtual/opengl
+	kernel_linux? ( virtual/libudev:= )
 	!kernel_Winnt? (
 		x11-libs/libX11
 		x11-libs/libXrandr
