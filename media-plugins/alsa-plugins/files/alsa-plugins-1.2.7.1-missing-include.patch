@@ -1,0 +1,21 @@
+https://github.com/alsa-project/alsa-plugins/pull/47
+
+From 2c760e55d86b145754866c24c22dbcd6ad3ab897 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Tue, 23 Aug 2022 15:21:16 -0700
+Subject: [PATCH] arcam_av.c: Include missing string.h
+
+bzero() function needs this header to be included
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+--- a/arcam-av/arcam_av.c
++++ b/arcam-av/arcam_av.c
+@@ -27,6 +27,7 @@
+ #include <signal.h>
+ #include <stddef.h>
+ #include <stdio.h>
++#include <string.h>
+ #include <termios.h>
+ #include <unistd.h>
+ 
+
