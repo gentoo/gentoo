@@ -34,7 +34,7 @@ RDEPEND="
 	>=gnome-base/libgnomecanvas-2
 	media-libs/alsa-lib
 	media-libs/aubio
-	media-libs/flac
+	media-libs/flac:=
 	media-libs/freetype:2
 	media-libs/libart_lgpl
 	media-libs/liblo
