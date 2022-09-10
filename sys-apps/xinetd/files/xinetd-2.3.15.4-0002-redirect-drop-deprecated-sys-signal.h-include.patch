@@ -1,0 +1,24 @@
+https://github.com/openSUSE/xinetd/pull/42
+
+From 953a37c570a42743358cfc64e00e990813db1e09 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 10 Sep 2022 14:01:00 +0100
+Subject: [PATCH 2/2] redirect: drop deprecated <sys/signal.h> include
+
+Fix warning when building on musl:
+```
+In file included from src/redirect.c:23:
+/usr/include/sys/signal.h:1:2: warning: redirecting incorrect #include <sys/signal.h> to <signal.h> [-W#warnings]
+```
+
+We already include <signal.h>.
+--- a/src/redirect.c
++++ b/src/redirect.c
+@@ -20,7 +20,6 @@
+ #include <unistd.h>
+ #include <netinet/tcp.h>
+ #include <arpa/inet.h>
+-#include <sys/signal.h>
+ 
+ #include "redirect.h"
+ #include "service.h"
