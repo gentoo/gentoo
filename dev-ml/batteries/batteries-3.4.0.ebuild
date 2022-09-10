@@ -27,5 +27,5 @@ src_compile() {
 }
 
 src_install() {
-	findlib_src_install
+	findlib_src_install BATTERIES_NATIVE=$(usex ocamlopt yes no)
 }
