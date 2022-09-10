@@ -42,6 +42,7 @@ REQUIRED_USE="
 "
 
 BDEPEND=">=sys-devel/autoconf-archive-2015.02.24
+	sys-apps/lsb-release
 	virtual/pkgconfig
 	test? (
 		jemalloc? ( <sys-libs/libfaketime-0.9.7 )
