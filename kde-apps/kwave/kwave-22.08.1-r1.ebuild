@@ -32,10 +32,10 @@ RDEPEND="
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	media-libs/audiofile:=
-	>=sci-libs/fftw-3
+	>=sci-libs/fftw-3:=
 	media-libs/libsamplerate
 	alsa? ( media-libs/alsa-lib )
-	flac? ( media-libs/flac[cxx] )
+	flac? ( media-libs/flac:=[cxx] )
 	mp3? (
 		media-libs/id3lib
 		media-libs/libmad
