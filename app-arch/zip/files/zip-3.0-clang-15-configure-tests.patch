@@ -1,5 +1,6 @@
 https://bugs.gentoo.org/869203
 
+See also OE's variant: https://cgit.openembedded.org/openembedded-core/commit/?id=f898db2607ba3837f81292af92bc8cb605b96cb3
 --- a/unix/configure
 +++ b/unix/configure
 @@ -507,18 +507,18 @@ $CC $CFLAGS -c conftest.c >/dev/null 2>/
