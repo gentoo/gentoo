@@ -48,7 +48,7 @@ REQUIRED_USE="
 RESTRICT="bindist test"
 
 RDEPEND="
-	media-libs/flac
+	media-libs/flac:=
 	media-libs/libogg
 	media-libs/libsdl2[alsa,joystick,opengl?,sound,video]
 	media-libs/libvorbis
