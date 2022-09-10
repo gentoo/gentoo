@@ -288,6 +288,13 @@ BDEPEND="
 	)"
 DEPEND="${RDEPEND}"
 
+if [[ ${PN} == gcc && ${PV} == *_p* ]] ; then
+	# Snapshots don't contain info pages.
+	# If they start to, adjust gcc_cv_prog_makeinfo_modern logic in toolchain_src_configure.
+	# Needed unless/until https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106899 is fixed
+	BDEPEND+=" sys-apps/texinfo"
+fi
+
 if tc_has_feature gcj ; then
 	DEPEND+="
 		gcj? (
@@ -1417,9 +1424,22 @@ toolchain_src_configure() {
 		)
 	fi
 
-	# Disable gcc info regeneration -- it ships with generated info pages
-	# already.  Our custom version/urls/etc... trigger it. bug #464008
-	export gcc_cv_prog_makeinfo_modern=no
+	if [[ ${PV} != *_p* && -f "${S}"/gcc/doc/gcc.info ]] ; then
+		# Disable gcc info regeneration -- it ships with generated info pages
+		# already.  Our custom version/urls/etc... trigger it. bug #464008
+		export gcc_cv_prog_makeinfo_modern=no
+	else
+		# Allow a fallback so we don't accidentally install no docs
+		# bug #834845
+		ewarn "No pre-generated info pages in tarball. Allowing regeneration with texinfo..."
+
+		if [[ ${PV} == *_p* && -f "${S}"/gcc/doc/gcc.info ]] ; then
+			# Safeguard against https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106899 being fixed
+			# without corresponding ebuild changes.
+			eqawarn "Snapshot release with pre-generated info pages found!"
+			eqawarn "The BDEPEND in the ebuild should be updated to drop texinfo."
+		fi
+	fi
 
 	# Do not let the X detection get in our way.  We know things can be found
 	# via system paths, so no need to hardcode things that'll break multilib.
