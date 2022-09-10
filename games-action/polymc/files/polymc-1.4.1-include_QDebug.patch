@@ -1,0 +1,16 @@
+add explicit QDebug include in PollServer
+https://bugs.gentoo.org/869395
+--- a/libraries/katabasis/src/PollServer.cpp
++++ b/libraries/katabasis/src/PollServer.cpp
+@@ -1,6 +1,8 @@
+ #include <QNetworkAccessManager>
+ #include <QNetworkReply>
+ 
++#include <QDebug>
++
+ #include "katabasis/PollServer.h"
+ #include "JsonResponse.h"
+ 
+-- 
+2.37.3
+
