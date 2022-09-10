@@ -39,6 +39,7 @@ DEPEND="${RDEPEND}
 # but it doesn't actually need either.
 
 PATCHES=(
+	"${FILESDIR}/${P}-missing-func-decl.patch"
 	# yoinked out of debian's patchset, previously carried in a SRC_URI
 	# tarball
 	"${FILESDIR}/${P}-fix-buffer-overflow.patch"
