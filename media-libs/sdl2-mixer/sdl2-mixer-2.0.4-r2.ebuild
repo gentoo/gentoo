@@ -12,7 +12,7 @@ SRC_URI="https://www.libsdl.org/projects/SDL_mixer/release/${MY_P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ~ppc64 sparc x86"
 IUSE="flac fluidsynth mad midi mikmod mod modplug mp3 opus playtools static-libs timidity tremor vorbis +wav"
 REQUIRED_USE="
 	midi? ( || ( timidity fluidsynth ) )
@@ -27,7 +27,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	>=media-libs/libsdl2-2.0.7[${MULTILIB_USEDEP}]
-	flac? ( >=media-libs/flac-1.2.1-r5[${MULTILIB_USEDEP}] )
+	flac? ( >=media-libs/flac-1.2.1-r5:=[${MULTILIB_USEDEP}] )
 	midi? (
 		fluidsynth? ( >=media-sound/fluidsynth-1.1.6-r1:=[${MULTILIB_USEDEP}] )
 		timidity? ( media-sound/timidity++ )
@@ -54,7 +54,6 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0.4-slibtool.patch"
-	"${FILESDIR}/${PN}-2.0.4-fluidsynth.patch"
 )
 
 src_prepare() {
