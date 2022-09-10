@@ -1,0 +1,44 @@
+https://bugs.gentoo.org/869380
+https://github.com/dajobe/raptor/commit/567d4d1ab639d924e8d5af459476f331b9af0ce5
+
+From: Dave Beckett <dave@dajobe.org>
+Date: Tue, 4 Nov 2014 15:25:20 -0800
+Subject: [PATCH] Fix error returns in new world methods
+
+(raptor_world_get_parser_factory,
+raptor_world_get_serializers_count): Fix return value in assertions
+--- a/src/raptor_parse.c
++++ b/src/raptor_parse.c
+@@ -252,12 +252,12 @@ raptor_world_get_parser_factory(raptor_world *world, const char *name)
+  *
+  * Get number of parsers
+  *
+- * Return value: number of parsers
++ * Return value: number of parsers or <0 on failure
+  **/
+ int
+ raptor_world_get_parsers_count(raptor_world* world)
+ {
+-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, raptor_world, NULL);
++  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, raptor_world, -1);
+ 
+   raptor_world_open(world);
+ 
+--- a/src/raptor_serialize.c
++++ b/src/raptor_serialize.c
+@@ -235,12 +235,12 @@ raptor_get_serializer_factory(raptor_world* world, const char *name)
+  *
+  * Get number of serializers
+  *
+- * Return value: number of serializers
++ * Return value: number of serializers or <0 on failure
+  **/
+ int
+ raptor_world_get_serializers_count(raptor_world* world)
+ {
+-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, raptor_world, NULL);
++  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, raptor_world, -1);
+ 
+   raptor_world_open(world);
+ 
+
