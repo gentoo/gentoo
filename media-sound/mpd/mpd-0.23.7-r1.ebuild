@@ -11,13 +11,13 @@ SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+alsa ao +audiofile bzip2 cdio chromaprint +cue +curl doc +dbus
 	+eventfd expat faad +ffmpeg +fifo flac fluidsynth gme +icu +id3tag +inotify
-	jack lame libmpdclient libsamplerate libsoxr +mad mikmod mms
+	+ipv6 jack lame libmpdclient libsamplerate libsoxr +mad mikmod mms
 	modplug mpg123 musepack +network nfs openal openmpt opus oss pipe pipewire pulseaudio qobuz
 	recorder samba selinux sid signalfd snapcast sndfile sndio soundcloud sqlite systemd
-	test twolame udisks vorbis wavpack webdav wildmidi upnp
+	test twolame udisks unicode vorbis wavpack webdav wildmidi upnp
 	zeroconf zip zlib"
 
 OUTPUT_PLUGINS="alsa ao fifo jack network openal oss pipe pipewire pulseaudio snapcast sndio recorder"
@@ -62,8 +62,8 @@ RDEPEND="
 	doc? ( dev-python/sphinx )
 	expat? ( dev-libs/expat )
 	faad? ( media-libs/faad2 )
-	ffmpeg? ( media-video/ffmpeg:0= )
-	flac? ( media-libs/flac )
+	ffmpeg? ( media-video/ffmpeg:= )
+	flac? ( media-libs/flac:= )
 	fluidsynth? ( media-sound/fluidsynth )
 	gme? ( >=media-libs/game-music-emu-0.6.0_pre20120802 )
 	icu? (
@@ -170,7 +170,7 @@ src_configure() {
 		$(meson_feature icu)
 		$(meson_feature id3tag)
 		$(meson_use inotify)
-		-Dipv6=enabled
+		$(meson_feature ipv6)
 		$(meson_feature cdio iso9660)
 		$(meson_feature libmpdclient)
 		$(meson_feature libsamplerate)
@@ -277,7 +277,10 @@ src_install() {
 
 	newinitd "${FILESDIR}"/${PN}-0.21.4.init ${PN}
 
-	sed -i -e 's:^#filesystem_charset.*$:filesystem_charset "UTF-8":' "${ED}"/etc/mpd.conf || die "sed failed"
+	if use unicode; then
+		sed -i -e 's:^#filesystem_charset.*$:filesystem_charset "UTF-8":' \
+			"${ED}"/etc/mpd.conf || die "sed failed"
+	fi
 
 	keepdir /var/lib/mpd
 	keepdir /var/lib/mpd/music
