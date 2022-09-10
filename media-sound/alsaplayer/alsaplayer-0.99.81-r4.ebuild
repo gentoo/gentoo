@@ -20,7 +20,7 @@ RDEPEND="
 	sys-libs/zlib:=
 	alsa? ( media-libs/alsa-lib )
 	audiofile? ( media-libs/audiofile:= )
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac:= )
 	gtk? ( >=x11-libs/gtk+-2.10:2 )
 	id3tag? ( media-libs/libid3tag:= )
 	jack? ( virtual/jack )
