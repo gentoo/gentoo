@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-09-10)
+# Upstream repository archived. Python 3.8 only, with issues for
+# newer targets. No reverse dependencies in tree.
+# Removal: 2022-10-10.  Bugs #869503, #747997, #832242.
+dev-python/SaltTesting
+
 # Matthias Schwarzott <zzam@gentoo.org> (2022-09-08)
 # Breaks kernel builds with BTF enabled.
 # Bug #868762.
