@@ -37,7 +37,7 @@ DEPEND="
 	discid? ( media-libs/libdiscid )
 	elogind? ( sys-auth/elogind )
 	ffmpeg? ( media-video/ffmpeg:= )
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac:= )
 	jack? ( virtual/jack )
 	libsamplerate? ( media-libs/libsamplerate )
 	mad? ( media-libs/libmad )
