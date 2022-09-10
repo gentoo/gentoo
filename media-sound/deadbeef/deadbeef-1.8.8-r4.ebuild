@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools xdg flag-o-matic plocale
+inherit autotools xdg flag-o-matic toolchain-funcs plocale
 
 DESCRIPTION="DeaDBeeF is a modular audio player similar to foobar2000"
 HOMEPAGE="https://deadbeef.sourceforge.io/"
@@ -15,8 +15,8 @@ LICENSE="
 	wavpack? ( BSD )
 "
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="aac alsa cdda converter cover dts ffmpeg flac +hotkeys lastfm mp3 musepack nls notify nullout opus oss pulseaudio shellexec +supereq threads vorbis wavpack"
+KEYWORDS="~amd64 ~riscv ~x86"
+IUSE="aac alsa cdda converter cover dts ffmpeg flac +hotkeys lastfm mp3 musepack nls notify nullout opus oss pulseaudio sc68 shellexec +supereq threads vorbis wavpack"
 
 REQUIRED_USE="
 	|| ( alsa oss pulseaudio nullout )
@@ -24,20 +24,20 @@ REQUIRED_USE="
 
 DEPEND="
 	x11-libs/gtk+:3
-	net-misc/curl:0=
+	net-misc/curl:=
 	dev-libs/jansson:=
 	aac? ( media-libs/faad2 )
 	alsa? ( media-libs/alsa-lib )
 	cdda? (
-		dev-libs/libcdio:0=
+		dev-libs/libcdio:=
 		media-libs/libcddb
-		dev-libs/libcdio-paranoia:0=
+		dev-libs/libcdio-paranoia:=
 	)
 	cover? ( media-libs/imlib2[jpeg,png] )
 	dts? ( media-libs/libdca )
-	ffmpeg? ( media-video/ffmpeg )
+	ffmpeg? ( media-video/ffmpeg:= )
 	flac? (
-		media-libs/flac
+		media-libs/flac:=
 		media-libs/libogg
 	)
 	mp3? ( media-sound/mpg123 )
@@ -47,7 +47,7 @@ DEPEND="
 		sys-apps/dbus
 		dev-libs/libdispatch
 	)
-	opus? ( media-libs/opusfile	)
+	opus? ( media-libs/opusfile )
 	pulseaudio? ( media-sound/pulseaudio )
 	vorbis? ( media-libs/libvorbis )
 	wavpack? ( media-sound/wavpack )
@@ -93,7 +93,7 @@ src_prepare() {
 	drop_and_stub "${S}/intl"
 
 	# Plugins that are undesired for whatever reason, candidates for unbundling and such.
-	for i in adplug alac dumb ffap mms gme mono2stereo psf sc60 shn sid soundtouch wma; do
+	for i in adplug alac dumb ffap mms gme mono2stereo psf shn sid soundtouch wma; do
 		drop_and_stub "${S}/plugins/${i}"
 	done
 
@@ -133,7 +133,6 @@ src_configure () {
 		"--disable-mono2stereo"
 		"--disable-psf"
 		"--disable-rgscanner"
-		"--disable-sc68"
 		"--disable-shn"
 		"--disable-sid"
 		"--disable-sndfile"
@@ -169,6 +168,7 @@ src_configure () {
 		"$(use_enable nullout)"
 		"$(use_enable opus)"
 		"$(use_enable pulseaudio pulse)"
+		"$(use_enable sc68)"
 		"$(use_enable shellexec)"
 		"$(use_enable shellexec shellexecui)"
 		"$(use_enable lastfm lfm)"

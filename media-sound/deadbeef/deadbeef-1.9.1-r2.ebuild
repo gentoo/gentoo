@@ -16,7 +16,7 @@ LICENSE="
 "
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
-IUSE="aac alsa cdda converter cover dts ffmpeg flac +hotkeys lastfm mp3 musepack nls notify nullout opus oss pulseaudio sc68 shellexec +supereq threads vorbis wavpack"
+IUSE="aac alsa cdda converter cover dts ffmpeg flac +hotkeys lastfm mp3 musepack nls notify +nullout opus oss pulseaudio sc68 shellexec +supereq threads vorbis wavpack"
 
 REQUIRED_USE="
 	|| ( alsa oss pulseaudio nullout )
@@ -24,20 +24,22 @@ REQUIRED_USE="
 
 DEPEND="
 	x11-libs/gtk+:3
-	net-misc/curl:0=
+	net-misc/curl:=
 	dev-libs/jansson:=
 	aac? ( media-libs/faad2 )
 	alsa? ( media-libs/alsa-lib )
 	cdda? (
-		dev-libs/libcdio:0=
+		dev-libs/libcdio:=
 		media-libs/libcddb
-		dev-libs/libcdio-paranoia:0=
+		dev-libs/libcdio-paranoia:=
 	)
-	cover? ( media-libs/imlib2[jpeg,png] )
+	cover? (
+		media-libs/imlib2[jpeg,png]
+	)
 	dts? ( media-libs/libdca )
 	ffmpeg? ( media-video/ffmpeg )
 	flac? (
-		media-libs/flac
+		media-libs/flac:=
 		media-libs/libogg
 	)
 	mp3? ( media-sound/mpg123 )
@@ -45,13 +47,12 @@ DEPEND="
 	nls? ( virtual/libintl )
 	notify? (
 		sys-apps/dbus
-		dev-libs/libdispatch
 	)
-	opus? ( media-libs/opusfile	)
+	opus? ( media-libs/opusfile )
 	pulseaudio? ( media-sound/pulseaudio )
 	vorbis? ( media-libs/libvorbis )
 	wavpack? ( media-sound/wavpack )
-	lastfm? ( dev-libs/libdispatch )
+	dev-libs/libdispatch
 "
 
 RDEPEND="${DEPEND}"
@@ -158,7 +159,6 @@ src_configure () {
 		"$(use_enable cdda cdda-paranoia)"
 		"$(use_enable aac)"
 		"$(use_enable cover artwork)"
-		"$(use_enable cover artwork-imlib2)"
 		"$(use_enable cover artwork-network)"
 		"$(use_enable dts dca)"
 		"$(use_enable ffmpeg)"
