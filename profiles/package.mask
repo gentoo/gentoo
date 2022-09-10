@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-09-10)
+# Python 3.8 only package. Tests are disabled. Newer targets fail
+# more tests then 3.8 target.
+# Removal: 2022-10-10.  Bug #869521.
+net-nds/nsscache
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-09-10)
 # Python 3.8 only package, with inactive since 2017 upstream.
 # Tests fail and doesn't work on newer python targets.
 # Removal: 2022-10-10.  Bug #869512.
