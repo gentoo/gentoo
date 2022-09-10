@@ -76,20 +76,26 @@ src_configure() {
 }
 
 multilib_src_configure() {
-	# Valgrind option is just for running tests under it; dodgy under sandbox
-	# and indeed even w/ glibc with newer instructions.
-	ECONF_SOURCE="${S}" econf \
-		$(use_enable nls) \
-		--disable-debuginfod \
-		--disable-libdebuginfod \
-		# explicitly disable thread safety: not recommended by upstream
-		--disable-thread-safety \
-		--disable-valgrind \
-		--program-prefix="eu-" \
-		--with-zlib \
-		$(use_with bzip2 bzlib) \
-		$(use_with lzma) \
+	local myeconfargs=(
+		$(use_enable nls)
+		--disable-debuginfod
+		--disable-libdebuginfod
+
+		# explicitly disable thread safety, it's not recommended by upstream
+		# doesn't build either on musl.
+		--disable-thread-safety
+
+		# Valgrind option is just for running tests under it; dodgy under sandbox
+		# and indeed even w/ glibc with newer instructions.
+		--disable-valgrind
+		--program-prefix="eu-"
+		--with-zlib
+		$(use_with bzip2 bzlib)
+		$(use_with lzma)
 		$(use_with zstd)
+	)
+
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_test() {
