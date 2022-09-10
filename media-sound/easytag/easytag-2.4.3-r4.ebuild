@@ -21,7 +21,7 @@ RDEPEND="
 	>=dev-libs/glib-2.38:2
 	media-libs/libcanberra[gtk3]
 	>=x11-libs/gtk+-3.10:3
-	flac? ( >=media-libs/flac-1.3 )
+	flac? ( >=media-libs/flac-1.3:= )
 	mp3? (
 		>=media-libs/id3lib-3.8.3-r8
 		>=media-libs/libid3tag-0.15.1b-r4:=
