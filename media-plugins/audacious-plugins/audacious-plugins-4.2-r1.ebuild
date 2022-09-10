@@ -66,7 +66,7 @@ DEPEND="
 	cue? ( media-libs/libcue:= )
 	ffmpeg? ( >=media-video/ffmpeg-0.7.3 )
 	flac? (
-		>=media-libs/flac-1.2.1-r1
+		>=media-libs/flac-1.2.1-r1:=
 		>=media-libs/libvorbis-1.0
 	)
 	fluidsynth? ( media-sound/fluidsynth:= )
