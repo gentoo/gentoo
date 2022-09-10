@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ KEYWORDS="amd64 ppc x86"
 IUSE="alsa cdda flac gpm mad nls oss static-libs vorbis wav"
 
 RDEPEND="alsa? ( >=media-libs/alsa-lib-0.9.0 )
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac:= )
 	gpm? ( >=sys-libs/gpm-1.19.3 )
 	mad? ( media-libs/libmad )
 	vorbis? ( media-libs/libvorbis )
