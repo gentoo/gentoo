@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/rack-test/rack-test"
 SRC_URI="https://github.com/rack-test/rack-test/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="1.0"
+SLOT="$(ver_cut 1)"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE=""
 
