@@ -25,7 +25,7 @@ RDEPEND="
 	sys-libs/zlib:=[minizip]
 	virtual/libintl
 	alsa? ( media-libs/alsa-lib )
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac:= )
 	jack? ( virtual/jack )"
 DEPEND="${RDEPEND}"
 BDEPEND="
