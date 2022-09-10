@@ -51,6 +51,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.80.0-fix-mips1-transition.patch
 	# (upstreamed)
 	"${FILESDIR}"/${PN}-1.80.0-unordered-fix.patch
+	"${FILESDIR}"/${PN}-1.80.0-unary-function.patch
 )
 
 python_bindings_needed() {
