@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -9,6 +9,7 @@ MY_P=${PN}-${PV/_/-}
 DESCRIPTION="Music On Console - ncurses interface for playing audio files"
 HOMEPAGE="https://moc.daper.net"
 SRC_URI="http://ftp.daper.net/pub/soft/moc/unstable/${MY_P}.tar.xz"
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -17,7 +18,7 @@ IUSE="aac alsa +cache curl debug ffmpeg flac jack libsamplerate mad +magic modpl
 	oss sid sndfile sndio speex timidity tremor +unicode vorbis wavpack"
 
 RDEPEND="
-	>=dev-libs/libltdl-2:0
+	>=dev-libs/libltdl-2
 	dev-libs/popt
 	sys-libs/ncurses:=[unicode(+)?]
 	aac? ( media-libs/faad2 )
@@ -25,7 +26,7 @@ RDEPEND="
 	cache? ( >=sys-libs/db-4.1:= )
 	curl? ( >=net-misc/curl-7.15.1 )
 	ffmpeg? ( >=media-video/ffmpeg-1.2.6-r1 )
-	flac? ( >=media-libs/flac-1.1.3 )
+	flac? ( >=media-libs/flac-1.1.3:= )
 	jack? ( virtual/jack )
 	libsamplerate? ( >=media-libs/libsamplerate-0.1.0 )
 	mad? (
@@ -54,12 +55,12 @@ RDEPEND="
 	)
 	wavpack? ( >=media-sound/wavpack-4.31 )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	app-arch/xz-utils
 	virtual/pkgconfig
 "
 
-S=${WORKDIR}/${MY_P}
 PATCHES=(
 	"${FILESDIR}/ffmpeg4.patch"
 	"${FILESDIR}/${P}-stdint_uint_types.patch"
@@ -93,15 +94,15 @@ src_configure() {
 		$(use_with sndfile)
 		$(use_with speex)
 		$(use_with timidity)
-		$(use_with vorbis vorbis $(usex tremor tremor ""))
+		$(use_with vorbis vorbis $(usev tremor))
 		$(use_with wavpack)
 		$(use_with curl)
 	)
 
-	econf "${myconf[@]}"
+	CONFIG_SHELL="${BROOT}"/bin/bash econf "${myconf[@]}"
 }
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
