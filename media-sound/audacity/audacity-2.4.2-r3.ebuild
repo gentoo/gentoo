@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,7 +32,7 @@ RDEPEND="dev-libs/expat
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	alsa? ( media-libs/alsa-lib )
 	ffmpeg? ( media-video/ffmpeg:= )
-	flac? ( media-libs/flac[cxx] )
+	flac? ( media-libs/flac:=[cxx] )
 	id3tag? ( media-libs/libid3tag:= )
 	jack? ( virtual/jack )
 	lv2? (
