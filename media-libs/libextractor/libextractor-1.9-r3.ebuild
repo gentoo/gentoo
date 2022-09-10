@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,9 +24,9 @@ DEPEND="
 	apparmor? ( sys-libs/libapparmor )
 	archive? ( app-arch/libarchive:= )
 	bzip2? ( app-arch/bzip2 )
-	ffmpeg? ( media-video/ffmpeg )
+	ffmpeg? ( media-video/ffmpeg:= )
 	flac? (
-		media-libs/flac
+		media-libs/flac:=
 		media-libs/libogg
 	)
 	gif? ( media-libs/giflib:= )
@@ -36,13 +36,13 @@ DEPEND="
 		media-libs/gst-plugins-base:1.0
 	)
 	gtk? ( x11-libs/gtk+:3 )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	magic? ( sys-apps/file )
 	midi? ( media-libs/libsmf )
-	mp4? ( media-libs/libmp4v2:0 )
+	mp4? ( media-libs/libmp4v2 )
 	mpeg? ( media-libs/libmpeg2 )
 	tidy? ( >=app-text/htmltidy-5.0.0 )
-	tiff? ( media-libs/tiff:0 )
+	tiff? ( media-libs/tiff )
 	vorbis? (
 		media-libs/libogg
 		media-libs/libvorbis
