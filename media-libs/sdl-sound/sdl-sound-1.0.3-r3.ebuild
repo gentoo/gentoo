@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools multilib-minimal
 
@@ -18,7 +18,7 @@ IUSE="flac mikmod modplug mp3 mpeg physfs speex static-libs vorbis"
 
 RDEPEND="
 	>=media-libs/libsdl-1.2.15-r4[${MULTILIB_USEDEP}]
-	flac? ( >=media-libs/flac-1.2.1-r5[${MULTILIB_USEDEP}] )
+	flac? ( >=media-libs/flac-1.2.1-r5:=[${MULTILIB_USEDEP}] )
 	mikmod? ( >=media-libs/libmikmod-3.2.0[${MULTILIB_USEDEP}] )
 	modplug? ( >=media-libs/libmodplug-0.8.8.4-r1[${MULTILIB_USEDEP}] )
 	mpeg? ( >=media-libs/smpeg-0.4.4-r10[${MULTILIB_USEDEP}] )
