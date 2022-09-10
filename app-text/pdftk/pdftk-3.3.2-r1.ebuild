@@ -31,6 +31,7 @@ DEPEND="
 	>=virtual/jdk-1.8:*
 	${CP_DEPEND}
 	test? (
+		app-text/poppler[cairo]
 		dev-java/system-rules:0
 	)
 "
