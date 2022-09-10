@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ IUSE="flac kate nls +ogg123 speex"
 RDEPEND="
 	media-libs/libvorbis
 	media-libs/opusfile
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac:= )
 	kate? ( media-libs/libkate )
 	ogg123? (
 		media-libs/libao
