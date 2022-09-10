@@ -3,7 +3,9 @@
 
 EAPI=8
 
-inherit xdg-utils
+PYTHON_COMPAT=( python3_{8..11} )
+
+inherit python-any-r1 xdg-utils
 
 DESCRIPTION="Panel plugin to put the maximized window title and window buttons on the panel"
 HOMEPAGE="https://gitlab.xfce.org/panel-plugins/xfce4-windowck-plugin/"
@@ -26,10 +28,16 @@ RDEPEND="
 	${DEPEND}
 "
 BDEPEND="
+	${PYTHON_DEPS}
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+src_prepare() {
+	python_fix_shebang themes/*/*/generator.py
+	default
+}
 
 src_install() {
 	default
