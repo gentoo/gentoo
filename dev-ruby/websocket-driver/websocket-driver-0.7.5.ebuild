@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby25 ruby26 ruby27 ruby30"
+USE_RUBY="ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
@@ -27,4 +27,14 @@ ruby_add_rdepend ">=dev-ruby/websocket-extensions-0.1.0"
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/ s:^:#:' spec/spec_helper.rb || die
+}
+
+each_ruby_prepare() {
+	case ${RUBY} in
+		*ruby31)
+			# Avoid specs broken by a cosmetic change in port number handling.
+			# https://github.com/faye/websocket-driver-ruby/pull/88
+			rm -f spec/websocket/driver/client_spec.rb || die
+			;;
+	esac
 }
