@@ -29,7 +29,7 @@ RDEPEND="
 		sys-libs/libcap
 	)
 	ffmpeg? ( <media-video/ffmpeg-5:= )
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac:= )
 	gif? ( media-libs/giflib:= )
 	gtk? (
 		dev-libs/atk
