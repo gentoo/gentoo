@@ -118,7 +118,7 @@ src_compile() {
 	local -a staticflags=(-buildmode=pie -ldflags "-s -linkmode external -extldflags '${LDFLAGS} -static'" -trimpath)
 
 	local cmd
-	for cmd in snap snapd snap-bootstrap snap-failure snap-preseed snap-recovery-chooser snap-repair snap-seccomp; do
+	for cmd in snap snapd snapd-apparmor snap-bootstrap snap-failure snap-preseed snap-recovery-chooser snap-repair snap-seccomp; do
 		go build ${GOFLAGS} -mod=vendor -o "${GOBIN}/${cmd}" "${flags[@]}" \
 		    -v -x "github.com/snapcore/${PN}/cmd/${cmd}"
 		[[ -e "${GOBIN}/${cmd}" ]] || die "failed to build ${cmd}"
@@ -145,7 +145,7 @@ src_install() {
 	ln "${ED}/usr/bin/snapctl" "${ED}/usr/lib/snapd/snapctl" || die
 
 	exeinto /usr/lib/snapd
-	doexe "${GOBIN}/"{snapd,snap-bootstrap,snap-failure,snap-exec,snap-preseed,snap-recovery-chooser,snap-repair,snap-seccomp,snap-update-ns} \
+	doexe "${GOBIN}/"{snapd,snapd-apparmor,snap-bootstrap,snap-failure,snap-exec,snap-preseed,snap-recovery-chooser,snap-repair,snap-seccomp,snap-update-ns} \
 		"${S}/"{cmd/snap-discard-ns/snap-discard-ns,cmd/snap-gdb-shim/snap-gdb-shim,cmd/snap-mgmt/snap-mgmt} \
 		"${S}/data/completion/bash/"{complete.sh,etelpmoc.sh,}
 
