@@ -37,6 +37,10 @@ DEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.63-xtools-support.patch
+)
+
 python_prepare_all() {
 	local disable_unittests=(
 		# ASAN and sandbox both want control over LD_PRELOAD
