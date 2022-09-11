@@ -14,7 +14,16 @@ SLOT="0"
 IUSE="graphicsmagick gui test"
 KEYWORDS="~amd64 ~x86"
 
-BDEPEND="virtual/pkgconfig"
+# Disable opencl as during reorient.utr test it produces inconsistent results
+BDEPEND="
+	virtual/pkgconfig
+	test? (
+		app-text/tesseract[png,tiff,training,-opencl]
+		dev-util/uncrustify
+		media-fonts/dejavu
+		virtual/imagemagick-tools[png,tiff]
+	)
+"
 RDEPEND="
 	dev-libs/boost:=
 	media-gfx/sane-backends
@@ -25,14 +34,7 @@ RDEPEND="
 	!graphicsmagick? ( media-gfx/imagemagick:=[cxx] )
 	gui? ( dev-cpp/gtkmm:2.4 )
 "
-# Disable opencl as during reorient.utr test it produces inconsistent results
-DEPEND="${RDEPEND}
-	test? (
-		app-text/tesseract[png,tiff,training,-opencl]
-		media-fonts/dejavu
-		virtual/imagemagick-tools[png,tiff]
-	)
-"
+DEPEND="${RDEPEND}"
 RESTRICT="!test? ( test )"
 S="${WORKDIR}/utsushi-0.$(ver_cut 2-3)"
 
