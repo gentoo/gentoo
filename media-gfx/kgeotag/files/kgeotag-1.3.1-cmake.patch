@@ -1,0 +1,43 @@
+From d119fbfaabb7709710243f353211bab69b5ad5b6 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 11 Sep 2022 23:26:04 +0200
+Subject: [PATCH] Add doc subdirectory as usual and create docbook in subdir
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt     | 6 +-----
+ doc/CMakeLists.txt | 5 +++++
+ 2 files changed, 6 insertions(+), 5 deletions(-)
+ create mode 100644 doc/CMakeLists.txt
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8ba51d5..62f0d35 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -124,11 +124,7 @@ target_link_libraries(kgeotag
+ )
+ 
+ # Documentation
+-kdoctools_create_handbook(
+-    doc/index.docbook
+-    INSTALL_DESTINATION "${KDE_INSTALL_DOCBUNDLEDIR}/en"
+-    SUBDIR kgeotag
+-)
++add_subdirectory(doc)
+ 
+ # Installation
+ 
+diff --git a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+new file mode 100644
+index 0000000..6200463
+--- /dev/null
++++ b/doc/CMakeLists.txt
+@@ -0,0 +1,5 @@
++kdoctools_create_handbook(
++    index.docbook
++    INSTALL_DESTINATION "${KDE_INSTALL_DOCBUNDLEDIR}/en"
++    SUBDIR kgeotag
++)
+-- 
+2.37.3
+
