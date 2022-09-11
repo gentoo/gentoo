@@ -48,7 +48,7 @@ RDEPEND="
 	dev-libs/nspr
 	>=dev-libs/nss-3.26
 	media-libs/alsa-lib
-	media-libs/flac
+	|| ( media-libs/flac:0/0 media-libs/flac-compat:8.3.0 )
 	media-libs/fontconfig
 	>=media-libs/freetype-2.11.0-r1
 	media-libs/libjpeg-turbo
