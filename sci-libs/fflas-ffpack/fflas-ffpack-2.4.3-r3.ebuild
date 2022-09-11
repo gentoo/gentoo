@@ -43,16 +43,14 @@ pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
-pkg_setup() {
-	tc-export PKG_CONFIG
-}
-
 src_prepare() {
 	default
 	eautoreconf
 }
 
 src_configure() {
+	tc-export PKG_CONFIG
+
 	econf \
 		--enable-precompilation \
 		$(use_enable openmp) \
