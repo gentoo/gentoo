@@ -16,6 +16,10 @@ RDEPEND=">=dev-libs/libgpg-error-1.8"
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/bison"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.0-no-fgrep-ksba-config.patch
+)
+
 src_configure() {
 	local myeconfargs=(
 		$(use_enable static-libs static)
@@ -28,6 +32,7 @@ src_configure() {
 
 src_install() {
 	default
-	# ppl need to use lib*-config for --cflags and --libs
+
+	# People need to use ksba-config for --cflags and --libs
 	find "${ED}" -type f -name '*.la' -delete || die
 }
