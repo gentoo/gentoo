@@ -20,7 +20,7 @@ IUSE="doc examples +gmp mpfi ntl qt5 +shared"
 
 RDEPEND="
 	dev-cpp/eigen
-	dev-libs/boost:=[threads(+)]
+	dev-libs/boost:=
 	dev-libs/mpfr:=
 	sys-libs/zlib
 	x11-libs/libX11:=

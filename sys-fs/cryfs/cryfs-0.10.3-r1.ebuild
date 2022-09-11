@@ -24,7 +24,7 @@ IUSE="debug test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-libs/boost-1.65.1:=
+	dev-libs/boost:=
 	>=dev-libs/crypto++-8.2.0:=
 	net-misc/curl:=
 	>=sys-fs/fuse-2.8.6:0

@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit webapp
 
@@ -20,9 +20,7 @@ IUSE=""
 
 need_httpd_cgi
 
-DEPEND="
-	|| ( dev-lang/php[xml,gd] dev-lang/php[xml,gd-external] )
-"
+DEPEND="dev-lang/php[xml,gd]"
 RDEPEND="virtual/httpd-php"
 
 pkg_setup() {

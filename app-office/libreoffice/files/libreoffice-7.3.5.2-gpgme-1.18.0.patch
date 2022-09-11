@@ -1,0 +1,48 @@
+https://bugs.gentoo.org/865321
+https://lists.freedesktop.org/archives/libreoffice/2022-August/089261.html
+https://github.com/LibreOffice/core/commit/aa0b2b756c17d43d2e8c828a909ee2815e332377
+
+From: Rene Engelhard <rene@debian.org>
+Date: Wed, 24 Aug 2022 09:55:33 +0200
+Subject: [PATCH] Make configure work with gpgme >= 1.18
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Sam James wrote:
+> gpgme-1.18.0 dropped a bunch of internal symbols,
+> including progress_callback (see e.g. callbacks.h
+> which has a comment at the top saying it's internal).
+
+Plausibly the workaround to not link against older KDE-specific distro
+packages is not needed anymore.
+
+Check for main as a workaround as we do for other C++ libraries, too.
+
+Change-Id: I57065a5b5b23b9eadb73b01e4f3a289552c3bde4
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/138667
+Tested-by: Jenkins
+Reviewed-by: Sam James <sam@gentoo.org>
+Reviewed-by: René Engelhard <rene@debian.org>
+(cherry picked from commit b4a94d681a99a6a3eeb6aaa4d2f4dfab8f7c000b)
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/138553
+Tested-by: René Engelhard <rene@debian.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -12537,12 +12537,11 @@ elif test \( \( "$_os" = "Linux" -o "$_os" = "Darwin" \) -a "$ENABLE_NSS" = TRUE
+         # C++ library doesn't come with fancy gpgmepp-config, check for headers the old-fashioned way
+         AC_CHECK_HEADER(gpgme++/gpgmepp_version.h, [ GPGMEPP_CFLAGS=-I/usr/include/gpgme++ ],
+             [AC_MSG_ERROR([gpgmepp headers not found, install gpgmepp >= 1.14 development package])], [])
+-        # progress_callback is the only func with plain C linkage
+-        # checking for it also filters out older, KDE-dependent libgpgmepp versions
+-        AC_CHECK_LIB(gpgmepp, progress_callback, [ GPGMEPP_LIBS=-lgpgmepp ],
+-            [AC_MSG_ERROR(gpgmepp not found or not functional)], [])
+         AC_CHECK_HEADER(gpgme.h, [],
+             [AC_MSG_ERROR([gpgme headers not found, install gpgme development package])], [])
++        AC_CHECK_LIB(gpgmepp, main, [],
++            [AC_MSG_ERROR(gpgmepp not found or not functional)], [])
++	GPGMEPP_LIBS=-lgpgmepp
+     else
+         AC_MSG_RESULT([internal])
+         BUILD_TYPE="$BUILD_TYPE LIBGPGERROR LIBASSUAN GPGMEPP"
+

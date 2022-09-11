@@ -22,7 +22,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="knots"
 
 DEPEND="
-	>=dev-libs/boost-1.68.0:=[threads(+)]
+	dev-libs/boost:=
 	>dev-libs/libsecp256k1-0.1_pre20200911:=[recovery,schnorr]
 	>=dev-libs/univalue-1.0.4:=
 "

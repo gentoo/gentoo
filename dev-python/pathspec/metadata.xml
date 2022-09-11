@@ -8,6 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">pathspec</remote-id>
-    <remote-id type="github">cpburnz/python-path-specification</remote-id>
+    <remote-id type="github">cpburnz/python-pathspec</remote-id>
   </upstream>
 </pkgmetadata>

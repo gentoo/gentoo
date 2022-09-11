@@ -16,7 +16,7 @@ S="${WORKDIR}"/${PN}-${MY_PV}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~riscv ~sparc x86"
 
 src_configure() {
 	# APar_sha1.cpp:116:47 and 117:43: warning: dereferencing type-punned

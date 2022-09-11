@@ -443,7 +443,7 @@ SRC_URI="
 	$(ruffle_uris)"
 S="${WORKDIR}/${MY_P}"
 
-LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 ISC MIT MPL-2.0 ZLIB curl unicode"
+LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016 ZLIB curl"
 SLOT="0"
 KEYWORDS="~amd64"
 

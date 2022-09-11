@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/project/htmlcleaner/htmlcleaner/htmlcleaner%20v${P
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CP_DEPEND="dev-java/jdom:2"
 

@@ -359,8 +359,8 @@ cabal-show-brokens() {
 	elog "ghc-pkg check: 'checking for other broken packages:'"
 	# pretty-printer
 	$(ghc-getghcpkg) check 2>&1 \
-		| egrep -v '^Warning: haddock-(html|interfaces): ' \
-		| egrep -v '^Warning: include-dirs: ' \
+		| grep -E -v '^Warning: haddock-(html|interfaces): ' \
+		| grep -E -v '^Warning: include-dirs: ' \
 		| head -n 20
 
 	cabal-die-if-nonempty 'broken' \

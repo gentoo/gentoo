@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-25)
+# Mask tests until test dependencies are keyworded.
+app-text/pdftk test
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-08-15)
 # deps not keyworded
 dev-util/pkgcheck emacs
@@ -42,10 +46,6 @@ media-video/ffmpeg amf
 # Sam James <sam@gentoo.org> (2022-01-20)
 # Only supports cpu_flags_x86_aes in 64-bit mode
 net-fs/samba cpu_flags_x86_aes
-
-# Conrad Kostecki <conikost@gentoo.org> (2021-11-16)
-# AppArmor is not available on x86
-app-benchmarks/stress-ng apparmor
 
 # James Le Cuirot <chewi@gentoo.org> (2021-10-22)
 # The JIT feature only works on amd64 and x86.
@@ -149,11 +149,6 @@ dev-python/influxdb test
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # clisp is keyworded on x86
 app-text/texlive-core -xindy
-
-# Joonas Niilola <juippis@gentoo.org> (2020-05-14)
-# sys-apps/apparmor not keyworded on x86.
-app-containers/lxc apparmor
-app-containers/lxd apparmor
 
 # Georgy Yakovlev <gyakovlev@gentoo.org (2020-04-26)
 # static-pie works on x86, #719444
@@ -378,7 +373,6 @@ app-arch/zpaq -jit
 # Arun Raghavan <ford_prefect@gentoo.org> (2012-03-29)
 # webrtc-audio-processing is only supported on x86/amd64. Possibly arm can be
 # added.
-media-sound/pulseaudio -webrtc-aec
 media-sound/pulseaudio-daemon -webrtc-aec
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2012-02-27)

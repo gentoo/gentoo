@@ -13,5 +13,6 @@
   <upstream>
     <remote-id type="sourceforge">ipmitool</remote-id>
     <remote-id type="launchpad">ubuntu</remote-id>
+    <remote-id type="github">ipmitool/ipmitool</remote-id>
   </upstream>
 </pkgmetadata>

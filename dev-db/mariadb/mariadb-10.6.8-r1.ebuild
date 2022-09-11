@@ -62,7 +62,7 @@ COMMON_DEPEND="
 		backup? ( app-arch/libarchive:0= )
 		columnstore? (
 			app-arch/snappy
-			dev-libs/boost:0=
+			dev-libs/boost:=
 			dev-libs/libxml2:2=
 		)
 		cracklib? ( sys-libs/cracklib:0= )
@@ -75,7 +75,10 @@ COMMON_DEPEND="
 		innodb-snappy? ( app-arch/snappy )
 		mroonga? ( app-text/groonga-normalizer-mysql >=app-text/groonga-7.0.4 )
 		numa? ( sys-process/numactl )
-		oqgraph? ( >=dev-libs/boost-1.40.0:0= dev-libs/judy:0= )
+		oqgraph? (
+			dev-libs/boost:=
+			dev-libs/judy:0=
+		)
 		pam? ( sys-libs/pam:0= )
 		s3? ( net-misc/curl )
 		systemd? ( sys-apps/systemd:= )

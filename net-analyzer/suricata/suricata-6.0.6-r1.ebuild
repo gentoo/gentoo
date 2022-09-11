@@ -42,7 +42,7 @@ RDEPEND="${PYTHON_DEPS}
 	net-libs/libpcap
 	sys-apps/file
 	sys-libs/libcap-ng
-	bpf?        ( >=dev-libs/libbpf-0.1.0 )
+	bpf?        ( <dev-libs/libbpf-1.0.0 )
 	cuda?       ( dev-util/nvidia-cuda-toolkit )
 	geoip?      ( dev-libs/libmaxminddb:= )
 	hyperscan?  ( dev-libs/hyperscan )

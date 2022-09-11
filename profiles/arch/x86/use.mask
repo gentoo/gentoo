@@ -34,10 +34,6 @@
 # dev-db/firebird is keyworded ~x86
 -firebird
 
-# Mike Gilbert <floppym@gentoo.org (2014-10-19)
-# sys-libs/libapparmor
--apparmor
-
 # Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # PyPy is keyworded on this arch.
 -python_targets_pypy3
@@ -129,6 +125,7 @@
 -input_devices_wacom
 -video_cards_ast
 -video_cards_crocus
+-video_cards_d3d12
 -video_cards_i915
 -video_cards_i965
 -video_cards_intel

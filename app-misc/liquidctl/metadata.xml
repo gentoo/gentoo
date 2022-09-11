@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>sultan@gentoo.org</email>
+    <name>Stephan Hartmann</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">liquidctl/liquidctl</remote-id>
+    <remote-id type="pypi">liquidctl</remote-id>
+  </upstream>
+</pkgmetadata>

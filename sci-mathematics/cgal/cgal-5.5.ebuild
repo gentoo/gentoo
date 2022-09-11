@@ -22,7 +22,7 @@ IUSE="doc examples"
 
 RDEPEND="
 	dev-cpp/eigen
-	dev-libs/boost:=[threads(+)]
+	dev-libs/boost:=
 	dev-libs/gmp:=[cxx]
 	dev-libs/mpfr:=
 	sys-libs/zlib

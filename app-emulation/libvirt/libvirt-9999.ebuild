@@ -105,7 +105,7 @@ RDEPEND="
 		>=sys-auth/polkit-0.9
 	)
 	qemu? (
-		>=app-emulation/qemu-2.11
+		>=app-emulation/qemu-4.2
 		>=dev-libs/yajl-2.0.3:=
 	)
 	rbd? ( sys-cluster/ceph )

@@ -20,7 +20,7 @@ else
 		https://github.com/blueman-project/blueman/releases/download/${PV/_/.}/${P/_/.}.tar.xz
 	"
 	S=${WORKDIR}/${P/_/.}
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86"
 fi
 
 # icons are GPL-2

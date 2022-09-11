@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ampache-browser/ampache_browser/archive/v${PV}.tar.g
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="debug nls"
 
 RDEPEND="dev-qt/qtconcurrent:5

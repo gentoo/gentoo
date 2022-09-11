@@ -89,7 +89,7 @@ src_install() {
 	rm "${S}/resources/app/LICENSE.txt" || die
 
 	# Disable update server
-	sed -i "/updateUrl/d" ${S}/resources/app/product.json || die
+	sed -i "/updateUrl/d" "${S}"/resources/app/product.json || die
 
 	# Install
 	pax-mark m codium

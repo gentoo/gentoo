@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# Uncomment when introducing a patch which touches configure
+RSYNC_NEEDS_AUTOCONF=1
 PYTHON_COMPAT=( python3_{8..10} )
 inherit prefix python-single-r1 systemd
 
@@ -16,6 +18,10 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/waynedavison.asc
 	inherit verify-sig
+
+	if [[ -n ${RSYNC_NEEDS_AUTOCONF} ]] ; then
+		inherit autotools
+	fi
 
 	if [[ ${PV} == *_pre* ]] ; then
 		SRC_DIR="src-previews"
@@ -60,6 +66,10 @@ else
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-waynedavison )"
 fi
 
+PATCHES=(
+	"${FILESDIR}"/${P}-pedantic-errors.patch
+)
+
 pkg_setup() {
 	# - USE=examples needs Python itself at runtime, but nothing else
 	# - 9999 needs commonmark at build time
@@ -71,7 +81,7 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	if [[ ${PV} == *9999 ]] ; then
+	if [[ ${PV} == *9999 || -n ${RSYNC_NEEDS_AUTOCONF} ]] ; then
 		eaclocal -I m4
 		eautoconf -o configure.sh
 		eautoheader && touch config.h.in

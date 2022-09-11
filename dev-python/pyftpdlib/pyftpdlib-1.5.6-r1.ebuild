@@ -37,7 +37,7 @@ python_test() {
 	# so we need to run them separately and not pass any args to pytest
 	pytest ${PN}/test/test_misc.py || die "Tests failed with ${EPYTHON}"
 	# Some of these tests tend to fail
-	local skipped_tests=(
+	local EPYTEST_DESELECT=(
 		# Those tests are run separately
 		pyftpdlib/test/test_misc.py
 		# https://github.com/giampaolo/pyftpdlib/issues/471
@@ -70,7 +70,7 @@ python_test() {
 	local -x TZ=UTC+1
 	# Skips some shoddy tests plus increases timeouts
 	local -x TRAVIS=1
-	epytest -p no:xvfb ${skipped_tests[@]/#/--deselect }
+	epytest
 }
 
 python_install_all() {

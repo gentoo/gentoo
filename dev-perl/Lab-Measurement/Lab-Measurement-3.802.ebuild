@@ -8,7 +8,7 @@ DIST_EXAMPLES=( "examples/*" )
 if [[ "${PV}" != "9999" ]]; then
 	DIST_VERSION=${PV%.0}
 	DIST_AUTHOR=AKHUETTEL
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	inherit perl-module
 else
 	EGIT_REPO_URI="https://github.com/lab-measurement/Lab-Measurement.git"

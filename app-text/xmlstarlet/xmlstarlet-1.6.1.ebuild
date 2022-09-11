@@ -28,9 +28,11 @@ src_prepare() {
 	# linker lld with profile 17.1 on amd64 (see https://bugs.gentoo.org/729600).
 	# The grep sandwich acts as a regression test so that a future
 	# version bump cannot break patching without noticing.
-	grep -wq _PREFIX/lib m4/xstar-check-libs.m4 || die
-	sed "s,_PREFIX/lib,_PREFIX/$(get_libdir)," -i m4/xstar-check-libs.m4 || die
-	grep -w _PREFIX/lib m4/xstar-check-libs.m4 && die
+	if [[ $(get_libdir) != lib ]]; then
+	    grep -wq _PREFIX/lib m4/xstar-check-libs.m4 || die
+	    sed "s,_PREFIX/lib,_PREFIX/$(get_libdir)," -i m4/xstar-check-libs.m4 || die
+	    grep -w _PREFIX/lib m4/xstar-check-libs.m4 && die
+	fi
 
 	eautoreconf
 }

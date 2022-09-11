@@ -1,29 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-        <email>zlogene@gentoo.org</email>
-        <name>Mikle Kolyada</name>
-</maintainer>
-  <use>
-    <flag name="embedded">limit RAM and CPU ressources by disabling features</flag>
-    <flag name="libusb" restrict="&gt;=sys-apps/pcsc-lite-1.8.0">
-      Use <pkg>dev-libs/libusb</pkg> detection to hotplug new
-      smartcard readers. This flag should only be enabled if you're
-      running a non-Linux kernel or you don't want to use
-      <pkg>sys-fs/udev</pkg>.
-    </flag>
-
-    <flag name="udev">
-      Use <pkg>virtual/libudev</pkg> rules to handle devices' permissions
-      and hotplug support. Unless you know what you're doing do not
-      disable this flag on Linux kernels. This is provided as an
-      option for completeness.
-    </flag>
-
-    <flag name="policykit">
-      Uses <pkg>sys-auth/polkit</pkg> to restrict access to smartcard readers or
-      smartcars to given users.
-    </flag>
-  </use>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<use>
+		<flag name="embedded">limit RAM and CPU ressources by disabling features</flag>
+		<flag name="libusb" restrict="&gt;=sys-apps/pcsc-lite-1.8.0">Use <pkg>dev-libs/libusb</pkg> detection to hotplug new smartcard readers. This flag should only be enabled if you're running a non-Linux kernel or you don't want to use <pkg>sys-fs/udev</pkg>.</flag>
+		<flag name="udev">Use <pkg>virtual/libudev</pkg> rules to handle devices' permissions and hotplug support. Unless you know what you're doing do not disable this flag on Linux kernels. This is provided as an option for completeness.</flag>
+		<flag name="policykit">Uses <pkg>sys-auth/polkit</pkg> to restrict access to smartcard readers or smartcards to given users.</flag>
+	</use>
 </pkgmetadata>

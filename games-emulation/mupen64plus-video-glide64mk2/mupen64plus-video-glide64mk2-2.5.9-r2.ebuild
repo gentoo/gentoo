@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,7 @@ RDEPEND=">=games-emulation/mupen64plus-core-2.5:0=[gles2-only=]
 	sys-libs/zlib:0=
 	virtual/opengl:0=
 	gles2-only? ( media-libs/libsdl2:0[gles2] )
-	hires? ( dev-libs/boost:0= )"
+	hires? ( dev-libs/boost:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 

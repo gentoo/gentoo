@@ -1,0 +1,88 @@
+From f86c3bde84d9e75ec2780a51a1ca7dc20a4740e6 Mon Sep 17 00:00:00 2001
+From: Dominique Martinet <asmadeus@codewreck.org>
+Date: Thu, 25 Aug 2022 21:47:30 +0900
+Subject: [PATCH] Fix builds against bcc >= 0.25.0
+
+libbpf 1.0.0 removed bpf_load_program_attr in
+https://github.com/libbpf/libbpf/commit/9476dce6fe905a6bf1d4c483f7b2b8575c4ffb2d
+and bcc 0.25.0 in turn changed bcc_prog_load_xattr to use
+bpf_prog_load_opts instead in
+https://github.com/iovisor/bcc/commit/185143bdec6134255363446f644acd766ffb3825
+
+Add a compile check to use the appropriate version
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c5c4c39630d2..f23b2ba52740 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -138,7 +138,7 @@ check_symbol_exists(bpf_attach_kfunc "${LIBBCC_INCLUDE_DIRS}/bcc/libbpf.h" HAVE_
+ check_symbol_exists(bcc_usdt_addsem_probe "${LIBBCC_INCLUDE_DIRS}/bcc/bcc_usdt.h" HAVE_BCC_USDT_ADDSEM)
+ check_symbol_exists(bcc_procutils_which_so "${LIBBCC_INCLUDE_DIRS}/bcc/bcc_proc.h" HAVE_BCC_WHICH_SO)
+ 
+-# bcc_prog_load_xattr needs struct bpf_load_program_attr,
++# bcc_prog_load_xattr needs struct bpf_prog_load_opts or bpf_load_program_attr,
+ # which is defined in libbpf
+ if (LIBBPF_FOUND)
+   check_symbol_exists(bcc_prog_load_xattr "${LIBBCC_INCLUDE_DIRS}/bcc/libbpf.h" HAVE_BCC_PROG_LOAD_XATTR)
+@@ -236,6 +236,10 @@ if(LIBBCC_ATTACH_UPROBE_SEVEN_ARGS_SIGNATURE)
+   set(BPFTRACE_FLAGS "${BPFTRACE_FLAGS}" LIBBCC_ATTACH_UPROBE_SEVEN_ARGS_SIGNATURE)
+ endif(LIBBCC_ATTACH_UPROBE_SEVEN_ARGS_SIGNATURE)
+ 
++if(LIBBCC_PROG_LOAD_XATTRS_WITH_OPTS)
++  set(BPFTRACE_FLAGS "${BPFTRACE_FLAGS}" LIBBCC_PROG_LOAD_XATTRS_WITH_OPTS)
++endif(LIBBCC_PROG_LOAD_XATTRS_WITH_OPTS)
++
+ if (HAVE_BCC_KFUNC)
+   set(BPFTRACE_FLAGS "${BPFTRACE_FLAGS}" HAVE_BCC_KFUNC)
+ endif(HAVE_BCC_KFUNC)
+diff --git a/cmake/FindLibBcc.cmake b/cmake/FindLibBcc.cmake
+index 7b4f12835786..20d2e68cd75f 100644
+--- a/cmake/FindLibBcc.cmake
++++ b/cmake/FindLibBcc.cmake
+@@ -85,6 +85,16 @@ int main(void) {
+   return 0;
+ }
+ " LIBBCC_ATTACH_UPROBE_SEVEN_ARGS_SIGNATURE)
++CHECK_CXX_SOURCE_COMPILES("
++#include <bcc/libbpf.h>
++
++int main(void) {
++  struct bpf_prog_load_opts *opts = (struct bpf_prog_load_opts*) 1;
++
++  bcc_prog_load_xattr(BPF_PROG_TYPE_UNSPEC, 0, 0, 0, opts, 0, 0, 0, true);
++  return 0;
++}
++" LIBBCC_PROG_LOAD_XATTRS_WITH_OPTS)
+ SET(CMAKE_REQUIRED_INCLUDES)
+ 
+ SET(CMAKE_REQUIRED_LIBRARIES ${LIBBCC_BPF_LIBRARIES})
+diff --git a/src/attached_probe.cpp b/src/attached_probe.cpp
+index 60778e53ce44..dd46f15fd8d2 100644
+--- a/src/attached_probe.cpp
++++ b/src/attached_probe.cpp
+@@ -731,7 +731,24 @@ void AttachedProbe::load_prog()
+         continue;
+       }
+ 
+-#ifdef HAVE_BCC_PROG_LOAD_XATTR
++#ifdef LIBBCC_PROG_LOAD_XATTRS_WITH_OPTS
++    struct bpf_prog_load_opts opts = { };
++
++    opts.sz = sizeof(opts);
++    opts.log_level = log_level;
++
++    progfd_ = bcc_prog_load_xattr(
++        progtype(probe_.type),
++        name.c_str(),
++        license,
++        reinterpret_cast<struct bpf_insn *>(insns),
++        &opts,
++        prog_len,
++        log_buf.get(),
++        log_buf_size,
++        true);
++
++#elif HAVE_BCC_PROG_LOAD_XATTR
+       struct bpf_load_program_attr attr = {};
+ 
+       attr.prog_type = progtype(probe_.type);

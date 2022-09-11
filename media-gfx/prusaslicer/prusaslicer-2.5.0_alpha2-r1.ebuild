@@ -23,7 +23,7 @@ RESTRICT="test"
 RDEPEND="
 	dev-cpp/eigen:3
 	dev-cpp/tbb:=
-	>=dev-libs/boost-1.73.0:=[nls,threads(+)]
+	dev-libs/boost:=[nls]
 	dev-libs/cereal
 	dev-libs/expat
 	dev-libs/glib:2

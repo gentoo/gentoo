@@ -28,7 +28,7 @@ LICENSE="MIT"
 SLOT="0/${PV%.*}"
 
 IUSE="bzip2 +cxx debug dynamic-loading fpx heif imagemagick jbig jpeg jpegxl lcms lzma"
-IUSE+=" openmp perl png postscript q16 q32 static-libs svg tcmalloc threads tiff truetype"
+IUSE+=" openmp perl png postscript q16 q32 static-libs svg tcmalloc tiff truetype"
 IUSE+=" webp wmf X zlib zstd"
 
 RDEPEND="
@@ -97,7 +97,7 @@ src_configure() {
 		$(use_enable debug gcov)
 		$(use_enable imagemagick magick-compat)
 		$(use_enable openmp)
-		$(use_with threads)
+		--with-threads
 		$(use_with dynamic-loading modules)
 		--with-quantum-depth=${depth}
 		--without-frozenpaths

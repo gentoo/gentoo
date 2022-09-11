@@ -19,7 +19,7 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-lang/perl:=
-	dev-libs/boost:=[bzip2,zlib,threads(+)]
+	dev-libs/boost:=[bzip2,zlib]
 "
 DEPEND="${RDEPEND}"
 

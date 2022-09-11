@@ -19,7 +19,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	dev-libs/boost:=[threads(+)]
+	dev-libs/boost:=
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '

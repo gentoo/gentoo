@@ -13,7 +13,10 @@ SLOT="1"
 KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ppc64 ~riscv ~sparc x86"
 
 IUSE="examples glade gtk-doc +introspection test +vala"
-REQUIRED_USE="vala? ( introspection )"
+REQUIRED_USE="
+	gtk-doc? ( introspection )
+	vala? ( introspection )
+"
 RESTRICT="!test? ( test )"
 
 RDEPEND="

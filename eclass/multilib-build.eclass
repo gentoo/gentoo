@@ -140,7 +140,7 @@ unset -f _multilib_build_set_globals
 # If multilib is disabled, the default ABI will be returned
 # in order to enforce consistent testing with multilib code.
 multilib_get_enabled_abis() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local pairs=( $(multilib_get_enabled_abi_pairs) )
 	echo "${pairs[@]#*.}"
@@ -155,7 +155,7 @@ multilib_get_enabled_abis() {
 # If multilib is disabled, the default ABI will be returned
 # along with empty <use-flag>.
 multilib_get_enabled_abi_pairs() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local abis=( $(get_all_abis) )
 
@@ -198,7 +198,7 @@ multilib_get_enabled_abi_pairs() {
 # @DESCRIPTION:
 # Initialize the environment for ABI selected for multibuild.
 _multilib_multibuild_wrapper() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local ABI=${MULTIBUILD_VARIANT#*.}
 	local -r MULTILIB_ABI_FLAG=${MULTIBUILD_VARIANT%.*}
@@ -218,7 +218,7 @@ _multilib_multibuild_wrapper() {
 # If multilib support is disabled, it just runs the commands. No setup
 # is done.
 multilib_foreach_abi() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local MULTIBUILD_VARIANTS=( $(multilib_get_enabled_abi_pairs) )
 	multibuild_foreach_variant _multilib_multibuild_wrapper "${@}"
@@ -237,7 +237,7 @@ multilib_foreach_abi() {
 # This function used to run multiple commands in parallel. Now it's just
 # a deprecated alias to multilib_foreach_abi.
 multilib_parallel_foreach_abi() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local MULTIBUILD_VARIANTS=( $(multilib_get_enabled_abi_pairs) )
 	multibuild_foreach_variant _multilib_multibuild_wrapper "${@}"
@@ -295,7 +295,7 @@ multilib_check_headers() {
 # to ABI-specific build directory matching BUILD_DIR used by
 # multilib_foreach_abi().
 multilib_copy_sources() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local MULTIBUILD_VARIANTS=( $(multilib_get_enabled_abi_pairs) )
 	multibuild_copy_sources
@@ -373,7 +373,7 @@ multilib_copy_sources() {
 # After all wrappers are prepared, multilib_install_wrappers shall
 # be called to commit them to the installation tree.
 multilib_prepare_wrappers() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -le 1 ]] || die "${FUNCNAME}: too many arguments"
 
@@ -537,7 +537,7 @@ _EOF_
 # between the calls to multilib_prepare_wrappers
 # and multilib_install_wrappers.
 multilib_install_wrappers() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -le 1 ]] || die "${FUNCNAME}: too many arguments"
 
@@ -558,11 +558,29 @@ multilib_install_wrappers() {
 # Determine whether the currently built ABI is the profile native.
 # Return true status (0) if that is true, otherwise false (1).
 multilib_is_native_abi() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -eq 0 ]] || die "${FUNCNAME}: too many arguments"
 
 	[[ ${COMPLETE_MULTILIB} == yes || ${ABI} == ${DEFAULT_ABI} ]]
+}
+
+# @FUNCTION: multilib_native_use
+# @USAGE: <flag>
+# @DESCRIPTION:
+# Like the standard use command, but only yields true if
+# multilib_is_native_abi and use <flag> are true, otherwise false.
+multilib_native_use() {
+	multilib_is_native_abi && use "$@"
+}
+
+# @FUNCTION: multilib_native_usev
+# @USAGE: <flag> [<opt-value>]
+# @DESCRIPTION:
+# Like the standard usev command, but only prints output
+# if multilib_is_native_abi and usev <flag> are true.
+multilib_native_usev() {
+	multilib_is_native_abi && usev "$@"
 }
 
 # @FUNCTION: multilib_native_use_with

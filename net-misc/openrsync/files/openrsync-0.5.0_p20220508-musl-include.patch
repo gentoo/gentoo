@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/866932
+--- a/socket.c
++++ b/socket.c
+@@ -29,6 +29,7 @@
+ #include <poll.h>
+ #include <resolv.h>
+ #include <stdlib.h>
++#include <stdio.h>
+ #include <string.h>
+ #include <unistd.h>
+ #if HAVE_ERR

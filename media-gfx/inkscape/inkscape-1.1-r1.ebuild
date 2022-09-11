@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8,9} )
-PYTHON_REQ_USE="xml"
+PYTHON_REQ_USE="xml(+)"
 
 inherit cmake flag-o-matic xdg toolchain-funcs python-single-r1
 
@@ -36,7 +36,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-cpp/gtkmm:3.0
 	>=dev-cpp/pangomm-2.40:1.4
 	>=dev-libs/boehm-gc-7.1:=
-	>=dev-libs/boost-1.65:=
+	dev-libs/boost:=
 	dev-libs/double-conversion:=
 	>=dev-libs/glib-2.41
 	>=dev-libs/libsigc++-2.8:2

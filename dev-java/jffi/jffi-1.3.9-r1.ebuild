@@ -18,7 +18,7 @@ SRC_URI="https://github.com/jnr/${PN}/archive/refs/tags/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="1.3"
-KEYWORDS="amd64 arm64 ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 DEPEND=">=virtual/jdk-1.8:*
 	>=dev-libs/libffi-3.4.2-r2:="
@@ -51,6 +51,29 @@ src_prepare() {
 			public static final int MICRO = $(ver_cut 3);
 		}
 	EOF
+
+	# https://bugs.gentoo.org/829820
+	if use arm; then
+		sed \
+			-e '/import org.junit.Test/a import org.junit.Ignore;' \
+			-e '/invokeHeapDO()/i @Ignore' \
+			-e '/invokeHeapNO()/i @Ignore' \
+			-e '/invokeHeapOD()/i @Ignore' \
+			-e '/invokeHeapON()/i @Ignore' \
+			-e '/invokeHeapOO()/i @Ignore' \
+			-e '/invokeHeapO()/i @Ignore' \
+			-e '/invokeNativeDO()/i @Ignore' \
+			-e '/invokeNativeNO()/i @Ignore' \
+			-e '/invokeNativeOD()/i @Ignore' \
+			-e '/invokeNativeON()/i @Ignore' \
+			-e '/invokeNativeOO()/i @Ignore' \
+			-e '/invokeNativeO()/i @Ignore' \
+			-i src/test/java/com/kenai/jffi/InvokerTest.java || die
+		sed \
+			-e '/import org.junit.Test/a import org.junit.Ignore;' \
+			-e '/returnDefaultF128HighPrecision/i @Ignore' \
+			-i src/test/java/com/kenai/jffi/NumberTest.java || die
+	fi
 }
 
 src_compile() {

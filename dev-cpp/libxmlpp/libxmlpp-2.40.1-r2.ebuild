@@ -28,7 +28,7 @@ multilib_src_prepare() {
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" gnome2_src_configure \
-		$(use_enable doc documentation)
+		$(multilib_native_use_enable doc documentation)
 }
 
 multilib_src_install() {

@@ -31,7 +31,7 @@ SLOT="0/1"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-libs/boost:=[threads(+)]"
+RDEPEND="dev-libs/boost:="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	test? (

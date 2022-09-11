@@ -7,7 +7,7 @@
 
 amdgpu - VIDEO_CARDS setting to build driver for AMDGPU video cards
 ast - VIDEO_CARDS setting to build driver for ASpeedTech video cards
-crocus - VIDEO_CARDS setting to build driver for Intel video cards Gen4-Gen7
+d3d12 - VIDEO_CARDS seeting to build driver for Microsoft WSL video cards
 dummy - VIDEO_CARDS setting to build driver for dummy video cards
 exynos - VIDEO_CARDS setting to build driver for Samsung Exynos video cards
 freedreno - VIDEO_CARDS setting to build reverse-engineered driver for Qualcomm Adreno cards
@@ -17,7 +17,6 @@ glint - VIDEO_CARDS setting to build driver for glint video cards
 i915 - VIDEO_CARDS setting to build driver for Intel i915 video cards
 i965 - VIDEO_CARDS setting to build driver for Intel i965 video cards
 intel - VIDEO_CARDS setting to build driver for Intel video cards
-iris - VIDEO_CARDS setting to build driver for Intel video cards Gen8 / Broadwell or newer
 lima - VIDEO_CARDS setting to build driver for Mali 200/400 video cards
 mga - VIDEO_CARDS setting to build driver for mga video cards
 nouveau - VIDEO_CARDS setting to build reverse-engineered driver for nvidia cards

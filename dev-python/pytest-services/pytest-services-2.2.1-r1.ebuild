@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ~ppc64 ~riscv x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ~ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
@@ -44,7 +44,3 @@ PATCHES=(
 	"${FILESDIR}/pytest-services-2.0.1-no-mysql.patch"
 	"${FILESDIR}/pytest-services-2.0.1-lockdir.patch"
 )
-
-python_test() {
-	epytest -p no:xvfb
-}

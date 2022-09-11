@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ REQUIRED_USE="
 RDEPEND="
 	acct-group/bitcoin
 	acct-user/bitcoin
-	>=dev-libs/boost-1.64.0:=[threads(+)]
+	dev-libs/boost:=
 	dev-libs/libevent:=
 	>dev-libs/libsecp256k1-0.1_pre20200911:=[recovery,schnorr]
 	>=dev-libs/univalue-1.0.4:=

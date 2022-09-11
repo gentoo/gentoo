@@ -17,7 +17,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit python-any-r1
 inherit autotools bash-completion-r1 flag-o-matic ghc-package
 inherit multiprocessing pax-utils toolchain-funcs prefix
-inherit check-reqs
+inherit check-reqs llvm
 DESCRIPTION="The Glasgow Haskell Compiler"
 HOMEPAGE="https://www.haskell.org/ghc/"
 
@@ -28,7 +28,7 @@ BIN_PV=${PV}
 # sorted!
 #arch_binaries="$arch_binaries alpha? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-alpha.tbz2 )"
 #arch_binaries="$arch_binaries arm? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-armv7a-hardfloat-linux-gnueabi.tbz2 )"
-#arch_binaries="$arch_binaries arm64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-aarch64-unknown-linux-gnu.tbz2 )"
+arch_binaries="$arch_binaries arm64? ( https://github.com/matoro/ghc/releases/download/${PV}/ghc-bin-${PV}-aarch64-unknown-linux-gnu.tar.gz )"
 arch_binaries="$arch_binaries amd64? ( https://eidetic.codes/ghc-bin-${PV}-x86_64-pc-linux-gnu.tbz2 )"
 #arch_binaries="$arch_binaries ia64?  ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ia64-fixed-fiw.tbz2 )"
 #arch_binaries="$arch_binaries ppc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc.tbz2 )"
@@ -46,7 +46,7 @@ arch_binaries="$arch_binaries x86? ( https://eidetic.codes/ghc-bin-${PV}-i686-pc
 yet_binary() {
 	case "${ARCH}" in
 		#alpha) return 0 ;;
-		#arm64) return 0 ;;
+		arm64) return 0 ;;
 		#arm) return 0 ;;
 		amd64) return 0 ;;
 		#ia64) return 0 ;;
@@ -76,11 +76,12 @@ BUMP_LIBRARIES=(
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE="big-endian +doc elfutils ghcbootstrap ghcmakebinary +gmp numa profile test"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+IUSE="big-endian +doc elfutils ghcbootstrap ghcmakebinary +gmp llvm numa profile test"
 IUSE+=" binary"
 RESTRICT="!test? ( test )"
 
+LLVM_MAX_SLOT="13"
 RDEPEND="
 	>=dev-lang/perl-5.6.1
 	dev-libs/gmp:0=
@@ -88,6 +89,12 @@ RDEPEND="
 	elfutils? ( dev-libs/elfutils )
 	!ghcmakebinary? ( dev-libs/libffi:= )
 	numa? ( sys-process/numactl )
+	llvm? (
+		<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):=
+		|| (
+			sys-devel/llvm:13
+		)
+	)
 "
 
 # This set of dependencies is needed to run
@@ -356,6 +363,15 @@ ghc-check-reqs() {
 	"$@"
 }
 
+llvmize() {
+	[[ -z "${1}" ]] && return
+	( find "${1}" -type f \
+		| file -if- \
+		| grep "text/x-shellscript" \
+		| awk -F: '{print $1}' \
+		| xargs sed -i "s#^exec #PATH=\"$(get_llvm_prefix "${LLVM_MAX_SLOT}")/bin:\${PATH}\" exec #") || die
+}
+
 pkg_pretend() {
 	ghc-check-reqs check-reqs_pkg_pretend
 }
@@ -385,6 +401,8 @@ pkg_setup() {
 	if needs_python; then
 		python-any-r1_pkg_setup
 	fi
+
+	use llvm && llvm_pkg_setup
 }
 
 src_unpack() {
@@ -419,6 +437,8 @@ src_prepare() {
 		# linking on it's own (bug #299709)
 		pax-mark -m "${WORKDIR}/usr/$(get_libdir)/${PN}-${BIN_PV}/bin/ghc"
 	fi
+
+	use llvm && llvmize "${WORKDIR}/usr/bin"
 
 	# binpkg may have been built with FEATURES=splitdebug
 	if [[ -d "${WORKDIR}/usr/lib/debug" ]] ; then
@@ -514,6 +534,7 @@ src_prepare() {
 		use test && eapply "${FILESDIR}/${PN}-9.0.2-fix-tests-python310.patch"
 		eapply "${FILESDIR}"/${PN}-8.10.1-allow-cross-bootstrap.patch
 		eapply "${FILESDIR}"/${PN}-9.0.2-disable-unboxed-arrays.patch
+		eapply "${FILESDIR}"/${PN}-9.0.2-llvm-13.patch
 
 		# mingw32 target
 		pushd "${S}/libraries/Win32"
@@ -661,7 +682,8 @@ src_configure() {
 		econf ${econf_args[@]} \
 			--enable-bootstrap-with-devel-snapshot \
 			$(use_enable elfutils dwarf-unwind) \
-			$(use_enable numa)
+			$(use_enable numa) \
+			--disable-unregisterised # all targets are registerised for now
 
 		if [[ ${PV} == *9999* ]]; then
 			GHC_PV="$(grep 'S\[\"PACKAGE_VERSION\"\]' config.status | sed -e 's@^.*=\"\(.*\)\"@\1@')"
@@ -717,6 +739,8 @@ src_install() {
 		#    /usr/bin/install: cannot create regular file \
 		#           '/tmp/portage-tmpdir/portage/cross-armv7a-unknown-linux-gnueabi/ghc-9999/image/usr/lib64/armv7a-unknown-linux-gnueabi-ghc-8.3.20170404': No such file or directory
 		emake -j1 install DESTDIR="${D}"
+
+		use llvm && llvmize "${ED}/usr/bin"
 
 		# Skip for cross-targets as they all share target location:
 		# /usr/share/doc/ghc-9999/

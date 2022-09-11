@@ -1,11 +1,12 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 LUA_COMPAT=( lua5-3 )
 LUA_REQ_USE="deprecated"
-inherit autotools lua-single toolchain-funcs
+PYTHON_COMPAT=( python3_{8..11} )
+inherit autotools lua-single python-any-r1 toolchain-funcs
 
 DESCRIPTION="Network exploration tool and security / port scanner"
 HOMEPAGE="https://nmap.org/"
@@ -14,8 +15,6 @@ if [[ ${PV} == *9999* ]] ; then
 
 	EGIT_REPO_URI="https://github.com/nmap/nmap"
 
-	# Just in case for now as future seems undecided.
-	LICENSE="NPSL"
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/nmap.asc
 	inherit verify-sig
@@ -24,10 +23,9 @@ else
 	SRC_URI+=" verify-sig? ( https://nmap.org/dist/sigs/${P}.tar.bz2.asc )"
 
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-
-	LICENSE="|| ( NPSL GPL-2 )"
 fi
 
+LICENSE="|| ( NPSL GPL-2 )"
 SLOT="0"
 IUSE="ipv6 libssh2 ncat nping +nse ssl symlink +system-lua"
 REQUIRED_USE="
@@ -54,9 +52,13 @@ RDEPEND="
 	system-lua? ( ${LUA_DEPS} )
 "
 DEPEND="${RDEPEND}"
+BDEPEND="
+	${PYTHON_DEPS}
+	virtual/pkgconfig
+"
 
 if [[ ${PV} != *9999* ]] ; then
-	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-nmap )"
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-nmap )"
 fi
 
 PATCHES=(
@@ -73,6 +75,8 @@ PATCHES=(
 )
 
 pkg_setup() {
+	python-any-r1_pkg_setup
+
 	use system-lua && lua-single_pkg_setup
 }
 
@@ -92,12 +96,15 @@ src_prepare() {
 	eautoreconf
 
 	if [[ ${CHOST} == *-darwin* ]] ; then
-		# we need the original for a Darwin-specific fix, bug #604432
+		# We need the original for a Darwin-specific fix, bug #604432
 		mv libdnet-stripped/include/config.h.in{.nmap-orig,} || die
 	fi
 }
 
 src_configure() {
+	export ac_cv_path_PYTHON="${PYTHON}"
+	export am_cv_pathless_PYTHON="${EPYTHON}"
+
 	# The bundled libdnet is incompatible with the version available in the
 	# tree, so we cannot use the system library here.
 	econf \
@@ -112,16 +119,14 @@ src_configure() {
 		--cache-file="${S}"/config.cache \
 		--with-libdnet=included \
 		--with-pcre="${ESYSROOT}"/usr \
+		--without-dpdk \
 		--without-ndiff \
 		--without-zenmap
 }
 
 src_compile() {
 	local directory
-	for directory in . libnetutil nsock/src \
-		$(usex ncat ncat '') \
-		$(usex nping nping '')
-	do
+	for directory in . libnetutil nsock/src $(usev ncat) $(usev nping) ; do
 		emake -C "${directory}" makefile.dep
 	done
 

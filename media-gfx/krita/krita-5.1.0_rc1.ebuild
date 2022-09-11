@@ -13,7 +13,7 @@ inherit ecm kde.org python-single-r1
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/unstable/${PN}/${PV/_rc/-RC}/${PN}-${PV/_rc/-RC}.tar.xz"
 	S="${WORKDIR}/${PN}-${PV/_rc/-RC}"
-# 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+	#KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Free digital painting application. Digital Painting, Creative Freedom!"
@@ -29,7 +29,7 @@ RESTRICT="test"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=
-	dev-libs/quazip:0=
+	dev-libs/quazip:0=[qt5(+)]
 	$(python_gen_cond_dep '
 		dev-python/PyQt5[declarative,gui,widgets,${PYTHON_USEDEP}]
 		dev-python/sip:=[${PYTHON_USEDEP}]

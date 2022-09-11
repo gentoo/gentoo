@@ -1,0 +1,26 @@
+https://github.com/canonical/lightdm/pull/261
+
+# A little bit modified version of Alpine linux patch [1]. On musl the default
+# implementation of updwtmpx will give conflicting types error and build will
+# fail. This patch should fix that. This issue is noticed together with bug
+# 766866 [2].
+# [1]: https://git.alpinelinux.org/aports/tree/community/lightdm/musl-updwtmpx.patch
+# [2]: https://bugs.gentoo.org/766866
+diff --git a/src/session-child.c b/src/session-child.c
+index eef51e4..0052904 100644
+--- a/src/session-child.c
++++ b/src/session-child.c
+@@ -193,8 +193,13 @@ read_xauth (void)
+ }
+
+ /* GNU provides this but we can't rely on that so let's make our own version */
++#if defined(__GLIBC__)
+ static void
+ updwtmpx (const gchar *wtmp_file, struct utmpx *ut)
++#else // use this version in libc's other than glibc
++void
++updwtmpx (const char *wtmp_file, const struct utmpx *ut)
++#endif
+ {
+     struct utmp u;
+     memset (&u, 0, sizeof (u));

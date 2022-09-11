@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrey Grozin <grozin@gentoo.org> (2022-09-02)
+# dev-libs/capstone not keyworded
+dev-lisp/sbcl capstone
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-08-15)
 # deps not keyworded
 dev-util/pkgcheck emacs
@@ -352,7 +356,7 @@ net-libs/gnutls test-full
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-07)
 # Requires USE=bluetooth that is masked in this profile.
-media-sound/pulseaudio native-headset ofono-headset
+media-sound/pulseaudio ofono-headset
 media-sound/pulseaudio-daemon ofono-headset
 net-misc/ofono dundee
 

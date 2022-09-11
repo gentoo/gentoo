@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ IUSE=""
 
 DEPEND="
 	dev-libs/libgcrypt:=
-	dev-libs/boost:=[threads(+)]
+	dev-libs/boost:=
 	media-video/vdr"
 RDEPEND="${DEPEND}"
 

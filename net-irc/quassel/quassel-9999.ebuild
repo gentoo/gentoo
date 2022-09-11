@@ -58,7 +58,7 @@ GUI_DEPEND="dev-qt/qtgui:5
 	snorenotify? ( >=x11-libs/snorenotify-0.7.0 )
 	spell? ( kde-frameworks/sonnet:5 )
 	urlpreview? ( dev-qt/qtwebengine:5[widgets] )"
-DEPEND=">=dev-libs/boost-1.54:=
+DEPEND="dev-libs/boost:=
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5[ssl]
 	sys-libs/zlib

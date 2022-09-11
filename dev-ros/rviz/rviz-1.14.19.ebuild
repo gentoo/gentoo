@@ -17,7 +17,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-libs/boost:=[threads(+)]
+	dev-libs/boost:=
 	media-libs/assimp:=
 	dev-games/ogre:=[-double-precision]
 	virtual/opengl

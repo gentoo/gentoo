@@ -31,10 +31,6 @@ sys-boot/grub grub_platforms_loongson grub_platforms_qemu-mips
 # Only available on PPC*.
 sys-apps/util-linux rtas
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-01)
-# requires sys-apps/dbus-broker, which is not widely keyworded yet.
-sys-apps/systemd hostnamed-fallback
-
 # James Le Cuirot <chewi@gentoo.org> (2021-10-22)
 # Only available on some architectures.
 app-emulation/fs-uae jit
@@ -342,7 +338,6 @@ app-arch/zpaq jit
 # Arun Raghavan <ford_prefect@gentoo.org> (2012-03-28)
 # webrtc-audio-processing is only supported on x86/amd64. Possibly arm can be
 # added.
-media-sound/pulseaudio webrtc-aec
 media-sound/pulseaudio-daemon webrtc-aec
 
 # Christoph Junghans <junghans@gentoo.org> (2012-02-04)

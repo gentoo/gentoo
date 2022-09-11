@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,8 +16,8 @@ SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86 ~x64-macos"
 RESTRICT="test"
 
-RDEPEND=">=app-admin/ansible-base-2.11.1
-	<app-admin/ansible-base-2.12"
+RDEPEND=">=app-admin/ansible-core-2.11.1
+	<app-admin/ansible-core-2.12"
 
 python_compile() {
 	local -x ANSIBLE_SKIP_CONFLICT_CHECK=1

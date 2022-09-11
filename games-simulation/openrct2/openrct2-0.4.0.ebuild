@@ -33,7 +33,7 @@ COMMON_DEPEND="
 	dev-libs/icu:=
 	dev-libs/jansson:=
 	dev-libs/libzip:=
-	media-libs/libpng:0=
+	media-libs/libpng:=
 	net-misc/curl[ssl]
 	sys-libs/zlib
 	!dedicated? (

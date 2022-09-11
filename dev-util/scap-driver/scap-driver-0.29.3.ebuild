@@ -24,6 +24,8 @@ RDEPEND="!<dev-util/sysdig-${PV}[modules]"
 
 CONFIG_CHECK="HAVE_SYSCALL_TRACEPOINTS ~TRACEPOINTS"
 
+PATCHES=( "${FILESDIR}"/${PV}-fix-kmod-build-on-5.18+.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		# we will use linux-mod, so just pretend to use bundled deps

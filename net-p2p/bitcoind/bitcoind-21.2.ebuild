@@ -31,7 +31,7 @@ REQUIRED_USE="
 DEPEND="
 	acct-group/bitcoin
 	acct-user/bitcoin
-	>=dev-libs/boost-1.68.0:=[threads(+)]
+	dev-libs/boost:=
 	dev-libs/libevent:=
 	>dev-libs/libsecp256k1-0.1_pre20200911:=[recovery,schnorr]
 	>=dev-libs/univalue-1.0.4:=

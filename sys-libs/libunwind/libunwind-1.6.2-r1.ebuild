@@ -21,7 +21,8 @@ inherit multilib-minimal
 
 DESCRIPTION="Portable and efficient API to determine the call-chain of a program"
 HOMEPAGE="https://savannah.nongnu.org/projects/libunwind"
-SRC_URI="mirror://nongnu/libunwind/${MY_P}.tar.gz"
+SRC_URI="mirror://nongnu/libunwind/${MY_P}.tar.gz
+	loong? ( https://dev.gentoo.org/~xen0n/distfiles/${CATEGORY}/${PN}/${P}-loong.patch.xz )"
 if [[ ${LIBUNWIND_DOCS_PREBUILT} == 1 ]] ; then
 	SRC_URI+=" !doc? ( https://dev.gentoo.org/~${LIBUNWIND_DOCS_PREBUILT_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${LIBUNWIND_DOCS_VERSION}-docs.tar.xz )"
 fi
@@ -30,7 +31,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0/8" # libunwind.so.8
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 -sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 -sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug debug-frame ${LIBUNWIND_DOCS_USEFLAG} libatomic lzma static-libs test zlib"
 
 RESTRICT="test !test? ( test )" # some tests are broken (toolchain version dependent, rely on external binaries)
@@ -65,6 +66,9 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 src_prepare() {
+	local PATCHES=()
+	use loong && PATCHES+=( "${WORKDIR}/${P}-loong.patch" )
+
 	default
 
 	chmod +x src/ia64/mk_cursor_i || die
@@ -80,7 +84,7 @@ multilib_src_configure() {
 		--enable-ptrace
 		--enable-setjmp
 		$(use_enable debug-frame)
-		$(use_enable doc documentation)
+		$(multilib_native_use_enable doc documentation)
 		$(use_enable lzma minidebuginfo)
 		$(use_enable static-libs static)
 		$(use_enable zlib zlibdebuginfo)

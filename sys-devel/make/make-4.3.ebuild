@@ -8,9 +8,12 @@ inherit flag-o-matic verify-sig
 
 DESCRIPTION="Standard tool to compile source trees"
 HOMEPAGE="https://www.gnu.org/software/make/make.html"
-if [[ "$(ver_cut 3)" -ge 90 ]] ; then
-	SRC_URI="https://alpha.gnu.org/gnu//make/${P}.tar.gz"
-	SRC_URI+=" verify-sig? ( https://alpha.gnu.org/gnu//make/${P}.tar.gz.sig )"
+if [[ ${PV} == 9999 ]] ; then
+	EGIT_REPO_URI="https://git.savannah.gnu.org/git/make.git"
+	inherit autotools git-r3
+elif [[ $(ver_cut 3) -ge 90 ]] ; then
+	SRC_URI="https://alpha.gnu.org/gnu/make/${P}.tar.gz"
+	SRC_URI+=" verify-sig? ( https://alpha.gnu.org/gnu/make/${P}.tar.gz.sig )"
 else
 	SRC_URI="mirror://gnu//make/${P}.tar.gz"
 	SRC_URI+=" verify-sig? ( mirror://gnu//make/${P}.tar.gz.sig )"
@@ -31,6 +34,25 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.82-darwin-library_search-dylib.patch
 	"${FILESDIR}"/${PN}-4.2-default-cxx.patch
 )
+
+src_unpack() {
+	if [[ ${PV} == 9999 ]] ; then
+		git-r3_src_unpack
+
+		cd "${S}" || die
+		./bootstrap || die
+	else
+		default
+	fi
+}
+
+src_prepare() {
+	default
+
+	if [[ ${PV} == 9999 ]] ; then
+		eautoreconf
+	fi
+}
 
 src_configure() {
 	use static && append-ldflags -static

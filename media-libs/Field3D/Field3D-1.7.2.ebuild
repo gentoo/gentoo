@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ IUSE="mpi"
 
 BDEPEND="virtual/pkgconfig"
 RDEPEND="
-	>=dev-libs/boost-1.62:=
+	dev-libs/boost:=
 	>=media-libs/ilmbase-2.2.0:=
 	sci-libs/hdf5:=
 	mpi? ( virtual/mpi )

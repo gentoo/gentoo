@@ -1,0 +1,56 @@
+Upstream:
+https://dev.gnupg.org/rE4615816f71e91f4c3bb8b0e4122dd153ec7c1927
+https://dev.gnupg.org/T6136
+
+From 4615816f71e91f4c3bb8b0e4122dd153ec7c1927 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Thu, 25 Aug 2022 15:30:07 +0900
+Subject: [PATCH] gpgrt-config: Strip system paths for --cflags and --libs.
+
+* src/gpgrt-config.in: Strip -I and -L with system paths.
+
+--
+
+This behavior is more compatible to pkg-config.
+
+GnuPG-bug-id: 6136
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+
+diff --git a/src/gpgrt-config.in b/src/gpgrt-config.in
+index 3aaa243..85d21b4 100644
+--- a/src/gpgrt-config.in
++++ b/src/gpgrt-config.in
+@@ -1,6 +1,6 @@
+ #!@INSTALLSHELLPATH@
+ #                          -*- mode: shell-script; sh-shell: "/bin/sh" -*-
+-# Copyright (C) 2018, 2021 g10 Code GmbH
++# Copyright (C) 2018, 2021, 2022 g10 Code GmbH
+ #
+ # This file is free software; as a special exception the author gives
+ # unlimited permission to copy and/or distribute it, with or without
+@@ -193,9 +193,14 @@ list_only_once () {
+     __arg=""
+ 
+     for __arg; do
+-	if not_listed_yet $__arg $__result; then
+-	    __result="$__result${__result:+ }$__arg"
+-	fi
++	case "$__arg" in
++	    -I/usr/include|-I/include) ;;
++	    *)
++                if not_listed_yet $__arg $__result; then
++	            __result="$__result${__result:+ }$__arg"
++	        fi
++                ;;
++	esac
+     done
+ 
+     echo $__result
+@@ -210,6 +215,7 @@ list_only_once_for_libs () {
+     # the resulted list is in reverse order
+     for __arg; do
+ 	case "$__arg" in
++	    -L/usr/lib|-L/usr/lib64|-L/lib|-L/lib64) ;;
+ 	    -l*)
+ 		# As-is
+ 		__rev_list="$__arg${__rev_list:+ }$__rev_list"

@@ -1,0 +1,8 @@
+Temporary patch to add proton variant until a proper release
+to update these.
+--- a/wine.eselect
++++ b/wine.eselect
+@@ -14,2 +14,3 @@
+ 	staging
++	proton
+ 	d3d9

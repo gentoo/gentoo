@@ -5,11 +5,15 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{8..11} )
+
 inherit distutils-r1
 
 MY_P=${P/-/.}
 DESCRIPTION="Routines for handling streaming data"
-HOMEPAGE="https://github.com/jaraco/jaraco.stream"
+HOMEPAGE="
+	https://github.com/jaraco/jaraco.stream/
+	https://pypi.org/project/jaraco.stream/
+"
 SRC_URI="mirror://pypi/${MY_P::1}/${PN/-/.}/${MY_P}.tar.gz"
 S=${WORKDIR}/${MY_P}
 
@@ -24,7 +28,4 @@ BDEPEND="
 	)
 "
 
-distutils_enable_sphinx docs \
-	">=dev-python/jaraco-packaging-3.2" \
-	">=dev-python/rst-linker-1.9"
 distutils_enable_tests pytest

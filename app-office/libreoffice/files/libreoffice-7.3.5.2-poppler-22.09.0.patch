@@ -1,0 +1,46 @@
+https://gerrit.libreoffice.org/c/core/+/139249
+
+From 8bad83bf044661357b02b695e6f53e2e19dea396 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 2 Sep 2022 04:31:18 +0100
+Subject: [PATCH] Fix build with Poppler 22.09.0
+
+With Poppler 22.09.0, LO fails to build with:
+```
+/var/tmp/portage/app-office/libreoffice-7.3.5.2/work/libreoffice-7.3.5.2/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx:682:36: error: too many arguments to function call, expected single argument 'start', have 3 arguments
+    state->getLineDash(&dashArray, &arrayLen, &startOffset);
+    ~~~~~~~~~~~~~~~~~~             ^~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/poppler/GfxState.h:1506:32: note: 'getLineDash' declared here
+    const std::vector<double> &getLineDash(double *start)
+                               ^
+1 error generated.
+```
+
+Poppler changed the getLineDash interface:
+```
+-    void getLineDash(double **dash, int *length, double *start)
++    const std::vector<double> &getLineDash(double *start)
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+Change-Id: I29e18f20d7650a7fcac1bc8ab4aaa04aaa2ab8fb
+--- a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
++++ b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
+@@ -678,8 +678,16 @@ void PDFOutDev::updateLineDash(GfxState *state)
+         return;
+     assert(state);
+ 
+-    double* dashArray; int arrayLen; double startOffset;
++    int arrayLen; double startOffset;
++#if POPPLER_CHECK_VERSION(22, 9, 0)
++    const double* dashArray;
++    const std::vector<double> &dash = state->getLineDash(&startOffset);
++    dashArray = dash.data();
++    arrayLen = dash.size();
++#else
++    double* dashArray;
+     state->getLineDash(&dashArray, &arrayLen, &startOffset);
++#endif
+ 
+     printf( "updateLineDash" );
+     if( arrayLen && dashArray )

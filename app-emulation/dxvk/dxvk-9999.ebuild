@@ -92,7 +92,6 @@ multilib_src_configure() {
 		$(meson_use {,enable_}d3d11)
 		$(meson_use {,enable_}dxgi)
 		$(usev !debug --strip) # portage won't strip .dll, so allow it here
-		-Denable_tests=false # needs wine/vulkan and is intended for manual use
 	)
 
 	meson_src_configure

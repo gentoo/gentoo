@@ -23,7 +23,7 @@ FSF-APPROVED @GPL-COMPATIBLE AFL-2.1 AFL-3.0 Apache-1.0 Apache-1.1 APSL-2 BSD-4 
 # Licenses approved by the Open Source Initiative
 # https://www.opensource.org/licenses
 # Note that the FSF lists these as nonfree: Artistic NOSA Watcom-1.0
-OSI-APPROVED 0BSD AFL-3.0 AGPL-3 AGPL-3+ Apache-1.1 Apache-2.0 APL-1.0 APSL-2 Artistic Artistic-2 Boost-1.0 BSD BSD-2 CDDL CNRI CPAL-1.0 CPL-1.0 ECL-2.0 EPL-1.0 EPL-2.0 EUPL-1.1 EUPL-1.2 GPL-1+ GPL-2 GPL-2+ GPL-3 GPL-3+ HPND IBM IPAfont ISC LGPL-2+ LGPL-2.1 LGPL-2.1+ LGPL-3 LGPL-3+ LPPL-1.3c MirOS MIT MPL-1.0 MPL-1.1 MPL-2.0 Ms-PL nethack NOSA OFL-1.1 OSL-2.1 PHP-3 PHP-3.01 POSTGRESQL PSF-2 QPL-1.0 Sleepycat UoI-NCSA W3C Watcom-1.0 wxWinLL-3 ZLIB ZPL
+OSI-APPROVED 0BSD AFL-3.0 AGPL-3 AGPL-3+ Apache-1.1 Apache-2.0 APL-1.0 APSL-2 Artistic Artistic-2 Boost-1.0 BSD BSD-2 CDDL CNRI CPAL-1.0 CPL-1.0 ECL-2.0 EPL-1.0 EPL-2.0 EUPL-1.1 EUPL-1.2 GPL-1+ GPL-2 GPL-2+ GPL-3 GPL-3+ HPND IBM IPAfont ISC LGPL-2+ LGPL-2.1 LGPL-2.1+ LGPL-3 LGPL-3+ LPPL-1.3c MirOS MIT MPL-1.0 MPL-1.1 MPL-2.0 Ms-PL nethack NOSA OFL-1.1 OSL-2.1 PHP-3 PHP-3.01 POSTGRESQL PSF-2 QPL-1.0 Sleepycat Unicode-DFS-2016 UoI-NCSA W3C Watcom-1.0 wxWinLL-3 ZLIB ZPL
 
 # Misc licenses that are probably free software, i.e. follow the
 # Free Software Definition at https://www.gnu.org/philosophy/free-sw.html
@@ -73,7 +73,7 @@ BINARY-REDISTRIBUTABLE @FREE Amazon Atmel AVASYS bh-luxi bonnie Broadcom freedis
 
 # License agreements that try to take away your rights. These are more
 # restrictive than "all-rights-reserved" or require explicit approval.
-EULA 2dboy-EULA AMD-GPU-PRO-EULA android AnyDesk-TOS Aseprite-EULA baudline BCS bestcrypt CAPYBARA-EULA Coherent-Graphics ETQW f.lux FAH-EULA-2014 Flightradar24 Gameplay-Group-EULA geekbench genymotion GIMPS GOG-EULA google-chrome Intel-SDP Introversion JoyPixels LOKI-EULA MakeMKV-EULA Microsemi microsoft-edge Microsoft-vscode Mojang ms-teams-pre MTA-0.5 NVIDIA-CUDA OPERA-2018 PAPERS-PLEASE PassMark-EULA PICO-8 Primate-Plunge PUEL Q3AEULA-20000111 QUAKE4 RAR sfpg Sourcetrail SPS Steam supermicro Synology teamspeak3 teamspeak5 TeamViewer THINKTANKS TIK ubiquiti ut2003 ut2003-demo Vivaldi worklog-assistant WPS-EULA zi-labone
+EULA 2dboy-EULA AMD-GPU-PRO-EULA android AnyDesk-TOS Aseprite-EULA baudline BCS bestcrypt CAPYBARA-EULA Coherent-Graphics ETQW f.lux FAH-EULA-2014 Flightradar24 Gameplay-Group-EULA geekbench genymotion GIMPS GOG-EULA google-chrome Intel-SDP Introversion JoyPixels LOKI-EULA MakeMKV-EULA Microsemi microsoft-edge Microsoft-vscode Mojang ms-teams-pre MTA-0.5 NVIDIA-CUDA NVIDIA-SDK OPERA-2018 PAPERS-PLEASE PassMark-EULA PICO-8 Primate-Plunge PUEL Q3AEULA-20000111 QUAKE4 RAR sfpg Sourcetrail SPS Steam supermicro Synology teamspeak3 teamspeak5 TeamViewer THINKTANKS TIK ubiquiti ut2003 ut2003-demo Vivaldi worklog-assistant WPS-EULA zi-labone
 
 # Deprecated license labels, used by repoman and pkgcheck
 #DEPRECATED (currently none)

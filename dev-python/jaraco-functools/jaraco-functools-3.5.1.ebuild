@@ -11,9 +11,12 @@ inherit distutils-r1
 
 MY_P=${P/-/.}
 DESCRIPTION="Additional functions used by other projects by developer jaraco"
-HOMEPAGE="https://github.com/jaraco/jaraco.functools"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN/-/.}/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+HOMEPAGE="
+	https://github.com/jaraco/jaraco.functools/
+	https://pypi.org/project/jaraco.functools/
+"
+SRC_URI="mirror://pypi/${PN::1}/${PN/-/.}/${MY_P}.tar.gz"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
@@ -28,9 +31,6 @@ BDEPEND="
 	)
 "
 
-distutils_enable_sphinx docs \
-	">=dev-python/jaraco-packaging-3.2" \
-	">=dev-python/rst-linker-1.9"
 distutils_enable_tests pytest
 
 src_configure() {

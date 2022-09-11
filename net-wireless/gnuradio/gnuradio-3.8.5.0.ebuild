@@ -46,7 +46,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 "
 
 RDEPEND="${PYTHON_DEPS}
-	$(python_gen_cond_dep 'dev-libs/boost:0=[python,${PYTHON_USEDEP}]')
+	$(python_gen_cond_dep 'dev-libs/boost:=[python,${PYTHON_USEDEP}]')
 	dev-libs/log4cpp:=
 	$(python_gen_cond_dep 'dev-python/six[${PYTHON_USEDEP}]')
 	sci-libs/fftw:3.0=

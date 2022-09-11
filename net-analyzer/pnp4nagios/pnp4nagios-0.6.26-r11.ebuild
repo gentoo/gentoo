@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/PNP-0.6/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="apache2 icinga +nagios"
-KEYWORDS="~amd64 ~ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 ~ppc ppc64 ~sparc x86"
 
 REQUIRED_USE="^^ ( icinga nagios )"
 

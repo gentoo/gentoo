@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,6 +18,9 @@ LICENSE="BZIP2"
 SLOT="0/1" # subslot = SONAME
 
 IUSE="static-libs"
+
+RDEPEND="!app-arch/lbzip2[symlink(-)]
+	!app-arch/pbzip2[symlink(-)]"
 
 multilib_src_configure() {
 	local emesonargs=(

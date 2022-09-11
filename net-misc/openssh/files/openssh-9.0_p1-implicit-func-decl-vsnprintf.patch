@@ -1,0 +1,32 @@
+https://github.com/openssh/openssh-portable/pull/339
+
+From a15d08a25f1ccc3ee803dfe790cc1f608651464c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 8 Sep 2022 02:49:29 +0100
+Subject: [PATCH] openbsd-compat/bsd-asprintf: add <stdio.h> include for
+ vsnprintf
+
+Fixes the following build failure with Clang 15 on musl:
+```
+bsd-asprintf.c:51:8: error: call to undeclared library function 'vsnprintf' with type 'int (char *, unsigned long, const char *, struct __va_list_tag *)'; ISO C99 and laterclang -O2 -pipe -fdiagnostics-color=always -frecord-gcc-switches -pipe -Wunknown-warning-option -Qunused-arguments -Wall -Wpointer-arith -Wuninitialized -Wsign-compare -Wformat-security -Wsizeof-pointer-memaccess -Wno-pointer-sign -Wno-unused-result -Wmisleading-indentation -Wbitwise-instead-of-logical -fno-strict-aliasing -mretpoline  -ftrapv -fzero-call-used-regs=all -fno-builtin-memset -fstack-protector-strong -fPIE   -I. -I.  -D_XOPEN_SOURCE=600 -D_BSD_SOURCE -D_DEFAULT_SOURCE -DSSHDIR=\"/etc/ssh\" -D_PATH_SSH_PROGRAM=\"/usr/bin/ssh\" -D_PATH_SSH_ASKPASS_DEFAULT=\"/usr/lib/misc/ssh-askpass\" -D_PATH_SFTP_SERVER=\"/usr/lib/misc/sftp-server\" -D_PATH_SSH_KEY_SIGN=\"/usr/lib/misc/ssh-keysign\" -D_PATH_SSH_PKCS11_HELPER=\"/usr/lib/misc/ssh-pkcs11-helper\" -D_PATH_SSH_SK_HELPER=\"/usr/lib/misc/ssh-sk-helper\" -D_PATH_SSH_PIDDIR=\"/run\" -D_PATH_PRIVSEP_CHROOT_DIR=\"/var/empty\" -DHAVE_CONFIG_H -c cipher-aes.c -o cipher-aes.o
+ do not support
+      implicit function declarations [-Wimplicit-function-declaration]
+        ret = vsnprintf(string, INIT_SZ, fmt, ap2);
+              ^
+bsd-asprintf.c:51:8: note: include the header <stdio.h> or explicitly provide a declaration for 'vsnprintf'
+1 error generated.
+```
+
+See also: https://lists.mindrot.org/pipermail/openssh-unix-dev/2019-June/037811.html
+See also: 73eb6cef41daba0359c1888e4756108d41b4e819
+--- a/openbsd-compat/bsd-asprintf.c
++++ b/openbsd-compat/bsd-asprintf.c
+@@ -32,6 +32,7 @@
+ 
+ #include <errno.h>
+ #include <stdarg.h>
++#include <stdio.h>
+ #include <stdlib.h>
+ 
+ #define INIT_SZ	128
+

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit check-reqs cmake optfeature python-single-r1 xdg
 
 DESCRIPTION="QT based Computer Aided Design application"
-HOMEPAGE="https://www.freecadweb.org/ https://github.com/FreeCAD/FreeCAD"
+HOMEPAGE="https://www.freecad.org/ https://github.com/FreeCAD/FreeCAD"
 
 MY_PN=FreeCAD
 
@@ -80,7 +80,7 @@ RDEPEND="
 	openscad? ( media-gfx/openscad )
 	pcl? ( sci-libs/pcl:=[opengl,openni2(+),qt5(+),vtk(+)] )
 	$(python_gen_cond_dep '
-		dev-libs/boost:=[python,threads(+),${PYTHON_USEDEP}]
+		dev-libs/boost:=[python,${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]

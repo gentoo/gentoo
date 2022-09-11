@@ -25,7 +25,7 @@ RESTRICT="test"
 DEPEND="
 	app-arch/brotli:0=
 	dev-libs/libaio
-	dev-libs/boost:0=
+	dev-libs/boost:=
 	dev-libs/libpcre
 	sys-libs/zlib:0=
 	http2? ( net-libs/nghttp2:0= )

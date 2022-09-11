@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Benda Xu <heroxbd@gentoo.org> (2019-10-14)
 # The following mesa components calls fcntl(fd, F_DUPFD_CLOEXEC, 3) directly
 # without checking.  That results on build time failure, because we have
 # stripped away F_DUPFD_CLOEXEC from glibc for this profile.
-media-libs/mesa egl gles2 gallium llvm
+media-libs/mesa gles2 llvm
 media-libs/libepoxy egl
 
 # Benda Xu <heroxbd@gentoo.org> (2018-02-21)

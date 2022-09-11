@@ -25,7 +25,7 @@ src_prepare() {
 }
 
 src_configure() {
-	#This is required to install to /sbin, bug #481110
+	# This is required to install to /sbin, bug #481110
 	econf \
 		--bindir="${EPREFIX}"/sbin \
 		--disable-static \

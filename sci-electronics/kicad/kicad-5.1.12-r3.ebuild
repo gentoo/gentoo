@@ -23,7 +23,7 @@ REQUIRED_USE="
 "
 # Depend on opencascade:0 to get unslotted variant (so we know path to it), bug #833301
 COMMON_DEPEND="
-	>=dev-libs/boost-1.61:=[context,nls,threads(+)]
+	dev-libs/boost:=[context,nls]
 	media-libs/freeglut
 	media-libs/glew:0=
 	>=media-libs/glm-0.9.9.1
@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	occ? ( <sci-libs/opencascade-7.5.3:0=[vtk(+)] )
 	python? (
 		$(python_gen_cond_dep '
-			>=dev-libs/boost-1.61:=[context,nls,threads(+),python,${PYTHON_USEDEP}]
+			dev-libs/boost:=[context,nls,python,${PYTHON_USEDEP}]
 			dev-python/wxpython:4.0[${PYTHON_USEDEP}]
 		')
 		${PYTHON_DEPS}

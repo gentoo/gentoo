@@ -100,7 +100,7 @@ COMMON_DEPEND="
 	dev-db/unixODBC
 	>=games-engines/box2d-2.4.1:0
 	dev-lang/perl
-	>=dev-libs/boost-1.72.0:=[nls]
+	dev-libs/boost:=[nls]
 	dev-libs/expat
 	dev-libs/hyphen
 	dev-libs/icu:=

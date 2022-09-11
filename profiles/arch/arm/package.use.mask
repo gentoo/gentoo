@@ -417,7 +417,6 @@ dev-util/oprofile java
 dev-tex/tex4ht java
 dev-vcs/subversion java
 media-libs/libjpeg-turbo java
-net-dns/libidn java
 net-misc/tigervnc java
 sys-devel/gettext java
 

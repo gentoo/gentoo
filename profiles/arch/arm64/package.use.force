@@ -1,5 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# matoro <matoro_gentoo@matoro.tk> (2022-08-31)
+# GHC does not gain native codegen for arm64 until 9.2.
+# We don't want an unregisterised build, so force LLVM codegen.
+dev-lang/ghc:0/9.0.2 llvm
 
 # Michał Górny <mgorny@gentoo.org> (2021-02-19)
 # We have ready-to-use configs here.

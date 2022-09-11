@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ RDEPEND="
 	dev-ros/tf
 	dev-ros/tf2[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/tf2_geometry_msgs[${PYTHON_SINGLE_USEDEP}]
-	dev-libs/boost:=[threads(+)]
+	dev-libs/boost:=
 	dev-cpp/eigen:3
 "
 DEPEND="${RDEPEND}

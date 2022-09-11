@@ -42,16 +42,6 @@ dev-util/catalyst -system-bootloader
 # LoongArch has no gold
 sys-devel/binutils gold
 
-# sys-libs/libunwind do not support LoongArch for now
-dev-libs/efl unwind
-dev-util/strace unwind
-media-libs/gstreamer unwind
-media-libs/mesa unwind
-net-libs/zeromq unwind
-net-mail/dovecot unwind
-x11-base/xorg-server unwind
-x11-base/xwayland unwind
-
 # These aren't ported to LoongArch yet
 dev-libs/libpcre2 jit
 dev-libs/libpcre jit

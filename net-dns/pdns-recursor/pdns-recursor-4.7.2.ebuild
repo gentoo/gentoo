@@ -28,7 +28,7 @@ DEPEND="${LUA_DEPS}
 		x86? ( >=sys-libs/glibc-2.34 )
 	)
 	dev-libs/openssl:=
-	>=dev-libs/boost-1.35:=[context]"
+	dev-libs/boost:=[context]"
 RDEPEND="${DEPEND}
 	!<net-dns/pdns-2.9.20-r1
 	acct-user/pdns

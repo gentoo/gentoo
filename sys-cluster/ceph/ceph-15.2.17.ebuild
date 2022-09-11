@@ -90,7 +90,7 @@ DEPEND="
 	)
 	rbd-rwl? ( dev-libs/pmdk:= )
 	ssl? ( dev-libs/openssl:= )
-	system-boost? ( >=dev-libs/boost-1.72:=[threads(+),context,python,${PYTHON_USEDEP}] )
+	system-boost? ( dev-libs/boost:=[context,python,${PYTHON_USEDEP}] )
 	!system-boost? ( <sys-libs/glibc-2.34 )
 	uring? ( sys-libs/liburing:= )
 	xfs? ( sys-fs/xfsprogs:= )

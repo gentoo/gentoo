@@ -1,0 +1,160 @@
+This backports https://github.com/jemalloc/jemalloc/pull/2312, which
+I opened after discussion with upstream in
+https://github.com/jemalloc/jemalloc/issues/2305, where they explicitly
+clarify that the HPA feature is not tested, not supported, and not
+intended for use on non-x86 platforms.
+
+From: matoro <matoro@users.noreply.github.com>
+Date: Wed, 27 Jul 2022 11:13:35 -0400
+Subject: [PATCH] Support HPA only on x86
+
+This can be overridden with -DHPA_SUPPORTED.
+
+Unfortunately has to be implemented using preprocessor macros, can't use
+test_skip_if because the test name string is already corrupted by that
+time.  See https://github.com/jemalloc/jemalloc/issues/2305
+---
+ include/jemalloc/internal/hpa.h | 27 +++++++++++++++++++++++++++
+ src/hpa.c                       |  7 +------
+ test/include/test/test.h        |  9 +++++++++
+ test/unit/psset.c               | 14 ++++++++++++++
+ 4 files changed, 51 insertions(+), 6 deletions(-)
+
+diff --git a/include/jemalloc/internal/hpa.h b/include/jemalloc/internal/hpa.h
+index f3562853e..3d389a644 100644
+--- a/include/jemalloc/internal/hpa.h
++++ b/include/jemalloc/internal/hpa.h
+@@ -7,6 +7,33 @@
+ #include "jemalloc/internal/pai.h"
+ #include "jemalloc/internal/psset.h"
+ 
++/*
++ * The HPA_SUPPORTED macro is not a technical indicator of whether HPA
++ * theoretically functions on the platform, but rather whether the platform is
++ * tested/supported for using HPA on by the jemalloc developers.
++ */
++#ifdef HPA_SUPPORTED
++#warning "Force-enabling HPA support. Do NOT report issues to jemalloc developers."
++#else
++#define HPA_SUPPORTED 1
++
++/*
++ * At least until the API and implementation is somewhat settled, we
++ * don't want to try to debug the VM subsystem on the hardest-to-test
++ * platform.
++ */
++#ifdef _WIN32
++#undef HPA_SUPPORTED
++#endif
++
++/*
++ * https://github.com/jemalloc/jemalloc/issues/2305#issuecomment-1195917164
++ */
++#if !defined(__x86_64__) && !defined(__i386__)
++#undef HPA_SUPPORTED
++#endif
++#endif
++
+ typedef struct hpa_central_s hpa_central_t;
+ struct hpa_central_s {
+ 	/*
+diff --git a/src/hpa.c b/src/hpa.c
+index 7e2aeba0c..0a9946b9e 100644
+--- a/src/hpa.c
++++ b/src/hpa.c
+@@ -25,12 +25,7 @@ static uint64_t hpa_time_until_deferred_work(tsdn_t *tsdn, pai_t *self);
+ 
+ bool
+ hpa_supported() {
+-#ifdef _WIN32
+-	/*
+-	 * At least until the API and implementation is somewhat settled, we
+-	 * don't want to try to debug the VM subsystem on the hardest-to-test
+-	 * platform.
+-	 */
++#ifndef HPA_SUPPORTED
+ 	return false;
+ #endif
+ 	if (!pages_can_hugify) {
+diff --git a/test/include/test/test.h b/test/include/test/test.h
+index d4b65912d..7fa56f7be 100644
+--- a/test/include/test/test.h
++++ b/test/include/test/test.h
+@@ -546,6 +546,15 @@ static void								\
+ f(void) {								\
+ 	p_test_init(#f);
+ 
++#define TEST_SKIP(f)							\
++static void									\
++f(void) {									\
++	p_test_init(#f);						\
++	test_skip("%s:%s:%d: Test skipped: ",	\
++		__func__, __FILE__, __LINE__);		\
++	p_test_fini();							\
++}
++
+ #define TEST_END							\
+ 	goto label_test_end;						\
+ label_test_end:								\
+diff --git a/test/unit/psset.c b/test/unit/psset.c
+index 6ff720129..af764d3a3 100644
+--- a/test/unit/psset.c
++++ b/test/unit/psset.c
+@@ -276,6 +276,7 @@ TEST_BEGIN(test_evict) {
+ }
+ TEST_END
+ 
++#ifdef HPA_SUPPORTED
+ TEST_BEGIN(test_multi_pageslab) {
+ 	bool err;
+ 	hpdata_t *ps;
+@@ -338,6 +339,9 @@ TEST_BEGIN(test_multi_pageslab) {
+ 	expect_false(err, "Allocation should have succeeded");
+ }
+ TEST_END
++#else
++TEST_SKIP(test_multi_pageslab)
++#endif
+ 
+ static void
+ stats_expect_empty(psset_bin_stats_t *stats) {
+@@ -427,6 +431,7 @@ TEST_END
+  * (There's nothing magic about these numbers; it's just useful to share the
+  * setup between the oldest fit and the insert/remove test).
+  */
++#ifdef HPA_SUPPORTED
+ static void
+ init_test_pageslabs(psset_t *psset, hpdata_t *pageslab,
+     hpdata_t *worse_pageslab, edata_t *alloc, edata_t *worse_alloc) {
+@@ -472,7 +477,9 @@ init_test_pageslabs(psset_t *psset, hpdata_t *pageslab,
+ 	    &alloc[HUGEPAGE_PAGES - 1]);
+ 	expect_ptr_null(evicted, "Unexpected eviction");
+ }
++#endif
+ 
++#ifdef HPA_SUPPORTED
+ TEST_BEGIN(test_oldest_fit) {
+ 	bool err;
+ 	edata_t alloc[HUGEPAGE_PAGES];
+@@ -495,7 +502,11 @@ TEST_BEGIN(test_oldest_fit) {
+ 	    "Allocated from the wrong pageslab");
+ }
+ TEST_END
++#else
++TEST_SKIP(test_oldest_fit)
++#endif
+ 
++#ifdef HPA_SUPPORTED
+ TEST_BEGIN(test_insert_remove) {
+ 	bool err;
+ 	hpdata_t *ps;
+@@ -541,6 +552,9 @@ TEST_BEGIN(test_insert_remove) {
+ 	expect_true(err, "psset should be empty, but an alloc succeeded");
+ }
+ TEST_END
++#else
++TEST_SKIP(test_insert_remove)
++#endif
+ 
+ TEST_BEGIN(test_purge_prefers_nonhuge) {
+ 	/*

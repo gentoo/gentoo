@@ -3,7 +3,7 @@
 <pkgmetadata>
 <maintainer type="project">
 	<email>sparc@gentoo.org</email>
-	<name>Gentoo Linux SPARC Development</name>
+	<name>SPARC architecture team</name>
 </maintainer>
 <use>
 	<flag name="tilo-only">Install only the tilo netboot tool</flag>

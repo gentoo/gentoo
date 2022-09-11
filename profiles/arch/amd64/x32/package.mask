@@ -55,6 +55,8 @@ dev-lang/typescript
 dev-python/spyder
 dev-python/spyder-terminal
 dev-python/spyder-unittest
+dev-python/spyder-line-profiler
+dev-python/spyder-vim
 dev-util/kdevelop:5
 dev-util/kdevelop-php:5
 dev-util/kdevelop-python:5
@@ -113,7 +115,6 @@ net-misc/nextcloud-client
 net-p2p/ktorrent:5
 sci-geosciences/qmapshack
 sci-mathematics/rkward:5
-sci-mathematics/rstudio
 sci-visualization/labplot:5
 www-client/falkon
 www-client/otter

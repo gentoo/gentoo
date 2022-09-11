@@ -24,7 +24,7 @@ RDEPEND="
 	dev-ros/roscpp
 	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
 
-	dev-libs/boost:=[threads(+)]
+	dev-libs/boost:=
 	media-libs/opencv:=
 	x11-libs/gtk+:3
 	media-libs/harfbuzz:=

@@ -22,6 +22,7 @@ KEYWORDS="~amd64"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.5.0_p20220508-extern-stdint-include.patch
+	"${FILESDIR}"/${PN}-0.5.0_p20220508-musl-include.patch
 )
 
 src_configure() {

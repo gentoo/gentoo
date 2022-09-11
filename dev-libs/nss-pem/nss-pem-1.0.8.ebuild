@@ -11,7 +11,7 @@ SRC_URI="https://github.com/kdudka/${PN}/releases/download/${P}/${P}.tar.xz"
 
 LICENSE="MPL-1.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-solaris"
 IUSE=""
 
 BDEPEND=" >=dev-libs/nss-3.50-r1 "

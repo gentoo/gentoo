@@ -48,7 +48,7 @@ BDEPEND="
 	)
 "
 RDEPEND="
-	>=dev-libs/boost-1.62:=
+	dev-libs/boost:=
 	dev-cpp/robin-map
 	dev-libs/libfmt:=
 	dev-libs/pugixml:=

@@ -3,7 +3,7 @@
 
 # Various packages requiring Rust.
 app-admin/ansible
-app-admin/ansible-base
+app-admin/ansible-core
 app-crypt/acme
 app-crypt/certbot
 app-crypt/certbot-nginx
@@ -15,6 +15,7 @@ dev-lang/rust-bin
 >=dev-lang/spidermonkey-78
 >=dev-libs/gjs-1.66
 dev-python/autobahn
+>=dev-python/bcrypt-4
 >=dev-python/cryptography-36
 dev-python/gcs-oauth2-boto-plugin
 dev-python/google-apitools

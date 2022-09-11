@@ -21,7 +21,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="ssl test"
 
 RDEPEND="

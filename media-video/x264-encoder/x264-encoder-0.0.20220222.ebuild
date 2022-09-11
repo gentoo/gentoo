@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	# Download https://code.videolan.org/videolan/x264/-/archive/master/x264-master.tar.bz2
 	SRC_URI="https://dev.gentoo.org/~aballier/distfiles/x264-${PV}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc x86"
 	S="${WORKDIR}/x264-master"
 fi
 

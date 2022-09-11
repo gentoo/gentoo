@@ -32,7 +32,7 @@ RDEPEND="acct-group/mongodb
 	acct-user/mongodb
 	>=app-arch/snappy-1.1.3:=
 	>=dev-cpp/yaml-cpp-0.6.2:=
-	>=dev-libs/boost-1.70:=[threads(+),nls]
+	dev-libs/boost:=[nls]
 	>=dev-libs/libpcre-8.42[cxx]
 	app-arch/zstd:=
 	dev-libs/snowball-stemmer:=

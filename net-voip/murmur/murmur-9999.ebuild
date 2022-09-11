@@ -15,7 +15,7 @@ else
 	MY_PN="mumble"
 	if [[ "${PV}" == *_pre* ]] ; then
 		MY_P="${MY_PN}-${PV}"
-		SRC_URI="https://dev.gentoo.org/~polynomial-c/dist/${MY_P}.tar.xz"
+		SRC_URI="https://dev.gentoo.org/~concord/distfiles/${MY_P}.tar.xz"
 		S="${WORKDIR}/${MY_P}"
 	else
 		MY_PV="${PV/_/-}"
@@ -53,7 +53,7 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}
-	>=dev-libs/boost-1.41.0
+	dev-libs/boost
 	dev-qt/qttest:5
 "
 BDEPEND="

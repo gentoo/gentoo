@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xemacs-packages.eclass
 # @MAINTAINER:
 # xemacs@gentoo.org
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Eclass to support elisp packages distributed by XEmacs.
 # @DESCRIPTION:
 # This eclass supports ebuilds for packages distributed by XEmacs.
@@ -12,7 +12,7 @@
 # @ECLASS_VARIABLE: XEMACS_PKG_CAT
 # @REQUIRED
 # @DESCRIPTION:
-# The package category that the package is in. Can be either standard,
+# The package category that the package is in.  Can be either standard,
 # mule, or contrib.
 
 # @ECLASS_VARIABLE: XEMACS_EXPERIMENTAL
@@ -20,12 +20,12 @@
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set then the package is downloaded from the experimental packages
-# repository, which is the staging area for packages upstream. Packages
+# repository, which is the staging area for packages upstream.  Packages
 # in the experimental repository are auto-generated from XEmacs VCS, so
 # they may not be well-tested.
 
-case ${EAPI:-0} in
-	[67]) ;;
+case ${EAPI} in
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -39,10 +39,6 @@ S="${WORKDIR}"
 
 : ${HOMEPAGE:="http://xemacs.org/"}
 : ${LICENSE:="GPL-2+"}
-
-# Backwards compatibility code, to be removed after 2017-05-03
-: ${XEMACS_PKG_CAT:=${PKG_CAT}}
-: ${XEMACS_EXPERIMENTAL:=${EXPERIMENTAL}}
 
 if [[ -n ${XEMACS_EXPERIMENTAL} ]]; then
 	: ${SRC_URI:="http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/${P}-pkg.tar.gz"}

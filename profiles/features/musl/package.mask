@@ -1,6 +1,14 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-09-06)
+# Binary package linked against glibc
+games-action/minecraft-launcher
+
+# Vladimir Pavljuchenkov <spiderx@spiderx.dp.ua> (2022-08-21)
+# Binary package linked against glibc, bug #832607.
+net-p2p/resilio-sync
+
 # Mike Gilbert <floppym@gentoo.org> (2022-08-01)
 # Fails to build.
 app-emulation/open-vm-tools
@@ -253,13 +261,9 @@ app-text/po4a
 # Uses glibc-specific rexec(3) function, bug #715898
 net-misc/netkit-rsh
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-14)
-# Mask the libxcrypt-based virtual
-~virtual/libcrypt-2
--virtual/libcrypt:0/1
-
 # David Seifert <soap@gentoo.org> (2021-02-08)
 # nvidia-drivers only works against glibc.
+dev-libs/optix
 x11-drivers/nvidia-drivers
 
 # Ulrich Müller (2020-03-31)
@@ -283,12 +287,12 @@ app-emulation/dosemu
 # Old undated blocks of masks
 #
 sys-libs/glibc
+-sys-libs/musl
 
 # As of 2021-08-08, >=sys-fs/udev-249-r2 is patched in Gentoo
-# to work on musl.
+# to work on musl, so no need to mask udev.
+# systemd itself fails to build without glibc
 sys-apps/systemd
-
-# systemd sources fail to build without glibc
 sys-boot/systemd-boot
 
 # rust-bin requires a glibc system

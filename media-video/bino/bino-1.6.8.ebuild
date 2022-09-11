@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic qmake-utils xdg
+inherit autotools flag-o-matic qmake-utils xdg
 
 DESCRIPTION="Stereoscopic and multi-display media player"
 HOMEPAGE="https://bino3d.org/"
@@ -11,7 +11,7 @@ SRC_URI="https://bino3d.org/releases/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug doc lirc video_cards_nvidia"
 
 RDEPEND="
@@ -29,6 +29,18 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/gettext
 	virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.8-time-include.patch
+	"${FILESDIR}"/${PN}-1.6.8-respect-AR.patch
+)
+
+src_prepare() {
+	default
+
+	# Needed for AR patch
+	eautoreconf
+}
 
 src_configure() {
 	if use video_cards_nvidia; then

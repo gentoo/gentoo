@@ -13,7 +13,7 @@ SRC_URI="https://github.com/mhulden/foma/archive/${MY_COMMIT}.tar.gz -> ${P}.tar
 
 LICENSE="Apache-2.0"
 SLOT="0/0.10"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="sys-devel/bison
 	sys-devel/flex"

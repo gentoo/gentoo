@@ -28,7 +28,7 @@ REQUIRED_USE="${LUA_REQUIRED_USE}
 
 DEPEND="${LUA_DEPS}
 	dev-libs/openssl:=
-	>=dev-libs/boost-1.35:=
+	dev-libs/boost:=
 	lmdb? ( >=dev-db/lmdb-0.9.29 )
 	lua-records? ( >=net-misc/curl-7.21.3 )
 	mysql? ( dev-db/mysql-connector-c:= )

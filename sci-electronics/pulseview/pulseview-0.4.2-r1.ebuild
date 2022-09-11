@@ -26,7 +26,7 @@ BDEPEND="
 "
 RDEPEND="
 	>=dev-cpp/glibmm-2.28.0:2
-	>=dev-libs/boost-1.55:=
+	dev-libs/boost:=
 	>=dev-libs/glib-2.28.0:2
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5

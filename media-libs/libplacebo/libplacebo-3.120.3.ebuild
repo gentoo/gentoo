@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_REQ_USE="xml"
+PYTHON_REQ_USE="xml(+)"
 PYTHON_COMPAT=( python3_{8..10} )
 
 if [[ "${PV}" == "9999" ]]; then
@@ -41,6 +41,8 @@ BDEPEND="virtual/pkgconfig
 		${PYTHON_DEPS}
 		$(python_gen_any_dep 'dev-python/mako[${PYTHON_USEDEP}]')
 	)"
+
+PATCHES=( "${FILESDIR}"/libplacebo-2.72.2-fix-vulkan-undeclared.patch )
 
 python_check_deps() {
 	has_version -b "dev-python/mako[${PYTHON_USEDEP}]"

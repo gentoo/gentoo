@@ -36,6 +36,7 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="${RDEPEND}"
+BDEPEND="${PYTHON_DEPS}"
 
 RESTRICT=test # only regression tests
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ RDEPEND="
 	dev-ros/nodelet_topic_tools
 	sci-libs/pcl:=[qhull]
 	>=dev-ros/pcl_conversions-0.2.1-r1
-	dev-libs/boost:=[threads(+)]
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
 	dev-ros/pcl_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]

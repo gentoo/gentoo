@@ -12,7 +12,7 @@ SRC_URI="https://mirrors.edge.kernel.org/pub/software/libs/libgpiod/${P}.tar.xz"
 LICENSE="LGPL-2.1"
 # Reflects the ABI of libgpiod.so
 SLOT="0/2"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~riscv x86"
 IUSE="static-libs +tools cxx python test"
 RESTRICT="!test? ( test )"
 

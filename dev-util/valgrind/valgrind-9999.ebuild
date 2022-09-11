@@ -22,6 +22,12 @@ IUSE="mpi"
 DEPEND="mpi? ( virtual/mpi )"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	# Respect CFLAGS, LDFLAGS
+	"${FILESDIR}"/${PN}-3.7.0-respect-flags.patch
+	"${FILESDIR}"/${PN}-3.15.0-Build-ldst_multiple-test-with-fno-pie.patch
+)
+
 src_prepare() {
 	# Correct hard coded doc location
 	sed -i -e "s:doc/valgrind:doc/${PF}:" docs/Makefile.am || die
@@ -29,15 +35,10 @@ src_prepare() {
 	# Don't force multiarch stuff on OSX, bug #306467
 	sed -i -e 's:-arch \(i386\|x86_64\)::g' Makefile.all.am || die
 
-	# Respect CFLAGS, LDFLAGS
-	eapply "${FILESDIR}"/${PN}-3.7.0-respect-flags.patch
-
-	eapply "${FILESDIR}"/${PN}-3.15.0-Build-ldst_multiple-test-with-fno-pie.patch
-
-	# conditionally copy musl specific suppressions && apply patch
+	# Conditionally copy musl specific suppressions && apply patch
 	if use elibc_musl ; then
 		cp "${FILESDIR}/musl.supp" "${S}" || die
-		eapply "${FILESDIR}/valgrind-3.13.0-malloc.patch"
+		PATCHES+=( "${FILESDIR}"/valgrind-3.13.0-malloc.patch )
 	fi
 
 	if [[ ${CHOST} == *-solaris* ]] ; then
@@ -49,8 +50,7 @@ src_prepare() {
 		cp "${S}"/coregrind/link_tool_exe_{linux,solaris}.in
 	fi
 
-	# Allow users to test their own patches
-	eapply_user
+	default
 
 	# Regenerate autotools files
 	eautoreconf

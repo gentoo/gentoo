@@ -1,7 +1,8 @@
-# Copyright 2008-2021 Gentoo Authors
+# Copyright 2008-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
+
 JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-pkg-simple
@@ -9,6 +10,7 @@ inherit java-pkg-2 java-pkg-simple
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 
+	EGIT_CHECKOUT_DIR="${WORKDIR}/protobuf-${PV}"
 	EGIT_REPO_URI="https://github.com/protocolbuffers/protobuf"
 	EGIT_SUBMODULES=()
 fi
@@ -20,22 +22,19 @@ if [[ "${PV}" == "9999" ]]; then
 else
 	SRC_URI="https://github.com/protocolbuffers/protobuf/archive/v${PV}.tar.gz -> protobuf-${PV}.tar.gz"
 fi
-
-LICENSE="BSD"
-SLOT="0/30"
-KEYWORDS=""
-IUSE=""
-
-BDEPEND="~dev-libs/protobuf-${PV}
-	>=virtual/jdk-1.8:*"
-DEPEND=">=virtual/jdk-1.8:*"
-RDEPEND=">=virtual/jre-1.8:*"
-
 S="${WORKDIR}/protobuf-${PV}/java"
 
-if [[ "${PV}" == "9999" ]]; then
-	EGIT_CHECKOUT_DIR="${WORKDIR}/protobuf-${PV}"
-fi
+LICENSE="BSD"
+SLOT="0/31"
+KEYWORDS=""
+
+COMMON_DEPEND=">=virtual/jdk-1.8:*"
+BDEPEND="
+	~dev-libs/protobuf-${PV}
+	${COMMON_DEPEND}
+"
+DEPEND="${COMMON_DEPEND}"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	pushd "${WORKDIR}/protobuf-${PV}" > /dev/null || die

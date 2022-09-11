@@ -29,7 +29,7 @@ PATCHES=(
 multilib_src_configure() {
 	local myeconfargs=(
 		$(use_enable custom-modes)
-		$(use_enable doc)
+		$(multilib_native_use_enable doc)
 		$(use_enable static-libs static)
 	)
 

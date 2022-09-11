@@ -14,7 +14,7 @@ SRC_URI="https://github.com/The-Compiler/pytest-xvfb/archive/v${PV}.tar.gz -> ${
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 RDEPEND="
 	>=dev-python/pytest-2.8.1[${PYTHON_USEDEP}]
@@ -23,3 +23,7 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+python_test() {
+	epytest -p xvfb
+}

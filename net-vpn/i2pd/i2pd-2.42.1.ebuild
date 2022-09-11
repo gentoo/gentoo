@@ -17,7 +17,7 @@ IUSE="cpu_flags_x86_aes cpu_flags_x86_avx i2p-hardening +upnp"
 RDEPEND="
 	acct-user/i2pd
 	acct-group/i2pd
-	dev-libs/boost:=[threads(+)]
+	dev-libs/boost:=
 	dev-libs/openssl:0=[-bindist(-)]
 	sys-libs/zlib
 	upnp? ( net-libs/miniupnpc:= )"

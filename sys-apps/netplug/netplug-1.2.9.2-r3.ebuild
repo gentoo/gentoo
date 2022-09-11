@@ -11,7 +11,7 @@ SRC_URI="https://www.red-bean.com/~bos/netplug/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm ~arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="debug doc"
 
 DEPEND="doc? ( app-text/ghostscript-gpl

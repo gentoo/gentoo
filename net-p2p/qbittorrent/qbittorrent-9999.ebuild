@@ -25,7 +25,7 @@ REQUIRED_USE="dbus? ( gui )
 	|| ( gui webui )"
 
 RDEPEND="
-	>=dev-libs/boost-1.71:=
+	dev-libs/boost:=
 	>=dev-libs/openssl-1.1.1:=
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5[ssl]

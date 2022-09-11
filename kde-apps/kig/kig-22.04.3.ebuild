@@ -41,7 +41,7 @@ RDEPEND="${PYTHON_DEPS}
 	geogebra? ( >=dev-qt/qtxmlpatterns-${QTMIN}:5 )
 	scripting? (
 		$(python_gen_cond_dep '
-			>=dev-libs/boost-1.70:=[python,${PYTHON_USEDEP}]
+			dev-libs/boost:=[python,${PYTHON_USEDEP}]
 		')
 	)
 "

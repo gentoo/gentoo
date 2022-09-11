@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-25)
+# Mask tests until test dependencies are keyworded.
+app-text/pdftk test
+
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded
 app-text/enchant nuspell
@@ -197,10 +201,6 @@ app-portage/g-sorcery bson
 # libcxx fails to compile on ppc*, #595744.
 sys-devel/clang default-libcxx
 sys-devel/clang-runtime libcxx
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-02-27)
-# Requires dev-qt/qtwebengine, not keyworded on ppc
-sci-geosciences/gpsbabel gui
 
 # James Le Cuirot <chewi@gentoo.org> (2016-12-14)
 # DOSBox + OpenGLide is untested on this arch.

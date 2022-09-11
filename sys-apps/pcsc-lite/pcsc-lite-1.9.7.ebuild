@@ -54,7 +54,7 @@ multilib_src_configure() {
 		--enable-usbdropdir="${EPREFIX}/usr/$(get_libdir)/readers/usb" \
 		--enable-ipcdir=/run/pcscd \
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
-		$(use_enable doc documentation) \
+		$(multilib_native_use_enable doc documentation) \
 		$(multilib_native_use_enable embedded) \
 		$(multilib_native_use_enable systemd libsystemd) \
 		$(multilib_native_use_enable udev libudev) \

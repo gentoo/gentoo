@@ -13,7 +13,7 @@ SRC_URI="https://github.com/Yubico/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> $
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 
 RDEPEND="dev-libs/json-c:=
 	>=sys-auth/libyubikey-1.6

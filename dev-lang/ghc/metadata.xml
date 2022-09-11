@@ -11,6 +11,7 @@
 		<flag name="ghcbootstrap">Internal: Bootstrap GHC from an existing GHC installation.</flag>
 		<flag name="ghcmakebinary">Internal: Build binary friendly for redistribution.</flag>
 		<flag name="gmp">Use <pkg>dev-libs/gmp</pkg> for integer operations (works faster, but an external depend).</flag>
+		<flag name="llvm">Pull in dependencies for the <pkg>sys-devel/llvm</pkg> codegen backend.</flag>
 		<flag name="numa">Enable NUMA thread balancing policy using <pkg>sys-process/numactl</pkg>.</flag>
 	</use>
 	<upstream>
