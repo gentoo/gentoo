@@ -139,16 +139,11 @@ src_configure() {
 	# --with-sundials_ida (no-op) with USE="sundials"
 	# --without-sundials_ida (disables it) with USE="-sundials"
 	#
-	# The --enable-link-all-dependencies flag is needed because
-	# otherwise, the build system appends --no-undefined to LDFLAGS and
-	# then proceeds to undefine things. GNU libtool ignores this, but
-	# slibtool (for example) does not (bug #776583).
 	econf \
 		--localstatedir="${EPREFIX}/var/state/octave" \
 		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)" \
 		--with-lapack="$($(tc-getPKG_CONFIG) --libs lapack)" \
 		--disable-64 \
-		--enable-link-all-dependencies \
 		--enable-shared \
 		--with-z \
 		--with-bz2 \
