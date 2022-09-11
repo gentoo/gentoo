@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_MAX_SLOT=13
+LLVM_MAX_SLOT=15
 inherit cmake llvm toolchain-funcs
 
 DESCRIPTION="Fast symbolic manipulation library, written in C++"
