@@ -62,19 +62,12 @@ src_configure() {
 	eqmake5 CONFIG+=qmlui
 }
 
-src_install() {
-	emake INSTALL_ROOT="${D}" install
-}
-
-pkg_postinst() {
-	udev_reload
-
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-}
-
 src_test() {
 	virtx emake check
+}
+
+src_install() {
+	emake INSTALL_ROOT="${D}" install
 }
 
 pkg_postinst() {
