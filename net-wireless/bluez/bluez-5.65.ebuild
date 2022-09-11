@@ -8,7 +8,8 @@ inherit autotools linux-info python-single-r1 readme.gentoo-r1 systemd udev mult
 
 DESCRIPTION="Bluetooth Tools and System Daemons for Linux"
 HOMEPAGE="http://www.bluez.org"
-SRC_URI="https://www.kernel.org/pub/linux/bluetooth/${P}.tar.xz"
+SRC_URI="https://www.kernel.org/pub/linux/bluetooth/${P}.tar.xz
+	https://dev.gentoo.org/~pacho/${PN}/power-state-adapter-property.patch"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/3"
@@ -73,7 +74,7 @@ PATCHES=(
 
 	# Fixed in next release
 	"${FILESDIR}"/0001-adapter-Reset-pending-settings-when-receiving-MGMT-e.patch
-	"${FILESDIR}"/power-state-adapter-property.patch
+	"${DISTDIR}"/power-state-adapter-property.patch
 )
 
 pkg_setup() {
