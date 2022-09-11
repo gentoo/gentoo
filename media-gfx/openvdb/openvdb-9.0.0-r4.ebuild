@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{8,9,10} )
 
-inherit cmake python-single-r1
+inherit cmake cuda python-single-r1
 
 DESCRIPTION="Library for the efficient manipulation of volumetric data"
 HOMEPAGE="https://www.openvdb.org"
@@ -14,13 +14,13 @@ SRC_URI="https://github.com/AcademySoftwareFoundation/${PN}/archive/v${PV}.tar.g
 LICENSE="MPL-2.0"
 SLOT="0/9"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="cpu_flags_x86_avx cpu_flags_x86_sse4_2 +blosc cuda doc +nanovdb numpy python static-libs test utils +zlib abi6-compat abi7-compat abi8-compat +abi9-compat"
+IUSE="cpu_flags_x86_avx cpu_flags_x86_sse4_2 +blosc cuda doc +nanovdb numpy python static-libs test utils +zlib abi7-compat abi8-compat +abi9-compat"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="blosc? ( zlib )
 	numpy? ( python )
 	cuda? ( nanovdb )
-	^^ ( abi6-compat abi7-compat abi8-compat abi9-compat )
+	^^ ( abi7-compat abi8-compat abi9-compat )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
@@ -74,13 +74,20 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
+src_prepare() {
+	cmake_src_prepare
+
+	if use cuda; then
+		cuda_add_sandbox -w
+		cuda_src_prepare
+	fi
+}
+
 src_configure() {
 	local myprefix="${EPREFIX}/usr/"
 
 	local version
-	if use abi6-compat; then
-		version=6
-	elif use abi7-compat; then
+	if use abi7-compat; then
 		version=7
 	elif use abi8-compat; then
 		version=8
