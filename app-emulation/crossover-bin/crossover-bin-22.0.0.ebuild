@@ -84,12 +84,7 @@ RDEPEND="${DEPEND}
 	pcap? ( net-libs/libpcap[abi_x86_32(-)] )
 	png? ( media-libs/libpng:0[abi_x86_32(-)] )
 	scanner? ( media-gfx/sane-backends[abi_x86_32(-)] )
-	ssl? (
-		|| (
-			net-libs/gnutls:0/30.30[abi_x86_32(-)]
-			net-libs/gnutls:0/30[abi_x86_32(-)]
-		)
-	)
+	ssl? ( net-libs/gnutls:0/30.30[abi_x86_32(-)] )
 	v4l? ( media-libs/libv4l[abi_x86_32(-)] )
 	vulkan? ( media-libs/vulkan-loader[abi_x86_32(-)] )
 	dev-libs/glib:2
