@@ -6,7 +6,6 @@
 	</maintainer>
 	<use>
 		<flag name="accel">Enable the generic hardware accelerator device driver</flag>
-		<flag name="cl20">Enable reporting OpenCL 2.0 for the CPU device</flag>
 		<flag name="conformance">Ensures that certain build options which would result in non-conformant pocl build stay disabled. Note that this does not quarantee a fully conformant build of pocl.</flag>
 		<flag name="cuda">Enable the CUDA backend for NVIDIA GPUs</flag>
 		<flag name="float-conversion">When enabled, OpenCL printf() call's f/e/g formatters are handled by pocl. When disabled, these are handled by system C library.</flag>
