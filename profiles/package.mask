@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-09-11)
+# Bad quality package with failing tests.  No revdeps.
+# Removal on 2022-10-11.  Bug #869650.
+dev-python/pytest-pylint
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-09-10)
 # Python 3.8 only. EAPI=6 ebuild. 5 open bugs. Issues with newer
 # dependencies versions.
