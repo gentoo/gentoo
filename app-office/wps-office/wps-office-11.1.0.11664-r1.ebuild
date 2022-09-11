@@ -39,7 +39,7 @@ RDEPEND="
 	dev-libs/nss
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
-	media-libs/flac
+	 || ( media-libs/flac:0/0 media-libs/flac-compat:8.3.0 )
 	media-libs/libogg
 	media-libs/libsndfile
 	media-libs/libvorbis
