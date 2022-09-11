@@ -37,7 +37,7 @@ RDEPEND="
 
 PATCHES=(
 	# https://github.com/p1c2u/openapi-spec-validator/pull/174
-	"${FILESDIR}/${P}-std-importlib.patch"
+	"${FILESDIR}/${PN}-0.5.0-std-importlib.patch"
 )
 
 distutils_enable_tests pytest
