@@ -15,16 +15,16 @@ KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86 ~amd64-linux ~ppc-macos ~x64-macos"
 IUSE="+abi_x86_32 abi_x86_64 +clang debug test"
 RESTRICT="!test? ( test ) !clang? ( test )"
 
-CLANG_SLOT=${SLOT%%.*}
-# llvm-6 for new lit options
+LLVM_MAX_SLOT=${SLOT%%.*}
 DEPEND="
-	>=sys-devel/llvm-6"
+	sys-devel/llvm:${LLVM_MAX_SLOT}
+"
 BDEPEND="
 	>=dev-util/cmake-3.16
 	clang? ( sys-devel/clang )
 	test? (
 		$(python_gen_any_dep ">=dev-python/lit-9.0.1[\${PYTHON_USEDEP}]")
-		=sys-devel/clang-${PV%_*}*:${CLANG_SLOT}
+		=sys-devel/clang-${PV%_*}*:${LLVM_MAX_SLOT}
 	)
 	!test? (
 		${PYTHON_DEPS}
@@ -121,8 +121,8 @@ src_configure() {
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 			-DLLVM_LIT_ARGS="$(get_lit_flags)"
 
-			-DCOMPILER_RT_TEST_COMPILER="${EPREFIX}/usr/lib/llvm/${CLANG_SLOT}/bin/clang"
-			-DCOMPILER_RT_TEST_CXX_COMPILER="${EPREFIX}/usr/lib/llvm/${CLANG_SLOT}/bin/clang++"
+			-DCOMPILER_RT_TEST_COMPILER="${EPREFIX}/usr/lib/llvm/${LLVM_MAX_SLOT}/bin/clang"
+			-DCOMPILER_RT_TEST_CXX_COMPILER="${EPREFIX}/usr/lib/llvm/${LLVM_MAX_SLOT}/bin/clang++"
 		)
 	fi
 
