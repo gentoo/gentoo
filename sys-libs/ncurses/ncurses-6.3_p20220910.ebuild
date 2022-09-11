@@ -102,10 +102,20 @@ if [[ ${PV} == *_p* ]] ; then
 
 		for ((my_patch_index=0; my_patch_index < "${#PATCH_DATES[@]}"; my_patch_index++)); do
 			patch_url="$(printf "https://invisible-island.net/archives/${PN}/${PV/_p*}/${MY_P}-%s" ${PATCH_DATES[${my_patch_index}]}.patch.gz)"
-			patch_url="$(printf "https://invisible-mirror.net/archives/${PN}/${PV/_p*}/${MY_P}-%s" ${PATCH_DATES[${my_patch_index}]}.patch.gz)"
-			patch_url+=" $(printf "https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${MY_P}-%s" ${PATCH_DATES[${my_patch_index}]}.patch.gz)"
+			# TODO: replace with loop
 			SRC_URI+=" ${patch_url}"
 			SRC_URI+=" verify-sig? ( ${patch_url}.asc )"
+
+			patch_url="$(printf "https://invisible-mirror.net/archives/${PN}/${PV/_p*}/${MY_P}-%s" ${PATCH_DATES[${my_patch_index}]}.patch.gz)"
+			# TODO: replace with loop
+			SRC_URI+=" ${patch_url}"
+			SRC_URI+=" verify-sig? ( ${patch_url}.asc )"
+
+			patch_url="$(printf "https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${MY_P}-%s" ${PATCH_DATES[${my_patch_index}]}.patch.gz)"
+			# TODO: replace with loop
+			SRC_URI+=" ${patch_url}"
+			SRC_URI+=" verify-sig? ( ${patch_url}.asc )"
+
 			UPSTREAM_PATCHES+=( "${WORKDIR}"/${MY_P}-${PATCH_DATES[${my_patch_index}]}.patch )
 		done
 
