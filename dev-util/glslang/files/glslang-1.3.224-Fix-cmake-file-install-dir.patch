@@ -1,0 +1,258 @@
+From 1b32fc8eb242f264f2bedb384d3f3e359f3cdd1d Mon Sep 17 00:00:00 2001
+From: Andrea Pappacoda <andrea@pappacoda.it>
+Date: Thu, 25 Aug 2022 23:15:14 +0200
+Subject: [PATCH] build: install glslang-config.cmake to libdir
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+As glslang ships architecture dependant files, the Config file should be
+installed to libdir, not datadir. See
+https://github.com/KhronosGroup/glslang/pull/2989#discussion_r955367103
+for more details.
+
+Here's the diff between the install tree before and after this patch:
+
+    $ diff <(tree install-datadir) <(tree install)
+    1c1
+    < install-datadir
+    ---
+    > install
+    74,99c74,98
+    <         ├── lib
+    <         │   ├── cmake
+    <         │   │   ├── glslang-default-resource-limitsTargets.cmake
+    <         │   │   ├── glslangTargets.cmake
+    <         │   │   ├── glslangValidatorTargets.cmake
+    <         │   │   ├── HLSLTargets.cmake
+    <         │   │   ├── OGLCompilerTargets.cmake
+    <         │   │   ├── OSDependentTargets.cmake
+    <         │   │   ├── spirv-remapTargets.cmake
+    <         │   │   ├── SPIRVTargets.cmake
+    <         │   │   └── SPVRemapperTargets.cmake
+    <         │   ├── libGenericCodeGen.a
+    <         │   ├── libglslang.a
+    <         │   ├── libglslang-default-resource-limits.a
+    <         │   ├── libHLSL.a
+    <         │   ├── libMachineIndependent.a
+    <         │   ├── libOGLCompiler.a
+    <         │   ├── libOSDependent.a
+    <         │   ├── libSPIRV.a
+    <         │   └── libSPVRemapper.a
+    <         └── share
+    <             └── glslang
+    <                 ├── glslang-config.cmake
+    <                 ├── glslang-config-version.cmake
+    <                 ├── glslang-targets.cmake
+    <                 └── glslang-targets-debug.cmake
+    ---
+    >         └── lib
+    >             ├── cmake
+    >             │   ├── glslang-default-resource-limitsTargets.cmake
+    >             │   ├── glslangTargets.cmake
+    >             │   ├── glslangValidatorTargets.cmake
+    >             │   ├── HLSLTargets.cmake
+    >             │   ├── OGLCompilerTargets.cmake
+    >             │   ├── OSDependentTargets.cmake
+    >             │   ├── spirv-remapTargets.cmake
+    >             │   ├── SPIRVTargets.cmake
+    >             │   └── SPVRemapperTargets.cmake
+    >             ├── glslang
+    >             │   ├── glslang-config.cmake
+    >             │   ├── glslang-config-version.cmake
+    >             │   ├── glslang-targets.cmake
+    >             │   └── glslang-targets-debug.cmake
+    >             ├── libGenericCodeGen.a
+    >             ├── libglslang.a
+    >             ├── libglslang-default-resource-limits.a
+    >             ├── libHLSL.a
+    >             ├── libMachineIndependent.a
+    >             ├── libOGLCompiler.a
+    >             ├── libOSDependent.a
+    >             ├── libSPIRV.a
+    >             └── libSPVRemapper.a
+    101c100
+    < 15 directories, 83 files
+    ---
+    > 14 directories, 83 files
+---
+ CMakeLists.txt                             | 8 ++++----
+ OGLCompilersDLL/CMakeLists.txt             | 2 +-
+ SPIRV/CMakeLists.txt                       | 4 ++--
+ StandAlone/CMakeLists.txt                  | 6 +++---
+ glslang/CMakeLists.txt                     | 2 +-
+ glslang/OSDependent/Unix/CMakeLists.txt    | 2 +-
+ glslang/OSDependent/Windows/CMakeLists.txt | 2 +-
+ gtests/CMakeLists.txt                      | 2 +-
+ hlsl/CMakeLists.txt                        | 2 +-
+ 9 files changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a01168603..b7fe3d775 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -375,13 +375,13 @@ if(ENABLE_GLSLANG_INSTALL)
+         include("@PACKAGE_PATH_EXPORT_TARGETS@")
+     ]=])
+     
+-    set(PATH_EXPORT_TARGETS "${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/glslang-targets.cmake")
++    set(PATH_EXPORT_TARGETS "${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}/glslang-targets.cmake")
+     configure_package_config_file(
+         "${CMAKE_CURRENT_BINARY_DIR}/glslang-config.cmake.in"
+         "${CMAKE_CURRENT_BINARY_DIR}/glslang-config.cmake"
+         PATH_VARS
+             PATH_EXPORT_TARGETS
+-        INSTALL_DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}
++        INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}
+     )
+     
+     write_basic_package_version_file("${CMAKE_CURRENT_BINARY_DIR}/glslang-config-version.cmake"
+@@ -392,7 +392,7 @@ if(ENABLE_GLSLANG_INSTALL)
+     install(
+         EXPORT      glslang-targets
+         NAMESPACE   "glslang::"
+-        DESTINATION "${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}"
++        DESTINATION "${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}"
+     )
+     
+     install(
+@@ -400,6 +400,6 @@ if(ENABLE_GLSLANG_INSTALL)
+             "${CMAKE_CURRENT_BINARY_DIR}/glslang-config.cmake"
+             "${CMAKE_CURRENT_BINARY_DIR}/glslang-config-version.cmake"
+         DESTINATION
+-            "${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}"
++            "${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}"
+     )
+ endif()
+\ No newline at end of file
+diff --git a/OGLCompilersDLL/CMakeLists.txt b/OGLCompilersDLL/CMakeLists.txt
+index 8c0e2ba5c..841b3e2c6 100644
+--- a/OGLCompilersDLL/CMakeLists.txt
++++ b/OGLCompilersDLL/CMakeLists.txt
+@@ -49,7 +49,7 @@ if(ENABLE_GLSLANG_INSTALL)
+         message(WARNING \"Using `OGLCompilerTargets.cmake` is deprecated: use `find_package(glslang)` to find glslang CMake targets.\")
+ 
+         if (NOT TARGET glslang::OGLCompiler)
+-            include(\"\${CMAKE_CURRENT_LIST_DIR}/../../${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/glslang-targets.cmake\")
++            include(\"\${CMAKE_CURRENT_LIST_DIR}/../../${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}/glslang-targets.cmake\")
+         endif()
+ 
+         add_library(OGLCompiler ALIAS glslang::OGLCompiler)
+diff --git a/SPIRV/CMakeLists.txt b/SPIRV/CMakeLists.txt
+index c26e310da..6724417f4 100644
+--- a/SPIRV/CMakeLists.txt
++++ b/SPIRV/CMakeLists.txt
+@@ -121,7 +121,7 @@ if(ENABLE_GLSLANG_INSTALL)
+             message(WARNING \"Using `SPVRemapperTargets.cmake` is deprecated: use `find_package(glslang)` to find glslang CMake targets.\")
+ 
+             if (NOT TARGET glslang::SPVRemapper)
+-                include(\"\${CMAKE_CURRENT_LIST_DIR}/../../${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/glslang-targets.cmake\")
++                include(\"\${CMAKE_CURRENT_LIST_DIR}/../../${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}/glslang-targets.cmake\")
+             endif()
+ 
+             add_library(SPVRemapper ALIAS glslang::SPVRemapper)
+@@ -133,7 +133,7 @@ if(ENABLE_GLSLANG_INSTALL)
+         message(WARNING \"Using `SPIRVTargets.cmake` is deprecated: use `find_package(glslang)` to find glslang CMake targets.\")
+ 
+         if (NOT TARGET glslang::SPIRV)
+-            include(\"\${CMAKE_CURRENT_LIST_DIR}/../../${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/glslang-targets.cmake\")
++            include(\"\${CMAKE_CURRENT_LIST_DIR}/../../${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}/glslang-targets.cmake\")
+         endif()
+ 
+         add_library(SPIRV ALIAS glslang::SPIRV)
+diff --git a/StandAlone/CMakeLists.txt b/StandAlone/CMakeLists.txt
+index 027575047..d54a1df8c 100644
+--- a/StandAlone/CMakeLists.txt
++++ b/StandAlone/CMakeLists.txt
+@@ -111,7 +111,7 @@ if(ENABLE_GLSLANG_INSTALL)
+         message(WARNING \"Using `glslangValidatorTargets.cmake` is deprecated: use `find_package(glslang)` to find glslang CMake targets.\")
+ 
+         if (NOT TARGET glslang::glslangValidator)
+-            include(\"\${CMAKE_CURRENT_LIST_DIR}/../../${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/glslang-targets.cmake\")
++            include(\"\${CMAKE_CURRENT_LIST_DIR}/../../${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}/glslang-targets.cmake\")
+         endif()
+ 
+         add_library(glslangValidator ALIAS glslang::glslangValidator)
+@@ -126,7 +126,7 @@ if(ENABLE_GLSLANG_INSTALL)
+             message(WARNING \"Using `spirv-remapTargets.cmake` is deprecated: use `find_package(glslang)` to find glslang CMake targets.\")
+ 
+             if (NOT TARGET glslang::spirv-remap)
+-                include(\"\${CMAKE_CURRENT_LIST_DIR}/../../${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/glslang-targets.cmake\")
++                include(\"\${CMAKE_CURRENT_LIST_DIR}/../../${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}/glslang-targets.cmake\")
+             endif()
+ 
+             add_library(spirv-remap ALIAS glslang::spirv-remap)
+@@ -141,7 +141,7 @@ if(ENABLE_GLSLANG_INSTALL)
+         message(WARNING \"Using `glslang-default-resource-limitsTargets.cmake` is deprecated: use `find_package(glslang)` to find glslang CMake targets.\")
+ 
+         if (NOT TARGET glslang::glslang-default-resource-limits)
+-            include(\"\${CMAKE_CURRENT_LIST_DIR}/../../${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/glslang-targets.cmake\")
++            include(\"\${CMAKE_CURRENT_LIST_DIR}/../../${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}/glslang-targets.cmake\")
+         endif()
+ 
+         add_library(glslang-default-resource-limits ALIAS glslang::glslang-default-resource-limits)
+diff --git a/glslang/CMakeLists.txt b/glslang/CMakeLists.txt
+index 45c9813a8..f63e8fc32 100644
+--- a/glslang/CMakeLists.txt
++++ b/glslang/CMakeLists.txt
+@@ -209,7 +209,7 @@ if(ENABLE_GLSLANG_INSTALL)
+         message(WARNING \"Using `glslangTargets.cmake` is deprecated: use `find_package(glslang)` to find glslang CMake targets.\")
+ 
+         if (NOT TARGET glslang::glslang)
+-            include(\"\${CMAKE_CURRENT_LIST_DIR}/../../${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/glslang-targets.cmake\")
++            include(\"\${CMAKE_CURRENT_LIST_DIR}/../../${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}/glslang-targets.cmake\")
+         endif()
+ 
+         if(${BUILD_SHARED_LIBS})
+diff --git a/glslang/OSDependent/Unix/CMakeLists.txt b/glslang/OSDependent/Unix/CMakeLists.txt
+index 96ae21604..ec1eda4a3 100644
+--- a/glslang/OSDependent/Unix/CMakeLists.txt
++++ b/glslang/OSDependent/Unix/CMakeLists.txt
+@@ -60,7 +60,7 @@ if(ENABLE_GLSLANG_INSTALL)
+         message(WARNING \"Using `OSDependentTargets.cmake` is deprecated: use `find_package(glslang)` to find glslang CMake targets.\")
+ 
+         if (NOT TARGET glslang::OSDependent)
+-            include(\"\${CMAKE_CURRENT_LIST_DIR}/../../${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/glslang-targets.cmake\")
++            include(\"\${CMAKE_CURRENT_LIST_DIR}/../../${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}/glslang-targets.cmake\")
+         endif()
+ 
+         add_library(OSDependent ALIAS glslang::OSDependent)
+diff --git a/glslang/OSDependent/Windows/CMakeLists.txt b/glslang/OSDependent/Windows/CMakeLists.txt
+index 548984470..6048bb872 100644
+--- a/glslang/OSDependent/Windows/CMakeLists.txt
++++ b/glslang/OSDependent/Windows/CMakeLists.txt
+@@ -55,7 +55,7 @@ if(ENABLE_GLSLANG_INSTALL)
+         message(WARNING \"Using `OSDependentTargets.cmake` is deprecated: use `find_package(glslang)` to find glslang CMake targets.\")
+ 
+         if (NOT TARGET glslang::OSDependent)
+-            include(\"\${CMAKE_CURRENT_LIST_DIR}/../../${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/glslang-targets.cmake\")
++            include(\"\${CMAKE_CURRENT_LIST_DIR}/../../${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}/glslang-targets.cmake\")
+         endif()
+ 
+         add_library(OSDependent ALIAS glslang::OSDependent)
+diff --git a/gtests/CMakeLists.txt b/gtests/CMakeLists.txt
+index dd555ecca..8dff7ede0 100644
+--- a/gtests/CMakeLists.txt
++++ b/gtests/CMakeLists.txt
+@@ -76,7 +76,7 @@ if(BUILD_TESTING)
+                 message(WARNING \"Using `glslangtestsTargets.cmake` is deprecated: use `find_package(glslang)` to find glslang CMake targets.\")
+ 
+                 if (NOT TARGET glslang::glslangtests)
+-                    include(\"\${CMAKE_CURRENT_LIST_DIR}/../../${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/glslang-targets.cmake\")
++                    include(\"\${CMAKE_CURRENT_LIST_DIR}/../../${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}/glslang-targets.cmake\")
+                 endif()
+ 
+                 add_library(glslangtests ALIAS glslang::glslangtests)
+diff --git a/hlsl/CMakeLists.txt b/hlsl/CMakeLists.txt
+index 4616cfe01..b34df3aea 100644
+--- a/hlsl/CMakeLists.txt
++++ b/hlsl/CMakeLists.txt
+@@ -52,7 +52,7 @@ if(ENABLE_GLSLANG_INSTALL)
+         message(WARNING \"Using `HLSLTargets.cmake` is deprecated: use `find_package(glslang)` to find glslang CMake targets.\")
+ 
+         if (NOT TARGET glslang::HLSL)
+-            include(\"\${CMAKE_CURRENT_LIST_DIR}/../../${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/glslang-targets.cmake\")
++            include(\"\${CMAKE_CURRENT_LIST_DIR}/../../${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}/glslang-targets.cmake\")
+         endif()
+ 
+         add_library(HLSL ALIAS glslang::HLSL)
