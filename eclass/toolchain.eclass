@@ -335,6 +335,14 @@ if tc_has_feature valgrind ; then
 	BDEPEND+=" valgrind? ( dev-util/valgrind )"
 fi
 
+# TODO: Add a pkg_setup & pkg_pretend check for whether the active compiler
+# supports Ada.
+if tc_has_feature ada ; then
+	BDEPEND+=" ada? ( || ( sys-devel/gcc[ada] dev-lang/gnat-gpl[ada] ) )"
+fi
+
+# TODO: Add a pkg_setup & pkg_pretend check for whether the active compiler
+# supports D.
 if tc_has_feature d && tc_version_is_at_least 12.0 ; then
 	# D in 12+ is self-hosting and needs D to bootstrap.
 	# TODO: package some binary we can use, like for Ada
