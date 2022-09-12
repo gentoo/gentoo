@@ -369,12 +369,6 @@ dev-qt/qtwebsockets:6
 # previous release, better not to trust your important mail to
 ~mail-mta/exim-4.96
 
-# Ulrich Müller <ulm@gentoo.org> (2022-06-30)
-# Pretest versions, masked for testing.
-~app-editors/emacs-28.1.90
-~app-editors/emacs-28.1.91
-~app-editors/emacs-28.1.92
-
 # Sam James <sam@gentoo.org> (2022-05-28)
 # GCC 9 and older no longer receive upstream support or fixes for
 # bugs. Please switch to a newer GCC version using gcc-config.
