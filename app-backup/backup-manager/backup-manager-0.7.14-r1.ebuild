@@ -10,7 +10,7 @@ SRC_URI="https://github.com/sukria/Backup-Manager/archive/${PV}.tar.gz -> ${P}.t
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="s3"
 
 DEPEND="dev-lang/perl:=
