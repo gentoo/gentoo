@@ -1,0 +1,27 @@
+conftest.c:114:4: error: call to undeclared library function 'exit' with type 'void (int) __attribute__((noreturn))'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+--- a/configure.in
++++ b/configure.in
+@@ -696,6 +696,7 @@ dnl ***
+ AC_CACHE_CHECK([for an implementation of va_copy()],lib_cv_va_copy,[
+ 	AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ 	#include <stdarg.h>
++	#include <stdlib.h>
+ 	void f (int i, ...) {
+ 	va_list args1, args2;
+ 	va_start (args1, i);
+@@ -715,6 +716,7 @@ AC_CACHE_CHECK([for an implementation of va_copy()],lib_cv_va_copy,[
+ AC_CACHE_CHECK([for an implementation of __va_copy()],lib_cv___va_copy,[
+ 	AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ 	#include <stdarg.h>
++	#include <stdlib.h>
+ 	void f (int i, ...) {
+ 	va_list args1, args2;
+ 	va_start (args1, i);
+@@ -745,6 +747,7 @@ fi
+ AC_CACHE_CHECK([whether va_lists can be copied by value],lib_cv_va_val_copy,[
+ 	AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ 	#include <stdarg.h>
++	#include <stdlib.h>
+ 	void f (int i, ...) {
+ 	va_list args1, args2;
+ 	va_start (args1, i);
