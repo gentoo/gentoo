@@ -6,8 +6,8 @@ EAPI=7
 inherit readme.gentoo-r1 systemd toolchain-funcs
 
 DESCRIPTION="Linux IPv6 Router Advertisement Daemon"
-HOMEPAGE="http://v6web.litech.org/radvd/"
-SRC_URI="http://v6web.litech.org/radvd/dist/${P}.tar.xz"
+HOMEPAGE="https://v6web.litech.org/radvd/"
+SRC_URI="https://v6web.litech.org/radvd/dist/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
