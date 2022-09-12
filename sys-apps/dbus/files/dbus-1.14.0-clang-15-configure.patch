@@ -1,0 +1,26 @@
+https://gitlab.freedesktop.org/dbus/dbus/-/merge_requests/339
+
+From 88c96ff6a351758cb7c69a25e3a8464b5164a19c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 12 Sep 2022 18:37:35 +0100
+Subject: [PATCH] configure.ac: fix configure tests broken with Clang 15 
+ (implicit function declarations)
+
+Clang 15 makes implicit function declarations fatal by default which
+leads to some configure tests silently failing/returning
+the wrong result.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -613,7 +613,8 @@ AS_IF([test -n "$dbus_va_copy_func"],
+ AC_CACHE_CHECK([whether $CC knows __sync_sub_and_fetch()],
+   dbus_cv_sync_sub_and_fetch,
+   [AC_LINK_IFELSE([
+-     AC_LANG_PROGRAM([[]], [[int a = 4; int b = __sync_sub_and_fetch(&a, 4); exit(b); ]])],
++     AC_LANG_PROGRAM([[]], [[#include <stdlib.h>
++     int a = 4; int b = __sync_sub_and_fetch(&a, 4); exit(b); ]])],
+      [dbus_cv_sync_sub_and_fetch=yes],
+      [dbus_cv_sync_sub_and_fetch=no])
+   ])
+GitLab
