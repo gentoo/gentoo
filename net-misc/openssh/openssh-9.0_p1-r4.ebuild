@@ -326,6 +326,10 @@ src_configure() {
 		myconf+=( --disable-utmp --disable-wtmp )
 	fi
 
+	# Workaround for Clang 15 miscompilation with -fzero-call-used-regs=all
+	# bug #869839 (https://github.com/llvm/llvm-project/issues/57692)
+	tc-is-clang && myconf+=( --without-hardening )
+
 	econf "${myconf[@]}"
 }
 
