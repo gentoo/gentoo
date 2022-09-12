@@ -13,6 +13,7 @@
 		<flag name="gmp">Use <pkg>dev-libs/gmp</pkg> for integer operations (works faster, but an external depend).</flag>
 		<flag name="llvm">Pull in dependencies for the <pkg>sys-devel/llvm</pkg> codegen backend.</flag>
 		<flag name="numa">Enable NUMA thread balancing policy using <pkg>sys-process/numactl</pkg>.</flag>
+		<flag name="unregisterised">Create an unregisterised build in which only the C codegen backend will be available.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">ghc/ghc</remote-id>
