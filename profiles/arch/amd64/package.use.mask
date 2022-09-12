@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2022-08-30)
+# ada bootstrap currently only available on amd64/x86
+sys-devel/gcc -ada
+
 # Conrad Kostecki <conikost@gentoo.org> (2022-07-19)
 # www-servers/nginx currently only available on amd64/x86
 www-servers/nginx -nginx_modules_http_security
