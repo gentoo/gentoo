@@ -58,3 +58,7 @@ python_install_all() {
 	# Move package documentation to a folder name containing version number
 	mv "${D}"/usr/share/doc/${PN} "${D}"/usr/share/doc/${PF} || die
 }
+
+python_test_all() {
+	emake -C tests/mathml
+}
