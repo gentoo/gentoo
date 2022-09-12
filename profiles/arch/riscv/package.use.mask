@@ -108,10 +108,6 @@ kde-plasma/kdeplasma-addons webengine
 kde-plasma/libksysguard webengine
 net-irc/quassel urlpreview
 
-# Marek Szuba <marecki@gentoo.org> (2021-09-07)
-# net-misc/memcached not keyworded yet due to failing tests (Bug #811477)
-dev-ruby/dalli test
-
 # Jonathan Davies <jpds@protonmail.com> (2021-09-03)
 # Requires CPU with SSSE3 support
 net-analyzer/suricata hyperscan
