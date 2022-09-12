@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="A Library to Access SMI MIB Information"
 HOMEPAGE="https://www.ibr.cs.tu-bs.de/projects/libsmi/ https://gitlab.ibr.cs.tu-bs.de/nm/libsmi"
 SRC_URI="https://www.ibr.cs.tu-bs.de/projects/libsmi/download/${P}.tar.gz"
@@ -20,7 +22,13 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.5.0-implicit-function-declarations.patch
+	"${FILESDIR}"/${PN}-0.5.0-clang-15-configure.patch
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_test() {
 	# sming test is known to fail and some other fail if LC_ALL!=C:
