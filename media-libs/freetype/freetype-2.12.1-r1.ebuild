@@ -172,6 +172,9 @@ src_prepare() {
 		cd "${S}" || die
 	fi
 
+	# bug #869803
+	rm docs/reference/sitemap.xml.gz || die
+
 	# we need non-/bin/sh to run configure
 	if [[ -n ${CONFIG_SHELL} ]] ; then
 		sed -i -e "1s:^#![[:space:]]*/bin/sh:#!${CONFIG_SHELL}:" \
