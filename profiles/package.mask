@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (2022-09-12)
+# repoman is no longer maintained and has been removed from the portage
+# git repository. Please use dev-util/pkgcheck and dev-util/pkgdev instead.
+# Removal on 2022-11-11. Bug #835013.
+app-portage/repoman
+
 # Michał Górny <mgorny@gentoo.org> (2022-09-11)
 # Bad quality package with failing tests.  No revdeps.
 # Removal on 2022-10-11.  Bug #869650.
