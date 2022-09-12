@@ -30,7 +30,7 @@ bootstrap_uri() {
 }
 
 DESCRIPTION="Open source implementation of the Java programming language"
-HOMEPAGE="https://openjdk.java.net"
+HOMEPAGE="https://openjdk.org"
 SRC_URI="
 	https://github.com/${PN}/jdk${SLOT}u/archive/refs/tags/jdk-${MY_PV}.tar.gz
 		-> ${P}.tar.gz
