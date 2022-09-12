@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -159,6 +159,9 @@ src_prepare() {
 		fi
 		cd "${S}" || die
 	fi
+
+	# bug #869803
+	rm docs/reference/sitemap.xml.gz || die
 
 	# we need non-/bin/sh to run configure
 	if [[ -n ${CONFIG_SHELL} ]] ; then
