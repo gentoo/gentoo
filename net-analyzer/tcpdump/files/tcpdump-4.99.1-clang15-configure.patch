@@ -1,0 +1,57 @@
+https://github.com/the-tcpdump-group/tcpdump/pull/1007
+
+From 4fa4e8db882b6298f5504d866665441ba7594df3 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 12 Sep 2022 17:28:58 +0100
+Subject: [PATCH] configure.ac: fix configure tests broken with Clang 15
+ (implicit function declarations)
+
+Clang 15 makes implicit function declarations fatal by default which
+leads to some of tcpdump's configure tests silently failing/returning
+the wrong result.
+
+This adds the needed #includes to various tests for the functions used,
+resolving the following errors:
+```
+net-analyzer/tcpdump-4.99.1/clang15.log:47:error: type specifier missing, defaults to 'int'; ISO C99 and later do not support implicit int [-Wimplicit-int]
+net-analyzer/tcpdump-4.99.1/clang15.log:51:error: call to undeclared library function 'strcmp' with type 'int (const char *, const char *)'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+net-analyzer/tcpdump-4.99.1/clang15.log:55:error: call to undeclared library function 'sscanf' with type 'int (const char *restrict, const char *restrict, ...)'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+net-analyzer/tcpdump-4.99.1/clang15.log:68:error: call to undeclared library function 'memset' with type 'void *(void *, int, unsigned long)'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+net-analyzer/tcpdump-4.99.1/clang15.log:112:error: call to undeclared function 'ether_ntohost'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+net-analyzer/tcpdump-4.99.1/clang15.log:115:error: call to undeclared library function 'exit' with type 'void (int) __attribute__((noreturn))'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -87,8 +87,11 @@ if test "x$with_smi" != "xno" ; then
+ 			AC_TRY_RUN(
+ 				[
+ /* libsmi available check */
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ #include <smi.h>
+-main()
++int main()
+ {
+   int current, revision, age, n;
+   const int required = 2;
+@@ -264,6 +267,7 @@ AC_COMPILE_IFELSE(
+     [
+       AC_LANG_SOURCE(
+ 	[[
++#include <string.h>
+ /* AF_INET6 available check */
+ #include <sys/types.h>
+ #ifdef _WIN32
+@@ -473,6 +477,8 @@ AC_CHECK_FUNCS(ether_ntohost, [
+     AC_CACHE_CHECK(for buggy ether_ntohost, ac_cv_buggy_ether_ntohost, [
+ 	AC_TRY_RUN([
+ 		#include <netdb.h>
++		#include <netinet/ether.h>
++		#include <stdlib.h>
+ 		#include <sys/types.h>
+ 		#include <sys/param.h>
+ 		#include <sys/socket.h>
+
