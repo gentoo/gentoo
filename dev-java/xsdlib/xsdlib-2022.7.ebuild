@@ -13,12 +13,12 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="XML Schema datatypes library"
-HOMEPAGE="https://github.com/xmlark/msv/xsdlib"
+HOMEPAGE="https://github.com/xmlark/msv/tree/main/xsdlib"
 SRC_URI="https://github.com/xmlark/msv/archive/msv-${PV}.tar.gz"
 
 LICENSE="BSD-1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 
 # Common dependencies
 # POM: pom.xml
