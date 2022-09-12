@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Stephan Hartmannr <sultan@gentoo.org> (2022-09-12)
+# Unpatched security vulerabilities, bug #868156, bug #868354.
+www-client/chromium-bin
+
 # Mike Gilbert <floppym@gentoo.org> (2022-09-12)
 # repoman is no longer maintained and has been removed from the portage
 # git repository. Please use dev-util/pkgcheck and dev-util/pkgdev instead.
