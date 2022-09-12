@@ -6,11 +6,11 @@
 #
 # Some packages are not fully ported yet, but preemptively added so we won't
 # have to revisit later.
-dev-lang/rust llvm_targets_AArch64
-dev-libs/keystone llvm_targets_AArch64
-dev-ml/llvm-ocaml llvm_targets_AArch64
-sys-devel/clang llvm_targets_AArch64
-sys-devel/llvm llvm_targets_AArch64
+dev-lang/rust llvm_targets_LoongArch
+dev-libs/keystone llvm_targets_LoongArch
+dev-ml/llvm-ocaml llvm_targets_LoongArch
+sys-devel/clang llvm_targets_LoongArch
+sys-devel/llvm llvm_targets_LoongArch
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-04-24)
 # Force-enable experimental-loong on packages; we're loong.
