@@ -1,6 +1,12 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-09-06)
+# virtual/libcrypt-2 doesn't migrate anything on musl,
+# we need virtual/libcrypt-2-r1 for the libxcrypt migration there, so
+# avoid a useless rebuild, and ensure it happens at the right time instead.
+=virtual/libcrypt-2
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-09-06)
 # Binary package linked against glibc
 games-action/minecraft-launcher
