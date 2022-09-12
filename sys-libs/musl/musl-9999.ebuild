@@ -43,10 +43,14 @@ IUSE="crypt headers-only"
 QA_SONAME="/usr/lib/libc.so"
 QA_DT_NEEDED="/usr/lib/libc.so"
 
-RDEPEND="
-	crypt? ( !sys-libs/libxcrypt[system] )
-	!crypt? ( sys-libs/libxcrypt[system] )
-"
+if [[ ${CATEGORY} == cross-* ]] ; then
+	IUSE="${IUSE/crypt/+crypt}"
+else
+	RDEPEND="
+		crypt? ( !sys-libs/libxcrypt[system] )
+		!crypt? ( sys-libs/libxcrypt[system] )
+	"
+fi
 
 is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
