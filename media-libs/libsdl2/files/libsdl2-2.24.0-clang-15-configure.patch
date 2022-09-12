@@ -1,0 +1,24 @@
+https://github.com/libsdl-org/SDL/pull/6217
+
+From 04b9178a6746cfe9e4f8708befd3e00f95912a18 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 12 Sep 2022 18:02:21 +0100
+Subject: [PATCH] configure.ac: fix configure tests broken with Clang 15
+ (implicit function declarations)
+
+Clang 15 makes implicit function declarations fatal by default which
+leads to some configure tests silently failing/returning
+the wrong result.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -2728,6 +2728,7 @@ CheckInputKD()
+     AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+       #include <linux/kd.h>
+       #include <linux/keyboard.h>
++      #include <sys/ioctl.h>
+     ]], [[
+         struct kbentry kbe;
+         kbe.kb_table = KG_CTRL;
+
