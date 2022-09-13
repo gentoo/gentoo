@@ -75,6 +75,10 @@ RDEPEND="
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.11.0.2-musl-avoid-execinfo.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DATADIR="${EPREFIX}/usr/share/geant4"
