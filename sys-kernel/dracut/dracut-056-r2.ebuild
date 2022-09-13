@@ -9,10 +9,9 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/dracutdevs/dracut"
 else
-	if [[ "${PV}" != *_rc* ]]; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
-	fi
-	SRC_URI="https://github.com/dracutdevs/dracut/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+	[[ "${PV}" = *_rc* ]] || \
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
+	SRC_URI="https://www.kernel.org/pub/linux/utils/boot/${PN}/${P}.tar.xz"
 fi
 
 DESCRIPTION="Generic initramfs generation tool"
@@ -33,6 +32,7 @@ RDEPEND="
 		>=sys-apps/sysvinit-2.87-r3
 		sys-apps/openrc[sysv-utils(-),selinux?]
 		sys-apps/systemd[sysv-utils]
+		sys-apps/s6-linux-init[sysv-utils(-)]
 	)
 	>=sys-apps/util-linux-2.21
 	virtual/pkgconfig
@@ -62,8 +62,8 @@ QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 
 PATCHES=(
 	"${FILESDIR}"/gentoo-ldconfig-paths-r1.patch
-	"${FILESDIR}"/057-virtiofs-split-usr.patch
-	"${FILESDIR}"/057-i18n-keymaps.patch
+	"${FILESDIR}"/056-musl.patch
+	"${FILESDIR}"/056-fix-lvm-add-missing-grep-requirement.patch
 )
 
 src_configure() {
