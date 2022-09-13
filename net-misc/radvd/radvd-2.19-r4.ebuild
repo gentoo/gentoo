@@ -16,15 +16,12 @@ IUSE="selinux test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="virtual/pkgconfig"
-CDEPEND="dev-libs/libdaemon"
 DEPEND="
-	${CDEPEND}
 	sys-devel/bison
 	sys-devel/flex
 	test? ( dev-libs/check )
 "
 RDEPEND="
-	${CDEPEND}
 	acct-group/radvd
 	acct-user/radvd
 	selinux? ( sec-policy/selinux-radvd )
