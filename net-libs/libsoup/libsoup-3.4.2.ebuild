@@ -75,6 +75,9 @@ src_configure() {
 
 multilib_src_configure() {
 	local emesonargs=(
+		# Avoid auto-magic, built-in feature of meson
+		-Dauto_features=enabled
+
 		$(meson_feature gssapi)
 		-Dkrb5_config="${CHOST}-krb5-config"
 		$(meson_feature samba ntlm)
@@ -87,6 +90,8 @@ multilib_src_configure() {
 		-Ddoc_tests=false
 		$(meson_use test tests)
 		-Dinstalled_tests=false
+		-Dhttp2_tests=disabled # quart is absent from gentoo repo
+		-Dautobahn=disabled # depends on py-cryptography, which depends on Rust
 		$(meson_feature sysprof)
 		$(meson_feature test pkcs11_tests)
 	)
