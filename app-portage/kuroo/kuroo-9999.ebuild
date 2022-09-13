@@ -3,7 +3,7 @@
 
 EAPI=8
 
-KFMIN=5.85.0
+KFMIN=5.96.0
 ESVN_REPO_URI="https://svn.code.sf.net/p/kuroo/code/kuroo4/trunk"
 inherit ecm subversion
 
@@ -23,6 +23,7 @@ DEPEND="
 	>=kde-frameworks/kconfig-${KFMIN}:5
 	>=kde-frameworks/kconfigwidgets-${KFMIN}:5
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
+	>=kde-frameworks/kcrash-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kio-${KFMIN}:5
 	>=kde-frameworks/kitemviews-${KFMIN}:5
@@ -36,7 +37,6 @@ RDEPEND="${DEPEND}
 	app-portage/gentoolkit
 	kde-apps/kompare:5
 "
-BDEPEND=">=kde-frameworks/extra-cmake-modules-${KFMIN}:5"
 
 pkg_postinst() {
 	if ! has_version app-admin/logrotate ; then
