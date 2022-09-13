@@ -1,5 +1,6 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 gnat_2020 - Compile with dev-lang/gnat-gpl-2020
 gnat_2021 - Compile with dev-lang/gnat-gpl-2021
+gcc_12_2_0 - Compile with sys-devel/gcc-12.2.0
