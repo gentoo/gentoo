@@ -50,6 +50,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-12.22.5-shared_c-ares_nameser_h.patch
 	"${FILESDIR}"/${PN}-15.2.0-global-npm-config.patch
+	"${FILESDIR}"/${PN}-18.7.0-clang-fix-libatomic.patch
 )
 
 # These are measured on a loong machine with -ggdb on, and only checked
@@ -125,6 +126,8 @@ src_configure() {
 
 	# LTO compiler flags are handled by configure.py itself
 	filter-flags '-flto*'
+	# nodejs unconditionally links to libatomic #869992
+	append-atomic-flags
 
 	local myconf=(
 		--shared-brotli
