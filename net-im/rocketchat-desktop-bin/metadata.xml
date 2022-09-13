@@ -5,5 +5,5 @@
 		<remote-id type="github">RocketChat/Rocket.Chat.Electron</remote-id>
 		<bugs-to>https://github.com/RocketChat/Rocket.Chat.Electron/issues</bugs-to>
 	</upstream>
-	 <!-- maintainer-needed -->
+	<!-- maintainer-needed -->
 </pkgmetadata>
