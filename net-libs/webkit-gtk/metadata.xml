@@ -10,7 +10,6 @@
 	<flag name="egl">Enable EGL support</flag>
 	<flag name="examples">Install the MiniBrowser example application</flag>
 	<flag name="gamepad">Enable gamepad input support via <pkg>dev-libs/libmanette</pkg></flag>
-	<flag name="geolocation">Enable geolocation support through <pkg>app-misc/geoclue</pkg></flag>
 	<flag name="jumbo-build">Combine source files to speed up build process</flag>
 </use>
 </pkgmetadata>
