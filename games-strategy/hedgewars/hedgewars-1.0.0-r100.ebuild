@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -56,6 +56,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.0.0-cmake_lua_version.patch"
 	# http://hg.hedgewars.org/hedgewars/rev/6832dab555ae
 	"${FILESDIR}/${PN}-1.0.0-fpc-3.2.patch"
+	# Patch by Debian
+	"${FILESDIR}/${P}-cmake-3.24.patch" # bug 870010
 )
 
 S="${WORKDIR}"/${MY_P}
