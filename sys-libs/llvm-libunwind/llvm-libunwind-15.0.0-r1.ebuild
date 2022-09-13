@@ -49,6 +49,10 @@ multilib_src_configure() {
 	local use_compiler_rt=OFF
 	local libdir=$(get_libdir)
 
+	# https://github.com/llvm/llvm-project/issues/56825
+	# also separately bug #863917
+	filter-lto
+
 	if use clang && ! tc-is-clang; then
 		# Only do this conditionally to allow overriding with
 		# e.g. CC=clang-13 in case of breakage

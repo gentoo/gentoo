@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit cmake-multilib llvm llvm.org python-any-r1 toolchain-funcs
+inherit cmake-multilib flag-o-matic llvm llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
 HOMEPAGE="https://llvm.org/docs/ExceptionHandling.html"
@@ -40,6 +40,10 @@ pkg_setup() {
 multilib_src_configure() {
 	local use_compiler_rt=OFF
 	local libdir=$(get_libdir)
+
+	# https://github.com/llvm/llvm-project/issues/56825
+	# also separately bug #863917
+	filter-lto
 
 	# link to compiler-rt
 	# https://github.com/gentoo/gentoo/pull/21516
