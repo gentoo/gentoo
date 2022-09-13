@@ -1,9 +1,0 @@
-Note the dodgy _CONFIG_H_ check can be removed when >=llvm-libunwind-15
-(which adds _VERSION) is well established: https://reviews.llvm.org/D121015
---- a/dlls/ntdll/unix/signal_x86_64.c
-+++ b/dlls/ntdll/unix/signal_x86_64.c
-@@ -1370,3 +1370,3 @@
- 
--#ifdef __APPLE__
-+#if defined(__APPLE__) || defined(_LIBUNWIND_VERSION) || defined(____LIBUNWIND_CONFIG_H__)
-     rc = unw_getcontext( &unw_context );
