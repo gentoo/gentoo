@@ -21,10 +21,10 @@ SRC_URI="mirror://sourceforge/x3270/${MY_P}-src.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~s390 ~sparc ~x86"
-IUSE="cjk doc gui ncurses ssl tcl"
+IUSE="X cjk doc ncurses ssl tcl"
 
 RDEPEND="
-	gui? (
+	X? (
 		x11-libs/libX11
 		x11-libs/libXaw
 		x11-libs/libXmu
@@ -39,10 +39,10 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	gui? ( x11-base/xorg-proto )
+	X? ( x11-base/xorg-proto )
 "
 BDEPEND="
-	gui? (
+	X? (
 		app-text/rman
 		x11-apps/bdftopcf
 		>=x11-apps/mkfontscale-1.2.0
@@ -84,23 +84,23 @@ src_configure() {
 		--enable-pr3287 \
 		$(use_enable ncurses c3270) \
 		$(use_enable tcl tcl3270) \
-		$(use_enable gui x3270) \
-		$(use_with gui x) \
-		$(use_with gui fontdir "${FONTDIR}")
+		$(use_enable X x3270) \
+		$(use_with X x) \
+		$(use_with X fontdir "${FONTDIR}")
 }
 
 src_install() {
-	use gui && dodir "${FONTDIR}"
+	use X && dodir "${FONTDIR}"
 
 	emake DESTDIR="${D}" install{,.man}
 
-	use gui && font_src_install
+	use X && font_src_install
 }
 
 pkg_postinst() {
-	use gui && font_pkg_postinst
+	use X && font_pkg_postinst
 }
 
 pkg_postrm() {
-	use gui && font_pkg_postrm
+	use X && font_pkg_postrm
 }
