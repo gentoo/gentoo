@@ -1,0 +1,29 @@
+From cb1da3fb1d2e45e279118ee8e68468373b71dbc8 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 13 Sep 2022 17:52:01 +0100
+Subject: [PATCH] Fix build with Capstone 5
+
+Capstone 5 drops X86_INS_VCVTPD2DQX and X86_INS_VCVTPD2PSX from
+x86.h (happened in https://github.com/capstone-engine/capstone/commit/dd91f03fef5102492352756e2adb5972dd79a70f
+but no real explanation).
+
+Given:
+1. these instructions had no wiring up;
+2. other Capstone consumers have done the same
+let's drop based on a macro for the Capstone version.
+
+Bug: https://bugs.gentoo.org/843755
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/src/capstone-edb/Instruction.cpp
++++ b/src/capstone-edb/Instruction.cpp
+@@ -880,8 +880,10 @@ bool is_SIMD_PD(const Operand &operand) {
+ 	case X86_INS_CVTPD2PI:
+ 	case X86_INS_CVTPD2PS:
+ 	case X86_INS_VCVTPD2PS:
++#if CS_API_MAJOR < 5
+ 	case X86_INS_VCVTPD2DQX: // FIXME: what's this?
+ 	case X86_INS_VCVTPD2PSX: // FIXME: what's this?
++#endif
+ 	// case X86_INS_VCVTPD2QQ: // FIXME: Capstone seems to not support it
+ 	case X86_INS_VCVTPD2UDQ:
+ 		// case X86_INS_VCVTPD2UQQ: // FIXME: Capstone seems to not support it

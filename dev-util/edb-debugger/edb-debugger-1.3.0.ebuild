@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="graphviz"
 
 RDEPEND="dev-libs/capstone:=
-	dev-libs/double-conversion
+	dev-libs/double-conversion:=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -32,6 +32,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc12.patch
+	"${FILESDIR}"/${PN}-1.3.0-capstone-5.patch
 )
 
 src_prepare() {
