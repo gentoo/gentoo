@@ -29,7 +29,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0/1"
 IUSE="debug doc +gmp json libedit +modern-kernel python +readline static-libs test xtables"
-RESTRICT="test? ( userpriv ) !test? ( test )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=net-libs/libmnl-1.0.4:0=
@@ -120,7 +120,11 @@ src_compile() {
 src_test() {
 	emake check
 
-	edo tests/shell/run-tests.sh -v
+	if [[ ${EUID} == 0 ]]; then
+		edo tests/shell/run-tests.sh -v
+	else
+		ewarn "Skipping shell tests (requires root)"
+	fi
 
 	# Need to rig up Python eclass if using this, but it doesn't seem to work
 	# for me anyway.
