@@ -26,6 +26,12 @@ bootstrap_uri() {
 	echo "${kw}? ( ${cond:+${cond}? (} ${baseuri}-${ver}-${kw}${musl:+-musl}.${suff} ${cond:+) })"
 }
 
+# don't change versioning scheme
+# to find correct _p number, look at
+# https://github.com/openjdk/jdk${SLOT}u/tags
+# you will see, for example, jdk-17.0.4.1-ga and jdk-17.0.4.1+1, both point
+# to exact same commit sha. we should always use the full version.
+# -ga tag is just for humans to easily identify General Availability release tag.
 MY_PV="${PV//_p/+}"
 SLOT="$(ver_cut 1)"
 
