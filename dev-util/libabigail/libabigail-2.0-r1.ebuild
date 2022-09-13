@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit autotools python-any-r1 out-of-source
+inherit autotools bash-completion-r1 python-any-r1 out-of-source
 
 DESCRIPTION="Suite of tools for checking ABI differences between ELF objects"
 HOMEPAGE="https://sourceware.org/libabigail/"
@@ -74,6 +74,11 @@ my_src_install() {
 
 my_src_install_all() {
 	einstalldocs
+
+	local file
+	for file in abicompat abidiff abidw abilint abinilint abipkgdiff abisym fedabipkgdiff ; do
+		dobashcomp bash-completion/${file}
+	done
 
 	# no static archives
 	find "${D}" -name '*.la' -delete || die
