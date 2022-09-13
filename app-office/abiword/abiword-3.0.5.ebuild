@@ -84,6 +84,7 @@ PATCHES=(
 	"${WORKDIR}"/patches/${PN}-3.0.4-pygobject.patch
 	"${WORKDIR}"/patches/${PN}-3.0.4-asio-standalone-placeholders.patch
 	"${WORKDIR}"/patches/${PN}-3.0.4-c++17-dynamic-exception-specifications.patch
+	"${FILESDIR}"/${PN}-3.0.5-musl-lose-precision-fix.patch
 )
 
 src_prepare() {
