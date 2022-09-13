@@ -18,6 +18,7 @@ RDEPEND="dev-lang/execline:=
 	dev-libs/skalibs:=
 	sys-apps/s6:=[execline]
 	sysv-utils? (
+		!sys-apps/openrc[sysv-utils(-)]
 		!sys-apps/systemd[sysv-utils]
 		!sys-apps/sysvinit
 	)
