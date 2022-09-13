@@ -1,0 +1,44 @@
+# timeval needs sys/time.h and uint in not a part of non glibc systems, and
+# uint in not available on musl.
+#
+# A pull request has been opened upstream. So, once that is merged we can
+# remove this patch. Please refer: https://github.com/PixlOne/logiops/pull/330
+#
+# Closes: https://bugs.gentoo.org/828859
+--- a/src/logid/actions/KeypressAction.cpp
++++ b/src/logid/actions/KeypressAction.cpp
+@@ -85,7 +85,7 @@ KeypressAction::Config::Config(Device* device, libconfig::Setting& config) :
+     }
+ }
+
+-std::vector<uint>& KeypressAction::Config::keys()
++std::vector<unsigned int>& KeypressAction::Config::keys()
+ {
+     return _keys;
+-}
+\ No newline at end of file
++}
+--- a/src/logid/actions/KeypressAction.h
++++ b/src/logid/actions/KeypressAction.h
+@@ -38,9 +38,9 @@ namespace actions {
+         {
+         public:
+             explicit Config(Device* device, libconfig::Setting& root);
+-            std::vector<uint>& keys();
++            std::vector<unsigned int>& keys();
+         protected:
+-            std::vector<uint> _keys;
++            std::vector<unsigned int> _keys;
+         };
+     protected:
+         Config _config;
+--- a/src/logid/backend/raw/RawDevice.cpp
++++ b/src/logid/backend/raw/RawDevice.cpp
+@@ -40,6 +40,7 @@ extern "C"
+ #include <fcntl.h>
+ #include <sys/ioctl.h>
+ #include <linux/hidraw.h>
++#include <sys/time.h>
+ }
+
+ using namespace logid::backend::raw;
