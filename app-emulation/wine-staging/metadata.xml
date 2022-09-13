@@ -20,7 +20,6 @@ This variant of the Wine packaging includes the Wine-Staging patchset.
 		</flag>
 		<flag name="dos">Pull in <pkg>games-emulation/dosbox</pkg> to run DOS applications</flag>
 		<flag name="gecko">Enable mshtml support using <pkg>app-emulation/wine-gecko</pkg></flag>
-		<flag name="gssapi">Use GSSAPI (Kerberos SSP support)</flag>
 		<flag name="mingw">Build PE files using a MinGW toolchain for better compatibility</flag>
 		<flag name="mono">Enable .NET support using <pkg>app-emulation/wine-mono</pkg></flag>
 		<flag name="netapi">Enable support for configuring remote shares using <pkg>net-fs/samba</pkg></flag>
