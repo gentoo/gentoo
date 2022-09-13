@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Simple parsing of RFC2822 message format and headers"
 
 SLOT="0"
-KEYWORDS="amd64 ~mips ppc ppc64 x86 ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ~mips ppc ppc64 ~riscv x86 ~sparc-solaris ~x86-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
