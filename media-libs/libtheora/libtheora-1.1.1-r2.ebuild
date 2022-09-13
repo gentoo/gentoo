@@ -71,6 +71,15 @@ multilib_src_install() {
 		DESTDIR="${D}" \
 		docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		install
+
+	if multilib_is_native_abi && use examples ; then
+		dobin examples/.libs/png2theora
+
+		local bin
+		for bin in dump_{psnr,video} {encoder,player}_example; do
+			newbin examples/.libs/${bin} theora_${bin}
+		done
+	fi
 }
 
 multilib_src_install_all() {
@@ -79,16 +88,9 @@ multilib_src_install_all() {
 	einstalldocs
 
 	if use examples ; then
-		dobin examples/.libs/png2theora
-		for bin in dump_{psnr,video} {encoder,player}_example; do
-			newbin examples/.libs/${bin} theora_${bin}
-		done
-
-		if use doc ; then
-			docinto examples
-			dodoc examples/*.[ch]
-			docompress -x /usr/share/doc/${PF}/examples
-			docinto .
-		fi
+		docinto examples
+		dodoc examples/*.[ch]
+		docompress -x /usr/share/doc/${PF}/examples
+		docinto .
 	fi
 }
