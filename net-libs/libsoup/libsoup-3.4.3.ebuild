@@ -75,6 +75,9 @@ src_configure() {
 
 multilib_src_configure() {
 	local emesonargs=(
+		# Avoid auto-magic, built-in feature of meson
+		-Dauto_features=enabled
+
 		$(meson_feature gssapi)
 		-Dkrb5_config="${CHOST}-krb5-config"
 		$(meson_feature samba ntlm)
@@ -86,6 +89,7 @@ multilib_src_configure() {
 		$(meson_native_use_feature gtk-doc docs)
 		-Ddoc_tests=false
 		$(meson_use test tests)
+		-Dautobahn=disabled
 		-Dinstalled_tests=false
 		$(meson_feature sysprof)
 		$(meson_feature test pkcs11_tests)
