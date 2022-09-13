@@ -15,7 +15,7 @@
 	</maintainer>
 	<use>
 		<flag name="builtin">Enable embedded server in libseat</flag>
-		<flag name="server">Enable standalone seatd server</flag>
+		<flag name="server">Enable standalone seatd server, replacement to (e)logind</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourcehut">~kennylevinsen/seatd</remote-id>
