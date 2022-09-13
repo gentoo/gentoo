@@ -26,7 +26,8 @@ bootstrap_uri() {
 	echo "${kw}? ( ${cond:+${cond}? (} ${baseuri}-${ver}-${kw}${musl:+-musl}.${suff} ${cond:+) })"
 }
 
-MY_PV="${PV//_pre/+}-ga"
+MY_PV="${PV//_p/+}"
+
 SLOT="$(ver_cut 1)"
 
 DESCRIPTION="Open source implementation of the Java programming language"
@@ -46,7 +47,7 @@ SRC_URI="
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
-IUSE="alsa big-endian cups debug doc examples +gentoo-vm headless-awt javafx +jbootstrap selinux source system-bootstrap systemtap"
+IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap selinux source system-bootstrap systemtap"
 
 REQUIRED_USE="
 	javafx? ( alsa !headless-awt )
@@ -212,7 +213,7 @@ src_configure() {
 		--with-vendor-version-string="${PVR}"
 		--with-version-pre=""
 		--with-version-string="${PV%_p*}"
-		--with-version-build="${SLOT}"
+		--with-version-build="${PV#*_p}"
 		--with-zlib="${XPAK_BOOTSTRAP:-system}"
 		--enable-dtrace=$(usex systemtap yes no)
 		--enable-headless-only=$(usex headless-awt yes no)
@@ -293,7 +294,7 @@ src_install() {
 	einfo "Creating the Class Data Sharing archives and disabling usage tracking"
 	"${ddest}/bin/java" -server -Xshare:dump -Djdk.disableLastUsageTracking || die
 
-	use gentoo-vm && java-vm_install-env "${FILESDIR}"/${PN}.env.sh
+	java-vm_install-env "${FILESDIR}"/${PN}.env.sh
 	java-vm_revdep-mask
 	java-vm_sandbox-predict /dev/random /proc/self/coredump_filter
 
