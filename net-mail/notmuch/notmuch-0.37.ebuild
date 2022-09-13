@@ -235,9 +235,6 @@ src_install() {
 	default
 
 	if use doc; then
-		pushd doc/_build/man/man1 > /dev/null || die
-		ln notmuch.1 notmuch-setup.1 || die
-		popd > /dev/null || die
 		if use apidoc; then
 			# rename overly generic manpage to avoid clashes
 			mv doc/_build/man/man3/deprecated.3 \
