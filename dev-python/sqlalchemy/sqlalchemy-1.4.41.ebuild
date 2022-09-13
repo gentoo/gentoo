@@ -56,7 +56,8 @@ python_test() {
 		EPYTEST_DESELECT+=(
 			test/ext/asyncio/test_engine_py3k.py::TextSyncDBAPI::test_sync_driver_execution
 			test/ext/asyncio/test_engine_py3k.py::TextSyncDBAPI::test_sync_driver_run_sync
-			"test/engine/test_pool.py::PoolEventsTest::test_checkin_event_gc[True-_exclusions0]"
+			"test/engine/test_pool.py::PoolEventsTest::test_checkin_event_gc[False-True]"
+			"test/engine/test_pool.py::PoolEventsTest::test_checkin_event_gc[True-True]"
 			"test/engine/test_pool.py::QueuePoolTest::test_userspace_disconnectionerror_weakref_finalizer[True-_exclusions0]"
 		)
 	fi
