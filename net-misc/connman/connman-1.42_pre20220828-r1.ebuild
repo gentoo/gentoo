@@ -56,9 +56,9 @@ src_prepare() {
 	default
 	eautoreconf
 
-	cp "${FILESDIR}"/${PN}.initd2 ${T}
+	cp "${FILESDIR}"/${PN}.initd2 "${T}"
 	if use iwd; then
-		sed -i -e "s/need dbus/need dbus iwd/" ${T}/${PN}.initd2 || die
+		sed -i -e "s/need dbus/need dbus iwd/" "${T}"/${PN}.initd2 || die
 	fi
 }
 
