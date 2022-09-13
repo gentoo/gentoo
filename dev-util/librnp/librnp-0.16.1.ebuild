@@ -51,6 +51,7 @@ src_configure() {
 
 	# OpenSSL support is still not as complete as botan.
 	# https://github.com/rnpgp/rnp/issues/1642 AEAD,
+	# https://github.com/rnpgp/rnp/issues/1902 BRAINPOOL,
 	# https://github.com/rnpgp/rnp/issues/1877 SM2,
 	# https://github.com/openssl/openssl/issues/2046 TWOFISH.
 	else
