@@ -284,6 +284,7 @@ get_distribution_components() {
 			llvm-readobj
 			llvm-reduce
 			llvm-remark-size-diff
+			llvm-remarkutil
 			llvm-rtdyld
 			llvm-sim
 			llvm-size
