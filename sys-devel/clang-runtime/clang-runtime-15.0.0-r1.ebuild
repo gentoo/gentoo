@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-build
+inherit multilib-build toolchain-funcs
 
 DESCRIPTION="Meta-ebuild for clang runtime libraries"
 HOMEPAGE="https://clang.llvm.org/"
@@ -24,3 +24,17 @@ RDEPEND="
 	libcxx? ( >=sys-libs/libcxx-${PV}[${MULTILIB_USEDEP}] )
 	openmp? ( >=sys-libs/libomp-${PV}[${MULTILIB_USEDEP}] )
 "
+
+pkg_pretend() {
+	if tc-is-clang; then
+		ewarn "You seem to be using clang as a system compiler.  As of clang-15,"
+		ewarn "upstream has turned a few warnings that commonly occur during"
+		ewarn "configure script runs into errors by default.  This causes some"
+		ewarn "configure tests to start failing, sometimes resulting in silent"
+		ewarn "breakage, missing functionality or runtime misbehavior.  It is"
+		ewarn "not yet clear whether the change will remain or be reverted."
+		ewarn
+		ewarn "For more information, please see:"
+		ewarn "https://discourse.llvm.org/t/configure-script-breakage-with-the-new-werror-implicit-function-declaration/65213"
+	fi
+}
