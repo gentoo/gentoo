@@ -27,7 +27,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	virtual/jre:*
 	virtual/pkgconfig
-	>=virtual/rust-1.62"
+	>=virtual/rust-1.63"
 
 QA_FLAGS_IGNORED="
 	usr/bin/${PN}
