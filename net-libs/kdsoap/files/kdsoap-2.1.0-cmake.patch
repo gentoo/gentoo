@@ -1,0 +1,38 @@
+From 0c7374b25464d2dca3728a9c1a59f577b978e211 Mon Sep 17 00:00:00 2001
+From: Allen Winter <allen.winter@kdab.com>
+Date: Mon, 12 Sep 2022 17:06:03 -0400
+Subject: [PATCH] KDSoapClient,KDSoapServer]/CMakeLists.txt - fix
+ INSTALL_INTERFACES
+
+should not have the extra hierarchy for the library
+---
+ src/KDSoapClient/CMakeLists.txt | 2 +-
+ src/KDSoapServer/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/KDSoapClient/CMakeLists.txt b/src/KDSoapClient/CMakeLists.txt
+index 563cb6df..44dc17cd 100644
+--- a/src/KDSoapClient/CMakeLists.txt
++++ b/src/KDSoapClient/CMakeLists.txt
+@@ -44,7 +44,7 @@ target_link_libraries(
+ )
+ target_include_directories(
+     kdsoap
+-    INTERFACE "$<INSTALL_INTERFACE:${INSTALL_INCLUDE_DIR}/KDSoapClient${${PROJECT_NAME}_LIBRARY_QTID}>"
++    INTERFACE "$<INSTALL_INTERFACE:${INSTALL_INCLUDE_DIR}>"
+ )
+ set_target_properties(kdsoap PROPERTIES SOVERSION ${${PROJECT_NAME}_SOVERSION} VERSION ${${PROJECT_NAME}_VERSION})
+ 
+diff --git a/src/KDSoapServer/CMakeLists.txt b/src/KDSoapServer/CMakeLists.txt
+index 2c9ff893..a111dacb 100644
+--- a/src/KDSoapServer/CMakeLists.txt
++++ b/src/KDSoapServer/CMakeLists.txt
+@@ -39,7 +39,7 @@ target_link_libraries(
+ )
+ target_include_directories(
+     kdsoap-server
+-    INTERFACE "$<INSTALL_INTERFACE:${INSTALL_INCLUDE_DIR}/KDSoapServer${${PROJECT_NAME}_LIBRARY_QTID}>"
++    INTERFACE "$<INSTALL_INTERFACE:${INSTALL_INCLUDE_DIR}>"
+ )
+ set_target_properties(
+     kdsoap-server PROPERTIES SOVERSION ${${PROJECT_NAME}_SOVERSION} VERSION ${${PROJECT_NAME}_VERSION}
