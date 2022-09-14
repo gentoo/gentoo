@@ -242,7 +242,9 @@ src_configure() {
 		: "${CROSSCC:=${CROSSCC_x86:-i686-w64-mingw32-gcc}}"
 
 		# use *FLAGS for mingw, but strip unsupported (e.g. --hash-style=gnu)
-		: "${CROSSCFLAGS:=$(CC=${CROSSCC} test-flags-CC ${CFLAGS:--O2})}"
+		: "${CROSSCFLAGS:=$(
+			filter-flags '-fstack-protector*' #870136
+			CC=${CROSSCC} test-flags-CC ${CFLAGS:--O2})}"
 		: "${CROSSLDFLAGS:=$(
 			filter-flags '-fuse-ld=*'
 			CC=${CROSSCC} test-flags-CCLD ${LDFLAGS})}"
