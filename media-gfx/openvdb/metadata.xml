@@ -15,6 +15,10 @@
 		Chance of Meatballs2' and 'How to Train Your Dragon 2'. 
 	</longdescription>
 	<use>
+		<flag name="ax">
+			Build the OpenVDB AX module to perform custom manipulation of
+			OpenVDB data via an expression language: AX.
+		</flag>
 		<flag name="blosc">
 			Allow using blosc compression via <pkg>dev-libs/c-blosc</pkg>
 		</flag>
