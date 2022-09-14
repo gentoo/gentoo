@@ -1,0 +1,15 @@
+Fixes build with latest CMake master after changes to
+find_package_handle_standard_args.
+
+Upstream MR: https://invent.kde.org/frameworks/kdoctools/-/merge_requests/24
+--- a/cmake/FindDocBookXML4.cmake
++++ b/cmake/FindDocBookXML4.cmake
+@@ -74,6 +74,7 @@ locate_version (${DocBookXML4_DTD_VERSION} DocBookXML4_DTD_DIR)
+ include(FindPackageHandleStandardArgs)
+ find_package_handle_standard_args (DocBookXML4
+     REQUIRED_VARS DocBookXML4_DTD_DIR DocBookXML4_DTD_VERSION
+-    FOUND_VAR DocBookXML4_FOUND)
++    FOUND_VAR DocBookXML4_FOUND
++    VERSION_VAR DocBookXML4_DTD_VERSION)
+ 
+ mark_as_advanced (DocBookXML4_DTD_DIR DocBookXML4_DTD_VERSION)

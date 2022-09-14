@@ -28,7 +28,11 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-5.54.0-gentoo-docbundledir.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-5.54.0-gentoo-docbundledir.patch"
+	# https://invent.kde.org/frameworks/kdoctools/-/merge_requests/24
+	"${FILESDIR}/${PN}-5.98.0-cmake-fphsa-version.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
