@@ -32,7 +32,7 @@ RDEPEND="
 		>=virtual/glu-9.0-r1[abi_x86_32(-)]
 		>=virtual/opengl-7.0-r1[abi_x86_32(-)]
 		>=media-libs/alsa-lib-1.0.27.2[abi_x86_32(-)]
-		 || ( media-libs/flac:0/0[abi_x86_32(-)] media-libs/flac-compat:8.3.0[abi_x86_32(-)] )
+		|| ( media-libs/flac:0/0[abi_x86_32(-)] media-libs/flac-compat:8.3.0[abi_x86_32(-)] )
 		>=media-libs/libogg-1.3.0[abi_x86_32(-)]
 		>=media-libs/libsndfile-1.0.25[abi_x86_32(-)]
 		>=media-libs/libvorbis-1.3.3-r1[abi_x86_32(-)]
@@ -54,7 +54,7 @@ RDEPEND="
 	x86? (
 		dev-libs/openssl:0=
 		media-libs/alsa-lib
-		media-libs/flac
+		|| ( media-libs/flac:0/0 media-libs/flac-compat:8.3.0 )
 		media-libs/libogg
 		media-libs/libsndfile
 		media-libs/libvorbis
