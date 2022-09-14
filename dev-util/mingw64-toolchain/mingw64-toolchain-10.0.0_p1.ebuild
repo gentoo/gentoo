@@ -188,7 +188,6 @@ src_compile() {
 				# cross-compiling, cleanup and let ./configure handle it
 				unset AR AS CC CPP CXX LD NM OBJCOPY OBJDUMP RANLIB RC STRIP
 				CHOST=${CTARGET}
-				filter-flags '-fstack-protector*' #870136
 				filter-flags '-fuse-ld=*'
 				strip-unsupported-flags
 				mwt-build "${@:2}"
