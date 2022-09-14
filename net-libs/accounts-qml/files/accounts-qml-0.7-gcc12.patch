@@ -1,0 +1,30 @@
+From 6bfa9d24363e28971839d86925d9de3d7aef512c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 14 Sep 2022 22:40:30 +0100
+Subject: [PATCH] Fix build failure with GCC 12 (missing <algorithms> include)
+
+Needed for std::sort.
+
+Bug: https://bugs.gentoo.org/870157
+Fixes: 69e17dec5add40655cd9334ec7ad4eef13fed8a4
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ src/account-service-model.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/account-service-model.cpp b/src/account-service-model.cpp
+index deb157e..20a445c 100644
+--- a/src/account-service-model.cpp
++++ b/src/account-service-model.cpp
+@@ -20,6 +20,8 @@
+ #include "debug.h"
+ #include "manager.h"
+ 
++#include <algorithm>
++
+ #include <Accounts/Account>
+ #include <Accounts/AccountService>
+ #include <Accounts/Application>
+-- 
+GitLab
+
