@@ -51,6 +51,7 @@ PATCHES=(
 	"${WORKDIR}"/${P}-patches/${P}-gcc12.patch
 	# master
 	"${WORKDIR}"/${P}-patches/${P}-KDEInstallDirs.patch
+	"${FILESDIR}"/${P}-postgresql-gcc12.patch # bug 869368
 )
 
 pkg_setup() {
