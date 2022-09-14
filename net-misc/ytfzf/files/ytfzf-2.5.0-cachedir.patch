@@ -1,0 +1,16 @@
+https://github.com/pystardust/ytfzf/commit/cfc739211352b0d5249e48419a34ee6e1913aadd
+From: Euro20179 <sandollar2020@gmail.com>
+Date: Tue, 13 Sep 2022 18:50:36 -0700
+Subject: [PATCH] fix: if cache dir is missing, ytfzf complains when trying to
+ create instances.json
+--- a/ytfzf
++++ b/ytfzf
+@@ -2278,6 +2278,8 @@ do_an_event_function "on_post_set_vars"
+ # files
+ : "${hist_file:="$cache_dir/watch_hist"}" "${search_hist_file:="$cache_dir/search_hist"}"
+ 
++[ ! -d "$cache_dir" ] && mkdir -p "$cache_dir"
++
+ # Where do we put the list of healthy instances?
+ : "${instances_file:="$cache_dir/instances.json"}"
+ 
