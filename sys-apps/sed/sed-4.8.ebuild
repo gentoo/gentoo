@@ -33,6 +33,10 @@ DEPEND="${RDEPEND}
 BDEPEND="nls? ( sys-devel/gettext )
 	verify-sig? ( sec-keys/openpgp-keys-sed )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-avoid-noreturn-diagnostic.patch"
+)
+
 src_configure() {
 	use static && append-ldflags -static
 
