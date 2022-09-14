@@ -1,0 +1,82 @@
+From 536ba654e43741a18d2b71ee519f1daefeaa7ffd Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Sat, 4 Jun 2022 18:15:10 +0800
+Subject: [PATCH 1/2] startkde: `Q_UNUSED` ksplash
+
+Variable 'ksplash' is assigned a value that is never used. (CWE-563)
+
+(cherry picked from commit 6bebf9a7e636d6655ede49ce48d33f2254ac75f0)
+---
+ startkde/startplasma-x11.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/startkde/startplasma-x11.cpp b/startkde/startplasma-x11.cpp
+index 817de3511..a80c515fc 100644
+--- a/startkde/startplasma-x11.cpp
++++ b/startkde/startplasma-x11.cpp
+@@ -59,6 +59,7 @@ int main(int argc, char **argv)
+ 
+     setupCursor(false);
+     QScopedPointer<QProcess, KillBeforeDeleter> ksplash(setupKSplash());
++    Q_UNUSED(ksplash)
+ 
+     runEnvironmentScripts();
+ 
+-- 
+2.37.3
+
+
+From 5e54fbd0b351e43cb68c193bf684dd8cdbd11210 Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Tue, 13 Sep 2022 13:54:04 +0200
+Subject: [PATCH 2/2] delay ksplash until after env is set up
+
+otherwise we can dbus invoke with the wrong environment. specifically
+this happens with the latest qtbase changes that introduced color
+picking support on wayland. when we start a qguiapplication with
+incomplete environment that dbus invokes the xdg-portal system and that
+in turn has an incomplete environment resulting in theming and the likes
+not properly applying because the portal doesn't know that it runs
+inside a plasma session.
+
+https://invent.kde.org/qt/qt/qtbase/-/commit/2dc083df009a45c5dacfea27b0affeb85b01f847
+
+BUG: 458865
+(cherry picked from commit 9bf0e56da84de5e9bd2b3ff28bdb2cb1af6de91e)
+
+asturmlechner 2022-09-14: Backported to Plasma/5.25 branch
+---
+ startkde/startplasma-x11.cpp | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/startkde/startplasma-x11.cpp b/startkde/startplasma-x11.cpp
+index a80c515fc..d1722771b 100644
+--- a/startkde/startplasma-x11.cpp
++++ b/startkde/startplasma-x11.cpp
+@@ -57,10 +57,6 @@ int main(int argc, char **argv)
+         }
+     }
+ 
+-    setupCursor(false);
+-    QScopedPointer<QProcess, KillBeforeDeleter> ksplash(setupKSplash());
+-    Q_UNUSED(ksplash)
+-
+     runEnvironmentScripts();
+ 
+     out << "startkde: Starting up...\n";
+@@ -80,6 +76,12 @@ int main(int argc, char **argv)
+     // variables (e.g. LANG and LC_*)
+     importSystemdEnvrionment();
+ 
++    // NOTE: Do not start QGuiApplications before setting up the environment. We'd be at risk of dbus invoking other
++    // processes with an incomplete environment.
++    setupCursor(false);
++    QScopedPointer<QProcess, KillBeforeDeleter> ksplash(setupKSplash());
++    Q_UNUSED(ksplash)
++
+     if (!startPlasmaSession(false))
+         return 1;
+ 
+-- 
+2.37.3
+
