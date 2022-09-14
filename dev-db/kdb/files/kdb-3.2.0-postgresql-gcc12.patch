@@ -1,0 +1,34 @@
+From 48f9167e37c9a2d024c525cab0ba65a2e02e248f Mon Sep 17 00:00:00 2001
+From: Yaakov Selkowitz <yselkowi@redhat.com>
+Date: Mon, 20 Jun 2022 14:49:26 -0400
+Subject: [PATCH] postgresql: Fix build with GCC 12 (standard attributes in
+ middle of decl-specifiers)
+
+---
+ src/drivers/postgresql/PostgresqlConnection_p.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/drivers/postgresql/PostgresqlConnection_p.h b/src/drivers/postgresql/PostgresqlConnection_p.h
+index c0485786..99040c6a 100644
+--- a/src/drivers/postgresql/PostgresqlConnection_p.h
++++ b/src/drivers/postgresql/PostgresqlConnection_p.h
+@@ -155,14 +155,14 @@ public:
+         return PQnfields(result);
+     }
+ 
+-    inline Q_REQUIRED_RESULT KDbSqlField *field(int index) override
++    Q_REQUIRED_RESULT inline KDbSqlField *field(int index) override
+     {
+         return new PostgresqlSqlField(result, index);
+     }
+ 
+     Q_REQUIRED_RESULT KDbField *createField(const QString &tableName, int index) override;
+ 
+-    inline Q_REQUIRED_RESULT QSharedPointer<KDbSqlRecord> fetchRecord() override
++    Q_REQUIRED_RESULT inline QSharedPointer<KDbSqlRecord> fetchRecord() override
+     {
+         return QSharedPointer<KDbSqlRecord>(recordToFetch < recordsCount
+                                                 ? new PostgresqlSqlRecord(result, recordToFetch++)
+-- 
+GitLab
+
