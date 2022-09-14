@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-ugly
 inherit gstreamer-meson
 
 DESCRIPTION="H.264 encoder plugin for GStreamer"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 # 20111220 ensures us X264_BUILD >= 120
 RDEPEND=">=media-libs/x264-0.0.20130506:=[${MULTILIB_USEDEP}]"
