@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/haskell/aeson"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="cffi +ordered-keymap"
 
 RDEPEND=">=dev-haskell/attoparsec-0.14.2:=[profile?] <dev-haskell/attoparsec-0.15:=[profile?]
