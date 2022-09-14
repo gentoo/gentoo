@@ -8,7 +8,7 @@ inherit python-single-r1 cmake
 
 DESCRIPTION="Open source multimedia framework for television broadcasting"
 HOMEPAGE="https://www.mltframework.org/"
-SRC_URI="https://github.com/mltframework/${PN}/releases/download/v${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/mltframework/${PN}/releases/download/v${PV}/${P}.tar.gz -> ${P}a.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0/7"
