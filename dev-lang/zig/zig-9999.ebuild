@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_MAX_SLOT=14
+LLVM_MAX_SLOT=15
 inherit cmake llvm check-reqs
 
 DESCRIPTION="A robust, optimal, and maintainable programming language"
