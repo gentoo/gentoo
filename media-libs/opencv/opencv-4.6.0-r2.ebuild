@@ -290,6 +290,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.1.2-opencl-license.patch
 	"${FILESDIR}"/${PN}-4.4.0-disable-native-cpuflag-detect.patch
 	"${FILESDIR}"/${PN}-4.5.0-link-with-cblas-for-lapack.patch
+	"${FILESDIR}"/${P}-fix-build-examples.patch # bug 830163, pending upstream PR #22245
 )
 
 pkg_pretend() {
