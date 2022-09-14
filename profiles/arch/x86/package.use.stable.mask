@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-09-14)
+# sci-libs/vtk is not stable on x86 and we don't want to complicate
+# newer maxima stabilisation, bug #867547
+sci-mathematics/maxima vtk
+
 # Sam James <sam@gentoo.org> (2022-07-06)
 # sci-libs/sundials is not marked stable on x86
 sci-mathematics/octave sundials
