@@ -298,7 +298,9 @@ src_configure() {
 
 		# use *FLAGS for mingw, but strip unsupported (e.g. --hash-style=gnu)
 		local mingwcc=${CROSSCC:-$(usex x86 i686 x86_64)-w64-mingw32-gcc}
-		: "${CROSSCFLAGS:=$(CC=${mingwcc} test-flags-CC ${CFLAGS:--O2})}"
+		: "${CROSSCFLAGS:=$(
+			filter-flags '-fstack-protector*' #870136
+			CC=${mingwcc} test-flags-CC ${CFLAGS:--O2})}"
 		: "${CROSSLDFLAGS:=$(
 			filter-flags '-fuse-ld=*'
 			CC=${mingwcc} test-flags-CCLD ${LDFLAGS})}"
