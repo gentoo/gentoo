@@ -48,7 +48,7 @@ src_prepare() {
 }
 
 src_configure() {
-	 tc-export PKG_CONFIG
+	tc-export PKG_CONFIG
 
 	econf \
 		--enable-precompilation \
