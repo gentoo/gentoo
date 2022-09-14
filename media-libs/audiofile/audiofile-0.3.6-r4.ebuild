@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
 inherit autotools gnome.org multilib-minimal
 
@@ -13,7 +13,7 @@ SLOT="0/1" # subslot = soname major version
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x86-solaris"
 IUSE="flac"
 
-RDEPEND="flac? ( >=media-libs/flac-1.2.1:=[${MULTILIB_USEDEP}] )"
+RDEPEND="flac? ( >=media-libs/flac-1.2.1[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
@@ -35,8 +35,6 @@ multilib_src_configure() {
 	# delete them later rather than not compile them at all
 	local myconf=(
 		--enable-largefile
-		# static needed for tests, bug #869677
-		--enable-static
 		--disable-werror
 		--disable-examples
 		$(use_enable flac)
