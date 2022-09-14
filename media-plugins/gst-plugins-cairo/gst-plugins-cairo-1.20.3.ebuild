@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-good
 inherit gstreamer-meson
 
 DESCRIPTION="Video overlay plugin based on cairo for GStreamer"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND=">=x11-libs/cairo-1.10[glib,${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
