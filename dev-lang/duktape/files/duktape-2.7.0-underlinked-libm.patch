@@ -1,0 +1,25 @@
+https://github.com/svaarala/duktape/commit/d898ad3920cb08d6918d11d9678bae28393a82d1
+https://bugs.gentoo.org/870163
+
+From d898ad3920cb08d6918d11d9678bae28393a82d1 Mon Sep 17 00:00:00 2001 (rebased)
+From: tinywrkb <tinywrkb@gmail.com>
+Date: Thu, 17 Mar 2022 03:55:51 +0200
+Subject: [PATCH] Makefile.sharedlibrary: link against libm
+
+Closes #2464.
+--- a/Makefile.sharedlibrary
++++ b/Makefile.sharedlibrary
+@@ -71,11 +71,11 @@ all: libduktape.$(SO_REALNAME_SUFFIX) libduktaped.$(SO_REALNAME_SUFFIX) duktape.
+ 
+ libduktape.$(SO_REALNAME_SUFFIX):
+ 	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -shared -fPIC -Wall -Wextra -Wl,$(LD_SONAME_ARG),libduktape.$(SO_SONAME_SUFFIX) \
+-		-o $@ $(DUKTAPE_SRCDIR)/duktape.c
++		-o $@ $(DUKTAPE_SRCDIR)/duktape.c -lm
+ 
+ libduktaped.$(SO_REALNAME_SUFFIX):
+ 	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -shared -fPIC -Wall -Wextra -Wl,$(LD_SONAME_ARG),libduktaped.$(SO_SONAME_SUFFIX) \
+-		-o $@ $(DUKTAPE_SRCDIR)/duktape.c
++		-o $@ $(DUKTAPE_SRCDIR)/duktape.c -lm
+ 
+ duktape.pc:
+ 	sed -e "s|@PREFIX@|$(INSTALL_PREFIX)|" \
