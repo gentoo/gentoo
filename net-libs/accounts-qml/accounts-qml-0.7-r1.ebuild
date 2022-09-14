@@ -7,7 +7,8 @@ inherit qmake-utils
 
 DESCRIPTION="QML bindings for accounts-qt and signond"
 HOMEPAGE="https://accounts-sso.gitlab.io/"
-SRC_URI="https://gitlab.com/accounts-sso/${PN}-module/-/archive/VERSION_${PV}/${PN}-module-VERSION_${PV}.tar.gz"
+SRC_URI="https://gitlab.com/accounts-sso/${PN}-module/-/archive/VERSION_${PV}/${PN}-module-VERSION_${PV}.tar.gz
+	https://dev.gentoo.org/~asturm/distfiles/${P}-patches-1.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -33,7 +34,7 @@ DEPEND="${RDEPEND}
 # dbus problems
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}/${P}-no-tests.patch" )
+PATCHES=( "${WORKDIR}/${P}-patches-1/${P}-no-tests.patch" )
 
 S="${WORKDIR}/${PN}-module-VERSION_${PV}"
 
