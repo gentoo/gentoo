@@ -139,6 +139,8 @@ src_configure() {
 		-DTORCH_INSTALL_LIB_DIR=/usr/$(get_libdir)
 		-DLIBSHM_INSTALL_LIB_SUBDIR=/usr/$(get_libdir)
 	)
+
+	use cuda && addpredict "/dev/nvidiactl" # bug 867706
 	cmake_src_configure
 }
 
