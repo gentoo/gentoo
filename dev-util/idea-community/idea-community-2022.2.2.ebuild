@@ -12,7 +12,7 @@ LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 CC-BY-2.5 CDDL-1.1
 	codehaus-classworlds CPL-1.0 EPL-1.0 EPL-2.0
 	GPL-2 GPL-2-with-classpath-exception ISC
 	JDOM LGPL-2.1 LGPL-2.1+ LGPL-3-with-linking-exception MIT
-	.MPL-1.0 MPL-1.1 OFL ZLIB"
+	MPL-1.0 MPL-1.1 OFL ZLIB"
 
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
