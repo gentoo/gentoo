@@ -40,7 +40,10 @@ BDEPEND="
 
 DOCS=( README.md )
 
-PATCHES=( "${WORKDIR}/${P}-patches-1" ) # bug 849773
+PATCHES=(
+	"${WORKDIR}/${P}-patches-1" # bug 849773
+	"${FILESDIR}/${P}-gcc12.patch" # bug 870157, pending upstream
+)
 
 src_prepare() {
 	default
