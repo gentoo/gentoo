@@ -43,7 +43,7 @@ index a472267..8134d83 100644
        )
    endforeach()
  endif()
-+target_include_directories(Grantlee_TextDocument INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}>")
++target_include_directories(Grantlee_TextDocument INTERFACE "$<INSTALL_INTERFACE:include/grantlee5>")
  
  if (GRANTLEE_BUILD_WITH_QT6)
    target_link_libraries(Grantlee_TextDocument
