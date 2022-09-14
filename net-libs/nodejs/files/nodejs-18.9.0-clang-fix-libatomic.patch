@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/869992
+
+diff --git a/node.gyp b/node.gyp
+index 347d82d2e1..8c4ffea256 100644
+--- a/node.gyp
++++ b/node.gyp
+@@ -117,9 +117,6 @@
+           '-Wl,-bnoerrmsg',
+         ],
+       }],
+-      ['OS == "linux" and llvm_version != "0.0"', {
+-        'libraries': ['-latomic'],
+-      }],
+     ],
+   },
+
