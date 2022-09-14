@@ -71,6 +71,7 @@ src_prepare() {
 		lib/pty4j-native/linux/mips64el
 		lib/pty4j-native/linux/ppc64le
 		plugins/remote-dev-server/selfcontained
+		plugins/cwm-plugin/quiche-native/linux-aarch64
 	)
 
 	use amd64 || remove_me+=( lib/pty4j-native/linux/x86_64 )
