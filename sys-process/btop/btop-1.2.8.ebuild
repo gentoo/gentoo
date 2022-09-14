@@ -13,6 +13,19 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 arm64 ppc64 ~riscv x86"
 
+BDEPEND="
+	>=sys-devel/gcc-8
+"
+
+pkg_setup() {
+	if [[ "${MERGE_TYPE}" != "binary" ]]; then
+		if ! tc-is-gcc ; then
+			# https://bugs.gentoo.org/839318
+			die "$(tc-getCXX) is not a supported compiler. Please use sys-devel/gcc instead."
+		fi
+	fi
+}
+
 src_prepare() {
 	default
 	# btop installs README.md to /usr/share/btop by default
