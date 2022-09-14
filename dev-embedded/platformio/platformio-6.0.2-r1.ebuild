@@ -3,8 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9,10} )
 DISTUTILS_SINGLE_IMPL=1
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 udev
 
@@ -61,27 +62,55 @@ EPYTEST_IGNORE=(
 	tests/commands/test_lib_complex.py
 	tests/commands/test_boards.py
 	tests/commands/test_check.py
-	tests/test_ino2cpp.py
+	tests/commands/test_run.py
+	tests/commands/pkg/test_exec.py
+	tests/commands/pkg/test_list.py
+	tests/commands/pkg/test_outdated.py
+	tests/commands/pkg/test_search.py
+	tests/commands/pkg/test_show.py
+	tests/commands/pkg/test_install.py
+	tests/commands/pkg/test_uninstall.py
+	tests/commands/pkg/test_update.py
+	tests/misc/ino2cpp/test_ino2cpp.py
 	tests/test_maintenance.py
 	tests/test_misc.py
 )
 
-distutils_enable_tests pytest
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-5.2.5-fix-semantic-version-dep.patch
+EPYTEST_DESELECT=(
+	# Requires network access
+	tests/misc/test_maintenance.py::test_check_pio_upgrade
+	tests/misc/test_misc.py::test_ping_internet_ips
+	tests/misc/test_misc.py::test_api_cache
 )
+
+distutils_enable_tests pytest
 
 src_prepare() {
 	# Allow newer versions of zeroconf, Bug #831181.
 	# Also wsproto.
-	sed -e '/zeroconf/s/==[0-9.*]*//' \
-		-e '/wsproto/s/==[0-9.*]*//' \
+	# ... and semantic_version, bug #853247.
+	sed \
+		-e '/zeroconf/s/<[0-9.*]*//' \
+		-e '/wsproto/s/==.*/"/' \
+		-e '/semantic_version/s/==[0-9.*]*//' \
 		-i setup.py || die
+
 	default
+}
+
+python_test() {
+	epytest -k "not skip_ci"
 }
 
 src_install() {
 	distutils-r1_src_install
 	udev_dorules scripts/99-platformio-udev.rules
+}
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
 }
