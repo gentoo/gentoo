@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/chenxiaolong/ipmi-fan-control/issues</bugs-to>
+		<remote-id type="github">chenxiaolong/ipmi-fan-control</remote-id>
+	</upstream>
+</pkgmetadata>
