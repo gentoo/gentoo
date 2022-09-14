@@ -6,7 +6,7 @@ EAPI=8
 # Please bump with app-editors/vim and app-editors/gvim
 
 VIM_VERSION="9.0"
-inherit autotools vim-doc flag-o-matic bash-completion-r1 prefix desktop xdg-utils
+inherit autotools vim-doc flag-o-matic prefix desktop xdg-utils
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
@@ -33,7 +33,8 @@ IUSE="nls acl minimal"
 DEPEND=">=sys-libs/ncurses-5.2-r2:0"
 BDEPEND="sys-devel/autoconf"
 # Avoid icon file collision, bug #673880
-RDEPEND="!<app-editors/vim-8.2.4328-r1"
+RDEPEND="!<app-editors/vim-8.2.4328-r1
+	dev-util/xxd"
 PDEPEND="!minimal? ( app-vim/gentoo-syntax )"
 
 pkg_setup() {
@@ -106,6 +107,11 @@ src_prepare() {
 
 	# Remove src/auto/configure file.
 	rm -v src/auto/configure || die "rm configure failed"
+
+	# sed out all xxd stuff from "installtools" target
+	sed -i -e \
+		'/^\s*if test -f \$(DEST_BIN)\/xxd/,/^\s*-\$(SHELL) \.\/installman\.sh xxd/d' \
+		src/Makefile || die "Makefile sed failed"
 
 	eapply_user
 
@@ -201,8 +207,6 @@ src_install() {
 			fi
 		done | xargs -0 rm -f || die
 	fi
-
-	newbashcomp "${FILESDIR}"/xxd-completion xxd
 
 	# install gvim icon since both vim/gvim desktop files reference it
 	doicon -s scalable "${FILESDIR}"/gvim.svg
