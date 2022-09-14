@@ -117,7 +117,9 @@ SRC_URI="https://github.com/chenxiaolong/${PN}/archive/refs/tags/v${PV}.tar.gz -
 
 LICENSE="MIT 0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 GPL-3+ MIT Unicode-DFS-2016 Unlicense ZLIB"
 SLOT="0"
-KEYWORDS="~amd64"
+# supported boards are x86_64 only, do not keyword elsewhere
+# technically it could run on remote host and issue commands via ipmitool lanplus, but that's very edgy case
+KEYWORDS="-* ~amd64"
 
 RDEPEND="sys-apps/ipmitool"
 
