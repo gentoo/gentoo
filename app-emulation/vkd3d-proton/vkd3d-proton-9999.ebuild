@@ -96,6 +96,7 @@ src_configure() {
 	if [[ ${CHOST} != *-mingw* ]]; then
 		if [[ ! -v MINGW_BYPASS ]]; then
 			unset AR CC CXX RC STRIP WIDL
+			filter-flags '-fstack-protector*' #870136
 			filter-flags '-fuse-ld=*'
 		fi
 
