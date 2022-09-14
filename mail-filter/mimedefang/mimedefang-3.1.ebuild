@@ -1,10 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Antispam, antivirus and other customizable filters for MTAs with Milter support"
-HOMEPAGE="http://www.mimedefang.org/"
+HOMEPAGE="https://www.mimedefang.org/"
 SRC_URI="https://mimedefang.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-2+"
@@ -14,6 +14,7 @@ IUSE="clamav +poll test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	|| ( mail-mta/sendmail mail-mta/postfix )
 	acct-group/defang
 	acct-user/defang
 	dev-perl/Digest-SHA1
@@ -21,7 +22,6 @@ RDEPEND="
 	dev-perl/MailTools
 	dev-perl/MIME-tools
 	dev-perl/Unix-Syslog
-	|| ( mail-mta/sendmail mail-mta/postfix )
 	mail-filter/libmilter:=
 	virtual/perl-MIME-Base64
 	clamav? ( app-antivirus/clamav )
@@ -35,12 +35,11 @@ DEPEND="
 	)
 "
 
-src_prepare() {
-	eapply "${FILESDIR}/${PN}-2.72-ldflags.patch"
-	eapply "${FILESDIR}/${PN}-vendor.patch"
-	eapply "${FILESDIR}/${PN}-tests2.patch"
-	eapply_user
-}
+PATCHES=(
+	"${FILESDIR}/${PN}-2.72-ldflags.patch"
+	"${FILESDIR}/${PN}-vendor.patch"
+	"${FILESDIR}/${PN}-tests2.patch"
+)
 
 src_configure() {
 	local myeconfargs=(
