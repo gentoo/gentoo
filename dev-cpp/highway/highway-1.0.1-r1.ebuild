@@ -18,7 +18,7 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="test"
+IUSE="cpu_flags_arm_neon test"
 
 DEPEND="test? ( dev-cpp/gtest[${MULTILIB_USEDEP}] )"
 
@@ -26,6 +26,7 @@ RESTRICT="!test? ( test )"
 
 multilib_src_configure() {
 	local mycmakeargs=(
+		-DHWY_CMAKE_ARM7=$(usex cpu_flags_arm_neon)
 		-DBUILD_TESTING=$(usex test)
 		-DHWY_WARNINGS_ARE_ERRORS=OFF
 	)
