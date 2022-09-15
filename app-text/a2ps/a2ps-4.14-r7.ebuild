@@ -17,7 +17,7 @@ IUSE="cjk emacs latex nls static-libs vanilla"
 RESTRICT=test
 
 RDEPEND="app-text/ghostscript-gpl
-	app-text/libpaper
+	app-text/libpaper:=
 	>=app-text/psutils-1.17
 	app-text/wdiff
 	>=sys-apps/coreutils-6.10-r1
