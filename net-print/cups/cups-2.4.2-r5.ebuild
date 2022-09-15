@@ -38,7 +38,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 DEPEND="
-	app-text/libpaper
+	app-text/libpaper:=
 	sys-libs/zlib
 	acl? (
 		kernel_linux? (
