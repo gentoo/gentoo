@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Virtual for Serif/Sans/Monospace font packages"
 
@@ -10,7 +10,6 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 
 RDEPEND="|| (
 		media-fonts/liberation-fonts
-		media-fonts/source-pro
 		media-fonts/dejavu
 		media-fonts/croscorefonts
 		media-fonts/droid
