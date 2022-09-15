@@ -39,7 +39,7 @@ IUSE="${DB_TYPES} ${AUTHENTICATION_MODES} vhosts"
 # and the moodle documentation for other possibilities.
 DEPEND=""
 RDEPEND="
-	>=dev-lang/php-7.2[${DB_FLAGS},${AUTHENTICATION_FLAGS},${PHP_FLAGS}]
+	dev-lang/php:7.4[${DB_FLAGS},${AUTHENTICATION_FLAGS},${PHP_FLAGS}]
 	virtual/httpd-php
 	virtual/cron"
 

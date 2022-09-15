@@ -5,11 +5,12 @@ EAPI="7"
 
 inherit webapp
 
-MY_BRANCH="stable$(ver_cut 1)$(ver_cut 2)"
-
 DESCRIPTION="The Moodle Course Management System"
 HOMEPAGE="https://moodle.org"
-SRC_URI="https://download.moodle.org/${MY_BRANCH}/${P}.tgz"
+
+MY_BRANCH="stable$(ver_cut 1)$(ver_cut 2)0"
+#SRC_URI="https://download.moodle.org/download.php/direct/stable400/moodle-4.0.tgz"
+SRC_URI="https://download.moodle.org/download.php/direct/${MY_BRANCH}/${P}.tgz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-3+"
@@ -39,7 +40,7 @@ IUSE="${DB_TYPES} ${AUTHENTICATION_MODES} vhosts"
 # and the moodle documentation for other possibilities.
 DEPEND=""
 RDEPEND="
-	>=dev-lang/php-7.3[${DB_FLAGS},${AUTHENTICATION_FLAGS},${PHP_FLAGS}]
+	dev-lang/php:7.4[${DB_FLAGS},${AUTHENTICATION_FLAGS},${PHP_FLAGS}]
 	virtual/httpd-php
 	virtual/cron"
 
