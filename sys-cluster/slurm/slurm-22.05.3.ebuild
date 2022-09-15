@@ -3,7 +3,7 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-{1..3} )
+LUA_COMPAT=( lua5-{1..4} )
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/SchedMD/slurm.git"
@@ -15,9 +15,9 @@ else
 	else
 		MY_PV=$(ver_rs 1-4 '-') # stable releases
 	fi
-	MY_P="${PN}-${MY_PV}"
+	MY_P="${P}"
 	INHERIT_GIT=""
-	SRC_URI="https://github.com/SchedMD/slurm/archive/${MY_P}.tar.gz"
+	SRC_URI="https://download.schedmd.com/slurm/${MY_P}.tar.bz2"
 	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 fi
 
@@ -28,8 +28,9 @@ HOMEPAGE="https://www.schedmd.com https://github.com/SchedMD/slurm"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug hdf5 html ipmi json lua multiple-slurmd +munge mysql netloc numa ofed pam perl slurmdbd static-libs ucx torque X"
+IUSE="X debug hdf5 html ipmi json lua multiple-slurmd +munge mysql numa nvml ofed pam perl rrdtool slurmdbd slurmrestd static-libs torque ucx yaml"
 
+# See bug #813924 for hdf5lib < dep, needs proper fix
 COMMON_DEPEND="
 	!sys-cluster/torque
 	!net-analyzer/slurm
@@ -39,21 +40,27 @@ COMMON_DEPEND="
 		|| ( dev-db/mariadb-connector-c dev-db/mysql-connector-c )
 		slurmdbd? ( || ( dev-db/mariadb:* dev-db/mysql:* ) )
 		)
+	slurmrestd? (
+		net-libs/http-parser
+	)
 	munge? ( sys-auth/munge )
 	pam? ( sys-libs/pam )
 	lua? ( ${LUA_DEPS} )
 	ipmi? ( sys-libs/freeipmi )
 	json? ( dev-libs/json-c:= )
-	amd64? ( netloc? ( >=sys-apps/hwloc-2.1.0:=[netloc(-)] ) )
-	hdf5? ( sci-libs/hdf5:= )
+	hdf5? ( <sci-libs/hdf5-1.12:= )
 	numa? ( sys-process/numactl )
+	nvml? ( dev-util/nvidia-cuda-toolkit x11-drivers/nvidia-drivers )
 	ofed? ( sys-cluster/rdma-core )
+	rrdtool? ( net-analyzer/rrdtool )
 	ucx? ( sys-cluster/ucx )
+	yaml? ( dev-libs/libyaml )
 	X? ( net-libs/libssh2 )
 	>=sys-apps/hwloc-1.1.1-r1:=
 	sys-libs/ncurses:0=
 	app-arch/lz4:0=
 	dev-libs/glib:2=
+	sys-apps/dbus
 	sys-libs/readline:0="
 
 DEPEND="${COMMON_DEPEND}
@@ -65,9 +72,10 @@ RDEPEND="${COMMON_DEPEND}
 	dev-libs/libcgroup"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
-	torque? ( perl )"
+	torque? ( perl )
+	slurmrestd? ( json ) "
 
-S="${WORKDIR}/${PN}-${MY_P}"
+S="${WORKDIR}/${MY_P}"
 
 LIBSLURM_PERL_S="${S}/contribs/perlapi/libslurm/perl"
 LIBSLURMDB_PERL_S="${S}/contribs/perlapi/libslurmdb/perl"
@@ -75,7 +83,7 @@ LIBSLURMDB_PERL_S="${S}/contribs/perlapi/libslurmdb/perl"
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-20.11.0.1_autoconf-lua.patch
+	"${FILESDIR}"/${PN}-22.05.3_autoconf-lua.patch
 )
 
 pkg_setup() {
@@ -123,6 +131,7 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
+		CPPFLAGS="-I/opt/cuda/include"
 		--sysconfdir="${EPREFIX}/etc/${PN}"
 		--with-hwloc="${EPREFIX}/usr"
 		--htmldir="${EPREFIX}/usr/share/doc/${PF}"
@@ -138,9 +147,13 @@ src_configure() {
 		$(use_with munge) \
 		$(use_with json) \
 		$(use_with hdf5) \
+		$(use_with nvml) \
 		$(use_with ofed) \
+		$(use_with rrdtool) \
 		$(use_with ucx) \
+		$(use_with yaml) \
 		$(use_enable static-libs static) \
+		$(use_enable slurmrestd) \
 		$(use_enable multiple-slurmd)
 
 	# --htmldir does not seems to propagate... Documentations are installed
@@ -156,9 +169,9 @@ src_configure() {
 		touch "${S}/src/api/.libs/libslurm.so" || die
 		touch "${S}/src/db_api/.libs/libslurmdb.so" || die
 		cd "${LIBSLURM_PERL_S}" || die
-		S="${LIBSLURM_PERL_S}" perl-module_src_configure
+		S="${LIBSLURM_PERL_S}" SRC_PREP="no" perl-module_src_configure
 		cd "${LIBSLURMDB_PERL_S}" || die
-		S="${LIBSLURMDB_PERL_S}" perl-module_src_configure
+		S="${LIBSLURMDB_PERL_S}" SRC_PREP="no" perl-module_src_configure
 		cd "${S}" || die
 		rm -rf "${S}/src/api/.libs" "${S}/src/db_api/.libs" || die
 	fi
