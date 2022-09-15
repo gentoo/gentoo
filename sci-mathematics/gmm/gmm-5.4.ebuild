@@ -11,7 +11,7 @@ HOMEPAGE="http://getfem.org/gmm.html"
 
 LICENSE="|| ( LGPL-3 LGPL-3-with-linking-exception )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~hppa ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 src_configure() {
