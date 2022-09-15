@@ -1,8 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-VALA_MAX_API_VERSION="0.50"
+EAPI=8
 
 inherit gnome.org gnome2-utils meson vala xdg
 
@@ -12,7 +11,6 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Nibbles https://gitlab.gnome.org/GNOME/gno
 LICENSE="GPL-3+ CC-BY-SA-3.0"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~riscv x86"
-IUSE=""
 
 RDEPEND="
 	>=dev-libs/glib-2.42.0:2
@@ -39,8 +37,9 @@ PATCHES=(
 )
 
 src_prepare() {
-	xdg_src_prepare
-	vala_src_prepare
+	default
+	vala_setup
+	xdg_environment_reset
 }
 
 pkg_postinst() {
