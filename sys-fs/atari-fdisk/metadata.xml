@@ -2,6 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="project">
+	<name>m68k architecture team</name>
 	<email>m68k@gentoo.org</email>
 </maintainer>
 </pkgmetadata>
