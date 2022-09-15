@@ -316,12 +316,6 @@ x11-terms/mrxvt
 media-libs/libaacplus
 
 # John Helmert III <ajak@gentoo.org> (2022-08-14)
-# Many vulnerabilities (including code execution and root privilege
-# escalation), effectively unmaintained. Removal in 30 days, bugs
-# #631552, #790296, #842789
-sys-cluster/slurm
-
-# John Helmert III <ajak@gentoo.org> (2022-08-14)
 # Vulnerable and unmaintained for years, many open bugs, no revdeps,
 # EAPI 6. Removal in 30 days, bug 733354
 net-misc/calico-cni-plugin
