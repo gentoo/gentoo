@@ -126,8 +126,9 @@ src_install() {
 	echo "fs.inotify.max_user_watches = 524288" > "${D}/etc/sysctl.d/30-idea-inotify-watches.conf" || die
 
 	# remove bundled harfbuzz
-	rm -f "${D}"/lib/libharfbuzz.so || die
+	rm -f "${D}"/lib/libharfbuzz.so || die "Unable to remove bundled harfbuzz"
 
 	# remove bundled java
-	rm -rf "$dst{jbr,jre{64}}"
+	rm -r ${dst}/jbr || die "Unable to remove bundled java"
+
 }

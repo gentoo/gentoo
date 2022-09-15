@@ -5,7 +5,7 @@
  if [ -n "$IDEA_JDK" ] && [ -x "$IDEA_JDK/bin/java" ]; then
    JRE="$IDEA_JDK"
 +else
-+  JDK="/opt/openjdk-bin-11" && [[ -d "/opt/openjdk-11" ]] && JDK="/usr/lib64/openjdk-bin-11"
++  JRE="/opt/openjdk-bin-17" && [[ -d "/opt/openjdk-17" ]] && JRE="/usr/lib64/openjdk-bin-17"
  fi
  
  BITS=""
