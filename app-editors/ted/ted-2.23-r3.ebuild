@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc ~riscv sparc x86"
 
 RDEPEND="
-	app-text/libpaper
+	app-text/libpaper:=
 	dev-libs/libpcre2
 	media-libs/fontconfig
 	media-libs/freetype
