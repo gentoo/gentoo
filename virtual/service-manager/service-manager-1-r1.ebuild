@@ -15,6 +15,7 @@ RDEPEND="
 			sys-apps/openrc
 			kernel_linux? (
 				|| (
+					sys-apps/s6-rc
 					sys-apps/systemd
 					sys-process/runit
 					virtual/daemontools
