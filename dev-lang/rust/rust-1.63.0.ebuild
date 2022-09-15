@@ -41,7 +41,7 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/(-)?}
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 
-IUSE="clippy cpu_flags_x86_sse2 debug dist doc miri nightly parallel-compiler profiler rls rustfmt rust-src system-bootstrap system-llvm test wasm ${ALL_LLVM_TARGETS[*]}"
+IUSE="clippy cpu_flags_x86_sse2 debug dist doc llvm-libunwind miri nightly parallel-compiler profiler rls rustfmt rust-src system-bootstrap system-llvm test wasm ${ALL_LLVM_TARGETS[*]}"
 
 # Please keep the LLVM dependency block separate. Since LLVM is slotted,
 # we need to *really* make sure we're not pulling more than one slot
@@ -105,8 +105,15 @@ DEPEND="
 	net-misc/curl:=[http2,ssl]
 	sys-libs/zlib:=
 	dev-libs/openssl:0=
-	elibc_musl? ( sys-libs/libunwind:= )
-	system-llvm? ( ${LLVM_DEPEND} )
+	system-llvm? (
+		${LLVM_DEPEND}
+		llvm-libunwind? ( sys-libs/llvm-libunwind:= )
+	)
+	!system-llvm? (
+		!llvm-libunwind? (
+			elibc_musl? ( sys-libs/libunwind:= )
+		)
+	)
 "
 
 RDEPEND="${DEPEND}
@@ -430,8 +437,10 @@ src_configure() {
 			cxx = "$(tc-getCXX)"
 			linker = "$(tc-getCC)"
 			ranlib = "$(tc-getRANLIB)"
+			llvm-libunwind = "$(usex llvm-libunwind $(usex system-llvm system in-tree) no)"
 		_EOF_
-		# librustc_target/spec/linux_musl_base.rs sets base.crt_static_default = true;
+		# by default librustc_target/spec/linux_musl_base.rs sets base.crt_static_default = true;
+		# but we patch it and set to false here as well
 		if use elibc_musl; then
 			cat <<- _EOF_ >> "${S}"/config.toml
 				crt-static = false
