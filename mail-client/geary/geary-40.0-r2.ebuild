@@ -1,10 +1,8 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{8..10} )
-VALA_MIN_API_VERSION="0.48"
-VALA_MAX_API_VERSION="0.54"
+EAPI=8
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit gnome.org gnome2-utils meson python-any-r1 vala virtualx xdg
 
@@ -70,11 +68,13 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}"/${PV}-Fix-accessibility-issues-with-initializer-of-constan.patch
+	"${FILESDIR}"/${PV}-Util.Cache.Lru-Workaround-missing-generic-type-argum.patch
 	"${FILESDIR}"/${PV}-Correct-the-conditional-comments-in-the-test-data.patch
 )
 
 src_prepare() {
-	vala_src_prepare
+	vala_setup
 	gnome2_environment_reset
 	default
 }
