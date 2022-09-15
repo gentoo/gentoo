@@ -5,25 +5,26 @@ EAPI=8
 
 inherit autotools toolchain-funcs
 
-DESCRIPTION="Interpreter for the PostScript language and PDF"
-HOMEPAGE="https://ghostscript.com/"
-
 MY_PN=${PN/-gpl}
 MY_P="${MY_PN}-${PV/_}"
 PVM=$(ver_cut 1-2)
 PVM_S=$(ver_rs 1-2 "")
 
-MY_PATCHSET="ghostscript-gpl-9.55-patchset-01.tar.xz"
+# Use https://gitweb.gentoo.org/proj/codec/ghostscript-gpl-patches.git/ for patches
+# See 'index' branch for README
+MY_PATCHSET="ghostscript-gpl-9.56.1-patchset-01.tar.xz"
 
+DESCRIPTION="Interpreter for the PostScript language and PDF"
+HOMEPAGE="https://ghostscript.com/ https://git.ghostscript.com/?p=ghostpdl.git;a=summary"
 SRC_URI="https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${PVM_S}/${MY_P}.tar.xz"
-
 if [[ -n "${MY_PATCHSET}" ]] ; then
+	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${MY_PATCHSET}"
 	SRC_URI+=" https://dev.gentoo.org/~whissi/dist/ghostscript-gpl/${MY_PATCHSET}"
 fi
 
 LICENSE="AGPL-3 CPL-1.0"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="cups dbus gtk l10n_de static-libs unicode X"
 
 LANGS="ja ko zh-CN zh-TW"
@@ -31,23 +32,21 @@ for X in ${LANGS} ; do
 	IUSE="${IUSE} l10n_${X}"
 done
 
-DEPEND="
-	app-text/libpaper
+DEPEND="app-text/libpaper:=
 	media-libs/fontconfig
 	>=media-libs/freetype-2.4.9:2=
 	>=media-libs/jbig2dec-0.19:=
 	>=media-libs/lcms-2.6:2
-	>=media-libs/libpng-1.6.2:0=
+	>=media-libs/libpng-1.6.2:=
+	media-libs/libjpeg-turbo:=
 	>=media-libs/openjpeg-2.1.0:2=
-	>=media-libs/tiff-4.0.1:0=
+	>=media-libs/tiff-4.0.1:=
 	>=sys-libs/zlib-1.2.7
-	virtual/jpeg:0
 	cups? ( >=net-print/cups-1.3.8 )
 	dbus? ( sys-apps/dbus )
-	gtk? ( || ( x11-libs/gtk+:3 x11-libs/gtk+:2 ) )
-	unicode? ( net-dns/libidn:0= )
-	X? ( x11-libs/libXt x11-libs/libXext )
-"
+	gtk? ( x11-libs/gtk+:3 )
+	unicode? ( net-dns/libidn:= )
+	X? ( x11-libs/libXt x11-libs/libXext )"
 BDEPEND="virtual/pkgconfig"
 RDEPEND="${DEPEND}
 	app-text/poppler-data
@@ -55,14 +54,9 @@ RDEPEND="${DEPEND}
 	l10n_ja? ( media-fonts/kochi-substitute )
 	l10n_ko? ( media-fonts/baekmuk-fonts )
 	l10n_zh-CN? ( media-fonts/arphicfonts )
-	l10n_zh-TW? ( media-fonts/arphicfonts )
-"
+	l10n_zh-TW? ( media-fonts/arphicfonts )"
 
 S="${WORKDIR}/${MY_P}"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-9.55.0-no-force-libstdcxx.patch
-)
 
 src_prepare() {
 	if [[ -n "${MY_PATCHSET}" ]] ; then
@@ -126,12 +120,7 @@ src_configure() {
 	for path in \
 		"${EPREFIX}"/usr/share/fonts/urw-fonts \
 		"${EPREFIX}"/usr/share/fonts/Type1 \
-		"${EPREFIX}"/usr/share/fonts \
-		"${EPREFIX}"/usr/share/poppler/cMap/Adobe-CNS1 \
-		"${EPREFIX}"/usr/share/poppler/cMap/Adobe-GB1 \
-		"${EPREFIX}"/usr/share/poppler/cMap/Adobe-Japan1 \
-		"${EPREFIX}"/usr/share/poppler/cMap/Adobe-Japan2 \
-		"${EPREFIX}"/usr/share/poppler/cMap/Adobe-Korea1
+		"${EPREFIX}"/usr/share/fonts
 	do
 		FONTPATH="$FONTPATH${FONTPATH:+:}${EPREFIX}$path"
 	done
