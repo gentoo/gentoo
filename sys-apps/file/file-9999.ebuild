@@ -28,7 +28,7 @@ HOMEPAGE="https://www.darwinsys.com/file/"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="bzip2 lzma python seccomp static-libs zlib"
+IUSE="bzip2 lzma python seccomp static-libs zlib zstd"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
@@ -38,7 +38,9 @@ DEPEND="
 		${PYTHON_DEPS}
 		dev-python/setuptools[${PYTHON_USEDEP}]
 	)
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"
+	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
+	zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )
+"
 RDEPEND="${DEPEND}
 	python? ( !dev-python/python-magic )
 	seccomp? ( sys-libs/libseccomp[${MULTILIB_USEDEP}] )"
@@ -62,8 +64,9 @@ src_prepare() {
 		elibtoolize
 	fi
 
-	# don't let python README kill main README, bug ##60043
+	# Don't let python README kill main README, bug ##60043
 	mv python/README.md python/README.python.md || die
+
 	# bug #662090
 	sed 's@README.md@README.python.md@' -i python/setup.py || die
 }
@@ -76,7 +79,9 @@ multilib_src_configure() {
 		$(use_enable seccomp libseccomp)
 		$(use_enable static-libs static)
 		$(use_enable zlib)
+		$(use_enable zstd zstdlib)
 	)
+
 	econf "${myeconfargs[@]}"
 }
 
@@ -93,7 +98,7 @@ build_src_configure() {
 }
 
 need_build_file() {
-	# when cross-compiling, we need to build up our own file
+	# When cross-compiling, we need to build up our own file
 	# because people often don't keep matching host/target
 	# file versions, bug #362941
 	tc-is-cross-compiler && ! has_version -b "~${CATEGORY}/${P}"
