@@ -1,0 +1,73 @@
+From 0d7526621087fd016d4ab5d34abfb35c715ec0cd Mon Sep 17 00:00:00 2001
+From: Thomas Waldmann <tw@waldmann-edv.de>
+Date: Tue, 29 Mar 2022 17:31:02 +0200
+Subject: [PATCH] c_impl: compatibility fix for python < 3.10
+
+---
+ blake3module.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/blake3module.c b/blake3module.c
+index f4160fb..0fce6ad 100644
+--- a/blake3module.c
++++ b/blake3module.c
+@@ -414,7 +414,8 @@ PyMODINIT_FUNC PyInit_blake3(void) {
+     goto exit;
+   }
+ 
+-  if (PyModule_AddObjectRef(module, "blake3", (PyObject *)&Blake3Type) < 0) {
++  if (PyModule_AddObject(module, "blake3", (PyObject *)&Blake3Type) < 0) {
++    Py_DECREF((PyObject *)&Blake3Type);
+     goto exit;
+   }
+ 
+From 52676a355eccfb0050b372cd36a14ab49878e8b3 Mon Sep 17 00:00:00 2001
+From: Thomas Waldmann <tw@waldmann-edv.de>
+Date: Tue, 29 Mar 2022 18:18:46 +0200
+Subject: [PATCH] c_impl: apple silicon build fix, fixes #31
+
+On Apple Silicon (M1 CPU), the platform.machine() call returns "arm64".
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index a159d8b..863c7ea 100644
+--- a/setup.py
++++ b/setup.py
+@@ -66,7 +66,7 @@ def targeting_x86_32():
+ 
+ 
+ def is_aarch64():
+-    return platform.machine().lower() == "aarch64"
++    return platform.machine().lower() in ("aarch64", "arm64")
+ 
+ 
+ def force_intrinsics():
+From 5eac8ae62d8f4e0a574164b73c42837ddc6ff356 Mon Sep 17 00:00:00 2001
+From: Thomas Waldmann <tw@waldmann-edv.de>
+Date: Tue, 29 Mar 2022 20:30:30 +0200
+Subject: [PATCH] c_impl: fix usedforsecurity argument variable type, fixes #34
+
+the python docs state that this must be int (not: bool).
+
+as seen in #34, using the wrong type here seems to overflow the variable
+and leads to a wrong value in max_threads, which leads to that strange
+test failure.
+---
+ blake3module.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/blake3module.c b/blake3module.c
+index 0fce6ad..a9562cf 100644
+--- a/blake3module.c
++++ b/blake3module.c
+@@ -53,7 +53,7 @@ static PyObject *Blake3_new(PyTypeObject *type, PyObject *args,
+   Py_buffer key = {0};
+   const char *derive_key_context = NULL;
+   Py_ssize_t max_threads = 1;
+-  bool usedforsecurity = true;
++  int usedforsecurity = 1;
+ 
+   PyObject *ret = NULL;
+ 
