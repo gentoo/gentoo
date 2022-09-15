@@ -14,7 +14,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND=">=dev-haskell/adjunctions-4.2:=[profile?] <dev-haskell/adjunctions-5:=[profile?]
 	>=dev-haskell/comonad-4:=[profile?] <dev-haskell/comonad-6:=[profile?]
