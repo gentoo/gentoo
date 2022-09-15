@@ -43,6 +43,9 @@ src_prepare() {
 }
 
 src_configure() {
+	#fails to compile with -flto (bug #860405)
+	filter-lto
+
 	append-cxxflags $(test-flags-CXX -std=c++14)
 	local myconf=""
 
