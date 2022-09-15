@@ -27,11 +27,11 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)"
+	emake CC="$(tc-getCC)" INSTALL_PREFIX="${EPREFIX}"/usr LIBDIR="/$(get_libdir)"
 }
 
 src_install() {
 	dodir /usr/$(get_libdir)
 	dodir /usr/include
-	emake INSTALL_PREFIX="${ED}"/usr LIBDIR="/$(get_libdir)" install
+	emake DESTDIR="${D}" INSTALL_PREFIX="${EPREFIX}"/usr LIBDIR="/$(get_libdir)" install
 }
