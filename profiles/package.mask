@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2022-09-15)
+# Upstream split this font into separate packages: media-fonts/
+# source-code-pro, source-sans, source-serif. The current non-split
+# version is broken. Removal in 30 days. #865103
+media-fonts/source-pro
+
 # Stephan Hartmannr <sultan@gentoo.org> (2022-09-12)
 # Unpatched security vulerabilities, bug #868156, bug #868354.
 www-client/chromium-bin
