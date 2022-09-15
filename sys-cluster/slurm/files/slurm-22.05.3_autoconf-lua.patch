@@ -1,23 +1,22 @@
-Prevent automagical detection of Lua, abort if Lua support has been
-requested but Lua cannot be found with pkg-config, and use the Lua
-pkg-config module set up by the eclass-provided wrapper (or unslotted Lua)
-instead of enumerating installed versions.
-
+diff --git a/auxdir/x_ac_lua.m4 b/auxdir/x_ac_lua.m4
+index 6941281bd5..206498191f 100644
 --- a/auxdir/x_ac_lua.m4
 +++ b/auxdir/x_ac_lua.m4
-@@ -12,18 +12,21 @@
+@@ -12,20 +12,21 @@
  
  AC_DEFUN([X_AC_LUA],
  [
 -	x_ac_lua_pkg_name="lua"
--	#check for 5.3 then 5.2 then 5.1
--	PKG_CHECK_EXISTS([lua5.3], [x_ac_lua_pkg_name=lua5.3],
+-	#check for 5.4, 5.3, 5.2 and then 5.1
+-	PKG_CHECK_EXISTS([lua5.4], [x_ac_lua_pkg_name=lua5.4],
+-		[PKG_CHECK_EXISTS([lua-5.4], [x_ac_lua_pkg_name=lua-5.4],
+-		[PKG_CHECK_EXISTS([lua5.3], [x_ac_lua_pkg_name=lua5.3],
 -		[PKG_CHECK_EXISTS([lua-5.3], [x_ac_lua_pkg_name=lua-5.3],
 -		[PKG_CHECK_EXISTS([lua5.2], [x_ac_lua_pkg_name=lua5.2],
 -		[PKG_CHECK_EXISTS([lua-5.2], [x_ac_lua_pkg_name=lua-5.2],
 -		[PKG_CHECK_EXISTS([lua5.1], [x_ac_lua_pkg_name=lua5.1],
 -		[PKG_CHECK_EXISTS([lua-5.1], [x_ac_lua_pkg_name=lua-5.1],
--	        [x_ac_lua_pkg_name="lua >= 5.1"])])])])])])
+-	        [x_ac_lua_pkg_name="lua >= 5.1"])])])])])])])])
 -	PKG_CHECK_MODULES([lua], ${x_ac_lua_pkg_name},
 -                [x_ac_have_lua="yes"],
 -                [x_ac_have_lua="no"])
@@ -39,7 +38,7 @@ instead of enumerating installed versions.
  
  	if test "x$x_ac_have_lua" = "xyes"; then
  	  saved_CFLAGS="$CFLAGS"
-@@ -52,8 +55,6 @@
+@@ -60,8 +61,6 @@ AC_DEFUN([X_AC_LUA],
  	  fi
  	  CFLAGS="$saved_CFLAGS"
  	  LIBS="$saved_LIBS"
