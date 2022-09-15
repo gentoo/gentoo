@@ -243,7 +243,7 @@ pkg_preinst() {
 create_folders_and_fix_permissions() {
 	einfo "Fixing permissions in ${@}"
 	mkdir -p ${@} || die
-	chown -R ${PN}:${PN} ${@} || die
+	chown ${PN}:${PN} ${@} || die
 }
 
 pkg_postinst() {
