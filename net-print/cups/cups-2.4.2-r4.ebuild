@@ -17,7 +17,7 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	SRC_URI="https://github.com/OpenPrinting/cups/releases/download/v${MY_PV}/cups-${MY_PV}-source.tar.gz"
 	if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+		KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 	fi
 fi
 
@@ -38,7 +38,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 DEPEND="
-	app-text/libpaper
+	app-text/libpaper:=
 	sys-libs/zlib
 	acl? (
 		kernel_linux? (
@@ -68,10 +68,9 @@ RDEPEND="${DEPEND}
 PDEPEND=">=net-print/cups-filters-1.0.43"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.4.1-nostrip.patch
-	"${FILESDIR}"/${PN}-2.4.1-user-AR.patch
-	"${FILESDIR}"/${PN}-2.4.2-no-fortify-override.patch
-	"${FILESDIR}"/${P}-openssl-intermediate-certs.patch
+	"${FILESDIR}/${PN}-2.4.1-nostrip.patch"
+	"${FILESDIR}/${PN}-2.4.1-user-AR.patch"
+	"${FILESDIR}/${PN}-2.4.2-no-fortify-override.patch"
 )
 
 MULTILIB_CHOST_TOOLS=(
@@ -152,8 +151,7 @@ multilib_src_configure() {
 		--with-cups-user=lp
 		--with-cups-group=lp
 		--with-docdir="${EPREFIX}"/usr/share/cups/html
-		# See bug #863221 for adding root
-		--with-system-groups="root lpadmin"
+		--with-system-groups=lpadmin
 		--with-xinetd="${EPREFIX}"/etc/xinetd.d
 		$(multilib_native_use_enable acl)
 		$(use_enable dbus)
