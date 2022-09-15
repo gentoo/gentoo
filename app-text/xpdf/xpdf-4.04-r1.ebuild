@@ -39,7 +39,7 @@ DEPEND="
 		net-print/cups
 	)
 	fontconfig? ( media-libs/fontconfig )
-	libpaper? ( app-text/libpaper )
+	libpaper? ( app-text/libpaper:= )
 	utils? ( png? ( media-libs/libpng:0 ) )
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
