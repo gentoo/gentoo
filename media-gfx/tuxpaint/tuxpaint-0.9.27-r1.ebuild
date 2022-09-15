@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 
 RDEPEND="
-	app-text/libpaper
+	app-text/libpaper:=
 	dev-libs/fribidi
 	gnome-base/librsvg:2
 	>=media-libs/libpng-1.2:0=
