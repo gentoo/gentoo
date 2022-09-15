@@ -9,7 +9,7 @@ HOMEPAGE="https://lib.filezilla-project.org/"
 SRC_URI="https://download.filezilla-project.org/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
-SLOT="0/29" # libfilezilla.so version
+SLOT="0/31" # libfilezilla.so version
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="test"
 
