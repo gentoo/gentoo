@@ -10,7 +10,6 @@
 		<name>Gentoo Cluster Project</name>
 	</maintainer>
 	<use>
-		
 		<flag name="html">Build html documentation</flag>
 		<flag name="ipmi">Build support for collecting some ipmi stats</flag>
 		<flag name="json">Add support for json-persing via json-c</flag>
