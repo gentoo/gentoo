@@ -1,5 +1,0 @@
-# Michał Górny <mgorny@gentoo.org> (2016-09-24)
-# Force the host target to avoid dependency hell
-dev-ml/llvm-ocaml llvm_targets_Mips
-sys-devel/clang llvm_targets_Mips
-sys-devel/llvm llvm_targets_Mips
