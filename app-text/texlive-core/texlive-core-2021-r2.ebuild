@@ -96,9 +96,9 @@ COMMON_DEPEND="${MODULAR_X_DEPEND}
 	>=x11-libs/cairo-1.12
 	>=x11-libs/pixman-0.18
 	dev-libs/zziplib:=
-	app-text/libpaper
-	dev-libs/gmp:0
-	dev-libs/mpfr:0=
+	app-text/libpaper:=
+	dev-libs/gmp:=
+	dev-libs/mpfr:=
 	>=dev-libs/ptexenc-1.3.8
 	xetex? (
 		>=app-text/teckit-2.5.3
