@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pysimdjson</remote-id>
+		<remote-id type="github">TkTech/pysimdjson</remote-id>
 	</upstream>
 </pkgmetadata>
