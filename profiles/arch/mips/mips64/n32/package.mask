@@ -3,3 +3,4 @@
 
 # Go is not supported for this ABI.
 dev-lang/go
+dev-lang/go-bootstrap
