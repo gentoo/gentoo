@@ -11,7 +11,7 @@ SRC_URI="https://github.com/caddyserver/caddy/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="Apache-2.0 BSD ECL-2.0 MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 ~arm64 ~riscv"
 RDEPEND="
 	acct-user/http
 	acct-group/http"
