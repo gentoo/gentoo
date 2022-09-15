@@ -1,0 +1,32 @@
+https://github.com/cyrusimap/cyrus-imapd/pull/4235
+https://bugs.gentoo.org/721466
+
+From e23a32e0516803b99ae18f0c4d5d42b59a2af111 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 15 Sep 2022 00:55:20 +0100
+Subject: [PATCH 1/2] Test for libm
+
+Test for -lm to avoid hardcoding it.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1729,7 +1729,7 @@ master_master_SOURCES = \
+ 	master/masterconf.c \
+ 	master/masterconf.h \
+ 	master/service.h
+-master_master_LDADD = lib/libcyrus_min.la $(LIBS) $(GCOV_LIBS) -lm
++master_master_LDADD = lib/libcyrus_min.la $(LIBS) $(GCOV_LIBS) $(LIBM)
+ 
+ 
+ netnews_remotepurge_SOURCES = \
+--- a/configure.ac
++++ b/configure.ac
+@@ -143,6 +143,7 @@ if test $ac_cv_sys_long_file_names = no; then
+         AC_MSG_ERROR(The Cyrus IMAPD requires support for long file names)
+ fi
+ AC_C_INLINE
++LT_LIB_M
+ 
+ gl_VISIBILITY
+ AH_BOTTOM([#if HAVE_VISIBILITY
