@@ -1,9 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-VALA_MIN_API_VERSION="0.44"
-VALA_MAX_API_VERSION="0.50"
+EAPI=8
 
 inherit gnome.org gnome2-utils meson vala xdg
 
@@ -40,8 +38,9 @@ PATCHES=(
 )
 
 src_prepare() {
-	xdg_src_prepare
-	vala_src_prepare
+	default
+	vala_setup
+	xdg_environment_reset
 }
 
 pkg_postinst() {
