@@ -32,6 +32,15 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.15-bsd-cp-doc.patch
 )
 
+src_prepare() {
+	default
+
+	# https://bugs.gentoo.org/870214
+	# During the split of media-fonts/source-pro, the source-sans files
+	# were renamed.
+	sed -i 's/SourceSansPro/SourceSans3/g' doc/psfonts.ph || die
+}
+
 src_compile() {
 	default
 	use doc && emake doc
