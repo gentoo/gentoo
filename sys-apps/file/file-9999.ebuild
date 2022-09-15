@@ -28,11 +28,12 @@ HOMEPAGE="https://www.darwinsys.com/file/"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="bzip2 lzma python seccomp static-libs zlib zstd"
+IUSE="bzip2 lzip lzma python seccomp static-libs zlib zstd"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
 	bzip2? ( app-arch/bzip2[${MULTILIB_USEDEP}] )
+	lzip? ( app-arch/lzlib )
 	lzma? ( app-arch/xz-utils[${MULTILIB_USEDEP}] )
 	python? (
 		${PYTHON_DEPS}
@@ -75,6 +76,7 @@ multilib_src_configure() {
 	local myeconfargs=(
 		--enable-fsect-man5
 		$(use_enable bzip2 bzlib)
+		$(multilib_native_use_enable lzip lzlib)
 		$(use_enable lzma xzlib)
 		$(use_enable seccomp libseccomp)
 		$(use_enable static-libs static)

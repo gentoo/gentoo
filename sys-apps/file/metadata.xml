@@ -10,4 +10,7 @@
 		<remote-id type="cpe">cpe:/a:file_project:file</remote-id>
 		<remote-id type="github">file/file</remote-id>
 	</upstream>
+	<use>
+		<flag name="lzip">Enable <pkg>app-arch/lzip</pkg> decompression support via <pkg>app-arch/lzlib</pkg></flag>
+	</use>
 </pkgmetadata>
