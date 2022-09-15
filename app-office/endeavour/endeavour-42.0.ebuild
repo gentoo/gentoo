@@ -6,19 +6,31 @@ EAPI=8
 inherit gnome.org gnome2-utils meson xdg
 
 DESCRIPTION="Personal task manager"
-HOMEPAGE="https://wiki.gnome.org/Apps/Todo"
+HOMEPAGE="https://wiki.gnome.org/Apps/Todo https://gitlab.gnome.org/World/Endeavour"
+
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://gitlab.gnome.org/World/Endeavour.git"
+	SRC_URI=""
+else
+	SRC_URI="https://gitlab.gnome.org/World/${PN^}/-/archive/v${PV}/${PN^}-v${PV}.tar.bz2"
+	KEYWORDS="~amd64"
+	S="${WORKDIR}/${PN^}-v${PV}"
+fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE="gtk-doc +introspection"
+IUSE="+introspection"
+RESTRICT="test" # Tests are broken in 42.0
 
 RDEPEND="
-	>=dev-libs/glib-2.43.4:2
-	>=x11-libs/gtk+-3.22.0:3[introspection?]
-	>=net-libs/gnome-online-accounts-3.25.3
+	>=dev-libs/glib-2.58.0:2
+	>=gui-libs/gtk-3.92.0:4[introspection?]
+	>=gui-libs/libadwaita-1.2.0:1
+	>=net-libs/gnome-online-accounts-3.25.3:=
 	>=dev-libs/libpeas-1.17
-	>=gnome-extra/evolution-data-server-3.33.1:=[gtk]
+	dev-libs/libportal:0=[gtk]
+	>=gnome-extra/evolution-data-server-3.33.2:=[gtk]
 	net-libs/rest:0.7
 	dev-libs/json-glib
 	introspection? ( >=dev-libs/gobject-introspection-1.42:= )
@@ -27,17 +39,12 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-libs/libxml2:2
 	dev-util/glib-utils
-	gtk-doc? (
-		dev-util/gtk-doc
-		app-text/docbook-xml-dtd:4.3
-	)
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
 
 PATCHES=(
-	"${FILESDIR}"/gnome-todo-eds-libecal-2.0.patch
-	"${FILESDIR}"/fix-build-with-meson-0.61.patch
+	"${FILESDIR}"/${PV}-build-Generate-enum-headers-first.patch
 )
 
 src_configure() {
@@ -45,17 +52,14 @@ src_configure() {
 	# TODO: should just always build introspection support as an application that needs it for full functionality?
 	# Todoist plugin requires 3.25.3 GOA for being able to add a Todoist account
 	local emesonargs=(
-		-Dbackground_plugin=true
-		-Ddark_theme_plugin=true
-		-Dscheduled_panel_plugin=true
-		-Dscore_plugin=true
-		-Dtoday_panel_plugin=true
-		-Dunscheduled_panel_plugin=true
+		$(meson_use introspection)
+		-Dtracing=false
+		-Dprofile=default
+
 		-Dtodo_txt_plugin=true
 		-Dtodoist_plugin=true
-		-Dtracing=false
-		$(meson_use gtk-doc gtk_doc)
-		$(meson_use introspection)
+		-Dunscheduled_panel_plugin=true
+		-Dbackground_plugin=true
 	)
 	meson_src_configure
 }
