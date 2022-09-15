@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit flag-o-matic
+
 DESCRIPTION="Transceiver control program for Amateur Radio use"
 HOMEPAGE="http://www.w1hkj.com/flrig-help/index.html"
 SRC_URI="mirror://sourceforge/fldigi/${P}.tar.gz"
@@ -26,4 +28,11 @@ PATCHES=( "${FILESDIR}/${PN}-1.4.4-musl.patch" )
 src_prepare() {
 	eapply ${PATCHES[@]}
 	eapply_user
+}
+
+src_configure() {
+	#fails to compile with -flto (bug #860408)
+	filter-lto
+
+	econf
 }
