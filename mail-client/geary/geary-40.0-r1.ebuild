@@ -69,6 +69,10 @@ BDEPEND="
 	net-libs/libsoup:2.4[introspection,vala]
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-Correct-the-conditional-comments-in-the-test-data.patch
+)
+
 src_prepare() {
 	vala_src_prepare
 	gnome2_environment_reset
