@@ -164,6 +164,8 @@ PATCHES=(
 	"${FILESDIR}"/1.55.0-ignore-broken-and-non-applicable-tests.patch
 	"${FILESDIR}"/1.62.1-musl-dynamic-linking.patch
 	"${FILESDIR}"/1.61.0-gentoo-musl-target-specs.patch
+	"${FILESDIR}"/1.63.0-CVE-2022-36113.patch
+	"${FILESDIR}"/1.63.0-CVE-2022-36114.patch
 )
 
 S="${WORKDIR}/${MY_P}-src"
