@@ -9,7 +9,7 @@ SRC_URI="https://github.com/smarty-php/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86"
 
 # PHP unicode support is detected at runtime, and the cached templates
 # that smarty generates depend on it. If, later on, PHP is reinstalled
