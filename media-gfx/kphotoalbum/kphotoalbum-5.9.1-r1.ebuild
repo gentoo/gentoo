@@ -26,7 +26,7 @@ REQUIRED_USE="|| ( phonon qtav vlc )"
 
 DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtgui-${QTMIN}:5[jpeg]
 	>=dev-qt/qtsql-${QTMIN}:5[sqlite]
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtxml-${QTMIN}:5
