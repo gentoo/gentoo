@@ -513,14 +513,6 @@ sys-devel/automake:1.15
 # This is likely to cause issues in tests; Unmask if using for other purposes
 >=dev-php/PHP_Timer-5.0
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-12-14)
-# AT&T decided to roll back community changes in March 2020
-# for version 2020.x.x
-# This version is no longer maintained.
-# New version is maintained at https://github.com/ksh93/ksh
-# and is available as app-shells/ksh-1.0.0_beta1 at time of writing.
-~app-shells/ksh-2020.0.0
-
 # Sam James <sam@gentoo.org> (2021-12-01)
 # OSL 12 is a development release (for now).
 # Doesn't work with LLVM 13 yet; mask to help
