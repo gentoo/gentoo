@@ -569,10 +569,10 @@ src_configure() {
 
 	einfo "Rust configured with the following flags:"
 	echo
-	echo RUSTFLAGS="${RUSTFLAGS:-}"
-	echo RUSTFLAGS_BOOTSTRAP="${RUSTFLAGS_BOOTSTRAP:-}"
-	echo RUSTFLAGS_NOT_BOOTSTRAP="${RUSTFLAGS_NOT_BOOTSTRAP:-}"
-	echo MAGIC_EXTRA_RUSTFLAGS="${MAGIC_EXTRA_RUSTFLAGS:-}"
+	echo RUSTFLAGS="\"${RUSTFLAGS}\""
+	echo RUSTFLAGS_BOOTSTRAP="\"${RUSTFLAGS_BOOTSTRAP}\""
+	echo RUSTFLAGS_NOT_BOOTSTRAP="\"${RUSTFLAGS_NOT_BOOTSTRAP}\""
+	echo MAGIC_EXTRA_RUSTFLAGS="\"${MAGIC_EXTRA_RUSTFLAGS}\""
 	env | grep "CARGO_TARGET_.*_RUSTFLAGS="
 	cat "${S}"/config.env || die
 	echo
