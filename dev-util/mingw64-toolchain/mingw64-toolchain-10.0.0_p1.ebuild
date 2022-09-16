@@ -289,7 +289,7 @@ pkg_postinst() {
 		elog "packages to depend on without needing a manual crossdev setup."
 		elog
 		elog "Settings are oriented only for what these need and simplicity."
-		elog "Please use sys-devel/crossdev for full toolchain/customization:"
+		elog "Use sys-devel/crossdev if need full toolchain/customization:"
 		elog "    https://wiki.gentoo.org/wiki/Mingw"
 		elog "    https://wiki.gentoo.org/wiki/Crossdev"
 	fi
