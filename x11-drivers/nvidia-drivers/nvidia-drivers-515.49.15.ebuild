@@ -81,6 +81,7 @@ BDEPEND="
 QA_PREBUILT="lib/firmware/* opt/bin/* usr/lib*"
 
 PATCHES=(
+	"${FILESDIR}"/nvidia-drivers-470.141.03-clang15.patch
 	"${FILESDIR}"/nvidia-modprobe-390.141-uvm-perms.patch
 	"${FILESDIR}"/nvidia-settings-390.144-desktop.patch
 	"${FILESDIR}"/nvidia-settings-390.144-no-gtk2.patch
@@ -163,6 +164,9 @@ src_prepare() {
 	rm nvidia-settings && mv nvidia-settings{-${NV_PIN},} || die
 	rm nvidia-xconfig && mv nvidia-xconfig{-${NV_PIN},} || die
 	mv open-gpu-kernel-modules-${PV} kernel-module-source || die
+
+	eapply --directory=kernel-module-source/kernel-open \
+		-p2 "${FILESDIR}"/nvidia-drivers-470.141.03-clang15.patch
 
 	default
 
