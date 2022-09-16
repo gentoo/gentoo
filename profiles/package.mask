@@ -372,7 +372,7 @@ dev-qt/qtwebsockets:6
 
 # Sam James <sam@gentoo.org> (2022-08-02)
 # Multiple rendering/font issues reported: bug #844115, bug #851141.
-=app-text/ghostscript-gpl-9.56.1
+>=app-text/ghostscript-gpl-9.56.1
 
 # Fabian Groffen <grobian@gentoo.org> (2022-07-02)
 # Segfaults handling SPF validations (warn on permerror), like the
