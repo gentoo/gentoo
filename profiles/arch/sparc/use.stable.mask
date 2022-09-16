@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Matt Turner <mattst88@gentoo.org> (2022-09-16)
+# gui-libs/gtk is not stable here
+gtk4
+
 # Sam James <sam@gentoo.org> (2021-04-27)
 # Clang and friends aren't (yet?) stable on sparc
 clang
