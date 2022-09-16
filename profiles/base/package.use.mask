@@ -12,7 +12,7 @@
 # to other packages, i.e. -llvm-libunwind doesn't force use of sys-libs/libunwind
 # on glibc, so it doesn't prevent usage of llvm-libunwind for other packages.
 # bug #870211.
-dev-lang/rust -llvm-libunwind
+dev-lang/rust llvm-libunwind
 
 # Sam James <sam@gentoo.org> (2022-09-15)
 # Patch not rebased and supporting it is not a priority: bug #824018.
