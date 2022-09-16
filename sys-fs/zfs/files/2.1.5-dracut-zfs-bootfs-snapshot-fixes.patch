@@ -1,0 +1,78 @@
+From 2d434e8ae4139ce14a1b058839a144bf952e79ea Mon Sep 17 00:00:00 2001
+From: gregory-lee-bartholomew <gregory.lee.bartholomew@gmail.com>
+Date: Wed, 29 Jun 2022 18:56:04 -0500
+Subject: [PATCH] contrib: dracut: zfs-{rollback,snapshot}-bootfs: explicit
+ snapname fix
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Due to a missing semicolon on the ExecStart line, it wasn't possible
+to specify the snapshot name on the bootfs.{rollback,snapshot}
+kernel parameters if the boot dataset name was obtained from the
+root=zfs:... kernel parameter.
+
+Reviewed-by: Ahelenia Ziemiańska <nabijaczleweli@nabijaczleweli.xyz>
+Reviewed-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Signed-off-by: Gregory Bartholomew <gregory.lee.bartholomew@gmail.com>
+Closes #13585
+---
+ contrib/dracut/90zfs/zfs-rollback-bootfs.service.in | 2 +-
+ contrib/dracut/90zfs/zfs-snapshot-bootfs.service.in | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/contrib/dracut/90zfs/zfs-rollback-bootfs.service.in b/contrib/dracut/90zfs/zfs-rollback-bootfs.service.in
+index b4f5707516c..a29cf3a3dd8 100644
+--- a/contrib/dracut/90zfs/zfs-rollback-bootfs.service.in
++++ b/contrib/dracut/90zfs/zfs-rollback-bootfs.service.in
+@@ -8,5 +8,5 @@ ConditionKernelCommandLine=bootfs.rollback
+ 
+ [Service]
+ Type=oneshot
+-ExecStart=/bin/sh -c '. /lib/dracut-zfs-lib.sh; decode_root_args || exit; [ "$root" = "zfs:AUTO" ] && root="$BOOTFS" SNAPNAME="$(getarg bootfs.rollback)"; exec @sbindir@/zfs rollback -Rf "$root@${SNAPNAME:-%v}"'
++ExecStart=/bin/sh -c '. /lib/dracut-zfs-lib.sh; decode_root_args || exit; [ "$root" = "zfs:AUTO" ] && root="$BOOTFS"; SNAPNAME="$(getarg bootfs.rollback)"; exec @sbindir@/zfs rollback -Rf "$root@${SNAPNAME:-%v}"'
+ RemainAfterExit=yes
+diff --git a/contrib/dracut/90zfs/zfs-snapshot-bootfs.service.in b/contrib/dracut/90zfs/zfs-snapshot-bootfs.service.in
+index afdba2c9d19..befd163b653 100644
+--- a/contrib/dracut/90zfs/zfs-snapshot-bootfs.service.in
++++ b/contrib/dracut/90zfs/zfs-snapshot-bootfs.service.in
+@@ -8,5 +8,5 @@ ConditionKernelCommandLine=bootfs.snapshot
+ 
+ [Service]
+ Type=oneshot
+-ExecStart=/bin/sh -c '. /lib/dracut-zfs-lib.sh; decode_root_args || exit; [ "$root" = "zfs:AUTO" ] && root="$BOOTFS" SNAPNAME="$(getarg bootfs.snapshot)"; exec @sbindir@/zfs snapshot "$root@${SNAPNAME:-%v}"'
++ExecStart=/bin/sh -c '. /lib/dracut-zfs-lib.sh; decode_root_args || exit; [ "$root" = "zfs:AUTO" ] && root="$BOOTFS"; SNAPNAME="$(getarg bootfs.snapshot)"; exec @sbindir@/zfs snapshot "$root@${SNAPNAME:-%v}"'
+ RemainAfterExit=yes
+From d22dd77c4d4556373b995121412c4abac02bcf8a Mon Sep 17 00:00:00 2001
+From: gregory-lee-bartholomew <gregory.lee.bartholomew@gmail.com>
+Date: Fri, 12 Aug 2022 16:28:15 -0500
+Subject: [PATCH] contrib: dracut: zfs-snapshot-bootfs: exit status fix
+
+When the zfs-snapshot-bootfs service attempts to create a snapshot
+that already exists, the exit status of the command is non-zero and
+the service reports failed to the systemd service manager. This is a
+common occurrence if bootfs.snapshot is left set on the kernel command
+line and it should not be considered a failure.
+
+This service was originally set to ignore this error by prefixing
+the command with - on the ExecStart line, but the leading - appears
+to have been dropped in #13359.
+
+Reviewed-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Signed-off-by: Gregory Bartholomew <gregory.lee.bartholomew@gmail.com>
+Closes #13769
+---
+ contrib/dracut/90zfs/zfs-snapshot-bootfs.service.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/contrib/dracut/90zfs/zfs-snapshot-bootfs.service.in b/contrib/dracut/90zfs/zfs-snapshot-bootfs.service.in
+index befd163b653..9e73d1a7872 100644
+--- a/contrib/dracut/90zfs/zfs-snapshot-bootfs.service.in
++++ b/contrib/dracut/90zfs/zfs-snapshot-bootfs.service.in
+@@ -8,5 +8,5 @@ ConditionKernelCommandLine=bootfs.snapshot
+ 
+ [Service]
+ Type=oneshot
+-ExecStart=/bin/sh -c '. /lib/dracut-zfs-lib.sh; decode_root_args || exit; [ "$root" = "zfs:AUTO" ] && root="$BOOTFS"; SNAPNAME="$(getarg bootfs.snapshot)"; exec @sbindir@/zfs snapshot "$root@${SNAPNAME:-%v}"'
++ExecStart=-/bin/sh -c '. /lib/dracut-zfs-lib.sh; decode_root_args || exit; [ "$root" = "zfs:AUTO" ] && root="$BOOTFS"; SNAPNAME="$(getarg bootfs.snapshot)"; exec @sbindir@/zfs snapshot "$root@${SNAPNAME:-%v}"'
+ RemainAfterExit=yes
