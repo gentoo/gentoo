@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2022-09-16)
+# This theme has been incorporated to enlightenment-0.25, and with
+# 0.24 removed from Gentoo's git tree, this ebuild is useless. Removal
+# in 30 days. #870355
+x11-themes/e-flat-theme
+
 # Joonas Niilola <juippis@gentoo.org> (2022-09-15)
 # Upstream split this font into separate packages: media-fonts/
 # source-code-pro, source-sans, source-serif. The current non-split
