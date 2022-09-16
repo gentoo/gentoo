@@ -9,6 +9,6 @@
 		<flag name="doc">Install doxygen developer documentation.</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">christopho/solarus</remote-id>
+		<remote-id type="gitlab">solarus-games/solarus</remote-id>
 	</upstream>
 </pkgmetadata>
