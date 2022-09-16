@@ -21,7 +21,10 @@ BDEPEND="nls? ( >=sys-devel/gettext-0.19.8 )"
 src_prepare() {
 	default
 
-	#sed -i -e 's:lt-test1:test1:' tests/testit.sh || die
+	# Unclear what the background to this is, perhaps
+	# https://git.exherbo.org/arbor.git/commit/?id=5545d22d3493279acf7a55246179f818ef22f5fa
+	sed -i -e 's:lt-test1:test1:' tests/testit.sh || die
+
 	elibtoolize
 }
 
