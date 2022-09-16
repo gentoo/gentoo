@@ -5,6 +5,7 @@
 		<email>arthurzam@gentoo.org</email>
 		<name>Arthur Zamarin</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">furo</remote-id>
 		<remote-id type="github">pradyunsg/furo</remote-id>
