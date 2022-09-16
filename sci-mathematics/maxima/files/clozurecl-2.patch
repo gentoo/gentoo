@@ -1,0 +1,27 @@
+diff -r -U1 maxima-5.37.1.orig/configure.ac maxima-5.37.1/configure.ac
+--- maxima-5.37.1.orig/configure.ac	2015-09-01 02:28:02.000000000 +0600
++++ maxima-5.37.1/configure.ac	2015-09-03 18:11:54.335618720 +0600
+@@ -386,3 +386,3 @@
+ dnl n.b. openmcl_default_name is hardcoded in "with" message
+-openmcl_default_name=openmcl
++openmcl_default_name=ccl
+ AC_ARG_ENABLE(openmcl,
+diff -r -U1 maxima-5.37.1.orig/src/Makefile.am maxima-5.37.1/src/Makefile.am
+--- maxima-5.37.1.orig/src/Makefile.am	2015-08-11 02:44:21.000000000 +0600
++++ maxima-5.37.1/src/Makefile.am	2015-09-03 17:26:12.849734012 +0600
+@@ -338,3 +338,3 @@
+ 
+-EXECUTEOPENMCL = $(OPENMCL_NAME) -e
++EXECUTEOPENMCL = $(OPENMCL_NAME) --no-init -e
+ BUILT_FILES += $(OPENMCL_MAXIMA)
+diff -r -U1 maxima-5.37.1.orig/src/maxima.in maxima-5.37.1/src/maxima.in
+--- maxima-5.37.1.orig/src/maxima.in	2015-05-22 04:40:03.000000000 +0600
++++ maxima-5.37.1/src/maxima.in	2015-09-03 17:22:31.841743306 +0600
+@@ -182,5 +182,5 @@
+     if [ -x "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" ]; then
+-      exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" $MAXIMA_LISP_OPTIONS -e '(cl-user::run)' -- "$@"
++      exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" $MAXIMA_LISP_OPTIONS --no-init -e '(cl-user::run)' -- "$@"
+     else
+-      exec "@OPENMCL_NAME@" -I "$maxima_image_base.image" $MAXIMA_LISP_OPTIONS -e '(cl-user::run)' -- "$@"
++      exec "@OPENMCL_NAME@" -I "$maxima_image_base.image" $MAXIMA_LISP_OPTIONS --no-init -e '(cl-user::run)' -- "$@"
+    fi
