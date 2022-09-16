@@ -8,9 +8,9 @@ NEED_EMACS=24.4
 inherit elisp readme.gentoo-r1
 
 DESCRIPTION="Filladapt enhances the behavior of Emacs' fill functions"
-HOMEPAGE="http://www.wonderworks.com/ https://elpa.gnu.org/packages/filladapt.html"
-SRC_URI="https://elpa.gnu.org/packages/${P}.el"
-S="${WORKDIR}"
+HOMEPAGE="http://www.wonderworks.com/
+	https://elpa.gnu.org/packages/filladapt.html"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -21,7 +21,3 @@ DOC_CONTENTS="Filladapt is not enabled as a site default. Add the following
 	lines to your ~/.emacs file to enable adaptive fill by default:
 	\n\t(require 'filladapt)
 	\n\t(setq-default filladapt-mode t)"
-
-src_unpack() {
-	mv "${DISTDIR}"/${P}.el "${WORKDIR}"/${PN}.el || die
-}
