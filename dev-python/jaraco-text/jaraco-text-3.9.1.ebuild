@@ -20,7 +20,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~m68k ~riscv ~sparc"
+KEYWORDS="~amd64 ~arm64 ~m68k ~riscv ~sparc"
 
 RDEPEND="
 	>=dev-python/jaraco-context-4.1.1-r1[${PYTHON_USEDEP}]
