@@ -1,0 +1,22 @@
+Solarus quest editor will segfault on startup with -O2
+
+See: https://gitlab.com/solarus-games/solarus-quest-editor/-/commit/921ac6170a08dcfe601c7a11ee9f7c85386a4f3f
+--- a/src/widgets/main_window.cpp
++++ b/src/widgets/main_window.cpp
+@@ -1287,7 +1287,6 @@ void MainWindow::current_editor_changed(int index) {
+ 
+   Editor* editor = get_current_editor();
+   const bool has_editor = editor != nullptr;
+-  ViewSettings& view_settings = editor->get_view_settings();
+ 
+   // Set up toolbar buttons for this editor.
+   ui.action_cut->setEnabled(has_editor);
+@@ -1343,6 +1342,8 @@ void MainWindow::current_editor_changed(int index) {
+ 
+   if (has_editor) {
+ 
++    ViewSettings& view_settings = editor->get_view_settings();
++
+     connect(&view_settings, &ViewSettings::zoom_changed,
+             this, &MainWindow::update_zoom);
+     update_zoom();
