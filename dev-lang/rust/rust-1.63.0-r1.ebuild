@@ -253,7 +253,6 @@ pkg_setup() {
 	fi
 }
 
-
 esetup_unwind_hack() {
 	# https://bugs.gentoo.org/870280
 	# this is a hack needed to bootstrap with libgcc_s linked tarball on llvm-libunwind system.
