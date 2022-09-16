@@ -256,9 +256,9 @@ pkg_setup() {
 
 esetup_unwind_hack() {
 	# https://bugs.gentoo.org/870280
-	# this is a hack needed to bootstrap with libgcc_s linked tarball on llvm-libunwind system
-	# it should trigger for internal bootstrap or system-bootstrap with rust-bin
-	# the whole idea is for stage0 to bootstrap with fake libgcc_s
+	# this is a hack needed to bootstrap with libgcc_s linked tarball on llvm-libunwind system.
+	# it should trigger for internal bootstrap or system-bootstrap with rust-bin.
+	# the whole idea is for stage0 to bootstrap with fake libgcc_s.
 	# final stage will receive -L${T}/lib but not -lgcc_s args, producing clean compiler.
 	local fakelib="${T}/fakelib"
 	mkdir -p "${fakelib}" || die
@@ -268,8 +268,8 @@ esetup_unwind_hack() {
 	export LD_LIBRARY_PATH="${fakelib}"
 	export RUSTFLAGS+=" -L${fakelib}"
 	# this is a literally magic variable that gets through cargo cache, without it some
-	# crates ignore RUSTFLAGS
-	# this variable can not contain leading space
+	# crates ignore RUSTFLAGS.
+	# this variable can not contain leading space.
 	export MAGIC_EXTRA_RUSTFLAGS+="${MAGIC_EXTRA_RUSTFLAGS:+ }-L${fakelib}"
 }
 
