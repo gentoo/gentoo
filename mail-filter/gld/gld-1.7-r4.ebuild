@@ -20,6 +20,10 @@ DEPEND="sys-libs/zlib
 	postgres? ( dev-db/postgresql:*[server] )"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.7-configure-strict-prototypes.patch
+)
+
 src_prepare() {
 	sed -i gld.conf \
 		-e 's:^LOOPBACKONLY=.*:LOOPBACKONLY=1:' \
