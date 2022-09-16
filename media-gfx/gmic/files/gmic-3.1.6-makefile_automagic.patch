@@ -1,20 +1,20 @@
-Includes the OpenEXR3 patch as well as support for building with USE=-X,
-as the relevant lines are deeply embedded in the automagic stuff.
-
 --- a/src/Makefile
 +++ b/src/Makefile
-@@ -226,8 +226,10 @@
+@@ -226,8 +226,12 @@
  
  # Enable parallelization in CImg, using OpenMP.
  # (http://www.openmp.org/)
+-OPENMP_CFLAGS = -fopenmp -Dcimg_use_openmp
 +ifeq ($(GMIC_USE_OPENMP),yes)
- OPENMP_CFLAGS = -fopenmp -Dcimg_use_openmp
++OPENMP_CFLAGS = -fopenmp -Dcimg_use_openmp=1
  OPENMP_LIBS = -lgomp
++else
++OPENMP_CFLAGS = -Dcimg_use_openmp=0
 +endif
  
  # Enable software debugging.
  # (Use address sanitizer and thus slows down the code)
-@@ -249,9 +251,13 @@
+@@ -249,9 +253,13 @@
  # Enable image display, using X11 (Unix).
  # (Keep /usr/ dirname here since X11 is located in /usr/ on Mac too)
  ifneq ($(OS),Darwin)
@@ -28,7 +28,7 @@ as the relevant lines are deeply embedded in the automagic stuff.
  ifeq (,$(wildcard /usr/X11))
  X11_CFLAGS = -Dcimg_display=0 #-Dcimg_use_xrandr
  X11_LIBS = -lpthread # $(shell pkg-config --libs xrandr || echo -lXrandr)
-@@ -263,8 +269,10 @@
+@@ -263,8 +271,10 @@
  
  # Enable faster X11 display, using XShm extension.
  # (ftp://www.x.org/pub/X11R7.7/doc/man/man3/XShm.3.xhtml)
@@ -39,7 +39,7 @@ as the relevant lines are deeply embedded in the automagic stuff.
  
  # Enable image display, using GDI32 (Windows).
  GDI32_CFLAGS = -Dcimg_display=2
-@@ -273,8 +281,10 @@
+@@ -273,8 +283,10 @@
  # Enable native support of PNG image files, using the PNG library.
  # (http://www.libpng.org/pub/png/libpng.html)
  ifneq ($(OS),Darwin)
@@ -50,7 +50,7 @@ as the relevant lines are deeply embedded in the automagic stuff.
  else
  ifeq (,$(wildcard /tmp/skl))
  PNG_CFLAGS = -Dcimg_use_png $(shell pkg-config --cflags libpng)
-@@ -287,56 +297,76 @@
+@@ -287,56 +299,76 @@
  
  # Enable native support of JPEG image files, using the JPEG library.
  # (http://libjpeg.sourceforge.net/)
