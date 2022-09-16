@@ -14,7 +14,7 @@ LICENSE="GPL-3+"
 SLOT="2.90"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
-UNICODE_VERSION="14.0"
+UNICODE_VERSION="15.0"
 
 IUSE="+introspection gtk-doc vala"
 REQUIRED_USE="vala? ( introspection )"
