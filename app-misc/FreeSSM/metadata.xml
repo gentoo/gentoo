@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>fordfrog@gentoo.org</email>
+    <description>Miroslav Šulc</description>
+  </maintainer>
+  <longdescription>
+    FreeSSM is a free and easy to use diagnostic and adjustment tool for SUBARU®
+    vehicles. It currently supports the models LEGACY®, LIBERTY®, OUTBACK®, BAJA®,
+    IMPREZA®, FORESTER® and TRIBECA® starting with model year 1999 and provides
+    access to the engine and transmission control units.
+  </longdescription>
+  <use>
+    <flag name="small-resolution">Build the app for small resolution screeens</flag>
+  </use>
+  <upstream>
+     <remote-id type="github">Comer352L/FreeSSM</remote-id>
+  </upstream>
+</pkgmetadata>
