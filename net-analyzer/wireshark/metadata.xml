@@ -52,6 +52,7 @@
 		<flag name="pcap">Use <pkg>net-libs/libpcap</pkg> for network packet capturing (build dumpcap, rawshark)</flag>
 		<flag name="plugin-ifdemo">Install plugin interface demo</flag>
 		<flag name="plugins">Install plugins</flag>
+		<flag name="qt6">Build with Qt6 support instead of the default Qt5 for GUI support</flag>
 		<flag name="randpkt">Install randpkt, a utility for creating pcap trace files full of random packets</flag>
 		<flag name="randpktdump">Install randpktdump, an extcap interface to provide access to the random packet generator (randpkt)</flag>
 		<flag name="reordercap">Install reordercap, to reorder input file by timestamp into output file</flag>
