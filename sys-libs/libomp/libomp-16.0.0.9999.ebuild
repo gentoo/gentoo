@@ -92,6 +92,8 @@ multilib_src_configure() {
 		-DLIBOMP_INSTALL_ALIASES=OFF
 		# disable unnecessary hack copying stuff back to srcdir
 		-DLIBOMP_COPY_EXPORTS=OFF
+		# disable until upstream fixes it to use positive logic
+		-DDISABLE_OMPD_GDB_PLUGIN=ON
 	)
 
 	if use offload; then
