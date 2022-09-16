@@ -551,6 +551,7 @@ sys-devel/automake:1.11
 # New major parallel-installable release which needs special care to not
 # end up loaded into the same process together with the earlier libsoup ABI.
 # Migration to it is expected for GNOME 42, NOT to be unmasked with GNOME 41.
+>=gnome-extra/gnome-calculator-43
 net-libs/libsoup:3.0
 
 # Thomas Deutschmann <whissi@gentoo.org> (2021-09-07)
