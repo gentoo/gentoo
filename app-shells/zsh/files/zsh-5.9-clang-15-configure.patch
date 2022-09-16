@@ -1,4 +1,5 @@
 https://bugs.gentoo.org/869539
+https://www.zsh.org/mla/workers/2022/msg00964.html
 --- a/configure.ac
 +++ b/configure.ac
 @@ -583,11 +583,11 @@ if test x$zsh_cv_c_have_union_init = xye
