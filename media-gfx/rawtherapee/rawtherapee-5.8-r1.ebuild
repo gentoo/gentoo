@@ -19,10 +19,12 @@ RDEPEND="
 	dev-cpp/atkmm:=
 	dev-cpp/cairomm:=
 	dev-cpp/glibmm:=
+	dev-cpp/gtkmm:3.0
 	dev-cpp/pangomm:=
 	dev-libs/expat
 	dev-libs/glib:=
 	dev-libs/libsigc++:2
+	gnome-base/librsvg
 	media-libs/lcms:2
 	media-libs/lensfun
 	media-libs/libcanberra[gtk3]
@@ -34,9 +36,7 @@ RDEPEND="
 	virtual/jpeg:0
 	x11-libs/gtk+:3
 	tcmalloc? ( dev-util/google-perftools )"
-DEPEND="${RDEPEND}
-	dev-cpp/gtkmm:3.0
-	gnome-base/librsvg"
+DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
