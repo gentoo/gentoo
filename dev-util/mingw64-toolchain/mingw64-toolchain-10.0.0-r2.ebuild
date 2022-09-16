@@ -10,8 +10,8 @@ inherit edo flag-o-matic multilib-build toolchain-funcs
 # ideally update only on mingw64-runtime bumps or if there's known issues
 # (please report) to avoid rebuilding the entire toolchain too often.
 # Do _p1++ rather than revbump if changing without bumping mingw64 itself.
-BINUTILS_PV=2.39
-GCC_PV=12.2.0
+BINUTILS_PV=2.37 # 2.38 needs bug #838106
+GCC_PV=11.3.0
 MINGW_PV=$(ver_cut 1-3)
 
 DESCRIPTION="All-in-one mingw64 toolchain intended for building Wine without crossdev"
@@ -45,6 +45,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/mingw64-runtime-10.0.0-tmp-files-clash.patch
 	"${FILESDIR}"/gcc-11.3.0-plugin-objdump.patch
+	"${FILESDIR}"/gcc-11.3.0-musl-calloc.patch
 )
 
 pkg_pretend() {
@@ -93,18 +94,15 @@ src_compile() {
 		--prefix="${prefix}"
 		--host=${CHOST}
 		--disable-cet
-		--disable-default-execstack
 		--disable-nls
 		--disable-shared
 		--with-system-zlib
 		--without-debuginfod
-		--without-msgpack
 	)
 	mwt-binutils() {
 		# symlink gcc's lto plugin for AR (bug #854516)
-		mkdir "${sysroot}"/${CTARGET}/lib/bfd-plugins || die
-		ln -s ../../../libexec/gcc/${CTARGET}/${GCC_PV}/liblto_plugin.so \
-			"${sysroot}"/${CTARGET}/lib/bfd-plugins || die
+		ln -s ../../libexec/gcc/${CTARGET}/${GCC_PV}/liblto_plugin.so \
+			"${sysroot}"/lib/bfd-plugins || die
 	}
 
 	# gcc (minimal -- if need more, disable only in stage1 / enable in stage3)
