@@ -23,7 +23,7 @@ BDEPEND="
 		dev-perl/Font-TTF
 		dev-perl/Sort-Versions
 		media-fonts/source-code-pro
-		media-fonts/source-sans
+		media-fonts/source-sans:3
 		virtual/perl-File-Spec
 	)
 "
@@ -37,7 +37,8 @@ src_prepare() {
 
 	# https://bugs.gentoo.org/870214
 	# During the split of media-fonts/source-pro, the source-sans files
-	# were renamed.
+	# were renamed. Currently depend on media-fonts/source-sans:3 which works
+	# with this sed.
 	sed -i 's/SourceSansPro/SourceSans3/g' doc/psfonts.ph || die
 }
 
