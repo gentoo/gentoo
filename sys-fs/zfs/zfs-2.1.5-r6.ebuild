@@ -112,6 +112,10 @@ PATCHES=(
 
 	# bug #863212, bug #855182
 	"${WORKDIR}"/${P}-patches/
+
+	# https://github.com/openzfs/zfs/pull/13769
+	# https://github.com/openzfs/zfs/pull/13585
+	"${FILESDIR}"/2.1.5-dracut-zfs-bootfs-snapshot-fixes.patch
 )
 
 pkg_pretend() {
