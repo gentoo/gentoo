@@ -40,6 +40,9 @@ OBJDUMP="llvm-objdump"
 READELF="llvm-readelf"
 ADDR2LINE="llvm-addr2line"
 
+# Rust needs this to build some crates (like uutils)
+LLVM_USE_LIBCXX=1
+CXXSTDLIB="c++"
 
 # bootstrap USE for stage1
 
