@@ -1,0 +1,36 @@
+From 2296b4655694744f7c8dcdc9440c21d86e19968e Mon Sep 17 00:00:00 2001
+From: Thomas Huth <thuth@redhat.com>
+Date: Wed, 22 Jun 2022 16:03:28 +0200
+Subject: [PATCH] common-user: Only compile the common user code if have_user
+ is set
+
+There is no need to waste cycles here if we only compile the system
+binaries or tools. Additionally, this change is even a hard requirement
+for building the tools on systems that do not have an entry in the
+common-user/host/ folder (since common-user/meson.build is trying
+to add such a path via the include_directories() command).
+
+Reported-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Zhang Chen <chen.zhang@intel.com>
+Message-Id: <20220622140328.383961-1-thuth@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ common-user/meson.build | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/common-user/meson.build b/common-user/meson.build
+index 26212dda5c..ac9de5b9e3 100644
+--- a/common-user/meson.build
++++ b/common-user/meson.build
+@@ -1,3 +1,7 @@
++if not have_user
++   subdir_done()
++endif
++
+ common_user_inc += include_directories('host/' / host_arch)
+ 
+ user_ss.add(files(
+-- 
+GitLab
+

@@ -302,6 +302,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-virtio-scsi-fixes.patch
 	"${FILESDIR}"/${P}-pci-overflow-fortify-source-3.patch
 	"${FILESDIR}"/${P}-glibc-2.36.patch
+	"${FILESDIR}"/${PN}-7.0.0-have-user-meson.patch
 )
 
 QA_PREBUILT="
