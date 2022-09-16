@@ -21,7 +21,7 @@ else
 fi
 LICENSE="LGPL-2+"
 SLOT="0"
-IUSE="bcache +cryptsetup device-mapper dmraid escrow gtk-doc introspection lvm kbd +nvme test +tools"
+IUSE="bcache +cryptsetup device-mapper dmraid escrow gtk-doc introspection lvm kbd test +tools vdo"
 # Tests require root. In a future release, we may be able to run a smaller
 # subset with new run_tests.py arguments.
 RESTRICT="!test? ( test ) test"
@@ -48,7 +48,7 @@ RDEPEND="
 		sys-fs/lvm2
 		virtual/udev
 	)
-	nvme? ( sys-libs/libnvme )
+	vdo? ( dev-libs/libyaml )
 	${PYTHON_DEPS}
 "
 
@@ -88,6 +88,7 @@ src_configure() {
 		--with-python3
 		--without-mpath
 		--without-nvdimm
+		--without-python2
 		$(use_enable introspection)
 		$(use_enable test tests)
 		$(use_with bcache)
@@ -99,8 +100,8 @@ src_configure() {
 		$(use_with kbd)
 		$(use_with lvm lvm)
 		$(use_with lvm lvm-dbus)
-		$(use_with nvme)
 		$(use_with tools)
+		$(use_with vdo)
 	)
 	econf "${myeconfargs[@]}"
 }
