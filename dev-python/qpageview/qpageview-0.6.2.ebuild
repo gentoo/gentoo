@@ -14,7 +14,7 @@ SRC_URI="https://github.com/frescobaldi/qpageview/archive/refs/tags/v${PV}.tar.g
 # Should be GPL-3+ once cleared up
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="dev-python/PyQt5[gui,printsupport,svg,widgets,${PYTHON_USEDEP}]
 	dev-python/python-poppler-qt5[${PYTHON_USEDEP}]"
