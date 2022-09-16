@@ -75,12 +75,6 @@ Fixes: 8b1e5d193 (fs/xfs: Add bigtime incompat feature support)
 Signed-off-by: Erwan Velu <e.velu@criteo.com>
 Tested-by: Carlos Maiolino <cmaiolino@redhat.com>
 Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
----
- grub-core/fs/xfs.c | 14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
-
-diff --git a/grub-core/fs/xfs.c b/grub-core/fs/xfs.c
-index 0f524c3a8..e3816d1ec 100644
 --- a/grub-core/fs/xfs.c
 +++ b/grub-core/fs/xfs.c
 @@ -192,6 +192,11 @@ struct grub_xfs_time_legacy
@@ -115,6 +109,4 @@ index 0f524c3a8..e3816d1ec 100644
  
  struct grub_xfs_dirblock_tail
  {
--- 
 cgit v1.2.1
-

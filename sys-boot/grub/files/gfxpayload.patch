@@ -5,12 +5,6 @@ Subject: [PATCH] 10_linux: Default gfxpayload=keep only when booting using efi
 
 vesafb seems to be unreliable when using BIOS compat mode.
 
----
- util/grub.d/10_linux.in | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index d2e2a8f..a54b888 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
 @@ -104,7 +104,9 @@ linux_entry ()
@@ -24,6 +18,3 @@ index d2e2a8f..a54b888 100644
        fi
    else
        if [ "x$GRUB_GFXPAYLOAD_LINUX" != xtext ]; then
--- 
-2.7.2
-

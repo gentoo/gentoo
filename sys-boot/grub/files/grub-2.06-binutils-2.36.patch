@@ -13,12 +13,6 @@ by default. Use the assmbler option -mx86-used-note=no to disable the
 section from being generated to workaround the ensuing linker issue.
 
 Signed-off-by: Michael Chang <mchang@suse.com>
----
- configure.ac | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
-
-diff --git a/configure.ac b/configure.ac
-index fa8f74bb9..38ee5f579 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -836,6 +836,20 @@ if ( test "x$target_cpu" = xi386 || test "x$target_cpu" = xx86_64 ) && test "x$p

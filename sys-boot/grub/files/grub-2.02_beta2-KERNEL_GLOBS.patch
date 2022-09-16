@@ -7,13 +7,6 @@ Subject: [PATCH] GRUB_LINUX_KERNEL_GLOBS: configurable kernel selection
 * docs/grub.texi: Document GRUB_LINUX_KERNEL_GLOBS
 
 Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
----
- docs/grub.texi          |  5 +++++
- util/grub.d/10_linux.in | 21 +++++++++++----------
- 2 files changed, 16 insertions(+), 10 deletions(-)
-
-diff --git a/docs/grub.texi b/docs/grub.texi
-index 9a25a0b..d1129ec 100644
 --- a/docs/grub.texi
 +++ b/docs/grub.texi
 @@ -1490,6 +1490,11 @@ This option may be set to a list of GRUB module names separated by spaces.
@@ -28,8 +21,6 @@ index 9a25a0b..d1129ec 100644
  @end table
  
  The following options are still accepted for compatibility with existing
-diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 859b608..e5ac11d 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
 @@ -145,18 +145,19 @@ EOF
