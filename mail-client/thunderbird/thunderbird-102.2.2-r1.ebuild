@@ -416,6 +416,13 @@ pkg_setup() {
 			fi
 		fi
 
+		if ver_test $(rustc -V | cut -d" " -f2) -ge "1.63"; then
+			ewarn "Rust-1.63 is currently unsupported for building Thunderbird-102."
+			ewarn "Please use 'eselect rust' to switch to a lower version, then resume"
+			ewarn "building Thunderbird."
+			die "Rust-1.63 detected. Use eselect rust to choose <1.63"
+		fi
+
 		python-any-r1_pkg_setup
 
 		# Avoid PGO profiling problems due to enviroment leakage
