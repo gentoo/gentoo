@@ -4,7 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} )
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit cmake lua-single python-single-r1 xdg-utils
 
@@ -58,7 +58,6 @@ RDEPEND="
 			dev-lang/ruby:3.1
 			dev-lang/ruby:3.0
 			dev-lang/ruby:2.7
-			dev-lang/ruby:2.6
 		)
 	)
 	selinux? ( sec-policy/selinux-irc )
