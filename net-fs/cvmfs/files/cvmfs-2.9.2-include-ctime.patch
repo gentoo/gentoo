@@ -1,0 +1,10 @@
+--- a/cvmfs/authz/helper_log.cc	2022-07-04 12:15:08.000000000 +0200
++++ b/cvmfs/authz/helper_log.cc	2022-09-01 17:55:08.200175687 +0200
+@@ -8,6 +8,7 @@
+ #include <fcntl.h>
+ #include <syslog.h>
+ #include <unistd.h>
++#include <ctime>
+ 
+ #include <cassert>
+ #include <cstdarg>
