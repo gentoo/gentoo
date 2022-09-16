@@ -26,8 +26,8 @@ fi
 LICENSE="GPL-2"
 SLOT="0/${PV}"
 IUSE="androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc dpauxmon"
-IUSE+=" +dumpcap +editcap http2 ilbc kerberos libxml2 lto lua lz4 maxminddb"
-IUSE+=" +mergecap +minizip +netlink opus +plugins plugin-ifdemo +pcap +qt5 +randpkt"
+IUSE+=" +dumpcap +editcap +gui http2 ilbc kerberos libxml2 lto lua lz4 maxminddb"
+IUSE+=" +mergecap +minizip +netlink opus +plugins plugin-ifdemo +pcap +randpkt"
 IUSE+=" +randpktdump +reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl"
 IUSE+=" sdjournal test +text2pcap tfshark +tshark +udpdump zlib +zstd"
 
@@ -59,7 +59,7 @@ RDEPEND="acct-group/pcap
 	netlink? ( dev-libs/libnl:3 )
 	opus? ( media-libs/opus )
 	pcap? ( net-libs/libpcap )
-	qt5? (
+	gui? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtmultimedia:5
@@ -88,7 +88,7 @@ BDEPEND="${PYTHON_DEPS}
 		app-doc/doxygen
 		dev-ruby/asciidoctor
 	)
-	qt5? (
+	gui? (
 		dev-qt/linguist-tools:5
 	)
 	test? (
@@ -98,7 +98,7 @@ BDEPEND="${PYTHON_DEPS}
 		')
 	)"
 RDEPEND="${RDEPEND}
-	qt5? ( virtual/freedesktop-icon-theme )
+	gui? ( virtual/freedesktop-icon-theme )
 	selinux? ( sec-policy/selinux-wireshark )"
 
 PATCHES=(
@@ -135,7 +135,7 @@ src_configure() {
 		esac
 	fi
 
-	if use qt5 ; then
+	if use gui ; then
 		#export QT_MIN_VERSION=5.3.0
 		append-cxxflags -fPIC -DPIC
 	fi
@@ -145,10 +145,10 @@ src_configure() {
 	mycmakeargs+=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_{Asciidoctor,DOXYGEN}=$(usex !doc)
 		$(use androiddump && use pcap && echo -DEXTCAP_ANDROIDDUMP_LIBPCAP=yes)
-		$(usex qt5 LRELEASE=$(qt5_get_bindir)/lrelease '')
-		$(usex qt5 MOC=$(qt5_get_bindir)/moc '')
-		$(usex qt5 RCC=$(qt5_get_bindir)/rcc '')
-		$(usex qt5 UIC=$(qt5_get_bindir)/uic '')
+		$(usex gui LRELEASE=$(qt5_get_bindir)/lrelease '')
+		$(usex gui MOC=$(qt5_get_bindir)/moc '')
+		$(usex gui RCC=$(qt5_get_bindir)/rcc '')
+		$(usex gui UIC=$(qt5_get_bindir)/uic '')
 		-DBUILD_androiddump=$(usex androiddump)
 		-DBUILD_capinfos=$(usex capinfos)
 		-DBUILD_captype=$(usex captype)
@@ -169,7 +169,7 @@ src_configure() {
 		-DBUILD_tfshark=$(usex tfshark)
 		-DBUILD_tshark=$(usex tshark)
 		-DBUILD_udpdump=$(usex udpdump)
-		-DBUILD_wireshark=$(usex qt5)
+		-DBUILD_wireshark=$(usex gui)
 		-DENABLE_WERROR=OFF
 		-DENABLE_BCG729=$(usex bcg729)
 		-DENABLE_BROTLI=$(usex brotli)
@@ -237,7 +237,7 @@ src_install() {
 		doins ${dir}/*.h
 	done
 
-	if use qt5 ; then
+	if use gui ; then
 		local s
 
 		for s in 16 32 48 64 128 256 512 1024 ; do
