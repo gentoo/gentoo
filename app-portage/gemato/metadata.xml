@@ -9,6 +9,8 @@
 	<use>
 		<flag name="gpg">Install dependencies needed for OpenPGP
 			signature verification support</flag>
+		<flag name="pretty-log">Pull <pkg>dev-python/rich</pkg>
+			to enable pretty logs</flag>
 		<flag name="tools">Install additional utilities (benchmarks,
 			hash testing tools, fast Manifest generators)
 			to /usr/share/gemato.</flag>
