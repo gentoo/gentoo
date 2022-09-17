@@ -35,7 +35,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
-		$(use_enable cpu_flags_arm_neon arm-neon check)
+		$(use_enable cpu_flags_arm_neon arm-neon)
 		$(use_enable cpu_flags_x86_sse intel-sse)
 		$(use_enable static-libs static)
 	)
