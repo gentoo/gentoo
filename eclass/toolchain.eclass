@@ -901,17 +901,6 @@ toolchain_src_configure() {
 		export ac_cv_std_swap_in_utility=no
 	fi
 
-	if [[ $(tc-getAS) == *clang* ]] ; then
-		# The features/clang profile sets AS="clang -c".
-		# 1. We can't use llvm-as because it's essentially for
-		# internal use and isn't compatible anyway with cmdline args.
-		# 2. "clang -c" doesn't recognise --64 which configure
-		# tries to add.
-		# So, fake nothing to avoid configure trying to add that in.
-		einfo "Forcing blank gcc_cv_as_flags for AS='clang -c' compatibility"
-		export gcc_cv_as_flags=""
-	fi
-
 	einfo "CFLAGS=\"${CFLAGS}\""
 	einfo "CXXFLAGS=\"${CXXFLAGS}\""
 	einfo "LDFLAGS=\"${LDFLAGS}\""
