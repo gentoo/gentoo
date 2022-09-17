@@ -28,7 +28,8 @@ IUSE="cpu_flags_x86_sse2 debug doc +icu inspector lto +npm pax-kernel +snapshot 
 REQUIRED_USE="inspector? ( icu ssl )
 	npm? ( ssl )
 	system-icu? ( icu )
-	system-ssl? ( ssl )"
+	system-ssl? ( ssl )
+	sys-devel/gcc:*"
 
 RESTRICT="!test? ( test )"
 
@@ -108,6 +109,12 @@ src_configure() {
 
 	# LTO compiler flags are handled by configure.py itself
 	filter-flags '-flto*'
+ 	# nodejs unconditionally links to libatomic #869992
+	# specifically it requires __atomic_is_lock_free which
+	# is not yet implemented by sys-libs/compiler-rt (see
+	# https://reviews.llvm.org/D85044?id=287068), therefore
+	# we depend on gcc and force using libgcc as the support lib
+	tc-is-clang && append-ldflags "--rtlib=libgcc --unwindlib=libgcc"
 
 	local myconf=(
 		--shared-brotli
