@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-09-17)
+# Fails to compile on musl: bug #832868
+sys-apps/uutils
+
 # Sam James <sam@gentoo.org> (2022-09-12)
 # The libxcrypt migration is optional for musl.
 -virtual/libcrypt:0/1
