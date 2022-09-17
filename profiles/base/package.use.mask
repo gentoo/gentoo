@@ -19,10 +19,6 @@
 # bug #870211.
 dev-lang/rust llvm-libunwind
 
-# Sam James <sam@gentoo.org> (2022-09-15)
-# Patch not rebased and supporting it is not a priority: bug #824018.
->=media-libs/libpng-1.6.38 apng
-
 # Matt Jolly <Matt.Jolly@footclan.ninja (2022-09-09)
 # app-antivirus/clamav JIT support requires LLVM <=13
 # ebuild support is there but currently failing to link
