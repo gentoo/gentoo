@@ -6,6 +6,6 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">christopho/zsxd</remote-id>
+		<remote-id type="gitlab">solarus-games/zsxd</remote-id>
 	</upstream>
 </pkgmetadata>
