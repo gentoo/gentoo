@@ -1,0 +1,68 @@
+https://bugs.launchpad.net/ubuntu/+source/fprintd/+bug/1976256
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1009395
+https://salsa.debian.org/debian/fprintd/-/blob/debian/debian/patches/tests-Fix-dbusmock-AddDevice-calls-to-include-optional-ar.patch
+
+From: Benjamin Berg <bberg@redhat.com>
+Date: Tue, 3 May 2022 12:01:37 +0200
+Subject: tests: Fix dbusmock AddDevice calls to include optional argument
+
+The dbusmock code checks that all parameters wanted by the dbus
+signature are given. As such, pass them, even though the parameters is
+optional on the python side.
+
+Origin: https://gitlab.freedesktop.org/libfprint/fprintd/-/commit/ae04fa98
+---
+ tests/pam/test_pam_fprintd.py | 8 ++++----
+ tests/test_fprintd_utils.py   | 2 +-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/tests/pam/test_pam_fprintd.py b/tests/pam/test_pam_fprintd.py
+index 99f8259..bd43497 100644
+--- a/tests/pam/test_pam_fprintd.py
++++ b/tests/pam/test_pam_fprintd.py
+@@ -82,7 +82,7 @@ class TestPamFprintd(dbusmock.DBusTestCase):
+         self.p_mock.wait()
+ 
+     def setup_device(self):
+-        device_path = self.obj_fprintd_mock.AddDevice('FDO Trigger Finger Laser Reader', 3, 'swipe')
++        device_path = self.obj_fprintd_mock.AddDevice('FDO Trigger Finger Laser Reader', 3, 'swipe', False)
+         self.device_mock = self.dbus_con.get_object('net.reactivated.Fprint', device_path)
+         self.device_mock.SetEnrolledFingers('toto', ['left-little-finger', 'right-little-finger'])
+ 
+@@ -232,7 +232,7 @@ class TestPamFprintd(dbusmock.DBusTestCase):
+         self.assertRegex(res.errors[0], r'Failed to match fingerprint')
+ 
+     def test_pam_fprintd_dual_reader_auth(self):
+-        device_path = self.obj_fprintd_mock.AddDevice('FDO Sandpaper Reader', 3, 'press')
++        device_path = self.obj_fprintd_mock.AddDevice('FDO Sandpaper Reader', 3, 'press', False)
+         sandpaper_device_mock = self.dbus_con.get_object('net.reactivated.Fprint', device_path)
+         sandpaper_device_mock.SetEnrolledFingers('toto', ['left-middle-finger', 'right-middle-finger'])
+         script = [
+@@ -251,12 +251,12 @@ class TestPamFprintd(dbusmock.DBusTestCase):
+ 
+     def test_pam_fprintd_multi_reader_not_all_enrolled(self):
+         # Add a 1st device with actual enrolled prints
+-        device_path = self.obj_fprintd_mock.AddDevice('FDO Empty reader', 3, 'press')
++        device_path = self.obj_fprintd_mock.AddDevice('FDO Empty reader', 3, 'press', False)
+         empty_reader = self.dbus_con.get_object('net.reactivated.Fprint', device_path)
+         empty_reader.SetEnrolledFingers('toto', dbus.Array(set([]), signature='s')) 
+ 
+         # Add a 2nd device with actual enrolled prints
+-        device_path = self.obj_fprintd_mock.AddDevice('FDO Most Used Reader', 3, 'press')
++        device_path = self.obj_fprintd_mock.AddDevice('FDO Most Used Reader', 3, 'press', False)
+         sandpaper_device_mock = self.dbus_con.get_object('net.reactivated.Fprint', device_path)
+         sandpaper_device_mock.SetEnrolledFingers('toto', ['left-middle-finger', 'right-middle-finger'])
+         script = [
+diff --git a/tests/test_fprintd_utils.py b/tests/test_fprintd_utils.py
+index f10d4b0..efa5893 100755
+--- a/tests/test_fprintd_utils.py
++++ b/tests/test_fprintd_utils.py
+@@ -88,7 +88,7 @@ class TestFprintdUtilsBase(dbusmock.DBusTestCase):
+ 
+     def setup_device(self):
+         self.device_path = self.obj_fprintd_mock.AddDevice(
+-            'FDO Trigger Finger Laser Reader', 3, 'swipe')
++            'FDO Trigger Finger Laser Reader', 3, 'swipe', False)
+         self.device_mock = self.dbus_con.get_object('net.reactivated.Fprint',
+             self.device_path)
+         self.set_enrolled_fingers(['left-little-finger', 'right-little-finger'])
