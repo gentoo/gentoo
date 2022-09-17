@@ -292,9 +292,11 @@ src_configure() {
 		$(use_enable test tests)
 	)
 
-	if ! use x86 && [[ ${CHOST} != armv*h* ]] ; then
-		myeconfargs+=( --enable-rust-simd )
-	fi
+	# Temporary fix with rust-1.63, bgo#870193
+	# if ! use x86 && [[ ${CHOST} != armv*h* ]] ; then
+	#	myeconfargs+=( --enable-rust-simd )
+	# fi
+	myeconfargs+=( --disable-rust-simd )
 
 	# Modifications to better support ARM, bug 717344
 	if use cpu_flags_arm_neon ; then
