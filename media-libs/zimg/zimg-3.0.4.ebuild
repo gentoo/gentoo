@@ -18,7 +18,14 @@ HOMEPAGE="https://github.com/sekrit-twc/zimg"
 
 LICENSE="WTFPL-2"
 SLOT="0"
-IUSE="debug static-libs"
+IUSE="debug static-libs test"
+RESTRICT="!test? ( test )"
+DEPEND="test? ( dev-cpp/gtest )"
+
+PATCHES=(
+	"${FILESDIR}/system-gtest.patch"
+	"${FILESDIR}/backport-e29571f-issue-175.patch"
+)
 
 src_prepare() {
 	default
@@ -28,5 +35,6 @@ src_prepare() {
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
 		$(use_enable debug) \
-		$(use_enable static-libs static)
+		$(use_enable static-libs static) \
+		$(use_enable test unit-test)
 }

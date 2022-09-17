@@ -1,0 +1,45 @@
+diff --git a/Makefile.am b/Makefile.am
+index 8727ca4..303cc6f 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -356,8 +356,7 @@ test_unit_test_CPPFLAGS = \
+ 	$(AM_CPPFLAGS) \
+ 	-I$(srcdir)/src/zimg \
+ 	-I$(srcdir)/test \
+-	-I$(srcdir)/test/extra \
+-	-I$(srcdir)/test/extra/googletest/googletest/include
++	-I$(srcdir)/test/extra
+ 
+ test_unit_test_SOURCES = \
+ 	test/main.cpp \
+@@ -419,13 +418,8 @@ test_unit_test_SOURCES += \
+ 	test/resize/x86/resize_impl_avx512_vnni_test.cpp
+ endif # X86SIMD_AVX512
+ 
+-test/extra/googletest/build/lib/libgtest.a: .FAKE
+-	-$(MAKE) -C test/extra/googletest/build gtest
+-
+-.FAKE:
+-
+ test_unit_test_LDADD = \
+-	test/extra/googletest/build/lib/libgtest.a \
++	-lgtest \
+ 	test/libmusl_m.la \
+ 	libzimg_internal.la
+ endif # UNIT_TEST
+diff --git a/configure.ac b/configure.ac
+index cd50e96..5fd41fb 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -45,11 +45,6 @@ AS_IF([test "x$enable_unit_test" = "xyes"],
+                 [i?86],    [CFLAGS="$CFLAGS -mfpmath=sse -msse2" CXXFLAGS="$CXXFLAGS -mfpmath=sse -msse2"],
+                 [x86_64],  [],
+                 [AC_MSG_WARN([Could not determine how to enable IEEE-754 compliance on host. Tests may fail.])])
+-
+-        AC_CHECK_PROG([CMAKE], [cmake], [cmake])
+-        AS_MKDIR_P([test/extra/googletest/build])
+-        AS_IF([(cd "test/extra/googletest/build" && $CMAKE -Dgtest_disable_pthreads=ON "$ac_abs_confdir/test/extra/googletest")],
+-              [], [AC_MSG_ERROR([CMake error])])
+       ])
+ 
+ 
