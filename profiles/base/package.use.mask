@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-09-17)
+# po4a crashes while translating
+# mask for now
+=dev-util/schroot-1.6.13_p2 nls
+
 # Sam James <sam@gentoo.org> (2022-09-15)
 # Doesn't work on e.g. glibc systems. Unmasked on the LLVM profiles.
 # It doesn't matter much as llvm-libunwind has different semantics
