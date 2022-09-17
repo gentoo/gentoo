@@ -9,7 +9,7 @@ SRC_URI="https://github.com/kward/shunit2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~riscv x86"
 
 src_test() {
 	SHELL="/bin/bash" ./test_runner -s /bin/bash || die "bash tests failed"
