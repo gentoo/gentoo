@@ -12,6 +12,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~sparc ~x86"
 IUSE="+ssl"
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-bashisms.patch
+	"${FILESDIR}"/${PV}-prototypes.patch
+)
+
 DEPEND="sys-devel/flex
 	ssl? ( dev-libs/openssl:= )"
 RDEPEND="ssl? ( dev-libs/openssl:= )"
