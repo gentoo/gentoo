@@ -3,17 +3,20 @@
 
 EAPI=7
 
-ADA_COMPAT=( gnat_202{0..1} gcc_12_2_0 )
+ADA_COMPAT=( gnat_202{0..1} )
 inherit ada multiprocessing
+
+MYP=${P}-${PV}0518-19D50-src
+ID=6a2cf72f308cc787926b12ddc20993fcf2b8ea79
+ADAMIRROR=https://community.download.adacore.com/v1
 
 DESCRIPTION="Set of modules that provide a simple manipulation of XML streams"
 HOMEPAGE="http://libre.adacore.com/"
-SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
-	-> ${P}.tar.gz"
+SRC_URI="${ADAMIRROR}/${ID}?filename=${MYP}.tar.gz -> ${MYP}.tar.gz"
 
 LICENSE="GPL-3"
-SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+SLOT="0"
+KEYWORDS="amd64 x86"
 IUSE="+shared static-libs static-pic"
 REQUIRED_USE="|| ( shared static-libs static-pic )
 	${ADA_REQUIRED_USE}"
@@ -21,6 +24,8 @@ REQUIRED_USE="|| ( shared static-libs static-pic )
 RDEPEND="${ADA_DEPS}"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
+
+S="${WORKDIR}"/${MYP}
 
 PATCHES=( "${FILESDIR}"/${PN}-2019-gentoo.patch )
 
@@ -72,8 +77,11 @@ src_install() {
 	fi
 
 	einstalldocs
+	rm -f "${D}"/usr/share/doc/${PN}/.buildinfo
 	dodoc xmlada-roadmap.txt
 	rm -rf "${D}"/usr/share/gpr/manifests
+	dodir /usr/share/gnatdoc
+	mv "${D}"/usr/share/doc/${PN} "${D}"/usr/share/gnatdoc/ || die
 	rm -f "${D}"/usr/share/examples/xmlada/*/b__*
 	rm -f "${D}"/usr/share/examples/xmlada/*/*.adb.std*
 	rm -f "${D}"/usr/share/examples/xmlada/*/*.ali
