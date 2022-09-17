@@ -74,7 +74,6 @@ RDEPEND="${DEPEND}
 	rootfs? (
 		app-arch/cpio
 		app-misc/pax-utils
-		!<sys-kernel/genkernel-3.5.1.1
 	)
 	test-suite? (
 		app-shells/ksh
