@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,7 +27,7 @@ src_compile() {
 	local f
 	for f in [[:lower:]]* ; do
 		if use unicode ; then
-			iconv --from-code iso-8859-2 --to-code utf8 -o${f}.utf8 ${f} || die
+			iconv -f iso-8859-2 -t utf8 ${f} > ${f}.utf8 || die
 			mv ${f}.utf8 ${f} || die
 		fi
 		strfile -s ${f} || die "strfile ${f} failed"
