@@ -27,6 +27,11 @@ RDEPEND="dev-libs/elfutils
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-binutils-2.39.patch
+	"${FILESDIR}"/${P}-gcc-13.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_Bfd=$(usex !binutils)
