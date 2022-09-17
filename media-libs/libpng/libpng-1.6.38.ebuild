@@ -7,8 +7,8 @@ inherit libtool multilib-minimal
 
 DESCRIPTION="Portable Network Graphics library"
 HOMEPAGE="http://www.libpng.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz
-	apng? ( mirror://sourceforge/apng/${PN}-1.6.37-apng.patch.gz )"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+SRC_URI+=" apng? ( mirror://sourceforge/libpng-apng/${PN}$(ver_rs 1-2 '' $(ver_cut 1-2))/${PV}/${P}-apng.patch.gz )"
 
 LICENSE="libpng2"
 SLOT="0/16"
@@ -24,7 +24,7 @@ src_prepare() {
 	default
 
 	if use apng; then
-		eapply -p0 "${WORKDIR}"/${PN}-*-apng.patch
+		eapply "${WORKDIR}"/${PN}-*-apng.patch
 
 		# Don't execute symbols check with apng patch, bug #378111
 		sed -i -e '/^check/s:scripts/symbols.chk::' Makefile.in || die
