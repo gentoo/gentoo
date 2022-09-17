@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 
 distutils_enable_sphinx docs/src dev-python/sphinx_rtd_theme
 distutils_enable_tests unittest
