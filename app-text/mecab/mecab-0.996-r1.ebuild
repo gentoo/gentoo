@@ -15,6 +15,7 @@ SLOT="0"
 IUSE="static-libs unicode"
 
 DEPEND="dev-lang/perl
+	sys-devel/gettext
 	virtual/libiconv"
 RDEPEND=""
 PDEPEND="|| (
