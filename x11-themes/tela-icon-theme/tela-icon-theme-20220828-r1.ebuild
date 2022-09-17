@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit edo
+
 # eg. 20211225 -> 2021-12-25
 MY_PV="${PV:0:4}-${PV:4:2}-${PV:6:2}"
 MY_PN="${PN^}"
@@ -62,7 +64,7 @@ src_install() {
 
 	# installs broken symlink (by design, but we remove it due to QA warnings)
 	# https://bugs.gentoo.org/830467
-	find "${ED}" -xtype l -name uav.svg -delete || die "removing broken symlinks failed"
+	edob find "${ED}" -xtype l -print -delete
 
 	einstalldocs
 }
