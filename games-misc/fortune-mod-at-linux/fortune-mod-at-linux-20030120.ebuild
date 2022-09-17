@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ BDEPEND=" unicode? ( virtual/libiconv )"
 src_compile() {
 	# bug #322111
 	if use unicode ; then
-		iconv --from-code=ISO-8859-1 --to-code=UTF-8 at.linux > at.linux-utf8 || die
+		iconv -f iso-8859-1 -t utf8 at.linux > at.linux-utf8 || die
 		mv at.linux-utf8 at.linux || die
 		strfile -s at.linux || die
 	fi
