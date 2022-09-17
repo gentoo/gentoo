@@ -54,6 +54,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.90.7_0001-add-test-feature-and-make-tests-optional.patch"
 	"${FILESDIR}/${PN}-1.90.8_0002-add-configure-option-for-libsystemd-provider.patch"
 	"${FILESDIR}/${P}-fix-meson-0.61-build.patch"
+	"${FILESDIR}/tests-Fix-dbusmock-AddDevice-calls-to-include-optional-ar.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
