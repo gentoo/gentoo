@@ -133,5 +133,9 @@ src_configure() {
 		mycmakeargs+=( -DOPENVDB_SIMD=SSE42 )
 	fi
 
+	if use cuda; then
+		addpredict /dev/nvidiactl
+	fi
+
 	cmake_src_configure
 }
