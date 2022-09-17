@@ -1,0 +1,409 @@
+
+Bug: https://bugs.gentoo.org/870769
+
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+
+--- joe-4.6/joe/b.c
++++ joe-4.6-prototypes/joe/b.c
+@@ -23,8 +23,6 @@
+ #endif
+ #endif
+ 
+-extern int errno;
+-
+ #ifdef WITH_SELINUX
+ #include <selinux/selinux.h>
+ static int selinux_enabled = -1;
+@@ -147,7 +145,7 @@ static void pfree(P *p)
+ B bufs = { {&bufs, &bufs} };
+ static B frebufs = { {&frebufs, &frebufs} };
+ 
+-void set_file_pos_orphaned()
++void set_file_pos_orphaned(void)
+ {
+ 	B *b;
+ 	for (b = bufs.link.next; b != &bufs; b = b->link.next)
+@@ -324,7 +322,7 @@ void brm(B *b)
+ 	}
+ }
+ 
+-void brmall()
++void brmall(void)
+ {
+ 	while (!qempty(B, link, &bufs))
+ 		brm(bufs.link.next);
+--- joe-4.6/joe/b.h
++++ joe-4.6-prototypes/joe/b.h
+@@ -171,7 +171,7 @@ extern const char *msgs[];	/* File acces
+ 
+ B *bmk(B *prop);
+ void brm(B *b);
+-void brmall();
++void brmall(void);
+ 
+ B *bfind(const char *s);
+ B *bfind_scratch(const char *s);
+@@ -330,7 +330,7 @@ extern int break_links; /* Break hard li
+ extern int break_symlinks; /* Break symbolic links on write */
+ extern int nodeadjoe; /* Prevent creation of DEADJOE files */
+ 
+-void set_file_pos_orphaned();
++void set_file_pos_orphaned(void);
+ 
+ void breplace(B *b, B *n);
+ 
+--- joe-4.6/joe/charmap.c
++++ joe-4.6-prototypes/joe/charmap.c
+@@ -1423,7 +1423,7 @@ main(int argc,char *argv[])
+ 
+ /* Get names of available encodings (for tab completion of ^T E prompt) */
+ 
+-char **get_encodings()
++char **get_encodings(void)
+ {
+ 	int y;
+ 	char **encodings = 0;
+@@ -1591,7 +1591,7 @@ struct charmap *locale_map;
+ struct charmap *locale_map_non_utf8;
+ 			/* Old, non-utf8 version of locale */
+ 
+-void joe_locale()
++void joe_locale(void)
+ {
+ 	const char *sc;
+ 	char *s, *t, *u;
+--- joe-4.6/joe/charmap.h
++++ joe-4.6-prototypes/joe/charmap.h
+@@ -80,7 +80,7 @@ int from_utf8(struct charmap *map,const
+ int to_uni(struct charmap *cset, int c);
+ void to_utf8(struct charmap *map,char *s,int c);
+ 
+-void joe_locale();
++void joe_locale(void);
+ extern struct charmap *locale_map;	/* Character map of terminal */
+ extern struct charmap *utf8_map;	/* UTF-8 character map */
+ extern struct charmap *utf16_map;	/* UTF-16 character map */
+--- joe-4.6/joe/cmd.c
++++ joe-4.6-prototypes/joe/cmd.c
+@@ -476,7 +476,7 @@ int execmd(CMD *cmd, int k)
+ 	return ret;
+ }
+ 
+-void do_auto_scroll()
++void do_auto_scroll(void)
+ {
+ 	static CMD *myscrup = 0;
+ 	static CMD *myscrdn = 0;
+--- joe-4.6/joe/cmd.h
++++ joe-4.6-prototypes/joe/cmd.h
+@@ -42,7 +42,7 @@ void addcmd(const char *s, MACRO *m);
+ 
+ /* Execute a command.  Returns return value of command */
+ int execmd(CMD *cmd, int k);
+-void do_auto_scroll();
++void do_auto_scroll(void);
+ 
+ extern B *cmdhist; /* Command history buffer */
+ 
+--- joe-4.6/joe/kbd.c
++++ joe-4.6-prototypes/joe/kbd.c
+@@ -425,7 +425,7 @@ static int dokeymap(W *w,char *s,void *o
+ 	return 0;
+ }
+ 
+-static char **get_keymap_list()
++static char **get_keymap_list(void)
+ {
+ 	char **lst = 0;
+ 	struct context *c;
+--- joe-4.6/joe/main.c
++++ joe-4.6-prototypes/joe/main.c
+@@ -95,7 +95,7 @@ time_t cur_time;
+ time_t timer_macro_delay;
+ MACRO *timer_macro;
+ 
+-MACRO *timer_play()
++MACRO *timer_play(void)
+ {
+ 	cur_time = time(NULL);
+ 	if (timer_macro && timer_macro_delay && cur_time >= last_timer_time + timer_macro_delay) {
+--- joe-4.6/joe/mouse.c
++++ joe-4.6-prototypes/joe/mouse.c
+@@ -136,7 +136,7 @@ int uextmouse(W *w, int k)
+ 	return mouse_event(w);
+ }
+ 
+-long mnow()
++long mnow(void)
+ {
+ 	struct timeval tv;
+ 	gettimeofday(&tv, NULL);
+@@ -245,7 +245,7 @@ static void ttputs64(char *pp, ptrdiff_t
+         }
+ }
+ 
+-static void ttputs64_flush()
++static void ttputs64_flush(void)
+ {
+     char x;
+     switch (base64_count) {
+@@ -449,7 +449,7 @@ int utomouse(W *xx, int k)
+  * position that utomouse would use into tmspos. */
+ static off_t tmspos;
+ 
+-static int tomousestay()
++static int tomousestay(void)
+ {
+ 	BW *bw;
+ 	ptrdiff_t x = Cx - 1,y = Cy - 1;
+@@ -556,7 +556,7 @@ int udefmdown(W *xx, int k)
+ 	return 0;
+ }
+ 
+-void reset_trig_time()
++void reset_trig_time(void)
+ {
+ 	if (!auto_rate)
+ 		auto_rate = 1;
+@@ -761,7 +761,7 @@ int udefm3up(W *w, int k)
+ 	return 0;
+ }
+ 
+-void mouseopen()
++void mouseopen(void)
+ {
+ #ifdef MOUSE_XTERM
+ 	if (usexmouse) {
+@@ -774,7 +774,7 @@ void mouseopen()
+ #endif
+ }
+ 
+-void mouseclose()
++void mouseclose(void)
+ {
+ #ifdef MOUSE_XTERM
+ 	if (usexmouse) {
+--- joe-4.6/joe/mouse.h
++++ joe-4.6-prototypes/joe/mouse.h
+@@ -21,12 +21,12 @@ JOE; see the file COPYING.  If not, writ
+ #define MOUSE_MULTI_THRESH	300
+ 
+ #ifdef MOUSE_GPM
+-int gpmopen();		/* initialize the connection. returns 0 on failure. */
+-void gpmclose();	/* close the connection. */
++int gpmopen(void);		/* initialize the connection. returns 0 on failure. */
++void gpmclose(void);	/* close the connection. */
+ #endif
+ 
+-void mouseopen();	/* initialize mouse */
+-void mouseclose();	/* de-initialize mouse */
++void mouseopen(void);	/* initialize mouse */
++void mouseclose(void);	/* de-initialize mouse */
+ 
+ /* mousedn(int x, int y, int middle) - handle a mouse-down event */
+ void mousedn(ptrdiff_t x, ptrdiff_t y, int middle);
+@@ -56,8 +56,8 @@ int udefm3drag(W *, int);
+ int udefmiddledown(W *, int);
+ int udefmiddleup(W *, int);
+ 
+-long mnow();
+-void reset_trig_time();
++long mnow(void);
++void reset_trig_time(void);
+ 
+ /* options */
+ extern int floatmouse;	/* Allow mouse to set cursor past end of lines */
+--- joe-4.6/joe/rc.c
++++ joe-4.6-prototypes/joe/rc.c
+@@ -9,7 +9,7 @@
+ 
+ /* Validate joerc file */
+ 
+-int validate_rc()
++int validate_rc(void)
+ {
+ 	KMAP *k;
+ 	if (!(k = ngetcontext("main")) || kmap_empty(k)) {
+--- joe-4.6/joe/rc.h
++++ joe-4.6-prototypes/joe/rc.h
+@@ -14,4 +14,4 @@
+ int procrc(CAP *cap, char *name);
+ 
+ /* Validate rc file: return -1 if it's bad (call this after rc file has been loaded) */
+-int validate_rc();
++int validate_rc(void);
+--- joe-4.6/joe/selinux.c
++++ joe-4.6-prototypes/joe/selinux.c
+@@ -98,7 +98,7 @@ int match_default_security_context(const
+ }
+ 
+ 
+-int reset_default_security_context()
++int reset_default_security_context(void)
+ {
+ #ifdef WITH_SELINUX
+ 	if (selinux_enabled == -1)
+--- joe-4.6/joe/selinux.h
++++ joe-4.6-prototypes/joe/selinux.h
+@@ -1,4 +1,4 @@
+ int copy_security_context(const char *from_file, const char *to_file);
+ int match_default_security_context(const char *from_file);
+-int reset_default_security_context();
++int reset_default_security_context(void);
+ int output_security_context(const char *from_file);
+--- joe-4.6/joe/state.c
++++ joe-4.6-prototypes/joe/state.c
+@@ -79,7 +79,7 @@ static void load_hist(FILE *f,B **bp)
+ 
+ #define STATE_ID "# JOE state file v1.0\n"
+ 
+-void save_state()
++void save_state(void)
+ {
+ 	char *home = getenv("HOME");
+ 	mode_t old_mask;
+@@ -117,7 +117,7 @@ void save_state()
+ 
+ /* Load state */
+ 
+-void load_state()
++void load_state(void)
+ {
+ 	char *home = getenv("HOME");
+ 	char buf[1024];
+--- joe-4.6/joe/state.h
++++ joe-4.6-prototypes/joe/state.h
+@@ -12,8 +12,8 @@ extern int joe_state;
+ 
+ /* Load state from file */
+ 
+-void load_state();
++void load_state(void);
+ 
+ /* Save state to file */
+ 
+-void save_state();
++void save_state(void);
+--- joe-4.6/joe/syntax.c
++++ joe-4.6-prototypes/joe/syntax.c
+@@ -450,7 +450,7 @@ static void iz_cmd(struct high_cmd *cmd)
+ 	cmd->call = 0;
+ }
+ 
+-static struct high_cmd *mkcmd()
++static struct high_cmd *mkcmd(void)
+ {
+ 	struct high_cmd *cmd = (struct high_cmd *)joe_malloc(SIZEOF(struct high_cmd));
+ 	iz_cmd(cmd);
+--- joe-4.6/joe/tty.c
++++ joe-4.6-prototypes/joe/tty.c
+@@ -520,7 +520,7 @@ static void pauseit(void)
+ 
+ /* Check for type-ahead */
+ 
+-int ttcheck()
++int ttcheck(void)
+ {
+ 	/* Ack previous packet */
+ 	if (ackkbd != -1 && acceptch != NO_MORE_DATA && !have) {
+@@ -710,7 +710,7 @@ char ttgetc(void)
+ 
+ static struct utf8_sm main_utf8_sm;
+ 
+-int ttgetch()
++int ttgetch(void)
+ {
+ 	if (locale_map->type) {
+ 		int utf8_char;
+--- joe-4.6/joe/umath.c
++++ joe-4.6-prototypes/joe/umath.c
+@@ -1645,7 +1645,7 @@ B *mathhist = NULL;
+ 
+ static char **math_word_list;
+ 
+-static void get_math_list()
++static void get_math_list(void)
+ {
+ 	struct var *v;
+ 	char *s;
+--- joe-4.6/joe/unicode.c
++++ joe-4.6-prototypes/joe/unicode.c
+@@ -191,7 +191,7 @@ Convenient character classes:
+ 	cclass_notword:		\W	opposite
+ */
+ 
+-void joe_iswinit()
++void joe_iswinit(void)
+ {
+ 	int x;
+ 
+--- joe-4.6/joe/unicode.h
++++ joe-4.6-prototypes/joe/unicode.h
+@@ -47,7 +47,7 @@ extern struct Cclass cclass_word[1];
+ extern struct Cclass cclass_notword[1];
+ extern struct Cclass cclass_combining[1];
+ 
+-void joe_iswinit();
++void joe_iswinit(void);
+ 
+ int joe_iswupper(struct charmap *,int c);
+ int joe_iswlower(struct charmap *,int c);
+--- joe-4.6/joe/ushell.c
++++ joe-4.6-prototypes/joe/ushell.c
+@@ -114,7 +114,7 @@ static void cfollow(B *b, VT *vt, off_t
+ 	}
+ }
+ 
+-void vt_scrdn()
++void vt_scrdn(void)
+ {
+ 	W *w;
+ 	 if ((w = maint->topwin) != NULL) {
+--- joe-4.6/joe/ushell.h
++++ joe-4.6-prototypes/joe/ushell.h
+@@ -17,4 +17,4 @@ extern B *runhist; /* Shell command hist
+ extern B *buildhist; /* Build command history */
+ extern B *grephist; /* Grep command history */
+ 
+-void vt_scrdn();
++void vt_scrdn(void);
+--- joe-4.6/joe/utag.c
++++ joe-4.6-prototypes/joe/utag.c
+@@ -33,7 +33,7 @@ static void freetag(TAG *n)
+ 	enquef(TAG, link, &tagnodes, n);
+ }
+ 
+-static void clrtags()
++static void clrtags(void)
+ {
+ 	while (!qempty(TAG, link, &tags)) {
+ 		freetag(deque_f(TAG, link, tags.link.next));
+@@ -386,7 +386,7 @@ static int dotag(W *w, char *s, void *ob
+ static char **tag_word_list;
+ static time_t last_update;
+ 
+-static void get_tag_list()
++static void get_tag_list(void)
+ {
+ 	char buf[512];
+ 	char tag[512];
+--- joe-4.6/joe/util/checkwidths.c
++++ joe-4.6-prototypes/joe/util/checkwidths.c
+@@ -87,7 +87,7 @@ int full_read(unsigned char *p, int tota
+ 
+ int get_line(char *buf, int timeout)
+ {
+-    char c;
++    unsigned char c;
+     for (;;) {
+         int x;
+         for (x = 0; x != timeout; ++x)
+@@ -104,7 +104,7 @@ int get_line(char *buf, int timeout)
+     
+ }
+ 
+-int main()
++int main(int argc, char **argv)
+ {
+     struct termios org_attr;
+     struct termios attr;
