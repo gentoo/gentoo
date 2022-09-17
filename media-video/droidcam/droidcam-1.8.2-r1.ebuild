@@ -46,7 +46,7 @@ MODULESD_V4L2LOOPBACK_DC_ENABLED="yes"
 CONFIG_CHECK="~SND_ALOOP VIDEO_DEV MEDIA_SUPPORT MEDIA_CAMERA_SUPPORT"
 ERROR_SND_ALOOP="CONFIG_SND_ALOOP is optionally required for audio support"
 
-PATCHES="${FILESDIR}/${PN}-makefile-fixes.patch"
+PATCHES="${FILESDIR}/${PN}-1.8.2-makefile-fixes.patch"
 
 src_prepare() {
 	if ! use gtk; then
