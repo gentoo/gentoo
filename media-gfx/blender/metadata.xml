@@ -67,6 +67,9 @@
 		<flag name="openvdb">
 			Enable openvdb for volumetric processing, like the voxel remesher. Also enables volumetric GPU preview rendering for Nvidia cards.
 		</flag>
+		<flag name="optix">
+			Add support for NVIDIA's OptiX Raytracing Engine.
+		</flag>
 		<flag name="osl">
 			Add support for OpenShadingLanguage scripting.
 		</flag>
