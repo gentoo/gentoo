@@ -1,8 +1,11 @@
-diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
-index 5ebc1a6..f02c2bb 100644
+From 30fbefe6102da12e8d4d132aa4af2e24bfda9bfb Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Sat, 17 Sep 2022 12:25:24 +0300
+Subject: [PATCH] Use external gtest dependency
+
 --- a/test/CMakeLists.txt
 +++ b/test/CMakeLists.txt
-@@ -1,13 +1,10 @@
+@@ -1,15 +1,10 @@
  find_package(Threads REQUIRED)
 +find_package(GTest REQUIRED CONFIG)
  
@@ -14,10 +17,12 @@ index 5ebc1a6..f02c2bb 100644
 -  "${CMAKE_CURRENT_SOURCE_DIR}/gtest-1.10.0"
 -  "${CMAKE_CURRENT_BINARY_DIR}/prefix")
 -
- include_directories(SYSTEM "${CMAKE_CURRENT_SOURCE_DIR}/gtest-1.10.0/googletest/include")
- 
+-include_directories(SYSTEM "${CMAKE_CURRENT_SOURCE_DIR}/gtest-1.10.0/googletest/include")
+-
  set(test-new-api-pattern "new-api/*.cpp")
-@@ -38,7 +35,7 @@ target_link_libraries(yaml-cpp-tests
+ set(test-source-pattern "*.cpp" "integration/*.cpp" "node/*.cpp")
+ if (CMAKE_VERSION VERSION_GREATER 3.11)
+@@ -38,7 +33,7 @@ target_link_libraries(yaml-cpp-tests
    PRIVATE
      Threads::Threads
      yaml-cpp
