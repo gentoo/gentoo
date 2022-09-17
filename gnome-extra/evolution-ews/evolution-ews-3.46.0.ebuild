@@ -16,7 +16,7 @@ IUSE="test"
 # libical-glib currently (2020-02-29) oddly behind USE=introspection
 RDEPEND="
 	dev-db/sqlite:3
-	>=dev-libs/glib-2.62:2
+	>=dev-libs/glib-2.68:2
 	>=dev-libs/libical-3.0.5:0=[introspection(-)]
 	>=dev-libs/json-glib-1.0.4
 	>=dev-libs/libmspack-0.4
@@ -27,7 +27,7 @@ RDEPEND="
 	>=x11-libs/gtk+-3.10:3
 "
 DEPEND="${RDEPEND}
-	test? ( net-libs/uhttpmock )
+	test? ( >=net-libs/uhttpmock-0.9:1.0 )
 "
 BDEPEND="
 	dev-util/gdbus-codegen
