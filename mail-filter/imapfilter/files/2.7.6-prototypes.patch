@@ -1,0 +1,30 @@
+
+Patch from: https://github.com/lefcha/imapfilter/pull/257
+Bug: https://bugs.gentoo.org/870682
+
+From 9580bfca0d8a1cf92a79a24b9f1b83fd3b778375 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Holger=20Hoffst=C3=A4tte?= <holger@applied-asynchrony.com>
+Date: Sat, 17 Sep 2022 13:42:30 +0200
+Subject: [PATCH] Fix compilation failure with -Werror=strict-prototypes
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+---
+ src/lua.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/lua.c b/src/lua.c
+index 868ddb7..02514bb 100644
+--- a/src/lua.c
++++ b/src/lua.c
+@@ -26,7 +26,7 @@ void interactive_mode(void);
+  * Lua interface functions, load and execute imapfilter's configuration file.
+  */
+ void
+-start_lua()
++start_lua(void)
+ {
+ 
+ 	lua = luaL_newstate();

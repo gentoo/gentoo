@@ -25,6 +25,10 @@ DEPEND="${RDEPEND}"
 
 DOCS="AUTHORS NEWS README samples/*"
 
+PATCHES=(
+	"${FILESDIR}/${PV}-prototypes.patch"
+)
+
 src_prepare() {
 	default
 	sed -i -e "/^PREFIX/s:/usr/local:${EPREFIX}/usr:" \
