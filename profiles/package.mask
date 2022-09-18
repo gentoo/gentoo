@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-09-18)
+# Obsolete in favor of building via PEP517 mode.  Buggy.  No revdeps
+# left in ::gentoo.
+# Removal on 2022-10-18.  Bug #871522.
+dev-python/pyproject2setuppy
+
 # Pacho Ramos <pacho@gentoo.org> (2022-09-18)
 # ABRT environment keeps breaking more and more on non-Fedora systems.
 # Removal: 2022-10-18.  Bugs #849305, #849092, #849095, #713858.
