@@ -3,13 +3,21 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+DISTUTILS_USE_PEP517=poetry
 PYTHON_COMPAT=( python3_{8..10} )
+
 inherit distutils-r1
 
 DESCRIPTION="Drop-in replacement for the standard datetime class"
-HOMEPAGE="https://pendulum.eustace.io/ https://github.com/sdispater/pendulum"
-SRC_URI="https://github.com/sdispater/pendulum/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="
+	https://pendulum.eustace.io/
+	https://github.com/sdispater/pendulum/
+	https://pypi.org/project/pendulum/
+"
+SRC_URI="
+	https://github.com/sdispater/pendulum/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
@@ -19,12 +27,15 @@ DEPEND="
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/pytzdata[${PYTHON_USEDEP}]
 "
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+"
 BDEPEND="
 	test? (
 		dev-python/Babel[${PYTHON_USEDEP}]
 		dev-python/freezegun[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
-	)"
+	)
+"
 
 distutils_enable_tests pytest
