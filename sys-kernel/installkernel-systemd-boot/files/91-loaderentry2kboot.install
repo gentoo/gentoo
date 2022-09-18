@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+# (c) 2019-2022 Georgy Yakovlev
+# public-domain license
+
+find_entries() {
+	local -n arr="${1}"
+	IFS= mapfile -d '' arr < <(find /boot/loader/entries -maxdepth 1 -xtype f \
+		-iname "*.conf" -print0  2>/dev/null | sort -Vurz - -- )
+}
+
+parse_entries() {
+	local -n input="${1}"
+	local -A conf
+	local entry
+	for entry in "${input[@]}"; do
+		[[ -r ${entry} ]] || break
+		while read -r opt arg
+		do
+			conf[${opt}]="${arg}"
+		done < "${entry}"
+
+		# check that kernel is there indeed
+		[[ -f /boot/${conf[linux]} ]] || break
+		# if initrd arg is not empty, ensure file exists
+		if [[ ${conf[initrd]} ]]; then
+			[[ -f /boot/${conf[initrd]} ]] || break
+		fi
+		# label='/rel/path/vmlinux initrd=/rel/path/initrd opt1 opt2 opt3'
+		echo "${conf[version]}='${conf[linux]} ${conf[initrd]+initrd=${conf[initrd]}} ${conf[options]}'"
+	done
+}
+		
+main() {
+	if [[ -f /etc/machine-id ]]; then
+		local machine_id=$(</etc/machine-id)
+	else
+		exit 0
+	fi
+
+	if [[ ! -d /boot/${machine_id} ]]; then
+		exit 0
+	fi
+
+	if [[ ! -d /boot/loader/entries ]]; then
+		exit 0
+	fi
+	
+	local conf entries
+	find_entries entries
+	local emit
+	emit=$(
+		# we got version from kernel-install
+		# so set is as default if kernel exists
+		if [[ -f /boot/${machine_id}/${2}/linux ]]; then
+			echo default="${2}"
+		fi
+		# pass by reference and echo if found/validated
+		parse_entries entries
+	)
+	[[ ${emit} ]] && echo "${emit[@]}" > /boot/kboot.conf.new
+	[[ -f /boot/kboot.conf ]] && mv /boot/kboot.conf /boot/kboot.conf~
+	[[ -f /boot/kboot.conf.new ]] && mv /boot/kboot.conf.new /boot/kboot.conf
+}
+
+main "$@"

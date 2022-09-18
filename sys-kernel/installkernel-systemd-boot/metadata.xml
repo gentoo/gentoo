@@ -5,4 +5,7 @@
 		<email>dist-kernel@gentoo.org</email>
 		<name>Distribution Kernel Project</name>
 	</maintainer>
+	<use>
+		<flag name="petitboot">auto-convert systemd-boot entries to kboot.conf used by OpenPower systems petitboot bootloader</flag>
+	</use>
 </pkgmetadata>

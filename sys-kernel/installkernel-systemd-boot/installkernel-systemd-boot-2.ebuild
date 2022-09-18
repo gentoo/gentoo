@@ -9,7 +9,8 @@ S=${WORKDIR}
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
+IUSE="petitboot"
 
 RDEPEND="|| ( sys-apps/systemd sys-boot/systemd-boot )
 	!<sys-apps/debianutils-4.9-r1[installkernel(+)]
@@ -26,4 +27,9 @@ src_install() {
 
 	exeinto /usr/lib/kernel/install.d/
 	doexe "${FILESDIR}/00-00machineid-directory.install"
+
+	if use petitboot; then
+		exeinto /usr/lib/kernel/install.d/
+		doexe "${FILESDIR}/91-loaderentry2kboot.install"
+	fi
 }
