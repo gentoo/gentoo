@@ -25,5 +25,6 @@
   <longdescription>PolyMC is a multi-instance Minecraft launcher focused on user freedom, redistributability, and simplicity.</longdescription>
   <use>
     <flag name="lto">Enable link-time optimization</flag>
+    <flag name="qt6">Build with Qt6 support instead of the default Qt5</flag>
   </use>
 </pkgmetadata>
