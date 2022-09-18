@@ -158,11 +158,11 @@ BDEPEND="
 	')
 	>=app-arch/gzip-1.7
 	libcxx? ( >=sys-devel/clang-12 )
-	lto? ( $(depend_clang_llvm_versions 13 14) )
+	lto? ( $(depend_clang_llvm_versions 13 14 15) )
 	pgo? (
 		>=dev-python/selenium-3.141.0
 		>=dev-util/web_page_replay_go-20220314
-		$(depend_clang_llvm_versions 13 14)
+		$(depend_clang_llvm_versions 13 14 15)
 	)
 	dev-lang/perl
 	>=dev-util/gn-0.1807
