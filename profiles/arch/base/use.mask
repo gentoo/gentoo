@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-09-17)
+# petitboot is actively used only on ppc64
+# there are some arm boards too, but it's rare occasion.
+petitboot
+
 # Michał Górny <mgorny@gentoo.org> (2021-01-07)
 # Prebuilt kernels are not supported on all architectures.
 dist-kernel
