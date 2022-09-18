@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_PEP517=flit
 PYTHON_COMPAT=( python3_{8..11} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
@@ -25,7 +25,5 @@ SLOT="0"
 RDEPEND="
 	dev-python/lazy-object-proxy[${PYTHON_USEDEP}]
 "
-
-[[ ${PV} == 9999 ]] && BDEPEND+=" dev-python/cython[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
