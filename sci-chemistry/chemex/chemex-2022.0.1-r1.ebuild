@@ -2,15 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 DISTUTILS_SINGLE_IMPL="yes"
+DISTUTILS_USE_PEP517=poetry
 PYTHON_COMPAT=( python3_{9..10} )
-DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 inherit distutils-r1
 
 DESCRIPTION="Program to fit chemical exchange induced shift and relaxation data"
 HOMEPAGE="https://github.com/gbouvignies/chemex"
 SRC_URI="https://github.com/gbouvignies/ChemEx/archive/refs/tags/v${PV/_p/-dev}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/ChemEx-${PV/_p/-dev}"
 
 SLOT="0"
 LICENSE="BSD"
@@ -31,7 +33,6 @@ RDEPEND="
 		>=dev-python/pydantic-1.10.2[${PYTHON_USEDEP}]
 		>=dev-python/rapidfuzz-2.8.0[${PYTHON_USEDEP}]
 		>=dev-python/rich-12.5.1[${PYTHON_USEDEP}]
-		dev-python/setuptools_scm[${PYTHON_USEDEP}]
 		>=dev-python/scipy-1.9.1[${PYTHON_USEDEP}]
 		>=dev-python/tomli-2.0.1[${PYTHON_USEDEP}]
 	')
@@ -39,10 +40,3 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 distutils_enable_tests pytest
-
-S="${WORKDIR}/ChemEx-${PV/_p/-dev}"
-
-src_prepare() {
-	export SETUPTOOLS_SCM_PRETEND_VERSION="${PV}"
-	distutils-r1_src_prepare
-}
