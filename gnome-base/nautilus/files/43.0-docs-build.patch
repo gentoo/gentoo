@@ -1,0 +1,41 @@
+From a62478c8e55bc6b1cd685f0c8c2094e1ed244c69 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Mon, 11 Mar 2019 20:52:53 +0200
+Subject: [PATCH] build: Always install man page
+
+It's already generated and shouldn't be thrown in the same pot as
+full gtk-doc generation. It should be either a separate `man` option,
+or just always installed.
+---
+ docs/meson.build | 4 +++-
+ meson.build      | 4 +---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/docs/meson.build b/docs/meson.build
+index b039cb631..2b1800be6 100644
+--- a/docs/meson.build
++++ b/docs/meson.build
+@@ -1,4 +1,5 @@
+ install_man('nautilus.1')
+ install_man('nautilus-autorun-software.1')
+-
+-subdir('reference')
++if get_option('docs')
++  subdir('reference')
++endif
+diff --git a/meson.build b/meson.build
+index 996360a62..50479f5f0 100644
+--- a/meson.build
++++ b/meson.build
+@@ -205,9 +205,8 @@ subdirs = [
+ # Conditional building #
+ ########################
+
+-if gi_docgen.found()
+-  subdirs += 'docs'
+-endif
++subdirs += 'docs'
++
+ if get_option('tests') != 'none'
+   subdirs += 'test'
+ endif

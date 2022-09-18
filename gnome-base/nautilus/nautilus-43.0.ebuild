@@ -12,7 +12,7 @@ LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
 IUSE="gnome +gstreamer gtk-doc +introspection +previewer selinux sendto"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64"
 
 DEPEND="
 	>=dev-libs/glib-2.72.0:2
@@ -20,9 +20,9 @@ DEPEND="
 	gstreamer? ( media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0 )
 	>=app-arch/gnome-autoar-0.4.0
-	>=gnome-base/gnome-desktop-43:4=
+	>=gnome-base/gnome-desktop-43.0:4=
 	>=gnome-base/gsettings-desktop-schemas-42
-	>=x11-libs/gtk+-4.7.2:4[X,introspection?]
+	>=gui-libs/gtk-4.7.2:4[X,introspection?]
 	>=gui-libs/libhandy-1.5.0:1
 	>=x11-libs/pango-1.28.3
 	selinux? ( >=sys-libs/libselinux-2.0 )
@@ -33,16 +33,15 @@ DEPEND="
 	>=x11-libs/gdk-pixbuf-2.30.0:2
 	>=gui-libs/libadwaita-1.2:1
 	>=dev-libs/libportal-0.5
+	>=dev-libs/libcloudproviders-0.3.1
 "
 RDEPEND="${DEPEND}
 	>=app-misc/tracker-miners-3.0:3=
 " # uses org.freedesktop.Tracker.Miner.Files gsettings schema from tracker-miners
 BDEPEND="
 	>=dev-util/gdbus-codegen-2.51.2
-	>=dev-util/meson-0.57.2
 	dev-util/glib-utils
 	gtk-doc? (
-		>=dev-util/gtk-doc-1.10
 		app-text/docbook-xml-dtd:4.1.2
 		dev-util/gi-docgen )
 	>=sys-devel/gettext-0.19.8
