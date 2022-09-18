@@ -11,6 +11,7 @@
   </maintainer>
   <use>
     <flag name="io-uring">Enable io_uring support, and use io_uring instead of epoll</flag>
+    <flag name="lto">Build with Link Time Optimization (LTO)</flag>
     <flag name="tools">Build and install additional command line tools</flag>
   </use>
   <upstream>
