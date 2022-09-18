@@ -26,7 +26,6 @@ KEYWORDS="amd64 arm64 x86"
 IUSE="+html +ical +ini +subtitles +yaml"
 
 RDEPEND="
-	!dev-python/pydiff
 	app-text/iso-codes
 	>=dev-python/chardet-3.0.4[${PYTHON_USEDEP}]
 	dev-python/cheroot[${PYTHON_USEDEP}]
