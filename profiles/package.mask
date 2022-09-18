@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (2022-09-18)
+# Unmaintained for a long time and unneeded with current pulseaudio and
+# pipewire versions.
+# Removal: 2022-10-18.
+media-sound/pulseaudio-modules-bt
+
 # Joonas Niilola <juippis@gentoo.org> (2022-09-16)
 # This theme has been incorporated to enlightenment-0.25, and with
 # 0.24 removed from Gentoo's git tree, this ebuild is useless. Removal
