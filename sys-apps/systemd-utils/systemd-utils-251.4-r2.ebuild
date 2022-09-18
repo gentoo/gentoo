@@ -105,6 +105,8 @@ QA_FLAGS_IGNORED="usr/lib/systemd/boot/efi/.*"
 
 src_prepare() {
 	local PATCHES=(
+		# Breaks Clang. Revert the commit for now and force off F_S=3.
+		"${FILESDIR}/251-revert-fortify-source-3-fix.patch"
 	)
 
 	if use elibc_musl; then
@@ -120,7 +122,7 @@ src_prepare() {
 	sed -i -e "/${rpath_pattern}/d" meson.build || die
 }
 
-multilib_src_configure() {
+src_configure() {
 	# When bumping to 251, please keep this, but add the revert patch
 	# like in sys-apps/systemd!
 	#
@@ -140,6 +142,10 @@ multilib_src_configure() {
 		append-cppflags -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
 	fi
 
+	multilib-minimal_src_configure
+}
+
+multilib_src_configure() {
 	local emesonargs=(
 		$(meson_use split-usr)
 		$(meson_use split-usr split-bin)
