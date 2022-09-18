@@ -193,6 +193,7 @@ src_configure() {
 		# Input Plugins without dependencies
 		--enable-imbatchreport
 		--enable-imdiag
+		--enable-imdocker
 		--enable-imfile
 		--enable-improg
 		--enable-impstats
