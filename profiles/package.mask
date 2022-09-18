@@ -337,11 +337,6 @@ dev-python/pyside6-tools
 # Removal on 2022-09-10.  Bug #864889.
 dev-libs/libdivsufsort
 
-# John Helmert III <ajak@gentoo.org> (2022-08-10)
-# Root privilege escalation vulnerability, unmaintained since the git
-# transition, multiple open bugs. Removal in 30 days, bug 630752
-app-admin/logcheck
-
 # Jimi Huotari <chiitoo@gentoo.org> (2022-08-02)
 # Masked for testing. The split of some packages may still
 # change. bug #838970.
