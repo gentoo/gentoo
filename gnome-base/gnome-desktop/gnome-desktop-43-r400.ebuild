@@ -8,8 +8,8 @@ DESCRIPTION="Library with common API for various GNOME modules"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-desktop/"
 
 LICENSE="GPL-2+ LGPL-2+ FDL-1.1+"
-SLOT="4/1" # subslot = libgnome-desktop-4 soname version
-IUSE="debug gtk-doc seccomp systemd udev introspection"
+SLOT="4/2" # subslot = libgnome-desktop-4 soname version
+IUSE="debug gtk-doc seccomp systemd udev"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
 
 COMMON_DEPEND="
@@ -61,7 +61,7 @@ src_configure() {
 		-Dinstalled_tests=false
 		-Dbuild_gtk4=true
 		-Dlegacy_library=false
-		$(meson_use introspection)
+		-Dintrospection=true
 	)
 	meson_src_configure
 }
