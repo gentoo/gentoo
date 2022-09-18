@@ -326,11 +326,6 @@ dev-haskell/doctest-parallel
 app-crypt/keybase
 
 # John Helmert III <ajak@gentoo.org> (2022-08-14)
-# Remote code execution vulnerability, dead upstream. Removal in 30
-# days, bug #791004.
-x11-terms/mrxvt
-
-# John Helmert III <ajak@gentoo.org> (2022-08-14)
 # Dead upstream, vulnerable, no revdeps except a usedep. Removal in 30
 # days, bug #618000
 media-libs/libaacplus
