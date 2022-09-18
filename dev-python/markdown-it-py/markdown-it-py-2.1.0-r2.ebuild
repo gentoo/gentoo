@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc"
 
 RDEPEND="
 	dev-python/linkify-it-py[${PYTHON_USEDEP}]
