@@ -23,5 +23,6 @@
     <changelog>http://www.opencircuitdesign.com/xcircuit/changes.html</changelog>
     <doc lang="en">http://www.opencircuitdesign.com/xcircuit/reference.html</doc>
     <bugs-to>mailto:tim@opencircuitdesign.com</bugs-to>
+    <remote-id type="github">RTimothyEdwards/xcircuit</remote-id>
   </upstream>
 </pkgmetadata>
