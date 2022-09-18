@@ -31,7 +31,7 @@ RDEPEND="dev-cpp/glibmm:2
 	)"
 DEPEND="${RDEPEND}
 	dev-libs/boost
-	dev-libs/libfmt:="
+	<dev-libs/libfmt-9:="
 
 DOCS=( AUTHORS NEWS README.md )
 
