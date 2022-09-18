@@ -50,8 +50,7 @@ src_install() {
 	if use vacation; then
 		insinto /var/spool/vacation
 		newins VIRTUAL_VACATION/vacation.pl vacation.pl-${SLOT}
-		fowners vacation:vacation /var/spool/vacation/vacation.pl-${SLOT}
-		fperms 770 /var/spool/vacation/vacation.pl-${SLOT}
+		fperms 755 /var/spool/vacation/vacation.pl-${SLOT}
 		dodoc VIRTUAL_VACATION/FILTER_README
 		newdoc VIRTUAL_VACATION/INSTALL.md VIRTUAL_VACATION_INSTALL.md
 		rm -r VIRTUAL_VACATION/{vacation.pl,INSTALL.md,tests,FILTER_README} || die
