@@ -3,14 +3,17 @@
 
 EAPI=8
 
-DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
 DESCRIPTION="A simple, safe single expression evaluator library"
-HOMEPAGE="https://github.com/danthedeckie/simpleeval"
-SRC_URI="mirror://pypi/s/${PN}/${P}.tar.gz"
+HOMEPAGE="
+	https://github.com/danthedeckie/simpleeval/
+	https://pypi.org/project/simpleeval/
+"
+SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
