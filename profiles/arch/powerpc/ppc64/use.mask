@@ -3,6 +3,10 @@
 
 ### THIS FILE IS ONLY FOR PACKAGES MASKED ON BOTH 64-BIT AND 32-BIT USERLAND!!!
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-09-17)
+# petitboot is actively used on ppc64
+-petitboot
+
 # Michał Górny <mgorny@gentoo.org> (2021-12-31)
 # PyPy3 is keyworded here.
 -python_targets_pypy3
