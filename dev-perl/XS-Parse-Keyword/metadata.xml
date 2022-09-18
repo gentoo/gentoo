@@ -10,7 +10,7 @@
 		<name>Gentoo Perl Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="cpan">XS-Keyword-Try</remote-id>
+		<remote-id type="cpan">XS-Parse-Keyword</remote-id>
 		<remote-id type="cpan-module">XS::Parse::Infix</remote-id>
 		<remote-id type="cpan-module">XS::Parse::Infix::Builder</remote-id>
 		<remote-id type="cpan-module">XS::Parse::Keyword</remote-id>
