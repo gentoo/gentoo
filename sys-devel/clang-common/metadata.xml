@@ -7,4 +7,9 @@
 	<upstream>
 		<remote-id type="github">llvm/llvm-project</remote-id>
 	</upstream>
+	<use>
+		<flag name="default-compiler-rt">Use compiler-rt + libunwind instead of libgcc as the default rtlib for clang</flag>
+		<flag name="default-libcxx">Use libc++ instead of libstdc++ as the default stdlib for clang</flag>
+		<flag name="default-lld">Use lld as the default linker for clang</flag>
+	</use>
 </pkgmetadata>
