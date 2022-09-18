@@ -320,7 +320,7 @@ dev-libs/boost -context
 
 # Michał Górny <mgorny@gentoo.org> (2018-03-03)
 # Requires masked dependent flags.
-net-fs/samba addc addns ads cluster python test
+net-fs/samba addns cluster test
 
 # Michał Górny <mgorny@gentoo.org> (2018-03-03)
 # Some more unkeyworded dependencies.
