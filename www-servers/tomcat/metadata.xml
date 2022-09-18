@@ -13,6 +13,5 @@
 	</longdescription>
 	<use>
 		<flag name="extra-webapps">Build also the docs and examples webapp</flag>
-		<flag name="websockets">Builds websockets api and implementation (requires java 7)</flag>
 	</use>
 </pkgmetadata>
