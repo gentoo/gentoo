@@ -320,11 +320,6 @@ dev-util/bnfc
 # See: <https://github.com/martijnbastiaan/doctest-parallel/issues/45>
 dev-haskell/doctest-parallel
 
-# John Helmert III <ajak@gentoo.org> (2022-08-16)
-# Vulnerable, unmaintained upstream, maintainer says it's time for it to
-# go. Removal in 30 days, bug #769758
-www-servers/thttpd
-
 # John Helmert III <ajak@gentoo.org> (2022-08-14)
 # Vulnerable, unmaintained in Gentoo, EAPI6. Removal in 30 days,
 # bug #772209
