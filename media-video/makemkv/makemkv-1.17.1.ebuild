@@ -36,7 +36,6 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	net-misc/wget
 	java? ( >=virtual/jre-1.8 )
 "
 BDEPEND="
