@@ -145,11 +145,11 @@ mail-filter/sigh
 # Flask-Security-Too is a package with high maintenance cost
 # and no revdeps in ::gentoo.  The next version bump (once more)
 # introduces more dependencies.
-# 
+#
 # The remaining listed packages are used exclusively by this package
 # (or its tests).  If you find one of them useful, please let us know
 # and we'll keep it.
-# 
+#
 # Removal on 2022-09-29.  Bug #867415.
 dev-python/flask-security
 dev-python/flask-babelex
@@ -319,11 +319,6 @@ dev-util/bnfc
 # haskell-cabal.eclass)
 # See: <https://github.com/martijnbastiaan/doctest-parallel/issues/45>
 dev-haskell/doctest-parallel
-
-# John Helmert III <ajak@gentoo.org> (2022-08-16)
-# Multiple vulnerabilities, unmaintained upstream, EAPI 6. Removal in 30
-# days, bug #830138
-media-gfx/gif2apng
 
 # John Helmert III <ajak@gentoo.org> (2022-08-16)
 # Vulnerable, unmaintained upstream, maintainer says it's time for it to
