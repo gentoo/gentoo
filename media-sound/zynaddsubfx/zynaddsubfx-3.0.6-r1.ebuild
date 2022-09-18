@@ -26,6 +26,7 @@ DEPEND="
 	sci-libs/fftw:3.0
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
+	doc? ( dev-texlive/texlive-fontutils )
 	dssi? ( media-libs/dssi )
 	fltk? (
 		x11-libs/fltk:1
@@ -37,6 +38,7 @@ DEPEND="
 	portaudio? ( media-libs/portaudio )
 "
 RDEPEND="${DEPEND}"
+BDEPEND="dev-lang/ruby:*"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-docs.patch
