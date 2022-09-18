@@ -3,8 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{7..10} )
-DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+DISTUTILS_USE_PEP517=poetry
+PYTHON_COMPAT=( python3_{8..10} )
+
 inherit distutils-r1
 
 DESCRIPTION="Linux/OSX/FreeBSD resource monitor"
@@ -14,7 +15,6 @@ SRC_URI="https://github.com/aristocratos/${PN}/archive/v${PV}.tar.gz -> ${P}.tar
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~ppc64 ~riscv ~x86"
-IUSE="test"
 
 RDEPEND="
 	>=dev-python/psutil-5.7.1[${PYTHON_USEDEP}]
