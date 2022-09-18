@@ -338,11 +338,6 @@ dev-python/pyside6-tools
 dev-libs/libdivsufsort
 
 # John Helmert III <ajak@gentoo.org> (2022-08-10)
-# Root privilege escalation vulnerability, many open bugs. Removal in 30
-# days, bug 630752
-net-analyzer/sguil-sensor
-
-# John Helmert III <ajak@gentoo.org> (2022-08-10)
 # Root privilege escalation vulnerability, unmaintained since the git
 # transition, multiple open bugs. Removal in 30 days, bug 630752
 app-admin/logcheck
