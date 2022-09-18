@@ -1,0 +1,1112 @@
+diff --git a/clang/docs/ReleaseNotes.rst b/clang/docs/ReleaseNotes.rst
+index 403d50b1c9d4..7dce83c99275 100644
+--- a/clang/docs/ReleaseNotes.rst
++++ b/clang/docs/ReleaseNotes.rst
+@@ -204,15 +204,35 @@ Non-comprehensive list of changes in this release
+   temporarily reversed with ``-Xclang
+   -fno-modules-validate-textual-header-includes``, but this flag will be
+   removed in a future Clang release.
++- Clang now supports loading multiple configuration files. The files from
++  default configuration paths are loaded first, unless ``--no-default-config``
++  option is used. All files explicitly specified using ``--config=`` option
++  are loaded afterwards.
++- When loading default configuration files, clang now unconditionally uses
++  the real target triple (respecting options such as ``--target=`` and ``-m32``)
++  rather than the executable prefix. The respective configuration files are
++  also loaded when clang is called via an executable without a prefix (e.g.
++  plain ``clang``).
++- Default configuration paths were partially changed. Clang now attempts to load
++  ``<triple>-<driver>.cfg`` first, and falls back to loading both
++  ``<driver>.cfg`` and ``<triple>.cfg`` if the former is not found. `Triple`
++  is the target triple and `driver` first tries the canonical name
++  for the driver (respecting ``--driver-mode=``), and then the name found
++  in the executable.
+ 
+ New Compiler Flags
+ ------------------
+ 
++- Added ``--no-default-config`` to disable automatically loading configuration
++  files using default paths.
++
+ Deprecated Compiler Flags
+ -------------------------
+ 
+ Modified Compiler Flags
+ -----------------------
++- Clang now permits specifying ``--config=`` multiple times, to load multiple
++  configuration files.
+ 
+ Removed Compiler Flags
+ -------------------------
+diff --git a/clang/docs/UsersManual.rst b/clang/docs/UsersManual.rst
+index 9eb2e0dbb1e2..6428b69e94cf 100644
+--- a/clang/docs/UsersManual.rst
++++ b/clang/docs/UsersManual.rst
+@@ -881,15 +881,20 @@ Configuration files
+ Configuration files group command-line options and allow all of them to be
+ specified just by referencing the configuration file. They may be used, for
+ example, to collect options required to tune compilation for particular
+-target, such as -L, -I, -l, --sysroot, codegen options, etc.
++target, such as ``-L``, ``-I``, ``-l``, ``--sysroot``, codegen options, etc.
+ 
+-The command line option `--config` can be used to specify configuration
+-file in a Clang invocation. For example:
++Configuration files can be either specified on the command line or loaded
++from default locations. If both variants are present, the default configuration
++files are loaded first.
++
++The command line option ``--config=`` can be used to specify explicit
++configuration files in a Clang invocation. If the option is used multiple times,
++all specified files are loaded, in order. For example:
+ 
+ ::
+ 
+-    clang --config /home/user/cfgs/testing.txt
+-    clang --config debug.cfg
++    clang --config=/home/user/cfgs/testing.txt
++    clang --config=debug.cfg --config=runtimes.cfg
+ 
+ If the provided argument contains a directory separator, it is considered as
+ a file path, and options are read from that file. Otherwise the argument is
+@@ -900,39 +905,68 @@ treated as a file name and is searched for sequentially in the directories:
+     - the directory where Clang executable resides.
+ 
+ Both user and system directories for configuration files are specified during
+-clang build using CMake parameters, CLANG_CONFIG_FILE_USER_DIR and
+-CLANG_CONFIG_FILE_SYSTEM_DIR respectively. The first file found is used. It is
+-an error if the required file cannot be found.
++clang build using CMake parameters, ``CLANG_CONFIG_FILE_USER_DIR`` and
++``CLANG_CONFIG_FILE_SYSTEM_DIR`` respectively. The first file found is used.
++It is an error if the required file cannot be found.
+ 
+-If no explicit configuration file is specified, Clang searches for a default
+-configuration file following the rules described in the next paragraphs.
+-To disable this behavior, `--no-default-config` flag can be used.
++The default configuration files are searched for in the same directories
++following the rules described in the next paragraphs. Loading default
++configuration files can be disabled entirely via passing
++the ``--no-default-config`` flag.
+ 
+-Another way to specify a configuration file is to encode it in executable name.
+-For example, if the Clang executable is named `armv7l-clang` (it may be a
+-symbolic link to `clang`), then Clang will search for file `armv7l.cfg` in the
+-directory where Clang resides.
++First, the algorithm searches for a configuration file named
++``<triple>-<driver>.cfg`` where `triple` is the triple for the target being
++built for, and `driver` is the name of the currently used driver. The algorithm
++first attempts to use the canonical name for the driver used, then falls back
++to the one found in the executable name.
+ 
+-If a driver mode is specified in invocation, Clang tries to find a file specific
+-for the specified mode. For example, if the executable file is named
+-`x86_64-clang-cl`, Clang first looks for `x86_64-cl.cfg` and if it is not found,
+-looks for `x86_64.cfg`.
++The following canonical driver names are used:
+ 
+-If the command line contains options that effectively change target architecture
+-(these are -m32, -EL, and some others) and the configuration file starts with an
+-architecture name, Clang tries to load the configuration file for the effective
+-architecture. For example, invocation:
++- ``clang`` for the ``gcc`` driver (used to compile C programs)
++- ``clang++`` for the ``gxx`` driver (used to compile C++ programs)
++- ``clang-cpp`` for the ``cpp`` driver (pure preprocessor)
++- ``clang-cl`` for the ``cl`` driver
++- ``flang`` for the ``flang`` driver
++- ``clang-dxc`` for the ``dxc`` driver
+ 
+-::
++For example, when calling ``x86_64-pc-linux-gnu-clang-g++``,
++the driver will first attempt to use the configuration file named::
++
++    x86_64-pc-linux-gnu-clang++.cfg
++
++If this file is not found, it will attempt to use the name found
++in the executable instead::
++
++    x86_64-pc-linux-gnu-clang-g++.cfg
++
++Note that options such as ``--driver-mode=``, ``--target=``, ``-m32`` affect
++the search algorithm. For example, the aforementioned executable called with
++``-m32`` argument will instead search for::
++
++    i386-pc-linux-gnu-clang++.cfg
++
++If none of the aforementioned files are found, the driver will instead search
++for separate driver and target configuration files and attempt to load both.
++The former is named ``<driver>.cfg`` while the latter is named
++``<triple>.cfg``. Similarly to the previous variants, the canonical driver name
++will be preferred, and the compiler will fall back to the actual name.
++
++For example, ``x86_64-pc-linux-gnu-clang-g++`` will attempt to load two
++configuration files named respectively::
++
++    clang++.cfg
++    x86_64-pc-linux-gnu.cfg
++
++with fallback to trying::
+ 
+-    x86_64-clang -m32 abc.c
++    clang-g++.cfg
++    x86_64-pc-linux-gnu.cfg
+ 
+-causes Clang search for a file `i368.cfg` first, and if no such file is found,
+-Clang looks for the file `x86_64.cfg`.
++It is not an error if either of these files is not found.
+ 
+ The configuration file consists of command-line options specified on one or
+ more lines. Lines composed of whitespace characters only are ignored as well as
+-lines in which the first non-blank character is `#`. Long options may be split
++lines in which the first non-blank character is ``#``. Long options may be split
+ between several lines by a trailing backslash. Here is example of a
+ configuration file:
+ 
+@@ -948,19 +982,19 @@ configuration file:
+     # other config files may be included
+     @linux.options
+ 
+-Files included by `@file` directives in configuration files are resolved
++Files included by ``@file`` directives in configuration files are resolved
+ relative to the including file. For example, if a configuration file
+-`~/.llvm/target.cfg` contains the directive `@os/linux.opts`, the file
+-`linux.opts` is searched for in the directory `~/.llvm/os`.
++``~/.llvm/target.cfg`` contains the directive ``@os/linux.opts``, the file
++``linux.opts`` is searched for in the directory ``~/.llvm/os``.
+ 
+-To generate paths relative to the configuration file, the `<CFGDIR>` token may
++To generate paths relative to the configuration file, the ``<CFGDIR>`` token may
+ be used. This will expand to the absolute path of the directory containing the
+ configuration file.
+ 
+ In cases where a configuration file is deployed alongside SDK contents, the
+-SDK directory can remain fully portable by using `<CFGDIR>` prefixed paths.
++SDK directory can remain fully portable by using ``<CFGDIR>`` prefixed paths.
+ In this way, the user may only need to specify a root configuration file with
+-`--config` to establish every aspect of the SDK with the compiler:
++``--config=`` to establish every aspect of the SDK with the compiler:
+ 
+ ::
+ 
+diff --git a/clang/include/clang/Driver/Driver.h b/clang/include/clang/Driver/Driver.h
+index 59c2f1f52cec..fe2b4bd629fa 100644
+--- a/clang/include/clang/Driver/Driver.h
++++ b/clang/include/clang/Driver/Driver.h
+@@ -19,6 +19,7 @@
+ #include "clang/Driver/ToolChain.h"
+ #include "clang/Driver/Types.h"
+ #include "clang/Driver/Util.h"
++#include "llvm/ADT/ArrayRef.h"
+ #include "llvm/ADT/StringMap.h"
+ #include "llvm/ADT/StringRef.h"
+ #include "llvm/Option/Arg.h"
+@@ -28,6 +29,7 @@
+ #include <list>
+ #include <map>
+ #include <string>
++#include <vector>
+ 
+ namespace llvm {
+ class Triple;
+@@ -258,8 +260,8 @@ private:
+   /// Name to use when invoking gcc/g++.
+   std::string CCCGenericGCCName;
+ 
+-  /// Name of configuration file if used.
+-  std::string ConfigFile;
++  /// Paths to configuration files used.
++  std::vector<std::string> ConfigFiles;
+ 
+   /// Allocator for string saver.
+   llvm::BumpPtrAllocator Alloc;
+@@ -353,7 +355,9 @@ public:
+   /// Name to use when invoking gcc/g++.
+   const std::string &getCCCGenericGCCName() const { return CCCGenericGCCName; }
+ 
+-  const std::string &getConfigFile() const { return ConfigFile; }
++  llvm::ArrayRef<std::string> getConfigFiles() const {
++    return ConfigFiles;
++  }
+ 
+   const llvm::opt::OptTable &getOpts() const { return getDriverOptTable(); }
+ 
+@@ -664,10 +668,16 @@ public:
+ 
+ private:
+ 
+-  /// Tries to load options from configuration file.
++  /// Tries to load options from configuration files.
+   ///
+   /// \returns true if error occurred.
+-  bool loadConfigFile();
++  bool loadConfigFiles();
++
++  /// Tries to load options from default configuration files (deduced from
++  /// executable filename).
++  ///
++  /// \returns true if error occurred.
++  bool loadDefaultConfigFiles(ArrayRef<StringRef> CfgFileSearchDirs);
+ 
+   /// Read options from the specified file.
+   ///
+@@ -721,6 +731,9 @@ private:
+           &CachedResults,
+       Action::OffloadKind TargetDeviceOffloadKind) const;
+ 
++  /// Return the typical executable name for the specified driver \p Mode.
++  static const char *getExecutableForDriverMode(DriverMode Mode);
++
+ public:
+   /// GetReleaseVersion - Parse (([0-9]+)(.([0-9]+)(.([0-9]+)?))?)? and
+   /// return the grouped values as integers. Numbers which are not
+diff --git a/clang/include/clang/Driver/Options.td b/clang/include/clang/Driver/Options.td
+index 8dea1a01c1f8..d76be7d10947 100644
+--- a/clang/include/clang/Driver/Options.td
++++ b/clang/include/clang/Driver/Options.td
+@@ -899,13 +899,14 @@ def cl_ext_EQ : CommaJoined<["-"], "cl-ext=">, Group<opencl_Group>, Flags<[CC1Op
+ def client__name : JoinedOrSeparate<["-"], "client_name">;
+ def combine : Flag<["-", "--"], "combine">, Flags<[NoXarchOption, Unsupported]>;
+ def compatibility__version : JoinedOrSeparate<["-"], "compatibility_version">;
+-def config : Separate<["--"], "config">, Flags<[NoXarchOption]>,
+-  HelpText<"Specifies configuration file">;
+-def no_default_config : Flag<["--"], "no-default-config">, Flags<[NoXarchOption]>,
++def config : Joined<["--"], "config=">, Flags<[NoXarchOption, CoreOption]>, MetaVarName<"<file>">,
++  HelpText<"Specify configuration file">;
++def : Separate<["--"], "config">, Alias<config>;
++def no_default_config : Flag<["--"], "no-default-config">, Flags<[NoXarchOption, CoreOption]>,
+   HelpText<"Disable loading default configuration files">;
+-def config_system_dir_EQ : Joined<["--"], "config-system-dir=">, Flags<[NoXarchOption, HelpHidden]>,
++def config_system_dir_EQ : Joined<["--"], "config-system-dir=">, Flags<[NoXarchOption, CoreOption, HelpHidden]>,
+   HelpText<"System directory for configuration files">;
+-def config_user_dir_EQ : Joined<["--"], "config-user-dir=">, Flags<[NoXarchOption, HelpHidden]>,
++def config_user_dir_EQ : Joined<["--"], "config-user-dir=">, Flags<[NoXarchOption, CoreOption, HelpHidden]>,
+   HelpText<"User directory for configuration files">;
+ def coverage : Flag<["-", "--"], "coverage">, Group<Link_Group>, Flags<[CoreOption]>;
+ def cpp_precomp : Flag<["-"], "cpp-precomp">, Group<clang_ignored_f_Group>;
+diff --git a/clang/lib/Driver/Driver.cpp b/clang/lib/Driver/Driver.cpp
+index d8b13730f588..fd8dcaa0ac67 100644
+--- a/clang/lib/Driver/Driver.cpp
++++ b/clang/lib/Driver/Driver.cpp
+@@ -929,6 +929,22 @@ static bool searchForFile(SmallVectorImpl<char> &FilePath,
+   return false;
+ }
+ 
++static void appendOneArg(InputArgList &Args, const Arg *Opt,
++                         const Arg *BaseArg) {
++  // The args for config files or /clang: flags belong to different InputArgList
++  // objects than Args. This copies an Arg from one of those other InputArgLists
++  // to the ownership of Args.
++  unsigned Index = Args.MakeIndex(Opt->getSpelling());
++  Arg *Copy = new llvm::opt::Arg(Opt->getOption(), Args.getArgString(Index),
++                                 Index, BaseArg);
++  Copy->getValues() = Opt->getValues();
++  if (Opt->isClaimed())
++    Copy->claim();
++  Copy->setOwnsValues(Opt->getOwnsValues());
++  Opt->setOwnsValues(false);
++  Args.append(Copy);
++}
++
+ bool Driver::readConfigFile(StringRef FileName) {
+   // Try reading the given file.
+   SmallVector<const char *, 32> NewCfgArgs;
+@@ -940,32 +956,38 @@ bool Driver::readConfigFile(StringRef FileName) {
+   // Read options from config file.
+   llvm::SmallString<128> CfgFileName(FileName);
+   llvm::sys::path::native(CfgFileName);
+-  ConfigFile = std::string(CfgFileName);
+   bool ContainErrors;
+-  CfgOptions = std::make_unique<InputArgList>(
++  std::unique_ptr<InputArgList> NewOptions = std::make_unique<InputArgList>(
+       ParseArgStrings(NewCfgArgs, IsCLMode(), ContainErrors));
+-  if (ContainErrors) {
+-    CfgOptions.reset();
++  if (ContainErrors)
+     return true;
+-  }
+ 
+-  if (CfgOptions->hasArg(options::OPT_config)) {
+-    CfgOptions.reset();
++  if (NewOptions->hasArg(options::OPT_config)) {
+     Diag(diag::err_drv_nested_config_file);
+     return true;
+   }
+ 
+   // Claim all arguments that come from a configuration file so that the driver
+   // does not warn on any that is unused.
+-  for (Arg *A : *CfgOptions)
++  for (Arg *A : *NewOptions)
+     A->claim();
++
++  if (!CfgOptions)
++    CfgOptions = std::move(NewOptions);
++  else {
++    // If this is a subsequent config file, append options to the previous one.
++    for (auto *Opt : *NewOptions) {
++      const Arg *BaseArg = &Opt->getBaseArg();
++      if (BaseArg == Opt)
++        BaseArg = nullptr;
++      appendOneArg(*CfgOptions, Opt, BaseArg);
++    }
++  }
++  ConfigFiles.push_back(std::string(CfgFileName));
+   return false;
+ }
+ 
+-bool Driver::loadConfigFile() {
+-  std::string CfgFileName;
+-  bool FileSpecifiedExplicitly = false;
+-
++bool Driver::loadConfigFiles() {
+   // Process options that change search path for config files.
+   if (CLOptions) {
+     if (CLOptions->hasArg(options::OPT_config_system_dir_EQ)) {
+@@ -988,25 +1010,21 @@ bool Driver::loadConfigFile() {
+     }
+   }
+ 
+-  // First try to find config file specified in command line.
+-  if (CLOptions) {
+-    std::vector<std::string> ConfigFiles =
+-        CLOptions->getAllArgValues(options::OPT_config);
+-    if (ConfigFiles.size() > 1) {
+-      if (!llvm::all_equal(ConfigFiles)) {
+-        Diag(diag::err_drv_duplicate_config);
+-        return true;
+-      }
+-    }
++  // Prepare list of directories where config file is searched for.
++  StringRef CfgFileSearchDirs[] = {UserConfigDir, SystemConfigDir, Dir};
+ 
+-    if (!ConfigFiles.empty()) {
+-      CfgFileName = ConfigFiles.front();
+-      assert(!CfgFileName.empty());
++  // First try to load configuration from the default files, return on error.
++  if (loadDefaultConfigFiles(CfgFileSearchDirs))
++    return true;
+ 
++  // Then load configuration files specified explicitly.
++  llvm::SmallString<128> CfgFilePath;
++  if (CLOptions) {
++    for (auto CfgFileName : CLOptions->getAllArgValues(options::OPT_config)) {
+       // If argument contains directory separator, treat it as a path to
+       // configuration file.
+       if (llvm::sys::path::has_parent_path(CfgFileName)) {
+-        SmallString<128> CfgFilePath(CfgFileName);
++        CfgFilePath = CfgFileName;
+         if (llvm::sys::path::is_relative(CfgFilePath)) {
+           if (getVFS().makeAbsolute(CfgFilePath))
+             return true;
+@@ -1017,100 +1035,96 @@ bool Driver::loadConfigFile() {
+             return true;
+           }
+         }
+-        return readConfigFile(CfgFilePath);
++      } else if (!searchForFile(CfgFilePath, CfgFileSearchDirs, CfgFileName,
++                                getVFS())) {
++        // Report an error that the config file could not be found.
++        Diag(diag::err_drv_config_file_not_found) << CfgFileName;
++        for (const StringRef &SearchDir : CfgFileSearchDirs)
++          if (!SearchDir.empty())
++            Diag(diag::note_drv_config_file_searched_in) << SearchDir;
++        return true;
+       }
+ 
+-      FileSpecifiedExplicitly = true;
++      // Try to read the config file, return on error.
++      if (readConfigFile(CfgFilePath))
++        return true;
+     }
+   }
+ 
+-  if (!(CLOptions && CLOptions->hasArg(options::OPT_no_default_config))) {
+-    // If config file is not specified explicitly, try to deduce configuration
+-    // from executable name. For instance, an executable 'armv7l-clang' will
+-    // search for config file 'armv7l-clang.cfg'.
+-    if (CfgFileName.empty() && !ClangNameParts.TargetPrefix.empty())
+-      CfgFileName =
+-          ClangNameParts.TargetPrefix + '-' + ClangNameParts.ModeSuffix;
+-  }
++  // No error occurred.
++  return false;
++}
+ 
+-  if (CfgFileName.empty())
++bool Driver::loadDefaultConfigFiles(ArrayRef<StringRef> CfgFileSearchDirs) {
++  if (CLOptions && CLOptions->hasArg(options::OPT_no_default_config))
+     return false;
+ 
+-  // Determine architecture part of the file name, if it is present.
+-  StringRef CfgFileArch = CfgFileName;
+-  size_t ArchPrefixLen = CfgFileArch.find('-');
+-  if (ArchPrefixLen == StringRef::npos)
+-    ArchPrefixLen = CfgFileArch.size();
+-  llvm::Triple CfgTriple;
+-  CfgFileArch = CfgFileArch.take_front(ArchPrefixLen);
+-  CfgTriple = llvm::Triple(llvm::Triple::normalize(CfgFileArch));
+-  if (CfgTriple.getArch() == llvm::Triple::ArchType::UnknownArch)
+-    ArchPrefixLen = 0;
+-
+-  if (!StringRef(CfgFileName).endswith(".cfg"))
+-    CfgFileName += ".cfg";
+-
+-  // If config file starts with architecture name and command line options
+-  // redefine architecture (with options like -m32 -LE etc), try finding new
+-  // config file with that architecture.
+-  SmallString<128> FixedConfigFile;
+-  size_t FixedArchPrefixLen = 0;
+-  if (ArchPrefixLen) {
+-    // Get architecture name from config file name like 'i386.cfg' or
+-    // 'armv7l-clang.cfg'.
+-    // Check if command line options changes effective triple.
+-    llvm::Triple EffectiveTriple = computeTargetTriple(*this,
+-                                             CfgTriple.getTriple(), *CLOptions);
+-    if (CfgTriple.getArch() != EffectiveTriple.getArch()) {
+-      FixedConfigFile = EffectiveTriple.getArchName();
+-      FixedArchPrefixLen = FixedConfigFile.size();
+-      // Append the rest of original file name so that file name transforms
+-      // like: i386-clang.cfg -> x86_64-clang.cfg.
+-      if (ArchPrefixLen < CfgFileName.size())
+-        FixedConfigFile += CfgFileName.substr(ArchPrefixLen);
+-    }
+-  }
+-
+-  // Prepare list of directories where config file is searched for.
+-  StringRef CfgFileSearchDirs[] = {UserConfigDir, SystemConfigDir, Dir};
+-
+-  // Try to find config file. First try file with corrected architecture.
++  std::string RealMode = getExecutableForDriverMode(Mode);
++  std::string Triple;
++
++  // If name prefix is present, no --target= override was passed via CLOptions
++  // and the name prefix is not a valid triple, force it for backwards
++  // compatibility.
++  if (!ClangNameParts.TargetPrefix.empty() &&
++      computeTargetTriple(*this, "/invalid/", *CLOptions).str() ==
++          "/invalid/") {
++    llvm::Triple PrefixTriple{ClangNameParts.TargetPrefix};
++    if (PrefixTriple.getArch() == llvm::Triple::UnknownArch ||
++        PrefixTriple.isOSUnknown())
++      Triple = PrefixTriple.str();
++  }
++
++  // Otherwise, use the real triple as used by the driver.
++  if (Triple.empty()) {
++    llvm::Triple RealTriple =
++        computeTargetTriple(*this, TargetTriple, *CLOptions);
++    Triple = RealTriple.str();
++    assert(!Triple.empty());
++  }
++
++  // Search for config files in the following order:
++  // 1. <triple>-<mode>.cfg using real driver mode
++  //    (e.g. i386-pc-linux-gnu-clang++.cfg).
++  // 2. <triple>-<mode>.cfg using executable suffix
++  //    (e.g. i386-pc-linux-gnu-clang-g++.cfg for *clang-g++).
++  // 3. <triple>.cfg + <mode>.cfg using real driver mode
++  //    (e.g. i386-pc-linux-gnu.cfg + clang++.cfg).
++  // 4. <triple>.cfg + <mode>.cfg using executable suffix
++  //    (e.g. i386-pc-linux-gnu.cfg + clang-g++.cfg for *clang-g++).
++
++  // Try loading full config (variants 1. and 2.)
+   llvm::SmallString<128> CfgFilePath;
+-  if (!FixedConfigFile.empty()) {
+-    if (searchForFile(CfgFilePath, CfgFileSearchDirs, FixedConfigFile,
+-                      getVFS()))
+-      return readConfigFile(CfgFilePath);
+-    // If 'x86_64-clang.cfg' was not found, try 'x86_64.cfg'.
+-    FixedConfigFile.resize(FixedArchPrefixLen);
+-    FixedConfigFile.append(".cfg");
+-    if (searchForFile(CfgFilePath, CfgFileSearchDirs, FixedConfigFile,
+-                      getVFS()))
+-      return readConfigFile(CfgFilePath);
+-  }
+-
+-  // Then try original file name.
++  std::string CfgFileName = Triple + '-' + RealMode + ".cfg";
+   if (searchForFile(CfgFilePath, CfgFileSearchDirs, CfgFileName, getVFS()))
+     return readConfigFile(CfgFilePath);
+ 
+-  // Finally try removing driver mode part: 'x86_64-clang.cfg' -> 'x86_64.cfg'.
+-  if (!ClangNameParts.ModeSuffix.empty() &&
+-      !ClangNameParts.TargetPrefix.empty()) {
+-    CfgFileName.assign(ClangNameParts.TargetPrefix);
+-    CfgFileName.append(".cfg");
++  bool TryModeSuffix = !ClangNameParts.ModeSuffix.empty() &&
++                       ClangNameParts.ModeSuffix != RealMode;
++  if (TryModeSuffix) {
++    CfgFileName = Triple + '-' + ClangNameParts.ModeSuffix + ".cfg";
+     if (searchForFile(CfgFilePath, CfgFileSearchDirs, CfgFileName, getVFS()))
+       return readConfigFile(CfgFilePath);
+   }
+ 
+-  // Report error but only if config file was specified explicitly, by option
+-  // --config. If it was deduced from executable name, it is not an error.
+-  if (FileSpecifiedExplicitly) {
+-    Diag(diag::err_drv_config_file_not_found) << CfgFileName;
+-    for (const StringRef &SearchDir : CfgFileSearchDirs)
+-      if (!SearchDir.empty())
+-        Diag(diag::note_drv_config_file_searched_in) << SearchDir;
+-    return true;
++  // Try loading separate config for the mode (second part of 3. and 4.)
++  CfgFileName = RealMode + ".cfg";
++  if (searchForFile(CfgFilePath, CfgFileSearchDirs, CfgFileName, getVFS())) {
++    if (readConfigFile(CfgFilePath))
++      return true;
++  } else if (TryModeSuffix) {
++    CfgFileName = ClangNameParts.ModeSuffix + ".cfg";
++    if (searchForFile(CfgFilePath, CfgFileSearchDirs, CfgFileName, getVFS()) &&
++        readConfigFile(CfgFilePath))
++      return true;
+   }
+ 
++  // Try loading separate config for the target (variants 3. and 4.)
++  CfgFileName = Triple + ".cfg";
++  if (searchForFile(CfgFilePath, CfgFileSearchDirs, CfgFileName, getVFS()))
++    return readConfigFile(CfgFilePath);
++
++  // If we were unable to find a config file deduced from executable name,
++  // that is not an error.
+   return false;
+ }
+ 
+@@ -1136,28 +1150,13 @@ Compilation *Driver::BuildCompilation(ArrayRef<const char *> ArgList) {
+ 
+   // Try parsing configuration file.
+   if (!ContainsError)
+-    ContainsError = loadConfigFile();
++    ContainsError = loadConfigFiles();
+   bool HasConfigFile = !ContainsError && (CfgOptions.get() != nullptr);
+ 
+   // All arguments, from both config file and command line.
+   InputArgList Args = std::move(HasConfigFile ? std::move(*CfgOptions)
+                                               : std::move(*CLOptions));
+ 
+-  // The args for config files or /clang: flags belong to different InputArgList
+-  // objects than Args. This copies an Arg from one of those other InputArgLists
+-  // to the ownership of Args.
+-  auto appendOneArg = [&Args](const Arg *Opt, const Arg *BaseArg) {
+-    unsigned Index = Args.MakeIndex(Opt->getSpelling());
+-    Arg *Copy = new llvm::opt::Arg(Opt->getOption(), Args.getArgString(Index),
+-                                   Index, BaseArg);
+-    Copy->getValues() = Opt->getValues();
+-    if (Opt->isClaimed())
+-      Copy->claim();
+-    Copy->setOwnsValues(Opt->getOwnsValues());
+-    Opt->setOwnsValues(false);
+-    Args.append(Copy);
+-  };
+-
+   if (HasConfigFile)
+     for (auto *Opt : *CLOptions) {
+       if (Opt->getOption().matches(options::OPT_config))
+@@ -1165,7 +1164,7 @@ Compilation *Driver::BuildCompilation(ArrayRef<const char *> ArgList) {
+       const Arg *BaseArg = &Opt->getBaseArg();
+       if (BaseArg == Opt)
+         BaseArg = nullptr;
+-      appendOneArg(Opt, BaseArg);
++      appendOneArg(Args, Opt, BaseArg);
+     }
+ 
+   // In CL mode, look for any pass-through arguments
+@@ -1184,7 +1183,7 @@ Compilation *Driver::BuildCompilation(ArrayRef<const char *> ArgList) {
+ 
+       if (!ContainsError)
+         for (auto *Opt : *CLModePassThroughOptions) {
+-          appendOneArg(Opt, nullptr);
++          appendOneArg(Args, Opt, nullptr);
+         }
+     }
+   }
+@@ -1878,8 +1877,8 @@ void Driver::PrintVersion(const Compilation &C, raw_ostream &OS) const {
+   // Print out the install directory.
+   OS << "InstalledDir: " << InstalledDir << '\n';
+ 
+-  // If configuration file was used, print its path.
+-  if (!ConfigFile.empty())
++  // If configuration files were used, print their paths.
++  for (auto ConfigFile : ConfigFiles)
+     OS << "Configuration file: " << ConfigFile << '\n';
+ }
+ 
+@@ -6182,6 +6181,25 @@ Driver::getIncludeExcludeOptionFlagMasks(bool IsClCompatMode) const {
+   return std::make_pair(IncludedFlagsBitmask, ExcludedFlagsBitmask);
+ }
+ 
++const char *Driver::getExecutableForDriverMode(DriverMode Mode) {
++  switch (Mode) {
++  case GCCMode:
++    return "clang";
++  case GXXMode:
++    return "clang++";
++  case CPPMode:
++    return "clang-cpp";
++  case CLMode:
++    return "clang-cl";
++  case FlangMode:
++    return "flang";
++  case DXCMode:
++    return "clang-dxc";
++  }
++
++  llvm_unreachable("Unhandled Mode");
++}
++
+ bool clang::driver::isOptimizationLevelFast(const ArgList &Args) {
+   return Args.hasFlag(options::OPT_Ofast, options::OPT_O_Group, false);
+ }
+diff --git a/clang/test/Driver/config-file-errs.c b/clang/test/Driver/config-file-errs.c
+index 8db2ea439298..497e6cb4a5c2 100644
+--- a/clang/test/Driver/config-file-errs.c
++++ b/clang/test/Driver/config-file-errs.c
+@@ -1,9 +1,3 @@
+-//--- No more than one '--config' may be specified.
+-//
+-// RUN: not %clang --config 1.cfg --config 2.cfg 2>&1 | FileCheck %s -check-prefix CHECK-DUPLICATE
+-// CHECK-DUPLICATE: no more than one option '--config' is allowed
+-
+-
+ //--- '--config' must be followed by config file name.
+ //
+ // RUN: not %clang --config 2>&1 | FileCheck %s -check-prefix CHECK-MISSING-FILE
+@@ -22,26 +16,31 @@
+ // CHECK-NONEXISTENT: configuration file '{{.*}}somewhere/nonexistent-config-file' does not exist
+ 
+ 
++//--- All '--config' arguments must be existing files.
++//
++// RUN: not %clang --config %S/Inputs/config-4.cfg --config somewhere/nonexistent-config-file 2>&1 | FileCheck %s -check-prefix CHECK-NONEXISTENT
++
++
+ //--- Argument of '--config' must exist somewhere in well-known directories, if it is specified by bare name.
+ //
+-// RUN: not %clang --config-system-dir= --config-user-dir= --config nonexistent-config-file 2>&1 | FileCheck %s -check-prefix CHECK-NOTFOUND0
++// RUN: not %clang --config-system-dir= --config-user-dir= --config nonexistent-config-file.cfg 2>&1 | FileCheck %s -check-prefix CHECK-NOTFOUND0
+ // CHECK-NOTFOUND0: configuration file 'nonexistent-config-file.cfg' cannot be found
+ // CHECK-NOTFOUND0-NEXT: was searched for in the directory:
+ // CHECK-NOTFOUND0-NOT: was searched for in the directory:
+ //
+-// RUN: not %clang --config-system-dir= --config-user-dir=%S/Inputs/config2 --config nonexistent-config-file 2>&1 | FileCheck %s -check-prefix CHECK-NOTFOUND1
++// RUN: not %clang --config-system-dir= --config-user-dir=%S/Inputs/config2 --config nonexistent-config-file.cfg 2>&1 | FileCheck %s -check-prefix CHECK-NOTFOUND1
+ // CHECK-NOTFOUND1: configuration file 'nonexistent-config-file.cfg' cannot be found
+ // CHECK-NOTFOUND1-NEXT: was searched for in the directory: {{.*}}/Inputs/config2
+ // CHECK-NOTFOUND1-NEXT: was searched for in the directory:
+ // CHECK-NOTFOUND1-NOT: was searched for in the directory:
+ //
+-// RUN: not %clang --config-system-dir=%S/Inputs/config --config-user-dir= --config nonexistent-config-file 2>&1 | FileCheck %s -check-prefix CHECK-NOTFOUND2
++// RUN: not %clang --config-system-dir=%S/Inputs/config --config-user-dir= --config nonexistent-config-file.cfg 2>&1 | FileCheck %s -check-prefix CHECK-NOTFOUND2
+ // CHECK-NOTFOUND2: configuration file 'nonexistent-config-file.cfg' cannot be found
+ // CHECK-NOTFOUND2-NEXT: was searched for in the directory: {{.*}}/Inputs/config
+ // CHECK-NOTFOUND2-NEXT: was searched for in the directory:
+ // CHECK-NOTFOUND2-NOT: was searched for in the directory:
+ //
+-// RUN: not %clang --config-system-dir=%S/Inputs/config --config-user-dir=%S/Inputs/config2 --config nonexistent-config-file 2>&1 | FileCheck %s -check-prefix CHECK-NOTFOUND3
++// RUN: not %clang --config-system-dir=%S/Inputs/config --config-user-dir=%S/Inputs/config2 --config nonexistent-config-file.cfg 2>&1 | FileCheck %s -check-prefix CHECK-NOTFOUND3
+ // CHECK-NOTFOUND3: configuration file 'nonexistent-config-file.cfg' cannot be found
+ // CHECK-NOTFOUND3-NEXT: was searched for in the directory: {{.*}}/Inputs/config2
+ // CHECK-NOTFOUND3-NEXT: was searched for in the directory: {{.*}}/Inputs/config
+diff --git a/clang/test/Driver/config-file.c b/clang/test/Driver/config-file.c
+index fde7260ecd73..9c8d5be575f3 100644
+--- a/clang/test/Driver/config-file.c
++++ b/clang/test/Driver/config-file.c
+@@ -8,6 +8,7 @@
+ //--- Config file (full path) in output of -###
+ //
+ // RUN: %clang --config %S/Inputs/config-1.cfg -S %s -### 2>&1 | FileCheck %s -check-prefix CHECK-HHH
++// RUN: %clang --config=%S/Inputs/config-1.cfg -S %s -### 2>&1 | FileCheck %s -check-prefix CHECK-HHH
+ // CHECK-HHH: Configuration file: {{.*}}Inputs{{.}}config-1.cfg
+ // CHECK-HHH: -Werror
+ // CHECK-HHH: -std=c99
+@@ -68,11 +69,15 @@
+ 
+ //--- User directory is searched first.
+ //
+-// RUN: %clang --config-system-dir=%S/Inputs/config --config-user-dir=%S/Inputs/config2 --config config-4 -S %s -o /dev/null -v 2>&1 | FileCheck %s -check-prefix CHECK-PRECEDENCE
++// RUN: %clang --config-system-dir=%S/Inputs/config --config-user-dir=%S/Inputs/config2 --config config-4.cfg -S %s -o /dev/null -v 2>&1 | FileCheck %s -check-prefix CHECK-PRECEDENCE
+ // CHECK-PRECEDENCE: Configuration file: {{.*}}Inputs{{.}}config2{{.}}config-4.cfg
+ // CHECK-PRECEDENCE: -Wall
+ 
+ 
+-//--- Duplicate --config options are allowed if the value is the same
+-// RUN: %clang --config-system-dir=%S/Inputs/config --config-user-dir=%S/Inputs/config2 --config config-4 --config config-4 -S %s -o /dev/null -v 2>&1 | FileCheck %s -check-prefix CHECK-SAME-CONFIG
+-// CHECK-SAME-CONFIG: Configuration file: {{.*}}Inputs{{.}}config2{{.}}config-4.cfg
++//--- Multiple configuration files can be specified.
++// RUN: %clang --config-system-dir=%S/Inputs/config --config-user-dir= --config config-4.cfg --config %S/Inputs/config2/config-4.cfg -S %s -o /dev/null -v 2>&1 | FileCheck %s -check-prefix CHECK-TWO-CONFIGS
++// CHECK-TWO-CONFIGS: Configuration file: {{.*}}Inputs{{.}}config{{.}}config-4.cfg
++// CHECK-TWO-CONFIGS-NEXT: Configuration file: {{.*}}Inputs{{.}}config2{{.}}config-4.cfg
++// CHECK-TWO-CONFIGS: -isysroot
++// CHECK-TWO-CONFIGS-SAME: /opt/data
++// CHECK-TWO-CONFIGS-SAME: -Wall
+diff --git a/clang/test/Driver/config-file2.c b/clang/test/Driver/config-file2.c
+deleted file mode 100644
+index 8b57a92e1e83..000000000000
+--- a/clang/test/Driver/config-file2.c
++++ /dev/null
+@@ -1,51 +0,0 @@
+-// REQUIRES: x86-registered-target
+-
+-//--- Invocation `clang --config x86_64-qqq -m32` loads `i386-qqq.cfg` if the latter exists.
+-//
+-// RUN: %clang --config-system-dir=%S/Inputs/config --config-user-dir= --config x86_64-qqq -m32 -c %s -### 2>&1 | FileCheck %s -check-prefix CHECK-RELOAD
+-// CHECK-RELOAD: Target: i386
+-// CHECK-RELOAD: Configuration file: {{.*}}Inputs{{.}}config{{.}}i386-qqq.cfg
+-
+-
+-//--- Invocation `clang --config x86_64-qqq2 -m32` loads `i386.cfg` if the latter exists in another search directory.
+-//
+-// RUN: %clang --config-system-dir=%S/Inputs/config --config-user-dir=%S/Inputs/config2 --config x86_64-qqq2 -m32 -c %s -### 2>&1 | FileCheck %s -check-prefix CHECK-RELOAD1
+-// CHECK-RELOAD1: Target: i386
+-// CHECK-RELOAD1: Configuration file: {{.*}}Inputs{{.}}config2{{.}}i386.cfg
+-
+-
+-//--- Invocation `clang --config x86_64-qqq2 -m32` loads `x86_64-qqq2.cfg` if `i386-qqq2.cfg` and `i386.cfg` do not exist.
+-//
+-// RUN: %clang --config-system-dir=%S/Inputs/config --config-user-dir= --config x86_64-qqq2 -m32 -c %s -### 2>&1 | FileCheck %s -check-prefix CHECK-RELOAD2
+-// note: target is overridden due to -m32
+-// CHECK-RELOAD2: Target: i386
+-// CHECK-RELOAD2: Configuration file: {{.*}}Inputs{{.}}config{{.}}x86_64-qqq2.cfg
+-
+-
+-//--- Invocation `clang --config i386-qqq3 -m64` loads `x86_64.cfg` if `x86_64-qqq3.cfg` does not exist.
+-//
+-// RUN: %clang --config-system-dir=%S/Inputs/config --config-user-dir= --config i386-qqq3 -m64 -c %s -### 2>&1 | FileCheck %s -check-prefix CHECK-RELOAD3
+-// CHECK-RELOAD3: Target: x86_64
+-// CHECK-RELOAD3: Configuration file: {{.*}}Inputs{{.}}config{{.}}x86_64.cfg
+-
+-
+-//--- Invocation `clang --config x86_64-qqq -target i386` loads `i386-qqq.cfg` if the latter exists.
+-//
+-// RUN: %clang --config-system-dir=%S/Inputs/config --config-user-dir= --config x86_64-qqq -target i386 -c %s -### 2>&1 | FileCheck %s -check-prefix CHECK-RELOAD4
+-// CHECK-RELOAD4: Target: i386
+-// CHECK-RELOAD4: Configuration file: {{.*}}Inputs{{.}}config{{.}}i386-qqq.cfg
+-
+-
+-//--- Invocation `clang --config x86_64-qqq2 -target i386` loads `x86_64-qqq2.cfg` if `i386-qqq2.cfg` and `i386.cfg` do not exist.
+-//
+-// RUN: %clang --config-system-dir=%S/Inputs/config --config-user-dir= --config x86_64-qqq2 -target i386 -c %s -### 2>&1 | FileCheck %s -check-prefix CHECK-RELOAD5
+-// note: target is overridden due to -target i386
+-// CHECK-RELOAD5: Target: i386
+-// CHECK-RELOAD5: Configuration file: {{.*}}Inputs{{.}}config{{.}}x86_64-qqq2.cfg
+-
+-
+-//--- Invocation `clang --config x86_64-qqq -target i386 -m64` loads `x86_64-qqq.cfg`.
+-//
+-// RUN: %clang --config-system-dir=%S/Inputs/config --config-user-dir= --config x86_64-qqq -target i386 -m64 -c %s -### 2>&1 | FileCheck %s -check-prefix CHECK-RELOAD6
+-// CHECK-RELOAD6: Target: x86_64
+-// CHECK-RELOAD6: Configuration file: {{.*}}Inputs{{.}}config{{.}}x86_64-qqq.cfg
+diff --git a/clang/test/Driver/config-file3.c b/clang/test/Driver/config-file3.c
+index 7fdc2a59133a..17a230947105 100644
+--- a/clang/test/Driver/config-file3.c
++++ b/clang/test/Driver/config-file3.c
+@@ -9,102 +9,256 @@
+ // RUN: echo "@subdir/cfg-s2" > %t/workdir/cfg-1
+ // RUN: echo "-Wundefined-var-template" > %t/workdir/subdir/cfg-s2
+ //
+-// RUN: ( cd %t && %clang --config workdir/cfg-1 -c -### %s 2>&1 | FileCheck %s -check-prefix CHECK-REL )
++// RUN: ( cd %t && %clang --config=workdir/cfg-1 -c -### %s 2>&1 | FileCheck %s -check-prefix CHECK-REL )
+ //
+ // CHECK-REL: Configuration file: {{.*}}/workdir/cfg-1
+ // CHECK-REL: -Wundefined-var-template
+ 
++//--- Config files are searched for in binary directory as well.
++//
++// RUN: mkdir %t/testbin
++// RUN: ln -s %clang %t/testbin/clang
++// RUN: echo "-Werror" > %t/testbin/aaa.cfg
++// RUN: %t/testbin/clang --config-system-dir= --config-user-dir= --config=aaa.cfg -c -no-canonical-prefixes -### %s 2>&1 | FileCheck %s -check-prefix CHECK-BIN
++//
++// CHECK-BIN: Configuration file: {{.*}}/testbin/aaa.cfg
++// CHECK-BIN: -Werror
+ 
+-//--- Invocation qqq-clang-g++ tries to find config file qqq-clang-g++.cfg first.
++//--- Invocation x86_64-unknown-linux-gnu-clang-g++ tries x86_64-unknown-linux-gnu-clang++.cfg first.
+ //
+ // RUN: mkdir %t/testdmode
++// RUN: ln -s %clang %t/testdmode/cheribsd-riscv64-hybrid-clang++
+ // RUN: ln -s %clang %t/testdmode/qqq-clang-g++
+-// RUN: echo "-Wundefined-func-template" > %t/testdmode/qqq-clang-g++.cfg
+-// RUN: echo "-Werror" > %t/testdmode/qqq.cfg
+-// RUN: %t/testdmode/qqq-clang-g++ --config-system-dir= --config-user-dir= -c -no-canonical-prefixes -### %s 2>&1 | FileCheck %s -check-prefix FULL-NAME
++// RUN: ln -s %clang %t/testdmode/x86_64-clang
++// RUN: ln -s %clang %t/testdmode/i386-unknown-linux-gnu-clang-g++
++// RUN: ln -s %clang %t/testdmode/x86_64-unknown-linux-gnu-clang-g++
++// RUN: ln -s %clang %t/testdmode/x86_64-unknown-linux-gnu-clang
++// RUN: touch %t/testdmode/cheribsd-riscv64-hybrid-clang++.cfg
++// RUN: touch %t/testdmode/cheribsd-riscv64-hybrid.cfg
++// RUN: touch %t/testdmode/qqq-clang-g++.cfg
++// RUN: touch %t/testdmode/qqq.cfg
++// RUN: touch %t/testdmode/x86_64-clang.cfg
++// RUN: touch %t/testdmode/x86_64.cfg
++// RUN: touch %t/testdmode/x86_64-unknown-linux-gnu-clang++.cfg
++// RUN: touch %t/testdmode/x86_64-unknown-linux-gnu-clang-g++.cfg
++// RUN: touch %t/testdmode/x86_64-unknown-linux-gnu-clang.cfg
++// RUN: touch %t/testdmode/x86_64-unknown-linux-gnu.cfg
++// RUN: touch %t/testdmode/i386-unknown-linux-gnu-clang++.cfg
++// RUN: touch %t/testdmode/i386-unknown-linux-gnu-clang-g++.cfg
++// RUN: touch %t/testdmode/i386-unknown-linux-gnu-clang.cfg
++// RUN: touch %t/testdmode/i386-unknown-linux-gnu.cfg
++// RUN: touch %t/testdmode/clang++.cfg
++// RUN: touch %t/testdmode/clang-g++.cfg
++// RUN: touch %t/testdmode/clang.cfg
++// RUN: %t/testdmode/x86_64-unknown-linux-gnu-clang-g++ --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix FULL1
+ //
+-// FULL-NAME: Configuration file: {{.*}}/testdmode/qqq-clang-g++.cfg
+-// FULL-NAME: -Wundefined-func-template
+-// FULL-NAME-NOT: -Werror
++// FULL1-NOT: Configuration file:
++// FULL1: Configuration file: {{.*}}/testdmode/x86_64-unknown-linux-gnu-clang++.cfg
++// FULL1-NOT: Configuration file:
++
++//--- -m32 overrides triple.
+ //
+-//--- Invocation qqq-clang-g++ tries to find config file qqq-clang-g++.cfg even without -no-canonical-prefixes.
+-// (As the clang executable and symlink are in different directories, this
+-// requires specifying the path via --config-*-dir= though.)
++// RUN: %t/testdmode/x86_64-unknown-linux-gnu-clang-g++ -m32 --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix FULL1-I386
+ //
+-// RUN: %t/testdmode/qqq-clang-g++ --config-system-dir= --config-user-dir=%t/testdmode -c -### %s 2>&1 | FileCheck %s -check-prefix SYMLINK
++// FULL1-I386-NOT: Configuration file:
++// FULL1-I386: Configuration file: {{.*}}/testdmode/i386-unknown-linux-gnu-clang++.cfg
++// FULL1-I386-NOT: Configuration file:
++
++//--- --target= also works for overriding triple.
+ //
+-// SYMLINK: Configuration file: {{.*}}/testdmode/qqq-clang-g++.cfg
++// RUN: %t/testdmode/x86_64-unknown-linux-gnu-clang-g++ --target=i386-unknown-linux-gnu --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix FULL1-I386
++
++//--- With --target= + -m64, -m64 takes precedence.
+ //
+-//--- File specified by --config overrides config inferred from clang executable.
++// RUN: %t/testdmode/x86_64-unknown-linux-gnu-clang-g++ --target=i386-unknown-linux-gnu -m64 --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix FULL1
++
++//--- i386 prefix also works for 32-bit.
+ //
+-// RUN: %t/testdmode/qqq-clang-g++ --config-system-dir=%S/Inputs/config --config-user-dir= --config i386-qqq -c -no-canonical-prefixes -### %s 2>&1 | FileCheck %s -check-prefix CHECK-EXPLICIT
++// RUN: %t/testdmode/i386-unknown-linux-gnu-clang-g++ --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix FULL1-I386
++
++//--- i386 prefix + -m64 also works for 64-bit.
+ //
+-// CHECK-EXPLICIT: Configuration file: {{.*}}/Inputs/config/i386-qqq.cfg
++// RUN: %t/testdmode/i386-unknown-linux-gnu-clang-g++ -m64 --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix FULL1
+ 
+-//--- --no-default-config disables config search.
++//--- File specified by --config= is loaded after the one inferred from the executable.
+ //
+-// RUN: %t/testdmode/qqq-clang-g++ --config-system-dir= --config-user-dir=%t/testdmode --no-default-config -c -### %s 2>&1 | FileCheck %s -check-prefix NO-DEFAULT-CONFIG
++// RUN: %t/testdmode/x86_64-unknown-linux-gnu-clang-g++ --config-system-dir=%S/Inputs/config --config-user-dir= --config=i386-qqq.cfg -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix EXPLICIT
+ //
+-// NO-DEFAULT-CONFIG-NOT: Configuration file:
++// EXPLICIT: Configuration file: {{.*}}/testdmode/x86_64-unknown-linux-gnu-clang++.cfg
++// EXPLICIT-NEXT: Configuration file: {{.*}}/Inputs/config/i386-qqq.cfg
+ 
+-//--- Invocation qqq-clang-g++ tries to find config file qqq.cfg if qqq-clang-g++.cfg is not found.
++//--- --no-default-config --config= loads only specified file.
+ //
+-// RUN: rm %t/testdmode/qqq-clang-g++.cfg
+-// RUN: %t/testdmode/qqq-clang-g++ --config-system-dir= --config-user-dir= -c -no-canonical-prefixes -### %s 2>&1 | FileCheck %s -check-prefix SHORT-NAME
++// RUN: %t/testdmode/x86_64-unknown-linux-gnu-clang-g++ --config-system-dir=%S/Inputs/config --config-user-dir= --no-default-config --config=i386-qqq.cfg -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix EXPLICIT-ONLY
+ //
+-// SHORT-NAME: Configuration file: {{.*}}/testdmode/qqq.cfg
+-// SHORT-NAME: -Werror
+-// SHORT-NAME-NOT: -Wundefined-func-template
++// EXPLICIT-ONLY-NOT: Configuration file: {{.*}}/testdmode/x86_64-unknown-linux-gnu-clang++.cfg
++// EXPLICIT-ONLY: Configuration file: {{.*}}/Inputs/config/i386-qqq.cfg
+ 
++//--- --no-default-config disables default filenames.
++//
++// RUN: %t/testdmode/x86_64-unknown-linux-gnu-clang-g++ --config-system-dir=%S/Inputs/config --config-user-dir= --no-default-config -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix NO-CONFIG
++//
++// NO-CONFIG-NOT: Configuration file:
+ 
+-//--- Config files are searched for in binary directory as well.
++//--- --driver-mode= is respected.
+ //
+-// RUN: mkdir %t/testbin
+-// RUN: ln -s %clang %t/testbin/clang
+-// RUN: echo "-Werror" > %t/testbin/aaa.cfg
+-// RUN: %t/testbin/clang --config-system-dir= --config-user-dir= --config aaa.cfg -c -no-canonical-prefixes -### %s 2>&1 | FileCheck %s -check-prefix CHECK-BIN
++// RUN: %t/testdmode/x86_64-unknown-linux-gnu-clang-g++ --driver-mode=gcc --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix FULL1-GCC
+ //
+-// CHECK-BIN: Configuration file: {{.*}}/testbin/aaa.cfg
+-// CHECK-BIN: -Werror
++// FULL1-GCC-NOT: Configuration file:
++// FULL1-GCC: Configuration file: {{.*}}/testdmode/x86_64-unknown-linux-gnu-clang.cfg
++// FULL1-GCC-NOT: Configuration file:
++
++//--- "clang" driver symlink should yield the "*-clang" configuration file.
++//
++// RUN: %t/testdmode/x86_64-unknown-linux-gnu-clang --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix FULL1-GCC
++
++//--- "clang" + --driver-mode= should yield "*-clang++".
++//
++// RUN: %t/testdmode/x86_64-unknown-linux-gnu-clang --driver-mode=g++ --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix FULL1
++
++//--- Clang started via name prefix that is not valid is forcing that prefix instead of target triple.
++//
++// RUN: %t/testdmode/qqq-clang-g++ --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix QQQ
++//
++// QQQ-NOT: Configuration file:
++// QQQ: Configuration file: {{.*}}/testdmode/qqq-clang-g++.cfg
++// QQQ-NOT: Configuration file:
++
++//--- Explicit --target= overrides the triple even with non-standard name prefix.
++//
++// RUN: %t/testdmode/qqq-clang-g++ --target=x86_64-unknown-linux-gnu --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix FULL1
++
++//--- "x86_64" prefix does not form a valid triple either.
++//
++// RUN: %t/testdmode/x86_64-clang --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix X86_64
++//
++// X86_64-NOT: Configuration file:
++// X86_64: Configuration file: {{.*}}/testdmode/x86_64-clang.cfg
++// X86_64-NOT: Configuration file:
++
++//--- Try cheribsd prefix using misordered triple components.
++//
++// RUN: %t/testdmode/cheribsd-riscv64-hybrid-clang++ --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix CHERIBSD
++//
++// CHERIBSD-NOT: Configuration file:
++// CHERIBSD: Configuration file: {{.*}}/testdmode/cheribsd-riscv64-hybrid-clang++.cfg
++// CHERIBSD-NOT: Configuration file:
++
++//--- Test fallback to x86_64-unknown-linux-gnu-clang-g++.cfg.
++//
++// RUN: rm %t/testdmode/x86_64-unknown-linux-gnu-clang++.cfg
++// RUN: rm %t/testdmode/i386-unknown-linux-gnu-clang++.cfg
++// RUN: %t/testdmode/x86_64-unknown-linux-gnu-clang-g++ --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix FULL2
++//
++// FULL2-NOT: Configuration file:
++// FULL2: Configuration file: {{.*}}/testdmode/x86_64-unknown-linux-gnu-clang-g++.cfg
++// FULL2-NOT: Configuration file:
++
++//--- FULL2 + -m32.
++//
++// RUN: %t/testdmode/x86_64-unknown-linux-gnu-clang-g++ -m32 --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix FULL2-I386
++//
++// FULL2-I386-NOT: Configuration file:
++// FULL2-I386: Configuration file: {{.*}}/testdmode/i386-unknown-linux-gnu-clang-g++.cfg
++// FULL2-I386-NOT: Configuration file:
++
++//--- Test fallback to x86_64-unknown-linux-gnu-clang.cfg + clang++.cfg.
++//
++// RUN: rm %t/testdmode/cheribsd-riscv64-hybrid-clang++.cfg
++// RUN: rm %t/testdmode/qqq-clang-g++.cfg
++// RUN: rm %t/testdmode/x86_64-clang.cfg
++// RUN: rm %t/testdmode/x86_64-unknown-linux-gnu-clang-g++.cfg
++// RUN: rm %t/testdmode/i386-unknown-linux-gnu-clang-g++.cfg
++// RUN: rm %t/testdmode/x86_64-unknown-linux-gnu-clang.cfg
++// RUN: rm %t/testdmode/i386-unknown-linux-gnu-clang.cfg
++// RUN: %t/testdmode/x86_64-unknown-linux-gnu-clang-g++ --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix FULL3
++//
++// FULL3-NOT: Configuration file:
++// FULL3: Configuration file: {{.*}}/testdmode/clang++.cfg
++// FULL3-NOT: Configuration file:
++// FULL3: Configuration file: {{.*}}/testdmode/x86_64-unknown-linux-gnu.cfg
++// FULL3-NOT: Configuration file:
++
++//--- FULL3 + -m32.
++//
++// RUN: %t/testdmode/x86_64-unknown-linux-gnu-clang-g++ -m32 --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix FULL3-I386
++//
++// FULL3-I386-NOT: Configuration file:
++// FULL3-I386: Configuration file: {{.*}}/testdmode/clang++.cfg
++// FULL3-I386-NOT: Configuration file:
++// FULL3-I386: Configuration file: {{.*}}/testdmode/i386-unknown-linux-gnu.cfg
++// FULL3-I386-NOT: Configuration file:
+ 
++//--- FULL3 + --driver-mode=.
++//
++// RUN: %t/testdmode/x86_64-unknown-linux-gnu-clang-g++ --driver-mode=gcc --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix FULL3-GCC
++//
++// FULL3-GCC-NOT: Configuration file:
++// FULL3-GCC: Configuration file: {{.*}}/testdmode/clang.cfg
++// FULL3-GCC-NOT: Configuration file:
++// FULL3-GCC: Configuration file: {{.*}}/testdmode/x86_64-unknown-linux-gnu.cfg
++// FULL3-GCC-NOT: Configuration file:
+ 
+-//--- If command line contains options that change triple (for instance, -m32), clang tries
+-//    reloading config file.
++//--- QQQ fallback.
++//
++// RUN: %t/testdmode/qqq-clang-g++ --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix QQQ-FALLBACK
++//
++// QQQ-FALLBACK-NOT: Configuration file:
++// QQQ-FALLBACK: Configuration file: {{.*}}/testdmode/clang++.cfg
++// QQQ-FALLBACK-NOT: Configuration file:
++// QQQ-FALLBACK: Configuration file: {{.*}}/testdmode/qqq.cfg
++// QQQ-FALLBACK-NOT: Configuration file:
+ 
+-//--- When reloading config file, x86_64-clang-g++ tries to find config i386-clang-g++.cfg first.
++//--- "x86_64" falback.
+ //
+-// RUN: mkdir %t/testreload
+-// RUN: ln -s %clang %t/testreload/x86_64-clang-g++
+-// RUN: echo "-Wundefined-func-template" > %t/testreload/i386-clang-g++.cfg
+-// RUN: echo "-Werror" > %t/testreload/i386.cfg
+-// RUN: %t/testreload/x86_64-clang-g++ --config-system-dir= --config-user-dir= -c -m32 -no-canonical-prefixes -### %s 2>&1 | FileCheck %s -check-prefix CHECK-RELOAD
++// RUN: %t/testdmode/x86_64-clang --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix X86_64-FALLBACK
+ //
+-// CHECK-RELOAD: Configuration file: {{.*}}/testreload/i386-clang-g++.cfg
+-// CHECK-RELOAD: -Wundefined-func-template
+-// CHECK-RELOAD-NOT: -Werror
++// X86_64-FALLBACK-NOT: Configuration file:
++// X86_64-FALLBACK: Configuration file: {{.*}}/testdmode/clang.cfg
++// X86_64-FALLBACK-NOT: Configuration file:
++// X86_64-FALLBACK: Configuration file: {{.*}}/testdmode/x86_64.cfg
++// X86_64-FALLBACK-NOT: Configuration file:
+ 
+-//--- If config file is specified by --config and its name does not start with architecture, it is used without reloading.
++//--- cheribsd fallback.
+ //
+-// RUN: %t/testreload/x86_64-clang-g++ --config-system-dir=%S/Inputs --config-user-dir= --config config-3 -c -m32 -no-canonical-prefixes -### %s 2>&1 | FileCheck %s -check-prefix CHECK-RELOAD1a
++// RUN: %t/testdmode/cheribsd-riscv64-hybrid-clang++ --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix CHERIBSD-FALLBACK
+ //
+-// CHECK-RELOAD1a: Configuration file: {{.*}}/Inputs/config-3.cfg
++// CHERIBSD-FALLBACK-NOT: Configuration file:
++// CHERIBSD-FALLBACK: Configuration file: {{.*}}/testdmode/clang++.cfg
++// CHERIBSD-FALLBACK-NOT: Configuration file:
++// CHERIBSD-FALLBACK: Configuration file: {{.*}}/testdmode/cheribsd-riscv64-hybrid.cfg
++// CHERIBSD-FALLBACK-NOT: Configuration file:
++
++//--- Test fallback to x86_64-unknown-linux-gnu.cfg + clang-g++.cfg.
+ //
+-// RUN: %t/testreload/x86_64-clang-g++ --config-system-dir=%S/Inputs --config-user-dir= --config config-3 -c --target=i386 -no-canonical-prefixes -### %s 2>&1 | FileCheck %s -check-prefix CHECK-RELOAD1b
++// RUN: rm %t/testdmode/clang++.cfg
++// RUN: %t/testdmode/x86_64-unknown-linux-gnu-clang-g++ --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix FULL4
+ //
+-// CHECK-RELOAD1b: Configuration file: {{.*}}/Inputs/config-3.cfg
++// FULL4-NOT: Configuration file:
++// FULL4: Configuration file: {{.*}}/testdmode/clang-g++.cfg
++// FULL4-NOT: Configuration file:
++// FULL4: Configuration file: {{.*}}/testdmode/x86_64-unknown-linux-gnu.cfg
++// FULL4-NOT: Configuration file:
+ 
+-//--- If config file is specified by --config and its name starts with architecture, it is reloaded.
++//--- Test fallback to clang-g++.cfg if x86_64-unknown-linux-gnu-clang.cfg does not exist.
+ //
+-// RUN: %t/testreload/x86_64-clang-g++ --config-system-dir=%S/Inputs/config --config-user-dir= --config x86_64-qqq -c -m32 -no-canonical-prefixes -### %s 2>&1 | FileCheck %s -check-prefix CHECK-RELOAD1c
++// RUN: rm %t/testdmode/x86_64-unknown-linux-gnu.cfg
++// RUN: rm %t/testdmode/i386-unknown-linux-gnu.cfg
++// RUN: %t/testdmode/x86_64-unknown-linux-gnu-clang-g++ --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix FULL5
+ //
+-// CHECK-RELOAD1c: Configuration file: {{.*}}/Inputs/config/i386-qqq.cfg
++// FULL5-NOT: Configuration file:
++// FULL5: Configuration file: {{.*}}/testdmode/clang-g++.cfg
++// FULL5-NOT: Configuration file:
+ 
+-//--- x86_64-clang-g++ tries to find config i386.cfg if i386-clang-g++.cfg is not found.
++//--- FULL5 + -m32.
+ //
+-// RUN: rm %t/testreload/i386-clang-g++.cfg
+-// RUN: %t/testreload/x86_64-clang-g++ --config-system-dir= --config-user-dir= -c -m32 -no-canonical-prefixes -### %s 2>&1 | FileCheck %s -check-prefix CHECK-RELOAD1d
++// RUN: %t/testdmode/x86_64-unknown-linux-gnu-clang-g++ -m32 --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix FULL5-I386
+ //
+-// CHECK-RELOAD1d: Configuration file: {{.*}}/testreload/i386.cfg
+-// CHECK-RELOAD1d: -Werror
+-// CHECK-RELOAD1d-NOT: -Wundefined-func-template
++// FULL5-I386-NOT: Configuration file:
++// FULL5-I386: Configuration file: {{.*}}/testdmode/clang-g++.cfg
++// FULL5-I386-NOT: Configuration file:
+ 
++//--- Test that incorrect driver mode config file is not used.
++//
++// RUN: rm %t/testdmode/clang-g++.cfg
++// RUN: %t/testdmode/x86_64-unknown-linux-gnu-clang-g++ --config-system-dir= --config-user-dir= -no-canonical-prefixes --version 2>&1 | FileCheck %s -check-prefix NO-CONFIG

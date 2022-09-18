@@ -1,0 +1,131 @@
+From 0d88c8dcd276d7121816225be959f85a62e52966 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@moritz.systems>
+Date: Sun, 18 Sep 2022 10:20:15 +0200
+Subject: [PATCH 3/3] --gcc-install-dir patch from maskray
+
+---
+ .../clang/Basic/DiagnosticDriverKinds.td      |  1 +
+ clang/include/clang/Driver/Options.td         |  9 ++--
+ clang/lib/Driver/ToolChains/Gnu.cpp           | 22 ++++++++++
+ clang/test/Driver/gcc-install-dir.cpp         | 43 +++++++++++++++++++
+ 4 files changed, 71 insertions(+), 4 deletions(-)
+ create mode 100644 clang/test/Driver/gcc-install-dir.cpp
+
+diff --git a/clang/include/clang/Basic/DiagnosticDriverKinds.td b/clang/include/clang/Basic/DiagnosticDriverKinds.td
+index 1717a2ef71f1..56d8d508cdbc 100644
+--- a/clang/include/clang/Basic/DiagnosticDriverKinds.td
++++ b/clang/include/clang/Basic/DiagnosticDriverKinds.td
+@@ -260,6 +260,7 @@ def err_drv_invalid_value_with_suggestion : Error<
+ def err_drv_alignment_not_power_of_two : Error<"alignment is not a power of 2 in '%0'">;
+ def err_drv_invalid_remap_file : Error<
+     "invalid option '%0' not of the form <from-file>;<to-file>">;
++def err_drv_invalid_gcc_install_dir : Error<"'%0' does not contain a GCC installation">;
+ def err_drv_invalid_gcc_output_type : Error<
+     "invalid output type '%0' for use with gcc tool">;
+ def err_drv_cc_print_options_failure : Error<
+diff --git a/clang/include/clang/Driver/Options.td b/clang/include/clang/Driver/Options.td
+index 8dea1a01c1f8..5a990828ed78 100644
+--- a/clang/include/clang/Driver/Options.td
++++ b/clang/include/clang/Driver/Options.td
+@@ -652,11 +652,12 @@ def A : JoinedOrSeparate<["-"], "A">, Flags<[RenderJoined]>, Group<gfortran_Grou
+ def B : JoinedOrSeparate<["-"], "B">, MetaVarName<"<prefix>">,
+     HelpText<"Search $prefix$file for executables, libraries, and data files. "
+     "If $prefix is a directory, search $prefix/$file">;
++def gcc_install_dir_EQ : Joined<["--"], "gcc-install-dir=">,
++  HelpText<"Use GCC installation in the specified directory. The directory ends with path components like 'lib{,32,64}/gcc{,-cross}/$triple/$version'. "
++  "Note: executables (e.g. ld) used by the compiler are not overridden by the selected GCC installation">;
+ def gcc_toolchain : Joined<["--"], "gcc-toolchain=">, Flags<[NoXarchOption]>,
+-  HelpText<"Search for GCC installation in the specified directory on targets which commonly use GCC. "
+-  "The directory usually contains 'lib{,32,64}/gcc{,-cross}/$triple' and 'include'. If specified, "
+-  "sysroot is skipped for GCC detection. Note: executables (e.g. ld) used by the compiler are not "
+-  "overridden by the selected GCC installation">;
++  HelpText<"Specify a directory where Clang can find 'include' and 'lib{,32,64}/gcc{,-cross}/$triple/$version'. "
++  "Clang will use the GCC installation with the largest version">;
+ def CC : Flag<["-"], "CC">, Flags<[CC1Option]>, Group<Preprocessor_Group>,
+     HelpText<"Include comments from within macros in preprocessed output">,
+     MarshallingInfoFlag<PreprocessorOutputOpts<"ShowMacroComments">>;
+diff --git a/clang/lib/Driver/ToolChains/Gnu.cpp b/clang/lib/Driver/ToolChains/Gnu.cpp
+index e153f86334aa..b267c208478a 100644
+--- a/clang/lib/Driver/ToolChains/Gnu.cpp
++++ b/clang/lib/Driver/ToolChains/Gnu.cpp
+@@ -1997,6 +1997,28 @@ void Generic_GCC::GCCInstallationDetector::init(
+                            CandidateTripleAliases, CandidateBiarchLibDirs,
+                            CandidateBiarchTripleAliases);
+ 
++  // If --gcc-install-dir= is specified, skip filesystem detection.
++  if (const Arg *A =
++          Args.getLastArg(clang::driver::options::OPT_gcc_install_dir_EQ);
++      A && A->getValue()[0]) {
++    StringRef InstallDir = A->getValue();
++    if (!ScanGCCForMultilibs(TargetTriple, Args, InstallDir, false)) {
++      D.Diag(diag::err_drv_invalid_gcc_install_dir) << InstallDir;
++    } else {
++      (void)InstallDir.consume_back("/");
++      StringRef VersionText = llvm::sys::path::filename(InstallDir);
++      StringRef TripleText =
++          llvm::sys::path::filename(llvm::sys::path::parent_path(InstallDir));
++
++      Version = GCCVersion::Parse(VersionText);
++      GCCTriple.setTriple(TripleText);
++      GCCInstallPath = std::string(InstallDir);
++      GCCParentLibPath = GCCInstallPath + "/../../..";
++      IsValid = true;
++    }
++    return;
++  }
++
+   // Compute the set of prefixes for our search.
+   SmallVector<std::string, 8> Prefixes;
+   StringRef GCCToolchainDir = getGCCToolchainDir(Args, D.SysRoot);
+diff --git a/clang/test/Driver/gcc-install-dir.cpp b/clang/test/Driver/gcc-install-dir.cpp
+new file mode 100644
+index 000000000000..0d7094255812
+--- /dev/null
++++ b/clang/test/Driver/gcc-install-dir.cpp
+@@ -0,0 +1,43 @@
++// UNSUPPORTED: system-windows
++
++/// Test native GCC installation on Arch Linux i686.
++// RUN: %clang -### %s --target=i686-linux-gnu --sysroot=%S/Inputs/archlinux_i686_tree -ccc-install-dir %S/Inputs/basic_linux_tree/usr/bin \
++// RUN:   --stdlib=platform --rtlib=platform \
++// RUN:   --gcc-install-dir=%S/Inputs/archlinux_i686_tree/usr/lib/gcc/i686-pc-linux-gnu/11.1.0 2>&1 | FileCheck %s --check-prefix=ARCH_I686
++// ARCH_I686:      "-internal-isystem"
++// ARCH_I686-SAME: {{^}} "[[SYSROOT:[^"]+]]/usr/lib/gcc/i686-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0"
++// ARCH_I686-SAME: {{^}} "-internal-isystem" "[[SYSROOT:[^"]+]]/usr/lib/gcc/i686-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0/i686-pc-linux-gnu"
++// ARCH_I686:      "-L
++// ARCH_I686-SAME: {{^}}[[SYSROOT]]/usr/lib/gcc/i686-pc-linux-gnu/11.1.0"
++// ARCH_I686-SAME: {{^}} "-L[[SYSROOT]]/lib"
++// ARCH_I686-SAME: {{^}} "-L[[SYSROOT]]/usr/lib"
++
++/// Test native GCC installation on Debian amd64. --gcc-install-dir= may end with /.
++// RUN: %clangxx %s -### --target=x86_64-unknown-linux-gnu --sysroot=%S/Inputs/debian_multiarch_tree \
++// RUN:   -ccc-install-dir %S/Inputs/basic_linux_tree/usr/bin -resource-dir=%S/Inputs/resource_dir --stdlib=platform --rtlib=platform \
++// RUN:   --gcc-install-dir=%S/Inputs/debian_multiarch_tree/usr/lib/gcc/x86_64-linux-gnu/10/ 2>&1 | FileCheck %s --check-prefix=DEBIAN_X86_64
++// DEBIAN_X86_64:      "-internal-isystem"
++// DEBIAN_X86_64-SAME: {{^}} "[[SYSROOT:[^"]+]]/usr/lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10"
++// DEBIAN_X86_64-SAME: {{^}} "-internal-isystem" "[[SYSROOT:[^"]+]]/usr/lib/gcc/x86_64-linux-gnu/10/../../../../include/x86_64-linux-gnu/c++/10"
++// DEBIAN_X86_64-SAME: {{^}} "-internal-isystem" "[[SYSROOT]]/usr/lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/backward"
++/// We set explicit -ccc-install-dir ensure that Clang does not pick up extra
++/// library directories which may be present in the runtimes build.
++// DEBIAN_X86_64:      "-L
++// DEBIAN_X86_64-SAME: {{^}}[[SYSROOT]]/usr/lib/gcc/x86_64-linux-gnu/10"
++// DEBIAN_X86_64-SAME: {{^}} "-L[[SYSROOT]]/usr/lib/gcc/x86_64-linux-gnu/10/../../../../lib64"
++
++/// Test -m32.
++// RUN: %clangxx %s -### --target=x86_64-unknown-linux-gnu -m32 --sysroot=%S/Inputs/debian_multiarch_tree \
++// RUN:   -ccc-install-dir %S/Inputs/basic_linux_tree/usr/bin -resource-dir=%S/Inputs/resource_dir --stdlib=platform --rtlib=platform \
++// RUN:   --gcc-install-dir=%S/Inputs/debian_multiarch_tree/usr/lib/gcc/x86_64-linux-gnu/10/ 2>&1 | FileCheck %s --check-prefix=DEBIAN_X86_64_M32
++// DEBIAN_X86_64_M32:      "-internal-isystem"
++// DEBIAN_X86_64_M32-SAME: {{^}} "[[SYSROOT:[^"]+]]/usr/lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10"
++// DEBIAN_X86_64_M32-SAME: {{^}} "-internal-isystem" "[[SYSROOT:[^"]+]]/usr/lib/gcc/x86_64-linux-gnu/10/../../../../include/x86_64-linux-gnu/c++/10/32"
++// DEBIAN_X86_64_M32:      "-L
++// DEBIAN_X86_64_M32-SAME: {{^}}[[SYSROOT]]/usr/lib/gcc/x86_64-linux-gnu/10/32"
++// DEBIAN_X86_64_M32-SAME: {{^}} "-L[[SYSROOT]]/usr/lib/gcc/x86_64-linux-gnu/10/../../../../lib32"
++
++// RUN: %clangxx %s -### --target=x86_64-unknown-linux-gnu --sysroot=%S/Inputs/debian_multiarch_tree \
++// RUN:   -ccc-install-dir %S/Inputs/basic_linux_tree/usr/bin -resource-dir=%S/Inputs/resource_dir --stdlib=platform --rtlib=platform \
++// RUN:   --gcc-install-dir=%S/Inputs/debian_multiarch_tree/usr/lib/gcc/x86_64-linux-gnu 2>&1 | FileCheck %s --check-prefix=INVALID
++// INVALID: error: '{{.*}}/usr/lib/gcc/x86_64-linux-gnu' does not contain a GCC installation
+-- 
+2.37.3
+
