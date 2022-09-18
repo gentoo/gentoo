@@ -325,12 +325,6 @@ dev-haskell/doctest-parallel
 # bug #772209
 app-crypt/keybase
 
-# John Helmert III <ajak@gentoo.org> (2022-08-14)
-# Vulnerable and unmaintained for years, many open bugs, no revdeps,
-# EAPI 6. Removal in 30 days, bug 733354
-net-misc/calico-cni-plugin
-net-misc/calicoctl
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-08-12)
 # Masked for testing, depends on dev-qt/qt*:6
 # Pyside6 is stuck on python3_10 for the moment being
