@@ -218,7 +218,6 @@ src_prepare() {
 	# don't want symlinked directories in PATH on systems with usr-merge
 	if ! use split-usr && ! use prefix-guest; then
 		sed \
-			-e 's|/usr/local/sbin:||g' \
 			-e 's|:/usr/sbin:|:|g' \
 			-e 's|:/sbin:|:|g' \
 			-e 's|:/bin:|:|g' \
