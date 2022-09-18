@@ -11,6 +11,16 @@ SRC_URI="
 	arm? ( ${BOOTSTRAP_DIST}/go-linux-arm-bootstrap-${PV}.tbz )
 	arm64? ( ${BOOTSTRAP_DIST}/go-linux-arm64-bootstrap-${PV}.tbz )
 	loong? ( ${BOOTSTRAP_DIST}/go-linux-loong64-bootstrap-${PV}.tbz )
+	mips? (
+		abi_mips_o32? (
+			big-endian? ( ${BOOTSTRAP_DIST}/go-linux-mips-bootstrap-${PV}.tbz )
+			!big-endian? ( ${BOOTSTRAP_DIST}/go-linux-mipsle-bootstrap-${PV}.tbz )
+		)
+		abi_mips_n64? (
+			big-endian? ( ${BOOTSTRAP_DIST}/go-linux-mips64-bootstrap-${PV}.tbz )
+			!big-endian? ( ${BOOTSTRAP_DIST}/go-linux-mips64le-bootstrap-${PV}.tbz )
+		)
+	)
 	ppc64? (
 		big-endian? ( ${BOOTSTRAP_DIST}/go-linux-ppc64-bootstrap-${PV}.tbz )
 		!big-endian? ( ${BOOTSTRAP_DIST}/go-linux-ppc64le-bootstrap-${PV}.tbz )
@@ -24,7 +34,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+KEYWORDS="-* ~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 IUSE="big-endian"
 RESTRICT="strip"
 QA_PREBUILT="*"
