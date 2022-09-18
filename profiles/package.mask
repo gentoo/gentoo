@@ -34,6 +34,14 @@
 #--- END OF EXAMPLES ---
 
 # Pacho Ramos <pacho@gentoo.org> (2022-09-18)
+# ABRT environment keeps breaking more and more on non-Fedora systems.
+# Removal: 2022-10-18.  Bugs #849305, #849092, #849095, #713858.
+app-admin/abrt
+app-admin/gnome-abrt
+dev-libs/libreport
+dev-libs/satyr
+
+# Pacho Ramos <pacho@gentoo.org> (2022-09-18)
 # Unmaintained for a long time and unneeded with current pulseaudio and
 # pipewire versions.
 # Removal: 2022-10-18.
