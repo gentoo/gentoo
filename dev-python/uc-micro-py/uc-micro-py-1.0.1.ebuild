@@ -22,6 +22,6 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~sparc"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc"
 
 distutils_enable_tests pytest
