@@ -72,7 +72,7 @@ COMMON_DEPENDS="
 	${QT_DEPS}
 
 	!qt6? ( >=dev-libs/quazip-1.3:=[qt5(+)] )
-	 qt6? ( >=dev-libs/quazip-1.3:=[qt6(+)] )
+	 qt6? ( >=dev-libs/quazip-1.3:=[qt6(-)] )
 
 	sys-libs/zlib
 "
