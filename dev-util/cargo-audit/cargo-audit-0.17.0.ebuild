@@ -273,7 +273,7 @@ SRC_URI="https://github.com/RustSec/rustsec/archive/refs/tags/${PN}/v${PV}.tar.g
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions Boost-1.0 MIT MPL-2.0 Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64"
 IUSE="fix"
 
 RDEPEND="dev-libs/openssl:0="
