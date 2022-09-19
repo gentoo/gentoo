@@ -37,7 +37,6 @@ PDEPEND="
 	l10n_ro? ( app-i18n/man-pages-l10n[l10n_ro(-)] )
 	l10n_ru? ( app-i18n/man-pages-ru )
 	l10n_zh-CN? ( app-i18n/man-pages-zh_CN )
-	sys-apps/man-pages-posix
 "
 
 src_prepare() {
