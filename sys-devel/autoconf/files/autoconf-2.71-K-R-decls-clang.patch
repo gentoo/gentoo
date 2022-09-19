@@ -21,28 +21,6 @@ provokes fatal errors in some compilers nowadays.
 * tests/fortran.at (AC_F77_DUMMY_MAIN usage):
 * tests/semantics.at (AC_CHECK_DECLS):
 Don’t use () in a function decl.
---- a/doc/autoconf.texi
-+++ b/doc/autoconf.texi
-@@ -5460,9 +5460,7 @@ the @samp{#undef malloc}):
- #include <config.h>
- #undef malloc
- 
--#include <sys/types.h>
--
--void *malloc ();
-+#include <stdlib.h>
- 
- /* Allocate an N-byte block of memory from the heap.
-    If N is zero, allocate a 1-byte block.  */
-@@ -8297,7 +8295,7 @@ needed:
- #  ifdef __cplusplus
-      extern "C"
- #  endif
--   int F77_DUMMY_MAIN () @{ return 1; @}
-+   int F77_DUMMY_MAIN (void) @{ return 1; @}
- #endif
- @end example
- 
 --- a/lib/autoconf/c.m4
 +++ b/lib/autoconf/c.m4
 @@ -133,7 +133,7 @@ m4_if([$2], [main], ,
