@@ -1,3 +1,5 @@
+Kernel's makefiles pass -Werror=strict-prototypes which
+trigger errors with clang15+
 https://bugs.gentoo.org/870238
 --- a/kernel/nvidia/nvlink_linux.c
 +++ b/kernel/nvidia/nvlink_linux.c
