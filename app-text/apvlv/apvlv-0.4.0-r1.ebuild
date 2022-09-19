@@ -19,7 +19,7 @@ RDEPEND="
 	>=app-text/poppler-0.5.0:=[cairo,xpdf-headers(+)]
 	dev-libs/glib:2
 	dev-libs/libxml2
-	net-libs/webkit-gtk:=
+	net-libs/webkit-gtk:4=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
