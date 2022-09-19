@@ -18,7 +18,7 @@ RDEPEND="
 	>=dev-libs/glib-2.66.0:2
 	dev-libs/libffi:=
 	>=dev-libs/gobject-introspection-1.66.1:=
-	>=dev-lang/spidermonkey-91.3.0:91
+	>=dev-lang/spidermonkey-102.2.0:102
 	cairo? ( x11-libs/cairo[X,glib,svg] )
 	readline? ( sys-libs/readline:0= )
 "
@@ -58,6 +58,7 @@ src_configure() {
 		-Dinstalled_tests=false
 		$(meson_use !test skip_dbus_tests)
 		$(meson_use !test skip_gtk_tests)
+		-Db_pch=True # TODO this has to go
 	)
 	meson_src_configure
 }
