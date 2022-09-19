@@ -9,7 +9,8 @@ DESCRIPTION="GNU Wget2 is a file and recursive website downloader"
 HOMEPAGE="https://gitlab.com/gnuwget/wget2"
 EGIT_REPO_URI="https://gitlab.com/gnuwget/wget2.git"
 
-LICENSE="GPL-3"
+# LGPL for libwget
+LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/0" # subslot = libwget.so version
 KEYWORDS=""
 IUSE="brotli bzip2 doc +gnutls gpgme +http2 idn lzip lzma openssl pcre psl +ssl test valgrind xattr zlib"
