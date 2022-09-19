@@ -269,7 +269,8 @@ dev-ruby/actionpack test
 sys-block/fio rbd
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (2014-06-14)
-# dependency sci-libs/vtk not keyworded on ppc yet
+# dependency sci-libs/vtk not keyworded on ppc yet, bug #778293
+sci-mathematics/maxima vtk
 media-libs/opencv vtk
 
 # Pacho Ramos <pacho@gentoo.org> (2013-02-22)
