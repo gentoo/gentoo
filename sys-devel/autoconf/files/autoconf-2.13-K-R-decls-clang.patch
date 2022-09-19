@@ -1,0 +1,346 @@
+https://bugs.gentoo.org/870412
+https://git.savannah.gnu.org/cgit/autoconf.git/commit/?id=8b5e2016c7ed2d67f31b03a3d2e361858ff5299b
+
+Backport the K&R decls fix to 2.69 to avoid configure tests
+failing (often "silently", i.e. doesn't fail the build of
+the package overall, just leads to wrong results) with
+newer compilers like the upcoming Clang 16.
+
+From d8ad1096be4352c588b9bc1e16b6758f4f32b96a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@aarsen.me>
+Date: Mon, 19 Sep 2022 01:38:29 +0200
+Subject: [PATCH] ac{general,specific}: declare void param lists, where apt
+
+--- a/acgeneral.m4
++++ b/acgeneral.m4
+@@ -1542,7 +1542,7 @@ extern "C"
+ ])dnl
+ [/* We use char because int might match the return type of a gcc2
+     builtin and then its argument prototype would still apply.  */
+-char $1();
++char $1(void);
+ ]),
+ [$1()],
+ [$2],
+@@ -1597,7 +1597,7 @@ extern "C"
+ ])dnl
+ [/* We use char because int might match the return type of a gcc2
+     builtin and then its argument prototype would still apply.  */
+-char $2();
++char $2(void);
+ ])),
+ 	    [$2()],
+ 	    eval "ac_cv_lib_$ac_lib_var=yes",
+@@ -1733,7 +1733,7 @@ dnl [#]line __oline__ "[$]0"
+ [#]line __oline__ "configure"
+ #include "confdefs.h"
+ [$1]
+-int main() {
++int main(void) {
+ [$2]
+ ; return 0; }
+ ])EOF
+@@ -1777,7 +1777,7 @@ dnl [#]line __oline__ "[$]0"
+ [#]line __oline__ "configure"
+ #include "confdefs.h"
+ [$1]
+-int main() {
++int main(void) {
+ [$2]
+ ; return 0; }
+ ])EOF
+@@ -1934,7 +1934,7 @@ extern "C"
+ ])dnl
+ [/* We use char because int might match the return type of a gcc2
+     builtin and then its argument prototype would still apply.  */
+-char $1();
++char $1(void);
+ ], [
+ /* The GNU C library defines this for functions which it implements
+     to always fail with ENOSYS.  Some functions are actually named
+@@ -1988,7 +1988,7 @@ changequote([, ])dnl
+ AC_MSG_CHECKING(size of $1)
+ AC_CACHE_VAL(AC_CV_NAME,
+ [AC_TRY_RUN([#include <stdio.h>
+-main()
++main(void)
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+--- a/acspecific.m4
++++ b/acspecific.m4
+@@ -202,7 +202,7 @@ AC_DEFUN(AC_PROG_CC_WORKS,
+ [AC_MSG_CHECKING([whether the C compiler ($CC $CFLAGS $LDFLAGS) works])
+ AC_LANG_SAVE
+ AC_LANG_C
+-AC_TRY_COMPILER([main(){return(0);}], ac_cv_prog_cc_works, ac_cv_prog_cc_cross)
++AC_TRY_COMPILER([int main(void){return(0);}], ac_cv_prog_cc_works, ac_cv_prog_cc_cross)
+ AC_LANG_RESTORE
+ AC_MSG_RESULT($ac_cv_prog_cc_works)
+ if test $ac_cv_prog_cc_works = no; then
+@@ -217,7 +217,7 @@ AC_DEFUN(AC_PROG_CXX_WORKS,
+ [AC_MSG_CHECKING([whether the C++ compiler ($CXX $CXXFLAGS $LDFLAGS) works])
+ AC_LANG_SAVE
+ AC_LANG_CPLUSPLUS
+-AC_TRY_COMPILER([int main(){return(0);}], ac_cv_prog_cxx_works, ac_cv_prog_cxx_cross)
++AC_TRY_COMPILER([int main(void){return(0);}], ac_cv_prog_cxx_works, ac_cv_prog_cxx_cross)
+ AC_LANG_RESTORE
+ AC_MSG_RESULT($ac_cv_prog_cxx_works)
+ if test $ac_cv_prog_cxx_works = no; then
+@@ -300,7 +300,7 @@ fi])])
+ 
+ AC_DEFUN(AC_PROG_CC_G,
+ [AC_CACHE_CHECK(whether ${CC-cc} accepts -g, ac_cv_prog_cc_g,
+-[echo 'void f(){}' > conftest.c
++[echo 'void f(void){}' > conftest.c
+ if test -z "`${CC-cc} -g -c conftest.c 2>&1`"; then
+   ac_cv_prog_cc_g=yes
+ else
+@@ -311,7 +311,7 @@ rm -f conftest*
+ 
+ AC_DEFUN(AC_PROG_CXX_G,
+ [AC_CACHE_CHECK(whether ${CXX-g++} accepts -g, ac_cv_prog_cxx_g,
+-[echo 'void f(){}' > conftest.cc
++[echo 'void f(void){}' > conftest.cc
+ if test -z "`${CXX-g++} -g -c conftest.cc 2>&1`"; then
+   ac_cv_prog_cxx_g=yes
+ else
+@@ -371,7 +371,7 @@ changequote(, )dnl
+ 		       sed -e 's/[^a-zA-Z0-9_]/_/g' -e 's/^[0-9]/_/'`"
+ changequote([, ])dnl
+ AC_CACHE_VAL(ac_cv_prog_cc_${ac_cc}_c_o,
+-[echo 'foo(){}' > conftest.c
++[echo 'foo(void){}' > conftest.c
+ # Make sure it works both with $CC and with simple cc.
+ # We do the test twice because some compilers refuse to overwrite an
+ # existing .o file with -o, though they will create one.
+@@ -709,7 +709,7 @@ AC_TRY_RUN([#include <ctype.h>
+ #define ISLOWER(c) ('a' <= (c) && (c) <= 'z')
+ #define TOUPPER(c) (ISLOWER(c) ? 'A' + ((c) - 'a') : (c))
+ #define XOR(e, f) (((e) && !(f)) || (!(e) && (f)))
+-int main () { int i; for (i = 0; i < 256; i++)
++int main (void) { int i; for (i = 0; i < 256; i++)
+ if (XOR (islower (i), ISLOWER (i)) || toupper (i) != TOUPPER (i)) exit(2);
+ exit (0); }
+ ], , ac_cv_header_stdc=no, :)
+@@ -820,7 +820,7 @@ esac
+ AC_CACHE_CHECK(whether closedir returns void, ac_cv_func_closedir_void,
+ [AC_TRY_RUN([#include <sys/types.h>
+ #include <$ac_header_dirent>
+-int closedir(); main() { exit(closedir(opendir(".")) != 0); }],
++int closedir(...); int main(void) { exit(closedir(opendir(".")) != 0); }],
+   ac_cv_func_closedir_void=no, ac_cv_func_closedir_void=yes, ac_cv_func_closedir_void=yes)])
+ if test $ac_cv_func_closedir_void = yes; then
+   AC_DEFINE(VOID_CLOSEDIR)
+@@ -911,7 +911,7 @@ changequote(<<, >>)dnl
+ #define NGID 256
+ #undef MAX
+ #define MAX(x, y) ((x) > (y) ? (x) : (y))
+-main()
++int main(void)
+ {
+   gid_t gidset[NGID];
+   int i, n;
+@@ -973,7 +973,7 @@ AC_DEFUN(AC_TYPE_SIGNAL,
+ #ifdef __cplusplus
+ extern "C" void (*signal (int, void (*)(int)))(int);
+ #else
+-void (*signal ()) ();
++void (*signal (void)) (void);
+ #endif
+ ],
+ [int i;], ac_cv_type_signal=void, ac_cv_type_signal=int)])
+@@ -989,7 +989,7 @@ AC_DEFUN(AC_FUNC_CLOSEDIR_VOID,
+ AC_CACHE_CHECK(whether closedir returns void, ac_cv_func_closedir_void,
+ [AC_TRY_RUN([#include <sys/types.h>
+ #include <$ac_header_dirent>
+-int closedir(); main() { exit(closedir(opendir(".")) != 0); }],
++int closedir(...); int main(void) { exit(closedir(opendir(".")) != 0); }],
+   ac_cv_func_closedir_void=no, ac_cv_func_closedir_void=yes, ac_cv_func_closedir_void=yes)])
+ if test $ac_cv_func_closedir_void = yes; then
+   AC_DEFINE(CLOSEDIR_VOID)
+@@ -1001,7 +1001,7 @@ AC_DEFUN(AC_FUNC_FNMATCH,
+ # Some versions of Solaris or SCO have a broken fnmatch function.
+ # So we run a test program.  If we are cross-compiling, take no chance.
+ # Thanks to John Oleynick and Franc,ois Pinard for this test.
+-[AC_TRY_RUN([main() { exit (fnmatch ("a*", "abc", 0) != 0); }],
++[AC_TRY_RUN([int main(void) { exit (fnmatch ("a*", "abc", 0) != 0); }],
+ ac_cv_func_fnmatch_works=yes, ac_cv_func_fnmatch_works=no,
+ ac_cv_func_fnmatch_works=no)])
+ if test $ac_cv_func_fnmatch_works = yes; then
+@@ -1083,11 +1083,11 @@ AC_CACHE_CHECK(for working mmap, ac_cv_func_mmap_fixed_mapped,
+ #ifdef __cplusplus
+ extern "C" { void *malloc(unsigned); }
+ #else
+-char *malloc();
++char *malloc(...);
+ #endif
+ 
+ int
+-main()
++main(void)
+ {
+ 	char *data, *data2, *data3;
+ 	int i, pagesize;
+@@ -1172,7 +1172,7 @@ int     pid;
+ int     pg1, pg2, pg3, pg4;
+ int     ng, np, s, child;
+ 
+-main()
++int main(void)
+ {
+         pid = getpid();
+         pg1 = getpgrp(0);
+@@ -1228,7 +1228,7 @@ AC_TRY_RUN([
+  * If this system has a BSD-style setpgrp, which takes arguments, exit
+  * successfully.
+  */
+-main()
++int main(void)
+ {
+     if (setpgrp(1,1) == -1)
+ 	exit(0);
+@@ -1291,7 +1291,7 @@ sparc_address_test (arg) int arg;
+     }
+   }
+ }
+-main() {
++int main(void) {
+   pid_t parent = getpid ();
+   pid_t child;
+ 
+@@ -1360,7 +1360,7 @@ AC_DEFUN(AC_FUNC_WAIT3,
+ #include <sys/resource.h>
+ #include <stdio.h>
+ /* HP-UX has wait3 but does not fill in rusage at all.  */
+-main() {
++int main(void) {
+   struct rusage r;
+   int i;
+   /* Use a field that we can force nonzero --
+@@ -1416,7 +1416,7 @@ AC_CACHE_CHECK([for alloca], ac_cv_func_alloca_works,
+  #pragma alloca
+ #   else
+ #    ifndef alloca /* predefined by HP cc +Olibcalls */
+-char *alloca ();
++char *alloca (...);
+ #    endif
+ #   endif
+ #  endif
+@@ -1464,7 +1464,7 @@ AC_CACHE_CHECK(stack direction for C alloca, ac_cv_c_stack_direction,
+   else
+     return (&dummy > addr) ? 1 : -1;
+ }
+-main ()
++int main (void)
+ {
+   exit (find_stack_direction() < 0);
+ }], ac_cv_c_stack_direction=1, ac_cv_c_stack_direction=-1,
+@@ -1582,7 +1582,7 @@ AC_DEFUN(AC_FUNC_UTIME_NULL,
+ # Sequent interprets utime(file, 0) to mean use start of epoch.  Wrong.
+ AC_TRY_RUN([#include <sys/types.h>
+ #include <sys/stat.h>
+-main() {
++int main(void) {
+ struct stat s, t;
+ exit(!(stat ("conftestdata", &s) == 0 && utime("conftestdata", (long *)0) == 0
+ && stat("conftestdata", &t) == 0 && t.st_mtime >= s.st_mtime
+@@ -1598,7 +1598,7 @@ fi
+ AC_DEFUN(AC_FUNC_STRCOLL,
+ [AC_CACHE_CHECK(for working strcoll, ac_cv_func_strcoll_works,
+ [AC_TRY_RUN([#include <string.h>
+-main ()
++int main (void)
+ {
+   exit (strcoll ("abc", "def") >= 0 ||
+ 	strcoll ("ABC", "DEF") >= 0 ||
+@@ -1615,7 +1615,7 @@ AC_DEFUN(AC_FUNC_SETVBUF_REVERSED,
+   ac_cv_func_setvbuf_reversed,
+ [AC_TRY_RUN([#include <stdio.h>
+ /* If setvbuf has the reversed format, exit 0. */
+-main () {
++int main (void) {
+   /* This call has the arguments reversed.
+      A reversed system may check and see that the address of main
+      is not _IOLBF, _IONBF, or _IOFBF, and return nonzero.  */
+@@ -1647,7 +1647,7 @@ LIBS="-lintl $LIBS"])])])
+ AC_DEFUN(AC_FUNC_MEMCMP,
+ [AC_CACHE_CHECK(for 8-bit clean memcmp, ac_cv_func_memcmp_clean,
+ [AC_TRY_RUN([
+-main()
++int main(void)
+ {
+   char c0 = 0x40, c1 = 0x80, c2 = 0x81;
+   exit(memcmp(&c0, &c2, 1) < 0 && memcmp(&c1, &c2, 1) < 0 ? 0 : 1);
+@@ -1805,7 +1805,7 @@ AC_TRY_RUN(
+ #if !defined(__STDC__) || __STDC__ != 1
+ #define volatile
+ #endif
+-main() {
++int main(void) {
+   volatile char c = 255; exit(c < 0);
+ }], ac_cv_c_char_unsigned=yes, ac_cv_c_char_unsigned=no)
+ fi])
+@@ -1819,7 +1819,7 @@ AC_DEFUN(AC_C_LONG_DOUBLE,
+ [if test "$GCC" = yes; then
+   ac_cv_c_long_double=yes
+ else
+-AC_TRY_RUN([int main() {
++AC_TRY_RUN([int main(void) {
+ /* The Stardent Vistra knows sizeof(long double), but does not support it.  */
+ long double foo = 0.0;
+ /* On Ultrix 4.3 cc, long double is 4 and double is 8.  */
+@@ -1834,7 +1834,7 @@ fi
+ AC_DEFUN(AC_INT_16_BITS,
+ [AC_OBSOLETE([$0], [; instead use AC_CHECK_SIZEOF(int)])dnl
+ AC_MSG_CHECKING(whether int is 16 bits)
+-AC_TRY_RUN([main() { exit(sizeof(int) != 2); }],
++AC_TRY_RUN([int main(void) { exit(sizeof(int) != 2); }],
+  [AC_MSG_RESULT(yes)
+  AC_DEFINE(INT_16_BITS)], AC_MSG_RESULT(no))
+ ])
+@@ -1842,7 +1842,7 @@ AC_TRY_RUN([main() { exit(sizeof(int) != 2); }],
+ AC_DEFUN(AC_LONG_64_BITS,
+ [AC_OBSOLETE([$0], [; instead use AC_CHECK_SIZEOF(long)])dnl
+ AC_MSG_CHECKING(whether long int is 64 bits)
+-AC_TRY_RUN([main() { exit(sizeof(long int) != 8); }],
++AC_TRY_RUN([int main(void) { exit(sizeof(long int) != 8); }],
+  [AC_MSG_RESULT(yes)
+  AC_DEFINE(LONG_64_BITS)], AC_MSG_RESULT(no))
+ ])
+@@ -1862,7 +1862,7 @@ AC_TRY_COMPILE([#include <sys/types.h>
+  not big endian
+ #endif], ac_cv_c_bigendian=yes, ac_cv_c_bigendian=no)])
+ if test $ac_cv_c_bigendian = unknown; then
+-AC_TRY_RUN([main () {
++AC_TRY_RUN([int main (void) {
+   /* Are we little or big endian?  From Harbison&Steele.  */
+   union
+   {
+@@ -1885,7 +1885,7 @@ AC_DEFUN(AC_C_INLINE,
+ [AC_CACHE_CHECK([for inline], ac_cv_c_inline,
+ [ac_cv_c_inline=no
+ for ac_kw in inline __inline__ __inline; do
+-  AC_TRY_COMPILE(, [} $ac_kw foo() {], [ac_cv_c_inline=$ac_kw; break])
++  AC_TRY_COMPILE(, [} $ac_kw foo(void) {], [ac_cv_c_inline=$ac_kw; break])
+ done
+ ])
+ case "$ac_cv_c_inline" in
+@@ -2277,7 +2277,7 @@ AC_DEFUN(AC_SYS_RESTARTABLE_SYSCALLS,
+ #include <sys/types.h>
+ #include <signal.h>
+ ucatch (isig) { }
+-main () {
++int main (void) {
+   int i = fork (), status;
+   if (i == 0) { sleep (3); kill (getppid (), SIGINT); sleep (3); exit (0); }
+   signal (SIGINT, ucatch);
+@@ -2654,7 +2654,7 @@ AC_CACHE_VAL(ac_cv_exeext,
+   ac_cv_exeext=.exe
+ else
+   rm -f conftest*
+-  echo 'int main () { return 0; }' > conftest.$ac_ext
++  echo 'int main (void) { return 0; }' > conftest.$ac_ext
+   ac_cv_exeext=
+   if AC_TRY_EVAL(ac_link); then
+     for file in conftest.*; do
