@@ -149,7 +149,8 @@ src_install() {
 
 	if ! use crypt ; then
 		# Allow sys-libs/libxcrypt[system] to provide it instead
-		rm "${ED}"/usr/include/crypt.h || die
+		rm "${ED}/usr/include/crypt.h" || die
+		rm "${ED}/usr/$(get_libdir)/libcrypt.a" || die
 	fi
 
 	if [[ ${CATEGORY} != cross-* ]] ; then
