@@ -62,7 +62,6 @@ QT_DEPS="
 
 	qt6? (
 		>=dev-qt/qtbase-${MIN_QT_6_VERSION}:6[concurrent,gui,network,widgets,xml(+)]
-		>=dev-qt/qtsvg-${MIN_QT_6_VERSION}:6
 		>=dev-qt/qt5compat-${MIN_QT_6_VERSION}:6
 	)
 "
@@ -92,6 +91,10 @@ DEPEND="
 # And we need more than just the GL headers
 RDEPEND="
 	${COMMON_DEPENDS}
+
+	!qt6? ( >=dev-qt/qtsvg-${MIN_QT_5_VERSION}:5 )
+	 qt6? ( >=dev-qt/qtsvg-${MIN_QT_6_VERSION}:6 )
+
 	>=virtual/jre-1.8.0:*
 	virtual/opengl
 "
