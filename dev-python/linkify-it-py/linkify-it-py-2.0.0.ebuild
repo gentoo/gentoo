@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~sparc"
 
 RDEPEND="
 	dev-python/uc-micro-py[${PYTHON_USEDEP}]
