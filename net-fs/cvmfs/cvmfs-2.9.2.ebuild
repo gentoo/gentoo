@@ -47,6 +47,7 @@ DEPEND="${CDEPEND}
 PATCHES=(
 		"${FILESDIR}"/${PN}-2.7.2-builtins.patch
 		"${FILESDIR}"/${PN}-2.7.2-find-package.patch
+		"${FILESDIR}"/${PN}-2.9.2-include-ctime.patch
 )
 
 pkg_setup() {
