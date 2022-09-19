@@ -31,7 +31,7 @@ HOMEPAGE="https://go.dev"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-IUSE="cpu_flags_x86_sse2"
+IUSE="abi_mips_o32 abi_mips_n64 cpu_flags_x86_sse2"
 
 BDEPEND="|| (
 		dev-lang/go
