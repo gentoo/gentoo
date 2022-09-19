@@ -6,7 +6,7 @@
 		<name>Michał Górny</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">mgorny/eselect-repository</remote-id>
+		<remote-id type="github">projg2/eselect-repository</remote-id>
 	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>
