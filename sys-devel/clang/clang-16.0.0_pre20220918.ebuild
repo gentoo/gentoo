@@ -44,6 +44,7 @@ BDEPEND="
 "
 PDEPEND="
 	sys-devel/clang-common
+	sys-devel/clang-toolchain-symlinks:${SLOT}
 	~sys-devel/clang-runtime-${PV}
 	default-compiler-rt? (
 		=sys-libs/compiler-rt-${PV%_*}*
