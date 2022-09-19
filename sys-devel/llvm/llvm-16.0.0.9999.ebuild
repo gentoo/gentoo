@@ -60,6 +60,7 @@ RDEPEND="
 "
 PDEPEND="
 	sys-devel/llvm-common
+	sys-devel/llvm-toolchain-symlinks:${SLOT}
 	binutils-plugin? ( >=sys-devel/llvmgold-${SLOT} )
 "
 
