@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 IUSE="clang"
 
 RDEPEND="
-	<sys-libs/binutils-libs-2.39:=
+	>=sys-libs/binutils-libs-2.29:=
 	sys-libs/libunwind:=
 	app-arch/xz-utils
 	clang? ( sys-libs/blocksruntime )
@@ -33,6 +33,7 @@ DOCS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0-no-werror.patch
+	"${FILESDIR}"/${PN}-2.5_binutils239.patch
 )
 
 pkg_pretend() {
