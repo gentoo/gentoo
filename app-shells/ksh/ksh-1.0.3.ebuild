@@ -41,6 +41,8 @@ src_compile() {
 		"-Wno-cpp"
 		"-Wno-maybe-uninitialized"
 		"-Wno-lto-type-mismatch"
+		"-Wno-error=int-conversion"
+		"-Wno-int-conversion"
 		"-P"
 	)
 	append-cflags $(test-flags-CC ${extraflags[@]})
