@@ -39,7 +39,7 @@ DEPEND="
 		${QT_DEPEND}
 	)
 	graphicsmagick? ( media-gfx/graphicsmagick:0= )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	opencv? ( >=media-libs/opencv-2.3.1a-r1:0= )
 	openexr? (
 		dev-libs/imath:=
