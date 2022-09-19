@@ -81,6 +81,9 @@ DEPEND="
 # And we need more than just the GL headers
 RDEPEND="
 	${COMMON_DEPENDS}
+
+	>=dev-qt/qtsvg-${MIN_QT}:${QT_SLOT}
+
 	>=virtual/jre-1.8.0:*
 	virtual/opengl
 "
