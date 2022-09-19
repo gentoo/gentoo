@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,7 @@ DEPEND="
 	dev-libs/glib:2
 	dev-libs/json-c:=
 	gegl? (
-		media-libs/babl
+		media-libs/babl[introspection?]
 		>=media-libs/gegl-0.4.14:0.4[introspection?]
 	)
 	introspection? ( >=dev-libs/gobject-introspection-1.32 )
