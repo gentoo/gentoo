@@ -28,7 +28,7 @@ RDEPEND="
 
 pkg_pretend() {
 	if tc-is-clang; then
-		ewarn "You seem to be using clang as a system compiler.  As of clang-15,"
+		ewarn "You seem to be using clang as a system compiler.  As of clang-16,"
 		ewarn "upstream has turned a few warnings that commonly occur during"
 		ewarn "configure script runs into errors by default.  This causes some"
 		ewarn "configure tests to start failing, sometimes resulting in silent"
