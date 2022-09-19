@@ -302,6 +302,7 @@ app-emulation/dosemu
 #
 sys-libs/glibc
 -sys-libs/musl
+-sys-libs/libucontext
 
 # As of 2021-08-08, >=sys-fs/udev-249-r2 is patched in Gentoo
 # to work on musl, so no need to mask udev.
