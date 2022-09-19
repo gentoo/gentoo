@@ -1,11 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit cmake toolchain-funcs
 
 DESCRIPTION="Suffix-sorting library (for BWT)"
-HOMEPAGE="https://github.com/y-256/libdivsufsort"
+HOMEPAGE="https://github.com/y-256/libdivsufsort/"
 SRC_URI="https://github.com/y-256/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
