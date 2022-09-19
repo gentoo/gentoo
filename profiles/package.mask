@@ -389,6 +389,7 @@ sys-devel/automake:1.11
 >=dev-libs/libgweather-4.2.0
 >=dev-util/devhelp-43
 >=gnome-base/gnome-desktop-43
+>=gnome-base/gnome-shell-43
 >=gnome-base/nautilus-43
 >=gnome-extra/evolution-data-server-3.46
 >=gnome-extra/evolution-ews-3.46
