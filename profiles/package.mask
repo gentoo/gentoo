@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-09-19)
+# Investigating possible issue, bug #871753
+=sys-devel/autoconf-2.13-r3
+=sys-devel/autoconf-2.69-r7
+=sys-devel/autoconf-2.71-r3
+
 # John Helmert III <ajak@gentoo.org> (2022-09-18)
 # Unfixed root privilege escalation, bug #631552
 sys-cluster/slurm
