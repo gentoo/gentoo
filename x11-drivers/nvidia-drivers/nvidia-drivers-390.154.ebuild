@@ -74,6 +74,7 @@ QA_PREBUILT="opt/bin/* usr/lib*"
 
 PATCHES=(
 	"${FILESDIR}"/nvidia-drivers-390.154-clang15.patch
+	"${FILESDIR}"/nvidia-extras-390.154-clang16.patch
 	"${FILESDIR}"/nvidia-modprobe-390.141-uvm-perms.patch
 	"${FILESDIR}"/nvidia-settings-390.141-fno-common.patch
 	"${FILESDIR}"/nvidia-settings-390.144-desktop.patch

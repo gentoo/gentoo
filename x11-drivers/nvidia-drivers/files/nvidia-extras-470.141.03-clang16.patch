@@ -1,0 +1,36 @@
+https://bugs.gentoo.org/870412
+--- a/nvidia-modprobe/common-utils/msg.c
++++ b/nvidia-modprobe/common-utils/msg.c
+@@ -47 +47 @@
+-NvVerbosity nv_get_verbosity()
++NvVerbosity nv_get_verbosity(void)
+--- a/nvidia-persistenced/common-utils/msg.c
++++ b/nvidia-persistenced/common-utils/msg.c
+@@ -47 +47 @@
+-NvVerbosity nv_get_verbosity()
++NvVerbosity nv_get_verbosity(void)
+--- a/nvidia-persistenced/nvidia-persistenced.c
++++ b/nvidia-persistenced/nvidia-persistenced.c
+@@ -625 +625 @@
+-static NvPdStatus setup_rpc()
++static NvPdStatus setup_rpc(void)
+--- a/nvidia-settings/src/common-unix/virtual-resolutions/nvvr.c
++++ b/nvidia-settings/src/common-unix/virtual-resolutions/nvvr.c
+@@ -107 +107 @@
+-const NVVRSize* NVVRGetCommonResolutions()
++const NVVRSize* NVVRGetCommonResolutions(void)
+--- a/nvidia-settings/src/common-utils/msg.c
++++ b/nvidia-settings/src/common-utils/msg.c
+@@ -47 +47 @@
+-NvVerbosity nv_get_verbosity()
++NvVerbosity nv_get_verbosity(void)
+--- a/nvidia-settings/src/gtk+-2.x/ctkutils.c
++++ b/nvidia-settings/src/gtk+-2.x/ctkutils.c
+@@ -260 +260 @@
+-GtkWidget *ctk_combo_box_text_new_with_entry()
++GtkWidget *ctk_combo_box_text_new_with_entry(void)
+--- a/nvidia-xconfig/common-utils/msg.c
++++ b/nvidia-xconfig/common-utils/msg.c
+@@ -47 +47 @@
+-NvVerbosity nv_get_verbosity()
++NvVerbosity nv_get_verbosity(void)
