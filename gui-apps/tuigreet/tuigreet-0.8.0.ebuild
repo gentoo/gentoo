@@ -158,6 +158,7 @@ DEPEND="${RDEPEND}"
 src_install() {
 	dodir /var/cache/${PN}
 	fowners greetd:greetd /var/cache/${PN}
+	keepdir /var/cache/${PN}
 
 	cargo_src_install
 }
