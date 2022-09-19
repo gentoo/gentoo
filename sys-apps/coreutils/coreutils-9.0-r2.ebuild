@@ -17,7 +17,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 	)
 	verify-sig? ( mirror://gnu/${PN}/${P}.tar.xz.sig )"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x86-linux"
 IUSE="acl caps gmp hostname kill multicall nls selinux +split-usr static test vanilla xattr"
