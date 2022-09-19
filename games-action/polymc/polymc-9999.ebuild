@@ -61,7 +61,7 @@ QT_DEPS="
 	)
 
 	qt6? (
-		>=dev-qt/qtbase-${MIN_QT_6_VERSION}:6[concurrent,gui,network,widgets]
+		>=dev-qt/qtbase-${MIN_QT_6_VERSION}:6[concurrent,gui,network,widgets,xml(+)]
 		>=dev-qt/qtsvg-${MIN_QT_6_VERSION}:6
 		>=dev-qt/qt5compat-${MIN_QT_6_VERSION}:6
 	)
