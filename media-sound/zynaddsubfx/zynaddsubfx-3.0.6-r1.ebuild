@@ -39,8 +39,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	app-doc/doxygen
 	dev-lang/ruby:*
+	doc? ( app-doc/doxygen )
 "
 
 PATCHES=(
