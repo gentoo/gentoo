@@ -36,6 +36,9 @@ BDEPEND="
 	dev-python/rapidfuzz_capi[${PYTHON_USEDEP}]
 	>=dev-python/scikit-build-0.13.0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? (
+		dev-python/hypothesis[${PYTHON_USEDEP}]
+	)
 "
 
 distutils_enable_tests pytest
