@@ -882,6 +882,8 @@ src_prepare() {
 		fi
 	fi
 
+	eapply "${FILESDIR}"/2.35/glibc-2.35-make-4.4-MAKEFLAGS.patch
+
 	if use clone3 ; then
 		append-cppflags -DGENTOO_USE_CLONE3
 	else
