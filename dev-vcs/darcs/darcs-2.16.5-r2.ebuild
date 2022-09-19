@@ -15,7 +15,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="curl +terminfo +threaded"
 
 RDEPEND=">=dev-haskell/async-2.0.2:=[profile?] <dev-haskell/async-2.3:=[profile?]
