@@ -4,9 +4,6 @@
 	<maintainer type="project">
 		<email>systemd@gentoo.org</email>
 	</maintainer>
-	<use>
-		<flag name="kmod">Enable kernel module loading/unloading support using <pkg>sys-apps/kmod</pkg></flag>
-	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:kernel:udev</remote-id>
 		<remote-id type="github">systemd/systemd</remote-id>
