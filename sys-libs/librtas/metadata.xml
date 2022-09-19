@@ -6,6 +6,8 @@
 		<name>PowerPC architecture team</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">librtas</remote-id>
+		<bugs-to>https://github.com/ibm-power-utilities/librtas/issues</bugs-to>
+		<changelog>https://github.com/ibm-power-utilities/librtas/blob/master/Changelog</changelog>
+		<remote-id type="github">ibm-power-utilities/librtas</remote-id>
 	</upstream>
 </pkgmetadata>
