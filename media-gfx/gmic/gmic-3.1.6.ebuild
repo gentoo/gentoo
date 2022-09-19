@@ -80,24 +80,30 @@ pkg_setup() {
 }
 
 gmic_emake() {
+	local mymakeargs=(
+		CC="$(tc-getCC)"
+		CXX="$(tc-getCXX)"
+		STRIP="/bin/true"
+		LIB="$(get_libdir)"
+		OPT_CFLAGS="${CXXFLAGS}"
+		OPT_LIBS="${LDFLAGS}"
+		GMIC_USE_CURL=$(usex curl)
+		GMIC_USE_EXR=$(usex openexr)
+		GMIC_USE_FFTW=$(usex fftw)
+		GMIC_USE_GRAPHICSMAGICK=$(usex graphicsmagick)
+		GMIC_USE_JPEG=$(usex jpeg)
+		GMIC_USE_OPENCV=$(usex opencv)
+		GMIC_USE_OPENMP=$(usex openmp)
+		GMIC_USE_PNG=$(usex png)
+		GMIC_USE_TIFF=$(usex tiff)
+		GMIC_USE_X11=$(usex X)
+		QMAKE="qmake5"
+	)
+
+	tc-is-clang && mymakeargs+=( OPENMP_LIBS="-lomp" )
+
 	emake -j1 -C src \
-		CC="$(tc-getCC)" \
-		CXX="$(tc-getCXX)" \
-		STRIP="/bin/true" \
-		LIB="$(get_libdir)" \
-		OPT_CFLAGS="${CXXFLAGS}" \
-		OPT_LIBS="${LDFLAGS}" \
-		GMIC_USE_CURL=$(usex curl) \
-		GMIC_USE_EXR=$(usex openexr) \
-		GMIC_USE_FFTW=$(usex fftw) \
-		GMIC_USE_GRAPHICSMAGICK=$(usex graphicsmagick) \
-		GMIC_USE_JPEG=$(usex jpeg) \
-		GMIC_USE_OPENCV=$(usex opencv) \
-		GMIC_USE_OPENMP=$(usex openmp) \
-		GMIC_USE_PNG=$(usex png) \
-		GMIC_USE_TIFF=$(usex tiff) \
-		GMIC_USE_X11=$(usex X) \
-		QMAKE="qmake5" \
+		"${mymakeargs[@]}" \
 		$@
 }
 
