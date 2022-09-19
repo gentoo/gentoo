@@ -11,10 +11,12 @@ MY_P="${PN}-${MY_PV}"
 DESCRIPTION="Console display library"
 HOMEPAGE="https://www.gnu.org/software/ncurses/ https://invisible-island.net/ncurses/"
 # Keep invisible-mirror.net here as some users reported 403 forbidden with invisible-island.net
-SRC_URI="mirror://gnu/ncurses/${MY_P}.tar.gz
+SRC_URI="
+	mirror://gnu/ncurses/${MY_P}.tar.gz
 	https://invisible-island.net/archives/${PN}/${MY_P}.tar.gz
 	https://invisible-mirror.net/archives/${PN}/${MY_P}.tar.gz
-	verify-sig? ( mirror://gnu/ncurses/${MY_P}.tar.gz.sig )"
+	verify-sig? ( mirror://gnu/ncurses/${MY_P}.tar.gz.sig )
+"
 
 GENTOO_PATCH_DEV=sam
 GENTOO_PATCH_PV=6.3_p20220910
@@ -85,6 +87,7 @@ if [[ ${PV} == *_p* ]] ; then
 		20220820
 		20220827
 		20220903
+		20220910
 
 		# Latest patch is just _pN = $(ver_cut 4)
 		$(ver_cut 4)
@@ -100,27 +103,27 @@ if [[ ${PV} == *_p* ]] ; then
 		patch_url=
 		my_patch_index=
 
+		# We keep a bunch of mirrors here as we've had reports of invisible*.net
+		# being 403 forbidden for some users.
+		urls=(
+			"https://invisible-island.net/archives/${PN}/${PV/_p*}/${MY_P}-%s"
+			"https://invisible-mirror.net/archives/${PN}/${PV/_p*}/${MY_P}-%s"
+			"https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${MY_P}-%s"
+		)
+
 		for ((my_patch_index=0; my_patch_index < "${#PATCH_DATES[@]}"; my_patch_index++)); do
-			patch_url="$(printf "https://invisible-island.net/archives/${PN}/${PV/_p*}/${MY_P}-%s" ${PATCH_DATES[${my_patch_index}]}.patch.gz)"
-			# TODO: replace with loop
-			SRC_URI+=" ${patch_url}"
-			SRC_URI+=" verify-sig? ( ${patch_url}.asc )"
-
-			patch_url="$(printf "https://invisible-mirror.net/archives/${PN}/${PV/_p*}/${MY_P}-%s" ${PATCH_DATES[${my_patch_index}]}.patch.gz)"
-			# TODO: replace with loop
-			SRC_URI+=" ${patch_url}"
-			SRC_URI+=" verify-sig? ( ${patch_url}.asc )"
-
-			patch_url="$(printf "https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${MY_P}-%s" ${PATCH_DATES[${my_patch_index}]}.patch.gz)"
-			# TODO: replace with loop
-			SRC_URI+=" ${patch_url}"
-			SRC_URI+=" verify-sig? ( ${patch_url}.asc )"
+			for url in "${urls[@]}" ; do
+				patch_url="$(printf ${urls} ${PATCH_DATES[${my_patch_index}]}.patch.gz)"
+				SRC_URI+=" ${patch_url}"
+				SRC_URI+=" verify-sig? ( ${patch_url}.asc )"
+			done
 
 			UPSTREAM_PATCHES+=( "${WORKDIR}"/${MY_P}-${PATCH_DATES[${my_patch_index}]}.patch )
 		done
 
 		unset patch_url
 		unset my_patch_index
+		unset urls
 	fi
 
 	SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${GENTOO_PATCH_NAME}.tar.xz"
