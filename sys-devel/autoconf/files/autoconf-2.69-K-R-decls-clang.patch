@@ -11,28 +11,6 @@ From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@aarsen.me>
 Date: Mon, 19 Sep 2022 12:11:24 +0200
 Subject: [PATCH] backport K&R decl fixes
 
---- a/doc/autoconf.texi
-+++ b/doc/autoconf.texi
-@@ -5201,9 +5201,7 @@ the @samp{#undef malloc}):
- #include <config.h>
- #undef malloc
- 
--#include <sys/types.h>
--
--void *malloc ();
-+#include <stdlib.h>
- 
- /* Allocate an N-byte block of memory from the heap.
-    If N is zero, allocate a 1-byte block.  */
-@@ -8057,7 +8055,7 @@ needed:
- #  ifdef __cplusplus
-      extern "C"
- #  endif
--   int F77_DUMMY_MAIN () @{ return 1; @}
-+   int F77_DUMMY_MAIN (void) @{ return 1; @}
- #endif
- @end example
- 
 --- a/lib/autoconf/c.m4
 +++ b/lib/autoconf/c.m4
 @@ -97,7 +97,7 @@ m4_define([AC_LANG_PROGRAM(C)],
