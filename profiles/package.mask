@@ -490,6 +490,7 @@ sys-devel/automake:1.11
 >=gnome-base/nautilus-43
 >=gnome-extra/evolution-data-server-3.46
 >=gnome-extra/evolution-ews-3.46
+>=gnome-extra/gnome-boxes-43
 >=gnome-extra/gnome-calculator-43
 >=gnome-extra/gnome-clocks-43
 >=gnome-extra/gnome-shell-extensions-43
