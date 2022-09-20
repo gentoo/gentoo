@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 # Generated with https://github.com/gentoo/cargo-ebuild.
 CRATES="
@@ -85,17 +85,17 @@ LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-BDEPEND="dev-python/setuptools-rust
+BDEPEND="dev-python/setuptools-rust[${PYTHON_USEDEP}]
 	test? (
 		dev-python/fixtures[${PYTHON_USEDEP}]
-		>=dev-python/testtools-2.5.0[${PYTHON_USEDEP}]
+		dev-python/graphviz[${PYTHON_USEDEP}]
 		>=dev-python/networkx-2.5[${PYTHON_USEDEP}]
 		dev-python/stestr[${PYTHON_USEDEP}]
+		>=dev-python/testtools-2.5.0[${PYTHON_USEDEP}]
 		media-gfx/graphviz[gts]
-		dev-python/graphviz[${PYTHON_USEDEP}]
 	)"
 
-RDEPEND=">=dev-python/numpy-1.16.0"
+RDEPEND=">=dev-python/numpy-1.16.0[${PYTHON_USEDEP}]"
 
 # Libraries built with rust do not use CFLAGS and LDFLAGS.
 QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/retworkx/retworkx.*\\.so"
