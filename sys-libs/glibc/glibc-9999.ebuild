@@ -44,7 +44,7 @@ SRC_URI+=" https://gitweb.gentoo.org/proj/locale-gen.git/snapshot/locale-gen-${L
 SRC_URI+=" multilib-bootstrap? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 SRC_URI+=" systemd? ( https://gitweb.gentoo.org/proj/toolchain/glibc-systemd.git/snapshot/glibc-systemd-${GLIBC_SYSTEMD_VER}.tar.gz )"
 
-IUSE="audit caps cet compile-locales +crypt custom-cflags doc gd headers-only +multiarch multilib multilib-bootstrap nscd profile selinux +ssp stack-realign +static-libs suid systemd systemtap test vanilla"
+IUSE="audit caps cet compile-locales +crypt custom-cflags doc gd hash-sysv-compat headers-only +multiarch multilib multilib-bootstrap nscd profile selinux +ssp stack-realign +static-libs suid systemd systemtap test vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
@@ -417,6 +417,12 @@ setup_flags() {
 	# ld can't use -r & --relax at the same time, bug #788901
 	# https://sourceware.org/PR27837
 	filter-ldflags '-Wl,--relax'
+
+	# some weird software relies on sysv hashes in glibc, bug 863863, bug 864100
+	# we have to do that here already so mips can filter it out again :P
+	if use hash-sysv-compat ; then
+		append-ldflags '-Wl,--hash-style=both'
+	fi
 
 	# #492892
 	filter-flags -frecord-gcc-switches

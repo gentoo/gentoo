@@ -31,6 +31,7 @@ DEPEND="${COMMON_DEPEND}
 		)
 		qt6? (
 			dev-qt/qtbase:6[gui,network]
+			dev-qt/qt5compat:6
 		)
 	)
 "

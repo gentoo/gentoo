@@ -1,0 +1,120 @@
+From 5fd2e1541a873e87f689de601beb3bc35910740d Mon Sep 17 00:00:00 2001
+From: Doug Nazar <nazard@nazar.ca>
+Date: Wed, 22 Jun 2022 15:07:03 -0400
+Subject: [PATCH 1/2] Fix SSL handling during upgrade check
+
+Only update counters if we've received data, not on error (-1) since
+we can then overwrite the stack, causing fault.
+
+my_ssl_connect() can return before initializing ssl & ctx. Ensure NULL
+initialization so *_free() are no-ops.
+
+Cleanly shutdown the channel after receiving all data.
+
+Use the client version of the TLS method to match the other options.
+---
+ base/netutils.c | 22 ++++++++++++----------
+ base/utils.c    |  4 ++--
+ 2 files changed, 14 insertions(+), 12 deletions(-)
+
+diff --git a/base/netutils.c b/base/netutils.c
+index 08ee40dd7..689b56f9b 100644
+--- a/base/netutils.c
++++ b/base/netutils.c
+@@ -154,7 +154,7 @@ int my_ssl_connect(const char *host_name, int port, int *sd, SSL **ssl, SSL_CTX
+ 
+ #if OPENSSL_VERSION_NUMBER >= 0x10100000
+ 
+-	method = TLS_method();
++	method = TLS_client_method();
+ 
+ #else		/* OPENSSL_VERSION_NUMBER >= 0x10100000 */
+ 
+@@ -268,11 +268,11 @@ int my_ssl_sendall(int s, SSL *ssl, const char *buf, int *len, int timeout) {
+ 				/* If we hit one of these two errors, we just want to select() the socket again */
+ 				break;
+ 			}
++		} else {
++			total_sent += n;
++			bytes_left -= n;
+ 		}
+ 
+-		total_sent += n;
+-		bytes_left -= n;
+-
+ 		/* make sure we haven't overrun the timeout */
+ 		time(&current_time);
+ 		if(current_time - start_time > timeout) {
+@@ -337,17 +337,19 @@ int my_ssl_recvall(int s, SSL *ssl, char *buf, int *len, int timeout) {
+ 		n = SSL_read(ssl, buf + total_received, bytes_left);
+ 		if(n <= 0) {
+ 			int error = SSL_get_error(ssl, n);
++			/* If we hit one of these two errors, we just want to select() the socket again */
+ 			if (error != SSL_ERROR_WANT_READ && error != SSL_ERROR_WANT_WRITE) {
+-				/* An actual error happened */
+-				/* If we hit one of these two errors, we just want to select() the socket again */
++				/* EOF or an actual error happened */
++				if (error == SSL_ERROR_ZERO_RETURN)
++					SSL_shutdown(ssl);
+ 				break;
+ 			}
++		} else {
++			/* apply bytes we received */
++			total_received += n;
++			bytes_left -= n;
+ 		}
+ 
+-		/* apply bytes we received */
+-		total_received += n;
+-		bytes_left -= n;
+-
+ 		/* make sure we haven't overrun the timeout */
+ 		time(&current_time);
+ 		if(current_time - start_time > timeout) {
+diff --git a/base/utils.c b/base/utils.c
+index 79c6efba6..e83f7176a 100644
+--- a/base/utils.c
++++ b/base/utils.c
+@@ -3379,8 +3379,8 @@ int query_update_api(void) {
+ 	}
+ 
+ #ifdef HAVE_SSL
+-	SSL *ssl;
+-	SSL_CTX *ctx;
++	SSL *ssl = NULL;
++	SSL_CTX *ctx = NULL;
+ 
+ 	int result = my_ssl_connect(api_server, 443, &sd, &ssl, &ctx, 2);
+ 	if(sd > 0 && result != ERROR) {
+
+From a2c1415f14db6bbce9ba3d1d5a0c8218dd8c4fb8 Mon Sep 17 00:00:00 2001
+From: Doug Nazar <nazard@nazar.ca>
+Date: Wed, 22 Jun 2022 15:14:34 -0400
+Subject: [PATCH 2/2] Silence warning about port_str not large enough for port.
+
+---
+ base/netutils.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/base/netutils.c b/base/netutils.c
+index 689b56f9b..1fb1ec6a9 100644
+--- a/base/netutils.c
++++ b/base/netutils.c
+@@ -46,7 +46,7 @@ int my_ssl_connect(const char *host_name, int port, int *sd, SSL **ssl, SSL_CTX
+ 	hints.ai_socktype = SOCK_STREAM;
+ 
+ 	/* make sure our static port_str is long enough */
+-	if(port > 65535)
++	if(port < 0 || port > 65535)
+ 		return ERROR;
+ 
+ 	snprintf(port_str, sizeof(port_str), "%d", port);
+@@ -385,7 +385,7 @@ int my_tcp_connect(const char *host_name, int port, int *sd, int timeout) {
+ 	hints.ai_socktype = SOCK_STREAM;
+ 
+ 	/* make sure our static port_str is long enough */
+-	if(port > 65535)
++	if(port < 0 || port > 65535)
+ 		return ERROR;
+ 
+ 	snprintf(port_str, sizeof(port_str), "%d", port);

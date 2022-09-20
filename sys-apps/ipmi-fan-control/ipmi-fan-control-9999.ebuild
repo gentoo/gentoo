@@ -22,10 +22,16 @@ else
 	KEYWORDS="-* ~amd64"
 fi
 
-LICENSE="MIT 0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 GPL-3+ MIT Unicode-DFS-2016 Unlicense ZLIB"
+LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 GPL-3+ ISC MIT Unicode-DFS-2016 Unlicense"
 SLOT="0"
 
-RDEPEND="sys-apps/ipmitool"
+BDEPEND="
+	sys-devel/clang
+	virtual/pkgconfig
+"
+
+RDEPEND="sys-libs/freeipmi"
+DEPEND="${RDEPEND}"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 

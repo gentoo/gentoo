@@ -34,9 +34,7 @@ LICENSE="CDDL MIT debug? ( GPL-2+ )"
 SLOT="0/${PVR}"
 IUSE="custom-cflags debug +rootfs"
 
-RDEPEND="${DEPEND}
-	!sys-kernel/spl
-"
+RDEPEND="${DEPEND}"
 
 BDEPEND="
 	dev-lang/perl

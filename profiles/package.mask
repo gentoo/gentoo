@@ -33,6 +33,30 @@
 
 #--- END OF EXAMPLES ---
 
+# John Helmert III <ajak@gentoo.org> (2022-09-18)
+# Unfixed root privilege escalation, bug #631552
+sys-cluster/slurm
+
+# Michał Górny <mgorny@gentoo.org> (2022-09-18)
+# Obsolete in favor of building via PEP517 mode.  Buggy.  No revdeps
+# left in ::gentoo.
+# Removal on 2022-10-18.  Bug #871522.
+dev-python/pyproject2setuppy
+
+# Pacho Ramos <pacho@gentoo.org> (2022-09-18)
+# ABRT environment keeps breaking more and more on non-Fedora systems.
+# Removal: 2022-10-18.  Bugs #849305, #849092, #849095, #713858.
+app-admin/abrt
+app-admin/gnome-abrt
+dev-libs/libreport
+dev-libs/satyr
+
+# Pacho Ramos <pacho@gentoo.org> (2022-09-18)
+# Unmaintained for a long time and unneeded with current pulseaudio and
+# pipewire versions.
+# Removal: 2022-10-18.
+media-sound/pulseaudio-modules-bt
+
 # Joonas Niilola <juippis@gentoo.org> (2022-09-16)
 # This theme has been incorporated to enlightenment-0.25, and with
 # 0.24 removed from Gentoo's git tree, this ebuild is useless. Removal
@@ -121,11 +145,11 @@ mail-filter/sigh
 # Flask-Security-Too is a package with high maintenance cost
 # and no revdeps in ::gentoo.  The next version bump (once more)
 # introduces more dependencies.
-# 
+#
 # The remaining listed packages are used exclusively by this package
 # (or its tests).  If you find one of them useful, please let us know
 # and we'll keep it.
-# 
+#
 # Removal on 2022-09-29.  Bug #867415.
 dev-python/flask-security
 dev-python/flask-babelex
@@ -296,41 +320,10 @@ dev-util/bnfc
 # See: <https://github.com/martijnbastiaan/doctest-parallel/issues/45>
 dev-haskell/doctest-parallel
 
-# John Helmert III <ajak@gentoo.org> (2022-08-16)
-# Multiple vulnerabilities, unmaintained upstream, EAPI 6. Removal in 30
-# days, bug #830138
-media-gfx/gif2apng
-
-# John Helmert III <ajak@gentoo.org> (2022-08-16)
-# Vulnerable, unmaintained upstream, maintainer says it's time for it to
-# go. Removal in 30 days, bug #769758
-www-servers/thttpd
-
 # John Helmert III <ajak@gentoo.org> (2022-08-14)
 # Vulnerable, unmaintained in Gentoo, EAPI6. Removal in 30 days,
 # bug #772209
 app-crypt/keybase
-
-# John Helmert III <ajak@gentoo.org> (2022-08-14)
-# Remote code execution vulnerability, dead upstream. Removal in 30
-# days, bug #791004.
-x11-terms/mrxvt
-
-# John Helmert III <ajak@gentoo.org> (2022-08-14)
-# Dead upstream, vulnerable, no revdeps except a usedep. Removal in 30
-# days, bug #618000
-media-libs/libaacplus
-
-# John Helmert III <ajak@gentoo.org> (2022-08-14)
-# Vulnerable and unmaintained for years, many open bugs, no revdeps,
-# EAPI 6. Removal in 30 days, bug 733354
-net-misc/calico-cni-plugin
-net-misc/calicoctl
-
-# John Helmert III <ajak@gentoo.org> (2022-08-14)
-# Vulnerable and unmaintained for years, many open bugs, no revdeps
-# Removal in 30 days, bug #631140
-net-analyzer/smokeping
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-08-12)
 # Masked for testing, depends on dev-qt/qt*:6
@@ -338,21 +331,6 @@ net-analyzer/smokeping
 dev-python/shiboken6
 dev-python/pyside6
 dev-python/pyside6-tools
-
-# Michał Górny <mgorny@gentoo.org> (2022-08-11)
-# Niche library with no revdeps left.  Last commit in 2015.
-# Removal on 2022-09-10.  Bug #864889.
-dev-libs/libdivsufsort
-
-# John Helmert III <ajak@gentoo.org> (2022-08-10)
-# Root privilege escalation vulnerability, many open bugs. Removal in 30
-# days, bug 630752
-net-analyzer/sguil-sensor
-
-# John Helmert III <ajak@gentoo.org> (2022-08-10)
-# Root privilege escalation vulnerability, unmaintained since the git
-# transition, multiple open bugs. Removal in 30 days, bug 630752
-app-admin/logcheck
 
 # Jimi Huotari <chiitoo@gentoo.org> (2022-08-02)
 # Masked for testing. The split of some packages may still
@@ -513,14 +491,6 @@ sys-devel/automake:1.15
 # This is likely to cause issues in tests; Unmask if using for other purposes
 >=dev-php/PHP_Timer-5.0
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-12-14)
-# AT&T decided to roll back community changes in March 2020
-# for version 2020.x.x
-# This version is no longer maintained.
-# New version is maintained at https://github.com/ksh93/ksh
-# and is available as app-shells/ksh-1.0.0_beta1 at time of writing.
-~app-shells/ksh-2020.0.0
-
 # Sam James <sam@gentoo.org> (2021-12-01)
 # OSL 12 is a development release (for now).
 # Doesn't work with LLVM 13 yet; mask to help
@@ -551,6 +521,7 @@ sys-devel/automake:1.11
 # New major parallel-installable release which needs special care to not
 # end up loaded into the same process together with the earlier libsoup ABI.
 # Migration to it is expected for GNOME 42, NOT to be unmasked with GNOME 41.
+>=gnome-extra/gnome-calculator-43
 net-libs/libsoup:3.0
 
 # Thomas Deutschmann <whissi@gentoo.org> (2021-09-07)

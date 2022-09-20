@@ -39,10 +39,9 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.3.5-includes-libs-perl.patch"
-	"${FILESDIR}/${PN}-1.35-fix-gcc-linking.patch"
 	"${FILESDIR}/${PN}-1.3.14-fix-cmake-files-libdir.patch"
 	"${FILESDIR}/${PN}-1.3.14-no-libtool-file.patch"
-	#"${FILESDIR}/${PN}-1.3.14-fix-nodefaultlibs-deux.patch"
+	"${FILESDIR}/${PN}-1.3.14-fix-nodefaultlibs-deux.patch"
 )
 
 pkg_setup() {
