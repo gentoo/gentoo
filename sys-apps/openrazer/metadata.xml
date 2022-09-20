@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <use>
+    <flag name="client">Build the OpenRazer daemon client</flag>
+    <flag name="daemon">Build the OpenRazer daemon service</flag>
+  </use>
+  <upstream>
+    <bugs-to>https://github.com/openrazer/openrazer/issues/</bugs-to>
+    <remote-id type="github">openrazer/openrazer</remote-id>
+  </upstream>
+</pkgmetadata>
