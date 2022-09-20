@@ -13,7 +13,7 @@ HOMEPAGE="https://hackage.haskell.org/package/git-lfs"
 
 LICENSE="AGPL-3"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND=">=dev-haskell/aeson-1.3:=[profile?] <dev-haskell/aeson-2.1:=[profile?]
 	>=dev-haskell/case-insensitive-1.2:=[profile?] <dev-haskell/case-insensitive-1.3:=[profile?]
