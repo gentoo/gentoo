@@ -38,6 +38,7 @@ RDEPEND="
 BDEPEND="
 	>=dev-python/pybind11-2.9.1[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-7.0.5[${PYTHON_USEDEP}]
+	dev-python/setuptools_scm_git_archive[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/tomli[${PYTHON_USEDEP}]
 	' 3.8 3.9 3.10)
