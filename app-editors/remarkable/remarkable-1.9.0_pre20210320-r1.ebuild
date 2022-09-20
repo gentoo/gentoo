@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	${PYTHON_DEPS}
-	net-libs/webkit-gtk[introspection]
+	net-libs/webkit-gtk:4[introspection]
 	x11-libs/gtk+:3[introspection]
 	x11-libs/gtksourceview:3.0[introspection]
 	$(python_gen_cond_dep '
