@@ -6,7 +6,7 @@ EAPI=8
 inherit kernel-install toolchain-funcs
 
 MY_P=linux-${PV%.*}
-GENPATCHES_P=genpatches-${PV%.*}-$(( ${PV##*.} + 5 ))
+GENPATCHES_P=genpatches-${PV%.*}-$(( ${PV##*.} + 9 ))
 BINPKG=${P/-bin}-1
 
 DESCRIPTION="Pre-built Linux kernel with Gentoo patches"
