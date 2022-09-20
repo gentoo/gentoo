@@ -10,7 +10,6 @@
 		<flag name="fluidsynth">use <pkg>media-sound/fluidsynth</pkg> for MIDI emulation</flag>
 		<flag name="mt-32">use <pkg>media-libs/munt-mt32emu</pkg> for MT-32 emulation</flag>
 		<flag name="network">Enable networking features (modem, ipx)</flag>
-		<flag name="opus">Support compressed audio tracks (.opus) used with CDROM images</flag>
 		<flag name="slirp">Enable Ethernet emulation using <pkg>net-libs/libslirp</pkg></flag>
 	</use>
 	<upstream>
