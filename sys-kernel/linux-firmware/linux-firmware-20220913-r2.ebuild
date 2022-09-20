@@ -317,7 +317,7 @@ pkg_preinst() {
 
 	# Fix 'symlink is blocked by a directory' Bug #871315
 	if has_version "<${CATEGORY}/${PN}-20220913-r2" ; then
-		rm -rf "${ROOT}"/lib/firmware/qcom/LENOVO/21BX
+		rm -rf "${EROOT}"/lib/firmware/qcom/LENOVO/21BX
 	fi
 
 	# Make sure /boot is available if needed.
