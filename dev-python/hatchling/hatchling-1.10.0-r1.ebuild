@@ -29,7 +29,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 RDEPEND="
 	>=dev-python/editables-0.2[${PYTHON_USEDEP}]
 	>=dev-python/packaging-21.3[${PYTHON_USEDEP}]
-	>=dev-python/pathspec-0.9[${PYTHON_USEDEP}]
+	>=dev-python/pathspec-0.10.1[${PYTHON_USEDEP}]
 	>=dev-python/pluggy-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/tomli-1.2.2[${PYTHON_USEDEP}]
 "
