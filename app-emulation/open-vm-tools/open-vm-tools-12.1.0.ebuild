@@ -12,7 +12,7 @@ SRC_URI="https://github.com/vmware/open-vm-tools/releases/download/stable-${PV}/
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="X +deploypkg +dnet doc +fuse gtkmm +icu multimon pam +resolutionkms +ssl +vgauth"
 REQUIRED_USE="
 	multimon? ( X )
