@@ -888,8 +888,6 @@ src_prepare() {
 		einfo "Done."
 	fi
 
-	eapply "${FILESDIR}"/2.35/glibc-2.35-make-4.4-MAKEFLAGS.patch
-
 	default
 
 	gnuconfig_update
