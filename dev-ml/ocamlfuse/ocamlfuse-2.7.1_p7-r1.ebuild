@@ -31,6 +31,8 @@ BDEPEND="
 	dev-ml/opam
 "
 
+PATCHES=( "${FILESDIR}"/${P}-unistd.patch )
+
 src_compile() {
 	tc-export CPP
 	dune_src_compile
