@@ -29,6 +29,13 @@ RDEPEND="~app-text/openpaperwork-core-${PV}[${PYTHON_USEDEP}]
 	x11-libs/libnotify[introspection]"
 DEPEND="${RDEPEND}"
 
+src_prepare() {
+	# remove dep to allow both old python-Levenshtein and new
+	# Levenshtein packages
+	sed -i -e '/python-Levenshtein/d' setup.py || die
+	distutils-r1_src_prepare
+}
+
 python_install_all() {
 	distutils-r1_python_install_all
 
