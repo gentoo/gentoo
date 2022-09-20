@@ -27,6 +27,9 @@ BDEPEND="
 		$(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]")
 	)
 "
+PDEPEND="
+	sys-devel/lld-toolchain-symlinks:${PV%%.*}
+"
 
 LLVM_COMPONENTS=( lld cmake libunwind/include/mach-o )
 LLVM_TEST_COMPONENTS=( llvm/utils/{lit,unittest} )
