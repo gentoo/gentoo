@@ -13,6 +13,7 @@
 		<flag name="debug">When USE=hardened, allow fortify/stack violations to dump core (SIGABRT) and not kill self (SIGKILL)</flag>
 		<flag name="experimental-loong">Add experimental LoongArch patchset</flag>
 		<flag name="gd">build memusage and memusagestat tools</flag>
+		<flag name="hash-sysv-compat">enable sysv linker hashes in glibc for compatibility with binary software (EAC via wine/proton)</flag>
 		<flag name="multiarch">enable optimizations for multiple CPU architectures (detected at runtime)</flag>
 		<flag name="multilib-bootstrap">Provide prebuilt libgcc.a and crt files if missing. Only needed for ABI switch.</flag>
 		<flag name="nscd">Build, and enable support for, the Name Service Cache Daemon</flag>
