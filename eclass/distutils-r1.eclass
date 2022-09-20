@@ -723,8 +723,8 @@ esetup.py() {
 # to unmerge the package first.
 #
 # This function is not available in PEP517 mode.  The eclass provides
-# a venv-style install unconditionally therefore, and therefore it
-# should no longer be necessary.
+# a venv-style install unconditionally and therefore it should no longer
+# be necessary.
 distutils_install_for_testing() {
 	debug-print-function ${FUNCNAME} "${@}"
 
