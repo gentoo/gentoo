@@ -16,7 +16,14 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="sys-apps/grep[pcre]"
+RDEPEND="
+	sys-apps/grep[pcre]
+	elibc_glibc? (
+		|| (
+			>=sys-libs/glibc-2.36-r3[hash-sysv-compat]
+			<sys-libs/glibc-2.36
+		)
+	)"
 DEPEND="
 	dev-util/vulkan-headers
 	media-libs/libglvnd
