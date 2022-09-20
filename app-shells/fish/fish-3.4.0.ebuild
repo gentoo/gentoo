@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit cmake python-any-r1 readme.gentoo-r1
 
 DESCRIPTION="Friendly Interactive SHell"
-HOMEPAGE="http://fishshell.com/"
+HOMEPAGE="https://fishshell.com/"
 
 MY_PV="${PV/_beta/b}"
 MY_P="${PN}-${MY_PV}"
