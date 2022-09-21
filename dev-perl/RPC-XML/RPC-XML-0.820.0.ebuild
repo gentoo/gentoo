@@ -12,7 +12,7 @@ DESCRIPTION="An implementation of XML-RPC"
 
 SLOT="0"
 LICENSE="|| ( Artistic-2 LGPL-2.1 )"
-KEYWORDS="amd64 arm64 ppc ~ppc64 x86"
+KEYWORDS="amd64 arm64 ppc ~ppc64 ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
