@@ -5,7 +5,8 @@ EAPI=8
 
 inherit fcaps meson
 
-MY_PV="${PV//_/-}"
+MY_PV=$(ver_rs 3 -)
+MY_PV="${MY_PV//_/-}"
 DESCRIPTION="Efficient micro-compositor for running games"
 HOMEPAGE="https://github.com/Plagman/gamescope"
 SRC_URI="https://github.com/Plagman/${PN}/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz"
@@ -16,13 +17,13 @@ IUSE="pipewire"
 
 RDEPEND="
 	=dev-libs/libliftoff-0.3*
-	dev-libs/wayland
+	>=dev-libs/wayland-1.21
 	>=dev-libs/wayland-protocols-1.17
 	=gui-libs/wlroots-0.15*[X]
 	media-libs/libsdl2[video]
 	media-libs/vulkan-loader
 	sys-libs/libcap
-	x11-libs/libdrm
+	>=x11-libs/libdrm-2.4.109
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXdamage
