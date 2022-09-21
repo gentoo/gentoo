@@ -1,9 +1,9 @@
 [Unit]
-Description=ProtonMail IMAP/SMTP bridge
-Documentation=https://protonmail.com/bridge/
+Description=Proton Mail IMAP/SMTP bridge
+Documentation=https://proton.me/mail/bridge/
 
 [Service]
-ExecStart=/usr/bin/protonmail-bridge --no-window
+ExecStart=/usr/bin/proton-mail-bridge --no-window
 Restart=on-failure
 
 # Hardening

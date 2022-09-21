@@ -5,7 +5,7 @@ EAPI=8
 
 inherit go-module systemd xdg-utils
 
-MY_PN="proton-bridge"
+MY_PN="${PN/-mail/}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Serves ProtonMail to IMAP/SMTP clients"
