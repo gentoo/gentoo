@@ -40,7 +40,7 @@ BDEPEND="
 	)"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-6.5.2_test-module-check.patch
+	"${FILESDIR}"/${PN}-6.6.1_test-module-check.patch
 )
 
 # Skip problematic tests:
