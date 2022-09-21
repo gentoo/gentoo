@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/xmonad/X11"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="+xinerama"
 
 # add +xinerama to IUSE and RDEPEND on libXScrnSaver and libXinerama below
