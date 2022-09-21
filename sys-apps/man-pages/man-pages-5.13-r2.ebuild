@@ -59,3 +59,15 @@ src_install() {
 	doman */*
 	dodoc README.Gentoo
 }
+
+pkg_postinst() {
+	for ver in ${REPLACING_VERSIONS} ; do
+		if ver_test ${ver} -lt 5.13-r2 ; then
+			# Avoid ACCEPT_LICENSE issues for users by default
+			# bug #871636
+			ewarn "This version of ${PN} no longer depends on sys-apps/man-pages-posix!"
+			ewarn "Please install sys-apps/man-pages-posix yourself if needed."
+			break
+		fi
+	done
+}
