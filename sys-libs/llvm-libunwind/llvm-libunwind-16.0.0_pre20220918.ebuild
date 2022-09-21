@@ -20,13 +20,13 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	!sys-libs/libunwind
 "
-# llvm-6 for new lit options
+LLVM_MAX_SLOT=${PV%%.*}
 DEPEND="
-	>=sys-devel/llvm-6
+	sys-devel/llvm:${LLVM_MAX_SLOT}
 "
 BDEPEND="
 	clang? (
-		sys-devel/clang
+		sys-devel/clang:${LLVM_MAX_SLOT}
 	)
 	!test? (
 		${PYTHON_DEPS}
@@ -45,6 +45,11 @@ python_check_deps() {
 	python_has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
+pkg_setup() {
+	llvm_pkg_setup
+	python-any-r1_pkg_setup
+}
+
 multilib_src_configure() {
 	local use_compiler_rt=OFF
 	local libdir=$(get_libdir)
@@ -53,9 +58,7 @@ multilib_src_configure() {
 	# also separately bug #863917
 	filter-lto
 
-	if use clang && ! tc-is-clang; then
-		# Only do this conditionally to allow overriding with
-		# e.g. CC=clang-13 in case of breakage
+	if use clang; then
 		local -x CC=${CHOST}-clang
 		local -x CXX=${CHOST}-clang++
 		strip-unsupported-flags
