@@ -206,6 +206,8 @@ src_configure() {
 	# Prevents e.g. tests interfering with running Emacs.
 	unset EMACS_SOCKET_NAME
 
+	MAKEOPTS+=" V=1"
+
 	if use alsa; then
 		use sound || ewarn \
 			"USE flag \"alsa\" overrides \"-sound\"; enabling sound support."
