@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="XML::RSS with XML::LibXML"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="minimal"
 
 RDEPEND="
