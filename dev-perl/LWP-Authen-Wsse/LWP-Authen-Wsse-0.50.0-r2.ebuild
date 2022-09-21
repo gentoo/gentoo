@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Library for enabling X-WSSE authentication in LWP"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 
 RDEPEND="
 	virtual/perl-MIME-Base64
