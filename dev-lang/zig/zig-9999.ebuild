@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_MAX_SLOT=14
+LLVM_MAX_SLOT=15
 inherit cmake llvm check-reqs
 
 DESCRIPTION="A robust, optimal, and maintainable programming language"
@@ -42,9 +42,6 @@ llvm_check_deps() {
 
 # see https://github.com/ziglang/zig/wiki/Troubleshooting-Build-Issues#high-memory-requirements
 CHECKREQS_MEMORY="10G"
-
-# see https://github.com/ziglang/zig/issues/11137
-PATCHES=( "${FILESDIR}/${P}-stage2-fix.patch" )
 
 pkg_setup() {
 	llvm_pkg_setup

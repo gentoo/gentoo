@@ -1,0 +1,25 @@
+From f72e33a2877a2e26279b64c61e5d04249529727a Mon Sep 17 00:00:00 2001
+From: Guilherme Amadio <amadio@cern.ch>
+Date: Fri, 16 Sep 2022 15:22:31 +0200
+Subject: [PATCH] Include CTest in main CMakeLists.txt
+
+---
+ CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ddd6a391..cb87ffc1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -126,6 +126,8 @@ endif()
+ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/deps/libneon/src/ ${UUID_INCLUDE_DIRS})
+ include_directories(${CMAKE_SOURCE_DIR}/include/davix)
+ 
++include(CTest)
++
+ add_subdirectory (src)
+ add_subdirectory (doc)
+ 
+-- 
+2.37.3
+

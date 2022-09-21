@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-09-17)
+# po4a crashes while translating
+# mask for now
+=dev-util/schroot-1.6.13_p2 nls
+
 # Sam James <sam@gentoo.org> (2022-09-15)
 # Doesn't work on e.g. glibc systems. Unmasked on the LLVM profiles.
 # It doesn't matter much as llvm-libunwind has different semantics
@@ -13,10 +18,6 @@
 # on glibc, so it doesn't prevent usage of llvm-libunwind for other packages.
 # bug #870211.
 dev-lang/rust llvm-libunwind
-
-# Sam James <sam@gentoo.org> (2022-09-15)
-# Patch not rebased and supporting it is not a priority: bug #824018.
->=media-libs/libpng-1.6.38 apng
 
 # Matt Jolly <Matt.Jolly@footclan.ninja (2022-09-09)
 # app-antivirus/clamav JIT support requires LLVM <=13

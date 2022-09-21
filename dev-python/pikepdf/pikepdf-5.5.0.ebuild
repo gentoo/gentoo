@@ -22,7 +22,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DEPEND="
 	>=app-text/qpdf-10.6.2:0=
@@ -38,6 +38,7 @@ RDEPEND="
 BDEPEND="
 	>=dev-python/pybind11-2.9.1[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-7.0.5[${PYTHON_USEDEP}]
+	dev-python/setuptools_scm_git_archive[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/tomli[${PYTHON_USEDEP}]
 	' 3.8 3.9 3.10)

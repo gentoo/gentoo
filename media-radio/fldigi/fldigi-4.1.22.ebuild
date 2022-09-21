@@ -35,7 +35,8 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
-PATCHES=( "${FILESDIR}/${PN}-4.1.20-musl.patch" )
+PATCHES=( "${FILESDIR}/${PN}-4.1.20-musl.patch"
+		"${FILESDIR}/${PN}-drop-nullptr-definition.patch" )
 
 src_prepare() {
 	eapply ${PATCHES[@]}

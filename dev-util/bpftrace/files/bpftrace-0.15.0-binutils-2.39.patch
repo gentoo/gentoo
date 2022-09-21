@@ -1,0 +1,87 @@
+
+Patch taken from: https://github.com/iovisor/bpftrace/pull/2328
+Removed hunk #1 (CHANGELOG.md) since it conflicts and is not required.
+Bug: https://bugs.gentoo.org/868120
+
+From 3be6e708d514d3378a4fe985ab907643ecbc77ee Mon Sep 17 00:00:00 2001
+From: Viktor Malik <viktor.malik@gmail.com>
+Date: Mon, 15 Aug 2022 15:13:14 +0200
+Subject: [PATCH] Fix builds against libbfd(binutils) >=2.39
+
+Binutils 2.39 changed signature of the init_disassemble_info function by
+adding an extra parameter for styled printf function. Let CMake detect
+which of the versions is present and call it appropriately.
+---
+ CHANGELOG.md           |  2 ++
+ CMakeLists.txt         |  3 +++
+ cmake/FindLibBfd.cmake | 10 ++++++++++
+ src/bfd-disasm.cpp     | 14 ++++++++++++++
+ 4 files changed, 29 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8f7995afd2..2e54eb84f8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -249,6 +249,9 @@ if(HAVE_BFD_DISASM)
+   if(LIBBFD_DISASM_FOUR_ARGS_SIGNATURE)
+     set(BPFTRACE_FLAGS "${BPFTRACE_FLAGS}" LIBBFD_DISASM_FOUR_ARGS_SIGNATURE)
+   endif(LIBBFD_DISASM_FOUR_ARGS_SIGNATURE)
++  if(LIBBFD_INIT_DISASM_INFO_FOUR_ARGS_SIGNATURE)
++    set(BPFTRACE_FLAGS "${BPFTRACE_FLAGS}" LIBBFD_INIT_DISASM_INFO_FOUR_ARGS_SIGNATURE)
++  endif(LIBBFD_INIT_DISASM_INFO_FOUR_ARGS_SIGNATURE)
+ endif(HAVE_BFD_DISASM)
+ 
+ if (LIBBPF_BTF_DUMP_FOUND)
+diff --git a/cmake/FindLibBfd.cmake b/cmake/FindLibBfd.cmake
+index 4f4b8c4e20..5d917b188c 100644
+--- a/cmake/FindLibBfd.cmake
++++ b/cmake/FindLibBfd.cmake
+@@ -75,5 +75,15 @@ int main(void) {
+                abfd);
+   return 0;
+ }" LIBBFD_DISASM_FOUR_ARGS_SIGNATURE)
++CHECK_CXX_SOURCE_COMPILES("
++// See comment in bfd-disasm.cpp for why this needs to exist
++#define PACKAGE \"bpftrace-test\"
++#include <dis-asm.h>
++
++int main(void) {
++  init_disassemble_info(NULL, NULL, NULL, NULL);
++  return 0;
++}
++" LIBBFD_INIT_DISASM_INFO_FOUR_ARGS_SIGNATURE)
+ SET(CMAKE_REQUIRED_LIBRARIES)
+ endif()
+diff --git a/src/bfd-disasm.cpp b/src/bfd-disasm.cpp
+index f846468cd8..d4165dfac5 100644
+--- a/src/bfd-disasm.cpp
++++ b/src/bfd-disasm.cpp
+@@ -38,6 +38,16 @@ static int fprintf_nop(void *out __attribute__((unused)), const char *fmt __attr
+   return 0;
+ }
+ 
++#ifdef LIBBFD_INIT_DISASM_INFO_FOUR_ARGS_SIGNATURE
++static int fprintf_styled_nop(void *out __attribute__((unused)),
++                              enum disassembler_style s __attribute__((unused)),
++                              const char *fmt __attribute__((unused)),
++                              ...)
++{
++  return 0;
++}
++#endif
++
+ static AlignState is_aligned_buf(void *buf, uint64_t size, uint64_t offset)
+ {
+   disassembler_ftype disassemble;
+@@ -55,7 +65,11 @@ static AlignState is_aligned_buf(void *buf, uint64_t size, uint64_t offset)
+     return AlignState::Fail;
+   }
+ 
++#ifdef LIBBFD_INIT_DISASM_INFO_FOUR_ARGS_SIGNATURE
++  init_disassemble_info(&info, stdout, fprintf_nop, fprintf_styled_nop);
++#else
+   init_disassemble_info(&info, stdout, fprintf_nop);
++#endif
+ 
+   info.arch = bfd_get_arch(bfdf);
+   info.mach = bfd_get_mach(bfdf);
