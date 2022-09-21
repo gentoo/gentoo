@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="aspell crypt dbus debug doc enchant +hunspell webengine whiteboarding xscreensaver"
 
 REQUIRED_USE="
