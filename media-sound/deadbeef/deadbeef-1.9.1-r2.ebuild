@@ -66,6 +66,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/deadbeef-use-ffmpeg-plugin-for-ape-by-default.patch"
+	"${FILESDIR}/deadbeef-musl.patch" # 870187
 )
 
 src_prepare() {

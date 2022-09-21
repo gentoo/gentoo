@@ -1,0 +1,27 @@
+https://github.com/DeaDBeeF-Player/deadbeef/commit/6864a5779fd6beb21507357736e0c988748cec5a
+
+Bug: https://bugs.gentoo.org/870187
+
+From 6864a5779fd6beb21507357736e0c988748cec5a Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Wed, 21 Sep 2022 08:36:46 -0700
+Subject: [PATCH] Fix the build with musl
+
+Fixes: https://github.com/DeaDBeeF-Player/deadbeef/issues/2858
+---
+ threading_pthread.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/threading_pthread.c b/threading_pthread.c
+index 004eb6bdc..8d5f4c31c 100644
+--- a/threading_pthread.c
++++ b/threading_pthread.c
+@@ -97,7 +97,7 @@ thread_start_low_priority (void (*fn)(void *ctx), void *ctx) {
+         pthread_cancel (tid);
+         return 0;
+     }
+-    return tid;
++    return (intptr_t)tid;
+ #else
+     return thread_start (fn, ctx);
+ #endif
