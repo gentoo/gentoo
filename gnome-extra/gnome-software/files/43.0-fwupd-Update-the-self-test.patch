@@ -1,0 +1,32 @@
+From 14cf2c278d63863558e56bd68733b235a3490839 Mon Sep 17 00:00:00 2001
+From: Milan Crha <mcrha@redhat.com>
+Date: Fri, 30 Sep 2022 11:23:35 +0200
+Subject: [PATCH] fwupd: Update the self test
+
+Depending on the fwupd version, an update detail differs, but the new
+thing is that the change had been reverted for a newer version.
+
+Closes https://gitlab.gnome.org/GNOME/gnome-software/-/issues/1919
+---
+ plugins/fwupd/gs-self-test.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/plugins/fwupd/gs-self-test.c b/plugins/fwupd/gs-self-test.c
+index fe4bc5a2a..f02a9f0c2 100644
+--- a/plugins/fwupd/gs-self-test.c
++++ b/plugins/fwupd/gs-self-test.c
+@@ -56,8 +56,9 @@ gs_plugins_fwupd_func (GsPluginLoader *plugin_loader)
+ 	g_assert_cmpstr (gs_app_get_description (app), ==,
+ 			 "This is the first paragraph in the example "
+ 			 "cab file.\n\nThis is the second paragraph.");
+-#if FWUPD_CHECK_VERSION(1, 7, 1)
+-	/* Changes introduced in fwupd commit d3706e0e0b0fc210796da839b84ac391f7a251f8 */
++#if FWUPD_CHECK_VERSION(1, 7, 1) && !FWUPD_CHECK_VERSION(1, 8, 0)
++	/* Changes introduced in fwupd commit d3706e0e0b0fc210796da839b84ac391f7a251f8 and
++	   removed for 1.8.0 with https://github.com/fwupd/fwupd/commit/0eeaad76ec79562ea3790bb377d847d5be02182f */
+ 	g_assert_cmpstr (gs_app_get_update_details_markup (app), ==,
+ 			 "Some of the platform secrets may be invalidated when "
+ 			 "updating this firmware. Please ensure you have the "
+-- 
+2.35.1
+

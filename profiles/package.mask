@@ -479,6 +479,7 @@ sys-devel/automake:1.11
 >=gnome-extra/gnome-calculator-43
 >=gnome-extra/gnome-clocks-43
 >=gnome-extra/gnome-shell-extensions-43
+>=gnome-extra/gnome-software-43
 >=gnome-extra/sushi-43
 >=mail-client/balsa-2.6.4
 >=mail-client/evolution-3.46
