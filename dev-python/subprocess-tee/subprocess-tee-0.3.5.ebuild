@@ -24,11 +24,17 @@ BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]
 		test-full? ( app-admin/ansible-molecule )
 	)"
 
+# With the exception of a handful of extra lines this is literally the same test suite
+# as test_console.py from dev-python/enrich, which is currently known to fail (Bug #865497).
+EPYTEST_DESELECT=(
+	src/subprocess_tee/test/test_rich.py
+)
+
 distutils_enable_tests pytest
 
 python_test() {
 	if ! use test-full; then
-		local -x EPYTEST_DESELECT=( "src/${PN/-/_}/test/test_func.py::test_molecule" )
+		EPYTEST_DESELECT+=( "src/${PN/-/_}/test/test_func.py::test_molecule" )
 	fi
 	distutils-r1_python_test
 }
