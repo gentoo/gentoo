@@ -8,7 +8,7 @@ MY_P=${MY_PN}-${PV}
 
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit meson python-single-r1
+inherit meson python-single-r1 xdg
 
 DESCRIPTION="GTK contol center for managing Razer peripherals on Linux"
 HOMEPAGE="https://gitlab.com/gabmus/razerCommander/"
@@ -29,10 +29,6 @@ RDEPEND="
 	')
 "
 BDEPEND="${RDEPEND}"
-
-pkg_setup() {
-	python-single-r1_pkg_setup
-}
 
 src_install() {
 	meson_src_install
