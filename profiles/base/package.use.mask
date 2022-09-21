@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Pascal Jaeger <pascal.jaeger@leimstift.de> (2022-09-21)
+# Versions >=43.0 of evince only work with <gnome-base/nautilus-42.2.
+# Allowing that use flag for >=43.0 would stop users from updating nautilus
+>=app-text/evince-43.0 nautilus
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-09-17)
 # po4a crashes while translating
 # mask for now
