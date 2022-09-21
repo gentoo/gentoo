@@ -11,7 +11,7 @@ SRC_URI="https://github.com/processone/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 
 DEPEND="
 	>=dev-erlang/fast_tls-1.1.15
