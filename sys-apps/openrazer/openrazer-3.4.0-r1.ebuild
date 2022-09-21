@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit desktop systemd udev xdg-utils distutils-r1 python-r1 linux-mod
+inherit desktop readme.gentoo-r1 systemd udev xdg-utils distutils-r1 python-r1 linux-mod
 
 DESCRIPTION="Drivers and user-space daemon to control Razer devices on GNU/Linux"
 HOMEPAGE="https://openrazer.github.io/
@@ -46,7 +46,10 @@ BDEPEND="
 
 DOCS=( README.md )
 
-# This is a bit weird, but it's end result is what we want.
+DOC_CONTENTS="To successfully use OpenRazer: load desired kernel module
+(razeraccessory, razerkbd, razerkraken and/or razermouse),
+add Your user to the \"plugdev\" group and start the \"openrazer-daemon\"."
+
 BUILD_TARGETS="clean driver"
 BUILD_PARAMS="-C ${S} SUBDIRS=${S}/driver KERNELDIR=${KERNEL_DIR}"
 MODULE_NAMES="
@@ -93,6 +96,8 @@ src_compile() {
 	if use daemon ; then
 		emake -C "${S}"/daemon PREFIX=/usr service
 	fi
+
+	readme.gentoo_create_doc
 }
 
 src_test() {
@@ -132,6 +137,8 @@ pkg_postinst() {
 		xdg_icon_cache_update
 		xdg_desktop_database_update
 	fi
+
+	readme.gentoo_print_elog
 }
 
 pkg_postrm() {
