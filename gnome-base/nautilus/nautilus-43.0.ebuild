@@ -33,7 +33,7 @@ DEPEND="
 	>=x11-libs/gdk-pixbuf-2.30.0:2
 	>=gui-libs/libadwaita-1.2:1
 	>=dev-libs/libportal-0.5
-	>=dev-libs/libcloudproviders-0.3.1
+	>=net-libs/libcloudproviders-0.3.1
 "
 RDEPEND="${DEPEND}
 	>=app-misc/tracker-miners-3.0:3=
