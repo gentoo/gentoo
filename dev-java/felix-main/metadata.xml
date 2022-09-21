@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://issues.apache.org/jira/browse/FELIX</bugs-to>
+		<doc>https://felix.apache.org/documentation/</doc>
+		<remote-id type="github">apache/felix-dev</remote-id>
+	</upstream>
+	<longdescription>
+		Apache Felix is a community effort to implement the OSGi Framework and Service platform and other interesting OSGi-related technologies.
+	</longdescription>
+</pkgmetadata>
