@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit desktop readme.gentoo-r1 systemd udev xdg-utils distutils-r1 python-r1 linux-mod
+inherit readme.gentoo-r1 systemd udev xdg-utils distutils-r1 python-r1 linux-mod
 
 DESCRIPTION="Drivers and user-space daemon to control Razer devices on GNU/Linux"
 HOMEPAGE="https://openrazer.github.io/
@@ -117,15 +117,14 @@ src_install() {
 	newins "${S}"/daemon/resources/razer.conf razer.conf.example
 
 	if use daemon ; then
-		# systemd units
-		systemd_dounit "${S}"/daemon/org.razer.service
-		systemd_dounit "${S}"/daemon/${PN}-daemon.service
+		# dbus service
+		insinto /usr/share/dbus-1/services
+		doins "${S}"/daemon/org.razer.service
+		# systemd unit
+		systemd_douserunit "${S}"/daemon/${PN}-daemon.service
 		# Manpages
 		doman "${S}"/daemon/resources/man/${PN}-daemon.8
 		doman "${S}"/daemon/resources/man/razer.conf.5
-		# Autostart menu
-		newicon logo/${PN}-chroma.svg ${PN}-daemon.svg
-		domenu "${S}"/install_files/desktop/${PN}-daemon.desktop
 	fi
 }
 
