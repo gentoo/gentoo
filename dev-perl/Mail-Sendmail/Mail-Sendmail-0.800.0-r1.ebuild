@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Simple platform independent mailer"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 
 RDEPEND="
 	virtual/perl-Digest-MD5
