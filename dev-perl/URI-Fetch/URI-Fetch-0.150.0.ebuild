@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Smart URI fetching/caching"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	virtual/perl-Carp
