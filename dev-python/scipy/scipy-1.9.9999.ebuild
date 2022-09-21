@@ -84,7 +84,7 @@ distutils_enable_tests pytest
 src_unpack() {
 	default
 
-	if use doc; then
+	if [[ ${PV} != *9999 ]] && use doc; then
 		unzip -qo "${DISTDIR}"/${PN}-html-${DOC_PV}.zip -d html || die
 	fi
 }
@@ -96,9 +96,10 @@ python_test() {
 }
 
 python_install_all() {
-	use doc && \
-		local DOCS=( "${DISTDIR}"/${PN}-ref-${DOC_PV}.pdf ) \
+	if [[ ${PV} != *9999 ]] && use doc; then
+		local DOCS=( "${DISTDIR}"/${PN}-ref-${DOC_PV}.pdf )
 		local HTML_DOCS=( "${WORKDIR}"/html/. )
+	fi
 
 	distutils-r1_python_install_all
 }
