@@ -21,14 +21,14 @@ RESTRICT="!test? ( test )"
 RDEPEND+="
 	!<sys-libs/libcxx-15
 "
-# llvm-6 for new lit options
+LLVM_MAX_SLOT=${PV%%.*}
 DEPEND="
 	${RDEPEND}
-	>=sys-devel/llvm-6
+	sys-devel/llvm:${LLVM_MAX_SLOT}
 "
 BDEPEND="
 	clang? (
-		sys-devel/clang
+		sys-devel/clang:${LLVM_MAX_SLOT}
 	)
 	!test? (
 		${PYTHON_DEPS}
@@ -57,9 +57,7 @@ pkg_setup() {
 }
 
 multilib_src_configure() {
-	if use clang && ! tc-is-clang; then
-		# Only do this conditionally to allow overriding with
-		# e.g. CC=clang-13 in case of breakage
+	if use clang; then
 		local -x CC=${CHOST}-clang
 		local -x CXX=${CHOST}-clang++
 		strip-unsupported-flags
@@ -102,9 +100,6 @@ multilib_src_configure() {
 		-DLIBCXX_INCLUDE_TESTS=OFF
 	)
 	if use test; then
-		local clang_path=$(type -P "${CHOST:+${CHOST}-}clang" 2>/dev/null)
-		[[ -n ${clang_path} ]] || die "Unable to find ${CHOST}-clang for tests"
-
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 			-DLLVM_LIT_ARGS="$(get_lit_flags)"
