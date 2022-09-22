@@ -45,6 +45,9 @@ BDEPEND="
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	virtual/pkgconfig
+	doc? (
+		app-text/asciidoc
+	)
 "
 
 src_configure() {
