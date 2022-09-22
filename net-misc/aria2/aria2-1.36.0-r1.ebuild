@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,11 +12,16 @@ SRC_URI="https://github.com/aria2/${PN}/releases/download/release-${PV}/${P}.tar
 LICENSE="GPL-2+-with-openssl-exception"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 SLOT="0"
-IUSE="adns bittorrent +gnutls jemalloc libuv +libxml2 metalink +nettle nls sqlite scripts ssh ssl tcmalloc test xmlrpc"
+IUSE="
+	adns bittorrent +gnutls jemalloc libuv +libxml2 metalink +nettle
+	nls sqlite scripts ssh ssl tcmalloc test xmlrpc
+"
 # xmlrpc has no explicit switch, it's turned out by any XML library
 # so metalink implicitly forces it on
-REQUIRED_USE="?? ( jemalloc tcmalloc )
-	metalink? ( xmlrpc )"
+REQUIRED_USE="
+	?? ( jemalloc tcmalloc )
+	metalink? ( xmlrpc )
+"
 RESTRICT="!test? ( test )"
 
 # Crazy GnuTLS/OpenSSL/etc. logic below:
@@ -34,13 +39,15 @@ RESTRICT="!test? ( test )"
 # We map this into:
 # ssl? -> openssl || (gnutls + (nettle || libgcrypt ))
 # !ssl? -> nettle || libgcrypt
-RDEPEND="sys-libs/zlib:0=
+RDEPEND="
+	sys-libs/zlib:0=
 	adns? ( >=net-dns/c-ares-1.5.0:0= )
 	jemalloc? ( dev-libs/jemalloc )
 	libuv? ( >=dev-libs/libuv-1.13:0= )
 	metalink? (
 		libxml2? ( >=dev-libs/libxml2-2.6.26:2= )
-		!libxml2? ( dev-libs/expat:0= ) )
+		!libxml2? ( dev-libs/expat:0= )
+	)
 	sqlite? ( dev-db/sqlite:3= )
 	ssh? ( net-libs/libssh2:= )
 	ssl? (
@@ -73,16 +80,22 @@ RDEPEND="sys-libs/zlib:0=
 	tcmalloc? ( dev-util/google-perftools )
 	xmlrpc? (
 		libxml2? ( >=dev-libs/libxml2-2.6.26:2= )
-		!libxml2? ( dev-libs/expat:0= ) )"
+		!libxml2? ( dev-libs/expat:0= )
+	)
+"
 
-DEPEND="${RDEPEND}
-	test? ( >=dev-util/cppunit-1.12.0:0 )"
+DEPEND="
+	${RDEPEND}
+	test? ( >=dev-util/cppunit-1.12.0:0 )
+"
 RDEPEND+="
 	nls? ( virtual/libiconv virtual/libintl )
-	scripts? ( dev-lang/ruby )"
+	scripts? ( dev-lang/ruby )
+"
 BDEPEND="app-arch/xz-utils
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+"
 
 pkg_setup() {
 	if use scripts && ! use xmlrpc; then
@@ -123,6 +136,9 @@ src_configure() {
 		$(use_with sqlite sqlite3)
 		$(use_with ssh libssh2)
 		$(use_with tcmalloc)
+
+		# forces bundled wslay
+		--disable-websocket
 	)
 
 	# See TLS/MD logic described above deps.
