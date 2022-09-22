@@ -1,0 +1,10 @@
+https://github.com/PCSX2/pcsx2/commit/6386be09c2e disabled PACKAGE_MODE
+for reasons that make no sense as far as installing from an ebuild goes.
+
+Skip the error and handle the rest from the ebuild.
+--- a/pcsx2-qt/CMakeLists.txt
++++ b/pcsx2-qt/CMakeLists.txt
+@@ -7,3 +7,2 @@
+ if (PACKAGE_MODE)
+-	message(FATAL_ERROR "Package mode is not supported for Qt builds.")
+ else()
