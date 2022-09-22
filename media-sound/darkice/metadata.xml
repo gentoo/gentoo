@@ -6,7 +6,6 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<use>
-		<flag name="aacplus">AAC+ encoding via <pkg>media-libs/libaacplus</pkg></flag>
 		<flag name="twolame">Build with twolame support</flag>
 	</use>
 	<upstream>
