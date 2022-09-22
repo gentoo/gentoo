@@ -34,7 +34,7 @@ BDEPEND="
 "
 
 python_check_deps() {
-	has_version -b "dev-python/cython[${PYTHON_USEDEP}]" || return 1
+	python_has_version "dev-python/cython[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
