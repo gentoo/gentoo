@@ -52,8 +52,8 @@ EPYTEST_IGNORE=(
 	tests/integration/validation/test_read_only_write_only.py
 
 	# unhappy about modern django
-	tests/integration/contrib/test_django.py
-	tests/integration/contrib/django
+	tests/integration/contrib/django/test_django_project.py
+	tests/unit/contrib/django/test_django.py
 )
 
 src_prepare() {
