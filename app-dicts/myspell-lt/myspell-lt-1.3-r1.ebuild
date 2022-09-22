@@ -16,7 +16,7 @@ inherit myspell-r2
 
 DESCRIPTION="Lithuanian dictionaries for myspell/hunspell"
 HOMEPAGE="https://extensions.libreoffice.org/en/extensions/show/lithuanian-spellcheck-and-hyphenation-dictionaries"
-SRC_URI="https://extensions.libreoffice.org/assets/downloads/z/openoffice-spellcheck-lt-1-3.oxt"
+SRC_URI="https://extensions.libreoffice.org/assets/downloads/z/openoffice-spellcheck-lt-$(ver_rs 1 '-').oxt"
 
 LICENSE="BSD"
 SLOT="0"
