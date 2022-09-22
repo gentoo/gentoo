@@ -1,0 +1,26 @@
+https://gitlab.gnome.org/GNOME/glib/-/commit/37dba1c425f6c3254e9ce72f1c4b7d0f95c2be3e
+https://bugs.gentoo.org/871174
+
+From: Kjell Ahlstedt <kjellahlstedt@gmail.com>
+Date: Thu, 15 Sep 2022 12:55:18 +0200
+Subject: [PATCH] gio-launch-desktop: Fix the G_STATIC_ASSERT expressions for
+ clang
+
+The clang compiler requires the static_assert expression to be an integral
+constant expression. `"text"` is not, but `sizeof "text"` is.
+
+Fixes #2740
+--- a/gio/gio-launch-desktop.c
++++ b/gio/gio-launch-desktop.c
+@@ -121,8 +121,8 @@ journal_stream_fd (const char *identifier,
+   /* Arbitrary large size for the sending buffer, from systemd */
+   int large_buffer_size = 8 * 1024 * 1024;
+ 
+-  G_STATIC_ASSERT (LOG_EMERG == 0 && "Linux ABI defines LOG_EMERG");
+-  G_STATIC_ASSERT (LOG_DEBUG == 7 && "Linux ABI defines LOG_DEBUG");
++  G_STATIC_ASSERT (LOG_EMERG == 0 && sizeof "Linux ABI defines LOG_EMERG");
++  G_STATIC_ASSERT (LOG_DEBUG == 7 && sizeof "Linux ABI defines LOG_DEBUG");
+ 
+   fd = socket (AF_UNIX, SOCK_STREAM | SOCK_CLOEXEC, 0);
+ 
+GitLab
