@@ -9,7 +9,7 @@ MY_P="${PN}$(ver_rs 1- '')"
 
 DESCRIPTION="InterProlog is a Java front-end and enhancement for Prolog"
 HOMEPAGE="http://www.declarativa.com/interprolog/"
-SRC_URI="http://www.declarativa.com/interprolog/interprolog212.zip"
+SRC_URI="http://www.declarativa.com/interprolog/${MY_P}.zip"
 
 LICENSE="LGPL-2"
 SLOT="0"
