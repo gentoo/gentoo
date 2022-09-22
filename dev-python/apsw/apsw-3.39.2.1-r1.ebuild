@@ -30,10 +30,11 @@ RDEPEND="
 	${DEPEND}
 "
 
-python_compile() {
-	# Needed for e.g. bug #851741
-	# Enable column-metadata to match dev-db/sqlite
-	distutils-r1_python_compile --enable=load_extension,column_metadata
+src_configure() {
+	cat >> setup.cfg <<-EOF || die
+		[build_ext]
+		enable=load_extension,column_metadata
+	EOF
 }
 
 python_test() {
