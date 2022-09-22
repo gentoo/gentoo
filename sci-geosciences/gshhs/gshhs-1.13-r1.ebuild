@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Global Self-consistent, Hierarchical, High-resolution Shoreline programs"
 HOMEPAGE="https://www.ngdc.noaa.gov/mgg/shorelines/gshhs.html"
-SRC_URI="ftp://ftp.soest.hawaii.edu/pwessel/gshhs/gshhs_1.13_src.zip"
+SRC_URI="ftp://ftp.soest.hawaii.edu/pwessel/gshhs/gshhs_${PV}_src.zip"
 S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
