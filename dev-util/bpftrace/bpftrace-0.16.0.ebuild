@@ -5,7 +5,7 @@ EAPI=8
 
 LLVM_MAX_SLOT=16
 
-inherit llvm linux-info cmake toolchain-funcs
+inherit llvm linux-info cmake
 
 DESCRIPTION="High-level tracing language for eBPF"
 HOMEPAGE="https://github.com/iovisor/bpftrace"
