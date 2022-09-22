@@ -14,7 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Reads XML configuration files to provide initialization of various Java objects"
 HOMEPAGE="https://commons.apache.org/digester/"
-SRC_URI="mirror://apache/commons/digester/source/commons-digester-2.1-src.tar.gz"
+SRC_URI="mirror://apache/commons/digester/source/${P}-src.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="2.1"
