@@ -10,7 +10,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Xerces Java XML parser"
 HOMEPAGE="https://xerces.apache.org/xerces2-j/index.html"
-SRC_URI="mirror://apache/xerces/j/source/Xerces-J-src.2.12.2.tar.gz"
+SRC_URI="mirror://apache/xerces/j/source/Xerces-J-src.${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="2"
