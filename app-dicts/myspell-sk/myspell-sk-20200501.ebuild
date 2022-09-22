@@ -21,7 +21,7 @@ inherit myspell-r2
 
 DESCRIPTION="Slovak dictionaries for myspell/hunspell"
 HOMEPAGE="https://extensions.libreoffice.org/en/extensions/show/874"
-SRC_URI="https://extensions.libreoffice.org/assets/downloads/84/slovak-dictionaries-2020-05.oxt"
+SRC_URI="https://extensions.libreoffice.org/assets/downloads/84/slovak-dictionaries-${PV:0:4}-${PV:4:2}.oxt"
 
 LICENSE="GPL-2"
 SLOT="0"
