@@ -246,6 +246,8 @@ ppc64		default/linux/ppc64le/17.0/desktop/gnome/systemd/merged-usr	dev
 ppc64		default/linux/ppc64le/17.0/desktop/plasma			stable
 ppc64		default/linux/ppc64le/17.0/desktop/plasma/systemd		stable
 ppc64		default/linux/ppc64le/17.0/desktop/plasma/systemd/merged-usr	dev
+ppc64		default/linux/ppc64le/17.0/desktop/systemd			stable
+ppc64		default/linux/ppc64le/17.0/desktop/systemd/merged-usr		dev
 ppc64		default/linux/ppc64le/17.0/systemd				stable
 ppc64		default/linux/ppc64le/17.0/systemd/merged-usr			dev
 ppc64		default/linux/ppc64le/17.0/developer				exp
