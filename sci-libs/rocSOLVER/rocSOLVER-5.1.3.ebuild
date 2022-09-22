@@ -29,7 +29,7 @@ BDEPEND="test? ( dev-cpp/gtest
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.2.0-add-stdint-header.patch"
-	"${FILESDIR}/${P}-libfmt8.patch"
+	"${FILESDIR}/${PN}-5.0.2-libfmt8.patch"
 )
 
 RESTRICT="!test? ( test )"
