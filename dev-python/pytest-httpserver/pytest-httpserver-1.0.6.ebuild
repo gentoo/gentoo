@@ -34,5 +34,10 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
+	local EPYTEST_IGNORE=(
+		# tests from building release artifacts
+		tests/test_release.py
+	)
+
 	epytest -p no:localserver
 }
