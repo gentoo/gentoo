@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A base caller for Sanger DNA sequencing"
 HOMEPAGE="http://phrap.org/phredphrapconsed.html"
-SRC_URI="phred-dist-071220.b-acd.tar.gz"
+SRC_URI="${PN}-dist-${PV}.b-acd.tar.gz"
 S="${WORKDIR}"
 
 LICENSE="phrap"
