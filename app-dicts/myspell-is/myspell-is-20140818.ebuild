@@ -17,7 +17,7 @@ inherit myspell-r2
 
 DESCRIPTION="Icelandic dictionaries for myspell/hunspell"
 HOMEPAGE="https://extensions.libreoffice.org/extension-center/hunspell-is-the-icelandic-spelling-dictionary-project"
-SRC_URI="https://extensions.libreoffice.org/assets/downloads/z/hunspell-is-2014-08-18.oxt"
+SRC_URI="https://extensions.libreoffice.org/assets/downloads/z/hunspell-is-${PV:0:4}-${PV:4:2}-${PV:6:2}.oxt"
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"
