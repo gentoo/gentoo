@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib multilib-minimal toolchain-funcs
+inherit multilib-minimal toolchain-funcs
 
 STRANGLE_COMMIT="0273e318e3b0cc759155db8729ad74266b74cb9b"
 
@@ -15,6 +15,7 @@ S="${WORKDIR}/${PN}-${STRANGLE_COMMIT}"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="+abi_x86_32"
 
 RDEPEND="
 	sys-apps/grep[pcre]
@@ -57,9 +58,4 @@ multilib_src_install() {
 multilib_src_install_all() {
 	emake DESTDIR="${D}" prefix="${EPREFIX}"/usr install-common
 	einstalldocs
-}
-
-pkg_postinst() {
-	has_multilib_profile && use amd64 && use !abi_x86_32 &&
-		ewarn "Note that USE=abi_x86_32 is needed for 32bit games (common with steam / wine)"
 }
