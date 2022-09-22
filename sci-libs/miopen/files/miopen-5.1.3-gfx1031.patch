@@ -14,7 +14,6 @@ Enable gfx1031 support
          {
              assert(num_cu == 110);
 Only in MIOpen-rocm-5.1.3: patches
-diff --color -upr MIOpen-rocm-5.1.3/src/composable_kernel/composable_kernel/include/utility/config.hpp gfx1031/src/composable_kernel/composable_kernel/include/utility/config.hpp
 --- MIOpen-rocm-5.1.3/src/composable_kernel/composable_kernel/include/utility/config.hpp	2022-05-08 14:08:05.000000000 +0800
 +++ gfx1031/src/composable_kernel/composable_kernel/include/utility/config.hpp	2022-09-01 18:36:18.634980274 +0800
 @@ -13,7 +13,7 @@
@@ -44,7 +43,6 @@ diff --color -upr MIOpen-rocm-5.1.3/src/composable_kernel/composable_kernel/incl
  #define CK_USE_AMD_V_FMAC_F32
  #define CK_USE_AMD_V_DOT2_F32_F16
  #define CK_USE_AMD_V_DOT4_I32_I8
-diff --color -upr MIOpen-rocm-5.1.3/src/include/miopen/solver/ck_utility_common.hpp gfx1031/src/include/miopen/solver/ck_utility_common.hpp
 --- MIOpen-rocm-5.1.3/src/include/miopen/solver/ck_utility_common.hpp	2022-05-08 14:08:05.000000000 +0800
 +++ gfx1031/src/include/miopen/solver/ck_utility_common.hpp	2022-09-01 18:36:18.638980266 +0800
 @@ -54,6 +54,7 @@ static inline bool is_ck_supported_hardw
@@ -64,7 +62,6 @@ diff --color -upr MIOpen-rocm-5.1.3/src/include/miopen/solver/ck_utility_common.
  
      // buffer atomic-fadd
      compiler_flag << " -DCK_USE_AMD_BUFFER_ATOMIC_FADD="
-diff --color -upr MIOpen-rocm-5.1.3/src/include/miopen/solver/implicitgemm_util.hpp gfx1031/src/include/miopen/solver/implicitgemm_util.hpp
 --- MIOpen-rocm-5.1.3/src/include/miopen/solver/implicitgemm_util.hpp	2022-05-08 14:08:05.000000000 +0800
 +++ gfx1031/src/include/miopen/solver/implicitgemm_util.hpp	2022-09-01 18:36:18.638980266 +0800
 @@ -469,7 +469,7 @@ static inline bool is_use_amd_buffer_loa
@@ -95,7 +92,6 @@ diff --color -upr MIOpen-rocm-5.1.3/src/include/miopen/solver/implicitgemm_util.
  }
  
  // greatest common divisor, aka highest common factor
-diff --color -upr MIOpen-rocm-5.1.3/src/kernels/batchnorm_functions.h gfx1031/src/kernels/batchnorm_functions.h
 --- MIOpen-rocm-5.1.3/src/kernels/batchnorm_functions.h	2022-05-08 14:08:05.000000000 +0800
 +++ gfx1031/src/kernels/batchnorm_functions.h	2022-09-01 18:36:18.858979772 +0800
 @@ -159,6 +159,10 @@
@@ -109,7 +105,6 @@ diff --color -upr MIOpen-rocm-5.1.3/src/kernels/batchnorm_functions.h gfx1031/sr
  #define UNUSED __attribute__((__unused__))
  
  #if(MIO_BN_VARIANT != 4)
-diff --color -upr MIOpen-rocm-5.1.3/src/kernels/MIOpenBatchNormActivBwdPerAct.cl gfx1031/src/kernels/MIOpenBatchNormActivBwdPerAct.cl
 --- MIOpen-rocm-5.1.3/src/kernels/MIOpenBatchNormActivBwdPerAct.cl	2022-05-08 14:08:05.000000000 +0800
 +++ gfx1031/src/kernels/MIOpenBatchNormActivBwdPerAct.cl	2022-09-01 18:36:18.858979772 +0800
 @@ -34,7 +34,7 @@
@@ -121,7 +116,6 @@ diff --color -upr MIOpen-rocm-5.1.3/src/kernels/MIOpenBatchNormActivBwdPerAct.cl
  #undef MIOPEN_USE_AMDGCN
  #define MIOPEN_USE_AMDGCN 1
  #endif
-diff --color -upr MIOpen-rocm-5.1.3/src/kernels/MIOpenBatchNormActivBwdSpatial.cl gfx1031/src/kernels/MIOpenBatchNormActivBwdSpatial.cl
 --- MIOpen-rocm-5.1.3/src/kernels/MIOpenBatchNormActivBwdSpatial.cl	2022-05-08 14:08:05.000000000 +0800
 +++ gfx1031/src/kernels/MIOpenBatchNormActivBwdSpatial.cl	2022-09-01 18:36:18.858979772 +0800
 @@ -32,7 +32,7 @@
@@ -133,7 +127,6 @@ diff --color -upr MIOpen-rocm-5.1.3/src/kernels/MIOpenBatchNormActivBwdSpatial.c
  #undef MIOPEN_USE_AMDGCN
  #define MIOPEN_USE_AMDGCN 1
  #endif
-diff --color -upr MIOpen-rocm-5.1.3/src/kernels/MIOpenBatchNormActivFwdTrainSpatial.cl gfx1031/src/kernels/MIOpenBatchNormActivFwdTrainSpatial.cl
 --- MIOpen-rocm-5.1.3/src/kernels/MIOpenBatchNormActivFwdTrainSpatial.cl	2022-05-08 14:08:05.000000000 +0800
 +++ gfx1031/src/kernels/MIOpenBatchNormActivFwdTrainSpatial.cl	2022-09-01 18:36:18.858979772 +0800
 @@ -33,7 +33,7 @@
@@ -145,7 +138,6 @@ diff --color -upr MIOpen-rocm-5.1.3/src/kernels/MIOpenBatchNormActivFwdTrainSpat
  #undef MIOPEN_USE_AMDGCN
  #define MIOPEN_USE_AMDGCN 1
  #endif
-diff --color -upr MIOpen-rocm-5.1.3/src/kernels/MIOpenBatchNormBwdSpatial.cl gfx1031/src/kernels/MIOpenBatchNormBwdSpatial.cl
 --- MIOpen-rocm-5.1.3/src/kernels/MIOpenBatchNormBwdSpatial.cl	2022-05-08 14:08:05.000000000 +0800
 +++ gfx1031/src/kernels/MIOpenBatchNormBwdSpatial.cl	2022-09-01 18:36:18.858979772 +0800
 @@ -33,7 +33,7 @@
@@ -157,7 +149,6 @@ diff --color -upr MIOpen-rocm-5.1.3/src/kernels/MIOpenBatchNormBwdSpatial.cl gfx
  #undef MIOPEN_USE_AMDGCN
  #define MIOPEN_USE_AMDGCN 1
  #endif
-diff --color -upr MIOpen-rocm-5.1.3/src/kernels/MIOpenBatchNormFwdTrainSpatial.cl gfx1031/src/kernels/MIOpenBatchNormFwdTrainSpatial.cl
 --- MIOpen-rocm-5.1.3/src/kernels/MIOpenBatchNormFwdTrainSpatial.cl	2022-05-08 14:08:05.000000000 +0800
 +++ gfx1031/src/kernels/MIOpenBatchNormFwdTrainSpatial.cl	2022-09-01 18:36:18.858979772 +0800
 @@ -33,7 +33,7 @@
@@ -169,7 +160,6 @@ diff --color -upr MIOpen-rocm-5.1.3/src/kernels/MIOpenBatchNormFwdTrainSpatial.c
  #undef MIOPEN_USE_AMDGCN
  #define MIOPEN_USE_AMDGCN 1
  #endif
-diff --color -upr MIOpen-rocm-5.1.3/src/md_graph.cpp gfx1031/src/md_graph.cpp
 --- MIOpen-rocm-5.1.3/src/md_graph.cpp	2022-05-08 14:08:05.000000000 +0800
 +++ gfx1031/src/md_graph.cpp	2022-09-01 18:36:18.630980283 +0800
 @@ -738,8 +738,8 @@ void FusionMDGraph::InitConv(FusionMDGra
@@ -183,7 +173,6 @@ diff --color -upr MIOpen-rocm-5.1.3/src/md_graph.cpp gfx1031/src/md_graph.cpp
          }
      }
  
-diff --color -upr MIOpen-rocm-5.1.3/src/ocl/fusionopbiasbnactivocl.cpp gfx1031/src/ocl/fusionopbiasbnactivocl.cpp
 --- MIOpen-rocm-5.1.3/src/ocl/fusionopbiasbnactivocl.cpp	2022-05-08 14:08:05.000000000 +0800
 +++ gfx1031/src/ocl/fusionopbiasbnactivocl.cpp	2022-09-01 18:36:18.634980274 +0800
 @@ -392,7 +392,8 @@ miopenStatus_t BatchNormBwdTrainFusionOp
@@ -206,7 +195,6 @@ diff --color -upr MIOpen-rocm-5.1.3/src/ocl/fusionopbiasbnactivocl.cpp gfx1031/s
  
      compile_config += add;
      MIOPEN_LOG_I2(add);
-diff --color -upr MIOpen-rocm-5.1.3/src/solver/batchnorm/backward_per_activation.cpp gfx1031/src/solver/batchnorm/backward_per_activation.cpp
 --- MIOpen-rocm-5.1.3/src/solver/batchnorm/backward_per_activation.cpp	2022-05-08 14:08:05.000000000 +0800
 +++ gfx1031/src/solver/batchnorm/backward_per_activation.cpp	2022-09-01 18:36:18.638980266 +0800
 @@ -113,6 +113,7 @@ BnBwdTrainingPerActivation::GetSolution(
@@ -217,7 +205,6 @@ diff --color -upr MIOpen-rocm-5.1.3/src/solver/batchnorm/backward_per_activation
          };
  
          kernel.comp_options = build_params.GenerateFor(kbp::OpenCL{});
-diff --color -upr MIOpen-rocm-5.1.3/src/solver/batchnorm/backward_spatial_multiple.cpp gfx1031/src/solver/batchnorm/backward_spatial_multiple.cpp
 --- MIOpen-rocm-5.1.3/src/solver/batchnorm/backward_spatial_multiple.cpp	2022-05-08 14:08:05.000000000 +0800
 +++ gfx1031/src/solver/batchnorm/backward_spatial_multiple.cpp	2022-09-01 18:36:18.638980266 +0800
 @@ -210,6 +210,7 @@ ConvSolution BnBwdTrainingSpatialMultipl
@@ -228,7 +215,6 @@ diff --color -upr MIOpen-rocm-5.1.3/src/solver/batchnorm/backward_spatial_multip
              {"MIO_LAYOUT_NHWC", static_cast<int>(problem.IsLayoutNHWC())},
          };
  
-diff --color -upr MIOpen-rocm-5.1.3/src/solver/batchnorm/backward_spatial_single.cpp gfx1031/src/solver/batchnorm/backward_spatial_single.cpp
 --- MIOpen-rocm-5.1.3/src/solver/batchnorm/backward_spatial_single.cpp	2022-05-08 14:08:05.000000000 +0800
 +++ gfx1031/src/solver/batchnorm/backward_spatial_single.cpp	2022-09-01 18:36:18.638980266 +0800
 @@ -247,6 +247,7 @@ BnBwdTrainingSpatialSingle::GetSolution(
@@ -239,7 +225,6 @@ diff --color -upr MIOpen-rocm-5.1.3/src/solver/batchnorm/backward_spatial_single
              };
  
              kernel.comp_options = build_params.GenerateFor(kbp::OpenCL{});
-diff --color -upr MIOpen-rocm-5.1.3/src/solver/batchnorm/forward_inference.cpp gfx1031/src/solver/batchnorm/forward_inference.cpp
 --- MIOpen-rocm-5.1.3/src/solver/batchnorm/forward_inference.cpp	2022-05-08 14:08:05.000000000 +0800
 +++ gfx1031/src/solver/batchnorm/forward_inference.cpp	2022-09-01 18:36:18.638980266 +0800
 @@ -103,6 +103,7 @@ ConvSolution BnFwdInference::GetSolution
@@ -250,7 +235,6 @@ diff --color -upr MIOpen-rocm-5.1.3/src/solver/batchnorm/forward_inference.cpp g
          };
  
          kernel.comp_options = build_params.GenerateFor(kbp::OpenCL{});
-diff --color -upr MIOpen-rocm-5.1.3/src/solver/batchnorm/forward_per_activation.cpp gfx1031/src/solver/batchnorm/forward_per_activation.cpp
 --- MIOpen-rocm-5.1.3/src/solver/batchnorm/forward_per_activation.cpp	2022-05-08 14:08:05.000000000 +0800
 +++ gfx1031/src/solver/batchnorm/forward_per_activation.cpp	2022-09-01 18:36:18.638980266 +0800
 @@ -105,6 +105,7 @@ BnFwdTrainingPerActivation::GetSolution(
@@ -261,7 +245,6 @@ diff --color -upr MIOpen-rocm-5.1.3/src/solver/batchnorm/forward_per_activation.
          };
  
          auto kernel = KernelInfo{};
-diff --color -upr MIOpen-rocm-5.1.3/src/solver/batchnorm/forward_spatial_multiple.cpp gfx1031/src/solver/batchnorm/forward_spatial_multiple.cpp
 --- MIOpen-rocm-5.1.3/src/solver/batchnorm/forward_spatial_multiple.cpp	2022-05-08 14:08:05.000000000 +0800
 +++ gfx1031/src/solver/batchnorm/forward_spatial_multiple.cpp	2022-09-01 18:36:18.638980266 +0800
 @@ -177,6 +177,7 @@ ConvSolution BnFwdTrainingSpatialMultipl
@@ -272,7 +255,6 @@ diff --color -upr MIOpen-rocm-5.1.3/src/solver/batchnorm/forward_spatial_multipl
              {"MIO_LAYOUT_NHWC", static_cast<int>(problem.IsLayoutNHWC())},
          };
  
-diff --color -upr MIOpen-rocm-5.1.3/src/solver/batchnorm/forward_spatial_single.cpp gfx1031/src/solver/batchnorm/forward_spatial_single.cpp
 --- MIOpen-rocm-5.1.3/src/solver/batchnorm/forward_spatial_single.cpp	2022-05-08 14:08:05.000000000 +0800
 +++ gfx1031/src/solver/batchnorm/forward_spatial_single.cpp	2022-09-01 18:36:18.638980266 +0800
 @@ -211,6 +211,7 @@ BnFwdTrainingSpatialSingle::GetSolution(
@@ -283,7 +265,6 @@ diff --color -upr MIOpen-rocm-5.1.3/src/solver/batchnorm/forward_spatial_single.
              {"MIO_LAYOUT_NHWC", static_cast<int>(problem.IsLayoutNHWC())},
          };
  
-diff --color -upr MIOpen-rocm-5.1.3/src/target_properties.cpp gfx1031/src/target_properties.cpp
 --- MIOpen-rocm-5.1.3/src/target_properties.cpp	2022-05-08 14:08:05.000000000 +0800
 +++ gfx1031/src/target_properties.cpp	2022-09-01 18:36:18.630980283 +0800
 @@ -54,6 +54,7 @@ static std::string GetDeviceNameFromMap(
@@ -294,7 +275,6 @@ diff --color -upr MIOpen-rocm-5.1.3/src/target_properties.cpp gfx1031/src/target
      };
  
      const char* const p_asciz = miopen::GetStringEnv(MIOPEN_DEBUG_ENFORCE_DEVICE{});
-diff --color -upr MIOpen-rocm-5.1.3/test/CMakeLists.txt gfx1031/test/CMakeLists.txt
 --- MIOpen-rocm-5.1.3/test/CMakeLists.txt	2022-05-08 14:08:05.000000000 +0800
 +++ gfx1031/test/CMakeLists.txt	2022-09-01 18:36:19.022979405 +0800
 @@ -38,6 +38,7 @@ option( MIOPEN_TEST_GFX90A "Test on gfx9
@@ -371,7 +351,6 @@ diff --color -upr MIOpen-rocm-5.1.3/test/CMakeLists.txt gfx1031/test/CMakeLists.
       AND is_full_check
       AND is_xnack_on_check
       AND (is_miotensile_check AND is_mlir_check)
-diff --color -upr MIOpen-rocm-5.1.3/test/handle_test.cpp gfx1031/test/handle_test.cpp
 --- MIOpen-rocm-5.1.3/test/handle_test.cpp	2022-05-08 14:08:05.000000000 +0800
 +++ gfx1031/test/handle_test.cpp	2022-09-01 18:36:19.018979413 +0800
 @@ -234,7 +234,7 @@ void test_warnings(kernel_type_t kern_ty
@@ -383,7 +362,6 @@ diff --color -upr MIOpen-rocm-5.1.3/test/handle_test.cpp gfx1031/test/handle_tes
      auto this_arch  = h.GetDeviceName();
      EXPECT(std::any_of(
          known_arch.begin(), known_arch.end(), [&](std::string arch) { return arch == this_arch; }));
-diff --color -upr MIOpen-rocm-5.1.3/test/mdgraph.cpp gfx1031/test/mdgraph.cpp
 --- MIOpen-rocm-5.1.3/test/mdgraph.cpp	2022-05-08 14:08:05.000000000 +0800
 +++ gfx1031/test/mdgraph.cpp	2022-09-01 18:36:19.022979405 +0800
 @@ -222,7 +222,7 @@ struct mdgraph_driver : test_driver
