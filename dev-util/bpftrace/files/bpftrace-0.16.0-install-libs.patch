@@ -1,0 +1,210 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e63bc83c..ada1d370 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -114,9 +114,10 @@ find_package(FLEX REQUIRED)
+ bison_target(bison_parser src/parser.yy ${CMAKE_BINARY_DIR}/parser.tab.cc VERBOSE)
+ flex_target(flex_lexer src/lexer.l ${CMAKE_BINARY_DIR}/lex.yy.cc)
+ add_flex_bison_dependency(flex_lexer bison_parser)
+-add_library(parser ${BISON_bison_parser_OUTPUTS} ${FLEX_flex_lexer_OUTPUTS})
+-target_compile_options(parser PRIVATE "-w")
+-target_include_directories(parser PUBLIC src src/ast ${CMAKE_BINARY_DIR})
++add_library(bpftraceparser ${BISON_bison_parser_OUTPUTS} ${FLEX_flex_lexer_OUTPUTS})
++target_compile_options(bpftraceparser PRIVATE "-w")
++target_include_directories(bpftraceparser PUBLIC src src/ast ${CMAKE_BINARY_DIR})
++install(TARGETS bpftraceparser LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ include(CheckSymbolExists)
+ set(CMAKE_REQUIRED_DEFINITIONS -D_GNU_SOURCE)
+diff --git a/resources/CMakeLists.txt b/resources/CMakeLists.txt
+index a95c60a1..f5c4d676 100644
+--- a/resources/CMakeLists.txt
++++ b/resources/CMakeLists.txt
+@@ -1,6 +1,7 @@
+-add_library(resources headers.cpp)
++add_library(bpftraceresources headers.cpp)
+ 
+-target_include_directories(resources PUBLIC ../src)
++target_include_directories(bpftraceresources PUBLIC ../src)
++install(TARGETS bpftraceresources LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ function(embed_headers output)
+   file(WRITE ${output} "#include \"headers.h\"\n\nnamespace bpftrace {\n")
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 09b8c1e0..b9e9ac44 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -42,7 +42,7 @@ add_library(runtime
+   ${BFD_DISASM_SRC}
+ )
+ # Ensure flex+bison outputs are built first
+-add_dependencies(runtime parser)
++add_dependencies(runtime bpftraceparser)
+ 
+ add_library(libbpftrace
+   build_info.cpp
+@@ -59,6 +59,7 @@ add_executable(${BPFTRACE}
+ )
+ 
+ install(TARGETS ${BPFTRACE} DESTINATION ${CMAKE_INSTALL_BINDIR})
++install(TARGETS libbpftrace LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ target_link_libraries(${BPFTRACE} libbpftrace)
+ 
+ if (BUILD_FUZZ)
+@@ -111,6 +112,7 @@ target_include_directories(runtime PRIVATE ${CMAKE_BINARY_DIR})
+ target_include_directories(runtime PRIVATE ${CMAKE_SOURCE_DIR}/src)
+ target_include_directories(runtime PRIVATE ${CMAKE_SOURCE_DIR}/src/ast)
+ target_compile_definitions(runtime PRIVATE ${BPFTRACE_FLAGS})
++install(TARGETS runtime LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ target_compile_definitions(libbpftrace PRIVATE ${BPFTRACE_FLAGS})
+ 
+ # Linking
+@@ -123,7 +125,8 @@ if(STATIC_LINKING)
+ endif(STATIC_LINKING)
+ 
+ 
+-target_link_libraries(libbpftrace parser resources runtime aot ast arch cxxdemangler_llvm)
++target_link_libraries(libbpftrace bpftraceparser bpftraceresources
++  runtime aot bpftraceast bpftracearch cxxdemangler_llvm)
+ 
+ if (LIBBPF_BTF_DUMP_FOUND)
+   target_link_libraries(runtime ${LIBBPF_LIBRARIES})
+@@ -168,6 +171,7 @@ if(STATIC_LINKING)
+   target_link_libraries(runtime LIBELF)
+ else()
+   target_link_libraries(runtime ${LIBELF_LIBRARIES})
++  target_link_libraries(runtime ${LIBBPF_LIBRARIES})
+ endif(STATIC_LINKING)
+ 
+ if (LIBDW_FOUND)
+diff --git a/src/aot/CMakeLists.txt b/src/aot/CMakeLists.txt
+index c776d204..a1d0d75e 100644
+--- a/src/aot/CMakeLists.txt
++++ b/src/aot/CMakeLists.txt
+@@ -1,8 +1,9 @@
+ add_library(aot aot.cpp)
+-add_dependencies(aot parser)
++add_dependencies(aot bpftraceparser)
+ target_include_directories(aot PUBLIC ${CMAKE_SOURCE_DIR}/src)
+ target_include_directories(aot PUBLIC ${CMAKE_BINARY_DIR})
+ target_compile_definitions(aot PRIVATE ${BPFTRACE_FLAGS})
++install(TARGETS aot LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ # Only build aotrt if supported bcc is used
+ # (https://github.com/iovisor/bcc/commit/719191867a25ce07dc96f7faf9b8ccedadc7ec44)
+@@ -11,7 +12,7 @@ if(NOT LIBBCC_BPF_CONTAINS_RUNTIME)
+ endif()
+ 
+ add_executable(bpftrace-aotrt aot_main.cpp)
+-target_link_libraries(bpftrace-aotrt aot runtime arch ast_defs cxxdemangler_stdlib)
++target_link_libraries(bpftrace-aotrt aot runtime bpftracearch ast_defs cxxdemangler_stdlib)
+ install(TARGETS bpftrace-aotrt DESTINATION ${CMAKE_INSTALL_BINDIR})
+ 
+ if(LIBPCAP_FOUND)
+diff --git a/src/arch/CMakeLists.txt b/src/arch/CMakeLists.txt
+index 127c3528..4e05d40a 100644
+--- a/src/arch/CMakeLists.txt
++++ b/src/arch/CMakeLists.txt
+@@ -1,17 +1,19 @@
+ if(CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64")
+-    add_library(arch aarch64.cpp)
++    add_library(bpftracearch aarch64.cpp)
+ elseif(CMAKE_SYSTEM_PROCESSOR STREQUAL "ppc64" OR
+        CMAKE_SYSTEM_PROCESSOR STREQUAL "ppc64le")
+-    add_library(arch ppc64.cpp)
++    add_library(bpftracearch ppc64.cpp)
+ elseif(CMAKE_SYSTEM_PROCESSOR STREQUAL "s390" OR
+        CMAKE_SYSTEM_PROCESSOR STREQUAL "s390x")
+-    add_library(arch s390.cpp)
++    add_library(bpftracearch s390.cpp)
+ elseif(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
+-    add_library(arch x86_64.cpp)
++    add_library(bpftracearch x86_64.cpp)
+ elseif(CMAKE_SYSTEM_PROCESSOR STREQUAL "mips64")
+-    add_library(arch mips64.cpp)
++    add_library(bpftracearch mips64.cpp)
+ elseif(CMAKE_SYSTEM_PROCESSOR STREQUAL "riscv64")
+-    add_library(arch riscv64.cpp)
++    add_library(bpftracearch riscv64.cpp)
+ else()
+   message(FATAL_ERROR "Unsupported architecture: ${CMAKE_SYSTEM_PROCESSOR}")
+ endif()
++
++install(TARGETS bpftracearch LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+diff --git a/src/ast/CMakeLists.txt b/src/ast/CMakeLists.txt
+index 014295cd..c35f6ac6 100644
+--- a/src/ast/CMakeLists.txt
++++ b/src/ast/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ add_library(ast_defs ast.cpp)
+ 
+-add_library(ast
++add_library(bpftraceast
+   async_event_types.cpp
+   attachpoint_parser.cpp
+   int_parser.cpp
+@@ -20,11 +20,13 @@ add_library(ast
+ target_include_directories(ast_defs PUBLIC ${CMAKE_SOURCE_DIR}/src)
+ target_include_directories(ast_defs PUBLIC ${CMAKE_SOURCE_DIR}/src/ast)
+ target_include_directories(ast_defs PUBLIC ${CMAKE_BINARY_DIR})
+-target_link_libraries(ast ast_defs arch bpforc parser)
++target_link_libraries(bpftraceast ast_defs bpftracearch bpforc bpftraceparser)
++install(TARGETS ast_defs LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
++install(TARGETS bpftraceast LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+-add_dependencies(ast_defs parser)
++add_dependencies(ast_defs bpftraceparser)
+ 
+-target_compile_definitions(ast PRIVATE ${BPFTRACE_FLAGS})
++target_compile_definitions(bpftraceast PRIVATE ${BPFTRACE_FLAGS})
+ 
+ if (STATIC_LINKING)
+   set(clang_libs
+@@ -55,11 +57,11 @@ if (STATIC_LINKING)
+ 
+ 
+   if(EMBED_USE_LLVM)
+-    target_link_libraries(ast "-Wl,--start-group" ${CLANG_EMBEDDED_CMAKE_TARGETS} ${LLVM_EMBEDDED_CMAKE_TARGETS} "-Wl,--end-group")
++    target_link_libraries(bpftraceast "-Wl,--start-group" ${CLANG_EMBEDDED_CMAKE_TARGETS} ${LLVM_EMBEDDED_CMAKE_TARGETS} "-Wl,--end-group")
+   else()
+     llvm_map_components_to_libnames(llvm_libs ${llvm_lib_names})
+-    target_link_libraries(ast ${clang_libs})
+-    target_link_libraries(ast ${llvm_libs})
++    target_link_libraries(bpftraceast ${clang_libs})
++    target_link_libraries(bpftraceast ${llvm_libs})
+   endif()
+ 
+   if(STATIC_LIBC)
+@@ -69,13 +71,13 @@ if (STATIC_LINKING)
+ else()
+   find_library(found_LLVM LLVM HINTS ${LLVM_LIBRARY_DIRS})
+   if(found_LLVM)
+-    target_link_libraries(ast LLVM)
++    target_link_libraries(bpftraceast LLVM)
+   else()
+     llvm_map_components_to_libnames(_llvm_libs bpfcodegen ipo irreader mcjit orcjit ${LLVM_TARGETS_TO_BUILD})
+     llvm_expand_dependencies(llvm_libs ${_llvm_libs})
+-    target_link_libraries(ast ${llvm_libs})
++    target_link_libraries(bpftraceast ${llvm_libs})
+   endif()
+-  target_link_libraries(ast libclang)
++  target_link_libraries(bpftraceast libclang)
+ endif()
+ 
+ add_subdirectory(bpforc)
+diff --git a/src/ast/bpforc/CMakeLists.txt b/src/ast/bpforc/CMakeLists.txt
+index 3f6dbefa..8ccfbb2b 100644
+--- a/src/ast/bpforc/CMakeLists.txt
++++ b/src/ast/bpforc/CMakeLists.txt
+@@ -1 +1,2 @@
+ add_library(bpforc bpforc.cpp)
++install(TARGETS bpforc LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+diff --git a/src/cxxdemangler/CMakeLists.txt b/src/cxxdemangler/CMakeLists.txt
+index 04cfcdd9..5677aa4b 100644
+--- a/src/cxxdemangler/CMakeLists.txt
++++ b/src/cxxdemangler/CMakeLists.txt
+@@ -1,2 +1,4 @@
+ add_library(cxxdemangler_stdlib cxxdemangler_stdlib.cpp)
+ add_library(cxxdemangler_llvm cxxdemangler_llvm.cpp)
++install(TARGETS cxxdemangler_stdlib LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
++install(TARGETS cxxdemangler_llvm LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
