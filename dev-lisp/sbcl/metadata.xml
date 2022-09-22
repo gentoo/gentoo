@@ -23,8 +23,8 @@
 	available for the x86 and amd64 platforms using an NPTL enabled
 	GLIBC. SBCL 0.8.17 and later support Unicode.
 	</longdescription>
-    <use>
-	    <flag name="capstone">Enable disassembly support with <pkg>dev-libs/capstone</pkg></flag>
+	<use>
+		<flag name="capstone">Enable disassembly support with <pkg>dev-libs/capstone</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">sbcl</remote-id>
