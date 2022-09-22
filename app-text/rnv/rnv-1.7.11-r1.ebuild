@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 inherit unpacker toolchain-funcs
 
 DESCRIPTION="A lightweight Relax NG Compact Syntax validator"
@@ -26,7 +26,9 @@ src_prepare() {
 
 src_configure() {
 	LIBS="-ldl -lm" \
-		econf --with-scm="/usr"
+		econf \
+		--with-scm-inc="/usr/include" \
+		--with-scm-lib="/usr/$(get_libdir)"
 }
 
 src_install() {
