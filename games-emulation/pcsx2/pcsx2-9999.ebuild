@@ -54,6 +54,7 @@ RDEPEND="
 	x11-libs/libXrandr
 	qt6? (
 		dev-qt/qtbase:6[gui,network,widgets]
+		dev-qt/qtsvg:6
 		net-misc/curl
 	)
 	!qt6? (
@@ -121,8 +122,11 @@ src_prepare() {
 	# GS tests currently fail to build with qt6
 	use !qt6 || sed -i '/add_subdirectory(GS)/d' tests/ctest/CMakeLists.txt || die
 
-	# delete all 3rdparty/* except known-used ones in non-live
 	if [[ ${PV} != 9999 ]]; then
+		sed -e '/set(PCSX2_GIT_TAG "")/s/""/"v'${PV}'"/' \
+			-i cmake/Pcsx2Utils.cmake || die
+
+		# delete all 3rdparty/* except known-used ones in non-live
 		local keep=(
 			cpuinfo glad imgui include jpgd lzma simpleini xbyak
 			$(usev vulkan 'glslang vulkan-headers')
