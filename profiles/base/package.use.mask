@@ -365,7 +365,7 @@ x11-libs/colord-gtk doc
 # Qt libraries; see https://github.com/ProtonMail/proton-bridge/issues/16
 # The qt module itself apparently can be made to build against system Qt5
 # but making it do so while vendored is a non-trivial task.
-mail-mta/protonmail-bridge gui
+mail-mta/proton-mail-bridge gui
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-27)
 # The respective dependencies are masked for removal.
