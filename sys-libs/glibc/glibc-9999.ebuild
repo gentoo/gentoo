@@ -523,12 +523,12 @@ setup_env() {
 	fi
 
 	# Reset CC and CXX to the value at start of emerge
-	export CC=${__ORIG_CC:-${CC:-$(tc-getCC ${CTARGET})}}
-	export CXX=${__ORIG_CXX:-${CXX:-$(tc-getCXX ${CTARGET})}}
+	export CC=${glibc__ORIG_CC:-${CC:-$(tc-getCC ${CTARGET})}}
+	export CXX=${glibc__ORIG_CXX:-${CXX:-$(tc-getCXX ${CTARGET})}}
 
-	# and make sure __ORIC_CC and __ORIG_CXX is defined now.
-	export __ORIG_CC=${CC}
-	export __ORIG_CXX=${CXX}
+	# and make sure glibc__ORIG_CC and glibc__ORIG_CXX is defined now.
+	export glibc__ORIG_CC=${CC}
+	export glibc__ORIG_CXX=${CXX}
 
 	if tc-is-clang && ! use custom-cflags && ! is_crosscompile ; then
 
@@ -586,10 +586,10 @@ setup_env() {
 	# around the original clean value to avoid appending multiple ABIs on
 	# top of each other. (Why does the comment talk about CFLAGS if the code
 	# acts on CC?)
-	export __GLIBC_CC=${CC}
-	export __GLIBC_CXX=${CXX}
+	export glibc__GLIBC_CC=${CC}
+	export glibc__GLIBC_CXX=${CXX}
 
-	export __abi_CFLAGS="$(get_abi_CFLAGS)"
+	export glibc__abi_CFLAGS="$(get_abi_CFLAGS)"
 
 	# CFLAGS can contain ABI-specific flags like -mfpu=neon, see bug #657760
 	# To build .S (assembly) files with the same ABI-specific flags
@@ -598,10 +598,10 @@ setup_env() {
 	# Note: Passing CFLAGS via CPPFLAGS overrides glibc's arch-specific CFLAGS
 	# and breaks multiarch support. See 659030#c3 for an example.
 	# The glibc configure script doesn't properly use LDFLAGS all the time.
-	export CC="${__GLIBC_CC} ${__abi_CFLAGS} ${CFLAGS} ${LDFLAGS}"
+	export CC="${glibc__GLIBC_CC} ${glibc__abi_CFLAGS} ${CFLAGS} ${LDFLAGS}"
 
 	# Some of the tests are written in C++, so we need to force our multlib abis in, bug 623548
-	export CXX="${__GLIBC_CXX} ${__abi_CFLAGS} ${CFLAGS}"
+	export CXX="${glibc__GLIBC_CXX} ${glibc__abi_CFLAGS} ${CFLAGS}"
 
 	if is_crosscompile; then
 		# Assume worst-case bootstrap: glibc is buil first time
