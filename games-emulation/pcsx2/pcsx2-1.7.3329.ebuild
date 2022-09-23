@@ -54,6 +54,7 @@ RDEPEND="
 	x11-libs/libXrandr
 	qt6? (
 		dev-qt/qtbase:6[gui,network,widgets]
+		dev-qt/qtsvg:6
 		net-misc/curl
 	)
 	!qt6? (
