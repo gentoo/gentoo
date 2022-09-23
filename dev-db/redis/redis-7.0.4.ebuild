@@ -53,6 +53,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.2.3-ppc-atomic.patch
 	"${FILESDIR}"/${PN}-sentinel-5.0-config.patch
 	"${FILESDIR}"/${PN}-7.0.4-no-which.patch
+	"${FILESDIR}"/${PN}-7.0.4-replica-tests-fix.patch
 )
 
 src_prepare() {
