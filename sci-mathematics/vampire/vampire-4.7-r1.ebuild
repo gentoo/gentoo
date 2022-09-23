@@ -31,7 +31,7 @@ RESTRICT="!debug? ( test )"
 RDEPEND="
 	z3? (
 		dev-libs/gmp:=
-		<sci-mathematics/z3-4.10:=
+		>=sci-mathematics/z3-4.11.2:=
 	)
 "
 DEPEND="${RDEPEND}"
