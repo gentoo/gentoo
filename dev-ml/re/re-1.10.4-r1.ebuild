@@ -19,7 +19,8 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!dev-ml/ocaml-re
-	dev-ml/seq:=
+	>=dev-lang/ocaml-4.09
+	!dev-ml/seq
 "
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-ml/ounit2 )"
