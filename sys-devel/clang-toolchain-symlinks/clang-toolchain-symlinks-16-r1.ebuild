@@ -16,7 +16,9 @@ KEYWORDS=""
 PROPERTIES="live"
 IUSE="gcc-symlinks +native-symlinks"
 
+# Blocker for bug #872416
 RDEPEND="
+	!<sys-devel/gcc-config-2.6
 	sys-devel/clang:${SLOT}
 "
 
