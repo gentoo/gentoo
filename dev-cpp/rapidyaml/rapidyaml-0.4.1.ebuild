@@ -60,6 +60,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DGIT=false # don't call git nor fail if missing, not a repo
 		-DRYML_BUILD_API=no # TODO if a python consumer needs it
 		-DRYML_BUILD_TESTS=$(usex test)
 		-DRYML_DBG=$(usex debug)

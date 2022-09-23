@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/870412
+--- a/3rdparty/cpuinfo/src/api.c
++++ b/3rdparty/cpuinfo/src/api.c
+@@ -78 +78 @@
+-const struct cpuinfo_uarch_info* cpuinfo_get_uarchs() {
++const struct cpuinfo_uarch_info* cpuinfo_get_uarchs(void) {
+--- a/cmake/FindPCAP.cmake
++++ b/cmake/FindPCAP.cmake
+@@ -47 +47 @@
+-check_c_source_compiles("int main() { return 0; }" PCAP_LINKS_SOLO)
++check_c_source_compiles("int main(void) { return 0; }" PCAP_LINKS_SOLO)
+@@ -55 +55 @@
+-		check_c_source_compiles("int main() { return 0; }" PCAP_NEEDS_THREADS)
++		check_c_source_compiles("int main(void) { return 0; }" PCAP_NEEDS_THREADS)
+--- a/tests/ctest/CMakeLists.txt
++++ b/tests/ctest/CMakeLists.txt
+@@ -20 +20 @@
+-	int main() {
++	int main(void) {

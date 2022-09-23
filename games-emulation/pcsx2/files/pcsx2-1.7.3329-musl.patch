@@ -1,0 +1,9 @@
+--- a/pcsx2/USB/qemu-usb/iov.h
++++ b/pcsx2/USB/qemu-usb/iov.h
+@@ -17,5 +17,5 @@
+ #define IOV_H
+ 
+-#if !defined(_BITS_UIO_H) && !defined(__iovec_defined) /* /usr/include/bits/uio.h */
++#if !defined(_BITS_UIO_H) && !defined(__iovec_defined) && !defined(__DEFINED_struct_iovec)
+ struct iovec
+ {
