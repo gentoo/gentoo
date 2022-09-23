@@ -1,0 +1,24 @@
+From c66b5a33885211da16cd720fd0f6ab5b4abba297 Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Thu, 28 Oct 2021 00:20:53 +0200
+Subject: [PATCH] Remove unused XmlPatterns
+
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 569974f..f2f15f2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -23,7 +23,6 @@ find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED
+     Core
+     Widgets
+     Svg
+-    XmlPatterns
+     Test
+     PrintSupport
+ )
+-- 
+GitLab
+
