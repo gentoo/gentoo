@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-09-23)
+# Only PyQt5 is keyworded on pcc64 at the moment.
+# Mask the other Qt4Python implementations
+dev-python/QtPy pyside2 pyqt6 pyside6
+
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded
 app-text/enchant nuspell
