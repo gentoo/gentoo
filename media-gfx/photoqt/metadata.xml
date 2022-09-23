@@ -6,11 +6,8 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<use>
-		<flag name="devil">
-			Support additional image formats using <pkg>media-libs/devil</pkg>
-		</flag>
-		<flag name="freeimage">
-			Support additional image formats using <pkg>media-libs/freeimage</pkg>
-		</flag>
+		<flag name="devil">Support additional image formats using <pkg>media-libs/devil</pkg></flag>
+		<flag name="freeimage">Support additional image formats using <pkg>media-libs/freeimage</pkg></flag>
+		<flag name="mpv">Support for video files using <pkg>media-video/mpv</pkg></flag>
 	</use>
 </pkgmetadata>
