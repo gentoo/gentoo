@@ -24,7 +24,6 @@ RDEPEND="
 	>=dev-ml/ocplib-simplex-0.4:=
 	dev-ml/camlzip:=
 	dev-ml/num:=
-	dev-ml/seq:=
 	dev-ml/stdlib-shims:=
 	dev-ml/zarith:=
 	gui? (
