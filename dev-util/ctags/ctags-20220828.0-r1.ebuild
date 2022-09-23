@@ -21,12 +21,13 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="json pcre test xml yaml"
+IUSE="json pcre seccomp test xml yaml"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	json? ( dev-libs/jansson:= )
 	pcre? ( dev-libs/libpcre2 )
+	seccomp? ( sys-libs/libseccomp )
 	xml? ( dev-libs/libxml2:2 )
 	yaml? ( dev-libs/libyaml )
 "
@@ -57,6 +58,7 @@ src_configure() {
 	econf \
 		$(use_enable json) \
 		$(use_enable pcre pcre2) \
+		$(use_enable seccomp) \
 		$(use_enable xml) \
 		$(use_enable yaml) \
 		--disable-etags \
