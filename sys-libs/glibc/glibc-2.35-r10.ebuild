@@ -529,7 +529,12 @@ setup_env() {
 	export __ORIG_CXX=${CXX}
 
 	if tc-is-clang && ! use custom-cflags && ! is_crosscompile ; then
+		export glibc__force_gcc=yes
+		# once this is toggled on, it needs to stay on, since with CPP manipulated
+		# tc-is-clang does not work correctly anymore...
+	fi
 
+	if [[ ${glibc__force_gcc} == "yes" ]] ; then
 		# If we are running in an otherwise clang/llvm environment, we need to
 		# recover the proper gcc and binutils settings here, at least until glibc
 		# is finally building with clang. So let's override everything that is
