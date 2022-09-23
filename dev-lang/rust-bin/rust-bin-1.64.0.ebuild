@@ -152,12 +152,14 @@ multilib_src_install() {
 	dosym "../../opt/${P}/lib/rustlib" "/usr/lib/rustlib-bin-${PV}"
 	dosym "../../../opt/${P}/share/doc/rust" "/usr/share/doc/${P}"
 
-	# musl logic can be improved a bit, but fine as is for now
+	# make all capital underscored variable
+	local CARGO_TRIPLET="$(rust_abi)"
+	CARGO_TRIPLET="${CARGO_TRIPLET//-/_}"
+	CARGO_TRIPLET="${CARGO_TRIPLET^^}"
 	cat <<-_EOF_ > "${T}/50${P}"
 	LDPATH="${EPREFIX}/usr/lib/rust/lib"
 	MANPATH="${EPREFIX}/usr/lib/rust/man"
-	$(use amd64 && usex elibc_musl 'CARGO_TARGET_X86_64_UNKNOWN_LINUX_MUSL_RUSTFLAGS="-C target-feature=-crt-static"' '')
-	$(use arm64 && usex elibc_musl 'CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_RUSTFLAGS="-C target-feature=-crt-static"' '')
+	$(usev elibc_musl "CARGO_TARGET_${CARGO_TRIPLET}_RUSTFLAGS=\"-C target-feature=-crt-static\"")
 	_EOF_
 	doenvd "${T}/50${P}"
 
