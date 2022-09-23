@@ -1,26 +1,28 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson-multilib usr-ldscript
 
 DESCRIPTION="A high-quality data compressor used extensively by Gentoo Linux"
-HOMEPAGE="https://gitlab.com/federicomenaquintero/bzip2"
-if [[ "${PV}" == 9999 ]] ; then
+HOMEPAGE="https://gitlab.com/bzip2/bzip2"
+if [[ ${PV} == 9999 ]] ; then
+	EGIT_REPO_URI="https://gitlab.com/bzip2/bzip2"
 	inherit git-r3
-	EGIT_REPO_URI="https://gitlab.com/federicomenaquintero/bzip2.git"
 else
-	SRC_URI=""
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
+
 LICENSE="BZIP2"
 SLOT="0/1" # subslot = SONAME
 
 IUSE="static-libs"
 
-RDEPEND="!app-arch/lbzip2[symlink(-)]
-	!app-arch/pbzip2[symlink(-)]"
+RDEPEND="
+	!app-arch/lbzip2[symlink(-)]
+	!app-arch/pbzip2[symlink(-)]
+"
 
 multilib_src_configure() {
 	local emesonargs=(
@@ -44,7 +46,7 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	# move "important" bzip2 binaries to /bin and use the shared libbz2.so
+	# Move "important" bzip2 binaries to /bin and use the shared libbz2.so
 	dosym bzip2 /bin/bzcat
 	dosym bzip2 /bin/bunzip2
 
