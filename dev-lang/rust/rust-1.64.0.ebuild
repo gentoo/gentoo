@@ -163,7 +163,6 @@ VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/rust.asc
 PATCHES=(
 	"${FILESDIR}"/1.55.0-ignore-broken-and-non-applicable-tests.patch
 	"${FILESDIR}"/1.62.1-musl-dynamic-linking.patch
-	"${FILESDIR}"/1.61.0-gentoo-musl-target-specs.patch
 )
 
 S="${WORKDIR}/${MY_P}-src"
@@ -293,11 +292,6 @@ src_configure() {
 	for v in $(multilib_get_enabled_abi_pairs); do
 		rust_targets+=",\"$(rust_abi ${chost_target})\""
 	done
-	if use elibc_musl; then
-		# we also want to build our -gentoo- target on musl, in addition to
-		# -unknown- one provided by upstream
-		rust_targets+="${rust_targets//-unknown-/-gentoo-}"
-	fi
 	if use wasm; then
 		rust_targets+=",\"wasm32-unknown-unknown\""
 		if use system-llvm; then
@@ -459,27 +453,10 @@ src_configure() {
 		fi
 		# by default librustc_target/spec/linux_musl_base.rs sets base.crt_static_default = true;
 		# but we patch it and set to false here as well
-		# also we enable extra -gentoo- vendor triplet target with same settings as above
-		# musl-sysroot needs to be defined because rust treats it like an extra cross target
-		# so HOST still stays -unknown-, but --tagrget xx-gentoo-linux-musl will have stdlib.
 		if use elibc_musl; then
 			cat <<- _EOF_ >> "${S}"/config.toml
 				crt-static = false
-				[target.${rust_target//-unknown-/-gentoo-}]
-				musl-root = "${ESYSROOT}/usr"
-				ar = "$(tc-getAR)"
-				cc = "$(tc-getCC)"
-				cxx = "$(tc-getCXX)"
-				linker = "$(tc-getCC)"
-				ranlib = "$(tc-getRANLIB)"
-				llvm-libunwind = "$(usex llvm-libunwind $(usex system-llvm system in-tree) no)"
 			_EOF_
-			if use system-llvm; then
-				cat <<- _EOF_ >> "${S}"/config.toml
-					llvm-config = "$(get_llvm_prefix "${LLVM_MAX_SLOT}")/bin/llvm-config"
-				_EOF_
-			fi
-
 		fi
 	done
 	if use wasm; then
