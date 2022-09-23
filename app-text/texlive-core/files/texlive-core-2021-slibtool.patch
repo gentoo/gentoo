@@ -1,0 +1,98 @@
+https://bugs.gentoo.org/775170
+https://tug.org/svn/texlive?view=revision&revision=61639
+--- a/texk/web2c/web2c/Makefile.in
++++ b/texk/web2c/web2c/Makefile.in
+@@ -127,8 +127,7 @@
+ libweb2c_a_OBJECTS = $(am_libweb2c_a_OBJECTS)
+ am_fixwrites_OBJECTS = fixwrites.$(OBJEXT)
+ fixwrites_OBJECTS = $(am_fixwrites_OBJECTS)
+-am__DEPENDENCIES_1 =
+-fixwrites_DEPENDENCIES = $(am__DEPENDENCIES_1)
++fixwrites_DEPENDENCIES = $(web2c_LDADD)
+ AM_V_lt = $(am__v_lt_@AM_V@)
+ am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
+ am__v_lt_0 = --silent
+@@ -138,11 +137,11 @@
+ makecpool_LDADD = $(LDADD)
+ am_splitup_OBJECTS = splitup.$(OBJEXT)
+ splitup_OBJECTS = $(am_splitup_OBJECTS)
+-splitup_DEPENDENCIES = $(am__DEPENDENCIES_1)
++splitup_DEPENDENCIES = $(web2c_LDADD)
+ am_web2c_OBJECTS = web2c-parser.$(OBJEXT) web2c-lexer.$(OBJEXT) \
+ 	main.$(OBJEXT)
+ web2c_OBJECTS = $(am_web2c_OBJECTS)
+-web2c_DEPENDENCIES =
++web2c_DEPENDENCIES = libweb2c.a
+ SCRIPTS = $(dist_noinst_SCRIPTS)
+ AM_V_P = $(am__v_P_@AM_V@)
+ am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
+@@ -416,7 +415,7 @@
+ 	main.c \
+ 	web2c.h
+ 
+-web2c_LDADD = -L. -lweb2c
++web2c_LDADD = libweb2c.a
+ fixwrites_SOURCES = \
+ 	fixwrites.c
+ 
+--- a/texk/web2c/web2c/Makefile.in
++++ b/texk/web2c/web2c/Makefile.in
+@@ -127,7 +127,6 @@
+ libweb2c_a_OBJECTS = $(am_libweb2c_a_OBJECTS)
+ am_fixwrites_OBJECTS = fixwrites.$(OBJEXT)
+ fixwrites_OBJECTS = $(am_fixwrites_OBJECTS)
+-fixwrites_DEPENDENCIES = $(web2c_LDADD)
+ AM_V_lt = $(am__v_lt_@AM_V@)
+ am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
+ am__v_lt_0 = --silent
+@@ -137,11 +136,9 @@
+ makecpool_LDADD = $(LDADD)
+ am_splitup_OBJECTS = splitup.$(OBJEXT)
+ splitup_OBJECTS = $(am_splitup_OBJECTS)
+-splitup_DEPENDENCIES = $(web2c_LDADD)
+ am_web2c_OBJECTS = web2c-parser.$(OBJEXT) web2c-lexer.$(OBJEXT) \
+ 	main.$(OBJEXT)
+ web2c_OBJECTS = $(am_web2c_OBJECTS)
+-web2c_DEPENDENCIES = libweb2c.a
+ SCRIPTS = $(dist_noinst_SCRIPTS)
+ AM_V_P = $(am__v_P_@AM_V@)
+ am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
+@@ -395,6 +392,7 @@
+ AM_CFLAGS = $(WARNING_CFLAGS)
+ EXTRA_LIBRARIES = libweb2c.a
+ BUILT_SOURCES = w2c/config.h
++#
+ DISTCLEANFILES = w2c/config.h web2c-parser.output
+ noinst_HEADERS = coerce.h
+ dist_noinst_SCRIPTS = convert
+@@ -415,14 +413,17 @@
+ 	main.c \
+ 	web2c.h
+ 
++web2c_DEPENDENCIES = # don't build libweb2c.a in parallel
+ web2c_LDADD = libweb2c.a
+ fixwrites_SOURCES = \
+ 	fixwrites.c
+ 
++fixwrites_DEPENDENCIES = # don't build libweb2c.a in parallel
+ fixwrites_LDADD = $(web2c_LDADD)
+ splitup_SOURCES = \
+ 	splitup.c
+ 
++splitup_DEPENDENCIES = # don't build libweb2c.a in parallel
+ splitup_LDADD = $(web2c_LDADD)
+ makecpool_SOURCES = \
+ 	makecpool.c
+@@ -973,11 +974,8 @@
+ 	fi
+ 
+ $(libweb2c_a_OBJECTS): w2c/config.h
+-
+ $(web2c_OBJECTS): web2c-parser.h stamp-lib
+-
+ $(fixwrites_OBJECTS): stamp-lib
+-
+ $(splitup_OBJECTS): stamp-lib
+ 
+ stamp-lib:
+
