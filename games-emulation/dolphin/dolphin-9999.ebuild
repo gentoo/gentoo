@@ -8,7 +8,7 @@ inherit cmake desktop xdg-utils pax-utils
 if [[ ${PV} == *9999 ]]
 then
 	EGIT_REPO_URI="https://github.com/dolphin-emu/dolphin"
-	EGIT_SUBMODULES=( Externals/mGBA/mgba )
+	EGIT_SUBMODULES=( Externals/mGBA/mgba Externals/spirv_cross/SPIRV-Cross )
 	inherit git-r3
 else
 	EGIT_COMMIT=0f2540a0d1133950467845f20b1e003181147781
@@ -50,8 +50,8 @@ RDEPEND="
 	net-libs/enet:1.3
 	net-libs/mbedtls:=
 	net-misc/curl:=
+	sys-libs/minizip-ng:=[compat]
 	sys-libs/readline:=
-	sys-libs/zlib:=[minizip]
 	x11-libs/libXext
 	x11-libs/libXi
 	x11-libs/libXrandr
@@ -100,9 +100,6 @@ declare -A KEEP_BUNDLED=(
 	# FIXME: xxhash can't be found by cmake
 	[xxhash]=BSD-2
 
-	# FIXME: requires minizip-ng
-	#[minizip]=ZLIB
-
 	[FreeSurround]=GPL-2+
 	[soundtouch]=LGPL-2.1+
 
@@ -114,6 +111,7 @@ declare -A KEEP_BUNDLED=(
 	[picojson]=BSD-2
 	[rangeset]=ZLIB
 	[gtest]= # (build-time only)
+	[FatFs]=BSD
 )
 
 src_prepare() {
@@ -139,9 +137,6 @@ src_prepare() {
 	if ! use vulkan; then
 		sed -i -e '/Externals\/glslang/d' CMakeLists.txt || die
 	fi
-
-	# Allow regular minizip.
-	sed -i -e '/minizip/s:>=2[.]0[.]0::' CMakeLists.txt || die
 
 	# Remove dirty suffix: needed for netplay
 	sed -i -e 's/--dirty/&=""/' CMakeLists.txt || die
@@ -170,6 +165,7 @@ src_configure() {
 		-DENABLE_VULKAN=$(usex vulkan)
 		-DFASTLOG=$(usex log)
 		-DOPROFILING=$(usex profile)
+		-DSTEAM=OFF
 		-DUSE_DISCORD_PRESENCE=$(usex discord-presence)
 		-DUSE_SHARED_ENET=ON
 		-DUSE_UPNP=$(usex upnp)
