@@ -88,9 +88,11 @@ RDEPEND="${RDEPEND}
 	!prefix? ( sys-apps/shadow )
 	X? ( x11-apps/xauth )
 "
+# Blocker on older gcc-config for bug #872416
 BDEPEND="
-	virtual/pkgconfig
+	!<sys-devel/gcc-config-2.6
 	sys-devel/autoconf
+	virtual/pkgconfig
 	verify-sig? ( sec-keys/openpgp-keys-openssh )
 "
 
