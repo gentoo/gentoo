@@ -34,7 +34,10 @@ BDEPEND="
 COMMON_DEPEND="
 	>=dev-libs/expat-2.1.0
 	elogind? ( sys-auth/elogind )
-	selinux? ( sys-libs/libselinux )
+	selinux? (
+		sys-process/audit
+		sys-libs/libselinux
+	)
 	systemd? ( sys-apps/systemd:0= )
 	X? (
 		x11-libs/libX11
