@@ -183,6 +183,15 @@ XFAIL_TEST_LIST=(
 # Small helper functions
 #
 
+dump_build_environment() {
+	einfo ==== glibc build environment ========================================================
+	local v
+	for v in ABI CBUILD CHOST CTARGET CBUILD_OPT CTARGET_OPT CC CXX CPP LD {AS,C,CPP,CXX,LD}FLAGS MAKEINFO NM AR AS STRIP RANLIB OBJCOPY STRINGS OBJDUMP READELF; do
+		einfo " $(printf '%15s' ${v}:)   ${!v}"
+	done
+	einfo =====================================================================================
+}
+
 is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
 }
@@ -913,13 +922,8 @@ src_prepare() {
 }
 
 glibc_do_configure() {
+	dump_build_environment
 
-	local v
-	for v in ABI CBUILD CHOST CTARGET CBUILD_OPT CTARGET_OPT CC CXX LD {AS,C,CPP,CXX,LD}FLAGS MAKEINFO NM AR AS STRIP RANLIB OBJCOPY STRINGS OBJDUMP READELF; do
-		einfo " $(printf '%15s' ${v}:)   ${!v}"
-	done
-
-	echo
 	local myconf=()
 
 	# Use '=strong' instead of '=all' to protect only functions
