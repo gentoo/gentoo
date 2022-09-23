@@ -52,7 +52,7 @@ src_configure() {
 
 	if use ssl ; then
 		local crypto_provider=$(usex gnutls GNUTLS OPENSSL)
-		myconf+=(
+		mycmakeargs+=(
 			-DDEFAULT_CRYPTO=${crypto_provider}
 			-DREQUIRE_CRYPTO_${crypto_provider}=ON
 		)
