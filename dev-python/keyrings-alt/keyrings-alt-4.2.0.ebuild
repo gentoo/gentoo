@@ -26,6 +26,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-python/jaraco-classes[${PYTHON_USEDEP}]
+	!dev-python/keyrings_alt
 "
 BDEPEND="
 	>=dev-python/setuptools_scm-3.4.1[${PYTHON_USEDEP}]
