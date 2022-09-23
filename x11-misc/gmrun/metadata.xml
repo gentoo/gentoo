@@ -18,7 +18,7 @@
 		features include slim design and bash style auto-completion.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">WdesktopX/gmrun</remote-id>
+		<remote-id type="github">wdlkmpx/gmrun</remote-id>
 	</upstream>
 	<use>
 		<flag name="xdg">Enable xdg spec for configuration and history files location</flag>
