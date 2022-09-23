@@ -96,11 +96,9 @@ BDEPEND="
 	virtual/pkgconfig
 	|| (
 		>=sys-devel/gcc-config-2.6
-		|| (
-			>=sys-devel/clang-toolchain-symlinks-14-r1:14
-			>=sys-devel/clang-toolchain-symlinks-15-r1:15
-			>=sys-devel/clang-toolchain-symlinks-16-r1:*
-		)
+		>=sys-devel/clang-toolchain-symlinks-14-r1:14
+		>=sys-devel/clang-toolchain-symlinks-15-r1:15
+		>=sys-devel/clang-toolchain-symlinks-16-r1:*
 	)
 	verify-sig? ( sec-keys/openpgp-keys-openssh )
 "
