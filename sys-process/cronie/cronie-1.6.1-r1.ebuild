@@ -21,6 +21,7 @@ DEPEND="
 		!sys-process/systemd-cron
 		elibc_musl? ( sys-libs/obstack-standalone )
 	)
+	selinux? ( sys-libs/libselinux )
 "
 RDEPEND="${DEPEND}
 	sys-apps/debianutils
