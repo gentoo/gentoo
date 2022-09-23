@@ -5,29 +5,33 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
-EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
-inherit readme.gentoo-r1 git-r3 distutils-r1
+inherit readme.gentoo-r1 systemd distutils-r1
+
+MY_V="${PV/_p/.post}"
+MY_P="${PN}-${MY_V}"
 
 DESCRIPTION="BuildBot Worker (slave) Daemon"
 HOMEPAGE="https://buildbot.net/
 	https://github.com/buildbot/buildbot
 	https://pypi.org/project/buildbot-worker/"
-S="${S}/worker"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="amd64 ~arm64 ~riscv ~amd64-linux ~x86-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-user/buildbot
 	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
+	>=dev-python/msgpack-0.6.0[${PYTHON_USEDEP}]
 	>=dev-python/twisted-18.7.0[${PYTHON_USEDEP}]
 	dev-python/future[${PYTHON_USEDEP}]
 	!<dev-util/buildbot-1.0.0
 "
 BDEPEND="
-	>=dev-python/msgpack-0.6.0[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
@@ -57,12 +61,16 @@ python_test() {
 }
 
 python_install_all() {
+
 	distutils-r1_python_install_all
 
 	doman docs/buildbot-worker.1
 
 	newconfd "${FILESDIR}/buildbot_worker.confd2" buildbot_worker
 	newinitd "${FILESDIR}/buildbot_worker.initd2" buildbot_worker
+	systemd_dounit "${FILESDIR}/buildbot_worker.target"
+	systemd_newunit "${FILESDIR}/buildbot_worker_at.service" "buildbot_worker@.service"
+	systemd_install_serviced "${FILESDIR}/buildbot_worker_at.service.conf" "buildbot_worker@.service"
 
 	dodir /var/lib/buildbot_worker
 	cp "${FILESDIR}/buildbot.tac.sample" "${D}/var/lib/buildbot_worker"|| die "Install failed!"
