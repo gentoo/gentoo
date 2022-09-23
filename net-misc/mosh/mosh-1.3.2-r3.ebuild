@@ -19,14 +19,15 @@ REQUIRED_USE="
 	examples? ( client )"
 
 RDEPEND="
-	dev-libs/protobuf:0=
-	sys-libs/ncurses:0=
+	dev-libs/protobuf:=
+	sys-libs/ncurses:=
+	sys-libs/zlib
 	virtual/ssh
 	client? (
 		dev-lang/perl
 		dev-perl/IO-Tty
 	)
-	dev-libs/openssl:0=
+	dev-libs/openssl:=
 	utempter? (
 		sys-libs/libutempter
 	)"
