@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-09-23)
+# Broken after Google stopped accepting "Less Secure Apps".
+# https://github.com/Intika-KDE-Plasmoids/plasmoid-ultimate-gmail-feed/issues/32
+# Use kde-misc/gmail-feed instead; removal on 2022-10-23.
+kde-misc/ultimate-gmail-feed
+
 # John Helmert III <ajak@gentoo.org> (2022-09-18)
 # Unfixed root privilege escalation, bug #631552
 sys-cluster/slurm
