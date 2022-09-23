@@ -28,8 +28,11 @@ RESTRICT="test"
 
 # TODO: Could make pkgconfig conditional on selinux? bug #782829
 RDEPEND="
-	virtual/libcrypt:=
-	!static? ( selinux? ( sys-libs/libselinux ) )
+	!static? (
+		virtual/libc
+		virtual/libcrypt:=
+		selinux? ( sys-libs/libselinux )
+	)
 	pam? ( sys-libs/pam )
 "
 DEPEND="${RDEPEND}
