@@ -1,0 +1,36 @@
+From a28713a9ebcc8d393beb270ca9fd5bf3b86a52bb Mon Sep 17 00:00:00 2001
+From: Roger Binns <rogerb@rogerbinns.com>
+Date: Thu, 22 Sep 2022 08:33:13 -0700
+Subject: [PATCH] Ensure uncompleted statement is present
+
+It turns out that under some circumstances Python hasattr
+is actually doing a getattr.  That means an incomplete statement
+needs to be present for the hasattr to not raise an exception.
+
+See #370
+---
+ apsw/tests.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/apsw/tests.py b/apsw/tests.py
+index bdaf70d..e9ad3c0 100644
+--- a/apsw/tests.py
++++ b/apsw/tests.py
+@@ -772,6 +772,7 @@ class APSW(unittest.TestCase):
+         c.execute("drop table foo; create table foo (%s)" % (", ".join(["[%s] %s" % (n, t) for n, t in cols]), ))
+         c.execute("insert into foo([x a space]) values(1)")
+         c.execute("create temp table two(fred banana); insert into two values(7); create temp view three as select fred as [a space] from two")
++        c.execute("select 3") # see issue #370
+         has_full=any(o=="ENABLE_COLUMN_METADATA" or o.startswith("ENABLE_COLUMN_METADATA=") for o in apsw.compile_options) if apsw.using_amalgamation else hasattr(c, "description_full")
+         for row in c.execute("select * from foo"):
+             self.assertEqual(cols, c.getdescription())
+@@ -8835,4 +8836,4 @@ if __name__ == '__main__':
+     del re
+     gc.collect()
+ 
+-    exit(exitcode)
+\ No newline at end of file
++    exit(exitcode)
+-- 
+2.37.3
+
