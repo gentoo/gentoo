@@ -3,6 +3,14 @@
 
 EAPI=8
 
+if [[ ${PV} != 2.0.14 ]] ; then
+	eerror "Please do not bump to 2.0.15! It's broken:"
+	eerror "https://github.com/numactl/numactl/issues/135"
+	eerror "It's also missing a dist tarball:"
+	eerror "https://github.com/numactl/numactl/issues/140"
+	die "Please check ebuild!"
+fi
+
 inherit autotools multilib-minimal
 
 DESCRIPTION="Utilities and libraries for NUMA systems"
