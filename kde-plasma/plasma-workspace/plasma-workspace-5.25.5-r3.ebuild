@@ -159,6 +159,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-widgetexplorer-recurse-containments.patch" # https://mail.kde.org/pipermail/distributions/2022-September/001287.html
 	"${FILESDIR}/${P}-delay-ksplash-until-after-env-setup.patch" # KDE-bug 458865 w/ Qt 5.15.6
 	"${FILESDIR}/${P}-fonts-honor-and-present-system-defaults.patch" # KDE-bug 416140
+	"${FILESDIR}/${P}-prevent-panel-go-out-of-screen.patch" # git master and Plasma/5.24 branch double revert
 )
 
 src_prepare() {
