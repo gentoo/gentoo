@@ -57,7 +57,9 @@ REQUIRED_USE="
 # tests currently fail with XMSS
 REQUIRED_USE+="test? ( !xmss )"
 
+# Blocker on older gcc-config for bug #872416
 LIB_DEPEND="
+	!<sys-devel/gcc-config-2.6
 	audit? ( sys-process/audit[static-libs(+)] )
 	ldns? (
 		net-libs/ldns[static-libs(+)]
@@ -88,11 +90,18 @@ RDEPEND="${RDEPEND}
 	!prefix? ( sys-apps/shadow )
 	X? ( x11-apps/xauth )
 "
-# Blocker on older gcc-config for bug #872416
+# Weird dep construct for newer gcc-config for bug #872416
 BDEPEND="
-	!<sys-devel/gcc-config-2.6
 	sys-devel/autoconf
 	virtual/pkgconfig
+	|| (
+		>=sys-devel/gcc-config-2.6
+		|| (
+			>=sys-devel/clang-toolchain-symlinks-14-r1:14
+			>=sys-devel/clang-toolchain-symlinks-15-r1:15
+			>=sys-devel/clang-toolchain-symlinks-16-r1:*
+		)
+	)
 	verify-sig? ( sec-keys/openpgp-keys-openssh )
 "
 
