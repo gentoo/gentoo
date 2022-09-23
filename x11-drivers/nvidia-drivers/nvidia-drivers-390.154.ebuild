@@ -73,7 +73,6 @@ BDEPEND="
 QA_PREBUILT="opt/bin/* usr/lib*"
 
 PATCHES=(
-	"${FILESDIR}"/nvidia-drivers-390.154-clang15.patch
 	"${FILESDIR}"/nvidia-extras-390.154-clang16.patch
 	"${FILESDIR}"/nvidia-modprobe-390.141-uvm-perms.patch
 	"${FILESDIR}"/nvidia-settings-390.141-fno-common.patch
@@ -151,6 +150,8 @@ src_prepare() {
 	rm nvidia-persistenced && mv nvidia-persistenced{-${PV},} || die
 	rm nvidia-settings && mv nvidia-settings{-${PV},} || die
 	rm nvidia-xconfig && mv nvidia-xconfig{-${PV},} || die
+
+	eapply "${FILESDIR}"/nvidia-drivers-390.154-clang15$(usev {,-}x86).patch
 
 	default
 
