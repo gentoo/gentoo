@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -11,19 +11,15 @@ SRC_URI="https://github.com/rhboot/efibootmgr/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ia64 ~loong ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~ia64 ~loong ~riscv x86"
 
 RDEPEND="
+	dev-libs/popt
 	sys-apps/pciutils
 	>=sys-libs/efivar-37:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-PATCHES=(
-	"${FILESDIR}/${P}-fix-efivar-37-conflict.patch"
-	"${FILESDIR}/${P}-clang.patch"
-)
 
 src_prepare() {
 	default
