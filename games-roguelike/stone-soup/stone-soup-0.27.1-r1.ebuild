@@ -123,7 +123,9 @@ src_compile() {
 		BUILD_LUA=
 		AR="$(tc-getAR)"
 		CFOPTIMIZE=''
-		CFOTHERS="${CXXFLAGS}"
+		# -DLUA_COMPAT_OPENLIB=1 is required to enable the
+		# deprecated (in 5.1) luaL_openlib API (#869671)
+		CFOTHERS="${CXXFLAGS} -DLUA_COMPAT_OPENLIB=1"
 		CONTRIBS=
 		DATADIR="/usr/share/${PN}-${SLOT}"
 		FORCE_CC="$(tc-getCC)"
