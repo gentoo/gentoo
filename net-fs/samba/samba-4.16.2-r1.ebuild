@@ -23,8 +23,8 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="acl addc ads ceph client cluster cpu_flags_x86_aes cups debug fam
-glusterfs gpg iprint json ldap pam profiling-data python quota +regedit selinux
-snapper spotlight syslog system-heimdal +system-mitkrb5 systemd test winbind
+glusterfs gpg iprint json ldap llvm-libunwind pam profiling-data python quota +regedit selinux
+snapper spotlight syslog system-heimdal +system-mitkrb5 systemd test unwind winbind
 zeroconf"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -87,7 +87,6 @@ COMMON_DEPEND="
 			net-dns/bind-tools[gssapi]
 		)
 	")
-	!alpha? ( !sparc? ( sys-libs/libunwind:= ) )
 	acl? ( virtual/acl )
 	ceph? ( sys-cluster/ceph )
 	cluster? ( net-libs/rpcsvc-proto )
@@ -108,6 +107,10 @@ COMMON_DEPEND="
 	system-heimdal? ( >=app-crypt/heimdal-1.5[-ssl,${MULTILIB_USEDEP}] )
 	system-mitkrb5? ( >=app-crypt/mit-krb5-1.19[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd:0= )
+	unwind? (
+		llvm-libunwind? ( sys-libs/llvm-libunwind:= )
+		!llvm-libunwind? ( sys-libs/libunwind:= )
+	)
 	zeroconf? ( net-dns/avahi[dbus] )
 "
 DEPEND="${COMMON_DEPEND}
@@ -143,6 +146,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-pam.patch"
 	"${FILESDIR}/${PN}-4.16.1-netdb-defines.patch"
 	"${FILESDIR}/${PN}-4.16.2-fix-musl-without-innetgr.patch"
+	"${FILESDIR}/${PN}-4.15.9-libunwind-automagic.patch"
 )
 
 #CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
@@ -232,6 +236,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with systemd)
 		--systemd-install-services
 		--with-systemddir="$(systemd_get_systemunitdir)"
+		$(multilib_native_use_with unwind libunwind)
 		$(multilib_native_use_with winbind)
 		$(multilib_native_usex python '' '--disable-python')
 		$(multilib_native_use_enable zeroconf avahi)

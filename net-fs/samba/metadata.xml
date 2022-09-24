@@ -29,6 +29,7 @@
 			bundled heimdal.</flag>
 		<flag name="system-mitkrb5">Use <pkg>app-crypt/mit-krb5</pkg> instead of
 			<pkg>app-crypt/heimdal</pkg>.</flag>
+		<flag name="unwind">Enable libunwind usage for backtraces</flag>
 		<flag name="winbind">Enables support for the winbind auth daemon</flag>
 	</use>
 	<upstream>

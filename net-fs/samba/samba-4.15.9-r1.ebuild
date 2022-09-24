@@ -23,8 +23,8 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="acl addc ads ceph client cluster cpu_flags_x86_aes cups debug fam
-glusterfs gpg iprint json ldap pam profiling-data python quota +regedit selinux
-snapper spotlight syslog system-heimdal +system-mitkrb5 systemd test winbind
+glusterfs gpg iprint json ldap llvm-libunwind pam profiling-data python quota +regedit selinux
+snapper spotlight syslog system-heimdal +system-mitkrb5 systemd test unwind winbind
 zeroconf"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -65,14 +65,14 @@ COMMON_DEPEND="
 	dev-perl/Parse-Yapp
 	>=net-libs/gnutls-3.4.7[${MULTILIB_USEDEP}]
 	>=sys-fs/e2fsprogs-1.46.4-r51[${MULTILIB_USEDEP}]
-	>=sys-libs/ldb-2.5.0[ldap(+)?,${MULTILIB_USEDEP}]
-	<sys-libs/ldb-2.6.0[ldap(+)?,${MULTILIB_USEDEP}]
+	>=sys-libs/ldb-2.4.4[ldap(+)?,${MULTILIB_USEDEP}]
+	<sys-libs/ldb-2.5.0[ldap(+)?,${MULTILIB_USEDEP}]
 	sys-libs/libcap[${MULTILIB_USEDEP}]
 	sys-libs/liburing:=[${MULTILIB_USEDEP}]
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
 	>=sys-libs/talloc-2.3.3[${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.4.6[${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-1.4.4[${MULTILIB_USEDEP}]
 	>=sys-libs/tevent-0.11.0[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/libcrypt:=[${MULTILIB_USEDEP}]
@@ -87,7 +87,6 @@ COMMON_DEPEND="
 			net-dns/bind-tools[gssapi]
 		)
 	")
-	!alpha? ( !sparc? ( sys-libs/libunwind:= ) )
 	acl? ( virtual/acl )
 	ceph? ( sys-cluster/ceph )
 	cluster? ( net-libs/rpcsvc-proto )
@@ -108,11 +107,14 @@ COMMON_DEPEND="
 	system-heimdal? ( >=app-crypt/heimdal-1.5[-ssl,${MULTILIB_USEDEP}] )
 	system-mitkrb5? ( >=app-crypt/mit-krb5-1.19[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd:0= )
+	unwind? (
+		llvm-libunwind? ( sys-libs/llvm-libunwind:= )
+		!llvm-libunwind? ( sys-libs/libunwind:= )
+	)
 	zeroconf? ( net-dns/avahi[dbus] )
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-util/cmocka-1.1.3[${MULTILIB_USEDEP}]
-	dev-perl/JSON
 	net-libs/libtirpc[${MULTILIB_USEDEP}]
 	|| (
 		net-libs/rpcsvc-proto
@@ -141,6 +143,8 @@ BDEPEND="${PYTHON_DEPS}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-pam.patch"
+	"${FILESDIR}/ldb-2.5.2-skip-wav-tevent-check.patch"
+	"${FILESDIR}/${PN}-4.15.9-libunwind-automagic.patch"
 )
 
 #CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
@@ -229,6 +233,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with systemd)
 		--systemd-install-services
 		--with-systemddir="$(systemd_get_systemunitdir)"
+		$(multilib_native_use_with unwind libunwind)
 		$(multilib_native_use_with winbind)
 		$(multilib_native_usex python '' '--disable-python')
 		$(multilib_native_use_enable zeroconf avahi)
@@ -325,17 +330,4 @@ multilib_src_test() {
 
 pkg_postinst() {
 	tmpfiles_process samba.conf
-
-	if [[ -z ${REPLACING_VERSIONS} ]] ; then
-		elog "Be aware that this release contains the best of all of Samba's"
-		elog "technology parts, both a file server (that you can reasonably expect"
-		elog "to upgrade existing Samba 3.x releases to) and the AD domain"
-		elog "controller work previously known as 'samba4'."
-		elog
-	fi
-	if [[ "${PV}" != *_rc* ]] ; then
-		elog "For further information and migration steps make sure to read "
-		elog "https://samba.org/samba/history/${P}.html "
-		elog "https://wiki.samba.org/index.php/Samba4/HOWTO "
-	fi
 }
