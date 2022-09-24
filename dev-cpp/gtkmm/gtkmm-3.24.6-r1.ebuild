@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-libs/libsigc++-2.3.2:2[gtk-doc?,${MULTILIB_USEDEP}]
 	>=media-libs/libepoxy-1.2[${MULTILIB_USEDEP}]
 	>=x11-libs/gdk-pixbuf-2.35.5:2[${MULTILIB_USEDEP}]
-	>=x11-libs/gtk+-3.24.0:3[aqua?,wayland?,X?,${MULTILIB_USEDEP}]
+	>=x11-libs/gtk+-3.24.0:3[aqua?,wayland?,X=,${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
