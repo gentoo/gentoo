@@ -23,7 +23,7 @@ esac
 if [[ -z ${_UNPACKER_ECLASS} ]]; then
 _UNPACKER_ECLASS=1
 
-inherit toolchain-funcs
+inherit multiprocessing toolchain-funcs
 
 # @ECLASS_VARIABLE: UNPACKER_BZ2
 # @USER_VARIABLE
@@ -395,7 +395,7 @@ _unpacker_get_decompressor() {
 	*.z|*.gz|*.tgz)
 		echo "gzip -dc" ;;
 	*.lzma|*.xz|*.txz)
-		echo "xz -dc" ;;
+		echo "xz -T$(makeopts_jobs) -dc" ;;
 	*.lz)
 		: ${UNPACKER_LZIP:=$(type -P plzip || type -P pdlzip || type -P lzip)}
 		echo "${UNPACKER_LZIP} -dc" ;;
