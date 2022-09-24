@@ -347,8 +347,10 @@ dev-python/PyQt6-WebEngine
 dev-qt/qt5compat:6
 dev-qt/qtbase:6
 dev-qt/qtdeclarative:6
+dev-qt/qtimageformats:6
 dev-qt/qtlocation:6
 dev-qt/qtmultimedia:6
+dev-qt/qtnetworkauth:6
 dev-qt/qtpositioning:6
 dev-qt/qtquick3d:6
 dev-qt/qtquicktimeline:6
