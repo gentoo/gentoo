@@ -344,8 +344,11 @@ unpack_7z() {
 
 	local p7z=$(find_unpackable_file "$1")
 	unpack_banner "${p7z}"
-	local output="$(7z x -y "${p7z}")"
 
+	# warning: putting local and command substitution in a single call
+	# discards the exit status!
+	local output
+	output="$(7z x -y "${p7z}")"
 	if [ $? -ne 0 ]; then
 		echo "${output}" >&2
 		die "unpacking ${p7z} failed (arch=unpack_7z)"
