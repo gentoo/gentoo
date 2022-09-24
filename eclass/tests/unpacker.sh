@@ -165,6 +165,8 @@ test_compressed_file .lzma lzma
 test_compressed_file .xz xz
 test_compressed_file .lz lzip
 test_compressed_file .zst zstd
+test_compressed_file .lz4 lz4
+test_compressed_file .lzo lzop
 
 test_compressed_file_multistream .bz2 bzip2
 test_compressed_file_multistream .gz gzip
@@ -187,6 +189,8 @@ test_compressed_tar .tar.xz xz
 test_compressed_tar .txz xz
 test_compressed_tar .tar.lz lzip
 test_compressed_tar .tar.zst zstd
+test_compressed_tar .tar.lz4 lz4
+test_compressed_tar .tar.lzo lzop
 
 test_unpack test.cpio test.in cpio 'cpio -o --quiet <<<${TESTFILE} > ${archive}'
 test_compressed_cpio .cpio.bz2 bzip2
@@ -196,6 +200,8 @@ test_compressed_cpio .cpio.lzma lzma
 test_compressed_cpio .cpio.xz xz
 test_compressed_cpio .cpio.lz lzip
 test_compressed_cpio .cpio.zst zstd
+test_compressed_cpio .cpio.lz4 lz4
+test_compressed_cpio .cpio.lzo lzop
 
 test_deb
 test_deb .gz gzip
@@ -223,6 +229,7 @@ test_reject_junk .lz
 test_reject_junk .zst
 test_reject_junk .tar
 test_reject_junk .cpio
+test_reject_junk .gpkg.tar
 test_reject_junk .deb
 test_reject_junk .zip
 test_reject_junk .7z

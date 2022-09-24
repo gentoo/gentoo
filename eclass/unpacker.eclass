@@ -401,6 +401,10 @@ _unpacker_get_decompressor() {
 		echo "${UNPACKER_LZIP} -dc" ;;
 	*.zst)
 		echo "zstd -dc" ;;
+	*.lz4)
+		echo "lz4 -dc" ;;
+	*.lzo)
+		echo "lzop -dc" ;;
 	esac
 }
 
@@ -535,6 +539,10 @@ unpacker_src_uri_depends() {
 			d="app-arch/zstd" ;;
 		*.lha|*.lzh)
 			d="app-arch/lha" ;;
+		*.lz4)
+			d="app-arch/lz4" ;;
+		*.lzo)
+			d="app-arch/lzop" ;;
 		esac
 		deps+=" ${d}"
 	done
