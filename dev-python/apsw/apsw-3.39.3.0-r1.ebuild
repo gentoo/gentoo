@@ -39,6 +39,7 @@ PATCHES=(
 src_configure() {
 	cat >> setup.cfg <<-EOF || die
 		[build_ext]
+		enable=load_extension
 		use_system_sqlite_config=True
 	EOF
 }
