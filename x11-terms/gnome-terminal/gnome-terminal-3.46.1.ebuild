@@ -11,7 +11,8 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Terminal/ https://gitlab.gnome.org/GNOME/g
 LICENSE="GPL-3+"
 SLOT="0"
 IUSE="debug +gnome-shell +nautilus vanilla"
-SRC_URI+=" !vanilla? ( https://dev.gentoo.org/~mattst88/distfiles/${PN}-3.44.0-cntr-ntfy-autottl-ts.patch.xz )"
+SRC_URI="https://gitlab.gnome.org/GNOME/${PN}/-/archive/${PV}/${P}.tar.gz"
+# SRC_URI+=" !vanilla? ( https://dev.gentoo.org/~mattst88/distfiles/${PN}-3.46.1-cntr-ntfy-autottl-ts.patch.xz )" # uncomment when patch is hosted
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 
@@ -19,13 +20,12 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~
 RDEPEND="
 	>=dev-libs/glib-2.52:2
 	>=x11-libs/gtk+-3.22.27:3
-	>=x11-libs/vte-0.68.0:2.91[!vanilla?]
+	>=x11-libs/vte-0.70.0:291[!vanilla?]
 	>=dev-libs/libpcre2-10
-	>=gnome-base/dconf-0.14
 	>=gnome-base/gsettings-desktop-schemas-0.1.0
 	sys-apps/util-linux
 	gnome-shell? ( gnome-base/gnome-shell )
-	nautilus? ( >=gnome-base/nautilus-3.28.0 )
+	nautilus? ( >=gnome-base/nautilus-43.0 )
 "
 DEPEND="${RDEPEND}"
 # itstool required for help/* with non-en LINGUAS, see bug #549358
@@ -47,18 +47,19 @@ DOC_CONTENTS="To get previous working directory inherited in new opened tab, or
 	. /etc/profile.d/vte-2.91.sh"
 
 src_prepare() {
-	eapply "${FILESDIR}"/${P}-fix-missing-wexitcode.patch
-	if ! use vanilla; then
-		# https://bugzilla.gnome.org/show_bug.cgi?id=695371
-		# Fedora patches:
-		# Restore transparency support (with compositing WMs only)
-		# OSC 777 desktop notification support (notifications on tabs for long-running commands completing)
-		# Restore "Set title" support
-		# Automatic title updating based on currently running foreground process
-		# https://src.fedoraproject.org/rpms/gnome-terminal/raw/f31/f/gnome-terminal-cntr-ntfy-autottl-ts.patch
-		# Depends on vte[-vanilla] for OSC 777 and the preexec/precmd/etc patches in VTE
-		eapply "${WORKDIR}"/${PN}-3.44.0-cntr-ntfy-autottl-ts.patch
-	fi
+	eapply "${FILESDIR}"/${PN}-3.44.1-fix-missing-wexitcode.patch
+	# if ! use vanilla; then
+	# 	# https://bugzilla.gnome.org/show_bug.cgi?id=695371
+	# 	# Fedora patches:
+	# 	# Restore transparency support (with compositing WMs only)
+	# 	# OSC 777 desktop notification support (notifications on tabs for long-running commands completing)
+	# 	# Restore "Set title" support
+	# 	# Automatic title updating based on currently running foreground process
+	# 	# https://src.fedoraproject.org/rpms/gnome-terminal/raw/f31/f/gnome-terminal-cntr-ntfy-autottl-ts.patch
+	# 	# Depends on vte[-vanilla] for OSC 777 and the preexec/precmd/etc patches in VTE
+	# 	# eapply "${WORKDIR}"/${PN}-3.46.1-cntr-ntfy-autottl-ts.patch # uncomment when patch is hosted on g.o
+	# 	eapply "${FILESDIR}"/${PN}-3.46.1-cntr-ntfy-autottl-ts.patch # uncomment when patch is hosted on g.o
+	# fi
 	default
 }
 
