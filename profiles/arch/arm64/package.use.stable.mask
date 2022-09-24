@@ -145,10 +145,6 @@ sys-auth/pambase pam_krb5 pam_ssh
 sys-block/thin-provisioning-tools test
 sys-devel/distcc gssapi
 
-# Michał Górny <mgorny@gentoo.org> (2018-02-28)
-# Requires masked dependent flags.
-net-fs/samba ads
-
 # Michał Górny <mgorny@gentoo.org> (2018-02-19)
 # Masked due to unstable deps.
 net-analyzer/netcat crypt
