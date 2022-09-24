@@ -12,12 +12,12 @@ SRC_URI="https://www.cairographics.org/releases/${P}.tar.xz"
 LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
-IUSE="gtk-doc test"
+IUSE="gtk-doc test X"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/libsigc++-2.6.0:2[gtk-doc?,${MULTILIB_USEDEP}]
-	>=x11-libs/cairo-1.12.0[${MULTILIB_USEDEP}]
+	>=x11-libs/cairo-1.12.0[X=,${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	test? (
