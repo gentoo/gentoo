@@ -457,12 +457,6 @@ sys-devel/automake:1.15
 # necessity.
 <net-p2p/arti-1.0.0
 
-# Stephan Hartmann <sultan@gentoo.org> (2022-08-20)
-# Dev channel releases are only for people who
-# are developers or want more experimental features
-# and accept a more unstable release.
->=www-client/chromium-106
-
 # Anton Fischl <github@fischl-online.de> (2022-02-23)
 # Version 2.5.* is not meant for production according to upstream
 =app-backup/burp-2.5*
