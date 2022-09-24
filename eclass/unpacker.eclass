@@ -389,7 +389,7 @@ _unpacker() {
 	[[ $# -eq 1 ]] || die "Usage: ${FUNCNAME} <file>"
 
 	local a=$1
-	local m=$(echo "${a}" | tr '[:upper:]' '[:lower:]')
+	local m=${a,,}
 	a=$(find_unpackable_file "${a}")
 
 	# first figure out the decompression method
