@@ -406,7 +406,7 @@ _unpacker() {
 		: ${UNPACKER_LZIP:=$(type -P plzip || type -P pdlzip || type -P lzip)}
 		comp="${UNPACKER_LZIP} -dc" ;;
 	*.zst)
-		comp="zstd -dfc" ;;
+		comp="zstd -dc" ;;
 	esac
 
 	# then figure out if there are any archiving aspects
