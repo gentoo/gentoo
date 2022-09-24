@@ -26,3 +26,13 @@
  fi
  
  AC_ARG_ENABLE(warnings-into-error,
+--- a/sigscheme/src/Makefile.am
++++ b/sigscheme/src/Makefile.am
+@@ -51,7 +51,6 @@
+         functable-srfi60.c
+ 
+ if MAINTAINER_MODE
+-$(FUNC_TABLES): $(top_builddir)/config.status
+ # Core
+ SSCM_CORE_SRCS = \
+ 	$(srcdir)/error.c \

@@ -96,7 +96,6 @@ PATCHES=(
 )
 DOCS=( AUTHORS NEWS README RELNOTE doc )
 
-AT_NO_RECURSIVE="yes"
 SITEFILE="50${PN}-gentoo.el"
 
 src_unpack() {
