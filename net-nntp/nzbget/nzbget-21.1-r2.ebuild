@@ -15,7 +15,7 @@ S=${WORKDIR}/${PN}-${PV/_pre*/-testing}
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="debug gnutls ncurses +parcheck ssl test zlib"
 RESTRICT="!test? ( test )"
 
