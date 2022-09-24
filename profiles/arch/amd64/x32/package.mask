@@ -117,6 +117,7 @@ net-p2p/ktorrent:5
 sci-geosciences/qmapshack
 sci-mathematics/rkward:5
 sci-visualization/labplot:5
+sys-apps/polychromatic
 www-client/falkon
 www-client/otter
 www-client/qutebrowser
