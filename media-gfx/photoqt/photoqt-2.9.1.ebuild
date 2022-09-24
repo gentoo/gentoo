@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="devil exif freeimage graphicsmagick imagemagick mpv pdf raw"
 
-DEPEND="
+COMMON_DEPEND="
 	app-arch/libarchive:=
 	app-arch/unrar
 	dev-libs/pugixml
@@ -41,7 +41,10 @@ DEPEND="
 	pdf? ( app-text/poppler[qt5] )
 	raw? ( media-libs/libraw:= )
 "
-RDEPEND="${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	dev-qt/qtconcurrent:5
+"
+RDEPEND="${COMMON_DEPEND}
 	dev-qt/qtgraphicaleffects:5
 	dev-qt/qtquickcontrols:5
 	dev-qt/qtquickcontrols2:5
