@@ -183,10 +183,9 @@ pkg_postinst() {
 	optfeature "Vim key bindings" dev-python/spyder-vim
 	optfeature "Unittest support" dev-python/spyder-unittest
 	optfeature "System terminal inside spyder" dev-python/spyder-terminal
+	optfeature "Jupyter notebook support" dev-python/spyder-notebook
 	# spyder-memory-profiler is not compatible with spyder-5.2+ yet
 	# optfeature "The memory profiler plugin" dev-python/spyder-memory-profiler
-	# spyder-notebook is not compatible with spyder-5.2+ yet
-	# optfeature "Jupyter notebook support" dev-python/spyder-notebook
 	# spyder-reports not yet updated to >=spyder-4.0.0
 	# optfeature "Markdown reports using Pweave" dev-python/spyder-reports
 	# Plugins with no release yet:
