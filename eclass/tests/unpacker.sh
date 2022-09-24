@@ -136,6 +136,43 @@ test_deb() {
 		"create_deb '${suffix}' '${tool_cmd}' \${archive} \${TESTFILE}"
 }
 
+create_gpkg() {
+	local suffix=${1}
+	local tool=${2}
+	local archive=${3}
+	local infile=${4}
+	local gpkg_dir=${archive%.gpkg.tar}
+
+	mkdir image metadata "${gpkg_dir}" || die
+	cp "${infile}" image/ || die
+	tar -c metadata | ${tool} > "${gpkg_dir}/metadata.tar${suffix}"
+	assert "packing metadata.tar${suffix} failed"
+	: > "${gpkg_dir}/metadata.tar${suffix}.sig" || die
+	tar -c image | ${tool} > "${gpkg_dir}/image.tar${suffix}"
+	assert "packing image.tar${suffix} failed"
+	: > "${gpkg_dir}/image.tar${suffix}.sig" || die
+	: > "${gpkg_dir}"/gpkg-1 || die
+	tar -cf "${archive}" --format=ustar \
+		"${gpkg_dir}"/{gpkg-1,{metadata,image}.tar"${suffix}"} || die
+	rm -r image metadata "${gpkg_dir}" || die
+}
+
+test_gpkg() {
+	local suffix=${1}
+	local tool=${2}
+	local tool_cmd
+
+	if [[ -n ${tool} ]]; then
+		tool_cmd="${tool} -c"
+	else
+		tool_cmd=cat
+	fi
+
+	test_unpack "test-${tool}-1.2.3-1.gpkg.tar" \
+		"test-${tool}-1.2.3-1/image/test.in" "tar ${tool}" \
+		"create_gpkg '${suffix}' '${tool_cmd}' \${archive} \${TESTFILE}"
+}
+
 test_reject_junk() {
 	local suffix=${1}
 	local archive=test${1}
@@ -208,6 +245,16 @@ test_deb .gz gzip
 test_deb .xz xz
 test_deb .bz2 bzip2
 test_deb .lzma lzma
+
+test_gpkg
+test_gpkg .gz gzip
+test_gpkg .bz2 bzip2
+test_gpkg .lz4 lz4
+test_gpkg .lz lzip
+test_gpkg .lzma lzma
+test_gpkg .lzo lzop
+test_gpkg .xz xz
+test_gpkg .zst zstd
 
 test_unpack test.zip test.in zip 'zip -q ${archive} ${TESTFILE}'
 # test handling non-adjusted zip with junk prepended

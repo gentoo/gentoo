@@ -408,6 +408,42 @@ _unpacker_get_decompressor() {
 	esac
 }
 
+# @FUNCTION: unpack_gpkg
+# @USAGE: <gpkg file>
+# @DESCRIPTION:
+# Unpack the image subarchive of a GPKG package on-the-fly, preserving
+# the original directory structure (i.e. into <gpkg-dir>/image).
+unpack_gpkg() {
+	[[ $# -eq 1 ]] || die "Usage: ${FUNCNAME} <file>"
+
+	local gpkg=$(find_unpackable_file "$1")
+	unpack_banner "${gpkg}"
+
+	local l images=()
+	while read -r l; do
+		case ${l} in
+			*/image.tar*.sig)
+				;;
+			*/image.tar*)
+				images+=( "${l}" )
+				;;
+		esac
+	done < <(tar -tf "${gpkg}" || die "unable to list ${gpkg}")
+
+	if [[ ${#images[@]} -eq 0 ]]; then
+		die "No image.tar found in ${gpkg}"
+	elif [[ ${#images[@]} -gt 1 ]]; then
+		die "More than one image.tar found in ${gpkg}"
+	fi
+
+	local decomp=$(_unpacker_get_decompressor "${images[0]}")
+	local dirname=${images[0]%/*}
+	mkdir -p "${dirname}" || die
+	tar -xOf "${gpkg}" "${images[0]}" | ${decomp:-cat} |
+		tar --no-same-owner -xC "${dirname}"
+	assert "Unpacking ${gpkg} failed"
+}
+
 # @FUNCTION: _unpacker
 # @USAGE: <one archive to unpack>
 # @INTERNAL
@@ -427,6 +463,8 @@ _unpacker() {
 	# then figure out if there are any archiving aspects
 	local arch=""
 	case ${m} in
+	*.gpkg.tar)
+		arch="unpack_gpkg" ;;
 	*.tgz|*.tbz|*.tbz2|*.txz|*.tar.*|*.tar)
 		arch="tar --no-same-owner -xof" ;;
 	*.cpio.*|*.cpio)
