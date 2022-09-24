@@ -379,6 +379,31 @@ unpack_lha() {
 	lha xfq "${lha}" || die "unpacking ${lha} failed (arch=unpack_lha)"
 }
 
+# @FUNCTION: _unpacker_get_decompressor
+# @INTERNAL
+# @USAGE: <filename>
+# @DESCRIPTION:
+# Get decompressor command for specified filename.
+_unpacker_get_decompressor() {
+	case ${1} in
+	*.bz2|*.tbz|*.tbz2)
+		local bzcmd=${PORTAGE_BZIP2_COMMAND:-$(type -P pbzip2 || type -P bzip2)}
+		local bzuncmd=${PORTAGE_BUNZIP2_COMMAND:-${bzcmd} -d}
+		: ${UNPACKER_BZ2:=${bzuncmd}}
+		echo "${UNPACKER_BZ2} -c"
+		;;
+	*.z|*.gz|*.tgz)
+		echo "gzip -dc" ;;
+	*.lzma|*.xz|*.txz)
+		echo "xz -dc" ;;
+	*.lz)
+		: ${UNPACKER_LZIP:=$(type -P plzip || type -P pdlzip || type -P lzip)}
+		echo "${UNPACKER_LZIP} -dc" ;;
+	*.zst)
+		echo "zstd -dc" ;;
+	esac
+}
+
 # @FUNCTION: _unpacker
 # @USAGE: <one archive to unpack>
 # @INTERNAL
@@ -393,24 +418,7 @@ _unpacker() {
 	a=$(find_unpackable_file "${a}")
 
 	# first figure out the decompression method
-	local comp=""
-	case ${m} in
-	*.bz2|*.tbz|*.tbz2)
-		local bzcmd=${PORTAGE_BZIP2_COMMAND:-$(type -P pbzip2 || type -P bzip2)}
-		local bzuncmd=${PORTAGE_BUNZIP2_COMMAND:-${bzcmd} -d}
-		: ${UNPACKER_BZ2:=${bzuncmd}}
-		comp="${UNPACKER_BZ2} -c"
-		;;
-	*.z|*.gz|*.tgz)
-		comp="gzip -dc" ;;
-	*.lzma|*.xz|*.txz)
-		comp="xz -dc" ;;
-	*.lz)
-		: ${UNPACKER_LZIP:=$(type -P plzip || type -P pdlzip || type -P lzip)}
-		comp="${UNPACKER_LZIP} -dc" ;;
-	*.zst)
-		comp="zstd -dc" ;;
-	esac
+	local comp=$(_unpacker_get_decompressor "${m}")
 
 	# then figure out if there are any archiving aspects
 	local arch=""
