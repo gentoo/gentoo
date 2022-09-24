@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Converts and manipulates common color representation (RGB, HSL, web, ...).
+    Full conversion between RGB, HSL, 6-digit hex, 3-digit hex, human color.
+    One object (Color) or bunch of single purpose function (rgb2hex, hsl2rgb
+    ...). Web format that use the smallest representation between 6-digit (e.g.
+    #fa3b2c), 3-digit (e.g. #fbb), fully spelled color (e.g. white), following
+    W3C color naming for compatible CSS or HTML color specifications. Smooth
+    intuitive color scale generation choosing N color gradients. Can pick
+    colors for you to identify objects of your application.
+  </longdescription>
+  <stabilize-allarches />
+  <upstream>
+    <remote-id type="github">vaab/colour</remote-id>
+    <remote-id type="pypi">colour</remote-id>
+  </upstream>
+</pkgmetadata>
