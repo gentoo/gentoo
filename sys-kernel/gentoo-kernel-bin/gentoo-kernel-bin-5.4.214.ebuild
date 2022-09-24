@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit kernel-install toolchain-funcs
+inherit kernel-install toolchain-funcs unpacker
 
 MY_P=linux-${PV%.*}
 GENPATCHES_P=genpatches-${PV%.*}-$(( ${PV##*.} + 5 ))
@@ -55,11 +55,6 @@ QA_PREBUILT='*'
 KV_LOCALVERSION='-gentoo-dist'
 KPV=${PV}${KV_LOCALVERSION}
 
-src_unpack() {
-	default
-	unpack "${BINPKG}"/image.tar.xz
-}
-
 src_prepare() {
 	local PATCHES=(
 		# meh, genpatches have no directory
@@ -102,22 +97,22 @@ src_configure() {
 	)
 
 	mkdir modprep || die
-	cp "image/usr/src/linux-${KPV}/.config" modprep/ || die
+	cp "${BINPKG}/image/usr/src/linux-${KPV}/.config" modprep/ || die
 	emake -C "${MY_P}" "${makeargs[@]}" modules_prepare
 }
 
 src_test() {
 	kernel-install_test "${KPV}" \
-		"${WORKDIR}/image/usr/src/linux-${KPV}/$(dist-kernel_get_image_path)" \
-		"image/lib/modules/${KPV}"
+		"${WORKDIR}/${BINPKG}/image/usr/src/linux-${KPV}/$(dist-kernel_get_image_path)" \
+		"${BINPKG}/image/lib/modules/${KPV}"
 }
 
 src_install() {
-	mv image/{lib,usr} "${ED}"/ || die
+	mv "${BINPKG}"/image/{lib,usr} "${ED}"/ || die
 
 	# FIXME: requires proper mount-boot
 	if [[ -d boot/dtbs ]]; then
-		mv image/boot "${ED}"/ || die
+		mv "${BINPKG}"/image/boot "${ED}"/ || die
 	fi
 
 	# strip out-of-source build stuffs from modprep
