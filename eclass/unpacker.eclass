@@ -509,7 +509,8 @@ unpacker_src_uri_depends() {
 	fi
 
 	for uri in "$@" ; do
-		case ${uri} in
+		local m=${uri,,}
+		case ${m} in
 		*.cpio.*|*.cpio)
 			d="app-arch/cpio" ;;
 		*.rar|*.RAR)
