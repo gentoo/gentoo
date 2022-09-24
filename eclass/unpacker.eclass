@@ -444,9 +444,9 @@ _unpacker() {
 		case ${m} in
 		*.7z)
 			arch="unpack_7z" ;;
-		*.rar|*.RAR)
+		*.rar)
 			arch="unpack_rar" ;;
-		*.LHA|*.LHa|*.lha|*.lzh)
+		*.lha|*.lzh)
 			arch="unpack_lha" ;;
 		esac
 	fi
@@ -513,7 +513,7 @@ unpacker_src_uri_depends() {
 		case ${m} in
 		*.cpio.*|*.cpio)
 			d="app-arch/cpio" ;;
-		*.rar|*.RAR)
+		*.rar)
 			d="app-arch/unrar" ;;
 		*.7z)
 			d="app-arch/p7zip" ;;
@@ -525,7 +525,7 @@ unpacker_src_uri_depends() {
 			d="|| ( app-arch/plzip app-arch/pdlzip app-arch/lzip )" ;;
 		*.zst)
 			d="app-arch/zstd" ;;
-		*.LHA|*.LHa|*.lha|*.lzh)
+		*.lha|*.lzh)
 			d="app-arch/lha" ;;
 		esac
 		deps+=" ${d}"
