@@ -22,7 +22,7 @@ else
 	MY_PV="${PV/_rc/rc}"
 	SRC_URI="https://github.com/matrix-org/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.gh.tar.gz"
 	S="${WORKDIR}/${PN}-${MY_PV}"
-	KEYWORDS="~amd64 ~ppc64"
+	KEYWORDS="amd64 ~ppc64"
 fi
 
 LICENSE="Apache-2.0"
