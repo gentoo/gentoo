@@ -1,6 +1,12 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Yixun Lan <dlan@gentoo.org> (2022-01-27)
+# This target supports ASAN/etc...
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-09-25)
+# Moved here from default/linux/...
+sys-devel/gcc -sanitize
+
 # Alexey Shvetsov <alexxy@gentoo.org> (2022-09-15)
 # Mask nvml use flag for slurm
 sys-cluster/slurm nvml
