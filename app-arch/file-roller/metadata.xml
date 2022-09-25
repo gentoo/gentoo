@@ -10,7 +10,6 @@
 			<pkg>gnome-base/nautilus</pkg>.</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">fileroller</remote-id>
-		<remote-id type="cpe">cpe:/a:paolo_bacchilega:file_roller</remote-id>
+		<remote-id type="gnome-gitlab">file-roller</remote-id>
 	</upstream>
 </pkgmetadata>
