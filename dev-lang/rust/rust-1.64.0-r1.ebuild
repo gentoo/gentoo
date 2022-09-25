@@ -297,14 +297,13 @@ src_configure() {
 	use system-llvm && filter-flags '-flto*' # https://bugs.gentoo.org/862109
 
 	local rust_target="" rust_targets="" arch_cflags use_libcxx="false"
-	local chost_target="$(get_abi_CHOST ${v##*.})"
 
 	# Collect rust target names to compile standard libs for all ABIs.
 	for v in $(multilib_get_enabled_abi_pairs); do
-		rust_targets+=",\"$(rust_abi ${chost_target})\""
+		rust_targets="${rust_targets},\"$(rust_abi $(get_abi_CHOST ${v##*.}))\""
 	done
 	if use wasm; then
-		rust_targets+=",\"wasm32-unknown-unknown\""
+		rust_targets="${rust_targets},\"wasm32-unknown-unknown\""
 		if use system-llvm; then
 			# un-hardcode rust-lld linker for this target
 			# https://bugs.gentoo.org/715348
