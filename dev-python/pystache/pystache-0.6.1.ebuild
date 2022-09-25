@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
-DESCRIPTION="Updated Python implementation of Mustache templating framework"
+DESCRIPTION="Python implementation of Mustache templating framework."
 HOMEPAGE="
 	https://github.com/PennyDreadfulMTG/pystache/
 	https://pypi.org/project/pystache/
