@@ -37,11 +37,11 @@ RDEPEND="
 	>=dev-python/pyperclip-1.6.0[${PYTHON_USEDEP}]
 	>=dev-python/ruamel-yaml-0.16[${PYTHON_USEDEP}]
 	>=dev-python/sortedcontainers-2.3.0[${PYTHON_USEDEP}]
+	>=dev-python/tornado-6.1[${PYTHON_USEDEP}]
 	>=dev-python/urwid-2.1.1[${PYTHON_USEDEP}]
 	>=dev-python/wsproto-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/zstandard-0.11.0[${PYTHON_USEDEP}]
 	dev-libs/openssl:0
-	>=www-servers/tornado-6.1[${PYTHON_USEDEP}]
 "
 
 BDEPEND="

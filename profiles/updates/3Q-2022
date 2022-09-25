@@ -18,3 +18,4 @@ move app-office/gnome-todo app-office/endeavour
 move dev-python/python-levenshtein dev-python/Levenshtein
 move mail-mta/protonmail-bridge mail-mta/proton-mail-bridge
 move app-emulation/distrobox app-containers/distrobox
+move www-servers/tornado dev-python/tornado

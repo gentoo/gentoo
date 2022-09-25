@@ -26,7 +26,7 @@ RDEPEND="
 	>=dev-python/nbclassic-0.2[${PYTHON_USEDEP}]
 	<dev-python/notebook-7[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]
-	>=www-servers/tornado-6.1[${PYTHON_USEDEP}]
+	>=dev-python/tornado-6.1[${PYTHON_USEDEP}]
 	net-libs/nodejs
 "
 
