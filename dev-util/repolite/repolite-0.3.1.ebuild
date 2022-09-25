@@ -30,11 +30,13 @@ RDEPEND="
 	dev-python/munch[${PYTHON_USEDEP}]
 	dev-vcs/git
 "
-BDEPEND="
-	$(python_gen_any_dep '
-		>=dev-python/versioningit-2.0.1[${PYTHON_USEDEP}]
-	')
-"
+# needs versioningit if building from git repo source
+if [[ ${PV} = 9999* ]]; then
+	BDEPEND="
+		$(python_gen_any_dep '
+			>=dev-python/versioningit-2.0.1[${PYTHON_USEDEP}]
+		')"
+fi
 
 DOCS=( README.rst )
 
