@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Terminal/VTE https://gitlab.gnome.org/GNOM
 
 # Once SIXEL support ships (0.66 or later), might need xterm license (but code might be considered upgraded to LGPL-3+)
 LICENSE="LGPL-3+ GPL-3+"
-SLOT="2.91" # vte_gtk3_api_name in meson.build
+SLOT="2.91-gtk4" # vte__api_version + "-gtk4" in meson.build
 IUSE="+crypt debug gtk-doc +icu +introspection systemd +vala vanilla"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
 REQUIRED_USE="
@@ -24,7 +24,7 @@ SRC_URI="https://gitlab.gnome.org/GNOME/${PN}/-/archive/${PV}/${P}.tar.bz2"
 #SRC_URI="${SRC_URI} !vanilla? ( https://dev.gentoo.org/~mattst88/distfiles/${PN}-0.70.0-command-notify.patch.xz )" # uncomment when patch is hosted
 
 RDEPEND="
-	>=x11-libs/gtk+-3.24.22:3[introspection?]
+	>=gui-libs/gtk-4.0.1:4[introspection?]
 	>=dev-libs/fribidi-1.0.0
 	>=dev-libs/glib-2.52:2
 	crypt?  ( >=net-libs/gnutls-3.2.7:0= )
@@ -64,7 +64,7 @@ src_prepare() {
 
 	# -Ddebugg option enables various debug support via VTE_DEBUG, but also ggdb3; strip the latter
 	sed -e '/ggdb3/d' -i meson.build || die
-	sed -i 's/vte_gettext_domain = vte_api_name/vte_gettext_domain = vte_gtk3_api_name/' meson.build || die
+	sed -i 's/vte_gettext_domain = vte_api_name/vte_gettext_domain = vte_gtk4_api_name/' meson.build || die
 }
 
 src_configure() {
@@ -76,8 +76,8 @@ src_configure() {
 		-Dfribidi=true # pulled in by pango anyhow
 		-Dglade=true
 		$(meson_use crypt gnutls)
-		-Dgtk3=true
-		-Dgtk4=false
+		-Dgtk3=false
+		-Dgtk4=true
 		$(meson_use icu)
 		$(meson_use systemd _systemd)
 		$(meson_use vala vapi)
@@ -86,8 +86,8 @@ src_configure() {
 }
 
 src_install() {
-	meson_install # not meson_src_install because this would include einstalldocs, which would result in file collisions with gui-libs/vte
-	# remove the files that have collisions with gui-libs/vte. The files come with gui-libs/vte-common instead
+	meson_install # not meson_src_install because this would include einstalldocs, which would result in file collisions with x11-libs/vte
+	# remove the files that have collisions with x11-libs/vte. The files come with gui-libs/vte-common instead
 	rm "${ED}"/usr/libexec/vte-urlencode-cwd || die
 	rm "${ED}"/etc/profile.d/vte.sh || die
 	rm "${ED}"/etc/profile.d/vte.csh || die
@@ -95,8 +95,7 @@ src_install() {
 		rm "${ED}"/usr/lib/systemd/user/vte-spawn-.scope.d/defaults.conf || die
 	fi
 	if use gtk-doc; then
-		mkdir -p "${ED}"/usr/share/gtk-doc/vte-${SLOT}-gtk3/ || die
-		mv "${ED}"/usr/share/doc/vte-${SLOT}/* "${ED}"/usr/share/gtk-doc/vte-${SLOT}-gtk3 || die
-		rm -rf "${ED}"/usr/share/doc/vte-${SLOT} || die
+		mkdir -p "${ED}"/usr/share/gtk-doc/ || die
+		mv "${ED}"/usr/share/doc/vte-${SLOT} "${ED}"/usr/share/gtk-doc/ || die
 	fi
 }

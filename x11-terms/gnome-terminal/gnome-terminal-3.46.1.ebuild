@@ -20,7 +20,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~
 RDEPEND="
 	>=dev-libs/glib-2.52:2
 	>=x11-libs/gtk+-3.22.27:3
-	>=x11-libs/vte-0.70.0:291[!vanilla?]
+	>=x11-libs/vte-0.70.0:2.91[!vanilla?]
 	>=dev-libs/libpcre2-10
 	>=gnome-base/gsettings-desktop-schemas-0.1.0
 	sys-apps/util-linux
