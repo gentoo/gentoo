@@ -273,33 +273,39 @@ unpack_deb() {
 
 	unpack_banner "${deb}"
 
-	# on AIX ar doesn't work out as their ar used a different format
-	# from what GNU ar (and thus what .deb files) produce
-	if [[ -n ${EPREFIX} ]] ; then
-		{
-			read # global header
-			[[ ${REPLY} = "!<arch>" ]] || die "${deb} does not seem to be a deb archive"
-			local f timestamp uid gid mode size magic
-			while read f timestamp uid gid mode size magic ; do
-				[[ -n ${f} && -n ${size} ]] || continue # ignore empty lines
-				# GNU ar uses / as filename terminator (and .deb permits that)
-				f=${f%/}
-				if [[ ${f} = "data.tar"* ]] ; then
-					head -c "${size}" > "${f}"
-				else
-					head -c "${size}" > /dev/null # trash it
-				fi
-			done
-		} < "${deb}"
-	else
-		$(tc-getBUILD_AR) x "${deb}" || die
-	fi
-
-	unpacker ./data.tar*
-
-	# Clean things up #458658.  No one seems to actually care about
-	# these, so wait until someone requests to do something else ...
-	rm -f debian-binary {control,data}.tar*
+	{
+		# on AIX ar doesn't work out as their ar used a different format
+		# from what GNU ar (and thus what .deb files) produce
+		if [[ -n ${EPREFIX} ]] ; then
+			{
+				read # global header
+				[[ ${REPLY} = "!<arch>" ]] || die "${deb} does not seem to be a deb archive"
+				local f timestamp uid gid mode size magic
+				while read f timestamp uid gid mode size magic ; do
+					[[ -n ${f} && -n ${size} ]] || continue # ignore empty lines
+					# GNU ar uses / as filename terminator (and .deb permits that)
+					f=${f%/}
+					if [[ ${f} = "data.tar"* ]] ; then
+						local decomp=$(_unpacker_get_decompressor "${f}")
+						head -c "${size}" | ${decomp:-cat}
+						assert "unpacking ${f} from ${deb} failed"
+						break
+					else
+						head -c "${size}" > /dev/null # trash it
+					fi
+				done
+			} < "${deb}"
+		else
+			local f=$(
+				$(tc-getBUILD_AR) t "${deb}" | grep ^data.tar
+				assert "data not found in ${deb}"
+			)
+			local decomp=$(_unpacker_get_decompressor "${f}")
+			$(tc-getBUILD_AR) p "${deb}" "${f}" | ${decomp:-cat}
+			assert "unpacking ${f} from ${deb} failed"
+		fi
+	} | tar --no-same-owner -x
+	assert "unpacking ${deb} failed"
 }
 
 # @FUNCTION: unpack_cpio
