@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Piotr Karbowski <slashbeast@gentoo.org> (2022-09-25)
+# No package in tree depends on dev-python/ssh2-python. Masked for removal.
+# Removal on 2022-10-25.
+dev-python/ssh2-python
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-09-23)
 # Unmaintained upstream, obsolete after introduction of kde-misc/markdownpart.
 # Removal on 2022-10-23.
