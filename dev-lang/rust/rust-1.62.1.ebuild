@@ -73,7 +73,7 @@ LLVM_DEPEND+=" )
 # most of the time previous versions fail to bootstrap with newer
 # for example 1.47.x, requires at least 1.46.x, 1.47.x is ok,
 # but it fails to bootstrap with 1.48.x
-# https://github.com/rust-lang/rust/blob/${PV}/src/stage0.txt
+# https://github.com/rust-lang/rust/blob/${PV}/src/stage0.json
 RUST_DEP_PREV="$(ver_cut 1).$(($(ver_cut 2) - 1))*"
 RUST_DEP_CURR="$(ver_cut 1).$(ver_cut 2)*"
 BOOTSTRAP_DEPEND="||
