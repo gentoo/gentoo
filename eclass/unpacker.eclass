@@ -30,7 +30,8 @@ inherit multiprocessing toolchain-funcs
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Utility to use to decompress bzip2 files.  Will dynamically pick between
-# `pbzip2` and `bzip2`.  Make sure your choice accepts the "-dc" options.
+# `lbzip2`, `pbzip2` and `bzip2`.  Make sure your choice accepts the "-dc"
+# options.
 # Note: this is meant for users to set, not ebuilds.
 
 # @ECLASS_VARIABLE: UNPACKER_LZIP
@@ -387,7 +388,9 @@ unpack_lha() {
 _unpacker_get_decompressor() {
 	case ${1} in
 	*.bz2|*.tbz|*.tbz2)
-		local bzcmd=${PORTAGE_BZIP2_COMMAND:-$(type -P pbzip2 || type -P bzip2)}
+		local bzcmd=${PORTAGE_BZIP2_COMMAND:-$(
+			type -P lbzip2 || type -P pbzip2 || type -P bzip2
+		)}
 		local bzuncmd=${PORTAGE_BUNZIP2_COMMAND:-${bzcmd} -d}
 		: ${UNPACKER_BZ2:=${bzuncmd}}
 		echo "${UNPACKER_BZ2} -c"
