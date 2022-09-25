@@ -120,17 +120,19 @@ pkg_setup() {
 	BUILD_TARGETS="modules"
 
 	if linux_chkconfig_present CC_IS_CLANG; then
-		ewarn "Warning: building ${PN} with a clang-built kernel is experimental"
+		ewarn "Warning: clang-built kernel detected, using clang for modules (experimental)"
+		ewarn "Can use KERNEL_CC and KERNEL_LD environment variables to override if needed."
 
-		BUILD_PARAMS+=' CC=${CHOST}-clang'
+		tc-is-clang || : "${KERNEL_CC:=${CHOST}-clang}"
 		if linux_chkconfig_present LD_IS_LLD; then
-			BUILD_PARAMS+=' LD=ld.lld'
+			: "${KERNEL_LD:=ld.lld}"
 			if linux_chkconfig_present LTO_CLANG_THIN; then
 				# kernel enables cache by default leading to sandbox violations
 				BUILD_PARAMS+=' ldflags-y=--thinlto-cache-dir= LDFLAGS_MODULE=--thinlto-cache-dir='
 			fi
 		fi
 	fi
+	BUILD_PARAMS+=' ${KERNEL_CC:+CC="${KERNEL_CC}"} ${KERNEL_LD:+LD="${KERNEL_LD}"}'
 
 	if kernel_is -gt ${NV_KERNEL_MAX/./ }; then
 		ewarn "Kernel ${KV_MAJOR}.${KV_MINOR} is either known to break this version of ${PN}"
