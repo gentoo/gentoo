@@ -47,11 +47,11 @@ pkg_postinst() {
 	einfo "to reflect the new numbering system. You can find more"
 	einfo "information in"
 	einfo
-	einfo "  ${ROOT}usr/share/doc/${PF}/IDNUMBERING"
+	einfo "  ${ROOT}/usr/share/doc/${PF}/IDNUMBERING"
 	einfo
 	einfo "and a CSV file containing the old -> new rule number"
 	einfo "mapping was installed as"
 	einfo
-	einfo "  ${ROOT}usr/share/doc/${PF}/IdNumbering.csv"
+	einfo "  ${ROOT}/usr/share/doc/${PF}/IdNumbering.csv"
 	einfo
 }
