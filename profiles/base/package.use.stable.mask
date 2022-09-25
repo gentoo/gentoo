@@ -23,11 +23,6 @@ sci-electronics/kicad ngspice
 # app-text/pandoc is not stable
 app-text/nuspell doc
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-05-05)
-# fop[test] depends on mockito:4, which is not yet stable (bug #727504),
-# and itself blocked by libffi stabilization (bug #813756).
-dev-java/fop test
-
 # Sam James <sam@gentoo.org> (2022-02-11)
 # Needs glibc-2.35(?) (or <2.34) which is not yet even keyworded but
 # won't be stable for a while. Can be unmasked then.
