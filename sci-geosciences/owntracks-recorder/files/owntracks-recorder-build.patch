@@ -1,0 +1,119 @@
+https://github.com/owntracks/recorder/pull/402
+
+diff --git a/Makefile b/Makefile
+index f2b9a41..546dd58 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,6 @@
+ include config.mk
+
+-CFLAGS	+=-Wall -Werror -DNS_ENABLE_IPV6
++CFLAGS	+= -Wall -DNS_ENABLE_IPV6
+ LIBS	= $(MORELIBS) -lm
+ LIBS 	+= -lcurl -lconfig
+
+@@ -23,10 +23,18 @@ CFLAGS += -DGHASHPREC=$(GHASHPREC)
+ LIBS += -llmdb
+ LIBS += -lpthread
+
++define CPP_CONDITION
++printf '#if $(1) \n
++true \n
++#else \n
++#error false \n
++#endif' | $(CPP) -P - >/dev/null 2>&1 && echo yes
++endef
++
+ ifeq ($(WITH_MQTT),yes)
+ 	CFLAGS += -DWITH_MQTT=1
+-	CFLAGS += $(MOSQUITTO_INC)
+-	LIBS += $(MOSQUITTO_LIB) -lmosquitto -lm
++	CFLAGS += $(MOSQUITTO_CFLAGS)
++	LIBS += $(MOSQUITTO_LIBS) -lm
+ endif
+
+ ifeq ($(WITH_PING),yes)
+@@ -56,6 +64,12 @@ endif
+ ifeq ($(WITH_TOURS),yes)
+ 	CFLAGS += -DWITH_TOURS
+ 	OTR_EXTRA_OBJS +=
++
++	# Debian requires uuid-dev
++	# RHEL/CentOS needs libuuid-devel
++	ifeq ($(shell $(call CPP_CONDITION,__linux__)),yes)
++		LIBS += -luuid
++	endif
+ endif
+
+ ifeq ($(WITH_GREENWICH),yes)
+@@ -77,14 +91,16 @@ TARGETS += ot-recorder ocat
+ GIT_VERSION := $(shell git describe --long --abbrev=10 --dirty --tags 2>/dev/null || echo "tarball")
+ CFLAGS += -DGIT_VERSION=\"$(GIT_VERSION)\"
+
++PKG_CONFIG ?= pkg-config
++
+ all: $(TARGETS)
+
+ ot-recorder: recorder.o $(OTR_OBJS) $(OTR_EXTRA_OBJS)
+-	$(CC) $(CFLAGS) -o ot-recorder recorder.o $(OTR_OBJS) $(OTR_EXTRA_OBJS) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o ot-recorder recorder.o $(OTR_OBJS) $(OTR_EXTRA_OBJS) $(LIBS)
+ 	if test -r codesign.sh; then /bin/sh codesign.sh; fi
+
+ ocat: ocat.o $(OTR_OBJS)
+-	$(CC) $(CFLAGS) -o ocat ocat.o $(OTR_OBJS) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o ocat ocat.o $(OTR_OBJS) $(LIBS)
+
+ $(OTR_OBJS): config.mk Makefile
+
+@@ -114,8 +130,8 @@ install: ot-recorder ocat
+ 	mkdir -p $(DESTDIR)$(INSTALLDIR)/bin
+ 	mkdir -p $(DESTDIR)$(INSTALLDIR)/sbin
+ 	mkdir -p $(DESTDIR)$(DOCROOT)
+-	mkdir -p $(DESTDIR)$(STORAGEDEFAULT)/last
+-	cp -R docroot/* $(DESTDIR)$(DOCROOT)/
++	mkdir -p $(DESTDIR)$(STORAGEDEFAULT)
++	cd docroot && find ! -type d ! -name .gitignore -exec install -m0644 -D {} $(DESTDIR)$(DOCROOT)/{} \;
+ 	install -m 0755 ot-recorder $(DESTDIR)$(INSTALLDIR)/sbin
+ 	install -m 0755 ocat $(DESTDIR)$(INSTALLDIR)/bin
+ 	mkdir -p `dirname $(DESTDIR)/$(CONFIGFILE)`
+diff --git a/config.mk.in b/config.mk.in
+index 6fd674d..9def768 100644
+--- a/config.mk.in
++++ b/config.mk.in
+@@ -40,7 +40,7 @@ WITH_MQTT ?= yes
+ WITH_HTTP ?= yes
+
+ # Do you want recorder support for shared views? Requires WITH_HTTP
+-# also requires -luuid on Linux (see below at MORELIBS)
++# also requires -luuid on Linux.
+ WITH_TOURS ?= yes
+
+ # Do you have Lua libraries installed and want the Lua hook integration?
+@@ -90,12 +90,8 @@ JSON_INDENT ?= no
+ CONFIGFILE = /etc/default/ot-recorder
+
+ # Optionally specify the path to the Mosquitto libs, include here
+-MOSQUITTO_INC = -I/usr/include
+-MOSQUITTO_LIB = -L/usr/lib
+-
+-# Debian requires uuid-dev
+-# RHEL/CentOS needs libuuid-devel
+-MORELIBS += -luuid # -lssl
++MOSQUITTO_CFLAGS = `$(PKG_CONFIG) --cflags libmosquitto`
++MOSQUITTO_LIBS   = `$(PKG_CONFIG) --libs libmosquitto`
+
+ # Milliseconds (ms) timeout for reverse geocoding
+ GEOCODE_TIMEOUT = 4000
+@@ -105,8 +101,8 @@ GEOCODE_TIMEOUT = 4000
+ # and in particular could require you to add the lua+version (e.g lua-5.2)
+ # to both pkg-config invocations
+
+-LUA_CFLAGS = `pkg-config --cflags lua`
+-LUA_LIBS   = `pkg-config --libs lua`
++LUA_CFLAGS = `$(PKG_CONFIG) --cflags lua`
++LUA_LIBS   = `$(PKG_CONFIG) --libs lua`
+
+-SODIUM_CFLAGS = `pkg-config --cflags libsodium`
+-SODIUM_LIBS   = `pkg-config --libs libsodium`
++SODIUM_CFLAGS = `$(PKG_CONFIG) --cflags libsodium`
++SODIUM_LIBS   = `$(PKG_CONFIG) --libs libsodium`
