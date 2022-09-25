@@ -48,6 +48,15 @@ PATCHES=(
 distutils_enable_sphinx doc 'dev-python/sphinx_rtd_theme'
 distutils_enable_tests pytest
 
+src_prepare() {
+	# do not claim "bin" package (sic!)
+	rm bin/__init__.py || die
+	sed -e 's/find:/find_namespace:/' \
+		-e '/exclude =/a\    doc*' \
+		-i setup.cfg || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	local EPYTEST_DESELECT=(
 		# speed tests are unreliable
@@ -85,11 +94,6 @@ python_test() {
 	epytest -p xdist.plugin -n "$(makeopts_jobs)"
 	# clean up the compiledir, as it can grow pretty large
 	rm -r "${HOME}"/.aesara || die
-}
-
-python_compile() {
-	distutils-r1_python_compile
-	rm "${BUILD_DIR}/install$(python_get_sitedir)/bin/__init__.py" || die
 }
 
 pkg_postinst() {
