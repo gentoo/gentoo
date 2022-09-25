@@ -32,7 +32,7 @@ RDEPEND="
 	app-emacs/with-editor
 	dev-python/ipython
 	dev-python/notebook
-	www-servers/tornado
+	dev-python/tornado
 "
 BDEPEND="
 	${RDEPEND}

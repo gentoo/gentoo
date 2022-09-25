@@ -26,7 +26,7 @@ RDEPEND="
 	dev-python/msgpack[${PYTHON_USEDEP}]
 	|| (
 		app-admin/salt[${PYTHON_USEDEP}]
-		www-servers/tornado[${PYTHON_USEDEP}]
+		dev-python/tornado[${PYTHON_USEDEP}]
 	)
 "
 #BDEPEND="

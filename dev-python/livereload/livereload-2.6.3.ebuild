@@ -20,7 +20,7 @@ IUSE="examples"
 
 RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
-	www-servers/tornado[${PYTHON_USEDEP}]
+	dev-python/tornado[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

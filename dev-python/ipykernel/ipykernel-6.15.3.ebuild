@@ -26,8 +26,8 @@ RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]
 	>=dev-python/pyzmq-17[${PYTHON_USEDEP}]
+	>=dev-python/tornado-6.1[${PYTHON_USEDEP}]
 	>=dev-python/traitlets-5.1.0[${PYTHON_USEDEP}]
-	>=www-servers/tornado-6.1[${PYTHON_USEDEP}]
 "
 # RDEPEND seems specifically needed in BDEPEND, at least jupyter
 # bug #816486

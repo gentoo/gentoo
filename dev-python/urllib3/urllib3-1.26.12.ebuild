@@ -40,8 +40,8 @@ BDEPEND="
 			dev-python/mock[\${PYTHON_USEDEP}]
 			dev-python/pytest[\${PYTHON_USEDEP}]
 			dev-python/pytest-freezegun[\${PYTHON_USEDEP}]
+			>=dev-python/tornado-4.2.1[\${PYTHON_USEDEP}]
 			>=dev-python/trustme-0.5.3[\${PYTHON_USEDEP}]
-			>=www-servers/tornado-4.2.1[\${PYTHON_USEDEP}]
 		" python3_{8..11})
 	)
 "
