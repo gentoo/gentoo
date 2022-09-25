@@ -83,7 +83,7 @@ src_configure() {
 src_test() {
 	# bug 686392: needs network connection
 	local myctestargs=(
-		-E "(knsbackendtest)"
+		-E "(knsbackendtest|flatpaktest)"
 	)
 
 	ecm_src_test
