@@ -139,6 +139,11 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 QA_FLAGS_IGNORED="usr/bin/lsd"
 
+src_prepare() {
+	sed -i 's/strip = true/strip = false/' Cargo.toml || die
+	default
+}
+
 src_compile() {
 	export SHELL_COMPLETIONS_DIR="${T}/shell_completions"
 	cargo_src_compile
