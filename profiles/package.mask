@@ -422,6 +422,7 @@ sys-devel/automake:1.11
 # New major parallel-installable release which needs special care to not
 # end up loaded into the same process together with the earlier libsoup ABI.
 # Migration to it is expected for GNOME 42, NOT to be unmasked with GNOME 41.
+>=app-arch/file-roller-43
 >=dev-libs/gjs-1.74
 >=dev-libs/libgweather-4.2.0
 >=dev-python/nautilus-python-4.0
