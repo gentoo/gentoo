@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Matt Turner <mattst88@gentoo.org> (2022-09-26)
+# Requires nautilus-43.0 which is not in tree yet.
+>=x11-terms/gnome-terminal-3.46 nautilus
+
 # Pascal Jaeger <pascal.jaeger@leimstift.de> (2022-09-21)
 # Versions >=43.0 of evince only work with <gnome-base/nautilus-42.2.
 # Allowing that use flag for >=43.0 would stop users from updating nautilus
