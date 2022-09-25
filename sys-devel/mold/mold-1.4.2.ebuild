@@ -35,6 +35,8 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	# https://bugs.gentoo.org/865837
 	"${FILESDIR}"/mold-1.4.1-tbb-flags-stripping.patch
+	# https://bugs.gentoo.org/872773
+	"${FILESDIR}"/mold-1.4.1-cmake-libdir.patch
 )
 
 pkg_pretend() {
@@ -81,7 +83,8 @@ src_configure() {
 
 src_install() {
 	dobin "${BUILD_DIR}"/${PN}
-	dolib.so "${BUILD_DIR}"/${PN}-wrapper.so
+	insinto /usr/$(get_libdir)/mold
+	doins "${BUILD_DIR}"/${PN}-wrapper.so
 
 	dodoc docs/{design,execstack}.md
 	doman docs/${PN}.1

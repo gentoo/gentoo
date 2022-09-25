@@ -81,7 +81,8 @@ src_configure() {
 
 src_install() {
 	dobin "${BUILD_DIR}"/${PN}
-	dolib.so "${BUILD_DIR}"/${PN}-wrapper.so
+	insinto /usr/$(get_libdir)/mold
+	doins "${BUILD_DIR}"/${PN}-wrapper.so
 
 	dodoc docs/{design,execstack}.md
 	doman docs/${PN}.1
