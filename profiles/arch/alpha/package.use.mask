@@ -3,7 +3,7 @@
 
 # matoro <matoro_gentoo@matoro.tk> (2022-09-22)
 # Unable to test due to mask, bug #763963
-~net-misc/openntpd-6.8_p1 constraints
+net-misc/openntpd constraints
 
 # Matthew Smith <matthew@gentoo.org> (2022-07-10)
 # Needs unkeyworded app-doc/halibut
