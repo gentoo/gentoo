@@ -10,21 +10,22 @@ HOMEPAGE="https://jellyfin.readthedocs.io/en/latest/"
 
 SRC_URI="
 	arm64? (
-		https://repo.jellyfin.org/releases/server/linux/stable/combined/${PN}_${PV}_arm64.tar.gz
+		https://repo.jellyfin.org/releases/server/linux/versions/stable/combined/${PV}/${PN}_${PV}_arm64.tar.gz
 		https://repo.jellyfin.org/archive/linux/stable/${PV}/combined/${PN}_${PV}_arm64.tar.gz
 	)
 	amd64? (
-		https://repo.jellyfin.org/releases/server/linux/stable/combined/${PN}_${PV}_amd64.tar.gz
+		https://repo.jellyfin.org/releases/server/linux/versions/stable/combined/${PV}/${PN}_${PV}_amd64.tar.gz
 		https://repo.jellyfin.org/archive/linux/stable/${PV}/combined/${PN}_${PV}_amd64.tar.gz
 	)"
 
 RESTRICT="mirror test"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 DEPEND="acct-user/jellyfin"
 RDEPEND="${DEPEND}
-	media-video/ffmpeg[vpx,x264]"
+	media-video/ffmpeg[vpx,x264]
+	dev-libs/icu"
 BDEPEND="acct-user/jellyfin"
 INST_DIR="/opt/${PN}"
 QA_PREBUILT="${INST_DIR#/}/*.so ${INST_DIR#/}/jellyfin ${INST_DIR#/}/createdump"
