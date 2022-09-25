@@ -1,6 +1,0 @@
-# Copyright 1999-2022 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Yixun Lan <dlan@gentoo.org> (2022-01-27)
-# This target supports ASAN/etc...
-sys-devel/gcc -sanitize
