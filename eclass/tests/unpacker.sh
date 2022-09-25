@@ -134,6 +134,10 @@ test_deb() {
 
 	test_unpack "test-${tool}_1.2.3_noarch.deb" test.in "ar tar ${tool}" \
 		"create_deb '${suffix}' '${tool_cmd}' \${archive} \${TESTFILE}"
+	# also test with the handwoven implementation used on Prefix
+	EPREFIX=/foo \
+	test_unpack "test_pfx-${tool}_1.2.3_noarch.deb" test.in "ar tar ${tool}" \
+		"create_deb '${suffix}' '${tool_cmd}' \${archive} \${TESTFILE}"
 }
 
 create_gpkg() {
