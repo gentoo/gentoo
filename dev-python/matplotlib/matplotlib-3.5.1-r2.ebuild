@@ -69,7 +69,7 @@ RDEPEND="
 		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
 	)
 	webagg? (
-		>=www-servers/tornado-6.0.4[${PYTHON_USEDEP}]
+		>=dev-python/tornado-6.0.4[${PYTHON_USEDEP}]
 	)
 	wxwidgets? (
 		dev-python/wxpython:*[${PYTHON_USEDEP}]
@@ -102,7 +102,7 @@ BDEPEND="
 		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		>=dev-python/pygobject-3.40.1-r1:3[cairo?,${PYTHON_USEDEP}]
-		>=www-servers/tornado-6.0.4[${PYTHON_USEDEP}]
+		>=dev-python/tornado-6.0.4[${PYTHON_USEDEP}]
 		x11-libs/gtk+:3[introspection]
 	)
 "

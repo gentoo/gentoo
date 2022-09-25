@@ -41,7 +41,7 @@ RDEPEND="
 	>=dev-python/wsproto-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/zstandard-0.11.0[${PYTHON_USEDEP}]
 	dev-libs/openssl:0
-	>=www-servers/tornado-6.1[${PYTHON_USEDEP}]
+	>=dev-python/tornado-6.1[${PYTHON_USEDEP}]
 "
 
 BDEPEND="

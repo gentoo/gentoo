@@ -20,7 +20,7 @@ RDEPEND="
 	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/rosauth[${PYTHON_SINGLE_USEDEP}]
 
-	$(python_gen_cond_dep "www-servers/tornado[\${PYTHON_USEDEP}]")
+	$(python_gen_cond_dep "dev-python/tornado[\${PYTHON_USEDEP}]")
 	$(python_gen_cond_dep "dev-python/autobahn[\${PYTHON_USEDEP}]")
 	$(python_gen_cond_dep "dev-python/twisted[\${PYTHON_USEDEP}]")
 	"
