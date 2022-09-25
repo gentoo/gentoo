@@ -282,6 +282,8 @@ unpack_deb() {
 			local f timestamp uid gid mode size magic
 			while read f timestamp uid gid mode size magic ; do
 				[[ -n ${f} && -n ${size} ]] || continue # ignore empty lines
+				# GNU ar uses / as filename terminator (and .deb permits that)
+				f=${f%/}
 				if [[ ${f} = "data.tar"* ]] ; then
 					head -c "${size}" > "${f}"
 				else
