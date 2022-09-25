@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2022-09-25)
+# This version been causing issues for some RTX 30xx users and
+# does not bring much of interest for others, best stick to
+# 515.65.01 for now (but feel free to unmask if it's been fine).
+# https://bugs.archlinux.org/task/75995
+# https://forums.developer.nvidia.com/t/bug-report-black-x11-screen-and-partial-lockup-when-upgraded-to-515-76-and-dual-rtx3060
+~x11-drivers/nvidia-drivers-515.76
+
 # Piotr Karbowski <slashbeast@gentoo.org> (2022-09-25)
 # No package in tree depends on dev-python/ssh2-python. Masked for removal.
 # Removal on 2022-10-25.
