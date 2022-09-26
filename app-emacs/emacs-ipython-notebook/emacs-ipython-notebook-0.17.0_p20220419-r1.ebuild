@@ -8,8 +8,9 @@ EAPI=8
 
 H=388c8f753cfb99b4f82acbdff26bbe27189d2299
 NEED_EMACS=25
+PYTHON_COMPAT=( python3_{8..10} )
 
-inherit elisp readme.gentoo-r1
+inherit elisp readme.gentoo-r1 python-single-r1
 
 DESCRIPTION="Jupyter notebook client in Emacs"
 HOMEPAGE="https://github.com/millejoh/emacs-ipython-notebook/"
@@ -21,8 +22,10 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
+	${PYTHON_DEPS}
 	app-emacs/anaphora
 	app-emacs/dash
 	app-emacs/deferred
@@ -30,9 +33,11 @@ RDEPEND="
 	app-emacs/request
 	app-emacs/websocket
 	app-emacs/with-editor
-	dev-python/ipython
-	dev-python/notebook
-	dev-python/tornado
+	$(python_gen_cond_dep '
+		dev-python/ipython[${PYTHON_USEDEP}]
+		dev-python/notebook[${PYTHON_USEDEP}]
+		dev-python/tornado[${PYTHON_USEDEP}]
+	')
 "
 BDEPEND="
 	${RDEPEND}
@@ -52,13 +57,18 @@ DOC_CONTENTS="There may be problems with connecting to Jupyter Notebooks
 
 SITEFILE="50${PN}-gentoo.el"
 
+pkg_setup() {
+	elisp_pkg_setup
+	python-single-r1_pkg_setup
+}
+
 src_compile() {
 	BYTECOMPFLAGS="-L lisp" elisp-compile lisp/*.el
 }
 
 src_test() {
 	ert-runner -L lisp -L test -l test/testein.el \
-			   --reporter ert+duration test/test-ein*.el || die
+		--reporter ert+duration test/test-ein*.el || die
 }
 
 src_install() {
