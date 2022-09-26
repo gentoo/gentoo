@@ -26,14 +26,6 @@ RDEPEND="
 distutils_enable_sphinx docs
 
 src_prepare() {
-	# fix for sphinx >= 4.0
-	sed -e 's/PyModulelevel/PyFunction/g' \
-		-e 's/PyClassmember/PyClassMethod/g' \
-		-i sphinxcontrib/asyncio.py || die
-	default
-}
-
-python_compile() {
-	distutils-r1_python_compile
-	rm "${BUILD_DIR}/install$(python_get_sitedir)"/sphinxcontrib/__init__.py || die
+	rm sphinxcontrib/__init__.py || die
+	distutils-r1_src_prepare
 }
