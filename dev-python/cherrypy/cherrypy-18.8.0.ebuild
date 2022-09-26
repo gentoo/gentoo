@@ -40,7 +40,7 @@ BDEPEND="
 		dev-python/routes[${PYTHON_USEDEP}]
 		dev-python/simplejson[${PYTHON_USEDEP}]
 		dev-python/objgraph[${PYTHON_USEDEP}]
-		dev-python/path-py[${PYTHON_USEDEP}]
+		dev-python/path[${PYTHON_USEDEP}]
 		dev-python/requests-toolbelt[${PYTHON_USEDEP}]
 		dev-python/pytest-services[${PYTHON_USEDEP}]
 	)
