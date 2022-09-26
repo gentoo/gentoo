@@ -24,8 +24,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~
 
 RDEPEND="
 	dev-python/appdirs[${PYTHON_USEDEP}]
-	!<dev-python/pytest-shutil-1.7.0-r1
-	!<dev-python/pytest-virtualenv-1.7.0-r1
 "
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
