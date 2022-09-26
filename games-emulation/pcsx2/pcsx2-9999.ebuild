@@ -96,6 +96,13 @@ src_unpack() {
 			EGIT_SUBMODULES+=(
 				3rdparty/glslang/glslang # needs StandAlone/ResourceLimits.h
 				3rdparty/vulkan-headers # to keep in sync with glslang
+
+				# system rapidyaml is still used, but this uses another part
+				# of the source and so allow submodule for now
+				# https://github.com/PCSX2/pcsx2/commit/af646e449
+				3rdparty/rapidyaml/rapidyaml
+				3rdparty/rapidyaml/rapidyaml/extern/c4core
+				3rdparty/rapidyaml/rapidyaml/ext/c4core/src/c4/ext/fast_float
 			)
 		fi
 		git-r3_src_unpack
