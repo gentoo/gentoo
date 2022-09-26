@@ -1,0 +1,71 @@
+From 23aef3f0e0fb68921448007b4e361b47a4eec2b6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Albrecht=20Dre=C3=9F?= <albrecht.dress@netcologne.de>
+Date: Thu, 22 Sep 2022 19:53:08 +0200
+Subject: [PATCH] fix build error if HTML support is disabled
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Thanks to Bruce Dubbs from linuxfromscratch.org for reporting this
+issue.
+
+libbalsa/body.c: mask out HTML selection table if HTML support is
+disabled
+libbalsa/body.c: fix macros if HTML support is disabled
+
+Signed-off-by: Albrecht DreÃŸ <albrecht.dress@netcologne.de>
+---
+ libbalsa/body.c | 4 ++++
+ libbalsa/body.h | 4 ++--
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/libbalsa/body.c b/libbalsa/body.c
+index e300ae969..25d35fe77 100644
+--- a/libbalsa/body.c
++++ b/libbalsa/body.c
+@@ -65,6 +65,7 @@ libbalsa_message_body_new(LibBalsaMessage * message)
+     return body;
+ }
+
++#ifdef HAVE_HTML_WIDGET
+ static void
+ body_weak_notify(gpointer  data,
+                  GObject  *key)
+@@ -81,6 +82,7 @@ selection_table_foreach(gpointer key,
+ {
+     g_object_weak_unref(key, body_weak_notify, user_data);
+ }
++#endif /* HAVE_HTML_WIDGET */
+
+ void
+ libbalsa_message_body_free(LibBalsaMessageBody * body)
+@@ -111,10 +113,12 @@ libbalsa_message_body_free(LibBalsaMessageBody * body)
+     if (body->mime_part)
+ 	g_object_unref(body->mime_part);
+
++#ifdef HAVE_HTML_WIDGET
+     if (body->selection_table != NULL) {
+         g_hash_table_foreach(body->selection_table, selection_table_foreach, body);
+         g_hash_table_destroy(body->selection_table);
+     }
++#endif  /* HAVE_HTML_WIDGET */
+
+     g_free(body);
+ }
+diff --git a/libbalsa/body.h b/libbalsa/body.h
+index 2650df728..139810018 100644
+--- a/libbalsa/body.h
++++ b/libbalsa/body.h
+@@ -155,8 +155,8 @@ void libbalsa_message_body_set_mp_alt_selection(LibBalsaMessageBody *body,
+ LibBalsaMpAltSelection libbalsa_message_body_get_mp_alt_selection(LibBalsaMessageBody *body,
+                                                                   gpointer key);
+ #else
+-#define libbalsa_message_body_set_mp_alt_selection(x)
+-#define libbalsa_message_body_get_mp_alt_selection(x)	LIBBALSA_MP_ALT_AUTO
++#define libbalsa_message_body_set_mp_alt_selection(x, y)
++#define libbalsa_message_body_get_mp_alt_selection(x, y)	LIBBALSA_MP_ALT_AUTO
+ #endif /*HAVE_HTML_WIDGET*/
+
+ guint libbalsa_message_body_protect_mode(const LibBalsaMessageBody * body);
+--
+GitLab
