@@ -19,6 +19,10 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-wint-conversion.patch
+)
+
 distutils_enable_tests unittest
 
 python_test() {

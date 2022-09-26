@@ -1,0 +1,24 @@
+From 9961c92736abfc6d0aedea9c4e7c679e1fd564d2 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Mon, 7 Mar 2022 19:49:21 +0100
+Subject: [PATCH] Enable highdpi pixmaps
+
+---
+ src/main.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/main.cpp b/src/main.cpp
+index 32ad115..271e61f 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -38,6 +38,7 @@
+ 
+ int main(int argc, char **argv)
+ {
++  QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+   QApplication app(argc, argv);
+ 
+   KLocalizedString::setApplicationDomain("kgraphviewer");
+-- 
+GitLab
+

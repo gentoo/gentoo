@@ -74,6 +74,7 @@ src_configure() {
 		WITH_GREENWICH=$(usex greenwich)
 
 		CC="$(tc-getCC)"
+		CPP="$(tc-getCPP)"
 		PKG_CONFIG="$(tc-getPKG_CONFIG)"
 		INSTALLDIR="${EPREFIX}/usr"
 		STORAGEDEFAULT="${EPREFIX}/var/db/${MY_PN}"
