@@ -4,6 +4,7 @@
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">p1c2u/openapi-schema-validator</remote-id>
 		<remote-id type="pypi">openapi-schema-validator</remote-id>
