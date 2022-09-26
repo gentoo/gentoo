@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-09-26)
+# Bundles a vulnerable version of dev-libs/expat.  The current Gentoo
+# version is from 2014, pending bump to the last upstream release
+# from 2016.  Effectively unmaintained.  EAPI 6.
+# Removal on 2022-10-26.  Bug #253517.
+games-sports/torcs
+
 # Ionen Wolkens <ionen@gentoo.org> (2022-09-25)
 # This version been causing major issues for some RTX 30xx users and
 # no real reason not to stick to 515.65.01 for now (but feel free to
