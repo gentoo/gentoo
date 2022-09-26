@@ -15,6 +15,7 @@ LICENSE="GPL-2"
 
 PATCHES=(
 	"${FILESDIR}/${P}-asneeded.patch"
+	"${FILESDIR}/${P}-char.patch"
 )
 
 src_prepare() {
