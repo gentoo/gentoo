@@ -48,6 +48,10 @@ RDEPEND="${COMMON_DEPEND}
 
 S="${WORKDIR}/re${PN}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.13_p2-build-fixes.patch
+)
+
 src_unpack() {
 	unpack "${P/%_p*}".tar.gz
 	cd "${S}"
