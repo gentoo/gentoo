@@ -16,7 +16,7 @@ IUSE="systemd"
 KEYWORDS="~amd64"
 
 # Upstream is hostile and refuses to upload tarballs.
-SRC_URI="https://gitlab.gnome.org/GNOME/vte-${PV}/-/archive/${PV}/vte-${PV}.tar.bz2"
+SRC_URI="https://gitlab.gnome.org/GNOME/vte/-/archive/${PV}/vte-${PV}.tar.bz2"
 
 DEPEND="
 	|| ( >=gui-libs/gtk-4.0.1:4 >=x11-libs/gtk+-3.24.22:3 )
