@@ -15,7 +15,10 @@ S="${WORKDIR}/${PN}-${MY_PV:-${PV}}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+
+# remove keywords until build works:
+# https://github.com/iovisor/bpftrace/issues/2349
+#KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="fuzzing test"
 
 # lots of fixing needed
