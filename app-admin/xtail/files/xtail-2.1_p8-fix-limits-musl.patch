@@ -1,0 +1,28 @@
+From: Sam James <sam@gentoo.org>
+Subject: [PATCH] Fix build on musl
+
+Closes: https://bugs.gentoo.org/715876
+--- a/miscfuncs.c
++++ b/miscfuncs.c
+@@ -8,6 +8,8 @@
+ #include <ctype.h>
+ #include <fcntl.h>
+ #include <errno.h>
++#include <limits.h>
++
+ #ifdef HAVE_UNISTD_H
+ # include <unistd.h>
+ #endif
+@@ -65,7 +67,11 @@ int scan_directory(const char *dirname)
+     char *basename;
+     struct stat sbuf;
+     DIR *dirp;
+-    static char pathname[MAXNAMLEN];
++    #ifdef NAME_MAX
++        static char pathname[NAME_MAX];
++    #else
++        static char pathname[MAXNAMLEN]
++    #endif
+ 
+     Dprintf(stderr, ">>> scanning directory '%s'\n", dirname);
+     if ((dirp = opendir(dirname)) == NULL)
