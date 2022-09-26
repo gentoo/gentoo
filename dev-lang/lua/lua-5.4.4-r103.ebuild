@@ -22,6 +22,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${P}-lparser-overread.patch"
+)
+
 src_prepare() {
 	default
 
