@@ -8,7 +8,6 @@ PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
-MY_P=${P/-py}
 DESCRIPTION="A module wrapper for os.path"
 HOMEPAGE="
 	https://github.com/jaraco/path/
@@ -16,9 +15,8 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/jaraco/path/archive/v${PV}.tar.gz
-		-> ${MY_P}.gh.tar.gz
+		-> ${P}.gh.tar.gz
 "
-S=${WORKDIR}/${MY_P}
 
 SLOT="0"
 LICENSE="MIT"
