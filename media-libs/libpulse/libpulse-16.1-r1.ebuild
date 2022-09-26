@@ -35,6 +35,7 @@ RDEPEND="
 	virtual/libc
 	asyncns? ( >=net-libs/libasyncns-0.1[${MULTILIB_USEDEP}] )
 	dbus? ( >=sys-apps/dbus-1.4.12[${MULTILIB_USEDEP}] )
+	elibc_mingw? ( dev-libs/libpcre:3 )
 	glib? ( >=dev-libs/glib-2.28.0:2[${MULTILIB_USEDEP}] )
 	gtk? ( x11-libs/gtk+:3 )
 	selinux? ( sec-policy/selinux-pulseaudio )
@@ -43,10 +44,6 @@ RDEPEND="
 	X? (
 		x11-libs/libX11[${MULTILIB_USEDEP}]
 		>=x11-libs/libxcb-1.6[${MULTILIB_USEDEP}]
-	)
-	|| (
-		elibc_glibc? ( virtual/libc )
-		dev-libs/libpcre:3
 	)
 	!<media-sound/pulseaudio-15.0-r100
 "
@@ -67,10 +64,17 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
+PDEPEND="
+	|| (
+		media-video/pipewire[sound-server(+)]
+		media-sound/pulseaudio-daemon
+		media-sound/pulseaudio[daemon(+)]
+	)
+"
 
 DOCS=( NEWS README )
 
-# patches merged upstream, to be removed with 16.0 bump
+# patches merged upstream, to be removed with 16.2 or later bump
 PATCHES=(
 )
 
