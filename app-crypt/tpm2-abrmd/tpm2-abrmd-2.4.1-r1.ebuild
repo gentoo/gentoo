@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools systemd
+inherit autotools flag-o-matic systemd
 
 DESCRIPTION="TPM2 Access Broker & Resource Manager"
 HOMEPAGE="https://github.com/tpm2-software/tpm2-abrmd"
@@ -36,6 +36,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# tests fail with LTO enabbled. See bug 865275
+	filter-lto
 	econf \
 		$(use_enable static-libs static) \
 		$(use_enable test unit) \
