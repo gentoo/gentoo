@@ -3,10 +3,6 @@
 
 EAPI=7
 
-# TODO on release:
-# - check READLINE_VER, obviously
-# (presumably there weren't always readline releases for bash RCs etc)
-
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/chetramey.asc
 inherit flag-o-matic toolchain-funcs prefix verify-sig
 
