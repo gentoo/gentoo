@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-09-26)
+# Masked for testing. Please report bugs!
+=app-shells/bash-5.2*
+=sys-libs/readline-8.2*
+
 # Michał Górny <mgorny@gentoo.org> (2022-09-26)
 # Bundles a vulnerable version of dev-libs/expat.  The current Gentoo
 # version is from 2014, pending bump to the last upstream release
