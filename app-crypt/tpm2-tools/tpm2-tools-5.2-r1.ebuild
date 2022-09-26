@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit autotools bash-completion-r1 python-any-r1
+inherit autotools bash-completion-r1 flag-o-matic python-any-r1
 
 DESCRIPTION="Tools for the TPM 2.0 TSS"
 HOMEPAGE="https://github.com/tpm2-software/tpm2-tools"
@@ -51,6 +51,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# tests fail with LTO enabbled. See bug 865275 and 865277
+	filter-lto
 	econf \
 		$(use_enable fapi) \
 		$(use_enable test unit) \
