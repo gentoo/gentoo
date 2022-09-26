@@ -1,0 +1,62 @@
+commit 6d283cf464b82a86f7930e39c91c92ad3cefb58f
+Author: mio <ziqiaokong@outlook.com>
+Date:   Sat Jul 23 20:39:01 2022 +0800
+
+    Fix ppc symbols clash
+
+Bug: https://bugs.gentoo.org/872998
+Bug: https://github.com/unicorn-engine/unicorn/issues/1662
+
+diff --git a/qemu/ppc.h b/qemu/ppc.h
+index 7022629e..eff4b69d 100644
+--- a/qemu/ppc.h
++++ b/qemu/ppc.h
+@@ -1708,4 +1708,12 @@
+ #define ppc_dcr_init ppc_dcr_init_ppc
+ #define ppc_cpu_pir ppc_cpu_pir_ppc
+ #define ppc_irq_reset ppc_irq_reset_ppc
++#define store_booke_tsr store_booke_tsr_ppc
++#define get_pteg_offset32 get_pteg_offset32_ppc
++#define ppc_booke_timers_init ppc_booke_timers_init_ppc
++#define ppc_hash32_handle_mmu_fault ppc_hash32_handle_mmu_fault_ppc
++#define gen_helper_store_booke_tsr gen_helper_store_booke_tsr_ppc
++#define gen_helper_store_booke_tcr gen_helper_store_booke_tcr_ppc
++#define store_booke_tcr store_booke_tcr_ppc
++#define ppc_hash32_get_phys_page_debug ppc_hash32_get_phys_page_debug_ppc
+ #endif
+diff --git a/qemu/ppc64.h b/qemu/ppc64.h
+index 992caf87..c08ee2d6 100644
+--- a/qemu/ppc64.h
++++ b/qemu/ppc64.h
+@@ -1708,4 +1708,12 @@
+ #define ppc_dcr_init ppc_dcr_init_ppc64
+ #define ppc_cpu_pir ppc_cpu_pir_ppc64
+ #define ppc_irq_reset ppc_irq_reset_ppc64
++#define store_booke_tsr store_booke_tsr_ppc64
++#define get_pteg_offset32 get_pteg_offset32_ppc64
++#define ppc_booke_timers_init ppc_booke_timers_init_ppc64
++#define ppc_hash32_handle_mmu_fault ppc_hash32_handle_mmu_fault_ppc64
++#define gen_helper_store_booke_tsr gen_helper_store_booke_tsr_ppc64
++#define gen_helper_store_booke_tcr gen_helper_store_booke_tcr_ppc64
++#define store_booke_tcr store_booke_tcr_ppc64
++#define ppc_hash32_get_phys_page_debug ppc_hash32_get_phys_page_debug_ppc64
+ #endif
+diff --git a/symbols.sh b/symbols.sh
+index 2968b959..0d426c00 100755
+--- a/symbols.sh
++++ b/symbols.sh
+@@ -6264,6 +6264,14 @@ ppc_dcr_register \
+ ppc_dcr_init \
+ ppc_cpu_pir \
+ ppc_irq_reset \
++store_booke_tsr \
++get_pteg_offset32 \
++ppc_booke_timers_init \
++ppc_hash32_handle_mmu_fault \
++gen_helper_store_booke_tsr \
++gen_helper_store_booke_tcr \
++store_booke_tcr \
++ppc_hash32_get_phys_page_debug \
+ "
+ 
+ ppc64_SYMBOLS=${ppc_SYMBOLS}

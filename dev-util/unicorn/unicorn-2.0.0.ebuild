@@ -34,6 +34,10 @@ RDEPEND="python? ( ${PYTHON_DEPS} )"
 BDEPEND="virtual/pkgconfig
 	python? ( ${DISTUTILS_DEPS} )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-lto.patch"
+)
+
 UNICORN_TARGETS="x86 arm aarch64 riscv mips sparc m68k ppc s390x tricore"
 
 wrap_python() {
