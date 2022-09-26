@@ -18,6 +18,7 @@ IUSE="static-libs"
 # /usr/lib64/libply.la
 # /usr/lib64/libply.so
 RDEPEND="!sys-boot/plymouth"
+DEPEND="elibc_musl? ( sys-libs/queue-standalone )"
 
 pkg_pretend() {
 	local CONFIG_CHECK="~BPF ~BPF_SYSCALL ~NET_CLS_BPF ~NET_ACT_BPF
