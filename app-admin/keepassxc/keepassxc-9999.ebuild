@@ -25,9 +25,10 @@ fi
 
 LICENSE="LGPL-2.1 GPL-2 GPL-3"
 SLOT="0"
-IUSE="autotype browser doc keeshare +network test yubikey"
+IUSE="X autotype browser doc keeshare +network test yubikey"
 
 RESTRICT="!test? ( test )"
+REQUIRED_USE="autotype? ( X )"
 
 RDEPEND="
 	app-crypt/argon2:=
@@ -39,10 +40,10 @@ RDEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
 	media-gfx/qrencode:=
 	sys-libs/readline:0=
 	sys-libs/zlib:=
+	X? ( dev-qt/qtx11extras:5 )
 	autotype? (
 		x11-libs/libX11
 		x11-libs/libXtst
@@ -88,6 +89,7 @@ src_configure() {
 		-DWITH_XC_SSHAGENT=ON
 		-DWITH_XC_UPDATECHECK=OFF
 		-DWITH_XC_YUBIKEY="$(usex yubikey)"
+		-DWITH_XC_X11="$(usex X)"
 	)
 	if [[ "${PV}" == *_beta* ]] ; then
 		mycmakeargs+=( -DOVERRIDE_VERSION="${PV/_/-}" )
