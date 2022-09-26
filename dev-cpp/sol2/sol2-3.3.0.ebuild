@@ -35,10 +35,6 @@ PATCHES=(
 	"${FILESDIR}"/sol2-3.3.0-dont-install-tests.patch
 )
 
-src_prepare() {
-	cmake_src_prepare
-}
-
 src_configure() {
 	sol2_configure_wrapper() {
 		local mycmakeargs=(
