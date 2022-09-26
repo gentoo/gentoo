@@ -25,7 +25,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 RDEPEND="
 	dev-python/autocommand[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
-	dev-python/path-py[${PYTHON_USEDEP}]
+	dev-python/path[${PYTHON_USEDEP}]
 	dev-python/pip[${PYTHON_USEDEP}]
 "
 BDEPEND="

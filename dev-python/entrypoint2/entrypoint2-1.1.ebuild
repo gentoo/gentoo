@@ -21,7 +21,7 @@ KEYWORDS="amd64 ~arm64 ~riscv x86"
 BDEPEND="
 	test? (
 		dev-python/easyprocess[${PYTHON_USEDEP}]
-		dev-python/path-py[${PYTHON_USEDEP}]
+		dev-python/path[${PYTHON_USEDEP}]
 	)
 "
 
