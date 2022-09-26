@@ -1,0 +1,30 @@
+
+From: https://github.com/iovisor/bpftrace/pull/2367
+Bug: https://bugs.gentoo.org/872842
+
+From 07fa48a94ef6d6bb1f335de345de18fe9776ca57 Mon Sep 17 00:00:00 2001
+From: kenneth topp <toppk@bllue.org>
+Date: Mon, 26 Sep 2022 00:33:29 -0400
+Subject: [PATCH] Workaround OpaquePointers for LLVM 15
+
+This workaround allows bpftrace to be compiled against
+LLVM-15.  This will have to be address properly before LLVM-16
+More details from LLVM here: https://llvm.org/docs/OpaquePointers.html
+---
+ src/ast/irbuilderbpf.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/ast/irbuilderbpf.cpp b/src/ast/irbuilderbpf.cpp
+index d49883f786..00f0f172ff 100644
+--- a/src/ast/irbuilderbpf.cpp
++++ b/src/ast/irbuilderbpf.cpp
+@@ -123,6 +123,9 @@ IRBuilderBPF::IRBuilderBPF(LLVMContext &context,
+     module_(module),
+     bpftrace_(bpftrace)
+ {
++#if LLVM_VERSION_MAJOR == 15
++  context.setOpaquePointers(false);
++#endif
+   // Declare external LLVM function
+   FunctionType *pseudo_func_type = FunctionType::get(
+       getInt64Ty(),
