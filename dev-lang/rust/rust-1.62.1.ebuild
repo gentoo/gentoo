@@ -256,7 +256,7 @@ src_prepare() {
 }
 
 src_configure() {
-	use system-llvm && filter-flags '-flto*' # https://bugs.gentoo.org/862109
+	filter-flags '-flto*' # https://bugs.gentoo.org/862109
 
 	local rust_target="" rust_targets="" arch_cflags use_libcxx="false"
 
