@@ -1,9 +1,8 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python3_{8..10} )
+EAPI=8
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit gnome2 python-any-r1 virtualx
 
@@ -77,15 +76,17 @@ RDEPEND="${COMMON_DEPEND}
 	gnome? ( gnome-extra/gnome-contacts )
 "
 DEPEND="${COMMON_DEPEND}
+	test? (
+		sys-apps/grep
+		>=dev-libs/check-0.9.4 )
+"
+BDEPEND="
 	${PYTHON_DEPS}
 	dev-libs/libxml2:2
 	dev-libs/libxslt
 	>=dev-util/intltool-0.50.0
 	dev-util/itstool
 	virtual/pkgconfig
-	test? (
-		sys-apps/grep
-		>=dev-libs/check-0.9.4 )
 "
 PDEPEND=">=net-im/telepathy-mission-control-5.14"
 
