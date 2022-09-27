@@ -81,7 +81,6 @@ FILECAPS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.0-crcs.patch
-	"${FILESDIR}"/${PN}-1.7.3329-clang16.patch
 	"${FILESDIR}"/${PN}-1.7.3329-lto.patch
 	"${FILESDIR}"/${PN}-1.7.3329-musl.patch
 	"${FILESDIR}"/${PN}-1.7.3329-qt6.patch
