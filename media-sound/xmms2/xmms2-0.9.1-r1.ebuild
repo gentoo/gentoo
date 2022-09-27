@@ -82,7 +82,7 @@ COMMON_DEPEND="
 			media-libs/opus
 			media-libs/opusfile
 		)
-		pulseaudio? ( || ( media-libs/libpulse media-sound/pulseaudio ) )
+		pulseaudio? ( media-libs/libpulse )
 		samba? ( net-fs/samba )
 		sid? ( media-libs/libsidplay:2 )
 		sndfile? ( media-libs/libsndfile )
