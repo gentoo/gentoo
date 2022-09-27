@@ -17,7 +17,7 @@ RDEPEND="
 	>=dev-libs/glib-2.28:2
 	>=net-libs/libsoup-2.38:2.4
 	dev-libs/json-glib
-	net-libs/rest
+	net-libs/rest:0.7
 	net-libs/gnome-online-accounts
 
 	introspection? ( >=dev-libs/gobject-introspection-1.30.0 )
