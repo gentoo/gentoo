@@ -22,7 +22,7 @@ DEPEND="
 	>=gui-libs/gtk-4.6.0:4
 	>=dev-libs/libgweather-4.0.0:4=
 	>=app-misc/geoclue-2.4:2.0
-	>=sci-geosciences/geocode-glib-3.23
+	>=sci-geosciences/geocode-glib-3.23:0
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
