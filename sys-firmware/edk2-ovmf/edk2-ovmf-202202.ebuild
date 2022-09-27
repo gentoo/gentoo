@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{8,9,10,11} )
 
 inherit python-any-r1 readme.gentoo-r1
 
@@ -26,7 +26,7 @@ SRC_URI="https://github.com/tianocore/edk2/archive/edk2-stable${PV}.tar.gz -> ${
 
 LICENSE="BSD-2 MIT"
 SLOT="0"
-#KEYWORDS="~amd64"
+KEYWORDS="~amd64"
 
 BDEPEND="app-emulation/qemu
 	>=dev-lang/nasm-2.0.7
