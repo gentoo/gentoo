@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,9 +15,14 @@ KEYWORDS="~alpha ~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="!sci-astronomy/sextractor"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0-Add-missing-string.h-for-strcmp.patch
+)
+
 src_prepare() {
 	default
-	rm -f Makefile
+
+	rm -f Makefile || die
 }
 
 src_compile() {
