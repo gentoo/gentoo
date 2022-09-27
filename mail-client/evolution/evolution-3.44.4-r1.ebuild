@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake gnome2 readme.gentoo-r1
 
 DESCRIPTION="Integrated mail, addressbook and calendaring functionality"
-HOMEPAGE="https://wiki.gnome.org/Apps/Evolution"
+HOMEPAGE="https://wiki.gnome.org/Apps/Evolution https://gitlab.gnome.org/GNOME/evolution"
 
 # Note: explicitly "|| ( LGPL-2 LGPL-3 )", not "LGPL-2+".
 LICENSE="|| ( LGPL-2 LGPL-3 ) CC-BY-SA-3.0 FDL-1.3+ OPENLDAP"
@@ -53,7 +53,7 @@ DEPEND="
 		>=media-libs/libchamplain-0.12:0.12[gtk]
 		>=media-libs/clutter-1.0.0:1.0
 		>=media-libs/clutter-gtk-0.90:1.0
-		>=sci-geosciences/geocode-glib-3.10.0 )
+		>=sci-geosciences/geocode-glib-3.10.0:0 )
 	ldap? ( >=net-nds/openldap-2:= )
 	spamassassin? ( mail-filter/spamassassin )
 	spell? ( >=app-text/gspell-1.8:= )
