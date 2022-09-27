@@ -23,7 +23,7 @@ RDEPEND="
 	>=x11-libs/gtk+-3.13.5:3[introspection?]
 	>=net-libs/libsoup-2.44:2.4
 	>=dev-libs/libxml2-2.6.0:2
-	sci-geosciences/geocode-glib
+	sci-geosciences/geocode-glib:0
 	>=sys-libs/timezone-data-2010k
 
 	glade? ( >=dev-util/glade-3.16:3.10 )
