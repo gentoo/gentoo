@@ -70,9 +70,6 @@ src_install() {
 		fi
 	done
 
-	# gambit
-	use gambit && dodir /usr/share/gambc
-
 	# backwards compatibility
 	dodir /usr/lib/
 	dosym -r /usr/share/${PN}/ /usr/lib/${PN}
@@ -103,6 +100,7 @@ pkg_postinst() {
 	#	fi
 
 	if use gambit ; then
+		mkdir -p "${ROOT}"/usr/share/gambc || die
 		gsi -e "$(_new_catalog gambit)" || die
 	fi
 
