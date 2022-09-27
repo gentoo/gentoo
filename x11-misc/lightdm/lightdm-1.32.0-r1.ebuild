@@ -53,8 +53,8 @@ BDEPEND="
 PDEPEND="gtk? ( x11-misc/lightdm-gtk-greeter )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.32.0-musl-locale.patch
-	"${FILESDIR}"/${PN}-1.32.0-musl-updwtmpx.patch
+	"${FILESDIR}"/${PN}-1.30.0-musl-locale.patch
+	"${FILESDIR}"/${PN}-1.30.0-musl-updwtmpx.patch
 )
 
 DOCS=( NEWS )
