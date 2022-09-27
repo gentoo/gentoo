@@ -53,7 +53,7 @@ COMMON_DEPEND="
 
 	geolocation? (
 		>=app-misc/geoclue-2.1:2.0
-		>=sci-geosciences/geocode-glib-3.10 )
+		>=sci-geosciences/geocode-glib-3.10:0 )
 	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.5.1:= )
 	map? (
 		>=media-libs/clutter-1.7.14:1.0
