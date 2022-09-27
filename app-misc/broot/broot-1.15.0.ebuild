@@ -256,6 +256,7 @@ IUSE="X"
 
 RDEPEND="
 	dev-libs/libgit2:=
+	sys-libs/zlib
 	X? ( x11-libs/libxcb:= )
 "
 DEPEND="${RDEPEND}"
