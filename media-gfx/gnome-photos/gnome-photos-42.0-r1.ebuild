@@ -20,7 +20,7 @@ DEPEND="
 	>=x11-libs/cairo-1.14.0
 	>=x11-libs/gdk-pixbuf-2.36.8:2
 	>=media-libs/gegl-0.4.0:0.4[cairo,raw]
-	sci-geosciences/geocode-glib
+	sci-geosciences/geocode-glib:0
 	>=media-libs/gexiv2-0.10.8
 	>=dev-libs/glib-2.62.0:2
 	>=net-libs/gnome-online-accounts-3.8.0:=
