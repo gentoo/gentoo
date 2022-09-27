@@ -28,7 +28,7 @@ RDEPEND="
 	x11-themes/adwaita-icon-theme
 	appindicator? ( dev-libs/libappindicator:3 )
 	nls? ( virtual/libintl )
-	plugins? ( >=net-libs/rest-0.7 )
+	plugins? ( >=net-libs/rest-0.7:0.7 )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
