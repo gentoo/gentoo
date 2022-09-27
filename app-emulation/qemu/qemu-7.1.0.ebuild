@@ -303,11 +303,11 @@ RDEPEND="${CDEPEND}
 	)"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
 	"${FILESDIR}"/${PN}-5.2.0-disable-keymap.patch
 	"${FILESDIR}"/${PN}-6.0.0-make.patch
 	"${FILESDIR}"/${PN}-7.1.0-also-build-virtfs-proxy-helper.patch
 	"${FILESDIR}"/${PN}-7.1.0-strings.patch
+	"${FILESDIR}"/${PN}-7.1.0-capstone-include-path.patch
 )
 
 QA_PREBUILT="
