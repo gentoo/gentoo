@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    macrostep is an Emacs minor mode for interactively stepping through the
+    expansion of macros in Emacs Lisp source code. It lets you see exactly what
+    happens at each step of the expansion process by pretty-printing the
+    expanded forms inline in the source buffer, which is temporarily read-only
+    while macro expansions are visible. You can expand and collapse macro forms
+    one step at a time, and evaluate or instrument the expansions for debugging
+    with Edebug as normal. Single-stepping through the expansion is
+    particularly useful for debugging macros that expand into another macro
+    form. These can be difficult to debug with Emacs’ built-in macroexpand,
+    which continues expansion until the top-level form is no longer a macro
+    call.
+  </longdescription>
+  <stabilize-allarches />
+  <upstream>
+    <bugs-to>https://github.com/joddie/macrostep/issues/</bugs-to>
+    <remote-id type="github">joddie/macrostep</remote-id>
+  </upstream>
+</pkgmetadata>

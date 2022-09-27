@@ -1,0 +1,75 @@
+#!/bin/sh
+#
+# LightDM wrapper to run around X sessions.
+
+echo "Running X session wrapper"
+
+# Load profile
+for file in "/etc/profile" "${HOME}/.profile" "/etc/xprofile" "${HOME}/.xprofile" ; do
+    if [ -f "${file}" ] ; then
+        echo "Loading profile from ${file}";
+        . "${file}"
+    fi
+done
+
+# Load resources
+for file in "/etc/X11/Xresources" "${HOME}/.Xresources" ; do
+    if [ -f "${file}" ] ; then
+        echo "Loading resource: ${file}"
+        xrdb -nocpp -merge "${file}"
+    fi
+done
+
+# Load keymaps
+for file in "/etc/X11/Xkbmap" "${HOME}/.Xkbmap" ; do
+    if [ -f "${file}" ] ; then
+        echo "Loading keymap: ${file}"
+        setxkbmap $(cat "${file}")
+        XKB_IN_USE=yes
+    fi
+done
+
+# Load xmodmap if not using XKB
+if [ -z "${XKB_IN_USE}" ] ; then
+    for file in "/etc/X11/Xmodmap" "${HOME}/.Xmodmap" ; do
+        if [ -f "${file}" ] ; then
+           echo "Loading modmap: ${file}"
+           xmodmap "${file}"
+        fi
+    done
+fi
+
+unset XKB_IN_USE
+
+# /etc/X11/xinit/xinitrc.d/80-dbus expects $command to be
+# set to the Xsession arguments. So make it happy. See
+# https://bugs.gentoo.org/show_bug.cgi?id=533456
+command="$@"
+
+# Run all system xinitrc shell scripts.
+xinitdir="/etc/X11/xinit/xinitrc.d"
+if [ -d "${xinitdir}" ] ; then
+    for script in ${xinitdir}/* ; do
+        if [ -x "${script}" ] && [ ! -d "${script}" ] ; then
+            echo "Loading xinit script ${script}"
+            . "${script}"
+        fi
+    done
+fi
+
+# Load Xsession scripts
+xsessionddir="/etc/X11/Xsession.d"
+if [ -d "${xsessionddir}" ] ; then
+    for script in "${xsessionddir}"/* ; do
+        local i=$(basename ${script})
+        script="${xsessionddir}/${i}"
+        if [ -r "${script}" ] && [ -f "${script}" ] && expr "${i}" : '^[[:alnum:]_-]\+$' > /dev/null ; then
+            echo "Loading X session script ${script}"
+            . "${script}"
+        fi
+    done
+fi
+
+echo "X session wrapper complete, running session ${@}"
+
+exec ${command}
