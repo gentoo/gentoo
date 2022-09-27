@@ -21,7 +21,7 @@ REQUIRED_USE="
 KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 
 DEPEND="
-	>=sci-geosciences/geocode-glib-3.10
+	>=sci-geosciences/geocode-glib-3.10:0
 	>=dev-libs/glib-2.58:2
 	>=gnome-base/gnome-desktop-3.37.1:3=
 	>=gnome-base/gsettings-desktop-schemas-42
