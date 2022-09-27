@@ -308,7 +308,7 @@ zstd-safe-3.0.1+zstd.1.4.9
 zstd-sys-1.4.20+zstd.1.4.9
 "
 
-inherit cargo optfeature
+inherit cargo optfeature systemd
 
 DESCRIPTION="ccache/distcc like tool with support for rust and cloud storage"
 HOMEPAGE="https://github.com/mozilla/sccache/"
@@ -380,6 +380,10 @@ src_install() {
 
 		newinitd "${FILESDIR}"/scheduler.initd sccache-scheduler
 		newconfd "${FILESDIR}"/scheduler.confd sccache-scheduler
+
+		systemd_dounit "${FILESDIR}"/sccache-server.service
+		systemd_dounit "${FILESDIR}"/sccache-scheduler.service
+
 	fi
 }
 
