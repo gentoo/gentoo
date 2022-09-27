@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 MY_PN=OpenEXR
 
@@ -43,10 +43,18 @@ src_prepare() {
 	sed -e "s:/var/tmp/:${T}:" \
 		-i "${S}"/src/test/${MY_PN}{,Fuzz,Util}Test/tmpDir.h || die "failed to set temp path for tests"
 
+	if use x86; then
+		eapply "${FILESDIR}"/${P}-drop-failing-testDwaLookups.patch
+	fi
+
 	cmake_src_prepare
 }
 
 src_configure() {
+	if use x86; then
+		replace-cpu-flags native i686
+	fi
+
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)
 		-DDOCS=$(usex doc)
