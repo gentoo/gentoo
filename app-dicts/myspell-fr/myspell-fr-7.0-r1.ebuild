@@ -30,8 +30,8 @@ MYSPELL_THES=(
 inherit myspell-r2
 
 DESCRIPTION="French dictionaries for myspell/hunspell"
-HOMEPAGE="http://www.dicollecte.org/home.php?prj=fr"
-SRC_URI="http://www.dicollecte.org/grammalecte/oxt/lo-oo-ressources-linguistiques-fr-v${PV}.oxt"
+HOMEPAGE="https://grammalecte.net/home.php?prj=fr"
+SRC_URI="https://grammalecte.net/grammalecte/oxt/lo-oo-ressources-linguistiques-fr-v${PV}.oxt"
 
 LICENSE="MPL-2.0 LGPL-2.1"
 SLOT="0"
