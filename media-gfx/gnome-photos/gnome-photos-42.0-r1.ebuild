@@ -31,7 +31,7 @@ DEPEND="
 	>=dev-libs/libgdata-0.17.13:0=[gnome-online-accounts]
 	>=net-libs/libgfbgraph-0.2.1:0.2
 	>=gui-libs/libhandy-1.1.90:1=
-	virtual/jpeg:0
+	media-libs/libjpeg-turbo:0=
 	>=media-libs/libpng-1.6:0=
 	app-misc/tracker:3=
 	sys-apps/dbus
