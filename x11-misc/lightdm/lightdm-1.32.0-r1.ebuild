@@ -21,6 +21,7 @@ RESTRICT="test"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.44.0:2
+	dev-libs/libgcrypt:=
 	dev-libs/libxml2
 	sys-libs/pam
 	x11-libs/libX11
