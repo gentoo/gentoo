@@ -3,11 +3,21 @@
 
 EAPI=8
 
-inherit git-r3 linux-info systemd tmpfiles toolchain-funcs
+inherit linux-info systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="Free client for Cisco VPN routing software"
 HOMEPAGE="https://www.unix-ag.uni-kl.de/~massar/vpnc/"
-EGIT_REPO_URI="https://github.com/streambinder/vpnc.git"
+
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/streambinder/vpnc.git"
+else
+	inherit vcs-snapshot
+	SRC_URI="
+		https://api.github.com/repos/streambinder/vpnc/tarball/fdd0de7 -> ${P}.tar.gz
+		https://dev.gentoo.org/~soap/distfiles/${PN}-0.5.3-docs.tar.xz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+fi
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -29,13 +39,22 @@ BDEPEND="
 
 CONFIG_CHECK="~TUN"
 
+src_unpack() {
+	if [[ ${PV} == *9999 ]]; then
+		git-r3_src_unpack
+	else
+		vcs-snapshot_src_unpack
+		mv vpnc-0.5.3-docs/src/doc/*.md "${S}"/src/doc/ || die
+	fi
+}
+
 src_configure() {
 	tc-export CC PKG_CONFIG
 	export OPENSSL_GPL_VIOLATION=$(usex !gnutls)
 }
 
 src_install() {
-	emake PREFIX="${EPREFIX}"/usr DESTDIR="${D}" install
+	emake PREFIX="${EPREFIX}"/usr DOCDIR='$(PREFIX)'/share/doc/${PF} DESTDIR="${D}" install
 
 	keepdir /etc/vpnc/scripts.d
 	newinitd "${FILESDIR}"/vpnc-3.init vpnc
@@ -44,8 +63,8 @@ src_install() {
 	dotmpfiles "${FILESDIR}"/vpnc-tmpfiles.conf
 	systemd_newunit "${FILESDIR}"/vpnc.service vpnc@.service
 
-	# COPYING file resides here, should not be installed
-	rm -r "${ED}"/usr/share/doc/vpnc/ || die
+	# LICENSE file resides here, should not be installed
+	rm -r "${ED}"/usr/share/licenses || die
 }
 
 pkg_postinst() {
