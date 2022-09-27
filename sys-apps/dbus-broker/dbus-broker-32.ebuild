@@ -41,6 +41,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/dbus-broker-32-apparmor-libaudit.patch"
+)
+
 if [[ ${PV} == 9999 ]]; then
 src_unpack() {
 	git-r3_src_unpack
