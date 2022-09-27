@@ -45,7 +45,7 @@ src_prepare() {
 		hprefixify etc/shells share.Linux/passwd
 		hprefixify -w '/PATH=/' etc/env.d/50baselayout
 		hprefixify -w 1 etc/env.d/50baselayout
-		echo PATH=/usr/sbin:/sbin:/usr/bin:/bin >> etc/env.d/99host
+		echo PATH=/usr/sbin:/sbin:/usr/bin:/bin >> etc/env.d/99host || die
 
 		# change branding
 		sed -i \
@@ -68,7 +68,7 @@ src_prepare() {
 		ldpaths+=":${EPREFIX}/usr/${libdir}"
 		ldpaths+=":${EPREFIX}/usr/local/${libdir}"
 	done
-	echo "LDPATH='${ldpaths#:}'" >> etc/env.d/50baselayout
+	echo "LDPATH='${ldpaths#:}'" >> etc/env.d/50baselayout || die
 }
 
 src_install() {
@@ -239,7 +239,7 @@ pkg_postinst() {
 
 		local found fstype mountpoint
 		while read -r _ mountpoint fstype _; do
-		[[ ${mountpoint} = /run ]] && [[ ${fstype} = tmpfs ]] && found=1
+		[[ ${mountpoint} = /run && ${fstype} = tmpfs ]] && found=1
 		done < "${ROOT}"/proc/mounts
 		[[ -z ${found} ]] &&
 			ewarn "You should reboot now to get /run mounted with tmpfs!"
