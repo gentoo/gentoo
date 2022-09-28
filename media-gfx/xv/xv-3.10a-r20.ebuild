@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,10 +17,15 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="jpeg tiff png"
 
-DEPEND="x11-libs/libXt
-	jpeg? ( virtual/jpeg:0 )
-	tiff? ( media-libs/tiff:0 )
-	png? ( >=media-libs/libpng-1.2:0= sys-libs/zlib )"
+DEPEND="
+	x11-libs/libXt
+	jpeg? ( media-libs/libjpeg-turbo:= )
+	tiff? ( media-libs/tiff )
+	png? (
+		>=media-libs/libpng-1.2:=
+		sys-libs/zlib
+	)
+"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
