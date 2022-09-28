@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake gnome2 optfeature
 
 DESCRIPTION="Evolution module for connecting to Microsoft Exchange Web Services"
-HOMEPAGE="https://wiki.gnome.org/Apps/Evolution https://gitlab.gnome.org/GNOME/evolution-ews"
+HOMEPAGE="https://wiki.gnome.org/Apps/Evolution"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -27,7 +27,7 @@ RDEPEND="
 	>=x11-libs/gtk+-3.10:3
 "
 DEPEND="${RDEPEND}
-	test? ( net-libs/uhttpmock )
+	test? ( net-libs/uhttpmock:0 )
 "
 BDEPEND="
 	dev-util/gdbus-codegen
