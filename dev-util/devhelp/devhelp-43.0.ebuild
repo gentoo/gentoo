@@ -44,7 +44,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-optional-introspection.patch
-	"${FILESDIR}"/${PV}-webkitgtk40.patch
 )
 
 pkg_setup() {
