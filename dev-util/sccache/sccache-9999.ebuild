@@ -1,12 +1,13 @@
-# Copyright 2017-2021 Gentoo Authors
+# Copyright 2017-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
+# don't forget to add itoa-0.3.4 for tests https://bugs.gentoo.org/803512
 CRATES="
 "
 
-inherit cargo optfeature
+inherit cargo optfeature systemd
 
 DESCRIPTION="ccache/distcc like tool with support for rust and cloud storage"
 HOMEPAGE="https://github.com/mozilla/sccache/"
@@ -22,11 +23,13 @@ fi
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 ISC MIT Unlicense ZLIB"
 SLOT="0"
-IUSE="azure dist-client dist-server gcs memcached redis s3"
+IUSE="azure dist-client dist-server gcs memcached redis s3 simple-s3"
+REQUIRED_USE="s3? ( simple-s3 )"
 
 BDEPEND="virtual/pkgconfig"
 
 DEPEND="
+	sys-libs/zlib:=
 	app-arch/zstd
 	dist-server? ( dev-libs/openssl:0= )
 	gcs? ( dev-libs/openssl:0= )
@@ -49,6 +52,7 @@ src_unpack() {
 
 src_configure() {
 	myfeatures=(
+		native-zlib
 		$(usev azure)
 		$(usev dist-client)
 		$(usev dist-server)
@@ -56,6 +60,7 @@ src_configure() {
 		$(usev memcached)
 		$(usev redis)
 		$(usev s3)
+		$(usev simple-s3)
 	)
 	cargo_src_configure --no-default-features
 }
@@ -74,6 +79,10 @@ src_install() {
 
 		newinitd "${FILESDIR}"/scheduler.initd sccache-scheduler
 		newconfd "${FILESDIR}"/scheduler.confd sccache-scheduler
+
+		systemd_dounit "${FILESDIR}"/sccache-server.service
+		systemd_dounit "${FILESDIR}"/sccache-scheduler.service
+
 	fi
 }
 
