@@ -31,11 +31,11 @@ RDEPEND="
 	dev-python/sniffio[${PYTHON_USEDEP}]
 	dev-python/sortedcontainers[${PYTHON_USEDEP}]
 "
-# NB: we're ignoring tests that require pyopenssl
 BDEPEND="
 	test? (
 		>=dev-python/astor-0.8.0[${PYTHON_USEDEP}]
 		>=dev-python/immutables-0.6[${PYTHON_USEDEP}]
+		dev-python/pyopenssl[${PYTHON_USEDEP}]
 		dev-python/trustme[${PYTHON_USEDEP}]
 	)
 "
