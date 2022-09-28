@@ -5,7 +5,7 @@ EAPI=8
 
 USE_RUBY="ruby27 ruby30 ruby31"
 RUBY_FAKEGEM_RECIPE_TEST=""
-RUBY_FAKEGEM_EXTRADOC="README.md"
+RUBY_FAKEGEM_EXTRADOC="readme.md"
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 inherit ruby-fakegem
 
@@ -20,6 +20,7 @@ IUSE=""
 
 all_ruby_prepare() {
 	sed -i -E 's/require_relative "(.+)"/require File.expand_path("\1")/g' "${RUBY_FAKEGEM_GEMSPEC}" || die
+	sed -i -E '/^#/!d' "config/${PN}.rb" || die # remove covered coverage
 }
 
 each_ruby_test() {
