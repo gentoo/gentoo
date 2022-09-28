@@ -29,7 +29,7 @@ DEPEND="
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-implicits.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_prepare() {
