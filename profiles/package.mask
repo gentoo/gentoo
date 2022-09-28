@@ -558,6 +558,7 @@ sys-devel/automake:1.11
 # Migration to it is expected for GNOME 42, NOT to be unmasked with GNOME 41.
 >=gnome-extra/gnome-calculator-43
 media-libs/libshumate
+net-libs/uhttpmock:1.0
 net-libs/libsoup:3.0
 net-libs/rest:1.0
 net-libs/webkit-gtk:4.1
