@@ -18,6 +18,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-clang16.patch
+)
+
 src_configure() {
 	econf --disable-alsatest --disable-gtktest --enable-gtk2
 }
