@@ -262,6 +262,18 @@ unpack_makeself() {
 		XZ*)
 			suffix=xz
 			;;
+		Zstandard*)
+			suffix=zst
+			;;
+		lzop*)
+			suffix=lzo
+			;;
+		LZ4*)
+			suffix=lz4
+			;;
+		"ASCII text"*)
+			decomp='base64 -d'
+			;;
 		*)
 			die "Unknown filetype \"${filetype}\", for makeself ${src##*/} ('${ver}' +${skip})"
 			;;
