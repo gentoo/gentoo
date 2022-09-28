@@ -556,11 +556,12 @@ sys-devel/automake:1.11
 # New major parallel-installable release which needs special care to not
 # end up loaded into the same process together with the earlier libsoup ABI.
 # Migration to it is expected for GNOME 42, NOT to be unmasked with GNOME 41.
+>=dev-util/devhelp-43
 >=gnome-extra/gnome-calculator-43
 media-libs/libshumate
-net-libs/uhttpmock:1.0
 net-libs/libsoup:3.0
 net-libs/rest:1.0
+net-libs/uhttpmock:1.0
 net-libs/webkit-gtk:4.1
 sci-geosciences/geocode-glib:2
 
