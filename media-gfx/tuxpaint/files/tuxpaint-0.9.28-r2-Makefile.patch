@@ -1,0 +1,164 @@
+--- a/Makefile
++++ b/Makefile
+@@ -73,7 +73,7 @@ endif
+ # <HOSTROOT> is the directory containing support files for building for <HOST>:
+ #   <HOSTROOT>/include        Header files.
+ #   <HOSTROOT>/lib            Library files.
+-#   <HOSTROOT>/lib/pkgconfig  *.pc files.
++#   <HOSTROOT>/pkgconfig  *.pc files.
+ #
+ ifdef HOST
+   ifdef HOSTROOT
+@@ -104,7 +104,7 @@ ifdef HOST
+     # We set PKG_CONFIG_LIBDIR instead of PKG_CONFIG_PATH because we want to
+     # *change* where pkg-config looks for .pc files instead of adding to the
+     # default path which may have libraries that aren't for HOST.
+-    export PKG_CONFIG_LIBDIR:=$(HOSTROOT)/lib/pkgconfig
++    export PKG_CONFIG_LIBDIR:=$(HOSTROOT)/$(GENTOO_LIBDIR)/pkgconfig
+   endif
+ endif
+ 
+@@ -170,14 +170,14 @@ windows_ARCH_CFLAGS:=
+ macos_ARCH_CFLAGS:=-isysroot $(SDKROOT) -I$(SDKROOT)/usr/include -I$(HOSTROOT)/include -mmacosx-version-min=$(MINVER) -arch $(subst $() $(), -arch ,$(ARCHS)) -w -headerpad_max_install_names -DHAVE_STRCASESTR
+ ios_ARCH_CFLAGS:=-isysroot $(SDKROOT) -I$(SDKROOT)/usr/include -I$(HOSTROOT)/include $(MINVEROPT) -arch $(subst $() $(), -arch ,$(ARCHS)) -w -fPIC -DHAVE_STRCASESTR -DUNLINK_ONLY
+ beos_ARCH_CFLAGS:=
+-linux_ARCH_CFLAGS:=
++linux_ARCH_CFLAGS:=${CFLAGS}
+ ARCH_CFLAGS:=$($(OS)_ARCH_CFLAGS)
+ 
+ windows_ARCH_LDFLAGS:=
+ macos_ARCH_LDFLAGS:=-isysroot $(SDKROOT) -L$(HOSTROOT)/lib -mmacosx-version-min=$(MINVER) -arch $(subst $() $(), -arch ,$(ARCHS))
+ ios_ARCH_LDFLAGS:=-isysroot $(SDKROOT) -L$(HOSTROOT)/lib $(MINVEROPT) -arch $(subst $() $(), -arch ,$(ARCHS))
+ beos_ARCH_LDFLAGS:=
+-linux_ARCH_LDFLAGS:=
++linux_ARCH_LDFLAGS:=${LDFLAGS}
+ ARCH_LDFLAGS:=$($(OS)_ARCH_LDFLAGS)
+ LDFLAGS:=$(ARCH_LDFLAGS)
+ 
+@@ -206,7 +206,7 @@ ARCH_HEADERS:=$($(OS)_ARCH_HEADERS)
+ windows_PREFIX:=/usr/local
+ macos_PREFIX:=Resources
+ ios_PREFIX:=.
+-linux_PREFIX:=/usr/local
++linux_PREFIX:=/usr
+ PREFIX:=$($(OS)_PREFIX)
+ 
+ # Root directory to place files when creating packages.
+@@ -240,11 +240,11 @@ LIBDIR=$(PREFIX)
+ 
+ # Magic Tool plug-ins
+ INCLUDE_PREFIX:=$(DESTDIR)$(PREFIX)/include
+-MAGIC_PREFIX:=$(DESTDIR)$(LIBDIR)/lib$(LIBDIRSUFFIX)/tuxpaint/plugins
++MAGIC_PREFIX:=$(DESTDIR)$(LIBDIR)/${GENTOO_LIBDIR}/tuxpaint/plugins
+ 
+ # Docs and man page:
+-DOC_PREFIX:=$(DESTDIR)$(PREFIX)/share/doc/tuxpaint-$(VER_VERSION)
+-DEVDOC_PREFIX:=$(DESTDIR)$(PREFIX)/share/doc/tuxpaint-$(VER_VERSION)/tuxpaint-dev
++DOC_PREFIX:=$(DESTDIR)$(PREFIX)/share/doc/${PF}
++DEVDOC_PREFIX:=$(DESTDIR)$(PREFIX)/share/doc/${PF}/tuxpaint-dev
+ MAN_PREFIX:=$(DESTDIR)$(PREFIX)/share/man
+ DEVMAN_PREFIX:=$(DESTDIR)$(PREFIX)/share/man
+ 
+@@ -359,7 +359,7 @@ MOUSE_CFLAGS:=-Isrc/$(MOUSEDIR) -D$(CURSOR_SHAPES)_CURSOR_SHAPES
+ # are 132x80.  On larger screens, they will be bigger (since the New dialog
+ # is always 4x4 thumbnails); therefore, generating larger thumbs, which can
+ # be still be scaled down fairly quickly (esp. complicated SVG ones).
+-CONVERT_OPTS:=-alpha Background -alpha Off +depth -resize !264x160 -background white -interlace none
++CONVERT_OPTS:=-resize 264x160 -background white -extent 0x0 -interlace none
+ 
+ .SUFFIXES:
+ 
+@@ -551,7 +551,7 @@ trans:
+ windows_ARCH_INSTALL:=
+ macos_ARCH_INSTALL:=install-macbundle
+ ios_ARCH_INSTALL:=install-iosbundle
+-linux_ARCH_INSTALL:=install-xdg install-man install-importscript install-bash-completion
++linux_ARCH_INSTALL:=install-man install-importscript install-bash-completion
+ ARCH_INSTALL:=$($(OS)_ARCH_INSTALL)
+ 
+ # "make install" installs all of the various parts
+@@ -719,12 +719,12 @@ uninstall:	uninstall-i18n
+ 	-rm $(BIN_PREFIX)/tuxpaint-import
+ 	-rm -r $(DATA_PREFIX)
+ 	-rm -r $(DOC_PREFIX)
+-	-rm $(MAN_PREFIX)/man1/tuxpaint.1.gz
+-	-rm $(MAN_PREFIX)/*/man1/tuxpaint.1.gz
+-	-rm $(MAN_PREFIX)/man1/tuxpaint-import.1.gz
+-	-rm $(MAN_PREFIX)/*/man1/tuxpaint-import.1.gz
+-	-rm $(MAN_PREFIX)/man1/tp-magic-config.1.gz
+-	-rm $(MAN_PREFIX)/*/man1/tp-magic-config.1.gz
++	-rm $(MAN_PREFIX)/man1/tuxpaint.1
++	-rm $(MAN_PREFIX)/*/man1/tuxpaint.1
++	-rm $(MAN_PREFIX)/man1/tuxpaint-import.1
++	-rm $(MAN_PREFIX)/*/man1/tuxpaint-import.1
++	-rm $(MAN_PREFIX)/man1/tp-magic-config.1
++	-rm $(MAN_PREFIX)/*/man1/tp-magic-config.1
+ 	-rm -f -r $(CONFDIR)
+ 	-rm $(COMPLETIONDIR)/tuxpaint-completion.bash
+ 	-rm -r $(MAGIC_PREFIX)
+@@ -817,11 +817,11 @@ $(THUMB_STARTERS):
+ 	@mkdir -p starters/.thumbs
+ 	@if [ "x" != "x"$(STARTER_BACK_NAME) ] ; \
+ 	then \
+-		composite $(STARTER_NAME) $(STARTER_BACK_NAME) obj/tmp_$(notdir $(STARTER_NAME)).png ; \
+-		convert $(CONVERT_OPTS) obj/tmp_$(notdir $(STARTER_NAME)).png $@ 2> /dev/null ; \
++		gm composite $(STARTER_NAME) $(STARTER_BACK_NAME) obj/tmp_$(notdir $(STARTER_NAME)).png 2> /dev/null ; \
++		gm convert $(CONVERT_OPTS) obj/tmp_$(notdir $(STARTER_NAME)).png $@ || echo "($@ failed)" ; \
+ 		rm obj/tmp_$(notdir $(STARTER_NAME)).png ; \
+ 	else \
+-		convert $(CONVERT_OPTS) $(STARTER_NAME) $@ 2> /dev/null || ( echo "($@ failed)" ; rm $@ ) ; \
++		gm convert $(CONVERT_OPTS) $(STARTER_NAME) $@ 2> /dev/null || ( echo "($@ failed)" ; rm $@ ) ; \
+ 	fi
+ 
+ $(INSTALLED_THUMB_STARTERS): $(DATA_PREFIX)/%: %
+@@ -876,7 +876,7 @@ TEMPLATE_NAME=$(or $(wildcard $(subst templates/.thumbs,templates,$(@:-t.png=.sv
+ $(THUMB_TEMPLATES):
+ 	@printf "."
+ 	@mkdir -p templates/.thumbs
+-	@convert $(CONVERT_OPTS) $(TEMPLATE_NAME) $@ 2> /dev/null || ( echo "($@ failed)" ; rm $@ ) ; \
++	@gm convert $(CONVERT_OPTS) $(TEMPLATE_NAME) $@ 2> /dev/null || ( echo "($@ failed)" ; rm $@ ) ; \
+ 
+ $(INSTALLED_THUMB_TEMPLATES): $(DATA_PREFIX)/%: %
+ 	@install -D -m 644 $< $@ || ( echo "NO THUMB $<" )
+@@ -988,9 +988,9 @@ install-dlls:
+ 	@cp -R win32/etc/ $(BIN_PREFIX)
+ 	@echo
+ 	@echo "...Installing Library Modules..."
+-	@mkdir -p $(BIN_PREFIX)/lib/gdk-pixbuf-2.0/2.10.0/loaders
+-	@cp $(MINGW_DIR)/lib/gdk-pixbuf-2.0/2.10.0/loaders/*.dll $(BIN_PREFIX)/lib/gdk-pixbuf-2.0/2.10.0/loaders
+-	@strip -s $(BIN_PREFIX)/lib/gdk-pixbuf-2.0/2.10.0/loaders/*.dll
++	@mkdir -p $(BIN_PREFIX)/$(GENTOO_LIBDIR)/gdk-pixbuf-2.0/2.10.0/loaders
++	@cp $(MINGW_DIR)/$(GENTOO_LIBDIR)/gdk-pixbuf-2.0/2.10.0/loaders/*.dll $(BIN_PREFIX)/lib/gdk-pixbuf-2.0/2.10.0/loaders
++	@strip -s $(BIN_PREFIX)/$(GENTOO_LIBDIR)/gdk-pixbuf-2.0/2.10.0/loaders/*.dll
+ 
+ # Install symlink:
+ .PHONY: install-haiku
+@@ -1065,24 +1065,20 @@ install-man:
+ 	@install -d $(MAN_PREFIX)/man1
+ 	@# tuxpaint.1
+ 	@cp man/en/tuxpaint.1 $(MAN_PREFIX)/man1/
+-	@gzip -f $(MAN_PREFIX)/man1/tuxpaint.1
+-	@chmod a+rx,g-w,o-w $(MAN_PREFIX)/man1/tuxpaint.1.gz
++	@chmod a+rx,g-w,o-w $(MAN_PREFIX)/man1/tuxpaint.1
+ 	@# tuxpaint-import.1
+ 	@cp man/en/tuxpaint-import.1 $(MAN_PREFIX)/man1/
+-	@gzip -f $(MAN_PREFIX)/man1/tuxpaint-import.1
+-	@chmod a+rx,g-w,o-w $(MAN_PREFIX)/man1/tuxpaint-import.1.gz
++	@chmod a+rx,g-w,o-w $(MAN_PREFIX)/man1/tuxpaint-import.1
+ 	@# tp-magic-config.1
+ 	@cp man/en/tp-magic-config.1 $(MAN_PREFIX)/man1/
+-	@gzip -f $(MAN_PREFIX)/man1/tp-magic-config.1
+-	@chmod a+rx,g-w,o-w $(MAN_PREFIX)/man1/tp-magic-config.1.gz
++	@chmod a+rx,g-w,o-w $(MAN_PREFIX)/man1/tp-magic-config.1
+ 	@echo
+ 	for l in `ls -d man/*.UTF-8 | cut -d '/' -f 2`; do \
+ 		DEST=$(MAN_PREFIX)/$$l/man1 ; \
+ 		echo "...Installing $$l man pages into $$DEST..." ; \
+ 		install -d $$DEST ; \
+ 		cp man/$$l/tuxpaint.1 $$DEST ; \
+-		gzip -f $$DEST/tuxpaint.1 ; \
+-		chmod a+rx,g-w,o-w $$DEST/tuxpaint.1.gz ; \
++		chmod a+rx,g-w,o-w $$DEST/tuxpaint.1 ; \
+ 	done
+ 	@# FIXME: The other man pages aren't localizable yet -bjk 2021.08.14
+ 
