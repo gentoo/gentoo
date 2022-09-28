@@ -182,6 +182,25 @@ test_gpkg() {
 		"create_gpkg '${suffix}' '${tool_cmd}' \${archive} \${TESTFILE}"
 }
 
+create_makeself() {
+	local comp_opt=${1}
+	local archive=${2}
+	local infile=${3}
+
+	mkdir test || die
+	cp "${infile}" test/ || die
+	makeself --quiet "${comp_opt}" test "${archive}" test : || die
+	rm -rf test || die
+}
+
+test_makeself() {
+	local comp_opt=${1}
+	local tool=${2}
+
+	test_unpack "makeself-${tool}.sh" test.in "makeself ${tool}" \
+		"create_makeself '${comp_opt}' \${archive} \${TESTFILE}"
+}
+
 test_reject_junk() {
 	local suffix=${1}
 	local archive=test${1}
@@ -264,6 +283,16 @@ test_gpkg .lzma lzma
 test_gpkg .lzo lzop
 test_gpkg .xz xz
 test_gpkg .zst zstd
+
+test_makeself --gzip gzip
+test_makeself --zstd zstd
+test_makeself --bzip2 bzip2
+test_makeself --xz xz
+test_makeself --lzo lzop
+test_makeself --lz4 lz4
+test_makeself --compress compress
+test_makeself --base64 base64
+test_makeself --nocomp tar
 
 test_unpack test.zip test.in zip 'zip -q ${archive} ${TESTFILE}'
 # test handling non-adjusted zip with junk prepended
