@@ -1,23 +1,26 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
+inherit toolchain-funcs
 
 DESCRIPTION="SCSIPing pings a host on the SCSI-chain"
-HOMEPAGE="https://www.vanheusden.com/Linux/"
-SRC_URI="https://www.vanheusden.com/Linux/${P}.tgz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 
 src_prepare() {
-	sed -i -e '/strip scsiping/d' "${S}"/Makefile
 	default
+
+	sed -i '/strip scsiping/d' Makefile || die
 }
 
 src_compile() {
-	emake DEBUG='' CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} ${CPPFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
