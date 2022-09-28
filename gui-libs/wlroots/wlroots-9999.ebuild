@@ -19,7 +19,7 @@ else
 fi
 
 LICENSE="MIT"
-IUSE="vulkan x11-backend X"
+IUSE="tinywl vulkan x11-backend X"
 
 DEPEND="
 	>=dev-libs/libinput-1.14.0:0=
@@ -54,17 +54,27 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=( "${FILESDIR}"/wlroots-0.15.1-tinywl-dont-crash-upon-missing-keyboard.patch )
+
 src_configure() {
 	# xcb-util-errors is not on Gentoo Repository (and upstream seems inactive?)
 	local emesonargs=(
 		"-Dxcb-errors=disabled"
-		"-Dexamples=false"
+		$(meson_use tinywl examples)
 		-Drenderers=$(usex vulkan 'gles2,vulkan' gles2)
 		-Dxwayland=$(usex X enabled disabled)
 		-Dbackends=drm,libinput$(usex x11-backend ',x11' '')
 	)
 
 	meson_src_configure
+}
+
+src_install() {
+	meson_src_install
+
+	if use tinywl; then
+		dobin "${BUILD_DIR}"/tinywl/tinywl
+	fi
 }
 
 pkg_postinst() {
