@@ -33,6 +33,10 @@ BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-clang16.patch
+)
+
 src_prepare() {
 	default
 
