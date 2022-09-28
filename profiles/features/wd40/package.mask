@@ -50,6 +50,7 @@ dev-python/spur
 dev-python/sshtunnel
 dev-python/tempest
 dev-python/trustme
+>=dev-python/trio-0.22.0
 dev-python/twine
 dev-python/watchfiles
 dev-ros/roswtf
