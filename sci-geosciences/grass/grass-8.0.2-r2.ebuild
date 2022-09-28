@@ -27,7 +27,7 @@ else
 	SLOT="0/$(ver_cut 1-2 ${PV})"
 	SRC_URI="https://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~amd64 ~x86"
+		KEYWORDS="amd64 ~x86"
 	fi
 
 	S="${WORKDIR}/${MY_P}"
