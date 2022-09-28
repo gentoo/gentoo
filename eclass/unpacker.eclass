@@ -218,6 +218,14 @@ unpack_makeself() {
 				skip=$(head -n ${skip} "${src}" | wc -c)
 				exe="dd"
 				;;
+			2.4.5)
+				# e.g.: skip="713"
+				skip=$(
+					sed -n -e '/^skip=/{s:skip="\(.*\)":\1:p;q}' "${src}"
+				)
+				skip=$(head -n "${skip}" "${src}" | wc -c)
+				exe="dd"
+				;;
 			*)
 				eerror "I'm sorry, but I was unable to support the Makeself file."
 				eerror "The version I detected was '${ver}'."
