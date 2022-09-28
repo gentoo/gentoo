@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/870466
+--- a/sha1.h
++++ b/sha1.h
+@@ -59,4 +59,7 @@
+ void SHA1_Init_With_IV( SHA1_ctx*, const byte[ SHA1_DIGEST_BYTES ] );
+ 
++void SHA1_Transform(  word32 H[ SHA1_DIGEST_WORDS ],
++		      const byte M[ SHA1_INPUT_BYTES ] );
++
+ #endif
+ 
