@@ -523,11 +523,11 @@ _unpacker() {
 	if [[ -z ${arch} ]] ; then
 		# Need to decompress the file into $PWD #408801
 		local _a=${a%.*}
-		${comp} "${a}" > "${_a##*/}"
+		${comp} < "${a}" > "${_a##*/}"
 	elif [[ -z ${comp} ]] ; then
 		${arch} "${a}"
 	else
-		${comp} "${a}" | ${arch} -
+		${comp} < "${a}" | ${arch} -
 	fi
 
 	assert "unpacking ${a} failed (comp=${comp} arch=${arch})"

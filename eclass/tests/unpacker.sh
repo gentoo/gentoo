@@ -42,9 +42,14 @@ test_unpack() {
 	eval "${packcmd}"
 	assert "packing ${archive} failed"
 	cd testdir || die
+
+	# create a symlink to flush out compressor issues and resemble distdir more
+	# https://bugs.gentoo.org/873352
+	ln -s "../${archive}" "${archive}" || die
+
 	local out
 	out=$(
-		_unpacker "../${archive}" 2>&1
+		_unpacker "${archive}" 2>&1
 	)
 	ret=$?
 	if [[ ${ret} -eq 0 ]]; then
