@@ -243,30 +243,32 @@ unpack_makeself() {
 	esac
 
 	# lets grab the first few bytes of the file to figure out what kind of archive it is
-	local filetype tmpfile="${T}/${FUNCNAME}"
+	local decomp= filetype suffix tmpfile="${T}/${FUNCNAME}"
 	"${exe[@]}" 2>/dev/null | head -c 512 > "${tmpfile}"
 	filetype=$(file -b "${tmpfile}") || die
 	case ${filetype} in
 		*tar\ archive*)
-			"${exe[@]}" | tar --no-same-owner -xf -
+			decomp=cat
 			;;
 		bzip2*)
-			"${exe[@]}" | bzip2 -dc | tar --no-same-owner -xf -
+			suffix=bz2
 			;;
 		gzip*)
-			"${exe[@]}" | tar --no-same-owner -xzf -
+			suffix=gz
 			;;
 		compress*)
-			"${exe[@]}" | gunzip | tar --no-same-owner -xf -
+			suffix=z
 			;;
 		XZ*)
-			"${exe[@]}" | unxz | tar --no-same-owner -xf -
+			suffix=xz
 			;;
 		*)
-			eerror "Unknown filetype \"${filetype}\" ?"
-			false
+			die "Unknown filetype \"${filetype}\", for makeself ${src##*/} ('${ver}' +${skip})"
 			;;
 	esac
+
+	[[ -z ${decomp} ]] && decomp=$(_unpacker_get_decompressor ".${suffix}")
+	"${exe[@]}" | ${decomp} | tar --no-same-owner -xf -
 	assert "failure unpacking (${filetype}) makeself ${src##*/} ('${ver}' +${skip})"
 }
 
