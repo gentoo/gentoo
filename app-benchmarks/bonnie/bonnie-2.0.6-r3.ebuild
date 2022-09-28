@@ -1,29 +1,28 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
 DESCRIPTION="Performance Test of Filesystem I/O using standard C library calls"
-HOMEPAGE="http://www.textuality.com/bonnie/"
-SRC_URI="http://www.textuality.com/bonnie/bonnie.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://www.textuality.com/bonnie/"
+SRC_URI="https://www.textuality.com/bonnie/bonnie.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"
 
 LICENSE="bonnie"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~ia64 ~mips ppc ppc64 sparc x86"
-IUSE=""
-
-S=${WORKDIR}
 
 PATCHES=(
-	"${FILESDIR}"/bonnie_man.patch
-	"${FILESDIR}"/Makefile.patch
 	"${FILESDIR}"/${P}-includes.patch
+	"${FILESDIR}"/${P}-man.patch
 )
 
-src_configure() {
+src_compile() {
 	tc-export CC
+
+	emake -f /dev/null Bonnie
 }
 
 src_install() {
