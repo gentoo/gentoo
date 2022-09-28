@@ -243,9 +243,8 @@ unpack_makeself() {
 	esac
 
 	# lets grab the first few bytes of the file to figure out what kind of archive it is
-	local decomp= filetype suffix tmpfile="${T}/${FUNCNAME}"
-	"${exe[@]}" 2>/dev/null | head -c 512 > "${tmpfile}"
-	filetype=$(file -b "${tmpfile}") || die
+	local decomp= filetype suffix
+	filetype=$("${exe[@]}" 2>/dev/null | head -c 512 | file -b -) || die
 	case ${filetype} in
 		*tar\ archive*)
 			decomp=cat
