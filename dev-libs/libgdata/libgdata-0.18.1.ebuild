@@ -33,7 +33,8 @@ BDEPEND="
 		app-text/docbook-xml-dtd:4.3 )
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
-	test? ( >=net-libs/uhttpmock-0.5.0
+	test? (
+		>=net-libs/uhttpmock-0.5.0:0
 		>=x11-libs/gdk-pixbuf-2.14:2
 	)
 	vala? ( $(vala_depend) )
