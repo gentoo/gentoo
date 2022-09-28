@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,10 @@ RDEPEND="
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-clang16.patch
+)
 
 pkg_postinst() {
 	einfo "Enter hcalc to run and use kill or ctrl-c to exit."
