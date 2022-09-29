@@ -337,7 +337,6 @@ dev-haskell/regex-compat-tdfa
 dev-haskell/regex-pcre
 dev-haskell/rerebase
 dev-haskell/rfc5051
-dev-haskell/rio-orphans
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
