@@ -39,11 +39,11 @@
 # Removal on 2022-10-29.  Bug #789477.
 games-simulation/bcs-demo
 
-# Stephan Hartmann <sultan@gentoo.org> (2022-09-26)
+# Stephan Hartmann <sultan@gentoo.org> (2022-09-29)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
 # and accept a more unstable release.
->=www-client/chromium-107
+>=www-client/chromium-108
 
 # Sam James <sam@gentoo.org> (2022-09-26)
 # Masked for testing. Please report bugs!
