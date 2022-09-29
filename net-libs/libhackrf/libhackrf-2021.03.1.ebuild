@@ -40,5 +40,12 @@ src_configure() {
 }
 
 pkg_postinst() {
-	use udev && einfo "Users in the usb group can use hackrf."
+	if use udev; then
+		einfo "Users in the usb group can use hackrf."
+		udev_reload
+	fi
+}
+
+pkg_postrm() {
+	udev_reload
 }

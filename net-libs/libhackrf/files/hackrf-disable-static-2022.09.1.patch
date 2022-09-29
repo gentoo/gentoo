@@ -1,0 +1,30 @@
+diff -Naur libhackrf-orig/src/CMakeLists.txt libhackrf/src/CMakeLists.txt
+--- libhackrf-orig/src/CMakeLists.txt	2022-09-29 09:47:10.899630179 -0400
++++ libhackrf/src/CMakeLists.txt	2022-09-29 09:47:30.835629516 -0400
+@@ -31,15 +31,11 @@
+ set_target_properties(hackrf PROPERTIES VERSION ${MAJOR_VERSION}.${MINOR_VERSION}.0 SOVERSION 0)
+ 
+ # Static library
+-add_library(hackrf-static STATIC ${c_sources})
+ if(MSVC)
+ 	set_target_properties(hackrf-static PROPERTIES OUTPUT_NAME "hackrf_static")
+-else()
+-	set_target_properties(hackrf-static PROPERTIES OUTPUT_NAME "hackrf")
+ endif()
+ 
+ set_target_properties(hackrf PROPERTIES CLEAN_DIRECT_OUTPUT 1)
+-set_target_properties(hackrf-static PROPERTIES CLEAN_DIRECT_OUTPUT 1)
+ 
+ # Dependencies
+ target_link_libraries(hackrf ${LIBUSB_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+@@ -55,10 +51,6 @@
+            LIBRARY DESTINATION lib${LIB_SUFFIX}
+            COMPONENT sharedlibs
+            )
+-   install(TARGETS hackrf-static
+-           ARCHIVE DESTINATION lib${LIB_SUFFIX}
+-           COMPONENT staticlibs
+-           )
+    install(FILES ${c_headers}
+            DESTINATION include/${PROJECT_NAME}
+            COMPONENT headers
