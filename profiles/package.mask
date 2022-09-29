@@ -186,18 +186,6 @@ app-backup/attic
 # bugs #829447, #836227, #862504
 mail-filter/sigh
 
-# Michał Górny <mgorny@gentoo.org> (2022-08-30)
-# Flask-Security-Too is a package with high maintenance cost
-# and no revdeps in ::gentoo.  The next version bump (once more)
-# introduces more dependencies.
-#
-# The remaining listed packages are used exclusively by this package
-# (or its tests).  If you find one of them useful, please let us know
-# and we'll keep it.
-#
-# Removal on 2022-09-29.  Bug #867415.
-dev-python/flask-security
-
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
 # haskell-cabal.eclass)
