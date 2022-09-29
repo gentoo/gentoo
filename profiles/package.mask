@@ -230,7 +230,6 @@ dev-ruby/async_sinatra
 dev-ruby/aws-sdk
 dev-ruby/aws-sdk-core
 dev-ruby/aws-sdk-resources
-dev-ruby/travis
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
