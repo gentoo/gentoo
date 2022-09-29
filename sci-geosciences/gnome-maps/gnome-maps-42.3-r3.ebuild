@@ -13,6 +13,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 
 # Pure introspection dependencies found by grepping imports.gi in ${S}
+# <libgweather-4.2.0 because of libsoup:3 transition
 RDEPEND="
 	>=dev-libs/glib-2.66.0:2
 	x11-libs/pango[introspection]
@@ -29,7 +30,7 @@ RDEPEND="
 	>=net-libs/rest-0.7.90:0.7[introspection]
 
 	app-crypt/libsecret[introspection]
-	dev-libs/libgweather:4=[introspection]
+	<dev-libs/libgweather-4.2.0:4=[introspection]
 	media-libs/clutter-gtk:1.0[introspection]
 	media-libs/clutter:1.0[introspection]
 	net-libs/gnome-online-accounts[introspection]
