@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="top-like program for network activity"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
@@ -25,6 +25,9 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	eautoreconf #871408
+	sed -i 's/configure.in/configure.ac/' Makefile.in || die
 
 	tc-export CC
 }
