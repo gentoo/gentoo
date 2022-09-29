@@ -3,23 +3,23 @@
 
 EAPI=8
 
-USE_RUBY="ruby26 ruby27 ruby30 ruby31"
+USE_RUBY="ruby31"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
-RUBY_FAKEGEM_EXTRADOC="README.md"
+RUBY_FAKEGEM_EXTRADOC="readme.md"
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="A concurrency framework for Ruby"
 HOMEPAGE="https://github.com/socketry/async"
-SRC_URI="https://github.com/socketry/async/archive/df26f47f64c91c13155c5b6529194b0fe48f8c17.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/socketry/async/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="$(ver_cut 1)/$(ver_cut 1-2)"
+SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~sparc"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/console-1.10:1
-	>=dev-ruby/nio4r-2.3:2
+	>=dev-ruby/io-event-1.0.0:1/1.0
 	>=dev-ruby/timers-4.1:4"
 
 ruby_add_bdepend "test? (
@@ -31,10 +31,10 @@ all_ruby_prepare() {
 	sed -i -E 's/require_relative "(.+)"/require File.expand_path("\1")/g' "${RUBY_FAKEGEM_GEMSPEC}" || die
 
 	# network tests
-	rm -f "spec/async/scheduler_spec.rb" "spec/async/scheduler/address_spec.rb" "spec/async/scheduler/io_spec.rb" || die
-
-	# broken on ruby 3.x
-	rm -f "spec/async/condition_spec.rb" "spec/async/notification_spec.rb" || die
+	rm -f \
+		"spec/net/http_spec.rb" \
+		"spec/async/scheduler/address_spec.rb" \
+		"spec/async/scheduler/io_spec.rb" || die
 
 	sed -i -E 's/require '"'"'covered\/rspec'"'"'//g' "spec/spec_helper.rb" || die
 }
