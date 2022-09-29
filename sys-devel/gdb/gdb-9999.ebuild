@@ -50,7 +50,7 @@ if [[ ${PV} != 9999* ]] ; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
-IUSE="cet guile lzma multitarget nls +python +server source-highlight test vanilla xml xxhash"
+IUSE="cet guile lzma multitarget nls +python +server source-highlight test vanilla xml xxhash zstd"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # In fact, gdb's test suite needs some work to get passing.
@@ -77,12 +77,9 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	guile? ( >=dev-scheme/guile-2.0 )
 	xml? ( dev-libs/expat )
-	source-highlight? (
-		dev-util/source-highlight
-	)
-	xxhash? (
-		dev-libs/xxhash
-	)
+	source-highlight? ( dev-util/source-highlight )
+	xxhash? ( dev-libs/xxhash )
+	zstd? ( app-arch/zstd:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -204,6 +201,7 @@ src_configure() {
 		$(use_with python python "${EPYTHON}")
 		$(use_with xxhash)
 		$(use_with guile)
+		$(use_with zstd)
 	)
 
 	if use sparc-solaris || use x86-solaris ; then
