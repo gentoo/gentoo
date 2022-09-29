@@ -87,7 +87,7 @@ src_install() {
 	cd "${ED}" || die
 	unpacker
 
-	rm _gpgorigin || die
+	rm -f _gpgorigin || die
 
 	rm -r etc usr/share/menu || die
 	mv usr/share/doc/${MY_PN} usr/share/doc/${PF} || die
