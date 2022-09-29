@@ -252,7 +252,6 @@ dev-java/byte-buddy-agent
 # Removal on 2022-09-19.
 app-portage/fquery
 dev-games/goatee
-dev-haskell/megaparsec
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
