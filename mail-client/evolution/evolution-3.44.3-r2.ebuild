@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake gnome2 readme.gentoo-r1
 
 DESCRIPTION="Integrated mail, addressbook and calendaring functionality"
-HOMEPAGE="https://wiki.gnome.org/Apps/Evolution https://gitlab.gnome.org/GNOME/evolution"
+HOMEPAGE="https://wiki.gnome.org/Apps/Evolution"
 
 # Note: explicitly "|| ( LGPL-2 LGPL-3 )", not "LGPL-2+".
 LICENSE="|| ( LGPL-2 LGPL-3 ) CC-BY-SA-3.0 FDL-1.3+ OPENLDAP"
@@ -22,6 +22,7 @@ KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 # gnome-desktop support is optional with --enable-gnome-desktop
 # automagic libunity dep
 # >=gspell-1.8 to ensure it uses enchant:2 like webkit-gtk
+# <libgweather-4.2.0 because of libsoup:3 transition
 DEPEND="
 	>=app-crypt/gcr-3.4:=[gtk]
 	>=app-text/enchant-2.2.0:2
@@ -61,7 +62,10 @@ DEPEND="
 		>=dev-libs/nspr-4.6.1
 		>=dev-libs/nss-3.11
 	)
-	weather? ( >=dev-libs/libgweather-3.91.0:4= )
+	weather? (
+		>=dev-libs/libgweather-3.91.0:4=
+		<dev-libs/libgweather-4.2.0:4=
+	)
 	ytnef? ( net-mail/ytnef )
 "
 RDEPEND="${DEPEND}
