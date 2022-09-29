@@ -238,10 +238,6 @@ dev-ruby/travis
 # bgpq4.  Mostly you just need to drop the -3 argument.
 net-misc/bgpq3
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-08-22)
-# Java library without consumers. Removal on 2022-09-22
-dev-java/byte-buddy-agent
-
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
 # haskell-cabal.eclass)
