@@ -328,7 +328,6 @@ dev-haskell/path-io
 dev-haskell/pointed
 dev-haskell/polyparse
 dev-haskell/prettyclass
-dev-haskell/project-template
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
