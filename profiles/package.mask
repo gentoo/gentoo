@@ -208,11 +208,6 @@ dev-python/sentinels
 dev-python/speaklater
 dev-python/zxcvbn
 
-# Matt Turner <mattst88@gentoo.org> (2022-08-29)
-# Unpatched security vulerabilities. Bug #857780.
-# Removal on 2022-09-29.
-=x11-base/xorg-server-1.20*
-
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
 # haskell-cabal.eclass)
