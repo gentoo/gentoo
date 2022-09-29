@@ -13,6 +13,7 @@ IUSE="eds elogind systemd"
 REQUIRED_USE="^^ ( elogind systemd )"
 KEYWORDS="~amd64 ~riscv"
 
+# <libgweather-4.2.0 because of libsoup:3 transition
 RDEPEND="
 	>=gnome-base/gnome-desktop-2.91.0:3=
 	>=x11-libs/gdk-pixbuf-2.26.0:2
@@ -26,6 +27,7 @@ RDEPEND="
 	systemd? ( >=sys-apps/systemd-230:= )
 	>=x11-libs/cairo-1.0.0[X,glib]
 	>=dev-libs/libgweather-3.91.0:4=
+	<dev-libs/libgweather-4.2.0:4=
 	>=gnome-base/dconf-0.13.4
 	>=x11-libs/libXrandr-1.3.0
 	gnome-base/gdm
