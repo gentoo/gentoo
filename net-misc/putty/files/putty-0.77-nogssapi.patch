@@ -1,0 +1,18 @@
+Define NO_GSSAPI when -DPUTTY_GSSAPI=OFF
+
+Previously it would only be defined if -DPUTTY_GSSAPI=DYNAMIC and libdl is
+not found on the system. Setting -DPUTTY_GSSAPI=OFF on systems with glibc
+2.33 and earlier causes a build failure, because libdl is not linked in.
+
+Bug: https://bugs.gentoo.org/873355
+--- a/cmake/platforms/unix.cmake
++++ b/cmake/platforms/unix.cmake
+@@ -105,6 +105,8 @@
+       "Could not find libdl -- cannot provide dynamic GSSAPI support")
+     set(NO_GSSAPI ON)
+   endif()
++else()
++  set(NO_GSSAPI ON)
+ endif()
+ 
+ if(PUTTY_GSSAPI STREQUAL STATIC)

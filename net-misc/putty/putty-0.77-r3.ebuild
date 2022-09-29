@@ -44,6 +44,11 @@ REQUIRED_USE="
 	gtk2? ( gtk )
 "
 
+PATCHES=(
+	# Bug #873355
+	"${FILESDIR}"/putty-0.77-nogssapi.patch
+)
+
 src_unpack() {
 	[[ ${PV} == *9999 ]] && git-r3_src_unpack
 	default
