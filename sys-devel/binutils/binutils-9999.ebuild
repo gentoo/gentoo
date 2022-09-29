@@ -9,7 +9,7 @@ DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
 
 LICENSE="GPL-3+"
-IUSE="cet default-gold doc gold gprofng multitarget +nls pgo +plugins static-libs test zstd vanilla"
+IUSE="cet default-gold doc gold gprofng multitarget +nls pgo +plugins static-libs test vanilla zstd"
 REQUIRED_USE="default-gold? ( gold )"
 
 # Variables that can be set here  (ignored for live ebuilds)
