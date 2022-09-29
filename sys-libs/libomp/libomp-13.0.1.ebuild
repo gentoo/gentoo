@@ -75,7 +75,8 @@ pkg_setup() {
 }
 
 multilib_src_configure() {
-	filter-lto # LTO causes issues in other packages building https://bugs.gentoo.org/870127
+	# LTO causes issues in other packages building, #870127
+	filter-lto
 
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
