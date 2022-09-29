@@ -53,7 +53,6 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 src_configure() {
 	local mycmakeargs=(
 		-DFORCE_LIBSTATGRAB=$(usex force-libstatgrab)
-		-DGSETTINGS_COMPILE=OFF
 		-DWITH_GETTEXT=$(usex nls)
 		-DWITH_GTK=$(usex gui)
 		-DWITH_LIBCPUID=$(usex cpu)
@@ -63,6 +62,7 @@ src_configure() {
 		-DWITH_NCURSES=$(usex ncurses)
 		-DWITH_OPENCL=$(usex opencl)
 	)
+	use gui && mycmakeargs+=( -DGSETTINGS_COMPILE=OFF )
 
 	cmake_src_configure
 }
