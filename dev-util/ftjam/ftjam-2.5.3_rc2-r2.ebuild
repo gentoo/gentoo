@@ -30,5 +30,7 @@ PATCHES=(
 
 src_prepare() {
 	default
-	tc-export CC
+
+	tc-export CC RANLIB
+	export AR="$(tc-getAR) ru" #720706
 }
