@@ -12,6 +12,7 @@ SLOT="0"
 KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 
 # >=libical-1.0.1 for https://bugzilla.gnome.org/show_bug.cgi?id=751244
+# <libgweather-4.2.0 because of libsoup:3 transition
 DEPEND="
 	>=dev-libs/libical-1.0.1:0=
 	>=gnome-base/gsettings-desktop-schemas-3.21.2
@@ -21,6 +22,7 @@ DEPEND="
 	>=dev-libs/glib-2.67.5:2
 	>=gui-libs/gtk-4.6.0:4
 	>=dev-libs/libgweather-4.0.0:4=
+	<dev-libs/libgweather-4.2.0:4=
 	>=app-misc/geoclue-2.4:2.0
 	>=sci-geosciences/geocode-glib-3.23
 "
