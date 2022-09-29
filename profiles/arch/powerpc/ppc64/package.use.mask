@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-09-29)
+# USE=fix requires ring crate, which is not portable
+# https://github.com/rustsec/rustsec/issues/707
+dev-util/cargo-audit fix
+
 # Andrey Grozin <grozin@gentoo.org> (2022-09-02)
 # dev-libs/capstone not keyworded
 dev-lisp/sbcl capstone
