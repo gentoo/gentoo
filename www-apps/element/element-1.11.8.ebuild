@@ -10,7 +10,7 @@ HOMEPAGE="https://element.io/"
 SRC_URI="https://github.com/vector-im/element-web/releases/download/v${PV}/${PN}-v${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
