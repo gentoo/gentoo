@@ -47,6 +47,7 @@ src_prepare() {
 }
 
 src_configure() {
+	filter-lto #bug 870349
 	local opt=(
 		--bindir="${EPREFIX}/usr/bin"
 		--libdir="${EPREFIX}/usr/$(get_libdir)/ocaml"
