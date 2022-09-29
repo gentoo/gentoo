@@ -23,13 +23,14 @@ RDEPEND="
 	>=gui-libs/libadwaita-1.0:1
 "
 DEPEND="${RDEPEND}"
+# <libgweather-4.2.0 because of libsoup:3 transition
 BDEPEND="
 	dev-libs/libxml2:2
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	$(vala_depend)
-	dev-libs/libgweather:4[vala]
+	<dev-libs/libgweather-4.2.0:4[vala]
 	media-libs/gsound[vala]
 	gui-libs/libadwaita:1[vala]
 "
