@@ -351,7 +351,6 @@ dev-haskell/th-orphans
 dev-haskell/th-reify-many
 dev-haskell/threads
 dev-haskell/validity
-dev-haskell/vector-builder
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
