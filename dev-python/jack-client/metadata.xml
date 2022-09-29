@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">JACK-Client</remote-id>
+		<remote-id type="github">spatialaudio/jackclient-python</remote-id>
+	</upstream>
+</pkgmetadata>
