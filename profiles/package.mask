@@ -325,7 +325,6 @@ dev-haskell/optparse-simple
 dev-haskell/pantry
 dev-haskell/path
 dev-haskell/path-io
-dev-haskell/pointed
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
