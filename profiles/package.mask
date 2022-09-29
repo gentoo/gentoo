@@ -279,7 +279,6 @@ dev-haskell/edit-distance-vector
 dev-haskell/either
 dev-haskell/filelock
 dev-haskell/filepattern
-dev-haskell/fsnotify
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
