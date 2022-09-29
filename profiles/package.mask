@@ -264,7 +264,6 @@ dev-haskell/annotated-wl-pprint
 dev-haskell/authenticate-oauth
 dev-haskell/base-prelude
 dev-haskell/base-unicode-symbols
-dev-haskell/casa-client
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
