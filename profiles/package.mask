@@ -286,7 +286,6 @@ dev-haskell/genvalidity-property
 dev-haskell/ghc-lib-parser
 dev-haskell/ghc-lib-parser-ex
 dev-haskell/githash
-dev-haskell/groupoids
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
