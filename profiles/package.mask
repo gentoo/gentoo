@@ -253,7 +253,6 @@ dev-java/byte-buddy-agent
 app-portage/fquery
 dev-games/goatee
 dev-haskell/megaparsec
-dev-haskell/parser-combinators
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
