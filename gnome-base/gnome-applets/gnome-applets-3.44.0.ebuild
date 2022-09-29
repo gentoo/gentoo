@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~riscv"
 # FIXME: automagic wireless-tools
 # TODO: gucharmap could be optional, but no knob
 # TODO: libgweather could be optional, but no knob
+# <libgweather-4.2.0 because of libsoup:3 transition
 RDEPEND="
 	>=x11-libs/gtk+-3.20.0:3[X]
 	>=dev-libs/glib-2.44.0:2
@@ -26,6 +27,7 @@ RDEPEND="
 	>=x11-themes/adwaita-icon-theme-3.14.0
 	>=dev-libs/libxml2-2.5.0:2
 	>=dev-libs/libgweather-3.91.0:4=
+	<dev-libs/libgweather-4.2.0:4=
 	>=gnome-extra/gucharmap-2.33.0:2.90
 	>=sys-auth/polkit-0.97
 	x11-libs/libX11
