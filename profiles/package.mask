@@ -289,7 +289,6 @@ dev-haskell/githash
 dev-haskell/groupoids
 dev-haskell/groups
 dev-haskell/haddock
-dev-haskell/haddock-api
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
