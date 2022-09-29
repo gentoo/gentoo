@@ -349,7 +349,6 @@ dev-haskell/text-metrics
 dev-haskell/th-expand-syns
 dev-haskell/th-orphans
 dev-haskell/th-reify-many
-dev-haskell/threads
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
