@@ -12,6 +12,7 @@ LICENSE="GPL-2+ LGPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 
+# <libgweather-4.2.0 because of libsoup:3 transition
 DEPEND="
 	>=dev-libs/glib-2.32:2
 	>=dev-libs/gobject-introspection-1.56:=
@@ -20,6 +21,7 @@ DEPEND="
 	>=app-misc/geoclue-2.3.1:2.0
 	>=gui-libs/libadwaita-1.0.0:1=
 	>=dev-libs/libgweather-3.90.0:4=
+	<dev-libs/libgweather-4.2.0:4=
 "
 RDEPEND="${DEPEND}
 	gnome-base/gsettings-desktop-schemas
