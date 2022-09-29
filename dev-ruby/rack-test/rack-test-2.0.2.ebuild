@@ -19,6 +19,8 @@ SLOT="$(ver_cut 1)"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE=""
 
+PATCHES=( "${FILESDIR}/backport-b1084c1-issue-323.patch" ) # https://github.com/rack/rack-test/issues/323
+
 ruby_add_rdepend ">=dev-ruby/rack-1.3:*"
 ruby_add_bdepend "
 	test? ( dev-ruby/minitest:5 dev-ruby/minitest-global_expectations )"

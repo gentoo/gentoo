@@ -1,0 +1,29 @@
+https://github.com/rack/rack-test/issues/323
+
+From b1084c1f7b04f6bdaad73c9d1ffc1b279af55e78 Mon Sep 17 00:00:00 2001
+From: Jeremy Evans <code@jeremyevans.net>
+Date: Wed, 28 Sep 2022 18:33:43 -0700
+Subject: [PATCH] Make the UploadedFile GC finalizer test more reliable on
+ CRuby
+
+---
+ spec/rack/test/uploaded_file_spec.rb | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/spec/rack/test/uploaded_file_spec.rb b/spec/rack/test/uploaded_file_spec.rb
+index 2cb56ac..67bfbc5 100644
+--- a/spec/rack/test/uploaded_file_spec.rb
++++ b/spec/rack/test/uploaded_file_spec.rb
+@@ -69,8 +69,10 @@ def file_path
+         System.gc
+       end
+     else
+-      c.new(file_path)
+-      GC.start
++      50.times do |_i|
++        c.new(file_path)
++        GC.start
++      end
+     end
+ 
+     # Due to CRuby's conservative garbage collection, you can never guarantee
