@@ -9,7 +9,7 @@ MY_PN="${PN/-bin}"
 
 DESCRIPTION="A glossy Matrix collaboration client for desktop (binary package)"
 HOMEPAGE="https://element.io"
-SRC_URI="https://packages.riot.im/debian/pool/main/e/element-desktop/${MY_PN}_${PV}_amd64.deb"
+SRC_URI="https://packages.element.io/debian/pool/main/e/element-desktop/${MY_PN}_${PV}_amd64.deb"
 S="${WORKDIR}"
 
 LICENSE="Apache-2.0"
@@ -54,7 +54,9 @@ QA_PREBUILT="opt/Element/chrome-sandbox
 	opt/Element/libGLESv2.so
 	opt/Element/libffmpeg.so
 	opt/Element/libvk_swiftshader.so
-	opt/Element/libvulkan.so.1"
+	opt/Element/libvulkan.so.1
+	opt/Element/resources/app.asar.unpacked/node_modules/matrix-seshat/native/index.node
+	opt/Element/resources/app.asar.unpacked/node_modules/keytar/build/Release/keytar.node"
 
 src_prepare() {
 	default
