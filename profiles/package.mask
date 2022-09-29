@@ -219,12 +219,6 @@ dev-python/zxcvbn
 # Removal on 2022-09-29.
 x11-drivers/xf86-video-glint
 
-# Hans de Graaff <graaff@gentoo.org> (2022-08-27)
-# No longer maintained upstream and more modern alternatives such as
-# www-servers/puma are available.
-# Removal in 30 days.
-dev-ruby/async_sinatra
-
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
 # haskell-cabal.eclass)
