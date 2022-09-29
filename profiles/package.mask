@@ -232,12 +232,6 @@ dev-ruby/aws-sdk-core
 dev-ruby/aws-sdk-resources
 dev-ruby/travis
 
-# Jaco Kroon <jaco@uls.co.za> (2022-08-22)
-# Superceded by bgpq4 (already in tree).  Non-co-operative upstream.  Removal
-# in 30 days.  Open bugs, already fixed in bgpq4.  Please convert your usage to
-# bgpq4.  Mostly you just need to drop the -3 argument.
-net-misc/bgpq3
-
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
 # haskell-cabal.eclass)
