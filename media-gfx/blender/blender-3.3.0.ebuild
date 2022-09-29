@@ -30,7 +30,7 @@ IUSE="+bullet +dds +fluid +openexr +tbb \
 	man +nanovdb ndof nls openal +oidn +openimageio +openmp +opensubdiv \
 	+openvdb optix +osl +pdf +potrace +pugixml pulseaudio sdl +sndfile \
 	test +tiff valgrind"
-RESTRICT="!test? ( test )"
+RESTRICT="!test? ( test ) test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	alembic? ( openexr )
