@@ -246,7 +246,6 @@ gnome-extra/sushi office
 # test dependencies need keywording
 dev-haskell/dlist test
 dev-haskell/haskell-src-exts test
-dev-util/bnfc test
 
 # Anthony G. Basile <blueness@gentoo.org> (2014-08-16)
 # Ultimately pulls in nodejs which is broken.

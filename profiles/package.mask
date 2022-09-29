@@ -357,7 +357,6 @@ dev-haskell/weigh
 dev-haskell/wreq
 dev-haskell/xhtml
 dev-haskell/zlib-bindings
-dev-util/bnfc
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
