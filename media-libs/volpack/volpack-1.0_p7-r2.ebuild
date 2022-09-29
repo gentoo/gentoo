@@ -17,6 +17,10 @@ IUSE="doc examples"
 
 BDEPEND="sys-devel/m4"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-skip-examples.patch
+)
+
 src_compile() {
 	emake -j1
 }
