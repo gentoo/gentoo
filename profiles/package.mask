@@ -268,7 +268,6 @@ dev-haskell/casa-client
 dev-haskell/casa-types
 dev-haskell/cipher-aes128
 dev-haskell/concurrent-extra
-dev-haskell/contravariant-extras
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
