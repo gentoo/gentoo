@@ -35,6 +35,7 @@ dcc_rundir=var/run/dcc
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.140-freebsd.patch
 	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_configure() {
