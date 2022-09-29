@@ -308,7 +308,6 @@ dev-haskell/hxt-regex-xmlschema
 dev-haskell/hxt-unicode
 dev-haskell/infer-license
 dev-haskell/interpolate
-dev-haskell/io-streams
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
