@@ -16,6 +16,7 @@ KEYWORDS="~amd64 ~x86"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-make.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_configure() {
