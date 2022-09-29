@@ -347,7 +347,6 @@ dev-haskell/tar-conduit
 dev-haskell/template-haskell-compat-v0208
 dev-haskell/text-metrics
 dev-haskell/th-expand-syns
-dev-haskell/th-orphans
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
