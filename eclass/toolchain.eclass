@@ -57,6 +57,7 @@ is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
 }
 
+
 # @FUNCTION: tc_version_is_at_least
 # @USAGE: ver1 [ver2]
 # @DESCRIPTION:
@@ -138,6 +139,32 @@ GCCMINOR=$(ver_cut 2 ${GCC_PV})
 # GCC micro version.
 GCCMICRO=$(ver_cut 3 ${GCC_PV})
 
+tc_use_major_version_only() {
+	local use_major_version_only=0
+
+	if ! tc_version_is_at_least 10 ; then
+		return 1
+	fi
+
+	if [[ ${GCCMAJOR} -eq 10 ]] && ver_test ${PV} -ge 10.4.1_p20220929 ; then
+		use_major_version_only=1
+	elif [[ ${GCCMAJOR} -eq 11 ]] && ver_test ${PV} -ge 11.3.1_p20220930 ; then
+		use_major_version_only=1
+	elif [[ ${GCCMAJOR} -eq 12 ]] && ver_test ${PV} -ge 12.2.1_p20221001 ; then
+		use_major_version_only=1
+	elif [[ ${GCCMAJOR} -eq 13 ]] && ver_test ${PV} -ge 13.0.0_pre20221002 ; then
+		use_major_version_only=1
+	elif [[ ${GCCMAJOR} -gt 13 ]] ; then
+		use_major_version_only=1
+	fi
+
+	if [[ ${use_major_version_only} -eq 1 ]] ; then
+		return 0
+	fi
+
+	return 1
+}
+
 # @ECLASS_VARIABLE: GCC_CONFIG_VER
 # @INTERNAL
 # @DESCRIPTION:
@@ -145,7 +172,11 @@ GCCMICRO=$(ver_cut 3 ${GCC_PV})
 # of binary and gcc-config names not directly tied to upstream
 # versioning. In practice it's hard to untangle from gcc/BASE-VER
 # (GCC_RELEASE_VER) value.
-GCC_CONFIG_VER=${GCC_RELEASE_VER}
+if tc_use_major_version_only ; then
+	GCC_CONFIG_VER=${GCCMAJOR}
+else
+	GCC_CONFIG_VER=${GCC_RELEASE_VER}
+fi
 
 # Pre-release support. Versioning schema:
 # 1.0.0_pre9999: live ebuild
@@ -1005,6 +1036,10 @@ toolchain_src_configure() {
 		--with-bugurl=https://bugs.gentoo.org/
 		--with-pkgversion="${BRANDING_GCC_PKGVERSION}"
 	)
+
+	if tc_use_major_version_only ; then
+		confgcc+=( --with-gcc-major-version-only )
+	fi
 
 	# If we want hardened support with the newer PIE patchset for >=gcc 4.4
 	if tc_version_is_at_least 4.4 && want_minispecs && in_iuse hardened ; then
