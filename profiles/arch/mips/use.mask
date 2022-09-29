@@ -25,10 +25,6 @@ networkmanager
 # sci-geosciences/gpsd is not keyworded here.
 gps
 
-# Brian Evans <grknight@gentoo.org> (2018-01-15)
-# Mask tcmalloc as dev-util/google-perftools is unavailable
-tcmalloc
-
 # James Le Cuirot <chewi@gentoo.org> (2017-06-29)
 # Unmask as this profile is big endian.
 -big-endian

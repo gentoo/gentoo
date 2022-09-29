@@ -4,10 +4,6 @@
 # Unmask the flag which corresponds to ARCH.
 -ia64
 
-# Sam James <sam@gentoo.org> (2022-07-30)
-# dev-util/google-perftools not keyworded here
-tcmalloc
-
 # Sam James <sam@gentoo.org> (2022-07-21)
 # Untested.
 ieee1394

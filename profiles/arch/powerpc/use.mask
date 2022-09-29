@@ -4,6 +4,10 @@
 # PPC Specific use flags
 #
 
+# matoro <matoro_gentoo@matoro.tk> (2022-09-29)
+# dev-util/google-perftools is supported here
+-tcmalloc
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-06-06)
 # XEN does not support ppc/ppc64 yet
 xen
