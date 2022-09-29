@@ -206,7 +206,6 @@ dev-python/pony
 dev-python/pyqrcode
 dev-python/sentinels
 dev-python/speaklater
-dev-python/zxcvbn
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
