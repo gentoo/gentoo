@@ -1,27 +1,33 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Control a remote computer running VNC from X"
-HOMEPAGE="http://fredrik.hubbe.net/x2vnc.html"
-SRC_URI="http://fredrik.hubbe.net/${PN}/${P}.tar.gz"
+HOMEPAGE="https://fredrik.hubbe.net/x2vnc.html"
+SRC_URI="https://fredrik.hubbe.net/x2vnc/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc sparc x86"
 IUSE="tk"
 
-RDEPEND="x11-libs/libX11
+COMMON_DEPEND="
+	x11-libs/libX11
 	x11-libs/libXScrnSaver
 	x11-libs/libXext
-	x11-libs/libXinerama"
-DEPEND="${RDEPEND}
-	x11-base/xorg-proto
+	x11-libs/libXinerama
+	x11-libs/libXrandr
+	x11-libs/libXxf86dga"
+RDEPEND="
+	${COMMON_DEPEND}
 	tk? ( dev-tcltk/expect )"
+DEPEND="
+	${COMMON_DEPEND}
+	x11-base/xorg-proto"
 
 PATCHES=(
-	"${FILESDIR}/expectk.patch"
+	"${FILESDIR}"/expectk.patch
 )
 
 src_install() {
