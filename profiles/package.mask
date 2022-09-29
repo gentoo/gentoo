@@ -225,10 +225,6 @@ x11-drivers/xf86-video-glint
 # Removal in 30 days.
 dev-ruby/async_sinatra
 
-# Sam James <sam@gentoo.org> (2022-08-27)
-# Stuck on deprecated and removed Ruby 2.6. Removal on 2022-09-27.
-dev-ruby/aws-sdk
-
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
 # haskell-cabal.eclass)
