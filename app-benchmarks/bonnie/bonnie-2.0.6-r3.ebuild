@@ -17,6 +17,7 @@ KEYWORDS="~alpha amd64 ~ia64 ~mips ppc ppc64 sparc x86"
 PATCHES=(
 	"${FILESDIR}"/${P}-includes.patch
 	"${FILESDIR}"/${P}-man.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_compile() {
