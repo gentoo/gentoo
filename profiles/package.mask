@@ -201,7 +201,6 @@ dev-python/flask-babelex
 dev-python/flask-mail
 dev-python/flask-principal
 dev-python/flask-wtf
-dev-python/mongomock
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
