@@ -28,6 +28,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/expectk.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_install() {
