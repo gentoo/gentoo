@@ -332,7 +332,6 @@ dev-haskell/project-template
 dev-haskell/readable
 dev-haskell/rebase
 dev-haskell/refact
-dev-haskell/regex-applicative-text
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
