@@ -229,7 +229,6 @@ dev-ruby/async_sinatra
 # Stuck on deprecated and removed Ruby 2.6. Removal on 2022-09-27.
 dev-ruby/aws-sdk
 dev-ruby/aws-sdk-core
-dev-ruby/aws-sdk-resources
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
