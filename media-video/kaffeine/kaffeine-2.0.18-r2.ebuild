@@ -11,7 +11,7 @@ inherit ecm kde.org
 if [[ ${KDE_BUILD_TYPE} == release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz
 	https://linuxtv.org/downloads/dtv-scan-tables/${PN}/scantable.dvb -> ${P}-scantable.dvb"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 DESCRIPTION="Media player with digital TV support by KDE"
