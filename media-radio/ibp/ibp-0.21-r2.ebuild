@@ -22,14 +22,18 @@ BDEPEND="
 	virtual/pkgconfig
 	X? ( sys-devel/gcc )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-clang16.patch
+)
+
 src_prepare() {
+	default
+
 	# Respect CFLAGS if built without USE=X
 	sed -i -e "s/= -D/+= -D/" Makefile || die
 
 	# Fix compile if ncurses is built with separate libtinfo
 	sed -i -e "s:-lcurses:$($(tc-getPKG_CONFIG) --libs ncurses):" Imakefile Makefile || die
-
-	eapply_user
 }
 
 src_configure() {
