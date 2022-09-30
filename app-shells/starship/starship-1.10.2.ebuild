@@ -379,7 +379,7 @@ CRATES="
 	zvariant_derive-3.4.1
 "
 
-inherit cargo
+inherit cargo flag-o-matic
 
 DESCRIPTION="The minimal, blazing-fast, and infinitely customizable prompt for any shell"
 HOMEPAGE="https://starship.rs/"
@@ -398,6 +398,7 @@ BDEPEND=">=virtual/rust-1.59"
 QA_FLAGS_IGNORED="usr/bin/starship"
 
 src_configure() {
+	filter-lto # Bug https://bugs.gentoo.org/869758
 	export PKG_CONFIG_ALLOW_CROSS=1
 	export OPENSSL_NO_VENDOR=true
 
