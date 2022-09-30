@@ -69,24 +69,24 @@ COMMON_DEPEND="
 	<sys-libs/ldb-2.6.0[ldap(+)?,${MULTILIB_USEDEP}]
 	sys-libs/libcap[${MULTILIB_USEDEP}]
 	sys-libs/liburing:=[${MULTILIB_USEDEP}]
-	sys-libs/ncurses:0=
-	sys-libs/readline:0=
+	sys-libs/ncurses:=
+	sys-libs/readline:=
 	>=sys-libs/talloc-2.3.3[${MULTILIB_USEDEP}]
 	>=sys-libs/tdb-1.4.6[${MULTILIB_USEDEP}]
 	>=sys-libs/tevent-0.11.0[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/libcrypt:=[${MULTILIB_USEDEP}]
 	virtual/libiconv
-	$(python_gen_cond_dep "
+	$(python_gen_cond_dep '
 		addc? (
-			dev-python/dnspython:=[\${PYTHON_USEDEP}]
-			dev-python/markdown[\${PYTHON_USEDEP}]
+			dev-python/dnspython:=[${PYTHON_USEDEP}]
+			dev-python/markdown[${PYTHON_USEDEP}]
 		)
 		ads? (
-			dev-python/dnspython:=[\${PYTHON_USEDEP}]
+			dev-python/dnspython:=[${PYTHON_USEDEP}]
 			net-dns/bind-tools[gssapi]
 		)
-	")
+	')
 	acl? ( virtual/acl )
 	ceph? ( sys-cluster/ceph )
 	cluster? ( net-libs/rpcsvc-proto )
@@ -106,7 +106,7 @@ COMMON_DEPEND="
 	snapper? ( sys-apps/dbus )
 	system-heimdal? ( >=app-crypt/heimdal-1.5[-ssl,${MULTILIB_USEDEP}] )
 	system-mitkrb5? ( >=app-crypt/mit-krb5-1.19[${MULTILIB_USEDEP}] )
-	systemd? ( sys-apps/systemd:0= )
+	systemd? ( sys-apps/systemd:= )
 	unwind? (
 		llvm-libunwind? ( sys-libs/llvm-libunwind:= )
 		!llvm-libunwind? ( sys-libs/libunwind:= )
@@ -114,15 +114,12 @@ COMMON_DEPEND="
 	zeroconf? ( net-dns/avahi[dbus] )
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-util/cmocka-1.1.3[${MULTILIB_USEDEP}]
 	dev-perl/JSON
 	net-libs/libtirpc[${MULTILIB_USEDEP}]
-	|| (
-		net-libs/rpcsvc-proto
-		<sys-libs/glibc-2.26[rpc(+)]
-	)
+	net-libs/rpcsvc-proto
 	spotlight? ( dev-libs/glib )
 	test? (
+		>=dev-util/cmocka-1.1.3[${MULTILIB_USEDEP}]
 		$(python_gen_cond_dep "dev-python/subunit[\${PYTHON_USEDEP},${MULTILIB_USEDEP}]" )
 		!system-mitkrb5? (
 			>=net-dns/resolv_wrapper-1.1.4
@@ -150,11 +147,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.15.9-libunwind-automagic.patch"
 )
 
-#CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
 CONFDIR="${FILESDIR}/4.4"
-
 WAF_BINARY="${S}/buildtools/bin/waf"
-
 SHAREDMODS=""
 
 pkg_setup() {
@@ -175,31 +169,38 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# un-bundle dnspython
+	# Unbundle dnspython
 	sed -i -e '/"dns.resolver":/d' "${S}"/third_party/wscript || die
 
-	# unbundle iso8601 unless tests are enabled
+	# Unbundle iso8601 unless tests are enabled
 	if ! use test ; then
 		sed -i -e '/"iso8601":/d' "${S}"/third_party/wscript || die
 	fi
 
-	## ugly hackaround for bug #592502
+	# Ugly hackaround for bug #592502
 	#cp /usr/include/tevent_internal.h "${S}"/lib/tevent/ || die
 
 	sed -e 's:<gpgme\.h>:<gpgme/gpgme.h>:' \
 		-i source4/dsdb/samdb/ldb_modules/password_hash.c \
 		|| die
 
-	# Friggin' WAF shit
+	# WAF
 	multilib_copy_sources
 }
 
 multilib_src_configure() {
-	# when specifying libs for samba build you must append NONE to the end to
+	# When specifying libs for samba build you must append NONE to the end to
 	# stop it automatically including things
 	local bundled_libs="NONE"
 	if ! use system-heimdal && ! use system-mitkrb5 ; then
 		bundled_libs="heimbase,heimntlm,hdb,kdc,krb5,wind,gssapi,hcrypto,hx509,roken,asn1,com_err,NONE"
+	fi
+
+	# We "use" bundled cmocka when we're not running tests as we're
+	# not using it anyway. Means we avoid making users install it for
+	# no reason. bug #802531
+	if ! use test ; then
+		bundled_libs="cmocka,${bundled_libs}"
 	fi
 
 	local myconf=(
