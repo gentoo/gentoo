@@ -31,6 +31,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-includes.patch
+	"${FILESDIR}"/${P}-clang.patch
 )
 
 src_prepare() {
