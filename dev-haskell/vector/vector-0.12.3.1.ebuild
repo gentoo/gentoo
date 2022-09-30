@@ -65,3 +65,5 @@ src_configure() {
 		$(cabal_flag unsafechecks unsafechecks) \
 		--flag=-wall
 }
+
+GHC_BOOTSTRAP_PACKAGES=( cabal-doctest )
