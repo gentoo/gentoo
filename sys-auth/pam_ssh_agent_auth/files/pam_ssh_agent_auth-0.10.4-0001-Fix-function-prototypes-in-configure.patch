@@ -1,0 +1,49 @@
+https://github.com/jbeverly/pam_ssh_agent_auth/pull/41
+
+From ad2cc74dce3a6eaff0df193a2ae3db177e0d594f Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 30 Sep 2022 20:51:17 +0100
+Subject: [PATCH 1/2] Fix function prototypes in configure
+
+This fixes building with Clang 16.
+
+Bug: https://bugs.gentoo.org/870721
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -500,7 +500,7 @@ int main(void) { exit(0); }
+ 	AC_DEFINE(HAVE_BUNDLE, 1, [Define if your system uses bundles instead of ELF shared objects])
+ 	AC_MSG_CHECKING(if we have working getaddrinfo)
+ 	AC_TRY_RUN([#include <mach-o/dyld.h>
+-main() { if (NSVersionOfRunTimeLibrary("System") >= (60 << 16))
++int main() { if (NSVersionOfRunTimeLibrary("System") >= (60 << 16))
+ 		exit(0);
+ 	else
+ 		exit(1);
+@@ -1467,7 +1467,7 @@ AC_MSG_CHECKING([for (overly) strict mkstemp])
+ AC_RUN_IFELSE(
+ 	[AC_LANG_SOURCE([[
+ #include <stdlib.h>
+-main() { char template[]="conftest.mkstemp-test";
++int main() { char template[]="conftest.mkstemp-test";
+ if (mkstemp(template) == -1)
+ 	exit(1);
+ unlink(template); exit(0);
+@@ -2598,7 +2598,7 @@ dnl test snprintf (broken on SCO w/gcc)
+ #include <stdio.h>
+ #include <string.h>
+ #ifdef HAVE_SNPRINTF
+-main()
++int main()
+ {
+ 	char buf[50];
+ 	char expected_out[50];
+@@ -2615,7 +2615,7 @@ main()
+ 	exit(0);
+ }
+ #else
+-main() { exit(0); }
++int main() { exit(0); }
+ #endif
+ 		]])], [ true ], [ AC_DEFINE(BROKEN_SNPRINTF) ],
+ 		AC_MSG_WARN([cross compiling: Assuming working snprintf()])
