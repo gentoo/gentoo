@@ -42,6 +42,10 @@ src_configure() {
 	cmake_src_configure
 }
 
+src_compile() {
+	cmake_build hackrf
+}
+
 pkg_postinst() {
 	if use udev; then
 		einfo "Users in the usb group can use hackrf."
