@@ -17,23 +17,27 @@ KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~
 
 RDEPEND="
 	app-arch/bzip2:=
-	>=media-libs/libpng-1.0.5:=
-	>=sys-libs/zlib-1.1.4:=
-	virtual/jpeg:0
+	media-libs/libjpeg-turbo:=
+	media-libs/libpng:=
+	sys-libs/zlib:=
+	x11-libs/libX11
 	x11-libs/libXext
 	!media-gfx/xloadimage"
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto"
 BDEPEND="
 	app-text/rman
 	sys-devel/gcc
-	x11-base/xorg-proto
 	>=x11-misc/imake-1.0.8-r1"
 
 PATCHES=(
 	"${FILESDIR}"/xli-security-gentoo.diff
 	"${FILESDIR}"/${P}-fix-scale-zoom.patch #282979
 	"${FILESDIR}"/${P}-libpng14.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
+
 DOCS=( README README.xloadimage ABOUTGAMMA TODO chkgamma.jpg )
 
 src_prepare() {

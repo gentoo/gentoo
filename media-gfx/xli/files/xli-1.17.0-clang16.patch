@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/870790
+--- a/window.c
++++ b/window.c
+@@ -211,3 +211,3 @@
+ 	XSetWindowAttributes swa;
+-	static cmap_atom = None;
++	static int cmap_atom = None;
+ 	Window cmap_windows[2];
+--- a/xli.h
++++ b/xli.h
+@@ -14,2 +14,3 @@
+ #include <stdlib.h>
++#include <string.h>
+ #include <math.h>
+--- a/xlito.c
++++ b/xlito.c
+@@ -3,2 +3,3 @@
+ #include <stdlib.h>
++#include <string.h>
+ #include <ctype.h>
