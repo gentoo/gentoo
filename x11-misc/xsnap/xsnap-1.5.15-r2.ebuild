@@ -34,8 +34,13 @@ BDEPEND="
 	sys-devel/gcc
 	>=x11-misc/imake-1.0.8-r1
 "
+
 DOCS=( AUTHORS Changelog README )
-PATCHES=( "${FILESDIR}"/${P}-root_name.patch )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-root_name.patch
+	"${FILESDIR}"/${P}-clang.patch
+)
 
 src_prepare() {
 	default
