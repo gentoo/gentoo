@@ -19,12 +19,14 @@ IUSE="python test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="test !test? ( test )"
 
+TALLOC_VERSION="2.3.4"
+
 RDEPEND="
 	dev-libs/libbsd[${MULTILIB_USEDEP}]
-	>=sys-libs/talloc-2.3.4[${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-${TALLOC_VERSION}[${MULTILIB_USEDEP}]
 	python? (
 		${PYTHON_DEPS}
-		sys-libs/talloc[python,${PYTHON_SINGLE_USEDEP}]
+		>=sys-libs/talloc-${TALLOC_VERSION}[python,${PYTHON_SINGLE_USEDEP}]
 	)
 "
 DEPEND="
@@ -47,8 +49,20 @@ pkg_setup() {
 	export PYTHONHASHSEED=1
 }
 
+check_samba_dep_versions() {
+	actual_talloc_version=$(sed -En '/^VERSION =/{s/[^0-9.]//gp}' lib/talloc/wscript || die)
+	if [[ ${actual_talloc_version} != ${TALLOC_VERSION} ]] ; then
+		eerror "Source talloc version: ${TALLOC_VERSION}"
+		eerror "Ebuild talloc version: ${actual_talloc_version}"
+		die "Ebuild needs to fix TALLOC_VERSION!"
+	fi
+}
+
 src_prepare() {
 	default
+
+	check_samba_dep_versions
+
 	multilib_copy_sources
 }
 
