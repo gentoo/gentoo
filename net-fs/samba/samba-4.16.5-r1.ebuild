@@ -1,18 +1,18 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+),xml(+)"
-inherit python-single-r1 waf-utils multilib-minimal linux-info systemd pam tmpfiles
+inherit python-single-r1 flag-o-matic waf-utils multilib-minimal linux-info systemd pam tmpfiles
 
 DESCRIPTION="Samba Suite Version 4"
 HOMEPAGE="https://samba.org/"
 
 MY_PV="${PV/_rc/rc}"
 MY_P="${PN}-${MY_PV}"
-if [[ ${PV} = *_rc* ]]; then
+if [[ ${PV} == *_rc* ]]; then
 	SRC_URI="mirror://samba/rc/${MY_P}.tar.gz"
 else
 	SRC_URI="mirror://samba/stable/${MY_P}.tar.gz"
@@ -22,10 +22,10 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="acl addc ads ceph client cluster cpu_flags_x86_aes cups debug fam
-glusterfs gpg iprint json ldap llvm-libunwind pam profiling-data python quota +regedit selinux
-snapper spotlight syslog system-heimdal +system-mitkrb5 systemd test unwind winbind
-zeroconf"
+IUSE="acl addc ads ceph client cluster cpu_flags_x86_aes cups debug fam glusterfs gpg"
+IUSE+=" iprint json ldap llvm-libunwind pam profiling-data python quota +regedit selinux"
+IUSE+=" snapper spotlight syslog system-heimdal +system-mitkrb5 systemd test unwind winbind"
+IUSE+=" zeroconf"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	addc? ( python json winbind )
@@ -158,7 +158,7 @@ pkg_setup() {
 
 	python-single-r1_pkg_setup
 
-	SHAREDMODS="$(usex snapper '' '!')vfs_snapper"
+	SHAREDMODS="$(usev !snapper '!')vfs_snapper"
 	if use cluster ; then
 		SHAREDMODS+=",idmap_rid,idmap_tdb2,idmap_ad"
 	elif use ads ; then
@@ -243,7 +243,7 @@ multilib_src_configure() {
 		$(multilib_native_usex python '' '--disable-python')
 		$(multilib_native_use_enable zeroconf avahi)
 		$(multilib_native_usex test '--enable-selftest' '')
-		$(usex system-mitkrb5 "--with-system-mitkrb5 $(multilib_native_usex addc --with-experimental-mit-ad-dc '')" '')
+		$(usev system-mitkrb5 "--with-system-mitkrb5 $(multilib_native_usex addc --with-experimental-mit-ad-dc '')")
 		$(use_with debug lttng)
 		$(use_with ldap)
 		$(use_with profiling-data)
@@ -257,7 +257,8 @@ multilib_src_configure() {
 		myconf+=( --with-shared-modules=DEFAULT,!vfs_snapper )
 	fi
 
-	CPPFLAGS="-I${ESYSROOT}/usr/include/et ${CPPFLAGS}" \
+	append-cppflags "-I${ESYSROOT}/usr/include/et"
+
 	waf-utils_src_configure ${myconf[@]}
 }
 
@@ -267,7 +268,7 @@ multilib_src_compile() {
 
 multilib_src_test() {
 	if multilib_is_native_abi ; then
-		"${WAF_BINARY}" test || die "test failed"
+		"${WAF_BINARY}" test || die "Test failed"
 	fi
 }
 
@@ -278,23 +279,23 @@ multilib_src_install() {
 	find "${ED}" -type f -name "*.so" -exec chmod +x {} + || die
 
 	if multilib_is_native_abi ; then
-		# install ldap schema for server (bug #491002)
+		# Install ldap schema for server (bug #491002)
 		if use ldap ; then
 			insinto /etc/openldap/schema
 			doins examples/LDAP/samba.schema
 		fi
 
-		# create symlink for cups (bug #552310)
+		# Create symlink for cups (bug #552310)
 		if use cups ; then
 			dosym ../../../bin/smbspool \
 				/usr/libexec/cups/backend/smb
 		fi
 
-		# install example config file
+		# Install example config file
 		insinto /etc/samba
 		doins examples/smb.conf.default
 
-		# Fix paths in example file (#603964)
+		# Fix paths in example file (bug #603964)
 		sed \
 			-e '/log file =/s@/usr/local/samba/var/@/var/log/samba/@' \
 			-e '/include =/s@/usr/local/samba/lib/@/etc/samba/@' \
