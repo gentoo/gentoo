@@ -7,7 +7,7 @@ inherit flag-o-matic strip-linguas toolchain-funcs
 
 DESCRIPTION="Video Disk Recorder - turns a pc into a powerful set top box for DVB"
 HOMEPAGE="http://www.tvdr.de/"
-SRC_URI="http://git.tvdr.de/?p=vdr.git;a=snapshot;h=refs/tags/2.4.7;sf=tbz2 -> ${P}.tbz2
+SRC_URI="http://git.tvdr.de/?p=vdr.git;a=snapshot;h=refs/tags/${PV};sf=tbz2 -> ${P}.tbz2
 	mainmenuhooks? ( http://vdr.websitec.de/download/${PN}/${PN}-2.4.1/${PN}-2.4.1_mainmenuhook-1.0.1.patch.bz2 )
 	menuorg? ( https://projects.vdr-developer.org/projects/plg-menuorg/repository/revisions/master/raw/vdr-patch/vdr-menuorg-2.3.x.diff )
 	naludump? ( https://www.udo-richter.de/vdr/files/vdr-2.1.5-naludump-0.1.diff )
