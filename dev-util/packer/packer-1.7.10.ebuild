@@ -5,8 +5,6 @@ EAPI=7
 
 inherit go-module
 
-go-module_set_globals
-
 DESCRIPTION="A tool to create identical machine images for multiple platforms"
 HOMEPAGE="https://www.packer.io"
 SRC_URI="https://github.com/hashicorp/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
