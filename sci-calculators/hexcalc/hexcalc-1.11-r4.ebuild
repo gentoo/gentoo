@@ -1,27 +1,34 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
-DESCRIPTION="A simple hex calculator for X"
-HOMEPAGE="ftp://ftp.x.org/R5contrib/"
+DESCRIPTION="Simple hex calculator for X"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/${P}.tar.Z"
+S="${WORKDIR}/${PN}"
 
-LICENSE="GPL-2"
+LICENSE="HPND"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
-IUSE=""
 
-RDEPEND="x11-libs/libXaw"
-DEPEND="${RDEPEND}
-	>=x11-misc/imake-1.0.8-r1
-	app-text/rman"
+RDEPEND="
+	x11-libs/libX11
+	x11-libs/libXaw
+	x11-libs/libXt"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto"
+BDEPEND="
+	app-text/rman
+	>=x11-misc/imake-1.0.8-r1"
 
-S=${WORKDIR}/${PN}
-
-PATCHES=( "${FILESDIR}"/${PN}-{keypad,order}.diff )
+PATCHES=(
+	"${FILESDIR}"/${PN}-keypad.diff
+	"${FILESDIR}"/${PN}-order.diff
+)
 
 src_configure() {
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
