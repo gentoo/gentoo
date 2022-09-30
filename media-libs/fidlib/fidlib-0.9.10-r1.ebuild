@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit edo flag-o-matic toolchain-funcs
+inherit edo toolchain-funcs
 
 DESCRIPTION="Run-time filter design and execution library"
 HOMEPAGE="http://uazu.net/fidlib/"
@@ -15,16 +15,8 @@ KEYWORDS="amd64 x86"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-extern.patch
+	"${FILESDIR}"/${PN}-0.9.10-Add-missing-unistd.h-include.patch
 )
-
-src_prepare() {
-	default
-
-	# Avoid ICE under gcc-4.6, fixed in 4.6.3
-	if [[ $(gcc-version) == "4.6" && $(gcc-micro-version) -le 2 ]] ; then
-		replace-flags -O? -O0
-	fi
-}
 
 src_compile() {
 	# build library
