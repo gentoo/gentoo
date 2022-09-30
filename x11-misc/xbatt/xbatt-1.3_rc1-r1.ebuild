@@ -26,7 +26,9 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto"
-BDEPEND=">=x11-misc/imake-1.0.8-r1"
+BDEPEND="
+	sys-devel/gcc
+	>=x11-misc/imake-1.0.8-r1"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.1-implicits.patch
@@ -34,7 +36,7 @@ PATCHES=(
 
 src_configure() {
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
-		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf || die
+		IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf || die
 }
 
 src_compile() {
