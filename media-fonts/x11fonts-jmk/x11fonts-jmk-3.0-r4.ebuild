@@ -17,6 +17,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm ~ia64 ~loong ppc ~s390 sparc x86"
 
 BDEPEND="
+	sys-devel/gcc
 	>=x11-misc/imake-1.0.8-r1
 	>=x11-apps/mkfontscale-1.2.0
 	x11-apps/bdftopcf"
@@ -27,7 +28,7 @@ PATCHES=(
 
 src_configure() {
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
-		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf || die
+		IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf || die
 }
 
 src_install() {
