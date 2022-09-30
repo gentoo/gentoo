@@ -111,7 +111,6 @@ src_configure() {
 		# ENABLE_BACKTRACES requires libdwarf ?
 		-DENABLE_IPV6=ON
 		-DENABLE_WEATHER=$(usex weather)
-		-DWITH_GWEATHER4=ON
 		-DENABLE_LARGEFILE=ON
 		-DENABLE_VALA_BINDINGS=$(usex vala)
 		# Explicitly turn gtk4 off because gtk4webkit is not available yet
