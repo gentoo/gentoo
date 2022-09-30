@@ -33,10 +33,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Sam James <sam@gentoo.org> (2022-09-29)
-# Mask broken version (fails to build). bug #873493.
-=app-containers/docker-compose-2.11.2
-
 # Michał Górny <mgorny@gentoo.org> (2022-09-29)
 # Unfetchable mirror-restricted distfile.  No action from maintainer
 # in over a year.
