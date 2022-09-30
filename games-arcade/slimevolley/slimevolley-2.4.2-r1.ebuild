@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="A simple volleyball game"
 HOMEPAGE="http://slime.tuxfamily.org/index.php"
-SRC_URI="http://downloads.tuxfamily.org/slime/v242/${PN}_${PV}.tar.bz2"
+SRC_URI="http://downloads.tuxfamily.org/slime/v${PV//.}/${PN}_${PV}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
