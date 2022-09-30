@@ -55,6 +55,10 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/samba-4.0/ctdb_version.h
 )
 
+TALLOC_VERSION="2.3.3"
+TDB_VERSION="1.4.6"
+TEVENT_VERSION="0.11.0"
+
 COMMON_DEPEND="
 	>=app-arch/libarchive-3.1.2[${MULTILIB_USEDEP}]
 	dev-lang/perl:=
@@ -71,9 +75,9 @@ COMMON_DEPEND="
 	sys-libs/liburing:=[${MULTILIB_USEDEP}]
 	sys-libs/ncurses:=
 	sys-libs/readline:=
-	>=sys-libs/talloc-2.3.3[${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.4.6[${MULTILIB_USEDEP}]
-	>=sys-libs/tevent-0.11.0[${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-${TALLOC_VERSION}[${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-${TDB_VERSION}[${MULTILIB_USEDEP}]
+	>=sys-libs/tevent-${TEVENT_VERSION}[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/libcrypt:=[${MULTILIB_USEDEP}]
 	virtual/libiconv
@@ -166,8 +170,33 @@ pkg_setup() {
 	fi
 }
 
+check_samba_dep_versions() {
+	actual_talloc_version=$(sed -En '/^VERSION =/{s/[^0-9.]//gp}' lib/talloc/wscript || die)
+	if [[ ${actual_talloc_version} != ${TALLOC_VERSION} ]] ; then
+		eerror "Source talloc version: ${TALLOC_VERSION}"
+		eerror "Ebuild talloc version: ${actual_talloc_version}"
+		die "Ebuild needs to fix TALLOC_VERSION!"
+	fi
+
+	actual_tdb_version=$(sed -En '/^VERSION =/{s/[^0-9.]//gp}' lib/tdb/wscript || die)
+	if [[ ${actual_tdb_version} != ${TDB_VERSION} ]] ; then
+		eerror "Source tdb version: ${TDB_VERSION}"
+		eerror "Ebuild tdb version: ${actual_tdb_version}"
+		die "Ebuild needs to fix TDB_VERSION!"
+	fi
+
+	actual_tevent_version=$(sed -En '/^VERSION =/{s/[^0-9.]//gp}' lib/tevent/wscript || die)
+	if [[ ${actual_tevent_version} != ${TEVENT_VERSION} ]] ; then
+		eerror "Source tevent version: ${TEVENT_VERSION}"
+		eerror "Ebuild tevent version: ${actual_tevent_version}"
+		die "Ebuild needs to fix TEVENT_VERSION!"
+	fi
+}
+
 src_prepare() {
 	default
+
+	check_samba_dep_versions
 
 	# Unbundle dnspython
 	sed -i -e '/"dns.resolver":/d' "${S}"/third_party/wscript || die
