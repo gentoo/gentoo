@@ -9,7 +9,7 @@ DESCRIPTION="Google Drive client for the commandline"
 HOMEPAGE="https://github.com/odeke-em/drive"
 EGIT_COMMIT="bede608f250a9333d55c43396fc5e72827e806fd"
 SRC_URI="https://github.com/odeke-em/drive/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~zmedico/dist/drive-0.4.0_p20210208-deps.tar.xz"
+	https://dev.gentoo.org/~zmedico/dist/${P}-deps.tar.xz"
 
 KEYWORDS="amd64"
 LICENSE="Apache-2.0 BSD MIT"
