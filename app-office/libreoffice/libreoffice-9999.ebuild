@@ -503,7 +503,6 @@ src_configure() {
 		--with-help="html"
 		--without-helppack-integration
 		--with-system-gpgmepp
-		--without-system-cuckoo
 		--without-system-jfreereport
 		--without-system-libcmis
 		--without-system-sane
