@@ -21,7 +21,9 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto"
-BDEPEND=">=x11-misc/imake-1.0.8-r1"
+BDEPEND="
+	sys-devel/gcc
+	>=x11-misc/imake-1.0.8-r1"
 
 src_prepare() {
 	default
@@ -31,7 +33,7 @@ src_prepare() {
 
 src_configure() {
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
-		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf || die
+		IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf || die
 }
 
 src_compile() {
