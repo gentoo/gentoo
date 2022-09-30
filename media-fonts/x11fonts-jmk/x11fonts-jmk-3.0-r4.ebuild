@@ -1,14 +1,16 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit font toolchain-funcs
 
 MY_P="jmk-x11-fonts-${PV}"
 
 DESCRIPTION="This package contains character-cell fonts for use with X"
-HOMEPAGE="http://www.jmknoble.net/fonts/"
-SRC_URI="http://www.pobox.com/~jmknoble/fonts/${MY_P}.tar.gz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,11 +21,9 @@ BDEPEND="
 	>=x11-apps/mkfontscale-1.2.0
 	x11-apps/bdftopcf"
 
-DOCS=( "ChangeLog" "NEWS" "README" )
-
-PATCHES=( "${FILESDIR}"/gzip.patch )
-
-S="${WORKDIR}/${MY_P}"
+PATCHES=(
+	"${FILESDIR}"/gzip.patch
+)
 
 src_configure() {
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
