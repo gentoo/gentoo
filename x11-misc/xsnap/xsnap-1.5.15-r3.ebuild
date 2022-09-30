@@ -1,7 +1,8 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit toolchain-funcs
 
 DESCRIPTION="Program to interactively take a 'snapshot' of a region of the screen"
@@ -11,31 +12,25 @@ SRC_URI="ftp://ftp.ac-grenoble.fr/ge/Xutils/${P}.tar.bz2"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux"
-IUSE=""
 
 COMMON_DEPEND="
-	media-libs/libpng:0
-	virtual/jpeg:0
+	media-libs/libjpeg-turbo:=
+	media-libs/libpng:=
+	sys-libs/zlib:=
 	x11-libs/libX11
 	x11-libs/libXft
-	x11-libs/libXpm
-"
+	x11-libs/libXpm"
 RDEPEND="
 	${COMMON_DEPEND}
-	media-fonts/font-misc-misc
-"
+	media-fonts/font-misc-misc"
 DEPEND="
 	${COMMON_DEPEND}
-	x11-base/xorg-proto
-"
+	x11-base/xorg-proto"
 BDEPEND="
 	app-text/rman
 	dev-lang/perl
 	sys-devel/gcc
-	>=x11-misc/imake-1.0.8-r1
-"
-
-DOCS=( AUTHORS Changelog README )
+	>=x11-misc/imake-1.0.8-r1"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-root_name.patch
@@ -70,5 +65,6 @@ src_compile() {
 
 src_install() {
 	default
-	find "${ED}" -name '*.1.gz' -exec gunzip {} \; || die
+
+	find "${ED}" -type f -name '*.1.gz' -exec gunzip {} + || die
 }
