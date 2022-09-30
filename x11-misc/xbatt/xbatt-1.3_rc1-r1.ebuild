@@ -32,6 +32,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.1-implicits.patch
+	"${FILESDIR}"/${PN}-1.2.1-clang16.patch
 )
 
 src_configure() {
