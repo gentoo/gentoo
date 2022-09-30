@@ -9,11 +9,11 @@ inherit check-reqs cmake flag-o-matic linux-info \
 	multiprocessing prefix toolchain-funcs multilib-minimal
 
 # Patch version
-PATCH_SET="https://dev.gentoo.org/~whissi/dist/mysql/${PN}-5.7.36-patches-01.tar.xz"
+PATCH_SET="https://dev.gentoo.org/~whissi/dist/mysql/${P}-patches-01.tar.xz"
 
-SRC_URI="https://cdn.mysql.com/Downloads/MySQL-5.7/${PN}-boost-${PV}.tar.gz
-	https://cdn.mysql.com/archives/mysql-5.7/mysql-boost-${PV}.tar.gz
-	http://downloads.mysql.com/archives/MySQL-5.7/${PN}-boost-${PV}.tar.gz
+SRC_URI="https://cdn.mysql.com/Downloads/MySQL-$(ver_cut 1-2)/${PN}-boost-${PV}.tar.gz
+	https://cdn.mysql.com/archives/mysql-$(ver_cut 1-2)/mysql-boost-${PV}.tar.gz
+	http://downloads.mysql.com/archives/MySQL-$(ver_cut 1-2)/${PN}-boost-${PV}.tar.gz
 	${PATCH_SET}"
 
 HOMEPAGE="https://www.mysql.com/"
