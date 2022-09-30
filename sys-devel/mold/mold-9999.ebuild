@@ -23,6 +23,7 @@ SLOT="0"
 IUSE="system-tbb"
 
 RDEPEND="
+	app-arch/zstd:=
 	sys-libs/zlib
 	system-tbb? ( >=dev-cpp/tbb-2021.4.0:= )
 	!kernel_Darwin? (
@@ -81,7 +82,10 @@ src_configure() {
 
 src_install() {
 	dobin "${BUILD_DIR}"/${PN}
-	dolib.so "${BUILD_DIR}"/${PN}-wrapper.so
+
+	# https://bugs.gentoo.org/872773
+	insinto /usr/$(get_libdir)/mold
+	doins "${BUILD_DIR}"/${PN}-wrapper.so
 
 	dodoc docs/{design,execstack}.md
 	doman docs/${PN}.1
