@@ -265,6 +265,12 @@ multilib_src_compile() {
 	waf-utils_src_compile
 }
 
+multilib_src_test() {
+	if multilib_is_native_abi ; then
+		"${WAF_BINARY}" test || die "test failed"
+	fi
+}
+
 multilib_src_install() {
 	waf-utils_src_install
 
@@ -325,12 +331,6 @@ multilib_src_install() {
 	keepdir /var/lib/samba/{bind-dns,private}
 	keepdir /var/lock/samba
 	keepdir /var/log/samba
-}
-
-multilib_src_test() {
-	if multilib_is_native_abi ; then
-		"${WAF_BINARY}" test || die "test failed"
-	fi
 }
 
 pkg_postinst() {
