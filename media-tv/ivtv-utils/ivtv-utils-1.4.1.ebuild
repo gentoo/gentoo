@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="IVTV utilities for Hauppauge PVR PCI cards"
 HOMEPAGE="http://www.ivtvdriver.org/"
-SRC_URI="http://dl.ivtvdriver.org/ivtv/archive/1.4.x/${P}.tar.gz"
+SRC_URI="http://dl.ivtvdriver.org/ivtv/archive/$(ver_cut 1-2).x/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
