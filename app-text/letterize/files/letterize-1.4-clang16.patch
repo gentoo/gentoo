@@ -1,0 +1,8 @@
+https://bugs.gentoo.org/870775
+--- a/letterize.c
++++ b/letterize.c
+@@ -234,3 +234,3 @@
+ 
+-main(int argc, char **argv)
++int main(int argc, char **argv)
+ {
