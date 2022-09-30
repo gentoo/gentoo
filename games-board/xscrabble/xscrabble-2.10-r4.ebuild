@@ -23,6 +23,7 @@ RDEPEND="
 	!<x11-terms/kterm-6.2.0-r7
 "
 BDEPEND="
+	sys-devel/gcc
 	x11-misc/gccmakedep
 	>=x11-misc/imake-1.0.8-r1
 "
@@ -56,7 +57,7 @@ src_configure() {
 	filter-lto
 
 	tc-export AR CC LD RANLIB
-	export IMAKECPP=${IMAKECPP:-$(tc-getCPP)}
+	export IMAKECPP=${IMAKECPP:-${CHOST}-gcc -E}
 }
 
 src_compile() {
