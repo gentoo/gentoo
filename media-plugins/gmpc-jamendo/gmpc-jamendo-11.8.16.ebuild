@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Plugin allows you to browse and preview music available on jamendo"
 HOMEPAGE="https://gmpc.fandom.com/wiki/GMPC_PLUGIN_JAMENDO"
-SRC_URI="https://download.sarine.nl/Programs/gmpc/11.8/${P}.tar.gz"
+SRC_URI="https://download.sarine.nl/Programs/gmpc/$(ver_cut 1-2)/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
