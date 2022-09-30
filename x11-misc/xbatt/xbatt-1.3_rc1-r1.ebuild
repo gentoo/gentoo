@@ -1,13 +1,16 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit toolchain-funcs eapi7-ver
+EAPI=8
+
+inherit toolchain-funcs
 
 MY_PV=${PV/_rc/pr}
+
 DESCRIPTION="Notebook battery indicator for X"
-HOMEPAGE="http://www.clave.gr.jp/~eto/xbatt/"
-SRC_URI="http://www.clave.gr.jp/~eto/xbatt/${PN}-${MY_PV}.tar.gz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${PN}-${MY_PV}.tar.gz"
+S="${WORKDIR}/${PN}-$(ver_cut 1-2)"
 
 LICENSE="xbatt"
 SLOT="0"
@@ -19,17 +22,15 @@ RDEPEND="
 	x11-libs/libXaw
 	x11-libs/libXext
 	x11-libs/libxkbfile
-	x11-libs/libXpm
-"
+	x11-libs/libXpm"
 DEPEND="
 	${RDEPEND}
-	x11-base/xorg-proto
-	>=x11-misc/imake-1.0.8-r1
-"
+	x11-base/xorg-proto"
+BDEPEND=">=x11-misc/imake-1.0.8-r1"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.1-implicits.patch
 )
-S="${WORKDIR}"/${PN}-$(ver_cut 1-2)
 
 src_configure() {
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
@@ -46,5 +47,5 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" install
-	dodoc README*
+	einstalldocs
 }
