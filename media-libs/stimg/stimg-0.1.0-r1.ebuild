@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Simple and tiny image loading library"
 HOMEPAGE="http://homepage3.nifty.com/slokar/fb/"
@@ -15,20 +15,31 @@ KEYWORDS="~alpha amd64 ppc x86"
 
 RDEPEND="
 	media-libs/libpng:=
+	media-libs/libjpeg-turbo:=
 	media-libs/tiff:=
-	virtual/jpeg"
+"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-libpng15.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-libpng15.patch
+)
+
+src_prepare() {
+	default
+
+	# bug #871486
+	eautoreconf
+}
 
 src_configure() {
 	tc-export CC
-	econf --disable-static
+
+	default
 }
 
 src_install() {
 	default
 
-	# no static archives
-	find "${D}" -name '*.la' -delete || die
+	# No static archives
+	find "${ED}" -name '*.la' -delete || die
 }
