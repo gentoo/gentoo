@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2022-09-30)
+# Per Sam: avoid app-emacs/flycheck deptree, bug #873541
+dev-util/pkgcheck emacs
+
 # matoro <matoro_gentoo@matoro.tk> (2022-09-22)
 # Unable to test due to mask, bug #763963
 net-misc/openntpd constraints
