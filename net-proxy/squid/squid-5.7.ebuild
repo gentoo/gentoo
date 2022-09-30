@@ -205,6 +205,8 @@ src_configure() {
 	myeconfargs+=( --without-mit-krb5 --without-heimdal-krb5 )
 
 	if use kerberos; then
+		# We intentionally overwrite negotiate_modules here to lose
+		# the 'none'.
 		negotiate_modules=( kerberos wrapper )
 
 		if has_version app-crypt/heimdal; then
@@ -221,10 +223,13 @@ src_configure() {
 	fi
 
 	# NTLM modules
-	local ntlm_modules=(
-		none
-		$(usev samba 'SMB_LM')
-	)
+	local ntlm_modules=( none )
+
+	if use samba ; then
+		# We intentionally overwrite ntlm_modules here to lose
+		# the 'none'.
+		ntlm_modules=( SMB_LM )
+	fi
 
 	# External helpers
 	local ext_helpers=(
@@ -240,7 +245,7 @@ src_configure() {
 
 	use ldap && use kerberos && ext_helpers+=( kerberos_ldap_group )
 	if use mysql || use postgres || use sqlite; then
-	    ext_helpers+=( SQL_session )
+		ext_helpers+=( SQL_session )
 	fi
 
 	# Storage modules
@@ -282,12 +287,12 @@ src_configure() {
 	}
 
 	myeconfargs+=(
-		--enable-storeio=$(print_options_without_comma "${storeio_modules[@]}" )
-		--enable-auth-basic=$(print_options_without_comma "${basic_modules[@]}" )
-		--enable-auth-digest=$(print_options_without_comma "${digest_modules[@]}" )
-		--enable-auth-ntlm=$(print_options_without_comma "${ntlm_modules[@]}" )
-		--enable-auth-negotiate=$(print_options_without_comma "${negotiate_modules[@]}" )
-		--enable-external-acl-helpers=$(print_options_without_comma "${ext_helpers[@]}" )
+		--enable-storeio=$(print_options_without_comma "${storeio_modules[@]}")
+		--enable-auth-basic=$(print_options_without_comma "${basic_modules[@]}")
+		--enable-auth-digest=$(print_options_without_comma "${digest_modules[@]}")
+		--enable-auth-ntlm=$(print_options_without_comma "${ntlm_modules[@]}")
+		--enable-auth-negotiate=$(print_options_without_comma "${negotiate_modules[@]}")
+		--enable-external-acl-helpers=$(print_options_without_comma "${ext_helpers[@]}")
 	)
 
 	econf "${myeconfargs[@]}"

@@ -33,9 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
-# Sam James <sam@gentoo.org> (2022-09-29)
-# Mask broken version (fails to build). bug #873493.
-=app-containers/docker-compose-2.11.2
+# Brian Evans <grknight@gentoo.org> (2022-09-30)
+# Mask RC versions for initial testing
+<dev-lang/php-8.2.0:8.2
+virtual/httpd-php:8.2
 
 # Michał Górny <mgorny@gentoo.org> (2022-09-29)
 # Unfetchable mirror-restricted distfile.  No action from maintainer
@@ -388,14 +389,21 @@ sys-devel/automake:1.11
 # New major parallel-installable release which needs special care to not
 # end up loaded into the same process together with the earlier libsoup ABI.
 # Migration to it is expected for GNOME 42, NOT to be unmasked with GNOME 41.
+>=dev-libs/libgweather-4.2.0
 >=dev-util/devhelp-43
+>=gnome-base/gnome-desktop-43
+>=gnome-base/nautilus-43
+>=gnome-extra/evolution-data-server-3.46
+>=gnome-extra/evolution-ews-3.46
 >=gnome-extra/gnome-calculator-43
+>=mail-client/evolution-3.46
 media-libs/libshumate
 net-libs/libsoup:3.0
 net-libs/rest:1.0
 net-libs/uhttpmock:1.0
 net-libs/webkit-gtk:4.1
 sci-geosciences/geocode-glib:2
+>=sci-geosciences/gnome-maps-43
 
 # Thomas Deutschmann <whissi@gentoo.org> (2021-09-07)
 # Masked while being tested and reverse deps aren't fully compatible

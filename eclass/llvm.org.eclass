@@ -72,6 +72,9 @@ if [[ -z ${_LLVM_SOURCE_TYPE+1} ]]; then
 				16.0.0_pre20220918)
 					EGIT_COMMIT=303526ef3aa211c1930be2885deae15eeeda3b18
 					;;
+				16.0.0_pre20220930)
+					EGIT_COMMIT=215c9fa4deac9ec6b4e504843830551f03b60620
+					;;
 				*)
 					die "Unknown snapshot: ${PV}"
 					;;
@@ -90,7 +93,7 @@ fi
 
 inherit multiprocessing
 
-if ver_test -ge 14.0.5; then
+if [[ ${_LLVM_SOURCE_TYPE} == tar ]] && ver_test -ge 14.0.5; then
 	inherit verify-sig
 fi
 

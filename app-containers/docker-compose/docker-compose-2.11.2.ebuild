@@ -34,7 +34,7 @@ src_test() {
 
 src_install() {
 	exeinto /usr/libexec/docker/cli-plugins
-	doexe bin/docker-compose
+	doexe bin/build/docker-compose
 	dodoc README.md
 }
 
