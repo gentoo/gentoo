@@ -226,9 +226,9 @@ src_configure() {
 	local ntlm_modules=( none )
 
 	if use samba ; then
-		# We intentionally overwrite modules here to lose
+		# We intentionally overwrite ntlm_modules here to lose
 		# the 'none'.
-		ntlm_modules=( $(usev samba 'SMB_LM') )
+		ntlm_modules=( SMB_LM )
 	fi
 
 	# External helpers
