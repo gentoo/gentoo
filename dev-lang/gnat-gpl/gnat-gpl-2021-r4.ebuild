@@ -1,10 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PATCH_GCC_VER=10.3.0
-PATCH_VER="3"
+PATCH_VER="4"
 
 TOOLCHAIN_GCC_PV=10.3.1
 
@@ -50,17 +50,6 @@ BDEPEND=sys-devel/binutils
 
 S="${WORKDIR}"/${MYP}
 
-src_unpack() {
-	if ! use bootstrap && [[ -z "$(type ${GNATMAKE} 2>/dev/null)" ]] ; then
-		eerror "You need a gcc compiler that provides the Ada Compiler:"
-		eerror "1) use gcc-config to select the right compiler or"
-		eerror "2) set the bootstrap use flag"
-		die "ada compiler not available"
-	fi
-
-	toolchain_src_unpack
-}
-
 src_prepare() {
 	if use amd64; then
 		BTSTRP=${BTSTRP_AMD64}
@@ -81,6 +70,14 @@ src_prepare() {
 	if [[ ${gnatpath} != "." ]] ; then
 		GNATMAKE="${gnatpath}/${GNATMAKE}"
 	fi
+
+	if ! use bootstrap && [[ -z "$(type ${GNATMAKE} 2>/dev/null)" ]] ; then
+		eerror "You need a gcc compiler that provides the Ada Compiler:"
+		eerror "1) use gcc-config to select the right compiler or"
+		eerror "2) set the bootstrap use flag"
+		die "ada compiler not available"
+	fi
+
 	if use bootstrap; then
 		rm "${WORKDIR}"/${BTSTRP}/libexec/gcc/x86_64-pc-linux-gnu/4.7.4/ld \
 			|| die
