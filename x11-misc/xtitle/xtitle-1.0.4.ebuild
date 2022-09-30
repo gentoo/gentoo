@@ -13,13 +13,15 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-BDEPEND=">=x11-misc/imake-1.0.8-r1"
+BDEPEND="
+	sys-devel/gcc
+	>=x11-misc/imake-1.0.8-r1"
 
 HTML_DOCS=( xtitle.html )
 
 src_configure() {
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
-		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf || die
+		IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf || die
 }
 
 src_install() {
