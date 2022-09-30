@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
-inherit cmake flag-o-matic llvm llvm.org python-any-r1
+inherit cmake flag-o-matic llvm llvm.org multilib python-any-r1
 
 DESCRIPTION="The LLVM linker (link editor)"
 HOMEPAGE="https://llvm.org/"
@@ -12,11 +12,12 @@ HOMEPAGE="https://llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug test"
+IUSE="debug test zstd"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	~sys-devel/llvm-${PV}
+	~sys-devel/llvm-${PV}[zstd=]
+	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="
 	${DEPEND}
@@ -61,10 +62,19 @@ src_configure() {
 
 	use elibc_musl && append-ldflags -Wl,-z,stack-size=2097152
 
+	if use zstd; then
+		cat > "${T}"/zstdConfig.cmake <<-EOF || die
+			add_library(zstd::libzstd_shared SHARED IMPORTED)
+			set_target_properties(zstd::libzstd_shared PROPERTIES
+				IMPORTED_LOCATION "${EPREFIX}/usr/$(get_libdir)/libzstd$(get_libname)")
+		EOF
+	fi
+
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
 		-DLLVM_INCLUDE_TESTS=$(usex test)
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
+		-Dzstd_DIR="${T}"
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_BUILD_TESTS=ON
