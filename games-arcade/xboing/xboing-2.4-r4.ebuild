@@ -17,8 +17,11 @@ KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	acct-group/gamestat
+	x11-libs/libX11
 	x11-libs/libXpm"
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto"
 BDEPEND="
 	app-text/rman
 	sys-devel/gcc
@@ -29,6 +32,7 @@ PATCHES=(
 	"${WORKDIR}"/${P}-debian.patch
 	"${FILESDIR}"/${P}-buffer.patch
 	"${FILESDIR}"/${P}-sleep.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_prepare() {
