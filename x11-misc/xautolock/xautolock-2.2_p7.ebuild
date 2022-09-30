@@ -19,10 +19,13 @@ KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 sparc x86"
 RDEPEND="
 	x11-libs/libXScrnSaver
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto
+"
 BDEPEND="
 	app-text/rman
-	x11-base/xorg-proto
+	sys-devel/gcc
 	>=x11-misc/imake-1.0.8-r1
 "
 PATCHES=(
@@ -38,7 +41,7 @@ src_prepare() {
 
 src_configure() {
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
-		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf || die
+		IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf || die
 }
 
 src_compile() {
