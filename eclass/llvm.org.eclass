@@ -93,7 +93,7 @@ fi
 
 inherit multiprocessing
 
-if ver_test -ge 14.0.5; then
+if [[ ${_LLVM_SOURCE_TYPE} == tar ]] && ver_test -ge 14.0.5; then
 	inherit verify-sig
 fi
 
