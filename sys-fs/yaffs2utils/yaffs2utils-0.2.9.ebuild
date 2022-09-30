@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="tools for generating YAFFS images"
 HOMEPAGE="https://code.google.com/p/yaffs2utils/"
-SRC_URI="https://yaffs2utils.googlecode.com/files/0.2.9.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://yaffs2utils.googlecode.com/files/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
