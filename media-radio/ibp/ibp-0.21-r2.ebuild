@@ -18,7 +18,9 @@ RDEPEND="sys-libs/ncurses:0=
 	X? ( x11-libs/libX11  )"
 DEPEND="${RDEPEND}
 	X? ( >=x11-misc/imake-1.0.8-r1 )"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	X? ( sys-devel/gcc )"
 
 src_prepare() {
 	# Respect CFLAGS if built without USE=X
@@ -33,7 +35,7 @@ src_prepare() {
 src_configure() {
 	if use X ;then
 		CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
-			IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf || die
+			IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf || die
 	fi
 }
 
