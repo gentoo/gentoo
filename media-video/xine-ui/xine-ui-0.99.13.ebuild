@@ -50,6 +50,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.99.10-desktop.patch
+	"${FILESDIR}"/${P}-build.patch
 )
 
 src_prepare() {

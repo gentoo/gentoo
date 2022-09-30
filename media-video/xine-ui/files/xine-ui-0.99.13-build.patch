@@ -1,0 +1,43 @@
+hg diff -r e352b6eef94b6441f4afc86f96abe247acc2a60b -r f9a98e02460348ca23ca2f5c2b39e62c8758b22d
+https://sourceforge.net/p/xine/xine-ui/ci/e352b6eef94b6441f4afc86f96abe247acc2a60b/
+https://sourceforge.net/p/xine/tickets/10/
+https://bugs.gentoo.org/871951
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -600,8 +600,10 @@ int n = my_strlen ("what");
+ ])], [have_attr_iaso=yes], [have_attr_iaso=no])
+ AC_MSG_RESULT([$have_attr_iaso])
+ if test x"$have_attr_iaso" = x"yes" ; then
+-    AC_DEFINE([ATTR_INLINE_ALL_STRINGOPS],
+-        [__attribute__ ((__target__ ("inline-all-stringops")))],
++    AC_DEFINE([ATTR_INLINE_ALL_STRINGOPS], [__attribute__ ((__target__ ("inline-all-stringops")))],
++        [Define this to a function attribute that inlines string handling code])
++else
++    AC_DEFINE([ATTR_INLINE_ALL_STRINGOPS], [],
+         [Define this to a function attribute that inlines string handling code])
+ fi
+ 
+--- a/src/common/utils.h
++++ b/src/common/utils.h
+@@ -21,7 +21,7 @@
+ #ifndef _COMMON_UTILS_H
+ #define _COMMON_UTILS_H
+ 
+-#ifndef HAVE_CONFIG_H
++#ifndef PACKAGE_NAME
+ #error config.h not included
+ #endif
+ 
+--- a/src/xitk/network.c
++++ b/src/xitk/network.c
+@@ -34,7 +34,9 @@
+ 
+ //#warning IMPLEMENT POST SUPPORT
+ 
++#ifdef HAVE_CONFIG_H
+ #include "config.h"
++#endif
+ 
+ #ifdef HAVE_READLINE
+ 
