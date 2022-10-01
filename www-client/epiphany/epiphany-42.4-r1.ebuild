@@ -20,7 +20,7 @@ DEPEND="
 	>=dev-libs/nettle-3.4:=
 	>=net-libs/webkit-gtk-2.33.2:4=
 	>=x11-libs/cairo-1.2
-	>=app-crypt/gcr-3.5.5:=[gtk]
+	>=app-crypt/gcr-3.5.5:0=[gtk]
 	>=x11-libs/gdk-pixbuf-2.36.5:2
 	gnome-base/gsettings-desktop-schemas
 	>=app-text/iso-codes-0.35
