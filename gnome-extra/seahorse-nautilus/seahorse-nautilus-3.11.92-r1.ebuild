@@ -17,7 +17,7 @@ IUSE=""
 
 COMMON_DEPEND="
 	>=app-crypt/gpgme-1.0.0
-	>=app-crypt/gcr-3.4[gtk]
+	>=app-crypt/gcr-3.4:0=[gtk]
 	>=dev-libs/dbus-glib-0.35
 	>=dev-libs/glib-2.28:2
 	gnome-base/gnome-keyring
