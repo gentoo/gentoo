@@ -12,7 +12,7 @@ SRC_URI="amd64? ( linuxx64-${PV}.tar.gz )
 
 LICENSE="icaclient"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="l10n_de l10n_es l10n_fr l10n_ja l10n_zh-CN"
 RESTRICT="mirror strip fetch"
 
@@ -36,7 +36,9 @@ RDEPEND="
 	media-libs/gst-plugins-base:1.0
 	media-libs/gstreamer:1.0
 	media-libs/libogg
+	media-libs/libpulse
 	media-libs/libvorbis
+	media-libs/mesa
 	media-libs/speex
 	net-libs/libsoup:2.4
 	net-libs/webkit-gtk:4
@@ -45,7 +47,6 @@ RDEPEND="
 	sys-libs/libcxxabi
 	sys-libs/zlib
 	virtual/krb5
-	virtual/jpeg:0
 	virtual/libudev
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
@@ -109,9 +110,6 @@ src_install() {
 	doexe *.DLL libproxy.so wfica AuthManagerDaemon PrimaryAuthManager selfservice ServiceRecord
 
 	exeinto "${ICAROOT}"/lib
-	if use amd64 ; then
-		rm lib/ctxjpeg_fb_8.so || die
-	fi
 	doexe lib/*.so
 
 	for dest in "${ICAROOT}"{,/nls/en{,.UTF-8}} ; do
@@ -180,38 +178,11 @@ src_install() {
 	insinto "${ICAROOT}"/keyboard
 	doins keyboard/*
 
+	cp -a util "${ED}/${ICAROOT}" || die
+	test -f util/HdxRtcEngine && fperms 0755 "${ICAROOT}"/util/HdxRtcEngine
+
 	rm -r "${S}"/keystore/cacerts || die
 	dosym ../../../../etc/ssl/certs "${ICAROOT}"/keystore/cacerts
-
-	local util_files=(
-		HdxRtcEngine
-		configmgr
-		conncenter
-		ctx_app_bind
-		ctx_rehash
-		ctxlogd
-		ctxwebhelper
-		echo_cmd
-		gst_play1.0
-		gst_read1.0
-		hdxcheck.sh
-		icalicense.sh
-		libgstflatstm1.0.so
-		lurdump
-		new_store
-		nslaunch
-		setlog
-		storebrowse
-		sunraymac.sh
-		webcontainer
-		what
-		xcapture
-	)
-
-	exeinto "${ICAROOT}"/util
-	for bin in ${util_files[@]} ; do
-		doexe util/${bin}
-	done
 
 	local other_files=(
 		icasessionmgr
@@ -248,10 +219,14 @@ src_install() {
 
 	# 651926
 	domenu "${FILESDIR}"/*.desktop
+
+	insinto /usr/share/mime/packages
+	doins desktop/Citrix-mime_types.xml
 }
 
 pkg_postinst() {
 	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 
 	local inidest="${ROOT}${ICAROOT}/config"
 	if [[ ! -e "${inidest}"/module.ini ]] ; then
@@ -262,4 +237,5 @@ pkg_postinst() {
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
