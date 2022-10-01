@@ -13,7 +13,7 @@ HOMEPAGE="https://projects.gnome.org/nautilus-python/"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm64 ~ppc64 ~x86"
-IUSE="doc"
+IUSE="gtk-doc"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # Require pygobject:3 and USE=introspection on nautilus for sanity,
@@ -28,13 +28,14 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	gtk-doc? ( dev-util/gtk-doc )
 	>=dev-util/gtk-doc-am-1.14
 	virtual/pkgconfig
 "
 
 src_configure() {
 	local emesonargs=(
-		$(meson_feature doc docs)
+		$(meson_feature gtk-doc docs)
 	)
 	meson_src_configure
 }
@@ -42,7 +43,7 @@ src_configure() {
 src_install() {
 	meson_src_install
 
-	use doc && mv "${ED}/usr/share/doc/${PN}/"* "${ED}/usr/share/doc/${P}" || die
+	mv "${ED}/usr/share/doc/${PN}/"* "${ED}/usr/share/doc/${P}" || die
 	rm -d "${ED}/usr/share/doc/${PN}" || die
 
 	# Directory for systemwide extensions
