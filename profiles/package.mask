@@ -430,6 +430,7 @@ sys-devel/automake:1.11
 >=gnome-extra/gnome-calculator-43
 >=gnome-extra/gnome-shell-extensions-43
 >=mail-client/evolution-3.46
+>=mail-client/geary-43
 media-libs/libshumate
 net-libs/libsoup:3.0
 net-libs/rest:1.0
