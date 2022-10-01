@@ -394,6 +394,7 @@ sys-devel/automake:1.11
 >=gnome-extra/evolution-data-server-3.46
 >=gnome-extra/evolution-ews-3.46
 >=gnome-extra/gnome-calculator-43
+>=gnome-extra/gnome-shell-extensions-43
 >=mail-client/evolution-3.46
 media-libs/libshumate
 net-libs/libsoup:3.0
