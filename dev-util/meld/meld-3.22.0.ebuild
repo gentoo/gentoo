@@ -60,4 +60,5 @@ src_configure() {
 src_install() {
 	meson_src_install
 	python_optimize
+	python_fix_shebang "${ED}"/usr/bin/meld
 }
