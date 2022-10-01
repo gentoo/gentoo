@@ -389,6 +389,11 @@ KEYWORDS="~amd64"
 
 BDEPEND=">=virtual/rust-1.59"
 
+PATCHES=(
+	# https://bugs.gentoo.org/866133
+	"${FILESDIR}"/${PN}-1.10.3-no-strip.patch
+)
+
 QA_FLAGS_IGNORED="usr/bin/starship"
 
 src_configure() {
