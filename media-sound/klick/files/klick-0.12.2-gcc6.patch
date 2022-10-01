@@ -1,44 +1,78 @@
---- klick-0.12.2/src/metronome_map.hh.old	2016-09-21 22:17:41.364102201 -0400
-+++ klick-0.12.2/src/metronome_map.hh	2016-09-21 22:28:50.611858765 -0400
-@@ -48,7 +48,7 @@
+Description: Fix build with gcc-6.
+Author: Jaromír Mikeš <mira.mikes@seznam.cz>
+Forwarded: dominic.sacre@gmx.de
+
+Index: klick/src/metronome_map.hh
+===================================================================
+--- klick.orig/src/metronome_map.hh
++++ klick/src/metronome_map.hh
+@@ -48,7 +48,7 @@ class MetronomeMap
      virtual void timebase_callback(position_t *);
  
    private:
 -    static double const TICKS_PER_BEAT = 1920.0;
-+    static double const TICKS_PER_BEAT;
++    static double constexpr TICKS_PER_BEAT = 1920.0;
  
      // transport position
      nframes_t _current;
---- klick-0.12.2/src/metronome_map.cc.old	2016-09-21 22:27:01.551067088 -0400
-+++ klick-0.12.2/src/metronome_map.cc	2016-09-21 22:28:49.027158380 -0400
-@@ -195,3 +195,5 @@
-         p->beats_per_minute = _pos.map_entry().tempi[n];
-     }
- }
-+
-+double const MetronomeMap::TICKS_PER_BEAT = 1920.0;
---- klick-0.12.2/src/metronome_simple.hh.old	2016-09-21 22:18:57.674628602 -0400
-+++ klick-0.12.2/src/metronome_simple.hh	2016-09-21 22:29:04.307859355 -0400
-@@ -58,9 +58,9 @@
- 
+Index: klick/src/metronome_simple.hh
+===================================================================
+--- klick.orig/src/metronome_simple.hh
++++ klick/src/metronome_simple.hh
+@@ -59,8 +59,8 @@ class MetronomeSimple
    private:
  
--    static int const MAX_TAPS = 5;
+     static int const MAX_TAPS = 5;
 -    static float const MAX_TAP_AGE = 3.0;
 -    static float const TAP_DIFF = 0.2;
-+    static int const MAX_TAPS;
-+    static float const MAX_TAP_AGE;
-+    static float const TAP_DIFF;
++    static float constexpr MAX_TAP_AGE = 3.0;
++    static float constexpr TAP_DIFF = 0.2;
  
      float _tempo;
      float _tempo_increment, _tempo_start, _tempo_limit;
---- klick-0.12.2/src/metronome_simple.cc.old	2016-09-21 22:27:24.883846428 -0400
-+++ klick-0.12.2/src/metronome_simple.cc	2016-09-21 22:28:46.015859632 -0400
-@@ -217,3 +217,7 @@
+Index: klick/src/tempomap.cc
+===================================================================
+--- klick.orig/src/tempomap.cc
++++ klick/src/tempomap.cc
+@@ -57,17 +57,17 @@ static char const regex_blank[] = "^[[:b
+ // matches any valid line in a tempomap file
+ static char const regex_valid[] =
+     // label
+-    "^[[:blank:]]*("REGEX_LABEL":)?" \
++    "^[[:blank:]]*(" REGEX_LABEL":)?" \
+     // bars
+-    "[[:blank:]]*"REGEX_INT"" \
++    "[[:blank:]]*" REGEX_INT"" \
+     // meter
+-    "([[:blank:]]+"REGEX_INT"/"REGEX_INT")?" \
++    "([[:blank:]]+" REGEX_INT"/" REGEX_INT")?" \
+     // tempo
+-    "[[:blank:]]+"REGEX_FLOAT"(-"REGEX_FLOAT"|((,"REGEX_FLOAT")*))?" \
++    "[[:blank:]]+" REGEX_FLOAT"(-" REGEX_FLOAT"|((," REGEX_FLOAT")*))?" \
+     // pattern
+-    "([[:blank:]]+"REGEX_PATTERN")?" \
++    "([[:blank:]]+" REGEX_PATTERN")?" \
+     // volume
+-    "([[:blank:]]+"REGEX_FLOAT")?" \
++    "([[:blank:]]+" REGEX_FLOAT")?" \
+     // comment
+     "[[:blank:]]*(#.*)?$";
  
-     _frame += nframes;
- }
-+
-+int const MetronomeSimple::MAX_TAPS = 5;
-+float const MetronomeSimple::MAX_TAP_AGE = 3.0;
-+float const MetronomeSimple::TAP_DIFF = 0.2;
+@@ -87,13 +87,13 @@ static int const
+ // matches valid tempo parameters on the command line
+ static char const regex_cmdline[] =
+     // bars
+-    "^[[:blank:]]*("REGEX_INT"[[:blank:]]+)?" \
++    "^[[:blank:]]*(" REGEX_INT"[[:blank:]]+)?" \
+     // meter
+-    "("REGEX_INT"/"REGEX_INT"[[:blank:]]+)?" \
++    "(" REGEX_INT"/" REGEX_INT"[[:blank:]]+)?" \
+     // tempo
+-    REGEX_FLOAT"(-"REGEX_FLOAT"/"REGEX_FLOAT")?" \
++    REGEX_FLOAT"(-" REGEX_FLOAT"/" REGEX_FLOAT")?" \
+     // pattern
+-    "([[:blank:]]+"REGEX_PATTERN")?[[:blank:]]*$";
++    "([[:blank:]]+" REGEX_PATTERN")?[[:blank:]]*$";
+ 
+ static int const
+     RE_NMATCHES_CMD = 15,
