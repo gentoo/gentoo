@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-libs/json-glib-0.15[introspection?]
 	>=dev-libs/libxml2-2:2
 	>=net-libs/libsoup-2.55.90:2.4[introspection?,vala?]
-	crypt? ( app-crypt/gcr:= )
+	crypt? ( app-crypt/gcr:0= )
 	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.8:=[introspection?,vala?] )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 "
