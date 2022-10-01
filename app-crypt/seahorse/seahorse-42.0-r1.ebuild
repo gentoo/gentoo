@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.66:2
-	>=app-crypt/gcr-3.38:=
+	>=app-crypt/gcr-3.38:0=
 	>=app-crypt/gpgme-1.14.0:=
 	>=x11-libs/gtk+-3.24.0:3
 	>=app-crypt/gnupg-2.2
@@ -30,7 +30,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	$(vala_depend)
 	dev-libs/libxml2:2
-	app-crypt/gcr[vala]
+	app-crypt/gcr:0[vala]
 	app-crypt/libsecret[vala]
 	gui-libs/libhandy:1[vala]
 "
