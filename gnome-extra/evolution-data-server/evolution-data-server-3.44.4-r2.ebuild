@@ -23,7 +23,7 @@ KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-lin
 # <libgweather-4.2.0 because of libsoup:3 transition
 gdata_depend=">=dev-libs/libgdata-0.17.7:="
 RDEPEND="
-	>=app-crypt/gcr-3.4:=
+	>=app-crypt/gcr-3.4:0=
 	>=app-crypt/libsecret-0.5[crypt]
 	>=dev-db/sqlite-3.7.17
 	>=dev-libs/glib-2.70:2
@@ -39,7 +39,7 @@ RDEPEND="
 
 	berkdb? ( >=sys-libs/db-4:= )
 	gtk? (
-		>=app-crypt/gcr-3.4[gtk]
+		>=app-crypt/gcr-3.4:0=[gtk]
 		>=x11-libs/gtk+-3.16:3
 		>=media-libs/libcanberra-0.25[gtk3]
 	)
