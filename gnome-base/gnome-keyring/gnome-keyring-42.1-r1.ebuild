@@ -17,7 +17,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~
 
 # Replace gkd gpg-agent with pinentry[gnome-keyring] one, bug #547456
 RDEPEND="
-	>=app-crypt/gcr-3.27.90:=[gtk]
+	>=app-crypt/gcr-3.27.90:0=[gtk]
 	>=app-crypt/gnupg-2.0.28:=
 	>=app-eselect/eselect-pinentry-0.5
 	app-misc/ca-certificates
