@@ -54,6 +54,8 @@ src_install() {
 	python_optimize
 	readme.gentoo_create_doc
 
+	python_doscript "${S}"/polychromatic-{cli,controller,helper,tray-applet}
+
 	# Do not force polychromatic to autostart on session login.
 	# Move it into /usr/share/polychromatic and treat it as an example file
 	# that could be installed into user's ~/.config/autostart/ directory.
