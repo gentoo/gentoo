@@ -10,7 +10,7 @@ DISTUTILS_USE_SETUPTOOLS=no
 inherit distutils-r1 linux-info prefix
 
 if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="git://anongit.gentoo.org/proj/layman.git"
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/layman.git"
 	inherit git-r3
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
@@ -69,7 +69,6 @@ python_test() {
 }
 
 python_compile_all() {
-	default_python_compile_all
 	# Generate man page. only required for 9999
 	if [[ ${PV} == *9999 ]] ; then
 		# override MAKEOPTS to prevent build failure
