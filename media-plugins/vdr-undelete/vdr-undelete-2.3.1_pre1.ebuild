@@ -8,7 +8,7 @@ inherit vdr-plugin-2
 DESCRIPTION="VDR Plugin: Recover deleted recordings of VDR"
 HOMEPAGE="http://phivdr.dyndns.org/vdr/"
 SRC_URI="http://phivdr.dyndns.org/vdr/vdr-undelete/vdr-undelete-${PV/_pre/-pre}.tgz -> ${P}.tgz"
-S="${WORKDIR}"/${PN}-${PV/_pre/-pre}
+S="${WORKDIR}"/${PN/vdr-}-${PV/_pre/-pre}
 
 SLOT="0"
 LICENSE="GPL-2"
