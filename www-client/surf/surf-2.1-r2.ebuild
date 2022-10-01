@@ -22,7 +22,7 @@ SLOT="0"
 IUSE="tabbed"
 
 DEPEND="
-	app-crypt/gcr[gtk]
+	app-crypt/gcr:0=[gtk]
 	dev-libs/glib:2
 	net-libs/webkit-gtk:4
 	x11-libs/gtk+:3
