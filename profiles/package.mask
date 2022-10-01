@@ -472,8 +472,11 @@ net-libs/uhttpmock:1.0
 net-libs/webkit-gtk:4.1
 sci-geosciences/geocode-glib:2
 >=sci-geosciences/gnome-maps-43
+<<<<<<< HEAD
 >=www-client/epiphany-43
 >=x11-wm/mutter-43
+=======
+>>>>>>> 03c6f240d3c (Mask >=dev-util/gnome-builder-43)
 >=dev-util/gnome-builder-43
 
 # Thomas Deutschmann <whissi@gentoo.org> (2021-09-07)
