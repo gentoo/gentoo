@@ -25,7 +25,7 @@ RDEPEND="
 	>=gnome-base/gdm-40.0
 
 	>=x11-wm/mutter-${PV}
-	>=gnome-base/gnome-shell-${PV}[bluetooth?]
+	>=gnome-base/gnome-shell-${PV}
 	>=media-fonts/cantarell-0.301
 
 	>=x11-themes/gnome-backgrounds-40.0
