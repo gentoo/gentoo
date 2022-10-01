@@ -34,6 +34,37 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2022-10-01)
+# Depends on lots of unmaintained packages:
+# 	- app-text/gnome-doc-utils
+# 	- dev-libs/libunique:1
+# 	- dev-util/gob
+# 	- x11-libs/gtk+:2
+# Last commit to upstream repository in 2015. Most plugins saw their last
+# upstream commit 10+ years ago. Unmaintained in Gentoo since 2016. Many open
+# bugs: #582138, #686800, #689364, #721246, #799263, #808447, #808450, #808456,
+# #831024.
+# Removal on 2022-11-01
+media-sound/gmpc
+media-plugins/gmpc-alarm
+media-plugins/gmpc-albumview
+media-plugins/gmpc-avahi
+media-plugins/gmpc-awn
+media-plugins/gmpc-discogs
+media-plugins/gmpc-extraplaylist
+media-plugins/gmpc-jamendo
+media-plugins/gmpc-last-fm
+media-plugins/gmpc-libnotify
+media-plugins/gmpc-lyrics
+media-plugins/gmpc-lyricwiki
+media-plugins/gmpc-magnatune
+media-plugins/gmpc-mdcover
+media-plugins/gmpc-mmkeys
+media-plugins/gmpc-mserver
+media-plugins/gmpc-playlistsort
+media-plugins/gmpc-shout
+media-plugins/gmpc-tagedit
+
+# Matt Turner <mattst88@gentoo.org> (2022-10-01)
 # Metapackage that has outlived its purpose. Made some sense in the immediate
 # aftermath of X.Org modularization 15 years ago.
 # Removal on 2022-11-01. Bugs #755233, #872119.
