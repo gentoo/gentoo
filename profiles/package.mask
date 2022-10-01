@@ -424,6 +424,7 @@ sys-devel/automake:1.11
 # Migration to it is expected for GNOME 42, NOT to be unmasked with GNOME 41.
 >=dev-libs/gjs-1.74
 >=dev-libs/libgweather-4.2.0
+>=dev-python/nautilus-python-4.0
 >=dev-util/devhelp-43
 >=gnome-base/gnome-desktop-43
 >=gnome-base/gnome-settings-daemon-43
