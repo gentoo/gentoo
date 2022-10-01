@@ -79,7 +79,6 @@ RDEPEND="
 		>=dev-libs/wayland-1.18.0:=[${MULTILIB_USEDEP}]
 	)
 	${LIBDRM_DEPSTRING}[video_cards_freedreno?,video_cards_intel?,video_cards_nouveau?,video_cards_vc4?,video_cards_vivante?,video_cards_vmware?,${MULTILIB_USEDEP}]
-	vulkan-overlay? ( dev-util/glslang:0=[${MULTILIB_USEDEP}] )
 	X? (
 		>=x11-libs/libX11-1.6.2:=[${MULTILIB_USEDEP}]
 		>=x11-libs/libxshmfence-1.1:=[${MULTILIB_USEDEP}]
@@ -192,6 +191,8 @@ BDEPEND="
 	sys-devel/flex
 	virtual/pkgconfig
 	$(python_gen_any_dep ">=dev-python/mako-0.8.0[\${PYTHON_USEDEP}]")
+	vulkan? ( video_cards_radeonsi? ( dev-util/glslang ) )
+	vulkan-overlay? ( dev-util/glslang )
 	wayland? ( dev-util/wayland-scanner )
 "
 
