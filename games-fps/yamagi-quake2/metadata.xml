@@ -19,6 +19,7 @@
 	<use>
 		<flag name="client">Build client</flag>
 		<flag name="ctf">Build support for the 'Capture The Flag' addon</flag>
+		<flag name="gles">Build GLES3 renderer</flag>
 		<flag name="rogue">Build support for the 'Ground Zero' Mission Pack</flag>
 		<flag name="softrender">Build software renderer</flag>
 		<flag name="vulkan">Build experimental Vulkan renderer</flag>
