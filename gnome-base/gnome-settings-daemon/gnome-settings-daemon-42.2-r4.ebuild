@@ -51,7 +51,7 @@ DEPEND="
 	smartcard? ( >=dev-libs/nss-3.11.2 )
 	cups? ( >=net-print/cups-1.4[dbus] )
 	modemmanager? (
-		>=app-crypt/gcr-3.7.5:=
+		>=app-crypt/gcr-3.7.5:0=
 		>=net-misc/modemmanager-1.0:=
 	)
 	networkmanager? ( >=net-misc/networkmanager-1.0 )
