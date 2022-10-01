@@ -15,7 +15,7 @@ IUSE="gcr libnotify secret"
 
 RDEPEND="sys-fs/udisks:2
 	>=x11-libs/gtk+-3.16.0:3
-	gcr? ( app-crypt/gcr[gtk] )
+	gcr? ( app-crypt/gcr:0=[gtk] )
 	libnotify? ( >=x11-libs/libnotify-0.7 )
 	secret? ( app-crypt/libsecret )"
 DEPEND="${RDEPEND}
