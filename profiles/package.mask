@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2022-10-01)
+# Metapackage that has outlived its purpose. Made some sense in the immediate
+# aftermath of X.Org modularization 15 years ago.
+# Removal on 2022-11-01. Bugs #755233, #872119.
+x11-base/xorg-x11
+
 # Brian Evans <grknight@gentoo.org> (2022-09-30)
 # Mask RC versions for initial testing
 <dev-lang/php-8.2.0:8.2
