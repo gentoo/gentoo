@@ -48,8 +48,9 @@ DEPEND="app-text/libpaper:=
 	unicode? ( net-dns/libidn:= )
 	X? ( x11-libs/libXt x11-libs/libXext )"
 BDEPEND="virtual/pkgconfig"
+# bug #844115 for newer poppler-data dep
 RDEPEND="${DEPEND}
-	app-text/poppler-data
+	>=app-text/poppler-data-0.4.11-r1
 	>=media-fonts/urw-fonts-2.4.9
 	l10n_ja? ( media-fonts/kochi-substitute )
 	l10n_ko? ( media-fonts/baekmuk-fonts )
