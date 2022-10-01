@@ -75,7 +75,8 @@ my_src_install() {
 
 	# If USE=doc, there'll be newly generated docs which we install instead.
 	if ! use doc && [[ ${LIBABIGAIL_DOCS_PREBUILT} == 1 ]] ; then
-		doman "${WORKDIR}"/${PN}-${LIBABIGAIL_DOCS_VERSION}-docs/docs/*.[0-8]
+		doinfo "${WORKDIR}"/${PN}-${LIBABIGAIL_DOCS_VERSION}-docs/texinfo/*.info
+		doman "${WORKDIR}"/${PN}-${LIBABIGAIL_DOCS_VERSION}-docs/man/*.[0-8]
 	elif use doc; then
 		doman doc/manuals/man/*
 		doinfo doc/manuals/texinfo/abigail.info
