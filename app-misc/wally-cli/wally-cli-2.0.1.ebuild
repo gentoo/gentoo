@@ -17,6 +17,9 @@ KEYWORDS="~amd64"
 
 DOCS=( README.md license.md )
 
+DEPEND="dev-libs/libusb:1"
+RDEPEND="${DEPEND}"
+
 src_compile() {
 	go build
 }
