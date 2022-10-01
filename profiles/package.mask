@@ -404,6 +404,7 @@ net-libs/uhttpmock:1.0
 net-libs/webkit-gtk:4.1
 sci-geosciences/geocode-glib:2
 >=sci-geosciences/gnome-maps-43
+>=dev-util/gnome-builder-43
 
 # Thomas Deutschmann <whissi@gentoo.org> (2021-09-07)
 # Masked while being tested and reverse deps aren't fully compatible
