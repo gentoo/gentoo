@@ -248,10 +248,14 @@ src_install() {
 
 	# 651926
 	domenu "${FILESDIR}"/*.desktop
+
+	insinto /usr/share/mime/packages
+	doins desktop/Citrix-mime_types.xml
 }
 
 pkg_postinst() {
 	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 
 	local inidest="${ROOT}${ICAROOT}/config"
 	if [[ ! -e "${inidest}"/module.ini ]] ; then
@@ -262,4 +266,5 @@ pkg_postinst() {
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
