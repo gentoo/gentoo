@@ -24,7 +24,7 @@ DEPEND="
 	gtk? (
 		>=app-crypt/libsecret-0.18
 
-		>=app-crypt/gcr-3.4:=
+		>=app-crypt/gcr-3.4:0=
 		>=x11-libs/gtk+-3.12:3
 
 		>=gui-libs/gtk-4.0:4
