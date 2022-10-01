@@ -80,11 +80,14 @@ src_install() {
 	meson_src_install
 
 	# These files are installed by gcr:4
-	rm \
-		"${ED}"/usr/libexec/gcr-ssh-agent \
-		"${ED}"/usr/lib/systemd/user/gcr-ssh-agent.service \
-		"${ED}"/usr/lib/systemd/user/gcr-ssh-agent.socket \
-		|| die
+	local conflicts=(
+		"${ED}"/usr/libexec/gcr-ssh-agent
+	)
+	use systemd && conflicts+=(
+		"${ED}"/usr/lib/systemd/user/gcr-ssh-agent.{service,socket}
+	)
+	einfo "${conflicts[@]}"
+	rm "${conflicts[@]}" || die
 
 	if use gtk-doc; then
 		mkdir -p "${ED}"/usr/share/gtk-doc/html/ || die
