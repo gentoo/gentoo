@@ -3,8 +3,9 @@
 
 EAPI=8
 
+# RelWithDebInfo sets -Og -g
+CMAKE_BUILD_TYPE=Release
 LUA_COMPAT=( lua5-{1..2} luajit )
-
 inherit cmake lua-single optfeature xdg
 
 DESCRIPTION="Vim-fork focused on extensibility and agility"
@@ -88,6 +89,8 @@ src_prepare() {
 	sed -e "/^# define SYS_VIMRC_FILE/s|\$VIM|${EPREFIX}/etc/vim|" \
 		-i src/nvim/globals.h || die
 
+	# https://forums.gentoo.org/viewtopic-p-8750050.html
+	xdg_environment_reset
 	cmake_src_prepare
 }
 
