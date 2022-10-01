@@ -32,8 +32,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-9999-llvm.patch"
-	"${FILESDIR}"/ispc-1.18.0-curses-cmake.patch
+	"${FILESDIR}"/${PN}-1.18.0-llvm.patch
+	"${FILESDIR}"/${PN}-1.18.0-curses-cmake.patch
 )
 
 pkg_setup() {
