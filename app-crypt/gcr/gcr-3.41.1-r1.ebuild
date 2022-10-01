@@ -79,13 +79,6 @@ src_test() {
 src_install() {
 	meson_src_install
 
-	# These files are installed by gcr:4
-	rm \
-		"${ED}"/usr/libexec/gcr-ssh-agent \
-		"${ED}"/usr/lib/systemd/user/gcr-ssh-agent.service \
-		"${ED}"/usr/lib/systemd/user/gcr-ssh-agent.socket \
-		|| die
-
 	if use gtk-doc; then
 		mkdir -p "${ED}"/usr/share/gtk-doc/html/ || die
 		mv "${ED}"/usr/share/doc/{gck-1,gcr-3,gcr-ui-3} "${ED}"/usr/share/gtk-doc/html/ || die
