@@ -24,7 +24,7 @@ KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 # >=gspell-1.8 to ensure it uses enchant:2 like webkit-gtk
 # <libgweather-4.2.0 because of libsoup:3 transition
 DEPEND="
-	>=app-crypt/gcr-3.4:=[gtk]
+	>=app-crypt/gcr-3.4:0=[gtk]
 	>=app-text/enchant-2.2.0:2
 	>=dev-db/sqlite-3.7.17
 	>=dev-libs/glib-2.56:2[dbus]
