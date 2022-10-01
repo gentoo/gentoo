@@ -11,7 +11,7 @@ SRC_URI="https://savannah.nongnu.org/download/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 ~arm64 ~ia64 ppc ~ppc64 ~riscv ~sparc x86"
 
 DEPEND="dev-lang/perl"
 RDEPEND="${DEPEND}
