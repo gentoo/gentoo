@@ -47,7 +47,7 @@ DEPEND="
 	x11-libs/libX11
 	>=x11-libs/libXi-1.2
 	media-libs/libepoxy
-	app-crypt/gcr:=
+	app-crypt/gcr:0=
 	>=dev-libs/libpwquality-1.2.2
 	>=gui-libs/gtk-4.4:4[X,wayland=]
 	>=sys-auth/polkit-0.114
