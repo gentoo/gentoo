@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: desktop.eclass
@@ -156,19 +156,18 @@ make_desktop_entry() {
 				;;
 		esac
 	fi
-	local slot=${SLOT%/*}
-	if [[ ${slot} == "0" ]] ; then
-		local desktop_name="${PN}"
-	else
-		local desktop_name="${PN}-${slot}"
-	fi
+
 	local desktop_exec="${exec%%[[:space:]]*}"
 	desktop_exec="${desktop_exec##*/}"
+	local desktop_suffix="-${PN}"
+	[[ ${SLOT%/*} != 0 ]] && desktop_suffix+="-${SLOT%/*}"
+	# Replace foo-foo.desktop by foo.desktop
+	[[ ${desktop_suffix#-} == "${desktop_exec}" ]] && desktop_suffix=""
 
 	# Prevent collisions if a file with the same name already exists #771708
-	local desktop="${desktop_exec}-${desktop_name}" count=0
+	local desktop="${desktop_exec}${desktop_suffix}" count=0
 	while [[ -e ${ED}/usr/share/applications/${desktop}.desktop ]]; do
-		desktop="${desktop_exec}-$((++count))-${desktop_name}"
+		desktop="${desktop_exec}-$((++count))${desktop_suffix}"
 	done
 	desktop="${T}/${desktop}.desktop"
 
