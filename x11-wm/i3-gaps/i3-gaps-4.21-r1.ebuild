@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="dev-libs/glib:2
 	dev-libs/libev
-	dev-libs/libpcre
+	dev-libs/libpcre2
 	dev-libs/yajl:=
 	x11-libs/cairo[X,xcb(+)]
 	x11-libs/libxcb:=[xkb]
