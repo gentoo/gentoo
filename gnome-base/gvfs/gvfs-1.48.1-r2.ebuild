@@ -30,7 +30,7 @@ RDEPEND="
 	>=gnome-base/gsettings-desktop-schemas-3.33.0
 	afp? ( >=dev-libs/libgcrypt-1.2.2:0= )
 	sys-apps/dbus
-	app-crypt/gcr:=
+	app-crypt/gcr:0=
 	policykit? (
 		>=sys-auth/polkit-0.114
 		sys-libs/libcap
