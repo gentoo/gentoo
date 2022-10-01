@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30"
+USE_RUBY="ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_EXTRADOC="changelog.txt README.md"
 RUBY_FAKEGEM_GEMSPEC="excon.gemspec"
