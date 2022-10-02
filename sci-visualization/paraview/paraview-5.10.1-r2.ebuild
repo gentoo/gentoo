@@ -171,6 +171,7 @@ src_configure() {
 		-DModule_pqPython="$(usex qt5 "$(usex python)" "off")"
 		-DVTK_USE_NVCONTROL="$(usex nvcontrol)"
 		-DVTK_GROUP_ENABLE_Qt="$(usex qt5 YES NO)"
+		-DCMAKE_INSTALL_QMLDIR="${EPREFIX}/usr/$(get_libdir)/qt5/qml"
 
 		# sqlite
 		-DVTK_MODULE_ENABLE_VTK_sqlite="$(usex sqlite YES NO)"
