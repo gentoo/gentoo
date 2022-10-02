@@ -7,7 +7,7 @@ inherit meson-multilib
 
 DESCRIPTION="Library for RDF syntax which supports reading and writing Turtle and NTriples"
 HOMEPAGE="https://drobilla.net/software/serd.html"
-SRC_URI="http://download.drobilla.net/${P}.tar.xz"
+SRC_URI="https://download.drobilla.net/${P}.tar.xz"
 
 LICENSE="ISC"
 SLOT="0"
