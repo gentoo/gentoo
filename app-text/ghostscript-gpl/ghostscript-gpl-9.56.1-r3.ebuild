@@ -50,7 +50,7 @@ DEPEND="app-text/libpaper:=
 BDEPEND="virtual/pkgconfig"
 # bug #844115 for newer poppler-data dep
 RDEPEND="${DEPEND}
-	>=app-text/poppler-data-0.4.11-r1
+	>=app-text/poppler-data-0.4.11-r2
 	>=media-fonts/urw-fonts-2.4.9
 	l10n_ja? ( media-fonts/kochi-substitute )
 	l10n_ko? ( media-fonts/baekmuk-fonts )
