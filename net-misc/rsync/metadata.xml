@@ -6,6 +6,7 @@
 		<name>Gentoo Base System</name>
 	</maintainer>
 	<upstream>
+		<changelog>https://rsync.samba.org/ftp/rsync/NEWS</changelog>
 		<remote-id type="cpe">cpe:/a:samba:rsync</remote-id>
 		<remote-id type="github">WayneD/rsync</remote-id>
 	</upstream>

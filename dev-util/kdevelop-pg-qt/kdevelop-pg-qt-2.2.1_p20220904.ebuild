@@ -13,7 +13,7 @@ HOMEPAGE="https://kdevelop.org/"
 
 LICENSE="LGPL-2+ LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 
 BDEPEND="
 	sys-devel/bison

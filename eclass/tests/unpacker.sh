@@ -182,6 +182,25 @@ test_gpkg() {
 		"create_gpkg '${suffix}' '${tool_cmd}' \${archive} \${TESTFILE}"
 }
 
+create_makeself() {
+	local comp_opt=${1}
+	local archive=${2}
+	local infile=${3}
+
+	mkdir test || die
+	cp "${infile}" test/ || die
+	makeself --quiet "${comp_opt}" test "${archive}" test : || die
+	rm -rf test || die
+}
+
+test_makeself() {
+	local comp_opt=${1}
+	local tool=${2}
+
+	test_unpack "makeself-${tool}.sh" test.in "makeself ${tool}" \
+		"create_makeself '${comp_opt}' \${archive} \${TESTFILE}"
+}
+
 test_reject_junk() {
 	local suffix=${1}
 	local archive=test${1}
@@ -202,6 +221,67 @@ test_reject_junk() {
 
 	cd .. || die
 	rm -f "${archive}" || die
+}
+
+test_online() {
+	local url=${1}
+	local b2sum=${2}
+	local unpacked=${3}
+	local unp_b2sum=${4}
+
+	local filename=${url##*/}
+	local archive=${DISTDIR}/${filename}
+
+	if [[ ! -f ${archive} ]]; then
+		if [[ ${UNPACKER_TESTS_ONLINE} != 1 ]]; then
+			ewarn "Skipping ${filename} test, distfile not found"
+			return
+		fi
+
+		if ! wget -O "${archive}" "${url}"; then
+			die "Fetching ${archive} failed"
+		fi
+	fi
+
+	local real_sum=$(b2sum "${archive}" | cut -d' ' -f1)
+	if [[ ${real_sum} != ${b2sum} ]]; then
+		eerror "Incorrect b2sum on ${filename}"
+		eerror "  expected: ${b2sum}"
+		eerror "     found: ${real_sum}"
+		die "Incorrect b2sum on ${filename}"
+	fi
+
+	rm -rf testdir || die
+	mkdir -p testdir || die
+
+	tbegin "unpacking ${filename}"
+	cd testdir || die
+
+	ln -s "${archive}" "${filename}" || die
+
+	local out
+	out=$(
+		_unpacker "${archive}" 2>&1
+	)
+	ret=$?
+	if [[ ${ret} -eq 0 ]]; then
+		if [[ ! -f ${unpacked} ]]; then
+			eerror "${unpacked} not found after unpacking"
+			ret=1
+		else
+			real_sum=$(b2sum "${unpacked}" | cut -d' ' -f1)
+			if [[ ${real_sum} != ${unp_b2sum} ]]; then
+				eerror "Incorrect b2sum on unpacked file ${unpacked}"
+				eerror "  expected: ${unp_b2sum}"
+				eerror "     found: ${real_sum}"
+				ret=1
+			fi
+		fi
+	fi
+	[[ ${ret} -ne 0 ]] && echo "${out}" >&2
+	tend ${ret}
+
+	cd .. || die
 }
 
 test_compressed_file .bz2 bzip2
@@ -265,6 +345,16 @@ test_gpkg .lzo lzop
 test_gpkg .xz xz
 test_gpkg .zst zstd
 
+test_makeself --gzip gzip
+test_makeself --zstd zstd
+test_makeself --bzip2 bzip2
+test_makeself --xz xz
+test_makeself --lzo lzop
+test_makeself --lz4 lz4
+test_makeself --compress compress
+test_makeself --base64 base64
+test_makeself --nocomp tar
+
 test_unpack test.zip test.in zip 'zip -q ${archive} ${TESTFILE}'
 # test handling non-adjusted zip with junk prepended
 test_unpack test.zip test.in zip \
@@ -292,5 +382,49 @@ test_reject_junk .7z
 test_reject_junk .rar
 test_reject_junk .lha
 test_reject_junk .lzh
+
+DISTDIR=$(portageq envvar DISTDIR)
+if [[ -n ${DISTDIR} ]]; then
+	einfo "Using DISTDIR: ${DISTDIR}"
+	if [[ ${UNPACKER_TESTS_ONLINE} != 1 ]]; then
+		ewarn "Online tests will be skipped if distfiles are not found already."
+		ewarn "Set UNPACKER_TESTS_ONLINE=1 to enable fetching."
+	fi
+
+	# NB: a good idea to list the last file in the archive (to avoid
+	# passing on partial unpack)
+
+	# TODO: find test cases for makeself 2.0/2.0.1, 2.1.1, 2.1.2, 2.1.3
+
+	# makeself 1.5.4, gzip
+	test_online \
+		http://updates.lokigames.com/sof/sof-1.06a-cdrom-x86.run \
+		f76f605af08a19b77548455c0101e03aca7cae69462914e47911da2fadd6d4f3b766e1069556ead0d06c757b179ae2e8105e76ea37852f17796b47b4712aec87 \
+		update.sh \
+		ba7a3f8fa79bbed8ca3a34ead957aeaa308c6e6d6aedd603098aa9867ca745983ff98c83d65572e507f2c3c4e0778ae4984f8b69d2b8279741b06064253c5788
+
+	# makeself 1.6.0-nv*, xz
+	test_online \
+		https://download.nvidia.com/XFree86/Linux-x86/390.154/NVIDIA-Linux-x86-390.154.run \
+		083d9dd234a37ec39a703ef7e0eb6ec165c24d2fcb5e92ca987c33df643d0604319eb65ef152c861acacd5a41858ab6b82c45c2c8ff270efc62b07727666daae \
+		libEGL_nvidia.so.390.154 \
+		6665804947e71fb583dc7d5cc3a6f4514f612503000b0a9dbd8da5c362d3c2dcb2895d8cbbf5700a6f0e24cca9b0dd9c2cf5763d6fbb037f55257ac5af7d6084
+
+	# makeself 2.3.0, gzip
+	test_online \
+		http://www.sdrplay.com/software/SDRplay_RSP_API-Linux-3.07.1.run \
+		059d9a5fbd14c0e7ecb969cd3e5afe8e3f42896175b443bdaa9f9108302a1c9ef5ad9769e62f824465611d74f67191fff71cc6dbe297e399e5b2f6824c650112 \
+		i686/sdrplay_apiService \
+		806393c310d7e60dca7b8afee225bcc50c0d5771bdd04c3fa575eda2e687dc5c888279a7404316438b633fb91565a49899cf634194d43981151a12c6c284a162
+
+	# makeself 2.4.0, gzip
+	test_online \
+		http://www.sdrplay.com/software/SDRplay_RSP_API-Linux-2.13.1.run \
+		7eff1aa35190db1ead5b1d96994d24ae2301e3a765d6701756c6304a1719aa32125fedacf6a6859d89b89db5dd6956ec0e8c7e814dbd6242db5614a53e89efb3 \
+		sdrplay_license.txt \
+		041edb26ffb75b6b59e7a3514c6f81b05b06e0efe61cc56117d24f59733a6a6b1bca73a57dd11e0774ec443740ca55e6938cf6594a032ab4f14b23f2e732a3f2
+else
+	ewarn "Unable to obtain DISTDIR from portageq, skipping online tests"
+fi
 
 texit

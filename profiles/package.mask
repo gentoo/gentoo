@@ -33,6 +33,43 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2022-10-01)
+# Depends on lots of unmaintained packages:
+# 	- app-text/gnome-doc-utils
+# 	- dev-libs/libunique:1
+# 	- dev-util/gob
+# 	- x11-libs/gtk+:2
+# Last commit to upstream repository in 2015. Most plugins saw their last
+# upstream commit 10+ years ago. Unmaintained in Gentoo since 2016. Many open
+# bugs: #582138, #686800, #689364, #721246, #799263, #808447, #808450, #808456,
+# #831024.
+# Removal on 2022-11-01
+media-sound/gmpc
+media-plugins/gmpc-alarm
+media-plugins/gmpc-albumview
+media-plugins/gmpc-avahi
+media-plugins/gmpc-awn
+media-plugins/gmpc-discogs
+media-plugins/gmpc-extraplaylist
+media-plugins/gmpc-jamendo
+media-plugins/gmpc-last-fm
+media-plugins/gmpc-libnotify
+media-plugins/gmpc-lyrics
+media-plugins/gmpc-lyricwiki
+media-plugins/gmpc-magnatune
+media-plugins/gmpc-mdcover
+media-plugins/gmpc-mmkeys
+media-plugins/gmpc-mserver
+media-plugins/gmpc-playlistsort
+media-plugins/gmpc-shout
+media-plugins/gmpc-tagedit
+
+# Matt Turner <mattst88@gentoo.org> (2022-10-01)
+# Metapackage that has outlived its purpose. Made some sense in the immediate
+# aftermath of X.Org modularization 15 years ago.
+# Removal on 2022-11-01. Bugs #755233, #872119.
+x11-base/xorg-x11
+
 # Brian Evans <grknight@gentoo.org> (2022-09-30)
 # Mask RC versions for initial testing
 <dev-lang/php-8.2.0:8.2
@@ -65,8 +102,7 @@ games-sports/torcs
 # Ionen Wolkens <ionen@gentoo.org> (2022-09-25)
 # This version been causing major issues for some RTX 30xx users and
 # no real reason not to stick to 515.65.01 for now (but feel free to
-# unmask if it's been fine and need it, notably has fixes to build
-# with upcoming 6.0 linux kernels).
+# unmask if it's been fine).
 # https://bugs.archlinux.org/task/75995
 # https://forums.developer.nvidia.com/t/bug-report-black-x11-screen-and-partial-lockup-when-upgraded-to-515-76-and-dual-rtx3060
 ~x11-drivers/nvidia-drivers-515.76
@@ -228,10 +264,6 @@ dev-qt/qtwebchannel:6
 dev-qt/qtwebengine:6
 dev-qt/qtwebsockets:6
 
-# Sam James <sam@gentoo.org> (2022-08-02)
-# Multiple rendering/font issues reported: bug #844115, bug #851141.
->=app-text/ghostscript-gpl-9.56.1
-
 # Fabian Groffen <grobian@gentoo.org> (2022-07-02)
 # Segfaults handling SPF validations (warn on permerror), like the
 # previous release, better not to trust your important mail to
@@ -359,12 +391,6 @@ sys-devel/automake:1.15
 # This is likely to cause issues in tests; Unmask if using for other purposes
 >=dev-php/PHP_Timer-5.0
 
-# Sam James <sam@gentoo.org> (2021-12-01)
-# OSL 12 is a development release (for now).
-# Doesn't work with LLVM 13 yet; mask to help
-# Blender compatibility (no mixed LLVM versions).
-=media-libs/osl-1.12*
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-23)
 # Does not support updated dev-java/pdfbox-2.0.24, Bug #803488
 # Blocks (CVE-2018-11797, CVE-2021-{27807,27906,31811,31812})
@@ -389,14 +415,21 @@ sys-devel/automake:1.11
 # New major parallel-installable release which needs special care to not
 # end up loaded into the same process together with the earlier libsoup ABI.
 # Migration to it is expected for GNOME 42, NOT to be unmasked with GNOME 41.
+>=app-arch/file-roller-43
+>=dev-libs/gjs-1.74
 >=dev-libs/libgweather-4.2.0
+>=dev-python/nautilus-python-4.0
 >=dev-util/devhelp-43
 >=gnome-base/gnome-desktop-43
+>=gnome-base/gnome-settings-daemon-43
+>=gnome-base/gnome-shell-43
 >=gnome-base/nautilus-43
 >=gnome-extra/evolution-data-server-3.46
 >=gnome-extra/evolution-ews-3.46
 >=gnome-extra/gnome-calculator-43
+>=gnome-extra/gnome-shell-extensions-43
 >=mail-client/evolution-3.46
+>=mail-client/geary-43
 media-libs/libshumate
 net-libs/libsoup:3.0
 net-libs/rest:1.0
@@ -404,6 +437,7 @@ net-libs/uhttpmock:1.0
 net-libs/webkit-gtk:4.1
 sci-geosciences/geocode-glib:2
 >=sci-geosciences/gnome-maps-43
+>=x11-wm/mutter-43
 >=dev-util/gnome-builder-43
 
 # Thomas Deutschmann <whissi@gentoo.org> (2021-09-07)

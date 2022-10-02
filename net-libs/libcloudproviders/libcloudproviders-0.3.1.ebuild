@@ -18,6 +18,7 @@ KEYWORDS="~amd64"
 DEPEND=">=dev-libs/glib-2.51.2:2"
 RDEPEND="${DEPEND}"
 BDEPEND="
+	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	gtk-doc? ( dev-util/gtk-doc )
 	vala? ( $(vala_depend) )

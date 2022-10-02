@@ -43,7 +43,7 @@ RDEPEND="
 	eds? ( >=gnome-extra/evolution-data-server-3.6.0:= )
 	goffice? ( >=x11-libs/goffice-0.10.2:0.10 )
 	introspection? ( >=dev-libs/gobject-introspection-1.0.0:= )
-	map? ( >=media-libs/libchamplain-0.12:0.12 )
+	map? ( >=media-libs/libchamplain-0.12:0.12[gtk] )
 	plugins? (
 		collab? (
 			>=dev-libs/libxml2-2.4:2

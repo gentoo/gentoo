@@ -20,7 +20,7 @@ else
 		https://github.com/pwndbg/pwndbg/archive/${MY_PV}.tar.gz -> ${P}.tar.gz
 		https://github.com/martinradev/gdb-pt-dump/archive/${GDB_PT_DUMP_COMMIT}.tar.gz -> gdb-pt-dump-${GDB_PT_DUMP_COMMIT}.tar.gz
 	"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 

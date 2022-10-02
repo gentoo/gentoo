@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools vala xdg
 
 DESCRIPTION="A GTK+2 client for the Music Player Daemon"
 HOMEPAGE="http://gmpc.wikia.com/wiki/Gnome_Music_Player_Client"
-SRC_URI="http://download.sarine.nl/Programs/gmpc/11.8/${P}.tar.gz"
+SRC_URI="http://download.sarine.nl/Programs/gmpc/$(ver_cut 1-2)/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

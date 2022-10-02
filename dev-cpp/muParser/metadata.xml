@@ -14,4 +14,7 @@
 		<remote-id type="sourceforge">muparser</remote-id>
 		<remote-id type="github">beltoforion/muparser</remote-id>
 	</upstream>
+	<use>
+		<flag name="wchar">Add support for wide character (wchar_t)</flag>
+	</use>
 </pkgmetadata>

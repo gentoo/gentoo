@@ -15,16 +15,19 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
 
-IUSE="doc"
-
-BDEPEND="
-	doc? (
-		$(python_gen_any_dep '
-			dev-python/mdx_gh_links[${PYTHON_USEDEP}]
-			dev-python/mkdocs-redirects[${PYTHON_USEDEP}]
-		')
-	)
-"
+# https://bugs.gentoo.org/873349
+# Building documentation requires packaging: callouts and mkdocs-autorefs
+#
+# IUSE="doc"
+#
+# BDEPEND="
+# 	doc? (
+# 		$(python_gen_any_dep '
+# 			dev-python/mdx_gh_links[${PYTHON_USEDEP}]
+# 			dev-python/mkdocs-redirects[${PYTHON_USEDEP}]
+# 		')
+# 	)
+# "
 RDEPEND="
 	>=dev-python/Babel-2.9.0[${PYTHON_USEDEP}]
 	>=dev-python/click-7.0[${PYTHON_USEDEP}]
@@ -65,14 +68,14 @@ python_prepare_all() {
 
 python_compile_all() {
 	default
-	if use doc; then
-		# cannot just do mkdocs build, because that fails if
-		# the package isn't already installed
-		python -m mkdocs build || die "Failed to make docs"
-		# Colliding files found by ecompress:
-		rm site/sitemap.xml.gz || die
-		HTML_DOCS=( "site/." )
-	fi
+# 	if use doc; then
+# 		# cannot just do mkdocs build, because that fails if
+# 		# the package isn't already installed
+# 		python -m mkdocs build || die "Failed to make docs"
+# 		# Colliding files found by ecompress:
+# 		rm site/sitemap.xml.gz || die
+# 		HTML_DOCS=( "site/." )
+# 	fi
 }
 
 python_test() {

@@ -32,7 +32,7 @@ media-libs/freetype svg
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-16)
 # sys-auth/seatd is not keyworded
-dev-libs/weston seatd
+<=dev-libs/weston-10.0.0 seatd
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2022-03-14)
 # Now requires dev-java/rhino which is not keyworded

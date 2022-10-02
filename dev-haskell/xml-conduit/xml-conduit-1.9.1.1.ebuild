@@ -35,3 +35,5 @@ DEPEND="${RDEPEND}
 		>=dev-haskell/hspec-1.3
 		dev-haskell/hunit )
 "
+
+GHC_BOOTSTRAP_PACKAGES=( cabal-doctest )

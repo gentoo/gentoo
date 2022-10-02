@@ -6,6 +6,13 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2022-10-02)
+# USE=compat / possibly allowing sys-libs/zlib needs to be figured out,
+# but packages want to use the actual zlib-ng library, so we need to
+# mask it and can't hold the whole thing up on the compat effort.
+sys-libs/zlib-ng compat
+sys-libs/minizip-ng compat
+
 # Matt Turner <mattst88@gentoo.org> (2022-09-26)
 # Requires nautilus-43.0 which is not in tree yet.
 >=x11-terms/gnome-terminal-3.46 nautilus

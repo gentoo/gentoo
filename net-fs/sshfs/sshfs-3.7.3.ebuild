@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/libfuse/sshfs"
 SRC_URI="https://github.com/libfuse/${PN}/releases/download/${P}/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 
 DEPEND=">=sys-fs/fuse-3.1.0:3

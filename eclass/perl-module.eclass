@@ -320,7 +320,7 @@ perl-module_src_compile() {
 # accepts the same values as DIST_TEST. If set, it overrides DIST_TEST
 # completely. DO NOT USE THIS IN EBUILDS!
 
-# @FUNCTION: perl-module_src-test
+# @FUNCTION: perl-module_src_test
 # @DESCRIPTION:
 # This code attempts to work out your threadingness and runs tests
 # according to the settings of DIST_TEST using Test::Harness.

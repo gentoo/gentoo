@@ -11,3 +11,18 @@ https://bugs.gentoo.org/757744
      call health#report_ok(buildtype)
    else
      call health#report_info(buildtype)
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -137,12 +137,6 @@ else()
+   message(STATUS "MIN_LOG_LEVEL=${MIN_LOG_LEVEL}")
+ endif()
+ 
+-# Default to -O2 on release builds.
+-if(CMAKE_C_FLAGS_RELEASE MATCHES "-O3")
+-  message(STATUS "Replacing -O3 in CMAKE_C_FLAGS_RELEASE with -O2")
+-  string(REPLACE "-O3" "-O2" CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}")
+-endif()
+-
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU")
+   check_c_compiler_flag(-Og HAS_OG_FLAG)
+ else()

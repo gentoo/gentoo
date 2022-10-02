@@ -1,0 +1,18 @@
+From: Sam James <sam@gentoo.org>
+Date: Fri, 30 Sep 2022 21:51:17 +0100
+Subject: [PATCH] Fix -Wimplicit-int
+
+Fixes build with Clang 16.
+
+Bug: https://bugs.gentoo.org/871081
+--- a/main.c
++++ b/main.c
+@@ -410,7 +410,7 @@ static void dofile(int eflage)
+ 
+ /*---( main )---------------------------------------------------------------*/
+ 
+-main(int argc, char **argv)
++int main(int argc, char **argv)
+ {
+    struct stat statbuf;
+    unsigned int statype;

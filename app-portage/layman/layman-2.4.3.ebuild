@@ -3,14 +3,14 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{7,8,9,10} pypy3 )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 PYTHON_REQ_USE="xml(+),sqlite?"
 DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1 linux-info prefix
 
 if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="git://anongit.gentoo.org/proj/layman.git"
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/layman.git"
 	inherit git-r3
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
@@ -66,6 +66,14 @@ python_test() {
 	suite=layman/tests/external.py
 	PYTHONPATH="." "${PYTHON}" ${suite} || die "test suite '${suite}' failed"
 	unset suite
+}
+
+python_compile_all() {
+	# Generate man page. only required for 9999
+	if [[ ${PV} == *9999 ]] ; then
+		# override MAKEOPTS to prevent build failure
+		emake -j1 -C doc
+	fi
 }
 
 python_install_all() {

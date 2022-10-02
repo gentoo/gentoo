@@ -11,7 +11,7 @@ inherit go-module distutils-r1
 DESCRIPTION="Command line interface to JMESPath"
 HOMEPAGE="https://github.com/pipebus/jpipe https://github.com/jmespath/jp/pull/30 http://jmespath.org"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
-	!python? ( https://dev.gentoo.org/~zmedico/dist/jpipe-0.2.0-deps.tar.xz )"
+	!python? ( https://dev.gentoo.org/~zmedico/dist/${P}-deps.tar.xz )"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"

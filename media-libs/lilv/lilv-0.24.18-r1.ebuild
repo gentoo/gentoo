@@ -9,8 +9,8 @@ PYTHON_REQ_USE='threads(+)'
 inherit meson-multilib python-single-r1
 
 DESCRIPTION="Library to make the use of LV2 plugins as simple as possible for applications"
-HOMEPAGE="http://drobilla.net/software/lilv/"
-SRC_URI="http://download.drobilla.net/${P}.tar.xz"
+HOMEPAGE="https://drobilla.net/software/lilv.html"
+SRC_URI="https://download.drobilla.net/${P}.tar.xz"
 
 LICENSE="ISC"
 SLOT="0"

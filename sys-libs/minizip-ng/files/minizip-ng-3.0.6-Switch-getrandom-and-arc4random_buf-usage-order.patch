@@ -1,0 +1,68 @@
+https://github.com/zlib-ng/minizip-ng/pull/651
+
+From 1be6ea22e127a99786aefd2896e08bab43ad1333 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 2 Oct 2022 01:39:17 +0100
+Subject: [PATCH] Switch getrandom() and arc4random_buf() usage order
+
+We need to match the order of inclusions at the top of the file
+otherwise we might end up trying to use arc4random_buf() when
+available (because HAVE_ARC4RANODM_BUF is set) even though
+we hit HAVE_GETRANDOM first above and only included
+<sys/random.h> because of it.
+
+Besides, if getrandom() is available, we should really prefer
+it anyway.
+
+Fixes an implicit function declaration:
+```
+minizip-ng-3.0.6/mz_os_posix.c:124:5: error: implicit declaration of function 'arc4random_buf' [-Werror=implicit-function-declaration]
+```
+--- a/mz_os_posix.c
++++ b/mz_os_posix.c
+@@ -117,7 +117,22 @@ void mz_os_utf8_string_delete(uint8_t **string) {
+ 
+ /***************************************************************************/
+ 
+-#if defined(HAVE_ARC4RANDOM_BUF)
++#if defined(HAVE_GETRANDOM)
++int32_t mz_os_rand(uint8_t *buf, int32_t size) {
++    int32_t left = size;
++    int32_t written = 0;
++
++    while (left > 0) {
++        written = getrandom(buf, left, 0);
++        if (written < 0)
++            return MZ_INTERNAL_ERROR;
++
++        buf += written;
++        left -= written;
++    }
++    return size - left;
++}
++#elif defined(HAVE_ARC4RANDOM_BUF)
+ int32_t mz_os_rand(uint8_t *buf, int32_t size) {
+     if (size < 0)
+         return 0;
+@@ -139,21 +154,6 @@ int32_t mz_os_rand(uint8_t *buf, int32_t size) {
+     }
+     return size - left;
+ }
+-#elif defined(HAVE_GETRANDOM)
+-int32_t mz_os_rand(uint8_t *buf, int32_t size) {
+-    int32_t left = size;
+-    int32_t written = 0;
+-
+-    while (left > 0) {
+-        written = getrandom(buf, left, 0);
+-        if (written < 0)
+-            return MZ_INTERNAL_ERROR;
+-
+-        buf += written;
+-        left -= written;
+-    }
+-    return size - left;
+-}
+ #else
+ int32_t mz_os_rand(uint8_t *buf, int32_t size) {
+     static unsigned calls = 0;

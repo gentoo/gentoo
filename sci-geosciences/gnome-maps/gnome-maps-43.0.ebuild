@@ -12,28 +12,18 @@ LICENSE="GPL-2+ LGPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
-# Pure introspection dependencies found by grepping imports.gi in ${S}
 RDEPEND="
 	>=dev-libs/glib-2.66.0:2
-	x11-libs/pango[introspection]
 	>=dev-libs/gjs-1.69.2
 	>=dev-libs/gobject-introspection-0.10.1:=
 	gui-libs/gtk:4[introspection]
 	>=app-misc/geoclue-0.12.99:2.0[introspection]
 	>=gui-libs/libadwaita-1.0:1
-	<dev-libs/libgweather-4.2.0:4=[introspection]
+	>=dev-libs/libgweather-4.2.0:4=[introspection]
 	>=sci-geosciences/geocode-glib-3.15.2:2[introspection]
 	>=media-libs/libshumate-1.0:1.0=
 	dev-libs/libxml2:2
-	>=net-libs/rest-0.9.1:1.0=[introspection]
-
-	app-crypt/libsecret[introspection]
-	media-libs/clutter-gtk:1.0[introspection]
-	media-libs/clutter:1.0[introspection]
-	net-libs/gnome-online-accounts[introspection]
-	net-libs/libgfbgraph[introspection]
-	net-libs/libsoup:3.0[introspection]
-	net-libs/webkit-gtk:4.1[introspection]
+	>=net-libs/rest-0.9.1:1.0[introspection]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

@@ -1,0 +1,19 @@
+Normally avoid adding kernel support patches, but this one is very
+trivial and many want to use 6.0 early.
+
+Masked 515.76 has a more elaborate fix to ensure it works with
+all supported kernel branches (not all have this header), so
+this one should be conditional as a safety.
+
+Note older drivers branches have bigger issues and this is not
+sufficient, this will wait until their next release.
+
+https://github.com/NVIDIA/open-gpu-kernel-modules/pull/350
+--- a/kernel/nvidia-drm/nvidia-drm-helper.h
++++ b/kernel/nvidia-drm/nvidia-drm-helper.h
+@@ -109,4 +109,5 @@
+  */
+ #include <drm/drm_crtc.h>
++#include <drm/drm_framebuffer.h>
+ 
+ #if defined(drm_for_each_plane)

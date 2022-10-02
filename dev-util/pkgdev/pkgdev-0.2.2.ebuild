@@ -29,7 +29,7 @@ else
 		SRC_URI+=" !doc? ( https://dev.gentoo.org/~${PKGDEV_DOCS_PREBUILT_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${PKGDEV_DOCS_VERSION}-docs.tar.xz )"
 	fi
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
 fi
 
 DESCRIPTION="Collection of tools for Gentoo development"

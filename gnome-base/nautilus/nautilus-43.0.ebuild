@@ -56,6 +56,7 @@ PDEPEND="
 PATCHES=(
 	"${FILESDIR}"/43.0-docs-build.patch # Always install pregenerated manpage, keeping docs option for gtk-doc
 	"${FILESDIR}"/43.0-optional-gstreamer.patch # Allow controlling audio-video-properties build
+	"${FILESDIR}"/43.0-fix-clang-build.patch # https://gitlab.gnome.org/GNOME/nautilus/-/merge_requests/996
 )
 
 src_prepare() {

@@ -34,7 +34,7 @@ IUSE="${IUSE_VIDEO_CARDS}
 	cpu_flags_x86_sse2 d3d9 debug gles1 +gles2 +llvm
 	lm-sensors opencl osmesa +proprietary-codecs selinux
 	test unwind vaapi valgrind vdpau vulkan
-	vulkan-overlay wayland +X xa xvmc zink +zstd"
+	vulkan-overlay wayland +X xa zink +zstd"
 
 REQUIRED_USE="
 	d3d9?   ( || ( video_cards_intel video_cards_r300 video_cards_r600 video_cards_radeonsi video_cards_nouveau video_cards_vmware ) )
@@ -44,7 +44,6 @@ REQUIRED_USE="
 	video_cards_r300?   ( x86? ( llvm ) amd64? ( llvm ) )
 	video_cards_radeonsi?   ( llvm )
 	xa? ( X )
-	xvmc? ( X )
 	zink? ( vulkan )
 "
 
@@ -75,13 +74,11 @@ RDEPEND="
 		>=x11-libs/libva-1.7.3:=[${MULTILIB_USEDEP}]
 	)
 	vdpau? ( >=x11-libs/libvdpau-1.1:=[${MULTILIB_USEDEP}] )
-	xvmc? ( >=x11-libs/libXvMC-1.0.8:=[${MULTILIB_USEDEP}] )
 	selinux? ( sys-libs/libselinux[${MULTILIB_USEDEP}] )
 	wayland? (
 		>=dev-libs/wayland-1.18.0:=[${MULTILIB_USEDEP}]
 	)
 	${LIBDRM_DEPSTRING}[video_cards_freedreno?,video_cards_intel?,video_cards_nouveau?,video_cards_vc4?,video_cards_vivante?,video_cards_vmware?,${MULTILIB_USEDEP}]
-	vulkan-overlay? ( dev-util/glslang:0=[${MULTILIB_USEDEP}] )
 	X? (
 		>=x11-libs/libX11-1.6.2:=[${MULTILIB_USEDEP}]
 		>=x11-libs/libxshmfence-1.1:=[${MULTILIB_USEDEP}]
@@ -194,6 +191,8 @@ BDEPEND="
 	sys-devel/flex
 	virtual/pkgconfig
 	$(python_gen_any_dep ">=dev-python/mako-0.8.0[\${PYTHON_USEDEP}]")
+	vulkan? ( video_cards_radeonsi? ( dev-util/glslang ) )
+	vulkan-overlay? ( dev-util/glslang )
 	wayland? ( dev-util/wayland-scanner )
 "
 
@@ -265,13 +264,6 @@ pkg_pretend() {
 		   ! use video_cards_nouveau &&
 		   ! use video_cards_vmware; then
 			ewarn "Ignoring USE=xa         since VIDEO_CARDS does not contain freedreno, nouveau, or vmware"
-		fi
-	fi
-
-	if use xvmc; then
-		if ! use video_cards_r600 &&
-		   ! use video_cards_nouveau; then
-			ewarn "Ignoring USE=xvmc       since VIDEO_CARDS does not contain r600 or nouveau"
 		fi
 	fi
 
@@ -364,13 +356,6 @@ multilib_src_configure() {
 		emesonargs+=($(meson_feature xa gallium-xa))
 	else
 		emesonargs+=(-Dgallium-xa=disabled)
-	fi
-
-	if use video_cards_r600 ||
-	   use video_cards_nouveau; then
-		emesonargs+=($(meson_feature xvmc gallium-xvmc))
-	else
-		emesonargs+=(-Dgallium-xvmc=disabled)
 	fi
 
 	if use video_cards_freedreno ||

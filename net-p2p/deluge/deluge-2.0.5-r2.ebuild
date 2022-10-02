@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.deluge-torrent.org/${PN}"
 else
-	SRC_URI="http://download.deluge-torrent.org/source/2.0/${P}.tar.xz"
+	SRC_URI="http://download.deluge-torrent.org/source/$(ver_cut 1-2)/${P}.tar.xz"
 	KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"
 fi
 
