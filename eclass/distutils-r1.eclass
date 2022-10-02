@@ -202,7 +202,7 @@ _distutils_set_globals() {
 		fi
 
 		bdep='
-			>=dev-python/gpep517-8[${PYTHON_USEDEP}]
+			>=dev-python/gpep517-9[${PYTHON_USEDEP}]
 		'
 		case ${DISTUTILS_USE_PEP517} in
 			flit)
@@ -212,22 +212,22 @@ _distutils_set_globals() {
 				;;
 			flit_scm)
 				bdep+='
-					dev-python/flit_scm[${PYTHON_USEDEP}]
+					>=dev-python/flit_scm-1.7.0[${PYTHON_USEDEP}]
 				'
 				;;
 			hatchling)
 				bdep+='
-					>=dev-python/hatchling-1.3.1[${PYTHON_USEDEP}]
+					>=dev-python/hatchling-1.8.1[${PYTHON_USEDEP}]
 				'
 				;;
 			jupyter)
 				bdep+='
-					>=dev-python/jupyter_packaging-0.12.0-r1[${PYTHON_USEDEP}]
+					>=dev-python/jupyter_packaging-0.12.3[${PYTHON_USEDEP}]
 				'
 				;;
 			maturin)
 				bdep+='
-					>=dev-util/maturin-0.12.20[${PYTHON_USEDEP}]
+					>=dev-util/maturin-0.13.2[${PYTHON_USEDEP}]
 				'
 				;;
 			no)
@@ -236,27 +236,27 @@ _distutils_set_globals() {
 				;;
 			meson-python)
 				bdep+='
-					dev-python/meson-python[${PYTHON_USEDEP}]
+					>=dev-python/meson-python-0.9.0[${PYTHON_USEDEP}]
 				'
 				;;
 			pbr)
 				bdep+='
-					>=dev-python/pbr-5.9.0[${PYTHON_USEDEP}]
+					>=dev-python/pbr-5.10.0[${PYTHON_USEDEP}]
 				'
 				;;
 			pdm)
 				bdep+='
-					>=dev-python/pdm-pep517-1.0.2[${PYTHON_USEDEP}]
+					>=dev-python/pdm-pep517-1.0.4[${PYTHON_USEDEP}]
 				'
 				;;
 			poetry)
 				bdep+='
-					>=dev-python/poetry-core-1.0.8[${PYTHON_USEDEP}]
+					>=dev-python/poetry-core-1.2.0[${PYTHON_USEDEP}]
 				'
 				;;
 			setuptools)
 				bdep+='
-					>=dev-python/setuptools-62.6.0[${PYTHON_USEDEP}]
+					>=dev-python/setuptools-65.3.0[${PYTHON_USEDEP}]
 					dev-python/wheel[${PYTHON_USEDEP}]
 				'
 				;;
@@ -277,7 +277,7 @@ _distutils_set_globals() {
 			eqawarn "is enabled."
 		fi
 	else
-		local setuptools_dep='>=dev-python/setuptools-42.0.2[${PYTHON_USEDEP}]'
+		local setuptools_dep='>=dev-python/setuptools-65.3.0[${PYTHON_USEDEP}]'
 
 		case ${DISTUTILS_USE_SETUPTOOLS:-bdepend} in
 			no|manual)
@@ -597,7 +597,7 @@ distutils_enable_tests() {
 			test_pkg=">=dev-python/nose-1.3.7_p20211111_p1-r1"
 			;;
 		pytest)
-			test_pkg=">=dev-python/pytest-7.1.2"
+			test_pkg=">=dev-python/pytest-7.1.3"
 			;;
 		setup.py)
 			;;
