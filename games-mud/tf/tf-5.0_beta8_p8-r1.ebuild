@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -37,6 +37,7 @@ PATCHES=(
 	"${DISTDIR}"/tf-allrootpatch.txt
 	"${DISTDIR}"/tf-allsrcpatch.txt
 	"${FILESDIR}"/tf-50_beta8-pcre.patch
+	"${FILESDIR}"/tf-5.0_beta8_p8-Fix-implicit-function-declarations.patch
 )
 
 src_configure() {
