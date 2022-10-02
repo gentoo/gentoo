@@ -102,8 +102,7 @@ games-sports/torcs
 # Ionen Wolkens <ionen@gentoo.org> (2022-09-25)
 # This version been causing major issues for some RTX 30xx users and
 # no real reason not to stick to 515.65.01 for now (but feel free to
-# unmask if it's been fine and need it, notably has fixes to build
-# with upcoming 6.0 linux kernels).
+# unmask if it's been fine).
 # https://bugs.archlinux.org/task/75995
 # https://forums.developer.nvidia.com/t/bug-report-black-x11-screen-and-partial-lockup-when-upgraded-to-515-76-and-dual-rtx3060
 ~x11-drivers/nvidia-drivers-515.76

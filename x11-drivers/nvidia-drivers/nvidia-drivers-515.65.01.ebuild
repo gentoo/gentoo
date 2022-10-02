@@ -232,6 +232,12 @@ src_prepare() {
 	eapply --directory=kernel-module-source/kernel-open \
 		-p2 "${FILESDIR}"/nvidia-drivers-470.141.03-clang15.patch
 
+	if kernel_is -ge 6; then # conditional as a safety, see patch
+		eapply "${FILESDIR}"/nvidia-drivers-515.65.01-kernel6.patch
+		eapply --directory=kernel-module-source/kernel-open \
+			-p2 "${FILESDIR}"/nvidia-drivers-515.65.01-kernel6.patch
+	fi
+
 	default
 
 	# prevent detection of incomplete kernel DRM support (bug #603818)
