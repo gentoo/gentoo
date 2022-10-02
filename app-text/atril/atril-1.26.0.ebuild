@@ -59,7 +59,6 @@ RDEPEND="${COMMON_DEPEND}
 
 BDEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.1.2
-	app-text/rarian
 	app-text/yelp-tools
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
