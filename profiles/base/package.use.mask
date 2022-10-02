@@ -11,6 +11,7 @@
 # but packages want to use the actual zlib-ng library, so we need to
 # mask it and can't hold the whole thing up on the compat effort.
 sys-libs/zlib-ng compat
+sys-libs/minizip-ng compat
 
 # Matt Turner <mattst88@gentoo.org> (2022-09-26)
 # Requires nautilus-43.0 which is not in tree yet.
