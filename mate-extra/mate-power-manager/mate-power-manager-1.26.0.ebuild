@@ -6,14 +6,14 @@ EAPI=7
 inherit mate
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 fi
 
 DESCRIPTION="A session daemon for MATE that makes it easy to manage your laptop or desktop"
 
 LICENSE="FDL-1.1+ GPL-2+ LGPL-2+"
 SLOT="0"
-IUSE="+applet elogind libsecret policykit systemd test"
+IUSE="+applet +elogind libsecret policykit systemd test"
 
 REQUIRED_USE="^^ ( elogind systemd )"
 
