@@ -6,7 +6,7 @@ EAPI=7
 inherit mate toolchain-funcs
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 fi
 
 DESCRIPTION="The MATE System Monitor"
