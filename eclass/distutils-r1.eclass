@@ -2023,21 +2023,19 @@ _distutils-r1_check_namespace_pth() {
 	done < <(find "${ED%/}" -name '*-nspkg.pth' -print0)
 
 	if [[ ${pth[@]} ]]; then
-		ewarn "The following *-nspkg.pth files were found installed:"
-		ewarn
+		eerror "The following *-nspkg.pth files were found installed:"
+		eerror
 		for f in "${pth[@]}"; do
-			ewarn "  ${f#${ED%/}}"
+			eerror "  ${f#${ED%/}}"
 		done
-		ewarn
-		ewarn "The presence of those files may break namespaces in Python 3.5+. Please"
-		ewarn "read our documentation on reliable handling of namespaces and update"
-		ewarn "the ebuild accordingly:"
-		ewarn
-		ewarn "  https://projects.gentoo.org/python/guide/concept.html#namespace-packages"
+		eerror
+		eerror "The presence of those files may break namespaces in Python 3.5+. Please"
+		eerror "read our documentation on reliable handling of namespaces and update"
+		eerror "the ebuild accordingly:"
+		eerror
+		eerror "  https://projects.gentoo.org/python/guide/concept.html#namespace-packages"
 
-		if ! has "${EAPI}" 6 7 8; then
-			die "*-nspkg.pth files are banned in EAPI ${EAPI}"
-		fi
+		die "Installing *-nspkg.pth files is banned"
 	fi
 }
 
