@@ -61,7 +61,6 @@ BDEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.1.2
 	app-text/rarian
 	app-text/yelp-tools
-	>=app-text/scrollkeeper-dtd-1:1.0
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	dev-util/gtk-doc
