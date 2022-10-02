@@ -48,8 +48,6 @@ RDEPEND="${COMMON_DEPEND}
 
 BDEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.3
-	app-text/rarian
-	>=app-text/scrollkeeper-dtd-1:1.0
 	app-text/yelp-tools
 	dev-libs/libxml2
 	dev-util/glib-utils
