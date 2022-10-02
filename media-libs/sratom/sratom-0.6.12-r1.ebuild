@@ -8,7 +8,7 @@ PYTHON_REQ_USE='threads(+)'
 inherit meson-multilib python-any-r1
 
 DESCRIPTION="Library for serialising LV2 atoms to/from RDF, particularly the Turtle syntax"
-HOMEPAGE="http://drobilla.net/software/sratom/"
+HOMEPAGE="https://drobilla.net/software/sratom.html"
 SRC_URI="https://download.drobilla.net/${P}.tar.xz"
 
 LICENSE="ISC"
