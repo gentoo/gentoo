@@ -22,10 +22,6 @@ BDEPEND="
 		dev-python/sphinx_lv2_theme
 )
 "
-RDEPEND=""
-DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
-"
 
 src_prepare() {
 	default
