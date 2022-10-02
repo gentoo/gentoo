@@ -128,6 +128,8 @@ src_install() {
 	exeinto /usr/share/john
 	doexe run/*.pl
 	doexe run/*.py
+	insinto /usr/share/john
+	doins -r run/lib
 	cd run || die
 
 	local s
