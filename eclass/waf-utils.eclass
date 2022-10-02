@@ -102,6 +102,7 @@ waf-utils_src_configure() {
 		"--prefix=${EPREFIX}/usr"
 		"${conf_args[@]}"
 		"${@}"
+		${EXTRA_ECONF}
 		configure
 	)
 
