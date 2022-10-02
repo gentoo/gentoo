@@ -16,7 +16,15 @@ if [[ ${PV} = *_rc* ]]; then
 	SRC_URI="mirror://samba/rc/${MY_P}.tar.gz"
 else
 	SRC_URI="mirror://samba/stable/${MY_P}.tar.gz"
+<<<<<<< HEAD
 	KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ppc ~ppc64 ~riscv ~sparc ~x86"
+=======
+<<<<<<< HEAD
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+=======
+	KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ppc ~ppc64 ~riscv ~sparc ~x86"
+>>>>>>> d6d0f12066c (Mask >=dev-util/gnome-builder-43)
+>>>>>>> 3928948a06b (rebase)
 fi
 S="${WORKDIR}/${MY_P}"
 

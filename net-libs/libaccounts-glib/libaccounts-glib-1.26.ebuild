@@ -13,7 +13,11 @@ S="${WORKDIR}/${PN}-VERSION_${PV}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
+<<<<<<< HEAD
 KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv x86"
+=======
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+>>>>>>> 3928948a06b (rebase)
 IUSE="doc"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

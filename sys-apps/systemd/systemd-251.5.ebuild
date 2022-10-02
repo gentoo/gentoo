@@ -389,7 +389,11 @@ multilib_src_install_all() {
 		rm "${ED}"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8 || die
 	fi
 
+<<<<<<< HEAD
 	if ! use resolvconf && ! use sysv-utils && use split-usr; then
+=======
+	if ! use resolvconf && ! use sysv-utils && ! use split-usr; then
+>>>>>>> 3928948a06b (rebase)
 		rmdir "${ED}${rootprefix}"/sbin || die
 	fi
 

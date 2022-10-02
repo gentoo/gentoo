@@ -1,8 +1,14 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+<<<<<<< HEAD
 EAPI=8
 PYTHON_COMPAT=( python3_{8..11} )
+=======
+EAPI=6
+GNOME2_LA_PUNT="yes"
+PYTHON_COMPAT=( python3_{8..10} )
+>>>>>>> 3928948a06b (rebase)
 
 inherit gnome2 python-any-r1 virtualx
 
@@ -52,7 +58,11 @@ COMMON_DEPEND="
 
 	geolocation? (
 		>=app-misc/geoclue-2.1:2.0
+<<<<<<< HEAD
 		>=sci-geosciences/geocode-glib-3.10:0 )
+=======
+		>=sci-geosciences/geocode-glib-3.10 )
+>>>>>>> 3928948a06b (rebase)
 	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.5.1:= )
 	map? (
 		>=media-libs/clutter-1.7.14:1.0
@@ -67,24 +77,41 @@ COMMON_DEPEND="
 		>=media-video/cheese-3.4:= )
 "
 
+<<<<<<< HEAD
 RDEPEND="${COMMON_DEPEND}
 	media-libs/gst-plugins-base:1.0
 	net-im/telepathy-connection-managers
+=======
+# >=empathy-3.4 is incompatible with telepathy-rakia-0.6, bug #403861
+RDEPEND="${COMMON_DEPEND}
+	media-libs/gst-plugins-base:1.0
+	net-im/telepathy-connection-managers
+	!<net-voip/telepathy-rakia-0.7
+>>>>>>> 3928948a06b (rebase)
 	x11-themes/adwaita-icon-theme
 	gnome? ( gnome-extra/gnome-contacts )
 "
 DEPEND="${COMMON_DEPEND}
+<<<<<<< HEAD
 	test? (
 		sys-apps/grep
 		>=dev-libs/check-0.9.4 )
 "
 BDEPEND="
+=======
+>>>>>>> 3928948a06b (rebase)
 	${PYTHON_DEPS}
 	dev-libs/libxml2:2
 	dev-libs/libxslt
 	>=dev-util/intltool-0.50.0
 	dev-util/itstool
 	virtual/pkgconfig
+<<<<<<< HEAD
+=======
+	test? (
+		sys-apps/grep
+		>=dev-libs/check-0.9.4 )
+>>>>>>> 3928948a06b (rebase)
 "
 PDEPEND=">=net-im/telepathy-mission-control-5.14"
 
@@ -111,5 +138,9 @@ src_configure() {
 }
 
 src_test() {
+<<<<<<< HEAD
 	virtx dbus-run-session emake check
+=======
+	dbus-launch virtx emake check #504516
+>>>>>>> 3928948a06b (rebase)
 }

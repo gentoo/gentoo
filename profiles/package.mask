@@ -33,6 +33,7 @@
 
 #--- END OF EXAMPLES ---
 
+<<<<<<< HEAD
 # Michał Górny <mgorny@gentoo.org> (2022-10-05)
 # Originally added for dev-python/rapidfuzz.  Now the algorithm has been
 # inlined into rapidfuzz, and the package is semi-deprecated.
@@ -65,6 +66,11 @@ dev-python/jarowinkler
 =sys-apps/portage-3.0.37
 =sys-apps/portage-3.0.38
 
+=======
+<<<<<<< HEAD
+# Stephan Hartmann <sultan@gentoo.org> (2022-09-26)
+=======
+>>>>>>> 3928948a06b (rebase)
 # Matt Turner <mattst88@gentoo.org> (2022-10-01)
 # Depends on lots of unmaintained packages:
 # 	- app-text/gnome-doc-utils
@@ -114,6 +120,10 @@ virtual/httpd-php:8.2
 games-simulation/bcs-demo
 
 # Stephan Hartmann <sultan@gentoo.org> (2022-09-29)
+<<<<<<< HEAD
+=======
+>>>>>>> d6d0f12066c (Mask >=dev-util/gnome-builder-43)
+>>>>>>> 3928948a06b (rebase)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
 # and accept a more unstable release.
@@ -447,6 +457,7 @@ sys-devel/automake:1.11
 # New major parallel-installable release which needs special care to not
 # end up loaded into the same process together with the earlier libsoup ABI.
 # Migration to it is expected for GNOME 42, NOT to be unmasked with GNOME 41.
+<<<<<<< HEAD
 >=app-arch/file-roller-43
 >=app-text/libgepub-0.7.0
 >=dev-libs/gjs-1.74
@@ -466,6 +477,28 @@ sys-devel/automake:1.11
 >=mail-client/evolution-3.46
 >=mail-client/geary-43
 media-libs/libshumate
+=======
+<<<<<<< HEAD
+>=gnome-extra/gnome-calculator-43
+=======
+>=app-arch/file-roller-43
+>=dev-libs/gjs-1.74
+>=dev-libs/libgweather-4.2.0
+>=dev-python/nautilus-python-4.0
+>=dev-util/devhelp-43
+>=gnome-base/gnome-desktop-43
+>=gnome-base/gnome-settings-daemon-43
+>=gnome-base/gnome-shell-43
+>=gnome-base/nautilus-43
+>=gnome-extra/evolution-data-server-3.46
+>=gnome-extra/evolution-ews-3.46
+>=gnome-extra/gnome-calculator-43
+>=gnome-extra/gnome-shell-extensions-43
+>=mail-client/evolution-3.46
+>=mail-client/geary-43
+media-libs/libshumate
+>>>>>>> d6d0f12066c (Mask >=dev-util/gnome-builder-43)
+>>>>>>> 3928948a06b (rebase)
 net-libs/libsoup:3.0
 net-libs/rest:1.0
 net-libs/uhttpmock:1.0
@@ -473,10 +506,14 @@ net-libs/webkit-gtk:4.1
 sci-geosciences/geocode-glib:2
 >=sci-geosciences/gnome-maps-43
 <<<<<<< HEAD
+<<<<<<< HEAD
 >=www-client/epiphany-43
 >=x11-wm/mutter-43
 =======
 >>>>>>> 03c6f240d3c (Mask >=dev-util/gnome-builder-43)
+=======
+>=x11-wm/mutter-43
+>>>>>>> 3928948a06b (rebase)
 >=dev-util/gnome-builder-43
 
 # Thomas Deutschmann <whissi@gentoo.org> (2021-09-07)

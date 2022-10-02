@@ -4,14 +4,14 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{8..11} )
 
-inherit gnome.org gnome2-utils meson python-single-r1 virtualx xdg
+inherit gnome.org gnome2-utils meson optfeature python-single-r1 virtualx xdg
 
 DESCRIPTION="Provides core UI functions for the GNOME desktop"
 HOMEPAGE="https://wiki.gnome.org/Projects/GnomeShell https://gitlab.gnome.org/GNOME/gnome-shell"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-IUSE="+bluetooth +browser-extension elogind gtk-doc +ibus +networkmanager systemd telepathy test"
+IUSE="elogind gtk-doc +ibus +networkmanager systemd test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	?? ( elogind systemd )"
 RESTRICT="!test? ( test )"
@@ -19,25 +19,26 @@ RESTRICT="!test? ( test )"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
 # libXfixes-5.0 needed for pointer barriers and #include <X11/extensions/Xfixes.h>
-# FIXME:
-#  * gstreamer/pipewire support is currently automagic
 DEPEND="
 	>=gnome-extra/evolution-data-server-3.33.1:=
+<<<<<<<< HEAD:gnome-base/gnome-shell/gnome-shell-42.5-r2.ebuild
 	>=app-crypt/gcr-3.7.5:0=[introspection]
 	>=dev-libs/glib-2.68:2
 	>=dev-libs/gobject-introspection-1.49.1:=
 	>=dev-libs/gjs-1.71.1[cairo]
+========
+	>=app-crypt/gcr-3.90.0:4=[introspection]
+	>=dev-libs/glib-2.68:2
+	>=dev-libs/gobject-introspection-1.49.1:=
+	>=dev-libs/gjs-1.73.1[cairo]
+>>>>>>>> 3928948a06b (rebase):gnome-base/gnome-shell/gnome-shell-42.3.1.ebuild
 	>=x11-libs/gtk+-3.15.0:3[introspection]
-	>=x11-wm/mutter-42.0:0/10[introspection,test?]
+	>=x11-wm/mutter-43.0:0/11[introspection,test?]
 	>=sys-auth/polkit-0.120_p20220509[introspection]
 	>=gnome-base/gsettings-desktop-schemas-42_beta[introspection]
 	>=x11-libs/startup-notification-0.11
 	>=app-i18n/ibus-1.5.19
 	>=gnome-base/gnome-desktop-3.35.90:3=[introspection]
-	bluetooth? ( net-wireless/gnome-bluetooth:3=[introspection] )
-	>=media-libs/gstreamer-0.11.92:1.0
-	media-libs/gst-plugins-base:1.0
-	>=media-video/pipewire-0.3.0:=
 	networkmanager? (
 		>=net-misc/networkmanager-1.10.4[introspection]
 		net-libs/libnma[introspection]
@@ -86,20 +87,35 @@ DEPEND="
 # 5. adwaita-icon-theme needed for various icons & arrows (3.26 for new video-joined-displays-symbolic and co icons; review for 3.28+)
 # 6. mobile-broadband-provider-info, timezone-data for shell-mobile-providers.c  # TODO: Review
 # 7. IBus is needed for nls integration
+<<<<<<<< HEAD:gnome-base/gnome-shell/gnome-shell-42.3.1.ebuild
 # 8. Optional telepathy chat integration
 # 9. Cantarell font used in gnome-shell global CSS (if removing this for some reason, make sure it's pulled in somehow for non-meta users still too)
 # 10. xdg-desktop-portal-gtk for various integration, e.g. #764632
 # 11. TODO: semi-optional webkit-gtk[introspection] for captive portal helper
+<<<<<<<< HEAD:gnome-base/gnome-shell/gnome-shell-42.5-r2.ebuild
 # <libgweather-4.2.0 because of libsoup:3 transition
+========
+========
+# 8. Cantarell font used in gnome-shell global CSS (if removing this for some reason, make sure it's pulled in somehow for non-meta users still too)
+# 9. xdg-desktop-portal-gtk for various integration, e.g. #764632
+# 10. TODO: semi-optional webkit-gtk[introspection] for captive portal helper
+>>>>>>>> d6d0f12066c (Mask >=dev-util/gnome-builder-43):gnome-base/gnome-shell/gnome-shell-43.0.ebuild
+>>>>>>>> 3928948a06b (rebase):gnome-base/gnome-shell/gnome-shell-42.3.1.ebuild
 RDEPEND="${DEPEND}
 	>=sys-apps/accountsservice-0.6.14[introspection]
 	app-accessibility/at-spi2-core:2[introspection]
 	app-misc/geoclue[introspection]
 	media-libs/graphene[introspection]
+<<<<<<<< HEAD:gnome-base/gnome-shell/gnome-shell-42.3.1.ebuild
 	>=dev-libs/libgweather-4.0.0:4[introspection]
+<<<<<<<< HEAD:gnome-base/gnome-shell/gnome-shell-42.5-r2.ebuild
 	<dev-libs/libgweather-4.2.0:4
+========
+========
+>>>>>>>> d6d0f12066c (Mask >=dev-util/gnome-builder-43):gnome-base/gnome-shell/gnome-shell-43.0.ebuild
+>>>>>>>> 3928948a06b (rebase):gnome-base/gnome-shell/gnome-shell-42.3.1.ebuild
 	x11-libs/pango[introspection]
-	net-libs/libsoup:2.4[introspection]
+	net-libs/libsoup:3.0[introspection]
 	>=sys-power/upower-0.99:=[introspection]
 	gnome-base/librsvg:2[introspection]
 
@@ -115,10 +131,6 @@ RDEPEND="${DEPEND}
 		sys-libs/timezone-data
 	)
 	ibus? ( >=app-i18n/ibus-1.5.26[gtk3,gtk4,introspection] )
-	telepathy? (
-		>=net-im/telepathy-logger-0.2.4[introspection]
-		>=net-libs/telepathy-glib-0.19[introspection]
-	)
 	media-fonts/cantarell
 
 	sys-apps/xdg-desktop-portal-gnome
@@ -126,8 +138,7 @@ RDEPEND="${DEPEND}
 # avoid circular dependency, see bug #546134
 PDEPEND="
 	>=gnome-base/gdm-3.5[introspection(+)]
-	>=gnome-base/gnome-control-center-3.26[bluetooth(+)?,networkmanager(+)?]
-	browser-extension? ( gnome-extra/gnome-browser-connector )
+	>=gnome-base/gnome-control-center-3.26[networkmanager(+)?]
 "
 BDEPEND="
 	dev-libs/libxslt
@@ -137,14 +148,13 @@ BDEPEND="
 		app-text/docbook-xml-dtd:4.5 )
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
+	test? ( x11-wm/mutter[test] )
 "
 # These are not needed from tarballs, unless stylesheets or manpage get patched with patchset:
 # dev-lang/sassc
 # app-text/asciidoc
 
 PATCHES=(
-	# Fix automagic gnome-bluetooth dep, bug #398145
-	"${FILESDIR}"/42.0-optional-bluetooth.patch
 	# Change favorites defaults, bug #479918
 	"${FILESDIR}"/40.0-defaults.patch
 )
@@ -158,7 +168,6 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		$(meson_use bluetooth)
 		-Dextensions_tool=true
 		-Dextensions_app=true
 		$(meson_use gtk-doc gtk_doc)
@@ -168,7 +177,7 @@ src_configure() {
 		$(meson_use systemd) # this controls journald integration and desktop file user services related property only as of 3.34.4
 		# (structured logging and having gnome-shell launched apps use its own identifier instead of gnome-session)
 		# suspend support is runtime optional via /run/systemd/seats presence and org.freedesktop.login1.Manager dbus interface; elogind should provide what's necessary
-		-Dsoup2=true # libslot SLOT needs to match with what libgweather is using
+		-Dsoup2=false
 	)
 	meson_src_configure
 }
@@ -182,26 +191,16 @@ pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_schemas_update
 
-	if ! has_version 'media-libs/gst-plugins-good:1.0' || \
-	   ! has_version 'media-plugins/gst-plugins-vpx:1.0'; then
-		ewarn "To make use of GNOME Shell's built-in screen recording utility,"
-		ewarn "you need to either install media-libs/gst-plugins-good:1.0"
-		ewarn "and media-plugins/gst-plugins-vpx:1.0, or use dconf-editor to change"
-		ewarn "apps.gnome-shell.recorder/pipeline to what you want to use."
-	fi
-
 	if ! has_version "media-libs/mesa[llvm]"; then
 		elog "llvmpipe is used as fallback when no 3D acceleration"
 		elog "is available. You will need to enable llvm USE for"
 		elog "media-libs/mesa if you do not have hardware 3D setup."
 	fi
 
-	# https://bugs.gentoo.org/show_bug.cgi?id=563084
-	# TODO: Is this still the case after various fixed in 3.28 for detecting non-working KMS for wayland (to fall back to X)?
-	if has_version "x11-drivers/nvidia-drivers[-kms]"; then
-		ewarn "You will need to enable kms support in x11-drivers/nvidia-drivers,"
-		ewarn "otherwise Gnome will fail to start"
-	fi
+	optfeature "Bluetooth integration" gnome-base/gnome-control-center[bluetooth] net-wireless/gnome-bluetooth:3[introspection]
+	optfeature "Browser extension integration" gnome-extra/gnome-browser-connector
+	optfeature "Screencast/capture support" media-video/pipewire media-libs/gstreamer[introspection] media-libs/gst-plugins-base[introspection] media-libs/gst-plugins-good media-plugins/gst-plugins-vpx
+	optfeature "Weather support" dev-libs/libgweather:4[introspection]
 }
 
 pkg_postrm() {

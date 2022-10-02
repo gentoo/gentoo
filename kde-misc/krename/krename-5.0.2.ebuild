@@ -13,7 +13,11 @@ HOMEPAGE="https://apps.kde.org/krename/ https://userbase.kde.org/KRename"
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
+<<<<<<< HEAD
 	KEYWORDS="amd64 ~arm64 x86"
+=======
+	KEYWORDS="amd64 ~arm64 ~x86"
+>>>>>>> 3928948a06b (rebase)
 fi
 
 LICENSE="GPL-2"

@@ -12,15 +12,23 @@ LICENSE="GPL-2+ LGPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 
+<<<<<<< HEAD:sci-geosciences/gnome-maps/gnome-maps-42.3-r3.ebuild
 # Pure introspection dependencies found by grepping imports.gi in ${S}
 # <libgweather-4.2.0 because of libsoup:3 transition
+=======
+>>>>>>> 3928948a06b (rebase):sci-geosciences/gnome-maps/gnome-maps-42.3-r1.ebuild
 RDEPEND="
 	>=dev-libs/glib-2.66.0:2
+<<<<<<< HEAD:sci-geosciences/gnome-maps/gnome-maps-42.3-r1.ebuild
 	x11-libs/pango[introspection]
 	>=dev-libs/gjs-1.66.0
+=======
+	>=dev-libs/gjs-1.69.2
+>>>>>>> d6d0f12066c (Mask >=dev-util/gnome-builder-43):sci-geosciences/gnome-maps/gnome-maps-43.0.ebuild
 	>=dev-libs/gobject-introspection-0.10.1:=
 	>=x11-libs/gtk+-3.22:3[introspection]
 	>=app-misc/geoclue-0.12.99:2.0[introspection]
+<<<<<<< HEAD:sci-geosciences/gnome-maps/gnome-maps-42.3-r1.ebuild
 	>=gui-libs/libhandy-1.5.0:1=
 	>=dev-libs/libgee-0.16:0.8[introspection]
 	>=dev-libs/folks-0.10:=
@@ -37,6 +45,14 @@ RDEPEND="
 	net-libs/libgfbgraph[introspection]
 	net-libs/libsoup:2.4[introspection]
 	net-libs/webkit-gtk:4[introspection]
+=======
+	>=gui-libs/libadwaita-1.0:1
+	>=dev-libs/libgweather-4.2.0:4=[introspection]
+	>=sci-geosciences/geocode-glib-3.15.2:2[introspection]
+	>=media-libs/libshumate-1.0:1.0=
+	dev-libs/libxml2:2
+	>=net-libs/rest-0.9.1:1.0[introspection]
+>>>>>>> d6d0f12066c (Mask >=dev-util/gnome-builder-43):sci-geosciences/gnome-maps/gnome-maps-43.0.ebuild
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

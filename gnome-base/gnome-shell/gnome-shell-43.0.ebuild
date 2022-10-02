@@ -80,14 +80,34 @@ DEPEND="
 # 5. adwaita-icon-theme needed for various icons & arrows (3.26 for new video-joined-displays-symbolic and co icons; review for 3.28+)
 # 6. mobile-broadband-provider-info, timezone-data for shell-mobile-providers.c  # TODO: Review
 # 7. IBus is needed for nls integration
+<<<<<<< HEAD
 # 8. Cantarell font used in gnome-shell global CSS (if removing this for some reason, make sure it's pulled in somehow for non-meta users still too)
 # 9. xdg-desktop-portal-gtk for various integration, e.g. #764632
 # 10. TODO: semi-optional webkit-gtk[introspection] for captive portal helper
+=======
+<<<<<<<< HEAD:gnome-base/gnome-shell/gnome-shell-42.3.1.ebuild
+# 8. Optional telepathy chat integration
+# 9. Cantarell font used in gnome-shell global CSS (if removing this for some reason, make sure it's pulled in somehow for non-meta users still too)
+# 10. xdg-desktop-portal-gtk for various integration, e.g. #764632
+# 11. TODO: semi-optional webkit-gtk[introspection] for captive portal helper
+========
+# 8. Cantarell font used in gnome-shell global CSS (if removing this for some reason, make sure it's pulled in somehow for non-meta users still too)
+# 9. xdg-desktop-portal-gtk for various integration, e.g. #764632
+# 10. TODO: semi-optional webkit-gtk[introspection] for captive portal helper
+>>>>>>>> d6d0f12066c (Mask >=dev-util/gnome-builder-43):gnome-base/gnome-shell/gnome-shell-43.0.ebuild
+>>>>>>> 3928948a06b (rebase)
 RDEPEND="${DEPEND}
 	>=sys-apps/accountsservice-0.6.14[introspection]
 	app-accessibility/at-spi2-core:2[introspection]
 	app-misc/geoclue[introspection]
 	media-libs/graphene[introspection]
+<<<<<<< HEAD
+=======
+<<<<<<<< HEAD:gnome-base/gnome-shell/gnome-shell-42.3.1.ebuild
+	>=dev-libs/libgweather-4.0.0:4[introspection]
+========
+>>>>>>>> d6d0f12066c (Mask >=dev-util/gnome-builder-43):gnome-base/gnome-shell/gnome-shell-43.0.ebuild
+>>>>>>> 3928948a06b (rebase)
 	x11-libs/pango[introspection]
 	net-libs/libsoup:3.0[introspection]
 	>=sys-power/upower-0.99:=[introspection]

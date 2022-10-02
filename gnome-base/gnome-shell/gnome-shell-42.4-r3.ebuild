@@ -90,14 +90,20 @@ DEPEND="
 # 9. Cantarell font used in gnome-shell global CSS (if removing this for some reason, make sure it's pulled in somehow for non-meta users still too)
 # 10. xdg-desktop-portal-gtk for various integration, e.g. #764632
 # 11. TODO: semi-optional webkit-gtk[introspection] for captive portal helper
+<<<<<<< HEAD
 # <libgweather-4.2.0 because of libsoup:3 transition
+=======
+>>>>>>> 3928948a06b (rebase)
 RDEPEND="${DEPEND}
 	>=sys-apps/accountsservice-0.6.14[introspection]
 	app-accessibility/at-spi2-core:2[introspection]
 	app-misc/geoclue[introspection]
 	media-libs/graphene[introspection]
 	>=dev-libs/libgweather-4.0.0:4[introspection]
+<<<<<<< HEAD
 	<dev-libs/libgweather-4.2.0:4
+=======
+>>>>>>> 3928948a06b (rebase)
 	x11-libs/pango[introspection]
 	net-libs/libsoup:2.4[introspection]
 	>=sys-power/upower-0.99:=[introspection]

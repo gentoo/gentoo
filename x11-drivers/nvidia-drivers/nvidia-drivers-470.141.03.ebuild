@@ -156,7 +156,10 @@ pkg_setup() {
 	fi
 
 	if kernel_is -ge 5 18 13; then
+<<<<<<< HEAD
 		# https://github.com/NVIDIA/open-gpu-kernel-modules/issues/341
+=======
+>>>>>>> 3928948a06b (rebase)
 		if linux_chkconfig_present FB_SIMPLE; then
 			warn+=(
 				"  CONFIG_FB_SIMPLE: is set, recommended to disable and switch to FB_EFI"

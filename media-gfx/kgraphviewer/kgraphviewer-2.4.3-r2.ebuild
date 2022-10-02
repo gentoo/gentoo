@@ -14,7 +14,11 @@ HOMEPAGE="https://apps.kde.org/kgraphviewer"
 
 LICENSE="GPL-2 GPL-2+ LGPL-2+ LGPL-2.1+ handbook? ( FDL-1.2 )"
 SLOT="5"
+<<<<<<< HEAD
 KEYWORDS="amd64 ~arm64 x86"
+=======
+KEYWORDS="amd64 ~arm64 ~x86"
+>>>>>>> 3928948a06b (rebase)
 IUSE=""
 
 RDEPEND="

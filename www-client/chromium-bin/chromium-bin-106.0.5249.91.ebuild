@@ -34,7 +34,15 @@ SRC_URI="https://dev.gentoo.org/~sultan/distfiles/www-client/chromium-bin/${MY_P
 
 LICENSE="BSD"
 SLOT="0"
+<<<<<<< HEAD
 KEYWORDS="-* amd64 arm64 ~x86"
+=======
+<<<<<<< HEAD:www-client/chromium-bin/chromium-bin-106.0.5249.61.ebuild
+#KEYWORDS="-* ~amd64 ~arm64 ~x86"
+=======
+KEYWORDS="-* amd64 arm64 ~x86"
+>>>>>>> d6d0f12066c (Mask >=dev-util/gnome-builder-43):www-client/chromium-bin/chromium-bin-106.0.5249.91.ebuild
+>>>>>>> 3928948a06b (rebase)
 IUSE="cpu_flags_x86_sse2 suid wayland widevine"
 
 RDEPEND="

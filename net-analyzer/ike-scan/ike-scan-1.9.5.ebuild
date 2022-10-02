@@ -19,7 +19,10 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.5-clang-16.patch
+<<<<<<< HEAD
 	"${FILESDIR}"/${PN}-1.9.5-openssl-libdir.patch
+=======
+>>>>>>> 3928948a06b (rebase)
 )
 
 src_prepare() {
@@ -34,8 +37,12 @@ src_prepare() {
 }
 
 src_configure() {
+<<<<<<< HEAD
 	econf \
 		$(use_with ssl openssl "${ESYSROOT}"/usr)
+=======
+	econf $(use_with ssl openssl)
+>>>>>>> 3928948a06b (rebase)
 }
 
 src_install() {

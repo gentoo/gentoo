@@ -20,15 +20,23 @@ REQUIRED_USE="
 "
 KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 
+<<<<<<< HEAD
 # <libgweather-4.2.0 because of libsoup:3 transition
 DEPEND="
 	>=sci-geosciences/geocode-glib-3.10:0
+=======
+DEPEND="
+	>=sci-geosciences/geocode-glib-3.10
+>>>>>>> 3928948a06b (rebase)
 	>=dev-libs/glib-2.58:2
 	>=gnome-base/gnome-desktop-3.37.1:3=
 	>=gnome-base/gsettings-desktop-schemas-42
 	>=x11-libs/gtk+-3.15.3:3[X,wayland?]
 	>=dev-libs/libgweather-4.0.0:4=
+<<<<<<< HEAD
 	<dev-libs/libgweather-4.2.0:4=
+=======
+>>>>>>> 3928948a06b (rebase)
 	colord? (
 		>=x11-misc/colord-1.4.5:=
 		>=media-libs/lcms-2.2:2

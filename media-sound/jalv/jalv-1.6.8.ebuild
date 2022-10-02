@@ -12,8 +12,12 @@ SRC_URI="https://download.drobilla.net/${P}.tar.xz"
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64"
+<<<<<<< HEAD
 IUSE="gtk +jack portaudio qt5"
 REQUIRED_USE="^^ ( jack portaudio )"
+=======
+IUSE="gtk jack portaudio qt5"
+>>>>>>> 3928948a06b (rebase)
 
 RDEPEND="
 	dev-libs/serd

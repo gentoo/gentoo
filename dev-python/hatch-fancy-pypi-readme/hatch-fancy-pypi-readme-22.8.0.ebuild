@@ -20,7 +20,11 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
+<<<<<<< HEAD:dev-python/hatch-fancy-pypi-readme/hatch-fancy-pypi-readme-22.8.0.ebuild
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+=======
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+>>>>>>> 3928948a06b (rebase):dev-python/hatch-fancy-pypi-readme/hatch-fancy-pypi-readme-22.7.0.ebuild
 
 RDEPEND="
 	dev-python/hatchling[${PYTHON_USEDEP}]

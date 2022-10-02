@@ -20,7 +20,10 @@ KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-lin
 # gdata-0.17.7 soft required for new gdata_feed_get_next_page_token API to handle more than 100 google tasks
 # berkdb needed only for migrating old addressbook data from <3.13 versions, bug #519512
 # glib-2.70 for build-time optional GPowerProfileMonitor
+<<<<<<< HEAD
 # <libgweather-4.2.0 because of libsoup:3 transition
+=======
+>>>>>>> 3928948a06b (rebase)
 gdata_depend=">=dev-libs/libgdata-0.17.7:="
 RDEPEND="
 	>=app-crypt/gcr-3.4:0=
@@ -54,10 +57,14 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.9.12:= )
 	kerberos? ( virtual/krb5:= )
 	ldap? ( >=net-nds/openldap-2:= )
+<<<<<<< HEAD
 	weather? (
 		>=dev-libs/libgweather-3.91.0:4=
 		<dev-libs/libgweather-4.2.0:4=
 	)
+=======
+	weather? ( >=dev-libs/libgweather-3.91.0:4= )
+>>>>>>> 3928948a06b (rebase)
 "
 DEPEND="${RDEPEND}
 	vala? ( $(vala_depend)

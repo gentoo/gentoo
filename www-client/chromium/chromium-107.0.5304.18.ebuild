@@ -23,7 +23,11 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 	pgo? ( https://blackhole.sk/~kabel/src/chromium-profiler-0.1.tar )"
 
 LICENSE="BSD"
+<<<<<<<< HEAD:www-client/chromium/chromium-107.0.5304.18.ebuild
 SLOT="0/beta"
+========
+SLOT="0/dev"
+>>>>>>>> 3928948a06b (rebase):www-client/chromium/chromium-108.0.5327.0.ebuild
 KEYWORDS="~amd64 ~arm64"
 IUSE="+X component-build cups cpu_flags_arm_neon debug gtk4 +hangouts headless +js-type-check kerberos libcxx lto +official pgo pic +proprietary-codecs pulseaudio qt5 screencast selinux +suid +system-av1 +system-ffmpeg +system-harfbuzz +system-icu +system-png vaapi wayland widevine"
 REQUIRED_USE="
@@ -125,6 +129,7 @@ RDEPEND="${COMMON_DEPEND}
 			x11-libs/gtk+:3[X?,wayland?]
 			gui-libs/gtk:4[X?,wayland?]
 		)
+		qt5? ( dev-qt/qtgui:5[X?,wayland?] )
 		x11-misc/xdg-utils
 	)
 	virtual/ttf-fonts
@@ -322,7 +327,10 @@ src_prepare() {
 		"${FILESDIR}/chromium-93-InkDropHost-crash.patch"
 		"${FILESDIR}/chromium-98-EnumTable-crash.patch"
 		"${FILESDIR}/chromium-98-gtk4-build.patch"
+<<<<<<<< HEAD:www-client/chromium/chromium-107.0.5304.18.ebuild
 		"${FILESDIR}/chromium-105-swiftshader-no-wayland.patch"
+========
+>>>>>>>> 3928948a06b (rebase):www-client/chromium/chromium-108.0.5327.0.ebuild
 		"${FILESDIR}/chromium-107-system-zlib.patch"
 		"${FILESDIR}/chromium-use-oauth2-client-switches-as-default.patch"
 		"${FILESDIR}/chromium-shim_headers.patch"
@@ -925,6 +933,10 @@ chromium_configure() {
 		myconf_gn+=" use_system_libdrm=true"
 		myconf_gn+=" use_system_minigbm=true"
 		myconf_gn+=" use_xkbcommon=true"
+<<<<<<<< HEAD:www-client/chromium/chromium-107.0.5304.18.ebuild
+========
+		use qt5 && export PATH="${PATH}:/usr/$(get_libdir)/qt5/bin"
+>>>>>>>> 3928948a06b (rebase):www-client/chromium/chromium-108.0.5327.0.ebuild
 		myconf_gn+=" use_qt=$(usex qt5 true false)"
 		myconf_gn+=" ozone_platform_x11=$(usex X true false)"
 		myconf_gn+=" ozone_platform_wayland=$(usex wayland true false)"

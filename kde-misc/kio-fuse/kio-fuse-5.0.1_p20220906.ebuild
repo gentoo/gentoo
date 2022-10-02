@@ -14,7 +14,11 @@ HOMEPAGE="https://feverfew.home.blog/2019/12/24/kiofuse-beta-4-9-0-released/"
 
 LICENSE="GPL-3+"
 SLOT="5"
+<<<<<<< HEAD
 KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv x86"
+=======
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+>>>>>>> 3928948a06b (rebase)
 IUSE=""
 
 RESTRICT="test" # depend on fuse kernel module

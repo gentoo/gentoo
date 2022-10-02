@@ -30,7 +30,15 @@ SRC_URI="
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
 SLOT="0"
+<<<<<<< HEAD:dev-python/matplotlib/matplotlib-3.6.0-r1.ebuild
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv"
+=======
+<<<<<<< HEAD:dev-python/matplotlib/matplotlib-3.6.0.ebuild
+KEYWORDS="~amd64 ~hppa"
+=======
+KEYWORDS="~alpha ~amd64 ~hppa ~riscv"
+>>>>>>> d6d0f12066c (Mask >=dev-util/gnome-builder-43):dev-python/matplotlib/matplotlib-3.6.0-r1.ebuild
+>>>>>>> 3928948a06b (rebase):dev-python/matplotlib/matplotlib-3.6.0.ebuild
 IUSE="cairo doc excel examples gtk3 latex qt5 tk webagg wxwidgets"
 
 # internal copy of pycxx highly patched

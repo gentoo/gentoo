@@ -22,7 +22,10 @@ KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 # gnome-desktop support is optional with --enable-gnome-desktop
 # automagic libunity dep
 # >=gspell-1.8 to ensure it uses enchant:2 like webkit-gtk
+<<<<<<< HEAD
 # <libgweather-4.2.0 because of libsoup:3 transition
+=======
+>>>>>>> 3928948a06b (rebase)
 DEPEND="
 	>=app-crypt/gcr-3.4:0=[gtk]
 	>=app-text/enchant-2.2.0:2
@@ -54,7 +57,11 @@ DEPEND="
 		>=media-libs/libchamplain-0.12:0.12[gtk]
 		>=media-libs/clutter-1.0.0:1.0
 		>=media-libs/clutter-gtk-0.90:1.0
+<<<<<<< HEAD
 		>=sci-geosciences/geocode-glib-3.10.0:0 )
+=======
+		>=sci-geosciences/geocode-glib-3.10.0 )
+>>>>>>> 3928948a06b (rebase)
 	ldap? ( >=net-nds/openldap-2:= )
 	spamassassin? ( mail-filter/spamassassin )
 	spell? ( >=app-text/gspell-1.8:= )
@@ -62,10 +69,14 @@ DEPEND="
 		>=dev-libs/nspr-4.6.1
 		>=dev-libs/nss-3.11
 	)
+<<<<<<< HEAD
 	weather? (
 		>=dev-libs/libgweather-3.91.0:4=
 		<dev-libs/libgweather-4.2.0:4=
 	)
+=======
+	weather? ( >=dev-libs/libgweather-3.91.0:4= )
+>>>>>>> 3928948a06b (rebase)
 	ytnef? ( net-mail/ytnef )
 "
 RDEPEND="${DEPEND}

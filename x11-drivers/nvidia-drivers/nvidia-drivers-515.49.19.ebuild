@@ -7,7 +7,11 @@ MODULES_OPTIONAL_USE="driver"
 inherit desktop flag-o-matic linux-mod multilib readme.gentoo-r1 \
 	systemd toolchain-funcs unpacker user-info
 
+<<<<<<< HEAD
 NV_KERNEL_MAX="6.0"
+=======
+NV_KERNEL_MAX="5.19"
+>>>>>>> 3928948a06b (rebase)
 NV_PIN="515.65.01"
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
@@ -36,13 +40,21 @@ COMMON_DEPEND="
 		net-libs/libtirpc:=
 	)
 	tools? (
+<<<<<<< HEAD
 		|| ( >=app-accessibility/at-spi2-core-2.46:2 dev-libs/atk )
+=======
+		dev-libs/atk
+>>>>>>> 3928948a06b (rebase)
 		dev-libs/glib:2
 		dev-libs/jansson:=
 		media-libs/harfbuzz:=
 		x11-libs/cairo
 		x11-libs/gdk-pixbuf:2
+<<<<<<< HEAD
 		x11-libs/gtk+:3[X]
+=======
+		x11-libs/gtk+:3
+>>>>>>> 3928948a06b (rebase)
 		x11-libs/libX11
 		x11-libs/libXext
 		x11-libs/libXxf86vm
@@ -82,6 +94,10 @@ QA_PREBUILT="lib/firmware/* opt/bin/* usr/lib*"
 
 PATCHES=(
 	"${FILESDIR}"/nvidia-drivers-470.141.03-clang15.patch
+<<<<<<< HEAD
+=======
+	"${FILESDIR}"/nvidia-extras-470.141.03-clang16.patch
+>>>>>>> 3928948a06b (rebase)
 	"${FILESDIR}"/nvidia-modprobe-390.141-uvm-perms.patch
 	"${FILESDIR}"/nvidia-settings-390.144-desktop.patch
 	"${FILESDIR}"/nvidia-settings-390.144-no-gtk2.patch
@@ -168,7 +184,13 @@ pkg_setup() {
 	fi
 
 	if kernel_is -ge 5 18 13; then
+<<<<<<< HEAD
+<<<<<<<< HEAD:x11-drivers/nvidia-drivers/nvidia-drivers-515.49.19.ebuild
 		# https://github.com/NVIDIA/open-gpu-kernel-modules/issues/341
+========
+>>>>>>>> 3928948a06b (rebase):x11-drivers/nvidia-drivers/nvidia-drivers-515.49.15.ebuild
+=======
+>>>>>>> 3928948a06b (rebase)
 		if linux_chkconfig_present FB_SIMPLE; then
 			warn+=(
 				"  CONFIG_FB_SIMPLE: is set, recommended to disable and switch to FB_EFI"

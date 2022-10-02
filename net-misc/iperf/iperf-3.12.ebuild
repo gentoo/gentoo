@@ -12,7 +12,11 @@ S="${WORKDIR}"/${P/_/}
 
 LICENSE="BSD"
 SLOT="3"
+<<<<<<< HEAD
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+=======
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+>>>>>>> 3928948a06b (rebase)
 IUSE="sctp"
 
 DEPEND="
