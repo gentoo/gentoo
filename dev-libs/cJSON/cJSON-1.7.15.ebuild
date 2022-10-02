@@ -11,7 +11,7 @@ SRC_URI="https://github.com/DaveGamble/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~ppc64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
