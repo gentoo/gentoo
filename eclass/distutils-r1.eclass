@@ -150,9 +150,6 @@ esac
 #
 # - rdepend -- add it to BDEPEND+RDEPEND (e.g. when using pkg_resources)
 #
-# - pyproject.toml -- use pyproject2setuptools to install a project
-#   using pyproject.toml (flit, poetry...)
-#
 # - manual -- do not add the dependency and suppress the checks
 #   (assumes you will take care of doing it correctly)
 #
@@ -293,7 +290,7 @@ _distutils_set_globals() {
 				rdep+=" ${setuptools_dep}"
 				;;
 			pyproject.toml)
-				bdep+=' >=dev-python/pyproject2setuppy-22[${PYTHON_USEDEP}]'
+				die "DISTUTILS_USE_SETUPTOOLS=pyproject.toml is no longer supported, use DISTUTILS_USE_PEP517"
 				;;
 			*)
 				die "Invalid DISTUTILS_USE_SETUPTOOLS=${DISTUTILS_USE_SETUPTOOLS}"
@@ -668,9 +665,7 @@ esetup.py() {
 	fi
 
 	local setup_py=( setup.py )
-	if [[ ${DISTUTILS_USE_SETUPTOOLS} == pyproject.toml ]]; then
-		setup_py=( -m pyproject2setuppy )
-	elif [[ ! -f setup.py ]]; then
+	if [[ ! -f setup.py ]]; then
 		if [[ ! -f setup.cfg ]]; then
 			die "${FUNCNAME}: setup.py nor setup.cfg not found"
 		fi
@@ -883,12 +878,10 @@ _distutils-r1_handle_pyproject_toml() {
 	[[ ${DISTUTILS_USE_SETUPTOOLS} == manual ]] && return
 
 	if [[ ! -f setup.py && -f pyproject.toml ]]; then
-		if [[ ${DISTUTILS_USE_SETUPTOOLS} != pyproject.toml ]]; then
-			eerror "No setup.py found but pyproject.toml is present.  Please migrate"
-			eerror "the package to use DISTUTILS_USE_PEP517. See:"
-			eerror "  https://projects.gentoo.org/python/guide/distutils.html"
-			die "No setup.py found and PEP517 mode not enabled"
-		fi
+		eerror "No setup.py found but pyproject.toml is present.  Please migrate"
+		eerror "the package to use DISTUTILS_USE_PEP517. See:"
+		eerror "  https://projects.gentoo.org/python/guide/distutils.html"
+		die "No setup.py found and PEP517 mode not enabled"
 	fi
 }
 
