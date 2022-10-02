@@ -3,7 +3,7 @@
 
 EAPI=8
 
-POPPLER_DATA_EXTRA_VERSION="0.4.11"
+POPPLER_DATA_EXTRA_VERSION="0.4.11-2"
 DESCRIPTION="Data files for poppler to support uncommon encodings without xpdfrc"
 HOMEPAGE="https://poppler.freedesktop.org/"
 SRC_URI="https://poppler.freedesktop.org/${P}.tar.gz"
