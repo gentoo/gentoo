@@ -32,6 +32,8 @@ RDEPEND="${PYTHON_DEPS}
 	dev-ada/e3-core[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-abc.patch )
+
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 	cd testsuite/tests
