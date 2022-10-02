@@ -29,9 +29,7 @@ RDEPEND="
 	dev-libs/libpcre
 	dev-libs/serd
 "
-DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
-"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
