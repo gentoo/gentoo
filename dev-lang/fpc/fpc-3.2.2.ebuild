@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,15 +11,20 @@ SRC_URI="mirror://sourceforge/freepascal/fpcbuild-${PV}.tar.gz
 	mirror://sourceforge/freepascal/fpc-${PV}.source.tar.gz
 	amd64? ( mirror://sourceforge/freepascal/${P}.x86_64-linux.tar )
 	arm64? ( mirror://sourceforge/freepascal/${P}.aarch64-linux.tar )
+	sparc? ( mirror://sourceforge/freepascal/${P}.sparc64-linux.tar )
 	x86? ( mirror://sourceforge/freepascal/${P}.i386-linux.tar )
 	doc? ( mirror://sourceforge/freepascal/Documentation/${PV}/doc-html.tar.gz -> ${P}-doc-html.tar.gz )"
 S="${WORKDIR}/fpcbuild-${PV}/fpcsrc"
 
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
 SLOT="0"
-KEYWORDS="-* amd64 ~arm64 x86"
+KEYWORDS="-* amd64 ~arm64 ~sparc x86"
 IUSE="doc source"
 RESTRICT="strip" #269221
+
+PATCHES=(
+	"${FILESDIR}/${P}-sparc-find-libs.patch"
+)
 
 # fpc is special: it can't use CFLAGS and LDFLAGS directly
 # since those are geared for running through gcc's frontend
@@ -46,6 +51,10 @@ src_unpack() {
 			;;
 		arm64)
 			FPC_ARCH="aarch64"
+			PV_BIN="${PV}"
+			;;
+		sparc)
+			FPC_ARCH="sparc64"
 			PV_BIN="${PV}"
 			;;
 		x86)
@@ -83,6 +92,10 @@ set_pp() {
 		arm64)
 			FPC_ARCH="a64"
 			FPC_PARCH="aarch64"
+			;;
+		sparc)
+			FPC_ARCH="sparc64"
+			FPC_PARCH="sparc64"
 			;;
 		x86)
 			FPC_ARCH="386"
