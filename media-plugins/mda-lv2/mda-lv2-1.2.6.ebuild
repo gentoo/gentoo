@@ -10,7 +10,7 @@ inherit python-any-r1 waf-utils
 
 DESCRIPTION="LV2 port of the MDA plugins by Paul Kellett"
 HOMEPAGE="https://drobilla.net/software/mda-lv2.html"
-SRC_URI="http://download.drobilla.net/${P}.tar.bz2"
+SRC_URI="https://download.drobilla.net/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
