@@ -474,6 +474,7 @@ sys-devel/automake:1.11
 # end up loaded into the same process together with the earlier libsoup ABI.
 # Migration to it is expected for GNOME 42, NOT to be unmasked with GNOME 41.
 >=app-arch/file-roller-43
+>=app-backup/deja-dup-43
 >=app-text/libgepub-0.7.0
 >=app-misc/tracker-3.4.0-r1
 >=app-misc/tracker-miners-3.4.0-r1
