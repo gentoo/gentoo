@@ -28,7 +28,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${P}-format-security.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-format-security.patch
+	"${FILESDIR}"/${P}-C99-decls.patch
+)
 
 src_prepare() {
 	default
