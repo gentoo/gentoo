@@ -147,10 +147,11 @@ pkg_setup() {
 		# nvidia-drivers does not handle the tty (beside mode restoration) but,
 		# given few options are viable, try to warn if all missing
 		warn+=(
-			"  CONFIG_FB_(EFI|SIMPLE|VESA): none set, but note at least one is needed"
-			"    to get a display for the tty console. In most cases, it is"
+			"  CONFIG_FB_(EFI|SIMPLE|VESA): none set, but note at least one is normally"
+			"    needed to get a display for the tty console. In most cases, it is"
 			"    recommended to enable FB_EFI=y and disable FB_SIMPLE (can be quirky)."
-			"    Non-EFI systems are likely to want FB_VESA=y."
+			"    Non-EFI systems are likely to want FB_VESA=y. Users with multiple GPUs"
+			"    or not using the tty may be able to safely ignore this warning."
 		)
 	fi
 
