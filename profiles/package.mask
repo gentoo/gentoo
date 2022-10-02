@@ -392,12 +392,6 @@ sys-devel/automake:1.15
 # This is likely to cause issues in tests; Unmask if using for other purposes
 >=dev-php/PHP_Timer-5.0
 
-# Sam James <sam@gentoo.org> (2021-12-01)
-# OSL 12 is a development release (for now).
-# Doesn't work with LLVM 13 yet; mask to help
-# Blender compatibility (no mixed LLVM versions).
-=media-libs/osl-1.12*
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-23)
 # Does not support updated dev-java/pdfbox-2.0.24, Bug #803488
 # Blocks (CVE-2018-11797, CVE-2021-{27807,27906,31811,31812})
