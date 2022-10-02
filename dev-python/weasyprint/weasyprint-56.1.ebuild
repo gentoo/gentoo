@@ -31,7 +31,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		|| (
-			>=app-text/ghostscript-gpl-9.56.1-r2
+			>=app-text/ghostscript-gpl-9.56.1-r3
 			<app-text/ghostscript-gpl-9.56.0
 		)
 		media-fonts/ahem
