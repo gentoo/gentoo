@@ -485,6 +485,7 @@ net-libs/libsoup:3.0
 net-libs/rest:1.0
 net-libs/uhttpmock:1.0
 net-libs/webkit-gtk:4.1
+>=net-misc/rygel-0.42
 sci-geosciences/geocode-glib:2
 >=sci-geosciences/gnome-maps-43
 >=www-client/epiphany-43
