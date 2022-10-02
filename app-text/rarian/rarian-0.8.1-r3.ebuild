@@ -8,7 +8,7 @@ inherit autotools eutils
 DESCRIPTION="A documentation metadata library"
 HOMEPAGE="https://rarian.freedesktop.org/"
 SRC_URI="https://${PN}.freedesktop.org/Releases/${P}.tar.gz
-	https://dev.gentoo.org/~eva/distfiles/${PN}/${P}-r3-patches.tar.xz"
+	https://dev.gentoo.org/~soap/distfiles/${P}-r4-patches.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -38,6 +38,7 @@ PATCHES=(
 	"${WORKDIR}"/0007-Remove-the-nonexistent-dist-gzip-Automake-option.patch
 	"${WORKDIR}"/0008-Fix-OMF-category-parsing.patch
 	"${WORKDIR}"/0009-Allow-the-getopt-command-to-be-customized-at-configu.patch
+	"${WORKDIR}"/0010-Wimplicit-int.patch
 )
 
 src_prepare() {
