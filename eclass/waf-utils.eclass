@@ -88,6 +88,9 @@ waf-utils_src_configure() {
 	if [[ ${waf_help} == *--libdir* ]]; then
 		conf_args+=( --libdir="${EPREFIX}/usr/$(get_libdir)" )
 	fi
+	if [[ ${waf_help} == *--mandir* ]]; then
+		conf_args+=( --mandir="${EPREFIX}"/usr/share/man )
+	fi
 
 	tc-export AR CC CPP CXX RANLIB
 
