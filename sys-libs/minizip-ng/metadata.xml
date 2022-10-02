@@ -8,6 +8,7 @@
 	<use>
 		<flag name="compat">Enable compatibility with <pkg>sys-libs/zlib</pkg>'s USE=minizip</flag>
 		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> for further encryption capabilities</flag>
+		<flag name="zstd">Add Zstandard compression support via <pkg>app-arch/zstd</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">zlib-ng/minizip-ng</remote-id>

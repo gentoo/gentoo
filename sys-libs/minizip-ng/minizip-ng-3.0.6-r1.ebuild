@@ -12,19 +12,25 @@ SRC_URI="https://github.com/zlib-ng/minizip-ng/archive/refs/tags/${PV}.tar.gz ->
 LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="compat openssl test"
+IUSE="compat openssl test zstd"
 RESTRICT="!test? ( test )"
 
+# Automagically prefers sys-libs/zlib-ng if installed, so let's
+# just depend on it as presumably it's better tested anyway.
 RDEPEND="
+	app-arch/bzip2
+	app-arch/xz-utils
+	sys-libs/zlib-ng
 	virtual/libiconv
 	compat? ( !sys-libs/zlib[minizip] )
 	openssl? ( dev-libs/openssl:= )
+	zstd? ( app-arch/zstd:= )
 "
 DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.6-Switch-getrandom-and-arc4random_buf-usage-order.patch
-	"${FILESDIR}"/minizip-ng-3.0.6-test-temporary.patch
+	"${FILESDIR}"/${P}-test-temporary.patch
 )
 
 src_configure() {
@@ -39,7 +45,7 @@ src_configure() {
 		-DMZ_ZLIB=ON
 		-DMZ_BZIP2=ON
 		-DMZ_LZMA=ON
-		-DMZ_ZSTD=ON
+		-DMZ_ZSTD=$(usex zstd)
 		-DMZ_LIBCOMP=OFF
 
 		# Encryption support options
