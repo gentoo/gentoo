@@ -1,7 +1,8 @@
 # Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit autotools flag-o-matic systemd
 
 DESCRIPTION="Advanced TFTP implementation client/server"
@@ -20,11 +21,11 @@ RDEPEND="${DEPEND}
 	!net-ftp/tftp-hpa
 	!net-ftp/uftpd
 	selinux? ( sec-policy/selinux-tftp )"
-BDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.7.5-CFLAGS.patch"
-	"${FILESDIR}/atftp-fix-test.patch"
+	"${FILESDIR}/${PN}-0.8.0-test-sh-declare-local.patch" # https://sourceforge.net/p/atftp/bugs/12/
+	"${FILESDIR}/${PN}-fix-test.patch" # https://sourceforge.net/p/atftp/bugs/11/
 )
 
 src_prepare() {
