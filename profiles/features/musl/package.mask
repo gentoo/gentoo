@@ -127,6 +127,7 @@ net-im/mattermost-desktop-bin
 net-im/rocketchat-desktop-bin
 net-im/skypeforlinux
 net-im/skype-dbus-mock
+net-im/slack
 net-im/teams
 net-im/telegram-desktop-bin
 net-im/wazzapp-bin
