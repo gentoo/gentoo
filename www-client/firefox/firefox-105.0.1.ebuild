@@ -76,6 +76,7 @@ REQUIRED_USE="debug? ( !system-av1 )
 
 # Firefox-only REQUIRED_USE flags
 REQUIRED_USE+=" || ( X wayland )"
+REQUIRED_USE+=" pgo? ( X )"
 REQUIRED_USE+=" screencast? ( wayland )"
 
 FF_ONLY_DEPEND="!www-client/firefox:0
@@ -108,10 +109,7 @@ BDEPEND="${PYTHON_DEPS}
 		)
 	)
 	amd64? ( >=dev-lang/nasm-2.14 )
-	x86? ( >=dev-lang/nasm-2.14 )
-	pgo? (
-		wayland? ( >=gui-libs/wlroots-0.15.1-r1[tinywl] )
-	)"
+	x86? ( >=dev-lang/nasm-2.14 )"
 COMMON_DEPEND="${FF_ONLY_DEPEND}
 	dev-libs/atk
 	dev-libs/expat
@@ -408,27 +406,6 @@ mozconfig_use_with() {
 
 	local flag=$(use_with "${@}")
 	mozconfig_add_options_ac "$(use ${1} && echo +${1} || echo -${1})" "${flag}"
-}
-
-virtwl() {
-	debug-print-function ${FUNCNAME} "$@"
-
-	[[ $# -lt 1 ]] && die "${FUNCNAME} needs at least one argument"
-	[[ -n $XDG_RUNTIME_DIR ]] || die "${FUNCNAME} needs XDG_RUNTIME_DIR to be set; try xdg_environment_reset"
-	tinywl -h >/dev/null || die 'tinywl -h failed'
-
-	# TODO: don't run addpredict in utility function. WLR_RENDERER=pixman doesn't work
-	addpredict /dev/dri
-	local VIRTWL VIRTWL_PID
-	coproc VIRTWL { WLR_BACKENDS=headless exec tinywl -s 'echo $WAYLAND_DISPLAY; read _; kill $PPID'; }
-	local -x WAYLAND_DISPLAY
-	read WAYLAND_DISPLAY <&${VIRTWL[0]}
-
-	debug-print "${FUNCNAME}: $@"
-	"$@"
-
-	[[ -n $VIRTWL_PID ]] || die "tinywl exited unexpectedly"
-	exec {VIRTWL[0]}<&- {VIRTWL[1]}>&-
 }
 
 pkg_pretend() {
@@ -1034,20 +1011,16 @@ src_configure() {
 src_compile() {
 	local virtx_cmd=
 
-	if use pgo; then
+	if use pgo ; then
+		virtx_cmd=virtx
+
 		# Reset and cleanup environment variables used by GNOME/XDG
 		gnome2_environment_reset
 
 		addpredict /root
-
-		if ! use X; then
-			virtx_cmd=virtwl
-		else
-			virtx_cmd=virtx
-		fi
 	fi
 
-	if ! use X; then
+	if ! use X && use wayland; then
 		local -x GDK_BACKEND=wayland
 	else
 		local -x GDK_BACKEND=x11
