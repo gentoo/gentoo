@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-10-03)
+# Needs systemd which is masked on musl
+net-analyzer/wireshark sdjournal
+
 # Alfred Persson Forsberg <cat@catcream.org> (2022-07-27)
 # Firefox does not build with these flags enabled on musl libc.
 # See bug #829033
