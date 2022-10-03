@@ -9,6 +9,7 @@ elibc_glibc
 # x11-drivers/nvidia-drivers is a binary package linked against glibc
 # and is masked on musl
 cuda
+collectd_plugins_gpu_nvidia
 nvidia
 video_cards_nvidia
 
