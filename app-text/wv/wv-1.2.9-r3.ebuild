@@ -36,11 +36,16 @@ PATCHES=(
 src_prepare() {
 	default
 
+	# remove -ansi flag, since it disables POSIX
+	# function declarations (bug #874396)
+	sed -i -e 's/-ansi//' configure || die
+
 	if ! use tools; then
 		sed -i -e '/bin_/d' GNUmakefile.am || die
 		sed -i -e '/SUBDIRS/d' GNUmakefile.am || die
 		sed -i -e '/\/GNUmakefile/d' configure.ac || die
 		sed -i -e '/wv[[:upper:]]/d' configure.ac || die
+		sed -i -e 's/-ansi//' configure.ac || die
 
 		# automake-1.13 fix, bug #467620
 		sed -i -e 's|AM_CONFIG_HEADER|AC_CONFIG_HEADERS|g' configure.ac || die
