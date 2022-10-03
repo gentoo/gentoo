@@ -14,6 +14,6 @@
 		<flag name="vst">Support LinuxVST plugins</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">adko4u/lsp-plugins</remote-id>
+		<remote-id type="github">sadko4u/lsp-plugins</remote-id>
 	</upstream>
 </pkgmetadata>
