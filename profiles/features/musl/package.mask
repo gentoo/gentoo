@@ -1,32 +1,6 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2022-10-03)
-# Binary package linked against glibc, nvidia-drivers is masked here too
-dev-util/nvidia-cuda-sdk
-dev-util/nvidia-cuda-toolkit
-
-# Sam James <sam@gentoo.org> (2022-10-03)
-# Binary package linked against glibc
-dev-java/openjdk-bin
-dev-java/openjdk-jre-bin
-
-# Sam James <sam@gentoo.org> (2022-10-03)
-# Binary package linked against glibc
-dev-games/ps2-packer
-
-# Sam James <sam@gentoo.org> (2022-10-03)
-# Binary package linked against glibc
-app-office/libreoffice-bin
-
-# Sam James <sam@gentoo.org> (2022-10-03)
-# Binary package linked against glibc
-app-arch/rar
-
-# Sam James <sam@gentoo.org> (2022-10-03)
-# Binary package linked against glibc
-app-admin/puppet-agent
-
 # Petr Vaněk <arkamar@atlas.cz> (2022-09-23)
 # Musl does not implement rresvport function, bugs #713810 and #713376.
 app-shells/pdsh
@@ -37,55 +11,22 @@ net-analyzer/ipcad
 sys-apps/uutils
 
 # Sam James <sam@gentoo.org> (2022-09-12)
-# The libxcrypt migration is optional for musl.
+# libxcrypt migration masks.
+# 1. The libxcrypt migration is optional for musl, so unmask -virtual/libcrypt:0/1.
+# 2. virtual/libcrypt-2 doesn't migrate anything on musl,
+#    we need virtual/libcrypt-2-r1 for the libxcrypt migration there, so
+#   avoid a useless rebuild, and ensure it happens at the right time instead.
 -virtual/libcrypt:0/1
-
-# Sam James <sam@gentoo.org> (2022-09-12)
-# virtual/libcrypt-2 doesn't migrate anything on musl,
-# we need virtual/libcrypt-2-r1 for the libxcrypt migration there, so
-# avoid a useless rebuild, and ensure it happens at the right time instead.
 =virtual/libcrypt-2
-
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-09-06)
-# Binary package linked against glibc
-games-action/minecraft-launcher
-
-# Vladimir Pavljuchenkov <spiderx@spiderx.dp.ua> (2022-08-21)
-# Binary package linked against glibc, bug #832607.
-net-p2p/resilio-sync
 
 # Mike Gilbert <floppym@gentoo.org> (2022-08-01)
 # Fails to build.
 app-emulation/open-vm-tools
 
-# William Hubbs <williamh@gentoo.org> (2022-07-30)
-# Binary package linked against glibc, bug #861893.
-app-admin/awscli-bin
-
-# David Seifert <soap@gentoo.org> (2022-07-29)
-# Binary package linked against glibc
-media-sound/baudline
-
-# David Seifert <soap@gentoo.org> (2022-07-29)
-# Binary package linked against glibc
-sys-block/megacli
-
 # Marek Szuba <marecki@gentoo.org> (2022-07-28)
 # Relies on unimplemented functions outb_p and inb_p,
 # support for which has never made it into musl. Bug #712972.
 sys-libs/libsmbios
-
-# Stefan Strogin <steils@gentoo.org> (2022-06-29)
-# Binary package linked against glibc
-net-im/element-desktop-bin
-
-# Florian Schmaus <flow@gentoo.org> (2022-06-05)
-# Binary package linked against glibc, bug #832932
-sys-block/hpssacli
-
-# Sam James <sam@gentoo.org> (2022-04-23)
-# Binary package linked against glibc, bug #832615
-net-print/cnijfilter2
 
 # Sam James <sam@gentoo.org> (2022-04-23)
 # Compatibility packages for binary/pre-built software shouldn't
@@ -98,180 +39,94 @@ sys-libs/libstdc++-v3
 # bug #713542
 net-misc/casync
 
-# Martin Dummer <martin.dummer@gmx.net> (2022-03-26)
-# Binary package linked to glibc. Bug #832558
-net-misc/teamviewer
-
-# Mike Pagano <mpagano@gentoo.org> (2022-03-21)
-# Binary package linked to glibc
-dev-util/idea-community
-
-# Pacho Ramos <pacho@gentoo.org> (2022-03-13)
-# Binary package linked to glibc
-sys-power/dptfxtract
-
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2022-03-14)
 # Doesn't build with musl, bug #832742
 sci-libs/opencascade
 
-# Adel KARA SLIMANE <adel.ks@zegrapher.com> (2022-03-09)
-# Binary packages linked to glibc
-app-editors/vscode
-app-editors/vscodium
-
-# João Santos <joaompssantos@gmail.com> (2022-02-22)
-# Binary package linked to glibc
-app-text/master-pdf-editor
-
-# Sam James <sam@gentoo.org> (2022-02-20)
-# Binary package linked to glibc
-app-admin/bitwarden-desktop-bin
-
-# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
-# Binary package linked to glibc
-media-libs/amdgpu-pro-vulkan
-media-video/amdgpu-pro-amf
-
-# Ionen Wolkens <ionen@gentoo.org> (2022-02-17)
-# Binary package linked to glibc
-net-im/discord-bin
-
-# Conrad Kostecki <conikost@gentoo.org> (2022-02-12)
-# Binary package linked to glibc
-x11-misc/xflux
-
-# Stephan Hartmann <sultan@gentoo.org> (2022-02-10)
-# Binary package linked to glibc
-www-apps/chromedriver-bin
-
 # Stephan Hartmann <sultan@gentoo.org> (2022-02-10)
 # Doesn't build on musl, bug #833028
 www-client/chromium
-
-# Stephan Hartmann <sultan@gentoo.org> (2022-02-10)
-# Binary package linked to glibc
-www-plugins/chrome-binary-plugins
-
-# Stephan Hartmann <sultan@gentoo.org> (2022-02-10)
-# Binary packages linked to glibc
-www-client/opera
-www-client/opera-beta
-www-client/opera-developer
-
-# Stephan Hartmann <sultan@gentoo.org> (2022-02-10)
-# Binary packages linked to glibc
-www-client/google-chrome
-www-client/google-chrome-beta
-www-client/google-chrome-unstable
-
-# Stephan Hartmann <sultan@gentoo.org> (2022-02-10)
-# Binary packages linked to glibc
-www-client/microsoft-edge
-www-client/microsoft-edge-beta
-www-client/microsoft-edge-dev
-
-# Paolo Pedroni <paolo.pedroni@iol.it> (2022-02-09)
-# Binary package linked to glibc
-sci-mathematics/gimps
 
 # Paolo Pedroni <paolo.pedroni@iol.it> (2022-02-09)
 # It doesn't build on musl
 # bug #832551
 net-misc/netkit-telnetd
 
-# Henning Schild <henning@hennsch.de> (2022-02-09)
-# Binary package linked to glibc
-net-im/telegram-desktop-bin
-
-# Conrad Kostecki <conikost@gentoo.org> (2022-02-08)
-# Binary package linked to glibc
-sys-apps/ipmicfg
-
 # Sam James <sam@gentoo.org> (2022-02-06)
 # Latest version doesn't build on musl
 # bug #831363
 =sys-libs/efivar-38
 
-# Stephan Hartmann <sultan@gentoo.org> (2022-02-05)
-# Binary package linked to glibc
-net-im/teams
-
-# Conrad Kostecki <conikost@gentoo.org> (2022-02-03)
-# Binary package linked to glibc
-net-misc/ipmiview
-
-# Conrad Kostecki <conikost@gentoo.org> (2022-02-03)
-# Binary package linked to glibc
-media-sound/teamspeak-server
-
-# Conrad Kostecki <conikost@gentoo.org> (2022-02-03)
-# Binary package linked to glibc
-games-server/steamcmd
-
-# Conrad Kostecki <conikost@gentoo.org> (2022-02-03)
-# Binary package linked to glibc
-games-server/bedrock-server
-
-# Conrad Kostecki <conikost@gentoo.org> (2022-02-03)
-# Binary package linked to glibc
-dev-libs/luise
-
-# Conrad Kostecki <conikost@gentoo.org> (2022-02-03)
-# Binary package linked to glibc
-app-misc/kryoflux-dtc
-
-# Conrad Kostecki <conikost@gentoo.org> (2022-02-03)
-# Binary package linked to glibc
-app-benchmarks/geekbench
-
-# Robert Siebeck <gentoo.2019@r123.de> (2022-02-02)
-# Binary package linked to glibc, bug #832483
-net-im/signal-desktop-bin
-
-# Ben Kohler <bkohler@gentoo.org> (2022-02-02)
-# Binary backage linked to glibc
-net-misc/dropbox
-
-# Sergey Popov <pinkbyte@gentoo.org> (2022-02-02)
-# Binary package linked to glibc, bug #832581
-net-misc/yandex-disk
-
-# David Seifert <soap@gentoo.org> (2022-02-02)
-# Binary package linked to glibc
-net-im/skypeforlinux
-
-# Viorel Munteanu <ceamac.paragon@gmail.com> (2022-02-01)
-# Binary package linked to glibc
-net-im/mattermost-desktop-bin
-
-# Ulrich Müller <ulm@gentoo.org> (2022-01-25)
-# Binary packages linked to glibc
-media-gfx/brscan4
-net-im/zoom
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-01-22)
-# Binary packages linked to glibc
-app-backup/tsm
-sci-electronics/labone
-
-# Marco Genasci <fedeliallalinea@gmail.com> (2022-01-06)
-# dev-db/oracle-instantclient package linked against glibc,
-# and the other packages depends on it.
-dev-db/oracle-instantclient
-dev-db/ocp
-dev-db/sqlcl-bin
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-01-05)
-# Binary package linked to glibc
+# Binary package linked to glibc (rolling mask, use for all such binpkgs)
+app-admin/awscli-bin
+app-admin/bitwarden-desktop-bin
+app-admin/puppet-agent
+app-arch/rar
+app-backup/tsm
+app-benchmarks/geekbench
+app-crypt/rainbowcrack
+app-editors/vscode
+app-editors/vscodium
+app-misc/kryoflux-dtc
+app-office/libreoffice-bin
+app-text/master-pdf-editor
 app-text/zotero-bin
+dev-db/ocp
+dev-db/oracle-instantclient
+dev-db/sqlcl-bin
+dev-games/ps2-packer
+dev-java/openjdk-bin
+dev-java/openjdk-jre-bin
+dev-libs/luise
 dev-python/pyzotero
+dev-util/idea-community
+games-action/minecraft-launcher
+games-server/bedrock-server
+games-server/steamcmd
+media-gfx/brscan4
+media-libs/amdgpu-pro-vulkan
+media-sound/baudline
+media-sound/teamspeak-server
+media-video/amdgpu-pro-amf
 media-video/popcorntime-bin
+net-im/discord-bin
+net-im/element-desktop-bin
+net-im/mattermost-desktop-bin
 net-im/rocketchat-desktop-bin
-net-im/whatsapp-desktop-bin
+net-im/skypeforlinux
+net-im/teams
+net-im/telegram-desktop-bin
 net-im/wazzapp-bin
+net-im/whatsapp-desktop-bin
+net-im/zoom
+net-misc/dropbox
+net-misc/ipmiview
+net-misc/teamviewer
+net-misc/yandex-disk
+net-p2p/resilio-sync
+net-print/cnijfilter2
+sci-electronics/eagle
+sci-electronics/labone
+sci-mathematics/gimps
 sci-misc/jupyterlab-desktop-bin
 sci-misc/netlogo-bin
-sci-electronics/eagle
+sys-apps/ipmicfg
+sys-block/hpssacli
+sys-block/megacli
+sys-power/dptfxtract
+www-apps/chromedriver-bin
+www-client/google-chrome
+www-client/google-chrome-beta
+www-client/google-chrome-unstable
+www-client/microsoft-edge
+www-client/microsoft-edge-beta
+www-client/microsoft-edge-dev
+www-client/opera
+www-client/opera-beta
+www-client/opera-developer
+www-plugins/chrome-binary-plugins
+x11-misc/xflux
 
 # Ulrich Müller <ulm@gentoo.org> (2022-01-04, 2022-07-31)
 # Emacs 23 does not support x86_64-gentoo-linux-musl systems
@@ -281,10 +136,6 @@ app-editors/emacs:23
 app-editors/emacs:24
 app-editors/emacs:25
 app-editors/emacs:26
-
-# Marek Szuba <marecki@gentoo.org> (2022-01-01)
-# Binary-only package linked against glibc.
-app-crypt/rainbowcrack
 
 # Conrad Kostecki <conikost@gentoo.org> (2021-12-15)
 # Level Zero needs RTLD_DEEPBIND, which does not exist on musl.
@@ -309,6 +160,8 @@ net-misc/netkit-rsh
 
 # David Seifert <soap@gentoo.org> (2021-02-08)
 # nvidia-drivers only works against glibc.
+dev-util/nvidia-cuda-sdk
+dev-util/nvidia-cuda-toolkit
 dev-libs/optix
 x11-drivers/nvidia-drivers
 
@@ -336,13 +189,12 @@ sys-libs/glibc
 -sys-libs/musl
 -sys-libs/libucontext
 
-# As of 2021-08-08, >=sys-fs/udev-249-r2 is patched in Gentoo
-# to work on musl, so no need to mask udev.
-# systemd itself fails to build without glibc
-sys-apps/systemd
-sys-boot/systemd-boot
+# systemd doesn't work on musl and upstream aren't interested
+# in supporting it.
 app-admin/mkosi
 app-admin/systemdgenie
+sys-apps/systemd
+sys-boot/systemd-boot
 dev-python/python-systemd
 www-servers/uwsgi
 
