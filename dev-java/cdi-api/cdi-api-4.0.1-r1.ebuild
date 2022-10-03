@@ -21,10 +21,10 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 DEPEND="
-	>=dev-java/injection-api-2.0.1:0
-	>=dev-java/jakarta-annotations-api-2.1.1:0
-	>=dev-java/jakarta-el-api-5.0.1:0
-	>=dev-java/jakarta-interceptors-2.1.0:0
+	dev-java/injection-api:0
+	dev-java/jakarta-annotations-api:0
+	dev-java/jakarta-el-api:5.0
+	dev-java/jakarta-interceptors:0
 	>=virtual/jdk-11:*
 "
 RDEPEND=">=virtual/jre-11:*"
