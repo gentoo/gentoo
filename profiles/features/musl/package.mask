@@ -337,6 +337,7 @@ sys-apps/systemd
 sys-boot/systemd-boot
 app-admin/mkosi
 app-admin/systemdgenie
+dev-python/python-systemd
 
 # rust-bin requires a glibc system
 dev-lang/rust-bin
