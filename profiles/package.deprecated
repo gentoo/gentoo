@@ -20,6 +20,7 @@
 # Matt Turner <mattst88@gentoo.org> (2022-10-02)
 # Dummy packages, now merged into app-accessibility/at-spi2-core.
 app-accessibility/at-spi2-atk
+dev-libs/atk
 
 # Michał Górny <mgorny@gentoo.org> (2022-06-19)
 # dev-python/tox is a wrapper to run test suite in a virtual

@@ -37,6 +37,7 @@
 # Masked for testing
 >=app-accessibility/at-spi2-core-2.46.0
 >=app-accessibility/at-spi2-atk-2.46.0
+>=dev-libs/atk-2.46.0
 
 # Matt Turner <mattst88@gentoo.org> (2022-10-01)
 # Depends on lots of unmaintained packages:
