@@ -323,7 +323,7 @@ app-editors/jasspa-microemacs
 sys-auth/libnss-nis
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
-# Needs a port no musl. Uses glibc-specific termio and __getppid.
+# Needs a port to musl. Uses glibc-specific termio and __getppid.
 app-emulation/ski
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
