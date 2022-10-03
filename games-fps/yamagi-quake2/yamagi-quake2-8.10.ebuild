@@ -27,17 +27,20 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="+client ctf dedicated gles openal +opengl rogue softrender vulkan xatrix"
 REQUIRED_USE="
 	|| ( client dedicated )
-	client? ( || ( opengl softrender vulkan ) )
+	client? ( || ( opengl gles softrender vulkan ) )
 "
 
 RDEPEND="
 	client? (
 		media-libs/libsdl2[opengl?,video,vulkan?]
 		net-misc/curl
+		gles? (
+			media-libs/libglvnd
+			media-libs/libsdl2[gles2]
+		)
 		openal? ( media-libs/openal )
 		!openal? ( media-libs/libsdl2[sound] )
-		opengl? ( virtual/opengl )
-		gles? ( media-libs/mesa[gles2] )
+		opengl? ( media-libs/libglvnd[X] )
 	)
 "
 DEPEND="${RDEPEND}
