@@ -3,6 +3,11 @@
 
 # Sam James <sam@gentoo.org> (2022-10-03)
 # Binary package linked against glibc
+dev-java/openjdk-bin
+dev-java/openjdk-jre-bin
+
+# Sam James <sam@gentoo.org> (2022-10-03)
+# Binary package linked against glibc
 dev-games/ps2-packer
 
 # Sam James <sam@gentoo.org> (2022-10-03)
