@@ -259,6 +259,7 @@ dev-db/sqlcl-bin
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-01-05)
 # Binary package linked to glibc
 app-text/zotero-bin
+dev-python/pyzotero
 media-video/popcorntime-bin
 net-im/rocketchat-desktop-bin
 net-im/whatsapp-desktop-bin
