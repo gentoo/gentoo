@@ -3,6 +3,10 @@
 
 # Sam James <sam@gentoo.org> (2022-10-03)
 # Binary package linked against glibc
+app-arch/rar
+
+# Sam James <sam@gentoo.org> (2022-10-03)
+# Binary package linked against glibc
 app-admin/puppet-agent
 
 # Petr Vaněk <arkamar@atlas.cz> (2022-09-23)
