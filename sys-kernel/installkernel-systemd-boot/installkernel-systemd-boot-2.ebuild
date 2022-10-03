@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="amd64 arm64 ppc64 x86"
 
-RDEPEND="|| ( sys-apps/systemd sys-boot/systemd-boot )
+RDEPEND="|| ( sys-apps/systemd sys-apps/systemd-utils[boot] sys-boot/systemd-boot )
 	!<sys-apps/debianutils-4.9-r1[installkernel(+)]
 	!sys-kernel/installkernel-gentoo"
 
