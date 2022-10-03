@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,9 +24,12 @@ BDEPEND="
 	test? ( dev-libs/appstream-glib )
 "
 
+# deja-dup can not recognize duplicity-1.0.0 and throws an error
+# https://gitlab.gnome.org/World/deja-dup/-/issues/334
 DEPEND="
 	dev-libs/atk
 	>=app-backup/duplicity-0.7.14
+	<app-backup/duplicity-1.0.0
 	>=app-crypt/libsecret-0.18.6[vala]
 	>=dev-libs/glib-2.64:2[dbus]
 	>=dev-libs/json-glib-1.2
