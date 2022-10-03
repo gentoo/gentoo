@@ -12,4 +12,7 @@
 	<use>
 		<flag name="lv2">build lv2 plugins</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">adko4u/lsp-plugins</remote-id>
+	</upstream>
 </pkgmetadata>
