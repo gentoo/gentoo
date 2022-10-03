@@ -11,7 +11,7 @@ QA_PKGCONFIG_VERSION="$(ver_cut 1-3)"
 # GraphicsMagick maintainer Bob Friesenhahn. Please be careful when verifying
 # who made releases.
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/rouault.asc
-inherit multilib-minimal verify-sig
+inherit multilib-minimal verify-sig libtool flag-o-matic
 
 MY_P="${P/_rc/rc}"
 DESCRIPTION="Tag Image File Format (TIFF) library"
@@ -48,6 +48,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.4.0_rc1-skip-thumbnail-test.patch
 )
 
+src_prepare() {
+	default
+	elibtoolize
+}
+
 multilib_src_configure() {
 	local myeconfargs=(
 		--without-x
@@ -62,6 +67,7 @@ multilib_src_configure() {
 		$(use_enable zstd)
 	)
 
+	append-lfs-flags
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 
 	# Remove components (like tools) that are irrelevant for the multilib
