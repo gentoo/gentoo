@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-10-03)
+# Binary package linked against glibc, nvidia-drivers is masked here too
+dev-util/nvidia-cuda-sdk
+dev-util/nvidia-cuda-toolkit
+
+# Sam James <sam@gentoo.org> (2022-10-03)
 # Binary package linked against glibc
 dev-java/openjdk-bin
 dev-java/openjdk-jre-bin
