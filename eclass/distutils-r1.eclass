@@ -1447,22 +1447,13 @@ distutils-r1_python_compile() {
 			fi
 			;;
 		maturin)
-			if has_version '>=dev-util/maturin-0.13'; then
-				# auditwheel may auto-bundle libraries (bug #831171),
-				# also support cargo.eclass' IUSE=debug if available
-				local -x MATURIN_PEP517_ARGS="
-					--jobs=$(makeopts_jobs)
-					--skip-auditwheel
-					$(in_iuse debug && usex debug --profile=dev '')
-				"
-			else
-				# legacy support, can cleanup when depend on >=0.13
-				local -x MATURIN_PEP517_ARGS="
-					--skip-auditwheel
-					$(in_iuse debug && usex debug \
-						--cargo-extra-args=--profile=dev '')
-				"
-			fi
+			# auditwheel may auto-bundle libraries (bug #831171),
+			# also support cargo.eclass' IUSE=debug if available
+			local -x MATURIN_PEP517_ARGS="
+				--jobs=$(makeopts_jobs)
+				--skip-auditwheel
+				$(in_iuse debug && usex debug --profile=dev '')
+			"
 			;;
 		no)
 			return
