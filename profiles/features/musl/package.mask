@@ -135,6 +135,7 @@ sys-block/hpssacli
 sys-block/megacli
 sys-power/dptfxtract
 www-apps/chromedriver-bin
+www-client/chromium-bin
 www-client/google-chrome
 www-client/google-chrome-beta
 www-client/google-chrome-unstable
@@ -144,6 +145,8 @@ www-client/microsoft-edge-dev
 www-client/opera
 www-client/opera-beta
 www-client/opera-developer
+www-client/vivaldi
+www-client/vivaldi-snapshot
 www-plugins/chrome-binary-plugins
 x11-misc/xflux
 
