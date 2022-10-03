@@ -84,7 +84,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.3329-lto.patch
 	"${FILESDIR}"/${PN}-1.7.3329-musl.patch
 	"${FILESDIR}"/${PN}-1.7.3329-qt6.patch
-	"${FILESDIR}"/${PN}-1.7.3329-wx-vs-sdl.patch
 	"${FILESDIR}"/${PN}-1.7.3351-unbundle.patch
 )
 
