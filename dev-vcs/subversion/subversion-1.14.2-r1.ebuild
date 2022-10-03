@@ -8,7 +8,7 @@ GENTOO_DEPEND_ON_PERL="no"
 PYTHON_COMPAT=( python3_{8..11} )
 USE_RUBY="ruby27 ruby26"
 
-inherit autotools bash-completion-r1 db-use depend.apache flag-o-matic java-pkg-opt-2 libtool multilib perl-module python-any-r1 ruby-single xdg-utils
+inherit autotools bash-completion-r1 db-use depend.apache flag-o-matic java-pkg-opt-2 libtool multilib perl-module prefix python-any-r1 ruby-single xdg-utils
 
 MY_P="${P/_/-}"
 DESCRIPTION="Advanced version control system"
@@ -162,6 +162,8 @@ src_prepare() {
 	sed -i -e '1c\#!/usr/bin/env sh' build/transform_libtool_scripts.sh || \
 		die "/bin/sh is not POSIX shell!"
 
+	hprefixify build/ac-macros/svn-macros.m4
+
 	eautoconf
 	elibtoolize
 
@@ -207,26 +209,11 @@ src_configure() {
 	fi
 
 	case ${CHOST} in
-		*-aix*)
-			# avoid recording immediate path to sharedlibs into executables
-			append-ldflags -Wl,-bnoipath
-		;;
-		*-cygwin*)
-			# no LD_PRELOAD support, no undefined symbols
-			myconf+=( --disable-local-library-preloading LT_LDFLAGS=-no-undefined )
-			;;
-		*-interix*)
-			# loader crashes on the LD_PRELOADs...
-			myconf+=( --disable-local-library-preloading )
-		;;
 		*-solaris*)
 			# need -lintl to link
 			use nls && append-libs intl
 			# this breaks installation, on x64 echo replacement is 32-bits
 			myconf+=( --disable-local-library-preloading )
-		;;
-		*-mint*)
-			myconf+=( --enable-all-static --disable-local-library-preloading )
 		;;
 		*)
 			# inject LD_PRELOAD entries for easy in-tree development
