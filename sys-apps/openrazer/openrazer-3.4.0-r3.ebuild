@@ -48,7 +48,10 @@ DOCS=( README.md )
 
 DOC_CONTENTS="To successfully use OpenRazer: load desired kernel module
 (razeraccessory, razerkbd, razerkraken and/or razermouse),
-add Your user to the \"plugdev\" group and start the \"openrazer-daemon\"."
+add your user to the \"plugdev\" group and start the OpenRazer daemon.
+To automatically start up the OpenRazer daemon on session login copy
+/usr/share/openrazer/openrazer-daemon.desktop file into Your user's
+~/.config/autostart/ directory."
 
 BUILD_TARGETS="clean driver"
 BUILD_PARAMS="-C ${S} SUBDIRS=${S}/driver KERNELDIR=${KERNEL_DIR}"
@@ -120,8 +123,14 @@ src_install() {
 		# dbus service
 		insinto /usr/share/dbus-1/services
 		doins "${S}"/daemon/org.razer.service
+
 		# systemd unit
 		systemd_douserunit "${S}"/daemon/${PN}-daemon.service
+
+		# xdg autostart example file
+		insinto /usr/share/${PN}
+		newins "${S}"/install_files/desktop/openrazer-daemon.desktop openrazer-daemon.desktop
+
 		# Manpages
 		doman "${S}"/daemon/resources/man/${PN}-daemon.8
 		doman "${S}"/daemon/resources/man/razer.conf.5
