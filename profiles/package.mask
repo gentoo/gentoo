@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-10-03)
+# A major release with breaking changes, likely to cause some mayhem.
+# Masked for testing.
+>=dev-python/importlib_metadata-5
+
 # Matt Turner <mattst88@gentoo.org> (2022-10-01)
 # Depends on lots of unmaintained packages:
 # 	- app-text/gnome-doc-utils
