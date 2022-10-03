@@ -64,6 +64,8 @@ src_configure() {
 		--disable-auto-extras
 		--disable-ownership
 		--system
+		--uid ${PN}
+		--gid ${PN}
 		--binary-dir="/usr/bin"
 		--data-dir="/var/lib/${PN}/data"
 		--example-dir="/usr/share/doc/${PV}"
