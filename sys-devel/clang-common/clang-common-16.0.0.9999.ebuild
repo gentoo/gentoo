@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit bash-completion-r1 llvm.org multilib
+inherit bash-completion-r1 llvm.org
 
 DESCRIPTION="Common files shared between multiple slots of clang"
 HOMEPAGE="https://llvm.org/"
