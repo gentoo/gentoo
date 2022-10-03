@@ -221,7 +221,6 @@ sys-apps/systemd
 sys-boot/systemd-boot
 dev-python/python-systemd
 >=www-misc/profile-sync-daemon-6
-www-servers/uwsgi
 
 # rust-bin requires a glibc system
 dev-lang/rust-bin

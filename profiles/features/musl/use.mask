@@ -19,3 +19,4 @@ oracle
 
 # sys-apps/systemd is masked
 systemd
+uwsgi_plugins_systemd_logger
