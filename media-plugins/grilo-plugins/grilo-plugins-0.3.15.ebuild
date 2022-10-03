@@ -29,7 +29,7 @@ RDEPEND="
 		media-plugins/gst-plugins-chromaprint:1.0
 	)
 	dev-libs/json-glib
-	daap? ( >=net-libs/libdmapsharing-2.9.12:3.0 )
+	daap? ( >=net-libs/libdmapsharing-3.9.10:4.0 )
 	media-libs/libmediaart:2.0
 	net-libs/libsoup:2.4
 	dev-libs/libxml2:2
@@ -83,8 +83,6 @@ src_prepare() {
 	sed -i -e "s:meson.project_name():'grilo-plugins-${SLOT%/*}':" po/meson.build || die
 	sed -i -e "s:meson.project_name():'grilo-plugins-${SLOT%/*}':" help/meson.build || die
 
-	# libdmapsharing-4 is not packaged
-	sed -i -e "s:libdmapsharing4_dep.found():false:" meson.build || die
 }
 
 src_configure() {
