@@ -1,0 +1,19 @@
+From 13f045457f08e349d6bb3f3e98a3b59c73f32bbc Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 2 Oct 2022 23:34:05 +0100
+Subject: [PATCH] Fix build with Clang 16
+
+Bug: https://lists.gnu.org/archive/html/bug-global/2021-02/msg00012.html
+Bug: https://bugs.gentoo.org/870988
+--- a/configure.ac
++++ b/configure.ac
+@@ -74,7 +74,8 @@ case "$host_os" in
+ AC_MSG_CHECKING(whether POSIX.1-2008 realpath is equipped)
+ AC_CACHE_VAL(ac_cv_posix1_2008_realpath,
+ [AC_RUN_IFELSE([AC_LANG_SOURCE([[
+-main(){ (void)realpath("/./tmp", (void *)0); return 0; }
++#include <stdlib.h>
++int main(){ (void)realpath("/./tmp", (void *)0); return 0; }
+ ]])],[ac_cv_posix1_2008_realpath=yes],
+ [ac_cv_posix1_2008_realpath=no])])
+ AC_MSG_RESULT($ac_cv_posix1_2008_realpath)

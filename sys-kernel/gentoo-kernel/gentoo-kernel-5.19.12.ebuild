@@ -11,6 +11,7 @@ GENPATCHES_P=genpatches-${PV%.*}-$(( ${PV##*.} + 2 ))
 # forked to https://github.com/projg2/fedora-kernel-config-for-gentoo
 CONFIG_VER=5.19.9-gentoo
 GENTOO_CONFIG_VER=g2
+[[ ${PV} != 5.19.12 ]] && die "Bump config to g3!"
 
 DESCRIPTION="Linux kernel built with Gentoo patches"
 HOMEPAGE="https://www.kernel.org/"

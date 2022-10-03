@@ -35,7 +35,6 @@
 		<flag name="gtk2">Enables gtk+ output plugin -Tgtk (needs cairo)</flag>
 		<flag name="gts">Enables support for GNU Triangulated Surface Library (required for sfdp to work)</flag>
 		<flag name="lasi">Enables PostScript output via <pkg>media-libs/lasi</pkg>, for plugin -Tlasi (needs cairo)</flag>
-		<flag name="lefty">Builds lefty front-end, requires <pkg>x11-libs/libXmu</pkg> and <pkg>x11-libs/libXaw</pkg></flag>
 		<flag name="X">Builds dotty, lneato, unflatten, vimdot, builds plugin -Txlib, and enables support for x11 in various other modules (needs cairo)</flag>
 	</use>
 	<upstream>

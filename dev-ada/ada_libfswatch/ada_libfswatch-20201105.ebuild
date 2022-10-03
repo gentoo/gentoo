@@ -3,7 +3,7 @@
 
 EAPI=7
 
-ADA_COMPAT=( gnat_202{0,1} )
+ADA_COMPAT=( gnat_202{0,1} gcc_12_2_0 )
 inherit ada
 
 commitId=94c0a5f137b88113a791a148b60e5e7d019d6fa1

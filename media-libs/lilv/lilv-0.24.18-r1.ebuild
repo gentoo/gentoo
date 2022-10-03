@@ -10,7 +10,7 @@ inherit meson-multilib python-single-r1
 
 DESCRIPTION="Library to make the use of LV2 plugins as simple as possible for applications"
 HOMEPAGE="https://drobilla.net/software/lilv.html"
-SRC_URI="http://download.drobilla.net/${P}.tar.xz"
+SRC_URI="https://download.drobilla.net/${P}.tar.xz"
 
 LICENSE="ISC"
 SLOT="0"
