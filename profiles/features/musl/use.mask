@@ -5,6 +5,13 @@
 -elibc_musl
 elibc_glibc
 
+# Sam James <sam@gentoo.org> (2022-10-03)
+# x11-drivers/nvidia-drivers is a binary package linked against glibc
+# and is masked on musl
+cuda
+nvidia
+video_cards_nvidia
+
 # Marco Genasci <fedeliallalinea@gmail.com> (2022-01-06)
 # Pulls dev-db/oracle-instantclient which doesn't work on musl
 oracle
