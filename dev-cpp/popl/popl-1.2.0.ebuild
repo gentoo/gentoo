@@ -16,7 +16,7 @@ if [[ ${PV} == *9999 ]] ; then
 else
 
 	SRC_URI="https://github.com/badaix/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~ppc ppc64 ~riscv x86"
+	KEYWORDS="amd64 ~arm ppc ppc64 ~riscv x86"
 fi
 
 LICENSE="MIT"
