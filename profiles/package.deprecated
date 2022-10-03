@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2022-10-02)
+# Dummy packages, now merged into app-accessibility/at-spi2-core.
+app-accessibility/at-spi2-atk
+
 # Michał Górny <mgorny@gentoo.org> (2022-06-19)
 # dev-python/tox is a wrapper to run test suite in a virtual
 # environment, possibly for multiple Python versions.  It cannot really
