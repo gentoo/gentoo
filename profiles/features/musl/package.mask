@@ -3,6 +3,10 @@
 
 # Sam James <sam@gentoo.org> (2022-10-03)
 # Binary package linked against glibc
+dev-games/ps2-packer
+
+# Sam James <sam@gentoo.org> (2022-10-03)
+# Binary package linked against glibc
 app-office/libreoffice-bin
 
 # Sam James <sam@gentoo.org> (2022-10-03)
