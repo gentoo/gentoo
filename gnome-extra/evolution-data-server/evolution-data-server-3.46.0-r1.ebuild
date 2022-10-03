@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Evolution https://gitlab.gnome.org/GNOME/e
 LICENSE="|| ( LGPL-2 LGPL-3 ) BSD Sleepycat"
 SLOT="0/63-26-20" # subslot = libcamel-1.2/libedataserver-1.2/libebook-1.2.so soname version
 
-IUSE="berkdb +gnome-online-accounts +gtk gtk-doc +introspection ldap kerberos oauth vala +weather"
+IUSE="berkdb +gnome-online-accounts +gtk gtk-doc +introspection ldap kerberos oauth oauthgtk4 vala +weather"
 REQUIRED_USE="vala? ( introspection )"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
@@ -37,10 +37,14 @@ RDEPEND="
 	berkdb? ( >=sys-libs/db-4:= )
 	gtk? (
 		>=x11-libs/gtk+-3.20:3
+		>=gui-libs/gtk-4.4:4
 		>=media-libs/libcanberra-0.25[gtk3]
 	)
 	oauth? (
 		>=net-libs/webkit-gtk-2.34.0:4.1
+	)
+	oauthgtk4? (
+		>=net-libs/webkit-gtk-2.36.0:5
 	)
 	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.8:= )
 	introspection? ( >=dev-libs/gobject-introspection-0.9.12:= )
@@ -113,10 +117,9 @@ src_configure() {
 		-DENABLE_WEATHER=$(usex weather)
 		-DENABLE_LARGEFILE=ON
 		-DENABLE_VALA_BINDINGS=$(usex vala)
-		# Explicitly turn gtk4 off because gtk4webkit is not available yet
-		-DENABLE_GTK4=off
+		-DENABLE_GTK4=$(usex gtk)
+		-DENABLE_OAUTH2_WEBKITGTK4=$(usex oauthgtk4)
 	)
-
 	cmake_src_configure
 }
 

@@ -8,7 +8,10 @@
 	<use>
 		<flag name="berkdb"><pkg>sys-libs/db</pkg> support needed to migrate old (pre-3.13 evolution versions) addressbook data</flag>
 		<flag name="gnome-online-accounts">Enable <pkg>net-libs/gnome-online-accounts</pkg> based Google authentication support</flag>
-		<flag name="oauth">Enable internal OAuth2 authentication support for Google and Outlook.com.
+		<flag name="oauth">Enable internal OAuth2 authentication support for Google and Outlook.com using webkit-gtk with gtk3.
+			If gnome-online-accounts is enabled and used, this is not necessary,
+			but both can be supported at the same time with different setup at runtime</flag>
+		<flag name="oauthgtk4">Enable internal OAuth2 authentication support for Google and Outlook.com using webkit-gtk with gtk4.
 			If gnome-online-accounts is enabled and used, this is not necessary,
 			but both can be supported at the same time with different setup at runtime</flag>
 		<flag name="weather">Enable optional weather calendar support</flag>
