@@ -217,9 +217,11 @@ sys-libs/glibc
 # in supporting it.
 app-admin/mkosi
 app-admin/systemdgenie
+dev-python/python-systemd
+sys-apps/gentoo-systemd-integration
 sys-apps/systemd
 sys-boot/systemd-boot
-dev-python/python-systemd
+sys-process/systemd-cron
 >=www-misc/profile-sync-daemon-6
 
 # rust-bin requires a glibc system
