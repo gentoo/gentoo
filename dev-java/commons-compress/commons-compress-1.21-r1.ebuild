@@ -68,9 +68,11 @@ RDEPEND="
 	>=virtual/jre-1.8:*
 	${CP_DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-asm7+.patch" )
-
 S="${WORKDIR}/${P}-src"
+
+PATCHES=(
+	"${FILESDIR}/${P}-asm7+.patch"
+)
 
 JAVA_AUTOMATIC_MODULE_NAME="org.apache.commons.compress"
 JAVA_CLASSPATH_EXTRA="osgi-core"
