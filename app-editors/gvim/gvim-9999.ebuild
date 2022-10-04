@@ -11,7 +11,7 @@ PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby27 ruby30 ruby31"
 
-inherit vim-doc flag-o-matic xdg-utils bash-completion-r1 prefix lua-single python-single-r1 ruby-single
+inherit vim-doc flag-o-matic xdg-utils bash-completion-r1 prefix lua-single python-single-r1 toolchain-funcs ruby-single
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
@@ -245,6 +245,14 @@ src_configure() {
 		# configure or the source, which would be much more hackish.
 		# after all vim does it right, only interix is badly broken (again)
 		export ac_cv_func_sigaction=no
+	fi
+
+	if tc-is-cross-compiler ; then
+		export vim_cv_getcwd_broken=no \
+			   vim_cv_memmove_handles_overlap=yes \
+			   vim_cv_stat_ignores_slash=yes \
+			   vim_cv_terminfo=yes \
+			   vim_cv_toupper_broken=no
 	fi
 
 	econf \
