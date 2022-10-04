@@ -1,9 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-DESCRIPTION="Graphical Blinkenlights simulator with networking support"
+EAPI=8
 
+inherit autotools
+
+DESCRIPTION="Graphical Blinkenlights simulator with networking support"
 HOMEPAGE="http://blinkenlights.net/project/developer-tools"
 SRC_URI="http://blinkenlights.de/dist/${P}.tar.gz"
 
@@ -20,6 +22,11 @@ RDEPEND="
 	aalib? ( >=media-libs/aalib-1.4_rc4-r2 )
 	gtk? ( >=x11-libs/gtk+-2.4.4:2 )
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+src_prepare() {
+	default
+
+	eautoreconf
+}
