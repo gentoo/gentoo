@@ -22,8 +22,8 @@ IUSE="caja dbus debug djvu dvi epub +introspection gnome-keyring nls +postscript
 REQUIRED_USE="t1lib? ( dvi )"
 
 COMMON_DEPEND="
+	app-accessibility/at-spi2-core
 	>=app-text/poppler-0.22[cairo]
-	dev-libs/atk
 	>=dev-libs/glib-2.62:2
 	>=dev-libs/libxml2-2.5:2
 	sys-libs/zlib
