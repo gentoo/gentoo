@@ -23,12 +23,6 @@ www-client/qutebrowser widevine
 # nls support, see bug #712828
 x11-wm/fluxbox nls
 
-# Marco Genasci <fedeliallalinea@gmail.com> (2022-01-06)
-# Pulls dev-db/oracle-instantclient which doesn't work on musl
-app-metrics/collectd collectd_plugins_oracle
-dev-lang/php oci8-instant-client
-dev-qt/qtsql oci8
-
 # Ulrich Müller <ulm@gentoo.org> (2022-01-04)
 # musl iconv doesn't know about shift-jis which is needed for Japanese
 # documentation (bug #830436)
