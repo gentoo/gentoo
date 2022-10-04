@@ -33,6 +33,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-10-04)
+# Regression for some Intel LCDs which may cause physical damage
+# Please upgrade to 5.19.13 if affected!
+# https://lore.kernel.org/all/YzwooNdMECzuI5+h@intel.com/
+# https://lore.kernel.org/lkml/1664893073238194@kroah.com/T/
+=sys-kernel/gentoo-sources-5.19.12
+=sys-kernel/vanilla-sources-5.19.12
+=sys-kernel/gentoo-kernel-5.19.12
+=sys-kernel/vanilla-kernel-5.19.12
+=virtual/dist-kernel-5.19.12
+
 # Sam Jaems <sam@gentoo.org> (2022-10-04)
 # Please upgrade to >= portage-3.0.37 for binpkg fixes.
 # bug #870283, bug #874771.
