@@ -60,6 +60,10 @@ RESTRICT="debug? ( strip ) test"
 
 DOCS=( AUTHORS COPYRIGHT META README.md )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.1.6-fgrep.patch
+)
+
 pkg_pretend() {
 	use rootfs || return 0
 
@@ -110,6 +114,15 @@ pkg_setup() {
 	kernel_is -ge 3 10 || die "Linux 3.10 or newer required"
 
 	linux-mod_pkg_setup
+}
+
+src_unpack() {
+	if use verify-sig ; then
+		# Needed for downloaded patch (which is unsigned, which is fine)
+		verify-sig_verify_detached "${DISTDIR}"/zfs-${MY_PV}.tar.gz{,.asc}
+	fi
+
+	default
 }
 
 src_prepare() {
