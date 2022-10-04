@@ -8,7 +8,8 @@ PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1
 
 if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="https://github.com/pkgcore/pkgcore.git"
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/pkgcore/pkgcore.git
+		https://github.com/pkgcore/pkgcore.git"
 	inherit git-r3
 else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
@@ -28,7 +29,7 @@ RDEPEND="
 if [[ ${PV} == *9999 ]]; then
 	RDEPEND+=" ~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
 else
-	RDEPEND+=" >=dev-python/snakeoil-0.9.12[${PYTHON_USEDEP}]"
+	RDEPEND+=" >=dev-python/snakeoil-0.10.1[${PYTHON_USEDEP}]"
 fi
 BDEPEND="
 	test? (
