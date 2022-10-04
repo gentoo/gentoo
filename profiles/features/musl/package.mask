@@ -220,6 +220,7 @@ app-editors/jasspa-microemacs
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
 # musl has no support for nss subsystem.
+sys-apps/unscd
 sys-auth/libnss-nis
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
