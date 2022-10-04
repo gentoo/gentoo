@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam Jaems <sam@gentoo.org> (2022-10-04)
+# Please upgrade to >= portage-3.0.37 for binpkg fixes.
+# bug #870283, bug #874771.
+=sys-apps/portage-3.0.31
+=sys-apps/portage-3.0.32
+=sys-apps/portage-3.0.33
+=sys-apps/portage-3.0.34
+=sys-apps/portage-3.0.35
+=sys-apps/portage-3.0.36
+
 # Matt Turner <mattst88@gentoo.org> (2022-10-01)
 # Depends on lots of unmaintained packages:
 # 	- app-text/gnome-doc-utils
