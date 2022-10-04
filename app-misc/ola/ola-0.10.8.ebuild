@@ -14,7 +14,7 @@ SRC_URI="https://github.com/OpenLightingProject/${PN}/releases/download/${PV}/${
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="examples ftdi http osc python rdm-tests tcmalloc test usb zeroconf"
+IUSE="doc examples ftdi http osc python rdm-tests tcmalloc test usb zeroconf"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 	rdm-tests? ( python )"
@@ -46,6 +46,10 @@ DEPEND="${RDEPEND}
 BDEPEND="sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
+	doc? (
+		app-doc/doxygen
+		media-gfx/graphviz
+	)
 	test? (
 		dev-util/cppunit
 		python? (
@@ -71,6 +75,8 @@ src_configure() {
 	local myeconfargs=(
 		--disable-fatal-warnings
 		--with-uucp-lock="/run"
+		$(use_enable doc doxygen-doc)
+		$(use_enable doc doxygen-dot)
 		$(use_enable examples)
 		$(use_enable ftdi libftdi)
 		$(use_enable http)
@@ -84,10 +90,20 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
+src_compile() {
+	default
+	use doc && emake doxygen-doc
+}
+
 src_install() {
 	default
 
 	find "${ED}" -name '*.la' -delete || die
+
+	if use doc; then
+		dodoc -r html
+		docompress -x /usr/share/doc/${PF}/html
+	fi
 
 	if use examples && use python; then
 		docinto examples
