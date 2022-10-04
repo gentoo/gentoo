@@ -14,8 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ~mips ~ppc x86"
 IUSE="static-libs"
 
-DEPEND="
-	!sys-libs/glibc"
+RDEPEND="!sys-libs/glibc"
 
 S="${WORKDIR}/musl-rpmatch-${PV}"
 
