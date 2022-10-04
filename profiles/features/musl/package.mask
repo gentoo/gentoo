@@ -71,6 +71,7 @@ net-misc/sitecopy
 # Latest version doesn't build on musl
 # bug #831363
 =sys-libs/efivar-38
+app-crypt/pesign
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-01-05)
 # Binary package linked to glibc (rolling mask, use for all such binpkgs)
