@@ -41,7 +41,7 @@ PATCHES=(
 
 src_prepare() {
 	default
-	append-cflags -Wno-error=implicit-function-declaration
+	append-cppflags -DLUA_COMPAT_OPENLIB
 }
 
 src_install() {
