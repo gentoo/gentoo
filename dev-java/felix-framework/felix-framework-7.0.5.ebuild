@@ -87,9 +87,9 @@ src_compile() {
 
 	# according to pom.xml, line 129
 	# grep the line between <Add-opens> and </Add-opens> from pom.xml
-	local ADD_OPENS="$( sed -n '/<Add-opens>/,/<\/Add-opens/p' pom.xml \
+	local add_opens="$(sed -n '/<Add-opens>/,/<\/Add-opens/p' pom.xml \
 		| grep -v Add-opens | tr -s '[:space:]')" || die
-	echo "Add-opens:${ADD_OPENS}" > "${T}/Add-opens-to-MANIFEST.MF" \
+	echo "Add-opens:${add_opens}" > "${T}/Add-opens-to-MANIFEST.MF" \
 		|| die "Add-opens-to-MANIFEST.MF failed"
 	jar ufmv ${JAVA_JAR_FILENAME} "${T}/Add-opens-to-MANIFEST.MF" \
 		|| die "updating MANIFEST.MF failed"
