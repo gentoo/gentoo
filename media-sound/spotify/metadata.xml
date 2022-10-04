@@ -9,6 +9,5 @@
 		<flag name="local-playback">Allows playing local files with the Spotify client</flag>
 		<flag name="pax-kernel">Triggers a paxmarking of the main Spotify binary</flag>
 		<flag name="pulseaudio">Controls the dependency on pulseaudio or apulse</flag>
-		<flag name="systray">Pulls in dependencies needed for systray support on some desktop environments</flag>
 	</use>
 </pkgmetadata>
