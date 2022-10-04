@@ -36,7 +36,7 @@ src_prepare() {
 }
 
 src_configure() {
-	source "${ESYSROOT}"/usr/lib/tclConfig.sh || die
+	source "${ESYSROOT}/usr/$(get_libdir)/tclConfig.sh" || die
 
 	CPPFLAGS="-I${TCL_SRC_DIR}/generic ${CPPFLAGS}" \
 	econf \
