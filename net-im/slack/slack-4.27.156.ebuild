@@ -28,6 +28,7 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 	media-libs/mesa:0[${MULTILIB_USEDEP}]
 	net-print/cups:0[${MULTILIB_USEDEP}]
 	sys-apps/dbus:0[${MULTILIB_USEDEP}]
+	sys-libs/glibc
 	x11-libs/cairo:0[${MULTILIB_USEDEP}]
 	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
 	x11-libs/gtk+:3[${MULTILIB_USEDEP}]
