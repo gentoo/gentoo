@@ -11,7 +11,7 @@ PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby27 ruby30 ruby31"
 
-inherit vim-doc flag-o-matic xdg-utils bash-completion-r1 prefix lua-single python-single-r1 toolchain-funcs ruby-single
+inherit bash-completion-r1 flag-o-matic lua-single prefix python-single-r1 ruby-single toolchain-funcs vim-doc xdg-utils
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
@@ -29,7 +29,7 @@ HOMEPAGE="https://vim.sourceforge.io/ https://github.com/vim/vim"
 
 LICENSE="vim"
 SLOT="0"
-IUSE="acl aqua crypt cscope debug lua motif netbeans nls perl python racket ruby selinux session sound tcl"
+IUSE="acl aqua crypt cscope debug lua minimal motif netbeans nls perl python racket ruby selinux session sound tcl"
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -76,6 +76,7 @@ BDEPEND="
 	lua? ( ${LUA_DEPS} )
 	nls? ( sys-devel/gettext )
 "
+PDEPEND="!minimal? ( app-vim/gentoo-syntax )"
 
 # various failures (bugs #630042 and #682320)
 RESTRICT="test"
