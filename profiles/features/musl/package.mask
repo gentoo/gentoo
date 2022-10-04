@@ -1,6 +1,16 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-10-04)
+# Packages with dubious sys-libs/glibc dependencies (non-binary) but
+# masking for now to allow musl profiles to graduate from exp->dev.
+dev-db/pgbouncer
+dev-libs/cgreen
+net-misc/grive
+net-print/pnm2ppa
+net-wireless/neard
+sys-apps/noexec
+
 # Petr Vaněk <arkamar@atlas.cz> (2022-09-23)
 # Musl does not implement rresvport function, bugs #713810 and #713376.
 app-admin/clustershell
