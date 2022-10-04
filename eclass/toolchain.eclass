@@ -1975,16 +1975,20 @@ toolchain_src_install() {
 		fi
 	done
 
-	# We remove the generated fixincludes, as they can cause things to break
-	# (ncurses, openssl, etc).  We do not prevent them from being built, as
-	# in the following commit which we revert:
-	# https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/eclass/toolchain.eclass?r1=1.647&r2=1.648
-	# This is because bsd userland needs fixedincludes to build gcc, while
-	# linux does not.  Both can dispose of them afterwards.
-	while read x ; do
-		grep -q 'It has been auto-edited by fixincludes from' "${x}" \
-			&& rm -f "${x}"
-	done < <(find gcc/include*/ -name '*.h')
+	# Re-enable fixincludes for >= GCC 13
+	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=107128
+	if [[ ${GCCMAJOR} -lt 13 ]] ; then
+		# We remove the generated fixincludes, as they can cause things to break
+		# (ncurses, openssl, etc).  We do not prevent them from being built, as
+		# in the following commit which we revert:
+		# https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/eclass/toolchain.eclass?r1=1.647&r2=1.648
+		# This is because bsd userland needs fixedincludes to build gcc, while
+		# linux does not.  Both can dispose of them afterwards.
+		while read x ; do
+			grep -q 'It has been auto-edited by fixincludes from' "${x}" \
+				&& rm -f "${x}"
+		done < <(find gcc/include*/ -name '*.h')
+	fi
 
 	if is_jit ; then
 		# See https://gcc.gnu.org/onlinedocs/gcc-11.3.0/jit/internals/index.html#packaging-notes
