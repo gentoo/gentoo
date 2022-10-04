@@ -5,9 +5,9 @@ EAPI=8
 
 # Please bump with app-editors/vim-core and app-editors/gvim
 
-VIM_VERSION="8.2"
+VIM_VERSION="9.0"
 LUA_COMPAT=( lua5-1 luajit )
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby26 ruby27"
 
@@ -18,7 +18,7 @@ if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/vim/vim.git"
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> ${P}.tar.gz
-		https://dev.gentoo.org/~mattst88/distfiles/vim-8.2.5066-gentoo-patches.tar.xz"
+		https://gitweb.gentoo.org/proj/vim-patches.git/snapshot/vim-patches-vim-9.0.0049-patches.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
@@ -70,18 +70,15 @@ pkg_setup() {
 	unset LANG LC_ALL
 	export LC_COLLATE="C"
 
-	# Gnome sandbox silliness. bug #114475.
-	mkdir -p "${T}"/home || die "mkdir failed"
-	export HOME="${T}"/home
-
 	use lua && lua-single_pkg_setup
 	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
+
 	if [[ ${PV} != 9999* ]] ; then
 		# Gentoo patches to fix runtime issues, cross-compile errors, etc
-		eapply "${WORKDIR}"/patches/
+		eapply "${WORKDIR}"/vim-patches-vim-9.0.0049-patches
 	fi
 
 	# Fixup a script to use awk instead of nawk
@@ -147,11 +144,18 @@ src_prepare() {
 		"s:\\\$(PERLLIB)/ExtUtils/xsubpp:${EPREFIX}/usr/bin/xsubpp:" \
 		"${S}"/src/Makefile || die 'sed for ExtUtils-ParseXS failed'
 
+	# Fix bug 18245: Prevent "make" from the following chain:
+	# (1) Notice configure.ac is newer than auto/configure
+	# (2) Rebuild auto/configure
+	# (3) Notice auto/configure is newer than auto/config.mk
+	# (4) Run ./configure (with wrong args) to remake auto/config.mk
+	sed -i 's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
+	rm src/auto/configure || die "rm failed"
+
 	eapply_user
 }
 
 src_configure() {
-	local myconf=()
 
 	# Fix bug #37354: Disallow -funroll-all-loops on amd64
 	# Bug #57859 suggests that we want to do this for all archs
@@ -162,13 +166,6 @@ src_configure() {
 	# multiple archs...
 	replace-flags -O3 -O2
 
-	# Fix bug 18245: Prevent "make" from the following chain:
-	# (1) Notice configure.ac is newer than auto/configure
-	# (2) Rebuild auto/configure
-	# (3) Notice auto/configure is newer than auto/config.mk
-	# (4) Run ./configure (with wrong args) to remake auto/config.mk
-	sed -i 's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
-	rm src/auto/configure || die "rm failed"
 	emake -j1 -C src autoconf
 
 	# This should fix a sandbox violation (see bug #24447). The hvc
@@ -179,6 +176,7 @@ src_configure() {
 		fi
 	done
 
+	local myconf=()
 	if use minimal; then
 		myconf=(
 			--with-features=tiny
@@ -226,6 +224,10 @@ src_configure() {
 		fi
 
 		if use lua; then
+			# -DLUA_COMPAT_OPENLIB=1 is required to enable the
+			# deprecated (in 5.1) luaL_openlib API (#874690)
+			use lua_single_target_lua5-1 && append-cppflags -DLUA_COMPAT_OPENLIB=1
+
 			myconf+=(
 				--enable-luainterp
 				$(use_with lua_single_target_luajit luajit)

@@ -225,6 +225,10 @@ src_configure() {
 		fi
 
 		if use lua; then
+			# -DLUA_COMPAT_OPENLIB=1 is required to enable the
+			# deprecated (in 5.1) luaL_openlib API (#874690)
+			use lua_single_target_lua5-1 && append-cppflags -DLUA_COMPAT_OPENLIB=1
+
 			myconf+=(
 				--enable-luainterp
 				$(use_with lua_single_target_luajit luajit)

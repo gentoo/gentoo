@@ -1,15 +1,15 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
 # Please bump with app-editors/vim-core and app-editors/gvim
 
-VIM_VERSION="9.0"
+VIM_VERSION="8.2"
 LUA_COMPAT=( lua5-1 luajit )
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+)"
-USE_RUBY="ruby26 ruby27"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 inherit vim-doc flag-o-matic bash-completion-r1 lua-single python-single-r1 ruby-single desktop xdg-utils
 
@@ -18,8 +18,8 @@ if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/vim/vim.git"
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> ${P}.tar.gz
-		https://gitweb.gentoo.org/proj/vim-patches.git/snapshot/vim-patches-vim-9.0.0049-patches.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+		https://dev.gentoo.org/~zlogene/distfiles/app-editors/vim/vim-8.2.0360-gentoo-patches.tar.xz"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="Vim, an improved vi-style text editor"
@@ -70,15 +70,18 @@ pkg_setup() {
 	unset LANG LC_ALL
 	export LC_COLLATE="C"
 
+	# Gnome sandbox silliness. bug #114475.
+	mkdir -p "${T}"/home || die "mkdir failed"
+	export HOME="${T}"/home
+
 	use lua && lua-single_pkg_setup
 	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
-
 	if [[ ${PV} != 9999* ]] ; then
 		# Gentoo patches to fix runtime issues, cross-compile errors, etc
-		eapply "${WORKDIR}"/vim-patches-vim-9.0.0049-patches
+		eapply "${WORKDIR}"/patches/
 	fi
 
 	# Fixup a script to use awk instead of nawk
@@ -115,7 +118,7 @@ src_prepare() {
 	# which isn't even in the source file being invalid, we'll do some trickery
 	# to make the error never occur. bug 66162 (02 October 2004 ciaranm)
 	find "${S}" -name '*.c' | while read c; do
-		echo >> "$c" || die "echo failed"
+	    echo >> "$c" || die "echo failed"
 	done
 
 	# conditionally make the manpager.sh script
@@ -144,18 +147,11 @@ src_prepare() {
 		"s:\\\$(PERLLIB)/ExtUtils/xsubpp:${EPREFIX}/usr/bin/xsubpp:" \
 		"${S}"/src/Makefile || die 'sed for ExtUtils-ParseXS failed'
 
-	# Fix bug 18245: Prevent "make" from the following chain:
-	# (1) Notice configure.ac is newer than auto/configure
-	# (2) Rebuild auto/configure
-	# (3) Notice auto/configure is newer than auto/config.mk
-	# (4) Run ./configure (with wrong args) to remake auto/config.mk
-	sed -i 's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
-	rm src/auto/configure || die "rm failed"
-
 	eapply_user
 }
 
 src_configure() {
+	local myconf=()
 
 	# Fix bug #37354: Disallow -funroll-all-loops on amd64
 	# Bug #57859 suggests that we want to do this for all archs
@@ -166,6 +162,13 @@ src_configure() {
 	# multiple archs...
 	replace-flags -O3 -O2
 
+	# Fix bug 18245: Prevent "make" from the following chain:
+	# (1) Notice configure.ac is newer than auto/configure
+	# (2) Rebuild auto/configure
+	# (3) Notice auto/configure is newer than auto/config.mk
+	# (4) Run ./configure (with wrong args) to remake auto/config.mk
+	sed -i 's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
+	rm src/auto/configure || die "rm failed"
 	emake -j1 -C src autoconf
 
 	# This should fix a sandbox violation (see bug #24447). The hvc
@@ -176,7 +179,6 @@ src_configure() {
 		fi
 	done
 
-	local myconf=()
 	if use minimal; then
 		myconf=(
 			--with-features=tiny
@@ -224,6 +226,10 @@ src_configure() {
 		fi
 
 		if use lua; then
+			# -DLUA_COMPAT_OPENLIB=1 is required to enable the
+			# deprecated (in 5.1) luaL_openlib API (#874690)
+			use lua_single_target_lua5-1 && append-cppflags -DLUA_COMPAT_OPENLIB=1
+
 			myconf+=(
 				--enable-luainterp
 				$(use_with lua_single_target_luajit luajit)
@@ -271,10 +277,6 @@ src_test() {
 	# Don't let vim talk to X
 	unset DISPLAY
 
-	# Arch and opensuse seem to do this and at this point, I'm willing
-	# to try anything to avoid random test hangs!
-	export TERM=xterm
-
 	# See https://github.com/vim/vim/blob/f08b0eb8691ff09f98bc4beef986ece1c521655f/src/testdir/runtest.vim#L5
 	# for more information on test variables we can use.
 	# Note that certain variables need vim-compatible regex (not PCRE), see e.g.
@@ -289,11 +291,7 @@ src_test() {
 	# Fragile and depends on TERM(?)
 	# - Test_spelldump_bang
 	# Hangs.
-	# - Test_fuzzy_completion_env
-	# Too sensitive to leaked environment variables.
-	# - Test_term_mouse_multiple_clicks_to_select_mode
-	# Hangs.
-	export TEST_SKIP_PAT='\(Test_expand_star_star\|Test_exrc\|Test_job_tty_in_out\|Test_spelldump_bang\|Test_fuzzy_completion_env\|Test_term_mouse_multiple_clicks_to_select_mode\)'
+	export TEST_SKIP_PAT='\(Test_expand_star_star\|Test_exrc\|Test_job_tty_in_out\|Test_spelldump_bang\)'
 
 	emake -j1 -C src/testdir nongui
 }
