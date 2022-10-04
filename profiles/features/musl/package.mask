@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Conrad Kostecki <conikost@gentoo.org> (2022-10-04)
+# Binary package depends on glibc, so we need to mask for musl.
+sys-apps/tas
+
 # Sam James <sam@gentoo.org> (2022-10-04)
 # Packages with dubious sys-libs/glibc dependencies (non-binary) but
 # masking for now to allow musl profiles to graduate from exp->dev.
