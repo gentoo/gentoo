@@ -225,7 +225,7 @@ S="${WORKDIR}/${P/b/B}"
 # CC-BY-4.0/OFL-1.1: embeds fonts inside the executable
 LICENSE="Apache-2.0 BSD CC-BY-4.0 CC0-1.0 ISC MIT MPL-2.0 OFL-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="doc"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
