@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="A set of utilities for converting to/from the netpbm (and related) formats"
-HOMEPAGE="http://netpbm.sourceforge.net/"
+HOMEPAGE="https://netpbm.sourceforge.net/"
 SRC_URI="https://github.com/ceamac/netpbm-make-dist/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
