@@ -28,7 +28,7 @@ RDEPEND="
 if [[ ${PV} == *9999 ]]; then
 	RDEPEND+=" ~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
 else
-	RDEPEND+=" =dev-python/snakeoil-0.9.12[${PYTHON_USEDEP}]"
+	RDEPEND+=" ~dev-python/snakeoil-0.9.12[${PYTHON_USEDEP}]"
 fi
 BDEPEND="
 	test? (
