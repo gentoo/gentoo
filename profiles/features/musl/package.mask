@@ -6,6 +6,7 @@
 # masking for now to allow musl profiles to graduate from exp->dev.
 dev-db/pgbouncer
 dev-libs/cgreen
+media-sound/xwax
 net-misc/grive
 net-print/pnm2ppa
 net-wireless/neard
