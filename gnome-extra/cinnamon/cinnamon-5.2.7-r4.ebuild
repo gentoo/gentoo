@@ -12,7 +12,7 @@ DESCRIPTION="A fork of GNOME Shell with layout similar to GNOME 2"
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cinnamon"
 SRC_URI="https://github.com/linuxmint/cinnamon/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2+"
+LICENSE="GPL-2+ GPL-3 LGPL-2.1"
 SLOT="0"
 IUSE="+eds +gstreamer gtk-doc +nls +networkmanager"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
