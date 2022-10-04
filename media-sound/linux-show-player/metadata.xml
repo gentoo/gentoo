@@ -11,5 +11,7 @@
 	</upstream>
 	<use>
 		<flag name="midi">Allow cues to send, or trigger on, MIDI messages</flag>
+		<flag name="timecode">Support the sending of time code of running audio files over ArtNet,
+			for instance to trigger cues in lighting-control software on lighting desks</flag>
 	</use>
 </pkgmetadata>
