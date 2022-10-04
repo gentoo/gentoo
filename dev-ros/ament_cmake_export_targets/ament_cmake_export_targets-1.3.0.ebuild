@@ -11,7 +11,6 @@ ROS_PN="ament_cmake"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ament/ament_cmake"
-	SRC_URI=""
 	S=${WORKDIR}/${P}/${PN}
 else
 	SRC_URI="https://github.com/ament/ament_cmake/archive/${PV}.tar.gz -> ${ROS_PN}-${PV}.tar.gz"
@@ -28,7 +27,6 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 else
 	KEYWORDS="~amd64"
 fi
-IUSE=""
 
 RDEPEND="
 	dev-ros/ament_cmake_core
@@ -36,12 +34,13 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 # Deps here are transitive from ament_cmake_core to have matching python support
-BDEPEND="
-	$(python_gen_any_dep 'dev-python/ament_package[${PYTHON_USEDEP}] dev-python/catkin_pkg[${PYTHON_USEDEP}]')
-	${PYTHON_DEPS}
+BDEPEND="${PYTHON_DEPS}
+	$(python_gen_any_dep '
+		dev-python/ament_package[${PYTHON_USEDEP}]
+		dev-python/catkin_pkg[${PYTHON_USEDEP}]')
 "
 
 python_check_deps() {
-	has_version "dev-python/ament_package[${PYTHON_USEDEP}]" && \
-		has_version "dev-python/catkin_pkg[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/ament_package[${PYTHON_USEDEP}]" \
+		"dev-python/catkin_pkg[${PYTHON_USEDEP}]"
 }
