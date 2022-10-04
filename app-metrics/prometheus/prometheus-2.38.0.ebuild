@@ -11,7 +11,6 @@ MY_PV=v${PV/_rc/-rc.}
 # make assets-compress
 # tar -acf <tarball> web/ui
 
-
 DESCRIPTION="Prometheus monitoring system and time series database"
 HOMEPAGE="https://github.com/prometheus/prometheus"
 SRC_URI="https://github.com/prometheus/prometheus/archive/${MY_PV}.tar.gz -> ${P}.tar.gz
