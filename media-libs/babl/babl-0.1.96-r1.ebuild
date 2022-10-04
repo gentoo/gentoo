@@ -65,5 +65,5 @@ src_install() {
 	meson_src_install
 
 	# Bug 871690
-	dosym "${ESYSROOT}"/usr/"$(get_libdir)"/pkgconfig/babl.pc /usr/"$(get_libdir)"/pkgconfig/babl-0.1.pc
+	dosym -r /usr/"$(get_libdir)"/pkgconfig/babl.pc /usr/"$(get_libdir)"/pkgconfig/babl-0.1.pc
 }
