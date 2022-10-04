@@ -415,15 +415,6 @@ java-pkg-simple_src_compile() {
 	fi
 
 	# package
-	[[ ! -d ${classes}/META-INF ]] && mkdir ${classes}/META-INF
-	if  [[ -v JAVA_AUTOMATIC_MODULE_NAME ]]; then
-		echo "Automatic-Module-Name: ${JAVA_AUTOMATIC_MODULE_NAME}" \
-			>> ${classes}/META-INF/MANIFEST.MF || die "adding module name failed"
-	fi
-	if  [[ -v JAVA_MAIN_CLASS ]]; then
-		echo "Main-Class: ${JAVA_MAIN_CLASS}" \
-			>> ${classes}/META-INF/MANIFEST.MF || die "adding main class failed"
-	fi
 	local jar_args
 	if [[ -e ${classes}/META-INF/MANIFEST.MF ]]; then
 		jar_args="cfm ${JAVA_JAR_FILENAME} ${classes}/META-INF/MANIFEST.MF"
@@ -431,6 +422,19 @@ java-pkg-simple_src_compile() {
 		jar_args="cf ${JAVA_JAR_FILENAME}"
 	fi
 	jar ${jar_args} -C ${classes} . || die "jar failed"
+	if  [[ -n "${JAVA_AUTOMATIC_MODULE_NAME}" ]]; then
+		echo "Automatic-Module-Name: ${JAVA_AUTOMATIC_MODULE_NAME}" \
+			>> "${T}/add-to-MANIFEST.MF" || die "adding module name failed"
+	fi
+	if  [[ -n "${JAVA_MAIN_CLASS}" ]]; then
+		echo "Main-Class: ${JAVA_MAIN_CLASS}" \
+			>> "${T}/add-to-MANIFEST.MF" || die "adding main class failed"
+	fi
+	if [[ -f "${T}/add-to-MANIFEST.MF" ]]; then
+		jar ufmv ${JAVA_JAR_FILENAME} "${T}/add-to-MANIFEST.MF" \
+			|| die "updating MANIFEST.MF failed"
+		rm -f "${T}/add-to-MANIFEST.MF" || die "cannot remove"
+	fi
 }
 
 # @FUNCTION: java-pkg-simple_src_install
