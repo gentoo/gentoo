@@ -468,6 +468,7 @@ sys-devel/automake:1.11
 >=dev-python/nautilus-python-4.0
 >=dev-util/devhelp-43
 >=gnome-base/gnome-desktop-43
+>=gnome-base/gnome-flashback-3.46
 >=gnome-base/gnome-panel-3.46
 >=gnome-base/gnome-settings-daemon-43
 >=gnome-base/gnome-shell-43
