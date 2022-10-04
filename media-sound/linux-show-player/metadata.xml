@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">FrancescoCeruti/linux-show-player</remote-id>
+	</upstream>
+	<use>
+		<flag name="midi">Allow cues to send, or trigger on, MIDI messages</flag>
+	</use>
+</pkgmetadata>
