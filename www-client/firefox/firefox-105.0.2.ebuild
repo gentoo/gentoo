@@ -114,10 +114,13 @@ BDEPEND="${PYTHON_DEPS}
 			x11-base/xorg-server[xvfb]
 			x11-apps/xhost
 		)
-		wayland? ( >=gui-libs/wlroots-0.15.1-r1[tinywl] )
+		wayland? (
+			>=gui-libs/wlroots-0.15.1-r1[tinywl]
+			x11-misc/xkeyboard-config
+		)
 	)"
 COMMON_DEPEND="${FF_ONLY_DEPEND}
-	>=app-accessibility/at-spi2-core-2.46.0
+	>=app-accessibility/at-spi2-core-2.46.0:2
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/libffi:=
