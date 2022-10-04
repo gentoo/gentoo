@@ -72,3 +72,33 @@
  
  #include "gloo/common/linux.h"
  #include "gloo/common/logging.h"
+--- a/gloo/transport/tcp/tls/pair.cc	2022-10-04 21:14:04.099150060 +0200
++++ b/gloo/transport/tcp/tls/pair.cc	2022-10-04 21:14:22.330886610 +0200
+@@ -17,6 +17,7 @@
+ 
+ #include <cstring>
+ #include <poll.h>
++#include <array>
+ 
+ namespace gloo {
+ namespace transport {
+--- a/gloo/common/linux.cc	2022-10-04 21:20:21.401691929 +0200
++++ b/gloo/common/linux.cc	2022-10-04 21:23:13.924192100 +0200
+@@ -198,7 +198,7 @@
+   } ecmd;
+   int rv;
+ 
+-  ifr->ifr_data = (__caddr_t)&ecmd;
++  ifr->ifr_data = (char *)&ecmd;
+   memset(&ecmd, 0, sizeof(ecmd));
+   ecmd.req.cmd = ETHTOOL_GLINKSETTINGS;
+ 
+@@ -226,7 +226,7 @@
+   struct ethtool_cmd edata;
+   int rv;
+ 
+-  ifr->ifr_data = (__caddr_t)&edata;
++  ifr->ifr_data = (char *)&edata;
+   memset(&edata, 0, sizeof(edata));
+   edata.cmd = ETHTOOL_GSET;
+ 
