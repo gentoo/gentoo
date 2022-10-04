@@ -39,8 +39,18 @@ net-misc/iputils rarpd
 
 # Sam James <sam@gentoo.org> (2021-11-20)
 # Pulls in po4a which doesn't seem to work on musl (wants /usr/bin/locale)
+app-arch/dpkg nls
+app-emulation/guestfs-tools doc
+app-emulation/libguestfs doc
+app-text/bibletime doc
+dev-util/debhelper l10n_de l10n_es l10n_fr
+dev-util/schroot nls
+media-video/mkvtoolnix nls
+sci-electronics/kicad-meta doc
+sys-apps/fakeroot nls
 sys-apps/man-db nls
 sys-apps/sysvinit nls
+sys-auth/sssd man
 
 # Sam James <sam@gentoo.org> (2021-11-07)
 # Disable some sanitizers for LLVM, see bug #753935
