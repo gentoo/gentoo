@@ -199,6 +199,7 @@ net-misc/netkit-rsh
 # nvidia-drivers only works against glibc.
 dev-libs/cudnn
 dev-libs/cudnn-frontend
+dev-python/pycuda
 dev-util/nvidia-cuda-sdk
 dev-util/nvidia-cuda-toolkit
 media-video/nvidia-video-codec

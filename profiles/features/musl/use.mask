@@ -22,8 +22,10 @@ cuda
 cudnn
 collectd_plugins_gpu_nvidia
 nvenc
+nvdec
 nvidia
 nvml
+optix
 video_cards_nvidia
 
 # sys-apps/systemd is masked

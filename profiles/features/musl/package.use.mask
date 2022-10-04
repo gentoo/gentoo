@@ -8,6 +8,7 @@ kde-apps/kdenetwork-meta dropbox
 media-video/ffmpeg amf
 net-fs/openafs tsm
 net-analyzer/nagios-plugin-check_raid megaraid-sas
+sys-apps/hwloc gl
 www-client/qutebrowser widevine
 
 # Sam James <sam@gentoo.org> (2022-10-03)
