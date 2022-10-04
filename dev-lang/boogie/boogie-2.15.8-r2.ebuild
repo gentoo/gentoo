@@ -20,7 +20,10 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="debug"
 
-BDEPEND="virtual/dotnet-sdk:${DOTNET_COMPAT}"
+BDEPEND="
+	dev-libs/icu
+	virtual/dotnet-sdk:${DOTNET_COMPAT}
+"
 RDEPEND="
 	${BDEPEND}
 	sci-mathematics/z3
