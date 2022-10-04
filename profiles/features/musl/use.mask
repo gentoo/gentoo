@@ -5,6 +5,10 @@
 -elibc_musl
 elibc_glibc
 
+# Sam James <sam@gentoo.org> (2022-10-04)
+# dev-libs/luise is a binary package linked against glibc and is masked on musl
+lcd_devices_luise
+
 # Sam James <sam@gentoo.org> (2022-10-03)
 # x11-drivers/nvidia-drivers is a binary package linked against glibc
 # and is masked on musl
