@@ -97,6 +97,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.16-static-libs.patch
 	"${FILESDIR}"/${PN}-2.24.0-clang-15-configure.patch
 	"${FILESDIR}"/${P}-cmake-target-fixes.patch
+	"${FILESDIR}"/${PN}-2.24.0-fix-build-without-joystick.patch
 )
 
 S="${WORKDIR}/${MY_P}"
