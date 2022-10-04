@@ -6,6 +6,11 @@
 elibc_glibc
 
 # Sam James <sam@gentoo.org> (2022-10-04)
+# sci-libs/opencascade is masked on musl
+occ
+opencascade
+
+# Sam James <sam@gentoo.org> (2022-10-04)
 # Mask USE flags which pull in a binary package linked against glibc (rolling
 # mask, use for all such packages)
 collectd_plugins_oracle

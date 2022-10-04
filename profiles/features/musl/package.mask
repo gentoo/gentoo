@@ -41,6 +41,9 @@ net-misc/casync
 
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2022-03-14)
 # Doesn't build with musl, bug #832742
+app-eselect/eselect-opencascade
+media-gfx/freecad
+media-gfx/prusaslicer
 sci-libs/opencascade
 
 # Stephan Hartmann <sultan@gentoo.org> (2022-02-10)
