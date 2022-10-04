@@ -325,7 +325,7 @@ x86		default/linux/x86/17.0/systemd/merged-usr			dev
 
 # musl profiles
 # @MAINTAINER: musl@gentoo.org
-amd64		default/linux/amd64/17.0/musl				dev
+amd64		default/linux/amd64/17.0/musl				exp
 amd64		default/linux/amd64/17.0/musl/clang			exp
 amd64		default/linux/amd64/17.0/musl/hardened			exp
 amd64		default/linux/amd64/17.0/musl/hardened/selinux		exp
@@ -342,8 +342,8 @@ mips		default/linux/mips/17.0/musl/o32			exp
 mips		default/linux/mips/17.0/musl/n64			exp
 mips		default/linux/mips/17.0/musl/mipsel/o32			exp
 mips		default/linux/mips/17.0/musl/mipsel/n64			exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64d/musl		dev
-riscv		default/linux/riscv/20.0/rv64gc/lp64/musl		dev
+riscv		default/linux/riscv/20.0/rv64gc/lp64d/musl		exp
+riscv		default/linux/riscv/20.0/rv64gc/lp64/musl		exp
 x86		default/linux/x86/17.0/musl				exp
 x86		default/linux/x86/17.0/musl/selinux			exp
 
