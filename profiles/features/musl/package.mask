@@ -1,10 +1,6 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Vladimir Pavljuchenkov <spiderx@spiderx.dp.ua> (2022-10-02)
-# Binary package linked against glibc, bug #832480.
-net-im/gitter-bin
-
 # Petr Vaněk <arkamar@atlas.cz> (2022-09-23)
 # Musl does not implement rresvport function, bugs #713810 and #713376.
 app-shells/pdsh
@@ -127,6 +123,7 @@ media-video/makemkv
 media-video/popcorntime-bin
 net-im/discord-bin
 net-im/element-desktop-bin
+net-im/gitter-bin
 net-im/mattermost-desktop-bin
 net-im/rocketchat-desktop-bin
 net-im/skypeforlinux
