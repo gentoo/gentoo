@@ -11,7 +11,9 @@ elibc_glibc
 cuda
 cudnn
 collectd_plugins_gpu_nvidia
+nvenc
 nvidia
+nvml
 video_cards_nvidia
 
 # Marco Genasci <fedeliallalinea@gmail.com> (2022-01-06)
