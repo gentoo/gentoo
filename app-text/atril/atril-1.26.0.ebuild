@@ -85,12 +85,6 @@ pkg_setup() {
 src_configure() {
 	# Passing --disable-help would drop offline help, that would be inconsistent
 	# with helps of the most of GNOME apps that doesn't require network for that.
-	local use_ps;
-	if use postscript ; then
-		use_ps="--enable-ps"
-	else
-		use_ps="--disable-ps"
-	fi
 	mate_src_configure \
 		--enable-comics \
 		--enable-pdf \
@@ -106,12 +100,12 @@ src_configure() {
 		$(use_enable epub) \
 		$(use_enable introspection) \
 		$(use_enable nls) \
+		$(use_enable postscript ps) \
 		$(use_enable synctex) \
 		$(use_enable t1lib) \
 		$(use_enable test tests) \
 		$(use_enable tiff) \
-		$(use_enable xps) \
-		${use_ps}
+		$(use_enable xps)
 }
 
 src_test() {
