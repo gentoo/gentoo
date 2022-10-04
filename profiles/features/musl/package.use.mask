@@ -60,6 +60,10 @@ media-video/mkvtoolnix nls
 sci-electronics/kicad-meta doc
 sys-apps/fakeroot nls
 sys-apps/man-db nls
+sys-apps/man-pages l10n_cs l10n_da l10n_de l10n_el l10n_es l10n_fi l10n_fr l10n_hu
+sys-apps/man-pages l10n_id l10n_it l10n_mk l10n_nb l10n_nl l10n_pl l10n_pt-BR l10n_ro
+sys-apps/man-pages l10n_sr l10n_sv l10n_uk l10n_vi
+sys-apps/man-pages l10n_ja l10n_ru l10n_zh-CN
 sys-apps/sysvinit nls
 sys-auth/sssd man
 

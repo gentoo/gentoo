@@ -194,6 +194,7 @@ app-doc/kicad-doc
 app-i18n/man-pages-l10n
 app-text/po4a
 games-strategy/colobot
+www-apps/ikiwiki
 
 # Hank Leininger <hlein@korelogic.com> (2021-07-14)
 # Uses glibc-specific rexec(3) function, bug #715898
