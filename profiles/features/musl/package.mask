@@ -81,6 +81,8 @@ dev-games/ps2-packer
 dev-java/openjdk-bin
 dev-java/openjdk-jre-bin
 dev-libs/luise
+dev-perl/Lab-Zhinst
+dev-php/PEAR-MDB2_Driver_oci8
 dev-python/pyzotero
 dev-util/idea-community
 games-action/a-story-about-my-uncle
@@ -104,6 +106,7 @@ games-server/bedrock-server
 games-server/steamcmd
 games-server/ut2004-ded
 games-simulation/slime-rancher
+gnome-extra/nautilus-dropbox
 kde-apps/dolphin-plugins-dropbox
 mate-extra/caja-dropbox
 media-gfx/brscan4
@@ -119,6 +122,7 @@ net-im/element-desktop-bin
 net-im/mattermost-desktop-bin
 net-im/rocketchat-desktop-bin
 net-im/skypeforlinux
+net-im/skype-dbus-mock
 net-im/teams
 net-im/telegram-desktop-bin
 net-im/wazzapp-bin

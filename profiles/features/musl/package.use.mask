@@ -5,6 +5,9 @@
 # Rolling mask for all USE flags which pull in a masked binary package
 # (linked against glibc). Use for all such packages.
 kde-apps/kdenetwork-meta dropbox
+media-video/ffmpeg amf
+net-fs/openafs tsm
+net-analyzer/nagios-plugin-check_raid megaraid-sas
 www-client/qutebrowser widevine
 
 # Sam James <sam@gentoo.org> (2022-10-03)
