@@ -196,6 +196,7 @@ dev-libs/level-zero
 app-doc/kicad-doc
 app-i18n/man-pages-l10n
 app-text/po4a
+dev-vcs/git-annex
 games-strategy/colobot
 www-apps/ikiwiki
 
