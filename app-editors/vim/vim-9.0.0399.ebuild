@@ -11,7 +11,7 @@ PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby27 ruby30 ruby31"
 
-inherit bash-completion-r1 desktop flag-o-matic lua-single python-single-r1 ruby-single toolchain-funcs vim-doc xdg-utils
+inherit vim-doc flag-o-matic bash-completion-r1 lua-single python-single-r1 ruby-single toolchain-funcs desktop xdg-utils
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
@@ -46,6 +46,7 @@ RDEPEND="
 		$(lua_gen_impl_dep 'deprecated' lua5-1)
 	)
 	~app-editors/vim-core-${PV}
+	!<app-editors/vim-core-8.2.4328-r1
 	vim-pager? ( app-editors/vim-core[-minimal] )
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
@@ -63,7 +64,6 @@ BDEPEND="
 	lua? ( ${LUA_DEPS} )
 	nls? ( sys-devel/gettext )
 "
-PDEPEND="!minimal? ( app-vim/gentoo-syntax )"
 
 pkg_setup() {
 	# people with broken alphabets run into trouble. bug #82186.
@@ -224,6 +224,10 @@ src_configure() {
 		fi
 
 		if use lua; then
+			# -DLUA_COMPAT_OPENLIB=1 is required to enable the
+			# deprecated (in 5.1) luaL_openlib API (#874690)
+			use lua_single_target_lua5-1 && append-cppflags -DLUA_COMPAT_OPENLIB=1
+
 			myconf+=(
 				--enable-luainterp
 				$(use_with lua_single_target_luajit luajit)
@@ -289,12 +293,21 @@ src_test() {
 	# http://www.softpanorama.org/Editors/Vimorama/vim_regular_expressions.shtml.
 	#
 	# Skipped tests:
+	# - Test_expand_star_star
+	# Hangs because of a recursive symlink in /usr/include/nodejs (bug #616680)
 	# - Test_exrc
-	#   - Looks in wrong location? (bug #742710)
+	# Looks in wrong location? (bug #742710)
+	# - Test_job_tty_in_out
+	# Fragile and depends on TERM(?)
+	# - Test_spelldump_bang
+	# Hangs.
 	# - Test_fuzzy_completion_env
-	#   - Too sensitive to leaked environment variables.
-	#   - "Expected 'echo $VIMRUNTIME' but got 'echo $ENV_UNSET'"
-	export TEST_SKIP_PAT='\(Test_exrc\|Test_fuzzy_completion_env\)'
+	# Too sensitive to leaked environment variables.
+	# - Test_term_mouse_multiple_clicks_to_select_mode
+	# Hangs.
+	# - Test_spelldump
+	# Hangs.
+	export TEST_SKIP_PAT='\(Test_expand_star_star\|Test_exrc\|Test_job_tty_in_out\|Test_spelldump_bang\|Test_fuzzy_completion_env\|Test_term_mouse_multiple_clicks_to_select_mode\|Test_spelldump\)'
 
 	emake -j1 -C src/testdir nongui
 }
