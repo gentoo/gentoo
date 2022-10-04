@@ -6,7 +6,10 @@ EAPI=7
 inherit flag-o-matic
 
 DESCRIPTION="Transparent SSL/TLS interception"
-HOMEPAGE="https://www.roe.ch/SSLsplit"
+HOMEPAGE="
+	https://www.roe.ch/SSLsplit
+	https://github.com/droe/sslsplit
+"
 
 LICENSE="BSD-2"
 SLOT="0"
