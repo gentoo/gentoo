@@ -7,6 +7,9 @@
 dev-db/pgbouncer
 dev-libs/cgreen
 media-sound/xwax
+net-analyzer/gvmd
+net-analyzer/gvm-libs
+net-analyzer/openvas-scanner
 net-misc/grive
 net-print/pnm2ppa
 net-wireless/neard
@@ -73,6 +76,7 @@ net-misc/sitecopy
 # bug #831363
 =sys-libs/efivar-38
 app-crypt/pesign
+sys-kernel/kpatch
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-01-05)
 # Binary package linked to glibc (rolling mask, use for all such binpkgs)
