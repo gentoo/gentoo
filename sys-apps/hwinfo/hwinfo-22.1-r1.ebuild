@@ -47,7 +47,7 @@ src_prepare() {
 
 src_compile() {
 	tc-export AR
-	emake CC="$(tc-getCC)" RPM_OPT_FLAGS="${CFLAGS}" LIBDIR="/usr/$(get_libdir)"
+	emake CC="$(tc-getCC)" RPM_OPT_FLAGS="${CFLAGS}" LIBDIR="${EPREFIX}/usr/$(get_libdir)"
 }
 
 src_install() {
