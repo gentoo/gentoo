@@ -11,7 +11,7 @@ PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby27 ruby30 ruby31"
 
-inherit vim-doc flag-o-matic bash-completion-r1 lua-single python-single-r1 ruby-single desktop xdg-utils
+inherit vim-doc flag-o-matic bash-completion-r1 lua-single python-single-r1 ruby-single toolchain-funcs desktop xdg-utils
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
