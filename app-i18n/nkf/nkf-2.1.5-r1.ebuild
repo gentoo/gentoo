@@ -29,11 +29,6 @@ BDEPEND="python? (
 		dev-python/setuptools[${PYTHON_USEDEP}]
 	)"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-python-ssize_t.patch
-	"${FILESDIR}"/${PN}-2.1.5-python-ssize_t-deux.patch
-)
-
 src_unpack() {
 	use python && vcs-snapshot_src_unpack || default
 }
@@ -46,6 +41,9 @@ src_prepare() {
 	if use python; then
 		mv "${WORKDIR}"/${PY_P} NKF.python || die
 		eapply "${FILESDIR}"/${PN}-python.patch
+		eapply "${FILESDIR}"/${P}-python-ssize_t.patch
+		eapply "${FILESDIR}"/${PN}-2.1.5-python-ssize_t-deux.patch
+
 		cd NKF.python || die
 		distutils-r1_src_prepare
 		cd - >/dev/null || die
