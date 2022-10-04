@@ -1,6 +1,10 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2022-10-04)
+# sys-block/targetcli-fb not keyworded here yet (Bug #866506)
+sys-libs/libblockdev test
+
 # WANG Xuerui <xen0n@gentoo.org> (2022-10-04)
 # Sanitizers partially supported on this architecture.
 #
