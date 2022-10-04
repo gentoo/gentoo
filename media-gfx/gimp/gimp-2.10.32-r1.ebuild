@@ -54,7 +54,7 @@ COMMON_DEPEND="
 	jpegxl? ( >=media-libs/libjxl-0.6.1:= )
 	mng? ( media-libs/libmng:= )
 	openexr? ( >=media-libs/openexr-1.6.1:= )
-	postscript? ( app-text/ghostscript-gpl )
+	postscript? ( app-text/ghostscript-gpl:= )
 	udev? ( dev-libs/libgudev:= )
 	unwind? ( >=sys-libs/libunwind-1.1.0:= )
 	webp? ( >=media-libs/libwebp-0.6.0:= )

@@ -69,7 +69,7 @@ COMMON_DEPEND="
 	)
 	mng? ( media-libs/libmng:= )
 	openexr? ( >=media-libs/openexr-2.3.0:= )
-	postscript? ( app-text/ghostscript-gpl )
+	postscript? ( app-text/ghostscript-gpl:= )
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
