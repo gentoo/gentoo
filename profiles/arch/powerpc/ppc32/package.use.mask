@@ -110,6 +110,7 @@ media-libs/gd avif heif
 # compiler-rt* has no support for ppc32 (yet?)
 # bug #708344
 sys-devel/clang-runtime compiler-rt sanitize
+sys-devel/clang-common default-compiler-rt
 sys-devel/clang default-compiler-rt
 
 # Florian Schmaus <flo@geekplace.eu> (2020-12-03)
