@@ -33,7 +33,7 @@ DEPEND="
 		dev-util/vulkan-headers:0=
 		media-libs/vulkan-loader:0=
 	)
-	>=x11-libs/libdrm-2.4.109:0=
+	>=x11-libs/libdrm-2.4.113:0=
 	x11-libs/libxkbcommon
 	x11-libs/pixman
 	x11-backend? ( x11-libs/libxcb:0= )
@@ -53,8 +53,6 @@ BDEPEND="
 	dev-util/wayland-scanner
 	virtual/pkgconfig
 "
-
-PATCHES=( "${FILESDIR}"/wlroots-0.15.1-tinywl-dont-crash-upon-missing-keyboard.patch )
 
 src_configure() {
 	# xcb-util-errors is not on Gentoo Repository (and upstream seems inactive?)
