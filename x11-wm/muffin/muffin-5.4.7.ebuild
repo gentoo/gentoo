@@ -9,7 +9,7 @@ DESCRIPTION="Compositing window manager forked from Mutter for use with Cinnamon
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/muffin"
 SRC_URI="https://github.com/linuxmint/muffin/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2+"
+LICENSE="BSD GPL-2+ LGPL-2+ LGPL-2.1+ MIT SGI-B-2.0"
 SLOT="0"
 IUSE="input_devices_wacom +introspection screencast sysprof test udev"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
