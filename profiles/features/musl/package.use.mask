@@ -18,6 +18,8 @@ www-client/qutebrowser widevine
 # Sam James <sam@gentoo.org> (2022-10-03)
 # Needs systemd which is masked on musl
 net-analyzer/wireshark sdjournal
+sys-apps/ipmitool openbmc
+sys-auth/pambase homed
 
 # Alfred Persson Forsberg <cat@catcream.org> (2022-07-27)
 # Firefox does not build with these flags enabled on musl libc.

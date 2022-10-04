@@ -240,9 +240,14 @@ sys-libs/glibc
 app-admin/mkosi
 app-admin/systemdgenie
 dev-python/python-systemd
+gnome-extra/office-runner
+gnome-extra/gnome-logs
+sys-apps/dbus-broker
 sys-apps/gentoo-systemd-integration
 sys-apps/systemd
+sys-apps/systemd-readahead
 sys-boot/systemd-boot
+sys-power/switcheroo-control
 sys-process/systemd-cron
 >=www-misc/profile-sync-daemon-6
 
