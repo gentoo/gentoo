@@ -169,8 +169,13 @@ src_install() {
 	cd "${S}/ijs" || die
 	emake DESTDIR="${D}" install
 
+	# Sometimes the upstream versioning deviates from the tarball(!)
+	# bug #844115#c32
+	local my_gs_version=$(find "${ED}"/usr/share/ghostscript/ -maxdepth 1 -mindepth 1 -type d || die)
+	my_gs_version=${my_gs_version##*/}
+
 	# Install the CMaps from poppler-data properly, bug #409361
-	dosym -r /usr/share/poppler/cMaps /usr/share/ghostscript/${PV}/Resource/CMap
+	dosym -r /usr/share/poppler/cMaps /usr/share/ghostscript/${my_gs_version}/Resource/CMap
 
 	if ! use static-libs; then
 		find "${ED}" -name '*.la' -delete || die
