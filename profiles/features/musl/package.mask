@@ -51,6 +51,7 @@ www-client/chromium
 # It doesn't build on musl
 # bug #832551
 net-misc/netkit-telnetd
+net-misc/sitecopy
 
 # Sam James <sam@gentoo.org> (2022-02-06)
 # Latest version doesn't build on musl
