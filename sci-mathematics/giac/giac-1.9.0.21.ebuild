@@ -49,6 +49,7 @@ BDEPEND="dev-tex/hevea
 PATCHES=(
 	"${FILESDIR}/${PN}-1.7.0.1-gsl_lapack.patch"
 	"${FILESDIR}/${PN}-1.6.0-pari-2.11.patch"
+	"${FILESDIR}/${PN}-1.9.0.21-pari-2.15.patch"
 )
 
 REQUIRED_USE="test? ( gui )"
@@ -74,6 +75,11 @@ src_configure() {
 
 		# Get the big-L flags from fltk's LDFLAGS.
 		append-ldflags $(fltk-config --ldflags | sed -e 's/\(-L\S*\)\s.*/\1/')
+	else
+		# see https://trac.sagemath.org/ticket/31563#comment:91 onwards.
+		# Unless this variable is defined a non existent function will be requested.
+		# The spelling is correct - upstream is French.
+		append-cppflags -DUSE_OBJET_BIDON=1
 	fi
 
 	# Using libsamplerate is currently broken
