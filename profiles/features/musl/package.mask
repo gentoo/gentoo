@@ -193,8 +193,10 @@ dev-libs/cudnn
 dev-libs/cudnn-frontend
 dev-util/nvidia-cuda-sdk
 dev-util/nvidia-cuda-toolkit
+media-video/nvidia-video-codec
 dev-libs/optix
 x11-drivers/nvidia-drivers
+x11-misc/primus
 
 # Ulrich Müller (2020-03-31)
 # Not ported to musl, bug #715642.
