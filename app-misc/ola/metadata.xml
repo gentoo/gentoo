@@ -19,5 +19,6 @@
 	<use>
 		<flag name="ftdi">Support FTDI devices</flag>
 		<flag name="http">Enable built-in Web UI</flag>
+		<flag name="rdm-tests">Install RDM responder tests</flag>
 	</use>
 </pkgmetadata>
