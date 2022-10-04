@@ -2,8 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-10-04)
-# Needs masked binary dropbox.
+# Rolling mask for all USE flags which pull in a masked binary package
+# (linked against glibc). Use for all such packages.
 kde-apps/kdenetwork-meta dropbox
+www-client/qutebrowser widevine
 
 # Sam James <sam@gentoo.org> (2022-10-03)
 # Needs systemd which is masked on musl
@@ -13,10 +15,6 @@ net-analyzer/wireshark sdjournal
 # Firefox does not build with these flags enabled on musl libc.
 # See bug #829033
 www-client/firefox clang pgo
-
-# Ionen Wolkens <ionen@gentoo.org (2022-06-08)
-# Depends on www-plugins/chrome-binary-plugins which is masked here.
-www-client/qutebrowser widevine
 
 # Petr Vaněk <arkamar@atlas.cz> (2022-03-15)
 # musl package does not currently provide gencat binary, which is needed for
