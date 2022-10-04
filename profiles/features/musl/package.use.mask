@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2022-10-04)
+# Mask loguru until fixed upstream #873601
+sci-libs/vtk logging
+
 # Sam James <sam@gentoo.org> (2022-10-04)
 # sys-libs/libtermcap-compat is masked on musl
 dev-scheme/scm readline
