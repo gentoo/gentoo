@@ -73,7 +73,7 @@ src_prepare() {
 }
 
 src_install() {
-	rm _gpgorigin || die
+	rm -f _gpgorigin || die
 	rm -r "usr/share/${PN}/resources/assets/"{.gitignore,macos,tlb,windows,x86,x64,arm64} || die
 	rm -r "usr/share/${PN}/resources/tmp" || die
 	rm "usr/share/${PN}/chrome-sandbox" || die

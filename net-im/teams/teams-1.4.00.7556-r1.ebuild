@@ -70,7 +70,7 @@ src_configure() {
 }
 
 src_install() {
-	rm _gpgorigin || die
+	rm -f _gpgorigin || die
 	doins -r .
 
 	fperms +x /usr/bin/teams
