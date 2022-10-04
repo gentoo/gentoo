@@ -8,7 +8,7 @@ DISTUTILS_USE_PEP517=setuptools
 
 inherit bash-completion-r1 distutils-r1
 
-DESCRIPTION="Probably the sharpest git repository organizer & rebase/merge workflow automation tool you've ever seen"
+DESCRIPTION="Probably the sharpest git repo organizer & rebase/merge workflow automation tool"
 HOMEPAGE="https://github.com/VirtusLab/git-machete https://pypi.org/project/git-machete/"
 # No tests in PyPI tarballs
 SRC_URI="https://github.com/VirtusLab/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
