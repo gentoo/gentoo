@@ -35,7 +35,11 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/check )"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/${P}-openssl3.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-openssl3.patch"
+	"${FILESDIR}/${P}-libnet-pkgconfig.patch"
+	"${FILESDIR}/${P}-libcrypto-pkgconfig.patch"
+)
 
 src_prepare() {
 	default

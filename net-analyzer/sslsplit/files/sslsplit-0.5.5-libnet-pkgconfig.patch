@@ -1,0 +1,40 @@
+Subject: [PATCH] locate libnet with pkgconfig
+
+This is partially reverted from upstream commit 46a55de8040a ("Refactor
+location of packages, improve libnet detection")
+
+diff --git a/GNUmakefile b/GNUmakefile
+index cc7197e..2343272 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -277,6 +277,10 @@ PKGS+=		$(shell $(PKGCONFIG) $(PCFLAGS) --exists libevent_openssl \
+ PKGS+=		$(shell $(PKGCONFIG) $(PCFLAGS) --exists libevent_pthreads \
+ 		&& echo libevent_pthreads)
+ endif
++ifndef LIBNET_BASE
++PKGS+=         $(shell $(PKGCONFIG) $(PCFLAGS) --exists libnet \
++		&& echo libnet)
++endif
+ ifneq ($(filter -DWITHOUT_MIRROR,$(FEATURES)),-DWITHOUT_MIRROR)
+ ifndef LIBPCAP_BASE
+ PKGS+=		$(shell $(PKGCONFIG) $(PCFLAGS) --exists libpcap \
+@@ -333,7 +337,7 @@ CHECK_MISSING:=	1
+ endif
+ endif
+ 
+-# Always search filesystem for libnet because libnet-config is unreliable
++ifeq (,$(filter libnet,$(PKGS)))
+ ifneq ($(filter -DWITHOUT_MIRROR,$(FEATURES)),-DWITHOUT_MIRROR)
+ LIBNET_FOUND:=	$(call locate,libnet,include/libnet-1.1/libnet.h,$(LIBNET_BASE))
+ ifdef LIBNET_FOUND
+@@ -347,6 +351,7 @@ $(error dependency 'libnet' not found; \
+ 	install it or point LIBNET_BASE to base path)
+ endif
+ endif
++endif
+ 
+ ifdef OPENSSL_FOUND
+ PKG_CPPFLAGS+=	-I$(OPENSSL_FOUND)/include
+-- 
+2.35.1
+
