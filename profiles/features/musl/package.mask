@@ -7,9 +7,12 @@
 dev-db/pgbouncer
 dev-libs/cgreen
 media-sound/xwax
+net-analyzer/gsad
+net-analyzer/gvm
 net-analyzer/gvmd
 net-analyzer/gvm-libs
 net-analyzer/openvas-scanner
+net-analyzer/ospd-openvas
 net-misc/grive
 net-print/pnm2ppa
 net-wireless/neard
