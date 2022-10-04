@@ -59,6 +59,8 @@ src_configure() {
 	# to force a manual recheck. Only update the explicit version if the
 	# "PKG_CHECK_MODULES([MENU], ...)" block did not change; otherwise adjust
 	# elogind conditional block below accordingly first.
+	# DO NOT just change the version, look in configure.ac in which PKG_CHECK_MODULES-sections
+	# libsystemd is used and check if there are new sections where it is used!
 	if ver_test ${PV} -ne 3.44.0; then
 		die "Maintainer has not checked over packages MENU pkg-config deps for elogind support"
 	fi
@@ -66,6 +68,10 @@ src_configure() {
 	if use elogind; then
 		local pkgconfig="$(tc-getPKG_CONFIG)"
 		myconf+=(
+			ACTION_BUTTON_CFLAGS="$(${pkgconfig} --cflags gio-unix-2.0 gtk+-3.0 libelogind x11)"
+			ACTION_BUTTON_LIBS="$(${pkgconfig} --libs gio-unix-2.0 gtk+-3.0 libelogind x11)"
+			LAUNCHER_CFLAGS="$(${pkgconfig} --cflags gio-unix-2.0 gtk+-3.0 libgnome-menu-3.0 libelogind)"
+			LAUNCHER_LIBS="$(${pkgconfig} --libs gio-unix-2.0 gtk+-3.0 libgnome-menu-3.0 libelogind)"
 			MENU_CFLAGS="$(${pkgconfig} --cflags gdm gio-unix-2.0 gtk+-3.0 libgnome-menu-3.0 libelogind)"
 			MENU_LIBS="$(${pkgconfig} --libs gdm gio-unix-2.0 gtk+-3.0 libgnome-menu-3.0 libelogind)"
 		)
