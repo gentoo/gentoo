@@ -37,13 +37,12 @@ S="${WORKDIR}/VTK-${PV}"
 
 LICENSE="BSD LGPL-2"
 SLOT="0/${MY_PV}"
-# ~arm64 #864791
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 # TODO: Like to simplifiy these. Mostly the flags related to Groups, plus
 # maybe some flags related to Kits and a few other needed flags.
 IUSE="all-modules +boost cuda debug doc examples +ffmpeg +gdal imaging java
-	mpi mysql odbc openmp postgres python qt5 qt6 +rendering tbb test +threads
-	tk video_cards_nvidia views web"
+	logging mpi mysql odbc openmp postgres python qt5 qt6 +rendering tbb test
+	+threads tk video_cards_nvidia views web"
 
 RESTRICT="!test? ( test )"
 
@@ -294,6 +293,7 @@ src_configure() {
 		-DVTK_BUILD_EXAMPLES=$(usex examples ON OFF)
 
 		-DVTK_ENABLE_KITS=ON
+		-DVTK_ENABLE_LOGGING=$(usex logging ON OFF)
 		# defaults to ON: USE flag for this?
 		-DVTK_ENABLE_REMOTE_MODULES=OFF
 
