@@ -41,6 +41,7 @@
 =sys-kernel/gentoo-sources-5.19.12
 =sys-kernel/vanilla-sources-5.19.12
 =sys-kernel/gentoo-kernel-5.19.12
+=sys-kernel/gentoo-kernel-bin-5.19.12
 =sys-kernel/vanilla-kernel-5.19.12
 =virtual/dist-kernel-5.19.12
 
