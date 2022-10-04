@@ -4,7 +4,6 @@
 EAPI=8
 
 DIST_AUTHOR=AUFFLICK
-DIST_VERSION=1.04
 
 inherit perl-module
 
