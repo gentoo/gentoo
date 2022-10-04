@@ -168,6 +168,7 @@ www-client/vivaldi
 www-client/vivaldi-snapshot
 www-plugins/chrome-binary-plugins
 x11-misc/xflux
+x11-misc/xflux-gui
 
 # Ulrich Müller <ulm@gentoo.org> (2022-01-04, 2022-07-31)
 # Emacs 23 does not support x86_64-gentoo-linux-musl systems
