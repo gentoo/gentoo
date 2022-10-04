@@ -8,9 +8,9 @@
 	<longdescription>
 		Haddock is a documentation-generation tool for Haskell
 		libraries. These modules expose some functionality of it
-		without pulling in the GHC dependency. Please note that the
+		without pulling in the GHC dependency and it is not the same
+                as Haddock itself. Please note that the
 		API is likely to change so specify upper bounds in your
-		project if you can't release often. For interacting with Haddock
-		itself, see the <pkg>dev-haskell/haddock</pkg> package.
+		project if you can't release often.
 	</longdescription>
 </pkgmetadata>
