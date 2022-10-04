@@ -467,6 +467,7 @@ sys-devel/automake:1.11
 >=dev-libs/libgweather-4.2.0
 >=dev-python/nautilus-python-4.0
 >=dev-util/devhelp-43
+>=gnome-base/gnome-applets-3.46
 >=gnome-base/gnome-desktop-43
 >=gnome-base/gnome-flashback-3.46
 >=gnome-base/gnome-panel-3.46
