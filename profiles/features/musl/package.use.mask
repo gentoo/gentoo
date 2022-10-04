@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-10-04)
+# sys-libs/libsmbios is masked on musl
+sys-apps/fwupd dell
+
+# Sam James <sam@gentoo.org> (2022-10-04)
 # Needs masked net-misc/netkit-telnetd
 net-irc/ngircd test
 
