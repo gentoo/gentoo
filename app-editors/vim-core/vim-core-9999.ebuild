@@ -147,6 +147,14 @@ src_configure() {
 	# Keep Gentoo Prefix env contained within the EPREFIX
 	use prefix && myconf+=( --without-local-dir )
 
+	if tc-is-cross-compiler ; then
+		export vim_cv_getcwd_broken=no \
+			   vim_cv_memmove_handles_overlap=yes \
+			   vim_cv_stat_ignores_slash=yes \
+			   vim_cv_terminfo=yes \
+			   vim_cv_toupper_broken=no
+	fi
+
 	econf "${myconf[@]}"
 }
 
