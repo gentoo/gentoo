@@ -9,7 +9,7 @@ RUBY_OPTIONAL="yes"
 inherit cmake ruby-ng
 
 MY_PN="OpenCL-CLHPP"
-MY_PV="2022.09.23"
+MY_PV="2022.09.30"
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Khronos OpenCL C++ bindings"
