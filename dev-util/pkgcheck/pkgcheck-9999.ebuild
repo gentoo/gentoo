@@ -8,7 +8,8 @@ DISTUTILS_IN_SOURCE_BUILD=1
 inherit elisp-common distutils-r1 optfeature
 
 if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="https://github.com/pkgcore/pkgcheck.git"
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/pkgcore/pkgcheck.git
+		https://github.com/pkgcore/pkgcheck.git"
 	inherit git-r3
 else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
@@ -28,8 +29,8 @@ if [[ ${PV} == *9999 ]]; then
 		~sys-apps/pkgcore-9999[${PYTHON_USEDEP}]"
 else
 	RDEPEND="
-		>=dev-python/snakeoil-0.9.12[${PYTHON_USEDEP}]
-		>=sys-apps/pkgcore-0.12.13[${PYTHON_USEDEP}]"
+		>=dev-python/snakeoil-0.10.1[${PYTHON_USEDEP}]
+		>=sys-apps/pkgcore-0.12.15[${PYTHON_USEDEP}]"
 fi
 RDEPEND+="
 	dev-libs/tree-sitter
