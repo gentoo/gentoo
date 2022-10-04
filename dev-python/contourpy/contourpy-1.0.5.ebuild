@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~riscv"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~riscv"
 
 RDEPEND="
 	>=dev-python/numpy-1.16[${PYTHON_USEDEP}]
