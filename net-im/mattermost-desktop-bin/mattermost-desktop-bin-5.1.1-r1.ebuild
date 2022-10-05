@@ -21,9 +21,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	app-accessibility/at-spi2-atk:2
-	app-accessibility/at-spi2-core:2[X]
-	dev-libs/atk
+	|| (
+		>=app-accessibility/at-spi2-core-2.46.0:2[X]
+		( app-accessibility/at-spi2-atk dev-libs/atk )
+	)
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
