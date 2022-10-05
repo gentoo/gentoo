@@ -20,7 +20,10 @@ KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 DEPEND="
 	${PYTHON_DEPS}
-	app-accessibility/at-spi2-atk:2
+	|| (
+		>=app-accessibility/at-spi2-core-2.46.0:2
+		( app-accessibility/at-spi2-atk dev-libs/atk )
+	)
 	>=dev-libs/glib-2.52.0:2[dbus]
 	>=dev-libs/gobject-introspection-1.29.15:=
 	dev-libs/libxml2:2
