@@ -17,10 +17,11 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	app-accessibility/at-spi2-atk:2
-	app-accessibility/at-spi2-core:2
+	|| (
+		>=app-accessibility/at-spi2-core-2.46.0:2
+		( app-accessibility/at-spi2-atk dev-libs/atk )
+	)
 	app-crypt/libsecret
-	dev-libs/atk
 	dev-libs/expat
 	dev-libs/glib
 	sys-libs/glibc
