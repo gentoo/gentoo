@@ -17,9 +17,10 @@ IUSE="bundled-libjpeg-turbo +bundled-qt opencl pulseaudio wayland"
 RESTRICT="mirror bindist strip"
 
 RDEPEND="!games-engines/zoom
-	app-accessibility/at-spi2-atk
-	app-accessibility/at-spi2-core
-	dev-libs/atk
+	|| (
+		>=app-accessibility/at-spi2-core-2.46.0:2
+		( app-accessibility/at-spi2-atk dev-libs/atk )
+	)
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
