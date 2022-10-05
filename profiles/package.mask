@@ -475,6 +475,7 @@ sci-geosciences/geocode-glib:2
 >=sci-geosciences/gnome-maps-43
 >=www-client/epiphany-43
 >=x11-wm/mutter-43
+>=dev-util/gnome-builder-43.2
 
 # Thomas Deutschmann <whissi@gentoo.org> (2021-09-07)
 # Masked while being tested and reverse deps aren't fully compatible
