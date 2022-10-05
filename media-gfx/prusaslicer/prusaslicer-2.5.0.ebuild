@@ -10,7 +10,7 @@ MY_PV="$(ver_rs 3 -)"
 inherit cmake wxwidgets xdg
 
 DESCRIPTION="A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)"
-HOMEPAGE="https://www.prusa3d.com/prusaslicer/"FastSweepingDomain
+HOMEPAGE="https://www.prusa3d.com/prusaslicer/"
 SRC_URI="https://github.com/prusa3d/PrusaSlicer/archive/refs/tags/version_${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3 Boost-1.0 GPL-2 LGPL-3 MIT"
