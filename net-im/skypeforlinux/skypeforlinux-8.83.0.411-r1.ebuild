@@ -21,7 +21,10 @@ RESTRICT="mirror bindist strip" #299368
 
 RDEPEND="
 	app-crypt/libsecret[${MULTILIB_USEDEP}]
-	dev-libs/atk[${MULTILIB_USEDEP}]
+	|| (
+		>=app-accessibility/at-spi2-core-2.46.0:2[${MULTILIB_USEDEP}]
+		dev-libs/atk[${MULTILIB_USEDEP}]
+	)
 	dev-libs/expat[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
 	dev-libs/nspr[${MULTILIB_USEDEP}]
