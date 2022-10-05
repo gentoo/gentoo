@@ -377,13 +377,15 @@ java-pkg-simple_src_compile() {
 	java-pkg-simple_getclasspath
 	java-pkg-simple_prepend_resources ${classes} "${JAVA_RESOURCE_DIRS[@]}"
 
-	if [[ -n ${moduleinfo} ]] || [[ java-pkg_get-target -lt 9 ]]; then
-		ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
-			${classpath:+-classpath ${classpath}} ${JAVAC_ARGS} @${sources}
-	else
-		ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
-			${classpath:+--module-path ${classpath}} --module-version ${PV}\
-			${JAVAC_ARGS} @${sources}
+	if [[ -s "${sources}" ]]; then
+		if [[ -n ${moduleinfo} ]] || [[ java-pkg_get-target -lt 9 ]]; then
+			ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
+				${classpath:+-classpath ${classpath}} ${JAVAC_ARGS} @${sources}
+		else
+			ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
+				${classpath:+--module-path ${classpath}} --module-version ${PV}\
+				${JAVAC_ARGS} @${sources}
+		fi
 	fi
 
 	# handle module-info.java separately as it needs at least JDK 9
@@ -407,11 +409,13 @@ java-pkg-simple_src_compile() {
 
 	# javadoc
 	if has doc ${JAVA_PKG_IUSE} && use doc; then
-		mkdir -p ${apidoc}
-		ejavadoc -d ${apidoc} \
-			-encoding ${JAVA_ENCODING} -docencoding UTF-8 -charset UTF-8 \
-			${classpath:+-classpath ${classpath}} ${JAVADOC_ARGS:- -quiet} \
-			@${sources} || die "javadoc failed"
+		if [[ -s "${sources}" ]]; then
+			mkdir -p ${apidoc}
+			ejavadoc -d ${apidoc} \
+				-encoding ${JAVA_ENCODING} -docencoding UTF-8 -charset UTF-8 \
+				${classpath:+-classpath ${classpath}} ${JAVADOC_ARGS:- -quiet} \
+				@${sources} || die "javadoc failed"
+		fi
 	fi
 
 	# package
