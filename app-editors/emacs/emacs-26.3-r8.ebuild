@@ -55,7 +55,7 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 			media-libs/freetype
 			x11-libs/libXft
 			x11-libs/libXrender
-			cairo? ( >=x11-libs/cairo-1.12.18 )
+			cairo? ( >=x11-libs/cairo-1.12.18[X] )
 			m17n-lib? (
 				>=dev-libs/libotf-0.9.4
 				>=dev-libs/m17n-lib-1.5.1
