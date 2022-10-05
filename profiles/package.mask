@@ -33,12 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
-# Matt Turner <mattst88@gentoo.org> (2022-10-01)
-# Unmaintained upstream. Last commit was 10 years ago today.
-# Unclear if it does anything useful. Many open bugs: #584352, #833102,
-# #852728, #866557, #875278.
-# Removal on 2022-11-05
-x11-libs/libva-vdpau-driver
+# Michał Górny <mgorny@gentoo.org> (2022-10-05)
+# Originally added for dev-python/rapidfuzz.  Now the algorithm has been
+# inlined into rapidfuzz, and the package is semi-deprecated.
+# No revdeps left in ::gentoo.
+# Removal on 2022-11-04.  Bug #875350.
+dev-cpp/jarowinkler-cpp
+dev-python/jarowinkler
 
 # Sam James <sam@gentoo.org> (2022-10-04)
 # Regression for some Intel LCDs which may cause physical damage
