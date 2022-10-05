@@ -7,14 +7,12 @@
 # @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: helps map gentoo arches to rust ABIs
 # @DESCRIPTION:
-# This eclass contains a src_unpack default phase function, and
+# This eclass contains a ``src_unpack`` default phase function, and
 # helper functions, to aid in proper rust-ABI handling for various
 # gentoo arches.
 
 case ${EAPI} in
-	6) : ;;
-	7) : ;;
-	8) : ;;
+	6|7|8) ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
@@ -30,7 +28,7 @@ inherit multilib-build
 # @FUNCTION: rust_abi
 # @USAGE: [CHOST-value]
 # @DESCRIPTION:
-# Outputs the Rust ABI name from a CHOST value, uses CHOST in the
+# Outputs the Rust ABI name from a ``CHOST`` value, uses ``CHOST`` in the
 # environment if none is specified.
 
 rust_abi() {
@@ -77,15 +75,16 @@ rust_all_abis() {
 # @FUNCTION: rust_arch_uri
 # @USAGE: <rust-ABI> <base-uri> [alt-distfile-basename]
 # @DESCRIPTION:
-# Output the URI for use in SRC_URI, combining $RUST_TOOLCHAIN_BASEURL
-# and the URI suffix provided in ARG2 with the rust ABI in ARG1, and
-# optionally renaming to the distfile basename specified in ARG3.
+# Output the URI for use in ``SRC_URI``, combining ``${RUST_TOOLCHAIN_BASEURL}``
+# and the URI suffix provided in ``ARG2`` with the rust ABI in ``ARG1``, and
+# optionally renaming to the distfile basename specified in ``ARG3``.
 #
-# @EXAMPLE:
+# Example:
+# @CODE
 # SRC_URI="amd64? (
-#	 $(rust_arch_uri x86_64-unknown-linux-gnu rustc-${STAGE0_VERSION})
+#     $(rust_arch_uri x86_64-unknown-linux-gnu rustc-${STAGE0_VERSION})
 # )"
-#
+# @CODE
 rust_arch_uri() {
 	if [ -n "$3" ]; then
 		echo "${RUST_TOOLCHAIN_BASEURL}${2}-${1}.tar.xz -> ${3}-${1}.tar.xz"
@@ -98,22 +97,23 @@ rust_arch_uri() {
 # @FUNCTION: rust_all_arch_uris
 # @USAGE: <base-uri> [alt-distfile-basename]
 # @DESCRIPTION:
-# Outputs the URIs for SRC_URI to help fetch dependencies, using a base URI
+# Outputs the URIs for ``SRC_URI`` to help fetch dependencies, using a base URI
 # provided as an argument. Optionally allows for distfile renaming via a specified
 # basename.
 #
-# @EXAMPLE:
+# Example:
+# @CODE
 # SRC_URI="$(rust_all_arch_uris rustc-${STAGE0_VERSION})"
-#
+# @CODE
 rust_all_arch_uris()
 {
   local uris=""
-  uris+="abi_x86_64? ( elibc_glibc? ( $(rust_arch_uri x86_64-unknown-linux-gnu "$@") ) 
+  uris+="abi_x86_64? ( elibc_glibc? ( $(rust_arch_uri x86_64-unknown-linux-gnu "$@") )
                        elibc_musl?  ( $(rust_arch_uri x86_64-unknown-linux-musl "$@") ) ) "
   uris+="arm?        ( $(rust_arch_uri arm-unknown-linux-gnueabi      "$@")
                        $(rust_arch_uri arm-unknown-linux-gnueabihf    "$@")
                        $(rust_arch_uri armv7-unknown-linux-gnueabihf  "$@") ) "
-  uris+="arm64?      ( elibc_glibc? ( $(rust_arch_uri aarch64-unknown-linux-gnu "$@") ) 
+  uris+="arm64?      ( elibc_glibc? ( $(rust_arch_uri aarch64-unknown-linux-gnu "$@") )
                        elibc_musl?  ( $(rust_arch_uri aarch64-unknown-linux-musl "$@") ) ) "
   uris+="mips?       ( $(rust_arch_uri mips-unknown-linux-gnu         "$@")
                        $(rust_arch_uri mipsel-unknown-linux-gnu       "$@")
