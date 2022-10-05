@@ -1,36 +1,39 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..11} )
+DOCS_BUILDER="doxygen"
+DOCS_DEPEND="dev-libs/mathjax"
+DOCS_CONFIG_NAME="clBLAS.doxy"
+DOCS_DIR="doc"
 
-inherit python-any-r1 toolchain-funcs cmake
+inherit python-any-r1 toolchain-funcs cmake docs
 
 MYPN="clBLAS"
 
 DESCRIPTION="Library containing BLAS routines for OpenCL"
 HOMEPAGE="https://github.com/clMathLibraries/clBLAS"
 SRC_URI="https://github.com/clMathLibraries/${MYPN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MYPN}-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0/2" # soname version
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="+client doc examples ktest performance test"
+IUSE="+client examples ktest performance test"
 # the testsuite is hopelessly broken and upstream is pretty much dead
 RESTRICT="test"
 
 RDEPEND="
 	virtual/opencl
 	client? ( virtual/cblas )
-	doc? ( dev-libs/mathjax )"
+"
 DEPEND="${RDEPEND}"
-BDEPEND="
-	${PYTHON_DEPS}
-	doc? ( app-doc/doxygen )
-	client? ( virtual/pkgconfig )"
+BDEPEND="${PYTHON_DEPS}
+	client? ( virtual/pkgconfig )
+"
 
-S="${WORKDIR}/${MYPN}-${PV}"
 CMAKE_USE_DIR="${S}/src"
 
 PATCHES=(
@@ -62,12 +65,7 @@ src_configure() {
 
 src_compile() {
 	cmake_src_compile
-
-	if use doc; then
-		cd doc || die
-		doxygen clBLAS.doxy || die
-		HTML_DOCS=( doc/html/. )
-	fi
+	docs_compile
 }
 
 src_install() {
