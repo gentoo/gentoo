@@ -30,7 +30,7 @@ SRC_URI="
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~riscv"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~riscv"
 IUSE="cairo doc excel examples gtk3 latex qt5 tk webagg wxwidgets"
 
 # internal copy of pycxx highly patched
