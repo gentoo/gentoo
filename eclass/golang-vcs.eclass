@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: golang-vcs.eclass
@@ -33,8 +33,8 @@ PROPERTIES+=" live"
 # @ECLASS_VARIABLE: EGO_PN
 # @REQUIRED
 # @DESCRIPTION:
-# This is the import path for the go package(s). Please emerge dev-lang/go
-# and read "go help importpath" for syntax.
+# This is the import path for the go package(s). Please emerge ``dev-lang/go``
+# and read ``go help importpath`` for syntax.
 #
 # Example:
 # @CODE
@@ -47,10 +47,10 @@ PROPERTIES+=" live"
 # @DESCRIPTION:
 # Storage directory for Go sources.
 #
-# This is intended to be set by the user in make.conf. Ebuilds must not set
+# This is intended to be set by the user in ``make.conf``. Ebuilds must not set
 # it.
 #
-# EGO_STORE_DIR=${DISTDIR}/go-src
+# ``EGO_STORE_DIR=${DISTDIR}/go-src``
 
 # @ECLASS_VARIABLE: EVCS_OFFLINE
 # @DEFAULT_UNSET
@@ -58,17 +58,18 @@ PROPERTIES+=" live"
 # If non-empty, this variable prevents any online operations.
 
 # @ECLASS_VARIABLE: EVCS_UMASK
+# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set this variable to a custom umask. This is intended to be set by
-# users. By setting this to something like 002, it can make life easier
+# users. By setting this to something like ``002``, it can make life easier
 # for people who do development as non-root (but are in the portage
-# group) and use FEATURES=userpriv.
+# group) and use ``FEATURES=userpriv``.
 
 # @FUNCTION: _golang-vcs_env_setup
 # @INTERNAL
 # @DESCRIPTION:
-# Create EGO_STORE_DIR if necessary.
+# Create ``EGO_STORE_DIR`` if necessary.
 _golang-vcs_env_setup() {
 	debug-print-function ${FUNCNAME} "$@"
 
