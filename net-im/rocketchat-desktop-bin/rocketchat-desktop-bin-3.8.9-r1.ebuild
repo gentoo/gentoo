@@ -26,8 +26,10 @@ SLOT="0"
 RESTRICT="bindist mirror"
 
 RDEPEND="
-	app-accessibility/at-spi2-atk:2
-	dev-libs/atk
+	|| (
+		>=app-accessibility/at-spi2-core-2.46.0:2
+		( app-accessibility/at-spi2-atk dev-libs/atk )
+	)
 	dev-libs/expat
 	dev-libs/libappindicator
 	dev-libs/nspr
