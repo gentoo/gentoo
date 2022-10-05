@@ -37,4 +37,11 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-export RAPIDFUZZ_BUILD_EXTENSION=1
+src_prepare() {
+	# sterilize build flags
+	sed -i -e '/CMAKE_INTERPROCEDURAL_OPTIMIZATION/d' CMakeLists.txt || die
+
+	distutils-r1_src_prepare
+
+	export RAPIDFUZZ_BUILD_EXTENSION=1
+}
