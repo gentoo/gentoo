@@ -22,9 +22,10 @@ BDEPEND="dev-util/patchelf"
 # RDEPENDS may cause false positives in repoman.
 # clion requires cmake and gdb at runtime to build and debug C/C++ projects
 RDEPEND="
-	app-accessibility/at-spi2-atk:2
-	app-accessibility/at-spi2-core:2
-	dev-libs/atk
+	|| (
+		>=app-accessibility/at-spi2-core-2.46.0:2
+		( app-accessibility/at-spi2-atk dev-libs/atk )
+	)
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
@@ -71,11 +72,10 @@ src_prepare() {
 		lib/pty4j-native/linux/mips64el
 		lib/pty4j-native/linux/ppc64le
 		plugins/remote-dev-server/selfcontained
-		plugins/cwm-plugin/quiche-native/linux-aarch64
 	)
 
-	use amd64 || remove_me+=( lib/pty4j-native/linux/x86_64 )
-	use x86 || remove_me+=( lib/pty4j-native/linux/x86 )
+	use amd64 || remove_me+=( lib/pty4j-native/linux/x86_64)
+	use x86 || remove_me+=( lib/pty4j-native/linux/x86)
 
 	rm -rv "${remove_me[@]}" || die
 
@@ -95,7 +95,7 @@ src_install() {
 	fperms 755 "${dir}"/bin/{clion.sh,fsnotifier,inspect.sh,ltedit.sh,repair,clang/linux/{clangd,clang-tidy,clazy-standalone,llvm-symbolizer}}
 
 	if [[ -d jbr ]]; then
-		fperms 755 "${dir}"/jbr/bin/{java,javac,jdb,jrunscript,keytool,rmiregistry,serialver}
+		fperms 755 "${dir}"/jbr/bin/{jaotc,java,javac,jdb,jjs,jrunscript,keytool,pack200,rmid,rmiregistry,serialver,unpack200}
 		# Fix #763582
 		fperms 755 "${dir}"/jbr/lib/{chrome-sandbox,jcef_helper,jexec,jspawnhelper}
 	fi
