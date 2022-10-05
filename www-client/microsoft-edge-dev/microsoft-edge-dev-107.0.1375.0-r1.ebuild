@@ -26,10 +26,11 @@ RESTRICT="bindist mirror strip"
 IUSE="+mip"
 
 RDEPEND="
-	app-accessibility/at-spi2-atk:2
-	app-accessibility/at-spi2-core:2
+	|| (
+		>=app-accessibility/at-spi2-core-2.46.0:2
+		( app-accessibility/at-spi2-atk dev-libs/atk )
+	)
 	app-misc/ca-certificates
-	dev-libs/atk
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
@@ -87,7 +88,7 @@ src_install() {
 	cd "${ED}" || die
 	unpacker
 
-	rm -f _gpgorigin || die
+	rm _gpgorigin || die
 
 	rm -r etc usr/share/menu || die
 	mv usr/share/doc/${MY_PN} usr/share/doc/${PF} || die
