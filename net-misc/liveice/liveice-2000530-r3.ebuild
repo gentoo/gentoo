@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_prepare() {
@@ -34,7 +35,9 @@ src_configure() {
 	tc-export CC
 	append-flags -fcommon
 
-	default
+	# seems to expect GNU's basename, but use simple builtin my_basename
+	# rather than assume by forcing either -D_GNU_SOURCE or <libgen.h>
+	econf ac_cv_func_basename=no #870838
 }
 
 src_install() {
