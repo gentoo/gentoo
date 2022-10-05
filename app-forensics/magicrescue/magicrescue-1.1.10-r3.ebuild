@@ -29,7 +29,6 @@ src_prepare() {
 	default
 
 	sed -i -e "\
-			s:\$(INSTALLDIR)/share/magicrescue/recipes:\$(INSTALLDIR)/share/doc/${PF}/recipes:;\
 			s:\$(INSTALLDIR)/man/man1:\$(INSTALLDIR)/share/man/man1:;\
 			s:\$(INSTALLDIR)/share/magicrescue/tools:\$(INSTALLDIR)/bin:" Makefile.in || die "could not mangle Makefile.in"
 }
