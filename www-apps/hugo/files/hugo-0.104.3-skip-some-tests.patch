@@ -1,0 +1,91 @@
+From 9d44b5ae62ddb77041ce362c3dbbbe86a5184ce1 Mon Sep 17 00:00:00 2001
+From: tastytea <tastytea@tastytea.de>
+Date: Sun, 2 Oct 2022 16:20:44 +0200
+Subject: [PATCH] skip some tests
+
+reasons:
+  - needs to be in a git repo
+  - needs special test dependencies
+  - needs dart-sass-embedded
+---
+ hugolib/page_test.go                                          | 1 +
+ modules/client_test.go                                        | 4 ++++
+ .../resource_transformers/tocss/dartsass/integration_test.go  | 1 +
+ .../resource_transformers/tocss/scss/integration_test.go      | 1 +
+ 4 files changed, 7 insertions(+)
+
+diff --git a/hugolib/page_test.go b/hugolib/page_test.go
+index 1d9e3e3..e1b3920 100644
+--- a/hugolib/page_test.go
++++ b/hugolib/page_test.go
+@@ -995,6 +995,7 @@ func TestPageWithDate(t *testing.T) {
+ }
+ 
+ func TestPageWithLastmodFromGitInfo(t *testing.T) {
++	t.Skip("We are not in a git repo")
+ 	if htesting.IsCI() {
+ 		// TODO(bep) figure out why this fails on GitHub actions.
+ 		t.Skip("Skip GitInfo test on CI")
+diff --git a/modules/client_test.go b/modules/client_test.go
+index 75e3c2b..235d6ed 100644
+--- a/modules/client_test.go
++++ b/modules/client_test.go
+@@ -68,6 +68,7 @@ github.com/gohugoio/hugoTestModules1_darwin/modh2_2@v1.4.0 github.com/gohugoio/h
+ 	}
+ 
+ 	c.Run("All", func(c *qt.C) {
++		c.Skip("Test dependencies not available")
+ 		client, clean := newClient(c, func(cfg *ClientConfig) {
+ 			cfg.ModuleConfig = DefaultModuleConfig
+ 		}, defaultImport)
+@@ -107,6 +108,7 @@ project github.com/gohugoio/hugoTestModules1_darwin/modh2_2_2@v1.3.0+vendor
+ 	})
+ 
+ 	c.Run("IgnoreVendor", func(c *qt.C) {
++		c.Skip("Test dependencies not available")
+ 		client, clean := newClient(
+ 			c, func(cfg *ClientConfig) {
+ 				cfg.ModuleConfig = DefaultModuleConfig
+@@ -125,6 +127,7 @@ project github.com/gohugoio/hugoTestModules1_darwin/modh2_2_2@v1.3.0+vendor
+ 	})
+ 
+ 	c.Run("NoVendor", func(c *qt.C) {
++		c.Skip("Test dependencies not available")
+ 		mcfg := DefaultModuleConfig
+ 		mcfg.NoVendor = "**"
+ 		client, clean := newClient(
+@@ -144,6 +147,7 @@ project github.com/gohugoio/hugoTestModules1_darwin/modh2_2_2@v1.3.0+vendor
+ 	})
+ 
+ 	c.Run("VendorClosest", func(c *qt.C) {
++		c.Skip("Test dependencies not available")
+ 		mcfg := DefaultModuleConfig
+ 		mcfg.VendorClosest = true
+ 
+diff --git a/resources/resource_transformers/tocss/dartsass/integration_test.go b/resources/resource_transformers/tocss/dartsass/integration_test.go
+index c127057..80973d5 100644
+--- a/resources/resource_transformers/tocss/dartsass/integration_test.go
++++ b/resources/resource_transformers/tocss/dartsass/integration_test.go
+@@ -108,6 +108,7 @@ T1: {{ $r.Content | safeHTML }}
+ }
+ 
+ func TestTransformThemeOverrides(t *testing.T) {
++	t.Skip("Needs dart-sass-embedded")
+ 	if !dartsass.Supports() {
+ 		t.Skip()
+ 	}
+diff --git a/resources/resource_transformers/tocss/scss/integration_test.go b/resources/resource_transformers/tocss/scss/integration_test.go
+index 13b664c..b2dfdbc 100644
+--- a/resources/resource_transformers/tocss/scss/integration_test.go
++++ b/resources/resource_transformers/tocss/scss/integration_test.go
+@@ -113,6 +113,7 @@ moo {
+ }
+ 
+ func TestTransformThemeOverrides(t *testing.T) {
++	t.Skip("Needs dart-sass-embedded")
+ 	if !scss.Supports() {
+ 		t.Skip()
+ 	}
+-- 
+2.35.1
+
