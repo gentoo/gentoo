@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gstreamer.eclass
@@ -14,14 +14,14 @@
 # @PROVIDES: multilib-minimal
 # @BLURB: Helps building core & split gstreamer plugins.
 # @DESCRIPTION:
-# Eclass to make external gst-plugins emergable on a per-plugin basis
-# and to solve the problem with gst-plugins generating far too much
+# Eclass to make external ``gst-plugins`` emergable on a per-plugin basis
+# and to solve the problem with ``gst-plugins`` generating far too much
 # unneeded dependencies.
 #
 # GStreamer consuming applications should depend on the specific plugins
 # they need as defined in their source code. Usually you can find that
-# out by grepping the source tree for 'factory_make'. If it uses playbin
-# plugin, consider adding media-plugins/gst-plugins-meta dependency, but
+# out by grepping the source tree for ``factory_make``. If it uses ``playbin``
+# plugin, consider adding ``media-plugins/gst-plugins-meta`` dependency, but
 # also list any packages that provide explicitly requested plugins.
 
 inherit eutils ltprune multilib multilib-minimal toolchain-funcs versionator xdg-utils
@@ -41,7 +41,7 @@ esac
 # @DESCRIPTION:
 # Defines the plugins to be built.
 # May be set by an ebuild and contain more than one identifier, space
-# separated (only src_configure can handle mutiple plugins at this time).
+# separated (only ``src_configure`` can handle multiple plugins at this time).
 : ${GST_PLUGINS_BUILD:=${PN/gst-plugins-/}}
 
 # @ECLASS_VARIABLE: GST_PLUGINS_BUILD_DIR
@@ -52,9 +52,9 @@ esac
 
 # @ECLASS_VARIABLE: GST_TARBALL_SUFFIX
 # @DESCRIPTION:
-# Most projects hosted on gstreamer.freedesktop.org mirrors provide
-# tarballs as tar.bz2 or tar.xz. This eclass defaults to xz. This is
-# because the gstreamer mirrors are moving to only have xz tarballs for
+# Most projects hosted on https://gstreamer.freedesktop.org mirrors provide
+# tarballs as ``tar.bz2`` or ``tar.xz``. This eclass defaults to xz. This is
+# because the gstreamer mirrors are moving to only have ``xz`` tarballs for
 # new releases.
 : ${GST_TARBALL_SUFFIX:="xz"}
 
@@ -66,7 +66,7 @@ fi
 
 # @ECLASS_VARIABLE: GST_ORG_MODULE
 # @DESCRIPTION:
-# Name of the module as hosted on gstreamer.freedesktop.org mirrors.
+# Name of the module as hosted on https://gstreamer.freedesktop.org mirrors.
 # Leave unset if package name matches module name.
 : ${GST_ORG_MODULE:=$PN}
 
@@ -166,9 +166,10 @@ gstreamer_get_plugin_dir() {
 # @DESCRIPTION:
 # Walks through makefiles in order to make sure build will link against system
 # libraries.
-# Takes a list of path fragments and corresponding pkgconfig libraries
-# separated by colon (:). Will replace the path fragment by the output of
-# pkgconfig.
+#
+# Takes a list of path fragments and corresponding ``pkgconfig`` libraries
+# separated by colon (``:``). Will replace the path fragment by the output of
+# ``pkgconfig``.
 gstreamer_system_link() {
 	local pdir directory libs pkgconfig pc tuple
 	pkgconfig=$(tc-getPKG_CONFIG)
@@ -255,7 +256,7 @@ gstreamer_multilib_src_install() {
 
 # @FUNCTION: gstreamer_multilib_src_install_all
 # @DESCRIPTION:
-# Installs documentation for requested gstreamer plugin, and removes .la
+# Installs documentation for requested gstreamer plugin, and removes ``.la``
 # files.
 gstreamer_multilib_src_install_all() {
 	local plugin_dir
