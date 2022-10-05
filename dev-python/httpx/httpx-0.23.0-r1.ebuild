@@ -57,6 +57,10 @@ BDEPEND="
 distutils_enable_tests pytest
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}"/${P}-cgi.patch
+	)
+
 	# unpin deps
 	sed -i -e 's:==[0-9.*]\+::' -e 's:,<[0-9.]\+::' setup.py || die
 	if ! use cli; then
