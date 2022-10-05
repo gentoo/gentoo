@@ -55,6 +55,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-12.22.5-shared_c-ares_nameser_h.patch
 	"${FILESDIR}"/${PN}-14.15.0-fix_ppc64_crashes.patch
 	"${FILESDIR}"/${PN}-14.19.0-global-npm-config.patch
+	"${FILESDIR}"/${PN}-gcc-13.patch
 )
 
 pkg_pretend() {
