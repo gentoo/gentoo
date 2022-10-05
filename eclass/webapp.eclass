@@ -8,7 +8,7 @@
 # @BLURB: functions for installing applications to run under a web server
 # @DESCRIPTION:
 # The webapp eclass contains functions to handle web applications with
-# webapp-config. Part of the implementation of GLEP #11
+# ``webapp-config``. Part of the implementation of GLEP #11
 
 case ${EAPI:-0} in
 	[5678]) ;;
@@ -22,21 +22,21 @@ _WEBAPP_ECLASS=1
 
 # @ECLASS_VARIABLE: WEBAPP_DEPEND
 # @DESCRIPTION:
-# An ebuild should use WEBAPP_DEPEND if a custom DEPEND needs to be built, most
-# notably in combination with WEBAPP_OPTIONAL.
+# An ebuild should use ``WEBAPP_DEPEND`` if a custom ``DEPEND`` needs to be
+# built, most notably in combination with ``WEBAPP_OPTIONAL``.
 WEBAPP_DEPEND="app-admin/webapp-config"
 
 # @ECLASS_VARIABLE: WEBAPP_NO_AUTO_INSTALL
 # @PRE_INHERIT
 # @DESCRIPTION:
-# An ebuild sets this to `yes' if an automatic installation and/or upgrade is
-# not possible. The ebuild should overwrite pkg_postinst() and explain the
-# reason for this BEFORE calling webapp_pkg_postinst().
+# An ebuild sets this to ``yes`` if an automatic installation and/or upgrade is
+# not possible. The ebuild should overwrite ``pkg_postinst()`` and explain the
+# reason for this *BEFORE* calling ``webapp_pkg_postinst()``.
 
 # @ECLASS_VARIABLE: WEBAPP_OPTIONAL
 # @PRE_INHERIT
 # @DESCRIPTION:
-# An ebuild sets this to `yes' to make webapp support optional, in which case
+# An ebuild sets this to ``yes`` to make webapp support optional, in which case
 # you also need to take care of USE-flags and dependencies.
 
 if [[ "${WEBAPP_OPTIONAL}" != "yes" ]]; then
@@ -161,8 +161,8 @@ webapp_getinstalltype() {
 
 # @FUNCTION: need_httpd
 # @DESCRIPTION:
-# Call this function AFTER your ebuilds DEPEND line if any of the available
-# webservers are able to run this application.
+# Call this function *AFTER* your ebuilds ``DEPEND`` line if any of the
+# available webservers are able to run this application.
 need_httpd() {
 	DEPEND="${DEPEND}
 		|| ( virtual/httpd-basic virtual/httpd-cgi virtual/httpd-fastcgi )"
@@ -170,8 +170,8 @@ need_httpd() {
 
 # @FUNCTION: need_httpd_cgi
 # @DESCRIPTION:
-# Call this function AFTER your ebuilds DEPEND line if any of the available
-# CGI-capable webservers are able to run this application.
+# Call this function *AFTER* your ebuilds ``DEPEND`` line if any of the
+# available CGI-capable webservers are able to run this application.
 need_httpd_cgi() {
 	DEPEND="${DEPEND}
 		|| ( virtual/httpd-cgi virtual/httpd-fastcgi )"
@@ -179,8 +179,8 @@ need_httpd_cgi() {
 
 # @FUNCTION: need_httpd_fastcgi
 # @DESCRIPTION:
-# Call this function AFTER your ebuilds DEPEND line if any of the available
-# FastCGI-capabale webservers are able to run this application.
+# Call this function *AFTER* your ebuilds ``DEPEND`` line if any of the
+# available FastCGI-capabale webservers are able to run this application.
 need_httpd_fastcgi() {
 	DEPEND="${DEPEND}
 		virtual/httpd-fastcgi"
@@ -262,7 +262,8 @@ _webapp_serverowned() {
 # @DESCRIPTION:
 # Identify a file which must be owned by the webserver's user:group settings.
 # The ownership of the file is NOT set until the application is installed using
-# the webapp-config tool. If -R is given directories are handled recursively.
+# the ``webapp-config`` tool. If ``-R`` is given directories are handled
+# recursively.
 webapp_serverowned() {
 	debug-print-function $FUNCNAME $*
 
@@ -286,9 +287,9 @@ webapp_serverowned() {
 # @USAGE: <server> <file> [new name]
 # @DESCRIPTION:
 # Install a configuration file for the webserver.  You need to specify a
-# webapp-config supported <server>.  if no new name is given `basename $2' is
-# used by default. Note: this function will automagically prepend $1 to the
-# front of your config file's name.
+# ``webapp-config`` supported ``<server>``.  if no new name is given
+# ``basename $2`` is used by default. Note: this function will automagically
+# prepend ``$1`` to the front of your config file's name.
 webapp_server_configfile() {
 	debug-print-function $FUNCNAME $*
 
@@ -311,7 +312,7 @@ webapp_server_configfile() {
 # Install a SQL script that creates/upgrades a database schema for the web
 # application. Currently supported database engines are mysql and postgres.
 # If a version is given the script should upgrade the database schema from
-# the given version to $PVR.
+# the given version to ``$PVR``.
 webapp_sqlscript() {
 	debug-print-function $FUNCNAME $*
 
@@ -337,8 +338,8 @@ webapp_sqlscript() {
 
 # @FUNCTION: webapp_src_preinst
 # @DESCRIPTION:
-# You need to call this function in src_install() BEFORE anything else has run.
-# For now we just create required webapp-config directories.
+# You need to call this function in ``src_install()`` *BEFORE* anything else
+# has run. For now we just create required ``webapp-config`` directories.
 webapp_src_preinst() {
 	debug-print-function $FUNCNAME $*
 
@@ -374,12 +375,13 @@ webapp_src_preinst() {
 
 # @FUNCTION: webapp_pkg_setup
 # @DESCRIPTION:
-# The default pkg_setup() for this eclass. This will gather required variables
-# from webapp-config and check if there is an application installed to
-# `${ROOT%/}/var/www/localhost/htdocs/${PN}/' if USE=vhosts is not set.
+# The default ``pkg_setup()`` for this eclass. This will gather required
+# variables from ``webapp-config`` and check if there is an application
+# installed to ``${ROOT%/}/var/www/localhost/htdocs/${PN}/`` if ``USE=vhosts``
+# is not set.
 #
-# You need to call this function BEFORE anything else has run in your custom
-# pkg_setup().
+# You need to call this function *BEFORE* anything else has run in your custom
+# ``pkg_setup()``.
 webapp_pkg_setup() {
 	debug-print-function $FUNCNAME $*
 
@@ -436,11 +438,11 @@ webapp_pkg_setup() {
 
 # @FUNCTION: webapp_src_install
 # @DESCRIPTION:
-# This is the default src_install(). For now, we just make sure that root owns
-# everything, and that there are no setuid files.
+# This is the default ``src_install()``. For now, we just make sure that root
+# owns everything, and that there are no setuid files.
 #
-# You need to call this function AFTER everything else has run in your custom
-# src_install().
+# You need to call this function *AFTER* everything else has run in your custom
+# ``src_install()``.
 webapp_src_install() {
 	debug-print-function $FUNCNAME $*
 
@@ -463,12 +465,13 @@ webapp_src_install() {
 
 # @FUNCTION: webapp_pkg_postinst
 # @DESCRIPTION:
-# The default pkg_postinst() for this eclass. This installs the web application to
-# `${ROOT%/}/var/www/localhost/htdocs/${PN}/' if USE=vhosts is not set. Otherwise
-# display a short notice how to install this application with webapp-config.
+# The default ``pkg_postinst()`` for this eclass. This installs the web
+# application to ``${ROOT%/}/var/www/localhost/htdocs/${PN}/`` if ``USE=vhosts``
+# is not set. Otherwise display a short notice how to install this application
+# with ``webapp-config``.
 #
-# You need to call this function AFTER everything else has run in your custom
-# pkg_postinst().
+# You need to call this function *AFTER* everything else has run in your custom
+# ``pkg_postinst()``.
 webapp_pkg_postinst() {
 	debug-print-function $FUNCNAME $*
 
@@ -545,8 +548,8 @@ webapp_pkg_postinst() {
 
 # @FUNCTION: webapp_pkg_prerm
 # @DESCRIPTION:
-# This is the default pkg_prerm() for this eclass. If USE=vhosts is not set
-# remove all installed copies of this web application. Otherwise instruct the
+# This is the default ``pkg_prerm()`` for this eclass. If ``USE=vhosts`` is not
+# set remove all installed copies of this web application. Otherwise instruct the
 # user to manually remove those copies. See bug #136959.
 webapp_pkg_prerm() {
 	debug-print-function $FUNCNAME $*
