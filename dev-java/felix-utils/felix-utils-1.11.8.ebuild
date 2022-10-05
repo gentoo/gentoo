@@ -18,7 +18,7 @@ SRC_URI="mirror://apache/felix/org.apache.felix.utils-${PV}-source-release.tar.g
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 
 # Compile dependencies
 # POM: pom.xml
