@@ -8,6 +8,7 @@
 <use>
 	<flag name="clang">Provide integration with <pkg>sys-devel/clang</pkg> for best possible C/C++ autocompletion, semantic highlighting, symbol resolving, and diagnostics support</flag>
 	<flag name="devhelp">Provide API docs browsing and integration via <pkg>dev-util/devhelp</pkg></flag>
+	<flag name="d-spy">Provide D-Bus debugging functionality via <pkg>dev-util/d-spy</pkg></flag>
 	<flag name="flatpak">Enable support for flatpak applications using <pkg>sys-apps/flatpak</pkg></flag>
 	<flag name="git">Provide support for the Git version control system via <pkg>dev-libs/libgit2-glib</pkg>
 		(such as setup of Git for New Project, direct cloning for Open Project and changed lines indicators in the editor gutter)</flag>
