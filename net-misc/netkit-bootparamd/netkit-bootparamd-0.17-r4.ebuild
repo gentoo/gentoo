@@ -6,7 +6,7 @@ EAPI=6
 inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="Netkit - bootparamd"
-HOMEPAGE="http://ftp.linux.org.uk/pub/linux/Networking/netkit/"
+HOMEPAGE="https://wiki.linuxfoundation.org/networking/netkit"
 SRC_URI="mirror://debian/pool/main/n/${PN}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="BSD GPL-2"
