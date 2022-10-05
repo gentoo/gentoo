@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,6 +20,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fallback-support.patch
 	"${FILESDIR}"/${P}-apache24-api-changes.patch
 	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_prepare() {
