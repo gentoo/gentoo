@@ -17,28 +17,48 @@
 # use of.
 #
 # Currently supported features:
-#   haddock    --  for documentation generation
-#   hscolour   --  generation of colourised sources
-#   hoogle     --  generation of documentation search index
-#   profile    --  if package supports to build profiling-enabled libraries
-#   bootstrap  --  only used for the cabal package itself
-#   lib        --  the package installs libraries
-#   nocabaldep --  don't add dependency on cabal.
-#                  only used for packages that _must_ not pull the dependency
-#                  on cabal, but still use this eclass (e.g. haskell-updater).
-#   ghcdeps    --  constraint dependency on package to ghc onces
-#                  only used for packages that use libghc internally and _must_
-#                  not pull upper versions
-#   test-suite --  add support for cabal test-suites (introduced in Cabal-1.8)
-#   rebuild-after-doc-workaround -- enable doctest test failue workaround.
-#                  Symptom: when `./setup haddock` is run in a `build-type: Custom`
-#                  package it might cause cause the test-suite to fail with
-#                  errors like:
-#                  > <command line>: cannot satisfy -package-id singletons-2.7-3Z7pnljD8tU1NrslJodXmr
-#                  Workaround re-reginsters the package to avoid the failure
-#                  (and rebuilds changes).
-#                  FEATURE can be removed once https://github.com/haskell/cabal/issues/7213
-#                  is fixed.
+#
+# haddock
+#    for documentation generation
+#
+# hscolour
+#    generation of colourised sources
+#
+# hoogle
+#    generation of documentation search index
+#
+# profile
+#    if package supports to build profiling-enabled libraries
+#
+# bootstrap
+#    only used for the cabal package itself
+#
+# lib
+#    the package installs libraries
+#
+# nocabaldep
+#    don't add dependency on cabal. only used for packages that *must* not pull
+#    the dependency on cabal, but still use this eclass (e.g. ``haskell-updater``).
+#
+# ghcdeps
+#    constraint dependency on package to ghc onces only used for packages that
+#    use ``libghc`` internally and *must* not pull upper versions
+#
+# test-suite
+#    add support for cabal test-suites (introduced in Cabal-1.8)
+#
+# rebuild-after-doc-workaround
+#    enable doctest test failue workaround.
+#
+#    Symptom: when ``./setup haddock`` is run in a ``build-type: Custom``
+#    package it might cause cause the test-suite to fail with errors like::
+#
+#        <command line>: cannot satisfy -package-id singletons-2.7-3Z7pnljD8tU1NrslJodXmr
+#
+#    Workaround re-reginsters the package to avoid the failure (and rebuilds changes).
+#
+#    FEATURE can be removed once https://github.com/haskell/cabal/issues/7213
+#    is fixed.
 
 case ${EAPI} in
 	# eutils is for eqawarn
@@ -54,71 +74,87 @@ EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile src_test src_in
 # @ECLASS_VARIABLE: CABAL_EXTRA_CONFIGURE_FLAGS
 # @USER_VARIABLE
 # @DESCRIPTION:
-# User-specified additional parameters passed to 'setup configure'.
-# example: /etc/portage/make.conf:
+# User-specified additional parameters passed to ``setup configure``.
+#
+# Example ``/etc/portage/make.conf`` ::
+#
 #    CABAL_EXTRA_CONFIGURE_FLAGS="--enable-shared --enable-executable-dynamic"
 : ${CABAL_EXTRA_CONFIGURE_FLAGS:=}
 
 # @ECLASS_VARIABLE: CABAL_EXTRA_BUILD_FLAGS
 # @USER_VARIABLE
 # @DESCRIPTION:
-# User-specified additional parameters passed to 'setup build'.
-# example: /etc/portage/make.conf: CABAL_EXTRA_BUILD_FLAGS=-v
+# User-specified additional parameters passed to ``setup build``.
+#
+# Example ``/etc/portage/make.conf``::
+#
+#    CABAL_EXTRA_BUILD_FLAGS="-v"
 : ${CABAL_EXTRA_BUILD_FLAGS:=}
 
 # @ECLASS_VARIABLE: GHC_BOOTSTRAP_FLAGS
 # @USER_VARIABLE
 # @DESCRIPTION:
-# User-specified additional parameters for ghc when building
-# _only_ 'setup' binary bootstrap.
-# example: /etc/portage/make.conf: GHC_BOOTSTRAP_FLAGS=-dynamic to make
-# linking 'setup' faster.
+# User-specified additional parameters for ghc when building *only* ``setup``
+# binary bootstrap.
+#
+# Example ``/etc/portage/make.conf``::
+#
+#    # to make linking 'setup' faster.
+#    GHC_BOOTSTRAP_FLAGS="-dynamic"
 : ${GHC_BOOTSTRAP_FLAGS:=}
 
 # @ECLASS_VARIABLE: CABAL_EXTRA_HADDOCK_FLAGS
 # @USER_VARIABLE
 # @DESCRIPTION:
-# User-specified additional parameters passed to 'setup haddock'.
-# example: /etc/portage/make.conf:
-#    CABAL_EXTRA_HADDOCK_FLAGS="--haddock-options=--latex --haddock-options=--pretty-html"
+# User-specified additional parameters passed to ``setup haddock``.
+#
+# Example ``/etc/portage/make.conf``::
+#
+#   CABAL_EXTRA_HADDOCK_FLAGS="--haddock-options=--latex --haddock-options=--pretty-html"
 : ${CABAL_EXTRA_HADDOCK_FLAGS:=}
 
 # @ECLASS_VARIABLE: CABAL_EXTRA_HOOGLE_FLAGS
 # @USER_VARIABLE
 # @DESCRIPTION:
-# User-specified additional parameters passed to 'setup haddock --hoogle'.
-# example: /etc/portage/make.conf:
-#    CABAL_EXTRA_HOOGLE_FLAGS="--haddock-options=--show-all"
+# User-specified additional parameters passed to ``setup haddock --hoogle``.
+#
+# Example ``/etc/portage/make.conf``::
+#
+#   CABAL_EXTRA_HOOGLE_FLAGS="--haddock-options=--show-all"
 : ${CABAL_EXTRA_HOOGLE_FLAGS:=}
 
 # @ECLASS_VARIABLE: CABAL_EXTRA_HSCOLOUR_FLAGS
 # @USER_VARIABLE
 # @DESCRIPTION:
-# User-specified additional parameters passed to 'setup hscolour'.
-# example: /etc/portage/make.conf:
-#    CABAL_EXTRA_HSCOLOUR_FLAGS="--executables --tests"
+# User-specified additional parameters passed to ``setup hscolour``.
+#
+# Example ``/etc/portage/make.conf``::
+#
+#   CABAL_EXTRA_HSCOLOUR_FLAGS="--executables --tests"
 : ${CABAL_EXTRA_HSCOLOUR_FLAGS:=}
 
 
 # @ECLASS_VARIABLE: CABAL_EXTRA_TEST_FLAGS
 # @USER_VARIABLE
 # @DESCRIPTION:
-# User-specified additional parameters passed to 'setup test'.
-# example: /etc/portage/make.conf:
-#    CABAL_EXTRA_TEST_FLAGS="-v3 --show-details=streaming"
+# User-specified additional parameters passed to ``setup test``.
+#
+# Example ``/etc/portage/make.conf``::
+#
+#   CABAL_EXTRA_TEST_FLAGS="-v3 --show-details=streaming"
 : ${CABAL_EXTRA_TEST_FLAGS:=}
 
 # @ECLASS_VARIABLE: CABAL_DEBUG_LOOSENING
 # @DESCRIPTION:
-# Show debug output for 'cabal_chdeps' function if set.
-# Needs working 'diff'.
+# Show debug output for ``cabal_chdeps`` function if set.
+# Needs working ``diff``.
 : ${CABAL_DEBUG_LOOSENING:=}
 
 # @ECLASS_VARIABLE: CABAL_REPORT_OTHER_BROKEN_PACKAGES
 # @DESCRIPTION:
-# Show other broken packages if 'cabal configure' fails.
+# Show other broken packages if ``cabal configure`` fails.
 # It should be normally enabled unless you know you are about
-# to try to compile a lot of broken packages. Default value: 'yes'
+# to try to compile a lot of broken packages. Default value: ``yes``
 # Set to anything else to disable.
 : ${CABAL_REPORT_OTHER_BROKEN_PACKAGES:=yes}
 
@@ -126,7 +162,7 @@ EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile src_test src_in
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Set the upstream revision number from Hackage. This will automatically
-# add the upstream cabal revision to SRC_URI and apply it in src_prepare.
+# add the upstream cabal revision to ``SRC_URI`` and apply it in ``src_prepare``.
 : ${CABAL_HACKAGE_REVISION:=0}
 
 # @ECLASS_VARIABLE: CABAL_PN
@@ -148,22 +184,23 @@ EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile src_test src_in
 # @ECLASS_VARIABLE: CABAL_P
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
-# The combined $CABAL_PN and $CABAL_PV variables, analogous to $P
+# The combined ``${CABAL_PN}`` and ``${CABAL_PV}`` variables, analogous to
+# ``${P}``
 CABAL_P="${CABAL_PN}-${CABAL_PV}"
 
 S="${WORKDIR}/${CABAL_P}"
 
 # @ECLASS_VARIABLE: CABAL_FILE
 # @DESCRIPTION:
-# The location of the .cabal file for the Haskell package. This defaults to
-# "${S}/${CABAL_PN}.cabal".
+# The location of the ``.cabal`` file for the Haskell package. This defaults to
+# ``${S}/${CABAL_PN}.cabal``.
 : ${CABAL_FILE:="${S}/${CABAL_PN}.cabal"}
 
 # @ECLASS_VARIABLE: CABAL_DISTFILE
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
-# The name of the .cabal file downloaded from Hackage. This filename does not
-# include $DISTDIR
+# The name of the ``.cabal`` file downloaded from Hackage. This filename does
+# not include ``${DISTDIR}``
 if [[ ${CABAL_HACKAGE_REVISION} -ge 1 ]]; then
 	CABAL_DISTFILE="${P}-rev${CABAL_HACKAGE_REVISION}.cabal"
 fi
@@ -171,30 +208,32 @@ fi
 # @ECLASS_VARIABLE: CABAL_CHDEPS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Specifies changes to be made to the .cabal file. Uses the cabal_chdeps
+# Specifies changes to be made to the ``.cabal`` file. Uses the ``cabal_chdeps``
 # function internally and shares the same syntax.
-# @EXAMPLE:
+# @CODE
 # CABAL_CHDEPS=(
 #    'base >= 4.2 && < 4.6' 'base >= 4.2 && < 4.7'
 #    'containers ==0.4.*' 'containers >= 0.4 && < 0.6'
 # )
+# @CODE
 : ${CABAL_CHDEPS:=}
 
 # @ECLASS_VARIABLE: CABAL_LIVE_VERSION
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Set this to any value to prevent SRC_URI from being set automatically.
+# Set this to any value to prevent ``SRC_URI`` from being set automatically.
 : ${CABAL_LIVE_VERSION:=}
 
 # @ECLASS_VARIABLE: GHC_BOOTSTRAP_PACKAGES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Extra packages that need to be exposed when compiling Setup.hs
-# @EXAMPLE:
+# Extra packages that need to be exposed when compiling ``Setup.hs``
+# @CODE
 # GHC_BOOTSTRAP_PACKAGES=(
-#	cabal-doctest
+#     cabal-doctest
 # )
+# @CODE
 : ${GHC_BOOTSTRAP_PACKAGES:=}
 
 # 'dev-haskell/cabal' passes those options with ./configure-based
@@ -778,16 +817,19 @@ haskell-cabal_pkg_postrm() {
 
 # @FUNCTION: cabal_flag
 # @DESCRIPTION:
-# ebuild.sh:use_enable() taken as base
+# ``ebuild.sh``:``use_enable()`` taken as base
 #
 # Usage examples:
 #
-#     CABAL_CONFIGURE_FLAGS=$(cabal_flag gui)
-#  leads to "--flags=gui" or "--flags=-gui" (useflag 'gui')
+# @CODE
+# CABAL_CONFIGURE_FLAGS=$(cabal_flag gui)
+# @CODE
+# leads to ``--flags=gui`` or ``--flags=-gui`` (useflag ``gui``)
 #
-#     CABAL_CONFIGURE_FLAGS=$(cabal_flag gtk gui)
-#  also leads to "--flags=gui" or " --flags=-gui" (useflag 'gtk')
-#
+# @CODE
+# CABAL_CONFIGURE_FLAGS=$(cabal_flag gtk gui)
+# @CODE
+# also leads to ``--flags=gui`` or ``--flags=-gui`` (useflag ``gtk``)
 cabal_flag() {
 	if [[ -z "$1" ]]; then
 		echo "!!! cabal_flag() called without a parameter." >&2
@@ -808,28 +850,32 @@ cabal_flag() {
 
 # @FUNCTION: cabal_chdeps
 # @DESCRIPTION:
-# Allows easier patching of $CABAL_FILE (${S}/${PN}.cabal by default)
+# Allows easier patching of ``${CABAL_FILE}`` (``${S}/${PN}.cabal`` by default)
 # depends
 #
-# Accepts argument list as pairs of substitutions: <from-string> <to-string>...
+# Accepts argument list as pairs of substitutions: ``<from-string> <to-string>...``
 #
 # Dies on error.
 #
 # Usage examples:
-#
+# @CODE
 # src_prepare() {
 #    cabal_chdeps \
 #        'base >= 4.2 && < 4.6' 'base >= 4.2 && < 4.7' \
 #        'containers ==0.4.*' 'containers >= 0.4 && < 0.6'
-#}
+# }
+# @CODE
+#
 # or
+#
+# @CODE
 # src_prepare() {
 #    CABAL_FILE=${S}/${CABAL_PN}.cabal cabal_chdeps \
 #        'base >= 4.2 && < 4.6' 'base >= 4.2 && < 4.7'
 #    CABAL_FILE=${S}/${CABAL_PN}-tools.cabal cabal_chdeps \
 #        'base == 3.*' 'base >= 4.2 && < 4.7'
-#}
-#
+# }
+# @CODE
 cabal_chdeps() {
 	# Needed for compatibility with ebuilds still using MY_PN
 	if [[ -n ${MY_PN} ]]; then
@@ -880,8 +926,7 @@ cabal_chdeps() {
 
 # @FUNCTION: cabal-constraint
 # @DESCRIPTION:
-# Allowes to set contraint to the libraries that are
-# used by specified package
+# Allowes to set contraint to the libraries that are used by specified package
 cabal-constraint() {
 	while read p v ; do
 		echo "--constraint \"$p == $v\""
@@ -891,8 +936,9 @@ cabal-constraint() {
 # @FUNCTION: replace-hcflags
 # @USAGE: <old> <new>
 # @DESCRIPTION:
-# Replace the <old> flag with <new> in HCFLAGS. Accepts shell globs for <old>.
-# The implementation is picked from flag-o-matic.eclass:replace-flags()
+# Replace the ``<old>`` flag with ``<new>`` in ``HCFLAGS``. Accepts shell globs
+# for ``<old>``. The implementation is picked from
+# ``flag-o-matic.eclass``:``replace-flags()``
 replace-hcflags() {
 	[[ $# != 2 ]] && die "Usage: replace-hcflags <old flag> <new flag>"
 
