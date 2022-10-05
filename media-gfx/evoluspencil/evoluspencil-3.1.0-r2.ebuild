@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,9 +17,10 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 RDEPEND="
-	app-accessibility/at-spi2-atk
-	app-accessibility/at-spi2-core
-	dev-libs/atk
+	|| (
+		>=app-accessibility/at-spi2-core-2.46.0:2
+		( app-accessibility/at-spi2-atk dev-libs/atk )
+	)
 	dev-libs/expat
 	dev-libs/glib
 	dev-libs/nspr
