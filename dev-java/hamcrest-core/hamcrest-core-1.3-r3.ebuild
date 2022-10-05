@@ -14,7 +14,7 @@ SRC_URI="https://github.com/hamcrest/JavaHamcrest/archive/hamcrest-java-${PV}.ta
 
 LICENSE="BSD-2"
 SLOT="${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ppc64 ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ppc64 x86 ~amd64-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
