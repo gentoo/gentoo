@@ -18,7 +18,10 @@ SLOT="0"
 IUSE="+introspection +mate nls xmp"
 
 COMMON_DEPEND="
-	dev-libs/atk
+	|| (
+		>=app-accessibility/at-spi2-core-2.46.0:2
+		dev-libs/atk
+	)
 	>=dev-libs/glib-2.58.1:2
 	>=dev-libs/libxml2-2.4.7:2
 	gnome-base/dconf
