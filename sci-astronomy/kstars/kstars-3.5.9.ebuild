@@ -73,6 +73,8 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 "
 
+PATCHES=( "${FILESDIR}/${P}-obsolete-header.patch" ) # bug 867814
+
 src_configure() {
 	local mycmakeargs=(
 		-DFETCH_TRANSLATIONS=OFF
