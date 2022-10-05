@@ -131,7 +131,6 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	vaapi? (
 		x11-libs/libva:=
 		system-ffmpeg? ( media-video/ffmpeg[vaapi] )
-		vdpau? ( x11-libs/libva-vdpau-driver )
 		wayland? ( x11-libs/libva[wayland] )
 		X? ( x11-libs/libva[X] )
 	)
