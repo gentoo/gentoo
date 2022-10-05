@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="Netkit - bootparamd"
-HOMEPAGE="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/"
+HOMEPAGE="http://ftp.linux.org.uk/pub/linux/Networking/netkit/"
 SRC_URI="mirror://debian/pool/main/n/${PN}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="BSD GPL-2"
