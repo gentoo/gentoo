@@ -37,6 +37,7 @@ RDEPEND="
 
 BDEPEND="
 	test? (
+		dev-python/asgiref[${PYTHON_USEDEP}]
 		dev-python/flask[${PYTHON_USEDEP}]
 		>=dev-python/httpx-0.23.0[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
